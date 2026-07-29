@@ -4,95 +4,97 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2E2A5C54F52
-	for <qemu-arm@archiver.kernel.org>; Tue, 28 Jul 2026 19:32:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6A403C53219
+	for <qemu-arm@archiver.kernel.org>; Wed, 29 Jul 2026 15:27:08 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wonSy-0003nH-37; Tue, 28 Jul 2026 15:27:57 -0400
+	id 1wp6BL-0008S1-7N; Wed, 29 Jul 2026 11:26:55 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mathieu.poirier@linaro.org>)
- id 1wonSP-0003TZ-1B
- for qemu-arm@nongnu.org; Tue, 28 Jul 2026 15:27:19 -0400
-Received: from mail-pj1-x1034.google.com ([2607:f8b0:4864:20::1034])
+ (Exim 4.90_1) (envelope-from <eblot.ml@gmail.com>)
+ id 1wp6BK-0008Rl-BA
+ for qemu-arm@nongnu.org; Wed, 29 Jul 2026 11:26:54 -0400
+Received: from mail-wm1-f53.google.com ([209.85.128.53])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <mathieu.poirier@linaro.org>)
- id 1wonSN-0001b3-Bd
- for qemu-arm@nongnu.org; Tue, 28 Jul 2026 15:27:16 -0400
-Received: by mail-pj1-x1034.google.com with SMTP id
- 98e67ed59e1d1-38deea72eebso223668a91.1
- for <qemu-arm@nongnu.org>; Tue, 28 Jul 2026 12:27:14 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1785266834; x=1785871634; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:from:to:cc:subject:date
- :message-id:reply-to:content-type;
- bh=B/s2MhOVNf5tNx0QLnD9DD7cZjOjKqSbP0aTOIvlKbQ=;
- b=jhc2ES0qqECbG0DvG0aMrnD0ac57mWBA171tF7+PL/WlqQN13/FUnE68f9ULxs6PDh
- 5YXtLfaTV+J8XmbEw+gf/U9cDRikv6ejlg99CJoBjaErqengHRRXA23d5ivIDaAme3T9
- LrI3IF7CWVAv+qtX4ZTvVELo/5mpYQWBgpxmqQmaXMKmodtofiWyDJPY7/Qu3jXwzFNQ
- dwD35jbiX907Bb3fjzqw+23phEMgLgdjUIb7iqK9S3dD2had8bgxWM0s994FX1CkQFC/
- plk+19lB66H+tQTnNmmVOkwquXUw1XlJg+SaIQ8gACqArppPSz+0YhChgFXyeZLmhA8L
- 3qcA==
+ (Exim 4.90_1) (envelope-from <eblot.ml@gmail.com>)
+ id 1wp6BI-0007vl-2N
+ for qemu-arm@nongnu.org; Wed, 29 Jul 2026 11:26:54 -0400
+Received: by mail-wm1-f53.google.com with SMTP id
+ 5b1f17b1804b1-4954c0833b4so7655795e9.1
+ for <qemu-arm@nongnu.org>; Wed, 29 Jul 2026 08:26:51 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1785266834; x=1785871634;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
- :to:cc:subject:date:message-id:reply-to:content-type;
- bh=B/s2MhOVNf5tNx0QLnD9DD7cZjOjKqSbP0aTOIvlKbQ=;
- b=r3zVvh7Mmy4/+4/ckFmSNs3as6pyXD9o/O0jOP5Mc+ObP/IXURQ1u3yvV3cyqp6a6O
- 3LrHKGKzSVLMB1B6I6bf1VUc+JTXNrbWVujdQR5qV0XtukgTMegQjV24R/NdBG3pQpM1
- ViGGBZ59cZkVR19m87Mee2Vkkrocrfb1EhxOezqjCsNKe59fyjPtLvFB8Jt230QAfcoJ
- L4jFPQfOSbT0V1hR2/pDn3jCVh5ulY07IoJ51xvUI4dP+0aFNCrG5RY02arK2UVS1x1L
- Y3VjeLp4CztcfFm6DG1uZQvCbHToVQaeiW1++nEUhyJ9G2TgQgprUlUucr3EJMBnPjQG
- aVbA==
+ d=1e100.net; s=20251104; t=1785338810; x=1785943610;
+ h=cc:to:content-transfer-encoding:content-type:mime-version
+ :message-id:date:subject:from:x-gm-gg:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to:content-type;
+ bh=UT65JqqXMWe4/qK/5ftLxPo3hI40eeDx4IMRwjYgdTI=;
+ b=inNcflsXPr8lFEenAC7zHfqo4GTgPBbYgni+XRHgAml1EOloxZp79GEJ+yK2ruHyL3
+ L0ze2ijzEgUTV4gKjM1opn/Yw7LoZwfFcO9X4uKOBRhLgHZO0JrDhrZJI3kMITs69NW2
+ 9MqGbFyIRXkMdt68qixyWFSlEA3Yn8T8UDP6IJ76RwFWME5SCIhKCNft/LuBlIXCD+Z6
+ nt3jv4GvVBJodwVBi7H74JoZGSCw1M34dueye3OOWq50cNFLE+D55etim7CP+1u/HdAf
+ klZP2jbiiHZYxBCsNAj0sAIe7KQoMdPcokF9+v8tgxK5wY7qbEEQYhL3RezDANEziwXI
+ W9vQ==
 X-Forwarded-Encrypted: i=1;
- AHgh+RpLhNX6zIb1QAJQwu50ZVqUVOU1boK8KqAljt3JSy915XIpatXgF7AYToTf4f4yvCXndwoGD8pEGA==@nongnu.org
-X-Gm-Message-State: AOJu0Yyb+Da0O1lcxOYAPFPZMOX8FGKIZDqJyipOf7a535F6+heoscQn
- 0KyUDLfGGuQXre3wJKI8hSfgP0++KNdywGvxJjK/92pWA9W/E0/ec5Mt8kEhAEq7kH0=
-X-Gm-Gg: AR+sD10nrwileBSwsm7x6kiR13CO1XwRDMScvkb2FaO4xbahPRp7NtJshTSwPvRfisQ
- //IkitiSvEmTp6CnlmubFTEl4TQ/1tR2poQ9bxIEjDl65EnI7/six+Jsl82B9CMtYk9Yv+rDlqK
- K9uGUsYCI4aBe4HYyYjkbLwv4z9SNuDiIEcT0k/uPUq2QlqSZnmV7ozUeavmcQqBNr2WOVZMo40
- Aez9wPVX/NnayfWqD/UpA5Sy/xRi8Fb6RcZ4sTPHQe/YsMKb8kNw/y1mGTIvxnMTOc948VvRtkB
- zTSt1m0hAmTxZI3RMm3VeUV8JkB+huBzR/S+AgTq3V3GqPOIeCiFBz3QXeLLpqOzcnSmXxbbby2
- c5poheLfEuPh0LHPvqA4Q8WS/cPMx/1a/q5/OOwGZd72yFCa8uAf5sjAIYnCZZiXsoti+JFP1vS
- URcL0xCR+ULGGujkBNJTsQqmZpIMKH
-X-Received: by 2002:a17:90b:4a06:b0:38e:69f8:cc49 with SMTP id
- 98e67ed59e1d1-38f6a569e3emr3771045a91.40.1785266833744; 
- Tue, 28 Jul 2026 12:27:13 -0700 (PDT)
-Received: from p14s.cg.shawcable.net
- ([2604:3d09:148c:c800:b9d1:87c9:a085:86c9])
+ AHgh+RqPoM0KkQ8Piz4fzLAR1qkDfeO2M6KB3Im78wPXZeSY/urePsdHSE97Bc55oW6/IH2KDHYH7SF5Vw==@nongnu.org
+X-Gm-Message-State: AOJu0YwiLeSxiUf56sSWfzeMD1fSwvja6qV/Z3kU/rjG07AjPSUS07yA
+ AFpeiAJa1D0y3DBJcnmR2UEo4TiHjSJ4j8NKJtSXm9mWSfOl9d7qdDIy
+X-Gm-Gg: AR+sD13BJelPfRhbIMHZem9O3L3UnD3Ulup1yZ/9v10/yV0MnZ34zsOAaAC2xuKP62q
+ xDqWwvYo+UB4w9FiZ/HaL8RxVZlHmHJi+S3FkytYPWFCmKx/fi8+MMwqaMh9yNjUPtnTs15KV0v
+ LfgrngzmKxrIbo3vsA47o0nuDrsgV93iYacRfIjPGZGuEgLWEo8Bsus4Sb9W1nvLL+WuDP9x/BE
+ FgnwMikIHU+oTg8ifEY3YoWkDQFJUBtN/Moz074WpPUqfLIc2JRk/255hUxur2Z/JHDZkz8QAKq
+ 2ZVLV3LzVOCJRcHC8YHg99+51KzCyWlrW6iiWFW5YQLTO4MUP+Xil2FLn0n9rkYZzYfT62kPTH0
+ FXWi224Sx1IpFu1CWm8HazwUUzIg7vf9VxqrBqdPdtHIMj8siDJsvgX9622jJNIybZdRhhHubqI
+ tgxVhKqAcZoVrsSKKuF/07sLlkBdOlu5jNTBqRCjqYua2qdNLmPCpJrMavcjzCwJPffMbg8grqz
+ DL17ILEJTMala1dIbu+gf2ewQZnSDuAUNxv82+jZIn4snc=
+X-Received: by 2002:a05:600c:c16d:b0:493:c8a6:b517 with SMTP id
+ 5b1f17b1804b1-496c6588c3cmr77985135e9.38.1785338810006; 
+ Wed, 29 Jul 2026 08:26:50 -0700 (PDT)
+Received: from localhost (89-93-216-19.hfc.dyn.abo.bbox.fr. [89.93.216.19])
  by smtp.gmail.com with ESMTPSA id
- 98e67ed59e1d1-38f7f1353fdsm372650a91.8.2026.07.28.12.27.12
+ 5b1f17b1804b1-4976bd6e179sm71564555e9.9.2026.07.29.08.26.49
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 28 Jul 2026 12:27:13 -0700 (PDT)
-From: Mathieu Poirier <mathieu.poirier@linaro.org>
-To: berrange@redhat.com, kchamart@redhat.com,
- pierrick.bouvier@oss.qualcomm.com, peter.maydell@linaro.org,
- mst@redhat.com, cohuck@redhat.com, pbonzini@redhat.com, eblake@redhat.com,
- armbru@redhat.com, lorenzo.pieralisi@linaro.org, gshan@redhat.com
-Cc: qemu-devel@nongnu.org,
-	qemu-arm@nongnu.org,
-	kvm@vger.kernel.org
-Subject: [RFC v2 18/24] hw/arm/virt: Disable DTB randomness for confidential
- VMs
-Date: Tue, 28 Jul 2026 13:26:24 -0600
-Message-ID: <20260728192630.240375-19-mathieu.poirier@linaro.org>
-X-Mailer: git-send-email 2.43.0
-In-Reply-To: <20260728192630.240375-1-mathieu.poirier@linaro.org>
-References: <20260728192630.240375-1-mathieu.poirier@linaro.org>
+ Wed, 29 Jul 2026 08:26:49 -0700 (PDT)
+Subject: [PATCH 00/25] hw/arm: Facebook SanMiguel BMC and TMP75-family sensors
+Date: Wed, 29 Jul 2026 17:12:36 +0200
+Message-Id: <20260729-sanmiguel-bmc-locator-v1-0-c8f9a8d101f6@free.fr>
 MIME-Version: 1.0
+Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::1034;
- envelope-from=mathieu.poirier@linaro.org; helo=mail-pj1-x1034.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-B4-Tracking: v=1; b=H4sIAAAAAAAC/yXMQQrCMBBG4auUWTvQRojoVcRFMv2tI20imbYIp
+ Xc36vJbvLeRoSiMLs1GBaua5lTRHRqSR0gDWPtqcq3z7cmd2UKadFgwcpyExyxhzoX72B1FEOC
+ 9UG1fBXd9/77X29+2xCdk/s5o3z/q7r4ZeQAAAA==
+X-Change-ID: 20260729-sanmiguel-bmc-locator-db13cceae66c
+To: qemu-devel@nongnu.org
+Cc: =?utf-8?q?Philippe_Mathieu-Daud=C3=A9?= <philmd@mailo.com>, 
+ =?utf-8?q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>, 
+ Peter Maydell <peter.maydell@linaro.org>, 
+ Steven Lee <steven_lee@aspeedtech.com>, Troy Lee <leetroy@gmail.com>, 
+ Jamin Lin <jamin_lin@aspeedtech.com>, Kane Chen <kane_chen@aspeedtech.com>, 
+ Andrew Jeffery <andrew@codeconstruct.com.au>, Joel Stanley <joel@jms.id.au>, 
+ qemu-arm@nongnu.org, Fabiano Rosas <farosas@suse.de>, 
+ Laurent Vivier <lvivier@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>, 
+ Thomas Huth <th.huth+qemu@posteo.eu>, 
+ =?utf-8?q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>, 
+ Emmanuel Blot <eblot@meta.com>, Emmanuel Blot <emmanuel.blot@free.fr>
+X-Mailer: b4 0.15.2
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1785337963; l=6248;
+ i=emmanuel.blot@free.fr; s=20260602; h=from:subject:message-id;
+ bh=PlkjWdIRrG8gzC0wTRtdaD5kPU6CgbQT0mpFnaBbSio=;
+ b=1BWHsZxjyC3uuM+EWgc/buNelXYzfL1is4vi7QynbvUkhicp9NtIKpQ5fujZfVUMccAk0j1Eb
+ adg11x7iuPcDndozSqHLasskI7eY/A2AyXeqY91ReIFrQbxcGvwKVCA
+X-Developer-Key: i=emmanuel.blot@free.fr; a=ed25519;
+ pk=0qFrZ21FAAN8OfVsSoVcCFTk/NMYOWzxJz4paSAVm0g=
+Received-SPF: pass client-ip=209.85.128.53; envelope-from=eblot.ml@gmail.com;
+ helo=mail-wm1-f53.google.com
+X-Spam_score_int: -15
+X-Spam_score: -1.6
+X-Spam_bar: -
+X-Spam_report: (-1.6 / 5.0 requ) BAYES_00=-1.9,
+ FREEMAIL_FORGED_FROMDOMAIN=0.001, FREEMAIL_FROM=0.001,
+ HEADER_FROM_DIFFERENT_DOMAINS=0.25, RCVD_IN_DNSWL_NONE=-0.0001,
+ RCVD_IN_MSPIKE_H2=0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -105,167 +107,137 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Reply-to:  Emmanuel Blot <emmanuel.blot@free.fr>
+From:  Emmanuel Blot via <qemu-arm@nongnu.org>
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-From: Jean-Philippe Brucker <jean-philippe@linaro.org>
+This series adds the Facebook SanMiguel BMC, promotes the
+TMP75/TMP175/LM75B sensors from generic TMP105 stand-ins to improved,
+dedicated models, and introduces the test-side plumbing needed to
+exercise real I2C devices from functional tests without hardcoding QOM
+paths.
 
-The dtb-randomness feature, which adds random seeds to the DTB, isn't
-really compatible with confidential VMs since it randomizes the Realm
-Initial Measurement. Enabling it is not an error, but it prevents
-attestation. It also isn't useful to a Realm, which doesn't trust host
-input.
+The work falls into four parts.
 
-Currently the feature is automatically enabled, unless the user disables
-it on the command-line. Change it to OnOffAuto, and automatically
-disable it for confidential VMs, unless the user explicitly enables it.
+1. TMP* sensor models
 
-Signed-off-by: Jean-Philippe Brucker <jean-philippe@linaro.org>
-Signed-off-by: Mathieu Poirier <mathieu.poirier@linaro.org>
+The TMP105 model was the only stand-in for a whole family of pin- and
+register-compatible parts, and several boards worked around the gap with
+private TYPE_TMP75 / TYPE_LM75 aliases that resolved back to a plain
+TMP105.
+
+The model is first cleaned up for correctness and QEMU convention. One
+of those changes touches migrated state, which gains an optional
+subsection so existing streams stay compatible.
+
+On that base, TMP75/TMP175/LM75B become variants selected by a small
+per-type class descriptor. The variant is class data, so the wire format
+is unchanged and all variants share the existing vmstate. qtest coverage
+is added for the per-variant behaviour. The existing BMC boards then
+drop their local aliases and instantiate the real models.
+
+2. SanMiguel BMC
+
+A new AST2600-based machine for the Facebook SanMiguel BMC, derived from
+its device tree. It wires up three TMP75 sensors, IO expanders, FRU
+EEPROMs, an I2C mux and an RTC across its I2C buses, and provides its
+RAM, flash and networking; the FRU EEPROMs are populated with data read
+from physical hardware. A functional test boots the OpenBMC image and
+drives each sensor over QOM, checking the guest hwmon interface reports
+the injected value back.
+
+3. Python device locator
+
+A QOM path names a device by its position under the object that owns it,
+in enumeration order — it says nothing about where the device sits in
+the bus topology. From a QOM path alone it is impossible to tell where a
+device is actually connected or what purpose it serves.
+
+DeviceLocator is a pure-Python helper that resolves a device from a
+string descriptor of its position — bus, address, type, on-bus index —
+by walking the bus/device hierarchy. It uses only standard QOM queries
+over QMP: no new QEMU commands, no model changes. A self-check exercises
+the grammar and its error paths against a paused SanMiguel BMC; it needs
+no disk image and runs in about a second.
+
+Note: the helper adopts the 3.10 type-hint syntax rather than the 3.9
+equivalents; 3.9 reached end of life on 2025-10-31. The import is
+guarded so the module still loads on 3.9 and dependent tests skip there.
+
+Two small test-framework fixes ride along: the set_machine probe VM now
+gets the per-test workdir instead of the hardcoded /var/tmp default, and
+the Aspeed OpenBMC helper can optionally assert the booted device-tree
+model.
+
+4. Catalina follow-ups
+
+The final three commits are the tail of the earlier "hw/arm: improve
+Aspeed Catalina BMC emulation" series: functional tests for the PCA9555
+and PCA9554 IO expanders, plus the PCA9554 change that drives its input
+pins externally. They were held back because reaching such devices from
+a test needs a stable way to reference them by bus position — the QOM
+re-parenting patch tried then was rejected, and the device locator now
+unblocks them.
+
+Based on:
+
+  repo:   https://github.com/legoater/qemu.git
+  branch: aspeed-11.1
+  commit: 04d27371e3 ("hw/arm: catalina: add NIC and FIO temperature sensors")
+
+Signed-off-by: Emmanuel Blot <emmanuel.blot@free.fr>
+
+Signed-off-by: Emmanuel Blot <emmanuel.blot@free.fr>
 ---
- docs/system/arm/virt.rst |  9 +++++----
- hw/arm/virt.c            | 41 +++++++++++++++++++++++++---------------
- include/hw/arm/virt.h    |  2 +-
- 3 files changed, 32 insertions(+), 20 deletions(-)
+Emmanuel Blot (25):
+      hw/sensor: tmp105: make device state private to the implementation
+      hw/sensor: tmp105: name the parent object field parent_obj
+      hw/sensor: tmp105: implement Resettable reset
+      hw/sensor: tmp105: enforce the configurable fault queue
+      hw/sensor: tmp105: describe the temperature property
+      hw/arm: aspeed: guard board-local temperature-sensor aliases
+      hw/sensor: tmp105: add TMP75, TMP175 and LM75B variants
+      tests/qtest: tmp105: cover the ALERT fault queue
+      tests/qtest: tmp105: cover the TMP75, TMP175 and LM75B variants
+      tests/qtest: tmp105: cover one-shot and fault-queue write immunity
+      tests/qtest: tmp105: cover shutdown clearing the ALERT across variants
+      hw/arm: sanmiguel: add Facebook SanMiguel BMC machine
+      hw/arm: sanmiguel: populate EEPROM data
+      hw/arm: catalina: use the real TMP75 model
+      hw/arm: fuji: use the real TMP75 and LM75B temperature sensors
+      tests/functional: aspeed: optionally check the device tree model on boot
+      tests/functional: give the set_machine probe VM the test workdir
+      tests/functional: add a pure-Python device-locator resolver
+      tests/functional: add a device-locator self-check
+      tests/functional: aspeed: add hwmon sensor read helpers
+      tests/functional/arm: sanmiguel: add BMC boot test
+      tests/functional/arm: catalina: test TMP75
+      tests/functional/arm: catalina: test PCA9555 IO expander via QOM
+      hw/arm: catalina: drive pca9554 io expander input pins externally
+      tests/functional/arm: catalina: test PCA9554 IO expander via QOM
 
-diff --git a/docs/system/arm/virt.rst b/docs/system/arm/virt.rst
-index 5f6dd1797862..9882b842ddd5 100644
---- a/docs/system/arm/virt.rst
-+++ b/docs/system/arm/virt.rst
-@@ -238,10 +238,11 @@ dtb-randomness
-   rng-seed and kaslr-seed nodes (in both "/chosen" and
-   "/secure-chosen") to use for features like the random number
-   generator and address space randomisation. The default is
--  ``on``. You will want to disable it if your trusted boot chain
--  will verify the DTB it is passed, since this option causes the
--  DTB to be non-deterministic. It would be the responsibility of
--  the firmware to come up with a seed and pass it on if it wants to.
-+  ``off`` for confidential VMs, and ``on`` otherwise. You will want
-+  to disable it if your trusted boot chain will verify the DTB it is
-+  passed, since this option causes the DTB to be non-deterministic.
-+  It would be the responsibility of the firmware to come up with a
-+  seed and pass it on if it wants to.
- 
- dtb-kaslr-seed
-   A deprecated synonym for dtb-randomness.
-diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-index fa6cd62a335c..65ed8573f8b1 100644
---- a/hw/arm/virt.c
-+++ b/hw/arm/virt.c
-@@ -401,6 +401,7 @@ static int gic_fdt_irq_type_spi(const VirtMachineState *vms)
- 
- static void create_fdt(VirtMachineState *vms)
- {
-+    bool dtb_randomness = true;
-     MachineState *ms = MACHINE(vms);
-     int nb_numa_nodes = ms->numa_state->num_nodes;
-     void *fdt = create_device_tree(&vms->fdt_size);
-@@ -410,6 +411,16 @@ static void create_fdt(VirtMachineState *vms)
-         exit(1);
-     }
- 
-+    /*
-+     * Including random data in the DTB causes random intial measurement on CCA,
-+     * so disable it for confidential VMs.
-+     */
-+    if (vms->dtb_randomness == ON_OFF_AUTO_OFF ||
-+        (vms->dtb_randomness == ON_OFF_AUTO_AUTO &&
-+         virt_machine_is_confidential(vms))) {
-+        dtb_randomness = false;
-+    }
-+
-     ms->fdt = fdt;
- 
-     /* Header */
-@@ -431,13 +442,13 @@ static void create_fdt(VirtMachineState *vms)
- 
-     /* /chosen must exist for load_dtb to fill in necessary properties later */
-     qemu_fdt_add_subnode(fdt, "/chosen");
--    if (vms->dtb_randomness) {
-+    if (dtb_randomness) {
-         create_randomness(ms, "/chosen");
-     }
- 
-     if (vms->secure) {
-         qemu_fdt_add_subnode(fdt, "/secure-chosen");
--        if (vms->dtb_randomness) {
-+        if (dtb_randomness) {
-             create_randomness(ms, "/secure-chosen");
-         }
-     }
-@@ -3512,18 +3523,21 @@ static void virt_set_virtio_transports(Object *obj, Visitor *v,
-     vms->virtio_transports = transports;
- }
- 
--static bool virt_get_dtb_randomness(Object *obj, Error **errp)
-+static void virt_get_dtb_randomness(Object *obj, Visitor *v, const char *name,
-+                                    void *opaque, Error **errp)
- {
-     VirtMachineState *vms = VIRT_MACHINE(obj);
-+    OnOffAuto dtb_randomness = vms->dtb_randomness;
- 
--    return vms->dtb_randomness;
-+    visit_type_OnOffAuto(v, name, &dtb_randomness, errp);
- }
- 
--static void virt_set_dtb_randomness(Object *obj, bool value, Error **errp)
-+static void virt_set_dtb_randomness(Object *obj, Visitor *v, const char *name,
-+                                    void *opaque, Error **errp)
- {
-     VirtMachineState *vms = VIRT_MACHINE(obj);
- 
--    vms->dtb_randomness = value;
-+    visit_type_OnOffAuto(v, name, &vms->dtb_randomness, errp);
- }
- 
- static char *virt_get_oem_id(Object *obj, Error **errp)
-@@ -4343,16 +4357,16 @@ static void virt_machine_class_init(ObjectClass *oc, const void *data)
-                                           "Set MSI settings. "
-                                           "Valid values are auto, gicv2m, its and off");
- 
--    object_class_property_add_bool(oc, "dtb-randomness",
--                                   virt_get_dtb_randomness,
--                                   virt_set_dtb_randomness);
-+    object_class_property_add(oc, "dtb-randomness", "OnOffAuto",
-+                              virt_get_dtb_randomness, virt_set_dtb_randomness,
-+                              NULL, NULL);
-     object_class_property_set_description(oc, "dtb-randomness",
-                                           "Set off to disable passing random or "
-                                           "non-deterministic dtb nodes to guest");
- 
--    object_class_property_add_bool(oc, "dtb-kaslr-seed",
--                                   virt_get_dtb_randomness,
--                                   virt_set_dtb_randomness);
-+    object_class_property_add(oc, "dtb-kaslr-seed", "OnOffAuto",
-+                              virt_get_dtb_randomness, virt_set_dtb_randomness,
-+                              NULL, NULL);
-     object_class_property_set_description(oc, "dtb-kaslr-seed",
-                                           "Deprecated synonym of dtb-randomness");
- 
-@@ -4415,9 +4429,6 @@ static void virt_instance_init(Object *obj)
-     /* MTE is disabled by default.  */
-     vms->mte = false;
- 
--    /* Supply kaslr-seed and rng-seed by default */
--    vms->dtb_randomness = true;
--
-     vms->irqmap = a15irqmap;
- 
-     vms->virtio_transports = NUM_VIRTIO_TRANSPORTS;
-diff --git a/include/hw/arm/virt.h b/include/hw/arm/virt.h
-index 22e66d1a113c..d4c1aa04f664 100644
---- a/include/hw/arm/virt.h
-+++ b/include/hw/arm/virt.h
-@@ -176,7 +176,7 @@ struct VirtMachineState {
-     bool virt;
-     bool ras;
-     bool mte;
--    bool dtb_randomness;
-+    OnOffAuto dtb_randomness;
-     bool second_ns_uart_present;
-     OnOffAuto acpi;
-     VirtGICType gic_version;
--- 
-2.43.0
+ hw/arm/aspeed_ast2600_catalina.c              |  14 +-
+ hw/arm/aspeed_ast2600_fuji.c                  |  16 +-
+ hw/arm/aspeed_ast2600_sanmiguel.c             | 405 ++++++++++++++++++
+ hw/arm/meson.build                            |   1 +
+ hw/sensor/tmp105.c                            | 305 +++++++++++---
+ include/hw/sensor/tmp105.h                    |  46 +-
+ tests/functional/arm/meson.build              |   3 +
+ tests/functional/arm/test_aspeed_catalina.py  | 107 ++++-
+ tests/functional/arm/test_aspeed_sanmiguel.py |  72 ++++
+ tests/functional/arm/test_device_locator.py   | 114 +++++
+ tests/functional/aspeed.py                    |  21 +-
+ tests/functional/qemu_test/locator.py         | 578 ++++++++++++++++++++++++++
+ tests/functional/qemu_test/testcase.py        |   2 +-
+ tests/qtest/tmp105-test.c                     | 359 ++++++++++++++++
+ 14 files changed, 1922 insertions(+), 121 deletions(-)
+---
+base-commit: 1dad7db18669f337ca0ddefa97906cd5acfed1b7
+change-id: 20260729-sanmiguel-bmc-locator-db13cceae66c
+
+Best regards,
+--  
+Emmanuel Blot <emmanuel.blot@free.fr>
 
 

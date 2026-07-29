@@ -4,81 +4,82 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 01193C53200
-	for <qemu-arm@archiver.kernel.org>; Wed, 29 Jul 2026 23:13:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CFA52C54FCD
+	for <qemu-arm@archiver.kernel.org>; Wed, 29 Jul 2026 23:14:00 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wpDSw-00077o-QA; Wed, 29 Jul 2026 19:13:34 -0400
+	id 1wpDT2-0007Ca-0x; Wed, 29 Jul 2026 19:13:40 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from
- <3GIlqagYKCC8eTefdcRZZRWP.NZXbPXf-LcXYZYRYf.ZcR@flex--titusr.bounces.google.com>)
- id 1wpDSw-00077E-AC
- for qemu-arm@nongnu.org; Wed, 29 Jul 2026 19:13:34 -0400
-Received: from mail-pg1-x546.google.com ([2607:f8b0:4864:20::546])
+ <3HolqagYKCDUkZkljiXffXcV.TfdhVdl-RidefeXel.fiX@flex--titusr.bounces.google.com>)
+ id 1wpDT0-0007B1-Ea
+ for qemu-arm@nongnu.org; Wed, 29 Jul 2026 19:13:38 -0400
+Received: from mail-pj1-x1046.google.com ([2607:f8b0:4864:20::1046])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from
- <3GIlqagYKCC8eTefdcRZZRWP.NZXbPXf-LcXYZYRYf.ZcR@flex--titusr.bounces.google.com>)
- id 1wpDSu-0007GW-41
- for qemu-arm@nongnu.org; Wed, 29 Jul 2026 19:13:34 -0400
-Received: by mail-pg1-x546.google.com with SMTP id
- 41be03b00d2f7-cb5bdd8450dso1158766a12.0
- for <qemu-arm@nongnu.org>; Wed, 29 Jul 2026 16:13:30 -0700 (PDT)
+ <3HolqagYKCDUkZkljiXffXcV.TfdhVdl-RidefeXel.fiX@flex--titusr.bounces.google.com>)
+ id 1wpDSy-0007J1-Tr
+ for qemu-arm@nongnu.org; Wed, 29 Jul 2026 19:13:38 -0400
+Received: by mail-pj1-x1046.google.com with SMTP id
+ 98e67ed59e1d1-38ea32e57e2so2520427a91.1
+ for <qemu-arm@nongnu.org>; Wed, 29 Jul 2026 16:13:35 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=google.com; s=20251104; t=1785366809; x=1785971609; darn=nongnu.org;
- h=content-transfer-encoding:content-type:cc:to:from:subject
- :message-id:mime-version:date:from:to:cc:subject:date:message-id
- :reply-to:content-type;
- bh=x1UDTL9ZjqiMvN0QpoWmSUkkhCIa6NFHpPd/+eOvUhg=;
- b=H+JphLfIOcUUR4ULhklUHuMhu2r4gcPBwejoBGETAt/5A4ETCHx5Va8Kqi3CUZOhRt
- Levc8Z0EWWzHogpSTZexBE62/JKkTyDv114dk4FuK+HQ9MfWBcoMrjbZ27sylNJk54+i
- RMB4Z5qE+DJyKo2mOtfxnB+WISxctH9ma35KoMB7BBiXVyrNIdadu8qKZGNs8aD7GjWZ
- mVMqvNtwr7qF5OBXaMx566vMV6V4XRB/Bfa7FIy6nTApbXU9QljFH7O13N8+FcAY2vEw
- dCFgm5yJsaYL6am7oOoWO61RufWtdVCYeKunjtm7WGgZyneLKSW1ohoLYCA1gsuoNKlQ
- laEA==
+ d=google.com; s=20251104; t=1785366815; x=1785971615; darn=nongnu.org;
+ h=content-type:cc:to:from:subject:message-id:references:mime-version
+ :in-reply-to:date:from:to:cc:subject:date:message-id:reply-to
+ :content-type; bh=JVD11tqubf/ZoFd0+u8pfU9HDmID5aXBVmA5l13Z7RI=;
+ b=HsBunJsYifMjzgbuPZoYXslbsRwsdswRy5m6V6TPzbtVU/xZJNz9t10rbz9G7X2Yqo
+ RLKauQN6cIkMUbHsBPgqe9z8OalvKE3W2MLjqF/Accuxv0zWqXoRnaae+q6JqkE7c+gs
+ h/Dkm02GqKB2SdtpJOqCFQnRA4EzZ/JVyCrHZFRtGbR3g6pCFE/hQy+bnl5K8oiivHBr
+ ZYxYqBol4Y2AyC7vOmhjPsfUFYpDz9C6wJJfic7SJharcUdntom8YD7NNi3dXuIbsFV+
+ TkgJzQImr3XwR02HxDD2K0R8g64pL3xfPENsMPoESESC5tmKQcANvphYQxplzcdsAzAc
+ q8xg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1785366809; x=1785971609;
- h=content-transfer-encoding:content-type:cc:to:from:subject
- :message-id:mime-version:date:x-gm-message-state:from:to:cc:subject
- :date:message-id:reply-to:content-type;
- bh=x1UDTL9ZjqiMvN0QpoWmSUkkhCIa6NFHpPd/+eOvUhg=;
- b=G5R/m4quvElsaWKWORw3gVDmRvuD7bUCUBppjux+SwvVztHMkZov4sCV/ue0s4+Agi
- TBkb3NpLTH7Rw4UHHhqjwCnPh0dMAqqNCwICTjl7h5jLKzypNzAG/8Hb1Qv3B2DjLCDj
- ULS01v9F2SchVkzjeTcyVM6hMoNsRgvrHgLdp8XDwaSgN8dxozh/pU1M6XoHhZgArQBU
- 7nXiHdnAep2SCy8ln/r3vXt9g+yGndrW++baZWWf+C4pg1tIsOKe4RtHtxkqvuwMGnmR
- GDsossjOqAUwmQ+aCBvSXXjMjHCJX0PHz840FtpXE4PTgLbK4VEpZcWV7m0YA1TArT/+
- zuPA==
-X-Gm-Message-State: AOJu0YwseZB1MJLYygp823MOhmuT+6R9ck3UGkKun76NgMleqUuX/HM0
- 15EIlpcWrbHPIwNC5VPhLngUrufcyVoRjywcXILMCTrnZQNqqIJpHTB9B1f81jl3H9WW3gkR/i/
- sxOkwBQ==
-X-Received: from dybkm13.prod.google.com ([2002:a05:7301:d8d:b0:30c:83f3:7370])
+ d=1e100.net; s=20251104; t=1785366815; x=1785971615;
+ h=content-type:cc:to:from:subject:message-id:references:mime-version
+ :in-reply-to:date:x-gm-message-state:from:to:cc:subject:date
+ :message-id:reply-to:content-type;
+ bh=JVD11tqubf/ZoFd0+u8pfU9HDmID5aXBVmA5l13Z7RI=;
+ b=fUF8EkdIv1wogCw5SVNi6pGaTYd8hHqIrX1HYThiIYXgGtGEBIir5UzxnQ8hgc1fre
+ 4aml+sFZZdEo7G74c2TUQ15Rljncj3lp6GsfHaAku8OvlYl1HZA0TM/6/ejY13bwh6qv
+ HzilQtvRjn6+pWbW1JmwNpzVRoy+TkdDLhQEGGhist0MSEmswEL5ly3QS2xbj47qBmZD
+ MYdCGSSw1ej4nzuHVdjnYobjv8Yj4yqL4q+FEKMs/lzqJTjgtqWLJJzESOj+/Qn33TUa
+ tFVA3AxMddHQuVByyON1ru/Y81bGnkwOuv9kqhnSmIi/1q1yDfYQYgsN8SHORbPlQFM6
+ aSvQ==
+X-Gm-Message-State: AOJu0Yz0ZarahGLUaugocCEVk5LSohtVh9BbABGm1Vot/VBeyryFqqFW
+ Okurl+P0L3OiiufN9w+aGqLVBEZT0LnQAZ0fJingTOBvOg03ECPuO+WaY2jjj1DfFlqswiZFqp3
+ +C5e8HA==
+X-Received: from dybih50.prod.google.com
+ ([2002:a05:7301:30b2:b0:314:3eac:8ca1])
  (user=titusr job=prod-delivery.src-stubby-dispatcher) by
- 2002:a05:6a21:3103:b0:3c0:9c19:b277
- with SMTP id adf61e73a8af0-3c90076eaefmr75663637.69.1785366808841; Wed, 29
- Jul 2026 16:13:28 -0700 (PDT)
-Date: Wed, 29 Jul 2026 23:13:15 +0000
+ 2002:a17:90b:4b84:b0:38f:5801:dc0e
+ with SMTP id 98e67ed59e1d1-38f9bd8723dmr202745a91.15.1785366814582; Wed, 29
+ Jul 2026 16:13:34 -0700 (PDT)
+Date: Wed, 29 Jul 2026 23:13:21 +0000
+In-Reply-To: <20260729231325.3808993-1-titusr@google.com>
 Mime-Version: 1.0
+References: <20260729231325.3808993-1-titusr@google.com>
 X-Mailer: git-send-email 2.55.0.508.g3f0d502094-goog
-Message-ID: <20260729231325.3808993-1-titusr@google.com>
-Subject: [PATCH 0/8] hw/i2c: PMBus updates and adm1266 fixes
+Message-ID: <20260729231325.3808993-7-titusr@google.com>
+Subject: [PATCH 6/8] hw/i2c: fix VOUT_MODE representation on little-endian
+ machines
 From: Titus Rwantare <titusr@google.com>
 To: peter.maydell@linaro.org
 Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, kfting@nuvoton.com, 
  imaginos32@gmail.com, wuhaotsh@google.com, philmd@mailo.com, 
  fanjason@google.com, Titus Rwantare <titusr@google.com>
 Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2607:f8b0:4864:20::546;
- envelope-from=3GIlqagYKCC8eTefdcRZZRWP.NZXbPXf-LcXYZYRYf.ZcR@flex--titusr.bounces.google.com;
- helo=mail-pg1-x546.google.com
-X-Spam_score_int: -94
-X-Spam_score: -9.5
+Received-SPF: pass client-ip=2607:f8b0:4864:20::1046;
+ envelope-from=3HolqagYKCDUkZkljiXffXcV.TfdhVdl-RidefeXel.fiX@flex--titusr.bounces.google.com;
+ helo=mail-pj1-x1046.google.com
+X-Spam_score_int: -95
+X-Spam_score: -9.6
 X-Spam_bar: ---------
-X-Spam_report: (-9.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_MED=-0.001,
+X-Spam_report: (-9.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_MED=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- FUZZY_MILLION=0.1, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
  USER_IN_DEF_DKIM_WL=-7.5 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -95,50 +96,40 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-This series adds various fixes to PMBus and SMBus support.
+From: Jason Fan <fanjason@google.com>
 
-Since v1:
-- Added the adm1266 patches that fix accessing the MFR_* registers
-- Fixed vout_mode handling to avoid values overflowing/being truncated
-  by the adm1266 implementation.
-- Added fix for PMBus vout_mode bug where guests accesses would break
-  due to the bitfields being packed in the wrong order.
-- Updated VMState to work around breaking migration while still storing
-  the increased SMBus data.
+Even though VOUT_MODE is only one byte, bitfields are allocated in the
+order specific to the host's endianness.
 
-The maximum SMBus data length is increased to 257 bytes, (payload is 255 by=
-tes) to support SMBus 3.0 block transfers. SMBus devices don=E2=80=99t have=
- to report their specification version, and this change allows us to enable=
- newer PMBus devices that are based on top of SMBus 3.0.
+Signed-off-by: Titus Rwantare <titusr@google.com>
+Signed-off-by: Jason Fan <fanjason@google.com>
+---
+ include/hw/i2c/pmbus_device.h | 7 +++++++
+ 1 file changed, 7 insertions(+)
 
-Additionally, this series:
-  - Adds the `DIV_ROUND_CLOSEST` helper macro, lifted from the linux implem=
-entation, to match the rounding in linux drivers.
-  - Adds PMBus helper functions to convert sensor values in milliunits to/f=
-rom linear mode format (Linear16).
-
-Jason Fan (1):
-  hw/i2c: fix VOUT_MODE representation on little-endian machines
-
-Titus Rwantare (7):
-  osdep: add DIV_ROUND_CLOSEST
-  hw/i2c: pmbus: add milliunits linear mode functions
-  hw/i2c: smbus: increase MAX_DATA_LEN
-  hw/sensor: update adm1266 block transfers
-  hw/sensor: switch adm1266 to millivolts vout
-  hw/sensor: adm1266: expose vout_mode over QMP
-  hw/sensor: adm1266: set default VOUT mode
-
- hw/i2c/pmbus_device.c         |  39 +++++++
- hw/i2c/smbus_slave.c          |  27 ++++-
- hw/sensor/adm1266.c           | 176 +++++++++++++++++++++++-----
- include/hw/i2c/pmbus_device.h |  25 ++++
- include/hw/i2c/smbus_slave.h  |   2 +-
- include/qemu/osdep.h          |  13 +++
- tests/qtest/adm1266-test.c    | 210 ++++++++++++++++++++++++++++++++--
- 7 files changed, 452 insertions(+), 40 deletions(-)
-
---=20
+diff --git a/include/hw/i2c/pmbus_device.h b/include/hw/i2c/pmbus_device.h
+index 9f3569e997..03b2c21c19 100644
+--- a/include/hw/i2c/pmbus_device.h
++++ b/include/hw/i2c/pmbus_device.h
+@@ -449,10 +449,17 @@ typedef struct PMBusCoefficients {
+ /**
+  * VOUT_Mode bit fields
+  */
++#if HOST_BIG_ENDIAN
+ typedef struct PMBusVoutMode {
+     uint8_t  mode:3;
+     int8_t   exp:5;
+ } PMBusVoutMode;
++# else
++typedef struct PMBusVoutMode {
++    int8_t   exp:5;
++    uint8_t  mode:3;
++} PMBusVoutMode;
++#endif
+ 
+ /**
+  * Convert sensor values to direct mode format
+-- 
 2.55.0.508.g3f0d502094-goog
 
 

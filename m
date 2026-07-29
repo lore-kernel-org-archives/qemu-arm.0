@@ -4,64 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E73A1C53200
-	for <qemu-arm@archiver.kernel.org>; Wed, 29 Jul 2026 15:48:36 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D287AC53219
+	for <qemu-arm@archiver.kernel.org>; Wed, 29 Jul 2026 15:48:57 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wp6WC-0001Cv-2n; Wed, 29 Jul 2026 11:48:28 -0400
+	id 1wp6WY-0001Kf-O9; Wed, 29 Jul 2026 11:48:50 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <eblot.ml@gmail.com>)
- id 1wp6WA-0001CJ-Gb
- for qemu-arm@nongnu.org; Wed, 29 Jul 2026 11:48:26 -0400
-Received: from mail-wm1-f49.google.com ([209.85.128.49])
+ id 1wp6WX-0001JX-0j
+ for qemu-arm@nongnu.org; Wed, 29 Jul 2026 11:48:49 -0400
+Received: from mail-wm1-f50.google.com ([209.85.128.50])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <eblot.ml@gmail.com>)
- id 1wp6W7-0003MF-Rj
- for qemu-arm@nongnu.org; Wed, 29 Jul 2026 11:48:26 -0400
-Received: by mail-wm1-f49.google.com with SMTP id
- 5b1f17b1804b1-4954d383e64so7076695e9.1
- for <qemu-arm@nongnu.org>; Wed, 29 Jul 2026 08:48:23 -0700 (PDT)
+ id 1wp6WU-0003Nl-Lc
+ for qemu-arm@nongnu.org; Wed, 29 Jul 2026 11:48:48 -0400
+Received: by mail-wm1-f50.google.com with SMTP id
+ 5b1f17b1804b1-4957eefd361so8055275e9.1
+ for <qemu-arm@nongnu.org>; Wed, 29 Jul 2026 08:48:46 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1785340102; x=1785944902;
+ d=1e100.net; s=20251104; t=1785340125; x=1785944925;
  h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
  :content-type:mime-version:subject:date:from:x-gm-gg
  :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
  :content-type;
- bh=5ltDudjYe8pxHl7XxlWpSMq7ZVdlJnNvkY4t3t1H/f4=;
- b=T3KDpqRQ7CdNFWjg3HhQ+mX+oM30iA1Rl44nqU6xeMUurj7sp3MN85H5b2qzTAe2ll
- iKiof/13aj0h/V2wgSZxkNv+7Byc7S3xC5UaTKS4Hw3lVV2juVm7x8TCR846BZjFMMbd
- HdomFNwQLoK+Rb4JCRYhHdN/OOF1ukYJK1qDRucC22oX+yGieRkGYbgcRMI55lI74JRS
- v6QHBJZUhfskNpsLeK44k8LC1Ay9SNnWPY2kqxhmYiWv+a8cEOqQ24kUIu7UGVT0TDV5
- 57kp/ICqrViqEfZmJdWWH++76slHU2CRbiAq0qrQFMFqPbWnccl2vy9B6YnpnmFU6456
- WkLw==
+ bh=7GAlPRK+FUlIvHrrHmY3hq8ta1s+tUUrFH5KYLEatV8=;
+ b=MOzlNA+NQ+Vwllkx3QImQt5rK7pSjt5kMH25Kagq0QVExvhZKFk1/Fm77AWd4dEshQ
+ sFl7gTrlMuMNahwbstWSfhAVKFedBkuUPWzWm7r1l4Y9qNQx1TFh8SIj1mid/MHAhaYy
+ rleNFyH/VYeYOQi6MJXR6z6b9Mwz8bdZA26g0r9cEH5sd2raQJsI6qJWxVufKNYLAMDa
+ ZVxhnbsKfPxuZPsF79XZPLTjHhxEz2JwOXVTDTAktOQLCcIUQzv8OKxPUUVl0tnm+LiD
+ vRFCtFODP/fiCU36Fd7obuP+XcP2HOTYL14NodRj8ta3OLrSwmKcrMIAqbvKrE5GJUeS
+ p2cg==
 X-Forwarded-Encrypted: i=1;
- AHgh+Rqb0+EDRR2Et3FjP8YHez6I8QbWvdZ880tttvUqoJFCYvH0q6awR0Bk6YFP2pAF1XfMfL1aaychdg==@nongnu.org
-X-Gm-Message-State: AOJu0YwOiofE3wECD9tQLnaOQRIeyxywoKjLVEO1IkoB+5+e+f48cd7I
- zVDt7hK4g/zLpY2AOwRqED2t+aASB3q/eJUU0xl7HQTlBDF7N8Lcvw8m
-X-Gm-Gg: AR+sD12fuZNzJjlaZKmCpM9dug6mcCNCI8AvnZews5X9i+yNX23mS/qfV0QYkfoXfqz
- o7hVjE4pjpX6JgjfUzxVYMYimwe9a9UvDeb6cRkceYSykfhN1jTkxzsZhwV3Wv0gMgYGzCtrfDC
- iAt0Lj/2mmH3LjcREHNk5fBSmeMWZrqJ/RrYfbXmPkJqkX53ghSV4ZkXSOLoxTyozLpcEuLdtLK
- UX1dz2vXVk0bvil1qf8PvhMIevT/bvEhr36ulcAoQGh1nz7TQwUwjAW8nMu+0MWNDQE97V38Lml
- Vh623kqzHk15VN1jW0Cf5W7rtISR6h1K8QxPTZYU4cnJ6EEM9shJviI8HQgaQ2q/hXIP7V07uEg
- tMI18tCEW7kaFP2z4Qa5DVxUDDvjxGAC/yrRxTIj7lXzrzk7gvB+LobbxaI/yobOLJRbnz8Fl8g
- u3MT0TJgajXn6dytOs14ZS3N5aCGsU40w9ZOWoeu/bdDeg3xGJstakzE0dci8fSYtU3Sl7vqe8L
- bn9aQHq+La8ebTfQ8oa8CeuzHyqPVbNYwmn9W7EeDWugws=
-X-Received: by 2002:a05:600c:c162:b0:495:4589:cea6 with SMTP id
- 5b1f17b1804b1-496c65c071cmr90396795e9.34.1785340102104; 
- Wed, 29 Jul 2026 08:48:22 -0700 (PDT)
+ AHgh+RozjzsVRyw+F98WT6VaBqWfZt54cI8yzr68CPDBbsdltthhGnu14AFT2gIALiT2T1Ul8LeRUJ/eeg==@nongnu.org
+X-Gm-Message-State: AOJu0Yzx/oydPxg6M1soukqIP9pHNCfHeTXjm8mpsLyYaEgbnsWaxjSO
+ gFgTw4VLm88usW1nlK0eJj7rY1qRWa4Zwu3YZLhgp2J1UalhJJb7OXH0
+X-Gm-Gg: AR+sD11NRpy4PirzXNbC/hDupYqFhGthUkGVfT31rMdjj/vYuyU4wfNKYw2AERY+Uvi
+ gh/fJxIUCblklwLFSun9xSzD8W5o6TzWqr2xNz4BBb4dGwC6YZxu+yFvotrHSP12ih5DCeP6OOE
+ x9Ed4lN6wZ85A81c8P/VHj0AyN8MzL4MBtbka+qGoOUEk9OclleSVkILKSr+xD7SsIoi9AsvpeM
+ TGX4ZVJjjfacBEACpJIh4XniKzrvC6JgiUKe1DhSWZKWqQcTg32jjiMUmOqwvplUa1Ssam4prO1
+ vQOe4MlC9xuQDRmq5cmT5QN5TmlfUZJd9YBJY/8d28LhBIYSDg9ISNIUile9241ECJVrUs9/GWe
+ +0hGJVN7S+krws8N9ZGv+uaMwT/6SsQ0REstz+URO3SMrNHQaAO+o79jyQNdLPTBfUMrmj6948M
+ 4SWi9qUxWTwEdkhUMmLOapWnqW1TnLoX2U5aSmLD92fBbGYrPz/mxtwgLjpNAsWiPyjI/1LP9f4
+ lWBdpRzAdywMX3p2mWPhamWaVedUKPnLFAEEyLTch8JpuM=
+X-Received: by 2002:a05:600c:468c:b0:495:4dea:f7f5 with SMTP id
+ 5b1f17b1804b1-496c6596732mr77723795e9.29.1785340125051; 
+ Wed, 29 Jul 2026 08:48:45 -0700 (PDT)
 Received: from localhost (89-93-216-19.hfc.dyn.abo.bbox.fr. [89.93.216.19])
  by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-49764d8e826sm76409705e9.8.2026.07.29.08.48.21
+ 5b1f17b1804b1-49764d70042sm62675855e9.1.2026.07.29.08.48.43
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 29 Jul 2026 08:48:21 -0700 (PDT)
-Date: Wed, 29 Jul 2026 17:12:56 +0200
-Subject: [PATCH 20/25] tests/functional: aspeed: add hwmon sensor read helpers
+ Wed, 29 Jul 2026 08:48:44 -0700 (PDT)
+Date: Wed, 29 Jul 2026 17:12:57 +0200
+Subject: [PATCH 21/25] tests/functional/arm: sanmiguel: add BMC boot test
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20260729-sanmiguel-bmc-locator-v1-20-c8f9a8d101f6@free.fr>
+Message-Id: <20260729-sanmiguel-bmc-locator-v1-21-c8f9a8d101f6@free.fr>
 References: <20260729-sanmiguel-bmc-locator-v1-0-c8f9a8d101f6@free.fr>
 In-Reply-To: <20260729-sanmiguel-bmc-locator-v1-0-c8f9a8d101f6@free.fr>
 To: qemu-devel@nongnu.org
@@ -77,15 +77,15 @@ Cc: =?utf-8?q?Philippe_Mathieu-Daud=C3=A9?= <philmd@mailo.com>,
  =?utf-8?q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>, 
  Emmanuel Blot <eblot@meta.com>, Emmanuel Blot <emmanuel.blot@free.fr>
 X-Mailer: b4 0.15.2
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1785337965; l=1618;
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1785337965; l=4763;
  i=emmanuel.blot@free.fr; s=20260602; h=from:subject:message-id;
- bh=OWHYGLs9Qe48IkzshR4rzRcrC9b6ZFXaLE+JZF/S+fM=;
- b=AWknD4yiasxBSfKYStR/C9DNNvTETapWBjxW+mYR/B1Of/Y2V7/3H2kcbUliBivT3zQl4W5rO
- yhVxaIaHHA4A75jbhq4X4Beov6AiCvkxixA4oix+g6i3Lwtqy/EpQrm
+ bh=3rFxFx4Yry9jkNAk1yr11//RJi6X7ARRmYJTQcfmW/U=;
+ b=KQtHSzxysOyeJ4kdFcQR4UiRWC94/4/00yygclSP5yjIKXD/qMKoZp54ixgMpqKhCbQw84d3C
+ tctODHch6dzBPKGQQi0n3fIwsuFfaTfpzdIxqxn9vcuzcWKX5qJmZiM
 X-Developer-Key: i=emmanuel.blot@free.fr; a=ed25519;
  pk=0qFrZ21FAAN8OfVsSoVcCFTk/NMYOWzxJz4paSAVm0g=
-Received-SPF: pass client-ip=209.85.128.49; envelope-from=eblot.ml@gmail.com;
- helo=mail-wm1-f49.google.com
+Received-SPF: pass client-ip=209.85.128.50; envelope-from=eblot.ml@gmail.com;
+ helo=mail-wm1-f50.google.com
 X-Spam_score_int: -15
 X-Spam_score: -1.6
 X-Spam_bar: -
@@ -111,49 +111,122 @@ From:  Emmanuel Blot via <qemu-arm@nongnu.org>
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Add read_hwmon()/wait_hwmon_value() to AspeedTest so board tests can
-read a sysfs hwmon attribute over the console and poll it until it
-reaches an expected value, instead of each test carrying its own copy.
+Boot the SanMiguel BMC from its OpenBMC image and exercise its three
+TMP75 sensors: inject a temperature into each over QOM and check the
+guest hwmon interface reports it back.
+
+Address the sensors through the device locator rather than hardcoded QOM
+paths.
+
+The boot image is currently hosted in a personal fork
+(github.com/eblot/qemu-aspeed-boot); the asset URL will be updated to
+the Aspeed maintainer repository (github.com/legoater/qemu-aspeed-boot)
+once the machine image is accepted there.
 
 Signed-off-by: Emmanuel Blot <emmanuel.blot@free.fr>
 ---
- tests/functional/aspeed.py | 16 ++++++++++++++++
- 1 file changed, 16 insertions(+)
+ tests/functional/arm/meson.build              |  2 +
+ tests/functional/arm/test_aspeed_sanmiguel.py | 72 +++++++++++++++++++++++++++
+ 2 files changed, 74 insertions(+)
 
-diff --git a/tests/functional/aspeed.py b/tests/functional/aspeed.py
-index 08af6b4839..84d40fc0e9 100644
---- a/tests/functional/aspeed.py
-+++ b/tests/functional/aspeed.py
-@@ -2,6 +2,9 @@
- #
- # SPDX-License-Identifier: GPL-2.0-or-later
- 
-+import re
-+import time
+diff --git a/tests/functional/arm/meson.build b/tests/functional/arm/meson.build
+index bb78dcf3e4..4b263dd3e0 100644
+--- a/tests/functional/arm/meson.build
++++ b/tests/functional/arm/meson.build
+@@ -17,6 +17,7 @@ test_arm_timeouts = {
+   'aspeed_catalina' : 480,
+   'aspeed_gb200nvl_bmc' : 480,
+   'aspeed_rainier' : 480,
++  'aspeed_sanmiguel' : 480,
+   'bpim2u' : 500,
+   'collie' : 180,
+   'cubieboard' : 360,
+@@ -53,6 +54,7 @@ tests_arm_system_thorough = [
+   'aspeed_catalina',
+   'aspeed_gb200nvl_bmc',
+   'aspeed_rainier',
++  'aspeed_sanmiguel',
+   'bpim2u',
+   'canona1100',
+   'collie',
+diff --git a/tests/functional/arm/test_aspeed_sanmiguel.py b/tests/functional/arm/test_aspeed_sanmiguel.py
+new file mode 100644
+index 0000000000..3d35e4aa86
+--- /dev/null
++++ b/tests/functional/arm/test_aspeed_sanmiguel.py
+@@ -0,0 +1,72 @@
++#!/usr/bin/env python3
++#
++# Functional test that boots the Facebook SanMiguel BMC machine
++#
++# Copyright (c) 2026 Meta Platforms, Inc. and affiliates.
++#
++# SPDX-License-Identifier: GPL-2.0-or-later
 +
- from qemu_test import exec_command_and_wait_for_pattern
- from qemu_test import LinuxKernelTest
- 
-@@ -29,6 +32,19 @@ def do_test_arm_aspeed_openbmc(self, machine, image, uboot='2019.04',
-     def wait_for_boot_complete(self):
-         self.wait_for_console_pattern('login:')
- 
-+    def read_hwmon(self, hwmon, attr):
-+        return exec_command_and_wait_for_pattern(
-+            self, f'cat {hwmon}/{attr}', self.PROMPT)
++import sys
 +
-+    def wait_hwmon_value(self, hwmon, attr, expected):
-+        pattern = re.compile(rb'(?m)^%d\r*$' % expected)
-+        if pattern.search(self.read_hwmon(hwmon, attr)):
++from qemu_test import Asset
++from qemu_test import exec_command_and_wait_for_pattern
++from aspeed import AspeedTest
++
++# DeviceLocator's type hints require Python 3.10+; import it only when
++# available. On the 3.9 baseline the module still loads and the boot
++# test still runs; only the locator-based sensor checks are skipped.
++if sys.version_info >= (3, 10):
++    from qemu_test.locator import DeviceLocator
++
++
++class SanMiguelMachine(AspeedTest):
++
++    ASSET_SANMIGUEL_FLASH = Asset(
++        'https://github.com/eblot/qemu-aspeed-boot/raw/5a972e968856bdf0493e4040ccc70455d1879511/images/'
++            'sanmiguel-bmc/openbmc-20260616025450/obmc-phosphor-image-sanmiguel-20260616025450.static.mtd.xz',
++        'f0b79a09cd861d79919facc16af1dbdc85a3df55b06dd62ba0318a01580d447b')
++
++    TMP75_SENSORS = (
++        ('/machine/soc::aspeed.i2c-ast2600[0]~i2c[5]~tmp75@0x48',
++         '/sys/bus/i2c/devices/5-0048/hwmon/hwmon*'),
++        ('/machine/soc::aspeed.i2c-ast2600[0]~i2c[9]~tmp75@0x4e',
++         '/sys/bus/i2c/devices/9-004e/hwmon/hwmon*'),
++        ('/machine/soc::aspeed.i2c-ast2600[0]~i2c[10]~tmp75@0x48',
++         '/sys/bus/i2c/devices/10-0048/hwmon/hwmon*'),
++    )
++    PROMPT = 'root@sanmiguel:~#'
++
++    def test_arm_ast2600_sanmiguel_openbmc(self):
++        image_path = self.uncompress(self.ASSET_SANMIGUEL_FLASH)
++
++        self.do_test_arm_aspeed_openbmc('sanmiguel-bmc', image=image_path,
++                                        uboot='2019.04', cpu_id='0xf00',
++                                        soc='AST2600 rev A3',
++                                        dt_model='Facebook SanMiguel BMC')
++
++        exec_command_and_wait_for_pattern(self, 'root', 'Password:')
++        exec_command_and_wait_for_pattern(self, '0penBmc', self.PROMPT)
++
++        # The sensor round-trip below resolves devices with DeviceLocator, which
++        # requires Python 3.10+; skip just that part on older interpreters.
++        if sys.version_info < (3, 10):
 +            return
-+        time.sleep(2)
-+        out = self.read_hwmon(hwmon, attr)
-+        if not pattern.search(out):
-+            self.fail(f'{attr} did not reach {expected}: {out!r}')
 +
-     def do_test_arm_aspeed_buildroot_start(self, image, cpu_id, pattern='Aspeed EVB'):
-         self.require_netdev('user')
-         self.vm.set_console()
++        locator = DeviceLocator(self.vm.cmd)
++
++        # Drive each sensor through QOM and check the kernel hwmon interface
++        # reports it back; a distinct 0.5 C per-sensor step (the finest the
++        # TMP75 register round-trips at any resolution) catches a mis-resolved
++        # locator hitting the wrong sensor.
++        for idx, (sensor, hwmon) in enumerate(self.TMP75_SENSORS):
++            path = locator.resolve(sensor, 'tmp75')
++            self.assertIn(b'lm75', self.read_hwmon(hwmon, 'name'))
++            offset = idx * 500
++            for milli_c in (55000 + offset, 30000 + offset):
++                self.vm.cmd('qom-set', path=path,
++                            property='temperature', value=milli_c)
++                self.wait_hwmon_value(hwmon, 'temp1_input', milli_c)
++
++
++if __name__ == '__main__':
++    AspeedTest.main()
 
 -- 
 2.50.1

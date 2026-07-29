@@ -4,140 +4,101 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 90F74C53200
-	for <qemu-arm@archiver.kernel.org>; Wed, 29 Jul 2026 19:42:52 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D73F6C54FCD
+	for <qemu-arm@archiver.kernel.org>; Wed, 29 Jul 2026 22:35:53 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wpAAf-00020d-Fy; Wed, 29 Jul 2026 15:42:29 -0400
+	id 1wpCs2-0000xm-Fp; Wed, 29 Jul 2026 18:35:28 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <pierrick.bouvier@oss.qualcomm.com>)
- id 1wpAAe-00020A-Kg
- for qemu-arm@nongnu.org; Wed, 29 Jul 2026 15:42:28 -0400
-Received: from mx0b-0031df01.pphosted.com ([205.220.180.131])
+ (Exim 4.90_1) (envelope-from <mst@redhat.com>) id 1wpCs0-0000xN-F1
+ for qemu-arm@nongnu.org; Wed, 29 Jul 2026 18:35:24 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <pierrick.bouvier@oss.qualcomm.com>)
- id 1wpAAc-0000OM-PE
- for qemu-arm@nongnu.org; Wed, 29 Jul 2026 15:42:28 -0400
-Received: from pps.filterd (m0279868.ppops.net [127.0.0.1])
- by mx0a-0031df01.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id
- 66TIrRcu2720542
- for <qemu-arm@nongnu.org>; Wed, 29 Jul 2026 19:42:23 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qualcomm.com; h=
- cc:content-transfer-encoding:content-type:date:from:in-reply-to
- :message-id:mime-version:references:subject:to; s=qcppdkim1; bh=
- lBgIEj0kclPJpD1FhKtp72cnKCz4zIHtoQ+OEfzDjwQ=; b=Bp8kFo06YtsbzOQj
- PRHfG0WzY7A4gTv7UoiSjFQtMigJViWycfb5NRP1T6WLqZnOzGyXSy9j/jJRAtPm
- EuGtnXltG2o10UzNSM/rOznxpaCFB7pctT41yvePTKnOTVnCnJDxuKDLc8uGI6pW
- 3gQiSbsIVj1YUi74YpkBIu7RzsggO1aK9U5D/hkeuqB+ojTXrgtEn+sGmq/6dikH
- 9PWVLc8FjRMfA2iPDVT/EpwumfkvAU3+Tr+pw1X2jg3BttBnNMywEucA+2X5J76/
- iUIFrDj7lNNUG6qP0PodvylI7D35Owb7W194p26rMFqK7ATzPN14Ie/LDqAM37Kr
- Lb496A==
-Received: from mail-pj1-f70.google.com (mail-pj1-f70.google.com
- [209.85.216.70])
- by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 4fqq6d06yq-1
- (version=TLSv1.3 cipher=TLS_AES_128_GCM_SHA256 bits=128 verify=NOT)
- for <qemu-arm@nongnu.org>; Wed, 29 Jul 2026 19:42:23 +0000 (GMT)
-Received: by mail-pj1-f70.google.com with SMTP id
- 98e67ed59e1d1-38edd45cbc4so1459547a91.3
- for <qemu-arm@nongnu.org>; Wed, 29 Jul 2026 12:42:23 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=oss.qualcomm.com; s=google; t=1785354142; x=1785958942; darn=nongnu.org;
- h=content-transfer-encoding:content-type:in-reply-to:content-language
- :from:references:cc:to:subject:user-agent:mime-version:date
- :message-id:from:to:cc:subject:date:message-id:reply-to:content-type;
- bh=lBgIEj0kclPJpD1FhKtp72cnKCz4zIHtoQ+OEfzDjwQ=;
- b=NfdljmUuQPd3u4NmAGBAik3t2RLMRBZsOPKe3KuGNf2cxDF7lO9pT4cj8hwvQKxBF9
- fIXzv6G7xqi37xwB648O7ivARK7NKI3FRu48ZsRLHmJueFKJZXsMC71iNgVo3ysZfA1c
- SyyKvA3vsTeroyd/SWGVaKuuIl+ABt3EZMniiawGyq8tOapgRscBaP7CeEryxGulu+eP
- YhheJurskaVCzoriX5St4VezevoRkCTfsy3xr0UlxAjdPOWHBFHzbok5kiaHnz6MCZsI
- gPrwYG+1yBZDwGapq83gxMHfoQBMbArpjft54XfdST5miz0QLDLGaueLycoSM3uKuipw
- 4YlQ==
+ (Exim 4.90_1) (envelope-from <mst@redhat.com>) id 1wpCru-0000wQ-CN
+ for qemu-arm@nongnu.org; Wed, 29 Jul 2026 18:35:23 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1785364515;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=1DmobnpuqfOMUgi6Wi9zNfJkkb6Zpprc33nArsPitzk=;
+ b=T0YuSHLtBiXTH/iy/+ayAH95baHM37nCPzeOfnuSyPvkBuI+6uZoekMaUSlDpuhFbcRncM
+ JTkImfbTWPAdUT+Dwa2gKm3+AST0USNwyAWW9xy2UpqOhhxrccbhV5SF7aB8XFqnOArePs
+ xIUBZg2Gqb6MMod/f1ol5LHgfSN1CL0=
+Received: from mail-wr1-f70.google.com (mail-wr1-f70.google.com
+ [209.85.221.70]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-358-HFFlZOXSNL2bEubemEwGcg-1; Wed, 29 Jul 2026 18:35:13 -0400
+X-MC-Unique: HFFlZOXSNL2bEubemEwGcg-1
+X-Mimecast-MFC-AGG-ID: HFFlZOXSNL2bEubemEwGcg_1785364513
+Received: by mail-wr1-f70.google.com with SMTP id
+ ffacd0b85a97d-47f4601af62so830634f8f.1
+ for <qemu-arm@nongnu.org>; Wed, 29 Jul 2026 15:35:13 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1785354142; x=1785958942;
- h=content-transfer-encoding:content-type:in-reply-to:content-language
- :from:references:cc:to:subject:user-agent:mime-version:date
- :message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
- :message-id:reply-to:content-type;
- bh=lBgIEj0kclPJpD1FhKtp72cnKCz4zIHtoQ+OEfzDjwQ=;
- b=lCFgueVBS7omBQU4g9P1dUx1gfXM2d3y/f4di6Y+vhwHnBpfSRoQRAKBZRhWRGF5CT
- J7wgtaXhOQaMsObqO6cSWvSpKaB+Hyxu/FuDM+GMB5cEV972hV7ldQhyBFuAtIKBCItW
- mqk80322DoCuGfTxmSHeOq9DLFwFUNY9qg7P4AAUPc7GoT0CqXBDCn/jcnKxavgUTgiP
- 8CUc3XEiEON7xk2vdK+A3ZQSPawWmMHkWy/agQwESO6+2zAdK4CDTiwxXSasfJWKt/D3
- 4B2BelufW+/wDxOQ4dhKQ5BEa1mnd7JcQrrVbX59fEE8IIOyjvczNKnToEg/bEP5oJ65
- Bubg==
-X-Gm-Message-State: AOJu0Yxeg6pQgxZvY3A3U/P+WOPmmJbtv6Wp2JSGNqwKYVQURkcuIUyX
- SjkUKzan3YHtQSKXiOs3ET9P8bWrrzpTdgymGrr5hE+I3UIWjQabShxPblhlFoVtiAU5DIV5mbf
- 0nlyD6r2klFmyv1Vk8RVZbbwvR6S3UAueonqozlv0Jvq3BxKlvsotKHI=
-X-Gm-Gg: AR+sD10S/qnpwgKh/8yqz/3Hz/vTo7AlpdGGFv/mbmzLyuEQZ0n+W6xSCijPsO+Qluv
- r94DG6U5DkCqTDYIHmDM+aAgD25uTQ6J0snuVbVCTSj3p6sdF/898L4fQCIlw4U/Sjl1Lba5Wr3
- N9Cj4kVdrXMQ7ELC5Df50jAKJqszLS+fd8YDG3I0aDqdEonNlghLUvBrfLG3la6RzEohcR/SCbc
- URus/T2dK6WeOzDSUi+Vf2ZGhZo+BVjyDSru9wtME93eLSfLuxzQHjLpZY0GCk3dXa+jOdJDEkq
- krbc8tnqhh1nTcDK7aFztt9AUAm9W5Hipc8Wc/27ce71DLY2yZvuORfqL1jEs6ol5lWMsfF7Out
- ZZ4Oo3VWUramWdzJfAWGfl988/O1hHTfTV2EIBfk47Qgve1Lm8vjrow1CBk0Y3B4hoMJP
-X-Received: by 2002:a17:90b:4d88:b0:38e:5dc:af03 with SMTP id
- 98e67ed59e1d1-38f994ae434mr149103a91.40.1785354142484; 
- Wed, 29 Jul 2026 12:42:22 -0700 (PDT)
-X-Received: by 2002:a17:90b:4d88:b0:38e:5dc:af03 with SMTP id
- 98e67ed59e1d1-38f994ae434mr149077a91.40.1785354142048; 
- Wed, 29 Jul 2026 12:42:22 -0700 (PDT)
-Received: from [192.168.1.170] (216-71-219-44.dyn.novuscom.net.
- [216.71.219.44]) by smtp.gmail.com with ESMTPSA id
- a92af1059eb24-13e72735084sm11904332c88.12.2026.07.29.12.42.21
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 29 Jul 2026 12:42:21 -0700 (PDT)
-Message-ID: <50616d09-9bac-4542-9b76-282538c381b1@oss.qualcomm.com>
-Date: Wed, 29 Jul 2026 12:42:20 -0700
+ d=1e100.net; s=20251104; t=1785364512; x=1785969312;
+ h=in-reply-to:content-disposition:content-type:mime-version
+ :references:message-id:subject:cc:to:from:date:x-gm-gg
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
+ :content-type;
+ bh=1DmobnpuqfOMUgi6Wi9zNfJkkb6Zpprc33nArsPitzk=;
+ b=RiRZjEb8F6kjRmGEk1cIjJx+wgEN2C+haEXqBIge/GUAVRWVP/ISfj2QOZxj70/5/1
+ /d+SnLXBwCu86vou1xxaChiK7spdyZvL3WAjzFDqboki7Z+xCPo6Jk6l+mwF7reoOMiX
+ U6UBsSi+yxmTNYwEL2H4LNouKX0i1c8RMxMrFpNGLV/btFC+0ECl0NOCqsMHsafclKPt
+ hm16y95iX0RC3mckQACDKDk17HsGIa5ZnCuyn74nycmo94XeNlxcs4kytWYf2YQhxEFv
+ S4vPwG0ptvZ8UYdZ6kPaRuQYBr2qVaOv9TGkBmZZcYb5b2TQX2LORUCqo3SmB8ASUDa1
+ wKYg==
+X-Gm-Message-State: AOJu0YxD05DkZ3pNFsJZMP4bpFSstPBtp9x6GtVUcGviKtnrSWmU3Qbj
+ aX2MiJYbNrvhMYUIXb40KRVdsV33pjgXL9wZ/1YdHADKeb2hogQ8vgDfWpV7TxS6c9nLSSlPSIt
+ WVtuHwNhwvmNbvotAE5B+pFA6lzeuoicfLcFaR6jNJQ3rxfHtSTaE2Q==
+X-Gm-Gg: AR+sD136nc+K+ms/J4D2NrUy90sidGX0AaApXqjefo+no+9XTrzeljGLABl3H7jhiRV
+ k7mXOJHq4MKKK/GmJzh+xni1VnuZQh5N1wqWZwU43ZOd4A+1ZoXyX96kRJmNngNUQ/5UHGw9zh1
+ 4eFf9zdEtCSA5JLS3z9S/s8/e4Oe4UicwfZAawGNEFQclLwlp/W7+3mOFjLY0pD9aFHxJhx87VS
+ P7fpZkTv5T9sgsKELArctBmWEjU2E6t47Tzz5J3uulXhq9TPDEGGNFTHux8PYVEUzWMOnq3bG2c
+ kJFELABEoOMn3OrulLSSdY2JCXTYCyQ5lKTnOfIcgtyRaCUYoYZ5DzfAWDGhMw+Esq3b322WeGm
+ 6KRNHMDZLtm25J6o2FTTgo7Q=
+X-Received: by 2002:a05:6000:178a:b0:47f:aebd:841d with SMTP id
+ ffacd0b85a97d-47fc81c6668mr227607f8f.15.1785364512508; 
+ Wed, 29 Jul 2026 15:35:12 -0700 (PDT)
+X-Received: by 2002:a05:6000:178a:b0:47f:aebd:841d with SMTP id
+ ffacd0b85a97d-47fc81c6668mr227571f8f.15.1785364511980; 
+ Wed, 29 Jul 2026 15:35:11 -0700 (PDT)
+Received: from redhat.com (ppp-94-66-118-61.home.otenet.gr. [94.66.118.61])
+ by smtp.gmail.com with ESMTPSA id
+ ffacd0b85a97d-47fc88e3c73sm17175f8f.10.2026.07.29.15.35.09
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Wed, 29 Jul 2026 15:35:11 -0700 (PDT)
+Date: Wed, 29 Jul 2026 18:35:07 -0400
+From: "Michael S. Tsirkin" <mst@redhat.com>
+To: Gavin Shan <gshan@redhat.com>
+Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, peterx@redhat.com,
+ philmd@oss.qualcomm.com, peter.maydell@linaro.org,
+ richard.henderson@linaro.org, alex@shazbot.org, berrange@redhat.com,
+ philmd@mailo.com, david@kernel.org, clg@redhat.com,
+ pbonzini@redhat.com, phrdina@redhat.com, jugraham@redhat.com,
+ liugang24219@sangfor.com.cn, dinghui@sangfor.com.cn, shan.gavin@gmail.com
+Subject: Re: [PATCH v5 2/3] system/memory: Use qemu_ram_move() for directly
+ accessible regions
+Message-ID: <20260729182316-mutt-send-email-mst@kernel.org>
+References: <20260728031731.286666-1-gshan@redhat.com>
+ <20260728031731.286666-3-gshan@redhat.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH for-11.1] linux-user/aarch64: Fix SHADOW_STACK_SET_TOKEN
-To: Richard Henderson <richard.henderson@linaro.org>, qemu-devel@nongnu.org
-Cc: qemu-arm@nongnu.org, deller@gmx.de, qemu-stable@nongnu.org
-References: <20260729191711.71217-1-richard.henderson@linaro.org>
-From: Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>
-Content-Language: en-US
-In-Reply-To: <20260729191711.71217-1-richard.henderson@linaro.org>
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
-X-Proofpoint-GUID: 1PZOO1ReCYMEjs1s-4YaFm6NaMvrLc9b
-X-Proofpoint-Spam-Info: AW1haW4tMjYwNzI5MDE1MSBTYWx0ZWRfX4fEgV7uYAK6x
- XrOOd9m+i+dK8NeomEN0P9t4Jn6At0f5y3/R1T13DoR2njVYOJ4ppukMCEwzYnzQfCxo5QgVpHJ
- GzbtdEx02BXxGfsJNCB8KWLN6zMDixM=
-X-Authority-Analysis: v=2.4 cv=CuyPtH4D c=1 sm=1 tr=0 ts=6a6a579f cx=c_pps
- a=0uOsjrqzRL749jD1oC5vDA==:117 a=iLqgmErQAxjCjdq5jj1Aqg==:17
- a=IkcTkHD0fZMA:10 a=RAioF0-LDSMA:10 a=s4-Qcg_JpJYA:10
- a=VkNPw1HP01LnGYTKEx00:22 a=u7WPNUs3qKkmUXheDGA7:22 a=ZpdpYltYx_vBUK5n70dp:22
- a=p0WdMEafAAAA:8 a=69wJf7TsAAAA:8 a=KKAkSRfTAAAA:8 a=EUspDBNiAAAA:8
- a=3BbPAglyjGhWIxXnjVwA:9 a=QEXdDO2ut3YA:10 a=mQ_c8vxmzFEMiUWkPHU9:22
- a=Fg1AiH1G6rFz08G2ETeA:22 a=cvBusfyB2V15izCimMoJ:22
-X-Proofpoint-ORIG-GUID: 1PZOO1ReCYMEjs1s-4YaFm6NaMvrLc9b
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwNzI5MDE1MSBTYWx0ZWRfX5JYH0JCeeA7E
- u7GDWKyM+CM5aQpPtuznaN0gjnjbfEKiHlFu1GThVQIMerQjSn0y79dxLZp2jLCWtYPvIdti3FG
- W5FXoaOV4xYoq/6g/DY1eA65xU/BQZPOZPncLG/SerUo82QnRrKfR8H8MuAvCqL5wYmyosQQWwM
- EYTTcHa91w08yv7HvjDmF1XLQx9msvxrTuVMRyqa7O86x6CjirrUW88JXIRHp/uBPmn2XX4PQLt
- Iu0/W7s8uBo57iATWHFE0aP3NhFCJwadJXnNHj0w65Y/KK1G/RZQL+IGNJ7QXpIh5HNWt3b10gm
- ABIEjUtCJh9glXnih8HB/64LWCkCHXou4LxPSMJYZtVusDhm32u8zGgpOAv302zVoHwRTUpla+j
- ulNigbA0PfOyG02sFo6frWKMeD9crsSzjgfhgWIeKCtceLTnzmXFVbFA+1NoMc70gciY1+v1rMb
- QRhiub8VqrEMRH4hp6A==
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.293,Aquarius:18.0.1143,Hydra:6.1.134,FMLib:17.12.100.49
- definitions=2026-07-29_07,2026-07-29_01,2025-10-01_01
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
- phishscore=0 bulkscore=0 adultscore=0 lowpriorityscore=0 clxscore=1015
- spamscore=0 suspectscore=0 priorityscore=1501 impostorscore=0 malwarescore=0
- classifier=typeunknown authscore=0 authtc= authcc= route=outbound adjust=0
- reason=mlx scancount=1 engine=8.22.0-2606150000 definitions=main-2607290151
-Received-SPF: pass client-ip=205.220.180.131;
- envelope-from=pierrick.bouvier@oss.qualcomm.com;
- helo=mx0b-0031df01.pphosted.com
-X-Spam_score_int: -27
-X-Spam_score: -2.8
-X-Spam_bar: --
-X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+In-Reply-To: <20260728031731.286666-3-gshan@redhat.com>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-MFC-PROC-ID: 6TAeItPLy0fKHScJDRtRGvctYPLmAP5MuGMURlNzy3I_1785364513
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=mst@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -36
+X-Spam_score: -3.7
+X-Spam_bar: ---
+X-Spam_report: (-3.7 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-1.58,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -153,17 +114,265 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On 7/29/2026 12:17 PM, Richard Henderson wrote:
-> The token is not computed via TARGET_PAGE_SIZE, but via a fixed 12-bit field.
+On Tue, Jul 28, 2026 at 01:17:30PM +1000, Gavin Shan wrote:
+> All ram device regions were turned to be indirectly accessible by commit
+> 4a2e242bbb ("memory: Don't use memcpy for ram_device regions"). This leads
+> to guest hang on attempt to build 'cuda-samples' as reported by Julia. The
+> guest is started by the following command lines, with GH100 GPU card passed
+> from the host.
 > 
-> Cc: qemu-stable@nongnu.org
-> Fixes: ad1afe433fa ("linux-user/aarch64: Implement map_shadow_stack syscall")
-> Resolves: https://gitlab.com/qemu-project/qemu/-/work_items/4106
-> Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
+>    host$ lspci | grep GH100
+>    0009:01:00.0 3D controller: NVIDIA Corporation GH100 [GH200 120GB / 480GB] (rev a1)
+>    host$ /home/sandbox/gavin/qemu.main/build/qemu-system-aarch64            \
+>          -machine virt,gic-version=host,ras=on,highmem-mmio-size=4T         \
+>          -accel kvm -cpu host -smp cpus=48 -m size=8G                       \
+>          -drive file=/home/gavin/sandbox/images/disk.qcow2,if=none,id=d0    \
+>          -device virtio-blk-pci,id=vb0,bus=pcie.0,drive=d0,num-queues=4     \
+>          -device vfio-pci-nohotplug,host=0009:01:00.0,bus=pcie.1.0
+>            :
+>    guest$ cd cuda-samples/build
+>    guest$ make -j 20 clean
+>    guest$ make -j 20
+>            :
+>    [ 54%] Linking CUDA executable graphMemoryNodes
+>    [ 54%] Built target graphMemoryNodes
+>    <no more output afterwards, guest becomes frozen here>
+> 
+>    guest$ qemu-system-aarch64: virtio: bogus descriptor or out of resources
+>    [  555.814025] virtio_blk virtio0: [vda] new size: 268435456 512-byte logical blocks (137 GB/128 GiB)
+> 
+> When the GPU's driver (NVidia open driver) is loaded on guest bootup,
+> the memory blocks residing in the PCI BAR#4 of the GH100 GPU card can
+> be presented to the guest through memory hot-add. The page cache can
+> then be allocated from the hot added memory blocks when cuda-samples
+> is being built. Afterwards, the page cache is sent to QEMU's virtio-blk
+> device as part of the DMA request, the bounce buffer has to be used to
+> accomodate the request as the corresponding memory region (MemoryRegion)
+> is an indirectly accessible ram device region in qemu. However, the max
+> bounce bufer size is only 4096 bytes by default and that is exhausted
+> quickly, leading to a reset on the virtio-blk device and frozen guest
+> eventually.
+> 
+>   QEMU
+>   ====
+>   virtio_blk_handle_output
+>     virtio_blk_handle_vq
+>       virtio_blk_get_request
+>         virtqueue_pop
+>           virtqueue_split_pop
+>             virtqueue_map_desc
+>               address_space_map
+>                 memory_access_is_direct         # Return false
+>                   memory_region_supports_direct_access
+> 
+>   (qemu) info mtree
+>   memory-region: pci_bridge_pci
+>     0000000000000000-ffffffffffffffff (prio 0, container): pci_bridge_pci
+>       0000042000000000-0000043fffffffff (prio 1, i/o): 0009:01:00.0 base BAR 4
+>         0000042000000000-0000043fffffffff (prio 0, i/o): 0009:01:00.0 BAR 4
+>           0000042000000000-000004379fffffff (prio 0, ramd): 0009:01:00.0 BAR 4 mmaps[0]
+> 
+> This adds qemu_ram_move() where the aligned and small-sized accesses are
+> handled by qatomics, and fall back to memmove() otherwise. The memove()
+> for the directly accessible regions is replaced by qemu_ram_move() so that
+> the issue covered by commit 4a2e242bbb (MMIO access instructions were
+> optimized to SSE instructions) is fixed. This makes 'ram_device_mem_ops'
+> redundant, paving the way to revert that commit to make the ram device
+> region directly accessible again in the next patch.
+> 
+> Besides, this also fixes the issue of the unexpected frozen reception on
+> e1000 NIC in the scenario of DPDK due to the wrong Rx queue full indication
+> caused by the following memcpy(), which is turned to 3 consective 'strb'
+> instructions to the same location by glibc-2.24+ for aarch64. With this
+> applied, the syntax of one-byte store is strictly ensured by a one-byte
+> qatomic set.
+> 
+>   QEMU
+>   ====
+>   e1000_receive_iov
+>     pci_dma_write
+>       pci_dma_rw
+>         dma_memory_rw
+>           dma_memory_rw_relaxed
+>             address_space_rw
+>               address_space_write
+>                 flatview_write
+>                   flatview_write_continue
+>                     flatview_write_continue_step
+>                       memcpy    # 3 consective 'strb' instructions
+> 
+> Reported-by: Julia Graham <jugraham@redhat.com>
+> Reported-by: Liu Gang <liugang24219@sangfor.com.cn>
+> Reported-by: Ding Hui <dinghui@sangfor.com.cn>
+> Suggested-by: Michael S. Tsirkin <mst@redhat.com>
+> Suggested-by: Peter Xu <peterx@redhat.com>
+> Suggested-by: Richard Henderson <richard.henderson@linaro.org>
+> Suggested-by: Peter Maydell <peter.maydell@linaro.org>
+> Signed-off-by: Gavin Shan <gshan@redhat.com>
 > ---
->  linux-user/syscall.c | 3 ++-
->  1 file changed, 2 insertions(+), 1 deletion(-)
+> v5: Improved commit log and comments to qemu_ram_move()
+> ---
+>  hw/remote/vfio-user-obj.c |  4 ++--
+>  include/system/memory.h   | 35 ++++++++++++++++++++++++++++++-
+>  system/physmem.c          | 43 +++++++++++++++++++++++++++++++++++++--
+>  3 files changed, 77 insertions(+), 5 deletions(-)
 > 
+> diff --git a/hw/remote/vfio-user-obj.c b/hw/remote/vfio-user-obj.c
+> index ea50270628..a0498d218f 100644
+> --- a/hw/remote/vfio-user-obj.c
+> +++ b/hw/remote/vfio-user-obj.c
+> @@ -375,9 +375,9 @@ static int vfu_object_mr_rw(MemoryRegion *mr, uint8_t *buf, hwaddr offset,
+>          ram_ptr = memory_region_get_ram_ptr(mr);
+>  
+>          if (is_write) {
+> -            memmove((ram_ptr + offset), buf, size);
+> +            qemu_ram_move((ram_ptr + offset), buf, size);
+>          } else {
+> -            memmove(buf, (ram_ptr + offset), size);
+> +            qemu_ram_move(buf, (ram_ptr + offset), size);
+>          }
+>  
+>          return 0;
+> diff --git a/include/system/memory.h b/include/system/memory.h
+> index 336d4e84a6..2965d922de 100644
+> --- a/include/system/memory.h
+> +++ b/include/system/memory.h
+> @@ -2668,6 +2668,39 @@ void address_space_register_map_client(AddressSpace *as, QEMUBH *bh);
+>  void address_space_unregister_map_client(AddressSpace *as, QEMUBH *bh);
+>  
+>  /* Internal functions, part of the implementation of address_space_read.  */
+> +
+> +/**
+> + * qemu_ram_move: move data from or to ramblock
+> + *
+> + * @dst: destination where the data is moved to
+> + * @src: source where the data is moved from
+> + * @n: length of data to be moved
+> + *
+> + * Move @n bytes from @src to @dst, the memory areas may overlap. This
+> + * provides the same semantics as memmove(), plus an additional stronger
+> + * guarantee: if @n is 1, 2 or 4 or 8 bytes, and @src and @dst are both
+> + * naturally aligned for that access size, and the memory areas do not
+> + * overlap, then both the load and the store will be done as a single
+> + * atomic access (with the semantics of qatomic_read() and qatomic_set()).
+> + *
+> + * This is the underlying function that we use to implement accesses by
+> + * a guest vCPU or a device DMA operation to a ram block. The atomic
+> + * guarantee is needed for two major cases: (A) When the ram block is
+> + * backed by a PCI BAR passed through from a host device (and so it might
+> + * be hardware registers that must be accessed exactly once at the right
+> + * width); (B) When an emulated device updates a data structure shared in
+> + * guest memory with guest software (e.g. a network device's set of tx and
+> + * rx descriptor blocks), if a write to memory is accidentally performed
+> + * multiple times then it can break the guest code when it busy polls the
+> + * guest memory.
+> + *
+> + * We don't attempt to perform the exact access when it would be unaligned
+> + * because this can't be done on all host architectures. Although this is
+> + * strictly speaking not doing what would happen on real hardware, we don't
+> + * think there are going to be situations where that matters in practice.
+> + */
+> +void qemu_ram_move(void *dst, const void *src, size_t n);
+> +
+>  MemTxResult address_space_read_full(const AddressSpace *as, hwaddr addr,
+>                                      MemTxAttrs attrs, void *buf, hwaddr len);
+>  MemTxResult flatview_read_continue(FlatView *fv, hwaddr addr,
+> @@ -2741,7 +2774,7 @@ MemTxResult address_space_read(const AddressSpace *as, hwaddr addr,
+>              mr = flatview_translate(fv, addr, &addr1, &l, false, attrs);
+>              if (len == l && memory_access_is_direct(mr, false, attrs)) {
+>                  ptr = qemu_map_ram_ptr(mr->ram_block, addr1);
+> -                memmove(buf, ptr, len);
+> +                qemu_ram_move(buf, ptr, len);
+>              } else {
+>                  result = flatview_read_continue(fv, addr, attrs, buf, len,
+>                                                  addr1, l, mr);
+> diff --git a/system/physmem.c b/system/physmem.c
+> index 2c42e365cb..fbe7df2391 100644
+> --- a/system/physmem.c
+> +++ b/system/physmem.c
+> @@ -3158,6 +3158,45 @@ void memory_region_flush_rom_device(MemoryRegion *mr, hwaddr addr, hwaddr size)
+>      invalidate_and_set_dirty(mr, addr, size);
+>  }
+>  
+> +void qemu_ram_move(void *dst, const void *src, size_t n)
+> +{
+> +    uintptr_t test, len;
+> +
+> +    if (src == dst || n == 0) {
+> +        return;
+> +    }
+> +
+> +    /*
+> +     * Maximal length of aligned access that are determined by @src,
+> +     * @dst and @n
+> +     */
+> +    test = (uintptr_t)src | (uintptr_t)dst | n;
+> +    len = test & -test;
+> +
+> +    /* Overlapping buffers, unaligned or oversized access */
+> +    if (n > 8 || len != n) {
+> +        memmove(dst, src, n);
+> +        return;
+> +    }
 
-Reviewed-by: Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>
+
+This part I don't get exactly. It's fine on most arches I think.
+x86, power...
+
+But here is aarch64 for example:
+https://codebrowser.dev/glibc/glibc/sysdeps/aarch64/memcpy.S.html
+
+it says 
+   It uses unaligned accesses and branchless sequences to keep the code small,
+   simple and improve performance.
+
+so if the point is to get rid of unaligned accesses to BARs, are you sure
+it achieves this?
+
+
+
+
+> +
+> +    switch (len) {
+> +    case 1:
+> +        qatomic_set((uint8_t *)dst, qatomic_read((uint8_t *)src));
+> +        break;
+> +    case 2:
+> +        qatomic_set((uint16_t *)dst, qatomic_read((uint16_t *)src));
+> +        break;
+> +    case 4:
+> +        qatomic_set((uint32_t *)dst, qatomic_read((uint32_t *)src));
+> +        break;
+> +    case 8:
+> +        qatomic_set((uint64_t *)dst, qatomic_read((uint64_t *)src));
+> +        break;
+> +    default:
+> +        g_assert_not_reached();
+> +    }
+> +}
+> +
+>  int memory_access_size(MemoryRegion *mr, unsigned l, hwaddr addr)
+>  {
+>      unsigned access_size_max = mr->ops->valid.max_access_size;
+> @@ -3270,7 +3309,7 @@ static MemTxResult flatview_write_continue_step(MemTxAttrs attrs,
+>          uint8_t *ram_ptr = qemu_ram_ptr_length(mr->ram_block, mr_addr, l,
+>                                                 false, true);
+>  
+> -        memmove(ram_ptr, buf, *l);
+> +        qemu_ram_move(ram_ptr, buf, *l);
+>          invalidate_and_set_dirty(mr, mr_addr, *l);
+>  
+>          return MEMTX_OK;
+> @@ -3363,7 +3402,7 @@ static MemTxResult flatview_read_continue_step(MemTxAttrs attrs, uint8_t *buf,
+>          uint8_t *ram_ptr = qemu_ram_ptr_length(mr->ram_block, mr_addr, l,
+>                                                 false, false);
+>  
+> -        memmove(buf, ram_ptr, *l);
+> +        qemu_ram_move(buf, ram_ptr, *l);
+>  
+>          return MEMTX_OK;
+>      }
+> -- 
+> 2.55.0
+
 

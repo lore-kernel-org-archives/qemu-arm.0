@@ -4,84 +4,81 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9327BC54FCD
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BCDD3C55162
 	for <qemu-arm@archiver.kernel.org>; Wed, 29 Jul 2026 23:15:22 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wpDSy-00079q-Qj; Wed, 29 Jul 2026 19:13:36 -0400
+	id 1wpDSy-00079d-Dq; Wed, 29 Jul 2026 19:13:36 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from
- <3G4lqagYKCDIhWhigfUccUZS.QcaeSai-OfabcbUbi.cfU@flex--titusr.bounces.google.com>)
- id 1wpDSx-00078d-OY
- for qemu-arm@nongnu.org; Wed, 29 Jul 2026 19:13:35 -0400
-Received: from mail-pl1-x648.google.com ([2607:f8b0:4864:20::648])
+ <3GolqagYKCDEgVghfeTbbTYR.PbZdRZh-NeZabaTah.beT@flex--titusr.bounces.google.com>)
+ id 1wpDSw-00077Y-Ip
+ for qemu-arm@nongnu.org; Wed, 29 Jul 2026 19:13:34 -0400
+Received: from mail-pg1-x546.google.com ([2607:f8b0:4864:20::546])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from
- <3G4lqagYKCDIhWhigfUccUZS.QcaeSai-OfabcbUbi.cfU@flex--titusr.bounces.google.com>)
- id 1wpDSw-0007HT-0G
- for qemu-arm@nongnu.org; Wed, 29 Jul 2026 19:13:35 -0400
-Received: by mail-pl1-x648.google.com with SMTP id
- d9443c01a7336-2ccb6823efcso13190925ad.0
- for <qemu-arm@nongnu.org>; Wed, 29 Jul 2026 16:13:33 -0700 (PDT)
+ <3GolqagYKCDEgVghfeTbbTYR.PbZdRZh-NeZabaTah.beT@flex--titusr.bounces.google.com>)
+ id 1wpDSu-0007HF-NJ
+ for qemu-arm@nongnu.org; Wed, 29 Jul 2026 19:13:34 -0400
+Received: by mail-pg1-x546.google.com with SMTP id
+ 41be03b00d2f7-c96b4f58ddcso1145584a12.3
+ for <qemu-arm@nongnu.org>; Wed, 29 Jul 2026 16:13:32 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=google.com; s=20251104; t=1785366812; x=1785971612; darn=nongnu.org;
- h=content-transfer-encoding:content-type:cc:to:from:subject
- :message-id:references:mime-version:in-reply-to:date:from:to:cc
- :subject:date:message-id:reply-to:content-type;
- bh=r0Q2A/3ze/zjMWoELy/FKDEtatpELgtMzBDktjSHJF0=;
- b=J9R9eU50LOEh1nCIodvpVfVnmX1DGixUxz4yA1thlPo9mj3N1Iz/rL8Z9AUXVRNLwd
- wSoC6RuiaZIXrB5WvzCZn0PMBtaJp4mkRTfgh4zbzZaYxmP6kK9OxipeLZlfXMAHMavA
- ncPuqr5TPI4yqXDKlE/kfWv+pU14LYYH0OjIpyh2A0IFfqB3Jpag50d7FUoJY1VpqEIM
- EgHkSefaF+xVA1zaqjUByzLKT/9rA6mVL35dqlHRSHwsGBRq2Z1PFmlgNMnfdEMqQ/mL
- 74214675IJ6FdR9rrafDBqS1X1JVMyLbpkCtdnVjloKha/10lKnDyMTzjGSoELvKxuUr
- SVXg==
+ d=google.com; s=20251104; t=1785366811; x=1785971611; darn=nongnu.org;
+ h=content-type:cc:to:from:subject:message-id:references:mime-version
+ :in-reply-to:date:from:to:cc:subject:date:message-id:reply-to
+ :content-type; bh=a7KMZQX7WKu7NK26d8sCHa90LZGnlaTr77TpG29ztMM=;
+ b=sUy9TdguDW9WEqVCs4j5w9qWE7HF5eE0sDa/a19w+5xEFNoSum6asmc0xa4eLLE0mW
+ mG0poJUqJ+Yh5zhG8wD1qXf6rjk6LwGYKibOTK6RbyTJ8uCasg35PNXyX4SCOTjFoipD
+ usx/0ov9D/4QMtf+hSzXJFW9NnAZ6KQv+LuKmj/Yd0I8mAKbPP5k7BQ2pZB+gHzie6CH
+ tSdhMzQFS2pmVjHz8my4vW/xBtWShhpCyZjYxVtwEc5vyLTyd4vtfiGlMfPMHvDAdB3W
+ AwdrianZh6GCgnC2qH+q4ail25HcQ59qpRj79/cNwM1fC6Xc8G+x7mjpi68wAITLdtTI
+ 6FUw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1785366812; x=1785971612;
- h=content-transfer-encoding:content-type:cc:to:from:subject
- :message-id:references:mime-version:in-reply-to:date
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
- :content-type;
- bh=r0Q2A/3ze/zjMWoELy/FKDEtatpELgtMzBDktjSHJF0=;
- b=D8WwRm75csPJNX1WrooYXQRhTlV+yTtmDdtTz8RoILFZXfsSMUW7lfvBUMGHjouN6R
- iopvG7unuQw+SrIhQPcbO3pQyn7Sft5lP6AqBEjoec226QmKyHNilnY/MrF6Co69MyLA
- F4ofXeac4mToZKhlVs0qbvWKz4GdG71W3BMyGul1OKjWO4SiBtdC6rx4+e8/L1djU3/H
- rPOm06QHo/lsyjHN/eZ4S+1WMNV1V75R+7gzYHbrUSt6yEFMOp2K+o9yBYPByD7CWivB
- cNQUiWDyvUYD81oiIFjVIsgfc4toKoflqSIbzy+3PPOU1KIRwy+1MPVDgrLCYfLaimMz
- 9vLw==
-X-Gm-Message-State: AOJu0YwOmp8mEY1x0l+j2ktCp9xRUSz/9MUPxzUjn6VHhQTbdnTLBWlC
- fI2Nt/rPPcvRRUyyS6fYTjlP49WLtyXnZn134jz0dyYyR0UwjwBS8On22TlaR51wlEq9Gyvf/Y9
- QMtt0Dg==
-X-Received: from dylq8.prod.google.com ([2002:a05:7300:5988:b0:313:fb09:e2c0])
+ d=1e100.net; s=20251104; t=1785366811; x=1785971611;
+ h=content-type:cc:to:from:subject:message-id:references:mime-version
+ :in-reply-to:date:x-gm-message-state:from:to:cc:subject:date
+ :message-id:reply-to:content-type;
+ bh=a7KMZQX7WKu7NK26d8sCHa90LZGnlaTr77TpG29ztMM=;
+ b=EnLHsjcEw+xz5dK5aWrNmVP5+PBa1HKldQ/jURtRyagE5W+quL+nHNnDfZ64k9E9t5
+ VwiZtLMK14ekeujSkpS9OYUIOE8MSufrYQOZJruZWra/62mcVheYzRsLrhEq/LWc2NpX
+ EAYgognB5xf/gg0U5yWU9loc5F2++Bwk2dAcRj48RqZa87dvbl85P/9iKfpWm9OKRTmW
+ P3NGUL6giuhOWTrecIMxV2FbKRr/PLubuD0GcE1PbQrhPphAi8lYugZsZoQlYyjqT3Po
+ d5oEfPtu3/cVA8bwL+fNUJkVZuQHe7azuj6gg3fT0MGnQ2zsEoTHDyROIHMR8oib/qTw
+ PFcQ==
+X-Gm-Message-State: AOJu0YxZdlfKCPUpGYnaJZGaEFv5TWS/W+cdIPwQpxxLzVpB2LEcJPQg
+ AaN1Q2hUEr56WCq+MKXxwKD2AmwJgDBjSQ5lQ+uAyGM5idwdehXtom5OkuKOJla8uU4O//9WMM7
+ jZQeMfQ==
+X-Received: from dlbuu4.prod.google.com ([2002:a05:7022:7e84:b0:13d:6291:7191])
  (user=titusr job=prod-delivery.src-stubby-dispatcher) by
- 2002:a17:903:1aae:b0:2cc:9763:e607
- with SMTP id d9443c01a7336-2d035d1a647mr2989835ad.27.1785366811882; Wed, 29
- Jul 2026 16:13:31 -0700 (PDT)
-Date: Wed, 29 Jul 2026 23:13:18 +0000
+ 2002:a05:6a20:a109:b0:3c3:b656:4f5b
+ with SMTP id adf61e73a8af0-3c9008e68ddmr53041637.56.1785366810640; Wed, 29
+ Jul 2026 16:13:30 -0700 (PDT)
+Date: Wed, 29 Jul 2026 23:13:17 +0000
 In-Reply-To: <20260729231325.3808993-1-titusr@google.com>
 Mime-Version: 1.0
 References: <20260729231325.3808993-1-titusr@google.com>
 X-Mailer: git-send-email 2.55.0.508.g3f0d502094-goog
-Message-ID: <20260729231325.3808993-4-titusr@google.com>
-Subject: [PATCH 3/8] hw/i2c: smbus: increase MAX_DATA_LEN
+Message-ID: <20260729231325.3808993-3-titusr@google.com>
+Subject: [PATCH 2/8] hw/i2c: pmbus: add milliunits linear mode functions
 From: Titus Rwantare <titusr@google.com>
 To: peter.maydell@linaro.org
 Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, kfting@nuvoton.com, 
  imaginos32@gmail.com, wuhaotsh@google.com, philmd@mailo.com, 
  fanjason@google.com, Titus Rwantare <titusr@google.com>
 Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2607:f8b0:4864:20::648;
- envelope-from=3G4lqagYKCDIhWhigfUccUZS.QcaeSai-OfabcbUbi.cfU@flex--titusr.bounces.google.com;
- helo=mail-pl1-x648.google.com
-X-Spam_score_int: -95
-X-Spam_score: -9.6
+Received-SPF: pass client-ip=2607:f8b0:4864:20::546;
+ envelope-from=3GolqagYKCDEgVghfeTbbTYR.PbZdRZh-NeZabaTah.beT@flex--titusr.bounces.google.com;
+ helo=mail-pg1-x546.google.com
+X-Spam_score_int: -94
+X-Spam_score: -9.5
 X-Spam_bar: ---------
-X-Spam_report: (-9.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_MED=-0.001,
+X-Spam_report: (-9.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_MED=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- USER_IN_DEF_DKIM_WL=-7.5 autolearn=ham autolearn_force=no
+ FUZZY_MILLION=0.1, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001, USER_IN_DEF_DKIM_WL=-7.5 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -97,91 +94,113 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-The 32 byte payload was raised to 255 for block reads in the SMBus 3.0
-specification. SMBus does not provide a way for devices to declare which
-version of the spec they are designed to so we must allow newer devices
-to return as much data as they allow.
+Because we are limited by unsigned ints, we need to be able to provide
+inputs in milliunits which can get scaled up to fit in the linear mode
+registers.
 
-vsmstate_smbus_extended_data is added to avoid breaking migration.
-
-Specification: https://smbus.org/specs/SMBus_3_3_20240512.pdf
-
-> 6.5.7 Block Write/Read
-The Block Write begins with a slave address and a write condition. After th=
-e command code the host issues a byte count which describes how many more b=
-ytes will follow in the message. If a slave has 20 bytes to send, the byte =
-count field will have the value 20 (14h), followed by the 20 bytes of data.=
- The byte count does not include the PEC byte. The byte count may be 0. A B=
-lock Read or Block Write is allowed to transfer a maximum of 255 data bytes=
-.
+For example: 3.4 is a valid input, and now we can provide 3400 and scale
+it into the register without losing the 0.4
 
 Signed-off-by: Titus Rwantare <titusr@google.com>
 ---
- hw/i2c/smbus_slave.c         | 27 ++++++++++++++++++++++++++-
- include/hw/i2c/smbus_slave.h |  2 +-
- 2 files changed, 27 insertions(+), 2 deletions(-)
+ hw/i2c/pmbus_device.c         | 39 +++++++++++++++++++++++++++++++++++
+ include/hw/i2c/pmbus_device.h | 18 ++++++++++++++++
+ 2 files changed, 57 insertions(+)
 
-diff --git a/hw/i2c/smbus_slave.c b/hw/i2c/smbus_slave.c
-index cfb61c879e..5dd2c38af7 100644
---- a/hw/i2c/smbus_slave.c
-+++ b/hw/i2c/smbus_slave.c
-@@ -215,6 +215,26 @@ bool smbus_vmstate_needed(SMBusDevice *dev)
-     return dev->mode !=3D SMBUS_IDLE;
+diff --git a/hw/i2c/pmbus_device.c b/hw/i2c/pmbus_device.c
+index 1ca117bd3c..6e477fd6cf 100644
+--- a/hw/i2c/pmbus_device.c
++++ b/hw/i2c/pmbus_device.c
+@@ -38,6 +38,26 @@ uint16_t pmbus_data2linear_mode(uint16_t value, int exp)
+     return value >> exp;
  }
-=20
-+#define SMBUS_DATA_MAX_LEN_OLD    34
-+static bool smbus_extended_needed(void *opaque)
+ 
++uint16_t pmbus_milliunits2linear_mode(uint32_t value, int exp)
 +{
-+    SMBusDevice *dev =3D opaque;
-+    return dev->data_len > SMBUS_DATA_MAX_LEN_OLD;
++    uint64_t ret;
++    uint64_t val = value;
++
++    /* L = D * 2^(-e) */
++    if (exp < 0) {
++        ret = DIV_ROUND_CLOSEST((val << (-exp)), 1000);
++    } else {
++        ret = DIV_ROUND_CLOSEST((val >> exp), 1000);
++    }
++
++    /* clamp value to maximum if it exceeds representable value*/
++    if (ret > UINT16_MAX) {
++        return UINT16_MAX;
++    }
++
++    return (uint16_t)ret;
 +}
 +
-+static const VMStateDescription vmstate_smbus_extended_data =3D {
-+    .name =3D TYPE_SMBUS_DEVICE"/extended",
-+    .version_id =3D 1,
-+    .minimum_version_id =3D 1,
-+    .needed =3D smbus_extended_needed,
-+    .fields =3D (const VMStateField[]) {
-+        /* separately save [34..257) */
-+        VMSTATE_UINT8_SUB_ARRAY(data_buf, SMBusDevice, SMBUS_DATA_MAX_LEN_=
-OLD,
-+            SMBUS_DATA_MAX_LEN - SMBUS_DATA_MAX_LEN_OLD),
-+        VMSTATE_END_OF_LIST()
-+    }
-+};
+ uint16_t pmbus_linear_mode2data(uint16_t value, int exp)
+ {
+     /* D = L * 2^e */
+@@ -47,6 +67,25 @@ uint16_t pmbus_linear_mode2data(uint16_t value, int exp)
+     return value << exp;
+ }
+ 
++uint32_t pmbus_linear_mode2milliunits(uint16_t value, int exp)
++{
++    /* D = L * 2^e */
++    uint64_t val = value;
++    uint64_t ret;
 +
- const VMStateDescription vmstate_smbus_device =3D {
-     .name =3D TYPE_SMBUS_DEVICE,
-     .version_id =3D 1,
-@@ -223,8 +243,13 @@ const VMStateDescription vmstate_smbus_device =3D {
-         VMSTATE_I2C_SLAVE(i2c, SMBusDevice),
-         VMSTATE_INT32(mode, SMBusDevice),
-         VMSTATE_INT32(data_len, SMBusDevice),
--        VMSTATE_UINT8_ARRAY(data_buf, SMBusDevice, SMBUS_DATA_MAX_LEN),
-+        VMSTATE_UINT8_SUB_ARRAY(data_buf, SMBusDevice, 0,
-+            SMBUS_DATA_MAX_LEN_OLD),
-         VMSTATE_END_OF_LIST()
-+    },
-+    .subsections =3D (const VMStateDescription * const[]) {
-+        &vmstate_smbus_extended_data,
-+        NULL
-     }
- };
-=20
-diff --git a/include/hw/i2c/smbus_slave.h b/include/hw/i2c/smbus_slave.h
-index 86bfe0a79e..59522ff1b1 100644
---- a/include/hw/i2c/smbus_slave.h
-+++ b/include/hw/i2c/smbus_slave.h
-@@ -64,7 +64,7 @@ struct SMBusDeviceClass {
-     uint8_t (*receive_byte)(SMBusDevice *dev);
- };
-=20
--#define SMBUS_DATA_MAX_LEN 34  /* command + len + 32 bytes of data.  */
-+#define SMBUS_DATA_MAX_LEN 257  /* command + len + 255 bytes of data.  */
-=20
- struct SMBusDevice {
-     /* The SMBus protocol is implemented on top of I2C.  */
---=20
++    if (exp < 0) {
++        ret = DIV_ROUND_CLOSEST((val * 1000), 1ULL << (-exp));
++    } else {
++        ret = (val << exp) * 1000;
++    }
++
++    if (ret > UINT32_MAX) {
++        return UINT32_MAX;
++    }
++
++    return (uint32_t)ret;
++}
++
+ void pmbus_send(PMBusDevice *pmdev, const uint8_t *data, uint16_t len)
+ {
+     if (pmdev->out_buf_len + len > SMBUS_DATA_MAX_LEN) {
+diff --git a/include/hw/i2c/pmbus_device.h b/include/hw/i2c/pmbus_device.h
+index f195c11384..9f3569e997 100644
+--- a/include/hw/i2c/pmbus_device.h
++++ b/include/hw/i2c/pmbus_device.h
+@@ -481,6 +481,15 @@ uint32_t pmbus_direct_mode2data(PMBusCoefficients c, uint16_t value);
+  */
+ uint16_t pmbus_data2linear_mode(uint16_t value, int exp);
+ 
++/**
++ * Convert milliunit sensor value to linear mode format
++ *
++ * L = D * 2^(-e)
++ *
++ * @return uint16
++ */
++uint16_t pmbus_milliunits2linear_mode(uint32_t value, int exp);
++
+ /**
+  * Convert linear mode formatted data into sensor reading
+  *
+@@ -490,6 +499,15 @@ uint16_t pmbus_data2linear_mode(uint16_t value, int exp);
+  */
+ uint16_t pmbus_linear_mode2data(uint16_t value, int exp);
+ 
++/**
++ * Convert linear mode formatted data into sensor reading in milliunits
++ *
++ * D = L * 2^e
++ *
++ * @return uint32 value in milliunits
++ */
++uint32_t pmbus_linear_mode2milliunits(uint16_t value, int exp);
++
+ /**
+  * @brief Send a block of data over PMBus
+  * Assumes that the bytes in the block are already ordered correctly,
+-- 
 2.55.0.508.g3f0d502094-goog
 
 

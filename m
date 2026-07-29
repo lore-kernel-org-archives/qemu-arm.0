@@ -4,65 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 00B6DC53200
-	for <qemu-arm@archiver.kernel.org>; Wed, 29 Jul 2026 15:43:36 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5DFBEC53200
+	for <qemu-arm@archiver.kernel.org>; Wed, 29 Jul 2026 15:46:21 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wp6RH-0007QN-V5; Wed, 29 Jul 2026 11:43:23 -0400
+	id 1wp6U2-0000kL-BB; Wed, 29 Jul 2026 11:46:14 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <eblot.ml@gmail.com>)
- id 1wp6RG-0007Q0-2f
- for qemu-arm@nongnu.org; Wed, 29 Jul 2026 11:43:22 -0400
-Received: from mail-wm1-f41.google.com ([209.85.128.41])
+ id 1wp6Ti-0000fH-Ua
+ for qemu-arm@nongnu.org; Wed, 29 Jul 2026 11:45:55 -0400
+Received: from mail-wr1-f51.google.com ([209.85.221.51])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <eblot.ml@gmail.com>)
- id 1wp6RD-0002PC-1m
- for qemu-arm@nongnu.org; Wed, 29 Jul 2026 11:43:21 -0400
-Received: by mail-wm1-f41.google.com with SMTP id
- 5b1f17b1804b1-4921eed3fa2so7648185e9.0
- for <qemu-arm@nongnu.org>; Wed, 29 Jul 2026 08:43:18 -0700 (PDT)
+ id 1wp6Tf-0003C0-L3
+ for qemu-arm@nongnu.org; Wed, 29 Jul 2026 11:45:53 -0400
+Received: by mail-wr1-f51.google.com with SMTP id
+ ffacd0b85a97d-4728c12ba97so766616f8f.0
+ for <qemu-arm@nongnu.org>; Wed, 29 Jul 2026 08:45:51 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1785339797; x=1785944597;
+ d=1e100.net; s=20251104; t=1785339950; x=1785944750;
  h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
  :content-type:mime-version:subject:date:from:x-gm-gg
  :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
  :content-type;
- bh=F4nZHdINTnucSq7Z8OlpkEOEdhRIl21v1VFou+xFxuI=;
- b=Hxo0AP5nBPktUGykHkFv98szQYUfkSwzGfKTepfJmTU+M1IJhJiZ0JOfUhqsNMjWqi
- RRJgrLWlIPclfFOnnTGfKkWG/h4dO3qJCHnNUgvnqfRviUFq+d0waUKqeiiETRPOBJ0F
- wP19AdNLgBL/nft4FlsCX5BwrCUudx1Ip7m1CqU/ZKj+WQkj2hKXYVduU08Ac+vgEOo3
- idCfCCHKZXDEnUI6wA2hSGYsBN7Z3gXICbOjKdNOXymbnjgnTVgpTi9urtdibkbTYLjM
- YMsdCdxKIAo1NiygIAovCb6r2/Hqoi31wK6wtQtqJ8jiJwSTznH6AAPwQNH1/j/HjK0s
- A2xA==
+ bh=OAjwt6a8vdNB+oG797ToKY41wPbzvFgL3YkCXxogL1g=;
+ b=Yz1YgB2ZZ3LlsWUsS4djhwcxi1fZNHjXsrO2On+SHz75HdEK7JDWGz+tCqT/8kO9sP
+ GbAJdj9O910Ugqndl8QwZ2/om0gZ3ooNY1HFcgrtZZp7hJ5ZFoXNn8SxCSIVkRUzdar2
+ 8+5Aw6gJTiZfo1HH4ATocPR1CiLAglY3SvuIyG+FoTlieFQZAvX7O29vpCUqOyHJ5Ksn
+ ESRZ6/hIR2o5Mr2kxDXW3mRdTZiGBcOdhrFrcJ/ikPMXXA9LywPg5/Q0e/eoXRe477MF
+ 979sYhKj39ZS0iO+V3SULyY9ofLy6QY5EUUozf+h4tL4lM9xhm705tAAmeF9ZvWnfUkG
+ D38g==
 X-Forwarded-Encrypted: i=1;
- AHgh+RpGcbqnq9iogOrh8RNLVzZCHlut9EjX7YsiGU8zWwZ+whS/t5+J0MqoaeHRDiwXYVqAvj4DnFKTpQ==@nongnu.org
-X-Gm-Message-State: AOJu0YwnA+Hq/vp3mFgpAJ4/wBYgjlg1BI6s6QvkeCcAAL0nDPLaySIY
- EV/f8oqTEohh5BACAUADcjgJKIL6ebup6WBNKbO0Xt66rtZ+iWOnursN
-X-Gm-Gg: AR+sD111yu6HiBLv/JqAkIhi60JydV+a+VOVrUOEu4jYWYfWyjj6auP/wwot8U6gDBM
- CAZGMiwN4x+1sswfJr6JFxt1ek4fOh7cuuGIIIIUL5jCVUPDkhOq2ecz3+9GL2gOFykcPpjolht
- dav51Z8ixcjsLyYQ8NZeMYzuodZriwisMT5mLGUd3ZD7Y4D3suieCkgslQvQP0fzNA4mOQRs+tX
- b+NIG9Y0/vOyTy59Kg4vdf3f944LK07FmK1PfnSdjp1O17suhx1S3yeb5Y3wtdMqFa3SC0rUt+c
- b1DTMBfz2lGK4E9aOx2PpxwBZ1JrcQUhkg3g5EjIDk2qE1sqYHxotPZeO/5abIsM8TezTFyEBwu
- eNiDiJfVWUf/2UX6TzhhL+qEkEuQQYKF9s5/ne7tyZi8yiNPSsIgFbgXeoBN+lmtj8MpgsYfWea
- ITHNrKOv4X3h99UifiM/t7J2aKwYZJLnDm5QCAknocoGXFpFBbUI7fMrlMUSbsyB+wekioB2uMf
- Tp4++gXZDT8sXi9FedK2HPzy98i2jQEI3w9w14f4bHNmmc=
-X-Received: by 2002:a05:600c:3144:b0:495:6a50:3fb8 with SMTP id
- 5b1f17b1804b1-496c642d855mr73577715e9.1.1785339797269; 
- Wed, 29 Jul 2026 08:43:17 -0700 (PDT)
+ AHgh+RrGk66zrKarPO7whGxub7Ca49HuwDr4efF58K3QCMD8CTK4ZmBD2q1BHm3eY2SPV34Whgaf56s3rQ==@nongnu.org
+X-Gm-Message-State: AOJu0YzTB0+esl2wGz1OSXc9Ljhw3R8isZDF61AmiRaxHazDtOeR4gxR
+ H7Fn+2ot8Aco8Q3n2CuPShYdUrdH71fyqMtnyY5VW7YFJUt9aSiN5PHU
+X-Gm-Gg: AR+sD11lZrq5Kp7Nsxp5VuvhemILN5jir6YiNufelWaW5yfDZLq3wpAzqlOR22kz3bO
+ 6TBI4hq8JK0wN/fGB37mD1nQpGKsVB5srS6qUi5suxcvXjWJpgFhS7U+zpxeJuMw6pDbHZmTf39
+ ATqS08eNHjaze9LflO3U4X3Ao/MbUTaU5ozFspWAiu8YrMU3IGd+BsBWfyr95jlkYOr3GNHvQiK
+ jABUI2ZnnPvmdw4ocn16wU+YtC+Lo/anakEh5xaxppJsD2g8ZLJDFRrWIPMEEZafrBdVkr7r9cx
+ LAjLuNK0YIF4pPZa8qSeP2c18bM3xZ4XSCJLb7ecGn7+49yIJ3MKkocQ9CKhscIIx1duOMVLRkp
+ ue/1Qk3qRzE9BGZP9Drgz6hPQG5hlTe2Pvyu+jbT8MN8TpxEZ8G2kKi0PYOTExj3O5alRJguJhQ
+ KrJPUsS/UMSUAdAEtKs8YZuMpi6mIA00a4UWDla0Q/8Pjg7DReXLPU5jUiNNoFQLkwjP9qEI7ul
+ z0qY5EDA1CjPxtA2o8qnMHPLzWFtBrCcKMy
+X-Received: by 2002:a05:6000:430c:b0:47f:9201:6409 with SMTP id
+ ffacd0b85a97d-47fb1f17008mr8304563f8f.40.1785339949822; 
+ Wed, 29 Jul 2026 08:45:49 -0700 (PDT)
 Received: from localhost (89-93-216-19.hfc.dyn.abo.bbox.fr. [89.93.216.19])
  by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-4976bd6e179sm72738865e9.9.2026.07.29.08.43.16
+ ffacd0b85a97d-47fb6aa392asm8506629f8f.5.2026.07.29.08.45.49
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 29 Jul 2026 08:43:16 -0700 (PDT)
-Date: Wed, 29 Jul 2026 17:12:54 +0200
-Subject: [PATCH 18/25] tests/functional: add a pure-Python device-locator
- resolver
+ Wed, 29 Jul 2026 08:45:49 -0700 (PDT)
+Date: Wed, 29 Jul 2026 17:12:55 +0200
+Subject: [PATCH 19/25] tests/functional: add a device-locator self-check
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20260729-sanmiguel-bmc-locator-v1-18-c8f9a8d101f6@free.fr>
+Message-Id: <20260729-sanmiguel-bmc-locator-v1-19-c8f9a8d101f6@free.fr>
 References: <20260729-sanmiguel-bmc-locator-v1-0-c8f9a8d101f6@free.fr>
 In-Reply-To: <20260729-sanmiguel-bmc-locator-v1-0-c8f9a8d101f6@free.fr>
 To: qemu-devel@nongnu.org
@@ -78,15 +77,15 @@ Cc: =?utf-8?q?Philippe_Mathieu-Daud=C3=A9?= <philmd@mailo.com>,
  =?utf-8?q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>, 
  Emmanuel Blot <eblot@meta.com>, Emmanuel Blot <emmanuel.blot@free.fr>
 X-Mailer: b4 0.15.2
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1785337965; l=25422;
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1785337965; l=6533;
  i=emmanuel.blot@free.fr; s=20260602; h=from:subject:message-id;
- bh=7fD1yFWWWP8lDPwkjc60ENxjrgiLOYsAzw1MFakslyM=;
- b=q5unU7AAbpz66K2eRgianaM1zbWMPQwBsy4NI6bWcaS8oSvVn06Kmar5ITnm7QErfhGd/pW8U
- S79SONxm+w2CPSYl1RoHT2uX9l0Rc0B6teY9JpLc2j+ix/5NzKt2+Vz
+ bh=jqZZfMhZoTV1zdg+ZdDlImYNATVoR6jePLxXWf0xlWU=;
+ b=HYfooY7CInYj++mKmoH/0/6rc3MAbtUIUtmjuPYaLYJLZERco/dEhFEX22LL8T3UzJlOtyq9J
+ fdzxwclRiVUB5VMaeyUIn3Ef5dfsTLakVvyH6k8ld4VjqANIZjiSEU3
 X-Developer-Key: i=emmanuel.blot@free.fr; a=ed25519;
  pk=0qFrZ21FAAN8OfVsSoVcCFTk/NMYOWzxJz4paSAVm0g=
-Received-SPF: pass client-ip=209.85.128.41; envelope-from=eblot.ml@gmail.com;
- helo=mail-wm1-f41.google.com
+Received-SPF: pass client-ip=209.85.221.51; envelope-from=eblot.ml@gmail.com;
+ helo=mail-wr1-f51.google.com
 X-Spam_score_int: -15
 X-Spam_score: -1.6
 X-Spam_bar: -
@@ -112,612 +111,153 @@ From:  Emmanuel Blot via <qemu-arm@nongnu.org>
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Add DeviceLocator, a helper that addresses a device by its position on
-the bus -- bus, address, type or index -- rather than by a QOM path. A
-QOM path locates a device under the object that owns it, by enumeration
-order, and so says nothing about where the device actually sits in the
-bus topology. From a QOM anchor DeviceLocator instead walks the bus and
-device hierarchy, alternating bus and device hops, to reach the target.
+Launch the SanMiguel BMC paused (-S) and resolve its I2C temperature
+sensors and SPI flashes by position over QMP, exercising the
+DeviceLocator grammar: controller/bus hops, the
+address/type/on-bus-index selectors, the leaf type assertion and the
+ambiguous/unknown/out-of-range error paths.
 
-It relies only on standard QOM queries over QMP, needing no custom
-commands or changes to QEMU.
-
-QEMU still supports Python 3.9, but 3.9 reached end of life on
-2025-10-31. This new, optional helper therefore adopts the clearer
-type-hint syntax introduced in Python 3.10 (such as "X | Y" unions)
-rather than the more verbose 3.9 equivalents. Its import is guarded so
-the module still loads on 3.9; tests that use the resolver are skipped
-there.
+The test needs no disk image and completes in about a second, so it
+joins the quick arm test set.
 
 Signed-off-by: Emmanuel Blot <emmanuel.blot@free.fr>
 ---
- tests/functional/qemu_test/locator.py | 578 ++++++++++++++++++++++++++++++++++
- 1 file changed, 578 insertions(+)
+ tests/functional/arm/meson.build            |   1 +
+ tests/functional/arm/test_device_locator.py | 114 ++++++++++++++++++++++++++++
+ 2 files changed, 115 insertions(+)
 
-diff --git a/tests/functional/qemu_test/locator.py b/tests/functional/qemu_test/locator.py
+diff --git a/tests/functional/arm/meson.build b/tests/functional/arm/meson.build
+index 61b00932db..bb78dcf3e4 100644
+--- a/tests/functional/arm/meson.build
++++ b/tests/functional/arm/meson.build
+@@ -29,6 +29,7 @@ test_arm_timeouts = {
+ }
+ 
+ tests_arm_system_quick = [
++  'device_locator',
+   'migration',
+ ]
+ 
+diff --git a/tests/functional/arm/test_device_locator.py b/tests/functional/arm/test_device_locator.py
 new file mode 100644
-index 0000000000..a735c0710d
+index 0000000000..eea88f4fb0
 --- /dev/null
-+++ b/tests/functional/qemu_test/locator.py
-@@ -0,0 +1,578 @@
-+# Device locator: resolve a device from a QOM anchor plus a typed
-+# bus/device traversal, entirely over QMP.
++++ b/tests/functional/arm/test_device_locator.py
+@@ -0,0 +1,114 @@
++#!/usr/bin/env python3
 +#
-+# Copyright (c) Meta Platforms, Inc. and affiliates.
++# Functional self-check for the pure-Python DeviceLocator helper.
++#
++# It launches the SanMiguel BMC paused (-S) and resolves its I2C sensors and
++# SPI flashes by position over QMP, so it needs no disk image and runs in
++# about a second.
 +#
 +# SPDX-License-Identifier: GPL-2.0-or-later
 +
-+import re
 +import sys
-+from collections.abc import Callable, Iterable
-+from typing import Any, NamedTuple
 +
-+from qemu.qmp import ExecuteError
-+
-+
-+# The type hints below use PEP 604 unions ("X | None") and PEP 585 built-in
-+# generics ("list[...]"), which require Python 3.10+.
-+# Fail with a clear message rather than a cryptic TypeError from the
-+# annotations when run on an older interpreter.
-+if sys.version_info < (3, 10):
-+    version = ".".join(map(str, sys.version_info[:3]))
-+    raise RuntimeError(
-+        f"qemu_test.locator requires Python 3.10+; "
-+        f"interpreter is Python {version}")
-+
-+
-+BusDomain = tuple[str, str | None]
-+"""A bus domain: ``(bus_typename, address_property_or_None)``."""
-+
-+
-+class LocatorError(Exception):
-+    """Raised when a locator cannot be resolved."""
-+
-+
-+class DeviceSelectors(NamedTuple):
-+    """Parsed selectors of a single device hop ("type@addr#index=id")."""
-+    typename: str | None = None
-+    """QOM type name."""
-+    addr: int | None = None
-+    """Bus address."""
-+    on_bus_index: int | None = None
-+    """On-bus (BusChild) index."""
-+    ident: str | None = None
-+    """Device id."""
-+
-+
-+class DeviceLocator:
-+    """
-+    Find a device by traversing the bus and device hierarchy, addressing
-+    it by position -- bus, address, type or index -- rather than by a
-+    fragile canonical QOM path.
-+
-+    A locator string is a QOM anchor followed by a typed traversal that
-+    alternates bus and device hops. Resolution runs against a live guest
-+    over QMP, using only qom-list / qom-get / qom-list-types, so it works
-+    against any QMP-capable QEMU without extra commands.
-+
-+    Grammar::
-+
-+        <anchor> [ '::' <hop> ( '~' <hop> )* ]
-+
-+    '::' leaves the QOM anchor and enters typed traversal; '~' crosses
-+    the device<->bus boundary (either direction). Because bus<->bus is
-+    impossible and the only object->object hop is the leading controller
-+    (which follows '::' directly, never '~'), every '~' marks a
-+    device<->bus crossing.
-+
-+    <anchor> is a QOM path: absolute ("/machine/soc"), partial ("soc",
-+    matched as a component suffix), or empty for /machine.
-+
-+    Hops alternate between object context and bus context. Starting from the
-+    anchor a hop is one of:
-+
-+    object hop      <qom-type> [ '[' index ']' ]
-+        Descend to a direct (child<>) child whose concrete QOM type is-a
-+        <qom-type> (e.g. "aspeed.i2c-ast2600"), picked by [index] when
-+        several match. This names a controller by its real QOM type, with
-+        no keyword table involved.
-+
-+    bus hop         <bus> [ '[' channel ']' ]
-+        Select a bus owned by the current object. <bus> is a domain keyword
-+        ("i2c", "spi") or a bus QOM type ("i2c-bus", "SSI"); [channel] picks
-+        among the buses of that type, ordered by their trailing number. Only
-+        bus domains are tabulated, and solely to map a keyword to its bus
-+        type and to the device address property used by '@' below.
-+
-+    device hop      [type] [ '@' addr ] [ '#' index ] [ '=' id ]
-+        Match a device on the current bus by QOM type, bus address (the I2C
-+        address or SPI chip-select), on-bus (BusChild) index and/or id.
-+
-+    Example: "/machine/soc::aspeed.i2c-ast2600[0]~i2c[9]~tmp75@0x4b".
-+    """
-+
-+    DEFAULT_BUS_DOMAINS: dict[str, BusDomain] = {
-+        "i2c": ("i2c-bus", "address"),
-+        "spi": ("SSI", "cs"),
-+    }
-+    """Keyword -> ``(bus_typename, address_property_or_None)``."""
-+
-+    BUS_BASE = "bus"
-+    """The QOM base type every bus derives from."""
-+
-+    def __init__(
-+        self,
-+        qmp: Callable[..., Any],
-+        bus_domains: Iterable[tuple[str, str, str | None]] | None = None,
-+    ) -> None:
-+        """
-+        :param qmp: a callable ``qmp(command, **args)`` returning the QMP
-+                    payload and raising on error -- e.g. ``QEMUMachine.cmd``.
-+        :param bus_domains: optional iterable of ``(keyword, bus_typename,
-+                        address_property)`` tuples registered up front; the
-+                        "i2c" and "spi" bus domains are always registered.
-+        """
-+        self._qmp = qmp
-+        self._bus_domains: dict[str, BusDomain] = dict(
-+            self.DEFAULT_BUS_DOMAINS)
-+        self._qom_subtypes_cache: dict[str, set[str]] = {}
-+        for keyword, bus_typename, address_property in bus_domains or ():
-+            self.register_bus_domain(keyword, bus_typename, address_property)
-+
-+    def register_bus_domain(self, keyword: str, bus_typename: str,
-+                        address_property: str | None = None) -> None:
-+        """
-+        Register an additional bus domain.
-+
-+        :param keyword: domain keyword used in a bus hop (e.g. "i2c").
-+        :param bus_typename: the QOM bus type backing the domain.
-+        :param address_property: device property holding the bus address, or
-+                                 None when the domain has no address selector.
-+        """
-+        self._bus_domains[keyword] = (bus_typename, address_property)
-+
-+    # -- QOM access over QMP ---------------------------------------------
-+
-+    def _qom_list(self, path: str) -> list[dict[str, Any]]:
-+        """
-+        List the QOM child/link properties of an object.
-+
-+        :param path: canonical QOM path to enumerate.
-+        :return: the ``qom-list`` payload, one dict per property.
-+        """
-+        return self._qmp("qom-list", path=path)
-+
-+    def _qom_get(self, path: str, prop: str) -> Any:
-+        """
-+        Read one QOM property.
-+
-+        :param path: canonical QOM path of the object.
-+        :param prop: property name to read.
-+        :return: the property value.
-+        """
-+        return self._qmp("qom-get", path=path, property=prop)
-+
-+    def _qom_type_of(self, path: str) -> str:
-+        """
-+        Return an object's concrete QOM type name.
-+
-+        :param path: canonical QOM path of the object.
-+        :return: the QOM type name.
-+        """
-+        return self._qom_get(path, "type")
-+
-+    def _qom_subtypes(self, typename: str) -> set[str]:
-+        """
-+        Return the set of every type that is-a @typename (itself included).
-+
-+        :param typename: the base or interface type name.
-+        :return: the implementing type names, cached per base.
-+        """
-+        cached = self._qom_subtypes_cache.get(typename)
-+        if cached is None:
-+            listed = self._qmp("qom-list-types", implements=typename,
-+                               abstract=True)
-+            cached = {entry["name"] for entry in listed}
-+            cached.add(typename)
-+            self._qom_subtypes_cache[typename] = cached
-+        return cached
-+
-+    def _qom_is_a(self, concrete: str, base: str) -> bool:
-+        """
-+        Report whether one QOM type is-a another.
-+
-+        :param concrete: a concrete QOM type name.
-+        :param base: a base or interface type name.
-+        :return: True if @concrete is or derives from @base.
-+        """
-+        return concrete == base or concrete in self._qom_subtypes(base)
-+
-+    # -- QOM tree helpers ------------------------------------------------
-+
-+    @staticmethod
-+    def _inner_type(proptype: str) -> tuple[str | None, str | None]:
-+        """
-+        Split a "child<X>"/"link<X>" property type.
-+
-+        :param proptype: a QOM property type string.
-+        :return: ``(kind, inner)`` with kind "child" or "link", or
-+                 ``(None, None)`` for any other property.
-+        """
-+        match = re.match(r"(child|link)<(.+)>$", proptype)
-+        if match:
-+            return match.group(1), match.group(2)
-+        return None, None
-+
-+    @staticmethod
-+    def _order_key(name: str) -> tuple[int, str]:
-+        """
-+        Ordering key for a QOM path component: the last run of decimal digits
-+        in the name ("aspeed.i2c.10" -> 10), or -1 when it carries no number.
-+
-+        :param name: a canonical path component.
-+        :return: ``(index, name)``, with the name as tie-breaker.
-+        """
-+        runs = re.findall(r"\d+", name)
-+        return (int(runs[-1]) if runs else -1, name)
-+
-+    def _canonical_children(self, path: str) -> list[tuple[str, str, str]]:
-+        """
-+        Enumerate the canonical (child<...>) children of an object.
-+
-+        :param path: canonical QOM path to enumerate.
-+        :return: ``(name, property_type, child_path)`` per canonical child.
-+        """
-+        children: list[tuple[str, str, str]] = []
-+        for prop in self._qom_list(path):
-+            kind, inner = self._inner_type(prop["type"])
-+            if kind == "child" and inner is not None:
-+                children.append((prop["name"], inner,
-+                                 path + "/" + prop["name"]))
-+        return children
-+
-+    def _collect_buses(self, root: str,
-+                       bus_typename: str) -> list[tuple[str, str]]:
-+        """
-+        Collect the domain buses reachable under @root, pruned at each found
-+        bus so buses nested behind a downstream device (e.g. an I2C mux) are
-+        not gathered.
-+
-+        :param root: QOM path to search from.
-+        :param bus_typename: the domain's QOM bus type.
-+        :return: ``(name, path)`` per bus, sorted by component order.
-+        """
-+        found: list[tuple[str, str]] = []
-+        for name, concrete, child_path in self._canonical_children(root):
-+            if self._qom_is_a(concrete, bus_typename):
-+                found.append((name, child_path))
-+            else:
-+                found.extend(self._collect_buses(child_path, bus_typename))
-+        found.sort(key=lambda item: self._order_key(item[0]))
-+        return found
-+
-+    def _bus_children(self, bus: str) -> list[tuple[int, str]]:
-+        """
-+        Enumerate the devices attached to a bus.
-+
-+        :param bus: canonical QOM path of the bus.
-+        :return: ``(on_bus_index, device_path)`` per attached device, sorted
-+                 by index.
-+        """
-+        kids: list[tuple[int, str]] = []
-+        for prop in self._qom_list(bus):
-+            match = re.match(r"child\[(\d+)\]$", prop["name"])
-+            kind, _ = self._inner_type(prop["type"])
-+            if match and kind == "link":
-+                kids.append((int(match.group(1)),
-+                             self._qom_get(bus, prop["name"])))
-+        kids.sort(key=lambda item: item[0])
-+        return kids
-+
-+    # -- anchor / plain-path resolution ---------------------------------
-+
-+    def _exists(self, path: str) -> bool:
-+        """
-+        Report whether a QOM path resolves to an existing object.
-+
-+        :param path: an absolute QOM path.
-+        :return: True if the object exists.
-+        """
-+        try:
-+            self._qom_list(path)
-+            return True
-+        except ExecuteError:
-+            return False
-+
-+    def _all_paths(self, root: str = "/machine") -> list[str]:
-+        """
-+        Collect every canonical object path under @root, @root included.
-+
-+        :param root: QOM path to search from.
-+        :return: the list of canonical paths.
-+        """
-+        paths: list[str] = [root]
-+        for _name, _concrete, child_path in self._canonical_children(root):
-+            paths.extend(self._all_paths(child_path))
-+        return paths
-+
-+    def _resolve_anchor(self, anchor: str) -> str:
-+        """
-+        Resolve a QOM anchor: empty -> /machine, an absolute path used
-+        verbatim, otherwise a component-suffix search over the whole tree.
-+
-+        :param anchor: the anchor part of a locator.
-+        :return: the resolved canonical QOM path.
-+        :raises LocatorError: if the anchor is missing or ambiguous.
-+        """
-+        if anchor == "":
-+            return "/machine"
-+        if anchor.startswith("/"):
-+            if not self._exists(anchor):
-+                raise LocatorError(f"anchor '{anchor}' not found")
-+            return anchor
-+
-+        wanted = anchor.split("/")
-+        matches = [path for path in self._all_paths()
-+                   if path.split("/")[-len(wanted):] == wanted]
-+        if not matches:
-+            raise LocatorError(f"anchor '{anchor}' not found")
-+        if len(matches) > 1:
-+            raise LocatorError(f"anchor '{anchor}' is ambiguous "
-+                               f"({len(matches)} found)")
-+        return matches[0]
-+
-+    # -- hop parsing ----------------------------------------------------
-+
-+    @staticmethod
-+    def _parse_indexed(token: str) -> tuple[str, int | None]:
-+        """
-+        Parse an object or bus hop ("name" or "name[index]").
-+
-+        :param token: the hop token.
-+        :return: ``(name, index_or_None)``.
-+        :raises LocatorError: on a malformed hop.
-+        """
-+        match = re.match(r"([^\[]+)(?:\[(\d+)\])?$", token)
-+        if not match:
-+            raise LocatorError(f"malformed hop '{token}'")
-+        index = int(match.group(2)) if match.group(2) is not None else None
-+        return match.group(1), index
-+
-+    @staticmethod
-+    def _parse_device(token: str) -> DeviceSelectors:
-+        """
-+        Parse a device hop into its selectors.
-+
-+        :param token: the device-hop token ("type@addr#index=id").
-+        :return: the parsed selectors.
-+        :raises LocatorError: on a malformed or empty hop.
-+        """
-+        typename: str | None = None
-+        addr: int | None = None
-+        index: int | None = None
-+        ident: str | None = None
-+        pos = 0
-+        length = len(token)
-+        # A leading bare run (no sigil) is the QOM type selector.
-+        if pos < length and token[pos] not in "@#=":
-+            start = pos
-+            while pos < length and token[pos] not in "@#=":
-+                pos += 1
-+            typename = token[start:pos]
-+        seen = typename is not None
-+        while pos < length:
-+            sig = token[pos]
-+            pos += 1
-+            start = pos
-+            while pos < length and token[pos] not in "@#=":
-+                pos += 1
-+            value = token[start:pos]
-+            if sig == "@":
-+                try:
-+                    addr = int(value, 0)
-+                except ValueError:
-+                    raise LocatorError(f"malformed address '@{value}'")
-+            elif sig == "#":
-+                try:
-+                    index = int(value, 10)
-+                except ValueError:
-+                    raise LocatorError(f"malformed on-bus index '#{value}'")
-+            elif sig == "=":
-+                ident = value
-+            seen = True
-+        if not seen:
-+            raise LocatorError("empty device hop")
-+        return DeviceSelectors(typename, addr, index, ident)
-+
-+    def _is_bus_token(self, token: str) -> bool:
-+        """
-+        Report whether a hop names a bus (a domain keyword or a bus QOM type)
-+        rather than an intermediate object.
-+
-+        :param token: an object-or-bus hop token.
-+        :return: True for a bus hop.
-+        """
-+        name = token.split("[", 1)[0]
-+        return name in self._bus_domains or self._qom_is_a(name, self.BUS_BASE)
-+
-+    @staticmethod
-+    def _pick(items: list[str], index: int | None, what: str) -> str:
-+        """
-+        Select one entry from an ordered match list.
-+
-+        :param items: the ordered candidate paths.
-+        :param index: the requested index, or None to require a single match.
-+        :param what: a description used in error messages.
-+        :return: the selected path.
-+        :raises LocatorError: if nothing matches, the match is ambiguous, or
-+                              the index is out of range.
-+        """
-+        if index is None:
-+            if not items:
-+                raise LocatorError(f"no {what} found")
-+            if len(items) > 1:
-+                raise LocatorError(f"{what} is ambiguous "
-+                                   f"({len(items)} found); add an index")
-+            return items[0]
-+        if index >= len(items):
-+            raise LocatorError(f"{what} index {index} out of range "
-+                               f"({len(items)} found)")
-+        return items[index]
-+
-+    # -- resolution -----------------------------------------------------
-+
-+    def resolve(self, locator: str, typename: str | None = None) -> str:
-+        """
-+        Resolve a locator to a canonical QOM path (usable with qom-get).
-+
-+        :param locator: the locator string (see the class grammar).
-+        :param typename: if set, the leaf is verified to be-a this QOM type.
-+        :return: the resolved canonical QOM path.
-+        :raises LocatorError: if the locator does not resolve to exactly one
-+                              object (not found, ambiguous, unknown bus or
-+                              malformed), or the leaf fails the type check.
-+        """
-+        sep = locator.find("::")
-+        if sep < 0:
-+            return self._apply_type(self._resolve_anchor(locator), typename)
-+
-+        cur = self._resolve_anchor(locator[:sep])
-+        bus: str | None = None
-+        bus_concrete: str | None = None
-+        dom: BusDomain | None = None
-+
-+        for token in locator[sep + 2:].split("~"):
-+            if token == "":
-+                raise LocatorError(f"empty hop in locator {locator!r}")
-+            if bus is not None:
-+                cur = self._hop_device(bus, bus_concrete, dom, token)
-+                bus = None
-+            elif self._is_bus_token(token):
-+                bus, bus_concrete, dom = self._hop_bus(cur, token)
-+                cur = bus
-+            else:
-+                cur = self._hop_object(cur, token)
-+
-+        return self._apply_type(cur, typename)
-+
-+    def _hop_object(self, cur: str, token: str) -> str:
-+        """
-+        Apply an object hop, descending to a direct child by QOM type.
-+
-+        :param cur: current QOM path to search under.
-+        :param token: the object-hop token ("type" or "type[index]").
-+        :return: the matched child's canonical QOM path.
-+        :raises LocatorError: if zero, several (without an index) or an
-+                              out-of-range child matches.
-+        """
-+        name, index = self._parse_indexed(token)
-+        matches: list[tuple[str, str]] = []
-+        for child_name, _inner, child_path in self._canonical_children(cur):
-+            if self._qom_is_a(self._qom_type_of(child_path), name):
-+                matches.append((child_name, child_path))
-+        matches.sort(key=lambda item: self._order_key(item[0]))
-+        return self._pick([path for _name, path in matches], index,
-+                          f"object '{name}'")
-+
-+    def _hop_bus(self, cur: str,
-+                 token: str) -> tuple[str, str, BusDomain | None]:
-+        """
-+        Apply a bus hop, selecting a bus owned by the current object.
-+
-+        :param cur: current QOM path to search under.
-+        :param token: the bus-hop token ("bus" or "bus[channel]"), where
-+                      "bus" is a domain keyword or a bus QOM type.
-+        :return: ``(bus_path, bus_concrete, domain)``; @domain is the mapped
-+                 domain for a keyword, or None for a raw bus type (its address
-+                 property is then inferred at the device hop).
-+        :raises LocatorError: on an unknown bus, or a missing, ambiguous or
-+                              out-of-range bus.
-+        """
-+        name, index = self._parse_indexed(token)
-+        if name in self._bus_domains:
-+            dom: BusDomain | None = self._bus_domains[name]
-+            bus_typename = dom[0]
-+        elif self._qom_is_a(name, self.BUS_BASE):
-+            dom = None
-+            bus_typename = name
-+        else:
-+            raise LocatorError(f"'{name}' is not a bus domain or bus type")
-+
-+        buses = self._collect_buses(cur, bus_typename)
-+        bus_path = self._pick([path for _name, path in buses], index,
-+                              f"bus '{name}'")
-+        return bus_path, self._qom_type_of(bus_path), dom
-+
-+    def _hop_device(self, bus: str, bus_concrete: str | None,
-+                    dom: BusDomain | None, token: str) -> str:
-+        """
-+        Apply a device hop, matching one device on the current bus.
-+
-+        :param bus: canonical QOM path of the current bus.
-+        :param bus_concrete: the bus's concrete QOM type, for domain inference.
-+        :param dom: the active domain, or None to infer it from the bus.
-+        :param token: the device-hop token.
-+        :return: the matched device's canonical QOM path.
-+        :raises LocatorError: if zero or several devices match.
-+        """
-+        sel = self._parse_device(token)
-+
-+        if dom is None and bus_concrete is not None:
-+            for spec in self._bus_domains.values():
-+                if self._qom_is_a(bus_concrete, spec[0]):
-+                    dom = spec
-+                    break
-+
-+        matches: list[str] = []
-+        for index, dev_path in self._bus_children(bus):
-+            if self._device_matches(dev_path, index, sel, dom):
-+                matches.append(dev_path)
-+
-+        if not matches:
-+            raise LocatorError(f"no device matches '{token}'")
-+        if len(matches) > 1:
-+            raise LocatorError(f"device hop '{token}' is ambiguous "
-+                               f"({len(matches)} matches)")
-+        return matches[0]
-+
-+    def _device_matches(self, dev_path: str, index: int,
-+                        sel: DeviceSelectors, dom: BusDomain | None) -> bool:
-+        """
-+        Test one device against a hop's selectors.
-+
-+        :param dev_path: canonical QOM path of the candidate device.
-+        :param index: the device's on-bus (BusChild) index.
-+        :param sel: the parsed selectors to match.
-+        :param dom: the active domain (provides the address property), or None.
-+        :return: True if the device satisfies every selector.
-+        """
-+        if sel.typename is not None:
-+            if not self._qom_is_a(self._qom_type_of(dev_path), sel.typename):
-+                return False
-+        if sel.addr is not None:
-+            address_property = dom[1] if dom else None
-+            if address_property is None:
-+                return False
-+            if self._qom_get(dev_path, address_property) != sel.addr:
-+                return False
-+        if sel.on_bus_index is not None and index != sel.on_bus_index:
-+            return False
-+        # '=id' matches the object's canonical-path leaf, which for a device
-+        # created with '-device ...,id=X' is X.
-+        if sel.ident is not None and dev_path.rsplit("/", 1)[-1] != sel.ident:
-+            return False
-+        return True
-+
-+    def _apply_type(self, path: str, typename: str | None) -> str:
-+        """
-+        Verify a resolved object's type, if requested.
-+
-+        :param path: canonical QOM path of the resolved object.
-+        :param typename: expected QOM type, or None to skip the check.
-+        :return: @path unchanged.
-+        :raises LocatorError: if the object is not of @typename.
-+        """
-+        if typename is not None and not self._qom_is_a(self._qom_type_of(path),
-+                                                   typename):
-+            raise LocatorError(f"resolved object is not of type '{typename}'")
-+        return path
++from unittest import skipIf
++
++from qemu_test import QemuSystemTest
++
++# DeviceLocator's type hints require Python 3.10+; import it only when
++# available so this module still loads (and skips) on the 3.9 baseline.
++if sys.version_info >= (3, 10):
++    from qemu_test.locator import DeviceLocator, LocatorError
++
++
++@skipIf(sys.version_info < (3, 10), 'DeviceLocator requires Python 3.10+')
++class DeviceLocatorTest(QemuSystemTest):
++
++    def setUp(self):
++        super().setUp()
++        self.set_machine('sanmiguel-bmc')
++        # Launch paused with defaults enabled so the aspeed board instantiates
++        # its SPI flashes (created only under defaults_enabled()); still no
++        # disk image is needed.
++        self.vm.add_args('-S', '-display', 'none')
++        self.vm.launch()
++        self.locator = DeviceLocator(self.vm.cmd)
++
++    def _address(self, path):
++        return self.vm.cmd('qom-get', path=path, property='address')
++
++    def _cs(self, path):
++        return self.vm.cmd('qom-get', path=path, property='cs')
++
++    def test_resolve_tmp75_sensors(self):
++        # The SanMiguel board wires ti,tmp75 sensors on I2C buses 5, 9 and 10
++        # behind the aspeed.i2c-ast2600 controller.
++        ctrl = '/machine/soc::aspeed.i2c-ast2600[0]'
++        for locator, addr in ((f'{ctrl}~i2c[5]~@0x48', 0x48),
++                              (f'{ctrl}~i2c[9]~@0x4e', 0x4e),
++                              (f'{ctrl}~i2c[10]~@0x48', 0x48)):
++            path = self.locator.resolve(locator, 'tmp75')
++            self.assertEqual(self._address(path), addr)
++
++    def test_device_selectors(self):
++        bus = '/machine/soc::aspeed.i2c-ast2600[0]~i2c[5]'
++        by_addr = self.locator.resolve(f'{bus}~@0x48')
++        # A type selector combined with the address must reach the same device.
++        self.assertEqual(self.locator.resolve(f'{bus}~tmp75@0x48'), by_addr)
++        # The on-bus (BusChild) index selector addresses a device positionally.
++        by_index = self.locator.resolve(f'{bus}~#0')
++        self.assertTrue(by_index.startswith('/machine'))
++        # A bus hop also accepts the raw bus QOM type in place of the keyword.
++        raw = '/machine/soc::aspeed.i2c-ast2600[0]~i2c-bus[5]~@0x48'
++        self.assertEqual(self.locator.resolve(raw), by_addr)
++
++    def test_type_assertion(self):
++        # The leaf type is validated when a type argument is passed.
++        self.assertRaises(LocatorError, self.locator.resolve,
++                          '/machine/soc::aspeed.i2c-ast2600[0]~i2c[5]~@0x48',
++                          'ds1338')
++
++    def test_resolution_errors(self):
++        ctrl = '/machine/soc::aspeed.i2c-ast2600[0]'
++        # No device sits at that address on the bus.
++        self.assertRaises(LocatorError, self.locator.resolve,
++                          f'{ctrl}~i2c[5]~@0x99')
++        # A bare bus hop under /machine/soc spans every i2c bus on both the
++        # i2c and i3c controllers, so it is ambiguous without a controller hop.
++        self.assertRaises(LocatorError, self.locator.resolve,
++                          '/machine/soc::i2c')
++        # Unknown object type in a controller hop.
++        self.assertRaises(LocatorError, self.locator.resolve,
++                          '/machine/soc::nope')
++        # Out-of-range bus index.
++        self.assertRaises(LocatorError, self.locator.resolve,
++                          f'{ctrl}~i2c[99]~@0x48')
++        # A stray or doubled '~' yields an empty hop, which is malformed.
++        self.assertRaises(LocatorError, self.locator.resolve,
++                          f'{ctrl}~~i2c[5]~@0x48')
++
++    def test_resolve_spi_flashes(self):
++        # The FMC controller carries two flashes on chip-selects 0 and 1; the
++        # first SPI controller carries one on chip-select 0.
++        for locator, cs in (
++                ('/machine/soc::aspeed.fmc-ast2600[0]~spi[0]~@0', 0),
++                ('/machine/soc::aspeed.fmc-ast2600[0]~spi[0]~@1', 1),
++                ('/machine/soc::aspeed.spi1-ast2600[0]~spi[0]~@0', 0)):
++            path = self.locator.resolve(locator, 'ssi-peripheral')
++            self.assertEqual(self._cs(path), cs)
++
++    def test_spi_selectors(self):
++        bus = '/machine/soc::aspeed.fmc-ast2600[0]~spi[0]'
++        by_cs = self.locator.resolve(f'{bus}~@0')
++        # A type selector plus the chip-select reaches the same flash.
++        self.assertEqual(
++            self.locator.resolve(f'{bus}~ssi-peripheral@0'), by_cs)
++        # The on-bus index selector resolves positionally.
++        self.assertTrue(
++            self.locator.resolve(f'{bus}~#1').startswith('/machine'))
++        # A wrong-type assertion on an SPI leaf is rejected.
++        self.assertRaises(LocatorError, self.locator.resolve,
++                          f'{bus}~@0', 'tmp75')
++
++
++if __name__ == '__main__':
++    QemuSystemTest.main()
 
 -- 
 2.50.1

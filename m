@@ -4,102 +4,103 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 936A7C55160
-	for <qemu-arm@archiver.kernel.org>; Thu, 30 Jul 2026 12:39:14 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8F117C55165
+	for <qemu-arm@archiver.kernel.org>; Thu, 30 Jul 2026 12:40:23 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wpQ2O-0002Ze-BF; Thu, 30 Jul 2026 08:39:00 -0400
+	id 1wpQ3R-0002wr-IX; Thu, 30 Jul 2026 08:40:05 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1wpQ2M-0002Z9-O3
- for qemu-arm@nongnu.org; Thu, 30 Jul 2026 08:38:58 -0400
-Received: from mail-yx1-xb136.google.com ([2607:f8b0:4864:20::b136])
+ id 1wpQ3Q-0002wf-0q
+ for qemu-arm@nongnu.org; Thu, 30 Jul 2026 08:40:04 -0400
+Received: from mail-yx1-xb133.google.com ([2607:f8b0:4864:20::b133])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1wpQ2L-0004Uj-3x
- for qemu-arm@nongnu.org; Thu, 30 Jul 2026 08:38:58 -0400
-Received: by mail-yx1-xb136.google.com with SMTP id
- 956f58d0204a3-6688dfaed31so2665165d50.3
- for <qemu-arm@nongnu.org>; Thu, 30 Jul 2026 05:38:56 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1785415136; cv=none;
+ id 1wpQ3O-0004Wh-D5
+ for qemu-arm@nongnu.org; Thu, 30 Jul 2026 08:40:03 -0400
+Received: by mail-yx1-xb133.google.com with SMTP id
+ 956f58d0204a3-66807ba2f0fso2906411d50.3
+ for <qemu-arm@nongnu.org>; Thu, 30 Jul 2026 05:40:01 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1785415201; cv=none;
  d=google.com; s=arc-20260327;
- b=FzTNrl+w7cqkwvoRXCMLjaMHK1C+A9p5Dl1UEdyUpdLRBZ9271yWRK20T/lo0sGnkB
- 4N4cNqr88pkpSJ1q4Z6OahACIQ78C27hJDn2RbEtjHs6k+3c5nkBfck9WHIoDnsMs5Ur
- K5cHnGSGaKDu0fnYt5ocIQsfdtMnq7XWMUvvxSd8fOmGGNTjSvvwZxtxUFKqKoPItULH
- oCv4mPO67fW7mT/XswGVQGgh28gLv2lvpFb3wkdbFk0sMhgFWySRPAEtEkQVtBvAk4mL
- ibq/5jdhtt8LL8a6y8STqkbKuQNnYLE4Z1NSghEeWRGWVg/7C7cmFPVbGeerAyeo9g7a
- yhfw==
+ b=T3WiZIL7zHlwPUmlqygtRkbYAJGkqIcgvaYEY59g9EDe5x4jf5Ec3EiYDgWE6uk8zk
+ lERhlNTr7YjF0j7qH4DyhpkWdoB37YhZwkCrpaDmjekAcR+tvCS2euRLtrn7pbDkKRWj
+ jnz4FP3t/0A3DvBmsZPSvgaCJCTn5me94ixlbN0LvuQI+aEZ+EsqQuhsGh47d3pbSMk2
+ vJjocHb4V/GiR9oOfelsvpKnuVJyH0djpTc7NY77f+ItuqoBOJ21d9mjZwQX2PmOroF7
+ T114pSH2k+Pu1bbPPgEqPmtmomNWZxPUCN6udgAwmaZC6cVk0Fw9lX02u0dbLnmH6PoS
+ 9pMA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
  s=arc-20260327; 
  h=cc:to:subject:message-id:date:from:in-reply-to:references
  :mime-version:dkim-signature;
- bh=gN8D8F31FDpxGH3YKhqW0xmPQi2EEj1RpT3xmV3JvTM=;
+ bh=/d6Inj6/U9LCwohs9S3aJ6OqLl/tb/tS0IkpZC/3DCo=;
  fh=MY+RTGlDZBw1hjx9sCas5mVeVTtr+VfM/WJHDpsZ79Q=;
- b=nI8a47HDVBRzHhDbjOp1u4MftmBJAKPRtJAL3iAAvab0OQnIuUxO/oqeD4dND9EzT5
- j1IpFDbzdgBXJgmlKKhdaQnx+zGtwAC8mqc42YXt5S/e+cnIuVvmMAd2D8egad2qHMlL
- 4wDNIAxLj78lo87cYrUEUe/jUD/6Vs4N+HZJiNxNPcO6pHWZtlL+7vcyXZHv3ev5DmiD
- DnKM/qmjxfkp1xQHZ2HuQAbuofcAOwwGQmfW0YyOoFLUiDCKj+S1tU4h+jUSf7pn9lrR
- Ng/Jx5MZhgzgISsGqYLyq2oLhpDeYC1Fp6eiDL0iceuf7WwcB8NVYv8mmVm8JdOq0PSc
- qRmw==; darn=nongnu.org
+ b=eN94SkaMHhhmg8DUZAa3ItdAm/7EduV8AIUUvYNAU5sY1ku3HekgJVpV/eBfBAhLhI
+ EbEpzbD+6/2coAlzhKPZQFBxb/jMb2xkpSorcCjp+Sp07FrMcDtjFS9/KXtB+5FSbZk8
+ naMny7qJ9zH8SYwf4Ugher1a+Gl2kH3zA/JHucp76ILWlrq762SNwibpwYBxLLSOu3ud
+ hWXNILGXfgmEpt98tALuSdlwTJuSG/srZyQeNmQA1tSDDs9w9hVWZDHb7wYE7ijSoop4
+ AQPlM5jvBBB8XxkYfJN/ODcYhXx/Ksb8wYUhC289Q1LC/szXXMbL+L/CI14WH/jSqR0G
+ Xf7A==; darn=nongnu.org
 ARC-Authentication-Results: i=1; mx.google.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1785415136; x=1786019936; darn=nongnu.org;
+ d=linaro.org; s=google; t=1785415201; x=1786020001; darn=nongnu.org;
  h=content-type:cc:to:subject:message-id:date:from:in-reply-to
  :references:mime-version:from:to:cc:subject:date:message-id:reply-to
- :content-type; bh=gN8D8F31FDpxGH3YKhqW0xmPQi2EEj1RpT3xmV3JvTM=;
- b=AxY/jdCH4Y+xxCWcON64afzdgI84JBLoE8UaXGEjCLEQ6RcBbj9ZlqKdqPhzQNfNqK
- WoijcdWU7DBlu61ELpTI6xVPcVd70HlGa4+NgRKZeDFqODXb6kFYmjY4KwFc905MHPpu
- crB61FsXsYVAIjTHO5FlDf8SvwKsutzrro8JLOk4KSX1kG81abEhD5rRCqlYOrOequn/
- qJ8jYLrpvhcMmWExaI9cQKZyZbW05McyIJjIJB7CrUAOYkBpFa1M/F2QK6bTvRtI+PZD
- tTMRMsLLobDDaGGGKI/Q4css7WNYPtFoJPGnVhBXT1ISYhgilbULp0BES5JISVpx6mw9
- m/kg==
+ :content-type; bh=/d6Inj6/U9LCwohs9S3aJ6OqLl/tb/tS0IkpZC/3DCo=;
+ b=PH/X1CjiaXw1kf56/ZTETi05T3H1RkFWxlwZ0ZIOqgSJoX9yfGfk2+ab6VsSAfukKF
+ bEXCqiaEO/cBvjXK75KEfxIzblGh+37NBtv/xCydb4bmVu7pQccHgFuwGasH+MXQPmSW
+ kfTruPPTQgOW37kgZB2SbPpOicG5gpcU6Qk6cXVt8Sn31toTOSJyAWAZMYvBFs2NbzQP
+ D2kv/CvgdVRT92V+KwGKch/SYNbCKd999kjtHxVg1dvyOLDfdgOvEHIpm2pdtwZE2vmz
+ H1V7v4YcBUb8wyrFDmqg2Waa8IefF331kPRZckiyfXjppRXm1Vg24zY76RALG745CSF0
+ 10nA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1785415136; x=1786019936;
+ d=1e100.net; s=20251104; t=1785415201; x=1786020001;
  h=content-type:cc:to:subject:message-id:date:from:in-reply-to
  :references:mime-version:x-gm-gg:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to:content-type;
- bh=gN8D8F31FDpxGH3YKhqW0xmPQi2EEj1RpT3xmV3JvTM=;
- b=g35jiF5lpTxTV3PGsTUkE+O7/O+rh0O8Vw6WbFs2Gn+9yXRhg9h4BK6U+3IctjrQ1p
- ewmnU4EjdRIyGmhtVnfqI2Ic1+LFVS7Rr/BQbeJlgFSxhE/bqW+f6kt/d0TqIVI/aGi3
- j+txeo9MU4Y51mTTYjNUhCyOZXTs25gCOr7ojKOpfRexF8E17Xn+sT/LsyEIsi7AHid7
- rNPy2E+XOfmIBkvfPPq7+UYZ1AFhTwVWCreqifFnkzu+17T0gM3l1ushLQ28XR7Zaif+
- HiHVC/S0YVMjty8M2vpYAVFcQHWlEvs1NrVJPktIfGpYDbXkAirLhEZ92Fd05e5fDmr0
- eZeQ==
-X-Gm-Message-State: AOJu0Yx2b8Z1qInYMdyPAidpyjmA7zYyEDCbEI7Yf2umqYB6qQj/i3ML
- lgvyyBa1Eywn3dunka5DV0hqAI/6k8qUIkMedq/WnMg2ox9f0oqczqIKlIdBJqFbA2aFNtCzp3A
- CVeJ/z3wxs81HXEhpGT6vqb4p6sq6j9Nhfu5Dy3UGMQ==
-X-Gm-Gg: AR+sD11YLbemj4zch4LWz/9v+PxDbwptEYPkC/QQRWZN0Q2fywhCHXh+rMk1F6OSHEy
- PpzeorFVMeDf8coNUXRNlT8SOXruKZTAOdOIex1PmOfurj1/hDhrerA/5RlUJwllCNz48ctW3Nl
- VimqhIcbPP+fZ0vjsmh+SHfchXoT8tuq+zSF1pNrmMJJcUXwPzcPhn9+RqADeuvwzVcTuwjM6ps
- 0lS0ehb9wI3YhzH7KFphdNRhSHz/8bcL9Kc70ERi/laXpGM/wm6PfRpj417WbhKXmdbrVRaXwMd
- qFXqk4+ATaCeUjfn5rgqTue8Vnez1EFL9CtNuzvH213TZ9Z+FbqLcz9UABOhgAo6elHSxve7ach
- LGQed9fgnNiG/Joedp+7HLmfuYc9u
-X-Received: by 2002:a05:690e:4410:b0:668:4c8f:5d47 with SMTP id
- 956f58d0204a3-6692f8747c0mr1161521d50.108.1785415135513; Thu, 30 Jul 2026
- 05:38:55 -0700 (PDT)
+ bh=/d6Inj6/U9LCwohs9S3aJ6OqLl/tb/tS0IkpZC/3DCo=;
+ b=Y2q+A3ESa4DbG9MOVea3IQVXjZCNVh3q86zOc42OkQnu3BXakvnv2WioMR+rJkLXYW
+ Gt63SycSL0aXnbntzJ1trqC+p67uZa2KVaRFC3al9aRURRL4/bgDKij4oPA8BTGROBGe
+ 2N6tv71HiJkhe+QZtKHLKTd4PqqUY6lrpN0Rv+WhC6pk1VZMcgYx45t7WRLJyAGY8teX
+ ZZfERkrXclY4ClazzSoyDg+QgsPT0dRORClNkGrfkf+QW/yefQQp9BSKujO14jjSNaDr
+ 4r/QZIwgmd5b/hkZr4U1QJFfdU+ZO6l9c0UboiPGgFIzYKRJz5iCkjY7Z/SN9oOan6Qa
+ uV+A==
+X-Gm-Message-State: AOJu0YzMpNajyH9gcSiCKnXIKVekbWDMArkqts5Cc587hBX2yuDumZe9
+ ZZk7I0iz5nYBlahabcnrw27WvZYU9P2R0WeABxuwfw9nTpIZSxSMsPMkdbELsF1uMNa5sAj21rj
+ APsgY0HmNSr3lWBI/ctHH59D0m3cd9wq2MaMadxVytg==
+X-Gm-Gg: AR+sD1003XVHN5x8rF3rfB8EcNIcdA04apoa/PiLoio4YhEH8LKbmk4389K2QtfoI05
+ 6UxgBpgXtVAONVDyXuysoBWXiauvqauBRFA3Uq2wpUx8JJmvt2xjS3P9H4LKmyYjpXDKnexlLPx
+ IGxz92+qWr8JSKUGKsPxpjUEhj8VY+SfdX2zEEt/06M/WNyw2dUUbpmxZvR/fbgRddI/KGnK33u
+ TlhJba5yjeNoNEq9kBfHkFXUO67D2z6N4CwZTjhYNfBp2Ipen+QkprlGBNY+y9NyqKRlB+BwpIM
+ gVVrKo4PY9J6SK/Tj6v+9xAtsm5rIMLdQzzTJQc/Z/YxriapOYUMOW0j/Lv265fxTWZ2J4ubeoA
+ bGt/nmB1Fhc4VXOKdZFU4LTmH/U4ccw==
+X-Received: by 2002:a53:a684:0:b0:667:a1d6:9c33 with SMTP id
+ 956f58d0204a3-6692f6ec6f2mr1233995d50.69.1785415200740; Thu, 30 Jul 2026
+ 05:40:00 -0700 (PDT)
 MIME-Version: 1.0
 References: <20260729231325.3808993-1-titusr@google.com>
- <20260729231325.3808993-6-titusr@google.com>
-In-Reply-To: <20260729231325.3808993-6-titusr@google.com>
+ <20260729231325.3808993-7-titusr@google.com>
+In-Reply-To: <20260729231325.3808993-7-titusr@google.com>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 30 Jul 2026 13:38:42 +0100
-X-Gm-Features: AUfX_myq4gjGsCLp9XRmEN2r1W1HG0SpuowqB4jySfBzjmziyPSpMSebNR-ZBqA
-Message-ID: <CAFEAcA9OHrycH12LcmUECOsm2Ajqnx4tgWVvrgdrHtDmT9UFbg@mail.gmail.com>
-Subject: Re: [PATCH 5/8] hw/sensor: switch adm1266 to millivolts vout
+Date: Thu, 30 Jul 2026 13:39:48 +0100
+X-Gm-Features: AUfX_mzS82PqNIcUfzgtqZbYbsM3lsTFrmm4fd5R0HXY4t8srKkA1Fgop-s7k30
+Message-ID: <CAFEAcA9X+jQu9DtPoszcoa=wdJSPuxZtvA0j1BFJ2bzNQkWWww@mail.gmail.com>
+Subject: Re: [PATCH 6/8] hw/i2c: fix VOUT_MODE representation on little-endian
+ machines
 To: Titus Rwantare <titusr@google.com>
 Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, kfting@nuvoton.com, 
  imaginos32@gmail.com, wuhaotsh@google.com, philmd@mailo.com, 
  fanjason@google.com
 Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::b136;
- envelope-from=peter.maydell@linaro.org; helo=mail-yx1-xb136.google.com
-X-Spam_score_int: -19
-X-Spam_score: -2.0
+Received-SPF: pass client-ip=2607:f8b0:4864:20::b133;
+ envelope-from=peter.maydell@linaro.org; helo=mail-yx1-xb133.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.0 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FUZZY_MILLION=0.1,
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
@@ -119,105 +120,40 @@ Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
 On Thu, 30 Jul 2026 at 00:13, Titus Rwantare <titusr@google.com> wrote:
 >
-> Enables storing fractional voltages for the ADM1266 over QMP
+> From: Jason Fan <fanjason@google.com>
+>
+> Even though VOUT_MODE is only one byte, bitfields are allocated in the
+> order specific to the host's endianness.
 >
 > Signed-off-by: Titus Rwantare <titusr@google.com>
+> Signed-off-by: Jason Fan <fanjason@google.com>
 > ---
->  hw/sensor/adm1266.c        |  27 ++++---
->  tests/qtest/adm1266-test.c | 150 +++++++++++++++++++++++++++++++++++++
->  2 files changed, 167 insertions(+), 10 deletions(-)
+>  include/hw/i2c/pmbus_device.h | 7 +++++++
+>  1 file changed, 7 insertions(+)
 >
-> diff --git a/hw/sensor/adm1266.c b/hw/sensor/adm1266.c
-> index 2979557309..80960dc1c4 100644
-> --- a/hw/sensor/adm1266.c
-> +++ b/hw/sensor/adm1266.c
-> @@ -263,32 +263,39 @@ static int adm1266_write_data(PMBusDevice *pmdev, const uint8_t *buf,
->  static void adm1266_get(Object *obj, Visitor *v, const char *name, void *opaque,
->                          Error **errp)
->  {
-> -    uint16_t value;
-> +    uint32_t value, index;
->      PMBusDevice *pmdev = PMBUS_DEVICE(obj);
->      PMBusVoutMode *mode = (PMBusVoutMode *)&pmdev->pages[0].vout_mode;
->
-> -    if (strcmp(name, "vout") == 0) {
-> -        value = pmbus_linear_mode2data(*(uint16_t *)opaque, mode->exp);
-> +    if (strncmp(name, "vout[", 5) == 0) {
-> +        sscanf(name, "vout[%u]", &index);
+> diff --git a/include/hw/i2c/pmbus_device.h b/include/hw/i2c/pmbus_device.h
+> index 9f3569e997..03b2c21c19 100644
+> --- a/include/hw/i2c/pmbus_device.h
+> +++ b/include/hw/i2c/pmbus_device.h
+> @@ -449,10 +449,17 @@ typedef struct PMBusCoefficients {
+>  /**
+>   * VOUT_Mode bit fields
+>   */
+> +#if HOST_BIG_ENDIAN
+>  typedef struct PMBusVoutMode {
+>      uint8_t  mode:3;
+>      int8_t   exp:5;
+>  } PMBusVoutMode;
+> +# else
+> +typedef struct PMBusVoutMode {
+> +    int8_t   exp:5;
+> +    uint8_t  mode:3;
+> +} PMBusVoutMode;
+> +#endif
 
-What is this doing? Why do we need to do it now when we didn't
-need to call sscanf before? If we do need to use sscanf() we
-should check the return result for errors.
-
-> +        mode = (PMBusVoutMode *)&pmdev->pages[index].vout_mode;
-> +        value = pmbus_linear_mode2milliunits(*(uint16_t *)opaque, mode->exp);
->      } else {
->          value = *(uint16_t *)opaque;
-
-You've changed this to a uint32_t property, so leaving this as
-a uint16_t* cast looks wrong now.
-
->      }
->
-> -    visit_type_uint16(v, name, &value, errp);
-> +    visit_type_uint32(v, name, &value, errp);
->  }
->
->  static void adm1266_set(Object *obj, Visitor *v, const char *name, void *opaque,
->                          Error **errp)
->  {
->      uint16_t *internal = opaque;
-> -    uint16_t value;
-> +    uint32_t value, index;
->      PMBusDevice *pmdev = PMBUS_DEVICE(obj);
-> -    PMBusVoutMode *mode = (PMBusVoutMode *)&pmdev->pages[0].vout_mode;
-> +    PMBusVoutMode *mode;
->
-> -    if (!visit_type_uint16(v, name, &value, errp)) {
-> +    if (!visit_type_uint32(v, name, &value, errp)) {
->          return;
->      }
-> -
-> -    *internal = pmbus_data2linear_mode(value, mode->exp);
-> +    if (strncmp(name, "vout[", 5) == 0) {
-> +        sscanf(name, "vout[%u]", &index);
-> +        mode = (PMBusVoutMode *)&pmdev->pages[index].vout_mode;
-> +        *internal = pmbus_milliunits2linear_mode(value, mode->exp);
-> +    } else {
-> +        *internal = value;
-> +    }
->      pmbus_check_limits(pmdev);
-
-This looks like it's changing the semantics of this property,
-but there's no documentation either of what the old set of
-accepted strings were or what the new set are.
-
-We shouldn't change the semantics of existing properties
-in a non-backwards compatible way, generally speaking.
-If we do really need to do that then we should flag that
-up clearly in the commit message with the rationale and
-the description of the change and its effects.
-
-> +static void test_vout_milliunits(void *obj, void *data, QGuestAllocator *alloc)
-> +{
-> +    uint16_t i2c_value, value;
-> +    uint64_t i2c_milliunits;
-> +    QI2CDevice *i2cdev = (QI2CDevice *)obj;
-> +    char *path;
-> +    ADM1266VoutMode m;
-> +
-> +    /* set a different value in millivolts for each page */
-> +    for (int i = 0; i < ADM1266_NUM_PAGES; i++) {
-> +        path = g_strdup_printf("vout[%d]", i);
-> +        qmp_adm1266_set(TEST_ID, path, (1000 * (i + 1)));
-> +    }
-
-These test functions leak the strings allocated by
-g_strdup_printf() (the leaks show up if you run 'make check'
-under the clang leak sanitizer). I recommend adjusting the
-scope of the variables so you can do
-  g_autofree char *path = g_strdup_printf(....);
-and have it automatically freed as it goes out of scope.
+This is why where possible we don't use C bitfields for guest
+data structures. Better to use the FIELD macros from
+include/hw/core/registerfields.h.
 
 thanks
 -- PMM

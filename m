@@ -4,104 +4,104 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 13705C55165
-	for <qemu-arm@archiver.kernel.org>; Thu, 30 Jul 2026 12:42:00 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2E8AFC55160
+	for <qemu-arm@archiver.kernel.org>; Thu, 30 Jul 2026 12:48:30 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wpQ4z-0003jB-Cu; Thu, 30 Jul 2026 08:41:41 -0400
+	id 1wpQBH-0005GP-51; Thu, 30 Jul 2026 08:48:15 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1wpQ4v-0003iZ-Kr
- for qemu-arm@nongnu.org; Thu, 30 Jul 2026 08:41:38 -0400
-Received: from mail-yw1-x112d.google.com ([2607:f8b0:4864:20::112d])
+ id 1wpQAu-0005Es-HY
+ for qemu-arm@nongnu.org; Thu, 30 Jul 2026 08:47:54 -0400
+Received: from mail-yw1-x1130.google.com ([2607:f8b0:4864:20::1130])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1wpQ4r-0005i7-O3
- for qemu-arm@nongnu.org; Thu, 30 Jul 2026 08:41:36 -0400
-Received: by mail-yw1-x112d.google.com with SMTP id
- 00721157ae682-81eff3ddba4so31434317b3.3
- for <qemu-arm@nongnu.org>; Thu, 30 Jul 2026 05:41:33 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1785415292; cv=none;
+ id 1wpQAp-0006Q1-Ns
+ for qemu-arm@nongnu.org; Thu, 30 Jul 2026 08:47:46 -0400
+Received: by mail-yw1-x1130.google.com with SMTP id
+ 00721157ae682-81dfdbd86d1so22296437b3.1
+ for <qemu-arm@nongnu.org>; Thu, 30 Jul 2026 05:47:42 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1785415662; cv=none;
  d=google.com; s=arc-20260327;
- b=FobBE+2sr2UrEvxm1yP5joVjPyuHoXAimmn/bF33dgnLUcbsQvrYigfcz8mRto2Y01
- bwNAi5msO1pcrdpTjIr4UAhIqM8m0Tgsxvhjx2LvaLxiuo7E8jqa+AAG6mTpwt76ch1F
- CBDjIIMQzyhQy+gD2zjgRjpuAHHvpbw9WIiGhJIv8R3GhCsXobPXCG50dr6N9AVYpa2i
- DauROtezbD0dFjEWkDY9cMqGHesc49w9CvbpoF2swcPxT+lItxm79iU1S997aPVWco3m
- 7W2nzB/JSK29OFmzX0j/TVBVfbibHsOLRxTCyi4dgmoq2Hw96/LV+j9lLaUVl7uTBGKe
- cVpg==
+ b=b0A4TBQm4/+HIc+eQ+5kKN5KAMYjri5CIGaeWQsdsa2lRTNoX8fdWTO4Q0PEt4xxVl
+ 4FZOEOVv8+IL+2wJdMZ5Lp6UFPIqs2T+g8c9L3Z4Ia7OpoYYENvgyUIfIa4aqY0vk8Ri
+ 6+K0ZumCManf9kTp/m+iVRn2uqCkzMUWU4dO0ybvDTRc9V00sK49pB1jDkNNXq5DOHK0
+ 5W+mQUGhSvSQBOdc1rxpXpK7RF5AULFzqv4HIwafa0RjuJ53g59u0W7S7cvXPHIt0ik0
+ FY0gtp10CKk1wreqDn5llueBqroxwx7R3UjU8yFpLublvHlsNM4TjQx80ZuzfS0IpQuj
+ 82jw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
  s=arc-20260327; 
  h=cc:to:subject:message-id:date:from:in-reply-to:references
  :mime-version:dkim-signature;
- bh=vKRFXhqiLoxOpqsybCQzTM2w4BGpVQWtRIrpO0PPqLY=;
+ bh=bxFdje7jjR+zvKahWORqDVEHGclh6x66ydhbsiz7wmg=;
  fh=MY+RTGlDZBw1hjx9sCas5mVeVTtr+VfM/WJHDpsZ79Q=;
- b=PeBgsqqVaRWQ7K8rrfnnJ0NgooUnh+tdcPG8Bi2VWxmc1/JYSE8qGeoQ7orZw468vM
- Gnlz6cR7GtM/tcCq4+4Rmw3BE+mtUjq9WeNhjp/uQWXGfGEiWaRUdoihz8dVA1m2bX7T
- YDvw/Whv/3F7aUrosxbVDizSN8XT8R5C1OniHKRqqWiVK9fUZZLQUgtGNl95vKO3Q5Db
- RixKB8NNY8S3CKi22r192BfHbDQY9bcQY6p4bSIPoWUeCOaQuIvzX5jIc+1iNRVlQHJv
- T+Q1kgwjEUpI3egWB730AqUdJbdTlPOlIfzXRGldYUqVGL1ZmMjdtHv0pP437+jPw7oR
- NZUA==; darn=nongnu.org
+ b=SKWOcfeYCS0Dh1UL+3XTbBMICKXp+LcHhOGA72TaXf8pm75fiW/ZZXnqv/tSLzK6sc
+ /KKTsxZUQBiYy1pxN3aYVXT79Cn4BEP5fwnyjmiqX7doMn0DeWbyVaxqUYOOgVNsk8zF
+ J3L6KlX3pGboH2wvhuiEItdeA3xgZkiuf5pC9tWW+M4BNTqsOcZ/vFFlj7ZheCjHzx8/
+ ud73MGrnKHOZvDxhmILvfrO0Jgjc1YUbtjYaD8Ji5hu56tYvJkGz/GEqgjeQrN/U2V+w
+ cisjUOEYRVirrDjz5JDJ84H0MHsx2Ju65dngiR0q+QfTFognlb00UP4tDRUYepmdCOE7
+ /Aow==; darn=nongnu.org
 ARC-Authentication-Results: i=1; mx.google.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1785415292; x=1786020092; darn=nongnu.org;
+ d=linaro.org; s=google; t=1785415662; x=1786020462; darn=nongnu.org;
  h=content-type:cc:to:subject:message-id:date:from:in-reply-to
  :references:mime-version:from:to:cc:subject:date:message-id:reply-to
- :content-type; bh=vKRFXhqiLoxOpqsybCQzTM2w4BGpVQWtRIrpO0PPqLY=;
- b=XimoECa4cAmoPj+IBWREtVYr5NjJXm45Hv0wDSZyCHSv5Pyx0ZSCMRMGih+a/VbeQ4
- L71cBClwmrsKd7FV+cylfXb7qds45bpadWkmat/rtMhxnQViaRZ6CZs3mxkEKr2lqiwl
- a5EfKpsFLx6NYtCM5Nf2HDkuxFs16LJGmeo1BDcBnpIBF8ghhlOpKepB6+/Jvw0jwclE
- QcAF4OFd5xjO+UgOm5DA87BXkGsVvP6iLfBUFyixuDATF+mc1ZAjtNMHfJDxFNLybPtC
- ZJddI5PSwmCgyacPMoe0mKuVFnqCrUse9IX19s9wYMYYWUQdOCfRlHHTB1MrnFxyRUfH
- NmGg==
+ :content-type; bh=bxFdje7jjR+zvKahWORqDVEHGclh6x66ydhbsiz7wmg=;
+ b=kBiKj0r86LV/XON9DFSS/ZoHogQRNUTPjHBQc/Q0S/5RtbRfPuRZB5Ix2h9REKyhxT
+ NoHh8oAGgajXvkIioZpWmuEOV2OkcQLHXIlsIxQzGGhPnIT9pVl6Xtg6Qn5P7I/8vXDM
+ UdvshEC+o6Zfqu4UA7K4oUSTHfDZkoP2/aPjXzq2fvM/fvRqISHOXaAUYG1qIUBoa00N
+ GspxCPL8x2eFTlPMYokxCaxnKQlmDPQtMEavF+Jmfb/xwR0nRh6E9zh7aMxefRtFL0gl
+ L5nALqISqvUOfxacxhLYhirnIdrFiiEzGY9Id/GjeVPClXRPuIHHDYUXZhfFfVfl4Nt5
+ RaJg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1785415292; x=1786020092;
+ d=1e100.net; s=20251104; t=1785415662; x=1786020462;
  h=content-type:cc:to:subject:message-id:date:from:in-reply-to
  :references:mime-version:x-gm-gg:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to:content-type;
- bh=vKRFXhqiLoxOpqsybCQzTM2w4BGpVQWtRIrpO0PPqLY=;
- b=DfeNyG+XWb+yuvUZp8RmJJ0iNPQ4fy4qp/zo4OLlRV8h7eqcuJUTu2ideVPKErMLJi
- Y1ZOd42vEye+IBUnY8GBy6tXsQBaecytwMrdE9LeCrEVSNpwA1UGNY8NBeNh3WB8Ak6F
- 7Vp/U5i2/ob2RzcFkxEkZImvaK081ttBl7kZw/MzTvG6eUJOW+Su1MY9Gj/7sTJh48pz
- dI/NICkDNBy2aDhHFixAq1iStt8Dud7vYamBUC1OsR9GJt6lg0vXGynev5kdu3P9+4QW
- GmA1KDdAz/RN4td/v7QNE/FrI+70+mA8cF+vFu+WTuveJUWiqhadw9Zz5wDI/FLSAgR6
- G/7w==
-X-Gm-Message-State: AOJu0YzfcKtE6RxJInFM2/ezEs7qU8GgZoktuoLSRnOdv5gqbkwhkvzI
- JlPf7FjtaVvRHmQnsVApGeEez+X3hPdhavNWtfn4oKzLdlvPmuCakgDyzjSI0arWNc+LueW0sRy
- 01j3BqpQTEgi2yQKsSCOm/isqiumeRUn8FStTLxZZXENaIOmdh97Ks/g=
-X-Gm-Gg: AR+sD104ALEg5cWZSJvLqD0+/+mpMzx2PYGWsKBfTPYzDM+RLVbNZn3GEQQfACtOPT1
- hpTYSKEPCsCNVvHCC8Xlv/Pu4jscrQxhy8oB4jw4T1PBHTZvMSIFc9beXwsD3ukKI34HRR+tp91
- cYCYepNPJfp9SRd6hBA0+Sze+1u7ajrftqhUpg+ykwaqep2ifIKLi2QpBzyeELiy/q/cgxEv7UV
- mIrQ3vVRtUJvRcg9u1UrhzckzgjQ1Jo75Sm+CdRA1Lft+QVxxsmy/l75dK3cXJRWzC5nF8QZN4u
- y/IYcWYsteoxl/WELC8bA8t9Uv/phOw+8Tg5f1+7lMpAldFJV3Nz1Y9VNbdNtA+sb72xvu1VDbM
- tG7QvRNpmjwXUjdEirz+XZXOXxe6h/4mSBxi4yOo=
-X-Received: by 2002:a05:690c:6e90:b0:808:f9bb:3832 with SMTP id
- 00721157ae682-81fc1e626e0mr484807b3.22.1785415292150; Thu, 30 Jul 2026
- 05:41:32 -0700 (PDT)
+ bh=bxFdje7jjR+zvKahWORqDVEHGclh6x66ydhbsiz7wmg=;
+ b=YJUedcP6ElKCpdHNzptFnUn47hlxXHaxoKZYc40B62ehKCoB9l7VrHnDZoebBEeuoC
+ yY4LPtGk1uvWC1at9JkkNuCrFUPO55Wzm71eIx9gOTOxIbQjiQmMJWUh7vX3odcWnW8A
+ ekiW3q7JdG4NtsMW7ouUP5Cbm73Kz8/mG7mP397328kO9J+LyakyjNd1H6dy7LJA2JBR
+ +x2XwuLEeUpA3XpV8YkhZjArGTV+GL+DVHIYjYes0/t8Lm4nVQXa9/FJj/BdontHlxPU
+ VaK2Pjn1MRx8gFlckCarfwS8LC2048RCLUfRGpDaI/I8tczkVxUypVdNZb2qD2GmXe37
+ MOgQ==
+X-Gm-Message-State: AOJu0YwDpnhvgudOP7dYbToVhfEuTyeqlGF5bylpnuwmxYx1bko1nqrF
+ SD0BVL9rHkBgVlBlpT65evE4we9d0OnszMyh1aRAuwpRG2N2CIrdBSnrm7ho4eDNplZjOAWYVf6
+ nGwJ+TXxP1miz9NUVm0jLFR2q5GZlZTwlyhb2DcgGdw==
+X-Gm-Gg: AR+sD10PF+6q2LXbsdjngG8nGwcamUzaGTmp1tcJSWXs46xanBhz1u7W9kzFav3ZCTa
+ JXXzc4sI8jBe8rnhss2HhhsriIPD1QFaYUgq5t4yyKqqhk/g/GodrKpJvOkKPDW+T2RHTYBn2+r
+ C8K00IyGgMyskm53vd15sqzyJ+v7k3WmqjiRtp/+OtlFtBEPRauiTBc5T+Kaqasbwf/DRjeBCzz
+ s5vMtqKxgCiwoMPE75gXb/Tmcz+2gSc3Rr1UoPY1fEk/F4fNH3KgsX1zHcUMovaKKrUJRRmVYlH
+ lJBLbvd+woTZqVlbp9hgzmyj1ax+NAjuhIkhIQ83Lc0xY1Rrb9Kx/juYcf2GNmx1yf+kd/KSd7W
+ DZo0enx5zjD5oe+Ww24itTERAcCrx
+X-Received: by 2002:a05:690c:9a10:b0:81e:6a10:f904 with SMTP id
+ 00721157ae682-81fb8acc1demr15752097b3.45.1785415661447; Thu, 30 Jul 2026
+ 05:47:41 -0700 (PDT)
 MIME-Version: 1.0
 References: <20260729231325.3808993-1-titusr@google.com>
- <20260729231325.3808993-8-titusr@google.com>
-In-Reply-To: <20260729231325.3808993-8-titusr@google.com>
+ <20260729231325.3808993-5-titusr@google.com>
+In-Reply-To: <20260729231325.3808993-5-titusr@google.com>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 30 Jul 2026 13:41:20 +0100
-X-Gm-Features: AUfX_mxrkzOk3JN6XQCLNv1wBzAX5lhV4CsRs_nYeTZI5fOptDlcH_NkbouaO4A
-Message-ID: <CAFEAcA84j_n6MTAmwOkvQwNCq4TEL_zyGmSUc_6b=8i2VykTBA@mail.gmail.com>
-Subject: Re: [PATCH 7/8] hw/sensor: adm1266: expose vout_mode over QMP
+Date: Thu, 30 Jul 2026 13:47:29 +0100
+X-Gm-Features: AUfX_myktQa3A4Ln_TqTYZyhBnV8C3Zs9A7DubEX9NAW-SgJPwRN32D4fSLMQZA
+Message-ID: <CAFEAcA9JKz6e4j6+-14EtpWs=g_c-EYE2Ay3OfyikbWOiyX8Ug@mail.gmail.com>
+Subject: Re: [PATCH 4/8] hw/sensor: update adm1266 block transfers
 To: Titus Rwantare <titusr@google.com>
 Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, kfting@nuvoton.com, 
  imaginos32@gmail.com, wuhaotsh@google.com, philmd@mailo.com, 
  fanjason@google.com
 Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::112d;
- envelope-from=peter.maydell@linaro.org; helo=mail-yw1-x112d.google.com
-X-Spam_score_int: -19
-X-Spam_score: -2.0
+Received-SPF: pass client-ip=2607:f8b0:4864:20::1130;
+ envelope-from=peter.maydell@linaro.org; helo=mail-yw1-x1130.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.0 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FUZZY_MILLION=0.1,
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -119,75 +119,33 @@ Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
 On Thu, 30 Jul 2026 at 00:13, Titus Rwantare <titusr@google.com> wrote:
 >
-> The vout_mode registers can now be adjusted to allow a wider value range
-> in read_vout.
-> vout_mode is per pmbus page, therefore vout_mode[n] will affect
-> read_vout[n].
+> Fixes an issue with reading the MFR_* registers on the ADM1266, this
+> device has an unconventional access pattern where a block write of
+> length 1 is written to the MFR_* register with the length of the data
+> to be read back. Simultaneously, it is possible to write to the contents
+> of these registers so long as the block write is longer than 1.
 >
 > Signed-off-by: Titus Rwantare <titusr@google.com>
-> ---
->  hw/sensor/adm1266.c        |  8 ++++++++
->  tests/qtest/adm1266-test.c | 35 +++++++++++++++++++++++++++++++++++
->  2 files changed, 43 insertions(+)
+
+>  typedef struct ADM1266State {
+>      PMBusDevice parent;
+> +    uint8_t read_length;
 >
-> diff --git a/hw/sensor/adm1266.c b/hw/sensor/adm1266.c
-> index 80960dc1c4..1464307971 100644
-> --- a/hw/sensor/adm1266.c
-> +++ b/hw/sensor/adm1266.c
-> @@ -271,6 +271,8 @@ static void adm1266_get(Object *obj, Visitor *v, const char *name, void *opaque,
->          sscanf(name, "vout[%u]", &index);
->          mode = (PMBusVoutMode *)&pmdev->pages[index].vout_mode;
->          value = pmbus_linear_mode2milliunits(*(uint16_t *)opaque, mode->exp);
-> +    } else if (strncmp(name, "vout_mode", 9) == 0) {
-> +        value = *(uint8_t *)opaque;
->      } else {
->          value = *(uint16_t *)opaque;
->      }
-> @@ -293,6 +295,8 @@ static void adm1266_set(Object *obj, Visitor *v, const char *name, void *opaque,
->          sscanf(name, "vout[%u]", &index);
->          mode = (PMBusVoutMode *)&pmdev->pages[index].vout_mode;
->          *internal = pmbus_milliunits2linear_mode(value, mode->exp);
-> +    } else if (strncmp(name, "vout_mode", 9) == 0) {
-> +        *(uint8_t *)opaque = value;
->      } else {
->          *internal = value;
->      }
+>      char mfr_id[32];
+>      char mfr_model[32];
+>      char mfr_rev[8];
+> +    char mfr_location[48];
+> +    char mfr_date[16];
+> +    char mfr_serial[32];
 
-> @@ -321,6 +325,10 @@ static void adm1266_init(Object *obj)
->          object_property_add(obj, "vout[*]", "uint32",
->                              adm1266_get,
->                              adm1266_set, NULL, &pmdev->pages[i].read_vout);
-> +
-> +        object_property_add(obj, "vout_mode[*]", "uint32",
-> +                            adm1266_get,
-> +                            adm1266_set, NULL, &pmdev->pages[i].vout_mode);
->      }
->  }
+This patch seems to be doing two things at once:
+(1) fix the semantics of the accesses to the MFR registers
+(2) add missing location/date/serial registers
 
-
-Better to give the vout_mode[] property its own get/set functions
-rather than using the existing ones and then having to figure
-out which property is being accessed by using string comparisons.
-
-
-> +static void test_vout_mode_qmp(void *obj, void *data,
-> +                                    QGuestAllocator *alloc)
-> +{
-> +    uint16_t i2c_value, value, expected;
-> +    QI2CDevice *i2cdev = (QI2CDevice *)obj;
-> +    ADM1266VoutMode m;
-> +    char *path;
-> +
-> +    /* set a different exponent per page and a different value */
-> +    for (int i = 0; i < ADM1266_NUM_PAGES; i++) {
-> +        expected = 1000 * (i * 2);
-> +        m.mode.exp = i - 14;
-> +        path = g_strdup_printf("vout_mode[%d]", i);
-> +        qmp_adm1266_set(TEST_ID, path, m.raw);
-> +        path = g_strdup_printf("vout[%d]", i);
-> +        qmp_adm1266_set(TEST_ID, path, expected);
-
-More string leaks in these test functions.
+Please split it so we do these things in separate patches.
+(Notably, part (2) depends on patch 3 in this series, but
+I think a fix to (1) does not; we might want to mark the
+bugfix part for backports to stable.)
 
 thanks
 -- PMM

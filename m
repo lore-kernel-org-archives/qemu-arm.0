@@ -4,103 +4,102 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8F117C55165
-	for <qemu-arm@archiver.kernel.org>; Thu, 30 Jul 2026 12:40:23 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 13705C55165
+	for <qemu-arm@archiver.kernel.org>; Thu, 30 Jul 2026 12:42:00 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wpQ3R-0002wr-IX; Thu, 30 Jul 2026 08:40:05 -0400
+	id 1wpQ4z-0003jB-Cu; Thu, 30 Jul 2026 08:41:41 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1wpQ3Q-0002wf-0q
- for qemu-arm@nongnu.org; Thu, 30 Jul 2026 08:40:04 -0400
-Received: from mail-yx1-xb133.google.com ([2607:f8b0:4864:20::b133])
+ id 1wpQ4v-0003iZ-Kr
+ for qemu-arm@nongnu.org; Thu, 30 Jul 2026 08:41:38 -0400
+Received: from mail-yw1-x112d.google.com ([2607:f8b0:4864:20::112d])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1wpQ3O-0004Wh-D5
- for qemu-arm@nongnu.org; Thu, 30 Jul 2026 08:40:03 -0400
-Received: by mail-yx1-xb133.google.com with SMTP id
- 956f58d0204a3-66807ba2f0fso2906411d50.3
- for <qemu-arm@nongnu.org>; Thu, 30 Jul 2026 05:40:01 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1785415201; cv=none;
+ id 1wpQ4r-0005i7-O3
+ for qemu-arm@nongnu.org; Thu, 30 Jul 2026 08:41:36 -0400
+Received: by mail-yw1-x112d.google.com with SMTP id
+ 00721157ae682-81eff3ddba4so31434317b3.3
+ for <qemu-arm@nongnu.org>; Thu, 30 Jul 2026 05:41:33 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1785415292; cv=none;
  d=google.com; s=arc-20260327;
- b=T3WiZIL7zHlwPUmlqygtRkbYAJGkqIcgvaYEY59g9EDe5x4jf5Ec3EiYDgWE6uk8zk
- lERhlNTr7YjF0j7qH4DyhpkWdoB37YhZwkCrpaDmjekAcR+tvCS2euRLtrn7pbDkKRWj
- jnz4FP3t/0A3DvBmsZPSvgaCJCTn5me94ixlbN0LvuQI+aEZ+EsqQuhsGh47d3pbSMk2
- vJjocHb4V/GiR9oOfelsvpKnuVJyH0djpTc7NY77f+ItuqoBOJ21d9mjZwQX2PmOroF7
- T114pSH2k+Pu1bbPPgEqPmtmomNWZxPUCN6udgAwmaZC6cVk0Fw9lX02u0dbLnmH6PoS
- 9pMA==
+ b=FobBE+2sr2UrEvxm1yP5joVjPyuHoXAimmn/bF33dgnLUcbsQvrYigfcz8mRto2Y01
+ bwNAi5msO1pcrdpTjIr4UAhIqM8m0Tgsxvhjx2LvaLxiuo7E8jqa+AAG6mTpwt76ch1F
+ CBDjIIMQzyhQy+gD2zjgRjpuAHHvpbw9WIiGhJIv8R3GhCsXobPXCG50dr6N9AVYpa2i
+ DauROtezbD0dFjEWkDY9cMqGHesc49w9CvbpoF2swcPxT+lItxm79iU1S997aPVWco3m
+ 7W2nzB/JSK29OFmzX0j/TVBVfbibHsOLRxTCyi4dgmoq2Hw96/LV+j9lLaUVl7uTBGKe
+ cVpg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
  s=arc-20260327; 
  h=cc:to:subject:message-id:date:from:in-reply-to:references
  :mime-version:dkim-signature;
- bh=/d6Inj6/U9LCwohs9S3aJ6OqLl/tb/tS0IkpZC/3DCo=;
+ bh=vKRFXhqiLoxOpqsybCQzTM2w4BGpVQWtRIrpO0PPqLY=;
  fh=MY+RTGlDZBw1hjx9sCas5mVeVTtr+VfM/WJHDpsZ79Q=;
- b=eN94SkaMHhhmg8DUZAa3ItdAm/7EduV8AIUUvYNAU5sY1ku3HekgJVpV/eBfBAhLhI
- EbEpzbD+6/2coAlzhKPZQFBxb/jMb2xkpSorcCjp+Sp07FrMcDtjFS9/KXtB+5FSbZk8
- naMny7qJ9zH8SYwf4Ugher1a+Gl2kH3zA/JHucp76ILWlrq762SNwibpwYBxLLSOu3ud
- hWXNILGXfgmEpt98tALuSdlwTJuSG/srZyQeNmQA1tSDDs9w9hVWZDHb7wYE7ijSoop4
- AQPlM5jvBBB8XxkYfJN/ODcYhXx/Ksb8wYUhC289Q1LC/szXXMbL+L/CI14WH/jSqR0G
- Xf7A==; darn=nongnu.org
+ b=PeBgsqqVaRWQ7K8rrfnnJ0NgooUnh+tdcPG8Bi2VWxmc1/JYSE8qGeoQ7orZw468vM
+ Gnlz6cR7GtM/tcCq4+4Rmw3BE+mtUjq9WeNhjp/uQWXGfGEiWaRUdoihz8dVA1m2bX7T
+ YDvw/Whv/3F7aUrosxbVDizSN8XT8R5C1OniHKRqqWiVK9fUZZLQUgtGNl95vKO3Q5Db
+ RixKB8NNY8S3CKi22r192BfHbDQY9bcQY6p4bSIPoWUeCOaQuIvzX5jIc+1iNRVlQHJv
+ T+Q1kgwjEUpI3egWB730AqUdJbdTlPOlIfzXRGldYUqVGL1ZmMjdtHv0pP437+jPw7oR
+ NZUA==; darn=nongnu.org
 ARC-Authentication-Results: i=1; mx.google.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1785415201; x=1786020001; darn=nongnu.org;
+ d=linaro.org; s=google; t=1785415292; x=1786020092; darn=nongnu.org;
  h=content-type:cc:to:subject:message-id:date:from:in-reply-to
  :references:mime-version:from:to:cc:subject:date:message-id:reply-to
- :content-type; bh=/d6Inj6/U9LCwohs9S3aJ6OqLl/tb/tS0IkpZC/3DCo=;
- b=PH/X1CjiaXw1kf56/ZTETi05T3H1RkFWxlwZ0ZIOqgSJoX9yfGfk2+ab6VsSAfukKF
- bEXCqiaEO/cBvjXK75KEfxIzblGh+37NBtv/xCydb4bmVu7pQccHgFuwGasH+MXQPmSW
- kfTruPPTQgOW37kgZB2SbPpOicG5gpcU6Qk6cXVt8Sn31toTOSJyAWAZMYvBFs2NbzQP
- D2kv/CvgdVRT92V+KwGKch/SYNbCKd999kjtHxVg1dvyOLDfdgOvEHIpm2pdtwZE2vmz
- H1V7v4YcBUb8wyrFDmqg2Waa8IefF331kPRZckiyfXjppRXm1Vg24zY76RALG745CSF0
- 10nA==
+ :content-type; bh=vKRFXhqiLoxOpqsybCQzTM2w4BGpVQWtRIrpO0PPqLY=;
+ b=XimoECa4cAmoPj+IBWREtVYr5NjJXm45Hv0wDSZyCHSv5Pyx0ZSCMRMGih+a/VbeQ4
+ L71cBClwmrsKd7FV+cylfXb7qds45bpadWkmat/rtMhxnQViaRZ6CZs3mxkEKr2lqiwl
+ a5EfKpsFLx6NYtCM5Nf2HDkuxFs16LJGmeo1BDcBnpIBF8ghhlOpKepB6+/Jvw0jwclE
+ QcAF4OFd5xjO+UgOm5DA87BXkGsVvP6iLfBUFyixuDATF+mc1ZAjtNMHfJDxFNLybPtC
+ ZJddI5PSwmCgyacPMoe0mKuVFnqCrUse9IX19s9wYMYYWUQdOCfRlHHTB1MrnFxyRUfH
+ NmGg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1785415201; x=1786020001;
+ d=1e100.net; s=20251104; t=1785415292; x=1786020092;
  h=content-type:cc:to:subject:message-id:date:from:in-reply-to
  :references:mime-version:x-gm-gg:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to:content-type;
- bh=/d6Inj6/U9LCwohs9S3aJ6OqLl/tb/tS0IkpZC/3DCo=;
- b=Y2q+A3ESa4DbG9MOVea3IQVXjZCNVh3q86zOc42OkQnu3BXakvnv2WioMR+rJkLXYW
- Gt63SycSL0aXnbntzJ1trqC+p67uZa2KVaRFC3al9aRURRL4/bgDKij4oPA8BTGROBGe
- 2N6tv71HiJkhe+QZtKHLKTd4PqqUY6lrpN0Rv+WhC6pk1VZMcgYx45t7WRLJyAGY8teX
- ZZfERkrXclY4ClazzSoyDg+QgsPT0dRORClNkGrfkf+QW/yefQQp9BSKujO14jjSNaDr
- 4r/QZIwgmd5b/hkZr4U1QJFfdU+ZO6l9c0UboiPGgFIzYKRJz5iCkjY7Z/SN9oOan6Qa
- uV+A==
-X-Gm-Message-State: AOJu0YzMpNajyH9gcSiCKnXIKVekbWDMArkqts5Cc587hBX2yuDumZe9
- ZZk7I0iz5nYBlahabcnrw27WvZYU9P2R0WeABxuwfw9nTpIZSxSMsPMkdbELsF1uMNa5sAj21rj
- APsgY0HmNSr3lWBI/ctHH59D0m3cd9wq2MaMadxVytg==
-X-Gm-Gg: AR+sD1003XVHN5x8rF3rfB8EcNIcdA04apoa/PiLoio4YhEH8LKbmk4389K2QtfoI05
- 6UxgBpgXtVAONVDyXuysoBWXiauvqauBRFA3Uq2wpUx8JJmvt2xjS3P9H4LKmyYjpXDKnexlLPx
- IGxz92+qWr8JSKUGKsPxpjUEhj8VY+SfdX2zEEt/06M/WNyw2dUUbpmxZvR/fbgRddI/KGnK33u
- TlhJba5yjeNoNEq9kBfHkFXUO67D2z6N4CwZTjhYNfBp2Ipen+QkprlGBNY+y9NyqKRlB+BwpIM
- gVVrKo4PY9J6SK/Tj6v+9xAtsm5rIMLdQzzTJQc/Z/YxriapOYUMOW0j/Lv265fxTWZ2J4ubeoA
- bGt/nmB1Fhc4VXOKdZFU4LTmH/U4ccw==
-X-Received: by 2002:a53:a684:0:b0:667:a1d6:9c33 with SMTP id
- 956f58d0204a3-6692f6ec6f2mr1233995d50.69.1785415200740; Thu, 30 Jul 2026
- 05:40:00 -0700 (PDT)
+ bh=vKRFXhqiLoxOpqsybCQzTM2w4BGpVQWtRIrpO0PPqLY=;
+ b=DfeNyG+XWb+yuvUZp8RmJJ0iNPQ4fy4qp/zo4OLlRV8h7eqcuJUTu2ideVPKErMLJi
+ Y1ZOd42vEye+IBUnY8GBy6tXsQBaecytwMrdE9LeCrEVSNpwA1UGNY8NBeNh3WB8Ak6F
+ 7Vp/U5i2/ob2RzcFkxEkZImvaK081ttBl7kZw/MzTvG6eUJOW+Su1MY9Gj/7sTJh48pz
+ dI/NICkDNBy2aDhHFixAq1iStt8Dud7vYamBUC1OsR9GJt6lg0vXGynev5kdu3P9+4QW
+ GmA1KDdAz/RN4td/v7QNE/FrI+70+mA8cF+vFu+WTuveJUWiqhadw9Zz5wDI/FLSAgR6
+ G/7w==
+X-Gm-Message-State: AOJu0YzfcKtE6RxJInFM2/ezEs7qU8GgZoktuoLSRnOdv5gqbkwhkvzI
+ JlPf7FjtaVvRHmQnsVApGeEez+X3hPdhavNWtfn4oKzLdlvPmuCakgDyzjSI0arWNc+LueW0sRy
+ 01j3BqpQTEgi2yQKsSCOm/isqiumeRUn8FStTLxZZXENaIOmdh97Ks/g=
+X-Gm-Gg: AR+sD104ALEg5cWZSJvLqD0+/+mpMzx2PYGWsKBfTPYzDM+RLVbNZn3GEQQfACtOPT1
+ hpTYSKEPCsCNVvHCC8Xlv/Pu4jscrQxhy8oB4jw4T1PBHTZvMSIFc9beXwsD3ukKI34HRR+tp91
+ cYCYepNPJfp9SRd6hBA0+Sze+1u7ajrftqhUpg+ykwaqep2ifIKLi2QpBzyeELiy/q/cgxEv7UV
+ mIrQ3vVRtUJvRcg9u1UrhzckzgjQ1Jo75Sm+CdRA1Lft+QVxxsmy/l75dK3cXJRWzC5nF8QZN4u
+ y/IYcWYsteoxl/WELC8bA8t9Uv/phOw+8Tg5f1+7lMpAldFJV3Nz1Y9VNbdNtA+sb72xvu1VDbM
+ tG7QvRNpmjwXUjdEirz+XZXOXxe6h/4mSBxi4yOo=
+X-Received: by 2002:a05:690c:6e90:b0:808:f9bb:3832 with SMTP id
+ 00721157ae682-81fc1e626e0mr484807b3.22.1785415292150; Thu, 30 Jul 2026
+ 05:41:32 -0700 (PDT)
 MIME-Version: 1.0
 References: <20260729231325.3808993-1-titusr@google.com>
- <20260729231325.3808993-7-titusr@google.com>
-In-Reply-To: <20260729231325.3808993-7-titusr@google.com>
+ <20260729231325.3808993-8-titusr@google.com>
+In-Reply-To: <20260729231325.3808993-8-titusr@google.com>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 30 Jul 2026 13:39:48 +0100
-X-Gm-Features: AUfX_mzS82PqNIcUfzgtqZbYbsM3lsTFrmm4fd5R0HXY4t8srKkA1Fgop-s7k30
-Message-ID: <CAFEAcA9X+jQu9DtPoszcoa=wdJSPuxZtvA0j1BFJ2bzNQkWWww@mail.gmail.com>
-Subject: Re: [PATCH 6/8] hw/i2c: fix VOUT_MODE representation on little-endian
- machines
+Date: Thu, 30 Jul 2026 13:41:20 +0100
+X-Gm-Features: AUfX_mxrkzOk3JN6XQCLNv1wBzAX5lhV4CsRs_nYeTZI5fOptDlcH_NkbouaO4A
+Message-ID: <CAFEAcA84j_n6MTAmwOkvQwNCq4TEL_zyGmSUc_6b=8i2VykTBA@mail.gmail.com>
+Subject: Re: [PATCH 7/8] hw/sensor: adm1266: expose vout_mode over QMP
 To: Titus Rwantare <titusr@google.com>
 Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, kfting@nuvoton.com, 
  imaginos32@gmail.com, wuhaotsh@google.com, philmd@mailo.com, 
  fanjason@google.com
 Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::b133;
- envelope-from=peter.maydell@linaro.org; helo=mail-yx1-xb133.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
+Received-SPF: pass client-ip=2607:f8b0:4864:20::112d;
+ envelope-from=peter.maydell@linaro.org; helo=mail-yw1-x112d.google.com
+X-Spam_score_int: -19
+X-Spam_score: -2.0
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+X-Spam_report: (-2.0 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FUZZY_MILLION=0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
@@ -120,40 +119,75 @@ Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
 On Thu, 30 Jul 2026 at 00:13, Titus Rwantare <titusr@google.com> wrote:
 >
-> From: Jason Fan <fanjason@google.com>
->
-> Even though VOUT_MODE is only one byte, bitfields are allocated in the
-> order specific to the host's endianness.
+> The vout_mode registers can now be adjusted to allow a wider value range
+> in read_vout.
+> vout_mode is per pmbus page, therefore vout_mode[n] will affect
+> read_vout[n].
 >
 > Signed-off-by: Titus Rwantare <titusr@google.com>
-> Signed-off-by: Jason Fan <fanjason@google.com>
 > ---
->  include/hw/i2c/pmbus_device.h | 7 +++++++
->  1 file changed, 7 insertions(+)
+>  hw/sensor/adm1266.c        |  8 ++++++++
+>  tests/qtest/adm1266-test.c | 35 +++++++++++++++++++++++++++++++++++
+>  2 files changed, 43 insertions(+)
 >
-> diff --git a/include/hw/i2c/pmbus_device.h b/include/hw/i2c/pmbus_device.h
-> index 9f3569e997..03b2c21c19 100644
-> --- a/include/hw/i2c/pmbus_device.h
-> +++ b/include/hw/i2c/pmbus_device.h
-> @@ -449,10 +449,17 @@ typedef struct PMBusCoefficients {
->  /**
->   * VOUT_Mode bit fields
->   */
-> +#if HOST_BIG_ENDIAN
->  typedef struct PMBusVoutMode {
->      uint8_t  mode:3;
->      int8_t   exp:5;
->  } PMBusVoutMode;
-> +# else
-> +typedef struct PMBusVoutMode {
-> +    int8_t   exp:5;
-> +    uint8_t  mode:3;
-> +} PMBusVoutMode;
-> +#endif
+> diff --git a/hw/sensor/adm1266.c b/hw/sensor/adm1266.c
+> index 80960dc1c4..1464307971 100644
+> --- a/hw/sensor/adm1266.c
+> +++ b/hw/sensor/adm1266.c
+> @@ -271,6 +271,8 @@ static void adm1266_get(Object *obj, Visitor *v, const char *name, void *opaque,
+>          sscanf(name, "vout[%u]", &index);
+>          mode = (PMBusVoutMode *)&pmdev->pages[index].vout_mode;
+>          value = pmbus_linear_mode2milliunits(*(uint16_t *)opaque, mode->exp);
+> +    } else if (strncmp(name, "vout_mode", 9) == 0) {
+> +        value = *(uint8_t *)opaque;
+>      } else {
+>          value = *(uint16_t *)opaque;
+>      }
+> @@ -293,6 +295,8 @@ static void adm1266_set(Object *obj, Visitor *v, const char *name, void *opaque,
+>          sscanf(name, "vout[%u]", &index);
+>          mode = (PMBusVoutMode *)&pmdev->pages[index].vout_mode;
+>          *internal = pmbus_milliunits2linear_mode(value, mode->exp);
+> +    } else if (strncmp(name, "vout_mode", 9) == 0) {
+> +        *(uint8_t *)opaque = value;
+>      } else {
+>          *internal = value;
+>      }
 
-This is why where possible we don't use C bitfields for guest
-data structures. Better to use the FIELD macros from
-include/hw/core/registerfields.h.
+> @@ -321,6 +325,10 @@ static void adm1266_init(Object *obj)
+>          object_property_add(obj, "vout[*]", "uint32",
+>                              adm1266_get,
+>                              adm1266_set, NULL, &pmdev->pages[i].read_vout);
+> +
+> +        object_property_add(obj, "vout_mode[*]", "uint32",
+> +                            adm1266_get,
+> +                            adm1266_set, NULL, &pmdev->pages[i].vout_mode);
+>      }
+>  }
+
+
+Better to give the vout_mode[] property its own get/set functions
+rather than using the existing ones and then having to figure
+out which property is being accessed by using string comparisons.
+
+
+> +static void test_vout_mode_qmp(void *obj, void *data,
+> +                                    QGuestAllocator *alloc)
+> +{
+> +    uint16_t i2c_value, value, expected;
+> +    QI2CDevice *i2cdev = (QI2CDevice *)obj;
+> +    ADM1266VoutMode m;
+> +    char *path;
+> +
+> +    /* set a different exponent per page and a different value */
+> +    for (int i = 0; i < ADM1266_NUM_PAGES; i++) {
+> +        expected = 1000 * (i * 2);
+> +        m.mode.exp = i - 14;
+> +        path = g_strdup_printf("vout_mode[%d]", i);
+> +        qmp_adm1266_set(TEST_ID, path, m.raw);
+> +        path = g_strdup_printf("vout[%d]", i);
+> +        qmp_adm1266_set(TEST_ID, path, expected);
+
+More string leaks in these test functions.
 
 thanks
 -- PMM

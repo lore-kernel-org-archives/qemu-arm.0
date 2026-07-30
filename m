@@ -4,55 +4,55 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 60F7BC5516E
-	for <qemu-arm@archiver.kernel.org>; Thu, 30 Jul 2026 20:11:42 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 06BFAC55171
+	for <qemu-arm@archiver.kernel.org>; Thu, 30 Jul 2026 20:11:44 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wpX5S-0004Su-Kk; Thu, 30 Jul 2026 16:10:38 -0400
+	id 1wpX5B-0004Ff-V1; Thu, 30 Jul 2026 16:10:21 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mikail.sadic@ibm.com>)
- id 1wpX5R-0004Ri-24; Thu, 30 Jul 2026 16:10:37 -0400
+ id 1wpX5A-00049j-HM; Thu, 30 Jul 2026 16:10:20 -0400
 Received: from mx0a-001b2d01.pphosted.com ([148.163.156.1])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mikail.sadic@ibm.com>)
- id 1wpX5O-0001hy-M4; Thu, 30 Jul 2026 16:10:36 -0400
-Received: from pps.filterd (m0353729.ppops.net [127.0.0.1])
+ id 1wpX58-0001gd-2T; Thu, 30 Jul 2026 16:10:20 -0400
+Received: from pps.filterd (m0360083.ppops.net [127.0.0.1])
  by mx0a-001b2d01.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id
- 66UJmH4L2081231; Thu, 30 Jul 2026 20:09:53 GMT
+ 66UJlwGw3942870; Thu, 30 Jul 2026 20:09:53 GMT
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ibm.com; h=cc
  :content-transfer-encoding:date:from:in-reply-to:message-id
- :mime-version:references:subject:to; s=pp1; bh=FWH5fKEXgV1pyhFdq
- EV8/wNsqC10HjLI7+sxkBzqIC8=; b=LpH/8kojEHKnDEqZ3UDHpDV/hhbnEN0X2
- zQ8znmDfXpIr8kK6PgnqDocfeyR9lu3cilXJ1aNlgZ2i1ROdlTRlGgekpNM/VwLK
- sR5D4fae7YHbfph1xcBTirjIF0Ee4vAAio9kldcqPekpkKHeqHUySurYEX5zglRf
- a9fY6pQgnJ1PfZ6ZYgWuY6uNfuP17oANrhQGZrdrTc8qDoc5Cl9e731bl07y5jXG
- ky59ZAAhTuP8WRXN1xDAICy2AOjAxiP7ZTXzBqqaPHkd8IXsjTofAwqez6MdQN/u
- fNG8eiqbjKae/eVOEoP2emVnVPPNkdW4KMTM9PIDmWfhS8f6Wn1iQ==
-Received: from ppma13.dal12v.mail.ibm.com
- (dd.9e.1632.ip4.static.sl-reverse.com [50.22.158.221])
- by mx0a-001b2d01.pphosted.com (PPS) with ESMTPS id 4fmuycsmhu-1
+ :mime-version:references:subject:to; s=pp1; bh=uxKVfcDIfxxH5N5G4
+ 79uiCdHgCaCC04SuPYebfocHYM=; b=mFq2ExReLtcjL+TcHqMUriDcdjimEYPfT
+ qSUQiqOvBQchn+fz3lbrSIOFRxucZbpTOKbqA00IQYj6rOBVSbe11u74GZdL65Mr
+ ahWdV5gMC2BfQwKfOkd8YUwEUmJ61q2vKk+MLtuK2gjMsxbl2R2XwmQsAIg3O11c
+ UCOeigiGLE6zJ1LynwPGLMDBVzgP25mLGxYrpdJVLzfttQuDtePf3eJJ4K8DOy6X
+ TnNBR7sAnGCN22otpd1YjzhOKZT/xDC0BKIsTfFDsxSPO3hQycHEDebPizJOPFxR
+ FW7p9GfkbBjNjxeOKP+UxHJpqyp5Z0yYrnwFEd9R8+7slhnxFmueQ==
+Received: from ppma21.wdc07v.mail.ibm.com
+ (5b.69.3da9.ip4.static.sl-reverse.com [169.61.105.91])
+ by mx0a-001b2d01.pphosted.com (PPS) with ESMTPS id 4fmuw7sper-1
  (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
  Thu, 30 Jul 2026 20:09:52 +0000 (GMT)
-Received: from pps.filterd (ppma13.dal12v.mail.ibm.com [127.0.0.1])
- by ppma13.dal12v.mail.ibm.com (8.18.1.7/8.18.1.7) with ESMTP id 66UJuFfK017022;
- Thu, 30 Jul 2026 20:09:52 GMT
-Received: from smtprelay07.wdc07v.mail.ibm.com ([172.16.1.74])
- by ppma13.dal12v.mail.ibm.com (PPS) with ESMTPS id 4fn9pgmsm1-1
+Received: from pps.filterd (ppma21.wdc07v.mail.ibm.com [127.0.0.1])
+ by ppma21.wdc07v.mail.ibm.com (8.18.1.7/8.18.1.7) with ESMTP id 66UJuIMt028370;
+ Thu, 30 Jul 2026 20:09:51 GMT
+Received: from smtprelay06.wdc07v.mail.ibm.com ([172.16.1.73])
+ by ppma21.wdc07v.mail.ibm.com (PPS) with ESMTPS id 4fn8fkcy7h-1
  (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
  Thu, 30 Jul 2026 20:09:51 +0000 (GMT)
 Received: from smtpav06.dal12v.mail.ibm.com (smtpav06.dal12v.mail.ibm.com
  [10.241.53.105])
- by smtprelay07.wdc07v.mail.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id
- 66UK9orw5964432
+ by smtprelay06.wdc07v.mail.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id
+ 66UK9nBh10093296
  (version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
  Thu, 30 Jul 2026 20:09:50 GMT
 Received: from smtpav06.dal12v.mail.ibm.com (unknown [127.0.0.1])
- by IMSVA (Postfix) with ESMTP id 143C158043;
- Thu, 30 Jul 2026 20:09:50 +0000 (GMT)
+ by IMSVA (Postfix) with ESMTP id A62E858055;
+ Thu, 30 Jul 2026 20:09:49 +0000 (GMT)
 Received: from smtpav06.dal12v.mail.ibm.com (unknown [127.0.0.1])
- by IMSVA (Postfix) with ESMTP id AE0BB58059;
+ by IMSVA (Postfix) with ESMTP id 4CABF5805D;
  Thu, 30 Jul 2026 20:09:49 +0000 (GMT)
 Received: from IBM-MFS.atx-us.ibm.com (unknown [9.16.49.87])
  by smtpav06.dal12v.mail.ibm.com (Postfix) with ESMTP;
@@ -65,9 +65,9 @@ Cc: Mikail Sadic <mikail.sadic@ibm.com>, pbonzini@redhat.com,
  jamin_lin@aspeedtech.com, kane_chen@aspeedtech.com,
  andrew@codeconstruct.com.au, joel@jms.id.au, calebs@linux.ibm.com,
  milesg@linux.ibm.com, qemu-arm@nongnu.org, qemu-devel@nongnu.org
-Subject: [PATCH v2 7/8] ufs/aspeed: Add AST2700 sysbus UFS frontend
-Date: Thu, 30 Jul 2026 15:09:42 -0500
-Message-ID: <20260730200945.1113936-8-mikail.sadic@ibm.com>
+Subject: [PATCH v2 6/8] ufs: Refactor common core out of the PCI implementation
+Date: Thu, 30 Jul 2026 15:09:41 -0500
+Message-ID: <20260730200945.1113936-7-mikail.sadic@ibm.com>
 X-Mailer: git-send-email 2.53.0
 In-Reply-To: <20260730200945.1113936-1-mikail.sadic@ibm.com>
 References: <20260730200945.1113936-1-mikail.sadic@ibm.com>
@@ -75,32 +75,32 @@ MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-TM-AS-GCONF: 00
 X-Proofpoint-Reinject: loops=2 maxloops=12
-X-Proofpoint-ORIG-GUID: YEVZtXDm-DSnWaz_85lEP0r0jnetkZSi
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwNzMwMDE0NSBTYWx0ZWRfX0WxJXGdwxGl2
- 3LcIarXuILV4maGCeYZPYwLDYm8OQjRCOBm+AI+r8Sk+jnqIsLgh2Z9XybiK9QWayB23BJsq90F
- d0rTOsmAZyND2DSuQti2qsusDKBrjv6o2qiHA78GEj5ztieBijW0UC7vL0Wjxg21hFeyzHq2obF
- eSQ7l+gW9PdAb8jde2pPYiCVKqsyabtGklz7ZzCEL9fk9p813xUnbdmBC9rKYeAzUXRSQXWlxXD
- 3DaZxfyHrCZt02ibMIdCoursYHn6QYcNouTz7dwES0qMMjzZW3iU6993eqAY7HxNr5PyMBENUrq
- +Wicz0G8tpONw29M8kJqhu6xKFnx6AKUspJ1KrspmhpdZNy4fDwn/LA6Qlua9zb72ypJoPFIiqu
- vCXN04iFPKQI8lqgAp1dWWwTdrhXvyFSC1nndCyZJS+vbVPm5y1B7DHruko1iv/m7eV8WBnPD0P
- u5IvE94mY1zhHFGwwGA==
-X-Proofpoint-Spam-Info: AW1haW4tMjYwNzMwMDE0NSBTYWx0ZWRfXzwrId/mPb1pB
- 2CU8+116k4eY/OQw6IwcyJXBHbakk6IdqRJzOuc2qcRs+L0kwNHIy1fbczCe7ed23oG1k5QRHom
- iq9B3w9wiAyuWEZs1uDY4l8XQWabM3U=
-X-Authority-Analysis: v=2.4 cv=AZeB2XXG c=1 sm=1 tr=0 ts=6a6baf91 cx=c_pps
- a=AfN7/Ok6k8XGzOShvHwTGQ==:117 a=AfN7/Ok6k8XGzOShvHwTGQ==:17
+X-Proofpoint-GUID: N6T7vCFdgHz0h05ezm_pZMH1CUtYKTDe
+X-Proofpoint-ORIG-GUID: rD6K3qn1ULoXr1rIJK3nyzrMtlBA5hvU
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwNzMwMDE0NSBTYWx0ZWRfXw2WAqLXRzuBd
+ C8r+ouGTury83qD1OttTgr+NL5CbTlkv3MvDMJpDfbvYUidsf7YGcxM4uoF80piW4tAUgZCgtSh
+ z//oMpnl43yS18L+XjCTKk5FAZW+jA6YTo1+iot9BCixQrIegUEXaBBTsmPGq9tUmGv7RzF59Zn
+ Pyr6gO8amePqylK05D4h6tpR6W9R1QyRv7Zh5B8LFAHc5Y84dyox6v3dv9Z+hnN5C8zyZhdtSQN
+ +AZgn3uDGDEMYb7WyZAV1plAhWvPmuHNEKDp56adTxL3+lNzNkg4fi0tHB+n9S92a5uOeKZoqbr
+ i/CY33GxSf6XeDKzQsptvS3qAKLDWBwVwWpkzvbs9SmMb4ahF19gtU66U08yMtbqGDEVgDpXOiR
+ RECdK1DZYg8hCNdpZjWgo+D7gBVhuyaYkwwzP92nC/d3gX5zNOZmIIf23IVM/pItu/mu1I59tQD
+ IgzTU5yRV6pe5Bvj3bA==
+X-Authority-Analysis: v=2.4 cv=SKFykuvH c=1 sm=1 tr=0 ts=6a6baf90 cx=c_pps
+ a=GFwsV6G8L6GxiO2Y/PsHdQ==:117 a=GFwsV6G8L6GxiO2Y/PsHdQ==:17
  a=RAioF0-LDSMA:10 a=VkNPw1HP01LnGYTKEx00:22 a=RnoormkPH1_aCDwRdu11:22
- a=uAbxVGIbfxUO_5tXvNgY:22 a=VnNF1IyMAAAA:8 a=hD80L64hAAAA:8
- a=3Ht_1UATksvqfbOLzXUA:9
-X-Proofpoint-GUID: C8vwfhOB7860XLOsy7cT3YYkMREV46q5
+ a=iQ6ETzBq9ecOQQE5vZCe:22 a=VnNF1IyMAAAA:8 a=zbKmmB3fWhTtxL3vfSwA:9
+X-Proofpoint-Spam-Info: AW1haW4tMjYwNzMwMDE0NSBTYWx0ZWRfX3R6ir9WV2NlF
+ dwVX8VV1PYxLnevLVISErUDiCn4fFPT/HC3CIdPttGwZTI4lEwP70lhg9bqSb7NeCM3bEZE/kKD
+ VkpQN/VMlcTW3dcSs1Ra/QJnEeAgdR4=
 X-Proofpoint-Virus-Version: vendor=baseguard
  engine=ICAP:2.0.293,Aquarius:18.0.1143,Hydra:6.1.134,FMLib:17.12.100.49
  definitions=2026-07-30_06,2026-07-30_01,2025-10-01_01
 X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
- spamscore=0 priorityscore=1501 phishscore=0 adultscore=0 impostorscore=0
- clxscore=1015 malwarescore=0 suspectscore=0 lowpriorityscore=0 bulkscore=0
- classifier=typeunknown authscore=0 authtc= authcc= route=outbound adjust=0
- reason=mlx scancount=1 engine=8.22.0-2606150000 definitions=main-2607300145
+ priorityscore=1501 malwarescore=0 clxscore=1015 adultscore=0
+ lowpriorityscore=0 bulkscore=0 impostorscore=0 phishscore=0 spamscore=0
+ suspectscore=0 classifier=typeunknown authscore=0 authtc= authcc=
+ route=outbound adjust=0 reason=mlx scancount=1 engine=8.22.0-2606150000
+ definitions=main-2607300145
 Received-SPF: pass client-ip=148.163.156.1; envelope-from=mikail.sadic@ibm.com;
  helo=mx0a-001b2d01.pphosted.com
 X-Spam_score_int: -27
@@ -125,329 +125,322 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Add TYPE_ASPEED_UFS, a sysbus frontend around the common UFS core,
-and wire it into the AST2700 SoC. The frontend reuses UfsHc
-(instance_size = sizeof(UfsHc)), sets dma_as to address_space_memory,
-and calls ufs_realize_core() before exposing its MMIO region and IRQ via
-sysbus. It reports UFSHCI 2.0 (reg.ver = 0x0200) to match the AST2700
-(aspeed,ufshc-m31-16nm).
+In preparation for a sysbus UFS frontend (used by the Aspeed AST2700),
+separate the transport-independent UFS host-controller logic from the
+PCI-specific glue, following the pattern used by SDHCI and XHCI.
+
+UfsHc's PCIDevice parent is replaced by an anonymous union of a
+PCIDevice and a SysBusDevice, and the controller gains an explicit
+AddressSpace *dma_as used by ufs_addr_read()/ufs_addr_write() and the
+SG-list helpers instead of the PCI address space. Interrupt delivery
+goes through qemu_set_irq() in ufs_irq_check(). The realize path is
+split into a transport-agnostic ufs_realize_core() plus ufs_init_mmio(),
+and UfsBus gains an 'hc' back-pointer so ufs_lu_realize() no longer
+reaches through the PCI device. TYPE_UFS remains a PCI device, so
+'-device ufs' is unchanged and the PCI ufs-tests qtests still pass.
+
+Two small behaviour additions ride along on the core so that frontends
+with differing geometry and bus-scan behaviour can be modelled:
+
+  - ufs-lu gains configurable 'logical-block-size' property. It
+    defaults to UFS_BLOCK_SIZE, so the PCI device is unaffected.
+
+  - an unmapped LUN now answers INQUIRY as "not connected" rather than
+    failing the request, so that a host bus-scan does not observe
+    controller errors for absent LUNs.
 
 Signed-off-by: Mikail Sadic <mikail.sadic@ibm.com>
 ---
- MAINTAINERS                 |  1 +
- docs/specs/aspeed-ufs.rst   | 40 ++++++++++++++++++++
- docs/specs/index.rst        |  1 +
- include/hw/arm/aspeed.h     |  1 +
- include/hw/arm/aspeed_soc.h |  3 ++
- include/hw/ufs/aspeed_ufs.h | 16 ++++++++
- hw/arm/aspeed.c             | 25 +++++++++++++
- hw/arm/aspeed_ast27x0.c     | 13 +++++++
- hw/ufs/aspeed_ufs.c         | 75 +++++++++++++++++++++++++++++++++++++
- hw/ufs/meson.build          |  1 +
- 10 files changed, 176 insertions(+)
- create mode 100644 docs/specs/aspeed-ufs.rst
- create mode 100644 include/hw/ufs/aspeed_ufs.h
- create mode 100644 hw/ufs/aspeed_ufs.c
+ hw/ufs/ufs.h | 18 ++++++++++++++++-
+ hw/ufs/lu.c  | 50 +++++++++++++++++++++++++++++++++++++++++----
+ hw/ufs/ufs.c | 57 ++++++++++++++++++++++++++++++++++++----------------
+ 3 files changed, 103 insertions(+), 22 deletions(-)
 
-diff --git a/MAINTAINERS b/MAINTAINERS
-index ec415cb8e4..abebae2ff9 100644
---- a/MAINTAINERS
-+++ b/MAINTAINERS
-@@ -2700,6 +2700,7 @@ M: Jeuk Kim <jeuk20.kim@samsung.com>
- S: Supported
- F: hw/ufs/*
- F: include/block/ufs.h
-+F: include/hw/ufs/aspeed_ufs.h
- F: tests/qtest/ufs-test.c
+diff --git a/hw/ufs/ufs.h b/hw/ufs/ufs.h
+index feb47f460d..3d4be8deb5 100644
+--- a/hw/ufs/ufs.h
++++ b/hw/ufs/ufs.h
+@@ -12,7 +12,9 @@
+ #define HW_UFS_UFS_H
  
- megasas
-diff --git a/docs/specs/aspeed-ufs.rst b/docs/specs/aspeed-ufs.rst
-new file mode 100644
-index 0000000000..596b5d2756
---- /dev/null
-+++ b/docs/specs/aspeed-ufs.rst
-@@ -0,0 +1,40 @@
-+ASPEED AST2700 UFS Host Controller
-+===================================
-+
-+The AST2700 SoC includes a UFS host controller identified in the device tree
-+as ``aspeed,ufshc-m31-16nm``, mapped at ``0x12c08200`` (IRQ SPI 118). QEMU
-+models it as a sysbus frontend on top of the shared UFS core that also backs
-+the PCI UFS device (``hw/ufs/ufs.c`` and ``hw/ufs/lu.c``). The frontend only
-+provides the sysbus MMIO region, the interrupt line and the DMA address
-+space; all UFSHCI register behaviour, UTP transfer/task list processing,
-+UPIU and query handling and the SCSI logical-unit logic are implemented by
-+the core.
-+
-+The clock/reset wrapper at ``0x12c08000`` (``aspeed,ast2700-ufscnr``) is left
-+as an ``UnimplementedDevice``.
-+
-+Logical units
-+-------------
-+
-+Storage is attached through ``ufs-lu`` devices on the controller's UFS bus
-+(``ufs-bus.0``), exactly as for the PCI UFS device. The Huygens OpenBMC image
-+is laid out for 512-byte sectors, so its logical unit is created with
-+``logical-block-size=512``.
-+
-+Usage
-+-----
-+
-+Attach a UFS image as logical unit 0 of the controller's UFS bus:
-+
-+.. code-block:: console
-+
-+  qemu-system-aarch64 -M huygens-bmc \
-+    -nodefaults \
-+    -blockdev node-name=fmc0,driver=file,filename=image-bmc \
-+    -device w25q01jvq,bus=ssi.0,cs=0,drive=fmc0 \
-+    -blockdev node-name=ufs0,driver=file,filename=ufs.img \
-+    -device ufs-lu,bus=ufs-bus.0,drive=ufs0,lun=0,logical-block-size=512 \
-+    -display none -serial mon:stdio
-+
-+Please check :doc:`../../system/arm/aspeed` for more details on the
-+``huygens-bmc`` machine.
-diff --git a/docs/specs/index.rst b/docs/specs/index.rst
-index 4de65e2fdf..dd0cdec8d4 100644
---- a/docs/specs/index.rst
-+++ b/docs/specs/index.rst
-@@ -40,4 +40,5 @@ guest hardware that is specific to QEMU.
-    riscv-aia
-    aspeed-intc
-    ucd90320
-+   aspeed-ufs
-    iommu-testdev
-diff --git a/include/hw/arm/aspeed.h b/include/hw/arm/aspeed.h
-index a00238ed74..dedc784926 100644
---- a/include/hw/arm/aspeed.h
-+++ b/include/hw/arm/aspeed.h
-@@ -62,6 +62,7 @@ struct AspeedMachineClass {
-     uint32_t uart_default;
-     bool sdhci_wp_inverted;
-     bool vbootrom;
-+    uint32_t ufs_block_size;
- };
+ #include "hw/pci/pci_device.h"
++#include "hw/core/sysbus.h"
+ #include "hw/scsi/scsi.h"
++#include "scsi/constants.h"
+ #include "block/ufs.h"
  
- /*
-diff --git a/include/hw/arm/aspeed_soc.h b/include/hw/arm/aspeed_soc.h
-index 41dc04e293..56fab0a350 100644
---- a/include/hw/arm/aspeed_soc.h
-+++ b/include/hw/arm/aspeed_soc.h
-@@ -35,6 +35,7 @@
- #include "hw/gpio/aspeed_gpio.h"
- #include "hw/gpio/aspeed_sgpio.h"
- #include "hw/sd/aspeed_sdhci.h"
-+#include "hw/ufs/aspeed_ufs.h"
- #include "hw/usb/hcd-ehci.h"
- #include "qom/object.h"
- #include "hw/misc/aspeed_lpc.h"
-@@ -118,6 +119,7 @@ struct AspeedSoCState {
-     AspeedAPB2OPBState fsi[2];
-     AspeedLTPIState ltpi_ctrl[ASPEED_IOEXP_NUM];
-     AspeedAST1700SoCState ioexp[ASPEED_IOEXP_NUM];
-+    UfsHc ufs;
- };
+ #define UFS_MAX_LUS 32
+@@ -27,6 +29,7 @@ typedef struct UfsBusClass {
  
- #define TYPE_ASPEED_SOC "aspeed-soc"
-@@ -298,6 +300,7 @@ enum {
-     ASPEED_DEV_PRIC0,
-     ASPEED_DEV_PRIC1,
-     ASPEED_DEV_OTP,
-+    ASPEED_DEV_UFS,
- };
+ typedef struct UfsBus {
+     BusState parent_bus;
++    struct UfsHc *hc; /* host controller owning this bus (frontend-agnostic) */
+ } UfsBus;
  
- const char *aspeed_soc_cpu_type(const char * const *valid_cpu_types);
-diff --git a/include/hw/ufs/aspeed_ufs.h b/include/hw/ufs/aspeed_ufs.h
-new file mode 100644
-index 0000000000..1ccd0b51c0
---- /dev/null
-+++ b/include/hw/ufs/aspeed_ufs.h
-@@ -0,0 +1,16 @@
-+/*
-+ * ASPEED AST2700 UFS Host Controller
-+ *
-+ * Copyright 2026 IBM Corp.
-+ * SPDX-License-Identifier: GPL-2.0-or-later
-+ */
-+
-+#ifndef ASPEED_UFS_H
-+#define ASPEED_UFS_H
-+
-+#include "hw/ufs/ufs.h"
-+
-+#define TYPE_ASPEED_UFS "aspeed-ufs"
-+#define ASPEED_UFS(obj) OBJECT_CHECK(UfsHc, (obj), TYPE_ASPEED_UFS)
-+
-+#endif /* ASPEED_UFS_H */
-diff --git a/hw/arm/aspeed.c b/hw/arm/aspeed.c
-index a48c442058..5b9943a0e0 100644
---- a/hw/arm/aspeed.c
-+++ b/hw/arm/aspeed.c
-@@ -187,6 +187,31 @@ static void aspeed_machine_init(MachineState *machine)
-     aspeed_connect_serial_hds_to_uarts(bmc);
-     qdev_realize(DEVICE(bmc->soc), NULL, &error_abort);
+ #define TYPE_UFS_BUS "ufs-bus"
+@@ -77,6 +80,7 @@ typedef UfsReqResult (*UfsScsiOp)(struct UfsLu *, UfsRequest *);
+ typedef struct UfsLu {
+     DeviceState qdev;
+     uint8_t lun;
++    uint32_t logical_block_size;
+     UnitDescriptor unit_desc;
+     SCSIBus bus;
+     SCSIDevice *scsi_dev;
+@@ -141,7 +145,15 @@ typedef struct UfsWb {
+ } UfsWb;
  
+ typedef struct UfsHc {
+-    PCIDevice parent_obj;
 +    /*
-+     * If the SoC instantiated a UFS host controller (AST2700), attach the
-+     * first backend drive to it as logical unit 0.  The controller and its
-+     * UFS bus only exist once the SoC has been realized, so the ufs-lu is
-+     * created here rather than through a controller drive property.
++     * The controller can be instantiated either as a PCI function or as a
++     * sysbus device.  Following the SDHCI model, both frontends share this
++     * state structure via a union of the possible parent objects.
 +     */
-+    if (object_resolve_path_component(OBJECT(bmc->soc), "ufs")) {
-+        DriveInfo *ufs_dinfo = drive_get(IF_NONE, 0, 0);
-+
-+        if (ufs_dinfo) {
-+            DeviceState *ufs_lu = qdev_new(TYPE_UFS_LU);
-+
-+            qdev_prop_set_uint8(ufs_lu, "lun", 0);
-+            if (amc->ufs_block_size) {
-+                qdev_prop_set_uint32(ufs_lu, "logical-block-size",
-+                                     amc->ufs_block_size);
-+            }
-+            qdev_prop_set_drive_err(ufs_lu, "drive",
-+                                    blk_by_legacy_dinfo(ufs_dinfo),
-+                                    &error_fatal);
-+            qdev_realize_and_unref(ufs_lu, BUS(&bmc->soc->ufs.bus),
-+                                   &error_fatal);
-+        }
-+    }
-+
-     if (defaults_enabled()) {
-         aspeed_board_init_flashes(&bmc->soc->fmc,
-                               bmc->fmc_model ? bmc->fmc_model : amc->fmc_model,
-diff --git a/hw/arm/aspeed_ast27x0.c b/hw/arm/aspeed_ast27x0.c
-index b908d7d4ff..1ee8f3a210 100644
---- a/hw/arm/aspeed_ast27x0.c
-+++ b/hw/arm/aspeed_ast27x0.c
-@@ -46,6 +46,7 @@ static const hwaddr aspeed_soc_ast2700_memmap[] = {
-     [ASPEED_GIC_REDIST]    =  0x12280000,
-     [ASPEED_DEV_SDMC]      =  0x12C00000,
-     [ASPEED_DEV_SCU]       =  0x12C02000,
-+    [ASPEED_DEV_UFS]       =  0x12c08200,
-     [ASPEED_DEV_RTC]       =  0x12C0F000,
-     [ASPEED_DEV_TIMER1]    =  0x12C10000,
-     [ASPEED_DEV_PCIE_PHY0] =  0x12C15000,
-@@ -129,6 +130,7 @@ static const int aspeed_soc_ast2700a1_irqmap[] = {
-     [ASPEED_DEV_EHCI2]     = 37,
-     [ASPEED_DEV_PCIE0]     = 56,
-     [ASPEED_DEV_PCIE1]     = 57,
-+    [ASPEED_DEV_UFS]       = 118,
-     [ASPEED_DEV_LPC]       = 192,
-     [ASPEED_DEV_IBT]       = 192,
-     [ASPEED_DEV_KCS]       = 192,
-@@ -533,6 +535,8 @@ static void aspeed_soc_ast2700_init(Object *obj)
-     object_initialize_child(obj, "emmc-controller.sdhci", &s->emmc.slots[0],
-                             TYPE_SYSBUS_SDHCI);
++    union {
++        PCIDevice pci_dev;
++        SysBusDevice sbdev;
++    };
+     UfsBus bus;
+     MemoryRegion iomem;
+     UfsReg reg;
+@@ -162,6 +174,7 @@ typedef struct UfsHc {
+     Flags flags;
  
-+    object_initialize_child(obj, "ufs", &s->ufs, TYPE_ASPEED_UFS);
-+
-     snprintf(typename, sizeof(typename), "aspeed.timer-%s", socname);
-     object_initialize_child(obj, "timerctrl", &s->timerctrl, typename);
+     qemu_irq irq;
++    AddressSpace *dma_as;
+     QEMUBH *doorbell_bh;
+     QEMUBH *complete_bh;
  
-@@ -1039,6 +1043,15 @@ static void aspeed_soc_ast2700_realize(DeviceState *dev, Error **errp)
-     sysbus_connect_irq(SYS_BUS_DEVICE(&s->emmc), 0,
-                        aspeed_soc_ast2700_get_irq(s, ASPEED_DEV_EMMC));
+@@ -302,4 +315,7 @@ void ufs_build_query_response(UfsRequest *req);
+ void ufs_complete_req(UfsRequest *req, UfsReqResult req_result);
+ void ufs_wb_update_avail_buffer(UfsHc *u);
+ void ufs_init_wlu(UfsLu *wlu, uint8_t wlun);
++UfsReqResult ufs_emulate_absent_lun(UfsRequest *req);
++void ufs_init_mmio(UfsHc *u);
++bool ufs_realize_core(UfsHc *u, Error **errp);
+ #endif /* HW_UFS_UFS_H */
+diff --git a/hw/ufs/lu.c b/hw/ufs/lu.c
+index 13f4a90145..a0b5574668 100644
+--- a/hw/ufs/lu.c
++++ b/hw/ufs/lu.c
+@@ -308,6 +308,44 @@ static int ufs_emulate_wlun_inquiry(UfsRequest *req, uint8_t *outbuf,
+     return SCSI_INQUIRY_LEN;
+ }
  
-+    /* UFS */
-+    if (!sysbus_realize(SYS_BUS_DEVICE(&s->ufs), errp)) {
-+        return;
-+    }
-+    aspeed_mmio_map(s->memory, SYS_BUS_DEVICE(&s->ufs), 0,
-+                    sc->memmap[ASPEED_DEV_UFS]);
-+    sysbus_connect_irq(SYS_BUS_DEVICE(&s->ufs), 0,
-+                       aspeed_soc_ast2700_get_irq(s, ASPEED_DEV_UFS));
-+
-     /* Timer */
-     object_property_set_link(OBJECT(&s->timerctrl), "scu", OBJECT(&s->scu),
-                              &error_abort);
-diff --git a/hw/ufs/aspeed_ufs.c b/hw/ufs/aspeed_ufs.c
-new file mode 100644
-index 0000000000..d3e1a9a736
---- /dev/null
-+++ b/hw/ufs/aspeed_ufs.c
-@@ -0,0 +1,75 @@
-+/*
-+ * ASPEED AST2700 UFS Host Controller
-+ *
-+ * Sysbus frontend for the AST2700 UFS host controller
-+ * (aspeed,ufshc-m31-16nm).  The UFSHCI register interface, UTRL/UTMRL
-+ * processing, UPIU/query handling and the SCSI/logical-unit logic are all
-+ * provided by the shared UFS core (hw/ufs/ufs.c, hw/ufs/lu.c); this file
-+ * only supplies the sysbus-specific MMIO, IRQ and DMA plumbing.
-+ *
-+ * The ASPEED clock/reset wrapper at 0x12c08000 (aspeed,ast2700-ufscnr) is
-+ * modelled elsewhere as an UnimplementedDevice.
-+ *
-+ * Copyright 2026 IBM Corp.
-+ * SPDX-License-Identifier: GPL-2.0-or-later
-+ */
-+
-+#include "qemu/osdep.h"
-+#include "qapi/error.h"
-+#include "hw/core/qdev-properties.h"
-+#include "system/address-spaces.h"
-+#include "hw/ufs/aspeed_ufs.h"
-+
-+static void aspeed_ufs_realize(DeviceState *dev, Error **errp)
++UfsReqResult ufs_emulate_absent_lun(UfsRequest *req)
 +{
-+    UfsHc *u = ASPEED_UFS(dev);
-+    SysBusDevice *sbd = SYS_BUS_DEVICE(dev);
++    QEMU_UNINITIALIZED uint8_t outbuf[SCSI_INQUIRY_LEN];
++    uint8_t sense_buf[UFS_SENSE_SIZE];
++    uint8_t scsi_status;
++    int len = 0;
 +
-+    /* AST2700 UFS masters DMA into system memory. */
-+    u->dma_as = &address_space_memory;
++    if (req->req_upiu.sc.cdb[0] == INQUIRY &&
++        !(req->req_upiu.sc.cdb[1] & 0x1)) {
++        /*
++         * Standard INQUIRY to a logical unit that is not mapped: report it
++         * as "not connected" (peripheral qualifier 0x3, device type 0x1f)
++         * with GOOD status, like real hardware. Host-side bus scans then
++         * skip the unit quietly instead of flagging a controller error.
++         */
++        memset(outbuf, 0, sizeof(outbuf));
++        outbuf[0] = TYPE_NO_LUN;
++        outbuf[3] = 0x2;
++        outbuf[4] = SCSI_INQUIRY_LEN - 5;
++        len = SCSI_INQUIRY_LEN;
++        scsi_status = GOOD;
++    } else {
++        scsi_build_sense(sense_buf, SENSE_CODE(LUN_NOT_SUPPORTED));
++        scsi_status = CHECK_CONDITION;
++    }
++
++    len = MIN(len, (int)req->data_len);
++    if (scsi_status == GOOD && len > 0 &&
++        dma_buf_read(outbuf, len, NULL, req->sg, MEMTXATTRS_UNSPECIFIED) !=
++            MEMTX_OK) {
++        return UFS_REQUEST_FAIL;
++    }
++
++    ufs_build_scsi_response_upiu(req, sense_buf, sizeof(sense_buf), len,
++                                 scsi_status);
++    return UFS_REQUEST_SUCCESS;
++}
++
+ static UfsReqResult ufs_emulate_scsi_cmd(UfsLu *lu, UfsRequest *req)
+ {
+     uint8_t lun = lu->lun;
+@@ -394,6 +432,8 @@ static UfsReqResult ufs_process_scsi_cmd(UfsLu *lu, UfsRequest *req)
+ static const Property ufs_lu_props[] = {
+     DEFINE_PROP_DRIVE("drive", UfsLu, conf.blk),
+     DEFINE_PROP_UINT8("lun", UfsLu, lun, 0),
++    DEFINE_PROP_UINT32("logical-block-size", UfsLu, logical_block_size,
++                       UFS_BLOCK_SIZE),
+ };
+ 
+ static bool ufs_add_lu(UfsHc *u, UfsLu *lu, Error **errp)
+@@ -435,7 +475,7 @@ static void ufs_init_lu(UfsLu *lu)
+     lu->unit_desc.length = sizeof(UnitDescriptor);
+     lu->unit_desc.descriptor_idn = UFS_QUERY_DESC_IDN_UNIT;
+     lu->unit_desc.lu_enable = 0x01;
+-    lu->unit_desc.logical_block_size = UFS_BLOCK_SIZE_SHIFT;
++    lu->unit_desc.logical_block_size = ctz32(lu->logical_block_size);
+     lu->unit_desc.unit_index = lu->lun;
+     lu->unit_desc.logical_block_count =
+         cpu_to_be64(brdv_len / (1 << lu->unit_desc.logical_block_size));
+@@ -475,8 +515,10 @@ static void ufs_init_scsi_device(UfsLu *lu, BlockBackend *blk, Error **errp)
+     scsi_dev = qdev_new("scsi-hd");
+     object_property_add_child(OBJECT(&lu->bus), "ufs-scsi", OBJECT(scsi_dev));
+ 
+-    qdev_prop_set_uint32(scsi_dev, "physical_block_size", UFS_BLOCK_SIZE);
+-    qdev_prop_set_uint32(scsi_dev, "logical_block_size", UFS_BLOCK_SIZE);
++    qdev_prop_set_uint32(scsi_dev, "physical_block_size",
++                         lu->logical_block_size);
++    qdev_prop_set_uint32(scsi_dev, "logical_block_size",
++                         lu->logical_block_size);
+     qdev_prop_set_uint32(scsi_dev, "scsi-id", 0);
+     qdev_prop_set_uint32(scsi_dev, "lun", lu->lun);
+     if (!qdev_prop_set_drive_err(scsi_dev, "drive", blk, errp)) {
+@@ -497,7 +539,7 @@ static void ufs_lu_realize(DeviceState *dev, Error **errp)
+ {
+     UfsLu *lu = DO_UPCAST(UfsLu, qdev, dev);
+     BusState *s = qdev_get_parent_bus(dev);
+-    UfsHc *u = UFS(s->parent);
++    UfsHc *u = UFS_BUS(s)->hc;
+     BlockBackend *blk = lu->conf.blk;
+ 
+     if (!ufs_lu_check_constraints(lu, errp)) {
+diff --git a/hw/ufs/ufs.c b/hw/ufs/ufs.c
+index 464fd465b3..1489bd3321 100644
+--- a/hw/ufs/ufs.c
++++ b/hw/ufs/ufs.c
+@@ -102,7 +102,8 @@ static MemTxResult ufs_addr_read(UfsHc *u, hwaddr addr, void *buf, int size)
+         return MEMTX_DECODE_ERROR;
+     }
+ 
+-    return pci_dma_read(PCI_DEVICE(u), addr, buf, size);
++    return dma_memory_read(u->dma_as, addr, buf, size,
++                           MEMTXATTRS_UNSPECIFIED);
+ }
+ 
+ static MemTxResult ufs_addr_write(UfsHc *u, hwaddr addr, const void *buf,
+@@ -117,7 +118,8 @@ static MemTxResult ufs_addr_write(UfsHc *u, hwaddr addr, const void *buf,
+         return MEMTX_DECODE_ERROR;
+     }
+ 
+-    return pci_dma_write(PCI_DEVICE(u), addr, buf, size);
++    return dma_memory_write(u->dma_as, addr, buf, size,
++                            MEMTXATTRS_UNSPECIFIED);
+ }
+ 
+ static inline hwaddr ufs_get_utrd_addr(UfsHc *u, uint32_t slot)
+@@ -222,7 +224,7 @@ static MemTxResult ufs_dma_read_prdt(UfsRequest *req)
+     }
+ 
+     req->sg = g_malloc0(sizeof(QEMUSGList));
+-    pci_dma_sglist_init(req->sg, PCI_DEVICE(u), prdt_len);
++    qemu_sglist_init(req->sg, DEVICE(u), prdt_len, u->dma_as);
+     req->data_len = 0;
+ 
+     for (uint16_t i = 0; i < prdt_len; ++i) {
+@@ -317,14 +319,12 @@ static MemTxResult ufs_dma_write_upiu(UfsRequest *req)
+ 
+ static void ufs_irq_check(UfsHc *u)
+ {
+-    PCIDevice *pci = PCI_DEVICE(u);
+-
+     if ((u->reg.is & UFS_INTR_MASK) & u->reg.ie) {
+         trace_ufs_irq_raise();
+-        pci_irq_assert(pci);
++        qemu_set_irq(u->irq, 1);
+     } else {
+         trace_ufs_irq_lower();
+-        pci_irq_deassert(pci);
++        qemu_set_irq(u->irq, 0);
+     }
+ }
+ 
+@@ -1092,7 +1092,7 @@ static UfsReqResult ufs_exec_scsi_cmd(UfsRequest *req)
+ 
+     if (!is_wlun(lun) && (lun >= UFS_MAX_LUS || u->lus[lun] == NULL)) {
+         trace_ufs_err_scsi_cmd_invalid_lun(lun);
+-        return UFS_REQUEST_FAIL;
++        return ufs_emulate_absent_lun(req);
+     }
+ 
+     switch (lun) {
+@@ -2488,6 +2488,12 @@ static bool ufs_check_constraints(UfsHc *u, Error **errp)
+     return true;
+ }
+ 
++void ufs_init_mmio(UfsHc *u)
++{
++    memory_region_init_io(&u->iomem, OBJECT(u), &ufs_mmio_ops, u, "ufs",
++                          u->reg_size);
++}
++
+ static void ufs_init_pci(UfsHc *u, PCIDevice *pci_dev)
+ {
+     uint8_t *pci_conf = pci_dev->config;
+@@ -2495,8 +2501,7 @@ static void ufs_init_pci(UfsHc *u, PCIDevice *pci_dev)
+     pci_conf[PCI_INTERRUPT_PIN] = 1;
+     pci_config_set_prog_interface(pci_conf, 0x1);
+ 
+-    memory_region_init_io(&u->iomem, OBJECT(u), &ufs_mmio_ops, u, "ufs",
+-                          u->reg_size);
++    ufs_init_mmio(u);
+     pci_register_bar(pci_dev, 0, PCI_BASE_ADDRESS_SPACE_MEMORY, &u->iomem);
+     u->irq = pci_allocate_irq(pci_dev);
+ }
+@@ -2689,25 +2694,43 @@ static void ufs_init_hc(UfsHc *u)
+     timer_mod(&u->idle_timer, now + UFS_IDLE_TIMER_TICK);
+ }
+ 
+-static void ufs_realize(PCIDevice *pci_dev, Error **errp)
++/*
++ * Frontend-agnostic realization: everything except the host-bus specific
++ * MMIO/IRQ/DMA plumbing, which the PCI or sysbus frontend sets up around
++ * this call.  The frontend must assign u->dma_as before calling.
++ */
++bool ufs_realize_core(UfsHc *u, Error **errp)
+ {
+-    UfsHc *u = UFS(pci_dev);
+-
+     if (!ufs_check_constraints(u, errp)) {
+-        return;
++        return false;
+     }
+ 
+-    qbus_init(&u->bus, sizeof(UfsBus), TYPE_UFS_BUS, &pci_dev->qdev,
+-              u->parent_obj.qdev.id);
++    qbus_init(&u->bus, sizeof(UfsBus), TYPE_UFS_BUS, DEVICE(u),
++              DEVICE(u)->id);
++    u->bus.hc = u;
+ 
+     ufs_init_state(u);
+     ufs_init_hc(u);
+-    ufs_init_pci(u, pci_dev);
+ 
+     ufs_init_wlu(&u->report_wlu, UFS_UPIU_REPORT_LUNS_WLUN);
+     ufs_init_wlu(&u->dev_wlu, UFS_UPIU_UFS_DEVICE_WLUN);
+     ufs_init_wlu(&u->boot_wlu, UFS_UPIU_BOOT_WLUN);
+     ufs_init_wlu(&u->rpmb_wlu, UFS_UPIU_RPMB_WLUN);
++
++    return true;
++}
++
++static void ufs_realize(PCIDevice *pci_dev, Error **errp)
++{
++    UfsHc *u = UFS(pci_dev);
++
++    u->dma_as = pci_get_address_space(pci_dev);
 +
 +    if (!ufs_realize_core(u, errp)) {
 +        return;
 +    }
 +
-+    /*
-+     * The AST2700 host controller (aspeed,ufshc-m31-16nm) reports UFSHCI
-+     * version 2.0. The shared core defaults to 4.1, which makes the U-Boot
-+     * and Linux aspeed-ufs drivers run 4.x-only probe steps that this model
-+     * does not implement. Pin the controller version register to 2.0.
-+     */
-+    u->reg.ver = 0x00000200;
-+
-+    ufs_init_mmio(u);
-+    sysbus_init_mmio(sbd, &u->iomem);
-+    sysbus_init_irq(sbd, &u->irq);
-+}
-+
-+static const Property aspeed_ufs_props[] = {
-+    DEFINE_PROP_STRING("serial", UfsHc, params.serial),
-+    DEFINE_PROP_UINT8("nutrs", UfsHc, params.nutrs, 32),
-+    DEFINE_PROP_UINT8("nutmrs", UfsHc, params.nutmrs, 8),
-+    DEFINE_PROP_UINT32("wb-max-size", UfsHc, params.wb_max_size, 0x400),
-+    DEFINE_PROP_UINT32("wb-min-size", UfsHc, params.wb_min_size, 0x100),
-+};
-+
-+static void aspeed_ufs_class_init(ObjectClass *oc, const void *data)
-+{
-+    DeviceClass *dc = DEVICE_CLASS(oc);
-+
-+    dc->realize = aspeed_ufs_realize;
-+    dc->desc = "ASPEED UFS Host Controller";
-+    device_class_set_props(dc, aspeed_ufs_props);
-+    set_bit(DEVICE_CATEGORY_STORAGE, dc->categories);
-+}
-+
-+static const TypeInfo aspeed_ufs_types[] = {
-+    {
-+        .name          = TYPE_ASPEED_UFS,
-+        .parent        = TYPE_SYS_BUS_DEVICE,
-+        .instance_size = sizeof(UfsHc),
-+        .class_init    = aspeed_ufs_class_init,
-+    },
-+};
-+
-+DEFINE_TYPES(aspeed_ufs_types)
-diff --git a/hw/ufs/meson.build b/hw/ufs/meson.build
-index 6e68328b93..86052e6fd2 100644
---- a/hw/ufs/meson.build
-+++ b/hw/ufs/meson.build
-@@ -1 +1,2 @@
- system_ss.add(when: 'CONFIG_UFS_PCI', if_true: files('ufs.c', 'lu.c'))
-+system_ss.add(when: 'CONFIG_ASPEED_SOC', if_true: files('aspeed_ufs.c'))
++    ufs_init_pci(u, pci_dev);
+ }
+ 
+ static void ufs_exit(PCIDevice *pci_dev)
 -- 
 2.53.0
 

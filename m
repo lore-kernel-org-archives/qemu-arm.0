@@ -4,104 +4,111 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DBCD2C531D0
-	for <qemu-arm@archiver.kernel.org>; Thu, 30 Jul 2026 07:15:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 85244C54FD2
+	for <qemu-arm@archiver.kernel.org>; Thu, 30 Jul 2026 09:24:59 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wpKyV-0000Kd-OE; Thu, 30 Jul 2026 03:14:41 -0400
+	id 1wpN0S-0000vH-OC; Thu, 30 Jul 2026 05:24:48 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <anisinha@redhat.com>)
- id 1wpKxt-0008Cy-Mg
- for qemu-arm@nongnu.org; Thu, 30 Jul 2026 03:14:03 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <anisinha@redhat.com>)
- id 1wpKxn-0007wg-UW
- for qemu-arm@nongnu.org; Thu, 30 Jul 2026 03:14:00 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1785395635;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=zrh5A4U3UYkm3ntnYfLOUU7UX2yoVljg4PzqQuyJXn4=;
- b=hXxpOflDHchxfv8KPbmvoOi5xJVqrJqKg5f+RjJZc6IgGSGLd1VjFRn7UnJ4QCxankGTYG
- CGjRPVLIhd3qK+RhqSpfLaKUvuiUYbUJ8StIwactjMUPxnWyG8qqmagbBLFFoWIVXHU8v2
- i233awhQ+05FVaHkNS0Osa+JG9VErBE=
-Received: from mail-pl1-f199.google.com (mail-pl1-f199.google.com
- [209.85.214.199]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-644-ccBLd9zJOl2h0_PeFCExfw-1; Thu, 30 Jul 2026 03:13:53 -0400
-X-MC-Unique: ccBLd9zJOl2h0_PeFCExfw-1
-X-Mimecast-MFC-AGG-ID: ccBLd9zJOl2h0_PeFCExfw_1785395632
-Received: by mail-pl1-f199.google.com with SMTP id
- d9443c01a7336-2ccb6823efcso16360745ad.0
- for <qemu-arm@nongnu.org>; Thu, 30 Jul 2026 00:13:52 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1wpN0R-0000uT-2Y
+ for qemu-arm@nongnu.org; Thu, 30 Jul 2026 05:24:47 -0400
+Received: from mail-yx1-xb132.google.com ([2607:f8b0:4864:20::b132])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1wpN0P-0003hr-HY
+ for qemu-arm@nongnu.org; Thu, 30 Jul 2026 05:24:46 -0400
+Received: by mail-yx1-xb132.google.com with SMTP id
+ 956f58d0204a3-6680ae2031fso1771679d50.3
+ for <qemu-arm@nongnu.org>; Thu, 30 Jul 2026 02:24:44 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1785403484; cv=none;
+ d=google.com; s=arc-20260327;
+ b=bH+8M6QzI0pPy2yW9e3MKtLaZ5nVSCPAT40rVJWYZBQy9Vpfe/7N6Yreb+vmRp9hKO
+ l5LF3Ly9ofk2uhSEaxT9eKVXJ9I65c10FCeDYRTtchZ9Y0+bm2O2raVSt0/deH2H9MWI
+ 5nuW95ba2q/QHgXhyJkqIlqxCoNTRmKVQZLXZgJfz+jqnQJpyLajlkywKloQx6JGIlE/
+ Y30zhzmA/Lx5IB8D8+9tZFNz/sksb8slbJy2zgW6aGjvprvVx8FiNfg9/0I2Sdav4Lha
+ YaHrbGpbVy60WcwuFHRQaCVb+vFA2/RWsAp8zYseq7uxVSvMEWyZ3OetFV0NjZEaA15c
+ Oncg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
+ s=arc-20260327; 
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:dkim-signature;
+ bh=6DRPUvtZTmyt9EyX1NZslCd061ZF3H56Y2s2i0RY+cE=;
+ fh=vVreSTLlX+2kDzrDA5DrA1vUBgUTraTwDh9SaEk7KVo=;
+ b=ZGJjCrMviHHeQMFeLHpu6frWcbxJiJoFlmUftZhK9mEh3q/46nZxmwcDETYTOmrd5a
+ vbg465Ko/oFPyTCPY/wfzvn6mKDZGFrqNPZodN+CDpuQ3X4SpVu0qIcpoUESJWe77oNA
+ AFCZt7gJZjhctKr62y5GxCVqpk9Ikj0Gd97sa+UTkvQpl3dy/jnxoi3ZWE2LzraMsPlw
+ wsxMcEZZdAGlUpivugGK/x+XvyRwhMXFt0KZIPuZXKqkBMm5JjeYcFUnZaCif/bKL2Pv
+ fA2WQnceW++llMtalpE0IA5dMJS+jbV952D6jU2ISBrsLyNURpxKjOY0w/dEkobjkxIG
+ BL+g==; darn=nongnu.org
+ARC-Authentication-Results: i=1; mx.google.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1785403484; x=1786008284; darn=nongnu.org;
+ h=content-type:cc:to:subject:message-id:date:from:in-reply-to
+ :references:mime-version:from:to:cc:subject:date:message-id:reply-to
+ :content-type; bh=6DRPUvtZTmyt9EyX1NZslCd061ZF3H56Y2s2i0RY+cE=;
+ b=PvwboktIVJIJnEp8NGbOfyvGHi3zykoumVJaU1ADVi0k82U3Zn17BhAJR2hF7VLUgs
+ bm27nA+yJrFLdVx6HbgXDwGRqSCInqBZk4GpZh2Buz+o6KgjbhFj1vxlzu5/CcsYa9Ha
+ t8zrZQwPjodWxNzvmUOr68CsBl3N8NzIsIV/LvCPlvEQNBJueLGCLJAOXW9q7K8t97Ih
+ DD8EKUckMrsQ+toKFixcKN8sF2MZJ6YXoveMic4KwsYwFf/mxr1kdrsfoU+31QnpYaCY
+ x+E8TP5OUCqw4YFQwPoLIRFkoPAtnRc2NG1SFvJxTF1fSAigPbPwxm+1hWVrf4gJuJ7P
+ f2+Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1785395632; x=1786000432;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
- :to:cc:subject:date:message-id:reply-to:content-type;
- bh=zrh5A4U3UYkm3ntnYfLOUU7UX2yoVljg4PzqQuyJXn4=;
- b=biX6Qj4ZZxaolKwztwTGxxVR9wTFGGuFxjq6kOJbDPcBSxp0cF97d1tuYh+3xFJKnK
- 7+4/xW3GxJVRWRc0IgvrW0TuzolA2cMKNv+aSM9U6O4EjuqCUz8L2yoil0p8bMX691Gh
- EoEizFXEjyO2YbEdIuEAoWfpiczwWaWKZhdMhgbSwKs/b9savEnjfMekyIcfmbJF3kO/
- KLbxYpSz1Iyf9NWJ1taGXvzfuUt7W+D60pdXda8oB1oWp9zdsQkgBaCPtwVf1Zu89sYh
- +UG728EP2TBpW2DhGzYx4Z6/KVT1Kf40WeX+afa2KPDBvcSA8JNB2J5TNBnCAOEvb5ve
- ifTA==
+ d=1e100.net; s=20251104; t=1785403484; x=1786008284;
+ h=content-type:cc:to:subject:message-id:date:from:in-reply-to
+ :references:mime-version:x-gm-gg:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to:content-type;
+ bh=6DRPUvtZTmyt9EyX1NZslCd061ZF3H56Y2s2i0RY+cE=;
+ b=SEbHaMDuij93esEX+3F47q85BctxMZr7zfKVvtBiKRgNkPzJAV842X07aXqQ9ttbt/
+ 9+DM5FW44pAKs7zjGc9TSHuJ2cdM4CMlCCglwEOTUKdV7C/VsM2l4N/Ij3ep9Qnr+62/
+ frhHg/g6nixP5IUqOHtB25Hhzu68r5p6OvRDjOZhYvwPVkWPhi6NjAdC+DUZ6+71QV/J
+ MldVWDI11UQnlnudaHFSPC2bwP7XvkQ5gdPcJ4mpsPJfZSh1BKVA8eIkrHA8nbMSFLSO
+ 6imbsvJwzuASb6BctcMebUZn0YT0/9TdolZZYHmHK/d0hdSuXBxJyO0qeekPVDdJUEH+
+ 4qFQ==
 X-Forwarded-Encrypted: i=1;
- AHgh+Rq4+7+P6XgpW4G6gcuLeCcchs8m8O3L4KMs6UARseXp4VsZpf5VUICnWEis+CdqBBJLTxa+ri/Khg==@nongnu.org
-X-Gm-Message-State: AOJu0Yw0zt/5njSmDEA0H1PLcceMwm8ajrbvkHi3XrtefJti5CebMYrm
- THgy6VqvaeotUayOWd1+BqKuLs3m0rLGs8BfhMzmg4DSnxL46OsIrLTnjioKm6KaeGEKrFR6hGO
- kZb2a/XlRxeGY7r9dl1omT8lbp9JzaCEMSUD1el6TcI0HMUKuIeiTAnDc3Q1RsA==
-X-Gm-Gg: AR+sD12c7VUWIYCZiyaekQBytwA1cNHYiekmfE4z/RFkoUPajosmvYxrFiwzm0GCagw
- q4TltPu8LnDqegClOTiM962ndf5u/iyH3VynoELJU8kEoty1ikJwwvspxgswgivmKjUSv5Cdebe
- jsAHGJ3mvQNqJjpxmTsmeesmZ00mQLM7sIOdf3YokyejtHmmPpYizuCKkhIrq/la3C1bmR9iNd7
- sbGa1d0+xv+eWBX+WN/cWC2QGlgyC0x5ii69vdIcmHtBQ0IPZf9BYn5PwySDNANEV/4sHOZspLE
- EuQ1UXjzFGfEuyiPy/FKT6jKQyPPaFyL4xV2TSjOjh3S8ldQRjQjHwaICs8/3z6tNDyERwt5qcZ
- szZTWb830O86qk6C3X2yf/ELaeAI8VrMfdFA=
-X-Received: by 2002:a17:903:f8d:b0:2cc:f7c6:8353 with SMTP id
- d9443c01a7336-2d035e77524mr13944085ad.41.1785395631767; 
- Thu, 30 Jul 2026 00:13:51 -0700 (PDT)
-X-Received: by 2002:a17:903:f8d:b0:2cc:f7c6:8353 with SMTP id
- d9443c01a7336-2d035e77524mr13943815ad.41.1785395631287; 
- Thu, 30 Jul 2026 00:13:51 -0700 (PDT)
-Received: from rhel9-box.lan ([223.236.229.143])
- by smtp.googlemail.com with ESMTPSA id
- d9443c01a7336-2d022a15893sm21864835ad.4.2026.07.30.00.13.45
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 30 Jul 2026 00:13:48 -0700 (PDT)
-From: Ani Sinha <anisinha@redhat.com>
-To: Peter Maydell <peter.maydell@linaro.org>, Ani Sinha <anisinha@redhat.com>,
- Gerd Hoffman <kraxel@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
- Zhao Liu <zhao1.liu@intel.com>, Fabiano Rosas <farosas@suse.de>,
- Laurent Vivier <lvivier@redhat.com>
-Cc: graf@amazon.com, agraf@csgraf.de, qemu-devel@nongnu.org,
- qemu-arm@nongnu.org
-Subject: [PATCH v3 8/9] Add functional and unit tests for the vm-launch-update
- device
-Date: Thu, 30 Jul 2026 12:42:35 +0530
-Message-ID: <20260730071254.80695-9-anisinha@redhat.com>
-X-Mailer: git-send-email 2.42.0
-In-Reply-To: <20260730071254.80695-1-anisinha@redhat.com>
-References: <20260730071254.80695-1-anisinha@redhat.com>
+ AHgh+RqhnUrQQHoiWTyjuTVkEZ4tvWGFyTyRbAJDLmYTWVedVrnuI6mgSRNODvNAsOrJr4/BnRmXfowJ1w==@nongnu.org
+X-Gm-Message-State: AOJu0YxUGsgAQ6vgIr91E0e9rze9kI11r7pX/mFGsUzNvcHdca2jjaSG
+ 7SK7oPHharRwl1EZbnbSA97ApWeWLOd4l2RMi4KY7x0BoqZfyvX8itVxhxvXR4mI7pitrrKhTnX
+ ED72Z8BlUxcwzzO+j8Mgd48XJh72xbx8yalyo3Yheig==
+X-Gm-Gg: AR+sD13mEsy8RCWbPetO04Dwgpk64j9DQn4Mk9PKTka17FLQv9N11HAaBOV5hSPdE3w
+ 0HXx24goUZyvebw36OY6jorNY+Gj0ugYxKuZI93H5S7UB7w0b1uK0fQ4KKVimQfWpELg01rwlB+
+ q2K5l8Ac5ilvKYEAMZ2/e08Y7PiIWwjYCDVHTFwO4Y8e1QS5i+l90Q2QLU445W3kUlMHZZZuuAv
+ CPmWxWIBetMm+I27BQicX9UrG9MwGnU6/Y1AEkn6RdhdsLOW5xtZGDk64bB/EAxvqh2uu0bxaLI
+ Na0fjS344g/Amm1ZHEmptLcc07KB0y2ovDubxiS9GWJ+bwNKhb7SJn9GKmoVZ4E7XFsZF7BDFmB
+ qgn75J2gFs7jQKPTpQWiMXP9lWrRHtb1d4pCzd7U=
+X-Received: by 2002:a05:690e:23d8:b0:668:9e51:5239 with SMTP id
+ 956f58d0204a3-6692f635433mr875554d50.44.1785403483884; Thu, 30 Jul 2026
+ 02:24:43 -0700 (PDT)
 MIME-Version: 1.0
-X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: SufVLFf3qi-_J6XOwDgblDDFbf5EhV4GAIgrWCxDs_s_1785395632
-X-Mimecast-Originator: redhat.com
-Content-Transfer-Encoding: 8bit
-content-type: text/plain; charset="US-ASCII"; x-default=true
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=anisinha@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -36
-X-Spam_score: -3.7
-X-Spam_bar: ---
-X-Spam_report: (-3.7 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-1.58,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+References: <20260728031731.286666-1-gshan@redhat.com>
+ <20260728031731.286666-3-gshan@redhat.com>
+ <20260729182316-mutt-send-email-mst@kernel.org>
+In-Reply-To: <20260729182316-mutt-send-email-mst@kernel.org>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Thu, 30 Jul 2026 10:24:32 +0100
+X-Gm-Features: AUfX_mxT43uM4P_x5i7ErKMK1RbVsZJEwZ-hb_VUMJvYXOLsfxF40TT3khzneWg
+Message-ID: <CAFEAcA8nxsXNPuqOoc4DGnHbCKQ-pBJib4JhXnYkzMg79GMfAA@mail.gmail.com>
+Subject: Re: [PATCH v5 2/3] system/memory: Use qemu_ram_move() for directly
+ accessible regions
+To: "Michael S. Tsirkin" <mst@redhat.com>
+Cc: Gavin Shan <gshan@redhat.com>, qemu-arm@nongnu.org, qemu-devel@nongnu.org, 
+ peterx@redhat.com, philmd@oss.qualcomm.com, richard.henderson@linaro.org, 
+ alex@shazbot.org, berrange@redhat.com, philmd@mailo.com, david@kernel.org, 
+ clg@redhat.com, pbonzini@redhat.com, phrdina@redhat.com,
+ jugraham@redhat.com, 
+ liugang24219@sangfor.com.cn, dinghui@sangfor.com.cn, shan.gavin@gmail.com
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2607:f8b0:4864:20::b132;
+ envelope-from=peter.maydell@linaro.org; helo=mail-yx1-xb132.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -117,571 +124,47 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-This patchset adds functional and unit tests that exercize various functions
-and behaviors of vm-launch-update device. It uses the IGVM files that were
-introduced in the previous patch for exercizing the hypervisor interface.
+On Wed, 29 Jul 2026 at 23:35, Michael S. Tsirkin <mst@redhat.com> wrote:
+>
+> On Tue, Jul 28, 2026 at 01:17:30PM +1000, Gavin Shan wrote:
+> > +void qemu_ram_move(void *dst, const void *src, size_t n)
+> > +{
+> > +    uintptr_t test, len;
+> > +
+> > +    if (src == dst || n == 0) {
+> > +        return;
+> > +    }
+> > +
+> > +    /*
+> > +     * Maximal length of aligned access that are determined by @src,
+> > +     * @dst and @n
+> > +     */
+> > +    test = (uintptr_t)src | (uintptr_t)dst | n;
+> > +    len = test & -test;
+> > +
+> > +    /* Overlapping buffers, unaligned or oversized access */
+> > +    if (n > 8 || len != n) {
+> > +        memmove(dst, src, n);
+> > +        return;
+> > +    }
+>
+>
+> This part I don't get exactly. It's fine on most arches I think.
+> x86, power...
+>
+> But here is aarch64 for example:
+> https://codebrowser.dev/glibc/glibc/sysdeps/aarch64/memcpy.S.html
+>
+> it says
+>    It uses unaligned accesses and branchless sequences to keep the code small,
+>    simple and improve performance.
+>
+> so if the point is to get rid of unaligned accesses to BARs, are you sure
+> it achieves this?
 
-CC: Alex Graf <graf@amazon.com>
-CC: Gerd Hoffman <kraxel@redhat.com>
+The idea is rather just to ignore the unaligned-access-to-not-RAM
+case as "only a theoretical issue" and default it to memmove().
+If anybody reports an actual problem we can think about it then :-)
 
-Signed-off-by: Ani Sinha <anisinha@redhat.com>
----
- tests/functional/aarch64/meson.build          |   1 +
- .../aarch64/test_vm_launch_update_aarch.py    |  33 ++
- tests/functional/x86_64/meson.build           |   1 +
- .../x86_64/test_vm_launch_update.py           |  48 +++
- tests/qtest/launchupdate-test.c               | 408 ++++++++++++++++++
- tests/qtest/meson.build                       |   2 +
- 6 files changed, 493 insertions(+)
- create mode 100755 tests/functional/aarch64/test_vm_launch_update_aarch.py
- create mode 100755 tests/functional/x86_64/test_vm_launch_update.py
- create mode 100644 tests/qtest/launchupdate-test.c
-
-diff --git a/tests/functional/aarch64/meson.build b/tests/functional/aarch64/meson.build
-index e81afd6c39..b07373189e 100644
---- a/tests/functional/aarch64/meson.build
-+++ b/tests/functional/aarch64/meson.build
-@@ -23,6 +23,7 @@ test_aarch64_timeouts = {
- tests_aarch64_system_quick = [
-   'migration',
-   'vmstate',
-+  'vm_launch_update_aarch',
- ]
- 
- tests_aarch64_system_thorough = [
-diff --git a/tests/functional/aarch64/test_vm_launch_update_aarch.py b/tests/functional/aarch64/test_vm_launch_update_aarch.py
-new file mode 100755
-index 0000000000..2b3d7cf4a3
---- /dev/null
-+++ b/tests/functional/aarch64/test_vm_launch_update_aarch.py
-@@ -0,0 +1,33 @@
-+#!/usr/bin/env python3
-+#
-+# Check for vm-launch-update device.
-+#
-+# Copyright (c) 2026 Red Hat, Inc.
-+#
-+# Author:
-+#  Ani Sinha <anisinha@redhat.com>
-+#
-+# SPDX-License-Identifier: GPL-2.0-or-later
-+
-+from qemu_test import QemuSystemTest
-+
-+class VmLaunchUpdateDeviceCheck(QemuSystemTest):
-+
-+    def aarch64_fail_test(self):
-+        """
-+        Currently the device is only supported for pc platforms.
-+        """
-+        self.vm.add_args('-machine', 'virt', '-device',
-+                         'vm-launch-update,id=fwupd1')
-+        self.vm.set_qmp_monitor(enabled=False)
-+        self.vm.launch()
-+        self.vm.wait()
-+        self.assertEqual(self.vm.exitcode(), 1, "QEMU exit code should be 1")
-+        self.assertRegex(self.vm.get_log(),
-+                    r'This machine does not support vm-launch-update device')
-+
-+    def test_vm_launch_update(self):
-+        self.aarch64_fail_test()
-+
-+if __name__ == '__main__':
-+    QemuSystemTest.main()
-diff --git a/tests/functional/x86_64/meson.build b/tests/functional/x86_64/meson.build
-index 27b31f2e96..079861ed77 100644
---- a/tests/functional/x86_64/meson.build
-+++ b/tests/functional/x86_64/meson.build
-@@ -18,6 +18,7 @@ tests_x86_64_system_quick = [
-   'pc_cpu_hotplug_props',
-   'virtio_version',
-   'vmstate',
-+  'vm_launch_update',
- ]
- 
- # The address-sanitizer makes mlock() a no-op because it
-diff --git a/tests/functional/x86_64/test_vm_launch_update.py b/tests/functional/x86_64/test_vm_launch_update.py
-new file mode 100755
-index 0000000000..aac7ef915f
---- /dev/null
-+++ b/tests/functional/x86_64/test_vm_launch_update.py
-@@ -0,0 +1,48 @@
-+#!/usr/bin/env python3
-+#
-+# Check for vm-launch-update device.
-+#
-+# Copyright (c) 2026 Red Hat, Inc.
-+#
-+# Author:
-+#  Ani Sinha <anisinha@redhat.com>
-+#
-+# SPDX-License-Identifier: GPL-2.0-or-later
-+
-+from qemu_test import QemuSystemTest
-+import time
-+
-+class VmLaunchUpdateDeviceCheck(QemuSystemTest):
-+    DELAY_BOOT_SEQUENCE = 1
-+
-+    def vm_launch_update_pass(self):
-+        """
-+        Basic test to make sure vm-launch-update device can be instantiated.
-+        """
-+        self.vm.add_args('-device', 'vm-launch-update,id=fwupd1')
-+        self.vm.set_qmp_monitor(enabled=False)
-+        self.vm.launch()
-+        time.sleep(self.DELAY_BOOT_SEQUENCE)
-+        self.vm.shutdown()
-+        self.assertEqual(self.vm.exitcode(), 0, "QEMU exit code should be 0")
-+
-+    def multiple_device_fail(self):
-+        """
-+        Only one vm-launch-update device can be instantiated. Ensure failure if
-+        user tries to create more than one device.
-+        """
-+        self.vm.add_args('-device', 'vm-launch-update,id=fw1',
-+                         '-device', 'vm-launch-update,id=fw2')
-+        self.vm.set_qmp_monitor(enabled=False)
-+        self.vm.launch()
-+        self.vm.wait()
-+        self.assertEqual(self.vm.exitcode(), 1, "QEMU exit code should be 1")
-+        self.assertRegex(self.vm.get_log(),
-+                         r'at most one vm-launch-update device is permitted')
-+
-+    def test_vm_launch_update(self):
-+        self.vm_launch_update_pass()
-+        self.multiple_device_fail()
-+
-+if __name__ == '__main__':
-+    QemuSystemTest.main()
-diff --git a/tests/qtest/launchupdate-test.c b/tests/qtest/launchupdate-test.c
-new file mode 100644
-index 0000000000..247f9ea389
---- /dev/null
-+++ b/tests/qtest/launchupdate-test.c
-@@ -0,0 +1,408 @@
-+/*
-+ * vmlaunchupdate device fwcfg test.
-+ *
-+ * Copyright (c) 2026 Red Hat, Inc.
-+ *
-+ * Author:
-+ *   Ani Sinha <anisinha@redhat.com>
-+ *
-+ * SPDX-License-Identifier: GPL-2.0-or-later
-+ */
-+
-+#include "qemu/osdep.h"
-+#include "libqos/libqos-pc.h"
-+#include "libqtest.h"
-+#include "standard-headers/linux/qemu_fw_cfg.h"
-+#include "libqos/fw_cfg.h"
-+#include "qemu/bswap.h"
-+#include "hw/misc/vmlaunchupdate.h"
-+
-+#define WAIT_SEC 10
-+static bool debug;
-+static bool confidential;
-+
-+static void test_vm_launch_update_capability(void)
-+{
-+    QFWCFG *fw_cfg;
-+    QTestState *s;
-+    VMLaunchUpdate launch_update;
-+    size_t filesize;
-+    uint64_t capabilities;
-+
-+    s = qtest_init("-device vm-launch-update");
-+    fw_cfg = pc_fw_cfg_init(s);
-+
-+    filesize = qfw_cfg_get_file(fw_cfg, FILE_VMLAUNCHUPDATE,
-+                                &launch_update, sizeof(launch_update));
-+    g_assert_cmpint(filesize, ==, sizeof(launch_update));
-+    capabilities = le64_to_cpu(launch_update.capabilities);
-+    g_assert_cmpint(capabilities, ==, VM_LAUNCHUPDATE_FORMAT_IGVM);
-+    pc_fw_cfg_uninit(fw_cfg);
-+    qtest_quit(s);
-+}
-+
-+
-+static void test_vm_launch_update_disable(void)
-+{
-+    QFWCFG *fw_cfg;
-+    QOSState *qs;
-+    VMLaunchUpdate launch_update;
-+    uint64_t control;
-+    size_t filesize;
-+
-+    qs = qtest_pc_boot("-device vm-launch-update");
-+
-+    fw_cfg = pc_fw_cfg_init(qs->qts);
-+
-+    filesize = qfw_cfg_get_file(fw_cfg, FILE_VMLAUNCHUPDATE,
-+                                &launch_update, sizeof(launch_update));
-+    g_assert_cmpint(filesize, ==, sizeof(launch_update));
-+    control = le64_to_cpu(launch_update.control);
-+    g_assert_cmpint(VM_LAUNCHUPDATE_CTL_DISABLE & control, ==, 0);
-+
-+    /* disable the device */
-+    memset(&launch_update, 0, sizeof(launch_update));
-+    launch_update.control |= VM_LAUNCHUPDATE_CTL_DISABLE;
-+
-+    filesize = qfw_cfg_write_file(fw_cfg, qs, FILE_VMLAUNCHUPDATE,
-+                                  &launch_update, sizeof(launch_update));
-+    g_assert_cmpint(filesize, ==, sizeof(launch_update));
-+
-+    /* try to clear the dsable flag */
-+    memset(&launch_update, 0, sizeof(launch_update));
-+
-+    filesize = qfw_cfg_write_file(fw_cfg, qs, FILE_VMLAUNCHUPDATE,
-+                                  &launch_update, sizeof(launch_update));
-+    g_assert_cmpint(filesize, ==, sizeof(launch_update));
-+
-+    /* check if the device is still disabled */
-+    filesize = qfw_cfg_get_file(fw_cfg, FILE_VMLAUNCHUPDATE,
-+                                &launch_update, sizeof(launch_update));
-+    g_assert_cmpint(filesize, ==, sizeof(launch_update));
-+    control = le64_to_cpu(launch_update.control);
-+    g_assert_cmpint(VM_LAUNCHUPDATE_CTL_DISABLE & control, ==, 1);
-+
-+    pc_fw_cfg_uninit(fw_cfg);
-+    qtest_shutdown(qs);
-+}
-+
-+static void check_error(void)
-+{
-+    QFWCFG *fw_cfg;
-+    QOSState *qs;
-+    VMLaunchUpdate launch_update;
-+    uint16_t status;
-+    size_t filesize;
-+
-+    /* guest not started with IGVM */
-+    qs = qtest_pc_boot("-device vm-launch-update");
-+
-+    fw_cfg = pc_fw_cfg_init(qs->qts);
-+
-+    memset(&launch_update, 0, sizeof(launch_update));
-+    launch_update.fw_image_size = 50;
-+    launch_update.fw_image_addr = cpu_to_le64(0xdeadbeef);
-+    launch_update.control |= VM_LAUNCHUPDATE_FORMAT_IGVM;
-+
-+    filesize = qfw_cfg_write_file(fw_cfg, qs, FILE_VMLAUNCHUPDATE,
-+                                  &launch_update, sizeof(launch_update));
-+    g_assert_cmpint(filesize, ==, sizeof(launch_update));
-+
-+    memset(&launch_update, 0, sizeof(launch_update));
-+    filesize = qfw_cfg_get_file(fw_cfg, FILE_VMLAUNCHUPDATE,
-+                                &launch_update, sizeof(launch_update));
-+    g_assert_cmpint(filesize, ==, sizeof(launch_update));
-+    status = le64_to_cpu(launch_update.status);
-+    /* should fail with NOT_IGVM_INIT */
-+    g_assert_cmpint(status, ==, VM_LAUNCHUPDATE_NOT_IGVM_INIT);
-+
-+    memset(&launch_update, 0, sizeof(launch_update));
-+    launch_update.fw_image_size = 50;
-+    launch_update.fw_image_addr = cpu_to_le64(0xdeadbeef);
-+    /* control set to 0, not VM_LAUNCHUPDATE_FORMAT_IGVM */
-+
-+    filesize = qfw_cfg_write_file(fw_cfg, qs, FILE_VMLAUNCHUPDATE,
-+                                  &launch_update, sizeof(launch_update));
-+    g_assert_cmpint(filesize, ==, sizeof(launch_update));
-+
-+    memset(&launch_update, 0, sizeof(launch_update));
-+    filesize = qfw_cfg_get_file(fw_cfg, FILE_VMLAUNCHUPDATE,
-+                                &launch_update, sizeof(launch_update));
-+    g_assert_cmpint(filesize, ==, sizeof(launch_update));
-+    status = le64_to_cpu(launch_update.status);
-+    /* should fail with LOAD_FAIL since it was not IGVM format */
-+    g_assert_cmpint(status, ==, VM_LAUNCHUPDATE_LOAD_FAIL);
-+}
-+
-+static int64_t get_image_size(const char *filename)
-+{
-+    int fd;
-+    int64_t size;
-+    fd = open(filename, O_RDONLY | O_BINARY);
-+    g_assert_true(fd > 0);
-+    size = lseek(fd, 0, SEEK_END);
-+    close(fd);
-+    return size;
-+}
-+
-+static ssize_t load_image(const char *igvm_f, void **addr, size_t *size)
-+{
-+    ssize_t actsize = 0, l = 0;
-+    int f_igvm_f;
-+    size_t l_size;
-+
-+    f_igvm_f = open(igvm_f, O_RDONLY | O_BINARY);
-+    g_assert_true(f_igvm_f);
-+    l_size = get_image_size(igvm_f);
-+    g_assert_true(l_size > 0);
-+    *addr = g_malloc0(l_size);
-+    g_assert_true(*addr);
-+
-+    while (l < l_size) {
-+        actsize = read(f_igvm_f, *addr + l, 1);
-+        if (actsize < 0) {
-+            break;
-+        }
-+        l += actsize;
-+    }
-+
-+    close(f_igvm_f);
-+    *size = l_size;
-+    return actsize < 0 ? -1 : l;
-+}
-+
-+static guint32 match_string(char *serial_f, const char *exp_out)
-+{
-+    GError *error = NULL;
-+    g_autofree gchar *f_contents = NULL;
-+    g_autofree GRegex *regex = NULL;
-+    g_autofree GMatchInfo *match_info = NULL;
-+    gsize len;
-+    guint32 count = 0;
-+    gboolean ret;
-+
-+    ret = g_file_get_contents(serial_f, &f_contents, &len, &error);
-+    g_assert(ret);
-+    g_assert_no_error(error);
-+
-+    regex = g_regex_new(exp_out, G_REGEX_CASELESS, 0, &error);
-+    g_assert_no_error(error);
-+
-+    ret = g_regex_match_full(regex, f_contents, -1, 0, 0, &match_info, &error);
-+    g_assert_no_error(error);
-+
-+    while (g_match_info_matches(match_info)) {
-+        gchar *word = g_match_info_fetch(match_info, 0);
-+        g_free(word);
-+        g_match_info_next(match_info, &error);
-+        count++;
-+    }
-+    g_regex_unref(regex);
-+    return count;
-+}
-+
-+static int wait_for_match(char *serial_f,
-+                          const char *exp_out, int64_t timeout_s,
-+                          guint32 count)
-+{
-+    time_t start, delta;
-+    int ret = -1;
-+
-+    start = time(NULL);
-+    while (1) {
-+        if (match_string(serial_f, exp_out) == count) {
-+            ret = 0;
-+            break;
-+        }
-+
-+        delta = time(NULL) - start;
-+        if (delta >= timeout_s) {
-+            fprintf(stderr, "timed out waiting to read serial output\n");
-+            break;
-+        }
-+
-+        /* wait 20 ms before trying again */
-+        if (false) {
-+            fprintf(stderr,
-+                    "sleeping 20 ms before checking serial output again.\n");
-+        }
-+        g_usleep(20000);
-+    }
-+    return ret;
-+}
-+
-+static void test_load_igvm(void)
-+{
-+    const char *igvm_f;
-+    const char *igvm_init;
-+    int ser_fd;
-+    g_autofree void *igvm_blob = NULL;
-+    g_autofree char *serialtmp = NULL;
-+    const char exp_out[] = "Hello world!";
-+    const char exp_out2[] = "Test succeeded!";
-+    const char exp_out3[] = "boot process complete with initial igvm";
-+    const char *snp, *cgs;
-+    uint64_t gaddr;
-+    size_t igvm_sz;
-+    size_t filesize;
-+    QFWCFG *fw_cfg;
-+    QOSState *qs;
-+    VMLaunchUpdate launch_update;
-+
-+    if (confidential) {
-+        snp = "-object \'{\"qom-type\":\"sev-snp-guest\",\"id\":\"lsec0\","
-+            "\"cbitpos\":51,\"reduced-phys-bits\":1,\"policy\":196608}\'";
-+        cgs = "confidential-guest-support=lsec0";
-+        /*
-+         * The following two IGVM files can be built from the source
-+         * present in https://gitlab.com/anisinha/virt-firmware-rs .
-+         * Typing 'make' from the top of this repository will build the
-+         * IGVM files for both confidential and
-+         * non-confidential tests. The IGVM files for the non-coco
-+         * case has been checked-in into the QEMU repository for
-+         * convenience and easy CI pipeline testing.
-+         */
-+        igvm_f = "tests/data/igvm/snptest.igvm"; /*
-+                                                  * this prints 'hello world'
-+                                                  * on console
-+                                                  */
-+        igvm_init = "tests/data/igvm/snptest-nohello.igvm";
-+    } else {
-+        igvm_f = "tests/data/igvm/hello.igvm";
-+        igvm_init = "tests/data/igvm/qemuinit.igvm";
-+        snp = "";
-+        cgs = "";
-+    }
-+
-+    if (!g_file_test(igvm_f, G_FILE_TEST_EXISTS)) {
-+        g_test_skip("igvm file bundle does not exist!");
-+        return;
-+    }
-+
-+    ser_fd = g_file_open_tmp("launchupdate-qtest-serial-sXXXXXX",
-+                             &serialtmp, NULL);
-+    g_assert_true(ser_fd != -1);
-+
-+    if (debug) {
-+        fprintf(stderr, "serial console file is %s\n", serialtmp);
-+    }
-+
-+    qs = qtest_pc_boot("-machine q35,igvm-cfg=igvm0,%s -m 1G -accel kvm "
-+                       "-device vm-launch-update "
-+                       "-chardev file,id=serial0,path=%s "
-+                       "-serial chardev:serial0 "
-+                       "-object igvm-cfg,id=igvm0,file=%s %s",
-+                       cgs, serialtmp, igvm_init, snp);
-+
-+    fw_cfg = pc_fw_cfg_init(qs->qts);
-+
-+    if (debug) {
-+        fprintf(stderr, "target endianness: %s\n",
-+                qtest_big_endian(qs->qts) ? "big" : "little");
-+    }
-+
-+    /* exp_out3 should be printed once from initial boot */
-+    g_assert_true(wait_for_match(serialtmp, exp_out3, WAIT_SEC, 1) == 0);
-+    g_assert_true(load_image(igvm_f, &igvm_blob, &igvm_sz) == igvm_sz);
-+
-+    /* create a data buffer in guest memory */
-+    gaddr = guest_alloc(&qs->alloc, igvm_sz);
-+
-+    if (debug) {
-+        fprintf(stderr, "guest paddr: %"PRIx64 "  igvm size: %lu\n",
-+                gaddr, igvm_sz);
-+    }
-+
-+    if (debug) {
-+        fprintf(stderr, "writing igvm file into the guest memory\n");
-+    }
-+
-+    qtest_bufwrite(qs->qts, gaddr, igvm_blob, igvm_sz);
-+
-+    if (debug) {
-+        fprintf(stderr,
-+                "tell hypervisor where igvm is loaded in guest memory\n");
-+    }
-+
-+    /* now tell hypervisor where we loaded the bios */
-+    memset(&launch_update, 0, sizeof(launch_update));
-+    launch_update.fw_image_size = cpu_to_le64(igvm_sz);
-+    launch_update.fw_image_addr = cpu_to_le64(gaddr);
-+    launch_update.control |= VM_LAUNCHUPDATE_FORMAT_IGVM;
-+
-+    filesize = qfw_cfg_write_file(fw_cfg, qs, FILE_VMLAUNCHUPDATE,
-+                                  &launch_update, sizeof(launch_update));
-+    g_assert_cmpint(filesize, ==, sizeof(launch_update));
-+
-+    if (debug) {
-+        fprintf(stderr, "resetting the virtual machine now\n");
-+    }
-+
-+    qtest_system_reset(qs->qts);
-+
-+    /* expected string should be printed on the console */
-+    g_assert_true(wait_for_match(serialtmp, exp_out, WAIT_SEC, 1) == 0);
-+    g_assert_true(wait_for_match(serialtmp, exp_out2, WAIT_SEC, 1) == 0);
-+
-+    if (debug) {
-+        fprintf(stderr, "hello world found on console\n");
-+    }
-+
-+    /* check if VM_LAUNCHUPDATE_CTL_HOST_IGVM function works */
-+
-+    /* set VM_LAUNCHUPDATE_CTL_HOST_IGVM control */
-+    memset(&launch_update, 0, sizeof(launch_update));
-+    launch_update.control |= VM_LAUNCHUPDATE_CTL_HOST_IGVM;
-+
-+    filesize = qfw_cfg_write_file(fw_cfg, qs, FILE_VMLAUNCHUPDATE,
-+                                  &launch_update, sizeof(launch_update));
-+    g_assert_cmpint(filesize, ==, sizeof(launch_update));
-+
-+    /* now reset the guest */
-+    if (debug) {
-+        fprintf(stderr,
-+                "resetting again in order to restore host provided IGVM\n");
-+    }
-+    qtest_system_reset(qs->qts);
-+
-+    /*
-+     * exp_out3 should be printed twice, once from initial boot,
-+     * once from restoring host igvm.
-+     */
-+    g_assert_true(wait_for_match(serialtmp, exp_out3, WAIT_SEC, 2) == 0);
-+
-+    close(ser_fd);
-+    guest_free(&qs->alloc, gaddr);
-+    pc_fw_cfg_uninit(fw_cfg);
-+    /* qtest_quit() kils QEMU, first by sending SIGTERM, then SIGKILL */
-+    qtest_quit(qs->qts);
-+}
-+
-+int main(int argc, char **argv)
-+{
-+    const char *arch = qtest_get_arch();
-+
-+    g_test_init(&argc, &argv, NULL);
-+
-+    if (strcmp(arch, "i386") && strcmp(arch, "x86_64")) {
-+        g_printerr("vmlaunchupdate tests are only available on x86\n");
-+        exit(EXIT_FAILURE);
-+    }
-+
-+    g_test_add_func("/vm-launch-update/cap", test_vm_launch_update_capability);
-+    g_test_add_func("/vm-launch-update/disabled",
-+                    test_vm_launch_update_disable);
-+
-+    g_test_add_func("/vm-launch-update/errorcheck", check_error);
-+    g_test_add_func("/vm-launch-update/load_igvm",
-+                    test_load_igvm);
-+
-+    if (getenv("LAUNCHUPDATE_DEBUG")) {
-+        debug = true;
-+    }
-+    if (getenv("COCO")) {
-+        confidential = true;
-+    }
-+
-+    return g_test_run();
-+}
-diff --git a/tests/qtest/meson.build b/tests/qtest/meson.build
-index 56ff860e21..5c7883b48a 100644
---- a/tests/qtest/meson.build
-+++ b/tests/qtest/meson.build
-@@ -61,6 +61,8 @@ qtests_i386 = \
-   (config_all_devices.has_key('CONFIG_Q35') ? ['e820-test'] : []) +                          \
-   (config_all_devices.has_key('CONFIG_FW_CFG_DMA') ? ['vmcoreinfo-test'] : []) +            \
-   (config_all_devices.has_key('CONFIG_Q35') ? ['dump-test'] : []) +                         \
-+  (igvm.found() and
-+   config_all_devices.has_key('CONFIG_FW_CFG_DMA') ? ['launchupdate-test'] : []) +          \
-   (config_all_devices.has_key('CONFIG_I440FX') ? ['i440fx-test'] : []) +                    \
-   (config_all_devices.has_key('CONFIG_I440FX') ? ['ide-test'] : []) +                       \
-   (config_all_devices.has_key('CONFIG_I440FX') ? ['numa-test'] : []) +                      \
--- 
-2.42.0
-
+-- PMM
 

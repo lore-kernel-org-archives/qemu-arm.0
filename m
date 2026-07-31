@@ -4,83 +4,83 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EFA50C55167
-	for <qemu-arm@archiver.kernel.org>; Fri, 31 Jul 2026 00:06:23 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E0642C55167
+	for <qemu-arm@archiver.kernel.org>; Fri, 31 Jul 2026 00:06:33 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wpakc-0001nP-Sm; Thu, 30 Jul 2026 20:05:23 -0400
+	id 1wpakT-0001cy-O6; Thu, 30 Jul 2026 20:05:14 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1wpakY-0001lK-3h
- for qemu-arm@nongnu.org; Thu, 30 Jul 2026 20:05:18 -0400
-Received: from mail-pl1-x632.google.com ([2607:f8b0:4864:20::632])
+ id 1wpakR-0001a1-HP
+ for qemu-arm@nongnu.org; Thu, 30 Jul 2026 20:05:11 -0400
+Received: from mail-pf1-x42e.google.com ([2607:f8b0:4864:20::42e])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1wpakU-0001Mg-94
- for qemu-arm@nongnu.org; Thu, 30 Jul 2026 20:05:17 -0400
-Received: by mail-pl1-x632.google.com with SMTP id
- d9443c01a7336-2cc891373e0so3671465ad.2
- for <qemu-arm@nongnu.org>; Thu, 30 Jul 2026 17:05:13 -0700 (PDT)
+ id 1wpakN-0001Ik-0Q
+ for qemu-arm@nongnu.org; Thu, 30 Jul 2026 20:05:08 -0400
+Received: by mail-pf1-x42e.google.com with SMTP id
+ d2e1a72fcca58-848761b5897so322773b3a.3
+ for <qemu-arm@nongnu.org>; Thu, 30 Jul 2026 17:05:06 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1785456312; x=1786061112; darn=nongnu.org;
+ d=linaro.org; s=google; t=1785456306; x=1786061106; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to:content-type;
- bh=Sd3samW9J40wMIxnOYVCldYeRZqsZAry6PUjmQXXCDE=;
- b=LFLyQlwkY1pEtVP7A7H6EVxtKk3d7A71OdlH5OlDb1CrJValoJybx+MFDcbSuIZa/Y
- mCiygbzJti+zypwXTB74FJnZAmolxgBepnPvK6ldSZoQN8kR8qBWcNQdZD0wk43OoDtI
- +IR8PNr8xVx+jNginrgk9ENdfiT3YYoOLdR2RvWTl1Jk7eo+BpElJVfLmpcsh7YibJQA
- +XpMSb5UKDM8BltpBq4HEr1WSdUS3emHcMGFlRk7lclCHhM4BOMrDizWEk0Rcipjp8zx
- sx934L+K0a15JhIJo9l1VXCtk65mb0GTW3hMNCEzotWoopOgMTmYsruyNkQdfieYwHD5
- 5+dA==
+ bh=6IlgMhpUv/jFrsAS48m1RtDHWgLnKH1jFwV+WI6Uaug=;
+ b=seoXBSJJQTzS+Yr2Tg0+XNpLUSr8a8HTX8kodp0ed/69oFfEfBMKDcOsoP1lmaP5k2
+ +GgyqpsjhDB7zqjIoU/UWUteN3c/9HY0nSgLlOCAwmhUOAFPDvPburfBhKHjjJu/ZV+N
+ utQlXhqN2g84Mly9wCaeFnvqW70bm4REDjVh/4Snpds1LOQWLPg5mzmnM6SQq0rFRiKD
+ M5D5//dMPJtc4o1V86AdWpgKu/mYHDquQEyiolimrijJMBzdt0lUwkpRFMBr0d7AZH6K
+ ZNgr9/hbzpgvRL6rPh+dgN0uJcOifk/TKq+a0eF1Qsa94XUP/JpDgsMkWZ+A0HQBWoiX
+ Kisw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1785456312; x=1786061112;
+ d=1e100.net; s=20251104; t=1785456306; x=1786061106;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
  :to:cc:subject:date:message-id:reply-to:content-type;
- bh=Sd3samW9J40wMIxnOYVCldYeRZqsZAry6PUjmQXXCDE=;
- b=oQxQrobc9903+RoFrDDCQbjd1qHUzRVIgtgGrSzIGxR6rkBtKMI2hj2mFYDRue9GVY
- qS3lEpSNLIut5K4a9qABMCYPXEWULpU7mEGRBXZlfjZGrLL1Zq8YU5/Zfy+HSAULmS9+
- 75g8cd/YYamMUYVw1AHH9kyCm75PH31UdWJpF2czp02ba1zCYwS82NAav9m6P+4IIKkA
- DVC2upJyC+jmNB0bqECG7rsnzA8L62w+LceRL44FIvlVEDWSbyyNUjJAGVf8rqrvjNBu
- VjW+ZNNKAkoJYKPfFLMbdK01bWRDUljIzgRxJl8pnjeiA0yNUrEeZKkyjAi7jchZfttU
- Vhkg==
+ bh=6IlgMhpUv/jFrsAS48m1RtDHWgLnKH1jFwV+WI6Uaug=;
+ b=qzK5yDFPXL9gfC/Ajy0VMuwR9s/r/6jQnXhwv4ZtmKkpvQRTbzQ/3aLaYzTrQI4sqE
+ km4ASNmhoZa3OlsTLrd5DtVlpqE7USoWmKoyo54oLwIjqtO8ONx//iHbJF8SULuPVxy8
+ Wp4bwpJwn5Z5JNNmpp+4Cy/YPASyyExjkuwC8aPqtsIM+SMU9vBf3/uOMoB8wywMMDfR
+ zuwo9ESdm+PHfyZRjk5BZDJiexhhaz4HLDZcvLUFYbYWSlXl0sLNNJgJv1l/TiM+GFl+
+ UFrK+DVuvwI7YqrrbrSKgN1+7rPbX+F7UZ44WtaTgI3FrUrbVGUH3YZwKrGJuX8OSA1v
+ OYwA==
 X-Forwarded-Encrypted: i=1;
- AHgh+Rq+jYE1tDjdV/JBS2i/DML15OcbgoNGTPE/YAc43M7+x1BCXPtrhsF+aP9jy77Br+U8u8eRuABJ4g==@nongnu.org
-X-Gm-Message-State: AOJu0YyqQzAVhIKWqy+XHehf9CokloJ6nYD7FB++FQvLFMhQlbyEZShF
- aibP2wNCRnJ7RM8olQe707St3goFBPhEU0nAjZ0fLkwzvY+29OHnt6DGrJLsoPlwz64=
-X-Gm-Gg: AR+sD13AYfGkA0T7qT5PDXFqzX2LoYC7YA7t+XQrYo7Aga5hTrNaz7OtpmNWUGanFDB
- 7Sjk7NJFsS5y+6A+hmd1Unmqykz6PSrvAGpWPkQ2/hv7v8POxVRBoZ2KgDcUTKuzuWeL2GhX6up
- mNCCA3/xkXINOP6nuAnWwbz/D/FojlBg5XIo8hnk684MQQfOAsOorS8wi+GlGCiAUtlmvFw8qX8
- IDfPqF5jmJ0UnCNh4+rnKte4tYSlNCBjq7KYbel/jdLnc+V+NHJBpdrPMRC3cqAaISaLUpif7Ry
- D1OsZPwuWdoX8/yzyx7MhbioE/ppHyBfzOnMbPCo7KCre94cbqGGzEeI7haJa9vEUzwAnfvkEwG
- smhUtpYNVailvS/B0984YsCk+Rof5iHaH5n+wOMqjUDuFAke1gcX7p6Dx4B0Ec/NAsTJ2I7jGoB
- MA4Lz/477qlBEfyeRN0ytaJSATwAGCr7Dna9FLvb/Fs7VT/MwkHmBgJx/Ahnd5OSQEylkUJNkG3
- CLjDmd2f66UJbLEVc/K
-X-Received: by 2002:a05:6a21:134b:b0:3c3:66c5:68cc with SMTP id
- adf61e73a8af0-3c9006b6c88mr4132191637.21.1785456312610; 
- Thu, 30 Jul 2026 17:05:12 -0700 (PDT)
+ AHgh+RovQJkUaED6CRTrhPwxWYDANy5F4n9856Vo5ouB5I3dDCkrLPBFLVX/Vm8CCtQYeiF6O8EuLKWQzg==@nongnu.org
+X-Gm-Message-State: AOJu0YwkpdnFGdHwM+DYmQ6BJyUFDgY91X1HOm9o4F25zlfsi+WiecwL
+ tHFGmRPy6aeTyiAg65tIRH7SUUKK9li7DCE/mpWe3HxFtOY1joLJ2V35sJn/7776pxU=
+X-Gm-Gg: AR+sD13tlqLs9EDHSlJ0MSAhFoyYYlvrTW/wl4ueLHBmLzFhsS9B9cPTck/Px9vM1lM
+ VFNWBX6dDLTvE8l9vyoaeAUHwh6GndqE1CVAd6+ASfzRh0m395TMaePvul66zZC3q7VebpjEjtM
+ +PjOzqYWuwe10rsSfZDtaHXxg4Fd9/fqvI2phBO10caD7mAYy7j+nHkHOSdCB2ZMiwNkCWyIGJM
+ 9WZZcWUGjDkc/+ccfkU2IIdAXG1197lSf8uTZTFS28ZEQN9Hs9F2ZVj8/SIWS96CYp8hPSLiQKk
+ pYtk5c1k2eXSmLbXIhrGxcrEnniG9aDVjcnRcUUQbNRm95sv/7wupZgbBvKrsMSnQ3m/T/i5GkC
+ pb805WEzWYukqdks1mUlJ2J6+QBAWsv8HoTbQNS9YbKo+YmZjzsWqDJWsWC6lykClE0f1GpGqvz
+ fzGZ0Il4yBE8qm8KAPkclCfT/NF8JU8H1aqb1aYQgRTjYrrh6zQasqGi5q1p8oa51AJaG8MYUae
+ /0FTpmJUzxeOLR8pN8i
+X-Received: by 2002:a05:6a21:7014:b0:3c4:1c9f:d90 with SMTP id
+ adf61e73a8af0-3c9007f13ccmr3932778637.39.1785456305502; 
+ Thu, 30 Jul 2026 17:05:05 -0700 (PDT)
 Received: from stoup.. (174-21-93-59.tukw.qwest.net. [174.21.93.59])
  by smtp.gmail.com with ESMTPSA id
- 41be03b00d2f7-cbdb7a999ddsm2656460a12.4.2026.07.30.17.05.12
+ 41be03b00d2f7-cbdb7a999ddsm2656460a12.4.2026.07.30.17.05.04
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 30 Jul 2026 17:05:12 -0700 (PDT)
+ Thu, 30 Jul 2026 17:05:05 -0700 (PDT)
 From: Richard Henderson <richard.henderson@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: anjo@rev.ng, qemu-arm@nongnu.org, git@xen0n.name, 17746591750@163.com,
  maobibo@loongson.cn, lixianglai@loongson.cn, philmd@mailo.com
-Subject: [PATCH 09/11] tcg/aarch64: Implement revbit{32,64}
-Date: Thu, 30 Jul 2026 17:05:01 -0700
-Message-ID: <20260731000503.170446-10-richard.henderson@linaro.org>
+Subject: [PATCH 01/11] tcg: Fix opcode dump for bswap
+Date: Thu, 30 Jul 2026 17:04:53 -0700
+Message-ID: <20260731000503.170446-2-richard.henderson@linaro.org>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20260731000503.170446-1-richard.henderson@linaro.org>
 References: <20260731000503.170446-1-richard.henderson@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::632;
- envelope-from=richard.henderson@linaro.org; helo=mail-pl1-x632.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::42e;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pf1-x42e.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -103,46 +103,27 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
+We use an array of char for bswap_flag_name, so some
+entries in the array are non-null but empty.  Check that.
+
 Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- tcg/aarch64/tcg-target.c.inc | 20 ++++++++++++++++++--
- 1 file changed, 18 insertions(+), 2 deletions(-)
+ tcg/tcg.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/tcg/aarch64/tcg-target.c.inc b/tcg/aarch64/tcg-target.c.inc
-index aa2c4e42ed..2622f89880 100644
---- a/tcg/aarch64/tcg-target.c.inc
-+++ b/tcg/aarch64/tcg-target.c.inc
-@@ -2652,12 +2652,28 @@ static const TCGOutOpUnary outop_bswap64 = {
-     .out_rr = tgen_bswap64,
- };
- 
-+static void tgen_revbit32(TCGContext *s, TCGType type,
-+                          TCGReg a0, TCGReg a1, unsigned flags)
-+{
-+    tcg_out_insn(s, rr_sf, RBIT, TCG_TYPE_I32, a0, a1);
-+    if (flags & TCG_BSWAP_OS) {
-+        tcg_out_ext32s(s, a0, a0);
-+    }
-+}
-+
- static const TCGOutOpBswap outop_revbit32 = {
--    .base.static_constraint = C_NotImplemented,
-+    .base.static_constraint = C_O1_I1(r, r),
-+    .out_rr = tgen_revbit32,
- };
- 
-+static void tgen_revbit64(TCGContext *s, TCGType type, TCGReg a0, TCGReg a1)
-+{
-+    tcg_out_insn(s, rr_sf, RBIT, TCG_TYPE_I64, a0, a1);
-+}
-+
- static const TCGOutOpUnary outop_revbit64 = {
--    .base.static_constraint = C_NotImplemented,
-+    .base.static_constraint = C_O1_I1(r, r),
-+    .out_rr = tgen_revbit64,
- };
- 
- static void tgen_neg(TCGContext *s, TCGType type, TCGReg a0, TCGReg a1)
+diff --git a/tcg/tcg.c b/tcg/tcg.c
+index 1e77f2365a..e023ee8b9a 100644
+--- a/tcg/tcg.c
++++ b/tcg/tcg.c
+@@ -2951,7 +2951,7 @@ void tcg_dump_ops(TCGContext *s, FILE *f, bool have_prefs)
+                     if (flags < ARRAY_SIZE(bswap_flag_name)) {
+                         name = bswap_flag_name[flags];
+                     }
+-                    if (name) {
++                    if (name && name[0]) {
+                         col += ne_fprintf(f, ",%s", name);
+                     } else {
+                         col += ne_fprintf(f, ",$0x%" TCG_PRIlx, flags);
 -- 
 2.43.0
 

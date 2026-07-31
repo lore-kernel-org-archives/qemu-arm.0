@@ -4,108 +4,99 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 73946C54F54
-	for <qemu-arm@archiver.kernel.org>; Fri, 31 Jul 2026 11:23:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E5733C54F54
+	for <qemu-arm@archiver.kernel.org>; Fri, 31 Jul 2026 12:24:05 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wplKh-0002fv-DB; Fri, 31 Jul 2026 07:23:19 -0400
+	id 1wpmHN-00084Z-0I; Fri, 31 Jul 2026 08:23:58 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1wplKf-0002fc-Jj
- for qemu-arm@nongnu.org; Fri, 31 Jul 2026 07:23:17 -0400
-Received: from mail-ed1-x532.google.com ([2a00:1450:4864:20::532])
+ (Exim 4.90_1) (envelope-from <eblot.ml@gmail.com>)
+ id 1wpmHL-000848-K5
+ for qemu-arm@nongnu.org; Fri, 31 Jul 2026 08:23:55 -0400
+Received: from mail-wr1-f54.google.com ([209.85.221.54])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1wplKd-0003XE-Pk
- for qemu-arm@nongnu.org; Fri, 31 Jul 2026 07:23:17 -0400
-Received: by mail-ed1-x532.google.com with SMTP id
- 4fb4d7f45d1cf-697bd21fdc2so1485123a12.1
- for <qemu-arm@nongnu.org>; Fri, 31 Jul 2026 04:23:15 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1785496994; cv=none;
- d=google.com; s=arc-20260327;
- b=dI7uclJAHkN6SPGzV5DLauQ07g4V1KN3M3WOKkNETEJPK1/XA6x+8jyp+pwWQa/A57
- 1ONUeuf0McYZ2Nm2/VscveBBIfnQIzbvsohzKxuSlBT5SumnERVlH0guzadN8sPb1Lgp
- c/IHtTNBBGiKl72EemEVez8BD7ZLIE/Co2a1Eu2HjJlTqv0rN4vWE54V9wa1m9OQIwLe
- US5aTSL1A7ejCopmalQSAaOouB75EPWXwIo6/TyoyCOmNvi43IyhsNW1ZLcVvu6aYbPY
- yGBXWBNgAmH+4jmon7Hc7QgHe1yIODlXjC8YNbzXDt5uhSdKxLtv139buJ8mgaC6/fr9
- 9BsA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
- s=arc-20260327; 
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:dkim-signature;
- bh=InK3sWlMEUJtrTZNEBYtXG69eUj4xBvtz1Lt8ToMqhs=;
- fh=nKbV48WFMbUcpAcFtFjrMnqMUQszkk4nofIjTidJpfw=;
- b=nFvOG50HKVXDL4SwYiqCrppJPYMIVIelVBsBZVu0LFeFfuYLJZOmvqxc9g4ZMY8ywM
- Y3mBp1RZd3s0Lonw0JTveB5wi1qRruxQUcejKpOZnjhXZuV3YgIIq3P4112iga+bhHrJ
- kBgnYqQt5G+ha1Sa3dqwF0MMZz2vVGXgtOiCtoPxxMdLA790ktW6iKDzD2G7mUAxifiy
- cf4TUr4180QjCJ7bC8bplMHYS7KfKYWouWcEu33+PyArxv0NI7I8dGZLTVTp0Zkf6PEJ
- gomgunpbexq1M0uFmsRUTewLNBYHC5qf3hoqmIR5DbRvpmTkw6FqXNUlEVM9gCYTsXP5
- dvkQ==; darn=nongnu.org
-ARC-Authentication-Results: i=1; mx.google.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1785496994; x=1786101794; darn=nongnu.org;
- h=content-type:cc:to:subject:message-id:date:from:in-reply-to
- :references:mime-version:from:to:cc:subject:date:message-id:reply-to
- :content-type; bh=InK3sWlMEUJtrTZNEBYtXG69eUj4xBvtz1Lt8ToMqhs=;
- b=m8BIJrFiT0RziNupkMAlbxfi5R8DIaYQkUe0vcLlIs/YtPhWLvxfiff1RoiH9sjfp/
- eI8+Bx9B/RYUX5/7T4y7+1MV92kcpuV23DeLq+3IWUo73AO/Ntzo4FpKw/dQGRYzqYWE
- 6qXwjXpGFc0yCBQ9L+uw1avXF2XRl3Od1+wQJUciMLC6KFyFBtfhJ64H5H8Bbsai92yS
- BaqanrV644mv31742/g6dwSzuA5kgqrg4Y7tFxLRqJz0moJ3ljMo+pOQGaeS/mGBs9YN
- 1FsUyHkc5FJedl4eFAaPiBSazbRWGijd6heOJPqe65bU/N/577AuTXSFw+gXn1mNE9Dd
- dImw==
+ (Exim 4.90_1) (envelope-from <eblot.ml@gmail.com>)
+ id 1wpmHJ-0006JC-6Z
+ for qemu-arm@nongnu.org; Fri, 31 Jul 2026 08:23:55 -0400
+Received: by mail-wr1-f54.google.com with SMTP id
+ ffacd0b85a97d-47362928f65so920758f8f.2
+ for <qemu-arm@nongnu.org>; Fri, 31 Jul 2026 05:23:52 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1785496994; x=1786101794;
- h=content-type:cc:to:subject:message-id:date:from:in-reply-to
- :references:mime-version:x-gm-gg:x-gm-message-state:from:to:cc
+ d=1e100.net; s=20251104; t=1785500631; x=1786105431;
+ h=cc:to:content-transfer-encoding:content-type:mime-version
+ :message-id:date:subject:from:x-gm-gg:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to:content-type;
- bh=InK3sWlMEUJtrTZNEBYtXG69eUj4xBvtz1Lt8ToMqhs=;
- b=WjC4zPZdtR1C9JRQ4dOogjGLRvJzw3tbPlJxAnJAdPCv2zcOptvPejK30izCBH1bMG
- hyi2NLcRpWNyA3K1JBaIPV2q8oVAjcviYp9Pa1nASgYMDFEtDFOsS2ccnv4u7p7hV4xw
- fbwcKz4WsZPlB843ToISWtPlbqJms0tEQLlmfwM4qEfVzZAJ4bzP0qbTqXb+wAD0adZ3
- Xif0E1S67dqSL3cwhyFLFpKQu9RY08Wh/UCVP2KxGq6qfc83hhfAgcoEjK/DtUre+a4M
- rQ3RtL+tuLRmaTCdabsQe1Ka7apIVDbU05NDBWFzlZ3Dw4JoaeP+gbfV9RAfE927nhvW
- NRaA==
+ bh=eOoGRyHrO9cFf4sS9SjdV6hFE7ech7NtIIc2u170zA0=;
+ b=ZjjGEJG8LZZ0nieGPcf2GxclPdK646C4ed85ofHAlpLBC/ZEjE+4ow02Ybi0BETh2Z
+ Lm5qZVkC9bOan3Q7xUdGNLT4+MQV2TpwheeDcKtJPEK1xYwYO+KdVxxUVvwsIXrDuFnX
+ yWOPFDCErhaLZDGJ0VOQ3EaqpL45mAr5wzbAzIpnvxHHRApnAK12/eyoFLOSXzqq/d0J
+ TL2mfnKlt6HCnrGwkpn+qv5aevGb9IP1gOfSydp5nScDsxZhO+wUidC8AjXrEBNfkKXD
+ 8dmDHpT9/WYwNFSEy21Cr0CvnpPXNwygKq8AP7V0TB3Ll3dIcerP1i0ZVfOmBVd8k6g1
+ Yaww==
 X-Forwarded-Encrypted: i=1;
- AHgh+RoM3PN5uzzXwvqAe4DvUZalugW1nvNv779RcHZB4jILEWOcZ0DoAdjketiHuRy2T584QdSfSGl0XQ==@nongnu.org
-X-Gm-Message-State: AOJu0Yx+s1yDwLRfDcd1jvN9vZsdURuVQCJb7Pa8Eyvv9JsxxBfOvpyz
- 3leYOwjtGgW8mMr3cn5FdViHnqpwdjckTX5uqVIIpXzSpDPe35fngHxL6tr/Hq3BaYSsgoEaeA9
- GyD33HlrykBSrrcRuyKfI5bXLcfjS14uepWfVlya0OA==
-X-Gm-Gg: AR+sD100argCLSofJPIOrSzSoUFeOiCEBvrAujCe9CjLu4z3aWvyoWFm9NTRbJb+HvU
- s5rfFbyMRVzNWeHggZnBEyrOrJfhlnBctZA2eVlZ7pQHv9YFTlUO2CEluRkMYuPup5KzEb7wLOP
- ud6gIBmClo1W5kRChQ6F2r4KwirmukeJ70Mx6Va9WId9VZmG2uCVNxAT87lpLruaC22y2Sg4eNG
- SvFWbukzfL7gz5kQcK1TzRkXu42fc5fbSUPynSBKJDBMjmkBccS1OHmxVoXSpODBtJjAOBoI61L
- fXVUaRF+WhP99AlqqGDlEEfd16ZGvDhQF9BQs4tJrR/5w3O9+EV2jE9yYIl0i46RZ5fgPR50Pop
- NKi1h4D44FaYEytWWx5oVcXZUQwYd
-X-Received: by 2002:a17:907:60cb:b0:c04:fc6:d6bc with SMTP id
- a640c23a62f3a-c1fd2534c68mr91287666b.36.1785496994250; Fri, 31 Jul 2026
- 04:23:14 -0700 (PDT)
+ AHgh+RoxZpjZtaKt8ZjICyTsZ7BwaVy/ge0vEtRYF1gLJhnSlKk14jr/JpWbBsbs9GGXUC9OvPFpdQ//WA==@nongnu.org
+X-Gm-Message-State: AOJu0Yx4UiXhXxkBRVTJkNlFwsY+VlBShgKyGEEmnPqhgyMfs0z94d0F
+ grXX8jVcbCqMOr3+dQUTbwnXP9a907Wx5lxYHnRJi+/ZG3Fz6hKjrA+1
+X-Gm-Gg: AR+sD10v0ch0W8M0yg0BjY+ZUrZz6k8z8BKCpGhcjsUa9nEnWU3EsqM9AC0YzW62W33
+ k8hEhqSSsGT3YQwW/mqu0jFS4Aj5oxDtgyi5NdXwkLmmOZ23w+DzOvhZWvCVIjtRXZiu7nvsibt
+ ngz1MrIs5dW10XDozQSr6HNOmi+hHPqDJkuKDplWtRTT87SjZ7tY17r0T6fVYOX00kObZFmouW7
+ cCiaGJWvrmkGt4DC1UAtaj79HtboOhaJDqQO6cPU1PfkrrIr7GoLrnKGNCSKrSzUGdMhu9CR9Ru
+ ekrFkx0bSdUOBxJjySAeJJNYFolOvK5NfTqzPf6bQH4BOFpy2EyMU6AcoEvM0GnTzsK53DotnAt
+ P78bYIYFlclJ0J3NoMF2UysgcucvhLVwx2CLVP6NNBdFr6p+szAEdDiXzuOhe+cgPA7fSrfi9l2
+ 7rzERYQKppA0MRr5zATUEqraPYn27KfzVZKFZduuaraZZucwzS0VtnKB6lslSa0pjC6Dlq2igtq
+ OKKhbY7ehNY+g+nOEeFF6rIeCDEi9KnGhC/
+X-Received: by 2002:a05:6000:41f7:b0:47f:6f89:7dae with SMTP id
+ ffacd0b85a97d-47fd2abbe13mr4527356f8f.6.1785500630960; 
+ Fri, 31 Jul 2026 05:23:50 -0700 (PDT)
+Received: from localhost (89-93-216-19.hfc.dyn.abo.bbox.fr. [89.93.216.19])
+ by smtp.gmail.com with ESMTPSA id
+ ffacd0b85a97d-47fd41d1956sm5021147f8f.6.2026.07.31.05.23.50
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Fri, 31 Jul 2026 05:23:50 -0700 (PDT)
+Subject: [PATCH v2 00/25] hw/arm: Facebook SanMiguel BMC and TMP75-family
+ sensors
+Date: Fri, 31 Jul 2026 12:44:59 +0200
+Message-Id: <20260731-sanmiguel-bmc-locator-v2-0-1266926ba769@free.fr>
 MIME-Version: 1.0
-References: <20260723233605.805-1-simonxhy0404@gmail.com>
- <20260723233605.805-4-simonxhy0404@gmail.com>
-In-Reply-To: <20260723233605.805-4-simonxhy0404@gmail.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Fri, 31 Jul 2026 12:23:01 +0100
-X-Gm-Features: AUfX_mwBkZ9KC78z7Lj9vK0K5G9IER25jvT6ElX3PJjTZ2DYcKRhFir9ey051pA
-Message-ID: <CAFEAcA9d2SgtXvgRfBZiaZ8GgivLVJowKFccShLvjE6Qrb9rtw@mail.gmail.com>
-Subject: Re: [PATCH 3/4] hw/misc/iotkit-sysinfo: make sys_config2 configurable
- for SSE-310
-To: Simon Xu <simonxhy0404@gmail.com>
-Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, 
- Owen Giles <owen.giles@hpe.com>,
- Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>, 
- Robert Elliott <elliott@hpe.com>
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2a00:1450:4864:20::532;
- envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x532.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 8bit
+X-B4-Tracking: v=1; b=H4sIAAAAAAAC/4WNTQ6CMBBGr0Jm7Zi2JhVceQ/DogxTGMOPaYFoC
+ He34AFcvuR731shchCOcMtWCLxIlHFIYE4ZUOuGhlHqxGCUsepqCoxu6KWZucOqJ+xGctMYsK7
+ 0hYgdW0uQ3FdgL+/j91H+OM7Vk2naz/ZFKzGJnyO86H33r7FoVEi5L1xea6W9vfvAfPYBym3bv
+ mM13wrKAAAA
+X-Change-ID: 20260729-sanmiguel-bmc-locator-db13cceae66c
+To: qemu-devel@nongnu.org
+Cc: =?utf-8?q?Philippe_Mathieu-Daud=C3=A9?= <philmd@mailo.com>, 
+ =?utf-8?q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>, 
+ Peter Maydell <peter.maydell@linaro.org>, 
+ Steven Lee <steven_lee@aspeedtech.com>, 
+ Jamin Lin <jamin_lin@aspeedtech.com>, Kane Chen <kane_chen@aspeedtech.com>, 
+ Andrew Jeffery <andrew@codeconstruct.com.au>, Joel Stanley <joel@jms.id.au>, 
+ qemu-arm@nongnu.org, Fabiano Rosas <farosas@suse.de>, 
+ Laurent Vivier <lvivier@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>, 
+ Thomas Huth <th.huth+qemu@posteo.eu>, 
+ =?utf-8?q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>, 
+ Emmanuel Blot <eblot@meta.com>, Emmanuel Blot <emmanuel.blot@free.fr>
+X-Mailer: b4 0.15.2
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1785494706; l=7224;
+ i=emmanuel.blot@free.fr; s=20260602; h=from:subject:message-id;
+ bh=7HOkm3CMt7gGysjP5DCQnPMccdlemAantNAgZ3eFvPE=;
+ b=NBsFPZyJQ9JyCoMXNjrBZWdRkXDO/w1LDFb2SCeETglDRGb427zwF62Qwno5p+vD4QN6nsjAO
+ IANVYTSpy8gAgw9BTUjsFR2bNzhN+ForkLltF7dvJwAB9p5yyuD7b+o
+X-Developer-Key: i=emmanuel.blot@free.fr; a=ed25519;
+ pk=0qFrZ21FAAN8OfVsSoVcCFTk/NMYOWzxJz4paSAVm0g=
+Received-SPF: pass client-ip=209.85.221.54; envelope-from=eblot.ml@gmail.com;
+ helo=mail-wr1-f54.google.com
+X-Spam_score_int: -15
+X-Spam_score: -1.6
+X-Spam_bar: -
+X-Spam_report: (-1.6 / 5.0 requ) BAYES_00=-1.9,
+ FREEMAIL_FORGED_FROMDOMAIN=0.001, FREEMAIL_FROM=0.001,
+ HEADER_FROM_DIFFERENT_DOMAINS=0.25, RCVD_IN_DNSWL_NONE=-0.0001,
+ RCVD_IN_MSPIKE_H2=0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -118,141 +109,160 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Reply-to:  Emmanuel Blot <emmanuel.blot@free.fr>
+From:  Emmanuel Blot via <qemu-arm@nongnu.org>
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Fri, 24 Jul 2026 at 00:36, Simon Xu <simonxhy0404@gmail.com> wrote:
->
-> Add sys_config2 as QEMU property like sys_config.
-> - Modify the sys_config2 register on the SSE-310 for the NPU configurations.
-> - Currently sys_config2 is configured to report Ethos-U55 as the NPU type.
+This series adds the Facebook SanMiguel BMC, promotes the
+TMP75/TMP175/LM75B sensors from generic TMP105 stand-ins to improved,
+dedicated models, and introduces the test-side plumbing needed to
+exercise real I2C devices from functional tests without hardcoding QOM
+paths.
 
-Ah, here's sys_config2. For v2, if you say in the previous
-patch "this implements all the sysinfo changes for SSE-310
-except for ..." then you clue reviewers in to the fact
-that they should expect that to be added later in the series.
+The work falls into four parts.
 
->
-> Reviewed-by: Owen Giles <owen.giles@hpe.com>
-> Reviewed-by: Robert Elliott <elliott@hpe.com>
-> Signed-off-by: Simon Xu <simonxhy0404@gmail.com>
-> ---
->  hw/arm/armsse.c                  | 21 +++++++++++++++++++++
->  hw/misc/iotkit-sysinfo.c         | 11 +++++++++++
->  include/hw/misc/iotkit-sysinfo.h |  2 ++
->  3 files changed, 34 insertions(+)
->
-> diff --git a/hw/arm/armsse.c b/hw/arm/armsse.c
-> index 1847c73322..cf8f6c25d1 100644
-> --- a/hw/arm/armsse.c
-> +++ b/hw/arm/armsse.c
-> @@ -806,6 +806,22 @@ static uint32_t armsse_sys_config_value(ARMSSE *s, const ARMSSEInfo *info)
->      return sys_config;
->  }
->
-> +static uint32_t armsse_sys_config2_value(ARMSSE *s, const ARMSSEInfo *info)
-> +{
-> +    /* Return the SYS_CONFIG2 value for this SSE */
-> +    uint32_t sys_config2;
-> +
-> +    switch (info->sse_version) {
-> +    case ARMSSE_SSE310:
-> +        sys_config2 = 0;
-> +        sys_config2 = deposit32(sys_config2, 0, 3, 1); /* NPU0 = Ethos-U55 */
+1. TMP* sensor models
 
-We don't implement the NPU0, though, so we should not advertise
-that it is present.
+The TMP105 model was the only stand-in for a whole family of pin- and
+register-compatible parts, and several boards worked around the gap with
+private TYPE_TMP75 / TYPE_LM75 aliases that resolved back to a plain
+TMP105.
 
-Putting in all the machinery for the property as this patch does is
-fine, but since we always want to report 0 I'm also OK with
-hardcoding 0 in the sysinfo device the way we do for SYS_CONFIG1.
+The model is first cleaned up for correctness and QEMU convention. One
+of those changes touches migrated state, which gains an optional
+subsection so existing streams stay compatible.
 
-> +        break;
-> +    default:
-> +        g_assert_not_reached();
-> +    }
-> +    return sys_config2;
-> +}
-> +
->  /* Clock frequency in HZ of the 32KHz "slow clock" */
->  #define S32KCLK (32 * 1000)
->
-> @@ -1496,6 +1512,11 @@ static void armsse_realize(DeviceState *dev, Error **errp)
->                                      info->sse_version, &error_abort);
->              object_property_set_int(OBJECT(&s->sysinfo), "IIDR",
->                                      info->iidr, &error_abort);
-> +            if (info->sse_version == ARMSSE_SSE310) {
-> +                object_property_set_int(OBJECT(&s->sysinfo), "SYS_CONFIG2",
-> +                                        armsse_sys_config2_value(s, info),
-> +                                        &error_abort);
-> +            }
+On that base, TMP75/TMP175/LM75B become variants selected by a small
+per-type class descriptor. The variant is class data, so the wire format
+is unchanged and all variants share the existing vmstate. qtest coverage
+is added for the per-variant behaviour. The existing BMC boards then
+drop their local aliases and instantiate the real models.
 
-You don't need to make this conditional on sse_version. The property
-always exists on the sysinfo device. If you add cases for
-ARMSSE_IOTKIT, ARMSSE_SSE200, ARM_SSE300 that return 0, then
-we will set the property to 0 (and the sysinfo device won't use
-the value anyway).
+2. SanMiguel BMC
 
->              if (!sysbus_realize(sbd, errp)) {
->                  return;
->              }
-> diff --git a/hw/misc/iotkit-sysinfo.c b/hw/misc/iotkit-sysinfo.c
-> index 21e161bdc2..0905949ef7 100644
-> --- a/hw/misc/iotkit-sysinfo.c
-> +++ b/hw/misc/iotkit-sysinfo.c
-> @@ -31,6 +31,7 @@
->  REG32(SYS_VERSION, 0x0)
->  REG32(SYS_CONFIG, 0x4)
->  REG32(SYS_CONFIG1, 0x8)
-> +REG32(SYS_CONFIG2, 0xc)
->  REG32(IIDR, 0xfc8)
->  REG32(PID4, 0xfd0)
->  REG32(PID5, 0xfd4)
-> @@ -87,6 +88,15 @@ static uint64_t iotkit_sysinfo_read(void *opaque, hwaddr offset,
->              goto bad_read;
->          }
->          break;
-> +    case A_SYS_CONFIG2:
-> +        switch (s->sse_version) {
-> +        case ARMSSE_SSE310:
-> +            return s->sys_config2;
-> +            break;
-> +        default:
-> +            goto bad_read;
-> +        }
-> +        break;
->      case A_IIDR:
->          switch (s->sse_version) {
->          case ARMSSE_SSE300:
-> @@ -144,6 +154,7 @@ static const MemoryRegionOps iotkit_sysinfo_ops = {
->  static const Property iotkit_sysinfo_props[] = {
->      DEFINE_PROP_UINT32("SYS_VERSION", IoTKitSysInfo, sys_version, 0),
->      DEFINE_PROP_UINT32("SYS_CONFIG", IoTKitSysInfo, sys_config, 0),
-> +    DEFINE_PROP_UINT32("SYS_CONFIG2", IoTKitSysInfo, sys_config2, 0),
->      DEFINE_PROP_UINT32("sse-version", IoTKitSysInfo, sse_version, 0),
->      DEFINE_PROP_UINT32("IIDR", IoTKitSysInfo, iidr, 0),
->  };
-> diff --git a/include/hw/misc/iotkit-sysinfo.h b/include/hw/misc/iotkit-sysinfo.h
-> index 36dc702c53..1c1b2758d9 100644
-> --- a/include/hw/misc/iotkit-sysinfo.h
-> +++ b/include/hw/misc/iotkit-sysinfo.h
-> @@ -16,6 +16,7 @@
->   * QEMU interface:
->   *  + QOM property "SYS_VERSION": value to use for SYS_VERSION register
->   *  + QOM property "SYS_CONFIG": value to use for SYS_CONFIG register
-> + *  + QOM property "SYS_CONFIG2": value to use for SYS_CONFIG2 register
->   *  + sysbus MMIO region 0: the system information register bank
->   */
->
-> @@ -38,6 +39,7 @@ struct IoTKitSysInfo {
->      /* Properties */
->      uint32_t sys_version;
->      uint32_t sys_config;
-> +    uint32_t sys_config2;
->      uint32_t sse_version;
->      uint32_t iidr;
->  };
+A new AST2600-based machine for the Facebook SanMiguel BMC, derived from
+its device tree. It wires up three TMP75 sensors, IO expanders, FRU
+EEPROMs, an I2C mux and an RTC across its I2C buses, and provides its
+RAM, flash and networking; the FRU EEPROMs are populated with data read
+from physical hardware. A functional test boots the OpenBMC image and
+drives each sensor over QOM, checking the guest hwmon interface reports
+the injected value back.
 
-thanks
--- PMM
+3. Python device locator
+
+A QOM path names a device by its position under the object that owns it,
+in enumeration order — it says nothing about where the device sits in
+the bus topology. From a QOM path alone it is impossible to tell where a
+device is actually connected or what purpose it serves.
+
+DeviceLocator is a pure-Python helper that resolves a device from a
+string descriptor of its position — bus, address, type, on-bus index —
+by walking the bus/device hierarchy. It uses only standard QOM queries
+over QMP: no new QEMU commands, no model changes. A self-check exercises
+the grammar and its error paths against a paused SanMiguel BMC; it needs
+no disk image and runs in about a second.
+
+Note: the helper adopts the 3.10 type-hint syntax rather than the 3.9
+equivalents; 3.9 reached end of life on 2025-10-31. The import is
+guarded so the module still loads on 3.9 and dependent tests skip there.
+
+Two small test-framework fixes ride along: the set_machine probe VM now
+gets the per-test workdir instead of the hardcoded /var/tmp default, and
+the Aspeed OpenBMC helper can optionally assert the booted device-tree
+model.
+
+4. Catalina follow-ups
+
+The final three commits are the tail of the earlier "hw/arm: improve
+Aspeed Catalina BMC emulation" series: functional tests for the PCA9555
+and PCA9554 IO expanders, plus the PCA9554 change that drives its input
+pins externally. They were held back because reaching such devices from
+a test needs a stable way to reference them by bus position — the QOM
+re-parenting patch tried then was rejected, and the device locator now
+unblocks them.
+
+Based on:
+
+  repo:   https://github.com/legoater/qemu.git
+  branch: aspeed-11.1
+  commit: 04d27371e3 ("hw/arm: catalina: add NIC and FIO temperature sensors")
+
+Signed-off-by: Emmanuel Blot <emmanuel.blot@free.fr>
+---
+Changes in v2:
+- Simplify TMP105 multiple variant initialization
+- Improve reliability against malformed device locator strings
+- Remove an obsolete reference to INA23x devices from a commit log message
+- Rebase patch series on aspeed-next branch
+- Fix invalid JSON syntax in SanMiguel FRU descriptions
+- Link to v1: https://lore.kernel.org/qemu-devel/20260729-sanmiguel-bmc-locator-v1-0-c8f9a8d101f6@free.fr
+
+To: qemu-devel@nongnu.org
+Cc: Philippe Mathieu-Daudé <philmd@mailo.com>
+Cc: Cédric Le Goater <clg@kaod.org>
+Cc: Peter Maydell <peter.maydell@linaro.org>
+Cc: Steven Lee <steven_lee@aspeedtech.com>
+Cc: Jamin Lin <jamin_lin@aspeedtech.com>
+Cc: Kane Chen <kane_chen@aspeedtech.com>
+Cc: Andrew Jeffery <andrew@codeconstruct.com.au>
+Cc: Joel Stanley <joel@jms.id.au>
+Cc: qemu-arm@nongnu.org
+Cc: Fabiano Rosas <farosas@suse.de>
+Cc: Laurent Vivier <lvivier@redhat.com>
+Cc: Paolo Bonzini <pbonzini@redhat.com>
+Cc: Thomas Huth <th.huth+qemu@posteo.eu>
+Cc: "Daniel P. Berrangé" <berrange@redhat.com>
+
+---
+Emmanuel Blot (25):
+      hw/sensor: tmp105: make device state private to the implementation
+      hw/sensor: tmp105: name the parent object field parent_obj
+      hw/sensor: tmp105: implement Resettable reset
+      hw/sensor: tmp105: enforce the configurable fault queue
+      hw/sensor: tmp105: describe the temperature property
+      hw/arm: aspeed: guard board-local temperature-sensor aliases
+      hw/sensor: tmp105: add TMP75, TMP175 and LM75B variants
+      tests/qtest: tmp105: cover the ALERT fault queue
+      tests/qtest: tmp105: cover the TMP75, TMP175 and LM75B variants
+      tests/qtest: tmp105: cover one-shot and fault-queue write immunity
+      tests/qtest: tmp105: cover shutdown clearing the ALERT across variants
+      hw/arm: sanmiguel: add Facebook SanMiguel BMC machine
+      hw/arm: sanmiguel: populate EEPROM data
+      hw/arm: catalina: use the real TMP75 model
+      hw/arm: fuji: use the real TMP75 and LM75B temperature sensors
+      tests/functional: aspeed: optionally check the device tree model on boot
+      tests/functional: give the set_machine probe VM the test workdir
+      tests/functional: add a pure-Python device-locator resolver
+      tests/functional: add a device-locator self-check
+      tests/functional: aspeed: add hwmon sensor read helpers
+      tests/functional/arm: sanmiguel: add BMC boot test
+      tests/functional/arm: catalina: test TMP75
+      tests/functional/arm: catalina: test PCA9555 IO expander via QOM
+      hw/arm: catalina: drive pca9554 io expander input pins externally
+      tests/functional/arm: catalina: test PCA9554 IO expander via QOM
+
+ hw/arm/aspeed_ast2600_catalina.c              |  14 +-
+ hw/arm/aspeed_ast2600_fuji.c                  |  16 +-
+ hw/arm/aspeed_ast2600_sanmiguel.c             | 405 ++++++++++++++++++
+ hw/arm/meson.build                            |   1 +
+ hw/sensor/tmp105.c                            | 304 ++++++++++---
+ include/hw/sensor/tmp105.h                    |  46 +-
+ tests/functional/arm/meson.build              |   3 +
+ tests/functional/arm/test_aspeed_catalina.py  | 107 ++++-
+ tests/functional/arm/test_aspeed_sanmiguel.py |  72 ++++
+ tests/functional/arm/test_device_locator.py   | 120 ++++++
+ tests/functional/aspeed.py                    |  21 +-
+ tests/functional/qemu_test/locator.py         | 586 ++++++++++++++++++++++++++
+ tests/functional/qemu_test/testcase.py        |   2 +-
+ tests/qtest/tmp105-test.c                     | 359 ++++++++++++++++
+ 14 files changed, 1934 insertions(+), 122 deletions(-)
+---
+base-commit: e5d3f5ac8633de310066f14862b17e4cac8ef8a5
+change-id: 20260729-sanmiguel-bmc-locator-db13cceae66c
+
+Best regards,
+--  
+Emmanuel Blot <emmanuel.blot@free.fr>
+
 

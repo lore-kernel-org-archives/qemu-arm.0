@@ -4,65 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C1FD6C5516D
-	for <qemu-arm@archiver.kernel.org>; Fri, 31 Jul 2026 12:34:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 85093C54F54
+	for <qemu-arm@archiver.kernel.org>; Fri, 31 Jul 2026 12:35:17 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wpmRH-0006oA-AH; Fri, 31 Jul 2026 08:34:11 -0400
+	id 1wpmSF-0007Mq-ST; Fri, 31 Jul 2026 08:35:11 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <eblot.ml@gmail.com>)
- id 1wpmRF-0006kb-LO
- for qemu-arm@nongnu.org; Fri, 31 Jul 2026 08:34:09 -0400
-Received: from mail-wr1-f45.google.com ([209.85.221.45])
+ id 1wpmSF-0007Mh-4S
+ for qemu-arm@nongnu.org; Fri, 31 Jul 2026 08:35:11 -0400
+Received: from mail-wr1-f44.google.com ([209.85.221.44])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <eblot.ml@gmail.com>)
- id 1wpmRD-0000ga-Ui
- for qemu-arm@nongnu.org; Fri, 31 Jul 2026 08:34:09 -0400
-Received: by mail-wr1-f45.google.com with SMTP id
- ffacd0b85a97d-47362928f65so929339f8f.2
- for <qemu-arm@nongnu.org>; Fri, 31 Jul 2026 05:34:07 -0700 (PDT)
+ id 1wpmSD-0000v4-HT
+ for qemu-arm@nongnu.org; Fri, 31 Jul 2026 08:35:10 -0400
+Received: by mail-wr1-f44.google.com with SMTP id
+ ffacd0b85a97d-47fd4ee0b01so266945f8f.2
+ for <qemu-arm@nongnu.org>; Fri, 31 Jul 2026 05:35:09 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1785501246; x=1786106046;
+ d=1e100.net; s=20251104; t=1785501308; x=1786106108;
  h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
  :content-type:mime-version:subject:date:from:x-gm-gg
  :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
  :content-type;
- bh=ifMbamIfJSoLu7/f73249giIpMXwm2cmTQROI/W8L9A=;
- b=na/4F3oh3gpUEkIJuUXiubfXlGKXNW4S4CKo4vtlyjFSBFC+ImQLQvL8/aQf0Iyb/D
- kFkoe0a4BbForVyF+ycSiFQH8yvR9MeTuLOaGzYkGGRW98+A8dP8HK70dVV5Ex65qL6N
- 2vSLSw45sYgZkgWUB9LpZC80nqffKn6CgG8bhgQQaqYZhAX1O4TZBuk0FDcuHze/FvMe
- AHXt5qaG0j062/vbvjycH4oH3o2MoA2KPbT4JI9WwcSxWsYZbLpU8rtuaXy8yiFYGr7/
- tMEUAbnZrDPJcp7tWIXxiX3TE64cLxRBkIK09sO6eG9t5ozCRw5J5wbGM2im3TtS/ZvL
- CWNg==
+ bh=cgbT+Nkm1dADHvR/4vLeWGsR4IryoIoADhqYOAUzjvs=;
+ b=OhaWEHX9AffeaNQ8wlxlR0ZwZsDYEXOdB2UioVVzRRNSjp4uhTHR+t3YRyOmYYoQd+
+ ExVHYCWuc2svY65K6E7bjvRbFuWHSM04wgHqFYL9KnVYb/e4p2F49wGDuXmOy140LMtp
+ dfkiOzcAMgCgxJD88nkqxFchFj1Bqo0RglU9KdF6A5O4z+UADJT4pWfp0woQ0wNGsuY6
+ CvWS04y4Hxu24HurJVVCFQTtmHZDo9RsyXH/bZDnF7yv32HoEn3NpUAqcw8BEHR/a5IE
+ sPxECOGaQMgC5rNa/ykljSuPjW2x8WMizTt6FS/Q9Eglp0zaPMIXozWXZplDYuMV4DZz
+ abbw==
 X-Forwarded-Encrypted: i=1;
- AHgh+Ros/iaS55inNVCFZ5Hf9gNp8p7TyEwbYNMwn/QvhiQcCEZGlSb7+R6f3oySDwP1LwKPFN6YDadegg==@nongnu.org
-X-Gm-Message-State: AOJu0Ywf9QtvHpVkYyMHHgk5KRqjbEsfVih12AmlUbC7Z+mydFqrIUJZ
- jcd/Toi7049iiAo2ycpRDBwMFp1+eIlWJ8yRfTA6QgPdJRMGd3cnSLP2
-X-Gm-Gg: AR+sD10jPEzC9jFkLAFKPVTrIZjmb48Mkxqo/mKueBfCiuEjoC+/uvesVTJOB7DLo37
- GDakz+HTpAWNbOa49JstsSXmxCwg4Nu5FV2W57GYbK1q9mY+v9G7TduncWcPKWhdi9nSO/yanZa
- xIboVYDcYyN+Wz6wufx0uezztBeAlGcqzF3mgx9osqFtgyvMUEDmhDCx/AlYAM+bmwZVDoOxt9k
- ZdcEk2JFP6bD5zt3Lv0AgiRAnm+M9UjK0fTcyglo3rhddps0ShRpRhIch7xV+NyADrF5TYTAbEk
- 5tFYsGDkif+qmIfIUMDu9s0AAK60FBP+1B7E4nNHSZU8nUO7XoDvPRNwcIRsTLw2ksDTeBMViKG
- 0ILMcVDElrvGt6tpOpdPlYIjACDKaolJyyk5mNk/y98MsmK1SwtGYioyWC821JlCZORYtozobbf
- nujygRruHApQcVc7t99KDWWLo0HhLWE7bLcunW2edYtCNHcXJMGfP/1/wwPvu5IRo6lFRJs7bbH
- 1gonYABbSOhOdeoy9BKC6l4dsHTPeN2c5gnJBYot286DbA=
-X-Received: by 2002:a05:6000:385:b0:47f:d0fb:ea40 with SMTP id
- ffacd0b85a97d-47fd2add54fmr4435535f8f.21.1785501246321; 
- Fri, 31 Jul 2026 05:34:06 -0700 (PDT)
+ AHgh+Rr8CUwZ7p+xkVbkPbayaUrN8Ep7IyDQLWQjoA1++rC2wWMinn03C0BmEWizDQ5Y5n6xbecTH6tBvg==@nongnu.org
+X-Gm-Message-State: AOJu0YxFSceNwWTR7MZhYQV4iLGiQaopNKwihWR8ieIFa91ylDsANPiQ
+ MyAuk1HneY0znDd9YQiu+jkrRs29dmx42rm5gud5/oAkhuuzMTOEvA6h
+X-Gm-Gg: AR+sD12W2NRFTRryeqRLnEHddK389vJc94XgwpadlPwWnZLByR/WEnLQ2LMb0Pd9t2B
+ y0rYfdWlN9OdCOwwzZAy96HjnFW7FO48/RRIKLNcSMU1UWRst92KFH0XY+k4y1kM3hS/pRN21SH
+ vuIqvMEEMRW/27T+oLpTvK6RHhD7wF0ZTbiyBCofz1/CqnjROfn+xHo3+uNdy+YqaQlOxPDNo1U
+ hCJ/1hAsUNcvBTHdXI3p4z2zQByngfMw2G/FjB4WK4ZhbN8etqO16h2xiQ0QhYReht/hqlosCrW
+ iTC2502WY/3sBvyaUBGWTJBXg80uJtGTs8cm2qn2YAkd4gdkNoMoEqAQwTMHpNvXLylQqJrS9Cv
+ Y3PY9Bjhul5GKNWL5QeKfD4jeAGqDqXUKqkhDMfPZDtC0cY9uRV2wD1ycmIhH1F36hcdepx3qJ8
+ wPqnXujVgEYSmjTsdXt7tB3+NPxe7AcJlRvuC7LTLhJroe/IAJTdWtECKnn0hBQxZhRh2FWJNMq
+ yFpFO5JJI/dqJWMIMnvAinZ4vk4VheC1T7U
+X-Received: by 2002:a05:6000:2994:20b0:47f:8fb6:c32e with SMTP id
+ ffacd0b85a97d-47fd2b578damr3454076f8f.46.1785501307713; 
+ Fri, 31 Jul 2026 05:35:07 -0700 (PDT)
 Received: from localhost (89-93-216-19.hfc.dyn.abo.bbox.fr. [89.93.216.19])
  by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-47fd41e2abbsm4345519f8f.9.2026.07.31.05.34.05
+ ffacd0b85a97d-47fd4562a38sm4162627f8f.21.2026.07.31.05.35.06
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 31 Jul 2026 05:34:05 -0700 (PDT)
-Date: Fri, 31 Jul 2026 12:45:09 +0200
-Subject: [PATCH v2 10/25] tests/qtest: tmp105: cover one-shot and
- fault-queue write immunity
+ Fri, 31 Jul 2026 05:35:07 -0700 (PDT)
+Date: Fri, 31 Jul 2026 12:45:10 +0200
+Subject: [PATCH v2 11/25] tests/qtest: tmp105: cover shutdown clearing the
+ ALERT across variants
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 8bit
-Message-Id: <20260731-sanmiguel-bmc-locator-v2-10-1266926ba769@free.fr>
+Content-Transfer-Encoding: 7bit
+Message-Id: <20260731-sanmiguel-bmc-locator-v2-11-1266926ba769@free.fr>
 References: <20260731-sanmiguel-bmc-locator-v2-0-1266926ba769@free.fr>
 In-Reply-To: <20260731-sanmiguel-bmc-locator-v2-0-1266926ba769@free.fr>
 To: qemu-devel@nongnu.org
@@ -78,15 +78,15 @@ Cc: =?utf-8?q?Philippe_Mathieu-Daud=C3=A9?= <philmd@mailo.com>,
  =?utf-8?q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>, 
  Emmanuel Blot <eblot@meta.com>, Emmanuel Blot <emmanuel.blot@free.fr>
 X-Mailer: b4 0.15.2
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1785494708; l=5455;
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1785494708; l=3738;
  i=emmanuel.blot@free.fr; s=20260602; h=from:subject:message-id;
- bh=bmmLFTJHN8a4jRPifYNuZA58n5LYCH8vK49esOFrf4o=;
- b=VE3J4rAQZ+CX0YQwXuO1U0Zal5PI/MwDee/JsD7ayPXRzONhWAnQ4vwX4mWjT68c3zYjA8cKh
- TZMN6n8H2Q4B6WBMemkfhcmo5udauNlNT0sB/sH0hUC7hUH0SeHwWBN
+ bh=2fRBCplKTjlFLd6EsRzXdhUj/5B9QVDOaJYG5Z5CWwc=;
+ b=3oPlxId5SWQ2928LfG4btUnPH189fpHIha7nQppuFkIJ9+uXf+Ofh3wiHE38jShW05QjqR5rL
+ yvY+L+QuG4XA2Elxtcj5VqniL6MpixKAq21fMUkJslEnLr+TO5+z3C0
 X-Developer-Key: i=emmanuel.blot@free.fr; a=ed25519;
  pk=0qFrZ21FAAN8OfVsSoVcCFTk/NMYOWzxJz4paSAVm0g=
-Received-SPF: pass client-ip=209.85.221.45; envelope-from=eblot.ml@gmail.com;
- helo=mail-wr1-f45.google.com
+Received-SPF: pass client-ip=209.85.221.44; envelope-from=eblot.ml@gmail.com;
+ helo=mail-wr1-f44.google.com
 X-Spam_score_int: -15
 X-Spam_score: -1.6
 X-Spam_bar: -
@@ -112,143 +112,102 @@ From:  Emmanuel Blot via <qemu-arm@nongnu.org>
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Verify that the one-shot (OS) bit triggers a conversion only in shutdown
-mode and is ignored in continuous mode, and that
-configuration/limit-register writes never advance the fault queue — only
-real conversions do.
+Verify that entering shutdown clears the ALERT/OS output in interrupt
+mode but leaves it asserted in comparator mode, for both the TMP75 and
+the LM75B.
 
 Signed-off-by: Emmanuel Blot <emmanuel.blot@free.fr>
 ---
- tests/qtest/tmp105-test.c | 102 ++++++++++++++++++++++++++++++++++++++++++++++
- 1 file changed, 102 insertions(+)
+ tests/qtest/tmp105-test.c | 56 +++++++++++++++++++++++++++++++++++++++++++++++
+ 1 file changed, 56 insertions(+)
 
 diff --git a/tests/qtest/tmp105-test.c b/tests/qtest/tmp105-test.c
-index ea6803715a..e586a634d8 100644
+index e586a634d8..504f6b7202 100644
 --- a/tests/qtest/tmp105-test.c
 +++ b/tests/qtest/tmp105-test.c
-@@ -33,6 +33,8 @@
- #define TMP105_CONFIG_FQ_1  (0 << 3)   /* fault queue: 1 consecutive fault */
- #define TMP105_CONFIG_FQ_4  (2 << 3)   /* fault queue: 4 consecutive faults */
- #define TMP105_CONFIG_FQ(f) ((f) << 3) /* raw F1:F0 fault-queue field value */
-+#define TMP105_CONFIG_SD    (1 << 0)   /* shutdown mode */
-+#define TMP105_CONFIG_OS    (1 << 7)   /* one-shot conversion */
- 
- static int qmp_tmp105_get_temperature(const char *id)
- {
-@@ -200,6 +202,102 @@ static void check_fault_queue(QI2CDevice *i2cdev, const char *id,
-     g_assert_true(get_irq(0));
+@@ -335,6 +335,41 @@ static void test_tmp75_tm_clears_alert(void *obj, void *data,
+     g_assert_false(get_irq(0));
  }
  
 +/*
-+ * The one-shot (OS) bit starts a conversion only in shutdown mode. In
-+ * continuous mode it is ignored, so writing it must not advance the fault
-+ * queue; in shutdown each OS write performs one conversion that does.
++ * Entering shutdown clears the ALERT in interrupt mode but leaves it asserted
++ * in comparator mode.
 + */
-+static void test_one_shot(void *obj, void *data, QGuestAllocator *alloc)
++static void test_tmp75_shutdown_clears_alert(void *obj, void *data,
++                                             QGuestAllocator *alloc)
 +{
 +    QI2CDevice *i2cdev = (QI2CDevice *)obj;
 +    int i;
 +
-+    qtest_irq_intercept_out(global_qtest, TMP105_TEST_PATH);
-+
-+    i2c_set8(i2cdev, TMP105_REG_CONFIG, TMP105_CONFIG_POL | TMP105_CONFIG_FQ_4);
-+    qmp_tmp105_set_temperature(TMP105_TEST_ID, 85000);
-+    g_assert_false(get_irq(0));
-+
-+    for (i = 0; i < 8; i++) {
-+        i2c_set8(i2cdev, TMP105_REG_CONFIG,
-+                 TMP105_CONFIG_POL | TMP105_CONFIG_FQ_4 | TMP105_CONFIG_OS);
-+        g_assert_false(get_irq(0));
-+    }
++    qtest_irq_intercept_out(global_qtest, TMP75_TEST_PATH);
 +
 +    i2c_set8(i2cdev, TMP105_REG_CONFIG,
-+             TMP105_CONFIG_POL | TMP105_CONFIG_FQ_4 | TMP105_CONFIG_SD);
-+    for (i = 0; i < 2; i++) {
-+        i2c_set8(i2cdev, TMP105_REG_CONFIG, TMP105_CONFIG_POL |
-+                 TMP105_CONFIG_FQ_4 | TMP105_CONFIG_SD | TMP105_CONFIG_OS);
-+        g_assert_false(get_irq(0));
++             TMP105_CONFIG_POL | TMP105_CONFIG_TM | TMP105_CONFIG_FQ(3));
++    for (i = 0; i < 4; i++) {
++        qmp_tmp105_set_temperature(TMP75_TEST_ID, 85000);
 +    }
-+    i2c_set8(i2cdev, TMP105_REG_CONFIG, TMP105_CONFIG_POL |
-+             TMP105_CONFIG_FQ_4 | TMP105_CONFIG_SD | TMP105_CONFIG_OS);
-+    g_assert_true(get_irq(0));
-+}
-+
-+/*
-+ * Configuration and limit-register writes are not conversions and must not
-+ * advance the fault queue.
-+ */
-+static void test_fault_queue_ignores_writes(void *obj, void *data,
-+                                            QGuestAllocator *alloc)
-+{
-+    QI2CDevice *i2cdev = (QI2CDevice *)obj;
-+    int i;
-+
-+    qtest_irq_intercept_out(global_qtest, TMP105_TEST_PATH);
-+
-+    i2c_set8(i2cdev, TMP105_REG_CONFIG, TMP105_CONFIG_POL | TMP105_CONFIG_FQ_4);
-+    g_assert_false(get_irq(0));
-+
-+    qmp_tmp105_set_temperature(TMP105_TEST_ID, 85000);
-+    g_assert_false(get_irq(0));
-+
-+    for (i = 0; i < 8; i++) {
-+        i2c_set8(i2cdev, TMP105_REG_CONFIG,
-+                 TMP105_CONFIG_POL | TMP105_CONFIG_FQ_4);
-+        i2c_set16(i2cdev, TMP105_REG_T_HIGH, 0x5000);
-+        i2c_set16(i2cdev, TMP105_REG_T_LOW, 0x4b00);
-+        g_assert_false(get_irq(0));
-+    }
-+
-+    for (i = 0; i < 2; i++) {
-+        qmp_tmp105_set_temperature(TMP105_TEST_ID, 85000);
-+        g_assert_false(get_irq(0));
-+    }
-+    qmp_tmp105_set_temperature(TMP105_TEST_ID, 85000);
-+    g_assert_true(get_irq(0));
-+}
-+
-+/*
-+ * Leaving shutdown (SD 1->0) resumes continuous conversion, which must
-+ * re-evaluate the current temperature against the limits.
-+ */
-+static void test_wake_from_shutdown(void *obj, void *data,
-+                                    QGuestAllocator *alloc)
-+{
-+    QI2CDevice *i2cdev = (QI2CDevice *)obj;
-+
-+    qtest_irq_intercept_out(global_qtest, TMP105_TEST_PATH);
-+
-+    i2c_set8(i2cdev, TMP105_REG_CONFIG, TMP105_CONFIG_POL | TMP105_CONFIG_FQ_1);
-+    g_assert_false(get_irq(0));
-+
-+    qmp_tmp105_set_temperature(TMP105_TEST_ID, 85000);
 +    g_assert_true(get_irq(0));
 +
 +    i2c_set8(i2cdev, TMP105_REG_CONFIG,
-+             TMP105_CONFIG_POL | TMP105_CONFIG_FQ_1 | TMP105_CONFIG_SD);
-+    g_assert_true(get_irq(0));
-+
-+    qmp_tmp105_set_temperature(TMP105_TEST_ID, 70000);
-+    g_assert_true(get_irq(0));
-+
-+    i2c_set8(i2cdev, TMP105_REG_CONFIG, TMP105_CONFIG_POL | TMP105_CONFIG_FQ_1);
++             TMP105_CONFIG_POL | TMP105_CONFIG_TM | TMP105_CONFIG_FQ(3) |
++             TMP105_CONFIG_SD);
 +    g_assert_false(get_irq(0));
++
++    i2c_set8(i2cdev, TMP105_REG_CONFIG,
++             TMP105_CONFIG_POL | TMP105_CONFIG_FQ(3));
++    for (i = 0; i < 4; i++) {
++        qmp_tmp105_set_temperature(TMP75_TEST_ID, 85000);
++    }
++    g_assert_true(get_irq(0));
++    i2c_set8(i2cdev, TMP105_REG_CONFIG,
++             TMP105_CONFIG_POL | TMP105_CONFIG_FQ(3) | TMP105_CONFIG_SD);
++    g_assert_true(get_irq(0));
 +}
 +
- /* The TMP75 maps F1:F0 = 10b to 3 consecutive faults. */
- static void test_tmp75_fault_queue(void *obj, void *data,
-                                    QGuestAllocator *alloc)
-@@ -282,6 +380,10 @@ static void tmp105_register_nodes(void)
-     qos_add_test("tx-rx", "tmp105", send_and_receive, NULL);
-     qos_add_test("alert-single-fault", "tmp105", test_alert_single_fault, NULL);
-     qos_add_test("fault-queue", "tmp105", test_fault_queue, NULL);
-+    qos_add_test("fault-queue-ignores-writes", "tmp105",
-+                 test_fault_queue_ignores_writes, NULL);
-+    qos_add_test("one-shot", "tmp105", test_one_shot, NULL);
-+    qos_add_test("wake-from-shutdown", "tmp105", test_wake_from_shutdown, NULL);
+ /*
+  * The LM75B has a fixed 11-bit (0.125 C) converter: the resolution and one-shot
+  * Config bits are reserved (read/write as zero) and the temperature register is
+@@ -367,6 +402,23 @@ static void test_lm75b_limits(void *obj, void *data,
+     g_assert_cmphex(i2c_get16(i2cdev, TMP105_REG_T_LOW), ==, 0x1280);
+ }
  
-     /* TMP75: register-compatible, but with a 1/2/3/4 fault queue. */
-     QOSGraphEdgeOptions tmp75_opts = {
++/* The LM75B likewise resets its OS output on shutdown in interrupt mode. */
++static void test_lm75b_shutdown_clears_alert(void *obj, void *data,
++                                             QGuestAllocator *alloc)
++{
++    QI2CDevice *i2cdev = (QI2CDevice *)obj;
++
++    qtest_irq_intercept_out(global_qtest, LM75B_TEST_PATH);
++
++    i2c_set8(i2cdev, TMP105_REG_CONFIG, TMP105_CONFIG_POL | TMP105_CONFIG_TM);
++    qmp_tmp105_set_temperature(LM75B_TEST_ID, 85000);
++    g_assert_true(get_irq(0));
++
++    i2c_set8(i2cdev, TMP105_REG_CONFIG,
++             TMP105_CONFIG_POL | TMP105_CONFIG_TM | TMP105_CONFIG_SD);
++    g_assert_false(get_irq(0));
++}
++
+ static void tmp105_register_nodes(void)
+ {
+     QOSGraphEdgeOptions opts = {
+@@ -396,6 +448,8 @@ static void tmp105_register_nodes(void)
+ 
+     qos_add_test("fault-queue", "tmp75", test_tmp75_fault_queue, NULL);
+     qos_add_test("tm-clears-alert", "tmp75", test_tmp75_tm_clears_alert, NULL);
++    qos_add_test("shutdown-clears-alert", "tmp75",
++                 test_tmp75_shutdown_clears_alert, NULL);
+ 
+     /* TMP175: like the TMP105, with a 1/2/4/6 fault queue. */
+     QOSGraphEdgeOptions tmp175_opts = {
+@@ -419,5 +473,7 @@ static void tmp105_register_nodes(void)
+ 
+     qos_add_test("resolution", "lm75b", test_lm75b_resolution, NULL);
+     qos_add_test("limits", "lm75b", test_lm75b_limits, NULL);
++    qos_add_test("shutdown-clears-alert", "lm75b",
++                 test_lm75b_shutdown_clears_alert, NULL);
+ }
+ libqos_init(tmp105_register_nodes);
 
 -- 
 2.50.1

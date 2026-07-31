@@ -4,97 +4,104 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 641EAC5516D
-	for <qemu-arm@archiver.kernel.org>; Fri, 31 Jul 2026 14:30:23 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D4474C55167
+	for <qemu-arm@archiver.kernel.org>; Fri, 31 Jul 2026 16:30:49 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wpoF5-0001Cb-KN; Fri, 31 Jul 2026 10:29:43 -0400
+	id 1wpq7s-0008HA-0K; Fri, 31 Jul 2026 12:30:24 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1wpoF4-0001AW-5x
- for qemu-arm@nongnu.org; Fri, 31 Jul 2026 10:29:42 -0400
-Received: from mail-pg1-x529.google.com ([2607:f8b0:4864:20::529])
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1wpq7q-0008Ge-6P
+ for qemu-arm@nongnu.org; Fri, 31 Jul 2026 12:30:22 -0400
+Received: from mail-yx1-xb134.google.com ([2607:f8b0:4864:20::b134])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1wpoF2-000410-1o
- for qemu-arm@nongnu.org; Fri, 31 Jul 2026 10:29:41 -0400
-Received: by mail-pg1-x529.google.com with SMTP id
- 41be03b00d2f7-cbb8b54fcf8so939191a12.0
- for <qemu-arm@nongnu.org>; Fri, 31 Jul 2026 07:29:39 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1wpq7o-0002vT-6D
+ for qemu-arm@nongnu.org; Fri, 31 Jul 2026 12:30:21 -0400
+Received: by mail-yx1-xb134.google.com with SMTP id
+ 956f58d0204a3-6682259cae6so1148125d50.3
+ for <qemu-arm@nongnu.org>; Fri, 31 Jul 2026 09:30:19 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1785515419; cv=none;
+ d=google.com; s=arc-20260327;
+ b=CegCdVCv2kcHd3n1+hM4llGzSldLWGoOl2lKPxl2Bc6A4gadWeoV/akhoMbedMADq1
+ c9LcnqSy2N72IL93sV82qRcgaFspRtCx1Y4BE0poGLq/+vHv6Eun30lF3FSxdEBmAtYh
+ gRjM0jQ0Dt8AyNch7oPq8FJxb02erPH75cz/diY4dk8KqjxL9w9E+laOJnDp4cD+rWgd
+ 2H1Y3kERPdJOIkIb6GhNpPl1mV+kXDV8OXzki7fPSSCScrg2r1yvFlCpy4alyzmOBJF+
+ Xy4LPa9m3wfrtPkGQvvmKI6Cr6sm64Q2aMNv+y3A5e4aVF8W5H5lndGMc63gaGWwZKjL
+ lnIA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
+ s=arc-20260327; 
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:dkim-signature;
+ bh=PB8wYCHzDuCP2XGvIx/g3tf6wVQHIjEjr2yPQDKBC0g=;
+ fh=JwpQCdP3w3Var17pvCXno5Q6HuMKDHMd8Ya0gfweiAo=;
+ b=aGjClc1+N7j0KQcxq6NLAJqM9lYsv/YAMu6EIOd9/x/71PY7YZ7/5dPnWw5iHFhKPD
+ NatIXwZSPi5Et9yte2LCRFW5JyquPzgoSR/9G0P/7MnxQ5LJ863JCBZwpmFhIsa+U0/w
+ yfCkQ7hPRnTWU8ViDG34j5ynYINFIbTO2x1nZutcA+6+svJKEEaky1bZtplDDk9Mcf/q
+ 2CY/9DPKcqyqxRFwwRUg+6pjM72U1GYegsrd66/huOwvSMDO+2XiPYXgJP8DcpFUMMDw
+ wIIDmTQgFrshtefq8t0FGhYwqtlvqBf3Z4wBK3mIMXARSicEfOfqEodrqtM91d3koNlz
+ wuIw==; darn=nongnu.org
+ARC-Authentication-Results: i=1; mx.google.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1785508178; x=1786112978; darn=nongnu.org;
- h=content-transfer-encoding:content-type:in-reply-to:content-language
- :from:references:cc:to:subject:user-agent:mime-version:date
- :message-id:from:to:cc:subject:date:message-id:reply-to:content-type;
- bh=E/noXmKlbngrH62CJOPqLkKBMDdAy4WXHVEoX0aD4ek=;
- b=xkUSo/lQld+s7iVlAl7SOdajj27n9eshOigFB8vgsXL7WCvRh6gWTHsJO/70vCq13e
- OOVfENplg5ABnoG6iPOjyogYrnprXxglbzhsJ94HACo2VJrJPn5xfvLZCNYvHNtaOG9e
- QdvORAKtvCsZeabBXVRlAnnZIL2atdzIL9N6hAlIat3WLCkHnqxa8Uru/7TP/9KIOzRG
- lAtR1Y9qQMp43eVMoY4dqWQnxgl1K9PKxAxLHAY89xdtkcezAwuZ5IWaxeO/ZwCTjs12
- nlIEd0AxP6oSH0W3UU8pODEAmKtoV6sjG8DHegZGdLCtCNX6RKtbCig3sL7Ztu4rSsPD
- X1qQ==
+ d=linaro.org; s=google; t=1785515419; x=1786120219; darn=nongnu.org;
+ h=content-type:cc:to:subject:message-id:date:from:in-reply-to
+ :references:mime-version:from:to:cc:subject:date:message-id:reply-to
+ :content-type; bh=PB8wYCHzDuCP2XGvIx/g3tf6wVQHIjEjr2yPQDKBC0g=;
+ b=L7Z2hrU+wEs01bPAlwpkA+nP+pHwz3kIlvAMbgZmAjwan8NRUwP0FmY9EUtshI+BIv
+ LfcC05x0cLtSWy2WmesGD4GObIeJQSlZsHJnpw2GMYU/waPmsbOzeUwFpBA4cku8N9vr
+ kFTW/31wmRYXFawAXt3tyqt2bW6iJvxE2jUCOuCSMRFZXoSXATImmVSLOGsi+BnZk/dR
+ Va5jVNqCSvykRrCFY4ON+/Ur12J9qZ2CaRBgRsGhaCicgVhgpSLvcWgTh5vGjB6QmLgd
+ Jr186diLEjFV8ExgCJls1fP++Ma6qJF6MiWf9r5ESoxHEMRIzc4pN47r7PtYe3y14P8S
+ Sd5A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1785508178; x=1786112978;
- h=content-transfer-encoding:content-type:in-reply-to:content-language
- :from:references:cc:to:subject:user-agent:mime-version:date
- :message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
- :message-id:reply-to:content-type;
- bh=E/noXmKlbngrH62CJOPqLkKBMDdAy4WXHVEoX0aD4ek=;
- b=CNCMPrr4k6XSu27T5dMnloKJtG6p4qoemyG/SSAVMwFlE4UvcBHoc4pglhA+cmWe+U
- 7xfUNlz26G1eU1zwK9ZKdF/bf7saxNAYM7wMBaclSWRFFViu+qhVX8SfCaiClqtKEGQw
- rrXfdUi6dcd3cvIYo2eZ/fqmLFGZomSsl1nWCZx+mNqQwEPuswUZ5zvtXGZwe4DgvJEB
- fRnkLHpKEc8O41iu7TtZnHTeJlQ3cRkESbzuPZ0eTc/ibeERoTpZSvJnf1vfr3lX/E99
- N3o98ebtWvHBmpdfCD/2Huf1O9ul56tDGHsysR2cl4ClhVnNleENBVxnHdlx2DWMIeKV
- ARlA==
+ d=1e100.net; s=20251104; t=1785515419; x=1786120219;
+ h=content-type:cc:to:subject:message-id:date:from:in-reply-to
+ :references:mime-version:x-gm-gg:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to:content-type;
+ bh=PB8wYCHzDuCP2XGvIx/g3tf6wVQHIjEjr2yPQDKBC0g=;
+ b=gTerH3bQzN9Q+93GPLIOsnJyOjE89WQ9rtltgSW6sm3CT7QH4RylOQ91UMR7oV752+
+ GqFjUlUgYtxX/a6T+l1Z5LMvbMoFslsKgV2VCOC1+wBkRwMHqE2iq5g81qSiol9gQAbB
+ qyUoC4EzrqtUR0uskzbzeslqSIJ3xPqDeLYmKDNY5BbVmNvqtlMqeEcC44HnatrBjo7I
+ mzmsBz3y/v3ntvBcD0BWiVDn5OKrKoEBeA+smQA8qHdRh+xx65aOAf8IjjVyrZZOpOTu
+ FVy1+5c6tLY3a+QdthBUNqyxjhLUU1/NBExYywRS9uo8ea7HXKP1qb3pIlJy8clZfloR
+ 8BmA==
 X-Forwarded-Encrypted: i=1;
- AHgh+RprChlpPztU+Hu5FmqnVndLYvxptIHQG27uDTJhCN3A1p462z9Qy+1axIBK+yHul2/AXmOHlR8+Yw==@nongnu.org
-X-Gm-Message-State: AOJu0YyYyoI742XRR032k9S2dV+bj39Bp9aYvRVQWhWPvi3TCG+JLdHf
- Yenfgi3WxGyvFqz6RC5BJ/t18mekL6Cx+OyPeYJ3TuhZJRbfah6ONmFyylCZUefBh74=
-X-Gm-Gg: AR+sD12V1maalT2yzDpU2FhEeVtkt+WbglzPY81STrfoNHI4Uo0BKQwtc/OVJl1ypha
- huPXrt1gEuKFdbTiq8fMgHzu52VgZjPrD890GxnPp88BEm96SHK2xxEFzaM/ad6MJqST1rEOSLk
- fkdKqcSxgc5ludu/LVkCSlMCqBgNwQcVRNvIAUiNtolX4rVWL9uMlN1dLMlf/SgWZlvZLjFspH0
- NtAwjA5icZsKg4yPNHTrVXk0O+7mtTSfZrlqQm8nhS6oXXEDoscJspTQ4nDkRypb4kvuBti6EU2
- kScQ6uqR8Yn77+CFAm5eWD4EeOtFSbPaido2WNvjiEFsPgBAJk3qyM4Rp06OxB2S4AeZM3VTvO9
- vr19qpCVDW4gOXayNijaMwu8xtcxL3DS2y/JnV9z60G8roMNgxK31vVVBCfRKDvvFf8G2iq5G+3
- GOcaMoCjobJ0EaWtiaYvDuAdsfzmwfbchHU8cR04aFi5Kgurh5XAguHYk7X6YE7vQ0Os47JydTS
- fbUprn4bY33uCJ+Fyo2gZ7p7lws
-X-Received: by 2002:a05:6a20:7293:b0:3c3:6af8:ab24 with SMTP id
- adf61e73a8af0-3c91b375288mr2561768637.56.1785508178576; 
- Fri, 31 Jul 2026 07:29:38 -0700 (PDT)
-Received: from [192.168.0.4] (174-21-93-59.tukw.qwest.net. [174.21.93.59])
- by smtp.gmail.com with ESMTPSA id
- 41be03b00d2f7-cbe3963da0asm653988a12.4.2026.07.31.07.29.37
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Fri, 31 Jul 2026 07:29:38 -0700 (PDT)
-Message-ID: <0be76aec-54da-4d5c-a92c-0a8520e39e89@linaro.org>
-Date: Fri, 31 Jul 2026 07:29:36 -0700
+ AHgh+Rps2D0yt8zaXBjhNVyxAYzN1efV6zm4uwOLabJbS3+sx7RptypQMAlyWTm+awbIpREjrb6bnZTc5Q==@nongnu.org
+X-Gm-Message-State: AOJu0YxSI28pCQXyZbXIiMKBdCr0w6Bu1V9USh7NL0zw/n/uL6q6AWgd
+ 4hMIC+P7SBnt5WO5MfdCX2TDz8tRFGDwKgNSMzHp5ea95nX3BUoa3LwWcxwZM6fd73YhKddGTnO
+ GBZeo2J86RcGyjP/6AJYUA0d9DDr5C1ftzpCfWadOAgexJvXk+2+d8Yo=
+X-Gm-Gg: AR+sD13Ui9PKLC0Qe2x6bQKhPz3rIy/DedIoExedI4SswE9AjZnm1/kmtO24HMtfoMF
+ 2Jkd0g4pZq3wCdHjGPQHVu/VxZoAw0eC6As1wM1SUuk4RjrDbSoTJqBIKBnhDJzB981Yt4M4qPy
+ 94ABxMEYfeSLUi3zR/6acviM5SPnYJg64Of7Z1nR1mo5gPL0t9lU+2y8GR2xtzL4/dWktb1mjma
+ VF9S7AGjgGr9tNv9gWyYMxWfSU75L+sUyuBsyfuzgyxRlloGJtkMIS5m+6bHk306etVElG9esj+
+ 3lvPzJ2l4UAnXecxS0jHm/35xriOS5t0DD67juKLK7l6lcFH676Kkm9x7kxzY/HXfhDFXBWdXxR
+ sQTQakEk8dFXfDJbVcFRTP0aqTutq
+X-Received: by 2002:a53:b1c2:0:b0:668:9230:e265 with SMTP id
+ 956f58d0204a3-6694f23a666mr617562d50.42.1785515418489; Fri, 31 Jul 2026
+ 09:30:18 -0700 (PDT)
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 02/11] tcg: Add tcg_gen_revbit{32,64}
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@oss.qualcomm.com>,
- qemu-devel@nongnu.org
-Cc: anjo@rev.ng, qemu-arm@nongnu.org, git@xen0n.name, 17746591750@163.com,
- maobibo@loongson.cn, lixianglai@loongson.cn, philmd@mailo.com,
- Pierrick Bouvier <pierrick.bouvier@linaro.org>
-References: <20260731000503.170446-1-richard.henderson@linaro.org>
- <20260731000503.170446-3-richard.henderson@linaro.org>
- <348faafd-2346-43dd-85d0-4ed7fe965ebb@oss.qualcomm.com>
-From: Richard Henderson <richard.henderson@linaro.org>
-Content-Language: en-US
-In-Reply-To: <348faafd-2346-43dd-85d0-4ed7fe965ebb@oss.qualcomm.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::529;
- envelope-from=richard.henderson@linaro.org; helo=mail-pg1-x529.google.com
+References: <20260724030616.76180-1-richard.henderson@linaro.org>
+ <20260724030616.76180-2-richard.henderson@linaro.org>
+In-Reply-To: <20260724030616.76180-2-richard.henderson@linaro.org>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Fri, 31 Jul 2026 17:30:05 +0100
+X-Gm-Features: AUfX_mx41XrJPMUQzsmEWZlOc2erlpsFdrNo0OsVkeG68TPRC7NPJ45ll-kIEQQ
+Message-ID: <CAFEAcA-BkEG59qM8sRtEtD-Y0-LC5sWfuWhMFTLnEcGDcvvDmQ@mail.gmail.com>
+Subject: Re: [PATCH 1/6] target/arm: Add FGWTE3_EL3
+To: Richard Henderson <richard.henderson@linaro.org>
+Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2607:f8b0:4864:20::b134;
+ envelope-from=peter.maydell@linaro.org; helo=mail-yx1-xb134.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -110,35 +117,119 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On 7/30/26 23:49, Philippe Mathieu-Daudé wrote:
->> +void tcg_gen_revbit32_i64(TCGv_i64 ret, TCGv_i64 arg, int flags);
->> +void tcg_gen_revbit64_i64(TCGv_i64 ret, TCGv_i64 arg);
-> 
-> Could the bswap flag be defined once per target?
+On Fri, 24 Jul 2026 at 04:07, Richard Henderson
+<richard.henderson@linaro.org> wrote:
+>
+> Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
+> ---
+>  target/arm/cpregs.h       |  1 +
+>  target/arm/cpu-features.h |  5 +++++
+>  target/arm/cpu.h          |  2 +-
+>  target/arm/helper.c       | 19 +++++++++++++++++++
+>  4 files changed, 26 insertions(+), 1 deletion(-)
+>
+> diff --git a/target/arm/cpregs.h b/target/arm/cpregs.h
+> index 391c0e322b..34592679e4 100644
+> --- a/target/arm/cpregs.h
+> +++ b/target/arm/cpregs.h
+> @@ -385,6 +385,7 @@ typedef enum CPAccessResult {
+>  /* Indexes into fgt_write[] */
+>  #define FGTREG_HFGWTR 0
+>  #define FGTREG_HDFGWTR 1
+> +#define FGTREG_FGWTE3 2
+>  /* Indexes into fgt_exec[] */
+>  #define FGTREG_HFGITR 0
+>
+> diff --git a/target/arm/cpu-features.h b/target/arm/cpu-features.h
+> index fb5ed25ad0..75f0fc4169 100644
+> --- a/target/arm/cpu-features.h
+> +++ b/target/arm/cpu-features.h
+> @@ -1467,6 +1467,11 @@ static inline bool isar_feature_aa64_asid2(const ARMISARegisters *id)
+>      return FIELD_EX64_IDREG(id, ID_AA64MMFR4, ASID2) != 0;
+>  }
+>
+> +static inline bool isar_feature_aa64_fgwte3(const ARMISARegisters *id)
+> +{
+> +    return FIELD_EX64_IDREG(id, ID_AA64MMFR4, FGWTE3) != 0;
+> +}
+> +
+>  /*
+>   * Note the E2H0 ID fields is signed, increasingly negative as more
+>   * isn't implemented.
+> diff --git a/target/arm/cpu.h b/target/arm/cpu.h
+> index 03a30afcbe..ca75e379eb 100644
+> --- a/target/arm/cpu.h
+> +++ b/target/arm/cpu.h
+> @@ -553,7 +553,7 @@ typedef struct CPUArchState {
+>           * FEAT_FGT2 will add more elements to these arrays.
+>           */
+>          uint64_t fgt_read[2]; /* HFGRTR, HDFGRTR */
+> -        uint64_t fgt_write[2]; /* HFGWTR, HDFGWTR */
+> +        uint64_t fgt_write[3]; /* HFGWTR, HDFGWTR, FGWTE3 */
+>          uint64_t fgt_exec[1]; /* HFGITR */
 
-It is not intended for bswap (or revbit) to have a set interpretation for any target, but 
-to be contextually correct for the usage.
+GICv5 also has some new fgt registers, incidentally; implementation
+of them in my w-i-p gicv5 branch:
+https://gitlab.com/pm215/qemu/-/commit/31900667e440a136c60b984c9e7c9e9a95d708df
 
-For instance, TCG_BSWAP_IZ would generally be only known at the call-site, because of how 
-one has prepared the input.  It's usage within s390x follows forced zero-extension:
+I don't think there's any particular clash here, though. The
+one thing I do wonder about is that FGWTE3 has only a
+write trap version, whereas the gicv5 regs have both read
+and write trap versions. We rely on being able to use the same
+index for fgt_read[] and fgt_write[]. So I think maybe here we
+should make fgt_read[] also 3 entries and comment it as
+"FGWTE3 (unused)"? Unless we deliberately land the gicv5 traps
+first, we'll need to add a gap there later anyway, and doing it
+now means we won't forget this oddity.
 
-     C(0xe31f, LRVH,    RXY_a, Z,   0, m2_16u, new, r1_16, rev16, 0)
-...
-     C(0xe33f, STRVH,   RXY_a, Z,   la2, r1_16u, new, m1_16, rev16, 0)
+>          /* RME registers */
+> diff --git a/target/arm/helper.c b/target/arm/helper.c
+> index af45234ad2..d410a9a1ec 100644
+> --- a/target/arm/helper.c
+> +++ b/target/arm/helper.c
+> @@ -6331,6 +6331,21 @@ static const ARMCPRegInfo fpmr_reginfo[] = {
+>      }
+>  };
+>
+> +static void fgwte3_write(CPUARMState *env, const ARMCPRegInfo *ri,
+> +                         uint64_t value)
+> +{
+> +    env->cp15.fgt_write[FGTREG_FGWTE3] |= value;
 
-Annoyingly, s390x should have these memory insns updated to perform the "reversed" 
-load/store via MO_BSWAP.
+I think I would comment this as
+     /* All bits are sticky and can only be cleared by CPU reset */
+because the semantics are odd enough to look like maybe a mistake
+otherwise.
 
-> - output sign-extended (TCG_BSWAP_OS):
-> 
->    alpha, hppa, loongarch, m68k, mips, riscv, rx, sh4, tricore
-> 
-> - output zero-extended (TCG_BSWAP_OZ):
-> 
->    arm, avr, hexagon, microblaze, openrisc, ppc, sparc, x86, xtensa
+> +}
+> +
+> +static const ARMCPRegInfo fgwte3_reginfo[] = {
+> +    { .name = "FGWTE3_EL3", .state = ARM_CP_STATE_AA64,
+> +      .opc0 = 3, .opc1 = 6, .crn = 1, .crm = 1, .opc2 = 5,
+> +      .access = PL3_RW, .resetvalue = 0,
+> +      .writefn = fgwte3_write, .raw_writefn = raw_write,
+> +      .fieldoffset = offsetof(CPUARMState, cp15.fgt_write[FGTREG_FGWTE3])
+> +    },
+> +};
+> +
+>  void register_cp_regs_for_features(ARMCPU *cpu)
+>  {
+>      /* Register all the coprocessor registers based on feature bits */
+> @@ -7642,6 +7657,10 @@ void register_cp_regs_for_features(ARMCPU *cpu)
+>          define_arm_cp_regs(cpu, ccsidr2_reginfo);
+>      }
+>
+> +    if (cpu_isar_feature(aa64_fgwte3, cpu)) {
+> +        define_arm_cp_regs(cpu, fgwte3_reginfo);
+> +    }
+> +
+>      define_pm_cpregs(cpu);
+>      define_gcs_cpregs(cpu);
+>  }
 
-But note that arm uses both OS (aarch32 REVSH) and OZ (aarch64 REV32).
+Otherwise
+Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 
-
-r~
+thanks
+-- PMM
 

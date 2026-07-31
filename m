@@ -4,84 +4,84 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9F965C55167
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E96EBC5516D
 	for <qemu-arm@archiver.kernel.org>; Fri, 31 Jul 2026 00:07:11 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wpakf-0001op-2H; Thu, 30 Jul 2026 20:05:25 -0400
+	id 1wpakd-0001nz-Qp; Thu, 30 Jul 2026 20:05:23 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1wpakZ-0001mf-8L
- for qemu-arm@nongnu.org; Thu, 30 Jul 2026 20:05:20 -0400
-Received: from mail-pg1-x531.google.com ([2607:f8b0:4864:20::531])
+ id 1wpakY-0001l8-1N
+ for qemu-arm@nongnu.org; Thu, 30 Jul 2026 20:05:18 -0400
+Received: from mail-pf1-x432.google.com ([2607:f8b0:4864:20::432])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1wpakW-0001QL-4w
- for qemu-arm@nongnu.org; Thu, 30 Jul 2026 20:05:19 -0400
-Received: by mail-pg1-x531.google.com with SMTP id
- 41be03b00d2f7-ca913a601fbso241867a12.3
- for <qemu-arm@nongnu.org>; Thu, 30 Jul 2026 17:05:15 -0700 (PDT)
+ id 1wpakS-0001Lx-G8
+ for qemu-arm@nongnu.org; Thu, 30 Jul 2026 20:05:17 -0400
+Received: by mail-pf1-x432.google.com with SMTP id
+ d2e1a72fcca58-8453427d3f4so536569b3a.3
+ for <qemu-arm@nongnu.org>; Thu, 30 Jul 2026 17:05:11 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1785456314; x=1786061114; darn=nongnu.org;
+ d=linaro.org; s=google; t=1785456311; x=1786061111; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to:content-type;
- bh=0ns65FLTaqMAOS6M+ta0Sf/0BSXRfHxqkcsDeE7GiUs=;
- b=XUXa/gLjGsgjXHi7v/KlkJmtvbR0bmI72N5vuU6uSP8mkbYoOTBJI2alFDJrRwPeUR
- reDwJkteUTs2EOFAkUmqr50sTDqjAWBfWtWnSnRDY5lnxm/AAxbCjcMSmyMmE2qBVTbZ
- aFSf6SMGiS09Gk2AS22HtOI2siifsZ/jFTOTYplpWRh7BAZwP3hlCqzNxOzDgx2dNCYD
- oG2nXGljzmnU5B9nrA6n3+t49/mzN+lAa1reLsvg2KjqWD5YhvIQm4j1sRHtzngDawcZ
- /tnH4aVZK9s3Z4aMmp43iHVtrTEfD1Xfy/487p27248H4dsVCyuw9tR9XX1Hx7z1WLDP
- Q2Kg==
+ bh=o/mxzhPCz/14yoiAK7x8P3LSR9cSbKyXp0L6qWTNguE=;
+ b=if0YGyHbCQQchtSbBNZl1D6xVjiDuV+X/bboFmxpEZgsmumyVwqY6UEWvlhUh0znqe
+ TIAt7PLZnN64XFm71nbxKtqYj4A5WzhwtmtkfVzo2/mFNsq4WJLbCbUwzuVKYAkkcZ+g
+ sUEvOKNYrJ/zO9/7bHVZ4koGvZDGXE4FduoiTmJg5tBzT2TRRpVfRVu+VEv7lh5rEX3s
+ 1yTeQ51zIvLPAcePsqF9twFOtSmyKacCAITmB4nHkHo0JKZsJ/Q4I36O+vnnZKpgODqu
+ DCFk2TnDDjkRlzCiLk5ht4//sj88zjLe/gtYjA3DFD6/ivmsPbiEP/FKvmLrvq9YMgtJ
+ MwEw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1785456314; x=1786061114;
+ d=1e100.net; s=20251104; t=1785456311; x=1786061111;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
  :to:cc:subject:date:message-id:reply-to:content-type;
- bh=0ns65FLTaqMAOS6M+ta0Sf/0BSXRfHxqkcsDeE7GiUs=;
- b=WCGxHve5uIfsjTmpAtLHAfwoNgIEE/VaukNGV/AyUQcPVCzHmoaC9Rep701ghN+eVC
- 5Q6DCLzeC5uH5Vj4J/1gVLLTy4EonxwIyd9zazzwfnNuP2SkxztXnhhL6YidoR41soY/
- L3/FopXrfH1GUuX4YIDVuSr1CkGypTt+g6tHZQ+s/TrT5g8OfN6vxrJZHBAl02hlQQ8S
- Ns+luCwPCPR3aYTUYanxq8AT0HYbuv6BdHTKB79kj6pYhqCfBvV1MOgU9WcoH+t/4T+1
- lbwTN8OI3GFzhN0H3ew2b2YqkwiCMA2dJdGqNgcSdXFzUtox4889mnMRHThT4MK+Lq5S
- sD6Q==
+ bh=o/mxzhPCz/14yoiAK7x8P3LSR9cSbKyXp0L6qWTNguE=;
+ b=QRG8LVPdspbIfTcIdwoqKI7U0Uv+y2vdWb6N/Fvc0Zva9eodCjH5LX6HXnjr6nMjJn
+ Fc7zkjY0f7GVfuH6Rar3GMUM2Raj6q9FvnR2qzaRTcgwO+9vPZjAIh3Da8ERfNSKG+zw
+ uU+hzpqV+ri98iOia5pXS7o/0AnWm1HdYhj+vsrU9R7sw8ZuNM6Iulhm0sYjBUypWEts
+ LH9yJEuarnaXLNr4eeLKGnawZrlXB8esES7pYIdNuk/+f9nUycNEfRzolo23pUaNTEzO
+ xFyyRdFv+yyKjLMFe0j1ezKeXNkwcB7VueqS5PlkIrzSe4LITTEt9JlZZkAGCuFowOa+
+ eXQA==
 X-Forwarded-Encrypted: i=1;
- AHgh+RrcfZjEpk4JA00V5Md0xhOeg/8o8hPYQDaktWsg5gYa0ib2RG33bGXCmmtF0Mb9qdakCDDbL2+PLA==@nongnu.org
-X-Gm-Message-State: AOJu0Yx0tnl4y0bSqQpnUKsI2Srx14iRzI4YQXLMf4qSZxRVbiwC4ocT
- oRmpKdi6vY7bWqGzQZuNPocA+GafCefuwEeiHEDQsJvftGS+WFrgkh2MZelU6lfFNjKbtQHz71M
- ZoeOn
-X-Gm-Gg: AR+sD1237/L1bbrnyST009Ym9MY3pbSlsXGwRsiV4i9HCHlllthbFGFBFULFG5e3AAx
- RHCEllHsN8OsUzZMns4rUD3l1/xoZJfvgJmpJTYhk2we+fc4+84Hq3BE/adRE1ry86Q9Hep1c8i
- 7MXb5QvHjvXLxRIxtiutYXhAh32JI2jeHNqfLGAVnwrsR2lcj4OPGOfwTe7019Ggi86oGF+fgiT
- 9AVFpm97bCBsP2hP32K9sQmQ17nCrLXJV/JpE+IEc3/VIKPPuRJhAX5a8flXQF7oaohYEM5VcnO
- fLYY0Qh1CZr7SN/r6vt3eZpa2kAYPvUYEt+BA7n1rVRXg1rzRu5cSuAU/xW++wDiF61AtCHQS1s
- sYx5+0/34Ta9fUM4s1SUYGaCt1MFYDW2LfQrkSIKEoIAvHJHF4iOrlRpcC619TqE2VSdPUcZm3S
- qruAljVUmS0SDLF++7woSadLjH+EadQsxlMd17HNC/OJpRNzbwnV/dVqZsvt0Xbfez48uVkqxJN
- vICRjSnSflTwzXJ/pOK
-X-Received: by 2002:a05:6a20:430b:b0:3bf:aab1:cc8b with SMTP id
- adf61e73a8af0-3c9008ccb6bmr3723856637.46.1785456314400; 
- Thu, 30 Jul 2026 17:05:14 -0700 (PDT)
+ AHgh+RrNzxEmudgefFmtXtV60GjrdE21GkZVf34sIv8oYZgT1gXWgdeoTkrIcWUXSA3Wru74ttZmygB/tQ==@nongnu.org
+X-Gm-Message-State: AOJu0YwHRa3/F6FP1rmAEyYtX/A6iIMefJ/JEj1H8Gh4vpQvTaOfTozf
+ buMACxaBYKWsGzocKumCUfpnu4W2hBu9JUutbSUuP7Fj7s5dA3YHTKbdRm5i6ZRBMZfO+Jv/I+h
+ jMF7b
+X-Gm-Gg: AR+sD12nw/FtskP0t9jbniWyLzp5M6SXvhonXiO0WMvvFdXYi/dPPRUoU2YP7IJ1dph
+ V4BMr80ukSaePN8939aPzkwet8nY8FszrCa2q21+gCOqo8RiU5IPg9odH1Z6YE037d/wgCmn8Dj
+ DMTTqGwyKU8LiDqq3qm8ormGkZi6YEiE8VjNluDmhfOXwNwURpxhMeT1BfsnVaWce0yr1TGXDQy
+ xk/l0z1FhnGGwNdLenLMbHALAHdbW3x8qIApqTpYqfH7weBxmmjWLtA62RIgpiTlrHUB19UswYd
+ 8gzOzvhx0Sx4+OVYquPj9J3LZQDq6lD0hsn9gx7vze8Lu+NtJXgyCVGpQHnIsOSESu+Qi0MoyBt
+ bR1dx06x3YCemNElkWMi4lvLp4bQvHAJWlIwyrM9wakeQrBld6xozm/98pYF008QIlfSvD90u51
+ 373RtBwc2xXM4OllCJ6BQ7/z0X7FGNbMSUlHgZC7lydUvnDeZgIlYsvJ9giVY8BqyFKpQyil10X
+ bjKl1Nyv43DurMgt2ir
+X-Received: by 2002:a05:6a00:2e0e:b0:848:2f7a:2e5d with SMTP id
+ d2e1a72fcca58-84ebc46574amr4099771b3a.76.1785456310821; 
+ Thu, 30 Jul 2026 17:05:10 -0700 (PDT)
 Received: from stoup.. (174-21-93-59.tukw.qwest.net. [174.21.93.59])
  by smtp.gmail.com with ESMTPSA id
- 41be03b00d2f7-cbdb7a999ddsm2656460a12.4.2026.07.30.17.05.13
+ 41be03b00d2f7-cbdb7a999ddsm2656460a12.4.2026.07.30.17.05.10
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 30 Jul 2026 17:05:14 -0700 (PDT)
+ Thu, 30 Jul 2026 17:05:10 -0700 (PDT)
 From: Richard Henderson <richard.henderson@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: anjo@rev.ng, qemu-arm@nongnu.org, git@xen0n.name, 17746591750@163.com,
  maobibo@loongson.cn, lixianglai@loongson.cn, philmd@mailo.com
-Subject: [PATCH 11/11] tcg/loongarch64: Implement revbit{32,64}
-Date: Thu, 30 Jul 2026 17:05:03 -0700
-Message-ID: <20260731000503.170446-12-richard.henderson@linaro.org>
+Subject: [PATCH 07/11] tcg: Add revbit{32,64} opcodes
+Date: Thu, 30 Jul 2026 17:04:59 -0700
+Message-ID: <20260731000503.170446-8-richard.henderson@linaro.org>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20260731000503.170446-1-richard.henderson@linaro.org>
 References: <20260731000503.170446-1-richard.henderson@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::531;
- envelope-from=richard.henderson@linaro.org; helo=mail-pg1-x531.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::432;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pf1-x432.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -104,48 +104,321 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
+Add the plumbing, but not yet implemented for any host.
+
 Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- tcg/loongarch64/tcg-target.c.inc | 22 ++++++++++++++++++++--
- 1 file changed, 20 insertions(+), 2 deletions(-)
+ include/tcg/tcg-opc.h            |  2 ++
+ tcg/tcg-op.c                     | 43 +++++++++++++++++++++++---------
+ tcg/tcg.c                        |  6 +++++
+ docs/devel/tcg-ops.rst           | 11 ++++++++
+ tcg/aarch64/tcg-target.c.inc     |  8 ++++++
+ tcg/loongarch64/tcg-target.c.inc |  8 ++++++
+ tcg/ppc64/tcg-target.c.inc       |  8 ++++++
+ tcg/riscv64/tcg-target.c.inc     |  8 ++++++
+ tcg/s390x/tcg-target.c.inc       |  8 ++++++
+ tcg/sparc64/tcg-target.c.inc     |  8 ++++++
+ tcg/tci/tcg-target.c.inc         |  8 ++++++
+ tcg/x86_64/tcg-target.c.inc      |  8 ++++++
+ 12 files changed, 114 insertions(+), 12 deletions(-)
 
-diff --git a/tcg/loongarch64/tcg-target.c.inc b/tcg/loongarch64/tcg-target.c.inc
-index a5cd3c3b1e..9072a447ed 100644
---- a/tcg/loongarch64/tcg-target.c.inc
-+++ b/tcg/loongarch64/tcg-target.c.inc
-@@ -1866,12 +1866,30 @@ static const TCGOutOpUnary outop_bswap64 = {
+diff --git a/include/tcg/tcg-opc.h b/include/tcg/tcg-opc.h
+index 61f1c28858..ca2077733e 100644
+--- a/include/tcg/tcg-opc.h
++++ b/include/tcg/tcg-opc.h
+@@ -79,6 +79,8 @@ DEF(or, 1, 2, 0, TCG_OPF_INT)
+ DEF(orc, 1, 2, 0, TCG_OPF_INT)
+ DEF(rems, 1, 2, 0, TCG_OPF_INT)
+ DEF(remu, 1, 2, 0, TCG_OPF_INT)
++DEF(revbit32, 1, 1, 1, TCG_OPF_INT)
++DEF(revbit64, 1, 1, 1, TCG_OPF_INT)
+ DEF(rotl, 1, 2, 0, TCG_OPF_INT)
+ DEF(rotr, 1, 2, 0, TCG_OPF_INT)
+ DEF(sar, 1, 2, 0, TCG_OPF_INT)
+diff --git a/tcg/tcg-op.c b/tcg/tcg-op.c
+index 02fb3504b1..04d5e15167 100644
+--- a/tcg/tcg-op.c
++++ b/tcg/tcg-op.c
+@@ -1262,10 +1262,14 @@ static void gen_bitswap_i32(TCGv_i32 ret, TCGv_i32 arg, uint32_t mask)
+ 
+ void tcg_gen_revbit32_i32(TCGv_i32 ret, TCGv_i32 arg)
+ {
+-    gen_bitswap_i32(ret, arg, 0x55555555u);
+-    gen_bitswap_i32(ret, ret, 0x33333333u);
+-    gen_bitswap_i32(ret, ret, 0x0f0f0f0fu);
+-    tcg_gen_bswap32_i32(ret, ret);
++    if (tcg_op_supported(INDEX_op_revbit32, TCG_TYPE_I32, 0)) {
++        tcg_gen_op3i_i32(INDEX_op_revbit32, ret, arg, 0);
++    } else {
++        gen_bitswap_i32(ret, arg, 0x55555555u);
++        gen_bitswap_i32(ret, ret, 0x33333333u);
++        gen_bitswap_i32(ret, ret, 0x0f0f0f0fu);
++        tcg_gen_bswap32_i32(ret, ret);
++    }
+ }
+ 
+ void tcg_gen_smin_i32(TCGv_i32 ret, TCGv_i32 a, TCGv_i32 b)
+@@ -1914,18 +1918,33 @@ void tcg_gen_revbit32_i64(TCGv_i64 ret, TCGv_i64 arg, int flags)
+     /* Only one extension flag may be present. */
+     tcg_debug_assert(!(flags & TCG_BSWAP_OS) || !(flags & TCG_BSWAP_OZ));
+ 
+-    gen_bitswap_i64(ret, arg, 0x55555555ull);
+-    gen_bitswap_i64(ret, ret, 0x33333333ull);
+-    gen_bitswap_i64(ret, ret, 0x0f0f0f0full);
+-    tcg_gen_bswap32_i64(ret, ret, flags | TCG_BSWAP_IZ);
++    if (tcg_op_supported(INDEX_op_revbit32, TCG_TYPE_I64, 0)) {
++        tcg_gen_op3i_i64(INDEX_op_revbit32, ret, arg, flags);
++    } else if (tcg_op_supported(INDEX_op_revbit64, TCG_TYPE_I64, 0)) {
++        tcg_gen_op3i_i64(INDEX_op_revbit64, ret, arg, 0);
++        if (flags & TCG_BSWAP_OS) {
++            tcg_gen_sari_i64(ret, ret, 32);
++        } else {
++            tcg_gen_shri_i64(ret, ret, 32);
++        }
++    } else {
++        gen_bitswap_i64(ret, arg, 0x55555555ull);
++        gen_bitswap_i64(ret, ret, 0x33333333ull);
++        gen_bitswap_i64(ret, ret, 0x0f0f0f0full);
++        tcg_gen_bswap32_i64(ret, ret, flags | TCG_BSWAP_IZ);
++    }
+ }
+ 
+ void tcg_gen_revbit64_i64(TCGv_i64 ret, TCGv_i64 arg)
+ {
+-    gen_bitswap_i64(ret, arg, 0x5555555555555555ull);
+-    gen_bitswap_i64(ret, ret, 0x3333333333333333ull);
+-    gen_bitswap_i64(ret, ret, 0x0f0f0f0f0f0f0f0full);
+-    tcg_gen_bswap64_i64(ret, ret);
++    if (tcg_op_supported(INDEX_op_revbit64, TCG_TYPE_I64, 0)) {
++        tcg_gen_op3i_i64(INDEX_op_revbit64, ret, arg, 0);
++    } else {
++        gen_bitswap_i64(ret, arg, 0x5555555555555555ull);
++        gen_bitswap_i64(ret, ret, 0x3333333333333333ull);
++        gen_bitswap_i64(ret, ret, 0x0f0f0f0f0f0f0f0full);
++        tcg_gen_bswap64_i64(ret, ret);
++    }
+ }
+ 
+ void tcg_gen_not_i64(TCGv_i64 ret, TCGv_i64 arg)
+diff --git a/tcg/tcg.c b/tcg/tcg.c
+index e023ee8b9a..c2eb591f86 100644
+--- a/tcg/tcg.c
++++ b/tcg/tcg.c
+@@ -1203,6 +1203,7 @@ static const TCGOutOp * const all_outop[NB_OPS] = {
+     OUTOP(INDEX_op_qemu_st2, TCGOutOpQemuLdSt2, outop_qemu_st2),
+     OUTOP(INDEX_op_rems, TCGOutOpBinary, outop_rems),
+     OUTOP(INDEX_op_remu, TCGOutOpBinary, outop_remu),
++    OUTOP(INDEX_op_revbit32, TCGOutOpBswap, outop_revbit32),
+     OUTOP(INDEX_op_rotl, TCGOutOpBinary, outop_rotl),
+     OUTOP(INDEX_op_rotr, TCGOutOpBinary, outop_rotr),
+     OUTOP(INDEX_op_sar, TCGOutOpBinary, outop_sar),
+@@ -1230,6 +1231,7 @@ static const TCGOutOp * const all_outop[NB_OPS] = {
+     OUTOP(INDEX_op_extrh_i64_i32, TCGOutOpUnary, outop_extrh_i64_i32),
+     OUTOP(INDEX_op_ld32u, TCGOutOpLoad, outop_ld32u),
+     OUTOP(INDEX_op_ld32s, TCGOutOpLoad, outop_ld32s),
++    OUTOP(INDEX_op_revbit64, TCGOutOpUnary, outop_revbit64),
+     OUTOP(INDEX_op_st32, TCGOutOpStore, outop_st),
+ };
+ 
+@@ -2944,6 +2946,8 @@ void tcg_dump_ops(TCGContext *s, FILE *f, bool have_prefs)
+             case INDEX_op_bswap16:
+             case INDEX_op_bswap32:
+             case INDEX_op_bswap64:
++            case INDEX_op_revbit32:
++            case INDEX_op_revbit64:
+                 {
+                     TCGArg flags = op->args[k];
+                     const char *name = NULL;
+@@ -5575,6 +5579,7 @@ static void tcg_reg_alloc_op(TCGContext *s, const TCGOp *op)
+     case INDEX_op_ctpop:
+     case INDEX_op_neg:
+     case INDEX_op_not:
++    case INDEX_op_revbit64:
+         {
+             const TCGOutOpUnary *out =
+                 container_of(all_outop[op->opc], TCGOutOpUnary, base);
+@@ -5587,6 +5592,7 @@ static void tcg_reg_alloc_op(TCGContext *s, const TCGOp *op)
+ 
+     case INDEX_op_bswap16:
+     case INDEX_op_bswap32:
++    case INDEX_op_revbit32:
+         {
+             const TCGOutOpBswap *out =
+                 container_of(all_outop[op->opc], TCGOutOpBswap, base);
+diff --git a/docs/devel/tcg-ops.rst b/docs/devel/tcg-ops.rst
+index 92ef127c80..1b3a2618b6 100644
+--- a/docs/devel/tcg-ops.rst
++++ b/docs/devel/tcg-ops.rst
+@@ -495,6 +495,17 @@ Misc
+          into 32-bit output *t0*.  Depending on the host, this may be a simple shift,
+          or may require additional canonicalization.
+ 
++   * - revbit32 *t0*, *t1*, *flags*
++
++     - | 32 bit bit reverse.  The flags are the same as for bswap32.
++         On TCG_TYPE_I32, the flags should be zero.
++
++   * - revbit64 *t0*, *t1*, *flags*
++
++     - | 64 bit bit reverse. The flags are ignored, but still present
++         for consistency with the other revbit opcodes. For future
++         compatibility, the flags should be zero.
++
+ 
+ Conditional moves
+ -----------------
+diff --git a/tcg/aarch64/tcg-target.c.inc b/tcg/aarch64/tcg-target.c.inc
+index cc9c2a5158..aa2c4e42ed 100644
+--- a/tcg/aarch64/tcg-target.c.inc
++++ b/tcg/aarch64/tcg-target.c.inc
+@@ -2652,6 +2652,14 @@ static const TCGOutOpUnary outop_bswap64 = {
      .out_rr = tgen_bswap64,
  };
  
-+static void tgen_revbit32(TCGContext *s, TCGType type,
-+                          TCGReg a0, TCGReg a1, unsigned flags)
-+{
-+    tcg_out_opc_revbit_w(s, a0, a1);
++static const TCGOutOpBswap outop_revbit32 = {
++    .base.static_constraint = C_NotImplemented,
++};
 +
-+    /* All 32-bit values are computed sign-extended in the register.  */
-+    if (type == TCG_TYPE_I64 && (flags & TCG_BSWAP_OZ)) {
-+        tcg_out_ext32u(s, a0, a0);
-+    }
-+}
++static const TCGOutOpUnary outop_revbit64 = {
++    .base.static_constraint = C_NotImplemented,
++};
 +
- static const TCGOutOpBswap outop_revbit32 = {
--    .base.static_constraint = C_NotImplemented,
-+    .base.static_constraint = C_O1_I1(r, r),
-+    .out_rr = tgen_revbit32,
- };
- 
-+static void tgen_revbit64(TCGContext *s, TCGType type, TCGReg a0, TCGReg a1)
-+{
-+    tcg_out_opc_revbit_d(s, a0, a1);
-+}
-+
- static const TCGOutOpUnary outop_revbit64 = {
--    .base.static_constraint = C_NotImplemented,
-+    .base.static_constraint = C_O1_I1(r, r),
-+    .out_rr = tgen_revbit64,
- };
- 
  static void tgen_neg(TCGContext *s, TCGType type, TCGReg a0, TCGReg a1)
+ {
+     tgen_sub(s, type, a0, TCG_REG_XZR, a1);
+diff --git a/tcg/loongarch64/tcg-target.c.inc b/tcg/loongarch64/tcg-target.c.inc
+index 182dcfd5eb..a5cd3c3b1e 100644
+--- a/tcg/loongarch64/tcg-target.c.inc
++++ b/tcg/loongarch64/tcg-target.c.inc
+@@ -1866,6 +1866,14 @@ static const TCGOutOpUnary outop_bswap64 = {
+     .out_rr = tgen_bswap64,
+ };
+ 
++static const TCGOutOpBswap outop_revbit32 = {
++    .base.static_constraint = C_NotImplemented,
++};
++
++static const TCGOutOpUnary outop_revbit64 = {
++    .base.static_constraint = C_NotImplemented,
++};
++
+ static void tgen_neg(TCGContext *s, TCGType type, TCGReg a0, TCGReg a1)
+ {
+     tgen_sub(s, type, a0, TCG_REG_ZERO, a1);
+diff --git a/tcg/ppc64/tcg-target.c.inc b/tcg/ppc64/tcg-target.c.inc
+index b54afa0b6d..a9a41ebd4f 100644
+--- a/tcg/ppc64/tcg-target.c.inc
++++ b/tcg/ppc64/tcg-target.c.inc
+@@ -3421,6 +3421,14 @@ static const TCGOutOpUnary outop_bswap64 = {
+     .out_rr = tgen_bswap64,
+ };
+ 
++static const TCGOutOpBswap outop_revbit32 = {
++    .base.static_constraint = C_NotImplemented,
++};
++
++static const TCGOutOpUnary outop_revbit64 = {
++    .base.static_constraint = C_NotImplemented,
++};
++
+ static void tgen_neg(TCGContext *s, TCGType type, TCGReg a0, TCGReg a1)
+ {
+     tcg_out32(s, NEG | RT(a0) | RA(a1));
+diff --git a/tcg/riscv64/tcg-target.c.inc b/tcg/riscv64/tcg-target.c.inc
+index 76dd4fca97..4ebbe24774 100644
+--- a/tcg/riscv64/tcg-target.c.inc
++++ b/tcg/riscv64/tcg-target.c.inc
+@@ -2469,6 +2469,14 @@ static const TCGOutOpUnary outop_bswap64 = {
+     .out_rr = tgen_bswap64,
+ };
+ 
++static const TCGOutOpBswap outop_revbit32 = {
++    .base.static_constraint = C_NotImplemented,
++};
++
++static const TCGOutOpUnary outop_revbit64 = {
++    .base.static_constraint = C_NotImplemented,
++};
++
+ static void tgen_neg(TCGContext *s, TCGType type, TCGReg a0, TCGReg a1)
+ {
+     tgen_sub(s, type, a0, TCG_REG_ZERO, a1);
+diff --git a/tcg/s390x/tcg-target.c.inc b/tcg/s390x/tcg-target.c.inc
+index 84a9e73a46..10b9dcb0cf 100644
+--- a/tcg/s390x/tcg-target.c.inc
++++ b/tcg/s390x/tcg-target.c.inc
+@@ -3020,6 +3020,14 @@ static const TCGOutOpUnary outop_bswap64 = {
+     .out_rr = tgen_bswap64,
+ };
+ 
++static const TCGOutOpBswap outop_revbit32 = {
++    .base.static_constraint = C_NotImplemented,
++};
++
++static const TCGOutOpUnary outop_revbit64 = {
++    .base.static_constraint = C_NotImplemented,
++};
++
+ static void tgen_neg(TCGContext *s, TCGType type, TCGReg a0, TCGReg a1)
+ {
+     if (type == TCG_TYPE_I32) {
+diff --git a/tcg/sparc64/tcg-target.c.inc b/tcg/sparc64/tcg-target.c.inc
+index 5e5c3f1cda..d22c1bd566 100644
+--- a/tcg/sparc64/tcg-target.c.inc
++++ b/tcg/sparc64/tcg-target.c.inc
+@@ -1947,6 +1947,14 @@ static const TCGOutOpUnary outop_bswap64 = {
+     .base.static_constraint = C_NotImplemented,
+ };
+ 
++static const TCGOutOpBswap outop_revbit32 = {
++    .base.static_constraint = C_NotImplemented,
++};
++
++static const TCGOutOpUnary outop_revbit64 = {
++    .base.static_constraint = C_NotImplemented,
++};
++
+ static void tgen_neg(TCGContext *s, TCGType type, TCGReg a0, TCGReg a1)
+ {
+      tgen_sub(s, type, a0, TCG_REG_G0, a1);
+diff --git a/tcg/tci/tcg-target.c.inc b/tcg/tci/tcg-target.c.inc
+index 1b22c70616..e8b82a0c85 100644
+--- a/tcg/tci/tcg-target.c.inc
++++ b/tcg/tci/tcg-target.c.inc
+@@ -959,6 +959,14 @@ static const TCGOutOpUnary outop_bswap64 = {
+     .out_rr = tgen_bswap64,
+ };
+ 
++static const TCGOutOpBswap outop_revbit32 = {
++    .base.static_constraint = C_NotImplemented,
++};
++
++static const TCGOutOpUnary outop_revbit64 = {
++    .base.static_constraint = C_NotImplemented,
++};
++
+ static void tgen_neg(TCGContext *s, TCGType type, TCGReg a0, TCGReg a1)
+ {
+     tcg_out_op_rr(s, INDEX_op_neg, a0, a1);
+diff --git a/tcg/x86_64/tcg-target.c.inc b/tcg/x86_64/tcg-target.c.inc
+index 1fc45e4ec6..70fec08c4c 100644
+--- a/tcg/x86_64/tcg-target.c.inc
++++ b/tcg/x86_64/tcg-target.c.inc
+@@ -1290,6 +1290,14 @@ static inline void tcg_out_bswap64(TCGContext *s, int reg)
+     tcg_out_opc(s, OPC_BSWAP + P_REXW + LOWREGMASK(reg), 0, reg, 0);
+ }
+ 
++static const TCGOutOpBswap outop_revbit32 = {
++    .base.static_constraint = C_NotImplemented,
++};
++
++static const TCGOutOpUnary outop_revbit64 = {
++    .base.static_constraint = C_NotImplemented,
++};
++
+ static void tgen_arithi(TCGContext *s, int c, int r0,
+                         tcg_target_long val, int cf)
+ {
 -- 
 2.43.0
 

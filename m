@@ -4,65 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 85093C54F54
-	for <qemu-arm@archiver.kernel.org>; Fri, 31 Jul 2026 12:35:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AC95CC54F54
+	for <qemu-arm@archiver.kernel.org>; Fri, 31 Jul 2026 12:36:31 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wpmSF-0007Mq-ST; Fri, 31 Jul 2026 08:35:11 -0400
+	id 1wpmTJ-0007xl-AJ; Fri, 31 Jul 2026 08:36:17 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <eblot.ml@gmail.com>)
- id 1wpmSF-0007Mh-4S
- for qemu-arm@nongnu.org; Fri, 31 Jul 2026 08:35:11 -0400
-Received: from mail-wr1-f44.google.com ([209.85.221.44])
+ id 1wpmTF-0007wy-9Y
+ for qemu-arm@nongnu.org; Fri, 31 Jul 2026 08:36:13 -0400
+Received: from mail-wr1-f42.google.com ([209.85.221.42])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <eblot.ml@gmail.com>)
- id 1wpmSD-0000v4-HT
- for qemu-arm@nongnu.org; Fri, 31 Jul 2026 08:35:10 -0400
-Received: by mail-wr1-f44.google.com with SMTP id
- ffacd0b85a97d-47fd4ee0b01so266945f8f.2
- for <qemu-arm@nongnu.org>; Fri, 31 Jul 2026 05:35:09 -0700 (PDT)
+ id 1wpmTD-00010m-IN
+ for qemu-arm@nongnu.org; Fri, 31 Jul 2026 08:36:13 -0400
+Received: by mail-wr1-f42.google.com with SMTP id
+ ffacd0b85a97d-47f81a3ccf9so842036f8f.0
+ for <qemu-arm@nongnu.org>; Fri, 31 Jul 2026 05:36:11 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1785501308; x=1786106108;
+ d=1e100.net; s=20251104; t=1785501370; x=1786106170;
  h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
  :content-type:mime-version:subject:date:from:x-gm-gg
  :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
  :content-type;
- bh=cgbT+Nkm1dADHvR/4vLeWGsR4IryoIoADhqYOAUzjvs=;
- b=OhaWEHX9AffeaNQ8wlxlR0ZwZsDYEXOdB2UioVVzRRNSjp4uhTHR+t3YRyOmYYoQd+
- ExVHYCWuc2svY65K6E7bjvRbFuWHSM04wgHqFYL9KnVYb/e4p2F49wGDuXmOy140LMtp
- dfkiOzcAMgCgxJD88nkqxFchFj1Bqo0RglU9KdF6A5O4z+UADJT4pWfp0woQ0wNGsuY6
- CvWS04y4Hxu24HurJVVCFQTtmHZDo9RsyXH/bZDnF7yv32HoEn3NpUAqcw8BEHR/a5IE
- sPxECOGaQMgC5rNa/ykljSuPjW2x8WMizTt6FS/Q9Eglp0zaPMIXozWXZplDYuMV4DZz
- abbw==
+ bh=waRQgwYJZyfJZTnlp7ivy6wT8uIy6YjpVb6bYaBZS7g=;
+ b=TZLVIJ+6v1aypZHiT8hCdLx2OYcihWTbt5hG3eSv7Af/J+jTfEOaXyNRyRip6WGxsV
+ Ls5AxRy7RGoKX//DEckJjDMANIDDDHRE0qEKbNHOoU1xOQ9DH6be22L7UbiulbOL6+n7
+ E/9y3ERVA6rbTtq/eHtquJN2qb2DIo6Y/sYSMnrjNWBTp0vI3Z2hR+oenuCoUYBgTY8L
+ voG4uoVFeEJXUyjLzaNwScczpQnSD2OKwaIgpCzzcoaDAkhhA540dM9p4BPt8NubYXKj
+ 3mkoOTKVqtWzd3Z/V2n1Y4F9j5kLCECmU9MpIMYv/AgvyU1/geTDnCHCFtPSSQKcqPMu
+ j9GQ==
 X-Forwarded-Encrypted: i=1;
- AHgh+Rr8CUwZ7p+xkVbkPbayaUrN8Ep7IyDQLWQjoA1++rC2wWMinn03C0BmEWizDQ5Y5n6xbecTH6tBvg==@nongnu.org
-X-Gm-Message-State: AOJu0YxFSceNwWTR7MZhYQV4iLGiQaopNKwihWR8ieIFa91ylDsANPiQ
- MyAuk1HneY0znDd9YQiu+jkrRs29dmx42rm5gud5/oAkhuuzMTOEvA6h
-X-Gm-Gg: AR+sD12W2NRFTRryeqRLnEHddK389vJc94XgwpadlPwWnZLByR/WEnLQ2LMb0Pd9t2B
- y0rYfdWlN9OdCOwwzZAy96HjnFW7FO48/RRIKLNcSMU1UWRst92KFH0XY+k4y1kM3hS/pRN21SH
- vuIqvMEEMRW/27T+oLpTvK6RHhD7wF0ZTbiyBCofz1/CqnjROfn+xHo3+uNdy+YqaQlOxPDNo1U
- hCJ/1hAsUNcvBTHdXI3p4z2zQByngfMw2G/FjB4WK4ZhbN8etqO16h2xiQ0QhYReht/hqlosCrW
- iTC2502WY/3sBvyaUBGWTJBXg80uJtGTs8cm2qn2YAkd4gdkNoMoEqAQwTMHpNvXLylQqJrS9Cv
- Y3PY9Bjhul5GKNWL5QeKfD4jeAGqDqXUKqkhDMfPZDtC0cY9uRV2wD1ycmIhH1F36hcdepx3qJ8
- wPqnXujVgEYSmjTsdXt7tB3+NPxe7AcJlRvuC7LTLhJroe/IAJTdWtECKnn0hBQxZhRh2FWJNMq
- yFpFO5JJI/dqJWMIMnvAinZ4vk4VheC1T7U
-X-Received: by 2002:a05:6000:2994:20b0:47f:8fb6:c32e with SMTP id
- ffacd0b85a97d-47fd2b578damr3454076f8f.46.1785501307713; 
- Fri, 31 Jul 2026 05:35:07 -0700 (PDT)
+ AHgh+RqZOFBkL89HeSuUwhwQr42wrYjm4wFrfo7b039MscLx9U8FZo4fwe5BeOW5KG6Bz5P+0UYyZ0JD1A==@nongnu.org
+X-Gm-Message-State: AOJu0YxWDp1KIvAoE0FjfaTfG97lF0/5dsroxQ+g1uk6PiHBY26gsPkl
+ 9ahgn6ZLcw3mz4W/vlPCBq6LUAJ5vX9BxMqrgdDl8+d7R0u1xUdgY+sk
+X-Gm-Gg: AR+sD11j+n9U6hY+F/J41d56i6rPVXKu7iaARFjdLibAu5HNlZFiaoBdCM+mmEaQ05A
+ 9T3oLmrHFHkp/qW3iGCp3rH97J5gJAA2velHOGmlsGb/rHvCthX3H1FSc9y7BTpd2uv/zUxU1cx
+ +E2tViGGdOZh6WobJgdjdP6sP7/GG/SNyQIb7jkUvx9g6tix3UkNJOHzOfxhbrbiX0CVmrEjScu
+ +adGh1c1IQbLy8qmAyaDBMD8YF/gJYqAisN6c+332Nx45CHZ64EwF+wQtxfmHLCA1Y2vcyCct4y
+ BlCNJ5sSIu+bRGybKa8VMqhJaqK5LYLjlv2IdIP0bc3ZU+JFef08fnymxeg1gN2Cqypr+zcNY88
+ gXYx/rbzx375TLq+HziL2fknP6Gl8/ZM6lN3fQjC+YTbNeT77N3pCf1gm2zd+9ZSk3FaRnEcc+y
+ e2TOvLyn5YOCgslsNe2qLqINhSXZVwp+Io/IPWDE9nPI/HZsPJ27Abup9JlqgchPs/zcYl/81Nt
+ CZd0Ja8DRL7IqrfaZb4j7vbO4newNhE4SOe
+X-Received: by 2002:a05:6000:4615:b0:47f:9283:1fbe with SMTP id
+ ffacd0b85a97d-47fd2a431a3mr4030538f8f.0.1785501369803; 
+ Fri, 31 Jul 2026 05:36:09 -0700 (PDT)
 Received: from localhost (89-93-216-19.hfc.dyn.abo.bbox.fr. [89.93.216.19])
  by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-47fd4562a38sm4162627f8f.21.2026.07.31.05.35.06
+ ffacd0b85a97d-47fd4562a38sm4171561f8f.21.2026.07.31.05.36.08
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 31 Jul 2026 05:35:07 -0700 (PDT)
-Date: Fri, 31 Jul 2026 12:45:10 +0200
-Subject: [PATCH v2 11/25] tests/qtest: tmp105: cover shutdown clearing the
- ALERT across variants
+ Fri, 31 Jul 2026 05:36:08 -0700 (PDT)
+Date: Fri, 31 Jul 2026 12:45:11 +0200
+Subject: [PATCH v2 12/25] hw/arm: sanmiguel: add Facebook SanMiguel BMC machine
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-Message-Id: <20260731-sanmiguel-bmc-locator-v2-11-1266926ba769@free.fr>
+Content-Transfer-Encoding: 8bit
+Message-Id: <20260731-sanmiguel-bmc-locator-v2-12-1266926ba769@free.fr>
 References: <20260731-sanmiguel-bmc-locator-v2-0-1266926ba769@free.fr>
 In-Reply-To: <20260731-sanmiguel-bmc-locator-v2-0-1266926ba769@free.fr>
 To: qemu-devel@nongnu.org
@@ -78,15 +77,15 @@ Cc: =?utf-8?q?Philippe_Mathieu-Daud=C3=A9?= <philmd@mailo.com>,
  =?utf-8?q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>, 
  Emmanuel Blot <eblot@meta.com>, Emmanuel Blot <emmanuel.blot@free.fr>
 X-Mailer: b4 0.15.2
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1785494708; l=3738;
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1785494708; l=6006;
  i=emmanuel.blot@free.fr; s=20260602; h=from:subject:message-id;
- bh=2fRBCplKTjlFLd6EsRzXdhUj/5B9QVDOaJYG5Z5CWwc=;
- b=3oPlxId5SWQ2928LfG4btUnPH189fpHIha7nQppuFkIJ9+uXf+Ofh3wiHE38jShW05QjqR5rL
- yvY+L+QuG4XA2Elxtcj5VqniL6MpixKAq21fMUkJslEnLr+TO5+z3C0
+ bh=IIGp7JMpwq/OH+NFukTrNiRzNgl7XKdaJGt6qK4dT9k=;
+ b=KsqRg4Wd87HOhX5jS9kCuXTg2q38kkpbUQlkGrY2GE0qgR7KluENrgWss8NKjX8G/48cRUR2s
+ NwdaKV1zPhGAAdrPdBWlojgjDdJrSHXM15ASOEhUaN/bpDd90Mq4rn2
 X-Developer-Key: i=emmanuel.blot@free.fr; a=ed25519;
  pk=0qFrZ21FAAN8OfVsSoVcCFTk/NMYOWzxJz4paSAVm0g=
-Received-SPF: pass client-ip=209.85.221.44; envelope-from=eblot.ml@gmail.com;
- helo=mail-wr1-f44.google.com
+Received-SPF: pass client-ip=209.85.221.42; envelope-from=eblot.ml@gmail.com;
+ helo=mail-wr1-f42.google.com
 X-Spam_score_int: -15
 X-Spam_score: -1.6
 X-Spam_bar: -
@@ -112,102 +111,179 @@ From:  Emmanuel Blot via <qemu-arm@nongnu.org>
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Verify that entering shutdown clears the ALERT/OS output in interrupt
-mode but leaves it asserted in comparator mode, for both the TMP75 and
-the LM75B.
+Add an AST2600-based machine for the Facebook SanMiguel BMC, derived
+from the aspeed-bmc-facebook-sanmiguel.dts device tree.
+
+The board wires up three TMP75 temperature sensors across its I2C buses,
+alongside IO expanders, FRU EEPROMs, an I2C mux and an RTC, with 2 GiB
+RAM, dual FMC flash and RGMII networking.
 
 Signed-off-by: Emmanuel Blot <emmanuel.blot@free.fr>
 ---
- tests/qtest/tmp105-test.c | 56 +++++++++++++++++++++++++++++++++++++++++++++++
- 1 file changed, 56 insertions(+)
+ hw/arm/aspeed_ast2600_sanmiguel.c | 142 ++++++++++++++++++++++++++++++++++++++
+ hw/arm/meson.build                |   1 +
+ 2 files changed, 143 insertions(+)
 
-diff --git a/tests/qtest/tmp105-test.c b/tests/qtest/tmp105-test.c
-index e586a634d8..504f6b7202 100644
---- a/tests/qtest/tmp105-test.c
-+++ b/tests/qtest/tmp105-test.c
-@@ -335,6 +335,41 @@ static void test_tmp75_tm_clears_alert(void *obj, void *data,
-     g_assert_false(get_irq(0));
- }
- 
+diff --git a/hw/arm/aspeed_ast2600_sanmiguel.c b/hw/arm/aspeed_ast2600_sanmiguel.c
+new file mode 100644
+index 0000000000..0f766449ae
+--- /dev/null
++++ b/hw/arm/aspeed_ast2600_sanmiguel.c
+@@ -0,0 +1,142 @@
 +/*
-+ * Entering shutdown clears the ALERT in interrupt mode but leaves it asserted
-+ * in comparator mode.
++ * Facebook SanMiguel BMC
++ *
++ * Copyright (c) Meta Platforms, Inc. and affiliates.
++ *
++ * SPDX-License-Identifier: GPL-2.0-or-later
 + */
-+static void test_tmp75_shutdown_clears_alert(void *obj, void *data,
-+                                             QGuestAllocator *alloc)
++
++#include "qemu/osdep.h"
++#include "hw/arm/machines-qom.h"
++#include "hw/arm/aspeed.h"
++#include "hw/arm/aspeed_soc.h"
++#include "hw/i2c/i2c_mux_pca954x.h"
++#include "hw/gpio/pca9552.h"
++#include "hw/gpio/pca9554.h"
++#include "hw/nvram/eeprom_at24c.h"
++#include "hw/sensor/tmp105.h"
++
++/* SanMiguel hardware values */
++#define SANMIGUEL_BMC_HW_STRAP1 0x00002002
++#define SANMIGUEL_BMC_HW_STRAP2 0x00000000
++#define SANMIGUEL_BMC_RAM_SIZE ASPEED_RAM_SIZE(2 * GiB)
++
++#define TYPE_DS1338 "ds1338"
++
++static void sanmiguel_bmc_i2c_init(AspeedMachineState *bmc)
 +{
-+    QI2CDevice *i2cdev = (QI2CDevice *)obj;
-+    int i;
++    /* Reference: aspeed-bmc-facebook-sanmiguel.dts */
 +
-+    qtest_irq_intercept_out(global_qtest, TMP75_TEST_PATH);
++    AspeedSoCState *soc = bmc->soc;
++    I2CBus *i2c[16] = {};
 +
-+    i2c_set8(i2cdev, TMP105_REG_CONFIG,
-+             TMP105_CONFIG_POL | TMP105_CONFIG_TM | TMP105_CONFIG_FQ(3));
-+    for (i = 0; i < 4; i++) {
-+        qmp_tmp105_set_temperature(TMP75_TEST_ID, 85000);
++    for (unsigned idx = 0; idx < ARRAY_SIZE(i2c); idx++) {
++        i2c[idx] = aspeed_i2c_get_bus(&soc->i2c, idx);
 +    }
-+    g_assert_true(get_irq(0));
 +
-+    i2c_set8(i2cdev, TMP105_REG_CONFIG,
-+             TMP105_CONFIG_POL | TMP105_CONFIG_TM | TMP105_CONFIG_FQ(3) |
-+             TMP105_CONFIG_SD);
-+    g_assert_false(get_irq(0));
++    /* &i2c0 */
++    /* ssif-bmc@10 — no QEMU model */
 +
-+    i2c_set8(i2cdev, TMP105_REG_CONFIG,
-+             TMP105_CONFIG_POL | TMP105_CONFIG_FQ(3));
-+    for (i = 0; i < 4; i++) {
-+        qmp_tmp105_set_temperature(TMP75_TEST_ID, 85000);
-+    }
-+    g_assert_true(get_irq(0));
-+    i2c_set8(i2cdev, TMP105_REG_CONFIG,
-+             TMP105_CONFIG_POL | TMP105_CONFIG_FQ(3) | TMP105_CONFIG_SD);
-+    g_assert_true(get_irq(0));
++    /* &i2c1 — empty */
++
++    /* &i2c2 — HPM0 */
++    /* hpm0_ioexp_20: pca9555@20 */
++    i2c_slave_create_simple(i2c[2], TYPE_PCA9555, 0x20);
++    /* hpm0_ioexp_21: pca9555@21 */
++    i2c_slave_create_simple(i2c[2], TYPE_PCA9555, 0x21);
++
++    /* &i2c3 — empty */
++    /* &i2c4 — empty */
++
++    /* &i2c5 — SMM */
++    /* smm_ioexp_20: pca9555@20 */
++    i2c_slave_create_simple(i2c[5], TYPE_PCA9555, 0x20);
++    /* smm_ioexp_21: pca9555@21 */
++    i2c_slave_create_simple(i2c[5], TYPE_PCA9555, 0x21);
++    /* smm_temp: lm75@48 */
++    i2c_slave_create_simple(i2c[5], TYPE_TMP75, 0x48);
++    /* smm_fru: eeprom@50 (24c128 = 16 KiB) */
++    at24c_eeprom_init(i2c[5], 0x50, 16 * KiB);
++    /* rtc@6f — nct3018y (ds1338 stand-in) */
++    i2c_slave_create_simple(i2c[5], TYPE_DS1338, 0x6f);
++
++    /* &i2c6 — HMC */
++    /* hmc_ioexp: tca6408@20 (pca9554 stand-in) */
++    i2c_slave_create_simple(i2c[6], TYPE_PCA9554, 0x20);
++    /* i2c-mux@70 (PCA9546) — 4 channels (imux16-19), all empty */
++    i2c_slave_create_simple(i2c[6], TYPE_PCA9546, 0x70);
++
++    /* &i2c7 — HPM1 */
++    /* hpm1_ioexp_20: pca9555@20 */
++    i2c_slave_create_simple(i2c[7], TYPE_PCA9555, 0x20);
++    /* hpm1_ioexp_21: pca9555@21 */
++    i2c_slave_create_simple(i2c[7], TYPE_PCA9555, 0x21);
++
++    /* &i2c8 — empty */
++
++    /* &i2c9 — PDB */
++    /* mp5926@10-16, lm5066i@11-17 — no QEMU model (power monitors) */
++    /* pdb_ioexp_20: pca9555@20 */
++    i2c_slave_create_simple(i2c[9], TYPE_PCA9555, 0x20);
++    /* pdb_temp: lm75@4e */
++    i2c_slave_create_simple(i2c[9], TYPE_TMP75, 0x4e);
++    /* pdb_fru: eeprom@50 (24c128 = 16 KiB) */
++    at24c_eeprom_init(i2c[9], 0x50, 16 * KiB);
++
++    /* &i2c10 — SCM */
++    /* scm_temp: lm75@48 */
++    i2c_slave_create_simple(i2c[10], TYPE_TMP75, 0x48);
++    /* scm_fru: eeprom@50 (24c128 = 16 KiB) */
++    at24c_eeprom_init(i2c[10], 0x50, 16 * KiB);
++
++    /* &i2c11 — Switch Config */
++    /* sw_config: eeprom@50 (24c64 = 8 KiB) */
++    at24c_eeprom_init(i2c[11], 0x50, 8 * KiB);
++
++    /* &i2c12 — empty */
++
++    /* &i2c13 — SMM extension */
++    /* mctp@10 — no QEMU model */
++    /* smm_ext_ioexp: pca9554@38 */
++    i2c_slave_create_simple(i2c[13], TYPE_PCA9554, 0x38);
++    /* smm_ext_fru: eeprom@55 (24c128 = 16 KiB) */
++    at24c_eeprom_init(i2c[13], 0x55, 16 * KiB);
++
++    /* &i2c14 — FIO */
++    /* fio_ioexp: pca9555@20 */
++    i2c_slave_create_simple(i2c[14], TYPE_PCA9555, 0x20);
++    /* fio_fru: eeprom@50 (24c64 = 8 KiB) */
++    at24c_eeprom_init(i2c[14], 0x50, 8 * KiB);
++
++    /* &i2c15 — empty */
 +}
 +
- /*
-  * The LM75B has a fixed 11-bit (0.125 C) converter: the resolution and one-shot
-  * Config bits are reserved (read/write as zero) and the temperature register is
-@@ -367,6 +402,23 @@ static void test_lm75b_limits(void *obj, void *data,
-     g_assert_cmphex(i2c_get16(i2cdev, TMP105_REG_T_LOW), ==, 0x1280);
- }
- 
-+/* The LM75B likewise resets its OS output on shutdown in interrupt mode. */
-+static void test_lm75b_shutdown_clears_alert(void *obj, void *data,
-+                                             QGuestAllocator *alloc)
++static void aspeed_machine_sanmiguel_class_init(ObjectClass *oc,
++                                                const void *data)
 +{
-+    QI2CDevice *i2cdev = (QI2CDevice *)obj;
++    MachineClass *mc = MACHINE_CLASS(oc);
++    AspeedMachineClass *amc = ASPEED_MACHINE_CLASS(oc);
 +
-+    qtest_irq_intercept_out(global_qtest, LM75B_TEST_PATH);
-+
-+    i2c_set8(i2cdev, TMP105_REG_CONFIG, TMP105_CONFIG_POL | TMP105_CONFIG_TM);
-+    qmp_tmp105_set_temperature(LM75B_TEST_ID, 85000);
-+    g_assert_true(get_irq(0));
-+
-+    i2c_set8(i2cdev, TMP105_REG_CONFIG,
-+             TMP105_CONFIG_POL | TMP105_CONFIG_TM | TMP105_CONFIG_SD);
-+    g_assert_false(get_irq(0));
++    mc->desc       = "Facebook SanMiguel BMC (Cortex-A7)";
++    amc->soc_name  = "ast2600-a3";
++    amc->hw_strap1 = SANMIGUEL_BMC_HW_STRAP1;
++    amc->hw_strap2 = SANMIGUEL_BMC_HW_STRAP2;
++    amc->fmc_model = "mx66l1g45g";
++    amc->spi_model = "mx66l1g45g";
++    amc->num_cs    = 2;
++    amc->macs_mask = ASPEED_MAC0_ON;
++    amc->i2c_init  = sanmiguel_bmc_i2c_init;
++    mc->default_ram_size = SANMIGUEL_BMC_RAM_SIZE;
++    aspeed_machine_class_init_cpus_defaults(mc);
 +}
 +
- static void tmp105_register_nodes(void)
- {
-     QOSGraphEdgeOptions opts = {
-@@ -396,6 +448,8 @@ static void tmp105_register_nodes(void)
- 
-     qos_add_test("fault-queue", "tmp75", test_tmp75_fault_queue, NULL);
-     qos_add_test("tm-clears-alert", "tmp75", test_tmp75_tm_clears_alert, NULL);
-+    qos_add_test("shutdown-clears-alert", "tmp75",
-+                 test_tmp75_shutdown_clears_alert, NULL);
- 
-     /* TMP175: like the TMP105, with a 1/2/4/6 fault queue. */
-     QOSGraphEdgeOptions tmp175_opts = {
-@@ -419,5 +473,7 @@ static void tmp105_register_nodes(void)
- 
-     qos_add_test("resolution", "lm75b", test_lm75b_resolution, NULL);
-     qos_add_test("limits", "lm75b", test_lm75b_limits, NULL);
-+    qos_add_test("shutdown-clears-alert", "lm75b",
-+                 test_lm75b_shutdown_clears_alert, NULL);
- }
- libqos_init(tmp105_register_nodes);
++static const TypeInfo aspeed_ast2600_sanmiguel_types[] = {
++    {
++        .name          = MACHINE_TYPE_NAME("sanmiguel-bmc"),
++        .parent        = TYPE_ASPEED_MACHINE,
++        .class_init    = aspeed_machine_sanmiguel_class_init,
++        .interfaces    = arm_machine_interfaces,
++    }
++};
++
++DEFINE_TYPES(aspeed_ast2600_sanmiguel_types)
+diff --git a/hw/arm/meson.build b/hw/arm/meson.build
+index 4233a800be..2d5f4a0fe4 100644
+--- a/hw/arm/meson.build
++++ b/hw/arm/meson.build
+@@ -65,6 +65,7 @@ arm_common_ss.add(when: 'CONFIG_ASPEED_SOC', if_true: files(
+   'aspeed_ast2600_fuji.c',
+   'aspeed_ast2600_gb200nvl.c',
+   'aspeed_ast2600_rainier.c',
++  'aspeed_ast2600_sanmiguel.c',
+   'aspeed_ast10x0.c',
+   'aspeed_ast10x0_evb.c',
+   'aspeed_ast1040.c',
 
 -- 
 2.50.1

@@ -4,100 +4,101 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4DC14C54F54
-	for <qemu-arm@archiver.kernel.org>; Fri, 31 Jul 2026 11:15:57 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 73946C54F54
+	for <qemu-arm@archiver.kernel.org>; Fri, 31 Jul 2026 11:23:46 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wplDJ-0000Kh-0a; Fri, 31 Jul 2026 07:15:41 -0400
+	id 1wplKh-0002fv-DB; Fri, 31 Jul 2026 07:23:19 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1wplDH-0000KL-I7
- for qemu-arm@nongnu.org; Fri, 31 Jul 2026 07:15:39 -0400
-Received: from mail-yx1-xb131.google.com ([2607:f8b0:4864:20::b131])
+ id 1wplKf-0002fc-Jj
+ for qemu-arm@nongnu.org; Fri, 31 Jul 2026 07:23:17 -0400
+Received: from mail-ed1-x532.google.com ([2a00:1450:4864:20::532])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1wplDE-0001BE-Ax
- for qemu-arm@nongnu.org; Fri, 31 Jul 2026 07:15:38 -0400
-Received: by mail-yx1-xb131.google.com with SMTP id
- 956f58d0204a3-6688acd1a51so1081795d50.3
- for <qemu-arm@nongnu.org>; Fri, 31 Jul 2026 04:15:35 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1785496534; cv=none;
+ id 1wplKd-0003XE-Pk
+ for qemu-arm@nongnu.org; Fri, 31 Jul 2026 07:23:17 -0400
+Received: by mail-ed1-x532.google.com with SMTP id
+ 4fb4d7f45d1cf-697bd21fdc2so1485123a12.1
+ for <qemu-arm@nongnu.org>; Fri, 31 Jul 2026 04:23:15 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1785496994; cv=none;
  d=google.com; s=arc-20260327;
- b=dB7AF+K6z5rIiChbXz2uJUCzyZlh6XoBGktpo6dPAVMZQ5dmqS3HeeMezjcOFQn94I
- xLfW1vGj8EGqi4CFnHx45qB8UwWqrimtuqgKESSMXEbPleyniBFv5mDebjENWQptjjfw
- qxff+6T6+92dtI/9H/TeTDqzs5T2P/qxNjCsvEoiwWAWG6xMXG68DBJQBZaX27q320az
- f7BqtZZzo5ugILqM7ael02UGulWlFOJKHuD2uwsuS0uI5d1fNWuwkxJ9cdSdMeuP1j50
- hFOL7c2he1qWtLakWOHkdMHnz/rPLa4JV4gCWDA1Iozi2jlnb0MyDqAWjaQcQQ7bBROh
- kUWA==
+ b=dI7uclJAHkN6SPGzV5DLauQ07g4V1KN3M3WOKkNETEJPK1/XA6x+8jyp+pwWQa/A57
+ 1ONUeuf0McYZ2Nm2/VscveBBIfnQIzbvsohzKxuSlBT5SumnERVlH0guzadN8sPb1Lgp
+ c/IHtTNBBGiKl72EemEVez8BD7ZLIE/Co2a1Eu2HjJlTqv0rN4vWE54V9wa1m9OQIwLe
+ US5aTSL1A7ejCopmalQSAaOouB75EPWXwIo6/TyoyCOmNvi43IyhsNW1ZLcVvu6aYbPY
+ yGBXWBNgAmH+4jmon7Hc7QgHe1yIODlXjC8YNbzXDt5uhSdKxLtv139buJ8mgaC6/fr9
+ 9BsA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
  s=arc-20260327; 
  h=cc:to:subject:message-id:date:from:in-reply-to:references
  :mime-version:dkim-signature;
- bh=zXFbAPEIomg84gCkIGAVnHi0vMeB7bxnsVA6omErrGs=;
- fh=3WlC7I9BgZrpsE4Lppeuuamn2It8uGjFy/b8/sg7jy4=;
- b=P0K0tzd0t14RSRaFDfJchvYQ4d56fj/kC3+P3NjkI4/ur5ujVlSzU2bfU3EO6beRGv
- t/Z+moAZLk+/wzvCQ0At23xWm+4ElDgLI6xcI1x8q8DlLmIYnDwK4Xl48FnBzdRXbRSW
- q4z/r96HLKuYL7Dc44kDYlSkpt6TW3a8S0q0W1NK55WTaxofdVlunk7gs4H7IBPsz/KI
- wH7RkqXxCTIWfyydfctg6wZjSw60z7eT14I+ImtfsbPcyH78Jk7EiOesolXSnt/axcoR
- IMgMzJ0Khp4Tp4JvO0YvMsgID5K7USv1khue5QYkOIV1IDVxdPbBtxfzp1ZXgTJsUQCW
- /OlQ==; darn=nongnu.org
+ bh=InK3sWlMEUJtrTZNEBYtXG69eUj4xBvtz1Lt8ToMqhs=;
+ fh=nKbV48WFMbUcpAcFtFjrMnqMUQszkk4nofIjTidJpfw=;
+ b=nFvOG50HKVXDL4SwYiqCrppJPYMIVIelVBsBZVu0LFeFfuYLJZOmvqxc9g4ZMY8ywM
+ Y3mBp1RZd3s0Lonw0JTveB5wi1qRruxQUcejKpOZnjhXZuV3YgIIq3P4112iga+bhHrJ
+ kBgnYqQt5G+ha1Sa3dqwF0MMZz2vVGXgtOiCtoPxxMdLA790ktW6iKDzD2G7mUAxifiy
+ cf4TUr4180QjCJ7bC8bplMHYS7KfKYWouWcEu33+PyArxv0NI7I8dGZLTVTp0Zkf6PEJ
+ gomgunpbexq1M0uFmsRUTewLNBYHC5qf3hoqmIR5DbRvpmTkw6FqXNUlEVM9gCYTsXP5
+ dvkQ==; darn=nongnu.org
 ARC-Authentication-Results: i=1; mx.google.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1785496534; x=1786101334; darn=nongnu.org;
+ d=linaro.org; s=google; t=1785496994; x=1786101794; darn=nongnu.org;
  h=content-type:cc:to:subject:message-id:date:from:in-reply-to
  :references:mime-version:from:to:cc:subject:date:message-id:reply-to
- :content-type; bh=zXFbAPEIomg84gCkIGAVnHi0vMeB7bxnsVA6omErrGs=;
- b=iiCQRv5KNBa7lhjccHB2X5Bi4/TOsgTyrdr7L0lD2QpzCqIHSquauQJl1rB7c8QPpB
- PqbGR6TMDNJwgXmmowNpz0V5V5dzEoM3dxrId/ZB/6ci2+SmKne0cpD1OvMaReznt73G
- y67u/L1VnfAlHaq8kcB9NrhxvqDOvknnNu9W8y2zqCsrIJBgT2EQDmF2LHaAmH3iK+b7
- BIsK34x84M6Kz3Y3L9NI8193oLimNcH0MOkZtnIAqQwkwlIT1FbEmrA2JLvZReT4kilp
- 3+w8hR/r/9IryJAkywGBtMEv/DirTWujJ8m2q3cFlgKERs4Miof1bg4XsABTsLuEymJ1
- tYdw==
+ :content-type; bh=InK3sWlMEUJtrTZNEBYtXG69eUj4xBvtz1Lt8ToMqhs=;
+ b=m8BIJrFiT0RziNupkMAlbxfi5R8DIaYQkUe0vcLlIs/YtPhWLvxfiff1RoiH9sjfp/
+ eI8+Bx9B/RYUX5/7T4y7+1MV92kcpuV23DeLq+3IWUo73AO/Ntzo4FpKw/dQGRYzqYWE
+ 6qXwjXpGFc0yCBQ9L+uw1avXF2XRl3Od1+wQJUciMLC6KFyFBtfhJ64H5H8Bbsai92yS
+ BaqanrV644mv31742/g6dwSzuA5kgqrg4Y7tFxLRqJz0moJ3ljMo+pOQGaeS/mGBs9YN
+ 1FsUyHkc5FJedl4eFAaPiBSazbRWGijd6heOJPqe65bU/N/577AuTXSFw+gXn1mNE9Dd
+ dImw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1785496534; x=1786101334;
+ d=1e100.net; s=20251104; t=1785496994; x=1786101794;
  h=content-type:cc:to:subject:message-id:date:from:in-reply-to
  :references:mime-version:x-gm-gg:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to:content-type;
- bh=zXFbAPEIomg84gCkIGAVnHi0vMeB7bxnsVA6omErrGs=;
- b=b2CxDYPNEEKRy6YRIeyO7k9VZzFG5KP7acPoe4RlduO6udRrdS5oWY5rvWoYi1Hr2o
- sJ/4GNdiZWHH2JWuAB//NopHJDdscD7Ox5Ql5/hvP1WJTY3D9YqVFIiUJhseJwVPK7Pm
- /w1ATagJXZLxie7tKlUphDdLeuRanuimzB2UF+/kuZTDBbP7u3qOv0H/ELVZIkakuZP9
- EmdQ269x2IFM5HCFQI4+4gTrNMw0ohgCiR2uJpO5XRT3dbMQcSAQP549aPXlslFYq1eW
- ybUsvgB7pQeIk8QPPFVuuD5VGnUys+ljs32ZBEeFuNRyQ2FmBdPMcdI+uBt3sdvGODd6
- 8qGQ==
+ bh=InK3sWlMEUJtrTZNEBYtXG69eUj4xBvtz1Lt8ToMqhs=;
+ b=WjC4zPZdtR1C9JRQ4dOogjGLRvJzw3tbPlJxAnJAdPCv2zcOptvPejK30izCBH1bMG
+ hyi2NLcRpWNyA3K1JBaIPV2q8oVAjcviYp9Pa1nASgYMDFEtDFOsS2ccnv4u7p7hV4xw
+ fbwcKz4WsZPlB843ToISWtPlbqJms0tEQLlmfwM4qEfVzZAJ4bzP0qbTqXb+wAD0adZ3
+ Xif0E1S67dqSL3cwhyFLFpKQu9RY08Wh/UCVP2KxGq6qfc83hhfAgcoEjK/DtUre+a4M
+ rQ3RtL+tuLRmaTCdabsQe1Ka7apIVDbU05NDBWFzlZ3Dw4JoaeP+gbfV9RAfE927nhvW
+ NRaA==
 X-Forwarded-Encrypted: i=1;
- AHgh+RpPOOUcuYVVlMAVYDHEv+Tk26LZGcLBdfWgi1rTwjrhaoFxhvyxqmLEh399xC7SrajNAbGW1G64xQ==@nongnu.org
-X-Gm-Message-State: AOJu0Yz/1NTrtBMdupPA+zQ4DNsCsL+UKuAN0kpQN8vwA6CzY2tc5e8D
- pRLiCk8JvWhTWKbvWkSvJT/lMeD22Kx/5YJLvfw4tSUGKfgvwgpR1BVCK06wR1GOAFyKZ3uTN5h
- jL3mkRi4u+yb//6A7qwc/3K9WrW8gV1MAJLpsdcskiA==
-X-Gm-Gg: AR+sD102bMHvLijAFoK2vlh3IYamP687j2mw1PMP9xwwz36Ir3hNy2+ZEG2x3C+XNNF
- 0R0Dw78yiIohg++pn0jDLXoOu3GXRBZL7fC/F8zHwzNj8SlduPmrcSZGU8viA5q4DT9Rw2pZem/
- QXc0Z539LiT9xTN6WSuzUcMMxrcVQWfTiGh7vnjRq225oz8zkqtFEOM1KW0LZl1yNn+4j/lhXIL
- vhMoaXQr6E7jd8mak3JzY4kVzTRgkZ9ke+Cy7Ay0QCtipcO61IQrhKLn8JltclP+IQJmRivJuiN
- 00z4XtivMYkoRGMAMB09urVi1H2wgdYTePZYOoPIB10ii5jcaaOCHkmOs5ODS83ZkUooQetkcMo
- ciDAR+dUVzBKaPmwX8IyEd5pZyUhD
-X-Received: by 2002:a05:690e:138b:b0:667:9e0d:24ab with SMTP id
- 956f58d0204a3-6694a0b9d33mr566664d50.36.1785496519225; Fri, 31 Jul 2026
- 04:15:19 -0700 (PDT)
+ AHgh+RoM3PN5uzzXwvqAe4DvUZalugW1nvNv779RcHZB4jILEWOcZ0DoAdjketiHuRy2T584QdSfSGl0XQ==@nongnu.org
+X-Gm-Message-State: AOJu0Yx+s1yDwLRfDcd1jvN9vZsdURuVQCJb7Pa8Eyvv9JsxxBfOvpyz
+ 3leYOwjtGgW8mMr3cn5FdViHnqpwdjckTX5uqVIIpXzSpDPe35fngHxL6tr/Hq3BaYSsgoEaeA9
+ GyD33HlrykBSrrcRuyKfI5bXLcfjS14uepWfVlya0OA==
+X-Gm-Gg: AR+sD100argCLSofJPIOrSzSoUFeOiCEBvrAujCe9CjLu4z3aWvyoWFm9NTRbJb+HvU
+ s5rfFbyMRVzNWeHggZnBEyrOrJfhlnBctZA2eVlZ7pQHv9YFTlUO2CEluRkMYuPup5KzEb7wLOP
+ ud6gIBmClo1W5kRChQ6F2r4KwirmukeJ70Mx6Va9WId9VZmG2uCVNxAT87lpLruaC22y2Sg4eNG
+ SvFWbukzfL7gz5kQcK1TzRkXu42fc5fbSUPynSBKJDBMjmkBccS1OHmxVoXSpODBtJjAOBoI61L
+ fXVUaRF+WhP99AlqqGDlEEfd16ZGvDhQF9BQs4tJrR/5w3O9+EV2jE9yYIl0i46RZ5fgPR50Pop
+ NKi1h4D44FaYEytWWx5oVcXZUQwYd
+X-Received: by 2002:a17:907:60cb:b0:c04:fc6:d6bc with SMTP id
+ a640c23a62f3a-c1fd2534c68mr91287666b.36.1785496994250; Fri, 31 Jul 2026
+ 04:23:14 -0700 (PDT)
 MIME-Version: 1.0
 References: <20260723233605.805-1-simonxhy0404@gmail.com>
- <20260723233605.805-3-simonxhy0404@gmail.com>
-In-Reply-To: <20260723233605.805-3-simonxhy0404@gmail.com>
+ <20260723233605.805-4-simonxhy0404@gmail.com>
+In-Reply-To: <20260723233605.805-4-simonxhy0404@gmail.com>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Fri, 31 Jul 2026 12:15:07 +0100
-X-Gm-Features: AUfX_mxtEf66yTQsa41Lhs9ODf9hm7uQRQvDXKcUg1GlFPxZsGj6dYqP6aLAY5o
-Message-ID: <CAFEAcA-1PZ5=tKEk-A65WQUKjGP0P3PvFKFCxFbiEQEq+ohvxQ@mail.gmail.com>
-Subject: Re: [PATCH 2/4] hw/arm/armsse: add Arm Corstone SSE-310
+Date: Fri, 31 Jul 2026 12:23:01 +0100
+X-Gm-Features: AUfX_mwBkZ9KC78z7Lj9vK0K5G9IER25jvT6ElX3PJjTZ2DYcKRhFir9ey051pA
+Message-ID: <CAFEAcA9d2SgtXvgRfBZiaZ8GgivLVJowKFccShLvjE6Qrb9rtw@mail.gmail.com>
+Subject: Re: [PATCH 3/4] hw/misc/iotkit-sysinfo: make sys_config2 configurable
+ for SSE-310
 To: Simon Xu <simonxhy0404@gmail.com>
 Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, 
  Owen Giles <owen.giles@hpe.com>,
  Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>, 
  Robert Elliott <elliott@hpe.com>
 Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::b131;
- envelope-from=peter.maydell@linaro.org; helo=mail-yx1-xb131.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::532;
+ envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x532.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -122,212 +123,135 @@ Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
 On Fri, 24 Jul 2026 at 00:36, Simon Xu <simonxhy0404@gmail.com> wrote:
 >
-> Add Arm Corstone SSE-310 model.
-> - Include new NPU power policy unit and configuration interface in device
-> list as unimplemented devices.
-> - sys_version and iidr values from the "SSE-310 with M85 and U55 FPGA"
-> documentation for the mps3-an555.
-> - Refractor comments and code pertaining to both the SSE-300 and SSE-310.
-> - Add support for SSE-310 in the iotkit files.
-> - Add SSE-310 PIDR and CIDR registers according to the SSE-310 TRM.
->
-> Arm Corstone SSE-310 TRM:
-> https://developer.arm.com/documentation/102778/0000/
+> Add sys_config2 as QEMU property like sys_config.
+> - Modify the sys_config2 register on the SSE-310 for the NPU configurations.
+> - Currently sys_config2 is configured to report Ethos-U55 as the NPU type.
+
+Ah, here's sys_config2. For v2, if you say in the previous
+patch "this implements all the sysinfo changes for SSE-310
+except for ..." then you clue reviewers in to the fact
+that they should expect that to be added later in the series.
+
 >
 > Reviewed-by: Owen Giles <owen.giles@hpe.com>
 > Reviewed-by: Robert Elliott <elliott@hpe.com>
 > Signed-off-by: Simon Xu <simonxhy0404@gmail.com>
 > ---
->  hw/arm/armsse.c                 | 208 +++++++++++++++++++++++++++++++-
->  hw/misc/iotkit-secctl.c         |  18 +++
->  hw/misc/iotkit-sysctl.c         |  60 +++++++--
->  hw/misc/iotkit-sysinfo.c        |  12 +-
->  include/hw/arm/armsse-version.h |   2 +
->  include/hw/arm/armsse.h         |   1 +
->  6 files changed, 287 insertions(+), 14 deletions(-)
-
-I would prefer if we split this patch up into smaller pieces.
-Adding the secctl handling, the sysctl handling, sysinfo, and
-the main armsse support itself are all pieces that are easier to
-review separately. If you'd split this patch up I would have
-been able to mark some of the subpatches as reviewed already.
-
+>  hw/arm/armsse.c                  | 21 +++++++++++++++++++++
+>  hw/misc/iotkit-sysinfo.c         | 11 +++++++++++
+>  include/hw/misc/iotkit-sysinfo.h |  2 ++
+>  3 files changed, 34 insertions(+)
+>
 > diff --git a/hw/arm/armsse.c b/hw/arm/armsse.c
-> index ddb210c895..1847c73322 100644
+> index 1847c73322..cf8f6c25d1 100644
 > --- a/hw/arm/armsse.c
 > +++ b/hw/arm/armsse.c
-> @@ -26,7 +26,7 @@
->  #include "hw/core/qdev-clock.h"
+> @@ -806,6 +806,22 @@ static uint32_t armsse_sys_config_value(ARMSSE *s, const ARMSSEInfo *info)
+>      return sys_config;
+>  }
 >
->  /*
-> - * The SSE-300 puts some devices in different places to the
-> + * The SSE-300 and SSE-310 put some devices in different places to the
->   * SSE-200 (and original IoTKit). We use an array of these structs
->   * to define how each variant lays out these devices. (Parts of the
->   * SoC that are the same for all variants aren't handled via these
-> @@ -118,6 +118,18 @@ static const Property sse300_properties[] = {
->      DEFINE_PROP_UINT32("CPU0_MPU_S", ARMSSE, cpu_mpu_s[0], 8),
->  };
->
-> +static const Property sse310_properties[] = {
-> +    DEFINE_PROP_LINK("memory", ARMSSE, board_memory, TYPE_MEMORY_REGION,
-> +                     MemoryRegion *),
-> +    DEFINE_PROP_UINT32("EXP_NUMIRQ", ARMSSE, exp_numirq, 64),
-> +    DEFINE_PROP_UINT32("SRAM_ADDR_WIDTH", ARMSSE, sram_addr_width, 21),
-> +    DEFINE_PROP_UINT32("init-svtor", ARMSSE, init_svtor, 0x10000000),
-> +    DEFINE_PROP_BOOL("CPU0_FPU", ARMSSE, cpu_fpu[0], true),
-> +    DEFINE_PROP_BOOL("CPU0_DSP", ARMSSE, cpu_dsp[0], true),
-> +    DEFINE_PROP_UINT32("CPU0_MPU_NS", ARMSSE, cpu_mpu_ns[0], 8),
-> +    DEFINE_PROP_UINT32("CPU0_MPU_S", ARMSSE, cpu_mpu_s[0], 8),
-> +};
+> +static uint32_t armsse_sys_config2_value(ARMSSE *s, const ARMSSEInfo *info)
+> +{
+> +    /* Return the SYS_CONFIG2 value for this SSE */
+> +    uint32_t sys_config2;
 > +
->  static const ARMSSEDeviceInfo iotkit_devices[] = {
->      {
->          .name = "timer0",
-> @@ -480,6 +492,146 @@ static const ARMSSEDeviceInfo sse300_devices[] = {
->      }
->  };
+> +    switch (info->sse_version) {
+> +    case ARMSSE_SSE310:
+> +        sys_config2 = 0;
+> +        sys_config2 = deposit32(sys_config2, 0, 3, 1); /* NPU0 = Ethos-U55 */
+
+We don't implement the NPU0, though, so we should not advertise
+that it is present.
+
+Putting in all the machinery for the property as this patch does is
+fine, but since we always want to report 0 I'm also OK with
+hardcoding 0 in the sysinfo device the way we do for SYS_CONFIG1.
+
+> +        break;
+> +    default:
+> +        g_assert_not_reached();
+> +    }
+> +    return sys_config2;
+> +}
+> +
+>  /* Clock frequency in HZ of the 32KHz "slow clock" */
+>  #define S32KCLK (32 * 1000)
 >
-> +static const ARMSSEDeviceInfo sse310_devices[] = {
-> +    {
+> @@ -1496,6 +1512,11 @@ static void armsse_realize(DeviceState *dev, Error **errp)
+>                                      info->sse_version, &error_abort);
+>              object_property_set_int(OBJECT(&s->sysinfo), "IIDR",
+>                                      info->iidr, &error_abort);
+> +            if (info->sse_version == ARMSSE_SSE310) {
+> +                object_property_set_int(OBJECT(&s->sysinfo), "SYS_CONFIG2",
+> +                                        armsse_sys_config2_value(s, info),
+> +                                        &error_abort);
+> +            }
 
-This is a very long block of data about the SSE310 devices
-which is almost but not quite identical to the existing one
-for SSE300. It would be easier to review if your commit message
-stated which devices are new in the SSE310 memory map and
-which have moved compared to the SSE300.
+You don't need to make this conditional on sse_version. The property
+always exists on the sysinfo device. If you add cases for
+ARMSSE_IOTKIT, ARMSSE_SSE200, ARM_SSE300 that return 0, then
+we will set the property to 0 (and the sysinfo device won't use
+the value anyway).
 
-> +        .name = "timer0",
-> +        .type = TYPE_SSE_TIMER,
-> +        .index = 0,
-> +        .addr = 0x48000000,
-> +        .ppc = 0,
-> +        .ppc_port = 0,
-> +        .irq = 3,
-> +    },
-
-> +    {
-> +        .name = "s32ktimer",
-> +        .type = TYPE_CMSDK_APB_TIMER,
-> +        .index = 0,
-> +        .addr = 0x4802f000,
-> +        .ppc = 1,
-> +        .ppc_port = 0,
-> +        .irq = 2,
-> +        .slowclk = true,
-> +    },
-> +    {
-> +        .name = "s32kwatchdog",
-> +        .type = TYPE_CMSDK_APB_WATCHDOG,
-> +        .index = 0,
-> +        .addr = 0x5802e000,
-
-This is different to what we set for SSE-300, and it looks
-like that's a bug in the SSE-300 implementation. This is
-the "SLOWCLK Watchdog", and both the SSE-300 and SSE-310
-docs list it as being only in the Secure access region
-(0x58....), and not in the NS region (0x48...). We should
-fix the SSE-300 bug.
-
-> +        .ppc = NO_PPC,
-> +        .irq = NMI_0,
-> +        .slowclk = true,
-> +    },
-
-> diff --git a/hw/misc/iotkit-sysctl.c b/hw/misc/iotkit-sysctl.c
-> index dff89c677f..e6b1fe5d32 100644
-> --- a/hw/misc/iotkit-sysctl.c
-> +++ b/hw/misc/iotkit-sysctl.c
-
-> @@ -193,6 +204,7 @@ static uint64_t iotkit_sysctl_read(void *opaque, hwaddr offset,
->              break;
->          case ARMSSE_SSE300:
->              /* In SSE300 this is reserved (for INITSVTOR2) */
-> +        case ARMSSE_SSE310:
-
-For this and the others similar, you should put the two "case" lines
-together, and update the comment.
-
->              goto bad_offset;
->          default:
->              g_assert_not_reached();
-
-As well as all the registers that are the same as SSE300, the
-SSE310 has one extra register in the sysctl block: PPUINTSTAT, at
-offset 0x128. We don't implement the PPUs in QEMU, but we should at
-least implement this register as RAZ with a LOG_UNIMP log if the guest
-tries to read it.
-
+>              if (!sysbus_realize(sbd, errp)) {
+>                  return;
+>              }
 > diff --git a/hw/misc/iotkit-sysinfo.c b/hw/misc/iotkit-sysinfo.c
-> index 19f089e6ee..21e161bdc2 100644
+> index 21e161bdc2..0905949ef7 100644
 > --- a/hw/misc/iotkit-sysinfo.c
 > +++ b/hw/misc/iotkit-sysinfo.c
-> @@ -58,6 +58,12 @@ static const int sysinfo_sse300_id[] = {
->      0x0d, 0xf0, 0x05, 0xb1, /* CID0..CID3 */
->  };
->
-> +static const int sysinfo_sse310_id[] = {
-> +    0x04, 0x00, 0x00, 0x00, /* PID4..PID7 */
-> +    0x58, 0xb8, 0x2b, 0x00, /* PID0..PID3 */
-> +    0x0d, 0xf0, 0x05, 0xb1, /* CID0..CID3 */
-> +};
-> +
->  static uint64_t iotkit_sysinfo_read(void *opaque, hwaddr offset,
->                                      unsigned size)
->  {
-> @@ -68,13 +74,13 @@ static uint64_t iotkit_sysinfo_read(void *opaque, hwaddr offset,
->      case A_SYS_VERSION:
->          r = s->sys_version;
+> @@ -31,6 +31,7 @@
+>  REG32(SYS_VERSION, 0x0)
+>  REG32(SYS_CONFIG, 0x4)
+>  REG32(SYS_CONFIG1, 0x8)
+> +REG32(SYS_CONFIG2, 0xc)
+>  REG32(IIDR, 0xfc8)
+>  REG32(PID4, 0xfd0)
+>  REG32(PID5, 0xfd4)
+> @@ -87,6 +88,15 @@ static uint64_t iotkit_sysinfo_read(void *opaque, hwaddr offset,
+>              goto bad_read;
+>          }
 >          break;
-> -
->      case A_SYS_CONFIG:
->          r = s->sys_config;
->          break;
->      case A_SYS_CONFIG1:
->          switch (s->sse_version) {
->          case ARMSSE_SSE300:
+> +    case A_SYS_CONFIG2:
+> +        switch (s->sse_version) {
 > +        case ARMSSE_SSE310:
->              return 0;
->              break;
->          default:
-> @@ -84,6 +90,7 @@ static uint64_t iotkit_sysinfo_read(void *opaque, hwaddr offset,
+> +            return s->sys_config2;
+> +            break;
+> +        default:
+> +            goto bad_read;
+> +        }
+> +        break;
 >      case A_IIDR:
 >          switch (s->sse_version) {
 >          case ARMSSE_SSE300:
-> +        case ARMSSE_SSE310:
->              return s->iidr;
->              break;
->          default:
-> @@ -95,6 +102,9 @@ static uint64_t iotkit_sysinfo_read(void *opaque, hwaddr offset,
->          case ARMSSE_SSE300:
->              r = sysinfo_sse300_id[(offset - A_PID4) / 4];
->              break;
-> +        case ARMSSE_SSE310:
-> +            r = sysinfo_sse310_id[(offset - A_PID4) / 4];
-> +            break;
->          default:
->              r = sysinfo_id[(offset - A_PID4) / 4];
->              break;
-
-As well as these changes to sysinfo, which are all fine, the SSE310
-has an extra SYS_CONFIG2 register which the SSE300 does not. We
-can hardwire it to "return 0" like we do for SYS_CONFIG1,
-because the only interesting field in it is "is there an NPU
-present", which for us is always "no".
-
-> diff --git a/include/hw/arm/armsse.h b/include/hw/arm/armsse.h
-> index bdf2d4db8e..d0dcba1fbb 100644
-> --- a/include/hw/arm/armsse.h
-> +++ b/include/hw/arm/armsse.h
-> @@ -127,6 +127,7 @@ OBJECT_DECLARE_TYPE(ARMSSE, ARMSSEClass,
->  #define TYPE_IOTKIT "iotkit"
->  #define TYPE_SSE200 "sse-200"
->  #define TYPE_SSE300 "sse-300"
-> +#define TYPE_SSE310 "sse-310"
-
-There's a comment at the top of this file starting "Currently we model:"
-which documents what we implement. We should add SSE-310 to that.
-(I forgot to do this for SSE-300, unfortunately.)
+> @@ -144,6 +154,7 @@ static const MemoryRegionOps iotkit_sysinfo_ops = {
+>  static const Property iotkit_sysinfo_props[] = {
+>      DEFINE_PROP_UINT32("SYS_VERSION", IoTKitSysInfo, sys_version, 0),
+>      DEFINE_PROP_UINT32("SYS_CONFIG", IoTKitSysInfo, sys_config, 0),
+> +    DEFINE_PROP_UINT32("SYS_CONFIG2", IoTKitSysInfo, sys_config2, 0),
+>      DEFINE_PROP_UINT32("sse-version", IoTKitSysInfo, sse_version, 0),
+>      DEFINE_PROP_UINT32("IIDR", IoTKitSysInfo, iidr, 0),
+>  };
+> diff --git a/include/hw/misc/iotkit-sysinfo.h b/include/hw/misc/iotkit-sysinfo.h
+> index 36dc702c53..1c1b2758d9 100644
+> --- a/include/hw/misc/iotkit-sysinfo.h
+> +++ b/include/hw/misc/iotkit-sysinfo.h
+> @@ -16,6 +16,7 @@
+>   * QEMU interface:
+>   *  + QOM property "SYS_VERSION": value to use for SYS_VERSION register
+>   *  + QOM property "SYS_CONFIG": value to use for SYS_CONFIG register
+> + *  + QOM property "SYS_CONFIG2": value to use for SYS_CONFIG2 register
+>   *  + sysbus MMIO region 0: the system information register bank
+>   */
+>
+> @@ -38,6 +39,7 @@ struct IoTKitSysInfo {
+>      /* Properties */
+>      uint32_t sys_version;
+>      uint32_t sys_config;
+> +    uint32_t sys_config2;
+>      uint32_t sse_version;
+>      uint32_t iidr;
+>  };
 
 thanks
 -- PMM

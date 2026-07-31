@@ -4,87 +4,87 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 439DDC5516F
-	for <qemu-arm@archiver.kernel.org>; Fri, 31 Jul 2026 19:15:32 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 185D7C5516F
+	for <qemu-arm@archiver.kernel.org>; Fri, 31 Jul 2026 19:32:31 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wpshW-0006MK-JU; Fri, 31 Jul 2026 15:15:22 -0400
+	id 1wpsxz-000109-UP; Fri, 31 Jul 2026 15:32:24 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1wpshN-0006Lu-4t
- for qemu-arm@nongnu.org; Fri, 31 Jul 2026 15:15:14 -0400
-Received: from mail-pf1-x435.google.com ([2607:f8b0:4864:20::435])
+ id 1wpsxy-0000zl-G5
+ for qemu-arm@nongnu.org; Fri, 31 Jul 2026 15:32:22 -0400
+Received: from mail-pj1-x1036.google.com ([2607:f8b0:4864:20::1036])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1wpshJ-00053B-ID
- for qemu-arm@nongnu.org; Fri, 31 Jul 2026 15:15:12 -0400
-Received: by mail-pf1-x435.google.com with SMTP id
- d2e1a72fcca58-8453427d3f4so1621602b3a.3
- for <qemu-arm@nongnu.org>; Fri, 31 Jul 2026 12:15:09 -0700 (PDT)
+ id 1wpsxx-0006nl-39
+ for qemu-arm@nongnu.org; Fri, 31 Jul 2026 15:32:22 -0400
+Received: by mail-pj1-x1036.google.com with SMTP id
+ 98e67ed59e1d1-381c51fde6bso1503757a91.2
+ for <qemu-arm@nongnu.org>; Fri, 31 Jul 2026 12:32:19 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1785525308; x=1786130108; darn=nongnu.org;
+ d=linaro.org; s=google; t=1785526339; x=1786131139; darn=nongnu.org;
  h=content-transfer-encoding:content-type:in-reply-to:content-language
  :from:references:cc:to:subject:user-agent:mime-version:date
  :message-id:from:to:cc:subject:date:message-id:reply-to:content-type;
- bh=0gWbCs6CuL7ZtaHSGkfAIEnPy6cYF/O62DB/aSXUuOM=;
- b=CFRkUam7YcSXOd/+Uww1m45CIDaDnq0mqjMQ1JBr08sJ1five7UU7MMe3Vl4JccYu7
- 8ZHGFg8THIVNhMeOlNFu+/dugFYs8XEwEzAnG/LjzQlWpMsxWGZ4CJ06H4rIpxKQ7TPE
- wWdANMq8yuJmbECjtwoXWoaSAXyIadgxv/u2ihzPpA1DFeSI9co8aC9fC7Ck9COGL0uG
- qKQ91WJJvJ1g75HNF4WxBqy6/X4nT2wIBy3+JNtUEmrexr9Q3yh0bOFYISbeJ1ymEnNv
- aHUq8aCFJUs7+W9ElvEc7Y2UAsv7KnuCOizSawl0XHiry4ZzGbQQ1Eq01dOWRAsAtDuo
- lp2A==
+ bh=o5EbyKYBFv412MPhpUpHb/MqTXkFZ5i0fM584DXnLCg=;
+ b=xItjF8Qu7TMkDA3tEokcVpJh1dbtP+o3MoX1c1OmVtEcW/36vDs8UfWjiVCt7LZxlt
+ jjBwWEPhmyZWhJP6hsg0Fk3Dj8lSA3bC9U+xY8e9L7FJTHD77xpJmCMdDGK7XNISJxyJ
+ eGB6jfBmNQq0TPyVs5GAB/bi7F5ERaKKALGVorhhSE1EiFR3Cttpx/bfflGp/JdWW8nw
+ y1LkEMAG3d7kAN9GhqvufuaITKMQe+0x22H/wzH6/hTUtg66jBUZ2uydyHqvumHMgMfZ
+ ePCCXe98obYQuv4NF0iasL2GLwbV1qLpPbogUfzDbKszu4sflK+G1OCW+I94NelaIqLk
+ WdOA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1785525308; x=1786130108;
+ d=1e100.net; s=20251104; t=1785526339; x=1786131139;
  h=content-transfer-encoding:content-type:in-reply-to:content-language
  :from:references:cc:to:subject:user-agent:mime-version:date
  :message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
  :message-id:reply-to:content-type;
- bh=0gWbCs6CuL7ZtaHSGkfAIEnPy6cYF/O62DB/aSXUuOM=;
- b=TdRbyv+lWqaK2hRX+LrJkM9eACw0WATvu8exsjhBGeAegujrljunY5lGBM96nVH7oZ
- zEYzbzH1P4RcU0jV8o7VwAh+iGmt9Pjj+k1dLf78t/no4nUg1NoLHSzF47DQCnsBIt7M
- EQ8YjVBme9oIIo6nUL0dhRiH8N8J2227V4qBNOMReVn95dGO0berZLQw8B6SKVIIEnrc
- HWOH4Hi65o3GeAHSkx8vOMZbzChfnOX2GEyC6xCs7eRv5oSQue3kl2tFQ88cJ142/rIK
- lJ/9wVJ8rhk7lsiJKMww/OA4ajyjhcFEXOnKDEPZLswZVY5a+c6XHFHhKuTtIrThLu68
- 3ijA==
+ bh=o5EbyKYBFv412MPhpUpHb/MqTXkFZ5i0fM584DXnLCg=;
+ b=ihNszU452+fXVLVPPDvD5m3EuN6uLGNzrnzv2bMbQOC+tyRq3wwdjBdKWEh6UuEvTp
+ g3rAJpBsb0gwFmoYpe1b49iBesvXteBvXfSZgE2yn6+Dm+Q7YeRJq4mNr+I5NIHP0ogk
+ tDW5Nd7I/MylqLmWpsa/2i8SEXEu6PeIf0s34GD7qvwJtzhxNdCsRaiXuPcZwoW+UdCr
+ x1wb/hLbnCRAoa6l0OApc9bpWWW0p5ZV+aenFAjHHYYosm2/GfEKlCmGITx6Nib6QEDy
+ 1onWs44aAKBhM8fiVy7QhD3G/NiyEl4FfcS5LbSlvCulCFcMuw0MVPiDhQCO97vkTaw7
+ +DlQ==
 X-Forwarded-Encrypted: i=1;
- AHgh+RpIYqwkNeOunf/QMbwa39leFL1OgKVbQlgxObRko1pGSenWRh6armRKZHj44owjBP0Or3mV3skyIg==@nongnu.org
-X-Gm-Message-State: AOJu0YyGUajqEWRyGc21PYHo298780F+zGtCR+gQrp9Fa2gY+HU54fI3
- URBiiRm5USLTL1uZgyVOttIrIwTzJA759El6kmo/2hhX8ZbGuiURg2sxmHh9BPiuywY=
-X-Gm-Gg: AR+sD10RzSzgbLnLny5Ufbe5WSbQInvsAd/qgaVyOzT/ZiPZbvj0OOnbQ/NjF/eUAHj
- k53yy+y0E8+ExS8ZAElxUlIcdSGDR8JxcIMZigYc+9u+vdqqzn8/h5QvGVmrf0DP73kQw5VRQK6
- hHCFCt+ugf+084akDaolTOatZ7IxVThfA56NYDJUJYuiTe/qSAnUfhWkIttQwqAH8HAdJ573tcN
- utxDSuYdzeJVl7a3iRM2F//0r//yWV99vWbR0swJ65BwjblyiFUlKAPaP0QSFXhaJi7OJALQQmi
- rSOksJK4mSnWKIsqraspG0BpZbowEtuBZsfpM5+YfPx73mAecKBgm8ap8kLFDlJwFGDbFOIFbXq
- 09mfjmt8RKlSU/Ivq/l6JZU2cSWWNclheJn5LVy8zAByjKo9bG465aw6lcIgGaG1GGOy9rZbVLt
- 3cmJw1ViFiklw98RkoLAIzyjpyB35I6X9ZhKwt4oXFsFb/d9idSwQoHqNzgFSNduxD83Y/jVLr2
- SWhWmf07Kj31RaPQhmPtFYtW+x9
-X-Received: by 2002:a05:6a00:3012:b0:84a:29a7:f650 with SMTP id
- d2e1a72fcca58-84ee4636b18mr804148b3a.0.1785525307719; 
- Fri, 31 Jul 2026 12:15:07 -0700 (PDT)
+ AHgh+RqV9IIj/1JliSktKljNFQIKuWdk5dRhrIopOXe4f4/2EKTdtXKDFYwMV+TmNjTQAPQd+VjKWtGCfQ==@nongnu.org
+X-Gm-Message-State: AOJu0Yx/bABNlte+vqzsqSY+LdBpl86T3eyGIEqBxlfiqD43SHXuxoTj
+ InfZTz5vPyDt8tZuzq5mdfoUfStNb9H52id5qPrBAZWxp4Kdi6G1f0oZMLbpbXcIsG4=
+X-Gm-Gg: AR+sD13/CPA2IBrR8doc5jnixr1BxoTR3grVLxICaofL4+ifPtQ1p9e4G3tJJIZY7Rj
+ iWCg4jUPSFYb9p2G+TGUirJixPyMlC0K5+fjX++BQQjCW63dRKR9lwrD0WPlyfHYBYN6HG3WGam
+ +oizMtCurxSRen2oQ3PqW13K/jp4uyLbf8QGx0k+c7us3TPDGrDpV8TOkSpLeYSKwiezWZMx+zQ
+ ifKfgKvThb7jbmOp6B0QEZiioK1qCBo2g0OuKNr5oIxOI3R6b0rfH/0Okd01YZ4RODPhYHlRaUo
+ ZdQj1sIn6xMhbgUgBay7U+7gCVU7YiOtpqoi0cUQvHInjrVAsMENGqW60XL5kJBgKHQC84dAfz5
+ D41DK1Yz9ifhuLgIrufhYjRoj3EVjuL9it9XjM8npU/nrE6J0hxChdYJ8U3m1HzI2Whzii+v27t
+ 3nMnMabJUSInZ4brT1hY4y/mHsV1fSrK21fAfcKKNx40mRHfJ5DbrBNhBHxWSWGwpPd4Yi3/jSM
+ liBrbxZklryj329p9CcJXawGE4+
+X-Received: by 2002:a17:90b:1cc6:b0:387:df8f:1406 with SMTP id
+ 98e67ed59e1d1-38fbc5ab01dmr832696a91.39.1785526338614; 
+ Fri, 31 Jul 2026 12:32:18 -0700 (PDT)
 Received: from [192.168.0.4] (174-21-93-59.tukw.qwest.net. [174.21.93.59])
  by smtp.gmail.com with ESMTPSA id
- 41be03b00d2f7-cbe39ea968fsm983834a12.26.2026.07.31.12.15.06
+ 98e67ed59e1d1-38fb2962928sm1114762a91.3.2026.07.31.12.32.18
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Fri, 31 Jul 2026 12:15:06 -0700 (PDT)
-Message-ID: <2efdfc06-b522-40f9-9aca-88d1a258ea14@linaro.org>
-Date: Fri, 31 Jul 2026 12:15:05 -0700
+ Fri, 31 Jul 2026 12:32:18 -0700 (PDT)
+Message-ID: <e4e5bdc5-8135-46a0-8176-a10f148064bc@linaro.org>
+Date: Fri, 31 Jul 2026 12:32:16 -0700
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 1/6] target/arm: Add FGWTE3_EL3
+Subject: Re: [PATCH 5/6] target/arm: Set fgt in cpregs for FGWTE3
 To: Peter Maydell <peter.maydell@linaro.org>
 Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org
 References: <20260724030616.76180-1-richard.henderson@linaro.org>
- <20260724030616.76180-2-richard.henderson@linaro.org>
- <CAFEAcA-BkEG59qM8sRtEtD-Y0-LC5sWfuWhMFTLnEcGDcvvDmQ@mail.gmail.com>
+ <20260724030616.76180-6-richard.henderson@linaro.org>
+ <CAFEAcA9BLUaK9p-MbBP+6qm2vAtd70hdkfXcAovPyw8m5bg6Kw@mail.gmail.com>
 From: Richard Henderson <richard.henderson@linaro.org>
 Content-Language: en-US
-In-Reply-To: <CAFEAcA-BkEG59qM8sRtEtD-Y0-LC5sWfuWhMFTLnEcGDcvvDmQ@mail.gmail.com>
+In-Reply-To: <CAFEAcA9BLUaK9p-MbBP+6qm2vAtd70hdkfXcAovPyw8m5bg6Kw@mail.gmail.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::435;
- envelope-from=richard.henderson@linaro.org; helo=mail-pf1-x435.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::1036;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pj1-x1036.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -107,33 +107,22 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On 7/31/26 09:30, Peter Maydell wrote:
->> @@ -553,7 +553,7 @@ typedef struct CPUArchState {
->>            * FEAT_FGT2 will add more elements to these arrays.
->>            */
->>           uint64_t fgt_read[2]; /* HFGRTR, HDFGRTR */
->> -        uint64_t fgt_write[2]; /* HFGWTR, HDFGWTR */
->> +        uint64_t fgt_write[3]; /* HFGWTR, HDFGWTR, FGWTE3 */
->>           uint64_t fgt_exec[1]; /* HFGITR */
+On 7/31/26 10:26, Peter Maydell wrote:
+> On Fri, 24 Jul 2026 at 04:06, Richard Henderson
+> <richard.henderson@linaro.org> wrote:
+>>
+>> Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
+>> ---
+>>   target/arm/cpregs-gcs.c |  5 +++--
+>>   target/arm/helper.c     | 47 ++++++++++++++++++++++-------------------
+>>   2 files changed, 28 insertions(+), 24 deletions(-)
 > 
-> GICv5 also has some new fgt registers, incidentally; implementation
-> of them in my w-i-p gicv5 branch:
-> https://gitlab.com/pm215/qemu/-/commit/31900667e440a136c60b984c9e7c9e9a95d708df
-> 
-> I don't think there's any particular clash here, though. The
-> one thing I do wonder about is that FGWTE3 has only a
-> write trap version, whereas the gicv5 regs have both read
-> and write trap versions. We rely on being able to use the same
-> index for fgt_read[] and fgt_write[].
+> You missed setting fgt for MECID_RL_A_EL3.
 
-We do?  Where?
+How odd.  I searched for it, missed it, and thought it might be coming in Gustavo's next 
+patch set.  Perhaps just a typo on the search...
 
-E.g. HFGRTR and HFGWTR have separate names, and could therefore can have separate indexes 
-in cpregs.h.
-
-That said, there's also nothing in migration for a given name to keep a given index across 
-releases, so we can always sort FGWTE3 to the end so that the other names keep nice clean 
-columns.
+Anyway, thanks.
 
 
 r~

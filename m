@@ -4,83 +4,83 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 098F5C55165
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 06AB1C55167
 	for <qemu-arm@archiver.kernel.org>; Fri, 31 Jul 2026 00:06:02 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wpakW-0001je-LA; Thu, 30 Jul 2026 20:05:16 -0400
+	id 1wpakX-0001kK-C0; Thu, 30 Jul 2026 20:05:17 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1wpakU-0001eg-LI
+ id 1wpakU-0001ej-Pp
  for qemu-arm@nongnu.org; Thu, 30 Jul 2026 20:05:14 -0400
-Received: from mail-pf1-x433.google.com ([2607:f8b0:4864:20::433])
+Received: from mail-pg1-x535.google.com ([2607:f8b0:4864:20::535])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1wpakR-0001LC-8W
+ id 1wpakR-0001LJ-8F
  for qemu-arm@nongnu.org; Thu, 30 Jul 2026 20:05:14 -0400
-Received: by mail-pf1-x433.google.com with SMTP id
- d2e1a72fcca58-84830c774a0so497352b3a.1
- for <qemu-arm@nongnu.org>; Thu, 30 Jul 2026 17:05:09 -0700 (PDT)
+Received: by mail-pg1-x535.google.com with SMTP id
+ 41be03b00d2f7-c9b373d5af0so286721a12.2
+ for <qemu-arm@nongnu.org>; Thu, 30 Jul 2026 17:05:10 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1785456308; x=1786061108; darn=nongnu.org;
+ d=linaro.org; s=google; t=1785456309; x=1786061109; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to:content-type;
- bh=Rdh3OOkoPnHUJw/UD4a6FqZEuxZNNZ9BwpVlBszcZe8=;
- b=byjCDJXdluHeIdmlst3Ih6oNAF4FQXb2MY/A+9Pdil2B3JksKviEFmH0XbNcf/o5xu
- o7WZKrBzgDVZcdhavDvJSC7xY5hz495ZfwKnt1a1R9V7Lk74UzWHl3IQ6fWjC0g9L/k3
- 6aAJClfQoYb7WA1wGdE2PTg40r/y0Z5jCBMaDntd2GxQA/fGjxh59ZmHSZHsk4sVefS+
- 1LWIvbva/6dU33lEmXM92Bg4iJOyUVOTTRgSg6soonKWw3r3lwfBzqGmaD9QMAzXAWZE
- Fxc8IwGN9JgwxUx57PYdwLDOkAPNadS+158WBz+cHRLRMHF2RTHrDgEfPM4rRe/hoOat
- IwRw==
+ bh=96KWcuhE8+BvPKd60ur8XtdREvBb8Mo8Rk3bAfuVXDQ=;
+ b=S3C2BzmKDnunXaglZA3m4JU7C44AYOYj2RtDYRMycnEgZ2Z26Cg0zs5u2wJ0PwJ6hp
+ B+t7vNwlmnayF0qOFfG0LECow4rgkHnjzD67juCLpppf8OZjmKD/xdTNS3ozy71hY9Uu
+ 0dEuVJYHboTJlgvfPqtjJScWo51MPTC4EV7n5aFcDCgk9VZAP5Iaf0/i9ACojW2nH1/f
+ SP/NsmEe0nkZjVpri2e2NHl/zyBWLQzUKYQhyq7APOV3BEv6UBaoZMb0DJq8Qn4nmWTE
+ UtYactQFx3qgcPZbrI0hwa0p5j9ozx+Cuhju6u9WXkhJeFB7/APnG6mQEoPS7n2xHOKf
+ sXYg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1785456308; x=1786061108;
+ d=1e100.net; s=20251104; t=1785456309; x=1786061109;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
  :to:cc:subject:date:message-id:reply-to:content-type;
- bh=Rdh3OOkoPnHUJw/UD4a6FqZEuxZNNZ9BwpVlBszcZe8=;
- b=soqa4OoPpExf2eB2jHBXaZHTFQxY7BJb8AriStGRNcN4rid73EfymjQx5FxCH7+8jv
- 8b3SEud63MQ9YLkp9jXw0y1JUwHDkmEQlqh46XK0aE9i+utqNsim3tB12+Xqy75j54rS
- xKOFXgsa04oRUwsFwnsshadMvzCJm4vqTlwIBfH5YOXylWqcNr0T2MrAcACmN/RenVrR
- a7BEF2K52faHu1FTB4zfsYUa/3K2jc/Uy7LPFJcCYLPmf3mFkOFbCIEMZIYKOyvcdAls
- foIdCARgee+WWntjSrO/+Za9W7jEjDiEeECSUMZtS7J+nZGsbaMKu3v/qcQeuNTmLIez
- 5Yjg==
+ bh=96KWcuhE8+BvPKd60ur8XtdREvBb8Mo8Rk3bAfuVXDQ=;
+ b=IsRPBfn2zjFXoFGuqkQLst1rYcjcdvTT81o9dUwnmD9VFPt6O+Yz8HLBJ/wxfL9n1M
+ 9jsRxgUJMNhbehwjSYkIvH3V7rrsTltEdCx0Y3avS7cICxoqcZ09KG1M2BUs981CJAPd
+ KItbYJzc/PN1JSocIbcvU49JdaaJTymioYhcyREI9rCz8BwrWrEp/kW+4GuN4HUdm/fQ
+ 7Gjlkq8cB170gJhgFjNh9neiCPstLvEDpWbZFh1w6Y+IvuI9bV9ZMUvZ8WdSyN/43YKr
+ 4urC4rpJRQn3aDohTDH8YSkaKpamefbXkz9l9A8el0SRQFSIvFKE3WXyN4nEYJ0EGzqh
+ L9EQ==
 X-Forwarded-Encrypted: i=1;
- AHgh+RozRCjaErDJqS8HJewsZwaIMPEdKAE5QgSfHEiNMJbvhtj3U5YsUQI07UQqp26eAtprootFzKLQrA==@nongnu.org
-X-Gm-Message-State: AOJu0Yyau6aAEZPRfU09hfLE9YsAiO/UlLn19MGtnLTg6q5U0NzBlfca
- +9/QKeYXRM/mjyqE2tNsOZ1x38geqjIlhFb+qv6pkaoRJdHnfquyyfkgIUN96RgMLIU=
-X-Gm-Gg: AR+sD10KaVI3cfrMKqCpprrmG0AIB2aLB2MaunqwSuAt6Fn634/UA3DRikrpxqhnt95
- 0X5CPagNG58Ju4AtvElbSYZT1P7VIMY9zK5hSFetlwESt7YjhQ9XtY3RMSpM9NM0lM8mIKra+VB
- TmNcgUPfyuN6KP2xc2BCWyCTUHLAXaMovN8jBEzpatcjhfO2+Bspcq3KuA4CCvwPqXtt8Gl/VPq
- EKD1kh6jbXce8qP/AuvdZw6Co2+VZGiD5IvUeNM6LGTgesWT1+lzZJYkNoP8lw2wMwfuEyo1yzZ
- oZP9QAdPL2RHupdqhb56fpE1miXjtQOKDzIQ55CuCXRHCDcyxpgB1FzTetb7rRWGD6/j8udXpoA
- JabJ5ymIx15CFWZLGHS76LdYmhczHmDzVBhS8jQXyrB8xxC2oBBdaH1l28M2g5TGJk/9pMTbK9n
- UuM9XFcPqGnosT8VD1pYvxj2xVfsjmPQ9KqR5sj4uLc43Nk61skd6UGKGLLIS37sxXknUK/RFeI
- qyLP4BT3L3z16ZAoIQI
-X-Received: by 2002:a05:6a20:7f9a:b0:3c3:8fc3:5373 with SMTP id
- adf61e73a8af0-3c90085c8b8mr3827736637.35.1785456308136; 
- Thu, 30 Jul 2026 17:05:08 -0700 (PDT)
+ AHgh+RqmqWemH7OlLnxiLhLfOUQy3XfAXHuwjmPg9yKtJpK7+GRdaozgCESrleYJtjP1Ji6gx0e0rcvRuw==@nongnu.org
+X-Gm-Message-State: AOJu0YyhSgI+nlO0YGbFsFaYhmTe2gSmchs6oeQ1NJ2HL2vzfSzQqjc5
+ HpopuryfWIEFEayLUq9J+QhIWLlLLthg27X6Qg1mzlF3aDYXPV1lDssQMIH6y2e1R0E=
+X-Gm-Gg: AR+sD11YZRPkWa+c2w5E6XzHdJ65hfjoXNuDLPzUztvMA0qZV+hoNvZEC+ldSOHhHYK
+ LMF+Te/xbDQpG245BUv9ZT0y5mpzn8JfPcnihr8zmdgzg+pvpz9JlS3t9nkhrPzKFqtcGG6iWpl
+ XfThkHfXRAIvaSVk3MY+hHmcgmt6kdDcouZZtVLY4iUMsX5SUoQ3bdvX/Xd39iuOOhTDSTcfZAR
+ tDrjBkOKQFJKo/Y89cVYCyLPsdocpNCIICvfiLwyjp6807fwB/79CjnptJwN1hRqE5QtBBRXuz0
+ ofPLwWThla4eOuyq9YjR/D2aJV+8rjCrAO5VdHBOYSZYaKZZ3BXb6F82OIUHu3xSnDape7Jl/SP
+ +kwp0UEaUy+CVGNJzRttE+Ga+12BUkQfC0OBN+3kX6Ms0upJgi2Q726RhrIthuDH3YB44x7r2FI
+ sDC8xBsNiSdrerpjx7w4l5kUHEpt7twTbHLkJxTZT2hlEt0ZTtXj1MB8JGYnROQrmY3V+35ntW0
+ T1ljQGv79tbbO0P0Wif
+X-Received: by 2002:a05:6a20:a108:b0:3c3:9a7f:7307 with SMTP id
+ adf61e73a8af0-3c90075a083mr4323934637.24.1785456309243; 
+ Thu, 30 Jul 2026 17:05:09 -0700 (PDT)
 Received: from stoup.. (174-21-93-59.tukw.qwest.net. [174.21.93.59])
  by smtp.gmail.com with ESMTPSA id
- 41be03b00d2f7-cbdb7a999ddsm2656460a12.4.2026.07.30.17.05.07
+ 41be03b00d2f7-cbdb7a999ddsm2656460a12.4.2026.07.30.17.05.08
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 30 Jul 2026 17:05:07 -0700 (PDT)
+ Thu, 30 Jul 2026 17:05:08 -0700 (PDT)
 From: Richard Henderson <richard.henderson@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: anjo@rev.ng, qemu-arm@nongnu.org, git@xen0n.name, 17746591750@163.com,
  maobibo@loongson.cn, lixianglai@loongson.cn, philmd@mailo.com
-Subject: [PATCH 04/11] target/loongarch: Use generic tcg_gen_revbit*
-Date: Thu, 30 Jul 2026 17:04:56 -0700
-Message-ID: <20260731000503.170446-5-richard.henderson@linaro.org>
+Subject: [PATCH 05/11] target/loongarch: Expand bitswap inline
+Date: Thu, 30 Jul 2026 17:04:57 -0700
+Message-ID: <20260731000503.170446-6-richard.henderson@linaro.org>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20260731000503.170446-1-richard.henderson@linaro.org>
 References: <20260731000503.170446-1-richard.henderson@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::433;
- envelope-from=richard.henderson@linaro.org; helo=mail-pf1-x433.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::535;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pg1-x535.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -103,74 +103,90 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
+The bitrev_[48]b instructions reverse bits within each byte.
+This may be accomplished by reversing bits within the entire
+word followed by reversing the bytes with the entire word.
+
 Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- target/loongarch/tcg/helper.h                   |  2 --
- target/loongarch/tcg/op_helper.c                | 10 ----------
- target/loongarch/tcg/insn_trans/trans_bit.c.inc |  9 +++++++--
- 3 files changed, 7 insertions(+), 14 deletions(-)
+ target/loongarch/tcg/helper.h                 |  2 --
+ target/loongarch/tcg/op_helper.c              | 11 ----------
+ .../loongarch/tcg/insn_trans/trans_bit.c.inc  | 20 +++++++++++++++++--
+ 3 files changed, 18 insertions(+), 15 deletions(-)
 
 diff --git a/target/loongarch/tcg/helper.h b/target/loongarch/tcg/helper.h
-index 8a6c62f116..4b0fc81db6 100644
+index 4b0fc81db6..e76c73c775 100644
 --- a/target/loongarch/tcg/helper.h
 +++ b/target/loongarch/tcg/helper.h
 @@ -5,8 +5,6 @@
  
  DEF_HELPER_2(raise_exception, noreturn, env, i32)
  
--DEF_HELPER_FLAGS_1(bitrev_w, TCG_CALL_NO_RWG_SE, tl, tl)
--DEF_HELPER_FLAGS_1(bitrev_d, TCG_CALL_NO_RWG_SE, tl, tl)
- DEF_HELPER_FLAGS_1(bitswap, TCG_CALL_NO_RWG_SE, tl, tl)
- 
+-DEF_HELPER_FLAGS_1(bitswap, TCG_CALL_NO_RWG_SE, tl, tl)
+-
  DEF_HELPER_FLAGS_3(asrtle_d, TCG_CALL_NO_WG, void, env, tl, tl)
+ DEF_HELPER_FLAGS_3(asrtgt_d, TCG_CALL_NO_WG, void, env, tl, tl)
+ 
 diff --git a/target/loongarch/tcg/op_helper.c b/target/loongarch/tcg/op_helper.c
-index e63ac66daa..37afa8e92d 100644
+index 37afa8e92d..f41f0cb1e6 100644
 --- a/target/loongarch/tcg/op_helper.c
 +++ b/target/loongarch/tcg/op_helper.c
-@@ -22,16 +22,6 @@ void helper_raise_exception(CPULoongArchState *env, uint32_t exception)
+@@ -22,17 +22,6 @@ void helper_raise_exception(CPULoongArchState *env, uint32_t exception)
      do_raise_exception(env, exception, GETPC());
  }
  
--target_ulong helper_bitrev_w(target_ulong rj)
+-target_ulong helper_bitswap(target_ulong v)
 -{
--    return (int32_t)revbit32(rj);
+-    v = ((v >> 1) & (target_ulong)0x5555555555555555ULL) |
+-        ((v & (target_ulong)0x5555555555555555ULL) << 1);
+-    v = ((v >> 2) & (target_ulong)0x3333333333333333ULL) |
+-        ((v & (target_ulong)0x3333333333333333ULL) << 2);
+-    v = ((v >> 4) & (target_ulong)0x0F0F0F0F0F0F0F0FULL) |
+-        ((v & (target_ulong)0x0F0F0F0F0F0F0F0FULL) << 4);
+-    return v;
 -}
 -
--target_ulong helper_bitrev_d(target_ulong rj)
--{
--    return revbit64(rj);
--}
--
- target_ulong helper_bitswap(target_ulong v)
+ /* loongarch assert op */
+ void helper_asrtle_d(CPULoongArchState *env, target_ulong rj, target_ulong rk)
  {
-     v = ((v >> 1) & (target_ulong)0x5555555555555555ULL) |
 diff --git a/target/loongarch/tcg/insn_trans/trans_bit.c.inc b/target/loongarch/tcg/insn_trans/trans_bit.c.inc
-index ee5fa003ce..3d24e320ce 100644
+index 3d24e320ce..1200f931fa 100644
 --- a/target/loongarch/tcg/insn_trans/trans_bit.c.inc
 +++ b/target/loongarch/tcg/insn_trans/trans_bit.c.inc
-@@ -178,6 +178,11 @@ static void gen_masknez(TCGv dest, TCGv src1, TCGv src2)
+@@ -178,6 +178,22 @@ static void gen_masknez(TCGv dest, TCGv src1, TCGv src2)
      tcg_gen_movcond_tl(TCG_COND_NE, dest, src2, zero, zero, src1);
  }
  
-+static void gen_bitrev_w(TCGv dest, TCGv src)
++static void gen_bitrev_4b(TCGv dest, TCGv src)
 +{
-+    tcg_gen_revbit32_tl(dest, src, TCG_BSWAP_OS);
++    TCGv_i32 t = tcg_temp_new_i32();
++
++    tcg_gen_trunc_tl_i32(t, src);
++    tcg_gen_revbit32_i32(t, t);
++    tcg_gen_bswap32_i32(t, t);
++    tcg_gen_ext_i32_tl(dest, t);
 +}
 +
- TRANS(ext_w_h, ALL, gen_rr, EXT_NONE, EXT_NONE, tcg_gen_ext16s_tl)
- TRANS(ext_w_b, ALL, gen_rr, EXT_NONE, EXT_NONE, tcg_gen_ext8s_tl)
- TRANS(clo_w, ALL, gen_rr, EXT_NONE, EXT_NONE, gen_clo_w)
-@@ -196,8 +201,8 @@ TRANS(revh_2w, 64, gen_rr, EXT_NONE, EXT_NONE, gen_revh_2w)
++static void gen_bitrev_8b(TCGv dest, TCGv src)
++{
++    tcg_gen_revbit_tl(dest, src);
++    tcg_gen_bswap_tl(dest, dest);
++}
++
+ static void gen_bitrev_w(TCGv dest, TCGv src)
+ {
+     tcg_gen_revbit32_tl(dest, src, TCG_BSWAP_OS);
+@@ -199,8 +215,8 @@ TRANS(revb_2w, 64, gen_rr, EXT_NONE, EXT_NONE, gen_revb_2w)
+ TRANS(revb_d, 64, gen_rr, EXT_NONE, EXT_NONE, tcg_gen_bswap64_i64)
+ TRANS(revh_2w, 64, gen_rr, EXT_NONE, EXT_NONE, gen_revh_2w)
  TRANS(revh_d, 64, gen_rr, EXT_NONE, EXT_NONE, gen_revh_d)
- TRANS(bitrev_4b, ALL, gen_rr, EXT_ZERO, EXT_SIGN, gen_helper_bitswap)
- TRANS(bitrev_8b, 64, gen_rr, EXT_NONE, EXT_NONE, gen_helper_bitswap)
--TRANS(bitrev_w, ALL, gen_rr, EXT_NONE, EXT_SIGN, gen_helper_bitrev_w)
--TRANS(bitrev_d, 64, gen_rr, EXT_NONE, EXT_NONE, gen_helper_bitrev_d)
-+TRANS(bitrev_w, ALL, gen_rr, EXT_NONE, EXT_NONE, gen_bitrev_w)
-+TRANS(bitrev_d, 64, gen_rr, EXT_NONE, EXT_NONE, tcg_gen_revbit64_i64)
+-TRANS(bitrev_4b, ALL, gen_rr, EXT_ZERO, EXT_SIGN, gen_helper_bitswap)
+-TRANS(bitrev_8b, 64, gen_rr, EXT_NONE, EXT_NONE, gen_helper_bitswap)
++TRANS(bitrev_4b, ALL, gen_rr, EXT_NONE, EXT_NONE, gen_bitrev_4b)
++TRANS(bitrev_8b, 64, gen_rr, EXT_NONE, EXT_NONE, gen_bitrev_8b)
+ TRANS(bitrev_w, ALL, gen_rr, EXT_NONE, EXT_NONE, gen_bitrev_w)
+ TRANS(bitrev_d, 64, gen_rr, EXT_NONE, EXT_NONE, tcg_gen_revbit64_i64)
  TRANS(maskeqz, ALL, gen_rrr, EXT_NONE, EXT_NONE, EXT_NONE, gen_maskeqz)
- TRANS(masknez, ALL, gen_rrr, EXT_NONE, EXT_NONE, EXT_NONE, gen_masknez)
- TRANS(bytepick_w, ALL, gen_rrr_sa, EXT_NONE, EXT_NONE, gen_bytepick_w)
 -- 
 2.43.0
 

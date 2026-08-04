@@ -4,146 +4,90 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 88884C55184
-	for <qemu-arm@archiver.kernel.org>; Tue,  4 Aug 2026 02:52:04 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AD508C55822
+	for <qemu-arm@archiver.kernel.org>; Tue,  4 Aug 2026 06:05:39 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wr5Fj-0003g6-8d; Mon, 03 Aug 2026 22:51:39 -0400
+	id 1wr8HJ-0001EU-WE; Tue, 04 Aug 2026 02:05:30 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@oss.qualcomm.com>)
- id 1wr5Fh-0003fJ-Ci
- for qemu-arm@nongnu.org; Mon, 03 Aug 2026 22:51:37 -0400
-Received: from mx0a-0031df01.pphosted.com ([205.220.168.131])
+ (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1wr8HI-0001Ds-Sx
+ for qemu-arm@nongnu.org; Tue, 04 Aug 2026 02:05:28 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@oss.qualcomm.com>)
- id 1wr5Ff-0006Ho-QC
- for qemu-arm@nongnu.org; Mon, 03 Aug 2026 22:51:37 -0400
-Received: from pps.filterd (m0279865.ppops.net [127.0.0.1])
- by mx0a-0031df01.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id
- 674175vM2818174
- for <qemu-arm@nongnu.org>; Tue, 4 Aug 2026 02:51:32 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qualcomm.com; h=
- cc:content-transfer-encoding:content-type:date:from:in-reply-to
- :message-id:mime-version:references:subject:to; s=qcppdkim1; bh=
- LNF9enBXs165gq7lT0dBrle7K5dJESVbQ9HbQDcB/4I=; b=f/AU8kJzcIQYitip
- nVKNZmnGhwqIfvWQc0bo4mh4XR+KtTlQuE9SYqjXy9QQS+seq0fT72tdIpWQriJP
- o64lb9KrVa+hiMMx06Tvy6hA+YSvL7spcmbuz5vXr0a0pzMLC7EyMi0Z4O6Gx/zY
- hJ1l01A8ChonX9i4fvGB6pwovJXvcMy+TWvpNcdOPrCEo0yziPOx9VzVyYN5TOlr
- t99l4k6pBzaRwGUuZgLSZVV0v8TTwrLCIP8gEkRXNt1sSq+fu7iC+QHhx4OKH4r4
- 5Q4mB/l0EshZi6lj9Q7Gs6/k+fJYi86UBgkVaRqyVmWIHaIXOpxwyeY04GDPrGsN
- axbSWg==
-Received: from mail-qt1-f199.google.com (mail-qt1-f199.google.com
- [209.85.160.199])
- by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 4fu1p4sb4c-1
- (version=TLSv1.3 cipher=TLS_AES_128_GCM_SHA256 bits=128 verify=NOT)
- for <qemu-arm@nongnu.org>; Tue, 04 Aug 2026 02:51:32 +0000 (GMT)
-Received: by mail-qt1-f199.google.com with SMTP id
- d75a77b69052e-51c12e43b98so44168851cf.1
- for <qemu-arm@nongnu.org>; Mon, 03 Aug 2026 19:51:32 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=oss.qualcomm.com; s=google; t=1785811889; x=1786416689; darn=nongnu.org;
- h=content-transfer-encoding:content-type:in-reply-to:content-language
- :from:references:cc:to:subject:user-agent:mime-version:date
- :message-id:from:to:cc:subject:date:message-id:reply-to:content-type;
- bh=LNF9enBXs165gq7lT0dBrle7K5dJESVbQ9HbQDcB/4I=;
- b=iWoFoWOP0zf1MPMJAhbrazzHduUe5oSp6PFJOUwaxfm4uirH74ivxJfiR2FJqmxGtT
- REj+4+OOPnYqCiq2962o+EoNqwFsbIgP1m5/RoISUho/S/WjdOVAr42OHnWQWYYhoOSm
- T1sbNc62wOUhlXiSd86J9JgT4EwJQYNcqAzUPwe2iBqrolnU0O9SAt8NTaP3fDYSyHUz
- RR525CySayc+FcCwpIH+1oq+zgjZ4vpMIWHdqjAXFJfmChgyCjvDim6jXCI65ToKV/ra
- dgZaHMZA+qgOsqtRFlDiSXtfAG991xHAdFsyyUh5Jr6qMTcT6cF/qZ7ncPvp1//1aZQt
- Wcyw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1785811889; x=1786416689;
- h=content-transfer-encoding:content-type:in-reply-to:content-language
- :from:references:cc:to:subject:user-agent:mime-version:date
- :message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
- :message-id:reply-to:content-type;
- bh=LNF9enBXs165gq7lT0dBrle7K5dJESVbQ9HbQDcB/4I=;
- b=gpSDvO7asl0qVr1MQBYvySyPkaxvmgSX7cXIN8Dk6LCSf7YIzSLgdzyzmhPqEOBNon
- ijJNSx+lKg28Ck2htCiUzzBTWetHlF3CNvlJiViDnq6aU8aSKWn7P0hnRN3V2FMZlCA6
- 1UO9zMvVqkvV09c3PvZZgomyTPFxnjFjIET3z+nslVXdLelZmiXuXfbpaermt973JkYd
- mg6aJYvr+vYSxom1hPSEekLjhJxdgOey4AJZjahxz342jo6d6015BzUC2h5ZeFo6EuRU
- CUMxrJob4fxVroOSraOeaNDSneVR9PFj+baMwbI2XvoLi17ijc3fZ7l34uIzo9MKwFaQ
- zGFw==
-X-Forwarded-Encrypted: i=1;
- AHgh+RpiZ1a8jYF8K4XoIkWSVM7N97ZzjZ6Pm+vBqasaH3SD4ebu2t8Z5CbZyUAwEDkGlrgKvd3kVMVsWg==@nongnu.org
-X-Gm-Message-State: AOJu0YxElM8XTefxegXSEA8xfl6718mXENZlxKUR6QX1bJdX46UKHLME
- uIQuTmj3y4e4EavvQeZUFbzou2d8BJ+iO0UeLtfwl55ed1TYl/LEgKzNnGPS9UfzOOCPBh5hmmc
- VZakgFGno0OLGzxsotx/u1ybDSyeHKrarP3CAqHE/3GveblWx5NmGADY=
-X-Gm-Gg: AR+sD121haIX84H22QO9DzSrJSGEHpw+LEGBt1VKedeBSrdtXe+KcoK48dPFSZovP4C
- fzWPHsrK7oIRU/KFsKUYJIaepgTBaDN82lMKWtkCgwFCCrXTNpeXtopTfcF7lM0E6nJlmxNdMNz
- QzHYCTCQhiE9NaE8eufQHQ8pgYh+Q9kajkBlPjd2z4VuaPtqOvJYm1KBAg03MoZdf+hGNJ8ypvF
- +YXTve8Ud85YUEtzRCzZkHgQvFBskNb1Awob8/msFhKlBH+dxrorqOKxvRX5SXyc5etSijucrc9
- yGMmxTUd0gDbczopmXdz+/+Ywj7+JR9SFtkRenITCyGtSION8hyAGhT4E8+q7pOOvQRq3l3qctI
- x3gUAq7m0XDve+tTifkf3Gl4tboiQFxgdDUU=
-X-Received: by 2002:a05:622a:c84:b0:51c:92a0:b2cb with SMTP id
- d75a77b69052e-52b5682e980mr238774161cf.26.1785811889409; 
- Mon, 03 Aug 2026 19:51:29 -0700 (PDT)
-X-Received: by 2002:a05:622a:c84:b0:51c:92a0:b2cb with SMTP id
- d75a77b69052e-52b5682e980mr238773931cf.26.1785811889013; 
- Mon, 03 Aug 2026 19:51:29 -0700 (PDT)
-Received: from [192.168.69.212] (pmd666.hd.free.fr. [88.187.86.199])
- by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-49949fc2b98sm45809315e9.2.2026.08.03.19.51.26
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 03 Aug 2026 19:51:27 -0700 (PDT)
-Message-ID: <9fba5d26-486e-4415-a086-d15473bbbc56@oss.qualcomm.com>
-Date: Tue, 4 Aug 2026 04:51:26 +0200
+ (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1wr8HG-00023C-3M
+ for qemu-arm@nongnu.org; Tue, 04 Aug 2026 02:05:28 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1785823522;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=5C39XZlKA8sRd6as4nSyGqgfO39xi48ZF2JzZQx7zi8=;
+ b=g9TDYf4oHg5Ty4zV7m2VTUtLi0OYFpsqBiKs+9Qg4WX+e0/3qhtlrx05bm6VKzoADjTgas
+ zegPVNJioYe0gv4XxmDGv0hIEiiONBVK4+McOdsKIsfNAz9SZZq8yLj06WJo9pD4tOlvvk
+ 5cFKeeswOrUO27sxXiCMczqK3dPuDyI=
+Received: from mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
+ relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-463-3A4D_P6BNPi79zop6tVQUw-1; Tue,
+ 04 Aug 2026 02:05:19 -0400
+X-MC-Unique: 3A4D_P6BNPi79zop6tVQUw-1
+X-Mimecast-MFC-AGG-ID: 3A4D_P6BNPi79zop6tVQUw_1785823517
+Received: from mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com
+ (mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.93])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+ (No client certificate requested)
+ by mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 8A2751956096; Tue,  4 Aug 2026 06:05:16 +0000 (UTC)
+Received: from blackfin.pond.sub.org (unknown [10.44.22.7])
+ by mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 7456118004AD; Tue,  4 Aug 2026 06:05:15 +0000 (UTC)
+Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
+ id DC81321E6920; Tue, 04 Aug 2026 08:05:12 +0200 (CEST)
+From: Markus Armbruster <armbru@redhat.com>
+To: Khushit Shah <khushit.shah@nutanix.com>
+Cc: "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,  "qemu-arm@nongnu.org"
+ <qemu-arm@nongnu.org>,  "kvmarm@lists.linux.dev" <kvmarm@lists.linux.dev>,
+ "eric.auger@redhat.com" <eric.auger@redhat.com>,  "cohuck@redhat.com"
+ <cohuck@redhat.com>,  "peter.maydell@linaro.org"
+ <peter.maydell@linaro.org>,  "richard.henderson@linaro.org"
+ <richard.henderson@linaro.org>,  "maz@kernel.org" <maz@kernel.org>,
+ "oliver.upton@linux.dev" <oliver.upton@linux.dev>,  "berrange@redhat.com"
+ <berrange@redhat.com>,  "abologna@redhat.com" <abologna@redhat.com>,
+ "jdenemar@redhat.com" <jdenemar@redhat.com>,  "gshan@redhat.com"
+ <gshan@redhat.com>,  "skolothumtho@nvidia.com" <skolothumtho@nvidia.com>,
+ "sebott@redhat.com" <sebott@redhat.com>,  "philmd@linaro.org"
+ <philmd@linaro.org>,  "yangjinqian1@huawei.com" <yangjinqian1@huawei.com>,
+ Shaju Abraham <shaju.abraham@nutanix.com>,  Mark Cave-Ayland
+ <mark.caveayland@nutanix.com>,  Prerna Saxena <prerna.saxena@nutanix.com>
+Subject: Re: [RFC PATCH v3 16/19] qmp: add query-cpu-props-info command
+In-Reply-To: <6AA3BD42-9596-476B-9F64-AB09372821B9@nutanix.com> (Khushit
+ Shah's message of "Mon, 3 Aug 2026 16:05:42 +0000")
+References: <20260716213858.609699-1-khushit.shah@nutanix.com>
+ <20260716213858.609699-17-khushit.shah@nutanix.com>
+ <87y0f5u78t.fsf@pond.sub.org>
+ <6AA3BD42-9596-476B-9F64-AB09372821B9@nutanix.com>
+Date: Tue, 04 Aug 2026 08:05:12 +0200
+Message-ID: <87tspa5skn.fsf@pond.sub.org>
+User-Agent: Gnus/5.13 (Gnus v5.13)
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 10/11] tcg/loongarch64: Import REVBIT insns
-To: Richard Henderson <richard.henderson@linaro.org>, git@xen0n.name,
- qemu-devel@nongnu.org
-Cc: anjo@rev.ng, qemu-arm@nongnu.org, 17746591750@163.com, maobibo@loongson.cn,
- lixianglai@loongson.cn, philmd@mailo.com,
- Jiaxun Yang <jiaxun.yang@flygoat.com>
-References: <20260731000503.170446-1-richard.henderson@linaro.org>
- <20260731000503.170446-11-richard.henderson@linaro.org>
- <4b5db4f0-bad1-48e0-bde6-f72ae4681f39@oss.qualcomm.com>
- <a2b68ee9-861f-4511-a2e8-13889d08c151@linaro.org>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@oss.qualcomm.com>
-Content-Language: en-US
-In-Reply-To: <a2b68ee9-861f-4511-a2e8-13889d08c151@linaro.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-X-Authority-Analysis: v=2.4 cv=auOCzyZV c=1 sm=1 tr=0 ts=6a7153b4 cx=c_pps
- a=WeENfcodrlLV9YRTxbY/uA==:117 a=4s3hRJSeHn4rkQlkrse1kQ==:17
- a=IkcTkHD0fZMA:10 a=Sv0fKeRqtYgA:10 a=M51BFTxLslgA:10 a=s4-Qcg_JpJYA:10
- a=VkNPw1HP01LnGYTKEx00:22 a=u7WPNUs3qKkmUXheDGA7:22 a=Um2Pa8k9VHT-vaBCBUpS:22
- a=NEAV23lmAAAA:8 a=2hlkDxslWKAfz-EcSkAA:9 a=3ZKOabzyN94A:10 a=QEXdDO2ut3YA:10
- a=kacYvNCVWA4VmyqE58fU:22
-X-Proofpoint-ORIG-GUID: -eRwILTyFhvSSmx6K5SGm79CpDZjpQH7
-X-Proofpoint-Spam-Info: AW1haW4tMjYwODA0MDAyMSBTYWx0ZWRfX97Yuf2LiIZyF
- PiDKepgQfV1MxrzLh3nuNZ9yz7UuutYw6/RcWZo8iHXg9xm+qxsvWRActKp6hmV15XXdjGTOSZV
- iJQwcCKFNvS+JJRmyoZPMF75gfHohrE=
-X-Proofpoint-GUID: -eRwILTyFhvSSmx6K5SGm79CpDZjpQH7
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwODA0MDAyMSBTYWx0ZWRfXwJJW7z5D8bNK
- lOnxoPA+cQT1ad7c3PkkbKXIEA5fBw+yz59sseSMETgGsBPp6f3rB0yRAXASqfEKsjvi5KxHplj
- LDcokX0HFFyyt4yZboUZ7fFeY2P/759NPMd3w1inKNUzlfPvyNemtlJaQ9X17BbHvvy9Ri6tNmP
- uxHMRJolrV7CsXOcK73YfXkut1VTIqXfgv2WVP8HgxT9TNxFgRJXPts+rSx+pKq02ila0hxPy/Q
- i0jZybnkisiDcgoWDqDEXWvCSLJeeTcnFjIlBkWm9PuEVkgVG8/LlhNFCElPgk0lDRd1mhl6kHI
- eGBkIvHsFBg/y7mpAkO/Ny7OmlsPickDKRSILQ1U3b90NMRPawa9L7HNFnX3KatEb1Afrkmkof2
- y+ohevdqWLL45BjghCtAVJldkEXVXW9NxoFoB6hv9LNMEduKfDX/dNhIMRq6ofEgjSwV7CkIUL/
- U8VxESxz4K3PXzxC4cQ==
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.293,Aquarius:18.0.1176,Hydra:6.1.134,FMLib:17.12.100.49
- definitions=2026-08-04_01,2026-08-03_02,2025-10-01_01
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
- priorityscore=1501 spamscore=0 bulkscore=0 suspectscore=0 malwarescore=0
- lowpriorityscore=0 clxscore=1015 phishscore=0 adultscore=0 impostorscore=0
- classifier=typeunknown authscore=0 authtc= authcc= route=outbound adjust=0
- reason=mlx scancount=1 engine=8.22.0-2606150000 definitions=main-2608040021
-Received-SPF: pass client-ip=205.220.168.131;
- envelope-from=philmd@oss.qualcomm.com; helo=mx0a-0031df01.pphosted.com
-X-Spam_score_int: -27
-X-Spam_score: -2.8
-X-Spam_bar: --
-X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.93
+X-Mimecast-MFC-PROC-ID: 59aK9qzVNUMAk20Ug3w4_oAK_mvXL7c2smEMzlxGtAw_1785823517
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=armbru@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: 4
+X-Spam_score: 0.4
+X-Spam_bar: /
+X-Spam_report: (0.4 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.811,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.01, RCVD_IN_SBL_CSS=3.335,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -159,36 +103,231 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On 3/8/26 19:26, Richard Henderson wrote:
-> On 8/3/26 08:06, Philippe Mathieu-Daudé wrote:
->>>    * This file is auto-generated by genqemutcgdefs from
->>>    * https://github.com/loongson-community/loongarch-opcodes,
->>> - * from commit 7f353fb69bd99ce6edfad7ad63948c4bb526f0bf.
->>> + * from commit 40ea52087699392ad911387b666541891d33da31.
->>
->> I couldn't find it then noticed your
->> https://github.com/loongson-community/loongarch-opcodes/pull/10,
->> so pending it to be merged?
-> 
-> Yes.
-> 
->>> -static int32_t __attribute__((unused))
->>> -encode_d_slot(LoongArchInsn opc, uint32_t d)
->>> +static int32_t __attribute__((unused)) encode_d_slot(LoongArchInsn opc,
->>> +                                                     uint32_t d)
->>
->> What triggered this code churn? Could we commit before generating for
->> REVBIT opcodes?
-> 
-> It looks like the program passes off to clang-format.  Perhaps a version 
-> change in the year since last regenerated?
+Khushit Shah <khushit.shah@nutanix.com> writes:
 
-Then maybe call genqemutcgdefs to regenerate clang-formatted in a
-preliminary patch? Would also help reverts.
+>> On 20 Jul 2026, at 6:51=E2=80=AFPM, Markus Armbruster <armbru@redhat.com=
+> wrote:
+>>=20
+>> !-------------------------------------------------------------------|
+>>  CAUTION: External Email
+>>=20
+>> |-------------------------------------------------------------------!
+>>=20
+>> Series doesn't apply for me.  I need to apply it to be able to check
+>> rendered documentation.  Could you push it somewhere I can pull?
+>>=20
+>
+> Sorry for the late reply,=20
+> Please use the following branch: https://github.com/khushit-shah-nx/qemu/=
+tree/upstream-rfc-v3-fixups
 
-> 
-> 
-> r~
-> 
+Doesn't compile for me:
+
+FAILED: [code=3D1] qemu-aarch64_be=20
+cc -m64  -o qemu-aarch64_be libcommon.a.p/accel_accel-common.c.o libcommon.=
+a.p/hw_core_cpu-common.c.o libcommon.a.p/hw_core_machine-smp.c.o libcommon.=
+a.p/cpu-common.c.o libcommon.a.p/page-vary-common.c.o libcommon.a.p/target-=
+info.c.o libcommon.a.p/disas_capstone.c.o libcommon.a.p/disas_disas-host.c.=
+o libcommon.a.p/disas_disas-target.c.o libcommon.a.p/disas_objdump.c.o libc=
+ommon.a.p/disas_disas-common.c.o libcommon.a.p/fpu_softfloat.c.o libcommon.=
+a.p/plugins_loader.c.o libcommon.a.p/meson-generated_.._gdbstub_gdbstub-xml=
+.c.o libcommon_arm.a.p/target_arm_mmuidx.c.o libcommon_arm.a.p/target_arm_t=
+cg_arith_helper.c.o libcommon_arm.a.p/target_arm_tcg_crypto_helper.c.o libu=
+ser.a.p/semihosting_user.c.o libuser.a.p/semihosting_guestfd.c.o libuser.a.=
+p/accel_accel-user.c.o libuser.a.p/accel_tcg_cpu-exec.c.o libuser.a.p/accel=
+_tcg_cpu-exec-common.c.o libuser.a.p/accel_tcg_tcg-runtime.c.o libuser.a.p/=
+accel_tcg_tcg-runtime-gvec.c.o libuser.a.p/accel_tcg_tb-maint.c.o libuser.a=
+.p/accel_tcg_tcg-all.c.o libuser.a.p/accel_tcg_tcg-stats.c.o libuser.a.p/ac=
+cel_tcg_translate-all.c.o libuser.a.p/accel_tcg_translator.c.o libuser.a.p/=
+accel_tcg_plugin-gen.c.o libuser.a.p/accel_tcg_user-exec.c.o libuser.a.p/ac=
+cel_tcg_user-exec-stub.c.o libuser.a.p/hw_core_cpu-user.c.o libuser.a.p/hw_=
+core_qdev-user.c.o libuser.a.p/gdbstub_gdbstub.c.o libuser.a.p/gdbstub_sysc=
+alls.c.o libuser.a.p/gdbstub_user.c.o libuser.a.p/cpu-target.c.o libuser.a.=
+p/tcg_optimize.c.o libuser.a.p/tcg_region.c.o libuser.a.p/tcg_tcg.c.o libus=
+er.a.p/tcg_tcg-common.c.o libuser.a.p/tcg_tcg-op.c.o libuser.a.p/tcg_tcg-op=
+-ldst.c.o libuser.a.p/tcg_tcg-op-gvec.c.o libuser.a.p/tcg_tcg-op-vec.c.o li=
+buser.a.p/tcg_debuginfo.c.o libuser.a.p/tcg_perf.c.o libuser.a.p/plugins_us=
+er.c.o libuser.a.p/plugins_api-user.c.o libuser.a.p/plugins_api.c.o libuser=
+.a.p/plugins_core.c.o libuser.a.p/common-user_safe-syscall.S.o libuser.a.p/=
+common-user_safe-syscall-error.c.o libqemu-aarch64_be-linux-user.a.p/target=
+_arm_gdbstub.c.o libqemu-aarch64_be-linux-user.a.p/target_arm_cpu.c.o libqe=
+mu-aarch64_be-linux-user.a.p/target_arm_cpregs-gcs.c.o libqemu-aarch64_be-l=
+inux-user.a.p/target_arm_cpregs-pmu.c.o libqemu-aarch64_be-linux-user.a.p/t=
+arget_arm_debug_helper.c.o libqemu-aarch64_be-linux-user.a.p/target_arm_hel=
+per.c.o libqemu-aarch64_be-linux-user.a.p/target_arm_vfp_fpscr.c.o libqemu-=
+aarch64_be-linux-user.a.p/target_arm_el2-stubs.c.o libqemu-aarch64_be-linux=
+-user.a.p/target_arm_cpregs-omap-stub.c.o libqemu-aarch64_be-linux-user.a.p=
+/target_arm_common-semi-target.c.o libqemu-aarch64_be-linux-user.a.p/target=
+_arm_tcg_debug.c.o libqemu-aarch64_be-linux-user.a.p/target_arm_tcg_gengvec=
+.c.o libqemu-aarch64_be-linux-user.a.p/target_arm_tcg_hflags.c.o libqemu-aa=
+rch64_be-linux-user.a.p/target_arm_tcg_m_helper.c.o libqemu-aarch64_be-linu=
+x-user.a.p/target_arm_tcg_mve_helper.c.o libqemu-aarch64_be-linux-user.a.p/=
+target_arm_tcg_neon_helper.c.o libqemu-aarch64_be-linux-user.a.p/target_arm=
+_tcg_op_helper.c.o libqemu-aarch64_be-linux-user.a.p/target_arm_tcg_tlb_hel=
+per.c.o libqemu-aarch64_be-linux-user.a.p/target_arm_tcg_translate.c.o libq=
+emu-aarch64_be-linux-user.a.p/target_arm_tcg_translate-m-nocp.c.o libqemu-a=
+arch64_be-linux-user.a.p/target_arm_tcg_translate-mve.c.o libqemu-aarch64_b=
+e-linux-user.a.p/target_arm_tcg_translate-neon.c.o libqemu-aarch64_be-linux=
+-user.a.p/target_arm_tcg_translate-vfp.c.o libqemu-aarch64_be-linux-user.a.=
+p/target_arm_tcg_vec_helper.c.o libqemu-aarch64_be-linux-user.a.p/target_ar=
+m_tcg_vfp_helper.c.o libqemu-aarch64_be-linux-user.a.p/linux-user_aarch64_c=
+pu_loop.c.o libqemu-aarch64_be-linux-user.a.p/linux-user_aarch64_elfload.c.=
+o libqemu-aarch64_be-linux-user.a.p/linux-user_aarch64_signal.c.o libqemu-a=
+arch64_be-linux-user.a.p/target-info-stub.c.o libqemu-aarch64_be-linux-user=
+.a.p/target_arm_cpu64.c.o libqemu-aarch64_be-linux-user.a.p/target_arm_gdbs=
+tub64.c.o libqemu-aarch64_be-linux-user.a.p/target_arm_tcg_cpu32.c.o libqem=
+u-aarch64_be-linux-user.a.p/target_arm_tcg_cpu64.c.o libqemu-aarch64_be-lin=
+ux-user.a.p/target_arm_tcg_gengvec64.c.o libqemu-aarch64_be-linux-user.a.p/=
+target_arm_tcg_translate-a64.c.o libqemu-aarch64_be-linux-user.a.p/target_a=
+rm_tcg_translate-sve.c.o libqemu-aarch64_be-linux-user.a.p/target_arm_tcg_t=
+ranslate-sme.c.o libqemu-aarch64_be-linux-user.a.p/target_arm_tcg_helper-a6=
+4.c.o libqemu-aarch64_be-linux-user.a.p/target_arm_tcg_mte_helper.c.o libqe=
+mu-aarch64_be-linux-user.a.p/target_arm_tcg_pauth_helper.c.o libqemu-aarch6=
+4_be-linux-user.a.p/target_arm_tcg_sme_helper.c.o libqemu-aarch64_be-linux-=
+user.a.p/target_arm_tcg_sve_helper.c.o libqemu-aarch64_be-linux-user.a.p/ta=
+rget_arm_tcg_vec_helper64.c.o libqemu-aarch64_be-linux-user.a.p/semihosting=
+_syscalls.c.o libqemu-aarch64_be-linux-user.a.p/semihosting_arm-compat-semi=
+.c.o libqemu-aarch64_be-linux-user.a.p/accel_accel-target.c.o libqemu-aarch=
+64_be-linux-user.a.p/hw_intc_arm_gicv3_hvf_stub.c.o libqemu-aarch64_be-linu=
+x-user.a.p/gdbstub_user-target.c.o libqemu-aarch64_be-linux-user.a.p/linux-=
+user_elfload.c.o libqemu-aarch64_be-linux-user.a.p/linux-user_exit.c.o libq=
+emu-aarch64_be-linux-user.a.p/linux-user_fd-trans.c.o libqemu-aarch64_be-li=
+nux-user.a.p/linux-user_linuxload.c.o libqemu-aarch64_be-linux-user.a.p/lin=
+ux-user_main.c.o libqemu-aarch64_be-linux-user.a.p/linux-user_mmap.c.o libq=
+emu-aarch64_be-linux-user.a.p/linux-user_signal.c.o libqemu-aarch64_be-linu=
+x-user.a.p/linux-user_strace.c.o libqemu-aarch64_be-linux-user.a.p/linux-us=
+er_syscall.c.o libqemu-aarch64_be-linux-user.a.p/linux-user_thunk.c.o libqe=
+mu-aarch64_be-linux-user.a.p/linux-user_uaccess.c.o libqemu-aarch64_be-linu=
+x-user.a.p/linux-user_uname.c.o libqemu-aarch64_be-linux-user.a.p/linux-use=
+r_flatload.c.o libqemu-aarch64_be-linux-user.a.p/linux-user_semihost.c.o li=
+bqemu-aarch64_be-linux-user.a.p/linux-user_plugin-api.c.o libqemu-aarch64_b=
+e-linux-user.a.p/linux-user_aarch64_mte_user_helper.c.o libhwcore.a.p/hw_co=
+re_bus.c.o libhwcore.a.p/hw_core_gpio.c.o libhwcore.a.p/hw_core_qdev-proper=
+ties.c.o libhwcore.a.p/hw_core_qdev.c.o libhwcore.a.p/hw_core_resetcontaine=
+r.c.o libhwcore.a.p/hw_core_resettable.c.o libhwcore.a.p/hw_core_vmstate-if=
+.c.o libhwcore.a.p/hw_core_irq.c.o libhwcore.a.p/hw_core_clock.c.o libhwcor=
+e.a.p/hw_core_qdev-clock.c.o libqom.a.p/qom_container.c.o libqom.a.p/qom_ob=
+ject.c.o libqom.a.p/qom_object_interfaces.c.o libqom.a.p/qom_qom-qobject.c.=
+o libqom.a.p/qom_compat-properties.c.o libevent-loop-base.a.p/event-loop-ba=
+se.c.o -Wl,--as-needed -Wl,--no-undefined -pie -fstack-protector-strong -Wl=
+,-z,relro -Wl,-z,now -Wl,--start-group libqemuutil.a subprojects/libvhost-u=
+ser/libvhost-user-glib.a subprojects/libvhost-user/libvhost-user.a libstubs=
+_arm.a -Xlinker --dynamic-list=3D/work/armbru/qemu/bld/plugins/qemu-plugin.=
+symbols /usr/lib64/libcapstone.so /usr/lib64/libz.so /usr/lib64/libdw.so /u=
+sr/lib64/libelf.so -lnuma /usr/lib64/liburing.so /usr/lib64/libgio-2.0.so /=
+usr/lib64/libgobject-2.0.so /usr/lib64/libglib-2.0.so /usr/lib64/libgmodule=
+-2.0.so -pthread /usr/lib64/libgnutls.so -lm /usr/lib64/libpixman-1.so /usr=
+/lib64/libepoxy.so -Wl,--end-group
+/usr/bin/ld: libqemu-aarch64_be-linux-user.a.p/target_arm_cpu64.c.o: in fun=
+ction `arm_cpu_sve_finalize':
+/work/armbru/qemu/bld/../target/arm/cpu64.c:146:(.text+0x11f2): undefined r=
+eference to `arm_find_model'
+/usr/bin/ld: libqemu-aarch64_be-linux-user.a.p/target_arm_cpu64.c.o: in fun=
+ction `arm_cpu_pauth_finalize':
+/work/armbru/qemu/bld/../target/arm/cpu64.c:583:(.text+0x1a55): undefined r=
+eference to `arm_find_model'
+collect2: error: ld returned 1 exit status
+[6689/7247] Linking target qemu-aarch64
+FAILED: [code=3D1] qemu-aarch64=20
+cc -m64  -o qemu-aarch64 libcommon.a.p/accel_accel-common.c.o libcommon.a.p=
+/hw_core_cpu-common.c.o libcommon.a.p/hw_core_machine-smp.c.o libcommon.a.p=
+/cpu-common.c.o libcommon.a.p/page-vary-common.c.o libcommon.a.p/target-inf=
+o.c.o libcommon.a.p/disas_capstone.c.o libcommon.a.p/disas_disas-host.c.o l=
+ibcommon.a.p/disas_disas-target.c.o libcommon.a.p/disas_objdump.c.o libcomm=
+on.a.p/disas_disas-common.c.o libcommon.a.p/fpu_softfloat.c.o libcommon.a.p=
+/plugins_loader.c.o libcommon.a.p/meson-generated_.._gdbstub_gdbstub-xml.c.=
+o libcommon_arm.a.p/target_arm_mmuidx.c.o libcommon_arm.a.p/target_arm_tcg_=
+arith_helper.c.o libcommon_arm.a.p/target_arm_tcg_crypto_helper.c.o libuser=
+.a.p/semihosting_user.c.o libuser.a.p/semihosting_guestfd.c.o libuser.a.p/a=
+ccel_accel-user.c.o libuser.a.p/accel_tcg_cpu-exec.c.o libuser.a.p/accel_tc=
+g_cpu-exec-common.c.o libuser.a.p/accel_tcg_tcg-runtime.c.o libuser.a.p/acc=
+el_tcg_tcg-runtime-gvec.c.o libuser.a.p/accel_tcg_tb-maint.c.o libuser.a.p/=
+accel_tcg_tcg-all.c.o libuser.a.p/accel_tcg_tcg-stats.c.o libuser.a.p/accel=
+_tcg_translate-all.c.o libuser.a.p/accel_tcg_translator.c.o libuser.a.p/acc=
+el_tcg_plugin-gen.c.o libuser.a.p/accel_tcg_user-exec.c.o libuser.a.p/accel=
+_tcg_user-exec-stub.c.o libuser.a.p/hw_core_cpu-user.c.o libuser.a.p/hw_cor=
+e_qdev-user.c.o libuser.a.p/gdbstub_gdbstub.c.o libuser.a.p/gdbstub_syscall=
+s.c.o libuser.a.p/gdbstub_user.c.o libuser.a.p/cpu-target.c.o libuser.a.p/t=
+cg_optimize.c.o libuser.a.p/tcg_region.c.o libuser.a.p/tcg_tcg.c.o libuser.=
+a.p/tcg_tcg-common.c.o libuser.a.p/tcg_tcg-op.c.o libuser.a.p/tcg_tcg-op-ld=
+st.c.o libuser.a.p/tcg_tcg-op-gvec.c.o libuser.a.p/tcg_tcg-op-vec.c.o libus=
+er.a.p/tcg_debuginfo.c.o libuser.a.p/tcg_perf.c.o libuser.a.p/plugins_user.=
+c.o libuser.a.p/plugins_api-user.c.o libuser.a.p/plugins_api.c.o libuser.a.=
+p/plugins_core.c.o libuser.a.p/common-user_safe-syscall.S.o libuser.a.p/com=
+mon-user_safe-syscall-error.c.o libqemu-aarch64-linux-user.a.p/target_arm_g=
+dbstub.c.o libqemu-aarch64-linux-user.a.p/target_arm_cpu.c.o libqemu-aarch6=
+4-linux-user.a.p/target_arm_cpregs-gcs.c.o libqemu-aarch64-linux-user.a.p/t=
+arget_arm_cpregs-pmu.c.o libqemu-aarch64-linux-user.a.p/target_arm_debug_he=
+lper.c.o libqemu-aarch64-linux-user.a.p/target_arm_helper.c.o libqemu-aarch=
+64-linux-user.a.p/target_arm_vfp_fpscr.c.o libqemu-aarch64-linux-user.a.p/t=
+arget_arm_el2-stubs.c.o libqemu-aarch64-linux-user.a.p/target_arm_cpregs-om=
+ap-stub.c.o libqemu-aarch64-linux-user.a.p/target_arm_common-semi-target.c.=
+o libqemu-aarch64-linux-user.a.p/target_arm_tcg_debug.c.o libqemu-aarch64-l=
+inux-user.a.p/target_arm_tcg_gengvec.c.o libqemu-aarch64-linux-user.a.p/tar=
+get_arm_tcg_hflags.c.o libqemu-aarch64-linux-user.a.p/target_arm_tcg_m_help=
+er.c.o libqemu-aarch64-linux-user.a.p/target_arm_tcg_mve_helper.c.o libqemu=
+-aarch64-linux-user.a.p/target_arm_tcg_neon_helper.c.o libqemu-aarch64-linu=
+x-user.a.p/target_arm_tcg_op_helper.c.o libqemu-aarch64-linux-user.a.p/targ=
+et_arm_tcg_tlb_helper.c.o libqemu-aarch64-linux-user.a.p/target_arm_tcg_tra=
+nslate.c.o libqemu-aarch64-linux-user.a.p/target_arm_tcg_translate-m-nocp.c=
+.o libqemu-aarch64-linux-user.a.p/target_arm_tcg_translate-mve.c.o libqemu-=
+aarch64-linux-user.a.p/target_arm_tcg_translate-neon.c.o libqemu-aarch64-li=
+nux-user.a.p/target_arm_tcg_translate-vfp.c.o libqemu-aarch64-linux-user.a.=
+p/target_arm_tcg_vec_helper.c.o libqemu-aarch64-linux-user.a.p/target_arm_t=
+cg_vfp_helper.c.o libqemu-aarch64-linux-user.a.p/linux-user_aarch64_cpu_loo=
+p.c.o libqemu-aarch64-linux-user.a.p/linux-user_aarch64_elfload.c.o libqemu=
+-aarch64-linux-user.a.p/linux-user_aarch64_signal.c.o libqemu-aarch64-linux=
+-user.a.p/target-info-stub.c.o libqemu-aarch64-linux-user.a.p/target_arm_cp=
+u64.c.o libqemu-aarch64-linux-user.a.p/target_arm_gdbstub64.c.o libqemu-aar=
+ch64-linux-user.a.p/target_arm_tcg_cpu32.c.o libqemu-aarch64-linux-user.a.p=
+/target_arm_tcg_cpu64.c.o libqemu-aarch64-linux-user.a.p/target_arm_tcg_gen=
+gvec64.c.o libqemu-aarch64-linux-user.a.p/target_arm_tcg_translate-a64.c.o =
+libqemu-aarch64-linux-user.a.p/target_arm_tcg_translate-sve.c.o libqemu-aar=
+ch64-linux-user.a.p/target_arm_tcg_translate-sme.c.o libqemu-aarch64-linux-=
+user.a.p/target_arm_tcg_helper-a64.c.o libqemu-aarch64-linux-user.a.p/targe=
+t_arm_tcg_mte_helper.c.o libqemu-aarch64-linux-user.a.p/target_arm_tcg_paut=
+h_helper.c.o libqemu-aarch64-linux-user.a.p/target_arm_tcg_sme_helper.c.o l=
+ibqemu-aarch64-linux-user.a.p/target_arm_tcg_sve_helper.c.o libqemu-aarch64=
+-linux-user.a.p/target_arm_tcg_vec_helper64.c.o libqemu-aarch64-linux-user.=
+a.p/semihosting_syscalls.c.o libqemu-aarch64-linux-user.a.p/semihosting_arm=
+-compat-semi.c.o libqemu-aarch64-linux-user.a.p/accel_accel-target.c.o libq=
+emu-aarch64-linux-user.a.p/hw_intc_arm_gicv3_hvf_stub.c.o libqemu-aarch64-l=
+inux-user.a.p/gdbstub_user-target.c.o libqemu-aarch64-linux-user.a.p/linux-=
+user_elfload.c.o libqemu-aarch64-linux-user.a.p/linux-user_exit.c.o libqemu=
+-aarch64-linux-user.a.p/linux-user_fd-trans.c.o libqemu-aarch64-linux-user.=
+a.p/linux-user_linuxload.c.o libqemu-aarch64-linux-user.a.p/linux-user_main=
+.c.o libqemu-aarch64-linux-user.a.p/linux-user_mmap.c.o libqemu-aarch64-lin=
+ux-user.a.p/linux-user_signal.c.o libqemu-aarch64-linux-user.a.p/linux-user=
+_strace.c.o libqemu-aarch64-linux-user.a.p/linux-user_syscall.c.o libqemu-a=
+arch64-linux-user.a.p/linux-user_thunk.c.o libqemu-aarch64-linux-user.a.p/l=
+inux-user_uaccess.c.o libqemu-aarch64-linux-user.a.p/linux-user_uname.c.o l=
+ibqemu-aarch64-linux-user.a.p/linux-user_flatload.c.o libqemu-aarch64-linux=
+-user.a.p/linux-user_semihost.c.o libqemu-aarch64-linux-user.a.p/linux-user=
+_plugin-api.c.o libqemu-aarch64-linux-user.a.p/linux-user_aarch64_mte_user_=
+helper.c.o libhwcore.a.p/hw_core_bus.c.o libhwcore.a.p/hw_core_gpio.c.o lib=
+hwcore.a.p/hw_core_qdev-properties.c.o libhwcore.a.p/hw_core_qdev.c.o libhw=
+core.a.p/hw_core_resetcontainer.c.o libhwcore.a.p/hw_core_resettable.c.o li=
+bhwcore.a.p/hw_core_vmstate-if.c.o libhwcore.a.p/hw_core_irq.c.o libhwcore.=
+a.p/hw_core_clock.c.o libhwcore.a.p/hw_core_qdev-clock.c.o libqom.a.p/qom_c=
+ontainer.c.o libqom.a.p/qom_object.c.o libqom.a.p/qom_object_interfaces.c.o=
+ libqom.a.p/qom_qom-qobject.c.o libqom.a.p/qom_compat-properties.c.o libeve=
+nt-loop-base.a.p/event-loop-base.c.o -Wl,--as-needed -Wl,--no-undefined -pi=
+e -fstack-protector-strong -Wl,-z,relro -Wl,-z,now -Wl,--start-group libqem=
+uutil.a subprojects/libvhost-user/libvhost-user-glib.a subprojects/libvhost=
+-user/libvhost-user.a libstubs_arm.a -Xlinker --dynamic-list=3D/work/armbru=
+/qemu/bld/plugins/qemu-plugin.symbols /usr/lib64/libcapstone.so /usr/lib64/=
+libz.so /usr/lib64/libdw.so /usr/lib64/libelf.so -lnuma /usr/lib64/liburing=
+.so /usr/lib64/libgio-2.0.so /usr/lib64/libgobject-2.0.so /usr/lib64/libgli=
+b-2.0.so /usr/lib64/libgmodule-2.0.so -pthread /usr/lib64/libgnutls.so -lm =
+/usr/lib64/libpixman-1.so /usr/lib64/libepoxy.so -Wl,--end-group
+/usr/bin/ld: libqemu-aarch64-linux-user.a.p/target_arm_cpu64.c.o: in functi=
+on `arm_cpu_sve_finalize':
+/work/armbru/qemu/bld/../target/arm/cpu64.c:146:(.text+0x11f2): undefined r=
+eference to `arm_find_model'
+/usr/bin/ld: libqemu-aarch64-linux-user.a.p/target_arm_cpu64.c.o: in functi=
+on `arm_cpu_pauth_finalize':
+/work/armbru/qemu/bld/../target/arm/cpu64.c:583:(.text+0x1a55): undefined r=
+eference to `arm_find_model'
+collect2: error: ld returned 1 exit status
 
 

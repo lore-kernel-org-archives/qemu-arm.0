@@ -4,83 +4,83 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5B6D7C55ABA
-	for <qemu-arm@archiver.kernel.org>; Wed,  5 Aug 2026 19:13:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 59EF4C55174
+	for <qemu-arm@archiver.kernel.org>; Wed,  5 Aug 2026 19:13:49 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wrh33-0008BD-KM; Wed, 05 Aug 2026 15:13:05 -0400
+	id 1wrh38-0008Cs-DY; Wed, 05 Aug 2026 15:13:10 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <simonxhy0404@gmail.com>)
- id 1wrh31-00089f-HR
- for qemu-arm@nongnu.org; Wed, 05 Aug 2026 15:13:03 -0400
-Received: from mail-oa1-x2c.google.com ([2001:4860:4864:20::2c])
+ id 1wrh32-0008Ai-TI
+ for qemu-arm@nongnu.org; Wed, 05 Aug 2026 15:13:04 -0400
+Received: from mail-oa1-x2e.google.com ([2001:4860:4864:20::2e])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <simonxhy0404@gmail.com>)
- id 1wrh2z-0005aS-Hb
- for qemu-arm@nongnu.org; Wed, 05 Aug 2026 15:13:03 -0400
-Received: by mail-oa1-x2c.google.com with SMTP id
- 586e51a60fabf-4566a5bc186so557512fac.1
- for <qemu-arm@nongnu.org>; Wed, 05 Aug 2026 12:13:01 -0700 (PDT)
+ id 1wrh31-0005aw-98
+ for qemu-arm@nongnu.org; Wed, 05 Aug 2026 15:13:04 -0400
+Received: by mail-oa1-x2e.google.com with SMTP id
+ 586e51a60fabf-4513435cdd2so591462fac.2
+ for <qemu-arm@nongnu.org>; Wed, 05 Aug 2026 12:13:02 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20251104; t=1785957180; x=1786561980; darn=nongnu.org;
+ d=gmail.com; s=20251104; t=1785957182; x=1786561982; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to:content-type;
- bh=5P6J3ncrDcD6IsEUWAmn78lAN1nXZ3gx1oEseI65Xnw=;
- b=TTda+PJa/Wqq4WSs/EX9sPOpRSz+smf9YVURh718z0N4jI2yE0iGEoc/uJQkObnefW
- fhlzZYTZt3retHdfx+n1UKffOpskd3muzqLY5pHOO6iPxeercqvE9RG+11byuv44dMsD
- LOe/n40sQhoJPw1F3M1lnvizXqiTMuu9TpnQ7V3IJAwt87jJ6mXQEaBA290j+DMK01eT
- sTKkj4ZdIv26sRqQCgK+84J4anIlGsTI+DC+t28vKulICDRfOUtRsFFquw1Y2ViIocKU
- a4z+SStSJMprn0l3tJy3yrjqLyYVV19yNYpngg8NBoXky38dovqna/u1cNSEqFN1Yw3K
- TGEg==
+ bh=cSWHrmCcIoLctcWRNjW/E1tItpOgQeoCmZgvnENNjRY=;
+ b=K74EL5SQ3n0IHQxYoJQlWkPA5QkZHKfpy79cKx8I3XYTIvHKGy6NepiORDpp7n2uGn
+ kHhAbrxhhdEN9DV5Q9/ToMZhvf7AaCKWBYV3QVozksT9+FgNGiw0kpncgDxQie8VHkNc
+ jOSESHqBlSFVwesm6Y52M9MuGPrGchkEBYpnNFPzVPI5YsYGFt42m2kUs9cr4IhUPMhZ
+ l6HZ3EgC0D1UFuVktAP4rwq+1QQHXDJ5trI/6DW0EqFzBjyC4+w5jy5NKyb68+awpH9n
+ qtEqeAobEWhUByNAc6fFaWxqPdc5oSktFTcZggI0TsUnB4yMO+ir7Xlv91ee+KQwE3go
+ vSfA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1785957180; x=1786561980;
+ d=1e100.net; s=20251104; t=1785957182; x=1786561982;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
  :to:cc:subject:date:message-id:reply-to:content-type;
- bh=5P6J3ncrDcD6IsEUWAmn78lAN1nXZ3gx1oEseI65Xnw=;
- b=nhUo+r0QX0ZuK+e2wfcuQYFqr2TtzXLfMHfFJzMXVlbIjVK3Evprgk9Nbl2Voq6BPJ
- cfvt9P4RPjwBO3JlxdPzO0OFZJGOAqLLxFj+FQXOumWFFRAc6QEvYd6DAe+kUBc0p9zK
- +NGWlVGbMAyHtu9vW2xFlFwRX3nS+zlyV+xukMBM4RwO4q71tZQEsUhOPIlbZtYGOMJs
- WfTuTSdA87Qnb+3onwwol45AIco7mIDE+VbYDnAA4qoePjcb89O03pbhSRhSwo/reUyK
- JX89vAG8oNXMWjioz0M7gtwWHZLw/B3jeuluMc59I2ji7o7U40LLI1YDChurT3bVGDot
- QEZg==
+ bh=cSWHrmCcIoLctcWRNjW/E1tItpOgQeoCmZgvnENNjRY=;
+ b=EsPpqvM7Cvh50f1SiowvnJvEGoqbAfeNT021oUlskxq25Wy+7AlSG+ghUaC29/OUcB
+ s4EItAuVizV7oJA6Y2lbSLTsDVP6wsq7atIwGVdwRISXUca1HG5G3DpnX5qJKWhGh69e
+ TPBCgMR5oebjzc+nbpHC/IXCC700HUJvgs49VGJKgi82BeANWDBG9H00CXqIJ0vicPjH
+ SOmUfiko+/foINMsU72cNrt1ajEcRIDIxVOuG2qbRmfsCrVmuOT8AV6TmIvuUjMfDSuS
+ w6vhK2sJacAR7mQZcL5I6iQ0iMDM3I+lKa8OKKfQkNtQEnBCdJw8KTSriX2bFrwRuqxO
+ WiMA==
 X-Forwarded-Encrypted: i=1;
- AHgh+RpIkI53pQbaBQgkxGv5932T9Od7wfM0v/cF4ZvLrDOaV5yQH4tTTxLbSufAKHzraXObFLF9V8QmBQ==@nongnu.org
-X-Gm-Message-State: AOJu0YxgUOK2/8RopOu8WZK2VbMmoHV/ab0OUUkAF3XnPtV3LC7fU+T1
- TQdwT2MqQnVXpplFNRjaZ/7k3n8okdG7sCVwNd3as6LWgyWGF5T04trU
-X-Gm-Gg: AR+sD1038xv+DKkwlOohLhNG9lMnV8GgbJXOpBwlvf0hKhLTrfYDFN+vcwjjdfub2q0
- tfPU0n5CkEqnCseWn5ncQpYB2g2RRjV3eA2TQpYnLezEnawf0Jn1GTJ53+5KGp9E8zDNCMr7uQI
- 2sURqoFM6FQbbEOBZo8qp0v+8MXyJgnTjB6/DF20Hi2jUdVFjdH6ZWZ4QAPs4mYybtuRdTaiToX
- mbXZZvtZJbgIlOWxRdYp9qptIf2ulfPsSIxwM4Vx98+2P1Ud9aB3fb/azYtEjH+/s14pTvziE7K
- zxunVrR9hAfF1dA92mt24EU6gQP5IU5BPTw9Ag2xn2qOdv5BQpa55g/ix6dYUmeABqpbJIUyi5j
- PAs2xksUPh6nDzhwFrEGULW393KFKdztxperSbEKU/ytObyLB3DBk4rDk+3Gl9xE7pPmNd8UzeE
- Z9e1AZi07+V0aSrzMmRQ6uOSqWygjke0sZs7AMq4RN0bqDpB3FisQtles+X6bb/ouFlkWMlH4Tm
- mDEwBTT59z1jEA=
-X-Received: by 2002:a05:6870:84c9:b0:448:9d5b:6393 with SMTP id
- 586e51a60fabf-4599ef14344mr4801150fac.14.1785957180149; 
- Wed, 05 Aug 2026 12:13:00 -0700 (PDT)
+ AHgh+RrMhw6Or9GS2VRc+pZnj0VYSYBTw6yiAXDmiluZtcwaM3ZzFMfPe5VHCopCRfTtIZSaSWj43IcY4g==@nongnu.org
+X-Gm-Message-State: AOJu0YzS1Zt2KjdGDiRaQ1M0UJSqUGDS7M9rLdY6AE6caaUPfyhwZMdx
+ Th1gxzyFK6PmfaO0u5apa1y4/z4SXZNLxqP8clopJ6uIQ7fzn4tEYotn
+X-Gm-Gg: AR+sD12xBCJr5E0ViGX06TaWQfcMXBj5E9/UBXlwPygqzeLYBqnSJaojVrXw2usP7MV
+ 573znLGfdca5fHZ34y9CREzcCbD/EFCbkEWHQ8jIXK8ORgdZ59gmjr9+Z3HSuBfa/xoa1yQ/Qf3
+ 4HwjjPoaEayrciAAMSsglu93QkM4FvqaESfpwnD+dX8u+CzccoUpZSwatawGBqneQZrkZG9CdFO
+ ygraNW7fKQ9zBblszAjoW+syJc048CBGL/MTkxf5jyCrjYdbJjS40/4TUN7T0vmxFBcGFYwnNDv
+ jRGbcgeFWB9z9GHSLWg+HVAgOQAYhZhWA/dlN1zmQuiSJ8IVW3UQYnCh/+22FzaMGtByi2LcbLA
+ FXhEO8Z4Q/lsWarmXCKYB9Z9XROR4i5VoE3jYvrUyEp+Q6DqyRmDSnkA1j2Pz10n/pMAndlqoM6
+ VgIwHqIY6/5pA3Zf8DKvKSGhNsyOOYieLb/mqo7VSt+p/JejYjzPPC850BGt4mM+worEHYhiiOM
+ QbWCMCW+Jz6s1g=
+X-Received: by 2002:a05:6870:d40d:b0:456:55f3:b8b with SMTP id
+ 586e51a60fabf-4599ec98ec6mr4665684fac.5.1785957181797; 
+ Wed, 05 Aug 2026 12:13:01 -0700 (PDT)
 Received: from HPE-2MQ6131DV6.ams.hpecorp.net ([170.85.98.248])
  by smtp.gmail.com with ESMTPSA id
- 586e51a60fabf-4599dd615ecsm3494867fac.0.2026.08.05.12.12.59
+ 586e51a60fabf-4599dd615ecsm3494867fac.0.2026.08.05.12.13.01
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 05 Aug 2026 12:12:59 -0700 (PDT)
+ Wed, 05 Aug 2026 12:13:01 -0700 (PDT)
 From: Simon Xu <simonxhy0404@gmail.com>
 To: qemu-devel@nongnu.org
 Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
  Simon Xu <simonxhy0404@gmail.com>
-Subject: [PATCH 2/4] hw/arm/armsse.c: fix SSE-300 PPU addresses
-Date: Wed,  5 Aug 2026 14:12:55 -0500
-Message-ID: <20260805191257.11303-3-simonxhy0404@gmail.com>
+Subject: [PATCH 4/4] hw/arm/mps2-tz.c: add AN547 AHB PPC EXP1 DMA ports
+Date: Wed,  5 Aug 2026 14:12:57 -0500
+Message-ID: <20260805191257.11303-5-simonxhy0404@gmail.com>
 X-Mailer: git-send-email 2.53.0
 In-Reply-To: <20260805191257.11303-1-simonxhy0404@gmail.com>
 References: <20260805191257.11303-1-simonxhy0404@gmail.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2001:4860:4864:20::2c;
- envelope-from=simonxhy0404@gmail.com; helo=mail-oa1-x2c.google.com
+Received-SPF: pass client-ip=2001:4860:4864:20::2e;
+ envelope-from=simonxhy0404@gmail.com; helo=mail-oa1-x2e.google.com
 X-Spam_score_int: -17
 X-Spam_score: -1.8
 X-Spam_bar: -
@@ -104,49 +104,35 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-The SSE-300 CPU0_PPU, MGMT_PPU, DEBUG_PPU had the wrong addresses
-that were the same as the SSE-200 addresses.
-Page 146 of the SSE-300 TRM defines the addresses of the PPUs.
+Page 42 of the AN547 TRM defines the AHB PPC EXP1 ports with DMA 1-3
 
-SSE-300 TRM: https://support.arm.com/documentation/101773/latest/
+AN547 TRM: https://developer.arm.com/documentation/dai0547/latest/
 
-Fixes: 8901bb414a24 ("hw/arm/armsse: Add SSE-300 support")
+Suggested-by: Peter Maydell <peter.maydell@linaro.org>
 Signed-off-by: Simon Xu <simonxhy0404@gmail.com>
 ---
- hw/arm/armsse.c | 6 +++---
- 1 file changed, 3 insertions(+), 3 deletions(-)
+ hw/arm/mps2-tz.c | 8 ++++++++
+ 1 file changed, 8 insertions(+)
 
-diff --git a/hw/arm/armsse.c b/hw/arm/armsse.c
-index e99b491bd9..55fbc2c290 100644
---- a/hw/arm/armsse.c
-+++ b/hw/arm/armsse.c
-@@ -452,7 +452,7 @@ static const ARMSSEDeviceInfo sse300_devices[] = {
-         .name = "CPU0CORE_PPU",
-         .type = TYPE_UNIMPLEMENTED_DEVICE,
-         .index = 2,
--        .addr = 0x50023000,
-+        .addr = 0x58023000,
-         .size = 0x1000,
-         .ppc = NO_PPC,
-         .irq = NO_IRQ,
-@@ -461,7 +461,7 @@ static const ARMSSEDeviceInfo sse300_devices[] = {
-         .name = "MGMT_PPU",
-         .type = TYPE_UNIMPLEMENTED_DEVICE,
-         .index = 3,
--        .addr = 0x50028000,
-+        .addr = 0x58028000,
-         .size = 0x1000,
-         .ppc = NO_PPC,
-         .irq = NO_IRQ,
-@@ -470,7 +470,7 @@ static const ARMSSEDeviceInfo sse300_devices[] = {
-         .name = "DEBUG_PPU",
-         .type = TYPE_UNIMPLEMENTED_DEVICE,
-         .index = 4,
--        .addr = 0x50029000,
-+        .addr = 0x58029000,
-         .size = 0x1000,
-         .ppc = NO_PPC,
-         .irq = NO_IRQ,
+diff --git a/hw/arm/mps2-tz.c b/hw/arm/mps2-tz.c
+index 81e64a91de..d6d178642b 100644
+--- a/hw/arm/mps2-tz.c
++++ b/hw/arm/mps2-tz.c
+@@ -1113,6 +1113,14 @@ static void mps2tz_common_init(MachineState *machine)
+                 { /* port 7 USER AHB interface 3 */ },
+                 { "eth-usb", make_eth_usb, NULL, 0x41400000, 0x200000, { 49 } },
+             },
++        }, {
++            .name = "ahb_ppcexp1",
++            .ports = {
++                { /* port 0 reserved */ },
++                { "dma1", make_dma, &mms->dma[1], 0x41201000, 0x1000, { 62, 60, 61 } },
++                { "dma2", make_dma, &mms->dma[2], 0x41202000, 0x1000, { 65, 63, 64 } },
++                { "dma3", make_dma, &mms->dma[3], 0x41203000, 0x1000, { 68, 66, 67 } },
++            },
+         },
+     };
+ 
 -- 
 2.53.0
 

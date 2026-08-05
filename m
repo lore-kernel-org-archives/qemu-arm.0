@@ -4,83 +4,83 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 35C4BC55ABA
-	for <qemu-arm@archiver.kernel.org>; Wed,  5 Aug 2026 15:33:13 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5B6D7C55ABA
+	for <qemu-arm@archiver.kernel.org>; Wed,  5 Aug 2026 19:13:46 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wrdZg-0005qz-15; Wed, 05 Aug 2026 11:30:32 -0400
+	id 1wrh33-0008BD-KM; Wed, 05 Aug 2026 15:13:05 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <simonxhy0404@gmail.com>)
- id 1wrdZU-0005nm-KY
- for qemu-arm@nongnu.org; Wed, 05 Aug 2026 11:30:21 -0400
-Received: from mail-oi1-x22a.google.com ([2607:f8b0:4864:20::22a])
+ id 1wrh31-00089f-HR
+ for qemu-arm@nongnu.org; Wed, 05 Aug 2026 15:13:03 -0400
+Received: from mail-oa1-x2c.google.com ([2001:4860:4864:20::2c])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <simonxhy0404@gmail.com>)
- id 1wrdZR-0007dM-Nf
- for qemu-arm@nongnu.org; Wed, 05 Aug 2026 11:30:19 -0400
-Received: by mail-oi1-x22a.google.com with SMTP id
- 5614622812f47-4af81963f35so459653b6e.0
- for <qemu-arm@nongnu.org>; Wed, 05 Aug 2026 08:30:15 -0700 (PDT)
+ id 1wrh2z-0005aS-Hb
+ for qemu-arm@nongnu.org; Wed, 05 Aug 2026 15:13:03 -0400
+Received: by mail-oa1-x2c.google.com with SMTP id
+ 586e51a60fabf-4566a5bc186so557512fac.1
+ for <qemu-arm@nongnu.org>; Wed, 05 Aug 2026 12:13:01 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20251104; t=1785943815; x=1786548615; darn=nongnu.org;
+ d=gmail.com; s=20251104; t=1785957180; x=1786561980; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to:content-type;
- bh=ceor1s7HR8GNDcyh7kwDT8r2E1Lvax6O+6vcMQOKk04=;
- b=nwLBbdx5CGluiUXjftLIP5KvyqUktfo/PubRKNtK4uudVLLLplNVDhM9kdl54o232P
- oRqtOvwo2CO5uBFw37ydz4KrrV+gQDpt94tbK45l4kCF3mGICWOkJwaEmHzqYJCvhm6m
- g/npMNJFNzDqaOPgExLSny9URyo2MQh4Lja71etawYDyY9JcgK7pahr6VP3eDVB/wYtD
- /avBwhEUqXho3V6RuFLIBkifc8BoH1UMCkrfonWZRAA0vVELwSumWbMBtrQtxKDqo/Xc
- 7M7bBzPq4hsAkx/dFRthZXIaJGtUVJBuG5rPZf2cAb+ccRjHu45vjo3b3xPeik0q+ZZy
- c7eA==
+ bh=5P6J3ncrDcD6IsEUWAmn78lAN1nXZ3gx1oEseI65Xnw=;
+ b=TTda+PJa/Wqq4WSs/EX9sPOpRSz+smf9YVURh718z0N4jI2yE0iGEoc/uJQkObnefW
+ fhlzZYTZt3retHdfx+n1UKffOpskd3muzqLY5pHOO6iPxeercqvE9RG+11byuv44dMsD
+ LOe/n40sQhoJPw1F3M1lnvizXqiTMuu9TpnQ7V3IJAwt87jJ6mXQEaBA290j+DMK01eT
+ sTKkj4ZdIv26sRqQCgK+84J4anIlGsTI+DC+t28vKulICDRfOUtRsFFquw1Y2ViIocKU
+ a4z+SStSJMprn0l3tJy3yrjqLyYVV19yNYpngg8NBoXky38dovqna/u1cNSEqFN1Yw3K
+ TGEg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1785943815; x=1786548615;
+ d=1e100.net; s=20251104; t=1785957180; x=1786561980;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
  :to:cc:subject:date:message-id:reply-to:content-type;
- bh=ceor1s7HR8GNDcyh7kwDT8r2E1Lvax6O+6vcMQOKk04=;
- b=kSSNBC+PrLhOBQg6sqBvf8fKeHH7G/hYP3mZ2jPz6Dhhm7jSv70Y+paxAInuMTC+FL
- IWjOO0k8o1UrKWXn4CbMsofxjSixi5KGzju9Ea823DKcFnjAYY4pKXGcZ5YjnINnwyUS
- NX/gx+K0yx7UE4YBqgchpxPSO1XkYxCqZ8bl1OSMa4GFSBug4cmOQo+2eQw9S3FJrj9U
- vydzBaAFOykV9wgqlkpqeq8qd4AISiQ7s0JukPVrbSpHIXop6x008QtEUmXGX/rBSiMb
- 4JSXV7DsRKQV+C1WVJuAOvoUgqBVSkLDlafr4HOEf7SeCKJGeeYpFY3VvaG9TMjMsq+A
- Nw6A==
-X-Gm-Message-State: AOJu0YxJh28AcI4i10xhwczbrPKLmd49NMGCDVXaWsm7GGLUpsgGT8PI
- LdtVZOr3MoA5WpSn2SltfPtjRW3uOihT+xUVY5Jp1ZWATmQK/6iOXD8J
-X-Gm-Gg: AR+sD12TTC8wKlVdkZ4i/oqf2EsDqPggDpziDI5MbNZweKMYud1/ZLx+xi8BE+9n0cM
- WIitsWkxkGDsqec0Kxk7QIjT0eF84C1IAVmBmsN+Nq6KyYAgDYvXN/Ffy1c7AgEGbnk440VmAdh
- j9+aC/CMU89HPh4dH+rH5fml3Jq2KnNfAN729ILllwP9t255s+lI3+6kCAJiZM4hgEfl3mwPEBV
- BMzPrmTcaRMxBars9GNc7HQPCWz6FiLtFHFvbxjO99865M5PjImbWEYVuh2OpAoJVT00dareNH7
- aA4X0y1bmNMKU8Q/vy2ybmEDdDZBf4yGxz7RLoGII1TqGwBzBtX+hClClo3HjV85u7crPjp+w+7
- bDjxyTVRtOECChb1OnAroZUz5exv8YiciHM2Dbu52ewh/hwpvG0gBYI6wezynJLh7YaTzCQxaTM
- Aa+Fv1F0+wEyBo0cLUkOsF/HQ5lG4BRvKz3fHq/IV6rijRn99XJtvnXNrhci+zL4lkq9nVMlMVI
- eV/PxrSyxHh
-X-Received: by 2002:a05:6808:1986:b0:4a3:fb6c:9adf with SMTP id
- 5614622812f47-4afae067fe6mr4614720b6e.12.1785943814706; 
- Wed, 05 Aug 2026 08:30:14 -0700 (PDT)
-Received: from HPE-2MQ6131DV6.ams.hpecorp.net ([170.85.99.9])
+ bh=5P6J3ncrDcD6IsEUWAmn78lAN1nXZ3gx1oEseI65Xnw=;
+ b=nhUo+r0QX0ZuK+e2wfcuQYFqr2TtzXLfMHfFJzMXVlbIjVK3Evprgk9Nbl2Voq6BPJ
+ cfvt9P4RPjwBO3JlxdPzO0OFZJGOAqLLxFj+FQXOumWFFRAc6QEvYd6DAe+kUBc0p9zK
+ +NGWlVGbMAyHtu9vW2xFlFwRX3nS+zlyV+xukMBM4RwO4q71tZQEsUhOPIlbZtYGOMJs
+ WfTuTSdA87Qnb+3onwwol45AIco7mIDE+VbYDnAA4qoePjcb89O03pbhSRhSwo/reUyK
+ JX89vAG8oNXMWjioz0M7gtwWHZLw/B3jeuluMc59I2ji7o7U40LLI1YDChurT3bVGDot
+ QEZg==
+X-Forwarded-Encrypted: i=1;
+ AHgh+RpIkI53pQbaBQgkxGv5932T9Od7wfM0v/cF4ZvLrDOaV5yQH4tTTxLbSufAKHzraXObFLF9V8QmBQ==@nongnu.org
+X-Gm-Message-State: AOJu0YxgUOK2/8RopOu8WZK2VbMmoHV/ab0OUUkAF3XnPtV3LC7fU+T1
+ TQdwT2MqQnVXpplFNRjaZ/7k3n8okdG7sCVwNd3as6LWgyWGF5T04trU
+X-Gm-Gg: AR+sD1038xv+DKkwlOohLhNG9lMnV8GgbJXOpBwlvf0hKhLTrfYDFN+vcwjjdfub2q0
+ tfPU0n5CkEqnCseWn5ncQpYB2g2RRjV3eA2TQpYnLezEnawf0Jn1GTJ53+5KGp9E8zDNCMr7uQI
+ 2sURqoFM6FQbbEOBZo8qp0v+8MXyJgnTjB6/DF20Hi2jUdVFjdH6ZWZ4QAPs4mYybtuRdTaiToX
+ mbXZZvtZJbgIlOWxRdYp9qptIf2ulfPsSIxwM4Vx98+2P1Ud9aB3fb/azYtEjH+/s14pTvziE7K
+ zxunVrR9hAfF1dA92mt24EU6gQP5IU5BPTw9Ag2xn2qOdv5BQpa55g/ix6dYUmeABqpbJIUyi5j
+ PAs2xksUPh6nDzhwFrEGULW393KFKdztxperSbEKU/ytObyLB3DBk4rDk+3Gl9xE7pPmNd8UzeE
+ Z9e1AZi07+V0aSrzMmRQ6uOSqWygjke0sZs7AMq4RN0bqDpB3FisQtles+X6bb/ouFlkWMlH4Tm
+ mDEwBTT59z1jEA=
+X-Received: by 2002:a05:6870:84c9:b0:448:9d5b:6393 with SMTP id
+ 586e51a60fabf-4599ef14344mr4801150fac.14.1785957180149; 
+ Wed, 05 Aug 2026 12:13:00 -0700 (PDT)
+Received: from HPE-2MQ6131DV6.ams.hpecorp.net ([170.85.98.248])
  by smtp.gmail.com with ESMTPSA id
- 5614622812f47-4afae75ce1bsm2185614b6e.15.2026.08.05.08.30.13
+ 586e51a60fabf-4599dd615ecsm3494867fac.0.2026.08.05.12.12.59
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 05 Aug 2026 08:30:14 -0700 (PDT)
+ Wed, 05 Aug 2026 12:12:59 -0700 (PDT)
 From: Simon Xu <simonxhy0404@gmail.com>
 To: qemu-devel@nongnu.org
-Cc: qemu-arm@nongnu.org, Owen Giles <owen.giles@hpe.com>,
- Peter Maydell <peter.maydell@linaro.org>,
- Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>,
- Robert Elliott <elliott@hpe.com>, Simon Xu <simonxhy0404@gmail.com>
-Subject: [PATCH v2 5/9] hw/misc/iotkit-secctl.c: add SSE-310 support
-Date: Wed,  5 Aug 2026 10:30:01 -0500
-Message-ID: <20260805153005.9989-6-simonxhy0404@gmail.com>
+Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
+ Simon Xu <simonxhy0404@gmail.com>
+Subject: [PATCH 2/4] hw/arm/armsse.c: fix SSE-300 PPU addresses
+Date: Wed,  5 Aug 2026 14:12:55 -0500
+Message-ID: <20260805191257.11303-3-simonxhy0404@gmail.com>
 X-Mailer: git-send-email 2.53.0
-In-Reply-To: <20260805153005.9989-1-simonxhy0404@gmail.com>
-References: <20260805153005.9989-1-simonxhy0404@gmail.com>
+In-Reply-To: <20260805191257.11303-1-simonxhy0404@gmail.com>
+References: <20260805191257.11303-1-simonxhy0404@gmail.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::22a;
- envelope-from=simonxhy0404@gmail.com; helo=mail-oi1-x22a.google.com
+Received-SPF: pass client-ip=2001:4860:4864:20::2c;
+ envelope-from=simonxhy0404@gmail.com; helo=mail-oa1-x2c.google.com
 X-Spam_score_int: -17
 X-Spam_score: -1.8
 X-Spam_bar: -
@@ -88,7 +88,7 @@ X-Spam_report: (-1.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  FREEMAIL_ENVFROM_END_DIGIT=0.25, FREEMAIL_FROM=0.001,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -104,61 +104,49 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Add SSE-310 secure and non-secure ID registers.
+The SSE-300 CPU0_PPU, MGMT_PPU, DEBUG_PPU had the wrong addresses
+that were the same as the SSE-200 addresses.
+Page 146 of the SSE-300 TRM defines the addresses of the PPUs.
 
-Reviewed-by: Owen Giles <owen.giles@hpe.com>
-Reviewed-by: Robert Elliott <elliott@hpe.com>
+SSE-300 TRM: https://support.arm.com/documentation/101773/latest/
+
+Fixes: 8901bb414a24 ("hw/arm/armsse: Add SSE-300 support")
 Signed-off-by: Simon Xu <simonxhy0404@gmail.com>
 ---
-v1 -> v2
-	With the bug fix from the previous patch	
----
- hw/misc/iotkit-secctl.c | 18 ++++++++++++++++++
- 1 file changed, 18 insertions(+)
+ hw/arm/armsse.c | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
 
-diff --git a/hw/misc/iotkit-secctl.c b/hw/misc/iotkit-secctl.c
-index 93753c2ced..9f6fb81088 100644
---- a/hw/misc/iotkit-secctl.c
-+++ b/hw/misc/iotkit-secctl.c
-@@ -109,6 +109,18 @@ static const uint8_t iotkit_secctl_ns_sse300_idregs[] = {
-     0x0d, 0xf0, 0x05, 0xb1,
- };
- 
-+static const uint8_t iotkit_secctl_s_sse310_idregs[] = {
-+    0x04, 0x00, 0x00, 0x00,
-+    0x52, 0xb8, 0x3b, 0x00,
-+    0x0d, 0xf0, 0x05, 0xb1,
-+};
-+
-+static const uint8_t iotkit_secctl_ns_sse310_idregs[] = {
-+    0x04, 0x00, 0x00, 0x00,
-+    0x53, 0xb8, 0x3b, 0x00,
-+    0x0d, 0xf0, 0x05, 0xb1,
-+};
-+
- 
- /* The register sets for the various PPCs (AHB internal, APB internal,
-  * AHB expansion, APB expansion) are all set up so that they are
-@@ -232,6 +244,9 @@ static MemTxResult iotkit_secctl_s_read(void *opaque, hwaddr addr,
-         case ARMSSE_SSE300:
-             r = iotkit_secctl_s_sse300_idregs[(offset - A_PID4) / 4];
-             break;
-+        case ARMSSE_SSE310:
-+            r = iotkit_secctl_s_sse310_idregs[(offset - A_PID4) / 4];
-+            break;
-         default:
-             r = iotkit_secctl_s_idregs[(offset - A_PID4) / 4];
-             break;
-@@ -499,6 +514,9 @@ static MemTxResult iotkit_secctl_ns_read(void *opaque, hwaddr addr,
-         case ARMSSE_SSE300:
-             r = iotkit_secctl_ns_sse300_idregs[(offset - A_PID4) / 4];
-             break;
-+        case ARMSSE_SSE310:
-+            r = iotkit_secctl_ns_sse310_idregs[(offset - A_PID4) / 4];
-+            break;
-         default:
-             r = iotkit_secctl_ns_idregs[(offset - A_PID4) / 4];
-             break;
+diff --git a/hw/arm/armsse.c b/hw/arm/armsse.c
+index e99b491bd9..55fbc2c290 100644
+--- a/hw/arm/armsse.c
++++ b/hw/arm/armsse.c
+@@ -452,7 +452,7 @@ static const ARMSSEDeviceInfo sse300_devices[] = {
+         .name = "CPU0CORE_PPU",
+         .type = TYPE_UNIMPLEMENTED_DEVICE,
+         .index = 2,
+-        .addr = 0x50023000,
++        .addr = 0x58023000,
+         .size = 0x1000,
+         .ppc = NO_PPC,
+         .irq = NO_IRQ,
+@@ -461,7 +461,7 @@ static const ARMSSEDeviceInfo sse300_devices[] = {
+         .name = "MGMT_PPU",
+         .type = TYPE_UNIMPLEMENTED_DEVICE,
+         .index = 3,
+-        .addr = 0x50028000,
++        .addr = 0x58028000,
+         .size = 0x1000,
+         .ppc = NO_PPC,
+         .irq = NO_IRQ,
+@@ -470,7 +470,7 @@ static const ARMSSEDeviceInfo sse300_devices[] = {
+         .name = "DEBUG_PPU",
+         .type = TYPE_UNIMPLEMENTED_DEVICE,
+         .index = 4,
+-        .addr = 0x50029000,
++        .addr = 0x58029000,
+         .size = 0x1000,
+         .ppc = NO_PPC,
+         .irq = NO_IRQ,
 -- 
 2.53.0
 

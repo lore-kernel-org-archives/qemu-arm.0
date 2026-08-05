@@ -4,83 +4,83 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 58AF0C55ABA
-	for <qemu-arm@archiver.kernel.org>; Wed,  5 Aug 2026 15:30:59 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 50DA1C55174
+	for <qemu-arm@archiver.kernel.org>; Wed,  5 Aug 2026 15:31:07 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wrdZW-0005oV-7F; Wed, 05 Aug 2026 11:30:23 -0400
+	id 1wrdZT-0005nP-WA; Wed, 05 Aug 2026 11:30:20 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <simonxhy0404@gmail.com>)
- id 1wrdZQ-0005mX-1E
- for qemu-arm@nongnu.org; Wed, 05 Aug 2026 11:30:17 -0400
-Received: from mail-oi1-x236.google.com ([2607:f8b0:4864:20::236])
+ id 1wrdZO-0005lt-4o
+ for qemu-arm@nongnu.org; Wed, 05 Aug 2026 11:30:14 -0400
+Received: from mail-oi1-x234.google.com ([2607:f8b0:4864:20::234])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <simonxhy0404@gmail.com>)
- id 1wrdZN-0007co-HQ
- for qemu-arm@nongnu.org; Wed, 05 Aug 2026 11:30:15 -0400
-Received: by mail-oi1-x236.google.com with SMTP id
- 5614622812f47-4a071495be0so742738b6e.0
- for <qemu-arm@nongnu.org>; Wed, 05 Aug 2026 08:30:13 -0700 (PDT)
+ id 1wrdZL-0007c3-Kl
+ for qemu-arm@nongnu.org; Wed, 05 Aug 2026 11:30:13 -0400
+Received: by mail-oi1-x234.google.com with SMTP id
+ 5614622812f47-4a456e44e01so694897b6e.1
+ for <qemu-arm@nongnu.org>; Wed, 05 Aug 2026 08:30:11 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20251104; t=1785943812; x=1786548612; darn=nongnu.org;
+ d=gmail.com; s=20251104; t=1785943810; x=1786548610; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to:content-type;
- bh=U5wniPKlQoQZB3yHDOIaDg0QUeR+XLP5hn1xDhtt0jA=;
- b=BPYFNxeqA6p1iRAMX2RfvW7CCbRSWJ4ND7VvN4++CCZFGm+Kb8FUh7T4rn7HUisLhK
- 1zD+MbQuDSL8DLCXejHNsaYfOLlFNhXH8QexJmhiO+zj3KG95LYciKLUfqDjUTSg0OqC
- 6LFoeOxurCYqr2AwgohzX/NlDXd7ZoC2RfWrvLMFrmtdxoJEqbUi1pIVmiWp/DxM3s0X
- gxYYN+6iH/8mkUuz3PQgrd2/Dh3IBH32KBAV5QPwrZH/zH2BHZDymLigH1j6/7lq/kuM
- Fr+9ZdS2TszXLy3OG7uDWScz8gR2aWZm1Zi+bknnlZrVviPUdey/v12HJU5mv5aAoyPC
- wyZg==
+ bh=4xZSFW/3ru0OkV2HgMsI1LCVRBUpnAQblZnopJOlyMw=;
+ b=itPtlJdmW/oh+G1m1mbcjm/Tr7RX3X03I2Y8eIguwbK/5095sqrFg5L80/sk35evPU
+ ZWC5BG8d6+7+T9z4DPDYs3XW39msqMvNnykiSilSB0MhXJecaPtJ+9ToYkbh5Uyu5XEs
+ O37qGXxvcbZs+I58bJj0GXt8XHTkyEYq9B7GSWjh/XhPiyWHzdY4X6fZ78NuTx9jTD+R
+ zylMwESSIz/nHd067+Ho5x6vf5/tT1ubnepYnQ+z0iH/9AaBiUzgE8KPVyJA/y5TLR8A
+ dHEVWNSD978OPUP/rGi140S9Xy9PJsbYsHielrRJvFUIPr+ZQ2qqxJ+v4dx6AiNYeFFO
+ 9Eiw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1785943812; x=1786548612;
+ d=1e100.net; s=20251104; t=1785943810; x=1786548610;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
  :to:cc:subject:date:message-id:reply-to:content-type;
- bh=U5wniPKlQoQZB3yHDOIaDg0QUeR+XLP5hn1xDhtt0jA=;
- b=YbQG3h4Zv0kvBccildoUP1br2+evIkav88jKI959LPnUm9WAPvl+Lo75SRKre3H74J
- k9GkF4tgoEJB7Va7VfYwke50USGupVpUbK+DPd2kGLRIK9vrJyNpItYMubXaeiZ5kVoL
- x2SetnJiUcpti6JkUDUu6MQhOwHuaOApO1ThrJsU2NyxKMn6qe4Bteicn3kffocGF+QD
- BZi1nO1mOUHacaa8PGw+mVYAuoi+At4rvFkBUKrIw+R+nQznadEVl5JoF9pC0q0ihHd1
- KxB5rA05Xn7WJRkMVghFNypD5B9pjnhBvF5EpiWmP4xRiLDJwbINPiXbHcsSdxJxmF6f
- O02Q==
-X-Gm-Message-State: AOJu0YyxsQuccjLXOB5Xz1glY6MBaTRtQL/c6iI+5S8PYQwE6kYEfCUJ
- j309r9IhaLwJhYRlD0ucmNQ/Io/dt1NMB3q3ARyrcVe11GoTjY2lBVVbi1jO03/p
-X-Gm-Gg: AR+sD13RR3GxYZiXrLyujni4eGXBRcKvS3gD0eDeS3RlLOCkQXD8Nshc5DNFpCMAHg+
- TE3v9GYG1Hh8+SlN+H5goqB+4/KFtBJ5tQNl7hmYiQraUxNe9nT5mwheDKuz3XLCqhgvgmMqCRJ
- GwBNkwIJ/IrCJ6rYG+prNcPTuVV7HmPYxPRKtwDIFYJMGlhQ8/A84KoXgtNX7SQBNcNg7kOK+kq
- Mbh+rlOp9wQXbBwxqICW3UMaejHyPzKfiYMFttbHKwEzcnQqfExHh0FF4ilieEQwdNl7R8gSTI4
- Lrf48uH3Gu0dkZOvcqO0sMcpoB0hC1HtFDm2pcT3ZpDcT6982C7H/oR2nwmaJ0kMyRCrKjzyIKA
- TgT6pu7E54ALHoOU2HHNFEHM6xYzG/X7recXSioFC6GLQzDNsJ8Sd/1GQbEc9LEzzP0EEwa3sMK
- Umbz5uBMhwAhaM/sZyLT8/VXkcZwjvL/wXm1hnAh2PoAWHByLNx1wdPo7cq001OGkrmF7k1lV+b
- hUbPbw6wMgiSg==
-X-Received: by 2002:a05:6808:6907:b0:479:ead7:2a5b with SMTP id
- 5614622812f47-4afae0e3e59mr4066940b6e.16.1785943812197; 
- Wed, 05 Aug 2026 08:30:12 -0700 (PDT)
+ bh=4xZSFW/3ru0OkV2HgMsI1LCVRBUpnAQblZnopJOlyMw=;
+ b=d1wnoU4OuBGI2LnqoEk3vt/0M1iT2RYd/SXYVAqzaKkJWHF409TGkGlcvB94FKn7kn
+ T0PVl6wYCDNdglvE4551OvYoo6pCSiwn6ENuzhmI46MUo3EzVnwof2lE7sYv0a6OPVEF
+ 2VmI2/EFqFO2REwz5ev6+Ocb6jDl9NP9f1fMTuaMRt4pw6kC0rb1XWJ8c4jvmJoqw9IF
+ o8+ibVN3xb9GXKsiZnOAW6YJPz0PSotw5gTVyxjjTYq/pAWS2eFSnVO0QqweWkO3bM/x
+ 9m7IRia8ZhevfyMp6lputRhIqOlmJfyJNBURq31y5dBezw6zWZjof7dk2CTpCdUFUspf
+ t4kg==
+X-Gm-Message-State: AOJu0YzCZTJTthP6+f2vo+7CAlfTOGGXbsZP1SgwJLZgtjc/1PVqEYCK
+ Qmym4+azYcxT0lkG9Ry1JAC9sPTUw3nY2R7RXFS55TIpbyPYbugEDfTj
+X-Gm-Gg: AR+sD11wJ4r/hWj2CbE7YrY3KWZ0LZ4ycSLpCpj/Yk7esyqisULEz5h7+SI8fxILnBy
+ ZIZUsCRp54aF94GLb/6M7xwb0X8fxO/7u5TgF6wrPxA5oQA5IVW3fy2vU4Z5gJ1FmkfEAcMJ/jr
+ s/zEJbZqEfBGnKOVzHfy+InX8msxFAFREHG/Xpy1JB1h0uI9TECSSpZ0odoxBRSVqiSpaWa36Wu
+ srqds6HdZDYxTYvRDXHK9drX8vDktqkS0k5wKV7+em90jQG93Y00jxhtb3TdoirmyM/ZE3vzbai
+ r4QhYn8iIicxtrbL2C+wpsAJORGq3/s2eb7k4GFM407FYMQYyX+gGF1DwSO7onnAXO06FLRTg78
+ 77Rj7kiG55mI6GxXVNEyl81y+xejgbv7bnTUP546wfz1E7iyDjYRrOyhmdLypBwks7lpkROgeLT
+ 2W4b3MJkTeAuSHr0Cx+matXjonBPs3cn3qXWm8PoEDI3dAfCO8JKY7W1ZAO8L3whnyj8HTAqMEj
+ G1gwElLUZyc
+X-Received: by 2002:a05:6808:3a0f:b0:4a3:f4b7:cbdf with SMTP id
+ 5614622812f47-4afadf93109mr4011031b6e.15.1785943810244; 
+ Wed, 05 Aug 2026 08:30:10 -0700 (PDT)
 Received: from HPE-2MQ6131DV6.ams.hpecorp.net ([170.85.99.9])
  by smtp.gmail.com with ESMTPSA id
- 5614622812f47-4afae75ce1bsm2185614b6e.15.2026.08.05.08.30.10
+ 5614622812f47-4afae75ce1bsm2185614b6e.15.2026.08.05.08.30.09
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 05 Aug 2026 08:30:11 -0700 (PDT)
+ Wed, 05 Aug 2026 08:30:09 -0700 (PDT)
 From: Simon Xu <simonxhy0404@gmail.com>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org, Owen Giles <owen.giles@hpe.com>,
  Peter Maydell <peter.maydell@linaro.org>,
  Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>,
  Robert Elliott <elliott@hpe.com>, Simon Xu <simonxhy0404@gmail.com>
-Subject: [PATCH v2 3/9] hw/misc/iotkit-sysctl.c: add SSE-310 support
-Date: Wed,  5 Aug 2026 10:29:59 -0500
-Message-ID: <20260805153005.9989-4-simonxhy0404@gmail.com>
+Subject: [PATCH v2 2/9] hw/arm/armsse: add Arm Corstone SSE-310
+Date: Wed,  5 Aug 2026 10:29:58 -0500
+Message-ID: <20260805153005.9989-3-simonxhy0404@gmail.com>
 X-Mailer: git-send-email 2.53.0
 In-Reply-To: <20260805153005.9989-1-simonxhy0404@gmail.com>
 References: <20260805153005.9989-1-simonxhy0404@gmail.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::236;
- envelope-from=simonxhy0404@gmail.com; helo=mail-oi1-x236.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::234;
+ envelope-from=simonxhy0404@gmail.com; helo=mail-oi1-x234.google.com
 X-Spam_score_int: -17
 X-Spam_score: -1.8
 X-Spam_bar: -
@@ -104,412 +104,365 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Add SSE-310 case statements for reads and writes.
-Add new SSE-310 PIDR and CLIDR values.
-Add new SSE-310 PPUINTSTAT register as RAZ with LOG_UMIMP on reads and
-RO on writes.
+Add baseline Arm Corstone SSE-310 model.
+
+Device list changes between SSE-310 and SSE-300:
+New NPU0 Power Policy Unit and Configuration interface.
+All other devices are the same.
+
+Update comments in include/hw/arm/armsse.h to include SSE-300 and
+SSE-310 and their respective documentations. New SSE-310 IRQ mapping.
+sys_version and iidr values from the "SSE-310 with M85 and U55 FPGA"
+documentation for the mps3-an555. Refractor comments and code
+pertaining to both the SSE-300 and SSE-310.
+
+Arm Corstone SSE-310 TRM:
+https://developer.arm.com/documentation/102778/0000/
 
 Reviewed-by: Owen Giles <owen.giles@hpe.com>
 Reviewed-by: Robert Elliott <elliott@hpe.com>
 Signed-off-by: Simon Xu <simonxhy0404@gmail.com>
 ---
 v1 -> v2
-	Add PPUINTSTAT register
-	Make sure comments don't separate case statements
+	Split v1 armsse patch into multiple patches for armsse and iotkit files
+	Update comments in armsse.h to include SSE-300 and SSE-310
+	Remove sys_config2 property
+	Add SSE-310 to iotkit files in next few patches
 ---
- hw/misc/iotkit-sysctl.c         | 89 ++++++++++++++++++++++++++++++---
- include/hw/misc/iotkit-sysctl.h |  1 +
- 2 files changed, 82 insertions(+), 8 deletions(-)
+ hw/arm/armsse.c                 | 208 +++++++++++++++++++++++++++++++-
+ include/hw/arm/armsse-version.h |   2 +
+ include/hw/arm/armsse.h         |   9 +-
+ 3 files changed, 211 insertions(+), 8 deletions(-)
 
-diff --git a/hw/misc/iotkit-sysctl.c b/hw/misc/iotkit-sysctl.c
-index dff89c677f..bdf59b5f85 100644
---- a/hw/misc/iotkit-sysctl.c
-+++ b/hw/misc/iotkit-sysctl.c
-@@ -51,6 +51,7 @@ REG32(CPUWAIT, 0x118)
- REG32(NMI_ENABLE, 0x11c) /* BUSWAIT in IoTKit */
- REG32(WICCTRL, 0x120)
- REG32(EWCTRL, 0x124)
-+REG32(PPUINTSTAT, 0x128)
- REG32(PWRCTRL, 0x1fc)
-     FIELD(PWRCTRL, PPU_ACCESS_UNLOCK, 0, 1)
-     FIELD(PWRCTRL, PPU_ACCESS_FILTER, 1, 1)
-@@ -87,6 +88,12 @@ static const int sse200_sysctl_id[] = {
-     0x0d, 0xf0, 0x05, 0xb1, /* CID0..CID3 */
+diff --git a/hw/arm/armsse.c b/hw/arm/armsse.c
+index ddb210c895..1847c73322 100644
+--- a/hw/arm/armsse.c
++++ b/hw/arm/armsse.c
+@@ -26,7 +26,7 @@
+ #include "hw/core/qdev-clock.h"
+ 
+ /*
+- * The SSE-300 puts some devices in different places to the
++ * The SSE-300 and SSE-310 put some devices in different places to the
+  * SSE-200 (and original IoTKit). We use an array of these structs
+  * to define how each variant lays out these devices. (Parts of the
+  * SoC that are the same for all variants aren't handled via these
+@@ -118,6 +118,18 @@ static const Property sse300_properties[] = {
+     DEFINE_PROP_UINT32("CPU0_MPU_S", ARMSSE, cpu_mpu_s[0], 8),
  };
  
-+static const int sse310_sysctl_id[] = {
-+    0x04, 0x00, 0x00, 0x00, /* PID4..PID7 */
-+    0x54, 0xb8, 0x4b, 0x00, /* PID0..PID3 */
-+    0x0d, 0xf0, 0x05, 0xb1, /* CID0..CID3 */
++static const Property sse310_properties[] = {
++    DEFINE_PROP_LINK("memory", ARMSSE, board_memory, TYPE_MEMORY_REGION,
++                     MemoryRegion *),
++    DEFINE_PROP_UINT32("EXP_NUMIRQ", ARMSSE, exp_numirq, 64),
++    DEFINE_PROP_UINT32("SRAM_ADDR_WIDTH", ARMSSE, sram_addr_width, 21),
++    DEFINE_PROP_UINT32("init-svtor", ARMSSE, init_svtor, 0x10000000),
++    DEFINE_PROP_BOOL("CPU0_FPU", ARMSSE, cpu_fpu[0], true),
++    DEFINE_PROP_BOOL("CPU0_DSP", ARMSSE, cpu_dsp[0], true),
++    DEFINE_PROP_UINT32("CPU0_MPU_NS", ARMSSE, cpu_mpu_ns[0], 8),
++    DEFINE_PROP_UINT32("CPU0_MPU_S", ARMSSE, cpu_mpu_s[0], 8),
 +};
 +
+ static const ARMSSEDeviceInfo iotkit_devices[] = {
+     {
+         .name = "timer0",
+@@ -480,6 +492,146 @@ static const ARMSSEDeviceInfo sse300_devices[] = {
+     }
+ };
+ 
++static const ARMSSEDeviceInfo sse310_devices[] = {
++    {
++        .name = "timer0",
++        .type = TYPE_SSE_TIMER,
++        .index = 0,
++        .addr = 0x48000000,
++        .ppc = 0,
++        .ppc_port = 0,
++        .irq = 3,
++    },
++    {
++        .name = "timer1",
++        .type = TYPE_SSE_TIMER,
++        .index = 1,
++        .addr = 0x48001000,
++        .ppc = 0,
++        .ppc_port = 1,
++        .irq = 4,
++    },
++    {
++        .name = "timer2",
++        .type = TYPE_SSE_TIMER,
++        .index = 2,
++        .addr = 0x48002000,
++        .ppc = 0,
++        .ppc_port = 2,
++        .irq = 5,
++    },
++    {
++        .name = "timer3",
++        .type = TYPE_SSE_TIMER,
++        .index = 3,
++        .addr = 0x48003000,
++        .ppc = 0,
++        .ppc_port = 5,
++        .irq = 27,
++    },
++    {
++        .name = "s32ktimer",
++        .type = TYPE_CMSDK_APB_TIMER,
++        .index = 0,
++        .addr = 0x4802f000,
++        .ppc = 1,
++        .ppc_port = 0,
++        .irq = 2,
++        .slowclk = true,
++    },
++    {
++        .name = "s32kwatchdog",
++        .type = TYPE_CMSDK_APB_WATCHDOG,
++        .index = 0,
++        .addr = 0x5802e000,
++        .ppc = NO_PPC,
++        .irq = NMI_0,
++        .slowclk = true,
++    },
++    {
++        .name = "watchdog",
++        .type = TYPE_UNIMPLEMENTED_DEVICE,
++        .index = 0,
++        .addr = 0x48040000,
++        .size = 0x2000,
++        .ppc = NO_PPC,
++        .irq = NO_IRQ,
++    },
++    {
++        .name = "armsse-sysinfo",
++        .type = TYPE_IOTKIT_SYSINFO,
++        .index = 0,
++        .addr = 0x48020000,
++        .ppc = NO_PPC,
++        .irq = NO_IRQ,
++    },
++    {
++        .name = "armsse-sysctl",
++        .type = TYPE_IOTKIT_SYSCTL,
++        .index = 0,
++        .addr = 0x58021000,
++        .ppc = NO_PPC,
++        .irq = NO_IRQ,
++    },
++    {
++        .name = "SYS_PPU",
++        .type = TYPE_UNIMPLEMENTED_DEVICE,
++        .index = 1,
++        .addr = 0x58022000,
++        .size = 0x1000,
++        .ppc = NO_PPC,
++        .irq = NO_IRQ,
++    },
++    {
++        .name = "CPU0CORE_PPU",
++        .type = TYPE_UNIMPLEMENTED_DEVICE,
++        .index = 2,
++        .addr = 0x58023000,
++        .size = 0x1000,
++        .ppc = NO_PPC,
++        .irq = NO_IRQ,
++    },
++    {
++        .name = "MGMT_PPU",
++        .type = TYPE_UNIMPLEMENTED_DEVICE,
++        .index = 3,
++        .addr = 0x58028000,
++        .size = 0x1000,
++        .ppc = NO_PPC,
++        .irq = NO_IRQ,
++    },
++    {
++        .name = "DEBUG_PPU",
++        .type = TYPE_UNIMPLEMENTED_DEVICE,
++        .index = 4,
++        .addr = 0x58029000,
++        .size = 0x1000,
++        .ppc = NO_PPC,
++        .irq = NO_IRQ,
++    },
++    {
++        .name = "NPU0_PPU",
++        .type = TYPE_UNIMPLEMENTED_DEVICE,
++        .index = 5,
++        .addr = 0x5802a000,
++        .size = 0x1000,
++        .ppc = NO_PPC,
++        .irq = NO_IRQ,
++    },
++    {
++        .name = "NPU0_CFG",
++        .type = TYPE_UNIMPLEMENTED_DEVICE,
++        .index = 6,
++        .addr = 0x40004000,
++        .size = 0x1000,
++        .ppc = NO_PPC,
++        .irq = NO_IRQ,
++    },
++    {
++        .name = NULL,
++    }
++};
++
+ /* Is internal IRQ n shared between CPUs in a multi-core SSE ? */
+ static const bool sse200_irq_is_common[32] = {
+     [0 ... 5] = true,
+@@ -507,6 +659,20 @@ static const bool sse300_irq_is_common[32] = {
+     /* 30, 31: reserved */
+ };
+ 
++static const bool sse310_irq_is_common[32] = {
++    [0 ... 5] = true,
++    /* 6-8: reserved */
++    [9 ... 12] = true,
++    /* 13: reserved */
++    [14] = true,
++    /* 15: reserved */
++    [16] = true,
++    /* 17-26: reserved */
++    [27] = true,
++    /* 28, 29: per-CPU CTI interrupts */
++    /* 30, 31: reserved */
++};
++
+ static const ARMSSEInfo armsse_variants[] = {
+     {
+         .name = TYPE_IOTKIT,
+@@ -574,6 +740,28 @@ static const ARMSSEInfo armsse_variants[] = {
+         .devinfo = sse300_devices,
+         .irq_is_common = sse300_irq_is_common,
+     },
++    {
++        .name = TYPE_SSE310,
++        .sse_version = ARMSSE_SSE310,
++        .cpu_type = ARM_CPU_TYPE_NAME("cortex-m85"),
++        .sram_banks = 2,
++        .sram_bank_base = 0x21000000,
++        .num_cpus = 1,
++        .sys_version = 0x7e10043b,
++        .iidr = 0x74e0043b,
++        .cpuwait_rst = 0,
++        .has_mhus = false,
++        .has_cachectrl = false,
++        .has_cpusecctrl = true,
++        .has_cpuid = true,
++        .has_cpu_pwrctrl = true,
++        .has_sse_counter = true,
++        .has_tcms = true,
++        .props = sse310_properties,
++        .props_count = ARRAY_SIZE(sse310_properties),
++        .devinfo = sse310_devices,
++        .irq_is_common = sse310_irq_is_common,
++    }
+ };
+ 
+ static uint32_t armsse_sys_config_value(ARMSSE *s, const ARMSSEInfo *info)
+@@ -604,6 +792,14 @@ static uint32_t armsse_sys_config_value(ARMSSE *s, const ARMSSEInfo *info)
+         sys_config = deposit32(sys_config, 4, 5, s->sram_addr_width);
+         sys_config = deposit32(sys_config, 16, 3, 3); /* CPU0 = Cortex-M55 */
+         break;
++    case ARMSSE_SSE310:
++        sys_config = 0;
++        sys_config = deposit32(sys_config, 0, 4, info->sram_banks);
++        sys_config = deposit32(sys_config, 4, 5, s->sram_addr_width);
++        sys_config = deposit32(sys_config, 10, 1, 0); /* No CoreSight SoC */
++        sys_config = deposit32(sys_config, 11, 2, 0); /* Basic level PI */
++        sys_config = deposit32(sys_config, 16, 3, 4); /* CPU0 = Cortex-M85 */
++        break;
+     default:
+         g_assert_not_reached();
+     }
+@@ -1205,7 +1401,7 @@ static void armsse_realize(DeviceState *dev, Error **errp)
+     qdev_connect_gpio_out(DEVICE(&s->nmi_orgate), 0,
+                           qdev_get_gpio_in_named(DEVICE(&s->armv7m), "NMI", 0));
+ 
+-    /* The SSE-300 has a System Counter / System Timestamp Generator */
++    /* The SSE-300/SSE-310 has a System Counter / System Timestamp Generator */
+     if (info->has_sse_counter) {
+         SysBusDevice *sbd = SYS_BUS_DEVICE(&s->sse_counter);
+ 
+@@ -1225,12 +1421,12 @@ static void armsse_realize(DeviceState *dev, Error **errp)
+     }
+ 
+     if (info->has_tcms) {
+-        /* The SSE-300 has an ITCM at 0x0000_0000 and a DTCM at 0x2000_0000 */
+-        memory_region_init_ram(&s->itcm, NULL, "sse300-itcm", 512 * KiB, errp);
++        /* The SSE-300/SSE-310 has an ITCM at 0x0000_0000 and a DTCM at 0x2000_0000 */
++        memory_region_init_ram(&s->itcm, NULL, "itcm", 512 * KiB, errp);
+         if (*errp) {
+             return;
+         }
+-        memory_region_init_ram(&s->dtcm, NULL, "sse300-dtcm", 512 * KiB, errp);
++        memory_region_init_ram(&s->dtcm, NULL, "dtcm", 512 * KiB, errp);
+         if (*errp) {
+             return;
+         }
+@@ -1461,7 +1657,7 @@ static void armsse_realize(DeviceState *dev, Error **errp)
+      *  0x50010000: L1 icache control registers
+      *  0x50011000: CPUSECCTRL (CPU local security control registers)
+      *  0x4001f000 and 0x5001f000: CPU_IDENTITY register block
+-     * The SSE-300 has an extra:
++     * The SSE-300 and SSE-310 have an extra:
+      *  0x40012000 and 0x50012000: CPU_PWRCTRL register block
+      */
+     if (info->has_cachectrl) {
+diff --git a/include/hw/arm/armsse-version.h b/include/hw/arm/armsse-version.h
+index 60780fa984..6b498cb334 100644
+--- a/include/hw/arm/armsse-version.h
++++ b/include/hw/arm/armsse-version.h
+@@ -25,6 +25,7 @@ enum {
+     ARMSSE_IOTKIT = 0,
+     ARMSSE_SSE200 = 200,
+     ARMSSE_SSE300 = 300,
++    ARMSSE_SSE310 = 310
+ };
+ 
+ static inline bool armsse_version_valid(uint32_t sse_version)
+@@ -33,6 +34,7 @@ static inline bool armsse_version_valid(uint32_t sse_version)
+     case ARMSSE_IOTKIT:
+     case ARMSSE_SSE200:
+     case ARMSSE_SSE300:
++    case ARMSSE_SSE310:
+         return true;
+     default:
+         return false;
+diff --git a/include/hw/arm/armsse.h b/include/hw/arm/armsse.h
+index bdf2d4db8e..6aa1363ccf 100644
+--- a/include/hw/arm/armsse.h
++++ b/include/hw/arm/armsse.h
+@@ -11,12 +11,16 @@
+ 
  /*
-  * Set the initial secure vector table offset address for the core.
-  * This will take effect when the CPU next resets.
-@@ -118,6 +125,7 @@ static uint64_t iotkit_sysctl_read(void *opaque, hwaddr offset,
-             goto bad_offset;
-         case ARMSSE_SSE200:
-         case ARMSSE_SSE300:
-+        case ARMSSE_SSE310:
-             r = s->scsecctrl;
-             break;
-         default:
-@@ -130,6 +138,7 @@ static uint64_t iotkit_sysctl_read(void *opaque, hwaddr offset,
-             goto bad_offset;
-         case ARMSSE_SSE200:
-         case ARMSSE_SSE300:
-+        case ARMSSE_SSE310:
-             r = s->fclk_div;
-             break;
-         default:
-@@ -142,6 +151,7 @@ static uint64_t iotkit_sysctl_read(void *opaque, hwaddr offset,
-             goto bad_offset;
-         case ARMSSE_SSE200:
-         case ARMSSE_SSE300:
-+        case ARMSSE_SSE310:
-             r = s->sysclk_div;
-             break;
-         default:
-@@ -154,6 +164,7 @@ static uint64_t iotkit_sysctl_read(void *opaque, hwaddr offset,
-             goto bad_offset;
-         case ARMSSE_SSE200:
-         case ARMSSE_SSE300:
-+        case ARMSSE_SSE310:
-             r = s->clock_force;
-             break;
-         default:
-@@ -180,6 +191,7 @@ static uint64_t iotkit_sysctl_read(void *opaque, hwaddr offset,
-             r = s->initsvtor1;
-             break;
-         case ARMSSE_SSE300:
-+        case ARMSSE_SSE310:
-             goto bad_offset;
-         default:
-             g_assert_not_reached();
-@@ -192,6 +204,7 @@ static uint64_t iotkit_sysctl_read(void *opaque, hwaddr offset,
-             r = s->cpuwait;
-             break;
-         case ARMSSE_SSE300:
-+        case ARMSSE_SSE310:
-             /* In SSE300 this is reserved (for INITSVTOR2) */
-             goto bad_offset;
-         default:
-@@ -208,6 +221,7 @@ static uint64_t iotkit_sysctl_read(void *opaque, hwaddr offset,
-             r = s->nmi_enable;
-             break;
-         case ARMSSE_SSE300:
-+        case ARMSSE_SSE310:
-             /* In SSE300 this is reserved (for INITSVTOR3) */
-             goto bad_offset;
-         default:
-@@ -221,7 +235,8 @@ static uint64_t iotkit_sysctl_read(void *opaque, hwaddr offset,
-             r = s->wicctrl;
-             break;
-         case ARMSSE_SSE300:
--            /* In SSE300 this offset is CPUWAIT */
-+        case ARMSSE_SSE310:
-+            /* In SSE300 and SSE310 this offset is CPUWAIT */
-             r = s->cpuwait;
-             break;
-         default:
-@@ -236,19 +251,36 @@ static uint64_t iotkit_sysctl_read(void *opaque, hwaddr offset,
-             r = s->ewctrl;
-             break;
-         case ARMSSE_SSE300:
--            /* In SSE300 this offset is NMI_ENABLE */
-+        case ARMSSE_SSE310:
-+            /* In SSE300 and SSE310 this offset is NMI_ENABLE */
-             r = s->nmi_enable;
-             break;
-         default:
-             g_assert_not_reached();
-         }
-         break;
-+    case A_PPUINTSTAT:
-+        switch (s->sse_version) {
-+        case ARMSSE_IOTKIT:
-+        case ARMSSE_SSE200:
-+        case ARMSSE_SSE300:
-+            goto bad_offset;
-+        case ARMSSE_SSE310:
-+            qemu_log_mask(LOG_UNIMP,
-+                          "IoTKit SysCtl PPUINTSTAT unimplemented\n");
-+            r = s->ppuintstat;
-+            break;
-+        default:
-+            g_assert_not_reached();
-+        }
-+        break;
-     case A_PWRCTRL:
-         switch (s->sse_version) {
-         case ARMSSE_IOTKIT:
-         case ARMSSE_SSE200:
-             goto bad_offset;
-         case ARMSSE_SSE300:
-+        case ARMSSE_SSE310:
-             r = s->pwrctrl;
-             break;
-         default:
-@@ -261,6 +293,7 @@ static uint64_t iotkit_sysctl_read(void *opaque, hwaddr offset,
-             goto bad_offset;
-         case ARMSSE_SSE200:
-         case ARMSSE_SSE300:
-+        case ARMSSE_SSE310:
-             r = s->pdcm_pd_sys_sense;
-             break;
-         default:
-@@ -273,7 +306,8 @@ static uint64_t iotkit_sysctl_read(void *opaque, hwaddr offset,
-         case ARMSSE_SSE200:
-             goto bad_offset;
-         case ARMSSE_SSE300:
--            r = s->pdcm_pd_cpu0_sense;
-+        case ARMSSE_SSE310:
-+            r = s->pdcm_pd_cpu0_sense;            
-             break;
-         default:
-             g_assert_not_reached();
-@@ -287,6 +321,7 @@ static uint64_t iotkit_sysctl_read(void *opaque, hwaddr offset,
-             r = s->pdcm_pd_sram0_sense;
-             break;
-         case ARMSSE_SSE300:
-+        case ARMSSE_SSE310:
-             goto bad_offset;
-         default:
-             g_assert_not_reached();
-@@ -300,6 +335,7 @@ static uint64_t iotkit_sysctl_read(void *opaque, hwaddr offset,
-             r = s->pdcm_pd_sram1_sense;
-             break;
-         case ARMSSE_SSE300:
-+        case ARMSSE_SSE310:
-             goto bad_offset;
-         default:
-             g_assert_not_reached();
-@@ -313,6 +349,7 @@ static uint64_t iotkit_sysctl_read(void *opaque, hwaddr offset,
-             r = s->pdcm_pd_sram2_sense;
-             break;
-         case ARMSSE_SSE300:
-+        case ARMSSE_SSE310:
-             r = s->pdcm_pd_vmr0_sense;
-             break;
-         default:
-@@ -327,6 +364,7 @@ static uint64_t iotkit_sysctl_read(void *opaque, hwaddr offset,
-             r = s->pdcm_pd_sram3_sense;
-             break;
-         case ARMSSE_SSE300:
-+        case ARMSSE_SSE310:
-             r = s->pdcm_pd_vmr1_sense;
-             break;
-         default:
-@@ -342,6 +380,9 @@ static uint64_t iotkit_sysctl_read(void *opaque, hwaddr offset,
-         case ARMSSE_SSE300:
-             r = sse200_sysctl_id[(offset - A_PID4) / 4];
-             break;
-+        case ARMSSE_SSE310:
-+            r = sse310_sysctl_id[(offset - A_PID4) / 4];
-+            break;
-         default:
-             g_assert_not_reached();
-         }
-@@ -367,7 +408,8 @@ static uint64_t iotkit_sysctl_read(void *opaque, hwaddr offset,
+  * This is a model of the Arm "Subsystems for Embedded" family of
+- * hardware, which include the IoT Kit and the SSE-050, SSE-100 and
+- * SSE-200. Currently we model:
++ * hardware, which include the IoT Kit and the SSE-050, SSE-100,
++ * SSE-200, SSE-300, and SSE-310. Currently we model:
+  *  - the Arm IoT Kit which is documented in
+  *    https://developer.arm.com/documentation/ecm0601256/latest
+  *  - the SSE-200 which is documented in
+  *    https://developer.arm.com/documentation/101104/latest/
++ *  - the SSE-300 which is documented in
++ *    https://support.arm.com/documentation/101773/latest/
++ *  - the SSE-310 which is documented in 
++ *    https://support.arm.com/documentation/102778/latest/
+  *
+  * The IoTKit contains:
+  *  a Cortex-M33
+@@ -127,6 +131,7 @@ OBJECT_DECLARE_TYPE(ARMSSE, ARMSSEClass,
+ #define TYPE_IOTKIT "iotkit"
+ #define TYPE_SSE200 "sse-200"
+ #define TYPE_SSE300 "sse-300"
++#define TYPE_SSE310 "sse-310"
  
- static void cpuwait_write(IoTKitSysCtl *s, uint32_t value)
- {
--    int num_cpus = (s->sse_version == ARMSSE_SSE300) ? 1 : 2;
-+    int num_cpus = (s->sse_version == ARMSSE_SSE300 ||
-+                    s->sse_version == ARMSSE_SSE310) ? 1 : 2;
-     int i;
- 
-     for (i = 0; i < num_cpus; i++) {
-@@ -418,7 +460,8 @@ static void iotkit_sysctl_write(void *opaque, hwaddr offset,
-     case A_INITSVTOR0:
-         switch (s->sse_version) {
-         case ARMSSE_SSE300:
--            /* SSE300 has a LOCK bit which prevents further writes when set */
-+        case ARMSSE_SSE310:
-+            /* SSE300 and SSE310 have a LOCK bit which prevents further writes */
-             if (s->initsvtor0 & R_INITSVTOR0_LOCK_MASK) {
-                 qemu_log_mask(LOG_GUEST_ERROR,
-                               "IoTKit INITSVTOR0 write when register locked\n");
-@@ -443,6 +486,7 @@ static void iotkit_sysctl_write(void *opaque, hwaddr offset,
-             cpuwait_write(s, value);
-             break;
-         case ARMSSE_SSE300:
-+        case ARMSSE_SSE310:
-             /* In SSE300 this is reserved (for INITSVTOR2) */
-             goto bad_offset;
-         default:
-@@ -457,7 +501,8 @@ static void iotkit_sysctl_write(void *opaque, hwaddr offset,
-             s->wicctrl = value;
-             break;
-         case ARMSSE_SSE300:
--            /* In SSE300 this offset is CPUWAIT */
-+        case ARMSSE_SSE310:
-+            /* In SSE300 and SSE310 this offset is CPUWAIT */
-             cpuwait_write(s, value);
-             break;
-         default:
-@@ -485,6 +530,7 @@ static void iotkit_sysctl_write(void *opaque, hwaddr offset,
-             goto bad_offset;
-         case ARMSSE_SSE200:
-         case ARMSSE_SSE300:
-+        case ARMSSE_SSE310:
-             qemu_log_mask(LOG_UNIMP, "IoTKit SysCtl SCSECCTRL unimplemented\n");
-             s->scsecctrl = value;
-             break;
-@@ -498,6 +544,7 @@ static void iotkit_sysctl_write(void *opaque, hwaddr offset,
-             goto bad_offset;
-         case ARMSSE_SSE200:
-         case ARMSSE_SSE300:
-+        case ARMSSE_SSE310:
-             qemu_log_mask(LOG_UNIMP, "IoTKit SysCtl FCLK_DIV unimplemented\n");
-             s->fclk_div = value;
-             break;
-@@ -511,6 +558,7 @@ static void iotkit_sysctl_write(void *opaque, hwaddr offset,
-             goto bad_offset;
-         case ARMSSE_SSE200:
-         case ARMSSE_SSE300:
-+        case ARMSSE_SSE310:
-             qemu_log_mask(LOG_UNIMP, "IoTKit SysCtl SYSCLK_DIV unimplemented\n");
-             s->sysclk_div = value;
-             break;
-@@ -524,6 +572,7 @@ static void iotkit_sysctl_write(void *opaque, hwaddr offset,
-             goto bad_offset;
-         case ARMSSE_SSE200:
-         case ARMSSE_SSE300:
-+        case ARMSSE_SSE310:
-             qemu_log_mask(LOG_UNIMP, "IoTKit SysCtl CLOCK_FORCE unimplemented\n");
-             s->clock_force = value;
-             break;
-@@ -540,6 +589,7 @@ static void iotkit_sysctl_write(void *opaque, hwaddr offset,
-             set_init_vtor(1, s->initsvtor1);
-             break;
-         case ARMSSE_SSE300:
-+        case ARMSSE_SSE310:
-             goto bad_offset;
-         default:
-             g_assert_not_reached();
-@@ -554,7 +604,8 @@ static void iotkit_sysctl_write(void *opaque, hwaddr offset,
-             s->ewctrl = value;
-             break;
-         case ARMSSE_SSE300:
--            /* In SSE300 this offset is NMI_ENABLE */
-+        case ARMSSE_SSE310:
-+            /* In SSE300 and SSE310 this offset is NMI_ENABLE */
-             qemu_log_mask(LOG_UNIMP, "IoTKit SysCtl NMI_ENABLE unimplemented\n");
-             s->nmi_enable = value;
-             break;
-@@ -562,12 +613,25 @@ static void iotkit_sysctl_write(void *opaque, hwaddr offset,
-             g_assert_not_reached();
-         }
-         break;
-+    case A_PPUINTSTAT:
-+        switch (s->sse_version) {
-+        case ARMSSE_IOTKIT:
-+        case ARMSSE_SSE200:
-+        case ARMSSE_SSE300:
-+            goto bad_offset;
-+        case ARMSSE_SSE310:
-+            goto ro_offset;
-+        default:
-+            g_assert_not_reached();
-+        }
-+        break;
-     case A_PWRCTRL:
-         switch (s->sse_version) {
-         case ARMSSE_IOTKIT:
-         case ARMSSE_SSE200:
-             goto bad_offset;
-         case ARMSSE_SSE300:
-+        case ARMSSE_SSE310:
-             if (!(s->pwrctrl & R_PWRCTRL_PPU_ACCESS_UNLOCK_MASK)) {
-                 qemu_log_mask(LOG_GUEST_ERROR,
-                               "IoTKit PWRCTRL write when register locked\n");
-@@ -585,6 +649,7 @@ static void iotkit_sysctl_write(void *opaque, hwaddr offset,
-             goto bad_offset;
-         case ARMSSE_SSE200:
-         case ARMSSE_SSE300:
-+        case ARMSSE_SSE310:
-             qemu_log_mask(LOG_UNIMP,
-                           "IoTKit SysCtl PDCM_PD_SYS_SENSE unimplemented\n");
-             s->pdcm_pd_sys_sense = value;
-@@ -599,6 +664,7 @@ static void iotkit_sysctl_write(void *opaque, hwaddr offset,
-         case ARMSSE_SSE200:
-             goto bad_offset;
-         case ARMSSE_SSE300:
-+        case ARMSSE_SSE310:
-             qemu_log_mask(LOG_UNIMP,
-                           "IoTKit SysCtl PDCM_PD_CPU0_SENSE unimplemented\n");
-             s->pdcm_pd_cpu0_sense = value;
-@@ -617,6 +683,7 @@ static void iotkit_sysctl_write(void *opaque, hwaddr offset,
-             s->pdcm_pd_sram0_sense = value;
-             break;
-         case ARMSSE_SSE300:
-+        case ARMSSE_SSE310:
-             goto bad_offset;
-         default:
-             g_assert_not_reached();
-@@ -632,6 +699,7 @@ static void iotkit_sysctl_write(void *opaque, hwaddr offset,
-             s->pdcm_pd_sram1_sense = value;
-             break;
-         case ARMSSE_SSE300:
-+        case ARMSSE_SSE310:
-             goto bad_offset;
-         default:
-             g_assert_not_reached();
-@@ -647,6 +715,7 @@ static void iotkit_sysctl_write(void *opaque, hwaddr offset,
-             s->pdcm_pd_sram2_sense = value;
-             break;
-         case ARMSSE_SSE300:
-+        case ARMSSE_SSE310:
-             qemu_log_mask(LOG_UNIMP,
-                           "IoTKit SysCtl PDCM_PD_VMR0_SENSE unimplemented\n");
-             s->pdcm_pd_vmr0_sense = value;
-@@ -665,6 +734,7 @@ static void iotkit_sysctl_write(void *opaque, hwaddr offset,
-             s->pdcm_pd_sram3_sense = value;
-             break;
-         case ARMSSE_SSE300:
-+        case ARMSSE_SSE310:
-             qemu_log_mask(LOG_UNIMP,
-                           "IoTKit SysCtl PDCM_PD_VMR1_SENSE unimplemented\n");
-             s->pdcm_pd_vmr1_sense = value;
-@@ -683,6 +753,7 @@ static void iotkit_sysctl_write(void *opaque, hwaddr offset,
-             s->nmi_enable = value;
-             break;
-         case ARMSSE_SSE300:
-+        case ARMSSE_SSE310:
-             /* In SSE300 this is reserved (for INITSVTOR3) */
-             goto bad_offset;
-         default:
-@@ -734,6 +805,7 @@ static void iotkit_sysctl_reset(DeviceState *dev)
-     s->clock_force = 0;
-     s->nmi_enable = 0;
-     s->ewctrl = 0;
-+    s->ppuintstat = 0;
-     s->pwrctrl = 0x3;
-     s->pdcm_pd_sys_sense = 0x7f;
-     s->pdcm_pd_sram0_sense = 0;
-@@ -769,7 +841,8 @@ static bool sse300_needed(void *opaque)
- {
-     IoTKitSysCtl *s = IOTKIT_SYSCTL(opaque);
- 
--    return s->sse_version == ARMSSE_SSE300;
-+    return s->sse_version == ARMSSE_SSE300 ||
-+           s->sse_version == ARMSSE_SSE310;
- }
- 
- static const VMStateDescription iotkit_sysctl_sse300_vmstate = {
-diff --git a/include/hw/misc/iotkit-sysctl.h b/include/hw/misc/iotkit-sysctl.h
-index ce72258a84..8e1cf0012d 100644
---- a/include/hw/misc/iotkit-sysctl.h
-+++ b/include/hw/misc/iotkit-sysctl.h
-@@ -53,6 +53,7 @@ struct IoTKitSysCtl {
-     uint32_t initsvtor1;
-     uint32_t nmi_enable;
-     uint32_t ewctrl;
-+    uint32_t ppuintstat;
-     uint32_t pwrctrl;
-     uint32_t pdcm_pd_sys_sense;
-     uint32_t pdcm_pd_sram0_sense;
+ /* We have an IRQ splitter and an OR gate input for each external PPC
+  * and the 2 internal PPCs
 -- 
 2.53.0
 

@@ -4,142 +4,106 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 574CEC55ABA
-	for <qemu-arm@archiver.kernel.org>; Tue,  4 Aug 2026 21:28:36 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B2A74C55838
+	for <qemu-arm@archiver.kernel.org>; Wed,  5 Aug 2026 01:10:19 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wrMgY-0003LD-32; Tue, 04 Aug 2026 17:28:30 -0400
+	id 1wrQ8p-0006C2-9B; Tue, 04 Aug 2026 21:09:55 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@oss.qualcomm.com>)
- id 1wrMgW-0003Kd-6f
- for qemu-arm@nongnu.org; Tue, 04 Aug 2026 17:28:28 -0400
-Received: from mx0a-0031df01.pphosted.com ([205.220.168.131])
+ (Exim 4.90_1) (envelope-from <gshan@redhat.com>) id 1wrQ8o-0006Bf-3p
+ for qemu-arm@nongnu.org; Tue, 04 Aug 2026 21:09:54 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@oss.qualcomm.com>)
- id 1wrMgU-0006HF-J0
- for qemu-arm@nongnu.org; Tue, 04 Aug 2026 17:28:27 -0400
-Received: from pps.filterd (m0279865.ppops.net [127.0.0.1])
- by mx0a-0031df01.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id
- 674JlLVk1192682
- for <qemu-arm@nongnu.org>; Tue, 4 Aug 2026 21:28:23 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qualcomm.com; h=
- cc:content-transfer-encoding:content-type:date:from:in-reply-to
- :message-id:mime-version:references:subject:to; s=qcppdkim1; bh=
- sfJu6m6zv4ZbcOV2nuQefd5KWgd+E5EC9owSk4liGBw=; b=EW/pNUPM5cNtUNhv
- nr2OQ40VWCwSfRPZmfUIpSqrOiCLf1ViAza2JDt1Uo6aIaP9ENbe3YBfQfNvQZn0
- PTtbc1mlrWld57iSOkYJcuqNdnJ23l7UJRJY+4pHCsdqTKAUBe04Kp+PVjrQB5zK
- LE29H8RcUGaSFD3n8RdBE0r5UxR7eBteoB4xXkC13L+nLh70dwcvSpPIf13AFeWn
- xRbsYC89JwRnPMd1fNBNbvIc60FojfkLG13+pzRjyeJzEOpWfWqM7+yjLC+XyPbJ
- PJTzSsyvalsIPnO33+tRMDBjmQ0gL3uDzrQ0qZ0bb+NJm8Ir4kgNc+hzvMXW9x6p
- mEhulQ==
-Received: from mail-qt1-f200.google.com (mail-qt1-f200.google.com
- [209.85.160.200])
- by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 4fuku317y4-1
- (version=TLSv1.3 cipher=TLS_AES_128_GCM_SHA256 bits=128 verify=NOT)
- for <qemu-arm@nongnu.org>; Tue, 04 Aug 2026 21:28:23 +0000 (GMT)
-Received: by mail-qt1-f200.google.com with SMTP id
- d75a77b69052e-51c1c7f135bso4096971cf.0
- for <qemu-arm@nongnu.org>; Tue, 04 Aug 2026 14:28:23 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=oss.qualcomm.com; s=google; t=1785878902; x=1786483702; darn=nongnu.org;
- h=content-transfer-encoding:content-type:in-reply-to:from:references
- :cc:to:content-language:subject:user-agent:mime-version:date
- :message-id:from:to:cc:subject:date:message-id:reply-to:content-type;
- bh=sfJu6m6zv4ZbcOV2nuQefd5KWgd+E5EC9owSk4liGBw=;
- b=DJiEfck049JR40zKbju2pUtsvcOw0HGIuoHY5KI3gVUcFEScvPXs3QDiuubr1r9sGZ
- LZ4M4ZwiJm9R9IL7JueOoLBrO3GWOu9cjoe18f6FBuT4PmtO0vatxnzf0xyTWF2y9Tdc
- 1jprODpqY8Tbq2AaMoqnZOLjJc0wL0zjkDUmM65xNPvrdXWvjQ0NzXn88KKBavUYDAOf
- LhqEwMkhq2mrz10yBmrTdd98B8RJnd+xNdxOlbL/EIACbqwRMNjUH9ojx7xBJI/RpHU1
- MqtE9Nijv2ptCL0GEF8bN9a4qq6P3HtfzWMUnUN6FL7SpK0iU0kyhmpEiyoICTvVs2dB
- y4Cw==
+ (Exim 4.90_1) (envelope-from <gshan@redhat.com>) id 1wrQ8m-0006EQ-8B
+ for qemu-arm@nongnu.org; Tue, 04 Aug 2026 21:09:53 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1785892189;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=O95sk965+33X4jt+p73c1wfEipoWMgHhGCzJ1w256i0=;
+ b=C017Wwe9aHbTvLQ/2TKp0I+hEPNPqXvDlQeSWycIQHRFNkIlL2b+5ZHhN44pshdMeZr3UV
+ FRto17b/+qSURrx3Kl+H9rw31kllyzzImqtVOlQcG7RjGk8mNkX+uj9Gcd6FYlYfGe4ErK
+ /jgd0VqilseSy8WaXv0cdqTB90c5AW4=
+Received: from mail-pj1-f72.google.com (mail-pj1-f72.google.com
+ [209.85.216.72]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-692-vz9U_XFrMU2DDfS7hAmRSA-1; Tue, 04 Aug 2026 21:09:48 -0400
+X-MC-Unique: vz9U_XFrMU2DDfS7hAmRSA-1
+X-Mimecast-MFC-AGG-ID: vz9U_XFrMU2DDfS7hAmRSA_1785892188
+Received: by mail-pj1-f72.google.com with SMTP id
+ 98e67ed59e1d1-38f283baf1fso403754a91.3
+ for <qemu-arm@nongnu.org>; Tue, 04 Aug 2026 18:09:48 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1785878902; x=1786483702;
- h=content-transfer-encoding:content-type:in-reply-to:from:references
- :cc:to:content-language:subject:user-agent:mime-version:date
- :message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+ d=1e100.net; s=20251104; t=1785892187; x=1786496987;
+ h=content-transfer-encoding:content-type:in-reply-to:from
+ :content-language:references:cc:to:subject:user-agent:mime-version
+ :date:message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
  :message-id:reply-to:content-type;
- bh=sfJu6m6zv4ZbcOV2nuQefd5KWgd+E5EC9owSk4liGBw=;
- b=Tlc1uQCDScnBPtbnL9nnNdVA7o/2LHxh2tPmZiXQElNyGfJ98AgFuMRJPBH7bViQsy
- BdKdi/ZrhrT7vUam9QnIaUllsjf1o/aqgkLKfNgCyxAuANVrfHqmwx0FMBdcnBJt950s
- 9YQM8ZfDKGzsZ/xv5164Jb/ZDXArMOtdXSArX+8ux5BspBUmw9cJ6guVIDx54/PxrbCR
- rkQT7SIwrcv3CX4pVgFuBx7C17qf0XSZ2BAtLP93UI4SeExPZB+OBkO9tNxrWd/aa1r+
- HwJYmW1OVXJX2rVEBnOKdpycAtyMV+y8h+iq12nw9qVf+lR8myuaytJVB11hSIBKyudP
- kWFA==
+ bh=O95sk965+33X4jt+p73c1wfEipoWMgHhGCzJ1w256i0=;
+ b=Q6LBPK6mExLttcXYXuXR+RxG60i4RJ8tB9u5UBZMChj/2QSyE7jKE83hu46BNUj53z
+ jQB0N4f+muJggw5ZfyBcypha3/pjkuQIjS+cmlLidJHut81ATRtelG/ZOvJhvoZZOr6P
+ LbeMcycErk3RZCtj3hlLuS3bvEPYTHAHhNqmFizbXbe6mu3Sl9O9jOoq16mL+wYSMn1b
+ WNoyLkOpIBjpER+a1Z7dn0W52+2OcAv+MrLZKND3j4u7EX5u5QKGN9JpwUWmht+bVEO5
+ HvjgvivkTGmSZ/fLbqU0otJKxEXEEZROFHMViE1UowM5H7ZsdOCJENM8NaatorPtC7RJ
+ 1H0A==
 X-Forwarded-Encrypted: i=1;
- AHgh+Rr3to8+f5UCsUE0D5rWTCWMbdXxvyYm8YWRk1aEM1Z0+Hs4x4LWm87ZY2wAbmkb2s4sI4TJ0YasPw==@nongnu.org
-X-Gm-Message-State: AOJu0Yxn0N1ueXGxIrF9C322GArAg1CLzEGK0zhledLDzzni0cK2+Ioo
- UczMk45tbqkwMy1M8Pgkw2V9uHZrD+9qHEjP8+Lmyj8HRSJ+wZWPbgvwlbAo6lPzTNCtip2AdRJ
- OdCs0nRlCRXQ9D7pqcYcJgoYIhzcBUzYC+m+22SnenZ3ThOVpluNL0yM=
-X-Gm-Gg: AR+sD11JfU3W50MzNTq+4iQUzRCl0NKnOkIO2autu4GYjUQTmSELUHQn7H+E4wQC8TN
- OmH1aSHoxqdf/xV56ONP9PXGEDSHiV/9V4K2UANxW+XQkFUM5wbkh1yP8/kn7cBrYcftnuuq6hG
- mmcXrYWDOf8q6qVnyV2C/XB9rLuALRhqa2CWr+DDzm9UVxUa8s7kQPJ4AJxj+D/3VK28v+rJqvR
- EDkSHPpoymXE5eok31pZJA3bN/aAoolg6hqkn5KY3XmXScLnBXBH1GMbOVR5T5JVMumsV1xlq0x
- mINaRhxgpA46dYNoVD8wPQycnT7dHptYCAKs5qmY8zvWXjhKCff4rFmnTbIYIPSIgThlYsSC+ih
- 05Ox/OK2iH1b+gBpkR0het3kwwbx3nvdxjIQ=
-X-Received: by 2002:a05:622a:a08:b0:51c:1d0c:605f with SMTP id
- d75a77b69052e-52ce6218254mr24864961cf.20.1785878902353; 
- Tue, 04 Aug 2026 14:28:22 -0700 (PDT)
-X-Received: by 2002:a05:622a:a08:b0:51c:1d0c:605f with SMTP id
- d75a77b69052e-52ce6218254mr24864561cf.20.1785878901900; 
- Tue, 04 Aug 2026 14:28:21 -0700 (PDT)
-Received: from [192.168.69.212] (pmd666.hd.free.fr. [88.187.86.199])
- by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-49949fcb345sm121394595e9.6.2026.08.04.14.28.20
+ AHgh+RopM5Zbvh6Oa0KC5Am2Ja8YPtSd5CfKulKj9uyW3hBGk/3x9+WHQAcLLcmO5TfPU0bqKnasGGDyLw==@nongnu.org
+X-Gm-Message-State: AOJu0YyqNFD/eh2paR294eko1RD/6ty8X9V+uVviclnmEMvpMIbiULNX
+ 2mcM2HHXefuGjp8cOL4Vne0RYlQu6aTXowk+39O24DS0UZw510YULILuyPhre1suxVlE5XAeYen
+ ttd7KVc06oBfhDVq9W+iWSRuxARur0T7fmgfQc6sWgvObCLEvywGZ4w==
+X-Gm-Gg: AR+sD139sl9m01ew3zKVXMbLVYAyjST9lA/C/dmFg9NTzYbtbu/OtgTaHFMXw1Or4z2
+ GcFPpWSTa6GYLxEFYVS2CbSUhEUNfgL4HKJiXbbF1bztMPhsR/XSg3jNyLzx0rudJFF/7IQxNjy
+ hNwMFqp/KBkCQWVKeXlKSMeD+J1pom7Wm/+7nCihzoQXmmFeKYm1rafJmxphPYJaoa5j/X5o3WQ
+ i4eh7mKpJVZUlQIj2trLQkKXP4DK9vsNsrHV9FePT+W+vay5++N6q7Rlji4eS0Iabwhf78Bc/m+
+ iMTQcU6lC8nZCRBj3QBnFR8d+SedkCIj0dlUpU6X1mbsxFiWJPIA3HB8OwwTK5ekPlNORokyiF5
+ QrFuCUSvmCAHyZxmerg6MkPiJMxVQXX8WY1eZlqH0Rpk=
+X-Received: by 2002:a17:90b:3f47:b0:381:5a08:6291 with SMTP id
+ 98e67ed59e1d1-3903c68fcdemr2831178a91.20.1785892187357; 
+ Tue, 04 Aug 2026 18:09:47 -0700 (PDT)
+X-Received: by 2002:a17:90b:3f47:b0:381:5a08:6291 with SMTP id
+ 98e67ed59e1d1-3903c68fcdemr2831118a91.20.1785892186781; 
+ Tue, 04 Aug 2026 18:09:46 -0700 (PDT)
+Received: from [192.168.68.51] (n175-34-8-244.mrk21.qld.optusnet.com.au.
+ [175.34.8.244]) by smtp.gmail.com with ESMTPSA id
+ 98e67ed59e1d1-38fee066b9fsm2517918a91.17.2026.08.04.18.09.38
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 04 Aug 2026 14:28:21 -0700 (PDT)
-Message-ID: <c41b7873-f6f7-45dc-b0e0-25ffa0d6613b@oss.qualcomm.com>
-Date: Tue, 4 Aug 2026 23:28:19 +0200
+ Tue, 04 Aug 2026 18:09:45 -0700 (PDT)
+Message-ID: <aa45597c-aed8-49a0-b9bd-3c637c154ee5@redhat.com>
+Date: Wed, 5 Aug 2026 11:09:35 +1000
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH] hw/i2c/bcm2835_i2c: Correct iomem size
+Subject: Re: [PATCH v4 3/3] hw/vfio/region: Create dmabuf for PCI BAR per
+ region
+To: Shameer Kolothum <skolothumtho@nvidia.com>, qemu-arm@nongnu.org,
+ qemu-devel@nongnu.org
+Cc: eric.auger@redhat.com, alex@shazbot.org, clg@redhat.com,
+ cohuck@redhat.com, mst@redhat.com, nicolinc@nvidia.com, nathanc@nvidia.com,
+ mochs@nvidia.com, jgg@nvidia.com, jonathan.cameron@huawei.com,
+ zhenzhong.duan@intel.com, vivek.kasireddy@intel.com, kjaju@nvidia.com,
+ meshetty@redhat.com
+References: <20260121114111.34045-1-skolothumtho@nvidia.com>
+ <20260121114111.34045-4-skolothumtho@nvidia.com>
+From: Gavin Shan <gshan@redhat.com>
+In-Reply-To: <20260121114111.34045-4-skolothumtho@nvidia.com>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-MFC-PROC-ID: Mvz5omZgXpzFbITTSKiwFmtYVeYpRiuql0pxMye4S6w_1785892188
+X-Mimecast-Originator: redhat.com
 Content-Language: en-US
-To: botszhuang <huang.botsz@gmail.com>, qemu-devel@nongnu.org
-Cc: peter.maydell@linaro.org, philmd@mailo.com, qemu-arm@nongnu.org,
- sef1548@gmail.com
-References: <20260804144611.31735-1-huang.botsz@gmail.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@oss.qualcomm.com>
-In-Reply-To: <20260804144611.31735-1-huang.botsz@gmail.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-X-Proofpoint-GUID: ZJVchOvfM5K2t_FGPgTPV6cpy4ErluOx
-X-Proofpoint-Spam-Info: AW1haW4tMjYwODA0MDE3MyBTYWx0ZWRfX37T0HR0qBV0I
- eilGsEOYTap3xnM9KUNY9DhZU5kZan0Y8EV57iZHeq9LaUS4PDdGZyBsK+dGZsSuvvCo+RvZFRS
- 2s1+uBSW6Ff36tqUSxyfUC3XyLUAit4=
-X-Proofpoint-ORIG-GUID: ZJVchOvfM5K2t_FGPgTPV6cpy4ErluOx
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwODA0MDE3MyBTYWx0ZWRfX/Fe4RKWbhii7
- E8nJWrqlYyAsKN6TE0/ntGsZwqwkYWGcsjn5t9Q7LesS8fRvFpY7Td3JS4B2+sTWJrcbsMQyDUa
- e/rWOzzXLdbtPyFC44pMJuLnO5H+d7CXSHpFASC6sohk7WUovRNJOOO3U+x5fh+RKfjl5BTsDI6
- oypHufm6dafTlievoP/QvgRG1KoJqYshdzvVjVLO1YYBe+OHutXl8fr/ImrUWt4bRC48PY0TOQO
- op0K7Htvak+jA3hG7Hl4lWmZFq7i4tbfKSpM8wmPIg4VZnjxZczWw/Usd+AzRTrLueoAMvl8FCd
- VZldkBITxqLrJrJFrLK7OHbFAHEJFlNFaoOdWYlnnVNGonSNOyZLg1736sPppg9CbSuswYseltX
- hVVjGC6xp0TZGgUvWG4MwJkSRVYQ7h5YQ5Ko/J7GGVSy7d71hFxJDlB6V8FBpDYWObylGLoHi6e
- mwcPERM8KpUMf2572yQ==
-X-Authority-Analysis: v=2.4 cv=X/hi7mTe c=1 sm=1 tr=0 ts=6a725977 cx=c_pps
- a=JbAStetqSzwMeJznSMzCyw==:117 a=4s3hRJSeHn4rkQlkrse1kQ==:17
- a=IkcTkHD0fZMA:10 a=Sv0fKeRqtYgA:10 a=M51BFTxLslgA:10 a=s4-Qcg_JpJYA:10
- a=VkNPw1HP01LnGYTKEx00:22 a=u7WPNUs3qKkmUXheDGA7:22 a=Um2Pa8k9VHT-vaBCBUpS:22
- a=EUspDBNiAAAA:8 a=pGLkceISAAAA:8 a=X8ZPm0S_kNcVzREjRFEA:9 a=3ZKOabzyN94A:10
- a=QEXdDO2ut3YA:10 a=uxP6HrT_eTzRwkO_Te1X:22
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.293,Aquarius:18.0.1176,Hydra:6.1.134,FMLib:17.12.100.49
- definitions=2026-08-04_05,2026-08-04_02,2025-10-01_01
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
- clxscore=1015 bulkscore=0 impostorscore=0 phishscore=0 adultscore=0
- malwarescore=0 suspectscore=0 priorityscore=1501 lowpriorityscore=0
- spamscore=0 classifier=typeunknown authscore=0 authtc= authcc= route=outbound
- adjust=0 reason=mlx scancount=1 engine=8.22.0-2606150000
- definitions=main-2608040173
-Received-SPF: pass client-ip=205.220.168.131;
- envelope-from=philmd@oss.qualcomm.com; helo=mx0a-0031df01.pphosted.com
-X-Spam_score_int: -27
-X-Spam_score: -2.8
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=gshan@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -28
+X-Spam_score: -2.9
 X-Spam_bar: --
-X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.9 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.795,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -155,37 +119,168 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On 4/8/26 16:46, botszhuang wrote:
-> The last valid register is the Clock Stretch Timeout (CLKT) at
-> offset 0x1c. Since it is a 32-bit register, the total memory
-> region size should be 0x1c + 4 = 0x20.
+Hi Nicolin and Shameer,
+
+On 1/21/26 9:41 PM, Shameer Kolothum wrote:
+> From: Nicolin Chen <nicolinc@nvidia.com>
 > 
-> Update the size parameter in memory_region_init_io() from 0x24
-> to 0x20 to accurately reflect the hardware specification.
+> Linux now provides a VFIO dmabuf exporter to expose PCI BAR memory for P2P
+> use cases. Create a dmabuf for each mapped BAR region after the mmap is set
+> up, and store the returned fd in the region’s RAMBlock. This allows QEMU to
+> pass the fd to dma_map_file(), enabling iommufd to import the dmabuf and map
+> the BAR correctly in the host IOMMU page table.
 > 
-
-Suggested-by: Philippe Mathieu-Daudé <philmd@oss.qualcomm.com>
-
-> Signed-off-by: botszhuang <huang.botsz@gmail.com>
-
-Reviewed-by: Philippe Mathieu-Daudé <philmd@oss.qualcomm.com>
-
+> If the kernel lacks support or dmabuf setup fails, QEMU skips the setup
+> and continues with normal mmap handling.
+> 
+> Tested-by: Nicolin Chen <nicolinc@nvidia.com>
+> Reviewed-by: Zhenzhong Duan <zhenzhong.duan@intel.com>
+> Reviewed-by: Cédric Le Goater <clg@redhat.com>
+> Signed-off-by: Nicolin Chen <nicolinc@nvidia.com>
+> Signed-off-by: Shameer Kolothum <skolothumtho@nvidia.com>
 > ---
->   hw/i2c/bcm2835_i2c.c | 2 +-
->   1 file changed, 1 insertion(+), 1 deletion(-)
+>   hw/vfio/region.c     | 65 +++++++++++++++++++++++++++++++++++++++++++-
+>   hw/vfio/trace-events |  1 +
+>   2 files changed, 65 insertions(+), 1 deletion(-)
 > 
-> diff --git a/hw/i2c/bcm2835_i2c.c b/hw/i2c/bcm2835_i2c.c
-> index 34de1f36e5..5f6093087d 100644
-> --- a/hw/i2c/bcm2835_i2c.c
-> +++ b/hw/i2c/bcm2835_i2c.c
-> @@ -222,7 +222,7 @@ static void bcm2835_i2c_realize(DeviceState *dev, Error **errp)
->       s->bus = i2c_init_bus(dev, NULL);
+> diff --git a/hw/vfio/region.c b/hw/vfio/region.c
+> index ca75ab1be4..ab39d77574 100644
+> --- a/hw/vfio/region.c
+> +++ b/hw/vfio/region.c
+> @@ -29,6 +29,7 @@
+>   #include "qemu/error-report.h"
+>   #include "qemu/units.h"
+>   #include "monitor/monitor.h"
+> +#include "system/ramblock.h"
+>   #include "vfio-helpers.h"
 >   
->       memory_region_init_io(&s->iomem, OBJECT(dev), &bcm2835_i2c_ops, s,
-> -                          TYPE_BCM2835_I2C, 0x24);
-> +                          TYPE_BCM2835_I2C, 0x20);
->       sysbus_init_mmio(SYS_BUS_DEVICE(dev), &s->iomem);
->       sysbus_init_irq(SYS_BUS_DEVICE(dev), &s->irq);
+>   /*
+> @@ -238,13 +239,71 @@ static void vfio_subregion_unmap(VFIORegion *region, int index)
+>       region->mmaps[index].mmap = NULL;
 >   }
+>   
+> +static bool vfio_region_create_dma_buf(VFIORegion *region, Error **errp)
+> +{
+> +    g_autofree struct vfio_device_feature *feature = NULL;
+> +    VFIODevice *vbasedev = region->vbasedev;
+> +    struct vfio_device_feature_dma_buf *dma_buf;
+> +    size_t total_size;
+> +    int i, ret;
+> +
+> +    total_size = sizeof(*feature) + sizeof(*dma_buf) +
+> +                 sizeof(struct vfio_region_dma_range) * region->nr_mmaps;
+> +    feature = g_malloc0(total_size);
+> +    *feature = (struct vfio_device_feature) {
+> +        .argsz = total_size,
+> +        .flags = VFIO_DEVICE_FEATURE_GET | VFIO_DEVICE_FEATURE_DMA_BUF,
+> +    };
+> +
+> +    dma_buf = (void *)feature->data;
+> +    *dma_buf = (struct vfio_device_feature_dma_buf) {
+> +        .region_index = region->nr,
+> +        .open_flags = O_RDWR,
+> +        .nr_ranges = region->nr_mmaps,
+> +    };
+> +
+> +    for (i = 0; i < region->nr_mmaps; i++) {
+> +        dma_buf->dma_ranges[i].offset = region->mmaps[i].offset;
+> +        dma_buf->dma_ranges[i].length = region->mmaps[i].size;
+> +    }
+> +
+
+Shall we check if @offset and @size is aligned to PAGE_SIZE? If they're not,
+I guess we need to skip populating DMA buffer instead of preventing the
+device from being passed through to the guest.
+
+Meghana <meshetty@redhat.com> runs into issue when passing through an NVMe
+card. The only memory BAR on the NVMe card is 16K, which is not aligned to
+64KB (host page size).
+
+   -device vfio-pci,id=nvme,host=0004:01:00.0,addr=0x2.0x1,bus=pcie.0
+
+   host$ sh vfio.sh
+   QEMU 10.1.0 monitor - type 'help' for more information
+   (qemu) qemu-kvm: -device vfio-pci,id=nvme,host=0004:01:00.0,addr=0x2.0x1,bus=pcie.0: \
+                    0004:01:00.0 BAR 0: failed to create dma-buf: PCI BAR IOMMU  mappings may fail: Invalid argument
+
+   host$ lspci -vvvs 0004:01:00.0 | grep Region.*Memory
+   Region 0: Memory at 620040010000 (64-bit, non-prefetchable) [size=16K]
+
+   host kernel
+   ===========
+   vfio_device_fops_unl_ioctl
+     vfio_ioctl_device_feature
+       vfio_pci_core_ioctl_feature
+         vfio_pci_core_feature_dma_buf
+           validate_dmabuf_input          // Return -EINVAL for !PAGE_ALIGNED(len)
+
+
+> +    ret = vfio_device_get_feature(vbasedev, feature);
+> +    if (ret < 0) {
+> +        if (ret == -ENOTTY) {
+> +            warn_report_once("VFIO dma-buf not supported in kernel: "
+> +                             "PCI BAR IOMMU mappings may fail");
+> +            return true;
+> +        }
+> +        /* P2P DMA or exposing device memory use cases are not supported. */
+> +        error_setg_errno(errp, -ret, "%s: failed to create dma-buf: "
+> +                         "PCI BAR IOMMU mappings may fail",
+> +                         memory_region_name(region->mem));
+> +        return false;
+> +    }
+> +
+> +    /* Assign the dmabuf fd to associated RAMBlock */
+> +    for (i = 0; i < region->nr_mmaps; i++) {
+> +        MemoryRegion *mr = &region->mmaps[i].mem;
+> +        RAMBlock *ram_block = mr->ram_block;
+> +
+> +        ram_block->fd = ret;
+> +        ram_block->fd_offset = region->mmaps[i].offset;
+> +        trace_vfio_region_dmabuf(region->vbasedev->name, ret, region->nr,
+> +                                 memory_region_name(region->mem),
+> +                                 region->mmaps[i].offset,
+> +                                 region->mmaps[i].size);
+> +    }
+> +    return true;
+> +}
+> +
+>   int vfio_region_mmap(VFIORegion *region)
+>   {
+>       int i, ret, prot = 0;
+> +    Error *local_err = NULL;
+>       char *name;
+>       int fd;
+>   
+> -    if (!region->mem) {
+> +    if (!region->mem || !region->nr_mmaps) {
+>           return 0;
+>       }
+>   
+> @@ -305,6 +364,10 @@ int vfio_region_mmap(VFIORegion *region)
+>                                  region->mmaps[i].size - 1);
+>       }
+>   
+> +    if (!vfio_region_create_dma_buf(region, &local_err)) {
+> +        error_report_err(local_err);
+> +    }
+> +
+>       return 0;
+>   
+>   no_mmap:
+> diff --git a/hw/vfio/trace-events b/hw/vfio/trace-events
+> index 180e3d526b..466695507b 100644
+> --- a/hw/vfio/trace-events
+> +++ b/hw/vfio/trace-events
+> @@ -118,6 +118,7 @@ vfio_device_put(int fd) "close vdev->fd=%d"
+>   vfio_region_write(const char *name, int index, uint64_t addr, uint64_t data, unsigned size) " (%s:region%d+0x%"PRIx64", 0x%"PRIx64 ", %d)"
+>   vfio_region_read(char *name, int index, uint64_t addr, unsigned size, uint64_t data) " (%s:region%d+0x%"PRIx64", %d) = 0x%"PRIx64
+>   vfio_region_setup(const char *dev, int index, const char *name, unsigned long flags, unsigned long offset, unsigned long size) "Device %s, region %d \"%s\", flags: 0x%lx, offset: 0x%lx, size: 0x%lx"
+> +vfio_region_dmabuf(const char *dev, int fd, int index,  const char *name, unsigned long offset, unsigned long size) "Device %s, dmabuf fd %d region %d \"%s\", offset: 0x%lx, size: 0x%lx"
+>   vfio_region_mmap_fault(const char *name, int index, unsigned long offset, unsigned long size, int fault) "Region %s mmaps[%d], [0x%lx - 0x%lx], fault: %d"
+>   vfio_region_mmap(const char *name, unsigned long offset, unsigned long end) "Region %s [0x%lx - 0x%lx]"
+>   vfio_region_exit(const char *name, int index) "Device %s, region %d"
+
+Thanks,
+Gavin
 
 

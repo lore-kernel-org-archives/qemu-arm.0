@@ -4,88 +4,125 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 313B7C56205
-	for <qemu-arm@archiver.kernel.org>; Thu,  6 Aug 2026 16:41:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B6C7DC56208
+	for <qemu-arm@archiver.kernel.org>; Thu,  6 Aug 2026 17:01:20 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1ws18K-0006nU-HR; Thu, 06 Aug 2026 12:39:52 -0400
+	id 1ws1St-0004pI-7o; Thu, 06 Aug 2026 13:01:07 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1ws18G-0006ln-Hg
- for qemu-arm@nongnu.org; Thu, 06 Aug 2026 12:39:48 -0400
-Received: from mail-pl1-x62d.google.com ([2607:f8b0:4864:20::62d])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1ws18E-0000J9-L9
- for qemu-arm@nongnu.org; Thu, 06 Aug 2026 12:39:47 -0400
-Received: by mail-pl1-x62d.google.com with SMTP id
- d9443c01a7336-2cc7e86e7aeso26484335ad.2
- for <qemu-arm@nongnu.org>; Thu, 06 Aug 2026 09:39:46 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1786034385; x=1786639185; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:from:to:cc:subject:date
- :message-id:reply-to:content-type;
- bh=9souE4OOFgzb+Le50Q6/XxsF/ebUlnPUASrQPmUYzGw=;
- b=sEnv0sTeC+TZLuDyCa2wyeiKwYCsC4i5LqECfSgR4riWFJfHfBnRC+Se3B+milM4Dw
- pv0oDVGIbm3Plk1MVaSOMsqCq+YoV2G1c2dEDSo/kPVvAsf7iG56MK/vg1thbfITdgJw
- JYHglUEBd6pxiZF4yCUUkuAOnIqp9tfseglNVRu036ygcdEG5wgEJCxj+IOUEtbhNdjN
- a0YszB3gFGneF7wtQYuJoBXMVVHZvzDqfIUIVx3aj1frrQZF89/0q1MRr2gMbiMQJJKr
- yJ1xIepQZ7ouSb+nCwn58tOuhQ0vorNcw798co+Wkc3x95CZnlg4tslRDwn8f0XLFAWG
- MrtQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1786034385; x=1786639185;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
- :to:cc:subject:date:message-id:reply-to:content-type;
- bh=9souE4OOFgzb+Le50Q6/XxsF/ebUlnPUASrQPmUYzGw=;
- b=Rkz//dX87oG8X1OhIRoUUH1aaa3cAQ3pezFiHaUaF/efZttaQYqd1O3GFogy3N1gJj
- lxZsf/v6cPxqASlmfWx+x03QBEjeGZikgcU1aXRhIYwXncAfFzp8l9zBxtKknAZ1LOgy
- M+jPGNfOSkGD2vxOR7JyZHuTra27LpkTHb59/Nua+k1C8p5q5V0S1lGJq3HQisu8zwRJ
- yG5A5s95z5y/rXM1GsOeuVXCcQ24P7GkLqx7v/cj5/oNKJSG4Ys84psVzu+JQNoiE52a
- sSNjfApCPyETs7Xh416Qr/APXaFB65rFK7qHZ/k8WqUqJI3pO6/gi9AD7L0cwFupc8aJ
- +beQ==
-X-Gm-Message-State: AOJu0YyG72JxGTXg7qCXJMNYvgRl/OFY0F6S49Ewzbn5S0qZKEfFvLio
- j9rzopQiPqNxJtcRyS2Mng948zGxyG2KsP15b8DBzdgHJorkhVQn/Y6CPCt493jpC+tgK/YSwT3
- RatmH
-X-Gm-Gg: AR+sD12MkndMt5O96eE9WYmydWcTn0OZB5bgnGZBBg0mXqwxUgC1vv4HN6dB8xgV3Xk
- R5OW9HWqgHYpPCyco4VBQG/YqJXAaoDqdmltFUq8KNV6OR5H9YQOt71wpdA2GGU0TEabR27fip2
- axAVE2Dy3oR1rDz86z8yAnUymALUI228oFelPK1fn6KoB2XQUNlpmnLBBrMuYntekJhzuspGTah
- vGBSW49CatwAdnL7glhUm92NNtZcIBL62wSAUV8e/elmE3xSugFoHlLpmPVr+1jCKvg0JbtiO4X
- BE7zYaGeyGucoCIKvu27kCRsPpE7ECUl7WSlKfmF0vrTPT/4IzsktVpO0FJXNW6ox5LnpLazxGJ
- da/riViHTXL4GtL9MyKM3k2KXTJLthhS/7UgrpAzBDdnyq8wGLvIWvKQ/euHKNxoIkANDTkgb0W
- HfQw7i3kQktVokgz9cpShxKbB3ZjQYcfD7LfCvs7Y+rvvrwWUeKhUfQqPMetvkXqn/VlmBn9hD7
- 8Xl4mkCojAqkRCfd5bD
-X-Received: by 2002:a17:903:1a83:b0:2cc:307c:51fc with SMTP id
- d9443c01a7336-2d106e81d72mr34324545ad.21.1786034385131; 
- Thu, 06 Aug 2026 09:39:45 -0700 (PDT)
-Received: from stoup.. (174-21-93-59.tukw.qwest.net. [174.21.93.59])
- by smtp.gmail.com with ESMTPSA id
- d9443c01a7336-2d0aa4ec8c7sm34280735ad.80.2026.08.06.09.39.44
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 06 Aug 2026 09:39:44 -0700 (PDT)
-From: Richard Henderson <richard.henderson@linaro.org>
-To: qemu-devel@nongnu.org
-Cc: qemu-arm@nongnu.org
-Subject: [PATCH 5/7] target/arm: Introduce cpu types max-v8 and max-v9
-Date: Thu,  6 Aug 2026 09:39:37 -0700
-Message-ID: <20260806163939.328201-6-richard.henderson@linaro.org>
-X-Mailer: git-send-email 2.43.0
-In-Reply-To: <20260806163939.328201-1-richard.henderson@linaro.org>
-References: <20260806163939.328201-1-richard.henderson@linaro.org>
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1ws1Sl-0004oY-LX
+ for qemu-arm@nongnu.org; Thu, 06 Aug 2026 13:01:01 -0400
+Received: from smtpout10.mo540.mail-out.ovh.net ([51.210.91.59])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1ws1Sh-0005Ie-Ba
+ for qemu-arm@nongnu.org; Thu, 06 Aug 2026 13:00:59 -0400
+Received: from director3.derp.mail-out.ovh.net
+ (director3.derp.mail-out.ovh.net [152.228.215.222])
+ by mo540.mail-out.ovh.net (Postfix) with ESMTPS id 4hGD7Q40RRz45Bw;
+ Thu,  6 Aug 2026 17:00:49 +0000 (UTC)
+Received: from director3.derp.mail-out.ovh.net
+ (director3.derp.mail-out.ovh.net. [127.0.0.1])
+ by director3.derp.mail-out.ovh.net (inspect_sender_mail_agent) with SMTP
+ for <jamin_lin@aspeedtech.com>; Thu,  6 Aug 2026 17:00:49 +0000 (UTC)
+Received: from mta7.priv.ovhmail-u2.ea.mail.ovh.net (unknown [10.110.37.24])
+ by director3.derp.mail-out.ovh.net (Postfix) with ESMTPS id 4hGD7P5p8Xz5vbH;
+ Thu,  6 Aug 2026 17:00:49 +0000 (UTC)
+Received: from kaod.org (unknown [10.1.6.6])
+ (Authenticated sender: clg@kaod.org)
+ by mta7.priv.ovhmail-u2.ea.mail.ovh.net (Postfix) with ESMTPSA id CBAE3203EAF; 
+ Thu,  6 Aug 2026 17:00:47 +0000 (UTC)
+Authentication-Results: garm.ovh; auth=pass
+ (GARM-113S007e43ce946-112b-410d-8ac4-e52e5e0ca010,
+ 3674F41004D9368A494C832AF9EEF1C5F00DB56D) smtp.auth=clg@kaod.org
+X-OVh-ClientIp: 82.64.250.170
+Message-ID: <ff288e05-09c3-44f3-b0c3-5d86629efb32@kaod.org>
+Date: Thu, 6 Aug 2026 19:00:47 +0200
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::62d;
- envelope-from=richard.henderson@linaro.org; helo=mail-pl1-x62d.google.com
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v2 00/17] Support the ASPEED HACE crypto command
+To: Jamin Lin <jamin_lin@aspeedtech.com>,
+ =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ Steven Lee <steven_lee@aspeedtech.com>, Troy Lee <leetroy@gmail.com>,
+ Kane Chen <kane_chen@aspeedtech.com>,
+ Andrew Jeffery <andrew@codeconstruct.com.au>, Joel Stanley <joel@jms.id.au>,
+ Eric Blake <eblake@redhat.com>, Markus Armbruster <armbru@redhat.com>,
+ Fabiano Rosas <farosas@suse.de>, Laurent Vivier <lvivier@redhat.com>,
+ Paolo Bonzini <pbonzini@redhat.com>,
+ "open list:All patches CC here" <qemu-devel@nongnu.org>,
+ "open list:ASPEED BMCs" <qemu-arm@nongnu.org>
+Cc: Troy Lee <troy_lee@aspeedtech.com>
+References: <20260715033311.1648424-1-jamin_lin@aspeedtech.com>
+From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
+Content-Language: en-US, fr
+Autocrypt: addr=clg@kaod.org; keydata=
+ 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
+In-Reply-To: <20260715033311.1648424-1-jamin_lin@aspeedtech.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+x-ovh-tracer-id: 13673209947885382701
+X-VR-SPAMSTATE: OK
+X-VR-SPAMSCORE: -100
+X-VR-SPAMCAUSE: dmFkZTFN43njU/E2WdUAmziO0DpjcrRy491JevVqbC9h7U0jSNmkf456v9PAXdfnXZeIwqx1XqW1JfP4wt4ddBdwjElObkOJyukBn2K5Qu800lWQKMyJ7jPQep1ItGFlnVQw/4wksQLGQh2DVJ6KQKXBqu5eiIpwytQZBOUcinYHD2MQqEOR++9pZiOEjrVdezhYWzCQ4PzVl7LqDboPbK7liMcv3cAhg/z91B0UUo7AXf2ZV5B22BjrzL2GR7v/qK/daohiixxDH+ja/KQYOug2HtaM9bOaaDnnBCswxJCBuh9h1+Lt/wq50H2g8e51snxhGHMxHFWc7k1MxvJdn4toC7KQU8H/0h8E1W2UQy/zHEQYc2jNwzkBmF65nCX2dAtzDRNSTVCpXGuF71zFaAxtTpRffl5Q9Cwsu0NXXay5RiCE2J0CZdsMKNBSQt3fjd9oyR13C33h1fmX27koD5P61lGEX3zbfgaZHl4EUIWcPP6jOSGNs1iyKbnNILu2vHFOiAGBx8A+ShpMbGBIhR7kaBL4RLH40MpjQewkiEDwQMaxCkMcUFiEKycPaQxLkAxQtAwZgTyUOHAuP607ZVKAb4B6DAfwC+Pfk1kBnNxr2nSnhpVZ2J4qI13lpBLpAONXnv7HKQhloWxnDdQdNUqxuYVXIh+15mRJePzdqAC6Yy2BQw
+DKIM-Signature: a=rsa-sha256; bh=i5D+IJ/jltHN7fIwKU1lH9cGG2tFnRGPTs82vup/DHo=; 
+ c=relaxed/relaxed; d=kaod.org; h=From; s=ovhmo393970-selector1;
+ t=1786035651; v=1;
+ b=MIleGhCJUbzKgPep7rgABP+6VG+RmImxitTDPip46yHFfvyAYN+Vr2YV3hBt63tO6COhxkdH
+ WAUfHQpxqOcWNE+rx5/jve+gcqCZNHTtZb5iTv71mDSSBX6cn9djfUh/C/Z/YWdItDMTW8O7RfE
+ boF6c0S81x7XNdIDhydzbS7CvwfnZDSwQml+YDU8wL0S1oB9erFa3ent4yeTuS+N8Gk5WvsAJUG
+ 0UOKcpzaBpW9NFeW9jZHolri6zVDNTBYPmOOV0sBNQ4Dd0BlXyssWuPYUO9LyWO4D7LBPDfwkRS
+ BNDkmaxhxjfbYuFg41C+wvww/OQztUp0if+WoneO4C77Q==
+Received-SPF: pass client-ip=51.210.91.59; envelope-from=clg@kaod.org;
+ helo=smtpout10.mo540.mail-out.ovh.net
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -101,57 +138,19 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Introduce the names and allow them with the virt
-and sbsa-ref machine types.  So far, the cpu types
-both exactly match "max".
+Hello,
 
-Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
----
- hw/arm/sbsa-ref.c      | 2 ++
- hw/arm/virt.c          | 2 ++
- target/arm/tcg/cpu64.c | 2 ++
- 3 files changed, 6 insertions(+)
+On 7/15/26 05:33, Jamin Lin wrote:
+> The ASPEED HACE model only emulated the hash command; the crypto (cipher)
+> command was stubbed out. On the AST2700 the kernel runs the crypto driver
+> self-tests at boot, so without crypto emulation booting floods the log
+> with failures:
+Some help from the Aspeed reviewers would be appreciated for this series.
+The device model compiles and all qtest cases pass, but I haven't verified
+the register behavior against the datasheet.
 
-diff --git a/hw/arm/sbsa-ref.c b/hw/arm/sbsa-ref.c
-index 484b90053e..56d08f605c 100644
---- a/hw/arm/sbsa-ref.c
-+++ b/hw/arm/sbsa-ref.c
-@@ -913,6 +913,8 @@ static void sbsa_ref_class_init(ObjectClass *oc, const void *data)
-         ARM_CPU_TYPE_NAME("neoverse-v1"),
-         ARM_CPU_TYPE_NAME("neoverse-n2"),
-         ARM_CPU_TYPE_NAME("max"),
-+        ARM_CPU_TYPE_NAME("max-v8"),
-+        ARM_CPU_TYPE_NAME("max-v9"),
-         NULL,
-     };
- 
-diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-index 219597cabd..34cab9017c 100644
---- a/hw/arm/virt.c
-+++ b/hw/arm/virt.c
-@@ -4143,6 +4143,8 @@ static GPtrArray *virt_get_valid_cpu_types(const MachineState *ms)
-         g_ptr_array_add(vct, g_strdup(ARM_CPU_TYPE_NAME("neoverse-n1")));
-         g_ptr_array_add(vct, g_strdup(ARM_CPU_TYPE_NAME("neoverse-v1")));
-         g_ptr_array_add(vct, g_strdup(ARM_CPU_TYPE_NAME("neoverse-n2")));
-+        g_ptr_array_add(vct, g_strdup(ARM_CPU_TYPE_NAME("max-v8")));
-+        g_ptr_array_add(vct, g_strdup(ARM_CPU_TYPE_NAME("max-v9")));
-     }
-     if (target_aarch64()) {
-         g_ptr_array_add(vct, g_strdup(ARM_CPU_TYPE_NAME("cortex-a53")));
-diff --git a/target/arm/tcg/cpu64.c b/target/arm/tcg/cpu64.c
-index 2c0b7c1be4..556fa9fa3c 100644
---- a/target/arm/tcg/cpu64.c
-+++ b/target/arm/tcg/cpu64.c
-@@ -1462,6 +1462,8 @@ static const ARMCPUInfo aarch64_cpus[] = {
-     { .name = "neoverse-n1",        .initfn = aarch64_neoverse_n1_initfn },
-     { .name = "neoverse-v1",        .initfn = aarch64_neoverse_v1_initfn },
-     { .name = "neoverse-n2",        .initfn = aarch64_neoverse_n2_initfn },
-+    { .name = "max-v8",             .initfn = aarch64_max_tcg_initfn },
-+    { .name = "max-v9",             .initfn = aarch64_max_tcg_initfn },
- };
- 
- static void aarch64_cpu_register_types(void)
--- 
-2.43.0
+Thanks,
+
+C.
 
 

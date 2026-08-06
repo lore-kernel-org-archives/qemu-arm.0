@@ -4,89 +4,140 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B144EC5AC7C
-	for <qemu-arm@archiver.kernel.org>; Thu,  6 Aug 2026 17:32:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 19CF3C56205
+	for <qemu-arm@archiver.kernel.org>; Thu,  6 Aug 2026 17:52:18 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1ws1wM-0004oa-Fw; Thu, 06 Aug 2026 13:31:34 -0400
+	id 1ws2Fq-0002Nt-7f; Thu, 06 Aug 2026 13:51:42 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1ws1wL-0004nX-Id
- for qemu-arm@nongnu.org; Thu, 06 Aug 2026 13:31:33 -0400
-Received: from mail-pj1-x102f.google.com ([2607:f8b0:4864:20::102f])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1ws1wI-0001gO-EW
- for qemu-arm@nongnu.org; Thu, 06 Aug 2026 13:31:33 -0400
-Received: by mail-pj1-x102f.google.com with SMTP id
- 98e67ed59e1d1-38a0c7e841fso3070489a91.2
- for <qemu-arm@nongnu.org>; Thu, 06 Aug 2026 10:31:30 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <philmd@oss.qualcomm.com>)
+ id 1ws2Fn-0002N8-2F
+ for qemu-arm@nongnu.org; Thu, 06 Aug 2026 13:51:39 -0400
+Received: from mx0b-0031df01.pphosted.com ([205.220.180.131])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <philmd@oss.qualcomm.com>)
+ id 1ws2Fl-0004ZE-IH
+ for qemu-arm@nongnu.org; Thu, 06 Aug 2026 13:51:38 -0400
+Received: from pps.filterd (m0279869.ppops.net [127.0.0.1])
+ by mx0a-0031df01.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id
+ 676HPKBp2933081
+ for <qemu-arm@nongnu.org>; Thu, 6 Aug 2026 17:51:35 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qualcomm.com; h=
+ cc:content-transfer-encoding:content-type:date:from:in-reply-to
+ :message-id:mime-version:references:subject:to; s=qcppdkim1; bh=
+ 2QkwIxdfvmMTri1LtcuMsJFInP2XwNasOjmklKWAhMo=; b=LVXm3KuaQ+iF46EF
+ 2LSnSXseKbeqC/qNUlGtQGDtZEqWBraDaVRWLiMMbu9rOE+RLXKGS68h1ieLi5dz
+ MOo+O3sJYML8AzHPWH49BlIA0FHyX0vHOgx/UHXboc+1IZAzICaBEEWc3HOkFnlI
+ oZG5ZPdcEbfyrZlvqySCugkohMwYVDLimeDk4QGVr6iN4IDW2F5gDioGuRHENMaH
+ lh6jzZcGPoiJpqH/JfKxdS2xXygAf6NuexadnXEpHlXVn4MiIRuPC8RNIwr5UUfH
+ HItvjrAbshgXFVvLIB1bbPReLGHMa/NpEZxGeblXRwzkvCzpMBZ0YfF22HMwcFgl
+ pwM8MQ==
+Received: from mail-qt1-f199.google.com (mail-qt1-f199.google.com
+ [209.85.160.199])
+ by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 4fvxner42n-1
+ (version=TLSv1.3 cipher=TLS_AES_128_GCM_SHA256 bits=128 verify=NOT)
+ for <qemu-arm@nongnu.org>; Thu, 06 Aug 2026 17:51:35 +0000 (GMT)
+Received: by mail-qt1-f199.google.com with SMTP id
+ d75a77b69052e-51c1c7f135bso36545501cf.0
+ for <qemu-arm@nongnu.org>; Thu, 06 Aug 2026 10:51:35 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1786037489; x=1786642289; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:from:to:cc:subject:date
- :message-id:reply-to:content-type;
- bh=T3c2UdkmGaD6yBf6bG1TdPxdxNZUO4yArA0BVPODz2U=;
- b=Kd30hxZbcrCzP5UzaE6tyd3VusW5AJ0ErS1GMJFXa9jFpEYMj8ooyv3YBa3FPMkdCQ
- 9WsBpq2cZs9GxfpzB2v8vE1Ofu2QOjiBrHbo7qDTPPLdfe1Riks+YQAEAosIhGl+HlZi
- H1PuQ4uQeDwLNY7yMImT3FixpJRatsG43RIKzuDjHbCQUi1xEHpGPDmSzOY4Q0iiASDJ
- GuOx1XDfG2iNbhRfDcSOjzgN2ohE+e9/D6YGfcQ9XJIiUa9xwuwGAa9oObRUkPnmkOHD
- xi8ovwMu6tsau9jhDNRyxnIZejPtAwJuaABPwBrlp4qBQVVfTXP2HkGdfTVaIqDb1Qnv
- 43/w==
+ d=oss.qualcomm.com; s=google; t=1786038695; x=1786643495; darn=nongnu.org;
+ h=content-transfer-encoding:content-type:in-reply-to:from:references
+ :cc:to:content-language:subject:user-agent:mime-version:date
+ :message-id:from:to:cc:subject:date:message-id:reply-to:content-type;
+ bh=2QkwIxdfvmMTri1LtcuMsJFInP2XwNasOjmklKWAhMo=;
+ b=F69WNi4uuUlPKQ3ztsD7/nbO5GZd9mRFc0Cnfp6WUaE0HIdVZ666Eyu5SpVgNXNoTL
+ AR5Hr3Y16EuGcrGqh8EBMMdy+dN+kFBKQr/RnU7jSjk0Kc0XxBxEXe8EFo/wk52onDzO
+ xz8tpAbvJUUocIPMkatEIggW35lZ3GNnDPMqN+cWxvqatRlsUFsB53D4fv/Bq0g0otsM
+ hLUFzuC5gBZq1bh1uq7O2bgOlUiaewXJ65rAwWrONT8s62TCAR9nJkWfQbh2L+8C2qKv
+ 6yBc68xEKMYfdEoLbwF5KaApfVtSoAUDx434C1sQ3Wj32LnT7RD1KRa9TzQ194Fc8J2E
+ dW4A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1786037489; x=1786642289;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
- :to:cc:subject:date:message-id:reply-to:content-type;
- bh=T3c2UdkmGaD6yBf6bG1TdPxdxNZUO4yArA0BVPODz2U=;
- b=mcNCU3jX7bzXgZNLR+vQb0n8PlAWfhRFVxB7WbNl0TH4o8IkdP0vg+DREnjIDHkvC2
- nymXg6DQK55/uGB2k8yN7U7n2uojrsUnSJlHjb3xC/ijKOqBp/gKdrzd9S2uqd705D6+
- FZ+XRsDacNd86wLCGOQ/Q0tnh2DhJvge1HgTmK8ld6Dl6h8SX71gmoRbOcs/atDjibcN
- qHEBoDvA119s//Bdic2rEOGfkgRHwMfGrdL3N09zbhV2Etccj6Rin0UvnfLqTfvbh+jZ
- iWiKodTzm1M2uMgV+uQFbg89ykXYnb+/gJKfDuca1K9IHxvPKBHdw2SbGg3AiaSNGE8I
- EsyA==
-X-Gm-Message-State: AOJu0YwOi32QqRggPYLNb1R8uxD5JiATnKvQPanFEFXA9SxTuYMUt8Lu
- tuSbMLx4+vueojbR7/2ENB2j6Ve/pixafwLHN6urJ+bGrMqacSSU24yaMS+iAMWJRSYfJmCMo1p
- 2Keqo
-X-Gm-Gg: AR+sD11k9PpYZBtIoZHoaQPRTDNqYXWhE2XN6lC/LPIrgWuZU6CJ6O/McwBsq/RcvRP
- Pkn18ohZYX7RBD5Zji484LsOlozcdbvPx0j2R1QQqGh0IkFxpDOtP1rdTX6W0uVvADDGrhnPXkc
- BaXavS1BoE8iFAuZHZ6GHMWIoXRX9n65UyJ2KEHnViT2MPhKbSQ8qVbi3jETQ5wPkZigdlBciLU
- TZ5bX9W+9tXklojNJVtJys2TygYRyRaeaRoOVhFBa1XmlriUUTfmbp9qlOy+VO5KfLicJNdeFx/
- Fe5QSOuxpPD2iAn1AerW02WwBXmwuzAxYG7a8Mmkxu6mED0/g89Nrrv0QXjx9xQN370GB3wPL9N
- xAFJN29dG5Ly3+lGPjOxBhTMLaeNWDIIH0ynv7qFtbEP7oF0uYAlvUHSumSjjlAC4ikfs/qOz9E
- 8sVpfZSKkhc2Bg1/bAZiAJq1xoLYREpjylSNTPcjb8dHA7RVUmFH49dG+eREntOGjJYRCOhRB4G
- WpK0iTSTsWaLiKxee3z
-X-Received: by 2002:a17:90b:278c:b0:381:792d:f993 with SMTP id
- 98e67ed59e1d1-3903c5bf6fbmr17873314a91.17.1786037487300; 
- Thu, 06 Aug 2026 10:31:27 -0700 (PDT)
-Received: from stoup.. (174-21-93-59.tukw.qwest.net. [174.21.93.59])
+ d=1e100.net; s=20251104; t=1786038695; x=1786643495;
+ h=content-transfer-encoding:content-type:in-reply-to:from:references
+ :cc:to:content-language:subject:user-agent:mime-version:date
+ :message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+ :message-id:reply-to:content-type;
+ bh=2QkwIxdfvmMTri1LtcuMsJFInP2XwNasOjmklKWAhMo=;
+ b=cfVJz/tB1xB6mfQG8yyTIUn5DC3gboUvjEAJP3lQvuWKkr8MVJPCq872nD35csxq3H
+ M6ZrzodDrbZZ0F50Bz9TicwPM2bej6djMwYdlXJCwwTiPqcBkJ/KGQ1T+LdiPCgwt4YS
+ n9j3+oaXN8fqBWqWTj4JBpWU0ZKphq20sOmKcW+17UZ5DZcsRlpUnZ3061bqoo/0khUk
+ 5b9ZVsewdbEVbxxOgn7l8swzs8iUhsJn7PPyrGA0YgoBLQ752ZV+qwWtRYbdd96iDQL1
+ gBGyZthuOtl+dLXoYJSL27nrGF6Jvm2/rmxwUlOYJ4dIOv1Tm3imr4Y985KAbr+AF5/0
+ XlVA==
+X-Gm-Message-State: AOJu0YwHdHIACMEyQorpmgLG/v2WD5V/Ah885wAqpU8VZi2pBGNHGB0k
+ rtpzJCwouhnQB1wpf2vBG+yHOcW48SYfyp9B53QPw/4zQjmBTQ8m80ydKnc1o629YDcMuUO0hCE
+ 2xMAFEww1ECwST2ZTq5NOYRWJFcwUHNj4fPQvbhjSD8V6Vmzs0Qcnvks=
+X-Gm-Gg: AR+sD12DisNlAD91zXAzAZWoCkP/3gPr4RkRaCx4x7VYXXbe92kPrUg47l2ecqRhB5o
+ IN0u/hwGGLYtF/Y8sw511PVocq+BDlont2RU4zyxLlfTlFzEuObd4MwaDwDkmuVV1aJLolZsKfi
+ Rrr/ikmTTBvVQNYzlEQEGFNbB5udxPSjC/pVL/g/+XB+HFOtdp7vph4whcgDeDX/XwUX2vyD1aV
+ uo4vr+Kj5dWWyUqjcdxHwYfH8BtAzrLHy5SDo9P74V46vjyaOiPESfO5izcOjnegLqtsTMWuy34
+ lt3rfWZj0qGnOKsniliiq2qtbKvr2DdVHLeJrkzXtzqjTR7bpLbIw+4UANc4Hgz5KQ53vw3fVrB
+ 6rgiEuThi30nc2DjkQKiMeV4wUYM6Gp0WLG0=
+X-Received: by 2002:ac8:690f:0:b0:51c:ace:de6a with SMTP id
+ d75a77b69052e-52d0b0adb1emr44137591cf.18.1786038695188; 
+ Thu, 06 Aug 2026 10:51:35 -0700 (PDT)
+X-Received: by 2002:ac8:690f:0:b0:51c:ace:de6a with SMTP id
+ d75a77b69052e-52d0b0adb1emr44137231cf.18.1786038694820; 
+ Thu, 06 Aug 2026 10:51:34 -0700 (PDT)
+Received: from [192.168.69.212] (pmd666.hd.free.fr. [88.187.86.199])
  by smtp.gmail.com with ESMTPSA id
- 98e67ed59e1d1-39085e4a2a5sm1983711a91.14.2026.08.06.10.31.26
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 06 Aug 2026 10:31:26 -0700 (PDT)
-From: Richard Henderson <richard.henderson@linaro.org>
-To: qemu-devel@nongnu.org
-Cc: qemu-arm@nongnu.org
-Subject: [PATCH v2 3/6] target/arm: Implement HCR_EL2.TID3 trap on undefined
- TID3 registers
-Date: Thu,  6 Aug 2026 10:31:20 -0700
-Message-ID: <20260806173123.333423-4-richard.henderson@linaro.org>
-X-Mailer: git-send-email 2.43.0
-In-Reply-To: <20260806173123.333423-1-richard.henderson@linaro.org>
-References: <20260806173123.333423-1-richard.henderson@linaro.org>
+ ffacd0b85a97d-47ff7b32487sm7513872f8f.34.2026.08.06.10.51.33
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Thu, 06 Aug 2026 10:51:34 -0700 (PDT)
+Message-ID: <59c0d6d2-b388-4fd3-8b28-9d79d1b96af6@oss.qualcomm.com>
+Date: Thu, 6 Aug 2026 19:51:33 +0200
 MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 3/7] target/arm: Pass aarch64_enabled to
+ aarch64_aa32_a57_init
+Content-Language: en-US
+To: Richard Henderson <richard.henderson@linaro.org>, qemu-devel@nongnu.org
+Cc: qemu-arm@nongnu.org
+References: <20260806163939.328201-1-richard.henderson@linaro.org>
+ <20260806163939.328201-4-richard.henderson@linaro.org>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@oss.qualcomm.com>
+In-Reply-To: <20260806163939.328201-4-richard.henderson@linaro.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::102f;
- envelope-from=richard.henderson@linaro.org; helo=mail-pj1-x102f.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
+X-Proofpoint-ORIG-GUID: 7t-pqPN3Rmfx2ZuumkHODII6qdu-wujg
+X-Proofpoint-GUID: 7t-pqPN3Rmfx2ZuumkHODII6qdu-wujg
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwODA2MDE0MCBTYWx0ZWRfX6txbpKEJYBqG
+ 8zkLsA9UCVgrSSSazXjzo0SHkFmXUdNZZmRe8XKdKTv1fBGhG7fGBol2BH6kaGBrxpB1fwKF10p
+ lv7yJHFba95vslZxGmaDcdgONA0mUZYDs9IP6UHpiIuzh2wm8Nc5FVTs/LCSsX38syVVXIwLZGQ
+ lE0AhRu7gTBNY+goddPL5HLwsMyQvdgujKOihD1RsaUuZf+K/rS+PLHY6dJnybps+ufY4csETDp
+ VTgmyWUy/gzPTKwu+C3ApTFnLWmdtLddh6rwwMWOKEx466nDZ6rR5OwH5pzkfo3ofYaa4yXBw37
+ myEOhQcr4OREl80quGt8Z0aUoLVr8guH3w04jghy9RQm/L9+V+VXaGJDC98EKm9Kq8HLEVal6tc
+ SpxsUoMhyFsEx9RBRA/Fk4kqCti2otWINDnH2P3hmBSwo2rJyOAeowKvqEtMmknmpGA9xTHTCqT
+ eqTnFW15N5IjS++0AXQ==
+X-Proofpoint-Spam-Info: AW1haW4tMjYwODA2MDE0MCBTYWx0ZWRfX48oXe6QxcLMI
+ MynSWNxtHtwD2vhGYbprYVpWOjczy0SE6EBvQPF+Xqsc5q9kk5bLMHvw3bR3CEiLiQBtXEWQ9oh
+ BHPA3INLGGG3t8pF/CuvUwvK7eQhT0w=
+X-Authority-Analysis: v=2.4 cv=ebgNubEH c=1 sm=1 tr=0 ts=6a74c9a7 cx=c_pps
+ a=WeENfcodrlLV9YRTxbY/uA==:117 a=4s3hRJSeHn4rkQlkrse1kQ==:17
+ a=IkcTkHD0fZMA:10 a=Sv0fKeRqtYgA:10 a=M51BFTxLslgA:10 a=s4-Qcg_JpJYA:10
+ a=VkNPw1HP01LnGYTKEx00:22 a=u7WPNUs3qKkmUXheDGA7:22 a=_glEPmIy2e8OvE2BGh3C:22
+ a=KKAkSRfTAAAA:8 a=EUspDBNiAAAA:8 a=1tSEMpTH9XP_W59IOagA:9 a=3ZKOabzyN94A:10
+ a=QEXdDO2ut3YA:10 a=kacYvNCVWA4VmyqE58fU:22 a=cvBusfyB2V15izCimMoJ:22
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.293,Aquarius:18.0.1176,Hydra:6.1.134,FMLib:17.12.100.49
+ definitions=2026-08-06_01,2026-08-06_01,2025-10-01_01
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
+ clxscore=1015 lowpriorityscore=0 adultscore=0 bulkscore=0 priorityscore=1501
+ impostorscore=0 spamscore=0 malwarescore=0 suspectscore=0 phishscore=0
+ classifier=typeunknown authscore=0 authtc= authcc= route=outbound adjust=0
+ reason=mlx scancount=1 engine=8.22.0-2606150000 definitions=main-2608060140
+Received-SPF: pass client-ip=205.220.180.131;
+ envelope-from=philmd@oss.qualcomm.com; helo=mx0b-0031df01.pphosted.com
+X-Spam_score_int: -27
+X-Spam_score: -2.8
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ RCVD_IN_DNSWL_LOW=-0.7, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -102,137 +153,15 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-It is IMPLEMENTATION DEFINED whether HCR_EL2.TID3 traps on registers
-within the range which are not explicitly listed.  Previously we chose
-not to honor the TID3 bit.
+On 6/8/26 18:39, Richard Henderson wrote:
+> Invert aa32_only argument to what is actually used.
+> 
+> Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
+> ---
+>   target/arm/internals.h | 2 +-
+>   target/arm/cpu-max.c   | 5 ++---
+>   target/arm/cpu64.c     | 2 +-
+>   3 files changed, 4 insertions(+), 5 deletions(-)
 
-However, with FEAT_IDTE3 it becomes mandatory to honor SCR_EL3.TID3
-on these registers, so we might as well honor HCR_EL2.TID3 too.
-
-Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
----
- target/arm/cpregs.h            |  8 ++++++++
- target/arm/tcg/helper-defs.h   |  1 +
- target/arm/tcg/op_helper.c     | 19 +++++++++++++++++++
- target/arm/tcg/translate-a64.c | 12 ++++++++++--
- target/arm/tcg/translate.c     | 18 ++++++++++++++++++
- 5 files changed, 56 insertions(+), 2 deletions(-)
-
-diff --git a/target/arm/cpregs.h b/target/arm/cpregs.h
-index 9f2532fe66..b1fc1f9f85 100644
---- a/target/arm/cpregs.h
-+++ b/target/arm/cpregs.h
-@@ -1213,6 +1213,14 @@ static inline bool arm_cpreg_in_idspace(const ARMCPRegInfo *ri)
-                                       ri->crn, ri->crm);
- }
- 
-+/* The TID3 subset of idspace. */
-+static inline bool
-+arm_cpreg_encoding_in_tid3(uint8_t opc0, uint8_t opc1, uint8_t opc2,
-+                           uint8_t crn, uint8_t crm)
-+{
-+    return opc0 == 3 && opc1 == 0 && crn == 0 && crm >= 2 && crm < 8;
-+}
-+
- #ifdef CONFIG_USER_ONLY
- static inline void define_cortex_a72_a57_a53_cp_reginfo(ARMCPU *cpu) { }
- #else
-diff --git a/target/arm/tcg/helper-defs.h b/target/arm/tcg/helper-defs.h
-index 0077aeb4e2..97b8678f19 100644
---- a/target/arm/tcg/helper-defs.h
-+++ b/target/arm/tcg/helper-defs.h
-@@ -86,6 +86,7 @@ DEF_HELPER_FLAGS_2(check_bxj_trap, TCG_CALL_NO_WG, void, env, i32)
- 
- DEF_HELPER_4(access_check_cp_reg, cptr, env, i32, i32, i32)
- DEF_HELPER_FLAGS_2(lookup_cp_reg, TCG_CALL_NO_RWG_SE, cptr, env, i32)
-+DEF_HELPER_FLAGS_2(tid3_udef_el1, TCG_CALL_NO_WG, noreturn, env, i32)
- DEF_HELPER_FLAGS_2(tidcp_el0, TCG_CALL_NO_WG, void, env, i32)
- DEF_HELPER_FLAGS_2(tidcp_el1, TCG_CALL_NO_WG, void, env, i32)
- DEF_HELPER_3(set_cp_reg, void, env, cptr, i32)
-diff --git a/target/arm/tcg/op_helper.c b/target/arm/tcg/op_helper.c
-index 9fc4f86825..6d1feb5b33 100644
---- a/target/arm/tcg/op_helper.c
-+++ b/target/arm/tcg/op_helper.c
-@@ -1191,6 +1191,25 @@ const void *HELPER(lookup_cp_reg)(CPUARMState *env, uint32_t key)
-     return ri;
- }
- 
-+/* Raise an exception for an unimplemented sysreg in TID3 space, from EL1. */
-+void HELPER(tid3_udef_el1)(CPUARMState *env, uint32_t syndrome)
-+{
-+    int target_el = 1;
-+    int excp = EXCP_UDEF;
-+
-+    if (arm_hcr_el2_eff(env) & HCR_TID3) {
-+        target_el = 2;
-+        excp = EXCP_HYP_TRAP;
-+    } else if (is_a64(env)) {
-+        if (!cpu_isar_feature(aa64_idst, env_archcpu(env))) {
-+            syndrome = syn_uncategorized();
-+        }
-+    } else {
-+        syndrome = syn_uncategorized();
-+    }
-+    raise_exception(env, excp, syndrome, target_el);
-+}
-+
- /*
-  * Test for HCR_EL2.TIDCP at EL1.
-  * Since implementation defined registers are rare, and within QEMU
-diff --git a/target/arm/tcg/translate-a64.c b/target/arm/tcg/translate-a64.c
-index 8c7a0294ee..6fde2c7bff 100644
---- a/target/arm/tcg/translate-a64.c
-+++ b/target/arm/tcg/translate-a64.c
-@@ -2675,9 +2675,17 @@ static void gen_sysreg_undef(DisasContext *s, bool isread,
-      */
-     uint32_t syndrome;
- 
--    if (isread && dc_isar_feature(aa64_idst, s) &&
--        arm_cpreg_encoding_in_idspace(op0, op1, op2, crn, crm)) {
-+    if (isread && arm_cpreg_encoding_in_idspace(op0, op1, op2, crn, crm)) {
-         syndrome = syn_aa64_sysregtrap(op0, op1, op2, crn, crm, rt, isread);
-+        if (s->current_el == 1 &&
-+            arm_cpreg_encoding_in_tid3(op0, op1, op2, crn, crm)) {
-+            gen_a64_update_pc(s, 0);
-+            gen_helper_tid3_udef_el1(tcg_env, tcg_constant_i32(syndrome));
-+            return;
-+        }
-+        if (!dc_isar_feature(aa64_idst, s)) {
-+            syndrome = syn_uncategorized();
-+        }
-     } else {
-         syndrome = syn_uncategorized();
-     }
-diff --git a/target/arm/tcg/translate.c b/target/arm/tcg/translate.c
-index 055f3c5b40..7f6a7e0aff 100644
---- a/target/arm/tcg/translate.c
-+++ b/target/arm/tcg/translate.c
-@@ -1824,6 +1824,24 @@ static void do_coproc_insn(DisasContext *s, int cpnum, int is64,
-                           isread ? "read" : "write", cpnum, opc1, crn,
-                           crm, opc2, s->ns ? "non-secure" : "secure");
-         }
-+
-+        /*
-+         * With v8, we have the possibility of FEAT_FGT which requires
-+         * trapping with HCR/HCR_EL2.TID3.  Without FEAT_FGT, it is
-+         * IMPLEMENTATION DEFINED whether TID3 affects IDs in the range
-+         * that weren't explcitly listed.  We choose to trap.
-+         *
-+         * With v7, there is vague language about "not required" to trap:
-+         * see access_v7a_tid3.  We choose to not trap.
-+         */
-+        if (arm_dc_feature(s, ARM_FEATURE_V8)
-+            && isread && s->current_el == 1 && cpnum == 15
-+            && arm_cpreg_encoding_in_tid3(3, opc1, opc2, crn, crm)) {
-+            gen_set_condexec(s);
-+            gen_update_pc(s, 0);
-+            gen_helper_tid3_udef_el1(tcg_env, tcg_constant_i32(syndrome));
-+        }
-+
-         unallocated_encoding(s);
-         return;
-     }
--- 
-2.43.0
-
+Reviewed-by: Philippe Mathieu-Daudé <philmd@oss.qualcomm.com>
 

@@ -4,118 +4,87 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 01DD2C56208
-	for <qemu-arm@archiver.kernel.org>; Thu,  6 Aug 2026 13:00:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7650DC56205
+	for <qemu-arm@archiver.kernel.org>; Thu,  6 Aug 2026 16:40:15 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wrxhX-0006i1-76; Thu, 06 Aug 2026 09:00:00 -0400
+	id 1ws18J-0006mm-5B; Thu, 06 Aug 2026 12:39:51 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1wrxhR-0006hJ-Er
- for qemu-arm@nongnu.org; Thu, 06 Aug 2026 08:59:54 -0400
-Received: from smtpout1.mo540.mail-out.ovh.net ([51.210.91.50])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1wrxhO-0001Mb-B9
- for qemu-arm@nongnu.org; Thu, 06 Aug 2026 08:59:53 -0400
-Received: from director4.derp.mail-out.ovh.net
- (director4.derp.mail-out.ovh.net [79.137.60.37])
- by mo540.mail-out.ovh.net (Postfix) with ESMTPS id 4hG6nH2Wb6z3wdN;
- Thu,  6 Aug 2026 12:59:47 +0000 (UTC)
-Received: from director4.derp.mail-out.ovh.net
- (director4.derp.mail-out.ovh.net. [127.0.0.1])
- by director4.derp.mail-out.ovh.net (inspect_sender_mail_agent) with SMTP
- for <carenas@gmail.com>; Thu,  6 Aug 2026 12:59:47 +0000 (UTC)
-Received: from mta6.priv.ovhmail-u2.ea.mail.ovh.net (unknown [10.110.113.251])
- by director4.derp.mail-out.ovh.net (Postfix) with ESMTPS id
- 4hG6nH1kW4z1y6C; Thu,  6 Aug 2026 12:59:47 +0000 (UTC)
-Received: from kaod.org (unknown [10.1.6.3])
- (Authenticated sender: clg@kaod.org)
- by mta6.priv.ovhmail-u2.ea.mail.ovh.net (Postfix) with ESMTPSA id ACFA21B43EBC;
- Thu,  6 Aug 2026 12:59:46 +0000 (UTC)
-Authentication-Results: garm.ovh; auth=pass
- (GARM-109S003fe95eee0-28f9-46f1-af42-7971aa1a7ff8,
- 3674F41004D9368A494C832AF9EEF1C5F00DB56D) smtp.auth=clg@kaod.org
-X-OVh-ClientIp: 82.64.250.170
-Message-ID: <6ab74d7d-d962-46c9-9183-6281a0fa2cec@kaod.org>
-Date: Thu, 6 Aug 2026 14:59:46 +0200
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1ws18E-0006kV-Ql
+ for qemu-arm@nongnu.org; Thu, 06 Aug 2026 12:39:46 -0400
+Received: from mail-pl1-x630.google.com ([2607:f8b0:4864:20::630])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1ws18C-0000IC-Qp
+ for qemu-arm@nongnu.org; Thu, 06 Aug 2026 12:39:46 -0400
+Received: by mail-pl1-x630.google.com with SMTP id
+ d9443c01a7336-2cea3004256so31337415ad.0
+ for <qemu-arm@nongnu.org>; Thu, 06 Aug 2026 09:39:44 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1786034383; x=1786639183; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+ :message-id:reply-to:content-type;
+ bh=ncF+VrF48oEXQiurXrwt2lRSm4bmf+7Q7x/Xk+zd/VY=;
+ b=wD1izkqW66PD1sIIOvGvC+rm0AUcCZ42M5yhfO7ueI/2BKiMhHC4gAy85vpSfKJYbT
+ f1r84qdSndwwwAdBws4jblLOO+3mxYtB7PdclYHqeRwlATAmlCZEQS/wOSSznwmhYZux
+ gp16AqIsY06EPBQVlpnAzXCuKMJVWiDM01BTuSVEGILU+dpAEK84cIn5GEdVm6JYlBJf
+ DGCklNamlTgkuubZ+uB6vDF8+QNQum98TwlgGrZCAPun+10jcQy9qg8Nt8frJry1nyP8
+ 5056Asz8wwPyaQNmBb7Z20Bs8iwQXl+gBz95CoxhQAJ/uM2Ab9LlOOIdsu1UTsaIaFg/
+ ENvA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20251104; t=1786034383; x=1786639183;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
+ :to:cc:subject:date:message-id:reply-to:content-type;
+ bh=ncF+VrF48oEXQiurXrwt2lRSm4bmf+7Q7x/Xk+zd/VY=;
+ b=Z5MEBjSfHpELOVxAOjE3sg1KR0uGa7PsLjG9w7dtM4g2rGre1HKBRpJnXCeSlHsmCJ
+ 92/u3/qyLqiE+m1J8tZqVxon1DZDAdsy2fyWVZKrq8FA9BhRbSKAYjys/YrPaZq1G0Ik
+ JQWT0103ZuSuY2MMhkB0PAJVx99U2XQBNYb86ejEbbBlj1BxfNspVZsMjZErbbPedKB/
+ TC0DTfrCA9EtamSUOvA2ePsf1YWtOMr4Hc+iRMVSwDRHdJg1pOzbmZ8Kgav9wJ388lvf
+ 3a8fRqQgauZgIxX1wOdVCQqgz+QHxPnagb4HixJ5NlJiZATTFEM6HG+5qVkRgZU1qw+T
+ cBcQ==
+X-Gm-Message-State: AOJu0YwhTc+KlJyuP/obgniT9bBsRgN5pVJijOxqL4CWMOXjZW5Bm3bD
+ lZUZ/92s6pwlHjZ9qhgSb6cvr+B9YMev8qjibmeY0XWeALsVdC+WO0ai7f87tJs8O+I=
+X-Gm-Gg: AR+sD123/OLLefUwOybzAagwXiPgf9uT/43h6MN/WBZiXWDgQFdBibDmla6bz0xoogP
+ gk4H0Ou3Nt7J0AFWMeanFWQwsgmPQInf2NGZW4xwiHQ6yYTOMftCYy/dn+6o7t4T/72aumSw4bu
+ R2/NMMFJnsB9nyYEH6keS82M4hzWyvz8D6t0vkuDLcwWsbRryZq93ZVFlZH7mG8qVsM0USjuo1K
+ LS7wrj7l4t9vHRIknd8oYbZitjrpi9QbP0kD540mUahXOkAw9c/tdGDK77ZXHvQkVTEsXXOVVXt
+ NOTPQuhlOry4ZHyCbK6LGCvRIPMcFriiSEFMRnCDOzECsKzjfiJTT6qpXOf2P5t/+ccWRIfhk0M
+ FpaF3ksVG/3SND3tAbQYFy4CJvsws0+FcsZIFd3J9K2DSwipusz3w48r9B8rg1LAQam2Nx4Eee4
+ O+L/UX+S3Oy3jKUhjcjzq0n6ERgL8yj26c6VI9kkqQ2oOxb3U2EzNX1KHa75TcdcAKWjSv+Y7FG
+ L87wh1JXkwGdqOcAJR/
+X-Received: by 2002:a17:903:1746:b0:2cf:afe8:b722 with SMTP id
+ d9443c01a7336-2d0ca761e0amr184406025ad.11.1786034383201; 
+ Thu, 06 Aug 2026 09:39:43 -0700 (PDT)
+Received: from stoup.. (174-21-93-59.tukw.qwest.net. [174.21.93.59])
+ by smtp.gmail.com with ESMTPSA id
+ d9443c01a7336-2d0aa4ec8c7sm34280735ad.80.2026.08.06.09.39.42
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Thu, 06 Aug 2026 09:39:42 -0700 (PDT)
+From: Richard Henderson <richard.henderson@linaro.org>
+To: qemu-devel@nongnu.org
+Cc: qemu-arm@nongnu.org
+Subject: [PATCH 3/7] target/arm: Pass aarch64_enabled to aarch64_aa32_a57_init
+Date: Thu,  6 Aug 2026 09:39:35 -0700
+Message-ID: <20260806163939.328201-4-richard.henderson@linaro.org>
+X-Mailer: git-send-email 2.43.0
+In-Reply-To: <20260806163939.328201-1-richard.henderson@linaro.org>
+References: <20260806163939.328201-1-richard.henderson@linaro.org>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH] hw/arm/aspeed: avoid sign mismatch on sscanf for uart
- property
-To: =?UTF-8?Q?Carlo_Marcelo_Arenas_Bel=C3=B3n?= <carenas@gmail.com>,
- qemu-trivial@nongnu.org,
- "open list:All patches CC here" <qemu-devel@nongnu.org>,
- "'qemu-arm@nongnu.org'" <qemu-arm@nongnu.org>
-References: <20260802162828.16880-1-carenas@gmail.com>
-From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
-Content-Language: en-US, fr
-Autocrypt: addr=clg@kaod.org; keydata=
- xsFNBFu8o3UBEADP+oJVJaWm5vzZa/iLgpBAuzxSmNYhURZH+guITvSySk30YWfLYGBWQgeo
- 8NzNXBY3cH7JX3/a0jzmhDc0U61qFxVgrPqs1PQOjp7yRSFuDAnjtRqNvWkvlnRWLFq4+U5t
- yzYe4SFMjFb6Oc0xkQmaK2flmiJNnnxPttYwKBPd98WfXMmjwAv7QfwW+OL3VlTPADgzkcqj
- 53bfZ4VblAQrq6Ctbtu7JuUGAxSIL3XqeQlAwwLTfFGrmpY7MroE7n9Rl+hy/kuIrb/TO8n0
- ZxYXvvhT7OmRKvbYuc5Jze6o7op/bJHlufY+AquYQ4dPxjPPVUT/DLiUYJ3oVBWFYNbzfOrV
- RxEwNuRbycttMiZWxgflsQoHF06q/2l4ttS3zsV4TDZudMq0TbCH/uJFPFsbHUN91qwwaN/+
- gy1j7o6aWMz+Ib3O9dK2M/j/O/Ube95mdCqN4N/uSnDlca3YDEWrV9jO1mUS/ndOkjxa34ia
- 70FjwiSQAsyIwqbRO3CGmiOJqDa9qNvd2TJgAaS2WCw/TlBALjVQ7AyoPEoBPj31K74Wc4GS
- Rm+FSch32ei61yFu6ACdZ12i5Edt+To+hkElzjt6db/UgRUeKfzlMB7PodK7o8NBD8outJGS
- tsL2GRX24QvvBuusJdMiLGpNz3uqyqwzC5w0Fd34E6G94806fwARAQABzSBDw6lkcmljIExl
- IEdvYXRlciA8Y2xnQGthb2Qub3JnPsLBeAQTAQIAIgUCW7yjdQIbAwYLCQgHAwIGFQgCCQoL
- BBYCAwECHgECF4AACgkQUaNDx8/77KGRSxAAuMJJMhJdj7acTcFtwof7CDSfoVX0owE2FJdd
- M43hNeTwPWlV5oLCj1BOQo0MVilIpSd9Qu5wqRD8KnN2Bv/rllKPqK2+i8CXymi9hsuzF56m
- 76wiPwbsX54jhv/VYY9Al7NBknh6iLYJiC/pgacRCHtSj/wofemSCM48s61s1OleSPSSvJE/
- jYRa0jMXP98N5IEn8rEbkPua/yrm9ynHqi4dKEBCq/F7WDQ+FfUaFQb4ey47A/aSHstzpgsl
- TSDTJDD+Ms8y9x2X5EPKXnI3GRLaCKXVNNtrvbUd9LsKymK3WSbADaX7i0gvMFq7j51P/8yj
- neaUSKSkktHauJAtBNXHMghWm/xJXIVAW8xX5aEiSK7DNp5AM478rDXn9NZFUdLTAScVf7LZ
- VzMFKR0jAVG786b/O5vbxklsww+YXJGvCUvHuysEsz5EEzThTJ6AC5JM2iBn9/63PKiS3ptJ
- QAqzasT6KkZ9fKLdK3qtc6yPaSm22C5ROM3GS+yLy6iWBkJ/nEYh/L/du+TLw7YNbKejBr/J
- ml+V3qZLfuhDjW0GbeJVPzsENuxiNiBbyzlSnAvKlzda/sBDvxmvWhC+nMRQCf47mFr8Xx3w
- WtDSQavnz3zTa0XuEucpwfBuVdk4RlPzNPri6p2KTBhPEvRBdC9wNOdRBtsP9rAPjd52d73O
- wU0EW7yjdQEQALyDNNMw/08/fsyWEWjfqVhWpOOrX2h+z4q0lOHkjxi/FRIRLfXeZjFfNQNL
- SoL8j1y2rQOs1j1g+NV3K5hrZYYcMs0xhmrZKXAHjjDx7FW3sG3jcGjFW5Xk4olTrZwFsZVU
- cP8XZlArLmkAX3UyrrXEWPSBJCXxDIW1hzwpbV/nVbo/K9XBptT/wPd+RPiOTIIRptjypGY+
- S23HYBDND3mtfTz/uY0Jytaio9GETj+fFis6TxFjjbZNUxKpwftu/4RimZ7qL+uM1rG1lLWc
- 9SPtFxRQ8uLvLOUFB1AqHixBcx7LIXSKZEFUCSLB2AE4wXQkJbApye48qnZ09zc929df5gU6
- hjgqV9Gk1rIfHxvTsYltA1jWalySEScmr0iSYBZjw8Nbd7SxeomAxzBv2l1Fk8fPzR7M616d
- tb3Z3HLjyvwAwxtfGD7VnvINPbzyibbe9c6gLxYCr23c2Ry0UfFXh6UKD83d5ybqnXrEJ5n/
- t1+TLGCYGzF2erVYGkQrReJe8Mld3iGVldB7JhuAU1+d88NS3aBpNF6TbGXqlXGF6Yua6n1c
- OY2Yb4lO/mDKgjXd3aviqlwVlodC8AwI0SdujWryzL5/AGEU2sIDQCHuv1QgzmKwhE58d475
- KdVX/3Vt5I9kTXpvEpfW18TjlFkdHGESM/JxIqVsqvhAJkalABEBAAHCwV8EGAECAAkFAlu8
- o3UCGwwACgkQUaNDx8/77KEhwg//WqVopd5k8hQb9VVdk6RQOCTfo6wHhEqgjbXQGlaxKHoX
- ywEQBi8eULbeMQf5l4+tHJWBxswQ93IHBQjKyKyNr4FXseUI5O20XVNYDJZUrhA4yn0e/Af0
- IX25d94HXQ5sMTWr1qlSK6Zu79lbH3R57w9jhQm9emQEp785ui3A5U2Lqp6nWYWXz0eUZ0Ta
- d2zC71Gg9VazU9MXyWn749s0nXbVLcLS0yops302Gf3ZmtgfXTX/W+M25hiVRRKCH88yr6it
- +OMJBUndQVAA/fE9hYom6t/zqA248j0QAV/pLHH3hSirE1mv+7jpQnhMvatrwUpeXrOiEw1n
- HzWCqOJUZ4SY+HmGFW0YirWV2mYKoaGO2YBUwYF7O9TI3GEEgRMBIRT98fHa0NPwtlTktVIS
- l73LpgVscdW8yg9Gc82oe8FzU1uHjU8b10lUXOMHpqDDEV9//r4ZhkKZ9C4O+YZcTFu+mvAY
- 3GlqivBNkmYsHYSlFsbxc37E1HpTEaSWsGfAHQoPn9qrDJgsgcbBVc1gkUT6hnxShKPp4Pls
- ZVMNjvPAnr5TEBgHkk54HQRhhwcYv1T2QumQizDiU6iOrUzBThaMhZO3i927SG2DwWDVzZlt
- KrCMD1aMPvb3NU8FOYRhNmIFR3fcalYr+9gDuVKe8BVz4atMOoktmt0GWTOC8P4=
-In-Reply-To: <20260802162828.16880-1-carenas@gmail.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-x-ovh-tracer-id: 9602518831953783896
-X-VR-SPAMSTATE: OK
-X-VR-SPAMSCORE: -100
-X-VR-SPAMCAUSE: dmFkZTEuuwlmVkdtrgI2K33GkR1csev/yaLK3UHNtqOgBIO6w7o9+3Az3zuPdz8hqW3FzEyQfZWvEojew/dBwQK81p/Xw9UTpgniG8oaT8D8M8he8xs8m+IVy93Ahh5tpKDf2R94UstW9YP3Du5JCMYizqrOuDW3mCzFwK0fSqZXaWra8zbnUyT5zLC86oQIHcW1CzHewpPg8EVPta2sM61wjRlUc26isK1A0pHsdLeoF+fSTghr/ShzyVybYWaAr19DueZzwWUw/bcG74KiyQZKXAPN37a2kjEdf/n8ta2V4/KhNI3iiaODRHVe4A89dwnk6mlyhdHH1HLKnI+WD59lPrZZZ7Y12VcHGP7mLqkhUgfvoU+Onz3JDCmiCEFL+NcjodUDc58YQ/c9YRJJtvhHd+DrBgAhRWvE4uBTGzONU5kqzWE2m2cg3IlKY/+DsRdRjKg/PuAvVDEiDaN/xQhLwVaGolPREac8t41hb/EgbRiRHp0X4orUWEwbI8WCu5dYNrS6qc3fuQJVMuaxPS3hguQugIU5buIrI5B9dlTIMQDG5xDDFwLgTaLJ0FSYScZfwaZ2cNWhQUohuqjnySWdLDDh+z+ZHgwxbhJ3KR0w6qNDXVI7WQaQ3qjEEmqQG3K8xDNLk46PkLs+0gtsSzWqE4PWbs1VneL9GutymcgxNPKFqg
-DKIM-Signature: a=rsa-sha256; bh=HYy6bpBNudWOKjmob/54ZRkdQZDsaupVHVUG3lgSsOA=; 
- c=relaxed/relaxed; d=kaod.org; h=From; s=ovhmo393970-selector1;
- t=1786021187; v=1;
- b=QbzMnqAVskhbRccNZOAK6Q6MuEOc9901A11TK92pWwHfzR56f4qJkDIbjy7NfNyGxD3cLbH/
- 80MHTcQ+E9iXAW8f2cX1q+KjFHnd2Ss6s0+OVx3oLK4ZlBdbLoBxII9f/KWkjziG/mPbsEfwLZn
- cOr/SKsXeErEzyCmtxZ0dZlH6eZj1cZzBalTtrXoUe0At2FbH0WjtHZD46P7z1dsdFCtp3KlhyG
- G6uPEgvljR/oSjL5pVBwm8Fseb3Ztn39eRVeALUQtO53J0eOTWZ4xBB8Dti8WdQW39C2dbGiPJz
- KoSBg34wUHRmkvb+cj9CdY0Dh/o9unygIS/h4gxGEwVlg==
-Received-SPF: pass client-ip=51.210.91.50; envelope-from=clg@kaod.org;
- helo=smtpout1.mo540.mail-out.ovh.net
+Received-SPF: pass client-ip=2607:f8b0:4864:20::630;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pl1-x630.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -131,42 +100,67 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On 8/2/26 18:28, Carlo Marcelo Arenas Belón wrote:
-> using "%u" with sscanf() was likely meant to indicate that a
-> negative value was unexpected, but with a signed variable it
-> could result in undefined behaviour.
-> 
-> use "%d" and check for a negative input explicitly.
-> 
-> Signed-off-by: Carlo Marcelo Arenas Belón <carenas@gmail.com>
-> ---
->   hw/arm/aspeed.c | 2 +-
->   1 file changed, 1 insertion(+), 1 deletion(-)
-> 
-> diff --git a/hw/arm/aspeed.c b/hw/arm/aspeed.c
-> index a48c442058..a9238e6217 100644
-> --- a/hw/arm/aspeed.c
-> +++ b/hw/arm/aspeed.c
-> @@ -327,7 +327,7 @@ static void aspeed_set_bmc_console(Object *obj, const char *value, Error **errp)
->       int uart_first = aspeed_uart_first(sc->uarts_base);
->       int uart_last = aspeed_uart_last(sc->uarts_base, sc->uarts_num);
->   
-> -    if (sscanf(value, "uart%u", &val) != 1) {
-> +    if (sscanf(value, "uart%d", &val) != 1 || val < 0) {
->           error_setg(errp, "Bad value for \"uart\" property");
->           return;
->       }
+Invert aa32_only argument to what is actually used.
 
-The following test :
+Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
+---
+ target/arm/internals.h | 2 +-
+ target/arm/cpu-max.c   | 5 ++---
+ target/arm/cpu64.c     | 2 +-
+ 3 files changed, 4 insertions(+), 5 deletions(-)
 
-     if (val < uart_first || val > uart_last) {
-
-would have caught the bad value but it's better to return early.
-
-Reviewed-by: Cédric Le Goater <clg@redhat.com>
-
-Thanks,
-
-C.
+diff --git a/target/arm/internals.h b/target/arm/internals.h
+index 9c9196475b..5e7f41a50d 100644
+--- a/target/arm/internals.h
++++ b/target/arm/internals.h
+@@ -1813,7 +1813,7 @@ void aarch64_max_tcg_initfn(Object *obj);
+ void aarch64_add_pauth_properties(Object *obj);
+ void aarch64_add_sve_properties(Object *obj);
+ void aarch64_add_sme_properties(Object *obj);
+-void aarch64_aa32_a57_init(ARMCPU *cpu, bool aa32_only);
++void aarch64_aa32_a57_init(ARMCPU *cpu, bool aa64_enabled);
+ void aarch64_host_initfn(Object *obj);
+ 
+ /* Return true if the gdbstub is presenting an AArch64 CPU */
+diff --git a/target/arm/cpu-max.c b/target/arm/cpu-max.c
+index d7f2500353..bdacfb21d3 100644
+--- a/target/arm/cpu-max.c
++++ b/target/arm/cpu-max.c
+@@ -16,10 +16,9 @@
+ #include "target/arm/internals.h"
+ #include "target/arm/cpregs.h"
+ 
+-void aarch64_aa32_a57_init(ARMCPU *cpu, bool aa32_only)
++void aarch64_aa32_a57_init(ARMCPU *cpu, bool aarch64_enabled)
+ {
+     ARMISARegisters *isar = &cpu->isar;
+-    const bool aarch64_enabled = !aa32_only;
+ 
+     cpu->dtb_compatible = "arm,cortex-a57";
+     set_feature(&cpu->env, ARM_FEATURE_V8);
+@@ -204,7 +203,7 @@ static void cpu_max_initfn(Object *obj)
+ 
+     assert(tcg_enabled() || qtest_enabled());
+ 
+-    aarch64_aa32_a57_init(cpu, !aarch64_enabled);
++    aarch64_aa32_a57_init(cpu, aarch64_enabled);
+ 
+     if (!aarch64_enabled) {
+         aa32_max_features(cpu);
+diff --git a/target/arm/cpu64.c b/target/arm/cpu64.c
+index e3ee0253a0..faaf3ab879 100644
+--- a/target/arm/cpu64.c
++++ b/target/arm/cpu64.c
+@@ -688,7 +688,7 @@ void aarch64_cpu_lpa2_finalize(ARMCPU *cpu, Error **errp)
+ 
+ static void aarch64_a57_initfn(Object *obj)
+ {
+-    aarch64_aa32_a57_init(ARM_CPU(obj), false);
++    aarch64_aa32_a57_init(ARM_CPU(obj), true);
+ }
+ 
+ static void aarch64_a53_initfn(Object *obj)
+-- 
+2.43.0
 
 

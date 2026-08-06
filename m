@@ -4,81 +4,78 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7FCB2C56205
-	for <qemu-arm@archiver.kernel.org>; Thu,  6 Aug 2026 16:40:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 17B3BC56208
+	for <qemu-arm@archiver.kernel.org>; Thu,  6 Aug 2026 16:41:06 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1ws18G-0006l3-5x; Thu, 06 Aug 2026 12:39:48 -0400
+	id 1ws18E-0006kT-Os; Thu, 06 Aug 2026 12:39:46 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1ws18E-0006kD-5Q
- for qemu-arm@nongnu.org; Thu, 06 Aug 2026 12:39:46 -0400
-Received: from mail-pl1-x62f.google.com ([2607:f8b0:4864:20::62f])
+ id 1ws18C-0006jd-QG
+ for qemu-arm@nongnu.org; Thu, 06 Aug 2026 12:39:44 -0400
+Received: from mail-pl1-x62a.google.com ([2607:f8b0:4864:20::62a])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1ws18C-0000Hn-Hz
- for qemu-arm@nongnu.org; Thu, 06 Aug 2026 12:39:45 -0400
-Received: by mail-pl1-x62f.google.com with SMTP id
- d9443c01a7336-2ce87c7e3bbso22544345ad.1
- for <qemu-arm@nongnu.org>; Thu, 06 Aug 2026 09:39:43 -0700 (PDT)
+ id 1ws18A-0000HC-O0
+ for qemu-arm@nongnu.org; Thu, 06 Aug 2026 12:39:44 -0400
+Received: by mail-pl1-x62a.google.com with SMTP id
+ d9443c01a7336-2d02b4c3601so28539225ad.3
+ for <qemu-arm@nongnu.org>; Thu, 06 Aug 2026 09:39:42 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1786034382; x=1786639182; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:from:to:cc:subject:date
- :message-id:reply-to:content-type;
- bh=LaQaHfv4P6MPUegXLFMZw8cHU7pJYmdlkVEOwBnBYgg=;
- b=j2jB4lBlGpdWd9TH9GJtUlesZiKkoUfQAH7YGpX2onvpvFJfRs1OqC9/DIJVZcPZKt
- Ifiy7Cc7m1qN19CkC99a1JWY2fEvfWKabirZKLezKALs2LYblimeYMAwVrXaiopF97ON
- fDAiAAWcZRl3NImXnilxh+In2Pvtwq/tgJ9p3CeIOICFwjHs52GUhMw4WTrCISAoX4fY
- uCnIDjBW5KDpb/Q9DsKDONjiq5kMy/BswEmxWmVthu+b9Ay1LLtIYVUjnIfayResxHon
- 6PSYAYjlocjxD1iZB4z9I5+T2EvS6i07EWe5SWe+VlpZinRX804L1gU66oLY26g8TlSS
- FPrw==
+ d=linaro.org; s=google; t=1786034381; x=1786639181; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:from:to:cc:subject:date:message-id:reply-to:content-type;
+ bh=RP6TEj1SzUuvCX0BFE+H9j0Fl0KSHgDaUnXUDRz6XSY=;
+ b=G1AT7y3DBYWysDrtb+W+4QvMZFjJsrD0cuVEt42HdGhjDS6TiztPgB66jVnolEDZAd
+ Zkja2qM+k5UwgkR/WiEPHj4Zyyt9Ui6bewaMlL7ho4jxULRefBI4vT43wZvCMrg62Ynl
+ Co/ofIPbtlABaJrIiuPIHuER3OolP8tdf9BtAXaIHugEVyB7RJs7DbYAONP8n2EIlqvO
+ lRm9uZlQKxFDnN6wmIbMkeqdwWA7MO0dMQbRVPwJnHn8jWtacRWrxo4RlYYW/1pTrWbx
+ 876aAmKoJnaK1DYfz6afCK3ICX0qEKCt+8uVScnPbVS0XEmpiAYp6F5WgT7PUg5po1Fr
+ 0bgg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1786034382; x=1786639182;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
- :to:cc:subject:date:message-id:reply-to:content-type;
- bh=LaQaHfv4P6MPUegXLFMZw8cHU7pJYmdlkVEOwBnBYgg=;
- b=hG15zuy+5XGeNfRtJLYn8HgtzlvXBqRYL428GjAHWMto0FfFpveBRlMkdybh9/rcml
- z5tW/wKsj7rBWWLj56h3wwZCQHl2Xr1F0t+0hvrqruRQ3nTQiAXVoGONfvCM4AGgiBSn
- ktGcFYW/HLMquhp4sX49ZQxmLjoOCaEuNlVVImBa8sLjXjUU4NQjvG6CYxSLCqRyzYva
- J/zDP2jZzxd2mhpSglPr7B6TYMCybOzL8mAq6FLOOlJXIduJcnloknW6GScHzm6SgNdo
- il+pJZGCMCI/yOrV/1dccDmV/gCaAgsm8pdys2Mx0brtEtM+ZKkWwa3s58MZ20aqaFvL
- VdQw==
-X-Gm-Message-State: AOJu0YwKsG9kO1eRcnb2HXLsg5kyMclAr0gV4X01sMEPc9GDESSq8Qj3
- HopYcNrVbg7cQwgMSUsBw273TtYJtPyFobZ1rFqrNJKNIaLmn68kTGjCfxpMDiftsiNFDM5VOAl
- Sm4OR
-X-Gm-Gg: AR+sD10ua/COqOyLYqxm+ckuvH0OHO16rqypblaWkJM8RIEDn+P+agvWHDMfPFuUiuN
- j0Bi09iDwVC5Baqqbqbt1rWq3nP8kFHEf8K0wxTE28xLxLbYZxj4xZJtgQxe+Y+t3T13D5oJezo
- mYvDQmTByi8tWqbk1oNOJIVoV72pBtpjNcHQAyvP7FcDV9yG8/Q6rCGg7ZGZI9iRh9Bv3PptmAH
- X1PTeLoJ6gymCujhiboQ4KqR9YMP+42Fuhhf1l3AJgvuMsz/1/J0e/5PaQeRhcrxepDnzJqqc3M
- H1RCJLxBwIwBO0eGfz7UtoEl3KJeUSqyRz50DjYSXGsLxS3htF3wZpbDYf1d/mvs8W9LVycG1wk
- ytms7eMpj9RPgig40OYMwRu4x3RR+ro+eaqgtqVJgsKp7Pe3WNvi8OxfYPVWnctH0WjeEcktZIf
- ZqjeUU1fBYcM1jwUOGJHzJsyWlhPuKT8IxokEGJ01wq/woMSC5GQIsS1rox7ppANRr8x00LhZzP
- NrxeJXzmtNPJXinOI3s
-X-Received: by 2002:a17:902:fdad:b0:2bf:9760:b94d with SMTP id
- d9443c01a7336-2d0ca7fd072mr206644015ad.15.1786034382419; 
- Thu, 06 Aug 2026 09:39:42 -0700 (PDT)
+ d=1e100.net; s=20251104; t=1786034381; x=1786639181;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+ :message-id:reply-to:content-type;
+ bh=RP6TEj1SzUuvCX0BFE+H9j0Fl0KSHgDaUnXUDRz6XSY=;
+ b=nkVwccQ9pwsn7K/4rz97IEbsBrQMklIUfidKvaql5UlsfXf86akvNiZPWkrKPAFxhh
+ AblpqsUhCKUkNn2twUPkByJURfvKgPJOaufKPB1iO7+WM1oX+1sTXAfntW9pIqh3ViYr
+ 4bwpnjwEUmOei9bAVSFy2gtsD2UU1kHscTzELZMBCBnH5BSU5ryOXSW7gd4Xtb3wdTxY
+ uvJWCw8AiqApXcMeNVeNCaVJk28/SzIezysUxNoHrRsbJa+kb+WY03M1XH16AsCh9yz2
+ mfJ0On/UEHIz3cNgk1vSakgz2e1T0kOZebCVH+PZBKjhXbxaHFWI4rTSytvJuv2jt4/I
+ 5rYQ==
+X-Gm-Message-State: AOJu0YxN03vq4QqFx7HO80M70gSwxtvkWeSy9l4eJwRBV4s9tF5zfcha
+ oU0Y40yIffsHReIy7EO/Ue8B9519ikO5uHASaRgOgpQowDmtgZ9jmh1E+xcElqI1Ex9XALS0yfi
+ 8Q/nZ
+X-Gm-Gg: AR+sD12tRA7/VCI/uCX3JHOfPeazUkN7mV0Z5XeO14EWsVTW9Ej2kCrBISuaQiUPD8Z
+ jamLgrA8wzvjkTFfjBwRXtFtnHCgI3GjQ1ClhFouah7Qr82FBaInoLOSWZ10CchQ6ASsXq3zg9p
+ sUs+5rCuWlkSJ5ldYQn43Fo3dt8+JCU2+jqJLe1idce1jcTzwj/utcQgVriWQvRvKzD4ZcoP0CA
+ 7fmy0Q531vjZf0kgQxoBbEz/UC9n9zQEwTVnDSI+6fHCZTnXbiP7WMMD+AL1zylikZqM3MU2NPq
+ 7QhNwUN+ngoOdEKgn0fC3VKEDmlF58JPFijSOjfVmkFOqp9dN/DwmHod6XziRqXPdOwvJzxjnol
+ JU/NOtppD5Y2PbZStVAXHVXafD3ORRnP7/Ocj80D1+VbySlG66WVXVVCgaifDiITL2B0kkGdvNm
+ AYBENkkl0CZOK1U4ySufNs20BooLcJ4wpa1Gcfn3N0qCNR6q6biATPgOyZtn6TedhVZ/k192noW
+ LVOTWfFkgbu6FXK3HPpkw==
+X-Received: by 2002:a17:902:ea01:b0:2ca:9d5a:8b6c with SMTP id
+ d9443c01a7336-2d0ca712d79mr174851365ad.5.1786034380767; 
+ Thu, 06 Aug 2026 09:39:40 -0700 (PDT)
 Received: from stoup.. (174-21-93-59.tukw.qwest.net. [174.21.93.59])
  by smtp.gmail.com with ESMTPSA id
- d9443c01a7336-2d0aa4ec8c7sm34280735ad.80.2026.08.06.09.39.41
+ d9443c01a7336-2d0aa4ec8c7sm34280735ad.80.2026.08.06.09.39.40
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 06 Aug 2026 09:39:41 -0700 (PDT)
+ Thu, 06 Aug 2026 09:39:40 -0700 (PDT)
 From: Richard Henderson <richard.henderson@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org
-Subject: [PATCH 2/7] target/arm: Pass ARMCPU to aarch64_aa32_a57_init
-Date: Thu,  6 Aug 2026 09:39:34 -0700
-Message-ID: <20260806163939.328201-3-richard.henderson@linaro.org>
+Subject: [PATCH 0/7] target/arm: Introduce cpu types max-v8 and max-v9
+Date: Thu,  6 Aug 2026 09:39:32 -0700
+Message-ID: <20260806163939.328201-1-richard.henderson@linaro.org>
 X-Mailer: git-send-email 2.43.0
-In-Reply-To: <20260806163939.328201-1-richard.henderson@linaro.org>
-References: <20260806163939.328201-1-richard.henderson@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::62f;
- envelope-from=richard.henderson@linaro.org; helo=mail-pl1-x62f.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::62a;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pl1-x62a.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -101,65 +98,34 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-There's no reason to pass Object when ARMCPU is more appropriate.
+This is something that we've talked about for quite some time,
+having separate "max" cpu types for Armv{8,9}, because Armv9
+prohibits some deprecated Armv8 features.  Retaining all features
+simultaneously has the potential to cause confusion.
 
-Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
----
- target/arm/internals.h | 2 +-
- target/arm/cpu-max.c   | 5 ++---
- target/arm/cpu64.c     | 2 +-
- 3 files changed, 4 insertions(+), 5 deletions(-)
+r~
 
-diff --git a/target/arm/internals.h b/target/arm/internals.h
-index 4026f67579..9c9196475b 100644
---- a/target/arm/internals.h
-+++ b/target/arm/internals.h
-@@ -1813,7 +1813,7 @@ void aarch64_max_tcg_initfn(Object *obj);
- void aarch64_add_pauth_properties(Object *obj);
- void aarch64_add_sve_properties(Object *obj);
- void aarch64_add_sme_properties(Object *obj);
--void aarch64_aa32_a57_init(Object *obj, bool aa32_only);
-+void aarch64_aa32_a57_init(ARMCPU *cpu, bool aa32_only);
- void aarch64_host_initfn(Object *obj);
- 
- /* Return true if the gdbstub is presenting an AArch64 CPU */
-diff --git a/target/arm/cpu-max.c b/target/arm/cpu-max.c
-index 089f514bd8..d7f2500353 100644
---- a/target/arm/cpu-max.c
-+++ b/target/arm/cpu-max.c
-@@ -16,9 +16,8 @@
- #include "target/arm/internals.h"
- #include "target/arm/cpregs.h"
- 
--void aarch64_aa32_a57_init(Object *obj, bool aa32_only)
-+void aarch64_aa32_a57_init(ARMCPU *cpu, bool aa32_only)
- {
--    ARMCPU *cpu = ARM_CPU(obj);
-     ARMISARegisters *isar = &cpu->isar;
-     const bool aarch64_enabled = !aa32_only;
- 
-@@ -205,7 +204,7 @@ static void cpu_max_initfn(Object *obj)
- 
-     assert(tcg_enabled() || qtest_enabled());
- 
--    aarch64_aa32_a57_init(obj, !aarch64_enabled);
-+    aarch64_aa32_a57_init(cpu, !aarch64_enabled);
- 
-     if (!aarch64_enabled) {
-         aa32_max_features(cpu);
-diff --git a/target/arm/cpu64.c b/target/arm/cpu64.c
-index 2816735577..e3ee0253a0 100644
---- a/target/arm/cpu64.c
-+++ b/target/arm/cpu64.c
-@@ -688,7 +688,7 @@ void aarch64_cpu_lpa2_finalize(ARMCPU *cpu, Error **errp)
- 
- static void aarch64_a57_initfn(Object *obj)
- {
--    aarch64_aa32_a57_init(obj, false);
-+    aarch64_aa32_a57_init(ARM_CPU(obj), false);
- }
- 
- static void aarch64_a53_initfn(Object *obj)
+Richard Henderson (7):
+  target/arm: Tidy cpu_max_initfn
+  target/arm: Pass ARMCPU to aarch64_aa32_a57_init
+  target/arm: Pass aarch64_enabled to aarch64_aa32_a57_init
+  target/arm: Sink aarch64_aa32_a57_init into aarch64_max_tcg_initfn
+  target/arm: Introduce cpu types max-v8 and max-v9
+  target/arm: Use -cpu max-v8 with aarch64=off
+  target/arm: Separate cpu types max-v8 and max-v9
+
+ target/arm/internals.h                        |   4 +-
+ hw/arm/sbsa-ref.c                             |   2 +
+ hw/arm/virt.c                                 |   2 +
+ target/arm/cpu-max.c                          |  14 +-
+ target/arm/cpu64.c                            |   2 +-
+ target/arm/tcg/cpu64.c                        | 408 +++++++++++-------
+ target/arm/tcg/stubs32.c                      |   2 +-
+ tests/qtest/arm-cpu-features.c                |   4 +-
+ docs/system/arm/emulation.rst                 |  11 +-
+ .../aarch64/test_virt_aarch64_off.py          |   4 +-
+ 10 files changed, 269 insertions(+), 184 deletions(-)
+
 -- 
 2.43.0
 

@@ -4,82 +4,79 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4CC40C56205
-	for <qemu-arm@archiver.kernel.org>; Thu,  6 Aug 2026 17:32:33 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 05452C5AC80
+	for <qemu-arm@archiver.kernel.org>; Thu,  6 Aug 2026 17:32:35 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1ws1wN-0004px-LN; Thu, 06 Aug 2026 13:31:35 -0400
+	id 1ws1wH-0004kS-9f; Thu, 06 Aug 2026 13:31:29 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1ws1wL-0004nj-Ml
- for qemu-arm@nongnu.org; Thu, 06 Aug 2026 13:31:33 -0400
-Received: from mail-pj1-x1032.google.com ([2607:f8b0:4864:20::1032])
+ id 1ws1wG-0004kC-4u
+ for qemu-arm@nongnu.org; Thu, 06 Aug 2026 13:31:28 -0400
+Received: from mail-pj1-x1033.google.com ([2607:f8b0:4864:20::1033])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1ws1wJ-0001gt-8N
- for qemu-arm@nongnu.org; Thu, 06 Aug 2026 13:31:33 -0400
-Received: by mail-pj1-x1032.google.com with SMTP id
- 98e67ed59e1d1-381b831d535so2918270a91.0
- for <qemu-arm@nongnu.org>; Thu, 06 Aug 2026 10:31:30 -0700 (PDT)
+ id 1ws1wE-0001dw-Jd
+ for qemu-arm@nongnu.org; Thu, 06 Aug 2026 13:31:27 -0400
+Received: by mail-pj1-x1033.google.com with SMTP id
+ 98e67ed59e1d1-38759bcd877so2682247a91.2
+ for <qemu-arm@nongnu.org>; Thu, 06 Aug 2026 10:31:26 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1786037490; x=1786642290; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:from:to:cc:subject:date
- :message-id:reply-to:content-type;
- bh=sF6vo6buf2buHSJtaG2kN2rWhatR3Lo0cYJzfphOzAc=;
- b=i2s94HipVOho1WbYlVPsNDlS/cUQUCAQn+0qmhUEF05sLkK5r18XMpekDFPeVzYxRT
- +qjK9Cuj2qfA5mgw+Fli3KoexhLv405SCJB8AAC/s2/FA967PrQcDk59MOCGBLeShii9
- 4NcNdAS+G6kYAgvgqhZv5Gkru+tx+VK+4v1EcKYpOyMn1OZYMeJWocdmpTRollHeeJJy
- DoK92ox3F2wMK5XMaK53M72WjzsDb/oShNhVvaLQLmbQ++znLVSwgNnArINQz2PlqzPO
- Hp5dPLR2OAEjF4WXAsKPoa0suaDkivOKiZddhCv3wFMIoOOgH3VhNFuDZBsp9YxydMic
- TSrg==
+ d=linaro.org; s=google; t=1786037485; x=1786642285; darn=nongnu.org;
+ h=content-transfer-encoding:content-type:mime-version:message-id:date
+ :subject:cc:to:from:from:to:cc:subject:date:message-id:reply-to
+ :content-type; bh=07u5YTaFdMyIfjVN9mh6eEqYjKyp9O2lMI/JzkKOJ4Y=;
+ b=lg4Rg0YffxBIrJ/8vCLjfGIw6FcXjtNQEKM5g1r/Kog5gijdAk5lJyzDVvDrhSE9id
+ lLKeYEeh2/HAsP5GE9C7gtJwLd0aRhsdvvnXsY8muY6a/gmgut/nHuWBvmLgjHsfcxn6
+ e+ZfpNSrDtXuqMvYotnD3k+NFXK5lYTSRWQ0PIh3cIiulF9gsn6YCl71x1oZqeeZVjBc
+ I5aKbzhbQ0wXkd7DuIHZIsRf3RF9UyJHOpeYulio5q5fqRpSyLlYOrncJ+nxiaOVUEKl
+ PFnCshKBQXT/GUbRzM4QpmyRdPATCRengL0DcOZ1rq2jkS8ctPq1+jd/f6DzofC1T8qx
+ WQ2w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1786037490; x=1786642290;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
- :to:cc:subject:date:message-id:reply-to:content-type;
- bh=sF6vo6buf2buHSJtaG2kN2rWhatR3Lo0cYJzfphOzAc=;
- b=pB/IyY4diLr/tN16tiLI2qJN9hBKuX2LVZlFbekYjaeVtUMPMq3TnhvbmnYHk2WyrM
- LylCUIZluuSJM3+JClCaic9i5GIS0vXCjw/FxShWsKrJtZZ3ahhfnW7wW5r4z2d9ksU6
- vvYnS3lFRwaejUdc5a8tSVbWoyC31B/WTsRR1bdrPJ2Jr0l9ReMf8QkLvaHosm4K0ShL
- D6RWwE+Qd/8eiqfvywAnkU4PajpbHrb1aydXXcJdPh1nJTa6sHj5WDhV4lCdrPXJFzwI
- XMC+qqkO0p2wLo079OfgTP2tARwVPN7EtTWwAEJNQD25n7847/5rAxWVtuqztFZbFElx
- GYlw==
-X-Gm-Message-State: AOJu0YzUxehBNfIPfP7Vhln5P6f/UZqg3zhCdPjdmoLYw5FHq/zayKcw
- ApweDbnylNwQRe4iLFr5kWTrNNEViqJcAcormeuvVWGBcioTlteGoAqxdqdbDIjdYybjWX15z3j
- jbL1Y
-X-Gm-Gg: AR+sD13fRDGwuL+PjmF6sc4Y+bqGZr0K/ffH4faZHj3IHORFhrvQS/yE54qJpMKSGv6
- 3KpdBxRerBrtOuh7MLaAJNXOZAVpDMfT6331MzOtiVdfRFnF00KlBOl1PfRWyV8zDQeEyxhoqRD
- bd39sbp9Qh9RYHTRoe4D5KUGBKx5Otncm3snmf7mRPx96rSB6OKqi1gNe5OC5DRJXhB/ooVhJlT
- 6D63LX+5gMUTwc0WLZpiLAf5AzD3hYNe1ZHeGa7A31cyiwtYaYBzq42GlhehkW+JexQH8RYZIUV
- J9vx1qxwYmw64v1niEqNQ3V7jllCPOsK2eclq31WXe0270kOqLGi/Ll9iOn2rddWWB36vE69ZIO
- MRde9JaRYJb1+kPJorbZGpMNpdq3muN4Pgjqq3vCkzpy6XW2VTYBTovpgM16G21QTGpa99TGZ0n
- PNze+awxqogn10v/4/RkThd4Uyi+yZ8RCuczpgq1ilActHrsiMtfs9XDqfxoOHeZligsr8T4qGs
- OR35Riyhp6cveMpAlXC
-X-Received: by 2002:a17:90b:1dc4:b0:38e:49c0:75a7 with SMTP id
- 98e67ed59e1d1-3903c537808mr17786572a91.8.1786037489679; 
- Thu, 06 Aug 2026 10:31:29 -0700 (PDT)
+ d=1e100.net; s=20251104; t=1786037485; x=1786642285;
+ h=content-transfer-encoding:content-type:mime-version:message-id:date
+ :subject:cc:to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject
+ :date:message-id:reply-to:content-type;
+ bh=07u5YTaFdMyIfjVN9mh6eEqYjKyp9O2lMI/JzkKOJ4Y=;
+ b=CqIRfo3HcxoOwSvPknYmsbrP3C9l6tv4NjzA0nL18K9pYWl8GpF73J1BjAOVvkvsNe
+ 0cAACLxeeC7otrMAoQGa65VhTpvVeDOTmnENrsiaU2RT4lZQhm5HYjs3tRo56h1D2wts
+ ctYT+S9d9U3YTpKIguvnVnZEaOtzbW3U0ae3BGOYIT/TK1Esq+NSIdTjJW+aScipapX/
+ mJODO0pOKptm+L7dYTcwn5uAGg0qAnwV4f+SHMvjKUrB6bD+oJ+Wp5VJE9vVtWkBCXKa
+ 48MlE492yUERQKSbktVn5S4f0Z58YMM+t8s6u/eUFczU/khbBHfWwwjWTP7mqqV73tPs
+ Lbxg==
+X-Gm-Message-State: AOJu0Yyh2qJ9VXadDUhYCauJc0n3FMVJaxzY46X2EXSbVhfoiYLujBRb
+ NqeLnVCuGzzbHvIb58yh8BrheRG4esc9sDbCGuWzakMhOiR7kQLJNnGg8R7RAPGlyPeQyH4ISfM
+ GEdj5
+X-Gm-Gg: AR+sD10G9YBL5TREBFPjO1IeS7S/WD6J7a/zk7TXK49zBn+WBqCZr1QlGlb0EiJgTFw
+ 7UpfvIS7/osapQEFxmZg+zsK47pgkvJDdDr0RLOyyApHcYBYQbl5VXRCX9LGRNTO4OhaqQo1+IM
+ lMpr+9vhh5eSLaG1LYSqkEEtRBjY5UjvZHQvxqaAW7q09/Wb1h9+BtRbYLoZqTr2+wbpY6ccqpi
+ lJ3rX2JzlwPqjEDUOiAmg7+MiFGRPwzBquc93UvFyOAaSsAfb4r9w30ic92FMiop7KLU/8GZ4fP
+ qu2fD6LS301Z/Zh3BO09Re5JsMxAX3b0wNOsTquPCQ4tMv0VsWalvx1cHdgLQLIJbfXAIss7FQI
+ PgUUpN8ctnSEwoLz2yjHU6au5jnXFzIWI/tcRJTKR/b9NvpOasR+wEe5mHwj4SEpOemnFqqdc/v
+ fHNVf84DAMJEa87QdAE7gaT/VK0C5hsl2TENYDIpjqtD5woz5vZF0TOFHK6LiPQFwlifFGeJIRs
+ Vut42ti8dxUYTU/4rnr
+X-Received: by 2002:a17:90b:48c9:b0:38e:97f0:aa4b with SMTP id
+ 98e67ed59e1d1-3903c58f06fmr16477872a91.13.1786037484939; 
+ Thu, 06 Aug 2026 10:31:24 -0700 (PDT)
 Received: from stoup.. (174-21-93-59.tukw.qwest.net. [174.21.93.59])
  by smtp.gmail.com with ESMTPSA id
- 98e67ed59e1d1-39085e4a2a5sm1983711a91.14.2026.08.06.10.31.29
+ 98e67ed59e1d1-39085e4a2a5sm1983711a91.14.2026.08.06.10.31.24
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 06 Aug 2026 10:31:29 -0700 (PDT)
+ Thu, 06 Aug 2026 10:31:24 -0700 (PDT)
 From: Richard Henderson <richard.henderson@linaro.org>
 To: qemu-devel@nongnu.org
-Cc: qemu-arm@nongnu.org,
-	Peter Maydell <peter.maydell@linaro.org>
-Subject: [PATCH v2 6/6] target/arm: Enable FEAT_IDTE3 for -cpu max
-Date: Thu,  6 Aug 2026 10:31:23 -0700
-Message-ID: <20260806173123.333423-7-richard.henderson@linaro.org>
+Cc: qemu-arm@nongnu.org
+Subject: [PATCH v2 0/6] target/arm: Implement FEAT_IDTE3
+Date: Thu,  6 Aug 2026 10:31:17 -0700
+Message-ID: <20260806173123.333423-1-richard.henderson@linaro.org>
 X-Mailer: git-send-email 2.43.0
-In-Reply-To: <20260806173123.333423-1-richard.henderson@linaro.org>
-References: <20260806173123.333423-1-richard.henderson@linaro.org>
 MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::1032;
- envelope-from=richard.henderson@linaro.org; helo=mail-pj1-x1032.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::1033;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pj1-x1033.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -102,40 +99,35 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
-Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
----
- target/arm/tcg/cpu64.c        | 4 ++++
- docs/system/arm/emulation.rst | 1 +
- 2 files changed, 5 insertions(+)
+Based-on: 20260806172709.333300-1-richard.henderson@linaro.org
+("[PATCH v2 0/6] target/arm: Implement FEAT_FGWTE3")
 
-diff --git a/target/arm/tcg/cpu64.c b/target/arm/tcg/cpu64.c
-index 4b9d01420a..e46d9f71c4 100644
---- a/target/arm/tcg/cpu64.c
-+++ b/target/arm/tcg/cpu64.c
-@@ -1456,6 +1456,10 @@ void aarch64_max_v9_tcg_initfn(Object *obj)
-     t = FIELD_DP64(t, ID_AA64PFR2, FPMR, 1);      /* v9.2: FEAT_FPMR */
-     SET_IDREG(isar, ID_AA64PFR2, t);
- 
-+    t = GET_IDREG(isar, ID_AA64MMFR2);
-+    t = FIELD_DP64(t, ID_AA64MMFR2, IDS, 2);      /* v9.0: FEAT_IDTE3 */
-+    SET_IDREG(isar, ID_AA64MMFR2, t);
-+
-     t = GET_IDREG(isar, ID_AA64MMFR3);
-     t = FIELD_DP64(t, ID_AA64MMFR3, MEC, 1);      /* v9.2: FEAT_MEC */
-     SET_IDREG(isar, ID_AA64MMFR3, t);
-diff --git a/docs/system/arm/emulation.rst b/docs/system/arm/emulation.rst
-index 392db5ccf9..bb1a8da002 100644
---- a/docs/system/arm/emulation.rst
-+++ b/docs/system/arm/emulation.rst
-@@ -105,6 +105,7 @@ the following architecture extensions:
- - FEAT_HPMN0 (Setting of MDCR_EL2.HPMN to zero)
- - FEAT_I8MM (AArch64 Int8 matrix multiplication instructions)
- - FEAT_IDST (ID space trap handling)
-+- FEAT_IDTE3 (Trapping ID register accesses to EL3)
- - FEAT_IESB (Implicit error synchronization event)
- - FEAT_IVIPT (The IVIPT Extension)
- - FEAT_JSCVT (JavaScript conversion instructions)
+Changes for v2:
+  - Rebase on the max-v9 split.
+  - Continue to ignore HCR.TID3 in v7 for undefined ID regs.
+
+r~
+
+Richard Henderson (6):
+  target/arm: Rename isar_feature_aa64_idst
+  target/arm: Enable writes to SCR_EL3.TID{3,5}
+  target/arm: Implement HCR_EL2.TID3 trap on undefined TID3 registers
+  target/arm: Implement SCR_EL3.TID3
+  target/arm: Implement SCR_EL3.TID5
+  target/arm: Enable FEAT_IDTE3 for -cpu max
+
+ target/arm/cpregs.h            |  8 ++++++++
+ target/arm/cpu-features.h      |  7 ++++++-
+ target/arm/cpu.h               |  2 ++
+ target/arm/tcg/helper-defs.h   |  1 +
+ target/arm/helper.c            | 37 ++++++++++++++++++++++++++++++----
+ target/arm/tcg/cpu64.c         |  4 ++++
+ target/arm/tcg/op_helper.c     | 23 ++++++++++++++++++++-
+ target/arm/tcg/translate-a64.c | 12 +++++++++--
+ target/arm/tcg/translate.c     | 18 +++++++++++++++++
+ docs/system/arm/emulation.rst  |  1 +
+ 10 files changed, 105 insertions(+), 8 deletions(-)
+
 -- 
 2.43.0
 

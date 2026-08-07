@@ -4,104 +4,98 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BCF01C5AC7A
-	for <qemu-arm@archiver.kernel.org>; Fri,  7 Aug 2026 05:28:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 060D0C5AC7A
+	for <qemu-arm@archiver.kernel.org>; Fri,  7 Aug 2026 10:40:56 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wsD6W-0001fh-4y; Fri, 07 Aug 2026 01:26:48 -0400
+	id 1wsI0R-0000vb-6B; Fri, 07 Aug 2026 06:40:51 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <anisinha@redhat.com>)
- id 1wsD6V-0001bL-0D
- for qemu-arm@nongnu.org; Fri, 07 Aug 2026 01:26:47 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <anisinha@redhat.com>)
- id 1wsD6S-0000lI-AS
- for qemu-arm@nongnu.org; Fri, 07 Aug 2026 01:26:46 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1786080403;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=ZKKGgGsVHR37Q1D3k9moZI+JjFxXgVSBj6VsdJGD0ws=;
- b=KS9tyLNgw6Yzerwyh/7gAiZtLQximbj/hJqSjW+4HBW5gCu2T1FYghg1K2TXXT6wTNYx27
- KCOPjm2rK+PkuXpnKcjpI2ZoffIbmbQjmut3f7ET6cImZPyZVgCHdJVjLVf0Z5r+udqmmQ
- eP5okky+LfycgLqQm/XNuGB4vEIjKP0=
-Received: from mail-pl1-f198.google.com (mail-pl1-f198.google.com
- [209.85.214.198]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-249-E4_n0-hYMkeuobnTvgTkyA-1; Fri, 07 Aug 2026 01:26:42 -0400
-X-MC-Unique: E4_n0-hYMkeuobnTvgTkyA-1
-X-Mimecast-MFC-AGG-ID: E4_n0-hYMkeuobnTvgTkyA_1786080401
-Received: by mail-pl1-f198.google.com with SMTP id
- d9443c01a7336-2cfa55c9430so31037735ad.0
- for <qemu-arm@nongnu.org>; Thu, 06 Aug 2026 22:26:42 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <jeuk20.kim@gmail.com>)
+ id 1wsI0O-0000uZ-FY
+ for qemu-arm@nongnu.org; Fri, 07 Aug 2026 06:40:48 -0400
+Received: from mail-pj1-x1033.google.com ([2607:f8b0:4864:20::1033])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <jeuk20.kim@gmail.com>)
+ id 1wsI0L-0001mK-Us
+ for qemu-arm@nongnu.org; Fri, 07 Aug 2026 06:40:48 -0400
+Received: by mail-pj1-x1033.google.com with SMTP id
+ 98e67ed59e1d1-38759bcd877so3403295a91.2
+ for <qemu-arm@nongnu.org>; Fri, 07 Aug 2026 03:40:45 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=gmail.com; s=20251104; t=1786099244; x=1786704044; darn=nongnu.org;
+ h=content-transfer-encoding:content-type:in-reply-to:from:references
+ :cc:to:content-language:subject:user-agent:mime-version:date
+ :message-id:from:to:cc:subject:date:message-id:reply-to:content-type;
+ bh=poF5Jb9cl4x27B2EQOVFaeC4vqNMHWS87TvXHvegPw0=;
+ b=hYwDeDYrkzXW5sT8U84oDNJncrpnoF++I9k2XgLCTD8S1hNTunWWlqamHCkUkBbndN
+ gLRxO9/BY6iyOGJw+X9TnBqRbv56pO4nRJ9fnBCfsqG6e64cxywDGHIaKayW9sayEfcx
+ 15rOvgI0ok6g0RHhFxle2pVSt8fCAaWF66+UVdFEI34O1VIIAltfVhqogvJeNOkfkpR+
+ phNq+RFYavvdcaRkzK32roA8wv0WXvR3yIFRGOgko2fxlhT109e7XB1I3PWBos6zvMwd
+ jAoy1CZfbosRWOs6FHY3JS3uUb0Q63ajVRuQ7HBeapc4eByBF+sYf9OjAqBQ3BS3R0wb
+ 514Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1786080401; x=1786685201;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
- :to:cc:subject:date:message-id:reply-to:content-type;
- bh=ZKKGgGsVHR37Q1D3k9moZI+JjFxXgVSBj6VsdJGD0ws=;
- b=Wg0C3OhylLkNSzPmyTePu9NIJ9mfnhTE4ubC6kjzcO268/NVyc4fpZ7z6sngGOIZTs
- udZL/VlFcyUlE3WldiuUB9hA/fCPGFPGmHhxLEaIa8Huj4685Wns7WofsNlm+RdCsDKc
- N1sVDgYPgq1OArzfQ8F2BybD7pHhGKZm6yBsKShqi9p3aJAL28p5TS6frw11yLQviVsH
- jhGac9JnwadZzutwAk0CW7n+tD+sqWAw9vMu6F+x7PDIdDybh0CgfWqC8up7lO+ColJd
- 9VI46pKtOWOJ9Ly7+eZuFidzlXnXPQtdROfzAvOC5gySmgnsVj2dIIMsd8R6c5MyBXXh
- o9kA==
+ d=1e100.net; s=20251104; t=1786099244; x=1786704044;
+ h=content-transfer-encoding:content-type:in-reply-to:from:references
+ :cc:to:content-language:subject:user-agent:mime-version:date
+ :message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+ :message-id:reply-to:content-type;
+ bh=poF5Jb9cl4x27B2EQOVFaeC4vqNMHWS87TvXHvegPw0=;
+ b=sntiyF1GN8EcsAPSPOBIWWp2fkQz8RTYNUqHV2VSYnp0u7qMcA8WKidzKPtAqAmve0
+ EG4/eet8e8UCuv+gyeS5jX5yCpDBRFbkezcBVgR5CJdm+qyDPs7SMbm3ZbD2zgvGrAxh
+ jhj4d217B3hx58zp1+KayVFhjFkXsF2EfNcmFZRXODaZK+TcUKmzcizQk8E8tzCjr3Z1
+ VJVcM2Ip1ZtT7kqoNa5jtg8Da1qY/ixB33bLw0GfhQvUj2nSZ8oHJY0v3qgDxlxFIGf9
+ vGqoli2e8cC9yT51bnz2fo5F2NhKXfg9X9hoj8YjSN/ylIFXV61hWEzSuDoY6p1KGnry
+ sDXg==
 X-Forwarded-Encrypted: i=1;
- AHgh+RqZ+Ll7KmYqZb6q4SvnQUjuDlIacJ9h22MN+T+ZkSh3l9D1p/lk20ZhAetvDNKex4/tOIO+cNXghQ==@nongnu.org
-X-Gm-Message-State: AOJu0YxHghq0fU5Fc0hTpz4auOugYGJ7dy9MlWgNSjKLrIntfOPrAN9X
- ofwTp2bIX6s9l1BWE5VgIRzT6Sk24Keo5PekqbpEXWvn12RmSr6YhKcF6ILoZkjdu+4VYEKL88g
- KGrqJKCP9lJWLGE4yEBBKdpoN98oTsOoTSu4j51Io1Gs2qaYQYHyKWQ==
-X-Gm-Gg: AR+sD13X+TcmXmqgZDcuDD4MD3XINO6PFyEgBXygPDqRIZebpUjYNSOcIoXRrNS1VAT
- 4sFgcicKCsMqCXbw42PocEG/t6igcSOqIp8ckL6ia+Mr7H4hgT0KzZAsv0L9jzv8RHMQtM7ARwO
- dDWzmAV1u276EV+asONf8amY7du9IzT5dVB6oudx8pJolJck57fWi+frb6MnR5TzsEIa8crBDfe
- wB8kXmZYVtW4g53bcg0quInPw+sYGcdbVNCDYaJW5oqXML71vR1Ik6GkQ40QILFWDZRAEz/X2US
- lPhRGY3m0shihgmDN6MbbKf/D2/nFyklVYzfpyENbFp88CcKF2PXAXIT5Ve+4WIFE2I1phpn258
- 5cOy6uQEkBI9linZocZq1SPemvJXvy6+Mdw==
-X-Received: by 2002:a17:90b:520a:b0:366:10f1:3d91 with SMTP id
- 98e67ed59e1d1-3903c54adbamr20782421a91.1.1786080400833; 
- Thu, 06 Aug 2026 22:26:40 -0700 (PDT)
-X-Received: by 2002:a17:90b:520a:b0:366:10f1:3d91 with SMTP id
- 98e67ed59e1d1-3903c54adbamr20782385a91.1.1786080400226; 
- Thu, 06 Aug 2026 22:26:40 -0700 (PDT)
-Received: from rhel9-box.lan ([106.219.133.98])
- by smtp.googlemail.com with ESMTPSA id
- 98e67ed59e1d1-3908616d21esm3316334a91.17.2026.08.06.22.26.36
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 06 Aug 2026 22:26:39 -0700 (PDT)
-From: Ani Sinha <anisinha@redhat.com>
-To: Peter Maydell <peter.maydell@linaro.org>, Ani Sinha <anisinha@redhat.com>,
- Gerd Hoffman <kraxel@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
- Zhao Liu <zhao1.liu@intel.com>, Fabiano Rosas <farosas@suse.de>,
- Laurent Vivier <lvivier@redhat.com>
-Cc: agraf@csgraf.de, graf@amazon.com, qemu-devel@nongnu.org,
- qemu-arm@nongnu.org
-Subject: [PATCH v4 10/11] Add functional and unit tests for the
- vm-launch-update device
-Date: Fri,  7 Aug 2026 10:55:52 +0530
-Message-ID: <20260807052559.50643-11-anisinha@redhat.com>
-X-Mailer: git-send-email 2.42.0
-In-Reply-To: <20260807052559.50643-1-anisinha@redhat.com>
-References: <20260807052559.50643-1-anisinha@redhat.com>
+ AHgh+Rp6j7odNJ62COtBSsOCH2NofvCsNt6D6uI5U5naICpH1Ge5e10t9IIvgoDCbg1/cGhNM5dYUFHImw==@nongnu.org
+X-Gm-Message-State: AOJu0YwGkCI/1YLiPl20vGkWmBXLzsZAp6rGTipS7msVv/bsDIpUnMui
+ 3swavOrb4OCGWihOEMERz84AIOuc/iBiWefnBCdlDDuozYTXqVkMBWZf
+X-Gm-Gg: AR+sD12HGQ5Yf4HhIV3HeVht5twpvNJEqQ+afC8a2Nw8BVXsVZgNSSDRf/EMwqkem5m
+ Wc1lmXmcnr7Kj00TgxkioRjEH9OYBiTmyGIaTzCsVcTYnnAGGSOOxrinQ6qWNjDTkOHZWB4wcBi
+ 8AJFTerknJGLeAndriTTF2vZaRyvkU2ycb2G0LAB+jdXk+hvPRHcuk/wzBPN9kHUEC68APfEmmL
+ g7R1tW6kWWKZAh42WMxMbBuCutXkYgPcrmUHaqCU0WngAc2hecg8A7or8f1get5SJACLVx5OSBC
+ trQr/quh/b/Uh3AMzWVso+NmdB7iUI3/tgOLCIyJPMrHr+3X+NdlRlpuJJp6r8mZFeePwkP79E+
+ ZnlPp2KcNjSbmNenoKxwFutX9eaH4K3Gzw1bFlc2X8vXhcP9D5cOMxLiPfaIUadhFop289QByGZ
+ Ua1l1WyJdGpF5P/1oNjqnk9tmqVuwb1pDB2lhVAzkHgRElvNvQs/GYkSF8GsMGtzE9GCki5O6rL
+ Y1+OdWcjLdnSvoCdw==
+X-Received: by 2002:a17:90b:48c9:b0:38e:97f0:aa4b with SMTP id
+ 98e67ed59e1d1-3903c58f06fmr22350992a91.13.1786099244394; 
+ Fri, 07 Aug 2026 03:40:44 -0700 (PDT)
+Received: from [192.168.0.22] ([211.226.54.223])
+ by smtp.gmail.com with ESMTPSA id
+ 98e67ed59e1d1-3925fc6dfcdsm2044961a91.4.2026.08.07.03.40.41
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Fri, 07 Aug 2026 03:40:43 -0700 (PDT)
+Message-ID: <25c0f24c-1381-4441-aab2-73c6640d74ab@gmail.com>
+Date: Fri, 7 Aug 2026 19:40:39 +0900
 MIME-Version: 1.0
-X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: Il8cjdRF0B0OMvpOKvBM5hPl1VfyebYCUpstb-H_92w_1786080401
-X-Mimecast-Originator: redhat.com
-Content-Transfer-Encoding: 8bit
-content-type: text/plain; charset="US-ASCII"; x-default=true
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=anisinha@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -29
-X-Spam_score: -3.0
-X-Spam_bar: ---
-X-Spam_report: (-3.0 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.852,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=0.001, SPF_HELO_PASS=-0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v2 6/8] ufs: Refactor common core out of the PCI
+ implementation
+Content-Language: ko
+To: Mikail Sadic <mikail.sadic@ibm.com>, clg@kaod.org, peter.maydell@linaro.org
+Cc: pbonzini@redhat.com, ninad@linux.ibm.com, titusr@google.com,
+ jeuk20.kim@samsung.com, philmd@mailo.com, steven_lee@aspeedtech.com,
+ leetroy@gmail.com, jamin_lin@aspeedtech.com, kane_chen@aspeedtech.com,
+ andrew@codeconstruct.com.au, joel@jms.id.au, calebs@linux.ibm.com,
+ milesg@linux.ibm.com, qemu-arm@nongnu.org, qemu-devel@nongnu.org
+References: <20260730200945.1113936-1-mikail.sadic@ibm.com>
+ <20260730200945.1113936-7-mikail.sadic@ibm.com>
+From: Jeuk Kim <jeuk20.kim@gmail.com>
+In-Reply-To: <20260730200945.1113936-7-mikail.sadic@ibm.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=2607:f8b0:4864:20::1033;
+ envelope-from=jeuk20.kim@gmail.com; helo=mail-pj1-x1033.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -117,581 +111,347 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-This patchset adds functional and unit tests that exercize various functions
-and behaviors of vm-launch-update device. It uses the IGVM files that were
-introduced in the previous patch for exercizing the hypervisor interface.
+Hi Mikail,
 
-CC: Alex Graf <graf@amazon.com>
-CC: Gerd Hoffman <kraxel@redhat.com>
-Reviewed-by: Alexander Graf <graf@amazon.com>
-Signed-off-by: Ani Sinha <anisinha@redhat.com>
----
- tests/functional/aarch64/meson.build          |   1 +
- .../aarch64/test_vm_launch_update_aarch.py    |  33 ++
- tests/functional/x86_64/meson.build           |   1 +
- .../x86_64/test_vm_launch_update.py           |  48 ++
- tests/qtest/launchupdate-test.c               | 418 ++++++++++++++++++
- tests/qtest/meson.build                       |   2 +
- 6 files changed, 503 insertions(+)
- create mode 100755 tests/functional/aarch64/test_vm_launch_update_aarch.py
- create mode 100755 tests/functional/x86_64/test_vm_launch_update.py
- create mode 100644 tests/qtest/launchupdate-test.c
+Thanks for reworking the UFS support in v2. The shared controller code
+removes the duplication I pointed out in v1.
 
-diff --git a/tests/functional/aarch64/meson.build b/tests/functional/aarch64/meson.build
-index e81afd6c39..b07373189e 100644
---- a/tests/functional/aarch64/meson.build
-+++ b/tests/functional/aarch64/meson.build
-@@ -23,6 +23,7 @@ test_aarch64_timeouts = {
- tests_aarch64_system_quick = [
-   'migration',
-   'vmstate',
-+  'vm_launch_update_aarch',
- ]
- 
- tests_aarch64_system_thorough = [
-diff --git a/tests/functional/aarch64/test_vm_launch_update_aarch.py b/tests/functional/aarch64/test_vm_launch_update_aarch.py
-new file mode 100755
-index 0000000000..2b3d7cf4a3
---- /dev/null
-+++ b/tests/functional/aarch64/test_vm_launch_update_aarch.py
-@@ -0,0 +1,33 @@
-+#!/usr/bin/env python3
-+#
-+# Check for vm-launch-update device.
-+#
-+# Copyright (c) 2026 Red Hat, Inc.
-+#
-+# Author:
-+#  Ani Sinha <anisinha@redhat.com>
-+#
-+# SPDX-License-Identifier: GPL-2.0-or-later
-+
-+from qemu_test import QemuSystemTest
-+
-+class VmLaunchUpdateDeviceCheck(QemuSystemTest):
-+
-+    def aarch64_fail_test(self):
-+        """
-+        Currently the device is only supported for pc platforms.
-+        """
-+        self.vm.add_args('-machine', 'virt', '-device',
-+                         'vm-launch-update,id=fwupd1')
-+        self.vm.set_qmp_monitor(enabled=False)
-+        self.vm.launch()
-+        self.vm.wait()
-+        self.assertEqual(self.vm.exitcode(), 1, "QEMU exit code should be 1")
-+        self.assertRegex(self.vm.get_log(),
-+                    r'This machine does not support vm-launch-update device')
-+
-+    def test_vm_launch_update(self):
-+        self.aarch64_fail_test()
-+
-+if __name__ == '__main__':
-+    QemuSystemTest.main()
-diff --git a/tests/functional/x86_64/meson.build b/tests/functional/x86_64/meson.build
-index 27b31f2e96..079861ed77 100644
---- a/tests/functional/x86_64/meson.build
-+++ b/tests/functional/x86_64/meson.build
-@@ -18,6 +18,7 @@ tests_x86_64_system_quick = [
-   'pc_cpu_hotplug_props',
-   'virtio_version',
-   'vmstate',
-+  'vm_launch_update',
- ]
- 
- # The address-sanitizer makes mlock() a no-op because it
-diff --git a/tests/functional/x86_64/test_vm_launch_update.py b/tests/functional/x86_64/test_vm_launch_update.py
-new file mode 100755
-index 0000000000..aac7ef915f
---- /dev/null
-+++ b/tests/functional/x86_64/test_vm_launch_update.py
-@@ -0,0 +1,48 @@
-+#!/usr/bin/env python3
-+#
-+# Check for vm-launch-update device.
-+#
-+# Copyright (c) 2026 Red Hat, Inc.
-+#
-+# Author:
-+#  Ani Sinha <anisinha@redhat.com>
-+#
-+# SPDX-License-Identifier: GPL-2.0-or-later
-+
-+from qemu_test import QemuSystemTest
-+import time
-+
-+class VmLaunchUpdateDeviceCheck(QemuSystemTest):
-+    DELAY_BOOT_SEQUENCE = 1
-+
-+    def vm_launch_update_pass(self):
-+        """
-+        Basic test to make sure vm-launch-update device can be instantiated.
-+        """
-+        self.vm.add_args('-device', 'vm-launch-update,id=fwupd1')
-+        self.vm.set_qmp_monitor(enabled=False)
-+        self.vm.launch()
-+        time.sleep(self.DELAY_BOOT_SEQUENCE)
-+        self.vm.shutdown()
-+        self.assertEqual(self.vm.exitcode(), 0, "QEMU exit code should be 0")
-+
-+    def multiple_device_fail(self):
-+        """
-+        Only one vm-launch-update device can be instantiated. Ensure failure if
-+        user tries to create more than one device.
-+        """
-+        self.vm.add_args('-device', 'vm-launch-update,id=fw1',
-+                         '-device', 'vm-launch-update,id=fw2')
-+        self.vm.set_qmp_monitor(enabled=False)
-+        self.vm.launch()
-+        self.vm.wait()
-+        self.assertEqual(self.vm.exitcode(), 1, "QEMU exit code should be 1")
-+        self.assertRegex(self.vm.get_log(),
-+                         r'at most one vm-launch-update device is permitted')
-+
-+    def test_vm_launch_update(self):
-+        self.vm_launch_update_pass()
-+        self.multiple_device_fail()
-+
-+if __name__ == '__main__':
-+    QemuSystemTest.main()
-diff --git a/tests/qtest/launchupdate-test.c b/tests/qtest/launchupdate-test.c
-new file mode 100644
-index 0000000000..e459d73bd1
---- /dev/null
-+++ b/tests/qtest/launchupdate-test.c
-@@ -0,0 +1,418 @@
-+/*
-+ * vmlaunchupdate device fwcfg test.
-+ *
-+ * Copyright (c) 2026 Red Hat, Inc.
-+ *
-+ * Author:
-+ *   Ani Sinha <anisinha@redhat.com>
-+ *
-+ * SPDX-License-Identifier: GPL-2.0-or-later
-+ */
-+
-+#include "qemu/osdep.h"
-+#include "libqos/libqos-pc.h"
-+#include "libqtest.h"
-+#include "standard-headers/linux/qemu_fw_cfg.h"
-+#include "libqos/fw_cfg.h"
-+#include "qemu/bswap.h"
-+#include "hw/misc/vmlaunchupdate.h"
-+
-+#define WAIT_SEC 10
-+static bool debug;
-+static bool trace;
-+static bool confidential;
-+
-+static void test_vm_launch_update_capability(void)
-+{
-+    QFWCFG *fw_cfg;
-+    QTestState *s;
-+    VMLaunchUpdate launch_update;
-+    size_t filesize;
-+    uint64_t capabilities;
-+
-+    s = qtest_init("-device vm-launch-update");
-+    fw_cfg = pc_fw_cfg_init(s);
-+
-+    filesize = qfw_cfg_get_file(fw_cfg, FILE_VMLAUNCHUPDATE,
-+                                &launch_update, sizeof(launch_update));
-+    g_assert_cmpint(filesize, ==, sizeof(launch_update));
-+    capabilities = le64_to_cpu(launch_update.capabilities);
-+    g_assert_cmpint(capabilities, ==, VM_LAUNCHUPDATE_FORMAT_IGVM);
-+    pc_fw_cfg_uninit(fw_cfg);
-+    qtest_quit(s);
-+}
-+
-+
-+static void test_vm_launch_update_disable(void)
-+{
-+    QFWCFG *fw_cfg;
-+    QOSState *qs;
-+    VMLaunchUpdate launch_update;
-+    uint64_t control;
-+    size_t filesize;
-+
-+    qs = qtest_pc_boot("-device vm-launch-update");
-+
-+    fw_cfg = pc_fw_cfg_init(qs->qts);
-+
-+    filesize = qfw_cfg_get_file(fw_cfg, FILE_VMLAUNCHUPDATE,
-+                                &launch_update, sizeof(launch_update));
-+    g_assert_cmpint(filesize, ==, sizeof(launch_update));
-+    control = le64_to_cpu(launch_update.control);
-+    g_assert_cmpint(VM_LAUNCHUPDATE_CTL_DISABLE & control, ==, 0);
-+
-+    /* disable the device */
-+    memset(&launch_update, 0, sizeof(launch_update));
-+    launch_update.control |= VM_LAUNCHUPDATE_CTL_DISABLE;
-+
-+    filesize = qfw_cfg_write_file(fw_cfg, qs, FILE_VMLAUNCHUPDATE,
-+                                  &launch_update, sizeof(launch_update));
-+    g_assert_cmpint(filesize, ==, sizeof(launch_update));
-+
-+    /* try to clear the dsable flag */
-+    memset(&launch_update, 0, sizeof(launch_update));
-+
-+    filesize = qfw_cfg_write_file(fw_cfg, qs, FILE_VMLAUNCHUPDATE,
-+                                  &launch_update, sizeof(launch_update));
-+    g_assert_cmpint(filesize, ==, sizeof(launch_update));
-+
-+    /* check if the device is still disabled */
-+    filesize = qfw_cfg_get_file(fw_cfg, FILE_VMLAUNCHUPDATE,
-+                                &launch_update, sizeof(launch_update));
-+    g_assert_cmpint(filesize, ==, sizeof(launch_update));
-+    control = le64_to_cpu(launch_update.control);
-+    g_assert_cmpint(VM_LAUNCHUPDATE_CTL_DISABLE & control, ==, 1);
-+
-+    pc_fw_cfg_uninit(fw_cfg);
-+    qtest_shutdown(qs);
-+}
-+
-+static void check_error(void)
-+{
-+    QFWCFG *fw_cfg;
-+    QOSState *qs;
-+    VMLaunchUpdate launch_update;
-+    uint16_t status;
-+    size_t filesize;
-+
-+    /* guest not started with IGVM */
-+    qs = qtest_pc_boot("-device vm-launch-update");
-+
-+    fw_cfg = pc_fw_cfg_init(qs->qts);
-+
-+    memset(&launch_update, 0, sizeof(launch_update));
-+    launch_update.fw_image_size = 50;
-+    launch_update.fw_image_addr = cpu_to_le64(0xdeadbeef);
-+    launch_update.control |= VM_LAUNCHUPDATE_FORMAT_IGVM;
-+
-+    filesize = qfw_cfg_write_file(fw_cfg, qs, FILE_VMLAUNCHUPDATE,
-+                                  &launch_update, sizeof(launch_update));
-+    g_assert_cmpint(filesize, ==, sizeof(launch_update));
-+
-+    memset(&launch_update, 0, sizeof(launch_update));
-+    filesize = qfw_cfg_get_file(fw_cfg, FILE_VMLAUNCHUPDATE,
-+                                &launch_update, sizeof(launch_update));
-+    g_assert_cmpint(filesize, ==, sizeof(launch_update));
-+    status = le64_to_cpu(launch_update.status);
-+    /* should fail with NOT_IGVM_INIT */
-+    g_assert_cmpint(status, ==, VM_LAUNCHUPDATE_NOT_IGVM_INIT);
-+
-+    memset(&launch_update, 0, sizeof(launch_update));
-+    launch_update.fw_image_size = 50;
-+    launch_update.fw_image_addr = cpu_to_le64(0xdeadbeef);
-+    /* control set to 0, not VM_LAUNCHUPDATE_FORMAT_IGVM */
-+
-+    filesize = qfw_cfg_write_file(fw_cfg, qs, FILE_VMLAUNCHUPDATE,
-+                                  &launch_update, sizeof(launch_update));
-+    g_assert_cmpint(filesize, ==, sizeof(launch_update));
-+
-+    memset(&launch_update, 0, sizeof(launch_update));
-+    filesize = qfw_cfg_get_file(fw_cfg, FILE_VMLAUNCHUPDATE,
-+                                &launch_update, sizeof(launch_update));
-+    g_assert_cmpint(filesize, ==, sizeof(launch_update));
-+    status = le64_to_cpu(launch_update.status);
-+    /* should fail with LOAD_FAIL since it was not IGVM format */
-+    g_assert_cmpint(status, ==, VM_LAUNCHUPDATE_LOAD_FAIL);
-+}
-+
-+static int64_t get_image_size(const char *filename)
-+{
-+    int fd;
-+    int64_t size;
-+    fd = open(filename, O_RDONLY | O_BINARY);
-+    g_assert_true(fd > 0);
-+    size = lseek(fd, 0, SEEK_END);
-+    close(fd);
-+    return size;
-+}
-+
-+static ssize_t load_image(const char *igvm_f, void **addr, size_t *size)
-+{
-+    ssize_t actsize = 0, l = 0;
-+    int f_igvm_f;
-+    size_t l_size;
-+
-+    f_igvm_f = open(igvm_f, O_RDONLY | O_BINARY);
-+    g_assert_true(f_igvm_f);
-+    l_size = get_image_size(igvm_f);
-+    g_assert_true(l_size > 0);
-+    *addr = g_malloc0(l_size);
-+    g_assert_true(*addr);
-+
-+    while (l < l_size) {
-+        actsize = read(f_igvm_f, *addr + l, 1);
-+        if (actsize < 0) {
-+            break;
-+        }
-+        l += actsize;
-+    }
-+
-+    close(f_igvm_f);
-+    *size = l_size;
-+    return actsize < 0 ? -1 : l;
-+}
-+
-+static guint32 match_string(char *serial_f, const char *exp_out)
-+{
-+    GError *error = NULL;
-+    g_autofree gchar *f_contents = NULL;
-+    g_autofree GRegex *regex = NULL;
-+    g_autofree GMatchInfo *match_info = NULL;
-+    gsize len;
-+    guint32 count = 0;
-+    gboolean ret;
-+
-+    ret = g_file_get_contents(serial_f, &f_contents, &len, &error);
-+    g_assert(ret);
-+    g_assert_no_error(error);
-+
-+    regex = g_regex_new(exp_out, G_REGEX_CASELESS, 0, &error);
-+    g_assert_no_error(error);
-+
-+    ret = g_regex_match_full(regex, f_contents, -1, 0, 0, &match_info, &error);
-+    g_assert_no_error(error);
-+
-+    while (g_match_info_matches(match_info)) {
-+        gchar *word = g_match_info_fetch(match_info, 0);
-+        g_free(word);
-+        g_match_info_next(match_info, &error);
-+        count++;
-+    }
-+    g_regex_unref(regex);
-+    return count;
-+}
-+
-+static int wait_for_match(char *serial_f,
-+                          const char *exp_out, int64_t timeout_s,
-+                          guint32 count)
-+{
-+    time_t start, delta;
-+    int ret = -1;
-+
-+    start = time(NULL);
-+    while (1) {
-+        if (match_string(serial_f, exp_out) == count) {
-+            ret = 0;
-+            break;
-+        }
-+
-+        delta = time(NULL) - start;
-+        if (delta >= timeout_s) {
-+            fprintf(stderr, "timed out waiting to read serial output\n");
-+            break;
-+        }
-+
-+        /* wait 20 ms before trying again */
-+        if (false) {
-+            fprintf(stderr,
-+                    "sleeping 20 ms before checking serial output again.\n");
-+        }
-+        g_usleep(20000);
-+    }
-+    return ret;
-+}
-+
-+static void test_load_igvm(void)
-+{
-+    const char *igvm_f;
-+    const char *igvm_init;
-+    int ser_fd;
-+    g_autofree void *igvm_blob = NULL;
-+    g_autofree char *serialtmp = NULL;
-+    const char exp_out[] = "Hello world!";
-+    const char exp_out2[] = "Test succeeded!";
-+    const char exp_out3[] = "boot process complete with initial igvm";
-+    const char *tracepoints = "--trace memory_region_finalize "
-+        "--trace qigvm_cleanup_memory -D /tmp/qemu-debug.log ";
-+    const char *snp, *cgs;
-+    uint64_t gaddr;
-+    size_t igvm_sz;
-+    size_t filesize;
-+    QFWCFG *fw_cfg;
-+    QOSState *qs;
-+    VMLaunchUpdate launch_update;
-+
-+    if (confidential) {
-+        snp = "-object \'{\"qom-type\":\"sev-snp-guest\",\"id\":\"lsec0\","
-+            "\"cbitpos\":51,\"reduced-phys-bits\":1,\"policy\":196608}\'";
-+        cgs = "confidential-guest-support=lsec0";
-+        /*
-+         * The following two IGVM files can be built from the source
-+         * present in https://gitlab.com/anisinha/virt-firmware-rs .
-+         * Typing 'make' from the top of this repository will build the
-+         * IGVM files for both confidential and
-+         * non-confidential tests. The IGVM files for the non-coco
-+         * case has been checked-in into the QEMU repository for
-+         * convenience and easy CI pipeline testing.
-+         */
-+        igvm_f = "tests/data/igvm/snptest.igvm"; /*
-+                                                  * this prints 'hello world'
-+                                                  * on console
-+                                                  */
-+        igvm_init = "tests/data/igvm/snptest-nohello.igvm";
-+    } else {
-+        igvm_f = "tests/data/igvm/hello.igvm";
-+        igvm_init = "tests/data/igvm/qemuinit.igvm";
-+        snp = "";
-+        cgs = "";
-+    }
-+
-+    if (!trace) {
-+        tracepoints = "";
-+    }
-+
-+    if (!g_file_test(igvm_f, G_FILE_TEST_EXISTS)) {
-+        g_test_skip("igvm file bundle does not exist!");
-+        return;
-+    }
-+
-+    ser_fd = g_file_open_tmp("launchupdate-qtest-serial-sXXXXXX",
-+                             &serialtmp, NULL);
-+    g_assert_true(ser_fd != -1);
-+
-+    if (debug) {
-+        fprintf(stderr, "serial console file is %s\n", serialtmp);
-+    }
-+
-+    qs = qtest_pc_boot("-machine q35,igvm-cfg=igvm0,%s -m 1G -accel kvm "
-+                       "-device vm-launch-update %s "
-+                       "-chardev file,id=serial0,path=%s "
-+                       "-serial chardev:serial0 "
-+                       "-object igvm-cfg,id=igvm0,file=%s %s",
-+                       cgs, tracepoints, serialtmp, igvm_init, snp);
-+
-+    fw_cfg = pc_fw_cfg_init(qs->qts);
-+
-+    if (debug) {
-+        fprintf(stderr, "target endianness: %s\n",
-+                qtest_big_endian(qs->qts) ? "big" : "little");
-+    }
-+
-+    /* exp_out3 should be printed once from initial boot */
-+    g_assert_true(wait_for_match(serialtmp, exp_out3, WAIT_SEC, 1) == 0);
-+    g_assert_true(load_image(igvm_f, &igvm_blob, &igvm_sz) == igvm_sz);
-+
-+    /* create a data buffer in guest memory */
-+    gaddr = guest_alloc(&qs->alloc, igvm_sz);
-+
-+    if (debug) {
-+        fprintf(stderr, "guest paddr: %"PRIx64 "  igvm size: %lu\n",
-+                gaddr, igvm_sz);
-+    }
-+
-+    if (debug) {
-+        fprintf(stderr, "writing igvm file into the guest memory\n");
-+    }
-+
-+    qtest_bufwrite(qs->qts, gaddr, igvm_blob, igvm_sz);
-+
-+    if (debug) {
-+        fprintf(stderr,
-+                "tell hypervisor where igvm is loaded in guest memory\n");
-+    }
-+
-+    /* now tell hypervisor where we loaded the bios */
-+    memset(&launch_update, 0, sizeof(launch_update));
-+    launch_update.fw_image_size = cpu_to_le64(igvm_sz);
-+    launch_update.fw_image_addr = cpu_to_le64(gaddr);
-+    launch_update.control |= VM_LAUNCHUPDATE_FORMAT_IGVM;
-+
-+    filesize = qfw_cfg_write_file(fw_cfg, qs, FILE_VMLAUNCHUPDATE,
-+                                  &launch_update, sizeof(launch_update));
-+    g_assert_cmpint(filesize, ==, sizeof(launch_update));
-+
-+    if (debug) {
-+        fprintf(stderr, "resetting the virtual machine now\n");
-+    }
-+
-+    qtest_system_reset(qs->qts);
-+
-+    /* expected string should be printed on the console */
-+    g_assert_true(wait_for_match(serialtmp, exp_out, WAIT_SEC, 1) == 0);
-+    g_assert_true(wait_for_match(serialtmp, exp_out2, WAIT_SEC, 1) == 0);
-+
-+    if (debug) {
-+        fprintf(stderr, "hello world found on console\n");
-+    }
-+
-+    /* check if VM_LAUNCHUPDATE_CTL_HOST_IGVM function works */
-+
-+    /* set VM_LAUNCHUPDATE_CTL_HOST_IGVM control */
-+    memset(&launch_update, 0, sizeof(launch_update));
-+    launch_update.control |= VM_LAUNCHUPDATE_CTL_HOST_IGVM;
-+
-+    filesize = qfw_cfg_write_file(fw_cfg, qs, FILE_VMLAUNCHUPDATE,
-+                                  &launch_update, sizeof(launch_update));
-+    g_assert_cmpint(filesize, ==, sizeof(launch_update));
-+
-+    /* now reset the guest */
-+    if (debug) {
-+        fprintf(stderr,
-+                "resetting again in order to restore host provided IGVM\n");
-+    }
-+    qtest_system_reset(qs->qts);
-+
-+    /*
-+     * exp_out3 should be printed twice, once from initial boot,
-+     * once from restoring host igvm.
-+     */
-+    g_assert_true(wait_for_match(serialtmp, exp_out3, WAIT_SEC, 2) == 0);
-+
-+    close(ser_fd);
-+    guest_free(&qs->alloc, gaddr);
-+    pc_fw_cfg_uninit(fw_cfg);
-+    /* qtest_quit() kils QEMU, first by sending SIGTERM, then SIGKILL */
-+    qtest_quit(qs->qts);
-+}
-+
-+int main(int argc, char **argv)
-+{
-+    const char *arch = qtest_get_arch();
-+
-+    g_test_init(&argc, &argv, NULL);
-+
-+    if (strcmp(arch, "i386") && strcmp(arch, "x86_64")) {
-+        g_printerr("vmlaunchupdate tests are only available on x86\n");
-+        exit(EXIT_FAILURE);
-+    }
-+
-+    g_test_add_func("/vm-launch-update/cap", test_vm_launch_update_capability);
-+    g_test_add_func("/vm-launch-update/disabled",
-+                    test_vm_launch_update_disable);
-+
-+    g_test_add_func("/vm-launch-update/errorcheck", check_error);
-+    g_test_add_func("/vm-launch-update/load_igvm",
-+                    test_load_igvm);
-+
-+    if (getenv("LAUNCHUPDATE_DEBUG")) {
-+        debug = true;
-+    }
-+    if (getenv("LAUNCHUPDATE_TRACE")) {
-+        trace = true;
-+    }
-+    if (getenv("COCO")) {
-+        confidential = true;
-+    }
-+
-+    return g_test_run();
-+}
-diff --git a/tests/qtest/meson.build b/tests/qtest/meson.build
-index 56ff860e21..5c7883b48a 100644
---- a/tests/qtest/meson.build
-+++ b/tests/qtest/meson.build
-@@ -61,6 +61,8 @@ qtests_i386 = \
-   (config_all_devices.has_key('CONFIG_Q35') ? ['e820-test'] : []) +                          \
-   (config_all_devices.has_key('CONFIG_FW_CFG_DMA') ? ['vmcoreinfo-test'] : []) +            \
-   (config_all_devices.has_key('CONFIG_Q35') ? ['dump-test'] : []) +                         \
-+  (igvm.found() and
-+   config_all_devices.has_key('CONFIG_FW_CFG_DMA') ? ['launchupdate-test'] : []) +          \
-   (config_all_devices.has_key('CONFIG_I440FX') ? ['i440fx-test'] : []) +                    \
-   (config_all_devices.has_key('CONFIG_I440FX') ? ['ide-test'] : []) +                       \
-   (config_all_devices.has_key('CONFIG_I440FX') ? ['numa-test'] : []) +                      \
--- 
-2.42.0
+After considering the structure further, I would prefer to model UfsHc
+as a plain controller core and have separate PCI and generic SysBus QOM
+devices contain it, following the AHCI model. This keeps the PCI and
+SysBus object layout and setup out of the shared UFS code. The generic
+SysBus device can then be subclassed by Aspeed and other platforms.
 
+I have prepared and posted a separate two-patch series implementing this
+structure:
+
+https://lore.kernel.org/qemu-devel/cover.1786096976.git.jeuk20.kim@samsung.com/
+
+Could you please rebase the UFS-related changes in patches 6-8 on top of
+this series for v3? The Aspeed device can then derive from
+TYPE_SYSBUS_UFS and provide only the AST2700-specific HCI version
+setting.
+
+Sorry for the extra churn.
+
+Thanks,
+Jeuk
+
+On 7/31/2026 5:09 AM, Mikail Sadic wrote:
+> In preparation for a sysbus UFS frontend (used by the Aspeed AST2700),
+> separate the transport-independent UFS host-controller logic from the
+> PCI-specific glue, following the pattern used by SDHCI and XHCI.
+>
+> UfsHc's PCIDevice parent is replaced by an anonymous union of a
+> PCIDevice and a SysBusDevice, and the controller gains an explicit
+> AddressSpace *dma_as used by ufs_addr_read()/ufs_addr_write() and the
+> SG-list helpers instead of the PCI address space. Interrupt delivery
+> goes through qemu_set_irq() in ufs_irq_check(). The realize path is
+> split into a transport-agnostic ufs_realize_core() plus ufs_init_mmio(),
+> and UfsBus gains an 'hc' back-pointer so ufs_lu_realize() no longer
+> reaches through the PCI device. TYPE_UFS remains a PCI device, so
+> '-device ufs' is unchanged and the PCI ufs-tests qtests still pass.
+>
+> Two small behaviour additions ride along on the core so that frontends
+> with differing geometry and bus-scan behaviour can be modelled:
+>
+>    - ufs-lu gains configurable 'logical-block-size' property. It
+>      defaults to UFS_BLOCK_SIZE, so the PCI device is unaffected.
+>
+>    - an unmapped LUN now answers INQUIRY as "not connected" rather than
+>      failing the request, so that a host bus-scan does not observe
+>      controller errors for absent LUNs.
+>
+> Signed-off-by: Mikail Sadic <mikail.sadic@ibm.com>
+> ---
+>   hw/ufs/ufs.h | 18 ++++++++++++++++-
+>   hw/ufs/lu.c  | 50 +++++++++++++++++++++++++++++++++++++++++----
+>   hw/ufs/ufs.c | 57 ++++++++++++++++++++++++++++++++++++----------------
+>   3 files changed, 103 insertions(+), 22 deletions(-)
+>
+> diff --git a/hw/ufs/ufs.h b/hw/ufs/ufs.h
+> index feb47f460d..3d4be8deb5 100644
+> --- a/hw/ufs/ufs.h
+> +++ b/hw/ufs/ufs.h
+> @@ -12,7 +12,9 @@
+>   #define HW_UFS_UFS_H
+>   
+>   #include "hw/pci/pci_device.h"
+> +#include "hw/core/sysbus.h"
+>   #include "hw/scsi/scsi.h"
+> +#include "scsi/constants.h"
+>   #include "block/ufs.h"
+>   
+>   #define UFS_MAX_LUS 32
+> @@ -27,6 +29,7 @@ typedef struct UfsBusClass {
+>   
+>   typedef struct UfsBus {
+>       BusState parent_bus;
+> +    struct UfsHc *hc; /* host controller owning this bus (frontend-agnostic) */
+>   } UfsBus;
+>   
+>   #define TYPE_UFS_BUS "ufs-bus"
+> @@ -77,6 +80,7 @@ typedef UfsReqResult (*UfsScsiOp)(struct UfsLu *, UfsRequest *);
+>   typedef struct UfsLu {
+>       DeviceState qdev;
+>       uint8_t lun;
+> +    uint32_t logical_block_size;
+>       UnitDescriptor unit_desc;
+>       SCSIBus bus;
+>       SCSIDevice *scsi_dev;
+> @@ -141,7 +145,15 @@ typedef struct UfsWb {
+>   } UfsWb;
+>   
+>   typedef struct UfsHc {
+> -    PCIDevice parent_obj;
+> +    /*
+> +     * The controller can be instantiated either as a PCI function or as a
+> +     * sysbus device.  Following the SDHCI model, both frontends share this
+> +     * state structure via a union of the possible parent objects.
+> +     */
+> +    union {
+> +        PCIDevice pci_dev;
+> +        SysBusDevice sbdev;
+> +    };
+>       UfsBus bus;
+>       MemoryRegion iomem;
+>       UfsReg reg;
+> @@ -162,6 +174,7 @@ typedef struct UfsHc {
+>       Flags flags;
+>   
+>       qemu_irq irq;
+> +    AddressSpace *dma_as;
+>       QEMUBH *doorbell_bh;
+>       QEMUBH *complete_bh;
+>   
+> @@ -302,4 +315,7 @@ void ufs_build_query_response(UfsRequest *req);
+>   void ufs_complete_req(UfsRequest *req, UfsReqResult req_result);
+>   void ufs_wb_update_avail_buffer(UfsHc *u);
+>   void ufs_init_wlu(UfsLu *wlu, uint8_t wlun);
+> +UfsReqResult ufs_emulate_absent_lun(UfsRequest *req);
+> +void ufs_init_mmio(UfsHc *u);
+> +bool ufs_realize_core(UfsHc *u, Error **errp);
+>   #endif /* HW_UFS_UFS_H */
+> diff --git a/hw/ufs/lu.c b/hw/ufs/lu.c
+> index 13f4a90145..a0b5574668 100644
+> --- a/hw/ufs/lu.c
+> +++ b/hw/ufs/lu.c
+> @@ -308,6 +308,44 @@ static int ufs_emulate_wlun_inquiry(UfsRequest *req, uint8_t *outbuf,
+>       return SCSI_INQUIRY_LEN;
+>   }
+>   
+> +UfsReqResult ufs_emulate_absent_lun(UfsRequest *req)
+> +{
+> +    QEMU_UNINITIALIZED uint8_t outbuf[SCSI_INQUIRY_LEN];
+> +    uint8_t sense_buf[UFS_SENSE_SIZE];
+> +    uint8_t scsi_status;
+> +    int len = 0;
+> +
+> +    if (req->req_upiu.sc.cdb[0] == INQUIRY &&
+> +        !(req->req_upiu.sc.cdb[1] & 0x1)) {
+> +        /*
+> +         * Standard INQUIRY to a logical unit that is not mapped: report it
+> +         * as "not connected" (peripheral qualifier 0x3, device type 0x1f)
+> +         * with GOOD status, like real hardware. Host-side bus scans then
+> +         * skip the unit quietly instead of flagging a controller error.
+> +         */
+> +        memset(outbuf, 0, sizeof(outbuf));
+> +        outbuf[0] = TYPE_NO_LUN;
+> +        outbuf[3] = 0x2;
+> +        outbuf[4] = SCSI_INQUIRY_LEN - 5;
+> +        len = SCSI_INQUIRY_LEN;
+> +        scsi_status = GOOD;
+> +    } else {
+> +        scsi_build_sense(sense_buf, SENSE_CODE(LUN_NOT_SUPPORTED));
+> +        scsi_status = CHECK_CONDITION;
+> +    }
+> +
+> +    len = MIN(len, (int)req->data_len);
+> +    if (scsi_status == GOOD && len > 0 &&
+> +        dma_buf_read(outbuf, len, NULL, req->sg, MEMTXATTRS_UNSPECIFIED) !=
+> +            MEMTX_OK) {
+> +        return UFS_REQUEST_FAIL;
+> +    }
+> +
+> +    ufs_build_scsi_response_upiu(req, sense_buf, sizeof(sense_buf), len,
+> +                                 scsi_status);
+> +    return UFS_REQUEST_SUCCESS;
+> +}
+> +
+>   static UfsReqResult ufs_emulate_scsi_cmd(UfsLu *lu, UfsRequest *req)
+>   {
+>       uint8_t lun = lu->lun;
+> @@ -394,6 +432,8 @@ static UfsReqResult ufs_process_scsi_cmd(UfsLu *lu, UfsRequest *req)
+>   static const Property ufs_lu_props[] = {
+>       DEFINE_PROP_DRIVE("drive", UfsLu, conf.blk),
+>       DEFINE_PROP_UINT8("lun", UfsLu, lun, 0),
+> +    DEFINE_PROP_UINT32("logical-block-size", UfsLu, logical_block_size,
+> +                       UFS_BLOCK_SIZE),
+>   };
+>   
+>   static bool ufs_add_lu(UfsHc *u, UfsLu *lu, Error **errp)
+> @@ -435,7 +475,7 @@ static void ufs_init_lu(UfsLu *lu)
+>       lu->unit_desc.length = sizeof(UnitDescriptor);
+>       lu->unit_desc.descriptor_idn = UFS_QUERY_DESC_IDN_UNIT;
+>       lu->unit_desc.lu_enable = 0x01;
+> -    lu->unit_desc.logical_block_size = UFS_BLOCK_SIZE_SHIFT;
+> +    lu->unit_desc.logical_block_size = ctz32(lu->logical_block_size);
+>       lu->unit_desc.unit_index = lu->lun;
+>       lu->unit_desc.logical_block_count =
+>           cpu_to_be64(brdv_len / (1 << lu->unit_desc.logical_block_size));
+> @@ -475,8 +515,10 @@ static void ufs_init_scsi_device(UfsLu *lu, BlockBackend *blk, Error **errp)
+>       scsi_dev = qdev_new("scsi-hd");
+>       object_property_add_child(OBJECT(&lu->bus), "ufs-scsi", OBJECT(scsi_dev));
+>   
+> -    qdev_prop_set_uint32(scsi_dev, "physical_block_size", UFS_BLOCK_SIZE);
+> -    qdev_prop_set_uint32(scsi_dev, "logical_block_size", UFS_BLOCK_SIZE);
+> +    qdev_prop_set_uint32(scsi_dev, "physical_block_size",
+> +                         lu->logical_block_size);
+> +    qdev_prop_set_uint32(scsi_dev, "logical_block_size",
+> +                         lu->logical_block_size);
+>       qdev_prop_set_uint32(scsi_dev, "scsi-id", 0);
+>       qdev_prop_set_uint32(scsi_dev, "lun", lu->lun);
+>       if (!qdev_prop_set_drive_err(scsi_dev, "drive", blk, errp)) {
+> @@ -497,7 +539,7 @@ static void ufs_lu_realize(DeviceState *dev, Error **errp)
+>   {
+>       UfsLu *lu = DO_UPCAST(UfsLu, qdev, dev);
+>       BusState *s = qdev_get_parent_bus(dev);
+> -    UfsHc *u = UFS(s->parent);
+> +    UfsHc *u = UFS_BUS(s)->hc;
+>       BlockBackend *blk = lu->conf.blk;
+>   
+>       if (!ufs_lu_check_constraints(lu, errp)) {
+> diff --git a/hw/ufs/ufs.c b/hw/ufs/ufs.c
+> index 464fd465b3..1489bd3321 100644
+> --- a/hw/ufs/ufs.c
+> +++ b/hw/ufs/ufs.c
+> @@ -102,7 +102,8 @@ static MemTxResult ufs_addr_read(UfsHc *u, hwaddr addr, void *buf, int size)
+>           return MEMTX_DECODE_ERROR;
+>       }
+>   
+> -    return pci_dma_read(PCI_DEVICE(u), addr, buf, size);
+> +    return dma_memory_read(u->dma_as, addr, buf, size,
+> +                           MEMTXATTRS_UNSPECIFIED);
+>   }
+>   
+>   static MemTxResult ufs_addr_write(UfsHc *u, hwaddr addr, const void *buf,
+> @@ -117,7 +118,8 @@ static MemTxResult ufs_addr_write(UfsHc *u, hwaddr addr, const void *buf,
+>           return MEMTX_DECODE_ERROR;
+>       }
+>   
+> -    return pci_dma_write(PCI_DEVICE(u), addr, buf, size);
+> +    return dma_memory_write(u->dma_as, addr, buf, size,
+> +                            MEMTXATTRS_UNSPECIFIED);
+>   }
+>   
+>   static inline hwaddr ufs_get_utrd_addr(UfsHc *u, uint32_t slot)
+> @@ -222,7 +224,7 @@ static MemTxResult ufs_dma_read_prdt(UfsRequest *req)
+>       }
+>   
+>       req->sg = g_malloc0(sizeof(QEMUSGList));
+> -    pci_dma_sglist_init(req->sg, PCI_DEVICE(u), prdt_len);
+> +    qemu_sglist_init(req->sg, DEVICE(u), prdt_len, u->dma_as);
+>       req->data_len = 0;
+>   
+>       for (uint16_t i = 0; i < prdt_len; ++i) {
+> @@ -317,14 +319,12 @@ static MemTxResult ufs_dma_write_upiu(UfsRequest *req)
+>   
+>   static void ufs_irq_check(UfsHc *u)
+>   {
+> -    PCIDevice *pci = PCI_DEVICE(u);
+> -
+>       if ((u->reg.is & UFS_INTR_MASK) & u->reg.ie) {
+>           trace_ufs_irq_raise();
+> -        pci_irq_assert(pci);
+> +        qemu_set_irq(u->irq, 1);
+>       } else {
+>           trace_ufs_irq_lower();
+> -        pci_irq_deassert(pci);
+> +        qemu_set_irq(u->irq, 0);
+>       }
+>   }
+>   
+> @@ -1092,7 +1092,7 @@ static UfsReqResult ufs_exec_scsi_cmd(UfsRequest *req)
+>   
+>       if (!is_wlun(lun) && (lun >= UFS_MAX_LUS || u->lus[lun] == NULL)) {
+>           trace_ufs_err_scsi_cmd_invalid_lun(lun);
+> -        return UFS_REQUEST_FAIL;
+> +        return ufs_emulate_absent_lun(req);
+>       }
+>   
+>       switch (lun) {
+> @@ -2488,6 +2488,12 @@ static bool ufs_check_constraints(UfsHc *u, Error **errp)
+>       return true;
+>   }
+>   
+> +void ufs_init_mmio(UfsHc *u)
+> +{
+> +    memory_region_init_io(&u->iomem, OBJECT(u), &ufs_mmio_ops, u, "ufs",
+> +                          u->reg_size);
+> +}
+> +
+>   static void ufs_init_pci(UfsHc *u, PCIDevice *pci_dev)
+>   {
+>       uint8_t *pci_conf = pci_dev->config;
+> @@ -2495,8 +2501,7 @@ static void ufs_init_pci(UfsHc *u, PCIDevice *pci_dev)
+>       pci_conf[PCI_INTERRUPT_PIN] = 1;
+>       pci_config_set_prog_interface(pci_conf, 0x1);
+>   
+> -    memory_region_init_io(&u->iomem, OBJECT(u), &ufs_mmio_ops, u, "ufs",
+> -                          u->reg_size);
+> +    ufs_init_mmio(u);
+>       pci_register_bar(pci_dev, 0, PCI_BASE_ADDRESS_SPACE_MEMORY, &u->iomem);
+>       u->irq = pci_allocate_irq(pci_dev);
+>   }
+> @@ -2689,25 +2694,43 @@ static void ufs_init_hc(UfsHc *u)
+>       timer_mod(&u->idle_timer, now + UFS_IDLE_TIMER_TICK);
+>   }
+>   
+> -static void ufs_realize(PCIDevice *pci_dev, Error **errp)
+> +/*
+> + * Frontend-agnostic realization: everything except the host-bus specific
+> + * MMIO/IRQ/DMA plumbing, which the PCI or sysbus frontend sets up around
+> + * this call.  The frontend must assign u->dma_as before calling.
+> + */
+> +bool ufs_realize_core(UfsHc *u, Error **errp)
+>   {
+> -    UfsHc *u = UFS(pci_dev);
+> -
+>       if (!ufs_check_constraints(u, errp)) {
+> -        return;
+> +        return false;
+>       }
+>   
+> -    qbus_init(&u->bus, sizeof(UfsBus), TYPE_UFS_BUS, &pci_dev->qdev,
+> -              u->parent_obj.qdev.id);
+> +    qbus_init(&u->bus, sizeof(UfsBus), TYPE_UFS_BUS, DEVICE(u),
+> +              DEVICE(u)->id);
+> +    u->bus.hc = u;
+>   
+>       ufs_init_state(u);
+>       ufs_init_hc(u);
+> -    ufs_init_pci(u, pci_dev);
+>   
+>       ufs_init_wlu(&u->report_wlu, UFS_UPIU_REPORT_LUNS_WLUN);
+>       ufs_init_wlu(&u->dev_wlu, UFS_UPIU_UFS_DEVICE_WLUN);
+>       ufs_init_wlu(&u->boot_wlu, UFS_UPIU_BOOT_WLUN);
+>       ufs_init_wlu(&u->rpmb_wlu, UFS_UPIU_RPMB_WLUN);
+> +
+> +    return true;
+> +}
+> +
+> +static void ufs_realize(PCIDevice *pci_dev, Error **errp)
+> +{
+> +    UfsHc *u = UFS(pci_dev);
+> +
+> +    u->dma_as = pci_get_address_space(pci_dev);
+> +
+> +    if (!ufs_realize_core(u, errp)) {
+> +        return;
+> +    }
+> +
+> +    ufs_init_pci(u, pci_dev);
+>   }
+>   
+>   static void ufs_exit(PCIDevice *pci_dev)
 

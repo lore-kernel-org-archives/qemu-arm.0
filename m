@@ -4,98 +4,94 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 060D0C5AC7A
-	for <qemu-arm@archiver.kernel.org>; Fri,  7 Aug 2026 10:40:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D92EFC5AC80
+	for <qemu-arm@archiver.kernel.org>; Sun,  9 Aug 2026 13:06:36 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wsI0R-0000vb-6B; Fri, 07 Aug 2026 06:40:51 -0400
+	id 1wt3EG-0000iv-KN; Sun, 09 Aug 2026 09:06:16 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jeuk20.kim@gmail.com>)
- id 1wsI0O-0000uZ-FY
- for qemu-arm@nongnu.org; Fri, 07 Aug 2026 06:40:48 -0400
-Received: from mail-pj1-x1033.google.com ([2607:f8b0:4864:20::1033])
+ (Exim 4.90_1) (envelope-from <mathieu.poirier@linaro.org>)
+ id 1wt3EF-0000ib-4N
+ for qemu-arm@nongnu.org; Sun, 09 Aug 2026 09:06:15 -0400
+Received: from mail-qv1-xf29.google.com ([2607:f8b0:4864:20::f29])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <jeuk20.kim@gmail.com>)
- id 1wsI0L-0001mK-Us
- for qemu-arm@nongnu.org; Fri, 07 Aug 2026 06:40:48 -0400
-Received: by mail-pj1-x1033.google.com with SMTP id
- 98e67ed59e1d1-38759bcd877so3403295a91.2
- for <qemu-arm@nongnu.org>; Fri, 07 Aug 2026 03:40:45 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <mathieu.poirier@linaro.org>)
+ id 1wt3ED-000055-6I
+ for qemu-arm@nongnu.org; Sun, 09 Aug 2026 09:06:14 -0400
+Received: by mail-qv1-xf29.google.com with SMTP id
+ 6a1803df08f44-8ff20870ac7so5929056d6.1
+ for <qemu-arm@nongnu.org>; Sun, 09 Aug 2026 06:06:12 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20251104; t=1786099244; x=1786704044; darn=nongnu.org;
- h=content-transfer-encoding:content-type:in-reply-to:from:references
- :cc:to:content-language:subject:user-agent:mime-version:date
- :message-id:from:to:cc:subject:date:message-id:reply-to:content-type;
- bh=poF5Jb9cl4x27B2EQOVFaeC4vqNMHWS87TvXHvegPw0=;
- b=hYwDeDYrkzXW5sT8U84oDNJncrpnoF++I9k2XgLCTD8S1hNTunWWlqamHCkUkBbndN
- gLRxO9/BY6iyOGJw+X9TnBqRbv56pO4nRJ9fnBCfsqG6e64cxywDGHIaKayW9sayEfcx
- 15rOvgI0ok6g0RHhFxle2pVSt8fCAaWF66+UVdFEI34O1VIIAltfVhqogvJeNOkfkpR+
- phNq+RFYavvdcaRkzK32roA8wv0WXvR3yIFRGOgko2fxlhT109e7XB1I3PWBos6zvMwd
- jAoy1CZfbosRWOs6FHY3JS3uUb0Q63ajVRuQ7HBeapc4eByBF+sYf9OjAqBQ3BS3R0wb
- 514Q==
+ d=linaro.org; s=google; t=1786280771; x=1786885571; darn=nongnu.org;
+ h=in-reply-to:content-disposition:content-type:mime-version
+ :references:message-id:subject:cc:to:from:date:from:to:cc:subject
+ :date:message-id:reply-to:content-type;
+ bh=x57uq5myqQEypV80yicD+m9k8ZSaT3RYYTsF64xqmQc=;
+ b=PWAU+nPm9TOt5a8x6Y+6vaTTmx5XFJT8dc0SV5hl0sKI8l+6TXo5hh0PSjdAFKKWLI
+ /jCsHI2TjsZRHYnKrhUahN9kP34TN1KbkKKgvG/Ud1Q8Ss03B1zKawkHUYNlf4RhW9sk
+ AfFKif0DGg7NA5FZB0PQT/mwg5IuqOVLSRvuHoedNz45od54rjwuIz1IeetEo9u93wSs
+ 9yHKQEHdYTz8YbSTKO1jyfpYvfBBFcAowa+fkCXRF9UMcD66KtI0/Y0ChpCYXGCboKuu
+ 6b3U2x3WIC8RPt08wpIBt7vLqsaAniggFni8QMUTIh8LU9DYwIBjraAsP2RZMEXDACbe
+ wdYw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1786099244; x=1786704044;
- h=content-transfer-encoding:content-type:in-reply-to:from:references
- :cc:to:content-language:subject:user-agent:mime-version:date
- :message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
- :message-id:reply-to:content-type;
- bh=poF5Jb9cl4x27B2EQOVFaeC4vqNMHWS87TvXHvegPw0=;
- b=sntiyF1GN8EcsAPSPOBIWWp2fkQz8RTYNUqHV2VSYnp0u7qMcA8WKidzKPtAqAmve0
- EG4/eet8e8UCuv+gyeS5jX5yCpDBRFbkezcBVgR5CJdm+qyDPs7SMbm3ZbD2zgvGrAxh
- jhj4d217B3hx58zp1+KayVFhjFkXsF2EfNcmFZRXODaZK+TcUKmzcizQk8E8tzCjr3Z1
- VJVcM2Ip1ZtT7kqoNa5jtg8Da1qY/ixB33bLw0GfhQvUj2nSZ8oHJY0v3qgDxlxFIGf9
- vGqoli2e8cC9yT51bnz2fo5F2NhKXfg9X9hoj8YjSN/ylIFXV61hWEzSuDoY6p1KGnry
- sDXg==
+ d=1e100.net; s=20251104; t=1786280771; x=1786885571;
+ h=in-reply-to:content-disposition:content-type:mime-version
+ :references:message-id:subject:cc:to:from:date:x-gm-gg
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
+ :content-type;
+ bh=x57uq5myqQEypV80yicD+m9k8ZSaT3RYYTsF64xqmQc=;
+ b=MFIthCikFtPz6vn16hVi3dojut2OaGvZ39WhZZFvEs+8qc9bJWwnf6urme/P53FRwL
+ 5HFN9PUZgr6MbNPFmdGrRKsAikg6Hyb/Qampdh2l1+ARLdwWDh4uI3OrHFtKxcY6PqVv
+ hFoBzIDLjHMIgGa7kqlSGh6+jCcKX6LxwCHpa2c/IzOKgWtS+5wWGiZ9VQxXTK6ZuDdF
+ hj/2BnEUYBKX5RnLKJJHthpfL4dVXQS7S8AYg8CQq+Hhba4aMcCSgFvKjNKBDvkPiO2j
+ kIMGr30ffXGOguP3z48/o6eJ6x+toSWLYvEQv3KwaeeqzGrpL+2k1TE/Axt9Ain4CY2s
+ Gkeg==
 X-Forwarded-Encrypted: i=1;
- AHgh+Rp6j7odNJ62COtBSsOCH2NofvCsNt6D6uI5U5naICpH1Ge5e10t9IIvgoDCbg1/cGhNM5dYUFHImw==@nongnu.org
-X-Gm-Message-State: AOJu0YwGkCI/1YLiPl20vGkWmBXLzsZAp6rGTipS7msVv/bsDIpUnMui
- 3swavOrb4OCGWihOEMERz84AIOuc/iBiWefnBCdlDDuozYTXqVkMBWZf
-X-Gm-Gg: AR+sD12HGQ5Yf4HhIV3HeVht5twpvNJEqQ+afC8a2Nw8BVXsVZgNSSDRf/EMwqkem5m
- Wc1lmXmcnr7Kj00TgxkioRjEH9OYBiTmyGIaTzCsVcTYnnAGGSOOxrinQ6qWNjDTkOHZWB4wcBi
- 8AJFTerknJGLeAndriTTF2vZaRyvkU2ycb2G0LAB+jdXk+hvPRHcuk/wzBPN9kHUEC68APfEmmL
- g7R1tW6kWWKZAh42WMxMbBuCutXkYgPcrmUHaqCU0WngAc2hecg8A7or8f1get5SJACLVx5OSBC
- trQr/quh/b/Uh3AMzWVso+NmdB7iUI3/tgOLCIyJPMrHr+3X+NdlRlpuJJp6r8mZFeePwkP79E+
- ZnlPp2KcNjSbmNenoKxwFutX9eaH4K3Gzw1bFlc2X8vXhcP9D5cOMxLiPfaIUadhFop289QByGZ
- Ua1l1WyJdGpF5P/1oNjqnk9tmqVuwb1pDB2lhVAzkHgRElvNvQs/GYkSF8GsMGtzE9GCki5O6rL
- Y1+OdWcjLdnSvoCdw==
-X-Received: by 2002:a17:90b:48c9:b0:38e:97f0:aa4b with SMTP id
- 98e67ed59e1d1-3903c58f06fmr22350992a91.13.1786099244394; 
- Fri, 07 Aug 2026 03:40:44 -0700 (PDT)
-Received: from [192.168.0.22] ([211.226.54.223])
- by smtp.gmail.com with ESMTPSA id
- 98e67ed59e1d1-3925fc6dfcdsm2044961a91.4.2026.08.07.03.40.41
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Fri, 07 Aug 2026 03:40:43 -0700 (PDT)
-Message-ID: <25c0f24c-1381-4441-aab2-73c6640d74ab@gmail.com>
-Date: Fri, 7 Aug 2026 19:40:39 +0900
+ AHgh+RrFCY89MW2rFlzq5ZGJ7Wj+raBbnwpXpL3zO0/TtvXPGccwA1rsExZBZEWaW0nbu8o0jhqYX/lqDQ==@nongnu.org
+X-Gm-Message-State: AOJu0YyJ2p9hNDMP+zmOi707yVqhUyY6AaaeJ6Y5mkqVmwBUnjgs7ajf
+ 32ERix31/mjycIwJesTkWmtz1iljIKj8d5rhdIslM6+azDCYm9uoGKr8N7LFzSviRIo=
+X-Gm-Gg: AR+sD13kQmHR+9L+brdYwBOTFFH7jKVMh7/MEsL0IF21wmNWz5PpvzfbCga241gAtIv
+ IrYTXtQc5/I18ypLH83rNRMrPXWRs/rHM+CmoT2wsYVt7Hdyb3Rd4/YgHRybA0rr1njKhKPLXGb
+ ePcjwOMkkbf3CyQNfOQYoM/1BY39Q5Al4CDwP+9eXQb1w+die7tDiXiq3iiAunKhkyAeivYKh5q
+ JoyqA3qkcXqJnIxoC+ZgF3RVrUax6zQ4MluNqjYkjddxd+0B/Ko7g4Q1HKIqnvD4tfvRxo4CTM4
+ YbmUsk2loS/QRBXmISZ4tzjIEK7n5tY9Rt5xSSGtuzXW2cS8xwTDKOY4+yGT8+asmhOt0dr/XcH
+ klJMtVNPX2aAJghafqj4SCgOfn7nzO84nfKP2h6C9BVh+rriQClwqQ2X5QZoclVa8kp6CJGHUui
+ hkaBkA/nLcfiv71o7b1TmM8iT/pKd3dtAPZ6WGy6ZcJ0+N7XKbDLh1YEzz20cscw==
+X-Received: by 2002:a05:6214:e8b:b0:8ef:b049:7e35 with SMTP id
+ 6a1803df08f44-908813c46a4mr425056456d6.31.1786280771410; 
+ Sun, 09 Aug 2026 06:06:11 -0700 (PDT)
+Received: from p14s ([161.184.159.159]) by smtp.gmail.com with ESMTPSA id
+ 6a1803df08f44-908a934e2fasm49519796d6.46.2026.08.09.06.06.07
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Sun, 09 Aug 2026 06:06:10 -0700 (PDT)
+Date: Sun, 9 Aug 2026 07:06:06 -0600
+From: Mathieu Poirier <mathieu.poirier@linaro.org>
+To: Kohei Enju <enju.kohei@fujitsu.com>
+Cc: berrange@redhat.com, kchamart@redhat.com,
+ pierrick.bouvier@oss.qualcomm.com, peter.maydell@linaro.org,
+ mst@redhat.com, cohuck@redhat.com, pbonzini@redhat.com,
+ eblake@redhat.com, armbru@redhat.com, lorenzo.pieralisi@linaro.org,
+ gshan@redhat.com, qemu-devel@nongnu.org, qemu-arm@nongnu.org,
+ kvm@vger.kernel.org
+Subject: Re: [RFC v2 00/24] Add Realm support to QEMU-VMM
+Message-ID: <anh7Pk4dV51de7O0@p14s>
+References: <20260728192630.240375-1-mathieu.poirier@linaro.org>
+ <amrYWWyWlhnN2Fll@FCCLS0092175.localdomain>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 6/8] ufs: Refactor common core out of the PCI
- implementation
-Content-Language: ko
-To: Mikail Sadic <mikail.sadic@ibm.com>, clg@kaod.org, peter.maydell@linaro.org
-Cc: pbonzini@redhat.com, ninad@linux.ibm.com, titusr@google.com,
- jeuk20.kim@samsung.com, philmd@mailo.com, steven_lee@aspeedtech.com,
- leetroy@gmail.com, jamin_lin@aspeedtech.com, kane_chen@aspeedtech.com,
- andrew@codeconstruct.com.au, joel@jms.id.au, calebs@linux.ibm.com,
- milesg@linux.ibm.com, qemu-arm@nongnu.org, qemu-devel@nongnu.org
-References: <20260730200945.1113936-1-mikail.sadic@ibm.com>
- <20260730200945.1113936-7-mikail.sadic@ibm.com>
-From: Jeuk Kim <jeuk20.kim@gmail.com>
-In-Reply-To: <20260730200945.1113936-7-mikail.sadic@ibm.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::1033;
- envelope-from=jeuk20.kim@gmail.com; helo=mail-pj1-x1033.google.com
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <amrYWWyWlhnN2Fll@FCCLS0092175.localdomain>
+Received-SPF: pass client-ip=2607:f8b0:4864:20::f29;
+ envelope-from=mathieu.poirier@linaro.org; helo=mail-qv1-xf29.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -111,347 +107,75 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Hi Mikail,
+On Thu, Jul 30, 2026 at 02:11:57PM +0900, Kohei Enju wrote:
+> On 07/28 13:26, Mathieu Poirier wrote:
+> > This patchset provides minimal functionality to start a Realm VM
+> > from an Arm RME capable host using the following command line:
+> > 
+> > qemu-system-aarch64 \
+> >  -M confidential-guest-support=rme0 -object rme-guest,id=rme0 \
+> >  -cpu host -M virt -enable-kvm -M gic-version=3,its=on -nodefaults ..
+> > 
+> > It is a refactoring of Jean-Philippe Brucker's initial work dating from a while
+> > back.  It is compatible with Steven Price's v14 revision [1] of his work adding
+> > CCA support to KVM.
+> > 
+> > * We are currently working on rebasing the work to v15.
+> > 
+> > It was tested on the QEMU SBSA machine.  For convenience, a repository is hosted
+> > here [2], along with the TF-A [3], RMM [4] and Linux kernel [5] for the SBSA
+> > machine (compatible with Steven's v14 patchset).
+> > 
+> > Instructions to compile and run the entire stack can be found here [6].
+> > 
+> > Device Assignment is not included.
+> > 
+> > Thanks,
+> > Mathieu
+> 
+> Hi Mathieu, thank you for your work on upstreaming CCA support. I've
+> tested this series in QEMU-TCG(x-rme=on) environments and confirmed
+> that the basic functionality works well.
+> 
+> I have a question about a QMP command for querying CCA capabilities.
+> 
+> Jean's tree contains the following commit adding such a QMP command. Was
+> this functionality intentionally omitted from this series?
+> https://git.codelinaro.org/linaro/dcap/qemu/-/commit/41f7852cc8590a38c47299a35a7238da09ff9a12
+> 
+> We are interested in adding this functionality because we are also
+> planning to upstream CCA support for libvirt, which will need a QMP
+> interface to query the CCA capabilities exposed by QEMU.
+> 
+> Since the Linux kernel dropped some configuration parameters such as the
+> hash algorithm, I need to rework the implementation of that QMP command
+> a bit. If it's okay with you, I'd be happy to send out the reworked
+> patch based on this series.
 
-Thanks for reworking the UFS support in v2. The shared controller code
-removes the duplication I pointed out in v1.
+I am currently away from the office - I will get back to you after August 17th.
 
-After considering the structure further, I would prefer to model UfsHc
-as a plain controller core and have separate PCI and generic SysBus QOM
-devices contain it, following the AHCI model. This keeps the PCI and
-SysBus object layout and setup out of the shared UFS code. The generic
-SysBus device can then be subclassed by Aspeed and other platforms.
-
-I have prepared and posted a separate two-patch series implementing this
-structure:
-
-https://lore.kernel.org/qemu-devel/cover.1786096976.git.jeuk20.kim@samsung.com/
-
-Could you please rebase the UFS-related changes in patches 6-8 on top of
-this series for v3? The Aspeed device can then derive from
-TYPE_SYSBUS_UFS and provide only the AST2700-specific HCI version
-setting.
-
-Sorry for the extra churn.
-
-Thanks,
-Jeuk
-
-On 7/31/2026 5:09 AM, Mikail Sadic wrote:
-> In preparation for a sysbus UFS frontend (used by the Aspeed AST2700),
-> separate the transport-independent UFS host-controller logic from the
-> PCI-specific glue, following the pattern used by SDHCI and XHCI.
->
-> UfsHc's PCIDevice parent is replaced by an anonymous union of a
-> PCIDevice and a SysBusDevice, and the controller gains an explicit
-> AddressSpace *dma_as used by ufs_addr_read()/ufs_addr_write() and the
-> SG-list helpers instead of the PCI address space. Interrupt delivery
-> goes through qemu_set_irq() in ufs_irq_check(). The realize path is
-> split into a transport-agnostic ufs_realize_core() plus ufs_init_mmio(),
-> and UfsBus gains an 'hc' back-pointer so ufs_lu_realize() no longer
-> reaches through the PCI device. TYPE_UFS remains a PCI device, so
-> '-device ufs' is unchanged and the PCI ufs-tests qtests still pass.
->
-> Two small behaviour additions ride along on the core so that frontends
-> with differing geometry and bus-scan behaviour can be modelled:
->
->    - ufs-lu gains configurable 'logical-block-size' property. It
->      defaults to UFS_BLOCK_SIZE, so the PCI device is unaffected.
->
->    - an unmapped LUN now answers INQUIRY as "not connected" rather than
->      failing the request, so that a host bus-scan does not observe
->      controller errors for absent LUNs.
->
-> Signed-off-by: Mikail Sadic <mikail.sadic@ibm.com>
-> ---
->   hw/ufs/ufs.h | 18 ++++++++++++++++-
->   hw/ufs/lu.c  | 50 +++++++++++++++++++++++++++++++++++++++++----
->   hw/ufs/ufs.c | 57 ++++++++++++++++++++++++++++++++++++----------------
->   3 files changed, 103 insertions(+), 22 deletions(-)
->
-> diff --git a/hw/ufs/ufs.h b/hw/ufs/ufs.h
-> index feb47f460d..3d4be8deb5 100644
-> --- a/hw/ufs/ufs.h
-> +++ b/hw/ufs/ufs.h
-> @@ -12,7 +12,9 @@
->   #define HW_UFS_UFS_H
->   
->   #include "hw/pci/pci_device.h"
-> +#include "hw/core/sysbus.h"
->   #include "hw/scsi/scsi.h"
-> +#include "scsi/constants.h"
->   #include "block/ufs.h"
->   
->   #define UFS_MAX_LUS 32
-> @@ -27,6 +29,7 @@ typedef struct UfsBusClass {
->   
->   typedef struct UfsBus {
->       BusState parent_bus;
-> +    struct UfsHc *hc; /* host controller owning this bus (frontend-agnostic) */
->   } UfsBus;
->   
->   #define TYPE_UFS_BUS "ufs-bus"
-> @@ -77,6 +80,7 @@ typedef UfsReqResult (*UfsScsiOp)(struct UfsLu *, UfsRequest *);
->   typedef struct UfsLu {
->       DeviceState qdev;
->       uint8_t lun;
-> +    uint32_t logical_block_size;
->       UnitDescriptor unit_desc;
->       SCSIBus bus;
->       SCSIDevice *scsi_dev;
-> @@ -141,7 +145,15 @@ typedef struct UfsWb {
->   } UfsWb;
->   
->   typedef struct UfsHc {
-> -    PCIDevice parent_obj;
-> +    /*
-> +     * The controller can be instantiated either as a PCI function or as a
-> +     * sysbus device.  Following the SDHCI model, both frontends share this
-> +     * state structure via a union of the possible parent objects.
-> +     */
-> +    union {
-> +        PCIDevice pci_dev;
-> +        SysBusDevice sbdev;
-> +    };
->       UfsBus bus;
->       MemoryRegion iomem;
->       UfsReg reg;
-> @@ -162,6 +174,7 @@ typedef struct UfsHc {
->       Flags flags;
->   
->       qemu_irq irq;
-> +    AddressSpace *dma_as;
->       QEMUBH *doorbell_bh;
->       QEMUBH *complete_bh;
->   
-> @@ -302,4 +315,7 @@ void ufs_build_query_response(UfsRequest *req);
->   void ufs_complete_req(UfsRequest *req, UfsReqResult req_result);
->   void ufs_wb_update_avail_buffer(UfsHc *u);
->   void ufs_init_wlu(UfsLu *wlu, uint8_t wlun);
-> +UfsReqResult ufs_emulate_absent_lun(UfsRequest *req);
-> +void ufs_init_mmio(UfsHc *u);
-> +bool ufs_realize_core(UfsHc *u, Error **errp);
->   #endif /* HW_UFS_UFS_H */
-> diff --git a/hw/ufs/lu.c b/hw/ufs/lu.c
-> index 13f4a90145..a0b5574668 100644
-> --- a/hw/ufs/lu.c
-> +++ b/hw/ufs/lu.c
-> @@ -308,6 +308,44 @@ static int ufs_emulate_wlun_inquiry(UfsRequest *req, uint8_t *outbuf,
->       return SCSI_INQUIRY_LEN;
->   }
->   
-> +UfsReqResult ufs_emulate_absent_lun(UfsRequest *req)
-> +{
-> +    QEMU_UNINITIALIZED uint8_t outbuf[SCSI_INQUIRY_LEN];
-> +    uint8_t sense_buf[UFS_SENSE_SIZE];
-> +    uint8_t scsi_status;
-> +    int len = 0;
-> +
-> +    if (req->req_upiu.sc.cdb[0] == INQUIRY &&
-> +        !(req->req_upiu.sc.cdb[1] & 0x1)) {
-> +        /*
-> +         * Standard INQUIRY to a logical unit that is not mapped: report it
-> +         * as "not connected" (peripheral qualifier 0x3, device type 0x1f)
-> +         * with GOOD status, like real hardware. Host-side bus scans then
-> +         * skip the unit quietly instead of flagging a controller error.
-> +         */
-> +        memset(outbuf, 0, sizeof(outbuf));
-> +        outbuf[0] = TYPE_NO_LUN;
-> +        outbuf[3] = 0x2;
-> +        outbuf[4] = SCSI_INQUIRY_LEN - 5;
-> +        len = SCSI_INQUIRY_LEN;
-> +        scsi_status = GOOD;
-> +    } else {
-> +        scsi_build_sense(sense_buf, SENSE_CODE(LUN_NOT_SUPPORTED));
-> +        scsi_status = CHECK_CONDITION;
-> +    }
-> +
-> +    len = MIN(len, (int)req->data_len);
-> +    if (scsi_status == GOOD && len > 0 &&
-> +        dma_buf_read(outbuf, len, NULL, req->sg, MEMTXATTRS_UNSPECIFIED) !=
-> +            MEMTX_OK) {
-> +        return UFS_REQUEST_FAIL;
-> +    }
-> +
-> +    ufs_build_scsi_response_upiu(req, sense_buf, sizeof(sense_buf), len,
-> +                                 scsi_status);
-> +    return UFS_REQUEST_SUCCESS;
-> +}
-> +
->   static UfsReqResult ufs_emulate_scsi_cmd(UfsLu *lu, UfsRequest *req)
->   {
->       uint8_t lun = lu->lun;
-> @@ -394,6 +432,8 @@ static UfsReqResult ufs_process_scsi_cmd(UfsLu *lu, UfsRequest *req)
->   static const Property ufs_lu_props[] = {
->       DEFINE_PROP_DRIVE("drive", UfsLu, conf.blk),
->       DEFINE_PROP_UINT8("lun", UfsLu, lun, 0),
-> +    DEFINE_PROP_UINT32("logical-block-size", UfsLu, logical_block_size,
-> +                       UFS_BLOCK_SIZE),
->   };
->   
->   static bool ufs_add_lu(UfsHc *u, UfsLu *lu, Error **errp)
-> @@ -435,7 +475,7 @@ static void ufs_init_lu(UfsLu *lu)
->       lu->unit_desc.length = sizeof(UnitDescriptor);
->       lu->unit_desc.descriptor_idn = UFS_QUERY_DESC_IDN_UNIT;
->       lu->unit_desc.lu_enable = 0x01;
-> -    lu->unit_desc.logical_block_size = UFS_BLOCK_SIZE_SHIFT;
-> +    lu->unit_desc.logical_block_size = ctz32(lu->logical_block_size);
->       lu->unit_desc.unit_index = lu->lun;
->       lu->unit_desc.logical_block_count =
->           cpu_to_be64(brdv_len / (1 << lu->unit_desc.logical_block_size));
-> @@ -475,8 +515,10 @@ static void ufs_init_scsi_device(UfsLu *lu, BlockBackend *blk, Error **errp)
->       scsi_dev = qdev_new("scsi-hd");
->       object_property_add_child(OBJECT(&lu->bus), "ufs-scsi", OBJECT(scsi_dev));
->   
-> -    qdev_prop_set_uint32(scsi_dev, "physical_block_size", UFS_BLOCK_SIZE);
-> -    qdev_prop_set_uint32(scsi_dev, "logical_block_size", UFS_BLOCK_SIZE);
-> +    qdev_prop_set_uint32(scsi_dev, "physical_block_size",
-> +                         lu->logical_block_size);
-> +    qdev_prop_set_uint32(scsi_dev, "logical_block_size",
-> +                         lu->logical_block_size);
->       qdev_prop_set_uint32(scsi_dev, "scsi-id", 0);
->       qdev_prop_set_uint32(scsi_dev, "lun", lu->lun);
->       if (!qdev_prop_set_drive_err(scsi_dev, "drive", blk, errp)) {
-> @@ -497,7 +539,7 @@ static void ufs_lu_realize(DeviceState *dev, Error **errp)
->   {
->       UfsLu *lu = DO_UPCAST(UfsLu, qdev, dev);
->       BusState *s = qdev_get_parent_bus(dev);
-> -    UfsHc *u = UFS(s->parent);
-> +    UfsHc *u = UFS_BUS(s)->hc;
->       BlockBackend *blk = lu->conf.blk;
->   
->       if (!ufs_lu_check_constraints(lu, errp)) {
-> diff --git a/hw/ufs/ufs.c b/hw/ufs/ufs.c
-> index 464fd465b3..1489bd3321 100644
-> --- a/hw/ufs/ufs.c
-> +++ b/hw/ufs/ufs.c
-> @@ -102,7 +102,8 @@ static MemTxResult ufs_addr_read(UfsHc *u, hwaddr addr, void *buf, int size)
->           return MEMTX_DECODE_ERROR;
->       }
->   
-> -    return pci_dma_read(PCI_DEVICE(u), addr, buf, size);
-> +    return dma_memory_read(u->dma_as, addr, buf, size,
-> +                           MEMTXATTRS_UNSPECIFIED);
->   }
->   
->   static MemTxResult ufs_addr_write(UfsHc *u, hwaddr addr, const void *buf,
-> @@ -117,7 +118,8 @@ static MemTxResult ufs_addr_write(UfsHc *u, hwaddr addr, const void *buf,
->           return MEMTX_DECODE_ERROR;
->       }
->   
-> -    return pci_dma_write(PCI_DEVICE(u), addr, buf, size);
-> +    return dma_memory_write(u->dma_as, addr, buf, size,
-> +                            MEMTXATTRS_UNSPECIFIED);
->   }
->   
->   static inline hwaddr ufs_get_utrd_addr(UfsHc *u, uint32_t slot)
-> @@ -222,7 +224,7 @@ static MemTxResult ufs_dma_read_prdt(UfsRequest *req)
->       }
->   
->       req->sg = g_malloc0(sizeof(QEMUSGList));
-> -    pci_dma_sglist_init(req->sg, PCI_DEVICE(u), prdt_len);
-> +    qemu_sglist_init(req->sg, DEVICE(u), prdt_len, u->dma_as);
->       req->data_len = 0;
->   
->       for (uint16_t i = 0; i < prdt_len; ++i) {
-> @@ -317,14 +319,12 @@ static MemTxResult ufs_dma_write_upiu(UfsRequest *req)
->   
->   static void ufs_irq_check(UfsHc *u)
->   {
-> -    PCIDevice *pci = PCI_DEVICE(u);
-> -
->       if ((u->reg.is & UFS_INTR_MASK) & u->reg.ie) {
->           trace_ufs_irq_raise();
-> -        pci_irq_assert(pci);
-> +        qemu_set_irq(u->irq, 1);
->       } else {
->           trace_ufs_irq_lower();
-> -        pci_irq_deassert(pci);
-> +        qemu_set_irq(u->irq, 0);
->       }
->   }
->   
-> @@ -1092,7 +1092,7 @@ static UfsReqResult ufs_exec_scsi_cmd(UfsRequest *req)
->   
->       if (!is_wlun(lun) && (lun >= UFS_MAX_LUS || u->lus[lun] == NULL)) {
->           trace_ufs_err_scsi_cmd_invalid_lun(lun);
-> -        return UFS_REQUEST_FAIL;
-> +        return ufs_emulate_absent_lun(req);
->       }
->   
->       switch (lun) {
-> @@ -2488,6 +2488,12 @@ static bool ufs_check_constraints(UfsHc *u, Error **errp)
->       return true;
->   }
->   
-> +void ufs_init_mmio(UfsHc *u)
-> +{
-> +    memory_region_init_io(&u->iomem, OBJECT(u), &ufs_mmio_ops, u, "ufs",
-> +                          u->reg_size);
-> +}
-> +
->   static void ufs_init_pci(UfsHc *u, PCIDevice *pci_dev)
->   {
->       uint8_t *pci_conf = pci_dev->config;
-> @@ -2495,8 +2501,7 @@ static void ufs_init_pci(UfsHc *u, PCIDevice *pci_dev)
->       pci_conf[PCI_INTERRUPT_PIN] = 1;
->       pci_config_set_prog_interface(pci_conf, 0x1);
->   
-> -    memory_region_init_io(&u->iomem, OBJECT(u), &ufs_mmio_ops, u, "ufs",
-> -                          u->reg_size);
-> +    ufs_init_mmio(u);
->       pci_register_bar(pci_dev, 0, PCI_BASE_ADDRESS_SPACE_MEMORY, &u->iomem);
->       u->irq = pci_allocate_irq(pci_dev);
->   }
-> @@ -2689,25 +2694,43 @@ static void ufs_init_hc(UfsHc *u)
->       timer_mod(&u->idle_timer, now + UFS_IDLE_TIMER_TICK);
->   }
->   
-> -static void ufs_realize(PCIDevice *pci_dev, Error **errp)
-> +/*
-> + * Frontend-agnostic realization: everything except the host-bus specific
-> + * MMIO/IRQ/DMA plumbing, which the PCI or sysbus frontend sets up around
-> + * this call.  The frontend must assign u->dma_as before calling.
-> + */
-> +bool ufs_realize_core(UfsHc *u, Error **errp)
->   {
-> -    UfsHc *u = UFS(pci_dev);
-> -
->       if (!ufs_check_constraints(u, errp)) {
-> -        return;
-> +        return false;
->       }
->   
-> -    qbus_init(&u->bus, sizeof(UfsBus), TYPE_UFS_BUS, &pci_dev->qdev,
-> -              u->parent_obj.qdev.id);
-> +    qbus_init(&u->bus, sizeof(UfsBus), TYPE_UFS_BUS, DEVICE(u),
-> +              DEVICE(u)->id);
-> +    u->bus.hc = u;
->   
->       ufs_init_state(u);
->       ufs_init_hc(u);
-> -    ufs_init_pci(u, pci_dev);
->   
->       ufs_init_wlu(&u->report_wlu, UFS_UPIU_REPORT_LUNS_WLUN);
->       ufs_init_wlu(&u->dev_wlu, UFS_UPIU_UFS_DEVICE_WLUN);
->       ufs_init_wlu(&u->boot_wlu, UFS_UPIU_BOOT_WLUN);
->       ufs_init_wlu(&u->rpmb_wlu, UFS_UPIU_RPMB_WLUN);
-> +
-> +    return true;
-> +}
-> +
-> +static void ufs_realize(PCIDevice *pci_dev, Error **errp)
-> +{
-> +    UfsHc *u = UFS(pci_dev);
-> +
-> +    u->dma_as = pci_get_address_space(pci_dev);
-> +
-> +    if (!ufs_realize_core(u, errp)) {
-> +        return;
-> +    }
-> +
-> +    ufs_init_pci(u, pci_dev);
->   }
->   
->   static void ufs_exit(PCIDevice *pci_dev)
+> 
+> Thanks,
+> Kohei
+> 
+> > 
+> > [1]. https://lore.kernel.org/kvm/20260513131757.116630-1-steven.price@arm.com/T/#m06dd14216aaf76acab65b0a76fb84653141ea64f
+> > [2]. https://gitlab.com/Linaro/cca-public/qemu/-/tree/upstream-v2?ref_type=heads
+> > [3]. https://gitlab.com/Linaro/cca-public/tf-a/trusted-firmware-a/-/tree/cca/v13?ref_type=heads
+> > [4]. https://gitlab.com/Linaro/cca-public/rmm/-/tree/cca/v14?ref_type=heads
+> > [5]. https://gitlab.com/Linaro/cca-public/linux/-/tree/upstream-v2?ref_type=heads 
+> > [6]. https://gitlab.com/Linaro/cca-public/build-instructions
+> > 
+> > RFC v1:
+> > https://lists.gnu.org/archive/html/qemu-devel/2026-07/msg02307.html
+> > 
+> > Changes for V2:
+> > - Fixed linux headers to include correct bit shift for Realm VM (Gavin).
+> > - Removed obsolete rme-guest options (Markus).
+> > - Set ConfidentialGuestSupportClass::kvm_init() to kvm_arm_rme_init() (Gavin).
+> > - Got rid of kvm_arm_rme_vm_type() (Gavin).
+> > - Used kvm_vm_check_extension() instead of kvm_check_extension() to avoid
+> >   error message when starting a Realm (Gavin).
+> > - Removed obsolete kvm_arm_rme_init_guest_ram() (Gavin).
+> > - Collected A-B and R-B.
 

@@ -4,84 +4,96 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0054EC5AD7B
-	for <qemu-arm@archiver.kernel.org>; Mon, 10 Aug 2026 12:51:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6DD3EC5AE49
+	for <qemu-arm@archiver.kernel.org>; Mon, 10 Aug 2026 14:39:51 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wtPTc-00062R-3D; Mon, 10 Aug 2026 08:51:39 -0400
+	id 1wtRAG-0007mx-HJ; Mon, 10 Aug 2026 10:39:45 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <alexander@mihalicyn.com>)
- id 1wtOuh-00073R-QC
- for qemu-arm@nongnu.org; Mon, 10 Aug 2026 08:15:31 -0400
-Received: from mail-wr1-x432.google.com ([2a00:1450:4864:20::432])
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1wtRA8-0007mA-PF
+ for qemu-arm@nongnu.org; Mon, 10 Aug 2026 10:39:38 -0400
+Received: from mail-yw1-x1132.google.com ([2607:f8b0:4864:20::1132])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <alexander@mihalicyn.com>)
- id 1wtOug-0001Db-21
- for qemu-arm@nongnu.org; Mon, 10 Aug 2026 08:15:31 -0400
-Received: by mail-wr1-x432.google.com with SMTP id
- ffacd0b85a97d-480033bdcf4so986351f8f.2
- for <qemu-arm@nongnu.org>; Mon, 10 Aug 2026 05:15:28 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1wtRA7-0005JP-E6
+ for qemu-arm@nongnu.org; Mon, 10 Aug 2026 10:39:36 -0400
+Received: by mail-yw1-x1132.google.com with SMTP id
+ 00721157ae682-8114a4542b2so28706067b3.1
+ for <qemu-arm@nongnu.org>; Mon, 10 Aug 2026 07:39:34 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1786372774; cv=none;
+ d=google.com; s=arc-20260327;
+ b=ayC8u//cIbDwqdqD+ZHhflKVN8v6jxcYoaKZLhyI8RfBF3XC8m9U92gi244gFbq+Vr
+ 5eZwtALLYpP37xPZ+4W2OSZyc6lBPWqS65wwpEEKuhhbjAbBWZ0vmgDVxYcoiU2z5/t4
+ LSslFvu4YaxKUq8F5Tk1jwNA1nkADxbUg/rxWcP2Ta9cbLAsBR+Aukn/jyjrGEPpZ2zc
+ NARvFyAkc3K7QruWXmzQQkQ5ibSWFHLKKox/M+OSAi4TStE1buzrkozTV2koMUKA/Gfe
+ LrIFlCLvyhRuqvoY0WF1r7ChbhcJg6qWr7CM4xpdC5UJOi1H3tReloljnRMC7bKMSZkr
+ eSkQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
+ s=arc-20260327; 
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:dkim-signature;
+ bh=KYPrTKBg0uDTSzlel1LnvppHKk6QfkRtH2dKTdsM+5E=;
+ fh=b14I9SlNyyOkGLxtp8PbzlsdeyTItMRnICEuaS/UC78=;
+ b=YHZYi0CvwhPCIukLwS8Xgqgc2kOWoSvMzgZcnGzXf6QHpbNoFXVguLtFcwLefKyFEq
+ 2GLG3Y5OT2/fgFIbwLZ+RqN+lZ7pKAeFh/q6hZ5mvex+r+9b58cfpTRM9qpvre3BNeCw
+ 1Lg89cmLRHzGhdBbfmu17Pc+xb435kzpPiusGbRldn0U1LC9FJ6GpypByKJBYg0uXQou
+ 0HiGTAsjoMBTAEtShwGWG4q+UNrP9qonIvUSZi8JDQcO3/j2WusyDFhI6QelArJ4Iwh4
+ O0aezDGNEDrpndaXX7yyNauRhf/Uy3lqfPxs26j5bEcqQ+2/Fep6IzlgCFvoXi76H4/l
+ 4pcg==; darn=nongnu.org
+ARC-Authentication-Results: i=1; mx.google.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=mihalicyn.com; s=mihalicyn; t=1786364127; x=1786968927; darn=nongnu.org;
- h=content-transfer-encoding:content-type:mime-version:message-id:date
- :subject:cc:to:from:from:to:cc:subject:date:message-id:reply-to
- :content-type; bh=f6w3W8atRrqKQaVtE38r1TC6G0N7Trc9YGRXReVzOaM=;
- b=Mt4zGmnCU68zW8MlTtoBaP+B/vDb6uKKVz9QDsblwdmQMIhEMSBQMJQyP5CkJI4lsL
- FNdr11WeFjPk+xIv9WWDphR8sE7jTd0XLJ0R2w+jQCZzlG0iie50atbRyodbLRmkOe0Z
- XxZxoEqzUpDokosobyBOjyzL+52xZgkZD/ejo=
+ d=linaro.org; s=google; t=1786372774; x=1786977574; darn=nongnu.org;
+ h=content-type:cc:to:subject:message-id:date:from:in-reply-to
+ :references:mime-version:from:to:cc:subject:date:message-id:reply-to
+ :content-type; bh=KYPrTKBg0uDTSzlel1LnvppHKk6QfkRtH2dKTdsM+5E=;
+ b=bfz2Fq9u+gbOB/EUOPvu8SR7aMC3waDnG0vQlLGitG7r87td6IFAHr1XgBvj/3UYF5
+ BqLCXJJeyXR0FkGkg8CPS2d1z4DS0Ht8l2Q1iNxi6eWCxdg+X5fHKObUy+oynwKe5Aqf
+ 4pUriOtXnIUdYFoyf2vuOUsSfWWmOFOBlwuaa31xV3qwjZNS7nXHNWT0PLaToHN3EueT
+ gBdraB4eL8tHYEdm8knNHuq9y1qcqfT5KqbQ6eo7YQohAUnjpUzrxOp8ti29Ih5Bnm2n
+ ZJEJ5UmDxzalQ9OxeAQyv2Q+x29KuF4TpKcw7vAgff7EMjroFLqKIl1lIFVYEFi7oIGN
+ KCgA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1786364127; x=1786968927;
- h=content-transfer-encoding:content-type:mime-version:message-id:date
- :subject:cc:to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject
- :date:message-id:reply-to:content-type;
- bh=f6w3W8atRrqKQaVtE38r1TC6G0N7Trc9YGRXReVzOaM=;
- b=WbvSDz5pW/E4nQ7E8KMSisKh8i6LEcT7aypQ2SYaZg+C3dTmmh+nNfJGcCTqChI3us
- WoWgOuI1g4QFSiZZghWauYxy9UgJckUhzq+ov9M6Yuj2LxwAuzTKx3sq+TS2f3HWPyap
- u0ZJS4mbO8aHXpCsPCXGFAQrB9TcDC0d6YvKIwZV355jhaTBhftEFWxX2ciEPM1npkGt
- EUlQh2QKd2qG7qk0ENF07LLt287iB64d4zR6V3Ac7qYEX626UtvF/OoyE9Yq+ivJqvvf
- 5A8SB/VD0mZrqyUmygjtCl9LoQ043m8XosuXq10mMPjBTmmPM2kF6RNgbjtkMRnvo/Kj
- CwaA==
+ d=1e100.net; s=20251104; t=1786372774; x=1786977574;
+ h=content-type:cc:to:subject:message-id:date:from:in-reply-to
+ :references:mime-version:x-gm-gg:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to:content-type;
+ bh=KYPrTKBg0uDTSzlel1LnvppHKk6QfkRtH2dKTdsM+5E=;
+ b=cPd2Mq22zNSwVuBFZrtRBsr3BAmWey84HFzQxQhs+Xu7taqblYsfSioxlyzQTKPrfC
+ D/0MCiluxbiuyluA76xiarrH52lWmkVehK7qgUHTh0pd4YD5DwyHGmA2x407av85Vaji
+ uuHiWECRQzV1FM3PLbnzZEymzF/NFWmKv0ji0pQUe3lJwD9OPvtImVZ63wCJNaiQF+un
+ sa6MGi/yl7TXMOMMbr8J71r8WsTn7JNTV49J+AvLYwLJ9emIBJiwKJ5B7QWlY9pmP0uV
+ +zNdX4oPtqdYrBTIPM0q+QjK7424oWMMRYTt7mhY4AzmH/+Lcler+0k2uQvO3cMex9rx
+ 6fxA==
 X-Forwarded-Encrypted: i=1;
- AHgh+RoCLWf2x2ZYSLZJBSlxHT4VBI9N4XCS2bYtt04Wob+RuUs5YrXR6+QxuU4rcfRxmOBO1FLWQ/GpWg==@nongnu.org
-X-Gm-Message-State: AOJu0Yz2HhH9etvINGLQ+6cPONw5YZnmffp12nQwG/uD4wW4HWNQnFYo
- KN/eVyh1GHUrtyw1f5mDehQJcVf9G3KYG1QpRm6i3bb33K9t5ovGVxx1adVxdhImNAM=
-X-Gm-Gg: AR+sD12nLoUrNls0V/5lLBbqptJvY4k3/ZFIbnDPXOs51jarg+hN26177Dywsvgj/xB
- lChxHBUoW2qFNsizAt7F/zsXh8LALtE0usxOGKz+WXsPoX2rDOFeT6m/qwbUyLBsSHdTtu2r6vH
- byBK3PTEtu/+ZSNlGx5pg93/g/6cAYAP91xfu0kHgDCxkj7HdydMMDDjN0xcigpbIDAa2iXCQ/I
- UtIJP/NZ+Y+ak33LdudcXP0G2r2Okb820lR33PfL5dr4/D6LhI41p2UFkmcFUJu2Cu16ZHOd/D6
- T6y/cb3hs306i6nu6qL0tmRdvvJpq3TzT8UZ1mLUutR5+Rs4RYW3Yh2VdR/QwFfw2F5X0doWiYK
- TK3wR3JCOep52939tzhSukxrItyaj0CzVhBrPPZx3y0DjWXUNoGOCvG/Oamr1wvGYjbd5W/Bqjq
- 7CeBJ9mO85RgJ0sEwQ8AYWON84VKFghd9VQwNTosZVAOF9/c0mMhxCLdh2Wbn353/d7eAfY5Dz8
- s+Wza0PSe7y8J8TdvXrq9tTgpD0KR9GoGn8i+ahQweX9aXUPK+3rd0mJ4JD
-X-Received: by 2002:a05:6000:29c6:b0:47f:6e23:64d6 with SMTP id
- ffacd0b85a97d-4814562d12bmr1632037f8f.16.1786364127476; 
- Mon, 10 Aug 2026 05:15:27 -0700 (PDT)
-Received: from alex-laptop.lan
- (p200300cf574a7200f46c63e7a2c45b35.dip0.t-ipconnect.de.
- [2003:cf:574a:7200:f46c:63e7:a2c4:5b35])
- by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-480021506cbsm35872061f8f.14.2026.08.10.05.15.26
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 10 Aug 2026 05:15:26 -0700 (PDT)
-From: Alexander Mikhalitsyn <alexander@mihalicyn.com>
-To: qemu-devel@nongnu.org
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- =?UTF-8?q?St=C3=A9phane=20Graber?= <stgraber@stgraber.org>,
- Paolo Bonzini <pbonzini@redhat.com>,
- =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
- qemu-arm@nongnu.org, Aleksanr Mikhalitsyn <alexander@mihalicyn.com>,
- Alexander Mikhalitsyn <aleksandr.mikhalitsyn@futurfusion.io>
-Subject: [PATCH] hw/char/pl011: support backend hotswap
-Date: Mon, 10 Aug 2026 14:15:25 +0200
-Message-ID: <20260810121525.100540-1-alexander@mihalicyn.com>
-X-Mailer: git-send-email 2.47.3
+ AHgh+Rov/uVVNInF+qN7f9mq9zwkQXCWaqVipky5un3GumhMZvXDcV6X129+Piz/env7S5fko+UTSzxEMw==@nongnu.org
+X-Gm-Message-State: AOJu0YwmJJimtjYI6IX7jGuk+k2KJT4vSlNX8kfO9BVOdq8BJ2k06iUz
+ u6F49vdkGxF4WXb7APVxBXCqyPDzqVjlwmWDihoSkdK5MHR/ic9IjIuy8J5iDkrImjosdP3HE+s
+ a23dq4JHH3/xlZQwmP84Rt0XRpUOBGOoruykIeu09/A==
+X-Gm-Gg: AR+sD10z9ecwpUg69E3dXBPe03XPYqCaWGAMKR0JIIB4yiK8kFLF7d9lc5HiTMgOap0
+ AXvvYQzoz2zntHnW0XDl+m4oJMk6Z+RGFVY4Ql/1XeEVUT5+FMc76vGMuBSlscaLsGeqhXWOv4z
+ nAwuDoPfrkAxm4uFKa1MTUKlWGccm+LkSyFGv63UXs7wB8cgxivydjGakK9uxuqlW9IGse0hVx8
+ BawYrGwhVJFoP1k2iJ744k82puRHWy4M5Ct31Syqud8ZC1bXcRtgAXW8ChWDY0shdZYHYTr7hDJ
+ ova6UykVR8ZfrRHMdMz7v5kU2IBkGb14+TvFV6a/UubdjoYmmUusCiONbcA6P+fbNfEIex7UBVw
+ n6S7neDtwPsDF+vwy2RlWjj9dSWjV
+X-Received: by 2002:a05:690c:690c:b0:80f:9998:e614 with SMTP id
+ 00721157ae682-825778aa66amr122891567b3.28.1786372773762; Mon, 10 Aug 2026
+ 07:39:33 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::432;
- envelope-from=alexander@mihalicyn.com; helo=mail-wr1-x432.google.com
+References: <20260713230244.70174-1-richard.henderson@linaro.org>
+In-Reply-To: <20260713230244.70174-1-richard.henderson@linaro.org>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Mon, 10 Aug 2026 15:39:22 +0100
+X-Gm-Features: AUfX_myKvanqCw3V3p6G1c3PaNj9pSGi9n3Vi6VObv5sv2o9b-Ybzy_rL-I0ckA
+Message-ID: <CAFEAcA-puCcXP67TEbW6-TySiFax6-N-N8dXcn97GMJFcAZfhg@mail.gmail.com>
+Subject: Re: [PATCH for-11.2 00/10] target/arm: Implement FEAT_SME_TMOP
+To: Richard Henderson <richard.henderson@linaro.org>
+Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2607:f8b0:4864:20::1132;
+ envelope-from=peter.maydell@linaro.org; helo=mail-yw1-x1132.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -90,7 +102,6 @@ X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-Mailman-Approved-At: Mon, 10 Aug 2026 08:51:31 -0400
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -105,55 +116,18 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-From: Aleksanr Mikhalitsyn <alexander@mihalicyn.com>
+On Tue, 14 Jul 2026 at 00:03, Richard Henderson
+<richard.henderson@linaro.org> wrote:
+>
+> Another SME2.1 extension that becomes mandatory with SME2.2.
+>
+> I reused the little helpers that I created for FEAT_SME_MOP4
+> without renaming them to something more generic.  I hope that
+> isn't too confusing.
+>
 
-Currently, when Incus issues "chardev-change" QMP command to change
-chardev backend from ringbuf to socket it receives an error (with aarch64 VM):
-"Chardev user does not support chardev hotswap" [1], [2]
 
-Let's fix this by properly implementing BackendChangeHandler for pl011.
+Applied to target-arm.next for 11.2, thanks.
 
-Link: https://discuss.linuxcontainers.org/t/unable-to-connect-to-vm-console-on-arm-architecture/23096/3 [1]
-Link: https://github.com/lxc/distrobuilder/issues/892 [2]
-Reported-by: Stéphane Graber <stgraber@stgraber.org>
-Signed-off-by: Alexander Mikhalitsyn <aleksandr.mikhalitsyn@futurfusion.io>
----
- hw/char/pl011.c | 16 +++++++++++++++-
- 1 file changed, 15 insertions(+), 1 deletion(-)
-
-diff --git a/hw/char/pl011.c b/hw/char/pl011.c
-index cb12c3e224f..3622248ec0c 100644
---- a/hw/char/pl011.c
-+++ b/hw/char/pl011.c
-@@ -660,12 +660,26 @@ static void pl011_init(Object *obj)
-     s->id = pl011_id_arm;
- }
- 
-+static int pl011_be_change(void *opaque)
-+{
-+    PL011State *s = opaque;
-+    int break_enable = s->lcr & LCR_BRK;
-+
-+    qemu_chr_fe_set_handlers(&s->chr, pl011_can_receive, pl011_receive,
-+                             pl011_event, pl011_be_change, s, NULL, true);
-+
-+    qemu_chr_fe_ioctl(&s->chr, CHR_IOCTL_SERIAL_SET_BREAK,
-+                      &break_enable);
-+
-+    return 0;
-+}
-+
- static void pl011_realize(DeviceState *dev, Error **errp)
- {
-     PL011State *s = PL011(dev);
- 
-     qemu_chr_fe_set_handlers(&s->chr, pl011_can_receive, pl011_receive,
--                             pl011_event, NULL, s, NULL, true);
-+                             pl011_event, pl011_be_change, s, NULL, true);
- }
- 
- static void pl011_reset(DeviceState *dev)
--- 
-2.47.3
-
+-- PMM
 

@@ -4,59 +4,59 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A9437C5B567
-	for <qemu-arm@archiver.kernel.org>; Mon, 10 Aug 2026 18:59:13 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 85C03C5AD7B
+	for <qemu-arm@archiver.kernel.org>; Mon, 10 Aug 2026 18:59:40 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wtVCx-0001ZY-57; Mon, 10 Aug 2026 14:58:47 -0400
+	id 1wtVCZ-0001U1-EH; Mon, 10 Aug 2026 14:58:23 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mikail.sadic@ibm.com>)
- id 1wtVCv-0001Z2-K3; Mon, 10 Aug 2026 14:58:45 -0400
-Received: from mx0a-001b2d01.pphosted.com ([148.163.156.1])
+ id 1wtVCY-0001Tf-4A; Mon, 10 Aug 2026 14:58:22 -0400
+Received: from mx0b-001b2d01.pphosted.com ([148.163.158.5])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mikail.sadic@ibm.com>)
- id 1wtVCt-0003UV-9y; Mon, 10 Aug 2026 14:58:45 -0400
-Received: from pps.filterd (m0353729.ppops.net [127.0.0.1])
+ id 1wtVCV-0003Qj-VJ; Mon, 10 Aug 2026 14:58:21 -0400
+Received: from pps.filterd (m0360072.ppops.net [127.0.0.1])
  by mx0a-001b2d01.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id
- 67AGVtnv292855; Mon, 10 Aug 2026 18:57:59 GMT
+ 67AGW6WL2192690; Mon, 10 Aug 2026 18:57:58 GMT
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ibm.com; h=cc
  :content-transfer-encoding:date:from:in-reply-to:message-id
- :mime-version:references:subject:to; s=pp1; bh=AqhPQ1Q9hfplNQ2nS
- zeEDUlFwpKQrrNt7URNcAzMZlI=; b=If2ZGqk7DO35SdZcz3t2SD4o5cEDiHNJ0
- OfEF3sYwaKBjcy1PRJ1l5YOnGyMmqihOgtFX89CUb5nORJB57sv6Pt0zFdJl3GwF
- ulwpo8gcsCWzud1Woa3mXc0Bt9DBSaRtckYe/jgdbohw/pjnl63bcSpQ601USXyc
- H4N1n30b2zRnI7qmJJjWbyRD4QL4+GyifY+1p5rGVwLwkKPVe9cif4KklFms0C7X
- ctDBMc2oifAqGCj7ksefB1UMvZT4XgWjzKRED8B9k9+My7YdxCL2yK1HkxUY5siN
- hAiypJ/UC3mOI5JHu9SfAip1SHqwcVtg47NKQnkw58B79cteiRckA==
-Received: from ppma13.dal12v.mail.ibm.com
- (dd.9e.1632.ip4.static.sl-reverse.com [50.22.158.221])
- by mx0a-001b2d01.pphosted.com (PPS) with ESMTPS id 4fwvjysmke-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Mon, 10 Aug 2026 18:57:58 +0000 (GMT)
-Received: from pps.filterd (ppma13.dal12v.mail.ibm.com [127.0.0.1])
- by ppma13.dal12v.mail.ibm.com (8.18.1.7/8.18.1.7) with ESMTP id 67AIuLno031725;
- Mon, 10 Aug 2026 18:57:57 GMT
-Received: from smtprelay04.dal12v.mail.ibm.com ([172.16.1.6])
- by ppma13.dal12v.mail.ibm.com (PPS) with ESMTPS id 4fxh0g5wek-1
+ :mime-version:references:subject:to; s=pp1; bh=8Aux4Nt9AqJZJwSbt
+ 1118cnbfcrSHGWwBveD1cl72L4=; b=awwU7fIwy1OVQvXz67bOBBtgMoE5v5DGA
+ NN2Kdx4fIsLZV3M5+/ZveGPUVdkQXff3g4xecj6QwTR2hs9PAX1ePpO22AKGK2JO
+ QWEgxE/rdioREsDfPPavXmglNf9y2tjhfq/5YOgPvOviXv5sCFbp6+SoGR125D1w
+ bWULwBJ68Rgg+8T17Ujtkp2gWbsP8eH7o56WxNAtNj5GOFZ7gcNNsjaCzIYJSvBb
+ 0RzxDO5ZxN48G672X9bQSN5bUhUJIlUXz1UDjSXaFVQS0Xo6iGgW2SqW43nIWFui
+ 8DCHJXkEYomShE540doWWoY2KRB745sd3OcsCzN9FJRax4WBwcTiQ==
+Received: from ppma12.dal12v.mail.ibm.com
+ (dc.9e.1632.ip4.static.sl-reverse.com [50.22.158.220])
+ by mx0a-001b2d01.pphosted.com (PPS) with ESMTPS id 4fwvnw15jt-1
  (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
  Mon, 10 Aug 2026 18:57:57 +0000 (GMT)
+Received: from pps.filterd (ppma12.dal12v.mail.ibm.com [127.0.0.1])
+ by ppma12.dal12v.mail.ibm.com (8.18.1.7/8.18.1.7) with ESMTP id 67AIQHG9026180;
+ Mon, 10 Aug 2026 18:57:56 GMT
+Received: from smtprelay06.wdc07v.mail.ibm.com ([172.16.1.73])
+ by ppma12.dal12v.mail.ibm.com (PPS) with ESMTPS id 4fxespx752-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+ Mon, 10 Aug 2026 18:57:56 +0000 (GMT)
 Received: from smtpav02.dal12v.mail.ibm.com (smtpav02.dal12v.mail.ibm.com
  [10.241.53.101])
- by smtprelay04.dal12v.mail.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id
- 67AIvupT30671558
+ by smtprelay06.wdc07v.mail.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id
+ 67AIvtQ062980358
  (version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Mon, 10 Aug 2026 18:57:56 GMT
+ Mon, 10 Aug 2026 18:57:55 GMT
 Received: from smtpav02.dal12v.mail.ibm.com (unknown [127.0.0.1])
- by IMSVA (Postfix) with ESMTP id 3135358051;
- Mon, 10 Aug 2026 18:57:56 +0000 (GMT)
+ by IMSVA (Postfix) with ESMTP id D867C5805E;
+ Mon, 10 Aug 2026 18:57:54 +0000 (GMT)
 Received: from smtpav02.dal12v.mail.ibm.com (unknown [127.0.0.1])
- by IMSVA (Postfix) with ESMTP id 9253E5805A;
- Mon, 10 Aug 2026 18:57:55 +0000 (GMT)
+ by IMSVA (Postfix) with ESMTP id 3ED805805C;
+ Mon, 10 Aug 2026 18:57:54 +0000 (GMT)
 Received: from IBM-MFS.ibm.com (unknown [9.61.24.176])
  by smtpav02.dal12v.mail.ibm.com (Postfix) with ESMTP;
- Mon, 10 Aug 2026 18:57:55 +0000 (GMT)
+ Mon, 10 Aug 2026 18:57:54 +0000 (GMT)
 From: Mikail Sadic <mikail.sadic@ibm.com>
 To: clg@kaod.org, peter.maydell@linaro.org
 Cc: Mikail Sadic <mikail.sadic@ibm.com>, pbonzini@redhat.com,
@@ -65,9 +65,9 @@ Cc: Mikail Sadic <mikail.sadic@ibm.com>, pbonzini@redhat.com,
  jamin_lin@aspeedtech.com, kane_chen@aspeedtech.com,
  andrew@codeconstruct.com.au, joel@jms.id.au, calebs@linux.ibm.com,
  milesg@linux.ibm.com, qemu-arm@nongnu.org, qemu-devel@nongnu.org
-Subject: [PATCH v3 7/8] ufs/aspeed: Add AST2700 UFS host controller
-Date: Mon, 10 Aug 2026 13:57:45 -0500
-Message-ID: <20260810185748.1253-8-mikail.sadic@ibm.com>
+Subject: [PATCH v3 5/8] hw/sensor: Add UCD90320 model
+Date: Mon, 10 Aug 2026 13:57:43 -0500
+Message-ID: <20260810185748.1253-6-mikail.sadic@ibm.com>
 X-Mailer: git-send-email 2.53.0
 In-Reply-To: <20260810185748.1253-1-mikail.sadic@ibm.com>
 References: <20260810185748.1253-1-mikail.sadic@ibm.com>
@@ -75,41 +75,39 @@ MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-TM-AS-GCONF: 00
 X-Proofpoint-Reinject: loops=2 maxloops=12
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwODEwMDE1OCBTYWx0ZWRfX3ZvfY4b9RI8q
- k5GCsFt/K1o259L5O6d2Ilw2lgCrafGNdQ0rTTbrwbib9QyQficD+qIdSYPiI0zFqGdBQg7hHlu
- p/ksuSLAAOtBgx7qKpUajN7Zf1tbXzmauq1xA9b9Kx/f9M4trdxb59Du/3xjIqasiJ/glrPuRuQ
- DrFpKFNrbgJ+41oEHih5DgjiH9FKMsdMxzz+Rsdy8F5qlKugZhD/82YFPkvyuMhXlUNgD23HYaF
- jKR6DKmJVKuJy2FVGtYn7tsMsqHqm4miOtptjy0aJZyWAEcXNF5d7f09Q6yhXCLX+ctUx3tmwzP
- tbD9G1g+Kbh2x82uwjQCzyodK3IUOhcq4k81n+Hu68o6Rdrwxhg/urzuLY3n8BwfS4IIN79ryHw
- PzPbLzt2T3k3xDWKkMi1Q7nznvy3Y1Q+2yyfmTj1fAAip8fCKTb+s74oXWHOx6IYVwJMzkPUWuF
- aZviWxlmv+05qU2Weug==
-X-Proofpoint-Spam-Info: AW1haW4tMjYwODEwMDE1OCBTYWx0ZWRfXwJ+PTvhoPexe
- klXwJO4FZeuq7Sf6B3JOlhclgkJyR/xR4TLURJcxfiMsuiB8dlVadv29C7wFuBzKI0GDRiR+oU0
- 3E4L/U0sTXOYi/+YWB3vtPot2SpZNTM=
-X-Authority-Analysis: v=2.4 cv=RqD16imK c=1 sm=1 tr=0 ts=6a7a1f36 cx=c_pps
- a=AfN7/Ok6k8XGzOShvHwTGQ==:117 a=AfN7/Ok6k8XGzOShvHwTGQ==:17
+X-Authority-Analysis: v=2.4 cv=RsP16imK c=1 sm=1 tr=0 ts=6a7a1f36 cx=c_pps
+ a=bLidbwmWQ0KltjZqbj+ezA==:117 a=bLidbwmWQ0KltjZqbj+ezA==:17
  a=Sv0fKeRqtYgA:10 a=VkNPw1HP01LnGYTKEx00:22 a=RnoormkPH1_aCDwRdu11:22
- a=uAbxVGIbfxUO_5tXvNgY:22 a=VnNF1IyMAAAA:8 a=hD80L64hAAAA:8
- a=ATOKqi0wAkDwqrHMCoMA:9
-X-Proofpoint-GUID: u9OUWINL-Buua42nQFQh0N3VoybuUwRs
-X-Proofpoint-ORIG-GUID: AoxkxqbdErwQZa0bkWVQT0vCexm0PqaK
+ a=RzCfie-kr_QcCd8fBx8p:22 a=VnNF1IyMAAAA:8 a=YwPlQgHYUhtu6dumBzMA:9
+X-Proofpoint-GUID: T9LReHCHUiwlAihAjN5wwiCjx_iRjM6Z
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwODEwMDE1OCBTYWx0ZWRfXxCZGFH4GF5r/
+ L5+Tge5KQFeyKrN73uCCek/kivQG91ePbLPeoFokIsxHBACMJEkRdE2U6VYh3OjGr4kk/Pxq+sG
+ 0KMhkUaV4CGFrmYTOQcs3zzHmteMjqadgU/Q6jINkukLnxEs9cRNw26MNk3ZQLNMQeI8X9LkLpP
+ DXH4/ErqgGX/gpBDFHBBhxrNrsjWexKW9X8GpHeVPQofB3IIJfXEKI08scUOzW/7eX9uGujMF0r
+ Eu/3Hmgvoef23MEx7MMc6PdUhMo3Rl2WjtxiPLTxKP93z9y/mYxeOmEN0SW8PpL8MRpCFOKZ3MM
+ 51alEO8IBHzgrCI6nxLlkcL2BYmG6CqqVEtVIm4w4LbC1GVX04YVlGX6WoIUoF9wen9p4wmK4L5
+ gOg/vbQKi4TB0AhsBpQcKaWcSUkidKZAoDMXHWzFweB9GPYrbTniEURrttvcPRrdju8HQVRIPDF
+ nClOGTNkGVUwSVxqOzw==
+X-Proofpoint-ORIG-GUID: CzwbI_GKIspHmWRyQBxa2DC92CaoWqpU
+X-Proofpoint-Spam-Info: AW1haW4tMjYwODEwMDE1OCBTYWx0ZWRfX4l9alsNNbun7
+ 221ihhFrGhJBNnSz1cKko/nx8hfjAZ8TEytiEEqn5cjn2p4p6qbcyuYJwUQqb0+CUNm3oUIxu+W
+ duEWcZhFjyAH1hh7YRLelke8Awqiqh0=
 X-Proofpoint-Virus-Version: vendor=baseguard
  engine=ICAP:2.0.293,Aquarius:18.0.1176,Hydra:6.1.134,FMLib:17.12.100.49
  definitions=2026-08-10_04,2026-08-10_02,2025-10-01_01
 X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
- phishscore=0 priorityscore=1501 suspectscore=0 lowpriorityscore=0
- clxscore=1015 adultscore=0 bulkscore=0 malwarescore=0 impostorscore=0
- spamscore=0 classifier=typeunknown authscore=0 authtc= authcc= route=outbound
- adjust=0 reason=mlx scancount=1 engine=8.22.0-2606150000
- definitions=main-2608100158
-Received-SPF: pass client-ip=148.163.156.1; envelope-from=mikail.sadic@ibm.com;
- helo=mx0a-001b2d01.pphosted.com
+ spamscore=0 impostorscore=0 suspectscore=0 clxscore=1015 malwarescore=0
+ phishscore=0 adultscore=0 lowpriorityscore=0 priorityscore=1501 bulkscore=0
+ classifier=typeunknown authscore=0 authtc= authcc= route=outbound adjust=0
+ reason=mlx scancount=1 engine=8.22.0-2606150000 definitions=main-2608100158
+Received-SPF: pass client-ip=148.163.158.5; envelope-from=mikail.sadic@ibm.com;
+ helo=mx0b-001b2d01.pphosted.com
 X-Spam_score_int: -27
 X-Spam_score: -2.8
 X-Spam_bar: --
 X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
  SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -126,356 +124,297 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-The AST2700 carries a UFS host controller (aspeed,ufshc-m31-16nm) at
-0x12c08200 on IRQ 118, used by the OpenBMC image to reach its root
-filesystem.
-
-Add 'aspeed-ufs' as a subclass of the generic sysbus UFS controller. The
-sysbus device supplies the MMIO region, the interrupt, the DMA address
-space and the controller properties, so the only thing left to model is
-the UFSHCI version: the AST2700 reports 2.0, while the core reports 4.1,
-which makes the U-Boot and Linux drivers run 4.x-only probe steps this
-model does not implement.
-
-Wire the controller into the AST2700 SoC and select UFS_SYSBUS, so an
-Aspeed target no longer depends on the PCI UFS device being configured
-to get a UFS controller.
-
-The UFS bus only exists once the controller is realized, so the board
-creates the logical unit for the first backend drive after SoC realize
-rather than through a controller drive property. AspeedMachineClass
-gains a ufs_block_size field for machines whose image geometry differs
-from the ufs-lu default; zero leaves the default in place.
+Add a PMBus device model for the TI-UCD90320 24-rail power
+sequencer. Configures 24 pages with linear vout mode and responds to
+the vendor-specific UCD9000_DEVICE_ID, NUM_PAGES, MONITOR_CONFIG, and
+MFR_STATUS commands, allowing the Linux ucd9000 driver to bind and
+create hwmon sysfs entries.
 
 Signed-off-by: Mikail Sadic <mikail.sadic@ibm.com>
 ---
- MAINTAINERS                 |  2 ++
- docs/specs/aspeed-ufs.rst   | 46 +++++++++++++++++++++++++
- docs/specs/index.rst        |  1 +
- include/hw/arm/aspeed.h     |  1 +
- include/hw/arm/aspeed_soc.h |  3 ++
- include/hw/ufs/aspeed_ufs.h | 15 +++++++++
- hw/arm/aspeed.c             | 25 ++++++++++++++
- hw/arm/aspeed_ast27x0.c     | 13 +++++++
- hw/ufs/aspeed_ufs.c         | 67 +++++++++++++++++++++++++++++++++++++
- hw/arm/Kconfig              |  1 +
- hw/ufs/meson.build          |  1 +
- 11 files changed, 175 insertions(+)
- create mode 100644 docs/specs/aspeed-ufs.rst
- create mode 100644 include/hw/ufs/aspeed_ufs.h
- create mode 100644 hw/ufs/aspeed_ufs.c
+ MAINTAINERS             |   1 +
+ docs/specs/index.rst    |   1 +
+ docs/specs/ucd90320.rst |  36 +++++++++
+ hw/sensor/ucd90320.c    | 169 ++++++++++++++++++++++++++++++++++++++++
+ hw/arm/Kconfig          |   1 +
+ hw/sensor/Kconfig       |   4 +
+ hw/sensor/meson.build   |   1 +
+ 7 files changed, 213 insertions(+)
+ create mode 100644 docs/specs/ucd90320.rst
+ create mode 100644 hw/sensor/ucd90320.c
 
 diff --git a/MAINTAINERS b/MAINTAINERS
-index ec415cb8e4..4b335c5dc0 100644
+index 902db77218..ec415cb8e4 100644
 --- a/MAINTAINERS
 +++ b/MAINTAINERS
-@@ -2700,6 +2700,8 @@ M: Jeuk Kim <jeuk20.kim@samsung.com>
- S: Supported
- F: hw/ufs/*
- F: include/block/ufs.h
-+F: include/hw/ufs/aspeed_ufs.h
-+F: docs/specs/aspeed-ufs.rst
- F: tests/qtest/ufs-test.c
- 
- megasas
-diff --git a/docs/specs/aspeed-ufs.rst b/docs/specs/aspeed-ufs.rst
-new file mode 100644
-index 0000000000..2ab7e7e771
---- /dev/null
-+++ b/docs/specs/aspeed-ufs.rst
-@@ -0,0 +1,46 @@
-+ASPEED AST2700 UFS Host Controller
-+===================================
-+
-+The AST2700 SoC includes a UFS host controller identified in the device tree
-+as ``aspeed,ufshc-m31-16nm``, mapped at ``0x12c08200`` (IRQ SPI 118).
-+
-+QEMU models it as ``aspeed-ufs``, a subclass of the generic sysbus UFS
-+controller ``sysbus-ufs`` (``hw/ufs/ufs-sysbus.c``), which in turn wraps the
-+transport-independent UFS core (``hw/ufs/ufs.c`` and ``hw/ufs/lu.c``) that
-+also backs the PCI UFS device. The sysbus device provides the MMIO region,
-+the interrupt line, the DMA address space and the controller properties; the
-+core implements the UFSHCI registers, the UTP transfer and task list
-+processing, the UPIU and query handling and the SCSI logical-unit logic.
-+
-+The only AST2700-specific behaviour ``aspeed-ufs`` adds is the controller
-+version register value ``0x00000200``, the UFSHCI 2.0 interface the hardware
-+reports.
-+
-+The clock/reset wrapper at ``0x12c08000`` (``aspeed,ast2700-ufscnr``) is left
-+as an ``UnimplementedDevice``.
-+
-+Logical units
-+-------------
-+
-+Storage is attached through ``ufs-lu`` devices on the controller's UFS bus
-+(``ufs-bus.0``), exactly as for the PCI UFS device. The Huygens OpenBMC image
-+is laid out for 512-byte sectors, so its logical unit is created with
-+``logical-block-size=512``.
-+
-+Usage
-+-----
-+
-+Attach a UFS image as logical unit 0 of the controller's UFS bus:
-+
-+.. code-block:: console
-+
-+  qemu-system-aarch64 -M huygens-bmc \
-+    -nodefaults \
-+    -blockdev node-name=fmc0,driver=file,filename=image-bmc \
-+    -device w25q01jvq,bus=ssi.0,cs=0,drive=fmc0 \
-+    -blockdev node-name=ufs0,driver=file,filename=ufs.img \
-+    -device ufs-lu,bus=ufs-bus.0,drive=ufs0,lun=0,logical-block-size=512 \
-+    -display none -serial mon:stdio
-+
-+Please check :doc:`../../system/arm/aspeed` for more details on the
-+``huygens-bmc`` machine.
+@@ -4063,6 +4063,7 @@ F: hw/i2c/pmbus_device.c
+ F: hw/sensor/adm1272.c
+ F: hw/sensor/isl_pmbus_vr.c
+ F: hw/sensor/max34451.c
++F: hw/sensor/ucd90320.c
+ F: include/hw/i2c/pmbus_device.h
+ F: include/hw/sensor/isl_pmbus_vr.h
+ F: tests/qtest/adm1272-test.c
 diff --git a/docs/specs/index.rst b/docs/specs/index.rst
-index 4de65e2fdf..dd0cdec8d4 100644
+index b7909a108a..4de65e2fdf 100644
 --- a/docs/specs/index.rst
 +++ b/docs/specs/index.rst
-@@ -40,4 +40,5 @@ guest hardware that is specific to QEMU.
+@@ -39,4 +39,5 @@ guest hardware that is specific to QEMU.
+    riscv-iommu
     riscv-aia
     aspeed-intc
-    ucd90320
-+   aspeed-ufs
++   ucd90320
     iommu-testdev
-diff --git a/include/hw/arm/aspeed.h b/include/hw/arm/aspeed.h
-index a00238ed74..dedc784926 100644
---- a/include/hw/arm/aspeed.h
-+++ b/include/hw/arm/aspeed.h
-@@ -62,6 +62,7 @@ struct AspeedMachineClass {
-     uint32_t uart_default;
-     bool sdhci_wp_inverted;
-     bool vbootrom;
-+    uint32_t ufs_block_size;
- };
- 
- /*
-diff --git a/include/hw/arm/aspeed_soc.h b/include/hw/arm/aspeed_soc.h
-index 41dc04e293..8a562d47ec 100644
---- a/include/hw/arm/aspeed_soc.h
-+++ b/include/hw/arm/aspeed_soc.h
-@@ -35,6 +35,7 @@
- #include "hw/gpio/aspeed_gpio.h"
- #include "hw/gpio/aspeed_sgpio.h"
- #include "hw/sd/aspeed_sdhci.h"
-+#include "hw/ufs/aspeed_ufs.h"
- #include "hw/usb/hcd-ehci.h"
- #include "qom/object.h"
- #include "hw/misc/aspeed_lpc.h"
-@@ -118,6 +119,7 @@ struct AspeedSoCState {
-     AspeedAPB2OPBState fsi[2];
-     AspeedLTPIState ltpi_ctrl[ASPEED_IOEXP_NUM];
-     AspeedAST1700SoCState ioexp[ASPEED_IOEXP_NUM];
-+    SysbusUfsState ufs;
- };
- 
- #define TYPE_ASPEED_SOC "aspeed-soc"
-@@ -298,6 +300,7 @@ enum {
-     ASPEED_DEV_PRIC0,
-     ASPEED_DEV_PRIC1,
-     ASPEED_DEV_OTP,
-+    ASPEED_DEV_UFS,
- };
- 
- const char *aspeed_soc_cpu_type(const char * const *valid_cpu_types);
-diff --git a/include/hw/ufs/aspeed_ufs.h b/include/hw/ufs/aspeed_ufs.h
+diff --git a/docs/specs/ucd90320.rst b/docs/specs/ucd90320.rst
 new file mode 100644
-index 0000000000..6b9f85498a
+index 0000000000..fdc0878c75
 --- /dev/null
-+++ b/include/hw/ufs/aspeed_ufs.h
-@@ -0,0 +1,15 @@
++++ b/docs/specs/ucd90320.rst
+@@ -0,0 +1,36 @@
++Texas Instruments UCD90320 Power Sequencer
++==========================================
++
++The UCD90320 is a 24-rail PMBus power sequencer. QEMU models it as a PMBus
++device (``"ucd90320"``) so the Linux ``ucd9000`` driver can bind and create
++``hwmon`` sysfs entries.
++
++The model configures 24 PMBus pages (one per rail) with ``VOUT_MODE = 0x00``
++(linear, exponent 0). ``READ_VOUT`` and ``MFR_STATUS`` return zero on all
++pages.
++
++Vendor-specific commands handled:
++
+++------+---------------------------+--------------------------------------------+
++| Code | Name                      | Response                                   |
+++======+===========================+============================================+
++| 0xD5 | ``UCD9000_MONITOR_CONFIG``| Block: one byte ``0x00``                   |
+++------+---------------------------+--------------------------------------------+
++| 0xD6 | ``UCD9000_NUM_PAGES``     | Byte: ``24``                               |
+++------+---------------------------+--------------------------------------------+
++| 0xF3 | ``UCD9000_MFR_STATUS``    | Block: four bytes ``0x00 0x00 0x00 0x00``  |
+++------+---------------------------+--------------------------------------------+
++| 0xFD | ``UCD9000_DEVICE_ID``     | Block: ASCII string ``"UCD90320"``         |
+++------+---------------------------+--------------------------------------------+
++
++``DEVICE_ID`` uses the vendor-specific code ``0xFD`` rather than the standard
++``PMBUS_IC_DEVICE_ID`` (``0xAD``), matching the Linux ``ucd9000`` probe
++sequence.
++
++The UCD90320 is instantiated automatically in the ``huygens-bmc`` machine on
++I2C bus 5 at address ``0x11``. To instantiate on a different Aspeed machine:
++
++.. code-block:: c
++
++  i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 5),
++                          "ucd90320", 0x11);
+diff --git a/hw/sensor/ucd90320.c b/hw/sensor/ucd90320.c
+new file mode 100644
+index 0000000000..6d4f828448
+--- /dev/null
++++ b/hw/sensor/ucd90320.c
+@@ -0,0 +1,169 @@
 +/*
-+ * ASPEED AST2700 UFS Host Controller
++ * Texas Instruments UCD90320 24-Rail PMBus Power Sequencer
 + *
 + * Copyright 2026 IBM Corp.
-+ * SPDX-License-Identifier: GPL-2.0-or-later
-+ */
-+
-+#ifndef ASPEED_UFS_H
-+#define ASPEED_UFS_H
-+
-+#include "hw/ufs/ufs-sysbus.h"
-+
-+#define TYPE_ASPEED_UFS "aspeed-ufs"
-+
-+#endif /* ASPEED_UFS_H */
-diff --git a/hw/arm/aspeed.c b/hw/arm/aspeed.c
-index a48c442058..b70a1326a1 100644
---- a/hw/arm/aspeed.c
-+++ b/hw/arm/aspeed.c
-@@ -187,6 +187,31 @@ static void aspeed_machine_init(MachineState *machine)
-     aspeed_connect_serial_hds_to_uarts(bmc);
-     qdev_realize(DEVICE(bmc->soc), NULL, &error_abort);
- 
-+    /*
-+     * If the SoC instantiated a UFS host controller (AST2700), attach the
-+     * first backend drive to it as logical unit 0.  The controller and its
-+     * UFS bus only exist once the SoC has been realized, so the ufs-lu is
-+     * created here rather than through a controller drive property.
-+     */
-+    if (object_resolve_path_component(OBJECT(bmc->soc), "ufs")) {
-+        DriveInfo *ufs_dinfo = drive_get(IF_NONE, 0, 0);
-+
-+        if (ufs_dinfo) {
-+            DeviceState *ufs_lu = qdev_new(TYPE_UFS_LU);
-+
-+            qdev_prop_set_uint8(ufs_lu, "lun", 0);
-+            if (amc->ufs_block_size) {
-+                qdev_prop_set_uint32(ufs_lu, "logical-block-size",
-+                                     amc->ufs_block_size);
-+            }
-+            qdev_prop_set_drive_err(ufs_lu, "drive",
-+                                    blk_by_legacy_dinfo(ufs_dinfo),
-+                                    &error_fatal);
-+            qdev_realize_and_unref(ufs_lu, BUS(&bmc->soc->ufs.ufs.bus),
-+                                   &error_fatal);
-+        }
-+    }
-+
-     if (defaults_enabled()) {
-         aspeed_board_init_flashes(&bmc->soc->fmc,
-                               bmc->fmc_model ? bmc->fmc_model : amc->fmc_model,
-diff --git a/hw/arm/aspeed_ast27x0.c b/hw/arm/aspeed_ast27x0.c
-index b908d7d4ff..1ee8f3a210 100644
---- a/hw/arm/aspeed_ast27x0.c
-+++ b/hw/arm/aspeed_ast27x0.c
-@@ -46,6 +46,7 @@ static const hwaddr aspeed_soc_ast2700_memmap[] = {
-     [ASPEED_GIC_REDIST]    =  0x12280000,
-     [ASPEED_DEV_SDMC]      =  0x12C00000,
-     [ASPEED_DEV_SCU]       =  0x12C02000,
-+    [ASPEED_DEV_UFS]       =  0x12c08200,
-     [ASPEED_DEV_RTC]       =  0x12C0F000,
-     [ASPEED_DEV_TIMER1]    =  0x12C10000,
-     [ASPEED_DEV_PCIE_PHY0] =  0x12C15000,
-@@ -129,6 +130,7 @@ static const int aspeed_soc_ast2700a1_irqmap[] = {
-     [ASPEED_DEV_EHCI2]     = 37,
-     [ASPEED_DEV_PCIE0]     = 56,
-     [ASPEED_DEV_PCIE1]     = 57,
-+    [ASPEED_DEV_UFS]       = 118,
-     [ASPEED_DEV_LPC]       = 192,
-     [ASPEED_DEV_IBT]       = 192,
-     [ASPEED_DEV_KCS]       = 192,
-@@ -533,6 +535,8 @@ static void aspeed_soc_ast2700_init(Object *obj)
-     object_initialize_child(obj, "emmc-controller.sdhci", &s->emmc.slots[0],
-                             TYPE_SYSBUS_SDHCI);
- 
-+    object_initialize_child(obj, "ufs", &s->ufs, TYPE_ASPEED_UFS);
-+
-     snprintf(typename, sizeof(typename), "aspeed.timer-%s", socname);
-     object_initialize_child(obj, "timerctrl", &s->timerctrl, typename);
- 
-@@ -1039,6 +1043,15 @@ static void aspeed_soc_ast2700_realize(DeviceState *dev, Error **errp)
-     sysbus_connect_irq(SYS_BUS_DEVICE(&s->emmc), 0,
-                        aspeed_soc_ast2700_get_irq(s, ASPEED_DEV_EMMC));
- 
-+    /* UFS */
-+    if (!sysbus_realize(SYS_BUS_DEVICE(&s->ufs), errp)) {
-+        return;
-+    }
-+    aspeed_mmio_map(s->memory, SYS_BUS_DEVICE(&s->ufs), 0,
-+                    sc->memmap[ASPEED_DEV_UFS]);
-+    sysbus_connect_irq(SYS_BUS_DEVICE(&s->ufs), 0,
-+                       aspeed_soc_ast2700_get_irq(s, ASPEED_DEV_UFS));
-+
-     /* Timer */
-     object_property_set_link(OBJECT(&s->timerctrl), "scu", OBJECT(&s->scu),
-                              &error_abort);
-diff --git a/hw/ufs/aspeed_ufs.c b/hw/ufs/aspeed_ufs.c
-new file mode 100644
-index 0000000000..bfe540b929
---- /dev/null
-+++ b/hw/ufs/aspeed_ufs.c
-@@ -0,0 +1,67 @@
-+/*
-+ * ASPEED AST2700 UFS Host Controller
 + *
-+ * The AST2700 host controller (aspeed,ufshc-m31-16nm) is the generic sysbus
-+ * UFS controller, so this model only overrides the UFSHCI version.
-+ *
-+ * The clock/reset wrapper at 0x12c08000 (aspeed,ast2700-ufscnr) is modelled
-+ * elsewhere as an UnimplementedDevice.
-+ *
-+ * Copyright 2026 IBM Corp.
 + * SPDX-License-Identifier: GPL-2.0-or-later
 + */
 +
 +#include "qemu/osdep.h"
-+#include "qapi/error.h"
-+#include "hw/ufs/aspeed_ufs.h"
++#include "hw/i2c/pmbus_device.h"
++#include "migration/vmstate.h"
++#include "qemu/log.h"
++#include "qemu/module.h"
 +
-+/* UFSHCI 2.0, against the 4.1 the core reports */
-+#define ASPEED_UFS_HCI_VERSION 0x00000200
++#define TYPE_UCD90320 "ucd90320"
 +
-+OBJECT_DECLARE_TYPE(AspeedUfsState, AspeedUfsClass, ASPEED_UFS)
++/* UCD90320 has 24 sequenced power-rail pages */
++#define UCD90320_NUM_PAGES 24
 +
-+struct AspeedUfsState {
-+    SysbusUfsState parent_obj;
-+};
++/* Vendor-specific command codes (not in the standard PMBus register table) */
++#define UCD9000_MONITOR_CONFIG  0xd5
++#define UCD9000_NUM_PAGES       0xd6
++#define UCD9000_MFR_STATUS      0xf3
++#define UCD9000_DEVICE_ID       0xfd
 +
-+struct AspeedUfsClass {
-+    DeviceClass parent_class;
++#define UCD90320_DEVICE_ID_LEN     8
++#define UCD90320_MFR_STATUS_LEN    4
 +
-+    DeviceRealize parent_realize;
-+};
++typedef struct UCD90320State {
++    PMBusDevice parent;
 +
-+static void aspeed_ufs_realize(DeviceState *dev, Error **errp)
++    /* Reset values for the vendor-specific block-read commands. */
++    uint8_t device_id[UCD90320_DEVICE_ID_LEN];
++    uint8_t monitor_config;
++    uint8_t mfr_status[UCD90320_MFR_STATUS_LEN];
++} UCD90320State;
++
++#define UCD90320(obj) OBJECT_CHECK(UCD90320State, (obj), TYPE_UCD90320)
++
++static void ucd90320_send_block(PMBusDevice *pmdev,
++                                const uint8_t *data, uint8_t len)
 +{
-+    ERRP_GUARD();
-+    AspeedUfsClass *ac = ASPEED_UFS_GET_CLASS(dev);
-+    SysbusUfsState *s = SYSBUS_UFS(dev);
++    int i;
 +
-+    ac->parent_realize(dev, errp);
-+    if (*errp) {
-+        return;
++    pmdev->out_buf[len + pmdev->out_buf_len] = len;
++    for (i = len - 1; i >= 0; i--) {
++        pmdev->out_buf[i + pmdev->out_buf_len] = data[len - 1 - i];
++    }
++    pmdev->out_buf_len += len + 1;
++}
++
++static uint8_t ucd90320_read_byte(PMBusDevice *pmdev)
++{
++    UCD90320State *s = UCD90320(pmdev);
++
++    switch (pmdev->code) {
++    case UCD9000_DEVICE_ID:
++        ucd90320_send_block(pmdev, s->device_id, sizeof(s->device_id));
++        pmbus_idle(pmdev);
++        return 0;
++    case UCD9000_NUM_PAGES:
++        pmbus_send8(pmdev, UCD90320_NUM_PAGES);
++        pmbus_idle(pmdev);
++        return 0;
++
++    case UCD9000_MONITOR_CONFIG:
++        ucd90320_send_block(pmdev, &s->monitor_config,
++                            sizeof(s->monitor_config));
++        pmbus_idle(pmdev);
++        return 0;
++    case UCD9000_MFR_STATUS:
++        ucd90320_send_block(pmdev, s->mfr_status, sizeof(s->mfr_status));
++        pmbus_idle(pmdev);
++        return 0;
++    default:
++        qemu_log_mask(LOG_GUEST_ERROR,
++                      "%s: reading from unsupported register: 0x%02x\n",
++                      __func__, pmdev->code);
++        break;
++    }
++    return 0xFF;
++}
++
++static int ucd90320_write_data(PMBusDevice *pmdev, const uint8_t *buf,
++                               uint8_t len)
++{
++    if (len == 0) {
++        qemu_log_mask(LOG_GUEST_ERROR, "%s: writing empty data\n", __func__);
++        return -1;
 +    }
 +
-+    s->ufs.reg.ver = ASPEED_UFS_HCI_VERSION;
++    pmdev->code = buf[0];
++
++    if (len == 1) {
++        return 0;
++    }
++
++    return 0;
 +}
 +
-+static void aspeed_ufs_class_init(ObjectClass *oc, const void *data)
++static void ucd90320_exit_reset(Object *obj, ResetType type)
 +{
-+    AspeedUfsClass *ac = ASPEED_UFS_CLASS(oc);
-+    DeviceClass *dc = DEVICE_CLASS(oc);
++    PMBusDevice *pmdev = PMBUS_DEVICE(obj);
++    UCD90320State *s = UCD90320(obj);
 +
-+    device_class_set_parent_realize(dc, aspeed_ufs_realize,
-+                                    &ac->parent_realize);
-+    dc->desc = "ASPEED UFS Host Controller";
++    pmdev->capability = 0x20; /* PEC supported */
++
++    for (int i = 0; i < UCD90320_NUM_PAGES; i++) {
++        pmdev->pages[i].operation     = 0x80; /* on */
++        pmdev->pages[i].on_off_config = 0x1a;
++        pmdev->pages[i].vout_mode     = 0x00; /* linear mode, exponent=0 */
++        pmdev->pages[i].read_vout     = 0;    /* rails off, pgood=0 */
++    }
++
++    memcpy(s->device_id, "UCD90320", sizeof(s->device_id));
++    s->monitor_config = 0x00;
++    memset(s->mfr_status, 0x00, sizeof(s->mfr_status));
 +}
 +
-+static const TypeInfo aspeed_ufs_types[] = {
++static void ucd90320_init(Object *obj)
++{
++    PMBusDevice *pmdev = PMBUS_DEVICE(obj);
++    uint64_t flags = PB_HAS_VOUT | PB_HAS_VOUT_MODE |
++                     PB_HAS_STATUS_MFR_SPECIFIC;
++
++    for (int i = 0; i < UCD90320_NUM_PAGES; i++) {
++        pmbus_page_config(pmdev, i, flags);
++    }
++}
++
++static const VMStateDescription vmstate_ucd90320 = {
++    .name = TYPE_UCD90320,
++    .version_id = 0,
++    .minimum_version_id = 0,
++    .fields = (const VMStateField[]) {
++        VMSTATE_PMBUS_DEVICE(parent, UCD90320State),
++        VMSTATE_UINT8_ARRAY(device_id, UCD90320State, UCD90320_DEVICE_ID_LEN),
++        VMSTATE_UINT8(monitor_config, UCD90320State),
++        VMSTATE_UINT8_ARRAY(mfr_status, UCD90320State,
++                            UCD90320_MFR_STATUS_LEN),
++        VMSTATE_END_OF_LIST()
++    }
++};
++
++static void ucd90320_class_init(ObjectClass *klass, const void *data)
++{
++    ResettableClass *rc = RESETTABLE_CLASS(klass);
++    DeviceClass *dc = DEVICE_CLASS(klass);
++    PMBusDeviceClass *k = PMBUS_DEVICE_CLASS(klass);
++
++    dc->desc = "Texas Instruments UCD90320 24-Rail Power Sequencer";
++    dc->vmsd = &vmstate_ucd90320;
++    k->write_data = ucd90320_write_data;
++    k->receive_byte = ucd90320_read_byte;
++    k->device_num_pages = UCD90320_NUM_PAGES;
++    rc->phases.exit = ucd90320_exit_reset;
++}
++
++static const TypeInfo ucd90320_types[] = {
 +    {
-+        .name          = TYPE_ASPEED_UFS,
-+        .parent        = TYPE_SYSBUS_UFS,
-+        .instance_size = sizeof(AspeedUfsState),
-+        .class_size    = sizeof(AspeedUfsClass),
-+        .class_init    = aspeed_ufs_class_init,
-+    }
++        .name          = TYPE_UCD90320,
++        .parent        = TYPE_PMBUS_DEVICE,
++        .instance_size = sizeof(UCD90320State),
++        .instance_init = ucd90320_init,
++        .class_init    = ucd90320_class_init,
++    },
 +};
 +
-+DEFINE_TYPES(aspeed_ufs_types)
++DEFINE_TYPES(ucd90320_types)
 diff --git a/hw/arm/Kconfig b/hw/arm/Kconfig
-index ac44740547..14a076f4f9 100644
+index 82e0bc2e70..ac44740547 100644
 --- a/hw/arm/Kconfig
 +++ b/hw/arm/Kconfig
-@@ -557,6 +557,7 @@ config ASPEED_SOC
+@@ -555,6 +555,7 @@ config ASPEED_SOC
+     select LED
+     select PMBUS
      select MAX31785
-     select UCD90320
++    select UCD90320
      select FSI_APB2OPB_ASPEED
-+    select UFS_SYSBUS
      select AT24C
      select PCI_EXPRESS
-     select PCI_EXPRESS_ASPEED
-diff --git a/hw/ufs/meson.build b/hw/ufs/meson.build
-index a84627b96a..9266a580f5 100644
---- a/hw/ufs/meson.build
-+++ b/hw/ufs/meson.build
-@@ -1,3 +1,4 @@
- system_ss.add(when: 'CONFIG_UFS', if_true: files('ufs.c', 'lu.c'))
- system_ss.add(when: 'CONFIG_UFS_PCI', if_true: files('ufs-pci.c'))
- system_ss.add(when: 'CONFIG_UFS_SYSBUS', if_true: files('ufs-sysbus.c'))
-+system_ss.add(when: 'CONFIG_ASPEED_SOC', if_true: files('aspeed_ufs.c'))
+diff --git a/hw/sensor/Kconfig b/hw/sensor/Kconfig
+index bc6331b4ab..135ffa7d5d 100644
+--- a/hw/sensor/Kconfig
++++ b/hw/sensor/Kconfig
+@@ -43,3 +43,7 @@ config ISL_PMBUS_VR
+ config MAX31785
+     bool
+     depends on PMBUS
++
++config UCD90320
++    bool
++    depends on PMBUS
+diff --git a/hw/sensor/meson.build b/hw/sensor/meson.build
+index 420fdc3359..c0583161d3 100644
+--- a/hw/sensor/meson.build
++++ b/hw/sensor/meson.build
+@@ -8,3 +8,4 @@ system_ss.add(when: 'CONFIG_MAX34451', if_true: files('max34451.c'))
+ system_ss.add(when: 'CONFIG_LSM303DLHC_MAG', if_true: files('lsm303dlhc_mag.c'))
+ system_ss.add(when: 'CONFIG_ISL_PMBUS_VR', if_true: files('isl_pmbus_vr.c'))
+ system_ss.add(when: 'CONFIG_MAX31785', if_true: files('max31785.c'))
++system_ss.add(when: 'CONFIG_UCD90320', if_true: files('ucd90320.c'))
 -- 
 2.53.0
 

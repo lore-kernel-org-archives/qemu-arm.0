@@ -4,73 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DC745C5B56A
-	for <qemu-arm@archiver.kernel.org>; Tue, 11 Aug 2026 16:40:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4193BC5B56A
+	for <qemu-arm@archiver.kernel.org>; Tue, 11 Aug 2026 16:40:45 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wtpNe-0000vr-9a; Tue, 11 Aug 2026 12:31:10 -0400
+	id 1wtpOb-000558-DQ; Tue, 11 Aug 2026 12:32:09 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1wtpNR-0000Nu-5i
- for qemu-arm@nongnu.org; Tue, 11 Aug 2026 12:30:57 -0400
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1wtpOZ-0004qr-1c
+ for qemu-arm@nongnu.org; Tue, 11 Aug 2026 12:32:07 -0400
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1wtpNP-0000hK-Ga
- for qemu-arm@nongnu.org; Tue, 11 Aug 2026 12:30:56 -0400
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1wtpOX-0000xw-7I
+ for qemu-arm@nongnu.org; Tue, 11 Aug 2026 12:32:06 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1786465854;
+ s=mimecast20190719; t=1786465924;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=/aHR2aX7Yht0pPy3X2g+G97Gsg17VR/tIqg918ZiZ8Y=;
- b=H4DTTZ+Qd21MWTr8yk8Qxj8V9+u4ZtcZnpvhnZEBN0cpDTrsTcLVMU3nxiHNYuoJtPads/
- RNg0jytWqCsqjt+Ah3ZCM1+AAiR4UTss/R7G9kz7H1ojEpejLFlNzn3zwjYaF1bwySS0pb
- kuZ/PJoV0IULapyTHxvUQ0ZppKWG+Ug=
-Received: from mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
+ bh=kWnoHbeX0Bj5s7Ejqgs+GFdD0ZsE2bcsx8zPMkC5ZgY=;
+ b=DNuoOUarEfGX3lqP+CZ9iMKWfgBZ+dulY3Wp7RHhjGlSI8o2aGN4sEytgZqnerp5W3zGAd
+ S5nmxBxKm+ha+0X8ThiZ5U1RuGV59zyiVYDIOeDN64RXHnJo2l710tWDO5FmmHZzmti+u3
+ AcW+PZzd5ignj3HfbF2LZVaLaPq55KU=
+Received: from mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-434-NHAFCp5cMliObNpaByxRkQ-1; Tue,
- 11 Aug 2026 12:30:53 -0400
-X-MC-Unique: NHAFCp5cMliObNpaByxRkQ-1
-X-Mimecast-MFC-AGG-ID: NHAFCp5cMliObNpaByxRkQ_1786465852
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-144-6H7rgFEwPwmPQkFO0UVFZA-1; Tue,
+ 11 Aug 2026 12:32:01 -0400
+X-MC-Unique: 6H7rgFEwPwmPQkFO0UVFZA-1
+X-Mimecast-MFC-AGG-ID: 6H7rgFEwPwmPQkFO0UVFZA_1786465920
 Received: from mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com
  (mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.12])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 367F91956063; Tue, 11 Aug 2026 16:30:52 +0000 (UTC)
+ by mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 5EAB0180064B; Tue, 11 Aug 2026 16:32:00 +0000 (UTC)
 Received: from corto.redhat.com (unknown [10.44.48.12])
  by mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id BBAE9195DF96; Tue, 11 Aug 2026 16:30:50 +0000 (UTC)
+ id E2858195DF91; Tue, 11 Aug 2026 16:31:58 +0000 (UTC)
 From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Cc: Emmanuel Blot <emmanuel.blot@free.fr>,
+Cc: Jamin Lin <jamin_lin@aspeedtech.com>,
  =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>
-Subject: [PULL 32/83] hw/arm/aspeed: anacapa: use ASCII in comments
-Date: Tue, 11 Aug 2026 18:28:47 +0200
-Message-ID: <20260811162938.1403216-33-clg@redhat.com>
+Subject: [PULL 64/83] tests/functional/arm/test_aspeed_ast2500_sdk: Update
+ ASPEED SDK v11.03
+Date: Tue, 11 Aug 2026 18:29:19 +0200
+Message-ID: <20260811162938.1403216-65-clg@redhat.com>
 In-Reply-To: <20260811162938.1403216-1-clg@redhat.com>
 References: <20260811162938.1403216-1-clg@redhat.com>
 MIME-Version: 1.0
 X-Scanned-By: MIMEDefang 3.0 on 10.30.177.12
-X-Mimecast-MFC-PROC-ID: vAhi7Ztvs_b2sqrC1q1oqLnLcryrNTeyPsFaWLYQrDU_1786465852
+X-Mimecast-MFC-PROC-ID: MWdBPmoa6UQYJHo9Myw07ZyKaUSm7Q2GdK72ParGRE8_1786465920
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 Received-SPF: pass client-ip=170.10.133.124; envelope-from=clg@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: 11
-X-Spam_score: 1.1
-X-Spam_bar: +
-X-Spam_report: (1.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.102,
+X-Spam_score_int: -21
+X-Spam_score: -2.2
+X-Spam_bar: --
+X-Spam_report: (-2.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.102,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
- RCVD_IN_SBL_CSS=3.335, SPF_HELO_PASS=-0.001,
- SPF_PASS=-0.001 autolearn=no autolearn_force=no
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001,
+ TVD_SPACE_RATIO=0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -86,59 +87,63 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-From: Emmanuel Blot <emmanuel.blot@free.fr>
+From: Jamin Lin <jamin_lin@aspeedtech.com>
 
-The anacapa machine source contains a few comments using the U+2014 EM
-DASH character. Replace them with plain ASCII hyphens so the file stays
-ASCII-only.
-
-Signed-off-by: Emmanuel Blot <emmanuel.blot@free.fr>
-Link: https://lore.kernel.org/qemu-devel/20260707091609.97759-8-emmanuel.blot@free.fr
+Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
+Reviewed-by: Cédric Le Goater <clg@redhat.com>
+Link: https://lore.kernel.org/qemu-devel/20260804081955.1563537-7-jamin_lin@aspeedtech.com
 Signed-off-by: Cédric Le Goater <clg@redhat.com>
 ---
- hw/arm/aspeed_ast2600_anacapa.c | 8 ++++----
- 1 file changed, 4 insertions(+), 4 deletions(-)
+ tests/functional/arm/test_aspeed_ast2500_sdk.py     | 8 ++++----
+ tests/functional/arm/test_aspeed_ast2500_sdk_515.py | 8 ++++----
+ 2 files changed, 8 insertions(+), 8 deletions(-)
 
-diff --git a/hw/arm/aspeed_ast2600_anacapa.c b/hw/arm/aspeed_ast2600_anacapa.c
-index a1c8111a9344..bd6cc0068602 100644
---- a/hw/arm/aspeed_ast2600_anacapa.c
-+++ b/hw/arm/aspeed_ast2600_anacapa.c
-@@ -242,7 +242,7 @@ static void anacapa_bmc_i2c_init(AspeedMachineState *bmc)
-     /* &i2c1 */
-     /* eeprom@50 */
-     at24c_eeprom_init(i2c[1], 0x50, 256 * KiB);
--    /* i2c-mux@70 (PCA9546) — 4 channels, empty */
-+    /* i2c-mux@70 (PCA9546) - 4 channels, empty */
-     i2c_slave_create_simple(i2c[1], TYPE_PCA9546, 0x70);
+diff --git a/tests/functional/arm/test_aspeed_ast2500_sdk.py b/tests/functional/arm/test_aspeed_ast2500_sdk.py
+index 6ab498b3ff54..95df32b84ff8 100755
+--- a/tests/functional/arm/test_aspeed_ast2500_sdk.py
++++ b/tests/functional/arm/test_aspeed_ast2500_sdk.py
+@@ -10,14 +10,14 @@
  
-     /* &i2c4 */
-@@ -259,7 +259,7 @@ static void anacapa_bmc_i2c_init(AspeedMachineState *bmc)
-     i2c_mux = i2c_slave_create_simple(i2c[8], TYPE_PCA9546, 0x72);
+ class AST2500Machine(AspeedTest):
  
-     /* i2c8mux ch0 */
--    /* adc128d818@1f — no model */
-+    /* adc128d818@1f - no model */
-     /* pca9555@22 */
-     i2c_slave_create_simple(pca954x_i2c_get_bus(i2c_mux, 0),
-                             TYPE_PCA9552, 0x22);
-@@ -305,7 +305,7 @@ static void anacapa_bmc_i2c_init(AspeedMachineState *bmc)
-     /* i2c-mux@71 (PCA9548) */
-     i2c_mux = i2c_slave_create_simple(i2c[11], TYPE_PCA9548, 0x71);
+-    ASSET_SDK_V1101_AST2500 = Asset(
+-        'https://github.com/AspeedTech-BMC/openbmc/releases/download/v11.01/ast2500-default-obmc.tar.gz',
+-        '3faa1188198da2216837be4b53861c483a58c3ad63784089720bf8421e157da1')
++    ASSET_SDK_V1103_AST2500 = Asset(
++        'https://github.com/AspeedTech-BMC/openbmc/releases/download/v11.03/ast2500-default-obmc.tar.gz',
++        '8e20cafddca04d73b799918d6f35b08c83c9f024e223a317b0ad71b97b84842f')
  
--    /* i2c11mux ch0-ch4 — empty */
-+    /* i2c11mux ch0-ch4 - empty */
+     def test_arm_ast2500_evb_sdk(self):
+         self.set_machine('ast2500-evb')
  
-     /* i2c11mux ch5 */
-     /* pca9555@22 */
-@@ -328,7 +328,7 @@ static void anacapa_bmc_i2c_init(AspeedMachineState *bmc)
-                           hpm_brd_id_eeprom, hpm_brd_id_eeprom_len);
+-        self.archive_extract(self.ASSET_SDK_V1101_AST2500)
++        self.archive_extract(self.ASSET_SDK_V1103_AST2500)
  
-     /* i2c13mux ch7 */
--    /* nfc@28 — no model */
-+    /* nfc@28 - no model */
- }
+         self.do_test_arm_aspeed_sdk_start(
+             self.scratch_file("ast2500-default", "image-bmc"))
+diff --git a/tests/functional/arm/test_aspeed_ast2500_sdk_515.py b/tests/functional/arm/test_aspeed_ast2500_sdk_515.py
+index 8d39dc65daaa..516e96e52db7 100755
+--- a/tests/functional/arm/test_aspeed_ast2500_sdk_515.py
++++ b/tests/functional/arm/test_aspeed_ast2500_sdk_515.py
+@@ -10,14 +10,14 @@
  
- static void aspeed_machine_anacapa_class_init(ObjectClass *oc,
+ class AST2500Machine(AspeedTest):
+ 
+-    ASSET_SDK_V1101_AST2500_515 = Asset(
+-        'https://github.com/AspeedTech-BMC/openbmc/releases/download/v11.01/ast2500-default-515-obmc.tar.gz',
+-        'b848ff620d2e9c83e2fb4736b4d1c39b82fdb041058cd42be42c3b177bf38eb9')
++    ASSET_SDK_V1103_AST2500_515 = Asset(
++        'https://github.com/AspeedTech-BMC/openbmc/releases/download/v11.03/ast2500-default-515-obmc.tar.gz',
++        'f17d3b0a5157bcf73c21c4981f838ea0b76c6406cc4a6409267d57d61758ebb6')
+ 
+     def test_arm_ast2500_evb_sdk_515(self):
+         self.set_machine('ast2500-evb')
+ 
+-        self.archive_extract(self.ASSET_SDK_V1101_AST2500_515)
++        self.archive_extract(self.ASSET_SDK_V1103_AST2500_515)
+ 
+         self.do_test_arm_aspeed_sdk_start(
+             self.scratch_file("ast2500-default-515", "image-bmc"))
 -- 
 2.55.0
 

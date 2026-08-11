@@ -4,75 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EFC33C5B572
-	for <qemu-arm@archiver.kernel.org>; Tue, 11 Aug 2026 16:35:14 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3C05FC5B572
+	for <qemu-arm@archiver.kernel.org>; Tue, 11 Aug 2026 16:35:24 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wtpNQ-0000MW-Rm; Tue, 11 Aug 2026 12:30:56 -0400
+	id 1wtpNQ-0000MB-Og; Tue, 11 Aug 2026 12:30:56 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1wtpMy-0007vC-BQ
- for qemu-arm@nongnu.org; Tue, 11 Aug 2026 12:30:30 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1wtpNL-0000Al-I9
+ for qemu-arm@nongnu.org; Tue, 11 Aug 2026 12:30:51 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1wtpMt-0000Uy-L6
- for qemu-arm@nongnu.org; Tue, 11 Aug 2026 12:30:28 -0400
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1wtpNJ-0000fB-98
+ for qemu-arm@nongnu.org; Tue, 11 Aug 2026 12:30:51 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1786465821;
+ s=mimecast20190719; t=1786465848;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=m2W+r9PJ3k5tM53YBGI0ZX0z6qHZTYSfbcrwc8qKpBA=;
- b=B4c3amdA7r2CdELtMmg8EYhFDX1PYI7Hx3M1ukjASKNLmh1khQUpVgKEqMcGsrIZLXBCsE
- UH2IBBqTXKO2+fQdWAILUVm8D91zmrrEN4SCS+AJFQMW4odSa3pZ+XwbRWvt/ewk/JyOrm
- IzvWOGoKU95S9kDGBz3k8h6dXP7vhvA=
-Received: from mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com
+ bh=sUqu1rILv8G/Wk8qQbfrEaPHubvKy3vTc+2h6bDozyo=;
+ b=jFCMHbduIjKpZfTsYv0kJqv6l7JiqpfC7R0ulw3m44H3RK4Mp2prdU83Kgy26kQ2l5MVeW
+ AAZ/aU35WO0nMHTltKuqVSlg6EgLAlYeaU1/CtH8SF2t/eNRHcosut6KdUZqo5gSlGX9V3
+ +j+RlY/36d/V4o9sTsZ+DyZHQ2BcJis=
+Received: from mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com
  (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-18-uaCUFYudPyGE91nTg36jsQ-1; Tue,
- 11 Aug 2026 12:30:13 -0400
-X-MC-Unique: uaCUFYudPyGE91nTg36jsQ-1
-X-Mimecast-MFC-AGG-ID: uaCUFYudPyGE91nTg36jsQ_1786465812
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-357-RNTMf6cMMzyiUabmgLHBtA-1; Tue,
+ 11 Aug 2026 12:30:37 -0400
+X-MC-Unique: RNTMf6cMMzyiUabmgLHBtA-1
+X-Mimecast-MFC-AGG-ID: RNTMf6cMMzyiUabmgLHBtA_1786465836
 Received: from mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com
  (mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.12])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 302C91954B07; Tue, 11 Aug 2026 16:30:12 +0000 (UTC)
+ by mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id D75C5195604F; Tue, 11 Aug 2026 16:30:35 +0000 (UTC)
 Received: from corto.redhat.com (unknown [10.44.48.12])
  by mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id 5EA88195DF91; Tue, 11 Aug 2026 16:30:10 +0000 (UTC)
+ id 1EE97195DF91; Tue, 11 Aug 2026 16:30:33 +0000 (UTC)
 From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
 Cc: Jamin Lin <jamin_lin@aspeedtech.com>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@oss.qualcomm.com>,
  =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>
-Subject: [PULL 13/83] tests/functional/aarch64/test_aspeed_ast2700: Add USB
- EHCI test for AST2700 A1/A2
-Date: Tue, 11 Aug 2026 18:28:28 +0200
-Message-ID: <20260811162938.1403216-14-clg@redhat.com>
+Subject: [PULL 24/83] hw/arm/ast27x0: Share FMC controller with SSP and TSP
+Date: Tue, 11 Aug 2026 18:28:39 +0200
+Message-ID: <20260811162938.1403216-25-clg@redhat.com>
 In-Reply-To: <20260811162938.1403216-1-clg@redhat.com>
 References: <20260811162938.1403216-1-clg@redhat.com>
 MIME-Version: 1.0
 X-Scanned-By: MIMEDefang 3.0 on 10.30.177.12
-X-Mimecast-MFC-PROC-ID: QScNIKhIjK6w_4t8nDAPVhanKBDGQujKP2_1f5LdDy8_1786465812
+X-Mimecast-MFC-PROC-ID: AlrIcrH2rf6DEdQ1nPsoGNx4tZJNtKpqHIJCYuq2nsk_1786465836
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=clg@redhat.com;
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=clg@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: 11
 X-Spam_score: 1.1
 X-Spam_bar: +
 X-Spam_report: (1.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.102,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
- RCVD_IN_SBL_CSS=3.335, SPF_HELO_PASS=-0.001,
- SPF_PASS=-0.001 autolearn=no autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=0.001, RCVD_IN_SBL_CSS=3.335,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -90,81 +88,174 @@ Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
 From: Jamin Lin <jamin_lin@aspeedtech.com>
 
-Add a functional test to verify USB EHCI support on the AST2700 A2/A1
-by attaching a USB keyboard device and checking its
-enumeration via lsusb.
+AST2700 provides a single FMC controller shared by the main CA35 processor
+(PSP) and the SSP/TSP coprocessors.
 
-This introduces a helper routine that runs lsusb in the guest
-and validates that the emulated "QEMU USB Keyboard" is detected.
+>From the PSP perspective, the FMC controller is memory-mapped at
+0x14000000–0x140000FF. The SSP and TSP access the same controller through
+a different address window at 0x74000000–0x740000FF.
+
+This change allows the SSP and TSP SoC models to reference the existing
+PSP FMC instance instead of creating independent controllers. An MMIO
+alias is added in the SSP and TSP address spaces to map their FMC access
+window to the shared FMC device.
+
+This ensures consistent FMC state across PSP, SSP, and TSP and matches
+the AST2700 hardware design.
 
 Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
-Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+Reviewed-by: Philippe Mathieu-Daudé <philmd@oss.qualcomm.com>
 Reviewed-by: Cédric Le Goater <clg@redhat.com>
-Link: https://lore.kernel.org/qemu-devel/20260713032704.3583103-11-jamin_lin@aspeedtech.com
+Tested-by: Philippe Mathieu-Daudé <philmd@oss.qualcomm.com>
+Link: https://lore.kernel.org/qemu-devel/20260717084559.3477061-8-jamin_lin@aspeedtech.com
 Signed-off-by: Cédric Le Goater <clg@redhat.com>
 ---
- tests/functional/aarch64/test_aspeed_ast2700a1.py | 7 +++++++
- tests/functional/aarch64/test_aspeed_ast2700a2.py | 7 +++++++
- 2 files changed, 14 insertions(+)
+ include/hw/arm/aspeed_coprocessor.h |  7 +++++++
+ hw/arm/aspeed_ast27x0-fc.c          |  4 ++++
+ hw/arm/aspeed_ast27x0-ssp.c         | 16 ++++++++++++++++
+ hw/arm/aspeed_ast27x0-tsp.c         | 16 ++++++++++++++++
+ 4 files changed, 43 insertions(+)
 
-diff --git a/tests/functional/aarch64/test_aspeed_ast2700a1.py b/tests/functional/aarch64/test_aspeed_ast2700a1.py
-index ddddd2d47a95..adbbef5cf11e 100755
---- a/tests/functional/aarch64/test_aspeed_ast2700a1.py
-+++ b/tests/functional/aarch64/test_aspeed_ast2700a1.py
-@@ -118,6 +118,11 @@ def do_ast2700_pcie_test(self):
-             'ip addr show dev eth2',
-             'inet 10.0.2.15/24')
+diff --git a/include/hw/arm/aspeed_coprocessor.h b/include/hw/arm/aspeed_coprocessor.h
+index b77ea06e7f68..acb8b0645777 100644
+--- a/include/hw/arm/aspeed_coprocessor.h
++++ b/include/hw/arm/aspeed_coprocessor.h
+@@ -49,10 +49,17 @@ struct Aspeed27x0CoprocessorState {
  
-+    def do_ast2700_usb_ehci_test(self):
-+        exec_command_and_wait_for_pattern(self,
-+            'lsusb',
-+            'QEMU QEMU USB Keyboard')
+     ARMv7MState armv7m;
+ 
++    /*
++     * SCU, SCUIO and FMC are not owned by this coprocessor: they are
++     * shared with the main PSP SoC, and only aliased into this
++     * coprocessor's own address space here.
++     */
+     MemoryRegion scu_alias;
+     MemoryRegion scuio_alias;
++    MemoryRegion fmc_alias;
+     Aspeed2700SCUState *scu;
+     AspeedSCUState *scuio;
++    AspeedSMCState *fmc;
+ };
+ 
+ #define TYPE_ASPEED27X0SSP_COPROCESSOR "aspeed27x0ssp-coprocessor"
+diff --git a/hw/arm/aspeed_ast27x0-fc.c b/hw/arm/aspeed_ast27x0-fc.c
+index d14a42ebca3f..058cea42edca 100644
+--- a/hw/arm/aspeed_ast27x0-fc.c
++++ b/hw/arm/aspeed_ast27x0-fc.c
+@@ -159,6 +159,8 @@ static bool ast2700fc_ssp_init(Ast2700FCState *s, AspeedSoCState *psp,
+                              OBJECT(&s->ca35.scu), &error_abort);
+     object_property_set_link(OBJECT(&s->ssp), "scuio",
+                              OBJECT(&psp->scuio), &error_abort);
++    object_property_set_link(OBJECT(&s->ssp), "fmc",
++                             OBJECT(&psp->fmc), &error_abort);
+     if (!qdev_realize(DEVICE(&s->ssp), NULL, errp)) {
+         return false;
+     }
+@@ -191,6 +193,8 @@ static bool ast2700fc_tsp_init(Ast2700FCState *s, AspeedSoCState *psp,
+                              OBJECT(&s->ca35.scu), &error_abort);
+     object_property_set_link(OBJECT(&s->tsp), "scuio",
+                              OBJECT(&psp->scuio), &error_abort);
++    object_property_set_link(OBJECT(&s->tsp), "fmc",
++                             OBJECT(&psp->fmc), &error_abort);
+     if (!qdev_realize(DEVICE(&s->tsp), NULL, errp)) {
+         return false;
+     }
+diff --git a/hw/arm/aspeed_ast27x0-ssp.c b/hw/arm/aspeed_ast27x0-ssp.c
+index fa492f179732..e03653086c88 100644
+--- a/hw/arm/aspeed_ast27x0-ssp.c
++++ b/hw/arm/aspeed_ast27x0-ssp.c
+@@ -27,6 +27,7 @@ static const hwaddr aspeed_soc_ast27x0ssp_memmap[] = {
+     [ASPEED_DEV_TIMER1]    =  0x72C10000,
+     [ASPEED_DEV_UART4]     =  0x72C1A000,
+     [ASPEED_DEV_IPC0]      =  0x72C1C000,
++    [ASPEED_DEV_FMC]       =  0x74000000,
+     [ASPEED_DEV_PRIC1]     =  0x74100000,
+     [ASPEED_DEV_SCUIO]     =  0x74C02000,
+     [ASPEED_DEV_OTP]       =  0x74C07000,
+@@ -177,6 +178,12 @@ static void aspeed_soc_ast27x0ssp_realize(DeviceState *dev_soc, Error **errp)
+         return;
+     }
+ 
++    if (!a->fmc) {
++        error_setg(errp, TYPE_ASPEED27X0SSP_COPROCESSOR
++                   ": 'fmc' link is not set");
++        return;
++    }
 +
-     def start_ast2700_test(self, name, bus_id):
-         num_cpu = 4
-         load_images_list = [
-@@ -161,10 +166,12 @@ def test_aarch64_ast2700a1_evb_sdk_v11_01(self):
-         self.archive_extract(self.ASSET_SDK_V1101_AST2700A1)
-         self.vm.add_args('-device', 'e1000e,netdev=net1,bus=pcie.2')
-         self.vm.add_args('-netdev', 'user,id=net1')
-+        self.vm.add_args('-device', 'usb-kbd,bus=usb-bus.3')
-         self.start_ast2700_test('ast2700-a1-image', 1)
-         self.verify_openbmc_boot_and_login('ast2700-a1')
-         self.do_ast2700_i2c_test(1)
-         self.do_ast2700_pcie_test()
-+        self.do_ast2700_usb_ehci_test()
+     /* AST27X0 SSP Core */
+     armv7m = DEVICE(&a->armv7m);
+     qdev_prop_set_uint32(armv7m, "num-irq", 256);
+@@ -269,6 +276,13 @@ static void aspeed_soc_ast27x0ssp_realize(DeviceState *dev_soc, Error **errp)
+     sysbus_connect_irq(SYS_BUS_DEVICE(s->uart), 0,
+                        aspeed_soc_ast27x0ssp_get_irq(s, s->uart_dev));
  
-     def test_aarch64_ast2700a1_evb_sdk_vbootrom_v11_01(self):
-         self.set_machine('ast2700a1-evb')
-diff --git a/tests/functional/aarch64/test_aspeed_ast2700a2.py b/tests/functional/aarch64/test_aspeed_ast2700a2.py
-index 0fe04a6eca7f..5f9073c89754 100755
---- a/tests/functional/aarch64/test_aspeed_ast2700a2.py
-+++ b/tests/functional/aarch64/test_aspeed_ast2700a2.py
-@@ -121,6 +121,11 @@ def do_ast2700_pcie_test(self):
-             'ip addr show dev eth2',
-             'inet 10.0.2.15/24')
- 
-+    def do_ast2700_usb_ehci_test(self):
-+        exec_command_and_wait_for_pattern(self,
-+            'lsusb',
-+            'QEMU QEMU USB Keyboard')
++    /* FMC */
++    memory_region_init_alias(&a->fmc_alias, OBJECT(a), "fmc.alias",
++                             &a->fmc->mmio, 0,
++                             memory_region_size(&a->fmc->mmio));
++    memory_region_add_subregion(s->memory, sc->memmap[ASPEED_DEV_FMC],
++                                &a->fmc_alias);
 +
-     def start_ast2700_test(self, name, bus_id):
-         num_cpu = 4
-         load_images_list = [
-@@ -164,10 +169,12 @@ def test_aarch64_ast2700a2_evb_sdk_v11_01(self):
-         self.archive_extract(self.ASSET_SDK_V1101_AST2700A2)
-         self.vm.add_args('-device', 'e1000e,netdev=net1,bus=pcie.2')
-         self.vm.add_args('-netdev', 'user,id=net1')
-+        self.vm.add_args('-device', 'usb-kbd,bus=usb-bus.3')
-         self.start_ast2700_test('ast2700-default-image', 1)
-         self.verify_openbmc_boot_and_login('ast2700-default')
-         self.do_ast2700_i2c_test(1)
-         self.do_ast2700_pcie_test()
-+        self.do_ast2700_usb_ehci_test()
+     aspeed_mmio_map_unimplemented(s->memory, SYS_BUS_DEVICE(&s->timerctrl),
+                                   "aspeed.timerctrl",
+                                   sc->memmap[ASPEED_DEV_TIMER1], 0x200);
+@@ -294,6 +308,8 @@ static const Property aspeed_27x0_coprocessor_properties[] = {
+                      TYPE_ASPEED_2700_SCU, Aspeed2700SCUState *),
+     DEFINE_PROP_LINK("scuio", Aspeed27x0CoprocessorState, scuio,
+                      TYPE_ASPEED_SCU, AspeedSCUState *),
++    DEFINE_PROP_LINK("fmc", Aspeed27x0CoprocessorState, fmc, TYPE_ASPEED_SMC,
++                     AspeedSMCState *),
+ };
  
-     def test_aarch64_ast2700a2_evb_sdk_vbootrom_v11_01(self):
-         self.set_machine('ast2700a2-evb')
+ static void aspeed_soc_ast27x0ssp_class_init(ObjectClass *klass,
+diff --git a/hw/arm/aspeed_ast27x0-tsp.c b/hw/arm/aspeed_ast27x0-tsp.c
+index 3a98bd232c0b..39ba062a20f7 100644
+--- a/hw/arm/aspeed_ast27x0-tsp.c
++++ b/hw/arm/aspeed_ast27x0-tsp.c
+@@ -27,6 +27,7 @@ static const hwaddr aspeed_soc_ast27x0tsp_memmap[] = {
+     [ASPEED_DEV_TIMER1]    =  0x72C10000,
+     [ASPEED_DEV_UART4]     =  0x72C1A000,
+     [ASPEED_DEV_IPC0]      =  0x72C1C000,
++    [ASPEED_DEV_FMC]       =  0x74000000,
+     [ASPEED_DEV_PRIC1]     =  0x74100000,
+     [ASPEED_DEV_SCUIO]     =  0x74C02000,
+     [ASPEED_DEV_OTP]       =  0x74C07000,
+@@ -177,6 +178,12 @@ static void aspeed_soc_ast27x0tsp_realize(DeviceState *dev_soc, Error **errp)
+         return;
+     }
+ 
++    if (!a->fmc) {
++        error_setg(errp, TYPE_ASPEED27X0TSP_COPROCESSOR
++                   ": 'fmc' link is not set");
++        return;
++    }
++
+     /* AST27X0 TSP Core */
+     armv7m = DEVICE(&a->armv7m);
+     qdev_prop_set_uint32(armv7m, "num-irq", 256);
+@@ -269,6 +276,13 @@ static void aspeed_soc_ast27x0tsp_realize(DeviceState *dev_soc, Error **errp)
+     sysbus_connect_irq(SYS_BUS_DEVICE(s->uart), 0,
+                        aspeed_soc_ast27x0tsp_get_irq(s, s->uart_dev));
+ 
++    /* FMC */
++    memory_region_init_alias(&a->fmc_alias, OBJECT(a), "fmc.alias",
++                             &a->fmc->mmio, 0,
++                             memory_region_size(&a->fmc->mmio));
++    memory_region_add_subregion(s->memory, sc->memmap[ASPEED_DEV_FMC],
++                                &a->fmc_alias);
++
+     aspeed_mmio_map_unimplemented(s->memory, SYS_BUS_DEVICE(&s->timerctrl),
+                                   "aspeed.timerctrl",
+                                   sc->memmap[ASPEED_DEV_TIMER1], 0x200);
+@@ -294,6 +308,8 @@ static const Property aspeed_27x0_coprocessor_properties[] = {
+                      TYPE_ASPEED_2700_SCU, Aspeed2700SCUState *),
+     DEFINE_PROP_LINK("scuio", Aspeed27x0CoprocessorState, scuio,
+                      TYPE_ASPEED_SCU, AspeedSCUState *),
++    DEFINE_PROP_LINK("fmc", Aspeed27x0CoprocessorState, fmc, TYPE_ASPEED_SMC,
++                     AspeedSMCState *),
+ };
+ 
+ static void aspeed_soc_ast27x0tsp_class_init(ObjectClass *klass,
 -- 
 2.55.0
 

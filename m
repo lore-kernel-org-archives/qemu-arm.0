@@ -4,72 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 96960C5B56A
-	for <qemu-arm@archiver.kernel.org>; Tue, 11 Aug 2026 16:40:19 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DC745C5B56A
+	for <qemu-arm@archiver.kernel.org>; Tue, 11 Aug 2026 16:40:35 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wtpNw-0002EL-Sy; Tue, 11 Aug 2026 12:31:28 -0400
+	id 1wtpNe-0000vr-9a; Tue, 11 Aug 2026 12:31:10 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1wtpNr-0001su-Ak
- for qemu-arm@nongnu.org; Tue, 11 Aug 2026 12:31:24 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1wtpNR-0000Nu-5i
+ for qemu-arm@nongnu.org; Tue, 11 Aug 2026 12:30:57 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1wtpNo-0000nR-VW
- for qemu-arm@nongnu.org; Tue, 11 Aug 2026 12:31:23 -0400
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1wtpNP-0000hK-Ga
+ for qemu-arm@nongnu.org; Tue, 11 Aug 2026 12:30:56 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1786465880;
+ s=mimecast20190719; t=1786465854;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=IrJ+2OfQv+KByRO7sKLKGfL+OVLjZ4JAkfZsy88ftpA=;
- b=LUZxXAFgpGyXrJ3AXYRjlM3mukqH6TKInwwtnYtBqL+2akctFwn9XoTXxwOomNDT3jHLoP
- A1Y9l7Im9JJH3AF+6ZbuADy0b6EJaDLq8wbR3g7u+DlwOhRHYc4dwhpQSrTMQSvWoItdVS
- HIK3sv1YrRjkO/96txCg8PQeWz5eoew=
-Received: from mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
+ bh=/aHR2aX7Yht0pPy3X2g+G97Gsg17VR/tIqg918ZiZ8Y=;
+ b=H4DTTZ+Qd21MWTr8yk8Qxj8V9+u4ZtcZnpvhnZEBN0cpDTrsTcLVMU3nxiHNYuoJtPads/
+ RNg0jytWqCsqjt+Ah3ZCM1+AAiR4UTss/R7G9kz7H1ojEpejLFlNzn3zwjYaF1bwySS0pb
+ kuZ/PJoV0IULapyTHxvUQ0ZppKWG+Ug=
+Received: from mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-615-RxQvZBJWPSyDJHMViCI8OQ-1; Tue,
- 11 Aug 2026 12:31:17 -0400
-X-MC-Unique: RxQvZBJWPSyDJHMViCI8OQ-1
-X-Mimecast-MFC-AGG-ID: RxQvZBJWPSyDJHMViCI8OQ_1786465876
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-434-NHAFCp5cMliObNpaByxRkQ-1; Tue,
+ 11 Aug 2026 12:30:53 -0400
+X-MC-Unique: NHAFCp5cMliObNpaByxRkQ-1
+X-Mimecast-MFC-AGG-ID: NHAFCp5cMliObNpaByxRkQ_1786465852
 Received: from mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com
  (mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.12])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 077F418009C0; Tue, 11 Aug 2026 16:31:16 +0000 (UTC)
+ by mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 367F91956063; Tue, 11 Aug 2026 16:30:52 +0000 (UTC)
 Received: from corto.redhat.com (unknown [10.44.48.12])
  by mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id 53994195DF91; Tue, 11 Aug 2026 16:31:14 +0000 (UTC)
+ id BBAE9195DF96; Tue, 11 Aug 2026 16:30:50 +0000 (UTC)
 From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Cc: Emmanuel Blot <emmanuel.blot@free.fr>, Glenn Miles <milesg@linux.ibm.com>,
+Cc: Emmanuel Blot <emmanuel.blot@free.fr>,
  =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>
-Subject: [PULL 43/83] tests/qtest: add PCA9555 register access tests
-Date: Tue, 11 Aug 2026 18:28:58 +0200
-Message-ID: <20260811162938.1403216-44-clg@redhat.com>
+Subject: [PULL 32/83] hw/arm/aspeed: anacapa: use ASCII in comments
+Date: Tue, 11 Aug 2026 18:28:47 +0200
+Message-ID: <20260811162938.1403216-33-clg@redhat.com>
 In-Reply-To: <20260811162938.1403216-1-clg@redhat.com>
 References: <20260811162938.1403216-1-clg@redhat.com>
 MIME-Version: 1.0
 X-Scanned-By: MIMEDefang 3.0 on 10.30.177.12
-X-Mimecast-MFC-PROC-ID: WNwIKJH8ZeixXOa6EtzhwzFLH_zGEizleAznNOVgNnk_1786465876
+X-Mimecast-MFC-PROC-ID: vAhi7Ztvs_b2sqrC1q1oqLnLcryrNTeyPsFaWLYQrDU_1786465852
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=clg@redhat.com;
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=clg@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -21
-X-Spam_score: -2.2
-X-Spam_bar: --
-X-Spam_report: (-2.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.102,
+X-Spam_score_int: 11
+X-Spam_score: 1.1
+X-Spam_bar: +
+X-Spam_report: (1.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.102,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=0.001, SPF_HELO_PASS=-0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ RCVD_IN_SBL_CSS=3.335, SPF_HELO_PASS=-0.001,
+ SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -87,83 +88,57 @@ Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
 From: Emmanuel Blot <emmanuel.blot@free.fr>
 
-Introduce a qtest for the PCA9555 16-bit I/O port expander.
-
-This first set covers the power-on reset defaults and the read/write
-behaviour of the OUTPUT, CONFIG and POLARITY register pairs.
+The anacapa machine source contains a few comments using the U+2014 EM
+DASH character. Replace them with plain ASCII hyphens so the file stays
+ASCII-only.
 
 Signed-off-by: Emmanuel Blot <emmanuel.blot@free.fr>
-Reviewed-by: Glenn Miles <milesg@linux.ibm.com>
-Link: https://lore.kernel.org/qemu-devel/20260709-catalina-upgrade-v1-10-814575bc076b@free.fr
+Link: https://lore.kernel.org/qemu-devel/20260707091609.97759-8-emmanuel.blot@free.fr
 Signed-off-by: Cédric Le Goater <clg@redhat.com>
 ---
- tests/qtest/pca9555-test.c | 44 ++++++++++++++++++++++++++++++++++++++
- tests/qtest/meson.build    |  1 +
- 2 files changed, 45 insertions(+)
- create mode 100644 tests/qtest/pca9555-test.c
+ hw/arm/aspeed_ast2600_anacapa.c | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
 
-diff --git a/tests/qtest/pca9555-test.c b/tests/qtest/pca9555-test.c
-new file mode 100644
-index 000000000000..5945c3441e92
---- /dev/null
-+++ b/tests/qtest/pca9555-test.c
-@@ -0,0 +1,44 @@
-+/*
-+ * QTest testcase for the PCA9555 16-bit I/O port expander
-+ *
-+ * Copyright (c) Meta Platforms, Inc. and affiliates.
-+ *
-+ * SPDX-License-Identifier: GPL-2.0-or-later
-+ */
-+
-+#include "qemu/osdep.h"
-+#include "hw/gpio/pca9552_regs.h"
-+#include "libqos/i2c.h"
-+#include "libqos/qgraph.h"
-+
-+#define PCA9555_TEST_ADDR 0x20
-+
-+/* Verify power-on reset defaults match the PCA9555 datasheet. */
-+static void test_reset_defaults(void *obj, void *data, QGuestAllocator *alloc)
-+{
-+    QI2CDevice *dev = (QI2CDevice *)obj;
-+
-+    g_assert_cmphex(i2c_get8(dev, PCA9535_INPUT0), ==, 0xFF);
-+    g_assert_cmphex(i2c_get8(dev, PCA9535_INPUT1), ==, 0xFF);
-+    g_assert_cmphex(i2c_get8(dev, PCA9535_OUTPUT0), ==, 0xFF);
-+    g_assert_cmphex(i2c_get8(dev, PCA9535_OUTPUT1), ==, 0xFF);
-+    g_assert_cmphex(i2c_get8(dev, PCA9535_POLARITY0), ==, 0x00);
-+    g_assert_cmphex(i2c_get8(dev, PCA9535_POLARITY1), ==, 0x00);
-+    g_assert_cmphex(i2c_get8(dev, PCA9535_CONFIG0), ==, 0xFF);
-+    g_assert_cmphex(i2c_get8(dev, PCA9535_CONFIG1), ==, 0xFF);
-+}
-+
-+static void pca9555_register_nodes(void)
-+{
-+    QOSGraphEdgeOptions opts = {
-+        .extra_device_opts = "address=0x20"
-+    };
-+    add_qi2c_address(&opts, &(QI2CAddress) { PCA9555_TEST_ADDR });
-+
-+    qos_node_create_driver("pca9555", i2c_device_create);
-+    qos_node_consumes("pca9555", "i2c-bus", &opts);
-+
-+    qos_add_test("reset-defaults", "pca9555", test_reset_defaults, NULL);
-+}
-+
-+libqos_init(pca9555_register_nodes);
-diff --git a/tests/qtest/meson.build b/tests/qtest/meson.build
-index 5e1fc597e6d1..e92130bd04dd 100644
---- a/tests/qtest/meson.build
-+++ b/tests/qtest/meson.build
-@@ -319,6 +319,7 @@ qos_test_ss.add(
-   'tulip-test.c',
-   'nvme-test.c',
-   'pca9552-test.c',
-+  'pca9555-test.c',
-   'pci-test.c',
-   'pcnet-test.c',
-   'rs5c372-test.c',
+diff --git a/hw/arm/aspeed_ast2600_anacapa.c b/hw/arm/aspeed_ast2600_anacapa.c
+index a1c8111a9344..bd6cc0068602 100644
+--- a/hw/arm/aspeed_ast2600_anacapa.c
++++ b/hw/arm/aspeed_ast2600_anacapa.c
+@@ -242,7 +242,7 @@ static void anacapa_bmc_i2c_init(AspeedMachineState *bmc)
+     /* &i2c1 */
+     /* eeprom@50 */
+     at24c_eeprom_init(i2c[1], 0x50, 256 * KiB);
+-    /* i2c-mux@70 (PCA9546) — 4 channels, empty */
++    /* i2c-mux@70 (PCA9546) - 4 channels, empty */
+     i2c_slave_create_simple(i2c[1], TYPE_PCA9546, 0x70);
+ 
+     /* &i2c4 */
+@@ -259,7 +259,7 @@ static void anacapa_bmc_i2c_init(AspeedMachineState *bmc)
+     i2c_mux = i2c_slave_create_simple(i2c[8], TYPE_PCA9546, 0x72);
+ 
+     /* i2c8mux ch0 */
+-    /* adc128d818@1f — no model */
++    /* adc128d818@1f - no model */
+     /* pca9555@22 */
+     i2c_slave_create_simple(pca954x_i2c_get_bus(i2c_mux, 0),
+                             TYPE_PCA9552, 0x22);
+@@ -305,7 +305,7 @@ static void anacapa_bmc_i2c_init(AspeedMachineState *bmc)
+     /* i2c-mux@71 (PCA9548) */
+     i2c_mux = i2c_slave_create_simple(i2c[11], TYPE_PCA9548, 0x71);
+ 
+-    /* i2c11mux ch0-ch4 — empty */
++    /* i2c11mux ch0-ch4 - empty */
+ 
+     /* i2c11mux ch5 */
+     /* pca9555@22 */
+@@ -328,7 +328,7 @@ static void anacapa_bmc_i2c_init(AspeedMachineState *bmc)
+                           hpm_brd_id_eeprom, hpm_brd_id_eeprom_len);
+ 
+     /* i2c13mux ch7 */
+-    /* nfc@28 — no model */
++    /* nfc@28 - no model */
+ }
+ 
+ static void aspeed_machine_anacapa_class_init(ObjectClass *oc,
 -- 
 2.55.0
 

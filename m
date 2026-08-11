@@ -4,73 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 84CF8C5CFCF
-	for <qemu-arm@archiver.kernel.org>; Tue, 11 Aug 2026 16:41:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0197CC5B56A
+	for <qemu-arm@archiver.kernel.org>; Tue, 11 Aug 2026 16:41:53 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wtpNh-0001JW-5S; Tue, 11 Aug 2026 12:31:13 -0400
+	id 1wtpPM-0005qA-Qf; Tue, 11 Aug 2026 12:32:56 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1wtpN2-0007y8-5O
- for qemu-arm@nongnu.org; Tue, 11 Aug 2026 12:30:32 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1wtpOh-0005Jo-3b
+ for qemu-arm@nongnu.org; Tue, 11 Aug 2026 12:32:15 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1wtpMy-0000Yf-Qj
- for qemu-arm@nongnu.org; Tue, 11 Aug 2026 12:30:31 -0400
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1wtpOf-0000zz-Ih
+ for qemu-arm@nongnu.org; Tue, 11 Aug 2026 12:32:14 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1786465828;
+ s=mimecast20190719; t=1786465933;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=+teNHMGoeD9Y0MfLEIuMz9GvrzwdXPlQy+wWWKFNRc0=;
- b=PWsrviq5ztWQMwB8T++4D8OZe/nAai89QjxFydefXvfligiC6yniCG4VDZ633onVDwCn43
- wN4UUM4mOp0fPiHORfobdqL4XnfJ6An5E1eeltk1W0jnm4Z4vbQA8+VcU9ZhDVCDApI1k3
- /jwfHBUXfeMrjvSzzgKjr/tdnULfX2Y=
+ bh=cE93U6qH8M4ozN3ohqmDXKwZ17IGP/4+6S9yr2Y5Xg4=;
+ b=A8DITIh6bnZ5WB9pgcLT4SDIv1vuTRTsd2R0unu1TgH0Ayk3k6Cp/60Qa7+TcHS2bpDytC
+ X38/vyRakprfA6nMfIoRwuQpWtCZ6KWBHe5eNaojWowJxAvfvjbo3kY3yVIpTdjDYE6zpQ
+ f8oXZifD/O/OHOgyQ9j/G8W9h1IjFx0=
 Received: from mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com
  (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-257-AinBgxhINgqP1TSBZqV3oA-1; Tue,
- 11 Aug 2026 12:30:21 -0400
-X-MC-Unique: AinBgxhINgqP1TSBZqV3oA-1
-X-Mimecast-MFC-AGG-ID: AinBgxhINgqP1TSBZqV3oA_1786465820
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-336-2c7AefyuM32uAthgGByqWw-1; Tue,
+ 11 Aug 2026 12:32:05 -0400
+X-MC-Unique: 2c7AefyuM32uAthgGByqWw-1
+X-Mimecast-MFC-AGG-ID: 2c7AefyuM32uAthgGByqWw_1786465924
 Received: from mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com
  (mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.12])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
  by mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 2DDA51800658; Tue, 11 Aug 2026 16:30:20 +0000 (UTC)
+ id 332D11800C36; Tue, 11 Aug 2026 16:32:04 +0000 (UTC)
 Received: from corto.redhat.com (unknown [10.44.48.12])
  by mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id B496C195DF91; Tue, 11 Aug 2026 16:30:18 +0000 (UTC)
+ id B74BC195DF91; Tue, 11 Aug 2026 16:32:02 +0000 (UTC)
 From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Cc: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>,
- Bin Meng <bin.meng@processmission.com>
-Subject: [PULL 17/83] tests/qtest: aspeed_smc: Add Quad Output Read (QOR) test
- coverage
-Date: Tue, 11 Aug 2026 18:28:32 +0200
-Message-ID: <20260811162938.1403216-18-clg@redhat.com>
+Cc: Jamin Lin <jamin_lin@aspeedtech.com>,
+ =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>
+Subject: [PULL 66/83] tests/functional/arm/test_aspeed_ast1060: Update ASPEED
+ ZEPHYR PROJECT v03.07
+Date: Tue, 11 Aug 2026 18:29:21 +0200
+Message-ID: <20260811162938.1403216-67-clg@redhat.com>
 In-Reply-To: <20260811162938.1403216-1-clg@redhat.com>
 References: <20260811162938.1403216-1-clg@redhat.com>
 MIME-Version: 1.0
 X-Scanned-By: MIMEDefang 3.0 on 10.30.177.12
-X-Mimecast-MFC-PROC-ID: KXqJWw4uMYXL1jr_OZ__VMGBuYS8MvG9_Cq3Y_wmj1w_1786465820
+X-Mimecast-MFC-PROC-ID: GKaj1BqtXCkR2rYjxj9KyYmECi_-DJhOj7hktqezJXI_1786465924
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=clg@redhat.com;
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=clg@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -21
 X-Spam_score: -2.2
 X-Spam_bar: --
 X-Spam_report: (-2.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.102,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=0.001, SPF_HELO_PASS=-0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -86,168 +86,54 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Add read_page_mem_qor (CTRL_FREADMODE with QOR command and quad data
-IO mode) and write_page_qor (user-mode QOR) tests.
+From: Jamin Lin <jamin_lin@aspeedtech.com>
 
-Reviewed-by: Bin Meng <bin.meng@processmission.com>
-Link: https://lore.kernel.org/qemu-devel/20260714124621.522948-5-clg@redhat.com
+Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
+Reviewed-by: Cédric Le Goater <clg@redhat.com>
+Link: https://lore.kernel.org/qemu-devel/20260804081955.1563537-9-jamin_lin@aspeedtech.com
 Signed-off-by: Cédric Le Goater <clg@redhat.com>
 ---
- tests/qtest/aspeed-smc-utils.h |  4 ++++
- tests/qtest/aspeed-smc-utils.c | 43 ++++++++++++++++++++++++++++++++++
- tests/qtest/aspeed_smc-test.c  | 16 +++++++++++++
- tests/qtest/ast2700-smc-test.c |  4 ++++
- 4 files changed, 67 insertions(+)
+ tests/functional/arm/test_aspeed_ast1060.py | 14 +++++++-------
+ 1 file changed, 7 insertions(+), 7 deletions(-)
 
-diff --git a/tests/qtest/aspeed-smc-utils.h b/tests/qtest/aspeed-smc-utils.h
-index 04d3c7db5f7b..19c557b822da 100644
---- a/tests/qtest/aspeed-smc-utils.h
-+++ b/tests/qtest/aspeed-smc-utils.h
-@@ -28,6 +28,7 @@
- #define   CTRL_FREADMODE       0x1
- #define   CTRL_WRITEMODE       0x2
- #define   CTRL_USERMODE        0x3
-+#define   CTRL_IO_QUAD_DATA     BIT(30)
- #define   CTRL_IO_DUAL_DATA     BIT(29)
- #define   CTRL_DUMMY_LOW_SHIFT   6
- #define   CTRL_DUMMY_HIGH_SHIFT  14
-@@ -44,6 +45,7 @@ enum {
-     READ = 0x03,
-     FAST_READ = 0x0b,
-     DOR = 0x3b,
-+    QOR = 0x6b,
-     PP = 0x02,
-     WRSR = 0x1,
-     WREN = 0x6,
-@@ -83,5 +85,7 @@ void aspeed_smc_test_read_page_mem_fast_read(const void *data);
- void aspeed_smc_test_write_page_fast_read(const void *data);
- void aspeed_smc_test_read_page_mem_dor(const void *data);
- void aspeed_smc_test_write_page_dor(const void *data);
-+void aspeed_smc_test_read_page_mem_qor(const void *data);
-+void aspeed_smc_test_write_page_qor(const void *data);
+diff --git a/tests/functional/arm/test_aspeed_ast1060.py b/tests/functional/arm/test_aspeed_ast1060.py
+index 833cfb8272e7..d7158259e647 100755
+--- a/tests/functional/arm/test_aspeed_ast1060.py
++++ b/tests/functional/arm/test_aspeed_ast1060.py
+@@ -11,18 +11,18 @@
  
- #endif /* TESTS_ASPEED_SMC_UTILS_H */
-diff --git a/tests/qtest/aspeed-smc-utils.c b/tests/qtest/aspeed-smc-utils.c
-index 454224ec28b4..6d75a95578e7 100644
---- a/tests/qtest/aspeed-smc-utils.c
-+++ b/tests/qtest/aspeed-smc-utils.c
-@@ -100,6 +100,8 @@ static void spi_ctrl_set_fast_read(const AspeedSMCTestData *data, uint8_t cmd)
  
-     if (cmd == DOR) {
-         iomode = CTRL_IO_DUAL_DATA;
-+    } else if (cmd == QOR) {
-+        iomode = CTRL_IO_QUAD_DATA;
-     }
+ class AST1060Machine(AspeedTest):
+-    ASSET_ASPEED_AST1060_PROT_3_05 = Asset(
++    ASSET_ASPEED_AST1060_PROT_3_07 = Asset(
+         ('https://github.com/AspeedTech-BMC'
+-         '/aspeed-zephyr-project/releases/download/v03.05'
+-         '/ast1060_prot_v03.05.tgz'),
+-         '63b36d7420290726ca80477de254474b7cb79539a42819bb1fe2665d598dadb5')
++         '/aspeed-zephyr-project/releases/download/v03.07'
++         '/ast1060_prot_v03.07.tgz'),
++         '55a7f51f0b77051a0ef2ada993a16c5033768e1b8e8be3babfc52c303eecd07f')
  
-     ctrl &= ~(CTRL_USERMODE | (0xff << 16) |
-@@ -783,3 +785,44 @@ void aspeed_smc_test_write_page_dor(const void *data)
- {
-     test_write_page(data, read_page_dor);
- }
-+
-+static void read_page_mem_qor(const AspeedSMCTestData *data,
-+                              uint32_t addr, uint32_t *page)
-+{
-+    int i;
-+
-+    spi_ctrl_set_fast_read(data, QOR);
-+
-+    for (i = 0; i < FLASH_PAGE_SIZE / 4; i++) {
-+        page[i] = make_be32(flash_readl(data, addr + i * 4));
-+    }
-+}
-+
-+void aspeed_smc_test_read_page_mem_qor(const void *data)
-+{
-+    test_read_page_mem(data, read_page_mem_qor);
-+}
-+
-+static void read_page_qor(const AspeedSMCTestData *data,
-+                          uint32_t addr, uint32_t *page)
-+{
-+    int i;
-+
-+    spi_ctrl_start_user(data);
-+
-+    flash_writeb(data, 0, EN_4BYTE_ADDR);
-+    flash_writeb(data, 0, QOR);
-+    flash_writel(data, 0, make_be32(addr));
-+    /* 1 dummy byte for standard SPI QOR */
-+    flash_writeb(data, 0, 0x00);
-+
-+    for (i = 0; i < FLASH_PAGE_SIZE / 4; i++) {
-+        page[i] = make_be32(flash_readl(data, 0));
-+    }
-+    spi_ctrl_stop_user(data);
-+}
-+
-+void aspeed_smc_test_write_page_qor(const void *data)
-+{
-+    test_write_page(data, read_page_qor);
-+}
-diff --git a/tests/qtest/aspeed_smc-test.c b/tests/qtest/aspeed_smc-test.c
-index a67cc5a999ca..59c96bd68ae8 100644
---- a/tests/qtest/aspeed_smc-test.c
-+++ b/tests/qtest/aspeed_smc-test.c
-@@ -60,6 +60,10 @@ static void test_palmetto_bmc(AspeedSMCTestData *data)
-                         data, aspeed_smc_test_read_page_mem_dor);
-     qtest_add_data_func("/ast2400/smc/write_page_dor",
-                         data, aspeed_smc_test_write_page_dor);
-+    qtest_add_data_func("/ast2400/smc/read_page_mem_qor",
-+                        data, aspeed_smc_test_read_page_mem_qor);
-+    qtest_add_data_func("/ast2400/smc/write_page_qor",
-+                        data, aspeed_smc_test_write_page_qor);
-     /*
-      * Block protect tests must be run last because the block protect
-      * state is not cleared by reset_memory() and silently prevents
-@@ -120,6 +124,10 @@ static void test_ast2500_evb(AspeedSMCTestData *data)
-                         data, aspeed_smc_test_read_page_mem_dor);
-     qtest_add_data_func("/ast2500/smc/write_page_dor",
-                         data, aspeed_smc_test_write_page_dor);
-+    qtest_add_data_func("/ast2500/smc/read_page_mem_qor",
-+                        data, aspeed_smc_test_read_page_mem_qor);
-+    qtest_add_data_func("/ast2500/smc/write_page_qor",
-+                        data, aspeed_smc_test_write_page_qor);
- }
+-    def test_arm_ast1060_prot_3_05(self):
++    def test_arm_ast1060_prot_3_07(self):
+         self.set_machine('ast1060-evb')
  
- static void test_ast2600_evb(AspeedSMCTestData *data)
-@@ -171,6 +179,10 @@ static void test_ast2600_evb(AspeedSMCTestData *data)
-                         data, aspeed_smc_test_read_page_mem_dor);
-     qtest_add_data_func("/ast2600/smc/write_page_dor",
-                         data, aspeed_smc_test_write_page_dor);
-+    qtest_add_data_func("/ast2600/smc/read_page_mem_qor",
-+                        data, aspeed_smc_test_read_page_mem_qor);
-+    qtest_add_data_func("/ast2600/smc/write_page_qor",
-+                        data, aspeed_smc_test_write_page_qor);
- }
+         kernel_name = "ast1060_prot/zephyr.bin"
+         kernel_file = self.archive_extract(
+-            self.ASSET_ASPEED_AST1060_PROT_3_05, member=kernel_name)
++            self.ASSET_ASPEED_AST1060_PROT_3_07, member=kernel_name)
  
- static void test_ast1030_evb(AspeedSMCTestData *data)
-@@ -222,6 +234,10 @@ static void test_ast1030_evb(AspeedSMCTestData *data)
-                         data, aspeed_smc_test_read_page_mem_dor);
-     qtest_add_data_func("/ast1030/smc/write_page_dor",
-                         data, aspeed_smc_test_write_page_dor);
-+    qtest_add_data_func("/ast1030/smc/read_page_mem_qor",
-+                        data, aspeed_smc_test_read_page_mem_qor);
-+    qtest_add_data_func("/ast1030/smc/write_page_qor",
-+                        data, aspeed_smc_test_write_page_qor);
- }
+         self.vm.set_console()
+         self.vm.add_args('-kernel', kernel_file, '-nographic')
+@@ -35,7 +35,7 @@ def test_arm_ast1060_otp_blockdev_device(self):
+         self.vm.set_machine("ast1060-evb")
  
- int main(int argc, char **argv)
-diff --git a/tests/qtest/ast2700-smc-test.c b/tests/qtest/ast2700-smc-test.c
-index bd9d3f7905b3..f85077e04ff4 100644
---- a/tests/qtest/ast2700-smc-test.c
-+++ b/tests/qtest/ast2700-smc-test.c
-@@ -60,6 +60,10 @@ static void test_ast2700_evb(AspeedSMCTestData *data)
-                         data, aspeed_smc_test_read_page_mem_dor);
-     qtest_add_data_func("/ast2700/smc/write_page_dor",
-                         data, aspeed_smc_test_write_page_dor);
-+    qtest_add_data_func("/ast2700/smc/read_page_mem_qor",
-+                        data, aspeed_smc_test_read_page_mem_qor);
-+    qtest_add_data_func("/ast2700/smc/write_page_qor",
-+                        data, aspeed_smc_test_write_page_qor);
- }
+         kernel_name = "ast1060_prot/zephyr.bin"
+-        kernel_file = self.archive_extract(self.ASSET_ASPEED_AST1060_PROT_3_05,
++        kernel_file = self.archive_extract(self.ASSET_ASPEED_AST1060_PROT_3_07,
+                                            member=kernel_name)
+         otp_img = self.generate_otpmem_image()
  
- int main(int argc, char **argv)
 -- 
 2.55.0
 

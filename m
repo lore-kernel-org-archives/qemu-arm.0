@@ -4,74 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 01A7AC5B56A
-	for <qemu-arm@archiver.kernel.org>; Tue, 11 Aug 2026 16:35:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E893CC5CFCF
+	for <qemu-arm@archiver.kernel.org>; Tue, 11 Aug 2026 16:36:00 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wtpNJ-0008Tw-Et; Tue, 11 Aug 2026 12:30:49 -0400
+	id 1wtpOJ-00046G-4F; Tue, 11 Aug 2026 12:31:51 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1wtpMt-0007pk-J6
- for qemu-arm@nongnu.org; Tue, 11 Aug 2026 12:30:25 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1wtpOG-0003u1-P4
+ for qemu-arm@nongnu.org; Tue, 11 Aug 2026 12:31:48 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1wtpMh-0000RZ-V9
- for qemu-arm@nongnu.org; Tue, 11 Aug 2026 12:30:17 -0400
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1wtpOC-0000ss-PJ
+ for qemu-arm@nongnu.org; Tue, 11 Aug 2026 12:31:48 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1786465811;
+ s=mimecast20190719; t=1786465904;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=ssMoSu2Xu8jgyT5RSsrNT96Zm6w7+YPwlFRDElTM28E=;
- b=Lg9/cA836dbvpifmbO7y4W8HNuGVtcKzmFJmTCbUka+gQt52/JIaor5qefzfQ6CYdzdf2D
- a7yX4m+v4D4VKQWiHE9FyHAeOBrohgnBlfAqfIj3D5xKdP+ipAroPReK1Gnh5POwlG/Ehj
- Dw3x5Ca428aO++Liub0bVhO8HFLkCHg=
+ bh=TD4ve/07S+h/+TWVYrd6Ao8qPLekqmeRr3NVgSkvhNU=;
+ b=cEDChjRc77pitOWdGdc59n6u1g9/zfMo1voa5OPSs8SOfcTXqbSd4ICH+n0ypGBO7LlK9E
+ 8mod1iqcdDWOX6IXLYld4IFyKTf9IBVbxahFhYHkUQ5ixgXoAeVEUbR4gBWsIrKFzTEiNQ
+ rkI7VNbnuCHajxJTytq19y6JtpJptuA=
 Received: from mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com
  (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-164-VhrDl7ZvO1W_Ln1B-kFVNw-1; Tue,
- 11 Aug 2026 12:30:06 -0400
-X-MC-Unique: VhrDl7ZvO1W_Ln1B-kFVNw-1
-X-Mimecast-MFC-AGG-ID: VhrDl7ZvO1W_Ln1B-kFVNw_1786465803
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-345-V6uH23-tOWuByYxDpNuSEQ-1; Tue,
+ 11 Aug 2026 12:31:40 -0400
+X-MC-Unique: V6uH23-tOWuByYxDpNuSEQ-1
+X-Mimecast-MFC-AGG-ID: V6uH23-tOWuByYxDpNuSEQ_1786465898
 Received: from mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com
  (mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.12])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
  by mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 8D57F18005B3; Tue, 11 Aug 2026 16:30:03 +0000 (UTC)
+ id ED96418007E7; Tue, 11 Aug 2026 16:31:37 +0000 (UTC)
 Received: from corto.redhat.com (unknown [10.44.48.12])
  by mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id 984F2195DF91; Tue, 11 Aug 2026 16:30:01 +0000 (UTC)
+ id 463B2195DF91; Tue, 11 Aug 2026 16:31:36 +0000 (UTC)
 From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Cc: Jamin Lin <jamin_lin@aspeedtech.com>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+Cc: Emmanuel Blot <emmanuel.blot@free.fr>, Glenn Miles <milesg@linux.ibm.com>,
  =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>
-Subject: [PULL 09/83] hw/usb/hcd-ehci: Implement 64-bit siTD descriptor
- addressing
-Date: Tue, 11 Aug 2026 18:28:24 +0200
-Message-ID: <20260811162938.1403216-10-clg@redhat.com>
+Subject: [PULL 53/83] tests/qtest: pca9554: test output-to-input reflection
+ and pull-ups
+Date: Tue, 11 Aug 2026 18:29:08 +0200
+Message-ID: <20260811162938.1403216-54-clg@redhat.com>
 In-Reply-To: <20260811162938.1403216-1-clg@redhat.com>
 References: <20260811162938.1403216-1-clg@redhat.com>
 MIME-Version: 1.0
 X-Scanned-By: MIMEDefang 3.0 on 10.30.177.12
-X-Mimecast-MFC-PROC-ID: q1pePFfshvV0QeJHGJb1ZwlQkj_MEfKfXv7PoX9Gf6Q_1786465803
+X-Mimecast-MFC-PROC-ID: vWpgt15ppYpT1VA9eZkDHuoUINK3mJO1JHgaauVkILw_1786465898
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=clg@redhat.com;
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=clg@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -21
 X-Spam_score: -2.2
 X-Spam_bar: --
 X-Spam_report: (-2.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.102,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=0.001, SPF_HELO_PASS=-0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -87,43 +86,83 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-From: Jamin Lin <jamin_lin@aspeedtech.com>
+From: Emmanuel Blot <emmanuel.blot@free.fr>
 
-EHCI supports 64-bit control data structure addressing when the
-64-bit Addressing Capability bit in HCCPARAMS is set. In that mode,
-the CTRLDSSEGMENT register provides the upper 32 bits that are
-concatenated with 32-bit link pointer values to form full 64-bit
-descriptor addresses (EHCI 1.0, section 2.3.5 and Appendix B).
+Check that a pin configured as output drives its OUTPUT register level
+onto the pin (push-pull) as reflected by the INPUT register, and that a
+pin configured as input floats high through its pull-up.
 
-siTD link pointers are stored as 32-bit values and must be expanded
-to full 64-bit descriptor addresses when 64-bit mode is enabled.
-Update the siTD traversal path to use ehci_get_desc_addr() when
-following link pointers.
-
-When 64-bit capability is disabled, descriptor addresses remain
-32-bit and existing behaviour is unchanged.
-
-Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
-Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
-Link: https://lore.kernel.org/qemu-devel/20260713032704.3583103-7-jamin_lin@aspeedtech.com
+Signed-off-by: Emmanuel Blot <emmanuel.blot@free.fr>
+Reviewed-by: Glenn Miles <milesg@linux.ibm.com>
+Link: https://lore.kernel.org/qemu-devel/20260709-catalina-upgrade-v1-20-82a63fead90c@free.fr
 Signed-off-by: Cédric Le Goater <clg@redhat.com>
 ---
- hw/usb/hcd-ehci.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ tests/qtest/pca9554-test.c | 45 ++++++++++++++++++++++++++++++++++++++
+ 1 file changed, 45 insertions(+)
 
-diff --git a/hw/usb/hcd-ehci.c b/hw/usb/hcd-ehci.c
-index 1a286c32e690..9a80c74972c3 100644
---- a/hw/usb/hcd-ehci.c
-+++ b/hw/usb/hcd-ehci.c
-@@ -1823,7 +1823,7 @@ static int ehci_state_fetchsitd(EHCIState *ehci, int async)
-         warn_report("Skipping active siTD");
-     }
- 
--    ehci_set_fetch_addr(ehci, async, sitd.next);
-+    ehci_set_fetch_addr(ehci, async, ehci_get_desc_addr(ehci, sitd.next));
-     ehci_set_state(ehci, async, EST_FETCHENTRY);
-     return 1;
+diff --git a/tests/qtest/pca9554-test.c b/tests/qtest/pca9554-test.c
+index a5f213a59cc6..ce6e90f3f881 100644
+--- a/tests/qtest/pca9554-test.c
++++ b/tests/qtest/pca9554-test.c
+@@ -25,6 +25,48 @@ static void test_reset_defaults(void *obj, void *data, QGuestAllocator *alloc)
+     g_assert_cmphex(i2c_get8(dev, PCA9554_CONFIG), ==, 0xFF);
  }
+ 
++/*
++ * A pin configured as output (config=0) drives its OUTPUT register level onto
++ * the pin (push-pull), which the INPUT register reflects. A pin configured as
++ * input (config=1) floats high through its pull-up.
++ */
++static void test_output_drives_input(void *obj, void *data,
++                                     QGuestAllocator *alloc)
++{
++    QI2CDevice *dev = (QI2CDevice *)obj;
++
++    /* Low nibble output, high nibble input (pull-up). */
++    i2c_set8(dev, PCA9554_CONFIG, 0xF0);
++    i2c_set8(dev, PCA9554_OUTPUT, 0xFA);
++    g_assert_cmphex(i2c_get8(dev, PCA9554_INPUT), ==, 0xFA);
++
++    /* All outputs, driven low then high. */
++    i2c_set8(dev, PCA9554_CONFIG, 0x00);
++    i2c_set8(dev, PCA9554_OUTPUT, 0x00);
++    g_assert_cmphex(i2c_get8(dev, PCA9554_INPUT), ==, 0x00);
++
++    i2c_set8(dev, PCA9554_OUTPUT, 0xFF);
++    g_assert_cmphex(i2c_get8(dev, PCA9554_INPUT), ==, 0xFF);
++}
++
++/*
++ * With all pins configured as inputs the pull-ups make the INPUT register read
++ * all ones regardless of the OUTPUT register; switching a pin to output with
++ * output=0 drives it low.
++ */
++static void test_input_pullup(void *obj, void *data, QGuestAllocator *alloc)
++{
++    QI2CDevice *dev = (QI2CDevice *)obj;
++
++    g_assert_cmphex(i2c_get8(dev, PCA9554_INPUT), ==, 0xFF);
++
++    i2c_set8(dev, PCA9554_OUTPUT, 0x00);
++    g_assert_cmphex(i2c_get8(dev, PCA9554_INPUT), ==, 0xFF);
++
++    i2c_set8(dev, PCA9554_CONFIG, 0x00);
++    g_assert_cmphex(i2c_get8(dev, PCA9554_INPUT), ==, 0x00);
++}
++
+ static void pca9554_register_nodes(void)
+ {
+     QOSGraphEdgeOptions opts = {
+@@ -36,6 +78,9 @@ static void pca9554_register_nodes(void)
+     qos_node_consumes("pca9554", "i2c-bus", &opts);
+ 
+     qos_add_test("reset-defaults", "pca9554", test_reset_defaults, NULL);
++    qos_add_test("output-drives-input", "pca9554", test_output_drives_input,
++                 NULL);
++    qos_add_test("input-pullup", "pca9554", test_input_pullup, NULL);
+ }
+ 
+ libqos_init(pca9554_register_nodes);
 -- 
 2.55.0
 

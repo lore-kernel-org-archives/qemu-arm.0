@@ -4,61 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A9083C5B572
-	for <qemu-arm@archiver.kernel.org>; Tue, 11 Aug 2026 16:35:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 01A7AC5B56A
+	for <qemu-arm@archiver.kernel.org>; Tue, 11 Aug 2026 16:35:48 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wtpNQ-0000LO-CQ; Tue, 11 Aug 2026 12:30:56 -0400
+	id 1wtpNJ-0008Tw-Et; Tue, 11 Aug 2026 12:30:49 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1wtpN1-0007y7-O1
- for qemu-arm@nongnu.org; Tue, 11 Aug 2026 12:30:32 -0400
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1wtpMt-0007pk-J6
+ for qemu-arm@nongnu.org; Tue, 11 Aug 2026 12:30:25 -0400
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1wtpMy-0000Yc-Gi
- for qemu-arm@nongnu.org; Tue, 11 Aug 2026 12:30:31 -0400
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1wtpMh-0000RZ-V9
+ for qemu-arm@nongnu.org; Tue, 11 Aug 2026 12:30:17 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1786465827;
+ s=mimecast20190719; t=1786465811;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=QPVeJDFzbHIEx+MmgXEPIRI9WYXiEhdImoywv813OGs=;
- b=G6HNDdkUZbkd1RkkPiJKWYeQY2r4GYc8c4fbC+1lOCsk6aMXKMYkTBbn2lArIlbZqjdOMh
- nAGCti22b7vhNzNGcW8a+gJVNi56ykK6eca/60cqMk2h4tGeO2nXCD58qpHmKXjjWSkRqp
- hC1VMrPf+X823DjsndMdzJihP79Q0GU=
+ bh=ssMoSu2Xu8jgyT5RSsrNT96Zm6w7+YPwlFRDElTM28E=;
+ b=Lg9/cA836dbvpifmbO7y4W8HNuGVtcKzmFJmTCbUka+gQt52/JIaor5qefzfQ6CYdzdf2D
+ a7yX4m+v4D4VKQWiHE9FyHAeOBrohgnBlfAqfIj3D5xKdP+ipAroPReK1Gnh5POwlG/Ehj
+ Dw3x5Ca428aO++Liub0bVhO8HFLkCHg=
 Received: from mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com
  (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-70-RpFL31mfPMCTUj7nKLIeuQ-1; Tue,
- 11 Aug 2026 12:30:23 -0400
-X-MC-Unique: RpFL31mfPMCTUj7nKLIeuQ-1
-X-Mimecast-MFC-AGG-ID: RpFL31mfPMCTUj7nKLIeuQ_1786465822
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-164-VhrDl7ZvO1W_Ln1B-kFVNw-1; Tue,
+ 11 Aug 2026 12:30:06 -0400
+X-MC-Unique: VhrDl7ZvO1W_Ln1B-kFVNw-1
+X-Mimecast-MFC-AGG-ID: VhrDl7ZvO1W_Ln1B-kFVNw_1786465803
 Received: from mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com
  (mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.12])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
  by mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 576CE1800877; Tue, 11 Aug 2026 16:30:22 +0000 (UTC)
+ id 8D57F18005B3; Tue, 11 Aug 2026 16:30:03 +0000 (UTC)
 Received: from corto.redhat.com (unknown [10.44.48.12])
  by mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id 9E9FD195DF98; Tue, 11 Aug 2026 16:30:20 +0000 (UTC)
+ id 984F2195DF91; Tue, 11 Aug 2026 16:30:01 +0000 (UTC)
 From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
 Cc: Jamin Lin <jamin_lin@aspeedtech.com>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@oss.qualcomm.com>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
  =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>
-Subject: [PULL 18/83] hw/misc/aspeed_scu: Introduce Aspeed2700SCUState
-Date: Tue, 11 Aug 2026 18:28:33 +0200
-Message-ID: <20260811162938.1403216-19-clg@redhat.com>
+Subject: [PULL 09/83] hw/usb/hcd-ehci: Implement 64-bit siTD descriptor
+ addressing
+Date: Tue, 11 Aug 2026 18:28:24 +0200
+Message-ID: <20260811162938.1403216-10-clg@redhat.com>
 In-Reply-To: <20260811162938.1403216-1-clg@redhat.com>
 References: <20260811162938.1403216-1-clg@redhat.com>
 MIME-Version: 1.0
 X-Scanned-By: MIMEDefang 3.0 on 10.30.177.12
-X-Mimecast-MFC-PROC-ID: b8txjnTK4wv8_n4ndLVEuDD7BfIoXp3T0LEELBYQof8_1786465822
+X-Mimecast-MFC-PROC-ID: q1pePFfshvV0QeJHGJb1ZwlQkj_MEfKfXv7PoX9Gf6Q_1786465803
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
@@ -70,7 +71,7 @@ X-Spam_bar: --
 X-Spam_report: (-2.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.102,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -88,89 +89,41 @@ Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
 From: Jamin Lin <jamin_lin@aspeedtech.com>
 
-Introduce Aspeed2700SCUState as an AST2700-specific subclass of
-AspeedSCUState.
+EHCI supports 64-bit control data structure addressing when the
+64-bit Addressing Capability bit in HCCPARAMS is set. In that mode,
+the CTRLDSSEGMENT register provides the upper 32 bits that are
+concatenated with 32-bit link pointer values to form full 64-bit
+descriptor addresses (EHCI 1.0, section 2.3.5 and Appendix B).
 
-Currently, AST1700 and AST2700 reuse the generic AspeedSCUState.
-However, AST2700 requires SCU functionality that is specific to the
-platform, particularly for interactions with its coprocessors.
+siTD link pointers are stored as 32-bit values and must be expanded
+to full 64-bit descriptor addresses when 64-bit mode is enabled.
+Update the siTD traversal path to use ehci_get_desc_addr() when
+following link pointers.
 
-Introduce a dedicated Aspeed2700SCUState to provide an extension point
-for AST2700-specific functionality while keeping the generic
-AspeedSCUState unchanged.
-
-Subsequent patches will migrate AST2700 users to the new subclass and
-move AST2700-specific code into it.
-
-No functional change.
+When 64-bit capability is disabled, descriptor addresses remain
+32-bit and existing behaviour is unchanged.
 
 Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
-Reviewed-by: Philippe Mathieu-Daudé <philmd@oss.qualcomm.com>
-Reviewed-by: Cédric Le Goater <clg@redhat.com>
-Tested-by: Philippe Mathieu-Daudé <philmd@oss.qualcomm.com>
-Link: https://lore.kernel.org/qemu-devel/20260717084559.3477061-2-jamin_lin@aspeedtech.com
+Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+Link: https://lore.kernel.org/qemu-devel/20260713032704.3583103-7-jamin_lin@aspeedtech.com
 Signed-off-by: Cédric Le Goater <clg@redhat.com>
 ---
- include/hw/misc/aspeed_scu.h | 5 +++++
- hw/misc/aspeed_scu.c         | 8 +++++++-
- 2 files changed, 12 insertions(+), 1 deletion(-)
+ hw/usb/hcd-ehci.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/include/hw/misc/aspeed_scu.h b/include/hw/misc/aspeed_scu.h
-index c30940ab7683..904549465fd1 100644
---- a/include/hw/misc/aspeed_scu.h
-+++ b/include/hw/misc/aspeed_scu.h
-@@ -20,6 +20,7 @@ OBJECT_DECLARE_TYPE(AspeedSCUState, AspeedSCUClass, ASPEED_SCU)
- #define TYPE_ASPEED_2500_SCU TYPE_ASPEED_SCU "-ast2500"
- #define TYPE_ASPEED_2600_SCU TYPE_ASPEED_SCU "-ast2600"
- #define TYPE_ASPEED_2700_SCU TYPE_ASPEED_SCU "-ast2700"
-+OBJECT_DECLARE_SIMPLE_TYPE(Aspeed2700SCUState, ASPEED_2700_SCU)
- #define TYPE_ASPEED_2700_SCUIO TYPE_ASPEED_SCU "io" "-ast2700"
- #define TYPE_ASPEED_1030_SCU TYPE_ASPEED_SCU "-ast1030"
+diff --git a/hw/usb/hcd-ehci.c b/hw/usb/hcd-ehci.c
+index 1a286c32e690..9a80c74972c3 100644
+--- a/hw/usb/hcd-ehci.c
++++ b/hw/usb/hcd-ehci.c
+@@ -1823,7 +1823,7 @@ static int ehci_state_fetchsitd(EHCIState *ehci, int async)
+         warn_report("Skipping active siTD");
+     }
  
-@@ -41,6 +42,10 @@ struct AspeedSCUState {
-     uint32_t hw_prot_key;
- };
- 
-+struct Aspeed2700SCUState {
-+    AspeedSCUState parent_obj;
-+};
-+
- #define AST2400_A1_SILICON_REV   0x02010303U
- #define AST2500_A1_SILICON_REV   0x04010303U
- #define AST2600_A3_SILICON_REV   0x05030303U
-diff --git a/hw/misc/aspeed_scu.c b/hw/misc/aspeed_scu.c
-index 5dbf81c0cec9..efe1d6315b25 100644
---- a/hw/misc/aspeed_scu.c
-+++ b/hw/misc/aspeed_scu.c
-@@ -930,6 +930,11 @@ static void aspeed_ast2700_scu_reset_hold(Object *obj, ResetType type)
-     s->regs[AST2700_HW_STRAP1] = s->hw_strap1;
+-    ehci_set_fetch_addr(ehci, async, sitd.next);
++    ehci_set_fetch_addr(ehci, async, ehci_get_desc_addr(ehci, sitd.next));
+     ehci_set_state(ehci, async, EST_FETCHENTRY);
+     return 1;
  }
- 
-+static void aspeed_2700_scu_realize(DeviceState *dev, Error **errp)
-+{
-+    aspeed_scu_realize(dev, errp);
-+}
-+
- static void aspeed_2700_scu_class_init(ObjectClass *klass, const void *data)
- {
-     DeviceClass *dc = DEVICE_CLASS(klass);
-@@ -937,6 +942,7 @@ static void aspeed_2700_scu_class_init(ObjectClass *klass, const void *data)
-     AspeedSCUClass *asc = ASPEED_SCU_CLASS(klass);
- 
-     dc->desc = "ASPEED 2700 System Control Unit";
-+    dc->realize = aspeed_2700_scu_realize;
-     rc->phases.hold = aspeed_ast2700_scu_reset_hold;
-     asc->resets = ast2700_a0_resets;
-     asc->calc_hpll = aspeed_2600_scu_calc_hpll;
-@@ -1161,7 +1167,7 @@ static const TypeInfo aspeed_scu_types[] = {
-     {
-         .name = TYPE_ASPEED_2700_SCU,
-         .parent = TYPE_ASPEED_SCU,
--        .instance_size = sizeof(AspeedSCUState),
-+        .instance_size = sizeof(Aspeed2700SCUState),
-         .class_init = aspeed_2700_scu_class_init,
-     },
-     {
 -- 
 2.55.0
 

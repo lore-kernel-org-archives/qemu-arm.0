@@ -4,92 +4,91 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EFA04C5AC67
-	for <qemu-arm@archiver.kernel.org>; Tue, 11 Aug 2026 19:16:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B0DD1C5CFC1
+	for <qemu-arm@archiver.kernel.org>; Tue, 11 Aug 2026 19:16:46 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wtrx2-0002H8-TN; Tue, 11 Aug 2026 15:15:54 -0400
+	id 1wtrx8-0002IA-8n; Tue, 11 Aug 2026 15:15:58 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1wtrwy-0002FU-LA
+ id 1wtrwx-0002FO-DT
  for qemu-arm@nongnu.org; Tue, 11 Aug 2026 15:15:48 -0400
-Received: from mail-pl1-x631.google.com ([2607:f8b0:4864:20::631])
+Received: from mail-pj1-x1032.google.com ([2607:f8b0:4864:20::1032])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1wtrwv-00028R-F0
- for qemu-arm@nongnu.org; Tue, 11 Aug 2026 15:15:48 -0400
-Received: by mail-pl1-x631.google.com with SMTP id
- d9443c01a7336-2cf52d15d88so3073945ad.2
- for <qemu-arm@nongnu.org>; Tue, 11 Aug 2026 12:15:45 -0700 (PDT)
+ id 1wtrwt-000287-LV
+ for qemu-arm@nongnu.org; Tue, 11 Aug 2026 15:15:47 -0400
+Received: by mail-pj1-x1032.google.com with SMTP id
+ 98e67ed59e1d1-38ea87caafeso179941a91.3
+ for <qemu-arm@nongnu.org>; Tue, 11 Aug 2026 12:15:43 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1786475744; x=1787080544; darn=nongnu.org;
+ d=linaro.org; s=google; t=1786475742; x=1787080542; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to:content-type;
- bh=GRr6PoGrupLvbrBJeRkZc+07SX85ytBRGcRUr5gqRN8=;
- b=WH9ld1EEBkTa4kLttHBd4zp5fSI9u5h5IOfBwn0hWc7WcP2mtAiMBe5JdWmKQhAhJN
- WqbRYjrq3eEoV1ccaYeVy2IKhFp5wKw2pAs4O2omy+c0lYAiLT44T6AvM90XNjF2RlP1
- EMnI8m8OuvjCyRtLa2VHUfetQJfiwqyttROxrntvJzaxyRnmqoPMRJ40MAaLbeFn/s9M
- YP9VZQpWr6OXmdBgMjKOAlOjoYCjFQ1hgRzwcBIJrakc7JudwKHYbYTvSERmPqKSxGI8
- UdArEV/mzAE+CMIrJS79pS96y3nhqpuSX/DRHjI9DhjJ+jE9719WvXvR2QXgAPyLp1kE
- pU/A==
+ bh=FWe3uPbG8QTQeWcNC7hsaTPyUcsTnfL69Da5dCKR/IM=;
+ b=iVkcxKblc5kjxWW9eHxhYcw0KeCh3pPpoSL5+Q9T1ytx6sJC7kI3id36bhE/TCKefR
+ WLfLUUSC2m56C79/Sng1UdM8iZ+4zm3V7uOFxFSoHJkMImZorRKMuXXNhyJY2NVR91Wi
+ koI8r7hsQdKsQdXj3X++Xkq+5YNQD9dhnfZ+RMT75yo00A/Srpe56QAuz5u+XbznV57P
+ 4RUWQLGMsNdsZIehbJ7f7y8P8fpmcogBEE/KKP8p/k7f0y/SsSk98CeWuGWRiPEseEwi
+ OvhjrsMRlP13fn3oWAxpu1py0Uy3bOH+s3o2f5/435DQnMW5Wzf/OtSNdc9EdE9P5j3z
+ SDvg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1786475744; x=1787080544;
+ d=1e100.net; s=20251104; t=1786475742; x=1787080542;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
  :to:cc:subject:date:message-id:reply-to:content-type;
- bh=GRr6PoGrupLvbrBJeRkZc+07SX85ytBRGcRUr5gqRN8=;
- b=Nlvj3yUHx1ZYuX1ne9j2e8kfTLuC1rDTSC+auGRQOt7csUdZ5keptj562nmHYiyQms
- XS0L5PWPcD8vsT+XXA7pnLa1H5u6RTaGDARKg6iV8U8MOclsn0J8gV7G76vuwFVSBHSY
- l1zcbcjwycA3sq15ePe+c02liQ9Tx+VGnVcCtC6NpCY2ULSTrt75iFJgnRlaMWrR7IfC
- wlfIS7fZzqJSO8EpUAKJ/d9u2uhLpJv4vGqaufGSowe3IE+PdmgOc7sFCnCXEFQU02Xa
- 3VWW+zZ2E1dTJ+fsnicbdJoo+DwQnrPaTBMdIySoT3QQVIygjz5y/pD0JtvmVJnnSXsI
- 7I1w==
+ bh=FWe3uPbG8QTQeWcNC7hsaTPyUcsTnfL69Da5dCKR/IM=;
+ b=iBrPNx85lzR9+/P/yaNgkSG+PkuyLnSjrq+GxX8fWPgkSWNqGRrdufJNB/Tay8V2sq
+ 3nlE1bNHczz9CbGxw8SLhbIFFzdkzrctnF0OpI4UDz/oy4l5zX0tM734gc7GltXicSmc
+ qqFg1wPIDVx02IZ6L2gEFf5n2gxdzxuMyjPTBkRCRdwgPBYspeF/vRPF7ekGVW8HrYpL
+ jB63i/N3cXDFJqGYPLQtGBQWf8vV8PjH+TZ1qFv2SgA0KsEUBCTlEQJY1TgRk52etC6+
+ HSjhIF0TKMHpC/W3PbGd92cE6LemZpZF5eITOgNoaamizrWP4evFEn/aakka5FKJaMVd
+ 4m5w==
 X-Forwarded-Encrypted: i=1;
- AHgh+RrqEBhJO7G3d+1GtbSqGBXA4BsTO1ofkcjMOOpEOQYf6eFsSLlYFt29XPJRSQ9n15wV4VX1zoju3w==@nongnu.org
-X-Gm-Message-State: AOJu0Yz7F5NAxaAe+qer5lFfXuiu9NfnMM4G1cI2VlA/+xIU6Di9ZErb
- EfkWrkYCd2zqJOsYPVryLT7R9jAFweuN86vsps0mnJmt/QFddBzJC/odRvxJheTqvgrXpUl9ptr
- t3U6A
-X-Gm-Gg: AR+sD11AQDZQ28Z8t4fdAQa+J2iLda3GC6MtFJJIdLo9MwV3ay3Zo9DFozmia5+9fQe
- nk7oAbjFZ+7I0Rbfe0+sRAUkueE7tKjeJ65cM7veUf4fisSy9lgCvizm64K29X31idWsyfCbU9b
- tYHBdwxTNZm1NBYOLtDtw4e0hPpmTwjRKo8bsBF7YJjB+KRn3tzgexZQp8lJi/MOmrX9hqMMZ3A
- g6GtReRFJYWI4kOQvHo09HQ6tijdUZZpd9T1cOLDRpzOqc81kIuRbW/hBDlpf9PKE0oUg6cZ9qP
- s3AS6iYpwf9qScr+saZZyYUekhFZ6aXOprqg5A+j4NFPmKMrPQ2/PsD4dJrTBtyl/1n7Wu2dJmP
- 88NpdWN5DzLm3X/G7muh2FsEhx2hKiOtOe53R3Z10J2ExPclD0zg7EXgAmv7WXCLohpiNWhSR58
- Kk2a/Q2Lp5xk3EIWiFeG2bEC/UABZ2hS4jg/nqDZSLOhsn8jUtoMbIjA757CnFmDJI3CaXOLi7x
- hH/vHEXbLIhhgR011XEoArQNBRiClQ=
-X-Received: by 2002:a17:90b:1d44:b0:38e:6dd:a9ad with SMTP id
- 98e67ed59e1d1-392ec11ef75mr5977312a91.0.1786475743665; 
- Tue, 11 Aug 2026 12:15:43 -0700 (PDT)
+ AHgh+RrvEPbXBlUjXvi+Oxj2OpfymTMjwkyAXCcIiFTM+HmPEZ7uRwdi6ub2bGVbdqbjTd6ng4x5+Ajrvw==@nongnu.org
+X-Gm-Message-State: AOJu0YzH2vf7PrV0KMtEoxO//+TLK/RXuWA2rkDFOInSomlLKQPdXBvY
+ Nhwqeh5vifAxWT/yL+oAmZaS1icILk9dO74eFSdhFx4qe7j47LhtVPQC0obAsDVrQl94s02qvPD
+ JW/NJ
+X-Gm-Gg: AR+sD11MDNKU8UjJdS1eN1qVuR+ThJSQUYsniazvPd1JGawOrqUbCMX1h2pCUDheBNY
+ u8Rh3gRPy2CVjmW+OujmcN0ykE/MD9f7Vdlhy2SohMq/dv6lJQrM+KBnxrAY5Lpr/HoQwAMwDtY
+ aAhXifbYjvbJq5GdKsQRR+0dHamBggk8Bq33SJ7/BzlBwCwTI3lM1XS1+g4eGDkriuXB3V04Xwt
+ p4/cvnotdXxi7WYZf3PL/Qvg07oDhowyUSRDlrIpZmk9gpbOvukE1zTi9qm323upblODyB4gmky
+ lMK2+vhISjPuNtk5cDjaZmGY+uqpqN7K76MyK/BUg1YtuaSv5FoSBf13nAkQPybwHxOX+2ygJw7
+ rfmVGk2i6/v4ICwBR+bERzm3gi6j2PwkwXUVzqS4S7nxokR+Pk3KqyHJx/feBs36BT6L/Z0/Q36
+ +KvgWQQ3vUGNJbt09CCOAFMq6K8fPWND08yqQpUO8eG307SOzCMY+1dPSpW1kYIM/k8voqqquH0
+ Q2Yy/D0fRZnV5+wMgMd53cW/fSB+d8=
+X-Received: by 2002:a17:90b:180c:b0:383:f52b:d616 with SMTP id
+ 98e67ed59e1d1-392ec5b6b8amr5463314a91.10.1786475741991; 
+ Tue, 11 Aug 2026 12:15:41 -0700 (PDT)
 Received: from stoup.. (174-21-93-59.tukw.qwest.net. [174.21.93.59])
  by smtp.gmail.com with ESMTPSA id
- 98e67ed59e1d1-392f97fc409sm209668a91.1.2026.08.11.12.15.42
+ 98e67ed59e1d1-392f97fc409sm209668a91.1.2026.08.11.12.15.41
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 11 Aug 2026 12:15:43 -0700 (PDT)
+ Tue, 11 Aug 2026 12:15:41 -0700 (PDT)
 From: Richard Henderson <richard.henderson@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: yang.yanjun1@sanechips.com.cn,
 	qemu-arm@nongnu.org
-Subject: [PATCH v2 2/3] target/arm: Fix SVE2 WHILEWR/WHILERW zero diff
- boundary case
-Date: Tue, 11 Aug 2026 12:15:39 -0700
-Message-ID: <20260811191540.79882-3-richard.henderson@linaro.org>
+Subject: [PATCH v2 1/3] tcg: Export tcg_gen_ussub_i{32,64,tl}
+Date: Tue, 11 Aug 2026 12:15:38 -0700
+Message-ID: <20260811191540.79882-2-richard.henderson@linaro.org>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20260811191540.79882-1-richard.henderson@linaro.org>
 References: <20260811191540.79882-1-richard.henderson@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::631;
- envelope-from=richard.henderson@linaro.org; helo=mail-pl1-x631.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::1032;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pj1-x1032.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -105,90 +104,120 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-The trans_WHILE_ptr function incorrectly handles the case where the
-address difference divided by ESIZE results in zero. This happens when
-the address difference is less than ESIZE but greater than zero.
+Move from tcg-op-gvec.c to tcg-op.c.
+Use a temporary, to cover the possibility of operand overlap.
 
-Fix by dropping direct comparisons of op0 vs op1, and instead
-testing the scaled diff vs 0.  Merge with the bounding to the
-maximum vector length via wrapping arithmetic.
-
-Reported-by: YanjunYang <yang.yanjun1@sanechips.com.cn>
 Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- target/arm/tcg/translate-sve.c | 38 +++++++++++++++++++++-------------
- 1 file changed, 24 insertions(+), 14 deletions(-)
+ include/tcg/tcg-op-common.h |  2 ++
+ include/tcg/tcg-op.h        |  2 ++
+ tcg/tcg-op-gvec.c           | 14 --------------
+ tcg/tcg-op.c                | 20 ++++++++++++++++++++
+ 4 files changed, 24 insertions(+), 14 deletions(-)
 
-diff --git a/target/arm/tcg/translate-sve.c b/target/arm/tcg/translate-sve.c
-index fc4cc8c479..0becef16a9 100644
---- a/target/arm/tcg/translate-sve.c
-+++ b/target/arm/tcg/translate-sve.c
-@@ -3697,7 +3697,7 @@ TRANS_FEAT(WHILE_gt_cnt4, aa64_sme2_or_sve2p1, do_WHILE,
+diff --git a/include/tcg/tcg-op-common.h b/include/tcg/tcg-op-common.h
+index 1fe342db0d..c7d1529c4f 100644
+--- a/include/tcg/tcg-op-common.h
++++ b/include/tcg/tcg-op-common.h
+@@ -163,6 +163,7 @@ void tcg_gen_smin_i32(TCGv_i32, TCGv_i32 arg1, TCGv_i32 arg2);
+ void tcg_gen_smax_i32(TCGv_i32, TCGv_i32 arg1, TCGv_i32 arg2);
+ void tcg_gen_umin_i32(TCGv_i32, TCGv_i32 arg1, TCGv_i32 arg2);
+ void tcg_gen_umax_i32(TCGv_i32, TCGv_i32 arg1, TCGv_i32 arg2);
++void tcg_gen_ussub_i32(TCGv_i32, TCGv_i32 arg1, TCGv_i32 arg2);
+ void tcg_gen_abs_i32(TCGv_i32, TCGv_i32);
  
- static bool trans_WHILE_ptr(DisasContext *s, arg_WHILE_ptr *a)
+ /* Replicate a value of size @vece from @in to all the lanes in @out */
+@@ -274,6 +275,7 @@ void tcg_gen_smin_i64(TCGv_i64, TCGv_i64 arg1, TCGv_i64 arg2);
+ void tcg_gen_smax_i64(TCGv_i64, TCGv_i64 arg1, TCGv_i64 arg2);
+ void tcg_gen_umin_i64(TCGv_i64, TCGv_i64 arg1, TCGv_i64 arg2);
+ void tcg_gen_umax_i64(TCGv_i64, TCGv_i64 arg1, TCGv_i64 arg2);
++void tcg_gen_ussub_i64(TCGv_i64, TCGv_i64 arg1, TCGv_i64 arg2);
+ void tcg_gen_abs_i64(TCGv_i64, TCGv_i64);
+ 
+ /* Replicate a value of size @vece from @in to all the lanes in @out */
+diff --git a/include/tcg/tcg-op.h b/include/tcg/tcg-op.h
+index 96a5af1a29..40ce17eed2 100644
+--- a/include/tcg/tcg-op.h
++++ b/include/tcg/tcg-op.h
+@@ -149,6 +149,7 @@ typedef TCGv_i64 TCGv;
+ #define tcg_gen_umin_tl tcg_gen_umin_i64
+ #define tcg_gen_smax_tl tcg_gen_smax_i64
+ #define tcg_gen_umax_tl tcg_gen_umax_i64
++#define tcg_gen_ussub_tl tcg_gen_ussub_i64
+ #define tcg_gen_atomic_cmpxchg_tl tcg_gen_atomic_cmpxchg_i64
+ #define tcg_gen_atomic_xchg_tl tcg_gen_atomic_xchg_i64
+ #define tcg_gen_atomic_fetch_add_tl tcg_gen_atomic_fetch_add_i64
+@@ -268,6 +269,7 @@ typedef TCGv_i64 TCGv;
+ #define tcg_gen_umin_tl tcg_gen_umin_i32
+ #define tcg_gen_smax_tl tcg_gen_smax_i32
+ #define tcg_gen_umax_tl tcg_gen_umax_i32
++#define tcg_gen_ussub_tl tcg_gen_ussub_i32
+ #define tcg_gen_atomic_cmpxchg_tl tcg_gen_atomic_cmpxchg_i32
+ #define tcg_gen_atomic_xchg_tl tcg_gen_atomic_xchg_i32
+ #define tcg_gen_atomic_fetch_add_tl tcg_gen_atomic_fetch_add_i32
+diff --git a/tcg/tcg-op-gvec.c b/tcg/tcg-op-gvec.c
+index bc323e2500..27f3807b00 100644
+--- a/tcg/tcg-op-gvec.c
++++ b/tcg/tcg-op-gvec.c
+@@ -2399,20 +2399,6 @@ void tcg_gen_gvec_usadd(unsigned vece, uint32_t dofs, uint32_t aofs,
+     tcg_gen_gvec_3(dofs, aofs, bofs, oprsz, maxsz, &g[vece]);
+ }
+ 
+-static void tcg_gen_ussub_i32(TCGv_i32 d, TCGv_i32 a, TCGv_i32 b)
+-{
+-    TCGv_i32 min = tcg_constant_i32(0);
+-    tcg_gen_sub_i32(d, a, b);
+-    tcg_gen_movcond_i32(TCG_COND_LTU, d, a, b, min, d);
+-}
+-
+-static void tcg_gen_ussub_i64(TCGv_i64 d, TCGv_i64 a, TCGv_i64 b)
+-{
+-    TCGv_i64 min = tcg_constant_i64(0);
+-    tcg_gen_sub_i64(d, a, b);
+-    tcg_gen_movcond_i64(TCG_COND_LTU, d, a, b, min, d);
+-}
+-
+ void tcg_gen_gvec_ussub(unsigned vece, uint32_t dofs, uint32_t aofs,
+                         uint32_t bofs, uint32_t oprsz, uint32_t maxsz)
  {
--    TCGv_i64 op0, op1, diff, t1, tmax;
-+    TCGv_i64 op0, op1, diff, t1;
-     TCGv_i32 t2;
-     TCGv_ptr ptr;
-     unsigned vsz = vec_full_reg_size(s);
-@@ -3713,7 +3713,6 @@ static bool trans_WHILE_ptr(DisasContext *s, arg_WHILE_ptr *a)
-     op0 = read_cpu_reg(s, a->rn, 1);
-     op1 = read_cpu_reg(s, a->rm, 1);
+diff --git a/tcg/tcg-op.c b/tcg/tcg-op.c
+index bbcb510c76..4d15d1abbd 100644
+--- a/tcg/tcg-op.c
++++ b/tcg/tcg-op.c
+@@ -1264,6 +1264,16 @@ void tcg_gen_umax_i32(TCGv_i32 ret, TCGv_i32 a, TCGv_i32 b)
+     tcg_gen_movcond_i32(TCG_COND_LTU, ret, a, b, b, a);
+ }
  
--    tmax = tcg_constant_i64(vsz >> a->esz);
-     diff = tcg_temp_new_i64();
- 
-     if (a->rw) {
-@@ -3723,25 +3722,36 @@ static bool trans_WHILE_ptr(DisasContext *s, arg_WHILE_ptr *a)
-         tcg_gen_sub_i64(diff, op0, op1);
-         tcg_gen_sub_i64(t1, op1, op0);
-         tcg_gen_movcond_i64(TCG_COND_GEU, diff, op0, op1, diff, t1);
--        /* Divide, rounding down, by ESIZE.  */
--        tcg_gen_shri_i64(diff, diff, a->esz);
--        /* If op1 == op0, diff == 0, and the condition is always true. */
--        tcg_gen_movcond_i64(TCG_COND_EQ, diff, op0, op1, tmax, diff);
-     } else {
-         /* WHILEWR */
--        tcg_gen_sub_i64(diff, op1, op0);
--        /* Divide, rounding down, by ESIZE.  */
--        tcg_gen_shri_i64(diff, diff, a->esz);
--        /* If op0 >= op1, diff <= 0, the condition is always true. */
--        tcg_gen_movcond_i64(TCG_COND_GEU, diff, op0, op1, tmax, diff);
-+        /* Saturating subtraction maps diff <= 0 to diff == 0. */
-+        tcg_gen_ussub_i64(diff, op1, op0);
-     }
- 
--    /* Bound to the maximum.  */
--    tcg_gen_umin_i64(diff, diff, tmax);
-+    /* Divide, rounding down, by ESIZE.  */
-+    tcg_gen_shri_i64(diff, diff, a->esz);
- 
--    /* Since we're bounded, pass as a 32-bit type.  */
-+    /*
-+     * If diff == 0, the condition is always true.  Also, bound to max.
-+     * Simplify
-+     *    diff = diff ? diff : max;
-+     *    diff = umin(diff, max);
-+     * via
-+     *    diff -= 1;
-+     *    diff = umin(diff, max - 1);
-+     *    diff += 1;
-+     * via 0 - 1 == UINT64_MAX.
-+     */
-+    tcg_gen_addi_i64(diff, diff, -1);
-+    tcg_gen_umin_i64(diff, diff, tcg_constant_i64((vsz >> a->esz) - 1));
++void tcg_gen_ussub_i32(TCGv_i32 ret, TCGv_i32 a, TCGv_i32 b)
++{
++    TCGv_i32 t = tcg_temp_ebb_new_i32();
++    TCGv_i32 z = tcg_constant_i32(0);
 +
-+    /*
-+     * Since we're bounded, pass as a 32-bit type.
-+     * Sink the diff += 1 from above into the 32-bit type.
-+     */
-     t2 = tcg_temp_new_i32();
-     tcg_gen_extrl_i64_i32(t2, diff);
-+    tcg_gen_addi_i32(t2, t2, 1);
++    tcg_gen_sub_i32(t, a, b);
++    tcg_gen_movcond_i32(TCG_COND_LTU, ret, a, b, z, t);
++    tcg_temp_free_i32(t);
++}
++
+ void tcg_gen_abs_i32(TCGv_i32 ret, TCGv_i32 a)
+ {
+     TCGv_i32 t = tcg_temp_ebb_new_i32();
+@@ -2433,6 +2443,16 @@ void tcg_gen_umax_i64(TCGv_i64 ret, TCGv_i64 a, TCGv_i64 b)
+     tcg_gen_movcond_i64(TCG_COND_LTU, ret, a, b, b, a);
+ }
  
-     desc = FIELD_DP32(desc, PREDDESC, OPRSZ, vsz / 8);
-     desc = FIELD_DP32(desc, PREDDESC, ESZ, a->esz);
++void tcg_gen_ussub_i64(TCGv_i64 ret, TCGv_i64 a, TCGv_i64 b)
++{
++    TCGv_i64 t = tcg_temp_ebb_new_i64();
++    TCGv_i64 z = tcg_constant_i64(0);
++
++    tcg_gen_sub_i64(t, a, b);
++    tcg_gen_movcond_i64(TCG_COND_LTU, ret, a, b, z, t);
++    tcg_temp_free_i64(t);
++}
++
+ void tcg_gen_abs_i64(TCGv_i64 ret, TCGv_i64 a)
+ {
+     TCGv_i64 t = tcg_temp_ebb_new_i64();
 -- 
 2.43.0
 

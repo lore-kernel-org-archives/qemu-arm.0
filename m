@@ -4,94 +4,97 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8F700C5B572
-	for <qemu-arm@archiver.kernel.org>; Tue, 11 Aug 2026 14:40:01 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EC139C5B572
+	for <qemu-arm@archiver.kernel.org>; Tue, 11 Aug 2026 14:40:14 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wtnao-0000qK-Ao; Tue, 11 Aug 2026 10:36:38 -0400
+	id 1wtnao-0000tD-O5; Tue, 11 Aug 2026 10:36:38 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <marcelomanzo@gmail.com>)
- id 1wtnaW-0000LP-90
- for qemu-arm@nongnu.org; Tue, 11 Aug 2026 10:36:21 -0400
-Received: from mail-qv1-xf2d.google.com ([2607:f8b0:4864:20::f2d])
+ id 1wtnaN-0000Iw-TQ
+ for qemu-arm@nongnu.org; Tue, 11 Aug 2026 10:36:13 -0400
+Received: from mail-qt1-x82a.google.com ([2607:f8b0:4864:20::82a])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <marcelomanzo@gmail.com>)
- id 1wtnaU-0001wB-Nk
- for qemu-arm@nongnu.org; Tue, 11 Aug 2026 10:36:19 -0400
-Received: by mail-qv1-xf2d.google.com with SMTP id
- 6a1803df08f44-8ff5d1b0f91so18920646d6.2
- for <qemu-arm@nongnu.org>; Tue, 11 Aug 2026 07:36:18 -0700 (PDT)
+ id 1wtnaM-0001tF-DH
+ for qemu-arm@nongnu.org; Tue, 11 Aug 2026 10:36:11 -0400
+Received: by mail-qt1-x82a.google.com with SMTP id
+ d75a77b69052e-51c16ac21acso18990941cf.0
+ for <qemu-arm@nongnu.org>; Tue, 11 Aug 2026 07:36:08 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20251104; t=1786458978; x=1787063778; darn=nongnu.org;
+ d=gmail.com; s=20251104; t=1786458968; x=1787063768; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to:content-type;
- bh=D3MDMyFwx9BA61yhNaWY6HqytTiFGsQ7fXIYaLXoOcs=;
- b=cjTn/Em1k7SdRoDArbLvPuqb2U9CoXqHnhORz5GKHCXo4NcQ5bILwAbrLKY7gIVdh2
- tI11ps0AxESGm/1YlFra5Xn4GFAShSHwr71f0TGtIxw8sC3LIZO4RhN7954PNrlhsbF9
- /j+5pAfoIP22Pi42wYTMDGI4yQ0kNBBkzCy/KZCmzmyVDOmjhcQhf/GZP1i/+h2uUIe7
- avnMsLKiuy57Nm2aURRqz8fP8Jl5zyw8Y6ij1NipKTePIekcwlrTJYWD/9O3eBmkw7Fv
- Lf9l6mZO/L0bnlsiV21pg5bgNhV5kzs09CLP6F5xoat0FnF57BFhbFmTVtwuGHs2DwYe
- jVOQ==
+ bh=xsYLjlscox7P7BfombKX5T/LNj0yU2z7O4B/638wR0E=;
+ b=H1BCb0lO4QPG6IO63OAZn8t9Ma6EzPHzp0PAIQ0O0wZK3TY4jX/XrNBs8HipKc9SJ0
+ nT9SmN1fl8IviYmUWn2NluG5U2x66T5cYyB4/9IlmarSUn90FlZX1Z1Y+CyJ0lKVYbLx
+ fTH6+W5k7ywsSgU1YxURbVEKBF4HeUfGuGrImrUUrJGD4qhiw7scQjGIIeARi0qypb3C
+ SdsH8rKMV5rmeJ12TpzSPE/egA0v1Hcf7iZFvR7NiuV43tpsB8RDn3t4Wh/dHuXgcsf1
+ rA/1XsmGmZoSPfg6/RYnwj8hafU+SNgQXi0CuhkI4/57IEp+GiTBb9IIYhuIEKeaiybr
+ YW3Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1786458978; x=1787063778;
+ d=1e100.net; s=20251104; t=1786458968; x=1787063768;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
  :to:cc:subject:date:message-id:reply-to:content-type;
- bh=D3MDMyFwx9BA61yhNaWY6HqytTiFGsQ7fXIYaLXoOcs=;
- b=nTpLbAiWivs67pzer3RBvj3qxKCabspx9r8Gvtq6A/LAbLrzfNo87LB1BuzXBgHTYx
- E79LhDJ/RxKBW8diSAlEpsxFQU37AUVB+vxxhe75dn5yPB0GBcsGftryr4NS36amJJWD
- DrabF3PaVAs1holgUk+sBFKdAb1bdmTYlGqS06zO5gywF0/j+iPZX5XVS7tYlw7nq6Lz
- QABQbZ/xgzqpxWBtUyz1kCcFctQ7qF/WwiiSFC7skug1RtYIlqS3Afr5wLH6MzDJ/H6y
- qDyTCxOhoudnInQwgKzsqIKmjO27kuA5FQKMor5s95noCfg5iUU+WDwASAACdoAXY1XX
- /COA==
+ bh=xsYLjlscox7P7BfombKX5T/LNj0yU2z7O4B/638wR0E=;
+ b=pziaWSrMqkFETL7tFrdcb60zzDyrkIssB8+uOh1ji/6ZxswSW6w7LCsmHzHGwYwm4c
+ p5zqrhzdBWuMzfqwZ/IbBZQ5nQOWSBQlAXyOAEy/46+/3RDtrVovCFso91b+0NlrbvxP
+ +7DUq1Y7TAx5Louer8oeFR9LyPrH06S/9eqMFUuEtXZd+5so3/v8uOs2WM63yzfqxGi3
+ esxzAHajh7Xf70N1uRQ3VRfVAG60cVdDLT0F1S/kZturNfqL0YdrM5Xb9P+dW+lUJLtB
+ 5WmNOvTgKx6l5sS7ZgZK0pp97avuIxTKsZ2KM490EHD59vknFkWU567JKcovaaCakrio
+ 71fQ==
 X-Forwarded-Encrypted: i=1;
- AHgh+Rr4ukoRjjm3apKoVf+V2c+W8Dtg7LQTS6KP+4wVlpWMNRWJ5Kfd7hAGyevLMaprqhcNNOWDBKxzcQ==@nongnu.org
-X-Gm-Message-State: AOJu0YyM4+hvQ3bWDbW5l+RHFp3zkrJ+4MaSKIgI5ClMIbdrboNOgeY8
- qvu57qb9sylT68wHcmegbQyUtwsZgvDa4/qJaF5U1v9LnxSs7rgS+UGG
-X-Gm-Gg: AR+sD13WMARIbLQbKfCqYmpo1z5EAiPyaQrYHTvHs/SFD4pCZr8N3JA2q2eI+zwS+EV
- pWN9glpRJmP1gTBvDI04cNxlQs5lhU+mWZ3/fHMbV0Bl4vUZAue0EpYiSH6qRUdq+CG5zs+HNW1
- WtqFoC5xBQcARuxB57v+VcIrrZO093tdI0vby2TXOuti7wDWCG4GEsPfQT4taUZBoP29Une5/nU
- 0Q1UgM8Wg4xs1SyQ3TUUmJM2JZGAlJ1cvaFTQOxIvPisRcatjW9un7twdaXiqtRjRqw9ICpQ8qV
- PA4iKM2gUcsheXz+WHbBh5CMR1CKb+xsQ3TsWRkxQ3w/EtWuOu7AajWPKu1v+AJ4AzMQMu9H/n2
- oAM+n94VMIjFxbHUTkXut59FeVTGLA2wgZtcLw+BSYfFEXDg5BYZhbNoDOhLIe1Xq36DURAe5NA
- htivrY4J5zLDyXouCAJJG5wm8i9WJcJ8TmmLof4m04Dy2Kw1mb4RlA1WX3fEuaEAx8kBaeBC5mi
- hm3cNh9GokpZ01csrs=
-X-Received: by 2002:a05:6214:3204:b0:8dc:ad48:70a7 with SMTP id
- 6a1803df08f44-90a6c27faa6mr3659446d6.26.1786458977557; 
- Tue, 11 Aug 2026 07:36:17 -0700 (PDT)
+ AHgh+RrBZsY4XXImkz+ak8WNtLmg0LZCDaJD7S0hN1eFETMmZxBc8AKtFMIQ3Jdno5jU0nIHOwHckLFv2w==@nongnu.org
+X-Gm-Message-State: AOJu0YwZYya1m8Ai3anwe54R1PAYu3yYud2IOHO6Up0B7zKXUWpXQZf5
+ WKAZCOjePeZhu/kRf6sshX5gIlB+6We18S1p4A/xHz5lJ4Kshw07I2Sb
+X-Gm-Gg: AR+sD100cZbXIdfyhu8d9ZTKeHzJjVm8FCgrWq8JtO3G3P9ft9ejyT3euW4hpPJfDvm
+ KoLxHBOEOl2s3kFgw9C93uzF8B59uKS4Bb0fJHFNwX/4FsaUBQWiMs4QIQ3+yPJTHEykBmf7Lsk
+ N6jRgsSge1BO4a7Hw5ky9rPlbyRNK3skjSRinwBjLaK1URzxGmR8kLX1q8aag+OeJHH+ucstedG
+ Fzsn69gKArywcnlrw/YYAn3ItQ0ioLADBCsl7PYlRHdWSvpFIe3IkcMlZzKcbCOqsfnzWYld7QA
+ qQsB8iHgR+VZfXERKhFjkGnoRxY1sZJv0sQqmoTaXEZ4PTYvpgOY0ji3g9UIXfwb+JQNK5UTMRp
+ 8+P5agBau1qCrxYAvDjyNx4pExnOJQd0Ku0jxWpZeuZVnpXT5fcIJf2sT+hpSRLjYthQ9BPHO5h
+ dRvpLVHXwvBFnhOnwvw5rmQMN9hYwBmuD1mRhVCNSZ+1woYCcK8EZXfaYFF0KGhWH4X3A/u/RKr
+ GlUxtcJpK/OdUgk+5c=
+X-Received: by 2002:a05:622a:15c3:b0:528:3216:b802 with SMTP id
+ d75a77b69052e-52d58544b0emr33334841cf.15.1786458967672; 
+ Tue, 11 Aug 2026 07:36:07 -0700 (PDT)
 Received: from localhost.localdomain ([198.16.145.87])
  by smtp.gmail.com with ESMTPSA id
- 6a1803df08f44-90a6c26e074sm681286d6.2.2026.08.11.07.36.16
+ 6a1803df08f44-90a6c26e074sm681286d6.2.2026.08.11.07.36.06
  (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Tue, 11 Aug 2026 07:36:17 -0700 (PDT)
+ Tue, 11 Aug 2026 07:36:07 -0700 (PDT)
 From: Marcelo Manzo <marcelomanzo@gmail.com>
 To: qemu-devel@nongnu.org,
 	qemu-arm@nongnu.org
 Cc: Peter Maydell <peter.maydell@linaro.org>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@oss.qualcomm.com>,
+ Sergey Kambalin <serg.oker@gmail.com>,
+ Sergey Kambalin <sergey.kambalin@auriga.com>,
  Marcelo Manzo <marcelomanzo@gmail.com>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@mailo.com>,
  Jason Wang <jasowangio@gmail.com>
-Subject: [PATCH v2 17/19] hw/net/bcm2838_genet: fix TX ring activation check
-Date: Tue, 11 Aug 2026 10:35:54 -0400
-Message-ID: <20260811143557.7862-18-marcelomanzo@gmail.com>
+Subject: [PATCH v2 08/19] hw/net/bcm2838_genet: add GENET register structs,
+ part 4/4
+Date: Tue, 11 Aug 2026 10:35:45 -0400
+Message-ID: <20260811143557.7862-9-marcelomanzo@gmail.com>
 X-Mailer: git-send-email 2.47.1
 In-Reply-To: <20260811143557.7862-1-marcelomanzo@gmail.com>
 References: <20260811143557.7862-1-marcelomanzo@gmail.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::f2d;
- envelope-from=marcelomanzo@gmail.com; helo=mail-qv1-xf2d.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::82a;
+ envelope-from=marcelomanzo@gmail.com; helo=mail-qt1-x82a.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -107,43 +110,85 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-bcm2838_genet_tdma_ring_active() extracted the per-ring enable bit
-from ring_cfg_reg using the GENET_DMA_CTRL register's EN field
-definition (1 bit wide, at bit 0) instead of GENET_DMA_RING_CFG's
-own EN field (17 bits wide, one bit per ring). Since a 1-bit
-extraction at bit 0 only ever reflects ring 0's enable bit, every
-other ring (1-15, and the default ring 16) was silently treated as
-inactive regardless of whether the driver had actually enabled it.
-TX traffic hashed onto those queues was dropped with no error,
-eventually tripping the guest's qdisc watchdog ("NETDEV WATCHDOG:
-transmit queue N timed out") and causing intermittent DHCP failure /
-link-local address fallback.
+From: Sergey Kambalin <serg.oker@gmail.com>
 
-bcm2838_genet_rdma_ring_active(), the RX equivalent, already used
-the correct field, confirming this was a copy-paste error isolated
-to the TX path.
+Add the PHY "shadow" register structs (BCM54213PE PHY-specific
+clock control, RGMII mode, LED, and expansion-block registers
+accessed via the AUX_CTL/EXP_SHD indirection scheme) used by the
+MDIO emulation added in a later patch.
 
-Confirmed fixed across repeated boots: real DHCP lease every time,
-0% ping loss, no more checksum or watchdog messages in dmesg.
+Part of Sergey Kambalin's original Raspberry Pi 4B PCIe/GENET
+networking series (patchwork series 829638, posted to qemu-devel in
+2024, never merged). Carried forward and completed by Marcelo Manzo.
 
+Signed-off-by: Sergey Kambalin <sergey.kambalin@auriga.com>
 Signed-off-by: Marcelo Manzo <marcelomanzo@gmail.com>
 ---
- hw/net/bcm2838_genet.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ include/hw/net/bcm2838_genet.h | 37 ++++++++++++++++++++++++++++++++++
+ 1 file changed, 37 insertions(+)
 
-diff --git a/hw/net/bcm2838_genet.c b/hw/net/bcm2838_genet.c
-index ccf3c2fef0..bb967ad845 100644
---- a/hw/net/bcm2838_genet.c
-+++ b/hw/net/bcm2838_genet.c
-@@ -517,7 +517,7 @@ static bool bcm2838_genet_tdma_ring_active(BCM2838GenetState *s,
-     uint32_t ring_mask = 1 << ring_index;
-     bool dma_en = FIELD_EX32(ctrl_reg, GENET_DMA_CTRL, EN) != 0;
-     bool ring_en =
--        (FIELD_EX32(ring_cfg_reg, GENET_DMA_CTRL, EN) & ring_mask) != 0;
-+        (FIELD_EX32(ring_cfg_reg, GENET_DMA_RING_CFG, EN) & ring_mask) != 0;
-     bool ring_buf_en =
-         (FIELD_EX32(ctrl_reg, GENET_DMA_CTRL, RING_BUF_EN) & ring_mask) != 0;
-     bool active = dma_en && ring_en && ring_buf_en;
+diff --git a/include/hw/net/bcm2838_genet.h b/include/hw/net/bcm2838_genet.h
+index fedfbde066..12439b580d 100644
+--- a/include/hw/net/bcm2838_genet.h
++++ b/include/hw/net/bcm2838_genet.h
+@@ -25,6 +25,12 @@ OBJECT_DECLARE_SIMPLE_TYPE(BCM2838GenetState, BCM2838_GENET)
+ #define BCM2838_GENET_HFB_FILTER_CNT      48
+ #define BCM2838_GENET_HFB_FILTER_SIZE     128
+ 
++#define BCM2838_GENET_PHY_AUX_CTL_MISC  0x7
++#define BCM2838_GENET_PHY_AUX_CTL_REGS_SIZE 8
++
++#define BCM2838_GENET_PHY_EXP_SHD_BLOCKS_CNT 256
++#define BCM2838_GENET_PHY_EXP_SHD_REGS_CNT   256
++
+ typedef struct {
+     uint32_t rev_ctrl;
+     uint32_t port_ctrl;
+@@ -273,6 +279,34 @@ typedef struct {
+     uint16_t rdb_data;
+ } BCM2838GenetPhyRegs;
+ 
++typedef struct {
++    uint16_t reserved_0_2[3];
++    uint16_t clk_ctl;
++    uint16_t scr2;
++    uint16_t scr3;
++    uint16_t reserved_6_9[4];
++    uint16_t apd;
++    uint16_t rgmii_mode;
++    uint16_t reserved_12;
++    uint16_t leds1;
++    uint16_t reserved_14_18[5];
++    uint16_t _100fx_ctrl;
++    uint16_t ssd;
++    uint16_t reserved_21_30[10];
++    uint16_t mode;
++} BCM2838GenetPhyShdRegs;
++
++typedef struct {
++    uint16_t auxctl;
++    uint16_t reserved_1_6[BCM2838_GENET_PHY_AUX_CTL_REGS_SIZE - 2];
++    uint16_t misc;
++} BCM2838GenetPhyAuxShdRegs;
++
++typedef struct {
++    uint16_t regs[BCM2838_GENET_PHY_EXP_SHD_BLOCKS_CNT]
++                 [BCM2838_GENET_PHY_EXP_SHD_REGS_CNT];
++} BCM2838GenetPhyExpShdRegs;
++
+ struct BCM2838GenetState {
+     /*< private >*/
+     SysBusDevice parent_obj;
+@@ -284,6 +318,9 @@ struct BCM2838GenetState {
+ 
+     BCM2838GenetRegs regs;
+     BCM2838GenetPhyRegs phy_regs;
++    BCM2838GenetPhyShdRegs phy_shd_regs;
++    BCM2838GenetPhyAuxShdRegs phy_aux_ctl_shd_regs;
++    BCM2838GenetPhyExpShdRegs phy_exp_shd_regs;
+ 
+     qemu_irq irq_default;
+     qemu_irq irq_prio;
 -- 
 2.47.1
 

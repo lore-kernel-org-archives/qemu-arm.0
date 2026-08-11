@@ -4,97 +4,97 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DB461C5CFC1
-	for <qemu-arm@archiver.kernel.org>; Tue, 11 Aug 2026 10:36:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2BAC7C5CFCF
+	for <qemu-arm@archiver.kernel.org>; Tue, 11 Aug 2026 10:41:07 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wtjqX-0003bv-Rp; Tue, 11 Aug 2026 06:36:37 -0400
+	id 1wtjuZ-0004nm-ML; Tue, 11 Aug 2026 06:40:47 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1wtjqV-0003Wq-GR
- for qemu-arm@nongnu.org; Tue, 11 Aug 2026 06:36:35 -0400
-Received: from mail-yw1-x1131.google.com ([2607:f8b0:4864:20::1131])
+ id 1wtjuY-0004nM-EU
+ for qemu-arm@nongnu.org; Tue, 11 Aug 2026 06:40:46 -0400
+Received: from mail-yw1-x1134.google.com ([2607:f8b0:4864:20::1134])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1wtjqU-0006Yk-0J
- for qemu-arm@nongnu.org; Tue, 11 Aug 2026 06:36:35 -0400
-Received: by mail-yw1-x1131.google.com with SMTP id
- 00721157ae682-81f36179dd5so38058197b3.2
- for <qemu-arm@nongnu.org>; Tue, 11 Aug 2026 03:36:33 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1786444593; cv=none;
+ id 1wtjuW-0007Ob-BF
+ for qemu-arm@nongnu.org; Tue, 11 Aug 2026 06:40:46 -0400
+Received: by mail-yw1-x1134.google.com with SMTP id
+ 00721157ae682-8228ed0081fso40115217b3.2
+ for <qemu-arm@nongnu.org>; Tue, 11 Aug 2026 03:40:43 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1786444843; cv=none;
  d=google.com; s=arc-20260327;
- b=fiLjLgfqSMc9cf5VVsq5GpRL8YbxTCYmF1lPNUak7ZF2gpy7Gnz/gLKakU7j5XhggM
- /VNyaaHOmnCr5TpRe+JqDzMxh4x6QfOXo8IkGnw7ry4hOP/+Hw4GI5EWvT51SeTZ8CDf
- Y7ciUgNz7XFIW3DWjG63PlvjJ3cvn5XOudq/GjW5RqwS1jSozdXF54U43akwP0ndjqo5
- 5gF0YaKh7R1fxH1gkmfTwV4Noumx0Jktd/OHDWtnJBjxp4+vLfVM8GPm1uwUt/rwyhZE
- eeVX4kBqmZ+3grwXh/Mr5P0Z97orD2IiRwayWthZAZcXHi0tqRh9DYfskuj4r7xC0xdB
- u/9A==
+ b=VzFItk4iWTG//Kbwh1+lnmJ2y+oH8dnzFmgaqd2JeKWT0X1DPw3a7bVLEO0RXgBsKT
+ 1Ly2NmS2ZAFkf1tDJCzxQ1bX7fqMrl2MBHkPU4+Ea54v4/2fbWY5LJS8Qxkm/3FGgXHB
+ NEtPM6RtjzFqhwvFPCYLPbhdqSZCS8qHcRqG/94dVmsYZIeeg29QBj3pQsbVrh5umRsi
+ YQU4NrBDVvjswPmFa+3T73LJQuAwyDGpNlaehD6RMs9LHa51MAsyB50jPobsGHm+0fnP
+ F/+Y+u7RZm4mLUoCH0JLaqCFdPCPZli936/FSwgEWRBAeC78y29khQToURq0kr63Mzdw
+ twfQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
  s=arc-20260327; 
  h=cc:to:subject:message-id:date:from:in-reply-to:references
  :mime-version:dkim-signature;
- bh=Gm0XULbSxQTlWawHD7XwU7KoRE003Cuaudv2NO9XgsI=;
- fh=GhyKVBZnPeyDD6oK8T/h5p1y+zgAC3jdmH4ypwY5PM4=;
- b=MVlTa9V0e9vTUa6F5C3/haTPlxptlKrRAtNEf72dRmsGBZVGr5ctvnyDRtKx/HFLcV
- iLyiOZGyferTt+4wK9qTghk+xWbZ48Vjr5PgKUKcD60a1UH48lqUzd3N72Xjb2yWC+sJ
- S3rw7aWqv1IcfemegS6it8BsjWn52vSNnSx+y3F92U8QPklqe9YoSUBXI/hl/1VWU/v7
- +Y99MDiQI0dwyV8JYv9knxAOxfNfcBk7ktYVMCSxIdG7vV+ButX0hPGTTN4+v3ymS4f8
- mdHRNton/OBgyGaTCWQVzWMt4k/r+NtvjEQ+dXFK2Vaoa/VQK1k9vTKX/NQtFkkzeMJS
- FTvg==; darn=nongnu.org
+ bh=8VCQ1mJhXUi8Do29pZP6KhrLWhAThZO+A7xqOWH2u8w=;
+ fh=50ckP+blB+xVfBrmD3Qrcl1u9X5VJw4h9+BcDT9E2U0=;
+ b=mOy8Qp1U29giew7kCCbiHkXxhnyc7Ktmncf7NkcfEpvOAsjSf8VmZG9WvjaGy1ji4P
+ aXrxkEIkdEZaO+nOxuNpJuCYHaVbtxqQK1CakzyEhnr0fhilqM967WuWAupJ6eWTisZS
+ ASdG26GFR5XKTCzFCFeEOKRMcIRBbHKX7hSb1ZWrgeS4NTLJMdlFVOTwNn3TAJBvk63h
+ t6+P6F844rxY4RObtp1UfBLK2bS5V31WyAiVcK1hgGI+Vz3Nx76a8AfC1UC7DPZbmMph
+ LlvkNLPGPqVWfPz2k3tYSri0GFi6Q64qYxNMacqA4bBxkkevaYwmjSVt+nPM+6iJlbJv
+ UXvQ==; darn=nongnu.org
 ARC-Authentication-Results: i=1; mx.google.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1786444593; x=1787049393; darn=nongnu.org;
+ d=linaro.org; s=google; t=1786444843; x=1787049643; darn=nongnu.org;
  h=content-type:cc:to:subject:message-id:date:from:in-reply-to
  :references:mime-version:from:to:cc:subject:date:message-id:reply-to
- :content-type; bh=Gm0XULbSxQTlWawHD7XwU7KoRE003Cuaudv2NO9XgsI=;
- b=byN+K+nr0hdJVroGxpJYPgWGFxS965FGUtkt+czWmgIWvEUHjQYTGTN7Wg3lN8ICJ/
- jzi3uY8QEq2crHR2RwiYCh+FFzduaw7J3qDrf2PjzvCVlV49hHfuTVjz+v/SPi5v5cpk
- v9q8ofJCV2CwSjjIthTdv1jQp/pIyU/q2AyTQQjnbdO1aKajnhDM97P0sm/Tk5vkehQP
- hvpGaEvbsNzTqFf5eo+u4WLtVGm3MqE4T+djp0UZJVZDUktlpNeeivrQbW0nFlgr1HBJ
- GJivMhHLgauinHJoqmRGTra5cq+0yB5b0jZeisvcYQF2Ld+0kmbzPcge7cjGg4aiHGdM
- wjpQ==
+ :content-type; bh=8VCQ1mJhXUi8Do29pZP6KhrLWhAThZO+A7xqOWH2u8w=;
+ b=ScYr8gXEiRsGxXU64r54s2GbWpYhfYBBPvdcOPYKr13wkCIEG7WJSX7QGD0iqS8jh4
+ rNKgfcZPZLGVeeYNA3JL9FuFzuruBSOFFitHz0pwaPnYbFDEpUwTr1gdML4L5tgzdmH0
+ TJWtpDx7lfPCLZKw4QP4+EkuO5uCRQDqwrQhhDwIyT3vo8PmuOCPAbMLlBrJEW4XDmIU
+ +gwLzKqZTiyWgFvnpcNearEkn+AGrJaf30JUycZSU1fefADl4Vwd6ek2tFW+fmmNvdUh
+ j2TGbuzsJNWePwWKjzhynA20g1cfHPU8n/1L3ycPMMZ5xt296yFCc+BWZF6bjUDt+60M
+ 7ULw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1786444593; x=1787049393;
+ d=1e100.net; s=20251104; t=1786444843; x=1787049643;
  h=content-type:cc:to:subject:message-id:date:from:in-reply-to
  :references:mime-version:x-gm-gg:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to:content-type;
- bh=Gm0XULbSxQTlWawHD7XwU7KoRE003Cuaudv2NO9XgsI=;
- b=oe76L3gpJajhAHwVLxjPZjAj/lzfpdWhTa9c7DPAAk9pxaBflIeTNwT3tD0ryrkDFB
- 3i5P8nB/E7F1duA1ODxCUdjXrvevSgZ84GxL7TEj81SDtQAhV18N6VBJKKu5wYLoT8/C
- qITC6wk9MSCNWrPxln9uDqPP810TMWU5jw/uMZoyEz/PqxbqpNya8/4XpdRJb0afqs8b
- LpQ9CuXRO/Yvf1CHBhAGhVCmNYWwiQg349CKii/Fa2+o9GcFEqsMs0s+Vl26OPLbb5PA
- 3yLnqKQuz6snKDY9PmeWzY30Mb7QnzenvlowlZV0YEsersSyKNxtsXWExYx+YiA7yvZo
- GUIw==
+ bh=8VCQ1mJhXUi8Do29pZP6KhrLWhAThZO+A7xqOWH2u8w=;
+ b=pe77X6v8MHqs99wH2B4RDdAAulI1JMluVfESZl3HfNO7udhpBpj5s/WyxNUtbxRSUC
+ rCLcNMf8FsoxCEyE5N+8BGYHz3sMmQxPxSKidAYHY/Tq0RQd7j5Fl2HLDiu79YGSC+FP
+ DOMPd79m2fJxZhNFI4dfqYYWH5UMgdv/2YEpQfiGluTSYrvqrL4NDXytaPMbbNlY/GqD
+ uV4+LFHF00UDPZU9JVkfNnXEUIFpcpjHwPo+saiiyx8gZ7VMc9HBgSSe9RM5YVz/e3oV
+ s4dtNNai/pnM1pt7cIvICTiFo6oJgbeGAAh4EaU4E/uLl0CQqRPKvsXqJ0beofs7uzyj
+ 03fQ==
 X-Forwarded-Encrypted: i=1;
- AHgh+RrC38Vyp8E0sABfEdHxgNf/x0XYLSpw0ALYfDaaT3SzHpJ9o56rbd2KKNccs5PR5D4+Lqt6v70sgQ==@nongnu.org
-X-Gm-Message-State: AOJu0YwXJ5OHuEEqxa8TPRUScdOQFpHe2L67s00p8QdeTaQ87ylysMpv
- f/Pz3/PlhPKi7D0Atn3x5gDdezbHtXnHp52L31nuSrWAazgvYnnyzQ0n4R+kT5mIjdJzcrS8Poy
- 7tXOc4+mL1lO3P0epVdnQE/md8sBnlUmxYSeuxFdPRQ==
-X-Gm-Gg: AR+sD11fEOx3s1FmdJGGecE51/WgslWlc/yh5lPiY2U7H83ctRnhlAqDnJPGoNG0/wg
- nBwPITLSf9/LQbkuZimjhhaAeB51hTW7tZZgix4XYBAcT1NfiVz2ft0WL409ksKG6pcQK92PiYy
- 7gAscs21eMVGETVhwxxvvsRdcH+RUmUgvNhGZbX4jA/+qXOP4g3Fg6NXiATvUw1KuxyfXIUThJ4
- 2AcCHGarZKh8PyPZYghvi9VcSRDotkU1yt0hHcm8A/U4Pup8vsj3OzHUid5hwOkt+StgpvyWCoi
- iGdRfJdNbLUMdAdxId1b2P8RB+wIqwMJghZsph2lOFbU1kP/gZfaYodurStUNcM15yuN4as8+dK
- ypP3EAJKjqM1JXPyqzth2JsbernWD
-X-Received: by 2002:a05:690c:3692:b0:814:585f:73c8 with SMTP id
- 00721157ae682-82f20de3471mr16100137b3.0.1786444592678; Tue, 11 Aug 2026
- 03:36:32 -0700 (PDT)
+ AHgh+Ro3tUo5dBwkzfC4osclS2jzVe5YJpL+RV8O6x54TMIehg/zFa+at2oEGd4d29xnR0kroEpuHI3VnQ==@nongnu.org
+X-Gm-Message-State: AOJu0YzwrZIYkVJVDVwlIk4aWJW7bd3AMNw05aCxbJt+oFZeoP/yuhwM
+ mdVis47kwfkbfVeNgh7Hknftj2PD4k7swJlKpWKASKvBTI2ofPZrs5mbvH9hib/XslFLV23AuHf
+ CxtwqyuHJoMFZRprNpGHqx3a6c4oK43OKn/1GUFjUPw==
+X-Gm-Gg: AR+sD13ZbWT8MorP44doLLSu2cgcoPqGK5ow6Lh4uSNt51CSRt31k42SvFno+ikfywy
+ 9w4o+v72V9f7fjpDqTmeJPezEbNTAdj+0BATGDomi75QjPSpQm93UeThMT0lRy5VrnLDsKIVodp
+ 41KKhft16OipbDJZM6xI/AgtlKYWG1I24hqrOhS+i3nd3jT/hktTnbzXQ/YIXyG/lH7Sh7HJGKg
+ fwT8MEtOjzJH/csAVl1aeZxJ9r72krLbY/iMvDqPTkl0ZJ8qT6/qg4BqZ7MDLlilEQ6EN+/B7fi
+ W1TEPeTLa9YZUYmBAuP+l3RCGILUx0NAB3gMDOUZ77CgwuyX47p9ewOBGsjZ/eR+SSTaSCksVTR
+ Z6XJucB/HLqEiReWd8v6sFoKqTECL
+X-Received: by 2002:a05:690c:6a01:b0:81e:f1af:f78f with SMTP id
+ 00721157ae682-82f2f6e095bmr14613077b3.26.1786444842941; Tue, 11 Aug 2026
+ 03:40:42 -0700 (PDT)
 MIME-Version: 1.0
-References: <20260804144611.31735-1-huang.botsz@gmail.com>
-In-Reply-To: <20260804144611.31735-1-huang.botsz@gmail.com>
+References: <20260725124231.86233-1-marcelomanzo@gmail.com>
+In-Reply-To: <20260725124231.86233-1-marcelomanzo@gmail.com>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 11 Aug 2026 11:36:21 +0100
-X-Gm-Features: AUfX_mwsoVjRpZBKE9oGqAf9A2BOIEBhCFVSjW3BDXJOKIdmJfEtFjQzUiPv9_c
-Message-ID: <CAFEAcA_Kmqp60+Edu1kKCH8=GbK6RH4ebgTaUjBPB_L=QZtPFg@mail.gmail.com>
-Subject: Re: [PATCH] hw/i2c/bcm2835_i2c: Correct iomem size
-To: botszhuang <huang.botsz@gmail.com>
-Cc: qemu-devel@nongnu.org, philmd@mailo.com, qemu-arm@nongnu.org, 
- sef1548@gmail.com
+Date: Tue, 11 Aug 2026 11:40:29 +0100
+X-Gm-Features: AUfX_mwkQh2Olo5-46IMzTu63kn63zCwuEM-kwmFCLB2qWF3swwsTk3PbeUhOdM
+Message-ID: <CAFEAcA_Jw=CKKpXMfmEby160SKvCg7p026RdLdQcpQ2gA59-ZQ@mail.gmail.com>
+Subject: Re: [PATCH 0/2] hw/arm/bcm2838_pcie: make PCI device enumeration work
+To: Marcelo Manzo <marcelomanzo@gmail.com>
+Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, 
+ =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@mailo.com>
 Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::1131;
- envelope-from=peter.maydell@linaro.org; helo=mail-yw1-x1131.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::1134;
+ envelope-from=peter.maydell@linaro.org; helo=mail-yw1-x1134.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -117,21 +117,23 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Tue, 4 Aug 2026 at 15:46, botszhuang <huang.botsz@gmail.com> wrote:
+On Sat, 25 Jul 2026 at 13:42, Marcelo Manzo <marcelomanzo@gmail.com> wrote:
 >
-> The last valid register is the Clock Stretch Timeout (CLKT) at
-> offset 0x1c. Since it is a 32-bit register, the total memory
-> region size should be 0x1c + 4 = 0x20.
->
-> Update the size parameter in memory_region_init_io() from 0x24
-> to 0x20 to accurately reflect the hardware specification.
->
-> Signed-off-by: botszhuang <huang.botsz@gmail.com>
+> Follow-up to "hw/arm/raspi4b: working PCIe and GENET (real
+> networking)" [1]. That series got the PCIe Root Complex link up and
+> GENET (a plain sysbus device, not PCI) working, but nothing in it
+> actually required a guest to enumerate a device *on* the PCIe bus --
+> so a real gap went unnoticed until now: attach anything to
+> raspi4b's PCIe port and "lspci"/"/sys/bus/pci/devices/" come back
+> completely empty, even though the link itself is up.
 
+> Marcelo Manzo (2):
+>   hw/arm/bcm2838_pcie: make PCI device enumeration actually work
 
+Since bcm2838_pcie isn't in upstream yet, I think we should fold
+this fix into that patchset, rather than introducing it in a
+broken state that we then fix with a later patchset.
 
-Applied to target-arm.next ready for when we reopen development
-for 11.2; thanks.
-
+thanks
 -- PMM
 

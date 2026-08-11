@@ -4,97 +4,97 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D30B1C5AC67
-	for <qemu-arm@archiver.kernel.org>; Tue, 11 Aug 2026 10:20:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 42D5CC5AC67
+	for <qemu-arm@archiver.kernel.org>; Tue, 11 Aug 2026 10:22:08 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wtjaq-0005o6-PW; Tue, 11 Aug 2026 06:20:24 -0400
+	id 1wtjbu-0006LQ-Kq; Tue, 11 Aug 2026 06:21:30 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1wtjap-0005np-AV
- for qemu-arm@nongnu.org; Tue, 11 Aug 2026 06:20:23 -0400
-Received: from mail-yw1-x112b.google.com ([2607:f8b0:4864:20::112b])
+ id 1wtjbr-0006Kc-8B
+ for qemu-arm@nongnu.org; Tue, 11 Aug 2026 06:21:27 -0400
+Received: from mail-yw1-x112a.google.com ([2607:f8b0:4864:20::112a])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1wtjan-0004Gi-Kh
- for qemu-arm@nongnu.org; Tue, 11 Aug 2026 06:20:23 -0400
-Received: by mail-yw1-x112b.google.com with SMTP id
- 00721157ae682-8228ed0081fso39894447b3.2
- for <qemu-arm@nongnu.org>; Tue, 11 Aug 2026 03:20:20 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1786443620; cv=none;
+ id 1wtjbp-0004MX-NG
+ for qemu-arm@nongnu.org; Tue, 11 Aug 2026 06:21:26 -0400
+Received: by mail-yw1-x112a.google.com with SMTP id
+ 00721157ae682-81ed2a00f12so40040607b3.2
+ for <qemu-arm@nongnu.org>; Tue, 11 Aug 2026 03:21:25 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1786443684; cv=none;
  d=google.com; s=arc-20260327;
- b=aGdMeQARzxzPekWfkiTu3fpWjcy46KQ0YPTUp0FUCEisDbCJE7IpOAtVMya9AMI1FB
- CWOEd2M51FHroZXSGi4Q5O1KnkT1l8HfU4vFUdtnfz2d8a1WeJdLLZEXtCD0A0dM1Cvk
- XfEKgQdYKWnPE5XciEd8/hvuKfHMp8tUsUvCcAYqIcE8GNfP0SkH6EA3639339b2J+FK
- GwG+UjTHYwp5/3WXv25nC0lauIBfnYL5RspWybnPV+4qmaa67BJddmqTx75B15yLwU2B
- QcyL3Sy6aw33UfYT3nXf9rvGgLI49qZV/dA1klPmIJM2Z7YbilZgxApJq2LOW+Mjj0Cy
- DWIQ==
+ b=LDPrsW5fU3b4eGOKNb8x6o7HBNJlpJnDf1K4QIJ/Lmi4907K6naseioM8od1CP/9V3
+ 2EdMExKdM50bwvxZqCSxpCYFt84zBYRV6ukdwU2j40lo3Ht5AmPE5JExaigt+LJUyYe6
+ sObrHfjGYrvU27bXi8/l72vjNpRC4kFlQbG5a2Dqr4ZTOPusZ22fvReTOdHUtRu1chK7
+ D+edjiua5X42psaVPRHK2/kJkyAS0pNI3MiQ2DIvQIi+8k8erAlzbs7dMAn9+XNn3aFA
+ ILTmIPxwHjHlaAGDpbbBvuaxuPlXXU3jOLNn0twOmCOCA5WP/02HdLjrxGW4YSndshxV
+ SLng==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
  s=arc-20260327; 
  h=cc:to:subject:message-id:date:from:in-reply-to:references
  :mime-version:dkim-signature;
- bh=PuonKHifZBM2j0CvU/PMoKGu2t0baagafZqtaczQrOM=;
- fh=LbRWrFbnicJZ39yGCwQzR8f6pwqnxZgbaW9vYhKYqt8=;
- b=Z1J7cADsZ1hiyMzoLjVoGKfqi6fOMvViuM94hMdc2hmwdDblmcYxOrkBNQmYYJBMZr
- HgUA+ggqrTOQQg9Sjlor7ydfytkIP6p6TdIZK1evnFAXLap/xHMvF2gvj93O80ryjG/7
- hR1GjH46F+dVqC2NGOB0dTc/4HAv7W7Z4EYwRGEma3JhKSVOlDy3frqcMVBCqIYJ3YB1
- BCuM0iN4CuTHSlvAifvcDsD3iDUEpE/CmZYN3hgIha3S+AgXqrd2F6bAzwWZsVdupMNh
- 4w78iZwQ1VHiSnFvNOpXr5eE+2NNvHW+wiU+apypV38a3kWghh42UnyXsXdahFJoRz7a
- bPTA==; darn=nongnu.org
+ bh=y6AZvIOMeqq+xm9kNHugzkoGRJ3Z04fLImudWqE4IYE=;
+ fh=Ot2rjYwxryxrndT5oZAVNN2ZCm841lwzr+rihIhy1SU=;
+ b=l/XcxNBzlRZR6C3rfCsEJWGyFRYfeXWOrDlYCIbbb3f/4Gt1Tbog3DQn3o+7n/fGf5
+ OtmArDcg7EI3UyNtv2oh3VbwOMOljYxjfwURb2uN4etRYIBx0fnEirl5aPgp4z5VuzYl
+ AzrlLJaaZRNLSLIErdUWvCXSLv6sWNA4wdBV7QZJxnT/pF3Wu7f0RmTPQV9cEsT2nKl/
+ NAMtl6H6IctcxUQrGJXHWx/1x0+d/+TLfVI17E5I35gLyMJ7KHIlps6CDnnAjVnnqM52
+ qF5wYAusNCtSUC0ll4jkIGhs4+v5ylx81oR+HMH0IaypFlx0uI/uy9SIEymm4TwUKVw+
+ xpBg==; darn=nongnu.org
 ARC-Authentication-Results: i=1; mx.google.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1786443620; x=1787048420; darn=nongnu.org;
+ d=linaro.org; s=google; t=1786443684; x=1787048484; darn=nongnu.org;
  h=content-type:cc:to:subject:message-id:date:from:in-reply-to
  :references:mime-version:from:to:cc:subject:date:message-id:reply-to
- :content-type; bh=PuonKHifZBM2j0CvU/PMoKGu2t0baagafZqtaczQrOM=;
- b=xywRZgX7C4sRLnriSvBc+xKCvrnfRrqFQ8hSVHOUu3lbIL1T0KNzuTt6Why+bNZfL2
- WmeW2996m1SPy/Re1Lbeicy+Da4j5K4D59Bch/VPEMdZ4G5NT6ExzPoaxPuCshddB0L1
- 3ce+TsGRq/IwcSO7YRaIayShmhyySqeWt74ATHheTHgRNu5tp5HCo2qvxCzSe8ustflA
- CF2SIE8ECqznouoe1hvP+zhMtDSk4tsz6CM0SX7Y2/HzDYVrq3djoxSG3nS00Pqv6ihh
- 69yvRL14zbUKqdjRgq6hin18mAs8fQqSP+MGiW0yxzkvoJw4UXbe6YGHx/sdVaZHqxus
- gIOg==
+ :content-type; bh=y6AZvIOMeqq+xm9kNHugzkoGRJ3Z04fLImudWqE4IYE=;
+ b=VZacTRzuo41sPeXEr/p3cIxcI98cbnj2rM+I6KU+6jVcSp1NyN4EwBWyDkCRaO2XQj
+ xXrnk7ZPjZKHgiJ/CguWFCjoEd2/th2ulaFT8t308IHDCOB6MQhijXJqTDMVoBtpRTha
+ SqpBPEGUh+3HARax/wO/hW1VSiFPlpRuRHXKO8zOJkFUTlFUggK22O9+4rxcUvk0o8hY
+ uJ5FyQSOSyGwkuDHuMIkONJeaZYwsaZZvXyO4U6CExt6J2A+eZ1QoEs0f/TQxnCbW5Dx
+ DckCX0JmJhUj9XcI3BRQBQx+mFOYS5zbXYDi2O4AuYb8aSymjY2WZdRL+7Q799itBPyn
+ X7WA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1786443620; x=1787048420;
+ d=1e100.net; s=20251104; t=1786443684; x=1787048484;
  h=content-type:cc:to:subject:message-id:date:from:in-reply-to
  :references:mime-version:x-gm-gg:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to:content-type;
- bh=PuonKHifZBM2j0CvU/PMoKGu2t0baagafZqtaczQrOM=;
- b=BqET7myjfvWXkKQKk/Pbs8RWaaWOsUpzcTLeMlK1sroTcaQJle6kqpuK0KOYHnv6/g
- +4Bynw5OtbG+BTSU4hooPG7wJqyQMo17ng1VYOIpLqsJZbyMgpwtenXp1rzVaqduZFEY
- gU15iDcc+yqZ52FPQsZ/7jZrlWx3Muc8mCncA++WHKXTFz8StPFPsnowKanchJY4wVRi
- G11oaD0xbR6e/YHp5czbr4hMbFJuXihGEesY8gZbSHWBDrYmOXb2XtfEBnC7Zg4DFME7
- y32Ub5Fr3iCE78fRnenD6Wzi2zX+b2mLPlpY3c9DWvwPfDJM6KaRxP2OyT6VOKNNeQld
- IPVg==
+ bh=y6AZvIOMeqq+xm9kNHugzkoGRJ3Z04fLImudWqE4IYE=;
+ b=L8qlrW+6CAk4wSgmz3j/RXQ1/CFCr81I330VEL23nfpMqbO2pyJaPqzlrq2VjhiMlh
+ IHfaWEaCvhxoy2VzLshkL+4+5MpYrbT2mol4qwGwesxJjLaEwj0Em2nV4bJjbhRSlGpp
+ AcVhLZ37AUQuKwgH7HpgfvL7pGX3aWtGoE8ZLBUoPeVT4oMap9OP3HM+X5d5groWFWw2
+ e7U3DGHs+okGa3m65infn3IB2N0NYX04O8qPM69uu0Hdp75WrbKp5/0sFWAfvVLsjiZW
+ k25Mif6tV3wV3ZDJecWLA4KL/aAUGJC4J1iOrKiLxCuyC+8HqSqi7+XAGCJPpnBujFXQ
+ eoyg==
 X-Forwarded-Encrypted: i=1;
- AHgh+RpGeQnT8vFANscxsvJa2SQ/7j2QwDQnh+mKevOPpcFl86aNyj0mEUhXNr91QmPhlC/drbEcESLpGw==@nongnu.org
-X-Gm-Message-State: AOJu0YzcFh01pLVO0bW4f2Cs4DoaiFT8zUwTaxFWkJ7oVwMaTx9ZB4VO
- KLlbTwvhkiSzcj38pInC/WYV1Vt3aycjWayx0vlPMDGOW2LK9yfn4j9GdXZBfxrGZZbyMWdRyGU
- Lyk1pMryr9BdBFeGHYD0NHMukTG6H24BlZnmT18jqIQ==
-X-Gm-Gg: AR+sD11hQoOqrD4FCf0BwB6HoQNzYpyA3jh+aOYWaSUWalhq0ba39Toae64AxTfTPEm
- VybJB/dh1cCzVrXVtFDuI28kKNz3yjM5pzqkQmoA/3cVBrpYK7w60z4jfOC1tHuOz8NNrD7ZflE
- tOR9k6yb8V+Og0r+d5H4yCFwj5AkTlccOvmLSqvXGhPKbnTd61du52I4f1C/wIorShhfu03JS8w
- AdhUI4a+BzZR2eBI1OpQ8z5Pl56QGE0MifEgkPwDUrLZwvk2V70ENUtrddsrqZvIss0UqIlW4+W
- AjMV+TNyS91G4+YJU14TXj2Mhr1a56ZxRSoUBwPd7OQ/RJXkISQDNSq3A0Ocn+YZIynAvQG+2si
- 8jOPny4XaUd8Tq3lLaaULGuX8zOUI
-X-Received: by 2002:a05:690c:601:b0:81f:653d:4992 with SMTP id
- 00721157ae682-82f2b9a060bmr16289517b3.13.1786443620018; Tue, 11 Aug 2026
- 03:20:20 -0700 (PDT)
+ AHgh+Rqps2jBUq6Rxz1LG2SDNS7Kk8YuoKJKk5TbhISq05P2b9RPELiZsm42a/ucpMUGPta+EsqJgOrvdw==@nongnu.org
+X-Gm-Message-State: AOJu0YwDCQQZn1bOxOWSacLwq/hYlh5i7msDOtih1qFAn47yFFdbTPkd
+ Z4R/uStajJVJR+vVAE2lLbFJ9h+lj939d3dhUA/riBiDn1oJ+6Vw+cS3Ju29J+X+IKy/w8fVM/0
+ Ve0gxBum3WFksv70+3jK9g3iOiOytfIhhWJ/8UQWD7Q==
+X-Gm-Gg: AR+sD12kQzOXnkCwG6drOJteEzAm8V1NIFFkZLruS6tb4Skwd626MMoC1WFYh3okj+S
+ zRw9fRDOdlgGXhnl1cMxlmhrsQeIrnRqM4SrFVmcaggKoxVrMeeI6hBEJg9FUIW2cQow2eY78+J
+ PJvnX+gi4kBsNF+jJ9+++bgz6RdW3eYHEtMu2pAngSj+56p5M/uelw0CrAEM976A5fKDo0k85PG
+ 5t6EmHNTOSlHS3y38HxZ//OPoRnAUQaGS4YsNp5MjnJ3Yr78XtdUlEFO86/knt4VRWpaOOeezN/
+ txM48vv6Vykxo8ZQAF10A1S/LMJgPv2Nyz0MXHDpVhBN6U+6H2kq/HmIX1U7GCKP4ovMfYcERR8
+ OzwQe4mmzgpaX/kmT0VbQmXnQn0HsFw1fqf8KSis=
+X-Received: by 2002:a05:690c:19:b0:809:fd83:a88b with SMTP id
+ 00721157ae682-82f28ebd239mr14612227b3.3.1786443684399; Tue, 11 Aug 2026
+ 03:21:24 -0700 (PDT)
 MIME-Version: 1.0
 References: <20260805191257.11303-1-simonxhy0404@gmail.com>
- <20260805191257.11303-5-simonxhy0404@gmail.com>
-In-Reply-To: <20260805191257.11303-5-simonxhy0404@gmail.com>
+ <20260805191257.11303-4-simonxhy0404@gmail.com>
+In-Reply-To: <20260805191257.11303-4-simonxhy0404@gmail.com>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 11 Aug 2026 11:20:08 +0100
-X-Gm-Features: AUfX_mxdX_fy376zf_-zPF-22lKYyRi-_KVZW51c79anogmGuxazCI9BwpN3NRk
-Message-ID: <CAFEAcA8EB0az05AwqZHWavX=XPz_sKKCV+vb2VC8s7H-qLXgjA@mail.gmail.com>
-Subject: Re: [PATCH 4/4] hw/arm/mps2-tz.c: add AN547 AHB PPC EXP1 DMA ports
+Date: Tue, 11 Aug 2026 11:21:12 +0100
+X-Gm-Features: AUfX_mwPDo6LjuL1LyrBvvq4EXbSgoJHfanaE0lE7u8GzdsZJtq8ozUKUIPuTk4
+Message-ID: <CAFEAcA99BcdTawef1p6Q24wqMzSgnh74rU6zEF4y5vft22KPBg@mail.gmail.com>
+Subject: Re: [PATCH 3/4] hw/arm/mps2-tz.c: fix AN547 APB PPC EXP0 MPC ports
 To: Simon Xu <simonxhy0404@gmail.com>
 Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org
 Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::112b;
- envelope-from=peter.maydell@linaro.org; helo=mail-yw1-x112b.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::112a;
+ envelope-from=peter.maydell@linaro.org; helo=mail-yw1-x112a.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -119,34 +119,14 @@ Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
 On Wed, 5 Aug 2026 at 20:13, Simon Xu <simonxhy0404@gmail.com> wrote:
 >
-> Page 42 of the AN547 TRM defines the AHB PPC EXP1 ports with DMA 1-3
+> The AN547 TRM defines them to be on ports [15:13], not [2:0].
 >
 > AN547 TRM: https://developer.arm.com/documentation/dai0547/latest/
 >
+> Fixes: eb09d533d87f ("hw/arm/mps2-tz: Add new mps3-an547 board")
 > Suggested-by: Peter Maydell <peter.maydell@linaro.org>
 > Signed-off-by: Simon Xu <simonxhy0404@gmail.com>
 > ---
->  hw/arm/mps2-tz.c | 8 ++++++++
->  1 file changed, 8 insertions(+)
->
-> diff --git a/hw/arm/mps2-tz.c b/hw/arm/mps2-tz.c
-> index 81e64a91de..d6d178642b 100644
-> --- a/hw/arm/mps2-tz.c
-> +++ b/hw/arm/mps2-tz.c
-> @@ -1113,6 +1113,14 @@ static void mps2tz_common_init(MachineState *machine)
->                  { /* port 7 USER AHB interface 3 */ },
->                  { "eth-usb", make_eth_usb, NULL, 0x41400000, 0x200000, { 49 } },
->              },
-> +        }, {
-> +            .name = "ahb_ppcexp1",
-> +            .ports = {
-> +                { /* port 0 reserved */ },
-> +                { "dma1", make_dma, &mms->dma[1], 0x41201000, 0x1000, { 62, 60, 61 } },
-> +                { "dma2", make_dma, &mms->dma[2], 0x41202000, 0x1000, { 65, 63, 64 } },
-> +                { "dma3", make_dma, &mms->dma[3], 0x41203000, 0x1000, { 68, 66, 67 } },
-> +            },
->          },
->      };
 
 Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 

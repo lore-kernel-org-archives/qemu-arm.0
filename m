@@ -4,92 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C5AD7C5B56A
-	for <qemu-arm@archiver.kernel.org>; Tue, 11 Aug 2026 16:29:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7030BC5B572
+	for <qemu-arm@archiver.kernel.org>; Tue, 11 Aug 2026 16:30:10 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wtpLs-0007DD-Pp; Tue, 11 Aug 2026 12:29:20 -0400
+	id 1wtpMW-0007MV-TW; Tue, 11 Aug 2026 12:30:02 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1wtpLs-0007Cw-5n
- for qemu-arm@nongnu.org; Tue, 11 Aug 2026 12:29:20 -0400
-Received: from mail-pf1-x434.google.com ([2607:f8b0:4864:20::434])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1wtpLq-00005K-KM
- for qemu-arm@nongnu.org; Tue, 11 Aug 2026 12:29:19 -0400
-Received: by mail-pf1-x434.google.com with SMTP id
- d2e1a72fcca58-84e84a6c4bfso61082b3a.1
- for <qemu-arm@nongnu.org>; Tue, 11 Aug 2026 09:29:18 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1786465757; x=1787070557; darn=nongnu.org;
- h=content-transfer-encoding:content-type:in-reply-to:content-language
- :from:references:cc:to:subject:user-agent:mime-version:date
- :message-id:from:to:cc:subject:date:message-id:reply-to:content-type;
- bh=gTCUsWVvWRYcmkIhnX8+6fEAgNkMrfM97qaYv54fmOc=;
- b=uEHIKmdyuJvoZG7ww3aGmhc1EGZTzuHcSZXCI0SBvw/urOgzkR3QqIMKEVctbmDpcQ
- O86mcNSetFzo7+KXMuohojq6tgyKtBcXWMRkZzmytUFJ/ZW6q9Kdcq+5LJVHMSoBOrsc
- Xv5s6qgVEqE2geaIqbrYtKiMNW/ouTner4GfK0buM32ad3/2vwGzIHzplO+/hZvAz8Ez
- agNNUaqae0HRf6/vCrZQ24KkKKOulwaoQQmPAy6D8L1kInfgNjPn/l/iz7I4gbPOPxhd
- bYCbJneKPgQ9RhF52eUJ/6B4OKiDzgoZmrFL1XGejc/KSEj9agWd1EyLOmCjVwo7mdWH
- 3BKw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1786465757; x=1787070557;
- h=content-transfer-encoding:content-type:in-reply-to:content-language
- :from:references:cc:to:subject:user-agent:mime-version:date
- :message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
- :message-id:reply-to:content-type;
- bh=gTCUsWVvWRYcmkIhnX8+6fEAgNkMrfM97qaYv54fmOc=;
- b=obLRonP098hQ/4kDwbpqAMnXoRuioU2OkFJgCkPIzRVzRZBrwB4gfmZepgulddP6dH
- F/GY0Kbh0DN3ygWVQgemY5QxNp80YkHdsHCMNPIWOdy/asJ/wz0J2L0HB6NeVXb+FzrP
- t6d23/EjfR0JAALHAcWhSLen2DLjBK2zDU550M//oMjl0tr8BKplnzmUMbsigVK2kdK0
- 1Dz/S2dZsHdhkGQYovfR11pXh3yMOV1I99KvNaA+MbNJwyeEy4fjwSeNm7q2aTicFtjT
- q7dzIkMfMOTxdtqbG+wJIgRMN60SsZnCXY8uxBVD4NniRAaFguEL1AGBSuqrQx8XYVyd
- aUtw==
-X-Forwarded-Encrypted: i=1;
- AHgh+RpwHNf167G9oWqHlJman38/hqKwpBwX+A/S4A7+VogQm/QTULVE8z3L6rTgQSIbVyyRz56k4lUwcQ==@nongnu.org
-X-Gm-Message-State: AOJu0YzAExB7XjmSGQRIrNN9hfdNG+XEHumicgN+Yh4U8xHaLgd/JpLc
- fUAqhqojBQtW2SZ8hnPq1FIc6MSHIf0DAO3hgyJFDSXWwAAjMYVZaigNP7xxn/8oTxI=
-X-Gm-Gg: AR+sD10DmYmC1AtNU8G1kzrvVq+1MFi1CKLzmigee2neB3Pz/9Lw5bsK6E4ZuJxP9IK
- Zx4denD+w7jiq9VnDBmkQ1uXMdBtNASIqGd1VmnvnYtew8i8N7Z7jugatPVaZHouviFFXWSPzQF
- SML2LbGVvVMEhodvgIMSUp+7frgBosWSXS9GxK0zTJo2ECJQMwaoy2fOxbx25yq4dNKXqkBjDII
- jg1CCv2Owd4aYhXw3Rar7BSaJKlpmxPjhlbrbHoP+zci0+YMEjrUczwGw16yWxgxSwx+/95IZ6z
- fvgsMahSn9vMvOh0Ea9cbNOxJ0wPGXE4v5eav9Q07AG2zPmUdV1Z7hY6azxUY4uNyBvAPr6Cx0L
- 4sBu213VwiMFFmUbAusOjRO7WiXk1xd7MMNTQQBMvQOokHYPYqhd1je7dC7hKLVa9IrBz0Uzdr9
- nGuEm4fFl6u2E0zu8yihWf6Inb1Ts1/y2VMOYy8GMe+0TNNMzVXrhBvQfYWbT+VUxX4K0bp5wVT
- xO1B1HURO0zCU8GZ9nJeYo64D7e
-X-Received: by 2002:a05:6a00:130f:b0:84f:3dc2:31c3 with SMTP id
- d2e1a72fcca58-84faff05cfamr1171126b3a.15.1786465756792; 
- Tue, 11 Aug 2026 09:29:16 -0700 (PDT)
-Received: from [192.168.0.4] (174-21-93-59.tukw.qwest.net. [174.21.93.59])
- by smtp.gmail.com with ESMTPSA id
- d2e1a72fcca58-84fb1f252dfsm26706b3a.48.2026.08.11.09.29.16
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 11 Aug 2026 09:29:16 -0700 (PDT)
-Message-ID: <db92e3f8-9f31-40e7-a715-190630cdb88e@linaro.org>
-Date: Tue, 11 Aug 2026 09:29:14 -0700
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1wtpMO-0007Ip-Rx
+ for qemu-arm@nongnu.org; Tue, 11 Aug 2026 12:29:56 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1wtpMM-00008e-By
+ for qemu-arm@nongnu.org; Tue, 11 Aug 2026 12:29:52 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1786465789;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=KNJGSNkdEJpgxsyLOLzM+JuqpupmlqCZ0lP1YU/TPHY=;
+ b=P4f5mlJnjRMBaVmZ0AvxF6+WeUrBZzGQnXNUv8MI8uPgJQVyUMbpBP5S6/jz5b3/y65bMA
+ yJi3kC2AflZHWVUFc2B47I+gW8C6MMk5kxscBI4B+TiSJB8xlV61UtHqOAs7LQkbNxOCxk
+ M3YHJbRV8zzKL+BEtraBKzHnNpb6hDo=
+Received: from mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
+ relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-659-Lr8fNE_xMfap0i_DO-zcxg-1; Tue,
+ 11 Aug 2026 12:29:46 -0400
+X-MC-Unique: Lr8fNE_xMfap0i_DO-zcxg-1
+X-Mimecast-MFC-AGG-ID: Lr8fNE_xMfap0i_DO-zcxg_1786465785
+Received: from mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com
+ (mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.12])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+ (No client certificate requested)
+ by mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 443A918002E8; Tue, 11 Aug 2026 16:29:45 +0000 (UTC)
+Received: from corto.redhat.com (unknown [10.44.48.12])
+ by mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
+ id 6D504195DF91; Tue, 11 Aug 2026 16:29:43 +0000 (UTC)
+From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>
+To: qemu-arm@nongnu.org,
+	qemu-devel@nongnu.org
+Cc: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@oss.qualcomm.com>,
+ qemu-stable@nongnu.org,
+ =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>
+Subject: [PULL 01/83] hw/arm/aspeed: Add missing PCI_EXPRESS -> PCIE_PORT
+ Kconfig dependency
+Date: Tue, 11 Aug 2026 18:28:16 +0200
+Message-ID: <20260811162938.1403216-2-clg@redhat.com>
+In-Reply-To: <20260811162938.1403216-1-clg@redhat.com>
+References: <20260811162938.1403216-1-clg@redhat.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH] target/arm: Fix SVE2 WHILEWR/WHILERW zero diff boundary
- case
-To: yang.yanjun1@sanechips.com.cn, qemu-devel@nongnu.org
-Cc: peter.maydell@linaro.org, qemu-arm@nongnu.org
-References: <202608060749.6767nOjv097972@mse-fl2.zte.com.cn>
-From: Richard Henderson <richard.henderson@linaro.org>
-Content-Language: en-US
-In-Reply-To: <202608060749.6767nOjv097972@mse-fl2.zte.com.cn>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::434;
- envelope-from=richard.henderson@linaro.org; helo=mail-pf1-x434.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
+X-Scanned-By: MIMEDefang 3.0 on 10.30.177.12
+X-Mimecast-MFC-PROC-ID: O2kUHoBMSQTkp5r4wdgcq967wn7UNKGh2idevznIdRw_1786465785
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=clg@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -21
+X-Spam_score: -2.2
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+X-Spam_report: (-2.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.102,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=0.001, SPF_HELO_PASS=-0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -106,67 +87,52 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On 8/6/26 00:47, yang.yanjun1@sanechips.com.cn wrote:
-> From: YanjunYang <yang.yanjun1@sanechips.com.cn>
-> 
-> The trans_WHILE_ptr function incorrectly handles the case where the
-> address difference divided by ESIZE results in zero. This happens when
-> the address difference is less than ESIZE but greater than zero.
-> 
-> In this boundary case, the address difference is less than ESIZE, which
-> means all elements are safe from conflicts. The previous code would set
-> the predicate to all zeros, but the correct behavior is to set all
-> elements to one.
-> 
-> Fix by checking if diff == 0 after the shift and setting diff to tmax
-> (all elements true) in this case.
-> 
-> Fixes the following test cases:
->    whilewr p0.s, x9, x10  ; x9=8, x10=11 => p0=0xffffffff (all ones)
->    whilerw p0.s, x9, x10  ; x9=8, x10=11 => p0=0xffffffff (all ones)
-> 
-> Signed-off-by: YanjunYang <yang.yanjun1@sanechips.com.cn>
-> ---
->   target/arm/tcg/translate-sve.c | 4 ++++
->   1 file changed, 4 insertions(+)
-> 
-> diff --git a/target/arm/tcg/translate-sve.c b/target/arm/tcg/translate-sve.c
-> index fc4cc8c479..33613ebf58 100644
-> --- a/target/arm/tcg/translate-sve.c
-> +++ b/target/arm/tcg/translate-sve.c
-> @@ -3736,6 +3736,10 @@ static bool trans_WHILE_ptr(DisasContext *s, arg_WHILE_ptr *a)
->           tcg_gen_movcond_i64(TCG_COND_GEU, diff, op0, op1, tmax, diff);
->       }
-> 
-> +    /* If diff == 0, the address difference is less than ESIZE,
-> +       so all elements are safe from conflicts. */
-> +    tcg_gen_movcond_i64(TCG_COND_EQ, diff, diff, tcg_constant_i64(0), tmax, diff);
-> +
->       /* Bound to the maximum.  */
->       tcg_gen_umin_i64(diff, diff, tmax);
-> 
+From: Philippe Mathieu-Daudé <philmd@oss.qualcomm.com>
 
-For whilerw, we should replace the preceding test, which for some reason compares op0 == 
-op1 directly instead of diff == 0 after the division.
+Add the missing Kconfig dependency on PCIE_PORT to avoid the
+following runtime error:
 
-For whilewr, we need 65-bit arithmetic for the straightforward solution, which I think 
-means we need two comparisons, including this one.  Possibly clearer as
+  Type 'aspeed.pcie-root-port' is missing its parent 'pcie-root-port-base'
 
-     diff = unsigned_saturating_sub(op1, op0)
-     diff = diff >> esz
-     diff = diff ? diff : max
-     diff = umin(diff, max)
+No need to have ASPEED_SOC select PCI_EXPRESS since it is
+already selected by PCI_EXPRESS_ASPEED.
 
-where unsigned_saturating_sub(x, y) -> umax(x, y) - y
+Cc: qemu-stable@nongnu.org
+Fixes: 2af56518fa9 ("hw/pci-host/aspeed: Add AST2600 PCIe Root Port and make address configurable")
+Signed-off-by: Philippe Mathieu-Daudé <philmd@oss.qualcomm.com>
+Reviewed-by: Cédric Le Goater <clg@redhat.com>
+Link: https://lore.kernel.org/qemu-devel/20260709164103.37614-2-philmd@oss.qualcomm.com
+Signed-off-by: Cédric Le Goater <clg@redhat.com>
+---
+ hw/arm/Kconfig      | 1 -
+ hw/pci-host/Kconfig | 1 +
+ 2 files changed, 1 insertion(+), 1 deletion(-)
 
-Less clear, but possibly more efficient,
+diff --git a/hw/arm/Kconfig b/hw/arm/Kconfig
+index 82e0bc2e7004..00e2d9380332 100644
+--- a/hw/arm/Kconfig
++++ b/hw/arm/Kconfig
+@@ -557,7 +557,6 @@ config ASPEED_SOC
+     select MAX31785
+     select FSI_APB2OPB_ASPEED
+     select AT24C
+-    select PCI_EXPRESS
+     select PCI_EXPRESS_ASPEED
+ 
+ config MPS2
+diff --git a/hw/pci-host/Kconfig b/hw/pci-host/Kconfig
+index 8cbb8304a3ff..bda6e161f1c8 100644
+--- a/hw/pci-host/Kconfig
++++ b/hw/pci-host/Kconfig
+@@ -49,6 +49,7 @@ config PCI_I440FX
+ config PCI_EXPRESS_ASPEED
+     bool
+     select PCI_EXPRESS
++    select PCIE_PORT
+ 
+ config PCI_EXPRESS_Q35
+     bool
+-- 
+2.55.0
 
-     diff = umin(diff - 1, max - 1) + 1;
-
-instead of the direct comparison against 0.
-
-I'll prepare a patch.  Thanks for the report.
-
-
-r~
 

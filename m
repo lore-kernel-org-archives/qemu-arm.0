@@ -4,61 +4,60 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id F0F1FC5CFE7
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CA07BC5CFCF
 	for <qemu-arm@archiver.kernel.org>; Tue, 11 Aug 2026 16:37:13 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wtpNm-0001mR-Uo; Tue, 11 Aug 2026 12:31:19 -0400
+	id 1wtpNg-0001EI-94; Tue, 11 Aug 2026 12:31:12 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1wtpNf-00019W-TU
- for qemu-arm@nongnu.org; Tue, 11 Aug 2026 12:31:11 -0400
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1wtpNT-0000RI-Iz
+ for qemu-arm@nongnu.org; Tue, 11 Aug 2026 12:31:01 -0400
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1wtpNd-0000kK-Fq
- for qemu-arm@nongnu.org; Tue, 11 Aug 2026 12:31:11 -0400
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1wtpNR-0000hf-Dd
+ for qemu-arm@nongnu.org; Tue, 11 Aug 2026 12:30:59 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1786465867;
+ s=mimecast20190719; t=1786465856;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=diYwbBVHuyi08y7vV4n3anq+Ukv0lTTRMWdUxAeTQHE=;
- b=Ga76v2SatJcU7jE2i27eqScjy8RY6S5Mm2l8PeTyzkg1jP/10AyREveCoUZBMa1P5ubwv2
- yNzfv7D9uvKInTLFFsMWzWLJWYQN5SqeyKGDEq6tGfBDPMtY2wBurahwV0cGqu37kZIdkK
- hQw6rXxysd5ClqahzYznf22VrgnsJ6Y=
-Received: from mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com
+ bh=9TlJ5uLE8Bvis6TmXPlTY38yDOEYbZWVcEVHGfqiIyI=;
+ b=WWoZEcTwmcweloTQq5KZYcZnMXlBekyu8Jht1nx6yGc8vxPuTSF9FIMgckdWkMy2gQqg7O
+ t2IOPGFqciAqTFNpASm6qgsYcfGKeVCuEIhQ48R8Fnu70Xqi+jaHmjS+9lW9reM3oaGULv
+ pnOFd8HqxTMFShFUcylS0GeXTchwPJk=
+Received: from mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com
  (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-91-Rt-2KIG1OUSTgSE63cbYww-1; Tue,
- 11 Aug 2026 12:31:03 -0400
-X-MC-Unique: Rt-2KIG1OUSTgSE63cbYww-1
-X-Mimecast-MFC-AGG-ID: Rt-2KIG1OUSTgSE63cbYww_1786465862
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-425-JtM_P1RbM-W16nXfcU3Rgw-1; Tue,
+ 11 Aug 2026 12:30:55 -0400
+X-MC-Unique: JtM_P1RbM-W16nXfcU3Rgw-1
+X-Mimecast-MFC-AGG-ID: JtM_P1RbM-W16nXfcU3Rgw_1786465854
 Received: from mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com
  (mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.12])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id C90D9195605E; Tue, 11 Aug 2026 16:31:02 +0000 (UTC)
+ by mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 1FA3E19560B3; Tue, 11 Aug 2026 16:30:54 +0000 (UTC)
 Received: from corto.redhat.com (unknown [10.44.48.12])
  by mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id 160F1195DF98; Tue, 11 Aug 2026 16:31:00 +0000 (UTC)
+ id A54DE195DF98; Tue, 11 Aug 2026 16:30:52 +0000 (UTC)
 From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Cc: Emmanuel Blot <emmanuel.blot@free.fr>, Glenn Miles <milesg@linux.ibm.com>,
+Cc: Emmanuel Blot <emmanuel.blot@free.fr>,
  =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>
-Subject: [PULL 37/83] hw/gpio: pca9552: default description to the
- instantiated type name
-Date: Tue, 11 Aug 2026 18:28:52 +0200
-Message-ID: <20260811162938.1403216-38-clg@redhat.com>
+Subject: [PULL 33/83] hw/arm: anacapa: add ADC128D818 devices
+Date: Tue, 11 Aug 2026 18:28:48 +0200
+Message-ID: <20260811162938.1403216-34-clg@redhat.com>
 In-Reply-To: <20260811162938.1403216-1-clg@redhat.com>
 References: <20260811162938.1403216-1-clg@redhat.com>
 MIME-Version: 1.0
 X-Scanned-By: MIMEDefang 3.0 on 10.30.177.12
-X-Mimecast-MFC-PROC-ID: fOI5zzpcGjmoFEnfVuePMIS8ElEfU_PQKfduwwcNrDc_1786465862
+X-Mimecast-MFC-PROC-ID: vJ3CRTGth1aN1TnaVYqcZhOUQGRMDaCXsiJTJFQaVPE_1786465854
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
@@ -88,32 +87,96 @@ Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
 From: Emmanuel Blot <emmanuel.blot@free.fr>
 
-When no description is supplied, fall back to the actual QOM type name
-(pca9552 / pca9535 / pca9555) via object_get_typename() instead of the
-opaque "pca-unspecified" placeholder, matching the PCA9554 model and
-giving meaningful device labels in traces.
+Wire up the two ADC128D818 instances that appear in the Anacapa DTS:
+one on i2c8 mux channel 0 and one on i2c13 mux channel 3.
 
+Reviewed-by: Cédric Le Goater <clg@redhat.com>
 Signed-off-by: Emmanuel Blot <emmanuel.blot@free.fr>
-Reviewed-by: Glenn Miles <milesg@linux.ibm.com>
-Link: https://lore.kernel.org/qemu-devel/20260709-catalina-upgrade-v1-4-814575bc076b@free.fr
+Link: https://lore.kernel.org/qemu-devel/20260707091609.97759-9-emmanuel.blot@free.fr
 Signed-off-by: Cédric Le Goater <clg@redhat.com>
 ---
- hw/gpio/pca9552.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ hw/arm/aspeed_ast2600_anacapa.c | 21 +++++++++++++++++----
+ hw/arm/Kconfig                  |  1 +
+ 2 files changed, 18 insertions(+), 4 deletions(-)
 
-diff --git a/hw/gpio/pca9552.c b/hw/gpio/pca9552.c
-index da21e56aabdf..ffeb438d2ab4 100644
---- a/hw/gpio/pca9552.c
-+++ b/hw/gpio/pca9552.c
-@@ -488,7 +488,7 @@ static void pca955x_realize(DeviceState *dev, Error **errp)
-     PCA955xState *s = PCA955X(dev);
+diff --git a/hw/arm/aspeed_ast2600_anacapa.c b/hw/arm/aspeed_ast2600_anacapa.c
+index bd6cc0068602..65d6b0faa2de 100644
+--- a/hw/arm/aspeed_ast2600_anacapa.c
++++ b/hw/arm/aspeed_ast2600_anacapa.c
+@@ -1,13 +1,14 @@
+ /*
+  * Facebook Anacapa
+  *
+- * Copyright (c) Meta Platforms, Inc. and affiliates.
++ * Copyright (c) 2026 Meta Platforms, Inc. and affiliates.
+  *
+  * SPDX-License-Identifier: GPL-2.0-or-later
+  */
  
-     if (!s->description) {
--        s->description = g_strdup("pca-unspecified");
-+        s->description = g_strdup(object_get_typename(OBJECT(dev)));
-     }
+ #include "qemu/osdep.h"
+ #include "qapi/error.h"
++#include "hw/sensor/adc128d818.h"
+ #include "hw/arm/machines-qom.h"
+ #include "hw/arm/aspeed.h"
+ #include "hw/arm/aspeed_soc.h"
+@@ -15,7 +16,6 @@
+ #include "hw/gpio/pca9552.h"
+ #include "hw/nvram/eeprom_at24c.h"
  
-     qdev_init_gpio_out(dev, s->gpio_out, k->pin_count);
+-/* Anacapa hardware value */
+ #define ANACAPA_BMC_HW_STRAP1 0x00002002
+ #define ANACAPA_BMC_HW_STRAP2 0x00000000
+ #define ANACAPA_BMC_RAM_SIZE ASPEED_RAM_SIZE(2 * GiB)
+@@ -221,6 +221,17 @@ static const uint8_t hpm_brd_id_eeprom[] = {
+ };
+ static const size_t hpm_brd_id_eeprom_len = sizeof(hpm_brd_id_eeprom);
+ 
++static void anacapa_add_adc128d818(I2CBus *bus, uint8_t addr,
++                                   const char *description)
++{
++    DeviceState *dev = DEVICE(i2c_slave_new(TYPE_ADC128D818, addr));
++    g_autofree char *childname = g_strdup_printf("0x%02x", addr);
++
++    qdev_prop_set_string(dev, "description", description);
++    object_property_add_child(OBJECT(bus), childname, OBJECT(dev));
++    i2c_slave_realize_and_unref(I2C_SLAVE(dev), bus, &error_fatal);
++}
++
+ static void anacapa_bmc_i2c_init(AspeedMachineState *bmc)
+ {
+     /* Reference: aspeed-bmc-facebook-anacapa.dts */
+@@ -259,7 +270,8 @@ static void anacapa_bmc_i2c_init(AspeedMachineState *bmc)
+     i2c_mux = i2c_slave_create_simple(i2c[8], TYPE_PCA9546, 0x72);
+ 
+     /* i2c8mux ch0 */
+-    /* adc128d818@1f - no model */
++    /* adc128d818@1f - R-PDB ADC (mode 1: 8 voltage channels) */
++    anacapa_add_adc128d818(pca954x_i2c_get_bus(i2c_mux, 0), 0x1f, "i2c8:0:1f");
+     /* pca9555@22 */
+     i2c_slave_create_simple(pca954x_i2c_get_bus(i2c_mux, 0),
+                             TYPE_PCA9552, 0x22);
+@@ -320,7 +332,8 @@ static void anacapa_bmc_i2c_init(AspeedMachineState *bmc)
+     i2c_mux = i2c_slave_create_simple(i2c[13], TYPE_PCA9548, 0x70);
+ 
+     /* i2c13mux ch3 */
+-    /* adc128d818@1f - no model */
++    /* adc128d818@1f - MB ADC (mode 1: 8 voltage channels) */
++    anacapa_add_adc128d818(pca954x_i2c_get_bus(i2c_mux, 3), 0x1f, "i2c13:3:1f");
+ 
+     /* i2c13mux ch4 */
+     /* eeprom@51 */
+diff --git a/hw/arm/Kconfig b/hw/arm/Kconfig
+index 5869f0f9e895..c502e8284769 100644
+--- a/hw/arm/Kconfig
++++ b/hw/arm/Kconfig
+@@ -558,6 +558,7 @@ config ASPEED_SOC
+     select LED
+     select PMBUS
+     select MAX31785
++    select ADC128D818
+     select FSI_APB2OPB_ASPEED
+     select AT24C
+     select PCI_EXPRESS_ASPEED
 -- 
 2.55.0
 

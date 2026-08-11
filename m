@@ -4,74 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DE4D4C5B572
-	for <qemu-arm@archiver.kernel.org>; Tue, 11 Aug 2026 16:34:18 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C341CC5B56A
+	for <qemu-arm@archiver.kernel.org>; Tue, 11 Aug 2026 16:34:55 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wtpN7-000866-EG; Tue, 11 Aug 2026 12:30:37 -0400
+	id 1wtpOJ-00046o-62; Tue, 11 Aug 2026 12:31:51 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1wtpMg-0007bF-CR
- for qemu-arm@nongnu.org; Tue, 11 Aug 2026 12:30:11 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1wtpOG-0003uS-Rv
+ for qemu-arm@nongnu.org; Tue, 11 Aug 2026 12:31:48 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1wtpMc-0000Nu-Dj
- for qemu-arm@nongnu.org; Tue, 11 Aug 2026 12:30:09 -0400
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1wtpOB-0000sX-4Z
+ for qemu-arm@nongnu.org; Tue, 11 Aug 2026 12:31:48 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1786465804;
+ s=mimecast20190719; t=1786465902;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=oPxGtRNr3fYOBt7plEGuWt4NL/AQd7NEoF8zlsC6QbY=;
- b=KzZRQ643j1nssFxNvvofB58xE5RdYdInzfxm8Bh71DwZnIqifdg0er5X7KR2qoUO6RwN6a
- q6q7W/eByiZDzHY+YzRh4XljtfuNI+SHpZdXe/oN6PM0wOStk6yN2kjuSwL6i4Rd/X8IZE
- MPz9ICEp1xbHQ0NDrGiuVT0yCoPlvIc=
-Received: from mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
+ bh=Rwt5soCjuGPx37RLqHHrgSb4dvUYh2lOGoB5TM8EOCE=;
+ b=bzY3XkeVPkhs9YobqvKolqrvesdRjLx1rYdOqhLGTze3JjrtbcyjetDTYk7MA4+qi1+GaN
+ 2adT35fesWd0q8R7+etyFejS8reAznv/GOdTFpiip15O51bt9jbUheb+Uo3RKttKPJOjgo
+ 3nRIopQH0lxE8draDjRJXS2z2mWABMQ=
+Received: from mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-665-OfWE0DfwNJ2XEnjc7sSJeg-1; Tue,
- 11 Aug 2026 12:30:00 -0400
-X-MC-Unique: OfWE0DfwNJ2XEnjc7sSJeg-1
-X-Mimecast-MFC-AGG-ID: OfWE0DfwNJ2XEnjc7sSJeg_1786465799
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-502-34SUsjjePe6B8uAV8nkJZg-1; Tue,
+ 11 Aug 2026 12:31:37 -0400
+X-MC-Unique: 34SUsjjePe6B8uAV8nkJZg-1
+X-Mimecast-MFC-AGG-ID: 34SUsjjePe6B8uAV8nkJZg_1786465895
 Received: from mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com
  (mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.12])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 016191956045; Tue, 11 Aug 2026 16:29:59 +0000 (UTC)
+ by mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id CA3191800344; Tue, 11 Aug 2026 16:31:35 +0000 (UTC)
 Received: from corto.redhat.com (unknown [10.44.48.12])
  by mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id E21E0195DF91; Tue, 11 Aug 2026 16:29:56 +0000 (UTC)
+ id E7BB8195DF91; Tue, 11 Aug 2026 16:31:33 +0000 (UTC)
 From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Cc: Jamin Lin <jamin_lin@aspeedtech.com>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+Cc: Emmanuel Blot <emmanuel.blot@free.fr>, Glenn Miles <milesg@linux.ibm.com>,
  =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>
-Subject: [PULL 07/83] hw/usb/hcd-ehci: Implement 64-bit qTD descriptor
- addressing
-Date: Tue, 11 Aug 2026 18:28:22 +0200
-Message-ID: <20260811162938.1403216-8-clg@redhat.com>
+Subject: [PULL 52/83] tests/qtest: add PCA9554 register access tests
+Date: Tue, 11 Aug 2026 18:29:07 +0200
+Message-ID: <20260811162938.1403216-53-clg@redhat.com>
 In-Reply-To: <20260811162938.1403216-1-clg@redhat.com>
 References: <20260811162938.1403216-1-clg@redhat.com>
 MIME-Version: 1.0
 X-Scanned-By: MIMEDefang 3.0 on 10.30.177.12
-X-Mimecast-MFC-PROC-ID: 5oUzTgKZfUnIafQEZNuWfC9mzNmA5YkdAxK9qR-_4kg_1786465799
+X-Mimecast-MFC-PROC-ID: smj08N9Jhov-Mv9mULj9yd1PUuu2aN-1ZW1ywkckjnY_1786465895
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=clg@redhat.com;
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=clg@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: 11
-X-Spam_score: 1.1
-X-Spam_bar: +
-X-Spam_report: (1.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.102,
+X-Spam_score_int: -21
+X-Spam_score: -2.2
+X-Spam_bar: --
+X-Spam_report: (-2.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.102,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=0.001, RCVD_IN_SBL_CSS=3.335,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=no autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -87,175 +85,81 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-From: Jamin Lin <jamin_lin@aspeedtech.com>
+From: Emmanuel Blot <emmanuel.blot@free.fr>
 
-EHCI supports 64-bit addressing when the 64-bit Addressing Capability
-bit in HCCPARAMS is set. In that mode, the CTRLDSSEGMENT register
-provides the upper 32 bits that are concatenated with 32-bit link
-pointer values to form 64-bit control data structure addresses
-(EHCI 1.0, section 2.3.5 and Appendix B).
+Add a qtest for the PCA9554 8-bit I/O port expander exercising the basic
+register access: power-on reset defaults and read/write of the OUTPUT,
+CONFIG and POLARITY registers.
 
-qTD link pointers (current_qtd/next_qtd/altnext_qtd and qTD.next)
-are stored as 32-bit values in the data structures and must be
-expanded to full 64-bit descriptor addresses when 64-bit mode is
-enabled. Update the qTD traversal paths to use ehci_get_desc_addr()
-when following link pointers.
-
-Appendix B also defines high dword fields for qTD buffer pointers.
-Add bufptr_hi[5] to EHCIqtd and extend qTD fetch and QH overlay
-handling to load and propagate the high buffer pointer fields.
-
-When 64-bit capability is disabled, descriptor and buffer addresses
-remain 32-bit and existing behaviour is unchanged.
-
-Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
-Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
-Link: https://lore.kernel.org/qemu-devel/20260713032704.3583103-5-jamin_lin@aspeedtech.com
+Signed-off-by: Emmanuel Blot <emmanuel.blot@free.fr>
+Reviewed-by: Glenn Miles <milesg@linux.ibm.com>
+Link: https://lore.kernel.org/qemu-devel/20260709-catalina-upgrade-v1-19-82a63fead90c@free.fr
 Signed-off-by: Cédric Le Goater <clg@redhat.com>
 ---
- hw/usb/hcd-ehci.h |  1 +
- hw/usb/hcd-ehci.c | 33 ++++++++++++++++++++++++---------
- 2 files changed, 25 insertions(+), 9 deletions(-)
+ tests/qtest/pca9554-test.c | 41 ++++++++++++++++++++++++++++++++++++++
+ tests/qtest/meson.build    |  1 +
+ 2 files changed, 42 insertions(+)
+ create mode 100644 tests/qtest/pca9554-test.c
 
-diff --git a/hw/usb/hcd-ehci.h b/hw/usb/hcd-ehci.h
-index 8732264fdebb..7fed20690683 100644
---- a/hw/usb/hcd-ehci.h
-+++ b/hw/usb/hcd-ehci.h
-@@ -139,6 +139,7 @@ typedef struct EHCIqtd {
-     uint32_t bufptr[5];               /* Standard buffer pointer */
- #define QTD_BUFPTR_MASK               0xfffff000
- #define QTD_BUFPTR_SH                 12
-+    uint32_t bufptr_hi[5];
- } EHCIqtd;
- 
- /* QH overlay: altnext_qtd, token, bufptr[5], bufptr_hi[5] */
-diff --git a/hw/usb/hcd-ehci.c b/hw/usb/hcd-ehci.c
-index fd5be7430ef6..947af86ac420 100644
---- a/hw/usb/hcd-ehci.c
-+++ b/hw/usb/hcd-ehci.c
-@@ -104,6 +104,7 @@ typedef enum {
-  * must not read or write past that boundary.
-  */
- #define EHCI_QH_DWORDS_32   (offsetof(EHCIqh, bufptr_hi) / sizeof(uint32_t))
-+#define EHCI_QTD_DWORDS_32  (offsetof(EHCIqtd, bufptr_hi) / sizeof(uint32_t))
- 
- static const char *ehci_state_names[] = {
-     [EST_INACTIVE]     = "INACTIVE",
-@@ -178,6 +179,11 @@ static uint32_t ehci_qh_dwords(const EHCIState *s)
-     return s->caps_64bit_addr ? (sizeof(EHCIqh) >> 2) : EHCI_QH_DWORDS_32;
- }
- 
-+static uint32_t ehci_qtd_dwords(const EHCIState *s)
+diff --git a/tests/qtest/pca9554-test.c b/tests/qtest/pca9554-test.c
+new file mode 100644
+index 000000000000..a5f213a59cc6
+--- /dev/null
++++ b/tests/qtest/pca9554-test.c
+@@ -0,0 +1,41 @@
++/*
++ * QTest testcase for the PCA9554/PCA9536 I/O port expanders
++ *
++ * Copyright (c) Meta Platforms, Inc. and affiliates. (http://www.meta.com)
++ *
++ * SPDX-License-Identifier: GPL-2.0-or-later
++ */
++
++#include "qemu/osdep.h"
++#include "hw/gpio/pca9554_regs.h"
++#include "libqos/i2c.h"
++#include "libqos/qgraph.h"
++
++#define PCA9554_TEST_ADDR 0x20
++
++/* Verify power-on reset defaults match the PCA9554 datasheet. */
++static void test_reset_defaults(void *obj, void *data, QGuestAllocator *alloc)
 +{
-+    return s->caps_64bit_addr ? (sizeof(EHCIqtd) >> 2) : EHCI_QTD_DWORDS_32;
++    QI2CDevice *dev = (QI2CDevice *)obj;
++
++    /* All pins are inputs, pulled high, with no polarity inversion. */
++    g_assert_cmphex(i2c_get8(dev, PCA9554_INPUT), ==, 0xFF);
++    g_assert_cmphex(i2c_get8(dev, PCA9554_OUTPUT), ==, 0xFF);
++    g_assert_cmphex(i2c_get8(dev, PCA9554_POLARITY), ==, 0x00);
++    g_assert_cmphex(i2c_get8(dev, PCA9554_CONFIG), ==, 0xFF);
 +}
 +
- static void ehci_trace_usbsts(uint32_t mask, int state)
- {
-     /* interrupts */
-@@ -486,7 +492,8 @@ static bool ehci_verify_qtd(EHCIPacket *p, EHCIqtd *qtd)
-             (p->qtd.next != qtd->next)) ||
-         (!NLPTR_TBIT(p->qtd.altnext) && (p->qtd.altnext != qtd->altnext)) ||
-         p->qtd.token != qtd->token ||
--        p->qtd.bufptr[0] != qtd->bufptr[0]) {
-+        p->qtd.bufptr[0] != qtd->bufptr[0] ||
-+        p->qtd.bufptr_hi[0] != qtd->bufptr_hi[0]) {
-         return false;
-     } else {
-         return true;
-@@ -519,10 +526,11 @@ static void ehci_writeback_async_complete_packet(EHCIPacket *p)
- 
-     /* Verify the qh + qtd, like we do when going through fetchqh & fetchqtd */
-     memset(&qh, 0, sizeof(qh));
-+    memset(&qtd, 0, sizeof(qtd));
-     get_dwords(q->ehci, NLPTR_GET(q->qhaddr),
-                (uint32_t *) &qh, ehci_qh_dwords(q->ehci));
-     get_dwords(q->ehci, NLPTR_GET(q->qtdaddr),
--               (uint32_t *) &qtd, sizeof(EHCIqtd) >> 2);
-+               (uint32_t *) &qtd, ehci_qtd_dwords(q->ehci));
-     if (!ehci_verify_qh(q, &qh) || !ehci_verify_qtd(p, &qtd)) {
-         p->async = EHCI_ASYNC_INITIALIZED;
-         ehci_free_packet(p);
-@@ -1215,6 +1223,7 @@ static int ehci_qh_do_overlay(EHCIQueue *q)
- 
-     for (i = 0; i < 5; i++) {
-         q->qh.bufptr[i] = p->qtd.bufptr[i];
-+        q->qh.bufptr_hi[i] = p->qtd.bufptr_hi[i];
-     }
- 
-     if (!(q->qh.epchar & QH_EPCHAR_DTC)) {
-@@ -1248,7 +1257,8 @@ static int ehci_init_transfer(EHCIPacket *p)
-             return -1;
-         }
- 
--        page  = p->qtd.bufptr[cpage] & QTD_BUFPTR_MASK;
-+        page = ehci_get_buf_addr(p->queue->ehci, p->qtd.bufptr_hi[cpage],
-+                                 p->qtd.bufptr[cpage], QTD_BUFPTR_MASK);
-         page += offset;
-         plen  = bytes;
-         if (plen > 4096 - offset) {
-@@ -1744,7 +1754,7 @@ static EHCIQueue *ehci_state_fetchqh(EHCIState *ehci, int async)
-     } else if ((q->qh.token & QTD_TOKEN_ACTIVE) &&
-                (NLPTR_TBIT(q->qh.current_qtd) == 0) &&
-                (q->qh.current_qtd != 0)) {
--        q->qtdaddr = q->qh.current_qtd;
-+        q->qtdaddr = ehci_get_desc_addr(ehci, q->qh.current_qtd);
-         ehci_set_state(ehci, async, EST_FETCHQTD);
- 
-     } else {
-@@ -1822,14 +1832,14 @@ static int ehci_state_advqueue(EHCIQueue *q)
-      */
-     if (((q->qh.token & QTD_TOKEN_TBYTES_MASK) != 0) &&
-         (NLPTR_TBIT(q->qh.altnext_qtd) == 0)) {
--        q->qtdaddr = q->qh.altnext_qtd;
-+        q->qtdaddr = ehci_get_desc_addr(q->ehci, q->qh.altnext_qtd);
-         ehci_set_state(q->ehci, q->async, EST_FETCHQTD);
- 
-     /*
-      *  next qTD is valid
-      */
-     } else if (NLPTR_TBIT(q->qh.next_qtd) == 0) {
--        q->qtdaddr = q->qh.next_qtd;
-+        q->qtdaddr = ehci_get_desc_addr(q->ehci, q->qh.next_qtd);
-         ehci_set_state(q->ehci, q->async, EST_FETCHQTD);
- 
-     /*
-@@ -1855,10 +1865,14 @@ static int ehci_state_fetchqtd(EHCIQueue *q)
-         return 0;
-     }
-     barrier();
-+    memset(qtd.bufptr_hi, 0, sizeof(qtd.bufptr_hi));
-     if (get_dwords(q->ehci, addr +  0, &qtd.next,    1) < 0 ||
-         get_dwords(q->ehci, addr +  4, &qtd.altnext, 1) < 0 ||
-         get_dwords(q->ehci, addr + 12, qtd.bufptr,
--                   ARRAY_SIZE(qtd.bufptr)) < 0) {
-+                   ARRAY_SIZE(qtd.bufptr)) < 0 ||
-+        (q->ehci->caps_64bit_addr &&
-+         get_dwords(q->ehci, addr + offsetof(EHCIqtd, bufptr_hi),
-+                    qtd.bufptr_hi, ARRAY_SIZE(qtd.bufptr_hi)) < 0)) {
-         return 0;
-     }
-     ehci_trace_qtd(q, NLPTR_GET(q->qtdaddr), &qtd);
-@@ -1939,7 +1953,7 @@ static int ehci_fill_queue(EHCIPacket *p)
-         if (NLPTR_TBIT(qtd.next) != 0) {
-             break;
-         }
--        qtdaddr = qtd.next;
-+        qtdaddr = ehci_get_desc_addr(q->ehci, qtd.next);
-         /*
-          * Detect circular td lists, Windows creates these, counting on the
-          * active bit going low after execution to make the queue stop.
-@@ -1949,8 +1963,9 @@ static int ehci_fill_queue(EHCIPacket *p)
-                 goto leave;
-             }
-         }
-+        memset(qtd.bufptr_hi, 0, sizeof(qtd.bufptr_hi));
-         if (get_dwords(q->ehci, NLPTR_GET(qtdaddr),
--                       (uint32_t *) &qtd, sizeof(EHCIqtd) >> 2) < 0) {
-+                       (uint32_t *) &qtd, ehci_qtd_dwords(q->ehci)) < 0) {
-             return -1;
-         }
-         ehci_trace_qtd(q, NLPTR_GET(qtdaddr), &qtd);
++static void pca9554_register_nodes(void)
++{
++    QOSGraphEdgeOptions opts = {
++        .extra_device_opts = "address=0x20"
++    };
++    add_qi2c_address(&opts, &(QI2CAddress) { PCA9554_TEST_ADDR });
++
++    qos_node_create_driver("pca9554", i2c_device_create);
++    qos_node_consumes("pca9554", "i2c-bus", &opts);
++
++    qos_add_test("reset-defaults", "pca9554", test_reset_defaults, NULL);
++}
++
++libqos_init(pca9554_register_nodes);
+diff --git a/tests/qtest/meson.build b/tests/qtest/meson.build
+index e92130bd04dd..4d81857174ae 100644
+--- a/tests/qtest/meson.build
++++ b/tests/qtest/meson.build
+@@ -319,6 +319,7 @@ qos_test_ss.add(
+   'tulip-test.c',
+   'nvme-test.c',
+   'pca9552-test.c',
++  'pca9554-test.c',
+   'pca9555-test.c',
+   'pci-test.c',
+   'pcnet-test.c',
 -- 
 2.55.0
 

@@ -4,72 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 92B50C5CFCF
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E7173C5CFE7
 	for <qemu-arm@archiver.kernel.org>; Tue, 11 Aug 2026 16:37:22 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wtpNv-00024f-6k; Tue, 11 Aug 2026 12:31:27 -0400
+	id 1wtpPI-0005k5-7w; Tue, 11 Aug 2026 12:32:52 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1wtpNO-0000ID-Vm
- for qemu-arm@nongnu.org; Tue, 11 Aug 2026 12:30:55 -0400
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1wtpOg-0005Iw-AP
+ for qemu-arm@nongnu.org; Tue, 11 Aug 2026 12:32:14 -0400
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1wtpNN-0000gX-3k
- for qemu-arm@nongnu.org; Tue, 11 Aug 2026 12:30:54 -0400
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1wtpOd-0000zT-GT
+ for qemu-arm@nongnu.org; Tue, 11 Aug 2026 12:32:14 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1786465852;
+ s=mimecast20190719; t=1786465930;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=ufOlKYvDB40bcwQ0U1VfIshOxC3uJvN4gkjEhDi7DY4=;
- b=f8HU8N4BE76SlcsVS3Tl/qs1uu8Utt0JIITtrNERQ8ZRyUbW9oj4V+jwskRHbV/pGyPjKS
- jtMHsGc6jlQ0Jn1WP9Cdkex/WY6u60CI+6v6SepNEwbNLrRCrXy9tBGG722nXlYFUamNHG
- EJctxaibkEkg6kYUAqn3fGJb5NXXf0E=
-Received: from mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
+ bh=D5i8fAqmvBOs5CSe7JCfox0Xx51je6cRjK3GGRkRNLk=;
+ b=DPSCU3tphDxT/AMEPSXnlrzDjGWqzwptGa+BID3OJEyUBXrCa3pbF/mK06OfT2iwtIzc7q
+ R64UPmESFJMaxRoYPh+9I51ovzgP34yk+Y3WoWjgJAoFYrr6EXSFPfg1+wotRBcnM+mjgM
+ ow6IgN/EmOoZ0KlVzwtTpX18OnyiJ/M=
+Received: from mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-663-yCh6SVAPOM-sKwK2lDg_CA-1; Tue,
- 11 Aug 2026 12:30:49 -0400
-X-MC-Unique: yCh6SVAPOM-sKwK2lDg_CA-1
-X-Mimecast-MFC-AGG-ID: yCh6SVAPOM-sKwK2lDg_CA_1786465848
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-635-k7rh2HDjOW2Rt71L524KfA-1; Tue,
+ 11 Aug 2026 12:32:09 -0400
+X-MC-Unique: k7rh2HDjOW2Rt71L524KfA-1
+X-Mimecast-MFC-AGG-ID: k7rh2HDjOW2Rt71L524KfA_1786465928
 Received: from mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com
  (mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.12])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 2AD00195609E; Tue, 11 Aug 2026 16:30:48 +0000 (UTC)
+ by mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 4AC8E1800148; Tue, 11 Aug 2026 16:32:08 +0000 (UTC)
 Received: from corto.redhat.com (unknown [10.44.48.12])
  by mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id B0316195DF91; Tue, 11 Aug 2026 16:30:46 +0000 (UTC)
+ id 96FB8195DF91; Tue, 11 Aug 2026 16:32:06 +0000 (UTC)
 From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Cc: Emmanuel Blot <emmanuel.blot@free.fr>,
+Cc: Jamin Lin <jamin_lin@aspeedtech.com>, Kane Chen <kane_chen@aspeedtech.com>,
  =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>
-Subject: [PULL 30/83] tests/qtest: adc128d818: test limit interrupts
-Date: Tue, 11 Aug 2026 18:28:45 +0200
-Message-ID: <20260811162938.1403216-31-clg@redhat.com>
+Subject: [PULL 68/83] hw/misc/aspeed_hace: Support the crypto command in
+ direct access mode
+Date: Tue, 11 Aug 2026 18:29:23 +0200
+Message-ID: <20260811162938.1403216-69-clg@redhat.com>
 In-Reply-To: <20260811162938.1403216-1-clg@redhat.com>
 References: <20260811162938.1403216-1-clg@redhat.com>
 MIME-Version: 1.0
 X-Scanned-By: MIMEDefang 3.0 on 10.30.177.12
-X-Mimecast-MFC-PROC-ID: Ij4iho3UA9Y9mZDmKvPpj7HhGUbeiYKvf6I361Cjjfo_1786465848
+X-Mimecast-MFC-PROC-ID: 5riTX8r95HE2WeyoVCAIZouQCIcmdnqcGW-WJBoTW-g_1786465928
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 Received-SPF: pass client-ip=170.10.129.124; envelope-from=clg@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: 11
-X-Spam_score: 1.1
-X-Spam_bar: +
-X-Spam_report: (1.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.102,
+X-Spam_score_int: -21
+X-Spam_score: -2.2
+X-Spam_bar: --
+X-Spam_report: (-2.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.102,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=0.001, RCVD_IN_SBL_CSS=3.335,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=no autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=0.001, SPF_HELO_PASS=-0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -85,157 +86,363 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-From: Emmanuel Blot <emmanuel.blot@free.fr>
+From: Jamin Lin <jamin_lin@aspeedtech.com>
 
-Cover per-channel high- and low-limit interrupt status, the
-INT_CLEAR bit gating the monitoring loop, and the temperature
-high-limit alarm with hysteresis.
+The crypt command register was previously stubbed out. Implement it for
+the direct access mode, where HACE00/HACE04 point directly at contiguous
+source and destination buffers. AES-128/192/256, DES and 3DES are
+supported in ECB and CBC modes via the qcrypto cipher API; the IV and
+key are read from the context buffer (HACE08) and, for CBC, the
+resulting chaining IV is written back to the context.
 
-Signed-off-by: Emmanuel Blot <emmanuel.blot@free.fr>
-Link: https://lore.kernel.org/qemu-devel/20260707091609.97759-5-emmanuel.blot@free.fr
+The completion interrupt is now raised for every HACE variant as the
+hardware does, which fixes the crypt command hang on the AST2500, AST2600
+and AST1030. The AST2700 crypto engine still needs 64-bit DMA and
+AES-GCM, which are added later, so it keeps its temporary interrupt-only
+workaround until then.
+
+For debugging, the context, source and destination buffers are dumped
+through the existing aspeed_hace_hexdump trace event (disabled by
+default). CTR mode, scatter-gather mode and AES-GCM are added separately.
+
+Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
+Reviewed-by: Kane Chen <kane_chen@aspeedtech.com>
+Link: https://lore.kernel.org/qemu-devel/20260811060115.1849266-2-jamin_lin@aspeedtech.com
 Signed-off-by: Cédric Le Goater <clg@redhat.com>
 ---
- tests/qtest/adc128d818-test.c | 121 ++++++++++++++++++++++++++++++++++
- 1 file changed, 121 insertions(+)
+ hw/misc/aspeed_hace.c | 283 +++++++++++++++++++++++++++++++++++++++---
+ 1 file changed, 268 insertions(+), 15 deletions(-)
 
-diff --git a/tests/qtest/adc128d818-test.c b/tests/qtest/adc128d818-test.c
-index 891189f0bd8c..3e3fabb8d9f1 100644
---- a/tests/qtest/adc128d818-test.c
-+++ b/tests/qtest/adc128d818-test.c
-@@ -330,6 +330,123 @@ static void test_ext_vref(void *obj, void *data, QGuestAllocator *alloc)
-     g_assert_cmphex(reading, ==, 0x8000);
+diff --git a/hw/misc/aspeed_hace.c b/hw/misc/aspeed_hace.c
+index c61efe50c4ff..0f35d74137b1 100644
+--- a/hw/misc/aspeed_hace.c
++++ b/hw/misc/aspeed_hace.c
+@@ -18,11 +18,43 @@
+ #include "qapi/error.h"
+ #include "migration/vmstate.h"
+ #include "crypto/hash.h"
++#include "crypto/cipher.h"
+ #include "hw/core/qdev-properties.h"
+ #include "hw/core/irq.h"
+ #include "trace.h"
+ 
+-#define R_CRYPT_CMD     (0x10 / 4)
++/* Crypto engine registers */
++#define R_CRYPT_SRC         (0x00 / 4)
++#define R_CRYPT_DEST        (0x04 / 4)
++#define R_CRYPT_CONTEXT     (0x08 / 4)
++#define R_CRYPT_DATA_LEN    (0x0c / 4)
++/* HACE0C[27:0] holds the crypto data length */
++#define  CRYPT_DATA_LEN_MASK    0x0FFFFFFF
++#define R_CRYPT_CMD         (0x10 / 4)
++/* Crypto engine command register (HACE10) bits */
++#define  CRYPT_CMD_ENCRYPT          BIT(7)
++#define  CRYPT_CMD_ISR_EN           BIT(12)
++#define  CRYPT_CMD_DES_SELECT       BIT(16)
++#define  CRYPT_CMD_TRIPLE_DES       BIT(17)
++#define  CRYPT_CMD_SRC_SG_CTRL      BIT(18)
++/* Operation mode HACE10[6:4] */
++#define  CRYPT_CMD_OP_MODE_MASK     (0x7 << 4)
++#define  CRYPT_CMD_ECB              (0x0 << 4)
++#define  CRYPT_CMD_CBC              (0x1 << 4)
++/* AES key length HACE10[3:2] */
++#define  CRYPT_CMD_AES_KEY_LEN_MASK (0x3 << 2)
++#define  CRYPT_CMD_AES256           (0x2 << 2)
++#define  CRYPT_CMD_AES192           (0x1 << 2)
++#define  CRYPT_CMD_AES128           (0x0 << 2)
++
++/*
++ * Crypto context buffer layout (HACE08). The IV is at the start of the buffer
++ * (DES places its 8 byte IV at offset 8) and the cipher key at offset 0x10.
++ */
++#define CRYPT_CTX_IV_OFFSET         0x00
++#define CRYPT_CTX_DES_IV_OFFSET     0x08
++#define CRYPT_CTX_KEY_OFFSET        0x10
++#define CRYPT_CTX_SIZE              0x30
+ 
+ #define R_STATUS        (0x1c / 4)
+ #define HASH_IRQ        BIT(9)
+@@ -65,7 +97,6 @@
+ /* Other cmd bits */
+ #define  HASH_IRQ_EN                    BIT(9)
+ #define  HASH_SG_EN                     BIT(18)
+-#define  CRYPT_IRQ_EN                   BIT(12)
+ /* Scatter-gather data list */
+ #define SG_LIST_LEN_SIZE                4
+ #define SG_LIST_LEN_MASK                0x0FFFFFFF
+@@ -501,6 +532,216 @@ static void do_hash_operation(AspeedHACEState *s, int algo, bool sg_mode,
+     }
  }
  
-+/* Interrupt status set on limit violation; persists while fault remains */
-+static void test_interrupt_status(void *obj, void *data, QGuestAllocator *alloc)
++static bool crypt_aes_alg(uint32_t cmd, QCryptoCipherAlgo *alg, size_t *keylen)
 +{
-+    QI2CDevice *dev = (QI2CDevice *)obj;
-+    uint8_t status;
++    switch (cmd & CRYPT_CMD_AES_KEY_LEN_MASK) {
++    case CRYPT_CMD_AES128:
++        *alg = QCRYPTO_CIPHER_ALGO_AES_128;
++        *keylen = 16;
++        break;
++    case CRYPT_CMD_AES192:
++        *alg = QCRYPTO_CIPHER_ALGO_AES_192;
++        *keylen = 24;
++        break;
++    case CRYPT_CMD_AES256:
++        *alg = QCRYPTO_CIPHER_ALGO_AES_256;
++        *keylen = 32;
++        break;
++    default:
++        return false;
++    }
 +
-+    i2c_set8(dev, REG_LIMIT_BASE, 0x10);
-+    g_test_message("Set ch0 high limit = 0x10");
-+
-+    qmp_adc128d818_set("ain0", 2560);
-+    g_test_message("Injected ain0 = 2560 mV (exceeds limit)");
-+
-+    i2c_set8(dev, REG_CONFIG, CONFIG_START | CONFIG_INT_ENABLE);
-+
-+    status = i2c_get8(dev, REG_INT_STATUS);
-+    g_test_message("INT_STATUS = 0x%02x (expect bit 0 set)", status);
-+    g_assert_cmphex(status & 0x01u, ==, 0x01);
-+
-+    status = i2c_get8(dev, REG_INT_STATUS);
-+    g_test_message("INT_STATUS after re-read = 0x%02x (expect bit 0 still set)",
-+             status);
-+    g_assert_cmphex(status & 0x01u, ==, 0x01);
-+
-+    qmp_adc128d818_set("ain0", 80);
-+    g_test_message("Injected ain0 = 80 mV (within limit)");
-+    status = i2c_get8(dev, REG_INT_STATUS);
-+    g_test_message("INT_STATUS after fault cleared = 0x%02x "
-+                   "(expect bit 0 clear)", status);
-+    g_assert_cmphex(status & 0x01u, ==, 0x00);
++    return true;
 +}
 +
-+/* INT_CLEAR stops the round-robin monitoring loop */
-+static void test_int_clear(void *obj, void *data, QGuestAllocator *alloc)
++/*
++ * Decode the crypto command register into a libqcrypto algorithm/mode pair
++ * and the block/IV geometry. Returns false for unsupported selections.
++ */
++static bool crypt_decode_cmd(uint32_t cmd, QCryptoCipherAlgo *alg,
++                             QCryptoCipherMode *mode, size_t *keylen,
++                             size_t *blocklen, size_t *iv_offset)
 +{
-+    QI2CDevice *dev = (QI2CDevice *)obj;
-+    uint8_t status;
++    if (cmd & CRYPT_CMD_DES_SELECT) {
++        *blocklen = 8;
++        *iv_offset = CRYPT_CTX_DES_IV_OFFSET;
++        if (cmd & CRYPT_CMD_TRIPLE_DES) {
++            *alg = QCRYPTO_CIPHER_ALGO_3DES;
++            *keylen = 24;
++        } else {
++            *alg = QCRYPTO_CIPHER_ALGO_DES;
++            *keylen = 8;
++        }
++    } else {
++        *blocklen = 16;
++        *iv_offset = CRYPT_CTX_IV_OFFSET;
++        if (!crypt_aes_alg(cmd, alg, keylen)) {
++            return false;
++        }
++    }
 +
-+    i2c_set8(dev, REG_LIMIT_BASE, 0x10);
-+    qmp_adc128d818_set("ain0", 2560);
++    switch (cmd & CRYPT_CMD_OP_MODE_MASK) {
++    case CRYPT_CMD_ECB:
++        *mode = QCRYPTO_CIPHER_MODE_ECB;
++        break;
++    case CRYPT_CMD_CBC:
++        *mode = QCRYPTO_CIPHER_MODE_CBC;
++        break;
++    default:
++        return false;
++    }
 +
-+    i2c_set8(dev, REG_CONFIG,
-+             CONFIG_START | CONFIG_INT_ENABLE | CONFIG_INT_CLEAR);
-+    status = i2c_get8(dev, REG_INT_STATUS);
-+    g_test_message("INT_STATUS with INT_CLEAR set = 0x%02x (expect 0x00)",
-+                   status);
-+    g_assert_cmphex(status, ==, 0x00);
-+
-+    i2c_set8(dev, REG_CONFIG, CONFIG_START | CONFIG_INT_ENABLE);
-+    status = i2c_get8(dev, REG_INT_STATUS);
-+    g_test_message("INT_STATUS after INT_CLEAR cleared = 0x%02x (expect bit 0)",
-+             status);
-+    g_assert_cmphex(status & 0x01u, ==, 0x01);
++    return true;
 +}
 +
-+/* Low-limit interrupt triggers correctly */
-+static void test_low_limit(void *obj, void *data, QGuestAllocator *alloc)
++/*
++ * Direct access mode: the source/destination register (HACE00/HACE04) points
++ * at a single contiguous buffer in DRAM. Copy @len bytes between it and the
++ * bounce buffer @buf; when @to_dram is true @buf is written out, otherwise it
++ * is read in. Returns true on success.
++ */
++static bool crypt_prepare_direct(AspeedHACEState *s, uint64_t addr,
++                                 uint8_t *buf, uint32_t len, bool to_dram)
 +{
-+    QI2CDevice *dev = (QI2CDevice *)obj;
-+    uint8_t status;
-+
-+    i2c_set8(dev, REG_CONFIG, CONFIG_INITIALIZATION);
-+
-+    i2c_set8(dev, REG_LIMIT_BASE + 3u, 0x80);
-+    g_test_message("Set ch1 low limit = 0x80");
-+
-+    i2c_set8(dev, REG_LIMIT_BASE + 5u, 0x80);
-+    g_test_message("Set ch2 low limit = 0x80");
-+
-+    qmp_adc128d818_set("ain1", 640);
-+    qmp_adc128d818_set("ain2", 1280);
-+    qmp_adc128d818_set("ain0", 1280);
-+    i2c_set8(dev, REG_CONFIG, CONFIG_START | CONFIG_INT_ENABLE);
-+
-+    status = i2c_get8(dev, REG_INT_STATUS);
-+    g_test_message("INT_STATUS = 0x%02x (expect bits 1 and 2 set)", status);
-+    g_assert_cmphex(status & 0x02u, ==, 0x02);
-+    g_assert_cmphex(status & 0x04u, ==, 0x04);
-+
-+    g_assert_cmphex(status & 0x01u, ==, 0x00);
++    return !address_space_rw(&s->dram_as, addr, MEMTXATTRS_UNSPECIFIED,
++                             buf, len, to_dram);
 +}
 +
-+/* Temperature high-limit interrupt with hysteresis */
-+static void test_temp_hysteresis(void *obj, void *data,
-+                                 QGuestAllocator *alloc)
++/*
++ * Perform an AES/DES/3DES ECB/CBC operation in direct access mode: the source
++ * and destination are single contiguous buffers (HACE00/HACE04) and the IV/key
++ * come from the context buffer (HACE08). For CBC the resulting chaining IV is
++ * written back to the context buffer so the driver can continue the chain.
++ */
++static void do_crypt_operation(AspeedHACEState *s, uint32_t cmd)
 +{
-+    QI2CDevice *dev = (QI2CDevice *)obj;
-+    uint8_t status;
++    uint32_t len = s->regs[R_CRYPT_DATA_LEN];
++    bool encrypt = cmd & CRYPT_CMD_ENCRYPT;
++    g_autoptr(QCryptoCipher) cipher = NULL;
++    g_autofree uint8_t *src_buf = NULL;
++    g_autofree uint8_t *dst_buf = NULL;
++    uint8_t ctx[CRYPT_CTX_SIZE];
++    Error *local_err = NULL;
++    QCryptoCipherMode mode;
++    QCryptoCipherAlgo alg;
++    const uint8_t *next_iv;
++    uint64_t ctx_addr;
++    uint64_t src_addr;
++    uint64_t dst_addr;
++    size_t iv_offset;
++    size_t blocklen;
++    size_t keylen;
 +
-+    i2c_set8(dev, REG_CONFIG, CONFIG_INITIALIZATION);
++    if (len == 0) {
++        return;
++    }
 +
-+    i2c_set8(dev, REG_LIMIT_BASE + 7u * 2u, 0x32);
-+    i2c_set8(dev, REG_LIMIT_BASE + 7u * 2u + 1u, 0x28);
++    if (!crypt_decode_cmd(cmd, &alg, &mode, &keylen, &blocklen, &iv_offset)) {
++        qemu_log_mask(LOG_UNIMP,
++                      "%s: Unsupported crypt command 0x%x\n", __func__, cmd);
++        return;
++    }
 +
-+    qmp_adc128d818_set("temperature", 25000);
-+    i2c_set8(dev, REG_CONFIG, CONFIG_START);
++    if (!qcrypto_cipher_supports(alg, mode)) {
++        qemu_log_mask(LOG_UNIMP,
++                      "%s: cipher mode not supported by the crypto backend\n",
++                      __func__);
++        return;
++    }
 +
-+    status = i2c_get8(dev, REG_INT_STATUS);
-+    g_test_message("25 C: INT_STATUS = 0x%02x (temp bit expect clear)", status);
-+    g_assert_cmphex(status & 0x80u, ==, 0x00);
++    /* Fetch the IV and key from the context buffer in DRAM. */
++    ctx_addr = s->regs[R_CRYPT_CONTEXT];
++    if (address_space_read(&s->dram_as, ctx_addr, MEMTXATTRS_UNSPECIFIED,
++                           ctx, sizeof(ctx))) {
++        qemu_log_mask(LOG_GUEST_ERROR,
++                      "%s: Failed to read context, addr=0x%" HWADDR_PRIx "\n",
++                      __func__, ctx_addr);
++        return;
++    }
 +
-+    qmp_adc128d818_set("temperature", 55000);
-+    status = i2c_get8(dev, REG_INT_STATUS);
-+    g_test_message("55 C: INT_STATUS = 0x%02x (temp bit expect set)", status);
-+    g_assert_cmphex(status & 0x80u, ==, 0x80);
++    if (trace_event_get_state_backends(TRACE_ASPEED_HACE_HEXDUMP)) {
++        hace_hexdump("context", (char *)ctx, sizeof(ctx));
++    }
 +
-+    qmp_adc128d818_set("temperature", 45000);
-+    status = i2c_get8(dev, REG_INT_STATUS);
-+    g_test_message("45 C (hysteresis): INT_STATUS = 0x%02x "
-+                   "(temp bit expect set)", status);
-+    g_assert_cmphex(status & 0x80u, ==, 0x80);
++    cipher = qcrypto_cipher_new(alg, mode, ctx + CRYPT_CTX_KEY_OFFSET, keylen,
++                                &local_err);
++    if (cipher == NULL) {
++        qemu_log_mask(LOG_GUEST_ERROR, "%s: qcrypto cipher new failed: %s\n",
++                      __func__, error_get_pretty(local_err));
++        error_free(local_err);
++        return;
++    }
 +
-+    qmp_adc128d818_set("temperature", 35000);
-+    status = i2c_get8(dev, REG_INT_STATUS);
-+    g_test_message("35 C: INT_STATUS = 0x%02x (temp bit expect clear)", status);
-+    g_assert_cmphex(status & 0x80u, ==, 0x00);
++    if (mode != QCRYPTO_CIPHER_MODE_ECB &&
++        qcrypto_cipher_setiv(cipher, ctx + iv_offset, blocklen,
++                             &local_err) < 0) {
++        qemu_log_mask(LOG_GUEST_ERROR, "%s: qcrypto cipher setiv failed: %s\n",
++                      __func__, error_get_pretty(local_err));
++        error_free(local_err);
++        return;
++    }
++
++    src_buf = g_malloc0(len);
++    dst_buf = g_malloc0(len);
++
++    src_addr = s->regs[R_CRYPT_SRC];
++    if (!crypt_prepare_direct(s, src_addr, src_buf, len, false)) {
++        qemu_log_mask(LOG_GUEST_ERROR,
++                      "%s: Failed to read src, addr=0x%" HWADDR_PRIx "\n",
++                      __func__, src_addr);
++        return;
++    }
++
++    if (trace_event_get_state_backends(TRACE_ASPEED_HACE_HEXDUMP)) {
++        hace_hexdump("src", (char *)src_buf, len);
++    }
++
++    if (encrypt) {
++        if (qcrypto_cipher_encrypt(cipher, src_buf, dst_buf, len,
++                                   &local_err) < 0) {
++            qemu_log_mask(LOG_GUEST_ERROR, "%s: encrypt failed: %s\n",
++                          __func__, error_get_pretty(local_err));
++            error_free(local_err);
++            return;
++        }
++    } else {
++        if (qcrypto_cipher_decrypt(cipher, src_buf, dst_buf, len,
++                                   &local_err) < 0) {
++            qemu_log_mask(LOG_GUEST_ERROR, "%s: decrypt failed: %s\n",
++                          __func__, error_get_pretty(local_err));
++            error_free(local_err);
++            return;
++        }
++    }
++
++    dst_addr = s->regs[R_CRYPT_DEST];
++    if (!crypt_prepare_direct(s, dst_addr, dst_buf, len, true)) {
++        qemu_log_mask(LOG_GUEST_ERROR,
++                      "%s: Failed to write dst, addr=0x%" HWADDR_PRIx "\n",
++                      __func__, dst_addr);
++        return;
++    }
++
++    if (trace_event_get_state_backends(TRACE_ASPEED_HACE_HEXDUMP)) {
++        hace_hexdump("dst", (char *)dst_buf, len);
++    }
++
++    if (mode == QCRYPTO_CIPHER_MODE_CBC) {
++        /*
++         * CBC chains on the last ciphertext block: the final block of the
++         * output when encrypting, or of the input when decrypting. Write it
++         * back as the IV for the next request.
++         */
++        next_iv = (encrypt ? dst_buf : src_buf) + len - blocklen;
++        if (address_space_write(&s->dram_as, ctx_addr + iv_offset,
++                                MEMTXATTRS_UNSPECIFIED, next_iv, blocklen)) {
++            qemu_log_mask(LOG_GUEST_ERROR,
++                          "%s: Failed to write IV, addr=0x%" HWADDR_PRIx "\n",
++                          __func__, ctx_addr + iv_offset);
++        }
++    }
 +}
 +
- static void adc128d818_register_nodes(void)
+ static uint64_t aspeed_hace_read(void *opaque, hwaddr addr, unsigned int size)
  {
-     QOSGraphEdgeOptions opts = {
-@@ -354,5 +471,9 @@ static void adc128d818_register_nodes(void)
-     qos_add_test("temperature-edges", "adc128d818", test_temperature_edges,
-                  NULL);
-     qos_add_test("ext-vref", "adc128d818", test_ext_vref, NULL);
-+    qos_add_test("interrupt-status", "adc128d818", test_interrupt_status, NULL);
-+    qos_add_test("int-clear", "adc128d818", test_int_clear, NULL);
-+    qos_add_test("low-limit", "adc128d818", test_low_limit, NULL);
-+    qos_add_test("temp-hysteresis", "adc128d818", test_temp_hysteresis, NULL);
- }
- libqos_init(adc128d818_register_nodes);
+     AspeedHACEState *s = ASPEED_HACE(opaque);
+@@ -531,16 +772,22 @@ static void aspeed_hace_write(void *opaque, hwaddr addr, uint64_t data,
+                 qemu_irq_lower(s->irq);
+             }
+         }
+-        if (ahc->raise_crypt_interrupt_workaround) {
+-            if (data & CRYPT_IRQ) {
+-                data &= ~CRYPT_IRQ;
++        if (data & CRYPT_IRQ) {
++            data &= ~CRYPT_IRQ;
+ 
+-                if (s->regs[addr] & CRYPT_IRQ) {
+-                    qemu_irq_lower(s->irq);
+-                }
++            if (s->regs[addr] & CRYPT_IRQ) {
++                qemu_irq_lower(s->irq);
+             }
+         }
+         break;
++    case R_CRYPT_SRC:
++    case R_CRYPT_DEST:
++    case R_CRYPT_CONTEXT:
++        data &= ahc->src_mask;
++        break;
++    case R_CRYPT_DATA_LEN:
++        data &= CRYPT_DATA_LEN_MASK;
++        break;
+     case R_HASH_SRC:
+         data &= ahc->src_mask;
+         break;
+@@ -589,13 +836,19 @@ static void aspeed_hace_write(void *opaque, hwaddr addr, uint64_t data,
+         break;
+     }
+     case R_CRYPT_CMD:
+-        qemu_log_mask(LOG_UNIMP, "%s: Crypt commands not implemented\n",
+-                       __func__);
+-        if (ahc->raise_crypt_interrupt_workaround) {
+-            s->regs[R_STATUS] |= CRYPT_IRQ;
+-            if (data & CRYPT_IRQ_EN) {
+-                qemu_irq_raise(s->irq);
+-            }
++        /*
++         * The AST2700 crypto engine needs 64-bit DMA and AES-GCM, which are
++         * added later; until then it keeps the temporary workaround of only
++         * raising the completion interrupt without running the command.
++         */
++        if (!ahc->raise_crypt_interrupt_workaround) {
++            do_crypt_operation(s, data);
++        }
++
++        /* Hardware raises the crypt interrupt once the command finishes. */
++        s->regs[R_STATUS] |= CRYPT_IRQ;
++        if (data & CRYPT_CMD_ISR_EN) {
++            qemu_irq_raise(s->irq);
+         }
+         break;
+     case R_HASH_SRC_HI:
 -- 
 2.55.0
 

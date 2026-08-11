@@ -4,45 +4,45 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5299BC5AD7B
-	for <qemu-arm@archiver.kernel.org>; Tue, 11 Aug 2026 03:15:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 030E0C5B56A
+	for <qemu-arm@archiver.kernel.org>; Tue, 11 Aug 2026 03:15:50 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wtctx-00046S-QP; Mon, 10 Aug 2026 23:11:41 -0400
+	id 1wtcsx-0003f4-T5; Mon, 10 Aug 2026 23:10:39 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
- id 1wtctw-00045c-Gr; Mon, 10 Aug 2026 23:11:40 -0400
+ id 1wtcsv-0003eF-7a; Mon, 10 Aug 2026 23:10:37 -0400
 Received: from mail-koreacentralazlp170130006.outbound.protection.outlook.com
  ([2a01:111:f403:c40f::6] helo=SEYPR02CU001.outbound.protection.outlook.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
- id 1wtctu-0004L5-UZ; Mon, 10 Aug 2026 23:11:40 -0400
+ id 1wtcss-0004JO-Hx; Mon, 10 Aug 2026 23:10:36 -0400
 ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=FkYgp4+i6SVxLbOQxyljuqFE3CQy03EMvsVQwPxWVi90RxN8KzEoswVw6GPvS74cT5W4C1PlMHoIgOerQAFldoxjh2dDW8T+d1RoCMHBZHYxGev1p9OmR9nIfO+dmPadQHbdqq+yqP6/WpS/wElJiso6i8YcBYuAAbryoKvU34/bgzhDDafaq7cJqNMCRC0b+q07bIEpg7JyICidoEQ1udlX0ZsKCjae82KCBNs7dX/NF5uYxZBn3M5TDq/Yh2pP/9jVTBxRoOBRZUk0URW5hGjk07LQwWeVjGLpl9rP3hwXrejx6rsWjaeI7livHrKt9TAuvwpYFPAWvJx3lspHHw==
+ b=mlMVNe2bI4HKhI7AMqzTx7Xhuv14ElFTfycPwdRIa/VUsuFK9IBjQ7iEKPxHiewl5+AJ84aETKmLomTsSWQiGM93WkJGUKC43FwWT79So28guFfrgZi6LVZ49SB/w+/pIeC7VSXGPIRrLSt8VCKTn6qX9xS/EbNtkAO2eTlVncmFQlu7UxxeZ/uU8JCOrT+99jfLS2FiHjyyD9u2BW9r8nKFZQl4QAGYDuTCZGh+dagOieko36gyuJuX1oypTcDqH8K6lARuqY5Md4UFq8UXJsmkmkFtAmPXedb37XdLvb/conw7ObB7nMi8c65sebP1FtDK61Sey+IaS75j/9hhcg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
  s=arcselector10001;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=CRzGCw9Hi6nSRWmZdKy55qviH7l5rHRPGVAWs/2wz6Y=;
- b=PsxNmV2kXP+nqNkn+e5g91hmyrEFv8g2aGg6fGMqKCrzMShPD0MuXwSUVbJp7l9W1UK6MMOCsob1Azs9bg/+S0v7MrXJz7Gs1mL4aVBRXAvEy6fsEoDglbRVBqNnBd+WYNFKvr+1YThrSBfDCZRpw5/ObwY1ypAEM/xNTwNc3bxy2+fcREOX2PWfJIeDyHmVzUrLsBeZp8cKsRNOmWZCws4rU8UJBfsmZPuOcamx/IGkVzDpJ2HFlKvxxSxZhVYSTOB6R2GwOy6NPo2mgMu5I1Mcjkb5diIJzzaAd0VcwjK0ykJlvhHkwJjvgQKQIIephKYyFk8D8fCkbaQEiiBZrA==
+ bh=GcTqyUUlxxwyFH+8XvFBbgBsOI38OI1BBw966N3pzWM=;
+ b=kcTBO76d8/kmOJKpmSqSxz5+n4ARFga5sy6Bhz9i9bz6I72IfyK1rPlz698WHLLoKfwYUgECF6taJtRwaa01ZhubQK8BO7txhP1HVmD4KgDjVpquzRnzLL1Vguq5JSuoL5/Jm1zZeS3a/vcKHll9Ek4AfWnLu+l+DNK4yf9Mis8HA178HlwMhoHYLdIBvjBdG9rbQPaLQ2hoXqGTiyaXVi9f3jQZZR/MOc5bdzEsONKPCOs13cZojJUUIUnHjQR/dxCBQBYoBIhEj9TkI/tNi1UAuOOH8PocjFm5L2Om1s5KLAkCCZ6SJUtT8CyNHJKhy5mNE7Cy3UYj+TEq+lu3vQ==
 ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
  smtp.mailfrom=aspeedtech.com; dmarc=pass action=none
  header.from=aspeedtech.com; dkim=pass header.d=aspeedtech.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=aspeedtech.com;
  s=selector1;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=CRzGCw9Hi6nSRWmZdKy55qviH7l5rHRPGVAWs/2wz6Y=;
- b=k3NvezFjAI+p2ZJoU4J+Q9048k7e1nRM9I9S28lhQPwlugvM18ITJqJqjkfGi9UW1Qt7dhrhsAOgO2qPGstfErJTQX1xgAStD9orEr9CVpZhoJ6qeX3cYHpY8Dg9INJ4yN/iOPbZWp57LkU9Y4ts7Pv6ZU5WVCBd9rKi4PmNGWcnQcGYBLyelmnRV0GXdUzK+wAHwyy/WvbhW//dFZvsgPQzeHpNmljQ1IX2q9bo0Zw1mWA/OltLSlxOa6KExXSty7OE+u/4C+K8D5qXu7ZmOl1Y0sj8W7hIQ7V6bLowPCBfikNuB6kmdJdoFPTNyZXNNUjy3XeiPqjzWhk/id0fNA==
+ bh=GcTqyUUlxxwyFH+8XvFBbgBsOI38OI1BBw966N3pzWM=;
+ b=ZgKau0akjp9PmymJ8NAkG0YMV5XWn/skegFCftJToE/pN3KfuQFzVxQebKOWvDmY2ACf33OHg/hhkzf7GuzBKU6ljG461XOxSPaf+z5r1wLhTeEUK5W3QMZEonBiARzz+5saLFg+xwrI9OKY9xl0cfWCoBE74Rc3n0JbIqDYLUKBO+N71m2xOcNF7dt47j/FbUioXyWsKcCNNczyLRtSTHYbKtFammzXr5/jUFEse1/tI2ZBqHf6Ljc3EKwzamStLuoY9Bj/KlJh9e4U+BxoQrDn06v7JkPaIW4MXOxfWqGunnCloFR8XJ0MwLl3UjmqnDLtH92BY/ZGmhHFxf0XkA==
 Received: from TYZPR06MB4980.apcprd06.prod.outlook.com (2603:1096:400:1cc::10)
  by TYZPR06MB5808.apcprd06.prod.outlook.com (2603:1096:400:26a::5)
  with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.21.292.25; Tue, 11 Aug
- 2026 03:10:46 +0000
+ 2026 03:10:27 +0000
 Received: from TYZPR06MB4980.apcprd06.prod.outlook.com
  ([fe80::ea8a:7cb7:4822:2fb3]) by TYZPR06MB4980.apcprd06.prod.outlook.com
  ([fe80::ea8a:7cb7:4822:2fb3%6]) with mapi id 15.21.0292.024; Tue, 11 Aug 2026
- 03:10:46 +0000
+ 03:10:26 +0000
 From: Jamin Lin <jamin_lin@aspeedtech.com>
 To: =?iso-8859-1?Q?Daniel_P=2E_Berrang=E9?= <berrange@redhat.com>,
  =?iso-8859-1?Q?C=E9dric_Le_Goater?= <clg@kaod.org>, Peter Maydell
@@ -54,15 +54,11 @@ To: =?iso-8859-1?Q?Daniel_P=2E_Berrang=E9?= <berrange@redhat.com>,
  <pbonzini@redhat.com>, "open list:All patches CC here"
  <qemu-devel@nongnu.org>, "open list:ASPEED BMCs" <qemu-arm@nongnu.org>
 CC: Jamin Lin <jamin_lin@aspeedtech.com>, Troy Lee <troy_lee@aspeedtech.com>
-Subject: [PATCH v3 15/16] hw/misc/aspeed_hace: Enable the crypto command on
- the AST2700
-Thread-Topic: [PATCH v3 15/16] hw/misc/aspeed_hace: Enable the crypto command
- on the AST2700
-Thread-Index: AQHdKT8AUpvX+TYPfUWpPZ2FMBJQoQ==
-Date: Tue, 11 Aug 2026 03:10:46 +0000
-Message-ID: <20260811031025.2784489-16-jamin_lin@aspeedtech.com>
-References: <20260811031025.2784489-1-jamin_lin@aspeedtech.com>
-In-Reply-To: <20260811031025.2784489-1-jamin_lin@aspeedtech.com>
+Subject: [PATCH v3 00/16] Support the ASPEED HACE crypto command
+Thread-Topic: [PATCH v3 00/16] Support the ASPEED HACE crypto command
+Thread-Index: AQHdKT71HIeySLgUaU68+RexcXipmQ==
+Date: Tue, 11 Aug 2026 03:10:26 +0000
+Message-ID: <20260811031025.2784489-1-jamin_lin@aspeedtech.com>
 Accept-Language: zh-TW, en-US
 Content-Language: en-US
 X-MS-Has-Attach: 
@@ -71,61 +67,61 @@ authentication-results: dkim=none (message not signed)
  header.d=none;dmarc=none action=none header.from=aspeedtech.com;
 x-ms-publictraffictype: Email
 x-ms-traffictypediagnostic: TYZPR06MB4980:EE_|TYZPR06MB5808:EE_
-x-ms-office365-filtering-correlation-id: 76f92c8d-346a-41ab-8607-08def7562338
+x-ms-office365-filtering-correlation-id: 4369ef6b-8f97-4813-b156-08def756178c
 x-ms-exchange-senderadcheck: 1
 x-ms-exchange-antispam-relay: 0
 x-microsoft-antispam: BCL:0;
- ARA:13230040|7416014|376014|23010399003|366016|1800799024|22082099003|56012099006|18002099003|38070700021|10067099003|921020;
-x-microsoft-antispam-message-info: V8hZA+r3dNkZPGMUcKuYsaBhNfoPMwu5mzXpDN8ejb89zyd+ZaUD0glal8n470tO1lMpRhJ8jA5dkzd44QpUdD1uDdQklYOqYRKXJHLAMHjxaGTfvY9/uwFUaYmvbfYq8xScBppc1NH0GPh8gDb69Y+EwqvOV2KivRhJGgMSROsa8RjBPWMY09RwjbYwVqVEaV2aMmTvYnT/Pje9MROCqNWOFf1MpZuQwXkC1P5OGpkKU2DIkTZstyIWddrOfR6BLcdHogJVQ1bYXS3Itk4fjbrxYI3pLkCIkMia7Hx5tzcVDRsm0qG0WdjCwlbuG8BEIJ2thtuIYzTVQNFExWg+79g0y6RZr55wvy89nC/o9LFGZg9K10JrkiXqd4uyq13yEYqq57zrw6AWYZTRSvZIZVOs8ld1n5Cbtw8fVGGLbl5fG8BUKJkhV53o+MWs9Rum+OoW0D+AHthAM7ja8z/463f3u2NseD23GEQ/H2p1NoInNDyh3lglFCAcSeHp9AooV0VDllBc8Dh69mcjFAgH7PZ+xNpiwIP+g4fDWYAahI1Dh09pQnQ2cCCg/VkDrTEjuhNrx4rTwFdzQ0xaXl8VOaReb9BySKPsVbCsikCJOLWTCbz9soUDLrjOn/H81a1MdgZuI3hGHggTqm85n/1FmwlTl3a1Dhz9gB7+xCsBM/ia2HuPa7uf4bHHt8xoSGNCjo1LHJiV0W6Uy7z4u8fNCgKn77dv7Kf83DsFbRKgL2g+q/PrOhXT3YojkSfqOXPQ
+ ARA:13230040|7416014|376014|23010399003|366016|1800799024|56012099006|18002099003|38070700021|10067099003|921020;
+x-microsoft-antispam-message-info: GEoQglT8xybZ+Ak7Qadd23OwXOdLZBWdN3o9cxTWxMa+lmmN91lHFoPftpge1PfZj8lfoq90LWJS+Z5pb8P0jTSO10iozp7BQ/DIK+EknBhSdiREkjT+RkdirxONTUIBvuZx2PMCwR+9MqXFrpJVIZIRSj8YoAQc6F0Ycm4ccrpu7/4uim10nKdMdvbIPj5M17bTQI3upfio8osUgLQXyoojJ5zwuTxKRagCUXlpc8K5gKaLplz4EupgiLnbyIKGL87sfBRmaHf4sPUnntECyCzSaMpJqj2509GypEZB9fJpBayMOu8LkEDKpN4NyfiZmb3ejF1B+JUmYTyhWO5uuAcH5nH4Pl3HyDeM40H5ZSSnXUZCbkrtB2nRl0SCCnYVKKWZTKjUbFS8TtUMJlNqV0d8gjXojcp+728TrFEq997IFGAKtdK/0igcx7cUOvqtMTVjotvHdE7+JH2V6ejpZTgEQ+MbNMZQygcPIwsC8BpDclhv1Q9XsQvHjSqyMnnZxkTM5hP7KGSJShl4okflkmfkQOig7MYE90bjw4QYzYp0e4xb2XDD/trkrMi8qPAGpAHwdWEcmBWb+vx/n6l5fSrxLM/dKMZPQr3ur0+OsOU4isSzvJr62UTnuTnJY23LCAKzLfsnYDokXAuUIKlXJyQXYsSKcxDkOkzoliZjqs0Hs3LtwNoQ8lnfs4YTikoEqlMTpMead9qq8ICzxyMDl4VLc9k4p1qpzktygCOY0PXEWrodfM1/GPP2V7Ms3NHd
 x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
  IPV:NLI; SFV:NSPM; H:TYZPR06MB4980.apcprd06.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(13230040)(7416014)(376014)(23010399003)(366016)(1800799024)(22082099003)(56012099006)(18002099003)(38070700021)(10067099003)(921020);
+ SFS:(13230040)(7416014)(376014)(23010399003)(366016)(1800799024)(56012099006)(18002099003)(38070700021)(10067099003)(921020);
  DIR:OUT; SFP:1102; 
 x-ms-exchange-antispam-messagedata-chunkcount: 1
-x-ms-exchange-antispam-messagedata-0: =?iso-8859-1?Q?eKh4L5Qx40WlHexOJwTD3i7VKaPKIEL8C6C7TkIYgmMDRLnzIJljDiMpvC?=
- =?iso-8859-1?Q?u7Tj+4zGQpv0KsU9zDPOBVgQXjiFUBvfHtlmcz5YW1vluNIm58o3WqTglE?=
- =?iso-8859-1?Q?JQ7bs6Yd/CJH6dK6DtSzGybr6mwfWoz365MQ2IlGIlatiJYM0Uqzc4jBTK?=
- =?iso-8859-1?Q?o+ctpwjIXpopPySQKDW8HceTclupNOINhnjskc7aCCBB5o0DT0WEMamwIJ?=
- =?iso-8859-1?Q?MxejUIT8fdUyoM/1aPaFndKeqmD9lMjpZ3elIMkKaZapcH6RKiStiOs40l?=
- =?iso-8859-1?Q?x3Grz04dlV4uEa+SruHuq6981lHK5k0XamLjzs+ak/BuSlKD1GopkCc3Zu?=
- =?iso-8859-1?Q?uRIrTJwqaT7fTVu6qo4rzMTGxK2UWlUJPmNZpzj7sZMEeljX2uiKprTB99?=
- =?iso-8859-1?Q?FBwDcfBoGAmxwG1I1YddpqYob0yUyC6chCwL/3AXHzaHj3OlgbIWONqYza?=
- =?iso-8859-1?Q?K21HjRq/zNCSlcpHBR9T6xhxb23mZNdPDqQHKXbkpqTfw00GH1Nm2obSS2?=
- =?iso-8859-1?Q?DQGSHA3WbCjxidOGV1z748+Dtv0UpxOUIJOxOCyew6OktOVQ9D1jBcBdzS?=
- =?iso-8859-1?Q?edFPyfSCQ7QJ7wxXdnu/zxKro3ov6hWGyZLQR/bBWLFprRHjdum7Fvgsuh?=
- =?iso-8859-1?Q?yDuGaa/jrKuTfcgUy9k+QEo4QvuXPSf/jrW2lvXF6K/fab7muWyG5TmbdC?=
- =?iso-8859-1?Q?X1yfCZqqQI6cSOPq5l1KFg4DLzmrVy3F3zEyWf8T4Uks2gILB5R6VB4r0N?=
- =?iso-8859-1?Q?/ljadBK5Prut+u8E5vD0v1Ioge8/D8u//Lz+UpwLKZZN9Lz4F183/X+oXM?=
- =?iso-8859-1?Q?7q6AcTj5old2RyD5e9h/zh0E9OG659Ht3UW5aqtb5h+nI5iYSE9HvUYq/I?=
- =?iso-8859-1?Q?5t8ELSY5wsNM/XK3hwsVBiLA1hOushStA8HzPIGmlMLo8N7aFcgM9EbsCy?=
- =?iso-8859-1?Q?o60iEC43Wz7rtcVUtftMkA5f5FEU974dXppWuCO0r2Mk8KxwCjS+D+8gaE?=
- =?iso-8859-1?Q?srUf+OaSgDRuo/2g9PFrNdoL4C9WYhcgnNZ+px6LnrDXosxbX8vE5ztAzL?=
- =?iso-8859-1?Q?zbGBAVJ0B48fA6m1CyF/V96/MfH82oIoH/D4dshlqfZrFspr+zPXcO3XNN?=
- =?iso-8859-1?Q?RF2pulj7qYNw0hZ2UPvwHmhUyyuzMXMn5P49RWKhlGnvg+YtqbQ2z6zxYA?=
- =?iso-8859-1?Q?OiIz6xqfaASl7qqAQHnNu/e7T+0saC9Em8L2Iq7uXojdeA3nehEZqrNtVt?=
- =?iso-8859-1?Q?teahZNV/x3la6kPplcI0+nmekDraTQhrwitiPPeaNVS2KijxbJoCIKUrP8?=
- =?iso-8859-1?Q?r+obkyPYcC5aw0Nz4jBuS3LJWlTGP5TZPo89+TBCsbHzwfpQUbjBh5QHev?=
- =?iso-8859-1?Q?NBFSqeJOEzdzQp+ytVW0lOwY8M/vGP1SpFwlYPwwHkI4MbHYNI6vuBziUZ?=
- =?iso-8859-1?Q?XF9CvA4TB9TEdyv/1zq+u2QJxlX9SQT9vsuHRzvQ260IuzfoUUKwDCpyo1?=
- =?iso-8859-1?Q?assem3kMIh9rlbT7jlBsCfXC4iVMEILUlki4g9YouPIPWUZgaxwz5FxrpD?=
- =?iso-8859-1?Q?3A+fNV8O4tM9qWHWV/s6aDnavpQCqzxVBLImtcAT1IpE1jnjKjeas9y6tc?=
- =?iso-8859-1?Q?0p57A7mjMduWmH1PEeHb3eKgOcD0JfaeloIz3NfkIH8b4VS22R5U40pZJJ?=
- =?iso-8859-1?Q?UHf1tuH/04UpVGeW9pcSz4Cwl83nrqYmG/TNtGHi9aGnYwgerbTwVSRmLR?=
- =?iso-8859-1?Q?4neVedLvfpqOaQY7O5jL/qkDLMjGnNBKuZ9JzPSWaFAzTCvRLfZLtau+gC?=
- =?iso-8859-1?Q?qvEDZh8zWA=3D=3D?=
+x-ms-exchange-antispam-messagedata-0: =?iso-8859-1?Q?Eq5sBe+ZNKlufe+J2uz9ZDEsMRnedtOruQMAxcL2qIBkzRzUzm75y+gBMF?=
+ =?iso-8859-1?Q?AIuR3NdGGTj/ZxbrhLrkXXJaP5hEq6V/kLWNHjjuAQ6LSTrxX6GxHMv3jK?=
+ =?iso-8859-1?Q?sRJXOPZDc/2eB8gMKQwGLEOwWeRo6IfxKYdmLDgE5fNl6c6vvV7CRVQN1n?=
+ =?iso-8859-1?Q?C4qtlOSfm1CznR0jKDDz9Nw/yXxpV7cIuaiglX8KWM6CQIIsKn6gR1KAoa?=
+ =?iso-8859-1?Q?I2Wu2+sW5S/tDgnJW1EXf8cT2Hx4yKusTMi/NIN6KWa5r5Nkh3fUnEIMGl?=
+ =?iso-8859-1?Q?7DNzcJk5K4HO1Ssytw9qOmdk4V9gEdG3cabZMtkePqss71z2GBTKeh3mFl?=
+ =?iso-8859-1?Q?SPmrpN/Av+cEy+GvsIFAqCxmnt4i3zr3DJKcQDiv95X55DH4XNt0bC7eta?=
+ =?iso-8859-1?Q?hmnGM7T+PqunNgnLWudsYjdRoFiyroiphlzJXNbv7IWHkSyVE7+YkRwQy5?=
+ =?iso-8859-1?Q?2n4ADIDQlR9WT2Ch3H0EWcEl8942NVlff98NTOx06e3hEOrS4WVQP7/qTk?=
+ =?iso-8859-1?Q?fcuwhOgCkDK6R0qF5kHrBGrB9Q4QmxM6WH3C7ltpWDw9Jxz44i/kkZkj0C?=
+ =?iso-8859-1?Q?3L3uGXClsCd8Qkrb7vEiFsb89rO8YDO5UIENIaoxnl46CE4P20jkiif3bs?=
+ =?iso-8859-1?Q?uyte5r0GxT7z6Lg+QidPJKtDRhJURDok3CbEIOARiKpDik9JWnbuCStCrL?=
+ =?iso-8859-1?Q?PbGQfLWivAdecuRym6RsLbEMbC8oTUEmbEZ58K6s5j/mA3yxINjStVKYdm?=
+ =?iso-8859-1?Q?RPUB8F7Itj9pZ++1fS7K4N4Kcyr7IIx3GiPdgkQ2D+JkPLp0MGDKICH0Dl?=
+ =?iso-8859-1?Q?yD9fwbP+Pk0CbmhwhQj3LOMu+IiXV8cBGpoiTjvJetJRLip0KM9JaafIUw?=
+ =?iso-8859-1?Q?dlrkBp5VvnjzXEKGb5rShQvCMbtOsyEnHsPtAvuFPkbkb8idR9qrLAmuCb?=
+ =?iso-8859-1?Q?kmQjGj3k3lGT1n8dGfBBHxHA1+Xe8WkNz7X3wEDDc1KRUUS9cKelIbAk3i?=
+ =?iso-8859-1?Q?AjG629rvJhj0tSsEW6DBhS4mlsTqFlX6x0IqXwzYyL/JckSKRZFhoG4wXM?=
+ =?iso-8859-1?Q?6Gy6GWy5pzWPi1QZQDTvcsjuo2k8qF8lsFKPuP6FuK+MvGBwpJCeMkGXFA?=
+ =?iso-8859-1?Q?N5lf+Bp2zwUA8NIOM3Q83uoBDaGQn+w0eBc3lmZwTK5kgtXQhBfemUKZ1M?=
+ =?iso-8859-1?Q?DuU/jKrwO2KkVs3pbfqKrPL/Ef61C8AkaeSEGxmgKrGGBrB1gWLF8cdbYd?=
+ =?iso-8859-1?Q?64rKP8HOCZLTDquzVPP8Xc65q129W92Z3AmaeFxin9vK/yrJT0aGHd4a6i?=
+ =?iso-8859-1?Q?lXhnGMvhQ7cwsb9poMeL8k112PkO72Uv2JFliHqYEW5RJ6yPdVJSeBcI0F?=
+ =?iso-8859-1?Q?zJK2ILKyXQPHjTRY58fWQnuciURx0XNIuKFHDgWy2PgB1tUEB3hn6L0Ctk?=
+ =?iso-8859-1?Q?8On3Xfc7ZDLAmhzQG/YQ/8ofBgNkV7XXXk7dOUxYMuwmugrMaZK/ozZNdH?=
+ =?iso-8859-1?Q?TbMaX15rmtHRIGcCuVHYU3MdF3qCy9Vv0O9qnI+G3+GgkrqTJvtAtbfu4u?=
+ =?iso-8859-1?Q?WgEbNX0n2Ma1S0OM3B7u2kjZBvbpwJif0XfOpoAIgQbg9FEAvVyiUhmpug?=
+ =?iso-8859-1?Q?cf4F5E5UvCw7iDIOdRafc+G6C1cbAEHvW+GVDR+xgRsweOYbxZoX90mpr2?=
+ =?iso-8859-1?Q?dBl+jjUB8V/mi+fZKzgsinfAdLSCx+04xV+M3xymxYO/SwoGrYqY+47l4g?=
+ =?iso-8859-1?Q?recSNR19GLLkoI+rEs0cWmyUqwAPNm8JW2A4ZzEkLAZS7f9U4fk1Oy0IAZ?=
+ =?iso-8859-1?Q?2ClGrX/zow=3D=3D?=
 Content-Type: text/plain; charset="iso-8859-1"
 Content-Transfer-Encoding: quoted-printable
 MIME-Version: 1.0
-X-Exchange-RoutingPolicyChecked: nuWNl5htpxDDKCE6nkkFnOvcaDtAfRrdhLoqDWzjszGumSwi2s+Zxz3xs+ZKAyIeLJcxoiRZWMiC/vXs4as8AzLXUAACUBemu5/odaZ07BUfVEATeQ9ik5BTWuCInLstCB2H1meh6+7v98z/ZjEPXisJSYyIVXMywfbkz/co82+k6UxgzqOmt7IDDnzCxMqxFzAXc6smMzv0mxK8s6rbIoTjmkg+8/yRspFXguPlW0rFtRR+DIw5dOH1DIOobM7mPtPyvlOczUrf41NFIQ6uq0TvLZqnEyaLbVYubv+1xvTIs6J6xlvh0qTA/qKz4Tk9EmRc9/M/NjYGQLFabsKl0Q==
+X-Exchange-RoutingPolicyChecked: raDyxq5poA4OUCfim1MHgcg4kA3NAp7vJ7LM579IC3eBJLZC6l3VOuhZpenZSRNrS97riMTjCweI2pamaJDJX3QuLmIIHrZvD04jRh5yxVZiyVUi/kovj7MksF77H29XYqpWcf/PUyoHLp8CiLWw7j1FEcbr3/7z3X82Eo7paLL9Fmz6owcqLGMZaJmAfFoCjWRFWAqdbHRLp2JEkzZKfTisRcohM7D1m9run4Cr7br+EJeYnx6JMF+cDesMHWhiqK4z1SMmfzYnmTqSw7DPRc/GhwJYZ9s1j5eFt/RvJ6xYTEFINMtR8Wbo7Ri7m2ZB3KfpoGSOt5sn3fTfPmwSKQ==
 X-OriginatorOrg: aspeedtech.com
 X-MS-Exchange-CrossTenant-AuthAs: Internal
 X-MS-Exchange-CrossTenant-AuthSource: TYZPR06MB4980.apcprd06.prod.outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 76f92c8d-346a-41ab-8607-08def7562338
-X-MS-Exchange-CrossTenant-originalarrivaltime: 11 Aug 2026 03:10:46.2591 (UTC)
+X-MS-Exchange-CrossTenant-Network-Message-Id: 4369ef6b-8f97-4813-b156-08def756178c
+X-MS-Exchange-CrossTenant-originalarrivaltime: 11 Aug 2026 03:10:26.7189 (UTC)
 X-MS-Exchange-CrossTenant-fromentityheader: Hosted
 X-MS-Exchange-CrossTenant-id: 43d4aa98-e35b-4575-8939-080e90d5a249
 X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: DZ3zNoZLlxSLZPYYCiTXYdyo1CiNEmUi3XwrBXNsWoKina93zlJv9j46d7vhdZv/2mnLK9D4ZXVm2wHFPxsgbuj/FKlGyZmNnpGY2BkrBc8=
+X-MS-Exchange-CrossTenant-userprincipalname: p5FBsF8tobbq73ln31OKwJ4VLvmhKOIhqXsGgTPQdTd+ZlJrdglAHdzC0WQiV4S0GOgXO8afKDJ+zkjZlLobSml832DTjY5iBwwpP+HktrM=
 X-MS-Exchange-Transport-CrossTenantHeadersStamped: TYZPR06MB5808
 Received-SPF: pass client-ip=2a01:111:f403:c40f::6;
  envelope-from=jamin_lin@aspeedtech.com;
@@ -151,71 +147,128 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-With direct/scatter-gather access, 64-bit DMA and AES-GCM all in place,=0A=
-the AST2700 crypto engine is now fully modelled. Drop its temporary=0A=
-interrupt-only workaround so the crypto command runs for real, like the=0A=
-other HACE variants.=0A=
+The ASPEED HACE model only emulated the hash command; the crypto (cipher)=
 =0A=
-Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>=0A=
-Reviewed-by: Kane Chen <kane_chen@aspeedtech.com>=0A=
----=0A=
- include/hw/misc/aspeed_hace.h |  1 -=0A=
- hw/misc/aspeed_hace.c         | 15 +--------------=0A=
- 2 files changed, 1 insertion(+), 15 deletions(-)=0A=
+command was stubbed out. On the AST2700 the kernel runs the crypto driver=
 =0A=
-diff --git a/include/hw/misc/aspeed_hace.h b/include/hw/misc/aspeed_hace.h=
+self-tests at boot, so without crypto emulation booting floods the log=0A=
+with failures:=0A=
 =0A=
-index b5416b0cb5..9b0e7683fa 100644=0A=
---- a/include/hw/misc/aspeed_hace.h=0A=
-+++ b/include/hw/misc/aspeed_hace.h=0A=
-@@ -49,7 +49,6 @@ struct AspeedHACEClass {=0A=
-     uint32_t key_mask;=0A=
-     uint32_t hash_mask;=0A=
-     uint64_t nr_regs;=0A=
--    bool raise_crypt_interrupt_workaround;=0A=
-     uint32_t src_hi_mask;=0A=
-     uint32_t dest_hi_mask;=0A=
-     uint32_t key_hi_mask;=0A=
-diff --git a/hw/misc/aspeed_hace.c b/hw/misc/aspeed_hace.c=0A=
-index e455216dd4..0c53383903 100644=0A=
---- a/hw/misc/aspeed_hace.c=0A=
-+++ b/hw/misc/aspeed_hace.c=0A=
-@@ -1003,14 +1003,7 @@ static void aspeed_hace_write(void *opaque, hwaddr a=
-ddr, uint64_t data,=0A=
-         break;=0A=
-     }=0A=
-     case R_CRYPT_CMD:=0A=
--        /*=0A=
--         * The AST2700 crypto engine needs 64-bit DMA and AES-GCM, which a=
-re=0A=
--         * added later; until then it keeps the temporary workaround of on=
-ly=0A=
--         * raising the completion interrupt without running the command.=
+  root@ast2700-default:~# dmesg | grep "self"=0A=
+[    6.078446] alg: self-tests for ctr(des) using aspeed-ctr-des failed (rc=
+=3D-22)=0A=
+[    6.079295] alg: self-tests for ctr(des) using aspeed-ctr-des failed (rc=
+=3D-22)=0A=
+[    6.089924] alg: self-tests for ctr(des3_ede) using aspeed-ctr-tdes fail=
+ed (rc=3D-22)=0A=
+[    6.090629] alg: self-tests for ctr(des3_ede) using aspeed-ctr-tdes fail=
+ed (rc=3D-22)=0A=
+[    6.100134] alg: self-tests for cbc(des3_ede) using aspeed-cbc-tdes fail=
+ed (rc=3D-22)=0A=
+[    6.100416] alg: self-tests for ecb(des3_ede) using aspeed-ecb-tdes fail=
+ed (rc=3D-22)=0A=
+[    6.100576] alg: self-tests for cbc(des3_ede) using aspeed-cbc-tdes fail=
+ed (rc=3D-22)=0A=
+[    6.101411] alg: self-tests for ecb(des3_ede) using aspeed-ecb-tdes fail=
+ed (rc=3D-22)=0A=
+[    6.152954] alg: self-tests for ecb(des) using aspeed-ecb-des failed (rc=
+=3D-22)=0A=
+[    6.153701] alg: self-tests for ecb(des) using aspeed-ecb-des failed (rc=
+=3D-22)=0A=
+[    6.180101] alg: self-tests for cbc(des) using aspeed-cbc-des failed (rc=
+=3D-22)=0A=
+[    6.180747] alg: self-tests for cbc(des) using aspeed-cbc-des failed (rc=
+=3D-22)=0A=
+[    6.206437] alg: self-tests for ctr(aes) using aspeed-ctr-aes failed (rc=
+=3D-22)=0A=
+[    6.206910] alg: self-tests for ctr(aes) using aspeed-ctr-aes failed (rc=
+=3D-22)=0A=
+[    6.215313] alg: self-tests for cbc(aes) using aspeed-cbc-aes failed (rc=
+=3D-22)=0A=
+[    6.215698] alg: self-tests for cbc(aes) using aspeed-cbc-aes failed (rc=
+=3D-22)=0A=
+[    6.227173] alg: self-tests for ecb(aes) using aspeed-ecb-aes failed (rc=
+=3D-22)=0A=
+[    6.228027] alg: self-tests for ecb(aes) using aspeed-ecb-aes failed (rc=
+=3D-22)=0A=
+[    6.276878] alg: self-tests for gcm(aes) using aspeed-gcm-aes failed (rc=
+=3D-22)=0A=
+[    6.277541] alg: self-tests for gcm(aes) using aspeed-gcm-aes failed (rc=
+=3D-22)=0A=
 =0A=
--         */=0A=
--        if (!ahc->raise_crypt_interrupt_workaround) {=0A=
--            do_crypt_operation(s, data);=0A=
--        }=0A=
-+        do_crypt_operation(s, data);=0A=
- =0A=
-         /* Hardware raises the crypt interrupt once the command finishes. =
-*/=0A=
-         s->regs[R_STATUS] |=3D CRYPT_IRQ;=0A=
-@@ -1214,12 +1207,6 @@ static void aspeed_ast2700_hace_class_init(ObjectCla=
-ss *klass, const void *data)=0A=
-     ahc->dest_hi_mask =3D 0x00000003;=0A=
-     ahc->key_hi_mask =3D 0x00000003;=0A=
- =0A=
--    /*=0A=
--     * Currently, it does not support the CRYPT command. Instead, it only=
+This series implements the HACE crypto command: AES/DES/3DES in ECB/CBC/CTR=
 =0A=
--     * sends an interrupt to notify the firmware that the crypt command=0A=
--     * has completed. It is a temporary workaround.=0A=
--     */=0A=
--    ahc->raise_crypt_interrupt_workaround =3D true;=0A=
-     ahc->has_dma64 =3D true;=0A=
- }=0A=
- =0A=
+over direct and scatter-gather DMA, and AES-GCM with 64-bit DMA on the=0A=
+AST2700. It also adds GCM to the qcrypto cipher API (gcrypt backend) that=
+=0A=
+the AST2700 path needs, plus qtest and unit-test coverage.=0A=
+=0A=
+With crypto emulated the self-tests pass, the warnings above disappear, and=
+=0A=
+the temporary 'cryptomgr.notests=3D1' boot workaround in the AST2700=0A=
+functional tests is dropped.=0A=
+=0A=
+Note: the GNUTLS crypto backend does not support AES-CTR mode.=0A=
+=0A=
+v1:=0A=
+  1. Support the crypto command in direct access mode=0A=
+  2. Support scatter-gather mode for the crypto command=0A=
+  3. Support the AES-GCM mode for the crypto command=0A=
+  4. Support 64-bit DMA for the crypto command=0A=
+  5. Test the crypto command=0A=
+  6. Drop the AST2700 crypto self-test/model workaround=0A=
+=0A=
+v2:=0A=
+  1. Add AES-GCM to the nettle and gnutls crypto backends=0A=
+  2. Skip crypto tests for cipher modes the=0A=
+    compiled backend does not support, via qcrypto_cipher_supports()=0A=
+  3.  Check qcrypto_cipher_supports() before running a=0A=
+    crypt command and report the mode as unimplemented when the backend lac=
+ks it=0A=
+=0A=
+v3:=0A=
+  1. remove the duplicate CRYPT_IRQ_EN definition.=0A=
+  2. remove the unuse CRYPT_CMD_DST_SG_CTRL definition.=0A=
+  3. Drop "Drop the AST2700 crypto self-test workaround" patch because GNUT=
+LS=0A=
+     backend does not support AES-CTR mode.=0A=
+=0A=
+Jamin Lin (16):=0A=
+  hw/misc/aspeed_hace: Support the crypto command in direct access mode=0A=
+  tests/qtest/aspeed-hace: Test the crypto command on the AST2500=0A=
+  hw/misc/aspeed_hace: Support scatter-gather mode for the crypto=0A=
+    command=0A=
+  hw/misc/aspeed_hace: Support the CTR mode for the crypto command=0A=
+  tests/qtest/aspeed-hace: Test the crypto command on the AST2600=0A=
+  tests/qtest/aspeed-hace: Test the crypto command on the AST1030=0A=
+  crypto/cipher: Add GCM to QCryptoCipherMode=0A=
+  crypto/cipher: Add setaad/gettag for AEAD modes=0A=
+  crypto/cipher-gcrypt: Implement AES-GCM=0A=
+  crypto/cipher-nettle: Implement AES-GCM=0A=
+  crypto/cipher-gnutls: Implement AES-GCM=0A=
+  tests/unit/test-crypto-cipher: Test AES-GCM mode=0A=
+  hw/misc/aspeed_hace: Support 64-bit DMA for the crypto command=0A=
+  hw/misc/aspeed_hace: Support the AES-GCM mode for the crypto command=0A=
+  hw/misc/aspeed_hace: Enable the crypto command on the AST2700=0A=
+  tests/qtest/aspeed-hace: Test the crypto command on the AST2700=0A=
+=0A=
+ qapi/crypto.json                |   4 +-=0A=
+ crypto/cipherpriv.h             |   8 +=0A=
+ include/crypto/cipher.h         |  36 ++=0A=
+ include/hw/misc/aspeed_hace.h   |   1 -=0A=
+ tests/qtest/aspeed-hace-utils.h |  20 +=0A=
+ crypto/cipher.c                 |  32 ++=0A=
+ hw/misc/aspeed_hace.c           | 461 ++++++++++++++++++++-=0A=
+ tests/qtest/aspeed-hace-utils.c | 693 ++++++++++++++++++++++++++++++++=0A=
+ tests/qtest/aspeed_hace-test.c  |  18 +=0A=
+ tests/qtest/ast2700-hace-test.c |   9 +=0A=
+ tests/unit/test-crypto-cipher.c | 240 +++++++++++=0A=
+ crypto/cipher-gcrypt.c.inc      | 101 +++++=0A=
+ crypto/cipher-gnutls.c.inc      | 154 +++++++=0A=
+ crypto/cipher-nettle.c.inc      | 128 ++++++=0A=
+ tests/qtest/meson.build         |   6 +-=0A=
+ 15 files changed, 1886 insertions(+), 25 deletions(-)=0A=
+=0A=
 -- =0A=
 2.43.0=0A=
 

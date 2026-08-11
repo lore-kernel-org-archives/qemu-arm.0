@@ -4,61 +4,60 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 10051C5B572
-	for <qemu-arm@archiver.kernel.org>; Tue, 11 Aug 2026 16:37:57 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D317FC5B56A
+	for <qemu-arm@archiver.kernel.org>; Tue, 11 Aug 2026 16:38:12 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wtpOY-0004oZ-9S; Tue, 11 Aug 2026 12:32:06 -0400
+	id 1wtpNx-0002Ey-03; Tue, 11 Aug 2026 12:31:29 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1wtpOT-0004Xt-LQ
- for qemu-arm@nongnu.org; Tue, 11 Aug 2026 12:32:03 -0400
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1wtpNm-0001lu-2F
+ for qemu-arm@nongnu.org; Tue, 11 Aug 2026 12:31:18 -0400
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1wtpOR-0000wZ-IA
- for qemu-arm@nongnu.org; Tue, 11 Aug 2026 12:32:01 -0400
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1wtpNi-0000mA-Qc
+ for qemu-arm@nongnu.org; Tue, 11 Aug 2026 12:31:17 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1786465918;
+ s=mimecast20190719; t=1786465874;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=wku9aFtVPzn10aVW4SZ0dHKlvl30Ogei5mgKGFhOEQQ=;
- b=E9ijChX4dFAH15hVRyE5xymPv3lAX3c2sBOoBaepmmmI8zeXLANGrv+Nzg8sRB0t6Ltwp1
- EEjg30GahoTMmZafizko4ri9QIZMaFH0yQVE8KUN5uY4/uZDdqqYfQIZS4qzNXW3ruJanZ
- tDq70OPS4paA6bEtnOZmfqROHOAQJXc=
-Received: from mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com
+ bh=O2KWhrg4dHeMM3Jv9F381uV+KY2ER12qVcMpRP64pVQ=;
+ b=eSS330msAZVYARCEtqe4t5AyGgL7oGqQc3bX2Xij0t6IK8WdfM0lJ+TacrE+TzHuOXR8dR
+ VlsK++k5oP0u699YJcCynMPouitH3w+GKmAXSHaZf/W0r0XRZ74Yr4dmANeS8pXaQqRcju
+ oGNiAMFP0qR/Rrago4zVUwk2rk/M0+M=
+Received: from mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com
  (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-404-NzKXynYmMqaRlNra3nhE1Q-1; Tue,
- 11 Aug 2026 12:31:55 -0400
-X-MC-Unique: NzKXynYmMqaRlNra3nhE1Q-1
-X-Mimecast-MFC-AGG-ID: NzKXynYmMqaRlNra3nhE1Q_1786465914
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-502-1__h0j2wMKKpNfiKwHy_jQ-1; Tue,
+ 11 Aug 2026 12:31:10 -0400
+X-MC-Unique: 1__h0j2wMKKpNfiKwHy_jQ-1
+X-Mimecast-MFC-AGG-ID: 1__h0j2wMKKpNfiKwHy_jQ_1786465869
 Received: from mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com
  (mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.12])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 4FD4A1956057; Tue, 11 Aug 2026 16:31:54 +0000 (UTC)
+ by mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 8AFE01956080; Tue, 11 Aug 2026 16:31:09 +0000 (UTC)
 Received: from corto.redhat.com (unknown [10.44.48.12])
  by mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id CDE73195DF91; Tue, 11 Aug 2026 16:31:52 +0000 (UTC)
+ id D5F82195DF91; Tue, 11 Aug 2026 16:31:07 +0000 (UTC)
 From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Cc: Jamin Lin <jamin_lin@aspeedtech.com>,
+Cc: Emmanuel Blot <emmanuel.blot@free.fr>, Glenn Miles <milesg@linux.ibm.com>,
  =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>
-Subject: [PULL 61/83] tests/functional/aarch64/test_aspeed_ast2700a1: Update
- ASPEED SDK v11.03
-Date: Tue, 11 Aug 2026 18:29:16 +0200
-Message-ID: <20260811162938.1403216-62-clg@redhat.com>
+Subject: [PULL 40/83] hw/gpio: pca9552: apply input polarity inversion on read
+Date: Tue, 11 Aug 2026 18:28:55 +0200
+Message-ID: <20260811162938.1403216-41-clg@redhat.com>
 In-Reply-To: <20260811162938.1403216-1-clg@redhat.com>
 References: <20260811162938.1403216-1-clg@redhat.com>
 MIME-Version: 1.0
 X-Scanned-By: MIMEDefang 3.0 on 10.30.177.12
-X-Mimecast-MFC-PROC-ID: wTebM0RC9UIfPy0T3Dp7pjWeQ_VznApP0Wp9A8lK0aI_1786465914
+X-Mimecast-MFC-PROC-ID: 4qAbDj0-bQos4M2HCTXC_bcA6ZvyVhxkkUZuH7BDQpo_1786465869
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
@@ -87,91 +86,77 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-From: Jamin Lin <jamin_lin@aspeedtech.com>
+From: Emmanuel Blot <emmanuel.blot@free.fr>
 
-Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
-Reviewed-by: Cédric Le Goater <clg@redhat.com>
-Link: https://lore.kernel.org/qemu-devel/20260804081955.1563537-4-jamin_lin@aspeedtech.com
+The PCA9535 polarity inversion register inverts the value read back from
+the input port for every pin, regardless of its direction, and does not
+affect the output drive or the physical pin level.
+
+Store the raw pin level in the input register and apply the polarity
+inversion when the input port is read, instead of XORing it into the
+stored value of output-configured pins only. The interrupt output now
+reflects the raw pin level, matching the datasheet.
+
+Signed-off-by: Emmanuel Blot <emmanuel.blot@free.fr>
+Reviewed-by: Glenn Miles <milesg@linux.ibm.com>
+Link: https://lore.kernel.org/qemu-devel/20260709-catalina-upgrade-v1-7-814575bc076b@free.fr
 Signed-off-by: Cédric Le Goater <clg@redhat.com>
 ---
- .../aarch64/test_aspeed_ast2700a1.py          | 27 ++++++++++---------
- 1 file changed, 14 insertions(+), 13 deletions(-)
+ hw/gpio/pca9552.c | 25 ++++++++++++++++++-------
+ 1 file changed, 18 insertions(+), 7 deletions(-)
 
-diff --git a/tests/functional/aarch64/test_aspeed_ast2700a1.py b/tests/functional/aarch64/test_aspeed_ast2700a1.py
-index adbbef5cf11e..2113c78db202 100755
---- a/tests/functional/aarch64/test_aspeed_ast2700a1.py
-+++ b/tests/functional/aarch64/test_aspeed_ast2700a1.py
-@@ -85,13 +85,13 @@ def verify_openbmc_boot_and_login(self, name, enable_pcie=True):
-         exec_command_and_wait_for_pattern(self, 'root', 'Password:')
-         exec_command_and_wait_for_pattern(self, '0penBmc', f'root@{name}:~#')
+diff --git a/hw/gpio/pca9552.c b/hw/gpio/pca9552.c
+index 66f699bf6a0b..24f646541582 100644
+--- a/hw/gpio/pca9552.c
++++ b/hw/gpio/pca9552.c
+@@ -167,9 +167,12 @@ static void pca955x_update_pin_input(PCA955xState *s)
+             /* PCA9535: Simple GPIO behavior */
+             uint8_t config_reg = PCA9535_CONFIG0 + (i / 8);
+             uint8_t output_reg = PCA9535_OUTPUT0 + (i / 8);
+-            uint8_t polarity_reg = PCA9535_POLARITY0 + (i / 8);
  
--    ASSET_SDK_V1101_AST2700A1 = Asset(
--            'https://github.com/AspeedTech-BMC/openbmc/releases/download/v11.01/ast2700-a1-image.tar.gz',
--            '859808828531a51931aad3b4e70b28143eebb3cde1838ba7d8e7a2b844c8a1ab')
-+    ASSET_SDK_V1103_AST2700A1 = Asset(
-+            'https://github.com/AspeedTech-BMC/openbmc/releases/download/v11.03/ast2700-a1-image.tar.gz',
-+            '540961dc380709d852e957c5817cd7ee0dbb0a66f3aa17413eac7b67518afbfe')
+-            /* Check if pin is configured as input */
++            /*
++             * The input register holds the raw pin logic level; the
++             * polarity inversion register is only applied when the input
++             * port is read (see pca955x_read()).
++             */
+             if (s->regs[config_reg] & bit_mask) {
+                 /* Input mode - reflect external state */
+                 if (s->ext_state[i] == PCA9552_PIN_LOW) {
+@@ -179,12 +182,8 @@ static void pca955x_update_pin_input(PCA955xState *s)
+                 }
+             } else {
+                 /* Output mode - reflect output register value */
+-                uint8_t output_bit = s->regs[output_reg] & bit_mask;
+-                uint8_t polarity_bit = s->regs[polarity_reg] & bit_mask;
+-
+-                /* Apply polarity inversion if set */
+                 s->regs[input_reg] = (s->regs[input_reg] & ~bit_mask) |
+-                                    ((output_bit ^ polarity_bit) & bit_mask);
++                                     (s->regs[output_reg] & bit_mask);
+             }
+         }
  
--    ASSET_SDK_V1101_AST2700A1_DCSCM = Asset(
--            'https://github.com/AspeedTech-BMC/openbmc/releases/download/v11.01/ast2700-a1-dcscm-image.tar.gz',
--            '4654eabad75da3fd33635cd6d29b7635181daefee7294b68feb124b9d4c24116')
-+    ASSET_SDK_V1103_AST2700A1_DCSCM = Asset(
-+            'https://github.com/AspeedTech-BMC/openbmc/releases/download/v11.03/ast2700-a1-dcscm-image.tar.gz',
-+            '5f7c139330fcefa6025bc7565a20fd5ea42cacebf810d56dc9a76b07cf69b3e1')
+@@ -206,6 +205,18 @@ static uint8_t pca955x_read(PCA955xState *s, uint8_t reg)
+         return 0xFF;
+     }
  
-     def do_ast2700_i2c_test(self, bus_id):
-         bus_str = str(bus_id)
-@@ -132,7 +132,8 @@ def start_ast2700_test(self, name, bus_id):
-             },
-             {
-                 'addr': '0x430000000',
--                'file': self.scratch_file(name, 'bl31.bin')
-+                'file': self.scratch_file(name, 'trusted-firmware-a',
-+                                          'bl31.bin')
-             },
-             {
-                 'addr': '0x430080000',
-@@ -159,11 +160,11 @@ def start_ast2700_test_vbootrom(self, name, bus_id):
-         self.do_test_aarch64_aspeed_sdk_start(
-                 self.scratch_file(name, 'image-bmc'), bus_id)
++    /*
++     * On the GPIO variants, reading an input port returns the raw pin
++     * levels XORed with the polarity inversion register, as specified by
++     * the datasheet.
++     */
++    if (!k->has_led_support &&
++        (reg == PCA9535_INPUT0 || reg == PCA9535_INPUT1)) {
++        uint8_t polarity_reg = PCA9535_POLARITY0 + (reg - PCA9535_INPUT0);
++
++        return s->regs[reg] ^ s->regs[polarity_reg];
++    }
++
+     return s->regs[reg];
+ }
  
--    def test_aarch64_ast2700a1_evb_sdk_v11_01(self):
-+    def test_aarch64_ast2700a1_evb_sdk_v11_03(self):
-         self.set_machine('ast2700a1-evb')
-         self.require_netdev('user')
- 
--        self.archive_extract(self.ASSET_SDK_V1101_AST2700A1)
-+        self.archive_extract(self.ASSET_SDK_V1103_AST2700A1)
-         self.vm.add_args('-device', 'e1000e,netdev=net1,bus=pcie.2')
-         self.vm.add_args('-netdev', 'user,id=net1')
-         self.vm.add_args('-device', 'usb-kbd,bus=usb-bus.3')
-@@ -173,22 +174,22 @@ def test_aarch64_ast2700a1_evb_sdk_v11_01(self):
-         self.do_ast2700_pcie_test()
-         self.do_ast2700_usb_ehci_test()
- 
--    def test_aarch64_ast2700a1_evb_sdk_vbootrom_v11_01(self):
-+    def test_aarch64_ast2700a1_evb_sdk_vbootrom_v11_03(self):
-         self.set_machine('ast2700a1-evb')
-         self.require_netdev('user')
- 
--        self.archive_extract(self.ASSET_SDK_V1101_AST2700A1)
-+        self.archive_extract(self.ASSET_SDK_V1103_AST2700A1)
-         self.vm.add_args('-device', 'e1000e,netdev=net1,bus=pcie.2')
-         self.vm.add_args('-netdev', 'user,id=net1')
-         self.start_ast2700_test_vbootrom('ast2700-a1-image', 1)
-         self.verify_vbootrom_firmware_flow()
-         self.verify_openbmc_boot_start()
- 
--    def test_aarch64_ast2700a1_evb_ioexp_v11_01(self):
-+    def test_aarch64_ast2700a1_evb_ioexp_v11_03(self):
-         self.set_machine('ast2700a1-evb')
-         self.require_netdev('user')
- 
--        self.archive_extract(self.ASSET_SDK_V1101_AST2700A1_DCSCM)
-+        self.archive_extract(self.ASSET_SDK_V1103_AST2700A1_DCSCM)
-         self.vm.set_machine('ast2700a1-evb,fmc-model=w25q512jv')
-         self.vm.add_args('-device',
-                          'tmp105,bus=ioexp0.0,address=0x4d,id=tmp-test-16')
 -- 
 2.55.0
 

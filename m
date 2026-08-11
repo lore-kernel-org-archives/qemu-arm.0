@@ -4,82 +4,84 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2E273C5AC67
-	for <qemu-arm@archiver.kernel.org>; Tue, 11 Aug 2026 19:15:53 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D0898C5B56A
+	for <qemu-arm@archiver.kernel.org>; Tue, 11 Aug 2026 19:15:59 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wtrwx-0002FM-6r; Tue, 11 Aug 2026 15:15:47 -0400
+	id 1wtrx6-0002Hq-DR; Tue, 11 Aug 2026 15:15:56 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1wtrwu-0002F5-R4
- for qemu-arm@nongnu.org; Tue, 11 Aug 2026 15:15:44 -0400
-Received: from mail-pj1-x1030.google.com ([2607:f8b0:4864:20::1030])
+ id 1wtrwy-0002FZ-Ow
+ for qemu-arm@nongnu.org; Tue, 11 Aug 2026 15:15:48 -0400
+Received: from mail-pl1-x62d.google.com ([2607:f8b0:4864:20::62d])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1wtrwt-00027y-70
- for qemu-arm@nongnu.org; Tue, 11 Aug 2026 15:15:44 -0400
-Received: by mail-pj1-x1030.google.com with SMTP id
- 98e67ed59e1d1-38e041ea211so98185a91.0
- for <qemu-arm@nongnu.org>; Tue, 11 Aug 2026 12:15:42 -0700 (PDT)
+ id 1wtrww-00028h-16
+ for qemu-arm@nongnu.org; Tue, 11 Aug 2026 15:15:48 -0400
+Received: by mail-pl1-x62d.google.com with SMTP id
+ d9443c01a7336-2d004f135b1so4115655ad.3
+ for <qemu-arm@nongnu.org>; Tue, 11 Aug 2026 12:15:45 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1786475741; x=1787080541; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:from:to:cc:subject:date:message-id:reply-to:content-type;
- bh=PSytBMJaQ9G9l9syB4XOENPGWna1JnjRQcf0lvpH1T0=;
- b=RZsOGAopDBwGD+nU3+fYsBxSfRoQ1Zk2wJ6/1H+5Is0ubaIWc+2T/EmjMSJ2rel5mL
- vV7WOjr3ZfNb/1EmVlucVs6rG7O2AgRJ51DTDcgNuphm+4pRzj53fNgcXWXX8jslPcRm
- zi3L8JFpiQpAFRhoJ29RlDdbW6M/iVKrNxmOOt2txk75TPQZbkm1ykJPbpHtb2M3gmb1
- PLhZt6ekxJPaPEzFz7Qy/SMCdSxrRYCJeeumUoXd9++BnqSfu+jyVL7ic7yR1P2C9Rvh
- SMKmi+A3gWq9AfeXiDxCaxjTM32L7A18GAby4dS2f3G6mvdqulKGWMlkVXTzqXOEEFqF
- WXUw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1786475741; x=1787080541;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+ d=linaro.org; s=google; t=1786475744; x=1787080544; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to:content-type;
- bh=PSytBMJaQ9G9l9syB4XOENPGWna1JnjRQcf0lvpH1T0=;
- b=nm8AcGRZijXKm0n+yEVe7J1Uu/T/DuRzTTujT9keGzJK/dZqEYanENNN2AxEA3Nmel
- cDvmecmX5Y8prPUGFZQRMMbjuLimQwvLuA/lVXk0ukc/QIdhj0ABrQp6MDaa0ThzuT0k
- joN6ZoK9U/j62nPWqo1vAZLiatgY1nGkEnJFXqLnvYSWxno0LffJG0g2rDzX6uuFcyBb
- 0Aj4kjUessrv0CBGqSdJdTjN+NGbOQBU2rFlzFFdRikwKoOPrC+wrvkXZmZuEJ44AwWn
- ar0+Vo3im7XEntlWZ+rRiYlK2JHq1LA52+2zx0kUYjsLfirp92MM4nNneS4L8DdW1EpR
- AZDw==
+ bh=oGQa5u97Tf6cvRlX6RYNQHfqzZ112KA8RU1f9as2cNQ=;
+ b=BjDgeJKh/xjaAXgMXP7VynTD5L9CZ9JaAArxDaw0+4orPOEaiBNjysTHCAPdxt/dUg
+ MTfcD2F0zf9LBVy4bSy2YL+xDoEJpzUyjMsCP3d47oRzTaoV5Vx7gjgwnQQDs2lF3EJ7
+ HHwwKUfXi10CGQf7Mm4fAO6kxng7NR0OPD8jR5SUdGFWPIeaiUtmpebJqBvKSXauiAJb
+ B8aNQZoVn9aqUHWzHPR8uCNx/7pcm2E3NPHB8v3euyatzsWelo2w8e+Ea/aXHEO9cbjr
+ MQEfip3Atwq7XA0pC3bJ2VwlLw+8nvmByBwsRBmH9B2egh3VeeL/laRrfoOuVzhTzWc+
+ ysig==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20251104; t=1786475744; x=1787080544;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
+ :to:cc:subject:date:message-id:reply-to:content-type;
+ bh=oGQa5u97Tf6cvRlX6RYNQHfqzZ112KA8RU1f9as2cNQ=;
+ b=sydPkdbMf83LeCNya7kqVju7TqFCNsHKpzqh1Iw3DguEc7AsnRfGuamOB9YHp5+Tgk
+ d1Hs9PEBzdumHJlz+8sF0FwePcNDyK3ieBDeKbwqLU/+5MHAyFLEwUcm2tPJHX+gFgHs
+ 5jixi5SLAVtvdxC2Bzq2k55z/NNcZBsSfbV46mVHb6/qiAdH1cJYV3gSfJK2pT165eOj
+ KBR5PRhm1+JMUUQV7VUG9C2HOhVr5oW2Qu9HKXfzkdpVBf9ejyebLFmCnOarg2gXJXWB
+ Fv1dSBjClrkpzS7xYG85uj7ZPzEw6XRythIPyzWBFRdw6/W2Cf2QYtQtpudmwicLYG8L
+ 6OKg==
 X-Forwarded-Encrypted: i=1;
- AHgh+Ro5P/dL7fiji+kg784vOUJlDDiqFvS6//6nmFRMve/nRPx1a++wjAwHkN9MyuJqpknFn3Taj39lDw==@nongnu.org
-X-Gm-Message-State: AOJu0Yw849KRcNXq1DDza5pzw1E2hZ/EhM+yQt81ffv3GnEa5YyzDn0y
- eihCRLnFlXCT+M8ODjOmlYiLZdhA2/8VfVypYrzoBqGorHogJ9pCwf0g0P/qce2nuxd/+SwvDhf
- zKloX
-X-Gm-Gg: AR+sD10sm9zUe9eG16Z64I4j9/4ld+y9eeadufPQPad1DL3i7ayoNhCsQVPL669mnlO
- NT4/TDSJ1UXZWjqDXZSLwlDVkokxEoKY7AYkQsiNmJgZm9k9KXa5fBbuN1nMgnuGhdGz6/gGr9d
- zDtBecD9u7V8xe6zCbQfiL1Q5EJ2Oh/SrFACJ+lJl4eqejmNxufjFuITjdurEfo9oKx9X223Zg7
- J3bm5QsQZawNil14ENN/ShocXGFL1JPy0AYvb/YRioQNhgLOWcnyc5huKsrkOmYzCnoxv4PclSW
- ge6roUjLWhCsoX/q76ufLEG77i2i9csElKf4/KM6ZJcR4kjwCovwpm0KIjvsUbr0gg5722XnXAp
- 230vlMVYcRAPmXO0Z37BJ8le1Kb3lNb9mYMHZloWLF4+i81eviwiUa0L+gQU3PzRHO7jwGj259D
- ieBOfszPcsXh7q5IImXqhWjG6+j7O6jFyBZA24HWpDQgrg+X+t2YpNlbsDSxsCxz1LDCsa83TI1
- 9NdALLZxi79ElDQZZ8H
-X-Received: by 2002:a17:90b:530c:b0:38e:e9b:ffa4 with SMTP id
- 98e67ed59e1d1-392f4727915mr2357031a91.6.1786475741323; 
- Tue, 11 Aug 2026 12:15:41 -0700 (PDT)
+ AHgh+Ro5jbkLjezEBESgsRHSKXUCHibaNhbG1fmYTjolDSacDXkLBbrIYj7hA31TUZc2tIfNNxWpGw9ycQ==@nongnu.org
+X-Gm-Message-State: AOJu0YwkAtmWdibgsdsW/lP/mFR8UlgG2xMHjM542IaWn8a4sGYW09hN
+ LL+NiUd764dkwBa0nQyt49p8N0E+7Y7KGRy35qhmoLcrTB/7UIB+wnqZLVQrAUSomO4=
+X-Gm-Gg: AR+sD12PmCH46b4wykBqpHXQwPB5qOnBENFUUT+nfANlbfqRm+GzE7uTQjNuIe9nEWo
+ svxWV53TpiO0Oh+9hLmd49vuIvBovm5WLrJVgtyWPo4Pv2+SzB6/p4VN37+rIkKolvIPBvruwsq
+ B8N79S1vuH9rslS+vllqXVyinJbV9Qf5TMxYNZVgne4pndIIXAqrQpz7cJn+k06xBAe1/K11pl7
+ 9SzDdCxXWMSRbnu2/kj+UB29dby4+TjNRc6ScxVyKwJNv2S19ZWX9NgJoF3YzxNPxk+R1LvDe0B
+ HyVc49V3mk+03UlVUrRPOVKdi3Xq1ckgnxzmCxNJ9KnUwooV1jAvsc89WtbD3dAf6pfQhwyp+Nq
+ kVvawVxaDkjRKJrTFm0IuOvK6cJExwlegDQ14EV719eF9DjKH3Drgljvw+xShBCtzT3iImsBy3c
+ b27PXsH8d2iXQzK6qyvg43Z8eA89bpbJs4qVG0PRz6FjtXJwJuWtJQ846pMlZSE7Yf7RaTPJkiA
+ yFM8mYVZI/IrzvS/bvA
+X-Received: by 2002:a17:90b:3c8c:b0:37d:ee77:78ac with SMTP id
+ 98e67ed59e1d1-392f484a46bmr2499163a91.19.1786475744420; 
+ Tue, 11 Aug 2026 12:15:44 -0700 (PDT)
 Received: from stoup.. (174-21-93-59.tukw.qwest.net. [174.21.93.59])
  by smtp.gmail.com with ESMTPSA id
- 98e67ed59e1d1-392f97fc409sm209668a91.1.2026.08.11.12.15.40
+ 98e67ed59e1d1-392f97fc409sm209668a91.1.2026.08.11.12.15.43
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 11 Aug 2026 12:15:40 -0700 (PDT)
+ Tue, 11 Aug 2026 12:15:44 -0700 (PDT)
 From: Richard Henderson <richard.henderson@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: yang.yanjun1@sanechips.com.cn,
 	qemu-arm@nongnu.org
-Subject: [PATCH v2 0/3] target/arm: Fix SVE2 WHILEWR/WHILERW zero diff
- boundary case
-Date: Tue, 11 Aug 2026 12:15:37 -0700
-Message-ID: <20260811191540.79882-1-richard.henderson@linaro.org>
+Subject: [PATCH v2 3/3] tests/tcg/aarch64: Add regression test for
+ whilewr/whilerw
+Date: Tue, 11 Aug 2026 12:15:40 -0700
+Message-ID: <20260811191540.79882-4-richard.henderson@linaro.org>
 X-Mailer: git-send-email 2.43.0
+In-Reply-To: <20260811191540.79882-1-richard.henderson@linaro.org>
+References: <20260811191540.79882-1-richard.henderson@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::1030;
- envelope-from=richard.henderson@linaro.org; helo=mail-pj1-x1030.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::62d;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pl1-x62d.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -102,26 +104,63 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Use tcg_gen_ussub_i64 for WHILEWR.
-Merge diff == 0 test with bounds check.
-
-r~
-
-Richard Henderson (3):
-  tcg: Export tcg_gen_ussub_i{32,64,tl}
-  target/arm: Fix SVE2 WHILEWR/WHILERW zero diff boundary case
-  tests/tcg/aarch64: Add regression test for whilewr/whilerw
-
- include/tcg/tcg-op-common.h       |  2 ++
- include/tcg/tcg-op.h              |  2 ++
- target/arm/tcg/translate-sve.c    | 38 +++++++++++++++++++------------
- tcg/tcg-op-gvec.c                 | 14 ------------
- tcg/tcg-op.c                      | 20 ++++++++++++++++
- tests/tcg/aarch64/sve-while-ptr.c | 28 +++++++++++++++++++++++
- tests/tcg/aarch64/Makefile.target |  5 ++--
- 7 files changed, 79 insertions(+), 30 deletions(-)
+Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
+---
+ tests/tcg/aarch64/sve-while-ptr.c | 28 ++++++++++++++++++++++++++++
+ tests/tcg/aarch64/Makefile.target |  5 +++--
+ 2 files changed, 31 insertions(+), 2 deletions(-)
  create mode 100644 tests/tcg/aarch64/sve-while-ptr.c
 
+diff --git a/tests/tcg/aarch64/sve-while-ptr.c b/tests/tcg/aarch64/sve-while-ptr.c
+new file mode 100644
+index 0000000000..7db3b9cc03
+--- /dev/null
++++ b/tests/tcg/aarch64/sve-while-ptr.c
+@@ -0,0 +1,28 @@
++/* SPDX-License-Identifier: GPL-2.0-or-later */
++/* WHILEWR / WHILERW regression test */
++
++#include <sys/prctl.h>
++#include <assert.h>
++
++int main(int argc, char **argv)
++{
++    unsigned short p;
++    int set_vl_ret;
++
++    set_vl_ret = prctl(PR_SVE_SET_VL, 16, 0, 0, 0, 0);
++    assert(set_vl_ret == 16);
++
++    p = 0xdead;
++    asm("whilewr p0.s, %0, %1\n\t"
++        "str p0, [%2]"
++        : : "r"(8), "r"(11), "r"(&p) : "memory", "p0");
++    assert(p == 0x1111);
++
++    p = 0xdead;
++    asm("whilerw p0.s, %0, %1\n\t"
++        "str p0, [%2]"
++        : : "r"(8), "r"(11), "r"(&p) : "memory", "p0");
++    assert(p == 0x1111);
++
++    return 0;
++}
+diff --git a/tests/tcg/aarch64/Makefile.target b/tests/tcg/aarch64/Makefile.target
+index 32f2689273..6cc81bf854 100644
+--- a/tests/tcg/aarch64/Makefile.target
++++ b/tests/tcg/aarch64/Makefile.target
+@@ -203,8 +203,9 @@ endif
+ endif
+ 
+ ifneq ($(CROSS_CC_HAS_SVE2),)
+-AARCH64_TESTS += test-826
+-test-826: CFLAGS += $(CROSS_CC_HAS_SVE2)
++SVE2_TESTS = test-826 sve-while-ptr
++$(SVE2_TESTS): CFLAGS += $(CROSS_CC_HAS_SVE2)
++AARCH64_TESTS += $(SVE2_TESTS)
+ endif
+ 
+ TESTS += $(AARCH64_TESTS)
 -- 
 2.43.0
 

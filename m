@@ -4,103 +4,93 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D0C0AC5B572
-	for <qemu-arm@archiver.kernel.org>; Tue, 11 Aug 2026 14:46:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C5AD7C5B56A
+	for <qemu-arm@archiver.kernel.org>; Tue, 11 Aug 2026 16:29:29 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wtnk2-0002Ld-1Q; Tue, 11 Aug 2026 10:46:10 -0400
+	id 1wtpLs-0007DD-Pp; Tue, 11 Aug 2026 12:29:20 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1wtnjz-0002Ku-6j
- for qemu-arm@nongnu.org; Tue, 11 Aug 2026 10:46:07 -0400
-Received: from mail-yw1-x112d.google.com ([2607:f8b0:4864:20::112d])
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1wtpLs-0007Cw-5n
+ for qemu-arm@nongnu.org; Tue, 11 Aug 2026 12:29:20 -0400
+Received: from mail-pf1-x434.google.com ([2607:f8b0:4864:20::434])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1wtnjx-0003ZN-GN
- for qemu-arm@nongnu.org; Tue, 11 Aug 2026 10:46:06 -0400
-Received: by mail-yw1-x112d.google.com with SMTP id
- 00721157ae682-7ff05e5d009so35447487b3.1
- for <qemu-arm@nongnu.org>; Tue, 11 Aug 2026 07:46:04 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1786459564; cv=none;
- d=google.com; s=arc-20260327;
- b=Ucc2XLfAtiqE7UVSYmyyReX4ugzlbYKXXF+m9ufjGN1QkAY5WaLIVg+dfQc7rkOtuo
- PgeUy7EqlkW2npMRbSBJIjnc6fYA/S6fc49I6N9W/VRQksALqhSPCGG6OCTNzMzdCCaJ
- k2hnpnG9gGdLX+ZZPaJ/Tb8GHrlV22wZnxyZmjfze86V8zIT4zTwc95NSDPO7a2Se2PU
- wSsn7nyGIf40WMTO6iwFG4noQvyFRGpbu4rDY9DwN4W+OuwWXEgvoBekX2GE2iontHGU
- fGOY6qZjd62uvAY2p2Xew/P3Z43SBcBf8ymc0NWOy+K6AKRGxiNYANFAse91zQd7E/Gb
- vpxw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
- s=arc-20260327; 
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:dkim-signature;
- bh=U363yjl95zUvpvGaT8oqi424jEa6U9SckoONTniyMnc=;
- fh=XkPztLzevn55zJjb7iTHoaxSg2NuiXLVUieJQtrpE3o=;
- b=CoZKo4e4TJZHfdg8WpLd39leV5yda3B+cPCPgPqrYJYUxH2nlFy3SATI+pB0klcBFs
- KmWy3UZ6K2vqzG794tqrLduvRrp4J80FFQWUUYGsdgjoxBz3EVdJAj6c6ynVakuHMMMm
- Rbxi1X91veXs9JoDbsVjk9sP4nSOMyU59VKF9ZsSGIOOjBrjxWH8ddcC95H1kF5nP605
- 16PoqPfFnytwth1IpANYAYXvwRL+POL+zQIK+SsK3gLZkmxtVffS6MZGwQ9aQaW8FZay
- YBBTLcVG+ukEUD5kzoQMZksyySMwim5+wULdC8TGYR5U6dpyXUA60lRHzo9fx+cKhQhs
- a7MA==; darn=nongnu.org
-ARC-Authentication-Results: i=1; mx.google.com; arc=none
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1wtpLq-00005K-KM
+ for qemu-arm@nongnu.org; Tue, 11 Aug 2026 12:29:19 -0400
+Received: by mail-pf1-x434.google.com with SMTP id
+ d2e1a72fcca58-84e84a6c4bfso61082b3a.1
+ for <qemu-arm@nongnu.org>; Tue, 11 Aug 2026 09:29:18 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1786459564; x=1787064364; darn=nongnu.org;
- h=content-type:cc:to:subject:message-id:date:from:in-reply-to
- :references:mime-version:from:to:cc:subject:date:message-id:reply-to
- :content-type; bh=U363yjl95zUvpvGaT8oqi424jEa6U9SckoONTniyMnc=;
- b=IalHogeE9RsTE99MmpCGzniC3uhG5K4vkZzPyXQLhn5FQ0RAPoeB1T5eEg7QM6KbXK
- +7pHMTVPs5llDkyaVqTXqnm+Zvbi3zH3xbsCIgfDnxYwoRRUJmTX+L2svNwLOylgLoKW
- slojcfeYFxOH0l8/a2F6wC4EnO5HqYTo0Zi4PfSsJRyn+H+xI3YwywDlSnsvIjkqPqZr
- tuG00+WFwFMaTBAVwCSe+O4+q/FvU6v8skuddjdZzcIK4ptApXMtmuN9355a4Un0BK4F
- qhclbd3a0Nziy1mh0NsjDVGM999utV0DEljy5LJH38DYpPHSo7i/A/Tz9Ss9b78MrsFj
- l9Ew==
+ d=linaro.org; s=google; t=1786465757; x=1787070557; darn=nongnu.org;
+ h=content-transfer-encoding:content-type:in-reply-to:content-language
+ :from:references:cc:to:subject:user-agent:mime-version:date
+ :message-id:from:to:cc:subject:date:message-id:reply-to:content-type;
+ bh=gTCUsWVvWRYcmkIhnX8+6fEAgNkMrfM97qaYv54fmOc=;
+ b=uEHIKmdyuJvoZG7ww3aGmhc1EGZTzuHcSZXCI0SBvw/urOgzkR3QqIMKEVctbmDpcQ
+ O86mcNSetFzo7+KXMuohojq6tgyKtBcXWMRkZzmytUFJ/ZW6q9Kdcq+5LJVHMSoBOrsc
+ Xv5s6qgVEqE2geaIqbrYtKiMNW/ouTner4GfK0buM32ad3/2vwGzIHzplO+/hZvAz8Ez
+ agNNUaqae0HRf6/vCrZQ24KkKKOulwaoQQmPAy6D8L1kInfgNjPn/l/iz7I4gbPOPxhd
+ bYCbJneKPgQ9RhF52eUJ/6B4OKiDzgoZmrFL1XGejc/KSEj9agWd1EyLOmCjVwo7mdWH
+ 3BKw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1786459564; x=1787064364;
- h=content-type:cc:to:subject:message-id:date:from:in-reply-to
- :references:mime-version:x-gm-gg:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to:content-type;
- bh=U363yjl95zUvpvGaT8oqi424jEa6U9SckoONTniyMnc=;
- b=FeVf7tW7Ki2NjPZNy+0IUefMbKt6gRTW9hKpZviCG89371K9G0t4Qqbc0h/WcYh1d+
- czKeulrbEPliUOJdmvmL7eG3lV5tDr4Wx9VSF5VPPnVUxk9ZtOTdVhv3vwzIA1OA4G7s
- Bib9Hi8XXf7Youn7+1q29+mvLMp83hk9Ek/Bde+5RSWjr9y1116sCjJASDWhxwlXTEV1
- J+cHT0KmbAN1degXMWTNklrHzo20dp5mzrcBLpBgx7bXj2tkgsdsdfxieNgbjbHMh5q6
- i6kqAp2FlOi3B5ngLCPcm4dKk4GGEow0EG+Opin3IwWm9fufmEGrBbqISdL99/n/YNoo
- L9Xg==
+ d=1e100.net; s=20251104; t=1786465757; x=1787070557;
+ h=content-transfer-encoding:content-type:in-reply-to:content-language
+ :from:references:cc:to:subject:user-agent:mime-version:date
+ :message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+ :message-id:reply-to:content-type;
+ bh=gTCUsWVvWRYcmkIhnX8+6fEAgNkMrfM97qaYv54fmOc=;
+ b=obLRonP098hQ/4kDwbpqAMnXoRuioU2OkFJgCkPIzRVzRZBrwB4gfmZepgulddP6dH
+ F/GY0Kbh0DN3ygWVQgemY5QxNp80YkHdsHCMNPIWOdy/asJ/wz0J2L0HB6NeVXb+FzrP
+ t6d23/EjfR0JAALHAcWhSLen2DLjBK2zDU550M//oMjl0tr8BKplnzmUMbsigVK2kdK0
+ 1Dz/S2dZsHdhkGQYovfR11pXh3yMOV1I99KvNaA+MbNJwyeEy4fjwSeNm7q2aTicFtjT
+ q7dzIkMfMOTxdtqbG+wJIgRMN60SsZnCXY8uxBVD4NniRAaFguEL1AGBSuqrQx8XYVyd
+ aUtw==
 X-Forwarded-Encrypted: i=1;
- AHgh+RpOdQ8ha9zjw38eh5rz7y5dhHKefore21N6EUm6KrjZQiUV7aOUuePIDDx0XGHp59lTtKhl6O4rDQ==@nongnu.org
-X-Gm-Message-State: AOJu0YxbDJD3lJHm8IzDbx6NrQqWQcGVpDvA7nMojF890vGf7g2JdEfb
- Qde/DJNA8JRo6BwfMaKvz/n7hws80tAQJe7IKTFlheTHGL7GIb/jI9nqbPur70s+uB0yLjSG1+8
- MB3Af+kpcfm56FB1tOCZQeMLdc631sAAf88JVLZ7d1w==
-X-Gm-Gg: AR+sD10NSR6hfzsXa0TCpObytm/feC89e3jyI7DehAvAsy1VgROdDgjCitGXVTVfzhM
- bSyGU1wOsKrDYXza8S9CdaqXfhLwxv3KiXvRggNvRMetkYUGasRqVLD/lWqENI2IythLfspnGbD
- XpV5DJ5GxhvwH8f8fzfyjmS4pQTyD4Fl8JAsuWJQSitpLfzIjxW+6SZgALa5dMR/q3iMP9gJ+wV
- NCfvIhSPeFGbbl9P6no8AbEsvWKYqAD8a660JwHVx8ErMUC3QKo6rnv5MBVzQP7LPlsIzyYFGhc
- 7OK9ysYnM1647PH4U6NQVZWsteL07NIezoU8VCOSkrANUWhpki61ZqJTYX0vW29ot18d35iaKvi
- 6teQINQiRBDSYKjbD/6wXfHHmqSOdnXshPHekKprb
-X-Received: by 2002:a05:690c:399:b0:81f:27f8:2de4 with SMTP id
- 00721157ae682-8303d4d3d23mr5852507b3.8.1786459563424; Tue, 11 Aug 2026
- 07:46:03 -0700 (PDT)
+ AHgh+RpwHNf167G9oWqHlJman38/hqKwpBwX+A/S4A7+VogQm/QTULVE8z3L6rTgQSIbVyyRz56k4lUwcQ==@nongnu.org
+X-Gm-Message-State: AOJu0YzAExB7XjmSGQRIrNN9hfdNG+XEHumicgN+Yh4U8xHaLgd/JpLc
+ fUAqhqojBQtW2SZ8hnPq1FIc6MSHIf0DAO3hgyJFDSXWwAAjMYVZaigNP7xxn/8oTxI=
+X-Gm-Gg: AR+sD10DmYmC1AtNU8G1kzrvVq+1MFi1CKLzmigee2neB3Pz/9Lw5bsK6E4ZuJxP9IK
+ Zx4denD+w7jiq9VnDBmkQ1uXMdBtNASIqGd1VmnvnYtew8i8N7Z7jugatPVaZHouviFFXWSPzQF
+ SML2LbGVvVMEhodvgIMSUp+7frgBosWSXS9GxK0zTJo2ECJQMwaoy2fOxbx25yq4dNKXqkBjDII
+ jg1CCv2Owd4aYhXw3Rar7BSaJKlpmxPjhlbrbHoP+zci0+YMEjrUczwGw16yWxgxSwx+/95IZ6z
+ fvgsMahSn9vMvOh0Ea9cbNOxJ0wPGXE4v5eav9Q07AG2zPmUdV1Z7hY6azxUY4uNyBvAPr6Cx0L
+ 4sBu213VwiMFFmUbAusOjRO7WiXk1xd7MMNTQQBMvQOokHYPYqhd1je7dC7hKLVa9IrBz0Uzdr9
+ nGuEm4fFl6u2E0zu8yihWf6Inb1Ts1/y2VMOYy8GMe+0TNNMzVXrhBvQfYWbT+VUxX4K0bp5wVT
+ xO1B1HURO0zCU8GZ9nJeYo64D7e
+X-Received: by 2002:a05:6a00:130f:b0:84f:3dc2:31c3 with SMTP id
+ d2e1a72fcca58-84faff05cfamr1171126b3a.15.1786465756792; 
+ Tue, 11 Aug 2026 09:29:16 -0700 (PDT)
+Received: from [192.168.0.4] (174-21-93-59.tukw.qwest.net. [174.21.93.59])
+ by smtp.gmail.com with ESMTPSA id
+ d2e1a72fcca58-84fb1f252dfsm26706b3a.48.2026.08.11.09.29.16
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Tue, 11 Aug 2026 09:29:16 -0700 (PDT)
+Message-ID: <db92e3f8-9f31-40e7-a715-190630cdb88e@linaro.org>
+Date: Tue, 11 Aug 2026 09:29:14 -0700
 MIME-Version: 1.0
-References: <20260803193635.4153664-1-pmazzini@gmail.com>
-In-Reply-To: <20260803193635.4153664-1-pmazzini@gmail.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 11 Aug 2026 15:45:52 +0100
-X-Gm-Features: AUfX_mzJDWbp3lU0a-Ayto9xlD3vtqLfKr1KfJ51dbm9AekNeJcS2ifw7Lz7GBg
-Message-ID: <CAFEAcA8H0f6FjkQJJM=qp0CoXJCX1Ow81ac6v8V7xO-jpQzfEw@mail.gmail.com>
-Subject: Re: [PATCH] hw/misc/imx6_ccm: add the i.MX6SLL variant
-To: Pablo Mazzini <pmazzini@gmail.com>
-Cc: qemu-devel@nongnu.org, jcd@tribudubois.net, qemu-arm@nongnu.org
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::112d;
- envelope-from=peter.maydell@linaro.org; helo=mail-yw1-x112d.google.com
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH] target/arm: Fix SVE2 WHILEWR/WHILERW zero diff boundary
+ case
+To: yang.yanjun1@sanechips.com.cn, qemu-devel@nongnu.org
+Cc: peter.maydell@linaro.org, qemu-arm@nongnu.org
+References: <202608060749.6767nOjv097972@mse-fl2.zte.com.cn>
+From: Richard Henderson <richard.henderson@linaro.org>
+Content-Language: en-US
+In-Reply-To: <202608060749.6767nOjv097972@mse-fl2.zte.com.cn>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=2607:f8b0:4864:20::434;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pf1-x434.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -116,121 +106,67 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Mon, 3 Aug 2026 at 20:36, Pablo Mazzini <pmazzini@gmail.com> wrote:
->
-> The i.MX6SLL shares the i.MX6Q clock tree, but reports its own chip id
-> in the ANATOP DIGPROG register and implements the PMU and XTALOSC24M
-> registers that the i.MX6Q does not.
->
-> Add TYPE_IMX6SLL_CCM as a subtype of TYPE_IMX6_CCM.  QOM runs the
-> parent's instance_init first, so the subtype only has to override
-> DIGPROG and widen the decoded ANALOG window to cover the extra
-> registers; the i.MX6Q window is unchanged.
-
-There's no user of this new type. We prefer patches adding new
-devices to come in a patchset that includes support for whatever
-their user is.
-
->
-> DIGPROG is a hardwired chip identifier rather than a reset value, so
-> move its default out of imx6_ccm_reset() and into imx6_ccm_init().
->
-> The analog register array grows to cover the new registers.
->
-> Signed-off-by: Pablo Mazzini <pmazzini@gmail.com>
+On 8/6/26 00:47, yang.yanjun1@sanechips.com.cn wrote:
+> From: YanjunYang <yang.yanjun1@sanechips.com.cn>
+> 
+> The trans_WHILE_ptr function incorrectly handles the case where the
+> address difference divided by ESIZE results in zero. This happens when
+> the address difference is less than ESIZE but greater than zero.
+> 
+> In this boundary case, the address difference is less than ESIZE, which
+> means all elements are safe from conflicts. The previous code would set
+> the predicate to all zeros, but the correct behavior is to set all
+> elements to one.
+> 
+> Fix by checking if diff == 0 after the shift and setting diff to tmax
+> (all elements true) in this case.
+> 
+> Fixes the following test cases:
+>    whilewr p0.s, x9, x10  ; x9=8, x10=11 => p0=0xffffffff (all ones)
+>    whilerw p0.s, x9, x10  ; x9=8, x10=11 => p0=0xffffffff (all ones)
+> 
+> Signed-off-by: YanjunYang <yang.yanjun1@sanechips.com.cn>
 > ---
->  hw/misc/imx6_ccm.c         | 39 ++++++++++++++++++++++++++++++++++++--
->  include/hw/misc/imx6_ccm.h | 12 +++++++++++-
->  2 files changed, 48 insertions(+), 3 deletions(-)
->
-> diff --git a/hw/misc/imx6_ccm.c b/hw/misc/imx6_ccm.c
-> index 45fdd0d5a8..6f48de5954 100644
-> --- a/hw/misc/imx6_ccm.c
-> +++ b/hw/misc/imx6_ccm.c
-> @@ -223,6 +223,14 @@ static const char *imx6_analog_reg_name(uint32_t reg)
->          return "PMU_MISC1_TOG";
->      case USB_ANALOG_DIGPROG:
->          return "USB_ANALOG_DIGPROG";
-> +    case PMU_LOW_PWR_CTRL:
-> +        return "PMU_LOW_PWR_CTRL";
-> +    case XTALOSC24M_OSC_CONFIG0:
-> +        return "XTALOSC24M_OSC_CONFIG0";
-> +    case XTALOSC24M_OSC_CONFIG1:
-> +        return "XTALOSC24M_OSC_CONFIG1";
-> +    case XTALOSC24M_OSC_CONFIG2:
-> +        return "XTALOSC24M_OSC_CONFIG2";
->      default:
->          snprintf(unknown, sizeof(unknown), "%u ?", reg);
->          return unknown;
-> @@ -237,7 +245,7 @@ static const VMStateDescription vmstate_imx6_ccm = {
->      .minimum_version_id = 1,
->      .fields = (const VMStateField[]) {
->          VMSTATE_UINT32_ARRAY(ccm, IMX6CCMState, CCM_MAX),
-> -        VMSTATE_UINT32_ARRAY(analog, IMX6CCMState, CCM_ANALOG_MAX),
-> +        VMSTATE_UINT32_ARRAY(analog, IMX6CCMState, CCM_ANALOG_REGS),
->          VMSTATE_END_OF_LIST()
->      },
->  };
-
-Adding new elements to a vmstate is a migration bump, and at
-minimum needs the version ID numbers to be incremented.
-
-In this case I would favour having the new register state
-in a vmstate subsection so that we only migrate it for the new
-device type, and the existing device's migration info doesn't change.
-
-> @@ -474,7 +482,6 @@ static void imx6_ccm_reset(DeviceState *dev)
->      s->analog[USB_ANALOG_USB2_VBUS_DETECT] = 0x00000004;
->      s->analog[USB_ANALOG_USB2_CHRG_DETECT] = 0x00000000;
->      s->analog[USB_ANALOG_USB2_MISC] = 0x00000002;
-> -    s->analog[USB_ANALOG_DIGPROG] = 0x00630000;
->
->      /* all PLLs need to be locked */
->      s->analog[CCM_ANALOG_PLL_ARM]   |= CCM_ANALOG_PLL_LOCK;
-> @@ -763,6 +770,12 @@ static void imx6_ccm_init(Object *obj)
->      memory_region_add_subregion(&s->container, 0x4000, &s->ioanalog);
->
->      sysbus_init_mmio(sd, &s->container);
+>   target/arm/tcg/translate-sve.c | 4 ++++
+>   1 file changed, 4 insertions(+)
+> 
+> diff --git a/target/arm/tcg/translate-sve.c b/target/arm/tcg/translate-sve.c
+> index fc4cc8c479..33613ebf58 100644
+> --- a/target/arm/tcg/translate-sve.c
+> +++ b/target/arm/tcg/translate-sve.c
+> @@ -3736,6 +3736,10 @@ static bool trans_WHILE_ptr(DisasContext *s, arg_WHILE_ptr *a)
+>           tcg_gen_movcond_i64(TCG_COND_GEU, diff, op0, op1, tmax, diff);
+>       }
+> 
+> +    /* If diff == 0, the address difference is less than ESIZE,
+> +       so all elements are safe from conflicts. */
+> +    tcg_gen_movcond_i64(TCG_COND_EQ, diff, diff, tcg_constant_i64(0), tmax, diff);
 > +
-> +    /*
-> +     * DIGPROG is a hardwired chip identifier: it is not affected by reset.
-> +     * Default to i.MX6Q; variants sharing this CCM override it below.
-> +     */
-> +    s->analog[USB_ANALOG_DIGPROG] = 0x00630000;
->  }
->
->  static void imx6_ccm_class_init(ObjectClass *klass, const void *data)
-> @@ -777,6 +790,21 @@ static void imx6_ccm_class_init(ObjectClass *klass, const void *data)
->      ccm->get_clock_frequency = imx6_ccm_get_clock_frequency;
->  }
->
-> +static void imx6sll_ccm_init(Object *obj)
-> +{
-> +    IMX6CCMState *s = IMX6_CCM(obj);
-> +
-> +    /*
-> +     * Runs after imx6_ccm_init(), which installs the i.MX6Q default.  The
-> +     * clock tree is the same; only the chip identifier differs:
-> +     * MXC_CPU_IMX6SLL (0x67), revision 1.0.
-> +     */
-> +    s->analog[USB_ANALOG_DIGPROG] = 0x00670000;
-> +
-> +    /* Unlike the i.MX6Q, this one implements the PMU/XTALOSC24M registers. */
-> +    memory_region_set_size(&s->ioanalog, CCM_ANALOG_REGS * sizeof(uint32_t));
+>       /* Bound to the maximum.  */
+>       tcg_gen_umin_i64(diff, diff, tmax);
+> 
 
-memory_region_set_size() is really for MRs that dynamically change size,
-not for fixing up a size that we could have got right in the first place.
+For whilerw, we should replace the preceding test, which for some reason compares op0 == 
+op1 directly instead of diff == 0 after the division.
 
-I recommend that you add a class struct to the TYPE_IMX6_CCM, and give
-that struct suitable fields that define how the subclasses differ (DIGPROG
-reset value, whether XTALOSC24M registers are present, etc). In the class_init
-function for each subclass you set those fields in the class struct. Then in
-instance_init you can look at the class struct to see how big you should
-make the MemoryRegion, and in reset you can look to see what reset value to
-use, and so on.
+For whilewr, we need 65-bit arithmetic for the straightforward solution, which I think 
+means we need two comparisons, including this one.  Possibly clearer as
 
-hw/misc/npcm_gcr.c is an example of this approach.
+     diff = unsigned_saturating_sub(op1, op0)
+     diff = diff >> esz
+     diff = diff ? diff : max
+     diff = umin(diff, max)
 
-thanks
--- PMM
+where unsigned_saturating_sub(x, y) -> umax(x, y) - y
+
+Less clear, but possibly more efficient,
+
+     diff = umin(diff - 1, max - 1) + 1;
+
+instead of the direct comparison against 0.
+
+I'll prepare a patch.  Thanks for the report.
+
+
+r~
 

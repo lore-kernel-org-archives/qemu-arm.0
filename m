@@ -4,61 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9C1C5C5B56A
-	for <qemu-arm@archiver.kernel.org>; Tue, 11 Aug 2026 16:39:14 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DF124C5B572
+	for <qemu-arm@archiver.kernel.org>; Tue, 11 Aug 2026 16:40:05 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wtpOL-0004LJ-Qw; Tue, 11 Aug 2026 12:31:53 -0400
+	id 1wtpPR-0006B3-C8; Tue, 11 Aug 2026 12:33:01 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1wtpOJ-00049X-Ll
- for qemu-arm@nongnu.org; Tue, 11 Aug 2026 12:31:51 -0400
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1wtpOz-0005WY-4i
+ for qemu-arm@nongnu.org; Tue, 11 Aug 2026 12:32:37 -0400
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1wtpOF-0000tY-Pz
- for qemu-arm@nongnu.org; Tue, 11 Aug 2026 12:31:51 -0400
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1wtpOv-00012g-Ju
+ for qemu-arm@nongnu.org; Tue, 11 Aug 2026 12:32:32 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1786465907;
+ s=mimecast20190719; t=1786465947;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=HZ8ftIcO5iuAdNMnG4DB9cRAIEo/ItmBethyre8VL6o=;
- b=it2XaULlLIAqzDQ1X3hmltuOPOTPoJBdsEG9qQOtNa+OksXUK4xxZWSM8FbxVR717LSVaE
- H+EUHBDBUOO8r1sLXVQYbtQrjjUl4lkuypiX34UQG4N3jAR0e3Hlr2HAcIEIlS2c9EzcXy
- GcQs49jXKrCW6Oqb32hk+HLBXE8w3VY=
+ bh=P7SjT+HLx4LWeTRU0wOOqHIPUH+StHb6E/H866toUws=;
+ b=K2i39Uz/1iGBUyRaEI/3HT2/bXz0WXIOHbUmWdQ9pc89mL3eQGtusQDqkHBapAknFJr9OH
+ J3PAkq/r8eFJqSPP8UaOeI6SCwLzZBIBZU7jJcQim+e677ymX9xFliEDeq4Kz2UVYGj/ix
+ rELVHIuDeLiw+ohjIobQjQBmgFAbvV0=
 Received: from mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com
  (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-10-rNWBQuB1MUijTcDpxdwq3A-1; Tue,
- 11 Aug 2026 12:31:43 -0400
-X-MC-Unique: rNWBQuB1MUijTcDpxdwq3A-1
-X-Mimecast-MFC-AGG-ID: rNWBQuB1MUijTcDpxdwq3A_1786465902
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-146-oQUMMLmPPzOeW78tpP3nsg-1; Tue,
+ 11 Aug 2026 12:32:25 -0400
+X-MC-Unique: oQUMMLmPPzOeW78tpP3nsg-1
+X-Mimecast-MFC-AGG-ID: oQUMMLmPPzOeW78tpP3nsg_1786465944
 Received: from mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com
  (mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.12])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
  by mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 95E34195609F; Tue, 11 Aug 2026 16:31:42 +0000 (UTC)
+ id EDB8619560BB; Tue, 11 Aug 2026 16:32:23 +0000 (UTC)
 Received: from corto.redhat.com (unknown [10.44.48.12])
  by mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id B45B7195DF91; Tue, 11 Aug 2026 16:31:40 +0000 (UTC)
+ id 0B862195DF91; Tue, 11 Aug 2026 16:32:21 +0000 (UTC)
 From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Cc: Emmanuel Blot <emmanuel.blot@free.fr>, Glenn Miles <milesg@linux.ibm.com>,
+Cc: Jamin Lin <jamin_lin@aspeedtech.com>,
+ =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
+ Kane Chen <kane_chen@aspeedtech.com>,
  =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>
-Subject: [PULL 55/83] tests/qtest: pca9554: test absence of command
- auto-increment
-Date: Tue, 11 Aug 2026 18:29:10 +0200
-Message-ID: <20260811162938.1403216-56-clg@redhat.com>
+Subject: [PULL 75/83] crypto/cipher: Add setaad/gettag for AEAD modes
+Date: Tue, 11 Aug 2026 18:29:30 +0200
+Message-ID: <20260811162938.1403216-76-clg@redhat.com>
 In-Reply-To: <20260811162938.1403216-1-clg@redhat.com>
 References: <20260811162938.1403216-1-clg@redhat.com>
 MIME-Version: 1.0
 X-Scanned-By: MIMEDefang 3.0 on 10.30.177.12
-X-Mimecast-MFC-PROC-ID: O6TYfvF3_iLHlvytFN32vIPPJTOGUHU6w_61TiG17eY_1786465902
+X-Mimecast-MFC-PROC-ID: HKlPNX-z57b_C-2S_5q-5wJYbnkCDbZLy1TjvRUPsOE_1786465944
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
@@ -87,71 +88,132 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-From: Emmanuel Blot <emmanuel.blot@free.fr>
+From: Jamin Lin <jamin_lin@aspeedtech.com>
 
-The PCA9554 selects one of its four registers with a single command byte
-and does not auto-increment the register pointer, so a multi-byte I2C
-transfer keeps addressing the register chosen by the command byte instead
-of walking through the register map.
+AEAD modes such as GCM authenticate optional associated data (AAD) and
+produce an authentication tag, which the block-cipher encrypt/decrypt
+interface cannot express. Add qcrypto_cipher_setaad() and
+qcrypto_cipher_gettag() plus the matching backend driver hooks. The
+generic front-end reports an error when the selected mode's driver does
+not implement them, so calling them on a non-AEAD mode fails cleanly.
 
-Add a test covering this: a two-byte read returns the addressed register
-twice, and a two-byte write updates only that register, leaving its
-neighbour untouched.
-
-Signed-off-by: Emmanuel Blot <emmanuel.blot@free.fr>
-Reviewed-by: Glenn Miles <milesg@linux.ibm.com>
-Link: https://lore.kernel.org/qemu-devel/20260709-catalina-upgrade-v1-22-82a63fead90c@free.fr
+Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
+Reviewed-by: Daniel P. Berrangé <berrange@redhat.com>
+Reviewed-by: Kane Chen <kane_chen@aspeedtech.com>
+Link: https://lore.kernel.org/qemu-devel/20260811060115.1849266-9-jamin_lin@aspeedtech.com
 Signed-off-by: Cédric Le Goater <clg@redhat.com>
 ---
- tests/qtest/pca9554-test.c | 28 ++++++++++++++++++++++++++++
- 1 file changed, 28 insertions(+)
+ crypto/cipherpriv.h     |  8 ++++++++
+ include/crypto/cipher.h | 36 ++++++++++++++++++++++++++++++++++++
+ crypto/cipher.c         | 31 +++++++++++++++++++++++++++++++
+ 3 files changed, 75 insertions(+)
 
-diff --git a/tests/qtest/pca9554-test.c b/tests/qtest/pca9554-test.c
-index 74237df611ea..0da1f3304b9d 100644
---- a/tests/qtest/pca9554-test.c
-+++ b/tests/qtest/pca9554-test.c
-@@ -102,6 +102,33 @@ static void test_polarity_with_output(void *obj, void *data,
-     g_assert_cmphex(i2c_get8(dev, PCA9554_OUTPUT), ==, 0xA5);
+diff --git a/crypto/cipherpriv.h b/crypto/cipherpriv.h
+index 64737ce96153..c4f995f36910 100644
+--- a/crypto/cipherpriv.h
++++ b/crypto/cipherpriv.h
+@@ -34,6 +34,14 @@ struct QCryptoCipherDriver {
+                         const uint8_t *iv, size_t niv,
+                         Error **errp);
+ 
++    int (*cipher_setaad)(QCryptoCipher *cipher,
++                         const uint8_t *aad, size_t len,
++                         Error **errp);
++
++    int (*cipher_gettag)(QCryptoCipher *cipher,
++                         uint8_t *tag, size_t len,
++                         Error **errp);
++
+     void (*cipher_free)(QCryptoCipher *cipher);
+ };
+ 
+diff --git a/include/crypto/cipher.h b/include/crypto/cipher.h
+index 92939310ef09..2e361411b949 100644
+--- a/include/crypto/cipher.h
++++ b/include/crypto/cipher.h
+@@ -235,4 +235,40 @@ int qcrypto_cipher_setiv(QCryptoCipher *cipher,
+                          const uint8_t *iv, size_t niv,
+                          Error **errp);
+ 
++/**
++ * qcrypto_cipher_setaad:
++ * @cipher: the cipher object
++ * @aad: the associated data to authenticate
++ * @len: the length of @aad
++ * @errp: pointer to a NULL-initialized error object
++ *
++ * For AEAD modes such as GCM, feed the associated data (AAD) that is
++ * authenticated but not encrypted. It must be called after
++ * qcrypto_cipher_setiv() and before the first encrypt/decrypt call. It is
++ * an error to call this on a mode that is not an AEAD mode.
++ *
++ * Returns: 0 on success, -1 on error
++ */
++int qcrypto_cipher_setaad(QCryptoCipher *cipher,
++                          const uint8_t *aad, size_t len,
++                          Error **errp);
++
++/**
++ * qcrypto_cipher_gettag:
++ * @cipher: the cipher object
++ * @tag: buffer to receive the authentication tag
++ * @len: the length of @tag
++ * @errp: pointer to a NULL-initialized error object
++ *
++ * For AEAD modes such as GCM, read back the authentication tag computed
++ * over the associated data and the message. It must be called after the
++ * encrypt/decrypt operation. It is an error to call this on a mode that is
++ * not an AEAD mode.
++ *
++ * Returns: 0 on success, -1 on error
++ */
++int qcrypto_cipher_gettag(QCryptoCipher *cipher,
++                          uint8_t *tag, size_t len,
++                          Error **errp);
++
+ #endif /* QCRYPTO_CIPHER_H */
+diff --git a/crypto/cipher.c b/crypto/cipher.c
+index 64c2339d1798..1dc912b2178e 100644
+--- a/crypto/cipher.c
++++ b/crypto/cipher.c
+@@ -205,6 +205,37 @@ int qcrypto_cipher_setiv(QCryptoCipher *cipher,
  }
  
-+/*
-+ * The PCA9554 has no auto-increment: the command pointer never advances, so
-+ * multi-byte reads and writes all target the addressed register.
-+ */
-+static void test_no_autoincrement(void *obj, void *data,
-+                                  QGuestAllocator *alloc)
+ 
++int qcrypto_cipher_setaad(QCryptoCipher *cipher,
++                          const uint8_t *aad, size_t len,
++                          Error **errp)
 +{
-+    QI2CDevice *dev = (QI2CDevice *)obj;
-+    uint8_t buf[2];
++    const QCryptoCipherDriver *drv = cipher->driver;
 +
-+    /* Distinct values in adjacent registers. */
-+    i2c_set8(dev, PCA9554_OUTPUT, 0xAA);
-+    i2c_set8(dev, PCA9554_POLARITY, 0x33);
++    if (!drv->cipher_setaad) {
++        error_setg(errp, "The cipher mode does not support associated data");
++        return -1;
++    }
 +
-+    /* Two reads from OUTPUT return OUTPUT twice, not OUTPUT then POLARITY. */
-+    i2c_read_block(dev, PCA9554_OUTPUT, buf, 2);
-+    g_assert_cmphex(buf[0], ==, 0xAA);
-+    g_assert_cmphex(buf[1], ==, 0xAA);
-+
-+    /* The second written byte overwrites OUTPUT; POLARITY is untouched. */
-+    buf[0] = 0x12;
-+    buf[1] = 0x34;
-+    i2c_write_block(dev, PCA9554_OUTPUT, buf, 2);
-+    g_assert_cmphex(i2c_get8(dev, PCA9554_OUTPUT), ==, 0x34);
-+    g_assert_cmphex(i2c_get8(dev, PCA9554_POLARITY), ==, 0x33);
++    return drv->cipher_setaad(cipher, aad, len, errp);
 +}
 +
- static void pca9554_register_nodes(void)
++
++int qcrypto_cipher_gettag(QCryptoCipher *cipher,
++                          uint8_t *tag, size_t len,
++                          Error **errp)
++{
++    const QCryptoCipherDriver *drv = cipher->driver;
++
++    if (!drv->cipher_gettag) {
++        error_setg(errp,
++                   "The cipher mode does not produce an authentication tag");
++        return -1;
++    }
++
++    return drv->cipher_gettag(cipher, tag, len, errp);
++}
++
++
+ void qcrypto_cipher_free(QCryptoCipher *cipher)
  {
-     QOSGraphEdgeOptions opts = {
-@@ -120,6 +147,7 @@ static void pca9554_register_nodes(void)
-                  NULL);
-     qos_add_test("polarity-with-output", "pca9554", test_polarity_with_output,
-                  NULL);
-+    qos_add_test("no-autoincrement", "pca9554", test_no_autoincrement, NULL);
- }
- 
- libqos_init(pca9554_register_nodes);
+     if (cipher) {
 -- 
 2.55.0
 

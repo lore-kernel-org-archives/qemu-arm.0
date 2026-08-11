@@ -4,136 +4,124 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id F1923C5AC67
-	for <qemu-arm@archiver.kernel.org>; Tue, 11 Aug 2026 06:06:24 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C5CB3C5B570
+	for <qemu-arm@archiver.kernel.org>; Tue, 11 Aug 2026 07:14:17 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wtfYZ-0007Rm-VJ; Tue, 11 Aug 2026 02:01:47 -0400
+	id 1wtggZ-0002tY-I7; Tue, 11 Aug 2026 03:14:08 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
- id 1wtfYY-0007Qm-Rt; Tue, 11 Aug 2026 02:01:46 -0400
-Received: from mail-japaneastazlp170120005.outbound.protection.outlook.com
- ([2a01:111:f403:c405::5] helo=TYPPR03CU001.outbound.protection.outlook.com)
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1wtggV-0002t3-9k
+ for qemu-arm@nongnu.org; Tue, 11 Aug 2026 03:14:03 -0400
+Received: from smtpout4.mo537.mail-out.ovh.net ([51.210.91.23])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
- id 1wtfYX-0002ec-69; Tue, 11 Aug 2026 02:01:46 -0400
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=lKJ7zN1J5tWCD1RQSAFW3HTBQ6RzWtkkPVaHcpkq/uqY30guYGutWckU0QnjZDyffMwWliB0NzChUPQ8TaZWWHtsDyG7tirQ9FWutSNfK/pMMNEso/17Pj5frW9gpJD1/fod0nmgN3t/bFrMwUvztDeutbQxur4688JZseIbAYzXNslNqSL+SICDo/n6Hno7sVyvpopvkyaWlF9q3OoK9PdiRucVSdh2zBfFKxBvKq7HsxDxnjusmCS3lx04uQjK8qboX2hc2CYgMQ+d4QucPuyCncdfrpsPc2/2DMLhi8fRRj3iN7dO2AojKYnrR9WUI/utd/EpPw7lwRD+SkdcPw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector10001;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=ylLtRQT5uGzVj7u9wCYat0H0DTWZCS106M4GG07Ksr0=;
- b=RVmTonerm63Kf7d7vxRdu70XuBGM2a6SHvhwzwQn92FOmh/WJX//l8DdI89486h/iwMTvu98qGQqzno4dyQ7RJA+liBlxoKpBkGH+DohqJhofJYMuw0qv6RNVj/X7X8JgDBrcIo8ea1vutf/BehVcxPjebuFn1+UWycHgUKCMuY7KPftJ9lRJ/RN2i58AkxZ77tKoudG0qIhZUG4LW9ly3f7ofbgHEGl7ObHIJHwVO6njIPU6xr9A8Hn9Sf6T437cBG+EwuZ8sDDw55lbK24lk5MiqFigP8+HAg0MttoIXgFb2+FkLgKNVIDuTLI7hq33iYhCWAWCPYeTLbDHMB4hA==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=aspeedtech.com; dmarc=pass action=none
- header.from=aspeedtech.com; dkim=pass header.d=aspeedtech.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=aspeedtech.com;
- s=selector1;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=ylLtRQT5uGzVj7u9wCYat0H0DTWZCS106M4GG07Ksr0=;
- b=iWbls3h4k1lV/P15TRSTSx7hZEzSA2sG4cW3BBtluEnvpiiqIYG85O1FEYHN6alsNihu+LPYDPvw2BNAHgTx1FVs7/ji4AfRGoSriaUw9aC2rtyHBDjyQ8gYkuu7G0v0vmm/MDVfsWx5srpXVkad8lN5DT8vndSoaowlpmw5reHe84KT+JkiH7Z2rlqw1x49J+sUngRSgAdntWWBVj+xKOqcb8caYTLfNAMuk3MKhgOtDiWDp0xDkdrBDzf6vHfMPXwPsf6LezZLKCumVR4XpY0T08A6ZOV0kdfxi1gKWroBY/F1mDquzeaBOmnrhvBEs7wqz4pXsUfT5yw8vftCHg==
-Received: from TYZPR06MB4980.apcprd06.prod.outlook.com (2603:1096:400:1cc::10)
- by SE2PPF7489084AC.apcprd06.prod.outlook.com (2603:1096:108:1::7da)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.21.292.25; Tue, 11 Aug
- 2026 06:01:30 +0000
-Received: from TYZPR06MB4980.apcprd06.prod.outlook.com
- ([fe80::ea8a:7cb7:4822:2fb3]) by TYZPR06MB4980.apcprd06.prod.outlook.com
- ([fe80::ea8a:7cb7:4822:2fb3%6]) with mapi id 15.21.0292.024; Tue, 11 Aug 2026
- 06:01:30 +0000
-From: Jamin Lin <jamin_lin@aspeedtech.com>
-To: =?iso-8859-1?Q?Daniel_P=2E_Berrang=E9?= <berrange@redhat.com>,
- =?iso-8859-1?Q?C=E9dric_Le_Goater?= <clg@kaod.org>, Peter Maydell
- <peter.maydell@linaro.org>, Steven Lee <steven_lee@aspeedtech.com>, Troy Lee
- <leetroy@gmail.com>, Kane Chen <kane_chen@aspeedtech.com>, Andrew Jeffery
- <andrew@codeconstruct.com.au>, Joel Stanley <joel@jms.id.au>, Eric Blake
- <eblake@redhat.com>, Markus Armbruster <armbru@redhat.com>, Fabiano Rosas
- <farosas@suse.de>, Laurent Vivier <lvivier@redhat.com>, Paolo Bonzini
- <pbonzini@redhat.com>, "open list:All patches CC here"
- <qemu-devel@nongnu.org>, "open list:ASPEED BMCs" <qemu-arm@nongnu.org>
-CC: Jamin Lin <jamin_lin@aspeedtech.com>, Troy Lee <troy_lee@aspeedtech.com>
-Subject: [PATCH v4 10/16] crypto/cipher-nettle: Implement AES-GCM
-Thread-Topic: [PATCH v4 10/16] crypto/cipher-nettle: Implement AES-GCM
-Thread-Index: AQHdKVba63bzY74boEizgtd1b25EVQ==
-Date: Tue, 11 Aug 2026 06:01:30 +0000
-Message-ID: <20260811060115.1849266-11-jamin_lin@aspeedtech.com>
-References: <20260811060115.1849266-1-jamin_lin@aspeedtech.com>
-In-Reply-To: <20260811060115.1849266-1-jamin_lin@aspeedtech.com>
-Accept-Language: zh-TW, en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-authentication-results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=aspeedtech.com;
-x-ms-publictraffictype: Email
-x-ms-traffictypediagnostic: TYZPR06MB4980:EE_|SE2PPF7489084AC:EE_
-x-ms-office365-filtering-correlation-id: 3a8e23fa-33db-4d32-c9d1-08def76dfd6f
-x-ms-exchange-senderadcheck: 1
-x-ms-exchange-antispam-relay: 0
-x-microsoft-antispam: BCL:0;
- ARA:13230040|7416014|376014|1800799024|366016|23010399003|56012099006|10067099003|18002099003|22082099003|38070700021|921020;
-x-microsoft-antispam-message-info: fRRCOXREkVpt0mpemSbisinwrNbYxkEvtDxU0Uf95gdiBkfC3c/iTBgu3hbez6/FDzs+hYB5GZdr3KYutDJ/VNoJsaDX+kqrMWb7K/2HtjvXIqx7v2l28JAU3LlXEFxngmpmFuaKnHYjm3jE2ZsB2HxVub3K5XrLD7I1/iA/UEZLDprnAtmhwu2IrK80PUsLf5HhwBIR5+WSt4kXNY6n7NypNdb7lpdAI5A1yd5+47XWsnDbZcHYvWiV0Ja+vAeOxr3nr/at9kloZoxvWN3VfPCDWHLOiq+3UnDxpirRGTq9vGFAKn2BqrfIWEv7eoHwAMo0ARofC1V9xK8uMKgR19eTahLvUCSGigzMlBWsbdkM5/xZHcPyo1oLX+SmhZubdb6UF7WCsImnltXsvjyTkUoF2yNs0dTFUeiHy8I/QwrvQkZX84r8+GKwCzHOVvwvxgDHN3W9h9MegygZUIVPA6QOgBrbbi7VWagwvb5IF0fmNfvhLH1a6DE1ad8GWC1GhWfuEN6V5NFAYopl8UOa5WlqA2CLS8YTcJ65QzGOXqDk6j/WX9vdPIurGa0g0Iqk9jQZi7Hw0uRbEYMSl8EJWxBoEgp4hABxJ1rhNTuSPr8eZkM1vabh3S6AI76olwV13bLU7UiCeUGyUVLys7N9LHFTbt3dKCLSUj1nR3WCQ4nKcw0htdRa9HHrnwozEO/u3i9HpQniPpDUMs6n1q1DTQviUUjV8BvjAnMfYhiQraQq7Cm6cK524Y7ppvt7vqCC
-x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:TYZPR06MB4980.apcprd06.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(13230040)(7416014)(376014)(1800799024)(366016)(23010399003)(56012099006)(10067099003)(18002099003)(22082099003)(38070700021)(921020);
- DIR:OUT; SFP:1102; 
-x-ms-exchange-antispam-messagedata-chunkcount: 1
-x-ms-exchange-antispam-messagedata-0: =?iso-8859-1?Q?FLb9YY78nm6R+WmziujctBRf+CFP4RblWv6txlZlplyeREKWfuG59dVJqh?=
- =?iso-8859-1?Q?APNMiTRI8cvt8gQNaK7qcPxr5iRGjgaqiZ6xbQw3PGRhPcEPT0nWB6AR+X?=
- =?iso-8859-1?Q?5zUSTQWoWMdUlpWJ1v9R5mRhfBqEsB0xOaVSv8It4RxfECH7xeyE6tH8HL?=
- =?iso-8859-1?Q?2cHbGLj2OBH85YWt6MAYWSICbkGU9tUF+R0A8ZJHmvTadx4bOfqyOJDMi6?=
- =?iso-8859-1?Q?0Kzaol5gc0p8MuKtJOfR4Cn3lX8lF/tyIZqlmNlycmTvxDVtD/uHsovGjv?=
- =?iso-8859-1?Q?ClgGBSYDwf2lYNXvPi8730Z58oqgWPKPyyG0mMedPNoKKjE2/tLG6PmWt/?=
- =?iso-8859-1?Q?uyy+XmOchBYcfxKqebIX8L4+Ha1e3ERzrz9Nk6TN659y/1JVZpVKkhNGhi?=
- =?iso-8859-1?Q?dyE9ZKxtg9tDa+85lJmyxP5dplzOib3hOCTRvg8njitbzBl5k+7v3908ua?=
- =?iso-8859-1?Q?/6xNr2wFrqcXILhyYjk5rxhPInxSC6sQ5YmJM9IMfAJmjWumwB/cTYXUbM?=
- =?iso-8859-1?Q?2W6DGQP4Fb3ZAVll24fHl21xODUsOiWiUGWbA6GeVUjXt8xD32gFvE7lBw?=
- =?iso-8859-1?Q?3AbJW1BlIMUF5OVJLq67K55rvi/22q40CV851ve9eVQ1EVE9dDmnCLN9/W?=
- =?iso-8859-1?Q?9ivOSeF7fPFF4A5uq+pm4WqY6p4uDPjpzRT/cf4EGtDUsQSSSCb0ebSeA3?=
- =?iso-8859-1?Q?t/vwBDff3y5blQSf+fv8fUjtn3bPCNHiGqvLsKqmhvxwMlAXRyGlWe64pP?=
- =?iso-8859-1?Q?QKXlDzx9MBYGL2iJarK/d5FRrZALg68w1/00pb2gPCyOyy3a27pG6k3hch?=
- =?iso-8859-1?Q?PVz/f0AsAVXz8wAekQc2Vn3jf6D4aaokh55ZRWNyXOIond3ORFz+aYPhVK?=
- =?iso-8859-1?Q?i+JXe3cloEaV5Xcn0OUYfgrrvJ2P9T1t2ZdjMRmIuHMIWG7yImpgOly1uP?=
- =?iso-8859-1?Q?48njNhD4YzkiBDnjDMLtx6Dmkqa0zxliUmeFLtNVfiWw2xWZhZLxmlvMYE?=
- =?iso-8859-1?Q?3Cp9JqKk30DotlZ791B1k+/0w0Imx7Gapqi+JLDmAt3EQHMa1i+gYOEGvj?=
- =?iso-8859-1?Q?/3QLpnciRDldq1VJ8q3x787zMYfggLXUr0PBBeCLS+nOiTZA287gyRyuO5?=
- =?iso-8859-1?Q?0Hh6+5RHhvOCWk15VeGUBGXQ6ujiGJhscvD7rdF0xGi4TrDHmGTi3+WmpK?=
- =?iso-8859-1?Q?XnZCFpyNnL9z5FrmgzXut4TG/oJnaF2doQZDAd+G+2o1mQZj1dQkRjJ2df?=
- =?iso-8859-1?Q?t6DO8dhMGmQqEVi5cu4PXH8nnucEj0s4KvFxzHeAcLLRaKY1mGk3RJWxuD?=
- =?iso-8859-1?Q?0si6NoYW8AvjGgVXlpo3uH4TFn0vtdQjT8IKXntVdSLigMiIjicxioJT8A?=
- =?iso-8859-1?Q?/UzCLG6G0NLqbrRgw+Cxx3G5Q6P7C4Z3/uyP+VgxZsejzn/TRbGztFF2Y3?=
- =?iso-8859-1?Q?L3ujYI5j/N2mUyXdJeWTw1N0c2PgnkNFaHkuNjv20QZOjV7vaK+12l4ydL?=
- =?iso-8859-1?Q?ugWRkAW2+tIj0cKLmL0aqL5xqwCrqK0477z0lTmUdM1qp2tIJqVnjNZruu?=
- =?iso-8859-1?Q?xX8NUIoIPXa40FcH27zYz6DJQZBWcCHfkxLuAQs+mT8Z2mJrhnPfWsiicl?=
- =?iso-8859-1?Q?B+3UMnlZhV1Yf/KgoQHh9Kwp8/B9aDgK80PFVi56y/FnCOHI/JpsYgnKde?=
- =?iso-8859-1?Q?p3OIWjhyQfuKBKsfpYE807D5wKomCrXkq5D8hq+89UTDx+QuzCSNUPEJge?=
- =?iso-8859-1?Q?WKCnyNbfOVvOTyQ64FIUTJvFJAKvbXzuEusKuNeRLWrlWYK25HKlYjiYG+?=
- =?iso-8859-1?Q?ROElWh89tQ=3D=3D?=
-Content-Type: text/plain; charset="iso-8859-1"
-Content-Transfer-Encoding: quoted-printable
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1wtggS-0003Bt-PB
+ for qemu-arm@nongnu.org; Tue, 11 Aug 2026 03:14:03 -0400
+Received: from director4.derp.mail-out.ovh.net
+ (director4.derp.mail-out.ovh.net [79.137.60.37])
+ by mo537.mail-out.ovh.net (Postfix) with ESMTPS id 4hK2sw0wNjz49s8;
+ Tue, 11 Aug 2026 07:13:55 +0000 (UTC)
+Received: from director4.derp.mail-out.ovh.net
+ (director4.derp.mail-out.ovh.net. [127.0.0.1])
+ by director4.derp.mail-out.ovh.net (inspect_sender_mail_agent) with SMTP
+ for <jamin_lin@aspeedtech.com>; Tue, 11 Aug 2026 07:13:55 +0000 (UTC)
+Received: from mta6.priv.ovhmail-u2.ea.mail.ovh.net (unknown [10.110.188.111])
+ by director4.derp.mail-out.ovh.net (Postfix) with ESMTPS id
+ 4hK2sv3382z1y5q; Tue, 11 Aug 2026 07:13:55 +0000 (UTC)
+Received: from kaod.org (unknown [10.1.6.2])
+ (Authenticated sender: clg@kaod.org)
+ by mta6.priv.ovhmail-u2.ea.mail.ovh.net (Postfix) with ESMTPSA id 5DFD41B43EE1;
+ Tue, 11 Aug 2026 07:13:53 +0000 (UTC)
+Authentication-Results: garm.ovh; auth=pass
+ (GARM-103G0058fba1e6b-8bfd-4f93-9603-1d5eb5aec354,
+ 803E6BE66494CDF3CD1430A16CDAFD105E03C239) smtp.auth=clg@kaod.org
+X-OVh-ClientIp: 82.66.77.115
+Message-ID: <3dd84c94-cfd3-490c-8f4f-08d896bc6b4f@kaod.org>
+Date: Tue, 11 Aug 2026 09:13:52 +0200
 MIME-Version: 1.0
-X-Exchange-RoutingPolicyChecked: dH4rN8R2O4v1rq4YoSQtrdpfKYfi4DreZd/3HG3m7QQF1Sula0OxrM8ssMlX6N/aakVErsfLvPUcl6FV+E/TfWx/DrDwLOwTq1loh9kjXTVJM3URHTF/ymXE0Fl48p688KCh/GLrgrhEZu/CLXU9vycBMEGuPo4Q0t7HLKekUOFCmGkca3GJDGBwXq/sIDO0b/Y+g0Fx9KGsI//FwlIKi4uN419tLiwF59Q9wPwnaHXAdrNI6p+ikvPxmqEV0o3JjRkqgyQOmoCcdYpyiWdCRLxiiiLBgwiCgGxSfB0qQp2qhgLmfXDravGy/EjEHRZdVEwcnm3bo+ArkkjT4RtY3w==
-X-OriginatorOrg: aspeedtech.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-AuthSource: TYZPR06MB4980.apcprd06.prod.outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 3a8e23fa-33db-4d32-c9d1-08def76dfd6f
-X-MS-Exchange-CrossTenant-originalarrivaltime: 11 Aug 2026 06:01:30.2022 (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: 43d4aa98-e35b-4575-8939-080e90d5a249
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: T/hK5nNuo/tEOyEQrhyu9ZP3s5M5U2HWB0zRKPk9dcGkhZnrvqvXK+epWjJjHbhd06NRjOqwKHMZvE7Mr3aI99Gf78xK1kSSkQvjP4Jr9mI=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: SE2PPF7489084AC
-Received-SPF: pass client-ip=2a01:111:f403:c405::5;
- envelope-from=jamin_lin@aspeedtech.com;
- helo=TYPPR03CU001.outbound.protection.outlook.com
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v4 00/16] Support the ASPEED HACE crypto command
+To: Jamin Lin <jamin_lin@aspeedtech.com>,
+ =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ Steven Lee <steven_lee@aspeedtech.com>, Troy Lee <leetroy@gmail.com>,
+ Kane Chen <kane_chen@aspeedtech.com>,
+ Andrew Jeffery <andrew@codeconstruct.com.au>, Joel Stanley <joel@jms.id.au>,
+ Eric Blake <eblake@redhat.com>, Markus Armbruster <armbru@redhat.com>,
+ Fabiano Rosas <farosas@suse.de>, Laurent Vivier <lvivier@redhat.com>,
+ Paolo Bonzini <pbonzini@redhat.com>,
+ "open list:All patches CC here" <qemu-devel@nongnu.org>,
+ "open list:ASPEED BMCs" <qemu-arm@nongnu.org>
+Cc: Troy Lee <troy_lee@aspeedtech.com>
+References: <20260811060115.1849266-1-jamin_lin@aspeedtech.com>
+From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
+Content-Language: en-US, fr
+Autocrypt: addr=clg@kaod.org; keydata=
+ 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
+In-Reply-To: <20260811060115.1849266-1-jamin_lin@aspeedtech.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+x-ovh-tracer-id: 14678075611103407149
+X-VR-SPAMSTATE: OK
+X-VR-SPAMSCORE: -100
+X-VR-SPAMCAUSE: dmFkZTFzUtbYltJcBOkzHQlPb4WmPGOy0X1Q1oKsPda3Z3i6FfB+EVYhvu1K5ENy7n9S0VjxuWrAJXZtGRhJ8Sud5Kgf7kWNEDhfKVXKtXCqxSiQrXU/dboakQnxBBP6NH6/SYkcLWy+UddGYEMAwHaSaL7yCZ5khqmKX/6LUjI0UHoDniLJFE4r5NJHV+4tzao9vJYjbf2/PBhA/bLFTLtpC1C9gLWb9fSFTqJQmYPo/ehc6Pz/3OU9cpJDG/3+L6Stq45GhTZwkCZut0qCIh1EOMSrFVoDfn1MqKWg3LBxTBERyIeW0bl+YoivhxtA40vL+ArmXHuLK8/2FRIQfV/RooFNXtxygRA0WUemlpXzPKoIvKUDfKcr9JhDdidowTc45Fl9HlY1TZRtEw3aq4LoO4PzWOfM6aFC7O8EUmhkVZFPWiOUDw4CpIFfbNKrAkxnN2ES7ceA7tWOTxqFrRdk20euZyk+rfl2jP8NbU2lm6TMbQhZkMvPeb6VxJB5lEOGCSsN6kYbgetJEvCBUYeYi0QmQ5nnU0z7B8boQN2vKxagRZyOC8TZ1BRL6OR5+TO14QB1b8QfjJ9Vr6wlrt7NDNXPKp5arnIyO2MlGxLbSQ4E1A1HnapJ7BegaRgnbr+r2GyWhxaxFc0EpAc9GVQkYTAOKIqgM5Cq4B+QNmr22DhwSQ
+DKIM-Signature: a=rsa-sha256; bh=nDiAZ9hgWSqA1Z7XMeq0u03xPt4fCwv2d6/pSkCtSTs=; 
+ c=relaxed/relaxed; d=kaod.org; h=From; s=ovhmo393970-selector1;
+ t=1786432437; v=1;
+ b=s8TqOEKEjdiFfc1j/c/bnFbneh0qeGxEntFlNuTCfVEOuE1/yqGKj2ZntyZUROv+QmVOcSAx
+ nMjEbStAUB2K+2+LB/NLSAxQiT5pI9El5wwo10AxCPBEfqZk4apI9Yo9I2GGkx5/v73afpQrcnj
+ qdIXDzjP61tt9MTRQLteWNNmphI3YIvVpTa/R09ZVxZW606vgzdi50fzM8+IpeR9kzWiZjsD0uw
+ eYs04U07AM4PJZu+kWGpLznvjf856PPPxauJD9LKwZdrpJ1YyGzn1c9TrLw2JDfMHbD/LYR+dWS
+ 6mKKTbFFP1i8QtybnyWcx0hRS1bx1d2aBxRcrBkDBeJXQ==
+Received-SPF: pass client-ip=51.210.91.23; envelope-from=clg@kaod.org;
+ helo=smtpout4.mo537.mail-out.ovh.net
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_PASS=-0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -150,198 +138,112 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Add the AES-GCM AEAD mode to the nettle backend so it is available when=0A=
-QEMU is built with nettle instead of gcrypt. GCM is driven through=0A=
-nettle's generic gcm_* interface, using the AES encrypt function for both=
-=0A=
-directions: gcm_set_iv() sets the (typically 96-bit) nonce, gcm_update()=0A=
-feeds the associated data, gcm_encrypt()/gcm_decrypt() need not be block=0A=
-aligned, and gcm_digest() produces the authentication tag.=0A=
-=0A=
-Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>=0A=
-Reviewed-by: Daniel P. Berrang=E9 <berrange@redhat.com>=0A=
----=0A=
- crypto/cipher-nettle.c.inc | 128 +++++++++++++++++++++++++++++++++++++=0A=
- 1 file changed, 128 insertions(+)=0A=
-=0A=
-diff --git a/crypto/cipher-nettle.c.inc b/crypto/cipher-nettle.c.inc=0A=
-index 1afdc391b4..d4847f0efe 100644=0A=
---- a/crypto/cipher-nettle.c.inc=0A=
-+++ b/crypto/cipher-nettle.c.inc=0A=
-@@ -27,6 +27,7 @@=0A=
- #include <nettle/twofish.h>=0A=
- #include <nettle/ctr.h>=0A=
- #include <nettle/xts.h>=0A=
-+#include <nettle/gcm.h>=0A=
- #ifdef CONFIG_CRYPTO_SM4=0A=
- #include <nettle/sm4.h>=0A=
- #endif=0A=
-@@ -410,6 +411,125 @@ DEFINE_ECB(qcrypto_nettle_sm4,=0A=
-            sm4_encrypt_native, sm4_decrypt_native)=0A=
- #endif=0A=
- =0A=
-+/*=0A=
-+ * GCM is an AEAD mode built on AES (128-bit block only). Drive it through=
- the=0A=
-+ * generic gcm_* interface, using the block cipher's encrypt function for =
-both=0A=
-+ * directions; associated data is fed with gcm_update() and the authentica=
-tion=0A=
-+ * tag is produced by gcm_digest().=0A=
-+ */=0A=
-+typedef struct QCryptoNettleAESGCM {=0A=
-+    QCryptoCipher base;=0A=
-+    struct gcm_key gcm_key;=0A=
-+    struct gcm_ctx gcm_ctx;=0A=
-+    union {=0A=
-+        struct aes128_ctx aes128;=0A=
-+        struct aes192_ctx aes192;=0A=
-+        struct aes256_ctx aes256;=0A=
-+    } cipher;=0A=
-+    nettle_cipher_func *encrypt;=0A=
-+} QCryptoNettleAESGCM;=0A=
-+=0A=
-+static int qcrypto_nettle_aes_gcm_setiv(QCryptoCipher *cipher,=0A=
-+                                        const uint8_t *iv, size_t niv,=0A=
-+                                        Error **errp)=0A=
-+{=0A=
-+    QCryptoNettleAESGCM *ctx =3D container_of(cipher, QCryptoNettleAESGCM,=
- base);=0A=
-+=0A=
-+    gcm_set_iv(&ctx->gcm_ctx, &ctx->gcm_key, niv, iv);=0A=
-+    return 0;=0A=
-+}=0A=
-+=0A=
-+static int qcrypto_nettle_aes_gcm_setaad(QCryptoCipher *cipher,=0A=
-+                                         const uint8_t *aad, size_t len,=
-=0A=
-+                                         Error **errp)=0A=
-+{=0A=
-+    QCryptoNettleAESGCM *ctx =3D container_of(cipher, QCryptoNettleAESGCM,=
- base);=0A=
-+=0A=
-+    gcm_update(&ctx->gcm_ctx, &ctx->gcm_key, len, aad);=0A=
-+    return 0;=0A=
-+}=0A=
-+=0A=
-+static int qcrypto_nettle_aes_gcm_encrypt(QCryptoCipher *cipher,=0A=
-+                                          const void *in, void *out,=0A=
-+                                          size_t len, Error **errp)=0A=
-+{=0A=
-+    QCryptoNettleAESGCM *ctx =3D container_of(cipher, QCryptoNettleAESGCM,=
- base);=0A=
-+=0A=
-+    gcm_encrypt(&ctx->gcm_ctx, &ctx->gcm_key, &ctx->cipher, ctx->encrypt,=
-=0A=
-+                len, out, in);=0A=
-+    return 0;=0A=
-+}=0A=
-+=0A=
-+static int qcrypto_nettle_aes_gcm_decrypt(QCryptoCipher *cipher,=0A=
-+                                          const void *in, void *out,=0A=
-+                                          size_t len, Error **errp)=0A=
-+{=0A=
-+    QCryptoNettleAESGCM *ctx =3D container_of(cipher, QCryptoNettleAESGCM,=
- base);=0A=
-+=0A=
-+    gcm_decrypt(&ctx->gcm_ctx, &ctx->gcm_key, &ctx->cipher, ctx->encrypt,=
-=0A=
-+                len, out, in);=0A=
-+    return 0;=0A=
-+}=0A=
-+=0A=
-+static int qcrypto_nettle_aes_gcm_gettag(QCryptoCipher *cipher,=0A=
-+                                         uint8_t *tag, size_t len,=0A=
-+                                         Error **errp)=0A=
-+{=0A=
-+    QCryptoNettleAESGCM *ctx =3D container_of(cipher, QCryptoNettleAESGCM,=
- base);=0A=
-+=0A=
-+    gcm_digest(&ctx->gcm_ctx, &ctx->gcm_key, &ctx->cipher, ctx->encrypt,=
-=0A=
-+               len, tag);=0A=
-+    return 0;=0A=
-+}=0A=
-+=0A=
-+static const struct QCryptoCipherDriver qcrypto_nettle_aes_gcm_driver =3D =
-{=0A=
-+    .cipher_encrypt =3D qcrypto_nettle_aes_gcm_encrypt,=0A=
-+    .cipher_decrypt =3D qcrypto_nettle_aes_gcm_decrypt,=0A=
-+    .cipher_setiv =3D qcrypto_nettle_aes_gcm_setiv,=0A=
-+    .cipher_setaad =3D qcrypto_nettle_aes_gcm_setaad,=0A=
-+    .cipher_gettag =3D qcrypto_nettle_aes_gcm_gettag,=0A=
-+    .cipher_free =3D qcrypto_cipher_ctx_free,=0A=
-+};=0A=
-+=0A=
-+static QCryptoCipher *qcrypto_nettle_aes_gcm_ctx_new(QCryptoCipherAlgo alg=
-,=0A=
-+                                                     const uint8_t *key,=
-=0A=
-+                                                     size_t nkey,=0A=
-+                                                     Error **errp)=0A=
-+{=0A=
-+    QCryptoNettleAESGCM *ctx;=0A=
-+=0A=
-+    if (!qcrypto_cipher_validate_key_length(alg, QCRYPTO_CIPHER_MODE_GCM,=
-=0A=
-+                                            nkey, errp)) {=0A=
-+        return NULL;=0A=
-+    }=0A=
-+=0A=
-+    ctx =3D g_new0(QCryptoNettleAESGCM, 1);=0A=
-+    ctx->base.driver =3D &qcrypto_nettle_aes_gcm_driver;=0A=
-+=0A=
-+    switch (alg) {=0A=
-+    case QCRYPTO_CIPHER_ALGO_AES_128:=0A=
-+        aes128_set_encrypt_key(&ctx->cipher.aes128, key);=0A=
-+        ctx->encrypt =3D aes128_encrypt_native;=0A=
-+        break;=0A=
-+    case QCRYPTO_CIPHER_ALGO_AES_192:=0A=
-+        aes192_set_encrypt_key(&ctx->cipher.aes192, key);=0A=
-+        ctx->encrypt =3D aes192_encrypt_native;=0A=
-+        break;=0A=
-+    case QCRYPTO_CIPHER_ALGO_AES_256:=0A=
-+        aes256_set_encrypt_key(&ctx->cipher.aes256, key);=0A=
-+        ctx->encrypt =3D aes256_encrypt_native;=0A=
-+        break;=0A=
-+    default:=0A=
-+        error_setg(errp, "Unsupported cipher algorithm %s with GCM mode",=
-=0A=
-+                   QCryptoCipherAlgo_str(alg));=0A=
-+        g_free(ctx);=0A=
-+        return NULL;=0A=
-+    }=0A=
-+=0A=
-+    gcm_set_key(&ctx->gcm_key, &ctx->cipher, ctx->encrypt);=0A=
-+    return &ctx->base;=0A=
-+}=0A=
-+=0A=
- bool qcrypto_cipher_supports(QCryptoCipherAlgo alg,=0A=
-                              QCryptoCipherMode mode)=0A=
- {=0A=
-@@ -440,6 +560,10 @@ bool qcrypto_cipher_supports(QCryptoCipherAlgo alg,=0A=
-     case QCRYPTO_CIPHER_MODE_XTS:=0A=
-     case QCRYPTO_CIPHER_MODE_CTR:=0A=
-         return true;=0A=
-+    case QCRYPTO_CIPHER_MODE_GCM:=0A=
-+        return alg =3D=3D QCRYPTO_CIPHER_ALGO_AES_128 ||=0A=
-+               alg =3D=3D QCRYPTO_CIPHER_ALGO_AES_192 ||=0A=
-+               alg =3D=3D QCRYPTO_CIPHER_ALGO_AES_256;=0A=
-     default:=0A=
-         return false;=0A=
-     }=0A=
-@@ -451,6 +575,10 @@ static QCryptoCipher *qcrypto_cipher_ctx_new(QCryptoCi=
-pherAlgo alg,=0A=
-                                              size_t nkey,=0A=
-                                              Error **errp)=0A=
- {=0A=
-+    if (mode =3D=3D QCRYPTO_CIPHER_MODE_GCM) {=0A=
-+        return qcrypto_nettle_aes_gcm_ctx_new(alg, key, nkey, errp);=0A=
-+    }=0A=
-+=0A=
-     switch (mode) {=0A=
-     case QCRYPTO_CIPHER_MODE_ECB:=0A=
-     case QCRYPTO_CIPHER_MODE_CBC:=0A=
--- =0A=
-2.43.0=0A=
+On 8/11/26 08:01, Jamin Lin wrote:
+> The ASPEED HACE model only emulated the hash command; the crypto (cipher)
+> command was stubbed out. On the AST2700 the kernel runs the crypto driver
+> self-tests at boot, so without crypto emulation booting floods the log
+> with failures:
+> 
+>    root@ast2700-default:~# dmesg | grep "self"
+> [    6.078446] alg: self-tests for ctr(des) using aspeed-ctr-des failed (rc=-22)
+> [    6.079295] alg: self-tests for ctr(des) using aspeed-ctr-des failed (rc=-22)
+> [    6.089924] alg: self-tests for ctr(des3_ede) using aspeed-ctr-tdes failed (rc=-22)
+> [    6.090629] alg: self-tests for ctr(des3_ede) using aspeed-ctr-tdes failed (rc=-22)
+> [    6.100134] alg: self-tests for cbc(des3_ede) using aspeed-cbc-tdes failed (rc=-22)
+> [    6.100416] alg: self-tests for ecb(des3_ede) using aspeed-ecb-tdes failed (rc=-22)
+> [    6.100576] alg: self-tests for cbc(des3_ede) using aspeed-cbc-tdes failed (rc=-22)
+> [    6.101411] alg: self-tests for ecb(des3_ede) using aspeed-ecb-tdes failed (rc=-22)
+> [    6.152954] alg: self-tests for ecb(des) using aspeed-ecb-des failed (rc=-22)
+> [    6.153701] alg: self-tests for ecb(des) using aspeed-ecb-des failed (rc=-22)
+> [    6.180101] alg: self-tests for cbc(des) using aspeed-cbc-des failed (rc=-22)
+> [    6.180747] alg: self-tests for cbc(des) using aspeed-cbc-des failed (rc=-22)
+> [    6.206437] alg: self-tests for ctr(aes) using aspeed-ctr-aes failed (rc=-22)
+> [    6.206910] alg: self-tests for ctr(aes) using aspeed-ctr-aes failed (rc=-22)
+> [    6.215313] alg: self-tests for cbc(aes) using aspeed-cbc-aes failed (rc=-22)
+> [    6.215698] alg: self-tests for cbc(aes) using aspeed-cbc-aes failed (rc=-22)
+> [    6.227173] alg: self-tests for ecb(aes) using aspeed-ecb-aes failed (rc=-22)
+> [    6.228027] alg: self-tests for ecb(aes) using aspeed-ecb-aes failed (rc=-22)
+> [    6.276878] alg: self-tests for gcm(aes) using aspeed-gcm-aes failed (rc=-22)
+> [    6.277541] alg: self-tests for gcm(aes) using aspeed-gcm-aes failed (rc=-22)
+> 
+> This series implements the HACE crypto command: AES/DES/3DES in ECB/CBC/CTR
+> over direct and scatter-gather DMA, and AES-GCM with 64-bit DMA on the
+> AST2700. It also adds GCM to the qcrypto cipher API (gcrypt backend) that
+> the AST2700 path needs, plus qtest and unit-test coverage.
+> 
+> With crypto emulated the self-tests pass, the warnings above disappear, and
+> the temporary 'cryptomgr.notests=1' boot workaround in the AST2700
+> functional tests is dropped.
+> 
+> Note: the GNUTLS crypto backend does not support AES-CTR mode.
+> 
+> v1:
+>    1. Support the crypto command in direct access mode
+>    2. Support scatter-gather mode for the crypto command
+>    3. Support the AES-GCM mode for the crypto command
+>    4. Support 64-bit DMA for the crypto command
+>    5. Test the crypto command
+>    6. Drop the AST2700 crypto self-test/model workaround
+> 
+> v2:
+>    1. Add AES-GCM to the nettle and gnutls crypto backends
+>    2. Skip crypto tests for cipher modes the
+>      compiled backend does not support, via qcrypto_cipher_supports()
+>    3.  Check qcrypto_cipher_supports() before running a
+>      crypt command and report the mode as unimplemented when the backend lacks it
+> 
+> v3:
+>    1. remove the duplicate CRYPT_IRQ_EN definition.
+>    2. remove the unuse CRYPT_CMD_DST_SG_CTRL definition.
+>    3. Drop "Drop the AST2700 crypto self-test workaround" patch because GNUTLS
+>       backend does not support AES-CTR mode.
+> 
+> v4:
+>    1. Add GCM tag mask
+> 
+> Jamin Lin (16):
+>    hw/misc/aspeed_hace: Support the crypto command in direct access mode
+>    tests/qtest/aspeed-hace: Test the crypto command on the AST2500
+>    hw/misc/aspeed_hace: Support scatter-gather mode for the crypto
+>      command
+>    hw/misc/aspeed_hace: Support the CTR mode for the crypto command
+>    tests/qtest/aspeed-hace: Test the crypto command on the AST2600
+>    tests/qtest/aspeed-hace: Test the crypto command on the AST1030
+>    crypto/cipher: Add GCM to QCryptoCipherMode
+>    crypto/cipher: Add setaad/gettag for AEAD modes
+>    crypto/cipher-gcrypt: Implement AES-GCM
+>    crypto/cipher-nettle: Implement AES-GCM
+>    crypto/cipher-gnutls: Implement AES-GCM
+>    tests/unit/test-crypto-cipher: Test AES-GCM mode
+>    hw/misc/aspeed_hace: Support 64-bit DMA for the crypto command
+>    hw/misc/aspeed_hace: Support the AES-GCM mode for the crypto command
+>    hw/misc/aspeed_hace: Enable the crypto command on the AST2700
+>    tests/qtest/aspeed-hace: Test the crypto command on the AST2700
+> 
+>   qapi/crypto.json                |   4 +-
+>   crypto/cipherpriv.h             |   8 +
+>   include/crypto/cipher.h         |  36 ++
+>   include/hw/misc/aspeed_hace.h   |   1 -
+>   tests/qtest/aspeed-hace-utils.h |  20 +
+>   crypto/cipher.c                 |  32 ++
+>   hw/misc/aspeed_hace.c           | 461 ++++++++++++++++++++-
+>   tests/qtest/aspeed-hace-utils.c | 693 ++++++++++++++++++++++++++++++++
+>   tests/qtest/aspeed_hace-test.c  |  18 +
+>   tests/qtest/ast2700-hace-test.c |   9 +
+>   tests/unit/test-crypto-cipher.c | 240 +++++++++++
+>   crypto/cipher-gcrypt.c.inc      | 101 +++++
+>   crypto/cipher-gnutls.c.inc      | 154 +++++++
+>   crypto/cipher-nettle.c.inc      | 128 ++++++
+>   tests/qtest/meson.build         |   6 +-
+>   15 files changed, 1886 insertions(+), 25 deletions(-)
+> 
+
+Applied to
+
+     https://github.com/legoater/qemu aspeed-next
+
+Thanks,
+
+C.
+
 

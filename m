@@ -4,120 +4,150 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A2ABBC5AD7B
-	for <qemu-arm@archiver.kernel.org>; Tue, 11 Aug 2026 04:35:32 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5F68CC5AD55
+	for <qemu-arm@archiver.kernel.org>; Tue, 11 Aug 2026 05:23:10 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wteCn-0006JQ-Tm; Tue, 11 Aug 2026 00:35:13 -0400
+	id 1wtex0-00033w-Tv; Tue, 11 Aug 2026 01:22:59 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>)
- id 1wteCn-0006JC-81; Tue, 11 Aug 2026 00:35:13 -0400
-Received: from smtpout1.mo2.mail-out.ovh.net ([79.137.123.219])
+ (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
+ id 1wtewz-00033U-4e; Tue, 11 Aug 2026 01:22:57 -0400
+Received: from mail-japaneastazlp170130007.outbound.protection.outlook.com
+ ([2a01:111:f403:c405::7] helo=TYDPR03CU002.outbound.protection.outlook.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>)
- id 1wteCk-0007Fr-3K; Tue, 11 Aug 2026 00:35:12 -0400
-Received: from director6.derp.mail-out.ovh.net
- (director6.derp.mail-out.ovh.net [51.255.22.22])
- by mo2.mail-out.ovh.net (Postfix) with ESMTPS id 4hJzLf4Kxwz43v3;
- Tue, 11 Aug 2026 04:35:06 +0000 (UTC)
-Received: from director6.derp.mail-out.ovh.net
- (director6.derp.mail-out.ovh.net. [127.0.0.1])
- by director6.derp.mail-out.ovh.net (inspect_sender_mail_agent) with SMTP
- for <jamin_lin@aspeedtech.com>; Tue, 11 Aug 2026 04:35:06 +0000 (UTC)
-Received: from mta6.priv.ovhmail-u2.ea.mail.ovh.net (unknown [10.110.164.71])
- by director6.derp.mail-out.ovh.net (Postfix) with ESMTPS id
- 4hJzLf2djvz7tKR; Tue, 11 Aug 2026 04:35:06 +0000 (UTC)
-Received: from kaod.org (unknown [10.1.6.3])
- (Authenticated sender: clg@kaod.org)
- by mta6.priv.ovhmail-u2.ea.mail.ovh.net (Postfix) with ESMTPSA id 5016C1B43EE1;
- Tue, 11 Aug 2026 04:35:04 +0000 (UTC)
-Authentication-Results: garm.ovh; auth=pass
- (GARM-99G003dbcb8c99-d836-46ba-871e-221a98d125c9,
- 803E6BE66494CDF3CD1430A16CDAFD105E03C239) smtp.auth=clg@kaod.org
-X-OVh-ClientIp: 82.66.77.115
-Message-ID: <025b75a9-f60b-4a37-9640-c874b247f3ae@kaod.org>
-Date: Tue, 11 Aug 2026 06:35:03 +0200
+ (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
+ id 1wteww-00062W-0g; Tue, 11 Aug 2026 01:22:56 -0400
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=wJ8AzFHeMRy9a/8Pj5awiJi0vfhBmu07yqVCQK31CDuBcuN9+of5PILYraHQNGGGDIi61zmL0c8hBd3MBiTqzprmoBYM8p1B4/e2Vpd4OHoP8JjR7zOqnfub6cxphsrN1tIYdjhuqvniVdQpllz8ljdrm0Oncr+rKdhDY0+EgTqKQK3DtoVyiB5MrlmRfRSf7LTyx2869UWQm2gubUAW/LaC/h9nK4vQgLvtxxWfZdXvTPXXHFXEXTP3J1ySqRkFc/vBPTqyqC7mT19UVOppOTEGao8+6eeSg8IsfaGSJc4ztV5BJ6sC9BLkSVz+TaP/rPiojvwpeGq0ILxsQY/kMg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=ou4JfQh9zN9AgDriGwiESG/Yz4sYs1E6J4NAca62pQs=;
+ b=qNqrxwyZS/DZ/1I+KDLfxHCTaLhKt9mgPdiv4OGihQXMElAeNYQFk5cjfpu+j8waEqGkBEC0EXMbdGeftmzW4Fxh2spedCXZyCW6GFb9UxULZ4UZmKhxX0GMI+vk6RBloozUNqytQy3hB3VOw6P1DmhCfqpRAsSgQ0iqc7YcG28g0cy+8RaJ+KX6F5FjlXfzg0Z17cXuofIFRiaf6WL20Pn1lls4yp5//Qy3p5idFFvkIh3SGbUBwivfHiFZNF9oM6wRrnikuNXkDeN3u7U+96xO/2UeH/lvvC77sfl+eJ5Z3w0lLE0GTUoSc9fFWwvJUYJMN0FpzupqtefV6TEoDQ==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=aspeedtech.com; dmarc=pass action=none
+ header.from=aspeedtech.com; dkim=pass header.d=aspeedtech.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=aspeedtech.com;
+ s=selector1;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=ou4JfQh9zN9AgDriGwiESG/Yz4sYs1E6J4NAca62pQs=;
+ b=FDsBCIRBVwQCSj4Ifz7SmI46rXvWaMzd42nzWdY75nNt0gWWWXWl26IMT6zwZLL+yVdtPtGPVTQeOBrIX9Pccdy6cR1lmYpLkvNuZ787UUYeyzis/nwHbNRJ5e+R7o6K3T6dx/PHpEw9Yn4b0EktbxvfmKvlMrVHoZaZBXsOTekkoN9DYYC1pNAeLWqW+FKJlPxgCBBD6t3Hzo4qIIiQcjpSDYlaMBU4bmclt1GUzOcIR3BMWsU4ptW6MOneYoG/mJyDasUI7rbkue4DKjnGMmwY08MGK9qWjSFAsJ6uGyXtA9N5HJxGtWVSE8AYuVDNgOoTGQ4X0MLw49KIv+n6Ng==
+Received: from TYZPR06MB4980.apcprd06.prod.outlook.com (2603:1096:400:1cc::10)
+ by TYNPR06MB8502.apcprd06.prod.outlook.com (2603:1096:405:3d6::7)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.21.292.25; Tue, 11 Aug
+ 2026 05:22:45 +0000
+Received: from TYZPR06MB4980.apcprd06.prod.outlook.com
+ ([fe80::ea8a:7cb7:4822:2fb3]) by TYZPR06MB4980.apcprd06.prod.outlook.com
+ ([fe80::ea8a:7cb7:4822:2fb3%6]) with mapi id 15.21.0292.024; Tue, 11 Aug 2026
+ 05:22:45 +0000
+From: Jamin Lin <jamin_lin@aspeedtech.com>
+To: =?utf-8?B?Q8OpZHJpYyBMZSBHb2F0ZXI=?= <clg@kaod.org>,
+ =?utf-8?B?RGFuaWVsIFAuIEJlcnJhbmfDqQ==?= <berrange@redhat.com>, Peter Maydell
+ <peter.maydell@linaro.org>, Steven Lee <steven_lee@aspeedtech.com>, Troy Lee
+ <leetroy@gmail.com>, Kane Chen <kane_chen@aspeedtech.com>, Andrew Jeffery
+ <andrew@codeconstruct.com.au>, Joel Stanley <joel@jms.id.au>, Eric Blake
+ <eblake@redhat.com>, Markus Armbruster <armbru@redhat.com>, Fabiano Rosas
+ <farosas@suse.de>, Laurent Vivier <lvivier@redhat.com>, Paolo Bonzini
+ <pbonzini@redhat.com>, "open list:All patches CC here"
+ <qemu-devel@nongnu.org>, "open list:ASPEED BMCs" <qemu-arm@nongnu.org>
+CC: Troy Lee <troy_lee@aspeedtech.com>
+Subject: RE: [PATCH v3 14/16] hw/misc/aspeed_hace: Support the AES-GCM mode
+ for the crypto command
+Thread-Topic: [PATCH v3 14/16] hw/misc/aspeed_hace: Support the AES-GCM mode
+ for the crypto command
+Thread-Index: AQHdKT7/yU9AJ19l1UGHr4fFR8BPGraYQK4AgAAPbtA=
+Date: Tue, 11 Aug 2026 05:22:45 +0000
+Message-ID: <TYZPR06MB4980D7802CAFD62F16499D33FCDD2@TYZPR06MB4980.apcprd06.prod.outlook.com>
+References: <20260811031025.2784489-1-jamin_lin@aspeedtech.com>
+ <20260811031025.2784489-15-jamin_lin@aspeedtech.com>
+ <8c33ad0c-940c-4593-839c-fec80936784a@kaod.org>
+In-Reply-To: <8c33ad0c-940c-4593-839c-fec80936784a@kaod.org>
+Accept-Language: zh-TW, en-US
+Content-Language: zh-TW
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+authentication-results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=aspeedtech.com;
+x-ms-publictraffictype: Email
+x-ms-traffictypediagnostic: TYZPR06MB4980:EE_|TYNPR06MB8502:EE_
+x-ms-office365-filtering-correlation-id: accb5085-8f73-4875-96e9-08def768936b
+x-ms-exchange-senderadcheck: 1
+x-ms-exchange-antispam-relay: 0
+x-microsoft-antispam: BCL:0;
+ ARA:13230040|366016|1800799024|7416014|376014|23010399003|10067099003|56012099006|4143699003|38070700021|22082099003|18002099003|921020;
+x-microsoft-antispam-message-info: ePkBtiwDobvlOoAmln2UiY/ZqFfzqdtkCG4CKEHq7OEwnDUEmSXFwQZLC5/8dXl3sCIlRZ2iuo2oD60xuxrS1kF39oRF7TqTT+6figkIHGn6w8eNXas1wNQF6FRpu9vpk1d1/1wUko1+hRfApiEc50jH4NYh06zPKC0ZzbPUTHDnvURe7NkWzXetjOCunoM8RfEFJ3Ug6EchxPLQuZxGeBmnNty/wtR/2Xcz6I+77ndBbuiTLqlhr12jYV4PKdM8UjQGtCvvQ7ZEAu4txVtVmz3DgRBbz4tma8gv0of0t23jyfp6eC0HGQQl3tA2cF6EThUPC++lfN/gwfA/d/YX5PHhemjqZMpJPmeM2G2iPwSOU/fCDBbOhTwoeMTclK6pyT9UxFnPo9EnQBtTO8RjTMlZGgDzsLQ5f03w+wO6mF5e0tCpIW0I8z1Zi2xWTYbqgkdCHLE9MGALHeZV1rnWExBflGRfKRXKGUPJJGD6wDthgQtQV53eZShFU1aHVkYEALZ4EMDdAJW89suOktRWjZXAQFVdh7i001U+PfYxpjkHfS7X6FA6pVFiV73d+ZxvYlHnpitzrPSO1b0czRCi6DbsU8ITQeFRxnuAKQ0voc2V1VudRsr/KfM+SILIpw0wQBADnjxZPA3egPCbA5GlzapJILgZigsRyDQyuK+6eiAvt3gV9lNbINfr+UnUwcZb6y8IVCuKNKuhOKgGRbMqWjGFFjwop+3CPEM2/vfSB00DTOxB8dRgIAhgV64TT8gN
+x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:zh-tw; SCL:1;
+ SRV:; IPV:NLI; SFV:NSPM; H:TYZPR06MB4980.apcprd06.prod.outlook.com; PTR:;
+ CAT:NONE;
+ SFS:(13230040)(366016)(1800799024)(7416014)(376014)(23010399003)(10067099003)(56012099006)(4143699003)(38070700021)(22082099003)(18002099003)(921020);
+ DIR:OUT; SFP:1102; 
+x-ms-exchange-antispam-messagedata-chunkcount: 1
+x-ms-exchange-antispam-messagedata-0: =?utf-8?B?SXBxd2RCaGRQSS9scU12MjJaSEs5cnhVcDRUZFJRREtuMC9MdFMxdkdoTTVq?=
+ =?utf-8?B?NWNiZDdhdHp3ZFV3dDU3TlJoS1FSdTNJNlpILzZucWxyZGE1bzMyWm5TYkV6?=
+ =?utf-8?B?cTVvV0Z0S2oxV3lQSUhWSXNuamx1RUNUZE5XS1lJa0U1Y2RTR05Pc1VENHNv?=
+ =?utf-8?B?bFdCd3lEbk5yRWJNR1E1RWNGWjZldVRtWUV1R3l0eFJIZjRaOFAvdTBtRExk?=
+ =?utf-8?B?VkZZc2Y0K3J3MnAyS05IQitxaUpFRW9CMzYyZUJMaXRqc2ZJeS9hR2RxMEU2?=
+ =?utf-8?B?TER6SUorTWZhUmt6VEVoNU5NNk8zbnN5Y0Zub3VkZ1lKdjgzUnYrVmZjb2lL?=
+ =?utf-8?B?NEIzWTAxVllCd1JGZnJyOFc0VDlZV2VhNlRWKzNPU3NScXhUQXRuVGJ0ZC9j?=
+ =?utf-8?B?VDJRMi8rczc2U0x5NGpOSmFxM3V1Ukc5d1h1VGViWFUyVHV2RGRKRnNIenZt?=
+ =?utf-8?B?TzlUenpkWC9QRGVJV1pFV3V3MUw1aHFPYmN4RzNoU3FmS3dRL01rTGRXWXdE?=
+ =?utf-8?B?OFRaeVY1dGJwakUwTko4NkhVSjRoNDNNb2VwRUZWUzc3dTIwaDlyVy9Fd0pB?=
+ =?utf-8?B?a2tKS1pBWjRBMUlaWEhvQ0ZQVG5abG1wODl4TUdrU2NwZHhoc2RoUUpuMTVz?=
+ =?utf-8?B?dXl3RkV1TnRRUHZyNVdOU0VCblB0UHE1ckxaS1J4K09URE43dlAwcjhOWlk4?=
+ =?utf-8?B?Y0l1Nmt3ci85VUtVVWp0ejc1Yno0UnUrQmdQTll1ekFWMDJDcVh3K0M5Q29m?=
+ =?utf-8?B?UVVKUjVsblFlYkJFVTEyUC9OWkhwaXNNb1FtQ3F4WXFMbzB6RUZDUk5oNmpD?=
+ =?utf-8?B?WHhoNXd0TkFiQkJDZXlLam9sRGh6dithSzJUNUtTVDdjNS9WS014bWhWTVNI?=
+ =?utf-8?B?bGJtdXkvbnhlVnV4YTFlL2NmdlNPb2xIbzF2SCtYLzZMME9JdUVjNXEydVVp?=
+ =?utf-8?B?SmZqQkJWZVBXQ1l6eFJJTTdWaDNMM0NPcXBXNm5ud3BqSWI4OURoTHRSZ29R?=
+ =?utf-8?B?K2ZxNkhvc0JRcW1uWjJtZWdMQUpUVElzL2RCM3dJVm1GNTdhSjN5amIvQnY3?=
+ =?utf-8?B?TWRYTE5GYk1pYjhOTVZKZXR5RW5iSnZBbnJKbkpodWRhQVRHSnpLbnBxQzFr?=
+ =?utf-8?B?ZDBIcGZMeVR5TlMvV0gxOG1KTm93OWFCdG5iMWtXcVA5ZllUUFhOSG9GbStq?=
+ =?utf-8?B?ZDVUNDJTRmlidDJhaXN3Y0syaGczVXYrM3htZlQrY1BZT2drRW5ZNmswY3h5?=
+ =?utf-8?B?ZWZYc2JaY24zOS9EUjIxVC80TFFCaGVFbEF2dVJjUTBtWVFVOHdmNVpWNGxX?=
+ =?utf-8?B?TFhFT3VZOEZJenJmQk1hbzFDUFA4T3p2SHlKWmNZVmFrOUJhV3RQOE53dk12?=
+ =?utf-8?B?b0daSjJJdlRQRUJQQWFoTVNJTFc2L1F5cGNXOVFKZ3Yzby9mWWszOFN3YXQy?=
+ =?utf-8?B?bDdlUis3OXNKbERxd3dmdXdFWGo3ZGRIN0xnZXRHd1A0WG1NRzdBMDNMK3lD?=
+ =?utf-8?B?RUlEb21SalQvMXJPa0FOSTcyM1Y4ZWdBYTJBSzZZNzRQbU9pNGtuaFkxL3Y5?=
+ =?utf-8?B?UjBMYXZFRGVtWVVVNlJmV2VxNU95MXZnMis3ZjhZS0hWQXBrcDZzNzQ0QmlF?=
+ =?utf-8?B?WjUxWkxMV09lK2Z5MDdQbm9hN2J5NmFSdFpxTldGYzN6ek56NTV0NEpIdFdB?=
+ =?utf-8?B?V0hoTkFkK0x6bVdtWERVV1NyS0Rjek82UkxLNW9icUVqSVFSdFU2U1VLL1lT?=
+ =?utf-8?B?SUVaOThiVG5maFhneUVjYnZFc08xa1lvakhReEdHTVFjdWZCMkxjMnE0SkVv?=
+ =?utf-8?B?a0NRWmVKM25Gbm9CeWoxemNSUlhsQjBacFF6V2VoK21sOFJ5VGlqbi9qdlZK?=
+ =?utf-8?B?SXBSQkdNTXMzQm92WnQwUmNjK0hobTFPQmVZSnRKek82dHpUZG1wS0grODNN?=
+ =?utf-8?B?REVBYWg3UzBsWEUxcm1LSUxQUDgvalJQMWx2QytPZnFkN1RqcUNIcWtwM0lz?=
+ =?utf-8?B?UVVSTGsrbm1TZFZaV0hXeVVRNFRuc1NJOVZtQTkrdDBRazN1U1JleHFtcjha?=
+ =?utf-8?B?ODM2d29ENmZibGVlUWNObDd0c2NYcS85RFhmNUhRQVIvZFVZMGV6K2phRnIz?=
+ =?utf-8?B?dW5XMUJhb2JxQUJUQzNGQ0tsaGF0aWpMZVhaYWNuQ1ltWll0dURQeVhPd1Fn?=
+ =?utf-8?B?Q1YzeVM4TDZHYmtGT2VWRFN1OS9yOWlRNzQyN1hmbXpaVm5pbEloM3ZBU09E?=
+ =?utf-8?B?OUhYOFFkek55d0UvUmlqQzdhbkpUZDI5RmF1S2tPZGhXZzg4Um16MlBVZ0wv?=
+ =?utf-8?B?V1NYWTZCQ2RvS0pYSmhpaHdMQlNiMGpsaFNGaG1JKy9FQTJHN29wZz09?=
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v3 8/8] arm/aspeed: Add AST2700 Huygens machine
-To: Mikail Sadic <mikail.sadic@ibm.com>, peter.maydell@linaro.org
-Cc: pbonzini@redhat.com, ninad@linux.ibm.com, titusr@google.com,
- jeuk20.kim@samsung.com, philmd@mailo.com, steven_lee@aspeedtech.com,
- leetroy@gmail.com, jamin_lin@aspeedtech.com, kane_chen@aspeedtech.com,
- andrew@codeconstruct.com.au, joel@jms.id.au, calebs@linux.ibm.com,
- milesg@linux.ibm.com, qemu-arm@nongnu.org, qemu-devel@nongnu.org
-References: <20260810185748.1253-1-mikail.sadic@ibm.com>
- <20260810185748.1253-9-mikail.sadic@ibm.com>
-From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
-Content-Language: en-US, fr
-Autocrypt: addr=clg@kaod.org; keydata=
- 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
-In-Reply-To: <20260810185748.1253-9-mikail.sadic@ibm.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-x-ovh-tracer-id: 11995900557815688323
-X-VR-SPAMSTATE: OK
-X-VR-SPAMSCORE: -100
-X-VR-SPAMCAUSE: dmFkZTGrT7W91OOprcDEHSnlANVTestp7GJWicdrsDdZxesZ6amHuycHIihkF0awCKesIxIt4leDovYPklDJMrzIYDTZU6WZjotcHtFZEFpvX75iAQsyH195FQsH8GwadXqFW/QMXTHSdNiGH0RFP2WtZo9a5h51+EUIGfO71XCLNy+fg7HLwLFUQswxCp0e5LUxnlD1J3F5HViT45BhdNJBoOytaXB68JIWXI9KAjKP4WisjOWtINbj+kkxMNl+5SURSqUiC3iFbbrWJcMeCCUqJTLp/uERMMT7oxW626SzaV5dgDx4OGaEi+SyD9cP9z3aa6mfp8cZsumetnV8aOVJ89XvceChfz/Y6XNI9HFt1H4Ipw2sYS4zAkdTBxTsaMyrghzMmQdUYeHU32nUtGCgTG/FYxUHTFwXd5kJGRuTe5mmwCwCCHAT4rEzcHb4OjSvP7W7OjdI+Axe0lVP9DPrYS24DyQi+Gu6K6KTt7B9JZ2ogZUOwdMrtnk6hObIl5TK+cXNNDhs6RUFjvzd+NegdLKRi8CKtgBjgGTOvq4k9Q0gW95Gqk3P5iwGRt+uI86iwdX7IZjmyGRAIO0KDrBCs0WwCmQQ7G/vjhZ9XNeVFJNe10A1ZZf++US0C47kqYlGVxNbaSoAuES+aZRuJsPjh7KP7ePsMt8hvyIQYSH+upW++g
-DKIM-Signature: a=rsa-sha256; bh=TTSg2NmS0zBg2HXDByEL6xe2RRzU3gg+iR3nrcoPYn8=; 
- c=relaxed/relaxed; d=kaod.org; h=From; s=ovhmo393970-selector1;
- t=1786422906; v=1;
- b=tZ/OAiT9oAd4GfXeCBStYlMBeWlH9kWfYrHrJv4oNWlqJLqAjGFp57Wf2hqenzVn5Y48dB5c
- soLq/iVKJVCF2yS6LulcYfLlrqQAd1tnP+9PL76JbQuLy6aFKvJ7uwuL9NK0h3Hos331S2uAvou
- HoVGI1tMWNYlqJx1VnI8pedIZxGjYQPzWA45qC0h9P4lrMFpwlHd+Bdbfr5TBm8rwj6viEtQBa+
- PSbnzxyl6yfqEdVr0z7IzfuuhNDDN2SgrFMCOqAByn/nWgFAhCuoaJbqSjOYQLBwwaFDx5dvKmN
- arquWZYnungLnvBbtRTIdEVnAHMQUNLGSjr6aJgcycQrw==
-Received-SPF: pass client-ip=79.137.123.219; envelope-from=clg@kaod.org;
- helo=smtpout1.mo2.mail-out.ovh.net
+X-Exchange-RoutingPolicyChecked: PlrMmNEQJC2sVlzP887CdH5xIRtw3szoAOc84veDn9umlFxd/WpWsvoF/j7VbuY5wl8zScwGJqF0aYrmDe5YummjPltGqjonNATcuIR15CdeQPBgFAsP6ADLWla4ai9pzpUM19XzcR+3quCRWl7lkUkTTRR+wHL/6NEzHJfdj8eRq/we8CP5NpV94E2oESk01hCzOEo71YK+/otFJdd6ItKQOmE3Ub5R2zuarTWkxnpz0SFnIVigtQ737ppxQGtJ7uT8VO16STRrSDcp9B0ua5znfGV0vVQBsx37Csr38nV/d5cBJhg50CbYT+PFGe1oDArQHx3tYzIsKoLLAn3AwA==
+X-OriginatorOrg: aspeedtech.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-AuthSource: TYZPR06MB4980.apcprd06.prod.outlook.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: accb5085-8f73-4875-96e9-08def768936b
+X-MS-Exchange-CrossTenant-originalarrivaltime: 11 Aug 2026 05:22:45.5037 (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: 43d4aa98-e35b-4575-8939-080e90d5a249
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: HpG0DVGOB/OyiG26dVs2Jn1pInMddkPyqmJYE3wcBPXBLxp/hzYPMyAwWVh8Ytt3QZtb7Scu/j68WnmnjPEbTdVAYhmkjWF/Ym1sxPXlA48=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: TYNPR06MB8502
+Received-SPF: pass client-ip=2a01:111:f403:c405::7;
+ envelope-from=jamin_lin@aspeedtech.com;
+ helo=TYDPR03CU002.outbound.protection.outlook.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -133,370 +163,170 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On 8/10/26 20:57, Mikail Sadic wrote:
-> Huygens is the IBM POWER12 server platform. The BMC is built around the
-> Aspeed AST2700 A2 SoC and handles power sequencing, thermal management,
-> VPD access and host firmware boot for the POWER host processors.
-> 
-> Add a 'huygens-bmc' machine that instantiates the AST2700 SoC with the
-> board-specific configuration needed to boot the OpenBMC Linux image:
-> the FMC/SPI flash models, the I2C topology (BMC, system and chassis VPD
-> EEPROMs, the UCD90320 power sequencer and temperature sensors) and the
-> network controllers.
-> 
-> Signed-off-by: Mikail Sadic <mikail.sadic@ibm.com>
-> ---
->   docs/system/arm/aspeed.rst      |  50 ++++++-
->   hw/arm/aspeed_ast27x0_huygens.c | 241 ++++++++++++++++++++++++++++++++
->   hw/arm/meson.build              |   1 +
->   3 files changed, 290 insertions(+), 2 deletions(-)
->   create mode 100644 hw/arm/aspeed_ast27x0_huygens.c
-> 
-> diff --git a/docs/system/arm/aspeed.rst b/docs/system/arm/aspeed.rst
-> index 2d51ceeb84..4e42b1edee 100644
-> --- a/docs/system/arm/aspeed.rst
-> +++ b/docs/system/arm/aspeed.rst
-> @@ -271,8 +271,8 @@ configuration file for OTP memory:
->       done > otpmem.img
->     fi
->   
-> -Aspeed 2700 family boards (``ast2700-evb``, ``ast2700fc``)
-> -==========================================================
-> +Aspeed 2700 family boards (``ast2700-evb``, ``ast2700fc``, ``huygens-bmc``)
-> +============================================================================
->   
->   The QEMU Aspeed machines model BMCs of Aspeed evaluation boards.
->   They are based on different releases of the Aspeed SoC :
-> @@ -285,6 +285,7 @@ AST2700 SoC based machines :
->   
->   - ``ast2700-evb``          Aspeed AST2700 Evaluation board (Cortex-A35)
->   - ``ast2700fc``            Aspeed AST2700 Evaluation board (Cortex-A35 + Cortex-M4)
-> +- ``huygens-bmc``          Aspeed AST2700 IBM Huygens POWER12 BMC
->   
->   Supported devices
->   -----------------
-> @@ -312,6 +313,8 @@ Supported devices
->    * PECI Controller (minimal)
->    * I3C Controller
->    * Internal Bridge Controller (SLI dummy)
-> + * UFS Host Controller (aspeed,ufshc-m31-16nm) - ``huygens-bmc`` only
-> + * FSI APB-to-OPB bridge with CFAM-S mailbox
->   
->   Missing devices
->   ---------------
-> @@ -440,6 +443,49 @@ Use ``tio`` or another terminal emulator to connect to the consoles:
->      $ tio /dev/pts/56
->      $ tio /dev/pts/57
->   
-> +Booting the huygens-bmc machine
-> +^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-> +
-> +The IBM Huygens BMC is based on the AST2700 A2 SoC. Its storage is
-> +split across two images:
-> +
-> +* the FMC (SPI NOR) flash image (``image-bmc``) holds U-Boot, the Linux
-> +  kernel and the FIT image;
-> +* the UFS image (``ufs.img``) holds the root filesystem.
-> +
-> +Both images can be built from the OpenBMC project tree.
-> +
-> +To boot the machine, attach the flash image to the FMC device and the
-> +root filesystem image to a UFS logical unit. ``-nodefaults`` is used so the
-> +board does not also create a default flash at chip-select 0, and the console
-> +is wired explicitly since ``-nodefaults`` disables the implicit one:
-> +
-> +.. code-block:: bash
-> +
-> +  $ qemu-system-aarch64 -M huygens-bmc \
-> +        -nodefaults \
-> +        -blockdev node-name=fmc0,driver=file,filename=image-bmc \
-> +        -device w25q01jvq,bus=ssi.0,cs=0,drive=fmc0 \
-> +        -blockdev node-name=ufs0,driver=file,filename=ufs.img \
-> +        -device ufs-lu,bus=ufs-bus.0,drive=ufs0,lun=0,logical-block-size=512 \
-> +        -display none -serial mon:stdio
-> +
-> +The FMC flash sits on chip-select 0 of the ``ssi.0`` bus and the UFS logical
-> +unit on ``ufs-bus.0``. The Huygens image is laid out for 512-byte sectors,
-> +hence ``logical-block-size=512``.
-> +
-> +The machine instantiates three ``ftgmac100`` Ethernet controllers, which
-> +are wired up by the board. To expose them with user networking, add three
-> +``-nic user`` options to the command above:
-> +
-> +.. code-block:: bash
-> +
-> +        -nic user \
-> +        -nic user \
-> +        -nic user
-> +
-> +The default BMC console is ``uart12``.
-> +
->   
->   Aspeed Bridge IC and Platform Root of Trust processor family boards (``ast1030-evb``, ``ast1040-evb``, ``ast1060-evb``)
->   =======================================================================================================================
-> diff --git a/hw/arm/aspeed_ast27x0_huygens.c b/hw/arm/aspeed_ast27x0_huygens.c
-> new file mode 100644
-> index 0000000000..424962c536
-> --- /dev/null
-> +++ b/hw/arm/aspeed_ast27x0_huygens.c
-> @@ -0,0 +1,241 @@
-> +/*
-> + * IBM Huygens BMC
-> + *
-> + * Copyright 2026 IBM Corp.
-> + *
-> + * SPDX-License-Identifier: GPL-2.0-or-later
-> + */
-> +
-> +#include "qemu/osdep.h"
-> +#include "qapi/error.h"
-> +#include "hw/arm/machines-qom.h"
-> +#include "hw/arm/aspeed.h"
-> +#include "hw/arm/aspeed_soc.h"
-> +#include "hw/nvram/eeprom_at24c.h"
-> +#include "hw/i2c/i2c_mux_pca954x.h"
-> +#include "hw/sensor/tmp105.h"
-> +
-> +/* SCU HW Strap1 */
-> +#define HUYGENS_BMC_HW_STRAP1 0x00000800
-> +/* SCUIO HW Strap1 */
-> +#define HUYGENS_BMC_HW_STRAP2 0x00000700
-> +
-> +/*
-> + * 2048-byte IPZ VPD image:
-> + * VHDR, VTOC, VINI, VMPU, VSBP, VSYS, UTIL, DINF, VCEN + ECC
-> + */
-> +static const uint8_t huygens_bmc_fruid[] = {
-> +    0x00, 0x0f, 0x17, 0xba, 0x3a, 0xc9, 0x32, 0x31, 0x49, 0xb2, 0xde, 0x84,
-> +    0x28, 0x00, 0x52, 0x54, 0x04, 0x56, 0x48, 0x44, 0x52, 0x56, 0x44, 0x02,
-> +    0x30, 0x31, 0x50, 0x54, 0x0e, 0x56, 0x54, 0x4f, 0x43, 0xd5, 0x00, 0x37,
-> +    0x00, 0x74, 0x00, 0xa6, 0x05, 0x1d, 0x00, 0x50, 0x46, 0x08, 0x00, 0x00,
-> +    0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x78, 0x84, 0x70, 0x00, 0x52, 0x54,
-> +    0x04, 0x56, 0x54, 0x4f, 0x43, 0x50, 0x54, 0x62, 0x56, 0x49, 0x4e, 0x49,
-> +    0xd5, 0x00, 0xab, 0x00, 0x84, 0x00, 0x85, 0x05, 0x21, 0x00, 0x56, 0x4d,
-> +    0x50, 0x55, 0xff, 0x00, 0x2f, 0x01, 0xa4, 0x00, 0x5c, 0x05, 0x29, 0x00,
-> +    0x56, 0x53, 0x42, 0x50, 0xff, 0x00, 0xd3, 0x01, 0x30, 0x00, 0x50, 0x05,
-> +    0x0c, 0x00, 0x56, 0x53, 0x59, 0x53, 0xff, 0x00, 0x03, 0x02, 0x44, 0x01,
-> +    0xff, 0x04, 0x51, 0x00, 0x55, 0x54, 0x49, 0x4c, 0xff, 0x00, 0x47, 0x03,
-> +    0xe8, 0x00, 0xc5, 0x04, 0x3a, 0x00, 0x44, 0x49, 0x4e, 0x46, 0xff, 0x00,
-> +    0x2f, 0x04, 0x30, 0x00, 0xb9, 0x04, 0x0c, 0x00, 0x56, 0x43, 0x45, 0x4e,
-> +    0xff, 0x00, 0x5f, 0x04, 0x48, 0x00, 0xa7, 0x04, 0x12, 0x00, 0x50, 0x46,
-> +    0x01, 0x00, 0x78, 0x84, 0x80, 0x00, 0x52, 0x54, 0x04, 0x56, 0x49, 0x4e,
-> +    0x49, 0x44, 0x52, 0x10, 0x51, 0x45, 0x4d, 0x55, 0x20, 0x48, 0x55, 0x59,
-> +    0x47, 0x45, 0x4e, 0x53, 0x20, 0x42, 0x4d, 0x43, 0x43, 0x45, 0x01, 0x20,
-> +    0x56, 0x5a, 0x02, 0x20, 0x20, 0x46, 0x4e, 0x07, 0x20, 0x20, 0x20, 0x20,
-> +    0x20, 0x20, 0x20, 0x50, 0x4e, 0x07, 0x20, 0x20, 0x20, 0x20, 0x20, 0x20,
-> +    0x20, 0x53, 0x4e, 0x0c, 0x20, 0x20, 0x20, 0x20, 0x20, 0x20, 0x20, 0x20,
-> +    0x20, 0x20, 0x20, 0x20, 0x43, 0x43, 0x04, 0x20, 0x20, 0x20, 0x20, 0x48,
-> +    0x45, 0x04, 0x20, 0x20, 0x20, 0x20, 0x43, 0x54, 0x04, 0x00, 0x00, 0x00,
-> +    0x00, 0x48, 0x57, 0x02, 0x00, 0x01, 0x42, 0x33, 0x06, 0x20, 0x20, 0x20,
-> +    0x20, 0x20, 0x20, 0x42, 0x34, 0x01, 0x20, 0x42, 0x37, 0x0c, 0x20, 0x20,
-> +    0x20, 0x20, 0x20, 0x20, 0x20, 0x20, 0x20, 0x20, 0x20, 0x20, 0x50, 0x46,
-> +    0x01, 0x00, 0x78, 0x84, 0xa0, 0x00, 0x52, 0x54, 0x04, 0x56, 0x4d, 0x50,
-> +    0x55, 0x56, 0x5a, 0x02, 0x30, 0x31, 0x53, 0x4f, 0x02, 0x00, 0x00, 0x44,
-> +    0x49, 0x04, 0x00, 0x00, 0x00, 0x00, 0x49, 0x4e, 0x80, 0x00, 0x00, 0x00,
-> +    0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-> +    0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-> +    0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-> +    0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-> +    0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-> +    0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-> +    0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-> +    0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-> +    0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-> +    0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-> +    0x00, 0x00, 0x00, 0x00, 0x00, 0x50, 0x46, 0x02, 0x00, 0x00, 0x78, 0x84,
-> +    0x2c, 0x00, 0x52, 0x54, 0x04, 0x56, 0x53, 0x42, 0x50, 0x44, 0x52, 0x10,
-> +    0x56, 0x50, 0x44, 0x20, 0x52, 0x4f, 0x4f, 0x54, 0x20, 0x4e, 0x4f, 0x44,
-> +    0x45, 0x20, 0x20, 0x20, 0x50, 0x41, 0x01, 0x59, 0x49, 0x4d, 0x04, 0x70,
-> +    0x00, 0x10, 0x00, 0x50, 0x46, 0x04, 0x00, 0x00, 0x00, 0x00, 0x78, 0x84,
-> +    0x40, 0x01, 0x52, 0x54, 0x04, 0x56, 0x53, 0x59, 0x53, 0x44, 0x52, 0x06,
-> +    0x53, 0x59, 0x53, 0x54, 0x45, 0x4d, 0x42, 0x52, 0x02, 0x20, 0x20, 0x53,
-> +    0x45, 0x07, 0x20, 0x20, 0x20, 0x20, 0x20, 0x20, 0x20, 0x53, 0x47, 0x07,
-> +    0x20, 0x20, 0x20, 0x20, 0x20, 0x20, 0x20, 0x54, 0x4d, 0x08, 0x20, 0x20,
-> +    0x20, 0x20, 0x20, 0x20, 0x20, 0x20, 0x54, 0x4e, 0x08, 0x20, 0x20, 0x20,
-> +    0x20, 0x20, 0x20, 0x20, 0x20, 0x4d, 0x4e, 0x07, 0x20, 0x20, 0x20, 0x20,
-> +    0x20, 0x20, 0x20, 0x49, 0x44, 0x02, 0x20, 0x20, 0x53, 0x55, 0x06, 0x20,
-> +    0x20, 0x20, 0x20, 0x20, 0x20, 0x4e, 0x4e, 0x10, 0x20, 0x20, 0x20, 0x20,
-> +    0x20, 0x20, 0x20, 0x20, 0x20, 0x20, 0x20, 0x20, 0x20, 0x20, 0x20, 0x20,
-> +    0x52, 0x47, 0x04, 0x20, 0x20, 0x20, 0x20, 0x52, 0x42, 0x04, 0x20, 0x20,
-> +    0x20, 0x20, 0x57, 0x4e, 0x0c, 0x20, 0x20, 0x20, 0x20, 0x20, 0x20, 0x20,
-> +    0x20, 0x20, 0x20, 0x20, 0x20, 0x46, 0x56, 0x20, 0x20, 0x20, 0x20, 0x20,
-> +    0x20, 0x20, 0x20, 0x20, 0x20, 0x20, 0x20, 0x20, 0x20, 0x20, 0x20, 0x20,
-> +    0x20, 0x20, 0x20, 0x20, 0x20, 0x20, 0x20, 0x20, 0x20, 0x20, 0x20, 0x20,
-> +    0x20, 0x20, 0x20, 0x20, 0x41, 0x41, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00,
-> +    0x00, 0x00, 0x00, 0x41, 0x42, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-> +    0x00, 0x00, 0x41, 0x4b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-> +    0x00, 0x41, 0x54, 0x20, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-> +    0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-> +    0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-> +    0x42, 0x4e, 0x40, 0x20, 0x20, 0x20, 0x20, 0x20, 0x20, 0x20, 0x20, 0x20,
-> +    0x20, 0x20, 0x20, 0x20, 0x20, 0x20, 0x20, 0x20, 0x20, 0x20, 0x20, 0x20,
-> +    0x20, 0x20, 0x20, 0x20, 0x20, 0x20, 0x20, 0x20, 0x20, 0x20, 0x20, 0x20,
-> +    0x20, 0x20, 0x20, 0x20, 0x20, 0x20, 0x20, 0x20, 0x20, 0x20, 0x20, 0x20,
-> +    0x20, 0x20, 0x20, 0x20, 0x20, 0x20, 0x20, 0x20, 0x20, 0x20, 0x20, 0x20,
-> +    0x20, 0x20, 0x20, 0x20, 0x20, 0x20, 0x20, 0x42, 0x41, 0x01, 0x20, 0x4d,
-> +    0x4d, 0x01, 0x20, 0x50, 0x46, 0x04, 0x00, 0x00, 0x00, 0x00, 0x78, 0x84,
-> +    0xe4, 0x00, 0x52, 0x54, 0x04, 0x55, 0x54, 0x49, 0x4c, 0x44, 0x30, 0x01,
-> +    0x00, 0x44, 0x31, 0x01, 0x00, 0x44, 0x32, 0x01, 0x00, 0x44, 0x33, 0x01,
-> +    0x00, 0x44, 0x34, 0x04, 0x00, 0x00, 0x00, 0x00, 0x44, 0x35, 0x04, 0x00,
-> +    0x00, 0x00, 0x00, 0x44, 0x36, 0x04, 0x00, 0x00, 0x00, 0x00, 0x44, 0x37,
-> +    0x04, 0x00, 0x00, 0x00, 0x00, 0x44, 0x38, 0x08, 0x00, 0x00, 0x00, 0x00,
-> +    0x00, 0x00, 0x00, 0x00, 0x44, 0x39, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00,
-> +    0x00, 0x00, 0x00, 0x46, 0x30, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-> +    0x00, 0x00, 0x46, 0x31, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-> +    0x00, 0x46, 0x32, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-> +    0x46, 0x33, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x46,
-> +    0x34, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x46, 0x35,
-> +    0x10, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-> +    0x00, 0x00, 0x00, 0x00, 0x00, 0x46, 0x36, 0x10, 0x00, 0x00, 0x00, 0x00,
-> +    0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-> +    0x46, 0x37, 0x10, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-> +    0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x46, 0x38, 0x10, 0x00, 0x00,
-> +    0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-> +    0x00, 0x00, 0x46, 0x39, 0x10, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
-> +    0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x50, 0x46, 0x02,
-> +    0x00, 0x00, 0x78, 0x84, 0x2c, 0x00, 0x52, 0x54, 0x04, 0x44, 0x49, 0x4e,
-> +    0x46, 0x52, 0x49, 0x04, 0x00, 0x00, 0x00, 0x00, 0x46, 0x4c, 0x14, 0x20,
-> +    0x20, 0x20, 0x20, 0x20, 0x20, 0x20, 0x20, 0x20, 0x20, 0x20, 0x20, 0x20,
-> +    0x20, 0x20, 0x20, 0x20, 0x20, 0x20, 0x20, 0x50, 0x46, 0x04, 0x00, 0x00,
-> +    0x00, 0x00, 0x78, 0x84, 0x44, 0x00, 0x52, 0x54, 0x04, 0x56, 0x43, 0x45,
-> +    0x4e, 0x44, 0x52, 0x06, 0x43, 0x45, 0x43, 0x20, 0x20, 0x20, 0x53, 0x45,
-> +    0x07, 0x20, 0x20, 0x20, 0x20, 0x20, 0x20, 0x20, 0x54, 0x4d, 0x08, 0x20,
-> +    0x20, 0x20, 0x20, 0x20, 0x20, 0x20, 0x20, 0x46, 0x43, 0x08, 0x20, 0x20,
-> +    0x20, 0x20, 0x20, 0x20, 0x20, 0x20, 0x52, 0x47, 0x04, 0x20, 0x20, 0x20,
-> +    0x20, 0x52, 0x42, 0x04, 0x20, 0x20, 0x20, 0x20, 0x50, 0x46, 0x03, 0x00,
-> +    /* ECC area */
-> +    0x00, 0x00, 0x78, 0x4d, 0x5d, 0x84, 0x8c, 0x0a, 0xf9, 0xed, 0x3d, 0x96,
-> +    0x11, 0x4a, 0x45, 0x9a, 0xb6, 0xb2, 0xd9, 0x19, 0x43, 0x05, 0x0f, 0xdd,
-> +    0xb5, 0xf9, 0x3d, 0x5b, 0x81, 0xb3, 0x79, 0xcb, 0x19, 0x48, 0xbb, 0xa2,
-> +    0x57, 0x10, 0x6e, 0x39, 0x38, 0x85, 0x5e, 0xa3, 0x24, 0xbc, 0x02, 0x63,
-> +    0x6b, 0x79, 0xa3, 0x6b, 0xed, 0xcd, 0x27, 0x4e, 0x79, 0x9f, 0x76, 0x4e,
-> +    0x7b, 0x93, 0x2d, 0xf4, 0x4c, 0x51, 0x0e, 0x28, 0x46, 0x43, 0x2b, 0xd9,
-> +    0x1b, 0x21, 0x21, 0xc8, 0xe4, 0x6e, 0x9b, 0x4e, 0x34, 0x7e, 0x6e, 0x82,
-> +    0x1b, 0x09, 0x13, 0xf1, 0x40, 0x7b, 0x9f, 0x6d, 0x50, 0x3e, 0x65, 0x31,
-> +    0x1f, 0x19, 0x6f, 0x61, 0x78, 0x27, 0x72, 0x7c, 0x59, 0x34, 0x7c, 0x05,
-> +    0x58, 0x13, 0x6f, 0x78, 0x13, 0x56, 0x33, 0x19, 0x1e, 0x79, 0x17, 0x41,
-> +    0x28, 0x58, 0x6d, 0x26, 0x01, 0x34, 0x7d, 0x68, 0x1d, 0x7e, 0x1c, 0x42,
-> +    0x49, 0x2a, 0x11, 0x7c, 0x70, 0x1a, 0x66, 0x47, 0x68, 0x6e, 0x3f, 0x5e,
-> +    0x6b, 0x6d, 0x25, 0x7e, 0x3e, 0x24, 0x39, 0x07, 0x3c, 0x6e, 0x5b, 0x5d,
-> +    0x4e, 0x59, 0x79, 0x7d, 0x6f, 0x5f, 0x7f, 0x5f, 0x4b, 0x5f, 0x6d, 0x3e,
-> +    0x58, 0x57, 0x1b, 0x19, 0x5d, 0x14, 0x43, 0x83, 0xfc, 0xe6, 0x49, 0x84,
-> +    0x41, 0x28, 0x0b, 0x0a, 0x00, 0x5b, 0xec, 0x46, 0x13, 0x4d, 0x00, 0xdc,
-> +    0x89, 0xab, 0xbb, 0x77, 0x77, 0x7e, 0xee, 0xff, 0xfd, 0xdf, 0xff, 0xbb,
-> +    0xbf, 0xff, 0x77, 0x7f, 0xfe, 0xee, 0xff, 0xfd, 0xdf, 0xff, 0xbb, 0xbf,
-> +    0xfe, 0x76, 0x7e, 0xca, 0xc8, 0x99, 0x51, 0xd7, 0x70, 0x00, 0x03, 0x26,
-> +    0x9e, 0x4e, 0x7f, 0x13, 0x38, 0xbb, 0x3c, 0xbb, 0x00, 0x02, 0xa0, 0x0a,
-> +    0xcb, 0x70, 0xb7, 0x9f, 0x2b, 0x79, 0xa4, 0x00, 0x07, 0x71, 0xad, 0x17,
-> +    0x41, 0xd7, 0xb9, 0x8c, 0x6d, 0x08, 0x2c, 0x80, 0x04, 0x56, 0x6b, 0x9f,
-> +    0x00, 0x9f, 0xbe, 0xdb, 0x71, 0x63, 0x01, 0xb8, 0xf0, 0x41, 0xc0, 0xe1,
-> +    0x8d, 0x3a, 0x6f, 0xc0, 0x66, 0x5f, 0xb6, 0x4c, 0x2a, 0x5f, 0x06, 0x00,
-> +    /* Rest is 0x00 */
-> +};
-> +static const size_t huygens_bmc_fruid_len = sizeof(huygens_bmc_fruid);
-> +
-> +/* chassis1 VPD: huygens_bmc_fruid with VCEN.FC patched to "2E4C-001" */
-> +#define HUYGENS_CHASSIS1_FC_OFFSET 0x048a
-> +static const uint8_t huygens_chassis1_fc[] = {
-> +    0x32, 0x45, 0x34, 0x43, 0x2d, 0x30, 0x30, 0x31
-> +};
-> +
-> +static void huygens_bmc_i2c_init(AspeedMachineState *bmc)
-> +{
-> +    AspeedSoCState *soc = bmc->soc;
-> +
-> +    /* I2C0: BMC EEPROM */
-> +    at24c_eeprom_init(aspeed_i2c_get_bus(&soc->i2c, 0), 0x50, 8 * KiB);
-> +
-> +    /* I2C5: UCD90320 power sequencer */
-> +    i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 5), "ucd90320", 0x11);
-> +
-> +    /* I2C6: chassis1 backplane VPD EEPROM */
-> +    {
-> +        g_autofree uint8_t *ch1 = g_malloc(huygens_bmc_fruid_len);
-> +        memcpy(ch1, huygens_bmc_fruid, huygens_bmc_fruid_len);
-> +        memcpy(ch1 + HUYGENS_CHASSIS1_FC_OFFSET,
-> +               huygens_chassis1_fc, sizeof(huygens_chassis1_fc));
-> +        at24c_eeprom_init_rom(aspeed_i2c_get_bus(&soc->i2c, 6), 0x50,
-> +                              8 * KiB, ch1, huygens_bmc_fruid_len);
-> +    }
-> +
-> +    /* I2C8: System VPD at 0x53 */
-> +    at24c_eeprom_init_rom(aspeed_i2c_get_bus(&soc->i2c, 8), 0x53,
-> +                          4 * KiB, huygens_bmc_fruid, huygens_bmc_fruid_len);
-> +    /* LCD EEPROM */
-> +    at24c_eeprom_init(aspeed_i2c_get_bus(&soc->i2c, 8), 0x51, 8 * KiB);
-> +
-> +    /* I2C9: System VPD redundant and op-panel devices */
-> +    at24c_eeprom_init(aspeed_i2c_get_bus(&soc->i2c, 9),
-> +                      0x53, 8 * KiB);  /* SYSVPD-redundant */
-> +
-> +    /* TMP275 temperature sensor (compatible with TMP105) */
-> +    i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 9),
-> +                            TYPE_TMP105, 0x48);
-> +
-> +    /* Op-panel EEPROM */
-> +    at24c_eeprom_init(aspeed_i2c_get_bus(&soc->i2c, 9), 0x51, 8 * KiB);
-> +
-> +    /* PCA9552 LED controllers on bus 9 */
-> +    aspeed_create_pca9552(soc, 9, 0x62);
-> +    aspeed_create_pca9552(soc, 9, 0x64);
-> +    aspeed_create_pca9552(soc, 9, 0x66);
-> +
-> +    /* DPS310 pressure sensor */
-> +    i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 9), "dps310", 0x76);
-> +}
-> +
-> +static void aspeed_machine_huygens_class_init(ObjectClass *oc,
-> +                                              const void *data)
-> +{
-> +    MachineClass *mc = MACHINE_CLASS(oc);
-> +    AspeedMachineClass *amc = ASPEED_MACHINE_CLASS(oc);
-> +
-> +    mc->alias      = "ast2700-huygens";
-> +    mc->desc       = "Aspeed AST2700 A2 [IBM Huygens]";
-> +    amc->soc_name  = "ast2700-a2";
-> +    amc->hw_strap1 = HUYGENS_BMC_HW_STRAP1;
-> +    amc->hw_strap2 = HUYGENS_BMC_HW_STRAP2;
-> +    amc->fmc_model = "w25q01jvq";
-> +    amc->spi_model = "w25q512jv";
-> +    amc->num_cs    = 2;
-> +    amc->macs_mask = ASPEED_MAC0_ON | ASPEED_MAC1_ON | ASPEED_MAC2_ON;
-> +    amc->uart_default = ASPEED_DEV_UART12;
-> +    amc->i2c_init  = huygens_bmc_i2c_init;
-> +    amc->vbootrom  = true;
-> +    /* UFS LUN block size to match the OpenBMC image layout */
-> +    amc->ufs_block_size = 512;
-> +    mc->default_ram_size = 2 * GiB;
-> +    aspeed_machine_class_init_cpus_defaults(mc);
-> +}
-> +
-> +static const TypeInfo aspeed_ast27x0_huygens_types[] = {
-> +    {
-> +        .name       = MACHINE_TYPE_NAME("huygens-bmc"),
-> +        .parent     = TYPE_ASPEED_MACHINE,
-> +        .class_init = aspeed_machine_huygens_class_init,
-> +        .interfaces = aarch64_machine_interfaces,
-> +    }
-> +};
-> +
-> +DEFINE_TYPES(aspeed_ast27x0_huygens_types)
-> diff --git a/hw/arm/meson.build b/hw/arm/meson.build
-> index 4233a800be..a237f1d04f 100644
-> --- a/hw/arm/meson.build
-> +++ b/hw/arm/meson.build
-> @@ -75,6 +75,7 @@ arm_common_ss.add(when: 'CONFIG_ASPEED_SOC', if_true: files(
->     'aspeed_ast27x0-fc.c',
->     'aspeed_ast27x0-ssp.c',
->     'aspeed_ast27x0-tsp.c',
-> +  'aspeed_ast27x0_huygens.c',
->     'aspeed_coprocessor_common.c'))
->   arm_common_ss.add(when: 'CONFIG_MPS2', if_true: files('mps2.c'))
->   arm_common_ss.add(when: 'CONFIG_MPS2', if_true: files('mps2-tz.c'))
-
-Do you plan to send a functional test ?
-
-Thanks,
-
-C.
+SGkgQ8OpZHJpYw0KDQo+IFN1YmplY3Q6IFJlOiBbUEFUQ0ggdjMgMTQvMTZdIGh3L21pc2MvYXNw
+ZWVkX2hhY2U6IFN1cHBvcnQgdGhlIEFFUy1HQ00NCj4gbW9kZSBmb3IgdGhlIGNyeXB0byBjb21t
+YW5kDQo+IA0KPiBPbiA4LzExLzI2IDA1OjEwLCBKYW1pbiBMaW4gd3JvdGU6DQo+ID4gSW1wbGVt
+ZW50IHRoZSBBRVMtR0NNIG1vZGUgKEhBQ0UxMFs2OjRdID0gMGIxMDEpIHVzZWQgYnkgdGhlIEFT
+VDI3MDANCj4gPiBjcnlwdG8gZW5naW5lOiBkZWNvZGUgdGhlIEdDTSBzZWxlY3Rpb24sIHJlYWQg
+dGhlIDk2LWJpdCBJViBmcm9tIHRoZQ0KPiA+IGNvbnRleHQgYnVmZmVyLCBvcGVyYXRlIG9uIHRo
+ZSBleGFjdCBkYXRhIGxlbmd0aCAoR0NNIGhhbmRsZXMgYQ0KPiA+IHBhcnRpYWwgZmluYWwgYmxv
+Y2sgaXRzZWxmKSwgYW5kIHdyaXRlIHRoZSAxMjgtYml0IGF1dGhlbnRpY2F0aW9uIHRhZw0KPiA+
+IHRvIHRoZSB0YWcgYnVmZmVyIChIQUNFMTgvSEFDRThDKS4gVGhlIGhhcmR3YXJlIEdDTSBwYXRo
+IGlzIG9ubHkgdXNlZA0KPiA+IHdpdGhvdXQgYXNzb2NpYXRlZCBkYXRhICh0aGUgZHJpdmVyIGZh
+bGxzIGJhY2sgdG8gc29mdHdhcmUgb3RoZXJ3aXNlKSwNCj4gPiBzbyBBQUQgaXMgbm90IG1vZGVs
+bGVkIGFuZCBhIG5vbi16ZXJvIEhBQ0UxNCBpcyByZXBvcnRlZCBhcw0KPiB1bmltcGxlbWVudGVk
+Lg0KPiA+DQo+ID4gU2lnbmVkLW9mZi1ieTogSmFtaW4gTGluIDxqYW1pbl9saW5AYXNwZWVkdGVj
+aC5jb20+DQo+ID4gUmV2aWV3ZWQtYnk6IEthbmUgQ2hlbiA8a2FuZV9jaGVuQGFzcGVlZHRlY2gu
+Y29tPg0KPiA+IC0tLQ0KPiA+ICAgaHcvbWlzYy9hc3BlZWRfaGFjZS5jIHwgNzANCj4gKysrKysr
+KysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKystLS0tLQ0KPiA+ICAgMSBmaWxlIGNoYW5n
+ZWQsIDYyIGluc2VydGlvbnMoKyksIDggZGVsZXRpb25zKC0pDQo+ID4NCj4gPiBkaWZmIC0tZ2l0
+IGEvaHcvbWlzYy9hc3BlZWRfaGFjZS5jIGIvaHcvbWlzYy9hc3BlZWRfaGFjZS5jIGluZGV4DQo+
+ID4gMGE2ZTJmYTgyOS4uZTQ1NTIxNmRkNCAxMDA2NDQNCj4gPiAtLS0gYS9ody9taXNjL2FzcGVl
+ZF9oYWNlLmMNCj4gPiArKysgYi9ody9taXNjL2FzcGVlZF9oYWNlLmMNCj4gPiBAQCAtMzEsNiAr
+MzEsOSBAQA0KPiA+ICAgLyogSEFDRTBDWzI3OjBdIGhvbGRzIHRoZSBjcnlwdG8gZGF0YSBsZW5n
+dGggKi8NCj4gPiAgICNkZWZpbmUgIENSWVBUX0RBVEFfTEVOX01BU0sgICAgMHgwRkZGRkZGRg0K
+PiA+ICAgI2RlZmluZSBSX0NSWVBUX0NNRCAgICAgICAgICgweDEwIC8gNCkNCj4gPiArLyogQUVT
+LUdDTSBhc3NvY2lhdGVkIGRhdGEgbGVuZ3RoIChIQUNFMTQpIGFuZCB0YWcgd3JpdGUgYnVmZmVy
+DQo+ID4gKyhIQUNFMTgpICovICNkZWZpbmUgUl9DUllQVF9HQ01fQUREX0xFTiAoMHgxNCAvIDQp
+DQo+ID4gKyNkZWZpbmUgUl9DUllQVF9HQ01fVEFHICAgICAoMHgxOCAvIDQpDQo+ID4gICAvKiBD
+cnlwdG8gZW5naW5lIGNvbW1hbmQgcmVnaXN0ZXIgKEhBQ0UxMCkgYml0cyAqLw0KPiA+ICAgI2Rl
+ZmluZSAgQ1JZUFRfQ01EX0VOQ1JZUFQgICAgICAgICAgQklUKDcpDQo+ID4gICAjZGVmaW5lICBD
+UllQVF9DTURfSVNSX0VOICAgICAgICAgICBCSVQoMTIpDQo+ID4gQEAgLTQyLDYgKzQ1LDcgQEAN
+Cj4gPiAgICNkZWZpbmUgIENSWVBUX0NNRF9FQ0IgICAgICAgICAgICAgICgweDAgPDwgNCkNCj4g
+PiAgICNkZWZpbmUgIENSWVBUX0NNRF9DQkMgICAgICAgICAgICAgICgweDEgPDwgNCkNCj4gPiAg
+ICNkZWZpbmUgIENSWVBUX0NNRF9DVFIgICAgICAgICAgICAgICgweDQgPDwgNCkNCj4gPiArI2Rl
+ZmluZSAgQ1JZUFRfQ01EX0dDTSAgICAgICAgICAgICAgKDB4NSA8PCA0KQ0KPiA+ICAgLyogQUVT
+IGtleSBsZW5ndGggSEFDRTEwWzM6Ml0gKi8NCj4gPiAgICNkZWZpbmUgIENSWVBUX0NNRF9BRVNf
+S0VZX0xFTl9NQVNLICgweDMgPDwgMikNCj4gPiAgICNkZWZpbmUgIENSWVBUX0NNRF9BRVMyNTYg
+ICAgICAgICAgICgweDIgPDwgMikNCj4gPiBAQCAtNTcsMTAgKzYxLDE1IEBADQo+ID4gICAjZGVm
+aW5lIENSWVBUX0NUWF9LRVlfT0ZGU0VUICAgICAgICAweDEwDQo+ID4gICAjZGVmaW5lIENSWVBU
+X0NUWF9TSVpFICAgICAgICAgICAgICAweDMwDQo+ID4NCj4gPiArLyogQUVTLUdDTSB1c2VzIGEg
+OTYtYml0IElWIGFuZCBhIDEyOC1iaXQgYXV0aGVudGljYXRpb24gdGFnICovDQo+ID4gKyNkZWZp
+bmUgQ1JZUFRfR0NNX0lWX0xFTiAgICAgICAgICAgIDEyDQo+ID4gKyNkZWZpbmUgQ1JZUFRfR0NN
+X1RBR19MRU4gICAgICAgICAgMTYNCj4gPiArDQo+ID4gICAvKiBBU1QyNzAwIDY0LWJpdCBETUEg
+aGlnaCBhZGRyZXNzIHJlZ2lzdGVycyBmb3IgdGhlIGNyeXB0byBjb21tYW5kICovDQo+ID4gICAj
+ZGVmaW5lIFJfQ1JZUFRfU1JDX0hJICAgICAgKDB4ODAgLyA0KQ0KPiA+ICAgI2RlZmluZSBSX0NS
+WVBUX0RFU1RfSEkgICAgICgweDg0IC8gNCkNCj4gPiAgICNkZWZpbmUgUl9DUllQVF9DT05URVhU
+X0hJICAoMHg4OCAvIDQpDQo+ID4gKyNkZWZpbmUgUl9DUllQVF9HQ01fVEFHX0hJICAoMHg4YyAv
+IDQpDQo+ID4NCj4gPiAgICNkZWZpbmUgUl9TVEFUVVMgICAgICAgICgweDFjIC8gNCkNCj4gPiAg
+ICNkZWZpbmUgSEFTSF9JUlEgICAgICAgIEJJVCg5KQ0KPiA+IEBAIC01OTYsNiArNjA1LDkgQEAg
+c3RhdGljIGJvb2wgY3J5cHRfZGVjb2RlX2NtZCh1aW50MzJfdCBjbWQsDQo+IFFDcnlwdG9DaXBo
+ZXJBbGdvICphbGcsDQo+ID4gICAgICAgY2FzZSBDUllQVF9DTURfQ1RSOg0KPiA+ICAgICAgICAg
+ICAqbW9kZSA9IFFDUllQVE9fQ0lQSEVSX01PREVfQ1RSOw0KPiA+ICAgICAgICAgICBicmVhazsN
+Cj4gPiArICAgIGNhc2UgQ1JZUFRfQ01EX0dDTToNCj4gPiArICAgICAgICAqbW9kZSA9IFFDUllQ
+VE9fQ0lQSEVSX01PREVfR0NNOw0KPiA+ICsgICAgICAgIGJyZWFrOw0KPiA+ICAgICAgIGRlZmF1
+bHQ6DQo+ID4gICAgICAgICAgIHJldHVybiBmYWxzZTsNCj4gPiAgICAgICB9DQo+ID4gQEAgLTY4
+OSwxMSArNzAxLDEyIEBAIHN0YXRpYyB1aW50NjRfdCBjcnlwdF9nZXRfYWRkcihBc3BlZWRIQUNF
+U3RhdGUNCj4gKnMsIGludCByZWcsIGludCByZWdfaGkpDQo+ID4gICB9DQo+ID4NCj4gPiAgIC8q
+DQo+ID4gLSAqIFBlcmZvcm0gYW4gQUVTL0RFUy8zREVTIEVDQi9DQkMgb3BlcmF0aW9uLiBUaGUg
+c291cmNlIGFuZA0KPiA+IGRlc3RpbmF0aW9uIGFyZQ0KPiA+IC0gKiBlaXRoZXIgc2luZ2xlIGNv
+bnRpZ3VvdXMgYnVmZmVycyAoZGlyZWN0IGFjY2VzcyBtb2RlKSBvcg0KPiA+IHNjYXR0ZXItZ2F0
+aGVyDQo+ID4gLSAqIGxpc3RzIChIQUNFMTBbMThdL1sxOV0pLCBhZGRyZXNzZWQgYnkgSEFDRTAw
+L0hBQ0UwNDsgdGhlIElWL2tleQ0KPiA+IGNvbWUgZnJvbQ0KPiA+IC0gKiB0aGUgY29udGV4dCBi
+dWZmZXIgKEhBQ0UwOCkuIEZvciBDQkMgdGhlIHJlc3VsdGluZyBjaGFpbmluZyBJViBpcw0KPiA+
+IHdyaXR0ZW4NCj4gPiAtICogYmFjayB0byB0aGUgY29udGV4dCBidWZmZXIgc28gdGhlIGRyaXZl
+ciBjYW4gY29udGludWUgdGhlIGNoYWluLg0KPiA+ICsgKiBQZXJmb3JtIGFuIEFFUy9ERVMvM0RF
+UyBFQ0IvQ0JDL0NUUiBvciBBRVMtR0NNIG9wZXJhdGlvbi4gVGhlDQo+ID4gKyBzb3VyY2UgYW5k
+DQo+ID4gKyAqIGRlc3RpbmF0aW9uIGFyZSBlaXRoZXIgc2luZ2xlIGNvbnRpZ3VvdXMgYnVmZmVy
+cyAoZGlyZWN0IGFjY2Vzcw0KPiA+ICsgbW9kZSkgb3INCj4gPiArICogc2NhdHRlci1nYXRoZXIg
+bGlzdHMgKEhBQ0UxMFsxOF0vWzE5XSksIGFkZHJlc3NlZCBieQ0KPiA+ICsgSEFDRTAwL0hBQ0Uw
+NDsgdGhlDQo+ID4gKyAqIElWL2tleSBjb21lIGZyb20gdGhlIGNvbnRleHQgYnVmZmVyIChIQUNF
+MDgpLiBGb3IgQ0JDIGFuZCBDVFIgdGhlDQo+ID4gKyByZXN1bHRpbmcNCj4gPiArICogY2hhaW5p
+bmcgc3RhdGUgaXMgd3JpdHRlbiBiYWNrIHRvIHRoZSBjb250ZXh0IGJ1ZmZlciBzbyB0aGUgZHJp
+dmVyDQo+ID4gKyBjYW4NCj4gPiArICogY29udGludWU7IGZvciBHQ00gdGhlIGF1dGhlbnRpY2F0
+aW9uIHRhZyBpcyB3cml0dGVuIHRvIHRoZSB0YWcgYnVmZmVyLg0KPiA+ICAgICovDQo+ID4gICBz
+dGF0aWMgdm9pZCBkb19jcnlwdF9vcGVyYXRpb24oQXNwZWVkSEFDRVN0YXRlICpzLCB1aW50MzJf
+dCBjbWQpDQo+ID4gICB7DQo+ID4gQEAgLTcwMyw2ICs3MTYsNyBAQCBzdGF0aWMgdm9pZCBkb19j
+cnlwdF9vcGVyYXRpb24oQXNwZWVkSEFDRVN0YXRlICpzLA0KPiB1aW50MzJfdCBjbWQpDQo+ID4g
+ICAgICAgZ19hdXRvcHRyKFFDcnlwdG9DaXBoZXIpIGNpcGhlciA9IE5VTEw7DQo+ID4gICAgICAg
+Z19hdXRvZnJlZSB1aW50OF90ICpzcmNfYnVmID0gTlVMTDsNCj4gPiAgICAgICBnX2F1dG9mcmVl
+IHVpbnQ4X3QgKmRzdF9idWYgPSBOVUxMOw0KPiA+ICsgICAgdWludDhfdCB0YWdbQ1JZUFRfR0NN
+X1RBR19MRU5dOw0KPiA+ICAgICAgIHVpbnQ4X3QgY3R4W0NSWVBUX0NUWF9TSVpFXTsNCj4gPiAg
+ICAgICBFcnJvciAqbG9jYWxfZXJyID0gTlVMTDsNCj4gPiAgICAgICBRQ3J5cHRvQ2lwaGVyTW9k
+ZSBtb2RlOw0KPiA+IEBAIC03MTEsMTAgKzcyNSwxMyBAQCBzdGF0aWMgdm9pZCBkb19jcnlwdF9v
+cGVyYXRpb24oQXNwZWVkSEFDRVN0YXRlDQo+ICpzLCB1aW50MzJfdCBjbWQpDQo+ID4gICAgICAg
+dWludDY0X3QgY3R4X2FkZHI7DQo+ID4gICAgICAgdWludDY0X3Qgc3JjX2FkZHI7DQo+ID4gICAg
+ICAgdWludDY0X3QgZHN0X2FkZHI7DQo+ID4gKyAgICB1aW50NjRfdCB0YWdfYWRkcjsNCj4gPiAr
+ICAgIHVpbnQzMl90IGFhZF9sZW47DQo+ID4gICAgICAgc2l6ZV90IGl2X29mZnNldDsNCj4gPiAg
+ICAgICBzaXplX3QgYmxvY2tsZW47DQo+ID4gICAgICAgc2l6ZV90IGJ1Zl9sZW47DQo+ID4gICAg
+ICAgc2l6ZV90IGtleWxlbjsNCj4gPiArICAgIHNpemVfdCBpdmxlbjsNCj4gPiAgICAgICBib29s
+IHN0YXR1czsNCj4gPg0KPiA+ICAgICAgIGlmIChsZW4gPT0gMCkgew0KPiA+IEBAIC03MzQsNiAr
+NzUxLDIwIEBAIHN0YXRpYyB2b2lkIGRvX2NyeXB0X29wZXJhdGlvbihBc3BlZWRIQUNFU3RhdGUg
+KnMsDQo+IHVpbnQzMl90IGNtZCkNCj4gPiAgICAgICAgICAgcmV0dXJuOw0KPiA+ICAgICAgIH0N
+Cj4gPg0KPiA+ICsgICAgLyogR0NNIHVzZXMgYSA5Ni1iaXQgSVY7IHRoZSBibG9jayBtb2RlcyB1
+c2UgYSBmdWxsLWJsb2NrIElWLiAqLw0KPiA+ICsgICAgaXZsZW4gPSAobW9kZSA9PSBRQ1JZUFRP
+X0NJUEhFUl9NT0RFX0dDTSkgPw0KPiBDUllQVF9HQ01fSVZfTEVOIDoNCj4gPiArIGJsb2NrbGVu
+Ow0KPiA+ICsNCj4gPiArICAgIC8qDQo+ID4gKyAgICAgKiBUaGUgaGFyZHdhcmUgR0NNIHBhdGgg
+aXMgb25seSBleGVyY2lzZWQgd2l0aG91dCBhc3NvY2lhdGVkIGRhdGENCj4gKHRoZQ0KPiA+ICsg
+ICAgICogZHJpdmVyIGZhbGxzIGJhY2sgdG8gc29mdHdhcmUgd2hlbiB0aGVyZSBpcyBhbnkpLCBz
+byBBQUQgaXMgbm90DQo+IG1vZGVsbGVkLg0KPiA+ICsgICAgICovDQo+ID4gKyAgICBhYWRfbGVu
+ID0gcy0+cmVnc1tSX0NSWVBUX0dDTV9BRERfTEVOXSAmDQo+IENSWVBUX0RBVEFfTEVOX01BU0s7
+DQo+IA0KPiBzaG91bGQgUl9DUllQVF9HQ01fQUREX0xFTiBiZSBtYXNrZWQgYXQgd3JpdGUgdGlt
+ZSBsaWtlDQo+IFJfQ1JZUFRfREFUQV9MRU4gaXMgPw0KPiANClRoYW5rcyBmb3IgdGhlIHJldmll
+dyBhbmQgc3VnZ2VzdGlvbi4NCldpbGwgZG8uDQoNCj4gPiArICAgIGlmIChtb2RlID09IFFDUllQ
+VE9fQ0lQSEVSX01PREVfR0NNICYmIGFhZF9sZW4gIT0gMCkgew0KPiA+ICsgICAgICAgIHFlbXVf
+bG9nX21hc2soTE9HX1VOSU1QLA0KPiA+ICsgICAgICAgICAgICAgICAgICAgICAgIiVzOiBHQ00g
+YXNzb2NpYXRlZCBkYXRhIGlzIG5vdA0KPiBpbXBsZW1lbnRlZFxuIiwgX19mdW5jX18pOw0KPiA+
+ICsgICAgICAgIHJldHVybjsNCj4gPiArICAgIH0NCj4gPiArDQo+ID4gICAgICAgLyogRmV0Y2gg
+dGhlIElWIGFuZCBrZXkgZnJvbSB0aGUgY29udGV4dCBidWZmZXIgaW4gRFJBTS4gKi8NCj4gPiAg
+ICAgICBjdHhfYWRkciA9IGNyeXB0X2dldF9hZGRyKHMsIFJfQ1JZUFRfQ09OVEVYVCwNCj4gUl9D
+UllQVF9DT05URVhUX0hJKTsNCj4gPiAgICAgICBpZiAoYWRkcmVzc19zcGFjZV9yZWFkKCZzLT5k
+cmFtX2FzLCBjdHhfYWRkciwNCj4gPiBNRU1UWEFUVFJTX1VOU1BFQ0lGSUVELCBAQCAtNzU4LDcg
+Kzc4OSw3IEBAIHN0YXRpYyB2b2lkDQo+IGRvX2NyeXB0X29wZXJhdGlvbihBc3BlZWRIQUNFU3Rh
+dGUgKnMsIHVpbnQzMl90IGNtZCkNCj4gPiAgICAgICB9DQo+ID4NCj4gPiAgICAgICBpZiAobW9k
+ZSAhPSBRQ1JZUFRPX0NJUEhFUl9NT0RFX0VDQiAmJg0KPiA+IC0gICAgICAgIHFjcnlwdG9fY2lw
+aGVyX3NldGl2KGNpcGhlciwgY3R4ICsgaXZfb2Zmc2V0LCBibG9ja2xlbiwNCj4gPiArICAgICAg
+ICBxY3J5cHRvX2NpcGhlcl9zZXRpdihjaXBoZXIsIGN0eCArIGl2X29mZnNldCwgaXZsZW4sDQo+
+ID4gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICZsb2NhbF9lcnIpIDwgMCkgew0KPiA+
+ICAgICAgICAgICBxZW11X2xvZ19tYXNrKExPR19HVUVTVF9FUlJPUiwgIiVzOiBxY3J5cHRvIGNp
+cGhlciBzZXRpdg0KPiBmYWlsZWQ6ICVzXG4iLA0KPiA+ICAgICAgICAgICAgICAgICAgICAgICAg
+IF9fZnVuY19fLCBlcnJvcl9nZXRfcHJldHR5KGxvY2FsX2VycikpOyBAQA0KPiA+IC03NjksOSAr
+ODAwLDExIEBAIHN0YXRpYyB2b2lkIGRvX2NyeXB0X29wZXJhdGlvbihBc3BlZWRIQUNFU3RhdGUg
+KnMsDQo+IHVpbnQzMl90IGNtZCkNCj4gPiAgICAgICAvKg0KPiA+ICAgICAgICAqIFJvdW5kIHRo
+ZSB3b3JraW5nIGJ1ZmZlcnMgdXAgdG8gYSB3aG9sZSBibG9jay4gQmxvY2sgbW9kZXMgYXJlDQo+
+IGFscmVhZHkNCj4gPiAgICAgICAgKiBibG9jay1hbGlnbmVkOyB0aGUgc3RyZWFtLWxpa2UgQ1RS
+IG1vZGUgbWF5IGxlYXZlIGEgcGFydGlhbCBmaW5hbA0KPiBibG9jaw0KPiA+IC0gICAgICogdGhh
+dCB0aGUgZW5naW5lIHN0aWxsIHByb2Nlc3NlcyBhIGZ1bGwgYmxvY2sgYXQgYSB0aW1lLg0KPiA+
+ICsgICAgICogdGhhdCB0aGUgZW5naW5lIHN0aWxsIHByb2Nlc3NlcyBhIGZ1bGwgYmxvY2sgYXQg
+YSB0aW1lLiBHQ00gaGFuZGxlcyBhDQo+ID4gKyAgICAgKiBwYXJ0aWFsIGZpbmFsIGJsb2NrIGl0
+c2VsZiwgc28gaXQgb3BlcmF0ZXMgb24gdGhlIGV4YWN0IGxlbmd0aC4NCj4gPiAgICAgICAgKi8N
+Cj4gPiAtICAgIGJ1Zl9sZW4gPSBRRU1VX0FMSUdOX1VQKGxlbiwgYmxvY2tsZW4pOw0KPiA+ICsg
+ICAgYnVmX2xlbiA9IChtb2RlID09IFFDUllQVE9fQ0lQSEVSX01PREVfR0NNKSA/DQo+ID4gKyAg
+ICAgICAgICAgICAgbGVuIDogUUVNVV9BTElHTl9VUChsZW4sIGJsb2NrbGVuKTsNCj4gPiAgICAg
+ICBzcmNfYnVmID0gZ19tYWxsb2MwKGJ1Zl9sZW4pOw0KPiA+ICAgICAgIGRzdF9idWYgPSBnX21h
+bGxvYzAoYnVmX2xlbik7DQo+ID4NCj4gPiBAQCAtODU1LDYgKzg4OCwyNCBAQCBzdGF0aWMgdm9p
+ZCBkb19jcnlwdF9vcGVyYXRpb24oQXNwZWVkSEFDRVN0YXRlICpzLA0KPiB1aW50MzJfdCBjbWQp
+DQo+ID4gICAgICAgICAgICAgICAgICAgICAgICAgICAgICIlczogRmFpbGVkIHRvIHdyaXRlIElW
+LCBhZGRyPTB4JSINCj4gSFdBRERSX1BSSXggIlxuIiwNCj4gPiAgICAgICAgICAgICAgICAgICAg
+ICAgICAgICAgX19mdW5jX18sIGN0eF9hZGRyICsgaXZfb2Zmc2V0KTsNCj4gPiAgICAgICAgICAg
+fQ0KPiA+ICsgICAgfSBlbHNlIGlmIChtb2RlID09IFFDUllQVE9fQ0lQSEVSX01PREVfR0NNKSB7
+DQo+ID4gKyAgICAgICAgLyoNCj4gPiArICAgICAgICAgKiBHQ00gYXV0aGVudGljYXRlcyB0aGUg
+bWVzc2FnZSBhbmQgd3JpdGVzIHRoZSByZXN1bHRpbmcgdGFnIHRvDQo+IHRoZQ0KPiA+ICsgICAg
+ICAgICAqIGRlZGljYXRlZCB0YWcgYnVmZmVyIChIQUNFMTgvSEFDRThDKS4NCj4gPiArICAgICAg
+ICAgKi8NCj4gPiArICAgICAgICBpZiAocWNyeXB0b19jaXBoZXJfZ2V0dGFnKGNpcGhlciwgdGFn
+LCBzaXplb2YodGFnKSwgJmxvY2FsX2VycikgPCAwKQ0KPiB7DQo+ID4gKyAgICAgICAgICAgIHFl
+bXVfbG9nX21hc2soTE9HX0dVRVNUX0VSUk9SLCAiJXM6IHFjcnlwdG8gY2lwaGVyDQo+IGdldHRh
+ZyBmYWlsZWQ6ICINCj4gPiArICAgICAgICAgICAgICAgICAgICAgICAgICAiJXNcbiIsIF9fZnVu
+Y19fLA0KPiBlcnJvcl9nZXRfcHJldHR5KGxvY2FsX2VycikpOw0KPiA+ICsgICAgICAgICAgICBl
+cnJvcl9mcmVlKGxvY2FsX2Vycik7DQo+ID4gKyAgICAgICAgICAgIHJldHVybjsNCj4gPiArICAg
+ICAgICB9DQo+ID4gKyAgICAgICAgdGFnX2FkZHIgPSBjcnlwdF9nZXRfYWRkcihzLCBSX0NSWVBU
+X0dDTV9UQUcsDQo+IFJfQ1JZUFRfR0NNX1RBR19ISSk7DQo+ID4gKyAgICAgICAgaWYgKGFkZHJl
+c3Nfc3BhY2Vfd3JpdGUoJnMtPmRyYW1fYXMsIHRhZ19hZGRyLA0KPiBNRU1UWEFUVFJTX1VOU1BF
+Q0lGSUVELA0KPiA+ICsgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIHRhZywgc2l6ZW9m
+KHRhZykpKSB7DQo+ID4gKyAgICAgICAgICAgIHFlbXVfbG9nX21hc2soTE9HX0dVRVNUX0VSUk9S
+LA0KPiA+ICsgICAgICAgICAgICAgICAgICAgICAgICAgICIlczogRmFpbGVkIHRvIHdyaXRlIHRh
+ZywgYWRkcj0weCUiDQo+IEhXQUREUl9QUkl4ICJcbiIsDQo+ID4gKyAgICAgICAgICAgICAgICAg
+ICAgICAgICAgX19mdW5jX18sIHRhZ19hZGRyKTsNCj4gPiArICAgICAgICB9DQo+ID4gICAgICAg
+fQ0KPiA+ICAgfQ0KPiA+DQo+ID4gQEAgLTk4NSw2ICsxMDM2LDkgQEAgc3RhdGljIHZvaWQgYXNw
+ZWVkX2hhY2Vfd3JpdGUodm9pZCAqb3BhcXVlLA0KPiBod2FkZHIgYWRkciwgdWludDY0X3QgZGF0
+YSwNCj4gPiAgICAgICBjYXNlIFJfQ1JZUFRfQ09OVEVYVF9ISToNCj4gPiAgICAgICAgICAgZGF0
+YSAmPSBhaGMtPmtleV9oaV9tYXNrOw0KPiA+ICAgICAgICAgICBicmVhazsNCj4gDQo+IFJfQ1JZ
+UFRfR0NNX1RBRyB3cml0ZXMgYXJlIG5vdCBtYXNrZWQgbGlrZSB0aGUgb3RoZXIgcmVnaXN0ZXJz
+IDoNCj4gDQo+ICAgICAgY2FzZSBSX0NSWVBUX1NSQzoNCj4gICAgICBjYXNlIFJfQ1JZUFRfREVT
+VDoNCj4gICAgICBjYXNlIFJfQ1JZUFRfQ09OVEVYVDoNCj4gICAgICAgICAgZGF0YSAmPSBhaGMt
+PnNyY19tYXNrOw0KPiAgICAgICAgICBicmVhazsNCj4gDQpXaWxsIGRvDQoNClRoYW5rcywNCkph
+bWluDQoNCj4gVGhhbmtzLA0KPiANCj4gQy4NCj4gDQo+IA0KPiA+ICsgICAgY2FzZSBSX0NSWVBU
+X0dDTV9UQUdfSEk6DQo+ID4gKyAgICAgICAgZGF0YSAmPSBhaGMtPmRlc3RfaGlfbWFzazsNCj4g
+PiArICAgICAgICBicmVhazsNCj4gPiAgICAgICBkZWZhdWx0Og0KPiA+ICAgICAgICAgICBicmVh
+azsNCj4gPiAgICAgICB9DQoNCg==
 

@@ -4,60 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3F5CEC5CFE7
-	for <qemu-arm@archiver.kernel.org>; Tue, 11 Aug 2026 16:40:49 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A8EAFC5CFCF
+	for <qemu-arm@archiver.kernel.org>; Tue, 11 Aug 2026 16:41:29 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wtpOM-0004Og-Py; Tue, 11 Aug 2026 12:31:57 -0400
+	id 1wtpPD-0005iJ-Tx; Tue, 11 Aug 2026 12:32:48 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1wtpOJ-0004C9-Vn
- for qemu-arm@nongnu.org; Tue, 11 Aug 2026 12:31:52 -0400
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1wtpOk-0005L4-MK
+ for qemu-arm@nongnu.org; Tue, 11 Aug 2026 12:32:20 -0400
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1wtpOI-0000uE-5z
- for qemu-arm@nongnu.org; Tue, 11 Aug 2026 12:31:51 -0400
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1wtpOi-00010a-Kh
+ for qemu-arm@nongnu.org; Tue, 11 Aug 2026 12:32:18 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1786465909;
+ s=mimecast20190719; t=1786465935;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=4QBAtD9TgPXiwEI/+x/fZeybIwbyp83dTnbW70H9Wcg=;
- b=Ol8oUCqU4IE3xYiwCeEIe9IueYGvNKQNlfkMudfpikCzluoYLL5DhRqAjary/n8Lw3PMIp
- ueLIffG/EdwVgpFpegb4V20073uTTrz5ZV6n0aUNy7vdyO651Pp9IW86JeFAG6JSbDxXVH
- ACkNGT32cLFpkxRfOlaayVNtVXtVgeA=
-Received: from mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com
+ bh=6zEKEUBOfHGvnR0GIKmV/19amwhRg8zg07zwtwRx1aE=;
+ b=ZCJ+Qef5KcwydPoevhzxYseygrv6JNILjVu0zXlpt+wGJ1nSJimiMbG6MOg305xTIkodfE
+ 3F1exYeZ8HdD+uMmu5pwaLMMcUtu7dVuskowIDODOhgb3Gap6TPCzOW4SDk/bd3FSTfeuC
+ kEK8at7xzrzOiDq3YyzamlAB4W/7Fkg=
+Received: from mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com
  (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-624-FxiFl2aGMrKT-RRqMoI-MA-1; Tue,
- 11 Aug 2026 12:31:46 -0400
-X-MC-Unique: FxiFl2aGMrKT-RRqMoI-MA-1
-X-Mimecast-MFC-AGG-ID: FxiFl2aGMrKT-RRqMoI-MA_1786465904
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-412-Kibh0y2FOC-5xthVfd_QJA-1; Tue,
+ 11 Aug 2026 12:31:13 -0400
+X-MC-Unique: Kibh0y2FOC-5xthVfd_QJA-1
+X-Mimecast-MFC-AGG-ID: Kibh0y2FOC-5xthVfd_QJA_1786465871
 Received: from mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com
  (mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.12])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id B87391954B1F; Tue, 11 Aug 2026 16:31:44 +0000 (UTC)
+ by mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id B599F195608A; Tue, 11 Aug 2026 16:31:11 +0000 (UTC)
 Received: from corto.redhat.com (unknown [10.44.48.12])
  by mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id 10FEE195DF91; Tue, 11 Aug 2026 16:31:42 +0000 (UTC)
+ id 06361195DF91; Tue, 11 Aug 2026 16:31:09 +0000 (UTC)
 From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
 Cc: Emmanuel Blot <emmanuel.blot@free.fr>, Glenn Miles <milesg@linux.ibm.com>,
  =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>
-Subject: [PULL 56/83] tests/qtest: pca9554: test the PCA9536 4-bit variant
-Date: Tue, 11 Aug 2026 18:29:11 +0200
-Message-ID: <20260811162938.1403216-57-clg@redhat.com>
+Subject: [PULL 41/83] hw/gpio: pca9552: conform GPIO command handling to the
+ datasheet
+Date: Tue, 11 Aug 2026 18:28:56 +0200
+Message-ID: <20260811162938.1403216-42-clg@redhat.com>
 In-Reply-To: <20260811162938.1403216-1-clg@redhat.com>
 References: <20260811162938.1403216-1-clg@redhat.com>
 MIME-Version: 1.0
 X-Scanned-By: MIMEDefang 3.0 on 10.30.177.12
-X-Mimecast-MFC-PROC-ID: _6AdzTWYlogatml5SKW4uvMZY0U_g2Z0n4YZqRaNJgA_1786465904
+X-Mimecast-MFC-PROC-ID: PbokUj48E0gjP9Pbn0b30E-ZBQGWoO3k6L-CPeKvKvc_1786465871
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
@@ -88,106 +89,108 @@ Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
 From: Emmanuel Blot <emmanuel.blot@free.fr>
 
-The PCA9536 shares the PCA9554 register map and code path but exposes
-only four pins. Add a pca9536 node and check its reset defaults and
-output-to-input reflection are masked to the low nibble.
+The PCA9535/PCA9555 GPIO expanders share the PCA955X command dispatch
+path with the PCA9552 LED blinker, but their register access differs from
+the LED variant:
+
+  - Auto-increment happens on every access and toggles bit 0 so the
+    pointer stays within the addressed register pair (input, output,
+    polarity, config); there is no AI enable bit.
+
+  - The command byte only decodes 3 bits, so addresses beyond the last
+    register alias back into the 8-register window instead of faulting.
+
+Branch the auto-increment and command-decode logic on has_led_support so
+the GPIO variants follow their datasheet while the PCA9552 behaviour is
+left untouched.
 
 Signed-off-by: Emmanuel Blot <emmanuel.blot@free.fr>
 Reviewed-by: Glenn Miles <milesg@linux.ibm.com>
-Link: https://lore.kernel.org/qemu-devel/20260709-catalina-upgrade-v1-23-82a63fead90c@free.fr
+Link: https://lore.kernel.org/qemu-devel/20260709-catalina-upgrade-v1-8-814575bc076b@free.fr
 Signed-off-by: Cédric Le Goater <clg@redhat.com>
 ---
- tests/qtest/pca9554-test.c | 70 ++++++++++++++++++++++++++++++++++++++
- 1 file changed, 70 insertions(+)
+ hw/gpio/pca9552.c | 37 +++++++++++++++++++++++++++++++------
+ 1 file changed, 31 insertions(+), 6 deletions(-)
 
-diff --git a/tests/qtest/pca9554-test.c b/tests/qtest/pca9554-test.c
-index 0da1f3304b9d..5366e719845c 100644
---- a/tests/qtest/pca9554-test.c
-+++ b/tests/qtest/pca9554-test.c
-@@ -129,6 +129,66 @@ static void test_no_autoincrement(void *obj, void *data,
-     g_assert_cmphex(i2c_get8(dev, PCA9554_POLARITY), ==, 0x33);
+diff --git a/hw/gpio/pca9552.c b/hw/gpio/pca9552.c
+index 24f646541582..54a5945d9252 100644
+--- a/hw/gpio/pca9552.c
++++ b/hw/gpio/pca9552.c
+@@ -259,14 +259,26 @@ static void pca955x_write(PCA955xState *s, uint8_t reg, uint8_t data)
  }
  
-+/*
-+ * The PCA9536 shares the PCA9554 register map but only has four pins, so its
-+ * reset defaults and pin logic are masked to the low nibble.
-+ */
-+static void test_pca9536_reset_defaults(void *obj, void *data,
-+                                        QGuestAllocator *alloc)
-+{
-+    QI2CDevice *dev = (QI2CDevice *)obj;
-+
-+    g_assert_cmphex(i2c_get8(dev, PCA9554_INPUT), ==, 0x0F);
-+    g_assert_cmphex(i2c_get8(dev, PCA9554_OUTPUT), ==, 0x0F);
-+    g_assert_cmphex(i2c_get8(dev, PCA9554_POLARITY), ==, 0x00);
-+    g_assert_cmphex(i2c_get8(dev, PCA9554_CONFIG), ==, 0x0F);
-+}
-+
-+/* Only the four low pins are driven; the upper nibble stays low. */
-+static void test_pca9536_output_drives_input(void *obj, void *data,
-+                                             QGuestAllocator *alloc)
-+{
-+    QI2CDevice *dev = (QI2CDevice *)obj;
-+
-+    i2c_set8(dev, PCA9554_CONFIG, 0x00);
-+
-+    i2c_set8(dev, PCA9554_OUTPUT, 0x0A);
-+    g_assert_cmphex(i2c_get8(dev, PCA9554_INPUT), ==, 0x0A);
-+
-+    i2c_set8(dev, PCA9554_OUTPUT, 0x00);
-+    g_assert_cmphex(i2c_get8(dev, PCA9554_INPUT), ==, 0x00);
-+}
-+
-+/*
-+ * The four upper bits address pins that do not exist on the PCA9536, so writes
-+ * to the register map discard them: the writable registers read back with bits
-+ * [7:4] cleared, and driving them onto the pins never surfaces in INPUT.
-+ */
-+static void test_pca9536_ignores_upper_bits(void *obj, void *data,
-+                                            QGuestAllocator *alloc)
-+{
-+    QI2CDevice *dev = (QI2CDevice *)obj;
-+
-+    /* Bits [7:4] are dropped on write; bits [3:0] survive. */
-+    i2c_set8(dev, PCA9554_OUTPUT, 0xFA);
-+    g_assert_cmphex(i2c_get8(dev, PCA9554_OUTPUT), ==, 0x0A);
-+
-+    i2c_set8(dev, PCA9554_POLARITY, 0xF5);
-+    g_assert_cmphex(i2c_get8(dev, PCA9554_POLARITY), ==, 0x05);
-+
-+    i2c_set8(dev, PCA9554_CONFIG, 0xF3);
-+    g_assert_cmphex(i2c_get8(dev, PCA9554_CONFIG), ==, 0x03);
-+
-+    /*
-+     * With all four pins as outputs, driving 0xFF only affects the low
-+     * nibble.
-+     */
-+    i2c_set8(dev, PCA9554_POLARITY, 0x00);
-+    i2c_set8(dev, PCA9554_CONFIG, 0x00);
-+    i2c_set8(dev, PCA9554_OUTPUT, 0xFF);
-+    g_assert_cmphex(i2c_get8(dev, PCA9554_INPUT), ==, 0x0F);
-+}
-+
- static void pca9554_register_nodes(void)
+ /*
+- * When Auto-Increment is on, the register address is incremented
+- * after each byte is sent to or received by the device. The index
+- * rollovers to 0 when the maximum register address is reached.
++ * Advance the command pointer after each byte sent to or received from the
++ * device.
++ *
++ * The LED variant auto-increments only when the AI bit (bit 4) is set in the
++ * command byte, rolling over to 0 once the maximum register address is
++ * reached.
++ *
++ * The GPIO variants auto-increment on every access, toggling bit 0 so the
++ * pointer stays within the addressed register pair
++ * (input/output/polarity/config), as specified by their datasheet.
+  */
+ static void pca955x_autoinc(PCA955xState *s)
  {
-     QOSGraphEdgeOptions opts = {
-@@ -148,6 +208,16 @@ static void pca9554_register_nodes(void)
-     qos_add_test("polarity-with-output", "pca9554", test_polarity_with_output,
-                  NULL);
-     qos_add_test("no-autoincrement", "pca9554", test_no_autoincrement, NULL);
+     PCA955xClass *k = PCA955X_GET_CLASS(s);
+ 
++    if (!k->has_led_support) {
++        s->pointer ^= 0x1;
++        return;
++    }
 +
-+    qos_node_create_driver("pca9536", i2c_device_create);
-+    qos_node_consumes("pca9536", "i2c-bus", &opts);
-+
-+    qos_add_test("reset-defaults", "pca9536", test_pca9536_reset_defaults,
-+                 NULL);
-+    qos_add_test("output-drives-input", "pca9536",
-+                 test_pca9536_output_drives_input, NULL);
-+    qos_add_test("ignores-upper-bits", "pca9536",
-+                 test_pca9536_ignores_upper_bits, NULL);
+     if (s->pointer != 0xFF && s->pointer & PCA9552_AUTOINC) {
+         uint8_t reg = s->pointer & 0xf;
+ 
+@@ -275,12 +287,25 @@ static void pca955x_autoinc(PCA955xState *s)
+     }
  }
  
- libqos_init(pca9554_register_nodes);
++/*
++ * The LED variant addresses its registers with a 4-bit command field, while
++ * the GPIO variants only decode 3 bits (the command wraps into the 8-register
++ * window).
++ */
++static inline uint8_t pca955x_cmd_reg(PCA955xState *s)
++{
++    PCA955xClass *k = PCA955X_GET_CLASS(s);
++
++    return s->pointer & (k->has_led_support ? 0xf : 0x7);
++}
++
+ static uint8_t pca955x_recv(I2CSlave *i2c)
+ {
+     PCA955xState *s = PCA955X(i2c);
++    PCA955xClass *k = PCA955X_GET_CLASS(s);
+     uint8_t ret;
+ 
+-    ret = pca955x_read(s, s->pointer & 0xf);
++    ret = pca955x_read(s, pca955x_cmd_reg(s));
+ 
+     /*
+      * From the Specs:
+@@ -292,7 +317,7 @@ static uint8_t pca955x_recv(I2CSlave *i2c)
+      * I don't know what should be done in this case, so throw an
+      * error.
+      */
+-    if (s->pointer == PCA9552_AUTOINC) {
++    if (k->has_led_support && s->pointer == PCA9552_AUTOINC) {
+         qemu_log_mask(LOG_GUEST_ERROR,
+                       "%s: Autoincrement read starting with register 0\n",
+                       __func__);
+@@ -312,7 +337,7 @@ static int pca955x_send(I2CSlave *i2c, uint8_t data)
+         s->pointer = data;
+         s->len++;
+     } else {
+-        pca955x_write(s, s->pointer & 0xf, data);
++        pca955x_write(s, pca955x_cmd_reg(s), data);
+ 
+         pca955x_autoinc(s);
+     }
 -- 
 2.55.0
 

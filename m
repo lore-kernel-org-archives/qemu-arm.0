@@ -4,74 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4DED8C5B572
-	for <qemu-arm@archiver.kernel.org>; Tue, 11 Aug 2026 16:30:52 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 59366C5B572
+	for <qemu-arm@archiver.kernel.org>; Tue, 11 Aug 2026 16:31:11 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wtpNG-0008Ep-IY; Tue, 11 Aug 2026 12:30:46 -0400
+	id 1wtpMe-0007WY-Lv; Tue, 11 Aug 2026 12:30:10 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1wtpMn-0007lX-Pd
- for qemu-arm@nongnu.org; Tue, 11 Aug 2026 12:30:20 -0400
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1wtpMS-0007JF-2c
+ for qemu-arm@nongnu.org; Tue, 11 Aug 2026 12:29:56 -0400
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1wtpMg-0000Qx-Ot
- for qemu-arm@nongnu.org; Tue, 11 Aug 2026 12:30:16 -0400
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1wtpMQ-00009Q-It
+ for qemu-arm@nongnu.org; Tue, 11 Aug 2026 12:29:55 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1786465810;
+ s=mimecast20190719; t=1786465793;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=w4kb9+FO8D9DMEG3OsHhAbeQGh9qiHrCiL0JH8s3Mpg=;
- b=Zs/SpxmQe5O8BkpA928iSzy96KRmf6zxsLO9tcxAfKchgR7g4l1ygzve0RBOAT0gt4LvVO
- 6yDGpp3Bz8GRy+xvlu1jsu6qvTCBcu84u33sIE3Lh9rmw006YHiEy5jhOF844WfcL0uhCq
- apd4VZciybCHWTMRt8P8YGrYxstVnew=
-Received: from mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
+ bh=LQEEa7DnT96RZvF4p+UUtrP2zJZc1PGsceUeVzrBhEQ=;
+ b=ch/lAOQD1ZWnaYe48e/9UozAO+Y/3LOxlvd421HcFcTI1dqiwKljErWRAjGEFkQI2D0suM
+ EdFwhNLESy5yFaiGMy1NDrhTvQulifGh6JVtE9iT4n3K9kPvMgMxQnMfkh+Xl7XgkP529n
+ ilzdGPPS2yFIGsTDBMQok0AH5JOnn0A=
+Received: from mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-500-Ka_G6JZhMwqEkDrTBDUatw-1; Tue,
- 11 Aug 2026 12:30:06 -0400
-X-MC-Unique: Ka_G6JZhMwqEkDrTBDUatw-1
-X-Mimecast-MFC-AGG-ID: Ka_G6JZhMwqEkDrTBDUatw_1786465805
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-232-29cYy5PPPgq-tLXUufdpkA-1; Tue,
+ 11 Aug 2026 12:29:50 -0400
+X-MC-Unique: 29cYy5PPPgq-tLXUufdpkA-1
+X-Mimecast-MFC-AGG-ID: 29cYy5PPPgq-tLXUufdpkA_1786465789
 Received: from mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com
  (mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.12])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 98CD1195608B; Tue, 11 Aug 2026 16:30:05 +0000 (UTC)
+ by mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 75EEC18002F8; Tue, 11 Aug 2026 16:29:49 +0000 (UTC)
 Received: from corto.redhat.com (unknown [10.44.48.12])
  by mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id E539B195DF91; Tue, 11 Aug 2026 16:30:03 +0000 (UTC)
+ id F24D2195DF9E; Tue, 11 Aug 2026 16:29:47 +0000 (UTC)
 From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Cc: Jamin Lin <jamin_lin@aspeedtech.com>,
- =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-Subject: [PULL 10/83] hw/usb/hcd-ehci: Add ctrldssegment-default property
-Date: Tue, 11 Aug 2026 18:28:25 +0200
-Message-ID: <20260811162938.1403216-11-clg@redhat.com>
+Cc: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@oss.qualcomm.com>,
+ =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>
+Subject: [PULL 03/83] hw/arm/aspeed: Add missing Kconfig dependencies on
+ optional components
+Date: Tue, 11 Aug 2026 18:28:18 +0200
+Message-ID: <20260811162938.1403216-4-clg@redhat.com>
 In-Reply-To: <20260811162938.1403216-1-clg@redhat.com>
 References: <20260811162938.1403216-1-clg@redhat.com>
 MIME-Version: 1.0
 X-Scanned-By: MIMEDefang 3.0 on 10.30.177.12
-X-Mimecast-MFC-PROC-ID: fkTkaUdWxexwC9aIwR5RcaLgMDxpejd72-zmIcHMOZk_1786465805
+X-Mimecast-MFC-PROC-ID: NbEEMtwCKgjmkLLy5pcMYQhfTb3n9TtLeKoXsoYdbg4_1786465789
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 Received-SPF: pass client-ip=170.10.133.124; envelope-from=clg@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: 11
-X-Spam_score: 1.1
-X-Spam_bar: +
-X-Spam_report: (1.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.102,
+X-Spam_score_int: -21
+X-Spam_score: -2.2
+X-Spam_bar: --
+X-Spam_report: (-2.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.102,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
- RCVD_IN_SBL_CSS=3.335, SPF_HELO_PASS=-0.001,
- SPF_PASS=-0.001 autolearn=no autolearn_force=no
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -87,78 +86,36 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-From: Jamin Lin <jamin_lin@aspeedtech.com>
+From: Philippe Mathieu-Daudé <philmd@oss.qualcomm.com>
 
-When 64-bit addressing is supported, the Linux EHCI driver programs the
-segment register to zero. See ehci_run function:
-https://github.com/torvalds/linux/blob/master/drivers/usb/host/ehci-hcd.c
+Add missing Kconfig optional dependencies to avoid the
+following runtime error:
 
-The driver comment also notes that descriptor structures allocated from
-the DMA pool use segment zero semantics.
+  qemu-system-aarch64: -device loader,force-raw=on,addr=0x400000000,file=./u-boot.bin: 'loader' is not a valid device model name
+  qemu-system-aarch64: -device e1000e,netdev=net1,bus=pcie.2: 'e1000e' is not a valid device model name
 
-Descriptor memory is allocated using the DMA API. The platform driver
-configures a 64-bit DMA mask so memory can be allocated above 4GB.
-See ehci_platform_probe function:
-https://github.com/torvalds/linux/blob/master/drivers/usb/host/ehci-platform.c
-
-On AST2700 platforms, system DRAM is mapped above 4GB at 0x400000000.
-As a result, descriptor addresses constructed directly from the guest
-EHCI registers do not match the actual system address used by the
-controller when fetching queue heads (QH) and queue element transfer
-descriptors (qTD).
-
-Add a ctrldssegment-default property so platforms can provide a
-descriptor address offset when constructing descriptor addresses.
-This allows systems where DRAM resides above 4GB to access EHCI
-descriptors correctly.
-
-The default value is zero, so existing machines are not affected.
-
-Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
+Signed-off-by: Philippe Mathieu-Daudé <philmd@oss.qualcomm.com>
 Reviewed-by: Cédric Le Goater <clg@redhat.com>
-Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
-Link: https://lore.kernel.org/qemu-devel/20260713032704.3583103-8-jamin_lin@aspeedtech.com
+Link: https://lore.kernel.org/qemu-devel/20260709164103.37614-4-philmd@oss.qualcomm.com
 Signed-off-by: Cédric Le Goater <clg@redhat.com>
 ---
- hw/usb/hcd-ehci.h | 5 ++++-
- hw/usb/hcd-ehci.c | 1 +
- 2 files changed, 5 insertions(+), 1 deletion(-)
+ hw/arm/Kconfig | 2 ++
+ 1 file changed, 2 insertions(+)
 
-diff --git a/hw/usb/hcd-ehci.h b/hw/usb/hcd-ehci.h
-index 49176f3fd282..b5ac9c8670d9 100644
---- a/hw/usb/hcd-ehci.h
-+++ b/hw/usb/hcd-ehci.h
-@@ -268,6 +268,7 @@ struct EHCIState {
-      */
-     bool migrate_fetch_addr_64bit;
-     bool caps_64bit_addr;
-+    uint32_t ctrldssegment_default;
- 
-     /*
-      *  EHCI spec version 1.0 Section 2.3
-@@ -333,7 +334,9 @@ struct EHCIState {
-     DEFINE_PROP_BOOL("x-migrate-fetch-addr-64bit", _state, \
-                      ehci.migrate_fetch_addr_64bit, true), \
-     DEFINE_PROP_BOOL("caps-64bit-addr", _state, \
--                     ehci.caps_64bit_addr, false)
-+                     ehci.caps_64bit_addr, false), \
-+    DEFINE_PROP_UINT32("ctrldssegment-default", _state, \
-+                       ehci.ctrldssegment_default, 0)
- 
- extern const VMStateDescription vmstate_ehci;
- 
-diff --git a/hw/usb/hcd-ehci.c b/hw/usb/hcd-ehci.c
-index 9a80c74972c3..451a918e9f5f 100644
---- a/hw/usb/hcd-ehci.c
-+++ b/hw/usb/hcd-ehci.c
-@@ -1162,6 +1162,7 @@ static void ehci_opreg_write(void *ptr, hwaddr addr,
-                           "64-bit addressing capability is disabled\n");
-             return;
-         }
-+        val |= s->ctrldssegment_default;
-         break;
- 
-     case ASYNCLISTADDR:
+diff --git a/hw/arm/Kconfig b/hw/arm/Kconfig
+index 6f5b2add66ed..5869f0f9e895 100644
+--- a/hw/arm/Kconfig
++++ b/hw/arm/Kconfig
+@@ -533,7 +533,9 @@ config ASPEED_SOC
+     bool
+     default y
+     depends on TCG && ARM
++    imply GENERIC_LOADER
+     imply PCI_DEVICES
++    imply E1000E_PCI_EXPRESS
+     select DS1338
+     select FTGMAC100
+     select I2C
 -- 
 2.55.0
 

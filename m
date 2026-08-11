@@ -4,61 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CEB11C5B56A
-	for <qemu-arm@archiver.kernel.org>; Tue, 11 Aug 2026 16:38:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D1CBAC5B56A
+	for <qemu-arm@archiver.kernel.org>; Tue, 11 Aug 2026 16:39:06 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wtpPS-0006MC-Q5; Tue, 11 Aug 2026 12:33:02 -0400
+	id 1wtpPO-000627-8n; Tue, 11 Aug 2026 12:32:58 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1wtpOz-0005Wa-Jw
- for qemu-arm@nongnu.org; Tue, 11 Aug 2026 12:32:37 -0400
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1wtpOm-0005NJ-M1
+ for qemu-arm@nongnu.org; Tue, 11 Aug 2026 12:32:26 -0400
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1wtpOx-000132-Ds
- for qemu-arm@nongnu.org; Tue, 11 Aug 2026 12:32:33 -0400
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1wtpOj-00010i-Db
+ for qemu-arm@nongnu.org; Tue, 11 Aug 2026 12:32:19 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1786465950;
+ s=mimecast20190719; t=1786465936;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=V86vy0lkjWuWAmUpjwhu7w5xNlRA7tuExSlckQmhD94=;
- b=Td+PUh4tY0r1fH2PyVmZozxgCpidBsT940tpaVq7m54vxAteqJ+U2I6qsD7XKJgxYpR81m
- ZIdCdAtrMe3cwNSnMStVdeSZlMzi1OjLI1q/IpueU9QeQJPCaGXsq1/1JYVPmVMm/j4eNb
- Dj6jud29TI4GuSxV2ACxUmVIedGQQX4=
+ bh=iFX32VsFrQj1DVHS5LiWf7EmdNCU8YdGzEwTm9Ip2qY=;
+ b=YnTuk4WEgDELElFyO6dbVGN52Mpyr656whlOgD+Zfj25p4CO5yCEpY2dCXDwpA5a4nQAQ2
+ rj4PWdUxBDKjq8ak0srdQn6KeXvTHA3uNAjE3u6jAywccgf9f1OPgE1M9i3uXx7OepU+nA
+ iW+gxWczqJEOz2h095xhn9zETPD3bwA=
 Received: from mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com
  (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-369-Rt6HJnG8PVm2V6LdQafbOQ-1; Tue,
- 11 Aug 2026 12:32:29 -0400
-X-MC-Unique: Rt6HJnG8PVm2V6LdQafbOQ-1
-X-Mimecast-MFC-AGG-ID: Rt6HJnG8PVm2V6LdQafbOQ_1786465948
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-623-jwevBUoVNlWat8Z2WsCyDQ-1; Tue,
+ 11 Aug 2026 12:32:13 -0400
+X-MC-Unique: jwevBUoVNlWat8Z2WsCyDQ-1
+X-Mimecast-MFC-AGG-ID: jwevBUoVNlWat8Z2WsCyDQ_1786465932
 Received: from mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com
  (mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.12])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
  by mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 43910180034C; Tue, 11 Aug 2026 16:32:28 +0000 (UTC)
+ id 924BA1800644; Tue, 11 Aug 2026 16:32:12 +0000 (UTC)
 Received: from corto.redhat.com (unknown [10.44.48.12])
  by mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id 8F128195DF91; Tue, 11 Aug 2026 16:32:26 +0000 (UTC)
+ id DE9EC195DF91; Tue, 11 Aug 2026 16:32:10 +0000 (UTC)
 From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Cc: Jamin Lin <jamin_lin@aspeedtech.com>,
- =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
+Cc: Jamin Lin <jamin_lin@aspeedtech.com>, Kane Chen <kane_chen@aspeedtech.com>,
  =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>
-Subject: [PULL 77/83] crypto/cipher-nettle: Implement AES-GCM
-Date: Tue, 11 Aug 2026 18:29:32 +0200
-Message-ID: <20260811162938.1403216-78-clg@redhat.com>
+Subject: [PULL 70/83] hw/misc/aspeed_hace: Support scatter-gather mode for the
+ crypto command
+Date: Tue, 11 Aug 2026 18:29:25 +0200
+Message-ID: <20260811162938.1403216-71-clg@redhat.com>
 In-Reply-To: <20260811162938.1403216-1-clg@redhat.com>
 References: <20260811162938.1403216-1-clg@redhat.com>
 MIME-Version: 1.0
 X-Scanned-By: MIMEDefang 3.0 on 10.30.177.12
-X-Mimecast-MFC-PROC-ID: WwxgB8_D76weIQa1uU6kcX6bJ_ZOZ_ctcqY24Dw6udA_1786465948
+X-Mimecast-MFC-PROC-ID: XWajDJ8cUNnNG3-M7YcZ9S7XAL7MBna3YlN9vcoDL4g_1786465932
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
@@ -88,181 +88,133 @@ Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
 From: Jamin Lin <jamin_lin@aspeedtech.com>
 
-Add the AES-GCM AEAD mode to the nettle backend so it is available when
-QEMU is built with nettle instead of gcrypt. GCM is driven through
-nettle's generic gcm_* interface, using the AES encrypt function for both
-directions: gcm_set_iv() sets the (typically 96-bit) nonce, gcm_update()
-feeds the associated data, gcm_encrypt()/gcm_decrypt() need not be block
-aligned, and gcm_digest() produces the authentication tag.
+The AST2600 and later crypto engines drive the source and destination
+through scatter-gather lists (HACE10[18]/[19]) rather than the single
+contiguous buffers used by the AST2500 direct access mode. Each SG list
+entry is a length word (SG_LIST_LEN_LAST marks the final entry) followed
+by a DRAM address, matching the hash engine layout.
+
+Add a crypt_prepare_sg() helper that gathers the source into / scatters
+the destination out of the bounce buffer by walking the SG list, and
+select it or the existing crypt_prepare_direct() from do_crypt_operation
+based on HACE10[18], mirroring the hash engine's direct/scatter-gather
+dispatch.
 
 Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
-Reviewed-by: Daniel P. Berrangé <berrange@redhat.com>
-Link: https://lore.kernel.org/qemu-devel/20260811060115.1849266-11-jamin_lin@aspeedtech.com
+Reviewed-by: Kane Chen <kane_chen@aspeedtech.com>
+Link: https://lore.kernel.org/qemu-devel/20260811060115.1849266-4-jamin_lin@aspeedtech.com
 Signed-off-by: Cédric Le Goater <clg@redhat.com>
 ---
- crypto/cipher-nettle.c.inc | 128 +++++++++++++++++++++++++++++++++++++
- 1 file changed, 128 insertions(+)
+ hw/misc/aspeed_hace.c | 70 +++++++++++++++++++++++++++++++++++++++----
+ 1 file changed, 64 insertions(+), 6 deletions(-)
 
-diff --git a/crypto/cipher-nettle.c.inc b/crypto/cipher-nettle.c.inc
-index 1afdc391b49b..d4847f0efeee 100644
---- a/crypto/cipher-nettle.c.inc
-+++ b/crypto/cipher-nettle.c.inc
-@@ -27,6 +27,7 @@
- #include <nettle/twofish.h>
- #include <nettle/ctr.h>
- #include <nettle/xts.h>
-+#include <nettle/gcm.h>
- #ifdef CONFIG_CRYPTO_SM4
- #include <nettle/sm4.h>
- #endif
-@@ -410,6 +411,125 @@ DEFINE_ECB(qcrypto_nettle_sm4,
-            sm4_encrypt_native, sm4_decrypt_native)
- #endif
+diff --git a/hw/misc/aspeed_hace.c b/hw/misc/aspeed_hace.c
+index 0f35d74137b1..646ff504762d 100644
+--- a/hw/misc/aspeed_hace.c
++++ b/hw/misc/aspeed_hace.c
+@@ -608,13 +608,58 @@ static bool crypt_prepare_direct(AspeedHACEState *s, uint64_t addr,
+ }
  
-+/*
-+ * GCM is an AEAD mode built on AES (128-bit block only). Drive it through the
-+ * generic gcm_* interface, using the block cipher's encrypt function for both
-+ * directions; associated data is fed with gcm_update() and the authentication
-+ * tag is produced by gcm_digest().
+ /*
+- * Perform an AES/DES/3DES ECB/CBC operation in direct access mode: the source
+- * and destination are single contiguous buffers (HACE00/HACE04) and the IV/key
+- * come from the context buffer (HACE08). For CBC the resulting chaining IV is
+- * written back to the context buffer so the driver can continue the chain.
++ * Scatter-gather mode: the source/destination register points at an SG list
++ * whose entries are a length word (SG_LIST_LEN_LAST flags the final entry)
++ * followed by a DRAM address, matching the hash engine layout. Gather @len
++ * bytes into @buf, or scatter @buf back out when @to_dram is true.
++ * Returns true on success.
 + */
-+typedef struct QCryptoNettleAESGCM {
-+    QCryptoCipher base;
-+    struct gcm_key gcm_key;
-+    struct gcm_ctx gcm_ctx;
-+    union {
-+        struct aes128_ctx aes128;
-+        struct aes192_ctx aes192;
-+        struct aes256_ctx aes256;
-+    } cipher;
-+    nettle_cipher_func *encrypt;
-+} QCryptoNettleAESGCM;
-+
-+static int qcrypto_nettle_aes_gcm_setiv(QCryptoCipher *cipher,
-+                                        const uint8_t *iv, size_t niv,
-+                                        Error **errp)
++static bool crypt_prepare_sg(AspeedHACEState *s, uint64_t addr,
++                             uint8_t *buf, uint32_t len, bool to_dram)
 +{
-+    QCryptoNettleAESGCM *ctx = container_of(cipher, QCryptoNettleAESGCM, base);
++    uint32_t copied = 0;
++    uint32_t sg_addr;
++    uint32_t sg_len;
++    uint32_t entry;
++    int i;
 +
-+    gcm_set_iv(&ctx->gcm_ctx, &ctx->gcm_key, niv, iv);
-+    return 0;
-+}
++    for (i = 0; i < ASPEED_HACE_MAX_SG && copied < len; i++) {
++        entry = address_space_ldl_le(&s->dram_as, addr,
++                                     MEMTXATTRS_UNSPECIFIED, NULL);
++        sg_addr = address_space_ldl_le(&s->dram_as, addr + SG_LIST_LEN_SIZE,
++                                       MEMTXATTRS_UNSPECIFIED, NULL);
++        sg_len = entry & SG_LIST_LEN_MASK;
 +
-+static int qcrypto_nettle_aes_gcm_setaad(QCryptoCipher *cipher,
-+                                         const uint8_t *aad, size_t len,
-+                                         Error **errp)
-+{
-+    QCryptoNettleAESGCM *ctx = container_of(cipher, QCryptoNettleAESGCM, base);
++        sg_addr &= SG_LIST_ADDR_MASK;
++        addr += SG_LIST_ENTRY_SIZE;
 +
-+    gcm_update(&ctx->gcm_ctx, &ctx->gcm_key, len, aad);
-+    return 0;
-+}
++        if (sg_len > len - copied) {
++            sg_len = len - copied;
++        }
++        if (address_space_rw(&s->dram_as, sg_addr, MEMTXATTRS_UNSPECIFIED,
++                             buf + copied, sg_len, to_dram)) {
++            return false;
++        }
++        copied += sg_len;
 +
-+static int qcrypto_nettle_aes_gcm_encrypt(QCryptoCipher *cipher,
-+                                          const void *in, void *out,
-+                                          size_t len, Error **errp)
-+{
-+    QCryptoNettleAESGCM *ctx = container_of(cipher, QCryptoNettleAESGCM, base);
-+
-+    gcm_encrypt(&ctx->gcm_ctx, &ctx->gcm_key, &ctx->cipher, ctx->encrypt,
-+                len, out, in);
-+    return 0;
-+}
-+
-+static int qcrypto_nettle_aes_gcm_decrypt(QCryptoCipher *cipher,
-+                                          const void *in, void *out,
-+                                          size_t len, Error **errp)
-+{
-+    QCryptoNettleAESGCM *ctx = container_of(cipher, QCryptoNettleAESGCM, base);
-+
-+    gcm_decrypt(&ctx->gcm_ctx, &ctx->gcm_key, &ctx->cipher, ctx->encrypt,
-+                len, out, in);
-+    return 0;
-+}
-+
-+static int qcrypto_nettle_aes_gcm_gettag(QCryptoCipher *cipher,
-+                                         uint8_t *tag, size_t len,
-+                                         Error **errp)
-+{
-+    QCryptoNettleAESGCM *ctx = container_of(cipher, QCryptoNettleAESGCM, base);
-+
-+    gcm_digest(&ctx->gcm_ctx, &ctx->gcm_key, &ctx->cipher, ctx->encrypt,
-+               len, tag);
-+    return 0;
-+}
-+
-+static const struct QCryptoCipherDriver qcrypto_nettle_aes_gcm_driver = {
-+    .cipher_encrypt = qcrypto_nettle_aes_gcm_encrypt,
-+    .cipher_decrypt = qcrypto_nettle_aes_gcm_decrypt,
-+    .cipher_setiv = qcrypto_nettle_aes_gcm_setiv,
-+    .cipher_setaad = qcrypto_nettle_aes_gcm_setaad,
-+    .cipher_gettag = qcrypto_nettle_aes_gcm_gettag,
-+    .cipher_free = qcrypto_cipher_ctx_free,
-+};
-+
-+static QCryptoCipher *qcrypto_nettle_aes_gcm_ctx_new(QCryptoCipherAlgo alg,
-+                                                     const uint8_t *key,
-+                                                     size_t nkey,
-+                                                     Error **errp)
-+{
-+    QCryptoNettleAESGCM *ctx;
-+
-+    if (!qcrypto_cipher_validate_key_length(alg, QCRYPTO_CIPHER_MODE_GCM,
-+                                            nkey, errp)) {
-+        return NULL;
++        if (entry & SG_LIST_LEN_LAST) {
++            break;
++        }
 +    }
 +
-+    ctx = g_new0(QCryptoNettleAESGCM, 1);
-+    ctx->base.driver = &qcrypto_nettle_aes_gcm_driver;
-+
-+    switch (alg) {
-+    case QCRYPTO_CIPHER_ALGO_AES_128:
-+        aes128_set_encrypt_key(&ctx->cipher.aes128, key);
-+        ctx->encrypt = aes128_encrypt_native;
-+        break;
-+    case QCRYPTO_CIPHER_ALGO_AES_192:
-+        aes192_set_encrypt_key(&ctx->cipher.aes192, key);
-+        ctx->encrypt = aes192_encrypt_native;
-+        break;
-+    case QCRYPTO_CIPHER_ALGO_AES_256:
-+        aes256_set_encrypt_key(&ctx->cipher.aes256, key);
-+        ctx->encrypt = aes256_encrypt_native;
-+        break;
-+    default:
-+        error_setg(errp, "Unsupported cipher algorithm %s with GCM mode",
-+                   QCryptoCipherAlgo_str(alg));
-+        g_free(ctx);
-+        return NULL;
-+    }
-+
-+    gcm_set_key(&ctx->gcm_key, &ctx->cipher, ctx->encrypt);
-+    return &ctx->base;
++    return copied == len;
 +}
 +
- bool qcrypto_cipher_supports(QCryptoCipherAlgo alg,
-                              QCryptoCipherMode mode)
++/*
++ * Perform an AES/DES/3DES ECB/CBC operation. The source and destination are
++ * either single contiguous buffers (direct access mode) or scatter-gather
++ * lists (HACE10[18]/[19]), addressed by HACE00/HACE04; the IV/key come from
++ * the context buffer (HACE08). For CBC the resulting chaining IV is written
++ * back to the context buffer so the driver can continue the chain.
+  */
+ static void do_crypt_operation(AspeedHACEState *s, uint32_t cmd)
  {
-@@ -440,6 +560,10 @@ bool qcrypto_cipher_supports(QCryptoCipherAlgo alg,
-     case QCRYPTO_CIPHER_MODE_XTS:
-     case QCRYPTO_CIPHER_MODE_CTR:
-         return true;
-+    case QCRYPTO_CIPHER_MODE_GCM:
-+        return alg == QCRYPTO_CIPHER_ALGO_AES_128 ||
-+               alg == QCRYPTO_CIPHER_ALGO_AES_192 ||
-+               alg == QCRYPTO_CIPHER_ALGO_AES_256;
-     default:
-         return false;
++    bool sg_mode = cmd & CRYPT_CMD_SRC_SG_CTRL;
+     uint32_t len = s->regs[R_CRYPT_DATA_LEN];
+     bool encrypt = cmd & CRYPT_CMD_ENCRYPT;
+     g_autoptr(QCryptoCipher) cipher = NULL;
+@@ -631,6 +676,7 @@ static void do_crypt_operation(AspeedHACEState *s, uint32_t cmd)
+     size_t iv_offset;
+     size_t blocklen;
+     size_t keylen;
++    bool status;
+ 
+     if (len == 0) {
+         return;
+@@ -684,8 +730,14 @@ static void do_crypt_operation(AspeedHACEState *s, uint32_t cmd)
+     src_buf = g_malloc0(len);
+     dst_buf = g_malloc0(len);
+ 
++    /* Gather the source into the bounce buffer, per the selected mode. */
+     src_addr = s->regs[R_CRYPT_SRC];
+-    if (!crypt_prepare_direct(s, src_addr, src_buf, len, false)) {
++    if (sg_mode) {
++        status = crypt_prepare_sg(s, src_addr, src_buf, len, false);
++    } else {
++        status = crypt_prepare_direct(s, src_addr, src_buf, len, false);
++    }
++    if (!status) {
+         qemu_log_mask(LOG_GUEST_ERROR,
+                       "%s: Failed to read src, addr=0x%" HWADDR_PRIx "\n",
+                       __func__, src_addr);
+@@ -714,8 +766,14 @@ static void do_crypt_operation(AspeedHACEState *s, uint32_t cmd)
+         }
      }
-@@ -451,6 +575,10 @@ static QCryptoCipher *qcrypto_cipher_ctx_new(QCryptoCipherAlgo alg,
-                                              size_t nkey,
-                                              Error **errp)
- {
-+    if (mode == QCRYPTO_CIPHER_MODE_GCM) {
-+        return qcrypto_nettle_aes_gcm_ctx_new(alg, key, nkey, errp);
+ 
++    /* Scatter the result back out, per the selected mode. */
+     dst_addr = s->regs[R_CRYPT_DEST];
+-    if (!crypt_prepare_direct(s, dst_addr, dst_buf, len, true)) {
++    if (sg_mode) {
++        status = crypt_prepare_sg(s, dst_addr, dst_buf, len, true);
++    } else {
++        status = crypt_prepare_direct(s, dst_addr, dst_buf, len, true);
 +    }
-+
-     switch (mode) {
-     case QCRYPTO_CIPHER_MODE_ECB:
-     case QCRYPTO_CIPHER_MODE_CBC:
++    if (!status) {
+         qemu_log_mask(LOG_GUEST_ERROR,
+                       "%s: Failed to write dst, addr=0x%" HWADDR_PRIx "\n",
+                       __func__, dst_addr);
 -- 
 2.55.0
 

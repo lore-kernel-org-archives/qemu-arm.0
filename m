@@ -4,73 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6EB22C5CFE7
-	for <qemu-arm@archiver.kernel.org>; Tue, 11 Aug 2026 16:41:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EB576C5B572
+	for <qemu-arm@archiver.kernel.org>; Tue, 11 Aug 2026 16:42:00 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wtpO0-0002ZR-6v; Tue, 11 Aug 2026 12:31:32 -0400
+	id 1wtpOX-0004ma-Uk; Tue, 11 Aug 2026 12:32:05 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1wtpNw-000292-8q
- for qemu-arm@nongnu.org; Tue, 11 Aug 2026 12:31:28 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1wtpOR-0004VM-GM
+ for qemu-arm@nongnu.org; Tue, 11 Aug 2026 12:31:59 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1wtpNu-0000ol-B6
- for qemu-arm@nongnu.org; Tue, 11 Aug 2026 12:31:27 -0400
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1wtpOP-0000wJ-SB
+ for qemu-arm@nongnu.org; Tue, 11 Aug 2026 12:31:59 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1786465885;
+ s=mimecast20190719; t=1786465917;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=Tujp5TDOtqGhFmE2T0xtEIYvf18hEA30nkC3YqSoPeI=;
- b=QLUT5gDDCzFuuVUapBJxAzjrPasvTrIeT0v8AN7hw/BrnkOa0Ishcy4mgWYgvgKP2xdJnE
- Vrssxg/w2jRTbBn2FE3spqrCtRu3Ed/976b1fQIMwJVeg1bIQKCBPn+QFIMx/BVV3uXCaD
- VIvEeAege+saRovXyzO6OfDNQlrk/Mg=
-Received: from mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com
+ bh=hwyd3J2gBRtLn+ZKRjnjpi6JQjPFecjC+WykmELV2rk=;
+ b=Rx2nPQJgjCRxuVpZ21ul3znr7iGDV7CZE4UbBDfkqmTEg9B8TTr0cGt4+PUNzw23IstvPJ
+ rN2verK51P/fz4ls1OxERJfrKzLpl8lOJz1Thl6fFTbMLMnl3SMih98onDclk/bN8uXPve
+ Hp9PorIIiTt5lwqabkHqfk39yD7fF08=
+Received: from mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com
  (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-245-oKfMCGvENP6rOfpt7XhRWA-1; Tue,
- 11 Aug 2026 12:31:19 -0400
-X-MC-Unique: oKfMCGvENP6rOfpt7XhRWA-1
-X-Mimecast-MFC-AGG-ID: oKfMCGvENP6rOfpt7XhRWA_1786465878
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-588-RE80q7CPNfqqJPyPPkdgCA-1; Tue,
+ 11 Aug 2026 12:31:53 -0400
+X-MC-Unique: RE80q7CPNfqqJPyPPkdgCA-1
+X-Mimecast-MFC-AGG-ID: RE80q7CPNfqqJPyPPkdgCA_1786465912
 Received: from mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com
  (mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.12])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 2EE2F1800149; Tue, 11 Aug 2026 16:31:18 +0000 (UTC)
+ by mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 5F6311800C36; Tue, 11 Aug 2026 16:31:52 +0000 (UTC)
 Received: from corto.redhat.com (unknown [10.44.48.12])
  by mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id 7819D195DF91; Tue, 11 Aug 2026 16:31:16 +0000 (UTC)
+ id E4B49195DF91; Tue, 11 Aug 2026 16:31:50 +0000 (UTC)
 From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Cc: Emmanuel Blot <emmanuel.blot@free.fr>, Glenn Miles <milesg@linux.ibm.com>,
+Cc: Jamin Lin <jamin_lin@aspeedtech.com>,
  =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>
-Subject: [PULL 44/83] tests/qtest: pca9555: test output-to-input reflection
- and pull-ups
-Date: Tue, 11 Aug 2026 18:28:59 +0200
-Message-ID: <20260811162938.1403216-45-clg@redhat.com>
+Subject: [PULL 60/83] tests/functional/aarch64/test_aspeed_ast2700a2: Update
+ ASPEED SDK v11.03
+Date: Tue, 11 Aug 2026 18:29:15 +0200
+Message-ID: <20260811162938.1403216-61-clg@redhat.com>
 In-Reply-To: <20260811162938.1403216-1-clg@redhat.com>
 References: <20260811162938.1403216-1-clg@redhat.com>
 MIME-Version: 1.0
 X-Scanned-By: MIMEDefang 3.0 on 10.30.177.12
-X-Mimecast-MFC-PROC-ID: TumVZYbBoWvI2A6I7zd4A89BZHphLp9Qhz9R5CDM4Y4_1786465878
+X-Mimecast-MFC-PROC-ID: RnOrTccTqbe2xw7xgStDp0jNdg01pvbMbLPNwUE8OyE_1786465912
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=clg@redhat.com;
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=clg@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -21
 X-Spam_score: -2.2
 X-Spam_bar: --
 X-Spam_report: (-2.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.102,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=0.001, SPF_HELO_PASS=-0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -86,113 +86,91 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-From: Emmanuel Blot <emmanuel.blot@free.fr>
+From: Jamin Lin <jamin_lin@aspeedtech.com>
 
-Add tests covering the pin I/O semantics of the expander: output-driven
-pins reflected in the input register, the pull-up seen on input-configured
-pins, and the independence of the two 8-bit ports.
-
-Signed-off-by: Emmanuel Blot <emmanuel.blot@free.fr>
-Reviewed-by: Glenn Miles <milesg@linux.ibm.com>
-Link: https://lore.kernel.org/qemu-devel/20260709-catalina-upgrade-v1-11-82a63fead90c@free.fr
+Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
+Reviewed-by: Cédric Le Goater <clg@redhat.com>
+Link: https://lore.kernel.org/qemu-devel/20260804081955.1563537-3-jamin_lin@aspeedtech.com
 Signed-off-by: Cédric Le Goater <clg@redhat.com>
 ---
- tests/qtest/pca9555-test.c | 75 ++++++++++++++++++++++++++++++++++++++
- 1 file changed, 75 insertions(+)
+ .../aarch64/test_aspeed_ast2700a2.py          | 27 ++++++++++---------
+ 1 file changed, 14 insertions(+), 13 deletions(-)
 
-diff --git a/tests/qtest/pca9555-test.c b/tests/qtest/pca9555-test.c
-index 5945c3441e92..6b085702c3c8 100644
---- a/tests/qtest/pca9555-test.c
-+++ b/tests/qtest/pca9555-test.c
-@@ -28,6 +28,77 @@ static void test_reset_defaults(void *obj, void *data, QGuestAllocator *alloc)
-     g_assert_cmphex(i2c_get8(dev, PCA9535_CONFIG1), ==, 0xFF);
- }
+diff --git a/tests/functional/aarch64/test_aspeed_ast2700a2.py b/tests/functional/aarch64/test_aspeed_ast2700a2.py
+index 5f9073c89754..01c7c4fdbe35 100755
+--- a/tests/functional/aarch64/test_aspeed_ast2700a2.py
++++ b/tests/functional/aarch64/test_aspeed_ast2700a2.py
+@@ -85,13 +85,13 @@ def verify_openbmc_boot_and_login(self, name, enable_pcie=True):
+         exec_command_and_wait_for_pattern(self, 'root', 'Password:')
+         exec_command_and_wait_for_pattern(self, '0penBmc', f'root@{name}:~#')
  
-+/*
-+ * When a pin is configured as output and driven low (output=0, config=0),
-+ * the input register should reflect 0 for that pin.
-+ * When driven high (output=1, config=0), input should reflect 1.
-+ * When configured as input (config=1), PCA5555 pull-up makes it read 1.
-+ */
-+static void test_output_drives_input(void *obj, void *data,
-+                                     QGuestAllocator *alloc)
-+{
-+    QI2CDevice *dev = (QI2CDevice *)obj;
-+
-+    i2c_set8(dev, PCA9535_CONFIG0, 0xF0);
-+    i2c_set8(dev, PCA9535_OUTPUT0, 0xFA);
-+
-+    g_assert_cmphex(i2c_get8(dev, PCA9535_INPUT0), ==, 0xFA);
-+
-+    g_assert_cmphex(i2c_get8(dev, PCA9535_INPUT1), ==, 0xFF);
-+
-+    i2c_set8(dev, PCA9535_CONFIG0, 0x00);
-+    i2c_set8(dev, PCA9535_OUTPUT0, 0x00);
-+    g_assert_cmphex(i2c_get8(dev, PCA9535_INPUT0), ==, 0x00);
-+
-+    i2c_set8(dev, PCA9535_OUTPUT0, 0xFF);
-+    g_assert_cmphex(i2c_get8(dev, PCA9535_INPUT0), ==, 0xFF);
-+}
-+
-+/*
-+ * When all pins are inputs (config=0xFF) and no external driver,
-+ * PCA9555 pull-ups should make the input register read all ones.
-+ * Switching a pin to output mode with output=0 should drive it low.
-+ */
-+static void test_input_pullup(void *obj, void *data, QGuestAllocator *alloc)
-+{
-+    QI2CDevice *dev = (QI2CDevice *)obj;
-+
-+    g_assert_cmphex(i2c_get8(dev, PCA9535_INPUT0), ==, 0xFF);
-+    g_assert_cmphex(i2c_get8(dev, PCA9535_INPUT1), ==, 0xFF);
-+
-+    i2c_set8(dev, PCA9535_OUTPUT0, 0x00);
-+    g_assert_cmphex(i2c_get8(dev, PCA9535_INPUT0), ==, 0xFF);
-+
-+    i2c_set8(dev, PCA9535_CONFIG0, 0x00);
-+    g_assert_cmphex(i2c_get8(dev, PCA9535_INPUT0), ==, 0x00);
-+}
-+
-+/*
-+ * Test that both ports are independent: changing port 0 registers
-+ * should not affect port 1 and vice versa.
-+ */
-+static void test_port_independence(void *obj, void *data,
-+                                   QGuestAllocator *alloc)
-+{
-+    QI2CDevice *dev = (QI2CDevice *)obj;
-+
-+    i2c_set8(dev, PCA9535_CONFIG0, 0x00);
-+    i2c_set8(dev, PCA9535_OUTPUT0, 0x00);
-+
-+    g_assert_cmphex(i2c_get8(dev, PCA9535_INPUT0), ==, 0x00);
-+    g_assert_cmphex(i2c_get8(dev, PCA9535_INPUT1), ==, 0xFF);
-+    g_assert_cmphex(i2c_get8(dev, PCA9535_CONFIG1), ==, 0xFF);
-+    g_assert_cmphex(i2c_get8(dev, PCA9535_OUTPUT1), ==, 0xFF);
-+
-+    i2c_set8(dev, PCA9535_CONFIG1, 0x00);
-+    i2c_set8(dev, PCA9535_OUTPUT1, 0xAA);
-+
-+    g_assert_cmphex(i2c_get8(dev, PCA9535_INPUT0), ==, 0x00);
-+    g_assert_cmphex(i2c_get8(dev, PCA9535_INPUT1), ==, 0xAA);
-+    g_assert_cmphex(i2c_get8(dev, PCA9535_OUTPUT0), ==, 0x00);
-+    g_assert_cmphex(i2c_get8(dev, PCA9535_OUTPUT1), ==, 0xAA);
-+}
-+
- static void pca9555_register_nodes(void)
- {
-     QOSGraphEdgeOptions opts = {
-@@ -39,6 +110,10 @@ static void pca9555_register_nodes(void)
-     qos_node_consumes("pca9555", "i2c-bus", &opts);
+-    ASSET_SDK_V1101_AST2700A2 = Asset(
+-            'https://github.com/AspeedTech-BMC/openbmc/releases/download/v11.01/ast2700-default-image.tar.gz',
+-            'ce89dcd995cf284d41a6a4bd17a1b97d59939f0277bfe54fdaaf30e741ce7487')
++    ASSET_SDK_V1103_AST2700A2 = Asset(
++            'https://github.com/AspeedTech-BMC/openbmc/releases/download/v11.03/ast2700-default-image.tar.gz',
++            'b91450d53da234591060cfb926fa30f7534ce20eaab766cb0f80ec332f8f0adb')
  
-     qos_add_test("reset-defaults", "pca9555", test_reset_defaults, NULL);
-+    qos_add_test("output-drives-input", "pca9555", test_output_drives_input,
-+                 NULL);
-+    qos_add_test("input-pullup", "pca9555", test_input_pullup, NULL);
-+    qos_add_test("port-independence", "pca9555", test_port_independence, NULL);
- }
+-    ASSET_SDK_V1101_AST2700A2_DCSCM = Asset(
+-            'https://github.com/AspeedTech-BMC/openbmc/releases/download/v11.01/ast2700-dcscm-image.tar.gz',
+-            'b92ece9ca733dfd7a20193a12582f743b77f1898116b6d6f1abe57ac8db01c56')
++    ASSET_SDK_V1103_AST2700A2_DCSCM = Asset(
++            'https://github.com/AspeedTech-BMC/openbmc/releases/download/v11.03/ast2700-dcscm-image.tar.gz',
++            '7afd8323fc95097c14872b90d68c5cae5d078530c704591b192b74bd892c1dbf')
  
- libqos_init(pca9555_register_nodes);
+     def do_ast2700_i2c_test(self, bus_id):
+         bus_str = str(bus_id)
+@@ -135,7 +135,8 @@ def start_ast2700_test(self, name, bus_id):
+             },
+             {
+                 'addr': '0x430000000',
+-                'file': self.scratch_file(name, 'bl31.bin')
++                'file': self.scratch_file(name, 'trusted-firmware-a',
++                                          'bl31.bin')
+             },
+             {
+                 'addr': '0x430080000',
+@@ -162,11 +163,11 @@ def start_ast2700_test_vbootrom(self, name, bus_id):
+         self.do_test_aarch64_aspeed_sdk_start(
+                 self.scratch_file(name, 'image-bmc'), bus_id)
+ 
+-    def test_aarch64_ast2700a2_evb_sdk_v11_01(self):
++    def test_aarch64_ast2700a2_evb_sdk_v11_03(self):
+         self.set_machine('ast2700a2-evb')
+         self.require_netdev('user')
+ 
+-        self.archive_extract(self.ASSET_SDK_V1101_AST2700A2)
++        self.archive_extract(self.ASSET_SDK_V1103_AST2700A2)
+         self.vm.add_args('-device', 'e1000e,netdev=net1,bus=pcie.2')
+         self.vm.add_args('-netdev', 'user,id=net1')
+         self.vm.add_args('-device', 'usb-kbd,bus=usb-bus.3')
+@@ -176,22 +177,22 @@ def test_aarch64_ast2700a2_evb_sdk_v11_01(self):
+         self.do_ast2700_pcie_test()
+         self.do_ast2700_usb_ehci_test()
+ 
+-    def test_aarch64_ast2700a2_evb_sdk_vbootrom_v11_01(self):
++    def test_aarch64_ast2700a2_evb_sdk_vbootrom_v11_03(self):
+         self.set_machine('ast2700a2-evb')
+         self.require_netdev('user')
+ 
+-        self.archive_extract(self.ASSET_SDK_V1101_AST2700A2)
++        self.archive_extract(self.ASSET_SDK_V1103_AST2700A2)
+         self.vm.add_args('-device', 'e1000e,netdev=net1,bus=pcie.2')
+         self.vm.add_args('-netdev', 'user,id=net1')
+         self.start_ast2700_test_vbootrom('ast2700-default-image', 1)
+         self.verify_vbootrom_firmware_flow()
+         self.verify_openbmc_boot_start()
+ 
+-    def test_aarch64_ast2700a2_evb_ioexp_v11_01(self):
++    def test_aarch64_ast2700a2_evb_ioexp_v11_03(self):
+         self.set_machine('ast2700a2-evb')
+         self.require_netdev('user')
+ 
+-        self.archive_extract(self.ASSET_SDK_V1101_AST2700A2_DCSCM)
++        self.archive_extract(self.ASSET_SDK_V1103_AST2700A2_DCSCM)
+         self.vm.set_machine('ast2700a2-evb,fmc-model=w25q512jv')
+         self.vm.add_args('-device',
+                          'tmp105,bus=ioexp0.0,address=0x4d,id=tmp-test-16')
 -- 
 2.55.0
 

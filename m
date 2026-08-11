@@ -4,115 +4,94 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 27CB4C5B572
-	for <qemu-arm@archiver.kernel.org>; Tue, 11 Aug 2026 13:37:26 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DB376C5CFCF
+	for <qemu-arm@archiver.kernel.org>; Tue, 11 Aug 2026 14:36:37 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wtmfC-0006Em-4l; Tue, 11 Aug 2026 09:37:06 -0400
+	id 1wtnaK-0000ID-GK; Tue, 11 Aug 2026 10:36:08 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <milesg@linux.ibm.com>)
- id 1wtmfA-0006EY-PQ; Tue, 11 Aug 2026 09:37:04 -0400
-Received: from mx0b-001b2d01.pphosted.com ([148.163.158.5])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <milesg@linux.ibm.com>)
- id 1wtmf8-0001PA-7D; Tue, 11 Aug 2026 09:37:04 -0400
-Received: from pps.filterd (m0360072.ppops.net [127.0.0.1])
- by mx0a-001b2d01.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id
- 67BDXKgK570138; Tue, 11 Aug 2026 13:36:28 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ibm.com; h=cc
- :content-transfer-encoding:content-type:date:from:in-reply-to
- :message-id:mime-version:references:reply-to:subject:to; s=pp1;
- bh=5sTADk16PeVwHx4S247TkGpTwOnUNTeYl4r/Way3NyY=; b=YsCOCOCaEK92
- dwXDL2eZdHPCGfg2PDeRqbVS5Ab8HGImtAOO3pNDGa9YiwF8XnUluRk9MXY+Px/E
- r0cBNjVMUXvwWOgbgjiLfBqJsVAgMJY1hu325M9LX+Uy7baDqCPt4Xhy1MTB1HD/
- DQyoSBlbjSbnQFEPo6PxHE/MOkVRvWyABaGfDC8bE3UBw9VegLvvgP25dOH8nLd7
- iWhLqCQ4PAUfbfo/Bz0ucmbtgEgMiEw9VapRlhoVlDvigDYkRYsCWz77cK2R6bV7
- XM9IpQ+vgg0Z168vNp9qYJmheiraNgD5BPoZU4eEo6H51bFzoT+z6ekb9Kgzwxd0
- VaERZ73ocA==
-Received: from ppma21.wdc07v.mail.ibm.com
- (5b.69.3da9.ip4.static.sl-reverse.com [169.61.105.91])
- by mx0a-001b2d01.pphosted.com (PPS) with ESMTPS id 4fwvnw4fr3-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Tue, 11 Aug 2026 13:36:27 +0000 (GMT)
-Received: from pps.filterd (ppma21.wdc07v.mail.ibm.com [127.0.0.1])
- by ppma21.wdc07v.mail.ibm.com (8.18.1.7/8.18.1.7) with ESMTP id 67BDQIE4012046;
- Tue, 11 Aug 2026 13:36:26 GMT
-Received: from smtprelay02.dal12v.mail.ibm.com ([172.16.1.4])
- by ppma21.wdc07v.mail.ibm.com (PPS) with ESMTPS id 4fxfsjs3k7-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Tue, 11 Aug 2026 13:36:26 +0000 (GMT)
-Received: from smtpav05.wdc07v.mail.ibm.com (smtpav05.wdc07v.mail.ibm.com
- [10.39.53.232])
- by smtprelay02.dal12v.mail.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id
- 67BDaPQb45809930
- (version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Tue, 11 Aug 2026 13:36:25 GMT
-Received: from smtpav05.wdc07v.mail.ibm.com (unknown [127.0.0.1])
- by IMSVA (Postfix) with ESMTP id 6300158059;
- Tue, 11 Aug 2026 13:36:25 +0000 (GMT)
-Received: from smtpav05.wdc07v.mail.ibm.com (unknown [127.0.0.1])
- by IMSVA (Postfix) with ESMTP id 0B0E358065;
- Tue, 11 Aug 2026 13:36:24 +0000 (GMT)
-Received: from mambor8.rchland.ibm.com (unknown [9.10.239.198])
- by smtpav05.wdc07v.mail.ibm.com (Postfix) with ESMTP;
- Tue, 11 Aug 2026 13:36:23 +0000 (GMT)
-Message-ID: <238ac7e72f1a6da53a61ca48ab8c016ef4d4e40d.camel@linux.ibm.com>
-Subject: Re: [PATCH v3 1/8] fsi/cfam: Add common CFAM base class
-From: Miles Glenn <milesg@linux.ibm.com>
-To: Mikail Sadic <mikail.sadic@ibm.com>, clg@kaod.org, peter.maydell@linaro.org
-Cc: pbonzini@redhat.com, ninad@linux.ibm.com, titusr@google.com,
- jeuk20.kim@samsung.com, philmd@mailo.com, steven_lee@aspeedtech.com,
- leetroy@gmail.com, jamin_lin@aspeedtech.com, kane_chen@aspeedtech.com,
- andrew@codeconstruct.com.au, joel@jms.id.au, calebs@linux.ibm.com,
- qemu-arm@nongnu.org, qemu-devel@nongnu.org
-Date: Tue, 11 Aug 2026 08:36:23 -0500
-In-Reply-To: <20260810185748.1253-2-mikail.sadic@ibm.com>
-References: <20260810185748.1253-1-mikail.sadic@ibm.com>
- <20260810185748.1253-2-mikail.sadic@ibm.com>
-Organization: IBM
-Content-Type: text/plain; charset="UTF-8"
-X-Mailer: Evolution 3.28.5 (3.28.5-27.el8_10) 
-Mime-Version: 1.0
-Content-Transfer-Encoding: 7bit
-X-TM-AS-GCONF: 00
-X-Proofpoint-Reinject: loops=2 maxloops=12
-X-Authority-Analysis: v=2.4 cv=RsP16imK c=1 sm=1 tr=0 ts=6a7b255c cx=c_pps
- a=GFwsV6G8L6GxiO2Y/PsHdQ==:117 a=GFwsV6G8L6GxiO2Y/PsHdQ==:17
- a=IkcTkHD0fZMA:10 a=Sv0fKeRqtYgA:10 a=VkNPw1HP01LnGYTKEx00:22
- a=RnoormkPH1_aCDwRdu11:22 a=RzCfie-kr_QcCd8fBx8p:22 a=VnNF1IyMAAAA:8
- a=bzNvLUEMPkyksndXVlYA:9 a=QEXdDO2ut3YA:10
-X-Proofpoint-GUID: tsaC17dE3p2Y5Jir8k0dtMLdcysmezYc
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwODExMDExMyBTYWx0ZWRfXxQCZVv1f9808
- R4gS4sGTlshRcIFumxtxIDDr3N//4kIABDshSNVznCHXqdKTTUNuNaQ1caWKWVbK2dkiFs4egga
- IQ2muIe/gVk67Bhm6ulRGyKz6Yn8MPN/ybIVb3461sFb2fxLk1ejfRQ+JANtRAZsWLjmvwxHUHu
- AF6+2ekt1egt4CAsURdR1yuU0sbiNERcEw83/tweardvJjtzdtRLtiJ8PEubEy/oMKiEeUHaUuO
- FIm3Y4gcjzy0P+btC7DCMqJgrpvtirfHMB7VyMQ4v/c0ZYJFBUmWNcLsuVtcBUJVsoRodKh2PhA
- TN9zY6JTmO8LU0WjRc1St2TQav9we6fsJGYBTepUbZHwROo3gyk6tD8qakvkwA/PiSQ0tU8zwHL
- AALWFpYJnHhYRK8PT47qU8bpauTLiJC0wY38RmanejBrVXXSCwnSrSz6NpeYBAVnZyAyGeTT40X
- Vzsc4nWrLp6Z/VVpO+w==
-X-Proofpoint-ORIG-GUID: HobfHreh-Y49q8xUPKtU-DSn-MpiJmnn
-X-Proofpoint-Spam-Info: AW1haW4tMjYwODExMDExMyBTYWx0ZWRfX7g52GmniplAk
- QycQpioOcRLoXQLx3zSu4Oe48goa6NS6GIGIvYyUGK5XDYcA8/y2zqkf+czsvLLCtUEDVNsdcYx
- gg/nsJm9xpawZt68/7720g4JwppL4pI=
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.293,Aquarius:18.0.1176,Hydra:6.1.134,FMLib:17.12.100.49
- definitions=2026-08-11_03,2026-08-10_03,2025-10-01_01
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
- spamscore=0 impostorscore=0 suspectscore=0 clxscore=1015 malwarescore=0
- phishscore=0 adultscore=0 lowpriorityscore=0 priorityscore=1501 bulkscore=0
- classifier=typeunknown authscore=0 authtc= authcc= route=outbound adjust=0
- reason=mlx scancount=1 engine=8.22.0-2606150000 definitions=main-2608110113
-Received-SPF: pass client-ip=148.163.158.5; envelope-from=milesg@linux.ibm.com;
- helo=mx0b-001b2d01.pphosted.com
-X-Spam_score_int: -26
-X-Spam_score: -2.7
-X-Spam_bar: --
-X-Spam_report: (-2.7 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, RCVD_IN_DNSWL_LOW=-0.7,
- RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ (Exim 4.90_1) (envelope-from <marcelomanzo@gmail.com>)
+ id 1wtnaI-0000Gq-An
+ for qemu-arm@nongnu.org; Tue, 11 Aug 2026 10:36:06 -0400
+Received: from mail-qt1-x82b.google.com ([2607:f8b0:4864:20::82b])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <marcelomanzo@gmail.com>)
+ id 1wtnaG-0001rU-Ax
+ for qemu-arm@nongnu.org; Tue, 11 Aug 2026 10:36:06 -0400
+Received: by mail-qt1-x82b.google.com with SMTP id
+ d75a77b69052e-51c149c5722so8436301cf.0
+ for <qemu-arm@nongnu.org>; Tue, 11 Aug 2026 07:36:03 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=gmail.com; s=20251104; t=1786458963; x=1787063763; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+ :message-id:reply-to:content-type;
+ bh=xUCaDY/np0WAstzilj/aRxu/YjTtEwlLG0s9zckn39E=;
+ b=Wk6qyPE7//WuTKp7itmwKCectCLrzx0MdfVuIJadfUj6RB6b/zW1ma3rhRPiH/0IyL
+ AubL6P4BVfXGigE6jgHBAqlSip13CVXMVJh7QeAuyuEQ3kuHBwm4/JrFOH1+LBf5AYf9
+ dF/crBU5ao8A6giq8iDr/gIbnNeDO9dcKAuv6vPaIIgqk1icRyIQ1hQLxk4vql8Mu/XZ
+ aY1wzHHLvYYAcrQMoJWkBGdRcX0oIxKUNA07iAb5BL2v1Bq7VMfu1Mw+svtEf2f4G+Xe
+ JZ50FyjRwieTdhGo4zM2ASm/6yaBMLRIzsyg1Re/Nlmlo+ZcgCwlYVli5u1hVy5lJMaF
+ H8/w==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20251104; t=1786458963; x=1787063763;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
+ :to:cc:subject:date:message-id:reply-to:content-type;
+ bh=xUCaDY/np0WAstzilj/aRxu/YjTtEwlLG0s9zckn39E=;
+ b=guDLCjT/jbrrUBu4IVydZ18pVaOnzs5LcJ+3m+2Aog5+rGelb8nvXK382zTs9mhGU0
+ POPFEMm4bXul4ki92Ayxe4riJeQI0YWMF5XZnNsgKhqqH3UrroEMFx7KY0j4Qq8yuz06
+ OC8F2v/eQluiyqLzz1r/ZlSzm2boNBVlYVcnZ60GuC6ZBThVDLKK1SxlCSyIwOi1fj2B
+ Qbjcp6Zd9nScBF8yMC0pvC2BBpUWjiwKEO150CDiaBb4fEfF8fBXSMnDWU01cqdJSpVj
+ CuwHCyg/oH2qex+LTY6uw0bQstgI4UmSrs1tqHRbhNsstemK+mQcvhnhjDLwam3gFbha
+ IcFQ==
+X-Forwarded-Encrypted: i=1;
+ AHgh+RoMPI9sgmrFN5Z7JQofHCwVgI21/i70JSOnp6tLOAuepYfTMAp5ja5q7FzjI7gsqERpQhfYh4L9NQ==@nongnu.org
+X-Gm-Message-State: AOJu0YxzCgDaMQ66qX5a9xHy3eyYx1Sex7cIHYXBRlw1U0BEt7SW5vgo
+ 08uA6E6zgOuxJ9XrRkJ3/shKZ4zhKh74WnSo7WwE8H7u3M7KCbwKSPA3XIf1iQ==
+X-Gm-Gg: AR+sD13eA2n9Zddau2hkI3/Zu3lza7VeWM/j9sRl16q0CYUI98Xjew6iisvE910wu72
+ nxXahtwYfaJiin2qIK5JKHx9I0VOtk430udmLN+VrmidpEpfnEg2NHCUIKdJc+5wRSuS70rxpCk
+ rc/QzQPFh654wpkVsK2RSSpZKfkbBHEYguUu+loqlANSHGSRn6Tds9omRFEmBeSGe9BVV6tqn51
+ HBUxt0LMjRl5KDNjwuZTRAEE53iSMfUrwX85yUrThdzxETY7FEN7rVaEA/KinaRTyl4gdnvfX/E
+ PYWZPE/dplSeM04bir7F2FnzhySqW7YPiBLKvhGryMCT8b/8fYgCI9U8w3m+n5V0WRb178CCRhm
+ MOrcKcgNilaZu1vyAdjaMX5Jc7W2jSjRePgvVEzZFolC1e1OeaBZqXdXQmUCN/S9z3wDxeforSJ
+ Pwm18rpljgAgRXenqvGM84FbT+vupaH0OzjZxtbt/QSfFF9enVmbA9gZHZXgfNFl8+kFl1xlQz8
+ j6yZRV1/dQ+AkVH+Oc=
+X-Received: by 2002:ac8:7dc1:0:b0:52d:3483:ed0a with SMTP id
+ d75a77b69052e-52d6030e1femr5395411cf.18.1786458963329; 
+ Tue, 11 Aug 2026 07:36:03 -0700 (PDT)
+Received: from localhost.localdomain ([198.16.145.87])
+ by smtp.gmail.com with ESMTPSA id
+ 6a1803df08f44-90a6c26e074sm681286d6.2.2026.08.11.07.36.02
+ (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
+ Tue, 11 Aug 2026 07:36:02 -0700 (PDT)
+From: Marcelo Manzo <marcelomanzo@gmail.com>
+To: qemu-devel@nongnu.org,
+	qemu-arm@nongnu.org
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@oss.qualcomm.com>,
+ Marcelo Manzo <marcelomanzo@gmail.com>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@mailo.com>,
+ Jason Wang <jasowangio@gmail.com>
+Subject: [PATCH v2 04/19] hw/net/bcm2838_genet: add GENET stub device
+Date: Tue, 11 Aug 2026 10:35:41 -0400
+Message-ID: <20260811143557.7862-5-marcelomanzo@gmail.com>
+X-Mailer: git-send-email 2.47.1
+In-Reply-To: <20260811143557.7862-1-marcelomanzo@gmail.com>
+References: <20260811143557.7862-1-marcelomanzo@gmail.com>
+MIME-Version: 1.0
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2607:f8b0:4864:20::82b;
+ envelope-from=marcelomanzo@gmail.com; helo=mail-qt1-x82b.google.com
+X-Spam_score_int: -10
+X-Spam_score: -1.1
+X-Spam_bar: -
+X-Spam_report: (-1.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FORGED_GMAIL_RCVD=1,
+ FREEMAIL_FROM=0.001, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -125,349 +104,237 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-To: milesg@linux.ibm.com
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-I'm fine with having the extended addressing added later.
+Add a bare-bones BCM2838 GENET (Gigabit Ethernet) sysbus device:
+MMIO region registration, an out-of-range read/write handler that
+just logs, and a reset callback. No register-level behavior yet;
+that comes in the following patches.
 
-Reviewed-by: Glenn Miles <milesg@linux.ibm.com>
+Adapted from patch 19/41 of Sergey Kambalin's Raspberry Pi 4B
+series (patchwork series 829638) against current QEMU master. The
+reset callback and class_init() use the current Resettable-phases
+API (ResettableClass / resettable_class_set_parent_phases()) rather
+than the plain DeviceClass::reset hook the original patch used, and
+headers moved under hw/core/, both API changes since the series was
+originally posted.
 
-Thanks,
+Signed-off-by: Marcelo Manzo <marcelomanzo@gmail.com>
+---
+ hw/net/bcm2838_genet.c               | 103 +++++++++++++++++++++++++++
+ hw/net/meson.build                   |   2 +
+ hw/net/trace-events                  |  16 +++++
+ include/hw/arm/bcm2838_peripherals.h |   2 +
+ include/hw/net/bcm2838_genet.h       |  40 +++++++++++
+ 5 files changed, 163 insertions(+)
+ create mode 100644 hw/net/bcm2838_genet.c
+ create mode 100644 include/hw/net/bcm2838_genet.h
 
-Glenn
-
-On Mon, 2026-08-10 at 13:57 -0500, Mikail Sadic wrote:
-> Prepare a common CFAM parent class for CFAM-S implementation.
-> 
-> Add an abstract TYPE_FSI_CFAM_COMMON with an FSICFAMCommonClass holding
-> what varies between types: the config table, the offsets of the FSI
-> responder and the local bus within the register slot, and a
-> realize_engines() hook for the engines on the local bus. Its realize is
-> driven by those fields, so one realize serves every type. TYPE_FSI_CFAM
-> keeps its name and becomes the first derived type, supplying the P9
-> config table, its slot offsets and the scratchpad engine. The config
-> table becomes data, still written with the same CFAM_CONFIG_REG()
-> expressions, which move to the header so a derived type can describe its
-> own table the same way.
-> 
-> Name the new instance struct without a State suffix and rename
-> FSICFAMState to FSICFAM to match.
-> 
-> No functional change: same memory map, same config words, same type and
-> child names. aspeed_fsi-test verified.
-> 
-> Signed-off-by: Mikail Sadic <mikail.sadic@ibm.com>
-> ---
->  include/hw/fsi/cfam.h       |  58 ++++++++++++++++-
->  include/hw/fsi/fsi-master.h |   2 +-
->  hw/fsi/cfam.c               | 125 +++++++++++++++++++++---------------
->  hw/fsi/fsi-master.c         |   2 +-
->  4 files changed, 130 insertions(+), 57 deletions(-)
-> 
-> diff --git a/include/hw/fsi/cfam.h b/include/hw/fsi/cfam.h
-> index cceb4bd6f1..bdf579b4fe 100644
-> --- a/include/hw/fsi/cfam.h
-> +++ b/include/hw/fsi/cfam.h
-> @@ -7,18 +7,44 @@
->  #ifndef FSI_CFAM_H
->  #define FSI_CFAM_H
->  
-> +#include "qemu/units.h"
->  #include "system/memory.h"
->  
->  #include "hw/fsi/fsi.h"
->  #include "hw/fsi/lbus.h"
->  
-> +/*
-> + * All CFAM flavors present a register slot holding a config table, an FSI
-> + * responder and a local bus carrying the engines the config table describes.
-> + * That is the common model; each flavor supplies its own table, slot layout
-> + * and engines.
-> + */
-> +#define TYPE_FSI_CFAM_COMMON "cfam-common"
-> +OBJECT_DECLARE_TYPE(FSICFAMCommon, FSICFAMCommonClass, FSI_CFAM_COMMON)
-> +
->  #define TYPE_FSI_CFAM "cfam"
-> -#define FSI_CFAM(obj) OBJECT_CHECK(FSICFAMState, (obj), TYPE_FSI_CFAM)
-> +OBJECT_DECLARE_SIMPLE_TYPE(FSICFAM, FSI_CFAM)
->  
->  /* P9-ism */
->  #define CFAM_CONFIG_NR_REGS 0x28
->  
-> -typedef struct FSICFAMState {
-> +#define FSI_CFAM_SLOT_SIZE   (2 * MiB)
-> +#define FSI_CFAM_CONFIG_SIZE 0x400
-> +
-> +#define ENGINE_CONFIG_NEXT            BIT(31)
-> +#define ENGINE_CONFIG_TYPE_PEEK       (0x02 << 4)
-> +#define ENGINE_CONFIG_TYPE_FSI        (0x03 << 4)
-> +#define ENGINE_CONFIG_TYPE_SCRATCHPAD (0x06 << 4)
-> +
-> +/* Valid, slots, version, type, crc */
-> +#define CFAM_CONFIG_REG(__VER, __TYPE, __CRC)   \
-> +    (ENGINE_CONFIG_NEXT       |   \
-> +     0x00010000               |   \
-> +     (__VER)                  |   \
-> +     (__TYPE)                 |   \
-> +     (__CRC))
-> +
-> +struct FSICFAMCommon {
->      /* < private > */
->      FSISlaveState parent;
->  
-> @@ -28,7 +54,33 @@ typedef struct FSICFAMState {
->      MemoryRegion mr;
->  
->      FSILBus lbus;
-> +};
-> +
-> +struct FSICFAMCommonClass {
-> +    /* < private > */
-> +    DeviceClass parent_class;
-> +
-> +    /* < public > */
-> +    /* Config table served by the common ops, one word per 4-byte offset */
-> +    const uint32_t *config;
-> +    unsigned config_nr;
-> +
-> +    /* Layout of the register slot */
-> +    hwaddr responder_offset;
-> +    hwaddr lbus_offset;
-> +
-> +    /* Realize and map this flavor's local bus engines */
-> +    bool (*realize_engines)(FSICFAMCommon *cfam, Error **errp);
-> +};
-> +
-> +struct FSICFAM {
-> +    /* < private > */
-> +    FSICFAMCommon parent;
-> +
->      FSIScratchPad scratchpad;
-> -} FSICFAMState;
-> +};
-> +
-> +bool fsi_cfam_add_engine(FSICFAMCommon *cfam, DeviceState *engine,
-> +                         hwaddr offset, Error **errp);
->  
->  #endif /* FSI_CFAM_H */
-> diff --git a/include/hw/fsi/fsi-master.h b/include/hw/fsi/fsi-master.h
-> index 60ddaa994f..87c11ec3dc 100644
-> --- a/include/hw/fsi/fsi-master.h
-> +++ b/include/hw/fsi/fsi-master.h
-> @@ -25,7 +25,7 @@ typedef struct FSIMasterState {
->      FSIBus bus;
->  
->      uint32_t regs[FSI_MASTER_NR_REGS];
-> -    FSICFAMState cfam;
-> +    FSICFAM cfam;
->  } FSIMasterState;
->  
->  
-> diff --git a/hw/fsi/cfam.c b/hw/fsi/cfam.c
-> index 54c0b05769..5d4d0622d0 100644
-> --- a/hw/fsi/cfam.c
-> +++ b/hw/fsi/cfam.c
-> @@ -16,19 +16,6 @@
->  
->  #include "hw/core/qdev-properties.h"
->  
-> -#define ENGINE_CONFIG_NEXT            BIT(31)
-> -#define ENGINE_CONFIG_TYPE_PEEK       (0x02 << 4)
-> -#define ENGINE_CONFIG_TYPE_FSI        (0x03 << 4)
-> -#define ENGINE_CONFIG_TYPE_SCRATCHPAD (0x06 << 4)
-> -
-> -/* Valid, slots, version, type, crc */
-> -#define CFAM_CONFIG_REG(__VER, __TYPE, __CRC)   \
-> -    (ENGINE_CONFIG_NEXT       |   \
-> -     0x00010000               |   \
-> -     (__VER)                  |   \
-> -     (__TYPE)                 |   \
-> -     (__CRC))
-> -
->  #define TO_REG(x)                          ((x) >> 2)
->  
->  #define CFAM_CONFIG_CHIP_ID                TO_REG(0x00)
-> @@ -36,34 +23,33 @@
->  #define CFAM_CONFIG_CHIP_ID_P9             0xc0022d15
->  #define CFAM_CONFIG_CHIP_ID_BREAK          0xc0de0000
->  
-> +/*
-> + * Config table of the P9 CFAM: the chip ID followed by one entry per engine,
-> + * entry n describing the engine at address n * 4. We need to add future
-> + * engines from address 0x10 onwards.
-> + */
-> +static const uint32_t cfam_p9_config[] = {
-> +    CFAM_CONFIG_CHIP_ID_P9,
-> +    CFAM_CONFIG_REG(0x1000, ENGINE_CONFIG_TYPE_PEEK, 0xc),
-> +    CFAM_CONFIG_REG(0x5000, ENGINE_CONFIG_TYPE_FSI, 0xa),
-> +    CFAM_CONFIG_REG(0x1000, ENGINE_CONFIG_TYPE_SCRATCHPAD, 0x7),
-> +};
-> +
->  static uint64_t fsi_cfam_config_read(void *opaque, hwaddr addr, unsigned size)
->  {
-> +    FSICFAMCommonClass *cc = FSI_CFAM_COMMON_GET_CLASS(opaque);
-> +    unsigned int reg = TO_REG(addr);
-> +
->      trace_fsi_cfam_config_read(addr, size);
->  
-> -    switch (addr) {
-> -    case 0x00:
-> -        return CFAM_CONFIG_CHIP_ID_P9;
-> -    case 0x04:
-> -        return CFAM_CONFIG_REG(0x1000, ENGINE_CONFIG_TYPE_PEEK, 0xc);
-> -    case 0x08:
-> -        return CFAM_CONFIG_REG(0x5000, ENGINE_CONFIG_TYPE_FSI, 0xa);
-> -    case 0xc:
-> -        return CFAM_CONFIG_REG(0x1000, ENGINE_CONFIG_TYPE_SCRATCHPAD, 0x7);
-> -    default:
-> -        /*
-> -         * The config table contains different engines from 0xc onwards.
-> -         * The scratch pad is already added at address 0xc. We need to add
-> -         * future engines from address 0x10 onwards. Returning 0 as engine
-> -         * is not implemented.
-> -         */
-> -        return 0;
-> -    }
-> +    /* Engines past the end of the table are not implemented */
-> +    return reg < cc->config_nr ? cc->config[reg] : 0;
->  }
->  
->  static void fsi_cfam_config_write(void *opaque, hwaddr addr, uint64_t data,
->                                    unsigned size)
->  {
-> -    FSICFAMState *cfam = FSI_CFAM(opaque);
-> +    FSICFAMCommon *cfam = FSI_CFAM_COMMON(opaque);
->  
->      trace_fsi_cfam_config_write(addr, size, data);
->  
-> @@ -109,59 +95,94 @@ static const struct MemoryRegionOps fsi_cfam_unimplemented_ops = {
->      .endianness = DEVICE_BIG_ENDIAN,
->  };
->  
-> -static void fsi_cfam_instance_init(Object *obj)
-> +bool fsi_cfam_add_engine(FSICFAMCommon *cfam, DeviceState *engine,
-> +                         hwaddr offset, Error **errp)
->  {
-> -    FSICFAMState *s = FSI_CFAM(obj);
-> +    if (!qdev_realize(engine, BUS(&cfam->lbus), errp)) {
-> +        return false;
-> +    }
->  
-> -    object_initialize_child(obj, "scratchpad", &s->scratchpad,
-> -                            TYPE_FSI_SCRATCHPAD);
-> +    memory_region_add_subregion(&cfam->lbus.mr, offset,
-> +                                &FSI_LBUS_DEVICE(engine)->iomem);
-> +    return true;
->  }
->  
-> -static void fsi_cfam_realize(DeviceState *dev, Error **errp)
-> +static void fsi_cfam_common_realize(DeviceState *dev, Error **errp)
->  {
-> -    FSICFAMState *cfam = FSI_CFAM(dev);
-> +    FSICFAMCommon *cfam = FSI_CFAM_COMMON(dev);
-> +    FSICFAMCommonClass *cc = FSI_CFAM_COMMON_GET_CLASS(dev);
->      FSISlaveState *slave = FSI_SLAVE(dev);
-> +    const char *type = object_get_typename(OBJECT(dev));
-> +    g_autofree char *config_name = g_strdup_printf("%s.config", type);
->  
->      /* Each slave has a 2MiB address space */
->      memory_region_init_io(&cfam->mr, OBJECT(cfam), &fsi_cfam_unimplemented_ops,
-> -                          cfam, TYPE_FSI_CFAM, 2 * MiB);
-> +                          cfam, type, FSI_CFAM_SLOT_SIZE);
->  
->      qbus_init(&cfam->lbus, sizeof(cfam->lbus), TYPE_FSI_LBUS, DEVICE(cfam),
->                NULL);
->  
->      memory_region_init_io(&cfam->config_iomem, OBJECT(cfam), &cfam_config_ops,
-> -                          cfam, TYPE_FSI_CFAM ".config", 0x400);
-> +                          cfam, config_name, FSI_CFAM_CONFIG_SIZE);
->  
->      memory_region_add_subregion(&cfam->mr, 0, &cfam->config_iomem);
-> -    memory_region_add_subregion(&cfam->mr, 0x800, &slave->iomem);
-> -    memory_region_add_subregion(&cfam->mr, 0xc00, &cfam->lbus.mr);
-> +    memory_region_add_subregion(&cfam->mr, cc->responder_offset, &slave->iomem);
-> +    memory_region_add_subregion(&cfam->mr, cc->lbus_offset, &cfam->lbus.mr);
->  
-> -    /* Add scratchpad engine */
-> -    if (!qdev_realize(DEVICE(&cfam->scratchpad), BUS(&cfam->lbus), errp)) {
-> +    if (!cc->realize_engines(cfam, errp)) {
->          return;
->      }
-> -
-> -    FSILBusDevice *fsi_dev = FSI_LBUS_DEVICE(&cfam->scratchpad);
-> -    memory_region_add_subregion(&cfam->lbus.mr, 0, &fsi_dev->iomem);
->  }
->  
-> -static void fsi_cfam_class_init(ObjectClass *klass, const void *data)
-> +static void fsi_cfam_common_class_init(ObjectClass *klass, const void *data)
->  {
->      DeviceClass *dc = DEVICE_CLASS(klass);
-> +
->      dc->bus_type = TYPE_FSI_BUS;
-> -    dc->realize = fsi_cfam_realize;
-> +    dc->realize = fsi_cfam_common_realize;
-> +}
-> +
-> +static bool fsi_cfam_realize_engines(FSICFAMCommon *cfam, Error **errp)
-> +{
-> +    FSICFAM *s = FSI_CFAM(cfam);
-> +
-> +    /* Add scratchpad engine */
-> +    object_initialize_child(OBJECT(s), "scratchpad", &s->scratchpad,
-> +                            TYPE_FSI_SCRATCHPAD);
-> +
-> +    return fsi_cfam_add_engine(cfam, DEVICE(&s->scratchpad), 0, errp);
->  }
->  
-> +static void fsi_cfam_class_init(ObjectClass *klass, const void *data)
-> +{
-> +    FSICFAMCommonClass *cc = FSI_CFAM_COMMON_CLASS(klass);
-> +
-> +    cc->config = cfam_p9_config;
-> +    cc->config_nr = ARRAY_SIZE(cfam_p9_config);
-> +    cc->responder_offset = 0x800;
-> +    cc->lbus_offset = 0xc00;
-> +    cc->realize_engines = fsi_cfam_realize_engines;
-> +}
-> +
-> +static const TypeInfo fsi_cfam_common_info = {
-> +    .name = TYPE_FSI_CFAM_COMMON,
-> +    .parent = TYPE_FSI_SLAVE,
-> +    .instance_size = sizeof(FSICFAMCommon),
-> +    .class_size = sizeof(FSICFAMCommonClass),
-> +    .class_init = fsi_cfam_common_class_init,
-> +    .abstract = true,
-> +};
-> +
->  static const TypeInfo fsi_cfam_info = {
->      .name = TYPE_FSI_CFAM,
-> -    .parent = TYPE_FSI_SLAVE,
-> -    .instance_init = fsi_cfam_instance_init,
-> -    .instance_size = sizeof(FSICFAMState),
-> +    .parent = TYPE_FSI_CFAM_COMMON,
-> +    .instance_size = sizeof(FSICFAM),
->      .class_init = fsi_cfam_class_init,
->  };
->  
->  static void fsi_cfam_register_types(void)
->  {
-> +    type_register_static(&fsi_cfam_common_info);
->      type_register_static(&fsi_cfam_info);
->  }
->  
-> diff --git a/hw/fsi/fsi-master.c b/hw/fsi/fsi-master.c
-> index 083a5507ab..d82df1c094 100644
-> --- a/hw/fsi/fsi-master.c
-> +++ b/hw/fsi/fsi-master.c
-> @@ -130,7 +130,7 @@ static void fsi_master_realize(DeviceState *dev, Error **errp)
->      }
->  
->      /* address ? */
-> -    memory_region_add_subregion(&s->opb2fsi, 0, &s->cfam.mr);
-> +    memory_region_add_subregion(&s->opb2fsi, 0, &s->cfam.parent.mr);
->  }
->  
->  static void fsi_master_reset(DeviceState *dev)
+diff --git a/hw/net/bcm2838_genet.c b/hw/net/bcm2838_genet.c
+new file mode 100644
+index 0000000000..2ff93a3417
+--- /dev/null
++++ b/hw/net/bcm2838_genet.c
+@@ -0,0 +1,103 @@
++/*
++ * BCM2838 Gigabit Ethernet emulation
++ *
++ * Copyright (C) 2022 Ovchinnikov Vitalii <vitalii.ovchinnikov@auriga.com>
++ *
++ * SPDX-License-Identifier: GPL-2.0-or-later
++ */
++
++#include "qemu/osdep.h"
++#include "qemu/module.h"
++#include "qemu/log.h"
++#include "qemu/error-report.h"
++#include "net/eth.h"
++#include "qapi/error.h"
++#include "hw/core/irq.h"
++#include "net/checksum.h"
++#include "system/dma.h"
++#include "hw/core/resettable.h"
++#include "hw/net/bcm2838_genet.h"
++#include "trace.h"
++
++
++static uint64_t bcm2838_genet_read(void *opaque, hwaddr offset, unsigned size)
++{
++    uint64_t value = ~0;
++
++    qemu_log_mask(
++        LOG_GUEST_ERROR,
++        "%s: out-of-range access, %u bytes @ offset 0x%04" PRIx64 "\n",
++        __func__, size, offset);
++
++    trace_bcm2838_genet_read(size, offset, value);
++    return value;
++}
++
++static void bcm2838_genet_write(void *opaque, hwaddr offset, uint64_t value,
++                                unsigned size) {
++    qemu_log_mask(
++        LOG_GUEST_ERROR,
++        "%s: out-of-range access, %u bytes @ offset 0x%04" PRIx64 "\n",
++        __func__, size, offset);
++}
++
++static const MemoryRegionOps bcm2838_genet_ops = {
++    .read = bcm2838_genet_read,
++    .write = bcm2838_genet_write,
++    .endianness = DEVICE_LITTLE_ENDIAN,
++    .impl = {.max_access_size = 4},
++    .valid = {.min_access_size = 4},
++};
++
++
++static void bcm2838_genet_realize(DeviceState *dev, Error **errp)
++{
++    BCM2838GenetState *s = BCM2838_GENET(dev);
++    SysBusDevice *sbd = SYS_BUS_DEVICE(dev);
++
++    /* Controller registers */
++    memory_region_init_io(&s->regs_mr, OBJECT(s), &bcm2838_genet_ops, s,
++                          "bcm2838_genet_regs", sizeof(s->regs));
++    sysbus_init_mmio(sbd, &s->regs_mr);
++}
++
++static void bcm2838_genet_phy_reset(BCM2838GenetState *s)
++{
++    trace_bcm2838_genet_phy_reset("done");
++}
++
++static void bcm2838_genet_reset(Object *obj, ResetType type)
++{
++    BCM2838GenetState *s = BCM2838_GENET(obj);
++
++    memset(&s->regs, 0x00, sizeof(s->regs));
++
++    trace_bcm2838_genet_reset("done");
++
++    bcm2838_genet_phy_reset(s);
++}
++
++static void bcm2838_genet_class_init(ObjectClass *class, const void *data)
++{
++    static ResettablePhases unused_parent_phases;
++    DeviceClass *dc = DEVICE_CLASS(class);
++    ResettableClass *rc = RESETTABLE_CLASS(class);
++
++    dc->realize = bcm2838_genet_realize;
++    resettable_class_set_parent_phases(rc, NULL, bcm2838_genet_reset, NULL,
++                                       &unused_parent_phases);
++}
++
++static const TypeInfo bcm2838_genet_info = {
++    .name       = TYPE_BCM2838_GENET,
++    .parent     = TYPE_SYS_BUS_DEVICE,
++    .instance_size = sizeof(BCM2838GenetState),
++    .class_init = bcm2838_genet_class_init,
++};
++
++static void bcm2838_genet_register(void)
++{
++    type_register_static(&bcm2838_genet_info);
++}
++
++type_init(bcm2838_genet_register)
+diff --git a/hw/net/meson.build b/hw/net/meson.build
+index 84f142df22..e290e1796b 100644
+--- a/hw/net/meson.build
++++ b/hw/net/meson.build
+@@ -69,4 +69,6 @@ system_ss.add(when: 'CONFIG_ROCKER', if_true: files(
+ stub_ss.add(files('rocker/rocker-stubs.c'))
+ system_ss.add(files('rocker/rocker-hmp-cmds.c'))
+ 
++system_ss.add(when: 'CONFIG_RASPI', if_true: files('bcm2838_genet.c'))
++
+ subdir('can')
+diff --git a/hw/net/trace-events b/hw/net/trace-events
+index 001a20b0e2..2dde33e892 100644
+--- a/hw/net/trace-events
++++ b/hw/net/trace-events
+@@ -528,3 +528,19 @@ xen_netdev_rx(int dev, int idx, int status, int flags) "vif%u idx %d status %d f
+ ethlite_pkt_lost(uint32_t rx_ctrl) "rx_ctrl:0x%" PRIx32
+ ethlite_pkt_size_too_big(uint64_t size) "size:0x%" PRIx64
+ ethlite_pkt_tx_size_too_big(uint64_t size) "size:0x%" PRIx64
++# bcm2838_genet.c
++bcm2838_genet_read(unsigned int size, uint64_t offset, uint64_t value) "%u bytes @ 0x%04" PRIx64 ": 0x%016" PRIx64
++bcm2838_genet_write(unsigned int size, uint64_t offset, uint64_t value) "%u bytes @ 0x%04" PRIx64 ": 0x%016" PRIx64
++bcm2838_genet_can_receive(const char *state) "receive is %s"
++bcm2838_genet_receive(ssize_t bytes_received) "%zd bytes received"
++bcm2838_genet_phy_update_link(const char *link_state) "link is %s"
++bcm2838_genet_phy_reset(const char *status) "PHY reset %s"
++bcm2838_genet_reset(const char *status) "MAC reset %s"
++bcm2838_genet_mac_address(const char *info) "%s"
++bcm2838_genet_tx_dma(const char *dma_state) "TX DMA %s"
++bcm2838_genet_tx_dma_ring(uint32_t ring_en) "TX DMA enabled rings: 0x%05x"
++bcm2838_genet_tx_dma_ring_buf(uint32_t ring_buf_en) "TX DMA enabled ring buffers: 0x%05x"
++bcm2838_genet_tx_dma_ring_active(unsigned int ring, const char *ring_state) "ring %u is %s"
++bcm2838_genet_tx_request(unsigned int ring_idx, uint32_t prod_idx, uint32_t cons_idx) "ring %u, PROD_INDEX %u, CONS_INDEX %u"
++bcm2838_genet_tx(unsigned int ring_idx, uint64_t desc_idx, uint32_t desc_status, uint64_t data_addr) "ring %u, descriptor %" PRIu64 ": 0x%08x, data @ 0x%08" PRIx64
++bcm2838_genet_rx_dma_ring_active(unsigned int ring, const char *ring_state) "ring %u is %s"
+diff --git a/include/hw/arm/bcm2838_peripherals.h b/include/hw/arm/bcm2838_peripherals.h
+index 7fe92789e8..2a4307bed7 100644
+--- a/include/hw/arm/bcm2838_peripherals.h
++++ b/include/hw/arm/bcm2838_peripherals.h
+@@ -52,6 +52,8 @@
+ #define BCM2838_MPHI_OFFSET     0xb200
+ #define BCM2838_MPHI_SIZE       0x200
+ 
++#define GENET_OFFSET            0x1580000
++
+ #define TYPE_BCM2838_PERIPHERALS "bcm2838-peripherals"
+ OBJECT_DECLARE_TYPE(BCM2838PeripheralState, BCM2838PeripheralClass,
+                     BCM2838_PERIPHERALS)
+diff --git a/include/hw/net/bcm2838_genet.h b/include/hw/net/bcm2838_genet.h
+new file mode 100644
+index 0000000000..91cf1773d5
+--- /dev/null
++++ b/include/hw/net/bcm2838_genet.h
+@@ -0,0 +1,40 @@
++/*
++ * BCM2838 Gigabit Ethernet emulation
++ *
++ * Copyright (C) 2022 Ovchinnikov Vitalii <vitalii.ovchinnikov@auriga.com>
++ *
++ * SPDX-License-Identifier: GPL-2.0-or-later
++ */
++
++#ifndef BCM2838_GENET_H
++#define BCM2838_GENET_H
++
++#include "net/net.h"
++#include "hw/core/sysbus.h"
++
++#define TYPE_BCM2838_GENET "bcm2838-genet"
++OBJECT_DECLARE_SIMPLE_TYPE(BCM2838GenetState, BCM2838_GENET)
++
++#define BCM2838_GENET_REV_MAJOR         6
++#define BCM2838_GENET_REV_MINOR         0
++
++typedef struct {
++    uint8_t stub_area[0x10000]; /* temporary stub */
++} BCM2838GenetRegs;
++
++struct BCM2838GenetState {
++    /*< private >*/
++    SysBusDevice parent_obj;
++
++    /*< public >*/
++
++    MemoryRegion regs_mr;
++    AddressSpace dma_as;
++
++    BCM2838GenetRegs regs;
++
++    qemu_irq irq_default;
++    qemu_irq irq_prio;
++};
++
++#endif /* BCM2838_GENET_H */
+-- 
+2.47.1
 
 

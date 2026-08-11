@@ -4,73 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5DD8EC5CFCF
-	for <qemu-arm@archiver.kernel.org>; Tue, 11 Aug 2026 16:42:18 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BA968C5B572
+	for <qemu-arm@archiver.kernel.org>; Tue, 11 Aug 2026 16:42:27 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wtpNM-0000F7-CY; Tue, 11 Aug 2026 12:30:52 -0400
+	id 1wtpPX-0006sK-4a; Tue, 11 Aug 2026 12:33:07 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1wtpMx-0007tp-3w
- for qemu-arm@nongnu.org; Tue, 11 Aug 2026 12:30:28 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1wtpP5-0005Zj-3y
+ for qemu-arm@nongnu.org; Tue, 11 Aug 2026 12:32:43 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1wtpMt-0000V9-I7
- for qemu-arm@nongnu.org; Tue, 11 Aug 2026 12:30:26 -0400
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1wtpP2-000140-9o
+ for qemu-arm@nongnu.org; Tue, 11 Aug 2026 12:32:38 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1786465822;
+ s=mimecast20190719; t=1786465955;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=uMrLklYSb+PAdWlbU/ZT6AUk1PYbty1cUFgGDY1jVVI=;
- b=PsY4VnN6C59RcfZqVfg+WzBRx8vVW8gwW7ZMX3On0oP7C3u4881k6xnWFufaIZczF9lOlM
- 5kHLI/D3ey08TeNutV/3tmSRbfj/smM9V2XqQdDXzEYnXGI1XmPjVAsbfXavE7LCLaO+5N
- Lmtdd3A8RBAh1FVkFVPCcl6fH9A2hc0=
+ bh=Urm/uDj0mXYGo2zMUDdzTQCkCidK6nG5ccSCnhChbyA=;
+ b=X0Fkd21RgsVPuerT7EZEl2Ii7qYJQNbYG1phO4vVI9f0xcJXSwQ41vJs8mKfYNAPRH/awU
+ t1o6zVSMDbJVvLP5nZF7u/222O6EyLhd5+nGCw2bwIqALJX1WEgEnXx1mr4xyY7zSYtr+v
+ SoS+impTP8J9ijChyjP/79c+JWlw+o8=
 Received: from mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com
  (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-515-P4BYEhDZOZitq6oyj1zt6w-1; Tue,
- 11 Aug 2026 12:30:19 -0400
-X-MC-Unique: P4BYEhDZOZitq6oyj1zt6w-1
-X-Mimecast-MFC-AGG-ID: P4BYEhDZOZitq6oyj1zt6w_1786465818
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-218-dCWSL8FyMkGbwmnobb561Q-1; Tue,
+ 11 Aug 2026 12:32:34 -0400
+X-MC-Unique: dCWSL8FyMkGbwmnobb561Q-1
+X-Mimecast-MFC-AGG-ID: dCWSL8FyMkGbwmnobb561Q_1786465953
 Received: from mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com
  (mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.12])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
  by mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 449F3195609E; Tue, 11 Aug 2026 16:30:18 +0000 (UTC)
+ id 32490195609F; Tue, 11 Aug 2026 16:32:33 +0000 (UTC)
 Received: from corto.redhat.com (unknown [10.44.48.12])
  by mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id C3075195DF91; Tue, 11 Aug 2026 16:30:16 +0000 (UTC)
+ id D4EAF195DF96; Tue, 11 Aug 2026 16:32:30 +0000 (UTC)
 From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Cc: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>,
- Bin Meng <bin.meng@processmission.com>
-Subject: [PULL 16/83] tests/qtest: aspeed_smc: Add Dual Output Read (DOR) test
- coverage
-Date: Tue, 11 Aug 2026 18:28:31 +0200
-Message-ID: <20260811162938.1403216-17-clg@redhat.com>
+Cc: Jamin Lin <jamin_lin@aspeedtech.com>,
+ =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
+ =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>
+Subject: [PULL 79/83] tests/unit/test-crypto-cipher: Test AES-GCM mode
+Date: Tue, 11 Aug 2026 18:29:34 +0200
+Message-ID: <20260811162938.1403216-80-clg@redhat.com>
 In-Reply-To: <20260811162938.1403216-1-clg@redhat.com>
 References: <20260811162938.1403216-1-clg@redhat.com>
 MIME-Version: 1.0
 X-Scanned-By: MIMEDefang 3.0 on 10.30.177.12
-X-Mimecast-MFC-PROC-ID: o5s20_HrBi4MFuqU2k1TxdaIgvPoswOWFbOOcmMfU-s_1786465818
+X-Mimecast-MFC-PROC-ID: GhRetMhaeIrJiSA1VBtN2yqS0oXE_fya3wj97oqC6MA_1786465953
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=clg@redhat.com;
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=clg@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: 11
 X-Spam_score: 1.1
 X-Spam_bar: +
 X-Spam_report: (1.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.102,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=0.001, RCVD_IN_SBL_CSS=3.335,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=no autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ RCVD_IN_SBL_CSS=3.335, SPF_HELO_PASS=-0.001,
+ SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -86,170 +87,281 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Add read_page_mem_dor (CTRL_FREADMODE with DOR command and dual data
-IO mode) and write_page_dor (user-mode DOR) tests.
+From: Jamin Lin <jamin_lin@aspeedtech.com>
 
-Reviewed-by: Bin Meng <bin.meng@processmission.com>
-Link: https://lore.kernel.org/qemu-devel/20260714124621.522948-4-clg@redhat.com
+Exercise the new GCM mode and the setaad/gettag helpers with the
+canonical AES-GCM test vectors from the GCM specification (McGrew &
+Viega, also NIST SP 800-38D): AES-128 and AES-256, with and without
+associated data. Each vector is run through encrypt (checking the
+ciphertext and the generated tag) and decrypt (checking the recovered
+plaintext and the recomputed tag).
+
+Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
+Reviewed-by: Daniel P. Berrangé <berrange@redhat.com>
+Link: https://lore.kernel.org/qemu-devel/20260811060115.1849266-13-jamin_lin@aspeedtech.com
 Signed-off-by: Cédric Le Goater <clg@redhat.com>
 ---
- tests/qtest/aspeed-smc-utils.h |  4 +++
- tests/qtest/aspeed-smc-utils.c | 45 ++++++++++++++++++++++++++++++++++
- tests/qtest/aspeed_smc-test.c  | 16 ++++++++++++
- tests/qtest/ast2700-smc-test.c |  4 +++
- 4 files changed, 69 insertions(+)
+ tests/unit/test-crypto-cipher.c | 240 ++++++++++++++++++++++++++++++++
+ 1 file changed, 240 insertions(+)
 
-diff --git a/tests/qtest/aspeed-smc-utils.h b/tests/qtest/aspeed-smc-utils.h
-index 7504f5a525b4..04d3c7db5f7b 100644
---- a/tests/qtest/aspeed-smc-utils.h
-+++ b/tests/qtest/aspeed-smc-utils.h
-@@ -28,6 +28,7 @@
- #define   CTRL_FREADMODE       0x1
- #define   CTRL_WRITEMODE       0x2
- #define   CTRL_USERMODE        0x3
-+#define   CTRL_IO_DUAL_DATA     BIT(29)
- #define   CTRL_DUMMY_LOW_SHIFT   6
- #define   CTRL_DUMMY_HIGH_SHIFT  14
- #define SR_WEL BIT(1)
-@@ -42,6 +43,7 @@ enum {
-     BULK_ERASE = 0xc7,
-     READ = 0x03,
-     FAST_READ = 0x0b,
-+    DOR = 0x3b,
-     PP = 0x02,
-     WRSR = 0x1,
-     WREN = 0x6,
-@@ -79,5 +81,7 @@ void aspeed_smc_test_write_block_protect_bottom_bit(const void *data);
- void aspeed_smc_test_write_page_qpi(const void *data);
- void aspeed_smc_test_read_page_mem_fast_read(const void *data);
- void aspeed_smc_test_write_page_fast_read(const void *data);
-+void aspeed_smc_test_read_page_mem_dor(const void *data);
-+void aspeed_smc_test_write_page_dor(const void *data);
+diff --git a/tests/unit/test-crypto-cipher.c b/tests/unit/test-crypto-cipher.c
+index 1331d558cf25..420c826df95b 100644
+--- a/tests/unit/test-crypto-cipher.c
++++ b/tests/unit/test-crypto-cipher.c
+@@ -810,6 +810,230 @@ static void test_cipher_short_plaintext(void)
+     qcrypto_cipher_free(cipher);
+ }
  
- #endif /* TESTS_ASPEED_SMC_UTILS_H */
-diff --git a/tests/qtest/aspeed-smc-utils.c b/tests/qtest/aspeed-smc-utils.c
-index 07e65e0173d9..454224ec28b4 100644
---- a/tests/qtest/aspeed-smc-utils.c
-+++ b/tests/qtest/aspeed-smc-utils.c
-@@ -98,6 +98,10 @@ static void spi_ctrl_set_fast_read(const AspeedSMCTestData *data, uint8_t cmd)
-     uint32_t ctrl = spi_readl(data, ctrl_reg);
-     uint32_t iomode = 0;
- 
-+    if (cmd == DOR) {
-+        iomode = CTRL_IO_DUAL_DATA;
++typedef struct QCryptoCipherGcmTestData QCryptoCipherGcmTestData;
++struct QCryptoCipherGcmTestData {
++    const char *path;
++    QCryptoCipherAlgo alg;
++    const char *key;
++    const char *iv;
++    /* associated data, or NULL for none */
++    const char *aad;
++    const char *plaintext;
++    const char *ciphertext;
++    const char *tag;
++};
++
++/*
++ * AES-GCM test vectors from "The Galois/Counter Mode of Operation (GCM)"
++ * (McGrew & Viega, also NIST SP 800-38D), with a 96-bit IV and a 128-bit
++ * tag. Each entry's "Test case N" label is the numbered test case from that
++ * document (Appendix B / the GCM specification's test vectors).
++ */
++static QCryptoCipherGcmTestData gcm_test_data[] = {
++    {
++        /* Test case 2 */
++        .path = "/crypto/cipher/aes-gcm-128-2",
++        .alg = QCRYPTO_CIPHER_ALGO_AES_128,
++        .key = "00000000000000000000000000000000",
++        .iv = "000000000000000000000000",
++        .plaintext = "00000000000000000000000000000000",
++        .ciphertext = "0388dace60b6a392f328c2b971b2fe78",
++        .tag = "ab6e47d42cec13bdf53a67b21257bddf",
++    },
++    {
++        /* Test case 3 (no AAD) */
++        .path = "/crypto/cipher/aes-gcm-128-3",
++        .alg = QCRYPTO_CIPHER_ALGO_AES_128,
++        .key = "feffe9928665731c6d6a8f9467308308",
++        .iv = "cafebabefacedbaddecaf888",
++        .plaintext =
++            "d9313225f88406e5a55909c5aff5269a"
++            "86a7a9531534f7da2e4c303d8a318a72"
++            "1c3c0c95956809532fcf0e2449a6b525"
++            "b16aedf5aa0de657ba637b391aafd255",
++        .ciphertext =
++            "42831ec2217774244b7221b784d0d49c"
++            "e3aa212f2c02a4e035c17e2329aca12e"
++            "21d514b25466931c7d8f6a5aac84aa05"
++            "1ba30b396a0aac973d58e091473f5985",
++        .tag = "4d5c2af327cd64a62cf35abd2ba6fab4",
++    },
++    {
++        /* Test case 4 (with AAD) */
++        .path = "/crypto/cipher/aes-gcm-128-4",
++        .alg = QCRYPTO_CIPHER_ALGO_AES_128,
++        .key = "feffe9928665731c6d6a8f9467308308",
++        .iv = "cafebabefacedbaddecaf888",
++        .aad = "feedfacedeadbeeffeedfacedeadbeefabaddad2",
++        .plaintext =
++            "d9313225f88406e5a55909c5aff5269a"
++            "86a7a9531534f7da2e4c303d8a318a72"
++            "1c3c0c95956809532fcf0e2449a6b525"
++            "b16aedf5aa0de657ba637b39",
++        .ciphertext =
++            "42831ec2217774244b7221b784d0d49c"
++            "e3aa212f2c02a4e035c17e2329aca12e"
++            "21d514b25466931c7d8f6a5aac84aa05"
++            "1ba30b396a0aac973d58e091",
++        .tag = "5bc94fbc3221a5db94fae95ae7121a47",
++    },
++    {
++        /* Test case 15 (AES-256, no AAD) */
++        .path = "/crypto/cipher/aes-gcm-256-15",
++        .alg = QCRYPTO_CIPHER_ALGO_AES_256,
++        .key =
++            "feffe9928665731c6d6a8f9467308308"
++            "feffe9928665731c6d6a8f9467308308",
++        .iv = "cafebabefacedbaddecaf888",
++        .plaintext =
++            "d9313225f88406e5a55909c5aff5269a"
++            "86a7a9531534f7da2e4c303d8a318a72"
++            "1c3c0c95956809532fcf0e2449a6b525"
++            "b16aedf5aa0de657ba637b391aafd255",
++        .ciphertext =
++            "522dc1f099567d07f47f37a32a84427d"
++            "643a8cdcbfe5c0c97598a2bd2555d1aa"
++            "8cb08e48590dbb3da7b08b1056828838"
++            "c5f61e6393ba7a0abcc9f662898015ad",
++        .tag = "b094dac5d93471bdec1a502270e3cc6c",
++    },
++    {
++        /* Test case 16 (AES-256, with AAD) */
++        .path = "/crypto/cipher/aes-gcm-256-16",
++        .alg = QCRYPTO_CIPHER_ALGO_AES_256,
++        .key =
++            "feffe9928665731c6d6a8f9467308308"
++            "feffe9928665731c6d6a8f9467308308",
++        .iv = "cafebabefacedbaddecaf888",
++        .aad = "feedfacedeadbeeffeedfacedeadbeefabaddad2",
++        .plaintext =
++            "d9313225f88406e5a55909c5aff5269a"
++            "86a7a9531534f7da2e4c303d8a318a72"
++            "1c3c0c95956809532fcf0e2449a6b525"
++            "b16aedf5aa0de657ba637b39",
++        .ciphertext =
++            "522dc1f099567d07f47f37a32a84427d"
++            "643a8cdcbfe5c0c97598a2bd2555d1aa"
++            "8cb08e48590dbb3da7b08b1056828838"
++            "c5f61e6393ba7a0abcc9f662",
++        .tag = "76fc6ece0f4e1768cddf8853bb2d551b",
++    },
++};
++
++static void test_cipher_gcm(const void *opaque)
++{
++    const QCryptoCipherGcmTestData *data = opaque;
++    g_autofree uint8_t *key = NULL;
++    g_autofree uint8_t *iv = NULL;
++    g_autofree uint8_t *aad = NULL;
++    g_autofree uint8_t *ptext = NULL;
++    g_autofree uint8_t *ctext = NULL;
++    g_autofree uint8_t *tagexp = NULL;
++    g_autofree uint8_t *out = NULL;
++    uint8_t tag[16];
++    size_t nkey;
++    size_t niv;
++    size_t naad = 0;
++    size_t nptext;
++    size_t nctext;
++    size_t ntag;
++    QCryptoCipher *cipher;
++
++    nkey = unhex_string(data->key, &key);
++    niv = unhex_string(data->iv, &iv);
++    nptext = unhex_string(data->plaintext, &ptext);
++    nctext = unhex_string(data->ciphertext, &ctext);
++    ntag = unhex_string(data->tag, &tagexp);
++    if (data->aad) {
++        naad = unhex_string(data->aad, &aad);
 +    }
 +
-     ctrl &= ~(CTRL_USERMODE | (0xff << 16) |
-               (0x3 << CTRL_DUMMY_LOW_SHIFT) |
-               (0x1 << CTRL_DUMMY_HIGH_SHIFT) |
-@@ -738,3 +742,44 @@ void aspeed_smc_test_write_page_fast_read(const void *data)
++    g_assert_cmpint(nptext, ==, nctext);
++    g_assert_cmpint(ntag, ==, sizeof(tag));
++    out = g_new0(uint8_t, nptext);
++
++    /* Encrypt: plaintext -> ciphertext, then read back the tag. */
++    cipher = qcrypto_cipher_new(data->alg, QCRYPTO_CIPHER_MODE_GCM,
++                                key, nkey, &error_abort);
++    g_assert(cipher != NULL);
++    g_assert(qcrypto_cipher_setiv(cipher, iv, niv, &error_abort) == 0);
++    if (naad) {
++        g_assert(qcrypto_cipher_setaad(cipher, aad, naad, &error_abort) == 0);
++    }
++    g_assert(qcrypto_cipher_encrypt(cipher, ptext, out, nptext,
++                                    &error_abort) == 0);
++    g_assert_cmpmem(out, nptext, ctext, nctext);
++    g_assert(qcrypto_cipher_gettag(cipher, tag, sizeof(tag),
++                                   &error_abort) == 0);
++    g_assert_cmpmem(tag, sizeof(tag), tagexp, ntag);
++    qcrypto_cipher_free(cipher);
++
++    /* Decrypt: ciphertext -> plaintext, recomputed tag must match. */
++    memset(out, 0, nptext);
++    cipher = qcrypto_cipher_new(data->alg, QCRYPTO_CIPHER_MODE_GCM,
++                                key, nkey, &error_abort);
++    g_assert(cipher != NULL);
++    g_assert(qcrypto_cipher_setiv(cipher, iv, niv, &error_abort) == 0);
++    if (naad) {
++        g_assert(qcrypto_cipher_setaad(cipher, aad, naad, &error_abort) == 0);
++    }
++    g_assert(qcrypto_cipher_decrypt(cipher, ctext, out, nctext,
++                                    &error_abort) == 0);
++    g_assert_cmpmem(out, nctext, ptext, nptext);
++    g_assert(qcrypto_cipher_gettag(cipher, tag, sizeof(tag),
++                                   &error_abort) == 0);
++    g_assert_cmpmem(tag, sizeof(tag), tagexp, ntag);
++    qcrypto_cipher_free(cipher);
++}
++
++/*
++ * Corrupt one ciphertext byte and confirm the recomputed GCM tag no longer
++ * matches: the authentication tag must detect tampering.
++ */
++static void test_cipher_gcm_tamper(const void *opaque)
++{
++    const QCryptoCipherGcmTestData *data = opaque;
++    g_autofree uint8_t *key = NULL;
++    g_autofree uint8_t *iv = NULL;
++    g_autofree uint8_t *aad = NULL;
++    g_autofree uint8_t *ctext = NULL;
++    g_autofree uint8_t *tagexp = NULL;
++    g_autofree uint8_t *out = NULL;
++    uint8_t tag[16];
++    size_t nkey;
++    size_t niv;
++    size_t naad = 0;
++    size_t nctext;
++    size_t ntag;
++    QCryptoCipher *cipher;
++
++    nkey = unhex_string(data->key, &key);
++    niv = unhex_string(data->iv, &iv);
++    nctext = unhex_string(data->ciphertext, &ctext);
++    ntag = unhex_string(data->tag, &tagexp);
++    if (data->aad) {
++        naad = unhex_string(data->aad, &aad);
++    }
++    out = g_new0(uint8_t, nctext);
++
++    /* Flip one ciphertext bit before decrypting. */
++    ctext[0] ^= 0x01;
++
++    cipher = qcrypto_cipher_new(data->alg, QCRYPTO_CIPHER_MODE_GCM,
++                                key, nkey, &error_abort);
++    g_assert(cipher != NULL);
++    g_assert(qcrypto_cipher_setiv(cipher, iv, niv, &error_abort) == 0);
++    if (naad) {
++        g_assert(qcrypto_cipher_setaad(cipher, aad, naad, &error_abort) == 0);
++    }
++    g_assert(qcrypto_cipher_decrypt(cipher, ctext, out, nctext,
++                                    &error_abort) == 0);
++    g_assert(qcrypto_cipher_gettag(cipher, tag, sizeof(tag),
++                                   &error_abort) == 0);
++    g_assert(memcmp(tag, tagexp, ntag) != 0);
++    qcrypto_cipher_free(cipher);
++}
++
+ int main(int argc, char **argv)
  {
-     test_write_page(data, read_page_fast_read);
- }
+     size_t i;
+@@ -828,6 +1052,22 @@ int main(int argc, char **argv)
+         }
+     }
+ 
++    for (i = 0; i < G_N_ELEMENTS(gcm_test_data); i++) {
++        if (qcrypto_cipher_supports(gcm_test_data[i].alg,
++                                    QCRYPTO_CIPHER_MODE_GCM)) {
++            g_autofree char *tamper = g_strdup_printf("%s/tamper",
++                                                      gcm_test_data[i].path);
 +
-+static void read_page_mem_dor(const AspeedSMCTestData *data,
-+                              uint32_t addr, uint32_t *page)
-+{
-+    int i;
-+
-+    spi_ctrl_set_fast_read(data, DOR);
-+
-+    for (i = 0; i < FLASH_PAGE_SIZE / 4; i++) {
-+        page[i] = make_be32(flash_readl(data, addr + i * 4));
++            g_test_add_data_func(gcm_test_data[i].path, &gcm_test_data[i],
++                                 test_cipher_gcm);
++            g_test_add_data_func(tamper, &gcm_test_data[i],
++                                 test_cipher_gcm_tamper);
++        } else {
++            g_printerr("# skip unsupported %s:gcm\n",
++                       QCryptoCipherAlgo_str(gcm_test_data[i].alg));
++        }
 +    }
-+}
 +
-+void aspeed_smc_test_read_page_mem_dor(const void *data)
-+{
-+    test_read_page_mem(data, read_page_mem_dor);
-+}
-+
-+static void read_page_dor(const AspeedSMCTestData *data,
-+                          uint32_t addr, uint32_t *page)
-+{
-+    int i;
-+
-+    spi_ctrl_start_user(data);
-+
-+    flash_writeb(data, 0, EN_4BYTE_ADDR);
-+    flash_writeb(data, 0, DOR);
-+    flash_writel(data, 0, make_be32(addr));
-+    /* 1 dummy byte for standard SPI DOR */
-+    flash_writeb(data, 0, 0x00);
-+
-+    for (i = 0; i < FLASH_PAGE_SIZE / 4; i++) {
-+        page[i] = make_be32(flash_readl(data, 0));
-+    }
-+    spi_ctrl_stop_user(data);
-+}
-+
-+void aspeed_smc_test_write_page_dor(const void *data)
-+{
-+    test_write_page(data, read_page_dor);
-+}
-diff --git a/tests/qtest/aspeed_smc-test.c b/tests/qtest/aspeed_smc-test.c
-index 4697c493a813..a67cc5a999ca 100644
---- a/tests/qtest/aspeed_smc-test.c
-+++ b/tests/qtest/aspeed_smc-test.c
-@@ -56,6 +56,10 @@ static void test_palmetto_bmc(AspeedSMCTestData *data)
-                         data, aspeed_smc_test_read_page_mem_fast_read);
-     qtest_add_data_func("/ast2400/smc/write_page_fast_read",
-                         data, aspeed_smc_test_write_page_fast_read);
-+    qtest_add_data_func("/ast2400/smc/read_page_mem_dor",
-+                        data, aspeed_smc_test_read_page_mem_dor);
-+    qtest_add_data_func("/ast2400/smc/write_page_dor",
-+                        data, aspeed_smc_test_write_page_dor);
-     /*
-      * Block protect tests must be run last because the block protect
-      * state is not cleared by reset_memory() and silently prevents
-@@ -112,6 +116,10 @@ static void test_ast2500_evb(AspeedSMCTestData *data)
-                         data, aspeed_smc_test_read_page_mem_fast_read);
-     qtest_add_data_func("/ast2500/smc/write_page_fast_read",
-                         data, aspeed_smc_test_write_page_fast_read);
-+    qtest_add_data_func("/ast2500/smc/read_page_mem_dor",
-+                        data, aspeed_smc_test_read_page_mem_dor);
-+    qtest_add_data_func("/ast2500/smc/write_page_dor",
-+                        data, aspeed_smc_test_write_page_dor);
- }
- 
- static void test_ast2600_evb(AspeedSMCTestData *data)
-@@ -159,6 +167,10 @@ static void test_ast2600_evb(AspeedSMCTestData *data)
-                         data, aspeed_smc_test_read_page_mem_fast_read);
-     qtest_add_data_func("/ast2600/smc/write_page_fast_read",
-                         data, aspeed_smc_test_write_page_fast_read);
-+    qtest_add_data_func("/ast2600/smc/read_page_mem_dor",
-+                        data, aspeed_smc_test_read_page_mem_dor);
-+    qtest_add_data_func("/ast2600/smc/write_page_dor",
-+                        data, aspeed_smc_test_write_page_dor);
- }
- 
- static void test_ast1030_evb(AspeedSMCTestData *data)
-@@ -206,6 +218,10 @@ static void test_ast1030_evb(AspeedSMCTestData *data)
-                         data, aspeed_smc_test_read_page_mem_fast_read);
-     qtest_add_data_func("/ast1030/smc/write_page_fast_read",
-                         data, aspeed_smc_test_write_page_fast_read);
-+    qtest_add_data_func("/ast1030/smc/read_page_mem_dor",
-+                        data, aspeed_smc_test_read_page_mem_dor);
-+    qtest_add_data_func("/ast1030/smc/write_page_dor",
-+                        data, aspeed_smc_test_write_page_dor);
- }
- 
- int main(int argc, char **argv)
-diff --git a/tests/qtest/ast2700-smc-test.c b/tests/qtest/ast2700-smc-test.c
-index 9ad04b574c0d..bd9d3f7905b3 100644
---- a/tests/qtest/ast2700-smc-test.c
-+++ b/tests/qtest/ast2700-smc-test.c
-@@ -56,6 +56,10 @@ static void test_ast2700_evb(AspeedSMCTestData *data)
-                         data, aspeed_smc_test_read_page_mem_fast_read);
-     qtest_add_data_func("/ast2700/smc/write_page_fast_read",
-                         data, aspeed_smc_test_write_page_fast_read);
-+    qtest_add_data_func("/ast2700/smc/read_page_mem_dor",
-+                        data, aspeed_smc_test_read_page_mem_dor);
-+    qtest_add_data_func("/ast2700/smc/write_page_dor",
-+                        data, aspeed_smc_test_write_page_dor);
- }
- 
- int main(int argc, char **argv)
+     if (qcrypto_cipher_supports(QCRYPTO_CIPHER_ALGO_AES_256,
+                                 QCRYPTO_CIPHER_MODE_CBC)) {
+         g_test_add_func("/crypto/cipher/null-iv",
 -- 
 2.55.0
 

@@ -4,112 +4,115 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C5AD9C5AC67
-	for <qemu-arm@archiver.kernel.org>; Tue, 11 Aug 2026 13:17:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 27CB4C5B572
+	for <qemu-arm@archiver.kernel.org>; Tue, 11 Aug 2026 13:37:26 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wtmME-00008r-Le; Tue, 11 Aug 2026 09:17:31 -0400
+	id 1wtmfC-0006Em-4l; Tue, 11 Aug 2026 09:37:06 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <marcandre.lureau@gmail.com>)
- id 1wtmMA-00008M-CR
- for qemu-arm@nongnu.org; Tue, 11 Aug 2026 09:17:26 -0400
-Received: from mail-pg1-x52c.google.com ([2607:f8b0:4864:20::52c])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <marcandre.lureau@gmail.com>)
- id 1wtmM6-0005hO-Qo
- for qemu-arm@nongnu.org; Tue, 11 Aug 2026 09:17:24 -0400
-Received: by mail-pg1-x52c.google.com with SMTP id
- 41be03b00d2f7-c998fd549a8so2306684a12.2
- for <qemu-arm@nongnu.org>; Tue, 11 Aug 2026 06:17:22 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1786454241; cv=none;
- d=google.com; s=arc-20260327;
- b=VS9+JtjlNxhFO/yMZmGiSL8cvnSypOuUQvElcx137RKM8lbe4QMw1ISJzrwsaVweD9
- g4txpnq/Ug/dsrpm5UVQkJaGt7q1SyZOVtGgLcLnqVid6BNfHGVTxw0a/BW7tZdms7ka
- N3C4n+xuWcVn/CXUT+LpTztBbLsfPcMIohmqU/dEuuT2Q+2ceS392kD1XAZHdFRpd+1p
- jJ3FOUkrmXM+h32XTUN7bwfbmMWUKEgxBSY8oekiJcFaMGfRQNaOfAVxz2gyN6wXvIaK
- JZJ4qTOW9GNOWoWYQ0nOLJRaoik+dohM7njenK5vuKoLFvEqC1b+UxIV2hoZmpKIXe5W
- zXLQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
- s=arc-20260327; 
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:dkim-signature;
- bh=vF5Y90tyUDQ0pHuaXZfwkPEHihpZWPqOXzDXdJb1YnA=;
- fh=jkGzljeIUNdnINvlpEC2AST6i72ct3/ouIEC71SeqYw=;
- b=aUqkcm1l+VTUbZkXhWRQQSIjGgmmdigZAUT/DLCFeadipAjP4x6L0+sUV4lZG5hqIZ
- qWoUQrSmLkqpRs0x2LH2WopVJqL6MxHq1yzX85u5YGzkypL0PT3E7e9Jbn1YtGUSBvJz
- feu0DrWXeLahMJUwlwRJQzX7L7GiHoEgjpBf+8/VQuSt+TtyYWz+5VOiKX6aGzLdFZXX
- WsvvZYktCDcn2TFLC5uNrP6BB2LR6BPTer8DoE/6+Ds9OgNhygpoLObH4cFp2u5cvrT7
- oaykEgfdqPDLyL9ourVSyjXVGbRAKEQumfgEFQBCtRnfOhghojQ4OLqzOeHzhe7c0lvO
- EAWA==; darn=nongnu.org
-ARC-Authentication-Results: i=1; mx.google.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=redhat.com; s=google; t=1786454241; x=1787059041; darn=nongnu.org;
- h=content-transfer-encoding:content-type:cc:to:subject:message-id
- :date:from:in-reply-to:references:mime-version:from:to:cc:subject
- :date:message-id:reply-to:content-type;
- bh=vF5Y90tyUDQ0pHuaXZfwkPEHihpZWPqOXzDXdJb1YnA=;
- b=fJgatyQi6SzX9UwO4PSB+hTVhak3dnHXJVuHVPiuLTQftIlkm2L/ClcbcmcQL1rk9n
- jnRIEZMvXKyPkfBt+2lhP9+sGEq7SUqkGo/NNDkM2gX8PysUVS381gKh8XuIUkbWejUg
- 09ian46a4wjm/RsYrlcWDPDi36JMW87r5crKCpNzfQq1ZLhnnU2WKRViqmUQzxOgj4MM
- dWJ6mR1RJGp2SGVb6RJHIl1W306b1tlXu6gA0/fZ6x4D6qG70yBed6nChv7ZjS50v7qm
- BRp3kQ5+TXIeafPE0OV3HlRWXiCClzF/kcsskZWCoptdM7dR0N5JUd1Wl0cRrGU4FjXo
- GZSw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1786454241; x=1787059041;
- h=content-transfer-encoding:content-type:cc:to:subject:message-id
- :date:from:in-reply-to:references:mime-version:x-gm-gg
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
- :content-type;
- bh=vF5Y90tyUDQ0pHuaXZfwkPEHihpZWPqOXzDXdJb1YnA=;
- b=SA81d0w0gX/F9HOUBpVHIW+7uE4qF+vXcXCskrPTfW1LHZhLibHgEPMnE/shdYYQEL
- Pus02jOHEDTQ4wA2GVqHik0mshDiouFKfhXK+0W4YjdNlY696WRfMo7jmwuGCFFlD+EF
- Bf0koNSUv8XZPJEQFYN57LNEZnD0eMZhjjrDEhMSNuduKa928Pc2aOpC5qSlrRVLpiiN
- WBnNP2Nm2d/0+THy+9FMPmQg0JihIIYQyZTjegTftXIzPXUNawqaF7cdZd2GSxiGIzMM
- TJCg+TYybn5uF64OK0NmZRcAODWz1RK5FWVvMv4CaerGulCcghyX8FqsQGoHSc/vc9Hn
- +WMA==
-X-Forwarded-Encrypted: i=1;
- AHgh+RrUFNYe20dc0WWhAxcAYypHYVfspQ4nUn68zmxcQz5YlRJvkeSvWST7LORDrptkehRNfEyrxnaOEA==@nongnu.org
-X-Gm-Message-State: AOJu0YyYfaYqEjULcHte4I4ioysvsv3128WT4RwJEK67YguVTLkJ7zpG
- TK+BwJv1QRUD52/toIcEKCvPoNeEEuwbNnTogbiEMtjY/XjoKgXrak+i/j9+xsXBZzhPkAkHL3s
- KYIRfmWf6AmnQe5tbbrQw5fqGSq+ewpU=
-X-Gm-Gg: AR+sD11QFbCG5jqaZbvTSb60do2/FqMbBeJmxeNxE4aXyNjgE0vfl1qIemikXOqecSw
- Lt7YxbtazOVhZgb0IZPyfnKIQ0ULLPnfL2XFIwiec9QLKmFlxxl97IVZRWqu43WSqMOwEzBsNsN
- DsrMkcDNW+M1BGl3s/4YL3Zpy6zMqxDew7l1CtjnAL5XzzzRGFsZ7bmqD4gWXIiPNZFtpCihKdP
- bBg8KkPZC8rODuuyKTVdpaVE0r77/S5exrfQpFTZYOSyBNEPlP0gSuhvqEeCG3CyzPqvbDicxC8
- ftOukdZ3add91L3dcvWzMGAgxD1Vs+VzWWNLbCsOKw1PEyoEz37hsVH1HJ1GubGHKd8+9KTNsoP
- d
-X-Received: by 2002:a05:6a20:72a4:b0:3c3:88a5:83db with SMTP id
- adf61e73a8af0-3cc2b7787abmr4611415637.5.1786454240652; Tue, 11 Aug 2026
- 06:17:20 -0700 (PDT)
-MIME-Version: 1.0
-References: <20260810153503.2652324-1-alex.bennee@linaro.org>
-In-Reply-To: <20260810153503.2652324-1-alex.bennee@linaro.org>
-From: =?UTF-8?B?TWFyYy1BbmRyw6kgTHVyZWF1?= <marcandre.lureau@redhat.com>
-Date: Tue, 11 Aug 2026 17:17:08 +0400
-X-Gm-Features: AUfX_mxJZR8roAjVlONxn1IoNkVJ9YJIgZirp8wc1ZYzE6cwSmZ7g-wCNAVfGog
-Message-ID: <CAJ+F1CJ8doa7m5Z82gp_wVRdrdM9F5sXkecgX3agJVUAXwmTaQ@mail.gmail.com>
-Subject: Re: [RFC PATCH] char-fe: implement qemu_chr_fe_backend_name
-To: =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>
-Cc: qemu-devel@nongnu.org, Peter Maydell <peter.maydell@linaro.org>, 
- "Michael S. Tsirkin" <mst@redhat.com>, Stefano Garzarella <sgarzare@redhat.com>,
- "Gonglei (Arei)" <arei.gonglei@huawei.com>, zhenwei pi <zhenwei.pi@linux.dev>, 
- Laurent Vivier <lvivier@redhat.com>, Amit Shah <amit@kernel.org>, 
- Paolo Bonzini <pbonzini@redhat.com>,
- "open list:i.MX31 (kzm)" <qemu-arm@nongnu.org>
+ (Exim 4.90_1) (envelope-from <milesg@linux.ibm.com>)
+ id 1wtmfA-0006EY-PQ; Tue, 11 Aug 2026 09:37:04 -0400
+Received: from mx0b-001b2d01.pphosted.com ([148.163.158.5])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <milesg@linux.ibm.com>)
+ id 1wtmf8-0001PA-7D; Tue, 11 Aug 2026 09:37:04 -0400
+Received: from pps.filterd (m0360072.ppops.net [127.0.0.1])
+ by mx0a-001b2d01.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id
+ 67BDXKgK570138; Tue, 11 Aug 2026 13:36:28 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ibm.com; h=cc
+ :content-transfer-encoding:content-type:date:from:in-reply-to
+ :message-id:mime-version:references:reply-to:subject:to; s=pp1;
+ bh=5sTADk16PeVwHx4S247TkGpTwOnUNTeYl4r/Way3NyY=; b=YsCOCOCaEK92
+ dwXDL2eZdHPCGfg2PDeRqbVS5Ab8HGImtAOO3pNDGa9YiwF8XnUluRk9MXY+Px/E
+ r0cBNjVMUXvwWOgbgjiLfBqJsVAgMJY1hu325M9LX+Uy7baDqCPt4Xhy1MTB1HD/
+ DQyoSBlbjSbnQFEPo6PxHE/MOkVRvWyABaGfDC8bE3UBw9VegLvvgP25dOH8nLd7
+ iWhLqCQ4PAUfbfo/Bz0ucmbtgEgMiEw9VapRlhoVlDvigDYkRYsCWz77cK2R6bV7
+ XM9IpQ+vgg0Z168vNp9qYJmheiraNgD5BPoZU4eEo6H51bFzoT+z6ekb9Kgzwxd0
+ VaERZ73ocA==
+Received: from ppma21.wdc07v.mail.ibm.com
+ (5b.69.3da9.ip4.static.sl-reverse.com [169.61.105.91])
+ by mx0a-001b2d01.pphosted.com (PPS) with ESMTPS id 4fwvnw4fr3-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+ Tue, 11 Aug 2026 13:36:27 +0000 (GMT)
+Received: from pps.filterd (ppma21.wdc07v.mail.ibm.com [127.0.0.1])
+ by ppma21.wdc07v.mail.ibm.com (8.18.1.7/8.18.1.7) with ESMTP id 67BDQIE4012046;
+ Tue, 11 Aug 2026 13:36:26 GMT
+Received: from smtprelay02.dal12v.mail.ibm.com ([172.16.1.4])
+ by ppma21.wdc07v.mail.ibm.com (PPS) with ESMTPS id 4fxfsjs3k7-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+ Tue, 11 Aug 2026 13:36:26 +0000 (GMT)
+Received: from smtpav05.wdc07v.mail.ibm.com (smtpav05.wdc07v.mail.ibm.com
+ [10.39.53.232])
+ by smtprelay02.dal12v.mail.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id
+ 67BDaPQb45809930
+ (version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Tue, 11 Aug 2026 13:36:25 GMT
+Received: from smtpav05.wdc07v.mail.ibm.com (unknown [127.0.0.1])
+ by IMSVA (Postfix) with ESMTP id 6300158059;
+ Tue, 11 Aug 2026 13:36:25 +0000 (GMT)
+Received: from smtpav05.wdc07v.mail.ibm.com (unknown [127.0.0.1])
+ by IMSVA (Postfix) with ESMTP id 0B0E358065;
+ Tue, 11 Aug 2026 13:36:24 +0000 (GMT)
+Received: from mambor8.rchland.ibm.com (unknown [9.10.239.198])
+ by smtpav05.wdc07v.mail.ibm.com (Postfix) with ESMTP;
+ Tue, 11 Aug 2026 13:36:23 +0000 (GMT)
+Message-ID: <238ac7e72f1a6da53a61ca48ab8c016ef4d4e40d.camel@linux.ibm.com>
+Subject: Re: [PATCH v3 1/8] fsi/cfam: Add common CFAM base class
+From: Miles Glenn <milesg@linux.ibm.com>
+To: Mikail Sadic <mikail.sadic@ibm.com>, clg@kaod.org, peter.maydell@linaro.org
+Cc: pbonzini@redhat.com, ninad@linux.ibm.com, titusr@google.com,
+ jeuk20.kim@samsung.com, philmd@mailo.com, steven_lee@aspeedtech.com,
+ leetroy@gmail.com, jamin_lin@aspeedtech.com, kane_chen@aspeedtech.com,
+ andrew@codeconstruct.com.au, joel@jms.id.au, calebs@linux.ibm.com,
+ qemu-arm@nongnu.org, qemu-devel@nongnu.org
+Date: Tue, 11 Aug 2026 08:36:23 -0500
+In-Reply-To: <20260810185748.1253-2-mikail.sadic@ibm.com>
+References: <20260810185748.1253-1-mikail.sadic@ibm.com>
+ <20260810185748.1253-2-mikail.sadic@ibm.com>
+Organization: IBM
 Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2607:f8b0:4864:20::52c;
- envelope-from=marcandre.lureau@gmail.com; helo=mail-pg1-x52c.google.com
-X-Spam_score_int: -16
-X-Spam_score: -1.7
-X-Spam_bar: -
-X-Spam_report: (-1.7 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.001,
- FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.25,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=no autolearn_force=no
+X-Mailer: Evolution 3.28.5 (3.28.5-27.el8_10) 
+Mime-Version: 1.0
+Content-Transfer-Encoding: 7bit
+X-TM-AS-GCONF: 00
+X-Proofpoint-Reinject: loops=2 maxloops=12
+X-Authority-Analysis: v=2.4 cv=RsP16imK c=1 sm=1 tr=0 ts=6a7b255c cx=c_pps
+ a=GFwsV6G8L6GxiO2Y/PsHdQ==:117 a=GFwsV6G8L6GxiO2Y/PsHdQ==:17
+ a=IkcTkHD0fZMA:10 a=Sv0fKeRqtYgA:10 a=VkNPw1HP01LnGYTKEx00:22
+ a=RnoormkPH1_aCDwRdu11:22 a=RzCfie-kr_QcCd8fBx8p:22 a=VnNF1IyMAAAA:8
+ a=bzNvLUEMPkyksndXVlYA:9 a=QEXdDO2ut3YA:10
+X-Proofpoint-GUID: tsaC17dE3p2Y5Jir8k0dtMLdcysmezYc
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwODExMDExMyBTYWx0ZWRfXxQCZVv1f9808
+ R4gS4sGTlshRcIFumxtxIDDr3N//4kIABDshSNVznCHXqdKTTUNuNaQ1caWKWVbK2dkiFs4egga
+ IQ2muIe/gVk67Bhm6ulRGyKz6Yn8MPN/ybIVb3461sFb2fxLk1ejfRQ+JANtRAZsWLjmvwxHUHu
+ AF6+2ekt1egt4CAsURdR1yuU0sbiNERcEw83/tweardvJjtzdtRLtiJ8PEubEy/oMKiEeUHaUuO
+ FIm3Y4gcjzy0P+btC7DCMqJgrpvtirfHMB7VyMQ4v/c0ZYJFBUmWNcLsuVtcBUJVsoRodKh2PhA
+ TN9zY6JTmO8LU0WjRc1St2TQav9we6fsJGYBTepUbZHwROo3gyk6tD8qakvkwA/PiSQ0tU8zwHL
+ AALWFpYJnHhYRK8PT47qU8bpauTLiJC0wY38RmanejBrVXXSCwnSrSz6NpeYBAVnZyAyGeTT40X
+ Vzsc4nWrLp6Z/VVpO+w==
+X-Proofpoint-ORIG-GUID: HobfHreh-Y49q8xUPKtU-DSn-MpiJmnn
+X-Proofpoint-Spam-Info: AW1haW4tMjYwODExMDExMyBTYWx0ZWRfX7g52GmniplAk
+ QycQpioOcRLoXQLx3zSu4Oe48goa6NS6GIGIvYyUGK5XDYcA8/y2zqkf+czsvLLCtUEDVNsdcYx
+ gg/nsJm9xpawZt68/7720g4JwppL4pI=
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.293,Aquarius:18.0.1176,Hydra:6.1.134,FMLib:17.12.100.49
+ definitions=2026-08-11_03,2026-08-10_03,2025-10-01_01
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
+ spamscore=0 impostorscore=0 suspectscore=0 clxscore=1015 malwarescore=0
+ phishscore=0 adultscore=0 lowpriorityscore=0 priorityscore=1501 bulkscore=0
+ classifier=typeunknown authscore=0 authtc= authcc= route=outbound adjust=0
+ reason=mlx scancount=1 engine=8.22.0-2606150000 definitions=main-2608110113
+Received-SPF: pass client-ip=148.163.158.5; envelope-from=milesg@linux.ibm.com;
+ helo=mx0b-001b2d01.pphosted.com
+X-Spam_score_int: -26
+X-Spam_score: -2.7
+X-Spam_bar: --
+X-Spam_report: (-2.7 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, RCVD_IN_DNSWL_LOW=-0.7,
+ RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -122,146 +125,349 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Reply-To: milesg@linux.ibm.com
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Mon, Aug 10, 2026 at 7:36=E2=80=AFPM Alex Benn=C3=A9e <alex.bennee@linar=
-o.org> wrote:
->
-> A number of chardev users where calling qemu_chr_fe_get_driver() which
-> is discouraged as it blocks backend hotswap. As the pattern is common
-> and need for the string is transitory add a helper and keep
-> qemu_chr_fe_get_driver() for those that really need the funkiness of
-> poking around the backend setup.
->
-> Signed-off-by: Alex Benn=C3=A9e <alex.bennee@linaro.org>
-> Suggested-by: Peter Maydell <peter.maydell@linaro.org>
+I'm fine with having the extended addressing added later.
 
-Reviewed-by: Marc-Andr=C3=A9 Lureau <marcandre.lureau@redhat.com>
+Reviewed-by: Glenn Miles <milesg@linux.ibm.com>
 
+Thanks,
+
+Glenn
+
+On Mon, 2026-08-10 at 13:57 -0500, Mikail Sadic wrote:
+> Prepare a common CFAM parent class for CFAM-S implementation.
+> 
+> Add an abstract TYPE_FSI_CFAM_COMMON with an FSICFAMCommonClass holding
+> what varies between types: the config table, the offsets of the FSI
+> responder and the local bus within the register slot, and a
+> realize_engines() hook for the engines on the local bus. Its realize is
+> driven by those fields, so one realize serves every type. TYPE_FSI_CFAM
+> keeps its name and becomes the first derived type, supplying the P9
+> config table, its slot offsets and the scratchpad engine. The config
+> table becomes data, still written with the same CFAM_CONFIG_REG()
+> expressions, which move to the header so a derived type can describe its
+> own table the same way.
+> 
+> Name the new instance struct without a State suffix and rename
+> FSICFAMState to FSICFAM to match.
+> 
+> No functional change: same memory map, same config words, same type and
+> child names. aspeed_fsi-test verified.
+> 
+> Signed-off-by: Mikail Sadic <mikail.sadic@ibm.com>
 > ---
->  include/chardev/char-fe.h       | 13 ++++++++++++-
->  backends/cryptodev-vhost-user.c |  8 +-------
->  backends/rng-egd.c              |  8 +-------
->  backends/vhost-user.c           |  8 +-------
->  hw/char/imx_serial.c            |  4 ++--
->  5 files changed, 17 insertions(+), 24 deletions(-)
->
-> diff --git a/include/chardev/char-fe.h b/include/chardev/char-fe.h
-> index 5f8a6df17dc..13218d04c8d 100644
-> --- a/include/chardev/char-fe.h
-> +++ b/include/chardev/char-fe.h
-> @@ -52,7 +52,8 @@ void qemu_chr_fe_deinit(CharFrontend *c, bool del);
->   * associated Chardev.
->   * Note: avoid this function as the driver should never be accessed dire=
-ctly,
->   *       especially by the frontends that support chardevice hotswap.
-> - *       Consider qemu_chr_fe_backend_connected() to check for driver ex=
-istence
-> + *       Consider qemu_chr_fe_backend_connected() to check for driver
-> + *       existence or qemu_chr_fe_backend_name() if you need the name.
->   */
->  Chardev *qemu_chr_fe_get_driver(CharFrontend *c);
->
-> @@ -70,6 +71,16 @@ bool qemu_chr_fe_backend_connected(CharFrontend *c);
->   */
->  bool qemu_chr_fe_backend_open(CharFrontend *c);
->
-> +/**
-> +  * qemu_chr_fe_backend_name:
-> +  *
-> +  * Returns: caller freeable string or NULL
-> +  */
-> +static inline char * qemu_chr_fe_backend_name(CharFrontend *c)
-> +{
-> +    return (c->chr && c->chr->label) ? g_strdup(c->chr->label) : NULL;
+>  include/hw/fsi/cfam.h       |  58 ++++++++++++++++-
+>  include/hw/fsi/fsi-master.h |   2 +-
+>  hw/fsi/cfam.c               | 125 +++++++++++++++++++++---------------
+>  hw/fsi/fsi-master.c         |   2 +-
+>  4 files changed, 130 insertions(+), 57 deletions(-)
+> 
+> diff --git a/include/hw/fsi/cfam.h b/include/hw/fsi/cfam.h
+> index cceb4bd6f1..bdf579b4fe 100644
+> --- a/include/hw/fsi/cfam.h
+> +++ b/include/hw/fsi/cfam.h
+> @@ -7,18 +7,44 @@
+>  #ifndef FSI_CFAM_H
+>  #define FSI_CFAM_H
+>  
+> +#include "qemu/units.h"
+>  #include "system/memory.h"
+>  
+>  #include "hw/fsi/fsi.h"
+>  #include "hw/fsi/lbus.h"
+>  
+> +/*
+> + * All CFAM flavors present a register slot holding a config table, an FSI
+> + * responder and a local bus carrying the engines the config table describes.
+> + * That is the common model; each flavor supplies its own table, slot layout
+> + * and engines.
+> + */
+> +#define TYPE_FSI_CFAM_COMMON "cfam-common"
+> +OBJECT_DECLARE_TYPE(FSICFAMCommon, FSICFAMCommonClass, FSI_CFAM_COMMON)
+> +
+>  #define TYPE_FSI_CFAM "cfam"
+> -#define FSI_CFAM(obj) OBJECT_CHECK(FSICFAMState, (obj), TYPE_FSI_CFAM)
+> +OBJECT_DECLARE_SIMPLE_TYPE(FSICFAM, FSI_CFAM)
+>  
+>  /* P9-ism */
+>  #define CFAM_CONFIG_NR_REGS 0x28
+>  
+> -typedef struct FSICFAMState {
+> +#define FSI_CFAM_SLOT_SIZE   (2 * MiB)
+> +#define FSI_CFAM_CONFIG_SIZE 0x400
+> +
+> +#define ENGINE_CONFIG_NEXT            BIT(31)
+> +#define ENGINE_CONFIG_TYPE_PEEK       (0x02 << 4)
+> +#define ENGINE_CONFIG_TYPE_FSI        (0x03 << 4)
+> +#define ENGINE_CONFIG_TYPE_SCRATCHPAD (0x06 << 4)
+> +
+> +/* Valid, slots, version, type, crc */
+> +#define CFAM_CONFIG_REG(__VER, __TYPE, __CRC)   \
+> +    (ENGINE_CONFIG_NEXT       |   \
+> +     0x00010000               |   \
+> +     (__VER)                  |   \
+> +     (__TYPE)                 |   \
+> +     (__CRC))
+> +
+> +struct FSICFAMCommon {
+>      /* < private > */
+>      FSISlaveState parent;
+>  
+> @@ -28,7 +54,33 @@ typedef struct FSICFAMState {
+>      MemoryRegion mr;
+>  
+>      FSILBus lbus;
+> +};
+> +
+> +struct FSICFAMCommonClass {
+> +    /* < private > */
+> +    DeviceClass parent_class;
+> +
+> +    /* < public > */
+> +    /* Config table served by the common ops, one word per 4-byte offset */
+> +    const uint32_t *config;
+> +    unsigned config_nr;
+> +
+> +    /* Layout of the register slot */
+> +    hwaddr responder_offset;
+> +    hwaddr lbus_offset;
+> +
+> +    /* Realize and map this flavor's local bus engines */
+> +    bool (*realize_engines)(FSICFAMCommon *cfam, Error **errp);
+> +};
+> +
+> +struct FSICFAM {
+> +    /* < private > */
+> +    FSICFAMCommon parent;
+> +
+>      FSIScratchPad scratchpad;
+> -} FSICFAMState;
+> +};
+> +
+> +bool fsi_cfam_add_engine(FSICFAMCommon *cfam, DeviceState *engine,
+> +                         hwaddr offset, Error **errp);
+>  
+>  #endif /* FSI_CFAM_H */
+> diff --git a/include/hw/fsi/fsi-master.h b/include/hw/fsi/fsi-master.h
+> index 60ddaa994f..87c11ec3dc 100644
+> --- a/include/hw/fsi/fsi-master.h
+> +++ b/include/hw/fsi/fsi-master.h
+> @@ -25,7 +25,7 @@ typedef struct FSIMasterState {
+>      FSIBus bus;
+>  
+>      uint32_t regs[FSI_MASTER_NR_REGS];
+> -    FSICFAMState cfam;
+> +    FSICFAM cfam;
+>  } FSIMasterState;
+>  
+>  
+> diff --git a/hw/fsi/cfam.c b/hw/fsi/cfam.c
+> index 54c0b05769..5d4d0622d0 100644
+> --- a/hw/fsi/cfam.c
+> +++ b/hw/fsi/cfam.c
+> @@ -16,19 +16,6 @@
+>  
+>  #include "hw/core/qdev-properties.h"
+>  
+> -#define ENGINE_CONFIG_NEXT            BIT(31)
+> -#define ENGINE_CONFIG_TYPE_PEEK       (0x02 << 4)
+> -#define ENGINE_CONFIG_TYPE_FSI        (0x03 << 4)
+> -#define ENGINE_CONFIG_TYPE_SCRATCHPAD (0x06 << 4)
+> -
+> -/* Valid, slots, version, type, crc */
+> -#define CFAM_CONFIG_REG(__VER, __TYPE, __CRC)   \
+> -    (ENGINE_CONFIG_NEXT       |   \
+> -     0x00010000               |   \
+> -     (__VER)                  |   \
+> -     (__TYPE)                 |   \
+> -     (__CRC))
+> -
+>  #define TO_REG(x)                          ((x) >> 2)
+>  
+>  #define CFAM_CONFIG_CHIP_ID                TO_REG(0x00)
+> @@ -36,34 +23,33 @@
+>  #define CFAM_CONFIG_CHIP_ID_P9             0xc0022d15
+>  #define CFAM_CONFIG_CHIP_ID_BREAK          0xc0de0000
+>  
+> +/*
+> + * Config table of the P9 CFAM: the chip ID followed by one entry per engine,
+> + * entry n describing the engine at address n * 4. We need to add future
+> + * engines from address 0x10 onwards.
+> + */
+> +static const uint32_t cfam_p9_config[] = {
+> +    CFAM_CONFIG_CHIP_ID_P9,
+> +    CFAM_CONFIG_REG(0x1000, ENGINE_CONFIG_TYPE_PEEK, 0xc),
+> +    CFAM_CONFIG_REG(0x5000, ENGINE_CONFIG_TYPE_FSI, 0xa),
+> +    CFAM_CONFIG_REG(0x1000, ENGINE_CONFIG_TYPE_SCRATCHPAD, 0x7),
+> +};
+> +
+>  static uint64_t fsi_cfam_config_read(void *opaque, hwaddr addr, unsigned size)
+>  {
+> +    FSICFAMCommonClass *cc = FSI_CFAM_COMMON_GET_CLASS(opaque);
+> +    unsigned int reg = TO_REG(addr);
+> +
+>      trace_fsi_cfam_config_read(addr, size);
+>  
+> -    switch (addr) {
+> -    case 0x00:
+> -        return CFAM_CONFIG_CHIP_ID_P9;
+> -    case 0x04:
+> -        return CFAM_CONFIG_REG(0x1000, ENGINE_CONFIG_TYPE_PEEK, 0xc);
+> -    case 0x08:
+> -        return CFAM_CONFIG_REG(0x5000, ENGINE_CONFIG_TYPE_FSI, 0xa);
+> -    case 0xc:
+> -        return CFAM_CONFIG_REG(0x1000, ENGINE_CONFIG_TYPE_SCRATCHPAD, 0x7);
+> -    default:
+> -        /*
+> -         * The config table contains different engines from 0xc onwards.
+> -         * The scratch pad is already added at address 0xc. We need to add
+> -         * future engines from address 0x10 onwards. Returning 0 as engine
+> -         * is not implemented.
+> -         */
+> -        return 0;
+> -    }
+> +    /* Engines past the end of the table are not implemented */
+> +    return reg < cc->config_nr ? cc->config[reg] : 0;
+>  }
+>  
+>  static void fsi_cfam_config_write(void *opaque, hwaddr addr, uint64_t data,
+>                                    unsigned size)
+>  {
+> -    FSICFAMState *cfam = FSI_CFAM(opaque);
+> +    FSICFAMCommon *cfam = FSI_CFAM_COMMON(opaque);
+>  
+>      trace_fsi_cfam_config_write(addr, size, data);
+>  
+> @@ -109,59 +95,94 @@ static const struct MemoryRegionOps fsi_cfam_unimplemented_ops = {
+>      .endianness = DEVICE_BIG_ENDIAN,
+>  };
+>  
+> -static void fsi_cfam_instance_init(Object *obj)
+> +bool fsi_cfam_add_engine(FSICFAMCommon *cfam, DeviceState *engine,
+> +                         hwaddr offset, Error **errp)
+>  {
+> -    FSICFAMState *s = FSI_CFAM(obj);
+> +    if (!qdev_realize(engine, BUS(&cfam->lbus), errp)) {
+> +        return false;
+> +    }
+>  
+> -    object_initialize_child(obj, "scratchpad", &s->scratchpad,
+> -                            TYPE_FSI_SCRATCHPAD);
+> +    memory_region_add_subregion(&cfam->lbus.mr, offset,
+> +                                &FSI_LBUS_DEVICE(engine)->iomem);
+> +    return true;
+>  }
+>  
+> -static void fsi_cfam_realize(DeviceState *dev, Error **errp)
+> +static void fsi_cfam_common_realize(DeviceState *dev, Error **errp)
+>  {
+> -    FSICFAMState *cfam = FSI_CFAM(dev);
+> +    FSICFAMCommon *cfam = FSI_CFAM_COMMON(dev);
+> +    FSICFAMCommonClass *cc = FSI_CFAM_COMMON_GET_CLASS(dev);
+>      FSISlaveState *slave = FSI_SLAVE(dev);
+> +    const char *type = object_get_typename(OBJECT(dev));
+> +    g_autofree char *config_name = g_strdup_printf("%s.config", type);
+>  
+>      /* Each slave has a 2MiB address space */
+>      memory_region_init_io(&cfam->mr, OBJECT(cfam), &fsi_cfam_unimplemented_ops,
+> -                          cfam, TYPE_FSI_CFAM, 2 * MiB);
+> +                          cfam, type, FSI_CFAM_SLOT_SIZE);
+>  
+>      qbus_init(&cfam->lbus, sizeof(cfam->lbus), TYPE_FSI_LBUS, DEVICE(cfam),
+>                NULL);
+>  
+>      memory_region_init_io(&cfam->config_iomem, OBJECT(cfam), &cfam_config_ops,
+> -                          cfam, TYPE_FSI_CFAM ".config", 0x400);
+> +                          cfam, config_name, FSI_CFAM_CONFIG_SIZE);
+>  
+>      memory_region_add_subregion(&cfam->mr, 0, &cfam->config_iomem);
+> -    memory_region_add_subregion(&cfam->mr, 0x800, &slave->iomem);
+> -    memory_region_add_subregion(&cfam->mr, 0xc00, &cfam->lbus.mr);
+> +    memory_region_add_subregion(&cfam->mr, cc->responder_offset, &slave->iomem);
+> +    memory_region_add_subregion(&cfam->mr, cc->lbus_offset, &cfam->lbus.mr);
+>  
+> -    /* Add scratchpad engine */
+> -    if (!qdev_realize(DEVICE(&cfam->scratchpad), BUS(&cfam->lbus), errp)) {
+> +    if (!cc->realize_engines(cfam, errp)) {
+>          return;
+>      }
+> -
+> -    FSILBusDevice *fsi_dev = FSI_LBUS_DEVICE(&cfam->scratchpad);
+> -    memory_region_add_subregion(&cfam->lbus.mr, 0, &fsi_dev->iomem);
+>  }
+>  
+> -static void fsi_cfam_class_init(ObjectClass *klass, const void *data)
+> +static void fsi_cfam_common_class_init(ObjectClass *klass, const void *data)
+>  {
+>      DeviceClass *dc = DEVICE_CLASS(klass);
+> +
+>      dc->bus_type = TYPE_FSI_BUS;
+> -    dc->realize = fsi_cfam_realize;
+> +    dc->realize = fsi_cfam_common_realize;
 > +}
 > +
->  /**
->   * qemu_chr_fe_set_handlers_full:
->   * @c: a CharFrontend
-> diff --git a/backends/cryptodev-vhost-user.c b/backends/cryptodev-vhost-u=
-ser.c
-> index cc478d9902d..3334e280a27 100644
-> --- a/backends/cryptodev-vhost-user.c
-> +++ b/backends/cryptodev-vhost-user.c
-> @@ -373,13 +373,7 @@ cryptodev_vhost_user_get_chardev(Object *obj, Error =
-**errp)
->  {
->      CryptoDevBackendVhostUser *s =3D
->                        CRYPTODEV_BACKEND_VHOST_USER(obj);
-> -    Chardev *chr =3D qemu_chr_fe_get_driver(&s->chr);
-> -
-> -    if (chr && chr->label) {
-> -        return g_strdup(chr->label);
-> -    }
-> -
-> -    return NULL;
-> +    return qemu_chr_fe_backend_name(&s->chr);
+> +static bool fsi_cfam_realize_engines(FSICFAMCommon *cfam, Error **errp)
+> +{
+> +    FSICFAM *s = FSI_CFAM(cfam);
+> +
+> +    /* Add scratchpad engine */
+> +    object_initialize_child(OBJECT(s), "scratchpad", &s->scratchpad,
+> +                            TYPE_FSI_SCRATCHPAD);
+> +
+> +    return fsi_cfam_add_engine(cfam, DEVICE(&s->scratchpad), 0, errp);
 >  }
->
->  static void cryptodev_vhost_user_finalize(Object *obj)
-> diff --git a/backends/rng-egd.c b/backends/rng-egd.c
-> index 1d92bd71cf7..c2207f40c5c 100644
-> --- a/backends/rng-egd.c
-> +++ b/backends/rng-egd.c
-> @@ -126,13 +126,7 @@ static void rng_egd_set_chardev(Object *obj, const c=
-har *value, Error **errp)
->  static char *rng_egd_get_chardev(Object *obj, Error **errp)
+>  
+> +static void fsi_cfam_class_init(ObjectClass *klass, const void *data)
+> +{
+> +    FSICFAMCommonClass *cc = FSI_CFAM_COMMON_CLASS(klass);
+> +
+> +    cc->config = cfam_p9_config;
+> +    cc->config_nr = ARRAY_SIZE(cfam_p9_config);
+> +    cc->responder_offset = 0x800;
+> +    cc->lbus_offset = 0xc00;
+> +    cc->realize_engines = fsi_cfam_realize_engines;
+> +}
+> +
+> +static const TypeInfo fsi_cfam_common_info = {
+> +    .name = TYPE_FSI_CFAM_COMMON,
+> +    .parent = TYPE_FSI_SLAVE,
+> +    .instance_size = sizeof(FSICFAMCommon),
+> +    .class_size = sizeof(FSICFAMCommonClass),
+> +    .class_init = fsi_cfam_common_class_init,
+> +    .abstract = true,
+> +};
+> +
+>  static const TypeInfo fsi_cfam_info = {
+>      .name = TYPE_FSI_CFAM,
+> -    .parent = TYPE_FSI_SLAVE,
+> -    .instance_init = fsi_cfam_instance_init,
+> -    .instance_size = sizeof(FSICFAMState),
+> +    .parent = TYPE_FSI_CFAM_COMMON,
+> +    .instance_size = sizeof(FSICFAM),
+>      .class_init = fsi_cfam_class_init,
+>  };
+>  
+>  static void fsi_cfam_register_types(void)
 >  {
->      RngEgd *s =3D RNG_EGD(obj);
-> -    Chardev *chr =3D qemu_chr_fe_get_driver(&s->chr);
-> -
-> -    if (chr && chr->label) {
-> -        return g_strdup(chr->label);
-> -    }
-> -
-> -    return NULL;
-> +    return qemu_chr_fe_backend_name(&s->chr);
+> +    type_register_static(&fsi_cfam_common_info);
+>      type_register_static(&fsi_cfam_info);
 >  }
->
->  static void rng_egd_finalize(Object *obj)
-> diff --git a/backends/vhost-user.c b/backends/vhost-user.c
-> index 380d8250233..46dadb74800 100644
-> --- a/backends/vhost-user.c
-> +++ b/backends/vhost-user.c
-> @@ -152,13 +152,7 @@ static void set_chardev(Object *obj, const char *val=
-ue, Error **errp)
->  static char *get_chardev(Object *obj, Error **errp)
->  {
->      VhostUserBackend *b =3D VHOST_USER_BACKEND(obj);
-> -    Chardev *chr =3D qemu_chr_fe_get_driver(&b->chr);
-> -
-> -    if (chr && chr->label) {
-> -        return g_strdup(chr->label);
-> -    }
-> -
-> -    return NULL;
-> +    return qemu_chr_fe_backend_name(&b->chr);
+>  
+> diff --git a/hw/fsi/fsi-master.c b/hw/fsi/fsi-master.c
+> index 083a5507ab..d82df1c094 100644
+> --- a/hw/fsi/fsi-master.c
+> +++ b/hw/fsi/fsi-master.c
+> @@ -130,7 +130,7 @@ static void fsi_master_realize(DeviceState *dev, Error **errp)
+>      }
+>  
+>      /* address ? */
+> -    memory_region_add_subregion(&s->opb2fsi, 0, &s->cfam.mr);
+> +    memory_region_add_subregion(&s->opb2fsi, 0, &s->cfam.parent.mr);
 >  }
->
->  static void vhost_user_backend_class_init(ObjectClass *oc, const void *d=
-ata)
-> diff --git a/hw/char/imx_serial.c b/hw/char/imx_serial.c
-> index fb41ee2ac50..8ac4efbb5e9 100644
-> --- a/hw/char/imx_serial.c
-> +++ b/hw/char/imx_serial.c
-> @@ -278,10 +278,10 @@ static void imx_serial_write(void *opaque, hwaddr o=
-ffset,
->                               uint64_t value, unsigned size)
->  {
->      IMXSerialState *s =3D (IMXSerialState *)opaque;
-> -    Chardev *chr =3D qemu_chr_fe_get_driver(&s->chr);
-> +    g_autofree char *label =3D qemu_chr_fe_backend_name(&s->chr);
->      unsigned char ch;
->
-> -    trace_imx_serial_write(chr ? chr->label : "NODEV", offset, value);
-> +    trace_imx_serial_write(label ? label : "NODEV", offset, value);
->
->      switch (offset >> 2) {
->      case 0x10: /* UTXD */
-> --
-> 2.47.3
->
->
+>  
+>  static void fsi_master_reset(DeviceState *dev)
+
 

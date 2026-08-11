@@ -4,151 +4,109 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 54C27C5B574
-	for <qemu-arm@archiver.kernel.org>; Tue, 11 Aug 2026 07:33:55 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DD957C5AC67
+	for <qemu-arm@archiver.kernel.org>; Tue, 11 Aug 2026 08:04:00 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wtgz8-0004qj-FK; Tue, 11 Aug 2026 03:33:18 -0400
+	id 1wthSg-0003Xv-LQ; Tue, 11 Aug 2026 04:03:51 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
- id 1wtgz7-0004qS-AS; Tue, 11 Aug 2026 03:33:17 -0400
-Received: from mail-japaneastazlp170120005.outbound.protection.outlook.com
- ([2a01:111:f403:c405::5] helo=TYPPR03CU001.outbound.protection.outlook.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
- id 1wtgz5-00063u-13; Tue, 11 Aug 2026 03:33:17 -0400
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=G3ODrSvvudVPU9Hx02tj+kDdZz3naPGEqHAkA1920K8uD3AzUpymIgGyfUgLUOmUjrjSJu7WJI+9AFGoNRon+2AqTtmXwTNnReBmgeUbQy6q+0WOPSwNPICU6dQ2/TlmNWtKTj5lA1lF4seM5oqQgIyeBQRP4NH4H1UhDLbA71NUQ41YZfa6ftjKvTxtODxex8XAiOJuAwQAb1cet+sHurr7eSyDo8pjBqBAurFDy3lKfLS0Gu5mOshuBmSbAGg5WpXw9hn0PGz30MOUZRMauRw+uKdVXM0xFGUxvHfIdNu/m/N7YZMzxnbdLADKzSf4Q37Xgq7lb38NPrlPuyUo7A==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector10001;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=XDHAFbCiCSZCEUSAlzc3mUalpC6ZzEOATIvkepLR50M=;
- b=BMMTo/loGBQ40XK0+50xgr3G86/e4X4Z2VsaC9lheoAzHFn/5vKx6dvcuxCBgJGk6bkEn7LUuLXm0+4UxfNSj55kZsnPJdOkPBCNBhMrfTYp3H/BJHKfl/FzdNJaLX+MWjdseZLRu4pR00Q7aaxt2NRSJZMtqBkBo2Uw6Tj//Q0xWCzECcTgaFms8xh4ZlB0UBKH3NpqeWBNy7tHG5+U9a2Yg+cxg4+8ddRhiMaqXdOPW9IjAUvO5RXC2HcZrELNKz8j1pQeoMuq9+IV4IUNThLhfCQ3HvXHK+uDdF4lc9TQS5uzHrVS5SLcUr3B9IMSUOcyBG5nA6AvskLfNXZe/A==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=aspeedtech.com; dmarc=pass action=none
- header.from=aspeedtech.com; dkim=pass header.d=aspeedtech.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=aspeedtech.com;
- s=selector1;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=XDHAFbCiCSZCEUSAlzc3mUalpC6ZzEOATIvkepLR50M=;
- b=YAWppIC9xx8WdO0VslowU+7E0hJBKTc++FGPwbrb9eaeA+UPDnOemtWeTDw5s0kjsq/+xcVAIVdI532GveIb98YtmHrjA2Xd5JonfPvYdxKSxhcKejykaG+nwkPcn07Ny/G2O1TNJglZmxawyAYRn3v7eYAxzhRTnb2Alf/6cdJYJaiI3Lgdt0NX63qeKZvY4Z9Lfo9GlAIFP7fNnKZvhNV7LF2Q9u7X2bTGEvasglFtjvgRpqXbb7cVcoHR2vucDYIya2k1DT7fVdRT9FmOiB65zdAwvsktkvt37AUO6ymsd1lB0PRn7PlC0LNqSfr37+g0xobX44X/tncBIsWl3Q==
-Received: from TYZPR06MB4980.apcprd06.prod.outlook.com (2603:1096:400:1cc::10)
- by KU4PR06MB8364.apcprd06.prod.outlook.com (2603:1096:d10:7b::20)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.21.315.11; Tue, 11 Aug
- 2026 07:33:05 +0000
-Received: from TYZPR06MB4980.apcprd06.prod.outlook.com
- ([fe80::ea8a:7cb7:4822:2fb3]) by TYZPR06MB4980.apcprd06.prod.outlook.com
- ([fe80::ea8a:7cb7:4822:2fb3%6]) with mapi id 15.21.0292.024; Tue, 11 Aug 2026
- 07:33:05 +0000
-From: Jamin Lin <jamin_lin@aspeedtech.com>
-To: =?utf-8?B?Q8OpZHJpYyBMZSBHb2F0ZXI=?= <clg@kaod.org>, Mikail Sadic
- <mikail.sadic@ibm.com>, "peter.maydell@linaro.org" <peter.maydell@linaro.org>
-CC: "pbonzini@redhat.com" <pbonzini@redhat.com>, "ninad@linux.ibm.com"
- <ninad@linux.ibm.com>, "titusr@google.com" <titusr@google.com>,
- "jeuk20.kim@samsung.com" <jeuk20.kim@samsung.com>, "philmd@mailo.com"
- <philmd@mailo.com>, Steven Lee <steven_lee@aspeedtech.com>,
- "leetroy@gmail.com" <leetroy@gmail.com>, Kane Chen
- <kane_chen@aspeedtech.com>, "andrew@codeconstruct.com.au"
- <andrew@codeconstruct.com.au>, "joel@jms.id.au" <joel@jms.id.au>,
- "calebs@linux.ibm.com" <calebs@linux.ibm.com>, "milesg@linux.ibm.com"
- <milesg@linux.ibm.com>, "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
- "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>
-Subject: RE: [PATCH v3 4/8] i2c/aspeed: Fix DMA receive first-byte handling
- for block reads
-Thread-Topic: [PATCH v3 4/8] i2c/aspeed: Fix DMA receive first-byte handling
- for block reads
-Thread-Index: AQHdKPorKO2w75X7Hk2hEDT6Tbcn6LaYQlSAgAAsvvA=
-Date: Tue, 11 Aug 2026 07:33:04 +0000
-Message-ID: <TYZPR06MB49809554770467FE75ECEAA9FCDD2@TYZPR06MB4980.apcprd06.prod.outlook.com>
-References: <20260810185748.1253-1-mikail.sadic@ibm.com>
- <20260810185748.1253-5-mikail.sadic@ibm.com>
- <9311015c-69a5-482a-99ed-93548a9f493d@kaod.org>
-In-Reply-To: <9311015c-69a5-482a-99ed-93548a9f493d@kaod.org>
-Accept-Language: zh-TW, en-US
-Content-Language: zh-TW
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-authentication-results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=aspeedtech.com;
-x-ms-publictraffictype: Email
-x-ms-traffictypediagnostic: TYZPR06MB4980:EE_|KU4PR06MB8364:EE_
-x-ms-office365-filtering-correlation-id: 8a14ece2-ea09-4a9f-681d-08def77ac831
-x-ms-exchange-senderadcheck: 1
-x-ms-exchange-antispam-relay: 0
-x-microsoft-antispam: BCL:0;
- ARA:13230040|376014|1800799024|7416014|23010399003|366016|56012099006|10067099003|10063799003|3023799007|18002099003|22082099003|4143699003|38070700021;
-x-microsoft-antispam-message-info: 8WBp6PU8zjIOaQbhqX5scokCX9te0uoTQVAZu5CGVaUuTomDDZDGIOc/tSehoypjGpzKIhGjAhv1ivXwt7B9XXEjOUcLn+GVqQ/2Jwah+kgV82hRcUoBLirCeSKuZ6deQnBecwDMp0LJlfM3IuMGXBqjyGOK2sybZ1/N9G7Yr0cbOMMLK6I5KJ0NdBcDFsMWtecnrab09xaIAN47n0FZ33v8icyoxYHK2dOJphkXcqbhcqyd9f9bkb3hUy2fEQ9K6aUzwz7hyjV7Jb1gN4AqV/YMyX8RwHmRNvk/A18tUbqZY/lOjf5DeZ2DqZt4q5wuM5Ge5ObX0pp2j+5MYOEoiC2GEiQkAFBaig+YWUoDti0A1CN5ZMITId4EuYmy9/rhuSIHSdgpUqOeJjlckSNWCh0xcHSRMyEoixI6j5Q2ZBAfgVBL9zqNDowL/Ytebhadefe3ib4Cyf4p8WZ5Z3+BxLfFMZZ/5a2kG3CPItMlNYJIxjyoznqe0SXONXka9DG1AlhaKXTBetGhLz0zZgzbLhsasb5DqpLfTjwJ5jDKDedqIyheecvSGll2dv4wgUhJDjuPvZZji5b3b8qu3z0ZdXdBABkUz32/sdUcPlzXazOHpXzqLRjYrN48/CbtMaefQnOHX6lS45Vykcea6sJcKz/5Osy/o8kAfoWUINp5dvVeG2Dt4lFZX8a8yRA9HlmRNH6I2Qlf8G4rUbhx9OiUM4tBdxgRKCNvIXcKYvvZwR0=
-x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:zh-tw; SCL:1;
- SRV:; IPV:NLI; SFV:NSPM; H:TYZPR06MB4980.apcprd06.prod.outlook.com; PTR:;
- CAT:NONE;
- SFS:(13230040)(376014)(1800799024)(7416014)(23010399003)(366016)(56012099006)(10067099003)(10063799003)(3023799007)(18002099003)(22082099003)(4143699003)(38070700021);
- DIR:OUT; SFP:1102; 
-x-ms-exchange-antispam-messagedata-chunkcount: 1
-x-ms-exchange-antispam-messagedata-0: =?utf-8?B?cnJQZnlqM1B3b1U2RnpkQUNQekVXeTlaaXFnTzRRUURQZjd0MHVEdVJOQTNU?=
- =?utf-8?B?OFpFWHJiMUFtMHZNQzMyREREb0ZEUUhtM2xBbkFqTjhXUThHaWNwVC9LZGkz?=
- =?utf-8?B?WFJ6M1dNNGN6R0xQdURkK2RSK3kzSitpMnJQUm1tM0YvVkFqMDRsdGt4emZ0?=
- =?utf-8?B?WWYxL2R1SUhiNXE0NTlOYk05Rkd5NDRnZW5pYzVBanlwUXlwa2tYb3grZVhs?=
- =?utf-8?B?aDgzbmVUTGN5NFowSXdnMEhlVFN0bGFjSmd6V2ZMeDZ4cDNLbm5hNEV2bmRK?=
- =?utf-8?B?WThqZXBvZHE4ZnkrRy9zSFFRVVpTdFB0OVhNQ0Rla1FRY2llVjJIVStLYUZK?=
- =?utf-8?B?SU9IaklpUVlMTVlOTVdWNXR2RXhHZTROMXNndUlIbU05cjBlelo0RGpsc0tp?=
- =?utf-8?B?SHo5YjBKeHI5Nk9zK1pZc25EMHp3elk4ZGk3NjQxN244aUw2WFBnbytUdlhR?=
- =?utf-8?B?eFExK3JtQXErVU1xNDZjRHEzWUZKTXgwNURyenRzMFRmYTN3b0FNWnRacXgr?=
- =?utf-8?B?K1Y2eUNGQXdVOTEzaFRtanVqS05IU1lBc1JYY0Vza01rK2dMdVZQSVhPa3JQ?=
- =?utf-8?B?K1RvLzByY3NNaFB3R295a3BYbDJRK0NmZmxNbTFTUHIyUWg0RVVkYzFUNDZH?=
- =?utf-8?B?alQwMVh3VCtGRi9NS2FXbXh4cWROR2g5WjUvT1k0WmFzVVZWelp1WDNLalVL?=
- =?utf-8?B?aUw1SDJIa3QwTE1lcEpRUFQxNHc3alRIS2VqbGtyWXNMazFydUhHYWtkZzgv?=
- =?utf-8?B?czhmajB5S0JHaXRYMGhjeFZ3YTRvWVU5RWhyMEtvVWpOQUZsVS9SUVByWi9X?=
- =?utf-8?B?eXgzYWtTZGhhRTZFTFJxWGpDeDBNa2V3ZFZPMFVSUXR6UlJ0OFA2aEpPU1RG?=
- =?utf-8?B?NVF5QUdXQUJoMnpna1JsY0NvMk9NaDQrU2haOXUxUmtxZUgrczRTWXFEdFpZ?=
- =?utf-8?B?TUluNDZtaXUvd0xHTWtoV29qcFhKb1c5djJzZ0JUL0hFb3drMWhIU2l4THJv?=
- =?utf-8?B?dzFsRzlsZnNkakZnalQrWlJVM0YxSVhyQTlqWEhUUlFKZFk2RCtvaStHZlpP?=
- =?utf-8?B?eDRkdm9rT2tIWEV6VjY2QjM1T0RoOHg0akNnb2U4MlhQVVJrMFpsY2ptOWNI?=
- =?utf-8?B?Z0ZUUWNDRDQ1RUNCVXFzT0RNKzA4d2VuRm1WS0craU9CUXBtQjM1eHR2eEdC?=
- =?utf-8?B?OEVZV04xa2pXVHgydXFSNVZMNnorVi9yUXJ2eEExOUlTbG5OaS90K1FNeXV5?=
- =?utf-8?B?TGtNdmg3TmF5VHZXRktFL0grazdqSmxLenpRSHpkTmk4S2RSbkFpcGVvcEJY?=
- =?utf-8?B?c3R0OVZ4MlBJdjJLQStPOE1OUXFObXJDbDI2SytzWVM5aFNEMy9TK1d5SzRp?=
- =?utf-8?B?L2h0Q1dDN0Vadzl0WGoyVW92V2pwTm5xdzlwZG1GMXJSZmhsdFMyVkwrMEUz?=
- =?utf-8?B?ZGdQLzdrVWMyWVlVSFg3MTVVWEFybDkvV09ITXpDRTZPazRGenFEZUNEYlJJ?=
- =?utf-8?B?QmUzWVRQZUlOSzVUNjhZZU41TEkyMitUYWtNQUdBUFd2TjVvTnRIYWkzR3Ni?=
- =?utf-8?B?UlNEd3hZb3FvMWI0NXYxTTl0LzVMTGpFTTRDZE4rYXdEbENzaGhsZUN6SExn?=
- =?utf-8?B?dHBkOWdRNmtybnVWMWRJWG05Vi9zTkpzeC9EMlIwSlR2NWp4a2plOVpHK2Uz?=
- =?utf-8?B?dmtQR2lmejhCOXoxVHJnME5vVDhxRWRZMTZGYytjNG8wUytrd1lMTnZMZmEv?=
- =?utf-8?B?K2tLQ2wxY1VobGhPS1hTTStCMWlLdzFsTS9aL0ZPOUp0bmxZUTFYYUdvS2ph?=
- =?utf-8?B?TDVycS96RFNxWnJNV0dhS1NFYU1PMmJ6SDAxM29kSit6cmt6VWxGS3NnZTZq?=
- =?utf-8?B?b0RMNHNCd2xKdTFWYUhkWmlOTHlMZHJFTDErSGVXcjlsQVJzQzRuVFVscXdR?=
- =?utf-8?B?dFh0NnYrNTlsekxxenVDU1lWN0czRXNnL1grNkFra0dpV0ZMNFJGS01nY0k3?=
- =?utf-8?B?Q21DdHJBcHAwUVI4R0JGZVhidHJnMlpnT2szclo3N3pndjUzSnVRcGZZNGFl?=
- =?utf-8?B?WXFWbWZXNXFOWnMyNURSOTZNeEVQelhXQzh1UFEya0xicEQwbXRnTHgyNUFK?=
- =?utf-8?B?U1NQR1EzRlErYnR6RlJaS2hrYU80YzJudXdsMGVTZkxteW8zSUZnUnVsekw1?=
- =?utf-8?B?Q3Z0MnJHOFJjTDdGQkdCdHpwcWE2Q2dPY3VCVUlqWE5idXNGZmg0SFJkSE8x?=
- =?utf-8?B?M1Q1bXB3cC9SeFhKSzBFdCtaczY4eXdudmxxOWNiUy84T2ZhV3dGUitESmQ5?=
- =?utf-8?B?cUF5NjgwZEJoRG9Ick45NDV5V21LVmtJYithVlVxL3UwUzBBYkJ2dz09?=
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+ (Exim 4.90_1) (envelope-from <alexander@mihalicyn.com>)
+ id 1wthSc-0003XW-MP
+ for qemu-arm@nongnu.org; Tue, 11 Aug 2026 04:03:48 -0400
+Received: from mail-ej1-x635.google.com ([2a00:1450:4864:20::635])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <alexander@mihalicyn.com>)
+ id 1wthSY-0003YE-IW
+ for qemu-arm@nongnu.org; Tue, 11 Aug 2026 04:03:44 -0400
+Received: by mail-ej1-x635.google.com with SMTP id
+ a640c23a62f3a-c167aa9500dso66017266b.3
+ for <qemu-arm@nongnu.org>; Tue, 11 Aug 2026 01:03:41 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1786435420; cv=none;
+ d=google.com; s=arc-20260327;
+ b=U2TirHQYvV8qMgRzhy0DDObWguuPqZIolOSaNAvr7hqwpflwwuNQlTmr8Ui5lZzA5O
+ 5Uw0lDoTWHJNZKnMwYW611P4ewN8w4I1wYTGxnyEHYgZPrmMIeMeMSf1VuESXvbGTgnC
+ /FSyYcxy1EZbqNYCtJHyjC5k4XohnNM4G1oxD24RohjwhzvGMzf/k7WMcNouu1tBA/t/
+ 5cKF4zQ2tT660DNtJpwTYpVlwQdW356kaiTrwMX6e8FBs40JQsq8w7oe2tIItPxiW8Df
+ ThWxd3xaEvqG3cJUtTqjpZD5uWbap3bZFKMAN2029QtEyPEvTe6P038cCZ8GRwdbs1kH
+ qOfA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
+ s=arc-20260327; 
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:dkim-signature;
+ bh=fqBlwW6z9w6sMGT5hmHk/u75u+YKjMvOiqEv5IfaHqE=;
+ fh=Fj+X/PrQm3BOc7ebUogwULeE+axyNtVWaZvl8sTJKm8=;
+ b=c1hVByoCUQQ9E3R1EJ4ISXrIhACyEyIN+jMt98ZJMeouAKqQ2+rnrceXVWllg4XCm1
+ r/nzaS+aLDKEZVblkY2KXnf2WbbOW9Kq7yfoaN4oYNr4dKYhq2x2VPhsKMg7CVoxZyM+
+ tsgrbtUH0ctRwNO0P14M40MSeUspySSKmyKH8j5nE9rpOtNXpE7JPg9IDvLl651K6STx
+ odi4Trlp/1hWtXwBSsVuMKUCtr3HzZhoc45FGB66YjJun53EPzTEs/rU6rQbMWzgZ0UT
+ yyZRrVRWa0Uim9CQe/R5PAteYtdeZUyOtRcjfaPO5G84FTCq9qY/HjkCF5JgxD+6eICA
+ ukOA==; darn=nongnu.org
+ARC-Authentication-Results: i=1; mx.google.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=mihalicyn.com; s=mihalicyn; t=1786435420; x=1787040220; darn=nongnu.org;
+ h=content-transfer-encoding:content-type:cc:to:subject:message-id
+ :date:from:in-reply-to:references:mime-version:from:to:cc:subject
+ :date:message-id:reply-to:content-type;
+ bh=fqBlwW6z9w6sMGT5hmHk/u75u+YKjMvOiqEv5IfaHqE=;
+ b=dm0HxLiuqWTQGTOj/nH9RQOvUkDkt7IJyJfS2FtiM15WsNHz+H/hj2caUJd2kpvKa4
+ HCjH+X71FwfLT421ta2cipoihiKmeDOnWAhmnl6wEOkKvEoj/q5lWDOjMBKq49/KLZuv
+ ArqKYqRAr9qQfEppsfy5GOdG8A/Aa1cztjhzI=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20251104; t=1786435420; x=1787040220;
+ h=content-transfer-encoding:content-type:cc:to:subject:message-id
+ :date:from:in-reply-to:references:mime-version:x-gm-gg
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
+ :content-type;
+ bh=fqBlwW6z9w6sMGT5hmHk/u75u+YKjMvOiqEv5IfaHqE=;
+ b=bAdCA9WGAJ+JqL0+oemn9SlU271iwLZuxQoJP6NH2NcPx4CY/AfNaKI65s6jzGn66T
+ jEFR8EoSWajmdst+3KZwow91QHOkLfjlXQ9QxgA/a5fMzSKCA2BhQ3BtkgZwdO+noqei
+ 5ZZQ5kPbdEMND9ifsKQbvdUwSr8JKrRlhiCfy3Y5aUCtA/9eJrhPgSZ+ASZ8PO8Bn6of
+ ojHTFPtSkEb9AEWjxd7jOapQDd08M0SO3kraBEaEPX2DATR8iYZpfbSlrG6yGuB6FyZE
+ vWsyaLtzVCb4Nk6IJG1uMaB7QmFpvdgzPoaIKurzgDMTRqgRpgdl/tMDS3OLpeoXKFhB
+ YsyQ==
+X-Forwarded-Encrypted: i=1;
+ AHgh+RpztLG6h4fjd8dorD+jiSkvjqKziEDtdY0O+e3uILNl3y6jBeD9clRBMGOTbngyc7AVXDkG0+htRg==@nongnu.org
+X-Gm-Message-State: AOJu0Yxrhc8FenNg+l/+fxoc/oKQvOJZQx/28OH5cx1mIa3Ce4kSpqUO
+ EAMBKhNu4aWPD52Mwmiei3ken5j9jRMF3MJ5tY7rGOROWAW9UOFwfRiuiBK0S2SIb3mAQs1LXu1
+ OCT/wOxz1lQqXBVhWmt5CVaACadyOsxFArrcc4fHQpg==
+X-Gm-Gg: AR+sD13u/lj+eP7eLOkVZqMsqJfNr4Z4+/qHxfPBpVobP5f8fk429TBTmlRyjQJnv1v
+ yXJoF1EyFVas39rc+xbMdH4fj8dMUqkDeHBUAOcrBSXcWcROKnC7JisD7yI+iqGqA9eouyUzWZN
+ CIHU1uHFFOU30EjW8qpwB9afDqram4CfCMjLkDSC5b+xAaOuHDsUqYbezwvs1reXi7Da+tK9Lpu
+ o+k9rw9NDQHa+TkE7biCHxBF/bw5TJzx9kWAQ+zB3Vx2AZR5WQGp/J6Lse84Nc3A/2SXQEsWxXk
+ wSdKu/LpF3QGzU/AQ9Qd+ZEEA/83p0F+0A3T+g0JHj0TxQx6nNLr5TbmyJVJb2XuAZ18D1afRig
+ =
+X-Received: by 2002:a17:907:d26:b0:c15:fc5b:6884 with SMTP id
+ a640c23a62f3a-c20e623c23bmr62798066b.13.1786435419036; Tue, 11 Aug 2026
+ 01:03:39 -0700 (PDT)
 MIME-Version: 1.0
-X-Exchange-RoutingPolicyChecked: jo4UQBaik+lnQ/ZY01ccgrIJznVj+oeDlEub38RZZUhrG2MPtCUrdtHlXJQEnCTmJjAz5oTTrUSwka9/FY6W4QHFi+Jv4dhxeyjAuDdQbeNyNgj1rv6YIioB0YJs5uqyADcrAp6uSar9znEe+82BtsACByr6eOoWtI+RiBloza7AoeLy78X3LrVzJpRJPxcQqDok6Ae1F4UIKHHWN5tK9Mc7I5dNQkpPAEcm1FHzlLfPPAA5X3XdEIFWxYa6/11eSzllsCbO8A7QanbLDqz396oY9uzUlBdrlxQmajgB/epeAhGu/k4OlO1U2LOsxgwpmUH1yuu/lKgTr4sXkTJ45g==
-X-OriginatorOrg: aspeedtech.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-AuthSource: TYZPR06MB4980.apcprd06.prod.outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 8a14ece2-ea09-4a9f-681d-08def77ac831
-X-MS-Exchange-CrossTenant-originalarrivaltime: 11 Aug 2026 07:33:04.9166 (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: 43d4aa98-e35b-4575-8939-080e90d5a249
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: aDAPWOLL9VzFNwtrgWqq02rzXqFvLn9Da1uSYTZz7ai9XCUsHHXj15kkubuFPuv6mjmKcY0tC9yI5T2iUndSjWL+VAQmwim8/URCcv5u0uk=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: KU4PR06MB8364
-Received-SPF: pass client-ip=2a01:111:f403:c405::5;
- envelope-from=jamin_lin@aspeedtech.com;
- helo=TYPPR03CU001.outbound.protection.outlook.com
+References: <20260810121525.100540-1-alexander@mihalicyn.com>
+ <87h5l22faq.fsf@draig.linaro.org>
+ <CAJqdLrr2hR_ObgzEosMhDvbz+B9sywGQwJPEcjrzhr1imhCptQ@mail.gmail.com>
+In-Reply-To: <CAJqdLrr2hR_ObgzEosMhDvbz+B9sywGQwJPEcjrzhr1imhCptQ@mail.gmail.com>
+From: Alexander Mikhalitsyn <alexander@mihalicyn.com>
+Date: Tue, 11 Aug 2026 10:03:27 +0200
+X-Gm-Features: AUfX_mw51nf7tFxHAkKDropcsexOUiudL1TH_2vEuw8Z5OKlgNcWK0bnr2Lu-PE
+Message-ID: <CAJqdLrqM4tv7b55g+6_heCNBC-9fMC4CEvDK5rxk4tXjygCYvw@mail.gmail.com>
+Subject: Re: [PATCH] hw/char/pl011: support backend hotswap
+To: =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>
+Cc: qemu-devel@nongnu.org, Peter Maydell <peter.maydell@linaro.org>, 
+ =?UTF-8?Q?St=C3=A9phane_Graber?= <stgraber@stgraber.org>, 
+ Paolo Bonzini <pbonzini@redhat.com>,
+ =?UTF-8?B?TWFyYy1BbmRyw6kgTHVyZWF1?= <marcandre.lureau@redhat.com>, 
+ qemu-arm@nongnu.org, 
+ Alexander Mikhalitsyn <aleksandr.mikhalitsyn@futurfusion.io>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2a00:1450:4864:20::635;
+ envelope-from=alexander@mihalicyn.com; helo=mail-ej1-x635.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_PASS=-0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -165,91 +123,370 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-SGkgTWlrYWlsLA0KDQo+IC0tLS0tT3JpZ2luYWwgTWVzc2FnZS0tLS0tDQo+IEZyb206IEPDqWRy
-aWMgTGUgR29hdGVyIDxjbGdAa2FvZC5vcmc+DQo+IFNlbnQ6IFR1ZXNkYXksIEF1Z3VzdCAxMSwg
-MjAyNiAxMjozMSBQTQ0KPiBUbzogTWlrYWlsIFNhZGljIDxtaWthaWwuc2FkaWNAaWJtLmNvbT47
-IHBldGVyLm1heWRlbGxAbGluYXJvLm9yZw0KPiBDYzogcGJvbnppbmlAcmVkaGF0LmNvbTsgbmlu
-YWRAbGludXguaWJtLmNvbTsgdGl0dXNyQGdvb2dsZS5jb207DQo+IGpldWsyMC5raW1Ac2Ftc3Vu
-Zy5jb207IHBoaWxtZEBtYWlsby5jb207IFN0ZXZlbiBMZWUNCj4gPHN0ZXZlbl9sZWVAYXNwZWVk
-dGVjaC5jb20+OyBsZWV0cm95QGdtYWlsLmNvbTsgSmFtaW4gTGluDQo+IDxqYW1pbl9saW5AYXNw
-ZWVkdGVjaC5jb20+OyBLYW5lIENoZW4gPGthbmVfY2hlbkBhc3BlZWR0ZWNoLmNvbT47DQo+IGFu
-ZHJld0Bjb2RlY29uc3RydWN0LmNvbS5hdTsgam9lbEBqbXMuaWQuYXU7IGNhbGVic0BsaW51eC5p
-Ym0uY29tOw0KPiBtaWxlc2dAbGludXguaWJtLmNvbTsgcWVtdS1hcm1Abm9uZ251Lm9yZzsgcWVt
-dS1kZXZlbEBub25nbnUub3JnDQo+IFN1YmplY3Q6IFJlOiBbUEFUQ0ggdjMgNC84XSBpMmMvYXNw
-ZWVkOiBGaXggRE1BIHJlY2VpdmUgZmlyc3QtYnl0ZSBoYW5kbGluZyBmb3INCj4gYmxvY2sgcmVh
-ZHMNCj4gDQo+IEphbWluLA0KPiANCj4gSSB3b3VsZCBhcHByZWNpYXRlIGEgZmVlZGJhY2sgZnJv
-bSB5b3Ugb24gdGhpcyBjaGFuZ2UuDQo+IA0KSGkgTWlrYWlsLA0KDQpCZWZvcmUgZ29pbmcgZnVy
-dGhlciAtLSBhcmUgeW91IHN1cmUgdGhpcyB2YWx1ZSBpcyBjb3JyZWN0IGluIERNQSBtb2RlPw0K
-QVNUMjYwMC9BU1QyNzAwIGRhdGFzaGVldCwgSTJDQzA4IChUcmFuc21pdC9SZWNlaXZlIEJ5dGUg
-QnVmZmVyKToNCiAgICAxNTo4ICBSTyAgUmVjZWl2ZSBCeXRlIEJ1ZmZlcg0KICAgICAgICAgICAg
-ICAiVGhpcyByZWdpc3RlciBpcyB2YWxpZCB3aGVuIERNQSBCdWZmZXIgaXMgbm90IGVuYWJsZWQu
-Ig0KDQpUaGF0IHJlYWRzIHRvIG1lIGFzOiB0aGUgcmVjZWl2ZSBieXRlIGJ1ZmZlciBvbmx5IGhv
-bGRzIGEgZGVmaW5lZCB2YWx1ZQ0KaW4gcG9vbCBidWZmZXIgbW9kZSwgbm90IHdoZW4gRE1BIGlz
-IGVuYWJsZWQuIElmIHRoYXQgaXMgcmlnaHQsIHRoZW4NCm1vZGVsbGluZyBpdCBpbiB0aGUgRE1B
-IHBhdGggbWFrZXMgUUVNVSByZXBvcnQgYSBibG9jayBsZW5ndGggdGhlDQpzaWxpY29uIHdvdWxk
-IG5vdCBwcm92aWRlLCBhbmQgYSBkcml2ZXIgcmVseWluZyBvbiBpdCB3b3VsZCBwYXNzIHVuZGVy
-DQplbXVsYXRpb24gYnV0IGZhaWwgb24gYSByZWFsIGJvYXJkLg0KDQpIYXZlIHlvdSBjb25maXJt
-ZWQgdGhpcyB3b3JrcyBvbiByZWFsIGhhcmR3YXJlLCBvciBvbmx5IGluIFFFTVU/DQpJZiB0aGUg
-ZGF0YXNoZWV0IHJlYWRpbmcgaXMgY29ycmVjdCwgSSB0aGluayB0aGUgbWlycm9yIGJlbG9uZ3Mg
-aW4gdGhlDQpwb29sIGJ1ZmZlciBwYXRoIGluc3RlYWQgLS0gYXN0MjYwMF9pMmNfc2V0dXBfYnVm
-Zl9yeCgpIGRvZXMgbm90IGVuYWJsZQ0KdGhlIERNQSBidWZmZXIsIHlldCBhc3BlZWRfaTJjX2J1
-c19yZWN2KCkncyBSWF9CVUZGX0VOIGJyYW5jaCBuZXZlcg0KdXBkYXRlcyByZWdfYnl0ZV9idWYg
-ZWl0aGVyLiBUaGF0IGlzIGFsc28gdGhlIGRlZmF1bHQgbW9kZToNCmkyYy1hc3QyNjAwLmMgc2V0
-cyBtb2RlID0gQlVGRl9NT0RFIGFuZCBubyBBU1QyNjAwIGJvYXJkIERUIG92ZXJyaWRlcw0KYXNw
-ZWVkLHRyYW5zZmVyLW1vZGUuDQoNCjEuIE9uIEFTVDI2MDAsIGlzIHlvdXIgc2V0dXAgdXNpbmcg
-RE1BIG1vZGUgb3IgYnVmZmVyIG1vZGU/ICAtLS0+IEFTIGZhciBBcyBJIGtub3csIGN1c3RvbWVy
-cyBzaG91bGQgdXNlIHRoZSBidWZmZXIgbW9kZSBiZWNhdXNlIEkyQyBETUEgbW9kZSBpc3N1ZSBp
-biBBU1QyNjAwLg0KDQoyLiBBcmUgeW91IHRlc3RpbmcgQVNUMjcwMCBhcyB3ZWxsPyBUaGVyZSBi
-b3RoIG1vZGVzIHNldCBSWF9ETUFfRU4gKERNQSBhbmQgQnVmZmVyIG1vZGUpIC0tDQogICBhc3Qy
-NzAwX2kyY19zZXR1cF9idWZmX3J4KCkgZG9lcyB0b28gLS0gc28gSTJDQzA4WzE1OjhdIHdvdWxk
-IG5ldmVyDQogICBiZSB2YWxpZCwgYW5kIHRoZSBkcml2ZXIgcmVhZHMgdGhlIGxlbmd0aCBmcm9t
-ICJCWVRFX0RBVEFfTE9HICgweDg0KSIsDQogICB3aGljaCBRRU1VIGRvZXMgbm90IG1vZGVsIGF0
-IGFsbC4gVGhhdCB3b3VsZCBuZWVkIGEgc2VwYXJhdGUgcGF0Y2guDQogICBodHRwczovL2dpdGh1
-Yi5jb20vQXNwZWVkVGVjaC1CTUMvbGludXgvY29tbWl0L2Y5OTM4ZWM1Nzk5ZTgzZjViMDlkM2E3
-YWNhYzcyODdjMGNkZTJjMjYNCiAgIGh0dHBzOi8vcGF0Y2h3b3JrLmtlcm5lbC5vcmcvcHJvamVj
-dC9xZW11LWRldmVsL3BhdGNoLzIwMjYwODA0MDgxOTU1LjE1NjM1MzctMi1qYW1pbl9saW5AYXNw
-ZWVkdGVjaC5jb20vIA0KDQogICANClRoYW5rcywNCkphbWluDQoNCg0KPiBPbiA4LzEwLzI2IDIw
-OjU3LCBNaWthaWwgU2FkaWMgd3JvdGU6DQo+ID4gQW4gU01CdXMgYmxvY2sgcmVhZCAoSTJDX01f
-UkVDVl9MRU4pIHJlYWRzIHRoZSBibG9jayBsZW5ndGggZnJvbSB0aGUNCj4gPiBmaXJzdCByZWNl
-aXZlZCBieXRlLiBUaGUgTGludXgvVS1Cb290IGFzcGVlZCBJMkMgZHJpdmVyIG9idGFpbnMgdGhh
-dA0KPiA+IGZpcnN0IGJ5dGUgZnJvbSB0aGUgSTJDQ19TVFNfQU5EX0JVRkYgcmVnaXN0ZXIgKG1v
-ZGVsbGVkIGhlcmUgYXMNCj4gPiByZWdfYnl0ZV9idWYpLCBldmVuIHdoZW4gdGhlIHRyYW5zZmVy
-IHVzZXMgRE1BLiBUaGUgRE1BIHJlY2VpdmUgcGF0aCwNCj4gPiBob3dldmVyLCBvbmx5IHdyb3Rl
-IHJlY2VpdmVkIGRhdGEgdG8gRFJBTSBhbmQgbmV2ZXIgdXBkYXRlZA0KPiA+IHJlZ19ieXRlX2J1
-Ziwgc28gYmxvY2sgcmVhZHMgcmVhZCBhIHN0YWxlL3plcm8gbGVuZ3RoLg0KPiA+DQo+ID4gTWly
-cm9yIHRoZSBmaXJzdCBETUEtcmVjZWl2ZWQgYnl0ZSBpbnRvIHJlZ19ieXRlX2J1ZiBzbyB0aGF0
-DQo+ID4gSTJDX01fUkVDVl9MRU4gdHJhbnNmZXJzIHVzaW5nIERNQSByZXBvcnQgdGhlIGNvcnJl
-Y3QgYmxvY2sgbGVuZ3RoLg0KPiA+IFRoaXMgaXMgcmVxdWlyZWQgZm9yIHRoZSB1Y2Q5MDAwIGRy
-aXZlciwgd2hpY2ggdXNlcw0KPiA+IGkyY19zbWJ1c19yZWFkX2Jsb2NrX2RhdGEoKS4NCj4gPg0K
-PiA+IFNpZ25lZC1vZmYtYnk6IE1pa2FpbCBTYWRpYyA8bWlrYWlsLnNhZGljQGlibS5jb20+DQo+
-IA0KPiBEb2VzIHRoaXMgY2hhbmdlIGRlc2VydmUgYSBGaXhlczogdGFnID8NCj4gDQo+IFRoYW5r
-cywNCj4gDQo+IEMuDQo+IA0KPiA+IC0tLQ0KPiA+ICAgaHcvaTJjL2FzcGVlZF9pMmMuYyB8IDcg
-KysrKysrKw0KPiA+ICAgMSBmaWxlIGNoYW5nZWQsIDcgaW5zZXJ0aW9ucygrKQ0KPiA+DQo+ID4g
-ZGlmZiAtLWdpdCBhL2h3L2kyYy9hc3BlZWRfaTJjLmMgYi9ody9pMmMvYXNwZWVkX2kyYy5jIGlu
-ZGV4DQo+ID4gMjdhZmNhZWNlZS4uZmFjYjU0ZDI3ZSAxMDA2NDQNCj4gPiAtLS0gYS9ody9pMmMv
-YXNwZWVkX2kyYy5jDQo+ID4gKysrIGIvaHcvaTJjL2FzcGVlZF9pMmMuYw0KPiA+IEBAIC0zNjUs
-NiArMzY1LDcgQEAgc3RhdGljIHZvaWQgYXNwZWVkX2kyY19idXNfcmVjdihBc3BlZWRJMkNCdXMg
-KmJ1cykNCj4gPiAgICAgICB1aW50MzJfdCByZWdfcG9vbF9jdHJsID0gYXNwZWVkX2kyY19idXNf
-cG9vbF9jdHJsX29mZnNldChidXMpOw0KPiA+ICAgICAgIHVpbnQzMl90IHJlZ19ieXRlX2J1ZiA9
-IGFzcGVlZF9pMmNfYnVzX2J5dGVfYnVmX29mZnNldChidXMpOw0KPiA+ICAgICAgIHVpbnQzMl90
-IHJlZ19kbWFfbGVuID0gYXNwZWVkX2kyY19idXNfZG1hX2xlbl9vZmZzZXQoYnVzKTsNCj4gPiAr
-ICAgIGJvb2wgZmlyc3RfZG1hX2J5dGU7DQo+ID4gICAgICAgaW50IHBvb2xfcnhfY291bnQgPSBT
-SEFSRURfQVJSQVlfRklFTERfRVgzMihidXMtPnJlZ3MsDQo+IHJlZ19wb29sX2N0cmwsDQo+ID4g
-ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBSWF9TSVpF
-KSArIDE7DQo+ID4NCj4gPiBAQCAtMzkxLDYgKzM5Miw3IEBAIHN0YXRpYyB2b2lkIGFzcGVlZF9p
-MmNfYnVzX3JlY3YoQXNwZWVkSTJDQnVzICpidXMpDQo+ID4gICAgICAgICAgIH0NCj4gPg0KPiA+
-ICAgICAgICAgICBhc3BlZWRfaTJjX3NldF9yeF9kbWFfZHJhbV9vZmZzZXQoYnVzKTsNCj4gPiAr
-ICAgICAgICBmaXJzdF9kbWFfYnl0ZSA9IHRydWU7DQo+ID4gICAgICAgICAgIHdoaWxlIChidXMt
-PnJlZ3NbcmVnX2RtYV9sZW5dKSB7DQo+ID4gICAgICAgICAgICAgICBNZW1UeFJlc3VsdCByZXN1
-bHQ7DQo+ID4NCj4gPiBAQCAtNDA3LDYgKzQwOSwxMSBAQCBzdGF0aWMgdm9pZCBhc3BlZWRfaTJj
-X2J1c19yZWN2KEFzcGVlZEkyQ0J1cw0KPiAqYnVzKQ0KPiA+ICAgICAgICAgICAgICAgICAgIHJl
-dHVybjsNCj4gPiAgICAgICAgICAgICAgIH0NCj4gPg0KPiA+ICsgICAgICAgICAgICAvKiBNaXJy
-b3IgZmlyc3QgYnl0ZSB0byByZWdfYnl0ZV9idWYgZm9yIEkyQ19NX1JFQ1ZfTEVOLiAqLw0KPiA+
-ICsgICAgICAgICAgICBpZiAoZmlyc3RfZG1hX2J5dGUpIHsNCj4gPiArICAgICAgICAgICAgICAg
-IFNIQVJFRF9BUlJBWV9GSUVMRF9EUDMyKGJ1cy0+cmVncywgcmVnX2J5dGVfYnVmLA0KPiBSWF9C
-VUYsIGRhdGEpOw0KPiA+ICsgICAgICAgICAgICAgICAgZmlyc3RfZG1hX2J5dGUgPSBmYWxzZTsN
-Cj4gPiArICAgICAgICAgICAgfQ0KPiA+ICAgICAgICAgICAgICAgYnVzLT5kbWFfZHJhbV9vZmZz
-ZXQrKzsNCj4gPiAgICAgICAgICAgICAgIGJ1cy0+cmVnc1tyZWdfZG1hX2xlbl0tLTsNCj4gPiAg
-ICAgICAgICAgICAgIC8qIEluIG5ldyBtb2RlLCBrZWVwIHRyYWNrIG9mIGhvdyBtYW55IGJ5dGVz
-IHdlIFJYZWQgKi8NCg0K
+Am Mo., 10. Aug. 2026 um 19:31 Uhr schrieb Alexander Mikhalitsyn
+<alexander@mihalicyn.com>:
+>
+> Am Mo., 10. Aug. 2026 um 16:58 Uhr schrieb Alex Benn=C3=A9e <alex.bennee@=
+linaro.org>:
+> >
+> > Alexander Mikhalitsyn <alexander@mihalicyn.com> writes:
+> >
+> > > From: Aleksanr Mikhalitsyn <alexander@mihalicyn.com>
+>
+> Ugh, I did git format-patch and copied this patch from my Raspberry PI
+> dev/test machine
+> and it turns out that I have a stupid typo in my `git config get
+> user.name` on that machine.
+> I'll drop -v2 a bit later.
+>
+> > >
+> > > Currently, when Incus issues "chardev-change" QMP command to change
+> > > chardev backend from ringbuf to socket it receives an error (with aar=
+ch64 VM):
+> > > "Chardev user does not support chardev hotswap" [1], [2]
+> > >
+> > > Let's fix this by properly implementing BackendChangeHandler for pl01=
+1.
+> > >
+> > > Link: https://discuss.linuxcontainers.org/t/unable-to-connect-to-vm-c=
+onsole-on-arm-architecture/23096/3 [1]
+> > > Link: https://github.com/lxc/distrobuilder/issues/892 [2]
+> > > Reported-by: St=C3=A9phane Graber <stgraber@stgraber.org>
+> > > Signed-off-by: Alexander Mikhalitsyn
+> > > <aleksandr.mikhalitsyn@futurfusion.io>
+>
+> Dear Alex,
+>
+> first of all thank you very much for such a fast reaction and review ;-)
+>
+> >
+> > At first I wondered why the FE needs to care about where the BE is
+> > routed to but 7bb86085e61 (char: chardevice hotswap) explains:
+> >
+> >   However, backends are not stateless and are set up by the frontends
+> >   via qemu_chr_fe_<> functions, and it's not (generally) possible to
+> >   replay that setup entirely in a backend code, as different chardevs
+> >   respond to the setup calls differently, so do frontends work
+> >   differently basing on those setup responses. Moreover, some frontend
+> >   can generally get and save the backend pointer
+> >   (qemu_chr_fe_get_driver()), and it will become invalid after backend
+> >   change.
+>
+> yes, exactly
+>
+> >
+> > > ---
+> > >  hw/char/pl011.c | 16 +++++++++++++++-
+> > >  1 file changed, 15 insertions(+), 1 deletion(-)
+> > >
+> > > diff --git a/hw/char/pl011.c b/hw/char/pl011.c
+> > > index cb12c3e224f..3622248ec0c 100644
+> > > --- a/hw/char/pl011.c
+> > > +++ b/hw/char/pl011.c
+> > > @@ -660,12 +660,26 @@ static void pl011_init(Object *obj)
+> > >      s->id =3D pl011_id_arm;
+> > >  }
+> > >
+> > > +static int pl011_be_change(void *opaque)
+> > > +{
+> > > +    PL011State *s =3D opaque;
+> > > +    int break_enable =3D s->lcr & LCR_BRK;
+> > > +
+> > > +    qemu_chr_fe_set_handlers(&s->chr, pl011_can_receive, pl011_recei=
+ve,
+> > > +                             pl011_event, pl011_be_change, s, NULL, =
+true);
+> > > +
+> > > +    qemu_chr_fe_ioctl(&s->chr, CHR_IOCTL_SERIAL_SET_BREAK,
+> > > +                      &break_enable);
+> >
+> > So this is just ensuring that if we switch to a serial backend we
+> > properly register the break behaviour on the backend? Is it idempotent?
+>
+> Right. And AFAIU, `CHR_IOCTL_SERIAL_SET_BREAK` is specific to the
+> char-serial device only.
+>
+> So when we switch, let's say, from a serial to a socket backend, this
+> call is basically a no-op.
+> But when we switch back from the socket to the serial, this will
+> trigger `tcsendbreak(fioc->fd, 1)`, which is not idempotent (and is a
+> single-shot action).
+>
+> But I believe it's not a problem here, because we do it once when we
+> *switch* between two different backends, and `fioc->fd` is a fresh fd
+> every time.
+> My point is that we can't really trigger this thing twice for the same fd=
+.
+>
+> Please, correct me if I'm wrong. I took inspiration from 16550A's
+> serial_be_change() when working on this.
+>
+> =3D=3D=3D=3D BEGIN offtopic :-)
+>
+> Btw, thanks to your question I did some more research on tcsendbreak()
+> and BRK behavior [1] and it feels to me that what we currently have in
+> pl011 UARTLCR_H's register handling code is not really correct. See:
+>
+> static void pl011_write(void *opaque, hwaddr offset,
+>                         uint64_t value, unsigned size)
+> {
+> <..>
+>     case 11: /* UARTLCR_H */
+>         /* Reset the FIFO state on FIFO enable or disable */
+>         if ((s->lcr ^ value) & LCR_FEN) {
+>             pl011_reset_rx_fifo(s);
+>             pl011_reset_tx_fifo(s);
+>         }
+>         if ((s->lcr ^ value) & LCR_BRK) {
+>
+>            // << spec [1] says that setting BRK means "If this bit is
+> set to 1, a low-level is continually output on the UARTTXD output,
+> after completing transmission of the current character."
+>            // what we do is CHR_IOCTL_SERIAL_SET_BREAK which is just
+> tcsendbreak(fioc->fd, 1) under the hood which can't emulate continuous
+> low-level signal on the UARTTXD output
+>            // for the time of BRK bit is set. It only does this for a
+> short period of time.
+>
+>             int break_enable =3D value & LCR_BRK;
+>             qemu_chr_fe_ioctl(&s->chr, CHR_IOCTL_SERIAL_SET_BREAK,
+>                               &break_enable);
+>             pl011_loopback_break(s, break_enable);
+>         }
+>
+> I guess we need some pl011 expert in here :-)
+>
+> [1] https://support.arm.com/documentation/ddi0183/g/programmers-model/reg=
+ister-descriptions/line-control-register--uartlcr-h
+
+Dear friends,
+
+I looked closely into this stuff and found something interesting I
+would like to share just in case
+and discuss. (I'm not an expert in UART or tty code, so I can be wrong
+in my understanding.)
+
+1. It seems to me that QEMU BRK emulation code for both PL011 and
+16550A is not fully correct.
+
+According to the spec for PL011 [1]:
+=3D=3D=3D
+Send break. If this bit is set to 1, a low-level is continually output
+on the UARTTXD output, after completing transmission of the current
+character. For the proper execution of the break command, the software
+must set this bit for at least two complete frames.
+
+For normal use, this bit must be cleared to 0.
+=3D=3D=3D
+
+According to the spec for 16550A [2]:
+=3D=3D=3D
+bit 6: When this bit is set a break condition is
+forced in the transmission line. The serial output
+pin (txd) is forced to the spacing state (zero).
+When this bit is cleared, the break state is
+removed. The break state has no effect on the
+transmitter=E2=80=99s logic, so if several characters are
+stored in the transmitter=E2=80=99s FIFO they will be
+removed from this FIFO and passed
+sequentially to the Transmitter Shift Register
+which serializes them. This fact can be useful to
+establish the break time making use of the THR
+Empty and Transmitter Empty flags of the LSR
+=3D=3D=3D
+
+My interpretation of this is that setting a BRK flag for both means
+that TX line will be set to spacing state (zero) for an infinite time
+(until bit is unset).
+
+Our implementation in QEMU for both just calls qemu_chr_fe_ioctl(..
+CHR_IOCTL_SERIAL_SET_BREAK ..) which is just:
+=3D=3D=3D
+            int enable =3D *(int *)arg;
+            if (enable) {
+                tcsendbreak(fioc->fd, 1);
+            }
+=3D=3D=3D
+under the hood.
+
+tcsendbreak() in glibc is implemented as ioctl(TCSBRK / TCSBRKP),
+which internally sets a BRK bit for a certain
+period of time and unsets it back. To be fully sure, I looked into the
+Linux kernel, and the call stack is the following:
+tty_ioctl(TCSBRK / TCSBRKP) -> send_break():
+
+=3D=3D=3D
+/**
+ * send_break - performed time break
+ * @tty: device to break on
+ * @duration: timeout in mS
+ *
+ * Perform a timed break on hardware that lacks its own driver level timed
+ * break functionality.
+ *
+ * Locking:
+ * @tty->atomic_write_lock serializes
+ */
+static int send_break(struct tty_struct *tty, unsigned int duration)
+{
+        int retval;
+
+        if (tty->ops->break_ctl =3D=3D NULL)
+                return 0;
+
+        if (tty->driver->flags & TTY_DRIVER_HARDWARE_BREAK) // <<<
+*not* our case
+                return tty->ops->break_ctl(tty, duration);
+
+        /* Do the work ourselves */
+        if (tty_write_lock(tty, false) < 0)
+                return -EINTR;
+
+        retval =3D tty->ops->break_ctl(tty, -1); // << set BRK bit
+        if (!retval) {
+                msleep_interruptible(duration);
+                retval =3D tty->ops->break_ctl(tty, 0); // << unset BRK bit
+        } else if (retval =3D=3D -EOPNOTSUPP) {
+                /* some drivers can tell only dynamically */
+                retval =3D 0;
+        }
+        tty_write_unlock(tty);
+
+        if (signal_pending(current))
+                retval =3D -EINTR;
+
+        return retval;
+}
+=3D=3D=3D
+
+tty->ops->break_ctl is just uart_break_ctl() which in turns is just a
+wrapper for (struct uart_ops *)->break_ctl().
+
+For PL011 (struct uart_ops *)->break_ctl is pl011_break_ctl():
+=3D=3D=3D
+static void pl011_break_ctl(struct uart_port *port, int break_state)
+{
+        struct uart_amba_port *uap =3D
+            container_of(port, struct uart_amba_port, port);
+        unsigned long flags;
+        unsigned int lcr_h;
+
+        uart_port_lock_irqsave(&uap->port, &flags);
+        lcr_h =3D pl011_read(uap, REG_LCRH_TX);
+        if (break_state =3D=3D -1)
+                lcr_h |=3D UART01x_LCRH_BRK;
+        else
+                lcr_h &=3D ~UART01x_LCRH_BRK;
+        pl011_write(lcr_h, uap, REG_LCRH_TX);
+        uart_port_unlock_irqrestore(&uap->port, flags);
+}
+=3D=3D=3D
+
+For 16550A (struct uart_ops *)->break_ctl is serial8250_break_ctl():
+=3D=3D=3D
+static void serial8250_break_ctl(struct uart_port *port, int break_state)
+{
+        struct uart_8250_port *up =3D up_to_u8250p(port);
+
+        guard(serial8250_rpm)(up);
+        guard(uart_port_lock_irqsave)(port);
+
+        if (break_state =3D=3D -1)
+                up->lcr |=3D UART_LCR_SBC;
+        else
+                up->lcr &=3D ~UART_LCR_SBC;
+        serial_port_out(port, UART_LCR, up->lcr);
+}
+=3D=3D=3D
+
+i.e the same logic.
+
+It means that our current code in QEMU is good enough for simple cases
+when the guest sets a BRK bit
+for a short period of time. The guest can't really see the difference.
+I hoped that this pattern when
+BRK bit is set and then cleared is the only way how BRK bit is used in
+Linux kernel (then our gap in the
+implementation would not be noticeable as Linux kernel is our primary
+kernel), but it's not.
+
+We actually have:
+=3D=3D=3D
+/*
+ * Split this up, as gcc can choke on it otherwise..
+ */
+long tty_ioctl(struct file *file, unsigned int cmd, unsigned long arg)
+{
+<...>
+        case TIOCSBRK: /* Turn break on, unconditionally */
+                if (tty->ops->break_ctl)
+                        return tty->ops->break_ctl(tty, -1);
+                return 0;
+        case TIOCCBRK: /* Turn break off, unconditionally */
+                if (tty->ops->break_ctl)
+                        return tty->ops->break_ctl(tty, 0);
+                return 0;
+=3D=3D=3D
+
+So even *userspace* can set BRK bit for PL011/16550A for as long as it want=
+s to!
+
+The question is why we don't use these ioctls in QEMU to properly
+emulate BRK behavior and instead use ioctl(TCSBRK / TCSBRKP)
+which sets BRK bit and clears it after a short period of time?.. There
+must be a reason, but I'm not familiar with the code
+to see it. Ideas?
+
+Link: https://support.arm.com/documentation/ddi0183/f/programmer-s-model/re=
+gister-descriptions/line-control-register--uartlcr-h
+[1]
+Link: https://caro.su/msx/ocm_de1/16550.pdf [2]
+
+Kind regards,
+Alex
+
+>
+> >
+> > > +
+> > > +    return 0;
+> > > +}
+> > > +
+> > >  static void pl011_realize(DeviceState *dev, Error **errp)
+> > >  {
+> > >      PL011State *s =3D PL011(dev);
+> > >
+> > >      qemu_chr_fe_set_handlers(&s->chr, pl011_can_receive, pl011_recei=
+ve,
+> > > -                             pl011_event, NULL, s, NULL, true);
+> > > +                             pl011_event, pl011_be_change, s, NULL, =
+true);
+> > >  }
+> >
+> > This does make me wonder if having a static pl011_set_handlers helper
+> > would keep things tidy and in one place? Either way:
+>
+> I'm happy to do this too if you want me to. And probably for
+> hw/char/serial.c too, then?
+>
+> >
+> > Reviewed-by: Alex Benn=C3=A9e <alex.bennee@linaro.org>
+>
+> Thanks ;-)
+>
+> Giving all the suspicion around UARTLCR_H and BRK behavior I still
+> believe that I'm not making things
+> worse by this change, but better, cause now we can do backend hotswap.
+> But it would be great to fully
+> understand that part too.
+>
+> Kind regards,
+> Alex
+>
+> >
+> > >
+> > >  static void pl011_reset(DeviceState *dev)
+> >
+> > --
+> > Alex Benn=C3=A9e
+> > Virtualisation Tech Lead @ Linaro
 

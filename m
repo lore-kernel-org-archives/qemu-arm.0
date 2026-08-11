@@ -4,74 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 48F54C5B572
-	for <qemu-arm@archiver.kernel.org>; Tue, 11 Aug 2026 16:43:02 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 661C6C5B572
+	for <qemu-arm@archiver.kernel.org>; Tue, 11 Aug 2026 16:43:11 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wtpNK-00006Q-FW; Tue, 11 Aug 2026 12:30:50 -0400
+	id 1wtpOR-0004VW-LC; Tue, 11 Aug 2026 12:31:59 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1wtpN8-00087U-5l
- for qemu-arm@nongnu.org; Tue, 11 Aug 2026 12:30:40 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1wtpOM-0004Ou-UJ
+ for qemu-arm@nongnu.org; Tue, 11 Aug 2026 12:31:57 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1wtpN6-0000c1-FL
- for qemu-arm@nongnu.org; Tue, 11 Aug 2026 12:30:37 -0400
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1wtpOK-0000vW-Q2
+ for qemu-arm@nongnu.org; Tue, 11 Aug 2026 12:31:54 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1786465835;
+ s=mimecast20190719; t=1786465912;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=3iBsmncndZX3hlxtfnYzg6iigcXfUFrsWsFn7YPpJh4=;
- b=MjahS8vhbQ3IEDoWc0XvnddusfZjBKb8dvOqgO/TrYBHD3+JJf3M7tzZKycb/5Exw+yrNE
- qgx/0hhHDarIfU2+Ibmaq30y60El8fzsRLRCXoMfG9Ea70CMl3M8v6GwBHs8rJpj7oXSWw
- rVhklZzfz5cR1sjWb35TnCnyAqr+9vc=
-Received: from mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
+ bh=TgH6ERZczx4UxGVPBPz89mnVaYqeZ2Y6omJz4Q7M7lY=;
+ b=XSc7EXSXrydnMB+DalKbWjpVbQpOQpqE+iUC+bOU5gvG8tqPC9AW+9SHA5Q9f/XBFGaJNk
+ Ss/Vd80L96HvwFiyCWK4lr+D71yLk7UfUxHoabxJZTF+Y9C8JmENPjHTS4R/Ig+aHNOldx
+ K9R2jY/5kG8YlcC64ITvgUL61i+ReXk=
+Received: from mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-689-woJd2kGRPfS6O3dRKNiorA-1; Tue,
- 11 Aug 2026 12:30:32 -0400
-X-MC-Unique: woJd2kGRPfS6O3dRKNiorA-1
-X-Mimecast-MFC-AGG-ID: woJd2kGRPfS6O3dRKNiorA_1786465831
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-564-S7rYabjnPjOvXyX6OCMJYQ-1; Tue,
+ 11 Aug 2026 12:31:49 -0400
+X-MC-Unique: S7rYabjnPjOvXyX6OCMJYQ-1
+X-Mimecast-MFC-AGG-ID: S7rYabjnPjOvXyX6OCMJYQ_1786465908
 Received: from mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com
  (mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.12])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 66E4B19560B2; Tue, 11 Aug 2026 16:30:31 +0000 (UTC)
+ by mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 8B5D21800868; Tue, 11 Aug 2026 16:31:48 +0000 (UTC)
 Received: from corto.redhat.com (unknown [10.44.48.12])
  by mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id 9A3AB195DF98; Tue, 11 Aug 2026 16:30:29 +0000 (UTC)
+ id 1D964195DF96; Tue, 11 Aug 2026 16:31:46 +0000 (UTC)
 From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Cc: Jamin Lin <jamin_lin@aspeedtech.com>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@oss.qualcomm.com>,
+Cc: Emmanuel Blot <emmanuel.blot@free.fr>,
  =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>
-Subject: [PULL 22/83] hw/arm/aspeed_ast27x0: Pass realized PSP SoC to SSP/TSP
- initialization
-Date: Tue, 11 Aug 2026 18:28:37 +0200
-Message-ID: <20260811162938.1403216-23-clg@redhat.com>
+Subject: [PULL 58/83] hw/arm: catalina: add NIC and FIO temperature sensors
+Date: Tue, 11 Aug 2026 18:29:13 +0200
+Message-ID: <20260811162938.1403216-59-clg@redhat.com>
 In-Reply-To: <20260811162938.1403216-1-clg@redhat.com>
 References: <20260811162938.1403216-1-clg@redhat.com>
 MIME-Version: 1.0
 X-Scanned-By: MIMEDefang 3.0 on 10.30.177.12
-X-Mimecast-MFC-PROC-ID: Lyi5nHWW5B-u-xRzb4lwKC6EfyuOXpU1_As-P6zciLg_1786465831
+X-Mimecast-MFC-PROC-ID: kEqa3ts61P3h5iUOojy-eBRd-ybpLDEC8l0YrtR88Dc_1786465908
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=clg@redhat.com;
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=clg@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: 11
-X-Spam_score: 1.1
-X-Spam_bar: +
-X-Spam_report: (1.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.102,
+X-Spam_score_int: -21
+X-Spam_score: -2.2
+X-Spam_bar: --
+X-Spam_report: (-2.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.102,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=0.001, RCVD_IN_SBL_CSS=3.335,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=no autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -87,82 +85,83 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-From: Jamin Lin <jamin_lin@aspeedtech.com>
+From: Emmanuel Blot <emmanuel.blot@free.fr>
 
-Pass the realized PSP SoC to the SSP/TSP initialization helpers instead
-of retrieving it from the MachineState.
+Model the temperature sensors described by the Catalina device tree that
+have existing QEMU device models but were not yet instantiated: the four
+IOB NIC TMP421 sensors behind the i2c0 PCA9546 muxes at 0x71 and 0x75, and
+the FIO remote TMP75 sensor at 0x4f on the i2c1 mux.
 
-This makes the dependency explicit, since the SSP and TSP coprocessors
-use resources owned by the PSP SoC, including the UARTs, SRAM, SCU and
-SCUIO. The PSP SoC must therefore be realized before the coprocessors
-are initialized.
-
-No functional change.
-
-Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
-Reviewed-by: Philippe Mathieu-Daudé <philmd@oss.qualcomm.com>
+Signed-off-by: Emmanuel Blot <emmanuel.blot@free.fr>
 Reviewed-by: Cédric Le Goater <clg@redhat.com>
-Tested-by: Philippe Mathieu-Daudé <philmd@oss.qualcomm.com>
-Link: https://lore.kernel.org/qemu-devel/20260717084559.3477061-6-jamin_lin@aspeedtech.com
+Link: https://lore.kernel.org/qemu-devel/20260709-catalina-upgrade-v1-25-82a63fead90c@free.fr
 Signed-off-by: Cédric Le Goater <clg@redhat.com>
 ---
- hw/arm/aspeed_ast27x0-fc.c | 26 ++++++++++++++++----------
- 1 file changed, 16 insertions(+), 10 deletions(-)
+ hw/arm/aspeed_ast2600_catalina.c | 30 +++++++++++++++++++++++-------
+ 1 file changed, 23 insertions(+), 7 deletions(-)
 
-diff --git a/hw/arm/aspeed_ast27x0-fc.c b/hw/arm/aspeed_ast27x0-fc.c
-index 8d49bb95d67b..58d0b4d7cd59 100644
---- a/hw/arm/aspeed_ast27x0-fc.c
-+++ b/hw/arm/aspeed_ast27x0-fc.c
-@@ -134,11 +134,9 @@ static bool ast2700fc_ca35_init(MachineState *machine, Error **errp)
-     return true;
- }
+diff --git a/hw/arm/aspeed_ast2600_catalina.c b/hw/arm/aspeed_ast2600_catalina.c
+index f3b22e9aa9a0..f714c9d1b32b 100644
+--- a/hw/arm/aspeed_ast2600_catalina.c
++++ b/hw/arm/aspeed_ast2600_catalina.c
+@@ -472,7 +472,16 @@ static void catalina_bmc_i2c_init(AspeedMachineState *bmc)
  
--static bool ast2700fc_ssp_init(MachineState *machine, Error **errp)
-+static bool ast2700fc_ssp_init(Ast2700FCState *s, AspeedSoCState *psp,
-+                               Error **errp)
- {
--    Ast2700FCState *s = AST2700FC(machine);
--    AspeedSoCState *psp = ASPEED_SOC(&s->ca35);
--
-     s->ssp_sysclk = clock_new(OBJECT(s), "SSP_SYSCLK");
-     clock_set_hz(s->ssp_sysclk, 200000000ULL);
- 
-@@ -166,11 +164,9 @@ static bool ast2700fc_ssp_init(MachineState *machine, Error **errp)
-     return true;
- }
- 
--static bool ast2700fc_tsp_init(MachineState *machine, Error **errp)
-+static bool ast2700fc_tsp_init(Ast2700FCState *s, AspeedSoCState *psp,
-+                               Error **errp)
- {
--    Ast2700FCState *s = AST2700FC(machine);
--    AspeedSoCState *psp = ASPEED_SOC(&s->ca35);
--
-     s->tsp_sysclk = clock_new(OBJECT(s), "TSP_SYSCLK");
-     clock_set_hz(s->tsp_sysclk, 200000000ULL);
- 
-@@ -200,9 +196,19 @@ static bool ast2700fc_tsp_init(MachineState *machine, Error **errp)
- 
- static void ast2700fc_init(MachineState *machine)
- {
-+    Ast2700FCState *s = AST2700FC(machine);
-+    AspeedSoCState *psp;
+     /* &i2c0 */
+     /* i2c-mux@71 (PCA9546) on i2c0 */
+-    i2c_slave_create_simple(i2c[0], TYPE_PCA9546, 0x71);
++    i2c_mux = i2c_slave_create_simple(i2c[0], TYPE_PCA9546, 0x71);
 +
-     ast2700fc_ca35_init(machine, &error_abort);
--    ast2700fc_ssp_init(machine, &error_abort);
--    ast2700fc_tsp_init(machine, &error_abort);
-+
-+    /*
-+     * SSP and TSP use resources owned by the PSP SoC, such as UART,
-+     * SRAM, SCU and SCUIO.  Therefore the PSP SoC must be realized
-+     * before the coprocessors are initialized.
-+     */
-+    psp = ASPEED_SOC(&s->ca35);
-+    ast2700fc_ssp_init(s, psp, &error_abort);
-+    ast2700fc_tsp_init(s, psp, &error_abort);
- }
++    /* i2c0mux0ch0 */
++    /* IOB0 NIC0 temperature-sensor@1f - tmp421 */
++    i2c_slave_create_simple(pca954x_i2c_get_bus(i2c_mux, 0),
++                            TYPE_TMP421, 0x1f);
++    /* i2c0mux0ch2 */
++    /* IOB0 NIC1 temperature-sensor@1f - tmp421 */
++    i2c_slave_create_simple(pca954x_i2c_get_bus(i2c_mux, 2),
++                            TYPE_TMP421, 0x1f);
  
- static void ast2700fc_class_init(ObjectClass *oc, const void *data)
+     /* i2c-mux@72 (PCA9546) on i2c0 */
+     i2c_mux = i2c_slave_create_simple(i2c[0], TYPE_PCA9546, 0x72);
+@@ -489,7 +498,16 @@ static void catalina_bmc_i2c_init(AspeedMachineState *bmc)
+     i2c_slave_create_simple(i2c[0], TYPE_PCA9546, 0x73);
+ 
+     /* i2c-mux@75 (PCA9546) on i2c0 */
+-    i2c_slave_create_simple(i2c[0], TYPE_PCA9546, 0x75);
++    i2c_mux = i2c_slave_create_simple(i2c[0], TYPE_PCA9546, 0x75);
++
++    /* i2c0mux3ch0 */
++    /* IOB1 NIC0 temperature-sensor@1f - tmp421 */
++    i2c_slave_create_simple(pca954x_i2c_get_bus(i2c_mux, 0),
++                            TYPE_TMP421, 0x1f);
++    /* i2c0mux3ch2 */
++    /* IOB1 NIC1 temperature-sensor@1f - tmp421 */
++    i2c_slave_create_simple(pca954x_i2c_get_bus(i2c_mux, 2),
++                            TYPE_TMP421, 0x1f);
+ 
+     /* i2c-mux@76 (PCA9546) on i2c0 */
+     i2c_mux = i2c_slave_create_simple(i2c[0], TYPE_PCA9546, 0x76);
+@@ -544,6 +562,8 @@ static void catalina_bmc_i2c_init(AspeedMachineState *bmc)
+                           fio_eeprom, fio_eeprom_len);
+     /* temperature-sensor@4b - tmp75 */
+     i2c_slave_create_simple(pca954x_i2c_get_bus(i2c_mux, 7), TYPE_TMP75, 0x4b);
++    /* temperature-sensor@4f - tmp75 (FIO remote) */
++    i2c_slave_create_simple(pca954x_i2c_get_bus(i2c_mux, 7), TYPE_TMP75, 0x4f);
+ 
+     /* &i2c2 */
+     /* io_expander0 - pca9555@20 */
+@@ -564,11 +584,7 @@ static void catalina_bmc_i2c_init(AspeedMachineState *bmc)
+     /* eeprom@52 */
+     at24c_eeprom_init_rom(pca954x_i2c_get_bus(i2c_mux, 6), 0x52, 8 * KiB,
+                           hdd_eeprom, hdd_eeprom_len);
+-    /* i2c5mux0ch7 */
+-    /* ina230@40 - no model */
+-    /* ina230@41 - no model */
+-    /* ina230@44 - no model */
+-    /* ina230@45 - no model */
++    /* i2c5mux0ch7 - empty */
+ 
+     /* &i2c6 */
+     /* io_expander3 - pca9555@21 */
 -- 
 2.55.0
 

@@ -4,74 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D5901C5B572
-	for <qemu-arm@archiver.kernel.org>; Tue, 11 Aug 2026 16:37:01 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 919C2C5CFCF
+	for <qemu-arm@archiver.kernel.org>; Tue, 11 Aug 2026 16:37:09 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wtpNv-00027P-VR; Tue, 11 Aug 2026 12:31:28 -0400
+	id 1wtpOc-0005BE-MV; Tue, 11 Aug 2026 12:32:10 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1wtpNh-0001Jw-9S
- for qemu-arm@nongnu.org; Tue, 11 Aug 2026 12:31:13 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1wtpOb-00053A-6b
+ for qemu-arm@nongnu.org; Tue, 11 Aug 2026 12:32:09 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1wtpNe-0000kX-1n
- for qemu-arm@nongnu.org; Tue, 11 Aug 2026 12:31:12 -0400
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1wtpOZ-0000yi-CK
+ for qemu-arm@nongnu.org; Tue, 11 Aug 2026 12:32:08 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1786465869;
+ s=mimecast20190719; t=1786465926;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=hWgHS+a9nGFf22zZsb7nNIMZ0M9viWh83NHppztR4aM=;
- b=GtPzOO0D/1LKFiCt3AV+mdFlcvGKntURQXUJWzVQyQ8U/6YKv1yL1pQQ4yHh1tzQPp9Qmc
- MByG/GJqlgXRBJpkjP9Bi092UqS6VQsefC4raEbOWakV0T5z0CvdCDqzuMAXZI8C/ZealJ
- k2hw67Q2uT2Yx5Z1mhzBejtHQwWkmvA=
+ bh=CIyMbWhec1B0+L24CEnUkqC2biE1/1ODmPck/Ck2FlM=;
+ b=E8fwSVIkA3eDOUgnuUxVGIdmXau+1w16g54C+KAkmxm+9miCYwro23VCJlwztw/ijw6/XS
+ BMRJJZ9vtAM3C07aHG4ygKIy3jar1NN3ZftiDIXfoZMiLaaFoQu3K4CnBK9Ovk1o0JAx9q
+ sQUnKmJbtwv027XoPNqbksAXArNlfo4=
 Received: from mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com
  (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-658-PcltlInLPx-NLfFnRYvYdg-1; Tue,
- 11 Aug 2026 12:31:06 -0400
-X-MC-Unique: PcltlInLPx-NLfFnRYvYdg-1
-X-Mimecast-MFC-AGG-ID: PcltlInLPx-NLfFnRYvYdg_1786465865
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-315-xywXyWCuOJyN-7uWWqhN4w-1; Tue,
+ 11 Aug 2026 12:32:03 -0400
+X-MC-Unique: xywXyWCuOJyN-7uWWqhN4w-1
+X-Mimecast-MFC-AGG-ID: xywXyWCuOJyN-7uWWqhN4w_1786465922
 Received: from mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com
  (mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.12])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
  by mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id ECF53195604C; Tue, 11 Aug 2026 16:31:04 +0000 (UTC)
+ id 46A8F1954B07; Tue, 11 Aug 2026 16:32:02 +0000 (UTC)
 Received: from corto.redhat.com (unknown [10.44.48.12])
  by mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id 44787195DF91; Tue, 11 Aug 2026 16:31:03 +0000 (UTC)
+ id CD86C195DF91; Tue, 11 Aug 2026 16:32:00 +0000 (UTC)
 From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Cc: Emmanuel Blot <emmanuel.blot@free.fr>, Glenn Miles <milesg@linux.ibm.com>,
+Cc: Jamin Lin <jamin_lin@aspeedtech.com>,
  =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>
-Subject: [PULL 38/83] hw/gpio: pca9552: declare pca9555 device as an alias of
- pca9535 device
-Date: Tue, 11 Aug 2026 18:28:53 +0200
-Message-ID: <20260811162938.1403216-39-clg@redhat.com>
+Subject: [PULL 65/83] tests/functional/arm/test_aspeed_ast1030: Update ASPEED
+ Zephyr SDK v03.08
+Date: Tue, 11 Aug 2026 18:29:20 +0200
+Message-ID: <20260811162938.1403216-66-clg@redhat.com>
 In-Reply-To: <20260811162938.1403216-1-clg@redhat.com>
 References: <20260811162938.1403216-1-clg@redhat.com>
 MIME-Version: 1.0
 X-Scanned-By: MIMEDefang 3.0 on 10.30.177.12
-X-Mimecast-MFC-PROC-ID: ig_sXfFzntJf4Grx765k9wDbkD6qnfAc08I_qgx07lU_1786465865
+X-Mimecast-MFC-PROC-ID: mGWy0aunCroO6Zht2Gsgy7uJvC737THWjxvOdEnwt_0_1786465922
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=clg@redhat.com;
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=clg@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: 11
 X-Spam_score: 1.1
 X-Spam_bar: +
 X-Spam_report: (1.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.102,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
- RCVD_IN_SBL_CSS=3.335, SPF_HELO_PASS=-0.001,
- SPF_PASS=-0.001 autolearn=no autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=0.001, RCVD_IN_SBL_CSS=3.335,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -87,60 +86,51 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-From: Emmanuel Blot <emmanuel.blot@free.fr>
+From: Jamin Lin <jamin_lin@aspeedtech.com>
 
-PCA9555 HW is mostly identical to PCA9535.
-PCA9555 HW features pull-up resistors that are not available on PCA9535.
-
-Pull-up are not handled by current PCA955x implementation and PCA9535
-already initializes input as Hi-Z.
-
-Signed-off-by: Emmanuel Blot <emmanuel.blot@free.fr>
-Reviewed-by: Glenn Miles <milesg@linux.ibm.com>
-Link: https://lore.kernel.org/qemu-devel/20260709-catalina-upgrade-v1-5-814575bc076b@free.fr
+Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
+Reviewed-by: Cédric Le Goater <clg@redhat.com>
+Link: https://lore.kernel.org/qemu-devel/20260804081955.1563537-8-jamin_lin@aspeedtech.com
 Signed-off-by: Cédric Le Goater <clg@redhat.com>
 ---
- include/hw/gpio/pca9552.h | 1 +
- hw/gpio/pca9552.c         | 9 +++++++--
- 2 files changed, 8 insertions(+), 2 deletions(-)
+ tests/functional/arm/test_aspeed_ast1030.py | 12 ++++++------
+ 1 file changed, 6 insertions(+), 6 deletions(-)
 
-diff --git a/include/hw/gpio/pca9552.h b/include/hw/gpio/pca9552.h
-index 71479ea0006e..5299c13829b3 100644
---- a/include/hw/gpio/pca9552.h
-+++ b/include/hw/gpio/pca9552.h
-@@ -13,5 +13,6 @@
- #define TYPE_PCA955X "pca955x"
- #define TYPE_PCA9552 "pca9552"
- #define TYPE_PCA9535 "pca9535"
-+#define TYPE_PCA9555 "pca9555"
+diff --git a/tests/functional/arm/test_aspeed_ast1030.py b/tests/functional/arm/test_aspeed_ast1030.py
+index 03fee55b5f8e..83a96ec322fa 100755
+--- a/tests/functional/arm/test_aspeed_ast1030.py
++++ b/tests/functional/arm/test_aspeed_ast1030.py
+@@ -12,17 +12,17 @@
  
- #endif
-diff --git a/hw/gpio/pca9552.c b/hw/gpio/pca9552.c
-index ffeb438d2ab4..3b9b63eb1766 100644
---- a/hw/gpio/pca9552.c
-+++ b/hw/gpio/pca9552.c
-@@ -523,7 +523,7 @@ static void pca9552_class_init(ObjectClass *oc, const void *data)
-     pc->has_led_support = true;
- }
+ class AST1030Machine(AspeedTest):
  
--static void pca9535_class_init(ObjectClass *oc, const void *data)
-+static void pca95x5_class_init(ObjectClass *oc, const void *data)
- {
-     DeviceClass *dc = DEVICE_CLASS(oc);
-     PCA955xClass *pc = PCA955X_CLASS(oc);
-@@ -553,7 +553,12 @@ static const TypeInfo pca955x_types[] = {
-     {
-         .name          = TYPE_PCA9535,
-         .parent        = TYPE_PCA955X,
--        .class_init    = pca9535_class_init,
-+        .class_init    = pca95x5_class_init,
-+    },
-+    {
-+        .name          = TYPE_PCA9555,
-+        .parent        = TYPE_PCA955X,
-+        .class_init    = pca95x5_class_init,
-     }
- };
+-    ASSET_ZEPHYR_3_06 = Asset(
++    ASSET_ZEPHYR_3_08 = Asset(
+         ('https://github.com/AspeedTech-BMC'
+-         '/zephyr/releases/download/v00.03.06/ast1030-evb-demo.zip'),
+-         '056f37fcd9f165308cedca3a08f2bed37ed40c0a1402c4fa515613b80a369f38')
++         '/zephyr/releases/download/v00.03.08/ast1030-evb-demo.zip'),
++         '9eac3691bc7bce1b912bbe2ae4e36608a6532ff8d607f4d1e44b88407a48d4e5')
+ 
+-    def test_arm_ast1030_zephyros_3_06(self):
++    def test_arm_ast1030_zephyros_3_08(self):
+         self.set_machine('ast1030-evb')
+ 
+         kernel_name = "ast1030-evb-demo/zephyr.elf"
+         kernel_file = self.archive_extract(
+-            self.ASSET_ZEPHYR_3_06, member=kernel_name)
++            self.ASSET_ZEPHYR_3_08, member=kernel_name)
+ 
+         self.vm.set_console()
+         self.vm.add_args('-kernel', kernel_file, '-nographic')
+@@ -72,7 +72,7 @@ def test_arm_ast1030_otp_blockdev_device(self):
+         self.vm.set_machine("ast1030-evb")
+ 
+         kernel_name = "ast1030-evb-demo/zephyr.elf"
+-        kernel_file = self.archive_extract(self.ASSET_ZEPHYR_3_06,
++        kernel_file = self.archive_extract(self.ASSET_ZEPHYR_3_08,
+                                            member=kernel_name)
+         otp_img = self.generate_otpmem_image()
  
 -- 
 2.55.0

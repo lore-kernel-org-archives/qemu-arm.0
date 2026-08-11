@@ -4,61 +4,60 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B490EC5CFCF
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E2E28C5B572
 	for <qemu-arm@archiver.kernel.org>; Tue, 11 Aug 2026 16:38:42 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wtpPS-0006FA-3P; Tue, 11 Aug 2026 12:33:02 -0400
+	id 1wtpOA-0003ab-MD; Tue, 11 Aug 2026 12:31:42 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1wtpOs-0005Tu-Ea
- for qemu-arm@nongnu.org; Tue, 11 Aug 2026 12:32:31 -0400
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1wtpNx-0002Ie-IT
+ for qemu-arm@nongnu.org; Tue, 11 Aug 2026 12:31:29 -0400
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1wtpOq-000120-GM
- for qemu-arm@nongnu.org; Tue, 11 Aug 2026 12:32:26 -0400
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1wtpNv-0000ow-OJ
+ for qemu-arm@nongnu.org; Tue, 11 Aug 2026 12:31:29 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1786465943;
+ s=mimecast20190719; t=1786465886;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=AO0itcOUQ5iDzf1JjREYIcpkfhsA5T4MmKPMBW1hLgk=;
- b=YisSJALnl7pf4rbJUt4KB/vhG+9gBwJ8dpX2TjWBlniAFIniv80cXNCMPoR08RP+rH7hGX
- zQESbLdd26l9ee+ruM5lD2L9pQWCEvcSu9Q71EgIZQCFnqV9G8MtQGyd6GsHJ46kWe6M1H
- khXgMRoZGjLqKvDi9TuCG0xuWQuNKiQ=
+ bh=HXAWtw7Em+ptZ30dAYgIonsq2wUGiEIUYdNgiY4wFrE=;
+ b=TBPlvy+EvTfe7A/kIJFue5+yRjohesr1J/XTTt7cBCdOX7hDGpdiqZtAf7dpABM/WbS0Sl
+ wXGpkQLMZ3CnXMFkalC1vnSAMf+7nkm5/yEu3kkJxScILv3r9z6yP1AxesCh50ZLYTprME
+ PWxmkkdW4hpWGwxtUf8G24A65aUWd6A=
 Received: from mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com
  (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-113-C-YyMo6LMJqe-wEIWFA8YA-1; Tue,
- 11 Aug 2026 12:32:20 -0400
-X-MC-Unique: C-YyMo6LMJqe-wEIWFA8YA-1
-X-Mimecast-MFC-AGG-ID: C-YyMo6LMJqe-wEIWFA8YA_1786465939
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-99-c6G47kS3PNWQXM34-T5Gbg-1; Tue,
+ 11 Aug 2026 12:31:21 -0400
+X-MC-Unique: c6G47kS3PNWQXM34-T5Gbg-1
+X-Mimecast-MFC-AGG-ID: c6G47kS3PNWQXM34-T5Gbg_1786465880
 Received: from mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com
  (mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.12])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
  by mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 332E0180087C; Tue, 11 Aug 2026 16:32:19 +0000 (UTC)
+ id 4DC5C1800878; Tue, 11 Aug 2026 16:31:20 +0000 (UTC)
 Received: from corto.redhat.com (unknown [10.44.48.12])
  by mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id 7FB3F195DF96; Tue, 11 Aug 2026 16:32:17 +0000 (UTC)
+ id 9B27D195DF9A; Tue, 11 Aug 2026 16:31:18 +0000 (UTC)
 From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Cc: Jamin Lin <jamin_lin@aspeedtech.com>, Kane Chen <kane_chen@aspeedtech.com>,
+Cc: Emmanuel Blot <emmanuel.blot@free.fr>, Glenn Miles <milesg@linux.ibm.com>,
  =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>
-Subject: [PULL 73/83] tests/qtest/aspeed-hace: Test the crypto command on the
- AST1030
-Date: Tue, 11 Aug 2026 18:29:28 +0200
-Message-ID: <20260811162938.1403216-74-clg@redhat.com>
+Subject: [PULL 45/83] tests/qtest: pca9555: test polarity inversion
+Date: Tue, 11 Aug 2026 18:29:00 +0200
+Message-ID: <20260811162938.1403216-46-clg@redhat.com>
 In-Reply-To: <20260811162938.1403216-1-clg@redhat.com>
 References: <20260811162938.1403216-1-clg@redhat.com>
 MIME-Version: 1.0
 X-Scanned-By: MIMEDefang 3.0 on 10.30.177.12
-X-Mimecast-MFC-PROC-ID: D4LQ8vsJU887qRL5dpf-wdZnZ3vJBYe6iuRvSuO838M_1786465939
+X-Mimecast-MFC-PROC-ID: XnFc2xZx5zJTioGGbnhTbM0URAvwLRXE-anNrPJoEGo_1786465880
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
@@ -70,7 +69,7 @@ X-Spam_bar: --
 X-Spam_report: (-2.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.102,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=0.001, SPF_HELO_PASS=-0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -86,38 +85,82 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-From: Jamin Lin <jamin_lin@aspeedtech.com>
+From: Emmanuel Blot <emmanuel.blot@free.fr>
 
-The AST1030 reuses the AST2600 crypto engine, so it drives the same
-scatter-gather transfers and supports the same ECB/CBC/CTR modes. Reuse
-the crypto known-answer tests to cover it, registering the AST1030 with
-the same modes and scatter-gather flag as the AST2600.
+Add tests for the polarity inversion register: the inversion is applied
+when reading the INPUT register, both for input pins (pull-up) and for
+output-driven pins, and it does not affect the OUTPUT register readback.
 
-Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
-Reviewed-by: Kane Chen <kane_chen@aspeedtech.com>
-Link: https://lore.kernel.org/qemu-devel/20260811060115.1849266-7-jamin_lin@aspeedtech.com
+Signed-off-by: Emmanuel Blot <emmanuel.blot@free.fr>
+Reviewed-by: Glenn Miles <milesg@linux.ibm.com>
+Link: https://lore.kernel.org/qemu-devel/20260709-catalina-upgrade-v1-12-82a63fead90c@free.fr
 Signed-off-by: Cédric Le Goater <clg@redhat.com>
 ---
- tests/qtest/aspeed_hace-test.c | 6 ++++++
- 1 file changed, 6 insertions(+)
+ tests/qtest/pca9555-test.c | 44 ++++++++++++++++++++++++++++++++++++++
+ 1 file changed, 44 insertions(+)
 
-diff --git a/tests/qtest/aspeed_hace-test.c b/tests/qtest/aspeed_hace-test.c
-index 61a3e3feb514..42130df1e239 100644
---- a/tests/qtest/aspeed_hace-test.c
-+++ b/tests/qtest/aspeed_hace-test.c
-@@ -210,6 +210,12 @@ int main(int argc, char **argv)
-     qtest_add_func("ast1030/hace/sha384_accum", test_sha384_accum_ast1030);
-     qtest_add_func("ast1030/hace/sha256_accum", test_sha256_accum_ast1030);
+diff --git a/tests/qtest/pca9555-test.c b/tests/qtest/pca9555-test.c
+index 6b085702c3c8..2afa061bd2e0 100644
+--- a/tests/qtest/pca9555-test.c
++++ b/tests/qtest/pca9555-test.c
+@@ -99,6 +99,46 @@ static void test_port_independence(void *obj, void *data,
+     g_assert_cmphex(i2c_get8(dev, PCA9535_OUTPUT1), ==, 0xAA);
+ }
  
-+    /* The AST1030 reuses the AST2600 crypto engine (scatter-gather, CTR). */
-+    aspeed_add_crypto_tests("ast1030", "-machine ast1030-evb", 0x7e6d0000,
-+                            0x00000000,
-+                            CRYPT_MODE_ECB | CRYPT_MODE_CBC | CRYPT_MODE_CTR,
-+                            true);
++/*
++ * Polarity inversion: reading INPUT with polarity bits set should
++ * return the XOR of the actual input state and the polarity register.
++ */
++static void test_polarity_inversion(void *obj, void *data,
++                                    QGuestAllocator *alloc)
++{
++    QI2CDevice *dev = (QI2CDevice *)obj;
 +
-     qtest_add_func("ast2600/hace/addresses", test_addresses_ast2600);
-     qtest_add_func("ast2600/hace/sha512", test_sha512_ast2600);
-     qtest_add_func("ast2600/hace/sha384", test_sha384_ast2600);
++    g_assert_cmphex(i2c_get8(dev, PCA9535_INPUT0), ==, 0xFF);
++
++    i2c_set8(dev, PCA9535_POLARITY0, 0xFF);
++    g_assert_cmphex(i2c_get8(dev, PCA9535_INPUT0), ==, 0x00);
++
++    i2c_set8(dev, PCA9535_POLARITY0, 0x0F);
++    g_assert_cmphex(i2c_get8(dev, PCA9535_INPUT0), ==, 0xF0);
++
++    g_assert_cmphex(i2c_get8(dev, PCA9535_INPUT1), ==, 0xFF);
++
++    i2c_set8(dev, PCA9535_POLARITY1, 0xAA);
++    g_assert_cmphex(i2c_get8(dev, PCA9535_INPUT1), ==, 0x55);
++}
++
++/* Polarity inversion combined with output-driven pins. */
++static void test_polarity_with_output(void *obj, void *data,
++                                      QGuestAllocator *alloc)
++{
++    QI2CDevice *dev = (QI2CDevice *)obj;
++
++    i2c_set8(dev, PCA9535_CONFIG0, 0x00);
++    i2c_set8(dev, PCA9535_OUTPUT0, 0xA5);
++
++    g_assert_cmphex(i2c_get8(dev, PCA9535_INPUT0), ==, 0xA5);
++
++    i2c_set8(dev, PCA9535_POLARITY0, 0xFF);
++    g_assert_cmphex(i2c_get8(dev, PCA9535_INPUT0), ==, 0x5A);
++
++    g_assert_cmphex(i2c_get8(dev, PCA9535_OUTPUT0), ==, 0xA5);
++}
++
+ static void pca9555_register_nodes(void)
+ {
+     QOSGraphEdgeOptions opts = {
+@@ -114,6 +154,10 @@ static void pca9555_register_nodes(void)
+                  NULL);
+     qos_add_test("input-pullup", "pca9555", test_input_pullup, NULL);
+     qos_add_test("port-independence", "pca9555", test_port_independence, NULL);
++    qos_add_test("polarity-inversion", "pca9555", test_polarity_inversion,
++                 NULL);
++    qos_add_test("polarity-with-output", "pca9555", test_polarity_with_output,
++                 NULL);
+ }
+ 
+ libqos_init(pca9555_register_nodes);
 -- 
 2.55.0
 

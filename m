@@ -4,73 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 34CF6C5B572
-	for <qemu-arm@archiver.kernel.org>; Tue, 11 Aug 2026 16:35:04 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EFC33C5B572
+	for <qemu-arm@archiver.kernel.org>; Tue, 11 Aug 2026 16:35:14 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wtpNJ-0008Uu-Ip; Tue, 11 Aug 2026 12:30:49 -0400
+	id 1wtpNQ-0000MW-Rm; Tue, 11 Aug 2026 12:30:56 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1wtpN1-0007y6-IF
- for qemu-arm@nongnu.org; Tue, 11 Aug 2026 12:30:32 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1wtpMy-0007vC-BQ
+ for qemu-arm@nongnu.org; Tue, 11 Aug 2026 12:30:30 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1wtpMx-0000YU-V1
- for qemu-arm@nongnu.org; Tue, 11 Aug 2026 12:30:31 -0400
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1wtpMt-0000Uy-L6
+ for qemu-arm@nongnu.org; Tue, 11 Aug 2026 12:30:28 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1786465827;
+ s=mimecast20190719; t=1786465821;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=9E55Ye2fkqHrKpeIFrpfy4+viF+fVXAqvwT0EPojipc=;
- b=ZT4WzH6+dk0/EvGtkeS3osh0BsMSD7dZIks3shI1qbRtizQOPJk+PlqWOA4ehm+7TuuXwA
- PdsS41wZR3Rj2ZuWhu/67dAsa6+UKtrMbfZfLDm7KR4oBrY8+5ydeHt8jk/jK6UJL0WJvM
- JqQKl+SFrEPFaijBXO7ppcym6gFeGj0=
-Received: from mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
+ bh=m2W+r9PJ3k5tM53YBGI0ZX0z6qHZTYSfbcrwc8qKpBA=;
+ b=B4c3amdA7r2CdELtMmg8EYhFDX1PYI7Hx3M1ukjASKNLmh1khQUpVgKEqMcGsrIZLXBCsE
+ UH2IBBqTXKO2+fQdWAILUVm8D91zmrrEN4SCS+AJFQMW4odSa3pZ+XwbRWvt/ewk/JyOrm
+ IzvWOGoKU95S9kDGBz3k8h6dXP7vhvA=
+Received: from mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-553-p2QYrI34OZy6enBqcBoFwg-1; Tue,
- 11 Aug 2026 12:30:25 -0400
-X-MC-Unique: p2QYrI34OZy6enBqcBoFwg-1
-X-Mimecast-MFC-AGG-ID: p2QYrI34OZy6enBqcBoFwg_1786465824
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-18-uaCUFYudPyGE91nTg36jsQ-1; Tue,
+ 11 Aug 2026 12:30:13 -0400
+X-MC-Unique: uaCUFYudPyGE91nTg36jsQ-1
+X-Mimecast-MFC-AGG-ID: uaCUFYudPyGE91nTg36jsQ_1786465812
 Received: from mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com
  (mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.12])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id A2FA6180035C; Tue, 11 Aug 2026 16:30:24 +0000 (UTC)
+ by mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 302C91954B07; Tue, 11 Aug 2026 16:30:12 +0000 (UTC)
 Received: from corto.redhat.com (unknown [10.44.48.12])
  by mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id C80C0195DF96; Tue, 11 Aug 2026 16:30:22 +0000 (UTC)
+ id 5EA88195DF91; Tue, 11 Aug 2026 16:30:10 +0000 (UTC)
 From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
 Cc: Jamin Lin <jamin_lin@aspeedtech.com>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@oss.qualcomm.com>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
  =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>
-Subject: [PULL 19/83] hw/arm/aspeed: Use Aspeed2700SCUState for AST2700 users
-Date: Tue, 11 Aug 2026 18:28:34 +0200
-Message-ID: <20260811162938.1403216-20-clg@redhat.com>
+Subject: [PULL 13/83] tests/functional/aarch64/test_aspeed_ast2700: Add USB
+ EHCI test for AST2700 A1/A2
+Date: Tue, 11 Aug 2026 18:28:28 +0200
+Message-ID: <20260811162938.1403216-14-clg@redhat.com>
 In-Reply-To: <20260811162938.1403216-1-clg@redhat.com>
 References: <20260811162938.1403216-1-clg@redhat.com>
 MIME-Version: 1.0
 X-Scanned-By: MIMEDefang 3.0 on 10.30.177.12
-X-Mimecast-MFC-PROC-ID: msi1O5WlPfYjgAuQDqs1_IEetxU3vzk3a1hl4VQrxPw_1786465824
+X-Mimecast-MFC-PROC-ID: QScNIKhIjK6w_4t8nDAPVhanKBDGQujKP2_1f5LdDy8_1786465812
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=clg@redhat.com;
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=clg@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -21
-X-Spam_score: -2.2
-X-Spam_bar: --
-X-Spam_report: (-2.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.102,
+X-Spam_score_int: 11
+X-Spam_score: 1.1
+X-Spam_bar: +
+X-Spam_report: (1.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.102,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=0.001, SPF_HELO_PASS=-0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ RCVD_IN_SBL_CSS=3.335, SPF_HELO_PASS=-0.001,
+ SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -88,130 +90,81 @@ Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
 From: Jamin Lin <jamin_lin@aspeedtech.com>
 
-Now that Aspeed2700SCUState has been introduced, update the AST1700 and
-AST27x0 SoCs to instantiate the AST2700-specific SCU subclass instead of
-the generic AspeedSCUState.
+Add a functional test to verify USB EHCI support on the AST2700 A2/A1
+by attaching a USB keyboard device and checking its
+enumeration via lsusb.
 
-Also update the AST27x0 FC board to link the SSP/TSP coprocessors to the
-AST2700 SCU instance.
-
-This prepares the AST2700 platform for subsequent patches that move
-AST2700-specific SCU functionality into the subclass.
-
-No functional change.
+This introduces a helper routine that runs lsusb in the guest
+and validates that the emulated "QEMU USB Keyboard" is detected.
 
 Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
-Reviewed-by: Philippe Mathieu-Daudé <philmd@oss.qualcomm.com>
+Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 Reviewed-by: Cédric Le Goater <clg@redhat.com>
-Tested-by: Philippe Mathieu-Daudé <philmd@oss.qualcomm.com>
-Link: https://lore.kernel.org/qemu-devel/20260717084559.3477061-3-jamin_lin@aspeedtech.com
+Link: https://lore.kernel.org/qemu-devel/20260713032704.3583103-11-jamin_lin@aspeedtech.com
 Signed-off-by: Cédric Le Goater <clg@redhat.com>
 ---
- include/hw/arm/aspeed_ast1700.h |  2 +-
- include/hw/arm/aspeed_soc.h     |  1 +
- hw/arm/aspeed_ast27x0-fc.c      |  4 ++--
- hw/arm/aspeed_ast27x0.c         | 16 ++++++++--------
- 4 files changed, 12 insertions(+), 11 deletions(-)
+ tests/functional/aarch64/test_aspeed_ast2700a1.py | 7 +++++++
+ tests/functional/aarch64/test_aspeed_ast2700a2.py | 7 +++++++
+ 2 files changed, 14 insertions(+)
 
-diff --git a/include/hw/arm/aspeed_ast1700.h b/include/hw/arm/aspeed_ast1700.h
-index f7bd4e8650ba..39c5977cf109 100644
---- a/include/hw/arm/aspeed_ast1700.h
-+++ b/include/hw/arm/aspeed_ast1700.h
-@@ -41,7 +41,7 @@ struct AspeedAST1700SoCState {
-     MemoryRegion sram;
-     AspeedSMCState spi;
-     AspeedADCState adc;
--    AspeedSCUState scu;
-+    Aspeed2700SCUState scu;
-     AspeedGPIOState gpio;
-     AspeedSGPIOState sgpiom[AST1700_SGPIO_NUM];
-     AspeedI2CState i2c;
-diff --git a/include/hw/arm/aspeed_soc.h b/include/hw/arm/aspeed_soc.h
-index 41dc04e2930f..cd68c7f1caa2 100644
---- a/include/hw/arm/aspeed_soc.h
-+++ b/include/hw/arm/aspeed_soc.h
-@@ -151,6 +151,7 @@ struct Aspeed27x0SoCState {
-     AspeedINTCState intcioexp[ASPEED_IOEXP_NUM];
-     GICv3State gic;
-     MemoryRegion dram_empty;
-+    Aspeed2700SCUState scu;
- };
+diff --git a/tests/functional/aarch64/test_aspeed_ast2700a1.py b/tests/functional/aarch64/test_aspeed_ast2700a1.py
+index ddddd2d47a95..adbbef5cf11e 100755
+--- a/tests/functional/aarch64/test_aspeed_ast2700a1.py
++++ b/tests/functional/aarch64/test_aspeed_ast2700a1.py
+@@ -118,6 +118,11 @@ def do_ast2700_pcie_test(self):
+             'ip addr show dev eth2',
+             'inet 10.0.2.15/24')
  
- #define TYPE_ASPEED27X0_SOC "aspeed27x0-soc"
-diff --git a/hw/arm/aspeed_ast27x0-fc.c b/hw/arm/aspeed_ast27x0-fc.c
-index 7d9fade68dab..8d49bb95d67b 100644
---- a/hw/arm/aspeed_ast27x0-fc.c
-+++ b/hw/arm/aspeed_ast27x0-fc.c
-@@ -158,7 +158,7 @@ static bool ast2700fc_ssp_init(MachineState *machine, Error **errp)
-     object_property_set_link(OBJECT(&s->ssp), "sram",
-                              OBJECT(&psp->sram), &error_abort);
-     object_property_set_link(OBJECT(&s->ssp), "scu",
--                             OBJECT(&psp->scu), &error_abort);
-+                             OBJECT(&s->ca35.scu), &error_abort);
-     if (!qdev_realize(DEVICE(&s->ssp), NULL, errp)) {
-         return false;
-     }
-@@ -190,7 +190,7 @@ static bool ast2700fc_tsp_init(MachineState *machine, Error **errp)
-     object_property_set_link(OBJECT(&s->tsp), "sram",
-                              OBJECT(&psp->sram), &error_abort);
-     object_property_set_link(OBJECT(&s->tsp), "scu",
--                             OBJECT(&psp->scu), &error_abort);
-+                             OBJECT(&s->ca35.scu), &error_abort);
-     if (!qdev_realize(DEVICE(&s->tsp), NULL, errp)) {
-         return false;
-     }
-diff --git a/hw/arm/aspeed_ast27x0.c b/hw/arm/aspeed_ast27x0.c
-index 7c062580f2b1..6365dbd638b5 100644
---- a/hw/arm/aspeed_ast27x0.c
-+++ b/hw/arm/aspeed_ast27x0.c
-@@ -435,12 +435,12 @@ static void aspeed_soc_ast2700_init(Object *obj)
++    def do_ast2700_usb_ehci_test(self):
++        exec_command_and_wait_for_pattern(self,
++            'lsusb',
++            'QEMU QEMU USB Keyboard')
++
+     def start_ast2700_test(self, name, bus_id):
+         num_cpu = 4
+         load_images_list = [
+@@ -161,10 +166,12 @@ def test_aarch64_ast2700a1_evb_sdk_v11_01(self):
+         self.archive_extract(self.ASSET_SDK_V1101_AST2700A1)
+         self.vm.add_args('-device', 'e1000e,netdev=net1,bus=pcie.2')
+         self.vm.add_args('-netdev', 'user,id=net1')
++        self.vm.add_args('-device', 'usb-kbd,bus=usb-bus.3')
+         self.start_ast2700_test('ast2700-a1-image', 1)
+         self.verify_openbmc_boot_and_login('ast2700-a1')
+         self.do_ast2700_i2c_test(1)
+         self.do_ast2700_pcie_test()
++        self.do_ast2700_usb_ehci_test()
  
-     object_initialize_child(obj, "gic", &a->gic, gicv3_class_name());
+     def test_aarch64_ast2700a1_evb_sdk_vbootrom_v11_01(self):
+         self.set_machine('ast2700a1-evb')
+diff --git a/tests/functional/aarch64/test_aspeed_ast2700a2.py b/tests/functional/aarch64/test_aspeed_ast2700a2.py
+index 0fe04a6eca7f..5f9073c89754 100755
+--- a/tests/functional/aarch64/test_aspeed_ast2700a2.py
++++ b/tests/functional/aarch64/test_aspeed_ast2700a2.py
+@@ -121,6 +121,11 @@ def do_ast2700_pcie_test(self):
+             'ip addr show dev eth2',
+             'inet 10.0.2.15/24')
  
--    object_initialize_child(obj, "scu", &s->scu, TYPE_ASPEED_2700_SCU);
--    qdev_prop_set_uint32(DEVICE(&s->scu), "silicon-rev",
-+    object_initialize_child(obj, "scu", &a->scu, TYPE_ASPEED_2700_SCU);
-+    qdev_prop_set_uint32(DEVICE(&a->scu), "silicon-rev",
-                          sc->silicon_rev);
--    object_property_add_alias(obj, "hw-strap1", OBJECT(&s->scu),
-+    object_property_add_alias(obj, "hw-strap1", OBJECT(&a->scu),
-                               "hw-strap1");
--    object_property_add_alias(obj, "hw-prot-key", OBJECT(&s->scu),
-+    object_property_add_alias(obj, "hw-prot-key", OBJECT(&a->scu),
-                               "hw-prot-key");
++    def do_ast2700_usb_ehci_test(self):
++        exec_command_and_wait_for_pattern(self,
++            'lsusb',
++            'QEMU QEMU USB Keyboard')
++
+     def start_ast2700_test(self, name, bus_id):
+         num_cpu = 4
+         load_images_list = [
+@@ -164,10 +169,12 @@ def test_aarch64_ast2700a2_evb_sdk_v11_01(self):
+         self.archive_extract(self.ASSET_SDK_V1101_AST2700A2)
+         self.vm.add_args('-device', 'e1000e,netdev=net1,bus=pcie.2')
+         self.vm.add_args('-netdev', 'user,id=net1')
++        self.vm.add_args('-device', 'usb-kbd,bus=usb-bus.3')
+         self.start_ast2700_test('ast2700-default-image', 1)
+         self.verify_openbmc_boot_and_login('ast2700-default')
+         self.do_ast2700_i2c_test(1)
+         self.do_ast2700_pcie_test()
++        self.do_ast2700_usb_ehci_test()
  
-     object_initialize_child(obj, "scuio", &s->scuio, TYPE_ASPEED_2700_SCUIO);
-@@ -808,10 +808,10 @@ static void aspeed_soc_ast2700_realize(DeviceState *dev, Error **errp)
-                                 sc->memmap[ASPEED_DEV_VBOOTROM], &s->vbootrom);
- 
-     /* SCU */
--    if (!sysbus_realize(SYS_BUS_DEVICE(&s->scu), errp)) {
-+    if (!sysbus_realize(SYS_BUS_DEVICE(&a->scu), errp)) {
-         return;
-     }
--    aspeed_mmio_map(s->memory, SYS_BUS_DEVICE(&s->scu), 0,
-+    aspeed_mmio_map(s->memory, SYS_BUS_DEVICE(&a->scu), 0,
-                     sc->memmap[ASPEED_DEV_SCU]);
- 
-     /* SCU1 */
-@@ -934,7 +934,7 @@ static void aspeed_soc_ast2700_realize(DeviceState *dev, Error **errp)
-         AspeedWDTClass *awc = ASPEED_WDT_GET_CLASS(&s->wdt[i]);
-         hwaddr wdt_offset = sc->memmap[ASPEED_DEV_WDT] + i * awc->iosize;
- 
--        object_property_set_link(OBJECT(&s->wdt[i]), "scu", OBJECT(&s->scu),
-+        object_property_set_link(OBJECT(&s->wdt[i]), "scu", OBJECT(&a->scu),
-                                  &error_abort);
-         if (!sysbus_realize(SYS_BUS_DEVICE(&s->wdt[i]), errp)) {
-             return;
-@@ -1037,7 +1037,7 @@ static void aspeed_soc_ast2700_realize(DeviceState *dev, Error **errp)
-                        aspeed_soc_ast2700_get_irq(s, ASPEED_DEV_EMMC));
- 
-     /* Timer */
--    object_property_set_link(OBJECT(&s->timerctrl), "scu", OBJECT(&s->scu),
-+    object_property_set_link(OBJECT(&s->timerctrl), "scu", OBJECT(&a->scu),
-                              &error_abort);
-     if (!sysbus_realize(SYS_BUS_DEVICE(&s->timerctrl), errp)) {
-         return;
+     def test_aarch64_ast2700a2_evb_sdk_vbootrom_v11_01(self):
+         self.set_machine('ast2700a2-evb')
 -- 
 2.55.0
 

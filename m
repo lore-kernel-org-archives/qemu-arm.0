@@ -4,74 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4193BC5B56A
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7E681C5CFE7
 	for <qemu-arm@archiver.kernel.org>; Tue, 11 Aug 2026 16:40:45 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wtpOb-000558-DQ; Tue, 11 Aug 2026 12:32:09 -0400
+	id 1wtpNX-0000hU-E1; Tue, 11 Aug 2026 12:31:09 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1wtpOZ-0004qr-1c
- for qemu-arm@nongnu.org; Tue, 11 Aug 2026 12:32:07 -0400
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1wtpNG-0008FM-La
+ for qemu-arm@nongnu.org; Tue, 11 Aug 2026 12:30:46 -0400
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1wtpOX-0000xw-7I
- for qemu-arm@nongnu.org; Tue, 11 Aug 2026 12:32:06 -0400
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1wtpND-0000dr-7l
+ for qemu-arm@nongnu.org; Tue, 11 Aug 2026 12:30:45 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1786465924;
+ s=mimecast20190719; t=1786465842;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=kWnoHbeX0Bj5s7Ejqgs+GFdD0ZsE2bcsx8zPMkC5ZgY=;
- b=DNuoOUarEfGX3lqP+CZ9iMKWfgBZ+dulY3Wp7RHhjGlSI8o2aGN4sEytgZqnerp5W3zGAd
- S5nmxBxKm+ha+0X8ThiZ5U1RuGV59zyiVYDIOeDN64RXHnJo2l710tWDO5FmmHZzmti+u3
- AcW+PZzd5ignj3HfbF2LZVaLaPq55KU=
-Received: from mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
+ bh=xozE/mmQUtpbtgTw0R5po73BJbDV50BhOnDxLSJRumc=;
+ b=eshO1o4hR+GJOkuyKBvU1rM/tVei/xXPDdiv08o3GmSEH0CiyIHWfklsoYy+Txd2FezTrr
+ n37hbVQBBhIjo4U3XLdFIM60yyHO6Ha5Aqq67x3v8tDKSSwFdtD5O0YSomshzbc4ug57gd
+ bEiQuRjKHRSh/WVsKHWJ7z7EqjccqDI=
+Received: from mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-144-6H7rgFEwPwmPQkFO0UVFZA-1; Tue,
- 11 Aug 2026 12:32:01 -0400
-X-MC-Unique: 6H7rgFEwPwmPQkFO0UVFZA-1
-X-Mimecast-MFC-AGG-ID: 6H7rgFEwPwmPQkFO0UVFZA_1786465920
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-686-FAXzd3BzPX6di_-LhiGdXQ-1; Tue,
+ 11 Aug 2026 12:30:39 -0400
+X-MC-Unique: FAXzd3BzPX6di_-LhiGdXQ-1
+X-Mimecast-MFC-AGG-ID: FAXzd3BzPX6di_-LhiGdXQ_1786465838
 Received: from mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com
  (mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.12])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 5EAB0180064B; Tue, 11 Aug 2026 16:32:00 +0000 (UTC)
+ by mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 060B21956041; Tue, 11 Aug 2026 16:30:38 +0000 (UTC)
 Received: from corto.redhat.com (unknown [10.44.48.12])
  by mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id E2858195DF91; Tue, 11 Aug 2026 16:31:58 +0000 (UTC)
+ id 522F1195DF91; Tue, 11 Aug 2026 16:30:36 +0000 (UTC)
 From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
 Cc: Jamin Lin <jamin_lin@aspeedtech.com>,
- =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>
-Subject: [PULL 64/83] tests/functional/arm/test_aspeed_ast2500_sdk: Update
- ASPEED SDK v11.03
-Date: Tue, 11 Aug 2026 18:29:19 +0200
-Message-ID: <20260811162938.1403216-65-clg@redhat.com>
+ =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@oss.qualcomm.com>
+Subject: [PULL 25/83] hw/ssi/aspeed_smc: Add Data FIFO-based flash access
+ support for AST2700
+Date: Tue, 11 Aug 2026 18:28:40 +0200
+Message-ID: <20260811162938.1403216-26-clg@redhat.com>
 In-Reply-To: <20260811162938.1403216-1-clg@redhat.com>
 References: <20260811162938.1403216-1-clg@redhat.com>
 MIME-Version: 1.0
 X-Scanned-By: MIMEDefang 3.0 on 10.30.177.12
-X-Mimecast-MFC-PROC-ID: MWdBPmoa6UQYJHo9Myw07ZyKaUSm7Q2GdK72ParGRE8_1786465920
+X-Mimecast-MFC-PROC-ID: t_mByHEX7MQjdxU4jDMziVtSsVBZV176LC1f_Hage_g_1786465838
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 Received-SPF: pass client-ip=170.10.133.124; envelope-from=clg@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -21
-X-Spam_score: -2.2
-X-Spam_bar: --
-X-Spam_report: (-2.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.102,
+X-Spam_score_int: 11
+X-Spam_score: 1.1
+X-Spam_bar: +
+X-Spam_report: (1.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.102,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001,
- TVD_SPACE_RATIO=0.001 autolearn=ham autolearn_force=no
+ RCVD_IN_SBL_CSS=3.335, SPF_HELO_PASS=-0.001,
+ SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -89,61 +90,294 @@ Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
 From: Jamin Lin <jamin_lin@aspeedtech.com>
 
+AST2700 supports a Data FIFO mode where flash accesses can be performed
+directly through Data FIFO MMIO offsets. The Data FIFO start offset
+increments by one for every 16MB of flash address space, allowing the
+chip select (CS) to be decoded from the Data FIFO offset.
+
+This change adds Data FIFO support to the Aspeed SMC model and introduces
+a class callback to translate Data FIFO offsets into CS indices. For
+AST2700, the Data FIFO offset is matched against the segment start address
+of each CS to determine the target flash device.
+
+The SMC register region size (nregs) is also extended dynamically
+based on the number of supported chip selects to cover all possible
+Data FIFO regions.
+
+This breaks migration compatibility with older QEMU builds for the
+affected models, even though Aspeed machines are not officially
+covered by migration compatibility guarantees.
+
+Bump version_id to 4 and minimum_version_id to 2 to reflect the
+incompatible format.
+
 Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
 Reviewed-by: Cédric Le Goater <clg@redhat.com>
-Link: https://lore.kernel.org/qemu-devel/20260804081955.1563537-7-jamin_lin@aspeedtech.com
+Tested-by: Philippe Mathieu-Daudé <philmd@oss.qualcomm.com>
+Link: https://lore.kernel.org/qemu-devel/20260717084559.3477061-9-jamin_lin@aspeedtech.com
 Signed-off-by: Cédric Le Goater <clg@redhat.com>
 ---
- tests/functional/arm/test_aspeed_ast2500_sdk.py     | 8 ++++----
- tests/functional/arm/test_aspeed_ast2500_sdk_515.py | 8 ++++----
- 2 files changed, 8 insertions(+), 8 deletions(-)
+ include/hw/ssi/aspeed_smc.h |   3 +-
+ hw/ssi/aspeed_smc.c         | 117 +++++++++++++++++++++++++++++++++---
+ 2 files changed, 109 insertions(+), 11 deletions(-)
 
-diff --git a/tests/functional/arm/test_aspeed_ast2500_sdk.py b/tests/functional/arm/test_aspeed_ast2500_sdk.py
-index 6ab498b3ff54..95df32b84ff8 100755
---- a/tests/functional/arm/test_aspeed_ast2500_sdk.py
-+++ b/tests/functional/arm/test_aspeed_ast2500_sdk.py
-@@ -10,14 +10,14 @@
+diff --git a/include/hw/ssi/aspeed_smc.h b/include/hw/ssi/aspeed_smc.h
+index a273365689ea..5f391fc24ef3 100644
+--- a/include/hw/ssi/aspeed_smc.h
++++ b/include/hw/ssi/aspeed_smc.h
+@@ -47,7 +47,7 @@ struct AspeedSMCFlash {
+ #define TYPE_ASPEED_SMC "aspeed.smc"
+ OBJECT_DECLARE_TYPE(AspeedSMCState, AspeedSMCClass, ASPEED_SMC)
  
- class AST2500Machine(AspeedTest):
+-#define ASPEED_SMC_R_MAX        (0x100 / 4)
++#define ASPEED_SMC_R_MAX        (0x300 / 4)
+ #define ASPEED_SMC_CS_MAX       5
  
--    ASSET_SDK_V1101_AST2500 = Asset(
--        'https://github.com/AspeedTech-BMC/openbmc/releases/download/v11.01/ast2500-default-obmc.tar.gz',
--        '3faa1188198da2216837be4b53861c483a58c3ad63784089720bf8421e157da1')
-+    ASSET_SDK_V1103_AST2500 = Asset(
-+        'https://github.com/AspeedTech-BMC/openbmc/releases/download/v11.03/ast2500-default-obmc.tar.gz',
-+        '8e20cafddca04d73b799918d6f35b08c83c9f024e223a317b0ad71b97b84842f')
+ struct AspeedSMCState {
+@@ -114,6 +114,7 @@ struct AspeedSMCClass {
+                            AspeedSegments *seg);
+     void (*dma_ctrl)(AspeedSMCState *s, uint32_t value);
+     int (*addr_width)(const AspeedSMCState *s);
++    int (*data_fifo_offset_to_cs)(const AspeedSMCState *s, uint32_t offset);
+     const MemoryRegionOps *reg_ops;
+ };
  
-     def test_arm_ast2500_evb_sdk(self):
-         self.set_machine('ast2500-evb')
+diff --git a/hw/ssi/aspeed_smc.c b/hw/ssi/aspeed_smc.c
+index c8cc6cfa56e4..bf596f7b2d68 100644
+--- a/hw/ssi/aspeed_smc.c
++++ b/hw/ssi/aspeed_smc.c
+@@ -163,6 +163,9 @@
+ /* Read Timing Compensation Register */
+ #define R_TIMINGS         (0x94 / 4)
  
--        self.archive_extract(self.ASSET_SDK_V1101_AST2500)
-+        self.archive_extract(self.ASSET_SDK_V1103_AST2500)
++/* Data fifo */
++#define R_DATA_FIFO       (0x200 / 4)
++
+ /* SPI controller registers and bits (AST2400) */
+ #define R_SPI_CONF        (0x00 / 4)
+ #define   SPI_CONF_ENABLE_W0   0
+@@ -209,6 +212,7 @@ static const AspeedSegments aspeed_2500_spi2_segments[];
+ #define ASPEED_SMC_FEATURE_DMA_GRANT 0x2
+ #define ASPEED_SMC_FEATURE_WDT_CONTROL 0x4
+ #define ASPEED_SMC_FEATURE_DMA_DRAM_ADDR_HIGH 0x08
++#define ASPEED_SMC_FEATURE_DATA_FIFO 0x10
  
-         self.do_test_arm_aspeed_sdk_start(
-             self.scratch_file("ast2500-default", "image-bmc"))
-diff --git a/tests/functional/arm/test_aspeed_ast2500_sdk_515.py b/tests/functional/arm/test_aspeed_ast2500_sdk_515.py
-index 8d39dc65daaa..516e96e52db7 100755
---- a/tests/functional/arm/test_aspeed_ast2500_sdk_515.py
-+++ b/tests/functional/arm/test_aspeed_ast2500_sdk_515.py
-@@ -10,14 +10,14 @@
+ static inline bool aspeed_smc_has_dma(const AspeedSMCClass *asc)
+ {
+@@ -225,6 +229,11 @@ static inline bool aspeed_smc_has_dma64(const AspeedSMCClass *asc)
+     return !!(asc->features & ASPEED_SMC_FEATURE_DMA_DRAM_ADDR_HIGH);
+ }
  
- class AST2500Machine(AspeedTest):
++static inline bool aspeed_smc_has_data_fifo(const AspeedSMCClass *asc)
++{
++    return !!(asc->features & ASPEED_SMC_FEATURE_DATA_FIFO);
++}
++
+ #define aspeed_smc_error(fmt, ...)                                      \
+     qemu_log_mask(LOG_GUEST_ERROR, "%s: " fmt "\n", __func__, ## __VA_ARGS__)
  
--    ASSET_SDK_V1101_AST2500_515 = Asset(
--        'https://github.com/AspeedTech-BMC/openbmc/releases/download/v11.01/ast2500-default-515-obmc.tar.gz',
--        'b848ff620d2e9c83e2fb4736b4d1c39b82fdb041058cd42be42c3b177bf38eb9')
-+    ASSET_SDK_V1103_AST2500_515 = Asset(
-+        'https://github.com/AspeedTech-BMC/openbmc/releases/download/v11.03/ast2500-default-515-obmc.tar.gz',
-+        'f17d3b0a5157bcf73c21c4981f838ea0b76c6406cc4a6409267d57d61758ebb6')
+@@ -664,6 +673,7 @@ static MemTxResult aspeed_smc_read(void *opaque, hwaddr addr, uint64_t *data,
+ {
+     AspeedSMCState *s = ASPEED_SMC(opaque);
+     AspeedSMCClass *asc = ASPEED_SMC_GET_CLASS(opaque);
++    int cs;
  
-     def test_arm_ast2500_evb_sdk_515(self):
-         self.set_machine('ast2500-evb')
+     addr >>= 2;
  
--        self.archive_extract(self.ASSET_SDK_V1101_AST2500_515)
-+        self.archive_extract(self.ASSET_SDK_V1103_AST2500_515)
+@@ -689,6 +699,18 @@ static MemTxResult aspeed_smc_read(void *opaque, hwaddr addr, uint64_t *data,
+         trace_aspeed_smc_read(addr << 2, size, s->regs[addr]);
  
-         self.do_test_arm_aspeed_sdk_start(
-             self.scratch_file("ast2500-default-515", "image-bmc"))
+         *data = s->regs[addr];
++    } else if (aspeed_smc_has_data_fifo(asc) && addr >= R_DATA_FIFO) {
++        cs = asc->data_fifo_offset_to_cs(s, addr << 2);
++        if (cs >= 0) {
++            /*
++             * Data fifo mode only supports SPI user mode.
++             * The flash address is provided by the SPI command/address cycles,
++             * the MMIO addr parameter is ignored.
++             */
++            return aspeed_smc_flash_read(&s->flashes[cs], 0, data, size, attrs);
++        }
++        aspeed_smc_error("Invalid data fifo offset %" HWADDR_PRIx, addr << 2);
++        return MEMTX_ERROR;
+     } else {
+         qemu_log_mask(LOG_UNIMP, "%s: not implemented: 0x%" HWADDR_PRIx "\n",
+                       __func__, addr);
+@@ -1063,6 +1085,19 @@ static MemTxResult aspeed_smc_write(void *opaque, hwaddr addr, uint64_t data,
+     } else if (aspeed_smc_has_dma(asc) && aspeed_smc_has_dma64(asc) &&
+                addr == R_DMA_DRAM_ADDR_HIGH) {
+         s->regs[addr] = DMA_DRAM_ADDR_HIGH(value);
++    } else if (aspeed_smc_has_data_fifo(asc) && addr >= R_DATA_FIFO) {
++        int cs = asc->data_fifo_offset_to_cs(s, addr << 2);
++        if (cs >= 0) {
++            /*
++             * Data fifo mode only supports SPI user mode.
++             * The flash address is provided by the SPI command/address cycles,
++             * the MMIO addr parameter is ignored.
++             */
++            return aspeed_smc_flash_write(&s->flashes[cs], 0, data, size,
++                                          attrs);
++        }
++        aspeed_smc_error("Invalid data fifo offset %" HWADDR_PRIx, addr << 2);
++        return MEMTX_ERROR;
+     } else {
+         qemu_log_mask(LOG_UNIMP, "%s: not implemented: 0x%" HWADDR_PRIx "\n",
+                       __func__, addr);
+@@ -1183,8 +1218,8 @@ static void aspeed_smc_realize(DeviceState *dev, Error **errp)
+ 
+ static const VMStateDescription vmstate_aspeed_smc = {
+     .name = "aspeed.smc",
+-    .version_id = 3,
+-    .minimum_version_id = 1,
++    .version_id = 4,
++    .minimum_version_id = 2,
+     .fields = (const VMStateField[]) {
+         VMSTATE_UINT32_ARRAY(regs, AspeedSMCState, ASPEED_SMC_R_MAX),
+         VMSTATE_UNUSED_V(2, 2), /* was snoop_index/snoop_dummies */
+@@ -1808,6 +1843,39 @@ static void aspeed_2700_smc_reg_to_segment(const AspeedSMCState *s,
+     }
+ }
+ 
++/*
++ * Convert a data fifo offset to a chip select (CS).
++ *
++ * Data fifo access starts at 0x200. The data fifo offset index is
++ * calculated by subtracting the data fifo base offset from the MMIO address.
++ *
++ * The data fifo offset index increments by 1 for every 16MB of flash address
++ * space. Each offset step therefore represents a 16MB address decode range.
++ *
++ * The CS is determined by matching the data fifo offset index against the
++ * segment start address of each CS.
++ *
++ * Returns the CS index on success, or -1 if the offset is invalid.
++ */
++static int aspeed_2700_smc_data_fifo_offset_to_cs(const AspeedSMCState *s,
++                                                  uint32_t offset)
++{
++    AspeedSMCClass *asc = ASPEED_SMC_GET_CLASS(s);
++    uint32_t start_offset;
++    uint32_t fifo_offset;
++    int i;
++
++    for (i = 0; i < asc->cs_num_max; i++) {
++        start_offset = (s->regs[R_SEG_ADDR0 + i] & 0x0000ffff) << 16;
++        fifo_offset = start_offset / 0x1000000;
++        if (fifo_offset == offset - (R_DATA_FIFO << 2)) {
++            return i;
++        }
++    }
++
++    return -1;
++}
++
+ static const uint32_t aspeed_2700_fmc_resets[ASPEED_SMC_R_MAX] = {
+     [R_CONF] = (CONF_FLASH_TYPE_SPI << CONF_FLASH_TYPE0 |
+             CONF_FLASH_TYPE_SPI << CONF_FLASH_TYPE1),
+@@ -1842,6 +1910,27 @@ static const AspeedSegments aspeed_2700_fmc_segments[] = {
+     { 0x0, 0 }, /* disabled */
+ };
+ 
++/*
++ * AST2700 supports data fifo mode with a base data fifo start offset of 0x200.
++ *
++ * The data fifo start offset increments by 1 for every 16MB of flash address
++ * space. Each offset step therefore represents a 16MB address decode range.
++ *
++ * Assuming each chip select (CS) can use the maximum flash size of 256MB:
++ *   256MB / 16MB = 0x10 offset steps per CS.
++ *
++ * Data fifo start offset for CSn:
++ *   0x200 + (n * 0x10)
++ *
++ * Examples:
++ *   CS0: 0x200
++ *   CS1: 0x210
++ *   CS2: 0x220
++ *   CS3: 0x230
++ *
++ * asc->nregs should be set to: 0x200 + (asc->cs_num_max * 0x10)
++ * to cover all possible data fifo regions.
++ */
+ static void aspeed_2700_fmc_class_init(ObjectClass *klass, const void *data)
+ {
+     DeviceClass *dc = DEVICE_CLASS(klass);
+@@ -1861,14 +1950,16 @@ static void aspeed_2700_fmc_class_init(ObjectClass *klass, const void *data)
+     asc->flash_window_base = 0x100000000;
+     asc->flash_window_size = 1 * GiB;
+     asc->features          = ASPEED_SMC_FEATURE_DMA |
+-                             ASPEED_SMC_FEATURE_DMA_DRAM_ADDR_HIGH;
++                             ASPEED_SMC_FEATURE_DMA_DRAM_ADDR_HIGH |
++                             ASPEED_SMC_FEATURE_DATA_FIFO;
+     asc->dma_flash_mask    = 0x2FFFFFFC;
+     asc->dma_dram_mask     = 0xFFFFFFFC;
+     asc->dma_start_length  = 1;
+-    asc->nregs             = ASPEED_SMC_R_MAX;
++    asc->nregs             = (0x200 + (asc->cs_num_max * 0x10)) >> 2;
+     asc->segment_to_reg    = aspeed_2700_smc_segment_to_reg;
+     asc->reg_to_segment    = aspeed_2700_smc_reg_to_segment;
+     asc->dma_ctrl          = aspeed_2600_smc_dma_ctrl;
++    asc->data_fifo_offset_to_cs = aspeed_2700_smc_data_fifo_offset_to_cs;
+     asc->reg_ops           = &aspeed_2700_smc_flash_ops;
+ }
+ 
+@@ -1896,14 +1987,16 @@ static void aspeed_2700_spi0_class_init(ObjectClass *klass, const void *data)
+     asc->flash_window_base = 0x180000000;
+     asc->flash_window_size = 1 * GiB;
+     asc->features          = ASPEED_SMC_FEATURE_DMA |
+-                             ASPEED_SMC_FEATURE_DMA_DRAM_ADDR_HIGH;
++                             ASPEED_SMC_FEATURE_DMA_DRAM_ADDR_HIGH |
++                             ASPEED_SMC_FEATURE_DATA_FIFO;
+     asc->dma_flash_mask    = 0x2FFFFFFC;
+     asc->dma_dram_mask     = 0xFFFFFFFC;
+     asc->dma_start_length  = 1;
+-    asc->nregs             = ASPEED_SMC_R_MAX;
++    asc->nregs             = (0x200 + (asc->cs_num_max * 0x10)) >> 2;
+     asc->segment_to_reg    = aspeed_2700_smc_segment_to_reg;
+     asc->reg_to_segment    = aspeed_2700_smc_reg_to_segment;
+     asc->dma_ctrl          = aspeed_2600_smc_dma_ctrl;
++    asc->data_fifo_offset_to_cs = aspeed_2700_smc_data_fifo_offset_to_cs;
+     asc->reg_ops           = &aspeed_2700_smc_flash_ops;
+ }
+ 
+@@ -1930,14 +2023,16 @@ static void aspeed_2700_spi1_class_init(ObjectClass *klass, const void *data)
+     asc->flash_window_base = 0x200000000;
+     asc->flash_window_size = 1 * GiB;
+     asc->features          = ASPEED_SMC_FEATURE_DMA |
+-                             ASPEED_SMC_FEATURE_DMA_DRAM_ADDR_HIGH;
++                             ASPEED_SMC_FEATURE_DMA_DRAM_ADDR_HIGH |
++                             ASPEED_SMC_FEATURE_DATA_FIFO;
+     asc->dma_flash_mask    = 0x2FFFFFFC;
+     asc->dma_dram_mask     = 0xFFFFFFFC;
+     asc->dma_start_length  = 1;
+-    asc->nregs             = ASPEED_SMC_R_MAX;
++    asc->nregs             = (0x200 + (asc->cs_num_max * 0x10)) >> 2;
+     asc->segment_to_reg    = aspeed_2700_smc_segment_to_reg;
+     asc->reg_to_segment    = aspeed_2700_smc_reg_to_segment;
+     asc->dma_ctrl          = aspeed_2600_smc_dma_ctrl;
++    asc->data_fifo_offset_to_cs = aspeed_2700_smc_data_fifo_offset_to_cs;
+     asc->reg_ops           = &aspeed_2700_smc_flash_ops;
+ }
+ 
+@@ -1964,14 +2059,16 @@ static void aspeed_2700_spi2_class_init(ObjectClass *klass, const void *data)
+     asc->flash_window_base = 0x280000000;
+     asc->flash_window_size = 1 * GiB;
+     asc->features          = ASPEED_SMC_FEATURE_DMA |
+-                             ASPEED_SMC_FEATURE_DMA_DRAM_ADDR_HIGH;
++                             ASPEED_SMC_FEATURE_DMA_DRAM_ADDR_HIGH |
++                             ASPEED_SMC_FEATURE_DATA_FIFO;
+     asc->dma_flash_mask    = 0x0FFFFFFC;
+     asc->dma_dram_mask     = 0xFFFFFFFC;
+     asc->dma_start_length  = 1;
+-    asc->nregs             = ASPEED_SMC_R_MAX;
++    asc->nregs             = (0x200 + (asc->cs_num_max * 0x10)) >> 2;
+     asc->segment_to_reg    = aspeed_2700_smc_segment_to_reg;
+     asc->reg_to_segment    = aspeed_2700_smc_reg_to_segment;
+     asc->dma_ctrl          = aspeed_2600_smc_dma_ctrl;
++    asc->data_fifo_offset_to_cs = aspeed_2700_smc_data_fifo_offset_to_cs;
+     asc->reg_ops           = &aspeed_2700_smc_flash_ops;
+ }
+ 
 -- 
 2.55.0
 

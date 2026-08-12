@@ -4,80 +4,85 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0916BC5CFDB
-	for <qemu-arm@archiver.kernel.org>; Wed, 12 Aug 2026 20:03:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EB4EEC5AD5A
+	for <qemu-arm@archiver.kernel.org>; Wed, 12 Aug 2026 20:27:51 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wuFAS-0003TZ-Uu; Wed, 12 Aug 2026 16:03:16 -0400
+	id 1wuFY5-0005e4-Ra; Wed, 12 Aug 2026 16:27:41 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1wuFAR-0003TF-JC
- for qemu-arm@nongnu.org; Wed, 12 Aug 2026 16:03:15 -0400
-Received: from mail-pf1-x434.google.com ([2607:f8b0:4864:20::434])
+ id 1wuFY3-0005dG-7e
+ for qemu-arm@nongnu.org; Wed, 12 Aug 2026 16:27:39 -0400
+Received: from mail-pj1-x102e.google.com ([2607:f8b0:4864:20::102e])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1wuFAP-0004Pp-LW
- for qemu-arm@nongnu.org; Wed, 12 Aug 2026 16:03:15 -0400
-Received: by mail-pf1-x434.google.com with SMTP id
- d2e1a72fcca58-84862b0d5f8so1322125b3a.3
- for <qemu-arm@nongnu.org>; Wed, 12 Aug 2026 13:03:12 -0700 (PDT)
+ id 1wuFY1-00082E-Ag
+ for qemu-arm@nongnu.org; Wed, 12 Aug 2026 16:27:38 -0400
+Received: by mail-pj1-x102e.google.com with SMTP id
+ 98e67ed59e1d1-38ec1402b05so1550627a91.2
+ for <qemu-arm@nongnu.org>; Wed, 12 Aug 2026 13:27:36 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1786564992; x=1787169792; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:from:to:cc:subject:date:message-id:reply-to:content-type;
- bh=TgAuYL2wZUHdpKn7fLlMxv1Jyx6gCYx0YZSOWtCxWpk=;
- b=b03pOMQboawz2CGKjnn4jxUKVbgd0/ZlRoA8X+6rVkcUHLdhX3nKYczVc6sDfPMVSl
- 0pKIZBTfGe0GVJqFf/7ka9IxkjRQ1F5JKjBwvzYqNrncAWzMgLlh0VFfuyshniQus+ao
- BEZ6y2j0xH5FRJr8CtfR39zdPhUVQI/C9x44/zX1gVOHjLIzk0iyA/UI8pQ1v4DQERZd
- LKHav2MkJEaBjB7FdDO3A8EbRtmDPOMltPZbXfdomGS2bxdhIUSGkWQec4r+Mrs1+8MD
- bMN8TeXRKekKa9nI2McZ+XYyOeh+MwDHgr4CMIftnuy1Xn6QRgkWBCQ4KT6sXSU45TI1
- XZfQ==
+ d=linaro.org; s=google; t=1786566456; x=1787171256; darn=nongnu.org;
+ h=content-transfer-encoding:content-type:in-reply-to:content-language
+ :references:cc:to:from:subject:user-agent:mime-version:date
+ :message-id:from:to:cc:subject:date:message-id:reply-to:content-type;
+ bh=kn9sY51YzfgZIkd/aLp6tiP757t/3JZZGNEZHEzmvbc=;
+ b=vi9PYaWVPKMk3yZz47qF3kK1gP4WCO2FdW9xSYgjB2k4JEGaaAxyUtm3Mw1YV65mYD
+ WTP0nn/eelWDBHwBp7oJXz53B9j4/crSgx44Zx9gx0rY83pMJcHuKbd+lm9HJ5EKQMK/
+ t5In3q6p6hlUsMillXD+1+7G1ttc+L7bp8deLHgaZ4QngPoD+uzrD8XIo62KNJL8ooB7
+ Ekz1eYRrhXGllfBYbKEGg7jkMKHuCybZd/aYZ319G/abECO3EqiL0bFNSiG933wH1M2v
+ WlniZ4tpoQaSpytQykbI7YyDlmz00pOzpGH8koG7yzQIFBWg+HEpT7nmLLR+m86lmEPq
+ 6wTg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1786564992; x=1787169792;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+ d=1e100.net; s=20251104; t=1786566456; x=1787171256;
+ h=content-transfer-encoding:content-type:in-reply-to:content-language
+ :references:cc:to:from:subject:user-agent:mime-version:date
+ :message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
  :message-id:reply-to:content-type;
- bh=TgAuYL2wZUHdpKn7fLlMxv1Jyx6gCYx0YZSOWtCxWpk=;
- b=rERiMf2dmiMx2sVLCArpOK1AiwTYQ1NaFWrx/dzK77j0LkLskXHf6iGOeut3hQdAkC
- 7IzCclQfSnMGu33s7lpi1XhEZf0B2yu/shOWn/gcw2T0ltnmonpkbacjW6X+26/H/AQy
- jX87Vq5YYRm84rXvbgyoNamYzpRQuLc7zFufU0FAzKGKEorKrYQ6JulNnUR0PTZWkK3e
- xtlsmjC5jRgQlk7wroiV0AEpckAcFF6TSBQnHHOxPsCL/6qNYrExyh+/VAS2IrHyJZOB
- dApYGtwOMbkVTW3bU2/TBg8c5TkjZktBrZvUrKIBdpv2lwCfHlrUdmIq0lHeHNOz6L6+
- O4Tw==
+ bh=kn9sY51YzfgZIkd/aLp6tiP757t/3JZZGNEZHEzmvbc=;
+ b=iZt2p35OCLBmNUQeU7SOJ7BHAFLSqnPyrn0GPTH8hj+H2VyHEMLeKC7v9rAgJOCGJE
+ e7rymwt/0ts+R/o0hq1OGW+hqlI80IONHGGm3l9CzfUQjt7fcCs/jT+2fXyF7B7MSUwQ
+ ITggfM7QbJQbicROhtmKtT0+puCGLBKBQBwhgOZNK4jT1dd/7wfcXVQxQv1Kc6lWxGDG
+ hAPCKxz/eRDdknibP6+VMvT7RUvtz1v17esEJJuKo+ggmOMduldiQvc+RQCh7evsBHtw
+ ue/m+TLq7p9TaZXSnCASh9nr/crqtH1nzAI7Jre2maQ66Ft/9pY2Fy+HeZI5tXjy5QVv
+ cLnA==
 X-Forwarded-Encrypted: i=1;
- AHgh+Rqk+GF6qbfetoKGH6AvCdohpdkIBpyHpyhDa1t4mV3UYZHErnySq3dAbic6B6ljSM0vRQ++qQftVA==@nongnu.org
-X-Gm-Message-State: AOJu0YyXylqSjTsixwC20PixzlsJI5NzmYo9PoRmNiZiFLUketJ1T1mI
- jvPvP4A+9yBp8wkxmK/Fg43O2s5C0Q6v7SYsNcOluhmgySW0/IDlxfxwiG3AKt/lWhw=
-X-Gm-Gg: AR+sD107SCehOg6/VDZATRX9yLcw8NP3FInlt6HmNHhTl25G28C9mPhHk/m4AI1hwU/
- R6xXr4zNyiP2mTq0fcZGgbNdPbRQS4DuWzo7W9vNmO1PVF6NCRImpoPotN12F3pP/gcEaPLL51L
- uhr9BR5FUbwp4rq+bsmfa0W/eSbEjn/3WlQEb0iJKdIUa4yWCAlvMPoJ2WmHIZsi0DtRACCOP6y
- 0uadB1xmsvbxMOkMH+L4GhT5VpMWzyVZNcO/iT7E1gXRPt67x6UX+wTOjJmWy/XNIBEyam07AaB
- JD+FoQBxG0tqkmpB6CiiHUqxy3F4/8S9PLQl5LM7Ht1JxBkJ6/fgQpld1dDVBk5ky8YswmkIGCS
- 6839o1TZz3JDH7ec3Vt6v2EebWseDCNBSWxVE9McWx9YBnsCp9mXYjGOyD2kIqyjx/3R9Bw6Suu
- kVwXxCkjaLiz330F7uSFi9/VbkLoXakS5wxLlP5ew+vgBqMZ6/+mMinF1vrRpkJZgM/OKbjlWLR
- I0Im3BbBQANQ/lu+xKT
-X-Received: by 2002:a05:6a00:4385:b0:845:3fe5:cddd with SMTP id
- d2e1a72fcca58-84fc747f37emr412127b3a.36.1786564991636; 
- Wed, 12 Aug 2026 13:03:11 -0700 (PDT)
-Received: from stoup.. (174-21-93-59.tukw.qwest.net. [174.21.93.59])
+ AHgh+RoVqeSd+7yCz64n8VeOEoRH1BipRh6M8a1BDvaObRbAuF7WSbA9NUL3FDhRWEhV8rBe07uo+DWjuA==@nongnu.org
+X-Gm-Message-State: AOJu0Yy4PWI5JyVjTkbVwpI6+uqZVivuVf5i3V0FuGKUCP5EiBlKgkH+
+ 89+G1dGqmUrvEAlytmgt2yqnpT2yMfSfs0NQnxwDk5uBF2rLWjDbiW47WrK9DVo/vMY=
+X-Gm-Gg: AR+sD11/lDtD/HAZRSFCW/BgJR3jKgQx/Oag32wwZQWX5NEb0qlngzxrlUEzESKvIzB
+ qFEHAOmWyuPaP/cELCJ+bbf4AndblBecG+gGxNuUEwDt0mL8jkBnhPnIUiSFSUH6eXFmKG1k19Y
+ elExz0GbVwAlTpVHt3ScBdqqpb6thKyyGorRg2Cv8wgJ+UkVvEXQfQw190gR0bnxibUEQJY+iMD
+ SBjQBcNLJ59w/rUOGbY2UcLMZKoVedFbiFrzEcodJwuqv4AhQ667s+gc4NUBoOFe5dhjm/YSoGA
+ BkxW/yTb6zX8XQfRwxSqVfsC19T3As5IfThWTIeoRV9B5PnQ2gJt/PoWuk8/n1aYbMGnoCpEIHi
+ iVsO7wxLS/qNMuKkMT2ISzYjtQWuLoVFD+Bk2fuHFOzqG+2wzMb6SIWyecSnCECkgDwLS46VUqg
+ /zcwxa8Ejao6YlkxsQuXjCYturXarVsfu2kIzQ3joTK+8ACH5lpAguQq4fslPNxUVvQLdQXnTEd
+ IEZHEwFWEamqmrqysGoawduRgOzvcLoKg==
+X-Received: by 2002:a17:90b:35cc:b0:38e:5ab7:ce9b with SMTP id
+ 98e67ed59e1d1-3931e2ba863mr1025974a91.21.1786566455563; 
+ Wed, 12 Aug 2026 13:27:35 -0700 (PDT)
+Received: from [192.168.0.4] (174-21-93-59.tukw.qwest.net. [174.21.93.59])
  by smtp.gmail.com with ESMTPSA id
- d2e1a72fcca58-84fc5a1cdd3sm99132b3a.33.2026.08.12.13.03.11
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 12 Aug 2026 13:03:11 -0700 (PDT)
+ 98e67ed59e1d1-3931f2a7b6fsm237420a91.5.2026.08.12.13.27.35
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Wed, 12 Aug 2026 13:27:35 -0700 (PDT)
+Message-ID: <ae5c387b-a12c-4a13-b3d3-7ce1a91d81d3@linaro.org>
+Date: Wed, 12 Aug 2026 13:27:33 -0700
+MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH] hw/intc: Fix arm kvm gicv3 selection
 From: Richard Henderson <richard.henderson@linaro.org>
 To: qemu-devel@nongnu.org
-Cc: philmd@oss.qualcomm.com,
-	qemu-arm@nongnu.org
-Subject: [PATCH] hw/intc: Fix arm kvm gicv3 selection
-Date: Wed, 12 Aug 2026 13:03:08 -0700
-Message-ID: <20260812200308.289238-1-richard.henderson@linaro.org>
-X-Mailer: git-send-email 2.43.0
-MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::434;
- envelope-from=richard.henderson@linaro.org; helo=mail-pf1-x434.google.com
+Cc: philmd@oss.qualcomm.com, qemu-arm@nongnu.org
+References: <20260812200308.289238-1-richard.henderson@linaro.org>
+Content-Language: en-US
+In-Reply-To: <20260812200308.289238-1-richard.henderson@linaro.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=2607:f8b0:4864:20::102e;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pj1-x102e.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -100,35 +105,51 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-While 39a8c3941e may have fixed WHPX, it certainly didn't help KVM:
+On 8/12/26 13:03, Richard Henderson wrote:
+> While 39a8c3941e may have fixed WHPX, it certainly didn't help KVM:
+> 
+>    $ QTEST_QEMU_BINARY=./qemu-system-aarch64 ./tests/qtest/arm-cpu-features
+>    ...
+>    qemu-system-aarch64: unknown type 'kvm-arm-gicv3'
+> 
+> That patch did remove a test for TARGET_AARCH64, which is fine because
+> it has been a long time since we supported KVM for AArch32.
+> 
+> Fixes: 39a8c3941e ("hw/intc/arm_gicv3: Fix ARM_GICV3 dependency for KVM / WHPX")
+> Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
+> ---
+>   hw/intc/meson.build | 2 +-
+>   1 file changed, 1 insertion(+), 1 deletion(-)
+> 
+> diff --git a/hw/intc/meson.build b/hw/intc/meson.build
+> index a1401cb521..faf63a0145 100644
+> --- a/hw/intc/meson.build
+> +++ b/hw/intc/meson.build
+> @@ -48,7 +48,7 @@ specific_ss.add(when: 'CONFIG_ARM_GIC_KVM', if_true: files('arm_gic_kvm.c'))
+>   specific_ss.add(when: ['CONFIG_WHPX', 'CONFIG_ARM_GICV3'], if_true: files('arm_gicv3_whpx.c'))
+>   specific_ss.add(when: ['CONFIG_HVF', 'CONFIG_ARM_GICV3'], if_true: files('arm_gicv3_hvf.c'))
+>   stub_ss.add(files('arm_gicv3_hvf_stub.c'))
+> -specific_ss.add(when: ['CONFIG_ARM_GIC_KVM', 'CONFIG_ARM_GICV3'], if_true: files('arm_gicv3_kvm.c', 'arm_gicv3_its_kvm.c'))
+> +specific_ss.add(when: 'CONFIG_ARM_GIC_KVM', if_true: files('arm_gicv3_kvm.c', 'arm_gicv3_its_kvm.c'))
+>   arm_common_ss.add(when: 'CONFIG_ARM_V7M', if_true: files('armv7m_nvic.c'))
+>   specific_ss.add(when: 'CONFIG_GRLIB', if_true: files('grlib_irqmp.c'))
+>   specific_ss.add(when: 'CONFIG_IOAPIC', if_true: files('ioapic.c'))
 
-  $ QTEST_QEMU_BINARY=./qemu-system-aarch64 ./tests/qtest/arm-cpu-features
-  ...
-  qemu-system-aarch64: unknown type 'kvm-arm-gicv3'
+Alternately, we need to adjust
 
-That patch did remove a test for TARGET_AARCH64, which is fine because
-it has been a long time since we supported KVM for AArch32.
+config ARM_GIC
+     bool
+     select ARM_GICV3 if TCG
+     select ARM_GIC_KVM if KVM
+     select MSI_NONBROKEN
 
-Fixes: 39a8c3941e ("hw/intc/arm_gicv3: Fix ARM_GICV3 dependency for KVM / WHPX")
-Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
----
- hw/intc/meson.build | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+Though I'm not sure how ARM_GICV3 + WHPX would ever get selected?
 
-diff --git a/hw/intc/meson.build b/hw/intc/meson.build
-index a1401cb521..faf63a0145 100644
---- a/hw/intc/meson.build
-+++ b/hw/intc/meson.build
-@@ -48,7 +48,7 @@ specific_ss.add(when: 'CONFIG_ARM_GIC_KVM', if_true: files('arm_gic_kvm.c'))
- specific_ss.add(when: ['CONFIG_WHPX', 'CONFIG_ARM_GICV3'], if_true: files('arm_gicv3_whpx.c'))
- specific_ss.add(when: ['CONFIG_HVF', 'CONFIG_ARM_GICV3'], if_true: files('arm_gicv3_hvf.c'))
- stub_ss.add(files('arm_gicv3_hvf_stub.c'))
--specific_ss.add(when: ['CONFIG_ARM_GIC_KVM', 'CONFIG_ARM_GICV3'], if_true: files('arm_gicv3_kvm.c', 'arm_gicv3_its_kvm.c'))
-+specific_ss.add(when: 'CONFIG_ARM_GIC_KVM', if_true: files('arm_gicv3_kvm.c', 'arm_gicv3_its_kvm.c'))
- arm_common_ss.add(when: 'CONFIG_ARM_V7M', if_true: files('armv7m_nvic.c'))
- specific_ss.add(when: 'CONFIG_GRLIB', if_true: files('grlib_irqmp.c'))
- specific_ss.add(when: 'CONFIG_IOAPIC', if_true: files('ioapic.c'))
--- 
-2.43.0
+Alternately, given the very tight connection between all GIC revisions and the cpu, how 
+does it make sense for any version of GIC to be non-selected?  Just remove all the GIC 
+configury and include it with just TARGET_AARCH64 (not vs TARGET_ARM, but vs any other 
+valid virtualization host).
 
+
+r~
 

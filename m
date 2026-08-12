@@ -4,93 +4,105 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id F33A8C5B567
-	for <qemu-arm@archiver.kernel.org>; Wed, 12 Aug 2026 06:34:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 769BCC5AD5A
+	for <qemu-arm@archiver.kernel.org>; Wed, 12 Aug 2026 10:25:29 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wu2W4-0001KN-DE; Wed, 12 Aug 2026 02:32:45 -0400
+	id 1wu68z-0003v0-2q; Wed, 12 Aug 2026 06:25:09 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <163wangjack@gmail.com>)
- id 1wu2Vp-0000zh-Py
- for qemu-arm@nongnu.org; Wed, 12 Aug 2026 02:32:32 -0400
-Received: from mail-pl1-x631.google.com ([2607:f8b0:4864:20::631])
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1wu68y-0003sn-1x
+ for qemu-arm@nongnu.org; Wed, 12 Aug 2026 06:25:08 -0400
+Received: from mail-yw1-x112f.google.com ([2607:f8b0:4864:20::112f])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <163wangjack@gmail.com>)
- id 1wu2Vk-00047k-Rl
- for qemu-arm@nongnu.org; Wed, 12 Aug 2026 02:32:28 -0400
-Received: by mail-pl1-x631.google.com with SMTP id
- d9443c01a7336-2cca0c5799eso8764505ad.0
- for <qemu-arm@nongnu.org>; Tue, 11 Aug 2026 23:32:24 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1wu68w-00023V-3F
+ for qemu-arm@nongnu.org; Wed, 12 Aug 2026 06:25:07 -0400
+Received: by mail-yw1-x112f.google.com with SMTP id
+ 00721157ae682-824af9535c8so13160037b3.1
+ for <qemu-arm@nongnu.org>; Wed, 12 Aug 2026 03:25:04 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1786530304; cv=none;
+ d=google.com; s=arc-20260327;
+ b=sz6gTcIkPRYEsvhjWLZ6Z3hDzXmVMvvL3vr0iflYJzZiTn0alHWdp2xA8p9O+P7aNG
+ 7VU/9yaeqJYr6c6HsA/JLTLkDwKmq6wGMdnfyDAc41Er2sObXnxXOS8in2iakkBEBKKO
+ gixHZQTTvADRijVFlJnFgGcXju5+dvYR2VWr3UiYe3M6iYNA0hRWSkT9+iXVHR5iLvgP
+ lHZzMFh6qc559pP8L0jFkWw/PxK+esKns2v7OMdgdct2XzsP34MfahBnsnUZDkCr75as
+ v4VW8bYbBqsdUwUus9HZp/+K7R25DaEp57XLRVFitcchWvmyPiVwcsqU/NBS9VI6gq++
+ RFcg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
+ s=arc-20260327; 
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:dkim-signature;
+ bh=LXTqFzRPeF0ea5Y2BTsg4MEbZkafleniouizAQfpXjs=;
+ fh=uKtvcOQktBe+l2O0xQP9Rina1eKCK6YPLqXbGzMguk4=;
+ b=Iw42TAYTqfrnS00KnIOgwx3pF0qoUuhLsiZwXhfg9bS/EvI8Ozb59E8K96+t32P1b5
+ KpFtn15ftO7MWaKyPhqkYUcpfwiByIZ85W2ERQZGP4uTAxlpiBnCHDiBWSmeJPdCB6H1
+ FvpzFLaGYy6AdNd68JazK9a+YQ8wils5eBrBmeAxSwupGA4vnMLBiFikFD2bnQ9PlS45
+ neAFIZLR98iqzVOja+yEtHzTsarBfhp6203zAJEgg/fiNy+piTWKkSdyYDB99BOqwvO6
+ C+KQKFESDdTMoimQtm2RBUjB5HCPim2tcyuM3orZAupPgVqtq48IPxmafitU2kCqFu3i
+ 5DAA==; darn=nongnu.org
+ARC-Authentication-Results: i=1; mx.google.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20251104; t=1786516343; x=1787121143; darn=nongnu.org;
- h=references:to:cc:in-reply-to:date:subject:mime-version:content-type
- :message-id:from:from:to:cc:subject:date:message-id:reply-to
- :content-type; bh=+BHWnBbixY8f05f9HpuT54nzFAEjgiYRdNAZSYh9faI=;
- b=sFxvKQ4sj8V0r6El+2GTDbczBsIn8QYjPR/iTnVcsdmDRm0TBzVzDaMmwzqecrM3Yq
- 5gsNfd4PQCALeCRmklAy3+yzZFk2wBBVslpA8Dq2XuT3X3Z/a3VjVl1snLmU0T0ny/uj
- HANIGVtjgmgtG6HVLSIBcWJHvmWXG04g+ESOswfixOGFfUoK94FasPkrdVmJ1txdmFoS
- 1CM4p1CQJkSrSsW5vTVi5x5cPqIl2qWax1eA9F58lM+7WoThihGmN39IAheSXZEHcb3V
- QOofCdgzxjqtHFWqxefPk1G92RoG2iKDFFJlAEYbZEL7umLb8WEG8uVTVcq89dHyc3GJ
- DpnA==
+ d=linaro.org; s=google; t=1786530304; x=1787135104; darn=nongnu.org;
+ h=content-type:cc:to:subject:message-id:date:from:in-reply-to
+ :references:mime-version:from:to:cc:subject:date:message-id:reply-to
+ :content-type; bh=LXTqFzRPeF0ea5Y2BTsg4MEbZkafleniouizAQfpXjs=;
+ b=xim+a4DMGpOFzknSs1WSftlXLNsnwSMO2ONE8EU1jEnfCSI5xMjGUspJabtAbNs6Dc
+ D/HgttWB4fEbJuEaglkyx1NS6Cwu818aTU1zmAjoSD5KCrNrxrsLVWWaRGphNAPT5jAP
+ Yb/MIeJEMbpINsdBPL6/MRICMjjbtfriS4ziVEJGF7alFhaLuW3f1PbMt39I54jbNRC0
+ oYBgdbH34fF1coD8WpKZBfV6L8TPZ8E0yVP9KLxqWH//fixXfUKmwlZXQ5xp6aB+iVbn
+ 4kapkN0dp9yby6OBj5gK1hSoMstChsQQAqf+5q6kGYsIAzJbZ+SDCm9TSM5ATTKIu88s
+ 8vZg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1786516343; x=1787121143;
- h=references:to:cc:in-reply-to:date:subject:mime-version:content-type
- :message-id:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
- :message-id:reply-to:content-type;
- bh=+BHWnBbixY8f05f9HpuT54nzFAEjgiYRdNAZSYh9faI=;
- b=eDD/sp6hujT2ZglcXkuWc/m1TU/Z8r0R7tqGobSlITI8lEXyyjHFa3zbvjxoj6w8qp
- wwoCxDYzYviFz2UjfsaYU69Vizc68k/TwXorMD1BNfnvKtqp4lIQEZh1WWE2grPps2xz
- s9tGF41tkUSQXiAED9L1ECJkDMRNAHjz50FSA46t45O4Eo96i6hiF51NeUIyN3hijMoV
- 2yF3EI/qf32xrFPOYWq4jm6AkZ0mvIjqrxAb1Kd+B3620r2S2xpz4fzEsFe3icW0sHWe
- hcMEnu5ObGT7cFUwHceDp9Jc50mVF1ZHcti9Cn+zk1plsBw5DnCHcU7Leu33czbtF9mt
- Kt0w==
+ d=1e100.net; s=20251104; t=1786530304; x=1787135104;
+ h=content-type:cc:to:subject:message-id:date:from:in-reply-to
+ :references:mime-version:x-gm-gg:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to:content-type;
+ bh=LXTqFzRPeF0ea5Y2BTsg4MEbZkafleniouizAQfpXjs=;
+ b=XeHf+19NoBb81IqlF9HaaNeL7NC19O+p29t5juN9SAzNZhllHY1EegF5Uj53ix9Xhy
+ 9w2KPaZ3ntYNPbKt9RiDzVZE680GZpcATeG7ik9FliDTUoompK4Gi3Z5t7QmRuicFOkg
+ KV58Ke4xoIYFaTckbF3UdTvuhDfJbbWlq4Szz9REzblLunuTkNdZsIXlGlxGNaCUCiiX
+ O+FViBwYOfVpv5qCnI1oTt1MDIBBuhuWAFr+nHnTnL4PSULLhwzI8BJdMa7rJRI+OTJw
+ sz+H3qia77r0/dDmBFpQ7Ntryvc0Kx1nyEtlu/oD1zKTxUSD4jlEaLctRBf3Cu2Q9f7Y
+ shgw==
 X-Forwarded-Encrypted: i=1;
- AHgh+Ro+nmHTc1HA9nasXCIjJ3kw84saKvQ7JRfjkcgrMnJbmZYE/kKHFkpb9M53BShBtMzkyPl//cd69A==@nongnu.org
-X-Gm-Message-State: AOJu0YyAW4reNlHzW0pxPff5qGscaIyGx4jDfH0aP6WSZCtNCvCU6Sf7
- PuteInEFPuU/IeAy/sQe9U25+PnAW1SuASmH9C0AWolWpYzeXW1Ujf42
-X-Gm-Gg: AR+sD10JcC0lDZgycphOnsEo+gTJ2AYMBKh884dolPtULWq+5dldi46Vht/8c44hJO8
- WQ3DnLtzjX3gLmrDW5K/cdrCqzdHiePXFSSdwheLqzPhyoSHuUOcpptLDeKdSO3vR3ScCUuBzzE
- M8z5ER1WO9l0NDKvP4grGpsHyytA2GSVXS9haT/HT2KluAhGHklMtaQgHMCwV+1e2oPbXuaFZD2
- 102115hkfMalpNezwAJU3jKB1CC/2z4WT7CLmBwIrxpbl8VhJju9WnZHRk3G0PGfGNkLlM8KKnM
- 93ieULXUnaUqLUbBC7IRTiVfpXsl8cirwrvCAHNRPM5FJc3HZtbZsC0xmBmg5KUNCOBInMVEfSO
- XhY8E5adixD277/LRXnyBdv8kDB7wTZeL/q14LrAxyXOuysWQv8/RS+wQIUlWbOY+PhO85lEEoQ
- qoMg78SLNH5bF6RMZfx3Ddu7V+SmbqTHEC/kys1//8bBSa8sW60hhhzaOVvWQXqESerw==
-X-Received: by 2002:a17:902:ec8a:b0:2c0:e2ea:6b0c with SMTP id
- d9443c01a7336-2d3456dfed4mr31825545ad.21.1786516343206; 
- Tue, 11 Aug 2026 23:32:23 -0700 (PDT)
-Received: from smtpclient.apple ([82.40.42.115])
- by smtp.gmail.com with ESMTPSA id
- d9443c01a7336-2d350ff0772sm2055865ad.21.2026.08.11.23.32.19
- (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
- Tue, 11 Aug 2026 23:32:22 -0700 (PDT)
-From: Jack wang <163wangjack@gmail.com>
-Message-Id: <776B3C22-7612-401E-B7F2-5658A942DEC8@gmail.com>
-Content-Type: multipart/alternative;
- boundary="Apple-Mail=_6A6F271E-A998-4CFE-A70F-ECAC3DAAFC24"
-Mime-Version: 1.0 (Mac OS X Mail 16.0 \(3864.600.51.1.1\))
-Subject: Re: [RFC PATCH v1 5/5] rust/hw/gpio: add native unit tests
-Date: Wed, 12 Aug 2026 14:31:59 +0800
-In-Reply-To: <20260726145119.19881-6-163wangjack@gmail.com>
-Cc: Paolo Bonzini <pbonzini@redhat.com>,
- Peter Maydell <peter.maydell@linaro.org>,
- Alistair Francis <alistair@alistair23.me>, Fabiano Rosas <farosas@suse.de>,
- Laurent Vivier <lvivier@redhat.com>, qemu-arm@nongnu.org,
- qemu-rust@nongnu.org, caojunze424@gmail.com
-To: qemu-devel@nongnu.org
-References: <20260726145119.19881-1-163wangjack@gmail.com>
- <20260726145119.19881-6-163wangjack@gmail.com>
-X-Mailer: Apple Mail (2.3864.600.51.1.1)
-Received-SPF: pass client-ip=2607:f8b0:4864:20::631;
- envelope-from=163wangjack@gmail.com; helo=mail-pl1-x631.google.com
-X-Spam_score_int: -13
-X-Spam_score: -1.4
-X-Spam_bar: -
-X-Spam_report: (-1.4 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- FROM_STARTS_WITH_NUMS=0.738, HTML_MESSAGE=0.001, RCVD_IN_DNSWL_NONE=-0.0001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=no autolearn_force=no
+ AHgh+Rrd1OI0ITVsqNVKSk9htB0MbNnyWBN35KWS6u7GaL0mtDMEvdeMQBx+Z9DLIRz5Zj2eSprORejyMg==@nongnu.org
+X-Gm-Message-State: AOJu0YztLJ0Rja60roJfZ1gAEY+bkHGqOjNSYsfaju9DI5o95JWD/1q7
+ UgXE0Ou5VoDn4nKxX7FNmUNNm7VRYVpprWhXJyxNVErr62S1Lwrc2aO2QGTScBtIm5cHpSaSYuX
+ xha1IPfr68hIVi0ZJ1eAT/Ph5pV4J8+IiuQgi3up1/w==
+X-Gm-Gg: AR+sD102fDecTu5b1bVWFF68uOaPg6qu8bDsfeeKvmonLZfp3ZkhPh8t343CEUs+mXn
+ tmS7p8IaftAHtr1nWk5WfWnONnB8Su5j9LMz9soWjOiLsH3QAFEXMbmGLWiYHx37nn+7db3Ugzg
+ 8VF6QeTuiKUSTukyDNEPqMolTv0odhGIA9A38PZFF+CQxEn4D9bn80oGiLHpjfYhsdxsgqc78XO
+ EhoQpEu1oDSd3mNxR3W58+CV1XgMFa92spt3Ti9MVhg+rZIMdEECWElJ1a4EWroAgOOZC5tr4kv
+ hClNlx49kZgDZlntuO8EFuflq5hF6Si4iRR+FRWB40DqTowujj2f2N2jA6SrZJvbP4jGowIhghT
+ ALQXzCVLsE6iBiz4kH2kQ16oWHYRIYQx2MoE/WV4=
+X-Received: by 2002:a05:690c:e0c:b0:81f:a595:2e19 with SMTP id
+ 00721157ae682-8310b73e8a0mr22080347b3.23.1786530303817; Wed, 12 Aug 2026
+ 03:25:03 -0700 (PDT)
+MIME-Version: 1.0
+References: <20260811143539.7835-1-marcelomanzo@gmail.com>
+In-Reply-To: <20260811143539.7835-1-marcelomanzo@gmail.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Wed, 12 Aug 2026 11:24:51 +0100
+X-Gm-Features: AUfX_mwkmm23E6gGDgCu1vPUb_ezW7RKkcqYvLBMpMwup0kV7mLZVC5ThsCudKc
+Message-ID: <CAFEAcA_duyqT1F2m64jg10Xy+4QVikZfUbacvZ50v=isrcCKZg@mail.gmail.com>
+Subject: Re: [PATCH v3 0/2] hw/arm/raspi4b: fix guest RAM capped at ~1 GiB
+ regardless of machine size
+To: Marcelo Manzo <marcelomanzo@gmail.com>
+Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, 
+ =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@oss.qualcomm.com>
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2607:f8b0:4864:20::112f;
+ envelope-from=peter.maydell@linaro.org; helo=mail-yw1-x112f.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -106,449 +118,28 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-
---Apple-Mail=_6A6F271E-A998-4CFE-A70F-ECAC3DAAFC24
-Content-Transfer-Encoding: quoted-printable
-Content-Type: text/plain;
-	charset=utf-8
-
-Hi all,
-
-A polite ping for this RFC series.Thanks advice for Philippe advice and =
-I am ready for v2.
-Could anyone have other suggestions for my patch. I am appreciative for =
-your advice and ready to fix it in v2
-
-> 2026=E5=B9=B47=E6=9C=8826=E6=97=A5 22:51=EF=BC=8CJack Wang =
-<163wangjack@gmail.com> =E5=86=99=E9=81=93=EF=BC=9A
->=20
-> Add native Rust unit tests that link GpioRegisters directly and =
-exercise
-> the CRL/CRH decode and IDR update algorithm in-process, without =
-booting a
-> machine or pulling in the softmmu memory subsystem.
->=20
-> Signed-off-by: Jack Wang <163wangjack@gmail.com>
-> ---
-> rust/hw/gpio/tests/tests.rs | 191 ++++++++++++++++++++++++++++++++++++
-> 1 file changed, 191 insertions(+)
-> create mode 100644 rust/hw/gpio/tests/tests.rs
->=20
-> diff --git a/rust/hw/gpio/tests/tests.rs b/rust/hw/gpio/tests/tests.rs
-> new file mode 100644
-> index 0000000000..ca4d5ed4d6
-> --- /dev/null
-> +++ b/rust/hw/gpio/tests/tests.rs
-> @@ -0,0 +1,191 @@
-> +// Native Rust unit tests for the STM32F1xx GPIO register logic.
-> +//
-> +// Copyright 2026, Jack Wang
-> +// Author(s): Jack Wang <163wangjack@gmail.com>
-> +// SPDX-License-Identifier: GPL-2.0-or-later
-> +//
-> +// Unlike tests/qtest/stm32f103_gpio-test.c (which drives the device =
-over a
-> +// socket from an external qemu-system-arm process), these tests link =
-the
-> +// device crate directly and exercise `GpioRegisters` in-process. =
-This gives
-> +// fast, native Rust coverage of the CRL/CRH decode + IDR algorithm =
-without
-> +// booting a machine or pulling in the softmmu memory subsystem.
-> +//
-> +// `GpioRegisters` deliberately has no QOM object, no MemoryRegion =
-and no
-> +// InterruptSource, so it can be constructed with =
-`GpioRegisters::new()` and
-> +// called directly. Only the BQL mock (bql::start_test) is required, =
-because
-> +// the register cells are `BqlCell`s.
-> +//
-> +// SPDX-License-Identifier: GPL-2.0-or-later
-> +
-> +use stm32f1xx_gpio::gpio::{
-> +    GpioRegisters, PinUpdate, REG_BRR, REG_BSRR, REG_CRH, REG_CRL, =
-REG_IDR, REG_ODR, RESET_CRH,
-> +    RESET_CRL,
-> +};
-> +
-> +/// Take the mock BQL so `BqlCell` accesses are permitted. =
-Integration tests
-> +/// run with `--test-threads=3D1`, so this is safe to call from every =
-test.
-> +fn regs() -> GpioRegisters {
-> +    bql::start_test();
-> +    GpioRegisters::new()
-> +}
-> +
-> +// 4-bit MODE[1:0]+CNF[1:0] pin configurations (RM0008).
-> +const CFG_INPUT_FLOATING: u32 =3D 0x4; // MODE=3D00 CNF=3D01 (reset =
-default)
-> +const CFG_INPUT_PULL: u32 =3D 0x8; // MODE=3D00 CNF=3D10, ODR selects =
-up/down
-> +const CFG_OUTPUT_PP: u32 =3D 0x1; // MODE=3D01 CNF=3D00, general =
-push-pull
-> +
-> +/// Set the 4-bit config nibble for `pin` in CRL/CRH via an MMIO =
-write.
-> +fn set_config(r: &GpioRegisters, pin: usize, cfg: u32) {
-> +    let reg =3D if pin < 8 { REG_CRL } else { REG_CRH };
-> +    let shift =3D ((pin % 8) * 4) as u32;
-> +    let old =3D r.read(reg);
-> +    r.write(reg, (old & !(0xF << shift)) | (cfg << shift));
-> +}
-> +
-> +fn set_odr_bit(r: &GpioRegisters, pin: usize, value: u32) {
-> +    let old =3D r.read(REG_ODR);
-> +    r.write(REG_ODR, (old & !(1 << pin)) | (value << pin));
-> +}
-> +
-> +/// True if pin `pin` is set in a [`PinUpdate`] and its reported =
-level is
-> +/// `level`.
-> +fn pin_changed_to(upd: PinUpdate, pin: usize, level: bool) -> bool {
-> +    (upd.mask & (1 << pin)) !=3D 0 && (((upd.levels >> pin) & 1) !=3D =
-0) =3D=3D level
-> +}
-> +
-> +#[test]
-> +/// A freshly created register block holds the RM0008 reset values.
-> +fn test_reset_values() {
-> +    let r =3D regs();
-> +    assert_eq!(r.read(REG_CRL), RESET_CRL);
-> +    assert_eq!(r.read(REG_CRH), RESET_CRH);
-> +    assert_eq!(r.read(REG_IDR), 0);
-> +    assert_eq!(r.read(REG_ODR), 0);
-> +}
-> +
-> +#[test]
-> +/// `reset` restores the reset state after the registers are dirtied.
-> +fn test_reset_restores() {
-> +    let r =3D regs();
-> +    r.write(REG_CRL, 0xDEAD_BEEF);
-> +    r.write(REG_ODR, 0x0000_FFFF);
-> +    assert_ne!(r.read(REG_CRL), RESET_CRL);
-> +
-> +    r.reset();
-> +
-> +    assert_eq!(r.read(REG_CRL), RESET_CRL);
-> +    assert_eq!(r.read(REG_CRH), RESET_CRH);
-> +    assert_eq!(r.read(REG_IDR), 0);
-> +    assert_eq!(r.read(REG_ODR), 0);
-> +}
-> +
-> +#[test]
-> +/// Push-pull output: IDR follows ODR; ODR written while input is =
-latched,
-> +/// and the out-pin change is reported.
-> +fn test_output_mode() {
-> +    let r =3D regs();
-> +    let pin =3D 5;
-> +
-> +    // Set ODR while still a floating input: IDR unaffected, no out =
-change.
-> +    let idle =3D set_odr_and_report(&r, pin, 1);
-> +    assert_eq!(r.read(REG_IDR), 0);
-> +    assert_eq!(idle.mask & (1 << pin), 0);
-> +
-> +    // Switch to push-pull output: pin now follows ODR (high), and =
-flips.
-> +    let old =3D r.read(REG_CRL);
-> +    let to_output =3D r.write(
-> +        REG_CRL,
-> +        (old & !(0xF << (pin * 4))) | (CFG_OUTPUT_PP << (pin * 4)),
-> +    );
-> +    assert_eq!(r.read(REG_IDR), 1 << pin);
-> +    assert!(pin_changed_to(to_output, pin, true));
-> +
-> +    // Clear ODR bit: pin goes low, and flips back.
-> +    let to_low =3D set_odr_and_report(&r, pin, 0);
-> +    assert_eq!(r.read(REG_IDR), 0);
-> +    assert!(pin_changed_to(to_low, pin, false));
-> +}
-> +
-> +/// Helper: write one ODR bit and return the resulting [`PinUpdate`].
-> +fn set_odr_and_report(r: &GpioRegisters, pin: usize, value: u32) -> =
-PinUpdate {
-> +    let old =3D r.read(REG_ODR);
-> +    r.write(REG_ODR, (old & !(1 << pin)) | (value << pin))
-> +}
-> +
-> +#[test]
-> +/// Floating input: an external drive is reflected in IDR and =
-reported.
-> +fn test_input_mode() {
-> +    let r =3D regs();
-> +    let pin =3D 6usize;
-> +
-> +    set_config(&r, pin, CFG_INPUT_FLOATING);
-> +
-> +    let drive_high =3D r.gpio_set(pin, 1);
-> +    assert_eq!(r.read(REG_IDR), 1 << pin);
-> +    assert!(pin_changed_to(drive_high, pin, true));
-> +
-> +    let drive_low =3D r.gpio_set(pin, 0);
-> +    assert_eq!(r.read(REG_IDR), 0);
-> +    assert!(pin_changed_to(drive_low, pin, false));
-> +}
-> +
-> +#[test]
-> +/// Input pull mode: ODR selects pull-up (IDR=3D1) vs pull-down =
-(IDR=3D0),
-> +/// with no external driver connected.
-> +fn test_pull_up_down() {
-> +    let r =3D regs();
-> +    let pin =3D 0;
-> +
-> +    set_odr_bit(&r, pin, 1);
-> +    set_config(&r, pin, CFG_INPUT_PULL);
-> +    assert_eq!(r.read(REG_IDR), 1 << pin);
-> +
-> +    set_odr_bit(&r, pin, 0);
-> +    assert_eq!(r.read(REG_IDR), 0);
-> +}
-> +
-> +#[test]
-> +/// BSRR sets/resets ODR bits (set has priority); BRR resets ODR =
-bits.
-> +fn test_bsrr_brr() {
-> +    let r =3D regs();
-> +    let pin =3D 1;
-> +
-> +    r.write(REG_BSRR, 1 << pin);
-> +    assert_eq!(r.read(REG_ODR), 1 << pin);
-> +
-> +    r.write(REG_BSRR, 1 << (pin + 16));
-> +    assert_eq!(r.read(REG_ODR), 0);
-> +
-> +    r.write(REG_BSRR, 1 << pin);
-> +    r.write(REG_BRR, 1 << pin);
-> +    assert_eq!(r.read(REG_ODR), 0);
-> +
-> +    // Set has priority over reset within one BSRR write.
-> +    r.write(REG_BSRR, (1 << pin) | (1 << (pin + 16)));
-> +    assert_eq!(r.read(REG_ODR), 1 << pin);
-> +}
-> +
-> +#[test]
-> +/// A pin driven externally, then reconfigured as push-pull output, =
-is
-> +/// disconnected: IDR follows ODR, not the stale external level.
-> +fn test_push_pull_disconnect() {
-> +    let r =3D regs();
-> +    let pin =3D 7usize;
-> +
-> +    // Drive high externally as input.
-> +    set_config(&r, pin, CFG_INPUT_FLOATING);
-> +    r.gpio_set(pin, 1);
-> +    assert_eq!(r.read(REG_IDR), 1 << pin);
-> +    assert_eq!(r.disconnected_pins() & (1 << pin), 0); // now =
-connected
-> +
-> +    // Reconfigure as push-pull output with ODR=3D0: pin must drop to =
-0,
-> +    // and the external driver must be disconnected.
-> +    set_odr_bit(&r, pin, 0);
-> +    set_config(&r, pin, CFG_OUTPUT_PP);
-> +    assert_eq!(r.read(REG_IDR), 0);
-> +    assert_ne!(r.disconnected_pins() & (1 << pin), 0); // =
-disconnected again
-> +
-> +    // Further external drives are ignored while output push-pull.
-> +    r.gpio_set(pin, 1);
-> +    assert_eq!(r.read(REG_IDR), 0);
-> +}
-> --=20
-> 2.53.0
->=20
+On Tue, 11 Aug 2026 at 15:35, Marcelo Manzo <marcelomanzo@gmail.com> wrote:
+>
+> While working on unrelated raspi4b issues, I noticed the guest never
+> seemed to have as much RAM as I'd given it and tracked it down to
+> hw/arm/raspi4b.c's raspi4_modify_dtb(): it decides whether to add a
+> second memory node above the 1 GiB peripheral hole by checking
+> info->ram_size, but that field is the boot loader's RAM budget for
+> where it's allowed to place the kernel/initrd/dtb image, itself always
+> capped to at most UPPER_RAM_BASE - vcram_size by
+> raspi_base_machine_init(). Since that capped value can never exceed
+> UPPER_RAM_BASE by construction, the condition was never true for any
+> raspi4b configuration -- the second node was never added, and the
+> guest never saw more than ~1 GiB of RAM regardless of the machine's
+> nominal size. board_ram_size(info->board_id), computed one line above
+> in the same function, is the value that was actually needed.
+>
+> Patch 1 fixes it (one line); patch 2 adds a regression test.
+>
 
 
---Apple-Mail=_6A6F271E-A998-4CFE-A70F-ECAC3DAAFC24
-Content-Transfer-Encoding: quoted-printable
-Content-Type: text/html;
-	charset=utf-8
 
-<html aria-label=3D"message body"><head><meta http-equiv=3D"content-type" =
-content=3D"text/html; charset=3Dutf-8"></head><body =
-style=3D"overflow-wrap: break-word; -webkit-nbsp-mode: space; =
-line-break: after-white-space;"><p style=3D"margin: 0px; font-width: =
-normal; line-height: normal; font-size-adjust: none; font-kerning: auto; =
-font-variant-alternates: normal; font-variant-ligatures: normal; =
-font-variant-numeric: normal; font-variant-east-asian: normal; =
-font-variant-position: normal; font-feature-settings: normal; =
-font-optical-sizing: auto; font-variation-settings: normal;"><span =
-style=3D"color: rgb(0, 0, 0); font-family: Helvetica; font-size: 12px; =
-caret-color: rgb(0, 0, 0);">Hi all,</span><br style=3D"caret-color: =
-rgb(0, 0, 0); color: rgb(0, 0, 0); font-family: Helvetica; font-size: =
-12px;"><br style=3D"caret-color: rgb(0, 0, 0); color: rgb(0, 0, 0); =
-font-family: Helvetica; font-size: 12px;"><font color=3D"#000000"><span =
-style=3D"caret-color: rgb(0, 0, 0);">A polite ping for this RFC =
-series.Thanks advice for Philippe advice and I am ready for =
-v2.</span></font></p><p style=3D"margin: 0px; font-width: normal; =
-line-height: normal; font-size-adjust: none; font-kerning: auto; =
-font-variant-alternates: normal; font-variant-ligatures: normal; =
-font-variant-numeric: normal; font-variant-east-asian: normal; =
-font-variant-position: normal; font-feature-settings: normal; =
-font-optical-sizing: auto; font-variation-settings: normal;"><font =
-color=3D"#000000">Could anyone have other suggestions for my patch. I am =
-appreciative for your advice and ready to fix it in =
-v2</font></p><div><br><blockquote type=3D"cite"><div>2026=E5=B9=B47=E6=9C=88=
-26=E6=97=A5 22:51=EF=BC=8CJack Wang &lt;163wangjack@gmail.com&gt; =
-=E5=86=99=E9=81=93=EF=BC=9A</div><br =
-class=3D"Apple-interchange-newline"><div><div>Add native Rust unit tests =
-that link GpioRegisters directly and exercise<br>the CRL/CRH decode and =
-IDR update algorithm in-process, without booting a<br>machine or pulling =
-in the softmmu memory subsystem.<br><br>Signed-off-by: Jack Wang =
-&lt;163wangjack@gmail.com&gt;<br>---<br> rust/hw/gpio/tests/tests.rs | =
-191 ++++++++++++++++++++++++++++++++++++<br> 1 file changed, 191 =
-insertions(+)<br> create mode 100644 =
-rust/hw/gpio/tests/tests.rs<br><br>diff --git =
-a/rust/hw/gpio/tests/tests.rs b/rust/hw/gpio/tests/tests.rs<br>new file =
-mode 100644<br>index 0000000000..ca4d5ed4d6<br>--- /dev/null<br>+++ =
-b/rust/hw/gpio/tests/tests.rs<br>@@ -0,0 +1,191 @@<br>+// Native Rust =
-unit tests for the STM32F1xx GPIO register logic.<br>+//<br>+// =
-Copyright 2026, Jack Wang<br>+// Author(s): Jack Wang =
-&lt;163wangjack@gmail.com&gt;<br>+// SPDX-License-Identifier: =
-GPL-2.0-or-later<br>+//<br>+// Unlike tests/qtest/stm32f103_gpio-test.c =
-(which drives the device over a<br>+// socket from an external =
-qemu-system-arm process), these tests link the<br>+// device crate =
-directly and exercise `GpioRegisters` in-process. This gives<br>+// =
-fast, native Rust coverage of the CRL/CRH decode + IDR algorithm =
-without<br>+// booting a machine or pulling in the softmmu memory =
-subsystem.<br>+//<br>+// `GpioRegisters` deliberately has no QOM object, =
-no MemoryRegion and no<br>+// InterruptSource, so it can be constructed =
-with `GpioRegisters::new()` and<br>+// called directly. Only the BQL =
-mock (bql::start_test) is required, because<br>+// the register cells =
-are `BqlCell`s.<br>+//<br>+// SPDX-License-Identifier: =
-GPL-2.0-or-later<br>+<br>+use stm32f1xx_gpio::gpio::{<br>+ =
-&nbsp;&nbsp;&nbsp;GpioRegisters, PinUpdate, REG_BRR, REG_BSRR, REG_CRH, =
-REG_CRL, REG_IDR, REG_ODR, RESET_CRH,<br>+ =
-&nbsp;&nbsp;&nbsp;RESET_CRL,<br>+};<br>+<br>+/// Take the mock BQL so =
-`BqlCell` accesses are permitted. Integration tests<br>+/// run with =
-`--test-threads=3D1`, so this is safe to call from every test.<br>+fn =
-regs() -&gt; GpioRegisters {<br>+ =
-&nbsp;&nbsp;&nbsp;bql::start_test();<br>+ =
-&nbsp;&nbsp;&nbsp;GpioRegisters::new()<br>+}<br>+<br>+// 4-bit =
-MODE[1:0]+CNF[1:0] pin configurations (RM0008).<br>+const =
-CFG_INPUT_FLOATING: u32 =3D 0x4; // MODE=3D00 CNF=3D01 (reset =
-default)<br>+const CFG_INPUT_PULL: u32 =3D 0x8; // MODE=3D00 CNF=3D10, =
-ODR selects up/down<br>+const CFG_OUTPUT_PP: u32 =3D 0x1; // MODE=3D01 =
-CNF=3D00, general push-pull<br>+<br>+/// Set the 4-bit config nibble for =
-`pin` in CRL/CRH via an MMIO write.<br>+fn set_config(r: =
-&amp;GpioRegisters, pin: usize, cfg: u32) {<br>+ &nbsp;&nbsp;&nbsp;let =
-reg =3D if pin &lt; 8 { REG_CRL } else { REG_CRH };<br>+ =
-&nbsp;&nbsp;&nbsp;let shift =3D ((pin % 8) * 4) as u32;<br>+ =
-&nbsp;&nbsp;&nbsp;let old =3D r.read(reg);<br>+ =
-&nbsp;&nbsp;&nbsp;r.write(reg, (old &amp; !(0xF &lt;&lt; shift)) | (cfg =
-&lt;&lt; shift));<br>+}<br>+<br>+fn set_odr_bit(r: &amp;GpioRegisters, =
-pin: usize, value: u32) {<br>+ &nbsp;&nbsp;&nbsp;let old =3D =
-r.read(REG_ODR);<br>+ &nbsp;&nbsp;&nbsp;r.write(REG_ODR, (old &amp; !(1 =
-&lt;&lt; pin)) | (value &lt;&lt; pin));<br>+}<br>+<br>+/// True if pin =
-`pin` is set in a [`PinUpdate`] and its reported level is<br>+/// =
-`level`.<br>+fn pin_changed_to(upd: PinUpdate, pin: usize, level: bool) =
--&gt; bool {<br>+ &nbsp;&nbsp;&nbsp;(upd.mask &amp; (1 &lt;&lt; pin)) !=3D=
- 0 &amp;&amp; (((upd.levels &gt;&gt; pin) &amp; 1) !=3D 0) =3D=3D =
-level<br>+}<br>+<br>+#[test]<br>+/// A freshly created register block =
-holds the RM0008 reset values.<br>+fn test_reset_values() {<br>+ =
-&nbsp;&nbsp;&nbsp;let r =3D regs();<br>+ =
-&nbsp;&nbsp;&nbsp;assert_eq!(r.read(REG_CRL), RESET_CRL);<br>+ =
-&nbsp;&nbsp;&nbsp;assert_eq!(r.read(REG_CRH), RESET_CRH);<br>+ =
-&nbsp;&nbsp;&nbsp;assert_eq!(r.read(REG_IDR), 0);<br>+ =
-&nbsp;&nbsp;&nbsp;assert_eq!(r.read(REG_ODR), =
-0);<br>+}<br>+<br>+#[test]<br>+/// `reset` restores the reset state =
-after the registers are dirtied.<br>+fn test_reset_restores() {<br>+ =
-&nbsp;&nbsp;&nbsp;let r =3D regs();<br>+ =
-&nbsp;&nbsp;&nbsp;r.write(REG_CRL, 0xDEAD_BEEF);<br>+ =
-&nbsp;&nbsp;&nbsp;r.write(REG_ODR, 0x0000_FFFF);<br>+ =
-&nbsp;&nbsp;&nbsp;assert_ne!(r.read(REG_CRL), RESET_CRL);<br>+<br>+ =
-&nbsp;&nbsp;&nbsp;r.reset();<br>+<br>+ =
-&nbsp;&nbsp;&nbsp;assert_eq!(r.read(REG_CRL), RESET_CRL);<br>+ =
-&nbsp;&nbsp;&nbsp;assert_eq!(r.read(REG_CRH), RESET_CRH);<br>+ =
-&nbsp;&nbsp;&nbsp;assert_eq!(r.read(REG_IDR), 0);<br>+ =
-&nbsp;&nbsp;&nbsp;assert_eq!(r.read(REG_ODR), =
-0);<br>+}<br>+<br>+#[test]<br>+/// Push-pull output: IDR follows ODR; =
-ODR written while input is latched,<br>+/// and the out-pin change is =
-reported.<br>+fn test_output_mode() {<br>+ &nbsp;&nbsp;&nbsp;let r =3D =
-regs();<br>+ &nbsp;&nbsp;&nbsp;let pin =3D 5;<br>+<br>+ =
-&nbsp;&nbsp;&nbsp;// Set ODR while still a floating input: IDR =
-unaffected, no out change.<br>+ &nbsp;&nbsp;&nbsp;let idle =3D =
-set_odr_and_report(&amp;r, pin, 1);<br>+ =
-&nbsp;&nbsp;&nbsp;assert_eq!(r.read(REG_IDR), 0);<br>+ =
-&nbsp;&nbsp;&nbsp;assert_eq!(idle.mask &amp; (1 &lt;&lt; pin), =
-0);<br>+<br>+ &nbsp;&nbsp;&nbsp;// Switch to push-pull output: pin now =
-follows ODR (high), and flips.<br>+ &nbsp;&nbsp;&nbsp;let old =3D =
-r.read(REG_CRL);<br>+ &nbsp;&nbsp;&nbsp;let to_output =3D r.write(<br>+ =
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;REG_CRL,<br>+ =
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(old &amp; !(0xF &lt;&lt; (pin =
-* 4))) | (CFG_OUTPUT_PP &lt;&lt; (pin * 4)),<br>+ =
-&nbsp;&nbsp;&nbsp;);<br>+ &nbsp;&nbsp;&nbsp;assert_eq!(r.read(REG_IDR), =
-1 &lt;&lt; pin);<br>+ =
-&nbsp;&nbsp;&nbsp;assert!(pin_changed_to(to_output, pin, =
-true));<br>+<br>+ &nbsp;&nbsp;&nbsp;// Clear ODR bit: pin goes low, and =
-flips back.<br>+ &nbsp;&nbsp;&nbsp;let to_low =3D =
-set_odr_and_report(&amp;r, pin, 0);<br>+ =
-&nbsp;&nbsp;&nbsp;assert_eq!(r.read(REG_IDR), 0);<br>+ =
-&nbsp;&nbsp;&nbsp;assert!(pin_changed_to(to_low, pin, =
-false));<br>+}<br>+<br>+/// Helper: write one ODR bit and return the =
-resulting [`PinUpdate`].<br>+fn set_odr_and_report(r: =
-&amp;GpioRegisters, pin: usize, value: u32) -&gt; PinUpdate {<br>+ =
-&nbsp;&nbsp;&nbsp;let old =3D r.read(REG_ODR);<br>+ =
-&nbsp;&nbsp;&nbsp;r.write(REG_ODR, (old &amp; !(1 &lt;&lt; pin)) | =
-(value &lt;&lt; pin))<br>+}<br>+<br>+#[test]<br>+/// Floating input: an =
-external drive is reflected in IDR and reported.<br>+fn =
-test_input_mode() {<br>+ &nbsp;&nbsp;&nbsp;let r =3D regs();<br>+ =
-&nbsp;&nbsp;&nbsp;let pin =3D 6usize;<br>+<br>+ =
-&nbsp;&nbsp;&nbsp;set_config(&amp;r, pin, CFG_INPUT_FLOATING);<br>+<br>+ =
-&nbsp;&nbsp;&nbsp;let drive_high =3D r.gpio_set(pin, 1);<br>+ =
-&nbsp;&nbsp;&nbsp;assert_eq!(r.read(REG_IDR), 1 &lt;&lt; pin);<br>+ =
-&nbsp;&nbsp;&nbsp;assert!(pin_changed_to(drive_high, pin, =
-true));<br>+<br>+ &nbsp;&nbsp;&nbsp;let drive_low =3D r.gpio_set(pin, =
-0);<br>+ &nbsp;&nbsp;&nbsp;assert_eq!(r.read(REG_IDR), 0);<br>+ =
-&nbsp;&nbsp;&nbsp;assert!(pin_changed_to(drive_low, pin, =
-false));<br>+}<br>+<br>+#[test]<br>+/// Input pull mode: ODR selects =
-pull-up (IDR=3D1) vs pull-down (IDR=3D0),<br>+/// with no external =
-driver connected.<br>+fn test_pull_up_down() {<br>+ =
-&nbsp;&nbsp;&nbsp;let r =3D regs();<br>+ &nbsp;&nbsp;&nbsp;let pin =3D =
-0;<br>+<br>+ &nbsp;&nbsp;&nbsp;set_odr_bit(&amp;r, pin, 1);<br>+ =
-&nbsp;&nbsp;&nbsp;set_config(&amp;r, pin, CFG_INPUT_PULL);<br>+ =
-&nbsp;&nbsp;&nbsp;assert_eq!(r.read(REG_IDR), 1 &lt;&lt; pin);<br>+<br>+ =
-&nbsp;&nbsp;&nbsp;set_odr_bit(&amp;r, pin, 0);<br>+ =
-&nbsp;&nbsp;&nbsp;assert_eq!(r.read(REG_IDR), =
-0);<br>+}<br>+<br>+#[test]<br>+/// BSRR sets/resets ODR bits (set has =
-priority); BRR resets ODR bits.<br>+fn test_bsrr_brr() {<br>+ =
-&nbsp;&nbsp;&nbsp;let r =3D regs();<br>+ &nbsp;&nbsp;&nbsp;let pin =3D =
-1;<br>+<br>+ &nbsp;&nbsp;&nbsp;r.write(REG_BSRR, 1 &lt;&lt; pin);<br>+ =
-&nbsp;&nbsp;&nbsp;assert_eq!(r.read(REG_ODR), 1 &lt;&lt; pin);<br>+<br>+ =
-&nbsp;&nbsp;&nbsp;r.write(REG_BSRR, 1 &lt;&lt; (pin + 16));<br>+ =
-&nbsp;&nbsp;&nbsp;assert_eq!(r.read(REG_ODR), 0);<br>+<br>+ =
-&nbsp;&nbsp;&nbsp;r.write(REG_BSRR, 1 &lt;&lt; pin);<br>+ =
-&nbsp;&nbsp;&nbsp;r.write(REG_BRR, 1 &lt;&lt; pin);<br>+ =
-&nbsp;&nbsp;&nbsp;assert_eq!(r.read(REG_ODR), 0);<br>+<br>+ =
-&nbsp;&nbsp;&nbsp;// Set has priority over reset within one BSRR =
-write.<br>+ &nbsp;&nbsp;&nbsp;r.write(REG_BSRR, (1 &lt;&lt; pin) | (1 =
-&lt;&lt; (pin + 16)));<br>+ =
-&nbsp;&nbsp;&nbsp;assert_eq!(r.read(REG_ODR), 1 &lt;&lt; =
-pin);<br>+}<br>+<br>+#[test]<br>+/// A pin driven externally, then =
-reconfigured as push-pull output, is<br>+/// disconnected: IDR follows =
-ODR, not the stale external level.<br>+fn test_push_pull_disconnect() =
-{<br>+ &nbsp;&nbsp;&nbsp;let r =3D regs();<br>+ &nbsp;&nbsp;&nbsp;let =
-pin =3D 7usize;<br>+<br>+ &nbsp;&nbsp;&nbsp;// Drive high externally as =
-input.<br>+ &nbsp;&nbsp;&nbsp;set_config(&amp;r, pin, =
-CFG_INPUT_FLOATING);<br>+ &nbsp;&nbsp;&nbsp;r.gpio_set(pin, 1);<br>+ =
-&nbsp;&nbsp;&nbsp;assert_eq!(r.read(REG_IDR), 1 &lt;&lt; pin);<br>+ =
-&nbsp;&nbsp;&nbsp;assert_eq!(r.disconnected_pins() &amp; (1 &lt;&lt; =
-pin), 0); // now connected<br>+<br>+ &nbsp;&nbsp;&nbsp;// Reconfigure as =
-push-pull output with ODR=3D0: pin must drop to 0,<br>+ =
-&nbsp;&nbsp;&nbsp;// and the external driver must be disconnected.<br>+ =
-&nbsp;&nbsp;&nbsp;set_odr_bit(&amp;r, pin, 0);<br>+ =
-&nbsp;&nbsp;&nbsp;set_config(&amp;r, pin, CFG_OUTPUT_PP);<br>+ =
-&nbsp;&nbsp;&nbsp;assert_eq!(r.read(REG_IDR), 0);<br>+ =
-&nbsp;&nbsp;&nbsp;assert_ne!(r.disconnected_pins() &amp; (1 &lt;&lt; =
-pin), 0); // disconnected again<br>+<br>+ &nbsp;&nbsp;&nbsp;// Further =
-external drives are ignored while output push-pull.<br>+ =
-&nbsp;&nbsp;&nbsp;r.gpio_set(pin, 1);<br>+ =
-&nbsp;&nbsp;&nbsp;assert_eq!(r.read(REG_IDR), 0);<br>+}<br>-- =
-<br>2.53.0<br><br></div></div></blockquote></div><br></body></html>=
+Applied to target-arm.next, thanks.
 
---Apple-Mail=_6A6F271E-A998-4CFE-A70F-ECAC3DAAFC24--
+-- PMM
 

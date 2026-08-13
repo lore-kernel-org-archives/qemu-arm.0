@@ -4,91 +4,91 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3CF45C5B572
-	for <qemu-arm@archiver.kernel.org>; Thu, 13 Aug 2026 18:19:30 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C7923C5CFDB
+	for <qemu-arm@archiver.kernel.org>; Thu, 13 Aug 2026 18:19:38 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wua1B-0004A4-Q7; Thu, 13 Aug 2026 14:19:07 -0400
+	id 1wua1E-0004Dj-T2; Thu, 13 Aug 2026 14:19:08 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <philmd@oss.qualcomm.com>)
- id 1wua10-0003aL-JB
- for qemu-arm@nongnu.org; Thu, 13 Aug 2026 14:18:54 -0400
+ id 1wua0o-00033L-P8
+ for qemu-arm@nongnu.org; Thu, 13 Aug 2026 14:18:48 -0400
 Received: from mx0b-0031df01.pphosted.com ([205.220.180.131])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <philmd@oss.qualcomm.com>)
- id 1wua0y-0002IQ-HN
- for qemu-arm@nongnu.org; Thu, 13 Aug 2026 14:18:53 -0400
-Received: from pps.filterd (m0279873.ppops.net [127.0.0.1])
+ id 1wua0f-0002Fp-ET
+ for qemu-arm@nongnu.org; Thu, 13 Aug 2026 14:18:41 -0400
+Received: from pps.filterd (m0279869.ppops.net [127.0.0.1])
  by mx0a-0031df01.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id
- 67DFqu6I3180967
- for <qemu-arm@nongnu.org>; Thu, 13 Aug 2026 18:18:41 GMT
+ 67DGV4Hp2076960
+ for <qemu-arm@nongnu.org>; Thu, 13 Aug 2026 18:18:20 GMT
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qualcomm.com; h=
  cc:content-transfer-encoding:content-type:date:from:in-reply-to
  :message-id:mime-version:references:subject:to; s=qcppdkim1; bh=
- iZ4CQeHz0iJrXPv/eT7hao6uyv4DFIFygNCZO9k79Qg=; b=Zf/LpJWyOil0GNtz
- GRXsvvUH9b6DPhWH8Su/QEP2fUsUChulGo7bBXRQ9026kAMnrHuvNj6t6MI+Jb1w
- 21zVNxSX8kjkWRW3IRFRzP4cvXZukRrrWAosh/pYdmlMxbZhc0Zzi3nzkW+zOD9A
- hG6/U5SXBpzBIT7Y3ibo5Ptz4e1NKViVUTJZ2bKTPE7NLKqXMOTZbnhQXDcfBxXE
- cbAEdqtFP5o7jecRctFwW08J9etnwAoi3Hz7xSEWJYO813aQPbbmImIb8r7fPRiq
- mwa7KRf8kumLiH96qsR2ojg9YoehPXV74ib8m/t7kR7YfRXxnn2G+8RfHpQj1EJ0
- Ts6P1g==
-Received: from mail-qk1-f198.google.com (mail-qk1-f198.google.com
- [209.85.222.198])
- by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 4g1gy4rp56-1
+ V1XUkcAOBdCmt+f6LujKVgOfRbrqLf8eqAKYfrk8/gI=; b=K4ShfWpvQbhhvufj
+ 8t/5NMf0CpYEEoRHoYloXGQt3OB4BRFdi1CWOEZseiPgULp6nL/HLmP1VgNLeNDA
+ 3Q8Qw3T3K3Ov+oBU+2GmNRI+pYcU+KxxWrV83QEPtw/vxP3dEN44ZsGozWGNeh9u
+ 0G6aG4sOZzqgyAAnzZb2DHLlZk4Twl2kQVJ8QJ3mD+/43iNcXSaEHtfbkPqQp4eN
+ 6kMmMxF6zu3JZUPSt6nTbP2F61n4dTRUFccn4E9RVjqnx1vo4Yomm/cNcp8q1RMy
+ pGud0v+8ArXD5IHSq1LRVwTDa+QrKPg8uOid70ZnUuP9+Gu+bZcs3BUVLdufiNQq
+ 7DnBNw==
+Received: from mail-qt1-f197.google.com (mail-qt1-f197.google.com
+ [209.85.160.197])
+ by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 4g1hgy0ffc-1
  (version=TLSv1.3 cipher=TLS_AES_128_GCM_SHA256 bits=128 verify=NOT)
- for <qemu-arm@nongnu.org>; Thu, 13 Aug 2026 18:18:41 +0000 (GMT)
-Received: by mail-qk1-f198.google.com with SMTP id
- af79cd13be357-9349c5af52bso34569485a.0
- for <qemu-arm@nongnu.org>; Thu, 13 Aug 2026 11:18:41 -0700 (PDT)
+ for <qemu-arm@nongnu.org>; Thu, 13 Aug 2026 18:18:20 +0000 (GMT)
+Received: by mail-qt1-f197.google.com with SMTP id
+ d75a77b69052e-51c0408254aso20259071cf.0
+ for <qemu-arm@nongnu.org>; Thu, 13 Aug 2026 11:18:19 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=oss.qualcomm.com; s=google; t=1786645121; x=1787249921; darn=nongnu.org;
+ d=oss.qualcomm.com; s=google; t=1786645099; x=1787249899; darn=nongnu.org;
  h=content-transfer-encoding:content-type:mime-version:references
  :in-reply-to:message-id:date:subject:cc:to:from:from:to:cc:subject
  :date:message-id:reply-to:content-type;
- bh=iZ4CQeHz0iJrXPv/eT7hao6uyv4DFIFygNCZO9k79Qg=;
- b=A/kfqCiQG17Df5qSKj/WTbiYSb45+EF4RhqECtaJgGHOk+JxAZtNHZn1rgySUXAaLM
- xf7QXxXoAS+xzCsEDBuO5cklMGDaBqct8llLAfKpGnQoQdAYbkTQNs8U8a2gQ/ur4qTk
- xtrbTlCCndwdx3dYzVwd8Hyf0Q7TuCSWXaTHfJAfXuH87Q3Iz/ofHNwQ144XVum5c40v
- ulVXaUJmsszezCEYfe7zaHzJDuDagfEMf7/F9wCaleg4cgedxGXmCcLWOE/sG6Xg4+Pm
- Hjb0SWnq7h9KrmInZO0JEE0ntnuoBUxhxk1iy+6NNcvUVrLDkiTllp5Upr/xNqRSjeGZ
- KIOA==
+ bh=V1XUkcAOBdCmt+f6LujKVgOfRbrqLf8eqAKYfrk8/gI=;
+ b=jPU/CUMRvS+/+3SnFQC04tii9kZiwNG+P87E62snsY1jjhThM8FO/bWjMexuX7d8hJ
+ dyot05wcQ4W+q074+qVPl1KuBuwCdf6xL44tZNMmtrvOSGxlctpct823XhlCukLhS8Bq
+ WbAgmZhlnDUgnARqPtS//cQdSTYSOWcZnT27JKacolOEPZA4D9fFBPz1zf2vKMrcOWw3
+ 4H+fUwQBVuBD57GZlZyC8MRV67gUEseCnyuh5Vc7hjxq9JLxWS2cwiI4IBOQEuD47s2/
+ fSCwCibwhB94ua0AqUvJhni9f3vPhwBVc6/4pIwfDxT712S6lA3Sw/vVcaQDc23oP5ie
+ 7dSQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1786645121; x=1787249921;
+ d=1e100.net; s=20251104; t=1786645099; x=1787249899;
  h=content-transfer-encoding:content-type:mime-version:references
  :in-reply-to:message-id:date:subject:cc:to:from:x-gm-gg
  :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
  :content-type;
- bh=iZ4CQeHz0iJrXPv/eT7hao6uyv4DFIFygNCZO9k79Qg=;
- b=JNziFSjIBmHwAamUX7UbJggjapLurs3KgjIruEXuvrU/Lh16vz0rEHajqA4UCTM4KK
- hS4JWoDURInsVVUpIjrCtaZqfOVVWM+2hihMABlqrX9aNvr3jekiwF8Lahgsni1ps3oY
- kKXjrT0b9dQee4aqShcTWIgxLwon1yuUq21bLftP8alhxmZ+SYBWyt/b0VNgSiVWmtmU
- 7SZ2dCwXPYEuEXVyNqLy+hqsvPBoyaq9y2yWyVuNkjYAx8JObaQ/O1PE8xEN9tsR6Btm
- XG1DWrlnzRgVDHnBYy+NJyqPWq+fbdv3iowHg4dU5mJSh/OZr4rpbjPsLWv/LwJ7xM72
- geyw==
+ bh=V1XUkcAOBdCmt+f6LujKVgOfRbrqLf8eqAKYfrk8/gI=;
+ b=TPa0a/Vae95gL4DElu2JUSObdhtALttKxRRtXTjgtJVrJJDUaDY1qkIH4o4DHyQyqS
+ Mc0quY5PhuJ7Wqeiu/eZt5Ljkki0f3qUPMm06jHiRkPO8Rnw/SMbm7BCjrEcCvLm2kDq
+ jRIUMGZaYokhYhMnrUVFRiBSPUZ1drAQsrTYCiYNjm9rdv7dM2C9eImUc067/i4f0Yth
+ D9N6WQaPsKAY5Lt00xmjZLg/u66uOuJtZSGgNHDcRwtCva+8TvoWQ0HltOXwiFIwrDoD
+ sEt1DsJsE3KOVxQ3zRf0/be/UXa0ZzOGrCEeKcAT8d0JUHn0ZZKStrrUo/5tHnDPE7v1
+ 7nkg==
 X-Forwarded-Encrypted: i=1;
- AHgh+RpV3eplMVjOYGWuxTmBfWk0RW9QJeAbaZXUEsi+bhRmFclZ0gBW8fZoHKx4I1qFZ9/VCrsQ9hl8hg==@nongnu.org
-X-Gm-Message-State: AOJu0YwTJYBmeMWvNd96vcz0h2QITGE76VtRxJ05Wa2G6EVhgd4BsvYC
- +UNOX2syoOONck85GYf07PWGrzTzxty81UARw8+iVVaKlkkcC9cEkwgFcF/VDgr/8JWLXtM+lcH
- +DtXaFLd+pfP9WAab7OSigOwlQ8JuA1mruTeXgbLkpsEBkIvDDeCpR9U=
-X-Gm-Gg: AR+sD13VQWkTd5jkD2wpqRGzVxKoaO8lYv6tSNIdUmlaoY9OfZWUEPOdm+W5HilpSwY
- 7CnJmEQdn0pAKnzu2rjrCy8GD7SGLNJ2MXZXR/N9jI2qMAkJ8iIBqUuiMhucY21GntKiQUDnfDO
- 3Etqj1Pw65wYTA17WhGryIVTlBPtuOsb7A3GmjhpfdQmaEggLJuYDprMuYn44tu4pCqTgcd6UhZ
- QoXEsDT1RBJ0Khf/3lOtqsVk92XadpsTXVwp9olLUuh8eVoEfAI3KuvUhfdnjPDqV9+s3WlCxl4
- enxExdxxvjidJhfYuWQ3IlUfPqQyd6z1+xSpGMKO/jORdSuHPQxg1TnaI6KNLOR0EG+oKHowez9
- Gtxjq5JIpK8z0wy/lPDsNt2OOhW0hO/jfSP//q8L5KQ==
-X-Received: by 2002:ac8:588d:0:b0:51c:103:fb56 with SMTP id
- d75a77b69052e-52d73c6fae8mr83157571cf.15.1786645120788; 
- Thu, 13 Aug 2026 11:18:40 -0700 (PDT)
-X-Received: by 2002:ac8:588d:0:b0:51c:103:fb56 with SMTP id
- d75a77b69052e-52d73c6fae8mr83156831cf.15.1786645120303; 
- Thu, 13 Aug 2026 11:18:40 -0700 (PDT)
+ AHgh+RqorenbJB5ct2O1hRPDkQirMMnEqsqvH8xrWfp4QhIiZITepUvEAbrEr2/BebetinFKTXEHOIXfPw==@nongnu.org
+X-Gm-Message-State: AOJu0YygSEwoCorKysHAGrc5bZpp/1Ij58175BX52/xOq7ZBKYTtWMkJ
+ n2QImBLTJp52kJxmXNUVr04nDkEH7mZwGcjwZ8I4j8Ughd6yNkX3cdJ2UwQoOd0SQDe+0Nz6f2A
+ A5r80QSs1bHNMScitCSS2vF0/++GzpVnd+wg3VySVCJOj/MsWUmssR6x1mMG/MtM=
+X-Gm-Gg: AR+sD10x/eygHoNmGYb4EogFEU02yNqu33LEHbRld4gS5IZHfhM6kttYUZVBoHvCK6h
+ afzT9itunx/7CxkMep58ZEbVgmvDAbSee4TqiQdeUBol6AWLGbjtZUi39cO9HQYl90/BWHWh8f3
+ vkR+4ZBXLx3g+gqL03NsEiu+tQsEY+/hKYQ1MRPooQg0cdnG7dxAp24BlFpFt5mveB2IICqEEIt
+ /QNRZ9r8WWZ0hL/WfZiO5WU3hlLMJ/+KEkIXrKi5Ymj3qsANoqAcAR14WndyaOrLvwX117xZ6mV
+ 3ImZTpiUJz3vHm8sNi1JDG6VxC/p6LT2SJjN5LFbb+v17iHEGE3v0DdoC2YpZS0wLC+fvT/9hJZ
+ x62ngtr/kPuDJ+HylRz88SqBb2l0ooSUEbH8WJmIMRQ==
+X-Received: by 2002:ac8:5f95:0:b0:52d:6f91:86e with SMTP id
+ d75a77b69052e-52d74b6c8c2mr77157841cf.15.1786645099364; 
+ Thu, 13 Aug 2026 11:18:19 -0700 (PDT)
+X-Received: by 2002:ac8:5f95:0:b0:52d:6f91:86e with SMTP id
+ d75a77b69052e-52d74b6c8c2mr77156511cf.15.1786645098222; 
+ Thu, 13 Aug 2026 11:18:18 -0700 (PDT)
 Received: from localhost.localdomain (pmd666.hd.free.fr. [88.187.86.199])
  by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-49982129643sm73839635e9.4.2026.08.13.11.18.39
+ ffacd0b85a97d-4815f2005bcsm1289151f8f.6.2026.08.13.11.18.16
  (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Thu, 13 Aug 2026 11:18:39 -0700 (PDT)
+ Thu, 13 Aug 2026 11:18:17 -0700 (PDT)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@oss.qualcomm.com>
 To: qemu-devel@nongnu.org
 Cc: Daniel Henrique Barboza <daniel.barboza@oss.qualcomm.com>,
@@ -100,43 +100,42 @@ Cc: Daniel Henrique Barboza <daniel.barboza@oss.qualcomm.com>,
  Richard Henderson <richard.henderson@linaro.org>, qemu-arm@nongnu.org,
  Magnus Kulke <magnuskulke@linux.microsoft.com>,
  Peter Maydell <peter.maydell@linaro.org>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@oss.qualcomm.com>,
- Pedro Barbuda <pbarbuda@microsoft.com>
-Subject: [PATCH 16/16] target/arm/whpx: Fix argument order typo in memory
- access error message
-Date: Thu, 13 Aug 2026 20:16:39 +0200
-Message-ID: <20260813181640.6537-17-philmd@oss.qualcomm.com>
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@oss.qualcomm.com>
+Subject: [PATCH 13/16] target/arm/hvf: Lock BQL outside of the vCPU inner
+ execution loop
+Date: Thu, 13 Aug 2026 20:16:36 +0200
+Message-ID: <20260813181640.6537-14-philmd@oss.qualcomm.com>
 X-Mailer: git-send-email 2.53.0
 In-Reply-To: <20260813181640.6537-1-philmd@oss.qualcomm.com>
 References: <20260813181640.6537-1-philmd@oss.qualcomm.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Proofpoint-ORIG-GUID: RSGbO4iWCnJpbluLiixxjkiX1s39AHlg
-X-Authority-Analysis: v=2.4 cv=ZYAt8MVA c=1 sm=1 tr=0 ts=6a7e0a81 cx=c_pps
- a=qKBjSQ1v91RyAK45QCPf5w==:117 a=4s3hRJSeHn4rkQlkrse1kQ==:17
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwODEzMDEzMiBTYWx0ZWRfX21VuRXVdwe8f
+ 7gITJN+qosTKjtQubkBtHi722PwH3VGc2ecfKRwkJ/PYM+UGqvxXEaSTgNTDaAGF1twbsWNTFZ8
+ vBZ7Idm7P6mZDM8xXvhCbBxvhJP9kxVrgY75kO+jKtkKQ4xAsZkGTiSEmQoya7Kt5lIrNCBQZPr
+ JiqSjmFhsR2JVEz4k1mEEM1vAP/w0T7sr4ZpeO0Pfn5NKagR6a1n4hTvxT/0AS+jwrS0RbfSPTH
+ WfJ+kz9CQF+1x3cbVFUJ+SQqWA9lb2gJZPTOuxiXdsD1RfIBTAPUgUXbp/8oBJUOtLp5Cz5Ufsf
+ cFB/oEHvuc1WhCfD5f3dNEkLaAzs9WKZBFN96VWMBT+j21yiVyWXLMTpCaeWXLya5OJouXgBbLY
+ 59jCAh/rZ96B1FxKs021gmmpYNU4MN4CzPrnqxxFDO72WEtz07B1Ms3mE2ofz2CVOpUgzlUR00+
+ YuyavJmOAy0Mejoy3Ng==
+X-Authority-Analysis: v=2.4 cv=AaSB2XXG c=1 sm=1 tr=0 ts=6a7e0a6c cx=c_pps
+ a=EVbN6Ke/fEF3bsl7X48z0g==:117 a=4s3hRJSeHn4rkQlkrse1kQ==:17
  a=IkcTkHD0fZMA:10 a=Sv0fKeRqtYgA:10 a=M51BFTxLslgA:10 a=s4-Qcg_JpJYA:10
- a=sWKEhP36mHoA:10 a=VkNPw1HP01LnGYTKEx00:22 a=u7WPNUs3qKkmUXheDGA7:22
- a=rJkE3RaqiGZ5pbrm-msn:22 a=EUspDBNiAAAA:8 a=CJsRysG5a4fyhNKOOSkA:9
- a=3ZKOabzyN94A:10 a=QEXdDO2ut3YA:10 a=NFOGd7dJGGMPyQGDc5-O:22
-X-Proofpoint-Spam-Info: AW1haW4tMjYwODEzMDEzMiBTYWx0ZWRfX5HY9B3Cjro4B
- 634VElfbh02zNJnyEKTsgJx6rsCDIQjpP2ktgPZSy79Cfh2Y59k+SHovSiGNdHU9LaEWwISIr29
- DPveJkPCUQN2hbdlYwGWNz0A0rQ0V7M=
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwODEzMDEzMiBTYWx0ZWRfX3aR2RgLA6PAY
- TCscbBymwP5/5EVc08wFspFogbhAuo0b9i4v06ao5IZ/icIYmriAFZwH85KXzZQykzsaDe/0lNx
- Jes10y8r4fFHIeAnm7UJUBn3p5Kztj++6QpR3NZ/yLnbu+CESmMm98YIgr6gVenzYc02oLm1qx9
- hrCpYB5x+0OHcamCRi/J9WiBwdnDuAMloy6Kb3BkxowMriVsZ3D5euLfaJtXCgtM6PugEnq45Gm
- IOyqLIFjucS3aMFfLkd57ElN2SI7s5pMTVn4sDVyppFFUJmtLRKQpuCschtiadOAFE9FHcqZXWV
- yATC5mD984SU+59TpEBXs7+/MofzOuf9cJGueuki16HJQkkApE0rb9QPH+tWyslOJkJF0G+FARA
- +INx92RHoDY9Rd7GmwTXgYDHqaHrFiajvS79CZ1hl8AbADfymMDrVPdtZGpm+VtFd/KT8lzTQA+
- shmM+rgBP+xGveWym6A==
-X-Proofpoint-GUID: RSGbO4iWCnJpbluLiixxjkiX1s39AHlg
+ a=VkNPw1HP01LnGYTKEx00:22 a=u7WPNUs3qKkmUXheDGA7:22 a=_glEPmIy2e8OvE2BGh3C:22
+ a=EUspDBNiAAAA:8 a=WxR_XFPUuro4_54D_dQA:9 a=3ZKOabzyN94A:10 a=QEXdDO2ut3YA:10
+ a=O8hF6Hzn-FEA:10 a=a_PwQJl-kcHnX1M80qC6:22
+X-Proofpoint-ORIG-GUID: deCZ7yge8qgFD-75cgE41vclbgpRxvL1
+X-Proofpoint-GUID: deCZ7yge8qgFD-75cgE41vclbgpRxvL1
+X-Proofpoint-Spam-Info: AW1haW4tMjYwODEzMDEzMiBTYWx0ZWRfXzqw6dmuCrL58
+ 6LeqpI0ZGMvTqGKVrPe0LaDyyXifhmE32loHrze8YF7/FcCrOc8au0qmN3x6gOfoS2vnqrJZUeY
+ 0Ubu0PxrqybBONbTf/Y7Md8y5aq0sJ0=
 X-Proofpoint-Virus-Version: vendor=baseguard
  engine=ICAP:2.0.293,Aquarius:18.0.1176,Hydra:6.1.134,FMLib:17.12.100.49
  definitions=2026-08-13_05,2026-08-12_01,2025-10-01_01
 X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
- lowpriorityscore=0 malwarescore=0 spamscore=0 suspectscore=0 clxscore=1015
- priorityscore=1501 impostorscore=0 bulkscore=0 phishscore=0 adultscore=0
+ adultscore=0 malwarescore=0 clxscore=1015 priorityscore=1501 spamscore=0
+ impostorscore=0 suspectscore=0 bulkscore=0 lowpriorityscore=0 phishscore=0
  classifier=typeunknown authscore=0 authtc= authcc= route=outbound adjust=0
  reason=mlx scancount=1 engine=8.22.0-2606150000 definitions=main-2608130132
 Received-SPF: pass client-ip=205.220.180.131;
@@ -163,30 +162,53 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-The format string expects "Gva = ... Gpa = ..." but we provide
-these addresses swapped, causing confusing misaligned debug output.
-Re-order by swapping back.
+Reduce lock contention by acquiring / releasing the BQL
+outside of the entire vCPU inner loop.
 
-Fixes: 59432082cef ("whpx: add arm64 support")
 Signed-off-by: Philippe Mathieu-Daudé <philmd@oss.qualcomm.com>
 ---
- target/arm/whpx/whpx-all.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+ target/arm/hvf/hvf.c | 13 ++++++++-----
+ 1 file changed, 8 insertions(+), 5 deletions(-)
 
-diff --git a/target/arm/whpx/whpx-all.c b/target/arm/whpx/whpx-all.c
-index 5e4c25bb7d5..e59580d54ee 100644
---- a/target/arm/whpx/whpx-all.c
-+++ b/target/arm/whpx/whpx-all.c
-@@ -442,8 +442,8 @@ int whpx_vcpu_run(CPUState *cpu)
-                 error_report("WHPX: cached access to unmapped memory"
-                 "Pc = 0x%llx Gva = 0x%llx Gpa = 0x%llx",
-                 vcpu->exit_ctx.MemoryAccess.Header.Pc,
--                vcpu->exit_ctx.MemoryAccess.Gpa,
--                vcpu->exit_ctx.MemoryAccess.Gva);
-+                vcpu->exit_ctx.MemoryAccess.Gva,
-+                vcpu->exit_ctx.MemoryAccess.Gpa);
-                 break;
-             }
+diff --git a/target/arm/hvf/hvf.c b/target/arm/hvf/hvf.c
+index c14ea54a67f..9c6408d2e25 100644
+--- a/target/arm/hvf/hvf.c
++++ b/target/arm/hvf/hvf.c
+@@ -2598,20 +2598,20 @@ int hvf_arch_vcpu_exec(CPUState *cpu)
+         }
+     }
+ 
++    bql_unlock();
++    cpu_exec_start(cpu);
++
+     /* Inner vCPU loop */
+     do {
+         if (!(cpu->singlestep_flags & SSTEP_NOIRQ) &&
+             hvf_inject_interrupts(cpu)) {
+-            return EXCP_INTERRUPT;
++            ret = EXCP_INTERRUPT;
++            break;
+         }
+ 
+         flush_cpu_state(cpu);
+ 
+-        bql_unlock();
+-        cpu_exec_start(cpu);
+         r = hv_vcpu_run(cpu->accel->fd);
+-        cpu_exec_end(cpu);
+-        bql_lock();
+         switch (r) {
+         case HV_SUCCESS:
+             ret = hvf_handle_vmexit(cpu, cpu->accel->exit);
+@@ -2624,6 +2624,9 @@ int hvf_arch_vcpu_exec(CPUState *cpu)
+         }
+     } while (ret == 0);
+ 
++    cpu_exec_end(cpu);
++    bql_lock();
++
+     return ret;
+ }
  
 -- 
 2.53.0

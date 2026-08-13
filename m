@@ -4,26 +4,26 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8C40DC5B572
-	for <qemu-arm@archiver.kernel.org>; Thu, 13 Aug 2026 16:26:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 98687C5CFCF
+	for <qemu-arm@archiver.kernel.org>; Thu, 13 Aug 2026 16:26:35 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wuYFB-0001Oz-E2; Thu, 13 Aug 2026 12:25:25 -0400
+	id 1wuYEC-0007y0-Hp; Thu, 13 Aug 2026 12:24:24 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <tangtao1634@phytium.com.cn>)
- id 1wuYF8-000191-QA; Thu, 13 Aug 2026 12:25:23 -0400
+ id 1wuYEA-0007um-Qb; Thu, 13 Aug 2026 12:24:22 -0400
 Received: from zg8tmtyylji0my4xnjqumte4.icoremail.net ([162.243.164.118])
  by eggs.gnu.org with esmtp (Exim 4.90_1)
  (envelope-from <tangtao1634@phytium.com.cn>)
- id 1wuYF5-000107-Cd; Thu, 13 Aug 2026 12:25:22 -0400
+ id 1wuYE8-0000Ww-RF; Thu, 13 Aug 2026 12:24:22 -0400
 Received: from prodtpl.icoremail.net (unknown [10.12.1.20])
- by hzbj-icmmx-6 (Coremail) with UTF8SMTP id AQAAfwD3oMjs731qwFDmAA--.20461S2; 
- Fri, 14 Aug 2026 00:25:16 +0800 (CST)
+ by hzbj-icmmx-7 (Coremail) with UTF8SMTP id AQAAfwCXn3uy731qExtvAw--.34194S2; 
+ Fri, 14 Aug 2026 00:24:18 +0800 (CST)
 Received: from phytium.com.cn (unknown [218.76.62.144])
- by mail (Coremail) with SMTP id AQAAf8DwBnPo731q5SwjAA--.54277S4;
- Fri, 14 Aug 2026 00:25:13 +0800 (CST)
+ by mail (Coremail) with SMTP id AQAAf8DwjnOq731q3SwjAA--.59176S6;
+ Fri, 14 Aug 2026 00:24:15 +0800 (CST)
 From: Tao Tang <tangtao1634@phytium.com.cn>
 To: Eric Auger <eric.auger@redhat.com>,
  Peter Maydell <peter.maydell@linaro.org>
@@ -35,23 +35,23 @@ Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org,
  Chao Liu <chao.liu@processmission.com>,
  Jim MacArthur <jim.macarthur@linaro.org>,
  Tao Tang <tangtao1634@phytium.com.cn>
-Subject: [RFC v5 12/28] hw/arm/smmuv3: Tag IOTLB cache keys with SEC_SID
-Date: Fri, 14 Aug 2026 00:25:09 +0800
-Message-Id: <20260813162512.2807281-2-tangtao1634@phytium.com.cn>
+Subject: [RFC v5 04/28] hw/arm/smmuv3: Track SEC_SID in configs and events
+Date: Fri, 14 Aug 2026 00:24:09 +0800
+Message-Id: <20260813162410.2805113-4-tangtao1634@phytium.com.cn>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20260813161515.2788900-1-tangtao1634@phytium.com.cn>
 References: <20260813161515.2788900-1-tangtao1634@phytium.com.cn>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-CM-TRANSID: AQAAf8DwBnPo731q5SwjAA--.54277S4
-X-CM-SenderInfo: pwdqw3tdrrljuu6sx5pwlxzhxfrphubq/1tbiAQAGBWp8yc0HnwAAsI
-Authentication-Results: hzbj-icmmx-6; spf=neutral smtp.mail=tangtao163
+X-CM-TRANSID: AQAAf8DwjnOq731q3SwjAA--.59176S6
+X-CM-SenderInfo: pwdqw3tdrrljuu6sx5pwlxzhxfrphubq/1tbiAQAGBWp8yc0HkgAAsF
+Authentication-Results: hzbj-icmmx-7; spf=neutral smtp.mail=tangtao163
  4@phytium.com.cn;
-X-Coremail-Antispam: 1Uk129KBjvAXoWfZw17trWkJF1UGF17Gr15Arb_yoW8KFWfKo
- WfG3WFqr48X3W3u3WqkF4xJa42vayDtay5Zw45X3yYg3ZxKrs8tFWxKr4fXF4FqF4UAF40
- 9F95JFW8XFyUCr93n29KB7ZKAUJUUUU8529EdanIXcx71UUUUU7KY7ZEXasCq-sGcSsGvf
- J3UbIjqfuFe4nvWSU8nxnvy29KBjDU0xBIdaVrnUUvcSsGvfC2KfnxnUUI43ZEXa7xR_UU
- UUUUUUU==
+X-Coremail-Antispam: 1Uk129KBjvJXoW3GF45JFW3AF4rtryUtryrJFb_yoW3GrW5pr
+ 1DGrn8Kr1DtF1fZF13Xa18A3W3Xw18KrnxtryqgFyrAw4DAry7XF4DGw1Ykr909rWjv3y2
+ vayIgF45ury7A3DanT9S1TB71UUUUUDqnTZGkaVYY2UrUUUUj1kv1TuYvTs0mT0YCTnIWj
+ DUYxn0WfASr-VFAU7a7-sFnT9fnUUIcSsGvfJ3UbIYCTnIWIevJa73UjIFyTuYvj4RJUUU
+ UUUUU
 Received-SPF: pass client-ip=162.243.164.118;
  envelope-from=tangtao1634@phytium.com.cn;
  helo=zg8tmtyylji0my4xnjqumte4.icoremail.net
@@ -76,568 +76,181 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-To prevent aliasing between translations controlled through the Secure and
-Non-secure programming interfaces, the IOTLB lookup key must incorporate
-SEC_SID.
+Pass the SEC_SID explicitly to smmuv3_decode_config() so configuration
+decoding can be tied to the correct register bank.
 
-This commit:
-- expands SMMUIOTLBKey with SEC_SID field for cache key differentiation
-- extends SMMUIOTLBPageInvInfo with SEC_SID for invalidation filtering
-- updates all IOTLB invalidation helpers (smmu_iotlb_inv_iova,
-  smmu_iotlb_inv_ipa, smmu_iotlb_inv_asid_vmid, smmu_iotlb_inv_vmid,
-  smmu_iotlb_inv_vmid_s1) to accept and filter by SEC_SID
-- plumbs SEC_SID through smmuv3_range_inval for TLB invalidation
-- enhances trace events to include SEC_SID for better debugging
-
-This ensures that IOTLB entries decoded through the Secure and Non-secure
-programming interfaces are distinct, preventing cache aliasing across
-SEC_SID namespaces.
+Plumb the SEC_SID through tracepoints and queue helpers so diagnostics
+and event logs always show which security interface emitted the record.
+To support this, the SEC_SID is placed in SMMUEventInfo so the bank is
+identified as soon as an event record is built.
 
 Signed-off-by: Tao Tang <tangtao1634@phytium.com.cn>
+Reviewed-by: Eric Auger <eric.auger@redhat.com>
+Reviewed-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
 ---
- hw/arm/smmu-common.c         | 110 +++++++++++++++++++++++------------
- hw/arm/smmu-internal.h       |   2 +
- hw/arm/smmuv3.c              |  47 ++++++++++-----
- hw/arm/trace-events          |  20 +++----
- include/hw/arm/smmu-common.h |  32 +++++++---
- 5 files changed, 140 insertions(+), 71 deletions(-)
+ hw/arm/smmuv3-accel.c    |  2 +-
+ hw/arm/smmuv3-internal.h |  3 ++-
+ hw/arm/smmuv3.c          | 26 +++++++++++++++-----------
+ hw/arm/trace-events      |  2 +-
+ include/hw/arm/smmuv3.h  |  1 +
+ 5 files changed, 20 insertions(+), 14 deletions(-)
 
-diff --git a/hw/arm/smmu-common.c b/hw/arm/smmu-common.c
-index 317cfafded2..3d4b6b3a287 100644
---- a/hw/arm/smmu-common.c
-+++ b/hw/arm/smmu-common.c
-@@ -95,7 +95,7 @@ static guint smmu_iotlb_key_hash(gconstpointer v)
- 
-     /* Jenkins hash */
-     a = b = c = JHASH_INITVAL + sizeof(*key);
--    a += key->asid + key->vmid + key->level + key->tg;
-+    a += key->asid + key->vmid + key->level + key->tg + key->sec_sid;
-     b += extract64(key->iova, 0, 32);
-     c += extract64(key->iova, 32, 32);
- 
-@@ -111,14 +111,15 @@ static gboolean smmu_iotlb_key_equal(gconstpointer v1, gconstpointer v2)
- 
-     return (k1->asid == k2->asid) && (k1->iova == k2->iova) &&
-            (k1->level == k2->level) && (k1->tg == k2->tg) &&
--           (k1->vmid == k2->vmid);
-+           (k1->vmid == k2->vmid) && (k1->sec_sid == k2->sec_sid);
- }
- 
- SMMUIOTLBKey smmu_get_iotlb_key(int asid, int vmid, uint64_t iova,
--                                uint8_t tg, uint8_t level)
-+                                uint8_t tg, uint8_t level,
-+                                SMMUSecSID sec_sid)
- {
-     SMMUIOTLBKey key = {.asid = asid, .vmid = vmid, .iova = iova,
--                        .tg = tg, .level = level};
-+                        .tg = tg, .level = level, .sec_sid = sec_sid};
- 
-     return key;
- }
-@@ -126,7 +127,8 @@ SMMUIOTLBKey smmu_get_iotlb_key(int asid, int vmid, uint64_t iova,
- static SMMUTLBEntry *smmu_iotlb_lookup_all_levels(SMMUState *bs,
-                                                   SMMUTransCfg *cfg,
-                                                   SMMUTransTableInfo *tt,
--                                                  hwaddr iova)
-+                                                  hwaddr iova,
-+                                                  SMMUSecSID sec_sid)
- {
-     uint8_t tg = (tt->granule_sz - 10) / 2;
-     uint8_t inputsize = 64 - tt->tsz;
-@@ -140,7 +142,7 @@ static SMMUTLBEntry *smmu_iotlb_lookup_all_levels(SMMUState *bs,
-         SMMUIOTLBKey key;
- 
-         key = smmu_get_iotlb_key(cfg->asid, cfg->s2cfg.vmid,
--                                 iova & ~mask, tg, level);
-+                                 iova & ~mask, tg, level, sec_sid);
-         entry = g_hash_table_lookup(bs->iotlb, &key);
-         if (entry) {
-             break;
-@@ -156,6 +158,7 @@ static SMMUTLBEntry *smmu_iotlb_lookup_all_levels(SMMUState *bs,
-  * @cfg: Configuration of the translation
-  * @tt: Translation table info (granule and tsz)
-  * @iova: IOVA address to lookup
-+ * @sec_sid: StreamID Security state
-  *
-  * returns a valid entry on success, otherwise NULL.
-  * In case of nested translation, tt can be updated to include
-@@ -163,11 +166,12 @@ static SMMUTLBEntry *smmu_iotlb_lookup_all_levels(SMMUState *bs,
-  * the IOVA granule.
-  */
- SMMUTLBEntry *smmu_iotlb_lookup(SMMUState *bs, SMMUTransCfg *cfg,
--                                SMMUTransTableInfo *tt, hwaddr iova)
-+                                SMMUTransTableInfo *tt, hwaddr iova,
-+                                SMMUSecSID sec_sid)
- {
-     SMMUTLBEntry *entry = NULL;
- 
--    entry = smmu_iotlb_lookup_all_levels(bs, cfg, tt, iova);
-+    entry = smmu_iotlb_lookup_all_levels(bs, cfg, tt, iova, sec_sid);
-     /*
-      * For nested translation also try the s2 granule, as the TLB will insert
-      * it if the size of s2 tlb entry was smaller.
-@@ -175,18 +179,20 @@ SMMUTLBEntry *smmu_iotlb_lookup(SMMUState *bs, SMMUTransCfg *cfg,
-     if (!entry && (cfg->stage == SMMU_NESTED) &&
-         (cfg->s2cfg.granule_sz != tt->granule_sz)) {
-         tt->granule_sz = cfg->s2cfg.granule_sz;
--        entry = smmu_iotlb_lookup_all_levels(bs, cfg, tt, iova);
-+        entry = smmu_iotlb_lookup_all_levels(bs, cfg, tt, iova, sec_sid);
+diff --git a/hw/arm/smmuv3-accel.c b/hw/arm/smmuv3-accel.c
+index fa079c8acea..2ce94786829 100644
+--- a/hw/arm/smmuv3-accel.c
++++ b/hw/arm/smmuv3-accel.c
+@@ -509,7 +509,7 @@ static void smmuv3_accel_event_read(void *opaque)
+     if (ret > 0) {
+         return; /* EAGAIN/EINTR */
      }
- 
-     if (entry) {
-         cfg->iotlb_hits++;
--        trace_smmu_iotlb_lookup_hit(cfg->asid, cfg->s2cfg.vmid, iova,
-+        trace_smmu_iotlb_lookup_hit(sec_sid, cfg->asid,
-+                                    cfg->s2cfg.vmid, iova,
-                                     cfg->iotlb_hits, cfg->iotlb_misses,
-                                     100 * cfg->iotlb_hits /
-                                     (cfg->iotlb_hits + cfg->iotlb_misses));
-     } else {
-         cfg->iotlb_misses++;
--        trace_smmu_iotlb_lookup_miss(cfg->asid, cfg->s2cfg.vmid, iova,
-+        trace_smmu_iotlb_lookup_miss(sec_sid, cfg->asid,
-+                                     cfg->s2cfg.vmid, iova,
-                                      cfg->iotlb_hits, cfg->iotlb_misses,
-                                      100 * cfg->iotlb_hits /
-                                      (cfg->iotlb_hits + cfg->iotlb_misses));
-@@ -194,7 +200,8 @@ SMMUTLBEntry *smmu_iotlb_lookup(SMMUState *bs, SMMUTransCfg *cfg,
-     return entry;
+-    smmuv3_propagate_event(s, (Evt *)&buf.vevent);
++    smmuv3_propagate_event(s, (Evt *)&buf.vevent, SMMU_SEC_SID_NS);
  }
  
--void smmu_iotlb_insert(SMMUState *bs, SMMUTransCfg *cfg, SMMUTLBEntry *new)
-+void smmu_iotlb_insert(SMMUState *bs, SMMUTransCfg *cfg, SMMUTLBEntry *new,
-+                       SMMUSecSID sec_sid)
- {
-     SMMUIOTLBKey *key = g_new0(SMMUIOTLBKey, 1);
-     uint8_t tg = (new->granule - 10) / 2;
-@@ -204,9 +211,9 @@ void smmu_iotlb_insert(SMMUState *bs, SMMUTransCfg *cfg, SMMUTLBEntry *new)
-     }
+ static void smmuv3_accel_free_veventq(SMMUv3AccelState *accel)
+diff --git a/hw/arm/smmuv3-internal.h b/hw/arm/smmuv3-internal.h
+index a88743ba9cd..202cd533636 100644
+--- a/hw/arm/smmuv3-internal.h
++++ b/hw/arm/smmuv3-internal.h
+@@ -274,6 +274,7 @@ static inline const char *smmu_event_string(SMMUEventType type)
  
-     *key = smmu_get_iotlb_key(cfg->asid, cfg->s2cfg.vmid, new->entry.iova,
--                              tg, new->level);
--    trace_smmu_iotlb_insert(cfg->asid, cfg->s2cfg.vmid, new->entry.iova,
--                            tg, new->level);
-+                              tg, new->level, sec_sid);
-+    trace_smmu_iotlb_insert(sec_sid, cfg->asid, cfg->s2cfg.vmid,
-+                            new->entry.iova, tg, new->level);
-     g_hash_table_insert(bs->iotlb, key, new);
- }
- 
-@@ -223,26 +230,29 @@ static gboolean smmu_hash_remove_by_asid_vmid(gpointer key, gpointer value,
-     SMMUIOTLBKey *iotlb_key = (SMMUIOTLBKey *)key;
- 
-     return (SMMU_IOTLB_ASID(*iotlb_key) == info->asid) &&
--           (SMMU_IOTLB_VMID(*iotlb_key) == info->vmid);
-+           (SMMU_IOTLB_VMID(*iotlb_key) == info->vmid) &&
-+           (SMMU_IOTLB_SEC_SID(*iotlb_key) == info->sec_sid);
- }
- 
- static gboolean smmu_hash_remove_by_vmid(gpointer key, gpointer value,
-                                          gpointer user_data)
- {
--    int vmid = *(int *)user_data;
-+    SMMUIOTLBPageInvInfo *info = (SMMUIOTLBPageInvInfo *)user_data;
-     SMMUIOTLBKey *iotlb_key = (SMMUIOTLBKey *)key;
- 
--    return SMMU_IOTLB_VMID(*iotlb_key) == vmid;
-+    return (SMMU_IOTLB_VMID(*iotlb_key) == info->vmid) &&
-+           (SMMU_IOTLB_SEC_SID(*iotlb_key) == info->sec_sid);
- }
- 
- static gboolean smmu_hash_remove_by_vmid_s1(gpointer key, gpointer value,
-                                             gpointer user_data)
- {
--    int vmid = *(int *)user_data;
-+    SMMUIOTLBPageInvInfo *info = (SMMUIOTLBPageInvInfo *)user_data;
-     SMMUIOTLBKey *iotlb_key = (SMMUIOTLBKey *)key;
- 
--    return (SMMU_IOTLB_VMID(*iotlb_key) == vmid) &&
--           (SMMU_IOTLB_ASID(*iotlb_key) >= 0);
-+    return (SMMU_IOTLB_VMID(*iotlb_key) == info->vmid) &&
-+           (SMMU_IOTLB_ASID(*iotlb_key) >= 0) &&
-+           (SMMU_IOTLB_SEC_SID(*iotlb_key) == info->sec_sid);
- }
- 
- static gboolean smmu_hash_remove_by_asid_vmid_iova(gpointer key, gpointer value,
-@@ -259,6 +269,9 @@ static gboolean smmu_hash_remove_by_asid_vmid_iova(gpointer key, gpointer value,
-     if (info->vmid >= 0 && info->vmid != SMMU_IOTLB_VMID(iotlb_key)) {
-         return false;
-     }
-+    if (info->sec_sid != SMMU_IOTLB_SEC_SID(iotlb_key)) {
-+        return false;
-+    }
-     return ((info->iova & ~entry->addr_mask) == entry->iova) ||
-            ((entry->iova & ~info->mask) == info->iova);
- }
-@@ -278,6 +291,9 @@ static gboolean smmu_hash_remove_by_vmid_ipa(gpointer key, gpointer value,
-     if (info->vmid != SMMU_IOTLB_VMID(iotlb_key)) {
-         return false;
-     }
-+    if (info->sec_sid != SMMU_IOTLB_SEC_SID(iotlb_key)) {
-+        return false;
-+    }
-     return ((info->iova & ~entry->addr_mask) == entry->iova) ||
-            ((entry->iova & ~info->mask) == info->iova);
- }
-@@ -323,13 +339,17 @@ void smmu_configs_inv_sdev(SMMUState *s, SMMUDevice *sdev)
- }
- 
- void smmu_iotlb_inv_iova(SMMUState *s, int asid, int vmid, dma_addr_t iova,
--                         uint8_t tg, uint64_t num_pages, uint8_t ttl)
-+                         uint8_t tg, uint64_t num_pages, uint8_t ttl,
-+                         SMMUSecSID sec_sid)
- {
-     /* if tg is not set we use 4KB range invalidation */
-     uint8_t granule = tg ? tg * 2 + 10 : 12;
- 
-+    trace_smmu_iotlb_inv_iova(sec_sid, asid, iova);
-+
-     if (ttl && (num_pages == 1) && (asid >= 0)) {
--        SMMUIOTLBKey key = smmu_get_iotlb_key(asid, vmid, iova, tg, ttl);
-+        SMMUIOTLBKey key = smmu_get_iotlb_key(asid, vmid, iova,
-+                                              tg, ttl, sec_sid);
- 
-         if (g_hash_table_remove(s->iotlb, &key)) {
-             return;
-@@ -343,7 +363,8 @@ void smmu_iotlb_inv_iova(SMMUState *s, int asid, int vmid, dma_addr_t iova,
-     SMMUIOTLBPageInvInfo info = {
-         .asid = asid, .iova = iova,
-         .vmid = vmid,
--        .mask = (num_pages * 1 << granule) - 1};
-+        .mask = (num_pages * 1 << granule) - 1,
-+        .sec_sid = sec_sid};
- 
-     g_hash_table_foreach_remove(s->iotlb,
-                                 smmu_hash_remove_by_asid_vmid_iova,
-@@ -355,13 +376,15 @@ void smmu_iotlb_inv_iova(SMMUState *s, int asid, int vmid, dma_addr_t iova,
-  * in Stage-1 invalidation ASID = -1, means don't care.
-  */
- void smmu_iotlb_inv_ipa(SMMUState *s, int vmid, dma_addr_t ipa, uint8_t tg,
--                        uint64_t num_pages, uint8_t ttl)
-+                        uint64_t num_pages, uint8_t ttl,
-+                        SMMUSecSID sec_sid)
- {
-     uint8_t granule = tg ? tg * 2 + 10 : 12;
-     int asid = -1;
- 
-    if (ttl && (num_pages == 1)) {
--        SMMUIOTLBKey key = smmu_get_iotlb_key(asid, vmid, ipa, tg, ttl);
-+        SMMUIOTLBKey key = smmu_get_iotlb_key(asid, vmid, ipa,
-+                                              tg, ttl, sec_sid);
- 
-         if (g_hash_table_remove(s->iotlb, &key)) {
-             return;
-@@ -371,34 +394,47 @@ void smmu_iotlb_inv_ipa(SMMUState *s, int vmid, dma_addr_t ipa, uint8_t tg,
-     SMMUIOTLBPageInvInfo info = {
-         .iova = ipa,
-         .vmid = vmid,
--        .mask = (num_pages << granule) - 1};
-+        .mask = (num_pages << granule) - 1,
-+        .sec_sid = sec_sid};
- 
-     g_hash_table_foreach_remove(s->iotlb,
-                                 smmu_hash_remove_by_vmid_ipa,
-                                 &info);
- }
- 
--void smmu_iotlb_inv_asid_vmid(SMMUState *s, int asid, int vmid)
-+void smmu_iotlb_inv_asid_vmid(SMMUState *s, int asid, int vmid,
-+                              SMMUSecSID sec_sid)
- {
-     SMMUIOTLBPageInvInfo info = {
-         .asid = asid,
-         .vmid = vmid,
-+        .sec_sid = sec_sid,
-     };
- 
--    trace_smmu_iotlb_inv_asid_vmid(asid, vmid);
-+    trace_smmu_iotlb_inv_asid_vmid(sec_sid, asid, vmid);
-     g_hash_table_foreach_remove(s->iotlb, smmu_hash_remove_by_asid_vmid, &info);
- }
- 
--void smmu_iotlb_inv_vmid(SMMUState *s, int vmid)
-+void smmu_iotlb_inv_vmid(SMMUState *s, int vmid, SMMUSecSID sec_sid)
- {
--    trace_smmu_iotlb_inv_vmid(vmid);
--    g_hash_table_foreach_remove(s->iotlb, smmu_hash_remove_by_vmid, &vmid);
-+    SMMUIOTLBPageInvInfo info = {
-+        .vmid = vmid,
-+        .sec_sid = sec_sid,
-+    };
-+
-+    trace_smmu_iotlb_inv_vmid(sec_sid, vmid);
-+    g_hash_table_foreach_remove(s->iotlb, smmu_hash_remove_by_vmid, &info);
- }
- 
--void smmu_iotlb_inv_vmid_s1(SMMUState *s, int vmid)
-+void smmu_iotlb_inv_vmid_s1(SMMUState *s, int vmid, SMMUSecSID sec_sid)
- {
--    trace_smmu_iotlb_inv_vmid_s1(vmid);
--    g_hash_table_foreach_remove(s->iotlb, smmu_hash_remove_by_vmid_s1, &vmid);
-+    SMMUIOTLBPageInvInfo info = {
-+        .vmid = vmid,
-+        .sec_sid = sec_sid,
-+    };
-+
-+    trace_smmu_iotlb_inv_vmid_s1(sec_sid, vmid);
-+    g_hash_table_foreach_remove(s->iotlb, smmu_hash_remove_by_vmid_s1, &info);
- }
- 
- /* VMSAv8-64 Translation */
-@@ -919,7 +955,7 @@ SMMUTLBEntry *smmu_translate(SMMUState *bs, SMMUTransCfg *cfg, dma_addr_t addr,
-         tt_combined.tsz = tt->tsz;
-     }
- 
--    cached_entry = smmu_iotlb_lookup(bs, cfg, &tt_combined, addr);
-+    cached_entry = smmu_iotlb_lookup(bs, cfg, &tt_combined, addr, sec_sid);
-     if (cached_entry) {
-         if ((flag & IOMMU_WO) && !(cached_entry->entry.perm &
-             cached_entry->parent_perm & IOMMU_WO)) {
-@@ -938,7 +974,7 @@ SMMUTLBEntry *smmu_translate(SMMUState *bs, SMMUTransCfg *cfg, dma_addr_t addr,
-             g_free(cached_entry);
-             return NULL;
-     }
--    smmu_iotlb_insert(bs, cfg, cached_entry);
-+    smmu_iotlb_insert(bs, cfg, cached_entry, sec_sid);
-     return cached_entry;
- }
- 
-diff --git a/hw/arm/smmu-internal.h b/hw/arm/smmu-internal.h
-index 004abd58bca..ce68d4b5813 100644
---- a/hw/arm/smmu-internal.h
-+++ b/hw/arm/smmu-internal.h
-@@ -144,12 +144,14 @@ static inline int pgd_concat_idx(int start_level, int granule_sz,
- 
- #define SMMU_IOTLB_ASID(key) ((key).asid)
- #define SMMU_IOTLB_VMID(key) ((key).vmid)
-+#define SMMU_IOTLB_SEC_SID(key) ((key).sec_sid)
- 
- typedef struct SMMUIOTLBPageInvInfo {
-     int asid;
-     int vmid;
-     uint64_t iova;
-     uint64_t mask;
+ /*  Encode an event record */
+ typedef struct SMMUEventInfo {
 +    SMMUSecSID sec_sid;
- } SMMUIOTLBPageInvInfo;
+     SMMUEventType type;
+     uint32_t sid;
+     bool recorded;
+@@ -365,7 +366,7 @@ typedef struct SMMUEventInfo {
+ #define EVT_GET_SID(x)   ((x)->word[1])
  
- #endif
+ void smmuv3_record_event(SMMUv3State *s, SMMUEventInfo *event);
+-void smmuv3_propagate_event(SMMUv3State *s, Evt *evt);
++void smmuv3_propagate_event(SMMUv3State *s, Evt *evt, SMMUSecSID sec_sid);
+ int smmu_find_ste(SMMUv3State *s, uint32_t sid, STE *ste, SMMUEventInfo *event);
+ 
+ #define STE_SIZE 6
 diff --git a/hw/arm/smmuv3.c b/hw/arm/smmuv3.c
-index cc5d3ab696c..087112ba4b6 100644
+index 51e970d710a..649050b9347 100644
 --- a/hw/arm/smmuv3.c
 +++ b/hw/arm/smmuv3.c
-@@ -634,6 +634,17 @@ static int decode_ste(SMMUv3State *s, SMMUTransCfg *cfg,
-         goto bad_ste;
-     }
- 
-+    /*
-+     * Keep the SEC_SID-to-StreamWorld approximation used by the IOTLB key
-+     * one-to-one until the other Secure translation regimes are modeled.
-+     */
-+    if (sec_sid == SMMU_SEC_SID_S && STE_CFG_S1_TRANSLATE(config) &&
-+        STE_STRW(ste) != 0) {
-+        qemu_log_mask(LOG_UNIMP,
-+                      "SMMUv3 Secure StreamWorld is not implemented\n");
-+        goto bad_ste;
-+    }
-+
-     if (STAGE2_SUPPORTED(s)) {
-         /* VMID is considered even if s2 is disabled. */
-         cfg->s2cfg.vmid = STE_S2VMID(ste);
-@@ -1317,7 +1328,8 @@ static void smmuv3_inv_notifiers_iova(SMMUState *s, int asid, int vmid,
-     }
+@@ -149,9 +149,9 @@ static MemTxResult queue_write(SMMUQueue *q, Evt *evt_in)
+     return MEMTX_OK;
  }
  
--static void smmuv3_range_inval(SMMUState *s, Cmd *cmd, SMMUStage stage)
-+static void smmuv3_range_inval(SMMUState *s, Cmd *cmd, SMMUStage stage,
-+                               SMMUSecSID sec_sid)
+-static MemTxResult smmuv3_write_eventq(SMMUv3State *s, Evt *evt)
++static MemTxResult smmuv3_write_eventq(SMMUv3State *s, SMMUSecSID sec_sid,
++                                       Evt *evt)
  {
-     dma_addr_t end, addr = CMD_ADDR(cmd);
-     uint8_t type = CMD_TYPE(cmd);
-@@ -1342,12 +1354,13 @@ static void smmuv3_range_inval(SMMUState *s, Cmd *cmd, SMMUStage stage)
-     }
+-    SMMUSecSID sec_sid = SMMU_SEC_SID_NS;
+     SMMUv3RegBank *bank = smmuv3_bank(s, sec_sid);
+     SMMUQueue *q = &bank->eventq;
+     MemTxResult r;
+@@ -175,14 +175,14 @@ static MemTxResult smmuv3_write_eventq(SMMUv3State *s, Evt *evt)
+     return MEMTX_OK;
+ }
  
-     if (!tg) {
--        trace_smmuv3_range_inval(vmid, asid, addr, tg, 1, ttl, leaf, stage);
-+        trace_smmuv3_range_inval(sec_sid, vmid, asid, addr,
-+                                 tg, 1, ttl, leaf, stage);
-         smmuv3_inv_notifiers_iova(s, asid, vmid, addr, tg, 1, stage);
-         if (stage == SMMU_STAGE_1) {
--            smmu_iotlb_inv_iova(s, asid, vmid, addr, tg, 1, ttl);
-+            smmu_iotlb_inv_iova(s, asid, vmid, addr, tg, 1, ttl, sec_sid);
-         } else {
--            smmu_iotlb_inv_ipa(s, vmid, addr, tg, 1, ttl);
-+            smmu_iotlb_inv_ipa(s, vmid, addr, tg, 1, ttl, sec_sid);
-         }
+-void smmuv3_propagate_event(SMMUv3State *s, Evt *evt)
++void smmuv3_propagate_event(SMMUv3State *s, Evt *evt, SMMUSecSID sec_sid)
+ {
+     MemTxResult r;
+ 
+-    trace_smmuv3_propagate_event(smmu_event_string(EVT_GET_TYPE(evt)),
++    trace_smmuv3_propagate_event(sec_sid, smmu_event_string(EVT_GET_TYPE(evt)),
+                                  EVT_GET_SID(evt));
+     QEMU_LOCK_GUARD(&s->mutex);
+-    r = smmuv3_write_eventq(s, evt);
++    r = smmuv3_write_eventq(s, sec_sid, evt);
+     if (r != MEMTX_OK) {
+         smmuv3_trigger_irq(s, SMMU_IRQ_GERROR, R_GERROR_EVENTQ_ABT_ERR_MASK);
+     }
+@@ -191,7 +191,7 @@ void smmuv3_propagate_event(SMMUv3State *s, Evt *evt)
+ void smmuv3_record_event(SMMUv3State *s, SMMUEventInfo *info)
+ {
+     Evt evt = {};
+-    SMMUSecSID sec_sid = SMMU_SEC_SID_NS;
++    SMMUSecSID sec_sid = info->sec_sid;
+ 
+     if (!smmuv3_eventq_enabled(s, sec_sid)) {
          return;
+@@ -271,7 +271,7 @@ void smmuv3_record_event(SMMUv3State *s, SMMUEventInfo *info)
+         g_assert_not_reached();
      }
-@@ -1364,13 +1377,15 @@ static void smmuv3_range_inval(SMMUState *s, Cmd *cmd, SMMUStage stage)
-         uint64_t mask = dma_aligned_pow2_mask(addr, end, 64);
  
-         num_pages = (mask + 1) >> granule;
--        trace_smmuv3_range_inval(vmid, asid, addr, tg, num_pages,
--                                 ttl, leaf, stage);
--        smmuv3_inv_notifiers_iova(s, asid, vmid, addr, tg, num_pages, stage);
-+        trace_smmuv3_range_inval(sec_sid, vmid, asid, addr, tg,
-+                                 num_pages, ttl, leaf, stage);
-+        smmuv3_inv_notifiers_iova(s, asid, vmid, addr, tg,
-+                                  num_pages, stage);
-         if (stage == SMMU_STAGE_1) {
--            smmu_iotlb_inv_iova(s, asid, vmid, addr, tg, num_pages, ttl);
-+            smmu_iotlb_inv_iova(s, asid, vmid, addr, tg,
-+                                num_pages, ttl, sec_sid);
+-    smmuv3_propagate_event(s, &evt);
++    smmuv3_propagate_event(s, &evt, sec_sid);
+     info->recorded = true;
+ }
+ 
+@@ -886,12 +886,13 @@ bad_cd:
+  * @cfg: output translation configuration which is populated through
+  *       the different configuration decoding steps
+  * @event: must be zero'ed by the caller
++ * @sec_sid: StreamID Security state
+  *
+  * return < 0 in case of config decoding error (@event is filled
+  * accordingly). Return 0 otherwise.
+  */
+ static int smmuv3_decode_config(IOMMUMemoryRegion *mr, SMMUTransCfg *cfg,
+-                                SMMUEventInfo *event)
++                                SMMUEventInfo *event, SMMUSecSID sec_sid)
+ {
+     SMMUDevice *sdev = container_of(mr, SMMUDevice, iommu);
+     uint32_t sid = smmu_get_sid(sdev);
+@@ -958,7 +959,7 @@ static SMMUTransCfg *smmuv3_get_config(SMMUDevice *sdev, SMMUEventInfo *event)
+                             (sdev->cfg_cache_hits + sdev->cfg_cache_misses));
+         cfg = g_new0(SMMUTransCfg, 1);
+ 
+-        if (!smmuv3_decode_config(&sdev->iommu, cfg, event)) {
++        if (!smmuv3_decode_config(&sdev->iommu, cfg, event, SMMU_SEC_SID_NS)) {
+             g_hash_table_insert(bc->configs, sdev, cfg);
          } else {
--            smmu_iotlb_inv_ipa(s, vmid, addr, tg, num_pages, ttl);
-+            smmu_iotlb_inv_ipa(s, vmid, addr, tg, num_pages, ttl, sec_sid);
-         }
-         addr += mask + 1;
-     }
-@@ -1521,9 +1536,9 @@ static int smmuv3_cmdq_consume(SMMUv3State *s, Error **errp)
-                 vmid = CMD_VMID(&cmd);
-             }
- 
--            trace_smmuv3_cmdq_tlbi_nh_asid(asid);
-+            trace_smmuv3_cmdq_tlbi_nh_asid(sec_sid, asid);
-             smmu_inv_notifiers_all(&s->smmu_state);
--            smmu_iotlb_inv_asid_vmid(bs, asid, vmid);
-+            smmu_iotlb_inv_asid_vmid(bs, asid, vmid, sec_sid);
-             if (!smmuv3_accel_issue_inv_cmd(s, &cmd, NULL, errp)) {
-                 cmd_error = SMMU_CERROR_ILL;
-                 break;
-@@ -1545,8 +1560,8 @@ static int smmuv3_cmdq_consume(SMMUv3State *s, Error **errp)
-              */
-             if (STAGE2_SUPPORTED(s)) {
-                 vmid = CMD_VMID(&cmd);
--                trace_smmuv3_cmdq_tlbi_nh(vmid);
--                smmu_iotlb_inv_vmid_s1(bs, vmid);
-+                trace_smmuv3_cmdq_tlbi_nh(sec_sid, vmid);
-+                smmu_iotlb_inv_vmid_s1(bs, vmid, sec_sid);
-                 break;
-             }
-             QEMU_FALLTHROUGH;
-@@ -1566,7 +1581,7 @@ static int smmuv3_cmdq_consume(SMMUv3State *s, Error **errp)
-                 cmd_error = SMMU_CERROR_ILL;
-                 break;
-             }
--            smmuv3_range_inval(bs, &cmd, SMMU_STAGE_1);
-+            smmuv3_range_inval(bs, &cmd, SMMU_STAGE_1, SMMU_SEC_SID_NS);
-             if (!smmuv3_accel_issue_inv_cmd(s, &cmd, NULL, errp)) {
-                 cmd_error = SMMU_CERROR_ILL;
-                 break;
-@@ -1583,7 +1598,7 @@ static int smmuv3_cmdq_consume(SMMUv3State *s, Error **errp)
- 
-             trace_smmuv3_cmdq_tlbi_s12_vmid(vmid);
-             smmu_inv_notifiers_all(&s->smmu_state);
--            smmu_iotlb_inv_vmid(bs, vmid);
-+            smmu_iotlb_inv_vmid(bs, vmid, SMMU_SEC_SID_NS);
-             break;
-         }
-         case SMMU_CMD_TLBI_S2_IPA:
-@@ -1595,7 +1610,7 @@ static int smmuv3_cmdq_consume(SMMUv3State *s, Error **errp)
-              * As currently only either s1 or s2 are supported
-              * we can reuse same function for s2.
-              */
--            smmuv3_range_inval(bs, &cmd, SMMU_STAGE_2);
-+            smmuv3_range_inval(bs, &cmd, SMMU_STAGE_2, SMMU_SEC_SID_NS);
-             break;
-         case SMMU_CMD_ATC_INV:
-         {
+             g_free(cfg);
+@@ -1114,7 +1115,8 @@ static IOMMUTLBEntry smmuv3_translate(IOMMUMemoryRegion *mr, hwaddr addr,
+     SMMUv3RegBank *bank = smmuv3_bank(s, sec_sid);
+     SMMUEventInfo event = {.type = SMMU_EVT_NONE,
+                            .sid = sid,
+-                           .inval_ste_allowed = false};
++                           .inval_ste_allowed = false,
++                           .sec_sid = sec_sid};
+     SMMUTranslationStatus status;
+     SMMUTransCfg *cfg = NULL;
+     IOMMUTLBEntry entry = {
+@@ -1216,7 +1218,9 @@ static void smmuv3_notify_iova(IOMMUMemoryRegion *mr,
+                                uint64_t num_pages, int stage)
+ {
+     SMMUDevice *sdev = container_of(mr, SMMUDevice, iommu);
+-    SMMUEventInfo eventinfo = {.inval_ste_allowed = true};
++    SMMUSecSID sec_sid = SMMU_SEC_SID_NS;
++    SMMUEventInfo eventinfo = {.sec_sid = sec_sid,
++                               .inval_ste_allowed = true};
+     SMMUTransCfg *cfg = smmuv3_get_config(sdev, &eventinfo);
+     IOMMUTLBEvent event;
+     uint8_t granule;
 diff --git a/hw/arm/trace-events b/hw/arm/trace-events
-index a166b79c8ef..6a8716e8041 100644
+index 1b16f710fed..a166b79c8ef 100644
 --- a/hw/arm/trace-events
 +++ b/hw/arm/trace-events
-@@ -19,16 +19,16 @@ smmu_ptw_page_pte(int stage, int level,  uint64_t iova, uint64_t baseaddr, uint6
- smmu_ptw_block_pte(int stage, int level, uint64_t baseaddr, uint64_t pteaddr, uint64_t pte, uint64_t iova, uint64_t gpa, int bsize_mb) "stage=%d level=%d base@=0x%"PRIx64" pte@=0x%"PRIx64" pte=0x%"PRIx64" iova=0x%"PRIx64" block address = 0x%"PRIx64" block size = %d MiB"
- smmu_get_pte(uint64_t baseaddr, int index, uint64_t pteaddr, uint64_t pte) "baseaddr=0x%"PRIx64" index=0x%x, pteaddr=0x%"PRIx64", pte=0x%"PRIx64
- smmu_iotlb_inv_all(void) "IOTLB invalidate all"
--smmu_iotlb_inv_asid_vmid(int asid, int vmid) "IOTLB invalidate asid=%d vmid=%d"
--smmu_iotlb_inv_vmid(int vmid) "IOTLB invalidate vmid=%d"
--smmu_iotlb_inv_vmid_s1(int vmid) "IOTLB invalidate vmid=%d"
--smmu_iotlb_inv_iova(int asid, uint64_t addr) "IOTLB invalidate asid=%d addr=0x%"PRIx64
-+smmu_iotlb_inv_asid_vmid(int sec_sid, int asid, int vmid) "IOTLB invalidate sec_sid=%d asid=%d vmid=%d"
-+smmu_iotlb_inv_vmid(int sec_sid, int vmid) "IOTLB invalidate sec_sid=%d vmid=%d"
-+smmu_iotlb_inv_vmid_s1(int sec_sid, int vmid) "IOTLB invalidate S1 sec_sid=%d vmid=%d"
-+smmu_iotlb_inv_iova(int sec_sid, int asid, uint64_t addr) "IOTLB invalidate sec_sid=%d asid=%d addr=0x%"PRIx64
- smmu_configs_inv_sid_range(uint32_t start, uint32_t end) "Config cache INV SID range from 0x%x to 0x%x"
- smmu_config_cache_inv(uint32_t sid) "Config cache INV for sid=0x%x"
- smmu_inv_notifiers_mr(const char *name) "iommu mr=%s"
--smmu_iotlb_lookup_hit(int asid, int vmid, uint64_t addr, uint32_t hit, uint32_t miss, uint32_t p) "IOTLB cache HIT asid=%d vmid=%d addr=0x%"PRIx64" hit=%d miss=%d hit rate=%d"
--smmu_iotlb_lookup_miss(int asid, int vmid, uint64_t addr, uint32_t hit, uint32_t miss, uint32_t p) "IOTLB cache MISS asid=%d vmid=%d addr=0x%"PRIx64" hit=%d miss=%d hit rate=%d"
--smmu_iotlb_insert(int asid, int vmid, uint64_t addr, uint8_t tg, uint8_t level) "IOTLB ++ asid=%d vmid=%d addr=0x%"PRIx64" tg=%d level=%d"
-+smmu_iotlb_lookup_hit(int sec_sid, int asid, int vmid, uint64_t addr, uint32_t hit, uint32_t miss, uint32_t p) "IOTLB cache HIT sec_sid=%d asid=%d vmid=%d addr=0x%"PRIx64" hit=%d miss=%d hit rate=%d"
-+smmu_iotlb_lookup_miss(int sec_sid, int asid, int vmid, uint64_t addr, uint32_t hit, uint32_t miss, uint32_t p) "IOTLB cache MISS sec_sid=%d asid=%d vmid=%d addr=0x%"PRIx64" hit=%d miss=%d hit rate=%d"
-+smmu_iotlb_insert(int sec_sid, int asid, int vmid, uint64_t addr, uint8_t tg, uint8_t level) "IOTLB ++ sec_sid=%d asid=%d vmid=%d addr=0x%"PRIx64" tg=%d level=%d"
+@@ -41,7 +41,7 @@ smmuv3_cmdq_opcode(const char *opcode) "<--- %s"
+ smmuv3_cmdq_consume_out(uint32_t prod, uint32_t cons, uint8_t prod_wrap, uint8_t cons_wrap) "prod:%d, cons:%d, prod_wrap:%d, cons_wrap:%d "
+ smmuv3_cmdq_consume_error(const char *cmd_name, uint8_t cmd_error) "Error on %s command execution: %d"
+ smmuv3_write_mmio(uint64_t addr, uint64_t val, unsigned size, uint32_t r) "addr: 0x%"PRIx64" val:0x%"PRIx64" size: 0x%x(%d)"
+-smmuv3_propagate_event(const char *type, uint32_t sid) "%s sid=0x%x"
++smmuv3_propagate_event(int sec_sid, const char *type, uint32_t sid) "sec_sid=%d %s sid=0x%x"
+ smmuv3_find_ste(uint16_t sid, uint32_t features, uint16_t sid_split) "sid=0x%x features:0x%x, sid_split:0x%x"
+ smmuv3_find_ste_2lvl(uint64_t strtab_base, uint64_t l1ptr, int l1_ste_offset, uint64_t l2ptr, int l2_ste_offset, int max_l2_ste) "strtab_base:0x%"PRIx64" l1ptr:0x%"PRIx64" l1_off:0x%x, l2ptr:0x%"PRIx64" l2_off:0x%x max_l2_ste:%d"
+ smmuv3_get_ste(uint64_t addr) "STE addr: 0x%"PRIx64
+diff --git a/include/hw/arm/smmuv3.h b/include/hw/arm/smmuv3.h
+index 45033d26a1b..8cd2edc3412 100644
+--- a/include/hw/arm/smmuv3.h
++++ b/include/hw/arm/smmuv3.h
+@@ -115,6 +115,7 @@ OBJECT_DECLARE_TYPE(SMMUv3State, SMMUv3Class, ARM_SMMUV3)
  
- # smmuv3.c
- smmuv3_read_mmio(uint64_t addr, uint64_t val, unsigned size, uint32_t r) "addr: 0x%"PRIx64" val:0x%"PRIx64" size: 0x%x(%d)"
-@@ -57,10 +57,10 @@ smmuv3_cmdq_cfgi_ste_range(int start, int end) "start=0x%x - end=0x%x"
- smmuv3_cmdq_cfgi_cd(uint32_t sid) "sid=0x%x"
- smmuv3_config_cache_hit(uint32_t sid, uint32_t hits, uint32_t misses, uint32_t perc) "Config cache HIT for sid=0x%x (hits=%d, misses=%d, hit rate=%d)"
- smmuv3_config_cache_miss(uint32_t sid, uint32_t hits, uint32_t misses, uint32_t perc) "Config cache MISS for sid=0x%x (hits=%d, misses=%d, hit rate=%d)"
--smmuv3_range_inval(int vmid, int asid, uint64_t addr, uint8_t tg, uint64_t num_pages, uint8_t ttl, bool leaf, int stage) "vmid=%d asid=%d addr=0x%"PRIx64" tg=%d num_pages=0x%"PRIx64" ttl=%d leaf=%d stage=%d"
--smmuv3_cmdq_tlbi_nh(int vmid) "vmid=%d"
-+smmuv3_range_inval(int sec_sid, int vmid, int asid, uint64_t addr, uint8_t tg, uint64_t num_pages, uint8_t ttl, bool leaf, int stage) "sec_sid=%d vmid=%d asid=%d addr=0x%"PRIx64" tg=%d num_pages=0x%"PRIx64" ttl=%d leaf=%d stage=%d"
-+smmuv3_cmdq_tlbi_nh(int sec_sid, int vmid) "sec_sid=%d vmid=%d"
- smmuv3_cmdq_tlbi_nsnh(void) ""
--smmuv3_cmdq_tlbi_nh_asid(int asid) "asid=%d"
-+smmuv3_cmdq_tlbi_nh_asid(int sec_sid, int asid) "sec_sid=%d asid=%d"
- smmuv3_cmdq_tlbi_s12_vmid(int vmid) "vmid=%d"
- smmuv3_notify_flag_add(const char *iommu) "ADD SMMUNotifier node for iommu mr=%s"
- smmuv3_notify_flag_del(const char *iommu) "DEL SMMUNotifier node for iommu mr=%s"
-diff --git a/include/hw/arm/smmu-common.h b/include/hw/arm/smmu-common.h
-index 0c5718ea684..8e971c28093 100644
---- a/include/hw/arm/smmu-common.h
-+++ b/include/hw/arm/smmu-common.h
-@@ -152,6 +152,17 @@ typedef struct SMMUIOTLBKey {
-     int vmid;
-     uint8_t tg;
-     uint8_t level;
-+    /*
-+     * We currently model one StreamWorld per SEC_SID, giving the approximate
-+     * mapping:
-+     *
-+     *   SMMU_SEC_SID_NS -> NS-EL1
-+     *   SMMU_SEC_SID_S  -> Secure
-+     *
-+     * SEC_SID is not architecturally equivalent to StreamWorld. Extend this
-+     * key when additional translation regimes are implemented.
-+     */
-+    SMMUSecSID sec_sid;
- } SMMUIOTLBKey;
+ static inline SMMUv3RegBank *smmuv3_bank(SMMUv3State *s, SMMUSecSID sec_sid)
+ {
++    g_assert(sec_sid < SMMU_SEC_SID_NUM);
+     return &s->bank[sec_sid];
+ }
  
- typedef struct SMMUConfigKey {
-@@ -250,19 +261,24 @@ SMMUDevice *smmu_find_sdev(SMMUState *s, uint32_t sid);
- #define SMMU_IOTLB_MAX_SIZE 256
- 
- SMMUTLBEntry *smmu_iotlb_lookup(SMMUState *bs, SMMUTransCfg *cfg,
--                                SMMUTransTableInfo *tt, hwaddr iova);
--void smmu_iotlb_insert(SMMUState *bs, SMMUTransCfg *cfg, SMMUTLBEntry *entry);
-+                                SMMUTransTableInfo *tt, hwaddr iova,
-+                                SMMUSecSID sec_sid);
-+void smmu_iotlb_insert(SMMUState *bs, SMMUTransCfg *cfg, SMMUTLBEntry *entry,
-+                       SMMUSecSID sec_sid);
- SMMUIOTLBKey smmu_get_iotlb_key(int asid, int vmid, uint64_t iova,
--                                uint8_t tg, uint8_t level);
-+                                uint8_t tg, uint8_t level, SMMUSecSID sec_sid);
- SMMUConfigKey smmu_get_config_key(SMMUDevice *sdev, SMMUSecSID sec_sid);
- void smmu_iotlb_inv_all(SMMUState *s);
--void smmu_iotlb_inv_asid_vmid(SMMUState *s, int asid, int vmid);
--void smmu_iotlb_inv_vmid(SMMUState *s, int vmid);
--void smmu_iotlb_inv_vmid_s1(SMMUState *s, int vmid);
-+void smmu_iotlb_inv_asid_vmid(SMMUState *s, int asid, int vmid,
-+                              SMMUSecSID sec_sid);
-+void smmu_iotlb_inv_vmid(SMMUState *s, int vmid, SMMUSecSID sec_sid);
-+void smmu_iotlb_inv_vmid_s1(SMMUState *s, int vmid, SMMUSecSID sec_sid);
- void smmu_iotlb_inv_iova(SMMUState *s, int asid, int vmid, dma_addr_t iova,
--                         uint8_t tg, uint64_t num_pages, uint8_t ttl);
-+                         uint8_t tg, uint64_t num_pages, uint8_t ttl,
-+                         SMMUSecSID sec_sid);
- void smmu_iotlb_inv_ipa(SMMUState *s, int vmid, dma_addr_t ipa, uint8_t tg,
--                        uint64_t num_pages, uint8_t ttl);
-+                        uint64_t num_pages, uint8_t ttl,
-+                        SMMUSecSID sec_sid);
- void smmu_configs_inv_sid_range(SMMUState *s, SMMUSIDRange sid_range);
- void smmu_configs_inv_sdev(SMMUState *s, SMMUDevice *sdev);
- /* Unmap the range of all the notifiers registered to any IOMMU mr */
 -- 
 2.34.1
 

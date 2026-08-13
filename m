@@ -4,104 +4,128 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 49EFAC5CFDB
-	for <qemu-arm@archiver.kernel.org>; Thu, 13 Aug 2026 10:36:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4187BC5B572
+	for <qemu-arm@archiver.kernel.org>; Thu, 13 Aug 2026 13:08:43 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wuSmg-0006At-5m; Thu, 13 Aug 2026 06:35:38 -0400
+	id 1wuVAS-0006Rg-65; Thu, 13 Aug 2026 09:08:21 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <anisinha@redhat.com>)
- id 1wuSmZ-00069D-3I
- for qemu-arm@nongnu.org; Thu, 13 Aug 2026 06:35:33 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ (Exim 4.90_1) (envelope-from <mhonap@nvidia.com>)
+ id 1wuVAG-0006QA-QZ; Thu, 13 Aug 2026 09:08:10 -0400
+Received: from mail-southcentralusazlp170130001.outbound.protection.outlook.com
+ ([2a01:111:f403:c10c::1] helo=SA9PR02CU001.outbound.protection.outlook.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <anisinha@redhat.com>)
- id 1wuSmU-0000R0-SH
- for qemu-arm@nongnu.org; Thu, 13 Aug 2026 06:35:29 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1786617326;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=1di8ahNryfKffmMgviXYdVAvvdxZpHsDhSvxH8DUWnU=;
- b=Sddz0KZR9uyI6Wb+PAf2Gw5I1TgWRmTje38NifEy0v/6ePBtjTnNy2GK/Ol8q+N46XFNLy
- TpwmqOWGAZ8J9I/TK29AiU6XDHjgCOaucRMOHQeSSr6tiJKnCe5iZDeeMcp4r+rZiPGPBf
- MbedS/LBAjK/XZEtOAsd/f3qx1KDILI=
-Received: from mail-pj1-f71.google.com (mail-pj1-f71.google.com
- [209.85.216.71]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-18-98cinztwPUiW2Kug_un2Fg-1; Thu, 13 Aug 2026 06:35:24 -0400
-X-MC-Unique: 98cinztwPUiW2Kug_un2Fg-1
-X-Mimecast-MFC-AGG-ID: 98cinztwPUiW2Kug_un2Fg_1786617324
-Received: by mail-pj1-f71.google.com with SMTP id
- 98e67ed59e1d1-38e8fee6af3so2449523a91.1
- for <qemu-arm@nongnu.org>; Thu, 13 Aug 2026 03:35:24 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1786617323; x=1787222123;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
- :to:cc:subject:date:message-id:reply-to:content-type;
- bh=1di8ahNryfKffmMgviXYdVAvvdxZpHsDhSvxH8DUWnU=;
- b=KPTwVukeWs9sUM+2pXCWF/zFso/R5S6tRbhcL3AOsYwwIsHWYQgwLxLzMPyGcR/y8a
- E97tAKZCVCfAERreTzQWWC37FoRNbkor0+83Tuz0PpU1scm48cyX5uTj2gO5kmxSMTIZ
- uzbw8ynzJXq/W031ehLvUlfA9OPQK0KY6RoqUfMSsD7c2FAB8AwW66/ab9FIUh/Bw6P9
- R8HkkOsPuYCm6hVm7rS6w8M8/mSdb8oNmtmbenxL0mpD9LbGYhdMrLLsSweCa84Wc4B6
- MwXt+f53rYa6E/wh7fLU2qaHOcVQClsFLkCkVUDR6GOGte4GHIeu+HyQcHs1HOM2tfLt
- Hjgg==
-X-Forwarded-Encrypted: i=1;
- AHgh+Rqo8r2aPX46l+inko459uq80WjH4A3U9xPsMHsdbmRQMjB9U++m6dTn/TVIgNW0iBoiJ4M8TtJJKg==@nongnu.org
-X-Gm-Message-State: AOJu0Ywp4yrifOCOdXAnrv0HIvpkQKBeo4nNyecb3H00RKqE2rA4kgAq
- tE9KFQptj9ChTH6Et5NfFaqX0a30GhdpGvRM4n5phkxF8lwcrqD/5eh6C9hNZqQZeEKcmWWr9W2
- subHBzAVb56iY4icVwNOAIoIDwPptMjb7ASpJtUcjM8uyrydNAiT0nA==
-X-Gm-Gg: AR+sD12CB3iA0Ph4LjhDv3tfsjRG686ISFBE49KoInB9Xy0f/CW/Cw+v+LawUaHZREw
- sU2yglhwwUYCixLih9CGtL0ODGFEDTbJmaYW217GwEWWUfw9ZJ9GGcY5pQy78lLPJppRfZv5av5
- QybGw6N1HoHTmKxlNOK41YJdyB9828UyYiHSavFi5BFOZJaFpgShN+HlvlEWOj4See8hNsXy0ud
- GyPuCt0aVNkJDzLLnkwVtgEKewRqtq+q+F1E1bZZmasuicQ1y35OjbQGyMLjYTF50UcDt25EqOl
- Ppr6sXDU9QFyNS8dEpLQhUovLHvg59Bsj/b7UCelOJKc2NODtUA1Suj8gSnYiLCUh/QFDLaTNL4
- R7GWw1kRVXX0ap7CaD7RbIp+CtK/bsVksUg==
-X-Received: by 2002:a17:90b:4d08:b0:38e:9ef9:eb97 with SMTP id
- 98e67ed59e1d1-3931e2bc877mr4615173a91.16.1786617323227; 
- Thu, 13 Aug 2026 03:35:23 -0700 (PDT)
-X-Received: by 2002:a17:90b:4d08:b0:38e:9ef9:eb97 with SMTP id
- 98e67ed59e1d1-3931e2bc877mr4615107a91.16.1786617322543; 
- Thu, 13 Aug 2026 03:35:22 -0700 (PDT)
-Received: from rhel9-box.lan ([106.219.133.98])
- by smtp.googlemail.com with ESMTPSA id
- 98e67ed59e1d1-3931ced0781sm2918093a91.11.2026.08.13.03.35.18
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 13 Aug 2026 03:35:22 -0700 (PDT)
-From: Ani Sinha <anisinha@redhat.com>
-To: Peter Maydell <peter.maydell@linaro.org>, Ani Sinha <anisinha@redhat.com>,
- Gerd Hoffman <kraxel@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
- Zhao Liu <zhao1.liu@intel.com>, Fabiano Rosas <farosas@suse.de>,
- Laurent Vivier <lvivier@redhat.com>
-Cc: ani@anisinha.ca, agraf@csgraf.de, graf@amazon.com, qemu-devel@nongnu.org,
- qemu-arm@nongnu.org
-Subject: [PATCH v5 10/11] Add functional and unit tests for the
- vm-launch-update device
-Date: Thu, 13 Aug 2026 16:04:12 +0530
-Message-ID: <20260813103425.24474-11-anisinha@redhat.com>
-X-Mailer: git-send-email 2.42.0
-In-Reply-To: <20260813103425.24474-1-anisinha@redhat.com>
-References: <20260813103425.24474-1-anisinha@redhat.com>
+ (Exim 4.90_1) (envelope-from <mhonap@nvidia.com>)
+ id 1wuVAD-0005OG-PT; Thu, 13 Aug 2026 09:08:08 -0400
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=VZ3zz8COpSaXbDADo20o1GOSwzg3sXC/UzkwiygpIR+N2jn6fYfY2bPHoPQiITX0OIwy8GcTITLEK731ebA8ZSiy1/HLyyLWHYK6IbYOTw+1wBiXoxfsDazOxF3Sthk+bg3CqZ21lmJDwzXiZNaN6AH/MhVAN5py6f8Ib4sWh/3tOqOhlvPv+R5lvgClp4mkU/CSJ1ogVJ/1phy62hkKJTWWnN1OxVWd+AeZO8Funv+LYOddYfGcJm3Xaq3ZYrkZuswO2ty2WtmQkY6uapBbku76qHQH+S3p+2SCvqfaLoXemdHJU2fhZ4/fhFIpVJC+U9mxXXb+sQb1udD8ZcnWDQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=DC+x8/TcY0zFvTkZExyU1AAEl7ZGuZ9LXF6GjqTkB98=;
+ b=RjqawORGcJlqyXj6QCXC4o0BkkSbR265a/rSy4oZ0G9LdIpSvG621Ffqd1Bo035rdCVEXhwIIxi3sLPClsLRBhMaKt1ts4L2bQN3520Dubn7OcogIz8t3arD/wnxeBKZ4b8qUhxeliosBGP17QybXL9n6itjrRnaDTJMRvOgUlLqpA0DCXFRA6YZ0klmi5rzKHvUgXSJeFA3L+EaDtepqbQXzZL73dS/zVdGZQj0k7vjmUhEDvdm5qC5Hj0ITQEPjnlycrR5Mgajjdn7FyyWjcFKN6HO6yoalN5cxqS/Uky1JLwur5dgjgJcSY3ymjl0dq3Cb7Lfw/Ihq/QA8JDkyw==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass (sender ip is
+ 216.228.117.161) smtp.rcpttodomain=shazbot.org smtp.mailfrom=nvidia.com;
+ dmarc=pass (p=reject sp=reject pct=100) action=none header.from=nvidia.com;
+ dkim=none (message not signed); arc=none (0)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Nvidia.com;
+ s=selector2;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=DC+x8/TcY0zFvTkZExyU1AAEl7ZGuZ9LXF6GjqTkB98=;
+ b=flG9rTnRMV5DzdhwAHHrqpFZjsZE/pZQh5yRB7H6FuZ8ynw1eaU+ozaCJMEEzMIXnUewW+/iVORAYoUUn14CVVkPjMRuXibw0HRvgQ91h21BBwtNp21+W9cLZH40pxU2vUrcesdCMlnz2Ax+Rv8jpwFZzZWB7+hsqzwd+P5k+Tt7Pag/GGOURnfc4EtDK9d29hpTgABVdty/ax0l4GTIvFuKKmQGeM4e/d5VmXlI8qdizB03+E9OljHvngR5WEljKv6HF68NICrygoXQ4PIrQZ7HkugyYwOtuYA/u1VUe0NydM8rSwYJhhkfnsnoDpyyXq3+yrgrtutK6tfd1gMxgQ==
+Received: from DS4PR12MB9587.namprd12.prod.outlook.com (2603:10b6:8:282::15)
+ by CY8PR12MB7514.namprd12.prod.outlook.com (2603:10b6:930:92::21) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.21.315.11; Thu, 13 Aug
+ 2026 13:07:52 +0000
+Received: from BN9PR03CA0615.namprd03.prod.outlook.com (2603:10b6:408:106::20)
+ by DS4PR12MB9587.namprd12.prod.outlook.com (2603:10b6:8:282::15) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.21.315.15; Thu, 13 Aug
+ 2026 13:07:51 +0000
+Received: from BN2PEPF000044A0.namprd02.prod.outlook.com
+ (2603:10b6:408:106:cafe::9f) by BN9PR03CA0615.outlook.office365.com
+ (2603:10b6:408:106::20) with Microsoft SMTP Server (version=TLS1_3,
+ cipher=TLS_AES_256_GCM_SHA384) id 15.21.315.15 via Frontend Transport; Thu,
+ 13 Aug 2026 13:07:50 +0000
+X-MS-Exchange-Authentication-Results: spf=pass (sender IP is 216.228.117.161)
+ smtp.mailfrom=nvidia.com;
+ dkim=none (message not signed)
+ header.d=none;dmarc=pass action=none header.from=nvidia.com;
+Received-SPF: Pass (protection.outlook.com: domain of nvidia.com designates
+ 216.228.117.161 as permitted sender) receiver=protection.outlook.com;
+ client-ip=216.228.117.161; helo=mail.nvidia.com; pr=C
+Received: from mail.nvidia.com (216.228.117.161) by
+ BN2PEPF000044A0.mail.protection.outlook.com (10.167.243.151) with Microsoft
+ SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.21.339.3 via Frontend Transport; Thu, 13 Aug 2026 13:07:50 +0000
+Received: from rnnvmail201.nvidia.com (10.129.68.8) by mail.nvidia.com
+ (10.129.200.67) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.2562.46; Thu, 13 Aug
+ 2026 06:07:28 -0700
+Received: from nvidia-4028GR-scsim.nvidia.com (10.126.230.37) by
+ rnnvmail201.nvidia.com (10.129.68.8) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.2562.20; Thu, 13 Aug 2026 06:07:15 -0700
+From: <mhonap@nvidia.com>
+To: <alex@shazbot.org>, <ankita@nvidia.com>, <jic23@kernel.org>,
+ <dave.jiang@intel.com>, <alejandro.lucero-palau@amd.com>,
+ <smadhavan@nvidia.com>, <pierrick.bouvier@oss.qualcomm.com>,
+ <mst@redhat.com>, <imammedo@redhat.com>, <anisinha@redhat.com>,
+ <pbonzini@redhat.com>, <eric.auger@redhat.com>, <peter.maydell@linaro.org>,
+ <richard.henderson@linaro.org>, <clg@redhat.com>, <cohuck@redhat.com>
+CC: <kjaju@nvidia.com>, <vsethi@nvidia.com>, <zhiw@nvidia.com>,
+ <mhonap@nvidia.com>, <qemu-devel@nongnu.org>, <qemu-arm@nongnu.org>
+Subject: [PATCH 06/10] hw/vfio/pci: Bind a CXL device to its fixed memory
+ window
+Date: Thu, 13 Aug 2026 18:36:19 +0530
+Message-ID: <20260813130623.2499506-7-mhonap@nvidia.com>
+X-Mailer: git-send-email 2.25.1
+In-Reply-To: <20260813130623.2499506-1-mhonap@nvidia.com>
+References: <20260813130623.2499506-1-mhonap@nvidia.com>
 MIME-Version: 1.0
-X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: CqkyvO0Q-MXeSvQ43teyEpin81OkuVW2q1htBep6vgU_1786617324
-X-Mimecast-Originator: redhat.com
 Content-Transfer-Encoding: 8bit
-content-type: text/plain; charset="US-ASCII"; x-default=true
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=anisinha@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -21
-X-Spam_score: -2.2
-X-Spam_bar: --
-X-Spam_report: (-2.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.104,
+Content-Type: text/plain
+X-Originating-IP: [10.126.230.37]
+X-ClientProxiedBy: rnnvmail203.nvidia.com (10.129.68.9) To
+ rnnvmail201.nvidia.com (10.129.68.8)
+X-EOPAttributedMessage: 0
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: BN2PEPF000044A0:EE_|DS4PR12MB9587:EE_|CY8PR12MB7514:EE_
+X-MS-Office365-Filtering-Correlation-Id: ea3e3e00-516e-482b-dfd8-08def93be126
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;
+ ARA:13230040|7416014|376014|36860700016|82310400026|23010399003|1800799024|56012099006|10067099003|6133799003|22082099003|18002099003|11063799006|921020;
+X-Microsoft-Antispam-Message-Info: LZ6Gqbdk2UPg71Q0C09MMe8NOdFyzJV6irUaBnrZMXoLCHTJETwjJkrMnI6jxNb0K5pvJN/SYh7cjvZ/aTfKqRepg3M3piptUHBbmiq7tWj5HSbRRVg1PwPIfHutSpODL9suxR3L1HyftNRfyAZwCkkCBis4zGO2dFg2vCeLAxoztHyW2KqHNY4b1bxtV8Cqv4GQfFrYXyxhx5rLIHeLKDH7Yn3n3sEa5ZqwoXyQcVN/edKs1ZujkCygw+1dyONzVNL5qakVQzjsnZFLa2UTF8jRjckMMxu9PxceH53f5GO6ZDXDQEnH0wKb9aAzkyYWhZxUbxryXOCLdd8TyBuYibrIEQmY9kzCYR7sKZ4cDxg55KVjimJ6TTy12C5moQ3I/mdfGTAaadSg4vtH68ZB5XrHfipMI1Xs5ov5tnIriPT4ylvJlT+CU3wyRY+Mc3l4Ndj6YRdW1B9A+vkqxcpUWN8UXhVpV6rEJ/Cqh2jfWbCu8/3Wtjxq746JqqViV1YvRCvkBWKGgiL+lkiXA9FUjtnnxnWW4rqVTCSwUsZET+Ly1NfGr+hbl2l4qlogQJizToZRTfJbSctE40X3b+ysxy+dWGauLmPBlv+lxFUw4339wSMxUYONxkxTNgAtSiIlLg7+Xztww6i0SEQ+jRCR6Lf9rMtLv6PmPDlEY6mnDIiJ8ME3PbBl2pdrRnGGTXYi9zM35AL0iAun/340anD/Al1T2ISFkpr+kE+S+ZC+0LZUEh2ZbGPqYcS2msF551u/
+X-Forefront-Antispam-Report: CIP:216.228.117.161; CTRY:US; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:mail.nvidia.com; PTR:dc6edge2.nvidia.com; CAT:NONE;
+ SFS:(13230040)(7416014)(376014)(36860700016)(82310400026)(23010399003)(1800799024)(56012099006)(10067099003)(6133799003)(22082099003)(18002099003)(11063799006)(921020);
+ DIR:OUT; SFP:1101; 
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: GdVCOAO2En2MhQFe83ZkzOQ3Ebh3H6Q+lKif2S0FQf8PYgyk7tsZSJ9RTJoFCDR2YQEUGszl76YaXVuG5Oc8Zkga0PJAB1KxMRMFRxxJMvSqHj39cZQgaLkJh6aV6l2l34QZdGoyFrYjsLK3388i8Rv1SaKpcFiC2ZuOjAZdlMtzAjk70zIpNa+CP+F4duwWuN0eLOuEc4CKwxIFiXCqBCNuq3Iq69ouHFQRnM9sNOTx86dP//c6iG8SWbi6c1vIxrldwV7FB45qkrNHSLyFdw7/Tm6vmpeXSCEUYwxJtj8NRY54X8g8DXvPJn/68s6EROlo+OJnF4B4I1pg75gR7jDVMb0luZtDputmIyT1Po+xdw70GuFE8fSOHHK4I+nxs3TNlGtkLiqZJ6cw+x7qdq8/nl2dNgEvdfg0OoEIlGWhdT1g66Tq8LG9cKpqp1JS
+X-OriginatorOrg: Nvidia.com
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 13 Aug 2026 13:07:50.7221 (UTC)
+X-MS-Exchange-CrossTenant-Network-Message-Id: ea3e3e00-516e-482b-dfd8-08def93be126
+X-MS-Exchange-CrossTenant-Id: 43083d15-7273-40c1-b7db-39efd9ccc17a
+X-MS-Exchange-CrossTenant-OriginalAttributedTenantConnectingIp: TenantId=43083d15-7273-40c1-b7db-39efd9ccc17a; Ip=[216.228.117.161];
+ Helo=[mail.nvidia.com]
+X-MS-Exchange-CrossTenant-FromEntityHeader: HybridOnPrem
+X-MS-Exchange-CrossTenant-AuthSource: BN2PEPF000044A0.namprd02.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Anonymous
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: CY8PR12MB7514
+Received-SPF: permerror client-ip=2a01:111:f403:c10c::1;
+ envelope-from=mhonap@nvidia.com;
+ helo=SA9PR02CU001.outbound.protection.outlook.com
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.759,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ FORGED_SPF_HELO=1, SPF_HELO_PASS=-0.001,
+ SPF_NONE=0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -117,619 +141,290 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-This patchset adds functional and unit tests that exercize various functions
-and behaviors of vm-launch-update device. It uses the IGVM files that were
-introduced in the previous patch for exercizing the hypervisor interface.
+From: Manish Honap <mhonap@nvidia.com>
 
-CC: Alex Graf <graf@amazon.com>
-CC: Gerd Hoffman <kraxel@redhat.com>
-Reviewed-by: Alexander Graf <graf@amazon.com>
-Signed-off-by: Ani Sinha <anisinha@redhat.com>
+The guest programs a GPA inside a CXL fixed memory window and QEMU maps
+the HDM memory there, so the device must sit under exactly one
+single-target CFMWS. Reject any ambiguous, interleaved, unsized, or
+missing window rather than guess. Match windows by target name, since the
+resolved target pointers are only filled in by a machine-done notifier
+that may run after this one.
+
+The CFMWS windows are placed at machine-init-done, so a cold-plugged
+device can only be validated from that notifier, where a bad topology is
+fatal to startup. Factor the check into a helper that reports through errp
+so a later change can also validate a hotplugged device from realize.
+
+The endpoint's HDM size is device information QEMU already reads from the
+kernel region, not a value the caller should have to guess. Sizing the
+window from the device is not yet possible because it is placed in the
+guest PA map before this device is realized, so treat the device
+geometry as the source of truth for the check: reject a window too small
+to hold the endpoint and name the exact size to set, and warn on an
+oversized window, since the padding becomes guest CEDT that migration
+has to preserve.
+
+Signed-off-by: Manish Honap <mhonap@nvidia.com>
 ---
- tests/functional/aarch64/meson.build          |   4 +
- .../aarch64/test_vm_launch_update_aarch.py    |  33 ++
- tests/functional/x86_64/meson.build           |   4 +
- .../x86_64/test_vm_launch_update.py           |  48 ++
- tests/qtest/launchupdate-test.c               | 450 ++++++++++++++++++
- tests/qtest/meson.build                       |   2 +
- 6 files changed, 541 insertions(+)
- create mode 100755 tests/functional/aarch64/test_vm_launch_update_aarch.py
- create mode 100755 tests/functional/x86_64/test_vm_launch_update.py
- create mode 100644 tests/qtest/launchupdate-test.c
+ hw/pci-bridge/pci_expander_bridge_stubs.c |   6 +
+ hw/vfio/pci.c                             | 190 ++++++++++++++++++++++
+ hw/vfio/pci.h                             |   3 +
+ 3 files changed, 199 insertions(+)
 
-diff --git a/tests/functional/aarch64/meson.build b/tests/functional/aarch64/meson.build
-index e81afd6c39..f0881bed16 100644
---- a/tests/functional/aarch64/meson.build
-+++ b/tests/functional/aarch64/meson.build
-@@ -25,6 +25,10 @@ tests_aarch64_system_quick = [
-   'vmstate',
- ]
+diff --git a/hw/pci-bridge/pci_expander_bridge_stubs.c b/hw/pci-bridge/pci_expander_bridge_stubs.c
+index b35180311f..c44ad7fab6 100644
+--- a/hw/pci-bridge/pci_expander_bridge_stubs.c
++++ b/hw/pci-bridge/pci_expander_bridge_stubs.c
+@@ -10,5 +10,11 @@
+ #include "hw/pci/pci_bus.h"
+ #include "hw/pci-bridge/pci_expander_bridge.h"
+ #include "hw/cxl/cxl.h"
++#include "hw/cxl/cxl_component.h"
  
-+if igvm.found()
-+  tests_aarch64_system_quick += [ 'vm_launch_update_aarch' ]
-+endif
+ void pxb_cxl_hook_up_registers(CXLState *state, PCIBus *bus, Error **errp) {};
 +
- tests_aarch64_system_thorough = [
-   'aspeed_ast2700a1',
-   'aspeed_ast2700a2',
-diff --git a/tests/functional/aarch64/test_vm_launch_update_aarch.py b/tests/functional/aarch64/test_vm_launch_update_aarch.py
-new file mode 100755
-index 0000000000..2b3d7cf4a3
---- /dev/null
-+++ b/tests/functional/aarch64/test_vm_launch_update_aarch.py
-@@ -0,0 +1,33 @@
-+#!/usr/bin/env python3
-+#
-+# Check for vm-launch-update device.
-+#
-+# Copyright (c) 2026 Red Hat, Inc.
-+#
-+# Author:
-+#  Ani Sinha <anisinha@redhat.com>
-+#
-+# SPDX-License-Identifier: GPL-2.0-or-later
-+
-+from qemu_test import QemuSystemTest
-+
-+class VmLaunchUpdateDeviceCheck(QemuSystemTest):
-+
-+    def aarch64_fail_test(self):
-+        """
-+        Currently the device is only supported for pc platforms.
-+        """
-+        self.vm.add_args('-machine', 'virt', '-device',
-+                         'vm-launch-update,id=fwupd1')
-+        self.vm.set_qmp_monitor(enabled=False)
-+        self.vm.launch()
-+        self.vm.wait()
-+        self.assertEqual(self.vm.exitcode(), 1, "QEMU exit code should be 1")
-+        self.assertRegex(self.vm.get_log(),
-+                    r'This machine does not support vm-launch-update device')
-+
-+    def test_vm_launch_update(self):
-+        self.aarch64_fail_test()
-+
-+if __name__ == '__main__':
-+    QemuSystemTest.main()
-diff --git a/tests/functional/x86_64/meson.build b/tests/functional/x86_64/meson.build
-index 27b31f2e96..0353b2af8e 100644
---- a/tests/functional/x86_64/meson.build
-+++ b/tests/functional/x86_64/meson.build
-@@ -28,6 +28,10 @@ if not get_option('asan')
-   tests_x86_64_system_quick += [ 'memlock' ]
- endif
++bool cxl_get_hb_passthrough(PCIHostState *hb)
++{
++    return false;
++}
+diff --git a/hw/vfio/pci.c b/hw/vfio/pci.c
+index 066333d52d..bf6f36d514 100644
+--- a/hw/vfio/pci.c
++++ b/hw/vfio/pci.c
+@@ -27,7 +27,12 @@
+ #include "hw/pci/msi.h"
+ #include "hw/pci/msix.h"
+ #include "hw/pci/pci_bridge.h"
++#include "hw/pci/pci_host.h"
++#include "hw/pci/pcie_port.h"
+ #include "hw/cxl/cxl.h"
++#include "hw/cxl/cxl_host.h"
++#include "hw/cxl/cxl_component.h"
++#include "system/system.h"
+ #include "hw/core/qdev-properties.h"
+ #include "hw/core/qdev-properties-system.h"
+ #include "hw/vfio/vfio-cpr.h"
+@@ -3652,6 +3657,187 @@ static bool vfio_cxl_check_topology(VFIOPCIDevice *vdev, Error **errp)
+     return true;
+ }
  
-+if igvm.found()
-+  tests_x86_64_system_quick += [ 'vm_launch_update' ]
-+endif
-+
- tests_x86_64_system_thorough = [
-   'acpi_bits',
-   'hotplug_blk',
-diff --git a/tests/functional/x86_64/test_vm_launch_update.py b/tests/functional/x86_64/test_vm_launch_update.py
-new file mode 100755
-index 0000000000..aac7ef915f
---- /dev/null
-+++ b/tests/functional/x86_64/test_vm_launch_update.py
-@@ -0,0 +1,48 @@
-+#!/usr/bin/env python3
-+#
-+# Check for vm-launch-update device.
-+#
-+# Copyright (c) 2026 Red Hat, Inc.
-+#
-+# Author:
-+#  Ani Sinha <anisinha@redhat.com>
-+#
-+# SPDX-License-Identifier: GPL-2.0-or-later
-+
-+from qemu_test import QemuSystemTest
-+import time
-+
-+class VmLaunchUpdateDeviceCheck(QemuSystemTest):
-+    DELAY_BOOT_SEQUENCE = 1
-+
-+    def vm_launch_update_pass(self):
-+        """
-+        Basic test to make sure vm-launch-update device can be instantiated.
-+        """
-+        self.vm.add_args('-device', 'vm-launch-update,id=fwupd1')
-+        self.vm.set_qmp_monitor(enabled=False)
-+        self.vm.launch()
-+        time.sleep(self.DELAY_BOOT_SEQUENCE)
-+        self.vm.shutdown()
-+        self.assertEqual(self.vm.exitcode(), 0, "QEMU exit code should be 0")
-+
-+    def multiple_device_fail(self):
-+        """
-+        Only one vm-launch-update device can be instantiated. Ensure failure if
-+        user tries to create more than one device.
-+        """
-+        self.vm.add_args('-device', 'vm-launch-update,id=fw1',
-+                         '-device', 'vm-launch-update,id=fw2')
-+        self.vm.set_qmp_monitor(enabled=False)
-+        self.vm.launch()
-+        self.vm.wait()
-+        self.assertEqual(self.vm.exitcode(), 1, "QEMU exit code should be 1")
-+        self.assertRegex(self.vm.get_log(),
-+                         r'at most one vm-launch-update device is permitted')
-+
-+    def test_vm_launch_update(self):
-+        self.vm_launch_update_pass()
-+        self.multiple_device_fail()
-+
-+if __name__ == '__main__':
-+    QemuSystemTest.main()
-diff --git a/tests/qtest/launchupdate-test.c b/tests/qtest/launchupdate-test.c
-new file mode 100644
-index 0000000000..89a117dfe4
---- /dev/null
-+++ b/tests/qtest/launchupdate-test.c
-@@ -0,0 +1,450 @@
 +/*
-+ * vmlaunchupdate device fwcfg test.
-+ *
-+ * Copyright (c) 2026 Red Hat, Inc.
-+ *
-+ * Author:
-+ *   Ani Sinha <anisinha@redhat.com>
-+ *
-+ * SPDX-License-Identifier: GPL-2.0-or-later
++ * Count the CXL fixed memory windows that target this device's pxb-cxl and
++ * report the matched window's base, size and target count. Match on the target
++ * names: cxl_fmws_link_targets() resolves target_hbs[] only at machine_done,
++ * which may run after this, so the resolved pointers can still be NULL here.
 + */
-+
-+#include "qemu/osdep.h"
-+#include "libqos/libqos-pc.h"
-+#include "libqtest.h"
-+#include "standard-headers/linux/qemu_fw_cfg.h"
-+#include "libqos/fw_cfg.h"
-+#include "qemu/bswap.h"
-+#include "hw/misc/vmlaunchupdate.h"
-+
-+#define WAIT_SEC 10
-+static bool debug;
-+static bool trace;
-+static bool confidential;
-+
-+static void test_vm_launch_update_capability(void)
++static int vfio_cxl_match_fmws(PXBCXLDev *pxb, hwaddr *base, uint64_t *size,
++                               int *nwindows, int *ntargets)
 +{
-+    QFWCFG *fw_cfg;
-+    QTestState *s;
-+    VMLaunchUpdate launch_update;
-+    size_t filesize;
-+    uint64_t capabilities;
++    GSList *list = cxl_fmws_get_all_sorted();
++    GSList *iter;
++    int matches = 0;
 +
-+    if (!qtest_has_device("vm-launch-update")) {
-+        g_test_skip("Device vm-launch-update is not available");
-+        return;
-+    }
++    *nwindows = g_slist_length(list);
++    *base = 0;
++    *size = 0;
++    *ntargets = 0;
 +
-+    s = qtest_init("-device vm-launch-update");
-+    fw_cfg = pc_fw_cfg_init(s);
++    for (iter = list; iter; iter = iter->next) {
++        CXLFixedWindow *fw = CXL_FMW(iter->data);
++        int i;
 +
-+    filesize = qfw_cfg_get_file(fw_cfg, FILE_VMLAUNCHUPDATE,
-+                                &launch_update, sizeof(launch_update));
-+    g_assert_cmpint(filesize, ==, sizeof(launch_update));
-+    capabilities = le64_to_cpu(launch_update.capabilities);
-+    g_assert_cmpint(capabilities, ==, VM_LAUNCHUPDATE_FORMAT_IGVM);
-+    pc_fw_cfg_uninit(fw_cfg);
-+    qtest_quit(s);
-+}
++        for (i = 0; i < fw->num_targets; i++) {
++            bool ambiguous = false;
++            Object *t = object_resolve_path_type(fw->targets[i],
++                                                 TYPE_PXB_CXL_DEV, &ambiguous);
 +
-+
-+static void test_vm_launch_update_disable(void)
-+{
-+    QFWCFG *fw_cfg;
-+    QOSState *qs;
-+    VMLaunchUpdate launch_update;
-+    uint64_t control;
-+    size_t filesize;
-+
-+    if (!qtest_has_device("vm-launch-update")) {
-+        g_test_skip("Device vm-launch-update is not available");
-+        return;
-+    }
-+
-+    /* use default accelerator */
-+    qs = qtest_pc_boot("-device vm-launch-update");
-+
-+    fw_cfg = pc_fw_cfg_init(qs->qts);
-+
-+    filesize = qfw_cfg_get_file(fw_cfg, FILE_VMLAUNCHUPDATE,
-+                                &launch_update, sizeof(launch_update));
-+    g_assert_cmpint(filesize, ==, sizeof(launch_update));
-+    control = le64_to_cpu(launch_update.control);
-+    g_assert_cmpint(VM_LAUNCHUPDATE_CTL_DISABLE & control, ==, 0);
-+
-+    /* disable the device */
-+    memset(&launch_update, 0, sizeof(launch_update));
-+    launch_update.control |= VM_LAUNCHUPDATE_CTL_DISABLE;
-+
-+    filesize = qfw_cfg_write_file(fw_cfg, qs, FILE_VMLAUNCHUPDATE,
-+                                  &launch_update, sizeof(launch_update));
-+    g_assert_cmpint(filesize, ==, sizeof(launch_update));
-+
-+    /* try to clear the dsable flag */
-+    memset(&launch_update, 0, sizeof(launch_update));
-+
-+    filesize = qfw_cfg_write_file(fw_cfg, qs, FILE_VMLAUNCHUPDATE,
-+                                  &launch_update, sizeof(launch_update));
-+    g_assert_cmpint(filesize, ==, sizeof(launch_update));
-+
-+    /* check if the device is still disabled */
-+    filesize = qfw_cfg_get_file(fw_cfg, FILE_VMLAUNCHUPDATE,
-+                                &launch_update, sizeof(launch_update));
-+    g_assert_cmpint(filesize, ==, sizeof(launch_update));
-+    control = le64_to_cpu(launch_update.control);
-+    g_assert_cmpint(VM_LAUNCHUPDATE_CTL_DISABLE & control, ==, 1);
-+
-+    pc_fw_cfg_uninit(fw_cfg);
-+    qtest_shutdown(qs);
-+}
-+
-+static void check_error(void)
-+{
-+    QFWCFG *fw_cfg;
-+    QOSState *qs;
-+    VMLaunchUpdate launch_update;
-+    uint16_t status;
-+    size_t filesize;
-+
-+    if (!qtest_has_device("vm-launch-update")) {
-+        g_test_skip("Device vm-launch-update is not available");
-+        return;
-+    }
-+
-+    /* guest not started with IGVM and with default accelerator */
-+    qs = qtest_pc_boot("-device vm-launch-update");
-+
-+    fw_cfg = pc_fw_cfg_init(qs->qts);
-+
-+    memset(&launch_update, 0, sizeof(launch_update));
-+    launch_update.fw_image_size = 50;
-+    launch_update.fw_image_addr = cpu_to_le64(0xdeadbeef);
-+    launch_update.control |= VM_LAUNCHUPDATE_FORMAT_IGVM;
-+
-+    filesize = qfw_cfg_write_file(fw_cfg, qs, FILE_VMLAUNCHUPDATE,
-+                                  &launch_update, sizeof(launch_update));
-+    g_assert_cmpint(filesize, ==, sizeof(launch_update));
-+
-+    memset(&launch_update, 0, sizeof(launch_update));
-+    filesize = qfw_cfg_get_file(fw_cfg, FILE_VMLAUNCHUPDATE,
-+                                &launch_update, sizeof(launch_update));
-+    g_assert_cmpint(filesize, ==, sizeof(launch_update));
-+    status = le64_to_cpu(launch_update.status);
-+    /* should fail with NOT_IGVM_INIT */
-+    g_assert_cmpint(status, ==, VM_LAUNCHUPDATE_NOT_IGVM_INIT);
-+
-+    memset(&launch_update, 0, sizeof(launch_update));
-+    launch_update.fw_image_size = 50;
-+    launch_update.fw_image_addr = cpu_to_le64(0xdeadbeef);
-+    /* control set to 0, not VM_LAUNCHUPDATE_FORMAT_IGVM */
-+
-+    filesize = qfw_cfg_write_file(fw_cfg, qs, FILE_VMLAUNCHUPDATE,
-+                                  &launch_update, sizeof(launch_update));
-+    g_assert_cmpint(filesize, ==, sizeof(launch_update));
-+
-+    memset(&launch_update, 0, sizeof(launch_update));
-+    filesize = qfw_cfg_get_file(fw_cfg, FILE_VMLAUNCHUPDATE,
-+                                &launch_update, sizeof(launch_update));
-+    g_assert_cmpint(filesize, ==, sizeof(launch_update));
-+    status = le64_to_cpu(launch_update.status);
-+    /* should fail with LOAD_FAIL since it was not IGVM format */
-+    g_assert_cmpint(status, ==, VM_LAUNCHUPDATE_LOAD_FAIL);
-+}
-+
-+static int64_t get_image_size(const char *filename)
-+{
-+    int fd;
-+    int64_t size;
-+    fd = open(filename, O_RDONLY | O_BINARY);
-+    g_assert_true(fd > 0);
-+    size = lseek(fd, 0, SEEK_END);
-+    close(fd);
-+    return size;
-+}
-+
-+static ssize_t load_image(const char *igvm_f, void **addr, size_t *size)
-+{
-+    ssize_t actsize = 0, l = 0;
-+    int f_igvm_f;
-+    size_t l_size;
-+
-+    f_igvm_f = open(igvm_f, O_RDONLY | O_BINARY);
-+    g_assert_true(f_igvm_f);
-+    l_size = get_image_size(igvm_f);
-+    g_assert_true(l_size > 0);
-+    *addr = g_malloc0(l_size);
-+    g_assert_true(*addr);
-+
-+    while (l < l_size) {
-+        actsize = read(f_igvm_f, *addr + l, 1);
-+        if (actsize < 0) {
-+            break;
++            if (t && !ambiguous && PXB_CXL_DEV(t) == pxb) {
++                *base = fw->base;
++                *size = fw->size;
++                *ntargets = fw->num_targets;
++                matches++;
++                break;
++            }
 +        }
-+        l += actsize;
 +    }
-+
-+    close(f_igvm_f);
-+    *size = l_size;
-+    return actsize < 0 ? -1 : l;
++    g_slist_free(list);
++    return matches;
 +}
 +
-+static guint32 match_string(char *serial_f, const char *exp_out)
++/*
++ * Fix the bounds of the device's memory window once the topology has settled.
++ * Exactly one single-target CFMWS, with an assigned base and room for the HDM
++ * memory, is required; anything else is a misconfiguration the guest cannot
++ * recover from, so reject it rather than guess a window. QEMU presents this
++ * window base as the decoder base to the guest, so the guest works purely in
++ * GPA; the host physical placement stays with the kernel.
++ *
++ * Returns false and sets errp on a bad topology so the caller can either fail a
++ * hotplug device_add or abort a cold boot.
++ */
++static bool vfio_cxl_do_bind_fmws(VFIOPCIDevice *vdev, Error **errp)
 +{
-+    GError *error = NULL;
-+    g_autofree gchar *f_contents = NULL;
-+    g_autofree GRegex *regex = NULL;
-+    g_autofree GMatchInfo *match_info = NULL;
-+    gsize len;
-+    guint32 count = 0;
-+    gboolean ret;
++    VFIOCXL *cxl = &vdev->cxl;
++    const char *name = vdev->vbasedev.name;
++    int nwindows = 0, ntargets = 0, matches;
++    hwaddr base = 0;
++    uint64_t size = 0, need;
++    PXBCXLDev *pxb;
 +
-+    ret = g_file_get_contents(serial_f, &f_contents, &len, &error);
-+    g_assert(ret);
-+    g_assert_no_error(error);
-+
-+    regex = g_regex_new(exp_out, G_REGEX_CASELESS, 0, &error);
-+    g_assert_no_error(error);
-+
-+    ret = g_regex_match_full(regex, f_contents, -1, 0, 0, &match_info, &error);
-+    g_assert_no_error(error);
-+
-+    while (g_match_info_matches(match_info)) {
-+        gchar *word = g_match_info_fetch(match_info, 0);
-+        g_free(word);
-+        g_match_info_next(match_info, &error);
-+        count++;
++    pxb = vfio_cxl_find_pxb(vdev, errp);
++    if (!pxb) {
++        return false;
 +    }
-+    g_regex_unref(regex);
-+    return count;
-+}
-+
-+static int wait_for_match(char *serial_f,
-+                          const char *exp_out, int64_t timeout_s,
-+                          guint32 count)
-+{
-+    time_t start, delta;
-+    int ret = -1;
-+
-+    start = time(NULL);
-+    while (1) {
-+        if (match_string(serial_f, exp_out) == count) {
-+            ret = 0;
-+            break;
-+        }
-+
-+        delta = time(NULL) - start;
-+        if (delta >= timeout_s) {
-+            fprintf(stderr, "timed out waiting to read serial output\n");
-+            break;
-+        }
-+
-+        /* wait 20 ms before trying again */
-+        if (false) {
-+            fprintf(stderr,
-+                    "sleeping 20 ms before checking serial output again.\n");
-+        }
-+        g_usleep(20000);
++    /*
++     * The pxb-cxl enters HDM passthrough only with a single root port and no
++     * emulated decoders, but cxl->passthrough is set by pxb_cxl_dev_reset(),
++     * which runs at the system reset after machine init done, so it is not
++     * readable from a machine-init-done notifier yet. Check the same topology
++     * the reset keys on; hdm_for_passthrough was already rejected at realize by
++     * vfio_cxl_check_topology().
++     */
++    if (pcie_count_ds_ports(PCI_HOST_BRIDGE(pxb->cxl_host_bridge)->bus) != 1) {
++        error_setg(errp,
++                   "vfio-cxl: %s: pxb-cxl not in HDM passthrough mode "
++                   "(use a single cxl-rp)", name);
++        return false;
 +    }
-+    return ret;
-+}
-+
-+static void test_load_igvm(void)
-+{
-+    const char *igvm_f;
-+    const char *igvm_init;
-+    int ser_fd;
-+    g_autofree void *igvm_blob = NULL;
-+    g_autofree char *serialtmp = NULL;
-+    const char exp_out[] = "Hello world!";
-+    const char exp_out2[] = "Test succeeded!";
-+    const char exp_out3[] = "boot process complete with initial igvm";
-+    const char *tracepoints = "--trace memory_region_finalize "
-+        "--trace qigvm_cleanup_memory -D /tmp/qemu-debug.log ";
-+    const char *snp, *cgs;
-+    uint64_t gaddr;
-+    size_t igvm_sz;
-+    size_t filesize;
-+    QFWCFG *fw_cfg;
-+    QOSState *qs;
-+    VMLaunchUpdate launch_update;
-+
-+    if (confidential) {
-+        snp = "-object \'{\"qom-type\":\"sev-snp-guest\",\"id\":\"lsec0\","
-+            "\"cbitpos\":51,\"reduced-phys-bits\":1,\"policy\":196608}\'";
-+        cgs = "confidential-guest-support=lsec0";
-+        /*
-+         * The following two IGVM files can be built from the source
-+         * present in https://gitlab.com/anisinha/virt-firmware-rs .
-+         * Typing 'make' from the top of this repository will build the
-+         * IGVM files for both confidential and
-+         * non-confidential tests. The IGVM files for the non-coco
-+         * case has been checked-in into the QEMU repository for
-+         * convenience and easy CI pipeline testing.
-+         */
-+        igvm_f = "tests/data/igvm/snptest.igvm"; /*
-+                                                  * this prints 'hello world'
-+                                                  * on console
-+                                                  */
-+        igvm_init = "tests/data/igvm/snptest-nohello.igvm";
-+    } else {
-+        igvm_f = "tests/data/igvm/hello.igvm";
-+        igvm_init = "tests/data/igvm/qemuinit.igvm";
-+        snp = "";
-+        cgs = "";
-+    }
-+
-+    if (!trace) {
-+        tracepoints = "";
-+    }
-+
-+    if (!g_file_test(igvm_f, G_FILE_TEST_EXISTS) ||
-+        !g_file_test(igvm_init, G_FILE_TEST_EXISTS)) {
-+        g_test_skip("igvm file bundle(s) does not exist!");
-+        return;
-+    }
-+
-+    if (!qtest_has_machine("q35")) {
-+        g_test_skip("q35 machine not available");
-+        return;
-+    }
-+
-+    if (!qtest_has_accel("kvm")) {
-+        g_test_skip("No KVM accelerator available");
-+        return;
-+    }
-+
-+    if (!qtest_has_device("vm-launch-update")) {
-+        g_test_skip("Device vm-launch-update is not available");
-+        return;
-+    }
-+
-+    ser_fd = g_file_open_tmp("launchupdate-qtest-serial-sXXXXXX",
-+                             &serialtmp, NULL);
-+    g_assert_true(ser_fd != -1);
-+
-+    if (debug) {
-+        fprintf(stderr, "serial console file is %s\n", serialtmp);
-+    }
-+
-+    qs = qtest_pc_boot("-machine q35,igvm-cfg=igvm0,%s -m 1G -accel kvm "
-+                       "-device vm-launch-update %s "
-+                       "-chardev file,id=serial0,path=%s "
-+                       "-serial chardev:serial0 "
-+                       "-object igvm-cfg,id=igvm0,file=%s %s",
-+                       cgs, tracepoints, serialtmp, igvm_init, snp);
-+
-+    fw_cfg = pc_fw_cfg_init(qs->qts);
-+
-+    if (debug) {
-+        fprintf(stderr, "target endianness: %s\n",
-+                qtest_big_endian(qs->qts) ? "big" : "little");
-+    }
-+
-+    /* exp_out3 should be printed once from initial boot */
-+    g_assert_true(wait_for_match(serialtmp, exp_out3, WAIT_SEC, 1) == 0);
-+    g_assert_true(load_image(igvm_f, &igvm_blob, &igvm_sz) == igvm_sz);
-+
-+    /* create a data buffer in guest memory */
-+    gaddr = guest_alloc(&qs->alloc, igvm_sz);
-+
-+    if (debug) {
-+        fprintf(stderr, "guest paddr: %"PRIx64 "  igvm size: %lu\n",
-+                gaddr, igvm_sz);
-+    }
-+
-+    if (debug) {
-+        fprintf(stderr, "writing igvm file into the guest memory\n");
-+    }
-+
-+    qtest_bufwrite(qs->qts, gaddr, igvm_blob, igvm_sz);
-+
-+    if (debug) {
-+        fprintf(stderr,
-+                "tell hypervisor where igvm is loaded in guest memory\n");
-+    }
-+
-+    /* now tell hypervisor where we loaded the bios */
-+    memset(&launch_update, 0, sizeof(launch_update));
-+    launch_update.fw_image_size = cpu_to_le64(igvm_sz);
-+    launch_update.fw_image_addr = cpu_to_le64(gaddr);
-+    launch_update.control |= VM_LAUNCHUPDATE_FORMAT_IGVM;
-+
-+    filesize = qfw_cfg_write_file(fw_cfg, qs, FILE_VMLAUNCHUPDATE,
-+                                  &launch_update, sizeof(launch_update));
-+    g_assert_cmpint(filesize, ==, sizeof(launch_update));
-+
-+    if (debug) {
-+        fprintf(stderr, "resetting the virtual machine now\n");
-+    }
-+
-+    qtest_system_reset(qs->qts);
-+
-+    /* expected string should be printed on the console */
-+    g_assert_true(wait_for_match(serialtmp, exp_out, WAIT_SEC, 1) == 0);
-+    g_assert_true(wait_for_match(serialtmp, exp_out2, WAIT_SEC, 1) == 0);
-+
-+    if (debug) {
-+        fprintf(stderr, "hello world found on console\n");
-+    }
-+
-+    /* check if VM_LAUNCHUPDATE_CTL_HOST_IGVM function works */
-+
-+    /* set VM_LAUNCHUPDATE_CTL_HOST_IGVM control */
-+    memset(&launch_update, 0, sizeof(launch_update));
-+    launch_update.control |= VM_LAUNCHUPDATE_CTL_HOST_IGVM;
-+
-+    filesize = qfw_cfg_write_file(fw_cfg, qs, FILE_VMLAUNCHUPDATE,
-+                                  &launch_update, sizeof(launch_update));
-+    g_assert_cmpint(filesize, ==, sizeof(launch_update));
-+
-+    /* now reset the guest */
-+    if (debug) {
-+        fprintf(stderr,
-+                "resetting again in order to restore host provided IGVM\n");
-+    }
-+    qtest_system_reset(qs->qts);
 +
 +    /*
-+     * exp_out3 should be printed twice, once from initial boot,
-+     * once from restoring host igvm.
++     * A PCIe root-port link is point to point, but QEMU only warns when a
++     * second endpoint is cold-plugged at a nonzero slot below the port. Both
++     * endpoints would match the same single-target CFMWS and map their HDM
++     * memory at the same base, aliasing one over the other. Require exactly one
++     * endpoint below the root port.
 +     */
-+    g_assert_true(wait_for_match(serialtmp, exp_out3, WAIT_SEC, 2) == 0);
++    {
++        PCIBus *ep_bus = pci_get_bus(&vdev->parent_obj);
++        int slot, fn, nendpoints = 0;
 +
-+    close(ser_fd);
-+    guest_free(&qs->alloc, gaddr);
-+    pc_fw_cfg_uninit(fw_cfg);
-+    /* qtest_quit() kils QEMU, first by sending SIGTERM, then SIGKILL */
-+    qtest_quit(qs->qts);
++        for (slot = 0; slot < PCI_SLOT_MAX; slot++) {
++            for (fn = 0; fn < PCI_FUNC_MAX; fn++) {
++                if (ep_bus->devices[PCI_DEVFN(slot, fn)]) {
++                    nendpoints++;
++                    break;
++                }
++            }
++        }
++        if (nendpoints != 1) {
++            error_setg(errp,
++                       "vfio-cxl: %s: %d devices below the cxl-rp; a passed "
++                       "through CXL endpoint must be alone below its root port",
++                       name, nendpoints);
++            return false;
++        }
++    }
++
++    matches = vfio_cxl_match_fmws(pxb, &base, &size, &nwindows, &ntargets);
++    if (matches == 1 && ntargets == 1) {
++        if (!base) {
++            error_setg(errp,
++                       "vfio-cxl: %s: matched CFMWS has no base; reduce its "
++                       "size or grow the guest PA space", name);
++            return false;
++        }
++        /*
++         * QEMU reads the endpoint's HDM size from the kernel region, so the
++         * window size is really device information, not a value to make the
++         * caller guess. Sizing the CFMWS from the device the way firmware does
++         * is not possible here: the window is placed in the guest PA map by
++         * cxl_fmws_set_memmap() before this device is realized, so its size is
++         * fixed before dpa_size is known. Until a core change can size the
++         * window from the device, take the device geometry as the source of
++         * truth: reject a window too small to hold the endpoint, and warn when
++         * it is larger than needed, since the padding becomes guest CEDT that
++         * migration has to preserve.
++         */
++        need = ROUND_UP(cxl->dpa_size, 256 * MiB);
++        if (size < need) {
++            error_setg(errp,
++                       "vfio-cxl: %s: CFMWS size 0x%" PRIx64 " cannot hold the "
++                       "endpoint; set the cxl-fmw size to 0x%" PRIx64,
++                       name, size, need);
++            return false;
++        }
++        if (size > need) {
++            warn_report("vfio-cxl: %s: CFMWS size 0x%" PRIx64 " exceeds the "
++                        "endpoint's 0x%" PRIx64 "; set the cxl-fmw size to 0x%"
++                        PRIx64 " to keep the guest memory map stable across "
++                        "migration", name, size, cxl->dpa_size, need);
++        }
++        cxl->fmws_base = base;
++        cxl->fmws_size = size;
++        return true;
++    }
++
++    if (matches == 1) {
++        error_setg(errp,
++                   "vfio-cxl: %s: its CFMWS interleaves %d targets; use a "
++                   "single-target window", name, ntargets);
++    } else if (matches > 1) {
++        error_setg(errp,
++                   "vfio-cxl: %s: pxb-cxl is targeted by %d CFMWS; use one",
++                   name, matches);
++    } else {
++        error_setg(errp,
++                   "vfio-cxl: %s: no CFMWS targets this device (%d present)",
++                   name, nwindows);
++    }
++    return false;
 +}
 +
-+int main(int argc, char **argv)
++/*
++ * Cold-plug path: the CFMWS windows are placed at machine init done, so the
++ * binding can only be validated from this notifier. The VM has not run yet, so
++ * a configuration error is fatal to startup. A hotplugged device is validated
++ * in realize instead (see vfio_cxl_setup), where the failure fails device_add
++ * without taking down the running VM.
++ */
++static void vfio_cxl_bind_fmws(Notifier *n, void *data)
 +{
-+    const char *arch = qtest_get_arch();
++    VFIOCXL *cxl = container_of(n, VFIOCXL, machine_done);
++    VFIOPCIDevice *vdev = container_of(cxl, VFIOPCIDevice, cxl);
++    Error *err = NULL;
 +
-+    g_test_init(&argc, &argv, NULL);
-+
-+    if (strcmp(arch, "i386") && strcmp(arch, "x86_64")) {
-+        g_printerr("vmlaunchupdate tests are only available on x86\n");
-+        exit(EXIT_FAILURE);
++    if (!vfio_cxl_do_bind_fmws(vdev, &err)) {
++        error_report_err(err);
++        exit(1);
 +    }
-+
-+    g_test_add_func("/vm-launch-update/cap", test_vm_launch_update_capability);
-+    g_test_add_func("/vm-launch-update/disabled",
-+                    test_vm_launch_update_disable);
-+
-+    g_test_add_func("/vm-launch-update/errorcheck", check_error);
-+    g_test_add_func("/vm-launch-update/load_igvm",
-+                    test_load_igvm);
-+
-+    if (getenv("LAUNCHUPDATE_DEBUG")) {
-+        debug = true;
-+    }
-+    if (getenv("LAUNCHUPDATE_TRACE")) {
-+        trace = true;
-+    }
-+    if (getenv("COCO")) {
-+        confidential = true;
-+    }
-+
-+    return g_test_run();
 +}
-diff --git a/tests/qtest/meson.build b/tests/qtest/meson.build
-index f7c7d06620..12ed368997 100644
---- a/tests/qtest/meson.build
-+++ b/tests/qtest/meson.build
-@@ -61,6 +61,8 @@ qtests_i386 = \
-   (config_all_devices.has_key('CONFIG_Q35') ? ['e820-test'] : []) +                          \
-   (config_all_devices.has_key('CONFIG_FW_CFG_DMA') ? ['vmcoreinfo-test'] : []) +            \
-   (config_all_devices.has_key('CONFIG_Q35') ? ['dump-test'] : []) +                         \
-+  (igvm.found() and
-+   config_all_devices.has_key('CONFIG_FW_CFG_DMA') ? ['launchupdate-test'] : []) +          \
-   (config_all_devices.has_key('CONFIG_I440FX') ? ['i440fx-test'] : []) +                    \
-   (config_all_devices.has_key('CONFIG_I440FX') ? ['ide-test'] : []) +                       \
-   (config_all_devices.has_key('CONFIG_I440FX') ? ['numa-test'] : []) +                      \
++
+ /*
+  * Learn the CXL geometry the kernel reports: the HPA-backed HDM memory region
+  * and the trapped HDM decoder block (which BAR carries it and at what offset).
+@@ -3735,6 +3921,9 @@ static bool vfio_cxl_setup(VFIOPCIDevice *vdev, Error **errp)
+         return false;
+     }
+ 
++    cxl->machine_done.notify = vfio_cxl_bind_fmws;
++    qemu_add_machine_init_done_notifier(&cxl->machine_done);
++
+     cxl->enabled = true;
+ 
+     return true;
+@@ -3747,6 +3936,7 @@ static void vfio_cxl_teardown(VFIOPCIDevice *vdev)
+     if (!cxl->enabled) {
+         return;
+     }
++    qemu_remove_machine_init_done_notifier(&cxl->machine_done);
+     if (cxl->mem_region.mem) {
+         vfio_region_exit(&cxl->mem_region);
+         vfio_region_finalize(&cxl->mem_region);
+diff --git a/hw/vfio/pci.h b/hw/vfio/pci.h
+index 06d15e807d..6f184520bf 100644
+--- a/hw/vfio/pci.h
++++ b/hw/vfio/pci.h
+@@ -135,6 +135,9 @@ typedef struct VFIOCXL {
+     uint64_t hdm_offset;             /* block offset within the component BAR */
+     uint64_t dpa_size;               /* size of the HDM memory region */
+     VFIORegion mem_region;           /* HDM memory, mapped at committed GPA */
++    Notifier machine_done;           /* CFMWS validated at machine_done */
++    hwaddr fmws_base;                /* base of the memory window */
++    uint64_t fmws_size;              /* size of that window */
+ } VFIOCXL;
+ 
+ struct VFIOPCIDevice {
 -- 
-2.42.0
+2.25.1
 
 

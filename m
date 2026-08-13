@@ -4,26 +4,26 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AC0FFC5CFCF
-	for <qemu-arm@archiver.kernel.org>; Thu, 13 Aug 2026 16:29:04 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A8CEBC5CFCF
+	for <qemu-arm@archiver.kernel.org>; Thu, 13 Aug 2026 16:29:08 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wuYGL-0003rm-Ay; Thu, 13 Aug 2026 12:26:37 -0400
+	id 1wuYHB-0004uM-0A; Thu, 13 Aug 2026 12:27:30 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <tangtao1634@phytium.com.cn>)
- id 1wuYFw-0003Lr-VG; Thu, 13 Aug 2026 12:26:14 -0400
+ id 1wuYGc-000441-Tf; Thu, 13 Aug 2026 12:27:00 -0400
 Received: from zg8tmtyylji0my4xnjqumte4.icoremail.net ([162.243.164.118])
  by eggs.gnu.org with esmtp (Exim 4.90_1)
  (envelope-from <tangtao1634@phytium.com.cn>)
- id 1wuYFs-0001Bx-TM; Thu, 13 Aug 2026 12:26:12 -0400
+ id 1wuYGb-0001Qm-8q; Thu, 13 Aug 2026 12:26:54 -0400
 Received: from prodtpl.icoremail.net (unknown [10.12.1.20])
- by hzbj-icmmx-7 (Coremail) with UTF8SMTP id AQAAfwD3_hoe8H1qKSNvAw--.33937S2; 
- Fri, 14 Aug 2026 00:26:06 +0800 (CST)
+ by hzbj-icmmx-7 (Coremail) with UTF8SMTP id AQAAfwCHj1NK8H1qTyVvAw--.34755S2; 
+ Fri, 14 Aug 2026 00:26:50 +0800 (CST)
 Received: from phytium.com.cn (unknown [218.76.62.144])
- by mail (Coremail) with SMTP id AQAAf8Dw4XUX8H1q5iwjAA--.55915S5;
- Fri, 14 Aug 2026 00:26:01 +0800 (CST)
+ by mail (Coremail) with SMTP id AQAAf8DwoHJE8H1q7ywjAA--.56307S3;
+ Fri, 14 Aug 2026 00:26:44 +0800 (CST)
 From: Tao Tang <tangtao1634@phytium.com.cn>
 To: Eric Auger <eric.auger@redhat.com>,
  Peter Maydell <peter.maydell@linaro.org>
@@ -35,22 +35,22 @@ Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org,
  Chao Liu <chao.liu@processmission.com>,
  Jim MacArthur <jim.macarthur@linaro.org>,
  Tao Tang <tangtao1634@phytium.com.cn>
-Subject: [RFC v5 18/28] hw/arm/smmuv3: Add access checks for CMDQ and EVENTQ
- registers
-Date: Fri, 14 Aug 2026 00:25:56 +0800
-Message-Id: <20260813162558.2808607-3-tangtao1634@phytium.com.cn>
+Subject: [RFC v5 27/28] hw/arm/smmuv3: Add secure bank migration and
+ secure-impl property
+Date: Fri, 14 Aug 2026 00:26:43 +0800
+Message-Id: <20260813162644.2810021-1-tangtao1634@phytium.com.cn>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20260813161515.2788900-1-tangtao1634@phytium.com.cn>
 References: <20260813161515.2788900-1-tangtao1634@phytium.com.cn>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-CM-TRANSID: AQAAf8Dw4XUX8H1q5iwjAA--.55915S5
-X-CM-SenderInfo: pwdqw3tdrrljuu6sx5pwlxzhxfrphubq/1tbiAQAGBWp8yc0HqAAAs-
+X-CM-TRANSID: AQAAf8DwoHJE8H1q7ywjAA--.56307S3
+X-CM-SenderInfo: pwdqw3tdrrljuu6sx5pwlxzhxfrphubq/1tbiAQAGBWp8yc0HtwAAsg
 Authentication-Results: hzbj-icmmx-7; spf=neutral smtp.mail=tangtao163
  4@phytium.com.cn;
-X-Coremail-Antispam: 1Uk129KBjvJXoW3uryrGFykXr1fCryxKFy5XFb_yoWktr43pr
- 97GFy3Kr4a9w4Sqa93Ga1Yya1Uua1xtr9rKr98WFn5Ww1UGrW5Za18WFWfXas3JF18Xws7
- GwsIkFW3urW7G3DanT9S1TB71UUUUUDqnTZGkaVYY2UrUUUUj1kv1TuYvTs0mT0YCTnIWj
+X-Coremail-Antispam: 1Uk129KBjvJXoW3GrWxGw1fKFW3AFWkAFyfCrg_yoW7AF4Dpr
+ s8Gwn8GryUGF43Zr43J3WrCFs5Cr4xGa1YkrWDCa9aya1ktF42qwn7A3yFg3ykGrW8Xa1x
+ uF1xuFZrJr47ZrJanT9S1TB71UUUUUDqnTZGkaVYY2UrUUUUj1kv1TuYvTs0mT0YCTnIWj
  DUYxn0WfASr-VFAU7a7-sFnT9fnUUIcSsGvfJ3UbIYCTnIWIevJa73UjIFyTuYvj4RJUUU
  UUUUU
 Received-SPF: pass client-ip=162.243.164.118;
@@ -77,367 +77,177 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Add access control for command queue and event queue related registers
-to ensure they can only be modified under proper conditions.
+Add a secure-impl device property and advertise it through
+S_IDR1.SECURE_IMPL. Reject secure-impl=on unless Secure memory is available
+and stage-1 translation is supported.
 
-For command queue (CMDQ):
-- smmu_cmdq_disabled_stable(): checks CMDQ bit in CR0/CR0ACK
-- smmu_cmdq_base_writable(): checks IDR1.QUEUES_PRESET==0 and CMDQ disabled
+Usage:
+    -M virt,secure=on,iommu=smmuv3 \
+    -global arm-smmuv3.secure-impl=on
 
-For event queue (EVTQ):
-- smmu_eventq_disabled_stable(): checks EVTQ bit in CR0/CR0ACK
-- smmu_eventq_base_writable(): checks IDR1.QUEUES_PRESET==0 and EVTQ disabled
-- smmu_irq_cfg_present(): checks SMMU_IDR0.MSI for the Non-secure
-  EVENTQ_IRQ_CFG register set and SMMU_S_IDR0.MSI for the Secure set
-- smmu_eventq_irq_cfg_writable(): additionally checks EVENTQ_IRQEN
+Add the smmuv3/bank_s migration subsection for the secure register bank.
+Serialize secure bank state including GBPA, IRQ config, stream table and
+queue state.
 
-Absent EVENTQ_IRQ_CFG registers read as RES0. Present registers retain
-their programmed values for readback. The helper remains keyed by
-SEC_SID so future Realm support can select SMMU_R_IDR0.MSI.
-
-Additionally, mask reserved bits on writes using SMMU_QUEUE_BASE_RESERVED
-for queue base registers and SMMU_EVENTQ_IRQ_CFG0_RESERVED for
-EVENTQ_IRQ_CFG0.
-
-Fixes: fae4be38b35d ("hw/arm/smmuv3: Implement MMIO write operations")
 Signed-off-by: Tao Tang <tangtao1634@phytium.com.cn>
 Reviewed-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
 ---
- hw/arm/smmuv3.c | 210 ++++++++++++++++++++++++++++++++++++++++++++++--
- 1 file changed, 204 insertions(+), 6 deletions(-)
+ hw/arm/smmuv3.c         | 93 +++++++++++++++++++++++++++++++++++++++++
+ include/hw/arm/smmuv3.h |  2 +
+ 2 files changed, 95 insertions(+)
 
 diff --git a/hw/arm/smmuv3.c b/hw/arm/smmuv3.c
-index de8ca7cda48..efa78869251 100644
+index 7e7376c65e2..8e1de94fd17 100644
 --- a/hw/arm/smmuv3.c
 +++ b/hw/arm/smmuv3.c
-@@ -1432,19 +1432,29 @@ smmu_cmdq_stage2_supported(SMMUv3State *s, SMMUSecSID sec_sid)
- static bool smmu_irq_cfg_present(SMMUv3State *s, SMMUSecSID sec_sid,
-                                  SMMUIrq irq)
- {
--    SMMUv3RegBank *bank = smmuv3_bank(s, SMMU_SEC_SID_NS);
-+    SMMUv3RegBank *bank = smmuv3_bank(s, sec_sid);
-+    SMMUv3RegBank *ns_bank = smmuv3_bank(s, SMMU_SEC_SID_NS);
+@@ -348,6 +348,8 @@ static void smmuv3_init_id_regs(SMMUv3State *s)
  
-     switch (irq) {
-     case SMMU_IRQ_GERROR:
-         switch (sec_sid) {
-         case SMMU_SEC_SID_NS:
-         case SMMU_SEC_SID_S:
--            return FIELD_EX32(bank->idr[0], IDR0, MSI);
-+            return FIELD_EX32(ns_bank->idr[0], IDR0, MSI);
-         case SMMU_SEC_SID_NUM:
-             g_assert_not_reached();
-         }
-         break;
-     case SMMU_IRQ_EVTQ:
-+        switch (sec_sid) {
-+        case SMMU_SEC_SID_NS:
-+            return FIELD_EX32(bank->idr[0], IDR0, MSI);
-+        case SMMU_SEC_SID_S:
-+            return FIELD_EX32(bank->idr[0], S_IDR0, MSI);
-+        case SMMU_SEC_SID_NUM:
-+            g_assert_not_reached();
-+        }
-+        break;
-     case SMMU_IRQ_PRIQ:
-     case SMMU_IRQ_CMD_SYNC:
-         g_assert_not_reached();
-@@ -1469,6 +1479,8 @@ static bool smmu_irq_cfg_writable(SMMUv3State *s, SMMUSecSID sec_sid,
-         irqen = FIELD_EX32(bank->irq_ctrl, IRQ_CTRL, GERROR_IRQEN);
-         break;
-     case SMMU_IRQ_EVTQ:
-+        irqen = FIELD_EX32(bank->irq_ctrl, IRQ_CTRL, EVENTQ_IRQEN);
-+        break;
-     case SMMU_IRQ_PRIQ:
-     case SMMU_IRQ_CMD_SYNC:
-         g_assert_not_reached();
-@@ -1514,6 +1526,69 @@ static bool smmu_strtab_base_writable(SMMUv3State *s, SMMUSecSID sec_sid)
-     return smmuv3_smmu_disabled_stable(s, sec_sid);
+     sbank->idr[1] = FIELD_DP32(sbank->idr[1], S_IDR1, S_SIDSIZE,
+                                SMMU_IDR1_SIDSIZE);
++    sbank->idr[1] = FIELD_DP32(sbank->idr[1], S_IDR1, SECURE_IMPL,
++                               s->secure_impl == ON_OFF_AUTO_ON);
+     smmuv3_accel_idr_override(s);
  }
  
-+static inline int smmuv3_get_cr0_cmdqen(SMMUv3State *s, SMMUSecSID sec_sid)
+@@ -2752,6 +2754,37 @@ static bool smmu_validate_property(SMMUv3State *s, Error **errp)
+     return true;
+ }
+ 
++static bool smmuv3_resolve_secure_impl(SMMUv3State *s, Error **errp)
 +{
-+    return FIELD_EX32(s->bank[sec_sid].cr[0], CR0, CMDQEN);
-+}
++    SMMUState *bs = ARM_SMMU(s);
++    bool secure_as_available = bs->secure_memory &&
++                               bs->secure_memory_as.root != NULL;
 +
-+static inline int smmuv3_get_cr0ack_cmdqen(SMMUv3State *s, SMMUSecSID sec_sid)
-+{
-+    return FIELD_EX32(s->bank[sec_sid].cr0ack, CR0, CMDQEN);
-+}
++    if (s->secure_impl == ON_OFF_AUTO_AUTO) {
++        s->secure_impl = secure_as_available ? ON_OFF_AUTO_ON
++                                             : ON_OFF_AUTO_OFF;
++    }
 +
-+static inline int smmuv3_get_cr0_eventqen(SMMUv3State *s, SMMUSecSID sec_sid)
-+{
-+    return FIELD_EX32(s->bank[sec_sid].cr[0], CR0, EVENTQEN);
-+}
-+
-+static inline int smmuv3_get_cr0ack_eventqen(SMMUv3State *s, SMMUSecSID sec_sid)
-+{
-+    return FIELD_EX32(s->bank[sec_sid].cr0ack, CR0, EVENTQEN);
-+}
-+
-+/* Check if CMDQ is disabled in stable status */
-+static bool smmu_cmdq_disabled_stable(SMMUv3State *s, SMMUSecSID sec_sid)
-+{
-+    int cr0_cmdqen = smmuv3_get_cr0_cmdqen(s, sec_sid);
-+    int cr0ack_cmdqen = smmuv3_get_cr0ack_cmdqen(s, sec_sid);
-+    return (cr0_cmdqen == 0 && cr0ack_cmdqen == 0);
-+}
-+
-+/* Check if CMDQ_BASE register is writable */
-+static bool smmu_cmdq_base_writable(SMMUv3State *s, SMMUSecSID sec_sid)
-+{
-+    /* SMMU_IDR1.QUEUES_PRESET applies to both modeled interfaces. */
-+    if (FIELD_EX32(s->bank[SMMU_SEC_SID_NS].idr[1], IDR1, QUEUES_PRESET)) {
++    if (s->secure_impl == ON_OFF_AUTO_ON && !secure_as_available) {
++        error_setg(errp,
++                   "secure-impl=on requires a secure-memory address space");
 +        return false;
 +    }
 +
-+    return smmu_cmdq_disabled_stable(s, sec_sid);
-+}
-+
-+/* Check if EVENTQ is disabled in stable status */
-+static bool smmu_eventq_disabled_stable(SMMUv3State *s, SMMUSecSID sec_sid)
-+{
-+    int cr0_eventqen = smmuv3_get_cr0_eventqen(s, sec_sid);
-+    int cr0ack_eventqen = smmuv3_get_cr0ack_eventqen(s, sec_sid);
-+    return (cr0_eventqen == 0 && cr0ack_eventqen == 0);
-+}
-+
-+/* Check if EVENTQ_BASE register is writable */
-+static bool smmu_eventq_base_writable(SMMUv3State *s, SMMUSecSID sec_sid)
-+{
-+    if (FIELD_EX32(s->bank[SMMU_SEC_SID_NS].idr[1], IDR1, QUEUES_PRESET)) {
++    /*
++     * When SECURE_IMPL == 1, stage 1 must be supported according to
++     * (IHI 0070G.b) 6.3.53 SMMU_S_IDR1, Page 442.
++     */
++    if (s->secure_impl == ON_OFF_AUTO_ON &&
++        s->stage && !strcmp(s->stage, "2")) {
++        error_setg(errp,
++                    "secure-impl=on requires stage=1 or stage=nested");
 +        return false;
 +    }
 +
-+    return smmu_eventq_disabled_stable(s, sec_sid);
++    return true;
 +}
 +
-+/* Check if EVENTQ_IRQ_CFGx is writable */
-+static bool smmu_eventq_irq_cfg_writable(SMMUv3State *s, SMMUSecSID sec_sid)
-+{
-+    return smmu_irq_cfg_writable(s, sec_sid, SMMU_IRQ_EVTQ);
-+}
-+
- static int smmuv3_cmdq_consume(SMMUv3State *s, Error **errp, SMMUSecSID sec_sid)
+ static void smmu_realize(DeviceState *d, Error **errp)
  {
-     SMMUState *bs = ARM_SMMU(s);
-@@ -1841,21 +1916,39 @@ static MemTxResult smmu_writell(SMMUv3State *s, hwaddr offset,
-         bank->strtab_base = data & SMMU_STRTAB_BASE_RESERVED;
-         return MEMTX_OK;
-     case A_CMDQ_BASE:
--        bank->cmdq.base = data;
-+        if (!smmu_cmdq_base_writable(s, reg_sec_sid)) {
-+            qemu_log_mask(LOG_GUEST_ERROR,
-+                          "CMDQ_BASE write ignored: register is RO\n");
-+            return MEMTX_OK;
-+        }
-+
-+        bank->cmdq.base = data & SMMU_QUEUE_BASE_RESERVED;
-         bank->cmdq.log2size = extract64(bank->cmdq.base, 0, 5);
-         if (bank->cmdq.log2size > SMMU_CMDQS) {
-             bank->cmdq.log2size = SMMU_CMDQS;
-         }
-         return MEMTX_OK;
-     case A_EVENTQ_BASE:
--        bank->eventq.base = data;
-+        if (!smmu_eventq_base_writable(s, reg_sec_sid)) {
-+            qemu_log_mask(LOG_GUEST_ERROR,
-+                          "EVENTQ_BASE write ignored: register is RO\n");
-+            return MEMTX_OK;
-+        }
-+
-+        bank->eventq.base = data & SMMU_QUEUE_BASE_RESERVED;
-         bank->eventq.log2size = extract64(bank->eventq.base, 0, 5);
-         if (bank->eventq.log2size > SMMU_EVENTQS) {
-             bank->eventq.log2size = SMMU_EVENTQS;
-         }
-         return MEMTX_OK;
-     case A_EVENTQ_IRQ_CFG0:
--        bank->eventq_irq_cfg0 = data;
-+        if (!smmu_eventq_irq_cfg_writable(s, reg_sec_sid)) {
-+            qemu_log_mask(LOG_GUEST_ERROR,
-+                          "EVENTQ_IRQ_CFG0 write ignored: register is RO\n");
-+            return MEMTX_OK;
-+        }
-+
-+        bank->eventq_irq_cfg0 = data & SMMU_EVENTQ_IRQ_CFG0_RESERVED;
-         return MEMTX_OK;
-     default:
-         qemu_log_mask(LOG_UNIMP,
-@@ -2001,6 +2094,13 @@ static MemTxResult smmu_writel(SMMUv3State *s, hwaddr offset,
-         }
-         break;
-     case A_CMDQ_BASE: /* 64b */
-+        if (!smmu_cmdq_base_writable(s, reg_sec_sid)) {
-+            qemu_log_mask(LOG_GUEST_ERROR,
-+                          "CMDQ_BASE write ignored: register is RO\n");
-+            return MEMTX_OK;
-+        }
-+
-+        data &= SMMU_QUEUE_BASE_RESERVED;
-         bank->cmdq.base = deposit64(bank->cmdq.base, 0, 32, data);
-         bank->cmdq.log2size = extract64(bank->cmdq.base, 0, 5);
-         if (bank->cmdq.log2size > SMMU_CMDQS) {
-@@ -2008,6 +2108,13 @@ static MemTxResult smmu_writel(SMMUv3State *s, hwaddr offset,
-         }
-         break;
-     case A_CMDQ_BASE + 4: /* 64b */
-+        if (!smmu_cmdq_base_writable(s, reg_sec_sid)) {
-+            qemu_log_mask(LOG_GUEST_ERROR,
-+                          "CMDQ_BASE + 4 write ignored: register is RO\n");
-+            return MEMTX_OK;
-+        }
-+
-+        data &= SMMU_QUEUE_BASE_RESERVED;
-         bank->cmdq.base = deposit64(bank->cmdq.base, 32, 32, data);
-         break;
-     case A_CMDQ_PROD:
-@@ -2015,9 +2122,22 @@ static MemTxResult smmu_writel(SMMUv3State *s, hwaddr offset,
-         smmuv3_cmdq_consume(s, &local_err, reg_sec_sid);
-         break;
-     case A_CMDQ_CONS:
-+        if (!smmu_cmdq_disabled_stable(s, reg_sec_sid)) {
-+            qemu_log_mask(LOG_GUEST_ERROR,
-+                          "CMDQ_CONS write ignored: register is RO\n");
-+            return MEMTX_OK;
-+        }
-+
-         bank->cmdq.cons = data;
-         break;
-     case A_EVENTQ_BASE: /* 64b */
-+        if (!smmu_eventq_base_writable(s, reg_sec_sid)) {
-+            qemu_log_mask(LOG_GUEST_ERROR,
-+                          "EVENTQ_BASE write ignored: register is RO\n");
-+            return MEMTX_OK;
-+        }
-+
-+        data &= SMMU_QUEUE_BASE_RESERVED;
-         bank->eventq.base = deposit64(bank->eventq.base, 0, 32, data);
-         bank->eventq.log2size = extract64(bank->eventq.base, 0, 5);
-         if (bank->eventq.log2size > SMMU_EVENTQS) {
-@@ -2025,24 +2145,63 @@ static MemTxResult smmu_writel(SMMUv3State *s, hwaddr offset,
-         }
-         break;
-     case A_EVENTQ_BASE + 4:
-+        if (!smmu_eventq_base_writable(s, reg_sec_sid)) {
-+            qemu_log_mask(LOG_GUEST_ERROR,
-+                          "EVENTQ_BASE + 4 write ignored: register is RO\n");
-+            return MEMTX_OK;
-+        }
-+
-+        data &= SMMU_QUEUE_BASE_RESERVED;
-         bank->eventq.base = deposit64(bank->eventq.base, 32, 32, data);
-         break;
-     case A_EVENTQ_PROD:
-+        if (!smmu_eventq_disabled_stable(s, reg_sec_sid)) {
-+            qemu_log_mask(LOG_GUEST_ERROR,
-+                          "EVENTQ_PROD write ignored: register is RO\n");
-+            return MEMTX_OK;
-+        }
-+
-         bank->eventq.prod = data;
-         break;
-     case A_EVENTQ_CONS:
-         bank->eventq.cons = data;
-         break;
-     case A_EVENTQ_IRQ_CFG0: /* 64b */
-+        if (!smmu_eventq_irq_cfg_writable(s, reg_sec_sid)) {
-+            qemu_log_mask(LOG_GUEST_ERROR,
-+                          "EVENTQ_IRQ_CFG0 write ignored: register is RO\n");
-+            return MEMTX_OK;
-+        }
-+
-+        data &= SMMU_EVENTQ_IRQ_CFG0_RESERVED;
-         bank->eventq_irq_cfg0 = deposit64(bank->eventq_irq_cfg0, 0, 32, data);
-         break;
-     case A_EVENTQ_IRQ_CFG0 + 4:
-+        if (!smmu_eventq_irq_cfg_writable(s, reg_sec_sid)) {
-+            qemu_log_mask(LOG_GUEST_ERROR,
-+                          "EVENTQ_IRQ_CFG0+4 write ignored: register is RO\n");
-+            return MEMTX_OK;
-+        }
-+
-+        data &= SMMU_EVENTQ_IRQ_CFG0_RESERVED >> 32;
-         bank->eventq_irq_cfg0 = deposit64(bank->eventq_irq_cfg0, 32, 32, data);
-         break;
-     case A_EVENTQ_IRQ_CFG1:
-+        if (!smmu_eventq_irq_cfg_writable(s, reg_sec_sid)) {
-+            qemu_log_mask(LOG_GUEST_ERROR,
-+                          "EVENTQ_IRQ_CFG1 write ignored: register is RO\n");
-+            return MEMTX_OK;
-+        }
-+
-         bank->eventq_irq_cfg1 = data;
-         break;
-     case A_EVENTQ_IRQ_CFG2:
-+        if (!smmu_eventq_irq_cfg_writable(s, reg_sec_sid)) {
-+            qemu_log_mask(LOG_GUEST_ERROR,
-+                          "EVENTQ_IRQ_CFG2 write ignored: register is RO\n");
-+            return MEMTX_OK;
-+        }
-+
-         bank->eventq_irq_cfg2 = data;
-         break;
-     default:
-@@ -2108,6 +2267,14 @@ static MemTxResult smmu_readll(SMMUv3State *s, hwaddr offset,
-     case A_EVENTQ_BASE:
-         *data = bank->eventq.base;
-         return MEMTX_OK;
-+    case A_EVENTQ_IRQ_CFG0:
-+        if (!smmu_irq_cfg_present(s, reg_sec_sid, SMMU_IRQ_EVTQ)) {
-+            *data = 0; /* RES0 */
-+            return MEMTX_OK;
-+        }
-+
-+        *data = bank->eventq_irq_cfg0;
-+        return MEMTX_OK;
-     default:
-         *data = 0;
-         qemu_log_mask(LOG_UNIMP,
-@@ -2229,6 +2396,38 @@ static MemTxResult smmu_readl(SMMUv3State *s, hwaddr offset,
-     case A_EVENTQ_CONS:
-         *data = bank->eventq.cons;
-         return MEMTX_OK;
-+    case A_EVENTQ_IRQ_CFG0: /* 64b */
-+        if (!smmu_irq_cfg_present(s, reg_sec_sid, SMMU_IRQ_EVTQ)) {
-+            *data = 0; /* RES0 */
-+            return MEMTX_OK;
-+        }
-+
-+        *data = extract64(bank->eventq_irq_cfg0, 0, 32);
-+        return MEMTX_OK;
-+    case A_EVENTQ_IRQ_CFG0 + 4:
-+        if (!smmu_irq_cfg_present(s, reg_sec_sid, SMMU_IRQ_EVTQ)) {
-+            *data = 0; /* RES0 */
-+            return MEMTX_OK;
-+        }
-+
-+        *data = extract64(bank->eventq_irq_cfg0, 32, 32);
-+        return MEMTX_OK;
-+    case A_EVENTQ_IRQ_CFG1:
-+        if (!smmu_irq_cfg_present(s, reg_sec_sid, SMMU_IRQ_EVTQ)) {
-+            *data = 0; /* RES0 */
-+            return MEMTX_OK;
-+        }
-+
-+        *data = bank->eventq_irq_cfg1;
-+        return MEMTX_OK;
-+    case A_EVENTQ_IRQ_CFG2:
-+        if (!smmu_irq_cfg_present(s, reg_sec_sid, SMMU_IRQ_EVTQ)) {
-+            *data = 0; /* RES0 */
-+            return MEMTX_OK;
-+        }
-+
-+        *data = bank->eventq_irq_cfg2;
-+        return MEMTX_OK;
-     default:
-         *data = 0;
-         qemu_log_mask(LOG_UNIMP,
-@@ -2610,4 +2809,3 @@ static void smmuv3_register_types(void)
- }
+     SMMUState *sys = ARM_SMMU(d);
+@@ -2781,6 +2814,10 @@ static void smmu_realize(DeviceState *d, Error **errp)
+         return;
+     }
  
- type_init(smmuv3_register_types)
--
++    if (!smmuv3_resolve_secure_impl(s, errp)) {
++        return;
++    }
++
+     qemu_mutex_init(&s->mutex);
+ 
+     memory_region_init_io(&sys->iomem, OBJECT(s),
+@@ -2807,6 +2844,54 @@ static const VMStateDescription vmstate_smmuv3_queue = {
+     },
+ };
+ 
++static const VMStateDescription vmstate_smmuv3_secure_bank = {
++    .name = "smmuv3_secure_bank",
++    .version_id = 1,
++    .minimum_version_id = 1,
++    .fields = (const VMStateField[]) {
++        VMSTATE_UINT32(features, SMMUv3RegBank),
++        VMSTATE_UINT8(sid_split, SMMUv3RegBank),
++        VMSTATE_UINT32_ARRAY(cr, SMMUv3RegBank, 3),
++        VMSTATE_UINT32(cr0ack, SMMUv3RegBank),
++        VMSTATE_UINT32(gbpa, SMMUv3RegBank),
++        VMSTATE_UINT32(irq_ctrl, SMMUv3RegBank),
++        VMSTATE_UINT32(gerror, SMMUv3RegBank),
++        VMSTATE_UINT32(gerrorn, SMMUv3RegBank),
++        VMSTATE_UINT64(gerror_irq_cfg0, SMMUv3RegBank),
++        VMSTATE_UINT32(gerror_irq_cfg1, SMMUv3RegBank),
++        VMSTATE_UINT32(gerror_irq_cfg2, SMMUv3RegBank),
++        VMSTATE_UINT64(strtab_base, SMMUv3RegBank),
++        VMSTATE_UINT32(strtab_base_cfg, SMMUv3RegBank),
++        VMSTATE_UINT64(eventq_irq_cfg0, SMMUv3RegBank),
++        VMSTATE_UINT32(eventq_irq_cfg1, SMMUv3RegBank),
++        VMSTATE_UINT32(eventq_irq_cfg2, SMMUv3RegBank),
++        VMSTATE_STRUCT(cmdq, SMMUv3RegBank, 0,
++                       vmstate_smmuv3_queue, SMMUQueue),
++        VMSTATE_STRUCT(eventq, SMMUv3RegBank, 0,
++                       vmstate_smmuv3_queue, SMMUQueue),
++        VMSTATE_END_OF_LIST(),
++    },
++};
++
++static bool smmuv3_secure_bank_needed(void *opaque)
++{
++    SMMUv3State *s = opaque;
++
++    return s->secure_impl == ON_OFF_AUTO_ON;
++}
++
++static const VMStateDescription vmstate_smmuv3_bank_s = {
++    .name = "smmuv3/bank_s",
++    .version_id = 1,
++    .minimum_version_id = 1,
++    .needed = smmuv3_secure_bank_needed,
++    .fields = (const VMStateField[]) {
++        VMSTATE_STRUCT(bank[SMMU_SEC_SID_S], SMMUv3State, 0,
++                       vmstate_smmuv3_secure_bank, SMMUv3RegBank),
++        VMSTATE_END_OF_LIST(),
++    },
++};
++
+ static bool smmuv3_gbpa_needed(void *opaque)
+ {
+     SMMUv3State *s = opaque;
+@@ -2861,6 +2946,7 @@ static const VMStateDescription vmstate_smmuv3 = {
+     },
+     .subsections = (const VMStateDescription * const []) {
+         &vmstate_gbpa,
++        &vmstate_smmuv3_bank_s,
+         NULL
+     }
+ };
+@@ -2893,6 +2979,13 @@ static const Property smmuv3_properties[] = {
+     DEFINE_PROP_SSIDSIZE_MODE("ssidsize", SMMUv3State, ssidsize,
+                               SSID_SIZE_MODE_AUTO),
+     DEFINE_PROP_ON_OFF_AUTO("cmdqv", SMMUv3State, cmdqv, ON_OFF_AUTO_AUTO),
++    /*
++     * SECURE_IMPL field in S_IDR1 register.
++     * Indicates whether secure state is implemented.
++     * Defaults to auto.
++     */
++    DEFINE_PROP_ON_OFF_AUTO("secure-impl", SMMUv3State, secure_impl,
++                            ON_OFF_AUTO_AUTO),
+ };
+ 
+ static void smmuv3_instance_init(Object *obj)
+diff --git a/include/hw/arm/smmuv3.h b/include/hw/arm/smmuv3.h
+index 8cd2edc3412..9b533b9a99b 100644
+--- a/include/hw/arm/smmuv3.h
++++ b/include/hw/arm/smmuv3.h
+@@ -81,6 +81,8 @@ struct SMMUv3State {
+     OnOffAuto ats;
+     OasMode oas;
+     SsidSizeMode ssidsize;
++    OnOffAuto secure_impl;
++
+     /* SMMU CMDQV extension */
+     OnOffAuto cmdqv;
+ 
 -- 
 2.34.1
 

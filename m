@@ -4,63 +4,95 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BE7E6C5B572
-	for <qemu-arm@archiver.kernel.org>; Thu, 13 Aug 2026 16:30:34 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 79A3CC5CFCF
+	for <qemu-arm@archiver.kernel.org>; Thu, 13 Aug 2026 17:01:40 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wuYGt-0004S3-OL; Thu, 13 Aug 2026 12:27:13 -0400
+	id 1wuYoC-0005aj-6w; Thu, 13 Aug 2026 13:01:36 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <tangtao1634@phytium.com.cn>)
- id 1wuYGb-00043S-Fe; Thu, 13 Aug 2026 12:26:54 -0400
-Received: from zg8tmtyylji0my4xnjqumte4.icoremail.net ([162.243.164.118])
- by eggs.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <tangtao1634@phytium.com.cn>)
- id 1wuYGZ-0001QG-Ep; Thu, 13 Aug 2026 12:26:53 -0400
-Received: from prodtpl.icoremail.net (unknown [10.12.1.20])
- by hzbj-icmmx-7 (Coremail) with UTF8SMTP id AQAAfwCnrxtI8H1qNCVvAw--.34509S2; 
- Fri, 14 Aug 2026 00:26:48 +0800 (CST)
-Received: from phytium.com.cn (unknown [218.76.62.144])
- by mail (Coremail) with SMTP id AQAAf8DwoHJE8H1q7ywjAA--.56307S4;
- Fri, 14 Aug 2026 00:26:45 +0800 (CST)
-From: Tao Tang <tangtao1634@phytium.com.cn>
-To: Eric Auger <eric.auger@redhat.com>,
- Peter Maydell <peter.maydell@linaro.org>
-Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org,
- Chen Baozi <chenbaozi@phytium.com.cn>,
- Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@mailo.com>,
- Mostafa Saleh <smostafa@google.com>,
- Chao Liu <chao.liu@processmission.com>,
- Jim MacArthur <jim.macarthur@linaro.org>,
- Tao Tang <tangtao1634@phytium.com.cn>
-Subject: [RFC v5 28/28] [NOT-MERGE] hw/arm/smmuv3: temporarily enable SEL2 bit
- and some other features
-Date: Fri, 14 Aug 2026 00:26:44 +0800
-Message-Id: <20260813162644.2810021-2-tangtao1634@phytium.com.cn>
-X-Mailer: git-send-email 2.34.1
-In-Reply-To: <20260813161515.2788900-1-tangtao1634@phytium.com.cn>
-References: <20260813161515.2788900-1-tangtao1634@phytium.com.cn>
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1wuYoA-0005aQ-VR
+ for qemu-arm@nongnu.org; Thu, 13 Aug 2026 13:01:35 -0400
+Received: from mail-pg1-x532.google.com ([2607:f8b0:4864:20::532])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1wuYo8-00084E-Ua
+ for qemu-arm@nongnu.org; Thu, 13 Aug 2026 13:01:34 -0400
+Received: by mail-pg1-x532.google.com with SMTP id
+ 41be03b00d2f7-c9cf07d2df6so19795a12.2
+ for <qemu-arm@nongnu.org>; Thu, 13 Aug 2026 10:01:32 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1786640491; x=1787245291; darn=nongnu.org;
+ h=content-transfer-encoding:content-type:in-reply-to:content-language
+ :from:references:cc:to:subject:user-agent:mime-version:date
+ :message-id:from:to:cc:subject:date:message-id:reply-to:content-type;
+ bh=DLfpUBMP/6htYTpWi7cMeNlaRu5yNDjLu/vsvmKG3tI=;
+ b=KFN2ElWrmbGIkml/JZS8wyWlta2AkyfGOCggRWUehoBnmjqk6hbOsI/Kfl54hEmixF
+ WaVRb7ftxtohLwPIDpOtTG8fbSB8DJbS+0HbozfE2td90b2Eu4zedcPdBzLQKrtaZXAW
+ +rFDFCaoxoBD+2yCYrP4Mk/i6Khz/XkxSUXsZO5/5wo/wBpCHNQDYUZiAScphLJ2+ebN
+ LsTMtXs5qzHRmQd5ie5wXex8jVf31e8/EIC3B2Ml6+h4/+/7vpmh4hY1whTKQ8d2RLUg
+ 4Do9LSTQyxSpqSnPwQB4g+lDHU6tPoFdupd1CtZd9fb1ExoGdDfnGxK4VWJwNVyCdw9r
+ D/TQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20251104; t=1786640491; x=1787245291;
+ h=content-transfer-encoding:content-type:in-reply-to:content-language
+ :from:references:cc:to:subject:user-agent:mime-version:date
+ :message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+ :message-id:reply-to:content-type;
+ bh=DLfpUBMP/6htYTpWi7cMeNlaRu5yNDjLu/vsvmKG3tI=;
+ b=TCgHGPuevJcrTgYtkrPDVWfY4A/mXU8TlBIJb86cQCUDlLGwP6HN94rP1xAi/tCsyt
+ MoWOK42fWD0haXIqz0Z/R+Rmz7c0m/gxFGeSc2W/MLIGCjs/mGY1MyLr4m9lsw08foE8
+ 7FQK8cAtJ3dcdMJAlYBZAnn4wDINWVb7FaJAPWQWMTutMxTLUqycQwIaB3xnwhAYS9y4
+ 3p3Nt2pSO+fjLQtHDuVdzPinRq7CHnQt5AjOmfhmKQQ/1s8e/MN8focVsnX5seVEQ0gD
+ zfbL3beC5pp82yqxXkZXP1GnqTSVBq3XYck+3znhA8JB0WBC8yWPKSbU70yNPUPaod6W
+ g1Mw==
+X-Forwarded-Encrypted: i=1;
+ AHgh+RoUp41h67z6gsT9sW7LnKFUSFgATZVFm85n4FxJ0iZREE7JmZuixhzdhHC0UTT+c+F8i211VPphwQ==@nongnu.org
+X-Gm-Message-State: AOJu0YxnM2SqrwbEqqN4/e2VBXFScA6cIRT0F9aQ9/GkX9kIdKKUUa40
+ oxtbiKlcgmP9nb3or3teBJOQjTCktzUmPRnlGVhqupSOxj8gFcvZlhJyKl0Uz6IcMe2PIi77NYc
+ PV72r
+X-Gm-Gg: AR+sD10ogej21mN6ojN4X9GdVMoKNrDHly9TjQCtesi/jSBw1JjMhck2JGCEvS1ZV6Y
+ HOBVKUZ/fIRM7jyVnBLzldbzHpYynxAxTTKizwpq/9NI9TqGxSb0rhV/lZ+G6df033wUkarkONc
+ 4cFhKcobGtmFMPs6t6xFok6Xxbdho2aFx9DreFN286cCrAFcZ9qltMmsm2/P2Ro8gD2Selrts3Z
+ IF2pVbL2kJyMJTISse3uT4iModrohAfqfUAfeUHmKdUGeZvwymoqll2poU6P8QY33ePi1PdoMdq
+ qTNFGcVkFgZ2asasAmK3Ym7n/WCq/NvyXRwqEWGErODDc6Zy/RDW45nU5iOWMIrkK/QV8xoGv9c
+ KDlmST0wUnN7ezOW/Fl8JAX+X0Yl1jVGmHzQ68AxoIqWu6fAW0JZftblax2Rw4LCiysLutzwUhx
+ sjMQtkog7cZFcrEYtX/U+k1nrzVgvkqwBBFbFHsNZopW4HrxbQWkMCGlTia/XQRWulkl2y5Md/O
+ GBb8p3zKaRQG5UemGM24COEyfTs
+X-Received: by 2002:a05:6a21:4c85:b0:3c3:9c4e:de3a with SMTP id
+ adf61e73a8af0-3cc54f42b93mr10451913637.6.1786640491153; 
+ Thu, 13 Aug 2026 10:01:31 -0700 (PDT)
+Received: from [192.168.0.4] (174-21-93-59.tukw.qwest.net. [174.21.93.59])
+ by smtp.gmail.com with ESMTPSA id
+ 41be03b00d2f7-cbef7217132sm1385488a12.23.2026.08.13.10.01.30
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Thu, 13 Aug 2026 10:01:30 -0700 (PDT)
+Message-ID: <ce3a48b5-9847-4cc4-a02f-86db497c91ae@linaro.org>
+Date: Thu, 13 Aug 2026 10:01:28 -0700
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-X-CM-TRANSID: AQAAf8DwoHJE8H1q7ywjAA--.56307S4
-X-CM-SenderInfo: pwdqw3tdrrljuu6sx5pwlxzhxfrphubq/1tbiAQAGBWp8yc0HtwABsh
-Authentication-Results: hzbj-icmmx-7; spf=neutral smtp.mail=tangtao163
- 4@phytium.com.cn;
-X-Coremail-Antispam: 1Uk129KBjvJXoW7KFyrCw1fXryxtF13Gr1xZrb_yoW8XryDpa
- 1DAryDKayvkw43Z34UAw4xA3W3Gan5Gr12yr4DWrWrA3WYvr1DJw4vgw1rKryI9rWrAF47
- uF1I9a9Yqr1Fqr7anT9S1TB71UUUUUDqnTZGkaVYY2UrUUUUj1kv1TuYvTs0mT0YCTnIWj
- DUYxn0WfASr-VFAU7a7-sFnT9fnUUIcSsGvfJ3UbIYCTnIWIevJa73UjIFyTuYvj4RJUUU
- UUUUU
-Received-SPF: pass client-ip=162.243.164.118;
- envelope-from=tangtao1634@phytium.com.cn;
- helo=zg8tmtyylji0my4xnjqumte4.icoremail.net
-X-Spam_score_int: -25
-X-Spam_score: -2.6
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 04/17] target/arm: Raise alignment fault for DC_ZVA on
+ Device memory
+To: Peter Maydell <peter.maydell@linaro.org>
+Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org
+References: <20260717232306.378988-1-richard.henderson@linaro.org>
+ <20260717232306.378988-6-richard.henderson@linaro.org>
+ <CAFEAcA9gNvMD5YVTy2Zj51riyY9j+eCurQpH8M-ymb4yaf4-Kw@mail.gmail.com>
+From: Richard Henderson <richard.henderson@linaro.org>
+Content-Language: en-US
+In-Reply-To: <CAFEAcA9gNvMD5YVTy2Zj51riyY9j+eCurQpH8M-ymb4yaf4-Kw@mail.gmail.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=2607:f8b0:4864:20::532;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pg1-x532.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.6 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_LOW=-0.7,
- RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -77,56 +109,55 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Temporarily:
-- enable S_IDR1.SEL2,
-- change AIDR to 0x2 to indicate SMMUv3.2,
-- use smaller SID size and Cmd/Evt queue size.
+On 7/28/26 07:21, Peter Maydell wrote:
+>> +    flags = probe_access_full(env, addr, 0, MMU_DATA_STORE, mmu_idx,
+>> +                              false, &mem, &full, ra);
+> 
+> Is 0 really the right size to pass in here? Looking at
+> probe_access_full(), if you pass in a 0 size then it will
+> call notdirty_write() with a dirtysize parameter of 1,
+> which will then not invalidate or set the VGA/migration
+> dirty bits on the full range of memory we're about to clear.
+> This would be OK if we then went through the slowpath and
+> did a set of byte accesses, but probe_access_full() will
+> clear TLB_NOTDIRTY from the flags it returns to us if it
+> called notdirty_write(), so we will take the fastpath if
+> that was the only flag set.
+> 
+> Maybe probe_access_full(), probe_access_full_mmu() and
+> probe_access_flags() should not call notdirty_write() and
+> clear TLB_NOTDIRTY from the flags they return if the passed
+> in size is 0 ?
+> 
+> The notdirty_write() API also wants the base address of the
+> DC ZVA block (since that's where we will be writing from),
+> not the address from the guest.
+> 
+> (We may be getting away with some of this because of various
+> functions rounding up/down to full page addresses, but none
+> of these functions seem to document that, so we shouldn't
+> rely on it.)
 
-Signed-off-by: Tao Tang <tangtao1634@phytium.com.cn>
----
- hw/arm/smmuv3.c                | 3 ++-
- include/hw/arm/smmuv3-common.h | 6 +++---
- 2 files changed, 5 insertions(+), 4 deletions(-)
+That's exactly what's happening: physical_memory_set_dirty_range takes a range, but then 
+widens it to the surrounding page boundaries as does tb_invalidate_phys_range_fast.
 
-diff --git a/hw/arm/smmuv3.c b/hw/arm/smmuv3.c
-index 8e1de94fd17..19e080b6d25 100644
---- a/hw/arm/smmuv3.c
-+++ b/hw/arm/smmuv3.c
-@@ -350,6 +350,7 @@ static void smmuv3_init_id_regs(SMMUv3State *s)
-                                SMMU_IDR1_SIDSIZE);
-     sbank->idr[1] = FIELD_DP32(sbank->idr[1], S_IDR1, SECURE_IMPL,
-                                s->secure_impl == ON_OFF_AUTO_ON);
-+    sbank->idr[1] = FIELD_DP32(sbank->idr[1], S_IDR1, SEL2, 1);
-     smmuv3_accel_idr_override(s);
- }
- 
-@@ -400,7 +401,7 @@ static void smmuv3_reset(SMMUv3State *s)
-     sbank->gerrorn = 0;
-     sbank->gbpa = SMMU_GBPA_RESET_VAL;
- 
--    s->aidr = 0x1;
-+    s->aidr = 0x2; /* SMMUv3.2 */
-     s->statusr = 0;
- }
- 
-diff --git a/include/hw/arm/smmuv3-common.h b/include/hw/arm/smmuv3-common.h
-index ec442a85586..1afaece3df7 100644
---- a/include/hw/arm/smmuv3-common.h
-+++ b/include/hw/arm/smmuv3-common.h
-@@ -311,9 +311,9 @@ REG32(IDR1,                0x4)
-     FIELD(IDR1, TABLES_PRESET, 30, 1)
-     FIELD(IDR1, ECMDQ,        31, 1)
- 
--#define SMMU_IDR1_SIDSIZE 16
--#define SMMU_CMDQS   19
--#define SMMU_EVENTQS 19
-+#define SMMU_IDR1_SIDSIZE 6
-+#define SMMU_CMDQS   10
-+#define SMMU_EVENTQS 10
- 
- REG32(IDR2,                0x8)
-      FIELD(IDR2, BA_VATOS, 0, 10)
--- 
-2.34.1
+I'm certainly open to rearranging the (entire) API here, but it's not immediately clear 
+what form that should take.
 
+Perhaps instead of the (addr, size) pair, we should have (addr, first, last) triple, where
+
+     first <= addr <= last
+
+Normally, addr == first.  But for these cases like DC_ZVA, addr would be what is reported 
+to when faulting, but the surrounding [first, last] would be used for 
+watchpoints/notdirty, etc.  With this api, the rather confusing size == 0 is not a thing.
+
+Hmm, if we remove size, what to do when passing size down to tlb_fill?  Do we need to 
+expand that API too for the benefit of the range-based protection mechanisms (Arm PMSA, 
+RISC-V PMP).
+
+Thoughts?
+
+
+r~
 

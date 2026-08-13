@@ -4,26 +4,26 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 98687C5CFCF
-	for <qemu-arm@archiver.kernel.org>; Thu, 13 Aug 2026 16:26:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0F136C5CFCF
+	for <qemu-arm@archiver.kernel.org>; Thu, 13 Aug 2026 16:26:49 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wuYEC-0007y0-Hp; Thu, 13 Aug 2026 12:24:24 -0400
+	id 1wuYEn-0000Fg-RQ; Thu, 13 Aug 2026 12:25:01 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <tangtao1634@phytium.com.cn>)
- id 1wuYEA-0007um-Qb; Thu, 13 Aug 2026 12:24:22 -0400
+ id 1wuYEk-00007A-4u; Thu, 13 Aug 2026 12:24:59 -0400
 Received: from zg8tmtyylji0my4xnjqumte4.icoremail.net ([162.243.164.118])
  by eggs.gnu.org with esmtp (Exim 4.90_1)
  (envelope-from <tangtao1634@phytium.com.cn>)
- id 1wuYE8-0000Ww-RF; Thu, 13 Aug 2026 12:24:22 -0400
+ id 1wuYEg-0000gv-8B; Thu, 13 Aug 2026 12:24:57 -0400
 Received: from prodtpl.icoremail.net (unknown [10.12.1.20])
- by hzbj-icmmx-7 (Coremail) with UTF8SMTP id AQAAfwCXn3uy731qExtvAw--.34194S2; 
- Fri, 14 Aug 2026 00:24:18 +0800 (CST)
+ by hzbj-icmmx-7 (Coremail) with UTF8SMTP id AQAAfwCXK1DT731qQh5vAw--.15404S2; 
+ Fri, 14 Aug 2026 00:24:51 +0800 (CST)
 Received: from phytium.com.cn (unknown [218.76.62.144])
- by mail (Coremail) with SMTP id AQAAf8DwjnOq731q3SwjAA--.59176S6;
- Fri, 14 Aug 2026 00:24:15 +0800 (CST)
+ by mail (Coremail) with SMTP id AQAAf8DwF3PO731q3ywjAA--.59573S5;
+ Fri, 14 Aug 2026 00:24:48 +0800 (CST)
 From: Tao Tang <tangtao1634@phytium.com.cn>
 To: Eric Auger <eric.auger@redhat.com>,
  Peter Maydell <peter.maydell@linaro.org>
@@ -35,21 +35,22 @@ Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org,
  Chao Liu <chao.liu@processmission.com>,
  Jim MacArthur <jim.macarthur@linaro.org>,
  Tao Tang <tangtao1634@phytium.com.cn>
-Subject: [RFC v5 04/28] hw/arm/smmuv3: Track SEC_SID in configs and events
-Date: Fri, 14 Aug 2026 00:24:09 +0800
-Message-Id: <20260813162410.2805113-4-tangtao1634@phytium.com.cn>
+Subject: [RFC v5 08/28] hw/arm/smmu-common: Key configuration cache on
+ SMMUDevice and SEC_SID
+Date: Fri, 14 Aug 2026 00:24:44 +0800
+Message-Id: <20260813162446.2806393-3-tangtao1634@phytium.com.cn>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20260813161515.2788900-1-tangtao1634@phytium.com.cn>
 References: <20260813161515.2788900-1-tangtao1634@phytium.com.cn>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-CM-TRANSID: AQAAf8DwjnOq731q3SwjAA--.59176S6
-X-CM-SenderInfo: pwdqw3tdrrljuu6sx5pwlxzhxfrphubq/1tbiAQAGBWp8yc0HkgAAsF
+X-CM-TRANSID: AQAAf8DwF3PO731q3ywjAA--.59573S5
+X-CM-SenderInfo: pwdqw3tdrrljuu6sx5pwlxzhxfrphubq/1tbiAQAGBWp8yc0HmQAAsO
 Authentication-Results: hzbj-icmmx-7; spf=neutral smtp.mail=tangtao163
  4@phytium.com.cn;
-X-Coremail-Antispam: 1Uk129KBjvJXoW3GF45JFW3AF4rtryUtryrJFb_yoW3GrW5pr
- 1DGrn8Kr1DtF1fZF13Xa18A3W3Xw18KrnxtryqgFyrAw4DAry7XF4DGw1Ykr909rWjv3y2
- vayIgF45ury7A3DanT9S1TB71UUUUUDqnTZGkaVYY2UrUUUUj1kv1TuYvTs0mT0YCTnIWj
+X-Coremail-Antispam: 1Uk129KBjvJXoWxtFWUZr1UCF1xJFW3urWUtwb_yoWxZw4xpr
+ W8JF98Gr4UGF1fCFs3XFWxu3Z8Wwn2gF1fGryagr9YyFyqyry8AF4DK3yYk3s7CrWkJF47
+ ZayxWFyUCr1xAaDanT9S1TB71UUUUUDqnTZGkaVYY2UrUUUUj1kv1TuYvTs0mT0YCTnIWj
  DUYxn0WfASr-VFAU7a7-sFnT9fnUUIcSsGvfJ3UbIYCTnIWIevJa73UjIFyTuYvj4RJUUU
  UUUUU
 Received-SPF: pass client-ip=162.243.164.118;
@@ -76,180 +77,179 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Pass the SEC_SID explicitly to smmuv3_decode_config() so configuration
-decoding can be tied to the correct register bank.
+Adapt the configuration cache to distinguish entries decoded through
+different SEC_SID-selected programming interfaces by introducing a
+composite SMMUConfigKey. The key combines SMMUDevice with SEC_SID,
+preventing Secure and Non-secure configuration entries from aliasing in
+the cache and leaving the key extensible for a future Realm SEC_SID
+namespace.
 
-Plumb the SEC_SID through tracepoints and queue helpers so diagnostics
-and event logs always show which security interface emitted the record.
-To support this, the SEC_SID is placed in SMMUEventInfo so the bank is
-identified as soon as an event record is built.
+The cache lookup, insertion, and invalidation mechanisms are updated to
+use this new keying infrastructure.
 
 Signed-off-by: Tao Tang <tangtao1634@phytium.com.cn>
 Reviewed-by: Eric Auger <eric.auger@redhat.com>
 Reviewed-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
+Link: https://lore.kernel.org/qemu-devel/a9a840a6-c65f-4352-9a49-ddd1b5483f43@redhat.com/
 ---
- hw/arm/smmuv3-accel.c    |  2 +-
- hw/arm/smmuv3-internal.h |  3 ++-
- hw/arm/smmuv3.c          | 26 +++++++++++++++-----------
- hw/arm/trace-events      |  2 +-
- include/hw/arm/smmuv3.h  |  1 +
- 5 files changed, 20 insertions(+), 14 deletions(-)
+ hw/arm/smmu-common.c         | 45 ++++++++++++++++++++++++++++++++++--
+ hw/arm/smmuv3.c              | 12 ++++++----
+ include/hw/arm/smmu-common.h |  7 ++++++
+ 3 files changed, 57 insertions(+), 7 deletions(-)
 
-diff --git a/hw/arm/smmuv3-accel.c b/hw/arm/smmuv3-accel.c
-index fa079c8acea..2ce94786829 100644
---- a/hw/arm/smmuv3-accel.c
-+++ b/hw/arm/smmuv3-accel.c
-@@ -509,7 +509,7 @@ static void smmuv3_accel_event_read(void *opaque)
-     if (ret > 0) {
-         return; /* EAGAIN/EINTR */
-     }
--    smmuv3_propagate_event(s, (Evt *)&buf.vevent);
-+    smmuv3_propagate_event(s, (Evt *)&buf.vevent, SMMU_SEC_SID_NS);
+diff --git a/hw/arm/smmu-common.c b/hw/arm/smmu-common.c
+index 89e1e2826d4..63c36329a98 100644
+--- a/hw/arm/smmu-common.c
++++ b/hw/arm/smmu-common.c
+@@ -30,6 +30,26 @@
+ #include "hw/arm/smmu-common.h"
+ #include "smmu-internal.h"
+ 
++/* Configuration Cache Management */
++static guint smmu_config_key_hash(gconstpointer key)
++{
++    const SMMUConfigKey *k = key;
++    return g_direct_hash(k->sdev) ^ (guint)k->sec_sid;
++}
++
++static gboolean smmu_config_key_equal(gconstpointer a, gconstpointer b)
++{
++    const SMMUConfigKey *ka = a;
++    const SMMUConfigKey *kb = b;
++    return ka->sdev == kb->sdev && ka->sec_sid == kb->sec_sid;
++}
++
++SMMUConfigKey smmu_get_config_key(SMMUDevice *sdev, SMMUSecSID sec_sid)
++{
++    SMMUConfigKey key = {.sdev = sdev, .sec_sid = sec_sid};
++    return key;
++}
++
+ ARMSecuritySpace smmu_get_security_space(SMMUSecSID sec_sid)
+ {
+     switch (sec_sid) {
+@@ -265,7 +285,8 @@ static gboolean smmu_hash_remove_by_vmid_ipa(gpointer key, gpointer value,
+ static gboolean
+ smmu_hash_remove_by_sid_range(gpointer key, gpointer value, gpointer user_data)
+ {
+-    SMMUDevice *sdev = (SMMUDevice *)key;
++    SMMUConfigKey *config_key = (SMMUConfigKey *)key;
++    SMMUDevice *sdev = config_key->sdev;
+     uint32_t sid = smmu_get_sid(sdev);
+     SMMUSIDRange *sid_range = (SMMUSIDRange *)user_data;
+ 
+@@ -283,6 +304,24 @@ void smmu_configs_inv_sid_range(SMMUState *s, SMMUSIDRange sid_range)
+                                 &sid_range);
  }
  
- static void smmuv3_accel_free_veventq(SMMUv3AccelState *accel)
-diff --git a/hw/arm/smmuv3-internal.h b/hw/arm/smmuv3-internal.h
-index a88743ba9cd..202cd533636 100644
---- a/hw/arm/smmuv3-internal.h
-+++ b/hw/arm/smmuv3-internal.h
-@@ -274,6 +274,7 @@ static inline const char *smmu_event_string(SMMUEventType type)
- 
- /*  Encode an event record */
- typedef struct SMMUEventInfo {
-+    SMMUSecSID sec_sid;
-     SMMUEventType type;
-     uint32_t sid;
-     bool recorded;
-@@ -365,7 +366,7 @@ typedef struct SMMUEventInfo {
- #define EVT_GET_SID(x)   ((x)->word[1])
- 
- void smmuv3_record_event(SMMUv3State *s, SMMUEventInfo *event);
--void smmuv3_propagate_event(SMMUv3State *s, Evt *evt);
-+void smmuv3_propagate_event(SMMUv3State *s, Evt *evt, SMMUSecSID sec_sid);
- int smmu_find_ste(SMMUv3State *s, uint32_t sid, STE *ste, SMMUEventInfo *event);
- 
- #define STE_SIZE 6
++static gboolean smmu_hash_remove_by_sdev(gpointer key, gpointer value,
++                                         gpointer user_data)
++{
++    SMMUConfigKey *config_key = (SMMUConfigKey *)key;
++    SMMUDevice *target = (SMMUDevice *)user_data;
++
++    if (config_key->sdev != target) {
++        return false;
++    }
++    trace_smmu_config_cache_inv(smmu_get_sid(target));
++    return true;
++}
++
++void smmu_configs_inv_sdev(SMMUState *s, SMMUDevice *sdev)
++{
++    g_hash_table_foreach_remove(s->configs, smmu_hash_remove_by_sdev, sdev);
++}
++
+ void smmu_iotlb_inv_iova(SMMUState *s, int asid, int vmid, dma_addr_t iova,
+                          uint8_t tg, uint64_t num_pages, uint8_t ttl)
+ {
+@@ -979,7 +1018,9 @@ static void smmu_base_realize(DeviceState *dev, Error **errp)
+         error_propagate(errp, local_err);
+         return;
+     }
+-    s->configs = g_hash_table_new_full(NULL, NULL, NULL, g_free);
++    s->configs = g_hash_table_new_full(smmu_config_key_hash,
++                                       smmu_config_key_equal,
++                                       g_free, g_free);
+     s->iotlb = g_hash_table_new_full(smmu_iotlb_key_hash, smmu_iotlb_key_equal,
+                                      g_free, g_free);
+     s->smmu_pcibus_by_busptr = g_hash_table_new(NULL, NULL);
 diff --git a/hw/arm/smmuv3.c b/hw/arm/smmuv3.c
-index 51e970d710a..649050b9347 100644
+index 3ff2f498a3b..a01175cc672 100644
 --- a/hw/arm/smmuv3.c
 +++ b/hw/arm/smmuv3.c
-@@ -149,9 +149,9 @@ static MemTxResult queue_write(SMMUQueue *q, Evt *evt_in)
-     return MEMTX_OK;
- }
- 
--static MemTxResult smmuv3_write_eventq(SMMUv3State *s, Evt *evt)
-+static MemTxResult smmuv3_write_eventq(SMMUv3State *s, SMMUSecSID sec_sid,
-+                                       Evt *evt)
- {
--    SMMUSecSID sec_sid = SMMU_SEC_SID_NS;
-     SMMUv3RegBank *bank = smmuv3_bank(s, sec_sid);
-     SMMUQueue *q = &bank->eventq;
-     MemTxResult r;
-@@ -175,14 +175,14 @@ static MemTxResult smmuv3_write_eventq(SMMUv3State *s, Evt *evt)
-     return MEMTX_OK;
- }
- 
--void smmuv3_propagate_event(SMMUv3State *s, Evt *evt)
-+void smmuv3_propagate_event(SMMUv3State *s, Evt *evt, SMMUSecSID sec_sid)
- {
-     MemTxResult r;
- 
--    trace_smmuv3_propagate_event(smmu_event_string(EVT_GET_TYPE(evt)),
-+    trace_smmuv3_propagate_event(sec_sid, smmu_event_string(EVT_GET_TYPE(evt)),
-                                  EVT_GET_SID(evt));
-     QEMU_LOCK_GUARD(&s->mutex);
--    r = smmuv3_write_eventq(s, evt);
-+    r = smmuv3_write_eventq(s, sec_sid, evt);
-     if (r != MEMTX_OK) {
-         smmuv3_trigger_irq(s, SMMU_IRQ_GERROR, R_GERROR_EVENTQ_ABT_ERR_MASK);
-     }
-@@ -191,7 +191,7 @@ void smmuv3_propagate_event(SMMUv3State *s, Evt *evt)
- void smmuv3_record_event(SMMUv3State *s, SMMUEventInfo *info)
- {
-     Evt evt = {};
--    SMMUSecSID sec_sid = SMMU_SEC_SID_NS;
-+    SMMUSecSID sec_sid = info->sec_sid;
- 
-     if (!smmuv3_eventq_enabled(s, sec_sid)) {
-         return;
-@@ -271,7 +271,7 @@ void smmuv3_record_event(SMMUv3State *s, SMMUEventInfo *info)
-         g_assert_not_reached();
-     }
- 
--    smmuv3_propagate_event(s, &evt);
-+    smmuv3_propagate_event(s, &evt, sec_sid);
-     info->recorded = true;
- }
- 
-@@ -886,12 +886,13 @@ bad_cd:
-  * @cfg: output translation configuration which is populated through
-  *       the different configuration decoding steps
-  * @event: must be zero'ed by the caller
-+ * @sec_sid: StreamID Security state
+@@ -952,7 +952,7 @@ static int smmuv3_decode_config(IOMMUMemoryRegion *mr, SMMUTransCfg *cfg,
   *
-  * return < 0 in case of config decoding error (@event is filled
-  * accordingly). Return 0 otherwise.
+  * The configuration cache contains data resulting from both STE and CD
+  * decoding under the form of an SMMUTransCfg struct. The hash table is indexed
+- * by the SMMUDevice handle.
++ * by a composite key of the SMMUDevice and the sec_sid.
   */
- static int smmuv3_decode_config(IOMMUMemoryRegion *mr, SMMUTransCfg *cfg,
--                                SMMUEventInfo *event)
-+                                SMMUEventInfo *event, SMMUSecSID sec_sid)
- {
-     SMMUDevice *sdev = container_of(mr, SMMUDevice, iommu);
-     uint32_t sid = smmu_get_sid(sdev);
-@@ -958,7 +959,7 @@ static SMMUTransCfg *smmuv3_get_config(SMMUDevice *sdev, SMMUEventInfo *event)
-                             (sdev->cfg_cache_hits + sdev->cfg_cache_misses));
+ static SMMUTransCfg *smmuv3_get_config(SMMUDevice *sdev, SMMUEventInfo *event,
+                                        SMMUSecSID sec_sid)
+@@ -960,8 +960,9 @@ static SMMUTransCfg *smmuv3_get_config(SMMUDevice *sdev, SMMUEventInfo *event,
+     SMMUv3State *s = sdev->smmu;
+     SMMUState *bc = &s->smmu_state;
+     SMMUTransCfg *cfg;
++    SMMUConfigKey lookup_key = smmu_get_config_key(sdev, sec_sid);
+ 
+-    cfg = g_hash_table_lookup(bc->configs, sdev);
++    cfg = g_hash_table_lookup(bc->configs, &lookup_key);
+     if (cfg) {
+         sdev->cfg_cache_hits++;
+         trace_smmuv3_config_cache_hit(smmu_get_sid(sdev),
+@@ -977,7 +978,9 @@ static SMMUTransCfg *smmuv3_get_config(SMMUDevice *sdev, SMMUEventInfo *event,
          cfg = g_new0(SMMUTransCfg, 1);
  
--        if (!smmuv3_decode_config(&sdev->iommu, cfg, event)) {
-+        if (!smmuv3_decode_config(&sdev->iommu, cfg, event, SMMU_SEC_SID_NS)) {
-             g_hash_table_insert(bc->configs, sdev, cfg);
+         if (!smmuv3_decode_config(&sdev->iommu, cfg, event, sec_sid)) {
+-            g_hash_table_insert(bc->configs, sdev, cfg);
++            SMMUConfigKey *persistent_key = g_new(SMMUConfigKey, 1);
++            *persistent_key = lookup_key;
++            g_hash_table_insert(bc->configs, persistent_key, cfg);
          } else {
              g_free(cfg);
-@@ -1114,7 +1115,8 @@ static IOMMUTLBEntry smmuv3_translate(IOMMUMemoryRegion *mr, hwaddr addr,
-     SMMUv3RegBank *bank = smmuv3_bank(s, sec_sid);
-     SMMUEventInfo event = {.type = SMMU_EVT_NONE,
-                            .sid = sid,
--                           .inval_ste_allowed = false};
-+                           .inval_ste_allowed = false,
-+                           .sec_sid = sec_sid};
-     SMMUTranslationStatus status;
-     SMMUTransCfg *cfg = NULL;
-     IOMMUTLBEntry entry = {
-@@ -1216,7 +1218,9 @@ static void smmuv3_notify_iova(IOMMUMemoryRegion *mr,
-                                uint64_t num_pages, int stage)
- {
-     SMMUDevice *sdev = container_of(mr, SMMUDevice, iommu);
--    SMMUEventInfo eventinfo = {.inval_ste_allowed = true};
-+    SMMUSecSID sec_sid = SMMU_SEC_SID_NS;
-+    SMMUEventInfo eventinfo = {.sec_sid = sec_sid,
-+                               .inval_ste_allowed = true};
-     SMMUTransCfg *cfg = smmuv3_get_config(sdev, &eventinfo);
-     IOMMUTLBEvent event;
-     uint8_t granule;
-diff --git a/hw/arm/trace-events b/hw/arm/trace-events
-index 1b16f710fed..a166b79c8ef 100644
---- a/hw/arm/trace-events
-+++ b/hw/arm/trace-events
-@@ -41,7 +41,7 @@ smmuv3_cmdq_opcode(const char *opcode) "<--- %s"
- smmuv3_cmdq_consume_out(uint32_t prod, uint32_t cons, uint8_t prod_wrap, uint8_t cons_wrap) "prod:%d, cons:%d, prod_wrap:%d, cons_wrap:%d "
- smmuv3_cmdq_consume_error(const char *cmd_name, uint8_t cmd_error) "Error on %s command execution: %d"
- smmuv3_write_mmio(uint64_t addr, uint64_t val, unsigned size, uint32_t r) "addr: 0x%"PRIx64" val:0x%"PRIx64" size: 0x%x(%d)"
--smmuv3_propagate_event(const char *type, uint32_t sid) "%s sid=0x%x"
-+smmuv3_propagate_event(int sec_sid, const char *type, uint32_t sid) "sec_sid=%d %s sid=0x%x"
- smmuv3_find_ste(uint16_t sid, uint32_t features, uint16_t sid_split) "sid=0x%x features:0x%x, sid_split:0x%x"
- smmuv3_find_ste_2lvl(uint64_t strtab_base, uint64_t l1ptr, int l1_ste_offset, uint64_t l2ptr, int l2_ste_offset, int max_l2_ste) "strtab_base:0x%"PRIx64" l1ptr:0x%"PRIx64" l1_off:0x%x, l2ptr:0x%"PRIx64" l2_off:0x%x max_l2_ste:%d"
- smmuv3_get_ste(uint64_t addr) "STE addr: 0x%"PRIx64
-diff --git a/include/hw/arm/smmuv3.h b/include/hw/arm/smmuv3.h
-index 45033d26a1b..8cd2edc3412 100644
---- a/include/hw/arm/smmuv3.h
-+++ b/include/hw/arm/smmuv3.h
-@@ -115,6 +115,7 @@ OBJECT_DECLARE_TYPE(SMMUv3State, SMMUv3Class, ARM_SMMUV3)
+             cfg = NULL;
+@@ -991,8 +994,7 @@ static void smmuv3_flush_config(SMMUDevice *sdev)
+     SMMUv3State *s = sdev->smmu;
+     SMMUState *bc = &s->smmu_state;
  
- static inline SMMUv3RegBank *smmuv3_bank(SMMUv3State *s, SMMUSecSID sec_sid)
- {
-+    g_assert(sec_sid < SMMU_SEC_SID_NUM);
-     return &s->bank[sec_sid];
+-    trace_smmu_config_cache_inv(smmu_get_sid(sdev));
+-    g_hash_table_remove(bc->configs, sdev);
++    smmu_configs_inv_sdev(bc, sdev);
  }
+ 
+ /* Do translation with TLB lookup. */
+diff --git a/include/hw/arm/smmu-common.h b/include/hw/arm/smmu-common.h
+index a31ffcf6e71..bd83648b14c 100644
+--- a/include/hw/arm/smmu-common.h
++++ b/include/hw/arm/smmu-common.h
+@@ -153,6 +153,11 @@ typedef struct SMMUIOTLBKey {
+     uint8_t level;
+ } SMMUIOTLBKey;
+ 
++typedef struct SMMUConfigKey {
++    SMMUDevice *sdev;
++    SMMUSecSID sec_sid;
++} SMMUConfigKey;
++
+ typedef struct SMMUSIDRange {
+     uint32_t start;
+     uint32_t end;
+@@ -247,6 +252,7 @@ SMMUTLBEntry *smmu_iotlb_lookup(SMMUState *bs, SMMUTransCfg *cfg,
+ void smmu_iotlb_insert(SMMUState *bs, SMMUTransCfg *cfg, SMMUTLBEntry *entry);
+ SMMUIOTLBKey smmu_get_iotlb_key(int asid, int vmid, uint64_t iova,
+                                 uint8_t tg, uint8_t level);
++SMMUConfigKey smmu_get_config_key(SMMUDevice *sdev, SMMUSecSID sec_sid);
+ void smmu_iotlb_inv_all(SMMUState *s);
+ void smmu_iotlb_inv_asid_vmid(SMMUState *s, int asid, int vmid);
+ void smmu_iotlb_inv_vmid(SMMUState *s, int vmid);
+@@ -256,6 +262,7 @@ void smmu_iotlb_inv_iova(SMMUState *s, int asid, int vmid, dma_addr_t iova,
+ void smmu_iotlb_inv_ipa(SMMUState *s, int vmid, dma_addr_t ipa, uint8_t tg,
+                         uint64_t num_pages, uint8_t ttl);
+ void smmu_configs_inv_sid_range(SMMUState *s, SMMUSIDRange sid_range);
++void smmu_configs_inv_sdev(SMMUState *s, SMMUDevice *sdev);
+ /* Unmap the range of all the notifiers registered to any IOMMU mr */
+ void smmu_inv_notifiers_all(SMMUState *s);
  
 -- 
 2.34.1

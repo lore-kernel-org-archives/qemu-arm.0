@@ -4,112 +4,106 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C7CC7C5B572
-	for <qemu-arm@archiver.kernel.org>; Thu, 13 Aug 2026 19:33:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 43712C5CFDB
+	for <qemu-arm@archiver.kernel.org>; Thu, 13 Aug 2026 21:10:47 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wub9A-0000dw-EJ; Thu, 13 Aug 2026 15:31:24 -0400
+	id 1wuchD-0006bk-MH; Thu, 13 Aug 2026 17:10:41 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mikail.sadic@ibm.com>)
- id 1wub8z-0000cH-T1; Thu, 13 Aug 2026 15:31:14 -0400
-Received: from mx0a-001b2d01.pphosted.com ([148.163.156.1])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mikail.sadic@ibm.com>)
- id 1wub8v-0005Xx-M2; Thu, 13 Aug 2026 15:31:13 -0400
-Received: from pps.filterd (m0356517.ppops.net [127.0.0.1])
- by mx0a-001b2d01.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id
- 67DJ1r8h3196821; Thu, 13 Aug 2026 19:30:45 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ibm.com; h=cc
- :content-transfer-encoding:content-type:date:from:message-id
- :mime-version:subject:to; s=pp1; bh=9fODObWcFE14fibxmNzKyyhroPXV
- r1R2ScZ45cHVC+Q=; b=HjHfyOYN9d5QiNICJQ63j+waV+Ystg3UgVZJgrZRwqgT
- DSOngDTYrooY+RziKsqDfpOd23vS1s0Q2PleS7y6CTOs70J6sRq/EyhFnFWYML9L
- DDQVWvgXJbcbYVqmV6rqrl1V4S+CTuxjDyQQWFOeOvP7m1XPZmiAlB1aWSZQWUuu
- nKoTuWUfCCFYY5srz3j/HtGEq5PcUI0fvmdlWSpq0x4urBKcO7ZPTEFw1/xZLl9G
- 60vMa8a9qbIj6DoIWl3fWhNsRjb59APcRvPncgh6pm3JlvhQGqdhn+0MlbKkpW+6
- va+ZE9uVus3IEf6+M4JGBBZa+NyPxE+yJPQEzy+F2Q==
-Received: from ppma12.dal12v.mail.ibm.com
- (dc.9e.1632.ip4.static.sl-reverse.com [50.22.158.220])
- by mx0a-001b2d01.pphosted.com (PPS) with ESMTPS id 4fwvma1q13-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Thu, 13 Aug 2026 19:30:45 +0000 (GMT)
-Received: from pps.filterd (ppma12.dal12v.mail.ibm.com [127.0.0.1])
- by ppma12.dal12v.mail.ibm.com (8.18.1.7/8.18.1.7) with ESMTP id 67DJQPnV012627;
- Thu, 13 Aug 2026 19:30:44 GMT
-Received: from smtprelay01.wdc07v.mail.ibm.com ([172.16.1.68])
- by ppma12.dal12v.mail.ibm.com (PPS) with ESMTPS id 4fxesqcjk9-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Thu, 13 Aug 2026 19:30:44 +0000 (GMT)
-Received: from smtpav02.wdc07v.mail.ibm.com (smtpav02.wdc07v.mail.ibm.com
- [10.39.53.229])
- by smtprelay01.wdc07v.mail.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id
- 67DJUg0n54395150
- (version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Thu, 13 Aug 2026 19:30:42 GMT
-Received: from smtpav02.wdc07v.mail.ibm.com (unknown [127.0.0.1])
- by IMSVA (Postfix) with ESMTP id 591235805B;
- Thu, 13 Aug 2026 19:30:42 +0000 (GMT)
-Received: from smtpav02.wdc07v.mail.ibm.com (unknown [127.0.0.1])
- by IMSVA (Postfix) with ESMTP id 8CE1258060;
- Thu, 13 Aug 2026 19:30:41 +0000 (GMT)
-Received: from IBM-MFS.atx-us.ibm.com (unknown [9.16.49.87])
- by smtpav02.wdc07v.mail.ibm.com (Postfix) with ESMTP;
- Thu, 13 Aug 2026 19:30:41 +0000 (GMT)
-From: Mikail Sadic <mikail.sadic@ibm.com>
-To: clg@kaod.org, peter.maydell@linaro.org
-Cc: Mikail Sadic <mikail.sadic@ibm.com>, pbonzini@redhat.com,
- ninad@linux.ibm.com, titusr@google.com, jeuk20.kim@samsung.com,
- philmd@mailo.com, steven_lee@aspeedtech.com, leetroy@gmail.com,
- jamin_lin@aspeedtech.com, kane_chen@aspeedtech.com,
- andrew@codeconstruct.com.au, joel@jms.id.au, calebs@linux.ibm.com,
- milesg@linux.ibm.com, qemu-arm@nongnu.org, qemu-devel@nongnu.org
-Subject: [PATCH v4 0/7] Add IBM Huygens BMC machine for AST2700
-Date: Thu, 13 Aug 2026 14:30:32 -0500
-Message-ID: <20260813193040.669533-1-mikail.sadic@ibm.com>
-X-Mailer: git-send-email 2.53.0
+ (Exim 4.90_1) (envelope-from <nieklinnenbank@gmail.com>)
+ id 1wuchC-0006b7-Gn
+ for qemu-arm@nongnu.org; Thu, 13 Aug 2026 17:10:38 -0400
+Received: from mail-oo1-xc2e.google.com ([2607:f8b0:4864:20::c2e])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <nieklinnenbank@gmail.com>)
+ id 1wuchA-0007x1-HJ
+ for qemu-arm@nongnu.org; Thu, 13 Aug 2026 17:10:38 -0400
+Received: by mail-oo1-xc2e.google.com with SMTP id
+ 006d021491bc7-6aea94f96c4so263759eaf.2
+ for <qemu-arm@nongnu.org>; Thu, 13 Aug 2026 14:10:35 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1786655435; cv=none;
+ d=google.com; s=arc-20260327;
+ b=VInJcFCH9lxjbg7kidSs+gJAjrCbfxJpaTHj+H++GNP5CwdGc5UAJvln2oRQZPIyGA
+ 5J3cgK7y1moQN7ipBLOA6PcGRt1f6LHAWi3/LttmzsEwkmCE3mIlZG7oWA1WiuFdQTPV
+ qBbfrHhTUF7y2dXoLiUK3no88YOoxzDk98Uo5t31PnQ/0wDeI1bBcatAnmBqU86ygH8V
+ ZeUNOT/QKkuX6x4BkeqbfmDiCU1o1YxSiPQbFlqlYLEER1Jw1u2FdoFgA8aClvQsosKg
+ z5Yy2DfNkSjZ2mPaIDeYKF8GVE16a8kCqHBSF7VtTxjIhVyfrfWtRt0yoLH0bK0NGzkN
+ jFmA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
+ s=arc-20260327; 
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:dkim-signature;
+ bh=f56CoFxFguticBzD2aaadsF5hA52TrO6cNg9NRRTkBw=;
+ fh=5cnTeUERQlkPIHs/23eL05ogKCjeVNFOHoyzDntxoqI=;
+ b=ptKKD0O/0P5PtSyscJbNVgByXT3pC8ypKYo3mKCySDZxuJCLzCjhYzAXMzmUYNnpoO
+ lUBoMtb3PHMhVB1uD6IqDsRqyF19iNfSeKVk2C6HGcPb15cvL1Yqh96whWLNyLXwGHyb
+ 6UQxvK2cizFDE6M5lL2vute2cYA7QXBvE9zi0GgmxnY8Vx9WX07Som//TLkA1Je1zBjR
+ RIzmT67ZZ+0QejXFrfgQzRKcDNqj+LmjKGOUo/M/+34mNNQ2E9jHHgUCyoQyQ9dQESKe
+ jPiyQbF0JUCRcbDKEXyfBAKaITm2UFfjdG1oPIS7TUIMpp5k0IfFkVUgBZ4SvDn1mR/6
+ xy4w==; darn=nongnu.org
+ARC-Authentication-Results: i=1; mx.google.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=gmail.com; s=20251104; t=1786655435; x=1787260235; darn=nongnu.org;
+ h=content-type:cc:to:subject:message-id:date:from:in-reply-to
+ :references:mime-version:from:to:cc:subject:date:message-id:reply-to
+ :content-type; bh=f56CoFxFguticBzD2aaadsF5hA52TrO6cNg9NRRTkBw=;
+ b=QIDAyOV8xBZd64D5lT5e/y0RboNXl3XQgpJ64VtPoHWDyaTHBvrfLc3+D/ZXMzMS4v
+ aTxYxnj5Eh4wMMuW/lkXHCh1uGzuA08GvdeJZVprJuuWSknpu6r+G4KxIw0iqAJoACqx
+ hSLq2m1uNAVkWAH/FBVVajfJEDpFO2uTMxS8qyO7pMFMdI1HHfxhFlAYPRfMbKr0/w5k
+ bkxoSLDCgKxI7i5aULHo+pX8UHYJRAHllX3v0CgkkKZqOlgqKfbrrXGgs7Bs7RyeKLOx
+ a2LqV+gvvN6iikvM7ZHLuDrybLNOCORRFrCUDMuQPuuBMGC08AtDy/zzVD22QmLT2vMi
+ QzlQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20251104; t=1786655435; x=1787260235;
+ h=content-type:cc:to:subject:message-id:date:from:in-reply-to
+ :references:mime-version:x-gm-gg:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to:content-type;
+ bh=f56CoFxFguticBzD2aaadsF5hA52TrO6cNg9NRRTkBw=;
+ b=BhbOTeJUaJZTP+fssfumrNbnwLrrtAszfMsXf3xDjJ/4txdMVlC+vpG5fmAXSsOcKW
+ pLUpgsu3EiDJkxzUODxIuVauY52BYREvQIdABjLz2+Mhvo/1HT21M+pEZAftwVq7ogwI
+ BsebK9jZXJ/ke45cjPHI9M0zj32FFAt8TSsqUDv/DQxRVc1rHKWsy7AZ1UReDdtfzKCO
+ /Ed+Uiyt7BimDhNJcdTxDTvp2dYgun9bedjDB+JgsBGF9uKQnqaH6wkUU1lL99kijHSl
+ zVJKSEBcx+ru0Vt7cUf9FCgiyaOZNEdSPYEX0mTpaQ46TmPgfoxdwiUH8UEr/2Otl0dO
+ XtvQ==
+X-Forwarded-Encrypted: i=1;
+ AHgh+RoVYpFZoSNaZ7BDFQ7hzQFvRr72/49uyXRH5VgQhLdZqT9+C7y62Ai6MQMSmgr0fLnwTZph0XebQg==@nongnu.org
+X-Gm-Message-State: AOJu0YznfqONlLXyz/TdlryLYCkX9IAXchD33JOhuH3/+RBL4QoQfWnx
+ OpaaXVM8XxesRe7xxeLCbpLkldx3yIc4jmttWXSc/s/4TAWi8Nh46mQdD3uI2TzOhF/YCATy051
+ 4G9fcNUD7ud+Dg5uxbRFUJ4Mm2THRbmg=
+X-Gm-Gg: AR+sD12A6jMPRz0Qlffb6T1697QypkQqrzqQE9MLARLvXFrdZAsg4QJ04ve15ZhegGt
+ 9U9DDOHSb/6WQBc8O0mUHRRRsG0Wsr75lv3DmQOuH+Bd9+9MFZVNc814qRx7o4wfW6a/6HjAOAG
+ YS32dBzI85vn1QONyMsYfS2YQiyBz4TQ5dHr6UWC628GQ6lwbmMdXpB9eDEvaMgxw2R1ZOvSEHT
+ cI2G7aQKpAcivEmdvk75ISJaeKwZsQMfaKvkAEdKm54GeYeplFWgAa30dPn8alSVwuxs9IjTo1M
+ 8lb938LltwWdpmUHNJV8vk1vNWpWj656svtNzH/rRJsYh9jEjvpjuIkv76mSVMAaRNXao8ue0bt
+ w2sWTCJljmmBWLbkuNQcmm0j+rE/2Vg==
+X-Received: by 2002:a05:6820:4ccc:b0:6a3:7341:f6ed with SMTP id
+ 006d021491bc7-6b0d5fca9famr1250294eaf.1.1786655434868; Thu, 13 Aug 2026
+ 14:10:34 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-X-TM-AS-GCONF: 00
-X-Proofpoint-Reinject: loops=2 maxloops=12
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwODEzMDEzOCBTYWx0ZWRfX3b19h5QPkCBR
- DfU04YF1MpKNc5jmo4dt0N6k9ZWncwhNGXdPw2UdwCEKyaVPTPsFaQ7R/8ZVO3fdevq6ojthX6b
- x8tbtJG+6qQJRfCMEghCQsBhK55VJyaxeocEwTF+5Mue1jQfey0pDlWmZtkqJWkZ0pDM4RK1T29
- yR6ZhdFzHz+98MMPbwY/rTJaz0Kyb1wISlfLiDKe6xAAHH39tldz+KNgRtVhq02gvVQUW3uC0JF
- n4/8VM+fjii9tCuPxoXyw553YqqXL5Nmm4ySVoCdwH3ZtJFnGMxSVQ1+/ctXl2MqYhUtlw7iWtx
- 5vMn7A3RLmHUnODAXDsGLJfIrNS7O3jyq66lyt9w080Sih0S/NSljENLL4COsFTWrAZ/ISheYr4
- MQZOqgN5pQEB+CmIp0sfOaukuSIBTU+EsUeKRsNqnFHsUIatM3soHlVyG6jRONrvUA6mNh+1ODy
- fifKJs4Fqg5uqyOphkw==
-X-Proofpoint-ORIG-GUID: 1ymoptXiJWSPK9kOf5RpRQ32XBPca0oV
-X-Proofpoint-Spam-Info: AW1haW4tMjYwODEzMDEzOCBTYWx0ZWRfX4S+H/OuMNcAY
- PVaYStswX102JPxId/Uuj9skFraYRMSP6E/jESivtF8HzpgnpeyI3WoumEK/q1JxUaCZC2HdjUV
- FX1y4tIfs3rSs4bkYbGC7bx9yUWQm5E=
-X-Authority-Analysis: v=2.4 cv=IfK3n2qa c=1 sm=1 tr=0 ts=6a7e1b65 cx=c_pps
- a=bLidbwmWQ0KltjZqbj+ezA==:117 a=bLidbwmWQ0KltjZqbj+ezA==:17
- a=IkcTkHD0fZMA:10 a=Sv0fKeRqtYgA:10 a=VkNPw1HP01LnGYTKEx00:22
- a=RnoormkPH1_aCDwRdu11:22 a=U7nrCbtTmkRpXpFmAIza:22 a=VwQbUJbxAAAA:8
- a=hD80L64hAAAA:8 a=V2NxCb60AAAA:8 a=NEAV23lmAAAA:8 a=GFUYeY8HRM1waPgzSTQA:9
- a=QEXdDO2ut3YA:10 a=3L6qF29SlnrayQqPM2jZ:22
-X-Proofpoint-GUID: OCixTD_iwNBgaXunzNJ3YnZpYGC0si5s
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.293,Aquarius:18.0.1176,Hydra:6.1.134,FMLib:17.12.100.49
- definitions=2026-08-13_06,2026-08-12_01,2025-10-01_01
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
- phishscore=0 priorityscore=1501 impostorscore=0 bulkscore=0 clxscore=1015
- lowpriorityscore=0 adultscore=0 malwarescore=0 spamscore=0 suspectscore=0
- classifier=typeunknown authscore=0 authtc= authcc= route=outbound adjust=0
- reason=mlx scancount=1 engine=8.22.0-2606150000 definitions=main-2608130138
-Received-SPF: pass client-ip=148.163.156.1; envelope-from=mikail.sadic@ibm.com;
- helo=mx0a-001b2d01.pphosted.com
-X-Spam_score_int: -27
-X-Spam_score: -2.8
+References: <20260813154918.996812-1-bin.meng@processmission.com>
+ <20260813154918.996812-17-bin.meng@processmission.com>
+In-Reply-To: <20260813154918.996812-17-bin.meng@processmission.com>
+From: Niek Linnenbank <nieklinnenbank@gmail.com>
+Date: Thu, 13 Aug 2026 23:10:23 +0200
+X-Gm-Features: AUfX_mxetUI3LzQGsQe_zY8IZFIeRFbSFh3N1oolDgO64cqiD4UkDiLhv3x6PYQ
+Message-ID: <CAPan3WoTubzEHGdCKs0tbDKLAms3Y9JG2QVd2Uydh4sVec7u4w@mail.gmail.com>
+Subject: Re: [PATCH 16/20] hw/arm: orangepi: Store boot info in the machine
+ state
+To: Bin Meng <bin.meng@processmission.com>
+Cc: QEMU <qemu-devel@nongnu.org>, Peter Maydell <peter.maydell@linaro.org>, 
+ qemu-arm <qemu-arm@nongnu.org>
+Content-Type: multipart/alternative; boundary="000000000000880a240658f42277"
+Received-SPF: pass client-ip=2607:f8b0:4864:20::c2e;
+ envelope-from=nieklinnenbank@gmail.com; helo=mail-oo1-xc2e.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ HTML_MESSAGE=0.001, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -125,198 +119,220 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-This series adds initial support for the IBM Huygens BMC, the baseboard
-management controller of an IBM POWER12 server platform, based on the
-ASPEED AST2700 A2 SoC.
+--000000000000880a240658f42277
+Content-Type: text/plain; charset="UTF-8"
 
-It introduces a CFAM-S FSI responder model, wires the AST2700 FSI
-controllers to their APB-to-OPB bridges, adds a TI UCD90320 PMBus
-power-sequencer model, adds an AST2700 UFS host controller on top of the
-generic sysbus UFS device, and finally adds the huygens-bmc machine that
-ties these together to boot OpenBMC from FMC flash and a UFS root
-filesystem.
+Op do 13 aug. 2026 17:51 schreef Bin Meng <bin.meng@processmission.com>:
 
-Dependencies, both on-list, neither merged yet:
+> arm_load_kernel() keeps a pointer to the boot info struct for the
+> lifetime of the VM, so the struct logically belongs to the machine
+> rather than to a file scoped static object.
+>
+> Move it into a new OrangePiMachineState and register the machine type
+> explicitly instead of through the DEFINE_MACHINE_ARM macro.
+>
+> As in the xlnx-zcu102 and raspi machines, the boot info belongs to
+> the machine rather than to a static object:
+>
+> 4d1ac883a7 ("hw/arm: xlnx-zcu102: Move arm_boot_info into XlnxZCU102")
+> 0f15c6e338 ("hw/arm/raspi: Move arm_boot_info structure to
+> RaspiMachineState")
+>
+> Signed-off-by: Bin Meng <bin.meng@processmission.com>
+>
+Reviewed-by: Niek Linnenbank <nieklinnenbank@gmail.com>
 
-1. Jeuk Kim's UFS restructure, which patches 5 and 6 build on:
+---
+>
+>  hw/arm/orangepi.c | 37 ++++++++++++++++++++++++++++++-------
+>  1 file changed, 30 insertions(+), 7 deletions(-)
+>
+> diff --git a/hw/arm/orangepi.c b/hw/arm/orangepi.c
+> index d84443bb7b..5b2c13f364 100644
+> --- a/hw/arm/orangepi.c
+> +++ b/hw/arm/orangepi.c
+> @@ -28,10 +28,18 @@
+>  #include "hw/arm/boot.h"
+>  #include "hw/arm/machines-qom.h"
+>
+> -static struct arm_boot_info orangepi_binfo;
+> +#define TYPE_ORANGEPI_MACHINE MACHINE_TYPE_NAME("orangepi-pc")
+> +OBJECT_DECLARE_SIMPLE_TYPE(OrangePiMachineState, ORANGEPI_MACHINE)
+> +
+> +struct OrangePiMachineState {
+> +    MachineState parent;
+> +
+> +    struct arm_boot_info bootinfo;
+> +};
+>
+>  static void orangepi_init(MachineState *machine)
+>  {
+> +    OrangePiMachineState *opms = ORANGEPI_MACHINE(machine);
+>      AwH3State *h3;
+>      DriveInfo *di;
+>      BlockBackend *blk;
+> @@ -98,14 +106,16 @@ static void orangepi_init(MachineState *machine)
+>          /* Use Boot ROM to copy data from SD card to SRAM */
+>          allwinner_h3_bootrom_setup(h3, blk);
+>      }
+> -    orangepi_binfo.loader_start = h3->memmap[AW_H3_DEV_SDRAM];
+> -    orangepi_binfo.ram_size = machine->ram_size;
+> -    orangepi_binfo.psci_conduit = QEMU_PSCI_CONDUIT_SMC;
+> -    arm_load_kernel(&h3->cpus[0], machine, &orangepi_binfo);
+> +    opms->bootinfo.loader_start = h3->memmap[AW_H3_DEV_SDRAM];
+> +    opms->bootinfo.ram_size = machine->ram_size;
+> +    opms->bootinfo.psci_conduit = QEMU_PSCI_CONDUIT_SMC;
+> +    arm_load_kernel(&h3->cpus[0], machine, &opms->bootinfo);
+>  }
+>
+> -static void orangepi_machine_init(MachineClass *mc)
+> +static void orangepi_machine_class_init(ObjectClass *oc, const void *data)
+>  {
+> +    MachineClass *mc = MACHINE_CLASS(oc);
+> +
+>      static const char * const valid_cpu_types[] = {
+>          ARM_CPU_TYPE_NAME("cortex-a7"),
+>          NULL
+> @@ -125,4 +135,17 @@ static void orangepi_machine_init(MachineClass *mc)
+>      mc->auto_create_sdcard = true;
+>  }
+>
+> -DEFINE_MACHINE_ARM("orangepi-pc", orangepi_machine_init)
+> +static const TypeInfo orangepi_machine_typeinfo = {
+> +    .name = TYPE_ORANGEPI_MACHINE,
+> +    .parent = TYPE_MACHINE,
+> +    .class_init = orangepi_machine_class_init,
+> +    .instance_size = sizeof(OrangePiMachineState),
+> +    .interfaces = arm_machine_interfaces,
+> +};
+> +
+> +static void orangepi_machine_register_types(void)
+> +{
+> +    type_register_static(&orangepi_machine_typeinfo);
+> +}
+> +
+> +type_init(orangepi_machine_register_types)
+> --
+> 2.53.0
+>
+>
 
-     https://lore.kernel.org/qemu-devel/cover.1786096976.git.jeuk20.kim@samsung.com/
+--000000000000880a240658f42277
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 
-   The base-commit trailer below therefore names a local commit: current
-   master plus those two patches. Patches 1-4 and 7 do not need it.
+<div dir=3D"auto"><div><div><br></div><div class=3D"gmail_quote gmail_quote=
+_container"><div dir=3D"ltr" class=3D"gmail_attr">Op do 13 aug. 2026 17:51 =
+schreef Bin Meng &lt;<a href=3D"mailto:bin.meng@processmission.com">bin.men=
+g@processmission.com</a>&gt;:<br></div><blockquote class=3D"gmail_quote" st=
+yle=3D"margin:0 0 0 .8ex;border-left:1px #ccc solid;padding-left:1ex">arm_l=
+oad_kernel() keeps a pointer to the boot info struct for the<br>
+lifetime of the VM, so the struct logically belongs to the machine<br>
+rather than to a file scoped static object.<br>
+<br>
+Move it into a new OrangePiMachineState and register the machine type<br>
+explicitly instead of through the DEFINE_MACHINE_ARM macro.<br>
+<br>
+As in the xlnx-zcu102 and raspi machines, the boot info belongs to<br>
+the machine rather than to a static object:<br>
+<br>
+4d1ac883a7 (&quot;hw/arm: xlnx-zcu102: Move arm_boot_info into XlnxZCU102&q=
+uot;)<br>
+0f15c6e338 (&quot;hw/arm/raspi: Move arm_boot_info structure to RaspiMachin=
+eState&quot;)<br>
+<br>
+Signed-off-by: Bin Meng &lt;<a href=3D"mailto:bin.meng@processmission.com" =
+target=3D"_blank" rel=3D"noreferrer">bin.meng@processmission.com</a>&gt;<br=
+></blockquote></div></div><div dir=3D"auto">Reviewed-by: Niek Linnenbank &l=
+t;<a href=3D"mailto:nieklinnenbank@gmail.com">nieklinnenbank@gmail.com</a>&=
+gt;</div><div dir=3D"auto"><br></div><div dir=3D"auto"><div class=3D"gmail_=
+quote gmail_quote_container"><blockquote class=3D"gmail_quote" style=3D"mar=
+gin:0 0 0 .8ex;border-left:1px #ccc solid;padding-left:1ex">
+---<br>
+<br>
+=C2=A0hw/arm/orangepi.c | 37 ++++++++++++++++++++++++++++++-------<br>
+=C2=A01 file changed, 30 insertions(+), 7 deletions(-)<br>
+<br>
+diff --git a/hw/arm/orangepi.c b/hw/arm/orangepi.c<br>
+index d84443bb7b..5b2c13f364 100644<br>
+--- a/hw/arm/orangepi.c<br>
++++ b/hw/arm/orangepi.c<br>
+@@ -28,10 +28,18 @@<br>
+=C2=A0#include &quot;hw/arm/boot.h&quot;<br>
+=C2=A0#include &quot;hw/arm/machines-qom.h&quot;<br>
+<br>
+-static struct arm_boot_info orangepi_binfo;<br>
++#define TYPE_ORANGEPI_MACHINE MACHINE_TYPE_NAME(&quot;orangepi-pc&quot;)<b=
+r>
++OBJECT_DECLARE_SIMPLE_TYPE(OrangePiMachineState, ORANGEPI_MACHINE)<br>
++<br>
++struct OrangePiMachineState {<br>
++=C2=A0 =C2=A0 MachineState parent;<br>
++<br>
++=C2=A0 =C2=A0 struct arm_boot_info bootinfo;<br>
++};<br>
+<br>
+=C2=A0static void orangepi_init(MachineState *machine)<br>
+=C2=A0{<br>
++=C2=A0 =C2=A0 OrangePiMachineState *opms =3D ORANGEPI_MACHINE(machine);<br=
+>
+=C2=A0 =C2=A0 =C2=A0AwH3State *h3;<br>
+=C2=A0 =C2=A0 =C2=A0DriveInfo *di;<br>
+=C2=A0 =C2=A0 =C2=A0BlockBackend *blk;<br>
+@@ -98,14 +106,16 @@ static void orangepi_init(MachineState *machine)<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0/* Use Boot ROM to copy data from SD card=
+ to SRAM */<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0allwinner_h3_bootrom_setup(h3, blk);<br>
+=C2=A0 =C2=A0 =C2=A0}<br>
+-=C2=A0 =C2=A0 orangepi_binfo.loader_start =3D h3-&gt;memmap[AW_H3_DEV_SDRA=
+M];<br>
+-=C2=A0 =C2=A0 orangepi_binfo.ram_size =3D machine-&gt;ram_size;<br>
+-=C2=A0 =C2=A0 orangepi_binfo.psci_conduit =3D QEMU_PSCI_CONDUIT_SMC;<br>
+-=C2=A0 =C2=A0 arm_load_kernel(&amp;h3-&gt;cpus[0], machine, &amp;orangepi_=
+binfo);<br>
++=C2=A0 =C2=A0 opms-&gt;bootinfo.loader_start =3D h3-&gt;memmap[AW_H3_DEV_S=
+DRAM];<br>
++=C2=A0 =C2=A0 opms-&gt;bootinfo.ram_size =3D machine-&gt;ram_size;<br>
++=C2=A0 =C2=A0 opms-&gt;bootinfo.psci_conduit =3D QEMU_PSCI_CONDUIT_SMC;<br=
+>
++=C2=A0 =C2=A0 arm_load_kernel(&amp;h3-&gt;cpus[0], machine, &amp;opms-&gt;=
+bootinfo);<br>
+=C2=A0}<br>
+<br>
+-static void orangepi_machine_init(MachineClass *mc)<br>
++static void orangepi_machine_class_init(ObjectClass *oc, const void *data)=
+<br>
+=C2=A0{<br>
++=C2=A0 =C2=A0 MachineClass *mc =3D MACHINE_CLASS(oc);<br>
++<br>
+=C2=A0 =C2=A0 =C2=A0static const char * const valid_cpu_types[] =3D {<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0ARM_CPU_TYPE_NAME(&quot;cortex-a7&quot;),=
+<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0NULL<br>
+@@ -125,4 +135,17 @@ static void orangepi_machine_init(MachineClass *mc)<br=
+>
+=C2=A0 =C2=A0 =C2=A0mc-&gt;auto_create_sdcard =3D true;<br>
+=C2=A0}<br>
+<br>
+-DEFINE_MACHINE_ARM(&quot;orangepi-pc&quot;, orangepi_machine_init)<br>
++static const TypeInfo orangepi_machine_typeinfo =3D {<br>
++=C2=A0 =C2=A0 .name =3D TYPE_ORANGEPI_MACHINE,<br>
++=C2=A0 =C2=A0 .parent =3D TYPE_MACHINE,<br>
++=C2=A0 =C2=A0 .class_init =3D orangepi_machine_class_init,<br>
++=C2=A0 =C2=A0 .instance_size =3D sizeof(OrangePiMachineState),<br>
++=C2=A0 =C2=A0 .interfaces =3D arm_machine_interfaces,<br>
++};<br>
++<br>
++static void orangepi_machine_register_types(void)<br>
++{<br>
++=C2=A0 =C2=A0 type_register_static(&amp;orangepi_machine_typeinfo);<br>
++}<br>
++<br>
++type_init(orangepi_machine_register_types)<br>
+-- <br>
+2.53.0<br>
+<br>
+</blockquote></div></div></div>
 
-2. Jamin Lin's I2C block-read fix:
-
-     https://patchwork.kernel.org/project/qemu-devel/patch/20260813090205.853307-1-jamin_lin@aspeedtech.com/
-
-   This one is a runtime rather than a build dependency, which is why the
-   series is not based on it. Everything compiles and every machine
-   constructs without it, but the UCD90320 in patch 4 will not probe,
-   because the ucd9000 driver identifies the device with an SMBus block
-   read and the AST2700 reports the block length from a register that
-   patch models. I have tested his patch against that driver and it works;
-   the Huygens-BMC boot was run with it applied.
-
-   The guest also needs a kernel that reads the block length from the
-   right register on AST2700, i.e. one carrying
-
-     https://github.com/AspeedTech-BMC/linux/commit/f9938ec5799e
-
-Patch summary:
-
-  1. fsi/cfam: a common CFAM model holding the slot, config table,
-     responder and local bus, with the existing cfam as its first
-     derivative. No functional change to the existing cfam.
-  2. fsi/cfam: the CFAM-S as a second derivative - its own config table,
-     the slave-ID alias window, and a v1 mailbox engine added to lbus.c
-     alongside the scratchpad.
-  3. arm/aspeed: wire the two AST2700 FSI controllers to their APB-to-OPB
-     bridges.
-  4. hw/sensor: TI UCD90320 24-rail PMBus power sequencer.
-  5. ufs: a configurable logical-block-size on ufs-lu, and an unmapped LUN
-     answering INQUIRY as "not connected". The ufs PCI device keeps its
-     current property set and geometry.
-  6. ufs/aspeed: the AST2700 UFS host controller as a subclass of
-     TYPE_SYSBUS_UFS, adding only the UFSHCI version.
-  7. arm/aspeed: the huygens-bmc machine.
-
-Changes since v3:
-
-* Dropped the i2c/aspeed patch (v3 4/8). Jamin Lin has posted the correct
-  implementation, which the UCD90320 now depends on instead; reviewed and
-  tested, see the dependency note above. The guest also needs the AST2700
-  kernel fix linked there.
-
-* Rebased onto current master, which is past the 11.1.0 release. v3 was on
-  v11.1.0-rc3. The only conflict was hw/arm/Kconfig, where the UCD90320
-  select landed next to the newly added ADC128D818 one.
-
-* No other patch changed. Patches 1-3 and 5-7 are the v3 patches with
-  only their numbering shifted.
-
-Not addressed in this series:
-
-* CFAM extended addressing (Miles): the mode where a single CFAM has 8MB
-  rather than four cascaded CFAMs sharing that space. This changes the
-  addressing model of the existing FSI/CFAM code rather than anything this
-  series introduces, so it's left as follow-up work. It does bear on
-  patch 2 though: the CFAM-S there aliases one 2MiB slot across the 8MiB
-  window to fold the slave-ID views together, and if extended addressing
-  is modelled properly that window is probably the wrong shape or should
-  not exist at all.
-
-* A functional test for the machine. The v1 test depended on non-public
-  Huygens images and was dropped; it will be resent once images can be
-  published.
-
-Testing done:
-
-* Whole series builds, and each of the 7 patches builds standalone.
-* make check passes.
-* huygens-bmc boots OpenBMC to the login prompt and multi-user target
-  from FMC flash + UFS storage (internal images), with Jamin's I2C patch
-  applied. The UCD90320 probes, reports its device identification over an
-  SMBus block read, and the power sequencer publishes system power state.
-* PCI UFS qtests pass (13/13), unchanged by patch 5.
-* aspeed_fsi-test passes (4/4), unchanged by the CFAM patches.
-* huygens-bmc, ast2700-evb and ast2600-evb all construct successfully.
-* On huygens-bmc, the UFS version register reads 0x00000200, and the
-  ufs-lu created by the board reports a 512-byte block size and passes it
-  to its backing scsi-hd. The PCI ufs device with no property set still
-  reports 4096.
-
-Changes since v2 (unchanged from the v3 posting, for reference):
-
-* UFS: rebased onto Jeuk Kim's restructure, as requested. The v2 core
-  refactor (v2 patch 6) is dropped entirely, Jeuk's patch 1 supersedes it.
-  hw/ufs/aspeed_ufs.c is now a subclass of TYPE_SYSBUS_UFS whose only
-  AST2700-specific behavior is pinning the controller version register
-  to 2.0, chained after the parent realize. MMIO, IRQ, DMA address space,
-  properties, migration state and unrealize all come from the generic
-  sysbus device, and the Aspeed type adds no instance fields.
-
-  The two behaviors Huygens needs that the restructure does not provide
-  are now their own patch, placed ahead of the Aspeed patch: the ufs-lu
-  logical-block-size property (default unchanged, so the PCI device is
-  unaffected) and the unmapped-LUN INQUIRY reporting "not connected"
-  rather than failing the request. logical-block-size now also rejects
-  non-powers-of-two, values outside 512..UFS_BLOCK_SIZE, and a drive
-  shorter than one block, which would previously have realized a
-  zero-block unit.
-
-  The Aspeed SoC Kconfig now selects UFS_SYSBUS. It previously relied on
-  UFS_PCI being enabled via "imply PCI_DEVICES".
-
-* CFAM: dropped the State suffix from the instance struct names (Miles).
-  FSICFAMCommonState becomes FSICFAMCommon; FSICFAMState, which predates
-  this series, becomes FSICFAM to match rather than leaving the two
-  spellings side by side in one header; FSICFAMSState becomes FSICFAMS.
-  The FSI prefix is kept. The class structs keep their suffix, as is
-  usual for QOM. Also fixed patch 1 to check the realize_engines() return
-  value.
-
-* Machine: reworded the commit message (Miles). No code change.
-
-Note: checkpatch reports a couple of MAINTAINERS/SPDX warnings for the
-new files; they are covered by existing wildcard entries in the ASPEED
-and FSI sections.
-
-Thank you again for all of the feedback.
-
-Mikail Sadic (7):
-  fsi/cfam: Add common CFAM base class
-  fsi/cfam: Add CFAM-S model
-  arm/aspeed: Wire AST2700 FSI controllers to APB-to-OPB bridges
-  hw/sensor: Add UCD90320 model
-  ufs: Make the logical block size configurable and answer absent LUNs
-  ufs/aspeed: Add AST2700 UFS host controller
-  arm/aspeed: Add AST2700 Huygens machine
-
- MAINTAINERS                     |   3 +
- docs/specs/aspeed-ufs.rst       |  46 ++++++
- docs/specs/fsi.rst              |  15 ++
- docs/specs/index.rst            |   2 +
- docs/specs/ucd90320.rst         |  36 +++++
- docs/system/arm/aspeed.rst      |  50 ++++++-
- hw/ufs/ufs.h                    |   3 +
- include/hw/arm/aspeed.h         |   1 +
- include/hw/arm/aspeed_soc.h     |   3 +
- include/hw/fsi/cfam-s.h         |  40 ++++++
- include/hw/fsi/cfam.h           |  68 ++++++++-
- include/hw/fsi/fsi-master.h     |   4 +-
- include/hw/fsi/lbus.h           |  11 ++
- include/hw/ufs/aspeed_ufs.h     |  15 ++
- hw/arm/aspeed.c                 |  25 ++++
- hw/arm/aspeed_ast27x0.c         |  31 ++++
- hw/arm/aspeed_ast27x0_huygens.c | 241 ++++++++++++++++++++++++++++++++
- hw/fsi/cfam-s.c                 |  91 ++++++++++++
- hw/fsi/cfam.c                   | 125 ++++++++++-------
- hw/fsi/fsi-master.c             |   9 +-
- hw/fsi/lbus.c                   |  69 +++++++++
- hw/sensor/ucd90320.c            | 169 ++++++++++++++++++++++
- hw/ufs/aspeed_ufs.c             |  67 +++++++++
- hw/ufs/lu.c                     |  67 ++++++++-
- hw/ufs/ufs.c                    |   2 +-
- hw/arm/Kconfig                  |   2 +
- hw/arm/meson.build              |   1 +
- hw/fsi/meson.build              |   2 +-
- hw/fsi/trace-events             |   2 +
- hw/sensor/Kconfig               |   4 +
- hw/sensor/meson.build           |   1 +
- hw/ufs/meson.build              |   1 +
- 32 files changed, 1142 insertions(+), 64 deletions(-)
- create mode 100644 docs/specs/aspeed-ufs.rst
- create mode 100644 docs/specs/ucd90320.rst
- create mode 100644 include/hw/fsi/cfam-s.h
- create mode 100644 include/hw/ufs/aspeed_ufs.h
- create mode 100644 hw/arm/aspeed_ast27x0_huygens.c
- create mode 100644 hw/fsi/cfam-s.c
- create mode 100644 hw/sensor/ucd90320.c
- create mode 100644 hw/ufs/aspeed_ufs.c
-
-
-base-commit: 7a66901b243ca3b401db8a8e45245e0518339974
--- 
-2.53.0
-
+--000000000000880a240658f42277--
 

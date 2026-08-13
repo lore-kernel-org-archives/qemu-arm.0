@@ -4,125 +4,131 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EDA35C5CFEB
-	for <qemu-arm@archiver.kernel.org>; Thu, 13 Aug 2026 13:11:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E7829C5CFCF
+	for <qemu-arm@archiver.kernel.org>; Thu, 13 Aug 2026 15:50:21 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wuVB1-0007Xu-Er; Thu, 13 Aug 2026 09:08:55 -0400
+	id 1wuXh8-0008Aa-9g; Thu, 13 Aug 2026 11:50:14 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mhonap@nvidia.com>)
- id 1wuVB0-0007W7-7V; Thu, 13 Aug 2026 09:08:54 -0400
-Received: from mail-eastusazlp17011000f.outbound.protection.outlook.com
- ([2a01:111:f403:c100::f] helo=BL2PR02CU003.outbound.protection.outlook.com)
+ (Exim 4.90_1) (envelope-from <bin.meng@processmission.com>)
+ id 1wuXh6-00089s-2g; Thu, 13 Aug 2026 11:50:12 -0400
+Received: from mail-japanwestazlp170120003.outbound.protection.outlook.com
+ ([2a01:111:f403:c406::3] helo=OS8PR02CU002.outbound.protection.outlook.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mhonap@nvidia.com>)
- id 1wuVAx-0005Wn-9V; Thu, 13 Aug 2026 09:08:53 -0400
+ (Exim 4.90_1) (envelope-from <bin.meng@processmission.com>)
+ id 1wuXh4-0001nZ-70; Thu, 13 Aug 2026 11:50:11 -0400
 ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=fFSkqyK3x/eACm/TnX0F/W7mD+9sUZwkDGp5GbmDZV3MzF2qjb3NnuPeIw9qXHw9LwK/tUdjJC3QX+s6hGpdl8XxGVwOqtEgjjw7F2PizjiQLMwbNfzxP8WaIjOxGnW7EnpdLygKZUvTZmTtrPABqMUMsYm5bOjCcWIXCZzO/KuW5ll2OOQCNJrJlt0nl2W+vfZjBPb97s30rFM8ze+lpgMF5rekrRn3E9url+PoQ9u3F8a9dx3g6qjZYyCoBUmZ+SCA/qmrZqIhW6bTnOji9FKHUcGe66VF61CjDa9vo0/qCADm+fKEPq1jRjviKx3v1GT2sdx8HTfYcnUkt/eLGw==
+ b=ttlscS+kH4A1vEFafxCneuGYKLll9yce3Nr+EbQFPzw/a57Nz4J0Law8yLa34yb+xz/NGJLpfYdqcDBnDTRZW6NDwOSXLAiZMqUuSoZu9q8wL+yF4IHXE6XOYeyrzQ4JmEPeGpSx2ymEWMFFyllwWGPrOZbREtUS6ljzJ7sKvaR2J46llF+sD5wQw8xQ2lhVncoDaocBArqIQDVOld9b65aB51AiZPNws8IZe60etn/yOc/zV3lbAWMZUZZXW2CZZiGVrskkb6damvCYpEbtAVRG/R5+vAa5XF4meWWTyxRD7hTqD6zvQqaAx3sGgq9mz+hWP6uIHprv2RboNjdbWg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
  s=arcselector10001;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=rKtgVk1fshHeRBH137d2Rbu6ZpMhy5YHmllEIZX8qc8=;
- b=gsTzAo+I/rjBqeWbH49MQJlpvlwnLt6bzOJkhGtMOJ5lDtf65dba79G97KJctbIaPzFIZieMrO+KINC3I7ytd71hA45x06KShmtrxC1fD+bTthfiN4YsBMcmv7sFjggSMXEsHIT9pxMhY27IajiZBLQHFXT1j6mfoT7euBh/R+B/HnX5Q2A1mJpnTrYtHixwwQ4Ol9iDQS+oFwvG5UqF4VJP70ZFnkl5F9g+FMNwcY0ivR3rPvqNA8AG11QBigNHYV6YeqiVQzS5NKKlkZ9El06SZJk6Q2YoV/C09qffZ1c0JGOpp8Ew3fBBrJaCktMH4F0n5cu0u8ODNhWxR8Dslg==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass (sender ip is
- 216.228.117.160) smtp.rcpttodomain=shazbot.org smtp.mailfrom=nvidia.com;
- dmarc=pass (p=reject sp=reject pct=100) action=none header.from=nvidia.com;
- dkim=none (message not signed); arc=none (0)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Nvidia.com;
- s=selector2;
+ bh=Ap0YiwASlT8E5/SwyI3UdsWAFZw4m/209KDm3mqmbGs=;
+ b=H8WiItpBW90DwHkG13EClycfuXs5Y6uSyu2BlathscNp+gVtOjffwVERVriuqOmvccSWjuUAhC4gijW+OnsqeviM5cRoW1BQHKdbxubE7qcajKEal5xtxCSm8lqDPWDj0jor7hNYsKIzfwAmp7lJVLWwOtQAQMNjb8rZOaLS+W9Uxm6vQ88qOiJBqKBOwZgj+abKV7FlSyOlh+BXqnXdsyLbQ1b1RxA9vbsBGPFI0fJWs5ah0UKJMylPe5EVlLnXz/x/ToOHhn5pkL4vXLy0o/6mGKtIxkwHvoM5cXGp9Ugd7LXmZAqHOSGJIuTkvuKsiWMxpImL1BizcCx1Ts6tNw==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=processmission.com; dmarc=pass action=none
+ header.from=processmission.com; dkim=pass header.d=processmission.com;
+ arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=processmission.com;
+ s=selector1;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=rKtgVk1fshHeRBH137d2Rbu6ZpMhy5YHmllEIZX8qc8=;
- b=ftxXlB/XgJDTwg8i5PE604UG65F7r7lzZWTkNBImvGY1xKXkCNkLPBBA2aCkDfV49D8pAAOFGLXcGKwELgJbWbaGk8FRu4otX0IgUthgE0+tKVGsrgMysMy22hP7ebPuCvdbkoReVCnMshNCwFqmVcZ4y1Um/mjFelLNv2vjGDruTss5DY7ywzgjxxuwAKIIlcRtE5dHQMCVP/LDzYs/iBsGqooq4Lg7DRZRKFE7k6pZo7F00FuGwi6kV9MK7SNV4EImX6tNJyB4mgi105d2q2UwiOjBM88L6ro7NyS5SCawDi2+z8uA8hslQbVVRHMboLFGI9rloCMn8dvMLkbyeg==
-Received: from MN0PR12MB6003.namprd12.prod.outlook.com (2603:10b6:208:37f::17)
- by SN7PR12MB6837.namprd12.prod.outlook.com (2603:10b6:806:267::10)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.21.315.13; Thu, 13 Aug
- 2026 13:07:13 +0000
-Received: from MW4PR03CA0286.namprd03.prod.outlook.com (2603:10b6:303:b5::21)
- by MN0PR12MB6003.namprd12.prod.outlook.com (2603:10b6:208:37f::17)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.21.315.14; Thu, 13 Aug
- 2026 13:07:08 +0000
-Received: from CO1PEPF00012E82.namprd03.prod.outlook.com
- (2603:10b6:303:b5:cafe::82) by MW4PR03CA0286.outlook.office365.com
- (2603:10b6:303:b5::21) with Microsoft SMTP Server (version=TLS1_3,
- cipher=TLS_AES_256_GCM_SHA384) id 15.21.315.14 via Frontend Transport; Thu,
- 13 Aug 2026 13:07:07 +0000
-X-MS-Exchange-Authentication-Results: spf=pass (sender IP is 216.228.117.160)
- smtp.mailfrom=nvidia.com;
- dkim=none (message not signed)
- header.d=none;dmarc=pass action=none header.from=nvidia.com;
-Received-SPF: Pass (protection.outlook.com: domain of nvidia.com designates
- 216.228.117.160 as permitted sender) receiver=protection.outlook.com;
- client-ip=216.228.117.160; helo=mail.nvidia.com; pr=C
-Received: from mail.nvidia.com (216.228.117.160) by
- CO1PEPF00012E82.mail.protection.outlook.com (10.167.249.57) with Microsoft
- SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.21.339.3 via Frontend Transport; Thu, 13 Aug 2026 13:07:07 +0000
-Received: from rnnvmail201.nvidia.com (10.129.68.8) by mail.nvidia.com
- (10.129.200.66) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.2562.46; Thu, 13 Aug
- 2026 06:06:43 -0700
-Received: from nvidia-4028GR-scsim.nvidia.com (10.126.230.37) by
- rnnvmail201.nvidia.com (10.129.68.8) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.2562.20; Thu, 13 Aug 2026 06:06:37 -0700
-From: <mhonap@nvidia.com>
-To: <alex@shazbot.org>, <ankita@nvidia.com>, <jic23@kernel.org>,
- <dave.jiang@intel.com>, <alejandro.lucero-palau@amd.com>,
- <smadhavan@nvidia.com>, <pierrick.bouvier@oss.qualcomm.com>,
- <mst@redhat.com>, <imammedo@redhat.com>, <anisinha@redhat.com>,
- <pbonzini@redhat.com>, <eric.auger@redhat.com>, <peter.maydell@linaro.org>,
- <richard.henderson@linaro.org>, <clg@redhat.com>, <cohuck@redhat.com>
-CC: <kjaju@nvidia.com>, <vsethi@nvidia.com>, <zhiw@nvidia.com>,
- <mhonap@nvidia.com>, <qemu-devel@nongnu.org>, <qemu-arm@nongnu.org>
-Subject: [PATCH 00/10] QEMU: CXL Type-2 device passthrough via vfio-pci
-Date: Thu, 13 Aug 2026 18:36:13 +0530
-Message-ID: <20260813130623.2499506-1-mhonap@nvidia.com>
-X-Mailer: git-send-email 2.25.1
-MIME-Version: 1.0
+ bh=Ap0YiwASlT8E5/SwyI3UdsWAFZw4m/209KDm3mqmbGs=;
+ b=Vb75EyVSGJ56QuTCcngG0fQ3iluGeWNbOl81CfGZ6yVKj8m8zsSj7e1iDIJkOHJ038AqHGdTvXMmmnrgh30BRTaSh8C6lz8lVZsg1C9ohwmL7h2wYtmUS6dFePVP5SOIIiB9dXwzLrCGInxh7Bezk7mYdEE5+yLBubQPFYw1E4AbcJYhRESlxTcA6Yxfl6X1YM78uxAqCVyYwMKd3yV9PEcH+sw0GUHTCbMOj//0Se6Mac7SkLI9pUmvtlQf7jhT1YMut+I7F8dvbAFFt3nwadJDntF1FthNVdClo2hE9cCwye9g6s6RlVcUPq23UZ9twhcn+66+g5HwigjHCApzCA==
+Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=processmission.com;
+Received: from KL1PR02MB4977.apcprd02.prod.outlook.com (2603:1096:820:71::8)
+ by SI2PR02MB5490.apcprd02.prod.outlook.com (2603:1096:4:1a1::8) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.21.315.12; Thu, 13 Aug
+ 2026 15:50:00 +0000
+Received: from KL1PR02MB4977.apcprd02.prod.outlook.com
+ ([fe80::9fdf:2557:8351:6c03]) by KL1PR02MB4977.apcprd02.prod.outlook.com
+ ([fe80::9fdf:2557:8351:6c03%4]) with mapi id 15.21.0315.014; Thu, 13 Aug 2026
+ 15:50:00 +0000
+From: Bin Meng <bin.meng@processmission.com>
+To: QEMU <qemu-devel@nongnu.org>
+Cc: Andrew Jeffery <andrew@codeconstruct.com.au>,
+ =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
+ Jamin Lin <jamin_lin@aspeedtech.com>, Joel Stanley <joel@jms.id.au>,
+ Kane Chen <kane_chen@aspeedtech.com>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ Steven Lee <steven_lee@aspeedtech.com>, Troy Lee <leetroy@gmail.com>,
+ qemu-arm@nongnu.org
+Subject: [PATCH 01/20] hw/arm: aspeed: Store boot info in the machine state
+Date: Thu, 13 Aug 2026 23:48:49 +0800
+Message-ID: <20260813154918.996812-2-bin.meng@processmission.com>
+X-Mailer: git-send-email 2.53.0
+In-Reply-To: <20260813154918.996812-1-bin.meng@processmission.com>
+References: <20260813154918.996812-1-bin.meng@processmission.com>
 Content-Transfer-Encoding: 8bit
 Content-Type: text/plain
-X-Originating-IP: [10.126.230.37]
-X-ClientProxiedBy: rnnvmail203.nvidia.com (10.129.68.9) To
- rnnvmail201.nvidia.com (10.129.68.8)
-X-EOPAttributedMessage: 0
+X-ClientProxiedBy: DU6P191CA0001.EURP191.PROD.OUTLOOK.COM
+ (2603:10a6:10:540::11) To KL1PR02MB4977.apcprd02.prod.outlook.com
+ (2603:1096:820:71::8)
+MIME-Version: 1.0
 X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: CO1PEPF00012E82:EE_|MN0PR12MB6003:EE_|SN7PR12MB6837:EE_
-X-MS-Office365-Filtering-Correlation-Id: 9f64d428-e9d4-49a6-a760-08def93bc735
+X-MS-TrafficTypeDiagnostic: KL1PR02MB4977:EE_|SI2PR02MB5490:EE_
+X-MS-Office365-Filtering-Correlation-Id: 91ced163-db03-4bbb-240d-08def9528850
 X-MS-Exchange-SenderADCheck: 1
 X-MS-Exchange-AntiSpam-Relay: 0
 X-Microsoft-Antispam: BCL:0;
- ARA:13230040|1800799024|36860700016|23010399003|82310400026|7416014|376014|56012099006|11063799006|10067099003|6133799003|18002099003|921020;
-X-Microsoft-Antispam-Message-Info: PEqHbe/OrZY12WjT9w3vYz2HrUvHMADDuuHSAafzqr7AOtmm75HMpOonkUq2U1Irx1EjK93MlvzZ0Gu0810W9ttq4D8Y4i2iX6YAT+3wVJjGTy3Xco8OOB9JqtBj5Hw6eB4L94jZCTzhXMjwuKmamXcUhqAJDQH825ouNfIEgu7FhhGDyiACLGXD2RbO4ZfZV5Gye2KpLaJZKvdYcjuzo1R2CKYAXVHkx3O9kW6/5efcRkbjeP451USVlZA551rA8cxeoSkYVxFH7uQH/Q2pUw7zrHaehcjTqBQxMOsC7fUHWrOkumVuv97CfuzDTj7VSzPLBNyCdG+e3REQFKjQXr2w6NeAMIWVaKCqX25r9h/OBxxApne7eQqZnbYY8e7MF+tltq3KGKAExd/L21aWz6hyEQHs8X6+K5ayHVM4zVblXwpIT0J/oUqG0jRemYZpILdv4qSqAmJV83Wp15VruDVr2cgkEoCywBSXjILzaOsucUNpzFcExIuW1BwfBwItG7R7Qi0LmrPiKDYv5DuLgbXVM5pc2q0esjI8RxnEu7Bm0aZf7YzE4vxeX0DAFJ+zQKThLJk+2cA+Qd3hcWg3ZeI6Ut4mekOUBtnKVXtAQaix/JJrmwp4G0zXK+th8YPXnZtT7i33PgXH+qswbHVd2h8bjMhcSv0pCWJ5By5vLvQtQPnOZlUKjr4al7eKbrnSljeNE91fwdpyYKZc6sjZaHEuAgwoxLAsMADmV62EICRLE1SzvV2LHDkCLrtJqIgV
-X-Forefront-Antispam-Report: CIP:216.228.117.160; CTRY:US; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:mail.nvidia.com; PTR:dc6edge1.nvidia.com; CAT:NONE;
- SFS:(13230040)(1800799024)(36860700016)(23010399003)(82310400026)(7416014)(376014)(56012099006)(11063799006)(10067099003)(6133799003)(18002099003)(921020);
- DIR:OUT; SFP:1101; 
+ ARA:13230040|1800799024|366016|23010399003|7416014|376014|56012099006|10067099003|18002099003|22082099003;
+X-Microsoft-Antispam-Message-Info: x8A64QDsm3kxU5mmvt2xkXu1GWVUDaxR28LBUyJvuz3NMPm7+BOnpxUMTmDzg4WVLvO4XJ6Ldd81Kza8XE/NmZfsHgq/kDHkqhQJwwk95dyZl0WDdcKxu3JrdNWGFxgtABtLOZMp2lZeXhBvlNXS+YI7goq0tDjR4uU54ACVFxcAa417/2E2Xx/+58ZwOCC8YR0Py89oIvH0xcLNUp/zMx86VuqKQqzbDcBCFOllv8/ksmsbL8nwTCpxGpWe1Rbm1hQapEmrdcqN+710nmRBAb79XiePRj9qE0D70dqTx85N+vlvMHaHQ3qhEQ5sgX3vK8N2W4uL0NLTrtkvOQkN3s1yGb8darTYlvyWJejOoG9a/LlgES9CVVbo4b/XU/mtyF/RXIzn44Wa5FtwhBBtfA3RDg5wdSM9qkfGkJTzhEMPSeltz+R6BKi8EfBixsMFUwkOn1eiyVV+vmeaubY1bjHf20HHxu93NXwWLDnrWNEe/04tk9cL6juYuEC1N4suQIY5jdS0r/2rokTFwzgG6kdAWMbFY8rDz2ocLPPhgD77qbvkRNIu6cWaH8J8NC1MvYbyACjYFh6v2cz7Aj5JYVERqyxpZUpZaLOGyjXZ25MWmqd8O+fEIN1z3y2MMAKc6nirjCzDev4pFFwg9C3uf16qJ9aw/OJUyr2ht4DHPBk=
+X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:KL1PR02MB4977.apcprd02.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(13230040)(1800799024)(366016)(23010399003)(7416014)(376014)(56012099006)(10067099003)(18002099003)(22082099003);
+ DIR:OUT; SFP:1102; 
 X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: rkA9B+lrCA25ETcgpZfA58A/kRn3nl+/jUdvntAABwydSQI9cXfWGUQ1LOSBWjaufwtVM0yONTNM5pt7Oj7zh+M4sPZHgqpJjPXiWDEi/e6yKhoMrGBuy+BghouKxO5IghzRWyCEfcLlXU0J8BeSsFSG50X+X9khXuGF+qL0F1amOm/pt3VMPfECB2IfQ6aUB6wwaF5hXP+kZXYbm8b5KwAI/6A/XtYaE4XTdu+QNaE/ipXDQ/2OBvJMaus07BYOeBjY0eiFApRkWCBuOiPaFIeg/MjCXpXCk8OkLsbfU+VP065VViGCRGYT3B8ylLpstf6niM55AIk9cIGXo4JOYAJwdGqTTnyvwtv9x7gx4jm0pGlh3gZQs8rnanmOx6B7r4zWWtUk91fOuFD99g5NmEdElEbk3+tVyAfGa6ICepBQrEibSCmirSZslVrLWp+d
-X-OriginatorOrg: Nvidia.com
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 13 Aug 2026 13:07:07.2175 (UTC)
-X-MS-Exchange-CrossTenant-Network-Message-Id: 9f64d428-e9d4-49a6-a760-08def93bc735
-X-MS-Exchange-CrossTenant-Id: 43083d15-7273-40c1-b7db-39efd9ccc17a
-X-MS-Exchange-CrossTenant-OriginalAttributedTenantConnectingIp: TenantId=43083d15-7273-40c1-b7db-39efd9ccc17a; Ip=[216.228.117.160];
- Helo=[mail.nvidia.com]
-X-MS-Exchange-CrossTenant-FromEntityHeader: HybridOnPrem
-X-MS-Exchange-CrossTenant-AuthSource: CO1PEPF00012E82.namprd03.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Anonymous
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: SN7PR12MB6837
-Received-SPF: permerror client-ip=2a01:111:f403:c100::f;
- envelope-from=mhonap@nvidia.com;
- helo=BL2PR02CU003.outbound.protection.outlook.com
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.759,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- FORGED_SPF_HELO=1, SPF_HELO_PASS=-0.001,
- SPF_NONE=0.001 autolearn=ham autolearn_force=no
+X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?NB1b4j+y88CFhsH8MmBFCPuBWeU69dlCoFE77MsShDamq2DzF4e84FtStiZs?=
+ =?us-ascii?Q?uW8m0BrruGYQTnmOakZ0/8nGPF1f78koFgRpIRAfj0r8tQ4xu/vdpYrnkXGs?=
+ =?us-ascii?Q?I9thWm13D0e+6ExBbRWyaeGgOcxDcNuej0LZgSIbvRR8UO5skXxBBvDnXmdO?=
+ =?us-ascii?Q?OB5KinoipO7Id3rp6k/pb7nq8cmZkfWamUZS0t64ZNu3aPGHt5ZWO6Fb2fFI?=
+ =?us-ascii?Q?jfPSGhLKnJ5kNsBehWPec64dF71VeE9wjH+IkMfns7YiQUt0nGcIl3M7ANqz?=
+ =?us-ascii?Q?W140TVitKhz7nWvZHg6IgqJwoHqUPGRoTm4PSO1eIus3cyxZOcFJhZnDDb7F?=
+ =?us-ascii?Q?AaF7zieJSnzdcF2bzExCYoQUeCjQa1tGxJaNNCO24MEik//3cY+H5czxAVN8?=
+ =?us-ascii?Q?upYp2hpSRUZ26lERDIljvjPLbCI6DecZRyZX+Z3MQkVX//Te22OdXYbKvM8W?=
+ =?us-ascii?Q?vWLXtObH2f0+J8ZzFh0Dh3cauozAP7UMDkcoR+41cgMseRS/MzBgmYmAnGc6?=
+ =?us-ascii?Q?IDTpDDLkXIMKKF7fcBKUzUjMs0Fa1YYvnN1seSD5t2BMmYOpsUPaOF7JZuf4?=
+ =?us-ascii?Q?+jpn03rsnA07NRYBDalYpvFlBpnEGtk/iYi89kRWT8v/tmU5kHbYj9DzcWR8?=
+ =?us-ascii?Q?3Q2pofvvvxTVaGGwfcavNyZqDKsJN/kdqEjzaHoR8wp9+EiP8XrD7i6LJt1i?=
+ =?us-ascii?Q?qzdoHLokpfPKPzzdcmSiyDaWyJ54DqUb4eVUujQisiu8HEMADTgRbrz+DXXZ?=
+ =?us-ascii?Q?QciaFHoDOzJdw/FcJZFfifcO7uxYodTAhzDTQK/dkDTFOS79TAqpQPdBerVD?=
+ =?us-ascii?Q?ky2ETwXC3R3uOTfWH+OwiZ5tDNt/2EKfdLLCvkjL6Oy4/VMz3IOtFIpoIAfZ?=
+ =?us-ascii?Q?GlckDcbi4Bo4HO22FWahLRXlxG+IIR8GS2Q8MC/dtI280uQuOhVjyqCBrrug?=
+ =?us-ascii?Q?d2YXOS/WLn5Tv9Zo/VSB1SA5ni9WctxhTRTiggDD1rZpDV5B5ahWDKd0/DPO?=
+ =?us-ascii?Q?Qb/PNfOsq2e/XDxdyFeZDkxgt2T39Vm2cKJSsbCxDpzuGcdtCPkbgasCA5MC?=
+ =?us-ascii?Q?frrwRuBw7wdgzUARTU6eFLxktZt3WPJrvGVsm9sIUMtvMtc5olK+In0Sjp8K?=
+ =?us-ascii?Q?ZxVdAZnXVwWACao/H4X5SxL7l4SBec40kZJg0/Tcpca3O8FAFnP88osYgwSw?=
+ =?us-ascii?Q?zIkl6MB1xGHTWd2tmliJ+7NF2kdKquLTR33RBStGQh5OqftK/0MEPfXjjih7?=
+ =?us-ascii?Q?0zCaqOGfksqfqvHSCJwo7uFxgM6RPp3cyaADfvdBSxsYUvMLTORD4ZK2HMkz?=
+ =?us-ascii?Q?kWm9oXGpq0As1wISLRrnPFcZASkPThDKP65OcGrvfulbJb91Pb9qJOKDvKuw?=
+ =?us-ascii?Q?KRywm0950wbyD7s5LJPPoH3XUm5pIf6ScRElCiAVeU1qB7bXncxwi6/CoWo9?=
+ =?us-ascii?Q?KwetjHBJZVLcL5lwHn6P+jGuzlxt1gmRhujiSfxYInsXjedSOfmEZdYprAth?=
+ =?us-ascii?Q?co4vLCgXp5CUyS3M4BhVGE+91pPHNeqqWoYVgYPbbMH8/5gXHjgTeEQxgCp+?=
+ =?us-ascii?Q?bjf61vxXTsWpB6bB2/5gNF3iURzDwba935LdCNHW9LJvPgXyfMd6VZahg5Vu?=
+ =?us-ascii?Q?Nsik2Z+oQduiJamO15Ubc06GdePO6reWJ92JDroj0oYc4iEv+Y6g+qCaF0Xa?=
+ =?us-ascii?Q?vldu9ImbRgrnffPnMTCN/m70QtmnuH2qdzhfG862rj0OG74QQve0AS7T3Zru?=
+ =?us-ascii?Q?tm7Y7a8eJe3sGqnknHnBPbo1bmQ1eTM=3D?=
+X-OriginatorOrg: processmission.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 91ced163-db03-4bbb-240d-08def9528850
+X-MS-Exchange-CrossTenant-AuthSource: KL1PR02MB4977.apcprd02.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 13 Aug 2026 15:50:00.4486 (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: e0544bf7-9765-4630-ab69-0b266dc2169c
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: TWMxLjsy0r1xzOWsfNm/UX6hn+wmeEkekdBiEuEso6scTHpDRIpufCG6pfZbzwYaTyzKI+1aukHAv4PASgWmXJjhp2jQE91OKHWBorH3v40=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: SI2PR02MB5490
+Received-SPF: pass client-ip=2a01:111:f403:c406::3;
+ envelope-from=bin.meng@processmission.com;
+ helo=OS8PR02CU002.outbound.protection.outlook.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -138,185 +144,90 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-From: Manish Honap <mhonap@nvidia.com>
+arm_load_kernel() keeps a pointer to the boot info struct for the
+lifetime of the VM, so the struct logically belongs to the machine
+rather than to a file scoped static object.
 
-This series adds QEMU support for passing a CXL Type-2 device (an
-accelerator with host-managed device memory, e.g. a GPU) to a guest via
-vfio-pci. The guest drives its own virtual endpoint HDM decoder and QEMU
-maps the device memory at the guest physical address the guest commits,
-while the host owns the host physical placement.
+Move the boot info into the existing AspeedMachineState.
 
-It is a full rewrite of the RFC v1 series [1] on clean upstream master,
-reworked to address Jonathan's review.
+As in the xlnx-zcu102 and raspi machines, the boot info belongs to
+the machine rather than to a static object:
 
-Base: master (post pull-9p-20260725), commit 6333226c2a.
+4d1ac883a7 ("hw/arm: xlnx-zcu102: Move arm_boot_info into XlnxZCU102")
+0f15c6e338 ("hw/arm/raspi: Move arm_boot_info structure to RaspiMachineState")
 
+Signed-off-by: Bin Meng <bin.meng@processmission.com>
+---
 
-Kernel dependency
------------------
+ hw/arm/aspeed.c         | 17 +++++++----------
+ include/hw/arm/aspeed.h |  2 ++
+ 2 files changed, 9 insertions(+), 10 deletions(-)
 
-Pairs with the kernel vfio-cxl series "vfio/cxl: CXL Type-2 device
-passthrough" [2].
-- The kernel exposes the device memory as an HPA-backed VFIO region, traps
-  the HDM decoder block and runs its lock-on-commit FSM, handles the CXL
-  DVSEC (including guest-triggered reset), and reports two things through
-  VFIO:
-  - A device flag (VFIO_DEVICE_FLAGS_CXL) and
-  - The component-register geometry (VFIO_REGION_INFO_CAP_CXL_COMP_REGS).
-
-
-Sample supported topology
--------------------------
-
-Guest disk, network, and system-RAM lines are omitted:
-
-  -machine virt,accel=kvm,gic-version=3,hmat=on,cxl=on,ras=on, \
-           highmem-mmio-size=4T
-  -object iommufd,id=iommufd0
-  -device pxb-cxl,bus_nr=12,bus=pcie.0,id=cxl.1
-  -device cxl-rp,port=1,bus=cxl.1,id=rport0.1,chassis=4, \
-          pref64-reserve=2G,mem-reserve=1G
-  -M cxl-fmw.0.targets.0=cxl.1,cxl-fmw.0.size=256G
-  -device arm-smmuv3,primary-bus=cxl.1,id=smmuv3.0,accel=on,ats=on, \
-          ril=on,ssidsize=8,oas=48
-  -device vfio-pci-nohotplug,host=<BDF>,bus=rport0.1,id=dev0, \
-          iommufd=iommufd0
-  -object acpi-generic-initiator,id=gi0,pci-dev=dev0,node=2
-  ... (one acpi-generic-initiator per guest NUMA node the HDM memory backs)
-
-
-Address model
--------------
-
-The kernel fixes device memory to a host physical range before the guest
-sees the device, and hardware presents a firmware-committed, locked
-endpoint HDM decoder whose registers hold that host physical base.
-
-QEMU never exposes Host physical base. It virtualizes the decoder base registers
-in the trapped component-register read and returns the base of the device's
-CFMWS window, a guest physical address, so the guest only ever sees a GPA.
-
-QEMU maps the RAM-device region (backed by the fixed HPA) at that CFMWS base.
-
-The kernel never learns the GPA and the guest never learns the HPA.
-
-Because the decoder is already committed at boot, no guest commit write
-triggers the mapping. QEMU maps once the guest enables memory decoding
-(the Command register Memory-Space bit) and re-checks on any decoder
-control write, so the region enters the guest address space and the IOAS
-while the device is live.
-
-When the guest clears Memory-Space, QEMU withdraws the mapping, matching the
-kernel's revoke of the backing PTEs on the same write, so a guest access during
-the disabled interval cannot fault a zapped mapping and stop the VM; the enable
-path re-installs it.
-
-This also helps to keep the guest-visible base as the CFMWS base by
-construction, and the host physical placement stays with the kernel.
-
-The RFC added the pxb-cxl _DSM because OS may treat PCI configuration as
-reassignable and a BAR move would break the CXL.mem mapping. This change keeps
-it narrower than the RFC v1 _DSM: it applies only to the host bridge that
-carries the passed-through CXL device.
-
-
-Reset
------
-
-There is no QEMU reset patch. A guest CXL reset is a DVSEC write that
-lands in vfio config space and is handled entirely by the host kernel,
-which stamps the outcome into DVSEC STATUS2. The kernel re-commits this
-firmware-fixed decoder across the reset, and the guest reaches its memory
-through the mapping QEMU already installed.
-
-
-Reviewer feedback addressed
----------------------------
-
-The RFC [1] thread has the full discussion.
-
-Jonathan Cameron
-  - The high-MMIO window and the cxl-fmws-base property are removed. The
-    guest-visible base is the CFMWS base by construction, so it equals the
-    decoder base and stays stable without a hack.
-  - The guest programs its virtual (GPA) decoder and QEMU maps the memory at
-    commit time.
-  - The host owns the HPA, resolved before the guest sees the device.
-  - The committed decoder is the fast path this series ships. The
-    guest-programmed uncommitted case is delivered by cxl-core resolving the
-    range at enumeration, not by a QEMU or vfio dynamic branch, so it is a
-    later cxl-core item this series does not depend on.
-  - FIRMWARE_COMMITTED is dropped; the cap is no longer exposed.
-  - The one-endpoint, non-interleaved, no-switch topology is enforced at
-    realize.
-  - PCI/BAR configuration and CXL.mem stay independent.
-
-
-Validation
-----------
-
-- Every patch passes scripts/checkpatch.pl --codespell --strict
-  (patch 1 carries the expected imported-from-Linux warning)
-- The series applies cleanly on the stated base.
-- Ran couple of rounds of masoncl/review-prompts on this series before posting.
-
-
-Pending items
--------------
-
-Future enhancements for the multi-decoder, interleaved devices and switched
-topologies.
-
-Trapped CXL RAS registers are planned as a new VFIO region subtype that the same
-region-by-subtype detection already handles, not as a change to the
-component-register cap.
-
-The bios-tables test refresh for the new _DSM is still to be added.
-
-
-References
-----------
-
-[1] [RFC 0/9] QEMU: CXL Type-2 device passthrough via vfio-pci
-https://lore.kernel.org/linux-cxl/20260427181235.3003865-1-mhonap@nvidia.com/
-
-[2] [PATCH v4 00/27] vfio/pci: Add CXL Type-2 device passthrough support
-https://lore.kernel.org/linux-cxl/20260813093631.2288172-1-mhonap@nvidia.com/
-
-
-Manish Honap (10):
-  linux-headers: Update vfio.h for CXL Type-2 passthrough
-  hw/vfio/region: Add vfio_region_setup_with_ops()
-  hw/vfio/pci: Detect a CXL Type-2 device and read its geometry
-  hw/vfio/pci: Enforce the passthrough topology for a CXL device
-  hw/vfio/pci: Back the CXL memory with a RAM-device region
-  hw/vfio/pci: Bind a CXL device to its fixed memory window
-  hw/vfio/pci: Map the CXL memory on the guest decoder commit
-  docs/cxl: Document CXL Type-2 device passthrough
-  hw/arm/smmu-common: Allow pxb-cxl as an SMMUv3 primary bus
-  hw/pci-host: Emit a _DSM on pxb-cxl to preserve firmware PCI config
-
- docs/system/devices/cxl.rst               |  46 ++
- hw/acpi/Kconfig                           |   1 +
- hw/acpi/cxl-stub.c                        |   2 +-
- hw/acpi/cxl.c                             |   4 +-
- hw/acpi/pci.c                             |  40 ++
- hw/arm/smmu-common.c                      |  19 +-
- hw/i386/acpi-build.c                      |   2 +-
- hw/pci-bridge/pci_expander_bridge_stubs.c |   6 +
- hw/pci-host/gpex-acpi.c                   |  42 +-
- hw/vfio/pci.c                             | 742 ++++++++++++++++++++++
- hw/vfio/pci.h                             |  24 +
- hw/vfio/region.c                          |  27 +-
- hw/vfio/vfio-region.h                     |   3 +
- include/hw/acpi/cxl.h                     |   2 +-
- include/hw/acpi/pci.h                     |   1 +
- linux-headers/linux/vfio.h                |  22 +
- 16 files changed, 927 insertions(+), 56 deletions(-)
-
-
-base-commit: 055952c0aa91ea7a00d135b73f78fc0b13442d6c
+diff --git a/hw/arm/aspeed.c b/hw/arm/aspeed.c
+index a9238e6217..8fa16b3831 100644
+--- a/hw/arm/aspeed.c
++++ b/hw/arm/aspeed.c
+@@ -24,10 +24,6 @@
+ #include "hw/core/qdev-clock.h"
+ #include "system/system.h"
+ 
+-static struct arm_boot_info aspeed_board_binfo = {
+-    .board_id = -1, /* device-tree-only board */
+-};
+-
+ #define AST_SMP_MAILBOX_BASE            0x1e6e2180
+ #define AST_SMP_MBOX_FIELD_ENTRY        (AST_SMP_MAILBOX_BASE + 0x0)
+ #define AST_SMP_MBOX_FIELD_GOSIGN       (AST_SMP_MAILBOX_BASE + 0x4)
+@@ -206,13 +202,14 @@ static void aspeed_machine_init(MachineState *machine)
+         memory_region_add_subregion(get_system_memory(),
+                                     AST_SMP_MAILBOX_BASE, smpboot);
+ 
+-        aspeed_board_binfo.write_secondary_boot = aspeed_write_smpboot;
+-        aspeed_board_binfo.secondary_cpu_reset_hook = aspeed_reset_secondary;
+-        aspeed_board_binfo.smp_loader_start = AST_SMP_MBOX_CODE;
++        bmc->bootinfo.write_secondary_boot = aspeed_write_smpboot;
++        bmc->bootinfo.secondary_cpu_reset_hook = aspeed_reset_secondary;
++        bmc->bootinfo.smp_loader_start = AST_SMP_MBOX_CODE;
+     }
+ 
+-    aspeed_board_binfo.ram_size = machine->ram_size;
+-    aspeed_board_binfo.loader_start = sc->memmap[ASPEED_DEV_SDRAM];
++    bmc->bootinfo.board_id = -1; /* device-tree-only board */
++    bmc->bootinfo.ram_size = machine->ram_size;
++    bmc->bootinfo.loader_start = sc->memmap[ASPEED_DEV_SDRAM];
+ 
+     if (amc->i2c_init) {
+         amc->i2c_init(bmc);
+@@ -248,7 +245,7 @@ static void aspeed_machine_init(MachineState *machine)
+         aspeed_load_vbootrom(bmc->soc, bios_name, &error_abort);
+     }
+ 
+-    arm_load_kernel(ARM_CPU(first_cpu), machine, &aspeed_board_binfo);
++    arm_load_kernel(ARM_CPU(first_cpu), machine, &bmc->bootinfo);
+ }
+ 
+ void aspeed_create_pca9552(AspeedSoCState *soc, int bus_id, int addr)
+diff --git a/include/hw/arm/aspeed.h b/include/hw/arm/aspeed.h
+index a00238ed74..54f0d7643d 100644
+--- a/include/hw/arm/aspeed.h
++++ b/include/hw/arm/aspeed.h
+@@ -12,6 +12,7 @@
+ #include "hw/core/boards.h"
+ #include "qom/object.h"
+ #include "hw/arm/aspeed_soc.h"
++#include "hw/arm/boot.h"
+ 
+ typedef struct AspeedMachineState AspeedMachineState;
+ 
+@@ -42,6 +43,7 @@ struct AspeedMachineState {
+     char *fmc_model;
+     char *spi_model;
+     uint32_t hw_strap1;
++    struct arm_boot_info bootinfo;
+ };
+ 
+ struct AspeedMachineClass {
 -- 
-2.25.1
+2.53.0
 
 

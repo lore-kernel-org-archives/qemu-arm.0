@@ -4,105 +4,135 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 43712C5CFDB
-	for <qemu-arm@archiver.kernel.org>; Thu, 13 Aug 2026 21:10:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 70334C5CFCF
+	for <qemu-arm@archiver.kernel.org>; Fri, 14 Aug 2026 02:09:06 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wuchD-0006bk-MH; Thu, 13 Aug 2026 17:10:41 -0400
+	id 1wuhLq-0000vF-6t; Thu, 13 Aug 2026 22:08:56 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <nieklinnenbank@gmail.com>)
- id 1wuchC-0006b7-Gn
- for qemu-arm@nongnu.org; Thu, 13 Aug 2026 17:10:38 -0400
-Received: from mail-oo1-xc2e.google.com ([2607:f8b0:4864:20::c2e])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <nieklinnenbank@gmail.com>)
- id 1wuchA-0007x1-HJ
- for qemu-arm@nongnu.org; Thu, 13 Aug 2026 17:10:38 -0400
-Received: by mail-oo1-xc2e.google.com with SMTP id
- 006d021491bc7-6aea94f96c4so263759eaf.2
- for <qemu-arm@nongnu.org>; Thu, 13 Aug 2026 14:10:35 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1786655435; cv=none;
- d=google.com; s=arc-20260327;
- b=VInJcFCH9lxjbg7kidSs+gJAjrCbfxJpaTHj+H++GNP5CwdGc5UAJvln2oRQZPIyGA
- 5J3cgK7y1moQN7ipBLOA6PcGRt1f6LHAWi3/LttmzsEwkmCE3mIlZG7oWA1WiuFdQTPV
- qBbfrHhTUF7y2dXoLiUK3no88YOoxzDk98Uo5t31PnQ/0wDeI1bBcatAnmBqU86ygH8V
- ZeUNOT/QKkuX6x4BkeqbfmDiCU1o1YxSiPQbFlqlYLEER1Jw1u2FdoFgA8aClvQsosKg
- z5Yy2DfNkSjZ2mPaIDeYKF8GVE16a8kCqHBSF7VtTxjIhVyfrfWtRt0yoLH0bK0NGzkN
- jFmA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
- s=arc-20260327; 
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:dkim-signature;
- bh=f56CoFxFguticBzD2aaadsF5hA52TrO6cNg9NRRTkBw=;
- fh=5cnTeUERQlkPIHs/23eL05ogKCjeVNFOHoyzDntxoqI=;
- b=ptKKD0O/0P5PtSyscJbNVgByXT3pC8ypKYo3mKCySDZxuJCLzCjhYzAXMzmUYNnpoO
- lUBoMtb3PHMhVB1uD6IqDsRqyF19iNfSeKVk2C6HGcPb15cvL1Yqh96whWLNyLXwGHyb
- 6UQxvK2cizFDE6M5lL2vute2cYA7QXBvE9zi0GgmxnY8Vx9WX07Som//TLkA1Je1zBjR
- RIzmT67ZZ+0QejXFrfgQzRKcDNqj+LmjKGOUo/M/+34mNNQ2E9jHHgUCyoQyQ9dQESKe
- jPiyQbF0JUCRcbDKEXyfBAKaITm2UFfjdG1oPIS7TUIMpp5k0IfFkVUgBZ4SvDn1mR/6
- xy4w==; darn=nongnu.org
-ARC-Authentication-Results: i=1; mx.google.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20251104; t=1786655435; x=1787260235; darn=nongnu.org;
- h=content-type:cc:to:subject:message-id:date:from:in-reply-to
- :references:mime-version:from:to:cc:subject:date:message-id:reply-to
- :content-type; bh=f56CoFxFguticBzD2aaadsF5hA52TrO6cNg9NRRTkBw=;
- b=QIDAyOV8xBZd64D5lT5e/y0RboNXl3XQgpJ64VtPoHWDyaTHBvrfLc3+D/ZXMzMS4v
- aTxYxnj5Eh4wMMuW/lkXHCh1uGzuA08GvdeJZVprJuuWSknpu6r+G4KxIw0iqAJoACqx
- hSLq2m1uNAVkWAH/FBVVajfJEDpFO2uTMxS8qyO7pMFMdI1HHfxhFlAYPRfMbKr0/w5k
- bkxoSLDCgKxI7i5aULHo+pX8UHYJRAHllX3v0CgkkKZqOlgqKfbrrXGgs7Bs7RyeKLOx
- a2LqV+gvvN6iikvM7ZHLuDrybLNOCORRFrCUDMuQPuuBMGC08AtDy/zzVD22QmLT2vMi
- QzlQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1786655435; x=1787260235;
- h=content-type:cc:to:subject:message-id:date:from:in-reply-to
- :references:mime-version:x-gm-gg:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to:content-type;
- bh=f56CoFxFguticBzD2aaadsF5hA52TrO6cNg9NRRTkBw=;
- b=BhbOTeJUaJZTP+fssfumrNbnwLrrtAszfMsXf3xDjJ/4txdMVlC+vpG5fmAXSsOcKW
- pLUpgsu3EiDJkxzUODxIuVauY52BYREvQIdABjLz2+Mhvo/1HT21M+pEZAftwVq7ogwI
- BsebK9jZXJ/ke45cjPHI9M0zj32FFAt8TSsqUDv/DQxRVc1rHKWsy7AZ1UReDdtfzKCO
- /Ed+Uiyt7BimDhNJcdTxDTvp2dYgun9bedjDB+JgsBGF9uKQnqaH6wkUU1lL99kijHSl
- zVJKSEBcx+ru0Vt7cUf9FCgiyaOZNEdSPYEX0mTpaQ46TmPgfoxdwiUH8UEr/2Otl0dO
- XtvQ==
-X-Forwarded-Encrypted: i=1;
- AHgh+RoVYpFZoSNaZ7BDFQ7hzQFvRr72/49uyXRH5VgQhLdZqT9+C7y62Ai6MQMSmgr0fLnwTZph0XebQg==@nongnu.org
-X-Gm-Message-State: AOJu0YznfqONlLXyz/TdlryLYCkX9IAXchD33JOhuH3/+RBL4QoQfWnx
- OpaaXVM8XxesRe7xxeLCbpLkldx3yIc4jmttWXSc/s/4TAWi8Nh46mQdD3uI2TzOhF/YCATy051
- 4G9fcNUD7ud+Dg5uxbRFUJ4Mm2THRbmg=
-X-Gm-Gg: AR+sD12A6jMPRz0Qlffb6T1697QypkQqrzqQE9MLARLvXFrdZAsg4QJ04ve15ZhegGt
- 9U9DDOHSb/6WQBc8O0mUHRRRsG0Wsr75lv3DmQOuH+Bd9+9MFZVNc814qRx7o4wfW6a/6HjAOAG
- YS32dBzI85vn1QONyMsYfS2YQiyBz4TQ5dHr6UWC628GQ6lwbmMdXpB9eDEvaMgxw2R1ZOvSEHT
- cI2G7aQKpAcivEmdvk75ISJaeKwZsQMfaKvkAEdKm54GeYeplFWgAa30dPn8alSVwuxs9IjTo1M
- 8lb938LltwWdpmUHNJV8vk1vNWpWj656svtNzH/rRJsYh9jEjvpjuIkv76mSVMAaRNXao8ue0bt
- w2sWTCJljmmBWLbkuNQcmm0j+rE/2Vg==
-X-Received: by 2002:a05:6820:4ccc:b0:6a3:7341:f6ed with SMTP id
- 006d021491bc7-6b0d5fca9famr1250294eaf.1.1786655434868; Thu, 13 Aug 2026
- 14:10:34 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
+ id 1wuhLj-0000uy-UE; Thu, 13 Aug 2026 22:08:48 -0400
+Received: from mail-japaneastazlp170120005.outbound.protection.outlook.com
+ ([2a01:111:f403:c405::5] helo=TYPPR03CU001.outbound.protection.outlook.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
+ id 1wuhLh-0007wD-Gc; Thu, 13 Aug 2026 22:08:47 -0400
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=rGpNaAvP646ypAKgtzriYpiuTk4Em9p024ZWTUbKsR5A7P3U3rT4H4ccTy1C09zh8oZWHMnrv4SvrXI4ScXkfnPFQePfEJGqgfXOcba0EHrCKalYiokRZEY2H/Og2c2KSHEQmEL7PwfslyH2Bhr+/17jqIB1EYgpbIMi9PEZoZra/gvOTC+gkW1IyWgbY5OG9PZK0fL+ZrhlDasBXVZXVOFPufOUUeJuyIaT5wqi9PxLvfGWQ5Nk/Ny4cbDzS1m89Nw18h/dLsExfW/HIE9liSERvBtgkRtvPTZ/ywLnimXPUEZEDgpe8Q/5ebFQcTXQjDinm+kl522jdlbXVyHPog==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=fyVJmTNVdKeeopOE8KUf/Ts927qrJBpsHdd9eI+iqo4=;
+ b=TaHhX6DZYfOtZRJKxCYSNfgYyYANLqPlOcMscB70bjEWxKDiarQknCifu5YYzrtnmvuAPwMixUbt0Qrcf9Az1Y9IZ0ok7VV69cP0wE4Q9dTAr1ywc2Cvmzw5AUKS9DBHRvkw4shH2/AZs7o0uIkN244gnQZ47FUpMCmpRLIj76wNC1RAH2becew4Id/cUz8ft6s1LoTpd8JR8n41YWxkeeGeUmig3zckPDO21wlOswA2TRwCZ0FjNqmdoS3cTJETD0vuCcyL7gNHL6gD1jHQkfxGq7al7ogr6DAWjdzvL27zXNB/oJlhZuO4AsIEu7X04WfTmzJNARswtqIOiMFiIA==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=aspeedtech.com; dmarc=pass action=none
+ header.from=aspeedtech.com; dkim=pass header.d=aspeedtech.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=aspeedtech.com;
+ s=selector1;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=fyVJmTNVdKeeopOE8KUf/Ts927qrJBpsHdd9eI+iqo4=;
+ b=E8OJ379UhQhfbG0n3sKPTVLsgcZ5forPEBxUEeUrFCP8RGEjYM7DAe9Qjn05Pn7Vq0Ev5PfQj8hitfjBVMrp/uI/grSq0DR3sDCV39Q8Y6zYgUzeZ3JVXHY6nM8lmOXzNh17jjCPsruGrQ8CnOp35ze0vjrtV06Cj/WvW99wGZX6GWaqBsYNCDKMmZsvpoMxWNAQRpLMgJcMN5JAaObIJ6pksOv+wFMJe+AGD7SJEFwZjc8qQ10FdEkXhtpKzhir+v4FMPIP5ITWn5ac5g+/ubgBaNDRFZ4bG7kFvBESNUgeF7mEOwZkHjf1cSw5yPyYgQAUREmK8r7pz4mgvPZZfQ==
+Received: from TYZPR06MB4980.apcprd06.prod.outlook.com (2603:1096:400:1cc::10)
+ by SE1PPF997DECE08.apcprd06.prod.outlook.com (2603:1096:108:1::421)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.21.292.25; Fri, 14 Aug
+ 2026 02:08:37 +0000
+Received: from TYZPR06MB4980.apcprd06.prod.outlook.com
+ ([fe80::ea8a:7cb7:4822:2fb3]) by TYZPR06MB4980.apcprd06.prod.outlook.com
+ ([fe80::ea8a:7cb7:4822:2fb3%6]) with mapi id 15.21.0315.014; Fri, 14 Aug 2026
+ 02:08:37 +0000
+From: Jamin Lin <jamin_lin@aspeedtech.com>
+To: "Mikail.Sadic@ibm.com" <Mikail.Sadic@ibm.com>,
+ =?iso-8859-1?Q?C=E9dric_Le_Goater?= <clg@kaod.org>, Peter Maydell
+ <peter.maydell@linaro.org>, Steven Lee <steven_lee@aspeedtech.com>, Troy Lee
+ <leetroy@gmail.com>, Kane Chen <kane_chen@aspeedtech.com>, Andrew Jeffery
+ <andrew@codeconstruct.com.au>, Joel Stanley <joel@jms.id.au>, "open
+ list:ASPEED BMCs" <qemu-arm@nongnu.org>, "open list:All patches CC here"
+ <qemu-devel@nongnu.org>
+CC: Jamin Lin <jamin_lin@aspeedtech.com>, Troy Lee <troy_lee@aspeedtech.com>, 
+ Mikail Sadic <mikail.sadic@ibm.com>
+Subject: [PATCH v2] hw/i2c/aspeed_i2c: Latch received bytes for SMBus block
+ reads
+Thread-Topic: [PATCH v2] hw/i2c/aspeed_i2c: Latch received bytes for SMBus
+ block reads
+Thread-Index: AQHdK5HRkJd3Xmgm+k+UKKVBfqUr1w==
+Date: Fri, 14 Aug 2026 02:08:37 +0000
+Message-ID: <20260814020836.3119613-1-jamin_lin@aspeedtech.com>
+Accept-Language: zh-TW, en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+authentication-results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=aspeedtech.com;
+x-ms-publictraffictype: Email
+x-ms-traffictypediagnostic: TYZPR06MB4980:EE_|SE1PPF997DECE08:EE_
+x-ms-office365-filtering-correlation-id: 4812e988-aa8b-4803-306a-08def9a8f3ab
+x-ms-exchange-senderadcheck: 1
+x-ms-exchange-antispam-relay: 0
+x-microsoft-antispam: BCL:0;
+ ARA:13230040|23010399003|1800799024|366016|376014|10067099003|56012099006|6133799003|921020|18002099003|38070700021;
+x-microsoft-antispam-message-info: VUz3IK10Uboqu8UIfoAxyhtVI0SA/ASNH+ziTqCLJ8PAw7uRTW/vvRi9/ZxssttFJwq57johKzoSLcf0/fccR2E4tZHPuBINM/mf8+3Epa9hKLLw/x5tcMibo/iHJaHwBbkhLyjb8utqdXC8HA3xplkenCylKZNxNZKc2yQa/GmBFkUc8sZc+QINy15rWPt4FcGPEgxkGqPZBTFzLNAPODN7GzpPiMYTwtxwMX1cNMLmUIV2xVPztVu/w6O4w93sStaxLcjBBwh1nZ0IljZuE/z3AcUYxJYjdL8kC1oE3PbH43lZsvQ/9fnIIQUy0E6OkaZLJHZbO0Luqlnoo8GTFqzoS3uASMs6qlT8p6aur55Ni3mMrnFNSv5Je0Kva4kv8E4Vda+0cs9yVzpRUiyJMmYd12IauIcQuqGdlu6NsTOS2imGVlnES61tRha04tr4lO6uiWNvQYxTF2GwS772bWNIkILiAJoCm8l5+dfuw4D/ZP1zvAT4qrtnlwdL/6WQt4FMKuxzDqYmfrQwfL2o5ogOlNVzP+fNCiFtCllbGAM5PEFL5MkQbBMPgIgh6//PbfGyJTrWUYIXijrmqC4TUG9kSMUwW/420MH3LsHPYJCXCmvYnlf1ihAO/Yf8ksHVRYtGJPNb+k0JlGMbpsgOSlrDYM+am2ETY8cPRhE36n3dqAS7b1q7BItMNLACRJiHvv6D1WN1DTX6sDxlXKDVhYc7cIlX+CHaZxOWK5WmqCeA4/KC8FG27Jlpuu0dn7/t
+x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:TYZPR06MB4980.apcprd06.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(13230040)(23010399003)(1800799024)(366016)(376014)(10067099003)(56012099006)(6133799003)(921020)(18002099003)(38070700021);
+ DIR:OUT; SFP:1102; 
+x-ms-exchange-antispam-messagedata-chunkcount: 1
+x-ms-exchange-antispam-messagedata-0: =?iso-8859-1?Q?Wq96VtwQzl+IO8E5TaqzquUz7g1K6/C53w/kQaMv6mlXwnO7DnBepBCJa5?=
+ =?iso-8859-1?Q?jvUwTBIT6aeeZC0S+IjlCenvhpDeIS7WjHvz7nX0wbNp5Cn5YRKnU9MPw2?=
+ =?iso-8859-1?Q?jE9FhpvbzJX0kdmTKNJZ+UwtaA1pUEB0YuOiJYbOdVk6JZ/dojz7ZLEGRX?=
+ =?iso-8859-1?Q?3cbREZEqTKi92GzS7EPanq5CGOvoSConCEgJ8mW+6tQ6N/N9cu3JfrUx3Z?=
+ =?iso-8859-1?Q?LuIdfO5+sxKb6ti7M7ngXhKWaFc7zSYXd/3kZf8QUlvQacC03FpvAhYgzt?=
+ =?iso-8859-1?Q?fZTTA3blQyunQiPDGhh/CCeb2T8d3iFD+1QHZina2R/jOqe1cF47wiBDx/?=
+ =?iso-8859-1?Q?0W388C6SbE9DMjH9qCSDvnzGIdf3AAAI8vta+vw77Q4QXqUP/qKAfCJYBL?=
+ =?iso-8859-1?Q?9JaVe0RmJnfDnYSs2RoVU3yJD+Rvko5CKCa6/t7RLzg7bBBAPsTeGhuEfC?=
+ =?iso-8859-1?Q?hvMBloIbXGPXUK8Gcaj29gmk33uiripCZ8IXxkHNl3gzlljLNJB3b6tKj4?=
+ =?iso-8859-1?Q?hjfHHlz6puID89C5e7LE7qTPrIFtf6IAqHrXwBUBQbpjzun3nIFw/r7NB5?=
+ =?iso-8859-1?Q?XJXXOARPkD+Zyb4XlmhFPlHwhAduiH7ifoLxEwyHFuaDqz8jAXd5WzV+g9?=
+ =?iso-8859-1?Q?MFGNAwnbCBmITLpIUBw/mkpIy5zWwDttQHoud6jiK5SWfk9MJUEEE/URU3?=
+ =?iso-8859-1?Q?ejNtj++/nSPmmPnRcJ5J0nceomXs4Bo2A3gZ9u8ltJ6KZVT0bCqymcEsZx?=
+ =?iso-8859-1?Q?06MaJf68/JcBv5XtvNPsq0GZ/k0HsvRGd9KIEc9wDVKCURn8I/zHeqTMJS?=
+ =?iso-8859-1?Q?J8W19zNghGN8Z8zA7lgu+1fdSInkMW1SLD+yqFppltw6bsN0Xuw9QG49t/?=
+ =?iso-8859-1?Q?on6PGcdH2iru20WOwi9XviXx9TPk00D0LIu7sRKst/6DMxHbfH7PxrH97X?=
+ =?iso-8859-1?Q?8mnUFy110TXai5S+jUz3NSF6x+qucTazpHVIpZlZ0dCP9McSDYa0FKVm9O?=
+ =?iso-8859-1?Q?LPkpcOdaX9g8AQ31E+eoXIqsUIz5uIsD+t/jnLu32M1d21vYYMXNwQ7rE+?=
+ =?iso-8859-1?Q?es98jG+NoT+jCfuR6f4S4ak5TEeTklL0wdAZZJi1cjIdpSnUWOfrmznEaI?=
+ =?iso-8859-1?Q?TJfNbDS5lb1L9YU3y57gNPqHQXyyzHvwPwUjgQ+VA7NUfmDCxwLcvHUtMt?=
+ =?iso-8859-1?Q?NhTlDoDPUavL96zaNysIDo2oXT+n1mmm5h3B+rwWBcIkdOx37ZzSqxtuRQ?=
+ =?iso-8859-1?Q?NOB79sYmAhLJNcu7AGv+o+sGTdfegjAXTolch80AtftbYpjTaaB7CHNo/v?=
+ =?iso-8859-1?Q?TAefq9XqP3O+AJ4z1ZtAXqm7uiJpUv9sAQ8zzfJjNHb18ALZIz6PXFKG0S?=
+ =?iso-8859-1?Q?6YNirMm3FYOFICVVjxmCBpeaxq1lTf44j7iAwqOXRGy63FTZVGW6VjYgGA?=
+ =?iso-8859-1?Q?MdFCzEitncxDgCZaIuxCXTigJva6ogDLKCuVomAHftEu7asOZ08ns/axvo?=
+ =?iso-8859-1?Q?YM+qv+EVkvnIW+nHvj61wxrCme5G9qhr6odwgmLhdCAgqE38mnMPICjEJo?=
+ =?iso-8859-1?Q?IWNRIKUjEAZ/Cvy90h1hz7teBlBWHsCK+UJCc4P2lN7LRzOZZuq+jjnID2?=
+ =?iso-8859-1?Q?TPxkE6o/l2rBsj+X/J+5YevpiYdfUoSpK7iplP0TdU6gXWpaEUFtWE7Axm?=
+ =?iso-8859-1?Q?EHKy2znCY7/E4LTz7LfzR0qdjGuhwsy8OX5RPATXd7Q/pUwV44aUKYEZBb?=
+ =?iso-8859-1?Q?dpndCEDgT7oL/WKPzJ5z8acUeokSYBArNoncKEa7WsdJnAG8HLeQAkLV1P?=
+ =?iso-8859-1?Q?Ajs3Sw0Z5w=3D=3D?=
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
 MIME-Version: 1.0
-References: <20260813154918.996812-1-bin.meng@processmission.com>
- <20260813154918.996812-17-bin.meng@processmission.com>
-In-Reply-To: <20260813154918.996812-17-bin.meng@processmission.com>
-From: Niek Linnenbank <nieklinnenbank@gmail.com>
-Date: Thu, 13 Aug 2026 23:10:23 +0200
-X-Gm-Features: AUfX_mxetUI3LzQGsQe_zY8IZFIeRFbSFh3N1oolDgO64cqiD4UkDiLhv3x6PYQ
-Message-ID: <CAPan3WoTubzEHGdCKs0tbDKLAms3Y9JG2QVd2Uydh4sVec7u4w@mail.gmail.com>
-Subject: Re: [PATCH 16/20] hw/arm: orangepi: Store boot info in the machine
- state
-To: Bin Meng <bin.meng@processmission.com>
-Cc: QEMU <qemu-devel@nongnu.org>, Peter Maydell <peter.maydell@linaro.org>, 
- qemu-arm <qemu-arm@nongnu.org>
-Content-Type: multipart/alternative; boundary="000000000000880a240658f42277"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::c2e;
- envelope-from=nieklinnenbank@gmail.com; helo=mail-oo1-xc2e.google.com
+X-Exchange-RoutingPolicyChecked: n/nc947jelgg+Ejbh8r62vU9UlOe9uo7OrE/Tg/aJpfmQbBFSAqnN/9TCW5OEbNKoIpMA/UXfDEUUxJqwL0tP13xzbmTut5HfxH+X47e1TvOsxQ7xlMzDTdfwGczn0gSSp4DKvoA86hqqUdLlAkgRO/g+V0MD7Cj+lxYWaY6i9G0NcKozKIRBHpQrYGwgyzgeqhgRqKTBlCdDDc6zpycuqBZlxx6VEhLkUDPnQZcVfku4XdpQTFZmYxDAecTnTRJF75uq5sReWvf/5xvL1lp3ywr6nCxikbqV/I+cjuM1tE6f+eZ1/dr9PX0Wc9Q443M30xCUQXiZ7qRAxCuwwK0QQ==
+X-OriginatorOrg: aspeedtech.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-AuthSource: TYZPR06MB4980.apcprd06.prod.outlook.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 4812e988-aa8b-4803-306a-08def9a8f3ab
+X-MS-Exchange-CrossTenant-originalarrivaltime: 14 Aug 2026 02:08:37.1072 (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: 43d4aa98-e35b-4575-8939-080e90d5a249
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: +x/bJ0lZXZKi+vjunOblZ98lE9aWSHiSOWB8HA75CWAfju1kp0lVKRLhQwPqYOztr9o41XXni84KubMRYrrYF9AfVTsjKAcw1qwVraLv+FA=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: SE1PPF997DECE08
+Received-SPF: pass client-ip=2a01:111:f403:c405::5;
+ envelope-from=jamin_lin@aspeedtech.com;
+ helo=TYPPR03CU001.outbound.protection.outlook.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- HTML_MESSAGE=0.001, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_PASS=-0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -119,220 +149,173 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
---000000000000880a240658f42277
-Content-Type: text/plain; charset="UTF-8"
-
-Op do 13 aug. 2026 17:51 schreef Bin Meng <bin.meng@processmission.com>:
-
-> arm_load_kernel() keeps a pointer to the boot info struct for the
-> lifetime of the VM, so the struct logically belongs to the machine
-> rather than to a file scoped static object.
->
-> Move it into a new OrangePiMachineState and register the machine type
-> explicitly instead of through the DEFINE_MACHINE_ARM macro.
->
-> As in the xlnx-zcu102 and raspi machines, the boot info belongs to
-> the machine rather than to a static object:
->
-> 4d1ac883a7 ("hw/arm: xlnx-zcu102: Move arm_boot_info into XlnxZCU102")
-> 0f15c6e338 ("hw/arm/raspi: Move arm_boot_info structure to
-> RaspiMachineState")
->
-> Signed-off-by: Bin Meng <bin.meng@processmission.com>
->
-Reviewed-by: Niek Linnenbank <nieklinnenbank@gmail.com>
-
----
->
->  hw/arm/orangepi.c | 37 ++++++++++++++++++++++++++++++-------
->  1 file changed, 30 insertions(+), 7 deletions(-)
->
-> diff --git a/hw/arm/orangepi.c b/hw/arm/orangepi.c
-> index d84443bb7b..5b2c13f364 100644
-> --- a/hw/arm/orangepi.c
-> +++ b/hw/arm/orangepi.c
-> @@ -28,10 +28,18 @@
->  #include "hw/arm/boot.h"
->  #include "hw/arm/machines-qom.h"
->
-> -static struct arm_boot_info orangepi_binfo;
-> +#define TYPE_ORANGEPI_MACHINE MACHINE_TYPE_NAME("orangepi-pc")
-> +OBJECT_DECLARE_SIMPLE_TYPE(OrangePiMachineState, ORANGEPI_MACHINE)
-> +
-> +struct OrangePiMachineState {
-> +    MachineState parent;
-> +
-> +    struct arm_boot_info bootinfo;
-> +};
->
->  static void orangepi_init(MachineState *machine)
->  {
-> +    OrangePiMachineState *opms = ORANGEPI_MACHINE(machine);
->      AwH3State *h3;
->      DriveInfo *di;
->      BlockBackend *blk;
-> @@ -98,14 +106,16 @@ static void orangepi_init(MachineState *machine)
->          /* Use Boot ROM to copy data from SD card to SRAM */
->          allwinner_h3_bootrom_setup(h3, blk);
->      }
-> -    orangepi_binfo.loader_start = h3->memmap[AW_H3_DEV_SDRAM];
-> -    orangepi_binfo.ram_size = machine->ram_size;
-> -    orangepi_binfo.psci_conduit = QEMU_PSCI_CONDUIT_SMC;
-> -    arm_load_kernel(&h3->cpus[0], machine, &orangepi_binfo);
-> +    opms->bootinfo.loader_start = h3->memmap[AW_H3_DEV_SDRAM];
-> +    opms->bootinfo.ram_size = machine->ram_size;
-> +    opms->bootinfo.psci_conduit = QEMU_PSCI_CONDUIT_SMC;
-> +    arm_load_kernel(&h3->cpus[0], machine, &opms->bootinfo);
->  }
->
-> -static void orangepi_machine_init(MachineClass *mc)
-> +static void orangepi_machine_class_init(ObjectClass *oc, const void *data)
->  {
-> +    MachineClass *mc = MACHINE_CLASS(oc);
-> +
->      static const char * const valid_cpu_types[] = {
->          ARM_CPU_TYPE_NAME("cortex-a7"),
->          NULL
-> @@ -125,4 +135,17 @@ static void orangepi_machine_init(MachineClass *mc)
->      mc->auto_create_sdcard = true;
->  }
->
-> -DEFINE_MACHINE_ARM("orangepi-pc", orangepi_machine_init)
-> +static const TypeInfo orangepi_machine_typeinfo = {
-> +    .name = TYPE_ORANGEPI_MACHINE,
-> +    .parent = TYPE_MACHINE,
-> +    .class_init = orangepi_machine_class_init,
-> +    .instance_size = sizeof(OrangePiMachineState),
-> +    .interfaces = arm_machine_interfaces,
-> +};
-> +
-> +static void orangepi_machine_register_types(void)
-> +{
-> +    type_register_static(&orangepi_machine_typeinfo);
-> +}
-> +
-> +type_init(orangepi_machine_register_types)
-> --
-> 2.53.0
->
->
-
---000000000000880a240658f42277
-Content-Type: text/html; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-
-<div dir=3D"auto"><div><div><br></div><div class=3D"gmail_quote gmail_quote=
-_container"><div dir=3D"ltr" class=3D"gmail_attr">Op do 13 aug. 2026 17:51 =
-schreef Bin Meng &lt;<a href=3D"mailto:bin.meng@processmission.com">bin.men=
-g@processmission.com</a>&gt;:<br></div><blockquote class=3D"gmail_quote" st=
-yle=3D"margin:0 0 0 .8ex;border-left:1px #ccc solid;padding-left:1ex">arm_l=
-oad_kernel() keeps a pointer to the boot info struct for the<br>
-lifetime of the VM, so the struct logically belongs to the machine<br>
-rather than to a file scoped static object.<br>
-<br>
-Move it into a new OrangePiMachineState and register the machine type<br>
-explicitly instead of through the DEFINE_MACHINE_ARM macro.<br>
-<br>
-As in the xlnx-zcu102 and raspi machines, the boot info belongs to<br>
-the machine rather than to a static object:<br>
-<br>
-4d1ac883a7 (&quot;hw/arm: xlnx-zcu102: Move arm_boot_info into XlnxZCU102&q=
-uot;)<br>
-0f15c6e338 (&quot;hw/arm/raspi: Move arm_boot_info structure to RaspiMachin=
-eState&quot;)<br>
-<br>
-Signed-off-by: Bin Meng &lt;<a href=3D"mailto:bin.meng@processmission.com" =
-target=3D"_blank" rel=3D"noreferrer">bin.meng@processmission.com</a>&gt;<br=
-></blockquote></div></div><div dir=3D"auto">Reviewed-by: Niek Linnenbank &l=
-t;<a href=3D"mailto:nieklinnenbank@gmail.com">nieklinnenbank@gmail.com</a>&=
-gt;</div><div dir=3D"auto"><br></div><div dir=3D"auto"><div class=3D"gmail_=
-quote gmail_quote_container"><blockquote class=3D"gmail_quote" style=3D"mar=
-gin:0 0 0 .8ex;border-left:1px #ccc solid;padding-left:1ex">
----<br>
-<br>
-=C2=A0hw/arm/orangepi.c | 37 ++++++++++++++++++++++++++++++-------<br>
-=C2=A01 file changed, 30 insertions(+), 7 deletions(-)<br>
-<br>
-diff --git a/hw/arm/orangepi.c b/hw/arm/orangepi.c<br>
-index d84443bb7b..5b2c13f364 100644<br>
---- a/hw/arm/orangepi.c<br>
-+++ b/hw/arm/orangepi.c<br>
-@@ -28,10 +28,18 @@<br>
-=C2=A0#include &quot;hw/arm/boot.h&quot;<br>
-=C2=A0#include &quot;hw/arm/machines-qom.h&quot;<br>
-<br>
--static struct arm_boot_info orangepi_binfo;<br>
-+#define TYPE_ORANGEPI_MACHINE MACHINE_TYPE_NAME(&quot;orangepi-pc&quot;)<b=
-r>
-+OBJECT_DECLARE_SIMPLE_TYPE(OrangePiMachineState, ORANGEPI_MACHINE)<br>
-+<br>
-+struct OrangePiMachineState {<br>
-+=C2=A0 =C2=A0 MachineState parent;<br>
-+<br>
-+=C2=A0 =C2=A0 struct arm_boot_info bootinfo;<br>
-+};<br>
-<br>
-=C2=A0static void orangepi_init(MachineState *machine)<br>
-=C2=A0{<br>
-+=C2=A0 =C2=A0 OrangePiMachineState *opms =3D ORANGEPI_MACHINE(machine);<br=
->
-=C2=A0 =C2=A0 =C2=A0AwH3State *h3;<br>
-=C2=A0 =C2=A0 =C2=A0DriveInfo *di;<br>
-=C2=A0 =C2=A0 =C2=A0BlockBackend *blk;<br>
-@@ -98,14 +106,16 @@ static void orangepi_init(MachineState *machine)<br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0/* Use Boot ROM to copy data from SD card=
- to SRAM */<br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0allwinner_h3_bootrom_setup(h3, blk);<br>
-=C2=A0 =C2=A0 =C2=A0}<br>
--=C2=A0 =C2=A0 orangepi_binfo.loader_start =3D h3-&gt;memmap[AW_H3_DEV_SDRA=
-M];<br>
--=C2=A0 =C2=A0 orangepi_binfo.ram_size =3D machine-&gt;ram_size;<br>
--=C2=A0 =C2=A0 orangepi_binfo.psci_conduit =3D QEMU_PSCI_CONDUIT_SMC;<br>
--=C2=A0 =C2=A0 arm_load_kernel(&amp;h3-&gt;cpus[0], machine, &amp;orangepi_=
-binfo);<br>
-+=C2=A0 =C2=A0 opms-&gt;bootinfo.loader_start =3D h3-&gt;memmap[AW_H3_DEV_S=
-DRAM];<br>
-+=C2=A0 =C2=A0 opms-&gt;bootinfo.ram_size =3D machine-&gt;ram_size;<br>
-+=C2=A0 =C2=A0 opms-&gt;bootinfo.psci_conduit =3D QEMU_PSCI_CONDUIT_SMC;<br=
->
-+=C2=A0 =C2=A0 arm_load_kernel(&amp;h3-&gt;cpus[0], machine, &amp;opms-&gt;=
-bootinfo);<br>
-=C2=A0}<br>
-<br>
--static void orangepi_machine_init(MachineClass *mc)<br>
-+static void orangepi_machine_class_init(ObjectClass *oc, const void *data)=
-<br>
-=C2=A0{<br>
-+=C2=A0 =C2=A0 MachineClass *mc =3D MACHINE_CLASS(oc);<br>
-+<br>
-=C2=A0 =C2=A0 =C2=A0static const char * const valid_cpu_types[] =3D {<br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0ARM_CPU_TYPE_NAME(&quot;cortex-a7&quot;),=
-<br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0NULL<br>
-@@ -125,4 +135,17 @@ static void orangepi_machine_init(MachineClass *mc)<br=
->
-=C2=A0 =C2=A0 =C2=A0mc-&gt;auto_create_sdcard =3D true;<br>
-=C2=A0}<br>
-<br>
--DEFINE_MACHINE_ARM(&quot;orangepi-pc&quot;, orangepi_machine_init)<br>
-+static const TypeInfo orangepi_machine_typeinfo =3D {<br>
-+=C2=A0 =C2=A0 .name =3D TYPE_ORANGEPI_MACHINE,<br>
-+=C2=A0 =C2=A0 .parent =3D TYPE_MACHINE,<br>
-+=C2=A0 =C2=A0 .class_init =3D orangepi_machine_class_init,<br>
-+=C2=A0 =C2=A0 .instance_size =3D sizeof(OrangePiMachineState),<br>
-+=C2=A0 =C2=A0 .interfaces =3D arm_machine_interfaces,<br>
-+};<br>
-+<br>
-+static void orangepi_machine_register_types(void)<br>
-+{<br>
-+=C2=A0 =C2=A0 type_register_static(&amp;orangepi_machine_typeinfo);<br>
-+}<br>
-+<br>
-+type_init(orangepi_machine_register_types)<br>
--- <br>
-2.53.0<br>
-<br>
-</blockquote></div></div></div>
-
---000000000000880a240658f42277--
+An SMBus block read takes the block length from the first byte of the=0A=
+transfer, and firmware reads that byte back from a register rather than=0A=
+from the transfer buffer. The receive paths never updated those=0A=
+registers, so block reads reported a bogus length.=0A=
+=0A=
+On AST2600 the driver reads the length from the receive byte buffer,=0A=
+I2CC_MS_TXRX_BYTE_BUF[15:8]. The datasheet documents that field as valid=0A=
+while the DMA buffer is not enabled. The byte mode receive path already=0A=
+updated it, but the pool buffer path did not, and the driver selects=0A=
+buffer mode by default.=0A=
+=0A=
+On AST2700 the driver reads the length from offset 0x84 instead.=0A=
+=0A=
+Add I2CC_BYTE_DATA_LOG at 0x84 and latch received bytes into it. The pool=
+=0A=
+buffer, DMA-to-pool and DMA-to-DRAM paths latch their first byte, the byte=
+=0A=
+mode path latches every byte. Each latch also updates the receive byte=0A=
+buffer unless RX_DMA_EN is set, which is the datasheet condition and does=
+=0A=
+not depend on FUNC_CFG_DMA_EN. The byte data log only exists on AST2700=0A=
+and AST1040, so it is gated on a class flag.=0A=
+=0A=
+Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>=0A=
+Tested-by: Mikail Sadic <mikail.sadic@ibm.com>=0A=
+---=0A=
+ hw/i2c/aspeed_i2c.c         | 38 +++++++++++++++++++++++++++++++++++--=0A=
+ include/hw/i2c/aspeed_i2c.h |  3 +++=0A=
+ 2 files changed, 39 insertions(+), 2 deletions(-)=0A=
+=0A=
+diff --git a/hw/i2c/aspeed_i2c.c b/hw/i2c/aspeed_i2c.c=0A=
+index 68bdcd0e25..0bc4bb6fbe 100644=0A=
+--- a/hw/i2c/aspeed_i2c.c=0A=
++++ b/hw/i2c/aspeed_i2c.c=0A=
+@@ -159,6 +159,7 @@ static uint64_t aspeed_i2c_bus_new_read(AspeedI2CBus *b=
+us, hwaddr offset,=0A=
+     case A_I2CS_INTR_CTRL:=0A=
+     case A_I2CS_DMA_LEN_STS:=0A=
+     case A_I2CS_INTR_STS:=0A=
++    case A_I2CC_BYTE_DATA_LOG:=0A=
+     case A_I2CC_VERSION_CTRL:=0A=
+         value =3D bus->regs[offset / sizeof(*bus->regs)];=0A=
+         break;=0A=
+@@ -334,6 +335,27 @@ static int aspeed_i2c_bus_send_dma_pool(AspeedI2CBus *=
+bus)=0A=
+     return ret;=0A=
+ }=0A=
+ =0A=
++/*=0A=
++ * Latch a received byte where firmware reads it back from: the receive by=
+te=0A=
++ * buffer, only valid while the DMA buffer is disabled, and the byte data =
+log,=0A=
++ * which AST2700 uses instead. Buffer and DMA transfers latch only the fir=
+st=0A=
++ * byte, read back as the SMBus block length.=0A=
++ */=0A=
++static void aspeed_i2c_bus_latch_rx_byte(AspeedI2CBus *bus, uint8_t data)=
+=0A=
++{=0A=
++    AspeedI2CClass *aic =3D ASPEED_I2C_GET_CLASS(bus->controller);=0A=
++    uint32_t reg_byte_buf =3D aspeed_i2c_bus_byte_buf_offset(bus);=0A=
++    uint32_t reg_cmd =3D aspeed_i2c_bus_cmd_offset(bus);=0A=
++=0A=
++    if (aic->has_byte_data_log) {=0A=
++        ARRAY_FIELD_DP32(bus->regs, I2CC_BYTE_DATA_LOG, RX_BUF, data);=0A=
++    }=0A=
++=0A=
++    if (!SHARED_ARRAY_FIELD_EX32(bus->regs, reg_cmd, RX_DMA_EN)) {=0A=
++        SHARED_ARRAY_FIELD_DP32(bus->regs, reg_byte_buf, RX_BUF, data);=0A=
++    }=0A=
++}=0A=
++=0A=
+ static void aspeed_i2c_bus_recv_dma_pool(AspeedI2CBus *bus)=0A=
+ {=0A=
+     AspeedI2CClass *aic =3D ASPEED_I2C_GET_CLASS(bus->controller);=0A=
+@@ -349,6 +371,9 @@ static void aspeed_i2c_bus_recv_dma_pool(AspeedI2CBus *=
+bus)=0A=
+         pool_base[offset + i] =3D i2c_recv(bus->bus);=0A=
+         trace_aspeed_i2c_bus_recv("BUFF", i + 1, bus->regs[reg_dma_len],=
+=0A=
+                                   pool_base[offset + i]);=0A=
++        if (i =3D=3D 0) {=0A=
++            aspeed_i2c_bus_latch_rx_byte(bus, pool_base[offset]);=0A=
++        }=0A=
+         bus->regs[reg_dma_len]--;=0A=
+         ARRAY_FIELD_DP32(bus->regs, I2CM_DMA_LEN_STS, RX_LEN, i + 1);=0A=
+     }=0A=
+@@ -443,6 +468,9 @@ static void aspeed_i2c_bus_recv(AspeedI2CBus *bus)=0A=
+             pool_base[i] =3D i2c_recv(bus->bus);=0A=
+             trace_aspeed_i2c_bus_recv("BUF", i + 1, pool_rx_count,=0A=
+                                       pool_base[i]);=0A=
++            if (i =3D=3D 0) {=0A=
++                aspeed_i2c_bus_latch_rx_byte(bus, pool_base[0]);=0A=
++            }=0A=
+         }=0A=
+ =0A=
+         /* Update RX count */=0A=
+@@ -460,7 +488,7 @@ static void aspeed_i2c_bus_recv(AspeedI2CBus *bus)=0A=
+         }=0A=
+ =0A=
+         aspeed_i2c_set_rx_dma_dram_offset(bus);=0A=
+-        while (bus->regs[reg_dma_len]) {=0A=
++        for (i =3D 0; bus->regs[reg_dma_len]; i++) {=0A=
+             MemTxResult result;=0A=
+ =0A=
+             data =3D i2c_recv(bus->bus);=0A=
+@@ -476,6 +504,10 @@ static void aspeed_i2c_bus_recv(AspeedI2CBus *bus)=0A=
+                 return;=0A=
+             }=0A=
+ =0A=
++            if (i =3D=3D 0) {=0A=
++                aspeed_i2c_bus_latch_rx_byte(bus, data);=0A=
++            }=0A=
++=0A=
+             bus->dma_dram_offset++;=0A=
+             bus->regs[reg_dma_len]--;=0A=
+             /* In new mode, keep track of how many bytes we RXed */=0A=
+@@ -489,7 +521,7 @@ static void aspeed_i2c_bus_recv(AspeedI2CBus *bus)=0A=
+     } else {=0A=
+         data =3D i2c_recv(bus->bus);=0A=
+         trace_aspeed_i2c_bus_recv("BYTE", 1, 1, bus->regs[reg_byte_buf]);=
+=0A=
+-        SHARED_ARRAY_FIELD_DP32(bus->regs, reg_byte_buf, RX_BUF, data);=0A=
++        aspeed_i2c_bus_latch_rx_byte(bus, data);=0A=
+     }=0A=
+ }=0A=
+ =0A=
+@@ -1758,6 +1790,7 @@ static void aspeed_1040_i2c_class_init(ObjectClass *k=
+lass, const void *data)=0A=
+     aic->has_dma =3D true;=0A=
+     aic->mem_size =3D 0x2000;=0A=
+     aic->has_dma64 =3D true;=0A=
++    aic->has_byte_data_log =3D true;=0A=
+     aic->dma_addr_lo_mask =3D 0x00ffffff;=0A=
+ }=0A=
+ =0A=
+@@ -1780,6 +1813,7 @@ static void aspeed_2700_i2c_class_init(ObjectClass *k=
+lass, const void *data)=0A=
+     aic->has_dma =3D true;=0A=
+     aic->mem_size =3D 0x2000;=0A=
+     aic->has_dma64 =3D true;=0A=
++    aic->has_byte_data_log =3D true;=0A=
+     aic->dma_addr_lo_mask =3D 0xffffffff;=0A=
+ }=0A=
+ =0A=
+diff --git a/include/hw/i2c/aspeed_i2c.h b/include/hw/i2c/aspeed_i2c.h=0A=
+index 05937a7a0b..480c6418fe 100644=0A=
+--- a/include/hw/i2c/aspeed_i2c.h=0A=
++++ b/include/hw/i2c/aspeed_i2c.h=0A=
+@@ -231,6 +231,8 @@ REG32(I2CS_DMA_TX_ADDR_HI, 0x68)=0A=
+     FIELD(I2CS_DMA_TX_ADDR_HI, ADDR_HI, 0, 7)=0A=
+ REG32(I2CS_DMA_RX_ADDR_HI, 0x6c)=0A=
+     FIELD(I2CS_DMA_RX_ADDR_HI, ADDR_HI, 0, 7)=0A=
++REG32(I2CC_BYTE_DATA_LOG, 0x84)=0A=
++    FIELD(I2CC_BYTE_DATA_LOG, RX_BUF, 0, 8)=0A=
+ REG32(I2CC_VERSION_CTRL, 0x94)=0A=
+     FIELD(I2CC_VERSION_CTRL, FUNC_CFG_DMA_EN, 2, 1)=0A=
+ =0A=
+@@ -302,6 +304,7 @@ struct AspeedI2CClass {=0A=
+     bool has_share_pool;=0A=
+     uint64_t mem_size;=0A=
+     bool has_dma64;=0A=
++    bool has_byte_data_log;=0A=
+     uint32_t dma_addr_lo_mask;=0A=
+ };=0A=
+ =0A=
+-- =0A=
+2.53.0=0A=
 

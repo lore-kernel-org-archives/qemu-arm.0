@@ -4,126 +4,144 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 26D1FC5CFDB
-	for <qemu-arm@archiver.kernel.org>; Fri, 14 Aug 2026 15:35:16 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CB225C5CFCF
+	for <qemu-arm@archiver.kernel.org>; Fri, 14 Aug 2026 15:35:31 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wutvw-0001if-2M; Fri, 14 Aug 2026 11:35:00 -0400
+	id 1wutwF-0001sd-AP; Fri, 14 Aug 2026 11:35:20 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1wutvt-0001hv-Oa
- for qemu-arm@nongnu.org; Fri, 14 Aug 2026 11:34:57 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ (Exim 4.90_1) (envelope-from <pierrick.bouvier@oss.qualcomm.com>)
+ id 1wutwD-0001sJ-SZ
+ for qemu-arm@nongnu.org; Fri, 14 Aug 2026 11:35:18 -0400
+Received: from mx0a-0031df01.pphosted.com ([205.220.168.131])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1wutvq-00076z-Pl
- for qemu-arm@nongnu.org; Fri, 14 Aug 2026 11:34:57 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1786721693;
- h=from:from:reply-to:reply-to:subject:subject:date:date:
- message-id:message-id:to:to:cc:cc:mime-version:mime-version:
- content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=7okoVJBLZWESdwgLg7Z5BVxv/ezHszMZAamDbVRePaQ=;
- b=Xx0bjIwHtuoxGa0tiwRMMMUwFyMhz2DRNNorgO4Tj7+soZwFLKFey7t1ftU1elo7xMQtu2
- 6e2nSogN7Lhuu7euc4fGSFlPIjNHHKMWEEF0na9NWJEJOeUSYDH8kWJT0aoPTMEZzXKSag
- k+8CLsanAOJXxM9xjcY5+hfEiv85tL8=
-Received: from mail-wm1-f71.google.com (mail-wm1-f71.google.com
- [209.85.128.71]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-365-FsIHkTzqOjCvuZ-_boG96w-1; Fri, 14 Aug 2026 11:34:51 -0400
-X-MC-Unique: FsIHkTzqOjCvuZ-_boG96w-1
-X-Mimecast-MFC-AGG-ID: FsIHkTzqOjCvuZ-_boG96w_1786721691
-Received: by mail-wm1-f71.google.com with SMTP id
- 5b1f17b1804b1-492488f8583so9573095e9.2
- for <qemu-arm@nongnu.org>; Fri, 14 Aug 2026 08:34:51 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <pierrick.bouvier@oss.qualcomm.com>)
+ id 1wutwB-0007GM-WA
+ for qemu-arm@nongnu.org; Fri, 14 Aug 2026 11:35:17 -0400
+Received: from pps.filterd (m0279867.ppops.net [127.0.0.1])
+ by mx0a-0031df01.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id
+ 67EDwx2Q2993216
+ for <qemu-arm@nongnu.org>; Fri, 14 Aug 2026 15:35:12 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qualcomm.com; h=
+ cc:content-transfer-encoding:content-type:date:from:in-reply-to
+ :message-id:mime-version:references:subject:to; s=qcppdkim1; bh=
+ utVvaMh4z80sbHWCUqbOZNquGsboFlauJg3XBGiQKp0=; b=LqJaufYQ8tySngxW
+ O60YLSQ51pp2K72qU0aLzU3D1lLh+QFqR7Rc+NG3HrHyOL2BNJN8cn2cUPaBaF4j
+ qj/RT5hEN9JlTLJENipFEZXxl1/aNP4MxHaYZdYYwfWLoFsB4BarDkBbvmctl5Wo
+ MQbAn672bNqEPAR3On04W6rwydX8TXTcVsE1ld/FQT5050mvUEuucNGQieV1KYuk
+ 7+TWyAeds/lCgwcCFUGShfoyUWXVKSKf6LwAwruYsMs4cVRL+VDxrvNh/DB/h9Dc
+ OrCjvUmL54UhA0FrwqGboK+03j1GpU9VIr9yXH4QXFDYa6DGBdrUXoRRcfjKL/hW
+ M8+SGg==
+Received: from mail-pg1-f197.google.com (mail-pg1-f197.google.com
+ [209.85.215.197])
+ by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 4g20sj1hw5-1
+ (version=TLSv1.3 cipher=TLS_AES_128_GCM_SHA256 bits=128 verify=NOT)
+ for <qemu-arm@nongnu.org>; Fri, 14 Aug 2026 15:35:12 +0000 (GMT)
+Received: by mail-pg1-f197.google.com with SMTP id
+ 41be03b00d2f7-c85798977dcso1618306a12.0
+ for <qemu-arm@nongnu.org>; Fri, 14 Aug 2026 08:35:12 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=oss.qualcomm.com; s=google; t=1786721711; x=1787326511; darn=nongnu.org;
+ h=content-transfer-encoding:content-type:in-reply-to:content-language
+ :from:references:cc:to:subject:user-agent:mime-version:date
+ :message-id:from:to:cc:subject:date:message-id:reply-to:content-type;
+ bh=utVvaMh4z80sbHWCUqbOZNquGsboFlauJg3XBGiQKp0=;
+ b=fY0wDa/gzoS4HPAdcUhSjCttwL6GJTrJ4Z64EEUtvY7i0g/mFs7w0GrTl06Zzr6YUb
+ 2aH93kkH6k+dOKAoW8nJ+Sgbq0Gx5/EFoO9GasMTPG4kYBlnIDTrmm9muCSQm2IgA4JG
+ /plERJH8w5QgOSEaEY5ovtgsCKQvAVSI9R2AAsJdZSuOBAzrZ6mA590DiQ2NmGIXgaX6
+ EWpVmUTmIZ5JwdxyZk5g7B/MUKQfouJWZugh7wE1AlizurLC2FR3BkgB0qK2JF+JYefK
+ /rC6S7xdEJ2EKP8NyRovhqHPQ2DGXPB8a6+k2wn36aJhBYhKcA+f5AidaOI26142Viao
+ Z9zA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1786721691; x=1787326491;
- h=content-transfer-encoding:content-type:in-reply-to:from:references
- :cc:to:content-language:subject:reply-to:user-agent:mime-version
- :date:message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+ d=1e100.net; s=20251104; t=1786721711; x=1787326511;
+ h=content-transfer-encoding:content-type:in-reply-to:content-language
+ :from:references:cc:to:subject:user-agent:mime-version:date
+ :message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
  :message-id:reply-to:content-type;
- bh=7okoVJBLZWESdwgLg7Z5BVxv/ezHszMZAamDbVRePaQ=;
- b=mjdRKl84dHaJ5wd4Yset6pUGy6Y9L5OaPyhWMF6d9UvzrHuwxvDkiGJ2ALfX9jEv41
- 4iez690nU1telKmVr3/MyL/LReH5b+XuMl9iFSdc1lDueGydj0zNIyGIhty65pFwIFTA
- y3K4cvbbs2hTY0dmhTh6aGipdv7iybecgET0odd6/KlNEmfoo0SbxMmPVqagtwlUZuGf
- VGOFFt7sHSH4kNT2Cgd9ZGGd17WUOOyz45v9NNCtdRReyXL/kNmTM2avZ2E2iPMOp9Lw
- Oef4mvuupBbqLbAYmqn5LfZBQvgXodVjdrtdn/HlMBZZ7sq+0mpUUufE2E371CaSptZY
- R0VA==
+ bh=utVvaMh4z80sbHWCUqbOZNquGsboFlauJg3XBGiQKp0=;
+ b=ggoQB1DygW/omHuuHikDc/tEg/gYtbQEnher904Hca7//cae4BzkcBMkD7gTvTHSga
+ yW9qQSOxhIRiRjPfHfFG+q+LImTDTrz5Ntx9li+qUlk2AUfR1cQOoq35kLUYZ3LmBonS
+ kYGxQ27JkeI2kSyNO4gzbB0ny8zmnKsknPI5mh4ThKcKbxjg2disrhs/i6sMSxIVDe44
+ vMmgzZI1qxIJqcDHWPd1GX1xdhL85Zvhe519IjR81Oxyig3wz+pa7c4vnyemAvgi2XpH
+ GsoXT6B0+senGdks9MlDskC0zjrjTTkhusAZV2bHgWuHQp+ZAmv2fpTOPJOC6hfmfpPW
+ y4kQ==
 X-Forwarded-Encrypted: i=1;
- AHgh+RpdrigOr0quN4nXdY/7CqJ675h41fbALnwjX6PYgjc4JD8EmecpePMSOoMGa8LGr9CyYARugXpv+A==@nongnu.org
-X-Gm-Message-State: AOJu0YxcZQOebsrT3zaxCiv8TZ1S1z1BRW9f0Ec6gBuDX0Xgh/E4bifR
- wAIH0P3X4EJIfdSqG24U82wY0iXTiZbJYYGExqxk3TOc+uln24bE++IUrreLPQEKW3hO8XpXmIm
- QgrZ98LiUa7cKMm+4R4IpveAdsBb0QBPvJrZmsMFzO3X8ANraWRxZ3A==
-X-Gm-Gg: AR+sD10u+zCXjj3ddE9L7hhiFOzOUX0eln+2RTSDyv+xFqB+4OCloCfbBrBtyeco2Dq
- DZFj7PDQojG9G1Wl5Z29scU7SlC/b0XoYKx+i04MpLpyAMUjuBQNZ0huENN9EwFue6WQXBz2imM
- 9HKTMoLQep5JuxBTsgXTJay8W92GqpQLizXgz+qUJewhPKDJ9k0mCRuC5Uy1Bkk0d9xywsx8WsV
- ORUpTjGbXKwzYkOdmFofrvRbJ7RF9tW7XinGQ6FwEC3Cw0rlpSEKtItWnyp/ovguqjbXKbzbpaF
- 0SF8k+TlmQmJly/sFqyd2IMhdjjBdawVfkGlrXYC+/hqHi+lIm+vIa3Lu/HVRKWHOJVciZ6wahz
- UpQsMgm8tUEnk0eqnn6gqXzjS0/GdPIYLwmtKq1KD8PlkdGia
-X-Received: by 2002:a05:600c:4e13:b0:498:11b5:3ff7 with SMTP id
- 5b1f17b1804b1-499879bd2e1mr94162215e9.18.1786721690587; 
- Fri, 14 Aug 2026 08:34:50 -0700 (PDT)
-X-Received: by 2002:a05:600c:4e13:b0:498:11b5:3ff7 with SMTP id
- 5b1f17b1804b1-499879bd2e1mr94161455e9.18.1786721690078; 
- Fri, 14 Aug 2026 08:34:50 -0700 (PDT)
-Received: from ?IPV6:2a01:e0a:f0e:9070:527b:9dff:feef:3874?
- ([2a01:e0a:f0e:9070:527b:9dff:feef:3874])
- by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-49988ae8af3sm52203945e9.4.2026.08.14.08.34.47
+ AHgh+RpmTX0bsVq0x/WwicGSLPsjfNv6ya0ROLHnCkMYaHyidiEb0fPBMdwKTkTXaBdkVoOOoAt6oL0f1Q==@nongnu.org
+X-Gm-Message-State: AOJu0YwBV7uvVBZIGMa6FGuxdo8wPUIhmqxkPLreucytNi6bhDU0DHJv
+ vdTcU/gP4DfE8yF/JXgv9GlqM+UV4h7Smq0JIHnFgqscSDhZjHIPjxhff5DUO/aWWVkXiW9469y
+ ZUBBjWUBExvJpQuZ4YCLP3CVqpHR6NdRRxUQ8Gpj1vgwae83N2aqKjYw=
+X-Gm-Gg: AR+sD12DZBeHts90PGV1JIuUyj6wulb5UPnVliNX6ONl5sVUw9Wl02n2jx0rvVAgQOo
+ DBjrAwxh0Dq017oli0pZhwofLaTxb9yy0T3Ux4rP6AjeZV5LISdN9eAnpVxKdwnS5+Xqw+NdNnO
+ q1Txwx2eNbMaDwYWakcHCmMDz17t9BFPFPLOCxHtaid72AnleeEfnKgcrbbDg025YtiZyj4b3Rh
+ imZwalWxQfAciwPo6Ny/qwQVStUjQViOrNMQ6BxlxH5ez2hjKfThfheg0XYo5R+jqo+ZRqWOfRr
+ Uj1NliFFppgqz5DX/jz6UPyqXNo/w+VXzi4vn0pU5kPTeg1dvB5F+qwYl3Zo7NVgOOgvWKg7iTN
+ 8n7vPKJw+cS3RI0a+eLYrGPri2eJnEwthRudlkJMcdr/SvK+G8rste4OBRcolgrfR4nc4
+X-Received: by 2002:a05:6a20:6a1f:b0:3c6:61b9:917c with SMTP id
+ adf61e73a8af0-3cc71ced6e0mr7086665637.11.1786721711283; 
+ Fri, 14 Aug 2026 08:35:11 -0700 (PDT)
+X-Received: by 2002:a05:6a20:6a1f:b0:3c6:61b9:917c with SMTP id
+ adf61e73a8af0-3cc71ced6e0mr7086596637.11.1786721710733; 
+ Fri, 14 Aug 2026 08:35:10 -0700 (PDT)
+Received: from [192.168.1.199] (216-71-219-44.dyn.novuscom.net.
+ [216.71.219.44]) by smtp.gmail.com with ESMTPSA id
+ a92af1059eb24-1413889bca5sm15132827c88.12.2026.08.14.08.35.09
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Fri, 14 Aug 2026 08:34:48 -0700 (PDT)
-Message-ID: <0cb9dba3-c905-4e2d-a3e9-539dbf2ea787@redhat.com>
-Date: Fri, 14 Aug 2026 17:34:46 +0200
+ Fri, 14 Aug 2026 08:35:10 -0700 (PDT)
+Message-ID: <dec2a5af-dad2-44c6-8eb5-b87ff9595d7e@oss.qualcomm.com>
+Date: Fri, 14 Aug 2026 08:35:09 -0700
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [RFC PATCH v3 14/19] target/arm/kvm: compute supported values for
- ID register fields
-To: Khushit Shah <khushit.shah@nutanix.com>
-Cc: "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
- "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
- "kvmarm@lists.linux.dev" <kvmarm@lists.linux.dev>,
- "cohuck@redhat.com" <cohuck@redhat.com>,
- "peter.maydell@linaro.org" <peter.maydell@linaro.org>,
- "richard.henderson@linaro.org" <richard.henderson@linaro.org>,
- "maz@kernel.org" <maz@kernel.org>,
- "oliver.upton@linux.dev" <oliver.upton@linux.dev>,
- "berrange@redhat.com" <berrange@redhat.com>,
- "abologna@redhat.com" <abologna@redhat.com>,
- "jdenemar@redhat.com" <jdenemar@redhat.com>,
- "gshan@redhat.com" <gshan@redhat.com>,
- "skolothumtho@nvidia.com" <skolothumtho@nvidia.com>,
- "sebott@redhat.com" <sebott@redhat.com>,
- "armbru@redhat.com" <armbru@redhat.com>,
- "philmd@linaro.org" <philmd@linaro.org>,
- "yangjinqian1@huawei.com" <yangjinqian1@huawei.com>,
- Shaju Abraham <shaju.abraham@nutanix.com>,
- Mark Cave-Ayland <mark.caveayland@nutanix.com>,
- Prerna Saxena <prerna.saxena@nutanix.com>
-References: <20260716213858.609699-1-khushit.shah@nutanix.com>
- <20260716213858.609699-15-khushit.shah@nutanix.com>
- <fe76f638-81aa-43cf-aafb-c774ab1902f8@redhat.com>
- <82F566CD-CC65-4368-AE92-3A2E637CC27A@nutanix.com>
-From: Eric Auger <eric.auger@redhat.com>
-In-Reply-To: <82F566CD-CC65-4368-AE92-3A2E637CC27A@nutanix.com>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: LBgk_K5ulTKCsbE3Yh7q2BeoaZOgLj4w_V2cB2Zeu6Y_1786721691
-X-Mimecast-Originator: redhat.com
+Subject: Re: [PATCH] target/arm: Restrict arm_do_plugin_vcpu_discon_cb() to TCG
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@oss.qualcomm.com>,
+ qemu-devel@nongnu.org
+Cc: =?UTF-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>, qemu-arm@nongnu.org,
+ Peter Maydell <peter.maydell@linaro.org>
+References: <20260814080507.23196-1-philmd@oss.qualcomm.com>
+From: Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>
 Content-Language: en-US
+In-Reply-To: <20260814080507.23196-1-philmd@oss.qualcomm.com>
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=170.10.129.124;
- envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -28
-X-Spam_score: -2.9
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwODE0MDExOCBTYWx0ZWRfX9pnZeE+rpKet
+ b5vzLK/dSDzMGPYR70brYAirF6rxbthjXY/zryeJOsH16tFBX+0Z3BRcYRIngkZdFUIK4vV+Nh5
+ saZ4pzAsqrSOh7euVoqCIKVtIDyPKuvUzfudSF8Edx1jw7DJD/WUQ/RxDX4wrFLaiyg5pp6Ijmz
+ dlYArnX8oa9StjoE43LdE1fsS0YMVvjiPDfaZH48l+3DmKnSOFfj3IFw5xjVd+oRnH3pqO2zPg8
+ u6EJHa9Xujlnx+F+MVcbg/7A2f4JsejuX3nleeOzC6Os3hf9GD7Kx2zK0e/VQLxlcSIK84D7YsV
+ +2po4PqxZz4qEvo+d4vj52ouW+IFDIPpRNvcTfb4EKa32QNVYZKJflrg9UYB2ri91wsmYvcFwAc
+ MH+1UL9tYiU+Y7vRBry1YO+jfLrjsJ0l1NC2kDLGaiIgH2J5GuTJpk3RoKr8MdW7qfFglFiEv8V
+ /xkaa6Ee+Pj1PJWsSFA==
+X-Proofpoint-GUID: 5d2R6mSfjMPXtm9uNvaKowQnNxVchmiK
+X-Proofpoint-ORIG-GUID: 5d2R6mSfjMPXtm9uNvaKowQnNxVchmiK
+X-Proofpoint-Spam-Info: AW1haW4tMjYwODE0MDExOCBTYWx0ZWRfXw3GV1eXlSTre
+ 7Wa8ASXgH/smnG1nHYziou0PwQtPCVYmRl8fK2AImYOuP2W8r6UXqdRWL8JAg/yWihPPX5NrFM8
+ RJqpRN8cqIOLHQqCRVI6T1EGagoOAP4=
+X-Authority-Analysis: v=2.4 cv=cMTQdFeN c=1 sm=1 tr=0 ts=6a7f35b0 cx=c_pps
+ a=rz3CxIlbcmazkYymdCej/Q==:117 a=iLqgmErQAxjCjdq5jj1Aqg==:17
+ a=IkcTkHD0fZMA:10 a=Sv0fKeRqtYgA:10 a=s4-Qcg_JpJYA:10
+ a=VkNPw1HP01LnGYTKEx00:22 a=u7WPNUs3qKkmUXheDGA7:22 a=eoimf2acIAo5FJnRuUoq:22
+ a=EUspDBNiAAAA:8 a=Et0EIf6WsffwpvoSOt8A:9 a=3ZKOabzyN94A:10 a=QEXdDO2ut3YA:10
+ a=bFCP_H2QrGi7Okbo017w:22
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.293,Aquarius:18.0.1176,Hydra:6.1.134,FMLib:17.12.100.49
+ definitions=2026-08-14_05,2026-08-12_01,2025-10-01_01
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
+ clxscore=1015 malwarescore=0 spamscore=0 bulkscore=0 impostorscore=0
+ priorityscore=1501 suspectscore=0 phishscore=0 adultscore=0
+ lowpriorityscore=0 classifier=typeunknown authscore=0 authtc= authcc=
+ route=outbound adjust=0 reason=mlx scancount=1 engine=8.22.0-2606150000
+ definitions=main-2608140118
+Received-SPF: pass client-ip=205.220.168.131;
+ envelope-from=pierrick.bouvier@oss.qualcomm.com;
+ helo=mx0a-0031df01.pphosted.com
+X-Spam_score_int: -27
+X-Spam_score: -2.8
 X-Spam_bar: --
-X-Spam_report: (-2.9 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.751,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=0.001, SPF_HELO_PASS=-0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_LOW=-0.7, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -136,242 +154,19 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-To: eric.auger@redhat.com
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
+On 8/14/2026 1:05 AM, Philippe Mathieu-Daudé wrote:
+> So far TCG plugins can only be used when TCG is available.
+> Move the arm_do_plugin_vcpu_discon_cb() call within the
+> 'if tcg_enabled' block and wrap the definition with #ifdef'ry.
+> 
+> Signed-off-by: Philippe Mathieu-Daudé <philmd@oss.qualcomm.com>
+> ---
+>  target/arm/helper.c | 6 ++++--
+>  1 file changed, 4 insertions(+), 2 deletions(-)
+> 
 
-
-On 8/5/26 11:58 AM, Khushit Shah wrote:
->
->> On 26 Jul 2026, at 7:52 PM, Eric Auger <eric.auger@redhat.com> wrote:
->>
->> !-------------------------------------------------------------------|
->>  CAUTION: External Email
->>
->> |-------------------------------------------------------------------!
->>
->> Hi Khushit,
->>
->> On 7/16/26 11:38 PM, Khushit Shah wrote:
->>> Add arm_field_get_supported_values() which, for a given ID register
->>> field, builds the set of values KVM allows it to take on the live host.
->>>
->>> Non-writable fields are pinned to the host value. Writable fields follow
->>> their per field constraints. This function likely needs change when
->>> KVM starts exposing a new writable field that is not lower-safe, hence,
->>> the special handling of TGranX_2/SpecSEI/L1Ip/MIDR/REVIDR/AIDR.
->> so this looks quite risky. 
-> I agree.
->
-> What are your thoughts on having a authoritative list in QEMU of all
-> writable fields? No matter what KVM exposes as writable, actual fields
-> we allow to be writable will be intersection of KVM writable + QEMU
-> writable. When The QEMU list is updated we make sure things like this
-> function is updated.
->
-> This get’s rid of cases where we silently support writing to a field.
-> It is similar to x86, QEMU only supports writing to specific CPUID
-> leafs (by the defined Properties) and not just any CPUID leafs.
->
->>> Cross-field constraints are not modelled; for example ID_AA64ZFR0_EL1
->>> is gated by SVE. Reproducing every inter-field dependency in QEMU
->>> would only duplicate KVM's logic and drift out of sync with it.
->> Isn't qmp_query_cpu_model_expansion sufficient? In general upper layers
->> will try to apply raw named models. If ajustements are needed between
->> source and destination, we know field candidate values (either the
->> source or dest one) and this latter can be directly tried using
->> qmp_query_cpu_model_expansion write. On top of that
->> qmp_query_cpu_model_expansion can be directly checked against a scratch
->> vcpu reusing the logic implemented at kernel level.
-> I am not sure if it is acceptable for query_cpu_model_expansion should fail
-> if model is not realisable. On at least x86 it does not. It just returns the
-> state which QEMU would request KVM for the given configurations.
->
-> Ref:
-> https://github.com/qemu/qemu/blob/3e3ccab106f879b1512f8e0d51a827dd4de30e22/target/i386/cpu.c#L9689
-
-I need to further study that. I will come back to you.
-
-Currently with v7 you get:
-(QEMU) query-cpu-model-expansion type=full
-model={"name":"host","props":{"SYSREG_ID_AA64MMFR1_EL1_AFP":0x1}}
-{"error": {"class": "GenericError", "desc": "failed to apply new value
-0x1 for field AFP (previous is 0x0): Invalid argument"}}
-
-This can be implemented elsewhere though
-
-Eric
->
-> cpu-definitions is maybe a better candidate for algo you are describing, but
-> it will not take the user overrides into considerations and only say if a
-> base model is usable or not
->
->
->>> Signed-off-by: Khushit Shah <khushit.shah@nutanix.com>
->>> ---
->>> target/arm/kvm.c     | 99 ++++++++++++++++++++++++++++++++++++++++++++
->>> target/arm/kvm_arm.h | 26 ++++++++++++
->>> 2 files changed, 125 insertions(+)
->>>
->>> diff --git a/target/arm/kvm.c b/target/arm/kvm.c
->>> index c38b99cfce..8f452f9570 100644
->>> --- a/target/arm/kvm.c
->>> +++ b/target/arm/kvm.c
->>> @@ -1262,6 +1262,105 @@ bool kvm_arm_cpu_post_load(ARMCPU *cpu)
->>>     return true;
->>> }
->>>
->>> +static bool arm_field_is_signed(const ARM64SysRegField *field)
->>> +{
->>> +    return field_matches(field, ID_AA64MMFR0_EL1_IDX, "TGran4")    ||
->>> +           field_matches(field, ID_AA64MMFR0_EL1_IDX, "TGran64")   ||
->>> +           field_matches(field, ID_MMFR0_EL1_IDX, "InnerShr")      ||
->>> +           field_matches(field, ID_MMFR0_EL1_IDX, "OuterShr")      ||
->>> +           field_matches(field, ID_AA64DFR0_EL1_IDX, "DoubleLock") ||
->>> +           field_matches(field, ID_AA64DFR0_EL1_IDX, "PMUVer")     ||
->>> +           field_matches(field, ID_DFR0_EL1_IDX, "PerfMon")        ||
->>> +           field_matches(field, ID_AA64PFR1_EL1_IDX, "MTE_frac")   ||
->>> +           field_matches(field, ID_AA64MMFR4_EL1_IDX, "E2H0")      ||
->>> +           field_matches(field, ID_DFR1_EL1_IDX, "MTPMU")          ||
->>> +           field_matches(field, ID_AA64PFR0_EL1_IDX, "FP")         ||
->>> +           field_matches(field, ID_AA64PFR0_EL1_IDX, "AdvSIMD");
->> Can't we extract this from Register.json instead?
-> AFAIK, There is not signedness data in Register.json
->
->>> +}
->>> +
->>> +static void ranges_add(GArray *ranges, uint64_t min, uint64_t max)
->>> +{
->>> +    ArmFieldRange r = { .min = min, .max = max };
->>> +    g_array_append_val(ranges, r);
->>> +}
->>> +
->>> +void arm_field_get_supported_values(const ARM64SysRegField *field,
->>> +                                    const ARMISARegisters *host_isar,
->>> +                                    ArmFieldValueSet **value_set)
->>> +{
->>> +    bool is_signed = arm_field_is_signed(field);
->>> +    uint64_t host = extract64(host_isar->idregs[field->index],
->>> +                              field->shift, field->length);
->>> +    GArray *ranges = g_array_new(false, false, sizeof(ArmFieldRange));
->>> +
->>> +    /* A non-writable field can only ever hold the host value. */
->>> +    if (!arm_field_is_writable(field)) {
->>> +        ranges_add(ranges, host, host);
->>> +        goto done;
->> you already get this info from qmp_query_cpu_model_expansion
-> Can you please elaborate how? I thought the current qmp_query_cpu_model_expansion
-> (Your v6) only returns the writable field.
-> (I have not yet looked at v7)
->
->>> +    }
->>> +
->>> +    if (field_matches(field, ID_AA64MMFR0_EL1_IDX, "TGran4_2")  ||
->>> +        field_matches(field, ID_AA64MMFR0_EL1_IDX, "TGran16_2") ||
->>> +        field_matches(field, ID_AA64MMFR0_EL1_IDX, "TGran64_2")) {
->>> +        /* Either support the host value or the "off" value */
->>> +        ranges_add(ranges, host, host);
->>> +        if (host != 1) { /* 1 = "off" */
->>> +            ranges_add(ranges, 1, 1);
->>> +        }
->>> +    } else if (field_matches(field, CTR_EL0_IDX, "L1Ip")) {
->>> +        /* Only safe to downgrade to VIPT, other values are reserved. */
->>> +        ranges_add(ranges, host, host);
->>> +        if (host != 2) { /* 2 = "VIPT" */
->>> +            ranges_add(ranges, 2, 2);
->>> +        }
->>> +    } else if (field_matches(field, ID_AA64MMFR1_EL1_IDX, "SpecSEI") ||
->>> +               field_matches(field, ID_MMFR4_EL1_IDX, "SpecSEI")) {
->>> +        /* It is safe to upgrade SpecSEI to 1, other values are reserved. */
->>> +        ranges_add(ranges, host, host);
->>> +        if (host != 1) {
->>> +            ranges_add(ranges, 1, 1);
->>> +        }
->>> +    } else if (field->index == MIDR_EL1_IDX ||
->>> +               field->index == REVIDR_EL1_IDX ||
->>> +               field->index == AIDR_EL1_IDX) {
->>> +        /*
->>> +         * No restriction on value that can be set for implementation ID
->>> +         * registers fields.
->>> +         */
->>> +        uint64_t max = 0;
->>> +        if (field->length == 64) {
->>> +            max = ~0ULL;
->>> +        } else {
->>> +            max = (1ULL << field->length) - 1;
->>> +        }
->>> +        ranges_add(ranges, 0, max);
->>> +    } else {
->>> +        /*
->>> +         * After handling the special cases, other writable fields are
->>> +         * either lower-safe or signed lower-safe.
->>> +         */
->>> +        if (field->arch_vals_count) {
->>> +            for (uint32_t i = 0; i < field->arch_vals_count; i++) {
->>> +                uint64_t av = field->arch_vals[i].value;
->>> +                int64_t v = is_signed ?
->>> +                    sextract64(av, 0, field->length) : (int64_t)av;
->>> +                int64_t hv = is_signed ?
->>> +                    sextract64(host, 0, field->length) : (int64_t)host;
->>> +                if (v <= hv) {
->>> +                    ranges_add(ranges, av, av);
->>> +                }
->>> +            }
->>> +        } else {
->>> +            g_assert(!is_signed); /* No signed field with no arch vals */
->>> +            ranges_add(ranges, 0, host);
->>> +        }
->>> +    }
->>> +done:
->>> +    *value_set = g_new0(ArmFieldValueSet, 1);
->>> +    (*value_set)->n_ranges = ranges->len;
->>> +    (*value_set)->ranges = (ArmFieldRange *)g_array_free(ranges, false);
->>> +}
->>> +
->>> static bool arm_field_skip_writeback_always(const ARM64SysRegField *field)
->>> {
->>>     /*
->>> diff --git a/target/arm/kvm_arm.h b/target/arm/kvm_arm.h
->>> index 133a026036..9f15c91c4e 100644
->>> --- a/target/arm/kvm_arm.h
->>> +++ b/target/arm/kvm_arm.h
->>> @@ -143,6 +143,32 @@ void kvm_arm_set_cpu_features_from_host(ARMCPU *cpu);
->>> void kvm_arm_add_vcpu_properties(ARMCPU *cpu);
->>>
->>> typedef struct ARM64SysReg ARM64SysReg;
->>> +typedef struct ARM64SysRegField ARM64SysRegField;
->>> +typedef struct ARMISARegisters ARMISARegisters;
->>> +
->>> +typedef struct ArmFieldRange {
->>> +    uint64_t min;
->>> +    uint64_t max;
->>> +} ArmFieldRange;
->>> +
->>> +typedef struct ArmFieldValueSet {
->>> +    ArmFieldRange *ranges;
->>> +    size_t n_ranges;
->>> +} ArmFieldValueSet;
->>> +
->>> +/**
->>> + * arm_field_get_supported_values:
->>> + * @field: The field to get the supported values for
->>> + * @host_isar: The host ISAR registers
->>> + * @value_set: The set of supported values for the @field
->>> + *
->>> + * Will be allocated and filled in with the supported values for the @field
->>> + * based on the host_isar and whether the field is writable or not.
->>> + * The caller must free the value_set.
->>> + */
->>> +void arm_field_get_supported_values(const ARM64SysRegField *field,
->>> +                                    const ARMISARegisters *host_isar,
->>> +                                    ArmFieldValueSet **value_set);
->>>
->>> /**
->>>  * kvm_arm_steal_time_finalize:
->> Thanks
->>
->> Eric
->
-
+Reviewed-by: Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>
 

@@ -4,85 +4,85 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D2E7DC5CFDB
-	for <qemu-arm@archiver.kernel.org>; Fri, 14 Aug 2026 13:39:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CDACAC5CFDB
+	for <qemu-arm@archiver.kernel.org>; Fri, 14 Aug 2026 13:45:32 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wus7r-0001eK-Bt; Fri, 14 Aug 2026 09:39:11 -0400
+	id 1wusDu-0004Ik-6b; Fri, 14 Aug 2026 09:45:27 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1wus7q-0001e9-8P
- for qemu-arm@nongnu.org; Fri, 14 Aug 2026 09:39:10 -0400
+ id 1wusDq-000489-GY
+ for qemu-arm@nongnu.org; Fri, 14 Aug 2026 09:45:24 -0400
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1wus7n-0006TJ-Nb
- for qemu-arm@nongnu.org; Fri, 14 Aug 2026 09:39:09 -0400
+ id 1wusDk-0007pk-HS
+ for qemu-arm@nongnu.org; Fri, 14 Aug 2026 09:45:19 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1786714744;
+ s=mimecast20190719; t=1786715115;
  h=from:from:reply-to:reply-to:subject:subject:date:date:
  message-id:message-id:to:to:cc:cc:mime-version:mime-version:
  content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=LXky0SHEEqjOX8UubfqEiUPD1zbdoOGebeozSEqSXho=;
- b=NWtCP1HRT03HQMisTiTPJ9e23T+3NGmdNiJKm3/9qV7Z1aZNMhxKTf0Rs/5G4Ma/JQ98np
- jlnG+j4P2uhCecFs005n1ISDDkCAtczZqek/W4HSzoqQWKfna/9a5JZlS3T08n5dOgoe5K
- 8BqlvPULnwhXiSFYMly5ZrKV/XvWyDY=
+ bh=MIPfZ+sRcDaH16HKOD8A6dsnT4wotNu3C+J44t4zOcE=;
+ b=foJmMygTyP6arr7/xnQTV7f13LNvX0kQo9BAs/lt249mTTelQOBceTL5u9qwjmPfpKPNtP
+ mmcrK08mM1AX6KKIvrdBtQmhOyG3waF+t4J5u+u7f3VphMeTzF+rU3cHQPBpLXD3zyyNCO
+ WZef80hSyBpNeKvBDb6uGMegZaaQRbA=
 Received: from mail-wm1-f71.google.com (mail-wm1-f71.google.com
  [209.85.128.71]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-668-VA0nU23GPOWe_zT_f6ecnQ-1; Fri, 14 Aug 2026 09:39:02 -0400
-X-MC-Unique: VA0nU23GPOWe_zT_f6ecnQ-1
-X-Mimecast-MFC-AGG-ID: VA0nU23GPOWe_zT_f6ecnQ_1786714742
+ us-mta-478-NLtTqnE3NIqvPgsSPBl05w-1; Fri, 14 Aug 2026 09:45:13 -0400
+X-MC-Unique: NLtTqnE3NIqvPgsSPBl05w-1
+X-Mimecast-MFC-AGG-ID: NLtTqnE3NIqvPgsSPBl05w_1786715112
 Received: by mail-wm1-f71.google.com with SMTP id
- 5b1f17b1804b1-4955fd77c18so6770975e9.2
- for <qemu-arm@nongnu.org>; Fri, 14 Aug 2026 06:39:02 -0700 (PDT)
+ 5b1f17b1804b1-4994aebe932so10601485e9.3
+ for <qemu-arm@nongnu.org>; Fri, 14 Aug 2026 06:45:13 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1786714741; x=1787319541;
+ d=1e100.net; s=20251104; t=1786715112; x=1787319912;
  h=content-transfer-encoding:content-type:in-reply-to:from:references
  :cc:to:content-language:subject:reply-to:user-agent:mime-version
  :date:message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
  :message-id:reply-to:content-type;
- bh=LXky0SHEEqjOX8UubfqEiUPD1zbdoOGebeozSEqSXho=;
- b=co3BuuoZuKDJQvzUGCjDlkBCQdVRdxI/d4jFMgSFw5jr3PS4Q5GzGJvlgt5SP8ES+a
- NcQFz2IYKN43awhG43V4g+UkATQ317utqUnRc5YVj9dT43Id/vKFH/hJa2niZ4GISC59
- W4mTkh2nuKFPbBJmGkcySQTPufhpROZ0lCkY32n9fwMrSM0EmWlQ0RBmE3kP0A6mr11G
- E6rp8t2qH/WmbsezoVt0MGf0x0JY6GZoUax9RvazIzM//3qn1mtiZZ7AP5tmOgeXM6Hg
- DlaY99RZfKksiy5nK8wlNXhCNnVOX7fTYVm42g/2cQqO4pDuJC1/wh3sFJSHcZi5s4gD
- GULg==
+ bh=MIPfZ+sRcDaH16HKOD8A6dsnT4wotNu3C+J44t4zOcE=;
+ b=DKfF3IjIkpe1R1P7Z7ptp0vXJWzpOyW/4xHjSwKy4gzMiWPHBV7H1UEf3GhsPeeONA
+ egI4tWRjt7qjIaBrjBmZ4Z9sm9HlruDlVjgpSZkjT0a8xm00Wy95OPT7ZTX2z4c+8bwV
+ 6DsL9L8wcDgSMT7Zy60Uj/4biGQb/8owDbUL4fvB3UkQbwSNQKfIinIonYS7h9qtO8c8
+ pmboSbmO4paO7FIpE7ipob6aRRNha9X9w/2Aio8CZHblNLpYnWCjKwwzAZoYfUPxv0fz
+ WTQ0YrHBlODYPnBkqqDfNzfMN5TLrtMrfndYRleslcHpEMRNE6sFwBrrctUwdhWtilKY
+ /voA==
 X-Forwarded-Encrypted: i=1;
- AHgh+Rq7F8zf3ULxdM+a4ATJvTl2IW1QZsF0lPgPUrhVw5ZzOvpwItzo3vec7YHXF5gwwV39REk7MejHrQ==@nongnu.org
-X-Gm-Message-State: AOJu0Yw8/K9u73oJ71zf32O389qAn5Sn/229XoO3rOSO8vmmd+WbEoqw
- eBEjaZc5rasmRBU2nylGum6wOjyL6V4yJgB1+pRK04N5WQfhBrQllBCf88oAgRmdYeR5saLtpvU
- aFcs7FVHU6GjP0p4DPpb9sYL6/rtpv0lYdV2SGyi8Ot5i+hj1GioFaw==
-X-Gm-Gg: AR+sD12RJy1vuqjkwwRF9Ervv2MI82wSm55zHnQuuFnwN9BxcD+sVSTmAg3FIxal/ig
- a59uQQuye8W3hHroqWrOEJMX/FAU/vno/39g4N+bG5SWQ9IT5NcvuYW8TzC/Uk8oxYdaA8fSl5u
- XxPa6eoIPSNMShDHWO4zI9/2XkDzJ1QrHV+OrZr3VDwlq4IcATiiLzYarjJ95FTDiN5rHADyZQw
- 75zYg1nzVb6lTcEbaNFcETXIBrruYYoyXnrVdT99ugbRLt1/WoMczZ8pkiI+7vXglIdqcDZXd2/
- 0DMzimhW+GGBJzhv4rgrGTVKQo2wumZMf/XCeqrv6oDKLO4043XoOH6CxpePh4Xcvrx2kQ52PFm
- K1kfdbJ4DhMdXonNGTcYNShX/n76KsgrhrZqNTyUXqVA3Rh9K
-X-Received: by 2002:a05:600c:8218:b0:499:593b:a15b with SMTP id
- 5b1f17b1804b1-499879357cemr96313185e9.1.1786714741639; 
- Fri, 14 Aug 2026 06:39:01 -0700 (PDT)
-X-Received: by 2002:a05:600c:8218:b0:499:593b:a15b with SMTP id
- 5b1f17b1804b1-499879357cemr96312185e9.1.1786714741198; 
- Fri, 14 Aug 2026 06:39:01 -0700 (PDT)
+ AHgh+RofvVWWYoxFLf4v7dFEdKC4DfbZiAvrG5e3XKeg7d2bCl26WRWEjXPNfP4m4GCOU+QHHKKVbASpVA==@nongnu.org
+X-Gm-Message-State: AOJu0Ywcrw9sBbxwysMQ2gxqQo/fC+Rvx/585snStEOsyEK1FhM9HQDF
+ yrbTF2m5H3QwKwSyEkR9uXdODzM3uRHhYl4BBYDxai9b47FhZAeYmWNYWxQxZR9jN2WGspgt4bn
+ 1OESNhmnwZvWjLiFGwYcBx9DTwDLA26Bz6fIFDQ7dhn2xg/IjZNqaQg==
+X-Gm-Gg: AR+sD11gHZ+ntXkRLPDY5F/0/wRm289JAcCuzb5mHN12PsosPKrwGZbi2H7VnK1KNB9
+ l9iCzt+SKcrfEUCuRv/ryAG17X6JE5UF3M8QGDyjO/OYwkbcsHRcCFe98B8O6xReuvN76lQhfle
+ Ddp1SHyXLZfPWQOiykqpeU9pULfZQaSpC4W4fkYo6LHE+3ZwXCT5cXSKKNRIjX4upsEL12ciMpO
+ /avcUppRUe0c+UdR1NcRMpumpuMC+4PUjte+IktVwAqjlClHTQmSTxlNv/9p7W5ea3WU64zuuNg
+ ywNJsU0DL/eYCbMpztaimR+gR5F4C0OGNQOu/7PT1zCcSLxOLjoIu+qxrDyBE+KFjoZEtU4aMM+
+ 9Hz648mJgwTQIibTD8LNSEEtG557KIuA4TC4m/g3gjsxt/Wvj
+X-Received: by 2002:a05:600c:6c4d:b0:496:c06b:9fb4 with SMTP id
+ 5b1f17b1804b1-4998799df10mr55590025e9.14.1786715111853; 
+ Fri, 14 Aug 2026 06:45:11 -0700 (PDT)
+X-Received: by 2002:a05:600c:6c4d:b0:496:c06b:9fb4 with SMTP id
+ 5b1f17b1804b1-4998799df10mr55589335e9.14.1786715111360; 
+ Fri, 14 Aug 2026 06:45:11 -0700 (PDT)
 Received: from ?IPV6:2a01:e0a:f0e:9070:527b:9dff:feef:3874?
  ([2a01:e0a:f0e:9070:527b:9dff:feef:3874])
  by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-49989af26eesm31815315e9.15.2026.08.14.06.38.59
+ 5b1f17b1804b1-49987b25ad8sm45861625e9.2.2026.08.14.06.45.09
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Fri, 14 Aug 2026 06:39:00 -0700 (PDT)
-Message-ID: <9909725f-7dd8-4f88-b016-2a6134906a60@redhat.com>
-Date: Fri, 14 Aug 2026 15:38:57 +0200
+ Fri, 14 Aug 2026 06:45:10 -0700 (PDT)
+Message-ID: <8d9e5cef-526e-4d4f-86a2-d86bdaeabd34@redhat.com>
+Date: Fri, 14 Aug 2026 15:45:08 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [RFC PATCH v3 16/19] qmp: add query-cpu-props-info command
-To: Khushit Shah <khushit.shah@nutanix.com>,
- Markus Armbruster <armbru@redhat.com>
+Subject: Re: [RFC PATCH v3 02/19] scripts: bug fixes in
+ update-aarch64-cpu-sysreg-properties
+To: Khushit Shah <khushit.shah@nutanix.com>
 Cc: "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
  "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
  "kvmarm@lists.linux.dev" <kvmarm@lists.linux.dev>,
@@ -97,19 +97,20 @@ Cc: "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
  "gshan@redhat.com" <gshan@redhat.com>,
  "skolothumtho@nvidia.com" <skolothumtho@nvidia.com>,
  "sebott@redhat.com" <sebott@redhat.com>,
+ "armbru@redhat.com" <armbru@redhat.com>,
  "philmd@linaro.org" <philmd@linaro.org>,
  "yangjinqian1@huawei.com" <yangjinqian1@huawei.com>,
  Shaju Abraham <shaju.abraham@nutanix.com>,
  Mark Cave-Ayland <mark.caveayland@nutanix.com>,
  Prerna Saxena <prerna.saxena@nutanix.com>
 References: <20260716213858.609699-1-khushit.shah@nutanix.com>
- <20260716213858.609699-17-khushit.shah@nutanix.com>
- <878q6m5qox.fsf@pond.sub.org>
- <3099C064-6051-4B93-BE0F-C54B7FD91D82@nutanix.com>
+ <20260716213858.609699-3-khushit.shah@nutanix.com>
+ <b839f20a-da50-493c-9b71-78069b62b867@redhat.com>
+ <7B85F7CA-C4CB-4EAD-BCB1-6D2135934F5B@nutanix.com>
 From: Eric Auger <eric.auger@redhat.com>
-In-Reply-To: <3099C064-6051-4B93-BE0F-C54B7FD91D82@nutanix.com>
+In-Reply-To: <7B85F7CA-C4CB-4EAD-BCB1-6D2135934F5B@nutanix.com>
 X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: BsSevN7AHCYV0ac0PESsXbv_4THRChpuMQ5ACRy2sgY_1786714742
+X-Mimecast-MFC-PROC-ID: bKjFoPz_TjrAE_o71TpJGn8at8peC5TiCmsmjtGs2Yw_1786715112
 X-Mimecast-Originator: redhat.com
 Content-Language: en-US
 Content-Type: text/plain; charset=UTF-8
@@ -139,57 +140,170 @@ Reply-To: eric.auger@redhat.com
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Hi Khushit,
 
-On 8/5/26 8:47 AM, Khushit Shah wrote:
+
+On 8/3/26 4:32 PM, Khushit Shah wrote:
 >
->> On 4 Aug 2026, at 12:15 PM, Markus Armbruster <armbru@redhat.com> wrote:
+>> On 20 Jul 2026, at 7:54 PM, Eric Auger <eric.auger@redhat.com> wrote:
 >>
 >> !-------------------------------------------------------------------|
 >>  CAUTION: External Email
 >>
 >> |-------------------------------------------------------------------!
 >>
->> Khushit Shah <khushit.shah@nutanix.com> writes:
 >>
->>> Introduce the 'query-cpu-props-info' QMP command. For CPU model
->>> properties it reports the type (boolean or number) and the set of values
->>> supported under the active accelerator and host.
->>>
->>> For numbers the supported values are expressed as a list of inclusive
->>> {min, max} ranges; for booleans as the list of allowed true/false
->>> values.
->>>
->>> The command and its return types (CpuPropertyType, CpuPropertyInfo and
->>> friends) are defined in qapi/machine.json rather than an Arm-specific
->>> schema, since the concept applies to other targets (e.g. x86, riscv)
->>> too. Target that do not implement it return an error.
->>>
->>> The Arm/KVM implementation spins up a scratch "host" vCPU object,
->>> walks its QOM properties: SYSREG_ ID-register fields become 'number'
->>> properties whose ranges come from arm_field_get_supported_values(),
->>> and the advertised feature toggles become 'boolean' properties.
->>>
->>> Signed-off-by: Khushit Shah <khushit.shah@nutanix.com>
->> This explains what the command does and how it's implemented.  It's
->> silent on the most important aspect: why do we want the command?  What
->> is its intended purpose?
-> Will add something like:
+>>
+>> On 7/16/26 11:38 PM, Khushit Shah wrote:
+>>> - handle quoted bitstrings  and decimal
+>>> - skip Values.ValueRange entries.
+>> The above is the issue you reported on my v6. See my comment on the
+>> other thread.
+> Acked.
+>>> - Emit unique RESx_{lsb} names for reserved fields so no two fields in
+>>>  a register share a name.
+>> The requirement for naming RES field needs to be explained. I understand
+>> that now you expose all fields including those which are not writable it
+>> may be required but at this stage I still fail why this is requested.
+> I think we don’t need to expose RES fields to users. 
+> I was thinking of case where a RES0 field is repurposed for
+> something else, but that should be taken care by zeroing the
+> ID regs array before initiating the named model hierarchy.
+> (RES1 field in CTR_EL0 needs some handling).
+I also think so. you can rely on AARCHMRS desc to identify the right
+default values.
 >
-> This helps the management stack to discover which values are supported
-> for a given CPU property. This is especially important for non-boolean
-> properties, where knowing that the host has value 'x' does not inherently
-> reveal the full range of valid values supported on the host.
+> On why we even need to expose non-writable fields:
+> - Assume some non-writable field mismatches for the model and
+>   host, why do we want to stop users from explicitly overriding
+>   the model's field value to host value?
 
-How does x86 handle this at the moment, they don't have the cmd either?
-How do they currently introspect what are the valid values for a
-specific host? Is it easier for them?
+I agree this needs to be checked. However as I suggested I think you can
+avoid exposing them to the end-users as props. You just need to read the
+value from host and compare it with the value set in the named model. 
+>
+>>> - Emit a dummy 64-bit VAL field for registers with no defined fields,
+>>>  such as AIDR_EL1 and REVIDR_EL1.
+>> This is yet another functional change that could be separate.
+> Acked, will do in v4.
 
 Thanks
 
 Eric
 >
->
->
+>> Thanks
+>>
+>> Eric
+>>> Signed-off-by: Khushit Shah <khushit.shah@nutanix.com>
+>>> ---
+>>> .../update-aarch64-cpu-sysreg-properties.py   | 67 +++++++++++++------
+>>> 1 file changed, 45 insertions(+), 22 deletions(-)
+>>> mode change 100644 => 100755 scripts/update-aarch64-cpu-sysreg-properties.py
+>>>
+>>> diff --git a/scripts/update-aarch64-cpu-sysreg-properties.py b/scripts/update-aarch64-cpu-sysreg-properties.py
+>>> old mode 100644
+>>> new mode 100755
+>>> index 9e829fda2e..ecc35db528
+>>> --- a/scripts/update-aarch64-cpu-sysreg-properties.py
+>>> +++ b/scripts/update-aarch64-cpu-sysreg-properties.py
+>>> @@ -106,6 +106,29 @@ def collect_fields(item, bit_offset=0):
+>>>
+>>>     return fields
+>>>
+>>> +def parse_value_int(raw_val):
+>>> +    if raw_val is None or isinstance(raw_val, bool):
+>>> +        return None
+>>> +
+>>> +    # may already be real number
+>>> +    if isinstance(raw_val, int):
+>>> +        return raw_val
+>>> +
+>>> +    raw_str = str(raw_val).strip()
+>>> +
+>>> +    if "'" in raw_str:
+>>> +        # quoted bitstring like "'0100'"
+>>> +        bits = raw_str.replace("'", "")
+>>> +        try:
+>>> +            return int(bits, 2)
+>>> +        except ValueError:
+>>> +            return None
+>>> +
+>>> +    # unquoted, try decimal
+>>> +    try:
+>>> +        return int(raw_str, 0)
+>>> +    except ValueError:
+>>> +        return None
+>>>
+>>> def extract_field_enums(field):
+>>>     enums = []
+>>> @@ -124,32 +147,23 @@ def extract_field_enums(field):
+>>>     if not isinstance(val_entries, list):
+>>>         return enums
+>>>
+>>> +    # A Values.ValueRange field specifies start and end value for a range.
+>>> +    # Don't enumerate anything for them.
+>>> +    for val_entry in val_entries:
+>>> +        if isinstance(val_entry, dict) and \
+>>> +           val_entry.get("_type") == "Values.ValueRange":
+>>> +               return []
+>>> +
+>>>     for val_entry in val_entries:
+>>>         if not isinstance(val_entry, dict):
+>>>             continue
+>>> -            
+>>> +
+>>>         if val_entry.get("_type") == "Values.Value":
+>>> -            raw_val = val_entry.get("value")
+>>> -            if raw_val is None:
+>>> +            int_val = parse_value_int(val_entry.get("value"))
+>>> +            if int_val is None:
+>>>                 continue
+>>> -                
+>>> -            # some of the values have ' like "'0100'"
+>>> -            raw_val_str = str(raw_val).strip().replace("'", "")
+>>> -            
+>>> -            try:
+>>> -                # convert into bin 
+>>> -                int_val = int(raw_val_str, 2)
+>>> -            except ValueError:
+>>> -                try:
+>>> -                    # Fallback to dec if not bin
+>>> -                    int_val = int(raw_val_str, 0)
+>>> -                except ValueError:
+>>> -                    continue
+>>> -            
+>>> -            enums.append({
+>>> -                'value': int_val
+>>> -            })
+>>> -            
+>>> +            enums.append({'value': int_val})
+>>> +
+>>>     return enums
+>>>
+>>> def generate_sysreg_properties_from_registers_json(id_reg_names, raw_json_path):
+>>> @@ -210,7 +224,7 @@ def generate_sysreg_properties_from_registers_json(id_reg_names, raw_json_path):
+>>>                        msb > current_fieldset_fields[unique_key]['msb']:
+>>>                         enums = extract_field_enums(val)
+>>>                         current_fieldset_fields[unique_key] = {
+>>> -                            'raw_name': name,
+>>> +                            'raw_name': unique_key,
+>>>                             'lsb': lsb,
+>>>                             'msb': msb,
+>>>                             'width': width,
+>>> @@ -238,6 +252,15 @@ def generate_sysreg_properties_from_registers_json(id_reg_names, raw_json_path):
+>>>         # Sort decreasing lsbs
+>>>         sorted_fields = sorted(unique_fields.items(),
+>>>                                key=lambda x: x[1]['lsb'], reverse=True)
+>>> +        if len(sorted_fields) == 0:
+>>> +            # cases like REVIDR_EL1 and AIDR_EL1.
+>>> +            # augment a dummy fields VAL.
+>>> +            sorted_fields.append(('VAL', {
+>>> +                'lsb': 0,
+>>> +                'msb': 63,
+>>> +                'width': 64,
+>>> +                'enums': []
+>>> +            }))
+>>>
+>>>         for unique_key, bits in sorted_fields:
+>>>             enums_list = bits.get('enums', [])
 
 

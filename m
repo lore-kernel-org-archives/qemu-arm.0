@@ -4,126 +4,180 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3828BC5CFC1
-	for <qemu-arm@archiver.kernel.org>; Fri, 14 Aug 2026 15:40:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4D0EDC5CFC1
+	for <qemu-arm@archiver.kernel.org>; Fri, 14 Aug 2026 19:21:55 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wuu1F-0006BO-V5; Fri, 14 Aug 2026 11:40:30 -0400
+	id 1wuxT3-0006tA-SR; Fri, 14 Aug 2026 15:21:25 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1wuu1F-0006BG-BE
- for qemu-arm@nongnu.org; Fri, 14 Aug 2026 11:40:29 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ (Exim 4.90_1) (envelope-from <Mikail.Sadic@ibm.com>)
+ id 1wuxT2-0006sx-HP; Fri, 14 Aug 2026 15:21:24 -0400
+Received: from mx0b-001b2d01.pphosted.com ([148.163.158.5])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1wuu1B-0008RC-Sk
- for qemu-arm@nongnu.org; Fri, 14 Aug 2026 11:40:29 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1786722024;
- h=from:from:reply-to:reply-to:subject:subject:date:date:
- message-id:message-id:to:to:cc:cc:mime-version:mime-version:
- content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=99fvnZC3mynUBVTVii7QvmdPVHDtox0FLNvF7OC2fhw=;
- b=TccR3RY0AtAo5jEqXR/nd3aOY573RGKeNlK31RMmIbeqpspEe8zFiRBweTgCoVWmN395jn
- KOIwMdVkZMbQ5y9d1jPWtmXGA1r+jtv5GTkvygOw/TIwPrpElD1TMVHm53vuOQE57ClFs5
- L9uIS6zMDE6mxinOdPBS5crCAYYWXh0=
-Received: from mail-wm1-f71.google.com (mail-wm1-f71.google.com
- [209.85.128.71]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-662-BubxhZ6HOLWz3tMUBJ7Zqw-1; Fri, 14 Aug 2026 11:40:21 -0400
-X-MC-Unique: BubxhZ6HOLWz3tMUBJ7Zqw-1
-X-Mimecast-MFC-AGG-ID: BubxhZ6HOLWz3tMUBJ7Zqw_1786722020
-Received: by mail-wm1-f71.google.com with SMTP id
- 5b1f17b1804b1-4997b060af8so7304355e9.1
- for <qemu-arm@nongnu.org>; Fri, 14 Aug 2026 08:40:21 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1786722020; x=1787326820;
- h=content-transfer-encoding:content-type:in-reply-to:from:references
- :cc:to:content-language:subject:reply-to:user-agent:mime-version
- :date:message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
- :message-id:reply-to:content-type;
- bh=99fvnZC3mynUBVTVii7QvmdPVHDtox0FLNvF7OC2fhw=;
- b=IpntRlO12GgkVBK+ZS8LC4ILlVQ65V74xbAHL25ean/MX20Pg9i1J/ZXygZs7yqPWY
- zJ8HxgvMKXXqKdlKgwITMYSIlehinP7BsTZ1ZchimbiBhbPJTNRjgWng0oGoWJLGuhR2
- l6LAu2TnpT5NEkeUGOr3lq8Hz0ftlVC8RWbsWg/qksJXlPGdQ2T1VaScOfIZP6Hxw6/Q
- 50E4lofGoZZQbRKYAP0XP/xJDnVixe1a4IRefDLdhd2UhaQxM0YKu4EhGWtlM+lodxU8
- B1XGND34am0Q2hXUi9ySho0a2WfssN6IMfsw8pmHwuxTLvihznD9/i6gA1LdBjrXkkcZ
- cptg==
-X-Forwarded-Encrypted: i=1;
- AHgh+RrziaPOtZIzLqP2V1hgoSVjjhol6n7/fI2s61k8XWVM4nSYvNyfT687pOwaXLBRoYB1JnI7l2yNCw==@nongnu.org
-X-Gm-Message-State: AOJu0YzMQLTKp6ZitaE0NMdgs/y/PAxL9VbhZ/kKHLGXFh9AZN5dUrR+
- 6HYAUff/qrSOpLZeOxVk+JeibS2ssmZhchlrHcc6stjfNhAglt2g0NPGHcUxX68tRrYAR+veTBo
- ya0S4TlXRK2hwcgxmEGjlCvKYDB9v4oD6C9v5rXK+sFeUqfhjPbEsVw==
-X-Gm-Gg: AR+sD11X8BeDBa1pfGYqcZr27Mnrbey4BnKBxdQL1qIa5fUjLfKwnbd19FN/mfD9sry
- I6ROV9kqXGcdb87IsM9/oz/OcAehg3UsX0j39mPgX0CNIvivus9QXJqF5msJlid0Pol56tAq7P6
- HsLMypb+foGVJ416vfX+sOyKC4idpAxjpEEenNMMBS3wMa6Z54ba/uTwymy47pSVl5kv2fc6yQw
- b4c1DO0UcrjkrNJTEmbnwl78fsUyUfCctOs7gGx5N9nFKlYkp3f3nqBmlgvnNDxQfvtGgwuEx6R
- 99BSaWf5cjgS7hNVsOeQeuNKTVn3Ie0tl7NdBLqQ3X5m2yS9CfFOdP0u/aX9wYxQxuLqvYCV6BA
- 1Kexsu1kset3GEIIi5cGXilfQnZC7cRMIUnb5ZzoUs2yRsVKQ
-X-Received: by 2002:a7b:c015:0:b0:499:80d0:8b73 with SMTP id
- 5b1f17b1804b1-49987927ebfmr83477475e9.4.1786722019727; 
- Fri, 14 Aug 2026 08:40:19 -0700 (PDT)
-X-Received: by 2002:a7b:c015:0:b0:499:80d0:8b73 with SMTP id
- 5b1f17b1804b1-49987927ebfmr83476565e9.4.1786722019127; 
- Fri, 14 Aug 2026 08:40:19 -0700 (PDT)
-Received: from ?IPV6:2a01:e0a:f0e:9070:527b:9dff:feef:3874?
- ([2a01:e0a:f0e:9070:527b:9dff:feef:3874])
- by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-49989af26eesm40195065e9.15.2026.08.14.08.40.16
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Fri, 14 Aug 2026 08:40:18 -0700 (PDT)
-Message-ID: <82131df0-71cc-44ea-92e6-4843d4c86ee8@redhat.com>
-Date: Fri, 14 Aug 2026 17:40:14 +0200
-MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [RFC PATCH v3 09/19] target/arm: Add named cpu model infra +
- graviton3 named model
-To: Khushit Shah <khushit.shah@nutanix.com>
-Cc: "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
- "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
- "kvmarm@lists.linux.dev" <kvmarm@lists.linux.dev>,
- "cohuck@redhat.com" <cohuck@redhat.com>,
- "peter.maydell@linaro.org" <peter.maydell@linaro.org>,
- "richard.henderson@linaro.org" <richard.henderson@linaro.org>,
- "maz@kernel.org" <maz@kernel.org>,
- "oliver.upton@linux.dev" <oliver.upton@linux.dev>,
- "berrange@redhat.com" <berrange@redhat.com>,
- "abologna@redhat.com" <abologna@redhat.com>,
- "jdenemar@redhat.com" <jdenemar@redhat.com>,
- "gshan@redhat.com" <gshan@redhat.com>,
- "skolothumtho@nvidia.com" <skolothumtho@nvidia.com>,
- "sebott@redhat.com" <sebott@redhat.com>,
- "armbru@redhat.com" <armbru@redhat.com>,
- "philmd@linaro.org" <philmd@linaro.org>,
- "yangjinqian1@huawei.com" <yangjinqian1@huawei.com>,
- Shaju Abraham <shaju.abraham@nutanix.com>,
- Mark Cave-Ayland <mark.caveayland@nutanix.com>,
- Prerna Saxena <prerna.saxena@nutanix.com>
-References: <20260716213858.609699-1-khushit.shah@nutanix.com>
- <20260716213858.609699-10-khushit.shah@nutanix.com>
- <4f07607b-b21a-4a5c-8daa-6aec5e288353@redhat.com>
- <04A24C49-129D-4232-9450-7176CBBF5CA5@nutanix.com>
-From: Eric Auger <eric.auger@redhat.com>
-In-Reply-To: <04A24C49-129D-4232-9450-7176CBBF5CA5@nutanix.com>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: LNkQEJXhvlTOdbor436BVCSowBH6wgjJcBqWUum26g0_1786722020
-X-Mimecast-Originator: redhat.com
+ (Exim 4.90_1) (envelope-from <Mikail.Sadic@ibm.com>)
+ id 1wuxSz-00049B-OH; Fri, 14 Aug 2026 15:21:24 -0400
+Received: from pps.filterd (m0353725.ppops.net [127.0.0.1])
+ by mx0a-001b2d01.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id
+ 67EH1aG0608496; Fri, 14 Aug 2026 19:20:47 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ibm.com; h=cc
+ :content-transfer-encoding:content-type:date:from:in-reply-to
+ :message-id:mime-version:references:subject:to; s=pp1; bh=koYMkr
+ hh21xFfW18P1sJrMmLnGfgaGtNO5mzXTJA03o=; b=gmK70roXUa2rzit9pjGu3X
+ ry+FOkJS1TKTCeLPO0S0DWcUytdAem6ftcvSKwvUra22iZZYWxHFLKBcpX3L160v
+ zIP2wrOmTWbXQHEIdGQGoQ64sRkEkdcx8Jv+k4S7kNwxDmb8GMElHtnQCFN2l1Tl
+ SFqJh/H7uD9HoKNmlzI5CfhjLJqe4xlIatOVFblix42qfviz82toFbgBncoAaQV+
+ 1MEm3IgGYT577nAGys3K8V0gvJnc/esfcQW8uwkJe8KnauTSEuCVA9xpOrl703Op
+ 0UOZgf5wGPd3GpFcLNiA08Cu+Esia8YDYcIgfMXvsUNjFzmeaekUkYrF60ATcRrA
+ ==
+Received: from ch4pr04cu002.outbound.protection.outlook.com
+ (mail-northcentralusazon11013066.outbound.protection.outlook.com
+ [40.107.201.66])
+ by mx0a-001b2d01.pphosted.com (PPS) with ESMTPS id 4fyb246kfk-1
+ (version=TLSv1.3 cipher=TLS_AES_256_GCM_SHA384 bits=256 verify=NOT);
+ Fri, 14 Aug 2026 19:20:46 +0000 (GMT)
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=qv/uUv27lKjYI+1MyqM+cWgP4q/t1SR1tyUzbf+ZJkkkXM/0DGQzJA8rC09KWF5Iqpf7uB59wx02bUjKfPN6mX1SA/NTtqG7LG7UDh0+2bBoLzgjd+TeTsTPQa4OfQu22DGNLImF/eZqm5KCzKNlqkBWcA/8mfDcpV7QSU6UfJvWycrDrCQdvdHH2lZ4sqNFTjriCEpnd8JH0F0cSor+ecqe7QTb8EYEn9lXZpajyzvl81xgugmi/SFaXvmbctDBewKriAaidQLHHF8Wybbjhwv+ruMNVKk1jiNOKaGNn1G/Xh9ikd614t8eQxu2VFuTq+QOfmDxBrnZiSu6Pz1wsw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=koYMkrhh21xFfW18P1sJrMmLnGfgaGtNO5mzXTJA03o=;
+ b=qaO6QH5Kz3YzV2d4ci5kZicc0u3+XhHHh9n6H5Dei//yVXKFf+6MPM6JMEEhwQzEONslZ8ix2t1dwj4w/T7C9lkt9y4lWw8fuxhftRjA37vDEOFSv7zTRxx+rrvKmbkofbySt2GcQiWdA4mDFyZ3Z8/rZCfuE8KcPBuH9J8gMyR+eKVOVFF2wc/VU30aY/aT8joAo7xY47x9fNEmql4vvnEd1GtTFMRVT5FVzkbAU9EXEalPMC/Dy/fqYAncoQxl5IU5Td+upidvZLfudJvepmvEYfmDorkRsgb6YJ1x1gjXw9hhWTFY8riCoIHYVfWLLm2Fts8ykq1QHVJOfxf6DA==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=ibm.com; dmarc=pass action=none header.from=ibm.com; dkim=pass
+ header.d=ibm.com; arc=none
+Received: from SN7PR15MB6138.namprd15.prod.outlook.com (2603:10b6:806:2ee::19)
+ by CH3PR15MB5976.namprd15.prod.outlook.com (2603:10b6:610:158::10)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.21.315.15; Fri, 14 Aug
+ 2026 19:20:43 +0000
+Received: from SN7PR15MB6138.namprd15.prod.outlook.com
+ ([fe80::9ad4:d1d3:3b3b:e4c4]) by SN7PR15MB6138.namprd15.prod.outlook.com
+ ([fe80::9ad4:d1d3:3b3b:e4c4%5]) with mapi id 15.21.0315.014; Fri, 14 Aug 2026
+ 19:20:42 +0000
+From: Mikail Sadic <Mikail.Sadic@ibm.com>
+To: Jamin Lin <jamin_lin@aspeedtech.com>, =?iso-8859-1?Q?C=E9dric_Le_Goater?=
+ <clg@kaod.org>, Peter Maydell <peter.maydell@linaro.org>, Steven Lee
+ <steven_lee@aspeedtech.com>, Troy Lee <leetroy@gmail.com>, Kane Chen
+ <kane_chen@aspeedtech.com>, Andrew Jeffery <andrew@codeconstruct.com.au>,
+ Joel Stanley <joel@jms.id.au>,
+ "open list:ASPEED BMCs" <qemu-arm@nongnu.org>,
+ "open list:All patches CC here" <qemu-devel@nongnu.org>
+CC: Troy Lee <troy_lee@aspeedtech.com>
+Subject: RE: [PATCH v1] hw/i2c/aspeed_i2c: Latch first received byte for SMBus
+ block reads
+Thread-Topic: [PATCH v1] hw/i2c/aspeed_i2c: Latch first received byte for
+ SMBus block reads
+Thread-Index: AQHdKwJqkWkcyoBADkCDJjjo6H+Egbabrw9ggABuHACAALCYQIABHyEQ
+Date: Fri, 14 Aug 2026 19:20:42 +0000
+Message-ID: <SN7PR15MB61380FAD7D6AEA6C2062192B8ADA2@SN7PR15MB6138.namprd15.prod.outlook.com>
+References: <20260813090205.853307-1-jamin_lin@aspeedtech.com>
+ <TYZPR06MB49802BFC78FDFB21489FEE83FCDB2@TYZPR06MB4980.apcprd06.prod.outlook.com>
+ <SN7PR15MB6138B5314F2E7D110245815E8ADB2@SN7PR15MB6138.namprd15.prod.outlook.com>
+ <TYZPR06MB4980A0D671A8CBDFBAEF0DBAFCDA2@TYZPR06MB4980.apcprd06.prod.outlook.com>
+In-Reply-To: <TYZPR06MB4980A0D671A8CBDFBAEF0DBAFCDA2@TYZPR06MB4980.apcprd06.prod.outlook.com>
+Accept-Language: en-US
 Content-Language: en-US
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=170.10.133.124;
- envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -28
-X-Spam_score: -2.9
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+x-ms-publictraffictype: Email
+x-ms-traffictypediagnostic: SN7PR15MB6138:EE_|CH3PR15MB5976:EE_
+x-ms-office365-filtering-correlation-id: f02cd47e-0654-4e54-620b-08defa392249
+x-ms-exchange-senderadcheck: 1
+x-ms-exchange-antispam-relay: 0
+x-microsoft-antispam: BCL:0;
+ ARA:13230040|376014|7416014|23010399003|366016|1800799024|921020|6133799003|22082099003|18002099003|4143699003|11063799006|38070700021|4133799003|10067099003|56012099006;
+x-microsoft-antispam-message-info: 4kKraByb1kf2hXyxn9vL8InHH1/7Gn37Rwg+q3F+18fAa2edpdcINm0PqlzcJB6nb/qIPX0OWN4PR83CSRzoW4TtrGbQkMtcDMzo1/qkIIg17f/sf/er5rhCvSQJo4UX3MU4z2P3yeH0/9R3U3auh13cFJ43FhuFofs5UUVqV6ozL9Bkc20tv9FcoFWzgknBKrGDuTO2GEr0Tm1R6l74y+LhNPV1+JosCHE/uiG3ITx43fP79sTefM2jZqizknZEVzlfXHwWqkT/JbmadwobxoGFecpmUBx+0LAkH/RdDBbXpSTbljF5rRaB8XkrCxQft5X9s3WNUoYjfAkRxfspEIV6P8BZ4abmdt8hJYaLrbu32PDihhJq3tp6vfmNWg04R0Q1Z/UtX4rsUWp4aAjEgpy09oBOPI2pvLoJLPiKJK44fZ0FqwM2cH4SobUHkd/OfI52GQUKCbAV9SvQuzEmPL1gxnYNhHoamvgpan8Vj2Xf9WbKyqzGqmQtxpbhQJxaiT+GETsuMCImnkPWFABAfQaOWhfzrvF8/DwXHhlpGA3OqaBEWS6LfATrDjtpl9WzNnYg3lYTRXrylaHhjtVP8mOhJXbdz2AFsAspsRpPgqByAqSv8tR2sqZ1ocquse9Ku8Yu5yzNJcjUXTR08MeBm9vvFnlEPnLscGIuBlUjD6pa7NpxrbKoNKl6RAa0j/yE9cJVVPipaJL5eiajlxJneMBz9ew2x2Ge5W08xxyuivBoejBNWTlxE84qXtAJmt6H
+x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:SN7PR15MB6138.namprd15.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(13230040)(376014)(7416014)(23010399003)(366016)(1800799024)(921020)(6133799003)(22082099003)(18002099003)(4143699003)(11063799006)(38070700021)(4133799003)(10067099003)(56012099006);
+ DIR:OUT; SFP:1101; 
+x-ms-exchange-antispam-messagedata-chunkcount: 1
+x-ms-exchange-antispam-messagedata-0: =?iso-8859-1?Q?aLicqFAiwdcY6lV5qI+xPkfQPbPkFuMtd+ddJT24SezwfvHvbNGWU3URgN?=
+ =?iso-8859-1?Q?7b1j99nXI2VvSRxd1Wg6gu7aGE8GyFQSnTN2vf3laI3ZTo43SzgKDCxuy1?=
+ =?iso-8859-1?Q?W3qV7RynEsAoTCLOCA28m2fNtIZGyP+GDtK3kobt5/3kiYktryEHnbHAum?=
+ =?iso-8859-1?Q?9SXnO19+7XxFVlWzeYW4mU4uffuJpiaT3m/UP69lD5lvhk7tKnjEwYs39I?=
+ =?iso-8859-1?Q?b+Jpy8+OWW/zr6cYSx8PR7amHfCf+dLS1l7XmvW1d5bGFbTaX7tKP9/DhF?=
+ =?iso-8859-1?Q?FcD3VwjMVxTzyC7XG0YjhF3/BMxdSd7JC4EO3C6LbU1z4BVynAZmJ/TeaC?=
+ =?iso-8859-1?Q?rW2EABSLNdGIpXOwAlA8cxesBOr4E1JveiphM9QSsMTWLFxMXsp5IJmhLA?=
+ =?iso-8859-1?Q?IeCEMjeTN5oCNW0fmoj/6eQjGbr1EsFcSAeRNRgY1tPigvuQ83ty+Pbhoc?=
+ =?iso-8859-1?Q?rMm2/N32tGRVn6O16B5WuELZ3W/oaTiE6Bzeac/7vGMaNdiaZde/jN0Khm?=
+ =?iso-8859-1?Q?W53jwlxPhl6msVIKT2bZWOArFPioUME5s9dsg0C837PyzzM9RxR3bnjj18?=
+ =?iso-8859-1?Q?0u03pe7IkYbsG7NcdNuBl/iMxNH159JZ6YPYe1GkP68jexIjdi8Yz/Lxyq?=
+ =?iso-8859-1?Q?t5ZtdpqWXuc0xoMOP8GNRor0bezIZdnGqb259NGs5SHXzZDxhZXstnHbkX?=
+ =?iso-8859-1?Q?WJuPQ2/hC7r0NKju9eybYhepcD0cVkaMexYEHuiEK0VHZSe+BpHXELBzLp?=
+ =?iso-8859-1?Q?a6CA/vzkICGX7Yl6g9ooVZl9hYdByRjujS6h9LyGKW2XwGmW/ynY1u6AOr?=
+ =?iso-8859-1?Q?oszh7Eo/eGGZZhengvmvFYB1epYvZPkD645qy3+rYqjjtVZqunYU6bYGeM?=
+ =?iso-8859-1?Q?M3F8SqPvjq/JWbHtLLQhUw3ZteTLKG69sFBXGQ505Nr416+58juYInFFuk?=
+ =?iso-8859-1?Q?/KwwnN/dyMjyPATzd+J2D1j4FctLLhznc2RSxUwW7ZQpf9A8tb4T7KA20D?=
+ =?iso-8859-1?Q?MiLN4+8O4RXGhP3ynrj3yU+rOdKhQtEh6C1/M2LOKDjsxEADak7gzSckLj?=
+ =?iso-8859-1?Q?HsqeWwVHjj2o8Q5PC/q4JtkjJwKDGfMPTcBMe99S7pdqLBo4yBcAXi7PnP?=
+ =?iso-8859-1?Q?sZZIhM3oVMDv2Vx3D0OrxYQuugPSvLflrVrYfvgpAuM9NwBk5Arp8tijrB?=
+ =?iso-8859-1?Q?9Scao/CbwYEU8xRCtzvvABfWyKSX3/gkEBsbKEfrFsa7QUGg5hYnMn+mYw?=
+ =?iso-8859-1?Q?w2UYIXJXFsCUIu+IJO6Mh6glDHWnj8E1NP5101hoEMl5S6Nigx56alxfHf?=
+ =?iso-8859-1?Q?zgQ/mNv0HNZAmd7q42dxXV3YDNPsG/vPhQ69pDYeSroDH+FSDxtmbNgcla?=
+ =?iso-8859-1?Q?syDxUEBu+pgrPma9NFKtgWv9SqdVLF5W6VypJDr5eYSSHPRcNoQtxBThzG?=
+ =?iso-8859-1?Q?XtpZ3nhNzkm0DFAaeiZc3tJZKkHg9VjxMqGz6JtQyE6DasRVr7C6UPCZ5r?=
+ =?iso-8859-1?Q?UeDenrKsICJHO1cTTCJXsMuYhGN/zvuFiB14MT3vOsCpG7W069e+x206it?=
+ =?iso-8859-1?Q?h9thY8m8h81QSFrWGMZuLGhgCaiYZ1HnsTW4IieIm9TMhovYwhABxt4TO+?=
+ =?iso-8859-1?Q?cVaE/WDRNPVA1Y235gE1/xQdYE310S3jLefGiJHNylTUD36QD1OrvjkL3N?=
+ =?iso-8859-1?Q?9EPt7Az7H4Y9pIeoG3KuutyQZ1RVUHrkSDgAsu1cI8j8gp6DmyThMrJypl?=
+ =?iso-8859-1?Q?Q1p0QHZXCb/ptK0vMXWiV0TGnVVklwcczD+f7U1IHJ2pew?=
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
+MIME-Version: 1.0
+X-Exchange-RoutingPolicyChecked: Z65Y09GrJkbRdqxqpKc1/aT7QTlAgx6GyS646gjXmlHqDosFFQQAdt6ruVl62vsL4aCLr+b5pDqETWNJU0GtnemlbZTyFyFOglZ1NpHNlnBzxxGyU5+tEkwzw7eAVgLPRg68OXFEkpsGPtlhJHwrfOVzmfQES8C7MumAHaO8cU3RoA1M1M6dYCN3sO90Q6AQXclOz9PK4w8um8p421cl/r04INOU2dpzn+8nqyZnn6ISwq43q7Rq4WOXoXKXD4rn9DV4d4AsmgbAoejx6X869VW4SLbuSnJJQl6mrvjNWseFQ2N5zQ1TxzwD9ds8k/LAZtmmDLzeDeTID3StCD9H+A==
+X-OriginatorOrg: ibm.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-AuthSource: SN7PR15MB6138.namprd15.prod.outlook.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: f02cd47e-0654-4e54-620b-08defa392249
+X-MS-Exchange-CrossTenant-originalarrivaltime: 14 Aug 2026 19:20:42.8226 (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: fcf67057-50c9-4ad4-98f3-ffca64add9e9
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: V2Lx4scvd7xQ86PO3ybSvQAlas3vFeZB3xSWR6nRBIE/e6EstfmrdCenRTt02ptqQJRqsUmv4YIzcOIhk/Ko4A==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: CH3PR15MB5976
+X-Proofpoint-Reinject: loops=2 maxloops=12
+X-Authority-Analysis: v=2.4 cv=XqfK/1F9 c=1 sm=1 tr=0 ts=6a7f6a8e cx=c_pps
+ a=2KosHvP3s5kmPOqSYQ0Nog==:117 a=z/mQ4Ysz8XfWz/Q5cLBRGdckG28=:19
+ a=lCpzRmAYbLLaTzLvsPZ7Mbvzbb8=:19 a=xqWC_Br6kY4A:10 a=8nJEP1OIZ-IA:10
+ a=Sv0fKeRqtYgA:10 a=VkNPw1HP01LnGYTKEx00:22 a=RnoormkPH1_aCDwRdu11:22
+ a=V8glGbnc2Ofi9Qvn3v5h:22 a=VwQbUJbxAAAA:8 a=V2NxCb60AAAA:8 a=VnNF1IyMAAAA:8
+ a=aow-egSQAAAA:8 a=KKAkSRfTAAAA:8 a=pGLkceISAAAA:8 a=7KBfExy5AAAA:8
+ a=69wJf7TsAAAA:8 a=1lxAQt7xqVLMHmU52qoA:9 a=wPNLvfGTeEIA:10
+ a=3L6qF29SlnrayQqPM2jZ:22 a=gFNbaldVC-z-bsjSTzMo:22 a=cvBusfyB2V15izCimMoJ:22
+ a=eL7OMsOqQ-6kYQPn45L1:22 a=Fg1AiH1G6rFz08G2ETeA:22
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwODE0MDE0NiBTYWx0ZWRfXx9Y9z3WJLLkI
+ AAbwh/TUXOeSSebPIYZLFwt+YXNe58XgNrlPCA19xo/RXjo+ZFb7lrswCyrLacWaW+u1fRuk225
+ abx8HalqugLZjZpIGqi0fLPm/+X95qAcGKZ7GUbf7C3xzntN9FTh+NYUs9Tag7c0PvvI2ImsUSu
+ sw7cl+xbYatl9KeseXn4Ful9PU9x9e54P9LEnj3D0aQ8oBsVoVIl1n45NWEFbR1j0MSX3Bso84T
+ Q0r2JTf3LjCd/8LG80bouH1+EI4aFlMaqRl4i12sBM2WllnEDJ6lLCo9Toq19b8wOVxuZ2FFM6i
+ XDm8k/ChA61dJQjc+gfR6Eqa+Gk90leYzix5A4O4hG+eTfoi7YyzpDKJX64CHhNXCGqpsrzKJZj
+ AZ16++d9VxVy36VZK4CTJVkdgS2YodpPMeWp1MIarvf1l7WODt1sZckTna67QN2Ekw+dEdaJCqQ
+ IjcR9TvsGGV5I/6lWTg==
+X-Proofpoint-ORIG-GUID: VieTuXlixrXyTdCv4ZqxCVWfNd4-Vzwf
+X-Proofpoint-GUID: cYaqGkRlb1NpVmUi-PzBy0Y4CCv1TRMJ
+X-Proofpoint-Spam-Info: AW1haW4tMjYwODE0MDE0NiBTYWx0ZWRfX2ZTUmToPLqpb
+ 2/QQspA4WxuEt6m2wblZKbHejBV/DSmQpgedsDHP23jsDTfu7zOXSEJlPCewa3pm1SsIBde+CaW
+ iaR8qlocuzlyjdD3JDnAhlBlg2FQmCc=
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.293,Aquarius:18.0.1176,Hydra:6.1.134,FMLib:17.12.100.49
+ definitions=2026-08-14_06,2026-08-12_01,2025-10-01_01
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
+ lowpriorityscore=0 spamscore=0 adultscore=0 malwarescore=0 clxscore=1015
+ suspectscore=0 priorityscore=1501 impostorscore=0 phishscore=0 bulkscore=0
+ classifier=typeunknown authscore=0 authtc= authcc= route=outbound adjust=0
+ reason=mlx scancount=1 engine=8.22.0-2606150000 definitions=main-2608140146
+Received-SPF: pass client-ip=148.163.158.5; envelope-from=Mikail.Sadic@ibm.com;
+ helo=mx0b-001b2d01.pphosted.com
+X-Spam_score_int: -27
+X-Spam_score: -2.8
 X-Spam_bar: --
-X-Spam_report: (-2.9 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.751,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -136,525 +190,244 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-To: eric.auger@redhat.com
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
+Hi Jamin,
 
+Tested-by: Mikail Sadic <mikail.sadic@ibm.com>
 
-On 8/5/26 1:35 PM, Khushit Shah wrote:
->
->> On 26 Jul 2026, at 7:04 PM, Eric Auger <eric.auger@redhat.com> wrote:
->>
->> !-------------------------------------------------------------------|
->>  CAUTION: External Email
->>
->> |-------------------------------------------------------------------!
->>
->> Hi Khushit,
->>
->> On 7/16/26 11:38 PM, Khushit Shah wrote:
->>> From: Shaju Abraham <shaju.abraham@nutanix.com>
->>>
->>> Introduce a small named-CPU-model layer on top of the field-backed
->>> property infrastructure. Each model is a flat table of (name, value)
->>> overrides and a parent pointer. At instance-init, the parent chain is
->>> walked root-first and every level's properties are applied via QOM,
->>> so a child entry overrides its ancestors for the same name.
->>>
->>> For example, the graviton3-v1 named model hierarchy is:
->>> non-zero-defaults-v1    Known non-zero default ID regs field values
->>>  arm-v8_4-a-v1       ARMv8.4-A architectural mandate
->>>    neoverse-v1-v1    Neoverse V1
->>>      graviton3-v1    AWS Graviton3
->>>
->>> non-zero-defaults-v1:
->>>   Field that should be populated with some non zero value by default.
->> following which specification? This is not clear to me. Is that layer
->> really meaningful? Shouldn't we start with the next one?
-> Okay, makes sense. We can get rid of this layer.
->
->>> arm-v8_4-a-v1:
->>>  Only features mandated by the ARM ARM.
->>>
->>> neoverse-v1-v1:
->>>  Reference manual derived feature values for the reference core.
->>>  Values differ from TRM values based on what was exposed to the guest
->>>  with -cpu host.
->>>
->>> graviton3-v1:
->>>  SoC integration choices (crypto pin, cache hints, PAuth alg).
->>>
->>> The model values are figured out from ID register dump visible to
->>> QEMU with -cpu host on Graviton3 machine.
->>>
->>> Model realization:
->>> 1. Zero out ID regs array.
->>> 2. Add all properties to the CPU Object
->>> 3. arm_realize_model_chain: Walk the parent chain from root first and
->>>                            apply all the properties.
->>>
->>> Co-authored-by: Shaju Abraham <shaju.abraham@nutanix.com>
->>> Signed-off-by: Khushit Shah <khushit.shah@nutanix.com>
->>> ---
->>> hw/arm/virt.c               |   5 +
->>> target/arm/arm-cpu-models.c | 336 ++++++++++++++++++++++++++++++++++++
->>> target/arm/arm-cpu-models.h |  35 ++++
->>> target/arm/meson.build      |   7 +-
->>> 4 files changed, 381 insertions(+), 2 deletions(-)
->>> create mode 100644 target/arm/arm-cpu-models.c
->>> create mode 100644 target/arm/arm-cpu-models.h
->>>
->>> diff --git a/hw/arm/virt.c b/hw/arm/virt.c
->>> index fe19030886..34e56dc1f1 100644
->>> --- a/hw/arm/virt.c
->>> +++ b/hw/arm/virt.c
->>> @@ -3812,6 +3812,11 @@ static GPtrArray *virt_get_valid_cpu_types(const MachineState *ms)
->>>             g_ptr_array_add(vct, g_strdup(ARM_CPU_TYPE_NAME("host")));
->>>         }
->>>     }
->>> +    if (kvm_enabled() && target_aarch64()) {
->>> +        g_ptr_array_add(vct, g_strdup(ARM_CPU_TYPE_NAME("arm-v8_4-a-v1")));
->>> +        g_ptr_array_add(vct, g_strdup(ARM_CPU_TYPE_NAME("neoverse-v1-v1")));
->>> +        g_ptr_array_add(vct, g_strdup(ARM_CPU_TYPE_NAME("graviton3-v1")));
->>> +    }
->>>     g_ptr_array_add(vct, g_strdup(ARM_CPU_TYPE_NAME("max"))); return vct; diff --git a/target/arm/arm-cpu-models.c
->>> b/target/arm/arm-cpu-models.c new file mode 100644 index
->>> 0000000000..747e0df010 --- /dev/null +++ b/target/arm/arm-cpu-models.c
->>> @@ -0,0 +1,336 @@ +/* + * ARM named CPU model definitions. + * + *
->>> Each model is defined as an array of MODEL_PROP macro, listing only +
->>> * the properties that DIFFER from the parent model. + * + * At
->>> realisation the parent chain is walked root-first and + * every
->>> level's props are applied via QOM, so the leaf's values + * naturally
->>> override its ancestors. + * + * Hierarchy: + * + *
->>> non-zero-defaults-v1 Known non-zero default ID reg field values + *
->>> arm-v8_4-a-v1 ARMv8.4-A architectural mandate + * neoverse-v1-v1
->>> Neoverse V1 (TRM 102649) + * graviton3-v1 AWS Graviton3 + * + *
->>> SPDX-License-Identifier: GPL-2.0-or-later + */ + +#include "qemu/osdep.h"
->>> +#include "qapi/error.h"
->>> +#include "qemu/error-report.h"
->>> +#include "system/kvm.h"
->>> +#include "cpu.h"
->>> +#include "internals.h"
->>> +#include "kvm_arm.h"
->>> +#include "arm-cpu-models.h"
->>> +#include "cpu-idregs.h"
->>> +
->>> +#define MODEL_PROP_FIELD_STR  str
->>> +#define MODEL_PROP_FIELD_BOOL b
->>> +#define MODEL_PROP_FIELD_NUM  num
->>> +
->>> +#define MODEL_PROP(_name, _type, _value) \
->>> +    { .name = (_name), .type = ARM_MODEL_PROP_##_type, \
->>> +      .u.MODEL_PROP_FIELD_##_type = (_value) }
->>> +
->>> +#define MODEL_PROP_END  { .name = NULL }
->> Regarding settings somehow we end up with something that is quite
->> similar to TCG CPU
->> definitions like in
->> aarch64_neoverse_n1_initfn(). To me this is in general more readable
->> because we use name fields instead of putting the full reg value.
->> This does not prevent us from adding comments along settings to make
->> this more readable and explicit.
-> Can you please specify further on what types of comments?
-> Like what does each property value means?
-yes, something alike what is done when we populate acpi table fields
->
->>> +
->>> +/*
->>> + * These fields should be populated with some non-zero default values.
->>> + */
->>> +static const ArmModelPropValue non_zero_defaults_v1_props[] = {
->>> +    /* ID_AA64PFR0_EL1 */
->>> +    MODEL_PROP("SYSREG_ID_AA64PFR0_EL1_EL0", NUM, 0b0001),
->>> +    MODEL_PROP("SYSREG_ID_AA64PFR0_EL1_EL1", NUM, 0b0001),
->>> +    MODEL_PROP("SYSREG_ID_AA64PFR0_EL1_FP", NUM, 0b1111),
->>> +    MODEL_PROP("SYSREG_ID_AA64PFR0_EL1_AdvSIMD", NUM, 0b1111),
->>> +
->>> +    /* ID_AA64PFR1_EL1 */
->>> +    MODEL_PROP("SYSREG_ID_AA64PFR1_EL1_MTE_frac", NUM, 0b1111),
->> so I still believe we want a wrapper that transparently either sets a
->> prop if the field happens to be writable or simply performs checks
->> against the host if the prop is not available.
-> Can’t we do that easily afterwards once the ID reg view is finalised?
-> Doing it here means all the qmp paths which do not intend to actually
-> create any vCPUs will error out here, which is undesirable.
-sorry but I don't catch
->
->>> +
->>> +    /* ID_AA64MMFR0_EL1 */
->>> +    MODEL_PROP("SYSREG_ID_AA64MMFR0_EL1_TGran64", NUM, 0b1111),
->>> +    MODEL_PROP("SYSREG_ID_AA64MMFR0_EL1_TGran4", NUM, 0b1111),
->>> +    MODEL_PROP("SYSREG_ID_AA64MMFR0_EL1_TGran16_2", NUM, 0b0001),
->>> +    MODEL_PROP("SYSREG_ID_AA64MMFR0_EL1_TGran64_2", NUM, 0b0001),
->>> +    MODEL_PROP("SYSREG_ID_AA64MMFR0_EL1_TGran4_2", NUM, 0b0001),
->>> +
->>> +    /* ID_AA64DFR0_EL1 */
->>> +    MODEL_PROP("SYSREG_ID_AA64DFR0_EL1_DebugVer", NUM, 0x6),
->>> +    MODEL_PROP("SYSREG_ID_AA64DFR0_EL1_DoubleLock", NUM, 0b1111),
->>> +
->>> +    /* CTR_EL0 */
->>> +    MODEL_PROP("SYSREG_CTR_EL0_L1Ip", NUM, 0b10),
->>> +    MODEL_PROP("SYSREG_CTR_EL0_RES1_31", NUM, 1),
->>> +
->>> +    /* ID_AA64MMFR4_EL1 */
->>> +    MODEL_PROP("SYSREG_ID_AA64MMFR4_EL1_E2H0", NUM, 0b1111),
->>> +
->>> +    MODEL_PROP_END,
->>> +};
->> To ease the review I would suggest to put a dump of all id regs of a
->> leaf model in the commit description. It is less error prone that
->> understanding the various overrides.
->> I would suggest to have separate patches for each model too.
-> Ack to both. Will do this in v4.
->
->> So you said a leaf model shall have explicit values for each field,
->> including non writable ones. The code does not check that. How do we
->> make sure we are not missing settings?
-> I am not sure where I say that, assumption is:
-> Base model starts with a zeroed IO reg view, each model in
-> chain applies some settings, a child model’s setting
-> overrides parents’ settings.
-Ah ok I must have misunderstood then.
->
-> For verification we can dump the leaf ID regs view, it
-> should match with the one in the commit message as per
-> your suggestion.
->>> +
->>> +static const ArmModelPropValue armv8_4_a_v1_props[] = {
->>> +    MODEL_PROP("SYSREG_ID_AA64ISAR0_EL1_CRC32", NUM, 1),
->>> +    MODEL_PROP("SYSREG_ID_AA64ISAR0_EL1_Atomic", NUM, 2),
->>> +    MODEL_PROP("SYSREG_ID_AA64MMFR1_EL1_HPDS", NUM, 1),
->>> +    MODEL_PROP("SYSREG_ID_AA64MMFR1_EL1_LO", NUM, 1),
->>> +
->>> +    MODEL_PROP("SYSREG_ID_AA64ISAR1_EL1_DPB", NUM, 1),
->>> +
->>> +    MODEL_PROP("SYSREG_ID_AA64PFR0_EL1_RAS", NUM, 1),
->>> +    MODEL_PROP("SYSREG_ID_AA64PFR1_EL1_RAS_frac", NUM, 0),
->>> +
->>> +    MODEL_PROP("SYSREG_ID_AA64MMFR1_EL1_PAN", NUM, 2),
->>> +    MODEL_PROP("SYSREG_ID_AA64MMFR2_EL1_UAO", NUM, 1),
->>> +    MODEL_PROP("SYSREG_ID_AA64MMFR2_EL1_CnP", NUM, 1),
->>> +    MODEL_PROP("SYSREG_ID_AA64MMFR2_EL1_IESB", NUM, 1),
->>> +
->>> +    MODEL_PROP("SYSREG_ID_AA64PFR0_EL1_DIT", NUM, 1),
->>> +    MODEL_PROP("SYSREG_ID_AA64DFR0_EL1_DebugVer", NUM, 9),
->>> +    MODEL_PROP("SYSREG_ID_AA64DFR0_EL1_PMUVer", NUM, 5),
->>> +    MODEL_PROP("SYSREG_ID_AA64ISAR0_EL1_TS", NUM, 1),
->>> +    MODEL_PROP("SYSREG_ID_AA64ISAR1_EL1_LRCPC", NUM, 2),
->>> +    MODEL_PROP("SYSREG_ID_AA64MMFR2_EL1_AT", NUM, 1),
->>> +    MODEL_PROP("SYSREG_ID_AA64MMFR2_EL1_IDS", NUM, 1),
->>> +    /* KVM zeroes out these field when MTE is not enabled. */
->>> +    MODEL_PROP("SYSREG_ID_AA64PFR1_EL1_MTE_frac", NUM, 0),
->>> +    MODEL_PROP_END,
->>> +};
->>> +
->>> +static const ArmModelPropValue neoverse_v1_v1_props[] = {
->>> +    MODEL_PROP("SYSREG_MIDR_EL1_Implementer", NUM, 0x41),
->>> +    MODEL_PROP("SYSREG_MIDR_EL1_Variant", NUM, 0x1),
->>> +    MODEL_PROP("SYSREG_MIDR_EL1_Architecture", NUM, 0xF),
->>> +    MODEL_PROP("SYSREG_MIDR_EL1_PartNum", NUM, 0xD40),
->>> +    MODEL_PROP("SYSREG_MIDR_EL1_Revision", NUM, 0x1),
->>> +
->>> +    MODEL_PROP("SYSREG_ID_AA64DFR0_EL1_BRPs", NUM, 0x5),
->>> +    MODEL_PROP("SYSREG_ID_AA64DFR0_EL1_WRPs", NUM, 0x3),
->>> +    MODEL_PROP("SYSREG_ID_AA64DFR0_EL1_CTX_CMPs", NUM, 0x1),
->>> +    MODEL_PROP("SYSREG_ID_AA64DFR0_EL1_DoubleLock", NUM, 0xF),
->>> +
->>> +    MODEL_PROP("SYSREG_ID_AA64ISAR0_EL1_RDM", NUM, 1),
->>> +    MODEL_PROP("SYSREG_ID_AA64ISAR0_EL1_DP", NUM, 1),
->>> +    MODEL_PROP("SYSREG_ID_AA64ISAR0_EL1_FHM", NUM, 1),
->>> +
->>> +    MODEL_PROP("SYSREG_ID_AA64ISAR1_EL1_DPB", NUM, 2),
->>> +    MODEL_PROP("SYSREG_ID_AA64ISAR1_EL1_JSCVT", NUM, 1),
->>> +    MODEL_PROP("SYSREG_ID_AA64ISAR1_EL1_FCMA", NUM, 1),
->>> +    MODEL_PROP("SYSREG_ID_AA64ISAR1_EL1_BF16", NUM, 1),
->>> +    MODEL_PROP("SYSREG_ID_AA64ISAR1_EL1_DGH", NUM, 1),
->>> +    MODEL_PROP("SYSREG_ID_AA64ISAR1_EL1_I8MM", NUM, 1),
->>> +
->>> +    MODEL_PROP("SYSREG_ID_AA64PFR0_EL1_FP", NUM, 1),
->>> +    MODEL_PROP("SYSREG_ID_AA64PFR0_EL1_AdvSIMD", NUM, 1),
->>> +
->>> +    MODEL_PROP("SYSREG_ID_AA64PFR0_EL1_RAS", NUM, 2),
->>> +    MODEL_PROP("SYSREG_ID_AA64PFR1_EL1_RAS_frac", NUM, 0),
->>> +
->>> +    MODEL_PROP("SYSREG_ID_AA64PFR0_EL1_CSV2", NUM, 1),
->>> +    MODEL_PROP("SYSREG_ID_AA64PFR1_EL1_CSV2_frac", NUM, 0),
->>> +
->>> +    MODEL_PROP("SYSREG_ID_AA64PFR0_EL1_CSV3", NUM, 1),
->>> +
->>> +    MODEL_PROP("SYSREG_ID_AA64PFR1_EL1_SSBS", NUM, 2),
->>> +
->>> +    MODEL_PROP("SYSREG_ID_AA64MMFR0_EL1_PARange", NUM, 5),
->>> +    MODEL_PROP("SYSREG_ID_AA64MMFR0_EL1_ASIDBits", NUM, 2),
->>> +    MODEL_PROP("SYSREG_ID_AA64MMFR0_EL1_BigEnd", NUM, 1),
->>> +    MODEL_PROP("SYSREG_ID_AA64MMFR0_EL1_SNSMem", NUM, 1),
->>> +    MODEL_PROP("SYSREG_ID_AA64MMFR0_EL1_TGran4", NUM, 0),
->>> +    MODEL_PROP("SYSREG_ID_AA64MMFR0_EL1_TGran16", NUM, 1),
->>> +    MODEL_PROP("SYSREG_ID_AA64MMFR0_EL1_TGran64", NUM, 0),
->>> +    MODEL_PROP("SYSREG_ID_AA64MMFR0_EL1_TGran4_2", NUM, 0),
->>> +    MODEL_PROP("SYSREG_ID_AA64MMFR0_EL1_TGran16_2", NUM, 0),
->>> +    MODEL_PROP("SYSREG_ID_AA64MMFR0_EL1_TGran64_2", NUM, 0),
->>> +    MODEL_PROP("SYSREG_ID_AA64MMFR1_EL1_HAFDBS", NUM, 2),
->>> +    MODEL_PROP("SYSREG_ID_AA64MMFR1_EL1_VMIDBits", NUM, 2),
->>> +    MODEL_PROP("SYSREG_ID_AA64MMFR1_EL1_VH", NUM, 1),
->>> +    MODEL_PROP("SYSREG_ID_AA64MMFR1_EL1_HPDS", NUM, 2),
->>> +    MODEL_PROP("SYSREG_ID_AA64MMFR1_EL1_XNX", NUM, 1),
->>> +    MODEL_PROP("SYSREG_ID_AA64MMFR1_EL1_SpecSEI", NUM, 0),
->>> +
->>> +    MODEL_PROP("SYSREG_ID_AA64MMFR2_EL1_FWB", NUM, 1),
->>> +    MODEL_PROP("SYSREG_ID_AA64MMFR2_EL1_BBM", NUM, 2),
->>> +    MODEL_PROP("SYSREG_ID_AA64MMFR2_EL1_EVT", NUM, 2),
->>> +
->>> +    MODEL_PROP("SYSREG_ID_AA64MMFR4_EL1_E2H0", NUM, 0),
->>> +
->>> +    MODEL_PROP("SYSREG_CTR_EL0_IminLine", NUM, 4),
->>> +    MODEL_PROP("SYSREG_CTR_EL0_L1Ip", NUM, 3),
->>> +    MODEL_PROP("SYSREG_CTR_EL0_DminLine", NUM, 4),
->>> +    MODEL_PROP("SYSREG_CTR_EL0_ERG", NUM, 4),
->>> +    MODEL_PROP("SYSREG_CTR_EL0_CWG", NUM, 4),
->>> +
->>> +    MODEL_PROP("SYSREG_DCZID_EL0_BS", NUM, 0x4),
->>> +
->>> +    /* pauth */
->>> +    MODEL_PROP("SYSREG_ID_AA64ISAR1_EL1_APA", NUM, 3),
->>> +    MODEL_PROP("SYSREG_ID_AA64ISAR1_EL1_GPA", NUM, 1),
->>> +
->>> +    /* sve */
->>> +    MODEL_PROP("SYSREG_ID_AA64PFR0_EL1_SVE", NUM, 1),
->>> +    MODEL_PROP("SYSREG_ID_AA64ZFR0_EL1_BF16", NUM, 1),
->>> +    MODEL_PROP("SYSREG_ID_AA64ZFR0_EL1_I8MM", NUM, 1),
->>> +    MODEL_PROP("sve128", BOOL, true),
->>> +
->>> +    MODEL_PROP_END,
->>> +};
->>> +
->>> +static const ArmModelPropValue graviton3_v1_props[] = {
->>> +    MODEL_PROP("SYSREG_ID_AA64ISAR0_EL1_AES", NUM, 2),
->>> +    MODEL_PROP("SYSREG_ID_AA64ISAR0_EL1_SHA1", NUM, 1),
->>> +    MODEL_PROP("SYSREG_ID_AA64ISAR0_EL1_SHA2", NUM, 2),
->>> +    MODEL_PROP("SYSREG_ID_AA64ISAR0_EL1_SHA3", NUM, 1),
->>> +    MODEL_PROP("SYSREG_ID_AA64ISAR0_EL1_SM3", NUM, 1),
->>> +    MODEL_PROP("SYSREG_ID_AA64ISAR0_EL1_SM4", NUM, 1),
->>> +    MODEL_PROP("SYSREG_ID_AA64ISAR0_EL1_RNDR", NUM, 1),
->>> +
->>> +    MODEL_PROP("SYSREG_CTR_EL0_IDC", NUM, 1),
->>> +    MODEL_PROP("SYSREG_CTR_EL0_DIC", NUM, 1),
->>> +
->>> +    MODEL_PROP("SYSREG_REVIDR_EL1_VAL", NUM, 1),
->>> +
->>> +    MODEL_PROP_END,
->>> +};
->>> +
->>> +static const ArmNamedCpuModel arm_cpu_models[] = {
->>> +    {
->>> +        .name   = "non-zero-defaults-v1",
->>> +        .parent = NULL,
->>> +        .props  = non_zero_defaults_v1_props,
->>> +    },
->>> +    {
->>> +        .name   = "arm-v8_4-a-v1",
->>> +        .parent = "non-zero-defaults-v1",
->>> +        .props  = armv8_4_a_v1_props,
->>> +    },
->>> +    {
->>> +        .name   = "neoverse-v1-v1",
->>> +        .parent = "arm-v8_4-a-v1",
->>> +        .props  = neoverse_v1_v1_props,
->>> +    },
->>> +    {
->>> +        .name   = "graviton3-v1",
->>> +        .parent = "neoverse-v1-v1",
->>> +        .props  = graviton3_v1_props,
->>> +    },
->>> +};
->>> +
->>> +static ARMCPUInfo arm_named_cpu_infos[ARRAY_SIZE(arm_cpu_models)];
->>> +const ArmNamedCpuModel *arm_find_model(const char *name)
->>> +{
->>> +    size_t i;
->>> +    for (i = 0; i < ARRAY_SIZE(arm_cpu_models); i++) {
->>> +        if (g_str_equal(arm_cpu_models[i].name, name)) {
->>> +            return &arm_cpu_models[i];
->>> +        }
->>> +    }
->>> +    return NULL;
->>> +}
->>> +
->>> +static void arm_apply_model_props(Object *obj, const ArmModelPropValue *props,
->>> +                                  Error **errp)
->>> +{
->>> +    const ArmModelPropValue *pv;
->>> +    ERRP_GUARD();
->>> +
->>> +    for (pv = props; pv->name; pv++) {
->>> +        switch (pv->type) {
->>> +        case ARM_MODEL_PROP_BOOL:
->>> +            object_property_set_bool(obj, pv->name, pv->u.b, errp);
->>> +            break;
->>> +        case ARM_MODEL_PROP_NUM:
->>> +            object_property_set_uint(obj, pv->name, pv->u.num, errp);
->>> +            break;
->>> +        default:
->>> +            g_assert_not_reached();
->>> +        }
->>> +        if (*errp) {
->>> +            error_prepend(errp, "property '%s': ", pv->name);
->>> +            return;
->>> +        }
->>> +    }
->>> +}
->>> +
->>> +static void arm_realize_model_chain(Object *obj, const ArmNamedCpuModel *model,
->>> +                                    Error **errp)
->>> +{
->>> +    const ArmNamedCpuModel *cur, *parent;
->>> +    const ArmNamedCpuModel *chain[ARRAY_SIZE(arm_cpu_models)];
->>> +    size_t depth = 0;
->>> +    for (cur = model; cur; ) {
->>> +        if (depth >= ARRAY_SIZE(chain)) {
->>> +            error_setg(errp, "model '%s': parent chain too deep "
->>> +                       "(possible cycle)", model->name);
->>> +            return;
->>> +        }
->>> +        chain[depth++] = cur;
->>> +
->>> +        if (!cur->parent) {
->>> +            break;
->>> +        }
->>> +        parent = arm_find_model(cur->parent);
->>> +        if (!parent) {
->>> +            error_setg(errp, "model '%s': unknown parent '%s'",
->>> +                       cur->name, cur->parent);
->>> +            return;
->>> +        }
->>> +        cur = parent;
->>> +    }
->>> +
->>> +    while (depth--) {
->>> +        arm_apply_model_props(obj, chain[depth]->props, errp);
->>> +        if (*errp) {
->>> +            return;
->>> +        }
->>> +    }
->>> +}
->>> +
->>> +static void arm_named_cpu_initfn(Object *obj)
->>> +{
->>> +    ARMCPU *cpu = ARM_CPU(obj);
->>> +    ARMCPUClass *acc = ARM_CPU_GET_CLASS(obj);
->>> +    const ArmNamedCpuModel *model = arm_find_model(acc->info->name);
->>> +    if (!model) {
->>> +        error_report("'%s' CPU model entry not found)",
->>> +                     acc->info->name);
->>> +        return;
->>> +    }
->>> +
->>> +    if (!kvm_enabled()) {
->>> +        error_report("'%s' CPU model requires KVM (-accel kvm)",
->>> +                     acc->info->name);
->>> +        return;
->>> +    }
->>> +
->>> +    kvm_arm_set_cpu_features_from_host(cpu);
->>> +    if (!arm_feature(&cpu->env, ARM_FEATURE_AARCH64)) {
->>> +        return;
->>> +    }
->>> +
->>> +    /* 1. Reset ID regs to 0 */
->>> +    memset(cpu->isar.idregs, 0, sizeof(cpu->isar.idregs));
->>> +
->>> +    /* 2. Add sveNNNN and SYSREG_ properties */
->>> +    aarch64_add_sve_properties(obj);
->>> +    aarch64_add_idregs_properties(obj);
->>> +
->>> +    /* 3. Realize the model chain. */
->>> +    arm_realize_model_chain(obj, model, &error_abort);
->>> +}
->>> +
->>> +void arm_register_named_cpu_models(void)
->>> +{
->>> +    size_t i;
->>> +    for (i = 0; i < ARRAY_SIZE(arm_cpu_models); i++) {
->>> +        arm_named_cpu_infos[i].name = arm_cpu_models[i].name;
->>> +        arm_named_cpu_infos[i].initfn = arm_named_cpu_initfn;
->>> +        arm_cpu_register(&arm_named_cpu_infos[i]);
->>> +    }
->>> +}
->>> +
->>> +type_init(arm_register_named_cpu_models)
->>> diff --git a/target/arm/arm-cpu-models.h b/target/arm/arm-cpu-models.h
->>> new file mode 100644
->>> index 0000000000..ac4e510499
->>> --- /dev/null
->>> +++ b/target/arm/arm-cpu-models.h
->>> @@ -0,0 +1,35 @@
->>> +/* SPDX-License-Identifier: GPL-2.0-or-later */
->>> +/*
->>> + * ARM named CPU model definitions - public API.
->>> + */
->>> +#ifndef ARM_CPU_MODELS_H
->>> +#define ARM_CPU_MODELS_H
->>> +
->>> +#include "qapi/error.h"
->>> +#include "qom/object.h"
->>> +
->>> +typedef enum ArmModelPropType {
->>> +    ARM_MODEL_PROP_BOOL,
->>> +    ARM_MODEL_PROP_NUM,
->>> +} ArmModelPropType;
->>> +
->>> +typedef struct ArmModelPropValue {
->>> +    const char     *name;
->>> +    ArmModelPropType type;
->>> +    union {
->>> +        bool            b;
->>> +        uint64_t        num;
->>> +    } u;
->>> +} ArmModelPropValue;
->>> +
->>> +typedef struct ArmNamedCpuModel {
->>> +    const char              *name;
->>> +    const char              *parent;
->>> +    const ArmModelPropValue *props;
->>> +} ArmNamedCpuModel;
->>> +
->>> +void arm_register_named_cpu_models(void);
->>> +
->>> +const ArmNamedCpuModel *arm_find_model(const char *name);
->>> +
->>> +#endif /* ARM_CPU_MODELS_H */
->>> diff --git a/target/arm/meson.build b/target/arm/meson.build
->>> index 64d1ec63ab..72eed1bcc6 100644
->>> --- a/target/arm/meson.build
->>> +++ b/target/arm/meson.build
->>> @@ -10,7 +10,7 @@ arm_user_ss.add(files('gdbstub.c'))
->>>
->>> arm_ss.add(when: 'TARGET_AARCH64', if_true: files(
->>>   'cpu64.c',
->>> -  'gdbstub64.c'
->>> +  'gdbstub64.c',
->>> ))
->>>
->>> arm_common_ss.add(files(
->>> @@ -21,7 +21,10 @@ arm_common_system_ss.add(files(
->>>   'arm-qmp-cmds.c',
->>>   'cpu-idregs.c',
->>> ))
->>> -arm_system_ss.add(when: 'CONFIG_KVM', if_true: files('hyp_gdbstub.c', 'kvm.c'))
->>> +arm_system_ss.add(when: 'TARGET_AARCH64', if_true: files('arm-cpu-models.c'))
->>> +arm_system_ss.add(when: 'CONFIG_KVM',
->>> +                  if_true: files('hyp_gdbstub.c',
->>> +                                 'kvm.c'))
->>> arm_system_ss.add(when: 'CONFIG_HVF', if_true: files('hyp_gdbstub.c'))
->>>
->>> arm_user_ss.add(files('cpu.c'))
->> Thanks
->>
->> Eric
->
-Thanks
+I checked it over and verified it all works, I'm glad my suggestions were h=
+elpful.
 
-Eric
+Thank you,
+Mikail Sadic
 
+-----Original Message-----
+From: Jamin Lin <jamin_lin@aspeedtech.com>=20
+Sent: Thursday, August 13, 2026 9:20 PM
+To: Mikail Sadic <Mikail.Sadic@ibm.com>; C=E9dric Le Goater <clg@kaod.org>;=
+ Peter Maydell <peter.maydell@linaro.org>; Steven Lee <steven_lee@aspeedtec=
+h.com>; Troy Lee <leetroy@gmail.com>; Kane Chen <kane_chen@aspeedtech.com>;=
+ Andrew Jeffery <andrew@codeconstruct.com.au>; Joel Stanley <joel@jms.id.au=
+>; open list:ASPEED BMCs <qemu-arm@nongnu.org>; open list:All patches CC he=
+re <qemu-devel@nongnu.org>
+Cc: Troy Lee <troy_lee@aspeedtech.com>
+Subject: [EXTERNAL] RE: [PATCH v1] hw/i2c/aspeed_i2c: Latch first received =
+byte for SMBus block reads
+
+> Subject: RE: [PATCH v1] hw/i2c/aspeed_i2c: Latch first received byte=20
+> for SMBus block reads
+>=20
+> Hi Jamin,
+>=20
+> Tested-by: Mikail Sadic <mikail.sadic@ibm.com>
+>=20
+> I verified that this (along with the AST2700 buffer mode patch and the=20
+> kernel fix you referenced) works with the UCD9000 driver, thank you for t=
+he help!
+> I am dropping my patch and depending on yours.
+>=20
+>=20
+> I just have two things I'd like to ask about (not blocking for my=20
+> purposes, may be worth to check):
+>=20
+> 1. Byte mode is not latched. I think the else branch of=20
+> aspeed_i2c_bus_recv() still only writes the receive byte buffer, so=20
+> 0x84 goes stale there. This may cause problems down the line, specificall=
+y for AST1040?
+>=20
+> 2. I believe dma_buf_en reads like the FUNC_CFG_DMA_EN bit, but the=20
+> DMA-to-pool call passes true while that bit is clear, clearing it is=20
+> what selects the pool. Getting it from RX_DMA_EN inside the helper may=20
+> stop someone from accidentally "fixing" it to match the name and=20
+> breaking the AST2600 case.
+>=20
+Hi Mikail,
+
+Thanks for the suggestion.
+
+Both points are addressed in v2:
+
+1. Byte mode now latches as well.
+2. dma_buf_en is gone; the helper reads RX_DMA_EN directly, as you suggeste=
+d.
+
+I resend v2 here,
+https://urldefense.proofpoint.com/v2/url?u=3Dhttps-3A__patchwork.kernel.org=
+_project_qemu-2Ddevel_patch_20260814020836.3119613-2D1-2Djamin-5Flin-40aspe=
+edtech.com_&d=3DDwIFAw&c=3DBSDicqBQBDjDI9RkVyTcHQ&r=3DMwxPIV78QTTKBsiQ-TUBA=
+px4-_ZEUlleOhDjygCqcOU&m=3D35Of371QTEER-fuhBTEDrGMw9Sq8K3JtKRL1wWPYs-2MBuvW=
+hn-KM-eI6qd9O20W&s=3D1-a288_BxQVvouXeqT7tnvlD1j9C0HLzGbuFEIl2DxI&e=3D=20
+
+Thanks,
+Jamin
+>=20
+> Thanks again for picking this up and catching the original problem.
+>=20
+> - Mikail Sadic
+>=20
+>=20
+> -----Original Message-----
+> From: Jamin Lin <jamin_lin@aspeedtech.com>
+> Sent: Thursday, August 13, 2026 4:08 AM
+> To: C=E9dric Le Goater <clg@kaod.org>; Peter Maydell=20
+> <peter.maydell@linaro.org>; Steven Lee <steven_lee@aspeedtech.com>;=20
+> Troy Lee <leetroy@gmail.com>; Kane Chen <kane_chen@aspeedtech.com>;=20
+> Andrew Jeffery <andrew@codeconstruct.com.au>; Joel Stanley=20
+> <joel@jms.id.au>; open list:ASPEED BMCs <qemu-arm@nongnu.org>; open=20
+> list:All patches CC here <qemu-devel@nongnu.org>
+> Cc: Troy Lee <troy_lee@aspeedtech.com>; Mikail Sadic=20
+> <Mikail.Sadic@ibm.com>
+> Subject: [EXTERNAL] RE: [PATCH v1] hw/i2c/aspeed_i2c: Latch first=20
+> received byte for SMBus block reads
+>=20
+> Hi Mikail,
+>=20
+> Could you please review this patch and verify that it works with the=20
+> UCD9000 driver?
+>=20
+> Thanks,
+> Jamin
+>=20
+> > -----Original Message-----
+> > From: Jamin Lin <jamin_lin@aspeedtech.com>
+> > Sent: Thursday, August 13, 2026 5:02 PM
+> > To: C=E9dric Le Goater <clg@kaod.org>; Peter Maydell=20
+> > <peter.maydell@linaro.org>; Steven Lee <steven_lee@aspeedtech.com>;=20
+> > Troy Lee <leetroy@gmail.com>; Kane Chen <kane_chen@aspeedtech.com>;=20
+> > Andrew Jeffery <andrew@codeconstruct.com.au>; Joel Stanley=20
+> > <joel@jms.id.au>; open list:ASPEED BMCs <qemu-arm@nongnu.org>; open=20
+> > list:All patches CC here <qemu-devel@nongnu.org>
+> > Cc: Jamin Lin <jamin_lin@aspeedtech.com>; Troy Lee=20
+> > <troy_lee@aspeedtech.com>; Mikail.Sadic@ibm.com
+> > Subject: [PATCH v1] hw/i2c/aspeed_i2c: Latch first received byte for=20
+> > SMBus block reads
+> >
+> > An SMBus block read takes the block length from the first byte of=20
+> > the transfer, and firmware reads that byte back from a register=20
+> > rather than from the transfer buffer. The receive paths never=20
+> > updated those registers, so block reads reported a bogus length.
+> >
+> > On AST2600 the driver reads the length from the receive byte buffer,=20
+> > I2CC_MS_TXRX_BYTE_BUF[15:8]. The datasheet documents that field as=20
+> > valid while the DMA buffer is not enabled. The byte mode receive=20
+> > path already updated it, but the pool buffer path did not, and the=20
+> > driver selects buffer mode by default.
+> >
+> > On AST2700 the driver reads the length from offset 0x84 instead.
+> >
+> > Add I2CC_BYTE_DATA_LOG at 0x84. Latch the first received byte from=20
+> > the three receive paths: the pool buffer path, the DMA-to-pool path=20
+> > and the DMA-to-DRAM path. Each latch updates the byte data log, and=20
+> > updates the receive byte buffer as well while the DMA buffer is not=20
+> > enabled. The byte data log is outside the register window of the=20
+> > earlier SoCs, so it is only visible on AST2700/AST1040.
+> >
+> > Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
+> > ---
+> >  hw/i2c/aspeed_i2c.c         | 31 ++++++++++++++++++++++++++++++-
+> >  include/hw/i2c/aspeed_i2c.h |  2 ++
+> >  2 files changed, 32 insertions(+), 1 deletion(-)
+> >
+> > diff --git a/hw/i2c/aspeed_i2c.c b/hw/i2c/aspeed_i2c.c index
+> > 68bdcd0e25..e6d0eee816 100644
+> > --- a/hw/i2c/aspeed_i2c.c
+> > +++ b/hw/i2c/aspeed_i2c.c
+> > @@ -159,6 +159,7 @@ static uint64_t
+> > aspeed_i2c_bus_new_read(AspeedI2CBus *bus, hwaddr offset,
+> >      case A_I2CS_INTR_CTRL:
+> >      case A_I2CS_DMA_LEN_STS:
+> >      case A_I2CS_INTR_STS:
+> > +    case A_I2CC_BYTE_DATA_LOG:
+> >      case A_I2CC_VERSION_CTRL:
+> >          value =3D bus->regs[offset / sizeof(*bus->regs)];
+> >          break;
+> > @@ -334,6 +335,24 @@ static int
+> > aspeed_i2c_bus_send_dma_pool(AspeedI2CBus *bus)
+> >      return ret;
+> >  }
+> >
+> > +/*
+> > + * Latch the first received byte, which firmware reads back as the=20
+> > +SMBus block
+> > + * length. AST2600 reads it from the receive byte buffer, only=20
+> > +valid while the
+> > + * DMA buffer is disabled; AST2700 reads it from the byte data log,=20
+> > +a register
+> > + * the earlier SoCs do not expose.
+> > + */
+> > +static void aspeed_i2c_bus_latch_rx_len(AspeedI2CBus *bus, bool
+> > dma_buf_en,
+> > +                                        uint8_t data) {
+> > +    uint32_t reg_byte_buf =3D aspeed_i2c_bus_byte_buf_offset(bus);
+> > +
+> > +    ARRAY_FIELD_DP32(bus->regs, I2CC_BYTE_DATA_LOG, RX_BUF, data);
+> > +
+> > +    if (!dma_buf_en) {
+> > +        SHARED_ARRAY_FIELD_DP32(bus->regs, reg_byte_buf, RX_BUF,
+> > data);
+> > +    }
+> > +}
+> > +
+> >  static void aspeed_i2c_bus_recv_dma_pool(AspeedI2CBus *bus)  {
+> >      AspeedI2CClass *aic =3D ASPEED_I2C_GET_CLASS(bus->controller);
+> > @@ -349,6 +368,9 @@ static void
+> > aspeed_i2c_bus_recv_dma_pool(AspeedI2CBus *bus)
+> >          pool_base[offset + i] =3D i2c_recv(bus->bus);
+> >          trace_aspeed_i2c_bus_recv("BUFF", i + 1,
+> bus->regs[reg_dma_len],
+> >                                    pool_base[offset + i]);
+> > +        if (i =3D=3D 0) {
+> > +            aspeed_i2c_bus_latch_rx_len(bus, true, pool_base[offset]);
+> > +        }
+> >          bus->regs[reg_dma_len]--;
+> >          ARRAY_FIELD_DP32(bus->regs, I2CM_DMA_LEN_STS, RX_LEN, i +
+> 1);
+> >      }
+> > @@ -443,6 +465,9 @@ static void aspeed_i2c_bus_recv(AspeedI2CBus *bus)
+> >              pool_base[i] =3D i2c_recv(bus->bus);
+> >              trace_aspeed_i2c_bus_recv("BUF", i + 1, pool_rx_count,
+> >                                        pool_base[i]);
+> > +            if (i =3D=3D 0) {
+> > +                aspeed_i2c_bus_latch_rx_len(bus, false, pool_base[0]);
+> > +            }
+> >          }
+> >
+> >          /* Update RX count */
+> > @@ -460,7 +485,7 @@ static void aspeed_i2c_bus_recv(AspeedI2CBus *bus)
+> >          }
+> >
+> >          aspeed_i2c_set_rx_dma_dram_offset(bus);
+> > -        while (bus->regs[reg_dma_len]) {
+> > +        for (i =3D 0; bus->regs[reg_dma_len]; i++) {
+> >              MemTxResult result;
+> >
+> >              data =3D i2c_recv(bus->bus); @@ -476,6 +501,10 @@ static=20
+> > void aspeed_i2c_bus_recv(AspeedI2CBus *bus)
+> >                  return;
+> >              }
+> >
+> > +            if (i =3D=3D 0) {
+> > +                aspeed_i2c_bus_latch_rx_len(bus, true, data);
+> > +            }
+> > +
+> >              bus->dma_dram_offset++;
+> >              bus->regs[reg_dma_len]--;
+> >              /* In new mode, keep track of how many bytes we RXed */=20
+> > diff --git a/include/hw/i2c/aspeed_i2c.h=20
+> > b/include/hw/i2c/aspeed_i2c.h index 05937a7a0b..c8e6ea54ad 100644
+> > --- a/include/hw/i2c/aspeed_i2c.h
+> > +++ b/include/hw/i2c/aspeed_i2c.h
+> > @@ -231,6 +231,8 @@ REG32(I2CS_DMA_TX_ADDR_HI, 0x68)
+> >      FIELD(I2CS_DMA_TX_ADDR_HI, ADDR_HI, 0, 7)=20
+> > REG32(I2CS_DMA_RX_ADDR_HI, 0x6c)
+> >      FIELD(I2CS_DMA_RX_ADDR_HI, ADDR_HI, 0, 7)
+> > +REG32(I2CC_BYTE_DATA_LOG, 0x84)
+> > +    FIELD(I2CC_BYTE_DATA_LOG, RX_BUF, 0, 8)
+> >  REG32(I2CC_VERSION_CTRL, 0x94)
+> >      FIELD(I2CC_VERSION_CTRL, FUNC_CFG_DMA_EN, 2, 1)
+> >
+> > --
+> > 2.53.0
 

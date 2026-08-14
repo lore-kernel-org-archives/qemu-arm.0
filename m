@@ -4,144 +4,126 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 06352C5CFCF
-	for <qemu-arm@archiver.kernel.org>; Fri, 14 Aug 2026 15:36:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3828BC5CFC1
+	for <qemu-arm@archiver.kernel.org>; Fri, 14 Aug 2026 15:40:35 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wutwt-0002iB-AP; Fri, 14 Aug 2026 11:35:59 -0400
+	id 1wuu1F-0006BO-V5; Fri, 14 Aug 2026 11:40:30 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <pierrick.bouvier@oss.qualcomm.com>)
- id 1wutwr-0002hd-Ty
- for qemu-arm@nongnu.org; Fri, 14 Aug 2026 11:35:57 -0400
-Received: from mx0a-0031df01.pphosted.com ([205.220.168.131])
+ (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
+ id 1wuu1F-0006BG-BE
+ for qemu-arm@nongnu.org; Fri, 14 Aug 2026 11:40:29 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <pierrick.bouvier@oss.qualcomm.com>)
- id 1wutwp-0007eg-Sa
- for qemu-arm@nongnu.org; Fri, 14 Aug 2026 11:35:57 -0400
-Received: from pps.filterd (m0279862.ppops.net [127.0.0.1])
- by mx0a-0031df01.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id
- 67EFC9rv1731364
- for <qemu-arm@nongnu.org>; Fri, 14 Aug 2026 15:35:54 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qualcomm.com; h=
- cc:content-transfer-encoding:content-type:date:from:in-reply-to
- :message-id:mime-version:references:subject:to; s=qcppdkim1; bh=
- 2nAm6u36aZaVy39N39ejt92IrXMa4WBE+9HSOJnckHM=; b=L2YlvNZ8GI0yVHXv
- 5qwcP2iVSmohxADtEx0DYHgs708usOFvJW5WMcn24t0Jz4QlOBm7Btp3jQebeKCq
- u9sZ7+BXCKSGMBRcEuAI19H8959NFc3otGQUTWoxN1K6IP2a+aOC465boapICLFx
- U5g+3rvB28mQSN5ZVzLmXq8ZZYGazRaC4hKyrLIi1mooaMNh991S4mQoh6H4YIpu
- nDqYCwp9Uvr4PQ8hbBNdz8Ro5EpZkRmKbl8NLtbseuHvKW8vlRZQgH5WrB3B/Abk
- FaN+lddgKn4GyVRhUNZT5RZHiVEOGYvHpjFABlV545lt8vRZWC0G2OItZVJs9Rwu
- 5WAJYg==
-Received: from mail-pf1-f200.google.com (mail-pf1-f200.google.com
- [209.85.210.200])
- by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 4g25f1g4q2-1
- (version=TLSv1.3 cipher=TLS_AES_128_GCM_SHA256 bits=128 verify=NOT)
- for <qemu-arm@nongnu.org>; Fri, 14 Aug 2026 15:35:54 +0000 (GMT)
-Received: by mail-pf1-f200.google.com with SMTP id
- d2e1a72fcca58-8484f26852dso1044783b3a.1
- for <qemu-arm@nongnu.org>; Fri, 14 Aug 2026 08:35:54 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=oss.qualcomm.com; s=google; t=1786721754; x=1787326554; darn=nongnu.org;
- h=content-transfer-encoding:content-type:in-reply-to:content-language
- :references:cc:to:from:subject:user-agent:mime-version:date
- :message-id:from:to:cc:subject:date:message-id:reply-to:content-type;
- bh=2nAm6u36aZaVy39N39ejt92IrXMa4WBE+9HSOJnckHM=;
- b=akzWSX5vYTCOLcYIxWiCm+3cjqNWeyYQLZ5olVULnm5rBCcqIcu0NjkPFTsiAqtjpw
- ozz+Ys3HNsUTgVkOxZuS+ONlhm9F2YZAZ753WN34lD2Wa3o2dwNfymTSHkAckZ91DVVc
- vlSlY4YNqYkFvzGhIqrnAhNHRctsHnjaZpGZF6ZOMYd14OYAX0o8y3LMjFnZ2dsRnlR9
- HzoX/1FhN7f86uDS7v+1LkabEJyEI3htADfSQ1V6Be5s4FWTvImFLtrScea+rTTtEZR7
- vFnHrfgPUdzNIwmaw8S0MCeuDplF+JXyWloX8pKFA4TYjm4U4ok9ts2fzp9e2Wqlx4ES
- 8pbQ==
+ (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
+ id 1wuu1B-0008RC-Sk
+ for qemu-arm@nongnu.org; Fri, 14 Aug 2026 11:40:29 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1786722024;
+ h=from:from:reply-to:reply-to:subject:subject:date:date:
+ message-id:message-id:to:to:cc:cc:mime-version:mime-version:
+ content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=99fvnZC3mynUBVTVii7QvmdPVHDtox0FLNvF7OC2fhw=;
+ b=TccR3RY0AtAo5jEqXR/nd3aOY573RGKeNlK31RMmIbeqpspEe8zFiRBweTgCoVWmN395jn
+ KOIwMdVkZMbQ5y9d1jPWtmXGA1r+jtv5GTkvygOw/TIwPrpElD1TMVHm53vuOQE57ClFs5
+ L9uIS6zMDE6mxinOdPBS5crCAYYWXh0=
+Received: from mail-wm1-f71.google.com (mail-wm1-f71.google.com
+ [209.85.128.71]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-662-BubxhZ6HOLWz3tMUBJ7Zqw-1; Fri, 14 Aug 2026 11:40:21 -0400
+X-MC-Unique: BubxhZ6HOLWz3tMUBJ7Zqw-1
+X-Mimecast-MFC-AGG-ID: BubxhZ6HOLWz3tMUBJ7Zqw_1786722020
+Received: by mail-wm1-f71.google.com with SMTP id
+ 5b1f17b1804b1-4997b060af8so7304355e9.1
+ for <qemu-arm@nongnu.org>; Fri, 14 Aug 2026 08:40:21 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1786721754; x=1787326554;
- h=content-transfer-encoding:content-type:in-reply-to:content-language
- :references:cc:to:from:subject:user-agent:mime-version:date
- :message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+ d=1e100.net; s=20251104; t=1786722020; x=1787326820;
+ h=content-transfer-encoding:content-type:in-reply-to:from:references
+ :cc:to:content-language:subject:reply-to:user-agent:mime-version
+ :date:message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
  :message-id:reply-to:content-type;
- bh=2nAm6u36aZaVy39N39ejt92IrXMa4WBE+9HSOJnckHM=;
- b=HcKhXfDb1J9WGEUOm/QCf1QvOmmGEc96+UGWuetgQY4wYk1IsmXGsDsN7tqGCGVpY8
- oXO7aLli8t2m31MBBvSQjDLK/806O7IyjofbW6OwXruuHd8vpSMdkw/Q933GfMDe144e
- uoPKmHSf49g1aHB7dxirJLlEhAJOy4j9SbiX6p2M3oUMAJPN0xtYPalhN6BUjPBN0JHc
- Qx0aTm3+/kgg0VPVtOZ35xt70rMNqjS3p+VgptSIhbfXvI8qKarrlgUe63T/00LqjY31
- 4vPq4YM+LCHHKLuADvd4BqnQTMXGe3Gpab0ki0hrlxrLMMRiO7Dy3PwRLP3qlh6Wu6cR
- f/6Q==
+ bh=99fvnZC3mynUBVTVii7QvmdPVHDtox0FLNvF7OC2fhw=;
+ b=IpntRlO12GgkVBK+ZS8LC4ILlVQ65V74xbAHL25ean/MX20Pg9i1J/ZXygZs7yqPWY
+ zJ8HxgvMKXXqKdlKgwITMYSIlehinP7BsTZ1ZchimbiBhbPJTNRjgWng0oGoWJLGuhR2
+ l6LAu2TnpT5NEkeUGOr3lq8Hz0ftlVC8RWbsWg/qksJXlPGdQ2T1VaScOfIZP6Hxw6/Q
+ 50E4lofGoZZQbRKYAP0XP/xJDnVixe1a4IRefDLdhd2UhaQxM0YKu4EhGWtlM+lodxU8
+ B1XGND34am0Q2hXUi9ySho0a2WfssN6IMfsw8pmHwuxTLvihznD9/i6gA1LdBjrXkkcZ
+ cptg==
 X-Forwarded-Encrypted: i=1;
- AHgh+RoRwUqxqZIAJpdbMmv5fTmP/y9FYJDyzL5/QA08qjAEzYVgz9OQpkjxvwF7tV1kk/kp8LamCgQWMw==@nongnu.org
-X-Gm-Message-State: AOJu0YyKZV30NJ7etUE4JeYMt6gcmoV7zmZXeEFBh2mUskDlaIw/Q0tC
- 8boLkcsUrCUZWzjibehMV2j+Eo+FlveWr6jUcQ+AqG+v7uGwdbu9EPpXONUlC7kxKtF05G6e1h+
- CM7/3pgKexag9h9DzookBpGzw38tgGyL7oKN4jqNghzd1RKqPImwVnAk=
-X-Gm-Gg: AR+sD10xah3My8yHzO02XGO0IeFeoZQ9jzvidEtD3ahTLk/nBS81dkbbcGbo0OxsFi5
- Ms3757HpQ2SL6i1nCF+WskR/heZ0AFR8i7nIDHIwF4f1hBz0iG3oYPTB/CFOXMR/YwwkPVst2Rs
- SoTC6Do6mn/lifpdmeBboOUTpFAQQNqJRZFblN52hItNS2rrXP+N6XF2CZSucmGAIUml1RpTxaM
- fQ6pvcL2rENdkqi74sCQ4p75x0FD6PBCtHwCjerxPM//68kMxLKFQQGeXu6MSsUu3kJ3+loXW4l
- H55jDLeqwk6YGkXfqthKM1S12JFl/2oaPXOePpP/m7ZT2wh+YEeWK/8jzYIA1QA9A6svO90lFu0
- QrishCOu6cQde7WkkrhAmPA0Jx4r7+Ny/UHtdwnn4i/qnVdii2DLcmQ+AzeSvkbWEIjqM
-X-Received: by 2002:a05:6300:2289:b0:3cb:e8b4:f03b with SMTP id
- adf61e73a8af0-3cc71ca5ad5mr7859192637.17.1786721753430; 
- Fri, 14 Aug 2026 08:35:53 -0700 (PDT)
-X-Received: by 2002:a05:6300:2289:b0:3cb:e8b4:f03b with SMTP id
- adf61e73a8af0-3cc71ca5ad5mr7859122637.17.1786721752876; 
- Fri, 14 Aug 2026 08:35:52 -0700 (PDT)
-Received: from [192.168.1.199] (216-71-219-44.dyn.novuscom.net.
- [216.71.219.44]) by smtp.gmail.com with ESMTPSA id
- a92af1059eb24-141387af4adsm9779089c88.1.2026.08.14.08.35.51
+ AHgh+RrziaPOtZIzLqP2V1hgoSVjjhol6n7/fI2s61k8XWVM4nSYvNyfT687pOwaXLBRoYB1JnI7l2yNCw==@nongnu.org
+X-Gm-Message-State: AOJu0YzMQLTKp6ZitaE0NMdgs/y/PAxL9VbhZ/kKHLGXFh9AZN5dUrR+
+ 6HYAUff/qrSOpLZeOxVk+JeibS2ssmZhchlrHcc6stjfNhAglt2g0NPGHcUxX68tRrYAR+veTBo
+ ya0S4TlXRK2hwcgxmEGjlCvKYDB9v4oD6C9v5rXK+sFeUqfhjPbEsVw==
+X-Gm-Gg: AR+sD11X8BeDBa1pfGYqcZr27Mnrbey4BnKBxdQL1qIa5fUjLfKwnbd19FN/mfD9sry
+ I6ROV9kqXGcdb87IsM9/oz/OcAehg3UsX0j39mPgX0CNIvivus9QXJqF5msJlid0Pol56tAq7P6
+ HsLMypb+foGVJ416vfX+sOyKC4idpAxjpEEenNMMBS3wMa6Z54ba/uTwymy47pSVl5kv2fc6yQw
+ b4c1DO0UcrjkrNJTEmbnwl78fsUyUfCctOs7gGx5N9nFKlYkp3f3nqBmlgvnNDxQfvtGgwuEx6R
+ 99BSaWf5cjgS7hNVsOeQeuNKTVn3Ie0tl7NdBLqQ3X5m2yS9CfFOdP0u/aX9wYxQxuLqvYCV6BA
+ 1Kexsu1kset3GEIIi5cGXilfQnZC7cRMIUnb5ZzoUs2yRsVKQ
+X-Received: by 2002:a7b:c015:0:b0:499:80d0:8b73 with SMTP id
+ 5b1f17b1804b1-49987927ebfmr83477475e9.4.1786722019727; 
+ Fri, 14 Aug 2026 08:40:19 -0700 (PDT)
+X-Received: by 2002:a7b:c015:0:b0:499:80d0:8b73 with SMTP id
+ 5b1f17b1804b1-49987927ebfmr83476565e9.4.1786722019127; 
+ Fri, 14 Aug 2026 08:40:19 -0700 (PDT)
+Received: from ?IPV6:2a01:e0a:f0e:9070:527b:9dff:feef:3874?
+ ([2a01:e0a:f0e:9070:527b:9dff:feef:3874])
+ by smtp.gmail.com with ESMTPSA id
+ 5b1f17b1804b1-49989af26eesm40195065e9.15.2026.08.14.08.40.16
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Fri, 14 Aug 2026 08:35:52 -0700 (PDT)
-Message-ID: <3f213c3b-f154-40d2-9791-541cef12def0@oss.qualcomm.com>
-Date: Fri, 14 Aug 2026 08:35:50 -0700
+ Fri, 14 Aug 2026 08:40:18 -0700 (PDT)
+Message-ID: <82131df0-71cc-44ea-92e6-4843d4c86ee8@redhat.com>
+Date: Fri, 14 Aug 2026 17:40:14 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH] target/arm: Restrict arm_do_plugin_vcpu_discon_cb() to TCG
-From: Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@oss.qualcomm.com>,
- qemu-devel@nongnu.org
-Cc: =?UTF-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>, qemu-arm@nongnu.org,
- Peter Maydell <peter.maydell@linaro.org>
-References: <20260814080507.23196-1-philmd@oss.qualcomm.com>
- <dec2a5af-dad2-44c6-8eb5-b87ff9595d7e@oss.qualcomm.com>
+Subject: Re: [RFC PATCH v3 09/19] target/arm: Add named cpu model infra +
+ graviton3 named model
+To: Khushit Shah <khushit.shah@nutanix.com>
+Cc: "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
+ "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
+ "kvmarm@lists.linux.dev" <kvmarm@lists.linux.dev>,
+ "cohuck@redhat.com" <cohuck@redhat.com>,
+ "peter.maydell@linaro.org" <peter.maydell@linaro.org>,
+ "richard.henderson@linaro.org" <richard.henderson@linaro.org>,
+ "maz@kernel.org" <maz@kernel.org>,
+ "oliver.upton@linux.dev" <oliver.upton@linux.dev>,
+ "berrange@redhat.com" <berrange@redhat.com>,
+ "abologna@redhat.com" <abologna@redhat.com>,
+ "jdenemar@redhat.com" <jdenemar@redhat.com>,
+ "gshan@redhat.com" <gshan@redhat.com>,
+ "skolothumtho@nvidia.com" <skolothumtho@nvidia.com>,
+ "sebott@redhat.com" <sebott@redhat.com>,
+ "armbru@redhat.com" <armbru@redhat.com>,
+ "philmd@linaro.org" <philmd@linaro.org>,
+ "yangjinqian1@huawei.com" <yangjinqian1@huawei.com>,
+ Shaju Abraham <shaju.abraham@nutanix.com>,
+ Mark Cave-Ayland <mark.caveayland@nutanix.com>,
+ Prerna Saxena <prerna.saxena@nutanix.com>
+References: <20260716213858.609699-1-khushit.shah@nutanix.com>
+ <20260716213858.609699-10-khushit.shah@nutanix.com>
+ <4f07607b-b21a-4a5c-8daa-6aec5e288353@redhat.com>
+ <04A24C49-129D-4232-9450-7176CBBF5CA5@nutanix.com>
+From: Eric Auger <eric.auger@redhat.com>
+In-Reply-To: <04A24C49-129D-4232-9450-7176CBBF5CA5@nutanix.com>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-MFC-PROC-ID: LNkQEJXhvlTOdbor436BVCSowBH6wgjJcBqWUum26g0_1786722020
+X-Mimecast-Originator: redhat.com
 Content-Language: en-US
-In-Reply-To: <dec2a5af-dad2-44c6-8eb5-b87ff9595d7e@oss.qualcomm.com>
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Proofpoint-ORIG-GUID: SILz1PXLV7jtVPoUISN5SBTa3-Ek36RF
-X-Proofpoint-Spam-Info: AW1haW4tMjYwODE0MDExOCBTYWx0ZWRfX1szjkpkcPbtb
- xhuCGJoVXo0VVik8E2dzNe419xmPspJeamuqUoeQ4GVUOkDSpHXaF2OkX28gZYqtQZayCBrlB7g
- JJpld6zI9+sdiNxIgQUsuq7NAMhZ4MA=
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwODE0MDExOCBTYWx0ZWRfXy+HTqON42uxK
- CURaK97EaoPPdfrkGuFNbwnbY6XtHm00Iy8hKIgZmOdWtxWgQ71v5sPR/9LnQQhiAwM6W3/h5TA
- W+UiDKKLCRuFWU7pxRR1MFJdEZA7kLTZ8XSWQa+FPqEu511Z71CNbFcfwDhB2jgNeby4zGtxX4O
- Xv1LMVuH5uQlm0smy0nH4AcxVn4SXifif5BIuTGB57AhaMsmGoIaADqUNr71Bq4fDMQqPUAOCOF
- DydzLFqrcX7RjJu/x8mPWZmEV8zLZ3ZMghBpfC0ASkzSx9gBVlJVyctVlvbCWWhrN46pjGYDp2Y
- ba0ma38k4BJLyeISeqmh9xUe86vAv1dpvjaROVi0VXB9L407vv5hBUShfyz0qMvATh+LG1vBQ8v
- USlqXmnVJ9nPhuilR6sf9rZALuYWsyWr9+cNSzQLotrIlQBOBCAqgIf+ARxNuAsHATrQF2tX2OK
- ek6sCyv6p25yZc5grYw==
-X-Authority-Analysis: v=2.4 cv=Z7Xc2nRA c=1 sm=1 tr=0 ts=6a7f35da cx=c_pps
- a=mDZGXZTwRPZaeRUbqKGCBw==:117 a=iLqgmErQAxjCjdq5jj1Aqg==:17
- a=IkcTkHD0fZMA:10 a=Sv0fKeRqtYgA:10 a=s4-Qcg_JpJYA:10
- a=VkNPw1HP01LnGYTKEx00:22 a=u7WPNUs3qKkmUXheDGA7:22 a=_K5XuSEh1TEqbUxoQ0s3:22
- a=EUspDBNiAAAA:8 a=3ttgggD-EqvnbrFiBS4A:9 a=3ZKOabzyN94A:10 a=QEXdDO2ut3YA:10
- a=zc0IvFSfCIW2DFIPzwfm:22
-X-Proofpoint-GUID: SILz1PXLV7jtVPoUISN5SBTa3-Ek36RF
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.293,Aquarius:18.0.1176,Hydra:6.1.134,FMLib:17.12.100.49
- definitions=2026-08-14_05,2026-08-12_01,2025-10-01_01
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
- phishscore=0 priorityscore=1501 suspectscore=0 bulkscore=0 lowpriorityscore=0
- spamscore=0 malwarescore=0 adultscore=0 clxscore=1015 impostorscore=0
- classifier=typeunknown authscore=0 authtc= authcc= route=outbound adjust=0
- reason=mlx scancount=1 engine=8.22.0-2606150000 definitions=main-2608140118
-Received-SPF: pass client-ip=205.220.168.131;
- envelope-from=pierrick.bouvier@oss.qualcomm.com;
- helo=mx0a-0031df01.pphosted.com
-X-Spam_score_int: -27
-X-Spam_score: -2.8
+Received-SPF: pass client-ip=170.10.133.124;
+ envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -28
+X-Spam_score: -2.9
 X-Spam_bar: --
-X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.9 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.751,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -154,26 +136,525 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Reply-To: eric.auger@redhat.com
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On 8/14/2026 8:35 AM, Pierrick Bouvier wrote:
-> On 8/14/2026 1:05 AM, Philippe Mathieu-Daudé wrote:
->> So far TCG plugins can only be used when TCG is available.
->> Move the arm_do_plugin_vcpu_discon_cb() call within the
->> 'if tcg_enabled' block and wrap the definition with #ifdef'ry.
->>
->> Signed-off-by: Philippe Mathieu-Daudé <philmd@oss.qualcomm.com>
->> ---
->>  target/arm/helper.c | 6 ++++--
->>  1 file changed, 4 insertions(+), 2 deletions(-)
->>
-> 
-> Reviewed-by: Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>
 
-I'll let Peter pull this, even if related to plugins, it belongs to
-target/arm.
 
-Regards,
-Pierrick
+On 8/5/26 1:35 PM, Khushit Shah wrote:
+>
+>> On 26 Jul 2026, at 7:04 PM, Eric Auger <eric.auger@redhat.com> wrote:
+>>
+>> !-------------------------------------------------------------------|
+>>  CAUTION: External Email
+>>
+>> |-------------------------------------------------------------------!
+>>
+>> Hi Khushit,
+>>
+>> On 7/16/26 11:38 PM, Khushit Shah wrote:
+>>> From: Shaju Abraham <shaju.abraham@nutanix.com>
+>>>
+>>> Introduce a small named-CPU-model layer on top of the field-backed
+>>> property infrastructure. Each model is a flat table of (name, value)
+>>> overrides and a parent pointer. At instance-init, the parent chain is
+>>> walked root-first and every level's properties are applied via QOM,
+>>> so a child entry overrides its ancestors for the same name.
+>>>
+>>> For example, the graviton3-v1 named model hierarchy is:
+>>> non-zero-defaults-v1    Known non-zero default ID regs field values
+>>>  arm-v8_4-a-v1       ARMv8.4-A architectural mandate
+>>>    neoverse-v1-v1    Neoverse V1
+>>>      graviton3-v1    AWS Graviton3
+>>>
+>>> non-zero-defaults-v1:
+>>>   Field that should be populated with some non zero value by default.
+>> following which specification? This is not clear to me. Is that layer
+>> really meaningful? Shouldn't we start with the next one?
+> Okay, makes sense. We can get rid of this layer.
+>
+>>> arm-v8_4-a-v1:
+>>>  Only features mandated by the ARM ARM.
+>>>
+>>> neoverse-v1-v1:
+>>>  Reference manual derived feature values for the reference core.
+>>>  Values differ from TRM values based on what was exposed to the guest
+>>>  with -cpu host.
+>>>
+>>> graviton3-v1:
+>>>  SoC integration choices (crypto pin, cache hints, PAuth alg).
+>>>
+>>> The model values are figured out from ID register dump visible to
+>>> QEMU with -cpu host on Graviton3 machine.
+>>>
+>>> Model realization:
+>>> 1. Zero out ID regs array.
+>>> 2. Add all properties to the CPU Object
+>>> 3. arm_realize_model_chain: Walk the parent chain from root first and
+>>>                            apply all the properties.
+>>>
+>>> Co-authored-by: Shaju Abraham <shaju.abraham@nutanix.com>
+>>> Signed-off-by: Khushit Shah <khushit.shah@nutanix.com>
+>>> ---
+>>> hw/arm/virt.c               |   5 +
+>>> target/arm/arm-cpu-models.c | 336 ++++++++++++++++++++++++++++++++++++
+>>> target/arm/arm-cpu-models.h |  35 ++++
+>>> target/arm/meson.build      |   7 +-
+>>> 4 files changed, 381 insertions(+), 2 deletions(-)
+>>> create mode 100644 target/arm/arm-cpu-models.c
+>>> create mode 100644 target/arm/arm-cpu-models.h
+>>>
+>>> diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+>>> index fe19030886..34e56dc1f1 100644
+>>> --- a/hw/arm/virt.c
+>>> +++ b/hw/arm/virt.c
+>>> @@ -3812,6 +3812,11 @@ static GPtrArray *virt_get_valid_cpu_types(const MachineState *ms)
+>>>             g_ptr_array_add(vct, g_strdup(ARM_CPU_TYPE_NAME("host")));
+>>>         }
+>>>     }
+>>> +    if (kvm_enabled() && target_aarch64()) {
+>>> +        g_ptr_array_add(vct, g_strdup(ARM_CPU_TYPE_NAME("arm-v8_4-a-v1")));
+>>> +        g_ptr_array_add(vct, g_strdup(ARM_CPU_TYPE_NAME("neoverse-v1-v1")));
+>>> +        g_ptr_array_add(vct, g_strdup(ARM_CPU_TYPE_NAME("graviton3-v1")));
+>>> +    }
+>>>     g_ptr_array_add(vct, g_strdup(ARM_CPU_TYPE_NAME("max"))); return vct; diff --git a/target/arm/arm-cpu-models.c
+>>> b/target/arm/arm-cpu-models.c new file mode 100644 index
+>>> 0000000000..747e0df010 --- /dev/null +++ b/target/arm/arm-cpu-models.c
+>>> @@ -0,0 +1,336 @@ +/* + * ARM named CPU model definitions. + * + *
+>>> Each model is defined as an array of MODEL_PROP macro, listing only +
+>>> * the properties that DIFFER from the parent model. + * + * At
+>>> realisation the parent chain is walked root-first and + * every
+>>> level's props are applied via QOM, so the leaf's values + * naturally
+>>> override its ancestors. + * + * Hierarchy: + * + *
+>>> non-zero-defaults-v1 Known non-zero default ID reg field values + *
+>>> arm-v8_4-a-v1 ARMv8.4-A architectural mandate + * neoverse-v1-v1
+>>> Neoverse V1 (TRM 102649) + * graviton3-v1 AWS Graviton3 + * + *
+>>> SPDX-License-Identifier: GPL-2.0-or-later + */ + +#include "qemu/osdep.h"
+>>> +#include "qapi/error.h"
+>>> +#include "qemu/error-report.h"
+>>> +#include "system/kvm.h"
+>>> +#include "cpu.h"
+>>> +#include "internals.h"
+>>> +#include "kvm_arm.h"
+>>> +#include "arm-cpu-models.h"
+>>> +#include "cpu-idregs.h"
+>>> +
+>>> +#define MODEL_PROP_FIELD_STR  str
+>>> +#define MODEL_PROP_FIELD_BOOL b
+>>> +#define MODEL_PROP_FIELD_NUM  num
+>>> +
+>>> +#define MODEL_PROP(_name, _type, _value) \
+>>> +    { .name = (_name), .type = ARM_MODEL_PROP_##_type, \
+>>> +      .u.MODEL_PROP_FIELD_##_type = (_value) }
+>>> +
+>>> +#define MODEL_PROP_END  { .name = NULL }
+>> Regarding settings somehow we end up with something that is quite
+>> similar to TCG CPU
+>> definitions like in
+>> aarch64_neoverse_n1_initfn(). To me this is in general more readable
+>> because we use name fields instead of putting the full reg value.
+>> This does not prevent us from adding comments along settings to make
+>> this more readable and explicit.
+> Can you please specify further on what types of comments?
+> Like what does each property value means?
+yes, something alike what is done when we populate acpi table fields
+>
+>>> +
+>>> +/*
+>>> + * These fields should be populated with some non-zero default values.
+>>> + */
+>>> +static const ArmModelPropValue non_zero_defaults_v1_props[] = {
+>>> +    /* ID_AA64PFR0_EL1 */
+>>> +    MODEL_PROP("SYSREG_ID_AA64PFR0_EL1_EL0", NUM, 0b0001),
+>>> +    MODEL_PROP("SYSREG_ID_AA64PFR0_EL1_EL1", NUM, 0b0001),
+>>> +    MODEL_PROP("SYSREG_ID_AA64PFR0_EL1_FP", NUM, 0b1111),
+>>> +    MODEL_PROP("SYSREG_ID_AA64PFR0_EL1_AdvSIMD", NUM, 0b1111),
+>>> +
+>>> +    /* ID_AA64PFR1_EL1 */
+>>> +    MODEL_PROP("SYSREG_ID_AA64PFR1_EL1_MTE_frac", NUM, 0b1111),
+>> so I still believe we want a wrapper that transparently either sets a
+>> prop if the field happens to be writable or simply performs checks
+>> against the host if the prop is not available.
+> Can’t we do that easily afterwards once the ID reg view is finalised?
+> Doing it here means all the qmp paths which do not intend to actually
+> create any vCPUs will error out here, which is undesirable.
+sorry but I don't catch
+>
+>>> +
+>>> +    /* ID_AA64MMFR0_EL1 */
+>>> +    MODEL_PROP("SYSREG_ID_AA64MMFR0_EL1_TGran64", NUM, 0b1111),
+>>> +    MODEL_PROP("SYSREG_ID_AA64MMFR0_EL1_TGran4", NUM, 0b1111),
+>>> +    MODEL_PROP("SYSREG_ID_AA64MMFR0_EL1_TGran16_2", NUM, 0b0001),
+>>> +    MODEL_PROP("SYSREG_ID_AA64MMFR0_EL1_TGran64_2", NUM, 0b0001),
+>>> +    MODEL_PROP("SYSREG_ID_AA64MMFR0_EL1_TGran4_2", NUM, 0b0001),
+>>> +
+>>> +    /* ID_AA64DFR0_EL1 */
+>>> +    MODEL_PROP("SYSREG_ID_AA64DFR0_EL1_DebugVer", NUM, 0x6),
+>>> +    MODEL_PROP("SYSREG_ID_AA64DFR0_EL1_DoubleLock", NUM, 0b1111),
+>>> +
+>>> +    /* CTR_EL0 */
+>>> +    MODEL_PROP("SYSREG_CTR_EL0_L1Ip", NUM, 0b10),
+>>> +    MODEL_PROP("SYSREG_CTR_EL0_RES1_31", NUM, 1),
+>>> +
+>>> +    /* ID_AA64MMFR4_EL1 */
+>>> +    MODEL_PROP("SYSREG_ID_AA64MMFR4_EL1_E2H0", NUM, 0b1111),
+>>> +
+>>> +    MODEL_PROP_END,
+>>> +};
+>> To ease the review I would suggest to put a dump of all id regs of a
+>> leaf model in the commit description. It is less error prone that
+>> understanding the various overrides.
+>> I would suggest to have separate patches for each model too.
+> Ack to both. Will do this in v4.
+>
+>> So you said a leaf model shall have explicit values for each field,
+>> including non writable ones. The code does not check that. How do we
+>> make sure we are not missing settings?
+> I am not sure where I say that, assumption is:
+> Base model starts with a zeroed IO reg view, each model in
+> chain applies some settings, a child model’s setting
+> overrides parents’ settings.
+Ah ok I must have misunderstood then.
+>
+> For verification we can dump the leaf ID regs view, it
+> should match with the one in the commit message as per
+> your suggestion.
+>>> +
+>>> +static const ArmModelPropValue armv8_4_a_v1_props[] = {
+>>> +    MODEL_PROP("SYSREG_ID_AA64ISAR0_EL1_CRC32", NUM, 1),
+>>> +    MODEL_PROP("SYSREG_ID_AA64ISAR0_EL1_Atomic", NUM, 2),
+>>> +    MODEL_PROP("SYSREG_ID_AA64MMFR1_EL1_HPDS", NUM, 1),
+>>> +    MODEL_PROP("SYSREG_ID_AA64MMFR1_EL1_LO", NUM, 1),
+>>> +
+>>> +    MODEL_PROP("SYSREG_ID_AA64ISAR1_EL1_DPB", NUM, 1),
+>>> +
+>>> +    MODEL_PROP("SYSREG_ID_AA64PFR0_EL1_RAS", NUM, 1),
+>>> +    MODEL_PROP("SYSREG_ID_AA64PFR1_EL1_RAS_frac", NUM, 0),
+>>> +
+>>> +    MODEL_PROP("SYSREG_ID_AA64MMFR1_EL1_PAN", NUM, 2),
+>>> +    MODEL_PROP("SYSREG_ID_AA64MMFR2_EL1_UAO", NUM, 1),
+>>> +    MODEL_PROP("SYSREG_ID_AA64MMFR2_EL1_CnP", NUM, 1),
+>>> +    MODEL_PROP("SYSREG_ID_AA64MMFR2_EL1_IESB", NUM, 1),
+>>> +
+>>> +    MODEL_PROP("SYSREG_ID_AA64PFR0_EL1_DIT", NUM, 1),
+>>> +    MODEL_PROP("SYSREG_ID_AA64DFR0_EL1_DebugVer", NUM, 9),
+>>> +    MODEL_PROP("SYSREG_ID_AA64DFR0_EL1_PMUVer", NUM, 5),
+>>> +    MODEL_PROP("SYSREG_ID_AA64ISAR0_EL1_TS", NUM, 1),
+>>> +    MODEL_PROP("SYSREG_ID_AA64ISAR1_EL1_LRCPC", NUM, 2),
+>>> +    MODEL_PROP("SYSREG_ID_AA64MMFR2_EL1_AT", NUM, 1),
+>>> +    MODEL_PROP("SYSREG_ID_AA64MMFR2_EL1_IDS", NUM, 1),
+>>> +    /* KVM zeroes out these field when MTE is not enabled. */
+>>> +    MODEL_PROP("SYSREG_ID_AA64PFR1_EL1_MTE_frac", NUM, 0),
+>>> +    MODEL_PROP_END,
+>>> +};
+>>> +
+>>> +static const ArmModelPropValue neoverse_v1_v1_props[] = {
+>>> +    MODEL_PROP("SYSREG_MIDR_EL1_Implementer", NUM, 0x41),
+>>> +    MODEL_PROP("SYSREG_MIDR_EL1_Variant", NUM, 0x1),
+>>> +    MODEL_PROP("SYSREG_MIDR_EL1_Architecture", NUM, 0xF),
+>>> +    MODEL_PROP("SYSREG_MIDR_EL1_PartNum", NUM, 0xD40),
+>>> +    MODEL_PROP("SYSREG_MIDR_EL1_Revision", NUM, 0x1),
+>>> +
+>>> +    MODEL_PROP("SYSREG_ID_AA64DFR0_EL1_BRPs", NUM, 0x5),
+>>> +    MODEL_PROP("SYSREG_ID_AA64DFR0_EL1_WRPs", NUM, 0x3),
+>>> +    MODEL_PROP("SYSREG_ID_AA64DFR0_EL1_CTX_CMPs", NUM, 0x1),
+>>> +    MODEL_PROP("SYSREG_ID_AA64DFR0_EL1_DoubleLock", NUM, 0xF),
+>>> +
+>>> +    MODEL_PROP("SYSREG_ID_AA64ISAR0_EL1_RDM", NUM, 1),
+>>> +    MODEL_PROP("SYSREG_ID_AA64ISAR0_EL1_DP", NUM, 1),
+>>> +    MODEL_PROP("SYSREG_ID_AA64ISAR0_EL1_FHM", NUM, 1),
+>>> +
+>>> +    MODEL_PROP("SYSREG_ID_AA64ISAR1_EL1_DPB", NUM, 2),
+>>> +    MODEL_PROP("SYSREG_ID_AA64ISAR1_EL1_JSCVT", NUM, 1),
+>>> +    MODEL_PROP("SYSREG_ID_AA64ISAR1_EL1_FCMA", NUM, 1),
+>>> +    MODEL_PROP("SYSREG_ID_AA64ISAR1_EL1_BF16", NUM, 1),
+>>> +    MODEL_PROP("SYSREG_ID_AA64ISAR1_EL1_DGH", NUM, 1),
+>>> +    MODEL_PROP("SYSREG_ID_AA64ISAR1_EL1_I8MM", NUM, 1),
+>>> +
+>>> +    MODEL_PROP("SYSREG_ID_AA64PFR0_EL1_FP", NUM, 1),
+>>> +    MODEL_PROP("SYSREG_ID_AA64PFR0_EL1_AdvSIMD", NUM, 1),
+>>> +
+>>> +    MODEL_PROP("SYSREG_ID_AA64PFR0_EL1_RAS", NUM, 2),
+>>> +    MODEL_PROP("SYSREG_ID_AA64PFR1_EL1_RAS_frac", NUM, 0),
+>>> +
+>>> +    MODEL_PROP("SYSREG_ID_AA64PFR0_EL1_CSV2", NUM, 1),
+>>> +    MODEL_PROP("SYSREG_ID_AA64PFR1_EL1_CSV2_frac", NUM, 0),
+>>> +
+>>> +    MODEL_PROP("SYSREG_ID_AA64PFR0_EL1_CSV3", NUM, 1),
+>>> +
+>>> +    MODEL_PROP("SYSREG_ID_AA64PFR1_EL1_SSBS", NUM, 2),
+>>> +
+>>> +    MODEL_PROP("SYSREG_ID_AA64MMFR0_EL1_PARange", NUM, 5),
+>>> +    MODEL_PROP("SYSREG_ID_AA64MMFR0_EL1_ASIDBits", NUM, 2),
+>>> +    MODEL_PROP("SYSREG_ID_AA64MMFR0_EL1_BigEnd", NUM, 1),
+>>> +    MODEL_PROP("SYSREG_ID_AA64MMFR0_EL1_SNSMem", NUM, 1),
+>>> +    MODEL_PROP("SYSREG_ID_AA64MMFR0_EL1_TGran4", NUM, 0),
+>>> +    MODEL_PROP("SYSREG_ID_AA64MMFR0_EL1_TGran16", NUM, 1),
+>>> +    MODEL_PROP("SYSREG_ID_AA64MMFR0_EL1_TGran64", NUM, 0),
+>>> +    MODEL_PROP("SYSREG_ID_AA64MMFR0_EL1_TGran4_2", NUM, 0),
+>>> +    MODEL_PROP("SYSREG_ID_AA64MMFR0_EL1_TGran16_2", NUM, 0),
+>>> +    MODEL_PROP("SYSREG_ID_AA64MMFR0_EL1_TGran64_2", NUM, 0),
+>>> +    MODEL_PROP("SYSREG_ID_AA64MMFR1_EL1_HAFDBS", NUM, 2),
+>>> +    MODEL_PROP("SYSREG_ID_AA64MMFR1_EL1_VMIDBits", NUM, 2),
+>>> +    MODEL_PROP("SYSREG_ID_AA64MMFR1_EL1_VH", NUM, 1),
+>>> +    MODEL_PROP("SYSREG_ID_AA64MMFR1_EL1_HPDS", NUM, 2),
+>>> +    MODEL_PROP("SYSREG_ID_AA64MMFR1_EL1_XNX", NUM, 1),
+>>> +    MODEL_PROP("SYSREG_ID_AA64MMFR1_EL1_SpecSEI", NUM, 0),
+>>> +
+>>> +    MODEL_PROP("SYSREG_ID_AA64MMFR2_EL1_FWB", NUM, 1),
+>>> +    MODEL_PROP("SYSREG_ID_AA64MMFR2_EL1_BBM", NUM, 2),
+>>> +    MODEL_PROP("SYSREG_ID_AA64MMFR2_EL1_EVT", NUM, 2),
+>>> +
+>>> +    MODEL_PROP("SYSREG_ID_AA64MMFR4_EL1_E2H0", NUM, 0),
+>>> +
+>>> +    MODEL_PROP("SYSREG_CTR_EL0_IminLine", NUM, 4),
+>>> +    MODEL_PROP("SYSREG_CTR_EL0_L1Ip", NUM, 3),
+>>> +    MODEL_PROP("SYSREG_CTR_EL0_DminLine", NUM, 4),
+>>> +    MODEL_PROP("SYSREG_CTR_EL0_ERG", NUM, 4),
+>>> +    MODEL_PROP("SYSREG_CTR_EL0_CWG", NUM, 4),
+>>> +
+>>> +    MODEL_PROP("SYSREG_DCZID_EL0_BS", NUM, 0x4),
+>>> +
+>>> +    /* pauth */
+>>> +    MODEL_PROP("SYSREG_ID_AA64ISAR1_EL1_APA", NUM, 3),
+>>> +    MODEL_PROP("SYSREG_ID_AA64ISAR1_EL1_GPA", NUM, 1),
+>>> +
+>>> +    /* sve */
+>>> +    MODEL_PROP("SYSREG_ID_AA64PFR0_EL1_SVE", NUM, 1),
+>>> +    MODEL_PROP("SYSREG_ID_AA64ZFR0_EL1_BF16", NUM, 1),
+>>> +    MODEL_PROP("SYSREG_ID_AA64ZFR0_EL1_I8MM", NUM, 1),
+>>> +    MODEL_PROP("sve128", BOOL, true),
+>>> +
+>>> +    MODEL_PROP_END,
+>>> +};
+>>> +
+>>> +static const ArmModelPropValue graviton3_v1_props[] = {
+>>> +    MODEL_PROP("SYSREG_ID_AA64ISAR0_EL1_AES", NUM, 2),
+>>> +    MODEL_PROP("SYSREG_ID_AA64ISAR0_EL1_SHA1", NUM, 1),
+>>> +    MODEL_PROP("SYSREG_ID_AA64ISAR0_EL1_SHA2", NUM, 2),
+>>> +    MODEL_PROP("SYSREG_ID_AA64ISAR0_EL1_SHA3", NUM, 1),
+>>> +    MODEL_PROP("SYSREG_ID_AA64ISAR0_EL1_SM3", NUM, 1),
+>>> +    MODEL_PROP("SYSREG_ID_AA64ISAR0_EL1_SM4", NUM, 1),
+>>> +    MODEL_PROP("SYSREG_ID_AA64ISAR0_EL1_RNDR", NUM, 1),
+>>> +
+>>> +    MODEL_PROP("SYSREG_CTR_EL0_IDC", NUM, 1),
+>>> +    MODEL_PROP("SYSREG_CTR_EL0_DIC", NUM, 1),
+>>> +
+>>> +    MODEL_PROP("SYSREG_REVIDR_EL1_VAL", NUM, 1),
+>>> +
+>>> +    MODEL_PROP_END,
+>>> +};
+>>> +
+>>> +static const ArmNamedCpuModel arm_cpu_models[] = {
+>>> +    {
+>>> +        .name   = "non-zero-defaults-v1",
+>>> +        .parent = NULL,
+>>> +        .props  = non_zero_defaults_v1_props,
+>>> +    },
+>>> +    {
+>>> +        .name   = "arm-v8_4-a-v1",
+>>> +        .parent = "non-zero-defaults-v1",
+>>> +        .props  = armv8_4_a_v1_props,
+>>> +    },
+>>> +    {
+>>> +        .name   = "neoverse-v1-v1",
+>>> +        .parent = "arm-v8_4-a-v1",
+>>> +        .props  = neoverse_v1_v1_props,
+>>> +    },
+>>> +    {
+>>> +        .name   = "graviton3-v1",
+>>> +        .parent = "neoverse-v1-v1",
+>>> +        .props  = graviton3_v1_props,
+>>> +    },
+>>> +};
+>>> +
+>>> +static ARMCPUInfo arm_named_cpu_infos[ARRAY_SIZE(arm_cpu_models)];
+>>> +const ArmNamedCpuModel *arm_find_model(const char *name)
+>>> +{
+>>> +    size_t i;
+>>> +    for (i = 0; i < ARRAY_SIZE(arm_cpu_models); i++) {
+>>> +        if (g_str_equal(arm_cpu_models[i].name, name)) {
+>>> +            return &arm_cpu_models[i];
+>>> +        }
+>>> +    }
+>>> +    return NULL;
+>>> +}
+>>> +
+>>> +static void arm_apply_model_props(Object *obj, const ArmModelPropValue *props,
+>>> +                                  Error **errp)
+>>> +{
+>>> +    const ArmModelPropValue *pv;
+>>> +    ERRP_GUARD();
+>>> +
+>>> +    for (pv = props; pv->name; pv++) {
+>>> +        switch (pv->type) {
+>>> +        case ARM_MODEL_PROP_BOOL:
+>>> +            object_property_set_bool(obj, pv->name, pv->u.b, errp);
+>>> +            break;
+>>> +        case ARM_MODEL_PROP_NUM:
+>>> +            object_property_set_uint(obj, pv->name, pv->u.num, errp);
+>>> +            break;
+>>> +        default:
+>>> +            g_assert_not_reached();
+>>> +        }
+>>> +        if (*errp) {
+>>> +            error_prepend(errp, "property '%s': ", pv->name);
+>>> +            return;
+>>> +        }
+>>> +    }
+>>> +}
+>>> +
+>>> +static void arm_realize_model_chain(Object *obj, const ArmNamedCpuModel *model,
+>>> +                                    Error **errp)
+>>> +{
+>>> +    const ArmNamedCpuModel *cur, *parent;
+>>> +    const ArmNamedCpuModel *chain[ARRAY_SIZE(arm_cpu_models)];
+>>> +    size_t depth = 0;
+>>> +    for (cur = model; cur; ) {
+>>> +        if (depth >= ARRAY_SIZE(chain)) {
+>>> +            error_setg(errp, "model '%s': parent chain too deep "
+>>> +                       "(possible cycle)", model->name);
+>>> +            return;
+>>> +        }
+>>> +        chain[depth++] = cur;
+>>> +
+>>> +        if (!cur->parent) {
+>>> +            break;
+>>> +        }
+>>> +        parent = arm_find_model(cur->parent);
+>>> +        if (!parent) {
+>>> +            error_setg(errp, "model '%s': unknown parent '%s'",
+>>> +                       cur->name, cur->parent);
+>>> +            return;
+>>> +        }
+>>> +        cur = parent;
+>>> +    }
+>>> +
+>>> +    while (depth--) {
+>>> +        arm_apply_model_props(obj, chain[depth]->props, errp);
+>>> +        if (*errp) {
+>>> +            return;
+>>> +        }
+>>> +    }
+>>> +}
+>>> +
+>>> +static void arm_named_cpu_initfn(Object *obj)
+>>> +{
+>>> +    ARMCPU *cpu = ARM_CPU(obj);
+>>> +    ARMCPUClass *acc = ARM_CPU_GET_CLASS(obj);
+>>> +    const ArmNamedCpuModel *model = arm_find_model(acc->info->name);
+>>> +    if (!model) {
+>>> +        error_report("'%s' CPU model entry not found)",
+>>> +                     acc->info->name);
+>>> +        return;
+>>> +    }
+>>> +
+>>> +    if (!kvm_enabled()) {
+>>> +        error_report("'%s' CPU model requires KVM (-accel kvm)",
+>>> +                     acc->info->name);
+>>> +        return;
+>>> +    }
+>>> +
+>>> +    kvm_arm_set_cpu_features_from_host(cpu);
+>>> +    if (!arm_feature(&cpu->env, ARM_FEATURE_AARCH64)) {
+>>> +        return;
+>>> +    }
+>>> +
+>>> +    /* 1. Reset ID regs to 0 */
+>>> +    memset(cpu->isar.idregs, 0, sizeof(cpu->isar.idregs));
+>>> +
+>>> +    /* 2. Add sveNNNN and SYSREG_ properties */
+>>> +    aarch64_add_sve_properties(obj);
+>>> +    aarch64_add_idregs_properties(obj);
+>>> +
+>>> +    /* 3. Realize the model chain. */
+>>> +    arm_realize_model_chain(obj, model, &error_abort);
+>>> +}
+>>> +
+>>> +void arm_register_named_cpu_models(void)
+>>> +{
+>>> +    size_t i;
+>>> +    for (i = 0; i < ARRAY_SIZE(arm_cpu_models); i++) {
+>>> +        arm_named_cpu_infos[i].name = arm_cpu_models[i].name;
+>>> +        arm_named_cpu_infos[i].initfn = arm_named_cpu_initfn;
+>>> +        arm_cpu_register(&arm_named_cpu_infos[i]);
+>>> +    }
+>>> +}
+>>> +
+>>> +type_init(arm_register_named_cpu_models)
+>>> diff --git a/target/arm/arm-cpu-models.h b/target/arm/arm-cpu-models.h
+>>> new file mode 100644
+>>> index 0000000000..ac4e510499
+>>> --- /dev/null
+>>> +++ b/target/arm/arm-cpu-models.h
+>>> @@ -0,0 +1,35 @@
+>>> +/* SPDX-License-Identifier: GPL-2.0-or-later */
+>>> +/*
+>>> + * ARM named CPU model definitions - public API.
+>>> + */
+>>> +#ifndef ARM_CPU_MODELS_H
+>>> +#define ARM_CPU_MODELS_H
+>>> +
+>>> +#include "qapi/error.h"
+>>> +#include "qom/object.h"
+>>> +
+>>> +typedef enum ArmModelPropType {
+>>> +    ARM_MODEL_PROP_BOOL,
+>>> +    ARM_MODEL_PROP_NUM,
+>>> +} ArmModelPropType;
+>>> +
+>>> +typedef struct ArmModelPropValue {
+>>> +    const char     *name;
+>>> +    ArmModelPropType type;
+>>> +    union {
+>>> +        bool            b;
+>>> +        uint64_t        num;
+>>> +    } u;
+>>> +} ArmModelPropValue;
+>>> +
+>>> +typedef struct ArmNamedCpuModel {
+>>> +    const char              *name;
+>>> +    const char              *parent;
+>>> +    const ArmModelPropValue *props;
+>>> +} ArmNamedCpuModel;
+>>> +
+>>> +void arm_register_named_cpu_models(void);
+>>> +
+>>> +const ArmNamedCpuModel *arm_find_model(const char *name);
+>>> +
+>>> +#endif /* ARM_CPU_MODELS_H */
+>>> diff --git a/target/arm/meson.build b/target/arm/meson.build
+>>> index 64d1ec63ab..72eed1bcc6 100644
+>>> --- a/target/arm/meson.build
+>>> +++ b/target/arm/meson.build
+>>> @@ -10,7 +10,7 @@ arm_user_ss.add(files('gdbstub.c'))
+>>>
+>>> arm_ss.add(when: 'TARGET_AARCH64', if_true: files(
+>>>   'cpu64.c',
+>>> -  'gdbstub64.c'
+>>> +  'gdbstub64.c',
+>>> ))
+>>>
+>>> arm_common_ss.add(files(
+>>> @@ -21,7 +21,10 @@ arm_common_system_ss.add(files(
+>>>   'arm-qmp-cmds.c',
+>>>   'cpu-idregs.c',
+>>> ))
+>>> -arm_system_ss.add(when: 'CONFIG_KVM', if_true: files('hyp_gdbstub.c', 'kvm.c'))
+>>> +arm_system_ss.add(when: 'TARGET_AARCH64', if_true: files('arm-cpu-models.c'))
+>>> +arm_system_ss.add(when: 'CONFIG_KVM',
+>>> +                  if_true: files('hyp_gdbstub.c',
+>>> +                                 'kvm.c'))
+>>> arm_system_ss.add(when: 'CONFIG_HVF', if_true: files('hyp_gdbstub.c'))
+>>>
+>>> arm_user_ss.add(files('cpu.c'))
+>> Thanks
+>>
+>> Eric
+>
+Thanks
+
+Eric
+
 

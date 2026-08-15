@@ -4,89 +4,89 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0E65FC5DF67
-	for <qemu-arm@archiver.kernel.org>; Sat, 15 Aug 2026 20:38:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 25159C5DF67
+	for <qemu-arm@archiver.kernel.org>; Sat, 15 Aug 2026 20:38:55 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wvL8h-0008EM-A8; Sat, 15 Aug 2026 16:37:59 -0400
+	id 1wvL8k-0008Hp-0S; Sat, 15 Aug 2026 16:38:02 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1wvL8f-0008BC-Ke
- for qemu-arm@nongnu.org; Sat, 15 Aug 2026 16:37:57 -0400
-Received: from mail-pl1-x62f.google.com ([2607:f8b0:4864:20::62f])
+ id 1wvL8i-0008Gj-UY
+ for qemu-arm@nongnu.org; Sat, 15 Aug 2026 16:38:00 -0400
+Received: from mail-pj1-x102c.google.com ([2607:f8b0:4864:20::102c])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1wvL8c-0008Ik-EX
- for qemu-arm@nongnu.org; Sat, 15 Aug 2026 16:37:57 -0400
-Received: by mail-pl1-x62f.google.com with SMTP id
- d9443c01a7336-2ccf2360620so21599785ad.3
- for <qemu-arm@nongnu.org>; Sat, 15 Aug 2026 13:37:48 -0700 (PDT)
+ id 1wvL8c-0008IN-I3
+ for qemu-arm@nongnu.org; Sat, 15 Aug 2026 16:38:00 -0400
+Received: by mail-pj1-x102c.google.com with SMTP id
+ 98e67ed59e1d1-38dc69c74b8so2298958a91.0
+ for <qemu-arm@nongnu.org>; Sat, 15 Aug 2026 13:37:47 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1786826267; x=1787431067; darn=nongnu.org;
+ d=linaro.org; s=google; t=1786826266; x=1787431066; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to:content-type;
- bh=m/W0Rg3ZT8aB8ztQ7+mQ84An4E9x9bWgouBn0XbAmNY=;
- b=Iy9tdufDZg6QSGd72M++suN0Wbm1O55ClOnkdRIbnBebGUSPqt5klV+xyzpeu/CNo1
- bDfCRDUe6LZ/Xs6G5DrlZbee9NK9YmC60b/GfQgFaJAsiqCk5bDxQ0DQLotbOJn7HtJD
- FTOowb6zx+nqEmAaOIjuas+1PuZzRrKT8GXNeQ/nou7mLKY+Y1vHZLdEYycKe1ViotjG
- r+L7n5cuvLxmD6JhbbkPlh2OoGx9PPxX+dyg8ZBDrqpc/z2GPkiPg9lZJJ1sxSiK86Ct
- 3gMolW8Y0KQdGk9wzskv4JJ5O6KhrzsXyGFn5xFNP1YpEjHqe0Tn1m+ro+2ue8UfgdP6
- 8/Pw==
+ bh=a24LZzn/VPxjQJEt2LC7ZUVxYoHxQJoEEiHc8hSgRl8=;
+ b=th7U+C5UhfWLAYSbHzvtXdPeNMnMnkc9irmEnTRw3C1kai0Z9m4wn8zkhE8ojWXRlX
+ QIc4noJpSwwQ+AYQYqegQ6TOD1FI2rcHWaFatc5Kt1U3FkA3OJbqU2pZKqFpWo5VPWh8
+ +TooesDmH9f893jVKdvGJczbO+gDnuYSuxxnPt4GCibcUhx4xVupiubVR3XO9gwjU8Zv
+ +eFK0FsXTlppPDkEb+57DYN4vmr4eSM+iuZ5vmrbe0kcXSGy6tcTnOUWF0DGfc8XFJ51
+ IVAwZBbh0NAGbLxkzsLux4R5RL+ki/rELCyCgi754F2lcyc1lnwD7b6yYOyoNS2V3MOP
+ 0szw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1786826267; x=1787431067;
+ d=1e100.net; s=20251104; t=1786826266; x=1787431066;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
  :to:cc:subject:date:message-id:reply-to:content-type;
- bh=m/W0Rg3ZT8aB8ztQ7+mQ84An4E9x9bWgouBn0XbAmNY=;
- b=E5ql5W/DzsNZpqfiwNvdq+lO/wgUreH25qcmf0/sWrkYMmJk9Isl6O1gd3NpVFlFX7
- Ddpex6sQkHfenzKNKaqrp+I/thgFOxCkoEcaSKubMBl7rPOtEWXMIBoBBHMAKSxNs+LU
- ecDRtulQZocDot7xwf8RRFHED5QPglsHzGB7WRIwauFjw2gqcR1ghghvAP6mAbXMU/+T
- b6Z3pD8j09DlxVTcUypY2hjJ4nlYwX1386dF2UGGdfVjLgvzzPrRhWbKYEDo6iQaJeaX
- XWvQgHPXw2FNIsqz3qevTjs8BNUTydgzn8dT8KwGoygiFSC/ZLZGt35Hm4mYIa8iyt+6
- j94Q==
-X-Gm-Message-State: AOJu0YylreZiUWhSARIn7qFOPP6MScEtplJ4uvkQNh6f5FxHAUbFhQOA
- i6NRajINkVfiaEE4ELdzD/JCfMvv/s9QJesue3bM9mD0OYTx10Ruc1a3urW6mM0RV1M=
-X-Gm-Gg: AR+sD13S+4l/wv/HbApW1bglj9WjzF6UdHg6id4jZGZA354S/LGyQxo5kqd9kzhYCGT
- sksteEBoKPPjgoyqOl0gmhssS9t6w9K48tsA6t+oCqTYbShC7aiBRblET2pqSLHVb09nXbIFU4C
- XgXr5IuJFbFe4Y7ziVVGDmyqovDCP6o8jIx0CcgBPkVnwpinZ0+NlGL8fuEBI9UZIohePbCQpHy
- HmBSH4sX02VeW3YXUSg5FPiyxaz2zG0XAxiY1kx8TzpHxAuBLWwN/ANUXgBXn7knt26R6NXWn5D
- nH/8j4z9Pg/5HAGJ5BiyEuiF6osaEVkT1uQVP1eBrfwDcuCxvslhWeQZp54BmA3QOsmMYXP1t56
- CMzdW/krorTGGaCHp3DQ8hWualVSUUkOBiuHWI9qvUMl07XQnqaceG9fN9r6mvJmz5OouBcIIRg
- ErM/pe0Ea8n6S6YUW7NZKNWd10WGIP4cWDVqWT7qvcx9izvbHD3babhvdImpS2nC9Nf2xrd1Fa7
- q5vUyBAMYtzrBvIZzWt
-X-Received: by 2002:a17:90b:37c6:b0:38e:2e86:ed02 with SMTP id
- 98e67ed59e1d1-3933b8f3573mr16229402a91.14.1786826267213; 
- Sat, 15 Aug 2026 13:37:47 -0700 (PDT)
+ bh=a24LZzn/VPxjQJEt2LC7ZUVxYoHxQJoEEiHc8hSgRl8=;
+ b=hKJzgq6dJMwKt5Gtlqo05Qcy5M2bWpBmsru76wpN+RVZvsXrYJkH6m4+hFzkWNLtZ9
+ f7PYFgqlBK00hOT52CErim+dksT7OKA1xXH8ut6FSAmz1CSvfhSdNKUzyLPz0In8IhBh
+ tPzKOo0QADx8H5vbvlQKMdYBQ3bCCrjdtNZoXSj/xOJrRCBjPj/Q6Yf7kIy7gfmG7ziP
+ /hV8pfS8yZkZDZN/rjyM4jjfV1hQQWvTNcxpBpdinC8D9OJCR1qLDmds4ivedHSpjfcc
+ kj9eIYiZbMLL7rHWmaZxNA9deBy+8e40MpLMKR9uK/I3ZuCYfwK623G13VUF0X5uP/hi
+ D78A==
+X-Gm-Message-State: AOJu0Yy7Loef5PcX1iZ/LKXjr+MMnPGiOZlTeFochNd+Ha0jS6sG0IE0
+ 3E6O6wNM7EzEDOmRMjuVQ7VBJe1TaeQD6SxWVvIPJiAdAn5rT+DbS3Q5YFEMcVLmFXE=
+X-Gm-Gg: AR+sD12WurBWzb/yGTwX15nScz2vMiuoWS574BHJALJWl+WBhqOYrXRrOjLPlIbDwWX
+ 3OBRLZVhQiq0VYJBiWTy/mIcTWjBmFUzOyTmSPr5vGdW3qoSvbSsCiNs0fBzy4VtZhtPbgn5Z7d
+ pn4/kGT1nWmz5+UVJNhd5B1kMs2S007YisjmJX3E5wa4gUSGCaw2IIU4cDOxPmWtOFtcLleLA1T
+ 3tN/wQIudl6HhJSERJvEufyO0qnfh1wPbDj5OHuggs9mUvzpCVdDy2QmPNmzBTqVO9Tj36GsbES
+ bsQ4tE7YgMl54Z0vu4/kfJ1p0dSiUT3/AkQNPtA/ig1EGI2xnidoLUKcEewiiDyvRBG9K+bxQqU
+ fiLDMCmkqECtqiaFoOxS3cDBo/1tS2aBvI6z1bxQWRTHJEtpyDdodVTX3iOHChX2vtPGXR1HqBK
+ YDF5RGnSl0YKiBD/4sKlEqdBn+/94E7yJh/VV4A2O+E73k6FWk/pGEcEAJxXeAebY/JT+93GJi8
+ MoD9vv0JtfjNbL1SOa86oO/BUsVfxo=
+X-Received: by 2002:a17:90b:2245:b0:37d:f983:7b5 with SMTP id
+ 98e67ed59e1d1-3933cb9859cmr14421160a91.9.1786826265857; 
+ Sat, 15 Aug 2026 13:37:45 -0700 (PDT)
 Received: from stoup.. (174-21-93-59.tukw.qwest.net. [174.21.93.59])
  by smtp.gmail.com with ESMTPSA id
- 98e67ed59e1d1-394ea97207fsm7066853a91.1.2026.08.15.13.37.46
+ 98e67ed59e1d1-394ea97207fsm7066853a91.1.2026.08.15.13.37.45
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sat, 15 Aug 2026 13:37:46 -0700 (PDT)
+ Sat, 15 Aug 2026 13:37:45 -0700 (PDT)
 From: Richard Henderson <richard.henderson@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org,
 	qemu-riscv@nongnu.org
-Subject: [RFC PATCH 10/18] accel/tcg: Replace size with first/last in
- probe_access_internal
-Date: Sat, 15 Aug 2026 13:37:22 -0700
-Message-ID: <20260815203730.1468365-11-richard.henderson@linaro.org>
+Subject: [RFC PATCH 08/18] accel/tcg: Replace size with first/last in
+ probe_access_flags
+Date: Sat, 15 Aug 2026 13:37:20 -0700
+Message-ID: <20260815203730.1468365-9-richard.henderson@linaro.org>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20260815203730.1468365-1-richard.henderson@linaro.org>
 References: <20260815203730.1468365-1-richard.henderson@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::62f;
- envelope-from=richard.henderson@linaro.org; helo=mail-pl1-x62f.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::102c;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pj1-x102c.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_FILL_THIS_FORM_SHORT=0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -102,125 +102,245 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Propagate the API change down one step further within cputlb.c.
-
 Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- accel/tcg/cputlb.c | 37 ++++++++++++++++++++-----------------
- 1 file changed, 20 insertions(+), 17 deletions(-)
+ include/accel/tcg/probe.h        | 24 +++++++++++++++++-------
+ accel/tcg/cputlb.c               | 15 ++++++++-------
+ accel/tcg/user-exec.c            |  7 +++++--
+ semihosting/uaccess.c            | 10 ++++------
+ target/arm/tcg/sve_helper.c      |  5 ++++-
+ target/riscv/tcg/op_helper.c     |  4 ++--
+ target/riscv/tcg/vector_helper.c | 21 ++++++++++++---------
+ target/s390x/tcg/mem_helper.c    |  4 ++--
+ 8 files changed, 54 insertions(+), 36 deletions(-)
 
+diff --git a/include/accel/tcg/probe.h b/include/accel/tcg/probe.h
+index e3068a79de..06faf1269d 100644
+--- a/include/accel/tcg/probe.h
++++ b/include/accel/tcg/probe.h
+@@ -49,23 +49,33 @@ static inline void *probe_read(CPUArchState *env, vaddr addr, int size,
+ /**
+  * probe_access_flags:
+  * @env: CPUArchState
+- * @addr: guest virtual address to look up
+- * @size: size of the access
++ * @addr: virtual address
++ * @first: beginning of virtual address range
++ * @last: end of virtual address range
+  * @access_type: read, write or execute permission
+  * @mmu_idx: MMU index to use for lookup
+  * @nonfault: suppress the fault
+  * @phost: return value for host address
+  * @retaddr: return address for unwinding
+  *
+- * Similar to probe_access, loosely returning the TLB_FLAGS_MASK for
+- * the page, and storing the host address for RAM in @phost.
++ * Probe an access for [@first, @last], where @addr is somewhere
++ * in that range.  Normally @addr == @first, but some targets have
++ * accesses which are forcibly aligned after an initial fault for an
++ * inaccessible page (e.g. Arm DC_ZVA, where [@first, @last] will be
++ * the bounds of the cacheline containing @addr).
++ *
++ * If the access does not satisfy @access_type:
++ *   - if @nonfault is false, raise an exception at @addr
++ *   - otherwise return TLB_INVALID_MASK.
++ *
++ * Otherwise, return the TLB_FLAGS_MASK for the page, and set @phost:
++ *   - host address for @addr, if direct host accesses are allowed,
++ *   - otherwise NULL.
+  *
+- * If @nonfault is set, do not raise an exception but return TLB_INVALID_MASK.
+  * Do not handle watchpoints, but include TLB_WATCHPOINT in the returned flags.
+  * Do handle clean pages, so exclude TLB_NOTDIRY from the returned flags.
+- * For simplicity, all "mmio-like" flags are folded to TLB_MMIO.
+  */
+-int probe_access_flags(CPUArchState *env, vaddr addr, int size,
++int probe_access_flags(CPUArchState *env, vaddr addr, vaddr first, vaddr last,
+                        MMUAccessType access_type, int mmu_idx,
+                        bool nonfault, void **phost, uintptr_t retaddr);
+ 
 diff --git a/accel/tcg/cputlb.c b/accel/tcg/cputlb.c
-index c2ea31a397..b8c23b2948 100644
+index 6299cc73a4..a192c50e90 100644
 --- a/accel/tcg/cputlb.c
 +++ b/accel/tcg/cputlb.c
-@@ -1358,8 +1358,8 @@ static void notdirty_write(CPUState *cpu, vaddr mem_vaddr, unsigned size,
-     }
+@@ -1460,23 +1460,24 @@ int probe_access_full_mmu(CPUArchState *env, vaddr addr, int size,
+     return flags;
  }
  
--static int probe_access_internal(CPUState *cpu, vaddr addr,
--                                 int fault_size, MMUAccessType access_type,
-+static int probe_access_internal(CPUState *cpu, vaddr addr, vaddr first,
-+                                 vaddr last, MMUAccessType access_type,
-                                  int mmu_idx, bool nonfault,
-                                  void **phost, CPUTLBEntryFull **pfull,
-                                  uintptr_t retaddr, bool check_mem_cbs)
-@@ -1375,7 +1375,7 @@ static int probe_access_internal(CPUState *cpu, vaddr addr,
-     if (!tlb_hit_page(tlb_addr, page_addr)) {
-         if (!victim_tlb_hit(cpu, mmu_idx, index, access_type, page_addr)) {
-             if (!tlb_fill_align(cpu, addr, access_type, mmu_idx,
--                                0, fault_size, nonfault, retaddr)) {
-+                                0, last - addr + 1, nonfault, retaddr)) {
-                 /* Non-faulting page table read failed.  */
-                 *phost = NULL;
-                 *pfull = NULL;
-@@ -1423,7 +1423,7 @@ int probe_access_full(CPUArchState *env, vaddr addr, vaddr first, vaddr last,
-     assert(addr <= last);
-     assert(((first ^ last) & TARGET_PAGE_MASK) == 0);
- 
--    flags = probe_access_internal(env_cpu(env), addr, last - addr + 1,
-+    flags = probe_access_internal(env_cpu(env), addr, first, last,
-                                   access_type, mmu_idx, nonfault,
-                                   phost, pfull, retaddr, true);
- 
-@@ -1440,6 +1440,7 @@ int probe_access_full_mmu(CPUArchState *env, vaddr addr, int size,
-                           MMUAccessType access_type, int mmu_idx,
-                           void **phost, CPUTLBEntryFull **pfull)
+-int probe_access_flags(CPUArchState *env, vaddr addr, int size,
++int probe_access_flags(CPUArchState *env, vaddr addr, vaddr first, vaddr last,
+                        MMUAccessType access_type, int mmu_idx,
+                        bool nonfault, void **phost, uintptr_t retaddr)
  {
-+    vaddr last = size ? addr + size - 1 : addr;
-     void *discard_phost;
-     CPUTLBEntryFull *discard_tlb;
- 
-@@ -1447,13 +1448,13 @@ int probe_access_full_mmu(CPUArchState *env, vaddr addr, int size,
-     phost = phost ? phost : &discard_phost;
-     pfull = pfull ? pfull : &discard_tlb;
- 
--    int flags = probe_access_internal(env_cpu(env), addr, size, access_type,
--                                      mmu_idx, true, phost, pfull, 0, false);
-+    int flags = probe_access_internal(env_cpu(env), addr, addr, last,
-+                                      access_type, mmu_idx, true, phost,
-+                                      pfull, 0, false);
- 
-     /* Handle clean RAM pages.  */
-     if (unlikely(flags & TLB_NOTDIRTY)) {
--        int dirtysize = size == 0 ? 1 : size;
--        notdirty_write(env_cpu(env), addr, dirtysize, *pfull, 0);
-+        notdirty_write(env_cpu(env), addr, last - addr + 1, *pfull, 0);
-         flags &= ~TLB_NOTDIRTY;
-     }
- 
-@@ -1472,7 +1473,7 @@ int probe_access_flags(CPUArchState *env, vaddr addr, vaddr first, vaddr last,
-     assert(addr <= last);
-     assert(((first ^ last) & TARGET_PAGE_MASK) == 0);
- 
--    flags = probe_access_internal(env_cpu(env), addr, last - addr + 1,
-+    flags = probe_access_internal(env_cpu(env), addr, first, last,
-                                   access_type, mmu_idx, nonfault,
-                                   phost ? phost : &discard_host,
-                                   &full, retaddr, true);
-@@ -1489,15 +1490,16 @@ int probe_access_flags(CPUArchState *env, vaddr addr, vaddr first, vaddr last,
- void *probe_access(CPUArchState *env, vaddr addr, int size,
-                    MMUAccessType access_type, int mmu_idx, uintptr_t retaddr)
- {
-+    vaddr last = size ? addr + size - 1 : addr;
      CPUTLBEntryFull *full;
-     void *host;
      int flags;
  
 -    g_assert(-(addr | TARGET_PAGE_MASK) >= size);
-+    assert(((addr ^ last) & TARGET_PAGE_MASK) == 0);
++    assert(first <= addr);
++    assert(addr <= last);
++    assert(((first ^ last) & TARGET_PAGE_MASK) == 0);
  
 -    flags = probe_access_internal(env_cpu(env), addr, size, access_type,
--                                  mmu_idx, false, &host, &full, retaddr,
+-                                  mmu_idx, nonfault, phost, &full, retaddr,
 -                                  true);
-+    flags = probe_access_internal(env_cpu(env), addr, addr, last,
-+                                  access_type, mmu_idx, false,
-+                                  &host, &full, retaddr, true);
++    flags = probe_access_internal(env_cpu(env), addr, last - addr + 1,
++                                  access_type, mmu_idx, nonfault,
++                                  phost, &full, retaddr, true);
  
-     /* Per the interface, size == 0 merely faults the access. */
-     if (size == 0) {
-@@ -1529,7 +1531,7 @@ void *tlb_vaddr_to_host(CPUArchState *env, vaddr addr,
-     void *host;
+     /* Handle clean RAM pages. */
+     if (unlikely(flags & TLB_NOTDIRTY)) {
+-        int dirtysize = size == 0 ? 1 : size;
+-        notdirty_write(env_cpu(env), addr, dirtysize, full, retaddr);
++        notdirty_write(env_cpu(env), first, last - first + 1, full, retaddr);
+         flags &= ~TLB_NOTDIRTY;
+     }
+ 
+diff --git a/accel/tcg/user-exec.c b/accel/tcg/user-exec.c
+index 3724e5d98e..44e9f7fa1a 100644
+--- a/accel/tcg/user-exec.c
++++ b/accel/tcg/user-exec.c
+@@ -790,13 +790,16 @@ static int probe_access_internal(CPUArchState *env, vaddr addr,
+     cpu_loop_exit_sigsegv(env_cpu(env), addr, access_type, maperr, ra);
+ }
+ 
+-int probe_access_flags(CPUArchState *env, vaddr addr, int size,
++int probe_access_flags(CPUArchState *env, vaddr addr, vaddr first, vaddr last,
+                        MMUAccessType access_type, int mmu_idx,
+                        bool nonfault, void **phost, uintptr_t ra)
+ {
      int flags;
  
--    flags = probe_access_internal(env_cpu(env), addr, 0, access_type,
-+    flags = probe_access_internal(env_cpu(env), addr, addr, addr, access_type,
-                                   mmu_idx, true, &host, &full, 0, false);
+-    g_assert(-(addr | TARGET_PAGE_MASK) >= size);
++    assert(first <= addr);
++    assert(addr <= first);
++    assert(((first ^ last) & TARGET_PAGE_MASK) == 0);
++
+     flags = probe_access_internal(env, addr, access_type, nonfault, ra);
+     *phost = (flags & TLB_INVALID_MASK) ? NULL : g2h_vaddr(env_cpu(env), addr);
+     return flags;
+diff --git a/semihosting/uaccess.c b/semihosting/uaccess.c
+index ff944d8c2f..1efe8464d7 100644
+--- a/semihosting/uaccess.c
++++ b/semihosting/uaccess.c
+@@ -33,15 +33,13 @@ ssize_t uaccess_strlen_user(CPUArchState *env, vaddr addr)
+     size_t len = 0;
  
-     /* No combination of flags are expected by the caller. */
-@@ -1552,9 +1554,10 @@ tb_page_addr_t get_page_addr_code_hostp(CPUArchState *env, vaddr addr,
+     while (1) {
+-        size_t left_in_page;
++        vaddr last_in_page = addr | ~TARGET_PAGE_MASK;
++        size_t left_in_page = last_in_page - addr + 1;
+         int flags;
+         void *h;
+ 
+-        /* Find the number of bytes remaining in the page. */
+-        left_in_page = TARGET_PAGE_SIZE - (addr & ~TARGET_PAGE_MASK);
+-
+-        flags = probe_access_flags(env, addr, 0, MMU_DATA_LOAD,
+-                                   mmu_idx, true, &h, 0);
++        flags = probe_access_flags(env, addr, addr, last_in_page,
++                                   MMU_DATA_LOAD, mmu_idx, true, &h, 0);
+         if (flags & TLB_INVALID_MASK) {
+             return -1;
+         }
+diff --git a/target/arm/tcg/sve_helper.c b/target/arm/tcg/sve_helper.c
+index 4e77a824dd..b824933694 100644
+--- a/target/arm/tcg/sve_helper.c
++++ b/target/arm/tcg/sve_helper.c
+@@ -6036,7 +6036,10 @@ bool sve_probe_page(SVEHostPage *info, bool nofault, CPUARMState *env,
+     addr = useronly_clean_ptr(addr);
+ 
+ #ifdef CONFIG_USER_ONLY
+-    flags = probe_access_flags(env, addr, 0, access_type, mmu_idx, nofault,
++    flags = probe_access_flags(env, addr,
++                               addr & TARGET_PAGE_MASK,
++                               addr | ~TARGET_PAGE_MASK,
++                               access_type, mmu_idx, nofault,
+                                &info->host, retaddr);
+ #else
      CPUTLBEntryFull *full;
-     void *p;
+diff --git a/target/riscv/tcg/op_helper.c b/target/riscv/tcg/op_helper.c
+index a7bd42d2c6..b18bf683f4 100644
+--- a/target/riscv/tcg/op_helper.c
++++ b/target/riscv/tcg/op_helper.c
+@@ -250,8 +250,8 @@ static void check_zicbom_access(CPURISCVState *env,
+      * addresses, whether a cache-block management instruction is
+      * permitted to access the cache block is UNSPECIFIED."
+      */
+-    ret = probe_access_flags(env, address, cbomlen, MMU_DATA_LOAD,
+-                             mmu_idx, true, &phost, ra);
++    ret = probe_access_flags(env, address, address, address + cbomlen - 1,
++                             MMU_DATA_LOAD, mmu_idx, true, &phost, ra);
+     if (ret != TLB_INVALID_MASK) {
+         /* Success: readable */
+         return;
+diff --git a/target/riscv/tcg/vector_helper.c b/target/riscv/tcg/vector_helper.c
+index b7b3805a6d..87f2196bc7 100644
+--- a/target/riscv/tcg/vector_helper.c
++++ b/target/riscv/tcg/vector_helper.c
+@@ -704,7 +704,7 @@ vext_ldff(void *vd, target_ulong base, CPURISCVState *env,
+     uint32_t esz = 1 << log2_esz;
+     uint32_t msize = nf * esz;
+     uint32_t vma = vext_vma(desc);
+-    target_ulong addr, last, last_in_page, page_split, elems;
++    target_ulong addr, last, last_in_page, page_split, elems, adj, adj_last;
+     MemOpIdx oi = vext_oi(desc, log2_esz);
+     int mmu_index = get_mmuidx(oi);
+     bool first_active;
+@@ -759,10 +759,10 @@ vext_ldff(void *vd, target_ulong base, CPURISCVState *env,
+      * Test whether the first page is accessible.
+      * If the first element is active, it must succeed.
+      */
+-    flags = probe_access_flags(env, adjust_addr(env, addr),
+-                               MIN(last, last_in_page) - addr + 1,
+-                               MMU_DATA_LOAD, mmu_index, !first_active,
+-                               &host, ra);
++    adj = adjust_addr(env, addr);
++    adj_last = MIN(last, last_in_page) - (addr - adj);
++    flags = probe_access_flags(env, adj, adj, adj_last, MMU_DATA_LOAD,
++                               mmu_index, !first_active, &host, ra);
  
--    (void)probe_access_internal(env_cpu(env), addr, 1, MMU_INST_FETCH,
--                                cpu_mmu_index(env_cpu(env), true), false,
--                                hostp, &full, 0, false);
-+    (void)probe_access_internal(env_cpu(env), addr, addr, addr,
-+                                MMU_INST_FETCH,
-+                                cpu_mmu_index(env_cpu(env), true),
-+                                false, hostp, &full, 0, false);
+     /* Get number of complete elements in the first page. */
+     elems = MIN(page_split / msize, vl - i);
+@@ -853,8 +853,10 @@ vext_ldff(void *vd, target_ulong base, CPURISCVState *env,
+          * We have not yet advanced addr to the next page.
+          */
+         target_ulong next_page = addr + page_split;
+-        flags |= probe_access_flags(env, adjust_addr(env, next_page),
+-                                    last - next_page + 1, MMU_DATA_LOAD,
++
++        adj = adjust_addr(env, next_page);
++        adj_last = last - (next_page - adj);
++        flags |= probe_access_flags(env, adj, adj, adj_last, MMU_DATA_LOAD,
+                                     mmu_index, true, &host, ra);
  
-     p = *hostp;
-     if (p == NULL) {
+         /* Stop if invalid (unmapped) or mmio (transaction may fail). */
+@@ -873,8 +875,9 @@ vext_ldff(void *vd, target_ulong base, CPURISCVState *env,
+             host += addr - next_page;
+         }
+     } else {
+-        flags = probe_access_flags(env, adjust_addr(env, addr),
+-                                   last - addr + 1, MMU_DATA_LOAD,
++        adj = adjust_addr(env, addr);
++        adj_last = last - (addr - adj);
++        flags = probe_access_flags(env, adj, adj, adj_last, MMU_DATA_LOAD,
+                                    mmu_index, true, &host, ra);
+ 
+         /* Stop if invalid (unmapped) or mmio (transaction may fail). */
+diff --git a/target/s390x/tcg/mem_helper.c b/target/s390x/tcg/mem_helper.c
+index 414e6838c8..d490434806 100644
+--- a/target/s390x/tcg/mem_helper.c
++++ b/target/s390x/tcg/mem_helper.c
+@@ -155,8 +155,8 @@ static inline int s390_probe_access(CPUArchState *env, vaddr addr,
+                                     int mmu_idx, bool nonfault,
+                                     void **phost, uintptr_t ra)
+ {
+-    int flags = probe_access_flags(env, addr, size, access_type, mmu_idx,
+-                                   nonfault, phost, ra);
++    int flags = probe_access_flags(env, addr, addr, addr + size - 1,
++                                   access_type, mmu_idx, nonfault, phost, ra);
+ 
+     if (unlikely(flags & TLB_INVALID_MASK)) {
+ #ifdef CONFIG_USER_ONLY
 -- 
 2.43.0
 

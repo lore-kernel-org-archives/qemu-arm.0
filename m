@@ -4,28 +4,28 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8DFA7C5DF6E
-	for <qemu-arm@archiver.kernel.org>; Sun, 16 Aug 2026 13:16:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0365BC5DF70
+	for <qemu-arm@archiver.kernel.org>; Sun, 16 Aug 2026 13:16:44 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wvai9-0001eB-Rb; Sun, 16 Aug 2026 09:15:37 -0400
+	id 1wvaiF-0001i2-7k; Sun, 16 Aug 2026 09:15:47 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <bin.meng@processmission.com>)
- id 1wvahw-0001VP-N4; Sun, 16 Aug 2026 09:15:25 -0400
+ id 1wvai6-0001Zx-2U; Sun, 16 Aug 2026 09:15:34 -0400
 Received: from mail-japanwestazlp170120003.outbound.protection.outlook.com
  ([2a01:111:f403:c406::3] helo=OS8PR02CU002.outbound.protection.outlook.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <bin.meng@processmission.com>)
- id 1wvahv-0005TH-4h; Sun, 16 Aug 2026 09:15:24 -0400
+ id 1wvai3-0005TH-Lp; Sun, 16 Aug 2026 09:15:33 -0400
 ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=uvogUJRkx9dtvtSNjFFEz0Hx2IV7v15b/d+n4JjA47u7vH//py6bd4Wc0TB2Omj2AWB9yasq1foH5SWzvUWWMG5mIf8NlU906wznJDxIQGLtDj4hbVVjXQtJXggIzbAGhk+gQ/GtZi+Xu7lExgM/IJIxiN9yXpI1lELAKjyAi476JDp1KfbWXeEav5PUrd6NrV9hd6qnUB39iXj9zz1PtJ4uDHS500fEl7Pc1WSDDeGGqeZhAWgdBSGQZqOij1+iwJmQdpoaIrya55Ijhi6yR/G7T9s8s8aoky0BR06QvDOV+8PKmdwhyRP/Z6mz0j4+AgHzozyB+NxJhR6VprfDTA==
+ b=gr0HLjApxlB9NqSEIvCtDNnt48W9w8zQlM2AQ7eoxTPgWZYm6R+oG149S8ZhtC2zXWYiVlHWC/ZqzWX+/rB51oI4IM1mOfbOutUNIGB/8NhEFfwt+5/ZkMTExNhk08AvSksnJNGHmltzGkqvWsQT4uwvlxqXF6dBC517dUXM6DQEIQLib6uR2q1N9Og7H85TYJ0AQLUeTglYGC5z9KqfCjFEKNqyQIlFFmlcIs8PW+16VSu+xxCPwCcJH4k+URENzrtnrH5AZeEQWrkkT3q8aerSQAT5F9E3enYzXO0MXtmDMSuR7oINQxAHSpJ5C/QiBwKuslD+jiWEdUNWqxK8gw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
  s=arcselector10001;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=zvjDluv1fq2pHbYvZH/0ca0W/EpPWDzvdRukuJyCuqQ=;
- b=q5iq3eFydwvj6IoUec5cHKhUG9Tjqu8v1P5lquH/Xgoszd4DiZP50RqqV1BtLp5BVPyY2oNyyu/+RY596+NSzTYJ9ESunXEtFwUZByasinnGsksQFcUn4yFUkGajUTfhTyiY1kid9RXkq/qomJpMxq/yE0TaM6NGUfhwkxeL6nRf7uugKaLKZGp0gn0Zsg8EpQ4bO00l4T9tdyxmCwi0pIDXeOiSgUyS+5zKfHiCXeWJg/mQgQrB5TX/EGRWq6SC0qeqIBJesVQj+ygYpZRQhao6pNjSj77XJb8pZuprNBUNNznSXodJYrE1n2KDmAXx/ayP5ctcXOg0Xm/cOX4jtw==
+ bh=OxIoqz0a5dDuzaAXElMV8ixjgwnb6nY8ToWV74DyrBo=;
+ b=suY5AYd8657EvmdNp8Ay1yx8k6aWnUQ6A/UapBRuEEiymAWArx3/FgwACC45Fxec7xC6zCDkKUivCF+pn6Rec7nt+QYwYuchspnOKdO4QkDf9D6q1ShhOMrQCv8pnk0blLSYvNAuhFOZLj6MgA3gzhh05KjRkrZl/ryTvcNcM74/v18yuGJpimOhvhpxq0o4eRQ6NKREVbahGkxCENx+ZIRbxthWJuHI9Dkn8eAf7nbqE06tJ/HkWQ0qjfjyYAqPpUfYbhEZ+AK4z4VN32hRfjQCjfsrY6V/UAXR4MJxCURgroSIdvIic8f0t9cOO+LeXPvMYla6UXXw1vBLBPvnWg==
 ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
  smtp.mailfrom=processmission.com; dmarc=pass action=none
  header.from=processmission.com; dkim=pass header.d=processmission.com;
@@ -33,27 +33,27 @@ ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=processmission.com;
  s=selector1;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=zvjDluv1fq2pHbYvZH/0ca0W/EpPWDzvdRukuJyCuqQ=;
- b=IBWiYpjgJASETSBJiQjuYf++7/rVRSIiiy8nsVy2NVu6kolS+nvtxQ7LZAyOVSGI1j/s0lBlhmxseUuS3Mpv3B+grfR+e6kj5K81hf91Nz8GoSD9Tz37t+LNISBLIPGBHUpgA+Zm40u4QPggIPmewSNJpI/Q9JK194+eep36KdTQT00V/AW3QVdW98Nf6BD6VZmPK2C8ZmZIw8vV2DmlLEm9rkCk86AXsjIBhc5JWcF9hw3I3MbnFSq22YFZ7Bh9BHcAjWDgg/duVWv9EnYuup+PmG3f0I10d7QwWjM0aTRmSCyDZ+RS0T/9R0wlroGrEFBZNd2z8EcqGGDMs+aOTg==
+ bh=OxIoqz0a5dDuzaAXElMV8ixjgwnb6nY8ToWV74DyrBo=;
+ b=Vulqb1orw13kC6Y5XzQYN4JPs/LCM2rWP1U0VzNGywIgOtc90D27BnK4lymp8swh7vjcwBQ14CdBGnhRaNIMoaIhPFqnF/QLOPmZdvXfJfpkV0hZ5yfEDS8ouocNnWO84T9YU7EJ4XkdOhAg9nG/5ew+hWrBOLElewGDhOCCu1n+7Ll5dShVUa7tEUVi3Pu2Wn+1L5Btr6kqTHy4s5RuOU+t4+kudfcyEHW3azTi8wjvxHr7UnCnqeSksZTPUptv0iaUK6PoZNzL8E4HLgvcGM5CbWrkhxK3i6R2x6Ci3qXpzHJ/clzmAcUtBmD2Z3C4r6YpVjbpMJA1w2YTh1AxjQ==
 Authentication-Results: dkim=none (message not signed)
  header.d=none;dmarc=none action=none header.from=processmission.com;
 Received: from KL1PR02MB4977.apcprd02.prod.outlook.com (2603:1096:820:71::8)
  by KUXPR02MB9310.apcprd02.prod.outlook.com (2603:1096:d10:9f::13) with
  Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.21.315.17; Sun, 16 Aug
- 2026 13:15:13 +0000
+ 2026 13:15:24 +0000
 Received: from KL1PR02MB4977.apcprd02.prod.outlook.com
  ([fe80::9fdf:2557:8351:6c03]) by KL1PR02MB4977.apcprd02.prod.outlook.com
  ([fe80::9fdf:2557:8351:6c03%4]) with mapi id 15.21.0315.016; Sun, 16 Aug 2026
- 13:15:13 +0000
+ 13:15:24 +0000
 From: Bin Meng <bin.meng@processmission.com>
 To: QEMU <qemu-devel@nongnu.org>
 Cc: Peter Maydell <peter.maydell@linaro.org>,
 	qemu-arm@nongnu.org
-Subject: [PATCH v2 03/20] hw/arm: bananapi_m2u: Store boot info in the machine
+Subject: [PATCH v2 09/20] hw/arm: integratorcp: Store boot info in the machine
  state
-Date: Sun, 16 Aug 2026 21:12:33 +0800
-Message-ID: <20260816131300.51799-4-bin.meng@processmission.com>
+Date: Sun, 16 Aug 2026 21:12:39 +0800
+Message-ID: <20260816131300.51799-10-bin.meng@processmission.com>
 X-Mailer: git-send-email 2.53.0
 In-Reply-To: <20260816131300.51799-1-bin.meng@processmission.com>
 References: <20260816131300.51799-1-bin.meng@processmission.com>
@@ -65,56 +65,56 @@ X-ClientProxiedBy: TY6P301CA0004.JPNP301.PROD.OUTLOOK.COM
 MIME-Version: 1.0
 X-MS-PublicTrafficType: Email
 X-MS-TrafficTypeDiagnostic: KL1PR02MB4977:EE_|KUXPR02MB9310:EE_
-X-MS-Office365-Filtering-Correlation-Id: d7a27f29-0859-4ced-a737-08defb986816
+X-MS-Office365-Filtering-Correlation-Id: 643cff96-cfb0-4032-abd2-08defb986e79
 X-MS-Exchange-SenderADCheck: 1
 X-MS-Exchange-AntiSpam-Relay: 0
 X-Microsoft-Antispam: BCL:0;
  ARA:13230040|23010399003|376014|1800799024|366016|10067099003|56012099006|22082099003|18002099003;
-X-Microsoft-Antispam-Message-Info: 8OCFWXD8cqqaEUe+0T2FLJrcngJaD3jZySaWNSJn0WMRwhR/NcGOhwQLkw8deHn4np4lX+9dnnbVMuZipCNq2IUTFTll1mVqt+SNlnOv6obaI+5+MhBg0pI39O7es8vPhsErG+6nNbPlXmd3tOtpp50NyZyXkSsG0p2PEDeHzU9+aVk4BUcW166K2o5wF/EhDCPQnymsUUU96WHwhFeb0OQrE+wcuVszgtZO5vSvrreqBDBhEr8p/weQFyd9HvvZd4EhKwzbCnR9PFKT30Q3v2pB3QJz/U8RiEIWbpINBtxR4GaEuzDE16NK+fehYtms56IyGnFTFLHXnFc16E6zhRKZLI5VPz60SNxVGMspBJD0HdF4tIxrEh737UAgDKUVKfzVc0nL6wnPXXj2Lp+A6ANfg+2NpunQ0xiWBiShThjoBB1xe9tmgWfUlgeYaC6xKl4mdZnWeMSCCzsCRUcaccEgiZVK2D0hn66Q7IQPfQ+I9DQY7pf3LqbHfUkIelsk6yhJGEQbazXuC1zqPbYmpGm81HSl5w+OF7ttEq5k215oGu7FYMUFwLgGgjQsybcAklJWsyxXu07X36a/TYssH8MoIShph5LJZGyISOrIPMZsyWqTvXdgLtRoLYWxl4HxHNTO088NI2g36DxKhUoMq3nUEvrHt/RQUmkN8Uxw0as=
+X-Microsoft-Antispam-Message-Info: 3SYHqUJKsHJbajibUFJRci01TU856Vy0CeH5eAudtDG/kaeiivF30qimnqBx4DXiM2URedLfWLbxTCJqg+2tRuXbJRhJs12y8/n/F5gdeglS5RbYnammW6nDzZlSCvXszebwo8EblFb3LlpvRO0orI5RC3OF1B0NCvw3p+yBMPGzvlLyDQkVdBGNH194f+nQqYT5NfcWtWdvAlQS5vc08Vi1wqrdZ+3nh/X1lp9G1gHOJtLkQ/3u3Tq9j2lcBacO469khC88mhjB4ROKublU04/F8ApojeqWgYJMilcq8N+X0hEIvPXzwhRn/Di3ZFONPnssz46xXbOWQeBS8YmSc/RZjqdhFe2VfPqfR49pEFGZXkzacJ/Ajlc/rOflbz/RH0CCJifzp+tJqWC1Eip+47r0Dno+yuCO1lKutZFmyZ0SVkKi1wQzjQJ4cZzLiRaMmnZspsVMOFWp4QOdDK6lqG3NAm0iOezssNKtq+tY0SdA28L8R6Te80EcUWuMhLJygpGnrGj0++uBjV8fOIP6HLgmCLPcOLrHC+xsXXsRKGbzR5CN3L8S3cTYZfFVA8toiIYXYhN4QrKmwylbn3kgP4FXlmvs6DCKyMiZvfpufdOuqX/n4xCyG5Ntlx6Jg3M90D8etoRhiFJNR0a40WflAUVwuxZBPoSNCNAHUYl02V8=
 X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
  IPV:NLI; SFV:NSPM; H:KL1PR02MB4977.apcprd02.prod.outlook.com; PTR:; CAT:NONE;
  SFS:(13230040)(23010399003)(376014)(1800799024)(366016)(10067099003)(56012099006)(22082099003)(18002099003);
  DIR:OUT; SFP:1102; 
 X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?rhpIjWZQPaQd9g7s4GCVFnezWtq2Tcj2aceUS4/8tf/i7hxsvPPQ4ayEvBMU?=
- =?us-ascii?Q?JysdJV0S0oo/ukvAUikBYx9AZ4pytlEPygYiK9kvjpxhinCp5GIv1VS7NR4X?=
- =?us-ascii?Q?6AlXAu48FNMDGvyrTCIlofPvCpraNa/a8MDiN15WQOmrmYerfOmzNxQdTSg+?=
- =?us-ascii?Q?RnJ3YKvYdf/w/t+vuvttQ9F+teOTLN/pzaRoh+urhce/RoT2c7UreADvAekK?=
- =?us-ascii?Q?NSlr0Pt39vbvGNlL5xAZeZKNql6uBOKsXwQ4i8W4BODIzG0Em25JpCD4/6XX?=
- =?us-ascii?Q?sJ1RfM9wp6MeuSBUKysE/eAJPbctZTUv5CmG0SLtvz0sAIpSCrvMj9+0PvEJ?=
- =?us-ascii?Q?epeQddbS6i5KoVljh2oiaJg5zlegdm1hvVpPwTSwe7duZUcPWBzwGxy8g1ZD?=
- =?us-ascii?Q?uH53laKZ+D4CckQ6D/7QsQwct+jaFPrK7Uxe1CTekDWvjktqfM/u7aJ559ET?=
- =?us-ascii?Q?3ifKgqEyFJy3jQucoHsjnUfHxVcz95ygUtGsWPvKEfded55PldSwymWv5IpK?=
- =?us-ascii?Q?2ejld5aENQMcQJrF0r1EuYWOKQAqVeLRdtV8ZbKO2QHfMZldkyqXtCXVH1M0?=
- =?us-ascii?Q?gNhDz/BqKrrYFcZfNCQe/jXImjPyojlEcrJ7QGWZWMpQeR71PPeZ+vUH8+hD?=
- =?us-ascii?Q?jVr7zni35XLF66Eutq7CLiooff6+HZMjkUJqqdq4jm+tfZEGxh+bjwzzG9vO?=
- =?us-ascii?Q?aB3FPthFYEMs6E5BsppZbcjqwHPpBaIBHBtkSRwkK8Mj5DriKCgHb+TIp9SA?=
- =?us-ascii?Q?7CxyPYl4EFmwL5638XtJdYVMgmSU3kxue7XM2NLmcB7Sz3NxxNw2fny84+fT?=
- =?us-ascii?Q?mCd1llOjlif6j9+0KmfNMAhVnYqgCnQU4Cx2ZIMuMF6ZPNm6Ob/wivsOrQbI?=
- =?us-ascii?Q?FTLC8ahYjxcGvIommLq+Uzgtoe+S1B+Sf88Spu6PphsxD2YcmnMg4fX3wN9Y?=
- =?us-ascii?Q?DiPtDcOJGIknA/Q5SBvpHF7NmIHUFyrXhzMjjWcLBvN80thfsTjj/Edw8Yp4?=
- =?us-ascii?Q?eoetDBM2Pt50DeA/wpZ3aYlJnYnmnPaZbTxiDmKrkqqKprl1T9uIg7rqjGpw?=
- =?us-ascii?Q?UVfjnA6RZ+wlRP0kJrxTqALXF/a6owKUDzEBfuNk+fN9FwEqRO6bBCiohGt0?=
- =?us-ascii?Q?bW5IotTFYsUmn+DWyzMAwniNGOLQbIiDromVpHh5TXvyRNXIEhJzbRGdYQHW?=
- =?us-ascii?Q?cTmDVskp1ymT1c1uOSFz0o4Vht7BHcVGOtq1JoU0xl9mp2R1pon8E534L1KN?=
- =?us-ascii?Q?5N8ubG9J5F+LBKq6CIc7bPMF39RNxiR/aPggautmCYvwdFqDL9gEcLpmDCvw?=
- =?us-ascii?Q?PGLwSShV5Xyn3ee03B3rTx8GuHv3EHYobdXnLW3nVDbiqCZXeKOkrUOkZ/jY?=
- =?us-ascii?Q?SSnhxU3LA2PmDIIyFmExEMtPz36Lk22BccpMEIMhWNXM6d3IYmaexXqLvRtV?=
- =?us-ascii?Q?rIO1oMFZzJWkVdl7wHUwFx1gzJ+2zGSwn3zaf+nuRPEaA+VOrTx0OLngBiwo?=
- =?us-ascii?Q?C4hT+ek06ktfJjq08NOBFBlLApA2oWL+OBbY49b//f+44mStCm1uz0lt9As3?=
- =?us-ascii?Q?5cIZJOHsPPrmYGpuZep2/HwZgypdsabNrlTQEWSaNlcF1mWjcSW8cBSPfXf2?=
- =?us-ascii?Q?5pH4U+InxaSvzME8s1K1JYOP94TS4IBsOwAkx3k2+9btRzQzql0hfEeN85WA?=
- =?us-ascii?Q?idWWBBbzHAs/kJpBstL1ZLgLTBaZ5jKG9YVq5ymhD1fAreonUGL6axy86WM9?=
- =?us-ascii?Q?tDkt1mINk8QGGh3yj4OsfQC1DKRElmg=3D?=
+X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?YjWEAbUUvvdFPTsLx4oluIyfEtEZwQ1YHG626Vo9yGGck+Dyk0ysu8aGO3W0?=
+ =?us-ascii?Q?Sva924+/t9irjSue3o3IqxUyiThuK7qUA6XWdKLXYxeiUmrfPh/wPU1cWimO?=
+ =?us-ascii?Q?D9qHWQqM1iTMkcoV0aGAYff0ehvIfTwj/khOTtADj0pjEkIKzrFo2eMJzW+j?=
+ =?us-ascii?Q?qk/Ca3bPKaRyckKgq6xm7z6mbGvJ2mM9V0SUcbNgNi2K4E6tNd0LPJq/b7Av?=
+ =?us-ascii?Q?JUo0rRC6ttD2P1Hfizk/Lq8XEPqTt/7sBY2dVfW4wwE8YCtE5JubOJUaeM4k?=
+ =?us-ascii?Q?/K0h+G3A4ZSLLtLQX8QZG8us0/WIkG4CbpaN8p5IVkMmYNtAbkSwCr0hKo3r?=
+ =?us-ascii?Q?lZRtJYXU6d86fWOlhK/uMFAtN0d06DqLJyICPA/xMrU9ixLwIRXWyxtt3wU6?=
+ =?us-ascii?Q?6yg/lSBARpb5aTBXOlnYM7qzoHQCVeJVDZERW0QTwVHcYf6aGDW6xepm5YIs?=
+ =?us-ascii?Q?qCx8RrcVdt0QdXMdb/PZuH+aR6vKyETiliES9GouIhx0QxrxgiE+iSbco4Xp?=
+ =?us-ascii?Q?grjyxc6LY0blDLI2ja9LsvZLq8jVrFJcvn/z0jFYM7WLnLabJI3Y7qiGmoOh?=
+ =?us-ascii?Q?tFXcAC3+gLDns7JiYr32StTBENADmTD1YgfPaN0nkMaxQ4qIqx+r8T+rClOo?=
+ =?us-ascii?Q?DujUvvwmSS0vI6vR1svM/Gph0t4uxp8KhygJ/V48HR1hOCfzhnyahUbMChLB?=
+ =?us-ascii?Q?LKGbsEoyV7ZaeMh1rqNMK2X2veEAqYCBIBEMTZX4p8EKcV+5S377pwwRwZ3e?=
+ =?us-ascii?Q?y2ocM4iUYJ5FizRox/XAXetaOS/SzZHs24hrZGJEZATHFqJgmM8c6h+CYQ01?=
+ =?us-ascii?Q?Ig0CKcj310nDvZBWxXldgA9jM3Sx/bG9MPesjG7E24EpWk6EqJjFiHhU7arj?=
+ =?us-ascii?Q?BAvPk3Nyvxd4lP0LU3nxOZrygmSwKJF80N5HqmLro7V79prboE8fZ6OSbxEw?=
+ =?us-ascii?Q?ZhsPwVhVD2+kpwTvEMuUjzG1TtDWpKhqEtDwP833LepEzBjhfB1GEdEtcIyn?=
+ =?us-ascii?Q?RelGL6+Y0XVuYmd2+NZcjzPYOnNCXQvnxU647CpDYIADPnRariM++rVuEnXG?=
+ =?us-ascii?Q?x04UCCulVULSGl6DKJd2bS3gaA99dfEDFcVDyNQV18g4uuNKeSuASAk/hZPt?=
+ =?us-ascii?Q?8rP0RWPY/TfLofTlVUA4oiPSvWYplsKKcTOCJt9RpR7X6or19lKgQtaOgI0B?=
+ =?us-ascii?Q?zObsEGvyOxGC4I6nVAQC+qMnbxK7FAzo+iGuQ2PKzpDms7P7aE0SsOctoaX/?=
+ =?us-ascii?Q?CvBuA61USRExBycM3MNhi/qPijFRILm4tDEaKJC76b0MNW03xLfKrtXHY0cR?=
+ =?us-ascii?Q?wiPBf0dVjXXyyxaySfDSGPi2Az3NGKGj0vJjDnrkw4eHvktNMte+oIRA3BEe?=
+ =?us-ascii?Q?dQbjCsLgL+2gAXAGvqdGQ6CMbpYNCtA+a0+978xJKfTaQDbfaoM8ssNMUuHr?=
+ =?us-ascii?Q?/vNjKEacU/8gX14xUSkfFG3lox6hZzTiweSjRPgOc7JgaUZX5XZJc8jOVmbe?=
+ =?us-ascii?Q?J7CkwWcMNvH0xR/6pPb0WiF3ie+rRMw0HW9n0nPF5CdSaBe2wCiJK6bBiTxf?=
+ =?us-ascii?Q?BGkDYs9Qsyqy8p+VS9Dd684CJrywtKf0J1EKRmvfklkYa4GJCRrrRq4Vke6h?=
+ =?us-ascii?Q?Np54Naw7AsV5d8TrFIhsxs9ouquV00fTQXDzPXRnn/3iXw9X78pWYifi0NEm?=
+ =?us-ascii?Q?NvarVHYGYc18bceCl4OATlz4TYCwwPvUojjSReOHmRXs/V7FqisfI2pvtHvn?=
+ =?us-ascii?Q?lj1Dnh/YyALK8XZCPN+Vg/qDCg9xMAI=3D?=
 X-OriginatorOrg: processmission.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: d7a27f29-0859-4ced-a737-08defb986816
+X-MS-Exchange-CrossTenant-Network-Message-Id: 643cff96-cfb0-4032-abd2-08defb986e79
 X-MS-Exchange-CrossTenant-AuthSource: KL1PR02MB4977.apcprd02.prod.outlook.com
 X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 16 Aug 2026 13:15:13.4389 (UTC)
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 16 Aug 2026 13:15:24.1998 (UTC)
 X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
 X-MS-Exchange-CrossTenant-Id: e0544bf7-9765-4630-ab69-0b266dc2169c
 X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: 9Amhp3YAt+1a1SyvHZvvBkR2bsYXp8StMfPj8rKy2UAj65N6tNdiUijGLyD5+tkDJjxLyY4CNdG6345UKxWIxgAmucUdo5894leVAS/Bh8Y=
+X-MS-Exchange-CrossTenant-UserPrincipalName: EIptUOLsERc71sp0ShfvitMPJztaVQT/JyU3FXTNcya+f/Jl4R2Ih8+o9bBrXozXAQkfuJH9vR9z1kpkySveWhOmdegXzX30N5/QdiaZQ6Y=
 X-MS-Exchange-Transport-CrossTenantHeadersStamped: KUXPR02MB9310
 Received-SPF: pass client-ip=2a01:111:f403:c406::3;
  envelope-from=bin.meng@processmission.com;
@@ -144,8 +144,8 @@ arm_load_kernel() keeps a pointer to the boot info struct for the
 lifetime of the VM, so the struct logically belongs to the machine
 rather than to a file scoped static object.
 
-Move it into a new Bpim2uMachineState and register the machine type
-explicitly instead of through the DEFINE_MACHINE_ARM macro.
+Move it into a new IntegratorcpMachineState and register the machine
+type explicitly instead of through the DEFINE_MACHINE_ARM macro.
 
 As in the xlnx-zcu102 and raspi machines, the boot info belongs to
 the machine rather than to a static object:
@@ -156,59 +156,60 @@ the machine rather than to a static object:
 Signed-off-by: Bin Meng <bin.meng@processmission.com>
 ---
 
- hw/arm/bananapi_m2u.c | 21 +++++++++++++++------
- 1 file changed, 15 insertions(+), 6 deletions(-)
+ hw/arm/integratorcp.c | 22 ++++++++++++++++------
+ 1 file changed, 16 insertions(+), 6 deletions(-)
 
-diff --git a/hw/arm/bananapi_m2u.c b/hw/arm/bananapi_m2u.c
-index 9b468cd8ac..0079aa1dd2 100644
---- a/hw/arm/bananapi_m2u.c
-+++ b/hw/arm/bananapi_m2u.c
-@@ -29,7 +29,14 @@
- #include "hw/arm/boot.h"
- #include "hw/arm/machines-qom.h"
+diff --git a/hw/arm/integratorcp.c b/hw/arm/integratorcp.c
+index c25bbf3c82..f8bcf42c61 100644
+--- a/hw/arm/integratorcp.c
++++ b/hw/arm/integratorcp.c
+@@ -581,13 +581,19 @@ static void icp_control_init(Object *obj)
  
--static struct arm_boot_info bpim2u_binfo;
-+#define TYPE_BPIM2U_MACHINE MACHINE_TYPE_NAME("bpim2u")
-+OBJECT_DECLARE_SIMPLE_TYPE(Bpim2uMachineState, BPIM2U_MACHINE)
+ /* Board init.  */
+ 
+-static struct arm_boot_info integrator_binfo = {
+-    .loader_start = 0x0,
+-    .board_id = 0x113,
++#define TYPE_INTEGRATORCP_MACHINE MACHINE_TYPE_NAME("integratorcp")
++OBJECT_DECLARE_SIMPLE_TYPE(IntegratorcpMachineState,
++                           INTEGRATORCP_MACHINE)
 +
-+struct Bpim2uMachineState {
++struct IntegratorcpMachineState {
 +    MachineState parent;
 +
 +    struct arm_boot_info bootinfo;
-+};
+ };
  
- /*
-  * R40 can boot from mmc0 and mmc2, and bpim2u has two mmc interface, one is
-@@ -62,6 +69,7 @@ static void mmc_attach_drive(AwR40State *s, AwSdHostState *mmc, int unit,
- 
- static void bpim2u_init(MachineState *machine)
+ static void integratorcp_init(MachineState *machine)
  {
-+    Bpim2uMachineState *bpms = BPIM2U_MACHINE(machine);
-     bool bootroom_loaded = false;
-     AwR40State *r40;
-     I2CBus *i2c;
-@@ -120,10 +128,10 @@ static void bpim2u_init(MachineState *machine)
-     memory_region_add_subregion(get_system_memory(),
-                                 r40->memmap[AW_R40_DEV_SDRAM], machine->ram);
++    IntegratorcpMachineState *icms = INTEGRATORCP_MACHINE(machine);
+     ram_addr_t ram_size = machine->ram_size;
+     Object *cpuobj;
+     ARMCPU *cpu;
+@@ -680,8 +686,10 @@ static void integratorcp_init(MachineState *machine)
+     sysbus_mmio_map(SYS_BUS_DEVICE(dev), 0, 0xc0000000);
+     sysbus_connect_irq(SYS_BUS_DEVICE(dev), 0, pic[22]);
  
--    bpim2u_binfo.loader_start = r40->memmap[AW_R40_DEV_SDRAM];
--    bpim2u_binfo.ram_size = machine->ram_size;
--    bpim2u_binfo.psci_conduit = QEMU_PSCI_CONDUIT_SMC;
--    arm_load_kernel(&r40->cpus[0], machine, &bpim2u_binfo);
-+    bpms->bootinfo.loader_start = r40->memmap[AW_R40_DEV_SDRAM];
-+    bpms->bootinfo.ram_size = machine->ram_size;
-+    bpms->bootinfo.psci_conduit = QEMU_PSCI_CONDUIT_SMC;
-+    arm_load_kernel(&r40->cpus[0], machine, &bpms->bootinfo);
+-    integrator_binfo.ram_size = ram_size;
+-    arm_load_kernel(cpu, machine, &integrator_binfo);
++    icms->bootinfo.loader_start = 0x0;
++    icms->bootinfo.board_id = 0x113;
++    icms->bootinfo.ram_size = ram_size;
++    arm_load_kernel(cpu, machine, &icms->bootinfo);
  }
  
- static void bpim2u_machine_init(MachineClass *mc)
-@@ -145,4 +153,5 @@ static void bpim2u_machine_init(MachineClass *mc)
-     mc->auto_create_sdcard = true;
+ static void integratorcp_machine_init(MachineClass *mc)
+@@ -696,7 +704,9 @@ static void integratorcp_machine_init(MachineClass *mc)
+     machine_add_audiodev_property(mc);
  }
  
--DEFINE_MACHINE_ARM("bpim2u", bpim2u_machine_init)
-+DEFINE_MACHINE_EXTENDED("bpim2u", MACHINE, Bpim2uMachineState,
-+                        bpim2u_machine_init, false, arm_machine_interfaces)
+-DEFINE_MACHINE_ARM("integratorcp", integratorcp_machine_init)
++DEFINE_MACHINE_EXTENDED("integratorcp", MACHINE, IntegratorcpMachineState,
++                        integratorcp_machine_init, false,
++                        arm_machine_interfaces)
+ 
+ static const Property core_properties[] = {
+     DEFINE_PROP_UINT32("memsz", IntegratorCMState, memsz, 0),
 -- 
 2.53.0
 

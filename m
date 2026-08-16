@@ -4,28 +4,28 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EA471C5B572
-	for <qemu-arm@archiver.kernel.org>; Sun, 16 Aug 2026 13:19:22 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4AA14C5B572
+	for <qemu-arm@archiver.kernel.org>; Sun, 16 Aug 2026 13:20:24 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wvaiD-0001gU-8c; Sun, 16 Aug 2026 09:15:41 -0400
+	id 1wvain-0001xm-3H; Sun, 16 Aug 2026 09:16:17 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <bin.meng@processmission.com>)
- id 1wvai2-0001Wf-66; Sun, 16 Aug 2026 09:15:32 -0400
-Received: from mail-koreacentralazlp170130006.outbound.protection.outlook.com
- ([2a01:111:f403:c40f::6] helo=SEYPR02CU001.outbound.protection.outlook.com)
+ id 1wvaiB-0001fE-NM; Sun, 16 Aug 2026 09:15:39 -0400
+Received: from mail-japanwestazlp170120003.outbound.protection.outlook.com
+ ([2a01:111:f403:c406::3] helo=OS8PR02CU002.outbound.protection.outlook.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <bin.meng@processmission.com>)
- id 1wvai0-0005Tk-8U; Sun, 16 Aug 2026 09:15:29 -0400
+ id 1wvai9-0005TH-N7; Sun, 16 Aug 2026 09:15:39 -0400
 ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=UmOd25cu1vrE8AmPyEzM/YmoWysq6u0GRWkk10+VY6Jdmwt8e9Z7s+IIcOO897Pig4KRuqqkB30H6ZCHAA6aVoQzCMSHSJVz35CsStW3AvDx1erBlnLvYzoErCC21Pn0lAPxBBzpp6ULyoIh+8Th/os+6mmvKvONatkpUVi6aX4Sp+hMggnMjVhYTI6FC3kUV0Jyu5MpU52ZNO9y9c+duITXU5pVUmbMXUQbyF3K4AQgbJHoJajYIKusXRMDW3PUrKhcW/qWXFU6VMY/bKodaoqqZpMPMs7fBjoXxH+9mmIcGjWKx2tlJIi2S824CH+Zl3nW8Yk6Vl40uZAoUt5L+A==
+ b=kInri7asKoMsIrIhf9cYQV3oIf7Bo2aG4g4C1EWdUOzlduzJX6JqmYaYqjG2Rzs8Stki5Cqb5LKHXwlSK8kd4MAtprWHbDg9ZaU6gpy4Dk7gJLHdDfFEFcEQPSQAWUM+tUsePD5IrHiZ6D9v0IrZsSAJwIg6dv0DjfqlKewxMO8aFhKQjKufFUUumxbMR+ppugcvbREz7oWoKGPbn7V1/XV81oXdv6rwVWYQWWYSZ5I03r6O1CcNknqjVVaXW3vn0VUCSmay1puHSuOkcX6CHPd3BGJ2z4Y6qvpIOX935XyIw1CM5Or3p78ILPq+087wZdb4iy+bN4obXW/q3YHDlQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
  s=arcselector10001;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=d79OC6C+eegIaqkDVi56PZVegbv+CFn9CEvYsX9ar0w=;
- b=OUm4eeUNSl9mH/3zdxt5cxOyV/o4rgyQ2BfMbvC1TPuSnMgv5fVNPzJRQK8xjzy/ZTxiF9IPvh1thgiIjxEXGXxASaynzDZl1tyb0ZzKWOU8HBbTh7W+wFNOmdy0BUotC9poDjcB0o6ds7qVMY3AY+HW2M1aoKb8zzt12GBVk052jLt6vUOhAAHHjGb1DUPaPe2Re5nedaUwl+Zz2MhZEw3yoJEqD/2rGZMjWu6oViOCdNujvdg3g/pSLGv8LB3gsq6cij2/ifT31oeV4S0hQeZ7QLcHMyNKVZo+rNHE0qAvlpHD2gSmAnlHgXgruRXt8mfI3VuAr1rpxqp+vCMWAw==
+ bh=Cj+ezSXS4YGjM4RxgWEsxxYdjUM3LHaM0ajWOkLyHwg=;
+ b=ojPtZs7TPhVNWGCx9ftH4yyRO3rN4PbIbjZQJGF/9R+v/ATKn+lanxvA9SMjjTNXE31bT72vH4vkDFlE5A1ATb/AcZfyAAMamFYoMLJ2D41s1+J4rDAxUa5/VCUqlePmrTD2w5wpJgb/XhqmY+1qHGNQfFeoQ9+iknhxMIwSH+5LyaF1LcTRcOpTjTUuD8cqoOSCBEo1PjLGM/p6mhCcfvNe5nVtvGxMER9LptB6zwOI23RgN+g4Rc4oRLXxG3zNs31y2OMxaw/+7gI0pJfKCCyLb4641EKbB5URpk9wZJvFBjSAPO14hmH3Tv2fjweR760bX2ipnqjSIL+KvtfEmg==
 ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
  smtp.mailfrom=processmission.com; dmarc=pass action=none
  header.from=processmission.com; dkim=pass header.d=processmission.com;
@@ -33,27 +33,26 @@ ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=processmission.com;
  s=selector1;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=d79OC6C+eegIaqkDVi56PZVegbv+CFn9CEvYsX9ar0w=;
- b=cWO2ZoD/q22T1fNQayXDwQngwyHMi8nm49nGqgqOyvM2jyR71yRSvErB1L7q6BLlyhwh0oUSSFlywTHd1BxjGCdGM5IO2MFVwaob/qA3RkdluA55h5NkfGW37GIryQuafEmcamY8VVgPJR3ahLV+OY1bU0VQC7oBCRR2iw6vJWIvc5641+48FzRk/7V5VdcwhBEXUg5C9e52jTBOURaahncjnpgTrex1ED868UcGfqsoFizQ29IFP8Tu10y+leZPFbRne1aydM3R3dT+CpcAjYKcU82lG0hb8G7L7XZq/a8ldK8odCMTKNrBVLpkl9GFlO3j4rUjVz8Lb5n6JHTkCQ==
+ bh=Cj+ezSXS4YGjM4RxgWEsxxYdjUM3LHaM0ajWOkLyHwg=;
+ b=IfWuoDuNt6R+19jtnRWn1t4Yf/TwLUFdHWId31Xd9PwDwPkfv6bJUHvYtMLqlEB+DN2SB+uresKjTmYCEpJbgjDyQZmAZjf3dneSUh4Z8WAIHFSiZy0I4K5SafDb0hsjwW05oyBSTmmMQ/UoEwx8HJNhuO6YykobtmkLgkPEH0mm9cNdpU0AtVd2rEP2YzXgD+RNID8BsuQnfewwkrA5bo6oyNqbh5jWdqnwArwe5kP1Hs6J+W51Qkx+x9hA64V63KBlvVaH/ReYn40Cgk26cWiOJ0zx6o2ak8Dn8c7yOalgZ10fNGZ7lLOkBTtmtRItbZxSAFWY0lN1rTxz5zgrOg==
 Authentication-Results: dkim=none (message not signed)
  header.d=none;dmarc=none action=none header.from=processmission.com;
 Received: from KL1PR02MB4977.apcprd02.prod.outlook.com (2603:1096:820:71::8)
  by KUXPR02MB9310.apcprd02.prod.outlook.com (2603:1096:d10:9f::13) with
  Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.21.315.17; Sun, 16 Aug
- 2026 13:15:18 +0000
+ 2026 13:15:31 +0000
 Received: from KL1PR02MB4977.apcprd02.prod.outlook.com
  ([fe80::9fdf:2557:8351:6c03]) by KL1PR02MB4977.apcprd02.prod.outlook.com
  ([fe80::9fdf:2557:8351:6c03%4]) with mapi id 15.21.0315.016; Sun, 16 Aug 2026
- 13:15:18 +0000
+ 13:15:31 +0000
 From: Bin Meng <bin.meng@processmission.com>
 To: QEMU <qemu-devel@nongnu.org>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
-	qemu-arm@nongnu.org
-Subject: [PATCH v2 06/20] hw/arm: exynos4_boards: Store boot info in the board
- state
-Date: Sun, 16 Aug 2026 21:12:36 +0800
-Message-ID: <20260816131300.51799-7-bin.meng@processmission.com>
+Cc: Hao Wu <wuhaotsh@google.com>, Peter Maydell <peter.maydell@linaro.org>,
+ Tyrone Ting <kfting@nuvoton.com>, qemu-arm@nongnu.org
+Subject: [PATCH v2 13/20] hw/arm: npcm7xx: Store boot info in the machine state
+Date: Sun, 16 Aug 2026 21:12:43 +0800
+Message-ID: <20260816131300.51799-14-bin.meng@processmission.com>
 X-Mailer: git-send-email 2.53.0
 In-Reply-To: <20260816131300.51799-1-bin.meng@processmission.com>
 References: <20260816131300.51799-1-bin.meng@processmission.com>
@@ -65,65 +64,65 @@ X-ClientProxiedBy: TY6P301CA0004.JPNP301.PROD.OUTLOOK.COM
 MIME-Version: 1.0
 X-MS-PublicTrafficType: Email
 X-MS-TrafficTypeDiagnostic: KL1PR02MB4977:EE_|KUXPR02MB9310:EE_
-X-MS-Office365-Filtering-Correlation-Id: f70432c0-2f64-4faa-d740-08defb986b43
+X-MS-Office365-Filtering-Correlation-Id: 2af66055-e2d6-4173-0162-08defb9872e5
 X-MS-Exchange-SenderADCheck: 1
 X-MS-Exchange-AntiSpam-Relay: 0
 X-Microsoft-Antispam: BCL:0;
  ARA:13230040|23010399003|376014|1800799024|366016|10067099003|56012099006|22082099003|18002099003;
-X-Microsoft-Antispam-Message-Info: mv40TsTNdQrvo2MrJKU/WiCW2r5tcJgq4YE3bib002tNijOum8yQURZ/ZDQ51tvEjwtn/yWCd+Dx1HTqwUD4o3BFKWMINXS9qE/8EMjmNGJsTWrhcw381qqYJyXgr4WJwehzY7bEVtErzyAoCdbE2iZD/9BKCnsv76rLJLwP8hpb9s5HRE+oWP0jEwTQYMquXYDAeVnH4mKQoUi81F9DFC1kkDEtGblpfJOVuXp3HsUBdkJgJ+lLmeJ2MBOxo8/vrRFZ4pZpQfFRAPJrh50VNeSBrJOD4+kgcIfPNeXlQ9aJB7FhkcLSMwaCE5nOFp3I+aICDPQA3Sy+TPbEefWNx9XW5z5x9NTJvlCgyVYePcMtLaR4yHZEXKWrEaI8BdtKbl2hnh8KFytfneDJaEI49QidC1xGVnbrK9CIwZrotyechrreWrBbAI9LZpf+xLfOJKd5Ym5b4I9jKlsnfjUJILrl/sNUbH8bXqMFsyd47KYtxMbHhCfkp4np2KjKQvP4CAxcHfUCMIXhEfi+smVZPoaH8mUkaYEHpxRyAnrhTXt+vA6K9eM7Ow0trVsT12dFDnxEUO8h0Gw90HHAqlUaZWINjnEniBVF/uVLSlU6ecMwwM7NXGOQqgAFa8N1msSxwUZZx1FdGi3DsqIyh7IDoESkeqQY56tAJLBGWB55xGg=
+X-Microsoft-Antispam-Message-Info: UlQAcyRyoh1mpMz9/6NePM0i3Ix0yrh/sRkdJZtDmCerFm3aVyP/an9KV+I+tfAo4pmN3D+D2EykcxsXOM7X+ZS/YVolMxI+hSmaZzj8GoU4iNRGeuMy2Wzyy5tr3ChdKyt6NQjEIaUD+qMUj1of4jMNYluYbmeVzq13lr5ohXx+n5RO2lk4EdxPXnXrtk9z2r8SUvGt55YjsDw/jGax4ZSsYS5kazL7xP0QqdOdoFpL+KwvGA/KZ2H6T5Bj+Ta0llOSP43qvm/ktAOjVgEyC1vZq9JN/ElT63AOuxX1c/l48N+QalS1l7SKflg97qLWh+Ocu7yobh8Qu9HmzkMR1KDxSY41lvrfE++dVPBT50U0kfhetUsHTdiDYABvsvr8HZ/nzIFxZaoHUgEuefRgPRspZBMeocZ2WVmb3tuW0mPjveEjax4M+4DHZZIYD4Ognm8pinwkM/oNIktU/d8kO5QkdNazRGmLzolI4PeWGjHKzhX0khXMFrh6P5j7cAnN5hP6E+eh3eKI9/dz2ZlHlFN1dkuERLYyphyHml9cceMy9H1LLvBDBcBR7dpK3HL06aQQjdpgzq1Cc8E27GAxyELE1wH2Z6CPfGoFpV9ZkSuftPMhH6WB2SiTl8ps0L//7wcB+LGiFDF5s6R/v2w7AS83uyJeYUG2Fm4mq+agAi0=
 X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
  IPV:NLI; SFV:NSPM; H:KL1PR02MB4977.apcprd02.prod.outlook.com; PTR:; CAT:NONE;
  SFS:(13230040)(23010399003)(376014)(1800799024)(366016)(10067099003)(56012099006)(22082099003)(18002099003);
  DIR:OUT; SFP:1102; 
 X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?DLLFzUNvYDiQ5hmTR9uTYLiExz58hmyWxJqjMe3/T2ObW5bZykui60Jb0L31?=
- =?us-ascii?Q?07MigTdLxWsblVn15ayew4WGOc7tiD1PurIpCpULBhQnl9TB19JizCmDjoih?=
- =?us-ascii?Q?4eE43aaFQv/4i5j3/a3aE+EWg35QsLB16MgU/SmIosSn4EgaCQno3Q1BLp2Y?=
- =?us-ascii?Q?aedyLVoRczeoBryycpCTJNSFo2QnKafxWeWroEEqtTP8pY+97Jb0w1SJ9OPJ?=
- =?us-ascii?Q?4CqoZp5tgOFlOxFYZgVZIVYzljYSr0azQOC6J2JvaFLeipGKYsoydYeNO9Mm?=
- =?us-ascii?Q?tQIk0l9jZ8MMiGcPezczvzc20+LOPkAmZlJPUvYpPf84wiCJ4O1KZF0nSwsc?=
- =?us-ascii?Q?n+IZyvuwoFhwzEd2VQry7Cutpc1wB96/G9uxS4eDEfL3W1UlEDPTjF+DPkQR?=
- =?us-ascii?Q?lzLJbB9vhWg2mRLFWmR9/a7QZbo+RfIBWaTN1E4OB1ogSsDY9+GYIe8TuSUz?=
- =?us-ascii?Q?zDX37myPy9Y8NZfJSDL8YEtfzUkK467vifdvEvnavWiMaYQ8o0YVo8kfMkgN?=
- =?us-ascii?Q?DsV4dYsAP+Vy+vVpWbBMjv329j4gAjaxbW9PVNfe21jTrbqwr+F17N1Aw/D3?=
- =?us-ascii?Q?4wjbySSSSGrI75WVLCtZrIGvmdIYqpwZG4g00hVb0deGqSXayXM524SfOgfE?=
- =?us-ascii?Q?qTrTLgY4xxLi/sMPWJ/iWokIaHbZi5jYcF9UgWF9AR1OL3v4trn3/CaRbqws?=
- =?us-ascii?Q?u3KvlxlJ8CoupFkey1BjD4nyjPaAng6vdaFXibGGhsW/2KxO2G1cpXl07qLs?=
- =?us-ascii?Q?GxhtKoDx1i2EJ7VIqV8j7EqQw7WJwDnQi7dfkQN0mZKvW4I/8qfGVLMVkZBk?=
- =?us-ascii?Q?Bh+8ZN60+ZbL3LJGISqIVfAbCfJzSdzRX5BikTnH18CTTY9aaIYeKu5TV7PH?=
- =?us-ascii?Q?NCoumfMgExtF8nA2Qrz1LmnnY0fM+X+2RLZzMCBCSD2LbZDQZoDXx9nF26E3?=
- =?us-ascii?Q?Jp7PSa6cw4mEKlLJERCjeedCaF9k80n7mhWI1taXI6QhAVUwBSqpjJ54h9aX?=
- =?us-ascii?Q?azF9r8bW4HfBjiC9WFXy/pPi4B7pQEhsy3wHNuJNOGcXB6y040GOhvuMr+Z2?=
- =?us-ascii?Q?wusWALL4NUE3HQYGqnAYQVcOMPtdhur54KfEhl+ECwMdlUh/apPfrZqLMpgh?=
- =?us-ascii?Q?fMNbb4OOHll4+sJWIEGA/Xv7c9nqI+yqbfM+oIap7PN98caUN91V+R+dLFQg?=
- =?us-ascii?Q?n94ZkSYriNyKsxZofsvyUSrkX3bBcKiIqe+mK6NbEIH3AdJZ2CZxp8pUCgZH?=
- =?us-ascii?Q?q74dyxNdJMfVjCrbNYY9a7m5Y0rz2SY3YsnMBwR6v6Bqni2tGFe1GHDEfMBL?=
- =?us-ascii?Q?Bgj+NV7LvQ5yjC0tkmlN2kQ2CbQGQQLdN3KeySyHlW9SUdHQ/BFWS1AAKjPV?=
- =?us-ascii?Q?tMiXW21lhb29yjzsAXtH4WzuU23WVA4s29/44ss+O5jRRzYOAD0Pup3yqrkL?=
- =?us-ascii?Q?vihdIZCtB9UciyUZywf44CIObZbrd4WUBJ3l288ZRd3/3KilHLIqGU6e262o?=
- =?us-ascii?Q?Fg/gN7VcM5iva7IYr9+QC8yBXvpX2vn7BE29EPCn3Js3YjpQXbjvSuwCEtww?=
- =?us-ascii?Q?K0nTNLAIwz02M+/AZeIsWq1ymGUu2ks/r3xE5q/JHvgPP6+4GPqNajCHN8h/?=
- =?us-ascii?Q?nBLkdNXo5j2fem5fJPjO+yaL9jix7UBjSGmptF6zNNcITJd5Sm5YERs9/nMJ?=
- =?us-ascii?Q?KIGG55OcAKfxznO9YNWRxgYliFrKKJcV/xL6MgH9Z7L1h0ksqlQ/XoYaljx7?=
- =?us-ascii?Q?sdrEpn30NAoYJAk+w8qwxhzRJR0sAu4=3D?=
+X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?ozGMk0yvC6wGXEIlBvk1oh5CVxB09xX+AMBcpZN28ITcC4yUWcu4hlVnd+YV?=
+ =?us-ascii?Q?HEgL8iiB5/gWAkGuhzeozmijCBUnri5lIj361mEJzXh/TpNrODi4T4y4c4ZT?=
+ =?us-ascii?Q?yMSembUgaaWUA8NBKjvhBUDQAaKFFFrJ1dkgVNm13SEnq/3NECt6bqtKfr5i?=
+ =?us-ascii?Q?iRld4o/Rc5Nl6Gsw+/JltlQrQH7EzVxiArwegeKnkz+gSix9mo5RKPVxD5aH?=
+ =?us-ascii?Q?hkWYUaCzuY6BQSAZ4OVFK2aaudRbIa9l/ogVK8dSe7o9ytT3FlOK3lTkHJbL?=
+ =?us-ascii?Q?R0qmJ7edV58bI28Ds5EdUDKnrZza6MasOuLvJHhOs2FJk/cQLGVuB14+jqYK?=
+ =?us-ascii?Q?IAL7u9RKpa3cLng9cY90Mru8hS3EqJRS9pZ952T1vRu1PCY3BVNlEDILHy2A?=
+ =?us-ascii?Q?jb9EHofPePNr/qB379PIsAeQspM6mwDSAeXriTpyIozFjbk2mj++gQETqdsO?=
+ =?us-ascii?Q?833mdy/yAp42DUfB/23+vrBDqUYQB6B/kXmqoCQjJyqZz0gwzRnwGJgpw5pm?=
+ =?us-ascii?Q?aTOLvJgDyXcEYSRio9ggPwYyyBbN9neMGO6dX99vm826OnacG8qYIr60/IfY?=
+ =?us-ascii?Q?e9d1AeztWWAkOWcQycL7gxp5h5TSziuNTbSgI1S3k0n78tkDLYM4ZLAdUNJP?=
+ =?us-ascii?Q?vwwp4LRio7YrQTVSgzF9PGApHNdGIA/6xoy4Jqg45IaoNjk0ldi/5sfME4tP?=
+ =?us-ascii?Q?dB6F6mY0czf6FzcAzZyProGxPjz+HLF5ZwILMIgsoQiFQ3kpivfIvEoY0Mel?=
+ =?us-ascii?Q?H2db/ailWTDkYSTnYO2ItpCXR8cHtbnhuFaQYxAFFI8p3PJZfvvrpAhcb3oE?=
+ =?us-ascii?Q?qqCjAdw+0GSpofEV+YnLxVmUy96I1XVj6AFflw9Szi6OnC8tJR1TWnhIW+PY?=
+ =?us-ascii?Q?scp4jPlh6BwlkPqEPAOD0RSqCGS7f7AtnfCArqXo+WEyUWJtxiX8O+muTOoM?=
+ =?us-ascii?Q?aK4/9Uc7KS4ORfw36IjktmKqRhLoU9qJaQfp5RlgI1kDzF1g5y7EQ5Ajwm/8?=
+ =?us-ascii?Q?wS9FzBU6D5DXIukGeNaJUauUaROhcme2cXn7LWlc+Daj8V2dV3V++qR0lcfK?=
+ =?us-ascii?Q?wNtGJeWXhiZkmP5N7SRrA+AAU6T59TqvOIoPhh6b+YoJJ39sB6o4Be0TK6E1?=
+ =?us-ascii?Q?IVzCU5MQtymKU84RSh0Syw5qcRLqwjwDLKov4Jt62MzXos1PbMrlxDhbKHTm?=
+ =?us-ascii?Q?96ZquYixqD4diKQS2RXk/NZX9LtWwnHj4hS6dR3Zonopq3fLLdRw4i3+N+o8?=
+ =?us-ascii?Q?tk1SmAGgWQZiS7aEyGcfW0wqJLTHNsjncGcpnN5I0Q4S2wtMpPIHHLRzMDwO?=
+ =?us-ascii?Q?OWjGof1JQlMzXm2OS+pcrGp1FNS4Ba4r7XiCPuV/K7z1RwEApuoOgig2r3rj?=
+ =?us-ascii?Q?yC0WL4KBEppUOZe/iADa+8AMWFzByVkG0yLPQ+TiSAN1JlaFBo27iG7JzBzP?=
+ =?us-ascii?Q?i3xitp/X48sIjFq7uV87/nTuk9eLA9edTZGd5L2mn6olpJKSA6e+UHY15CFW?=
+ =?us-ascii?Q?A9Cprj5mstH8Zv4hr1yKAYNBJmKzwoZntS79aiOzCdLiz2yYC8ONt9ojvTNA?=
+ =?us-ascii?Q?n7vknR0weANC3mnWwENBfsiZkOvaurfCrYypTqeGAZjAfpnN5jIbbA0gbkmj?=
+ =?us-ascii?Q?Y3074h83OH4mQNSSbRxd9aNhtSOpzLdhCCw9sUzWGJXjCGXiRNtw53AIq0oh?=
+ =?us-ascii?Q?YL+SOZqQxGuHUDDsRqRdCKtPpzhqvbv7iWS2a8l2zacgxd6Ts0Y8nPZJH13G?=
+ =?us-ascii?Q?OL8j24fuLF0VZdQI2ARIfQJKKdUGI8M=3D?=
 X-OriginatorOrg: processmission.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: f70432c0-2f64-4faa-d740-08defb986b43
+X-MS-Exchange-CrossTenant-Network-Message-Id: 2af66055-e2d6-4173-0162-08defb9872e5
 X-MS-Exchange-CrossTenant-AuthSource: KL1PR02MB4977.apcprd02.prod.outlook.com
 X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 16 Aug 2026 13:15:18.7675 (UTC)
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 16 Aug 2026 13:15:31.5648 (UTC)
 X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
 X-MS-Exchange-CrossTenant-Id: e0544bf7-9765-4630-ab69-0b266dc2169c
 X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: TEW30FxzEqlPmglknivf9hfqsF6pvslU4vAqHHG1+F6wwuv50LoM33Cvm3MWx4IP9fcZUlpWP6/1weq/aeYlEG89uDf/FTOJaURnb+Q487g=
+X-MS-Exchange-CrossTenant-UserPrincipalName: xHlrmXJpLwPhp6A6WVXgsAHoXvMsSE7EAKDhg+DexDm/FG2M/S2iQk74QM3nhd3j2xomiMsuKSETKG9zflwTzKjS4nngr+oxoO+uh5pmPrs=
 X-MS-Exchange-Transport-CrossTenantHeadersStamped: KUXPR02MB9310
-Received-SPF: pass client-ip=2a01:111:f403:c40f::6;
+Received-SPF: pass client-ip=2a01:111:f403:c406::3;
  envelope-from=bin.meng@processmission.com;
- helo=SEYPR02CU001.outbound.protection.outlook.com
+ helo=OS8PR02CU002.outbound.protection.outlook.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_PASS=-0.001,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -142,10 +141,12 @@ Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
 arm_load_kernel() keeps a pointer to the boot info struct for the
 lifetime of the VM, so the struct logically belongs to the machine
-rather than to a file scoped static object.
+rather than to a file scoped static object inside
+npcm7xx_load_kernel().
 
-The Exynos4BoardState struct is already allocated per machine
-instance, so move the boot info there.
+Let the caller own the boot info: the boards store it in their
+NPCM7xxMachine and pass it to npcm7xx_load_kernel(), which only fills
+in the SoC specific values.
 
 As in the xlnx-zcu102 and raspi machines, the boot info belongs to
 the machine rather than to a static object:
@@ -156,75 +157,138 @@ the machine rather than to a static object:
 Signed-off-by: Bin Meng <bin.meng@processmission.com>
 ---
 
- hw/arm/exynos4_boards.c | 26 +++++++++++---------------
- 1 file changed, 11 insertions(+), 15 deletions(-)
+ hw/arm/npcm7xx.c         | 28 +++++++++++++---------------
+ hw/arm/npcm7xx_boards.c  | 10 +++++-----
+ include/hw/arm/npcm7xx.h | 10 ++++++++--
+ 3 files changed, 26 insertions(+), 22 deletions(-)
 
-diff --git a/hw/arm/exynos4_boards.c b/hw/arm/exynos4_boards.c
-index 1b8c9b618f..b7decdb2c7 100644
---- a/hw/arm/exynos4_boards.c
-+++ b/hw/arm/exynos4_boards.c
-@@ -49,6 +49,7 @@ typedef struct Exynos4BoardState {
-     Exynos4210State soc;
-     MemoryRegion dram0_mem;
-     MemoryRegion dram1_mem;
-+    struct arm_boot_info bootinfo;
- } Exynos4BoardState;
+diff --git a/hw/arm/npcm7xx.c b/hw/arm/npcm7xx.c
+index c27f149c04..695f30a0dc 100644
+--- a/hw/arm/npcm7xx.c
++++ b/hw/arm/npcm7xx.c
+@@ -364,22 +364,20 @@ static void npcm7xx_write_secondary_boot(ARMCPU *cpu,
+                        NPCM7XX_SMP_LOADER_START);
+ }
  
- static int exynos4_board_id[EXYNOS4_NUM_OF_BOARDS] = {
-@@ -66,12 +67,6 @@ static unsigned long exynos4_board_ram_size[EXYNOS4_NUM_OF_BOARDS] = {
-     [EXYNOS4_BOARD_SMDKC210] = 1 * GiB,
- };
- 
--static struct arm_boot_info exynos4_board_binfo = {
--    .loader_start     = EXYNOS4210_BASE_BOOT_ADDR,
--    .smp_loader_start = EXYNOS4210_SMP_BOOT_ADDR,
--    .write_secondary_boot = exynos4210_write_secondary,
+-static struct arm_boot_info npcm7xx_binfo = {
+-    .loader_start           = NPCM7XX_LOADER_START,
+-    .smp_loader_start       = NPCM7XX_SMP_LOADER_START,
+-    .smp_bootreg_addr       = NPCM7XX_SMP_BOOTREG_ADDR,
+-    .gic_cpu_if_addr        = NPCM7XX_GIC_CPU_IF_ADDR,
+-    .write_secondary_boot   = npcm7xx_write_secondary_boot,
+-    .board_id               = -1,
+-    .board_setup_addr       = NPCM7XX_BOARD_SETUP_ADDR,
+-    .write_board_setup      = npcm7xx_write_board_setup,
 -};
 -
- static void lan9215_init(uint32_t base, qemu_irq irq)
+-void npcm7xx_load_kernel(MachineState *machine, NPCM7xxState *soc)
++void npcm7xx_load_kernel(MachineState *machine, NPCM7xxState *soc,
++                         struct arm_boot_info *binfo)
  {
-     DeviceState *dev;
-@@ -113,14 +108,15 @@ static Exynos4BoardState *
- exynos4_boards_init_common(MachineState *machine,
-                            Exynos4BoardType board_type)
- {
--    Exynos4BoardState *s = g_new(Exynos4BoardState, 1);
-+    Exynos4BoardState *s = g_new0(Exynos4BoardState, 1);
- 
--    exynos4_board_binfo.ram_size = exynos4_board_ram_size[board_type];
--    exynos4_board_binfo.board_id = exynos4_board_id[board_type];
--    exynos4_board_binfo.smp_bootreg_addr =
--            exynos4_board_smp_bootreg_addr[board_type];
--    exynos4_board_binfo.gic_cpu_if_addr =
--            EXYNOS4210_SMP_PRIVATE_BASE_ADDR + 0x100;
-+    s->bootinfo.loader_start = EXYNOS4210_BASE_BOOT_ADDR;
-+    s->bootinfo.smp_loader_start = EXYNOS4210_SMP_BOOT_ADDR;
-+    s->bootinfo.write_secondary_boot = exynos4210_write_secondary;
-+    s->bootinfo.ram_size = exynos4_board_ram_size[board_type];
-+    s->bootinfo.board_id = exynos4_board_id[board_type];
-+    s->bootinfo.smp_bootreg_addr = exynos4_board_smp_bootreg_addr[board_type];
-+    s->bootinfo.gic_cpu_if_addr = EXYNOS4210_SMP_PRIVATE_BASE_ADDR + 0x100;
- 
-     exynos4_boards_init_ram(s, get_system_memory(),
-                             exynos4_board_ram_size[board_type]);
-@@ -137,7 +133,7 @@ static void nuri_init(MachineState *machine)
-     Exynos4BoardState *s = exynos4_boards_init_common(machine,
-                                                       EXYNOS4_BOARD_NURI);
- 
--    arm_load_kernel(s->soc.cpu[0], machine, &exynos4_board_binfo);
-+    arm_load_kernel(s->soc.cpu[0], machine, &s->bootinfo);
+-    npcm7xx_binfo.ram_size = machine->ram_size;
+-
+-    arm_load_kernel(&soc->cpu[0], machine, &npcm7xx_binfo);
++    binfo->loader_start = NPCM7XX_LOADER_START;
++    binfo->smp_loader_start = NPCM7XX_SMP_LOADER_START;
++    binfo->smp_bootreg_addr = NPCM7XX_SMP_BOOTREG_ADDR;
++    binfo->gic_cpu_if_addr = NPCM7XX_GIC_CPU_IF_ADDR;
++    binfo->write_secondary_boot = npcm7xx_write_secondary_boot;
++    binfo->board_id = -1;
++    binfo->board_setup_addr = NPCM7XX_BOARD_SETUP_ADDR;
++    binfo->write_board_setup = npcm7xx_write_board_setup;
++    binfo->ram_size = machine->ram_size;
++
++    arm_load_kernel(&soc->cpu[0], machine, binfo);
  }
  
- static void smdkc210_init(MachineState *machine)
-@@ -147,7 +143,7 @@ static void smdkc210_init(MachineState *machine)
- 
-     lan9215_init(SMDK_LAN9118_BASE_ADDR,
-             qemu_irq_invert(s->soc.irq_table[exynos4210_get_irq(37, 1)]));
--    arm_load_kernel(s->soc.cpu[0], machine, &exynos4_board_binfo);
-+    arm_load_kernel(s->soc.cpu[0], machine, &s->bootinfo);
+ static void npcm7xx_init_fuses(NPCM7xxState *s)
+diff --git a/hw/arm/npcm7xx_boards.c b/hw/arm/npcm7xx_boards.c
+index 57a8d3186e..4f14d25746 100644
+--- a/hw/arm/npcm7xx_boards.c
++++ b/hw/arm/npcm7xx_boards.c
+@@ -374,7 +374,7 @@ static void npcm750_evb_init(MachineState *machine)
+     npcm7xx_connect_flash(&soc->fiu[0], 0, "w25q256", drive_get(IF_MTD, 0, 0));
+     npcm750_evb_i2c_init(soc);
+     npcm750_evb_fan_init(NPCM7XX_MACHINE(machine), soc);
+-    npcm7xx_load_kernel(machine, soc);
++    npcm7xx_load_kernel(machine, soc, &NPCM7XX_MACHINE(machine)->bootinfo);
  }
  
- static const char * const valid_cpu_types[] = {
+ static void quanta_gsj_init(MachineState *machine)
+@@ -390,7 +390,7 @@ static void quanta_gsj_init(MachineState *machine)
+                           drive_get(IF_MTD, 0, 0));
+     quanta_gsj_i2c_init(soc);
+     quanta_gsj_fan_init(NPCM7XX_MACHINE(machine), soc);
+-    npcm7xx_load_kernel(machine, soc);
++    npcm7xx_load_kernel(machine, soc, &NPCM7XX_MACHINE(machine)->bootinfo);
+ }
+ 
+ static void quanta_gbs_init(MachineState *machine)
+@@ -408,7 +408,7 @@ static void quanta_gbs_init(MachineState *machine)
+ 
+     quanta_gbs_i2c_init(soc);
+     sdhci_attach_drive(&soc->mmc.sdhci, 0);
+-    npcm7xx_load_kernel(machine, soc);
++    npcm7xx_load_kernel(machine, soc, &NPCM7XX_MACHINE(machine)->bootinfo);
+ }
+ 
+ static void kudo_bmc_init(MachineState *machine)
+@@ -427,7 +427,7 @@ static void kudo_bmc_init(MachineState *machine)
+ 
+     kudo_bmc_i2c_init(soc);
+     sdhci_attach_drive(&soc->mmc.sdhci, 0);
+-    npcm7xx_load_kernel(machine, soc);
++    npcm7xx_load_kernel(machine, soc, &NPCM7XX_MACHINE(machine)->bootinfo);
+ }
+ 
+ static void mori_bmc_init(MachineState *machine)
+@@ -442,7 +442,7 @@ static void mori_bmc_init(MachineState *machine)
+     npcm7xx_connect_flash(&soc->fiu[1], 0, "mx66u51235f",
+                           drive_get(IF_MTD, 3, 0));
+ 
+-    npcm7xx_load_kernel(machine, soc);
++    npcm7xx_load_kernel(machine, soc, &NPCM7XX_MACHINE(machine)->bootinfo);
+ }
+ 
+ static void npcm7xx_set_soc_type(NPCM7xxMachineClass *nmc, const char *type)
+diff --git a/include/hw/arm/npcm7xx.h b/include/hw/arm/npcm7xx.h
+index eef7cc5332..9f3dd489ec 100644
+--- a/include/hw/arm/npcm7xx.h
++++ b/include/hw/arm/npcm7xx.h
+@@ -19,6 +19,7 @@
+ #include "hw/core/boards.h"
+ #include "hw/adc/npcm7xx_adc.h"
+ #include "hw/core/split-irq.h"
++#include "hw/arm/boot.h"
+ #include "hw/cpu/a9mpcore.h"
+ #include "hw/gpio/npcm7xx_gpio.h"
+ #include "hw/i2c/npcm7xx_smbus.h"
+@@ -62,6 +63,7 @@ struct NPCM7xxMachine {
+      */
+     SplitIRQ            fan_splitter[NPCM7XX_NR_PWM_MODULES *
+                                      NPCM7XX_PWM_PER_MODULE];
++    struct arm_boot_info bootinfo;
+ };
+ 
+ #define TYPE_NPCM7XX_MACHINE MACHINE_TYPE_NAME("npcm7xx")
+@@ -129,11 +131,15 @@ typedef struct NPCM7xxClass {
+  * npcm7xx_load_kernel - Loads memory with everything needed to boot
+  * @machine - The machine containing the SoC to be booted.
+  * @soc - The SoC containing the CPU to be booted.
++ * @binfo - Caller owned boot info structure to be filled in.
+  *
+  * This will set up the ARM boot info structure for the specific NPCM7xx
+  * derivative and call arm_load_kernel() to set up loading of the kernel, etc.
+- * into memory, if requested by the user.
++ * into memory, if requested by the user.  The boot info is owned by the
++ * caller because arm_load_kernel() keeps a pointer to it for the lifetime
++ * of the CPUs.
+  */
+-void npcm7xx_load_kernel(MachineState *machine, NPCM7xxState *soc);
++void npcm7xx_load_kernel(MachineState *machine, NPCM7xxState *soc,
++                         struct arm_boot_info *binfo);
+ 
+ #endif /* NPCM7XX_H */
 -- 
 2.53.0
 

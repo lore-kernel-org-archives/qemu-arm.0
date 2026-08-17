@@ -4,166 +4,91 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 35056C5DF66
-	for <qemu-arm@archiver.kernel.org>; Mon, 17 Aug 2026 11:14:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6D93BC5DF66
+	for <qemu-arm@archiver.kernel.org>; Mon, 17 Aug 2026 11:34:09 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wvvIO-0006oM-Jh; Mon, 17 Aug 2026 07:14:24 -0400
+	id 1wvvbJ-0006hv-S7; Mon, 17 Aug 2026 07:33:57 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@oss.qualcomm.com>)
- id 1wvvIJ-0006jc-Pf
- for qemu-arm@nongnu.org; Mon, 17 Aug 2026 07:14:21 -0400
-Received: from mx0a-0031df01.pphosted.com ([205.220.168.131])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@oss.qualcomm.com>)
- id 1wvvIG-0001XB-Mq
- for qemu-arm@nongnu.org; Mon, 17 Aug 2026 07:14:19 -0400
-Received: from pps.filterd (m0279865.ppops.net [127.0.0.1])
- by mx0a-0031df01.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id
- 67H9deAv2470463
- for <qemu-arm@nongnu.org>; Mon, 17 Aug 2026 11:14:12 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qualcomm.com; h=
- cc:content-transfer-encoding:content-type:date:from:in-reply-to
- :message-id:mime-version:references:subject:to; s=qcppdkim1; bh=
- 7YiE7383FwpyDp32goc1hPgbaLG4034Pzreh6sCEwOE=; b=X+4Lkc53wjZLtV0g
- vx5cqPp8xvKYZvjDHK7O96G0NDY6d1JHdCRdAFnRxdD9uFFKO7hNuTM5TzczXYzV
- U5i8SvoS8q/yjuCv0gWvn9fqhb4cz27elV4B1aNm+3tso5Vs2oaZbU6BKoFaS4jQ
- a7gyO1WscZSvKmVuGFY4JY/iNG7pVNUDAwZ/PH9ZU8ECBTqn9pauy3NowxHwKI7U
- 9tDp+eVRYI+q7hakkf3A8bdnqASrg4/6Z/9ZDRE7BxRZu1Mow9ISWtOQwuOMR3HR
- ZuaoLe1xenlBcqtoBT4a1kQaB5sHHyxM2kJ9rviFp17BFbshAG4IiJs1EEvN36gC
- ZYXjDg==
-Received: from mail-qk1-f198.google.com (mail-qk1-f198.google.com
- [209.85.222.198])
- by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 4g3wm7rx0n-1
- (version=TLSv1.3 cipher=TLS_AES_128_GCM_SHA256 bits=128 verify=NOT)
- for <qemu-arm@nongnu.org>; Mon, 17 Aug 2026 11:14:12 +0000 (GMT)
-Received: by mail-qk1-f198.google.com with SMTP id
- af79cd13be357-9368b4c5964so265070585a.1
- for <qemu-arm@nongnu.org>; Mon, 17 Aug 2026 04:14:12 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <alexander@mihalicyn.com>)
+ id 1wvvbH-0006eW-FB
+ for qemu-arm@nongnu.org; Mon, 17 Aug 2026 07:33:55 -0400
+Received: from mail-wr1-x430.google.com ([2a00:1450:4864:20::430])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <alexander@mihalicyn.com>)
+ id 1wvvbF-00059w-2q
+ for qemu-arm@nongnu.org; Mon, 17 Aug 2026 07:33:55 -0400
+Received: by mail-wr1-x430.google.com with SMTP id
+ ffacd0b85a97d-47de0093c42so2917018f8f.3
+ for <qemu-arm@nongnu.org>; Mon, 17 Aug 2026 04:33:52 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=oss.qualcomm.com; s=google; t=1786965251; x=1787570051; darn=nongnu.org;
- h=content-transfer-encoding:content-type:in-reply-to:from
- :content-language:references:cc:to:subject:user-agent:mime-version
- :date:message-id:from:to:cc:subject:date:message-id:reply-to
- :content-type; bh=7YiE7383FwpyDp32goc1hPgbaLG4034Pzreh6sCEwOE=;
- b=F1PU1Fuw61CSseroaw00gfg7N6tydvCeQZlKIdUXxwfMMdf2IEGdLeif3K6A72mA5b
- bd/E0jWyKDNtqrze+O+koyUB2UD7vGX8HrFBSkdiBpsVWwOAY2rfk93ZM6neU71RLb0g
- MSY1Erlo+iKMKDpBOE5OKqFdoYWB84LGpXPY9dJDbIEeYinGlx0EnoHyuI38XFdngzCj
- HfzHa4nl3lS0y0XN8jn1Gi8+9Swt/3DIoVyJ2XMJn0B9t9B4FrLxlGZaNJxFnJRw5qFc
- M/nlQ0VfGWKBqdDS7TITUVJ2nl+7Bj33BkRTX+H7JZA9kXuUt8jaSf4NCP/MfayVOhzT
- Qxlg==
+ d=mihalicyn.com; s=mihalicyn; t=1786966431; x=1787571231; darn=nongnu.org;
+ h=content-transfer-encoding:content-type:mime-version:message-id:date
+ :subject:cc:to:from:from:to:cc:subject:date:message-id:reply-to
+ :content-type; bh=+JRr5THd9V5FxcrPVZRC9o711BRF+tkcolc4gE+ntNk=;
+ b=idYyp5a4aO1l9lUfirJQNezvj1/qC2AFWb4jNFHj0dsUmoB/OIzHrxa21R7JqdiIgQ
+ coRBO91wHbkmPfsLWTpR5yDYom8hg+Yf6D9t1cX/PyhSVFKG77l6MANd8wvIItiEiR3c
+ 0BKV4mDR4jdzv/c5lCcC2D0480yoo0MOqBV0Q=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1786965251; x=1787570051;
- h=content-transfer-encoding:content-type:in-reply-to:from
- :content-language:references:cc:to:subject:user-agent:mime-version
- :date:message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
- :message-id:reply-to:content-type;
- bh=7YiE7383FwpyDp32goc1hPgbaLG4034Pzreh6sCEwOE=;
- b=HJHfSJSAP9WKG7+LbM6/5mu3IDLSAdrcrmLEKeJXpAwV9Elto0gC7LaaeghivJAECs
- PEUhA6WaDDEqGNOFaUF+2Nz9ydp0Ck/nVDWMbiGQUMBEH5pL8Oiq1Nuaej6s8l4wfcgp
- 1rCHXc1jyCqghqr44uSo3wowHPg3gwW7Grm7g6hHHQvM3zwOLPDjkNjLu76jp0AZXBIH
- /N6BzFCaOG4YzmSmU8ClnQIf2lLTgXRDNorV7oLsx1adraEiA6aXSgDNGMT0gj49mOWP
- jCIBs9rHO8AHVghvShezKb+SHQWrqLszNC35Y27imaB0MaAjhbojuvg/WGLGd5bOk6im
- hZ4A==
-X-Forwarded-Encrypted: i=1;
- AHgh+Rq+UfFbS7/sdM7T1ecvb+sLDxJ415WIxPeXs8ZMXha/i9CaS1D506WEh1wQT2j5x9pIZUKinSJRjQ==@nongnu.org
-X-Gm-Message-State: AOJu0Yxy6VEvKDq8ryMUxUBMrLAKfJ7xFVXEGUupt3nvARNUzmlDZBBb
- HkdWa/xA8y7avbz8JMRa9aUa/1dGh6UobeZ4PHjdAe2YJ2nskiWQToIcbaKRzjfCu7BMKDzuCOH
- gjt3GbOOTrxOiVeF1npptE1dyEVOd+KVrXx/YFLNm2PCHl0sQwrDI5OU=
-X-Gm-Gg: AR+sD12TjiTyktErxQYnbWc6oybhWo+4maUJjqs4WtAas5R6gYG+MPojSDLq8Z+ta6y
- 3SgE1k9MaPLVUWIm8rNTZHTGRK2TlCA1D3iToJ1oZVxADkG5NUjQdwmSEYkNdV20lO/m9KZIe7J
- CQXDVurDtM+bgLe6HagvLpssvZgyQ+fPT9luIhZ7KnRQMni9AK1Zuah7xq9RpvMSTCmP21AH6S0
- uPOrU8Dmnb5tC0M9vYNSYXKSjRAE24T1d5pGbv55UGLRJX/ehjnJRhF7G1e1ETXdkq3pYtzm9cn
- /IXlX8GUDKAzpoDHAY1Zt8RkQXgr9EOfZijVWElduQXsTg4fFmzdsp0o+/ZY4F/2o1V2lbnM5xu
- iSubdpFB0tXPlBmh8mAfOQrA=
-X-Received: by 2002:a05:620a:1720:b0:936:b923:4832 with SMTP id
- af79cd13be357-936d233d21dmr2470395185a.28.1786965251444; 
- Mon, 17 Aug 2026 04:14:11 -0700 (PDT)
-X-Received: by 2002:a05:620a:1720:b0:936:b923:4832 with SMTP id
- af79cd13be357-936d233d21dmr2470384285a.28.1786965250894; 
- Mon, 17 Aug 2026 04:14:10 -0700 (PDT)
-Received: from [10.111.141.238] ([212.136.9.21])
+ d=1e100.net; s=20251104; t=1786966431; x=1787571231;
+ h=content-transfer-encoding:content-type:mime-version:message-id:date
+ :subject:cc:to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject
+ :date:message-id:reply-to:content-type;
+ bh=+JRr5THd9V5FxcrPVZRC9o711BRF+tkcolc4gE+ntNk=;
+ b=hZLIgEL0L6/U3Xw74wps12nSm6Cwykc+DU1JqpWwrwOpijUaX0TCrTrm1Tcy6k+dDv
+ w1/IadpVi+PpW2KDjiBqmkgQjaN5Ws5Bz/9lqwUeSYhMklsArM+7XAdZSh7ssFJP3xj2
+ Y1uR1Hkns8Hr7Mk66g1OvDOeHprJBhbx9+B6oIJGYX0TD0SeRLPUJfS+uiI2nBbgcQkn
+ uznotFnwIIC0oMbAzj2+2WAgjaVjvGyICkLWY12UeUnCODDI43smLQOELd3JY3N0Y1kV
+ y2/8bJkGtnMvvA9rrOCOEx2ueDVua5fKCcvPvK87BRoNCbv4seZsmgaHexgldQUyAEk2
+ Z7yA==
+X-Gm-Message-State: AOJu0Yw4PZm1oNB8npPiHj3+9wGVZCLpyQnFT/6gBejCOHmSR7ALcgP7
+ SeDQ0h3rSo7PXPAgMLig/jpKy9pfI8A80LyhR72PpNjpK+7OYL8NHdryYcz7k52PipA=
+X-Gm-Gg: AR+sD13+RnTR912V/ja2W2RgmbETNidfkvWqSIixHcqp1MZhzjhTqHyOX987XVGeScR
+ adJv47yLoBSZfdTgon8JsgFFIXdtL6YwQxGOuoXpApqyzZ8aggTRrFW7JSLf2cLWe+ajGJsQQDP
+ cLowxh6DETvA95rE34PSqEVsSFGhqRAQ6sIGerz9q0WV8W1I6M1r3OaQi8Ba3Vr55nPjC+AJKVk
+ OTaWubX4XugzUtl6zR1EwUblyeoRbsc3r/h2/MGdLrm5aWjJgy4PuKZoa4wn1dbyyTG4qyzGTGl
+ nL+dWYwvRImKqG2h5cAQjo5TY2dA7vtlOnLyW4rK1mYFj0B0yxs6bQoyv2se1GeeYfjo1DLK1en
+ fzLljr4gvD6Fr1MPXbMg55EyPS94L1rwSfEF7h/Tv80vmvt8s5L9r6qBtgfDu+QFZXeJaFLzipx
+ D3kHChalu9HOFTrQX+V/rvXgXb0910xpVAxu1WCGDbCtZwXChj9VIz1olipSvaWmd6aGZlmhrm/
+ 0YaW5EUiwmyUqp4TVy/9cBhurpnR7qnD6rDYa6f5eQH6vk4w89EV/RPld0=
+X-Received: by 2002:a05:6000:46c8:b0:482:552f:ef68 with SMTP id
+ ffacd0b85a97d-482552fef9bmr23788324f8f.19.1786966430915; 
+ Mon, 17 Aug 2026 04:33:50 -0700 (PDT)
+Received: from alex-laptop.lan
+ (p200300cf573be10032bbd7f65fb99e30.dip0.t-ipconnect.de.
+ [2003:cf:573b:e100:32bb:d7f6:5fb9:9e30])
  by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-482a5a7c5e7sm3217366f8f.24.2026.08.17.04.14.06
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 17 Aug 2026 04:14:09 -0700 (PDT)
-Message-ID: <aa4bdaf5-6669-4ed7-90fb-4e766f160118@oss.qualcomm.com>
-Date: Mon, 17 Aug 2026 13:14:05 +0200
-MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 13/35] target/avr: call plugin trap callbacks
-To: =?UTF-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>,
- qemu-devel@nongnu.org, Julian Ganz <neither@nut.email>
-Cc: Liu Zhiwei <zhiwei_liu@linux.alibaba.com>,
- Alexandre Iooss <erdnaxe@crans.org>,
- Chinmay Rath <rathc@linux.ibm.com>, qemu-arm@nongnu.org,
+ ffacd0b85a97d-482a5b77f41sm3123140f8f.27.2026.08.17.04.33.49
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Mon, 17 Aug 2026 04:33:50 -0700 (PDT)
+From: Alexander Mikhalitsyn <alexander@mihalicyn.com>
+To: qemu-devel@nongnu.org
+Cc: qemu-arm@nongnu.org,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@oss.qualcomm.com>,
  Peter Maydell <peter.maydell@linaro.org>,
- Nicholas Piggin <npiggin@gmail.com>, Ilya Leoshkevich <iii@linux.ibm.com>,
- David Hildenbrand <david@redhat.com>, qemu-ppc@nongnu.org,
- Paolo Bonzini <pbonzini@redhat.com>, qemu-s390x@nongnu.org,
- Bastian Koppelmann <kbastian@mail.uni-paderborn.de>,
- Helge Deller <deller@gmx.de>, Stafford Horne <shorne@gmail.com>,
- Mahmoud Mandour <ma.mandourr@gmail.com>,
- Artyom Tarasenko <atar4qemu@gmail.com>, Eduardo Habkost
- <eduardo@habkost.net>, Palmer Dabbelt <palmer@dabbelt.com>,
- Alistair Francis <alistair.francis@wdc.com>,
- Laurent Vivier <laurent@vivier.eu>, Weiwei Li <liwei1518@gmail.com>,
- Daniel Henrique Barboza <dbarboza@ventanamicro.com>,
- Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
- Yoshinori Sato <yoshinori.sato@nifty.com>,
- "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
- Aurelien Jarno <aurelien@aurel32.net>,
- Richard Henderson <richard.henderson@linaro.org>,
- Thomas Huth <thuth@redhat.com>, Max Filippov <jcmvbkbc@gmail.com>,
- Jiaxun Yang <jiaxun.yang@flygoat.com>,
- Michael Rolnik <mrolnik@gmail.com>, Song Gao <gaosong@loongson.cn>,
- qemu-riscv@nongnu.org, Aleksandar Rikalo <arikalo@gmail.com>,
- Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>
-References: <20251027110344.2289945-1-alex.bennee@linaro.org>
- <20251027110344.2289945-14-alex.bennee@linaro.org>
-Content-Language: en-US
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@oss.qualcomm.com>
-In-Reply-To: <20251027110344.2289945-14-alex.bennee@linaro.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
+ =?UTF-8?q?St=C3=A9phane=20Graber?= <stgraber@stgraber.org>,
+ Paolo Bonzini <pbonzini@redhat.com>,
+ Alexander Mikhalitsyn <aleksandr.mikhalitsyn@futurfusion.io>,
+ =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
+ =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>
+Subject: [PATCH v3] hw/char/pl011: support backend hotswap
+Date: Mon, 17 Aug 2026 13:33:49 +0200
+Message-ID: <20260817113349.103833-1-alexander@mihalicyn.com>
+X-Mailer: git-send-email 2.47.3
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Proofpoint-GUID: yoJbS1I_gswIePp8HQFBusXDJK6Pckcy
-X-Proofpoint-ORIG-GUID: yoJbS1I_gswIePp8HQFBusXDJK6Pckcy
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwODE3MDA4NCBTYWx0ZWRfX/L7oJotd3CsB
- sbaHk4TataDon8TxpyaFVcQJS0oIvwfY05loNx9RgWdpQsJNphvBD90r/lLPnzVXiBZ8B0bFBdE
- Yt5kcMLkA2Lr8Ay4971jYOk8TzCkG4oT6wsna73joc7nddZ29saQqxmtkjWB0mz5TuX14DOMw6e
- 3k6TFJtam3BXvKUA4VpfbqVDXLmLYQsX/yE7lj/SExZ+iIE2HJSc/ChLzc0Tk990c+9sHjuIj/i
- pWUYF9V0fA9PSXS/ERII0G3Cr9/cj9qregwjcvJtdK75J+IJ8I8Qr5LKgz7VHrwBp4hnASthfLB
- a9lu7YTsA9jyXzXXmnfmAOO9dX00MGRrJyAEpuJAFz1Pe6pctcV3Zz5uMYczrZ3NF6kEX5i+PeH
- wZLzS5ipwpZfr5GDXTKmkcHPQ24TJy/4mV0hfCWRJq9GydchOjA5e4j4bntgr/ZESFQITk7gOqd
- XGnkWypvM1e9wVMv1wg==
-X-Authority-Analysis: v=2.4 cv=YqM/gYYX c=1 sm=1 tr=0 ts=6a82ed04 cx=c_pps
- a=qKBjSQ1v91RyAK45QCPf5w==:117 a=/bviTfK1dmy+WGcHzWQ0gg==:17
- a=IkcTkHD0fZMA:10 a=Sv0fKeRqtYgA:10 a=M51BFTxLslgA:10 a=s4-Qcg_JpJYA:10
- a=VkNPw1HP01LnGYTKEx00:22 a=u7WPNUs3qKkmUXheDGA7:22 a=Um2Pa8k9VHT-vaBCBUpS:22
- a=KKAkSRfTAAAA:8 a=fJfIHgLxyoL31M7WP3EA:9 a=3ZKOabzyN94A:10 a=QEXdDO2ut3YA:10
- a=NFOGd7dJGGMPyQGDc5-O:22 a=cvBusfyB2V15izCimMoJ:22
-X-Proofpoint-Spam-Info: AW1haW4tMjYwODE3MDA4NCBTYWx0ZWRfXxzMItOtiOk9H
- W1bL2q4jaM2xicSXTLbGPIa4a4NShKd3isS/sl4brVri8H3uNd37CYdaCZu4njOINpqm/ZWWaRr
- wljm8NK0n8TV4ZT/GpmJ/yBoVZQmWoU=
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.293,Aquarius:18.0.1176,Hydra:6.1.134,FMLib:17.12.100.49
- definitions=2026-08-16_06,2026-08-12_01,2025-10-01_01
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
- phishscore=0 impostorscore=0 suspectscore=0 adultscore=0 clxscore=1015
- bulkscore=0 priorityscore=1501 malwarescore=0 lowpriorityscore=0 spamscore=0
- classifier=typeunknown authscore=0 authtc= authcc= route=outbound adjust=0
- reason=mlx scancount=1 engine=8.22.0-2606150000 definitions=main-2608170084
-Received-SPF: pass client-ip=205.220.168.131;
- envelope-from=philmd@oss.qualcomm.com; helo=mx0a-0031df01.pphosted.com
-X-Spam_score_int: -27
-X-Spam_score: -2.8
+Received-SPF: pass client-ip=2a00:1450:4864:20::430;
+ envelope-from=alexander@mihalicyn.com; helo=mail-wr1-x430.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -179,83 +104,104 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Hi Julian,
+From: Alexander Mikhalitsyn <aleksandr.mikhalitsyn@futurfusion.io>
 
-On 2025-10-27 12:03, Alex Bennée wrote:
-> From: Julian Ganz <neither@nut.email>
-> 
-> We recently introduced API for registering callbacks for trap related
-> events as well as the corresponding hook functions. Due to differences
-> between architectures, the latter need to be called from target specific
-> code.
-> 
-> This change places the hook for AVR targets. That architecture appears
-> to only know interrupts.
-> 
-> Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
-> Signed-off-by: Julian Ganz <neither@nut.email>
-> Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
-> Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
-> ---
->   target/avr/helper.c | 3 +++
->   1 file changed, 3 insertions(+)
-> 
-> diff --git a/target/avr/helper.c b/target/avr/helper.c
-> index 4b29ab35263..365c8c60e19 100644
-> --- a/target/avr/helper.c
-> +++ b/target/avr/helper.c
-> @@ -28,6 +28,7 @@
->   #include "exec/target_page.h"
->   #include "accel/tcg/cpu-ldst.h"
->   #include "exec/helper-proto.h"
-> +#include "qemu/plugin.h"
->   
->   bool avr_cpu_exec_interrupt(CPUState *cs, int interrupt_request)
->   {
-> @@ -102,6 +103,8 @@ void avr_cpu_do_interrupt(CPUState *cs)
->       env->sregI = 0; /* clear Global Interrupt Flag */
->   
->       cs->exception_index = -1;
-> +
-> +    qemu_plugin_vcpu_interrupt_cb(cs, ret);
->   }
-Expanding a bit ...
+Currently, when Incus issues "chardev-change" QMP command to change
+chardev backend from ringbuf to socket it receives an error (with aarch64 VM):
+"Chardev user does not support chardev hotswap" [1], [2]
 
-  77 void avr_cpu_do_interrupt(CPUState *cs)
-  78 {
-  79     CPUAVRState *env = cpu_env(cs);
-  80
-  81     uint32_t ret = env->pc_w;
-  82     int vector = 0;
-  83     int size = avr_feature(env, AVR_FEATURE_JMP_CALL) ? 2 : 1;
-  84     int base = 0;
-  85
-  86     if (cs->exception_index == EXCP_RESET) {
-  87         vector = 0;
-  88     } else if (env->intsrc != 0) {
-  89         vector = ctz64(env->intsrc) + 1;
-  90     }
+Let's fix this by properly implementing BackendChangeHandler for pl011.
 
-Unconditionally recording exception vector as interrupt seems wrong,
-shouldn't we call qemu_plugin_vcpu_exception_cb() in that case?
+Please, note that we have to "replay" CHR_IOCTL_SERIAL_SET_BREAK, because
+if BRK bit was set before backend change (i.e. (s->lcr & LCR_BRK) is true),
+then after change we need to send break to a new backend too.
 
-  91
-  92     if (avr_feature(env, AVR_FEATURE_3_BYTE_PC)) {
-  93         do_stb(env, env->sp--, ret, 0);
-  94         do_stb(env, env->sp--, ret >> 8, 0);
-  95         do_stb(env, env->sp--, ret >> 16, 0);
-  96     } else if (avr_feature(env, AVR_FEATURE_2_BYTE_PC)) {
-  97         do_stb(env, env->sp--, ret, 0);
-  98         do_stb(env, env->sp--, ret >> 8, 0);
-  99     } else {
-100         do_stb(env, env->sp--, ret, 0);
-101     }
-102
-103     env->pc_w = base + vector * size;
-104     env->sregI = 0; /* clear Global Interrupt Flag */
-105
-106     cs->exception_index = -1;
-107
-108     qemu_plugin_vcpu_interrupt_cb(cs, ret);
-109 }
+Link: https://discuss.linuxcontainers.org/t/unable-to-connect-to-vm-console-on-arm-architecture/23096/3 [1]
+Link: https://github.com/lxc/distrobuilder/issues/892 [2]
+Reported-by: Stéphane Graber <stgraber@stgraber.org>
+Reviewed-by: Alex Bennée <alex.bennee@linaro.org>
+Signed-off-by: Alexander Mikhalitsyn <aleksandr.mikhalitsyn@futurfusion.io>
+---
+v3:
+	- introduced pl011_set_handlers()
+	  [ as suggested by Alex Bennée ]
+	- introduced pl011_set_break()
+	  [ as suggested by Philippe Mathieu-Daudé ]
+v2:
+	- fixed a typo in commit author name
+	  [ I did `git format-patch` and copied this patch from my Raspberry PI
+	    dev/test machine and it turns out that I have a stupid typo in my
+	    `git config get user.name` on that machine. ]
+	- added RWB tag from Alex Bennée
+	- adjusted a commit message
+---
+ hw/char/pl011.c | 34 +++++++++++++++++++++++++++++-----
+ 1 file changed, 29 insertions(+), 5 deletions(-)
+
+diff --git a/hw/char/pl011.c b/hw/char/pl011.c
+index cb12c3e224f..031afa5b246 100644
+--- a/hw/char/pl011.c
++++ b/hw/char/pl011.c
+@@ -425,6 +425,15 @@ static void pl011_loopback_break(PL011State *s, int brk_enable)
+     }
+ }
+ 
++static inline int pl011_set_break(PL011State *s, uint64_t lcr)
++{
++    int break_enable = lcr & LCR_BRK;
++
++    qemu_chr_fe_ioctl(&s->chr, CHR_IOCTL_SERIAL_SET_BREAK, &break_enable);
++
++    return break_enable;
++}
++
+ static void pl011_write(void *opaque, hwaddr offset,
+                         uint64_t value, unsigned size)
+ {
+@@ -462,9 +471,7 @@ static void pl011_write(void *opaque, hwaddr offset,
+             pl011_reset_tx_fifo(s);
+         }
+         if ((s->lcr ^ value) & LCR_BRK) {
+-            int break_enable = value & LCR_BRK;
+-            qemu_chr_fe_ioctl(&s->chr, CHR_IOCTL_SERIAL_SET_BREAK,
+-                              &break_enable);
++            int break_enable = pl011_set_break(s, value);
+             pl011_loopback_break(s, break_enable);
+         }
+         s->lcr = value;
+@@ -660,12 +667,29 @@ static void pl011_init(Object *obj)
+     s->id = pl011_id_arm;
+ }
+ 
++static int pl011_be_change(void *opaque);
++
++static inline void pl011_set_handlers(PL011State *s)
++{
++    qemu_chr_fe_set_handlers(&s->chr, pl011_can_receive, pl011_receive,
++                             pl011_event, pl011_be_change, s, NULL, true);
++}
++
++static int pl011_be_change(void *opaque)
++{
++    PL011State *s = opaque;
++
++    pl011_set_handlers(s);
++    pl011_set_break(s, s->lcr);
++
++    return 0;
++}
++
+ static void pl011_realize(DeviceState *dev, Error **errp)
+ {
+     PL011State *s = PL011(dev);
+ 
+-    qemu_chr_fe_set_handlers(&s->chr, pl011_can_receive, pl011_receive,
+-                             pl011_event, NULL, s, NULL, true);
++    pl011_set_handlers(s);
+ }
+ 
+ static void pl011_reset(DeviceState *dev)
+-- 
+2.47.3
+
 

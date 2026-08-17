@@ -4,56 +4,56 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EB6BEC5DF66
-	for <qemu-arm@archiver.kernel.org>; Mon, 17 Aug 2026 16:02:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 68836C5DF66
+	for <qemu-arm@archiver.kernel.org>; Mon, 17 Aug 2026 16:11:51 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wvzlI-00078k-Gw; Mon, 17 Aug 2026 12:00:43 -0400
+	id 1wvzvv-00063u-EP; Mon, 17 Aug 2026 12:11:31 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <pbonzini@redhat.com>)
- id 1wvzl5-00074i-4P
- for qemu-arm@nongnu.org; Mon, 17 Aug 2026 12:00:23 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ id 1wvzvt-00062r-TZ
+ for qemu-arm@nongnu.org; Mon, 17 Aug 2026 12:11:29 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <pbonzini@redhat.com>)
- id 1wvzl2-00065s-CV
- for qemu-arm@nongnu.org; Mon, 17 Aug 2026 12:00:18 -0400
+ id 1wvzvs-0001BQ-FK
+ for qemu-arm@nongnu.org; Mon, 17 Aug 2026 12:11:29 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1786982415;
+ s=mimecast20190719; t=1786983087;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
- bh=ZNBa70HCry/p3vwQzl6rX4JuyCu0T1pkLpYj9wtLirA=;
- b=KxkLj1PWkL6iGNNFqtoFvIpniafQWn2dpe9GKsiQT4UD1rO5G/RJuzzldlolCQ97dFcvRa
- gjXH2JT7xIB4vrKROxrKEpb4c9yp2gL3dc1EbsfFEwAbW/Q4FKj4+LlDL1XjQIthb04ZaZ
- sreSHk4sdTLp/pUaaU9jD1LMfyocp4U=
-Received: from mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
+ bh=A75/MH0dF78NqqlN7VMRp0DUbxdXIfUtAoPwCbnyY04=;
+ b=eVAuorBwg9qa2oiQg+XvAvfJjnEh4ZmWbtAbM1pPiNaV+ivPdE6991GxyjnThXc/XQlB9a
+ w/oV6vnibGRywYSJwXHWhGOVtM6Ug2C7YlJwIt/kOmXktsn5bwaG+L656rBYQlONswxExP
+ 9P7CBoT+wYtdCwPtmhlWYLtnzGceWoU=
+Received: from mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-278-OtzTCRPgMr2QHUMKyw4kuQ-1; Mon,
- 17 Aug 2026 12:00:08 -0400
-X-MC-Unique: OtzTCRPgMr2QHUMKyw4kuQ-1
-X-Mimecast-MFC-AGG-ID: OtzTCRPgMr2QHUMKyw4kuQ_1786982406
-Received: from mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com
- (mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.93])
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-245-8RwKSPObM0a1Sc9aTXzx0A-1; Mon,
+ 17 Aug 2026 12:11:23 -0400
+X-MC-Unique: 8RwKSPObM0a1Sc9aTXzx0A-1
+X-Mimecast-MFC-AGG-ID: 8RwKSPObM0a1Sc9aTXzx0A_1786983081
+Received: from mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com
+ (mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.4])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 126F51800651; Mon, 17 Aug 2026 16:00:05 +0000 (UTC)
+ by mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 7C9771955F7A; Mon, 17 Aug 2026 16:11:20 +0000 (UTC)
 Received: from [100.90.56.12] (headnet05.pony-001.prod.iad2.dc.redhat.com
  [10.2.32.117])
- by mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id 692ED1800347; Mon, 17 Aug 2026 15:59:59 +0000 (UTC)
-Message-ID: <55cc8357-daeb-4315-9f3a-8be7a59c355b@redhat.com>
-Date: Mon, 17 Aug 2026 17:59:57 +0200
+ by mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
+ id F121C3000223; Mon, 17 Aug 2026 16:11:16 +0000 (UTC)
+Message-ID: <3fa59521-1420-49e3-9d73-652148f946ea@redhat.com>
+Date: Mon, 17 Aug 2026 18:11:15 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 11/16] accel/kvm: Consistently return CPU halt state from
- process_async_events
+Subject: Re: [PATCH 13/16] target/arm/hvf: Lock BQL outside of the vCPU inner
+ execution loop
 To: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@oss.qualcomm.com>,
  qemu-devel@nongnu.org
 Cc: Daniel Henrique Barboza <daniel.barboza@oss.qualcomm.com>,
@@ -62,12 +62,9 @@ Cc: Daniel Henrique Barboza <daniel.barboza@oss.qualcomm.com>,
  <agraf@csgraf.de>, qemu-ppc@nongnu.org, qemu-riscv@nongnu.org,
  kvm@vger.kernel.org, Richard Henderson <richard.henderson@linaro.org>,
  qemu-arm@nongnu.org, Magnus Kulke <magnuskulke@linux.microsoft.com>,
- Peter Maydell <peter.maydell@linaro.org>, Palmer Dabbelt
- <palmer@dabbelt.com>, Alistair Francis <alistair.francis@wdc.com>,
- Weiwei Li <liwei1518@gmail.com>, Liu Zhiwei <zhiwei_liu@linux.alibaba.com>,
- Chao Liu <chao.liu@processmission.com>
+ Peter Maydell <peter.maydell@linaro.org>
 References: <20260813181640.6537-1-philmd@oss.qualcomm.com>
- <20260813181640.6537-12-philmd@oss.qualcomm.com>
+ <20260813181640.6537-14-philmd@oss.qualcomm.com>
 From: Paolo Bonzini <pbonzini@redhat.com>
 Autocrypt: addr=pbonzini@redhat.com; keydata=
  xsEhBFRCcBIBDqDGsz4K0zZun3jh+U6Z9wNGLKQ0kSFyjN38gMqU1SfP+TUNQepFHb/Gc0E2
@@ -104,22 +101,22 @@ Autocrypt: addr=pbonzini@redhat.com; keydata=
  JBrdmNZSQDz0iKmSrx8xkoXYfA3bgtFN8WJH2xgFL28XnqY4M6dLhJwV3z08tPSRqYFm4NMP
  dRsn0/7oymhneL8RthIvjDDQ5ktUjMe8LtHr70OZE/TT88qvEdhiIVUogHdo4qBrk41+gGQh
  b906Dudw5YhTJFU3nC6bbF2nrLlB4C/XSiH76ZvqzV0Z/cAMBo5NF/w=
-In-Reply-To: <20260813181640.6537-12-philmd@oss.qualcomm.com>
-X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.93
-X-Mimecast-MFC-PROC-ID: lz-yROylzESlRaHT9RZw73nXbst3C9CnhLtKNeJRl-0_1786982406
+In-Reply-To: <20260813181640.6537-14-philmd@oss.qualcomm.com>
+X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.4
+X-Mimecast-MFC-PROC-ID: A453YTvErWZVtteTUguQk1TCVvEpcWw9hgbOGeOTd6g_1786983081
 X-Mimecast-Originator: redhat.com
 Content-Language: en-US
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=pbonzini@redhat.com;
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=pbonzini@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -23
-X-Spam_score: -2.4
-X-Spam_bar: --
-X-Spam_report: (-2.4 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.343,
+X-Spam_score_int: 9
+X-Spam_score: 0.9
+X-Spam_bar: /
+X-Spam_report: (0.9 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.343,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=0.001, RCVD_IN_SBL_CSS=3.335,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -136,68 +133,79 @@ Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
 On 8/13/26 20:16, Philippe Mathieu-Daudé wrote:
-> When comparing the KVM implementations, RISCV and ARM differ
-> from S390x / PPC and LoongArch. The caller expects a non-zero
-> value to return pausing execution with the EXCP_HLT exception:
-> 
->    3427 int kvm_cpu_exec(CPUState *cpu)
->    3428 {
->    ...
->    3434     if (kvm_arch_process_async_events(cpu)) {
->    3435         return EXCP_HLT;
->    3436     }
->    3437
->    3438     bql_unlock();
->    3439     cpu_exec_start(cpu);
->    3440
->    3441     /* Inner vCPU loop */
->    3442     do {
->    ...
-
-Your patch is correct because, even if cpu_thread_is_idle() sees 
-cpu->halted == false, the flag could become true during 
-process_queued_cpu_work() because it releases the BQL.
-
-However, I think the better fix is to remove the return code, and check 
-cpu->halted in kvm_cpu_exec().
-
-Thanks,
-
-Paolo
-
-> Change ARM and RISC-V to return cs->halted for consistent behavior.
+> Reduce lock contention by acquiring / releasing the BQL
+> outside of the entire vCPU inner loop.
 > 
 > Signed-off-by: Philippe Mathieu-Daudé <philmd@oss.qualcomm.com>
 > ---
->   target/arm/kvm.c           | 2 +-
->   target/riscv/kvm/kvm-cpu.c | 2 +-
->   2 files changed, 2 insertions(+), 2 deletions(-)
+>   target/arm/hvf/hvf.c | 13 ++++++++-----
+>   1 file changed, 8 insertions(+), 5 deletions(-)
 > 
-> diff --git a/target/arm/kvm.c b/target/arm/kvm.c
-> index d40a6a98591..5caabfab63f 100644
-> --- a/target/arm/kvm.c
-> +++ b/target/arm/kvm.c
-> @@ -1575,7 +1575,7 @@ bool kvm_arch_stop_on_emulation_error(CPUState *cs)
+> diff --git a/target/arm/hvf/hvf.c b/target/arm/hvf/hvf.c
+> index c14ea54a67f..9c6408d2e25 100644
+> --- a/target/arm/hvf/hvf.c
+> +++ b/target/arm/hvf/hvf.c
+> @@ -2598,20 +2598,20 @@ int hvf_arch_vcpu_exec(CPUState *cpu)
+>           }
+>       }
 >   
->   int kvm_arch_process_async_events(CPUState *cs)
->   {
-> -    return 0;
-> +    return cs->halted;
+> +    bql_unlock();
+> +    cpu_exec_start(cpu);
+> +
+>       /* Inner vCPU loop */
+>       do {
+>           if (!(cpu->singlestep_flags & SSTEP_NOIRQ) &&
+>               hvf_inject_interrupts(cpu)) {
+
+It always return zero, so you can make it void and change to
+
+           if (!(cpu->singlestep_flags & SSTEP_NOIRQ)) {
+               hvf_inject_interrupts(cpu);
+	  }
+
+However, a bigger question: who calls cpu_reset_interrupt() here:
+
+     if (cpu_test_interrupt(cpu, CPU_INTERRUPT_FIQ)) {
+         trace_hvf_inject_fiq();
+         hv_vcpu_set_pending_interrupt(cpu->accel->fd, HV_INTERRUPT_TYPE_FIQ,
+                                       true);
+     }
+
+     if (cpu_test_interrupt(cpu, CPU_INTERRUPT_HARD)) {
+         trace_hvf_inject_irq();
+         hv_vcpu_set_pending_interrupt(cpu->accel->fd, HV_INTERRUPT_TYPE_IRQ,
+                                       true);
+     }
+
+and can this be changed to do something like arm_cpu_kvm_set_irq() instead?
+Having the function called only with level == true is a bit unsettling...
+
+Paolo
+
+> -            return EXCP_INTERRUPT;
+> +            ret = EXCP_INTERRUPT;
+> +            break;
+>           }
+>   
+>           flush_cpu_state(cpu);
+>   
+> -        bql_unlock();
+> -        cpu_exec_start(cpu);
+>           r = hv_vcpu_run(cpu->accel->fd);
+> -        cpu_exec_end(cpu);
+> -        bql_lock();
+>           switch (r) {
+>           case HV_SUCCESS:
+>               ret = hvf_handle_vmexit(cpu, cpu->accel->exit);
+> @@ -2624,6 +2624,9 @@ int hvf_arch_vcpu_exec(CPUState *cpu)
+>           }
+>       } while (ret == 0);
+>   
+> +    cpu_exec_end(cpu);
+> +    bql_lock();
+> +
+>       return ret;
 >   }
 >   
->   /**
-> diff --git a/target/riscv/kvm/kvm-cpu.c b/target/riscv/kvm/kvm-cpu.c
-> index 97069bf597a..1a61cd5ef37 100644
-> --- a/target/riscv/kvm/kvm-cpu.c
-> +++ b/target/riscv/kvm/kvm-cpu.c
-> @@ -1568,7 +1568,7 @@ int kvm_arch_irqchip_create(KVMState *s)
->   
->   int kvm_arch_process_async_events(CPUState *cs)
->   {
-> -    return 0;
-> +    return cs->halted;
->   }
->   
->   void kvm_arch_pre_run(CPUState *cs, struct kvm_run *run)
 
 

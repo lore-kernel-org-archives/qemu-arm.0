@@ -4,107 +4,107 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 897FBC5DF66
-	for <qemu-arm@archiver.kernel.org>; Mon, 17 Aug 2026 15:39:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 275CEC5B572
+	for <qemu-arm@archiver.kernel.org>; Mon, 17 Aug 2026 15:39:34 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wvzQK-0005WL-Q3; Mon, 17 Aug 2026 11:38:53 -0400
+	id 1wvzQj-0005bz-3d; Mon, 17 Aug 2026 11:39:21 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1wvzQB-0005Vp-9f
- for qemu-arm@nongnu.org; Mon, 17 Aug 2026 11:38:46 -0400
-Received: from mail-yx1-xb133.google.com ([2607:f8b0:4864:20::b133])
+ id 1wvzQc-0005bT-D9
+ for qemu-arm@nongnu.org; Mon, 17 Aug 2026 11:39:12 -0400
+Received: from mail-yx1-xb12b.google.com ([2607:f8b0:4864:20::b12b])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1wvzQ9-0000QL-PV
- for qemu-arm@nongnu.org; Mon, 17 Aug 2026 11:38:42 -0400
-Received: by mail-yx1-xb133.google.com with SMTP id
- 956f58d0204a3-66c5101a984so2599628d50.1
- for <qemu-arm@nongnu.org>; Mon, 17 Aug 2026 08:38:40 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1786981120; cv=none;
+ id 1wvzQa-0000UQ-D3
+ for qemu-arm@nongnu.org; Mon, 17 Aug 2026 11:39:10 -0400
+Received: by mail-yx1-xb12b.google.com with SMTP id
+ 956f58d0204a3-66c711b7f2aso5215798d50.3
+ for <qemu-arm@nongnu.org>; Mon, 17 Aug 2026 08:39:07 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1786981147; cv=none;
  d=google.com; s=arc-20260327;
- b=BlOdPkd/U25dYvi/DhigL8Ej+VXzUXuVQC+64WNFg8eASGlhebolbiiKuPfQBqzyue
- 9CK3FSbl5S+BVcau4POncEEQARHLKN0M5HILRCRbHp4xtfM+kbTq6xAYDlPFAgPQHn64
- bpnHqJ86ls60+Kw2ePs/JzRcRRCLcrhesCb3sXXcmceL6p/iVldQ+hQ5myzTSz+A2mmT
- EC0HMlDeuH6oBpJGuK5B89wKJy/3uJ0jW/0jSDcu4hSCNzkDz/j4Zgy9axeuPcDwLnDY
- zKuenb0hED5flQv2WUD2ZVbGX/xcN2LdgpJCf+K3wYrLfhktY3wyw83oNoQ45WZYCUoH
- 0CZw==
+ b=Ra8RV6iTJq8FX4jQrZ0zxZf7jRBTcqBbHWYRePMq+alz3Ffnx3pVA/xe80b5QSVEy9
+ 6AJY6nak7pJaiUHA1JeJhFe5r8UHyHC91cMc3Z1WehtSN63KdPbuhiKcwrMHN1XpXPyb
+ G8rDpnhpIlrKbi79YUlX0G6dXSjFhu+Mj2O1KVDoO4vpbHsgNmGkfrs4J4NMRJugj6os
+ HOEbPFRZ/2TXdG1XKFsmm69Lu2pt7pKYo/PyePj5wkSWn44pXjY0AGGMEwb0g5dRbky1
+ ICOOlkZBufEPwTFTXwKC24Fs7E7jyP/1LUk/7PQ4OAtUorS1iRCCzTsCbmKuNfiFpi2O
+ 3FbQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
  s=arc-20260327; 
  h=cc:to:subject:message-id:date:from:in-reply-to:references
  :mime-version:dkim-signature;
- bh=dTGABPubG33espNLne7rRiXwrTKCCeyueuBOeukfXk4=;
- fh=L9qWVYOkp+L6SSWxSZs+EhulRbbU4UuvTSb83THOG6k=;
- b=fOyNIcH6dwBaith173gmn1SqXeQb8ilZG+EboBuWdLrxNiXelteOlQN2kApWSFYhh5
- JbQUaPfg2CgNjt+1B30wOmFuZnEzbSGiwRPS3+fxPk87WnHPL+icbkDluFUBAqeiUD+l
- ru0frPJ0rZNf6Y7QV4jEvpJYj7aoiZNJNYP4DtO0Zn+2uOjoAwqTt3liytq0ab9n/ZrE
- sRY0P3+oQJ6fOWSAzv2NbyLRAFpMm4lBoa6wFTZggCvb0e1dweXEY+RkUlUKmobY7Puq
- WeY9eYY/7WFtg4S2Ua5LPDoTI+2NR4uhK5p457c2AfVRnvHtACE9ijDSiuFCiK+Dc5E6
- RbUw==; darn=nongnu.org
+ bh=n6jmdcAg8V7YZllZqZSNbr90fowePbfCBGSOOGmRag8=;
+ fh=5Wn0T9UKM1eCm9jM9rDUz1Dz6HJkwMSyELdzy52zcSQ=;
+ b=rcy/i4RkpSei7CqMyaPo2J2oQOrwjn8BHHBKCEuUXU+wwfSHqcFFIogZqGYParNVAH
+ 29aDmjtFNGNTSfVff8glLRvBdIjEwPhXiG9J/KrMEM58xiz844prV8dQy+rex4h5wlXX
+ sAUAyIN5QUKNoamw849jIaJW6IxTYz55n6O67I3/sPds32Hcv1yFoEGk1q+kVwciQ1U+
+ s6jejHoOW+8r/AqkOtAj11uljQ9f3dZ04SSapqCnEA8A5ABjafdqwbrafc+Uccn0gbfx
+ thD+Sc04MOxNFoN5DOFzd58Xi/uvxbd1mXwEU0WBBN2QRfHPYG2wQ+TqwZeoVuT+M8ZW
+ Kh6w==; darn=nongnu.org
 ARC-Authentication-Results: i=1; mx.google.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1786981120; x=1787585920; darn=nongnu.org;
+ d=linaro.org; s=google; t=1786981147; x=1787585947; darn=nongnu.org;
  h=content-type:cc:to:subject:message-id:date:from:in-reply-to
  :references:mime-version:from:to:cc:subject:date:message-id:reply-to
- :content-type; bh=dTGABPubG33espNLne7rRiXwrTKCCeyueuBOeukfXk4=;
- b=UhR/LpbKq4xgmUxxjiAXRYn+ZvAXg3QRPaqBe5iscBtJ3qQ2thwMLfdJTmFUOw8j+U
- Mnr69Xz1MPC6ubRdazLNkZPJbxvZhmx/+ZLJWJSZ/pdXVXf7kmYPxc5LWm2Z1Mbk3jSi
- +rl33g8m2a8iI/qsqE/mFC6edDFlzYNcb/M/3/ierAxYunPMMQ+76tb/pixklaw3t7tx
- 48bvTLiq17l2SOIFS0tqpyiuciZdHc0t1oI+5qO1GrkKsQf5mToE/4ZO3+NgsV98lHwW
- T92yw29plA/n+9kOZ19g5YP1QJ7Y43HXCvkqQ37e5IeyvmZQO75OVs3M9Pv6UTQiE1BN
- /s4Q==
+ :content-type; bh=n6jmdcAg8V7YZllZqZSNbr90fowePbfCBGSOOGmRag8=;
+ b=lyCuKF8owAES92kB0vVEqo6Kh3EFp138wkNoGQvcdAq+aBP9quoX+BV23ESsFV0RIw
+ bxmaGoghZUvcSbPOxJehAKi/OPwKy8O0P8s92wgFpQ+c90Wq/y6+uNacuD+VPOSS4yUE
+ a19oP5FjDALYPZKhWXUDGCGOa1GLez6kx49GwenHlF0bQYm3ulPUhVaZSY87wXKhgG+L
+ B3DM6fM+L9LeD1hX3KQKEhqIXL7/KJq2+FSG7QxTKuLstEl8+uT6PrAmBbuZOMnh2tZI
+ Qrx5wyJEhR5ICbcbddr0rRckhcDHE3CZv8Idbl8jkgJEtpmqFa5hu0VOIgWf94Rm5z2Z
+ B7oQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1786981120; x=1787585920;
+ d=1e100.net; s=20251104; t=1786981147; x=1787585947;
  h=content-type:cc:to:subject:message-id:date:from:in-reply-to
  :references:mime-version:x-gm-gg:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to:content-type;
- bh=dTGABPubG33espNLne7rRiXwrTKCCeyueuBOeukfXk4=;
- b=JBjjEBkLicvygtKT2vpZO0rdzNLjOO1xqnbRwJbh2EmMfGMlqMdjlJA9K9fzmg9Usp
- 7FBc3RlXooeD+vXrYszLHklZBCmSX9u6XUnndhK8hyNx5DsfJr+k7FkLKlewFNxpSn+v
- YkHqCDIucZNaAWHhgx/ug6lg6OFmdGpLro3mN8uMen7su88bpwgXwWZi2cZoXz8aIgvw
- cEjGrIWPdAltbTLseU/smEOykjUZhNgVg5PhF2coH2pGqSWZsa9hMwSL7Ph7We4SJjUi
- ZNf2DM4U5c0ySCIcZBmNUNb3yALG9Ar8kiXjhFEI/vXwFBGeLMqhVG1x0o7/5DUq+9Dc
- cFyA==
+ bh=n6jmdcAg8V7YZllZqZSNbr90fowePbfCBGSOOGmRag8=;
+ b=JoZbIp1b3FS3VaMSjImgWmqttOcMhc8O68yiJ2YyztG45GpvUxWYiyf11e1w4Pqr9d
+ u6Zy4OvjNNl6bsK2NjZWQEsXPSzu0XEwHdiMQYkuNvUtB8jh4SjN+C3dsspla6Mr0UeQ
+ CK4TwPCosv7YN3w+Dhmd9Jgi1dzFQkhoiU79RTb9DTd1UVXDBYeudb+9pfv9RcJokTLF
+ FoyHko61ir2hIuqOFU6VuSCQT8XFU4W4MIgo8tbBg1IoF1DVuJGlJofZBren0HCY/EFE
+ x/IbqO5u9fUUA1D/lUeOMrcvp5R11pf/ysSE4f0gpiiQDCdLs8A2plixyQBkvobR1cRl
+ 4yJQ==
 X-Forwarded-Encrypted: i=1;
- AHgh+RrBtp1yZcBY25KB447nQUi/jG1yfuKoXkAdDcPpDthki2SgX0yBytoC+4+TGbUhtdvi0DNIXUiBVQ==@nongnu.org
-X-Gm-Message-State: AOJu0YwWcDoZYIf9WGzVAcvITz4e0dE4wybPzHME5v6EITJsvnuQJlzR
- zDumbmqSanv8VIVHQ7oRrfDWiZun5hn7E4N8nYtwI+6P7cj/TFPGWXnDCvmKAT8410F2qBhxyeo
- YruE2CmDI2yqTCm+Z5Fm7tzIiPwxcrMaXy59sjgSpUA==
-X-Gm-Gg: AR+sD10n9yZsp2O4eNkec2IYBXqwKUc3Nw0urn7HcMVxzmSXTNNPMYbhi9cWUfh94aq
- 8IjaN6dDvA8QQF06KPrTQ4nmRKG22Ut2L+bpSBVqq1afQGuyXjWmH93eEcgY4qCol7BtbiswPub
- IBX5i859ZpF85zN2kGmO4X+1IeTKrdmMOO40AjN6c//IXSUzJ+dgEIW/rQ137hiJOFI9yAwS7Oo
- AvzO4KWvtZIcbleLHC65xOfVMWJDTEwdA1u+cPfPqstz6bg6pMUCujyeuUK5nGKuNJFXEbTn8Qp
- Kl6nFV3DSZvtRO7gYDj99xKNtb03F8a9mafQrTL3xabRjNzt2fAzi98uagyeZSHJ4LvC6bEB+tI
- cTvRZUdlOngBT6OXnSfNig0HCCBPZ
-X-Received: by 2002:a05:690e:140e:b0:668:180c:bf6a with SMTP id
- 956f58d0204a3-66c72d1fefbmr8150772d50.37.1786981119661; Mon, 17 Aug 2026
- 08:38:39 -0700 (PDT)
+ AHgh+RrnzOWY06/5PUZe6Bp1Rs9mSg2dE9SkcFxVs4ikxkKXNxNX/cnX7Fiy3P0DJEW9MxoNQCUQ3q3z7w==@nongnu.org
+X-Gm-Message-State: AOJu0Yyj7Q0Pt4asYBvnCbEfJEF3Po+eO0cA3RUenWSUFUNAe/BYHE2f
+ OLM0f50N1TDjFpR+/4KLUyrXLPhHCLJaJspBVTx1UT47QnH7TcQsS3n1cKpybSRGheANLvBTMEW
+ 5z1xXvt6ImzgdgzxEpicJIcVH0fWVDq0zkHREjbvsuw==
+X-Gm-Gg: AR+sD10G05h4kzbZXu5XbyCZ76PsQxtbgGO30ZTpsx7uVApSaJvGVaixFv65OcBYCDZ
+ BzA9kwolgNjikyG2mN/k6YSJ4HSztKga/cqcJ4MjYwSTaOm98Wx+Mh25zwS5/hN84YHo3pmOEox
+ j6uZmgeyNecSbUefmDF5AgEhW3shIskP/IuxN9TK9gzd14jlSf4elVj4V5rwletjqhv1+wPzsr8
+ rUeX9/GBA3Rs9GNSBc3eepmgp3w7PQQ951pUo7T/qx+/cDrcKFhXl85tUNSCFZSy9CAOuzQS+0E
+ Yjs8TnDljCNKHwQKEbJdtuHGzZG20ayVFcGMEfixw9fDkRR5E1bedL6Q6ysqOSFBoYIrnpj3ggM
+ K9lbYDMD83hB8EWMnZ+FU3Rg9+9LnWqlyl45/mO0=
+X-Received: by 2002:a05:690e:d84:b0:668:8bca:3c41 with SMTP id
+ 956f58d0204a3-66cb9da22fdmr606139d50.17.1786981146796; Mon, 17 Aug 2026
+ 08:39:06 -0700 (PDT)
 MIME-Version: 1.0
 References: <20260805153005.9989-1-simonxhy0404@gmail.com>
- <20260805153005.9989-7-simonxhy0404@gmail.com>
-In-Reply-To: <20260805153005.9989-7-simonxhy0404@gmail.com>
+ <20260805153005.9989-8-simonxhy0404@gmail.com>
+In-Reply-To: <20260805153005.9989-8-simonxhy0404@gmail.com>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Mon, 17 Aug 2026 16:38:27 +0100
-X-Gm-Features: AcwNN1U_yGaInUv0xPhw5ad1BoLRurUWHJbZhBgwCoPcfCFkm3OBLNtDaLkO5JM
-Message-ID: <CAFEAcA87J51jytkagf8-aqhc2Ac=xbjuEwBHY=y85fNSk6QSmA@mail.gmail.com>
-Subject: Re: [PATCH v2 6/9] hw/misc/iotkit-secctl.c: use GNU C case ranges
+Date: Mon, 17 Aug 2026 16:38:55 +0100
+X-Gm-Features: AcwNN1XtSLekMzWbkZk9OBbiQ2fBoN9KmdC0b8MVN_UCRxIyAIVmMp9X2ncLBTA
+Message-ID: <CAFEAcA-znXsy0xwyGdpA=CbC2piEQ8EWWNPOhQOo0FC8yCxJUg@mail.gmail.com>
+Subject: Re: [PATCH v2 7/9] hw/misc/iotkit-sysinfo.c: add SSE-310 support
 To: Simon Xu <simonxhy0404@gmail.com>
 Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, 
  Owen Giles <owen.giles@hpe.com>,
  Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>, 
  Robert Elliott <elliott@hpe.com>
 Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::b133;
- envelope-from=peter.maydell@linaro.org; helo=mail-yx1-xb133.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::b12b;
+ envelope-from=peter.maydell@linaro.org; helo=mail-yx1-xb12b.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -122,15 +122,12 @@ Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
 On Wed, 5 Aug 2026 at 16:30, Simon Xu <simonxhy0404@gmail.com> wrote:
 >
-> Replace case fall throughs with case ranges when register addresses
-> are continous.
+> Add SSE-310 PIDR and CIDR registers. Add sys_config2 register and
+> always report 0 on read as we do not implement the NPU.
 >
 > Reviewed-by: Owen Giles <owen.giles@hpe.com>
 > Reviewed-by: Robert Elliott <elliott@hpe.com>
 > Signed-off-by: Simon Xu <simonxhy0404@gmail.com>
-> ---
-> v1 -> v2
->         Make long case statemens consistent with other iotkit files
 
 Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 

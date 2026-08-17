@@ -4,120 +4,107 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B2F46C5B572
-	for <qemu-arm@archiver.kernel.org>; Mon, 17 Aug 2026 15:51:14 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6FD8FC5B572
+	for <qemu-arm@archiver.kernel.org>; Mon, 17 Aug 2026 15:52:01 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wvzcD-0003Nl-PN; Mon, 17 Aug 2026 11:51:10 -0400
+	id 1wvzcI-0003aI-EU; Mon, 17 Aug 2026 11:51:14 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <pbonzini@redhat.com>)
- id 1wvzbv-0003CF-Ck
- for qemu-arm@nongnu.org; Mon, 17 Aug 2026 11:50:51 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <pbonzini@redhat.com>)
- id 1wvzbt-0004IH-QI
- for qemu-arm@nongnu.org; Mon, 17 Aug 2026 11:50:51 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1786981849;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
- bh=YUi+vsJATf+A7/V8EXxhSwEGQmC9FYlzdP9bHNlEwDo=;
- b=ZPiC6qLtlHmyQ0iQP7N+dBh/L7VP6sX5KS8cZseOzqzwIB9lzqvnSaUn4dEqL7Kwvne44e
- fdeAJ+AjUnQ3gciBj9HhqhIKsJsMlSvSL6zEScjuScPhd7C5p7yvzLiXrU+upq/fMT5AHf
- 5VqqjD+WCdJZ36ZGcC44hFOZHyujpiM=
-Received: from mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
- relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-290-3LN6POFvOoC1tes9Ch60Uw-1; Mon,
- 17 Aug 2026 11:50:39 -0400
-X-MC-Unique: 3LN6POFvOoC1tes9Ch60Uw-1
-X-Mimecast-MFC-AGG-ID: 3LN6POFvOoC1tes9Ch60Uw_1786981837
-Received: from mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com
- (mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.17])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
- (No client certificate requested)
- by mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 60F8C1800867; Mon, 17 Aug 2026 15:50:36 +0000 (UTC)
-Received: from [100.90.56.12] (headnet05.pony-001.prod.iad2.dc.redhat.com
- [10.2.32.117])
- by mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id 2513C1956042; Mon, 17 Aug 2026 15:50:31 +0000 (UTC)
-Message-ID: <0143f26e-eb64-4924-8e76-3b6ce66fe6db@redhat.com>
-Date: Mon, 17 Aug 2026 17:50:30 +0200
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1wvzcC-0003La-LY
+ for qemu-arm@nongnu.org; Mon, 17 Aug 2026 11:51:09 -0400
+Received: from mail-yx1-xb131.google.com ([2607:f8b0:4864:20::b131])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1wvzc9-0004Kl-DA
+ for qemu-arm@nongnu.org; Mon, 17 Aug 2026 11:51:06 -0400
+Received: by mail-yx1-xb131.google.com with SMTP id
+ 956f58d0204a3-66ca4bdccfaso1676797d50.3
+ for <qemu-arm@nongnu.org>; Mon, 17 Aug 2026 08:51:05 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1786981864; cv=none;
+ d=google.com; s=arc-20260327;
+ b=DR9Fm6T9/b0d7CSJg7wWtFQ0tpEyGqhudM7qViuXSZOj+qZ4aJ0zwsGt08xrsPf9tT
+ NAFxa6kB8ybweaxpWtzqYQfo9jKumWYEWC2CQRvQiW1V8ox3wYDzmkHswEQtSQP8DgxW
+ KZstqDK3UzbCOmsZgnqMrdTBzN/1+1yRuCFA1F3r2qndOvhECFJZXZAqCjyXhzF/1Fns
+ v/FWNGrEm3Gg6bFsGBTl7VYMw77M9PcxR1l5Tui/YP+/GGKlYk2txcLZheogxWIjQzES
+ 2VTSfH4LTNr4DsnZSSWzk0eNqNYBfmLXUbRmRybAsyjpuovVM0hrLCEv61hwk2GKDNVx
+ z+qg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
+ s=arc-20260327; 
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:dkim-signature;
+ bh=vM5BNPuePd2kR65SJoqxnhvEPlvFj+pZbFCJNrLvjxs=;
+ fh=Wvk+Jo6Ymse9oLqwYDdbbgy+ORPymqOC6fZPBj6RyJM=;
+ b=nMK0/iJXDdh743bYJzr0+l3Efcb3ntQkdtyYjgPdp3w/7fBvlhvFsmKBB2ETgTZAPG
+ JIzbK/WlZnoh+j8wwoL9iyJue3UjRFHPhBQoDOGHqkI23pp490LtQh1dEk/n78tOao2i
+ 3d+2Wi8a8Em/PSNcBZDjXz26u5Z9bmALnUspCRu01xbXVIE+RPgjDRNJxdRq1atiMjIt
+ l+wBFgNwVsKNocnNtGPHn3k94twwu9957bYyn/sf50kDMi0hiu/BlxuiXaRfalWvgl/j
+ XhcvlUslrbPqvpS+xNQw87tl5ocSP3oCJdxwILggw+Jt1N5Y9tvzWYTKouAP5WjNlUAy
+ ezNw==; darn=nongnu.org
+ARC-Authentication-Results: i=1; mx.google.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1786981864; x=1787586664; darn=nongnu.org;
+ h=content-type:cc:to:subject:message-id:date:from:in-reply-to
+ :references:mime-version:from:to:cc:subject:date:message-id:reply-to
+ :content-type; bh=vM5BNPuePd2kR65SJoqxnhvEPlvFj+pZbFCJNrLvjxs=;
+ b=DIZ2xFKanMs4MRxkZIwCTFDbBlep5Ax6mJFiCDYBA79Uakbb5Vl8ioAfxtWt4tHxQy
+ PYAi+LBsCJSHuHblP8+C8gvgQ2FPWLsz5GCVD3OERaod0Vb1wHZzD1DnYw1QTEgz18XD
+ FFRIayfVqd/sg3kf9Jkk5B/6YQPGfAxtpgJO63YX3vEbFJQ+85ffpYgY6tvnVM2JkLW0
+ 9lQ26W8cvq59WaAYELAYVEexUzNA4T2zvZUbLVQjrnq3VAvw6b7xh+3F5KjGRlfWM9Ep
+ 9K7fEPMZ1dx8zcL9byv3DeKZ7Kvxt2Hcx+a3yaku5+BiuNZoLdO83XuerhvT/xxTjPkD
+ 5PVA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20251104; t=1786981864; x=1787586664;
+ h=content-type:cc:to:subject:message-id:date:from:in-reply-to
+ :references:mime-version:x-gm-gg:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to:content-type;
+ bh=vM5BNPuePd2kR65SJoqxnhvEPlvFj+pZbFCJNrLvjxs=;
+ b=eNzIvy5nb4jhEIeSd369p+j+DoSAnpWtIHVdHtDTLWz1NKjF4X1UvFWancHvT/4ONW
+ bxHc5NIBpVfjmd7Ag1xRxOiyy48qIwzuBJKsgvofn5BNjLq5MtJOr6z0wo4KVZhzFMVM
+ ce7m7bE0/L6Oif5ebt01VbuUMIMiflpcIjSF9JbtQzjmLCuqmDAfHx/VakYSw0L3ybw3
+ TtJhTxSNghR1hAEraQ3lHaUrukOZLAQJdtmqiAHGLrgpibnGucEanwtwki6Nq0BivCV2
+ qxbmQslwNSbPtiT4ZAYfEQE4b6G20wk3wEajltzq8Hf/He5y7NMoKbDBDEjzSO2jJMia
+ MC/w==
+X-Forwarded-Encrypted: i=1;
+ AHgh+Rr8zZZeHs9ToPkNAQtDyZWdDFed8/m37dyJnLR2n9J4KMh3JWu2JpE53Ad4aNHcxPAO8nTBAICSRA==@nongnu.org
+X-Gm-Message-State: AOJu0YwduxNxrh9ASpfhL7v/ht6iiHYr/o/IogXlF2HnlQFnNWVYFwSZ
+ l6IRBZDYtiwg/yoHhc+TE3oJZahs67y3t865JWXeRhSZmd2JYMEbAWuiCVDWhHecmPJo3CA1O/m
+ myVyAuC9QtsuiyjaiGBeikhNRymj6inOsXcDEQBsa/A0unbuzFyI7
+X-Gm-Gg: AR+sD112VBlAA+QKUxWodtH/a/6vR9acr3KuMUACVG2dar+pP7A0lYMC9byhHvpH16t
+ URUWnZkQQYrGFxfRrJfDVq9pFmfOJ2S7Cg19NM298aa/4uCADauGMIq6qLZRIpeNIEAlJhMibW0
+ /GTNToCp/ENRI0SUD4epMZpUgS3S3QW09/WStvOKlzyU5xyKh6OaxfbrBNJpjMOpmQuA6+BHJY5
+ F+ZL2Jl8sOuWR1VihxaXmiG2Lz5jvSrxT96IhlAPIbu+rzRIZS1yBCPZ8Jl9a1V9jt67KsuYEuT
+ 3+Eg6sSWQ8JkjhAhMwKMHgq1JAgioB/LQIsQO5L4ZbQ3taBVr0dvygwCcVTKJURAbm+KZDzKYz6
+ qHlvP6kcSAXPM9yIqlpnxvbKk3Ius
+X-Received: by 2002:a05:690e:12c9:b0:66b:26cf:6e35 with SMTP id
+ 956f58d0204a3-66c72c7b4bcmr11014684d50.30.1786981863905; Mon, 17 Aug 2026
+ 08:51:03 -0700 (PDT)
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 08/16] cpus: Slightly improve *run_on_cpu() docstrings
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@oss.qualcomm.com>,
- qemu-devel@nongnu.org
-Cc: Daniel Henrique Barboza <daniel.barboza@oss.qualcomm.com>,
- Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>,
- Mohamed Mediouni <mohamed@unpredictable.fr>, Alexander Graf
- <agraf@csgraf.de>, qemu-ppc@nongnu.org, qemu-riscv@nongnu.org,
- kvm@vger.kernel.org, Richard Henderson <richard.henderson@linaro.org>,
- qemu-arm@nongnu.org, Magnus Kulke <magnuskulke@linux.microsoft.com>,
- Peter Maydell <peter.maydell@linaro.org>,
- =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@mailo.com>,
- Zhao Liu <zhao1.liu@intel.com>
-References: <20260813181640.6537-1-philmd@oss.qualcomm.com>
- <20260813181640.6537-9-philmd@oss.qualcomm.com>
-From: Paolo Bonzini <pbonzini@redhat.com>
-Autocrypt: addr=pbonzini@redhat.com; keydata=
- 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
-In-Reply-To: <20260813181640.6537-9-philmd@oss.qualcomm.com>
-X-Scanned-By: MIMEDefang 3.0 on 10.30.177.17
-X-Mimecast-MFC-PROC-ID: Cpw740KX-kVlzkHujG1VElRXmW-2YPd2J3phR1trDJM_1786981837
-X-Mimecast-Originator: redhat.com
-Content-Language: en-US
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=pbonzini@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -23
-X-Spam_score: -2.4
+References: <20260805153005.9989-1-simonxhy0404@gmail.com>
+ <20260805153005.9989-9-simonxhy0404@gmail.com>
+In-Reply-To: <20260805153005.9989-9-simonxhy0404@gmail.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Mon, 17 Aug 2026 16:50:51 +0100
+X-Gm-Features: AcwNN1UBdjNCKN9qGaOYl5lGsSeiqGNYuKZMgH7BbOV7xcFHq0y2CUSDd7xoQsc
+Message-ID: <CAFEAcA_fMJA4m_HYoTh70=t2XhsdSOn_g+X2=1LVgXXxa7GqqA@mail.gmail.com>
+Subject: Re: [PATCH v2 8/9] hw/arm/mps2-tz.c add Arm mps3-an555 board
+To: Simon Xu <simonxhy0404@gmail.com>
+Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, 
+ Owen Giles <owen.giles@hpe.com>,
+ Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>, 
+ Robert Elliott <elliott@hpe.com>
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2607:f8b0:4864:20::b131;
+ envelope-from=peter.maydell@linaro.org; helo=mail-yx1-xb131.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.4 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.343,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -133,80 +120,36 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On 8/13/26 20:16, Philippe Mathieu-Daudé wrote:
-> Be a bit more precise mentioning BQL use and blocking calls.
-> 
-> Signed-off-by: Philippe Mathieu-Daudé <philmd@oss.qualcomm.com>
+On Wed, 5 Aug 2026 at 16:30, Simon Xu <simonxhy0404@gmail.com> wrote:
+>
+> Add mps3-an555 board modeled after the existing mps3-an547 board.
+> Add UnimplementedDeivceState for timing adapters and qspi controllers
+> in MPS2TZMachineState.
+>
+> Changes in AN555:
+> Timing adapters in APB PPC EX0 instead of MPC.
+> Additional QSPI controllers in AHB PPC EX0.
+> Additional AHB PPC EX1 with DMA.
+> Create standalone unimplemented devices for MPC instead of timing adapters.
+>
+> Include documentation for SSE-310 and mps3-an555.
+>
+> Arm mps3-an555 TRM: https://developer.arm.com/documentation/107642/latest/
+>
+> Reviewed-by: Owen Giles <owen.giles@hpe.com>
+> Reviewed-by: Robert Elliott <elliott@hpe.com>
+> Signed-off-by: Simon Xu <simonxhy0404@gmail.com>
 > ---
->   include/hw/core/cpu.h | 36 ++++++++++++++++++++----------------
->   1 file changed, 20 insertions(+), 16 deletions(-)
-> 
-> diff --git a/include/hw/core/cpu.h b/include/hw/core/cpu.h
-> index 183ef9f4ef2..d610f87abd3 100644
-> --- a/include/hw/core/cpu.h
-> +++ b/include/hw/core/cpu.h
-> @@ -908,36 +908,40 @@ void do_run_on_cpu(CPUState *cpu, run_on_cpu_func func, run_on_cpu_data data,
->                      QemuMutex *mutex);
->   
->   /**
-> - * run_on_cpu:
-> + * run_on_cpu - Execute a function on a vCPU and wait for completion
->    * @cpu: The vCPU to run on.
->    * @func: The function to be executed.
->    * @data: Data to pass to the function.
->    *
-> - * Schedules the function @func for execution on the vCPU @cpu.
-> + * Schedules the function @func for execution on the vCPU @cpu and
-> + * block until it completes.
-> + *
-> + * Note: The caller must hold the BQL.
->    */
->   void run_on_cpu(CPUState *cpu, run_on_cpu_func func, run_on_cpu_data data);
->   
->   /**
-> - * async_run_on_cpu:
-> - * @cpu: The vCPU to run on.
-> - * @func: The function to be executed.
-> - * @data: Data to pass to the function.
-> - *
-> - * Schedules the function @func for execution on the vCPU @cpu asynchronously.
-> - */
-> -void async_run_on_cpu(CPUState *cpu, run_on_cpu_func func, run_on_cpu_data data);
-> -
-> -/**
-> - * async_safe_run_on_cpu:
-> + * async_run_on_cpu - Queue a function for execution on a vCPU
->    * @cpu: The vCPU to run on.
->    * @func: The function to be executed.
->    * @data: Data to pass to the function.
->    *
->    * Schedules the function @func for execution on the vCPU @cpu asynchronously,
-> - * while all other vCPUs are sleeping.
-> + * then return immediately without waiting.
->    *
-> - * Unlike run_on_cpu and async_run_on_cpu, the function is run outside the
-> - * BQL.
-> + * Note: The vCPU will hold the BQL when executing @func.
-> + */
-> +void async_run_on_cpu(CPUState *cpu, run_on_cpu_func func, run_on_cpu_data data);
-> +
-> +/**
-> + * async_safe_run_on_cpu - Queue a function to run with other vCPUs paused
-> + * @cpu: The vCPU to run on.
-> + * @func: The function to be executed.
-> + * @data: Data to pass to the function.
-> + *
-> + * Schedules the function @func for execution on the vCPU @cpu asynchronously.
-> + * Unlike async_run_on_cpu(), all other vCPUs are paused while @func executes,
-> + * ensuring @cpu has exclusive access to shared state.
+> v1 -> v2
+>         Move board and application note documentation locations
+>         Revert MPS2TZ_NUMIRQ_MAX to 96 from 100
+>         Fix timing adapter and MPC creation location
+>         Add QSPI controller to AHB PPC EX0
+>         Add GPIOALT2 register to FPGAIO block in next patch
+> ---
 
-Might as well mention that @func is run without the BQL taken and in 
-fact must not take it (see comment in process_queued_cpu_work()).
+Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 
-Paolo
-
->    */
->   void async_safe_run_on_cpu(CPUState *cpu, run_on_cpu_func func, run_on_cpu_data data);
->   
-
+thanks
+-- PMM
 

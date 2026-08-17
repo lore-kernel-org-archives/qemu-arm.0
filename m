@@ -4,107 +4,151 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 275CEC5B572
-	for <qemu-arm@archiver.kernel.org>; Mon, 17 Aug 2026 15:39:34 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 59E67C5DF66
+	for <qemu-arm@archiver.kernel.org>; Mon, 17 Aug 2026 15:47:10 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wvzQj-0005bz-3d; Mon, 17 Aug 2026 11:39:21 -0400
+	id 1wvzXb-0000Pq-EP; Mon, 17 Aug 2026 11:46:23 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1wvzQc-0005bT-D9
- for qemu-arm@nongnu.org; Mon, 17 Aug 2026 11:39:12 -0400
-Received: from mail-yx1-xb12b.google.com ([2607:f8b0:4864:20::b12b])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1wvzQa-0000UQ-D3
- for qemu-arm@nongnu.org; Mon, 17 Aug 2026 11:39:10 -0400
-Received: by mail-yx1-xb12b.google.com with SMTP id
- 956f58d0204a3-66c711b7f2aso5215798d50.3
- for <qemu-arm@nongnu.org>; Mon, 17 Aug 2026 08:39:07 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1786981147; cv=none;
- d=google.com; s=arc-20260327;
- b=Ra8RV6iTJq8FX4jQrZ0zxZf7jRBTcqBbHWYRePMq+alz3Ffnx3pVA/xe80b5QSVEy9
- 6AJY6nak7pJaiUHA1JeJhFe5r8UHyHC91cMc3Z1WehtSN63KdPbuhiKcwrMHN1XpXPyb
- G8rDpnhpIlrKbi79YUlX0G6dXSjFhu+Mj2O1KVDoO4vpbHsgNmGkfrs4J4NMRJugj6os
- HOEbPFRZ/2TXdG1XKFsmm69Lu2pt7pKYo/PyePj5wkSWn44pXjY0AGGMEwb0g5dRbky1
- ICOOlkZBufEPwTFTXwKC24Fs7E7jyP/1LUk/7PQ4OAtUorS1iRCCzTsCbmKuNfiFpi2O
- 3FbQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
- s=arc-20260327; 
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:dkim-signature;
- bh=n6jmdcAg8V7YZllZqZSNbr90fowePbfCBGSOOGmRag8=;
- fh=5Wn0T9UKM1eCm9jM9rDUz1Dz6HJkwMSyELdzy52zcSQ=;
- b=rcy/i4RkpSei7CqMyaPo2J2oQOrwjn8BHHBKCEuUXU+wwfSHqcFFIogZqGYParNVAH
- 29aDmjtFNGNTSfVff8glLRvBdIjEwPhXiG9J/KrMEM58xiz844prV8dQy+rex4h5wlXX
- sAUAyIN5QUKNoamw849jIaJW6IxTYz55n6O67I3/sPds32Hcv1yFoEGk1q+kVwciQ1U+
- s6jejHoOW+8r/AqkOtAj11uljQ9f3dZ04SSapqCnEA8A5ABjafdqwbrafc+Uccn0gbfx
- thD+Sc04MOxNFoN5DOFzd58Xi/uvxbd1mXwEU0WBBN2QRfHPYG2wQ+TqwZeoVuT+M8ZW
- Kh6w==; darn=nongnu.org
-ARC-Authentication-Results: i=1; mx.google.com; arc=none
+ (Exim 4.90_1) (envelope-from <philmd@oss.qualcomm.com>)
+ id 1wvzXG-0000ER-8j
+ for qemu-arm@nongnu.org; Mon, 17 Aug 2026 11:46:10 -0400
+Received: from mx0a-0031df01.pphosted.com ([205.220.168.131])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <philmd@oss.qualcomm.com>)
+ id 1wvzXC-00038U-64
+ for qemu-arm@nongnu.org; Mon, 17 Aug 2026 11:45:59 -0400
+Received: from pps.filterd (m0279863.ppops.net [127.0.0.1])
+ by mx0a-0031df01.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id
+ 67HFYa0h2730273
+ for <qemu-arm@nongnu.org>; Mon, 17 Aug 2026 15:45:55 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qualcomm.com; h=
+ cc:content-transfer-encoding:content-type:date:from:in-reply-to
+ :message-id:mime-version:references:subject:to; s=qcppdkim1; bh=
+ qJomhp4E4/0nAHnYLCMRRJVWnnFs3olnM/6sAXdkmJE=; b=pXUq5vwNeT8UfXSD
+ T3K3yFySmigWkvf1EeR40akxCNMUfY9WLs363VxnCtA9fp7uFnEs8Ae5iFi754yx
+ FAIFeTzoI5IZsKuV1VR7rgKhGfDIk/KrdIy+eG59TTnMg/rXN+4YlI1Avkq92je/
+ L9vPrp4p/RgHsRgd2aFVMlDU6+hhhBAUrKPi332a8gmMhn3/H158qaMS73kd0r4U
+ QGCF2U7rAgRkB3wIyXms6HsrNqN6Zvrya9QGmvLPGIlv+xvBLmpdWu2tJa1rEoFU
+ 4xxbZa0layysLXr5Tsr3fVe7LgZeZ8lXr0SDzQUKMkmRcXVSwEe4rfUhg5W6uN5L
+ hBKa1w==
+Received: from mail-qv1-f70.google.com (mail-qv1-f70.google.com
+ [209.85.219.70])
+ by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 4g3txyan0h-1
+ (version=TLSv1.3 cipher=TLS_AES_128_GCM_SHA256 bits=128 verify=NOT)
+ for <qemu-arm@nongnu.org>; Mon, 17 Aug 2026 15:45:54 +0000 (GMT)
+Received: by mail-qv1-f70.google.com with SMTP id
+ 6a1803df08f44-9083b049f73so46379046d6.1
+ for <qemu-arm@nongnu.org>; Mon, 17 Aug 2026 08:45:54 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1786981147; x=1787585947; darn=nongnu.org;
- h=content-type:cc:to:subject:message-id:date:from:in-reply-to
- :references:mime-version:from:to:cc:subject:date:message-id:reply-to
- :content-type; bh=n6jmdcAg8V7YZllZqZSNbr90fowePbfCBGSOOGmRag8=;
- b=lyCuKF8owAES92kB0vVEqo6Kh3EFp138wkNoGQvcdAq+aBP9quoX+BV23ESsFV0RIw
- bxmaGoghZUvcSbPOxJehAKi/OPwKy8O0P8s92wgFpQ+c90Wq/y6+uNacuD+VPOSS4yUE
- a19oP5FjDALYPZKhWXUDGCGOa1GLez6kx49GwenHlF0bQYm3ulPUhVaZSY87wXKhgG+L
- B3DM6fM+L9LeD1hX3KQKEhqIXL7/KJq2+FSG7QxTKuLstEl8+uT6PrAmBbuZOMnh2tZI
- Qrx5wyJEhR5ICbcbddr0rRckhcDHE3CZv8Idbl8jkgJEtpmqFa5hu0VOIgWf94Rm5z2Z
- B7oQ==
+ d=oss.qualcomm.com; s=google; t=1786981554; x=1787586354; darn=nongnu.org;
+ h=content-transfer-encoding:content-type:in-reply-to:from:references
+ :cc:to:content-language:subject:user-agent:mime-version:date
+ :message-id:from:to:cc:subject:date:message-id:reply-to:content-type;
+ bh=qJomhp4E4/0nAHnYLCMRRJVWnnFs3olnM/6sAXdkmJE=;
+ b=ITDRIyrae2gkJds10NJ37leSZypsH/odv3AhOAjTnV5DtC1n4ewujVgN4uWqXtvzIk
+ lC80FAARAEILY8PadDQpO9R+Lf8sIdkx32Xu0pUE8SGwf7M3g7JxiboVbb60IUJIZER3
+ AOpajNz3uP3+mS41xk0MLLeEvYrvytHulSTeo+EDCjbDvn+/nShU52rlG74xbFhLBNcc
+ AavPIvAwZ/UU2UtriFrm/7I1jTy8G+AKwbJHEyu9P17dDoLguLK7PP4XowYsMkDKILGY
+ XC3FK9GYWxN5QM5VBbC6vQ6zPlo/sgKyYDjJNsuLn3DV4DO63XNIAg0JRITBEjCSvoLM
+ eCJQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1786981147; x=1787585947;
- h=content-type:cc:to:subject:message-id:date:from:in-reply-to
- :references:mime-version:x-gm-gg:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to:content-type;
- bh=n6jmdcAg8V7YZllZqZSNbr90fowePbfCBGSOOGmRag8=;
- b=JoZbIp1b3FS3VaMSjImgWmqttOcMhc8O68yiJ2YyztG45GpvUxWYiyf11e1w4Pqr9d
- u6Zy4OvjNNl6bsK2NjZWQEsXPSzu0XEwHdiMQYkuNvUtB8jh4SjN+C3dsspla6Mr0UeQ
- CK4TwPCosv7YN3w+Dhmd9Jgi1dzFQkhoiU79RTb9DTd1UVXDBYeudb+9pfv9RcJokTLF
- FoyHko61ir2hIuqOFU6VuSCQT8XFU4W4MIgo8tbBg1IoF1DVuJGlJofZBren0HCY/EFE
- x/IbqO5u9fUUA1D/lUeOMrcvp5R11pf/ysSE4f0gpiiQDCdLs8A2plixyQBkvobR1cRl
- 4yJQ==
+ d=1e100.net; s=20251104; t=1786981554; x=1787586354;
+ h=content-transfer-encoding:content-type:in-reply-to:from:references
+ :cc:to:content-language:subject:user-agent:mime-version:date
+ :message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+ :message-id:reply-to:content-type;
+ bh=qJomhp4E4/0nAHnYLCMRRJVWnnFs3olnM/6sAXdkmJE=;
+ b=rggw5QrCiTgjK7fvOfDx/V5fawSo1DPMe43TEXSmOHjBYlQvasSKZ06XwyknpDrmQd
+ 681hgUnW2WysHJizqDa+ZAeExzMolMMVN3hymXuruHqVGHUnGqDZa5hx+DV3jboP6XcV
+ aY19VwLL6Nkr3W3D1oncD0Co/pNIjPP70fXUD0I2lSwoXX2yCNoVih+KqzDjR5nkNf4f
+ C/pltyyCirfqRlAiSkBGMb1usZ1RwpD1thbegXAys1r90VZG2R+2bEbKGta5PbAyj2iH
+ s0jm9QZS0R9mY+Zx2ptobPylVkRzkWC4WfbyRxT9M782KKxnoBvgLmg/FJpw89Xz49b3
+ 1Ndg==
 X-Forwarded-Encrypted: i=1;
- AHgh+RrnzOWY06/5PUZe6Bp1Rs9mSg2dE9SkcFxVs4ikxkKXNxNX/cnX7Fiy3P0DJEW9MxoNQCUQ3q3z7w==@nongnu.org
-X-Gm-Message-State: AOJu0Yyj7Q0Pt4asYBvnCbEfJEF3Po+eO0cA3RUenWSUFUNAe/BYHE2f
- OLM0f50N1TDjFpR+/4KLUyrXLPhHCLJaJspBVTx1UT47QnH7TcQsS3n1cKpybSRGheANLvBTMEW
- 5z1xXvt6ImzgdgzxEpicJIcVH0fWVDq0zkHREjbvsuw==
-X-Gm-Gg: AR+sD10G05h4kzbZXu5XbyCZ76PsQxtbgGO30ZTpsx7uVApSaJvGVaixFv65OcBYCDZ
- BzA9kwolgNjikyG2mN/k6YSJ4HSztKga/cqcJ4MjYwSTaOm98Wx+Mh25zwS5/hN84YHo3pmOEox
- j6uZmgeyNecSbUefmDF5AgEhW3shIskP/IuxN9TK9gzd14jlSf4elVj4V5rwletjqhv1+wPzsr8
- rUeX9/GBA3Rs9GNSBc3eepmgp3w7PQQ951pUo7T/qx+/cDrcKFhXl85tUNSCFZSy9CAOuzQS+0E
- Yjs8TnDljCNKHwQKEbJdtuHGzZG20ayVFcGMEfixw9fDkRR5E1bedL6Q6ysqOSFBoYIrnpj3ggM
- K9lbYDMD83hB8EWMnZ+FU3Rg9+9LnWqlyl45/mO0=
-X-Received: by 2002:a05:690e:d84:b0:668:8bca:3c41 with SMTP id
- 956f58d0204a3-66cb9da22fdmr606139d50.17.1786981146796; Mon, 17 Aug 2026
- 08:39:06 -0700 (PDT)
+ AHgh+RrSByCBLal6QmsmWZQoyuPRWf2Sv93mExXim4J9o/BZFfk1ON/jp8IohpqkLZ14BmoMqZHMbvNohQ==@nongnu.org
+X-Gm-Message-State: AOJu0YzI74eVdctrhWCi5u23SU7FQi3J7ECNZ0GzdhPpggfd9h7OMLlU
+ oA1FBTU5/X93QYOl/KMSdWZIusM6teu9RQKksOFAQT3w0CaIp6rMYX522ATB17/Y0UEJtYPQKu0
+ /Zu6dwsnigr7rC+EUvOzOqOrtj2iDAUYpVlnCr4I2ct5bbjFJ4EGyTGY=
+X-Gm-Gg: AR+sD13mfUZTYembwji6NGwwyLMM67u79Y6O5k2iGR1p0sY3Jhqfoktbwm7Ns8UOT7H
+ 5Z3a59zSL7pSjGwtGTrxfYxJ/ztHgH5q9LNNBJKz8K9Ag3J395igkjK0a1Y68V90iRWVk1Efcv7
+ Q5LRIs+xvF0fbb2LBqZeA77Bfsih10ve0AzsHdTLmvgX6KaXxNzc+KMMnDga+z536DYX7X6QWjM
+ axIcRy0q+KePpwDVodeR2jp7Adg8Fwu8MH0dGbC4Ju7oNfpK9c1LDkB+c8v/jiNHJcS/Ka/8prf
+ 0FKQ8mkXlNfEmCoq7m6V6Bpp4VcKq0jTAEq5QEm9Uk8dQqabD2KiJfkjNMw/YlhIyNciwHa0tZw
+ WwnDOF4rBo5M+Zdr+Qa0uu+fFyaWRfuOHc9o=
+X-Received: by 2002:a05:620a:9445:b0:936:cf5a:6061 with SMTP id
+ af79cd13be357-936d2341930mr1742759685a.45.1786981554033; 
+ Mon, 17 Aug 2026 08:45:54 -0700 (PDT)
+X-Received: by 2002:a05:620a:9445:b0:936:cf5a:6061 with SMTP id
+ af79cd13be357-936d2341930mr1742754585a.45.1786981553582; 
+ Mon, 17 Aug 2026 08:45:53 -0700 (PDT)
+Received: from [192.168.69.229] (pmd666.hd.free.fr. [88.187.86.199])
+ by smtp.gmail.com with ESMTPSA id
+ 5b1f17b1804b1-4999610966dsm205095575e9.5.2026.08.17.08.45.52
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Mon, 17 Aug 2026 08:45:52 -0700 (PDT)
+Message-ID: <32b54253-a109-44b2-bbdf-ab6440814522@oss.qualcomm.com>
+Date: Mon, 17 Aug 2026 17:45:51 +0200
 MIME-Version: 1.0
-References: <20260805153005.9989-1-simonxhy0404@gmail.com>
- <20260805153005.9989-8-simonxhy0404@gmail.com>
-In-Reply-To: <20260805153005.9989-8-simonxhy0404@gmail.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Mon, 17 Aug 2026 16:38:55 +0100
-X-Gm-Features: AcwNN1XtSLekMzWbkZk9OBbiQ2fBoN9KmdC0b8MVN_UCRxIyAIVmMp9X2ncLBTA
-Message-ID: <CAFEAcA-znXsy0xwyGdpA=CbC2piEQ8EWWNPOhQOo0FC8yCxJUg@mail.gmail.com>
-Subject: Re: [PATCH v2 7/9] hw/misc/iotkit-sysinfo.c: add SSE-310 support
-To: Simon Xu <simonxhy0404@gmail.com>
-Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, 
- Owen Giles <owen.giles@hpe.com>,
- Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>, 
- Robert Elliott <elliott@hpe.com>
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::b12b;
- envelope-from=peter.maydell@linaro.org; helo=mail-yx1-xb12b.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 02/16] cpus: Improve qemu_cpu_kick_self() docstring
+Content-Language: en-US
+To: Paolo Bonzini <pbonzini@redhat.com>, qemu-devel@nongnu.org
+Cc: Daniel Henrique Barboza <daniel.barboza@oss.qualcomm.com>,
+ Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>,
+ Mohamed Mediouni <mohamed@unpredictable.fr>, Alexander Graf
+ <agraf@csgraf.de>, qemu-ppc@nongnu.org,
+ qemu-riscv@nongnu.org, kvm@vger.kernel.org,
+ Richard Henderson <richard.henderson@linaro.org>, qemu-arm@nongnu.org,
+ Magnus Kulke <magnuskulke@linux.microsoft.com>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@mailo.com>
+References: <20260813181640.6537-1-philmd@oss.qualcomm.com>
+ <20260813181640.6537-3-philmd@oss.qualcomm.com>
+ <13c02cbb-79db-4ebd-9fa1-63ffeb0b43f4@redhat.com>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@oss.qualcomm.com>
+In-Reply-To: <13c02cbb-79db-4ebd-9fa1-63ffeb0b43f4@redhat.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+X-Proofpoint-Spam-Info: AW1haW4tMjYwODE3MDExOSBTYWx0ZWRfX6buSMFdd5yeX
+ H6n4iRoGGaV+E9ivZpdULhykAUQYcqf4/HvBaPrDGlDnwi/GA7htCI22OeVA9xHPwuzgOrvMeaS
+ j3rLSmEHzv0RfDBxvQvNZ/4ysaoWAjw=
+X-Authority-Analysis: v=2.4 cv=auGCzyZV c=1 sm=1 tr=0 ts=6a832cb2 cx=c_pps
+ a=oc9J++0uMp73DTRD5QyR2A==:117 a=4s3hRJSeHn4rkQlkrse1kQ==:17
+ a=IkcTkHD0fZMA:10 a=Sv0fKeRqtYgA:10 a=M51BFTxLslgA:10 a=s4-Qcg_JpJYA:10
+ a=VkNPw1HP01LnGYTKEx00:22 a=u7WPNUs3qKkmUXheDGA7:22 a=yOCtJkima9RkubShWh1s:22
+ a=EUspDBNiAAAA:8 a=NSIYWwr6F1QkDLxMasYA:9 a=3ZKOabzyN94A:10 a=QEXdDO2ut3YA:10
+ a=iYH6xdkBrDN1Jqds4HTS:22
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwODE3MDExOSBTYWx0ZWRfX/vA9D5WZYQ7u
+ cL/nhnj9wTOgZO/TM6X+mooEt2Ude3mVrSgtgvIFdZh8NdVaX+4zwjYm6i/uRuD2ldIIHodZ0ow
+ 0jOX196lg2zVmX/1lqItKER5s5A7/JxDaB/pKSsPu2fmD+g5cxbO2IcnoBL1GzfAPeynBNP8yXd
+ Pjts2F16+Uh1VXoWFajbo0b8EW0BwvRBEA2UXVuPdpCwfYuVoC3Pnppnft4EqIYey7J2sCi08fK
+ ROAVdbEhIai+Rw1zmhnoHmHhXCNmJkXjKEoRZmOGj8wGiM5Jqn6diFxVdhX3cfSA+V7ru/uvGa5
+ qWcvSSb55Q38eYhwtySoZ9Vtm11e8PcuGKNqddY3Cz5aRKhENzoLV8YRE/x7sQuzKAYMajZ+P67
+ tOzJu8RchH7Re/hzlqUEeq36uhyROP36JSXuvMAEcGdwgtoZkw1t9vDZllq4KdkQ+G3+xBnhAml
+ epqrQFubfb0WHsMjeLQ==
+X-Proofpoint-GUID: _AHUY2mdrYRIv-LX2aXi_gla7aLa2ZxZ
+X-Proofpoint-ORIG-GUID: _AHUY2mdrYRIv-LX2aXi_gla7aLa2ZxZ
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.293,Aquarius:18.0.1176,Hydra:6.1.134,FMLib:17.12.100.49
+ definitions=2026-08-17_02,2026-08-12_01,2025-10-01_01
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
+ spamscore=0 impostorscore=0 adultscore=0 suspectscore=0 bulkscore=0
+ clxscore=1015 lowpriorityscore=0 priorityscore=1501 phishscore=0
+ malwarescore=0 classifier=typeunknown authscore=0 authtc= authcc=
+ route=outbound adjust=0 reason=mlx scancount=1 engine=8.22.0-2606150000
+ definitions=main-2608170119
+Received-SPF: pass client-ip=205.220.168.131;
+ envelope-from=philmd@oss.qualcomm.com; helo=mx0a-0031df01.pphosted.com
+X-Spam_score_int: -27
+X-Spam_score: -2.8
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ RCVD_IN_DNSWL_LOW=-0.7, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -120,17 +164,99 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Wed, 5 Aug 2026 at 16:30, Simon Xu <simonxhy0404@gmail.com> wrote:
->
-> Add SSE-310 PIDR and CIDR registers. Add sys_config2 register and
-> always report 0 on read as we do not implement the NPU.
->
-> Reviewed-by: Owen Giles <owen.giles@hpe.com>
-> Reviewed-by: Robert Elliott <elliott@hpe.com>
-> Signed-off-by: Simon Xu <simonxhy0404@gmail.com>
+On 17/8/26 17:28, Paolo Bonzini wrote:
+> On 8/13/26 20:16, Philippe Mathieu-Daudé wrote:
+>> Be a bit more descriptive than "Unblock cpu" :)
+>>
+>> Signed-off-by: Philippe Mathieu-Daudé <philmd@oss.qualcomm.com>
+>> ---
+>>   include/system/cpus.h | 10 +++++++++-
+>>   1 file changed, 9 insertions(+), 1 deletion(-)
+>>
+>> diff --git a/include/system/cpus.h b/include/system/cpus.h
+>> index 508444ccf1c..ade13e068eb 100644
+>> --- a/include/system/cpus.h
+>> +++ b/include/system/cpus.h
+>> @@ -30,7 +30,15 @@ void resume_all_vcpus(void);
+>>   void pause_all_vcpus(void);
+>>   void cpu_stop_current(void);
+>> -/* Unblock cpu */
+>> +/**
+>> + * qemu_cpu_kick_self - Force vCPU to re-enter to its inner main loop
+>> + *
+>> + * Signal the current vCPU thread to exit any blocking operations and
+>> + * re-enter its inner execution loop to process pending requests,
+>> + * possibly returning to its outer execution loop.
+>> + *
+>> + * Must be called from within the vCPU thread itself.
+>> + */
+> 
+> Neither is correct.
 
-Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
+"Must be called from within the vCPU thread itself." is because of
+the assertion:
 
-thanks
--- PMM
+system/cpus.c:452:void qemu_cpu_kick_self(void)
+system/cpus.c-453-{
+system/cpus.c-454-    assert(current_cpu);
+system/cpus.c-455-    cpus_kick_thread(current_cpu);
+system/cpus.c-456-}
+
+>  What it does is force the vCPU not to enter the
+> accelerator, and immediately exit again to process events.  This is only
+> needed because KVM doesn't want you to process events because KVM allows
+> you to do so.
+
+I got confused by this comment in accel/mshv/mshv-all.c and interpreted
+too much:
+
+/*
+  * The signal handler is triggered when QEMU's main thread receives a 
+SIG_IPI
+  * (SIGUSR1). This signal causes the current CPU thread to be kicked, 
+forcing a
+  * VM exit on the CPU. The VM exit generates an exit reason that breaks 
+the loop
+  * (see mshv_cpu_exec). If the exit is due to a Ctrl+A+x command, the 
+system
+  * will shut down. For other cases, the system will continue running.
+  */
+static void sa_ipi_handler(int sig)
+{
+     /* TODO: call IOCTL to set_immediate_exit, once implemented. */
+
+     qemu_cpu_kick_self();
+}
+> 
+> I'd rather have something like:
+> 
+> diff --git a/accel/kvm/kvm-all.c b/accel/kvm/kvm-all.c
+> index 83cbd120a84..e5d068e341f 100644
+> --- a/accel/kvm/kvm-all.c
+> +++ b/accel/kvm/kvm-all.c
+> @@ -3292,7 +3292,7 @@ static void kvm_cpu_kick_self(void)
+>       if (kvm_immediate_exit) {
+>           kvm_cpu_kick(current_cpu);
+>       } else {
+> -        qemu_cpu_kick_self();
+> +        cpus_kick_thread(current_cpu);
+>       }
+>   }
+> 
+> diff --git a/target/i386/nvmm/nvmm-all.c b/target/i386/nvmm/nvmm-all.c
+> index 8a1af35ed32..b9b1ee39850 100644
+> --- a/target/i386/nvmm/nvmm-all.c
+> +++ b/target/i386/nvmm/nvmm-all.c
+> @@ -753,7 +753,7 @@ nvmm_vcpu_loop(CPUState *cpu)
+>   #if NVMM_USER_VERSION >= 2
+>               nvmm_vcpu_stop(vcpu);
+>   #else
+> -            qemu_cpu_kick_self();
+> +            cpus_kick_thread(current_cpu);
+>   #endif
+>           }
+> 
+> and get rid of qemu_cpu_kick_self() completely.
+
+OK I'll take that route.
 

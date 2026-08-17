@@ -4,89 +4,89 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1FAECC5DF66
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7569FC5B572
 	for <qemu-arm@archiver.kernel.org>; Mon, 17 Aug 2026 12:40:35 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wvwcM-0003hy-9S; Mon, 17 Aug 2026 08:39:06 -0400
+	id 1wvwcT-0003jf-AR; Mon, 17 Aug 2026 08:39:13 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1wvwcD-0003fA-0Q
- for qemu-arm@nongnu.org; Mon, 17 Aug 2026 08:38:57 -0400
-Received: from mail-wr1-x42e.google.com ([2a00:1450:4864:20::42e])
+ id 1wvwcD-0003fY-Sc
+ for qemu-arm@nongnu.org; Mon, 17 Aug 2026 08:38:58 -0400
+Received: from mail-wm1-x331.google.com ([2a00:1450:4864:20::331])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1wvwc9-0001Fp-25
- for qemu-arm@nongnu.org; Mon, 17 Aug 2026 08:38:56 -0400
-Received: by mail-wr1-x42e.google.com with SMTP id
- ffacd0b85a97d-47f6609c657so1596773f8f.2
- for <qemu-arm@nongnu.org>; Mon, 17 Aug 2026 05:38:50 -0700 (PDT)
+ id 1wvwc9-0001G2-1m
+ for qemu-arm@nongnu.org; Mon, 17 Aug 2026 08:38:57 -0400
+Received: by mail-wm1-x331.google.com with SMTP id
+ 5b1f17b1804b1-4954df200ddso23422845e9.0
+ for <qemu-arm@nongnu.org>; Mon, 17 Aug 2026 05:38:51 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1786970330; x=1787575130; darn=nongnu.org;
+ d=linaro.org; s=google; t=1786970331; x=1787575131; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to:content-type;
- bh=UC2VfuEnRS7vtJW9dbldA5VEOCwlt4wt3TaapGzwBc4=;
- b=YokIhS9DtdCmcY6bryit+VuptWJzynB0nASNCA+7XOGO3NEuqYL4SI+T3L8SMcz359
- peHRT26Z97bB/gwas/Rgb47/BMhQrRykLVCtnEcemCKM1HbN9zIZKQZRXGbEseFK/R2n
- VjcfSvsjVn3GEBQvNjdhbN0i2c8XmPu6Bm4apVzGN/wfKMgogRwuLWgJmxL15KYJqQOT
- 791JRm+n9FDNakCxUa++OMOxt1dTNLxfea1sPRBaKTVywunUVdfD413ad8ZVM9y43D7q
- EYHAE9wrgdf9P13aO8SdJwhhhM/UyJ+VxDeRFHvXSPkn+N6SfgKIM+PSHkOKHStutMaS
- WD1w==
+ bh=3gq1Eo4wLZLTsS7bzDUHtNahY0huOE486fmBMnq96pQ=;
+ b=ebR6f1iOqtlME32vjCv1bh2ZFMnBkyy8LYgDpVt2iSC8EskjlzFrMpuFna2v6DwSZR
+ 3ugIlp8ghZtLUPZS7aY1SmiiWpDYMm8exAPkpEalytaBziFHBFH6vYpCLLNNRPg5ELO/
+ 8QmBza2GFI6PrP8YVJO6A3wch7QJD6unmojDTyJ/HfhTbdX0Mwc/cUe7v25swiDBa1o9
+ Ira1l5SflcrWuS6oL2O9/dixp9ojcT0Ebe5uORDoiI4zXxHtjGGukWBIy7CMElzkxaS5
+ +d9jI65/B1GxqMXi9RgXj8IFKcJRWcQEr5NBH1w6fduoPGp1pOd3N09N/esFmdFfHuEE
+ 1ZeQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1786970330; x=1787575130;
+ d=1e100.net; s=20251104; t=1786970331; x=1787575131;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
  :to:cc:subject:date:message-id:reply-to:content-type;
- bh=UC2VfuEnRS7vtJW9dbldA5VEOCwlt4wt3TaapGzwBc4=;
- b=BrlNmsk/TBqXYQ7fw5CgRkLIrGQcnpUDWgKs4Nl74p7PCm9/xjMhuqVx2vfdMa3K+W
- mT+P+zwkjQS+4mv2QRyXdqKY9uKTgbL9NgzHjDM/KUTkHrOBlUzL58bdg2WnIvKoGNjI
- gfu4a1k5+dwsvkG8obyF7N9B/YQYO1h+2gAREUCatXE0eVmujDbAxxR0oOI81Vbq/a0p
- 57dlxlBjlLHA16JAuo2YowvPxjL3/UJViIHwA5BGKq4k0VRvs+4ozsZi8qyIzZbpDBP3
- D7C8ZT6+0n2mZZRNS4U/GlnqybslTU6VD6wLv5x7XjMAPiOzZ68jVWyMqxXrtQwAXT4l
- NrYA==
-X-Gm-Message-State: AOJu0YwfTL9iOfXIzdqacPW1lwvYBX/24bFMjRrqbw5E5bxzlnNPlk/f
- 8EOiD5xCeDTwHcWrA7JNXbcVstE5VKVdizBvE0B9Mk8TPwJKCOdJ5kYNSZylm/ysRCRCwv8ndft
- 4Vzyx
-X-Gm-Gg: AR+sD11neYB5Qt3mqsTHqfNnCWCoixB2lgl0+GQdbZ0wJOv22XZLh10cPc8vMWiGQjP
- EUZ4eGpq1n0YzU3JBCtfFLsO2I11kxzAsWXO2xKB/eDfa5IUUlu7KNWv3fK7CGPpuXSfsxmieRF
- 0CzmwAgvhK7lRNn+Nw1gNoyrqK5naxE34+cYVZJUP4bcWOYmGlV9jMbYcPODTkxwahCs+DXz1Sn
- AKL7h2+/7uG4QeUvkLr0EcciaBF5nykTQhfi2K4j6o10OEQCaFbkPbRVOk89O99QqCNLzXLdpyK
- zLEV+eIkH+fPSxEPq38ADV5mx/Dna2+cd0ZG5cCyhN1+OyZ482JYjRNvxpLFHUxaLFpk4590JgT
- iqB/q/Uv3LIP+T9ewAO8XLxUjHKkaPLYXBqj8ZkrCYwsjaujl8GlSAHAm345myv5M37N9gYYX52
- mQ/Uvf3m573lEO77STeZL7tYJ6LXQ5eKkw/MVjeNEWlkI9l0xzXIn5sQRv1+SC7WrZx3oH2NVbp
- eyJFpoQdOisLxeG/bQIjUWriG1+c/C8lPZ8nfakyP4fgMBGXI3eGncCq7I7UgixgixZcQ==
-X-Received: by 2002:a7b:c3c4:0:b0:495:5890:8f6c with SMTP id
- 5b1f17b1804b1-4998793bdf2mr290478965e9.7.1786970329632; 
- Mon, 17 Aug 2026 05:38:49 -0700 (PDT)
+ bh=3gq1Eo4wLZLTsS7bzDUHtNahY0huOE486fmBMnq96pQ=;
+ b=SstyKyysG64s3Ilg8ReERnOVWsrpfQ5wlIZE6tynBhfjls/3WPKtkLlcYJ6tWAmD07
+ a+icSAq+EysXHfYDBs5JGfuk1Smwqrjubl1M/oMUR+q2hp+B2M3XeO2K6EL53dP62nlK
+ UlPLsnWnI/Q0l+bEsaHSSxzctFGR4EUYayhGoqsuQXb7znDqeI8rnsdpHRAW2z5ZNjK6
+ iYu/DXJULVnBB+M6qGRMP90AxF+LlYVIGTQsLKsAkP9wWPHHU6DScY4+WEuE0LUqR58S
+ EAP3+VEAxSsP3Oq9Zpcyr63p+9bVcDxgscP5aycLwp/fTfO87W/IQLx0r8//6sumxpJ4
+ bMrA==
+X-Gm-Message-State: AOJu0Yz26ItuVu4Xn9qGL6Btnm2I5e89FgoBRpfNVhYlMjry13nvE84f
+ THqIJ3X+SVFai+BhohebDAI2PtIw0dpQZ/N4X9MJEVRBa3rXNjiCJIetfSQriwnrAzGeTm3rzK7
+ Y9zsT
+X-Gm-Gg: AR+sD10SuYEgKO1zwy+UOQHPJOXLgDLTtQYzvje42hIXn2ceBGMVo/jOAUAhd06dAkQ
+ q4kl5mSNAToCjE9q+2knVLGc3cy8Opn6nbwecmICPkuC2NaT9tfZnP56jVbR634E3MlJHSPYb41
+ yTd02i1HiyL02LfB7abHew+e9VcJVignJX1u1w2A13yfTjfnBICNKi0Minm8sNSKgurksie8DSk
+ ZnJqtLuekSQrx4JC48ow1utFGRID5zO2519nE0XALUqkGP91Hs1vqobc7I/HlNZ8MkO1ZKQcTna
+ UrDP/PqPxVaTzwVyFfYlw6HDML5idCDVPndctXRBGPi6kAAngFIi4U9JdgHD7wbw3xspTaneyPR
+ JE/vt9326TK1oTztWKfOtxb0Rb+N1HbP8JFQDO56KAgHHe+l+l/ku4QCOf91tzmq/TaPSfzbdZK
+ ynbMfX5lpUQLbTfQ6YzvU2HkDvEQTb2hhiMMYIcmnn67iBf1ifxKNmRJveMhIWJFQVs2oahPm1b
+ +vGFPYNo+hqx9xLX6dW9xkv5D+oft351O6U2Il1PZsKRha0/gnqYfA2F/VbLbF4KsDLuA==
+X-Received: by 2002:a05:600c:4f52:b0:493:f5bf:4dc6 with SMTP id
+ 5b1f17b1804b1-4998793dafcmr389604195e9.7.1786970330786; 
+ Mon, 17 Aug 2026 05:38:50 -0700 (PDT)
 Received: from lanath.. (wildly.archaic.org.uk. [81.2.115.145])
  by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-4998780397dsm120415055e9.3.2026.08.17.05.38.48
+ 5b1f17b1804b1-4998780397dsm120415055e9.3.2026.08.17.05.38.49
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 17 Aug 2026 05:38:48 -0700 (PDT)
+ Mon, 17 Aug 2026 05:38:50 -0700 (PDT)
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
 Cc: Richard Henderson <richard.henderson@linaro.org>
-Subject: [PATCH v2 7/8] target/arm: Implement CPACR.D32DIS
-Date: Mon, 17 Aug 2026 13:38:37 +0100
-Message-ID: <20260817123838.1578060-8-peter.maydell@linaro.org>
+Subject: [PATCH v2 8/8] target/arm: Pull Neon dregs checks out into a function
+Date: Mon, 17 Aug 2026 13:38:38 +0100
+Message-ID: <20260817123838.1578060-9-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20260817123838.1578060-1-peter.maydell@linaro.org>
 References: <20260817123838.1578060-1-peter.maydell@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::42e;
- envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x42e.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::331;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x331.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -102,224 +102,430 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On some v7A CPUs, CPACR.D32DIS is a bit allowing the guest to make
-VFP instructions that touch registers D16..D31 UNDEF.  Whether the
-CPU implements this or not is IMPDEF, and the only two CPUs we
-implement which have this are the Cortex-A7 and Cortex-A9.  In v8A
-the bit is no longer defined at all.
+Abstract out the register check for Neon insns into a new function,
+similarly to what we have for VFP.  We don't have any extra checks
+that we need to add here, but having a neon_dregs_ok() is cleaner and
+means the Neon decode isn't oddly different to the VFP decode.
 
-Since the only kind of trapping that needs to be done is a simple
-UNDEF, this is straightforward enough to implement.
-
-Resolves: https://gitlab.com/qemu-project/qemu/-/work_items/1499
 Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 ---
- target/arm/cpu.h               |  4 ++++
- target/arm/helper.c            | 19 ++++++++++++++++---
- target/arm/tcg/cpu32.c         |  2 ++
- target/arm/tcg/hflags.c        | 20 ++++++++++++++++++++
- target/arm/tcg/translate-vfp.c |  7 ++-----
- target/arm/tcg/translate.c     |  6 ++++++
- target/arm/tcg/translate.h     |  1 +
- 7 files changed, 51 insertions(+), 8 deletions(-)
+ target/arm/tcg/translate-neon.c | 118 ++++++++++++++------------------
+ target/arm/tcg/translate.c      |   1 +
+ target/arm/tcg/translate.h      |   1 +
+ 3 files changed, 53 insertions(+), 67 deletions(-)
 
-diff --git a/target/arm/cpu.h b/target/arm/cpu.h
-index afc3fda3b8..e8dfc3179f 100644
---- a/target/arm/cpu.h
-+++ b/target/arm/cpu.h
-@@ -2184,6 +2184,8 @@ enum arm_features {
-      * ARM_FEATURE_NEON CPUs except the Cortex-A8.
-      */
-     ARM_FEATURE_NEON_TRAPS,
-+    /* Does the CPU implement CPACR.D32DIS ? */
-+    ARM_FEATURE_D32DIS,
- };
- 
- static inline int arm_feature(const CPUARMState *env, int feature)
-@@ -2512,6 +2514,8 @@ FIELD(TBFLAG_A32, SME_TRAP_NONSTREAMING, 11, 1)
-  * take precedence.
-  */
- FIELD(TBFLAG_A32, NEONEXC_EL, 12, 2)
-+/* Should VFP insns touching D16..D31 UNDEF? (CPACR.D32DIS) */
-+FIELD(TBFLAG_A32, D32DIS, 14, 1)
- 
- /*
-  * Bit usage when in AArch32 state, for M-profile only.
-diff --git a/target/arm/helper.c b/target/arm/helper.c
-index 6f33b1ef5e..3aaeb2dd02 100644
---- a/target/arm/helper.c
-+++ b/target/arm/helper.c
-@@ -573,8 +573,7 @@ static void cpacr_write(CPUARMState *env, const ARMCPRegInfo *ri,
-          */
-         if (cpu_isar_feature(aa32_vfp_simd, env_archcpu(env))) {
-             /* VFP coprocessor: cp10 & cp11 [23:20] */
--            mask |= R_CPACR_D32DIS_MASK |
--                    R_CPACR_CP11_MASK |
-+            mask |= R_CPACR_CP11_MASK |
-                     R_CPACR_CP10_MASK;
- 
-             if (!arm_feature(env, ARM_FEATURE_NEON)) {
-@@ -596,6 +595,13 @@ static void cpacr_write(CPUARMState *env, const ARMCPRegInfo *ri,
-             if (!cpu_isar_feature(aa32_simd_r32, env_archcpu(env))) {
-                 /* D32DIS [30] is RAO/WI if D16-31 are not implemented. */
-                 value |= R_CPACR_D32DIS_MASK;
-+                mask |= R_CPACR_D32DIS_MASK;
-+            } else if (arm_feature(env, ARM_FEATURE_D32DIS)) {
-+                /*
-+                 * Bit is present unless CPU doesn't implement D32DIS,
-+                 * in which case it is RAZ/WI.
-+                 */
-+                mask |= R_CPACR_D32DIS_MASK;
-             }
-         }
-         value &= mask;
-@@ -605,7 +611,7 @@ static void cpacr_write(CPUARMState *env, const ARMCPRegInfo *ri,
-      * For A-profile AArch32 EL3 (but not M-profile secure mode), if NSACR.CP10
-      * is 0 then CPACR.{CP11,CP10} ignore writes and read as 0b00.
-      * Similarly, if NSACR.NSASEDIS is 1 then CPACR.ASEDIS ignores writes
--     * and reads as 1.
-+     * and reads as 1, and NSACR.NSD32DIS makes CPACR.D32DIS behave as RAO/WI.
-      */
-     if (arm_feature(env, ARM_FEATURE_EL3) && !arm_el_is_aa64(env, 3) &&
-         !arm_is_secure(env)) {
-@@ -617,6 +623,10 @@ static void cpacr_write(CPUARMState *env, const ARMCPRegInfo *ri,
-             mask = R_CPACR_ASEDIS_MASK;
-             value = (value & ~mask) | (env->cp15.cpacr_el1 & mask);
-         }
-+        if (FIELD_EX32(env->cp15.nsacr, NSACR, NSD32DIS)) {
-+            mask = R_CPACR_D32DIS_MASK;
-+            value = (value & ~mask) | (env->cp15.cpacr_el1 & mask);
-+        }
+diff --git a/target/arm/tcg/translate-neon.c b/target/arm/tcg/translate-neon.c
+index 50a44511d9..f811940f64 100644
+--- a/target/arm/tcg/translate-neon.c
++++ b/target/arm/tcg/translate-neon.c
+@@ -118,11 +118,24 @@ static void neon_store_element64(int reg, int ele, MemOp size, TCGv_i64 var)
      }
- 
-     env->cp15.cpacr_el1 = value;
-@@ -639,6 +649,9 @@ static uint64_t cpacr_read(CPUARMState *env, const ARMCPRegInfo *ri)
-         if (FIELD_EX32(env->cp15.nsacr, NSACR, NSASEDIS)) {
-             value |= R_CPACR_ASEDIS_MASK;
-         }
-+        if (FIELD_EX32(env->cp15.nsacr, NSACR, NSD32DIS)) {
-+            value |= R_CPACR_D32DIS_MASK;
-+        }
-     }
-     return value;
- }
-diff --git a/target/arm/tcg/cpu32.c b/target/arm/tcg/cpu32.c
-index 3df3ca38d6..34436ad6ec 100644
---- a/target/arm/tcg/cpu32.c
-+++ b/target/arm/tcg/cpu32.c
-@@ -336,6 +336,7 @@ static void cortex_a9_initfn(Object *obj)
-      */
-     set_feature(&cpu->env, ARM_FEATURE_V7MP);
-     set_feature(&cpu->env, ARM_FEATURE_CBAR);
-+    set_feature(&cpu->env, ARM_FEATURE_D32DIS);
-     cpu->midr = 0x410fc090;
-     cpu->reset_fpsid = 0x41033090;
-     cpu->isar.mvfr0 = 0x11110222;
-@@ -403,6 +404,7 @@ static void cortex_a7_initfn(Object *obj)
-     set_feature(&cpu->env, ARM_FEATURE_EL2);
-     set_feature(&cpu->env, ARM_FEATURE_EL3);
-     set_feature(&cpu->env, ARM_FEATURE_PMU);
-+    set_feature(&cpu->env, ARM_FEATURE_D32DIS);
-     cpu->midr = 0x410fc075;
-     cpu->reset_fpsid = 0x41023075;
-     cpu->isar.mvfr0 = 0x10110222;
-diff --git a/target/arm/tcg/hflags.c b/target/arm/tcg/hflags.c
-index 14824e3dff..296ec8101a 100644
---- a/target/arm/tcg/hflags.c
-+++ b/target/arm/tcg/hflags.c
-@@ -244,6 +244,24 @@ static int neon_exception_el(CPUARMState *env, int cur_el)
-     return 0;
  }
  
-+static bool arm_d32dis(CPUARMState *env, int cur_el)
++/*
++ * Return true if a Neon insn is OK to access the registers indicated
++ * by regmask, false if it should UNDEF. This checks whether the
++ * D16-D31 regs are implemented by the CPU.
++ * Note that Neon insns accessing D16..D31 do not need to check D32DIS.
++ *
++ * @regmask should be the logical OR of the Dregs being accessed.
++ */
++static bool neon_dregs_ok(DisasContext *s, int dregmask)
 +{
-+    bool cpacr_d32dis = FIELD_EX64(env->cp15.cpacr_el1, CPACR, D32DIS);
-+
-+    if (!arm_feature(env, ARM_FEATURE_D32DIS)) {
-+        return false;
-+    }
-+
-+    /* If NSACR.NSD32DIS is set, CPACR.D32DIS acts as 1 in NonSecure */
-+    if ((arm_feature(env, ARM_FEATURE_EL3) && !arm_el_is_aa64(env, 3) &&
-+         cur_el <= 2 && !arm_is_secure_below_el3(env))) {
-+        if (FIELD_EX32(env->cp15.nsacr, NSACR, NSD32DIS)) {
-+            cpacr_d32dis = true;
-+        }
-+    }
-+    return cpacr_d32dis;
++    return !(dregmask & s->invalid_neon_dreg_mask);
 +}
 +
- static CPUARMTBFlags rebuild_hflags_a32(CPUARMState *env, int fp_el,
-                                         ARMMMUIdx mmu_idx)
+ static bool do_neon_ddda(DisasContext *s, int q, int vd, int vn, int vm,
+                          int data, gen_helper_gvec_4 *fn_gvec)
  {
-@@ -291,6 +309,8 @@ static CPUARMTBFlags rebuild_hflags_a32(CPUARMState *env, int fp_el,
+     /* UNDEF accesses to D16-D31 if they don't exist. */
+-    if (((vd | vn | vm) & 0x10) && !dc_isar_feature(aa32_simd_r32, s)) {
++    if (!neon_dregs_ok(s, vd | vn | vm)) {
+         return false;
+     }
  
-     DP_TBFLAG_A32(flags, NEONEXC_EL, neon_exception_el(env, el));
- 
-+    DP_TBFLAG_A32(flags, D32DIS, arm_d32dis(env, el));
-+
-     return rebuild_hflags_common_32(env, fp_el, mmu_idx, flags);
- }
- 
-diff --git a/target/arm/tcg/translate-vfp.c b/target/arm/tcg/translate-vfp.c
-index a8d470ec49..0a87a0165b 100644
---- a/target/arm/tcg/translate-vfp.c
-+++ b/target/arm/tcg/translate-vfp.c
-@@ -210,8 +210,7 @@ static void gen_update_fp_context(DisasContext *s)
- /*
-  * Return true if a VFP insn is OK to access the registers indicated
-  * by regmask, false if it should UNDEF. This checks whether the
-- * D16-D31 regs are implemented by the CPU. Eventually we will also check
-- * CPACR.D32DIS.
-+ * D16-D31 regs are implemented by the CPU and not disabled by CPACR.D32DIS.
-  * Note that Neon insns accessing D16..D31 do not need to check D32DIS,
-  * so this function is for VFP insns only.
-  *
-@@ -219,9 +218,7 @@ static void gen_update_fp_context(DisasContext *s)
-  */
- static bool vfp_dregs_ok(DisasContext *s, int dregmask)
+@@ -152,7 +165,7 @@ static bool do_neon_ddda_env(DisasContext *s, int q, int vd, int vn, int vm,
+                              int data, gen_helper_gvec_4_ptr *fn_gvec)
  {
--    int invalid_dreg_mask = dc_isar_feature(aa32_simd_r32, s) ? 0 : 0x10;
--
--    return !(dregmask & invalid_dreg_mask);
-+    return !(dregmask & s->invalid_vfp_dreg_mask);
- }
+     /* UNDEF accesses to D16-D31 if they don't exist. */
+-    if (((vd | vn | vm) & 0x10) && !dc_isar_feature(aa32_simd_r32, s)) {
++    if (!neon_dregs_ok(s, vd | vn | vm)) {
+         return false;
+     }
  
- /*
+@@ -184,7 +197,7 @@ static bool do_neon_ddda_fpst(DisasContext *s, int q, int vd, int vn, int vm,
+                               gen_helper_gvec_4_ptr *fn_gvec_ptr)
+ {
+     /* UNDEF accesses to D16-D31 if they don't exist. */
+-    if (((vd | vn | vm) & 0x10) && !dc_isar_feature(aa32_simd_r32, s)) {
++    if (!neon_dregs_ok(s, vd | vn | vm)) {
+         return false;
+     }
+ 
+@@ -240,8 +253,7 @@ static bool trans_VCADD(DisasContext *s, arg_VCADD *a)
+     }
+ 
+     /* UNDEF accesses to D16-D31 if they don't exist. */
+-    if (!dc_isar_feature(aa32_simd_r32, s) &&
+-        ((a->vd | a->vn | a->vm) & 0x10)) {
++    if (!neon_dregs_ok(s, a->vd | a->vn | a->vm)) {
+         return false;
+     }
+ 
+@@ -310,8 +322,7 @@ static bool trans_VFML(DisasContext *s, arg_VFML *a)
+     }
+ 
+     /* UNDEF accesses to D16-D31 if they don't exist. */
+-    if (!dc_isar_feature(aa32_simd_r32, s) &&
+-        (a->vd & 0x10)) {
++    if (!neon_dregs_ok(s, a->vd)) {
+         return false;
+     }
+ 
+@@ -398,14 +409,14 @@ static bool trans_VDOT_b16_scal(DisasContext *s, arg_VDOT_b16_scal *a)
+ static bool trans_VFML_scalar(DisasContext *s, arg_VFML_scalar *a)
+ {
+     int opr_sz;
++    int dregmask = a->vd | (a->q ? a->vn : 0);
+ 
+     if (!dc_isar_feature(aa32_fhm, s)) {
+         return false;
+     }
+ 
+     /* UNDEF accesses to D16-D31 if they don't exist. */
+-    if (!dc_isar_feature(aa32_simd_r32, s) &&
+-        ((a->vd & 0x10) || (a->q && (a->vn & 0x10)))) {
++    if (!neon_dregs_ok(s, dregmask)) {
+         return false;
+     }
+ 
+@@ -478,7 +489,7 @@ static bool trans_VLDST_multiple(DisasContext *s, arg_VLDST_multiple *a)
+     }
+ 
+     /* UNDEF accesses to D16-D31 if they don't exist */
+-    if (!dc_isar_feature(aa32_simd_r32, s) && (a->vd & 0x10)) {
++    if (!neon_dregs_ok(s, a->vd)) {
+         return false;
+     }
+     if (a->itype > 10) {
+@@ -580,7 +591,7 @@ static bool trans_VLD_all_lanes(DisasContext *s, arg_VLD_all_lanes *a)
+     }
+ 
+     /* UNDEF accesses to D16-D31 if they don't exist */
+-    if (!dc_isar_feature(aa32_simd_r32, s) && (a->vd & 0x10)) {
++    if (!neon_dregs_ok(s, a->vd)) {
+         return false;
+     }
+ 
+@@ -672,7 +683,7 @@ static bool trans_VLDST_single(DisasContext *s, arg_VLDST_single *a)
+     }
+ 
+     /* UNDEF accesses to D16-D31 if they don't exist */
+-    if (!dc_isar_feature(aa32_simd_r32, s) && (a->vd & 0x10)) {
++    if (!neon_dregs_ok(s, a->vd)) {
+         return false;
+     }
+ 
+@@ -789,8 +800,7 @@ static bool do_3same(DisasContext *s, arg_3same *a, GVecGen3Fn fn)
+     }
+ 
+     /* UNDEF accesses to D16-D31 if they don't exist. */
+-    if (!dc_isar_feature(aa32_simd_r32, s) &&
+-        ((a->vd | a->vn | a->vm) & 0x10)) {
++    if (!neon_dregs_ok(s, a->vd | a->vn | a->vm)) {
+         return false;
+     }
+ 
+@@ -1067,8 +1077,7 @@ static bool do_vector_2sh(DisasContext *s, arg_2reg_shift *a, GVecGen2iFn *fn)
+     }
+ 
+     /* UNDEF accesses to D16-D31 if they don't exist. */
+-    if (!dc_isar_feature(aa32_simd_r32, s) &&
+-        ((a->vd | a->vm) & 0x10)) {
++    if (!neon_dregs_ok(s, a->vd | a->vm)) {
+         return false;
+     }
+ 
+@@ -1117,8 +1126,7 @@ static bool do_2shift_narrow_64(DisasContext *s, arg_2reg_shift *a,
+     }
+ 
+     /* UNDEF accesses to D16-D31 if they don't exist. */
+-    if (!dc_isar_feature(aa32_simd_r32, s) &&
+-        ((a->vd | a->vm) & 0x10)) {
++    if (!neon_dregs_ok(s, a->vd | a->vm)) {
+         return false;
+     }
+ 
+@@ -1168,8 +1176,7 @@ static bool do_2shift_narrow_32(DisasContext *s, arg_2reg_shift *a,
+     }
+ 
+     /* UNDEF accesses to D16-D31 if they don't exist. */
+-    if (!dc_isar_feature(aa32_simd_r32, s) &&
+-        ((a->vd | a->vm) & 0x10)) {
++    if (!neon_dregs_ok(s, a->vd | a->vm)) {
+         return false;
+     }
+ 
+@@ -1293,8 +1300,7 @@ static bool do_vshll_2sh(DisasContext *s, arg_2reg_shift *a,
+     }
+ 
+     /* UNDEF accesses to D16-D31 if they don't exist. */
+-    if (!dc_isar_feature(aa32_simd_r32, s) &&
+-        ((a->vd | a->vm) & 0x10)) {
++    if (!neon_dregs_ok(s, a->vd | a->vm)) {
+         return false;
+     }
+ 
+@@ -1383,8 +1389,7 @@ static bool do_fp_2sh(DisasContext *s, arg_2reg_shift *a,
+     }
+ 
+     /* UNDEF accesses to D16-D31 if they don't exist. */
+-    if (!dc_isar_feature(aa32_simd_r32, s) &&
+-        ((a->vd | a->vm) & 0x10)) {
++    if (!neon_dregs_ok(s, a->vd | a->vm)) {
+         return false;
+     }
+ 
+@@ -1428,7 +1433,7 @@ static bool do_1reg_imm(DisasContext *s, arg_1reg_imm *a,
+     }
+ 
+     /* UNDEF accesses to D16-D31 if they don't exist. */
+-    if (!dc_isar_feature(aa32_simd_r32, s) && (a->vd & 0x10)) {
++    if (!neon_dregs_ok(s, a->vd)) {
+         return false;
+     }
+ 
+@@ -1485,8 +1490,7 @@ static bool do_prewiden_3d(DisasContext *s, arg_3diff *a,
+     }
+ 
+     /* UNDEF accesses to D16-D31 if they don't exist. */
+-    if (!dc_isar_feature(aa32_simd_r32, s) &&
+-        ((a->vd | a->vn | a->vm) & 0x10)) {
++    if (!neon_dregs_ok(s, a->vd | a->vn | a->vm)) {
+         return false;
+     }
+ 
+@@ -1592,8 +1596,7 @@ static bool do_narrow_3d(DisasContext *s, arg_3diff *a,
+     }
+ 
+     /* UNDEF accesses to D16-D31 if they don't exist. */
+-    if (!dc_isar_feature(aa32_simd_r32, s) &&
+-        ((a->vd | a->vn | a->vm) & 0x10)) {
++    if (!neon_dregs_ok(s, a->vd | a->vn | a->vm)) {
+         return false;
+     }
+ 
+@@ -1682,8 +1685,7 @@ static bool do_long_3d(DisasContext *s, arg_3diff *a,
+     }
+ 
+     /* UNDEF accesses to D16-D31 if they don't exist. */
+-    if (!dc_isar_feature(aa32_simd_r32, s) &&
+-        ((a->vd | a->vn | a->vm) & 0x10)) {
++    if (!neon_dregs_ok(s, a->vd | a->vn | a->vm)) {
+         return false;
+     }
+ 
+@@ -1944,8 +1946,7 @@ static bool trans_VMULL_P_3d(DisasContext *s, arg_3diff *a)
+     }
+ 
+     /* UNDEF accesses to D16-D31 if they don't exist. */
+-    if (!dc_isar_feature(aa32_simd_r32, s) &&
+-        ((a->vd | a->vn | a->vm) & 0x10)) {
++    if (!neon_dregs_ok(s, a->vd | a->vn | a->vm)) {
+         return false;
+     }
+ 
+@@ -2027,8 +2028,7 @@ static bool do_2scalar(DisasContext *s, arg_2scalar *a,
+     }
+ 
+     /* UNDEF accesses to D16-D31 if they don't exist. */
+-    if (!dc_isar_feature(aa32_simd_r32, s) &&
+-        ((a->vd | a->vn | a->vm) & 0x10)) {
++    if (!neon_dregs_ok(s, a->vd | a->vn | a->vm)) {
+         return false;
+     }
+ 
+@@ -2125,8 +2125,7 @@ static bool do_2scalar_fp_vec(DisasContext *s, arg_2scalar *a,
+     }
+ 
+     /* UNDEF accesses to D16-D31 if they don't exist. */
+-    if (!dc_isar_feature(aa32_simd_r32, s) &&
+-        ((a->vd | a->vn | a->vm) & 0x10)) {
++    if (!neon_dregs_ok(s, a->vd | a->vn | a->vm)) {
+         return false;
+     }
+ 
+@@ -2222,8 +2221,7 @@ static bool do_vqrdmlah_2sc(DisasContext *s, arg_2scalar *a,
+     }
+ 
+     /* UNDEF accesses to D16-D31 if they don't exist. */
+-    if (!dc_isar_feature(aa32_simd_r32, s) &&
+-        ((a->vd | a->vn | a->vm) & 0x10)) {
++    if (!neon_dregs_ok(s, a->vd | a->vn | a->vm)) {
+         return false;
+     }
+ 
+@@ -2293,8 +2291,7 @@ static bool do_2scalar_long(DisasContext *s, arg_2scalar *a,
+     }
+ 
+     /* UNDEF accesses to D16-D31 if they don't exist. */
+-    if (!dc_isar_feature(aa32_simd_r32, s) &&
+-        ((a->vd | a->vn | a->vm) & 0x10)) {
++    if (!neon_dregs_ok(s, a->vd | a->vn | a->vm)) {
+         return false;
+     }
+ 
+@@ -2438,8 +2435,7 @@ static bool trans_VEXT(DisasContext *s, arg_VEXT *a)
+     }
+ 
+     /* UNDEF accesses to D16-D31 if they don't exist. */
+-    if (!dc_isar_feature(aa32_simd_r32, s) &&
+-        ((a->vd | a->vn | a->vm) & 0x10)) {
++    if (!neon_dregs_ok(s, a->vd | a->vn | a->vm)) {
+         return false;
+     }
+ 
+@@ -2507,8 +2503,7 @@ static bool trans_VTBL(DisasContext *s, arg_VTBL *a)
+     }
+ 
+     /* UNDEF accesses to D16-D31 if they don't exist. */
+-    if (!dc_isar_feature(aa32_simd_r32, s) &&
+-        ((a->vd | a->vn | a->vm) & 0x10)) {
++    if (!neon_dregs_ok(s, a->vd | a->vn | a->vm)) {
+         return false;
+     }
+ 
+@@ -2546,8 +2541,7 @@ static bool trans_VDUP_scalar(DisasContext *s, arg_VDUP_scalar *a)
+     }
+ 
+     /* UNDEF accesses to D16-D31 if they don't exist. */
+-    if (!dc_isar_feature(aa32_simd_r32, s) &&
+-        ((a->vd | a->vm) & 0x10)) {
++    if (!neon_dregs_ok(s, a->vd | a->vm)) {
+         return false;
+     }
+ 
+@@ -2577,8 +2571,7 @@ static bool do_zip_uzp(DisasContext *s, arg_2misc *a,
+     }
+ 
+     /* UNDEF accesses to D16-D31 if they don't exist. */
+-    if (!dc_isar_feature(aa32_simd_r32, s) &&
+-        ((a->vd | a->vm) & 0x10)) {
++    if (!neon_dregs_ok(s, a->vd | a->vm)) {
+         return false;
+     }
+ 
+@@ -2647,8 +2640,7 @@ static bool do_vmovn(DisasContext *s, arg_2misc *a,
+     }
+ 
+     /* UNDEF accesses to D16-D31 if they don't exist. */
+-    if (!dc_isar_feature(aa32_simd_r32, s) &&
+-        ((a->vd | a->vm) & 0x10)) {
++    if (!neon_dregs_ok(s, a->vd | a->vm)) {
+         return false;
+     }
+ 
+@@ -2711,8 +2703,7 @@ static bool trans_VSHLL(DisasContext *s, arg_2misc *a)
+     }
+ 
+     /* UNDEF accesses to D16-D31 if they don't exist. */
+-    if (!dc_isar_feature(aa32_simd_r32, s) &&
+-        ((a->vd | a->vm) & 0x10)) {
++    if (!neon_dregs_ok(s, a->vd | a->vm)) {
+         return false;
+     }
+ 
+@@ -2755,8 +2746,7 @@ static bool trans_VCVT_B16_F32(DisasContext *s, arg_2misc *a)
+     }
+ 
+     /* UNDEF accesses to D16-D31 if they don't exist. */
+-    if (!dc_isar_feature(aa32_simd_r32, s) &&
+-        ((a->vd | a->vm) & 0x10)) {
++    if (!neon_dregs_ok(s, a->vd | a->vm)) {
+         return false;
+     }
+ 
+@@ -2795,8 +2785,7 @@ static bool trans_VCVT_F16_F32(DisasContext *s, arg_2misc *a)
+     }
+ 
+     /* UNDEF accesses to D16-D31 if they don't exist. */
+-    if (!dc_isar_feature(aa32_simd_r32, s) &&
+-        ((a->vd | a->vm) & 0x10)) {
++    if (!neon_dregs_ok(s, a->vd | a->vm)) {
+         return false;
+     }
+ 
+@@ -2841,8 +2830,7 @@ static bool trans_VCVT_F32_F16(DisasContext *s, arg_2misc *a)
+     }
+ 
+     /* UNDEF accesses to D16-D31 if they don't exist. */
+-    if (!dc_isar_feature(aa32_simd_r32, s) &&
+-        ((a->vd | a->vm) & 0x10)) {
++    if (!neon_dregs_ok(s, a->vd | a->vm)) {
+         return false;
+     }
+ 
+@@ -2887,8 +2875,7 @@ static bool do_2misc_vec(DisasContext *s, arg_2misc *a, GVecGen2Fn *fn)
+     }
+ 
+     /* UNDEF accesses to D16-D31 if they don't exist. */
+-    if (!dc_isar_feature(aa32_simd_r32, s) &&
+-        ((a->vd | a->vm) & 0x10)) {
++    if (!neon_dregs_ok(s, a->vd | a->vm)) {
+         return false;
+     }
+ 
+@@ -3015,8 +3002,7 @@ static bool do_2misc(DisasContext *s, arg_2misc *a, NeonGenOneOpFn *fn)
+     }
+ 
+     /* UNDEF accesses to D16-D31 if they don't exist. */
+-    if (!dc_isar_feature(aa32_simd_r32, s) &&
+-        ((a->vd | a->vm) & 0x10)) {
++    if (!neon_dregs_ok(s, a->vd | a->vm)) {
+         return false;
+     }
+ 
+@@ -3219,8 +3205,7 @@ static bool trans_VSWP(DisasContext *s, arg_2misc *a)
+     }
+ 
+     /* UNDEF accesses to D16-D31 if they don't exist. */
+-    if (!dc_isar_feature(aa32_simd_r32, s) &&
+-        ((a->vd | a->vm) & 0x10)) {
++    if (!neon_dregs_ok(s, a->vd | a->vm)) {
+         return false;
+     }
+ 
+@@ -3292,8 +3277,7 @@ static bool trans_VTRN(DisasContext *s, arg_2misc *a)
+     }
+ 
+     /* UNDEF accesses to D16-D31 if they don't exist. */
+-    if (!dc_isar_feature(aa32_simd_r32, s) &&
+-        ((a->vd | a->vm) & 0x10)) {
++    if (!neon_dregs_ok(s, a->vd | a->vm)) {
+         return false;
+     }
+ 
 diff --git a/target/arm/tcg/translate.c b/target/arm/tcg/translate.c
-index ebd917f16c..1bf9d61035 100644
+index 1bf9d61035..a311abb0a5 100644
 --- a/target/arm/tcg/translate.c
 +++ b/target/arm/tcg/translate.c
-@@ -6342,6 +6342,7 @@ static void arm_tr_init_disas_context(DisasContextBase *dcbase, CPUState *cs)
-     ARMCPU *cpu = env_archcpu(env);
-     CPUARMTBFlags tb_flags = arm_tbflags_from_tb(dc->base.tb);
-     uint32_t condexec, core_mmu_idx;
-+    bool d32dis = false;
+@@ -6410,6 +6410,7 @@ static void arm_tr_init_disas_context(DisasContextBase *dcbase, CPUState *cs)
  
-     dc->isar = &cpu->isar;
-     dc->condjmp = 0;
-@@ -6404,7 +6405,12 @@ static void arm_tr_init_disas_context(DisasContextBase *dcbase, CPUState *cs)
-         dc->sme_trap_nonstreaming =
-             EX_TBFLAG_A32(tb_flags, SME_TRAP_NONSTREAMING);
-         dc->neon_excp_el = EX_TBFLAG_A32(tb_flags, NEONEXC_EL);
-+        d32dis = EX_TBFLAG_A32(tb_flags, D32DIS);
-     }
-+
-+    dc->invalid_vfp_dreg_mask =
-+        (d32dis || !dc_isar_feature(aa32_simd_r32, dc)) ? 0x10 : 0;
-+
+     dc->invalid_vfp_dreg_mask =
+         (d32dis || !dc_isar_feature(aa32_simd_r32, dc)) ? 0x10 : 0;
++    dc->invalid_neon_dreg_mask = !dc_isar_feature(aa32_simd_r32, dc) ? 0x10 : 0;
+ 
      dc->lse2 = false; /* applies only to aarch64 */
      dc->cp_regs = cpu->cp_regs;
-     dc->features = env->features;
 diff --git a/target/arm/tcg/translate.h b/target/arm/tcg/translate.h
-index cce84f29c4..b08bded398 100644
+index b08bded398..31f52a34a6 100644
 --- a/target/arm/tcg/translate.h
 +++ b/target/arm/tcg/translate.h
-@@ -94,6 +94,7 @@ typedef struct DisasContext {
-     int max_svl;     /* maximum implemented streaming vector length */
+@@ -95,6 +95,7 @@ typedef struct DisasContext {
      int max_any_vl;  /* maximum implemented vector length */
      bool vfp_enabled; /* FP enabled via FPSCR.EN */
-+    int invalid_vfp_dreg_mask; /* mask for whether VFP D16..D31 should UNDEF */
+     int invalid_vfp_dreg_mask; /* mask for whether VFP D16..D31 should UNDEF */
++    int invalid_neon_dreg_mask; /* ditto, for Neon */
      int vec_len;
      int vec_stride;
      bool v7m_handler_mode;

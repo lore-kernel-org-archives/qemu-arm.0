@@ -4,86 +4,89 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 40D29C5DF7A
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1FAECC5DF66
 	for <qemu-arm@archiver.kernel.org>; Mon, 17 Aug 2026 12:40:35 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wvwc3-0003aG-Ot; Mon, 17 Aug 2026 08:38:47 -0400
+	id 1wvwcM-0003hy-9S; Mon, 17 Aug 2026 08:39:06 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1wvwc2-0003Zv-A4
- for qemu-arm@nongnu.org; Mon, 17 Aug 2026 08:38:46 -0400
-Received: from mail-wm1-x330.google.com ([2a00:1450:4864:20::330])
+ id 1wvwcD-0003fA-0Q
+ for qemu-arm@nongnu.org; Mon, 17 Aug 2026 08:38:57 -0400
+Received: from mail-wr1-x42e.google.com ([2a00:1450:4864:20::42e])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1wvwc0-0001DR-Mb
- for qemu-arm@nongnu.org; Mon, 17 Aug 2026 08:38:46 -0400
-Received: by mail-wm1-x330.google.com with SMTP id
- 5b1f17b1804b1-4956242332dso35664225e9.2
- for <qemu-arm@nongnu.org>; Mon, 17 Aug 2026 05:38:43 -0700 (PDT)
+ id 1wvwc9-0001Fp-25
+ for qemu-arm@nongnu.org; Mon, 17 Aug 2026 08:38:56 -0400
+Received: by mail-wr1-x42e.google.com with SMTP id
+ ffacd0b85a97d-47f6609c657so1596773f8f.2
+ for <qemu-arm@nongnu.org>; Mon, 17 Aug 2026 05:38:50 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1786970321; x=1787575121; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:from:to:cc:subject:date:message-id:reply-to:content-type;
- bh=I52uwiyvCbvrhl3pxQjwG0o0BiUPMBUp8SjEJskHeyE=;
- b=kTc8N3hNRnaBdpRa6Q6gumwNPS19tlVoixGYgKDlV3g39ouVdeOLftsKmoh0dWjZTK
- ShX9U7k8ODFwn3/MvEhvg8d37F6SZVqQMr3C0W8pKz5XHBTeNwCeCIrMjtNv6Yps2HPZ
- RP5FIMBCWQkbiBbWeeBILnCoUPhy2G68AqMoWIcWXhVi5s19wb5hOkbWoMmjGiHFN0zX
- W5mjkYT1Cc4tFnraEC+c91fMNssZY5W5ztOR15JyB0HmLmedaIzEg+9xNQKLzWr5UuDH
- Ko4B8E5H6GwKimAciH7HNKqXVfTUNRdr8PInNYBk39/lQTfWZTqCyhpJhFni0CmawYLZ
- OLiw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1786970321; x=1787575121;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+ d=linaro.org; s=google; t=1786970330; x=1787575130; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to:content-type;
- bh=I52uwiyvCbvrhl3pxQjwG0o0BiUPMBUp8SjEJskHeyE=;
- b=EnGKgv/919W0UXlH7vPLzlGBqLivWl/MBDJeUZ6GiUVcP/W+D1VfJ8eFONdcrgINMf
- Aa2/UoEqBUG5h4eAgT7y+UAYoB/EwnTtP4adIHMCSjv9mneWmSdcRCZlaA2KhesdjOAD
- heMAyFN+j+MctM1PeST/hDYwhT4nZlOHkmXaiZhX0LKgn/wEyge6JDVrpq0agIKR25yV
- EUwS+2Vlz6n//qzM7GdV/hJ5bZ9cr0MShof5ACpaGPUyGwFq3BOFvLptVSUTna6c+EyZ
- T1jjDUdnVdYuPFJSdOBhjjX6kSz1MYNvA74ot53LjjRgvld1s8O6m7UrhNJpAgxSZ5b7
- qDbg==
-X-Gm-Message-State: AOJu0YwqPhlem+4Pue2IEkm9C7RSzDHo3GOvINmuu+jC+rmglUimIQIa
- sJw7hD5TQp+o4wAfIcHIaSvZ5x5Nnl2TzdaSyiBY1iB5LxVqvOXO1XFY85D1gCSyf9JYCg8T+OB
- wAjb9
-X-Gm-Gg: AR+sD13uYvhC2whZBkq5nKW93752jUfnETjM8FgvjoAk9ewFu4RU8r7ZOwP+P9JmCit
- K0puucm126PrWTOSnAM6qr3eHeL8XAD7FUsoxGtHvCxyRPFiCzB7sutLdCd7EXTrIVXNCs1Y93S
- 3d+s6lSrdF8HKvUWbxN+fdWxv7yoMuL7iljj64SnpEKm1LZrd72GoxR1YyGA9AoDKt2cmI1o1ov
- lmsgZ7aaNVdvN+Y4L6IccRPsxvmrBncQm2m3zzRD3Y/qLvqAmKP7K5QAG9+ckpccuqOQjpmNLEF
- 23QgkwJ//4gkNPbdX9eGKKsRgts4m5Z2gajVk0i40Ek8Uj6KudOgEaG++KqkQVxS7sUgSDMR/rM
- mt+wKrHC++BBMHWDq2X+waMpbZBvxeDVunC0x+EmP996y7oWeFOwgofmy7Auv1fdl3TzJdbneY4
- klGqA16iXWPZrqFKkY5K1BIuWKWe5cHoZwvus94pOAl1GffRev/en5U03w43ufHw+9NkgwVP9WB
- cBegHsQFfHy5HfGRjydzkVzKu3Dq6PQlzPDHiTX34S4gR4mR8sd31X9jfakA2Yp72xo6w==
-X-Received: by 2002:a05:600c:3495:b0:499:873b:471c with SMTP id
- 5b1f17b1804b1-4998794fafdmr421865545e9.6.1786970321242; 
- Mon, 17 Aug 2026 05:38:41 -0700 (PDT)
+ bh=UC2VfuEnRS7vtJW9dbldA5VEOCwlt4wt3TaapGzwBc4=;
+ b=YokIhS9DtdCmcY6bryit+VuptWJzynB0nASNCA+7XOGO3NEuqYL4SI+T3L8SMcz359
+ peHRT26Z97bB/gwas/Rgb47/BMhQrRykLVCtnEcemCKM1HbN9zIZKQZRXGbEseFK/R2n
+ VjcfSvsjVn3GEBQvNjdhbN0i2c8XmPu6Bm4apVzGN/wfKMgogRwuLWgJmxL15KYJqQOT
+ 791JRm+n9FDNakCxUa++OMOxt1dTNLxfea1sPRBaKTVywunUVdfD413ad8ZVM9y43D7q
+ EYHAE9wrgdf9P13aO8SdJwhhhM/UyJ+VxDeRFHvXSPkn+N6SfgKIM+PSHkOKHStutMaS
+ WD1w==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20251104; t=1786970330; x=1787575130;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
+ :to:cc:subject:date:message-id:reply-to:content-type;
+ bh=UC2VfuEnRS7vtJW9dbldA5VEOCwlt4wt3TaapGzwBc4=;
+ b=BrlNmsk/TBqXYQ7fw5CgRkLIrGQcnpUDWgKs4Nl74p7PCm9/xjMhuqVx2vfdMa3K+W
+ mT+P+zwkjQS+4mv2QRyXdqKY9uKTgbL9NgzHjDM/KUTkHrOBlUzL58bdg2WnIvKoGNjI
+ gfu4a1k5+dwsvkG8obyF7N9B/YQYO1h+2gAREUCatXE0eVmujDbAxxR0oOI81Vbq/a0p
+ 57dlxlBjlLHA16JAuo2YowvPxjL3/UJViIHwA5BGKq4k0VRvs+4ozsZi8qyIzZbpDBP3
+ D7C8ZT6+0n2mZZRNS4U/GlnqybslTU6VD6wLv5x7XjMAPiOzZ68jVWyMqxXrtQwAXT4l
+ NrYA==
+X-Gm-Message-State: AOJu0YwfTL9iOfXIzdqacPW1lwvYBX/24bFMjRrqbw5E5bxzlnNPlk/f
+ 8EOiD5xCeDTwHcWrA7JNXbcVstE5VKVdizBvE0B9Mk8TPwJKCOdJ5kYNSZylm/ysRCRCwv8ndft
+ 4Vzyx
+X-Gm-Gg: AR+sD11neYB5Qt3mqsTHqfNnCWCoixB2lgl0+GQdbZ0wJOv22XZLh10cPc8vMWiGQjP
+ EUZ4eGpq1n0YzU3JBCtfFLsO2I11kxzAsWXO2xKB/eDfa5IUUlu7KNWv3fK7CGPpuXSfsxmieRF
+ 0CzmwAgvhK7lRNn+Nw1gNoyrqK5naxE34+cYVZJUP4bcWOYmGlV9jMbYcPODTkxwahCs+DXz1Sn
+ AKL7h2+/7uG4QeUvkLr0EcciaBF5nykTQhfi2K4j6o10OEQCaFbkPbRVOk89O99QqCNLzXLdpyK
+ zLEV+eIkH+fPSxEPq38ADV5mx/Dna2+cd0ZG5cCyhN1+OyZ482JYjRNvxpLFHUxaLFpk4590JgT
+ iqB/q/Uv3LIP+T9ewAO8XLxUjHKkaPLYXBqj8ZkrCYwsjaujl8GlSAHAm345myv5M37N9gYYX52
+ mQ/Uvf3m573lEO77STeZL7tYJ6LXQ5eKkw/MVjeNEWlkI9l0xzXIn5sQRv1+SC7WrZx3oH2NVbp
+ eyJFpoQdOisLxeG/bQIjUWriG1+c/C8lPZ8nfakyP4fgMBGXI3eGncCq7I7UgixgixZcQ==
+X-Received: by 2002:a7b:c3c4:0:b0:495:5890:8f6c with SMTP id
+ 5b1f17b1804b1-4998793bdf2mr290478965e9.7.1786970329632; 
+ Mon, 17 Aug 2026 05:38:49 -0700 (PDT)
 Received: from lanath.. (wildly.archaic.org.uk. [81.2.115.145])
  by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-4998780397dsm120415055e9.3.2026.08.17.05.38.39
+ 5b1f17b1804b1-4998780397dsm120415055e9.3.2026.08.17.05.38.48
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 17 Aug 2026 05:38:39 -0700 (PDT)
+ Mon, 17 Aug 2026 05:38:48 -0700 (PDT)
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
 Cc: Richard Henderson <richard.henderson@linaro.org>
-Subject: [PATCH v2 0/8] target/arm: Fix some Neon trapping corner cases
-Date: Mon, 17 Aug 2026 13:38:30 +0100
-Message-ID: <20260817123838.1578060-1-peter.maydell@linaro.org>
+Subject: [PATCH v2 7/8] target/arm: Implement CPACR.D32DIS
+Date: Mon, 17 Aug 2026 13:38:37 +0100
+Message-ID: <20260817123838.1578060-8-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.43.0
+In-Reply-To: <20260817123838.1578060-1-peter.maydell@linaro.org>
+References: <20260817123838.1578060-1-peter.maydell@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::330;
- envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x330.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::42e;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x42e.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -99,52 +102,227 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-This is v2 of a patchset which originally did three things (fix a bug
-in syndrome info for VFP/Neon trapped insns; support the "trap Neon
-insns" trap bits; support trapping VFP D16-D32 accesses). The first
-of those is already upstream, so here we have just the patches for
-the trap controls.
+On some v7A CPUs, CPACR.D32DIS is a bit allowing the guest to make
+VFP instructions that touch registers D16..D31 UNDEF.  Whether the
+CPU implements this or not is IMPDEF, and the only two CPUs we
+implement which have this are the Cortex-A7 and Cortex-A9.  In v8A
+the bit is no longer defined at all.
 
-Changes v1->v2:
+Since the only kind of trapping that needs to be done is a simple
+UNDEF, this is straightforward enough to implement.
 
- * the first 4 patches of v1 have already been upstreamed
- * patches 1, 2, 3 in this v2 have already been reviewed
- * patch 4: switch to a positive ARM_FEATURE_NEON_TRAPS from
-   the previous negative NO_NEON_TRAPS one
- * patch 5: fixed a missing check for EL1 being AArch64, and
-   slightly rearranged things and improved the comments. I opted
-   not to take the rearrangement suggested by RTH in review on v1
- * patches 6 and 7: refactored to use a vfp_dregs_ok() function
-   as suggested by RTH
- * patch 8: new, makes the neon code use a similar neon_dregs_ok()
-   purely as a cleanup and to make it match the vfp code
+Resolves: https://gitlab.com/qemu-project/qemu/-/work_items/1499
+Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+---
+ target/arm/cpu.h               |  4 ++++
+ target/arm/helper.c            | 19 ++++++++++++++++---
+ target/arm/tcg/cpu32.c         |  2 ++
+ target/arm/tcg/hflags.c        | 20 ++++++++++++++++++++
+ target/arm/tcg/translate-vfp.c |  7 ++-----
+ target/arm/tcg/translate.c     |  6 ++++++
+ target/arm/tcg/translate.h     |  1 +
+ 7 files changed, 51 insertions(+), 8 deletions(-)
 
-thanks
--- PMM
-
-Peter Maydell (8):
-  target/arm: Handle NSACR.NSASEDIS in CPACR accesses
-  target/arm: Handle NSACR.NSASEDIS in HCPTR accesses
-  target/arm: Update confusing comment in cpacr_write()
-  target/arm: Add new feature ARM_FEATURE_NEON_TRAPS
-  target/arm: Implement CPACR.ASEDIS and HCPTR.TASE
-  target/arm: Pull VFP dregs checks out into a function
-  target/arm: Implement CPACR.D32DIS
-  target/arm: Pull Neon dregs checks out into a function
-
- target/arm/cpu-max.c            |   1 +
- target/arm/cpu.h                |  17 +++++
- target/arm/cpu64.c              |   1 +
- target/arm/helper.c             |  91 ++++++++++++++++++++----
- target/arm/tcg/cpu32.c          |  10 +++
- target/arm/tcg/cpu64.c          |  10 +++
- target/arm/tcg/hflags.c         | 102 +++++++++++++++++++++++++++
- target/arm/tcg/translate-neon.c | 118 ++++++++++++++------------------
- target/arm/tcg/translate-vfp.c  |  83 +++++++++++++---------
- target/arm/tcg/translate.c      |   8 +++
- target/arm/tcg/translate.h      |   3 +
- 11 files changed, 332 insertions(+), 112 deletions(-)
-
+diff --git a/target/arm/cpu.h b/target/arm/cpu.h
+index afc3fda3b8..e8dfc3179f 100644
+--- a/target/arm/cpu.h
++++ b/target/arm/cpu.h
+@@ -2184,6 +2184,8 @@ enum arm_features {
+      * ARM_FEATURE_NEON CPUs except the Cortex-A8.
+      */
+     ARM_FEATURE_NEON_TRAPS,
++    /* Does the CPU implement CPACR.D32DIS ? */
++    ARM_FEATURE_D32DIS,
+ };
+ 
+ static inline int arm_feature(const CPUARMState *env, int feature)
+@@ -2512,6 +2514,8 @@ FIELD(TBFLAG_A32, SME_TRAP_NONSTREAMING, 11, 1)
+  * take precedence.
+  */
+ FIELD(TBFLAG_A32, NEONEXC_EL, 12, 2)
++/* Should VFP insns touching D16..D31 UNDEF? (CPACR.D32DIS) */
++FIELD(TBFLAG_A32, D32DIS, 14, 1)
+ 
+ /*
+  * Bit usage when in AArch32 state, for M-profile only.
+diff --git a/target/arm/helper.c b/target/arm/helper.c
+index 6f33b1ef5e..3aaeb2dd02 100644
+--- a/target/arm/helper.c
++++ b/target/arm/helper.c
+@@ -573,8 +573,7 @@ static void cpacr_write(CPUARMState *env, const ARMCPRegInfo *ri,
+          */
+         if (cpu_isar_feature(aa32_vfp_simd, env_archcpu(env))) {
+             /* VFP coprocessor: cp10 & cp11 [23:20] */
+-            mask |= R_CPACR_D32DIS_MASK |
+-                    R_CPACR_CP11_MASK |
++            mask |= R_CPACR_CP11_MASK |
+                     R_CPACR_CP10_MASK;
+ 
+             if (!arm_feature(env, ARM_FEATURE_NEON)) {
+@@ -596,6 +595,13 @@ static void cpacr_write(CPUARMState *env, const ARMCPRegInfo *ri,
+             if (!cpu_isar_feature(aa32_simd_r32, env_archcpu(env))) {
+                 /* D32DIS [30] is RAO/WI if D16-31 are not implemented. */
+                 value |= R_CPACR_D32DIS_MASK;
++                mask |= R_CPACR_D32DIS_MASK;
++            } else if (arm_feature(env, ARM_FEATURE_D32DIS)) {
++                /*
++                 * Bit is present unless CPU doesn't implement D32DIS,
++                 * in which case it is RAZ/WI.
++                 */
++                mask |= R_CPACR_D32DIS_MASK;
+             }
+         }
+         value &= mask;
+@@ -605,7 +611,7 @@ static void cpacr_write(CPUARMState *env, const ARMCPRegInfo *ri,
+      * For A-profile AArch32 EL3 (but not M-profile secure mode), if NSACR.CP10
+      * is 0 then CPACR.{CP11,CP10} ignore writes and read as 0b00.
+      * Similarly, if NSACR.NSASEDIS is 1 then CPACR.ASEDIS ignores writes
+-     * and reads as 1.
++     * and reads as 1, and NSACR.NSD32DIS makes CPACR.D32DIS behave as RAO/WI.
+      */
+     if (arm_feature(env, ARM_FEATURE_EL3) && !arm_el_is_aa64(env, 3) &&
+         !arm_is_secure(env)) {
+@@ -617,6 +623,10 @@ static void cpacr_write(CPUARMState *env, const ARMCPRegInfo *ri,
+             mask = R_CPACR_ASEDIS_MASK;
+             value = (value & ~mask) | (env->cp15.cpacr_el1 & mask);
+         }
++        if (FIELD_EX32(env->cp15.nsacr, NSACR, NSD32DIS)) {
++            mask = R_CPACR_D32DIS_MASK;
++            value = (value & ~mask) | (env->cp15.cpacr_el1 & mask);
++        }
+     }
+ 
+     env->cp15.cpacr_el1 = value;
+@@ -639,6 +649,9 @@ static uint64_t cpacr_read(CPUARMState *env, const ARMCPRegInfo *ri)
+         if (FIELD_EX32(env->cp15.nsacr, NSACR, NSASEDIS)) {
+             value |= R_CPACR_ASEDIS_MASK;
+         }
++        if (FIELD_EX32(env->cp15.nsacr, NSACR, NSD32DIS)) {
++            value |= R_CPACR_D32DIS_MASK;
++        }
+     }
+     return value;
+ }
+diff --git a/target/arm/tcg/cpu32.c b/target/arm/tcg/cpu32.c
+index 3df3ca38d6..34436ad6ec 100644
+--- a/target/arm/tcg/cpu32.c
++++ b/target/arm/tcg/cpu32.c
+@@ -336,6 +336,7 @@ static void cortex_a9_initfn(Object *obj)
+      */
+     set_feature(&cpu->env, ARM_FEATURE_V7MP);
+     set_feature(&cpu->env, ARM_FEATURE_CBAR);
++    set_feature(&cpu->env, ARM_FEATURE_D32DIS);
+     cpu->midr = 0x410fc090;
+     cpu->reset_fpsid = 0x41033090;
+     cpu->isar.mvfr0 = 0x11110222;
+@@ -403,6 +404,7 @@ static void cortex_a7_initfn(Object *obj)
+     set_feature(&cpu->env, ARM_FEATURE_EL2);
+     set_feature(&cpu->env, ARM_FEATURE_EL3);
+     set_feature(&cpu->env, ARM_FEATURE_PMU);
++    set_feature(&cpu->env, ARM_FEATURE_D32DIS);
+     cpu->midr = 0x410fc075;
+     cpu->reset_fpsid = 0x41023075;
+     cpu->isar.mvfr0 = 0x10110222;
+diff --git a/target/arm/tcg/hflags.c b/target/arm/tcg/hflags.c
+index 14824e3dff..296ec8101a 100644
+--- a/target/arm/tcg/hflags.c
++++ b/target/arm/tcg/hflags.c
+@@ -244,6 +244,24 @@ static int neon_exception_el(CPUARMState *env, int cur_el)
+     return 0;
+ }
+ 
++static bool arm_d32dis(CPUARMState *env, int cur_el)
++{
++    bool cpacr_d32dis = FIELD_EX64(env->cp15.cpacr_el1, CPACR, D32DIS);
++
++    if (!arm_feature(env, ARM_FEATURE_D32DIS)) {
++        return false;
++    }
++
++    /* If NSACR.NSD32DIS is set, CPACR.D32DIS acts as 1 in NonSecure */
++    if ((arm_feature(env, ARM_FEATURE_EL3) && !arm_el_is_aa64(env, 3) &&
++         cur_el <= 2 && !arm_is_secure_below_el3(env))) {
++        if (FIELD_EX32(env->cp15.nsacr, NSACR, NSD32DIS)) {
++            cpacr_d32dis = true;
++        }
++    }
++    return cpacr_d32dis;
++}
++
+ static CPUARMTBFlags rebuild_hflags_a32(CPUARMState *env, int fp_el,
+                                         ARMMMUIdx mmu_idx)
+ {
+@@ -291,6 +309,8 @@ static CPUARMTBFlags rebuild_hflags_a32(CPUARMState *env, int fp_el,
+ 
+     DP_TBFLAG_A32(flags, NEONEXC_EL, neon_exception_el(env, el));
+ 
++    DP_TBFLAG_A32(flags, D32DIS, arm_d32dis(env, el));
++
+     return rebuild_hflags_common_32(env, fp_el, mmu_idx, flags);
+ }
+ 
+diff --git a/target/arm/tcg/translate-vfp.c b/target/arm/tcg/translate-vfp.c
+index a8d470ec49..0a87a0165b 100644
+--- a/target/arm/tcg/translate-vfp.c
++++ b/target/arm/tcg/translate-vfp.c
+@@ -210,8 +210,7 @@ static void gen_update_fp_context(DisasContext *s)
+ /*
+  * Return true if a VFP insn is OK to access the registers indicated
+  * by regmask, false if it should UNDEF. This checks whether the
+- * D16-D31 regs are implemented by the CPU. Eventually we will also check
+- * CPACR.D32DIS.
++ * D16-D31 regs are implemented by the CPU and not disabled by CPACR.D32DIS.
+  * Note that Neon insns accessing D16..D31 do not need to check D32DIS,
+  * so this function is for VFP insns only.
+  *
+@@ -219,9 +218,7 @@ static void gen_update_fp_context(DisasContext *s)
+  */
+ static bool vfp_dregs_ok(DisasContext *s, int dregmask)
+ {
+-    int invalid_dreg_mask = dc_isar_feature(aa32_simd_r32, s) ? 0 : 0x10;
+-
+-    return !(dregmask & invalid_dreg_mask);
++    return !(dregmask & s->invalid_vfp_dreg_mask);
+ }
+ 
+ /*
+diff --git a/target/arm/tcg/translate.c b/target/arm/tcg/translate.c
+index ebd917f16c..1bf9d61035 100644
+--- a/target/arm/tcg/translate.c
++++ b/target/arm/tcg/translate.c
+@@ -6342,6 +6342,7 @@ static void arm_tr_init_disas_context(DisasContextBase *dcbase, CPUState *cs)
+     ARMCPU *cpu = env_archcpu(env);
+     CPUARMTBFlags tb_flags = arm_tbflags_from_tb(dc->base.tb);
+     uint32_t condexec, core_mmu_idx;
++    bool d32dis = false;
+ 
+     dc->isar = &cpu->isar;
+     dc->condjmp = 0;
+@@ -6404,7 +6405,12 @@ static void arm_tr_init_disas_context(DisasContextBase *dcbase, CPUState *cs)
+         dc->sme_trap_nonstreaming =
+             EX_TBFLAG_A32(tb_flags, SME_TRAP_NONSTREAMING);
+         dc->neon_excp_el = EX_TBFLAG_A32(tb_flags, NEONEXC_EL);
++        d32dis = EX_TBFLAG_A32(tb_flags, D32DIS);
+     }
++
++    dc->invalid_vfp_dreg_mask =
++        (d32dis || !dc_isar_feature(aa32_simd_r32, dc)) ? 0x10 : 0;
++
+     dc->lse2 = false; /* applies only to aarch64 */
+     dc->cp_regs = cpu->cp_regs;
+     dc->features = env->features;
+diff --git a/target/arm/tcg/translate.h b/target/arm/tcg/translate.h
+index cce84f29c4..b08bded398 100644
+--- a/target/arm/tcg/translate.h
++++ b/target/arm/tcg/translate.h
+@@ -94,6 +94,7 @@ typedef struct DisasContext {
+     int max_svl;     /* maximum implemented streaming vector length */
+     int max_any_vl;  /* maximum implemented vector length */
+     bool vfp_enabled; /* FP enabled via FPSCR.EN */
++    int invalid_vfp_dreg_mask; /* mask for whether VFP D16..D31 should UNDEF */
+     int vec_len;
+     int vec_stride;
+     bool v7m_handler_mode;
 -- 
 2.43.0
 

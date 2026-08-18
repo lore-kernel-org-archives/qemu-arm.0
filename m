@@ -4,87 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DDD75C5DF7D
-	for <qemu-arm@archiver.kernel.org>; Tue, 18 Aug 2026 11:58:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BEA2EC5DF7E
+	for <qemu-arm@archiver.kernel.org>; Tue, 18 Aug 2026 12:51:39 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wwISW-0004dc-RP; Tue, 18 Aug 2026 07:58:24 -0400
+	id 1wwJ6V-0006NP-Vt; Tue, 18 Aug 2026 08:39:44 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1wwISV-0004bo-4F
- for qemu-arm@nongnu.org; Tue, 18 Aug 2026 07:58:23 -0400
-Received: from mail-wr1-x431.google.com ([2a00:1450:4864:20::431])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1wwISP-0005wK-2x
- for qemu-arm@nongnu.org; Tue, 18 Aug 2026 07:58:19 -0400
-Received: by mail-wr1-x431.google.com with SMTP id
- ffacd0b85a97d-47f7872abb6so2558360f8f.3
- for <qemu-arm@nongnu.org>; Tue, 18 Aug 2026 04:58:16 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1787054295; x=1787659095; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:message-id:date:subject:to
- :from:from:to:cc:subject:date:message-id:reply-to:content-type;
- bh=LybYRmQ9E3yF+WtyhOLMFZc8lKyl71GzSWY2D255ltI=;
- b=TpbgQP/eoINCYyrWZJBtW/iAYJ3HcwgtE/ajv0PiKF7wLSHD/x6aJknybclP1xYXVy
- lybcy67YaFsDX2UARKl8HVecvJPc4x29oWPBWYnEgxYJhNJ2vYwAcZithxa2J/1IvntS
- PZG9LllYMyTsxrzQTuMn/exqDTAvftX1WBDrjCNd2Ld05MpLhdKmt7fI1hG9LfKFJobo
- bI11oijuo4fbfuQcM/H5ldsowDkNm7Kqw5upHw6CLtGJcdtPnlqFgzEOm/HY8SUmgc40
- 09hI/RAwpmmg6CLTGsyZN7B1n4tPHGWxCWviWnvvM5iZufg/6J3oogVgKTAjfxHm5YfC
- VJxw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1787054295; x=1787659095;
- h=content-transfer-encoding:mime-version:message-id:date:subject:to
- :from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to:content-type;
- bh=LybYRmQ9E3yF+WtyhOLMFZc8lKyl71GzSWY2D255ltI=;
- b=jRj1LaRWg3QaxL+wAoHTrQUYW1MtYiZfcLXu/7tTw66h02EydoU6ehhFmMSs3mqFQj
- IGmkwVIxlmaW+UAXPNzhBXaWX+Z12LRobKsxaIQ3bmr+dBwO1jr62fV+3k70umuzkK4V
- QgdzW5K+FfjuYEFw0ADdH5pKHg9xOvWCVEFHhE0WTkuYhmYy4RVHEzCnkH4qTzfL3V91
- 2FEIvYsw6tKWkbQ+GxI6MJG1VQV6vFchJkH+2V+66+Ot9XtUbgo72eXQ26deSLhY9Hq8
- cXD5RxFOwBWQXeMmuVmY2qYipuadGFZvlS7NarePnE1mqs2USW6LPSuPnD16o2ddeBbY
- vPyQ==
-X-Gm-Message-State: AOJu0YxsRffSAhTDAeHVVkC7+5CaatRI2ecH6k5aQ6lfvTkAlshXzq8k
- QjM8JaWlGDKBz58memgJ9sVVYSokdSHNwK4mFKMvXNRaU5YOCw0dYzsZ5tIwUN56XhrGUEzkTbJ
- pCbRZ
-X-Gm-Gg: AR+sD13LHwQ6MhmubndKPcKzLrbA3BHid7UZQzwVwmLUZ8jAwi0ZiP3JswkUhpARzNK
- Ye9Jf3MfSLBC4c4QK3olHsboZKbJOW2DqSgKBMPh2bRlHDy9st5AJnJHvt7rN/tlvTB51oGUsRC
- gWn/WybK4o+pFZrGCcrPCOb3qaOrKTZld85Mzls8Cz8v5VAnvZvnEidKlSm/dQ/Mq1OG2ADJ1dL
- 1vdzqc+Bb6sqFLCCojdojkefP8vn8C4GA8LIWfuUIU0dHxvl/dPm0IND/5QjRpFQt0y6X9qwttq
- 4NSub4ZQBYqrks4NR1LFwvNpiD/6njSDEo2QM4CN3OTpRdxIztry4C3pJ7BV01LcsGwTa4MNrPp
- i9iE3YGPltooASlBezY1Pl79DUevZJCth7wdsUzqitZRwlB73MbNvEF37Jp9Qt8i1qYsro+1mSq
- 4ThKdKSiU79+o42m4awGu9RgrTVD0aoXJQpqPxlSUKGjrUogS8VpTa0/6cd36oPqg6mVmZrb65+
- mJf70o1guuK5QGr2bXgqO3NXEFAPmfJZZDm9/7Axz6ZzqCIH1bmtiYY4zARRfYNWC7+Uv9baZU2
- NFniKQ==
-X-Received: by 2002:a5d:5889:0:b0:47f:81c4:36b4 with SMTP id
- ffacd0b85a97d-48160738b9emr45443461f8f.14.1787054295392; 
- Tue, 18 Aug 2026 04:58:15 -0700 (PDT)
-Received: from lanath.. (wildly.archaic.org.uk. [81.2.115.145])
- by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-482a9f0dec2sm6797298f8f.10.2026.08.18.04.58.14
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 18 Aug 2026 04:58:14 -0700 (PDT)
-From: Peter Maydell <peter.maydell@linaro.org>
-To: qemu-arm@nongnu.org,
-	qemu-devel@nongnu.org
-Subject: [PATCH] target/arm: Correct reset value of SCTLR for arm926
-Date: Tue, 18 Aug 2026 12:58:14 +0100
-Message-ID: <20260818115814.2268429-1-peter.maydell@linaro.org>
+ (Exim 4.90_1) (envelope-from <junjie.cao@intel.com>)
+ id 1wwGUo-0006Us-QN; Tue, 18 Aug 2026 05:52:39 -0400
+Received: from mgamail.intel.com ([192.198.163.12])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <junjie.cao@intel.com>)
+ id 1wwGUm-0007F8-Vw; Tue, 18 Aug 2026 05:52:38 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1787046757; x=1818582757;
+ h=from:to:cc:subject:date:message-id:in-reply-to:
+ references:mime-version:content-transfer-encoding;
+ bh=WCil1czoJQjSs+BSGz2W5eL5i1SSFXPJ/Eexet0K6Y4=;
+ b=dY8h4AHKhiCUyWetO9zf92yXurFXNwz7WooEWapptbqjPJix5x935r2Y
+ U/Q2C36dmU/eg95V7nbYixolcyjr7330iPcF5INKJqsgbmrDIbOhNx99C
+ 3tARcC/I8Dr7KFtyI6+PHXTdaBDT73l294gQTsSwKotlPu3wA2ka7nACD
+ tswyGnWras/dt7OPkv2oHVnDglQj/aUCTiLnNYzR+5SHV8VXY6zyAAZxz
+ FP1Nu2O2VwDbswludrvseHwx417aSJw695hPZkg7LfU2S9EeZvo0acXLO
+ iDWkv2Y54W65fXV8BCAP2KTnunMTPhKwZBkKyasgG/tFWOBT326e0fsu6 g==;
+X-CSE-ConnectionGUID: JnxjtjpSRDmgpe+WmIufhg==
+X-CSE-MsgGUID: Asz8+fJURMmE7SfANFsbEQ==
+X-IronPort-AV: E=McAfee;i="6800,10657,11878"; a="91347059"
+X-IronPort-AV: E=Sophos;i="6.25,230,1779174000"; d="scan'208";a="91347059"
+Received: from orviesa002.jf.intel.com ([10.64.159.142])
+ by fmvoesa106.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 18 Aug 2026 02:52:33 -0700
+X-CSE-ConnectionGUID: YwFxTxrATvS6M93nFx/INQ==
+X-CSE-MsgGUID: nfOVKfRpSLG9GBvAgm6bWA==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.25,230,1779174000"; d="scan'208";a="295108838"
+Received: from junjie-desk-dev.bj.intel.com ([10.238.152.71])
+ by orviesa002-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 18 Aug 2026 02:52:28 -0700
+From: Junjie Cao <junjie.cao@intel.com>
+To: Manish Honap <mhonap@nvidia.com>
+Cc: alex@shazbot.org, ankita@nvidia.com, jic23@kernel.org,
+ dave.jiang@intel.com, alejandro.lucero-palau@amd.com, smadhavan@nvidia.com,
+ pierrick.bouvier@oss.qualcomm.com, mst@redhat.com, imammedo@redhat.com,
+ anisinha@redhat.com, pbonzini@redhat.com, eric.auger@redhat.com,
+ peter.maydell@linaro.org, richard.henderson@linaro.org, clg@redhat.com,
+ cohuck@redhat.com, kjaju@nvidia.com, vsethi@nvidia.com, zhiw@nvidia.com,
+ qemu-devel@nongnu.org, qemu-arm@nongnu.org
+Subject: Re: [PATCH 06/10] hw/vfio/pci: Bind a CXL device to its fixed memory
+ window
+Date: Tue, 18 Aug 2026 17:52:24 +0800
+Message-ID: <20260818095226.252213-1-junjie.cao@intel.com>
 X-Mailer: git-send-email 2.43.0
+In-Reply-To: <20260813130623.2499506-7-mhonap@nvidia.com>
+References: <20260813130623.2499506-7-mhonap@nvidia.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::431;
- envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x431.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+Received-SPF: pass client-ip=192.198.163.12; envelope-from=junjie.cao@intel.com;
+ helo=mgamail.intel.com
+X-Spam_score_int: -46
+X-Spam_score: -4.7
+X-Spam_bar: ----
+X-Spam_report: (-4.7 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.343,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_MED=-2.3, SPF_HELO_NONE=0.001,
+ SPF_NONE=0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
+X-Mailman-Approved-At: Tue, 18 Aug 2026 08:39:42 -0400
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -99,47 +87,38 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-For the arm926 CPU we reset the SCTLR to 0x00090078.  This is not the
-value specified in the ARM926EJ-S TRM (ARM DDI 0198E), which states
-that bits 16 and 18 are SBO, bit 17 is SBZ, and bits [31:19] are SBZ.
-It's also not the value seen on real hardware.
+Hi Manish,
 
-This has been wrong in QEMU since 2007 when we first started actively
-resetting the SCTLR to some fixed value rather than zero.
+On Thu, 13 Aug 2026 18:36:19 +0530, Manish Honap wrote:
+> +/*
+> + * Cold-plug path: the CFMWS windows are placed at machine init done, so the
+> + * binding can only be validated from this notifier. The VM has not run yet, so
+> + * a configuration error is fatal to startup. A hotplugged device is validated
+> + * in realize instead (see vfio_cxl_setup), where the failure fails device_add
+> + * without taking down the running VM.
 
-This wrong value didn't affect any of QEMU's behaviour, because we
-don't implement any handling of the old pre-v6 meanings of these bits
-(which were IMPDEF), and their v8 reuse is guarded by appropriate
-version checks.
+At this point in the series that isn't true yet: the
+DEVICE(vdev)->hotplugged branch only arrives in patch 7, while this
+patch registers the notifier unconditionally.
+qemu_add_machine_init_done_notifier() invokes the notifier immediately
+once the machine has reached PHASE_MACHINE_READY (hw/core/machine.c),
+so between patches 6 and 7 a device_add with a bad CFMWS config lands
+in vfio_cxl_bind_fmws() and exit(1)s the running VM. Move the hotplug
+branch from patch 7 into this patch; then every point of the series
+matches the comment.
 
-Correct the reset value to 0x00050078 (i.e set bit 18 and not 19).
+> +        for (slot = 0; slot < PCI_SLOT_MAX; slot++) {
+> +            for (fn = 0; fn < PCI_FUNC_MAX; fn++) {
+> +                if (ep_bus->devices[PCI_DEVFN(slot, fn)]) {
+> +                    nendpoints++;
+> +                    break;
 
-(We use the same reset value for the arm1020; this might also be
-wrong, but as the ARM1020 TRM doesn't seem to be available we can't
-check, so leave it as-is.)
+This counts occupied slots, not functions: the inner loop breaks on
+the first function of a slot, so two vfio-cxl functions cold-plugged
+at slot 0 each pass with nendpoints == 1, bind the same single-target
+window, and map at the same base with equal priority -- the aliasing
+this check exists to reject. Count devfns instead.
 
-Cc: qemu-stable@nongnu.org
-Fixes: 610c3c8afd99f4f11 ("Reset ARM cp15.c1_sys to default values. Fix XScale cp15 accesses.")
-Resolves: https://gitlab.com/qemu-project/qemu/-/work_items/4202
-Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
----
- target/arm/tcg/cpu32.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
-
-diff --git a/target/arm/tcg/cpu32.c b/target/arm/tcg/cpu32.c
-index 8220d785f5..8d85333f4b 100644
---- a/target/arm/tcg/cpu32.c
-+++ b/target/arm/tcg/cpu32.c
-@@ -33,7 +33,7 @@ static void arm926_initfn(Object *obj)
-     cpu->midr = 0x41069265;
-     cpu->reset_fpsid = 0x41011090;
-     cpu->ctr = 0x1dd20d2;
--    cpu->reset_sctlr = 0x00090078;
-+    cpu->reset_sctlr = 0x00050078;
- 
-     /*
-      * ARMv5 does not have the ID_ISAR registers, but we can still
--- 
-2.43.0
-
+Many thanks,
+Junjie
 

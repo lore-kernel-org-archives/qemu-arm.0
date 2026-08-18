@@ -4,156 +4,102 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 74221C5DF7E
-	for <qemu-arm@archiver.kernel.org>; Tue, 18 Aug 2026 13:08:15 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7D2C5C5DF7E
+	for <qemu-arm@archiver.kernel.org>; Tue, 18 Aug 2026 13:13:31 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wwJXf-0006c3-2G; Tue, 18 Aug 2026 09:07:47 -0400
+	id 1wwJ34-0002Mo-FF; Tue, 18 Aug 2026 08:36:10 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@oss.qualcomm.com>)
- id 1wwJXd-0006bM-Uy
- for qemu-arm@nongnu.org; Tue, 18 Aug 2026 09:07:45 -0400
-Received: from mx0a-0031df01.pphosted.com ([205.220.168.131])
+ (Exim 4.90_1) (envelope-from <marcandre.lureau@redhat.com>)
+ id 1wwJ33-0002M6-F1
+ for qemu-arm@nongnu.org; Tue, 18 Aug 2026 08:36:09 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@oss.qualcomm.com>)
- id 1wwJXb-0004Cj-77
- for qemu-arm@nongnu.org; Tue, 18 Aug 2026 09:07:45 -0400
-Received: from pps.filterd (m0279863.ppops.net [127.0.0.1])
- by mx0a-0031df01.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id
- 67IBgIEk1196529
- for <qemu-arm@nongnu.org>; Tue, 18 Aug 2026 13:07:40 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qualcomm.com; h=
- cc:content-transfer-encoding:content-type:date:from:in-reply-to
- :message-id:mime-version:references:subject:to; s=qcppdkim1; bh=
- OgOEJl8eizJEofXwS5JCE1z8JiDMTg4lwZsWuuP6CPs=; b=STgY3bJUZrtEymNY
- kULfTXP9APDUiG5dbN+Rhtj7fr93q20/q0nRlienxZuLlRZPWcnmFpIAkD6zAwhN
- mGyI1IH39JCmcZcOWJ89MtMhfXUJMuYWxGPxTBIkrv5cI0GoJU9J4+xdlEcP15MG
- p+/kXH+uyDZZZTXNhfgCSrdvYmt1tLBdeyhfb4fvedNSvs/tiQ6VAD4ihTKdE4LD
- SoOKkHUoE8gzKjP26D1BpkEhw57XKBkNiymEG3oqF5FrcRw1iXZ0pRICZuxs731t
- XMbrbG8YyFkPF4a4EkQVFWD4D0z9jZ8CQLcWn6YfBhXF/vxSBaF/iFUe5tEncGhs
- aghuUg==
-Received: from mail-ua1-f69.google.com (mail-ua1-f69.google.com
- [209.85.222.69])
- by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 4g4prn0a3g-1
- (version=TLSv1.3 cipher=TLS_AES_128_GCM_SHA256 bits=128 verify=NOT)
- for <qemu-arm@nongnu.org>; Tue, 18 Aug 2026 13:07:40 +0000 (GMT)
-Received: by mail-ua1-f69.google.com with SMTP id
- a1e0cc1a2514c-97bf904c086so641583241.1
- for <qemu-arm@nongnu.org>; Tue, 18 Aug 2026 06:07:40 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=oss.qualcomm.com; s=google; t=1787058459; x=1787663259; darn=nongnu.org;
- h=content-transfer-encoding:content-type:in-reply-to:from:references
- :cc:to:content-language:subject:user-agent:mime-version:date
- :message-id:from:to:cc:subject:date:message-id:reply-to:content-type;
- bh=OgOEJl8eizJEofXwS5JCE1z8JiDMTg4lwZsWuuP6CPs=;
- b=dcm9BPq3tRF0B5B17/ro4VX9E1dq5aDnquCjsYSNX6y2KY6GJvpFwa+K67qXydu/17
- n8DwImbXNZtLFAr/LcF3Re8i9vQ2HeK8OwCzBh13oUzcWcaCLUdixPoerx0q7IqF4qP0
- pF2t6UuI0FJ/EIv79bxg1Tf52KlEwamAKq0MHKH5Wn0zG722tjdq/jfUmkk2uCSFL8Q2
- YqLTri/Or59qisNcCXfFf8FXTpPuiHDjGYuTfg1Ii59caqt4tsN4q+EpqkoB5rIOxPdH
- UEgceojxwQq3kD7JyPkdFO3GmhMnPMcxPfZP8NbmC76Gx5LUe++M+CEZgPFgb+XSaoAY
- F8rA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1787058459; x=1787663259;
- h=content-transfer-encoding:content-type:in-reply-to:from:references
- :cc:to:content-language:subject:user-agent:mime-version:date
- :message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
- :message-id:reply-to:content-type;
- bh=OgOEJl8eizJEofXwS5JCE1z8JiDMTg4lwZsWuuP6CPs=;
- b=XJi+2YFxrFz9vrg8QORiPULQ/5YcesfDOWPb1Wyqv5c8nw3dVVjrcC1AnPjarhTUJO
- pmDH+KNIKtVLxOi+29nVy61XRM2Hpk/lsa7OwyTPgV0GQHRwPJPROwpo5sJvHZ82bBux
- Kb7H2+5hLXCoguUfAnUcNQ+a6gw88uclN84vouI2bEjJXbEdl0nMsye0YiIIVgKtASm7
- Wf4YmdeeLyfl9U/mOgJWmDU93cSWLGKoR6tgQFt+W63Ulpy4hoyNxs6eSSg9IZMq3iuo
- BgU2/XK6hXhvZE31LYBxLEqUHqty6G+nkZgPAgrFHstgdTeJ1yMSLaW/atFp3SQ5pMhD
- hlcw==
-X-Forwarded-Encrypted: i=1;
- AHgh+RrfPHBJ5ZXnLtFS9ICp/YKBsnir0gjYI0+eznzGL1SvUHMxstVCtI2NZFYwN+l1LEDhBOuFjIbTug==@nongnu.org
-X-Gm-Message-State: AOJu0YxaCdxJ/cDZZyAYB7OAQnA9//cbYlzISueBF8gT6mN41wTKLpHK
- 5caO2oBF7i67t7xC4NxtyZ0jEMjBxJEQLijaGZGor0O4Ebw4l+03Rs6vaL4lKaUeqhvhQP/Q8k0
- TSc5xDplNobjIk6e+342cWRVYNUT248o3c4mki9wwWzn5bgv60iMY39AzyaPrC7kR9A==
-X-Gm-Gg: AR+sD12YAVLQcP9fv9FqG+5rhlJRdXMPj9yJjvVtAn4dJ+pr3lb/SpItT8JexbNjP77
- 8e3TpE5LiQn2x8HL9YwWyXr2zq/DY+utt7e0dgYsVX4HV8hKm/3hsyDNSwKJLYq92f26lNRvSOJ
- qne5n5YwWerY4iJGBKZE//to28BzwRlZfGrOKVVsYlmVrO1rMaOQiqVxKSnvGfO6xzuE3Ev/ab9
- bgg8lHslOqcUhEBKP8vwvfVTGKvBMaAQcbCSiKI+aJ8/rnYis7Cm7GDD8NNGU6IG9UZ5/+hE7Iq
- YZSKX+8lJ08dhlVzwqZTAgs/j/uPw0gpKwTaXLXLRi21vmVCpTVNzKooydPOU0HGhYVeBX2uB9D
- vZ3vfzC8MBHVOri4NEa24UX3KrhErXrhZP0A=
-X-Received: by 2002:a05:6102:3fa8:b0:76d:154:7f42 with SMTP id
- ada2fe7eead31-76f2b2fa5dfmr5922212137.5.1787058459580; 
- Tue, 18 Aug 2026 06:07:39 -0700 (PDT)
-X-Received: by 2002:a05:6102:3fa8:b0:76d:154:7f42 with SMTP id
- ada2fe7eead31-76f2b2fa5dfmr5922177137.5.1787058459089; 
- Tue, 18 Aug 2026 06:07:39 -0700 (PDT)
-Received: from [192.168.69.231] (pmd666.hd.free.fr. [88.187.86.199])
- by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-49987b203cfsm296961215e9.3.2026.08.18.06.07.37
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 18 Aug 2026 06:07:38 -0700 (PDT)
-Message-ID: <b268acef-e255-4c13-8db8-09f2974e7218@oss.qualcomm.com>
-Date: Tue, 18 Aug 2026 15:07:37 +0200
+ (Exim 4.90_1) (envelope-from <marcandre.lureau@redhat.com>)
+ id 1wwJ31-0006wr-MW
+ for qemu-arm@nongnu.org; Tue, 18 Aug 2026 08:36:09 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1787056566;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=oPypAJmHalIuZO8Qh6uXAHLk6oL+F+SAlk4t9kCAeHs=;
+ b=jEI5oXJTWITlerXRow6mdiS2tfqfSQZz0sk9BM2bvYiNfsxAOa4xstvvmtytwggU6EB0ja
+ Uxeafn47In9PXg3pkxSdOQEHjdnmwp0ilFg1eWDkP8SYaHzsUHd+WvLnnVKVK8lJpKVpNQ
+ r+KAyRzbzp/ilRSwUOOcwy2jk0qxncY=
+Received: from mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
+ relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-634-Y_ijdr2nNtC_CScHp-b_tA-1; Tue,
+ 18 Aug 2026 08:36:02 -0400
+X-MC-Unique: Y_ijdr2nNtC_CScHp-b_tA-1
+X-Mimecast-MFC-AGG-ID: Y_ijdr2nNtC_CScHp-b_tA_1787056561
+Received: from mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com
+ (mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.93])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+ (No client certificate requested)
+ by mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 3FBBA1800614; Tue, 18 Aug 2026 12:35:58 +0000 (UTC)
+Received: from localhost (headnet04.pony-001.prod.iad2.dc.redhat.com
+ [10.2.32.116])
+ by mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
+ id 9C2F91800348; Tue, 18 Aug 2026 12:35:56 +0000 (UTC)
+From: =?utf-8?q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>
+Date: Tue, 18 Aug 2026 16:36:35 +0400
+Subject: [PATCH v3 56/74] include: add QEMU_REPEAT helper macro
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 11/16] accel/kvm: Consistently return CPU halt state from
- process_async_events
-Content-Language: en-US
-To: Paolo Bonzini <pbonzini@redhat.com>
-Cc: qemu-devel@nongnu.org, Richard Henderson <richard.henderson@linaro.org>,
- Daniel Henrique Barboza <daniel.barboza@oss.qualcomm.com>,
- Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>,
- Mohamed Mediouni <mohamed@unpredictable.fr>, Alexander Graf
- <agraf@csgraf.de>, qemu-ppc@nongnu.org,
- qemu-riscv@nongnu.org, kvm@vger.kernel.org, qemu-arm@nongnu.org,
- Magnus Kulke <magnuskulke@linux.microsoft.com>,
- Peter Maydell <peter.maydell@linaro.org>, Palmer Dabbelt
- <palmer@dabbelt.com>, Alistair Francis <alistair.francis@wdc.com>,
- Weiwei Li <liwei1518@gmail.com>, Liu Zhiwei <zhiwei_liu@linux.alibaba.com>,
- Chao Liu <chao.liu@processmission.com>
-References: <20260813181640.6537-1-philmd@oss.qualcomm.com>
- <20260813181640.6537-12-philmd@oss.qualcomm.com>
- <55cc8357-daeb-4315-9f3a-8be7a59c355b@redhat.com>
- <3ec603ff-65bb-440b-8ed8-72ae4e6c5a41@oss.qualcomm.com>
- <CABgObfaDAhrpnVqQaKgG6uxPQe1YDu77YOsUEx9nqrN=3M2cGw@mail.gmail.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@oss.qualcomm.com>
-In-Reply-To: <CABgObfaDAhrpnVqQaKgG6uxPQe1YDu77YOsUEx9nqrN=3M2cGw@mail.gmail.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
+Message-Id: <20260818-qom-qapi-v3-56-24b8bbbe3d86@redhat.com>
+References: <20260818-qom-qapi-v3-0-24b8bbbe3d86@redhat.com>
+In-Reply-To: <20260818-qom-qapi-v3-0-24b8bbbe3d86@redhat.com>
+To: qemu-devel@nongnu.org
+Cc: Markus Armbruster <armbru@redhat.com>, 
+ Paolo Bonzini <pbonzini@redhat.com>, 
+ =?utf-8?q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>, 
+ =?utf-8?q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>, 
+ Michael Roth <michael.roth@amd.com>, 
+ Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>, 
+ =?utf-8?q?Philippe_Mathieu-Daud=C3=A9?= <philmd@mailo.com>, 
+ Peter Maydell <peter.maydell@linaro.org>, 
+ Elena Ufimtseva <elena.ufimtseva@oracle.com>, 
+ Jagannathan Raman <jag.raman@oracle.com>, 
+ Jonathan Cameron <jic23@kernel.org>, qemu-arm@nongnu.org, 
+ linux-cxl@vger.kernel.org
+X-Developer-Signature: v=1; a=openpgp-sha256; l=5015;
+ i=marcandre.lureau@redhat.com; h=from:subject:message-id;
+ bh=EAQeZe1XEuAWHJARuU6IDW2Xx2TnIuJB2OqRLsbMlaA=;
+ b=owEBbQKS/ZANAwAKAdro4Ql1lpzlAcsmYgBqhFGnIFCFCjBNBLIxXO88uv5+j5DzvPiijQDit
+ xHxgw2SJouJAjMEAAEKAB0WIQSHqb2TP4fGBtJ29i3a6OEJdZac5QUCaoRRpwAKCRDa6OEJdZac
+ 5TG7EACuj1vgznisdZxviv8gWC681BPf8BdVNMsXxXxIqHqInI7KHkNkZZiD4GTaK97CkHkPJqN
+ xrgrwTIN3sVKh9tccIWgYXwwkWYZVUccnmzjqpeVMhRfZ305EeK8WGECendXg+sqBirQAYHbBNy
+ rtpTJQDKqSR3z0XVe7WCSqmmQyBRc5a2TM70VA7WZrYQxKlH3ry4BY+7siXXHZmPxELek5gGDlI
+ FR1BNsCG4KPMdaxKgufqb0wUTat0NoX+OL7/jtlDL542Z1LN6EGPohqtKrW+pXCO46a+13/XbJr
+ SqZC0IUZr8ujWzEpfHVRRZ8q4mi9Alqxo2AgRo+abvmA/JRYKgbK+vVHoEz+lUdlj72SuwbHjHf
+ b1eQy4UhGYUjR+b4QKOpTtFCckpFTfOaNQxotlSXyr/RcfuNCJeOB6/SaUGGy3X3p1K+VJaXIL3
+ S/mg5CRG5d9SI8MO+66sffHPkZexnfQTsZdWQGusdnkfgX6h87X3Q7aQMse0XSE3fWuq5BHY2QZ
+ 6hPc7yNkt3tVvFDjaxU/lRzirQRgC/f/lxT4HA5FfA8Of3vnBu5U4Dx4qoaMBXIZUIFyklcc7FU
+ 3O4HWq18W3viUixS8SbzWD1Zu3rkqooMbk2eT67ruS0oHhFGe4DOHNMunQMwz6MnFxZ9LtZLHYB
+ GhwzPiluITXlIzg==
+X-Developer-Key: i=marcandre.lureau@redhat.com; a=openpgp;
+ fpr=87A9BD933F87C606D276F62DDAE8E10975969CE5
+X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.93
+X-Mimecast-MFC-PROC-ID: h6MRi1MkzsXodTKFR-QlBK8-ST5HrPELE3PwwIPIUto_1787056561
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
-X-Proofpoint-Spam-Info: AW1haW4tMjYwODE4MDA5NyBTYWx0ZWRfX6pM5VWEJ65xm
- b7yGuIOWjb8t2EUtKuJI9AI8id82HJvux32DO2TLczbfURDiCyLxJSkWk+BgU5sVXxJ9hq4AUnJ
- ZN65TV6ydqkiz9g6M5X/Iq0HV0iW+bw=
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwODE4MDA5NyBTYWx0ZWRfXwIXwNDL8shmU
- UJoZOgeMIPVUoPeacp2Xvq5nTFcca9OIVvlcnvF7O/fOgpnqAVEYQ4ZztFhmFQg1QeARnlmPWsh
- FqbdRD0L7QrtbZPZ/pvS3NpHO8bdFLYbj1BxA46VwgWjSojBV64XVTYZSq1dmE++SeFL708pwBo
- 3YZiqukeUPCFPho+bTo2hu3dS8iSQA10tmGWpf132BTSyYIaqYKvaw/Jay4NTQdoeVSvwMiuJf5
- bCPwxefPMgscDMwUhLplkrEEtkVTd2pH1yBv+adH20r01D5T/aE+ZdrlFJt+0H5//2ZA+AAtOlI
- WTFnfKdhMEXlOmcta1LZpRERQzRBN8YV5ctZxs9CzWEWZpGYsSQSx5CHI593SlecMBtAcVGvMmy
- 1eW0D76LPK7AcDhatQ63sLTy7W0Zd8S+C00VP6SjtZoMj909TCj5MxpCvdegX/WD8GCLrctAaL0
- LuP9ANoV8UO1+AqoKXg==
-X-Proofpoint-ORIG-GUID: n4TtXVmwkBdjL3Rqk7GWQlDIZoY3UklY
-X-Authority-Analysis: v=2.4 cv=HNrz0Itv c=1 sm=1 tr=0 ts=6a84591c cx=c_pps
- a=UbhLPJ621ZpgOD2l3yZY1w==:117 a=4s3hRJSeHn4rkQlkrse1kQ==:17
- a=IkcTkHD0fZMA:10 a=Sv0fKeRqtYgA:10 a=M51BFTxLslgA:10 a=s4-Qcg_JpJYA:10
- a=VkNPw1HP01LnGYTKEx00:22 a=u7WPNUs3qKkmUXheDGA7:22 a=yOCtJkima9RkubShWh1s:22
- a=VwQbUJbxAAAA:8 a=KKAkSRfTAAAA:8 a=EUspDBNiAAAA:8 a=KFLP8JxMXue_9hLRhRUA:9
- a=3ZKOabzyN94A:10 a=QEXdDO2ut3YA:10 a=O8hF6Hzn-FEA:10
- a=TOPH6uDL9cOC6tEoww4z:22 a=cvBusfyB2V15izCimMoJ:22
-X-Proofpoint-GUID: n4TtXVmwkBdjL3Rqk7GWQlDIZoY3UklY
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.293,Aquarius:18.0.1176,Hydra:6.1.134,FMLib:17.12.100.49
- definitions=2026-08-18_01,2026-08-12_01,2025-10-01_01
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
- lowpriorityscore=0 clxscore=1015 adultscore=0 malwarescore=0 phishscore=0
- spamscore=0 bulkscore=0 priorityscore=1501 impostorscore=0 suspectscore=0
- classifier=typeunknown authscore=0 authtc= authcc= route=outbound adjust=0
- reason=mlx scancount=1 engine=8.22.0-2606150000 definitions=main-2608180097
-Received-SPF: pass client-ip=205.220.168.131;
- envelope-from=philmd@oss.qualcomm.com; helo=mx0a-0031df01.pphosted.com
-X-Spam_score_int: -27
-X-Spam_score: -2.8
+Received-SPF: pass client-ip=170.10.133.124;
+ envelope-from=marcandre.lureau@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -23
+X-Spam_score: -2.4
 X-Spam_bar: --
-X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-Spam_report: (-2.4 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.343,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -169,29 +115,142 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On 18/8/26 12:30, Paolo Bonzini wrote:
-> On Tue, Aug 18, 2026 at 11:24 AM Philippe Mathieu-Daudé
-> <philmd@oss.qualcomm.com> wrote:
->>> Your patch is correct because, even if cpu_thread_is_idle() sees cpu-
->>>   >halted == false, the flag could become true during
->>> process_queued_cpu_work() because it releases the BQL.
->>>
->>> However, I think the better fix is to remove the return code, and check
->>> cpu->halted in kvm_cpu_exec().
->>
->> Looking at it, even better would be to move *process_async_events()
->> from inner loop to outer loop for all accelerators. For HW accels it
->> seems quite trivial; for TCG I need to figure if it is safe to call
->> icount_prepare_for_run() with the BQL taken, due to the replay_mutex
->> uses -- here the win is cpu_handle_halt() ends restricted to system
->> and we can remove the odd EXCP_HLT handling in user emulation.
-> 
-> Makes sense, but probably it would be a series of its own. :)
+Introduce a macro used in following commit, and convert a few existing
+candidates. Inspired by a similar macro in Linux kernel/trace/bpf_trace.c
 
-Good, right.
+Signed-off-by: Marc-André Lureau <marcandre.lureau@redhat.com>
+---
+ hw/misc/tz-ppc.c               | 19 ++-----------------
+ hw/remote/vfio-user-obj.c      | 17 +++--------------
+ include/hw/cxl/cxl_component.h |  5 +----
+ include/qemu/osdep.h           | 33 +++++++++++++++++++++++++++++++++
+ 4 files changed, 39 insertions(+), 35 deletions(-)
 
-(FYI the motivation behind these cleanups and documentation is to
-get hybrid-acceleration, so a consistent vcpu_thread_routine between
-accelerators:
-https://lore.kernel.org/qemu-devel/20250620172751.94231-10-philmd@linaro.org/)
+diff --git a/hw/misc/tz-ppc.c b/hw/misc/tz-ppc.c
+index 6f820430eed8..5f09ce164c19 100644
+--- a/hw/misc/tz-ppc.c
++++ b/hw/misc/tz-ppc.c
+@@ -303,26 +303,11 @@ static const VMStateDescription tz_ppc_vmstate = {
+ 
+ #define DEFINE_PORT(N)                                          \
+     DEFINE_PROP_LINK("port[" #N "]", TZPPC, port[N].downstream, \
+-                     TYPE_MEMORY_REGION, MemoryRegion *)
++                     TYPE_MEMORY_REGION, MemoryRegion *),
+ 
+ static const Property tz_ppc_properties[] = {
+     DEFINE_PROP_UINT32("NONSEC_MASK", TZPPC, nonsec_mask, 0),
+-    DEFINE_PORT(0),
+-    DEFINE_PORT(1),
+-    DEFINE_PORT(2),
+-    DEFINE_PORT(3),
+-    DEFINE_PORT(4),
+-    DEFINE_PORT(5),
+-    DEFINE_PORT(6),
+-    DEFINE_PORT(7),
+-    DEFINE_PORT(8),
+-    DEFINE_PORT(9),
+-    DEFINE_PORT(10),
+-    DEFINE_PORT(11),
+-    DEFINE_PORT(12),
+-    DEFINE_PORT(13),
+-    DEFINE_PORT(14),
+-    DEFINE_PORT(15),
++    QEMU_REPEAT(TZ_NUM_PORTS, DEFINE_PORT)
+ };
+ 
+ static void tz_ppc_class_init(ObjectClass *klass, const void *data)
+diff --git a/hw/remote/vfio-user-obj.c b/hw/remote/vfio-user-obj.c
+index 7e6819f670b5..84c3ff05cfb8 100644
+--- a/hw/remote/vfio-user-obj.c
++++ b/hw/remote/vfio-user-obj.c
+@@ -496,22 +496,11 @@ static size_t vfu_object_bar_rw(PCIDevice *pci_dev, int pci_bar,
+                                  buf, count, is_write);                        \
+     }                                                                          \
+ 
+-VFU_OBJECT_BAR_HANDLER(0)
+-VFU_OBJECT_BAR_HANDLER(1)
+-VFU_OBJECT_BAR_HANDLER(2)
+-VFU_OBJECT_BAR_HANDLER(3)
+-VFU_OBJECT_BAR_HANDLER(4)
+-VFU_OBJECT_BAR_HANDLER(5)
+-VFU_OBJECT_BAR_HANDLER(6)
++QEMU_REPEAT(PCI_NUM_REGIONS, VFU_OBJECT_BAR_HANDLER)
+ 
++#define VFU_OBJECT_BAR_HANDLER_PTR(BAR_NO) vfu_object_bar##BAR_NO##_handler,
+ static vfu_region_access_cb_t *vfu_object_bar_handlers[PCI_NUM_REGIONS] = {
+-    &vfu_object_bar0_handler,
+-    &vfu_object_bar1_handler,
+-    &vfu_object_bar2_handler,
+-    &vfu_object_bar3_handler,
+-    &vfu_object_bar4_handler,
+-    &vfu_object_bar5_handler,
+-    &vfu_object_bar6_handler,
++    QEMU_REPEAT(PCI_NUM_REGIONS, VFU_OBJECT_BAR_HANDLER_PTR)
+ };
+ 
+ /**
+diff --git a/include/hw/cxl/cxl_component.h b/include/hw/cxl/cxl_component.h
+index ffc82202206c..fca8b7055ccd 100644
+--- a/include/hw/cxl/cxl_component.h
++++ b/include/hw/cxl/cxl_component.h
+@@ -186,10 +186,7 @@ REG32(CXL_HDM_DECODER_GLOBAL_CONTROL, CXL_HDM_REGISTERS_OFFSET + 4)
+ /* Support 4 decoders at all levels of topology */
+ #define CXL_HDM_DECODER_COUNT 4
+ 
+-HDM_DECODER_INIT(0);
+-HDM_DECODER_INIT(1);
+-HDM_DECODER_INIT(2);
+-HDM_DECODER_INIT(3);
++QEMU_REPEAT(CXL_HDM_DECODER_COUNT, HDM_DECODER_INIT)
+ 
+ /*
+  * CXL r3.1 Section 8.2.4.21: CXL Extended Security Capability Structure
+diff --git a/include/qemu/osdep.h b/include/qemu/osdep.h
+index 1ec5b42230be..a5e7ff99cb89 100644
+--- a/include/qemu/osdep.h
++++ b/include/qemu/osdep.h
+@@ -191,6 +191,39 @@ extern "C" {
+ 
+ #include "qemu/typedefs.h"
+ 
++/*
++ * QEMU_REPEAT(n, m) - invoke m(0) m(1) ... m(n-1)
++ *
++ * Expands to n invocations of m, each with a literal integer argument.
++ * n must be a compile-time constant in 0..16.
++ *
++ * Example - generate 4 per-index function definitions:
++ *
++ *   #define DEFINE_GETTER(i) \
++ *   static int get_##i(void) { return values[i]; }
++ *
++ *   QEMU_REPEAT(4, DEFINE_GETTER)
++ */
++#define QEMU_REPEAT_0(m)
++#define QEMU_REPEAT_1(m)   QEMU_REPEAT_0(m)   m(0)
++#define QEMU_REPEAT_2(m)   QEMU_REPEAT_1(m)   m(1)
++#define QEMU_REPEAT_3(m)   QEMU_REPEAT_2(m)   m(2)
++#define QEMU_REPEAT_4(m)   QEMU_REPEAT_3(m)   m(3)
++#define QEMU_REPEAT_5(m)   QEMU_REPEAT_4(m)   m(4)
++#define QEMU_REPEAT_6(m)   QEMU_REPEAT_5(m)   m(5)
++#define QEMU_REPEAT_7(m)   QEMU_REPEAT_6(m)   m(6)
++#define QEMU_REPEAT_8(m)   QEMU_REPEAT_7(m)   m(7)
++#define QEMU_REPEAT_9(m)   QEMU_REPEAT_8(m)   m(8)
++#define QEMU_REPEAT_10(m)  QEMU_REPEAT_9(m)   m(9)
++#define QEMU_REPEAT_11(m)  QEMU_REPEAT_10(m)  m(10)
++#define QEMU_REPEAT_12(m)  QEMU_REPEAT_11(m)  m(11)
++#define QEMU_REPEAT_13(m)  QEMU_REPEAT_12(m)  m(12)
++#define QEMU_REPEAT_14(m)  QEMU_REPEAT_13(m)  m(13)
++#define QEMU_REPEAT_15(m)  QEMU_REPEAT_14(m)  m(14)
++#define QEMU_REPEAT_16(m)  QEMU_REPEAT_15(m)  m(15)
++#define QEMU_REPEAT_(n, m) QEMU_REPEAT_##n(m)
++#define QEMU_REPEAT(n, m)  QEMU_REPEAT_(n, m)
++
+ /**
+  * Mark a function that executes in coroutine context
+  *
+
+-- 
+2.55.0.543.g5ebe2ebe4ea8
+
 

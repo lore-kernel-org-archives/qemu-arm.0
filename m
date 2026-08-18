@@ -4,148 +4,97 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 934A4C5DF81
-	for <qemu-arm@archiver.kernel.org>; Wed, 19 Aug 2026 00:06:57 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 94CF6C5DF6D
+	for <qemu-arm@archiver.kernel.org>; Wed, 19 Aug 2026 05:54:01 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wwTp8-0000CJ-Tn; Tue, 18 Aug 2026 20:06:30 -0400
+	id 1wwZFI-0001Nt-VN; Wed, 19 Aug 2026 01:53:52 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@oss.qualcomm.com>)
- id 1wwTp7-0000C2-T8
- for qemu-arm@nongnu.org; Tue, 18 Aug 2026 20:06:29 -0400
-Received: from mx0b-0031df01.pphosted.com ([205.220.180.131])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@oss.qualcomm.com>)
- id 1wwTp6-0006GG-8J
- for qemu-arm@nongnu.org; Tue, 18 Aug 2026 20:06:29 -0400
-Received: from pps.filterd (m0279871.ppops.net [127.0.0.1])
- by mx0a-0031df01.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id
- 67INl6iX3118697
- for <qemu-arm@nongnu.org>; Wed, 19 Aug 2026 00:06:24 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qualcomm.com; h=
- cc:content-transfer-encoding:content-type:date:from:in-reply-to
- :message-id:mime-version:references:subject:to; s=qcppdkim1; bh=
- I87KWitpbM0qff4HsDIQwGLB0Ohy3nvtNNU0aaLa2Ek=; b=kncXrhymjrbT8358
- iT9tRYR1YsPV2Ib/44k7B0MwLL5r1AAgRFzrBNjEXnHnqGyiR4bIyWvTPTzjyLC7
- i9mifeTrxUsJq0n4sWe38coqHWFyjim/qTyTvpAJZnT5ARg4bglB8ZT1o1lxtN3H
- cVamAKUDKSJo0qkijcNjCy4bmNghNsuvE26zkKZFmbMbxHwLmbzjT0CVnio1juQk
- toaQWeTDh3UBIvkuVywGj1bE3DVn6j3r64Ccl+PM3idls2LU7WZAeLGwlyK229sr
- DGBXWaAFVdd+2gcVlzOkvCixqGoP+CMt9cg3v5eJMI1plq5Wzv9VWb2YIAs+MXJI
- DAojpw==
-Received: from mail-qk1-f200.google.com (mail-qk1-f200.google.com
- [209.85.222.200])
- by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 4g4yfm8f8x-1
- (version=TLSv1.3 cipher=TLS_AES_128_GCM_SHA256 bits=128 verify=NOT)
- for <qemu-arm@nongnu.org>; Wed, 19 Aug 2026 00:06:24 +0000 (GMT)
-Received: by mail-qk1-f200.google.com with SMTP id
- af79cd13be357-9368b4c5964so43842185a.1
- for <qemu-arm@nongnu.org>; Tue, 18 Aug 2026 17:06:24 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <strahinja.p.jankovic@gmail.com>)
+ id 1wwRvw-0007xr-A9
+ for qemu-arm@nongnu.org; Tue, 18 Aug 2026 18:05:24 -0400
+Received: from mail-lf1-x12f.google.com ([2a00:1450:4864:20::12f])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <strahinja.p.jankovic@gmail.com>)
+ id 1wwRvu-0001R9-Ir
+ for qemu-arm@nongnu.org; Tue, 18 Aug 2026 18:05:24 -0400
+Received: by mail-lf1-x12f.google.com with SMTP id
+ 2adb3069b0e04-5b011edaf7dso488023e87.2
+ for <qemu-arm@nongnu.org>; Tue, 18 Aug 2026 15:05:22 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=oss.qualcomm.com; s=google; t=1787097984; x=1787702784; darn=nongnu.org;
- h=content-transfer-encoding:content-type:in-reply-to:from:references
- :cc:to:content-language:subject:user-agent:mime-version:date
- :message-id:from:to:cc:subject:date:message-id:reply-to:content-type;
- bh=I87KWitpbM0qff4HsDIQwGLB0Ohy3nvtNNU0aaLa2Ek=;
- b=TJsr8kI+2OxEeq0QTGdsTW5XTddWJBhmSJpIvvmn672HNs47qZiC7hzQIkMj8cib5B
- s0p285CwMtgDlI+zNEYHJwOf8SI7obqulP1Gak8aO40Qvtv20zh6CfmdM3iuum9OB0qV
- VNlbJ+fWEp/UkwvW6hMVvBeVbsbEuwXW1584n7dy0YvCQKUurKl3kNjwJPYBPUnbY/yT
- aYOyVpBECmMJRmrOEwqoDkfEAPrdwp0GOiHZlS0PAdzFAlbotdYyu+D8Y0w/9bh88XOd
- 3zp/Sl98G1iTf5je41xLSZlO/Yqh6fCIuvpIsko79VLe1tDlop3vbCTXEYiX/wG3T4Vg
- 9EoQ==
+ d=gmail.com; s=20251104; t=1787090721; x=1787695521; darn=nongnu.org;
+ h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
+ :content-type:mime-version:subject:date:from:sender:from:to:cc
+ :subject:date:message-id:reply-to:content-type;
+ bh=n+bFI7NMOKFyTqZjD2J643gd9nkuw7CEQP5XcBksxKI=;
+ b=Zhx+hwxo4BjuC35Zupht3vp4W8MPFF2HRePwArcaXGNE4iaRq9PWNcPndpbc3+oewM
+ YhUZ18Y5+DD9vmR0VTV6xc5VYcVXxbTgba2fh+xoxj7MSkM2WxpRnXzes5Sv+Fquabix
+ DzsUel2h5+HJJb7bx7fLCYL0SAs12QaReAaxGyzCJ5hRgz0lRoZD2h0UL4622tm+hGYo
+ nhLQMCT6CP478SA6khTzBGtUQYApHiUPdjilFnJWNd7krnP/kdBFJZ9dYbWIG8Ln6oS0
+ 6irEFbxqBwzIrfnqUUR/EoqL63l2RyId8axUDjtIgWtvDWfLtknZjb31413LxN33bnjq
+ 06Tg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1787097984; x=1787702784;
- h=content-transfer-encoding:content-type:in-reply-to:from:references
- :cc:to:content-language:subject:user-agent:mime-version:date
- :message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
- :message-id:reply-to:content-type;
- bh=I87KWitpbM0qff4HsDIQwGLB0Ohy3nvtNNU0aaLa2Ek=;
- b=otzxzow1MCZq4kERe2bGuFUmkBPt1JO+RJz782DhdQAaQI+LYLQZMoco73SB4UY6uy
- QmVHl5PVIykDSAxmndfWf5iuZcILKr7Mwjnw3d2fXEQOLDbiLZ0i0d6bk7bZ7sXm0h2R
- uG7YeoaBb3qbwu37O3VJXQH0IMeqSljXoYBtN2780TY+fyWVoWKi72AFe0BYSyn0JPTT
- IecxZFtUIU6AoDdkEQ8Bgl8G95XPYxdadRnc94cmWcO4150NmgKavOsXYPhQ3Qq0Fb/q
- bIZoUL3FjaM4dm9BN810wIIQjmaXl+8c9HaGTfHGAl6pZTkGwlGcjsMoIIQ0hUrapjIJ
- ppHw==
+ d=1e100.net; s=20251104; t=1787090721; x=1787695521;
+ h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
+ :content-type:mime-version:subject:date:from:sender:x-gm-gg
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
+ :content-type;
+ bh=n+bFI7NMOKFyTqZjD2J643gd9nkuw7CEQP5XcBksxKI=;
+ b=HlCroCQdASMFrLvERP1WAWIIwe1JDWmIsBgd6TUc8mqxtQCWdTlLgv6WfcKj7eCTJ1
+ UZwSVsMSgj3F+zb1lK/1hYZUEEYRK+hVELFfeKhnt9SgjRsFLIMVVD+gRj6n3B2C2vSD
+ +DpINO7inqXd25T0l2tqtC7N3oK2uA1QU2yDwEePCknNarDgKxkQP7G3mOloiO+SrNye
+ EFEPjemxEBmhMqARgKyqcVw6fMQVKgCD1ipqhAm4TiY5C8NH91h/cYHk8zNVG1MLVbJW
+ CblwfSy7/U7JpuiB6R4hvxNINFGHHDh8i3cKQpXH31PMan8xfc9qERHKIxlR2MeN4UQm
+ RpAg==
 X-Forwarded-Encrypted: i=1;
- AHgh+Rru2RwbO/8ClN6kkFGFoH868YvT7Y+CUH0ETfmTLirgBfBQiWjbOzrhPr2+kGVfMMs7HG5cUml7cQ==@nongnu.org
-X-Gm-Message-State: AOJu0Yzv8zyF9S0EPl9fQ7gA3dod0l8oUFlHGLyGhwsyUj1eW35SxPzq
- 6DLhQQ4aCDdlkNCRlkwCQy5lC4zqFlffZOKxQB+VrW96Cx1yhqsPsnaPFJT1dnjPEqM1ZbK3+O3
- +AXvQKy3K9UMgFTOMRVuSRTK83cjKfuoVITjXL2YRcp/UEHGctiQSJJU=
-X-Gm-Gg: AR+sD10qtsdGXKyxv0+Hf+a0uef+h6rmCZzceuR5sHmIN80m14aEFRjIpDUB1t8pEBF
- c4nLn6hMLDlBSrzkwgLJIVLMZiCMwlIJ8RQr+tLhJw2nJEenpd4q88mRfNxI3gSnxgoRtE5K/z0
- kivm9elzMSpIMFbXV1Lew9whUuNHw6R9Vs27Dg8s4J20Yy2JJpIvdirzHTXERm6AT1n16saiMPV
- bLy9YxiDYXLMQXs5ppe/SdJRzmpgEBlOw4wrY4zlxDVEhp9ccl2Owh9oCrAQCbtGFUJ8zd83nxs
- 3HdVVbs9cK6LxHpICuRx/foRL6HEvN9Ke/FAGOgpB5wuPbYgS7CVvqtbHf1qlY+qxRlg1A0TGg9
- mU/jYm3bEXOeSMzIjD+yqd179T9HPZU1crrA=
-X-Received: by 2002:a05:620a:1994:b0:930:9585:e08e with SMTP id
- af79cd13be357-9371e205015mr106383685a.10.1787097983701; 
- Tue, 18 Aug 2026 17:06:23 -0700 (PDT)
-X-Received: by 2002:a05:620a:1994:b0:930:9585:e08e with SMTP id
- af79cd13be357-9371e205015mr106380085a.10.1787097983240; 
- Tue, 18 Aug 2026 17:06:23 -0700 (PDT)
-Received: from [192.168.69.231] (pmd666.hd.free.fr. [88.187.86.199])
- by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-499a9e78496sm14285555e9.2.2026.08.18.17.06.21
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 18 Aug 2026 17:06:21 -0700 (PDT)
-Message-ID: <53ae0209-0fd9-4f62-ac4b-f70b4f92c235@oss.qualcomm.com>
-Date: Wed, 19 Aug 2026 02:06:21 +0200
+ AHgh+RqNM+nVB+i6b3XNyh0ddoRnGFuLx0Q3LbN26ys1a1tUS7ms53vbuelzTyiWSq56vgSGV5eAncMoaA==@nongnu.org
+X-Gm-Message-State: AOJu0Yzl0jE1zIHr9pJvEkxtAHAd/yAnBXDHFHxbyWPKkcA6vwxAE2B4
+ XUH3aPNYuPj8Cl2yR6TbELe0nznF0zmT3LSNiQ89cZ1Ky9OTD5hsza2EUUbpMbo/
+X-Gm-Gg: AR+sD11FU4y5PlrV70gliQDqMEXonCY48j5xc3cO16BrB/UMo1fhd1xHe7G5dxmAU5s
+ wsHC1Rq4l/WV8K2hvwJTcoOnGQpOR+iMrK0MU0+v5bylczsp8ZqmTWw2RwuVq5yCeq7ry30gWde
+ OVcUlGaYvcPq6Lzr4fLC6mNc23msuxzXQ6N3VLPpifXqPIwL3v9On23aPNZGVydmFyk9UP90Vw7
+ pqA1vAViVHX1ff6eyDOTDkSi2nEph7wmVKcv8o7U1MdKhHD+ZUXa/lGVAKyUKI6PeGw1xqdpBd1
+ JnOUQkhEFeNMSj3l1X47PctHuvAJp/HXzFRsP1QJP3nZU9p1JwSpl7wfT7CO9s8j4xwdY4KzDl2
+ unWdhL/5ELHEnnIabhEwT6WOLUoxqw14XoF2fN5C7iP+HAIZXbI+E1laN8m8/DzyFEBKCiUjtSa
+ qijC44RCnghi5cNCzYfnx+ae9kvLM1zuWOlsF2faokH3vVaSbvYNVclKTPy2BFLKlJ6DOYd71rs
+ SM7jw2PkjAlsAV6pRocOJwGWI9d7h7dF9HwtjeE5S086WQZ
+X-Received: by 2002:ac2:4e0d:0:b0:5b2:b941:ddae with SMTP id
+ 2adb3069b0e04-5b478b929d8mr14872e87.4.1787090720698; 
+ Tue, 18 Aug 2026 15:05:20 -0700 (PDT)
+Received: from [192.168.31.141] (213-65-111-204-no600.tbcn.telia.com.
+ [213.65.111.204]) by smtp.gmail.com with ESMTPSA id
+ 2adb3069b0e04-5b478853ae5sm21836e87.17.2026.08.18.15.05.18
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Tue, 18 Aug 2026 15:05:19 -0700 (PDT)
+From: Strahinja Jankovic <strahinja.p.jankovic@gmail.com>
+Date: Wed, 19 Aug 2026 00:04:52 +0200
+Subject: [PATCH 2/3] hw/arm: Add GPIO to Allwinner A10 model
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH] hw/misc/aspeed_scu: Set both AST2600 protection key
- registers on reset
-Content-Language: en-US
-To: Andrew Jeffery <andrew@codeconstruct.com.au>, qemu-devel@nongnu.org
-Cc: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>,
- Peter Maydell <peter.maydell@linaro.org>,
- Steven Lee <steven_lee@aspeedtech.com>, Troy Lee <leetroy@gmail.com>,
- Jamin Lin <jamin_lin@aspeedtech.com>,
- Kane Chen <kane_chen@aspeedtech.com>, Joel Stanley <joel@jms.id.au>,
- qemu-arm@nongnu.org
-References: <20260818-dev-ast2600-hw-prot-key-reset-v1-1-5dc3de64c247@codeconstruct.com.au>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@oss.qualcomm.com>
-In-Reply-To: <20260818-dev-ast2600-hw-prot-key-reset-v1-1-5dc3de64c247@codeconstruct.com.au>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-X-Proofpoint-ORIG-GUID: 90cI2UJAkfmWRVwvInA37qr_8wqGnt_q
-X-Proofpoint-Spam-Info: AW1haW4tMjYwODE4MDE3NyBTYWx0ZWRfX1b6j2+XrA7/r
- 0enxLA1UQxR1xI9+4kE36EOUzY+RyuFqg5bXEEnieJox/pal/GoGsVk+oIVUFvqp57L+zzFHtR5
- UmNSfbBGL4ga22RO+4qbVP0qT4IVCH8=
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwODE4MDE3NyBTYWx0ZWRfX2DykghtgrhCE
- EwZjfFOJmLhQvXkWRHoJspyxs4vY6AdYZYxvOJlQqeittgRoFnkCFrxIofF/B7ZtAqpZCeVLSsn
- wLAdZPE6tUSBiAO5nWYt8XTSiQSgNTnIxYRWRZUjLVlbto7jjiypPeRjigWKM3oS1h6nI6Hyn2n
- zy0K69dSWxVHGICBDEbe931DZW9OjSBUtRJ4FqajgvcB2BgLKJ+UTAMn3DENtYydgm81jt5DCl7
- 3OmFhk64+61YaKfPEwQY/tlP8z1qpezW3yzZG82EE8jh+sPAZtpgs7dd5u8ivcOrbA1qrj+nObL
- 0MoXs+nfSJc4zOUmxNShEjo/0LkswuvJbVnYn4Wy0il7haCkJ+FFmA9/9sNjucODlLulDjNQhGw
- s1GuO8YvXylijNm3g5ed1dVK6IPbQcO1aNFC+1DjzcA0lg+to77xaqTTe52Zh0Zv8sPz+kQGaYj
- haq2B2b4SIm4tihJ6RA==
-X-Authority-Analysis: v=2.4 cv=aNrAb79m c=1 sm=1 tr=0 ts=6a84f380 cx=c_pps
- a=hnmNkyzTK/kJ09Xio7VxxA==:117 a=4s3hRJSeHn4rkQlkrse1kQ==:17
- a=IkcTkHD0fZMA:10 a=Sv0fKeRqtYgA:10 a=M51BFTxLslgA:10 a=s4-Qcg_JpJYA:10
- a=VkNPw1HP01LnGYTKEx00:22 a=u7WPNUs3qKkmUXheDGA7:22 a=3WHJM1ZQz_JShphwDgj5:22
- a=7KBfExy5AAAA:8 a=69wJf7TsAAAA:8 a=EUspDBNiAAAA:8 a=n9CPKyDd1ScNi2Ms_7YA:9
- a=3ZKOabzyN94A:10 a=QEXdDO2ut3YA:10 a=PEH46H7Ffwr30OY-TuGO:22
- a=eL7OMsOqQ-6kYQPn45L1:22 a=Fg1AiH1G6rFz08G2ETeA:22
-X-Proofpoint-GUID: 90cI2UJAkfmWRVwvInA37qr_8wqGnt_q
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.293,Aquarius:18.0.1176,Hydra:6.1.134,FMLib:17.12.100.49
- definitions=2026-08-18_05,2026-08-18_01,2025-10-01_01
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
- spamscore=0 adultscore=0 lowpriorityscore=0 clxscore=1015 bulkscore=0
- malwarescore=0 suspectscore=0 priorityscore=1501 phishscore=0 impostorscore=0
- classifier=typeunknown authscore=0 authtc= authcc= route=outbound adjust=0
- reason=mlx scancount=1 engine=8.22.0-2606150000 definitions=main-2608180177
-Received-SPF: pass client-ip=205.220.180.131;
- envelope-from=philmd@oss.qualcomm.com; helo=mx0b-0031df01.pphosted.com
-X-Spam_score_int: -27
-X-Spam_score: -2.8
-X-Spam_bar: --
-X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H2=0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+Message-Id: <20260819-allwinner-gpio-v1-2-2a64866dff11@gmail.com>
+References: <20260819-allwinner-gpio-v1-0-2a64866dff11@gmail.com>
+In-Reply-To: <20260819-allwinner-gpio-v1-0-2a64866dff11@gmail.com>
+To: qemu-devel@nongnu.org
+Cc: Paolo Bonzini <pbonzini@redhat.com>, 
+ Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org, 
+ Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>, 
+ Fabiano Rosas <farosas@suse.de>, Laurent Vivier <lvivier@redhat.com>, 
+ Strahinja Jankovic <strahinja.p.jankovic@gmail.com>
+X-Mailer: b4 0.14.3
+Received-SPF: pass client-ip=2a00:1450:4864:20::12f;
+ envelope-from=strahinja.p.jankovic@gmail.com; helo=mail-lf1-x12f.google.com
+X-Spam_score_int: -10
+X-Spam_score: -1.1
+X-Spam_bar: -
+X-Spam_report: (-1.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FORGED_GMAIL_RCVD=1,
+ FREEMAIL_FROM=0.001, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
+X-Mailman-Approved-At: Wed, 19 Aug 2026 01:53:52 -0400
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -160,55 +109,98 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On 18/8/26 03:43, Andrew Jeffery wrote:
-> Currently, booting Linux on the ast2600-evb machine via -kernel results
-> in a lot of warnings about failing to apply pinmux configuration when
-> binding drivers:
-> 
->      [    7.339307][    T1] Creating 5 MTD partitions on "bmc":
->      [    7.340402][    T1] 0x000000000000-0x0000000e0000 : "u-boot"
->      [    7.513755][    T1] 0x0000000e0000-0x000000100000 : "u-boot-env"
->      [    7.664219][    T1] 0x000000100000-0x000000a00000 : "kernel"
->      [    7.826974][    T1] 0x000000a00000-0x000002a00000 : "rofs"
->      [    8.026666][    T1] 0x000002a00000-0x000004000000 : "rwfs"
->      [    8.201612][    T1] spi-aspeed-smc 1e630000.spi: error -EPERM: Error applying setting, reverse things back
->      [    8.370835][    T1] spi-aspeed-smc 1e630000.spi: Calibration area too uniform, using low speed
->      [    8.371131][    T1] spi-aspeed-smc 1e630000.spi: Force to dts configuration 100000kHz.
->      [    8.371500][    T1] spi-aspeed-smc 1e630000.spi: CE0 read buswidth:4 [0x406c0741]
->      [    8.766797][    T1] mdio-aspeed 1e650000.mdio: error -EPERM: Error applying setting, reverse things back
->      [    8.906008][    T1] mdio-aspeed 1e650008.mdio: error -EPERM: Error applying setting, reverse things back
->      [    9.039240][    T1] mdio-aspeed 1e650010.mdio: error -EPERM: Error applying setting, reverse things back
->      [    9.147942][    T1] mdio-aspeed 1e650018.mdio: error -EPERM: Error applying setting, reverse things back
-> 
-> The pinmux configuration fails because the SCU is not unlocked.
-> 
-> Set both SCU protection keys for the AST2600. Further, set them
-> such that they behave accordance with the read value documented
-> by the datasheet. The new arrangement now upholds the comment in
-> hw/arm/aspeed.c regarding passing -kernel on the qemu command-line.
-> 
->      [    7.568170][    T1] Creating 5 MTD partitions on "bmc":
->      [    7.569330][    T1] 0x000000000000-0x0000000e0000 : "u-boot"
->      [    7.740372][    T1] 0x0000000e0000-0x000000100000 : "u-boot-env"
->      [    7.883570][    T1] 0x000000100000-0x000000a00000 : "kernel"
->      [    8.041004][    T1] 0x000000a00000-0x000002a00000 : "rofs"
->      [    8.196824][    T1] 0x000002a00000-0x000004000000 : "rwfs"
->      [    8.547037][    T1] spi-aspeed-smc 1e630000.spi: Calibration area too uniform, using low speed
->      [    8.547320][    T1] spi-aspeed-smc 1e630000.spi: Force to dts configuration 100000kHz.
->      [    8.547642][    T1] spi-aspeed-smc 1e630000.spi: CE0 read buswidth:4 [0x406c0741]
->      [    9.494235][    T1] ftgmac100 1e660000.ethernet: Read MAC address 52:54:00:12:34:56 from chip
->      [    9.531186][    T1] RTL8211E Gigabit Ethernet 1e650000.mdio-1:00: attached PHY driver (mii_bus:phy_addr=1e650000.mdio-1:00,
-> 
-> Fixes: e09cf36321f6 ("hw: aspeed_scu: Add AST2600 support")
-> Signed-off-by: Andrew Jeffery <andrew@codeconstruct.com.au>
-> ---
-> I ran into this issue while improving test coverage in my patch review
-> process.
-> ---
->   hw/misc/aspeed_scu.c | 3 ++-
->   1 file changed, 2 insertions(+), 1 deletion(-)
+The Allwinner A10 GPIO is added to the Allwinner A10
+description, so it is available when Cubieboard is emulated.
 
-Cc: qemu-stable@nongnu.org
-Fixes: e09cf36321f ("hw: aspeed_scu: Add AST2600 support")
-Reviewed-by: Philippe Mathieu-Daudé <philmd@oss.qualcomm.com>
+Update the documentation for Cubieboard to indicate GPIO availability.
+
+Signed-off-by: Strahinja Jankovic <strahinja.p.jankovic@gmail.com>
+---
+ docs/system/arm/cubieboard.rst | 1 +
+ hw/arm/Kconfig                 | 1 +
+ hw/arm/allwinner-a10.c         | 8 ++++++++
+ include/hw/arm/allwinner-a10.h | 2 ++
+ 4 files changed, 12 insertions(+)
+
+diff --git a/docs/system/arm/cubieboard.rst b/docs/system/arm/cubieboard.rst
+index 90d24c73a1..ee9f489ead 100644
+--- a/docs/system/arm/cubieboard.rst
++++ b/docs/system/arm/cubieboard.rst
+@@ -12,6 +12,7 @@ Emulated devices:
+ - RTC
+ - EMAC
+ - SDHCI
++- GPIO
+ - USB controller
+ - SATA controller
+ - TWI (I2C) controller
+diff --git a/hw/arm/Kconfig b/hw/arm/Kconfig
+index 260d2f0751..6d326746c9 100644
+--- a/hw/arm/Kconfig
++++ b/hw/arm/Kconfig
+@@ -311,6 +311,7 @@ config ALLWINNER_A10
+     select ALLWINNER_EMAC
+     select ALLWINNER_I2C
+     select ALLWINNER_A10_SPI
++    select ALLWINNER_GPIO
+     select AXP2XX_PMU
+     select SERIAL_MM
+     select UNIMP
+diff --git a/hw/arm/allwinner-a10.c b/hw/arm/allwinner-a10.c
+index 66f30757dd..66fe484ae0 100644
+--- a/hw/arm/allwinner-a10.c
++++ b/hw/arm/allwinner-a10.c
+@@ -41,6 +41,7 @@
+ #define AW_A10_EHCI_BASE        0x01c14000
+ #define AW_A10_OHCI_BASE        0x01c14400
+ #define AW_A10_SATA_BASE        0x01c18000
++#define AW_A10_GPIO_BASE        0x01c20800
+ #define AW_A10_WDT_BASE         0x01c20c90
+ #define AW_A10_RTC_BASE         0x01c20d00
+ #define AW_A10_I2C0_BASE        0x01c2ac00
+@@ -83,6 +84,8 @@ static void aw_a10_init(Object *obj)
+ 
+     object_initialize_child(obj, "spi0", &s->spi0, TYPE_AW_A10_SPI);
+ 
++    object_initialize_child(obj, "gpio", &s->gpio, TYPE_AW_GPIO);
++
+     for (size_t i = 0; i < AW_A10_NUM_USB; i++) {
+         object_initialize_child(obj, "ehci[*]", &s->ehci[i],
+                                 TYPE_PLATFORM_EHCI);
+@@ -203,6 +206,11 @@ static void aw_a10_realize(DeviceState *dev, Error **errp)
+     sysbus_mmio_map(SYS_BUS_DEVICE(&s->spi0), 0, AW_A10_SPI0_BASE);
+     sysbus_connect_irq(SYS_BUS_DEVICE(&s->spi0), 0, qdev_get_gpio_in(dev, 10));
+ 
++    /* GPIO */
++    sysbus_realize(SYS_BUS_DEVICE(&s->gpio), &error_fatal);
++    sysbus_mmio_map(SYS_BUS_DEVICE(&s->gpio), 0, AW_A10_GPIO_BASE);
++    sysbus_connect_irq(SYS_BUS_DEVICE(&s->gpio), 0, qdev_get_gpio_in(dev, 28));
++
+     /* WDT */
+     sysbus_realize(SYS_BUS_DEVICE(&s->wdt), &error_fatal);
+     sysbus_mmio_map_overlap(SYS_BUS_DEVICE(&s->wdt), 0, AW_A10_WDT_BASE, 1);
+diff --git a/include/hw/arm/allwinner-a10.h b/include/hw/arm/allwinner-a10.h
+index 445ba1be21..8b7736c7bd 100644
+--- a/include/hw/arm/allwinner-a10.h
++++ b/include/hw/arm/allwinner-a10.h
+@@ -13,6 +13,7 @@
+ #include "hw/misc/allwinner-a10-dramc.h"
+ #include "hw/i2c/allwinner-i2c.h"
+ #include "hw/ssi/allwinner-a10-spi.h"
++#include "hw/gpio/allwinner-gpio.h"
+ #include "hw/watchdog/allwinner-wdt.h"
+ #include "system/block-backend.h"
+ 
+@@ -42,6 +43,7 @@ struct AwA10State {
+     AwSdHostState mmc0;
+     AWI2CState i2c0;
+     AWA10SPIState spi0;
++    AWGPIOState gpio;
+     AwRtcState rtc;
+     AwWdtState wdt;
+     MemoryRegion sram_a;
+
+-- 
+2.55.0
+
 

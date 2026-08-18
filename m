@@ -4,109 +4,99 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D6DABC5DF7E
-	for <qemu-arm@archiver.kernel.org>; Tue, 18 Aug 2026 10:31:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 05950C5DF7D
+	for <qemu-arm@archiver.kernel.org>; Tue, 18 Aug 2026 11:18:25 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wwH5l-0001WC-Rq; Tue, 18 Aug 2026 06:30:49 -0400
+	id 1wwHpc-0001mM-UK; Tue, 18 Aug 2026 07:18:13 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <pbonzini@redhat.com>)
- id 1wwH5g-0001VN-4i
- for qemu-arm@nongnu.org; Tue, 18 Aug 2026 06:30:47 -0400
+ (Exim 4.90_1) (envelope-from <marcandre.lureau@redhat.com>)
+ id 1wwHpa-0001kt-L8
+ for qemu-arm@nongnu.org; Tue, 18 Aug 2026 07:18:10 -0400
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <pbonzini@redhat.com>)
- id 1wwH5e-0006gE-Ha
- for qemu-arm@nongnu.org; Tue, 18 Aug 2026 06:30:43 -0400
+ (Exim 4.90_1) (envelope-from <marcandre.lureau@redhat.com>)
+ id 1wwHpZ-0005m3-3e
+ for qemu-arm@nongnu.org; Tue, 18 Aug 2026 07:18:10 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1787049041;
+ s=mimecast20190719; t=1787051888;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=6FufrT6QF5LjGVnfECdhMWiAuksb5oHrBpr4wzMjdAs=;
- b=JXgIafWspy8iehjN95BNqg9LBq6phB1jKjQJJXFriQVbe+aZklpKP6Q651WhtFd5t5WSdB
- avsttH4QoBllmk3LIapMgR5Ttu6Ww25P06XWOyyqbrXz43mq5+N/QbPSoNBUGe8eSGxNjq
- Z7ANmOIqB+PKS0PYLb0BwihRzrReU6A=
-Received: from mail-wr1-f71.google.com (mail-wr1-f71.google.com
- [209.85.221.71]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-17-ENETJWdXPOKYcThxA4-yMw-1; Tue, 18 Aug 2026 06:30:30 -0400
-X-MC-Unique: ENETJWdXPOKYcThxA4-yMw-1
-X-Mimecast-MFC-AGG-ID: ENETJWdXPOKYcThxA4-yMw_1787049029
-Received: by mail-wr1-f71.google.com with SMTP id
- ffacd0b85a97d-47485fde05aso2595200f8f.0
- for <qemu-arm@nongnu.org>; Tue, 18 Aug 2026 03:30:29 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1787049029; x=1787653829;
- h=content-transfer-encoding:content-type:cc:to:subject:message-id
- :date:from:in-reply-to:references:mime-version:x-gm-gg
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
- :content-type;
- bh=6FufrT6QF5LjGVnfECdhMWiAuksb5oHrBpr4wzMjdAs=;
- b=IUUYR4eTv8zuJMAiK92TfAfcunUEt1ZcSutx2yMaTnURiVYNshmDv03tddqOFRrrjp
- 4+7z+xuN/Th6+cOqAJpt6R1bJbd6+zWdmL34N85SiQRCDWAeP5R237Y1mLS7RIOiFHjj
- a/VixBUhByJO38zrgj7QtdOSE5GU1ItduuTCOZO9PdnfGFGcVn5722V24D6QLedKtk3C
- YbQ6goh7/E1jXrgx3GMG3117bl4oH34xezyFjU6OJVGJzDnsu9s4YlYLl8G8Bq36vma3
- rdd7kQCQ0Zv/uoxTxJOql0dpz3uSzrmCQf/NB2zg/qQd4ORirkSguCBfwXOJpHqr2yJP
- WBGg==
-X-Forwarded-Encrypted: i=1;
- AHgh+Rr7UuHi43m1x49kPo3iZhdkIItj07oID/clCXcuV4TyzPvcbjt+U7NOMBSjHw4ipw7LA1lAZr0b3Q==@nongnu.org
-X-Gm-Message-State: AOJu0YyuiO05m45nZohS0t39ssrV0PHmGROXmLeT5kqqr/HZdhuS7tN1
- y8YO1S/X1xtwjLLMnnr4JNzhqw12FIlVBjH4oDnr1r1n2+sWKXnJf51px0W+QTdV4I/FMI2y/MM
- Vrj0SeWEE9Ooine1aEtCXkDLhEM0nVf5+UF/rcLE2oOOUTYHfAtkV0YCPBmB7O0f6VveiOJorXy
- IkX7ieieN1I8DmTcuY2riMwDgD1dHt
-X-Gm-Gg: AR+sD10/WH5oRXWcOk74HYw6u0bD+NDeZLS+xb6n13iycqZA+4pW8069aulciH5YGGT
- tZtZGzQ2xAyRheM6Wt/8DU7B8pZwNMeRToEsdJMg1H836vncUZYEYAyWCCqDMe2DMc/gXQ4YKd1
- 79Mpy82QcBclEsifsTJgADy5KRTdARlox9BoSkZL1gu1uxYUXiNp2+YGv7aRZUO4R/iUVuOozRk
- 3Jm4kiZwlS1QhaaYLwEFeWve80iqUzczu34EZsolMwb0J0pJaUFKlMaP6Q=
-X-Received: by 2002:a05:6000:2891:b0:482:a909:53d3 with SMTP id
- ffacd0b85a97d-482a90953f4mr11113075f8f.2.1787049028822; 
- Tue, 18 Aug 2026 03:30:28 -0700 (PDT)
-X-Received: by 2002:a05:6000:2891:b0:482:a909:53d3 with SMTP id
- ffacd0b85a97d-482a90953f4mr11112989f8f.2.1787049028385; Tue, 18 Aug 2026
- 03:30:28 -0700 (PDT)
+ bh=SdKbOEmdbXNIMEb1ABKJlXk0e2Ws94+O7ONv/67mPi4=;
+ b=Tl4K9He7oomIprWgicF2QGgxdvnHhfhAeltMzoFe7CVksRJrfuSPaVW1eyKdv+zN5E6OKk
+ Rd5CM/oXILX3OTsOPEyMaM2u/4Zvle+10/L/ji7EGm3mp/S2sOyWkj/GJIZgkOvwXy9q2N
+ QpeKzEBZ3qCaxet2plbe0vdAjOB4I/k=
+Received: from mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
+ relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-353-KRxyMqn4ObOuXru_FS3Rxg-1; Tue,
+ 18 Aug 2026 07:17:59 -0400
+X-MC-Unique: KRxyMqn4ObOuXru_FS3Rxg-1
+X-Mimecast-MFC-AGG-ID: KRxyMqn4ObOuXru_FS3Rxg_1787051878
+Received: from mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com
+ (mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.93])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+ (No client certificate requested)
+ by mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id B93961956088; Tue, 18 Aug 2026 11:17:57 +0000 (UTC)
+Received: from localhost (headnet05.pony-001.prod.iad2.dc.redhat.com
+ [10.2.32.117])
+ by mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
+ id 5B24C1800347; Tue, 18 Aug 2026 11:17:53 +0000 (UTC)
+From: =?utf-8?q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>
+Date: Tue, 18 Aug 2026 15:10:47 +0400
+Subject: [PATCH v3 20/74] arm/virt: convert OnOffAuto acpi property to
+ QAPI-aware registration
 MIME-Version: 1.0
-References: <20260813181640.6537-1-philmd@oss.qualcomm.com>
- <20260813181640.6537-12-philmd@oss.qualcomm.com>
- <55cc8357-daeb-4315-9f3a-8be7a59c355b@redhat.com>
- <3ec603ff-65bb-440b-8ed8-72ae4e6c5a41@oss.qualcomm.com>
-In-Reply-To: <3ec603ff-65bb-440b-8ed8-72ae4e6c5a41@oss.qualcomm.com>
-From: Paolo Bonzini <pbonzini@redhat.com>
-Date: Tue, 18 Aug 2026 12:30:16 +0200
-X-Gm-Features: AcwNN1U9FkNWmAq29kJzhpwyumQVJaYATOb2EskO-A53Cr-akB0nGwo0bt8h3t0
-Message-ID: <CABgObfaDAhrpnVqQaKgG6uxPQe1YDu77YOsUEx9nqrN=3M2cGw@mail.gmail.com>
-Subject: Re: [PATCH 11/16] accel/kvm: Consistently return CPU halt state from
- process_async_events
-To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@oss.qualcomm.com>
-Cc: qemu-devel@nongnu.org, Richard Henderson <richard.henderson@linaro.org>, 
- Daniel Henrique Barboza <daniel.barboza@oss.qualcomm.com>, 
+Message-Id: <20260818-qom-qapi-v3-20-24b8bbbe3d86@redhat.com>
+References: <20260818-qom-qapi-v3-0-24b8bbbe3d86@redhat.com>
+In-Reply-To: <20260818-qom-qapi-v3-0-24b8bbbe3d86@redhat.com>
+To: qemu-devel@nongnu.org
+Cc: Markus Armbruster <armbru@redhat.com>, 
+ Paolo Bonzini <pbonzini@redhat.com>, 
+ =?utf-8?q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>, 
+ =?utf-8?q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>, 
+ Michael Roth <michael.roth@amd.com>, 
  Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>, 
- Mohamed Mediouni <mohamed@unpredictable.fr>, Alexander Graf <agraf@csgraf.de>,
- qemu-ppc@nongnu.org, 
- qemu-riscv@nongnu.org, kvm@vger.kernel.org, qemu-arm@nongnu.org, 
- Magnus Kulke <magnuskulke@linux.microsoft.com>,
- Peter Maydell <peter.maydell@linaro.org>, 
- Palmer Dabbelt <palmer@dabbelt.com>,
- Alistair Francis <alistair.francis@wdc.com>, 
- Weiwei Li <liwei1518@gmail.com>, Liu Zhiwei <zhiwei_liu@linux.alibaba.com>, 
- Chao Liu <chao.liu@processmission.com>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: qJr-kzA_IJAcp1vEgukEo0D-1LDnrGhiRccaOdHTRb4_1787049029
+ =?utf-8?q?Philippe_Mathieu-Daud=C3=A9?= <philmd@mailo.com>, 
+ Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org
+X-Developer-Signature: v=1; a=openpgp-sha256; l=2389;
+ i=marcandre.lureau@redhat.com; h=from:subject:message-id;
+ bh=c6HLhb1f9WKODsN9+9U7nvCHldQkpSmUDUODJkZ99eM=;
+ b=owEBbQKS/ZANAwAKAdro4Ql1lpzlAcsmYgBqhD24c1D6cxO6voScMEotQ39eX0CxxaL9LKcwr
+ Ben8lgqUSSJAjMEAAEKAB0WIQSHqb2TP4fGBtJ29i3a6OEJdZac5QUCaoQ9uAAKCRDa6OEJdZac
+ 5Xv3D/9Dc0Dh83DxDaPMC3GEi/zrcZSEk/kpa8jvSDYQCMn0ZWQ6ourD6svQ3hxLxKnLPkUoM07
+ MMHZqCfs0Q46brninctPUGOmR5SX42vZInZnxtIEEG6qTdf7HKHy7KJcQ7h6XrJ+05Kb7iEHONo
+ BVb95btw1S0IVFwWInNIAriPKyKE5vQy1YEvLCv2LDPLTVQXqtJ3AkKZJaMjArlJXHRvSAvXFDk
+ lI5OptF4Lq+Zk2cMQSz1i4ski0PjC4/FIOl8Z7pKnEY7PXd98UYyvzN7+emNqo0FGNOU6VuWZEm
+ VwrnhtPUHmKUtoPjSrptU61IscjijDh06yqqIHxSVtPw5zsCJO6rGcd7jZ89J3mHlTYFct9FYnJ
+ s+Qqv8s6S2/WpqOaRhiBKcYGc/PD2BhC9m6GcGxfW+IYaNCuD1PZNWxwWjZU2qS359yvohQ1mXL
+ wfUFcNL3bcouxVFHDcpSkmY34tZ4RDdCbkEOPFdUp/ma0w7YGImYfYy/+nkOyeBjo4/ETStaews
+ /O0ca6Imo9P1sFTZbzSgkriANkSyyJtv/sS/UD8UNS9UBiWEHMgSTwwkqD5/wZiwAEoMFth9c3K
+ marFXT2vRw4dqk3MP6keMh4oQpfZ7J4tkkqa7liB1uZvEtjCAPgzDTZ88gchhlJe9cgYYwKaRmX
+ i4TnWuAnozzateg==
+X-Developer-Key: i=marcandre.lureau@redhat.com; a=openpgp;
+ fpr=87A9BD933F87C606D276F62DDAE8E10975969CE5
+X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.93
+X-Mimecast-MFC-PROC-ID: pw7fLmTcav8k9MowC_zgtt5QX7_H8huI6dMnxH6PmxA_1787051878
 X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=pbonzini@redhat.com;
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=170.10.129.124;
+ envelope-from=marcandre.lureau@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -23
-X-Spam_score: -2.4
-X-Spam_bar: --
-X-Spam_report: (-2.4 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.343,
+X-Spam_score_int: 9
+X-Spam_score: 0.9
+X-Spam_bar: /
+X-Spam_report: (0.9 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.343,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=0.001, SPF_HELO_PASS=-0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=0.001, RCVD_IN_SBL_CSS=3.335,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -122,24 +112,74 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Tue, Aug 18, 2026 at 11:24=E2=80=AFAM Philippe Mathieu-Daud=C3=A9
-<philmd@oss.qualcomm.com> wrote:
-> > Your patch is correct because, even if cpu_thread_is_idle() sees cpu-
-> >  >halted =3D=3D false, the flag could become true during
-> > process_queued_cpu_work() because it releases the BQL.
-> >
-> > However, I think the better fix is to remove the return code, and check
-> > cpu->halted in kvm_cpu_exec().
->
-> Looking at it, even better would be to move *process_async_events()
-> from inner loop to outer loop for all accelerators. For HW accels it
-> seems quite trivial; for TCG I need to figure if it is safe to call
-> icount_prepare_for_run() with the BQL taken, due to the replay_mutex
-> uses -- here the win is cpu_handle_halt() ends restricted to system
-> and we can remove the odd EXCP_HLT handling in user emulation.
+Convert the acpi OnOffAuto property from manual visitor-based
+callbacks to property_add_qapi_enum().
 
-Makes sense, but probably it would be a series of its own. :)
+Signed-off-by: Marc-André Lureau <marcandre.lureau@redhat.com>
+---
+ hw/arm/virt.c | 27 ++++++++++++---------------
+ 1 file changed, 12 insertions(+), 15 deletions(-)
 
-Paolo
+diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+index e7a56e37f731..f283703fb002 100644
+--- a/hw/arm/virt.c
++++ b/hw/arm/virt.c
+@@ -74,7 +74,7 @@
+ #include "whpx_arm.h"
+ #include "hw/firmware/smbios.h"
+ #include "qapi/visitor.h"
+-#include "qapi/qapi-visit-common.h"
++#include "qapi/qapi-type-infos-common.h"
+ #include "qobject/qlist.h"
+ #include "standard-headers/linux/input.h"
+ #include "hw/arm/smmuv3.h"
+@@ -3569,21 +3569,16 @@ bool virt_is_acpi_enabled(const VirtMachineState *vms)
+     return true;
+ }
+ 
+-static void virt_get_acpi(Object *obj, Visitor *v, const char *name,
+-                          void *opaque, Error **errp)
++static int virt_get_acpi(Object *obj, Error **errp)
+ {
+     VirtMachineState *vms = VIRT_MACHINE(obj);
+-    OnOffAuto acpi = vms->acpi;
+-
+-    visit_type_OnOffAuto(v, name, &acpi, errp);
++    return vms->acpi;
+ }
+ 
+-static void virt_set_acpi(Object *obj, Visitor *v, const char *name,
+-                          void *opaque, Error **errp)
++static void virt_set_acpi(Object *obj, int value, Error **errp)
+ {
+     VirtMachineState *vms = VIRT_MACHINE(obj);
+-
+-    visit_type_OnOffAuto(v, name, &vms->acpi, errp);
++    vms->acpi = value;
+ }
+ 
+ static bool virt_get_ras(Object *obj, Error **errp)
+@@ -4208,11 +4203,13 @@ static void virt_machine_class_init(ObjectClass *oc, const void *data)
+     mc->default_ram_id = "mach-virt.ram";
+     mc->default_nic = "virtio-net-pci";
+ 
+-    object_class_property_add(oc, "acpi", "OnOffAuto",
+-        virt_get_acpi, virt_set_acpi,
+-        NULL, NULL);
+-    object_class_property_set_description(oc, "acpi",
+-        "Enable ACPI");
++    object_class_property_add_qapi_enum(oc, QAPI_ENUM_PROP(
++        .name = "acpi",
++        .description = "Enable ACPI",
++        .qapi_type = &OnOffAuto_type_info,
++        .get = virt_get_acpi,
++        .set = virt_set_acpi,
++    ));
+     object_class_property_add_bool(oc, "secure", virt_get_secure,
+                                    virt_set_secure);
+     object_class_property_set_description(oc, "secure",
+
+-- 
+2.55.0.543.g5ebe2ebe4ea8
 
 

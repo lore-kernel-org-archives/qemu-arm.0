@@ -4,93 +4,88 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3442CC5B572
-	for <qemu-arm@archiver.kernel.org>; Mon, 17 Aug 2026 22:34:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 55653C5DF74
+	for <qemu-arm@archiver.kernel.org>; Tue, 18 Aug 2026 00:27:33 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1ww5uc-000142-TT; Mon, 17 Aug 2026 18:34:34 -0400
+	id 1ww7f2-0002Ga-0s; Mon, 17 Aug 2026 20:26:36 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1ww5ub-00013b-G3
- for qemu-arm@nongnu.org; Mon, 17 Aug 2026 18:34:33 -0400
-Received: from mail-pg1-x52f.google.com ([2607:f8b0:4864:20::52f])
+ (Exim 4.90_1) (envelope-from <simonxhy0404@gmail.com>)
+ id 1ww7f0-0002GK-TJ
+ for qemu-arm@nongnu.org; Mon, 17 Aug 2026 20:26:35 -0400
+Received: from mail-oi1-x235.google.com ([2607:f8b0:4864:20::235])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1ww5uZ-0005oC-Te
- for qemu-arm@nongnu.org; Mon, 17 Aug 2026 18:34:33 -0400
-Received: by mail-pg1-x52f.google.com with SMTP id
- 41be03b00d2f7-cbb8b54fcf8so3601065a12.0
- for <qemu-arm@nongnu.org>; Mon, 17 Aug 2026 15:34:30 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <simonxhy0404@gmail.com>)
+ id 1ww7ez-0004Gk-Ec
+ for qemu-arm@nongnu.org; Mon, 17 Aug 2026 20:26:34 -0400
+Received: by mail-oi1-x235.google.com with SMTP id
+ 5614622812f47-4ab47c40e7eso2712980b6e.3
+ for <qemu-arm@nongnu.org>; Mon, 17 Aug 2026 17:26:32 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1787006070; x=1787610870; darn=nongnu.org;
- h=content-transfer-encoding:content-type:in-reply-to:content-language
- :from:references:cc:to:subject:user-agent:mime-version:date
- :message-id:from:to:cc:subject:date:message-id:reply-to:content-type;
- bh=BaaZvlNe7aydluBl82HSBJ+zgp4NFADzCcccrgiurrI=;
- b=Hs8YhSSADnhb8K653N1J26N5h/Qhw4YrM4fjKgc3ewmUHso27Zr5kx2tLQSYnrt4x8
- /dVp5c7pB2/P9IrhQg6bWOAQsN2bD00oVkgiu24MmEk1XKLgQhir6SGSHY8ZlahXzvDo
- VjHA+K32rxGYl+QW2nfiHhRGhnj1i5yeZ8hZnR+w3ifBJE126F2JLGRjv30to6kEyCap
- 0qZiju2cZMihGTTlurQ9B8pYlaB2w1r2UkYfv/5MtQhzvkyqYU7WmngrOwYc8KneK/X/
- x3K9kXrbMJgjoZ9tn/rit5vquJTkz6UFftqqEtvliTYF7vzeugfT71DXJTiq+BosjrSL
- AdGA==
+ d=gmail.com; s=20251104; t=1787012791; x=1787617591; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:content-type:message-id:date
+ :subject:cc:to:from:from:to:cc:subject:date:message-id:reply-to
+ :content-type; bh=9/yfjQTPEtrC9StG3ocPwJnsJPDokp/jOBq4p+yXhWE=;
+ b=X1vXIy+RcXfnGqf4InClTTDtDC/HZwrRWHkVy1+698wzVB+poA+W+OHrOFzhR18uir
+ ss6C9Su9REkJWjzc49Nciouqqyp81yNrmNV+qPK6GF6KaiHltXTo4xLcpJ2lvUy7lM0Q
+ +QN+0jeiQjSGW4La+F1bay8FyxxnUSG8TExbPeorqP7jOjEPKCdR5xBrif3FkaxVSX3v
+ xCnM/3E0GU7bGuRTGCesnWLotcnCXxT4T366nOPmt7L6xbWSaWmX7NFfPEv0mxXcWtA2
+ hW5Nc3MlhCI+jImFlA3sov7rEe41G7J3z40T/0CboZE31ZBrWtZ/kae+kaX9G+YGroyf
+ /CVA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1787006070; x=1787610870;
- h=content-transfer-encoding:content-type:in-reply-to:content-language
- :from:references:cc:to:subject:user-agent:mime-version:date
- :message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
- :message-id:reply-to:content-type;
- bh=BaaZvlNe7aydluBl82HSBJ+zgp4NFADzCcccrgiurrI=;
- b=TX0gCUM6fKUuBzeCt/ixHNXh8oQW3rWgME3W1h7rJKjQ1e77ZaATKJpSLUgwciolrt
- TUpcvK1BHWwCujLiaIVDtAVVpKj86P/w/vnliA4tAQhHz2ln8qB40qiu06cNm2gLGGjn
- iN+1BdPPQN6HoHXNQnhtzET5MqfkvwYIwNDXX1L5TBYGV7iCMbP7uxcViVr3ashqcVMV
- foMYZjOl9cftp+TLzmxFRkChq8VKhixCZhRaK5wSMSHmjRZ6WISaNgWwqQ6AhV/8KMlT
- mjHrn2UJpKWI2VAB4M8akoWxXMfwrEOkbSGEl06vKNmn5e2op1KKP/1h+k26HtnKsLmE
- edDw==
+ d=1e100.net; s=20251104; t=1787012791; x=1787617591;
+ h=content-transfer-encoding:mime-version:content-type:message-id:date
+ :subject:cc:to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject
+ :date:message-id:reply-to:content-type;
+ bh=9/yfjQTPEtrC9StG3ocPwJnsJPDokp/jOBq4p+yXhWE=;
+ b=ZaIWKfFSxD01FnCagXpTsa6XBDICFnOAAoodU59u9VMmzn6Li4/f/mH4crLz0DPpq5
+ MuPlHKstYkfWHtlWjPxv8MNlSQf9rV0c0dOJbzkTK0XLUdrg5BP1nVQtxcJGtIVu7Pd3
+ K/fYdTjGBt0XONeaGiIxbFWAjVSd+sdHDsp6eewoV9nuWb0NJUkSVn/0MkNElBNr07S/
+ xHf30mq8WxIUrk2mjK9apdugMU4c+4Dg80tXzlZIobpHbj4Ufiurh12VTv2mZOrRczb3
+ SoYJ+ZkRnEK20ZqozK+KnLGSZ8uBMz+EWjgt/d8m+3Eqt8werIOFxvl/sFl64xgQWcix
+ OCsQ==
 X-Forwarded-Encrypted: i=1;
- AHgh+RqadRkSJHzllZi23xjA8xPGRGSlfuYzv5RVQg7t/e7jW3xtDNB1kBUzDabbg7InIn5GEL4XPPcxkg==@nongnu.org
-X-Gm-Message-State: AOJu0YwzMREB8xMkWIQe54q4leJLF3rIDrN+wQWDzXRbAGDSM4ch2DvP
- oq6lDcpcBXi0Fz/EIE36PyoFcztUOWARtVl4G11IImCXjzCqZJ/qG7oEQTfJ5KcnHbc=
-X-Gm-Gg: AR+sD139lTnD7+4rlJV1XAiZhuvdLIYYORUksI92M/MvI255y8dEE2eCwlhammFDGti
- QxUd3JFkb+dxcnJmSLtEh3jOAXxRTCdKF8CYik5GzsOLTKqV8jqo5r+ewAGvAvdsBUI2tOFcAPd
- 7vHXQFhEUmSxN3uhkvgdHhkXM5beqfScCA3AuuYtz8EHdvROYfXO1/ceoNsQC6hZ/oDlXRN2J2Q
- K2X06JmE6LU5waFmcj5pv5G9tiuKAmMXT1t9RcHn7awJRZYG/8PNpSWyv7USkamG9mkngzL6Cs6
- c9e0WxmgcF7/04r1NcbjM2jLgjY2aQPeqyutGLJ3RzG0c7sh7KtvcTFmJUc3GDPRI0dq9d5PHYS
- s+lECgEB3t69nd0cmjncLP5fl/YFMnlvzfsDv4x+wfRxtCrnCaitSLfhdvD/iEhml/r5l679zRs
- PWh/TKKWgkQceVkwJhHfKy42zX0wpkOwiKceO7Vf8BU300A5+XlEHbTpdyaXyAuTzR4hUwU65l3
- Y3LxmfUBoKP7xyEllgdUd3OYOgQRyrbGU5v5rc9dWj0Bl0=
-X-Received: by 2002:a17:90b:2684:b0:38f:2168:b9cb with SMTP id
- 98e67ed59e1d1-3955a756226mr3569133a91.9.1787006069491; 
- Mon, 17 Aug 2026 15:34:29 -0700 (PDT)
-Received: from [10.213.131.227] (c-73-181-156-132.hsd1.wa.comcast.net.
- [73.181.156.132]) by smtp.gmail.com with ESMTPSA id
- 98e67ed59e1d1-39531e31a9dsm6448395a91.4.2026.08.17.15.34.28
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 17 Aug 2026 15:34:28 -0700 (PDT)
-Message-ID: <c931ce6c-1146-4bd7-8769-02e98ede0f82@linaro.org>
-Date: Mon, 17 Aug 2026 15:34:26 -0700
+ AHgh+Rqgkx8DoFTxhWuV+BlPJ240sebTfvJPSvIv5T1mzG1VBLZyhfFsJg6XVi5jOGxadgY6+4gUZIynJA==@nongnu.org
+X-Gm-Message-State: AOJu0YwGPcPGipNTteeW/4RYMFhajhesqz8JPOG9YPrP62rWoPjY6hov
+ ccMSoMHk9B0FveXH0cptKDO3Del9ZHStEPAhALsUF0IQsuIGPl15C1A9
+X-Gm-Gg: AR+sD13s8q23dxpJFg7NrioE9UZOsfGK7xCqYPQhwGr327JamEew96N7m65WckpQYNh
+ GfDsTXTj+CtZbSiNkesi5pXdCG3CcmBtox/gTxQOBDcMtOYLjG7FHo2llWla7V5Y5YyvdnaPbUv
+ D/UXz5ID92ExxBUaNoV8dfUhbvuvw3VL2XYSGW9WA6mza9eCcNxzEm+jxJjFm7b48ATJsCjhzSX
+ rg7HAwtUAfMj6/lGsco3AUrkhKFTdJ7RKhtBGwpbNpbGFs7vjxKYUtKtDcW9JEVAezMopI2FhzN
+ G5ID3PxTwuRhukiv+m4vH6qQdQpkZC6xeTfEDys3zBpJWhyhc0IfCeuf7zEGiQf0AOWFReK/SjZ
+ WxvcQ3d4Svoa4+RgIV/Cf4GFlDJdHZUOrSvYm35XMu3yUmwxnRLuJe1/bp9rSnkpACFzD/zi002
+ JeBcXbCtfQoPcG1cXADLLYLQFpcG/EL6m5SCLkrO1iG2Vp0YjKIKiEQzv2JOZwCVozjJryY2exf
+ B8WXu0W7H8=
+X-Received: by 2002:a05:6808:5142:b0:4a4:a693:9d87 with SMTP id
+ 5614622812f47-4b297517839mr4579257b6e.5.1787012791534; 
+ Mon, 17 Aug 2026 17:26:31 -0700 (PDT)
+Received: from LAPTOP-86EU4LQA.home.local ([23.124.244.239])
+ by smtp.gmail.com with ESMTPSA id
+ 5614622812f47-4b2960dfc9bsm1715165b6e.14.2026.08.17.17.26.30
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Mon, 17 Aug 2026 17:26:30 -0700 (PDT)
+From: Simon Xu <simonxhy0404@gmail.com>
+To: qemu-devel@nongnu.org
+Cc: Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>,
+ Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
+ Simon Xu <simonxhy0404@gmail.com>
+Subject: [PATCH v3 0/9] arm: add Cortex-M85, SSE-310, and mps3-an555
+Date: Mon, 17 Aug 2026 19:26:20 -0500
+Message-ID: <20260818002629.172827-1-simonxhy0404@gmail.com>
+X-Mailer: git-send-email 2.53.0
+Content-Type: text/plain; charset="utf-8"
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 2/3] target/arm: Fix SVE2 WHILEWR/WHILERW zero diff
- boundary case
-To: Peter Maydell <peter.maydell@linaro.org>
-Cc: qemu-devel@nongnu.org, yang.yanjun1@sanechips.com.cn, qemu-arm@nongnu.org
-References: <20260811191540.79882-1-richard.henderson@linaro.org>
- <20260811191540.79882-3-richard.henderson@linaro.org>
- <CAFEAcA98oxLs-w1PNuoM9mArit=toTCTucD5xOmN29Rbk6XBTQ@mail.gmail.com>
-From: Richard Henderson <richard.henderson@linaro.org>
-Content-Language: en-US
-In-Reply-To: <CAFEAcA98oxLs-w1PNuoM9mArit=toTCTucD5xOmN29Rbk6XBTQ@mail.gmail.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::52f;
- envelope-from=richard.henderson@linaro.org; helo=mail-pg1-x52f.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2607:f8b0:4864:20::235;
+ envelope-from=simonxhy0404@gmail.com; helo=mail-oi1-x235.google.com
+X-Spam_score_int: -17
+X-Spam_score: -1.8
+X-Spam_bar: -
+X-Spam_report: (-1.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ FREEMAIL_ENVFROM_END_DIGIT=0.25, FREEMAIL_FROM=0.001,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
@@ -108,20 +103,44 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On 8/17/26 09:37, Peter Maydell wrote:
->> +    tcg_gen_addi_i64(diff, diff, -1);
->> +    tcg_gen_umin_i64(diff, diff, tcg_constant_i64((vsz >> a->esz) - 1));
->> +
->> +    /*
->> +     * Since we're bounded, pass as a 32-bit type.
->> +     * Sink the diff += 1 from above into the 32-bit type.
-> 
-> Is it worth doing that? Hosts are all 64-bits now, and surely there's
-> not going to be a perf or codesize difference between "add 1"
-> on a 32-bit type vs a 64-bit type ?
-Technically one byte difference on x86_64.
-But we could drop the whole truncation thing it you like.
+This patch series aims to add the Arm Cortex-M85 CPU, SSE-310 Subsystem,
+and mps3-an555 FPGA board.
 
+v2 -> v3
+    Removed ppuintstat variable in iotkit-sysctl
+    Moved add GPIOALT2 register patch before add mps3-an555 patch
+    Add gpioalt2 state field to new vmstate subsection for migration
+    Rebased onto master which includes bug fixes to existing models
+        in armsse.c and mps2-tz.c
+    Patches 1, 3, 8 still needs review
 
-r~
+Signed-off-by: Simon Xu <simonxhy0404@gmail.com>
+
+Simon Xu (9):
+  target/arm/tcg/cpu-v7m.c: add cortex-m85 model
+  hw/arm/armsse: add Arm Corstone SSE-310
+  hw/misc/iotkit-sysctl.c: add SSE-310 support
+  hw/misc/iotkit-secctl.c: fix AHB secure read
+  hw/misc/iotkit-secctl.c: add SSE-310 support
+  hw/misc/iotkit-secctl.c: use GNU C case ranges
+  hw/misc/iotkit-sysinfo.c: add SSE-310 support
+  hw/misc/mps2-fpgaio.c: add GPIOALT2 register
+  hw/arm/mps2-tz.c add Arm mps3-an555 board
+
+ docs/system/arm/mps2.rst        |   6 +-
+ hw/arm/armsse.c                 | 208 +++++++++++++++++++++++++++++++-
+ hw/arm/mps2-tz.c                | 162 ++++++++++++++++++++++++-
+ hw/misc/iotkit-secctl.c         | 132 ++++++--------------
+ hw/misc/iotkit-sysctl.c         |  88 ++++++++++++--
+ hw/misc/iotkit-sysinfo.c        |  22 +++-
+ hw/misc/mps2-fpgaio.c           |  35 ++++++
+ include/hw/arm/armsse-version.h |   2 +
+ include/hw/arm/armsse.h         |   9 +-
+ include/hw/misc/mps2-fpgaio.h   |   2 +
+ target/arm/tcg/cpu-v7m.c        |  41 +++++++
+ 11 files changed, 587 insertions(+), 120 deletions(-)
+
+-- 
+2.53.0
+
 

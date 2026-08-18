@@ -4,61 +4,93 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D9D46C5B572
-	for <qemu-arm@archiver.kernel.org>; Tue, 18 Aug 2026 01:44:32 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 374CEC5DF67
+	for <qemu-arm@archiver.kernel.org>; Tue, 18 Aug 2026 03:31:13 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1ww8sJ-0000Ek-7E; Mon, 17 Aug 2026 21:44:23 -0400
+	id 1wwAXM-0000eG-Aw; Mon, 17 Aug 2026 23:30:52 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <andrew@codeconstruct.com.au>)
- id 1ww8sF-0000EM-U3; Mon, 17 Aug 2026 21:44:21 -0400
-Received: from pi.codeconstruct.com.au ([203.29.241.158]
- helo=codeconstruct.com.au)
+ (Exim 4.90_1) (envelope-from <alistair@alistair23.me>)
+ id 1wwAXL-0000du-8A; Mon, 17 Aug 2026 23:30:51 -0400
+Received: from fout-b5-smtp.messagingengine.com ([202.12.124.148])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <andrew@codeconstruct.com.au>)
- id 1ww8sD-0003pR-HD; Mon, 17 Aug 2026 21:44:19 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=codeconstruct.com.au; s=2022a; t=1787017446;
- bh=8dxXqQ6I72A+75xFqd5jLysNahv3qlFu/aiRTg8/g1I=;
- h=From:Date:Subject:To:Cc;
- b=T1Yt6K8dVeXbgnm1ZUYU4XHPrERrWbIympkRo4uF80eWeRKV58aPB9GIjBt3aF35F
- 1h4IOY/qHAgBhHSh5kvH4hGztB5wmhZedk0lS3wV+cVPxKxG6NoXiAzOHyH8p/yu7e
- yxAIqAX9iYGH7iZM+ToLoQYt6lZHnAJrwZTKerQMEg6rOFLtxP+DTIvW58u0RCHbG9
- NGP43Z/DD2G/QGr+bh1I4D6oDei3jYB5qlMOGIdb0cl04RSwoGNiiX2/hdvqDYWbeI
- P9gVQD4gq38tT3J75u8HImel47sjt5Nl+d+JjnSVLJYXaFf8IdWLEEjBz4TkS+SwPE
- Hi9oS35cpw4eA==
-Received: from [127.0.1.1] (unknown [180.150.113.112])
- by mail.codeconstruct.com.au (Postfix) with ESMTPSA id 75BD9608C3;
- Tue, 18 Aug 2026 09:44:03 +0800 (AWST)
-From: Andrew Jeffery <andrew@codeconstruct.com.au>
-Date: Tue, 18 Aug 2026 11:13:42 +0930
-Subject: [PATCH] hw/misc/aspeed_scu: Set both AST2600 protection key
- registers on reset
+ (Exim 4.90_1) (envelope-from <alistair@alistair23.me>)
+ id 1wwAXJ-0007SF-Mf; Mon, 17 Aug 2026 23:30:50 -0400
+Received: from phl-compute-11.internal (phl-compute-11.internal [10.202.2.51])
+ by mailfout.stl.internal (Postfix) with ESMTP id 13C0D1D0004B;
+ Mon, 17 Aug 2026 23:30:46 -0400 (EDT)
+Received: from phl-frontend-03 ([10.202.2.162])
+ by phl-compute-11.internal (MEProxy); Mon, 17 Aug 2026 23:30:46 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=alistair23.me;
+ h=cc:cc:content-transfer-encoding:content-type:content-type
+ :date:date:from:from:in-reply-to:in-reply-to:message-id
+ :mime-version:references:reply-to:subject:subject:to:to; s=fm3;
+ t=1787023845; x=1787110245; bh=PNm8bNK2GOSTuFyW9huewIQ0lfMYhQW/
+ LfOgOUkBZPA=; b=t5DAZ5K2mczDh+frCmsSX/CX8D6z1mbCBqegFEe7UHd4ZmnW
+ f9bhfOSj8p6Z8hKhFYfvRKkHrpL1N8DhWcPBF0u4RLvfJyAYipz3Qig0dXdNHOHx
+ 5MxIM27fxUbp3vCwJN8O4tjnn9RRrUJIsCaxdykHQ/m/0ZvgTRFoBvgl92HJSGB9
+ lBAOYv205YN+o4HXlPFRcGNpSzI0TlR8YhThTCbUPsexMNDesJlIzgETFUS5Soyt
+ CWGwYE4qTVxCAyyWCOCjm2rEoRZg1OT7ftIeAUUtBuVmqOXdQodBzGkx5WbbRb6I
+ VK/YSIOguD3e4Ff1n/ymysDckiLI19RyIrcOIA==
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
+ messagingengine.com; h=cc:cc:content-transfer-encoding
+ :content-type:content-type:date:date:feedback-id:feedback-id
+ :from:from:in-reply-to:in-reply-to:message-id:mime-version
+ :references:reply-to:subject:subject:to:to:x-me-proxy
+ :x-me-sender:x-me-sender:x-sasl-enc; s=fm3; t=1787023845; x=
+ 1787110245; bh=PNm8bNK2GOSTuFyW9huewIQ0lfMYhQW/LfOgOUkBZPA=; b=M
+ WdfG46IgPbXsn7adTCXp5dlh4Jd2GRNMWkJaZxVNTwctoMoSWa5wjW6dEOr9rRtd
+ 9LDbts9bJXqS/UlSOjAuxu44DKKvBB97Kiw+tIMSHFeJzdTxb2lmOvRA4Jo1HEK7
+ 3xPPpImqkXJGBGdjCZxYreYyFhVdhDB1gmquSoQAe5ecsxc+jQCRTXEY8sFn2rF2
+ CcqCN2jredOBsVixhwjWjXPvUiZW9fAytu3uML1oH70v9sfq5sjlmyTHSVX6uUqM
+ EmcO8pwmMzQFP4crbWxBIwziaIRhTY61NzsHfm9Cw51IHERefgBPABBmvozy2+uH
+ UGF/ocuAR0Q7FooBEo5Jw==
+X-ME-Sender: <xms:5dGDapse4DspQHlkqmr-xXcb5w762z_S22aM1hoGB7Ve4OsYnDcoSA>
+ <xme:5dGDainLYYV7OdWdKTSHDEWCzIv9A5nVwt_E2SULbEeHiNImtJ87C2YaBJvWf-0XP
+ -5bDttVCikXrm8SCU_7sM1tiQfb0bmgiRojnxHvSEdNJ22eGITSpTs>
+X-ME-Received: <xmr:5dGDaktgyewaXNS7Ygxu8jk-48K2r6KDqtbsdk8WOilkHPtHIzAFgX_fQN1gGkDqES_xJx1VM8EGf_tgXrw1GPYdUew>
+X-ME-Proxy-Cause: dmFkZTFrwVq7+53TR7uuUJGEfdkdiy39A6+Ny9LCLF2r81HDJ3gIIZIdOXXtdd2kfdkHLV
+ D+z/rqVWW03rhXEOzaVim7TYlBErLxD40IKg90DqVouJZ0vOuLRh4Jr9TT/ergajlQA9E3
+ FBJq4ovznsq4ZzC5kjyw5+K2cXTPvpADsQdwZeaE7Lk2muGVZtFxiGY/Ws4Damk+b3mzlH
+ Ly4vIAepcsaHD6WOwDpbk3XgnYZHWbpUGMEPChyWcFQjZq7948zyllKgQ2jTJiZKE2UhBI
+ 4JavE081a/46Vbkm6IYxNkviFU8KbJbizw6oxHd0GUaRTZ4OesCci9FJjLvIawPYZZVaWJ
+ T6lq43ovtJ0WvmuCQD0bV64zhb7q4VQkCdaCKMYr4nUKHH9r3aSPheg+CytCfk5rmzQEaK
+ cUpKcDEYAyeDtSJfV+LB3gItGaQHWSSKP7ntWcxeO2TRSJcSMZk75G/vKF2bsRVppFXwtX
+ pOLDiTRoym2EvTo3ou6PRSCtoUsA8w6PUlBbhfVMOJOjbeeUBRHFfOu5/OGRrqygAvVlNA
+ Csx/6/R9iIxfV9v1cnhst/rUxkgulyVzjFdF7XPE34Q/mPPyX+/YcH17ewe+SE4omkZD0W
+ A2/ZbDnJhgAsIBRvRLdrzit/4dkeqXC7UuEA6cAvNbapqimVQFIWY29CJk6w
+X-ME-Proxy: <xmx:5dGDaocilPCzxlRl2TAOmm601GH3CI2tNMmtpNjCdo3K0h1f747O4Q>
+ <xmx:5dGDakwLdtq912eg0s37LBlVoBxueFfIzOL9lrv8SvJLnhLN6iezIA>
+ <xmx:5dGDamElmT2Tu-C79MgZYmEc4WVC4m0x4OG8WxX3I1lnNyKPaiFNaA>
+ <xmx:5dGDagxGdxJMptHXCQhCcdS8ch6hJTurBBfY8HIrvZYxaAuzwdFUpA>
+ <xmx:5dGDaoHazJJlxEXfIvm9-_SIQ3LyaOAeSAtRrX8NPpFv_GG8acWZkpnL>
+Feedback-ID: ifd214418:Fastmail
+Received: by mail.messagingengine.com (Postfix) with ESMTPA; Mon,
+ 17 Aug 2026 23:30:43 -0400 (EDT)
+Message-ID: <7a536943a7b99eb8e0407a9e29ca14be7453f90e.camel@alistair23.me>
+Subject: Re: [RFC PATCH 13/18] target/riscv: Move PMP_AMATCH_OFF check in
+ pmp_hart_has_privs
+From: Alistair <alistair@alistair23.me>
+To: Richard Henderson <richard.henderson@linaro.org>, qemu-devel@nongnu.org
+Cc: qemu-arm@nongnu.org, qemu-riscv@nongnu.org
+Date: Tue, 18 Aug 2026 13:30:41 +1000
+In-Reply-To: <20260815203730.1468365-14-richard.henderson@linaro.org>
+References: <20260815203730.1468365-1-richard.henderson@linaro.org>
+ <20260815203730.1468365-14-richard.henderson@linaro.org>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: base64
+User-Agent: Evolution 3.60.2 (by Flathub.org) 
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-Message-Id: <20260818-dev-ast2600-hw-prot-key-reset-v1-1-5dc3de64c247@codeconstruct.com.au>
-X-B4-Tracking: v=1; b=H4sIAM24g2oC/yXMTQ6CQAwG0KuQrm0yEENmvIpxwc8HFBIg7Ygaw
- t0dZfk2byeDCoxu2U6KTUyWOSG/ZNQM1dyDpU2mwhWl87nnFhtXFpMcDy9edYk84cMKQ2SUHnX
- orgEIlI5V0cn7/98fp+1Zj2jiL6Xj+AKeP8MtgQAAAA==
-X-Change-ID: 20260818-dev-ast2600-hw-prot-key-reset-e68eb9f49ee9
-To: qemu-devel@nongnu.org
-Cc: =?utf-8?q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>, 
- Peter Maydell <peter.maydell@linaro.org>, 
- Steven Lee <steven_lee@aspeedtech.com>, Troy Lee <leetroy@gmail.com>, 
- Jamin Lin <jamin_lin@aspeedtech.com>, Kane Chen <kane_chen@aspeedtech.com>, 
- Joel Stanley <joel@jms.id.au>, qemu-arm@nongnu.org, 
- Andrew Jeffery <andrew@codeconstruct.com.au>
-X-Mailer: b4 0.16.0
-Received-SPF: pass client-ip=203.29.241.158;
- envelope-from=andrew@codeconstruct.com.au; helo=codeconstruct.com.au
-X-Spam_score_int: -20
-X-Spam_score: -2.1
+Received-SPF: pass client-ip=202.12.124.148;
+ envelope-from=alistair@alistair23.me; helo=fout-b5-smtp.messagingengine.com
+X-Spam_score_int: -27
+X-Spam_score: -2.8
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_PASS=-0.001,
+X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_LOW=-0.7, SPF_HELO_PASS=-0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -75,74 +107,32 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Currently, booting Linux on the ast2600-evb machine via -kernel results
-in a lot of warnings about failing to apply pinmux configuration when
-binding drivers:
-
-    [    7.339307][    T1] Creating 5 MTD partitions on "bmc":
-    [    7.340402][    T1] 0x000000000000-0x0000000e0000 : "u-boot"
-    [    7.513755][    T1] 0x0000000e0000-0x000000100000 : "u-boot-env"
-    [    7.664219][    T1] 0x000000100000-0x000000a00000 : "kernel"
-    [    7.826974][    T1] 0x000000a00000-0x000002a00000 : "rofs"
-    [    8.026666][    T1] 0x000002a00000-0x000004000000 : "rwfs"
-    [    8.201612][    T1] spi-aspeed-smc 1e630000.spi: error -EPERM: Error applying setting, reverse things back
-    [    8.370835][    T1] spi-aspeed-smc 1e630000.spi: Calibration area too uniform, using low speed
-    [    8.371131][    T1] spi-aspeed-smc 1e630000.spi: Force to dts configuration 100000kHz.
-    [    8.371500][    T1] spi-aspeed-smc 1e630000.spi: CE0 read buswidth:4 [0x406c0741]
-    [    8.766797][    T1] mdio-aspeed 1e650000.mdio: error -EPERM: Error applying setting, reverse things back
-    [    8.906008][    T1] mdio-aspeed 1e650008.mdio: error -EPERM: Error applying setting, reverse things back
-    [    9.039240][    T1] mdio-aspeed 1e650010.mdio: error -EPERM: Error applying setting, reverse things back
-    [    9.147942][    T1] mdio-aspeed 1e650018.mdio: error -EPERM: Error applying setting, reverse things back
-
-The pinmux configuration fails because the SCU is not unlocked.
-
-Set both SCU protection keys for the AST2600. Further, set them
-such that they behave accordance with the read value documented
-by the datasheet. The new arrangement now upholds the comment in
-hw/arm/aspeed.c regarding passing -kernel on the qemu command-line.
-
-    [    7.568170][    T1] Creating 5 MTD partitions on "bmc":
-    [    7.569330][    T1] 0x000000000000-0x0000000e0000 : "u-boot"
-    [    7.740372][    T1] 0x0000000e0000-0x000000100000 : "u-boot-env"
-    [    7.883570][    T1] 0x000000100000-0x000000a00000 : "kernel"
-    [    8.041004][    T1] 0x000000a00000-0x000002a00000 : "rofs"
-    [    8.196824][    T1] 0x000002a00000-0x000004000000 : "rwfs"
-    [    8.547037][    T1] spi-aspeed-smc 1e630000.spi: Calibration area too uniform, using low speed
-    [    8.547320][    T1] spi-aspeed-smc 1e630000.spi: Force to dts configuration 100000kHz.
-    [    8.547642][    T1] spi-aspeed-smc 1e630000.spi: CE0 read buswidth:4 [0x406c0741]
-    [    9.494235][    T1] ftgmac100 1e660000.ethernet: Read MAC address 52:54:00:12:34:56 from chip
-    [    9.531186][    T1] RTL8211E Gigabit Ethernet 1e650000.mdio-1:00: attached PHY driver (mii_bus:phy_addr=1e650000.mdio-1:00,
-
-Fixes: e09cf36321f6 ("hw: aspeed_scu: Add AST2600 support")
-Signed-off-by: Andrew Jeffery <andrew@codeconstruct.com.au>
----
-I ran into this issue while improving test coverage in my patch review
-process.
----
- hw/misc/aspeed_scu.c | 3 ++-
- 1 file changed, 2 insertions(+), 1 deletion(-)
-
-diff --git a/hw/misc/aspeed_scu.c b/hw/misc/aspeed_scu.c
-index ca93c3699d81..1e3db6d03f91 100644
---- a/hw/misc/aspeed_scu.c
-+++ b/hw/misc/aspeed_scu.c
-@@ -821,7 +821,8 @@ static void aspeed_ast2600_scu_reset_hold(Object *obj, ResetType type)
-     s->regs[AST2600_SILICON_REV2] = s->silicon_rev;
-     s->regs[AST2600_HW_STRAP1] = s->hw_strap1;
-     s->regs[AST2600_HW_STRAP2] = s->hw_strap2;
--    s->regs[PROT_KEY] = s->hw_prot_key;
-+    s->regs[AST2600_PROT_KEY] = s->hw_prot_key == ASPEED_SCU_PROT_KEY;
-+    s->regs[AST2600_PROT_KEY2] = s->hw_prot_key == ASPEED_SCU_PROT_KEY;
- }
- 
- static void aspeed_2600_scu_class_init(ObjectClass *klass, const void *data)
-
----
-base-commit: 9696bf5dc5a5bf0b4a9d05b6cdfe5f13990f97aa
-change-id: 20260818-dev-ast2600-hw-prot-key-reset-e68eb9f49ee9
-
-Best regards,
---  
-Andrew Jeffery <andrew@codeconstruct.com.au>
+T24gU2F0LCAyMDI2LTA4LTE1IGF0IDEzOjM3IC0wNzAwLCBSaWNoYXJkIEhlbmRlcnNvbiB3cm90
+ZToKPiBDaGVjayBmb3IgcmVnaW9uIGRpc2FibGVkIGJlZm9yZSBjaGVja2luZyB0aGUgcmVnaW9u
+IHJhbmdlLgo+IAo+IFNpZ25lZC1vZmYtYnk6IFJpY2hhcmQgSGVuZGVyc29uIDxyaWNoYXJkLmhl
+bmRlcnNvbkBsaW5hcm8ub3JnPgoKUmV2aWV3ZWQtYnk6IEFsaXN0YWlyIEZyYW5jaXMgPGFsaXN0
+YWlyLmZyYW5jaXNAd2RjLmNvbT4KCkFsaXN0YWlyCgo+IC0tLQo+IMKgdGFyZ2V0L3Jpc2N2L3Rj
+Zy9wbXAuYyB8IDkgKysrKystLS0tCj4gwqAxIGZpbGUgY2hhbmdlZCwgNSBpbnNlcnRpb25zKCsp
+LCA0IGRlbGV0aW9ucygtKQo+IAo+IGRpZmYgLS1naXQgYS90YXJnZXQvcmlzY3YvdGNnL3BtcC5j
+IGIvdGFyZ2V0L3Jpc2N2L3RjZy9wbXAuYwo+IGluZGV4IDQxYjU1NTE5YTguLjViY2NjNjA1Mjcg
+MTAwNjQ0Cj4gLS0tIGEvdGFyZ2V0L3Jpc2N2L3RjZy9wbXAuYwo+ICsrKyBiL3RhcmdldC9yaXNj
+di90Y2cvcG1wLmMKPiBAQCAtNDE1LDYgKzQxNSwxMCBAQCBib29sIHBtcF9oYXJ0X2hhc19wcml2
+cyhDUFVSSVNDVlN0YXRlICplbnYsCj4gaHdhZGRyIGFkZHIsCj4gwqDCoMKgwqDCoCAqIGZyb20g
+bG93IHRvIGhpZ2gKPiDCoMKgwqDCoMKgICovCj4gwqDCoMKgwqAgZm9yIChpID0gMDsgaSA8IHBt
+cF9yZWdpb25zOyBpKyspIHsKPiArwqDCoMKgwqDCoMKgwqAgaWYgKHBtcF9nZXRfYV9maWVsZChl
+bnYtPnBtcF9zdGF0ZS5wbXBbaV0uY2ZnX3JlZykgPT0KPiBQTVBfQU1BVENIX09GRikgewo+ICvC
+oMKgwqDCoMKgwqDCoMKgwqDCoMKgIGNvbnRpbnVlOwo+ICvCoMKgwqDCoMKgwqDCoCB9Cj4gKwo+
+IMKgwqDCoMKgwqDCoMKgwqAgcyA9IHBtcF9pc19pbl9yYW5nZShlbnYsIGksIGFkZHIpOwo+IMKg
+wqDCoMKgwqDCoMKgwqAgZSA9IHBtcF9pc19pbl9yYW5nZShlbnYsIGksIGFkZHIgKyBwbXBfc2l6
+ZSAtIDEpOwo+IMKgCj4gQEAgLTQyNywxMCArNDMxLDcgQEAgYm9vbCBwbXBfaGFydF9oYXNfcHJp
+dnMoQ1BVUklTQ1ZTdGF0ZSAqZW52LAo+IGh3YWRkciBhZGRyLAo+IMKgwqDCoMKgwqDCoMKgwqAg
+fQo+IMKgCj4gwqDCoMKgwqDCoMKgwqDCoCAvKiBmdWxseSBpbnNpZGUgKi8KPiAtwqDCoMKgwqDC
+oMKgwqAgY29uc3QgdWludDhfdCBhX2ZpZWxkID0KPiAtwqDCoMKgwqDCoMKgwqDCoMKgwqDCoCBw
+bXBfZ2V0X2FfZmllbGQoZW52LT5wbXBfc3RhdGUucG1wW2ldLmNmZ19yZWcpOwo+IC0KPiAtwqDC
+oMKgwqDCoMKgwqAgaWYgKCgocyArIGUpID09IDIpICYmIChQTVBfQU1BVENIX09GRiAhPSBhX2Zp
+ZWxkKSkgewo+ICvCoMKgwqDCoMKgwqDCoCBpZiAocyArIGUgPT0gMikgewo+IMKgwqDCoMKgwqDC
+oMKgwqDCoMKgwqDCoCAvKgo+IMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgICogSWYgdGhlIFBN
+UCBlbnRyeSBpcyBub3Qgb2ZmIGFuZCB0aGUgYWRkcmVzcyBpcyBpbgo+IHJhbmdlLAo+IMKgwqDC
+oMKgwqDCoMKgwqDCoMKgwqDCoMKgICogZG8gdGhlIHByaXYgY2hlY2sK
 
 

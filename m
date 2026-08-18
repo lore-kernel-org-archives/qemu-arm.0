@@ -4,150 +4,136 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1EFACC5DF80
-	for <qemu-arm@archiver.kernel.org>; Tue, 18 Aug 2026 08:48:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D00D4C5DF80
+	for <qemu-arm@archiver.kernel.org>; Tue, 18 Aug 2026 09:23:13 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wwFUV-0007Mm-3K; Tue, 18 Aug 2026 04:48:15 -0400
+	id 1wwG2A-0001iB-W5; Tue, 18 Aug 2026 05:23:03 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@oss.qualcomm.com>)
- id 1wwFUU-0007MX-CT
- for qemu-arm@nongnu.org; Tue, 18 Aug 2026 04:48:14 -0400
-Received: from mx0b-0031df01.pphosted.com ([205.220.180.131])
+ (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
+ id 1wwG29-0001hJ-Rg; Tue, 18 Aug 2026 05:23:01 -0400
+Received: from mail-japaneastazlp170120005.outbound.protection.outlook.com
+ ([2a01:111:f403:c405::5] helo=TYPPR03CU001.outbound.protection.outlook.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@oss.qualcomm.com>)
- id 1wwFUR-0003nY-SO
- for qemu-arm@nongnu.org; Tue, 18 Aug 2026 04:48:13 -0400
-Received: from pps.filterd (m0279869.ppops.net [127.0.0.1])
- by mx0a-0031df01.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id
- 67I8BHS03703366
- for <qemu-arm@nongnu.org>; Tue, 18 Aug 2026 08:48:10 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qualcomm.com; h=
- cc:content-transfer-encoding:content-type:date:from:in-reply-to
- :message-id:mime-version:references:subject:to; s=qcppdkim1; bh=
- pXwYInvkmu8G0HskQ5AMBGpvs8HO0gTNnQT0ehKDGbE=; b=VW9S/1PcvukBaX1c
- Drso6g0D/d/vOFaNfI7unjbwudlDiVqY1jVY0RLlu7QgL8br8ozRgN696vQJizBX
- 5ICGX01nLKiY2Awj/FnRiEOoTk7oW/xwcgrKcAa2pMWPuXJuxbJ6LT8yZvHlwXx9
- 1nYAbCfD6Q7JeSC/H3std++KzodM8SG/YXYQ4pm0M+kr6WSOmJDbSqGA+WgTw4cF
- 8Yr5VpudpKtvCZEupt3HWY3DHzsl9DbWbFmUyrrWKEu6434yMSjY2A4n6Lv3eBXa
- L2N8lKfDi2stJ5z8+S3V4r4PCEMEjEe9/2exGt4mNm5BByleOJhzMs3VOvkRpOBg
- 1dCAjQ==
-Received: from mail-qk1-f199.google.com (mail-qk1-f199.google.com
- [209.85.222.199])
- by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 4g4ebpsj0t-1
- (version=TLSv1.3 cipher=TLS_AES_128_GCM_SHA256 bits=128 verify=NOT)
- for <qemu-arm@nongnu.org>; Tue, 18 Aug 2026 08:48:10 +0000 (GMT)
-Received: by mail-qk1-f199.google.com with SMTP id
- af79cd13be357-934979ee9f1so561175785a.2
- for <qemu-arm@nongnu.org>; Tue, 18 Aug 2026 01:48:09 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=oss.qualcomm.com; s=google; t=1787042889; x=1787647689; darn=nongnu.org;
- h=content-transfer-encoding:content-type:in-reply-to:from:references
- :cc:to:content-language:subject:user-agent:mime-version:date
- :message-id:from:to:cc:subject:date:message-id:reply-to:content-type;
- bh=pXwYInvkmu8G0HskQ5AMBGpvs8HO0gTNnQT0ehKDGbE=;
- b=kDaKQVzR64B1q2g9Viw/YEbPjbddqGMegeqrzORMefb2uC+Zj/K6OfnHB7ItnAMPY6
- dGXAB5aXvgRwZ3tCpoAOgN2pmRdWF1RIBqMLmxTxP7cQLNmw1K6LXPyH1P6LyEstqmTO
- lLQ2XwVJM1enNFZJn1bA+HjV0plfMDTxr9zFEJntHeWJd1KiMm/o8x7FAhz/KYHIPXGs
- AieCPGsa1odDOVG7PTiTTaVgYvOdU2UWy/WqNKPIrePIx7SunXPl9JdohLf2vAHnWG1I
- yleOCVJv2278BLezqCCwH8E4Qqyqk4SMH0//ifDYdU5mo07AHboJu0CNHWR/GNkEbhWi
- Hysw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1787042889; x=1787647689;
- h=content-transfer-encoding:content-type:in-reply-to:from:references
- :cc:to:content-language:subject:user-agent:mime-version:date
- :message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
- :message-id:reply-to:content-type;
- bh=pXwYInvkmu8G0HskQ5AMBGpvs8HO0gTNnQT0ehKDGbE=;
- b=c7OlhrPDhMEgKNHsV41/f2ESRMUYN5Jmt0RlKf88O7Ppm8seTD53g3dIGgdRS770WW
- r/tM5MfVeGrnWPSdtDTjVnhP/QPeXaX+O53u0PLSuyrw9vtugeNMb5kmk3e1IC58BXZA
- ywoPqmFOsVLlaEUyEqzcxQ2GYSOk9UKVgEq6/HJ2pE3/82bfIYSG9qt2w7LcOcdnI7Uy
- mc92BRa53jWtXDdFc1riLAOeL1ZIgdzP86Y44ukNX3miqPg8t4w8IwdgIE04/4r/j1r9
- nUcOMG07Nk9yGiupME3dfBwAw8yDE8+30a1dGdsspkDHxS1MgAC9gbPyUinIGWgmEmv0
- Q2tQ==
-X-Forwarded-Encrypted: i=1;
- AHgh+RpUieh+2jPK9/Y0fC7ouXUox/VciO2jM5y2FM6RR/+T5ycpsXts55xgKrF25sOw/WW86pqJDKnXBw==@nongnu.org
-X-Gm-Message-State: AOJu0Yw6TbBGGmR6xGZhR1ZMBARwQ43g0A4TTnr49h0DSIfCRx8Vwa1k
- 30iDyrMqVDDVk52YoFFTs+c6HsZtpGmlHsRAvde4zcYsNt3iHRniAQskF96sb4ZAIxptcTxvTNW
- ToOetdoRW1buIgYyekqSimkgpMn/rOAcs/Qaq+heCMGS8PT4szMBFJ64=
-X-Gm-Gg: AR+sD12WfLp/d+Qt9bYqkhgtECu5LbBXp8bL3BImGa+JIzjecwsJO/K4jGWbT4C0jKA
- 1PSk2d304eD9p4cweP98eIKVc6Gy0Z61+qx4/Lg6DlixmTDNze1m8DxNr5W0GsvHXqEv453Mj66
- 4T+BIon+udOCsTplWRCqvpDUpZzDQx1f3vbRwVzxONFBSC4kgfyW7mDkXTBNVKjxMC3+jFUewkU
- ttcI8IGO8L+UYTEVzgJCVSU0yuIbctKJrbAjlTvstTvlLuuLMNuforaYWvmrnIqYPLJR3L5O9iZ
- 1jo+mk2eMm3ZgY7jdCeQNdg/o5etX5Tp2M1P6D4aD4i1/RXElPgKYMSOgicMmc43rcOShFJH5aV
- Tga4dLX6FrgOP4bV9MzUY5S8A22sKkQmZ49Q=
-X-Received: by 2002:a05:620a:408d:b0:923:45bb:a95c with SMTP id
- af79cd13be357-936d1fd9bdemr2856006485a.10.1787042889431; 
- Tue, 18 Aug 2026 01:48:09 -0700 (PDT)
-X-Received: by 2002:a05:620a:408d:b0:923:45bb:a95c with SMTP id
- af79cd13be357-936d1fd9bdemr2856005085a.10.1787042888909; 
- Tue, 18 Aug 2026 01:48:08 -0700 (PDT)
-Received: from [192.168.69.229] (pmd666.hd.free.fr. [88.187.86.199])
- by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-4999d078517sm103963505e9.5.2026.08.18.01.48.07
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 18 Aug 2026 01:48:07 -0700 (PDT)
-Message-ID: <9e83f348-0d27-49a0-babf-789a8817d78b@oss.qualcomm.com>
-Date: Tue, 18 Aug 2026 10:48:06 +0200
-MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 13/16] target/arm/hvf: Lock BQL outside of the vCPU inner
- execution loop
+ (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
+ id 1wwG27-0001Yk-RW; Tue, 18 Aug 2026 05:23:01 -0400
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=UkX3ICBjT73Jo2fYpiWM/xVCozCeYtvShRCYHVf6b2TkQgL5I2jyElBmHwML3TK4X3QTbwGIyHHHe6MiFUd0/ut1fNziDwq3hCeQytIclmPi9zN23JDDfEEV6tIVz84UuSX2q11+1ALMUsGQbMBUiY8bY9e+NWNvWWTbtsCFjocAkIoUqNVnKr1E9pNn40tsMbr4bOkTMGtuz2OyHG1VJt4LV0xdo0ZKyQqeLS4Dtntxm06ZHlaLclaLJbzh3IaQ8ZC5CfCSmlGjnphnb9M+j5F+vNW7+FYcdtwlJGLUDh8kHpGS7fqD//kazncUuBlsRBsv5A5SWfUXc+e7Jhwmlw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=/rDCQwIyRkidaaPVsKqxSmHldv1WgBin2R3zY/sxx28=;
+ b=EjM+g8yQvQuzKlr1azlo8Rg7xvtbtHYYgmuslQxQcCd7HPMH0wqO0jN7PulRxPfLaonXiNSKibNVb+uB6w8iXraOb7jnQqyhdFsVlCnJIhMDVUYSqPUiJeGKHRS/FnVKdDCtCPO7lgzck4QpFqYoBVUYlRm+6z72OWAWy+N+9douzpxaajaLMVU2LQuNEqIKJhVUMKZAKD3DP7P/PBq55wPElK6mwctu8Ma6aLYl6VxYfk1DqcNWZ8OmEwT/4h9CCEqLfj+fV4Ax6299u9ARqP/glDU/X1M6LEB1KBqgdAN2FnqjTNadWmC3dUD2zwWKRiErXfiz8rzksIdLUnurFw==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=aspeedtech.com; dmarc=pass action=none
+ header.from=aspeedtech.com; dkim=pass header.d=aspeedtech.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=aspeedtech.com;
+ s=selector1;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=/rDCQwIyRkidaaPVsKqxSmHldv1WgBin2R3zY/sxx28=;
+ b=ZPY8vY4XgfCQfBj7xho4d1//nBVi8FzLif+w3e6W47Vzk5aCNmXfMytNRlEmcjQDDiu2KB2s4X1A0dc4JL1HP+QUyAjq96OuUaF4WDMGc8kWuMLk1Ennot6QuRS7oVp+W+yqJWB1OUjVsc7yM846+6h8K/KT0YBT00HARRd2RUqMoMpvkWqt96yT7M6aZFm7EbUgFHDVYQgk1JE/iExtuPb4gXlDf/1FP1EGxgoFkv2Rwj2bVoxtQgkYkh4lZVI3zlL5xDQq8y0IXEOQDZ5n+JoCvOJTsxEjGKWZbdJsQtswnXWMuUj0txRfW/jU602h2xBXOYeP3SSmKU+aEXY4dw==
+Received: from TYZPR06MB4980.apcprd06.prod.outlook.com (2603:1096:400:1cc::10)
+ by PUZPR06MB5982.apcprd06.prod.outlook.com (2603:1096:301:112::12)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.21.315.17; Tue, 18 Aug
+ 2026 09:22:52 +0000
+Received: from TYZPR06MB4980.apcprd06.prod.outlook.com
+ ([fe80::ea8a:7cb7:4822:2fb3]) by TYZPR06MB4980.apcprd06.prod.outlook.com
+ ([fe80::ea8a:7cb7:4822:2fb3%6]) with mapi id 15.21.0315.016; Tue, 18 Aug 2026
+ 09:22:52 +0000
+From: Jamin Lin <jamin_lin@aspeedtech.com>
+To: =?iso-8859-1?Q?Daniel_P=2E_Berrang=E9?= <berrange@redhat.com>,
+ =?iso-8859-1?Q?C=E9dric_Le_Goater?= <clg@kaod.org>, Peter Maydell
+ <peter.maydell@linaro.org>, Steven Lee <steven_lee@aspeedtech.com>, Troy Lee
+ <leetroy@gmail.com>, Kane Chen <kane_chen@aspeedtech.com>, Andrew Jeffery
+ <andrew@codeconstruct.com.au>, Joel Stanley <joel@jms.id.au>, Eric Blake
+ <eblake@redhat.com>, Markus Armbruster <armbru@redhat.com>, Fabiano Rosas
+ <farosas@suse.de>, Laurent Vivier <lvivier@redhat.com>, Paolo Bonzini
+ <pbonzini@redhat.com>, "open list:All patches CC here"
+ <qemu-devel@nongnu.org>, "open list:ASPEED BMCs" <qemu-arm@nongnu.org>
+CC: Jamin Lin <jamin_lin@aspeedtech.com>, Troy Lee <troy_lee@aspeedtech.com>
+Subject: [PATCH v1 0/8] Add ECDSA akcipher support and the ASPEED SBC ECDSA
+ engine for AST10x0
+Thread-Topic: [PATCH v1 0/8] Add ECDSA akcipher support and the ASPEED SBC
+ ECDSA engine for AST10x0
+Thread-Index: AQHdLvMktRDL2ADim0azJ9qf2ocwow==
+Date: Tue, 18 Aug 2026 09:22:51 +0000
+Message-ID: <20260818092249.602137-1-jamin_lin@aspeedtech.com>
+Accept-Language: zh-TW, en-US
 Content-Language: en-US
-To: Paolo Bonzini <pbonzini@redhat.com>, qemu-devel@nongnu.org
-Cc: Daniel Henrique Barboza <daniel.barboza@oss.qualcomm.com>,
- Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>,
- Mohamed Mediouni <mohamed@unpredictable.fr>, Alexander Graf
- <agraf@csgraf.de>, qemu-ppc@nongnu.org,
- qemu-riscv@nongnu.org, kvm@vger.kernel.org,
- Richard Henderson <richard.henderson@linaro.org>, qemu-arm@nongnu.org,
- Magnus Kulke <magnuskulke@linux.microsoft.com>,
- Peter Maydell <peter.maydell@linaro.org>,
- "Scott J. Goldman" <scottjgo@gmail.com>
-References: <20260813181640.6537-1-philmd@oss.qualcomm.com>
- <20260813181640.6537-14-philmd@oss.qualcomm.com>
- <3fa59521-1420-49e3-9d73-652148f946ea@redhat.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@oss.qualcomm.com>
-In-Reply-To: <3fa59521-1420-49e3-9d73-652148f946ea@redhat.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-X-Proofpoint-GUID: AzkbYXCPWpPiFpRVsHnHIxpc8JWrsBV3
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwODE4MDA2NCBTYWx0ZWRfXzEkbmG68ydpv
- BSqi7zWlBmDDV3cQeZNk7tKpZdHsho3K6CSnWPvGqWsI35FFtnbUl7LhhJC39lcaDz1vicxJ4HV
- BbbK1hmviNca6sThm6cRHdsuvNmQuaRT4AVPOVSV4+EZ8idYpQ47IUaJKTKdS8xJmJhOBjKrWRm
- wwWFJuXfryzP3hELOiRNhJ2FoJSatIjYGffPaNk1eTRBchcwlykdnp2vslIiMTeuz5QPdwPIaxs
- M1quLYIBg2mQ2MUfYyLZxDiqlQPk7Ah45ImHUabQjc9n2aqRY0FsDYrgqgPXugdy3/HMot/Oyfi
- 61Sx/dV1C5inRdAP0bUsfhIdF0732Fq0fUi4ZjLDfFe84igoIJnTyib/Dw75B/pDPhb/PCNW1tj
- 7YJoKgL8X33hYA2MknVMgQWi95Dk/rv07Dfc77Gnv0T4ky1yL1UeaH9YMMW7HhPrmn3sDKxZX/i
- CC9Qdaj0YXeDBsY+h5Q==
-X-Proofpoint-Spam-Info: AW1haW4tMjYwODE4MDA2NCBTYWx0ZWRfX/C1Fi1jzMbmW
- 5n6ojT9VC0LEaghSrATVGfhCCsYlrhu/9d7LuORJ2TZiqWSVbI38NscYQ14h1/0QwFcRYlNnycY
- 3bgYC3IiC1gufzLDMH/W79ug6hWQLtA=
-X-Authority-Analysis: v=2.4 cv=FsU1OWrq c=1 sm=1 tr=0 ts=6a841c4a cx=c_pps
- a=HLyN3IcIa5EE8TELMZ618Q==:117 a=4s3hRJSeHn4rkQlkrse1kQ==:17
- a=IkcTkHD0fZMA:10 a=Sv0fKeRqtYgA:10 a=M51BFTxLslgA:10 a=s4-Qcg_JpJYA:10
- a=VkNPw1HP01LnGYTKEx00:22 a=u7WPNUs3qKkmUXheDGA7:22 a=_glEPmIy2e8OvE2BGh3C:22
- a=EUspDBNiAAAA:8 a=mLG9MJvJpvtZyw53qYgA:9 a=3ZKOabzyN94A:10 a=QEXdDO2ut3YA:10
- a=O8hF6Hzn-FEA:10 a=bTQJ7kPSJx9SKPbeHEYW:22
-X-Proofpoint-ORIG-GUID: AzkbYXCPWpPiFpRVsHnHIxpc8JWrsBV3
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.293,Aquarius:18.0.1176,Hydra:6.1.134,FMLib:17.12.100.49
- definitions=2026-08-17_04,2026-08-12_01,2025-10-01_01
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
- impostorscore=0 spamscore=0 phishscore=0 clxscore=1015 malwarescore=0
- priorityscore=1501 lowpriorityscore=0 bulkscore=0 adultscore=0 suspectscore=0
- classifier=typeunknown authscore=0 authtc= authcc= route=outbound adjust=0
- reason=mlx scancount=1 engine=8.22.0-2606150000 definitions=main-2608180064
-Received-SPF: pass client-ip=205.220.180.131;
- envelope-from=philmd@oss.qualcomm.com; helo=mx0b-0031df01.pphosted.com
-X-Spam_score_int: -27
-X-Spam_score: -2.8
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+authentication-results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=aspeedtech.com;
+x-ms-publictraffictype: Email
+x-ms-traffictypediagnostic: TYZPR06MB4980:EE_|PUZPR06MB5982:EE_
+x-ms-office365-filtering-correlation-id: c92db936-952f-4b50-6a8e-08defd0a473f
+x-ms-exchange-senderadcheck: 1
+x-ms-exchange-antispam-relay: 0
+x-microsoft-antispam: BCL:0;
+ ARA:13230040|7416014|376014|366016|1800799024|23010399003|18002099003|56012099006|38070700021|10067099003|921020;
+x-microsoft-antispam-message-info: nR+bj/VBUxGrfcXX7aUm9Pg3Enp8+9HJGLY0JKWzc5oJkfke2HN5X5MZ+wK36k5hlw54je6K2CYNh0/6v0xvha+SYT7E/INFPs6F/KLITyxxN8MPkJWZeLLKOBIcUL/Dd/Sw5RvIpktcFNxhODnmFtqF81ifPwu4PwlMlKHN576b5jBsm8QzshooYOM8glKjie3M8feNk+WisQgP0eX9o7OtPr7z11UyafLwGIrVPVSRTs99Atot9BieMuIn3C5V6ro9s8OFtoQqtzDX302AOUpjFX26lXERZ6l+/8YRmJS90It4fo2Aswust94/p66GOeyfJv2mEubslFzkJ897R3ohQetCMlVO2Bp4CSPeOR8nhG+VyYjBF5Ws2IQmfwm7xTTB21UK6wDDmWt/E7z44GODiONc5zr9mrIe7AUbw988gRvDKDYlrftC/22P1EUKczEgpyOixnm5bZjRJKThD6oUWsbzv6wEKJMwsEH+LQTd0LEJtbmDcsKFCEqzGANCxgMcwy7c/cQ5WcDHUXlPJkZxW9tdGWxiKhUlx3bFebsCELigv5d3rXShdrRciM66pcCQ42Lr4ZzF79vJ63e4XkRgfQnD3u/ywKTXe6e1e1VtQNcixOr58w3FOW12zfFZWlf0Y28IdFRpN/TvENIeoaPN8XvP2KTPwTFEeDWu+tDchNOOfN5kV9VrxsDExWX84pMNwaY0No1eDKuZd34uMq1oupRyiGE+AO2AuQHBu3o=
+x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:TYZPR06MB4980.apcprd06.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(13230040)(7416014)(376014)(366016)(1800799024)(23010399003)(18002099003)(56012099006)(38070700021)(10067099003)(921020);
+ DIR:OUT; SFP:1102; 
+x-ms-exchange-antispam-messagedata-chunkcount: 1
+x-ms-exchange-antispam-messagedata-0: =?iso-8859-1?Q?/J1VCpHIH3FAUGpEhlkwh41woT7whaI1RbZ27zpsokHSD/DyWiiLmCO3ZI?=
+ =?iso-8859-1?Q?6ZZS2B9nehJSJ4O5VD/0eKuMKA9zjVtNOES6TfS7aNiM3jbZkThrXAds53?=
+ =?iso-8859-1?Q?CMv5eoF+QSud3M0SXIiAfmbs+5tC+gDyJmYn+6vhv5jmuULqVd3vCWgPSI?=
+ =?iso-8859-1?Q?IMMu7y1iT9pje2Q0xIaPPHeIuMXa/Pmht9q8PKMwWUbKVaYAJPFdRSyY29?=
+ =?iso-8859-1?Q?vcITXygiGXZYVNooQ6XGaxqg42N8YXLUhwzP68HfbcrctRfjLkyhjSNiZ/?=
+ =?iso-8859-1?Q?aSWdKNL/0Zo+mM1Wpjzt4pyRsN2C5vPYlHnXEJFU2u3rRM+Ndm8/5cP4qX?=
+ =?iso-8859-1?Q?axa1VDRIrueT0e+l5N9bW0RkUNwsD+EzUvXy8s8u3Wfa6LID6D2id68vFo?=
+ =?iso-8859-1?Q?467WUk2XKUH5LE5KTPuGWZQ89RTpYcA9QBFV8Tp8yUzmEi0/HyIwiy3pce?=
+ =?iso-8859-1?Q?f2eFgJ33P0t7ChqLIznYBOVbjyuJW6wTRkk73djPav5MdYfWvGfAi3+eOv?=
+ =?iso-8859-1?Q?mtC8cpw6T7Y0eET18H6WubRMXKQH/WOq40blMrbukyn4QhZ3zLOqosuUS6?=
+ =?iso-8859-1?Q?h1G9mqynMxgIiL8ThaeUgVRaJiu2LepNTJKxuD4OMWnx8jdM+oGZwMGaSu?=
+ =?iso-8859-1?Q?UWu2bwcqer/P0VH1FP74ex2dzL8FGYJUdhLLWUcVrtUII+sJW6FB6Sr49W?=
+ =?iso-8859-1?Q?wcDHdrrH75fHETMguIHe0EfCjP/nv9RGDVk/9q6LCQo1dRTKyyZwQ6JN2Z?=
+ =?iso-8859-1?Q?FZEJ221Je0ceuocWTmnoHQ/5izfFNhUD4hrIvtnfcQKjQoBQmm0NwJfhJ5?=
+ =?iso-8859-1?Q?h1RSoHrclhSdiCzUNztYzYWeX+bqE7jLHwPfdKhz86BBbU6ZyXUf0wA9j4?=
+ =?iso-8859-1?Q?rYpCEGu53KWJHG0x7HrIg37XnoxbqIzTd6GyeyDpY10WP4yWUzeQUUCoxo?=
+ =?iso-8859-1?Q?lMmFjMqccJuwPdkk/30QrMkgBuxYvi7aOUW3RrYKf++dNLQ1/t3hqRWmO3?=
+ =?iso-8859-1?Q?OD6uw7CW8gp+ZG2tMkHe5vJgEAHZip0kRXJq4JUBr4YEKJXScFB/Zf5NT7?=
+ =?iso-8859-1?Q?2bd9eUU+1F2vTy/GihVJaT8itUjuCk2fnJNAIv6HYu15G0/W2rKEiETnjQ?=
+ =?iso-8859-1?Q?g60VXNnjUXZTM/SYUFDY1IswMYrqeju937bX1Bno5dSr5eQheFXDrU69Fj?=
+ =?iso-8859-1?Q?fIKtyzC+TcsDWZSKId107bU9C7Kxu8NymWFiF0uTMee355UB1y31UI41Wg?=
+ =?iso-8859-1?Q?6bXO7nBUlcm/rVXt++UPn78cZiyxcvZycwWiG0WdtoFEhdKG4TTTAK2b/l?=
+ =?iso-8859-1?Q?hkzDC6BgfwPHnT+ERu/zQO3jTuh5CTlbNrno8ESfL4q5y0trokQnohjcV/?=
+ =?iso-8859-1?Q?zF6eLdKmDHmld6t1lb/0jAu3WKboKXUOVQpKUmXwcDFSovT4hjuYQVBP+g?=
+ =?iso-8859-1?Q?bifrALgBjIzG9ABzcjQeaz48DbxwyZ0xLON15OXArrHojn0L6N0wlnTISl?=
+ =?iso-8859-1?Q?JNuY0+9g6NxfMBRUF2v90pwVT5DjqRQtiphaPVpG6bkTePzzKTEqjHGKTM?=
+ =?iso-8859-1?Q?ej4ijCT58sm2GMLCCCkwlq816CLu6fGwjx3vOjfXJaYxCyEWOtzhDWycdg?=
+ =?iso-8859-1?Q?FLVvBjlMklHPm/Fo3jpXjva+KJ6o1TN6cGFTA9ZbaznXJEUvn5SyVaqJiu?=
+ =?iso-8859-1?Q?KmcegbvX7bNsLB/+0qbo7R4WK1OGK5onT6NJmBCX3a7YSFlPqDpnhbpLwe?=
+ =?iso-8859-1?Q?BHx29vqIono/bwb8t7pn+ZAXi5bVIBiVRTRsb/F531beZAuS+S4ztzYcYp?=
+ =?iso-8859-1?Q?kwBwGDNbRA=3D=3D?=
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
+MIME-Version: 1.0
+X-Exchange-RoutingPolicyChecked: q2zPBmlAywIO+nqzgoboz6LpiXI1qrlt3wgMA4kL6AMAAHWmwzCl2ba9vgBeI6x0GcN/NLwgxGxZynhnMPUDba5ktqbo/uskQYUpkRK90TZ2x7Y9ydwMTMW+sRv2qDqbk4uLQ4kdUPXc7gZHWtiQGjoTRShxpJkaLq8Sind0rd9FlVbjQGGwJa+6NIcT1bmYGOPYSEuqh3tTGyh1m6MV1uCLf9Fo7xytPuyUegrxaLafaQZgrZtUSd1yrkknFpXqzYc0mPudoC2+tPS4c92ernl3FIJ4Xq1EsQyFXQlwRGd6Xmno9tl+Qb0EdVDk9AZxlwRRGksoS7EmZ2eze1imlw==
+X-OriginatorOrg: aspeedtech.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-AuthSource: TYZPR06MB4980.apcprd06.prod.outlook.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: c92db936-952f-4b50-6a8e-08defd0a473f
+X-MS-Exchange-CrossTenant-originalarrivaltime: 18 Aug 2026 09:22:51.9300 (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: 43d4aa98-e35b-4575-8939-080e90d5a249
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: I9aaNaRw4hRdC/NBDI0AEE4JJeM79imToADS8ev3DVph7xmqUPFU5x/wjLnYleHQK/lGtZFj1caj+QCN5rK+1jnVGEV/tey7mnCcO9BDoAI=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: PUZPR06MB5982
+Received-SPF: pass client-ip=2a01:111:f403:c405::5;
+ envelope-from=jamin_lin@aspeedtech.com;
+ helo=TYPPR03CU001.outbound.protection.outlook.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H2=0.001, SPF_HELO_NONE=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_PASS=-0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -164,99 +150,57 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On 17/8/26 18:11, Paolo Bonzini wrote:
-> On 8/13/26 20:16, Philippe Mathieu-Daudé wrote:
->> Reduce lock contention by acquiring / releasing the BQL
->> outside of the entire vCPU inner loop.
->>
->> Signed-off-by: Philippe Mathieu-Daudé <philmd@oss.qualcomm.com>
->> ---
->>   target/arm/hvf/hvf.c | 13 ++++++++-----
->>   1 file changed, 8 insertions(+), 5 deletions(-)
->>
->> diff --git a/target/arm/hvf/hvf.c b/target/arm/hvf/hvf.c
->> index c14ea54a67f..9c6408d2e25 100644
->> --- a/target/arm/hvf/hvf.c
->> +++ b/target/arm/hvf/hvf.c
->> @@ -2598,20 +2598,20 @@ int hvf_arch_vcpu_exec(CPUState *cpu)
->>           }
->>       }
->> +    bql_unlock();
->> +    cpu_exec_start(cpu);
->> +
->>       /* Inner vCPU loop */
->>       do {
->>           if (!(cpu->singlestep_flags & SSTEP_NOIRQ) &&
->>               hvf_inject_interrupts(cpu)) {
-> 
-> It always return zero, so you can make it void and change to
-> 
->            if (!(cpu->singlestep_flags & SSTEP_NOIRQ)) {
->                hvf_inject_interrupts(cpu);
->        }
-> 
-> However, a bigger question: who calls cpu_reset_interrupt() here:
-> 
->      if (cpu_test_interrupt(cpu, CPU_INTERRUPT_FIQ)) {
->          trace_hvf_inject_fiq();
->          hv_vcpu_set_pending_interrupt(cpu->accel->fd, 
-> HV_INTERRUPT_TYPE_FIQ,
->                                        true);
->      }
-> 
->      if (cpu_test_interrupt(cpu, CPU_INTERRUPT_HARD)) {
->          trace_hvf_inject_irq();
->          hv_vcpu_set_pending_interrupt(cpu->accel->fd, 
-> HV_INTERRUPT_TYPE_IRQ,
->                                        true);
->      }
-> 
-> and can this be changed to do something like arm_cpu_kvm_set_irq() instead?
-> Having the function called only with level == true is a bit unsettling...
-
-Digging further this other change from a86024eb2df56f looks dubious:
-
-  int hvf_arch_vcpu_exec(CPUState *cpu)
-  {
-      int ret;
-      hv_return_t r;
-
-      if (cpu->halted) {
--        return EXCP_HLT;
-+        if (!cpu_has_work(cpu)) {
-+            return EXCP_HLT;
-+        }
-+        cpu->halted = 0;
-+        if (!hvf_irqchip_in_kernel()) {
-+            timer_del(cpu->accel->wfi_timer);
-+        }
-      }
-
-> 
-> Paolo
-> 
->> -            return EXCP_INTERRUPT;
->> +            ret = EXCP_INTERRUPT;
->> +            break;
->>           }
->>           flush_cpu_state(cpu);
->> -        bql_unlock();
->> -        cpu_exec_start(cpu);
->>           r = hv_vcpu_run(cpu->accel->fd);
->> -        cpu_exec_end(cpu);
->> -        bql_lock();
->>           switch (r) {
->>           case HV_SUCCESS:
->>               ret = hvf_handle_vmexit(cpu, cpu->accel->exit);
->> @@ -2624,6 +2624,9 @@ int hvf_arch_vcpu_exec(CPUState *cpu)
->>           }
->>       } while (ret == 0);
->> +    cpu_exec_end(cpu);
->> +    bql_lock();
->> +
->>       return ret;
->>   }
-> 
-> 
-
+This series adds ECDSA to the QEMU crypto akcipher framework and models the=
+=0A=
+ASPEED AST10x0 secure boot controller (SBC) ECDSA engine on top of it.=0A=
+=0A=
+The crypto side adds ECDSA sign/verify for prime256v1 (NIST P-256) and=0A=
+secp384r1 (NIST P-384) in both the gcrypt and nettle backends, using the ra=
+w=0A=
+big-endian form (public key Qx || Qy, private key scalar d, signature r || =
+s)=0A=
+with a pre-computed digest as input.=0A=
+=0A=
+Both the AST2600 and the AST1030/AST1060 have a Secure Boot Controller (SBC=
+)=0A=
+that supports RSA and ECDSA verification, but only the AST1030/AST1060 have=
+ an=0A=
+ECDSA verify engine, so this series models ECDSA only. RSA verification is =
+used=0A=
+solely to verify the AST2600 SPL in ROM CODE, which ASPEED does not release=
+,=0A=
+so it is very unlikely to be used by end users.=0A=
+=0A=
+v1:=0A=
+ 1. Add ECDSA akcipher support with gcrypt backend=0A=
+ 2. Add ECDSA akcipher support with nettle backend=0A=
+ 3. Add ECDSA sign/verify unit tests=0A=
+ 4. Support the ECDSA verify command for AST10x0=0A=
+ 5. Add ASPEED SBC ECDSA engine qtest=0A=
+=0A=
+Jamin Lin (8):=0A=
+  qapi/crypto: Add ECDSA algorithm and curve id=0A=
+  crypto/akcipher: Support ECDSA sign/verify with gcrypt=0A=
+  crypto/akcipher: Support ECDSA sign/verify with nettle=0A=
+  tests/crypto: Add ECDSA sign/verify tests=0A=
+  hw/misc/aspeed_sbc: Support the ECDSA verify command=0A=
+  hw/misc/aspeed_sbc: Increase register space to 0x1000=0A=
+  hw/arm/aspeed_ast10x0: Wire SEC SRAM to the SBC model=0A=
+  tests/qtest: Add ASPEED SBC ECDSA engine test=0A=
+=0A=
+ crypto/akcipher-gcrypt.c.inc      | 328 +++++++++++++++++++++++++++++-=0A=
+ crypto/akcipher-nettle.c.inc      | 267 ++++++++++++++++++++++++=0A=
+ hw/arm/aspeed_ast10x0.c           |   4 +=0A=
+ hw/misc/aspeed_sbc.c              | 158 +++++++++++++-=0A=
+ hw/misc/trace-events              |   2 +=0A=
+ include/hw/misc/aspeed_sbc.h      |   7 +-=0A=
+ qapi/crypto.json                  |  33 ++-=0A=
+ tests/qtest/aspeed-sbc-test.c     | 190 +++++++++++++++++=0A=
+ tests/qtest/meson.build           |   2 +=0A=
+ tests/unit/test-crypto-akcipher.c | 236 +++++++++++++++++++++=0A=
+ 10 files changed, 1221 insertions(+), 6 deletions(-)=0A=
+ create mode 100644 tests/qtest/aspeed-sbc-test.c=0A=
+=0A=
+-- =0A=
+2.53.0=0A=
 

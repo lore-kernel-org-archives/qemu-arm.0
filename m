@@ -4,82 +4,80 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C3CC7C5DF6D
-	for <qemu-arm@archiver.kernel.org>; Wed, 19 Aug 2026 09:23:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 26B34C5DF6D
+	for <qemu-arm@archiver.kernel.org>; Wed, 19 Aug 2026 09:23:23 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wwcV6-0007ng-0T; Wed, 19 Aug 2026 05:22:24 -0400
+	id 1wwcV6-0007nk-7O; Wed, 19 Aug 2026 05:22:24 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1wwcV2-0007jO-UK
- for qemu-arm@nongnu.org; Wed, 19 Aug 2026 05:22:20 -0400
-Received: from mail-wm1-x32f.google.com ([2a00:1450:4864:20::32f])
+ id 1wwcV5-0007nD-Kq
+ for qemu-arm@nongnu.org; Wed, 19 Aug 2026 05:22:23 -0400
+Received: from mail-wm1-x334.google.com ([2a00:1450:4864:20::334])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1wwcV0-0001vE-4H
- for qemu-arm@nongnu.org; Wed, 19 Aug 2026 05:22:20 -0400
-Received: by mail-wm1-x32f.google.com with SMTP id
- 5b1f17b1804b1-49554ebb87dso7809295e9.3
- for <qemu-arm@nongnu.org>; Wed, 19 Aug 2026 02:22:17 -0700 (PDT)
+ id 1wwcV3-0001wi-MJ
+ for qemu-arm@nongnu.org; Wed, 19 Aug 2026 05:22:23 -0400
+Received: by mail-wm1-x334.google.com with SMTP id
+ 5b1f17b1804b1-495590dde14so9465955e9.0
+ for <qemu-arm@nongnu.org>; Wed, 19 Aug 2026 02:22:21 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1787131336; x=1787736136; darn=nongnu.org;
- h=cc:to:content-transfer-encoding:content-type:mime-version
- :message-id:date:subject:from:from:to:cc:subject:date:message-id
- :reply-to:content-type;
- bh=4geHRkjj8d8oUE/IydElNtCaW5PNUS2wC32OKCgUJDw=;
- b=AWq5CSvFDyFzBbhF344lU0LGnZdLkHyYK2gmvAYN5gr7z3wPQslaj9yf9vwT7MPAfe
- eZEITgrpY9tjEYpl7RXoU2zm8p5k6NpX6kNx5pvW6yBXZrfKde7/ny0r43ZdFSpHXXDd
- fguVmBJrfAWPSMGlEFjVrMLk0BQ1X3sXl8nPXisrBLzvM0MezcKDIakwNIwAnvxi41d1
- d6aNg5ixj3VZc36JGQX7tpOOgKB2IJa/LWkFTYei1Woc1WibOqE9Jb2SPNNqNiWhMl8f
- bnET+fZEW0yZQ4eh96xEQuNJqDX7edC2SWq2APapvc+5H5J3c3G0p92NRJdIvb4JsmMX
- dwdQ==
+ d=linaro.org; s=google; t=1787131340; x=1787736140; darn=nongnu.org;
+ h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
+ :content-type:mime-version:subject:date:from:from:to:cc:subject:date
+ :message-id:reply-to:content-type;
+ bh=zEBSWmDHcpbyAT5+oxLyqv+4C5kL0TnHpRS3uvgoVbI=;
+ b=XgWwhs70SAN8p+NmpeqpROpBSGqqskGycG0x1WYA9zkIdljZL0IaEJt5tCF9IfLgSe
+ af5RAnRgsJB01+yznDf0hJirmLiGXZOcvtrB01VBS2XjqZFP3bOaNhW1YRDKaql4qQ/6
+ cNvKp69mtARml8AwmrHk0KWgxl+f8G40h66gg229vWoWSnvvwfRaV6D0Qn9YQNDfn+4I
+ XMG8IIu/RDBWwdRVazJN4TyDSGVq4wyE7yKZ9RyFqEY6pEJGdLOxOBk1vfsGGPXmQe3w
+ ft3uHQv5DrRVkdNe25SzCCRJp4v1Q1quI07PxzUqXlngRLdch6sFRPXJtDMBAcMoAxtu
+ yS3Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1787131336; x=1787736136;
- h=cc:to:content-transfer-encoding:content-type:mime-version
- :message-id:date:subject:from:x-gm-gg:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to:content-type;
- bh=4geHRkjj8d8oUE/IydElNtCaW5PNUS2wC32OKCgUJDw=;
- b=k3YqQ60e5MdijPKE40fe72iqO8QxEG5u3NnUjsUgOIDFcgZoNRl+YaCoDnIYoEhwJp
- 4YqCqKslEPIS4rp9INoy6EQPlm+pJPgjCwlQZizuCHiy9b4w4WTw8MlQx2/Lv7Pelfb2
- gz/F7p+RAE0pK8yedguPoddP9bOLkUB0QHhcz2dp1+iiiY8bB/Qw7r3ZWcvSQELmnWGJ
- S6qCnJo1SCHS9ukznutfrvpH09DkWR3vStbI5ZDytYffZ0cIq89DfuXFxqMcOUVH2jtw
- L+7cBo885Y9d66nH05htb4+1U4eJOhyAKcMiTf5xyh4p+0XJVldNiwHF3gjnmXxRWNrn
- OtSQ==
+ d=1e100.net; s=20251104; t=1787131340; x=1787736140;
+ h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
+ :content-type:mime-version:subject:date:from:x-gm-gg
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
+ :content-type;
+ bh=zEBSWmDHcpbyAT5+oxLyqv+4C5kL0TnHpRS3uvgoVbI=;
+ b=QzgGI7Qu76Nv8rNFKuf2lJ+li/FU+QLxrdxco3cDc2i5IlbAFWgyj/iYf9bAmGuxW+
+ RUvRTEUbGkW2tuITxuItHlRgt3FwtQE1bI54AXQwAFlanU3sUbTZlx6+SS3lfGKBb70C
+ UFCBc45SktGenXE6YPPQkv8qp93rGu90BzOR+bYGkSqHwAEzMNVbEUvj9gDJI2FSKgSn
+ T+zxXLYqhtesXRkyvMhKkye4sXOGRDGqEC/6m36apFg7TD5/y/D6yHEoZlvGydPiIFnV
+ bT5SHGdXYp5FsMQT5fshBIVjO8QcWcw8XCuxz8VAbAj66z5iGwloynPL/xU0u3vzERyW
+ IpNw==
 X-Forwarded-Encrypted: i=1;
- AHgh+Rpjs3bVYJzVQFbmOPqMJqe/d3nBVCZFgf1TRQD4oDkDJ75mBrk630vJuFrkPK2BmBdkhbnahAWQ2g==@nongnu.org
-X-Gm-Message-State: AOJu0Yxc2kDC8Mpxb7JDw0dCgYlotCoaXQOnIlS9m0mTJRsJdqaVkgHN
- Qefiew+Iy8+i7Bcn49wqmPIx4cxSU322yj7IzN2cwfUSLe98xRr7A6E5572oi8KiQto=
-X-Gm-Gg: AR+sD13nIl+QNM50v6ytOdtY5vc342ynENP8LcOLRsORh9iaB9/XYWkafJQhxgxBAPA
- lNb8SxgMn02OYSLNjo4mQkkd9hUQAw0XYE1JQ8rtLSTFo5yWmUTIHoWF1HPPOTuQ601CGdYm3cy
- BpYZd355Ys8W9RtvGwSA+g/QGr4JCCsW/a2vm7+4LGoSAsWlt3pPVMJkaN+zBpAtWc6tlEJdLzh
- DwSivU8SKfP0UXn1VYYIp1aGQwFxpIqbdqpsOM5lf/MmAy/opMcOjM3y8KI0tK4eHRjCW7rWSBZ
- 5CLQQUjLl80pKg8tmy9yuxTjZGvbFF0j3ET4Ee5WKjMd/P77nAuNOqnJQh/BEuV4kOHTLuLj/iG
- WfmJafrLBw4g7HWt9nLIYyr066lxrFxflHLw6jLlA8ryL2LUGm3Kqk36gjt9iix81BXxPcookfO
- YMbIqTXkWy2fZ8sTZmMl5xNteA5uZnAzbzuUPq0zwLp3fyewyFRI+JScTfNWLP
-X-Received: by 2002:a05:600c:4e04:b0:499:8ed2:8234 with SMTP id
- 5b1f17b1804b1-499aa0e221fmr71275625e9.0.1787131336089; 
- Wed, 19 Aug 2026 02:22:16 -0700 (PDT)
+ AHgh+Rq3BuCKktwbP3gOX/wBDNKcbAHZyLEZzdvXHMCbVoPV7sz113qSdinnKFFlErhh+scKzQ2DCC9kyQ==@nongnu.org
+X-Gm-Message-State: AOJu0YwCmW9TxpvY73Gtpe7xvgnbHCMnbHkWIrJeTBRK4xMvxpx/ppbz
+ UTIzIjRFR7zIRzkj0bPOGqJW0PiZum4ISkZkx+aGtkrx8dA6k94IN4fLZVbx89TA9OM=
+X-Gm-Gg: AR+sD13ebu0pOca9+QVXLFkgEinEWMzOQC707kCUExdQ7N0f9DDJ7TSgMmh5kQngyA5
+ NHSMjanw3drE+8RMfm604lyU2/jFNGkoOwsX6BZyQGUW3YMGXLdHWIiWBjTrmDwfIQWTSn1WdT9
+ 2aFAh4eFbi4ouur15ia0BcpNh/ecypvfz+H9srs3eaoSznO/gg9GVSh2ngGqrtd6SjdfZWcweUw
+ VrRO1Ox6/+YXULR94ozbBSpTWVjgDUlKmm2ig6jvmQOM9i1bWnwuzJonMRGhoehzQ8P57nH+u3W
+ Tz3DFQUNvkxCBIZKFzAYgJa2cDxzvMRUx4vDyL2kF9lb65WnA/TouJvddOXST5CRaRBDf5k7wdj
+ HIu1J7ShQKLa7lDCWNx28ZLoJCbgWNAYZUqBcnJlX34YYHqjNTNhX/qnAf7/ut6BZV7lx+3oAM4
+ ABtFxR5/orNoNaa+abrDBfTosvhXTI06b+VSh7Wn6Ah2zRzjnJ7pzfz1eK+Clx
+X-Received: by 2002:a05:600c:190c:b0:499:5282:f8d1 with SMTP id
+ 5b1f17b1804b1-499aa1ac47cmr54101095e9.12.1787131340217; 
+ Wed, 19 Aug 2026 02:22:20 -0700 (PDT)
 Received: from draig.lan ([185.124.0.156]) by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-499aa09b199sm41824835e9.0.2026.08.19.02.22.15
+ ffacd0b85a97d-482b1450e61sm4408686f8f.13.2026.08.19.02.22.15
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 19 Aug 2026 02:22:15 -0700 (PDT)
+ Wed, 19 Aug 2026 02:22:16 -0700 (PDT)
 Received: from draig.lan (localhost [IPv6:::1])
- by draig.lan (Postfix) with ESMTP id 5C5A75F805;
+ by draig.lan (Postfix) with ESMTP id 663D25F898;
  Wed, 19 Aug 2026 10:22:14 +0100 (BST)
 From: =?utf-8?q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>
-Subject: [PATCH 0/6] various fixes for 11.2 (gitlab, tests, char-fe, fdc,
- deprecations)
-Date: Wed, 19 Aug 2026 10:22:00 +0100
-Message-Id: <20260819-fixes-for-11-2-v1-0-b7981c2cc371@linaro.org>
+Date: Wed, 19 Aug 2026 10:22:03 +0100
+Subject: [PATCH 3/6] gitlab: add arm-softmmu tests to the macOS build
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
-X-B4-Tracking: v=1; b=H4sIALh1hWoC/yXMQQqDQAyF4atI1gZMEDt6leKiM2Y0LrRMVAri3
- Tu1yw/e/04wSSoGXXFCkkNN1yWDygLC9FpGQR2ygStuKkctRv2IYVwTEiFjbN2jrr3jQAw5eie
- 5F7l59n/b7mcJ2+8FrusLXvtfYnIAAAA=
-X-Change-ID: 20260819-fixes-for-11-2-f98744b82c12
+Message-Id: <20260819-fixes-for-11-2-v1-3-b7981c2cc371@linaro.org>
+References: <20260819-fixes-for-11-2-v1-0-b7981c2cc371@linaro.org>
+In-Reply-To: <20260819-fixes-for-11-2-v1-0-b7981c2cc371@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: =?utf-8?q?Philippe_Mathieu-Daud=C3=A9?= <philmd@mailo.com>, 
  Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>, 
@@ -94,27 +92,27 @@ Cc: =?utf-8?q?Philippe_Mathieu-Daud=C3=A9?= <philmd@mailo.com>,
  qemu-block@nongnu.org, devel@lists.libvirt.org, 
  =?utf-8?q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>
 X-Mailer: b4 0.16.0
-X-Developer-Signature: v=1; a=openpgp-sha256; l=2155;
+X-Developer-Signature: v=1; a=openpgp-sha256; l=1596;
  i=alex.bennee@linaro.org; h=from:subject:message-id;
- bh=eRd91Q9Mbybc5OzTUIIf05kBnKuQZ0Yf80aZT+CMs7I=;
- b=owEBbQGS/pANAwAKAfvQ2wlanipEAcsmYgBqhXXFIMkWmoM6Z8qEEg5t3X81qMUrIAEjL79Hv
- jbWk96UdPqJATMEAAEKAB0WIQRmha6Z51FnvK/I3zX70NsJWp4qRAUCaoV1xQAKCRD70NsJWp4q
- ROlYB/9VW+RhTop4+z+/+iG0I/gqDfKEnGPGzvwitJ4qRlmD7isf8tskJ8ZasX0XO9a5AaxzsDQ
- lVEUSnojTiNViguW2uK+v+6Mi7pRNJovUkIVKC3JHtUN9GRUQMw1kpn7F0l/0g6BqnGVD/iDzd8
- OAIGhPwSpHlo27v928968Rl/YKEl0Xod/CTuxsjaQQS8xF2ZYdr4BBYHMWAAMTJBcLJ7/1UOnPi
- DSxrMdYxH5c1O8FZBpUt+GOGeHfn8zvXTc+VHzaZVr0JyW/RKHraGwgiGnQKatjtpQUDGtvIXcc
- 7tCyVaChOeSL70FKVgxkjfOhile+p9ANXaDiAbOu9PysQGZB
+ bh=B9ZSx+meoWvdNqJq36oJBwbjPxCumeybg4Iya8CkY5Q=;
+ b=owEBbQGS/pANAwAKAfvQ2wlanipEAcsmYgBqhXXGWquFVetm/TQPeCRaIqpMdvkNgXP2Pe5Gv
+ MiUAU1Rn2OJATMEAAEKAB0WIQRmha6Z51FnvK/I3zX70NsJWp4qRAUCaoV1xgAKCRD70NsJWp4q
+ RNgJB/wIygNvGYLCcR6OOBZpVYQYPNJ9YUZ2FoQlAWuEHigXvwnQZXykBG9s0tTMvtOdfp3ecz6
+ H226V/XnMRF43ZAzsQMI80N5HOhF3ZBu/9j/ztxr31FSReMszHh3rj9Jb4xkj2bFEBpmZJMvF6T
+ eY+c7ZIEMLKvlutTKUYzTDYjEY71AZ3/mwixyyARMS6c5+KgrUR3cvYd+d9beyeF0duFUO11dZN
+ hK2vKKtuVWz3N4WvR8RJTTfdoPurDwxpZ4K1USsIVt330YxOMOz5f7bLKXVQsH7/u3bdTsBXmz1
+ Ml5NEOMS+g6T7s9CIa6cHrH+Jayjq6DxjdE1muhorCJu6Kbu
 X-Developer-Key: i=alex.bennee@linaro.org; a=openpgp;
  fpr=6685AE99E75167BCAFC8DF35FBD0DB095A9E2A44
-Received-SPF: pass client-ip=2a00:1450:4864:20::32f;
- envelope-from=alex.bennee@linaro.org; helo=mail-wm1-x32f.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::334;
+ envelope-from=alex.bennee@linaro.org; helo=mail-wm1-x334.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -130,56 +128,41 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-This is a rather random selection of fixes that didn't quite make it
-to 11.1 although we have some qemu-stable material in here.
+Now we have fixed the compiler issues lets have at it.
 
-The CFLAGS tweak allow another target to be built and tested on MacOS.
-There are also riscv64 compilers which could be enabled via brew but I
-don't have time to look at those. The CFLAGS changes are also subsumed
-into Pierrick's check-tcg meson updates which might hit first.
-
-The char-fe clean-up removes a code smell of device models reaching
-into qemu_chr_fe_get_driver which is poor practice.
-
-The fdc fix resolves one of the many security reports for those that
-still care about floppy controllers in VMs.
-
-In my brief excursion into our confidential bugs I did look at fixing
-virtio-crypto but found it needs some serious love. Therefor I'm
-taking the other option of deprecating the module.
-
-Finally I'm experimenting with using b4's patch series handling so
-forgive any finger trouble on this series.
-
-Alex.
-
+Reviewed-by: Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>
+Message-ID: <20260723200904.224413-4-alex.bennee@linaro.org>
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
 ---
-Alex Bennée (6):
-      gitlab: use .base_meson_job_template for macOS jobs
-      tests/arm: add explicit CFLAGS for system build
-      gitlab: add arm-softmmu tests to the macOS build
-      char-fe: implement qemu_chr_fe_backend_name
-      hw/block: validate the fdc sector position fits within bounds
-      docs: deprecate virtio-crypto
+ .gitlab-ci.d/macos.yml | 5 +++--
+ 1 file changed, 3 insertions(+), 2 deletions(-)
 
- docs/about/deprecated.rst             | 14 ++++++++++++++
- hw/block/fdc-internal.h               |  1 +
- include/chardev/char-fe.h             | 13 ++++++++++++-
- backends/cryptodev-vhost-user.c       |  8 +-------
- backends/rng-egd.c                    |  8 +-------
- backends/vhost-user.c                 |  8 +-------
- hw/block/fdc.c                        | 28 ++++++++++++++++++++++------
- hw/char/imx_serial.c                  |  4 ++--
- .gitlab-ci.d/macos.yml                |  7 ++++---
- tests/tcg/arm/Makefile.softmmu-target |  2 +-
- 10 files changed, 59 insertions(+), 34 deletions(-)
----
-base-commit: fa19879df1658f96ac07365fca8835b7decd6995
-change-id: 20260819-fixes-for-11-2-f98744b82c12
+diff --git a/.gitlab-ci.d/macos.yml b/.gitlab-ci.d/macos.yml
+index bdb3eae18f0..40b9b637b3b 100644
+--- a/.gitlab-ci.d/macos.yml
++++ b/.gitlab-ci.d/macos.yml
+@@ -22,7 +22,7 @@
+     - export PKG_CONFIG_PATH="$PKG_CONFIG_PATH"
+     - brew update
+     - brew install $PKGS
+-    - brew install aarch64-elf-gcc i686-elf-gcc x86_64-elf-gcc
++    - brew install arm-none-eabi-gcc aarch64-elf-gcc i686-elf-gcc x86_64-elf-gcc
+     - if test -n "$PYPI_PKGS" ; then PYLIB=$($PYTHON -c 'import sysconfig; print(sysconfig.get_path("stdlib"))'); rm -f $PYLIB/EXTERNALLY-MANAGED; $PIP3 install --break-system-packages $PYPI_PKGS ; fi
+   script:
+     - mkdir build
+@@ -40,8 +40,9 @@ aarch64-macos-15-build:
+     PATH_EXTRA: /opt/homebrew/gettext/bin
+     PKG_CONFIG_PATH: /opt/homebrew/curl/lib/pkgconfig:/opt/homebrew/ncurses/lib/pkgconfig:/opt/homebrew/readline/lib/pkgconfig
+     CONFIGURE_ARGS:
+-        --target-list=aarch64-softmmu,i386-softmmu,x86_64-softmmu
++        --target-list=aarch64-softmmu,arm-softmmu,i386-softmmu,x86_64-softmmu
+         --cross-prefix-aarch64=aarch64-elf-
++        --cross-prefix-arm=arm-none-eabi-
+         --cross-prefix-i386=i686-elf-
+         --cross-prefix-x86_64=x86_64-elf-
+         --disable-plugins
 
-Best regards,
---  
-Alex Bennée <alex.bennee@linaro.org>
+-- 
+2.47.3
 
 

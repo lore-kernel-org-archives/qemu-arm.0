@@ -4,80 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 69A75C5DF6D
-	for <qemu-arm@archiver.kernel.org>; Wed, 19 Aug 2026 12:43:23 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EADF6C5DF88
+	for <qemu-arm@archiver.kernel.org>; Wed, 19 Aug 2026 12:43:25 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wwfdK-0007m9-Q0; Wed, 19 Aug 2026 08:43:07 -0400
+	id 1wwfdL-0007oW-JM; Wed, 19 Aug 2026 08:43:07 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <opensource@fvhovell.nl>)
- id 1wwfOH-0004cj-HP; Wed, 19 Aug 2026 08:27:33 -0400
-Received: from outbound.soverin.net ([2a10:de80:1:4092:b9e9:2292:0:1])
+ id 1wwfOG-0004cJ-8a; Wed, 19 Aug 2026 08:27:32 -0400
+Received: from outbound.soverin.net ([185.233.34.146])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <opensource@fvhovell.nl>)
- id 1wwfOE-0003Ac-ED; Wed, 19 Aug 2026 08:27:33 -0400
+ id 1wwfOD-0003AN-Mg; Wed, 19 Aug 2026 08:27:32 -0400
 Received: from smtp.freedom.nl (unknown [10.10.4.107])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
  (No client certificate requested)
- by outbound.soverin.net (Postfix) with ESMTPS id 4hQ5Rz1pd4z1yY0;
- Wed, 19 Aug 2026 12:27:27 +0000 (UTC)
+ by outbound.soverin.net (Postfix) with ESMTPS id 4hQ5Rw5tv7z1yQv;
+ Wed, 19 Aug 2026 12:27:24 +0000 (UTC)
 Received: from smtp.freedom.nl (smtp.freedom.nl [10.10.4.107]) by freedom.nl
- (Postfix) with ESMTPSA id 4hQ5Ry0KLsz40; 
- Wed, 19 Aug 2026 12:27:26 +0000 (UTC)
+ (Postfix) with ESMTPSA id 4hQ5Rw3Vdnz40; 
+ Wed, 19 Aug 2026 12:27:24 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple; d=fvhovell.nl;
- s=soverin; t=1787142447;
- bh=10EQ17zKmqOuyw1lqd3ROatsVrfnpqopHxdMwTJ4i0A=;
- h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=fUtJvwOYH+zEYa4QrLRKpHli3kCUarHEx2RaeSBDisofZVzHKhTdT7KBJv/9UVCgk
- vKA6OJ0Ba/AZPMjqTEG028CvWAPDmmlDkx+QO2IkWFKyVd4SmoVGk+6i2+MIbPMJAq
- /RSbp/SZlHVk9e8+CWkOcl52LMqX2v/64+iG2eXa6pX4u7nGH5XumBNieKeKT7nxeJ
- 9/PlljU2E99E3b1XAUwcWsir6p3hmf1j4RSsJaaSQHAtXGeTVuA+DLDfU2gzXx0yUi
- RqseuUQWoSHxdxLbqFioWES0QlYlhq3X2mHPynT3ktRoHOUj1TNNJLXEdoT4heH6H/
- pZfQFjZK8bzsQ==
+ s=soverin; t=1787142444;
+ bh=VUucC/g62kXb8j76BmRpZKbywzFMRxmh0moWCQvJtLg=;
+ h=From:To:Cc:Subject:Date:From;
+ b=0eZpJBCBT+3JXdZ1kjjGCb6RG6MUPuZZaTnxgP59RlxsLN8EOZwj00UY/QHijojq7
+ lX48+rc0+ijitSge1q6zH0gqIz2kbWH4W/eWcSI0yG3OPSc68m19gpxzKnAFVrm/zU
+ WrZ3L0y82EGt1PyhTRYY9ofl8CFwlg4U1tLR4c0lsIGRqN9TE/PBM0ljwT67/VNYd+
+ y+jH08UDJWdU9xxDGFGvS2nHPZFD4ZUsdqFYiea5GugIUQeKwqRXPmVeKIzR6nKH8X
+ kO2UA3z1Nn47KCLlEPPtbACZ/opAjfW86l6WA6VomHhnoQdQIKUsvC3STn1PG7FkSd
+ nD0Sei43RlRgg==
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=fvhovell.nl; s=soverin1;
- t=1787142447;
+ t=1787142444;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=qOxko42FwzNrWnp98S7fFjV2Mtjg8Ijo2ZXdxnBCaOs=;
- b=U9bmtwuSGlz1oDXnuheu/VPNpwwlGNX2TqguVoQ4mBxcAZW35cRNlezufIByMGjvWmmZp9
- yhlNsSl4aiSx2UbIQoeHdNrCXeCMc0xfc3WdC10xEcnwq46p/D4uQp4xNeOJxG8QqZguDE
- fQOKIh+r23zIV4Hat66PLAoQQJ2gskcci/67EizJ8S3XJ8Qp7yVVwflb9obGXtqQdytKXX
- hvpeW/l5ZLiT3y3EZNr++y5y6YXjnd8rI7KSfRPIaKJt/z3qhk4xaLeBxZELJ8xULMsr8h
- VMv4k5XRU+R2IduVTv+z0GnOv4glnIyPqNxZSfBqCb4ZRBpwB+uFiVIpaLMY7w==
-X-CM-Envelope: MS4xfE723QWRCKY6uc5u+rPv9wBTPOglQWor71PXGBu2wAxYbR5ADYeOLHT1LWLbEwfhWn6amtkHJFlteuDMdlgQww2dPpMvAHlOOfX63imgr+mK0s7d11w9
- 2WslY9UX9jSXQG0om55oncPSZs+2h6Qo0WwSfcHE30sJ7vF8GCOVK+FZw7wh4cnteVkyOnAknRtSK17gWVyzuTT4+jzCfZ4unwmqcveLDtY66wtrxmFlDtvw
- 4xCYOiipfCAYxyFH+O/CcmDb3ab9EX4uiM9KKT5NM3O3hbv1PY28V9brPdCTBG66msv2jB72Mp6PJAcFzzcKgr4JjP0N54CFbQrNCGNF4APcyF79gkhYFNUT
- /x2c3mqOhdkSi5NdNXdEKGwwVyjjELvAWeZV5bSadn2AuYr56NM=
-X-Soverin-Id: 01a019fd-9f98-7118-a8eb-2c5918e87969
+ content-transfer-encoding:content-transfer-encoding;
+ bh=c/FTrsWIZxwNxi/YwD95abZhrR/8e8ocbLx0Fsx7fJc=;
+ b=N/nMRjVf/+9FnvYojvo6s2NiV0JLGIu+S02Sdcm8uLoxO5HsEA8TJ4minD5hhlBgRwE9RT
+ A9eyL/UdlIfjV4fjQioh3EPMO52lxrQCQM/LBEI4XZzizG3KqNTbiRmTBEk8ULqsu0FGNC
+ cnh93nR/mEfNCDxjbs37sWqNYGue4E5mTOWG9HLIwLSvIsJE0XX9RiRnzH3/ZIckkMK42o
+ lAdwQzHkCpVvfTipdXLB4s3Lmada2Wh4BHYiILLNXIkCrPzSWJOfI0BsZd/zx8PK7L2YUQ
+ Gs8ww79BJUhdsyfE0NM5Thy5IxhA+Fy6DXuNUNcPBEdQVSvVgnXaZaue+HZIhQ==
+X-CM-Envelope: MS4xfJ2OMNX+ETStp6UjfAhZrH0YHy7d7WzyXyQyqD5sARy7Y0ljt72ZZ/XZ6Y71AEoFX73C+MIb6YqmpcvXtB4oc72enf8QEdIkourTV+B6RN+HzrdI8ZD2
+ 8hbba/XzkoXNAKJR/Tl8n8Nim7E/eXLJ6z5jjGHAHfg53Ht2wcbrBZO8kMQ7aLaUWDDpf0FkYvwjMvOpPLNv8YqWT0A7dzve6xTawShK1mlna1muD9ZvQtzq
+ 9X0KwKbH2Z/IfI7nJf9xx53RUh8LEa10Blz6ilZTPrbqk0dIDrlYZbxch4VPFlcVRkUku1yn0SytE4ZpSk9qmKftk+i6B3xfVWLCIk+6zB9Pp7n0/roSvAm2
+ unAL7sUGbwK2cvNBHWEXZ53RXb6yEyoNSrK4jtQTihW+Ey5YdGw=
+X-Soverin-Id: 01a019fd-93e0-7273-81bf-76f23a846e64
 From: opensource@fvhovell.nl
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org, "Peter Maydell" <peter.maydell@linaro.org>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
  =?UTF-8?q?Frederik=20van=20H=C3=B6vell?= <frederik@fvhovell.nl>
-Subject: [PATCH 2/4] hw/misc/bcm2835_property: fix
- RPI_FWREQ_GET_FIRMWARE_REVISION response
-Date: Wed, 19 Aug 2026 14:27:00 +0200
-Message-ID: <20260819122702.54173-3-opensource@fvhovell.nl>
-In-Reply-To: <20260819122702.54173-1-opensource@fvhovell.nl>
-References: <20260819122702.54173-1-opensource@fvhovell.nl>
+Subject: [PATCH 0/4] Support booting modern EDK2 on raspi3b board
+Date: Wed, 19 Aug 2026 14:26:58 +0200
+Message-ID: <20260819122702.54173-1-opensource@fvhovell.nl>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 X-Spampanel-Class: ham
-Received-SPF: pass client-ip=2a10:de80:1:4092:b9e9:2292:0:1;
+Received-SPF: pass client-ip=185.233.34.146;
  envelope-from=opensource@fvhovell.nl; helo=outbound.soverin.net
 X-Spam_score_int: -27
 X-Spam_score: -2.8
 X-Spam_bar: --
 X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, SPF_HELO_PASS=-0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-Mailman-Approved-At: Wed, 19 Aug 2026 08:42:56 -0400
 X-BeenThere: qemu-arm@nongnu.org
@@ -96,30 +92,36 @@ Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
 From: Frederik van Hövell <frederik@fvhovell.nl>
 
-The returned value for revision is interpreted as an unix epoch timestamp after year 2000 by EDK2 for RPi3/4 boards.
-EDK2 firmware uses the revision to show as human-readable 'year.month', and asserted to have year between 2000 and 2255 (both inclusive).
+This series fixes raspi3b board behaviour when using EDK2 firmware:
+- fix framebuffer base response: firmware (and linux kernel) expects
+  returned address as seen from VC4 GPU memory view.
+- fix firmware revision response: EDK2 firmware expects a valid epoch
+  timestamp after year 2000, where previous used value was far too old.
 
-See [PlatformSmbiosDxe.c](https://github.com/tianocore/edk2-platforms/blob/master/Platform/RaspberryPi/Drivers/PlatformSmbiosDxe/PlatformSmbiosDxe.c#L763).
+NB: Due to incomplete emulation it does not yet work for raspi4b
+(missing RNG200 and GENETv5, amongst other issues).
 
-Signed-off-by: Frederik van Hövell <frederik@fvhovell.nl>
----
- hw/misc/bcm2835_property.c | 3 ++-
- 1 file changed, 2 insertions(+), 1 deletion(-)
+As convenience it fixes starting raspi3ap, raspi3b and raspi4b boards
+with firmware using '-bios RPI_EFI.fd' (as was already possible using
+'-loader file=RPI_EFI.fd,force-raw=true').
 
-diff --git a/hw/misc/bcm2835_property.c b/hw/misc/bcm2835_property.c
-index a90c7e6c863..a705e44b1fe 100644
---- a/hw/misc/bcm2835_property.c
-+++ b/hw/misc/bcm2835_property.c
-@@ -52,7 +52,8 @@ static void bcm2835_property_mbox_push(BCM2835PropertyState *s, uint32_t value)
-         case RPI_FWREQ_PROPERTY_END:
-             break;
-         case RPI_FWREQ_GET_FIRMWARE_REVISION:
--            stl_le_phys(&s->dma_as, value + 12, 346337);
-+            // Use timestamp of first released Raspberry Pi as minimum 'revision': 2012-02-29T00:00:00.000Z
-+            stl_le_phys(&s->dma_as, value + 12, 1330473600);
-             resplen = 4;
-             break;
-         case RPI_FWREQ_GET_BOARD_MODEL:
+Finally it adds an functional test for running EDK2 firmware using new
+parameter -bios on raspi3b and bumps RPi3 EDK2 release to latest v1.52.
+
+Frederik van Hövell (4):
+  hw/misc/bcm2835_property: fix RPI_FWREQ_FRAMEBUFFER_ALLOCATE response
+  hw/misc/bcm2835_property: fix RPI_FWREQ_GET_FIRMWARE_REVISION response
+  hw/arm/raspi: implement booting firmware at 0x0 using -bios on boards
+    3ap, 3b and 4b
+  tests/functional/aarch64/test_raspi3: update firmware to v1.52
+
+ docs/system/arm/raspi.rst               | 12 ++++++++++++
+ hw/arm/raspi.c                          | 17 +++++++++++------
+ hw/misc/bcm2835_property.c              |  6 ++++--
+ include/hw/display/bcm2835_fb.h         |  3 ++-
+ tests/functional/aarch64/test_raspi3.py | 18 +++++++++++++++---
+ 5 files changed, 44 insertions(+), 12 deletions(-)
+
 -- 
 2.55.0
 

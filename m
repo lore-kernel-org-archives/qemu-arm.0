@@ -4,65 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 94E2CC5DF87
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 69A75C5DF6D
 	for <qemu-arm@archiver.kernel.org>; Wed, 19 Aug 2026 12:43:23 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wwfdM-0007pU-1H; Wed, 19 Aug 2026 08:43:08 -0400
+	id 1wwfdK-0007m9-Q0; Wed, 19 Aug 2026 08:43:07 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <opensource@fvhovell.nl>)
- id 1wwfOH-0004cs-Pf; Wed, 19 Aug 2026 08:27:33 -0400
+ id 1wwfOH-0004cj-HP; Wed, 19 Aug 2026 08:27:33 -0400
 Received: from outbound.soverin.net ([2a10:de80:1:4092:b9e9:2292:0:1])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <opensource@fvhovell.nl>)
- id 1wwfOF-0003Ay-1i; Wed, 19 Aug 2026 08:27:33 -0400
+ id 1wwfOE-0003Ac-ED; Wed, 19 Aug 2026 08:27:33 -0400
 Received: from smtp.freedom.nl (unknown [10.10.4.107])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
  (No client certificate requested)
- by outbound.soverin.net (Postfix) with ESMTPS id 4hQ5S14mHqz1ygm;
- Wed, 19 Aug 2026 12:27:29 +0000 (UTC)
+ by outbound.soverin.net (Postfix) with ESMTPS id 4hQ5Rz1pd4z1yY0;
+ Wed, 19 Aug 2026 12:27:27 +0000 (UTC)
 Received: from smtp.freedom.nl (smtp.freedom.nl [10.10.4.107]) by freedom.nl
- (Postfix) with ESMTPSA id 4hQ5S03HSNz40; 
- Wed, 19 Aug 2026 12:27:28 +0000 (UTC)
+ (Postfix) with ESMTPSA id 4hQ5Ry0KLsz40; 
+ Wed, 19 Aug 2026 12:27:26 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple; d=fvhovell.nl;
- s=soverin; t=1787142449;
- bh=+UNopd3rEpoOE4vhf7HjnT3fdOZb12RXY49c0YWAI1Y=;
+ s=soverin; t=1787142447;
+ bh=10EQ17zKmqOuyw1lqd3ROatsVrfnpqopHxdMwTJ4i0A=;
  h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=cZD5r3s8AS6KopDgw/Gbqxc1D+ucrgCQbgqRqUmrslTxItfaLCQq9fU+U0KciAp2o
- siCWSrdEwGA0ceU8cPUBiNa5J60uUd/DGg/3EyEp02/tcghbDsyCyR86C94qYm5LMW
- 84SrXdmhHSUB9F8glz7WODR+JdGEjNmcbCbh2H1JEoHKRUopCfilVJZ5k5Z3/EHU21
- AzNLRlDA0foAbvbLdxxdDRjS7m7pIIrt9gG6g0cppTg2mSeAuboGb09p1Vuw3R72e4
- BoTIaGOb7+fkpvcAeurGxcd3uu7HoqH/+FEtOV8+OXuPnFUavB8IJ71opzmH4k8YSh
- pnkXPoghnzEhA==
+ b=fUtJvwOYH+zEYa4QrLRKpHli3kCUarHEx2RaeSBDisofZVzHKhTdT7KBJv/9UVCgk
+ vKA6OJ0Ba/AZPMjqTEG028CvWAPDmmlDkx+QO2IkWFKyVd4SmoVGk+6i2+MIbPMJAq
+ /RSbp/SZlHVk9e8+CWkOcl52LMqX2v/64+iG2eXa6pX4u7nGH5XumBNieKeKT7nxeJ
+ 9/PlljU2E99E3b1XAUwcWsir6p3hmf1j4RSsJaaSQHAtXGeTVuA+DLDfU2gzXx0yUi
+ RqseuUQWoSHxdxLbqFioWES0QlYlhq3X2mHPynT3ktRoHOUj1TNNJLXEdoT4heH6H/
+ pZfQFjZK8bzsQ==
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=fvhovell.nl; s=soverin1;
- t=1787142449;
+ t=1787142447;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=84PrhzbeQahLUde2Vy+bAnQx9PYAr4wkmcY+KvX6SBY=;
- b=b7JLbtG96XXgOyLkSDVGg4Cag4hXQu1Z5CXLE87XWQYAggVqITYb+1wBJGvlGJqQ7hkYCt
- qu7uBCBH9ntVhwLTAXlbcehaHs/q/k/XVuWG8pQT9i85MiO0fUqeMKsLQL7wBW9WFy74GN
- 2lErwwqAwnSVH4Zi3m8xT6PyOWgEXhQLo5i4YoJZarXO6QjCL3n338Nzk0gPnBqLjDP6X2
- RWoKfe0DzdIKAJIWPa44kg2v5byowkza7uJOetZudgBYS4K7LB7t/NsMWPZBo/jyWzgD0W
- Le72nfE6qrU7TyHKtkRLYgEhvCMWYS5D14D+rjjns+58B7J5pWbVmTzowi5xDw==
-X-CM-Envelope: MS4xfKnf/a1B+YrJV4mjQ7BtiwshbKr7ED2zFcnQwbo7DRzOZ0kV804VpDK0i3AlLyofBCOeclsNb8brXGViID94JQ9CPJ6zEqpp2hfkh+y+1duQ0q+HcEG2
- pULPJPU0+rHZDJQz4UedVZopMIRHqjFQwAMPfes/i7uKEVcJgJU96WKr0zl4zB+hjgXChPC1eI03FMo/WJm2F3L6fBd8o8Q5c6CeYv7GKi0ERfvtnOArnRsb
- xW6u78lOrAZQRIrfZ/rb/fAV3jKgS6KrtxxEclllwOTr4wA4Ynq8UbAn82eeRHH76tjSzxY3Y6OS5Cq3qEw+hxxPaCqDc2s+Y0ztcDT40dOlumypKfEADioA
- InR4Ef3bFz8wSFhAj/yZhfJ1qPQt1h5Meww06sPx+0NnmbD9fBM=
-X-Soverin-Id: 01a019fd-a768-793f-9339-1ff1f212d531
+ bh=qOxko42FwzNrWnp98S7fFjV2Mtjg8Ijo2ZXdxnBCaOs=;
+ b=U9bmtwuSGlz1oDXnuheu/VPNpwwlGNX2TqguVoQ4mBxcAZW35cRNlezufIByMGjvWmmZp9
+ yhlNsSl4aiSx2UbIQoeHdNrCXeCMc0xfc3WdC10xEcnwq46p/D4uQp4xNeOJxG8QqZguDE
+ fQOKIh+r23zIV4Hat66PLAoQQJ2gskcci/67EizJ8S3XJ8Qp7yVVwflb9obGXtqQdytKXX
+ hvpeW/l5ZLiT3y3EZNr++y5y6YXjnd8rI7KSfRPIaKJt/z3qhk4xaLeBxZELJ8xULMsr8h
+ VMv4k5XRU+R2IduVTv+z0GnOv4glnIyPqNxZSfBqCb4ZRBpwB+uFiVIpaLMY7w==
+X-CM-Envelope: MS4xfE723QWRCKY6uc5u+rPv9wBTPOglQWor71PXGBu2wAxYbR5ADYeOLHT1LWLbEwfhWn6amtkHJFlteuDMdlgQww2dPpMvAHlOOfX63imgr+mK0s7d11w9
+ 2WslY9UX9jSXQG0om55oncPSZs+2h6Qo0WwSfcHE30sJ7vF8GCOVK+FZw7wh4cnteVkyOnAknRtSK17gWVyzuTT4+jzCfZ4unwmqcveLDtY66wtrxmFlDtvw
+ 4xCYOiipfCAYxyFH+O/CcmDb3ab9EX4uiM9KKT5NM3O3hbv1PY28V9brPdCTBG66msv2jB72Mp6PJAcFzzcKgr4JjP0N54CFbQrNCGNF4APcyF79gkhYFNUT
+ /x2c3mqOhdkSi5NdNXdEKGwwVyjjELvAWeZV5bSadn2AuYr56NM=
+X-Soverin-Id: 01a019fd-9f98-7118-a8eb-2c5918e87969
 From: opensource@fvhovell.nl
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org, "Peter Maydell" <peter.maydell@linaro.org>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <f4bug@amsat.org>,
  =?UTF-8?q?Frederik=20van=20H=C3=B6vell?= <frederik@fvhovell.nl>
-Subject: [PATCH 4/4] tests/functional/aarch64/test_raspi3: update firmware to
- v1.52
-Date: Wed, 19 Aug 2026 14:27:02 +0200
-Message-ID: <20260819122702.54173-5-opensource@fvhovell.nl>
+Subject: [PATCH 2/4] hw/misc/bcm2835_property: fix
+ RPI_FWREQ_GET_FIRMWARE_REVISION response
+Date: Wed, 19 Aug 2026 14:27:00 +0200
+Message-ID: <20260819122702.54173-3-opensource@fvhovell.nl>
 In-Reply-To: <20260819122702.54173-1-opensource@fvhovell.nl>
 References: <20260819122702.54173-1-opensource@fvhovell.nl>
 MIME-Version: 1.0
@@ -96,44 +96,30 @@ Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
 From: Frederik van Hövell <frederik@fvhovell.nl>
 
+The returned value for revision is interpreted as an unix epoch timestamp after year 2000 by EDK2 for RPi3/4 boards.
+EDK2 firmware uses the revision to show as human-readable 'year.month', and asserted to have year between 2000 and 2255 (both inclusive).
+
+See [PlatformSmbiosDxe.c](https://github.com/tianocore/edk2-platforms/blob/master/Platform/RaspberryPi/Drivers/PlatformSmbiosDxe/PlatformSmbiosDxe.c#L763).
+
 Signed-off-by: Frederik van Hövell <frederik@fvhovell.nl>
 ---
- tests/functional/aarch64/test_raspi3.py | 8 ++++----
- 1 file changed, 4 insertions(+), 4 deletions(-)
+ hw/misc/bcm2835_property.c | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
 
-diff --git a/tests/functional/aarch64/test_raspi3.py b/tests/functional/aarch64/test_raspi3.py
-index 709c7221fa4..ffc6f2517fd 100755
---- a/tests/functional/aarch64/test_raspi3.py
-+++ b/tests/functional/aarch64/test_raspi3.py
-@@ -14,8 +14,8 @@ class Aarch64Raspi3Machine(LinuxKernelTest):
- 
-     ASSET_RPI3_UEFI = Asset(
-         ('https://github.com/pbatard/RPi3/releases/download/'
--         'v1.15/RPi3_UEFI_Firmware_v1.15.zip'),
--        '8cff2e979560048b4c84921f41a91893240b9fb71a88f0b5c5d6c8edd994bd5b')
-+         'v1.52/RPi3_UEFI_Firmware_v1.52.zip'),
-+        '20b894d15cdb42e055872a7ee6a850aa9373aedcfefd27f19767d975ce4f7371')
- 
-     def test_aarch64_raspi3_atf(self):
-         efi_name = 'RPI_EFI.fd'
-@@ -27,7 +27,7 @@ def test_aarch64_raspi3_atf(self):
-                          '-nodefaults',
-                          '-device', f'loader,file={efi_fd},force-raw=true')
-         self.vm.launch()
--        self.wait_for_console_pattern('version UEFI Firmware v1.15')
-+        self.wait_for_console_pattern('version UEFI Firmware v1.52')
- 
-     def test_aarch64_raspi3_bios(self):
-         efi_name = 'RPI_EFI.fd'
-@@ -39,7 +39,7 @@ def test_aarch64_raspi3_bios(self):
-                          '-nodefaults',
-                          '-bios', efi_fd)
-         self.vm.launch()
--        self.wait_for_console_pattern('version UEFI Firmware v1.15')
-+        self.wait_for_console_pattern('version UEFI Firmware v1.52')
- 
- 
- if __name__ == '__main__':
+diff --git a/hw/misc/bcm2835_property.c b/hw/misc/bcm2835_property.c
+index a90c7e6c863..a705e44b1fe 100644
+--- a/hw/misc/bcm2835_property.c
++++ b/hw/misc/bcm2835_property.c
+@@ -52,7 +52,8 @@ static void bcm2835_property_mbox_push(BCM2835PropertyState *s, uint32_t value)
+         case RPI_FWREQ_PROPERTY_END:
+             break;
+         case RPI_FWREQ_GET_FIRMWARE_REVISION:
+-            stl_le_phys(&s->dma_as, value + 12, 346337);
++            // Use timestamp of first released Raspberry Pi as minimum 'revision': 2012-02-29T00:00:00.000Z
++            stl_le_phys(&s->dma_as, value + 12, 1330473600);
+             resplen = 4;
+             break;
+         case RPI_FWREQ_GET_BOARD_MODEL:
 -- 
 2.55.0
 

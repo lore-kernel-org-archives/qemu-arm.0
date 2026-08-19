@@ -4,121 +4,115 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 11FC2C5DF6D
-	for <qemu-arm@archiver.kernel.org>; Wed, 19 Aug 2026 07:17:36 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5E87CC5DF85
+	for <qemu-arm@archiver.kernel.org>; Wed, 19 Aug 2026 09:22:59 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wwaXw-0004R0-CF; Wed, 19 Aug 2026 03:17:12 -0400
+	id 1wwcV9-0007sH-2H; Wed, 19 Aug 2026 05:22:27 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1wwaXv-0004QF-7Z
- for qemu-arm@nongnu.org; Wed, 19 Aug 2026 03:17:11 -0400
-Received: from smtpout3.mo538.mail-out.ovh.net ([51.210.91.32])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1wwaXt-0005PS-I1
- for qemu-arm@nongnu.org; Wed, 19 Aug 2026 03:17:11 -0400
-Received: from director4.derp.mail-out.ovh.net
- (director4.derp.mail-out.ovh.net [79.137.60.37])
- by mo538.mail-out.ovh.net (Postfix) with ESMTPS id 4hPyYs40q3z6GmC;
- Wed, 19 Aug 2026 07:17:04 +0000 (UTC)
-Received: from director4.derp.mail-out.ovh.net
- (director4.derp.mail-out.ovh.net. [127.0.0.1])
- by director4.derp.mail-out.ovh.net (inspect_sender_mail_agent) with SMTP
- for <jamin_lin@aspeedtech.com>; Wed, 19 Aug 2026 07:17:04 +0000 (UTC)
-Received: from mta7.priv.ovhmail-u2.ea.mail.ovh.net (unknown [10.109.231.13])
- by director4.derp.mail-out.ovh.net (Postfix) with ESMTPS id
- 4hPyYr64tdz1xq9; Wed, 19 Aug 2026 07:17:04 +0000 (UTC)
-Received: from kaod.org (unknown [10.1.6.3])
- (Authenticated sender: clg@kaod.org)
- by mta7.priv.ovhmail-u2.ea.mail.ovh.net (Postfix) with ESMTPSA id 890C8203F4E; 
- Wed, 19 Aug 2026 07:17:03 +0000 (UTC)
-Authentication-Results: garm.ovh; auth=pass
- (GARM-97G0020163bc6f-cb74-4ebd-ab05-b03f02693812,
- C24CD8B75EED539221ACEA448CE881038350F7ED) smtp.auth=clg@kaod.org
-X-OVh-ClientIp: 2.10.174.70
-Message-ID: <0be07514-48df-4168-8acf-8b082b3bebf5@kaod.org>
-Date: Wed, 19 Aug 2026 09:17:02 +0200
+ (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
+ id 1wwcV7-0007pU-NU
+ for qemu-arm@nongnu.org; Wed, 19 Aug 2026 05:22:25 -0400
+Received: from mail-wr1-x42e.google.com ([2a00:1450:4864:20::42e])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
+ id 1wwcV5-0001xk-Bq
+ for qemu-arm@nongnu.org; Wed, 19 Aug 2026 05:22:25 -0400
+Received: by mail-wr1-x42e.google.com with SMTP id
+ ffacd0b85a97d-47f703a9d05so517712f8f.0
+ for <qemu-arm@nongnu.org>; Wed, 19 Aug 2026 02:22:22 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1787131342; x=1787736142; darn=nongnu.org;
+ h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
+ :content-type:mime-version:subject:date:from:from:to:cc:subject:date
+ :message-id:reply-to:content-type;
+ bh=iaAT8nwz/f/r3I4xJQrnagwmY7s7BG9goh2VAnx+Bdo=;
+ b=d4laKpEAO2BWNMlUJ3pdI6yKyFJkFIls3cypWF5LbbonWuYKLZtRMHeEYmjR4Asto9
+ zsZP01cyh0yQNA5ofMkvovxe9ejlZ4A5yOjHd7ZaZUiDBy0lmG5tQJq11aPRkEk22jkF
+ kSw7RFZNWi92xfzVQiDJgsJG20H1A77PTf7FKuj7+EOUeG77mg+xqCii0gZLXO9JzL9U
+ qr84hT3papF/uscgLlbPZ2uAqDlU9PY81gPD7GaQBuI+tkAYa+Ko4oXkrySPb3TZvcZe
+ aTw/repSOYaxczE83/rbRJ/wziZ7rvX6I27lajZWeKFLJC0pASwK3gHsNd4Sx+MktoUU
+ lWew==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20251104; t=1787131342; x=1787736142;
+ h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
+ :content-type:mime-version:subject:date:from:x-gm-gg
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
+ :content-type;
+ bh=iaAT8nwz/f/r3I4xJQrnagwmY7s7BG9goh2VAnx+Bdo=;
+ b=FRTvYoyQoWax659LHg49f811YFF3sFNWZzUiGdvMa8K1RlhOsDi5lc37LzssrC0mC4
+ HRsaTGom8S/2reMe+WCvIDmqdaKFv8gbZeYL9QCEHKA1qAlVS6ho0djd/iZ4hXiyDEGR
+ KA8E1/Gn4oyxA4+wkOYzSIraoPdVnDMhroXMLNnlfW5UoHCy9rUJTr6CowtkAoWni76Y
+ FRmaBgJTAawxUHT0Yyfg792FEIbvJeTZqYdsVDxHy2nmQZ+6h4Br0Y6uuluuXVjypL7e
+ M8l9yU40UERoB1AlxaS3OeiFR5OiuhIWeO8flr9fvuW9w4pGw+xrRl5ebBpKbI2W5rl8
+ Ii0w==
+X-Forwarded-Encrypted: i=1;
+ AHgh+RqmXQfzSAwRo9exq1vBDL1E01LZvPFr7DZJHYkcmSIndT1SXdksJ4pugXnyskwE+bUxKZr2glSkKg==@nongnu.org
+X-Gm-Message-State: AOJu0Yy1gpKu7oDl/RrzyviPgdNKNYWVci6XC29SyLM55Z4qHmzr6Ffi
+ /GWYS6usHOwnJmPuffvF3oZF51/6Eb+/w+7IdZCGMJpj0wWei/cm3ng9Df4gvywWZVw=
+X-Gm-Gg: AR+sD10KID1s/SFP6QvrtCXfvcTEdZ0kbV5B+Dfe3fZGSjnWE+c+VvgpZ18zgfEIAN9
+ AIC7ifM0wRBnS3RY+68u+D6YdfN7eIC8+ZbvXi0LRIMCR++6tQQQZwJ/JG3N3zoVnC1A+3c1R4N
+ q8bOyffOQDYcwq3gRqV+oM0M4EcHCYd97KfKz/PIz+4Cw8eSGQb/Eyc8sVdoo+b7DrvQfuVbela
+ JGS+DXOlouY5lQbmQjc7OsXBqRu1HfJGQGPJ0ZqDxpJIO7wmem8J8/ffYkSj7cz4ka8hb0x+Tsm
+ 48cCT/6SGRfWB4Dm4ps5LRpE/fp4fSm6i83VqipwnhPJD6iqnWgfaRmyjJyjvFK1CQULO9fvF8q
+ GPJ/CUtP7GieD4t2jDeKLaCl5151GDsx/s6VXocflaDp2xazIOYGyd02DYXX+KEgMira8KLuy5X
+ 40K+KZJ1jXyZt+XojP6sFUh1zdlXFh6QgnBmi66RlnzknMp4uIgls5GaitnP43
+X-Received: by 2002:a05:600c:3484:b0:499:7a5e:4c3f with SMTP id
+ 5b1f17b1804b1-499aa14e6abmr69404585e9.1.1787131341756; 
+ Wed, 19 Aug 2026 02:22:21 -0700 (PDT)
+Received: from draig.lan ([185.124.0.156]) by smtp.gmail.com with ESMTPSA id
+ 5b1f17b1804b1-499aa0fd7a9sm61725355e9.2.2026.08.19.02.22.16
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Wed, 19 Aug 2026 02:22:20 -0700 (PDT)
+Received: from draig.lan (localhost [IPv6:::1])
+ by draig.lan (Postfix) with ESMTP id 6D1C45F9CB;
+ Wed, 19 Aug 2026 10:22:14 +0100 (BST)
+From: =?utf-8?q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>
+Date: Wed, 19 Aug 2026 10:22:06 +0100
+Subject: [PATCH 6/6] docs: deprecate virtio-crypto
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH] hw/misc/aspeed_scu: Set both AST2600 protection key
- registers on reset
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@oss.qualcomm.com>,
- Andrew Jeffery <andrew@codeconstruct.com.au>, qemu-devel@nongnu.org
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- Steven Lee <steven_lee@aspeedtech.com>, Troy Lee <leetroy@gmail.com>,
- Jamin Lin <jamin_lin@aspeedtech.com>, Kane Chen <kane_chen@aspeedtech.com>,
- Joel Stanley <joel@jms.id.au>, qemu-arm@nongnu.org
-References: <20260818-dev-ast2600-hw-prot-key-reset-v1-1-5dc3de64c247@codeconstruct.com.au>
- <53ae0209-0fd9-4f62-ac4b-f70b4f92c235@oss.qualcomm.com>
-From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
-Content-Language: en-US, fr
-Autocrypt: addr=clg@kaod.org; keydata=
- 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
-In-Reply-To: <53ae0209-0fd9-4f62-ac4b-f70b4f92c235@oss.qualcomm.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
-x-ovh-tracer-id: 6372593474428709948
-X-VR-SPAMSTATE: OK
-X-VR-SPAMSCORE: -100
-X-VR-SPAMCAUSE: dmFkZTFLMEFic37NKTPNoSX4CEehzjG4JJ1JAXkq3RAonRMJPQKoIfzVAi6v/Nqx8/zftyX4ARqXps+M3hK1duJxIiJmuV8E4GFYmgwzef0P1DcEy/yfDknXAyRFr5qTt2lG9zqWZvAHCNk5slQv6pjwXtEvICiaOiRVAeLFmx3NDYVsi/irEdOSVuy1INBl73QTMrULSXR6EGrsSPHwOBrlqxMflp0AiHYPRhEVnUFPhoaowynnPPd1dF1CxZ2BEmx8ukYWOg8Rqh4BcoCbeZLxJz5DiBJaOcoYMUwvMRzqAAubq4r8Mxq7Fhq/hmEiuhqVPfGV9ijC3o8Re9vLsGDx+ybkUaMR6RrHQBEAKcCPpuR9IUaIJJpCYgAv10uvbO4TgxNuVPCMa2NWidiSpGX9djQIEPwsSNFJ5fdlL4VoJiAB/5RCB2HJnypRzOBK7lQffR9SomY1lYCm2bn6ZIDOTHy0vBA0RXvPbu/1aTRbEg+ltZDOZ0gOUrnFNr4f++uIGGjPJwgxwkMA6TYIn/VVZSpHPXYpIFmBXQ2qUttaD2ORRg0dWdwLaPSEn+pwv3Uwse5unpqSM4hRa2+t6htgW9MVt3bHcP6ovOCgFLRMIOT4/3+t8MQMWpxzx/ZNut/KmD5VciijGteO5/+FcpF2A3ssE0T1ocr1x5lz1dWWXZFJAg
-DKIM-Signature: a=rsa-sha256; bh=VKYtOjsGmVINr7YaKfgmaZ+oiza2MPThdQUN37+BLYc=; 
- c=relaxed/relaxed; d=kaod.org; h=From; s=ovhmo393970-selector1;
- t=1787123826; v=1;
- b=bDs/vceWLRfjGu9hQ3GzjYcRbLXiDatC7crc/8Duxi6ZuW6IBXKufUqz5freJpazPlHhuNra
- pPhPtc5x6rbCYfnl/kdr/Ma40coyiy+Te648r3E4wW4imo0NLHkgetZPIf/XigZndMgPj9DWPmn
- wiPzz0a021X/NwCmpqGGDA2GSw26/lKllQmLAn8Yxv1M2VThY2NKI//yFLha+Moo4Hypl0XlyQm
- 5T19Ib+7Tr946GohKxmmpYQc0e3JaYQ81FStOBfJSK7fTXd512p7jVh7ZgrunlhhaAvhh+AX5/V
- YX4TaUf+uOQFsqTNBmksFJu16vuMo4aP6H4Smai474/2Q==
-Received-SPF: pass client-ip=51.210.91.32; envelope-from=clg@kaod.org;
- helo=smtpout3.mo538.mail-out.ovh.net
+Message-Id: <20260819-fixes-for-11-2-v1-6-b7981c2cc371@linaro.org>
+References: <20260819-fixes-for-11-2-v1-0-b7981c2cc371@linaro.org>
+In-Reply-To: <20260819-fixes-for-11-2-v1-0-b7981c2cc371@linaro.org>
+To: qemu-devel@nongnu.org
+Cc: =?utf-8?q?Philippe_Mathieu-Daud=C3=A9?= <philmd@mailo.com>, 
+ Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>, 
+ Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org, 
+ "Gonglei (Arei)" <arei.gonglei@huawei.com>, 
+ zhenwei pi <zhenwei.pi@linux.dev>, "Michael S. Tsirkin" <mst@redhat.com>, 
+ Stefano Garzarella <sgarzare@redhat.com>, 
+ Laurent Vivier <lvivier@redhat.com>, Amit Shah <amit@kernel.org>, 
+ =?utf-8?q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>, 
+ Paolo Bonzini <pbonzini@redhat.com>, John Snow <jsnow@redhat.com>, 
+ Kevin Wolf <kwolf@redhat.com>, Hanna Reitz <hreitz@redhat.com>, 
+ qemu-block@nongnu.org, devel@lists.libvirt.org, 
+ =?utf-8?q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>
+X-Mailer: b4 0.16.0
+X-Developer-Signature: v=1; a=openpgp-sha256; l=1496;
+ i=alex.bennee@linaro.org; h=from:subject:message-id;
+ bh=LnZGeVc7wYy+BtyAMr/N70wRi+tYZ8yVbPE+MJ6dnI4=;
+ b=owEBbQGS/pANAwAKAfvQ2wlanipEAcsmYgBqhXXGyf98LQqrkd9pc7pVXUICntv+8Iywp3UUS
+ g0TmqcLkg2JATMEAAEKAB0WIQRmha6Z51FnvK/I3zX70NsJWp4qRAUCaoV1xgAKCRD70NsJWp4q
+ RHiEB/0W+vnulxUs8yFacc39tyLzM9s/PsBBm6Kjr9XpgoNK4xDG28hOcguVfYZBwtsIBdamK1o
+ VaLY1YOvLEKIIGjE2P6aAh9mYnLroFmOgbAP1ZbXkf6deFV5dFO96PoTX2nFbvtU4NmXsvqq7TQ
+ FslhgdqNoIwsG8OSMCrbZIxA2ZucoQvGiLd/8UKA1XHEzw/kAoSElZHF+hQwficY1V/16QW0ZM4
+ zxrDyOvNRsADb4t3pJEQpUb0j5nrVYDHp46idFVvmCdkm2XC41Mk3WM97wWPv8MH313qSS09nQD
+ MhiGT5YgfeaifTw3miIu1k5D/VJaY3ujGgvBPKC5LeYpx3Hc
+X-Developer-Key: i=alex.bennee@linaro.org; a=openpgp;
+ fpr=6685AE99E75167BCAFC8DF35FBD0DB095A9E2A44
+Received-SPF: pass client-ip=2a00:1450:4864:20::42e;
+ envelope-from=alex.bennee@linaro.org; helo=mail-wr1-x42e.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -134,64 +128,46 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On 8/19/26 02:06, Philippe Mathieu-Daudé wrote:
-> On 18/8/26 03:43, Andrew Jeffery wrote:
->> Currently, booting Linux on the ast2600-evb machine via -kernel results
->> in a lot of warnings about failing to apply pinmux configuration when
->> binding drivers:
->>
->>      [    7.339307][    T1] Creating 5 MTD partitions on "bmc":
->>      [    7.340402][    T1] 0x000000000000-0x0000000e0000 : "u-boot"
->>      [    7.513755][    T1] 0x0000000e0000-0x000000100000 : "u-boot-env"
->>      [    7.664219][    T1] 0x000000100000-0x000000a00000 : "kernel"
->>      [    7.826974][    T1] 0x000000a00000-0x000002a00000 : "rofs"
->>      [    8.026666][    T1] 0x000002a00000-0x000004000000 : "rwfs"
->>      [    8.201612][    T1] spi-aspeed-smc 1e630000.spi: error -EPERM: Error applying setting, reverse things back
->>      [    8.370835][    T1] spi-aspeed-smc 1e630000.spi: Calibration area too uniform, using low speed
->>      [    8.371131][    T1] spi-aspeed-smc 1e630000.spi: Force to dts configuration 100000kHz.
->>      [    8.371500][    T1] spi-aspeed-smc 1e630000.spi: CE0 read buswidth:4 [0x406c0741]
->>      [    8.766797][    T1] mdio-aspeed 1e650000.mdio: error -EPERM: Error applying setting, reverse things back
->>      [    8.906008][    T1] mdio-aspeed 1e650008.mdio: error -EPERM: Error applying setting, reverse things back
->>      [    9.039240][    T1] mdio-aspeed 1e650010.mdio: error -EPERM: Error applying setting, reverse things back
->>      [    9.147942][    T1] mdio-aspeed 1e650018.mdio: error -EPERM: Error applying setting, reverse things back
->>
->> The pinmux configuration fails because the SCU is not unlocked.
->>
->> Set both SCU protection keys for the AST2600. Further, set them
->> such that they behave accordance with the read value documented
->> by the datasheet. The new arrangement now upholds the comment in
->> hw/arm/aspeed.c regarding passing -kernel on the qemu command-line.
->>
->>      [    7.568170][    T1] Creating 5 MTD partitions on "bmc":
->>      [    7.569330][    T1] 0x000000000000-0x0000000e0000 : "u-boot"
->>      [    7.740372][    T1] 0x0000000e0000-0x000000100000 : "u-boot-env"
->>      [    7.883570][    T1] 0x000000100000-0x000000a00000 : "kernel"
->>      [    8.041004][    T1] 0x000000a00000-0x000002a00000 : "rofs"
->>      [    8.196824][    T1] 0x000002a00000-0x000004000000 : "rwfs"
->>      [    8.547037][    T1] spi-aspeed-smc 1e630000.spi: Calibration area too uniform, using low speed
->>      [    8.547320][    T1] spi-aspeed-smc 1e630000.spi: Force to dts configuration 100000kHz.
->>      [    8.547642][    T1] spi-aspeed-smc 1e630000.spi: CE0 read buswidth:4 [0x406c0741]
->>      [    9.494235][    T1] ftgmac100 1e660000.ethernet: Read MAC address 52:54:00:12:34:56 from chip
->>      [    9.531186][    T1] RTL8211E Gigabit Ethernet 1e650000.mdio-1:00: attached PHY driver (mii_bus:phy_addr=1e650000.mdio-1:00,
->>
->> Fixes: e09cf36321f6 ("hw: aspeed_scu: Add AST2600 support")
->> Signed-off-by: Andrew Jeffery <andrew@codeconstruct.com.au>
->> ---
->> I ran into this issue while improving test coverage in my patch review
->> process.
->> ---
->>   hw/misc/aspeed_scu.c | 3 ++-
->>   1 file changed, 2 insertions(+), 1 deletion(-)
-> 
-> Cc: qemu-stable@nongnu.org
-> Fixes: e09cf36321f ("hw: aspeed_scu: Add AST2600 support")
+We have outstanding guest exploitable bugs in the code which is fairly
+complex and needs some serious love to clean it up. As off-CPU
+cryptography acceleration seems to be waning in popularity lets just
+deprecate the sub-system with a view to removing it in a couple of
+cycles.
 
-something is wrong with the above hash ?
+Link: https://gitlab.com/qemu-project/qemu/-/work_items/3625
+Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
+Cc: Gonglei <arei.gonglei@huawei.com>
+---
+ docs/about/deprecated.rst | 14 ++++++++++++++
+ 1 file changed, 14 insertions(+)
 
-Thanks,
+diff --git a/docs/about/deprecated.rst b/docs/about/deprecated.rst
+index 0c656a968fc..3c22981fc8a 100644
+--- a/docs/about/deprecated.rst
++++ b/docs/about/deprecated.rst
+@@ -276,6 +276,20 @@ future release. Where no 'dh-params.pem' file is provided, the DH
+ parameters will be automatically negotiated in accordance with
+ RFC7919.
+ 
++Devices
++-------
++
++``virtio-crypto`` (since 11.2)
++''''''''''''''''''''''''''''''
++
++The ``virtio-crypto`` device emulation is quite complex code with a
++number of known flaws. It has never been migratable so is unlikely to
++be used in any serious virtualization setting. With most modern
++systems supporting on-CPU cryptography acceleration via their
++ISAs sets the need for off-CPU acceleration is also reduced. Add to
++that the kernel has recently removed the ability to use off-CPU
++acceleration suggests the time for this sort of off-load has passed.
++
+ Device options
+ --------------
+ 
 
-C.
-
-> Reviewed-by: Philippe Mathieu-Daudé <philmd@oss.qualcomm.com>
+-- 
+2.47.3
 
 

@@ -4,85 +4,80 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EA950C5DF81
-	for <qemu-arm@archiver.kernel.org>; Wed, 19 Aug 2026 18:56:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 154D9C5DF85
+	for <qemu-arm@archiver.kernel.org>; Wed, 19 Aug 2026 19:00:57 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wwlQt-0005Ub-Dl; Wed, 19 Aug 2026 14:54:39 -0400
+	id 1wwlWQ-0003R6-VE; Wed, 19 Aug 2026 15:00:23 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1wwlQr-0005Tj-Ip
- for qemu-arm@nongnu.org; Wed, 19 Aug 2026 14:54:37 -0400
-Received: from mail-wm1-x32d.google.com ([2a00:1450:4864:20::32d])
+ id 1wwlWP-0003QW-86
+ for qemu-arm@nongnu.org; Wed, 19 Aug 2026 15:00:21 -0400
+Received: from mail-wr1-x42d.google.com ([2a00:1450:4864:20::42d])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1wwlQp-0007NK-06
- for qemu-arm@nongnu.org; Wed, 19 Aug 2026 14:54:37 -0400
-Received: by mail-wm1-x32d.google.com with SMTP id
- 5b1f17b1804b1-4956242332dso13943285e9.2
- for <qemu-arm@nongnu.org>; Wed, 19 Aug 2026 11:54:34 -0700 (PDT)
+ id 1wwlWM-0000Sa-VC
+ for qemu-arm@nongnu.org; Wed, 19 Aug 2026 15:00:20 -0400
+Received: by mail-wr1-x42d.google.com with SMTP id
+ ffacd0b85a97d-47de008b020so141402f8f.1
+ for <qemu-arm@nongnu.org>; Wed, 19 Aug 2026 12:00:18 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1787165673; x=1787770473; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:from:to:cc:subject:date
- :message-id:reply-to:content-type;
- bh=+OidqFmgxqDLOch1X954fO+xBtTG297VTbgXxOojjA4=;
- b=kLSVHqwRMq5EX6VaPaEqhsGqD8NyEJMPOm6PxqwpgaJ2A7CAWhFDFkIDgeHbin5ZDN
- 5WuEfAwCByKlC9DfP2E+VpMkm8knI3jYWG/FRF5hXs/nIQF5rlNvJ7yiSwQTlG3ey0pn
- Rdnq6Wl9rRmYZiOe9E/aGjU/cYp4Tu9a0Ezoxy0I0KmdY5EVChwpvs4p5n11Dr7sJUaP
- XI5PQzWbEwcj6/SsjG+KHwWd/pFiTNJzkTyYeoDDu1WwhCaVuv33NtAZDfYdsCcCPp34
- DK8IDBt5yOgrOq9+YJSHFNo5phLKgIS7Vo7Vd9vxpuDKevGyk1cTQX1RmWkvSAfs8rfi
- JfIg==
+ d=linaro.org; s=google; t=1787166017; x=1787770817; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:from:to:cc:subject:date:message-id:reply-to:content-type;
+ bh=CyLMKJhOTMdG0j0ut/RGezjH2K50Eg1CaICWQOW4q3c=;
+ b=q/ibiOBn73sbNDwGSF+ZJCMIHSk8LIXFSs6PX8qZhEmqXh483RxlZ7HwXUeTaMVRm9
+ F6vy3Lc5Eo8xzACCYPsqBx2xtzZBNCZcrONe2e/s6f032li56cnVBGjNrBD26w2qZkLr
+ 4sgQb0rGbY9An+2C+OSklll16vt/hU4JQj/qxw0FSalAvpfJ3218VuelwR8vk1Eo70p+
+ qw21dJOK80rVYdD/ne/4iKG9aVSgu68CJUqJgJ7WLXXUKqrMpHK17Vg6ZOofQ3RznhcD
+ estq/DWfoU9X3R4x80u2mzgEwbKKjXA17UuJ496G3huqsYmd84AJzuD5gIGhwpTMJhp3
+ dhDA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1787165673; x=1787770473;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
- :to:cc:subject:date:message-id:reply-to:content-type;
- bh=+OidqFmgxqDLOch1X954fO+xBtTG297VTbgXxOojjA4=;
- b=lAn4V3TSZ8NR4kq3k37s85fIO7tilbHLHBKrbx5Pw4KgkGR8cyByOyPS4AftqbOYwZ
- hWjZgcQuixwr9/a/Q2Niht1mxcClwktWPFT2EQpi1VQBfpRsJ0iGOqklotVRFvjyXAhb
- jkbNW7XChkO3MGTTCZpAbRYLdHtVKHke5IEQ4ZSkAJDqVdpGFbEj75RXqT1wdS/9bRa2
- YcRcTXIBAliMvXhI2sbHpgg5ZgMvzRe5pm7w9PeTrNyjxk4pRXfkXPa7PsMi/u+Sjpqi
- k/jJ6QR7vW2trW6pDp7l5XHRUEZ7B4UnDiUyS+m9FAvSsJnkijZeWFif+mAoWYZXJnlH
- 4GYg==
-X-Gm-Message-State: AOJu0Yx00Q+uAW8cO2nCW3ccvflFCkxIwACbfmJLrI3yzhSzYxZw1Z/M
- JIdzs7eB1riRo4evSY/jby/XXPkJsxDk3CSn/2ZWIVxV1268pPuTqU9iK+cWHZkCHyygMf0DeWj
- 3Hkn4
-X-Gm-Gg: AR+sD13zaWmZi4XhzvZ4K9cMaNmfBI9RKcGVQJA4kdLduluaNuzOgIZWqyODSrZRAVA
- SWL8pvRGq/hzAMDspfwkOdaJBRUFrbNHtUj58LwM1sLweWAlon89RJ498N3tP/jYqlLG+p/0wb0
- Y4fd+esu6aTFNursZ3SfuS+M1vE47UdKpbL48KNtbtUKsnc4OOEBt+0HW8ELwGxxroeeiHl5WNE
- 09NpZ2HF0u6qi9Mfqo4/Cf+eDhwh6X2wNAgzL3prC6T8n1GwCPBJdbQBHf9hW03kA7bdVVla8wj
- C9JEH8E8FHN65oU1lpwyXHS5PkjdZWItvv02zqZQ4fo9IXH21jqob8MOwcSMyn53STn8rMe1j5R
- iWMYRiyf8JK752GQEWR3hSd1dx+P/B4C0X9TvXLPZ1uMv/loMKQ+bT3/86uQO5p7FrUtcAiFpld
- xpgduh7+v4peP4n/FYh7lPYUZgi8MgN5FUnzTRBFnsPwFfeL0Q3+qYXWfr2ueuOI5J1f85zuSdb
- 3JcgjrZEBojf/XrJK36y4774Jg7dFkDPgiV33j2iRLAdpwSCs8mneoGLFyhCuHqBC+9IA==
-X-Received: by 2002:a05:600c:4e94:b0:499:78b3:7b36 with SMTP id
- 5b1f17b1804b1-499aa1b549cmr124054865e9.11.1787165673424; 
- Wed, 19 Aug 2026 11:54:33 -0700 (PDT)
+ d=1e100.net; s=20251104; t=1787166017; x=1787770817;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+ :message-id:reply-to:content-type;
+ bh=CyLMKJhOTMdG0j0ut/RGezjH2K50Eg1CaICWQOW4q3c=;
+ b=nq61B5kXyOUvbEUB/nUvK2i31ubq7aeiv2KNAbqmGK6BcE1IyuUsVCGGu7H7kxr655
+ 2whpKG1Y+/X4WB0MPhysAckKbzJ9HpNhTyoLF2H5+XVuUquJEgZceHeUbq+lYiQpnPDa
+ TtMm6U4g2tVEWDq8BiDClxQPx1kKNgc5Hs+fxPaXXCjq0qdwiqhyrKP4zQphAolL5ZaR
+ G8NvMO5KzK1YrSWuU0wHIzArDzZJjwBNuqDMr/Jb3R+7VM6ba16Xsnn4GwMLOiyEm89z
+ QE11ptQUNMsxbgN1My4LatRTngD3LG3Z7N9qjt1zVtM87dhjEUe8q0vPZEh+RFE0T2o6
+ iC1w==
+X-Gm-Message-State: AFuF++lb6Axy5/8V39vybf3XCrNVg1I/IGZB4nUuhuoB0k6Lbytl4pp/
+ IIa/LnkDfdLILnerAjkCyz8d5Q8v35BNQqunk5rS2eJB5qqVlJ2boptAocXX9JgRfJnco/D2v6s
+ W8jwP
+X-Gm-Gg: AR+sD13OS3spd7VSQT2lELmMnavArQQpddVwDxD9XWFz9NztL3uJh1gOLn772PSWkKM
+ OIbJTMc3gNzFKEKSqsJHJFW4Sg03UlCfiu9ZnhOj1LhiffTtjdiF0XbPLTS8kSPtYAM5WJNXIub
+ rY5t/T1D/nYCF+S2km2P5pOmu60NDxFpKHeX4YoeyJu0dbvliSYbZHbjqunvsBJ9ewCc5VJpZpK
+ +yEAw1WPE0FID7QLWl7zqHn9cB7QRynj9KQZKeIchX+bdNg+X4NnS0qtD+eObk+N61xs8zhzQea
+ Bd6QMUnQiYt0s0HyVLr0bRUxzsRKFc7pEvrAD16FJJtuvTYocOGz7aYwURB0UhsociZIML/dNn9
+ Pzv4s6grHk7QYZ88+rh/URSf5wlqM0A/qULd48ZFXecey0G+yk0qEOk3kfNmQQhpwNmgMWtd44U
+ AmfvkSd/ZcsPl1Hj8Jc3FRiiZJ2K2q9LA5m5jUD/6luwbpsVOPZzJ2lLF5XNOccHQCom1q9oGAO
+ MnwDGv6cqcf/wZNFcPB0YXFHN5PvdxeOC+1ZizjLtTlCy8qPOHpehQQ3gq9WGnGeS8P+A==
+X-Received: by 2002:a5d:6f01:0:b0:46b:70db:2113 with SMTP id
+ ffacd0b85a97d-482b74dc7a7mr2175210f8f.0.1787166016892; 
+ Wed, 19 Aug 2026 12:00:16 -0700 (PDT)
 Received: from lanath.. (wildly.archaic.org.uk. [81.2.115.145])
  by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-482b145c9d7sm7995048f8f.15.2026.08.19.11.54.32
+ ffacd0b85a97d-482b1441753sm8256770f8f.5.2026.08.19.12.00.15
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 19 Aug 2026 11:54:32 -0700 (PDT)
+ Wed, 19 Aug 2026 12:00:16 -0700 (PDT)
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Cc: Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@mailo.com>,
- Jan Kiszka <jan.kiszka@web.de>
-Subject: [PATCH 1/5] tests/qtest/pflash-cfi02-test: Don't use musicpal machine
- for testing
-Date: Wed, 19 Aug 2026 19:54:26 +0100
-Message-ID: <20260819185430.3467629-2-peter.maydell@linaro.org>
+Cc: Richard Henderson <richard.henderson@linaro.org>
+Subject: [PATCH] target/arm: Don't enforce alignment faults on Device memory
+ for SCTLR.U == 0
+Date: Wed, 19 Aug 2026 20:00:15 +0100
+Message-ID: <20260819190015.3555218-1-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.43.0
-In-Reply-To: <20260819185430.3467629-1-peter.maydell@linaro.org>
-References: <20260819185430.3467629-1-peter.maydell@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::32d;
- envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x32d.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::42d;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x42d.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -105,175 +100,50 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-We currently use the musicpal machine for testing the pflash-cfi02
-device.  We'd like to remove that machine, so switch the tests to the
-sh4 r2d board type instead.
+We enforce that we take alignment faults for unaligned accesses
+when the MMU is disabled or the access is to Device memory. This
+is correct for the new-style unaligned accesses rules that were
+introduced in ARMv6 when SCTLR.U == 1 and then became the only
+option from ARMv7 (where SCTLR.U is RES1). However, it isn't
+right for the old ARMv4 and ARMv5 setup (and ARMv6 when SCTLR.U = 0).
 
-We use r2d because it happens to have the same "2 bank" config that
-musicpal did.  (Of our other options, xilinx-zynq-a9 has only a
-1-bank setup so wouldn't allow the same range of testing, and the
-canon-a1100 board both doesn't support specifying a flash drive via
--drive if=pflash, plus it seems likely it too might be a candidate
-for deprecate-and-drop.)
+We don't emulate the v4/v5 alignment rules (which notably include
+"for unaligned LDR, do an aligned load and rotate"); but taking an
+alignment fault is definitely wrong and isn't what QEMU has
+traditionally done.  Restrict this behaviour to when SCTLR.U is 1.
 
-The r2d flash device is not quite the same config as the musicpal
-one: it has a different base address and size, and different
-ID values. So we need to update the test to match.
+(The other place we enable alignment checks on Device memory is in
+ptw.c, but we only set TLB_CHECK_ALIGNED for LPAE translations, which
+are guaranteed to be v7 or later.)
 
 Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 ---
- tests/qtest/meson.build         |  6 +++---
- tests/qtest/pflash-cfi02-test.c | 38 ++++++++++++++++++++-------------
- 2 files changed, 26 insertions(+), 18 deletions(-)
+ target/arm/tcg/hflags.c | 12 ++++++++++++
+ 1 file changed, 12 insertions(+)
 
-diff --git a/tests/qtest/meson.build b/tests/qtest/meson.build
-index f7c7d06620..1f0f04e36c 100644
---- a/tests/qtest/meson.build
-+++ b/tests/qtest/meson.build
-@@ -196,7 +196,9 @@ qtests_ppc64 = \
-   (config_all_devices.has_key('CONFIG_USB_XHCI_NEC') ? ['usb-hcd-xhci-test'] : []) +         \
-   qtests_pci + ['migration-test', 'cpu-plug-test', 'drive_del-test']
- 
--qtests_sh4 = (config_all_devices.has_key('CONFIG_ISA_TESTDEV') ? ['endianness-test'] : [])
-+qtests_sh4 = (config_all_devices.has_key('CONFIG_ISA_TESTDEV') ? ['endianness-test'] : []) + \
-+  (config_all_devices.has_key('CONFIG_PFLASH_CFI02') and
-+   config_all_devices.has_key('CONFIG_R2D') ? ['pflash-cfi02-test'] : [])
- qtests_sh4eb = (config_all_devices.has_key('CONFIG_ISA_TESTDEV') ? ['endianness-test'] : [])
- 
- qtests_sparc = ['prom-env-test', 'm48t59-test', 'boot-serial-test'] + \
-@@ -243,8 +245,6 @@ qtests_arm = \
-   (config_all_devices.has_key('CONFIG_CMSDK_APB_TIMER') ? ['cmsdk-apb-timer-test'] : []) + \
-   (config_all_devices.has_key('CONFIG_STELLARIS') or
-    config_all_devices.has_key('CONFIG_MPS2') ? ['cmsdk-apb-watchdog-test'] : []) + \
--  (config_all_devices.has_key('CONFIG_PFLASH_CFI02') and
--   config_all_devices.has_key('CONFIG_MUSICPAL') ? ['pflash-cfi02-test'] : []) + \
-   (config_all_devices.has_key('CONFIG_ASPEED_SOC') ? qtests_aspeed : []) + \
-   (config_all_devices.has_key('CONFIG_NPCM7XX') ? qtests_npcm7xx : []) + \
-   (config_all_devices.has_key('CONFIG_GENERIC_LOADER') ? ['hexloader-test'] : []) + \
-diff --git a/tests/qtest/pflash-cfi02-test.c b/tests/qtest/pflash-cfi02-test.c
-index 8c073efcb4..fe630c9c16 100644
---- a/tests/qtest/pflash-cfi02-test.c
-+++ b/tests/qtest/pflash-cfi02-test.c
-@@ -11,17 +11,25 @@
- #include "libqtest.h"
- 
- /*
-- * To test the pflash_cfi02 device, we run QEMU with the musicpal machine with
-+ * To test the pflash_cfi02 device, we run QEMU with the sh4 r2d machine with
-  * a pflash drive. This enables us to test some flash configurations, but not
-  * all. In particular, we're limited to a 16-bit wide flash device.
-  */
- 
--#define MP_FLASH_SIZE_MAX (32 * 1024 * 1024)
--#define BASE_ADDR (0x100000000ULL - MP_FLASH_SIZE_MAX)
-+/*
-+ * These need to match the flash size and address in r2d.c.
-+ * If the flash size changes then the sector_len[] and nb_blocs[]
-+ * values in configuration[] below will need to be updated to match.
-+ */
-+#define BASE_ADDR 0x00000000
- 
--#define UNIFORM_FLASH_SIZE (8 * 1024 * 1024)
-+#define UNIFORM_FLASH_SIZE (16 * 1024 * 1024)
- #define UNIFORM_FLASH_SECTOR_SIZE (64 * 1024)
- 
-+/* These must match the id0, id1 args to pflash_cfi02_register() in r2d.c */
-+#define FLASH_ID0 0x0001
-+#define FLASH_ID1 0x227E
-+
- /* Use a newtype to keep flash addresses separate from byte addresses. */
- typedef struct {
-     uint64_t addr;
-@@ -260,7 +268,7 @@ static void test_geometry(const void *opaque)
- {
-     const FlashConfig *config = opaque;
-     QTestState *qtest;
--    qtest = qtest_initf("-M musicpal"
-+    qtest = qtest_initf("-M r2d"
-                         " -drive if=pflash,file=%s,format=raw,copy-on-read=on"
-                         /* Device geometry properties. */
-                         " -global driver=cfi.pflash02,"
-@@ -295,16 +303,16 @@ static void test_geometry(const void *opaque)
-     /* Check the IDs. */
-     unlock(c);
-     flash_cmd(c, UNLOCK0_ADDR, AUTOSELECT_CMD);
--    g_assert_cmphex(flash_query(c, FLASH_ADDR(0)), ==, replicate(c, 0xBF));
-+    g_assert_cmphex(flash_query(c, FLASH_ADDR(0)), ==, replicate(c, FLASH_ID0));
-     if (c->bank_width >= 2) {
-         /*
--         * XXX: The ID returned by the musicpal flash chip is 16 bits which
-+         * XXX: The ID returned by the r2d flash chip is 16 bits which
-          * wouldn't happen with an 8-bit device. It would probably be best to
-          * prohibit addresses larger than the device width in pflash_cfi02.c,
-          * but then we couldn't test smaller device widths at all.
-          */
-         g_assert_cmphex(flash_query(c, FLASH_ADDR(1)), ==,
--                        replicate(c, 0x236D));
-+                        replicate(c, FLASH_ID1));
+diff --git a/target/arm/tcg/hflags.c b/target/arm/tcg/hflags.c
+index 0716ca98fd..5047b7b697 100644
+--- a/target/arm/tcg/hflags.c
++++ b/target/arm/tcg/hflags.c
+@@ -47,6 +47,18 @@ static bool aprofile_require_alignment(CPUARMState *env, int el, uint64_t sctlr)
+         return false;
      }
-     reset(c);
  
-@@ -436,7 +444,7 @@ static void test_geometry(const void *opaque)
-     flash_cmd(c, FLASH_ADDR(0x5555), UNLOCK0_CMD);
-     flash_cmd(c, FLASH_ADDR(0x2AAA), UNLOCK1_CMD);
-     flash_cmd(c, FLASH_ADDR(0x5555), AUTOSELECT_CMD);
--    g_assert_cmphex(flash_query(c, FLASH_ADDR(0)), ==, replicate(c, 0xBF));
-+    g_assert_cmphex(flash_query(c, FLASH_ADDR(0)), ==, replicate(c, FLASH_ID0));
-     reset(c);
- 
++    /*
++     * Pre-v6 had a completely different model for unaligned accesses,
++     * which doesn't include taking unaligned faults for Device memory.
++     * v6 has the new model only when SCTLR.U is set. Later architecture
++     * versions repurpose the SCTLR bit for something else, so we mustn't
++     * test it except for actual v6 CPUs.
++     */
++    if (!arm_feature(env, ARM_FEATURE_V6) ||
++        (!arm_feature(env, ARM_FEATURE_V7) && !(sctlr & SCTLR_U))) {
++        return false;
++    }
++
      /*
-@@ -580,7 +588,7 @@ static void test_cfi_in_autoselect(const void *opaque)
- {
-     const FlashConfig *config = opaque;
-     QTestState *qtest;
--    qtest = qtest_initf("-M musicpal"
-+    qtest = qtest_initf("-M r2d"
-                         " -drive if=pflash,file=%s,format=raw,copy-on-read=on",
-                         image_path);
-     FlashConfig explicit_config = expand_config_defaults(config);
-@@ -590,7 +598,7 @@ static void test_cfi_in_autoselect(const void *opaque)
-     /* 1. Enter autoselect. */
-     unlock(c);
-     flash_cmd(c, UNLOCK0_ADDR, AUTOSELECT_CMD);
--    g_assert_cmphex(flash_query(c, FLASH_ADDR(0)), ==, replicate(c, 0xBF));
-+    g_assert_cmphex(flash_query(c, FLASH_ADDR(0)), ==, replicate(c, FLASH_ID0));
- 
-     /* 2. Enter CFI. */
-     flash_cmd(c, CFI_ADDR, CFI_CMD);
-@@ -600,7 +608,7 @@ static void test_cfi_in_autoselect(const void *opaque)
- 
-     /* 3. Exit CFI. */
-     reset(c);
--    g_assert_cmphex(flash_query(c, FLASH_ADDR(0)), ==, replicate(c, 0xBF));
-+    g_assert_cmphex(flash_query(c, FLASH_ADDR(0)), ==, replicate(c, FLASH_ID0));
- 
-     qtest_quit(qtest);
- }
-@@ -613,7 +621,7 @@ static void cleanup(void *opaque)
- 
- /*
-  * XXX: Tests are limited to bank_width = 2 for now because that's what
-- * hw/arm/musicpal.c has.
-+ * hw/sh4/r2d.c has.
-  */
- static const FlashConfig configuration[] = {
-     /* One x16 device. */
-@@ -624,13 +632,13 @@ static const FlashConfig configuration[] = {
-     {
-         .bank_width = 2,
-         .nb_blocs = { 127, 1, 2, 1 },
--        .sector_len = { 0x10000, 0x08000, 0x02000, 0x04000 },
-+        .sector_len = { 0x20000, 0x10000, 0x04000, 0x08000 },
-     },
-     /* Nonuniform sectors (bottom boot). */
-     {
-         .bank_width = 2,
-         .nb_blocs = { 1, 2, 1, 127 },
--        .sector_len = { 0x04000, 0x02000, 0x08000, 0x10000 },
-+        .sector_len = { 0x08000, 0x04000, 0x10000, 0x20000 },
-     },
- };
- 
+      * With VMSA, if translation is disabled, then the default memory type
+      * is Device(-nGnRnE) instead of Normal, which requires that alignment
 -- 
 2.43.0
 

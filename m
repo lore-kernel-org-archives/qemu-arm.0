@@ -4,92 +4,88 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 31947C5DF85
-	for <qemu-arm@archiver.kernel.org>; Wed, 19 Aug 2026 18:55:11 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BF26DC5DF85
+	for <qemu-arm@archiver.kernel.org>; Wed, 19 Aug 2026 18:55:17 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wwlQt-0005Uc-Jc; Wed, 19 Aug 2026 14:54:39 -0400
+	id 1wwlQr-0005TW-F3; Wed, 19 Aug 2026 14:54:37 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1wwlQs-0005UL-LK
- for qemu-arm@nongnu.org; Wed, 19 Aug 2026 14:54:38 -0400
-Received: from mail-wm1-x336.google.com ([2a00:1450:4864:20::336])
+ id 1wwlQp-0005Sr-Sp
+ for qemu-arm@nongnu.org; Wed, 19 Aug 2026 14:54:35 -0400
+Received: from mail-wr1-x434.google.com ([2a00:1450:4864:20::434])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1wwlQq-0007NZ-9O
- for qemu-arm@nongnu.org; Wed, 19 Aug 2026 14:54:38 -0400
-Received: by mail-wm1-x336.google.com with SMTP id
- 5b1f17b1804b1-499ac87c92bso8123865e9.1
- for <qemu-arm@nongnu.org>; Wed, 19 Aug 2026 11:54:35 -0700 (PDT)
+ id 1wwlQn-0007N7-Vs
+ for qemu-arm@nongnu.org; Wed, 19 Aug 2026 14:54:35 -0400
+Received: by mail-wr1-x434.google.com with SMTP id
+ ffacd0b85a97d-47f7027ca11so823759f8f.3
+ for <qemu-arm@nongnu.org>; Wed, 19 Aug 2026 11:54:33 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1787165675; x=1787770475; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:from:to:cc:subject:date
- :message-id:reply-to:content-type;
- bh=xy6npAxreR3WN5RNBLJXXOS1U38mC2qbi1jMTA5TtLk=;
- b=LNDAujTlAO8PBQrNjHqX26kU8pygtu/IwqUa5tPV6kUvwStTwoA1HDSSh2oz0MNsz0
- HVhvDZgheScXqMViF6qimg1qnYAU8wUGkvmWO3rONyNILA8COTi2Z5bOJyEaonEv/4ci
- Ymq3Xj7PmQ1NzwB+glqWbtbOzeHSKUASGR2qw6056MI5MSPc5mn5J4uRzAektG7rsnrS
- Qcgx3hH4CuoJ6lkKv1KRjl4MjvddlfqUz6Jsh6y9ShIu9QGpxLLfo4s/gmOvZgv0rP4t
- Go0xYQ0ity+HeijVSCAmEd54Z0QlG5E1jaQsaS0Bi12Svu1rCppqyIpYeAFFWQWV00/j
- wqOg==
+ d=linaro.org; s=google; t=1787165672; x=1787770472; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:from:to:cc:subject:date:message-id:reply-to:content-type;
+ bh=QSVy3FFPhYcWcnpEB/VkVTt644g8l6UF1uwbsqMi7cs=;
+ b=JVN4+sIs9YZVpok5QiPx4qHUTVmvLfwyyNTbS7/MoeG4JcuztLaSPz4m3zV+U6Ywjh
+ ENOjIzlFvF57NXZWdkaIryt7O74JcVD0soZePkyosRCtbmq1iNNRO/A/SG5XY8Gm/1yd
+ Qs8Ehp4iunBZw9xO78hSKnm8arK+0E6N5ucIXDs5iqmH7cgFXIIPYHiPl5lSLTDeBEmT
+ OpMaQHfUMt0TCeVJYL4grUk5smEeIFnvPKUDGMNswZeRK6MvSZz4jUn0qdNXZducgH/S
+ Q4evGg6bZRYNMvb1q6/QRX8MS/MJLXZH5jweEEmNVp+v+wNr6SDoo95nepE1vWwlwgqm
+ Z9VA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1787165675; x=1787770475;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
- :to:cc:subject:date:message-id:reply-to:content-type;
- bh=xy6npAxreR3WN5RNBLJXXOS1U38mC2qbi1jMTA5TtLk=;
- b=VYqWWk6Et/kpa8zZTEDR6pRAzoGCXf0jHLn7lKR6mYcpyO3iJoGDbLUmRyYfSHholO
- XhtnXEmaGKU3uYg+1+YTW6/EfwSawCMsG4d/YbCgYjqpwN6agsdOvCiL+Pzs8adIFPtS
- rNHWb9Ovv+/8bIxo+tRnZrn078Lmp03o6/5uYE4ZYXJcRt6vhHojYnUtjv5hP4yYbo4I
- yKyCsD7SxSlZ1oz9h/WUfQyX64D4wtPDilEp3MZskhNnpuz+TlGzayPJq3TiIUV05CPN
- FLJ7phepzxnwmPAK9Y3mhMA7yk71wTzWFt1HiluV71ngXjOJKL1FCM2/+FYWyGDUNigP
- 7Oxw==
-X-Gm-Message-State: AOJu0Ywxp8vzcKSLhdjkdYwqkO1s24YLb61GREkktlMzEXRbf3J/brlW
- Wy0CutaPZrFZhDVq8/2rOYupaimY7EawUII+jLFdfGIUto0dQkXzqlpib/ZxtW5W+5FoUHozPai
- ti/Sb
-X-Gm-Gg: AR+sD11qDsY33nE1g13cZMzWQzrApDhR04IgTyLYA/gMignz4i1iSVFW8g9uFag1vh0
- 2g6hixV1OKxbzgRoQzTmQjRN9GRirknSdn4gZ95zRLd75vlx0k0YfqwVEgoyDWjeDk9qzkw7GiT
- njhkZpcUekWDe6uMNIJHHiyYgcZEA0jKLnGt9K7v9JHx2HOwIxTTe/iQYCbSJhwBGlNkjEOl8dR
- RoCa0KWM7lJVBqfjEAZOmAlCC30l7BHj12hT4jIM++SnESCEs9XYnPSxHwzVVxmEkvHf3oMqvqH
- kR5w2DzuuxuooGyYJwytdgN65dMNPH77C+qRyZZn5/ftk6a52Bm5nHLoHR540s1w/AqfrJQMhvX
- MEwUuBCbPqMX397C7Mld1qfjwDDilOsR6YodLCpyN8J8xQIVAOwYiVvEnoB0hkErzCU5XvAqwPt
- g34a28gdviT6bsYKz+xrJN2RLujAUq1vKEohO9rw3nIkIPD6IL02Bw56X/LedaaJ3Lq14UGZZe1
- BSssCW8prA4mMUD5DBfNdbFoCukCCO950HaPFduKFpmeqFb/V01rfdjgqfWMs78HacIBQ==
-X-Received: by 2002:a05:600c:3596:b0:495:4749:16a7 with SMTP id
- 5b1f17b1804b1-499aa1e269emr122257365e9.14.1787165674692; 
- Wed, 19 Aug 2026 11:54:34 -0700 (PDT)
+ d=1e100.net; s=20251104; t=1787165672; x=1787770472;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+ :message-id:reply-to:content-type;
+ bh=QSVy3FFPhYcWcnpEB/VkVTt644g8l6UF1uwbsqMi7cs=;
+ b=s+2wLgBlel/TgOjZVbEUf66ZXdtVn0nwIvgwR0+9sAUJeM7ANwVzeHjsPqryu18N75
+ TYoasV18vUnQtYXsxuV6qDjYdFacOFMjBts66cqjMHNMMkSD4WK83QUt+dYVWVcng71R
+ /R8q7l64amWLSFskB/04b/xsStRabWanUq3KwDN7VxPe250F3da+qTRKN2kMYUDweNKh
+ 2aKrtNErwIoy8iItfMavlajobYQQox5kLEtjX91SIZB3IMK7nLdu3jaeM0J+psNj0MCc
+ SxHZAlFOLea65UC3OGDqYjWP000bBeq2BlKsyD7IDYX31kZkU88hV65/p1GsZfthVf8B
+ mzPQ==
+X-Gm-Message-State: AFuF++ntGFIhvspH7+CkZTuYp417+2Sk+8UrFMf/xg8dbynSg+j0ruvW
+ pjMf+ytQSUH6ShGRdZ5bzCVxg5LxxHVefKeA4MNuPB7ss9G7Ut0sqfQKy0NtvZtE8xsnELcUxxh
+ AakfY
+X-Gm-Gg: AR+sD11Cjsw7slDcEerHRZ864WtymiVa15uktjsuf2o4RwPhg5ytpmynzWpQpwEvlIZ
+ L6BILVXbp1wbp7MIKA2iRRJPu95o1dh1AR9ALVJZDV5Bo3XrB/cJkyrHO5Qqsn6Rm72DShAMtwK
+ Y31/BTB+Qdpb5lcy3P/+/PKLvXw3X9BUFugU97tj8LYA5vK37XxG9e/yUXjvHhZ4rpBt9D1TpSG
+ NfgGvFb/xqlGIOShvSMLurmobf+dn7gxtgMeUY1Cc4QuMhzjgYuEBuWYiPQCSS2p0F6GlHmQEA7
+ TRc/aAwiFs8w8W/vk8zxtu/niZL6ZSIgOssaMT2nkZ2se3eZFMBIUwRhbAnGHFUHVP3bIiV+58C
+ not4k292VLKO+CkDuylJew+WfQqLGMmNN1rohrLufAHtaKhJ4Poo/sbKoZPfhavJqDXO5x6Y9BQ
+ uCstwhMsEBQepHeFeYrF3jsOmOE1ZzeES3ACqfV82Dkrwc70KvKj2JkKYbQonOwN35/EezPgGbv
+ OoCntEVgiD9uwPYGC3beYbYBvSkOlbtHO6nBKas555ChvOvn67WF5rXXo9hv9sxNGTlNw==
+X-Received: by 2002:a5d:5f8c:0:b0:47f:93e4:5389 with SMTP id
+ ffacd0b85a97d-482b1fecd3fmr13852768f8f.20.1787165672070; 
+ Wed, 19 Aug 2026 11:54:32 -0700 (PDT)
 Received: from lanath.. (wildly.archaic.org.uk. [81.2.115.145])
  by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-482b145c9d7sm7995048f8f.15.2026.08.19.11.54.33
+ ffacd0b85a97d-482b145c9d7sm7995048f8f.15.2026.08.19.11.54.31
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 19 Aug 2026 11:54:33 -0700 (PDT)
+ Wed, 19 Aug 2026 11:54:31 -0700 (PDT)
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
 Cc: Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@mailo.com>,
  Jan Kiszka <jan.kiszka@web.de>
-Subject: [PATCH 2/5] hw/arm: Remove spurious WM8750 dependency from Realview
- Kconfig
-Date: Wed, 19 Aug 2026 19:54:27 +0100
-Message-ID: <20260819185430.3467629-3-peter.maydell@linaro.org>
+Subject: [PATCH 0/5] arm: Remove the 'musicpal' machine
+Date: Wed, 19 Aug 2026 19:54:25 +0100
+Message-ID: <20260819185430.3467629-1-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.43.0
-In-Reply-To: <20260819185430.3467629-1-peter.maydell@linaro.org>
-References: <20260819185430.3467629-1-peter.maydell@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::336;
- envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x336.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::434;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x434.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -105,28 +101,82 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-The REALVIEW Kconfig stanza has a "select WM8750"; however the board
-itself doesn't actually use this i2c audio device: its audio is
-provided by the pl041 (which connects to an LM4549). Remove the
-spurious dependency.
+The 'musicpal' machine emulates the Freecom MusicPal, which was an
+"internet radio" released in the mid-2000s.  The stock system used a
+2.6.16 Linux kernel, but as far as I'm aware, support for the
+hardware was never upstreamed to the mainline kernel.
 
-Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
----
- hw/arm/Kconfig | 1 -
- 1 file changed, 1 deletion(-)
+There are a number of reasons for deprecating this board:
+ * The hardware is now solidly obsolete
+ * It was never supported in mainline Linux
+ * The SoC is a Marvell one with no public datasheet
+ * The only QEMU changes to it have been the usual tree wide
+   updates and refactoring work
+ * We have no test image for it that we can distribute
+ * The only bug report we've ever had about it has been one of
+   the usual "bug found by static analysis" kind (#4135)
 
-diff --git a/hw/arm/Kconfig b/hw/arm/Kconfig
-index 260d2f0751..5e9a0bd8dc 100644
---- a/hw/arm/Kconfig
-+++ b/hw/arm/Kconfig
-@@ -155,7 +155,6 @@ config REALVIEW
-     select ARM11MPCORE
-     select ARM_TIMER
-     select VERSATILE_PCI
--    select WM8750 # audio codec
-     select LSI_SCSI_PCI
-     select PCI
-     select PL011 # UART
+But in fact we can just drop it immediately, because in commit
+59754f85ed35 ("target/arm: Do memory type alignment check when
+translation disabled") in 2024 we broke the boot of the standard
+firmware image for this board.  (The image's u-boot does a LDRH to an
+unaligned address, which is UNPREDICTABLE; we used to let it through,
+but that commit makes it take a Data Abort, so the image crashes
+before it boots the kernel.) Since nobody complained, we can deduce
+that nobody's actually using this machine.
+
+This patchset first fixes up a couple of places (notably the
+pflash_cfi02 tests) that were using or referring to the musicpal
+board; then it removes the board, followed by the devices used only by
+that board.
+
+Strictly speaking it's possible that somebody is using this machine
+with some other image that doesn't have the same "does an unaligned
+LDRH" problem the stock firmware image does; but it seems unlikely
+to me. We can take the standard "deprecate for two releases, then
+drop" route if people prefer that.
+
+I do also have a patch which reverts the "take a Data Abort on
+unaligned access" change for v5 and v6-with-SCTLR.U=0 CPUs, which I'll
+post separately.
+
+thanks
+-- PMM
+
+Peter Maydell (5):
+  tests/qtest/pflash-cfi02-test: Don't use musicpal machine for testing
+  hw/arm: Remove spurious WM8750 dependency from Realview Kconfig
+  hw/arm: Remove the 'musicpal' machine
+  hw: Remove Marvell 88W8618 devices
+  hw/audio: Remove wm8750 I2C audio device
+
+ MAINTAINERS                             |   10 -
+ configs/devices/arm-softmmu/default.mak |    1 -
+ docs/about/removed-features.rst         |   10 +
+ docs/system/arm/musicpal.rst            |   19 -
+ docs/system/target-arm.rst              |    1 -
+ hw/arm/Kconfig                          |   16 -
+ hw/arm/meson.build                      |    1 -
+ hw/arm/musicpal.c                       | 1388 -----------------------
+ hw/audio/Kconfig                        |    4 -
+ hw/audio/marvell_88w8618.c              |  315 -----
+ hw/audio/meson.build                    |    2 -
+ hw/audio/wm8750.c                       |  738 ------------
+ hw/net/meson.build                      |    1 -
+ hw/net/mv88w8618_eth.c                  |  403 -------
+ include/hw/audio/wm8750.h               |   30 -
+ include/hw/net/mv88w8618_eth.h          |   13 -
+ tests/qtest/meson.build                 |    6 +-
+ tests/qtest/pflash-cfi02-test.c         |   38 +-
+ 18 files changed, 36 insertions(+), 2960 deletions(-)
+ delete mode 100644 docs/system/arm/musicpal.rst
+ delete mode 100644 hw/arm/musicpal.c
+ delete mode 100644 hw/audio/marvell_88w8618.c
+ delete mode 100644 hw/audio/wm8750.c
+ delete mode 100644 hw/net/mv88w8618_eth.c
+ delete mode 100644 include/hw/audio/wm8750.h
+ delete mode 100644 include/hw/net/mv88w8618_eth.h
+
 -- 
 2.43.0
 

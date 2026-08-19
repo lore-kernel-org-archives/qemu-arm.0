@@ -4,106 +4,96 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 57768C5DF81
-	for <qemu-arm@archiver.kernel.org>; Wed, 19 Aug 2026 14:15:00 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D1208C5B572
+	for <qemu-arm@archiver.kernel.org>; Wed, 19 Aug 2026 14:37:19 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wwh4C-0005IM-HR; Wed, 19 Aug 2026 10:14:56 -0400
+	id 1wwhPT-0006IO-4g; Wed, 19 Aug 2026 10:36:55 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <farosas@suse.de>)
- id 1wwh4B-0005I9-Nf; Wed, 19 Aug 2026 10:14:55 -0400
-Received: from smtp-out1.suse.de ([2a07:de40:b251:101:10:150:64:1])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <farosas@suse.de>)
- id 1wwh49-0007KI-Tz; Wed, 19 Aug 2026 10:14:55 -0400
-Received: from imap1.dmz-prg2.suse.org (unknown [10.150.64.97])
+ (Exim 4.90_1) (envelope-from <marcandre.lureau@redhat.com>)
+ id 1wwhPS-0006I7-CR
+ for qemu-arm@nongnu.org; Wed, 19 Aug 2026 10:36:54 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <marcandre.lureau@redhat.com>)
+ id 1wwhPQ-0004nX-UD
+ for qemu-arm@nongnu.org; Wed, 19 Aug 2026 10:36:54 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1787150211;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=QmXjfwCmTfVMRqKrhfGrzsJ8XvFEy4ttP1QoJxRfwG8=;
+ b=Jg2aO17rhNdrvIKQxqQJkpYM6eFWGRDZIKu4huIdXz9eVbzLa1sfYKxhn75Ycl8mi13RU5
+ 5vMv9PjgWT7Jdv0fkdS/nraSz4ud9Z32LegzdIFWGTh8PnQRn4lKCHYFPjZRHR1so7vFS0
+ XrLM7XBjrEghrW1Isi13kLN5YYgU7hw=
+Received: from mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
+ relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-647-CC-F7gelOBiMhSjjYhvCwA-1; Wed,
+ 19 Aug 2026 10:36:48 -0400
+X-MC-Unique: CC-F7gelOBiMhSjjYhvCwA-1
+X-Mimecast-MFC-AGG-ID: CC-F7gelOBiMhSjjYhvCwA_1787150205
+Received: from mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com
+ (mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.93])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+ key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by smtp-out1.suse.de (Postfix) with ESMTPS id 3D7C884B74;
- Wed, 19 Aug 2026 14:14:43 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=suse.de; s=susede2_rsa;
- t=1787148887; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
- mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=hIGQ+pPK66qoCA7Bb1aoYVCs+p/Y6Dgi4hxwPx+UmSI=;
- b=Y4RtZS1458eTwGAMu7554ZfOQaDRG+quCGGQHcFK3kkNCONx18nb003PxetuylLtyQQ2lP
- Tr40sx/ABLD0DAtuQes7VRpukM6WXDuaJp7d5jn2wbFzWgVQSOr/UyDz3J7hn0nqJp+5Wv
- bIUJqpBCpPmDBaHoGw/qtr2cdx/e7wU=
-DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=suse.de;
- s=susede2_ed25519; t=1787148887;
- h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
- mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=hIGQ+pPK66qoCA7Bb1aoYVCs+p/Y6Dgi4hxwPx+UmSI=;
- b=sn8U4OMLrRIGn98yQsH8Z0+heN50AsYmB1sn4+ym/ycpAlWeV7ilX8OCD0AQIA9RHnK3Tq
- AZDZRx6JAx2Zx1Aw==
-Authentication-Results: smtp-out1.suse.de;
-	none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=suse.de; s=susede2_rsa;
- t=1787148883; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
- mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=hIGQ+pPK66qoCA7Bb1aoYVCs+p/Y6Dgi4hxwPx+UmSI=;
- b=i1T1uHDruQxzRDjww4xbreScPYKlVmOts/bKSymDGEMInOav7zUBcKCkhXTInSE2c6Z6LZ
- 1421tz6WMQNOjfgvpEfk3u3BR2kuYzNDTHL5of2WxHdQQx+u4leBs4OlM4SOW/BFGIe7z6
- iybezBaF3x+IOTeuX/USX+FHFAT/XGc=
-DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=suse.de;
- s=susede2_ed25519; t=1787148883;
- h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
- mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=hIGQ+pPK66qoCA7Bb1aoYVCs+p/Y6Dgi4hxwPx+UmSI=;
- b=5EH/UtBFjhrk4gB7j0eyARuMtwEFrb1hFrzGt+4MVwATjLQhOSyAw3erj1hKUOtTzD//br
- Fk5T5Zsp8MPC2vDg==
-Received: from imap1.dmz-prg2.suse.org (localhost [127.0.0.1])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
- (No client certificate requested)
- by imap1.dmz-prg2.suse.org (Postfix) with ESMTPS id D1BDA2F81;
- Wed, 19 Aug 2026 14:14:42 +0000 (UTC)
-Received: from dovecot-director2.suse.de ([2a07:de40:b281:106:10:150:64:167])
- by imap1.dmz-prg2.suse.org with ESMTPSA id vGFIKFK6hWoqeAAAD6G6ig
- (envelope-from <farosas@suse.de>); Wed, 19 Aug 2026 14:14:42 +0000
-From: Fabiano Rosas <farosas@suse.de>
-To: Tao Tang <tangtao1634@phytium.com.cn>, Laurent Vivier
- <lvivier@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>
-Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, Peter Maydell
- <peter.maydell@linaro.org>, Chen Baozi <chenbaozi@phytium.com.cn>, Chao
- Liu <chao.liu@processmission.com>, Jim MacArthur
- <jim.macarthur@linaro.org>, Tao Tang <tangtao1634@phytium.com.cn>
-Subject: Re: [RFC v5 4/5] tests/qtest: Add qtest-attrs-test for memory
- access attrs
-In-Reply-To: <20260814035628.3924513-5-tangtao1634@phytium.com.cn>
-References: <20260814035628.3924513-1-tangtao1634@phytium.com.cn>
- <20260814035628.3924513-5-tangtao1634@phytium.com.cn>
-Date: Wed, 19 Aug 2026 11:14:40 -0300
-Message-ID: <87tsoqkxin.fsf@suse.de>
+ by mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id BF8A719560AA; Wed, 19 Aug 2026 14:36:44 +0000 (UTC)
+Received: from localhost (headnet04.pony-001.prod.iad2.dc.redhat.com
+ [10.2.32.116])
+ by mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
+ id 80E44180049F; Wed, 19 Aug 2026 14:36:05 +0000 (UTC)
 MIME-Version: 1.0
-Content-Type: text/plain
-X-Spamd-Result: default: False [-4.30 / 50.00]; BAYES_HAM(-3.00)[99.99%];
- NEURAL_HAM_LONG(-1.00)[-1.000];
- NEURAL_HAM_SHORT(-0.20)[-1.000]; MIME_GOOD(-0.10)[text/plain];
- ARC_NA(0.00)[]; RCVD_VIA_SMTP_AUTH(0.00)[];
- MISSING_XM_UA(0.00)[]; MIME_TRACE(0.00)[0:+];
- RCPT_COUNT_SEVEN(0.00)[10]; MID_RHS_MATCH_FROM(0.00)[];
- RCVD_TLS_ALL(0.00)[];
- DKIM_SIGNED(0.00)[suse.de:s=susede2_rsa,suse.de:s=susede2_ed25519];
- FROM_HAS_DN(0.00)[]; TO_DN_SOME(0.00)[];
- FROM_EQ_ENVFROM(0.00)[]; TO_MATCH_ENVRCPT_ALL(0.00)[];
- RCVD_COUNT_TWO(0.00)[2];
- DBL_BLOCKED_OPENRESOLVER(0.00)[suse.de:mid, suse.de:email,
- imap1.dmz-prg2.suse.org:helo]
-Received-SPF: pass client-ip=2a07:de40:b251:101:10:150:64:1;
- envelope-from=farosas@suse.de; helo=smtp-out1.suse.de
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+Subject: Re: [PATCH v3 01/15] qom/object.c: introduce
+ OBJECT_CLASS_PROPERTY_SCALAR_GETTER(type) macro
+From: marcandre.lureau@redhat.com
+To: Mark Cave-Ayland <mark.caveayland@nutanix.com>
+Cc: mst@redhat.com, imammedo@redhat.com, anisinha@redhat.com, 
+ philmd@mailo.com, aurelien@aurel32.net, peter.maydell@linaro.org, 
+ pbonzini@redhat.com, richard.henderson@linaro.org, berrange@redhat.com, 
+ marcandre.lureau@redhat.com, qemu-devel@nongnu.org, qemu-arm@nongnu.org
+In-Reply-To: <20260819133816.3497033-2-mark.caveayland@nutanix.com>
+References: <20260819133816.3497033-1-mark.caveayland@nutanix.com>
+ <20260819133816.3497033-2-mark.caveayland@nutanix.com>
+Date: Wed, 19 Aug 2026 18:35:56 +0400
+Message-Id: <178715015696.1965216.10979145162816192852.b4-review@b4>
+X-Developer-Signature: v=1; a=openpgp-sha256; l=548;
+ i=marcandre.lureau@redhat.com; h=from:subject:message-id;
+ bh=lJtqtwgEC1U6HmL7xalBDYBJQLrSqM3pJKRqM9vgJIc=;
+ b=owEBbQKS/ZANAwAKAdro4Ql1lpzlAcsmYgBqhb9QF/dOhDDaI3WUVEj4ZjdKKhY7K4mThKwg3
+ SO/LS8cmDKJAjMEAAEKAB0WIQSHqb2TP4fGBtJ29i3a6OEJdZac5QUCaoW/UAAKCRDa6OEJdZac
+ 5VMHD/907b9lvFATUDj369Pe+3CBRAqXc3ip4WF/2ZxgWau6eRS1MiUnxdCEZmRjn+W7PvPBUqH
+ FR1slwlZegaasslZIZ4CzSrL/J0F1JbEa3b/xK14/8i90TYjBR9GQ/TWNA5gNpMOkcrV8D9K/9U
+ vAUk1f0DzNyT54EA2hVEHfpWmTv59XYOIPaOoDao8wbf7wvZoWKVR5cw95bqF8+QtuNq5ICy0j1
+ 6RiOzex/QCqlmyotgE+6ezF3FBBgOmohvl9iZp4vl99NVAnmMSHiJzQhsPbp5B1OEIKeVqnzFKl
+ OnwY5INlmlqosX7r6rm36UKknx+RB/w1A8aqQ116Eduuy+YkO5YYOSWIjOjXbsdSDguoZy8RXrN
+ lauSfPlvo9fZzPyCrOZKHMCFw29QPE13OjKsNiw+Mocex2HWuvcC3MwO/N12eOu3Z0hwpgp+TLH
+ en8Qdy2afqjDIGTvyDO04EUJa6Kp5WKbiRKCz3zAtT7YDHc2DykMvBfCcYLaxKDh8St73EQ0TD/
+ Ohu+zlqSDJ37Q0BGq4bDKD3YhiPQ0hynBA8VFJkx8SiScYqrczNeMg0RJpW/vNA1DHUS5Nmek7u
+ bERfRyVSvpXZahAsow9UC9OhTMCvCJCXi5XZ3sf4xpM6PdnKajL1l7L9Jxo4vktMOmu4B3OzNW9
+ q++ruyXsMsK36Eg==
+X-Developer-Key: i=marcandre.lureau@redhat.com; a=openpgp;
+ fpr=87A9BD933F87C606D276F62DDAE8E10975969CE5
+X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.93
+X-Mimecast-MFC-PROC-ID: K8UnxJxSkLxNDrP31SD7ln2AMyskd_ztqNdYrPJ74d4_1787150205
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=170.10.129.124;
+ envelope-from=marcandre.lureau@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: 9
+X-Spam_score: 0.9
+X-Spam_bar: /
+X-Spam_report: (0.9 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.341,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=0.001, RCVD_IN_SBL_CSS=3.335,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -119,53 +109,19 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Tao Tang <tangtao1634@phytium.com.cn> writes:
+On Wed, 19 Aug 2026 14:35:40 +0100, Mark Cave-Ayland <mark.caveayland@nutanix.com> wrote:
+> This macro will be used to generate the boilerplate property_class_get_type_ptr()
+> QOM get function for the specified scalar type.
+> 
+> Note that since the macro is currently unused, the object_class_prop_ptr() helper
+> function is temporarily marked as __attribute__((unused)) to allow compilation to
+> succeed.
+> 
+> [...]
 
-> Add qtest-attrs-test to exercise qtest memory access commands with attrs
-> on both aarch64 and x86.
->
-> The test covers:
-> - Arm virt,secure=on: scalar and bulk accesses across non-secure,
->   secure, and root spaces, plus negative coverage for realm and for
->   non-secure accesses into secure-only RAM
-> - x86 q35: normal accesses
-> - libqtest-single *_attrs shortcut wrappers
->
-> Add reusable response assertion helpers and structured attrs failure
-> helpers to libqtest.
+Reviewed-by: Marc-André Lureau <marcandre.lureau@redhat.com>
 
-Can't you re-order patch 3/5 before 2/5 and put these generic changes in
-2/5 as well?
+-- 
+Marc-André Lureau <marcandre.lureau@redhat.com>
 
-> Use the structured APIs for negative memory access
-> tests, while retaining raw protocol commands for malformed command
-> shapes that the typed APIs cannot express.
->
-> On Arm, the test targets the virt machine's secure-only RAM window so
-> that the requested attrs must select the correct address space.
->
-> Also wire qtest-attrs-test into the aarch64 and i386/x86_64 qtest
-> builds.
->
-> Signed-off-by: Tao Tang <tangtao1634@phytium.com.cn>
-> ---
->  tests/qtest/libqtest.c         | 156 +++++++++++++++++
->  tests/qtest/libqtest.h         | 111 ++++++++++++
->  tests/qtest/meson.build        |   7 +-
->  tests/qtest/qtest-attrs-test.c | 305 +++++++++++++++++++++++++++++++++
->  4 files changed, 577 insertions(+), 2 deletions(-)
->  create mode 100644 tests/qtest/qtest-attrs-test.c
->
-> diff --git a/tests/qtest/libqtest.c b/tests/qtest/libqtest.c
-> index 37aa69e1297..533b6f34599 100644
-> --- a/tests/qtest/libqtest.c
-> +++ b/tests/qtest/libqtest.c
-
-The repetition introduced in this part is annoying, but let's not suffer
-because of it, we can clean it up later. We could probably unify the
-attrs and non-attrs versions using variadic functions as with the qmp
-helpers.
-
-For libqtest:
-Reviewed-by: Fabiano Rosas <farosas@suse.de>
 

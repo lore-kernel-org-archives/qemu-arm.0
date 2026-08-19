@@ -4,83 +4,83 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D4B40C5DF85
-	for <qemu-arm@archiver.kernel.org>; Wed, 19 Aug 2026 17:53:30 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CC2AAC5DF81
+	for <qemu-arm@archiver.kernel.org>; Wed, 19 Aug 2026 17:53:38 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wwkTe-0007cO-0R; Wed, 19 Aug 2026 13:53:26 -0400
+	id 1wwkTc-0007aZ-1I; Wed, 19 Aug 2026 13:53:24 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <marcandre.lureau@redhat.com>)
- id 1wwkTc-0007ad-JM
- for qemu-arm@nongnu.org; Wed, 19 Aug 2026 13:53:24 -0400
+ id 1wwkTa-0007a4-2K
+ for qemu-arm@nongnu.org; Wed, 19 Aug 2026 13:53:22 -0400
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <marcandre.lureau@redhat.com>)
- id 1wwkTb-0005Rx-3k
- for qemu-arm@nongnu.org; Wed, 19 Aug 2026 13:53:24 -0400
+ id 1wwkTY-0005RB-1J
+ for qemu-arm@nongnu.org; Wed, 19 Aug 2026 13:53:21 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1787162002;
+ s=mimecast20190719; t=1787161999;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=cKQG/fbtJdBCAFaJpwijUotLltEPSaasJ5VmlijdSe8=;
- b=gSQURSOsAbcNDam02aFyvHreUYHUXL5V7cr+AzVoSwcXusZtRWcXcYtv8cb8vufN8NOF65
- +rgjSjCHeRAHEN799cYTdNtSyTMioWeMi3Tl6OxXD2OLHE/SH9WzOb1Dwt9XQ3BXntcnc8
- lYwdALPIVdEVSpp4GszS/fPNi3CC550=
-Received: from mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com
+ bh=zzHymwvufz9uUy1m8PxV3GbR79zDKFCy+bCNG5STAtg=;
+ b=FCz5CSdnZDcY8OYuPPkAg47g4nH9GnsTCUveQoq96hABmWR3DBobHDLoaHgBvuELYH7rSE
+ j7q0PfZmyorVy+r3BmP6pXex6gIzYUV2R85sVJn0RI7m5W2wIIhAX7GA5hJuEv72diOpOS
+ 0dqDQ5lsHufVHJn0s9G7NJjsh2FOTYw=
+Received: from mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com
  (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-528-x6MtblR3PYKxquI-iKvsbw-1; Wed,
- 19 Aug 2026 13:53:21 -0400
-X-MC-Unique: x6MtblR3PYKxquI-iKvsbw-1
-X-Mimecast-MFC-AGG-ID: x6MtblR3PYKxquI-iKvsbw_1787162000
-Received: from mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com
- (mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.93])
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-578-FWXND1y1M-KPTg93ZXdaEA-1; Wed,
+ 19 Aug 2026 13:53:17 -0400
+X-MC-Unique: FWXND1y1M-KPTg93ZXdaEA-1
+X-Mimecast-MFC-AGG-ID: FWXND1y1M-KPTg93ZXdaEA_1787161996
+Received: from mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com
+ (mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.4])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id B17381956089; Wed, 19 Aug 2026 17:53:19 +0000 (UTC)
+ by mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 272731955F5A; Wed, 19 Aug 2026 17:53:16 +0000 (UTC)
 Received: from localhost (headnet03.pony-001.prod.iad2.dc.redhat.com
  [10.2.32.114])
- by mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id 8AA841800348; Wed, 19 Aug 2026 17:53:18 +0000 (UTC)
+ by mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
+ id 3B2A030002EC; Wed, 19 Aug 2026 17:53:13 +0000 (UTC)
 MIME-Version: 1.0
-Subject: Re: [PATCH v3 10/15] hw/acpi/ich9.c: convert object props in
- ICH9_LPC_DEVICE to class props
+Subject: Re: [PATCH v3 09/15] qom/object.c: add
+ object_class_property_add_bool_ptr()
 From: marcandre.lureau@redhat.com
 To: Mark Cave-Ayland <mark.caveayland@nutanix.com>
 Cc: mst@redhat.com, imammedo@redhat.com, anisinha@redhat.com, 
  philmd@mailo.com, aurelien@aurel32.net, peter.maydell@linaro.org, 
  pbonzini@redhat.com, richard.henderson@linaro.org, berrange@redhat.com, 
  marcandre.lureau@redhat.com, qemu-devel@nongnu.org, qemu-arm@nongnu.org
-In-Reply-To: <20260819133816.3497033-11-mark.caveayland@nutanix.com>
+In-Reply-To: <20260819133816.3497033-10-mark.caveayland@nutanix.com>
 References: <20260819133816.3497033-1-mark.caveayland@nutanix.com>
- <20260819133816.3497033-11-mark.caveayland@nutanix.com>
+ <20260819133816.3497033-10-mark.caveayland@nutanix.com>
 Date: Wed, 19 Aug 2026 21:52:43 +0400
-Message-Id: <178716196333.2018258.5241156257240924760.b4-review@b4>
-X-Developer-Signature: v=1; a=openpgp-sha256; l=433;
+Message-Id: <178716196332.2018258.9610593235879631054.b4-review@b4>
+X-Developer-Signature: v=1; a=openpgp-sha256; l=3626;
  i=marcandre.lureau@redhat.com; h=from:subject:message-id;
- bh=m83+WxWGnfgayOG4H+7LYSOGaol3Wxuf6MMJJY0vgHA=;
- b=owEBbQKS/ZANAwAKAdro4Ql1lpzlAcsmYgBqhe19NMwo305YrJeWI0XmeBvCKHi3WIE8V9BaZ
- h8ZwFu87wCJAjMEAAEKAB0WIQSHqb2TP4fGBtJ29i3a6OEJdZac5QUCaoXtfQAKCRDa6OEJdZac
- 5SdtEACSgtPmN61vsarxqfnfGPAryKJ6GiKMxmsordZq1nkOXWz8pllw9gC4QBiB5jq15x8G3Sp
- 45wCKQboO0sY4kxhp7tI7GMC2hPlUd3ry1Wx7zA3i01MrflOujSY10mqapRC2fOyxc8Jixji5Zr
- Y/8imsPEKHBq+x0DRk15i2SBM1zQiNQvnUd6DakjqZQJEWhVJrB3CACmaN3rFHAv0Y5HX4rRCF2
- PS188/5EsnpnwuD1fch2lLKFGJfzjOrYh/x6XemZ/SYepeIeJb8wZyaN9GBAw/o3ML/H9MdQ8W6
- Bx9csKe6uQsrC08V4T1/a5pJVYWuO3clHSfs2nplmK/MhBOqoae49dpkm+bVTymhaf6/F48UFkc
- XYNKucbg5UMbiJ5eZVjqc4xzdWE5etsj7VxgSEzFjE5my7+UIaHnKAcR0La4VjhAC31jYpDLIe7
- VLGMg4BH4InBp7dmCSlt0/UyKd4sCIWrGDv9/DoJyjf+t9nYmilDsapwPChJe/3ZhOlZu2abpc/
- YZBbt9RnxVJvVX0cuGfOI5AwtOgbFIJjDURLUDVR5w2RarJTyEokt/fQ5PawzCZUllay3DFx8DJ
- htqB6gxiScNDlgWVs/899DKGGZfjJMiHxjGgPRIPABEraEJZ+Xr3EMmnL0d2EBX3zWkNUyjGhn+
- BYwTBREDFxsRmEw==
+ bh=dVHHTwgtzEhqCflOeFY2K+zbIkcFIO9Dpc1bPCJjVG8=;
+ b=owEBbQKS/ZANAwAKAdro4Ql1lpzlAcsmYgBqhe19QFt6XlRKqorEmJRLvv13/q29IqdLXOWGo
+ hTunJuAg3SJAjMEAAEKAB0WIQSHqb2TP4fGBtJ29i3a6OEJdZac5QUCaoXtfQAKCRDa6OEJdZac
+ 5W29D/9ycie3LkntMyNWYuCuYQaV8nA9Zc9QT2hvccFDSaPh+ni+tbagFo0qJ4JRklePspxfe7p
+ 7HfPNcITHDVbSu9YyMpvPNlDAuQ70FYV+WVvI4cyIyqcu/UJkJp+FasUELTkyGUhOMIJStAthng
+ 0XbaUAKcTHbKfdFgHLBKUKI5WebkkgLhBu7ZGiOUvFpAt/FkgTDoRRvbl30yaOBWU5AG/HGY5iK
+ 0MxY0vAcfO2g/DvcuceCnn+VmsXclV/Q38MMdmriyR1uhDtNdsoug8Hy+7L3AhC2DQK92rZSBBx
+ X7CHsdUk80A5vipYBEjteuLF927H/nOoe6k+O+y5uV+7z32GRTnXTwAd8QKvcLiJeaBVn+6FuG9
+ UYGPXorOZXlSSxfjtcRPjoxSzfSJrQ8HdUQqahjU2qgTFFWUQUK6IX0KyAOdmciR6iBZZvHW6rk
+ gUctdxtciZFejjYusEvkWEWnhygg786Gv6wpCs27w9WfAp0IbEg+XL1GwnSQdz6cUMG3utUf1L7
+ 5omRgQd9XJQ2uwp/YExJYckvaYvlJYps+O0OC14zXuNECD/EgSUlL7gY/6I/N60EetUKwldFF85
+ W/SDLiocHatkCOhBnDJCWDKU7qZJMHDtqahl7wd7UM0ij+pk4ptpIZg8c0xw2pbKI1/MhTghKKN
+ UXfs9zPlw1TdoWA==
 X-Developer-Key: i=marcandre.lureau@redhat.com; a=openpgp;
  fpr=87A9BD933F87C606D276F62DDAE8E10975969CE5
-X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.93
-X-Mimecast-MFC-PROC-ID: 6pAtIyswj8MyoXyNRdmt_NLihLod-4NBzeulwhB7NZY_1787162000
+X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.4
+X-Mimecast-MFC-PROC-ID: 9xGttCtPPAtN0MdS8u44AOWp4WYabYAOS_pSLjzuIK8_1787161996
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
@@ -110,10 +110,102 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Wed, 19 Aug 2026 14:35:49 +0100, Mark Cave-Ayland <mark.caveayland@nutanix.com> wrote:
-> ACPI_PM_PROP_TCO_ENABLED, ACPI_PM_PROP_ACPI_PCIHP_BRIDGE and x-keep-pci-slot-hpc
-> properties can be converted to use object_class_property_add_bool_ptr(). Remove
-> the now unused ich9_pm_add_properties() function.
+> This adds a class property that references a bool within the object instance
+> and is intended to be used as a replacement for object_class_property_add_bool()
+> where possible.
+> 
+> Signed-off-by: Mark Cave-Ayland <mark.caveayland@nutanix.com>
+> Message-ID: <20260819133816.3497033-10-mark.caveayland@nutanix.com>
+>
+> diff --git a/include/qom/object.h b/include/qom/object.h
+> index e0c88453b1e0..b469740782ac 100644
+> --- a/include/qom/object.h
+> +++ b/include/qom/object.h
+> @@ -2017,6 +2017,24 @@ typedef enum {
+>      OBJ_PROP_FLAG_READWRITE = (OBJ_PROP_FLAG_READ | OBJ_PROP_FLAG_WRITE),
+>  } ObjectPropertyFlags;
+>  
+> +/**
+> + * object_class_property_add_bool_ptr:
+> + * @klass: the object class to add a property to
+> + * @name: the name of the property
+> + * @offset: the offset from the object instance where the bool value is
+> + *   stored
+> + * @flags: bitwise-or'd ObjectPropertyFlags
+> + *
+> + * Add an integer property in memory.  This function will add a
+
+"Add an integer property" -> "Add a boolean property"
+
+> + * property of type 'bool'.
+> + *
+> + * Returns: The newly added property on success, or %NULL on failure.
+> + */
+> +ObjectProperty *object_class_property_add_bool_ptr(ObjectClass *klass,
+> +                                         const char *name,
+> +                                         ptrdiff_t offset,
+> +                                         ObjectPropertyFlags flags);
+> +
+>  /**
+>   * object_property_add_uint8_ptr:
+>   * @obj: the object to add a property to
+> diff --git a/qom/object.c b/qom/object.c
+> index fe032c96190c..b82f10376a44 100644
+> --- a/qom/object.c
+> +++ b/qom/object.c
+> @@ -2749,6 +2749,49 @@ DEFINE_OBJECT_CLASS_PROPERTY_SCALAR_METHODS(uint32)
+>  #undef DEFINE_OBJECT_CLASS_PROPERTY_SCALAR_METHODS
+>  
+>  
+> +static void property_class_get_bool_ptr(Object *obj, Visitor *v,
+> +                                        const char *name,
+> +                                        void *opaque, Error **errp)
+> +{
+> +    bool value = *(bool *)object_class_prop_ptr(obj, (ptrdiff_t)opaque);
+> +
+> +    visit_type_bool(v, name, &value, errp); \
+
+extra \
+
+> +}
+> +
+> +static void property_class_set_bool_ptr(Object *obj, Visitor *v,
+> +                                        const char *name,
+> +                                        void *opaque, Error **errp)
+> +{
+> +    bool *field = (bool *)object_class_prop_ptr(obj, (ptrdiff_t)opaque);
+> +    bool value;
+> +
+> +    if (!visit_type_bool(v, name, &value, errp)) {
+> +        return;
+> +    }
+> +
+> +    *field = value;
+> +}
+> +
+> +ObjectProperty *
+> +object_class_property_add_bool_ptr(ObjectClass *klass, const char *name,
+> +                                   ptrdiff_t offset,
+> +                                   ObjectPropertyFlags flags)
+> +{
+> +    ObjectPropertyAccessor *getter = NULL;
+> +    ObjectPropertyAccessor *setter = NULL;
+> +
+> +    if ((flags & OBJ_PROP_FLAG_READ) == OBJ_PROP_FLAG_READ) {
+> +        getter = property_class_get_bool_ptr;
+> +    }
+> +
+> +    if ((flags & OBJ_PROP_FLAG_WRITE) == OBJ_PROP_FLAG_WRITE) {
+> +        setter = property_class_set_bool_ptr;
+> +    }
+> +
+> +    return object_class_property_add(klass, name, "bool",
+> +                                     getter, setter, NULL, (void *)offset);
+> +}
+> +
+>  ObjectProperty *
+>  object_property_add_uint8_ptr(Object *obj, const char *name,
+>                                const uint8_t *v,
 
 Reviewed-by: Marc-André Lureau <marcandre.lureau@redhat.com>
 

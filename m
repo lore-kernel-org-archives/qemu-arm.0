@@ -4,93 +4,58 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B6379C5DF81
-	for <qemu-arm@archiver.kernel.org>; Tue, 18 Aug 2026 23:48:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 46360C5DF81
+	for <qemu-arm@archiver.kernel.org>; Wed, 19 Aug 2026 00:03:34 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wwTX8-0005nK-Oj; Tue, 18 Aug 2026 19:47:54 -0400
+	id 1wwTlx-0007qi-9e; Tue, 18 Aug 2026 20:03:13 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1wwTX6-0005mL-MC
- for qemu-arm@nongnu.org; Tue, 18 Aug 2026 19:47:52 -0400
-Received: from mail-pj1-x102f.google.com ([2607:f8b0:4864:20::102f])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1wwTX5-0004Ar-8L
- for qemu-arm@nongnu.org; Tue, 18 Aug 2026 19:47:52 -0400
-Received: by mail-pj1-x102f.google.com with SMTP id
- 98e67ed59e1d1-383cb94f742so570090a91.3
- for <qemu-arm@nongnu.org>; Tue, 18 Aug 2026 16:47:50 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <andrew@codeconstruct.com.au>)
+ id 1wwTlv-0007qS-Of; Tue, 18 Aug 2026 20:03:11 -0400
+Received: from pi.codeconstruct.com.au ([203.29.241.158]
+ helo=codeconstruct.com.au)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <andrew@codeconstruct.com.au>)
+ id 1wwTls-0005kv-LX; Tue, 18 Aug 2026 20:03:11 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1787096870; x=1787701670; darn=nongnu.org;
- h=content-transfer-encoding:content-type:in-reply-to:content-language
- :from:references:cc:to:subject:user-agent:mime-version:date
- :message-id:from:to:cc:subject:date:message-id:reply-to:content-type;
- bh=fc56p3k8uuRnc97EoofyEUOBaGfYaZmyJH4nBz5RWwg=;
- b=iwSgs1gxtvASv5VsQOeHUgqJ+ijL3AuzzpBoiFR7fjH3cedk2yTUZ2jmUCxgwebGl9
- lrJ1/trT5BoRKyRzqvke3IbqR/WXza16rT+jMuYgezbr6q4GYIVJy5TEfQjHTcVYigkQ
- xwrmXQDivo2ESOAAogldx6cBY6mPdbn2SNY3iC5TVOsG7fwJiYDRJ7E6r+nAna1pBJMP
- Kxn0GqjWm4u/UNzKlRSQwIJ6OZIUMsqkz0tx33Ges4UcQz3f+3fjMCtRuS/y1j3ZOn9x
- T7JIMNOXHFD+E8gvhLwsiBS4zWbaj++THW3XdGgF77cliROSyP70WvsTVCZ3yVWBXoHL
- Q+mg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1787096870; x=1787701670;
- h=content-transfer-encoding:content-type:in-reply-to:content-language
- :from:references:cc:to:subject:user-agent:mime-version:date
- :message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
- :message-id:reply-to:content-type;
- bh=fc56p3k8uuRnc97EoofyEUOBaGfYaZmyJH4nBz5RWwg=;
- b=Y6PTGjImWsFdoGH7qaPyCcYqyjzskuzXYvHE/KvDG0Iclb6CBGxMQsjqX6Hl/WDJkS
- dJDRCPqJvBSAXdSnPbRZi1h1CVqQJHpoYiij/wVcEam3aQAqz4B2t5uJ3Rm2I1m9fa1r
- 2e5OwiXPKwRH3K4wiyBLDFEac9VMkn5rc8fjJ+sd8wx+yZ3CA6Xvx5MQOtUA7wAGQaZ7
- UEjYtq3TiZDlYpb3GamB84JzDZ26SWvOhAygWzQAHmKGFljt/KSlB6uLH9g+Y1Jx/kgm
- d+g+IbWsyan+CE2ZqfF36hHYJ5nsJOiZxDMEZOglu+Nx3tWRhGQpMkCUbJUMB6oR/VUD
- l+SQ==
-X-Gm-Message-State: AOJu0YyEMjFzQvbY8NS9ZZNU+02nxq7yfQLGlJY2621mSsmYqLJIUSd+
- uxm3Vg4nj8gITxE4BNUIVt60Q7QEAQKZ2mOXIvGFTCndDCbdmWZpYNSlK+1nrX/O7QI=
-X-Gm-Gg: AR+sD13f9lGFv7uQj5XLpAz4jfrSgsOVKOVUw6UO4eKwULgSyzJErsz4/rm+TrbVeP0
- 7U9mel30Z6WKW3IfGZBHLOOJ1wq7B+EeP1jluulCMQV5TICLaQspUinbVQ+XDr4vp5C82gDS4bC
- YJv9KmDT9jQH2qc1HnvIHGiu0RivJCBEkh18mlCCbeVb1CGiZL3MN1K2qvVMew3N2LcZFF7w0cf
- upUohmu0FWtg8DbyvmS4jFD86vFMjp7FXYZjl7lXilWw7JGJp5Lz6IBmYokEtLDs0bLA01CfxcH
- EPAeXFEdqELVo1Co6zYUTA1Fl3FgSz/H9tn4CTqsyR1HCWrRWnsK2wcUHnskvSIIewzANnDAvYR
- N70J3LDsKZPWetB7H72SXGNGiSZvU9e8Nr2RKkdtQZWnInM7lS+m9IfUiZdhnBv+A6YczNMymxd
- 2OMlRvBksGy6qpZ5uwptVA4pvAyDy+DrtnH3ItUaQbM4muufxDk+GjaczUlKVf1KP08FbsRWwg9
- ztck5f05tP1aCJ860E=
-X-Received: by 2002:a17:90b:164c:b0:393:19a3:4e5 with SMTP id
- 98e67ed59e1d1-395812c6e07mr783639a91.16.1787096869446; 
- Tue, 18 Aug 2026 16:47:49 -0700 (PDT)
-Received: from [192.168.122.51] ([173.164.107.233])
- by smtp.gmail.com with ESMTPSA id
- 98e67ed59e1d1-3957fb87174sm379525a91.12.2026.08.18.16.47.48
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 18 Aug 2026 16:47:48 -0700 (PDT)
-Message-ID: <00df9c29-1bbb-41c2-958c-dd5d57c35564@linaro.org>
-Date: Tue, 18 Aug 2026 16:47:47 -0700
+ d=codeconstruct.com.au; s=2022a; t=1787097782;
+ bh=2SQk7T/GNP1Yf1sN+B13EFNV8udy89ysNTcGihRxD5Q=;
+ h=Subject:From:To:Cc:Date:In-Reply-To:References;
+ b=M9Djp+YLkGghgA5FSHBBNcLr3JUgTUoeSiIXlloXDTvnka/8A80KzyM0r8DodJ8E6
+ ih+t8YnpZgQyqMMjkM2lwk4iDIWP82VAWib1yAFBaFoTv2doc0yMHyc2IsBA0HOQmS
+ 4HoSZjtde9MDeevqJZGQevw1F5a5zVuU2/drVUXTExUnSIQlpVzvL5w9Y+iHCMRiF3
+ vSLLvLTvyzGhiyGQ8ALAbgm+/yU2pne5vRVpO36tjLyz8LVN8dOGkoqJg1LkVrD8js
+ XqjyzAqyz9oigWlh7w9ArcZgZW1KPfTd/3UUh2Bd+oZzwtpfGy1pxBTldNYhSUKhX0
+ DM7oLls3xxXjg==
+Received: from [192.168.68.117] (unknown [180.150.113.112])
+ by mail.codeconstruct.com.au (Postfix) with ESMTPSA id 07CFB6490E;
+ Wed, 19 Aug 2026 08:03:00 +0800 (AWST)
+Message-ID: <6531a80710d4b2163605b7d44747189a7ab58dbf.camel@codeconstruct.com.au>
+Subject: Re: [PATCH] hw/misc/aspeed_scu: Set both AST2600 protection key
+ registers on reset
+From: Andrew Jeffery <andrew@codeconstruct.com.au>
+To: =?ISO-8859-1?Q?C=E9dric?= Le Goater <clg@kaod.org>, qemu-devel@nongnu.org
+Cc: Peter Maydell <peter.maydell@linaro.org>, Steven Lee	
+ <steven_lee@aspeedtech.com>, Troy Lee <leetroy@gmail.com>, Jamin Lin	
+ <jamin_lin@aspeedtech.com>, Kane Chen <kane_chen@aspeedtech.com>, Joel
+ Stanley	 <joel@jms.id.au>, qemu-arm@nongnu.org
+Date: Wed, 19 Aug 2026 09:32:57 +0930
+In-Reply-To: <98572f2f-cb08-45c5-aaf6-749db2a2611b@kaod.org>
+References: <20260818-dev-ast2600-hw-prot-key-reset-v1-1-5dc3de64c247@codeconstruct.com.au>
+ <98572f2f-cb08-45c5-aaf6-749db2a2611b@kaod.org>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+User-Agent: Evolution 3.56.2-0+deb13u1 
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [RFC PATCH 16/18] target/riscv: Recognize watchpoints with
- first/last
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@oss.qualcomm.com>,
- qemu-devel@nongnu.org
-Cc: qemu-arm@nongnu.org, qemu-riscv@nongnu.org
-References: <20260815203730.1468365-1-richard.henderson@linaro.org>
- <20260815203730.1468365-17-richard.henderson@linaro.org>
- <c25aa359-4519-483e-aa7e-2ba69daa18c2@oss.qualcomm.com>
-From: Richard Henderson <richard.henderson@linaro.org>
-Content-Language: en-US
-In-Reply-To: <c25aa359-4519-483e-aa7e-2ba69daa18c2@oss.qualcomm.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::102f;
- envelope-from=richard.henderson@linaro.org; helo=mail-pj1-x102f.google.com
+Received-SPF: pass client-ip=203.29.241.158;
+ envelope-from=andrew@codeconstruct.com.au; helo=codeconstruct.com.au
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_PASS=-0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -107,39 +72,128 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On 8/17/26 22:43, Philippe Mathieu-Daudé wrote:
-> On 15/8/26 22:37, Richard Henderson wrote:
->> Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
->> ---
->>   target/riscv/tcg/cpu_helper.c | 4 ++--
->>   1 file changed, 2 insertions(+), 2 deletions(-)
->>
->> diff --git a/target/riscv/tcg/cpu_helper.c b/target/riscv/tcg/cpu_helper.c
->> index 11f2654da1..3318e82ea7 100644
->> --- a/target/riscv/tcg/cpu_helper.c
->> +++ b/target/riscv/tcg/cpu_helper.c
->> @@ -1784,8 +1784,8 @@ bool riscv_cpu_tlb_fill(CPUState *cs, vaddr address, vaddr first, 
->> vaddr last,
->>            * Otherwise we'll throw a debug exception and execution
->>            * will continue elsewhere.
->>            */
->> -        cpu_check_watchpoint(cs, address, size, MEMTXATTRS_UNSPECIFIED,
->> -                             wp_access, retaddr);
->> +        cpu_check_watchpoint(cs, first, last - first + 1,
->> +                             MEMTXATTRS_UNSPECIFIED, wp_access, retaddr);
-> 
-> Maybe squash in "accel/tcg: Replace size with first/last in TCGCPUOps.tlb_fill"
+On Tue, 2026-08-18 at 23:20 +0200, C=C3=A9dric Le Goater wrote:
+> On 8/18/26 03:43, Andrew Jeffery wrote:
+> > Currently, booting Linux on the ast2600-evb machine via -kernel results
+> > in a lot of warnings about failing to apply pinmux configuration when
+> > binding drivers:
+> >=20
+> > =C2=A0=C2=A0=C2=A0=C2=A0 [=C2=A0=C2=A0=C2=A0 7.339307][=C2=A0=C2=A0=C2=
+=A0 T1] Creating 5 MTD partitions on "bmc":
+> > =C2=A0=C2=A0=C2=A0=C2=A0 [=C2=A0=C2=A0=C2=A0 7.340402][=C2=A0=C2=A0=C2=
+=A0 T1] 0x000000000000-0x0000000e0000 : "u-boot"
+> > =C2=A0=C2=A0=C2=A0=C2=A0 [=C2=A0=C2=A0=C2=A0 7.513755][=C2=A0=C2=A0=C2=
+=A0 T1] 0x0000000e0000-0x000000100000 : "u-boot-env"
+> > =C2=A0=C2=A0=C2=A0=C2=A0 [=C2=A0=C2=A0=C2=A0 7.664219][=C2=A0=C2=A0=C2=
+=A0 T1] 0x000000100000-0x000000a00000 : "kernel"
+> > =C2=A0=C2=A0=C2=A0=C2=A0 [=C2=A0=C2=A0=C2=A0 7.826974][=C2=A0=C2=A0=C2=
+=A0 T1] 0x000000a00000-0x000002a00000 : "rofs"
+> > =C2=A0=C2=A0=C2=A0=C2=A0 [=C2=A0=C2=A0=C2=A0 8.026666][=C2=A0=C2=A0=C2=
+=A0 T1] 0x000002a00000-0x000004000000 : "rwfs"
+> > =C2=A0=C2=A0=C2=A0=C2=A0 [=C2=A0=C2=A0=C2=A0 8.201612][=C2=A0=C2=A0=C2=
+=A0 T1] spi-aspeed-smc 1e630000.spi: error -EPERM: Error applying setting, =
+reverse things back
+> > =C2=A0=C2=A0=C2=A0=C2=A0 [=C2=A0=C2=A0=C2=A0 8.370835][=C2=A0=C2=A0=C2=
+=A0 T1] spi-aspeed-smc 1e630000.spi: Calibration area too uniform, using lo=
+w speed
+> > =C2=A0=C2=A0=C2=A0=C2=A0 [=C2=A0=C2=A0=C2=A0 8.371131][=C2=A0=C2=A0=C2=
+=A0 T1] spi-aspeed-smc 1e630000.spi: Force to dts configuration 100000kHz.
+> > =C2=A0=C2=A0=C2=A0=C2=A0 [=C2=A0=C2=A0=C2=A0 8.371500][=C2=A0=C2=A0=C2=
+=A0 T1] spi-aspeed-smc 1e630000.spi: CE0 read buswidth:4 [0x406c0741]
+> > =C2=A0=C2=A0=C2=A0=C2=A0 [=C2=A0=C2=A0=C2=A0 8.766797][=C2=A0=C2=A0=C2=
+=A0 T1] mdio-aspeed 1e650000.mdio: error -EPERM: Error applying setting, re=
+verse things back
+> > =C2=A0=C2=A0=C2=A0=C2=A0 [=C2=A0=C2=A0=C2=A0 8.906008][=C2=A0=C2=A0=C2=
+=A0 T1] mdio-aspeed 1e650008.mdio: error -EPERM: Error applying setting, re=
+verse things back
+> > =C2=A0=C2=A0=C2=A0=C2=A0 [=C2=A0=C2=A0=C2=A0 9.039240][=C2=A0=C2=A0=C2=
+=A0 T1] mdio-aspeed 1e650010.mdio: error -EPERM: Error applying setting, re=
+verse things back
+> > =C2=A0=C2=A0=C2=A0=C2=A0 [=C2=A0=C2=A0=C2=A0 9.147942][=C2=A0=C2=A0=C2=
+=A0 T1] mdio-aspeed 1e650018.mdio: error -EPERM: Error applying setting, re=
+verse things back
+> >=20
+> > The pinmux configuration fails because the SCU is not unlocked.
+> >=20
+> > Set both SCU protection keys for the AST2600. Further, set them
+> > such that they behave accordance with the read value documented
+> > by the datasheet. The new arrangement now upholds the comment in
+> > hw/arm/aspeed.c regarding passing -kernel on the qemu command-line.
+> >=20
+> > =C2=A0=C2=A0=C2=A0=C2=A0 [=C2=A0=C2=A0=C2=A0 7.568170][=C2=A0=C2=A0=C2=
+=A0 T1] Creating 5 MTD partitions on "bmc":
+> > =C2=A0=C2=A0=C2=A0=C2=A0 [=C2=A0=C2=A0=C2=A0 7.569330][=C2=A0=C2=A0=C2=
+=A0 T1] 0x000000000000-0x0000000e0000 : "u-boot"
+> > =C2=A0=C2=A0=C2=A0=C2=A0 [=C2=A0=C2=A0=C2=A0 7.740372][=C2=A0=C2=A0=C2=
+=A0 T1] 0x0000000e0000-0x000000100000 : "u-boot-env"
+> > =C2=A0=C2=A0=C2=A0=C2=A0 [=C2=A0=C2=A0=C2=A0 7.883570][=C2=A0=C2=A0=C2=
+=A0 T1] 0x000000100000-0x000000a00000 : "kernel"
+> > =C2=A0=C2=A0=C2=A0=C2=A0 [=C2=A0=C2=A0=C2=A0 8.041004][=C2=A0=C2=A0=C2=
+=A0 T1] 0x000000a00000-0x000002a00000 : "rofs"
+> > =C2=A0=C2=A0=C2=A0=C2=A0 [=C2=A0=C2=A0=C2=A0 8.196824][=C2=A0=C2=A0=C2=
+=A0 T1] 0x000002a00000-0x000004000000 : "rwfs"
+> > =C2=A0=C2=A0=C2=A0=C2=A0 [=C2=A0=C2=A0=C2=A0 8.547037][=C2=A0=C2=A0=C2=
+=A0 T1] spi-aspeed-smc 1e630000.spi: Calibration area too uniform, using lo=
+w speed
+> > =C2=A0=C2=A0=C2=A0=C2=A0 [=C2=A0=C2=A0=C2=A0 8.547320][=C2=A0=C2=A0=C2=
+=A0 T1] spi-aspeed-smc 1e630000.spi: Force to dts configuration 100000kHz.
+> > =C2=A0=C2=A0=C2=A0=C2=A0 [=C2=A0=C2=A0=C2=A0 8.547642][=C2=A0=C2=A0=C2=
+=A0 T1] spi-aspeed-smc 1e630000.spi: CE0 read buswidth:4 [0x406c0741]
+> > =C2=A0=C2=A0=C2=A0=C2=A0 [=C2=A0=C2=A0=C2=A0 9.494235][=C2=A0=C2=A0=C2=
+=A0 T1] ftgmac100 1e660000.ethernet: Read MAC address 52:54:00:12:34:56 fro=
+m chip
+> > =C2=A0=C2=A0=C2=A0=C2=A0 [=C2=A0=C2=A0=C2=A0 9.531186][=C2=A0=C2=A0=C2=
+=A0 T1] RTL8211E Gigabit Ethernet 1e650000.mdio-1:00: attached PHY driver (=
+mii_bus:phy_addr=3D1e650000.mdio-1:00,
+> >=20
+> > Fixes: e09cf36321f6 ("hw: aspeed_scu: Add AST2600 support")
+> > Signed-off-by: Andrew Jeffery <andrew@codeconstruct.com.au>
+> > ---
+> > I ran into this issue while improving test coverage in my patch review
+> > process.
+> > ---
+> > =C2=A0 hw/misc/aspeed_scu.c | 3 ++-
+> > =C2=A0 1 file changed, 2 insertions(+), 1 deletion(-)
+> >=20
+> > diff --git a/hw/misc/aspeed_scu.c b/hw/misc/aspeed_scu.c
+> > index ca93c3699d81..1e3db6d03f91 100644
+> > --- a/hw/misc/aspeed_scu.c
+> > +++ b/hw/misc/aspeed_scu.c
+> > @@ -821,7 +821,8 @@ static void aspeed_ast2600_scu_reset_hold(Object *o=
+bj, ResetType type)
+> > =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 s->regs[AST2600_SILICON_REV2] =3D s->sil=
+icon_rev;
+> > =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 s->regs[AST2600_HW_STRAP1] =3D s->hw_str=
+ap1;
+> > =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 s->regs[AST2600_HW_STRAP2] =3D s->hw_str=
+ap2;
+> > -=C2=A0=C2=A0=C2=A0 s->regs[PROT_KEY] =3D s->hw_prot_key;
+> > +=C2=A0=C2=A0=C2=A0 s->regs[AST2600_PROT_KEY] =3D s->hw_prot_key =3D=3D=
+ ASPEED_SCU_PROT_KEY;
+> > +=C2=A0=C2=A0=C2=A0 s->regs[AST2600_PROT_KEY2] =3D s->hw_prot_key =3D=
+=3D ASPEED_SCU_PROT_KEY;
+> > =C2=A0 }
+> > =C2=A0=20
+> > =C2=A0 static void aspeed_2600_scu_class_init(ObjectClass *klass, const=
+ void *data)
+> >=20
+> > ---
+> > base-commit: 9696bf5dc5a5bf0b4a9d05b6cdfe5f13990f97aa
+> > change-id: 20260818-dev-ast2600-hw-prot-key-reset-e68eb9f49ee9
+> >=20
+> > Best regards,
+> > --
+> > Andrew Jeffery <andrew@codeconstruct.com.au>
+> >=20
+>=20
+> Applied to
+>=20
+> =C2=A0=C2=A0=C2=A0=C2=A0 https://github.com/legoater/qemu=C2=A0aspeed-nex=
+t
+>=20
+> Thanks,
+>=20
+> C.
 
-No, because that one explicitly makes no other code changes.
-
-
-> or re-order just after?
-
-Ok.
-
-> I'm confused by this single WP change in middle of PMP API ones.
-It's just before the last use of size is removed.  :-/
-
-
-r~
+Thanks C=C3=A9dric!
 

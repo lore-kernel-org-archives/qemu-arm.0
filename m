@@ -4,96 +4,93 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0947CC5DF81
-	for <qemu-arm@archiver.kernel.org>; Wed, 19 Aug 2026 14:39:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 62672C5B572
+	for <qemu-arm@archiver.kernel.org>; Wed, 19 Aug 2026 15:06:22 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wwhRA-00085F-Cp; Wed, 19 Aug 2026 10:38:40 -0400
+	id 1wwhrd-0008DV-68; Wed, 19 Aug 2026 11:06:01 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <marcandre.lureau@redhat.com>)
- id 1wwhR6-000829-Ky
- for qemu-arm@nongnu.org; Wed, 19 Aug 2026 10:38:36 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <marcandre.lureau@redhat.com>)
- id 1wwhR4-00052q-6p
- for qemu-arm@nongnu.org; Wed, 19 Aug 2026 10:38:35 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1787150313;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=KQB4lLuHk5lN9xm4QCqKpIaDWaF09qA6B46fgul0+1M=;
- b=RhfSNlxiDHZkth8t3DmR9TU1MXPbaDpjwvvOVbM9vBRibzpVihTX75+9wqqPlIrCm0oDRv
- yK1azcqvABFij9Fh5zHa3dbQYslRsY77vgvbucc/D5nBvNjTm+M5jFr0B053yhE8RgZg8R
- 3bw1FlFnWJtLlV1NCaqHZKQt16O1ZTU=
-Received: from mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
- relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-323-IhT6KaMtMRml5YNSnpNyPg-1; Wed,
- 19 Aug 2026 10:38:23 -0400
-X-MC-Unique: IhT6KaMtMRml5YNSnpNyPg-1
-X-Mimecast-MFC-AGG-ID: IhT6KaMtMRml5YNSnpNyPg_1787150300
-Received: from mx-prod-int-10.mail-002.prod.us-west-2.aws.redhat.com
- (mx-prod-int-10.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.95])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
- (No client certificate requested)
- by mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 962FF19560A2; Wed, 19 Aug 2026 14:38:20 +0000 (UTC)
-Received: from localhost (headnet04.pony-001.prod.iad2.dc.redhat.com
- [10.2.32.116])
- by mx-prod-int-10.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id 92234434; Wed, 19 Aug 2026 14:38:15 +0000 (UTC)
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1wwhrb-0008D8-FQ
+ for qemu-arm@nongnu.org; Wed, 19 Aug 2026 11:05:59 -0400
+Received: from mail-pl1-x62c.google.com ([2607:f8b0:4864:20::62c])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1wwhrZ-00024I-Jt
+ for qemu-arm@nongnu.org; Wed, 19 Aug 2026 11:05:59 -0400
+Received: by mail-pl1-x62c.google.com with SMTP id
+ d9443c01a7336-2ccf2360620so8759035ad.3
+ for <qemu-arm@nongnu.org>; Wed, 19 Aug 2026 08:05:56 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1787151956; x=1787756756; darn=nongnu.org;
+ h=content-transfer-encoding:content-type:in-reply-to:content-language
+ :from:references:to:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to:content-type;
+ bh=br9fDUNcd96vwGhn1ZNCB/BiQhDD6ktjxAW0cbXVXL8=;
+ b=QrdIxcFKLm60zW+a9MkM2hFZiIktpu5d97IZTjlX9v/u8ltMPxlBHl+HVpeRjxKf5x
+ ZWQNpMzSidQvg+jOWvOl3NaNEr9e9pdMFBNoBfMFAiyuS3smUS9/x26CikDfQFpTu1Hj
+ UoDFSJDtik+MSlnKmI5GSFsxsYo+0ll3AaIkwg0eAN5kHpfo/xkJyoDAK/naILcJCQNI
+ niavXoQ2JWRUC+5NoamQxR4n6FWkjT/txB55j1kL7dzF2vqecMOSALz4b3MPrHbZGiEz
+ LW4FpQjfifWIPZ7sWN7+MplyeChpTDMVgoC24P6Y/CKVo9riohCROuG7ABmw7ui0bqsz
+ Couw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20251104; t=1787151956; x=1787756756;
+ h=content-transfer-encoding:content-type:in-reply-to:content-language
+ :from:references:to:subject:user-agent:mime-version:date:message-id
+ :x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to:content-type;
+ bh=br9fDUNcd96vwGhn1ZNCB/BiQhDD6ktjxAW0cbXVXL8=;
+ b=Hcl7wimz+8bcFmtQUpoje6qi7lGrwBapP1uaojUxFVEp5vKVdYURdRrtiKB9lBtriQ
+ +1BKv5w25fshePvlSwW+4z7GnXcUAlAcl5EVm2O5AxhgN4aGC/cFkTJimedPIhu4fJJB
+ Ne8HmV4ZgfS6zKQkdadG1tZSSjnOsbv19NYLR+3PM1COM0ZO7FREmNYD9JTAiJzC664p
+ 2lXP1gFsiKbyjcYQCVq0bYWDLjlH2i84o0haTVTQOLtnqNGBMpvHRSPw8QOSzXQmllZP
+ qoX7IgrmMSsGARpHjFiPsr8H8Uhv9/MszqDXV3zrJ2NBCcv62VJGFjiMo1v7G9JN7aUB
+ t0BQ==
+X-Forwarded-Encrypted: i=1;
+ AHgh+RrBJ4WuZhsqaxsOaN99YXSKYDidj5zMvbLi6RnaSj6NRV1jsFZCR+uNHUNKMxZnywMoFg6mveyGWQ==@nongnu.org
+X-Gm-Message-State: AFuF++ncm0e9sdq/wCEpdPT89aHeoXXA4tyHtW1k8dJJQXC9kOYBJUft
+ ZBLygmiM7OjtqFU7wJ90gC7NgjyHFI8i4RNdX6EwRmgS4/vVCHcZKXZhKnk5RuVdGi8=
+X-Gm-Gg: AR+sD10hGdinVxnTmkQzvqC6ErJ3tC2g1jGUZ15mBORvT/ovqNOjxduSmfsG1L8yLwT
+ Sl6nHXlCjJmBpe7tRrEiny+xk3Wrarlw38/9+8gdq7xEcNx1gvBOCZEr8A1PH+oLLmAa4VlR7XV
+ G8N/iTrJ09VsJ8mRHAH87+DsXm299m9ajsN2RRu3S7L4BzlYetwYgkQNCIOx+LT4OXFYK4oLmV0
+ +bFs84iX1p2xW2hA6d536y+dhcIFX91LZTWxt0HkBL6kj9uerCUqlVj2wbsogS/uSH1uqTF/GLS
+ f2G9M+t85HD/++88qEcWFG0uRPq05UG36KzUBm66XNlp3eRLRLvVxfRV2dIlA1d247wIyrlrnb0
+ DsXl6Omc3fxv4xDoTWNKjLyLCUIF8NcBPqqQHbFinxa4rLWjgz3pavUNhhWlQH8ED2pP5cTTSnj
+ ZAyPiHJt+vvm0PRO0VUEOuW/gd0M1VofF+agoXEbqJQPSMmt4iBCoJxkusYsmkeGdKDTAIyI/d8
+ ExJOXXS0H3+AIO8uMLO
+X-Received: by 2002:a17:902:e80d:b0:2d3:a6db:299 with SMTP id
+ d9443c01a7336-2d5fd703145mr92823625ad.6.1787151955835; 
+ Wed, 19 Aug 2026 08:05:55 -0700 (PDT)
+Received: from [10.213.131.227] ([172.56.154.52])
+ by smtp.gmail.com with ESMTPSA id
+ d9443c01a7336-2d5bb4dfe6dsm28479065ad.18.2026.08.19.08.05.54
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Wed, 19 Aug 2026 08:05:55 -0700 (PDT)
+Message-ID: <c1c0c724-0d3c-4bdf-9e9d-86f4caeff6b7@linaro.org>
+Date: Wed, 19 Aug 2026 07:55:13 -0700
 MIME-Version: 1.0
-Subject: Re: [PATCH v3 05/15] hw/isa/lpc_ich9.c: convert ich9_lpc_initfn()
- object props to class props
-From: marcandre.lureau@redhat.com
-To: Mark Cave-Ayland <mark.caveayland@nutanix.com>
-Cc: mst@redhat.com, imammedo@redhat.com, anisinha@redhat.com, 
- philmd@mailo.com, aurelien@aurel32.net, peter.maydell@linaro.org, 
- pbonzini@redhat.com, richard.henderson@linaro.org, berrange@redhat.com, 
- marcandre.lureau@redhat.com, qemu-devel@nongnu.org, qemu-arm@nongnu.org
-In-Reply-To: <20260819133816.3497033-6-mark.caveayland@nutanix.com>
-References: <20260819133816.3497033-1-mark.caveayland@nutanix.com>
- <20260819133816.3497033-6-mark.caveayland@nutanix.com>
-Date: Wed, 19 Aug 2026 18:35:56 +0400
-Message-Id: <178715015699.1965216.5908963098435249264.b4-review@b4>
-X-Developer-Signature: v=1; a=openpgp-sha256; l=234;
- i=marcandre.lureau@redhat.com; h=from:subject:message-id;
- bh=KVEEh1ZdJHiK/Jo4FT2jzvaDkzArcMZwuBM+DJR5Xe4=;
- b=owEBbQKS/ZANAwAKAdro4Ql1lpzlAcsmYgBqhb9R/HJZUqaOxn6ftjI6SGfwqc12+FnqtpTqt
- H8YwLwtXKaJAjMEAAEKAB0WIQSHqb2TP4fGBtJ29i3a6OEJdZac5QUCaoW/UQAKCRDa6OEJdZac
- 5VqZD/4ojJjgcxraf7EovdIXCCctwhTwwOpiOe9bWCRAVrl8qp+3dX7WnOd7jm0nvp97ZRE3ivY
- 8STu3U8RLyyV0CeR15mRCaSC/lkR80RxLHiuuA21S28oHSqHqyfFwGhU8hu4AYZepiV75DeJJXz
- 1lUuc+2xB6CSThvbH5hLUJTDbmBAipdraGtyciVmpx0AB7wThh2QPiCaTcrE1IdzpXSSRf+qLQI
- +0FH1xBUipu5AnWsHIsuTKspnR4Tt+KVPJJOaA89DZGd1rJDQS0+nCkqOkbEjL/nheOOWvbedxH
- PVHlaDX9dtnm/aMV0eayf/YPtVJYgGEcCsPvaC0gtZemlJQLaJsPDjDzOyg1NrPCWOonVEUxUuc
- xXQ+luCoqf5e2UVtdTYpAalvloOm0oHe9Gr64lzh91PFjwXh0V5IhTQR6zROOHxarsGDWi9AV4v
- Yb0kGjkNP5FkG3BqsAw7PRKRjsaVmr+6wMTgeYknoEKvtbA8Hr1QNpeJQJLHcLRGcS22/0ZG3ct
- IKbHNPnRpem6oLmD7n8uSpwjipQKJatYbP27SrazGHeQFUzebBK1PxLPvgTULIlzxsVcmjHXqIr
- +yBa07XPKbagIx6KpPjU0kiwG0wdCwmeybTCcMhdABHLJBLbg0gooWkPpbeafmLjTQA0DDffNs/
- mZMMBEp2xcL5NYg==
-X-Developer-Key: i=marcandre.lureau@redhat.com; a=openpgp;
- fpr=87A9BD933F87C606D276F62DDAE8E10975969CE5
-X-Scanned-By: MIMEDefang 3.6 on 10.30.177.95
-X-Mimecast-MFC-PROC-ID: kVbXVf5QNJkLoSrIg9YJcg-mnilZec1mxnedLBKGxHI_1787150300
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=170.10.129.124;
- envelope-from=marcandre.lureau@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: 9
-X-Spam_score: 0.9
-X-Spam_bar: /
-X-Spam_report: (0.9 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.341,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=0.001, RCVD_IN_SBL_CSS=3.335,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=no autolearn_force=no
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v2 4/8] target/arm: Add new feature ARM_FEATURE_NEON_TRAPS
+To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
+ qemu-devel@nongnu.org
+References: <20260817123838.1578060-1-peter.maydell@linaro.org>
+ <20260817123838.1578060-5-peter.maydell@linaro.org>
+From: Richard Henderson <richard.henderson@linaro.org>
+Content-Language: en-US
+In-Reply-To: <20260817123838.1578060-5-peter.maydell@linaro.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=2607:f8b0:4864:20::62c;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pl1-x62c.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -109,13 +106,37 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-> ICH9_LPC_SMI_NEGOTIATED_FEAT_PROP can be promoted to a Property since it uses
-> standard uint64 getter and setter functions.
+On 8/17/26 05:38, Peter Maydell wrote:
+> The traps configurable via CPACR.ASEDIS and HCPTR.TASE that trap only
+> Neon instructions are unfortunately IMPDEF about whether they are
+> implemented or not, and there is no ID register field that identifies
+> whether they are present.  In practice, they are present on every
+> implementation I have checked except for the Cortex-A8 (which was the
+> first CPU with Neon).
+> 
+> Add a new feature ARM_FEATURE_NEON_TRAPS which we set on every
+> ARM_FEATURE_NEON CPU except the Cortex-A8, and make the CPACR.ASEDIS
+> and HCPTR.TASE bits RAZ/WI unless the CPU has ARM_FEATURE_NEON and
+> ARM_FEATURE_NEON_TRAPS.
+> 
+> Signed-off-by: Peter Maydell<peter.maydell@linaro.org>
+> ---
+> We seem to be a little confused about whether ARM_FEATURE_NEON
+> means "AArch32 Neon" or "AArch32 Neon or AArch64 ASIMD". I have
+> not attempted to unpick that here. I have also not gone so far
+> as to set NEON_TRAPS for the accelerator CPUs, since they won't
+> be using the sysreg access functions anyway and (other than KVM)
+> they don't support AArch32.
+> ---
+>   target/arm/cpu-max.c   |  1 +
+>   target/arm/cpu.h       |  7 +++++++
+>   target/arm/cpu64.c     |  1 +
+>   target/arm/helper.c    | 17 +++++++++++++++--
+>   target/arm/tcg/cpu32.c |  8 ++++++++
+>   target/arm/tcg/cpu64.c | 10 ++++++++++
+>   6 files changed, 42 insertions(+), 2 deletions(-)
 
-But it was read-only before
-otherwise, lgtm
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 
--- 
-Marc-André Lureau <marcandre.lureau@redhat.com>
-
+r~
 

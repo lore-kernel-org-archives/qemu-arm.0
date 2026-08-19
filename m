@@ -4,115 +4,84 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2100CC5DF85
-	for <qemu-arm@archiver.kernel.org>; Wed, 19 Aug 2026 09:23:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0C144C5DF85
+	for <qemu-arm@archiver.kernel.org>; Wed, 19 Aug 2026 09:33:15 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wwcV8-0007pp-9g; Wed, 19 Aug 2026 05:22:26 -0400
+	id 1wwcfV-0005eq-MC; Wed, 19 Aug 2026 05:33:09 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1wwcV6-0007oD-Su
- for qemu-arm@nongnu.org; Wed, 19 Aug 2026 05:22:24 -0400
-Received: from mail-wm1-x329.google.com ([2a00:1450:4864:20::329])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1wwcV4-0001xI-W9
- for qemu-arm@nongnu.org; Wed, 19 Aug 2026 05:22:24 -0400
-Received: by mail-wm1-x329.google.com with SMTP id
- 5b1f17b1804b1-499ac87c92bso2823215e9.1
- for <qemu-arm@nongnu.org>; Wed, 19 Aug 2026 02:22:22 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1787131341; x=1787736141; darn=nongnu.org;
- h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
- :content-type:mime-version:subject:date:from:from:to:cc:subject:date
- :message-id:reply-to:content-type;
- bh=4fCOt0OznbhBOvDSho9fI+DXpHx6dkj8m4gGLZPFe7g=;
- b=ar3Kc+vKHwcIJgmSs/pT/0rmrOfWyzaHrqsuQU6W+y6mecpBFcG1LakxneefacyV4W
- C50pF6eLJjUYu4/934zn0woZc8xgCsFEHbh5LbZKhnPX1h5/aRxM9hacinPdNL2u3uAf
- 08KlD8luj1PXGybYOogM7D3qgbEk84PFlG3sw4mqJu++TpEH+6yWv+gzbydIHqTjAWst
- nhVQleMVf4pfGxOPDiL4wvFuYqA6b1sFUnnCcdMcNvEPa19pyyVAFUZgU0B7JESJy5yj
- 1hp7x8u3rVuUvAzghGFBHgRzcrmFM3JcPlRJRKVOxW1cB2FNgcVH/SKJDv2qG2c9mfzd
- bLGQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1787131341; x=1787736141;
- h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
- :content-type:mime-version:subject:date:from:x-gm-gg
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
- :content-type;
- bh=4fCOt0OznbhBOvDSho9fI+DXpHx6dkj8m4gGLZPFe7g=;
- b=B/+k4l8XG+YZlooWmPZSaDYctPGRSozU5ZPw+BaKiW0be5XPRjyeXexdDfeEKOfbW5
- NiRbzT6OZkstapuprj6rpr2y8hQRpNhAncV0LEjUjTSYNnN+qurvdiGztnuXZMw9VWg/
- E10Jhey/S8dgkM1rilmlAQmLwN28fOMrim60Oxg2J0pwC6A9dV2lO3zqb6IFlaD7zqLc
- OIAQ3d9/QTmr8jvjYCZ51WsajMgVtBhoBpfLrPrkilyy0henPEUYdSfR1UDinCIdqZvl
- lpbDVBMh0p6CnjGgqCNtIzcFqXgJGKQ4mugvUlAzcec9EjGB/l+iAOMvn60UKnmUKBW7
- iWaQ==
-X-Forwarded-Encrypted: i=1;
- AHgh+RoLqUJoWfpnxHoTdVDXnJ57zb4bkFMY3kBqZKuFTg2UZVIrhT8WSUg/B2dB9iV66ByF1sIfkwOmGg==@nongnu.org
-X-Gm-Message-State: AOJu0Yy13AfKMTSssZJwsbGugWC5D9fRroUo6PhCqGRVhR8Q1+WWVOCc
- plkXYd0zXV/wtOSeA0z+cmKzxO0P6Yyi130p7geavH0G03Y6GbXKCPeBLqM6wYzc2WU=
-X-Gm-Gg: AR+sD12OeraSPf1/UH5X+DeLciFUrEE9xXR62cnVJXLipujxCRbzzzAa9CYVf6p7BJC
- DNSdkhK7eanIt4sflw/lEvemdMYMupHU0JgXfTMWcyFNp9rErtalqYKAUQ4+lrKsvIczmb0eje/
- mpEV+mC77R5f6CBbnFhoybNQonEkMYm+Tlozz8YI6RScGaNxRTJoWVhicRw4jU0Ze/sx98yjgaK
- eZtHK7i1/2KK/ePOo8oh+6fHxNjx3FkyxEiidSuBukOMFg/UXnxqNGKQ0IScsVToxmD5sRhedSr
- zHfdE+6WitubJgC2VKNYw2pn4o0pExS+rLekb8kEyisRK5ailIdbjf3WIwaq1IzlLVLrlwH9Jpz
- g3pG2TuX08joD3OQ8RZz2jPh8T9ctnl/U7D8blYFeEsQhd1x14NRtkRdNa4CiuOC252aJJVz4mg
- lAcJ4+t66KzGOvWJ+/rQ5CGTZh4IN27bXAH8mwzc3SP4RMa2TZLAAJtUvXZ03u
-X-Received: by 2002:a05:600c:3f0b:b0:495:4491:b8c2 with SMTP id
- 5b1f17b1804b1-499aa14b191mr63229715e9.3.1787131341079; 
- Wed, 19 Aug 2026 02:22:21 -0700 (PDT)
-Received: from draig.lan ([185.124.0.156]) by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-499aa1111a7sm48838695e9.6.2026.08.19.02.22.16
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 19 Aug 2026 02:22:20 -0700 (PDT)
-Received: from draig.lan (localhost [IPv6:::1])
- by draig.lan (Postfix) with ESMTP id 6AC3F5F951;
- Wed, 19 Aug 2026 10:22:14 +0100 (BST)
-From: =?utf-8?q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>
-Date: Wed, 19 Aug 2026 10:22:05 +0100
-Subject: [PATCH 5/6] hw/block: validate the fdc sector position fits within
- bounds
-MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 8bit
-Message-Id: <20260819-fixes-for-11-2-v1-5-b7981c2cc371@linaro.org>
+ (Exim 4.90_1) (envelope-from <mohamed@unpredictable.fr>)
+ id 1wwcfU-0005eC-DA
+ for qemu-arm@nongnu.org; Wed, 19 Aug 2026 05:33:08 -0400
+Received: from st-2004l-snip6-6.eps.apple.com ([2a01:b747:3001:201::75]
+ helo=outbound.st.icloud.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <mohamed@unpredictable.fr>)
+ id 1wwcfR-0003Oe-6f
+ for qemu-arm@nongnu.org; Wed, 19 Aug 2026 05:33:08 -0400
+Received: from outbound.st.icloud.com (unknown [127.0.0.2])
+ by p00-icloudmta-asmtp-us-east-1a-10-percent-2 (Postfix) with ESMTPS id
+ 40BD118002FA; Wed, 19 Aug 2026 09:33:01 +0000 (UTC)
+X-ICL-RepId: 01a0195d-ed27-7611-8de3-9cdf81caa56b
+X-ICL-Out-Info: HUtFAUMHWwJACUgATUQeDx5WFlZNRAJCTQBIHVoORQNGCVYLWhcOVk1UF1sMWg5WMEwWQx9SD1sTTRlRAVJFVAIZHldQQgVCAlwcWg5DClAcXFZVHxcZUU0IQRMFUgddTVYNRw9YHlwUFwtHQ14IXh9MHB0OWAYSAE0KDjYGWQVeCVYDQwU2EhRdRUYDRxlXFFAbRwxVB1deXwoTAF4PD0x7SQNYBVl0QhQ5AikERgYxfEweLw8vd10ASgdfA1MFRgBJBF53HlwASx1XBFQfUxJVHR0LRVUSBEAIVlBUHkEEVhVsCVgGUxlX
+Dkim-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=unpredictable.fr;
+ s=sig1; t=1787131983; x=1789723983;
+ bh=mVDNReVc35x1eqbv6+N14m72Bc6G+qbTRasBFHOj06A=;
+ h=Content-Type:Mime-Version:Subject:From:Date:Message-Id:To:x-icloud-hme;
+ b=uwqyhUYY2TXJRMAbnOddGtUexGmSyxUUIg+QUT0unl3Bk95GWDkA8IVbQ1VOZS8mvW0FSk1PdXXkvNQVvqXYJ/48t6luaSQABmeL8klfXdtO5kFhfWMu8aeVya2A1pNj/ZPtMsPZwB9ceOV0nI6fUzagiH60NjxVUA5oHoqCdnZbieUAPaKfg16GJoJSt0QSB5s3NPGQfoGiKhpv578znviSIJwfz3YfInkCyPBLViWGwc6zH7KwV+HP8ToX+ehIuD5zHUfaHNVZIGN3D95fCz6PonLQGMjT4OSF3s9LMPCVrU4Urid9ZnLSzx+0KigIu7OZGaF0GuMjK7cY6OhaHQ==
+mail-alias-created-date: 1752046281608
+Received: from smtpclient.apple (unknown [17.156.216.30])
+ by p00-icloudmta-asmtp-us-east-1a-10-percent-2 (Postfix) with ESMTPSA id
+ CF3BF18002F0; Wed, 19 Aug 2026 09:32:57 +0000 (UTC)
+Content-Type: text/plain;
+	charset=utf-8
+Mime-Version: 1.0 (Mac OS X Mail 16.0 \(3901.100.1.1.11\))
+Subject: Re: [PATCH 6/6] docs: deprecate virtio-crypto
+From: Mohamed Mediouni <mohamed@unpredictable.fr>
+In-Reply-To: <20260819-fixes-for-11-2-v1-6-b7981c2cc371@linaro.org>
+Date: Wed, 19 Aug 2026 11:32:44 +0200
+Cc: qemu-devel@nongnu.org,
+ =?utf-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@mailo.com>,
+ Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>,
+ Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
+ "Gonglei (Arei)" <arei.gonglei@huawei.com>,
+ zhenwei pi <zhenwei.pi@linux.dev>, "Michael S. Tsirkin" <mst@redhat.com>,
+ Stefano Garzarella <sgarzare@redhat.com>,
+ Laurent Vivier <lvivier@redhat.com>, Amit Shah <amit@kernel.org>,
+ =?utf-8?Q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>,
+ Paolo Bonzini <pbonzini@redhat.com>, John Snow <jsnow@redhat.com>,
+ Kevin Wolf <kwolf@redhat.com>, Hanna Reitz <hreitz@redhat.com>,
+ qemu-block@nongnu.org, devel@lists.libvirt.org
+Content-Transfer-Encoding: quoted-printable
+Message-Id: <B10522F2-A1D3-4AE4-B8DE-924248769173@unpredictable.fr>
 References: <20260819-fixes-for-11-2-v1-0-b7981c2cc371@linaro.org>
-In-Reply-To: <20260819-fixes-for-11-2-v1-0-b7981c2cc371@linaro.org>
-To: qemu-devel@nongnu.org
-Cc: =?utf-8?q?Philippe_Mathieu-Daud=C3=A9?= <philmd@mailo.com>, 
- Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>, 
- Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org, 
- "Gonglei (Arei)" <arei.gonglei@huawei.com>, 
- zhenwei pi <zhenwei.pi@linux.dev>, "Michael S. Tsirkin" <mst@redhat.com>, 
- Stefano Garzarella <sgarzare@redhat.com>, 
- Laurent Vivier <lvivier@redhat.com>, Amit Shah <amit@kernel.org>, 
- =?utf-8?q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>, 
- Paolo Bonzini <pbonzini@redhat.com>, John Snow <jsnow@redhat.com>, 
- Kevin Wolf <kwolf@redhat.com>, Hanna Reitz <hreitz@redhat.com>, 
- qemu-block@nongnu.org, devel@lists.libvirt.org, 
- =?utf-8?q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>
-X-Mailer: b4 0.16.0
-X-Developer-Signature: v=1; a=openpgp-sha256; l=3740;
- i=alex.bennee@linaro.org; h=from:subject:message-id;
- bh=OEX2z9GvvKbNe5gsvOGBjrtH21eDSoBa+jvNaK6zjWc=;
- b=owEBbQGS/pANAwAKAfvQ2wlanipEAcsmYgBqhXXGNAi9uavy3WXrBtrOwQIiWOo6yYdUrRrxr
- QU1tJkP13SJATMEAAEKAB0WIQRmha6Z51FnvK/I3zX70NsJWp4qRAUCaoV1xgAKCRD70NsJWp4q
- REzDB/4pLaXN3OGb2+yQgYXx7wM53dI6ydkRkDkAQEdFHU5Zv6CWLVjU/pBWTbwvW3GO84qrqnh
- +9tNUGxXqvUiYHEfU6Fb5e+OWFLsJlFZQuODLpKN6IlwrltUh1MMVnJ7LHwchbegwVae4kW5ycQ
- w1xm1vzivm3xLGZ28QjV7XfJJVzrQo7HFxNSBItbB7w+S1+1fFnICFBHwEiA2qKGT2j7nLcmgUf
- oVYuICmEwwSHCdMuMMx1TMyVIAXX1/bCVI6B/XYicmTHRbZyqWag/D3DYIwftpcWEzMEayRM0UD
- uIgZ4L0hPlBynxF+Xt+ITJ0yE/bxT9Kx2XQ5DAM0CwPlQjng
-X-Developer-Key: i=alex.bennee@linaro.org; a=openpgp;
- fpr=6685AE99E75167BCAFC8DF35FBD0DB095A9E2A44
-Received-SPF: pass client-ip=2a00:1450:4864:20::329;
- envelope-from=alex.bennee@linaro.org; helo=mail-wm1-x329.google.com
+ <20260819-fixes-for-11-2-v1-6-b7981c2cc371@linaro.org>
+To: =?utf-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>
+X-Mailer: Apple Mail (2.3901.100.1.1.11)
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwODE5MDA3MiBTYWx0ZWRfX2ZOLTGm8fjPT
+ zrOpoJbF30Uq7Trl/DNRylgWjjj7L/XNxWuYvXyYWyHg2siQQotoiwKx9xZUQGi29Kz9TyVqjvx
+ BcfjXvLZ0EAJFBJKuwH3jFt+qWS/eKe7kd58+O/Gk8L+o/VXV8OvWnGFQQ+65Ip+OZGMZ0Da25m
+ uk8+P3zP94Jzsqi9CqX5dk/AecliQJ3qWxPX1kmnr03hhl05eFFX85uZye3PwCCTblgJZv57CNJ
+ EFpDB3rLKG+qC/3UfineUUav2l2O9njZx0DFbeS8N9mI4gkmJg32hus/241WTS0VTTwePlKp2I8
+ baNJYazsh0kRZ/eTIMU7WoMi208FjoDinaYsyaB6qMrsKXr1V7gWrCe0OPpJJk=
+X-Authority-Info-Out: v=2.4 cv=dfeNHHXe c=1 sm=1 tr=0 ts=6a85784e
+ cx=c_apl:c_pps:t_out a=oyWFxbOnq+dmhQrAPgaJYA==:117
+ a=oyWFxbOnq+dmhQrAPgaJYA==:17 a=IkcTkHD0fZMA:10 a=Sv0fKeRqtYgA:10
+ a=VkNPw1HP01LnGYTKEx00:22 a=p0WdMEafAAAA:8 a=KKAkSRfTAAAA:8 a=i0EeH86SAAAA:8
+ a=6BZSfjg5s5QjvaG9htEA:9 a=QEXdDO2ut3YA:10 a=cvBusfyB2V15izCimMoJ:22
+X-Proofpoint-ORIG-GUID: 41mi7VTA_DLJFsyrRlc7FfoN3iCxlHv_
+X-Proofpoint-GUID: 41mi7VTA_DLJFsyrRlc7FfoN3iCxlHv_
+X-JNJ: AAAAAAABPWPGskN1e1H8sC1ZoNCHk+muZCCaS4lAJSSYmDh8Br7SUktCAV3DytOwRkKZWDUBELvRbyvNDYFZHsvIHQgQsPNEVBWUua0NviT6kO13u2dWGGn0n9OKGWWgzTxbqJCyHgDI3AADJCYeEmPImqRBc0pzzOtstvUmEG5umjcFzh/NZ3NgpnLTQJ7h6kqW3iQMAC+gjgIUEolJ/NDtmyH7lEHGKtiOtsJz2cOI+LzoPXu2Y09nweHWdID0l3iNHP9dMABwmGaXlbiJUK7DP5fbqBG5W5A0XA8lKwdNYyG7RRznWo30te7mEGQ+j3uXa7Izu4LvL5bsC/KjXvyvgykJTt6+n4LYexjko0YbvJBRsIOBEHFvt3jCWoPFhMWWh2mqi6px5YOBonct3Qc9bByEC7R1KCMM6tN27A+PJZt1+SInXtT3iAxWSif8ur+2qnWcmdNU8M6fM43dG+mWfxfPNbP3nPHLWO5SEmhmuim7ZxQOHRrT7s2kL8jrbxJYPlkJXV/+hAN+BzUG8fBUlf01Gsr/p/56AtGFI1T44fkOxaaP5OHY28Wrvg1IoLcu8gyff2lC47Qpxo3ABSg1qTRea+EZcFKbL+Ld7hbB4NA84oPGrGBAQllCgUrCE0qyDqjfkWjohhT9r5jhYq+3LMzXr/WsUGOcmy7rOL4QUq6ezqxOzqmKp3bO6kNOoZ59T5JFfSH/RKL8sYaIzCBM3fbsOOVCySjzuPYwtGLv1r9OVu9tuErdx1UnjXYe5K5CgfS0xbeeeMcdtVLFo/f/s/RjxHlj2g/eAnybczAhJ99lFmq5G46azMKrPhgCOk0Md4RGyjI5joES6IJVUzdtjJxy0JtXd8ChG9qJSmPHBupfv8RfFK8HkiC54IxHH6C8gSMXfO5HqK5YoTclCJqVXe8i4SrUyv360Ej5I7DR8mfaQPd/sMvmPm12AIi/DRIq2K6ALk7zn4hJ/UniGY3v8ViYzcJ
+ 7o1b++obotJRfve5r5XcI8Vzzubwgojy1orM1UYx3i2UyamNqRj3xm+QQWNHXr11LGh0li1ajDhdNK0P0KwvWmn0mIx7W/vGtMOOzBCaDgDGjiDDzIpJATxD2livVdTFuJ49sZkuwouh2uF2e7qAXCverv9RRB7zAogMFNOhidG5eZZVNoN8/AzFPW6lOJmG0edcrDeDBcFkmlxniqyaM9aTa9WC5/IXVdIwGBH8aTqS5qB5rlE0FKGaUNbToIbb0JFToi+sExarkMtA7+geGOzLpXNRTTJuYdyVQ9lcqGPh59krv+pGjLM8JW3/2Tk3ShM5c7ZENKf+tMpiEE7QKC/H0Y2YG78DA7SxDIgTPPJY3VkFt7gjOOpVIV0RtHDfiE/sNKBYxUXwY8bvAEYHL3ZABS9ZHBZ+Cz6fDGO32Xew7QcNxeuoFwrCNKSs1mrb+i2oDCLgFzD5lMj9G8O3YFme7BxZjJG2SIpJ4fQ2MKyKtibNtu39i/qW0zfdheBDt10WoyRCx/hg7ti+Ny/pOcdM+8wj7eR4fSHmMvwDHZsUVZVlldZqZhSJHqS5NPf6b/PqB8ePXHLRPrxSEJZBfvnY4T9WOuchzDIVW+EbX++uWnS8ypCLoal5nl9DqJJ4=
+Received-SPF: pass client-ip=2a01:b747:3001:201::75;
+ envelope-from=mohamed@unpredictable.fr; helo=outbound.st.icloud.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_PASS=-0.001,
  SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -129,104 +98,74 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Previously the guest controlled the value of last_sec and wasn't
-particularly careful to check it didn't exceed the media size. We
-can't re-use drv->last_sec as that changes as we do operations so we
-set media_last_sect when the geometry is probed.
 
-Resolves: https://gitlab.com/qemu-project/qemu/-/issues/3800
-Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
 
----
-v2
-  - checkpatch
----
- hw/block/fdc-internal.h |  1 +
- hw/block/fdc.c          | 28 ++++++++++++++++++++++------
- 2 files changed, 23 insertions(+), 6 deletions(-)
+> On 19. Aug 2026, at 11:22, Alex Benn=C3=A9e <alex.bennee@linaro.org> =
+wrote:
+>=20
+> We have outstanding guest exploitable bugs in the code which is fairly
+> complex and needs some serious love to clean it up. As off-CPU
+> cryptography acceleration seems to be waning in popularity lets just
+> deprecate the sub-system with a view to removing it in a couple of
+> cycles.
 
-diff --git a/hw/block/fdc-internal.h b/hw/block/fdc-internal.h
-index e219623dc7a..3a39ac903c7 100644
---- a/hw/block/fdc-internal.h
-+++ b/hw/block/fdc-internal.h
-@@ -83,6 +83,7 @@ typedef struct FDrive {
-     uint8_t max_track;        /* Nb of tracks           */
-     uint16_t bps;             /* Bytes per sector       */
-     uint8_t ro;               /* Is read-only           */
-+    uint8_t media_last_sect;  /* Probed sector per track*/
-     uint8_t media_changed;    /* Is media changed       */
-     uint8_t media_rate;       /* Data rate of medium    */
- 
-diff --git a/hw/block/fdc.c b/hw/block/fdc.c
-index 1178b959a64..18a61f5ce87 100644
---- a/hw/block/fdc.c
-+++ b/hw/block/fdc.c
-@@ -192,6 +192,7 @@ static void fd_init(FDrive *drv)
-     drv->max_track = 0;
-     drv->ro = true;
-     drv->media_changed = 1;
-+    drv->media_last_sect = 0;
- }
- 
- #define NUM_SIDES(drv) ((drv)->flags & FDISK_DBL_SIDES ? 2 : 1)
-@@ -373,6 +374,7 @@ static int pick_geometry(FDrive *drv)
-     }
-     drv->max_track = parse->max_track;
-     drv->last_sect = parse->last_sect;
-+    drv->media_last_sect = parse->last_sect;
-     drv->disk = parse->drive;
-     drv->media_rate = parse->rate;
-     return 0;
-@@ -1905,6 +1907,17 @@ static void fdctrl_handle_partid(FDCtrl *fdctrl, int direction)
-     fdctrl_to_result_phase(fdctrl, 1);
- }
- 
-+static bool fd_validate_last_sect(FDrive *drv, uint8_t new_last_sect_val)
-+{
-+    if (drv->media_validated && new_last_sect_val > drv->media_last_sect) {
-+        qemu_log_mask(LOG_GUEST_ERROR,
-+                      "FDC: Guest attempted to set last_sect to %u, exceeding valid media max of %u\n",
-+                      new_last_sect_val, drv->media_last_sect);
-+        return false;
-+    }
-+    return true;
-+}
-+
- static void fdctrl_handle_restore(FDCtrl *fdctrl, int direction)
- {
-     FDrive *cur_drv = get_cur_drv(fdctrl);
-@@ -1919,6 +1932,10 @@ static void fdctrl_handle_restore(FDCtrl *fdctrl, int direction)
-     /* timers */
-     fdctrl->timer0 = fdctrl->fifo[7];
-     fdctrl->timer1 = fdctrl->fifo[8];
-+    if (!fd_validate_last_sect(cur_drv, fdctrl->fifo[9])) {
-+        fdctrl_stop_transfer(fdctrl, FD_SR0_ABNTERM, FD_SR1_EC, 0x00);
-+        return;
-+    }
-     cur_drv->last_sect = fdctrl->fifo[9];
-     fdctrl->lock = fdctrl->fifo[10] >> 7;
-     cur_drv->perpendicular = (fdctrl->fifo[10] >> 2) & 0xF;
-@@ -1983,13 +2000,12 @@ static void fdctrl_handle_format_track(FDCtrl *fdctrl, int direction)
-         fdctrl->data_state &= ~FD_STATE_MULTI;
-     cur_drv->bps =
-         fdctrl->fifo[2] > 7 ? 16384 : 128 << fdctrl->fifo[2];
--#if 0
--    cur_drv->last_sect =
--        cur_drv->flags & FDISK_DBL_SIDES ? fdctrl->fifo[3] :
--        fdctrl->fifo[3] / 2;
--#else
-+
-+    if (!fd_validate_last_sect(cur_drv, fdctrl->fifo[3])) {
-+        fdctrl_stop_transfer(fdctrl, FD_SR0_ABNTERM, FD_SR1_EC, 0x00);
-+        return;
-+    }
-     cur_drv->last_sect = fdctrl->fifo[3];
--#endif
-     /* TODO: implement format using DMA expected by the Bochs BIOS
-      * and Linux fdformat (read 3 bytes per sector via DMA and fill
-      * the sector with the specified fill byte
+Hi,
 
--- 
-2.47.3
+Still quite powerful compared to on-core acceleration, the kernel=20
+isn=E2=80=99t a great example on how to use them well unfortunately.
+
+Far better experience in production with DPDK and directly passing
+through the crypto accelerator to the process that uses it directly.
+
+virtio-crypto with its overhead makes things even worse on that front =
+so=E2=80=A6
+
+In practice, the vmexits did cost so much that it was quicker to do it
+in software...
+
+>=20
+>=20
+> Link: https://gitlab.com/qemu-project/qemu/-/work_items/3625
+> Signed-off-by: Alex Benn=C3=A9e <alex.bennee@linaro.org>
+> Cc: Gonglei <arei.gonglei@huawei.com>
+
+Unfortunate but it wasn=E2=80=99t useful as is, so,
+
+Reviewed-by: Mohamed Mediouni <mohamed@unpredictable.fr>
+> ---
+> docs/about/deprecated.rst | 14 ++++++++++++++
+> 1 file changed, 14 insertions(+)
+>=20
+> diff --git a/docs/about/deprecated.rst b/docs/about/deprecated.rst
+> index 0c656a968fc..3c22981fc8a 100644
+> --- a/docs/about/deprecated.rst
+> +++ b/docs/about/deprecated.rst
+> @@ -276,6 +276,20 @@ future release. Where no 'dh-params.pem' file is =
+provided, the DH
+> parameters will be automatically negotiated in accordance with
+> RFC7919.
+>=20
+> +Devices
+> +-------
+> +
+> +``virtio-crypto`` (since 11.2)
+> +''''''''''''''''''''''''''''''
+> +
+> +The ``virtio-crypto`` device emulation is quite complex code with a
+> +number of known flaws. It has never been migratable so is unlikely to
+> +be used in any serious virtualization setting. With most modern
+> +systems supporting on-CPU cryptography acceleration via their
+> +ISAs sets the need for off-CPU acceleration is also reduced. Add to
+> +that the kernel has recently removed the ability to use off-CPU
+> +acceleration suggests the time for this sort of off-load has passed.
+> +
+> Device options
+> --------------
+>=20
+>=20
+> --=20
+> 2.47.3
+>=20
+>=20
 
 

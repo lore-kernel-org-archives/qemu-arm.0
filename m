@@ -4,85 +4,84 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6F684C5DF85
-	for <qemu-arm@archiver.kernel.org>; Thu, 20 Aug 2026 02:50:42 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 40C54C5B572
+	for <qemu-arm@archiver.kernel.org>; Thu, 20 Aug 2026 02:50:46 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wwsqD-0001wj-TK; Wed, 19 Aug 2026 22:49:17 -0400
+	id 1wwsqG-0001yH-IB; Wed, 19 Aug 2026 22:49:21 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <kylefoxaustin.github@gmail.com>)
- id 1wwspx-0001s0-QS
- for qemu-arm@nongnu.org; Wed, 19 Aug 2026 22:49:03 -0400
-Received: from mail-yx1-xb136.google.com ([2607:f8b0:4864:20::b136])
+ id 1wwspy-0001s3-AD
+ for qemu-arm@nongnu.org; Wed, 19 Aug 2026 22:49:04 -0400
+Received: from mail-yx1-xb12d.google.com ([2607:f8b0:4864:20::b12d])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <kylefoxaustin.github@gmail.com>)
- id 1wwspu-0000Rj-Kp
- for qemu-arm@nongnu.org; Wed, 19 Aug 2026 22:49:01 -0400
-Received: by mail-yx1-xb136.google.com with SMTP id
- 956f58d0204a3-66bee06ff74so2624954d50.0
- for <qemu-arm@nongnu.org>; Wed, 19 Aug 2026 19:48:58 -0700 (PDT)
+ id 1wwspv-0000SM-Rn
+ for qemu-arm@nongnu.org; Wed, 19 Aug 2026 22:49:02 -0400
+Received: by mail-yx1-xb12d.google.com with SMTP id
+ 956f58d0204a3-66c7127a73dso2202651d50.2
+ for <qemu-arm@nongnu.org>; Wed, 19 Aug 2026 19:48:59 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20251104; t=1787194137; x=1787798937; darn=nongnu.org;
+ d=gmail.com; s=20251104; t=1787194139; x=1787798939; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to:content-type;
- bh=vhrrmVXgiHV55vONvF9mCuACTf5Rtr1rMIvzakWRaVA=;
- b=C3HtFOe2AfCWwz8R44G7InlIppW1nV4qD1iBzapNsnihRC+V1bMdCqAlvDJxD/6QA7
- wtQa5UyRU188Wp6vag1DCWMsbsnC6/gokAtmtNyW9WuvZ/vp4rNEWnlEl5yNzNqq6W9D
- YQvBGDF89G9nUYu3+PLuGgK7NXTOl1BfGrue9pz5vpcgHSs2wFKFiPpljhfRmxH54j5Y
- 6K89ZPfSSD/ZF3r+NZEUFycakWzpp1QuIwEaQv+aOKO77WaRMoanC5/Gtm4rcLJNawsD
- rq5cTzFhxMM+TLWtd+N6PKIuaAfJDg5fBf06CRXRYJU4WRW6HPpBKHQGv+juFkyEwbe2
- HCgQ==
+ bh=6sc+RYt/bXjNnBfsDqSaV8jSqXsdHO+630d/njHcBss=;
+ b=ZRYKE5Y8SsvcM48xTkwq3LJDSKmMYGFZy48OMNhe/BEwlyQBcmSkNKyFOjkL9HBgSK
+ 3P9xgiCtlIaepMGlStsAG5HrIURvc+IcCV30wzWjnoQzGAmrDf4mXdngTWgzisZvhqGU
+ 3TawX2bCCfQR7wwWlVLW8sur7078a/9jxWUgtLXtptpHomTLy+4YuWe+/AeMp4178d/1
+ Tfh/lVWMGmcMYB3WhWfUjLN7+xMxNAE64F8Wvf4AURwhqTs4V5S+czABEHpvEwpvkWaO
+ /aNkYif1cv2A894BB8dQocd7PqjR4/ZjV9AeW/GyYF2LHAdXTrcZr3HzMjgXgXhvyvat
+ TxzQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1787194137; x=1787798937;
+ d=1e100.net; s=20251104; t=1787194139; x=1787798939;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
  :to:cc:subject:date:message-id:reply-to:content-type;
- bh=vhrrmVXgiHV55vONvF9mCuACTf5Rtr1rMIvzakWRaVA=;
- b=FpHxDQqusu5O0jBw798b8B49WW0ifRd1zYlYlTC6M87TaeCAKYoP5cC47OsChLdfxO
- BIrAPIDYcXzmtsB7Ng5JqTIGrP6tbPwpYZjjN0h/QbEOzCkg5yKPijyhHRP4LJZ8p6G1
- /8YZ+iMtkeCRKbxmzGweicZxU5nDXVlc9iJp7odynGCQ0zJAH4pW7FjNvxdG00IIi7fF
- q3GqDt/CGjO6FzgxEcn+KlVTWpQYc6V9dgadzjhkdduzDXniP9QkDb4PkodBpgya69q4
- mrs+j0aynmVBJxKnQtNHOWNcBBOiZhAjZJqnKuMGkz9ip7f8pZWGKUtlTw3pC0BpGklh
- eYYw==
+ bh=6sc+RYt/bXjNnBfsDqSaV8jSqXsdHO+630d/njHcBss=;
+ b=mVONcmBYYrQn2LKEGAm+Uo3eetGGKY5IhoaHfGlmLC7nlr8ZnCA03Pxz7MejZ13wwq
+ gnkBAtmT22bzkWPtmMbgP/+94QFK1w0/8lpfho6Ze5mw3P+c/vit8/OfL/y7bRtoPhPz
+ 3eVVIkBkNSVPrtoIfyJb4JN4bRD5Vrl+MAVyZR7idWU4ZzxDZqssGmezXF/SZwCyTH1X
+ ZgdDh/3fNLdDiOQuvyQSPkiw4vYMK1e1SJ5hP32pYVrO0oazbMaGoSRHd703sI7l78yT
+ y/wc2pP2hXqC6cO+G/hboDL4/LHAxKZrBfhAiSWSjfFwkzeL9ozDkze3JJJcJ/skvYUy
+ IB0Q==
 X-Forwarded-Encrypted: i=1;
- AHgh+RoIhh1/hfun7CAeIK4uWJm3QJUxQr42C0O/PVz/7UOTsV/idqS4cpASr6FrTnHsMJPYs+QAnL3TMw==@nongnu.org
-X-Gm-Message-State: AFuF++mdZB0FkyDpJY51nyiL9qlx1SIdEMob0+/u0mN5qIEUaTo0dhh2
- q9267ju0cvfqYES1T7eRvWDa5NkMEbnDBoi+yLpovtrnChNDozhMUfV2
-X-Gm-Gg: AR+sD10oCeEZoo3Bn4TftB/SWmYMtUEDhujRdyQVKhdohqhY+PiLXJCQcYca2zMhqXR
- uSUldgLQDD7LhaIH5LPHJTi/6QjaAd/KfhzyypVBys5IW1Ws0GWxlA9IuTchFHTmyXb5DRYAavC
- x7h4UFs1b4oPqHCMQ4yv9LnUssh+x48TFr3cU9rW/K0L92j5bsn1SUXj47/sFg4nAgduf361WlH
- Pxy9u3J04TrjxnGmGFydVzPmV26U2hUVbZgFp/vcQlNrkWYUHTwKO6ppcOe4JVK0j4nVxr17/KV
- GOrLH9sMEzqkjrfh2a6GR+FrqYQhLeGpNRdqNhYXTt7SjHXMtLqVZXLcvkTlm+NveupgB7v4i7z
- Kaytf6k7YjHefPfzzeYY2sitQKa65e9OUVCF9MGNXZmOSfDUReQAQavs5S3B6XCNhSkWdzqj6Fb
- LGvQJrBIHNIitYPxc1MbvbK8qg4vACcfvN7UZkCd41DAG+9e2GGpyt9C96IEsFrTkHkEaLNeITM
- ocsEZij9DUSkK+Ujks8Lp6N3h1PlVSnvPwz9gTpHqpiJNHWFfUk0A==
-X-Received: by 2002:a05:690e:43ce:b0:66b:3c3c:c8a6 with SMTP id
- 956f58d0204a3-66ccb6aa08amr2636613d50.52.1787194137370; 
- Wed, 19 Aug 2026 19:48:57 -0700 (PDT)
+ AHgh+RpHJgympxsJ4/ofSV/FbAPmQdBTosPV2FzzaLS2H+kvleU+e/Socv1jc6jPmSjd7+S5I9CJNZmdEg==@nongnu.org
+X-Gm-Message-State: AFuF++mMPoVFLEHRaDow+EDLCPFEBMPDm1/Owiemv4dH4TCv737K/fyA
+ gw66FnxamuFhgv+AzBKcTUU+OmcwhhtR5fbgL75tS3SIlPZ9PJJD1ReOdlfxuw==
+X-Gm-Gg: AR+sD13XdVRUvgRmeIa9fhdAe6uLPYlkYQuPY6vtHDj5B3ZuhBBiPCJ8JiuNLtTiFDn
+ kfPpOrm26P3FqXPHzvj3yrghlJOygnPeEjY+nKyTtCYihkr/e+xl46Z1rdaQI1fzmC9ZENhYWgE
+ NbHR55v0XFS8lWCf4VOSP6WKmKxKbPn9oU2vVwY2GUChkKKDKtw3qIylpW/5IvqXhqAwQKMhU82
+ RnOI1BTJHyCCXpLAsHhMcIP79oIjZ9RrcFra84C4o3t3L2QzJO4P571FT6mJL0OHbsbdGV5lrww
+ 2OTvANG5LsLtNSWiGPVqo1yA9ZPWyFkzR06fUvZj05AQeiaimo80NXI7WxHhlb1+C+BbdmMhDZa
+ CDkUT0mbhlRX218NYjVA3hQ6PlPvD4vKIsAS/9Ht1KBEpk75XQERY2P/lIrlobJBBGgitoftQa6
+ lf0meCpduVCOkLFLne+ZCu/kVltJ2bHWwJu4Nt5rQbB7UDtlNlkZPjjVw9WWG5o5mh0/CIT3rbD
+ BstGsrpF0T9RjvPCVlHdiZtOoqYzm1r2uuTO68irex3ifH7zZEog17UXeseLgoj
+X-Received: by 2002:a05:690e:12c4:b0:66c:8744:27a with SMTP id
+ 956f58d0204a3-66ccb6c9f82mr3584507d50.33.1787194138594; 
+ Wed, 19 Aug 2026 19:48:58 -0700 (PDT)
 Received: from skippy.localdomain (99-61-67-1.lightspeed.austtx.sbcglobal.net.
  [99.61.67.1]) by smtp.gmail.com with ESMTPSA id
- 956f58d0204a3-66ccafd03basm1986454d50.1.2026.08.19.19.48.56
+ 956f58d0204a3-66ccafd03basm1986454d50.1.2026.08.19.19.48.57
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 19 Aug 2026 19:48:56 -0700 (PDT)
+ Wed, 19 Aug 2026 19:48:57 -0700 (PDT)
 From: Kyle Fox <kylefoxaustin.github@gmail.com>
 To: qemu-devel@nongnu.org
 Cc: Kyle Fox <kylefoxaustin.github@gmail.com>,
  Paolo Bonzini <pbonzini@redhat.com>,
- Peter Maydell <peter.maydell@linaro.org>,
- qemu-arm@nongnu.org (open list:i.MX31 (kzm))
-Subject: [PATCH 07/16] hw/misc: add i.MX Messaging Unit (MU v2)
-Date: Wed, 19 Aug 2026 21:48:25 -0500
-Message-Id: <20260820024834.3286721-8-kylefoxaustin.github@gmail.com>
+ qemu-arm@nongnu.org (open list:MCIMX95-19X19-EVK...)
+Subject: [PATCH 08/16] hw/misc: add NXP EdgeLock Enclave (ELE) responder
+Date: Wed, 19 Aug 2026 21:48:26 -0500
+Message-Id: <20260820024834.3286721-9-kylefoxaustin.github@gmail.com>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20260820024834.3286721-1-kylefoxaustin.github@gmail.com>
 References: <20260820024834.3286721-1-kylefoxaustin.github@gmail.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::b136;
- envelope-from=kylefoxaustin.github@gmail.com; helo=mail-yx1-xb136.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::b12d;
+ envelope-from=kylefoxaustin.github@gmail.com; helo=mail-yx1-xb12d.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -105,667 +104,397 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-The i.MX Messaging Unit (V2 register layout): the mailbox that carries
-SCMI between the A55 cluster and the M33 System Manager. Models
-CR/SR/GCR/GSR/GIER, the TR/RR data registers and the GCR.GIRn/GSR.GIPn
-doorbell. Two endpoints pair through a peer QOM link: a TR write is
-delivered into the peer's RR and the TX handshake completes when the
-peer reads RR, so the real, unmodified SM firmware answers Linux's SCMI
-traffic over the emulated mailbox.
+The NXP EdgeLock Enclave (ELE) responder. U-Boot and the SM firmware
+issue ELE service requests (e.g. GET_INFO, get-random) over a dedicated
+MU; this models the responder that consumes the request words and
+returns a response so the secure bring-up sequence proceeds. It is
+linked to its MU through a QOM link property.
 
 Signed-off-by: Kyle Fox <kylefoxaustin.github@gmail.com>
 ---
- hw/misc/Kconfig          |   3 +
- hw/misc/imx_mu.c         | 454 +++++++++++++++++++++++++++++++++++++++
- hw/misc/meson.build      |   1 +
- hw/misc/trace-events     |   4 +
- include/hw/misc/imx_mu.h | 144 +++++++++++++
- 5 files changed, 606 insertions(+)
- create mode 100644 hw/misc/imx_mu.c
- create mode 100644 include/hw/misc/imx_mu.h
+ hw/misc/Kconfig                    |   4 +
+ hw/misc/imx95_ele_server.c         | 284 +++++++++++++++++++++++++++++
+ hw/misc/meson.build                |   1 +
+ hw/misc/trace-events               |   2 +
+ include/hw/misc/imx95_ele_server.h |  47 +++++
+ 5 files changed, 338 insertions(+)
+ create mode 100644 hw/misc/imx95_ele_server.c
+ create mode 100644 include/hw/misc/imx95_ele_server.h
 
 diff --git a/hw/misc/Kconfig b/hw/misc/Kconfig
-index b8860dd3e77..8645ca11f3f 100644
+index 8645ca11f3f..ded60e21a6c 100644
 --- a/hw/misc/Kconfig
 +++ b/hw/misc/Kconfig
-@@ -261,3 +261,6 @@ config AXIADO_CLK
-     bool
+@@ -264,3 +264,7 @@ source macio/Kconfig
  
- source macio/Kconfig
+ config IMX_MU
+     bool
 +
-+config IMX_MU
++config IMX95_ELE_SERVER
 +    bool
-diff --git a/hw/misc/imx_mu.c b/hw/misc/imx_mu.c
++    select IMX_MU
+diff --git a/hw/misc/imx95_ele_server.c b/hw/misc/imx95_ele_server.c
 new file mode 100644
-index 00000000000..c9f372a8726
+index 00000000000..b8ee3f78b61
 --- /dev/null
-+++ b/hw/misc/imx_mu.c
-@@ -0,0 +1,454 @@
++++ b/hw/misc/imx95_ele_server.c
+@@ -0,0 +1,284 @@
 +/*
-+ * NXP i.MX Messaging Unit (MU) device model - V2 register layout
++ * Minimal NXP EdgeLock Enclave (ELE) responder stub
 + *
 + * Copyright (c) 2026, Kyle Fox
 + *
 + * SPDX-License-Identifier: GPL-2.0-or-later
 + *
-+ * Implements the subset of the V2 MU register set exercised by U-Boot
-+ * SPL's imx_mu_init_generic() probe path and by SCMI mailbox traffic:
-+ * CR/SR/GCR/GSR/GIER/TCR/TSR/RCR/RSR + 4 TR/RR data registers, plus
-+ * a doorbell mechanism via GCR.GIRn / GSR.GIPn.
++ * Watches TR-register writes on an i.MX MU, accumulates ELE-protocol
++ * command words until the per-message size is reached, dispatches to a
++ * command handler, and writes the response into RR registers + asserts
++ * RSR.RFn so the agent's mu_hal_receivemsg() poll exits.
 + *
-+ * Models enough for the SPL probe to succeed and for the SM to
-+ * handshake on doorbells. No
-+ * cross-domain interrupt routing, no flag-bit semantics beyond
-+ * read/write-back, no per-channel TX/RX FIFO depth modelling.
++ * ELE message format (per ele_api.h):
++ *
++ *   word 0 (header): version[7:0] | size[15:8] | command[23:16] | tag[31:24]
++ *   word 1..N-1:     payload
++ *
++ * size = total words including header. tag = ELE_CMD_TAG (0x17) for
++ * commands, ELE_RESP_TAG (0xE1) for responses. Responses also have a
++ * status byte (ELE_SUCCESS_IND = 0xD6 for success) somewhere in the
++ * payload depending on command.
++ *
++ * Only ELE_GET_INFO_REQ is implemented in detail (the
++ * only ELE call U-Boot SPL's imx9_probe_mu() makes pre-relocation,
++ * via ele_get_info()). Other commands get a generic SUCCESS response.
 + */
 +
 +#include "qemu/osdep.h"
 +#include "qemu/log.h"
++#include "qemu/main-loop.h"
 +#include "qemu/module.h"
-+#include "hw/misc/imx_mu.h"
-+#include "hw/core/irq.h"
++#include "qapi/error.h"
++#include "hw/misc/imx95_ele_server.h"
 +#include "hw/core/qdev-properties.h"
++#include "hw/core/qdev-properties-system.h"
++#include "system/dma.h"
 +#include "migration/vmstate.h"
 +#include "trace.h"
 +
-+static void imx_mu_update_irq(IMXMUState *s);
++/*
++ * struct ele_get_info_data layout (u32 word offsets), pinned to the
++ * U-Boot ele_api.h definition at
++ * U-Boot arch/arm/include/asm/mach-imx/ele_api.h:168.
++ * Using named offsets here so a future U-Boot rev that reorders or
++ * adds fields trips a build/runtime mismatch instead of silently
++ * writing into the wrong slot.
++ *
++ * Reference layout:
++ *   u32 hdr;                  // word 0
++ *   u32 soc;                  // word 1
++ *   u32 lc;                   // word 2
++ *   u32 uid[4];               // words 3..6
++ *   u32 sha256_rom_patch[8];  // words 7..14
++ *   u32 sha_fw[8];            // words 15..22
++ *   u32 oem_srkh[16];         // words 23..38
++ *   u32 state;                // word 39
++ *   u32 oem_pqc_srkh[16];     // words 40..55
++ *   u32 reserved[8];          // words 56..63
++ * Total: 64 u32 = 256 bytes.
++ */
++#define ELE_INFO_OFFSET_HDR             0
++#define ELE_INFO_OFFSET_SOC             1
++#define ELE_INFO_OFFSET_LC              2
++#define ELE_INFO_OFFSET_UID             3
++#define ELE_INFO_OFFSET_SHA256_ROM      7
++#define ELE_INFO_OFFSET_SHA_FW          15
++#define ELE_INFO_OFFSET_OEM_SRKH        23
++#define ELE_INFO_OFFSET_STATE           39
++#define ELE_INFO_OFFSET_OEM_PQC_SRKH    40
++#define ELE_INFO_OFFSET_RESERVED        56
++#define ELE_INFO_SIZE_WORDS             64
++#define ELE_INFO_SIZE_BYTES             (ELE_INFO_SIZE_WORDS * 4)
 +
-+static int imx_mu_post_load(void *opaque, int version_id)
++/* Header field packing. */
++static inline uint32_t ele_make_header(uint8_t version, uint8_t size,
++                                       uint8_t command, uint8_t tag)
 +{
-+    /* Recompute the IRQ line level from the restored register state. */
-+    imx_mu_update_irq(opaque);
-+    return 0;
++    return (uint32_t)version |
++           ((uint32_t)size    << 8) |
++           ((uint32_t)command << 16) |
++           ((uint32_t)tag     << 24);
 +}
 +
-+static const VMStateDescription vmstate_imx_mu = {
-+    .name = TYPE_IMX_MU,
++/* Header field extraction. */
++#define ELE_HDR_VERSION(h)  ((uint8_t)((h) & 0xFF))
++#define ELE_HDR_SIZE(h)     ((uint8_t)(((h) >> 8) & 0xFF))
++#define ELE_HDR_COMMAND(h)  ((uint8_t)(((h) >> 16) & 0xFF))
++#define ELE_HDR_TAG(h)      ((uint8_t)(((h) >> 24) & 0xFF))
++
++/*
++ * ELE_GET_INFO_REQ handler.
++ *
++ * Request layout (4 words):
++ *   [0] header (command = ELE_GET_INFO_REQ)
++ *   [1] info_addr_hi (upper 32 bits of guest pointer)
++ *   [2] info_addr_lo (lower 32 bits of guest pointer)
++ *   [3] size of ele_get_info_data
++ *
++ * Real ELE writes a struct ele_get_info_data to the guest address.
++ * We fake plausible values: rev 0xA1 i.MX 95, OEM-open lifecycle,
++ * UID zero-filled. The Linux/U-Boot drivers do not validate beyond
++ * memcpy into gd->arch.
++ *
++ * Response: 2 words. Status word ELE_SUCCESS_IND in data[0].
++ */
++static void ele_handle_get_info(IMX95ELEServerState *s)
++{
++    if (s->msg_count < 4) {
++        qemu_log_mask(LOG_GUEST_ERROR,
++                      "%s: GET_INFO with only %u words received\n",
++                      __func__, s->msg_count);
++        return;
++    }
++
++    uint64_t info_addr = ((uint64_t)s->msg_buf[1] << 32) |
++                          (uint64_t)s->msg_buf[2];
++
++    /*
++     * Zero-fill the full 256-byte struct, then set the fields U-Boot's
++     * set_cpu_info() reads (soc, lc). Named offsets above keep the
++     * mapping legible; if U-Boot ever shifts the struct layout, the
++     * build check below + a re-read of ele_api.h are how this gets
++     * detected.
++     */
++    uint32_t info_data[ELE_INFO_SIZE_WORDS] = {0};
++    QEMU_BUILD_BUG_ON(sizeof(info_data) != ELE_INFO_SIZE_BYTES);
++
++    info_data[ELE_INFO_OFFSET_SOC] = 0xA1009500;  /* SoC rev 0xA1, type 0x95 */
++    info_data[ELE_INFO_OFFSET_LC]  = 0x00000080;  /* lifecycle = OEM open */
++
++    dma_memory_write(&address_space_memory, info_addr,
++                     info_data, sizeof(info_data),
++                     MEMTXATTRS_UNSPECIFIED);
++
++    /* Response: header + status. */
++    uint32_t resp_hdr = ele_make_header(ELE_VERSION, 2,
++                                        ELE_GET_INFO_REQ, ELE_RESP_TAG);
++    trace_imx95_ele_response(ELE_GET_INFO_REQ);
++    imx_mu_deliver_rr(s->mu, 0, resp_hdr);
++    imx_mu_deliver_rr(s->mu, 1, ELE_SUCCESS_IND);
++}
++
++/*
++ * Generic SUCCESS response for any command we do not specifically
++ * handle. 2-word response: header + ELE_SUCCESS_IND.
++ */
++static void ele_handle_generic_ok(IMX95ELEServerState *s, uint8_t command)
++{
++    uint32_t resp_hdr = ele_make_header(ELE_VERSION, 2,
++                                        command, ELE_RESP_TAG);
++    trace_imx95_ele_response(command);
++    imx_mu_deliver_rr(s->mu, 0, resp_hdr);
++    imx_mu_deliver_rr(s->mu, 1, ELE_SUCCESS_IND);
++}
++
++static void ele_dispatch(IMX95ELEServerState *s)
++{
++    uint32_t header  = s->msg_buf[0];
++    uint8_t  command = ELE_HDR_COMMAND(header);
++    uint8_t  tag     = ELE_HDR_TAG(header);
++
++    trace_imx95_ele_msg(command, tag, s->msg_size);
++
++    switch (command) {
++    case ELE_GET_INFO_REQ:
++        ele_handle_get_info(s);
++        return;
++    default:
++        qemu_log_mask(LOG_UNIMP,
++                      "%s: cmd 0x%02x not handled in detail; responding OK\n",
++                      __func__, command);
++        ele_handle_generic_ok(s, command);
++        return;
++    }
++}
++
++/*
++ * TR-write callback. Invoked synchronously by the MU model from inside
++ * the guest's MMIO write to TR[idx]. The MU itself re-sets TSR.TEn
++ * after this returns so the next TR write succeeds without polling.
++ */
++static void ele_on_tr_write(void *opaque, unsigned int idx, uint32_t value)
++{
++    IMX95ELEServerState *s = opaque;
++
++    /* Invoked from the MU MMIO write handler, which runs under the BQL. */
++    assert(bql_locked());
++
++    if (s->msg_count >= IMX95_ELE_MAX_WORDS) {
++        qemu_log_mask(LOG_GUEST_ERROR,
++                      "%s: too many words; resetting accumulator\n",
++                      __func__);
++        s->msg_count = 0;
++        s->msg_size  = 0;
++        return;
++    }
++
++    s->msg_buf[s->msg_count++] = value;
++
++    if (s->msg_count == 1) {
++        /* First word is the header; pick out size. */
++        s->msg_size = ELE_HDR_SIZE(value);
++        if (s->msg_size == 0 || s->msg_size > IMX95_ELE_MAX_WORDS) {
++            qemu_log_mask(LOG_GUEST_ERROR,
++                          "%s: bad size %u in header 0x%08x\n",
++                          __func__, s->msg_size, value);
++            s->msg_count = 0;
++            s->msg_size  = 0;
++            return;
++        }
++    }
++
++    if (s->msg_count == s->msg_size) {
++        ele_dispatch(s);
++        s->msg_count = 0;
++        s->msg_size  = 0;
++    }
++}
++
++static void imx95_ele_server_reset_hold(Object *obj, ResetType type)
++{
++    IMX95ELEServerState *s = IMX95_ELE_SERVER(obj);
++
++    s->msg_count = 0;
++    s->msg_size  = 0;
++    memset(s->msg_buf, 0, sizeof(s->msg_buf));
++}
++
++static void imx95_ele_server_realize(DeviceState *dev, Error **errp)
++{
++    IMX95ELEServerState *s = IMX95_ELE_SERVER(dev);
++
++    if (!s->mu) {
++        error_setg(errp, "%s: 'mu' link property must be set",
++                   TYPE_IMX95_ELE_SERVER);
++        return;
++    }
++    imx_mu_set_tr_write_handler(s->mu, ele_on_tr_write, s);
++}
++
++static const Property imx95_ele_server_properties[] = {
++    DEFINE_PROP_LINK("mu", IMX95ELEServerState, mu,
++                     TYPE_IMX_MU, IMXMUState *),
++};
++
++static const VMStateDescription vmstate_imx95_ele_server = {
++    .name = TYPE_IMX95_ELE_SERVER,
 +    .version_id = 1,
 +    .minimum_version_id = 1,
-+    .post_load = imx_mu_post_load,
 +    .fields = (const VMStateField[]) {
-+        VMSTATE_UINT32(cr, IMXMUState),
-+        VMSTATE_UINT32(sr, IMXMUState),
-+        VMSTATE_UINT32(fcr, IMXMUState),
-+        VMSTATE_UINT32(fsr, IMXMUState),
-+        VMSTATE_UINT32(gier, IMXMUState),
-+        VMSTATE_UINT32(gcr, IMXMUState),
-+        VMSTATE_UINT32(gsr, IMXMUState),
-+        VMSTATE_UINT32(tcr, IMXMUState),
-+        VMSTATE_UINT32(tsr, IMXMUState),
-+        VMSTATE_UINT32(rcr, IMXMUState),
-+        VMSTATE_UINT32(rsr, IMXMUState),
-+        VMSTATE_UINT32_ARRAY(tr, IMXMUState, IMX_MU_NUM_CHANNELS),
-+        VMSTATE_UINT32_ARRAY(rr, IMXMUState, IMX_MU_NUM_CHANNELS),
++        VMSTATE_UINT32(msg_count, IMX95ELEServerState),
++        VMSTATE_UINT32(msg_size, IMX95ELEServerState),
++        VMSTATE_UINT32_ARRAY(msg_buf, IMX95ELEServerState,
++                             IMX95_ELE_MAX_WORDS),
 +        VMSTATE_END_OF_LIST()
 +    },
 +};
 +
-+/*
-+ * Recompute the IRQ line. V2 layout: each xSR pending bit ANDed with
-+ * the matching xCR enable bit; any one of those produces an interrupt.
-+ * GP-IRQ comes from (GSR.GIPn & GIER.GIEn) across the channels in use.
-+ */
-+static void imx_mu_update_irq(IMXMUState *s)
-+{
-+    uint32_t mask = (1u << IMX_MU_NUM_CHANNELS) - 1u;
-+    bool level =
-+        ((s->gsr & s->gier & mask) != 0) ||
-+        ((s->tsr & s->tcr  & mask) != 0) ||
-+        ((s->rsr & s->rcr  & mask) != 0);
-+
-+    qemu_set_irq(s->irq, level);
-+}
-+
-+static void imx_mu_reset_state(IMXMUState *s)
-+{
-+    s->cr   = 0;
-+    s->sr   = 0;
-+    s->fcr  = 0;
-+    s->fsr  = 0;
-+    s->gier = 0;
-+    s->gcr  = 0;
-+    s->gsr  = 0;
-+    s->tcr  = 0;
-+    /* All TX slots come up empty - TEn bits set. */
-+    s->tsr  = (1u << IMX_MU_NUM_CHANNELS) - 1u;
-+    s->rcr  = 0;
-+    s->rsr  = 0;
-+    memset(s->tr, 0, sizeof(s->tr));
-+    memset(s->rr, 0, sizeof(s->rr));
-+}
-+
-+static void imx_mu_reset_at_boot_hold(Object *obj, ResetType type)
-+{
-+    IMXMUState *s = IMX_MU(obj);
-+
-+    imx_mu_reset_state(s);
-+    imx_mu_update_irq(s);
-+}
-+
-+void imx_mu_assert_gip(IMXMUState *s, unsigned int idx)
-+{
-+    if (idx >= IMX_MU_NUM_CHANNELS) {
-+        return;
-+    }
-+    trace_imx_mu_gip(idx);
-+    s->gsr |= IMX_MU_V2_BIT(idx);
-+    imx_mu_update_irq(s);
-+}
-+
-+void imx_mu_set_doorbell_handler(IMXMUState *s,
-+                                 IMXMUDoorbellHandler handler,
-+                                 void *opaque)
-+{
-+    s->doorbell_handler = handler;
-+    s->doorbell_opaque  = opaque;
-+}
-+
-+void imx_mu_set_tr_write_handler(IMXMUState *s,
-+                                 IMXMUTRWriteHandler handler,
-+                                 void *opaque)
-+{
-+    s->tr_write_handler = handler;
-+    s->tr_write_opaque  = opaque;
-+}
-+
-+void imx_mu_deliver_rr(IMXMUState *s, unsigned int idx, uint32_t value)
-+{
-+    if (idx >= IMX_MU_NUM_CHANNELS) {
-+        return;
-+    }
-+    trace_imx_mu_rr_deliver(idx, value);
-+    s->rr[idx]  = value;
-+    s->rsr     |= IMX_MU_V2_BIT(idx);
-+    imx_mu_update_irq(s);
-+}
-+
-+static uint64_t imx_mu_read(void *opaque, hwaddr offset, unsigned size)
-+{
-+    IMXMUState *s = opaque;
-+    uint64_t value = 0;
-+
-+    if (offset >= IMX_MU_TR_BASE &&
-+        offset < IMX_MU_TR_BASE + IMX_MU_NUM_CHANNELS * 4) {
-+        value = s->tr[(offset - IMX_MU_TR_BASE) / 4];
-+        return value;
-+    }
-+    if (offset >= IMX_MU_RR_BASE &&
-+        offset < IMX_MU_RR_BASE + IMX_MU_NUM_CHANNELS * 4) {
-+        unsigned idx = (offset - IMX_MU_RR_BASE) / 4;
-+        value = s->rr[idx];
-+        /*
-+         * Reading RR[n] clears RSR.RFn (the receive-full status bit)
-+         * so the next sender can re-queue. The SCMI transport doesn't
-+         * rely on this, but it matches the documented HW
-+         * behaviour and lets the U-Boot probe drain pending data.
-+         *
-+         * For a peer-linked MU this completes the TX handshake: the word
-+         * was delivered into RR[n] by the peer's TR[n] write (which left
-+         * the peer's TSR.TEn clear), so draining it re-asserts the peer's
-+         * TX-empty and lets a blocked mbox send finish.
-+         */
-+        s->rsr &= ~IMX_MU_V2_BIT(idx);
-+        if (s->peer) {
-+            s->peer->tsr |= IMX_MU_V2_BIT(idx);
-+            imx_mu_update_irq(s->peer);
-+        }
-+        imx_mu_update_irq(s);
-+        return value;
-+    }
-+
-+    switch (offset) {
-+    case IMX_MU_VER:
-+        /* Plausible V2 version. Linux/U-Boot do not branch on this. */
-+        value = 0x00020000;
-+        break;
-+    case IMX_MU_PAR:
-+        /* TR count in [7:0], RR count in [15:8] (V2 encoding). */
-+        value = ((uint32_t)IMX_MU_NUM_CHANNELS) |
-+                ((uint32_t)IMX_MU_NUM_CHANNELS << 8);
-+        break;
-+    case IMX_MU_CR:
-+        value = s->cr;
-+        break;
-+    case IMX_MU_SR:
-+        value = s->sr;
-+        break;
-+    case IMX_MU_FCR:
-+        value = s->fcr;
-+        break;
-+    case IMX_MU_FSR:
-+        value = s->fsr;
-+        break;
-+    case IMX_MU_GIER:
-+        value = s->gier;
-+        break;
-+    case IMX_MU_GCR:
-+        value = s->gcr;
-+        break;
-+    case IMX_MU_GSR:
-+        value = s->gsr;
-+        break;
-+    case IMX_MU_TCR:
-+        value = s->tcr;
-+        break;
-+    case IMX_MU_TSR:
-+        value = s->tsr;
-+        break;
-+    case IMX_MU_RCR:
-+        value = s->rcr;
-+        break;
-+    case IMX_MU_RSR:
-+        value = s->rsr;
-+        break;
-+    default:
-+        qemu_log_mask(LOG_GUEST_ERROR,
-+                      "%s: bad read offset 0x%" HWADDR_PRIx "\n",
-+                      __func__, offset);
-+        break;
-+    }
-+    return value;
-+}
-+
-+static void imx_mu_write(void *opaque, hwaddr offset,
-+                         uint64_t value, unsigned size)
-+{
-+    IMXMUState *s = opaque;
-+
-+    if (offset >= IMX_MU_TR_BASE &&
-+        offset < IMX_MU_TR_BASE + IMX_MU_NUM_CHANNELS * 4) {
-+        unsigned idx = (offset - IMX_MU_TR_BASE) / 4;
-+        s->tr[idx] = value;
-+        trace_imx_mu_tr_write(idx, value);
-+        /*
-+         * Writing TR[n] clears TSR.TEn (TX empty). Three delivery modes:
-+         *  - TR-write handler (a responder, e.g. the ELE server): consumes
-+         *    synchronously and we re-set TEn so the next write succeeds
-+         *    without polling.
-+         *  - peer linked (the other side of a real MU, e.g. the A55<->M7
-+         *    rpmsg channel on MU7): deliver the word into the peer's RR[n]
-+         *    and raise its RX interrupt. TEn stays clear until the peer
-+         *    reads RR[n] (see the RR read path), which is the real MU TX
-+         *    full/empty handshake the imx-mailbox driver waits on.
-+         *  - neither (unattached MU): the slot stays "full" forever, which
-+         *    is correct for a mailbox with nothing on the far side.
-+         */
-+        s->tsr &= ~IMX_MU_V2_BIT(idx);
-+        if (s->tr_write_handler) {
-+            s->tr_write_handler(s->tr_write_opaque, idx, value);
-+            s->tsr |= IMX_MU_V2_BIT(idx);
-+        } else if (s->peer) {
-+            imx_mu_deliver_rr(s->peer, idx, (uint32_t)value);
-+        }
-+        imx_mu_update_irq(s);
-+        return;
-+    }
-+    if (offset >= IMX_MU_RR_BASE &&
-+        offset < IMX_MU_RR_BASE + IMX_MU_NUM_CHANNELS * 4) {
-+        /* RR is RO from the guest's perspective. */
-+        qemu_log_mask(LOG_GUEST_ERROR,
-+                      "%s: write to read-only RR at 0x%" HWADDR_PRIx "\n",
-+                      __func__, offset);
-+        return;
-+    }
-+
-+    switch (offset) {
-+    case IMX_MU_VER:
-+    case IMX_MU_PAR:
-+        /* Read-only. Silent ignore matches HW. */
-+        break;
-+
-+    case IMX_MU_CR:
-+        if (value & IMX_MU_CR_RST) {
-+            imx_mu_reset_state(s);
-+            imx_mu_update_irq(s);
-+            return;
-+        }
-+        s->cr = value;
-+        break;
-+
-+    case IMX_MU_SR:
-+        /*
-+         * Per the kernel/U-Boot drivers, SR bits in V2 are read-only
-+         * status that the model manages. Writing has no effect.
-+         */
-+        break;
-+
-+    case IMX_MU_FCR:
-+        /*
-+         * Flag-update register. On hardware a written flag bit is reflected
-+         * to the peer's FSR; the SCMI transport does not use these flags, so
-+         * we just store the value (no peer reflection or interrupt modelled).
-+         */
-+        s->fcr = value;
-+        break;
-+
-+    case IMX_MU_FSR:
-+        /* Write-1-to-clear of latched flag-status bits. */
-+        s->fsr &= ~value;
-+        imx_mu_update_irq(s);
-+        break;
-+
-+    case IMX_MU_GIER:
-+        s->gier = value;
-+        imx_mu_update_irq(s);
-+        break;
-+
-+    case IMX_MU_GCR: {
-+        /*
-+         * GCR.GIRn writes are doorbell triggers. Detect 0->1 transitions
-+         * and, for each newly-asserted channel, deliver the doorbell. The
-+         * bit is auto-cleared afterwards (write-1-to-trigger pulse),
-+         * mirroring real HW where the request clears once the peer ACKs.
-+         *
-+         * Two delivery modes:
-+         *  - peer linked (the other side of a real MU): latch the matching
-+         *    GSR.GIPn on the peer and recompute the peer's IRQ. GIPn latches
-+         *    regardless of the peer's GIER, so a doorbell that arrives before
-+         *    the peer enables GIER.GIEn fires the moment it does (the peer's
-+         *    GIER write recomputes the IRQ) - real pending-vs-enable HW.
-+         *  - doorbell handler (a responder, e.g. the ELE server): invoke it
-+         *    synchronously to consume the request.
-+         */
-+        uint32_t mask  = (1u << IMX_MU_NUM_CHANNELS) - 1u;
-+        uint32_t newly = (value & ~s->gcr) & mask;
-+        s->gcr = value;
-+        for (unsigned i = 0; i < IMX_MU_NUM_CHANNELS; i++) {
-+            if (!(newly & IMX_MU_V2_BIT(i))) {
-+                continue;
-+            }
-+            trace_imx_mu_doorbell(i);
-+            if (s->peer) {
-+                s->peer->gsr |= IMX_MU_V2_BIT(i);
-+                imx_mu_update_irq(s->peer);
-+                s->gcr &= ~IMX_MU_V2_BIT(i);
-+            } else if (s->doorbell_handler) {
-+                s->doorbell_handler(s->doorbell_opaque, i);
-+                s->gcr &= ~IMX_MU_V2_BIT(i);
-+            }
-+        }
-+        imx_mu_update_irq(s);
-+        break;
-+    }
-+
-+    case IMX_MU_GSR:
-+        /* Write-1-to-clear of GIP bits. */
-+        s->gsr &= ~value;
-+        imx_mu_update_irq(s);
-+        break;
-+
-+    case IMX_MU_TCR:
-+        s->tcr = value;
-+        imx_mu_update_irq(s);
-+        break;
-+
-+    case IMX_MU_TSR:
-+        /* W1C of TX status. */
-+        s->tsr &= ~value;
-+        imx_mu_update_irq(s);
-+        break;
-+
-+    case IMX_MU_RCR:
-+        s->rcr = value;
-+        imx_mu_update_irq(s);
-+        break;
-+
-+    case IMX_MU_RSR:
-+        /* W1C of RX status. */
-+        s->rsr &= ~value;
-+        imx_mu_update_irq(s);
-+        break;
-+
-+    default:
-+        qemu_log_mask(LOG_GUEST_ERROR,
-+                      "%s: bad write offset 0x%" HWADDR_PRIx
-+                      " value 0x%" PRIx64 "\n",
-+                      __func__, offset, value);
-+        break;
-+    }
-+}
-+
-+static const MemoryRegionOps imx_mu_ops = {
-+    .read = imx_mu_read,
-+    .write = imx_mu_write,
-+    .endianness = DEVICE_LITTLE_ENDIAN,
-+    .impl = {
-+        .min_access_size = 4,
-+        .max_access_size = 4,
-+    },
-+    .valid = {
-+        .min_access_size = 4,
-+        .max_access_size = 4,
-+    },
-+};
-+
-+/*
-+ * "peer" accepts any TYPE_IMX_MU and is settable at any time: the SM/M7 MUB
-+ * endpoint is only created (and hence linkable) once its M-core is realized,
-+ * so the SoC establishes the link after realize. A non-NULL check is what
-+ * makes the link writable; the type is already enforced by the link itself.
-+ */
-+static void imx_mu_peer_check(const Object *obj, const char *name,
-+                              Object *val, Error **errp)
-+{
-+}
-+
-+static void imx_mu_init(Object *obj)
-+{
-+    SysBusDevice *sbd = SYS_BUS_DEVICE(obj);
-+    IMXMUState *s = IMX_MU(obj);
-+
-+    memory_region_init_io(&s->iomem, obj, &imx_mu_ops, s,
-+                          TYPE_IMX_MU, IMX_MU_REG_SIZE);
-+    sysbus_init_mmio(sbd, &s->iomem);
-+    sysbus_init_irq(sbd, &s->irq);
-+
-+    /*
-+     * "peer" links the two endpoints (MUA/MUB) of one physical MU. It is a
-+     * weak link - both endpoints are owned by the SoC container, so neither
-+     * refs the other - and is settable after realize, because the SM/M7 MUB
-+     * side is only created once the M-core it faces exists. That is why this
-+     * uses object_property_add_link() rather than a static DEFINE_PROP_LINK
-+     * (which forbids setting a link once the device is realized).
-+     */
-+    object_property_add_link(obj, "peer", TYPE_IMX_MU,
-+                             (Object **)&s->peer, imx_mu_peer_check, 0);
-+}
-+
-+static void imx_mu_class_init(ObjectClass *klass, const void *data)
++static void imx95_ele_server_class_init(ObjectClass *klass, const void *data)
 +{
 +    DeviceClass *dc = DEVICE_CLASS(klass);
 +    ResettableClass *rc = RESETTABLE_CLASS(klass);
 +
-+    dc->vmsd = &vmstate_imx_mu;
-+    rc->phases.hold = imx_mu_reset_at_boot_hold;
++    dc->realize = imx95_ele_server_realize;
++    dc->vmsd = &vmstate_imx95_ele_server;
++    rc->phases.hold = imx95_ele_server_reset_hold;
 +    set_bit(DEVICE_CATEGORY_MISC, dc->categories);
-+    dc->desc = "NXP i.MX Messaging Unit (V2)";
++    dc->desc = "NXP i.MX 95 ELE responder (get_info)";
++    device_class_set_props(dc, imx95_ele_server_properties);
 +}
 +
-+static const TypeInfo imx_mu_info = {
-+    .name           = TYPE_IMX_MU,
++static const TypeInfo imx95_ele_server_info = {
++    .name           = TYPE_IMX95_ELE_SERVER,
 +    .parent         = TYPE_SYS_BUS_DEVICE,
-+    .instance_size  = sizeof(IMXMUState),
-+    .instance_init  = imx_mu_init,
-+    .class_init     = imx_mu_class_init,
++    .instance_size  = sizeof(IMX95ELEServerState),
++    .class_init     = imx95_ele_server_class_init,
 +};
 +
-+static void imx_mu_register_types(void)
++static void imx95_ele_server_register_types(void)
 +{
-+    type_register_static(&imx_mu_info);
++    type_register_static(&imx95_ele_server_info);
 +}
 +
-+type_init(imx_mu_register_types)
++type_init(imx95_ele_server_register_types)
 diff --git a/hw/misc/meson.build b/hw/misc/meson.build
-index e86d9ad6b39..9d0e3ed220d 100644
+index 9d0e3ed220d..b0dade72c6c 100644
 --- a/hw/misc/meson.build
 +++ b/hw/misc/meson.build
-@@ -171,3 +171,4 @@ system_ss.add(when: 'CONFIG_SBSA_REF', if_true: files('sbsa_ec.c'))
- system_ss.add(when: 'CONFIG_LASI', if_true: files('lasi.c'))
+@@ -172,3 +172,4 @@ system_ss.add(when: 'CONFIG_LASI', if_true: files('lasi.c'))
  
  system_ss.add(when: 'CONFIG_AXIADO_CLK', if_true: files('axiado_clk.c'))
-+system_ss.add(when: 'CONFIG_IMX_MU', if_true: files('imx_mu.c'))
+ system_ss.add(when: 'CONFIG_IMX_MU', if_true: files('imx_mu.c'))
++system_ss.add(when: 'CONFIG_IMX95_ELE_SERVER', if_true: files('imx95_ele_server.c'))
 diff --git a/hw/misc/trace-events b/hw/misc/trace-events
-index c9a868b3efb..01b0b275f7f 100644
+index 01b0b275f7f..6b3cff74549 100644
 --- a/hw/misc/trace-events
 +++ b/hw/misc/trace-events
-@@ -442,3 +442,7 @@ iommu_testdev_dma_read(uint64_t gva, uint32_t len) "gva=0x%" PRIx64 " len=%u"
- iommu_testdev_dma_verify(uint32_t expected, uint32_t actual) "expected=0x%x actual=0x%x"
- iommu_testdev_dma_result(uint32_t result) "DMA completed result=0x%x"
- iommu_testdev_dma_armed(bool armed) "armed=%d"
-+imx_mu_tr_write(unsigned idx, uint32_t val) "TR[%u] <- 0x%08x"
-+imx_mu_rr_deliver(unsigned idx, uint32_t val) "RR[%u] <- 0x%08x"
-+imx_mu_doorbell(unsigned idx) "doorbell GIR channel %u"
-+imx_mu_gip(unsigned idx) "GIP assert channel %u"
-diff --git a/include/hw/misc/imx_mu.h b/include/hw/misc/imx_mu.h
+@@ -446,3 +446,5 @@ imx_mu_tr_write(unsigned idx, uint32_t val) "TR[%u] <- 0x%08x"
+ imx_mu_rr_deliver(unsigned idx, uint32_t val) "RR[%u] <- 0x%08x"
+ imx_mu_doorbell(unsigned idx) "doorbell GIR channel %u"
+ imx_mu_gip(unsigned idx) "GIP assert channel %u"
++imx95_ele_msg(uint8_t command, uint8_t tag, uint32_t size) "received cmd 0x%02x tag 0x%02x size %u"
++imx95_ele_response(uint8_t command) "response cmd 0x%02x"
+diff --git a/include/hw/misc/imx95_ele_server.h b/include/hw/misc/imx95_ele_server.h
 new file mode 100644
-index 00000000000..e308ebf70ea
+index 00000000000..75e6dfa4e25
 --- /dev/null
-+++ b/include/hw/misc/imx_mu.h
-@@ -0,0 +1,144 @@
++++ b/include/hw/misc/imx95_ele_server.h
+@@ -0,0 +1,47 @@
 +/*
-+ * NXP i.MX Messaging Unit (MU) device model - V2 register layout
++ * Minimal NXP EdgeLock Enclave (ELE) responder stub
 + *
 + * Copyright (c) 2026, Kyle Fox
 + *
 + * SPDX-License-Identifier: GPL-2.0-or-later
 + *
-+ * Models the V2 MU register layout used by i.MX 95 (compatible
-+ * "fsl,imx95-mu") and other recent NXP SoCs. The MU is the
-+ * messaging channel between the Cortex-A55 cluster and the Cortex-M33
-+ * System Manager (and ELE, V2X, camera-mix, etc., depending on which
-+ * instance); it carries SCMI traffic for clock / pinctrl / power-
-+ * domain operations.
++ * Watches an i.MX MU for ELE-protocol command words, dispatches them
++ * to handlers, and writes responses back through the MU's RR
++ * registers. Implements only ele_get_info() (the one ELE call
++ * U-Boot SPL's imx9_probe_mu() makes pre-relocation). Everything
++ * else returns ELE_OK with a stub response so SPL doesn't panic.
 + */
 +
-+#ifndef IMX_MU_H
-+#define IMX_MU_H
++#ifndef IMX95_ELE_SERVER_H
++#define IMX95_ELE_SERVER_H
 +
 +#include "hw/core/sysbus.h"
 +#include "qom/object.h"
++#include "hw/misc/imx_mu.h"
 +
-+#define TYPE_IMX_MU "imx.mu"
-+OBJECT_DECLARE_SIMPLE_TYPE(IMXMUState, IMX_MU)
++#define TYPE_IMX95_ELE_SERVER "imx95.ele-server"
++OBJECT_DECLARE_SIMPLE_TYPE(IMX95ELEServerState, IMX95_ELE_SERVER)
 +
-+#define IMX_MU_REG_SIZE         0x1000
-+#define IMX_MU_NUM_CHANNELS     4       /* TR[0..3] / RR[0..3] */
++/* ELE protocol constants from arch/arm/include/asm/mach-imx/ele_api.h. */
++#define ELE_VERSION                 0x06
++#define ELE_CMD_TAG                 0x17
++#define ELE_RESP_TAG                0xE1
++#define ELE_GET_INFO_REQ            0xDA
++#define ELE_SUCCESS_IND             0xD6
 +
-+/*
-+ * V2 register offsets. Source: NXP U-Boot imx_mu_cfg_imx95 in
-+ * U-Boot drivers/mailbox/imx-mailbox.c.
-+ */
-+#define IMX_MU_VER              0x000   /* version (RO) */
-+#define IMX_MU_PAR              0x004   /* parameter (RO; TR/RR counts) */
-+#define IMX_MU_CR               0x008   /* control */
-+#define IMX_MU_SR               0x00C   /* status */
-+#define IMX_MU_FCR              0x100   /* flag control */
-+#define IMX_MU_FSR              0x104   /* flag status */
-+#define IMX_MU_GIER             0x110   /* general-purpose IRQ enable */
-+#define IMX_MU_GCR              0x114   /* general-purpose control */
-+#define IMX_MU_GSR              0x118   /* general-purpose status (GIP bits) */
-+#define IMX_MU_TCR              0x120   /* TX IRQ enable */
-+#define IMX_MU_TSR              0x124   /* TX status (TEn = TX empty) */
-+#define IMX_MU_RCR              0x128   /* RX IRQ enable */
-+#define IMX_MU_RSR              0x12C   /* RX status (RFn = RX full) */
-+#define IMX_MU_TR_BASE          0x200   /* TR[0..15] (TX data) */
-+#define IMX_MU_RR_BASE          0x280   /* RR[0..15] (RX data) */
++/* Maximum words in a single ELE message (per ELE_MAX_MSG in U-Boot). */
++#define IMX95_ELE_MAX_WORDS         32
 +
-+/* Helpers for V2 bit numbering (one bit per channel index, starting at 0). */
-+#define IMX_MU_V2_BIT(idx)      (1u << (idx))
-+
-+/* CR.RST clears all state when written (V2 bit 0). */
-+#define IMX_MU_CR_RST           BIT(0)
-+
-+/*
-+ * Optional callback invoked when the guest writes a 0->1 transition
-+ * on any GCR.GIRn bit (a doorbell trigger from the agent side). A
-+ * responder (e.g. the ELE server) registers itself here to process
-+ * inbound messages. Unset by default; the model functions as a plain
-+ * register file when no handler is registered.
-+ */
-+typedef void (*IMXMUDoorbellHandler)(void *opaque, unsigned int idx);
-+
-+/*
-+ * Optional callback invoked when the guest writes to a TR[idx] register.
-+ * The ELE responder stub uses this to accumulate incoming ELE-protocol
-+ * message words and react when a full message has arrived. Unset by
-+ * default; the model is a plain register file with no consumer.
-+ */
-+typedef void (*IMXMUTRWriteHandler)(void *opaque, unsigned int idx,
-+                                    uint32_t value);
-+
-+struct IMXMUState {
++struct IMX95ELEServerState {
 +    SysBusDevice    parent_obj;
 +
-+    MemoryRegion    iomem;
-+    qemu_irq        irq;
++    /* Link to the MU used as ELE transport (elemu1). */
++    IMXMUState     *mu;
 +
-+    /*
-+     * Writable register state. Read-only registers (VER, PAR) are
-+     * computed at read time from the configured channel count.
-+     */
-+    uint32_t        cr;
-+    uint32_t        sr;
-+    uint32_t        fcr;
-+    uint32_t        fsr;
-+    uint32_t        gier;
-+    uint32_t        gcr;
-+    uint32_t        gsr;
-+    uint32_t        tcr;
-+    uint32_t        tsr;
-+    uint32_t        rcr;
-+    uint32_t        rsr;
-+    uint32_t        tr[IMX_MU_NUM_CHANNELS];
-+    uint32_t        rr[IMX_MU_NUM_CHANNELS];
-+
-+    /* Doorbell forwarding (see typedef above). */
-+    IMXMUDoorbellHandler doorbell_handler;
-+    void                *doorbell_opaque;
-+
-+    /* TR-write forwarding (see typedef above). */
-+    IMXMUTRWriteHandler  tr_write_handler;
-+    void                *tr_write_opaque;
-+
-+    /*
-+     * Optional peer MU endpoint (the other side of a real hardware MU).
-+     * When set, a GCR.GIRn doorbell trigger on this side latches the
-+     * matching GSR.GIPn on the peer (raising the peer's IRQ once the peer
-+     * enables GIER.GIEn), instead of invoking doorbell_handler. This models
-+     * the A55-side (MUA) <-> M33-side (MUB) cross-connect used to let the
-+     * real SM firmware service the A55's SCMI traffic. Set via the "peer"
-+     * QOM link property (registered in imx_mu_init()).
-+     */
-+    IMXMUState          *peer;
++    /* Accumulator for incoming command words. */
++    uint32_t        msg_buf[IMX95_ELE_MAX_WORDS];
++    uint32_t        msg_count;
++    uint32_t        msg_size;
 +};
 +
-+/*
-+ * Register a doorbell handler. Replaces any previously registered
-+ * handler. Call with handler = NULL to deregister.
-+ */
-+void imx_mu_set_doorbell_handler(IMXMUState *s,
-+                                 IMXMUDoorbellHandler handler,
-+                                 void *opaque);
-+
-+/* Register a TR-write handler. NULL to deregister. */
-+void imx_mu_set_tr_write_handler(IMXMUState *s,
-+                                 IMXMUTRWriteHandler handler,
-+                                 void *opaque);
-+
-+/*
-+ * Deliver a response word into RR[idx] and assert RSR.RFn so the
-+ * agent's mu_hal_receivemsg() poll loop exits. Used by responder
-+ * stubs (e.g. ELE) to push a message back to the agent.
-+ */
-+void imx_mu_deliver_rr(IMXMUState *s, unsigned int idx, uint32_t value);
-+
-+/*
-+ * External hook: peripheral code (e.g. a responder) can call
-+ * this to assert a GP-interrupt-pending bit on a particular channel,
-+ * which surfaces as GSR.GIPn and (if GIER.GIEn is set) raises the IRQ.
-+ * Used by the response side of a doorbell handshake.
-+ */
-+void imx_mu_assert_gip(IMXMUState *s, unsigned int idx);
-+
-+#endif /* IMX_MU_H */
++#endif /* IMX95_ELE_SERVER_H */
 -- 
 2.34.1
 

@@ -4,78 +4,81 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 37CA5C5DF81
-	for <qemu-arm@archiver.kernel.org>; Thu, 20 Aug 2026 12:48:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 08519C5DF87
+	for <qemu-arm@archiver.kernel.org>; Thu, 20 Aug 2026 12:49:50 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wx2CB-0004o9-Lh; Thu, 20 Aug 2026 08:48:35 -0400
+	id 1wx2CW-0005Cc-Ur; Thu, 20 Aug 2026 08:48:57 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <wafgo01@gmail.com>) id 1wx2CA-0004kk-5b
- for qemu-arm@nongnu.org; Thu, 20 Aug 2026 08:48:34 -0400
-Received: from mail-ej1-x630.google.com ([2a00:1450:4864:20::630])
+ (Exim 4.90_1) (envelope-from <wafgo01@gmail.com>) id 1wx2CU-00058j-Sa
+ for qemu-arm@nongnu.org; Thu, 20 Aug 2026 08:48:54 -0400
+Received: from mail-ed1-x52f.google.com ([2a00:1450:4864:20::52f])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <wafgo01@gmail.com>) id 1wx2C7-0001W1-Oq
- for qemu-arm@nongnu.org; Thu, 20 Aug 2026 08:48:33 -0400
-Received: by mail-ej1-x630.google.com with SMTP id
- a640c23a62f3a-c1f758014b8so237332066b.3
- for <qemu-arm@nongnu.org>; Thu, 20 Aug 2026 05:48:31 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <wafgo01@gmail.com>) id 1wx2CN-0001d1-K8
+ for qemu-arm@nongnu.org; Thu, 20 Aug 2026 08:48:54 -0400
+Received: by mail-ed1-x52f.google.com with SMTP id
+ 4fb4d7f45d1cf-6a157f90752so3920657a12.3
+ for <qemu-arm@nongnu.org>; Thu, 20 Aug 2026 05:48:47 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20251104; t=1787230110; x=1787834910; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:from:to:cc:subject:date:message-id:reply-to:content-type;
- bh=GNkCfOLEsLAHbHCKhsqza9SCuQeJzZU8ZEAm4tg/LtU=;
- b=oiY0G7KEKOtwU3PUKbV/zrFZ25yHUSBx075rvSbelIxaUFQ0X/EGFnnMevjxbUnHuq
- UYsp2yvr12l28Zr+sHlhSQwsUwaxcdP5yWiz9yqW/BMA39aqu9WKvVj6jpSp+0+tgnJq
- agSwqkJ93TQgHBqkNRYplh/+NiwnVtiekWqMLb33q8SloFmidbGDKS2N7dhkTgqYnOjY
- nzmD6RoPg7jih8NZOUWgcaIOyllvMQw2iETdvzQ/vnH6d6FBl/ZzUhlhbOHo9q/THwoe
- Cng8ZDfJZDxkhb7qV26vdE1DAe9DYon5MAkxYDuvQitKB/WeXR0497iZtFAc5/+crbAE
- XYfw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1787230110; x=1787834910;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+ d=gmail.com; s=20251104; t=1787230126; x=1787834926; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to:content-type;
- bh=GNkCfOLEsLAHbHCKhsqza9SCuQeJzZU8ZEAm4tg/LtU=;
- b=JSVx2JljCZsUd1PwOO4KFwfFZzW/9dJWNEOOuuqbgr8eDE9zD97Mk7Sr84Ogo8EIBh
- RIZd63BArAYpyTO3XJOgOAyyeuIgnh+pwL6NUjU787v3eL+heHkCUn/Gkc0BXiU1HsuA
- 1hIc9Fj6L+cRVLE3G3goVkGOP86rL514mmlP0931swWucBhEKcvpkCN2aVEg4Xda7Zp8
- XpbE5nmgRLLHAo20qgFYQ6+V4Yssb44U4coF24tkhacMlqIDxjAH+bBmn/lTc886qgF5
- qERfliZSaQc9CAGJsadloAxyKG/DVGmyBffLxzm1gNco9Z92h4Zc98UPuVUtpPg0o9Y6
- sF6Q==
-X-Gm-Message-State: AOJu0YxvnwtVhbqImBth9iKIunjLZSq+jIEtp++0hb7tSJrAJBWyr/J8
- OPPnmLld+iDTY84GCsyFVLFQjglcz05Y8xB9BILNW1dVYiGB/T6Ck3cg
-X-Gm-Gg: AR+sD11KkTtAPBX9f9r9A6oFmdu4sQXvgAMGx7RLJUgLb/9RGAQVIAyCbPCsnah3lW1
- inj0xNmyd1v4k8UP6QGZll7VEK/NKhOc7MPsmMNfR2sQ4L7sRHI1C96JRTsYCbmUpWmJLqKZYJ0
- skI19cEPVCAU5fwtemqCm3hCnAPyx3ETDvvMMlAtP1lfMe6Y08Tc1mFl90rhI1+kkNtw64ONHXN
- ioKugtuUCQoI14DtcB3PL6quOcqwVX0Wv6/nM+2iECI/ElXfiat8dQl0nmT335cwgVFs2MHrCUV
- rML82m8Gh1MFOyX+LYFpwjOgQ3sxrRZroQs0E+v2BuiQjd0MgcJpjM4XUe9k7YSS50s5mbfNCO0
- itrO1gcxpc5SwNJbSaNRNKJOafNcVqt3xrAWsYdU6fxCPojsWXbchrIcZ/FDEZV2IZIMksGRgoW
- RRAwbGkJWai5DZxB4ibVzUXZawrEBrFtn1rwSrXc2iPfGYipCXAhrSg9Fi2vyLdkaw3mphGSJ3H
- 8uOwbSCLgM=
-X-Received: by 2002:a17:907:9997:b0:c20:af9d:4544 with SMTP id
- a640c23a62f3a-c23f92c2a0emr1066129966b.6.1787230109385; 
- Thu, 20 Aug 2026 05:48:29 -0700 (PDT)
+ bh=nUaylgbwd3lGcxje+cehXmdybcYqbGcGKdagrDgm6LE=;
+ b=cln0YAIScsDN/gvCmhuQ5LDdMnEk8ptxBSXJupnFlKH4i+mLS4DIR4V2ZaMosSzx29
+ 6Yd3/NsUoVWIuIYmKcujH6ydXUCq8sGC4r8lvP4xsM0LjWc+h2VHk1sSi5l0b4JKTxGB
+ OwHUiW2owSmFYCub2vUcqirr0r/rSmJKq6mWu2BRZZKdUf+AxS1d7B7j8wP8FLbazDir
+ GoaRGjMAfZpXmPJrsDm+mSfg00SH1RnuCevr7tFmQsj5zgFsOecVmWpCQWedeHmFAInb
+ kKrcMOdAvvLkCEkaFyzwPOBj5Qwx/oJLtMYGzbc1GZWnYpePegyKF7TOB5Jmyx82b0MD
+ zjJw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20251104; t=1787230126; x=1787834926;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
+ :to:cc:subject:date:message-id:reply-to:content-type;
+ bh=nUaylgbwd3lGcxje+cehXmdybcYqbGcGKdagrDgm6LE=;
+ b=T81UniHOQkjHCuK6S+Br31n+BfMXe4pyzGpVQ/Pfa8h3qQtynmLMKqpo/HwW2YMNJK
+ IREwvLrOHACvZ9eGDKgZnZTm5LfJGAr0G/6ygGkR2bbPJ0sfqodyzj30OaXp1adQY6OV
+ Ba+TLoSPlZiVj3YbTRy0HYtxdAR6GAi5Erj2ZZevin+b85g4AmvIBW8Z1yvmsxDDOR8t
+ X42IPL6WYa0gI9tWZc9ScSxbjzPMg8AjgDpbWHhx4Je94mDWIQPyn4h7WMInJPyCk3Jf
+ cZE1ZxuQGdEOOtD2XzEdBf0m95ml1/qt8KBHYL0BTYV2R0AORjVcmibouoAFOWFZvQWj
+ uJMw==
+X-Gm-Message-State: AFuF++lonkyLTFi4RA4YHVG8/hfaMn+zRQbhUlcHsFXcOtYtsAPN1IjK
+ qRU78H3Ej3nPGc4EnsQggWdP+QdDyBGciu/aossa3VvZ9hEnMmx//REq
+X-Gm-Gg: AR+sD13d4Pn2hUhMg9XqVkIqVZAy/3zKwRz3rbQLcZnznhgZYkvdl5T2xhD2r3N5wCQ
+ KO6AJ4QybBM1k2feIn6Xg5MiiPAgeKfUjuqCKzNfF26eeUJrUzSk8PKRHjWOFiFqS1mGuspRXge
+ AhFvOCHLxIpU7YPHCKFgb9ToejtRpfVMZCAiO4vRxtZ+C3kwOrprlCq8DQgA72z16qWPULbZrNM
+ 0djOxteMPnnKkQ+zVghJf3upk3Xc+kP9b7N3gPCtyZ2b2AcNlxgWXq00oJaUAa5PBj07Fjp194R
+ 4emfsdVGVhmvdaQ9aAq4VCNg4APaKgiDfZsWfpt7wtc51JJVqm4kLkuXawyoMGz1M9Z5h6dYEAV
+ mKrP3x0ltsHdWFCI0kbDxW6/nZsHrn9WN706fHq+93V6pgPDKjmAmqtkwFemNV7xtL879ih6KTN
+ 44axPgpG+qmbEgQMjK+OewwYIAtJoznzV6OIVcm3ue6bSF9zkPKuaYyOliek6mKD0zB3fe5RLJQ
+ QkYvACx1Rs=
+X-Received: by 2002:a05:6402:3241:b0:6a0:9c84:ce0e with SMTP id
+ 4fb4d7f45d1cf-6a4032fc559mr7407968a12.14.1787230125578; 
+ Thu, 20 Aug 2026 05:48:45 -0700 (PDT)
 Received: from DE-PF5B95TD.embedded.cmblu.dev ([87.129.199.250])
  by smtp.gmail.com with ESMTPSA id
- 4fb4d7f45d1cf-6a3ff1563c5sm2270449a12.14.2026.08.20.05.48.28
+ 4fb4d7f45d1cf-6a3ff1563c5sm2270449a12.14.2026.08.20.05.48.44
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 20 Aug 2026 05:48:28 -0700 (PDT)
+ Thu, 20 Aug 2026 05:48:45 -0700 (PDT)
 From: Wadim Mueller <wafgo01@gmail.com>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@mailo.com>,
  Bin Meng <bmeng.cn@gmail.com>, Paolo Bonzini <pbonzini@redhat.com>,
  Fabiano Rosas <farosas@suse.de>, Wadim Mueller <wafgo01@gmail.com>
-Subject: [RFC PATCH v2 00/14] hw/arm: add TI AM64x SoC and am64-virt machine
-Date: Thu, 20 Aug 2026 14:48:00 +0200
-Message-ID: <20260820124824.618671-1-wafgo01@gmail.com>
+Subject: [RFC PATCH v2 14/14] tests: add AM64x unit, qtest and functional tests
+Date: Thu, 20 Aug 2026 14:48:14 +0200
+Message-ID: <20260820124824.618671-15-wafgo01@gmail.com>
 X-Mailer: git-send-email 2.43.0
+In-Reply-To: <20260820124824.618671-1-wafgo01@gmail.com>
+References: <20260820124824.618671-1-wafgo01@gmail.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::630;
- envelope-from=wafgo01@gmail.com; helo=mail-ej1-x630.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::52f;
+ envelope-from=wafgo01@gmail.com; helo=mail-ed1-x52f.google.com
 X-Spam_score_int: -17
 X-Spam_score: -1.8
 X-Spam_bar: -
@@ -99,225 +102,1394 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Add support for the TI AM64x (Sitara AM6442) SoC and a board around it,
-``am64-virt``. The model is complete enough to run the stock TI boot chain
-end to end:
+Cover the new code:
 
-  ROM boot (tiboot3.bin) -> R5 SPL -> TF-A/OP-TEE -> U-Boot -> Linux SMP
+ - tests/unit/test-k3-bootrom: combined boot image parser, including
+   malformed input.
+ - tests/qtest/am64-virt-test: machine topology, GICv3 redistributor
+   layout, SMP handling, DMSC TI-SCI request/response handling.
+ - tests/qtest/ti-am64-i2c-test: I2C soft reset, NACK on an absent
+   address and a transfer against the on-SoM EEPROM.
+ - tests/qtest/am64-adma-pacing-test: reproducer for the SDHCI ADMA
+   pacing fix earlier in this series; without the fix it fails.
+ - tests/functional/aarch64/test_am64_bootrom: builds a synthetic
+   combined boot image with a bare-metal R5 payload and checks that the
+   ROM boot path runs it. If QEMU_TEST_TIBOOT3 points at a real
+   tiboot3.bin, that is booted as well.
 
-This is a resend: I posted a first RFC back in May [1] but got no feedback
-on it. Since then was the series rebased onto actual master, reworked for
-style and split into reviewable pieces, so I send it out again in the hope
-of getting some review.
-
-RFC because I would like feedback on the overall approach before polishing
-further; see the open questions at the end.
-
-[1] https://lore.kernel.org/qemu-devel/20260528211210.74266-1-wafgo01@gmail.com/
-
-What is modelled
-================
-
-The SoC is heterogeneous, and the model reflects that: a Cortex-A53
-cluster behind a GICv3 (GIC-500) at the real addresses, the Cortex-R5F
-MCU boot core, and the Cortex-M4F, each with their own RAT (region
-address translation) view of the memory map.
-
-The interesting part is the DMSC. On real silicon it is a hidden core
-running TI's system firmware (SYSFW) which answers TI-SCI requests for
-clocks, power, firewalls and processor boot control from every other core.
-Rather than trying to execute the vendor blob, patch 10 models the DMSC
-as a TI-SCI endpoint sitting on top of the secure proxy model (patch 9).
-That is what actually starts the A53 and M4F cores when the R5 SPL asks
-for it, and what TF-A, OP-TEE, U-Boot and Linux talk to for clock/power
-management.
-
-The remaining devices (patches 4-8) are the supporting cast: the UART,
-the K3 DMTimer, mailboxes, and register-level stubs for CTRL_MMR
-(including the DEVSTAT boot pins), GTC, DDRSS, the SDHCI PHY wrapper and
-the TRNG. The
-stubs implement the handshakes, which firmware polls for, not the
-underlying hardware.
-
-Patches 1-3 are prerequisites that touch existing code:
-
-  1-2  give the OMAP I2C model its own Kconfig symbol so it can be reused
-       outside the OMAP1 SoC, and implement soft reset and NACK reporting
-  3    fixes SDHCI ADMA chain processing; without it, transfer rate
-       depends from the virtual clock instead of on the guest's
-       programming. Patch 14 contains a qtest that fails without it.
-
-To patch 3: it is only needed as long as Bin Meng's SDHCI series [2] (on
-top of the SDMA boundary fix [3]) is not merged. I posted the same fix
-standalone in August, Bin showed then, that his series already covers
-the AM64x case, and I have withdrawn it there [4]. It is kept here only
-so that this series works on actual master - please drop patch 3
-together with the pacing qtest in patch 14 as soon as [2] lands. A
-version of that qtest for the Icicle Kit was posted separately [5].
-
-[2] https://patchwork.ozlabs.org/project/qemu-devel/list/?series=515264
-[3] https://patchwork.ozlabs.org/project/qemu-devel/list/?series=513930
-[4] https://lore.kernel.org/qemu-devel/20260810124519.34501-1-wafgo01@gmail.com/
-[5] https://lore.kernel.org/qemu-devel/20260813123210.28987-1-wafgo01@gmail.com/
-
-Testing
-=======
-
-Patch 14 adds:
-
-  * a unit test for the combined-boot-image parser
-  * qtests for the machine topology, GICv3 layout, SMP handling and the
-    DMSC TI-SCI request/response path
-  * an I2C qtest (soft reset, NACK, and a read from an at24c EEPROM which
-    the test attaches with -device)
-  * the SDHCI ADMA pacing reproducer
-  * a functional test that builds a synthetic tiboot3.bin containing a
-    bare-metal R5 payload and checks it runs from the certified entry
-    point. Setting QEMU_TEST_TIBOOT3 boots a real image instead.
-
-Migration is not supported yet: none of the new devices has a VMState.
-I left it out for the RFC, but can add it if you want it before merge.
-
-The series was built and tested on top of ae4f344320. Every patch builds
-on its own, and checkpatch reports no errors.
-
-Open questions
-==============
-
-  * pc-bios/dtb/am64-virt.dtb: patch 13 checks in a generated DTB (with
-    its source) for convenience. I am not sure a machine-specific blob
-    belongs in pc-bios; happy to drop it and have the functional test
-    generate it with dtc instead, or drop the Linux-boot part of the test.
-
-  * Splitting the DMSC: hw/misc/ti-dmsc.c is large because TI-SCI is
-    large. It could be split per message class (clocks / devices /
-    processor boot / security) if reviewers prefer, at the cost of a
-    non-functional intermediate state.
-
-  * Only one of the four R5F cores is modelled. mc->max_cpus reserves
-    room for the rest. Because the SoC realizes M4F/R5F vCPUs in addition
-    to the A53s and every vCPU needs a TCG context slot inside
-    smp.max_cpus, the machine defaults to the full vCPU budget. I would
-    appreciate a better idea than the actual "fail early with an
-    explanatory message" handling when the user passes a too-small -smp.
-
-  * The register-level stubs (DDRSS in particular) fake success rather
-    than modelling the hardware. That is deliberate, but tell me if you
-    would rather see them as plain unimplemented-device windows plus
-    firmware quirks elsewhere.
-
-Wadim Mueller (14):
-  hw/i2c/omap_i2c: add a dedicated CONFIG_OMAP_I2C symbol
-  hw/i2c/omap_i2c: implement soft reset and NACK reporting
-  hw/sd/sdhci: complete non-interrupt ADMA descriptor chains in one pass
-  hw/char: add TI AM64x UART model
-  hw/timer: add TI K3 DMTimer model
-  hw/misc: add TI K3 CTRL_MMR, GTC, DDRSS, SDHCI PHY and TRNG models
-  hw/misc: add TI RAT (region address translation) model
-  hw/misc: add TI mailbox (IPC) model
-  hw/misc: add TI K3 secure proxy model
-  hw/misc: add TI DMSC (TI-SCI system controller) model
-  hw/arm: add TI K3 combined boot image parser
-  hw/arm: add TI AM64x SoC model
-  hw/arm: add the am64-virt machine
-  tests: add AM64x unit, qtest and functional tests
-
- MAINTAINERS                                   |   22 +
- docs/system/arm/am64.rst                      |   74 +
- docs/system/target-arm.rst                    |    1 +
- hw/arm/Kconfig                                |   26 +
- hw/arm/am64-virt.c                            |  347 ++++
- hw/arm/k3-bootrom-parse.c                     |  250 +++
- hw/arm/k3-bootrom.c                           |  125 ++
- hw/arm/meson.build                            |    4 +
- hw/arm/ti-am64x.c                             | 1223 ++++++++++++
- hw/arm/trace-events                           |    4 +
- hw/char/Kconfig                               |    4 +
- hw/char/meson.build                           |    1 +
- hw/char/ti-am64-uart.c                        |  109 ++
- hw/i2c/Kconfig                                |    4 +
- hw/i2c/meson.build                            |    2 +-
- hw/i2c/omap_i2c.c                             |  234 ++-
- hw/misc/Kconfig                               |   27 +
- hw/misc/meson.build                           |   10 +
- hw/misc/ti-dmsc.c                             | 1725 +++++++++++++++++
- hw/misc/ti-k3-ctrlmmr.c                       |  103 +
- hw/misc/ti-k3-ddrss.c                         |   98 +
- hw/misc/ti-k3-gtc.c                           |  100 +
- hw/misc/ti-k3-sdhci-phy.c                     |   91 +
- hw/misc/ti-k3-trng.c                          |  139 ++
- hw/misc/ti-mailbox.c                          |  566 ++++++
- hw/misc/ti-rat.c                              |  290 +++
- hw/misc/ti-sec-proxy.c                        |  446 +++++
- hw/misc/trace-events                          |   62 +
- hw/sd/sdhci-internal.h                        |    9 +
- hw/sd/sdhci.c                                 |   23 +-
- hw/timer/Kconfig                              |    3 +
- hw/timer/meson.build                          |    1 +
- hw/timer/ti-k3-dmtimer.c                      |  177 ++
- include/hw/arm/k3-bootrom.h                   |   43 +
- include/hw/arm/ti-am64x.h                     |   86 +
- include/hw/char/ti-am64-uart.h                |   28 +
- include/hw/misc/ti-dmsc.h                     |  661 +++++++
- include/hw/misc/ti-k3-ctrlmmr.h               |   26 +
- include/hw/misc/ti-k3-ddrss.h                 |   26 +
- include/hw/misc/ti-k3-gtc.h                   |   23 +
- include/hw/misc/ti-k3-sdhci-phy.h             |   26 +
- include/hw/misc/ti-k3-trng.h                  |   35 +
- include/hw/misc/ti-mailbox.h                  |   44 +
- include/hw/misc/ti-rat.h                      |   51 +
- include/hw/misc/ti-sec-proxy.h                |  108 ++
- include/hw/timer/ti-k3-dmtimer.h              |   30 +
- pc-bios/dtb/am64-virt.dtb                     |  Bin 0 -> 6116 bytes
- pc-bios/dtb/am64-virt.dts                     |  292 +++
- tests/functional/aarch64/meson.build          |    2 +
- tests/functional/aarch64/test_am64_bootrom.py |  137 ++
- tests/qtest/am64-adma-pacing-test.c           |  243 +++
- tests/qtest/am64-virt-test.c                  |  502 +++++
- tests/qtest/meson.build                       |    1 +
- tests/qtest/ti-am64-i2c-test.c                |  137 ++
- tests/unit/meson.build                        |    1 +
- tests/unit/test-k3-bootrom.c                  |  263 +++
- 56 files changed, 9060 insertions(+), 5 deletions(-)
- create mode 100644 docs/system/arm/am64.rst
- create mode 100644 hw/arm/am64-virt.c
- create mode 100644 hw/arm/k3-bootrom-parse.c
- create mode 100644 hw/arm/k3-bootrom.c
- create mode 100644 hw/arm/ti-am64x.c
- create mode 100644 hw/char/ti-am64-uart.c
- create mode 100644 hw/misc/ti-dmsc.c
- create mode 100644 hw/misc/ti-k3-ctrlmmr.c
- create mode 100644 hw/misc/ti-k3-ddrss.c
- create mode 100644 hw/misc/ti-k3-gtc.c
- create mode 100644 hw/misc/ti-k3-sdhci-phy.c
- create mode 100644 hw/misc/ti-k3-trng.c
- create mode 100644 hw/misc/ti-mailbox.c
- create mode 100644 hw/misc/ti-rat.c
- create mode 100644 hw/misc/ti-sec-proxy.c
- create mode 100644 hw/timer/ti-k3-dmtimer.c
- create mode 100644 include/hw/arm/k3-bootrom.h
- create mode 100644 include/hw/arm/ti-am64x.h
- create mode 100644 include/hw/char/ti-am64-uart.h
- create mode 100644 include/hw/misc/ti-dmsc.h
- create mode 100644 include/hw/misc/ti-k3-ctrlmmr.h
- create mode 100644 include/hw/misc/ti-k3-ddrss.h
- create mode 100644 include/hw/misc/ti-k3-gtc.h
- create mode 100644 include/hw/misc/ti-k3-sdhci-phy.h
- create mode 100644 include/hw/misc/ti-k3-trng.h
- create mode 100644 include/hw/misc/ti-mailbox.h
- create mode 100644 include/hw/misc/ti-rat.h
- create mode 100644 include/hw/misc/ti-sec-proxy.h
- create mode 100644 include/hw/timer/ti-k3-dmtimer.h
- create mode 100644 pc-bios/dtb/am64-virt.dtb
- create mode 100644 pc-bios/dtb/am64-virt.dts
+Signed-off-by: Wadim Mueller <wafgo01@gmail.com>
+---
+ tests/functional/aarch64/meson.build          |   2 +
+ tests/functional/aarch64/test_am64_bootrom.py | 137 +++++
+ tests/qtest/am64-adma-pacing-test.c           | 243 +++++++++
+ tests/qtest/am64-virt-test.c                  | 502 ++++++++++++++++++
+ tests/qtest/meson.build                       |   1 +
+ tests/qtest/ti-am64-i2c-test.c                | 137 +++++
+ tests/unit/meson.build                        |   1 +
+ tests/unit/test-k3-bootrom.c                  | 263 +++++++++
+ 8 files changed, 1286 insertions(+)
  create mode 100644 tests/functional/aarch64/test_am64_bootrom.py
  create mode 100644 tests/qtest/am64-adma-pacing-test.c
  create mode 100644 tests/qtest/am64-virt-test.c
  create mode 100644 tests/qtest/ti-am64-i2c-test.c
  create mode 100644 tests/unit/test-k3-bootrom.c
 
-
-base-commit: ae4f3443209ab154b48b706a146e5f557ab147cb
+diff --git a/tests/functional/aarch64/meson.build b/tests/functional/aarch64/meson.build
+index e81afd6c39..6962ae1da1 100644
+--- a/tests/functional/aarch64/meson.build
++++ b/tests/functional/aarch64/meson.build
+@@ -1,6 +1,7 @@
+ # SPDX-License-Identifier: GPL-2.0-or-later
+ 
+ test_aarch64_timeouts = {
++  'am64_bootrom' : 300,
+   'aspeed_ast2700a1' : 600,
+   'aspeed_ast2700a2' : 600,
+   'aspeed_ast2700fc' : 600,
+@@ -26,6 +27,7 @@ tests_aarch64_system_quick = [
+ ]
+ 
+ tests_aarch64_system_thorough = [
++  'am64_bootrom',
+   'aspeed_ast2700a1',
+   'aspeed_ast2700a2',
+   'aspeed_ast2700fc',
+diff --git a/tests/functional/aarch64/test_am64_bootrom.py b/tests/functional/aarch64/test_am64_bootrom.py
+new file mode 100644
+index 0000000000..2203ec7585
+--- /dev/null
++++ b/tests/functional/aarch64/test_am64_bootrom.py
+@@ -0,0 +1,137 @@
++#!/usr/bin/env python3
++#
++# Boot-ROM emulation test for am64-virt machine: build a synthetic TI
++# combined boot image and check the R5 payload runs from the certified
++# entry.  Optionally boots a vendor tiboot3.bin via QEMU_TEST_TIBOOT3.
++#
++# Copyright (c) 2026 CMBLU Energy AG
++# Author: Wadim Mueller <wafgo01@gmail.com>
++#
++# SPDX-License-Identifier: GPL-2.0-or-later
++
++import os
++import struct
++
++from qemu_test import Asset, QemuSystemTest, wait_for_console_pattern
++from unittest import skipUnless
++
++# Checked-in DTB path; pc-bios/dtb/am64-virt.dtb does not get copied into
++# the build directory.
++SOURCE_DIR = os.path.normpath(
++    os.path.join(os.path.dirname(__file__), '..', '..', '..'))
++
++
++def der(tag, payload):
++    n = len(payload)
++    if n < 0x80:
++        hdr = bytes([tag, n])
++    else:
++        hdr = bytes([tag, 0x82, n >> 8, n & 0xff])
++    return hdr + payload
++
++
++def der_int(v):
++    out = v.to_bytes((v.bit_length() + 7) // 8 or 1, 'big')
++    if out[0] & 0x80:
++        out = b'\x00' + out
++    return der(0x02, out)
++
++
++EXT_BOOT_OID = bytes.fromhex('06092b0601040182260109')
++SHA512_OID = bytes.fromhex('0609608648016503040203')
++
++
++def component(ctype, core, opts, dest, size):
++    return der(0x30,
++               der_int(ctype) + der_int(core) + der_int(opts) +
++               der(0x04, dest.to_bytes(4, 'big')) + der_int(size) +
++               SHA512_OID + der(0x04, bytes(64)))
++
++
++# Bare-metal A32 stub, linked at 0x70000000: prints a magic string on
++# main UART0 (0x02800000, 16550 THR at offset 0), then parks.
++SBL_STUB = struct.pack(
++    '<10I',
++    0xe59f001c,  # ldr r0, [pc, #0x1c]   ; r0 = 0x02800000
++    0xe28f101c,  # add r1, pc, #0x1c     ; r1 = msg
++    0xe4d12001,  # loop: ldrb r2, [r1], #1
++    0xe3520000,  # cmp r2, #0
++    0x0a000001,  # beq hang
++    0xe5802000,  # str r2, [r0]
++    0xeafffffa,  # b loop
++    0xeafffffe,  # hang: b hang
++    0x00000000,  # (pad)
++    0x02800000,  # UART0 literal
++) + b'K3BOOTROM-OK\r\n\x00'
++
++
++def make_tiboot3():
++    sbl = SBL_STUB
++    sysfw = b'FAKE-SYSFW-PAYLOAD'
++    cfg = b'FAKE-CFG'
++    info = der(0x30,
++               der_int(len(sbl) + len(sysfw) + len(cfg)) + der_int(3) +
++               component(1, 16, 0, 0x70000000, len(sbl)) +
++               component(2, 0, 0, 0x44000, len(sysfw)) +
++               component(18, 0, 0, 0x7b000, len(cfg)))
++    ext = der(0x30, EXT_BOOT_OID + der(0x04, info))
++    cert = der(0x30, ext)
++    return cert + sbl + sysfw + cfg
++
++
++class Am64BootRom(QemuSystemTest):
++
++    # The gated Linux boot subtest can need about 90 s under TCG on a
++    # development host. 300 s leaves room for slower CI machines.
++    timeout = 300
++
++    def boot_bios(self, path):
++        self.set_machine('am64-virt')
++        self.vm.set_console()
++        self.vm.add_args('-bios', path)
++        self.vm.launch()
++
++    def test_synthetic_image(self):
++        path = os.path.join(self.workdir, 'tiboot3-synth.bin')
++        with open(path, 'wb') as f:
++            f.write(make_tiboot3())
++        self.boot_bios(path)
++        wait_for_console_pattern(self, 'K3BOOTROM-OK')
++
++    @skipUnless(os.getenv('QEMU_TEST_TIBOOT3'),
++                'set QEMU_TEST_TIBOOT3=<path to tiboot3.bin>')
++    def test_vendor_tiboot3(self):
++        self.boot_bios(os.getenv('QEMU_TEST_TIBOOT3'))
++        # The SYSFW ABI line also proves boot notification plus TISCI
++        # VERSION before execution reaches the unmodelled DDR init.
++        wait_for_console_pattern(self, 'U-Boot SPL')
++        wait_for_console_pattern(self, 'SYSFW ABI:')
++
++    # Standalone arm64 netboot kernel.  It has PL011 and GICv3 drivers but
++    # no initramfs, so expected rootfs panic comes after the milestones,
++    # which this test cares about.
++    ASSET_KERNEL = Asset(
++        ('http://ports.ubuntu.com/ubuntu-ports/dists/bionic-updates/main/'
++         'installer-arm64/20101020ubuntu543.19/images/netboot/'
++         'ubuntu-installer/arm64/linux'),
++        'ce54f74ab0b15cfd13d1a293f2d27ffd79d8a85b7bb9bf21093ae9513864ac79')
++
++    def test_linux_gicv3(self):
++        kernel_path = self.ASSET_KERNEL.fetch()
++        dtb = os.path.join(SOURCE_DIR, 'pc-bios', 'dtb', 'am64-virt.dtb')
++        self.set_machine('am64-virt')
++        self.vm.set_console()
++        self.vm.add_args('-kernel', kernel_path,
++                         '-dtb', dtb,
++                         '-append', 'console=ttyAMA0 earlycon')
++        self.vm.launch()
++        wait_for_console_pattern(
++            self,
++            'GICv3: CPU0: found redistributor 0 region '
++            '0:0x0000000001840000')
++        wait_for_console_pattern(self, 'CPU1: Booted secondary processor')
++        wait_for_console_pattern(self, 'ttyAMA0')
++
++
++if __name__ == '__main__':
++    QemuSystemTest.main()
+diff --git a/tests/qtest/am64-adma-pacing-test.c b/tests/qtest/am64-adma-pacing-test.c
+new file mode 100644
+index 0000000000..7b503d86ed
+--- /dev/null
++++ b/tests/qtest/am64-adma-pacing-test.c
+@@ -0,0 +1,243 @@
++/*
++ * QTest for AM64x SDHCI ADMA2 virtual-clock pacing
++ *
++ * CMD18 over a 12-descriptor ADMA2 chain has to complete synchronously
++ * when no DMA-boundary interrupt is requested.  A sliced transfer needs
++ * at least one SDHC_TRANSFER_DELAY virtual-clock step.
++ *
++ * Copyright (c) 2026 CMBLU Energy AG
++ * Author: Wadim Mueller <wafgo01@gmail.com>
++ *
++ * SPDX-License-Identifier: GPL-2.0-or-later
++ */
++#include "qemu/osdep.h"
++#include "libqtest.h"
++
++/*
++ * Keep the small SDHCI subset local; sdhci-internal.h is not usable from
++ * qtests, since it exposes SDHCIState internals.
++ */
++#define SDHC_ARGUMENT              0x08
++#define SDHC_TRNMOD                0x0C
++#define SDHC_TRNS_DMA              0x0001
++#define SDHC_TRNS_BLK_CNT_EN       0x0002
++#define SDHC_TRNS_READ             0x0010
++#define SDHC_TRNS_MULTI            0x0020
++#define SDHC_CMDREG                0x0E
++#define SDHC_CMD_DATA_PRESENT      (1 << 5)
++#define SDHC_RSPREG0               0x10
++#define SDHC_PRNSTS                0x24
++#define SDHC_CARD_PRESENT          0x00010000
++#define SDHC_HOSTCTL               0x28
++#define SDHC_CTRL_ADMA2_32         0x10
++#define SDHC_BLKSIZE               0x04
++#define SDHC_CLKCON                0x2C
++#define SDHC_CLOCK_INT_EN          0x0001
++#define SDHC_CLOCK_SDCLK_EN        (1 << 2)
++#define SDHC_SWRST                 0x2F
++#define SDHC_RESET_ALL             0x01
++#define SDHC_NORINTSTS             0x30
++#define SDHC_NIS_ERR               0x8000
++#define SDHC_NIS_CMDCMP            0x0001
++#define SDHC_NIS_TRSCMP            0x0002
++#define SDHC_NORINTSTSEN           0x34
++#define SDHC_ERRINTSTSEN           0x36
++#define SDHC_ADMASYSADDR           0x58
++#define SDHC_ADMA_ATTR_ACT_TRAN    (1 << 5)
++#define SDHC_ADMA_ATTR_END         (1 << 1)
++#define SDHC_ADMA_ATTR_VALID       (1 << 0)
++#define SDHC_TRANSFER_DELAY        100
++/* NDESC stays above SDHC_ADMA_DESCS_PER_DELAY (5). */
++
++/*
++ * Probe both AM64x SDHCI instances.  The first free sd-bus gets the
++ * test card, so the base with CARD_PRESENT depends from realize order.
++ */
++#define SDHCI_SD_BASE     0x0fa00000ULL
++#define SDHCI_EMMC_BASE   0x0fa10000ULL
++
++/* Scratch DDR: ADMA descriptor table plus target buffer. */
++#define ADMA_TABLE_ADDR   0x82000000ULL
++#define ADMA_BUF_ADDR     0x82100000ULL
++
++#define BLK_LEN           512
++#define NDESC             12      /* > SDHC_ADMA_DESCS_PER_DELAY (5) */
++
++/* SDHCI command-register response-type encodings (CMDREG bits [1:0]). */
++#define RESP_NONE         0x0000
++#define RESP_R2           0x0001  /* 136-bit (CID/CSD) */
++#define RESP_R48          0x0002  /* 48-bit  (R1/R3/R6/R7) */
++#define RESP_R1B          0x0003  /* 48-bit with busy (R1b) */
++
++/* ACMD41 argument: HCS (bit30) + a 3.3-3.6V voltage window (non-enquiry). */
++#define ACMD41_ARG        0x40FF8000u
++/* CMD8 argument: VHS = 2.7-3.6V + recommended check pattern 0xAA. */
++#define CMD8_ARG          0x000001AAu
++
++/* Bounded command-complete poll; returns actual latched NORINTSTS. */
++static uint16_t sd_cmd(QTestState *qts, uint64_t base, uint8_t cmd,
++                       uint32_t arg, uint16_t flags)
++{
++    uint16_t sts = 0;
++    int i;
++
++    qtest_writel(qts, base + SDHC_ARGUMENT, arg);
++    qtest_writew(qts, base + SDHC_CMDREG, ((uint16_t)cmd << 8) | flags);
++
++    /* CMDREG write runs synchronously sdhci_send_command(). */
++    for (i = 0; i < 1000; i++) {
++        sts = qtest_readw(qts, base + SDHC_NORINTSTS);
++        if (sts & SDHC_NIS_CMDCMP) {
++            break;
++        }
++    }
++    g_assert_cmphex(sts & SDHC_NIS_CMDCMP, ==, SDHC_NIS_CMDCMP);
++
++    /* Clear all latched normal-interrupt status bits (write-1-to-clear). */
++    qtest_writew(qts, base + SDHC_NORINTSTS, 0xffff);
++    return sts;
++}
++
++/* Return the controller base whose PRNSTS reports a card inserted. */
++static uint64_t find_card_base(QTestState *qts)
++{
++    uint32_t sd_sts = qtest_readl(qts, SDHCI_SD_BASE + SDHC_PRNSTS);
++    uint32_t emmc_sts = qtest_readl(qts, SDHCI_EMMC_BASE + SDHC_PRNSTS);
++
++    if (sd_sts & SDHC_CARD_PRESENT) {
++        return SDHCI_SD_BASE;
++    }
++    if (emmc_sts & SDHC_CARD_PRESENT) {
++        return SDHCI_EMMC_BASE;
++    }
++    g_assert_not_reached();
++}
++
++/* Bring SD card to transfer state. */
++static void sd_bring_up_card(QTestState *qts, uint64_t base)
++{
++    uint32_t rca;
++
++    /* Host reset, clock on (INT_EN sets INT_STABLE), latch all status. */
++    qtest_writeb(qts, base + SDHC_SWRST, SDHC_RESET_ALL);
++    qtest_writew(qts, base + SDHC_CLKCON,
++                 SDHC_CLOCK_INT_EN | SDHC_CLOCK_SDCLK_EN);
++    qtest_writew(qts, base + SDHC_NORINTSTSEN, 0xffff);
++    qtest_writew(qts, base + SDHC_ERRINTSTSEN, 0xffff);
++
++    sd_cmd(qts, base, 0,  0x00000000, RESP_NONE);  /* CMD0  GO_IDLE_STATE   */
++    sd_cmd(qts, base, 8,  CMD8_ARG,   RESP_R48);    /* CMD8  SEND_IF_COND    */
++
++    /* ACMD41: CMD55 (APP_CMD) then CMD41 (SEND_OP_COND), until powered up. */
++    for (int i = 0; i < 100; i++) {
++        sd_cmd(qts, base, 55, 0x00000000, RESP_R48);
++        sd_cmd(qts, base, 41, ACMD41_ARG, RESP_R48);
++        /* Non-enquiry ACMD41 powers up the model; the loop is a guard. */
++        break;
++    }
++
++    sd_cmd(qts, base, 2, 0x00000000, RESP_R2);     /* CMD2  ALL_SEND_CID    */
++    sd_cmd(qts, base, 3, 0x00000000, RESP_R48);    /* CMD3  SEND_RELATIVE   */
++
++    /* R6 packs the assigned RCA in the upper 16 bits of RSPREG0. */
++    rca = qtest_readl(qts, base + SDHC_RSPREG0) >> 16;
++
++    sd_cmd(qts, base, 7, rca << 16, RESP_R1B);     /* CMD7  SELECT_CARD     */
++    sd_cmd(qts, base, 16, BLK_LEN,  RESP_R48);     /* CMD16 SET_BLOCKLEN    */
++}
++
++/*
++ * 32-bit ADMA2 entries are little-endian 64-bit words: attr in bits
++ * [6:0], length in [31:16], address in [63:32].  No INT bit is set,
++ * so we expect the whole chain in one call.
++ */
++static void build_adma_table(QTestState *qts)
++{
++    for (int i = 0; i < NDESC; i++) {
++        uint8_t attr = SDHC_ADMA_ATTR_VALID | SDHC_ADMA_ATTR_ACT_TRAN;
++        uint32_t addr = (uint32_t)(ADMA_BUF_ADDR + (uint64_t)i * BLK_LEN);
++
++        if (i == NDESC - 1) {
++            attr |= SDHC_ADMA_ATTR_END;
++        }
++        qtest_writel(qts, ADMA_TABLE_ADDR + (uint64_t)i * 8,
++                     ((uint32_t)BLK_LEN << 16) | attr);
++        qtest_writel(qts, ADMA_TABLE_ADDR + (uint64_t)i * 8 + 4, addr);
++    }
++}
++
++static void test_adma_pacing(void)
++{
++    char *tmp = NULL;
++    int fd;
++    GError *err = NULL;
++    uint64_t base;
++    QTestState *qts;
++    uint16_t sts;
++    int steps = 0;
++
++    /* 1 MiB raw backing file, filled with zero. */
++    fd = g_file_open_tmp("am64-adma-XXXXXX.raw", &tmp, &err);
++    g_assert_no_error(err);
++    g_assert_cmpint(fd, >=, 0);
++    g_assert_cmpint(ftruncate(fd, 1 * 1024 * 1024), ==, 0);
++    close(fd);
++
++    qts = qtest_initf("-machine am64-virt -accel qtest -display none "
++                      "-drive if=none,id=sd0,file=%s,format=raw "
++                      "-device sd-card,drive=sd0", tmp);
++
++    base = find_card_base(qts);
++    sd_bring_up_card(qts, base);
++
++    /* Select ADMA2 32-bit as DMA engine (Host Control 1 bits [4:3]). */
++    qtest_writeb(qts, base + SDHC_HOSTCTL, SDHC_CTRL_ADMA2_32);
++
++    build_adma_table(qts);
++
++    /* Program descriptor/geometry and clear old status. */
++    qtest_writel(qts, base + SDHC_ADMASYSADDR, (uint32_t)ADMA_TABLE_ADDR);
++    qtest_writel(qts, base + SDHC_ADMASYSADDR + 4,
++                 (uint32_t)(ADMA_TABLE_ADDR >> 32));
++    qtest_writel(qts, base + SDHC_BLKSIZE, BLK_LEN | (NDESC << 16));
++    qtest_writew(qts, base + SDHC_TRNMOD,
++                 SDHC_TRNS_DMA | SDHC_TRNS_BLK_CNT_EN |
++                 SDHC_TRNS_READ | SDHC_TRNS_MULTI);
++    qtest_writel(qts, base + SDHC_ARGUMENT, 0);  /* start block 0 */
++    qtest_writew(qts, base + SDHC_NORINTSTS, 0xffff);
++
++    /* CMD18 READ_MULTIPLE_BLOCK kicks off ADMA. */
++    qtest_writew(qts, base + SDHC_CMDREG,
++                 (18 << 8) | SDHC_CMD_DATA_PRESENT | RESP_R48);
++
++    /*
++     * Transfer Complete has to be already set.  A batched 12-descriptor
++     * chain needs at least one SDHC_TRANSFER_DELAY step.
++     */
++    while (!((sts = qtest_readw(qts, base + SDHC_NORINTSTS)) &
++             SDHC_NIS_TRSCMP)) {
++        qtest_clock_step(qts, SDHC_TRANSFER_DELAY);
++        steps++;
++        g_assert_cmpint(steps, <, 1000);
++    }
++
++    /* Completion has to be Transfer Complete with no error interrupt. */
++    g_assert_cmphex(sts & SDHC_NIS_TRSCMP, ==, SDHC_NIS_TRSCMP);
++    g_assert_cmphex(sts & SDHC_NIS_ERR, ==, 0);
++
++    g_test_message("ADMA %d descriptors: %d clock steps", NDESC, steps);
++
++    /* The fixed path completes whole chain in one pass: no clock steps. */
++    g_assert_cmpint(steps, ==, 0);
++
++    qtest_quit(qts);
++    unlink(tmp);
++    g_free(tmp);
++}
++
++int main(int argc, char **argv)
++{
++    g_test_init(&argc, &argv, NULL);
++    qtest_add_func("/am64/sdhci/adma-pacing", test_adma_pacing);
++    return g_test_run();
++}
+diff --git a/tests/qtest/am64-virt-test.c b/tests/qtest/am64-virt-test.c
+new file mode 100644
+index 0000000000..c0a9a26275
+--- /dev/null
++++ b/tests/qtest/am64-virt-test.c
+@@ -0,0 +1,502 @@
++/*
++ * QTests for AM64 virt machine
++ *
++ * Copyright (c) 2026 CMBLU Energy AG
++ * Author: Wadim Mueller <wafgo01@gmail.com>
++ *
++ * SPDX-License-Identifier: GPL-2.0-or-later
++ */
++#include "qemu/osdep.h"
++#include "libqtest.h"
++#include "qobject/qdict.h"
++#include "qobject/qlist.h"
++
++#define OCSRAM_BASE 0x70000000ULL
++#define OCSRAM_SIZE (2 * 1024 * 1024)
++#define MAIN_UART0_BASE 0x02800000ULL
++
++static void test_ocsram_rw(void)
++{
++    QTestState *qts = qtest_init("-machine am64-virt");
++
++    qtest_writel(qts, OCSRAM_BASE, 0xdeadbeef);
++    g_assert_cmphex(qtest_readl(qts, OCSRAM_BASE), ==, 0xdeadbeef);
++    qtest_writel(qts, OCSRAM_BASE + OCSRAM_SIZE - 4, 0x12345678);
++    g_assert_cmphex(qtest_readl(qts, OCSRAM_BASE + OCSRAM_SIZE - 4), ==,
++                    0x12345678);
++    /* Boot parameters must stay in OCSRAM. */
++    qtest_writel(qts, 0x701bebfc, 0x0);
++    g_assert_cmphex(qtest_readl(qts, 0x701bebfc), ==, 0x0);
++    qtest_quit(qts);
++}
++
++static void test_main_uart0_present(void)
++{
++    QTestState *qts = qtest_init("-machine am64-virt");
++
++    /* Idle 16550: transmitter empty bits are set. */
++    g_assert_cmphex(qtest_readl(qts, MAIN_UART0_BASE + (5 << 2)) & 0x60,
++                    ==, 0x60);
++    qtest_quit(qts);
++}
++
++static void test_r5f_cpu_present(void)
++{
++    QTestState *qts = qtest_init("-machine am64-virt");
++    QDict *resp = qtest_qmp(qts, "{'execute': 'query-cpus-fast'}");
++    QList *cpus = qdict_get_qlist(resp, "return");
++
++    /* 2x A53 + 1x M4 + 1x R5F */
++    g_assert_cmpint(qlist_size(cpus), ==, 4);
++    qobject_unref(resp);
++    qtest_quit(qts);
++}
++
++static void test_devstat(void)
++{
++    QTestState *qts = qtest_init("-machine am64-virt");
++
++    /* CTRLMMR_MAIN_DEVSTAT: primary bootmode = eMMC (0x9 << 3). */
++    g_assert_cmphex(qtest_readl(qts, 0x43000030), ==, 0x48);
++    /* mmr_unlock() kick writes have to be accepted. */
++    qtest_writel(qts, 0x43008008, 0x68ef3490);
++    qtest_writel(qts, 0x4300800c, 0xd172bc5a);
++    qtest_quit(qts);
++}
++
++#define DDRSS_CFG_BASE    0x0f308000ULL
++#define SP_TARGET(thread) (0x4D000000ULL + (thread) * 0x1000)
++#define SP_RT(thread)     (0x4A600000ULL + (thread) * 0x1000)
++
++static void test_dmsc_r5_version(void)
++{
++    QTestState *qts = qtest_init("-machine am64-virt");
++    /*
++     * R5 secure-host TISCI VERSION request.  The zero secure prefix
++     * has to be skipped before parsing the TISCI header.
++     */
++    qtest_writel(qts, SP_TARGET(1) + 0x04, 0x00000000);
++    qtest_writel(qts, SP_TARGET(1) + 0x08, 0x0a230002);
++    qtest_writel(qts, SP_TARGET(1) + 0x0c, 0x00000002);
++    /* Commit with the last data word. */
++    qtest_writel(qts, SP_TARGET(1) + 0x3c, 0x00000000);
++
++    /* Response has to land on RX thread 0. */
++    for (int i = 0; i < 100; i++) {
++        if (qtest_readl(qts, SP_RT(0)) & 0xff) {
++            break;
++        }
++        g_usleep(10 * 1000);
++    }
++    g_assert_cmpuint(qtest_readl(qts, SP_RT(0)) & 0xff, >, 0);
++
++    /* Secure prefix, echoed VERSION type, ACK bit is set. */
++    g_assert_cmphex(qtest_readl(qts, SP_TARGET(0) + 0x08) & 0xffff,
++                    ==, 0x0002);
++    g_assert_cmphex(qtest_readl(qts, SP_TARGET(0) + 0x0c) & 0x2, ==, 0x2);
++    qtest_quit(qts);
++}
++
++static void test_dmsc_r5_get_freq(void)
++{
++    QTestState *qts = qtest_init("-machine am64-virt");
++
++    /*
++     * R5 secure-host GET_FREQ (0x010e) for MMCSD0 clock 1.  This
++     * controls packed request layout and nonzero frequency response.
++     */
++    qtest_writel(qts, SP_TARGET(1) + 0x04, 0x00000000);
++    qtest_writel(qts, SP_TARGET(1) + 0x08, 0x0a23010e);
++    qtest_writel(qts, SP_TARGET(1) + 0x0c, 0x00000002);
++    qtest_writel(qts, SP_TARGET(1) + 0x10, 57);
++    qtest_writel(qts, SP_TARGET(1) + 0x14, 1);
++    /* commit by writing the last data word */
++    qtest_writel(qts, SP_TARGET(1) + 0x3c, 0x00000000);
++
++    /* response has to land on RX thread 0 (message count > 0) */
++    for (int i = 0; i < 100; i++) {
++        if (qtest_readl(qts, SP_RT(0)) & 0xff) {
++            break;
++        }
++        g_usleep(10 * 1000);
++    }
++    g_assert_cmpuint(qtest_readl(qts, SP_RT(0)) & 0xff, >, 0);
++
++    /* Secure prefix, echoed GET_FREQ type, ACK bit is set. */
++    g_assert_cmphex(qtest_readl(qts, SP_TARGET(0) + 0x08) & 0xffff,
++                    ==, 0x010e);
++    g_assert_cmphex(qtest_readl(qts, SP_TARGET(0) + 0x0c) & 0x2, ==, 0x2);
++    /* freq_hz follows the 8-byte TISCI header and has to be nonzero. */
++    g_assert_cmpuint(qtest_readl(qts, SP_TARGET(0) + 0x10), !=, 0);
++    qtest_quit(qts);
++}
++
++/*
++ * Requests without TISCI_MSG_FLAG_AOP must get no reply.  Else a stale
++ * message in the single-slot RX thread breaks later request/response
++ * pairing, so keep RX count at zero for both no-response messages.
++ */
++static void test_dmsc_r5_no_response_flag(void)
++{
++    QTestState *qts = qtest_init("-machine am64-virt");
++
++    /*
++     * Drain the reset-time boot notification.  Reading register 15 clears
++     * the inbound thread message count again.
++     */
++    if (qtest_readl(qts, SP_RT(0)) & 0xff) {
++        qtest_readl(qts, SP_TARGET(0) + 0x3c);
++    }
++
++    /* WAIT_PROC_BOOT_STATUS (0xc401), hdr.flags = 0: no response. */
++    qtest_writel(qts, SP_TARGET(1) + 0x04, 0x00000000);
++    qtest_writel(qts, SP_TARGET(1) + 0x08, 0x0a23c401);
++    qtest_writel(qts, SP_TARGET(1) + 0x0c, 0x00000000);
++    qtest_writel(qts, SP_TARGET(1) + 0x3c, 0x00000000);
++    g_usleep(50 * 1000);
++    g_assert_cmphex(qtest_readl(qts, SP_RT(0)) & 0xff, ==, 0);
++
++    /* SET_DEVICE (0x0200), hdr.flags = 0: no response. */
++    qtest_writel(qts, SP_TARGET(1) + 0x04, 0x00000000);
++    qtest_writel(qts, SP_TARGET(1) + 0x08, 0x0a230200);
++    qtest_writel(qts, SP_TARGET(1) + 0x0c, 0x00000000);
++    qtest_writel(qts, SP_TARGET(1) + 0x10, 121);   /* device id */
++    qtest_writel(qts, SP_TARGET(1) + 0x14, 0);     /* state off */
++    qtest_writel(qts, SP_TARGET(1) + 0x3c, 0x00000000);
++    g_usleep(50 * 1000);
++    g_assert_cmphex(qtest_readl(qts, SP_RT(0)) & 0xff, ==, 0);
++
++    /* AOP messages still get a response. */
++    qtest_writel(qts, SP_TARGET(1) + 0x04, 0x00000000);
++    qtest_writel(qts, SP_TARGET(1) + 0x08, 0x0a230002);   /* VERSION */
++    qtest_writel(qts, SP_TARGET(1) + 0x0c, 0x00000002);
++    qtest_writel(qts, SP_TARGET(1) + 0x3c, 0x00000000);
++    for (int i = 0; i < 100; i++) {
++        if (qtest_readl(qts, SP_RT(0)) & 0xff) {
++            break;
++        }
++        g_usleep(10 * 1000);
++    }
++    g_assert_cmphex(qtest_readl(qts, SP_RT(0)) & 0xff, >, 0);
++    qtest_quit(qts);
++}
++
++/*
++ * TISCI_MSG_SYS_RESET (0x0005) is a no-response request, but it still
++ * triggers a full machine reset.
++ */
++static void test_dmsc_r5_sys_reset(void)
++{
++    QTestState *qts = qtest_init("-machine am64-virt");
++
++    /* Drain the reset-time boot notification. */
++    if (qtest_readl(qts, SP_RT(0)) & 0xff) {
++        qtest_readl(qts, SP_TARGET(0) + 0x3c);
++    }
++
++    /* SYS_RESET from host 35, with secure prefix and hdr.flags = 0. */
++    qtest_writel(qts, SP_TARGET(1) + 0x04, 0x00000000);
++    qtest_writel(qts, SP_TARGET(1) + 0x08, 0x0a230005);
++    qtest_writel(qts, SP_TARGET(1) + 0x0c, 0x00000000);
++    /* commit: write the last data word */
++    qtest_writel(qts, SP_TARGET(1) + 0x3c, 0x00000000);
++
++    /* The DMSC reset request appears as QEMU RESET event. */
++    qtest_qmp_eventwait(qts, "RESET");
++    qtest_quit(qts);
++}
++
++static void test_dmtimer_counts(void)
++{
++    QTestState *qts = qtest_init("-machine am64-virt");
++    uint32_t t0, t1;
++
++    /* TCLR.ST is safe also when the model free-runs. */
++    qtest_writel(qts, 0x02400038, 1);
++    t0 = qtest_readl(qts, 0x0240003c);
++    qtest_clock_step(qts, 1000000); /* +1 ms */
++    t1 = qtest_readl(qts, 0x0240003c);
++    /* 20 MHz -> 1 ms = 20000 ticks */
++    g_assert_cmpuint(t1 - t0, ==, 20000);
++    qtest_quit(qts);
++}
++
++static void test_dmtimer_prescaler(void)
++{
++    QTestState *qts = qtest_init("-machine am64-virt");
++    uint32_t t0, t1;
++
++    /*
++     * PTV=2 with PRE_EN gives 20 MHz / (2 << 2), i.e. 1 ms is
++     * 2500 ticks.
++     */
++    qtest_writel(qts, 0x02400038, 0x2b);
++    t0 = qtest_readl(qts, 0x0240003c);
++    qtest_clock_step(qts, 1000000); /* +1 ms virtual time */
++    t1 = qtest_readl(qts, 0x0240003c);
++    g_assert_cmpuint(t1 - t0, ==, 2500);
++    qtest_quit(qts);
++}
++
++static void test_dmtimer_reconfigure(void)
++{
++    QTestState *qts = qtest_init("-machine am64-virt");
++    uint32_t t0, t1;
++
++    /*
++     * Changing the prescaler while the timer runs must only affect time
++     * after the TCLR write, never rescale already-elapsed ticks.
++     */
++    qtest_writel(qts, 0x02400038, 1);           /* ST, no prescaler */
++    t0 = qtest_readl(qts, 0x0240003c);
++    qtest_clock_step(qts, 1000000);             /* +1 ms @ 20 MHz  */
++    qtest_writel(qts, 0x02400038, 0x2b);        /* PTV=2, PRE_EN, AR, ST */
++    qtest_clock_step(qts, 1000000);             /* +1 ms @ 2.5 MHz */
++    t1 = qtest_readl(qts, 0x0240003c);
++    g_assert_cmpuint(t1 - t0, ==, 20000 + 2500);
++    qtest_quit(qts);
++}
++
++#define GICD_BASE 0x01800000ULL
++#define GICR_BASE 0x01840000ULL
++#define GIC_PIDR2 0xffe8
++
++static void test_gicv3_present(void)
++{
++    QTestState *qts = qtest_init("-machine am64-virt");
++
++    /* GICD_PIDR2.ArchRev must report a GICv3 distributor. */
++    g_assert_cmphex((qtest_readl(qts, GICD_BASE + GIC_PIDR2) >> 4) & 0xf,
++                    ==, 3);
++    /* first redistributor frame at actual AM64x GICR base */
++    g_assert_cmphex((qtest_readl(qts, GICR_BASE + GIC_PIDR2) >> 4) & 0xf,
++                    ==, 3);
++    qtest_quit(qts);
++}
++
++static void test_ddrss_stub(void)
++{
++    QTestState *qts = qtest_init("-machine am64-virt");
++
++    /* DENALI_CTL_0 writes must persist, including dram_class DDR4. */
++    qtest_writel(qts, DDRSS_CFG_BASE + 0x0, 0x00000A00);
++    g_assert_cmphex(qtest_readl(qts, DDRSS_CFG_BASE + 0x0), ==, 0x00000A00);
++
++    /* Done bits are ORed into status reads, also after writes. */
++    qtest_writel(qts, DDRSS_CFG_BASE + 0x214C, 0x0);
++    g_assert_cmphex(qtest_readl(qts, DDRSS_CFG_BASE + 0x214C) & 0x1, ==, 0x1);
++    qtest_writel(qts, DDRSS_CFG_BASE + 0x538, 0x0);
++    g_assert_cmphex(qtest_readl(qts, DDRSS_CFG_BASE + 0x538) & (1u << 13),
++                    ==, 1u << 13);
++    qtest_writel(qts, DDRSS_CFG_BASE + 0x558, 0x0);
++    g_assert_cmphex(qtest_readl(qts, DDRSS_CFG_BASE + 0x558) & (1u << 25),
++                    ==, 1u << 25);
++
++    /*
++     * ECC priming needs both BIST_DONE latches: INT_STATUS_MASTER bit 8
++     * and INT_STATUS_BIST bit 0, resp. CTL_341 raw bit 16.
++     */
++    qtest_writel(qts, DDRSS_CFG_BASE + 0x538, 0x0);
++    g_assert_cmphex(qtest_readl(qts, DDRSS_CFG_BASE + 0x538) & (1u << 8),
++                    ==, 1u << 8);
++    qtest_writel(qts, DDRSS_CFG_BASE + 0x554, 0x0);
++    g_assert_cmphex(qtest_readl(qts, DDRSS_CFG_BASE + 0x554) & (1u << 16),
++                    ==, 1u << 16);
++    qtest_quit(qts);
++}
++
++/*
++ * SET_CONFIG (0xc100) records the A53 bootvector, and PROC_GET_STATUS
++ * (0xc400) must echo it.  The packed payload has processor_id at byte 0
++ * and bootvector_low at bytes 1..4, so 0x701c0000 is written as
++ * 0x1c000020 / 0x00000070.
++ */
++static void test_dmsc_r5_bootvector_capture(void)
++{
++    QTestState *qts = qtest_init("-machine am64-virt");
++    uint32_t reg4, reg5, bootvector_lo;
++
++    /* drain boot notification pre-queued on thread 0 at reset */
++    if (qtest_readl(qts, SP_RT(0)) & 0xff) {
++        qtest_readl(qts, SP_TARGET(0) + 0x3c);
++    }
++
++    qtest_writel(qts, SP_TARGET(1) + 0x04, 0x00000000);      /* sec hdr */
++    qtest_writel(qts, SP_TARGET(1) + 0x08, 0x0a23c100);      /* hdr */
++    qtest_writel(qts, SP_TARGET(1) + 0x0c, 0x00000002);      /* AOP */
++    qtest_writel(qts, SP_TARGET(1) + 0x10, 0x1c000020);      /* id+bv */
++    qtest_writel(qts, SP_TARGET(1) + 0x14, 0x00000070);
++    qtest_writel(qts, SP_TARGET(1) + 0x18, 0x00000000);
++    qtest_writel(qts, SP_TARGET(1) + 0x1c, 0x00000000);
++    qtest_writel(qts, SP_TARGET(1) + 0x3c, 0x00000000);
++    for (int i = 0; i < 100 && !(qtest_readl(qts, SP_RT(0)) & 0xff); i++) {
++        g_usleep(10 * 1000);
++    }
++    g_assert_cmphex(qtest_readl(qts, SP_TARGET(0) + 0x0c) & 0x2, ==, 0x2);
++    qtest_readl(qts, SP_TARGET(0) + 0x3c);                    /* drain */
++
++    /* PROC_GET_STATUS (0xc400), proc 32: bootvector_low has to echo. */
++    qtest_writel(qts, SP_TARGET(1) + 0x04, 0x00000000);
++    qtest_writel(qts, SP_TARGET(1) + 0x08, 0x0a23c400);
++    qtest_writel(qts, SP_TARGET(1) + 0x0c, 0x00000002);
++    qtest_writel(qts, SP_TARGET(1) + 0x10, 32);               /* proc_id */
++    qtest_writel(qts, SP_TARGET(1) + 0x3c, 0x00000000);
++    for (int i = 0; i < 100 && !(qtest_readl(qts, SP_RT(0)) & 0xff); i++) {
++        g_usleep(10 * 1000);
++    }
++
++    /*
++     * Secure responses carry a zero prefix at +0x04.  processor_id is
++     * response byte 8, so bootvector_lo starts one byte into register 4
++     * and has to be rebuilt from registers 4 and 5.
++     */
++    reg4 = qtest_readl(qts, SP_TARGET(0) + 0x10);
++    reg5 = qtest_readl(qts, SP_TARGET(0) + 0x14);
++    bootvector_lo = (reg4 >> 8) | ((reg5 & 0xff) << 24);
++    g_assert_cmphex(bootvector_lo, ==, 0x701c0000);
++    qtest_quit(qts);
++}
++
++#define SDHCI_SD_BASE   0x0fa00000ULL
++#define SDHCI_EMMC_BASE 0x0fa10000ULL
++
++static void test_sdhci_present(void)
++{
++    QTestState *qts = qtest_init("-machine am64-virt");
++
++    /*
++     * CAPAB bit 28 advertises 64-bit system-bus support, which is needed
++     * for A53 SPL ADMA2-64 transfers.
++     */
++    g_assert_cmphex(qtest_readl(qts, SDHCI_SD_BASE + 0x40), ==, 0x157c34b4);
++    g_assert_cmphex(qtest_readl(qts, SDHCI_EMMC_BASE + 0x40), ==, 0x157c34b4);
++    /* Host controller version (0xFE): SDHCI spec 3.00. */
++    g_assert_cmphex(qtest_readw(qts, SDHCI_SD_BASE + 0xFE) & 0xff, ==, 2);
++    /* PHY window: PHY_STAT1 reads CALDONE|DLLRDY */
++    g_assert_cmphex(qtest_readl(qts, 0x0fa08000ULL + 0x130) & 0x3, ==, 0x3);
++    g_assert_cmphex(qtest_readl(qts, 0x0fa18000ULL + 0x130) & 0x3, ==, 0x3);
++    qtest_quit(qts);
++}
++
++#define TRNG_BASE 0x40910000ULL
++
++static void test_trng_stub(void)
++{
++    QTestState *qts = qtest_init("-machine am64-virt");
++
++    /* readiness bit is permanently set */
++    g_assert_cmphex(qtest_readl(qts, TRNG_BASE + 0x10) & 0x1, ==, 0x1);
++    /* Output words must be nonzero and change between reads. */
++    uint32_t a = qtest_readl(qts, TRNG_BASE + 0x00);
++    uint32_t b = qtest_readl(qts, TRNG_BASE + 0x00);
++
++    g_assert_cmpuint(a, !=, 0);
++    g_assert_true(a != b || qtest_readl(qts, TRNG_BASE + 0x04) != a);
++    /* INTACK writes are accepted. */
++    qtest_writel(qts, TRNG_BASE + 0x10, 0x1);
++    /* CONTROL is RAM-backed: read back actual written value */
++    qtest_writel(qts, TRNG_BASE + 0x14, 0x400);
++    g_assert_cmphex(qtest_readl(qts, TRNG_BASE + 0x14), ==, 0x400);
++    qtest_quit(qts);
++}
++
++/*
++ * A53_0 uses threads 9/8 with the same secure prefix as the R5 secure
++ * pair.  If it is classified non-secure, the request header shifts and
++ * response prefix is missing, leaving BL31 waiting forever.
++ */
++static void test_dmsc_a53_secure_version(void)
++{
++    QTestState *qts = qtest_init("-machine am64-virt");
++
++    if (qtest_readl(qts, SP_RT(8)) & 0xff) {
++        qtest_readl(qts, SP_TARGET(8) + 0x3c);
++    }
++
++    /*
++     * A53_0 secure-host VERSION request: zero secure prefix, host 10,
++     * and AOP is set.
++     */
++    qtest_writel(qts, SP_TARGET(9) + 0x04, 0x00000000);
++    qtest_writel(qts, SP_TARGET(9) + 0x08, 0x010a0002);
++    qtest_writel(qts, SP_TARGET(9) + 0x0c, 0x00000002);
++    qtest_writel(qts, SP_TARGET(9) + 0x3c, 0x00000000);
++
++    for (int i = 0; i < 100; i++) {
++        if (qtest_readl(qts, SP_RT(8)) & 0xff) {
++            break;
++        }
++        g_usleep(10 * 1000);
++    }
++    g_assert_cmphex(qtest_readl(qts, SP_RT(8)) & 0xff, >, 0);
++
++    /* VERSION type echoed and ACK bit is set. */
++    g_assert_cmphex(qtest_readl(qts, SP_TARGET(8) + 0x08) & 0xffff,
++                    ==, 0x0002);
++    g_assert_cmphex(qtest_readl(qts, SP_TARGET(8) + 0x0c) & 0x2, ==, 0x2);
++    qtest_quit(qts);
++}
++
++/*
++ * TISCI_MSG_FWL_SET (0x9000) is a bare-ACK request.  Without handler
++ * it falls through to the unknown-message NAK path.
++ */
++static void test_dmsc_fwl_set_ack(void)
++{
++    QTestState *qts = qtest_init("-machine am64-virt");
++
++    if (qtest_readl(qts, SP_RT(0)) & 0xff) {
++        qtest_readl(qts, SP_TARGET(0) + 0x3c);
++    }
++
++    /*
++     * R5 secure FWL_SET: type 0x9000, host 35, AOP set, fwl_id 0x23,
++     * region 3, one permission register.
++     */
++    qtest_writel(qts, SP_TARGET(1) + 0x04, 0x00000000);
++    qtest_writel(qts, SP_TARGET(1) + 0x08, 0x0b239000);
++    qtest_writel(qts, SP_TARGET(1) + 0x0c, 0x00000002);
++    qtest_writel(qts, SP_TARGET(1) + 0x10, 0x00030023);
++    qtest_writel(qts, SP_TARGET(1) + 0x14, 0x00000001);
++    qtest_writel(qts, SP_TARGET(1) + 0x3c, 0x00000000);
++
++    for (int i = 0; i < 100; i++) {
++        if (qtest_readl(qts, SP_RT(0)) & 0xff) {
++            break;
++        }
++        g_usleep(10 * 1000);
++    }
++    g_assert_cmphex(qtest_readl(qts, SP_RT(0)) & 0xff, >, 0);
++
++    g_assert_cmphex(qtest_readl(qts, SP_TARGET(0) + 0x08) & 0xffff,
++                    ==, 0x9000);
++    g_assert_cmphex(qtest_readl(qts, SP_TARGET(0) + 0x0c) & 0x2, ==, 0x2);
++    qtest_quit(qts);
++}
++
++int main(int argc, char **argv)
++{
++    g_test_init(&argc, &argv, NULL);
++    qtest_add_func("/am64-virt/ocsram", test_ocsram_rw);
++    qtest_add_func("/am64-virt/main-uart0", test_main_uart0_present);
++    qtest_add_func("/am64-virt/r5f-present", test_r5f_cpu_present);
++    qtest_add_func("/am64-virt/devstat", test_devstat);
++    qtest_add_func("/am64-virt/dmsc-r5-version", test_dmsc_r5_version);
++    qtest_add_func("/am64-virt/dmsc-r5-get-freq", test_dmsc_r5_get_freq);
++    qtest_add_func("/am64-virt/dmsc-no-response",
++                   test_dmsc_r5_no_response_flag);
++    qtest_add_func("/am64-virt/dmsc-sys-reset", test_dmsc_r5_sys_reset);
++    qtest_add_func("/am64-virt/dmsc-bootvector",
++                   test_dmsc_r5_bootvector_capture);
++    qtest_add_func("/am64-virt/dmtimer", test_dmtimer_counts);
++    qtest_add_func("/am64-virt/dmtimer-prescaler", test_dmtimer_prescaler);
++    qtest_add_func("/am64-virt/dmtimer-reconfigure", test_dmtimer_reconfigure);
++    qtest_add_func("/am64-virt/gicv3", test_gicv3_present);
++    qtest_add_func("/am64-virt/ddrss-stub", test_ddrss_stub);
++    qtest_add_func("/am64-virt/sdhci", test_sdhci_present);
++    qtest_add_func("/am64-virt/trng", test_trng_stub);
++    qtest_add_func("/am64-virt/dmsc-a53-secure-version",
++                   test_dmsc_a53_secure_version);
++    qtest_add_func("/am64-virt/dmsc-fwl-set", test_dmsc_fwl_set_ack);
++    return g_test_run();
++}
+diff --git a/tests/qtest/meson.build b/tests/qtest/meson.build
+index f7c7d06620..d915fb4199 100644
+--- a/tests/qtest/meson.build
++++ b/tests/qtest/meson.build
+@@ -274,6 +274,7 @@ qtests_aarch64 = \
+   (config_all_devices.has_key('CONFIG_IOMMU_TESTDEV') and
+    config_all_devices.has_key('CONFIG_ARM_VIRT') ?
+    ['iommu-smmuv3-test'] : []) + \
++  (config_all_devices.has_key('CONFIG_AM64_VIRT') ? ['am64-virt-test', 'ti-am64-i2c-test', 'am64-adma-pacing-test'] : []) + \
+   qtests_cxl +                                                                                  \
+   ['arm-cpu-features',
+    'numa-test',
+diff --git a/tests/qtest/ti-am64-i2c-test.c b/tests/qtest/ti-am64-i2c-test.c
+new file mode 100644
+index 0000000000..eda8d8032f
+--- /dev/null
++++ b/tests/qtest/ti-am64-i2c-test.c
+@@ -0,0 +1,137 @@
++/*
++ * QTests for AM64x main_i2c0 controller
++ *
++ * Copyright (c) 2026 CMBLU Energy AG
++ * Author: Wadim Mueller <wafgo01@gmail.com>
++ *
++ * SPDX-License-Identifier: GPL-2.0-or-later
++ */
++#include "qemu/osdep.h"
++#include "libqtest.h"
++
++/* main_i2c0 window: i2c@20000000, len 0x100. */
++#define I2C0_BASE 0x20000000ULL
++
++/* OMAP I2C V2 register offsets. */
++#define I2C_V2_SYSC          0x10
++#define I2C_V2_IRQSTATUS_RAW 0x24
++#define I2C_V2_IRQSTATUS     0x28
++#define I2C_V2_SYSS          0x90
++#define I2C_V2_CNT           0x98
++#define I2C_V2_DATA          0x9c
++#define I2C_V2_CON           0xa4
++#define I2C_V2_SA            0xac
++
++/* Register bits. */
++#define I2C_SYSC_SRST   (1 << 1)  /* SYSCONFIG soft reset */
++#define I2C_SYSS_RDONE  (1 << 0)  /* reset done */
++#define I2C_STAT_NACK   (1 << 1)  /* no acknowledgement */
++#define I2C_STAT_ARDY   (1 << 2)  /* register access ready */
++#define I2C_STAT_RRDY   (1 << 3)  /* receive data ready */
++
++#define I2C_CON_EN  (1 << 15)     /* module enable */
++#define I2C_CON_MST (1 << 10)     /* master mode */
++#define I2C_CON_STP (1 << 1)      /* stop condition */
++#define I2C_CON_STT (1 << 0)      /* start condition */
++
++/*
++ * SYSCONFIG.SRST must make SYSS.RDONE assert, or the firmware spins in
++ * the soft-reset poll.
++ */
++static void test_soft_reset_completes(void)
++{
++    QTestState *qts = qtest_init("-machine am64-virt");
++    uint32_t syss = 0;
++
++    qtest_writew(qts, I2C0_BASE + I2C_V2_SYSC, I2C_SYSC_SRST);
++
++    for (int i = 0; i < 16; i++) {
++        syss = qtest_readw(qts, I2C0_BASE + I2C_V2_SYSS);
++        if (syss & I2C_SYSS_RDONE) {
++            break;
++        }
++    }
++    g_assert_cmphex(syss & I2C_SYSS_RDONE, ==, I2C_SYSS_RDONE);
++    qtest_quit(qts);
++}
++
++/*
++ * Reads from an address without a slave must raise NACK promptly, since a
++ * driver would otherwise wait forever for an I2C event. No slave is
++ * attached here, so any address does.
++ */
++static void test_nack_on_absent_slave(void)
++{
++    QTestState *qts = qtest_init("-machine am64-virt");
++    uint32_t stat;
++
++    /* Bring the controller out of reset as firmware does. */
++    qtest_writew(qts, I2C0_BASE + I2C_V2_SYSC, I2C_SYSC_SRST);
++    (void)qtest_readw(qts, I2C0_BASE + I2C_V2_SYSS);
++
++    /* Address 0x51 has no slave: one-byte master read. */
++    qtest_writew(qts, I2C0_BASE + I2C_V2_SA, 0x51);
++    qtest_writew(qts, I2C0_BASE + I2C_V2_CNT, 1);
++    qtest_writew(qts, I2C0_BASE + I2C_V2_CON,
++                 I2C_CON_EN | I2C_CON_MST | I2C_CON_STT | I2C_CON_STP);
++
++    stat = qtest_readw(qts, I2C0_BASE + I2C_V2_IRQSTATUS_RAW);
++    g_assert_cmphex(stat & I2C_STAT_NACK, ==, I2C_STAT_NACK);
++
++    /* IRQSTATUS mirrors NACK and is write-1-to-clear. */
++    stat = qtest_readw(qts, I2C0_BASE + I2C_V2_IRQSTATUS);
++    g_assert_cmphex(stat & I2C_STAT_NACK, ==, I2C_STAT_NACK);
++    qtest_writew(qts, I2C0_BASE + I2C_V2_IRQSTATUS, I2C_STAT_NACK);
++    stat = qtest_readw(qts, I2C0_BASE + I2C_V2_IRQSTATUS);
++    g_assert_cmphex(stat & I2C_STAT_NACK, ==, 0);
++
++    qtest_quit(qts);
++}
++
++/*
++ * With a slave on the bus a one-byte master read has to ACK, return DATA
++ * and then finish with ARDY. An at24c EEPROM at 0x50 serves as the slave;
++ * it comes up erased, so offset 0 reads back as 0x00.
++ */
++static void test_eeprom_read_first_byte(void)
++{
++    QTestState *qts = qtest_init("-machine am64-virt "
++                                 "-device at24c-eeprom,address=0x50,"
++                                 "rom-size=4096");
++    uint32_t stat;
++    uint8_t b;
++
++    qtest_writew(qts, I2C0_BASE + I2C_V2_SYSC, I2C_SYSC_SRST);
++    (void)qtest_readw(qts, I2C0_BASE + I2C_V2_SYSS);
++
++    /* One-byte read from 0x50; address pointer starts by 0. */
++    qtest_writew(qts, I2C0_BASE + I2C_V2_SA, 0x50);
++    qtest_writew(qts, I2C0_BASE + I2C_V2_CNT, 1);
++    qtest_writew(qts, I2C0_BASE + I2C_V2_CON,
++                 I2C_CON_EN | I2C_CON_MST | I2C_CON_STT | I2C_CON_STP);
++
++    /* Slave ACKed and data are ready. */
++    stat = qtest_readw(qts, I2C0_BASE + I2C_V2_IRQSTATUS_RAW);
++    g_assert_cmphex(stat & I2C_STAT_NACK, ==, 0);
++    g_assert_cmphex(stat & I2C_STAT_RRDY, ==, I2C_STAT_RRDY);
++
++    /* Offset 0 of the erased EEPROM reads as 0x00. */
++    b = qtest_readw(qts, I2C0_BASE + I2C_V2_DATA) & 0xff;
++    g_assert_cmphex(b, ==, 0x00);
++
++    /* Single-byte transfer complete: ARDY, no more RRDY. */
++    stat = qtest_readw(qts, I2C0_BASE + I2C_V2_IRQSTATUS_RAW);
++    g_assert_cmphex(stat & I2C_STAT_ARDY, ==, I2C_STAT_ARDY);
++    g_assert_cmphex(stat & I2C_STAT_RRDY, ==, 0);
++
++    qtest_quit(qts);
++}
++
++int main(int argc, char **argv)
++{
++    g_test_init(&argc, &argv, NULL);
++    qtest_add_func("/am64/i2c/soft-reset", test_soft_reset_completes);
++    qtest_add_func("/am64/i2c/nack", test_nack_on_absent_slave);
++    qtest_add_func("/am64/i2c/eeprom-read", test_eeprom_read_first_byte);
++    return g_test_run();
++}
+diff --git a/tests/unit/meson.build b/tests/unit/meson.build
+index dc3fb954c0..be2aab4274 100644
+--- a/tests/unit/meson.build
++++ b/tests/unit/meson.build
+@@ -41,6 +41,7 @@ tests = {
+   'test-bitops': [],
+   'test-bitcnt': [],
+   'test-qgraph': ['../qtest/libqos/qgraph.c'],
++  'test-k3-bootrom': ['../../hw/arm/k3-bootrom-parse.c'],
+   'check-qom-interface': [qom],
+   'check-qom-proplist': [qom],
+   'test-qemu-opts': [],
+diff --git a/tests/unit/test-k3-bootrom.c b/tests/unit/test-k3-bootrom.c
+new file mode 100644
+index 0000000000..b030d7df9b
+--- /dev/null
++++ b/tests/unit/test-k3-bootrom.c
+@@ -0,0 +1,263 @@
++/*
++ * Unit tests for K3 boot-ROM combined-image parser
++ *
++ * Copyright (c) 2026 CMBLU Energy AG
++ * Author: Wadim Mueller <wafgo01@gmail.com>
++ *
++ * SPDX-License-Identifier: GPL-2.0-or-later
++ */
++#include "qemu/osdep.h"
++#include "qapi/error.h"
++#include "hw/arm/k3-bootrom.h"
++
++/* Minimal DER emitters. */
++
++static GByteArray *der_tlv(uint8_t tag, const uint8_t *data, size_t len)
++{
++    GByteArray *a = g_byte_array_new();
++
++    g_byte_array_append(a, &tag, 1);
++    if (len < 0x80) {
++        uint8_t l = len;
++        g_byte_array_append(a, &l, 1);
++    } else if (len <= 0xffff) {
++        uint8_t l[3] = { 0x82, len >> 8, len & 0xff };
++        g_byte_array_append(a, l, 3);
++    } else {
++        g_assert_not_reached();
++    }
++    if (data) {
++        g_byte_array_append(a, data, len);
++    }
++    return a;
++}
++
++static GByteArray *der_wrap(uint8_t tag, GByteArray *inner)
++{
++    GByteArray *a = der_tlv(tag, inner->data, inner->len);
++    g_byte_array_unref(inner);
++    return a;
++}
++
++static void der_append(GByteArray *dst, GByteArray *src)
++{
++    g_byte_array_append(dst, src->data, src->len);
++    g_byte_array_unref(src);
++}
++
++static GByteArray *der_uint(uint64_t v)
++{
++    uint8_t buf[9];
++    int n = 0;
++    uint64_t t = v;
++
++    do {
++        n++;
++        t >>= 8;
++    } while (t);
++    if (v >> (n * 8 - 1) & 1) {
++        n++; /* leading zero keeps it positive */
++    }
++    for (int i = 0; i < n; i++) {
++        buf[i] = v >> ((n - 1 - i) * 8);
++    }
++    return der_tlv(0x02, buf, n);
++}
++
++/* OID 1.3.6.1.4.1.294.1.9 (ext_boot_info), pre-encoded TLV */
++static const uint8_t ext_boot_oid[] = {
++    0x06, 0x09, 0x2b, 0x06, 0x01, 0x04, 0x01, 0x82, 0x26, 0x01, 0x09
++};
++/* OID 2.16.840.1.101.3.4.2.3 (sha512), pre-encoded TLV */
++static const uint8_t sha512_oid[] = {
++    0x06, 0x09, 0x60, 0x86, 0x48, 0x01, 0x65, 0x03, 0x04, 0x02, 0x03
++};
++
++static GByteArray *der_component(uint32_t ctype, uint32_t core,
++                                 uint32_t opts, uint32_t dest, uint64_t size)
++{
++    GByteArray *seq = g_byte_array_new();
++    uint8_t dest_be[4] = { dest >> 24, dest >> 16, dest >> 8, dest };
++    uint8_t sha[64] = { 0 };
++
++    der_append(seq, der_uint(ctype));
++    der_append(seq, der_uint(core));
++    der_append(seq, der_uint(opts));
++    der_append(seq, der_tlv(0x04, dest_be, sizeof(dest_be)));
++    der_append(seq, der_uint(size));
++    g_byte_array_append(seq, sha512_oid, sizeof(sha512_oid));
++    der_append(seq, der_tlv(0x04, sha, sizeof(sha)));
++    return der_wrap(0x30, seq);
++}
++
++/*
++ * Layout follows u-boot tools/binman/btool/openssl.py
++ * x509_cert_rom_combined(): SBL, SYSFW, SYSFW-DATA payloads are after
++ * the certificate.
++ */
++static GByteArray *make_image(const uint8_t *sbl, size_t sbl_len)
++{
++    static const uint8_t sysfw_blob[16] = "SYSFW-payload";
++    static const uint8_t cfg_blob[8] = "BCFG";
++    GByteArray *info = g_byte_array_new();
++    GByteArray *ext, *cert, *img;
++
++    der_append(info, der_uint(sbl_len + sizeof(sysfw_blob)
++                              + sizeof(cfg_blob)));      /* extImgSize */
++    der_append(info, der_uint(3));                       /* numComp */
++    der_append(info, der_component(K3_COMP_TYPE_SBL, 16, 0,
++                                   0x70000000, sbl_len));
++    der_append(info, der_component(K3_COMP_TYPE_SYSFW, 0, 0,
++                                   0x44000, sizeof(sysfw_blob)));
++    der_append(info, der_component(K3_COMP_TYPE_SYSFW_DATA, 0, 0,
++                                   0x7b000, sizeof(cfg_blob)));
++    info = der_wrap(0x30, info);
++
++    /* extension is SEQ { OID, OCTETSTRING { info } } */
++    ext = g_byte_array_new();
++    g_byte_array_append(ext, ext_boot_oid, sizeof(ext_boot_oid));
++    der_append(ext, der_wrap(0x04, info));
++    ext = der_wrap(0x30, ext);
++
++    /* fake cert: top-level SEQUENCE around the extension */
++    cert = der_wrap(0x30, ext);
++
++    img = g_byte_array_new();
++    g_byte_array_append(img, cert->data, cert->len);
++    g_byte_array_unref(cert);
++    g_byte_array_append(img, sbl, sbl_len);
++    g_byte_array_append(img, sysfw_blob, sizeof(sysfw_blob));
++    g_byte_array_append(img, cfg_blob, sizeof(cfg_blob));
++    return img;
++}
++
++/* Certificate-only image with caller given component sizes. */
++static GByteArray *make_cert_with_sizes(const uint64_t *sizes, size_t n)
++{
++    GByteArray *info = g_byte_array_new();
++    GByteArray *ext;
++    uint64_t total = 0;
++
++    for (size_t i = 0; i < n; i++) {
++        total += sizes[i];
++    }
++    der_append(info, der_uint(total));                   /* extImgSize */
++    der_append(info, der_uint(n));                       /* numComp */
++    for (size_t i = 0; i < n; i++) {
++        der_append(info, der_component(K3_COMP_TYPE_SBL, 16, 0,
++                                       0x70000000, sizes[i]));
++    }
++    info = der_wrap(0x30, info);
++
++    ext = g_byte_array_new();
++    g_byte_array_append(ext, ext_boot_oid, sizeof(ext_boot_oid));
++    der_append(ext, der_wrap(0x04, info));
++    ext = der_wrap(0x30, ext);
++    return der_wrap(0x30, ext);
++}
++
++static void test_parse_ok(void)
++{
++    static const uint8_t sbl[32] = "SBL-payload";
++    GByteArray *img = make_image(sbl, sizeof(sbl));
++    K3BootImage out;
++    Error *err = NULL;
++
++    g_assert_true(k3_bootrom_parse(img->data, img->len, &out, &err));
++    g_assert_null(err);
++    g_assert_cmpuint(out.num_comps, ==, 3);
++    g_assert_cmpuint(out.comps[0].comp_type, ==, K3_COMP_TYPE_SBL);
++    g_assert_cmphex(out.comps[0].dest_addr, ==, 0x70000000);
++    g_assert_cmpuint(out.comps[0].comp_size, ==, sizeof(sbl));
++    g_assert_cmpuint(out.comps[0].payload_offset, ==, out.cert_len);
++    g_assert_cmphex(out.comps[1].dest_addr, ==, 0x44000);
++    g_assert_cmpuint(out.comps[2].payload_offset, ==,
++                     out.cert_len + sizeof(sbl) + 16);
++    g_assert_cmpint(memcmp(img->data + out.comps[0].payload_offset,
++                           sbl, sizeof(sbl)), ==, 0);
++    g_byte_array_unref(img);
++}
++
++static void test_parse_not_der(void)
++{
++    static const uint8_t junk[64] = { 0xff, 0x00, 0x41 };
++    K3BootImage out;
++    Error *err = NULL;
++
++    g_assert_false(k3_bootrom_parse(junk, sizeof(junk), &out, &err));
++    g_assert_nonnull(err);
++    error_free(err);
++}
++
++static void test_parse_no_extension(void)
++{
++    /* Valid DER SEQUENCE, but no ext_boot_info OID. */
++    static const uint8_t seq[] = { 0x30, 0x03, 0x02, 0x01, 0x05 };
++    K3BootImage out;
++    Error *err = NULL;
++
++    g_assert_false(k3_bootrom_parse(seq, sizeof(seq), &out, &err));
++    g_assert_nonnull(err);
++    error_free(err);
++}
++
++static void test_parse_truncated_payload(void)
++{
++    static const uint8_t sbl[32] = "SBL-payload";
++    GByteArray *img = make_image(sbl, sizeof(sbl));
++    K3BootImage out;
++    Error *err = NULL;
++
++    /* Truncated payload: comp_size claims are beyond file. */
++    g_assert_false(k3_bootrom_parse(img->data, img->len - 20, &out, &err));
++    g_assert_nonnull(err);
++    error_free(err);
++    g_byte_array_unref(img);
++}
++
++static void test_parse_size_exceeds_u32(void)
++{
++    /* comp_size wider than 32 bits must not truncate silently. */
++    static const uint64_t sizes[1] = { UINT32_MAX + 1ull };
++    GByteArray *img = make_cert_with_sizes(sizes, G_N_ELEMENTS(sizes));
++    K3BootImage out;
++    Error *err = NULL;
++
++    g_assert_false(k3_bootrom_parse(img->data, img->len, &out, &err));
++    g_assert_nonnull(err);
++    error_free(err);
++    g_byte_array_unref(img);
++}
++
++static void test_parse_size_sum_wraps_32bit(void)
++{
++    /*
++     * Each single size fits in 32 bits, but their sum must not wrap the
++     * running total.
++     */
++    static const uint64_t sizes[3] = {
++        0xf0000000, 0xf0000000, 0xf0000000
++    };
++    GByteArray *img = make_cert_with_sizes(sizes, G_N_ELEMENTS(sizes));
++    K3BootImage out;
++    Error *err = NULL;
++
++    g_assert_false(k3_bootrom_parse(img->data, img->len, &out, &err));
++    g_assert_nonnull(err);
++    error_free(err);
++    g_byte_array_unref(img);
++}
++
++int main(int argc, char **argv)
++{
++    g_test_init(&argc, &argv, NULL);
++    g_test_add_func("/k3-bootrom/parse-ok", test_parse_ok);
++    g_test_add_func("/k3-bootrom/not-der", test_parse_not_der);
++    g_test_add_func("/k3-bootrom/no-extension", test_parse_no_extension);
++    g_test_add_func("/k3-bootrom/truncated", test_parse_truncated_payload);
++    g_test_add_func("/k3-bootrom/size-exceeds-u32",
++                    test_parse_size_exceeds_u32);
++    g_test_add_func("/k3-bootrom/size-sum-wraps-32bit",
++                    test_parse_size_sum_wraps_32bit);
++    return g_test_run();
++}
 -- 
 2.43.0
 

@@ -4,84 +4,84 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 40C54C5B572
-	for <qemu-arm@archiver.kernel.org>; Thu, 20 Aug 2026 02:50:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 47335C5DF89
+	for <qemu-arm@archiver.kernel.org>; Thu, 20 Aug 2026 02:51:06 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wwsqG-0001yH-IB; Wed, 19 Aug 2026 22:49:21 -0400
+	id 1wwspu-0001qs-BI; Wed, 19 Aug 2026 22:48:59 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <kylefoxaustin.github@gmail.com>)
- id 1wwspy-0001s3-AD
- for qemu-arm@nongnu.org; Wed, 19 Aug 2026 22:49:04 -0400
-Received: from mail-yx1-xb12d.google.com ([2607:f8b0:4864:20::b12d])
+ id 1wwspn-0001pf-G2
+ for qemu-arm@nongnu.org; Wed, 19 Aug 2026 22:48:51 -0400
+Received: from mail-yx1-xb129.google.com ([2607:f8b0:4864:20::b129])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <kylefoxaustin.github@gmail.com>)
- id 1wwspv-0000SM-Rn
- for qemu-arm@nongnu.org; Wed, 19 Aug 2026 22:49:02 -0400
-Received: by mail-yx1-xb12d.google.com with SMTP id
- 956f58d0204a3-66c7127a73dso2202651d50.2
- for <qemu-arm@nongnu.org>; Wed, 19 Aug 2026 19:48:59 -0700 (PDT)
+ id 1wwspk-0000Kv-Vs
+ for qemu-arm@nongnu.org; Wed, 19 Aug 2026 22:48:51 -0400
+Received: by mail-yx1-xb129.google.com with SMTP id
+ 956f58d0204a3-66c7a743cf8so806416d50.0
+ for <qemu-arm@nongnu.org>; Wed, 19 Aug 2026 19:48:48 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20251104; t=1787194139; x=1787798939; darn=nongnu.org;
+ d=gmail.com; s=20251104; t=1787194128; x=1787798928; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to:content-type;
- bh=6sc+RYt/bXjNnBfsDqSaV8jSqXsdHO+630d/njHcBss=;
- b=ZRYKE5Y8SsvcM48xTkwq3LJDSKmMYGFZy48OMNhe/BEwlyQBcmSkNKyFOjkL9HBgSK
- 3P9xgiCtlIaepMGlStsAG5HrIURvc+IcCV30wzWjnoQzGAmrDf4mXdngTWgzisZvhqGU
- 3TawX2bCCfQR7wwWlVLW8sur7078a/9jxWUgtLXtptpHomTLy+4YuWe+/AeMp4178d/1
- Tfh/lVWMGmcMYB3WhWfUjLN7+xMxNAE64F8Wvf4AURwhqTs4V5S+czABEHpvEwpvkWaO
- /aNkYif1cv2A894BB8dQocd7PqjR4/ZjV9AeW/GyYF2LHAdXTrcZr3HzMjgXgXhvyvat
- TxzQ==
+ bh=d5SVMajj/RGhbWhyTg0fZ5+uybixj+KzUI/M0GlTUuI=;
+ b=H35JT8kN+lhcxMUr+LvHwvkBlPCaWtIj5Wi3t9shlTlu9wEGya9Ck8Fo/FWfwjcemN
+ a6Xm+Qe8g1d4WmJCtnPc4NCcZsK9uimmrXHkhX5j6odyhgYCveRh3EWBuk+o+2jiGmlG
+ Zc+E9st+QXIvTVPyaSlGhXITyps8h4sWunXxXKkGmQB5yoYmBNJRZ5jblx15C8ee4evo
+ 7LDrsaPrRiUct2QKxwBBUA4YdAlDc3Dp+L0KGoxy+39ENAQEPfYkUEuXdpOOC/YRlLoi
+ 0C8mAPR21sEXV8rHhjIWAfTTG3KbpO7dW8BvwJK8zAqt8AIIWXYLibGYZg7xPdlNs7Cg
+ dzMQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1787194139; x=1787798939;
+ d=1e100.net; s=20251104; t=1787194128; x=1787798928;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
  :to:cc:subject:date:message-id:reply-to:content-type;
- bh=6sc+RYt/bXjNnBfsDqSaV8jSqXsdHO+630d/njHcBss=;
- b=mVONcmBYYrQn2LKEGAm+Uo3eetGGKY5IhoaHfGlmLC7nlr8ZnCA03Pxz7MejZ13wwq
- gnkBAtmT22bzkWPtmMbgP/+94QFK1w0/8lpfho6Ze5mw3P+c/vit8/OfL/y7bRtoPhPz
- 3eVVIkBkNSVPrtoIfyJb4JN4bRD5Vrl+MAVyZR7idWU4ZzxDZqssGmezXF/SZwCyTH1X
- ZgdDh/3fNLdDiOQuvyQSPkiw4vYMK1e1SJ5hP32pYVrO0oazbMaGoSRHd703sI7l78yT
- y/wc2pP2hXqC6cO+G/hboDL4/LHAxKZrBfhAiSWSjfFwkzeL9ozDkze3JJJcJ/skvYUy
- IB0Q==
+ bh=d5SVMajj/RGhbWhyTg0fZ5+uybixj+KzUI/M0GlTUuI=;
+ b=JCQwG0t/xZH2jAcRFSQKxuEzpQqMns5x5nX4lDf5x4buq/yR4L0XZwzQGqDBCqYbD9
+ ScADH5kqEsQ9/AlyvDMrEmnWrCSOW5I3TyN81j936QHBbSrX1tc5A1IaWnf69RrUWe5W
+ yzFQSfStJKVQU/+08Lcp9jTOrHJZdQNDy7pSV8aH95uHHS2WoUxOoU6E+d2GYF5vu+/W
+ 7A9U2MF5uhWilIjctBwMX+PHHbQfVFnh750YejhrlNYHdIlaojBtkCIy/XKpZcJ7KIQu
+ nZ32lxNMTT3DEi38lkYl/vwtXim0wUIGR1B5GjBcD4wkTPouQuP+L7/7IrmWit/BhA1P
+ sMUg==
 X-Forwarded-Encrypted: i=1;
- AHgh+RpHJgympxsJ4/ofSV/FbAPmQdBTosPV2FzzaLS2H+kvleU+e/Socv1jc6jPmSjd7+S5I9CJNZmdEg==@nongnu.org
-X-Gm-Message-State: AFuF++mMPoVFLEHRaDow+EDLCPFEBMPDm1/Owiemv4dH4TCv737K/fyA
- gw66FnxamuFhgv+AzBKcTUU+OmcwhhtR5fbgL75tS3SIlPZ9PJJD1ReOdlfxuw==
-X-Gm-Gg: AR+sD13XdVRUvgRmeIa9fhdAe6uLPYlkYQuPY6vtHDj5B3ZuhBBiPCJ8JiuNLtTiFDn
- kfPpOrm26P3FqXPHzvj3yrghlJOygnPeEjY+nKyTtCYihkr/e+xl46Z1rdaQI1fzmC9ZENhYWgE
- NbHR55v0XFS8lWCf4VOSP6WKmKxKbPn9oU2vVwY2GUChkKKDKtw3qIylpW/5IvqXhqAwQKMhU82
- RnOI1BTJHyCCXpLAsHhMcIP79oIjZ9RrcFra84C4o3t3L2QzJO4P571FT6mJL0OHbsbdGV5lrww
- 2OTvANG5LsLtNSWiGPVqo1yA9ZPWyFkzR06fUvZj05AQeiaimo80NXI7WxHhlb1+C+BbdmMhDZa
- CDkUT0mbhlRX218NYjVA3hQ6PlPvD4vKIsAS/9Ht1KBEpk75XQERY2P/lIrlobJBBGgitoftQa6
- lf0meCpduVCOkLFLne+ZCu/kVltJ2bHWwJu4Nt5rQbB7UDtlNlkZPjjVw9WWG5o5mh0/CIT3rbD
- BstGsrpF0T9RjvPCVlHdiZtOoqYzm1r2uuTO68irex3ifH7zZEog17UXeseLgoj
-X-Received: by 2002:a05:690e:12c4:b0:66c:8744:27a with SMTP id
- 956f58d0204a3-66ccb6c9f82mr3584507d50.33.1787194138594; 
- Wed, 19 Aug 2026 19:48:58 -0700 (PDT)
+ AHgh+RrqscZ2+2CVK3LYFg06KZTRtuGwRdnzCTleo5uaYqcnOL1oegItERXGUUCJQexw2q7ntYugjwiV5Q==@nongnu.org
+X-Gm-Message-State: AFuF++mC+81qUegZ9ZryNFBjsp6ncfOlbZhOprSmis6eQVYIkuk/J4Zs
+ We8QAjautVllr/+N6x4E9uVHEGk+9NzFByJiZOyI+t+eD+BG05JE61yN
+X-Gm-Gg: AR+sD10CJkSN9z1oNlgpN+j39WOZwEQKr2b50NFbatrin4CQ8DDVIsAd4daZMu3/uW2
+ ysXKUj8H9AOBJk2msP1AK+kyGC/Wnr+QQVZMhumV/0mxyNFS2bZU2kMkvGTyCiiNiXe0J25762J
+ 4nx0cTEPFAnbAiUaW9lyy0tHvRtnuqfO+KqhNjC9JgpixD7KwTQk+1KxU85ftTJuLl0X4oPdf/x
+ 2VeZkFUbJSNUgF7f4nkqKZLo+9/7rKIau5BGjufh5rdP0HnsbMmRgYWozMj90heUyiFvmvgUI3t
+ x4FM/owIYsXGZA7KZNhgX4vUb9R5IWH+mFBrUM9Wxkm7FzsJTbbldikZBrwZ/WQ/tdvFt3aUQ9X
+ hNVLH+CiYuU75maEqBaqMKnZehACEy53FrrdjXq8C5xB/A9zdfkjGW41R07Fruhub6YTQ1WF0F0
+ TPtspwXOGZMfVCyQBrG01LT7ZX/R6V/0ZEjEuU2wGALJj5m3f2X8LO++bCpKcT0v5PZca9tnLaG
+ /Os5FiH6bojrQfy/MX0ilrv+mLD4viy6B5urwX/Y5KKYGGGeYu5Ig==
+X-Received: by 2002:a53:c411:0:b0:668:b2a7:a1f1 with SMTP id
+ 956f58d0204a3-66cd699c797mr937084d50.22.1787194127903; 
+ Wed, 19 Aug 2026 19:48:47 -0700 (PDT)
 Received: from skippy.localdomain (99-61-67-1.lightspeed.austtx.sbcglobal.net.
  [99.61.67.1]) by smtp.gmail.com with ESMTPSA id
- 956f58d0204a3-66ccafd03basm1986454d50.1.2026.08.19.19.48.57
+ 956f58d0204a3-66ccafd03basm1986454d50.1.2026.08.19.19.48.47
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 19 Aug 2026 19:48:57 -0700 (PDT)
+ Wed, 19 Aug 2026 19:48:47 -0700 (PDT)
 From: Kyle Fox <kylefoxaustin.github@gmail.com>
 To: qemu-devel@nongnu.org
 Cc: Kyle Fox <kylefoxaustin.github@gmail.com>,
- Paolo Bonzini <pbonzini@redhat.com>,
- qemu-arm@nongnu.org (open list:MCIMX95-19X19-EVK...)
-Subject: [PATCH 08/16] hw/misc: add NXP EdgeLock Enclave (ELE) responder
-Date: Wed, 19 Aug 2026 21:48:26 -0500
-Message-Id: <20260820024834.3286721-9-kylefoxaustin.github@gmail.com>
+ Peter Maydell <peter.maydell@linaro.org>,
+ qemu-arm@nongnu.org (open list:ARM TCG CPUs)
+Subject: [PATCH 02/16] hw/arm/boot: let a board preset initrd_start
+Date: Wed, 19 Aug 2026 21:48:20 -0500
+Message-Id: <20260820024834.3286721-3-kylefoxaustin.github@gmail.com>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20260820024834.3286721-1-kylefoxaustin.github@gmail.com>
 References: <20260820024834.3286721-1-kylefoxaustin.github@gmail.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::b12d;
- envelope-from=kylefoxaustin.github@gmail.com; helo=mail-yx1-xb12d.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::b129;
+ envelope-from=kylefoxaustin.github@gmail.com; helo=mail-yx1-xb129.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -104,397 +104,38 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-The NXP EdgeLock Enclave (ELE) responder. U-Boot and the SM firmware
-issue ELE service requests (e.g. GET_INFO, get-random) over a dedicated
-MU; this models the responder that consumes the request words and
-returns a response so the secure bring-up sequence proceeds. It is
-linked to its MU through a QOM link property.
+Allow a board to place the initrd itself (honour a pre-set
+info->initrd_start) so a board with a reserved-memory carveout can keep
+the initrd clear of it.
 
 Signed-off-by: Kyle Fox <kylefoxaustin.github@gmail.com>
 ---
- hw/misc/Kconfig                    |   4 +
- hw/misc/imx95_ele_server.c         | 284 +++++++++++++++++++++++++++++
- hw/misc/meson.build                |   1 +
- hw/misc/trace-events               |   2 +
- include/hw/misc/imx95_ele_server.h |  47 +++++
- 5 files changed, 338 insertions(+)
- create mode 100644 hw/misc/imx95_ele_server.c
- create mode 100644 include/hw/misc/imx95_ele_server.h
+ hw/arm/boot.c | 12 ++++++++++--
+ 1 file changed, 10 insertions(+), 2 deletions(-)
 
-diff --git a/hw/misc/Kconfig b/hw/misc/Kconfig
-index 8645ca11f3f..ded60e21a6c 100644
---- a/hw/misc/Kconfig
-+++ b/hw/misc/Kconfig
-@@ -264,3 +264,7 @@ source macio/Kconfig
- 
- config IMX_MU
-     bool
-+
-+config IMX95_ELE_SERVER
-+    bool
-+    select IMX_MU
-diff --git a/hw/misc/imx95_ele_server.c b/hw/misc/imx95_ele_server.c
-new file mode 100644
-index 00000000000..b8ee3f78b61
---- /dev/null
-+++ b/hw/misc/imx95_ele_server.c
-@@ -0,0 +1,284 @@
-+/*
-+ * Minimal NXP EdgeLock Enclave (ELE) responder stub
-+ *
-+ * Copyright (c) 2026, Kyle Fox
-+ *
-+ * SPDX-License-Identifier: GPL-2.0-or-later
-+ *
-+ * Watches TR-register writes on an i.MX MU, accumulates ELE-protocol
-+ * command words until the per-message size is reached, dispatches to a
-+ * command handler, and writes the response into RR registers + asserts
-+ * RSR.RFn so the agent's mu_hal_receivemsg() poll exits.
-+ *
-+ * ELE message format (per ele_api.h):
-+ *
-+ *   word 0 (header): version[7:0] | size[15:8] | command[23:16] | tag[31:24]
-+ *   word 1..N-1:     payload
-+ *
-+ * size = total words including header. tag = ELE_CMD_TAG (0x17) for
-+ * commands, ELE_RESP_TAG (0xE1) for responses. Responses also have a
-+ * status byte (ELE_SUCCESS_IND = 0xD6 for success) somewhere in the
-+ * payload depending on command.
-+ *
-+ * Only ELE_GET_INFO_REQ is implemented in detail (the
-+ * only ELE call U-Boot SPL's imx9_probe_mu() makes pre-relocation,
-+ * via ele_get_info()). Other commands get a generic SUCCESS response.
-+ */
-+
-+#include "qemu/osdep.h"
-+#include "qemu/log.h"
-+#include "qemu/main-loop.h"
-+#include "qemu/module.h"
-+#include "qapi/error.h"
-+#include "hw/misc/imx95_ele_server.h"
-+#include "hw/core/qdev-properties.h"
-+#include "hw/core/qdev-properties-system.h"
-+#include "system/dma.h"
-+#include "migration/vmstate.h"
-+#include "trace.h"
-+
-+/*
-+ * struct ele_get_info_data layout (u32 word offsets), pinned to the
-+ * U-Boot ele_api.h definition at
-+ * U-Boot arch/arm/include/asm/mach-imx/ele_api.h:168.
-+ * Using named offsets here so a future U-Boot rev that reorders or
-+ * adds fields trips a build/runtime mismatch instead of silently
-+ * writing into the wrong slot.
-+ *
-+ * Reference layout:
-+ *   u32 hdr;                  // word 0
-+ *   u32 soc;                  // word 1
-+ *   u32 lc;                   // word 2
-+ *   u32 uid[4];               // words 3..6
-+ *   u32 sha256_rom_patch[8];  // words 7..14
-+ *   u32 sha_fw[8];            // words 15..22
-+ *   u32 oem_srkh[16];         // words 23..38
-+ *   u32 state;                // word 39
-+ *   u32 oem_pqc_srkh[16];     // words 40..55
-+ *   u32 reserved[8];          // words 56..63
-+ * Total: 64 u32 = 256 bytes.
-+ */
-+#define ELE_INFO_OFFSET_HDR             0
-+#define ELE_INFO_OFFSET_SOC             1
-+#define ELE_INFO_OFFSET_LC              2
-+#define ELE_INFO_OFFSET_UID             3
-+#define ELE_INFO_OFFSET_SHA256_ROM      7
-+#define ELE_INFO_OFFSET_SHA_FW          15
-+#define ELE_INFO_OFFSET_OEM_SRKH        23
-+#define ELE_INFO_OFFSET_STATE           39
-+#define ELE_INFO_OFFSET_OEM_PQC_SRKH    40
-+#define ELE_INFO_OFFSET_RESERVED        56
-+#define ELE_INFO_SIZE_WORDS             64
-+#define ELE_INFO_SIZE_BYTES             (ELE_INFO_SIZE_WORDS * 4)
-+
-+/* Header field packing. */
-+static inline uint32_t ele_make_header(uint8_t version, uint8_t size,
-+                                       uint8_t command, uint8_t tag)
-+{
-+    return (uint32_t)version |
-+           ((uint32_t)size    << 8) |
-+           ((uint32_t)command << 16) |
-+           ((uint32_t)tag     << 24);
-+}
-+
-+/* Header field extraction. */
-+#define ELE_HDR_VERSION(h)  ((uint8_t)((h) & 0xFF))
-+#define ELE_HDR_SIZE(h)     ((uint8_t)(((h) >> 8) & 0xFF))
-+#define ELE_HDR_COMMAND(h)  ((uint8_t)(((h) >> 16) & 0xFF))
-+#define ELE_HDR_TAG(h)      ((uint8_t)(((h) >> 24) & 0xFF))
-+
-+/*
-+ * ELE_GET_INFO_REQ handler.
-+ *
-+ * Request layout (4 words):
-+ *   [0] header (command = ELE_GET_INFO_REQ)
-+ *   [1] info_addr_hi (upper 32 bits of guest pointer)
-+ *   [2] info_addr_lo (lower 32 bits of guest pointer)
-+ *   [3] size of ele_get_info_data
-+ *
-+ * Real ELE writes a struct ele_get_info_data to the guest address.
-+ * We fake plausible values: rev 0xA1 i.MX 95, OEM-open lifecycle,
-+ * UID zero-filled. The Linux/U-Boot drivers do not validate beyond
-+ * memcpy into gd->arch.
-+ *
-+ * Response: 2 words. Status word ELE_SUCCESS_IND in data[0].
-+ */
-+static void ele_handle_get_info(IMX95ELEServerState *s)
-+{
-+    if (s->msg_count < 4) {
-+        qemu_log_mask(LOG_GUEST_ERROR,
-+                      "%s: GET_INFO with only %u words received\n",
-+                      __func__, s->msg_count);
-+        return;
-+    }
-+
-+    uint64_t info_addr = ((uint64_t)s->msg_buf[1] << 32) |
-+                          (uint64_t)s->msg_buf[2];
-+
+diff --git a/hw/arm/boot.c b/hw/arm/boot.c
+index 9b7553dde5e..4bfb0d8264b 100644
+--- a/hw/arm/boot.c
++++ b/hw/arm/boot.c
+@@ -997,8 +997,16 @@ static void arm_setup_direct_kernel_boot(ARMCPU *cpu,
+      * don't tell us their exact size (eg self-decompressing 32-bit kernels)
+      * we might still make a bad choice here.
+      */
+-    info->initrd_start = info->loader_start +
+-        MIN(info->ram_size / 2, 128 * MiB);
 +    /*
-+     * Zero-fill the full 256-byte struct, then set the fields U-Boot's
-+     * set_cpu_info() reads (soc, lc). Named offsets above keep the
-+     * mapping legible; if U-Boot ever shifts the struct layout, the
-+     * build check below + a re-read of ele_api.h are how this gets
-+     * detected.
++     * Boards may preset info->initrd_start to force a placement (e.g. to
++     * dodge a guest reserved-memory carveout that happens to sit where the
++     * default heuristic would land the initrd). Only compute a default when
++     * the board left it unset.
 +     */
-+    uint32_t info_data[ELE_INFO_SIZE_WORDS] = {0};
-+    QEMU_BUILD_BUG_ON(sizeof(info_data) != ELE_INFO_SIZE_BYTES);
-+
-+    info_data[ELE_INFO_OFFSET_SOC] = 0xA1009500;  /* SoC rev 0xA1, type 0x95 */
-+    info_data[ELE_INFO_OFFSET_LC]  = 0x00000080;  /* lifecycle = OEM open */
-+
-+    dma_memory_write(&address_space_memory, info_addr,
-+                     info_data, sizeof(info_data),
-+                     MEMTXATTRS_UNSPECIFIED);
-+
-+    /* Response: header + status. */
-+    uint32_t resp_hdr = ele_make_header(ELE_VERSION, 2,
-+                                        ELE_GET_INFO_REQ, ELE_RESP_TAG);
-+    trace_imx95_ele_response(ELE_GET_INFO_REQ);
-+    imx_mu_deliver_rr(s->mu, 0, resp_hdr);
-+    imx_mu_deliver_rr(s->mu, 1, ELE_SUCCESS_IND);
-+}
-+
-+/*
-+ * Generic SUCCESS response for any command we do not specifically
-+ * handle. 2-word response: header + ELE_SUCCESS_IND.
-+ */
-+static void ele_handle_generic_ok(IMX95ELEServerState *s, uint8_t command)
-+{
-+    uint32_t resp_hdr = ele_make_header(ELE_VERSION, 2,
-+                                        command, ELE_RESP_TAG);
-+    trace_imx95_ele_response(command);
-+    imx_mu_deliver_rr(s->mu, 0, resp_hdr);
-+    imx_mu_deliver_rr(s->mu, 1, ELE_SUCCESS_IND);
-+}
-+
-+static void ele_dispatch(IMX95ELEServerState *s)
-+{
-+    uint32_t header  = s->msg_buf[0];
-+    uint8_t  command = ELE_HDR_COMMAND(header);
-+    uint8_t  tag     = ELE_HDR_TAG(header);
-+
-+    trace_imx95_ele_msg(command, tag, s->msg_size);
-+
-+    switch (command) {
-+    case ELE_GET_INFO_REQ:
-+        ele_handle_get_info(s);
-+        return;
-+    default:
-+        qemu_log_mask(LOG_UNIMP,
-+                      "%s: cmd 0x%02x not handled in detail; responding OK\n",
-+                      __func__, command);
-+        ele_handle_generic_ok(s, command);
-+        return;
++    if (!info->initrd_start) {
++        info->initrd_start = info->loader_start +
++            MIN(info->ram_size / 2, 128 * MiB);
 +    }
-+}
-+
-+/*
-+ * TR-write callback. Invoked synchronously by the MU model from inside
-+ * the guest's MMIO write to TR[idx]. The MU itself re-sets TSR.TEn
-+ * after this returns so the next TR write succeeds without polling.
-+ */
-+static void ele_on_tr_write(void *opaque, unsigned int idx, uint32_t value)
-+{
-+    IMX95ELEServerState *s = opaque;
-+
-+    /* Invoked from the MU MMIO write handler, which runs under the BQL. */
-+    assert(bql_locked());
-+
-+    if (s->msg_count >= IMX95_ELE_MAX_WORDS) {
-+        qemu_log_mask(LOG_GUEST_ERROR,
-+                      "%s: too many words; resetting accumulator\n",
-+                      __func__);
-+        s->msg_count = 0;
-+        s->msg_size  = 0;
-+        return;
-+    }
-+
-+    s->msg_buf[s->msg_count++] = value;
-+
-+    if (s->msg_count == 1) {
-+        /* First word is the header; pick out size. */
-+        s->msg_size = ELE_HDR_SIZE(value);
-+        if (s->msg_size == 0 || s->msg_size > IMX95_ELE_MAX_WORDS) {
-+            qemu_log_mask(LOG_GUEST_ERROR,
-+                          "%s: bad size %u in header 0x%08x\n",
-+                          __func__, s->msg_size, value);
-+            s->msg_count = 0;
-+            s->msg_size  = 0;
-+            return;
-+        }
-+    }
-+
-+    if (s->msg_count == s->msg_size) {
-+        ele_dispatch(s);
-+        s->msg_count = 0;
-+        s->msg_size  = 0;
-+    }
-+}
-+
-+static void imx95_ele_server_reset_hold(Object *obj, ResetType type)
-+{
-+    IMX95ELEServerState *s = IMX95_ELE_SERVER(obj);
-+
-+    s->msg_count = 0;
-+    s->msg_size  = 0;
-+    memset(s->msg_buf, 0, sizeof(s->msg_buf));
-+}
-+
-+static void imx95_ele_server_realize(DeviceState *dev, Error **errp)
-+{
-+    IMX95ELEServerState *s = IMX95_ELE_SERVER(dev);
-+
-+    if (!s->mu) {
-+        error_setg(errp, "%s: 'mu' link property must be set",
-+                   TYPE_IMX95_ELE_SERVER);
-+        return;
-+    }
-+    imx_mu_set_tr_write_handler(s->mu, ele_on_tr_write, s);
-+}
-+
-+static const Property imx95_ele_server_properties[] = {
-+    DEFINE_PROP_LINK("mu", IMX95ELEServerState, mu,
-+                     TYPE_IMX_MU, IMXMUState *),
-+};
-+
-+static const VMStateDescription vmstate_imx95_ele_server = {
-+    .name = TYPE_IMX95_ELE_SERVER,
-+    .version_id = 1,
-+    .minimum_version_id = 1,
-+    .fields = (const VMStateField[]) {
-+        VMSTATE_UINT32(msg_count, IMX95ELEServerState),
-+        VMSTATE_UINT32(msg_size, IMX95ELEServerState),
-+        VMSTATE_UINT32_ARRAY(msg_buf, IMX95ELEServerState,
-+                             IMX95_ELE_MAX_WORDS),
-+        VMSTATE_END_OF_LIST()
-+    },
-+};
-+
-+static void imx95_ele_server_class_init(ObjectClass *klass, const void *data)
-+{
-+    DeviceClass *dc = DEVICE_CLASS(klass);
-+    ResettableClass *rc = RESETTABLE_CLASS(klass);
-+
-+    dc->realize = imx95_ele_server_realize;
-+    dc->vmsd = &vmstate_imx95_ele_server;
-+    rc->phases.hold = imx95_ele_server_reset_hold;
-+    set_bit(DEVICE_CATEGORY_MISC, dc->categories);
-+    dc->desc = "NXP i.MX 95 ELE responder (get_info)";
-+    device_class_set_props(dc, imx95_ele_server_properties);
-+}
-+
-+static const TypeInfo imx95_ele_server_info = {
-+    .name           = TYPE_IMX95_ELE_SERVER,
-+    .parent         = TYPE_SYS_BUS_DEVICE,
-+    .instance_size  = sizeof(IMX95ELEServerState),
-+    .class_init     = imx95_ele_server_class_init,
-+};
-+
-+static void imx95_ele_server_register_types(void)
-+{
-+    type_register_static(&imx95_ele_server_info);
-+}
-+
-+type_init(imx95_ele_server_register_types)
-diff --git a/hw/misc/meson.build b/hw/misc/meson.build
-index 9d0e3ed220d..b0dade72c6c 100644
---- a/hw/misc/meson.build
-+++ b/hw/misc/meson.build
-@@ -172,3 +172,4 @@ system_ss.add(when: 'CONFIG_LASI', if_true: files('lasi.c'))
- 
- system_ss.add(when: 'CONFIG_AXIADO_CLK', if_true: files('axiado_clk.c'))
- system_ss.add(when: 'CONFIG_IMX_MU', if_true: files('imx_mu.c'))
-+system_ss.add(when: 'CONFIG_IMX95_ELE_SERVER', if_true: files('imx95_ele_server.c'))
-diff --git a/hw/misc/trace-events b/hw/misc/trace-events
-index 01b0b275f7f..6b3cff74549 100644
---- a/hw/misc/trace-events
-+++ b/hw/misc/trace-events
-@@ -446,3 +446,5 @@ imx_mu_tr_write(unsigned idx, uint32_t val) "TR[%u] <- 0x%08x"
- imx_mu_rr_deliver(unsigned idx, uint32_t val) "RR[%u] <- 0x%08x"
- imx_mu_doorbell(unsigned idx) "doorbell GIR channel %u"
- imx_mu_gip(unsigned idx) "GIP assert channel %u"
-+imx95_ele_msg(uint8_t command, uint8_t tag, uint32_t size) "received cmd 0x%02x tag 0x%02x size %u"
-+imx95_ele_response(uint8_t command) "response cmd 0x%02x"
-diff --git a/include/hw/misc/imx95_ele_server.h b/include/hw/misc/imx95_ele_server.h
-new file mode 100644
-index 00000000000..75e6dfa4e25
---- /dev/null
-+++ b/include/hw/misc/imx95_ele_server.h
-@@ -0,0 +1,47 @@
-+/*
-+ * Minimal NXP EdgeLock Enclave (ELE) responder stub
-+ *
-+ * Copyright (c) 2026, Kyle Fox
-+ *
-+ * SPDX-License-Identifier: GPL-2.0-or-later
-+ *
-+ * Watches an i.MX MU for ELE-protocol command words, dispatches them
-+ * to handlers, and writes responses back through the MU's RR
-+ * registers. Implements only ele_get_info() (the one ELE call
-+ * U-Boot SPL's imx9_probe_mu() makes pre-relocation). Everything
-+ * else returns ELE_OK with a stub response so SPL doesn't panic.
-+ */
-+
-+#ifndef IMX95_ELE_SERVER_H
-+#define IMX95_ELE_SERVER_H
-+
-+#include "hw/core/sysbus.h"
-+#include "qom/object.h"
-+#include "hw/misc/imx_mu.h"
-+
-+#define TYPE_IMX95_ELE_SERVER "imx95.ele-server"
-+OBJECT_DECLARE_SIMPLE_TYPE(IMX95ELEServerState, IMX95_ELE_SERVER)
-+
-+/* ELE protocol constants from arch/arm/include/asm/mach-imx/ele_api.h. */
-+#define ELE_VERSION                 0x06
-+#define ELE_CMD_TAG                 0x17
-+#define ELE_RESP_TAG                0xE1
-+#define ELE_GET_INFO_REQ            0xDA
-+#define ELE_SUCCESS_IND             0xD6
-+
-+/* Maximum words in a single ELE message (per ELE_MAX_MSG in U-Boot). */
-+#define IMX95_ELE_MAX_WORDS         32
-+
-+struct IMX95ELEServerState {
-+    SysBusDevice    parent_obj;
-+
-+    /* Link to the MU used as ELE transport (elemu1). */
-+    IMXMUState     *mu;
-+
-+    /* Accumulator for incoming command words. */
-+    uint32_t        msg_buf[IMX95_ELE_MAX_WORDS];
-+    uint32_t        msg_count;
-+    uint32_t        msg_size;
-+};
-+
-+#endif /* IMX95_ELE_SERVER_H */
+     if (image_high_addr) {
+         info->initrd_start = MAX(info->initrd_start, image_high_addr);
+     }
 -- 
 2.34.1
 

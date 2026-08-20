@@ -4,97 +4,96 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E6475C5DF87
-	for <qemu-arm@archiver.kernel.org>; Thu, 20 Aug 2026 10:55:36 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1203BC5DF87
+	for <qemu-arm@archiver.kernel.org>; Thu, 20 Aug 2026 10:56:16 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wx0QY-0005FD-LG; Thu, 20 Aug 2026 06:55:18 -0400
+	id 1wx0RE-0005mV-N0; Thu, 20 Aug 2026 06:56:00 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <philmd@oss.qualcomm.com>)
- id 1wx0QX-0005EI-8I
- for qemu-arm@nongnu.org; Thu, 20 Aug 2026 06:55:17 -0400
+ id 1wx0RC-0005lj-O8
+ for qemu-arm@nongnu.org; Thu, 20 Aug 2026 06:55:58 -0400
 Received: from mx0a-0031df01.pphosted.com ([205.220.168.131])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <philmd@oss.qualcomm.com>)
- id 1wx0QV-0007Mg-P0
- for qemu-arm@nongnu.org; Thu, 20 Aug 2026 06:55:17 -0400
-Received: from pps.filterd (m0279865.ppops.net [127.0.0.1])
+ id 1wx0RA-0007Qf-68
+ for qemu-arm@nongnu.org; Thu, 20 Aug 2026 06:55:57 -0400
+Received: from pps.filterd (m0279862.ppops.net [127.0.0.1])
  by mx0a-0031df01.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id
- 67K8tGUM3515446
- for <qemu-arm@nongnu.org>; Thu, 20 Aug 2026 10:55:14 GMT
+ 67K8PEAJ2465472
+ for <qemu-arm@nongnu.org>; Thu, 20 Aug 2026 10:55:54 GMT
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qualcomm.com; h=
  cc:content-transfer-encoding:content-type:date:from:in-reply-to
  :message-id:mime-version:references:subject:to; s=qcppdkim1; bh=
- BpR73BTf1YtpAr3ZE6EiP23yFQwK2M+fAv/L6W7BmRU=; b=jJ9QXHW3LYIlgFcU
- 1tCgx4kuUwAEa/V5ZrcUeaRGGu3UouBeXYmhYH7/Z2xZ+OK977RA39/Ja2hJQwGG
- vgrw7w2e166/00Pr/7/OuXgETei5N7ntFz6lrCn/sZZ+BohNsW8S9YZvMGjJ7aTq
- RGg+p2rZv8Ou+oGOvYhQR1/qaGgts0ork7ubAZh3qaZzJFVqvOmwthRJwy3CaAiK
- V7hiHcznSDl4btN+GQOS+cnkEBRyDNCZtWuX5iT4BNM+sk5QK1PGSVp1nusYWqJt
- SXyCi6nA9C16eR06VoHVJ1nQUCV5dHB5SzsybwCE4l2NfGVgDbOCTtFDe7V44elh
- vg7c3g==
-Received: from mail-qk1-f199.google.com (mail-qk1-f199.google.com
- [209.85.222.199])
- by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 4g5xgc8fts-1
+ XJzehq9H+HHmqSUS4SZMP0gXgDCb7fqVfe8DvcbZk2c=; b=Mg0xyIvkPn/AfjZo
+ /SuwJVMHFMTwXBM4IAZ8/vUSNu+FWlpnwc5bgCZ9SGEM1viAiY4Y1nI7dl/Hoavk
+ Qg9Kgsy5LJZs7QiPfiTfXCnNgMH2b1CFDTCmRVpB3vBrM65+pN56B7EZH5nXoTCq
+ lKX+ZmFqkCnZXp/omJcQweC0f8GI/v6aRiXRf/yaIFTMwodtT1kSLjybxP/44rMl
+ VDxI36HsOx991Lo2DZ3hmV4IhP4+7aUpFIyTN8O6MVBkf/L5nBA7aBcmnj3Lp/71
+ Q7fAVfbaX7JTw0ROisFgZJwo5eS08GGjdIIsOK/0CtzQXbezvlwulST66AkeYVQ5
+ v5tVzQ==
+Received: from mail-qk1-f200.google.com (mail-qk1-f200.google.com
+ [209.85.222.200])
+ by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 4g5x29gk9m-1
  (version=TLSv1.3 cipher=TLS_AES_128_GCM_SHA256 bits=128 verify=NOT)
- for <qemu-arm@nongnu.org>; Thu, 20 Aug 2026 10:55:13 +0000 (GMT)
-Received: by mail-qk1-f199.google.com with SMTP id
- af79cd13be357-92e62e3459fso242062985a.0
- for <qemu-arm@nongnu.org>; Thu, 20 Aug 2026 03:55:13 -0700 (PDT)
+ for <qemu-arm@nongnu.org>; Thu, 20 Aug 2026 10:55:54 +0000 (GMT)
+Received: by mail-qk1-f200.google.com with SMTP id
+ af79cd13be357-936d067836eso250085085a.0
+ for <qemu-arm@nongnu.org>; Thu, 20 Aug 2026 03:55:54 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=oss.qualcomm.com; s=google; t=1787223313; x=1787828113; darn=nongnu.org;
+ d=oss.qualcomm.com; s=google; t=1787223353; x=1787828153; darn=nongnu.org;
  h=content-transfer-encoding:content-type:in-reply-to:from:references
  :cc:to:content-language:subject:user-agent:mime-version:date
  :message-id:from:to:cc:subject:date:message-id:reply-to:content-type;
- bh=BpR73BTf1YtpAr3ZE6EiP23yFQwK2M+fAv/L6W7BmRU=;
- b=jg63fR1eq1R8Wv4inLWl+d0jvEOmpi+Qwozzw5duXwfIa4ylLMhjjZBYS4nPXurCAz
- Oq5Ix4gRzXQvhnT8ZEwy7AwwTaH13ed9nlsMShHU2jccYZAaIDS/EIv6ScekU0Mw0UYT
- k1uYVOxjEzI14j8x18qvrXgV/BH4y6dazeL3+t9EwqpTXuEWi/UndEQ83VxIkiF1pvOe
- nOu2t+dvdgpf2c+CWiJgZ7NC7c4XZi+yhIo4eAnZ8YXnJXYy+WWwgv5HG2VZkoxu2AVW
- Bb3NP3fVieE5ZdKLNmFXyYaPXmpwB4FkVcljggqS0SHkxv9udQOX6PCQOtn6e07DdIMH
- jG0Q==
+ bh=XJzehq9H+HHmqSUS4SZMP0gXgDCb7fqVfe8DvcbZk2c=;
+ b=JMSsjqTryxTG9L74PNuUTgLCFVfaZWXNYRILgQSzkFeXdNixYmCu21LQpv1Z8Q51SD
+ x3nFi4W3Z+QwhYPrJ0pGR7z5wWC+HXV8VKo+fR5UUfAFt74YLH4mIdJFLmwR0lZ7Qm0c
+ XbC+06oW1OjQ8gFaEhQEz2OAYjnFUGDfopJxQpA1QGOo6268pMIyqlVnpaxGuAVVBGcN
+ si/zk4r8gqQJarWyhHIbehVIo0/2MBEG0yVBKY2RdeTZaz+K7glL+87KdLQKOOU6n4dK
+ JPLv0xLKCu3y8mCFenypUHftpmjaoaQyqbvvsx88fhaXC+aaVVhEUa41feDJJb7bqMkS
+ 5y8w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1787223313; x=1787828113;
+ d=1e100.net; s=20251104; t=1787223353; x=1787828153;
  h=content-transfer-encoding:content-type:in-reply-to:from:references
  :cc:to:content-language:subject:user-agent:mime-version:date
  :message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
  :message-id:reply-to:content-type;
- bh=BpR73BTf1YtpAr3ZE6EiP23yFQwK2M+fAv/L6W7BmRU=;
- b=dUiIAcyudqHnHd7eNHQy+Dl+haRegROC19HCcFCb/VuHnS64OB2OL+WpBrxcrYGsaE
- u23B7tIKgBqJJ4OvxasGJBxPdwMOCcnDUqUOE0c+aKCIP3SSVqG7LCXDfReTJiDZBsK+
- y19lMsOrGYxRgIsYaAgQCXbMgH1HAo+5dqjnUClNG13kcwanJRKfvJ7l3LLQv0FL1JKh
- GrpohOyLbJZIpATg3Xr9Vp5DPDRcprr6V3LlANhNs76CfnFP51tQ7/V+878xP/eoN9/q
- uFyADmx7HuMdgKwKB94NOHS7qTLzf8awkPQ8fySLY/+gpfS3Qny0ztcOL/HifF7M4ZSP
- UyOw==
+ bh=XJzehq9H+HHmqSUS4SZMP0gXgDCb7fqVfe8DvcbZk2c=;
+ b=qMDhvI/HWZDWrWUTk+35PboGG1et8vRQ7Rx+HJ5Q6LNz1topLc9QUJyc19q3da814s
+ 9H1lIcSIHzeXuffbWmGn/52+CMLz4nMrO9Come5XEkIPI+RGO1Nsi4I99JB0RHAFWY4Z
+ vCFHLQed32R8jAkp0wJqylKNRmBvNQbZc2BMf8V97cB51lF3p+P9S1uguu2NxoJKa88k
+ D0aAbECCkYNPUjILF122PhcIDm6snjArmSW8Z83oKg+3qBsOJs/BBuY4wMdWnnmNyQeX
+ kSMLqJ74Ph7viry6GcFDtsZOVus/u+qFv5Rc0kFXJQl/RLnP5Onxuy9hdwS4fWlDY9jT
+ SiNQ==
 X-Forwarded-Encrypted: i=1;
- AHgh+RqTOnkmQ9KMuHGDf+sn5ebOuIJWxVa3aeXJKXaWJKTdjyh4Fd34HPKKw+pAJXddGsAXcVdwycvwpQ==@nongnu.org
-X-Gm-Message-State: AOJu0YyasM8gkCYRY5wBsPVm3FlJmtQ3cWsnr7iz13SqnjcKX4eP+p/g
- kKryPoEK2QGKA5LLlkjj5/OcK9G9yv2TNmuG+fuHzU4SMuU6QG8De+qvRq6j/ePp0uaD79gpOaE
- j4+0E7iXM3NVdv2hkXbtv5j6y3dEb9y1wsCBXW8eTHRbIDeuAFiPZ9fo=
-X-Gm-Gg: AR+sD116MhnmBS6XP1hyJeaALwbP+S9rcDb0VGwvHHQpEv81AyKTG+eZOhzlJ6DjSs+
- jJawshLAXHwlJ67nzmiyBO0549GgsZG17Se1Zcp98azttSARoBUPGZQfOFCBe7brl8XtTyjg3J2
- 9QlbYFW5UQUL1bnJgnLC/pPzijSC9Y60esziloDwBwftOM4tDeEiGpLAT+5+cB/W5QIMejQI1Ok
- JJ3AHrC+LqhwZHpAmZ+4eKqTGEG91xcfpq1tyFeQlI9oXBCoayM13CaFIoLNm8QUd65TJ6T9qek
- 2PaN5XwKXL/ukuG9jUtJFX36ZQ3KG5dIF7ivv1gn38+PdkJsgg9H9rpnVpIc/+PaDnBtAE3beUn
- eNGEWdZWkRNPBmzaCa5AU+DvnaPECUDoBHAU=
-X-Received: by 2002:a05:620a:7081:b0:914:e3dd:17ea with SMTP id
- af79cd13be357-9371e22056amr1039099985a.12.1787223312830; 
- Thu, 20 Aug 2026 03:55:12 -0700 (PDT)
-X-Received: by 2002:a05:620a:7081:b0:914:e3dd:17ea with SMTP id
- af79cd13be357-9371e22056amr1039095485a.12.1787223312384; 
- Thu, 20 Aug 2026 03:55:12 -0700 (PDT)
+ AHgh+RpsRKfr4lInRbklp7qBSoExKDwGuh+MuXB4yN0DveeoDW6b30zqlNn/gecgLz9V7T6thFCGLqqVWQ==@nongnu.org
+X-Gm-Message-State: AOJu0YxO+Fw1nRTr96MEj9CDH7axNE8tfX3T3R2FR98YZwnLpyB9+Mfy
+ WdiJTDzDn57LMHiycYTEljm2oambTtEx8mo/DmqM8BmxCd2xmzQETptNUl4336k/0QQ/IyyaGbu
+ IiHWMyoqhRQSi8eD15VFML2YpqiwZu0XkhcpnLtS5rNFn3easOtbUYMRW0puUHD1i1g==
+X-Gm-Gg: AR+sD117svB1yDzqUNKcl75bTlY6cbz6kTTR05tYo8MSZF2azAusQjX5TyNpxMPHC2z
+ apUBGYkD3EkHDImmBM3GU/EQMIvIDDbiLDMPnj6SjpaTpX4c4cgk5O3oBPRQyVS5Yor+uPG31Jr
+ J7qHauihGYcWsNjeUfqZ4ZtTySKiahMrH15fmwL0VgZBBQJrntOKUoebRyh3IO2Q0e5ID6x9xc5
+ YdSJNbo35CHISa3PQGBmiA8v0VSTk6+V8mOjjX080714X6ijrBdSCbZrirOi4LOOvBd/ecFCWr+
+ p3jYJCuNdNqM1Ny3A9rvMsdx+CoJJuQIOzb20WtEJUiW6DQBDq4k/MlGv9C5MJE7xD3h4zHGJlV
+ MukiiMochmUSCVhnOORCp1GSPbS2CJ0BK5ag=
+X-Received: by 2002:a05:620a:6c0d:b0:92e:57ae:3a53 with SMTP id
+ af79cd13be357-9371e256628mr1040154685a.9.1787223353585; 
+ Thu, 20 Aug 2026 03:55:53 -0700 (PDT)
+X-Received: by 2002:a05:620a:6c0d:b0:92e:57ae:3a53 with SMTP id
+ af79cd13be357-9371e256628mr1040152185a.9.1787223353166; 
+ Thu, 20 Aug 2026 03:55:53 -0700 (PDT)
 Received: from [192.168.69.231] (pmd666.hd.free.fr. [88.187.86.199])
  by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-482b14b7d4asm10629227f8f.21.2026.08.20.03.55.11
+ 5b1f17b1804b1-499aa1111a7sm137182745e9.6.2026.08.20.03.55.51
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 20 Aug 2026 03:55:11 -0700 (PDT)
-Message-ID: <be278ba9-1e87-4def-8bb9-eeb14b17a03a@oss.qualcomm.com>
-Date: Thu, 20 Aug 2026 12:55:10 +0200
+ Thu, 20 Aug 2026 03:55:52 -0700 (PDT)
+Message-ID: <2cceefa5-e087-4c91-a57d-391963cfdb7b@oss.qualcomm.com>
+Date: Thu, 20 Aug 2026 12:55:51 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 2/5] hw/arm: Remove spurious WM8750 dependency from
- Realview Kconfig
+Subject: Re: [PATCH 3/5] hw/arm: Remove the 'musicpal' machine
 Content-Language: en-US
 To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
  qemu-devel@nongnu.org
@@ -102,37 +101,36 @@ Cc: Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>,
  =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@mailo.com>,
  Jan Kiszka <jan.kiszka@web.de>
 References: <20260819185430.3467629-1-peter.maydell@linaro.org>
- <20260819185430.3467629-3-peter.maydell@linaro.org>
+ <20260819185430.3467629-4-peter.maydell@linaro.org>
 From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@oss.qualcomm.com>
-In-Reply-To: <20260819185430.3467629-3-peter.maydell@linaro.org>
+In-Reply-To: <20260819185430.3467629-4-peter.maydell@linaro.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-X-Authority-Analysis: v=2.4 cv=GPM41ONK c=1 sm=1 tr=0 ts=6a86dd11 cx=c_pps
- a=HLyN3IcIa5EE8TELMZ618Q==:117 a=4s3hRJSeHn4rkQlkrse1kQ==:17
+X-Proofpoint-ORIG-GUID: fV04w2BG-pja9rEPh2qnrYYJ4oLcSLyG
+X-Authority-Analysis: v=2.4 cv=V8BNF+ni c=1 sm=1 tr=0 ts=6a86dd3a cx=c_pps
+ a=hnmNkyzTK/kJ09Xio7VxxA==:117 a=4s3hRJSeHn4rkQlkrse1kQ==:17
  a=IkcTkHD0fZMA:10 a=Sv0fKeRqtYgA:10 a=M51BFTxLslgA:10 a=s4-Qcg_JpJYA:10
- a=VkNPw1HP01LnGYTKEx00:22 a=u7WPNUs3qKkmUXheDGA7:22 a=Um2Pa8k9VHT-vaBCBUpS:22
- a=69wJf7TsAAAA:8 a=EUspDBNiAAAA:8 a=KKAkSRfTAAAA:8 a=NbfgatFzXNzTUJnNQ2AA:9
- a=3ZKOabzyN94A:10 a=QEXdDO2ut3YA:10 a=bTQJ7kPSJx9SKPbeHEYW:22
- a=Fg1AiH1G6rFz08G2ETeA:22 a=cvBusfyB2V15izCimMoJ:22
-X-Proofpoint-ORIG-GUID: hwZ_5OtY9Mg6R5YpLamp_WO-4lWhWaRh
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwODIwMDA4MCBTYWx0ZWRfXwlcwayjG+66M
- 1ze7U99T8uiKRzMMO3Xy5rday980tJ2lRQvV1QV4BEiGGLxUcqzUw+cCqSpUtC+6E2uZ8kuGDMA
- f6yEyoeCuXWHdh1Jb2N/x4sRVEzFZTp1SV8TycQiVtCdQ4i1KTbtfVOzefOkvyOXj+dMD+6aKca
- 3h0thrBHfZgyKUjr9k3HbHwdV9XOdwsC7CeXrDR8z7IrB/A8a1/YO8jublasXPXDN6KGXJBIKch
- BnyQJd2SqPmEyKh5dVGkVtGmB+cX0i5Td+rEHWar1v6wc1lffqFZVP8YmZXJ9+KG0a7xNJrBlMu
- B8pRo2XYYH7Z1ezYcVvcTRvGLIZg6UcYvdazmx1GNg+AWvhZjlk2tZ69GqqNgulGbZezjwF9PGk
- v0I+rW5llT1RVapxTFV9u7qE0oE4G3H80+Sj1hGX5lJFsLrbaKeBZPbBnErHBD+8YwpHxAvkrSA
- 3dpyaGyXeGB/CGskx8g==
-X-Proofpoint-GUID: hwZ_5OtY9Mg6R5YpLamp_WO-4lWhWaRh
-X-Proofpoint-Spam-Info: AW1haW4tMjYwODIwMDA4MCBTYWx0ZWRfX4cDrPd3SPr38
- VYJuOF4+OPRNaCqNny7o/iYVEjlbrMyFtQonnCutT7hlDe+ToOaKnFbsyINjUv8iI/mkqzX2mZG
- vb3mhFxkfr4MMzCWE89XvYbR9A2z12g=
+ a=VkNPw1HP01LnGYTKEx00:22 a=u7WPNUs3qKkmUXheDGA7:22 a=_K5XuSEh1TEqbUxoQ0s3:22
+ a=KKAkSRfTAAAA:8 a=EUspDBNiAAAA:8 a=gpnIO3m2qDfVEuVCFyUA:9 a=3ZKOabzyN94A:10
+ a=QEXdDO2ut3YA:10 a=PEH46H7Ffwr30OY-TuGO:22 a=cvBusfyB2V15izCimMoJ:22
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwODIwMDA4MCBTYWx0ZWRfX6OXPMgdXBZfy
+ RZwFYzcrgYFQtesLQYRXK1yAe/kpkfKN2S5rvS8c6xVUqn3mKxEpAiwG1eZn5tYwEQvuPFYduvq
+ WMvhghZXEjBr2bA06Ya2CHtKDkrxeDW9P5JHK7QWo0Sa3TewcJW2V/9YPoaSIw53afTkIRdeUtq
+ 1gK5P44L04crIdcYGne3j6TVkeKxjh7tw4DvYZS+fmM5Xk+ruWYqAOni9zsLs8cErlSCLXxwsY3
+ BNGPyiZ481bLI8TtNgononiLeshFMERADC6MF12ipJMz5mala6Tce50UoEexIGCU/QDESmJYZVa
+ jtojLmsmrTsJCaLhmrtfkNaE8U99//CIU/fKWWLqTbgqw7aHnr3CfyE4AMnZ0t2r0wDAfrJ/HrZ
+ LL0Ttc5EyJIQYXRlSMZ3OeDE8ylscxlFPAwcdvg3zRxHMyAFLhA4aSeCtAJmg+m+Nk2bb4ed943
+ hofNu464lyc/gvJPGlg==
+X-Proofpoint-Spam-Info: AW1haW4tMjYwODIwMDA4MCBTYWx0ZWRfX/JS80GifX0AE
+ 7lpELDyDH5zh24BFoljH93j4cLl/9xrjoYQlxs8Jg6+w1x0m3vfbewek2cpeBLCwnAO5fs7bKG0
+ S2Me7U3VtAkoxerFWZXqIgRBzqN87yA=
+X-Proofpoint-GUID: fV04w2BG-pja9rEPh2qnrYYJ4oLcSLyG
 X-Proofpoint-Virus-Version: vendor=baseguard
  engine=ICAP:2.0.293,Aquarius:18.0.1176,Hydra:6.1.134,FMLib:17.12.100.49
  definitions=2026-08-19_06,2026-08-19_02,2025-10-01_01
 X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
- bulkscore=0 priorityscore=1501 spamscore=0 clxscore=1015 impostorscore=0
- lowpriorityscore=0 suspectscore=0 phishscore=0 malwarescore=0 adultscore=0
+ priorityscore=1501 malwarescore=0 clxscore=1015 bulkscore=0 adultscore=0
+ lowpriorityscore=0 phishscore=0 spamscore=0 suspectscore=0 impostorscore=0
  classifier=typeunknown authscore=0 authtc= authcc= route=outbound adjust=0
  reason=mlx scancount=1 engine=8.22.0-2606150000 definitions=main-2608200080
 Received-SPF: pass client-ip=205.220.168.131;
@@ -160,37 +158,45 @@ Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
 On 19/8/26 20:54, Peter Maydell wrote:
-> The REALVIEW Kconfig stanza has a "select WM8750"; however the board
-> itself doesn't actually use this i2c audio device: its audio is
-> provided by the pl041 (which connects to an LM4549). Remove the
-> spurious dependency.
+> The 'musicpal' machine emulates the Freecom MusicPal, which was an
+> "internet radio" released in the mid-2000s.  The stock system used a
+> 2.6.16 Linux kernel, but as far as I'm aware, support for the
+> hardware was never upstreamed to the mainline kernel.
 > 
-
-Is it worth Cc'ing stable?
-
-Cc: qemu-stable@nongnu.org
-Fixes: 79e93e24de8 ("hw/arm: Express dependencies of realview, versatile 
-and vexpress with Kconfig")
-
-Anyway,
-Reviewed-by: Philippe Mathieu-Daudé <philmd@oss.qualcomm.com>
-
+> There are a number of reasons for deprecating this board:
+>   * The hardware is now solidly obsolete
+>   * It was never supported in mainline Linux
+>   * The SoC is a Marvell one with no public datasheet
+>   * The only QEMU changes to it have been the usual tree wide
+>     updates and refactoring work
+>   * The only bug report we've ever had about it has been one of
+>     the usual "bug found by static analysis" kind
+> 
+> But in fact we can just drop it immediately, because in commit
+> 59754f85ed35 ("target/arm: Do memory type alignment check when
+> translation disabled") in 2024 we broke the boot of the standard
+> firmware image for this board.  (The image's u-boot does a LDRH to an
+> unaligned address, which is UNPREDICTABLE; we used to let it through,
+> but that commit makes it take a Data Abort, so the image crashes
+> before it boots the kernel.) Since nobody complained, we can deduce
+> that nobody's actually using this machine.
+> 
+> Remove the machine proper, and note this in the docs.  Devices used
+> only by this board will be removed in subsequent commits.
+> 
 > Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 > ---
->   hw/arm/Kconfig | 1 -
->   1 file changed, 1 deletion(-)
-> 
-> diff --git a/hw/arm/Kconfig b/hw/arm/Kconfig
-> index 260d2f0751..5e9a0bd8dc 100644
-> --- a/hw/arm/Kconfig
-> +++ b/hw/arm/Kconfig
-> @@ -155,7 +155,6 @@ config REALVIEW
->       select ARM11MPCORE
->       select ARM_TIMER
->       select VERSATILE_PCI
-> -    select WM8750 # audio codec
->       select LSI_SCSI_PCI
->       select PCI
->       select PL011 # UART
+>   MAINTAINERS                             |   10 -
+>   configs/devices/arm-softmmu/default.mak |    1 -
+>   docs/about/removed-features.rst         |   10 +
+>   docs/system/arm/musicpal.rst            |   19 -
+>   docs/system/target-arm.rst              |    1 -
+>   hw/arm/Kconfig                          |   12 -
+>   hw/arm/meson.build                      |    1 -
+>   hw/arm/musicpal.c                       | 1388 -----------------------
+>   8 files changed, 10 insertions(+), 1432 deletions(-)
+>   delete mode 100644 docs/system/arm/musicpal.rst
+>   delete mode 100644 hw/arm/musicpal.c
 
+Reviewed-by: Philippe Mathieu-Daudé <philmd@oss.qualcomm.com>
 

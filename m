@@ -4,85 +4,85 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 27338C5DF85
-	for <qemu-arm@archiver.kernel.org>; Thu, 20 Aug 2026 16:02:14 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5716FC5DF81
+	for <qemu-arm@archiver.kernel.org>; Thu, 20 Aug 2026 16:04:25 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wx5CT-0000ru-Dz; Thu, 20 Aug 2026 12:01:05 -0400
+	id 1wx5C1-0000F7-5r; Thu, 20 Aug 2026 12:00:37 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1wx5CR-0000o3-VE
- for qemu-arm@nongnu.org; Thu, 20 Aug 2026 12:01:04 -0400
+ id 1wx5Bd-000098-VY
+ for qemu-arm@nongnu.org; Thu, 20 Aug 2026 12:00:14 -0400
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1wx5CP-0001TK-Qa
- for qemu-arm@nongnu.org; Thu, 20 Aug 2026 12:01:03 -0400
+ id 1wx5Bb-000179-Kz
+ for qemu-arm@nongnu.org; Thu, 20 Aug 2026 12:00:13 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1787241660;
+ s=mimecast20190719; t=1787241610;
  h=from:from:reply-to:reply-to:subject:subject:date:date:
  message-id:message-id:to:to:cc:cc:mime-version:mime-version:
  content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=bfcVWwh/y440qFMJt0bsGIXtJnzC4KlT0imLo1y60K4=;
- b=hlRN+GTOBkUulDRwHr9vj2tb2Fe5hR315Ism3m0jeguzmHLPB/02yJFqkOt9IDOGSceXJP
- ojsqOsbSmS51gNZVigUkUOqisuJQxuBNNur8oZUZuiQTOaEiHm16Yi6nKu3mb1inNZPDcz
- bb7qTi5Cn+NAYEY+2ew5LQC6nFfGrlk=
-Received: from mail-wm1-f71.google.com (mail-wm1-f71.google.com
- [209.85.128.71]) by relay.mimecast.com with ESMTP with STARTTLS
+ bh=oZpnNd3w2FeRT91TmQD+DZHP1JTROZ79FdNVrJcBD2g=;
+ b=Y9Y8Mfr1hkPO73ykWTQ16lm92CF0p+UE5truUVS62XK6u70JSEa+dx4mGcGGgYYnZlLspL
+ TDuqyhxXNVQSEiBplf9xUtLFJ7pZIdF78WvuuVLP3FAe+1O2DVJM78zzvJPB8fdREOhMMC
+ 0b/sW6UFRkAXbQz664GetM4wVUAtGcA=
+Received: from mail-wr1-f70.google.com (mail-wr1-f70.google.com
+ [209.85.221.70]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-202-1c2fUw0yPtSw3O60L69OnQ-1; Thu, 20 Aug 2026 12:00:59 -0400
-X-MC-Unique: 1c2fUw0yPtSw3O60L69OnQ-1
-X-Mimecast-MFC-AGG-ID: 1c2fUw0yPtSw3O60L69OnQ_1787241658
-Received: by mail-wm1-f71.google.com with SMTP id
- 5b1f17b1804b1-4997b060af8so13972775e9.1
- for <qemu-arm@nongnu.org>; Thu, 20 Aug 2026 09:00:58 -0700 (PDT)
+ us-mta-668-_WCpO5A1MsqIcIYhzhZXcw-1; Thu, 20 Aug 2026 12:00:05 -0400
+X-MC-Unique: _WCpO5A1MsqIcIYhzhZXcw-1
+X-Mimecast-MFC-AGG-ID: _WCpO5A1MsqIcIYhzhZXcw_1787241604
+Received: by mail-wr1-f70.google.com with SMTP id
+ ffacd0b85a97d-47faa02f707so936426f8f.1
+ for <qemu-arm@nongnu.org>; Thu, 20 Aug 2026 09:00:04 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1787241658; x=1787846458;
+ d=1e100.net; s=20251104; t=1787241604; x=1787846404;
  h=content-transfer-encoding:content-type:in-reply-to:from:references
  :cc:to:content-language:subject:reply-to:user-agent:mime-version
  :date:message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
  :message-id:reply-to:content-type;
- bh=bfcVWwh/y440qFMJt0bsGIXtJnzC4KlT0imLo1y60K4=;
- b=CSfgiLTb3S3Gmj55Ujxf8S/6BxhBhbhreo88OlSVRPNb7JEqFQGGWZU9Z3BwelSomU
- NY1ThNFDQmx3fFDMw6SZGkNFL401NeQkyw2qpaQ1Vt/rWprOOSqbLR3hnQGslt2DMtr/
- /kis9w7Jkkk2YO9TtX09ftZ8irWsx0YUxNXISJzq4sPwv5rBBHk9MfWNpIbIoEwzGius
- WueUqvufKzln6MtcaiGYdQa5d7vnuNFB1CMgzPiWj5LTG0UoQb5V1ABTPVdVQ984bafK
- ZgEYNq1Y3mPgphgX1c4FXeZlf7BBvqutKu4bwptWrh+2kRufhnH8MiX8ZKS+slqwFC65
- sFtA==
+ bh=oZpnNd3w2FeRT91TmQD+DZHP1JTROZ79FdNVrJcBD2g=;
+ b=KlipN5/go1zsXonuqQNgb4TKvG3lmfOE9Rj4yl3XdAL2DJltSmBmYMHwcFrd0T7f/k
+ l7D7dT0ONIJJ306r0rXZ8k+JDtlPS4tqcKeXLes/j1fD6JfzJyure5WtnZCjjrtQLTyV
+ flD9vP+lvtmYQzrMMQ+YEdNnxrG0ZTk2GIBXjWb+gEnQ2g5mJv3sd9HfcOZXJHKVGhJw
+ nolSd2O/je7/wJ40/FuruNXLaB9sEhkmZcJ4iE4XuE/pkY7hBteI0R7PySE+AmhM8ftU
+ kPeJ1nt3pY+gj4QJM7H0b4CVRXpoeFwXiMbh1s6b09IWoOgFJgTei6lxtIxdUvnd6fff
+ Yo9A==
 X-Forwarded-Encrypted: i=1;
- AHgh+RrTijZZUB3lwMHp497jTp/gUrSsWg6QoWW7Uo4/2Y21yrOFNRcNtLzvloH0uNNjh4oEt+fZG8khNg==@nongnu.org
-X-Gm-Message-State: AOJu0YzSuXM88AnjO4twk9reAoJgKIPQvpCcj/wKD9P7lX9zVGUANe2z
- ehCZTMiA50n4/d4VD2dRwch9AQ4VY2Q8Ul0jSKN9uUEV9dPlKTazI6kwJR6HUArbXiusGJNKT+m
- ApGDJSPwEAnVcbCnfR1GgbIu7z3bmT/UBkSjv9DY4eYJgnMh3l2nLAQ==
-X-Gm-Gg: AR+sD10/iyNrlvDViK/mlPBMALOcY8ttHe9NPaMtCJ252MNGYhu5OUvj+/+tPuIe1ci
- +5XiLgpKaOacFjwUAB3mIqFoopHICrpS/dlpraUxiqqGNpFa6KtsblToR09OZRPPLuC0u8DPRgk
- csn2oEQykFOxTsZzQvNBVW9bCVotH/hSQ6yv167q/arihqxE2TfxobnlH0H0ys267O+pkNrwseO
- djXIW27ZIondNcGnNa0YeKC2Tjn3g2qJtQ8GLezDbZHw9zm3/rdMqGvS5Yozy5SBaRkAaRUkvqA
- MboAh87a4xdzzKPC2MBvKCYmPoGe6tD6VnqJZzKs1mTPaSblaHEvWhr1cbjBWcFK33lJaAFWsdX
- hSVhIxhq6Pw6rSVsE+oaBYUE5/dNeK3oe4pNjPttKPBX9qFng
-X-Received: by 2002:a05:600c:8b62:b0:499:a6ae:20a1 with SMTP id
- 5b1f17b1804b1-499aa1dc5b6mr266872235e9.14.1787241657715; 
- Thu, 20 Aug 2026 09:00:57 -0700 (PDT)
-X-Received: by 2002:a05:600c:8b62:b0:499:a6ae:20a1 with SMTP id
- 5b1f17b1804b1-499aa1dc5b6mr266870255e9.14.1787241657090; 
- Thu, 20 Aug 2026 09:00:57 -0700 (PDT)
+ AHgh+Rpjp80iN1NwykwRZo3qviazNjcCfVNcE6KmZtAeA/WwaVaTyegjv3oUd0e3J9hIFVZvLpGYO3uphQ==@nongnu.org
+X-Gm-Message-State: AFuF++lKKzuKJzhm00Gm2gpI4uT8pqVE1LMzaZGUonemz+Gv869CuXeo
+ 1xOmc5cWzL+6foPp6XHi3W0kpbfA+iGSex5QNKbFN9xsBWh+ZZK7gBoNGbqR6C6dPQNhb0BS30t
+ Aj+sibsRmJ/MjzQlrCqD1uqA7KuZ4QjtBskBnFiRVZsbLUbBoa+Qpyw==
+X-Gm-Gg: AR+sD135PbeZ71AuNTtwOX+nPzV1C3/pvJiao0lxppcPQbAPeoUK57i0g4zaixlbZLS
+ KaeFVBB+13/NN5dUpPcKGi6zgsLNo8xF30eQ45Of2wLOk36GD+Bm263Q4B6x1pDlQknv7l++Pgz
+ ELYMVzIQ/fd7rmuZSb40XwLnywNKER/i5sZwIYVotQLPcQM2TMknIpH0pZxOid4SfBwkXRtmler
+ A4Ml2QNWijSVWwVh8wFszRgv7qjQg9LlP/wLrdxNtmL25iqNsTGGPMB2KdTEwIJgRT0cOrPo+2t
+ DdG3CYyD9sq2+ItOAds8ACha21KvMQgneDVBf8IDTCAwEOenIoBfq7kp9oatzhj5/dWtkm/jbTB
+ 8uH/WjQ6bzocEjWo0aT3ctP9T2rHGR6948mvFFSQQCdjIQxaS
+X-Received: by 2002:a05:6000:70a:b0:47f:9158:5924 with SMTP id
+ ffacd0b85a97d-482b784d37cmr13171254f8f.9.1787241603705; 
+ Thu, 20 Aug 2026 09:00:03 -0700 (PDT)
+X-Received: by 2002:a05:6000:70a:b0:47f:9158:5924 with SMTP id
+ ffacd0b85a97d-482b784d37cmr13171139f8f.9.1787241603253; 
+ Thu, 20 Aug 2026 09:00:03 -0700 (PDT)
 Received: from ?IPV6:2a01:e0a:f0e:9070:527b:9dff:feef:3874?
  ([2a01:e0a:f0e:9070:527b:9dff:feef:3874])
  by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-499aa0fda98sm231359415e9.1.2026.08.20.09.00.55
+ ffacd0b85a97d-482b14cf0a3sm13347113f8f.32.2026.08.20.09.00.01
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 20 Aug 2026 09:00:56 -0700 (PDT)
-Message-ID: <4d45766a-f0f5-4e59-b1ca-cf8d5b039a80@redhat.com>
-Date: Thu, 20 Aug 2026 18:00:54 +0200
+ Thu, 20 Aug 2026 09:00:02 -0700 (PDT)
+Message-ID: <4a9bb4de-9e85-4ba2-a9b3-68b4fbafd5e3@redhat.com>
+Date: Thu, 20 Aug 2026 18:00:00 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [RFC PATCH v3 16/19] qmp: add query-cpu-props-info command
-To: Khushit Shah <khushit.shah@nutanix.com>,
- Markus Armbruster <armbru@redhat.com>
+Subject: Re: [RFC PATCH v3 02/19] scripts: bug fixes in
+ update-aarch64-cpu-sysreg-properties
+To: Khushit Shah <khushit.shah@nutanix.com>
 Cc: "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
  "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
  "kvmarm@lists.linux.dev" <kvmarm@lists.linux.dev>,
@@ -97,28 +97,22 @@ Cc: "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
  "gshan@redhat.com" <gshan@redhat.com>,
  "skolothumtho@nvidia.com" <skolothumtho@nvidia.com>,
  "sebott@redhat.com" <sebott@redhat.com>,
+ "armbru@redhat.com" <armbru@redhat.com>,
  "philmd@linaro.org" <philmd@linaro.org>,
  "yangjinqian1@huawei.com" <yangjinqian1@huawei.com>,
  Shaju Abraham <shaju.abraham@nutanix.com>,
  Mark Cave-Ayland <mark.caveayland@nutanix.com>,
  Prerna Saxena <prerna.saxena@nutanix.com>
 References: <20260716213858.609699-1-khushit.shah@nutanix.com>
- <20260716213858.609699-17-khushit.shah@nutanix.com>
- <87y0f5u78t.fsf@pond.sub.org>
- <6AA3BD42-9596-476B-9F64-AB09372821B9@nutanix.com>
- <87tspa5skn.fsf@pond.sub.org>
- <FD805FA0-9323-450C-9D79-319C0883F05E@nutanix.com>
- <FDD5760F-94E6-46F4-AC62-AB0DC98322FD@nutanix.com>
- <8733wu5qfs.fsf@pond.sub.org>
- <08DA9B28-D5BD-4EC3-8182-FEE212F0C2A0@nutanix.com>
- <871pcd12bf.fsf@pond.sub.org>
- <5F6481F1-B5E1-4B30-A4D1-481D9C0731AC@nutanix.com>
- <87o6fgzopu.fsf@pond.sub.org>
- <7B2898F0-DA7A-4DFD-A2CB-997833A47A05@nutanix.com>
+ <20260716213858.609699-3-khushit.shah@nutanix.com>
+ <b839f20a-da50-493c-9b71-78069b62b867@redhat.com>
+ <7B85F7CA-C4CB-4EAD-BCB1-6D2135934F5B@nutanix.com>
+ <8d9e5cef-526e-4d4f-86a2-d86bdaeabd34@redhat.com>
+ <D0C8CE98-55F0-475C-AC56-731A3858E5D2@nutanix.com>
 From: Eric Auger <eric.auger@redhat.com>
-In-Reply-To: <7B2898F0-DA7A-4DFD-A2CB-997833A47A05@nutanix.com>
+In-Reply-To: <D0C8CE98-55F0-475C-AC56-731A3858E5D2@nutanix.com>
 X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: EHQCivuf36zz_Bs0i_k89uedL7qi1emjNHO7nPkUpPk_1787241658
+X-Mimecast-MFC-PROC-ID: sdEd-tnkQlgDMQjsQ_h2njQmrXAEgYQt2RYdeoJJjX4_1787241604
 X-Mimecast-Originator: redhat.com
 Content-Language: en-US
 Content-Type: text/plain; charset=UTF-8
@@ -131,7 +125,7 @@ X-Spam_bar: --
 X-Spam_report: (-2.4 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.346,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -150,66 +144,202 @@ Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
 
 
-On 8/6/26 11:24 AM, Khushit Shah wrote:
+On 8/18/26 11:43 AM, Khushit Shah wrote:
 >
->> On 5 Aug 2026, at 6:52 PM, Markus Armbruster <armbru@redhat.com> wrote:
+>> On 14 Aug 2026, at 7:15 PM, Eric Auger <eric.auger@redhat.com> wrote:
 >>
 >> !-------------------------------------------------------------------|
 >>  CAUTION: External Email
 >>
 >> |-------------------------------------------------------------------!
 >>
->> Khushit Shah <khushit.shah@nutanix.com> writes:
 >>
->>>> On 5 Aug 2026, at 12:28 PM, Markus Armbruster <armbru@redhat.com> wrote:
+>>
+>> On 8/3/26 4:32 PM, Khushit Shah wrote:
+>>>> On 20 Jul 2026, at 7:54 PM, Eric Auger <eric.auger@redhat.com> wrote:
 >>>>
 >>>> !-------------------------------------------------------------------|
 >>>> CAUTION: External Email
 >>>>
 >>>> |-------------------------------------------------------------------!
 >>>>
->>>> Khushit Shah <khushit.shah@nutanix.com> writes:
 >>>>
->>>>>> On 4 Aug 2026, at 12:21 PM, Markus Armbruster <armbru@redhat.com> wrote:
->>>>>>
->>>>>> !-------------------------------------------------------------------|
->>>>>> CAUTION: External Email
->>>>>>
->>>>>> |-------------------------------------------------------------------!
->>>>>>
->>>>>> Khushit Shah <khushit.shah@nutanix.com> writes:
->>>>>>
->>>>>> [...]
->>>>>>
->>>>>>> Stub file was missing on arm user builds. 
->>>>>>>
->>>>>>> I have fixed this on the private branch if you want to take a look.
->>>>>> I'm willing to pull an update to v3, assuming it's a small fix.
->>>>> It is a small fix :)
->>>> Please tell me what to pull.  When you're ready, of course.
->>> It’s on the same private branch: https://urldefense.proofpoint.com/v2/url?u=https-3A__github.com_khushit-2Dshah-2Dnx_qemu_tree_upstream-2Drfc-2Dv3-2Dfixups&d=DwIFaQ&c=s883GpUCOChKOHiocYtGcg&r=PGWMyignA0NiDmTlyP7vOTHozBws_VN86yrVmSMkBp0&m=lv46ybodStjAtdapjMwLnohED9-uQST3KdkvwYej9yhiKYNrRdzDyHjeuYqUxdyg&s=7IbcSv1pGL29PTHAOxj2lZWr2tySQeQqB88qHxlTpvE&e=
->> Builds, but fails "make check" on my box *sigh*.
->>
->> tests/qtest/qmp-cmd-test.c needs an update.
-> :’)
+>>>>
+>>>> On 7/16/26 11:38 PM, Khushit Shah wrote:
+>>>>> - handle quoted bitstrings  and decimal
+>>>>> - skip Values.ValueRange entries.
+>>>> The above is the issue you reported on my v6. See my comment on the
+>>>> other thread.
+>>> Acked.
+>>>>> - Emit unique RESx_{lsb} names for reserved fields so no two fields in
+>>>>> a register share a name.
+>>>> The requirement for naming RES field needs to be explained. I understand
+>>>> that now you expose all fields including those which are not writable it
+>>>> may be required but at this stage I still fail why this is requested.
+>>> I think we don’t need to expose RES fields to users. 
+>>> I was thinking of case where a RES0 field is repurposed for
+>>> something else, but that should be taken care by zeroing the
+>>> ID regs array before initiating the named model hierarchy.
+>>> (RES1 field in CTR_EL0 needs some handling).
+>> I also think so. you can rely on AARCHMRS desc to identify the right
+>> default values.
+> Acked.
 >
-> Fixed it, available on: 
-> https://github.com/khushit-shah-nx/qemu/tree/upstream-rfc-v3-fixups
+>>> On why we even need to expose non-writable fields:
+>>> - Assume some non-writable field mismatches for the model and
+>>>  host, why do we want to stop users from explicitly overriding
+>>>  the model's field value to host value?
+>> I agree this needs to be checked. However as I suggested I think you can
+>> avoid exposing them to the end-users as props. You just need to read the
+>> value from host and compare it with the value set in the named model. 
+> I am not sure how that will work, assume following scenario:
 >
-> On my machine, qemu:qtest+qtest-aarch64 / qtest-aarch64/device-introspect-test
-> still fails. (It will likely not fail for you if you are on (arm + kvm or any
-> other Arch))
+> - Host is running on `neoverse-v2` core and we want to run guest with `neoverse-v1`
+>   model. “pauth” fields are not exactly writable, and "neoverse-v1” implements
+>   different pauth algorithm than "neoverse-v2”. Now, if we don’t expose “pauth” as
+>   it is not writable, how will end user be able to say I want to run neoverse-v1
+>   model so please disable "pauth”.
 >
-> I have reported this to Eric as the fail stems from the base "customizable host
-> model” series.
+> What I want to support is end user to say "please use the host value for some non-writable
+> fields as the model I want to run has values which are not supported on the current host.”
+OK I see your point now. sorry for the misunderstanding. So in that case
+effectively you need a true QEMU prop for each field even for those
+which are not KVM writable. Please ignore my previous reply ;-)
 
-yes my bad, this will be fixed in v8
+Thanks
 
 Eric
 >
-> Sorry for the hiccups, and thanks for your patience, will take care from now on.
+> The same “pauth” example will suffer if we don’t expose APA/GPA in cpu-model-expansion,
+> how will management stack infer that both host supports “pauth" but they support different
+> versions and are not compatible?
 >
+> Warm Regards,
+> Khushit
 >
+>>>
+>>>>> - Emit a dummy 64-bit VAL field for registers with no defined fields,
+>>>>> such as AIDR_EL1 and REVIDR_EL1.
+>>>> This is yet another functional change that could be separate.
+>>> Acked, will do in v4.
+>> Thanks
+>>
+>> Eric
+>>>> Thanks
+>>>>
+>>>> Eric
+>>>>> Signed-off-by: Khushit Shah <khushit.shah@nutanix.com>
+>>>>> ---
+>>>>> .../update-aarch64-cpu-sysreg-properties.py   | 67 +++++++++++++------
+>>>>> 1 file changed, 45 insertions(+), 22 deletions(-)
+>>>>> mode change 100644 => 100755 scripts/update-aarch64-cpu-sysreg-properties.py
+>>>>>
+>>>>> diff --git a/scripts/update-aarch64-cpu-sysreg-properties.py b/scripts/update-aarch64-cpu-sysreg-properties.py
+>>>>> old mode 100644
+>>>>> new mode 100755
+>>>>> index 9e829fda2e..ecc35db528
+>>>>> --- a/scripts/update-aarch64-cpu-sysreg-properties.py
+>>>>> +++ b/scripts/update-aarch64-cpu-sysreg-properties.py
+>>>>> @@ -106,6 +106,29 @@ def collect_fields(item, bit_offset=0):
+>>>>>
+>>>>>    return fields
+>>>>>
+>>>>> +def parse_value_int(raw_val):
+>>>>> +    if raw_val is None or isinstance(raw_val, bool):
+>>>>> +        return None
+>>>>> +
+>>>>> +    # may already be real number
+>>>>> +    if isinstance(raw_val, int):
+>>>>> +        return raw_val
+>>>>> +
+>>>>> +    raw_str = str(raw_val).strip()
+>>>>> +
+>>>>> +    if "'" in raw_str:
+>>>>> +        # quoted bitstring like "'0100'"
+>>>>> +        bits = raw_str.replace("'", "")
+>>>>> +        try:
+>>>>> +            return int(bits, 2)
+>>>>> +        except ValueError:
+>>>>> +            return None
+>>>>> +
+>>>>> +    # unquoted, try decimal
+>>>>> +    try:
+>>>>> +        return int(raw_str, 0)
+>>>>> +    except ValueError:
+>>>>> +        return None
+>>>>>
+>>>>> def extract_field_enums(field):
+>>>>>    enums = []
+>>>>> @@ -124,32 +147,23 @@ def extract_field_enums(field):
+>>>>>    if not isinstance(val_entries, list):
+>>>>>        return enums
+>>>>>
+>>>>> +    # A Values.ValueRange field specifies start and end value for a range.
+>>>>> +    # Don't enumerate anything for them.
+>>>>> +    for val_entry in val_entries:
+>>>>> +        if isinstance(val_entry, dict) and \
+>>>>> +           val_entry.get("_type") == "Values.ValueRange":
+>>>>> +               return []
+>>>>> +
+>>>>>    for val_entry in val_entries:
+>>>>>        if not isinstance(val_entry, dict):
+>>>>>            continue
+>>>>> -            
+>>>>> +
+>>>>>        if val_entry.get("_type") == "Values.Value":
+>>>>> -            raw_val = val_entry.get("value")
+>>>>> -            if raw_val is None:
+>>>>> +            int_val = parse_value_int(val_entry.get("value"))
+>>>>> +            if int_val is None:
+>>>>>                continue
+>>>>> -                
+>>>>> -            # some of the values have ' like "'0100'"
+>>>>> -            raw_val_str = str(raw_val).strip().replace("'", "")
+>>>>> -            
+>>>>> -            try:
+>>>>> -                # convert into bin 
+>>>>> -                int_val = int(raw_val_str, 2)
+>>>>> -            except ValueError:
+>>>>> -                try:
+>>>>> -                    # Fallback to dec if not bin
+>>>>> -                    int_val = int(raw_val_str, 0)
+>>>>> -                except ValueError:
+>>>>> -                    continue
+>>>>> -            
+>>>>> -            enums.append({
+>>>>> -                'value': int_val
+>>>>> -            })
+>>>>> -            
+>>>>> +            enums.append({'value': int_val})
+>>>>> +
+>>>>>    return enums
+>>>>>
+>>>>> def generate_sysreg_properties_from_registers_json(id_reg_names, raw_json_path):
+>>>>> @@ -210,7 +224,7 @@ def generate_sysreg_properties_from_registers_json(id_reg_names, raw_json_path):
+>>>>>                       msb > current_fieldset_fields[unique_key]['msb']:
+>>>>>                        enums = extract_field_enums(val)
+>>>>>                        current_fieldset_fields[unique_key] = {
+>>>>> -                            'raw_name': name,
+>>>>> +                            'raw_name': unique_key,
+>>>>>                            'lsb': lsb,
+>>>>>                            'msb': msb,
+>>>>>                            'width': width,
+>>>>> @@ -238,6 +252,15 @@ def generate_sysreg_properties_from_registers_json(id_reg_names, raw_json_path):
+>>>>>        # Sort decreasing lsbs
+>>>>>        sorted_fields = sorted(unique_fields.items(),
+>>>>>                               key=lambda x: x[1]['lsb'], reverse=True)
+>>>>> +        if len(sorted_fields) == 0:
+>>>>> +            # cases like REVIDR_EL1 and AIDR_EL1.
+>>>>> +            # augment a dummy fields VAL.
+>>>>> +            sorted_fields.append(('VAL', {
+>>>>> +                'lsb': 0,
+>>>>> +                'msb': 63,
+>>>>> +                'width': 64,
+>>>>> +                'enums': []
+>>>>> +            }))
+>>>>>
+>>>>>        for unique_key, bits in sorted_fields:
+>>>>>            enums_list = bits.get('enums', [])
 >
 
 

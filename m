@@ -4,84 +4,85 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A664BC5DF85
-	for <qemu-arm@archiver.kernel.org>; Thu, 20 Aug 2026 02:51:55 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 41172C5DF88
+	for <qemu-arm@archiver.kernel.org>; Thu, 20 Aug 2026 02:52:06 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wwsqK-0001yx-AS; Wed, 19 Aug 2026 22:49:24 -0400
+	id 1wwsqZ-0002Ax-4r; Wed, 19 Aug 2026 22:49:39 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <kylefoxaustin.github@gmail.com>)
- id 1wwsq1-0001sO-3q
- for qemu-arm@nongnu.org; Wed, 19 Aug 2026 22:49:07 -0400
-Received: from mail-yx1-xb134.google.com ([2607:f8b0:4864:20::b134])
+ id 1wwsq7-0001ur-SL
+ for qemu-arm@nongnu.org; Wed, 19 Aug 2026 22:49:12 -0400
+Received: from mail-yx1-xb135.google.com ([2607:f8b0:4864:20::b135])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <kylefoxaustin.github@gmail.com>)
- id 1wwspx-0000St-LN
- for qemu-arm@nongnu.org; Wed, 19 Aug 2026 22:49:04 -0400
-Received: by mail-yx1-xb134.google.com with SMTP id
- 956f58d0204a3-66807ba2f0fso2798183d50.3
- for <qemu-arm@nongnu.org>; Wed, 19 Aug 2026 19:49:01 -0700 (PDT)
+ id 1wwsq4-0000Z8-J2
+ for qemu-arm@nongnu.org; Wed, 19 Aug 2026 22:49:11 -0400
+Received: by mail-yx1-xb135.google.com with SMTP id
+ 956f58d0204a3-66c7264d87dso972542d50.1
+ for <qemu-arm@nongnu.org>; Wed, 19 Aug 2026 19:49:08 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20251104; t=1787194140; x=1787798940; darn=nongnu.org;
+ d=gmail.com; s=20251104; t=1787194147; x=1787798947; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to:content-type;
- bh=TuEY6h8uSBfSVhgKCRtzXbvzolUunUFUPvBQ5EhqMr0=;
- b=dohYM8NuzTHUt0rpcjJXP4S0LCkFb/LTL+fS3BCwJ1v6HuznMXPftafJtcxV0+kLy8
- 3OZkKoQxcnyN8z3fhLqwiJ9/zXkqLD9df/34e8SqJxRQlIarLhcBM4ymjjvYOecW6S+0
- lV31i9LSif+iFtlMnrNrHwDZUvVs7DKPdLLkzImKPXpdf26RzZ3ZCOb0cWTarlP6dGRV
- FXxEIdF+8sCXjSqtyfR7ivwx5wVVPcO72kZ2/sSPqTVERNpMMm9dyMmB/4a31Q22e3b0
- ZxQ8pHZiipQDAekiuwa4b/gEajB2UEVUH/gyqwlwhAxqLRvvshwOtFKe23c1Bjjf6JNi
- gQdw==
+ bh=ULA0rOEJS/remkRsu+3bK7hmpmH4SXzIjWLm8NTqxUk=;
+ b=oZ3N+OPghaOt+GPVux4vdrz0IE0lGEBpj9PlJe61cP62uFZkLmYn907s6xVhXsekTI
+ bIsMQILGtmD9DjhWF/697ww/PO3ndRfxxWkX4f2uubAA57q6Fyr4tOwaResOApO1+JIa
+ mQJhAatP75mHtjleOv81k+DYAQOQmX3wFMoYMevk8ikFaKmfHXi61K+FbP7nXdgfBxpv
+ Bh8vp6nkxKsnrLxa0pcyrQYHUA495zxLPfPD+fflfozd5Hc3GBjeZMe9feCCVgCeaDwj
+ ExqZQtOOElbNLeKzPTTRhtIt0yzCRNxpQdBBuBMx2KRj3+cS8riWQHpGzYCV+uhRwctX
+ rFDQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1787194140; x=1787798940;
+ d=1e100.net; s=20251104; t=1787194147; x=1787798947;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
  :to:cc:subject:date:message-id:reply-to:content-type;
- bh=TuEY6h8uSBfSVhgKCRtzXbvzolUunUFUPvBQ5EhqMr0=;
- b=cJoG6laHcmRTbMYpF9I+sxYKVtabOl3umJs1SvuHeMc2FH1EGL52Bi2UKz0Apth2g9
- 2kqU5L0oL+QYlEvYe30e6JJGq+A2W7SR9ngGXMto/pktdGMwm8ddeMod3/UJJt8UJ91G
- xdreOMhpP6LvTPp4ynE1dcBGQGpA5umpQuA2F1k2yagaJkTtGe2GTp8scdhqoqX/rV9s
- 6qxX3ApoVu2EyBhj+dAUOCpSIxNU4GJ/O7SiucdX4TNKAov35v+eOcGVBeywdciXhQus
- qqDhGekJ3KDjKGIl2l1vOOeeJiVrm9hIznpTK+meLCGR6HlxcjPqZb43VZR+cTvT3QAb
- 2i5g==
+ bh=ULA0rOEJS/remkRsu+3bK7hmpmH4SXzIjWLm8NTqxUk=;
+ b=B9sPJKIkZcZJ7DsS1rSgdvxGvv61en4keKF3ZHKj17WyCW9kNBS+CrtYQT0vQGAzmK
+ J7T6gS71gNB8eeEfxN+ehaBM+BIwOOhi0Gtfekvg8kSYHvkxBR5VkhmS0taIBg2dtB1Z
+ LKRLIRAbgMRmy6r1fhxw8eqBSvUZC4q0HjLbusgIA0nrExvsLlfKI2YCRfJPTnyyXsLa
+ UU03A3IKRF19y1OhUAvqQ09gMu7n5RxCCWuUxmhZoxN9G9I5Doy5vLqmwyp6TTx0EtBg
+ eSobzMgzeaxC2imvv9J9aPY6XOg/zoZfPxVPVArSZbNx8NWhaDIrtN2u4XrI74A8zJvs
+ 9Pxg==
 X-Forwarded-Encrypted: i=1;
- AHgh+RqYNoNabw5up9vR/MTLxkj7BPlZc2vTILkCN+M8eHvwDZxGvm4SlDhP4/BqBjTqekq0FNuVljg+VA==@nongnu.org
-X-Gm-Message-State: AFuF++metsZAjcPho9Oh+NIacY7P4sntQ/9pdo4xHcW9pr6HjfHD7/VH
- K5X6QGmNR6LGZkgn5O5EgshgHQUqWIvcb7W9dsVR1w0GQeyg+OLgmDFZ
-X-Gm-Gg: AR+sD12yPg04jdBrD3Oy0MJByhup7uc8OHlhuB4RWBvrO9HlAWR8AAjy/0cSdPXM+gp
- c/vuDIm2zSBH0EsBC0xSQZAJ2GXLC290sUIiOxE3C3hrzEPTua7Sx3svg9PyDLxbZ5eOkbvmc/w
- m0vVtP6lJQUgqloii+01kbSb3ElReTeyJByD1W0VyGLbAJe68SMt5Foh5B5OYDP8x0/wB3ZsFOy
- 3ZjzVgEwpqEw4YdQBzO9AuyC+jkeNXmLlcRnlbPX64DjhKNCezs3mYjadbRgcWU8fbIkb3v9pEm
- RfHIIpRVK+VJn1B+gc2a90RHmEHV6Df13Ixk2bbXllEsIuTTt5psH1ZB2boHj1sKTd2xvJSj+py
- f/DRLkf4G/6KEMTI7SvFCqAYdepsvLIYNEBFJYI+0l8LMzi+aICHux9QbQ7OD+402TlH8Pgcpnm
- Pw8PxvuVI35ipD/AIvn04fJgPgVgOJblIqct3TyZrsl5JjFstyDrwNH9T9SrNoQvWEWopmhM11b
- Kw/chlsc7QUHLqmagjxVMwUdfDGhnO+/4SdXFGDHTRc32H+IEIUdw==
-X-Received: by 2002:a53:c9c4:0:b0:668:8dfd:8c7f with SMTP id
- 956f58d0204a3-66ccb745f7cmr2614998d50.43.1787194140437; 
- Wed, 19 Aug 2026 19:49:00 -0700 (PDT)
+ AHgh+RocnsgvN0SU+ShFCFhOZkKj7tqGI1H6vyh82n8r+kRvY+UqDDUyOGgiLR5AmkoWUcS2u+yJxJx80Q==@nongnu.org
+X-Gm-Message-State: AFuF++mMHHYnhggzCxTmhyHLRb42y+vhkFGN56PXbAPFS74l98JCzktj
+ HMT2ppJEJfDrb6Ab9/egmd0SjIlB3ompYAwztDo3Nh/2B8X+5iCxiH/v
+X-Gm-Gg: AR+sD10lwD2OxMEoMeHYBs3vyh7VBYx01q3hhgyyKXm9tmqDyRiChc1gHq57QQxU5Yg
+ yNqLcdT+Rgkig+c7AtH1PAPlX/zdTnCDZ7gAS9NwtkW6tX6uoYqXZqfNq7nUXs3Avqum+B9ZDvG
+ zgoU78Xuidn9oeCD8V7Xn6qRiMV8RDUwi0yr/QAJlk4lf6/mcZgtlUAdlXz4J/enzdfwFKaXXxE
+ U4xqBoGEUipdyly36zreiMs8NV00m7KkxdpR5j/7vWiYWbcQXLySRo/B7VIu1lF86rCS4SQhl7h
+ tNvjVsT1Ep7+s6ZzDXJ2coN7dfealRrcLLbdrvBMw7wLnJd8kulQvnMsCgt/h/fETRGZtgK7swt
+ YaT/hVpxAwYk4lnQb7uWW1YG+sRx+J9adlLF0eNqEMDIlsQcGUE9rU5Nngf+XTaYCLW/FQx2C5O
+ zI/7UuHt12EVDUX8re1OBnCgw+YbxphLMVitklw70nlQuy9Jffmz64ViFLa5ynkkvSMvCWo5LjW
+ X9KHRmBKqE23V4ZldUb1rp23WUGI0f8oD/nQbbuCXyrbIbULxJwpg==
+X-Received: by 2002:a53:a810:0:b0:668:8d0:20c with SMTP id
+ 956f58d0204a3-66cd6a0718fmr915365d50.20.1787194147429; 
+ Wed, 19 Aug 2026 19:49:07 -0700 (PDT)
 Received: from skippy.localdomain (99-61-67-1.lightspeed.austtx.sbcglobal.net.
  [99.61.67.1]) by smtp.gmail.com with ESMTPSA id
- 956f58d0204a3-66ccafd03basm1986454d50.1.2026.08.19.19.48.58
+ 956f58d0204a3-66ccafd03basm1986454d50.1.2026.08.19.19.49.06
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 19 Aug 2026 19:48:59 -0700 (PDT)
+ Wed, 19 Aug 2026 19:49:07 -0700 (PDT)
 From: Kyle Fox <kylefoxaustin.github@gmail.com>
 To: qemu-devel@nongnu.org
 Cc: Kyle Fox <kylefoxaustin.github@gmail.com>,
  Paolo Bonzini <pbonzini@redhat.com>,
  qemu-arm@nongnu.org (open list:MCIMX95-19X19-EVK...)
-Subject: [PATCH 09/16] hw/timer: add i.MX 95 system counter
-Date: Wed, 19 Aug 2026 21:48:27 -0500
-Message-Id: <20260820024834.3286721-10-kylefoxaustin.github@gmail.com>
+Subject: [PATCH 13/16] hw/misc: add i.MX 95 DPU command-sequencer stub
+ (headless)
+Date: Wed, 19 Aug 2026 21:48:31 -0500
+Message-Id: <20260820024834.3286721-14-kylefoxaustin.github@gmail.com>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20260820024834.3286721-1-kylefoxaustin.github@gmail.com>
 References: <20260820024834.3286721-1-kylefoxaustin.github@gmail.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::b134;
- envelope-from=kylefoxaustin.github@gmail.com; helo=mail-yx1-xb134.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::b135;
+ envelope-from=kylefoxaustin.github@gmail.com; helo=mail-yx1-xb135.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -104,198 +105,114 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-The i.MX 95 System Counter: a 24 MHz free-running up-counter with a
-compare-match interrupt. On this machine it is the Linux broadcast
-clockevent. Models the counter read-back, compare-value programming and
-the compare IRQ (backed by a QEMUTimer).
+A minimal stub for the i.MX 95 DPU (display controller) command
+sequencer. This machine is headless, but Linux's dpu95 driver busy-waits
+with no timeout on the sequencer status register during probe, so a
+reads-as-zero stub would hang userspace bring-up. The stub reports the
+sequencer idle with FIFO space so the probe completes. Real display
+scanout is left to a follow-on series.
 
 Signed-off-by: Kyle Fox <kylefoxaustin.github@gmail.com>
 ---
- hw/timer/Kconfig        |   3 +
- hw/timer/imx95_sysctr.c | 241 ++++++++++++++++++++++++++++++++++++++++
- hw/timer/meson.build    |   1 +
- hw/timer/trace-events   |   2 +
- 4 files changed, 247 insertions(+)
- create mode 100644 hw/timer/imx95_sysctr.c
+ hw/misc/Kconfig      |   3 ++
+ hw/misc/imx95_dpu.c  | 117 +++++++++++++++++++++++++++++++++++++++++++
+ hw/misc/meson.build  |   1 +
+ hw/misc/trace-events |   1 +
+ 4 files changed, 122 insertions(+)
+ create mode 100644 hw/misc/imx95_dpu.c
 
-diff --git a/hw/timer/Kconfig b/hw/timer/Kconfig
-index e1b751a54a7..1e8c5d50d7e 100644
---- a/hw/timer/Kconfig
-+++ b/hw/timer/Kconfig
-@@ -68,3 +68,6 @@ config AVR_TIMER16
+diff --git a/hw/misc/Kconfig b/hw/misc/Kconfig
+index e1b8c390312..59c55cb5b83 100644
+--- a/hw/misc/Kconfig
++++ b/hw/misc/Kconfig
+@@ -290,3 +290,6 @@ config IMX95_PMIC
  
- config HEX_QTIMER
+ config IMX95_XCACHE
      bool
 +
-+config IMX95_SYSCTR
++config IMX95_DPU
 +    bool
-diff --git a/hw/timer/imx95_sysctr.c b/hw/timer/imx95_sysctr.c
+diff --git a/hw/misc/imx95_dpu.c b/hw/misc/imx95_dpu.c
 new file mode 100644
-index 00000000000..597bb851f23
+index 00000000000..4e09b399d85
 --- /dev/null
-+++ b/hw/timer/imx95_sysctr.c
-@@ -0,0 +1,241 @@
++++ b/hw/misc/imx95_dpu.c
+@@ -0,0 +1,117 @@
 +/*
-+ * NXP i.MX 95 System Counter (sysctr) timer
++ * NXP i.MX 95 DPU (Display Processing Unit) command-sequencer status stub
 + *
 + * Copyright (c) 2026, Kyle Fox
 + *
 + * SPDX-License-Identifier: GPL-2.0-or-later
 + *
-+ * The system counter is a free-running up-counter plus a compare block that
-+ * raises an interrupt when the counter reaches a programmed value. Linux uses
-+ * it as the tick BROADCAST clockevent: the imx95 idle state `cpu-pd-wait`
-+ * carries `local-timer-stop`, so a core entering cpuidle shuts down its
-+ * per-CPU arch timer and depends entirely on this counter's compare interrupt
-+ * to be woken. Modelling it as plain RAM (the previous stub) left idle cores
-+ * with no wake source -> RCU stalls -> the boot needed `cpuidle.off=1`. This
-+ * model gives a live counter + working compare IRQ so the broadcast-timer
-+ * wake path works (deep cpuidle still needs cpuidle.off=1 - see the docs).
++ * The DPU is not modelled: this base machine is headless, and real display
++ * scanout is a follow-on series. With the real System Manager powering the
++ * display mix, however, Linux's dpu95 driver stops deferring and probes - and
++ * its blit-engine bring-up busy-waits with NO
++ * timeout on the command sequencer status register:
++ *   dpu95_cs_wait_idle()       spins until CMDSEQ_STATUS.IDLE      is set
++ *   dpu95_cs_wait_fifo_space() spins until CMDSEQ_STATUS.FIFOSPACE >= 192
++ * A plain zero-returning stub never satisfies either, so the probe kthread
++ * hangs forever, which in turn wedges wait_for_device_probe() in
++ * kernel_init() and userspace never starts.
 + *
-+ * Register layout (from Linux drivers/clocksource/timer-imx-sysctr.c, the
-+ * imx95 quirk path which QEMU always takes - the IMX_SIP_GET_SOC_INFO SiP
-+ * SMC is unimplemented here, so the driver sets SYS_CTR_IMX95_QUIRK):
-+ *   - read frame  @ 0x20000: CNTCV_LO 0x20008 / CNTCV_HI 0x2000c (RO counter)
-+ *     (also exposed at 0x8 / 0xc for the non-quirk read path)
-+ *   - cmp frame   @ 0x10000: CMPCV_LO 0x10020 / CMPCV_HI 0x10024 (compare
-+ *     value, RW, read-back-verified by the driver) and CMPCR 0x1002c
-+ *     (control: EN = bit0; the driver acks the IRQ by clearing EN, which
-+ *     drops the status bit and negates the interrupt).
-+ *
-+ * Only the master compare channel + its single interrupt are modelled (the
-+ * DT exposes one IRQ; the broadcast framework needs only one channel).
++ * This stub returns CMDSEQ_STATUS with IDLE set and a full FIFOSPACE so both
++ * polls pass instantly; every other register reads back zero and writes are
++ * dropped. That is enough to let the probe complete (the actual command
++ * submission / fence path runs only at runtime, which we never reach). A
++ * follow-on series that models the DPU for real (adding display scanout and
++ * Wayland output) removes this stub.
 + */
 +
 +#include "qemu/osdep.h"
 +#include "qemu/module.h"
-+#include "qemu/timer.h"
-+#include "qemu/host-utils.h"
 +#include "hw/core/sysbus.h"
-+#include "hw/core/irq.h"
-+#include "migration/vmstate.h"
++#include "qom/object.h"
 +#include "trace.h"
 +
-+#define TYPE_IMX95_SYSCTR "imx95.sysctr"
-+OBJECT_DECLARE_SIMPLE_TYPE(IMX95SysctrState, IMX95_SYSCTR)
++#define TYPE_IMX95_DPU "imx95.dpu"
++OBJECT_DECLARE_SIMPLE_TYPE(IMX95DPUState, IMX95_DPU)
 +
-+#define IMX95_SYSCTR_REG_SIZE   0x30000
++#define IMX95_DPU_REG_SIZE 0x400000
 +
-+/* The system counter reference is the 24 MHz oscillator (nxp,no-divider). */
-+#define IMX95_SYSCTR_FREQ_HZ    24000000ULL
-+
-+/* Register offsets (see file header). */
-+#define SYSCTR_CNTCV_LO         0x8
-+#define SYSCTR_CNTCV_HI         0xc
-+#define SYSCTR_CMPCV_LO         0x10020
-+#define SYSCTR_CMPCV_HI         0x10024
-+#define SYSCTR_CMPCR            0x1002c
-+#define SYSCTR_CNTCV_LO_RD      0x20008
-+#define SYSCTR_CNTCV_HI_RD      0x2000c
-+
-+#define SYSCTR_CMPCR_EN         0x1
-+
-+struct IMX95SysctrState {
++struct IMX95DPUState {
 +    SysBusDevice    parent_obj;
 +    MemoryRegion    iomem;
-+    qemu_irq        irq;
-+    QEMUTimer       timer;
-+
-+    uint32_t        cmpcv_lo;
-+    uint32_t        cmpcv_hi;
-+    uint32_t        cmpcr;
 +};
 +
-+static uint64_t imx95_sysctr_count(void)
-+{
-+    return muldiv64(qemu_clock_get_ns(QEMU_CLOCK_VIRTUAL),
-+                    IMX95_SYSCTR_FREQ_HZ, NANOSECONDS_PER_SECOND);
-+}
++/* Command-sequencer status, from the dpu95 blit register map. */
++#define DPU_CMDSEQ_STATUS           0x1019c
++#define DPU_CMDSEQ_STATUS_IDLE      0x40000000u
++#define DPU_CMDSEQ_STATUS_FIFOSPACE 0x0001ffffu
 +
-+static uint64_t imx95_sysctr_cmpcv(IMX95SysctrState *s)
++static uint64_t imx95_dpu_read(void *opaque, hwaddr offset, unsigned size)
 +{
-+    return ((uint64_t)s->cmpcv_hi << 32) | s->cmpcv_lo;
-+}
-+
-+/*
-+ * (Re)arm or disarm the compare. When the compare is enabled, schedule the
-+ * timer for the virtual-time instant the counter reaches CMPCV; a value
-+ * already in the past makes timer_mod fire at the next opportunity. When
-+ * disabled, cancel the timer and negate the interrupt (this is how the
-+ * driver's ISR acks: it clears EN).
-+ */
-+static void imx95_sysctr_update(IMX95SysctrState *s)
-+{
-+    if (s->cmpcr & SYSCTR_CMPCR_EN) {
-+        uint64_t deadline = muldiv64(imx95_sysctr_cmpcv(s),
-+                                     NANOSECONDS_PER_SECOND,
-+                                     IMX95_SYSCTR_FREQ_HZ);
-+        trace_imx95_sysctr_cmp(imx95_sysctr_cmpcv(s));
-+        timer_mod(&s->timer, deadline);
-+    } else {
-+        timer_del(&s->timer);
-+        qemu_set_irq(s->irq, 0);
++    if (offset == DPU_CMDSEQ_STATUS) {
++        /*
++         * Report the sequencer idle with a full FIFO. This is deliberately
++         * NOT the reset value (0x41000080: IDLE set but FIFOSPACE = 128, below
++         * the driver's threshold of 192), because the dpu95 probe polls
++         * FIFOSPACE before the enable handshake that would raise it on real
++         * silicon. Returning a constant full FIFO is sound only because the
++         * model is probe-time-only: no actual command sequence is ever
++         * submitted. If real DPU command submission is ever modelled,
++         * FIFOSPACE must track the command FIFO occupancy instead.
++         */
++        uint32_t status = DPU_CMDSEQ_STATUS_IDLE | DPU_CMDSEQ_STATUS_FIFOSPACE;
++        trace_imx95_dpu_cmdseq_status(status);
++        return status;
 +    }
++    return 0;
 +}
 +
-+static void imx95_sysctr_timer_cb(void *opaque)
++static void imx95_dpu_write(void *opaque, hwaddr offset,
++                            uint64_t value, unsigned size)
 +{
-+    IMX95SysctrState *s = opaque;
-+
-+    if (s->cmpcr & SYSCTR_CMPCR_EN) {
-+        trace_imx95_sysctr_expire();
-+        qemu_set_irq(s->irq, 1);
-+    }
 +}
 +
-+static uint64_t imx95_sysctr_read(void *opaque, hwaddr offset, unsigned size)
-+{
-+    IMX95SysctrState *s = opaque;
-+    uint64_t cnt = imx95_sysctr_count();
-+
-+    switch (offset) {
-+    case SYSCTR_CNTCV_LO:
-+    case SYSCTR_CNTCV_LO_RD:
-+        return cnt & 0xffffffff;
-+    case SYSCTR_CNTCV_HI:
-+    case SYSCTR_CNTCV_HI_RD:
-+        return (cnt >> 32) & 0xffffffff;
-+    case SYSCTR_CMPCV_LO:
-+        return s->cmpcv_lo;
-+    case SYSCTR_CMPCV_HI:
-+        return s->cmpcv_hi;
-+    case SYSCTR_CMPCR:
-+        return s->cmpcr;
-+    default:
-+        return 0;
-+    }
-+}
-+
-+static void imx95_sysctr_write(void *opaque, hwaddr offset,
-+                               uint64_t value, unsigned size)
-+{
-+    IMX95SysctrState *s = opaque;
-+
-+    switch (offset) {
-+    case SYSCTR_CMPCV_LO:
-+        s->cmpcv_lo = value;
-+        imx95_sysctr_update(s);
-+        break;
-+    case SYSCTR_CMPCV_HI:
-+        s->cmpcv_hi = value;
-+        imx95_sysctr_update(s);
-+        break;
-+    case SYSCTR_CMPCR:
-+        s->cmpcr = value;
-+        imx95_sysctr_update(s);
-+        break;
-+    default:
-+        break;
-+    }
-+}
-+
-+static const MemoryRegionOps imx95_sysctr_ops = {
-+    .read = imx95_sysctr_read,
-+    .write = imx95_sysctr_write,
++static const MemoryRegionOps imx95_dpu_ops = {
++    .read = imx95_dpu_read,
++    .write = imx95_dpu_write,
 +    .endianness = DEVICE_LITTLE_ENDIAN,
 +    .impl = {
 +        .min_access_size = 4,
@@ -307,94 +224,55 @@ index 00000000000..597bb851f23
 +    },
 +};
 +
-+static void imx95_sysctr_reset_hold(Object *obj, ResetType type)
++static void imx95_dpu_init(Object *obj)
 +{
-+    IMX95SysctrState *s = IMX95_SYSCTR(obj);
++    IMX95DPUState *s = IMX95_DPU(obj);
 +
-+    s->cmpcv_lo = 0;
-+    s->cmpcv_hi = 0;
-+    s->cmpcr = 0;
-+    timer_del(&s->timer);
-+    qemu_set_irq(s->irq, 0);
++    memory_region_init_io(&s->iomem, obj, &imx95_dpu_ops, s,
++                          TYPE_IMX95_DPU, IMX95_DPU_REG_SIZE);
++    sysbus_init_mmio(SYS_BUS_DEVICE(obj), &s->iomem);
 +}
 +
-+static void imx95_sysctr_init(Object *obj)
-+{
-+    SysBusDevice *sbd = SYS_BUS_DEVICE(obj);
-+    IMX95SysctrState *s = IMX95_SYSCTR(obj);
-+
-+    memory_region_init_io(&s->iomem, obj, &imx95_sysctr_ops, s,
-+                          TYPE_IMX95_SYSCTR, IMX95_SYSCTR_REG_SIZE);
-+    sysbus_init_mmio(sbd, &s->iomem);
-+    sysbus_init_irq(sbd, &s->irq);
-+    timer_init_ns(&s->timer, QEMU_CLOCK_VIRTUAL, imx95_sysctr_timer_cb, s);
-+}
-+
-+static int imx95_sysctr_post_load(void *opaque, int version_id)
-+{
-+    /* Re-arm the compare (and re-raise a past-due IRQ) from restored state. */
-+    imx95_sysctr_update(opaque);
-+    return 0;
-+}
-+
-+static const VMStateDescription vmstate_imx95_sysctr = {
-+    .name = TYPE_IMX95_SYSCTR,
-+    .version_id = 1,
-+    .minimum_version_id = 1,
-+    .post_load = imx95_sysctr_post_load,
-+    .fields = (const VMStateField[]) {
-+        VMSTATE_UINT32(cmpcv_lo, IMX95SysctrState),
-+        VMSTATE_UINT32(cmpcv_hi, IMX95SysctrState),
-+        VMSTATE_UINT32(cmpcr, IMX95SysctrState),
-+        VMSTATE_TIMER(timer, IMX95SysctrState),
-+        VMSTATE_END_OF_LIST()
-+    },
-+};
-+
-+static void imx95_sysctr_class_init(ObjectClass *klass, const void *data)
++static void imx95_dpu_class_init(ObjectClass *klass, const void *data)
 +{
 +    DeviceClass *dc = DEVICE_CLASS(klass);
-+    ResettableClass *rc = RESETTABLE_CLASS(klass);
 +
-+    dc->vmsd = &vmstate_imx95_sysctr;
-+    rc->phases.hold = imx95_sysctr_reset_hold;
-+    set_bit(DEVICE_CATEGORY_MISC, dc->categories);
-+    dc->desc = "NXP i.MX 95 system counter timer";
++    set_bit(DEVICE_CATEGORY_DISPLAY, dc->categories);
++    dc->desc = "NXP i.MX 95 DPU (status stub)";
 +}
 +
-+static const TypeInfo imx95_sysctr_info = {
-+    .name           = TYPE_IMX95_SYSCTR,
++static const TypeInfo imx95_dpu_info = {
++    .name           = TYPE_IMX95_DPU,
 +    .parent         = TYPE_SYS_BUS_DEVICE,
-+    .instance_size  = sizeof(IMX95SysctrState),
-+    .instance_init  = imx95_sysctr_init,
-+    .class_init     = imx95_sysctr_class_init,
++    .instance_size  = sizeof(IMX95DPUState),
++    .instance_init  = imx95_dpu_init,
++    .class_init     = imx95_dpu_class_init,
 +};
 +
-+static void imx95_sysctr_register_types(void)
++static void imx95_dpu_register_types(void)
 +{
-+    type_register_static(&imx95_sysctr_info);
++    type_register_static(&imx95_dpu_info);
 +}
 +
-+type_init(imx95_sysctr_register_types)
-diff --git a/hw/timer/meson.build b/hw/timer/meson.build
-index 8323efaf46b..5ce27a6df0a 100644
---- a/hw/timer/meson.build
-+++ b/hw/timer/meson.build
-@@ -36,3 +36,4 @@ system_ss.add(when: 'CONFIG_SIFIVE_PWM', if_true: files('sifive_pwm.c'))
- system_ss.add(when: 'CONFIG_AVR_TIMER16', if_true: files('avr_timer16.c'))
- 
- system_ss.add(when: 'CONFIG_HEX_QTIMER', if_true: files('qct-qtimer.c'))
-+system_ss.add(when: 'CONFIG_IMX95_SYSCTR', if_true: files('imx95_sysctr.c'))
-diff --git a/hw/timer/trace-events b/hw/timer/trace-events
-index 636310f8caa..df457bbb967 100644
---- a/hw/timer/trace-events
-+++ b/hw/timer/trace-events
-@@ -133,3 +133,5 @@ imx_epit_cmp(uint32_t sr) "sr was %d"
- qtimer_interrupt(void) "qtimer interrupt line updated"
- qtimer_read(uint64_t offset) "offset 0x%" PRIx64
- qtimer_write(uint64_t offset, uint64_t value) "offset 0x%" PRIx64 " value 0x%" PRIx64
-+imx95_sysctr_cmp(uint64_t cmpcv) "compare value 0x%" PRIx64
-+imx95_sysctr_expire(void) "compare fired"
++type_init(imx95_dpu_register_types)
+diff --git a/hw/misc/meson.build b/hw/misc/meson.build
+index d7d283a191b..9d629c8efef 100644
+--- a/hw/misc/meson.build
++++ b/hw/misc/meson.build
+@@ -180,3 +180,4 @@ system_ss.add(when: 'CONFIG_IMX95_GPC', if_true: files('imx95_gpc.c'))
+ system_ss.add(when: 'CONFIG_IMX95_SRC', if_true: files('imx95_src.c'))
+ system_ss.add(when: 'CONFIG_IMX95_PMIC', if_true: files('imx95_pmic.c'))
+ system_ss.add(when: 'CONFIG_IMX95_XCACHE', if_true: files('imx95_xcache.c'))
++system_ss.add(when: 'CONFIG_IMX95_DPU', if_true: files('imx95_dpu.c'))
+diff --git a/hw/misc/trace-events b/hw/misc/trace-events
+index 0555b15a1f3..e921b5f290a 100644
+--- a/hw/misc/trace-events
++++ b/hw/misc/trace-events
+@@ -466,3 +466,4 @@ pcal6408a_reg_read(uint8_t reg, uint8_t val) "PCAL6408A reg 0x%02x -> 0x%02x"
+ pcal6408a_reg_write(uint8_t reg, uint8_t val) "PCAL6408A reg 0x%02x <- 0x%02x"
+ pf53_reg_read(uint8_t reg, uint8_t val) "PF53 reg 0x%02x -> 0x%02x"
+ pf53_reg_write(uint8_t reg, uint8_t val) "PF53 reg 0x%02x <- 0x%02x"
++imx95_dpu_cmdseq_status(uint32_t value) "CMDSEQ_STATUS -> 0x%08x"
 -- 
 2.34.1
 

@@ -4,81 +4,82 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2DCBBC5DF8B
-	for <qemu-arm@archiver.kernel.org>; Thu, 20 Aug 2026 12:51:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A28CCC5DF87
+	for <qemu-arm@archiver.kernel.org>; Thu, 20 Aug 2026 12:51:38 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wx2CM-0004xP-BX; Thu, 20 Aug 2026 08:48:46 -0400
+	id 1wx2CL-0004x9-VG; Thu, 20 Aug 2026 08:48:46 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <wafgo01@gmail.com>) id 1wx2CL-0004wv-ME
- for qemu-arm@nongnu.org; Thu, 20 Aug 2026 08:48:45 -0400
-Received: from mail-ed1-x532.google.com ([2a00:1450:4864:20::532])
+ (Exim 4.90_1) (envelope-from <wafgo01@gmail.com>) id 1wx2CI-0004u9-Qg
+ for qemu-arm@nongnu.org; Thu, 20 Aug 2026 08:48:42 -0400
+Received: from mail-ed1-x52f.google.com ([2a00:1450:4864:20::52f])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <wafgo01@gmail.com>) id 1wx2CH-0001aL-R2
- for qemu-arm@nongnu.org; Thu, 20 Aug 2026 08:48:45 -0400
-Received: by mail-ed1-x532.google.com with SMTP id
- 4fb4d7f45d1cf-6983d3dae7aso1658598a12.0
- for <qemu-arm@nongnu.org>; Thu, 20 Aug 2026 05:48:41 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <wafgo01@gmail.com>) id 1wx2CF-0001ZF-85
+ for qemu-arm@nongnu.org; Thu, 20 Aug 2026 08:48:42 -0400
+Received: by mail-ed1-x52f.google.com with SMTP id
+ 4fb4d7f45d1cf-6a18840e2abso3594231a12.0
+ for <qemu-arm@nongnu.org>; Thu, 20 Aug 2026 05:48:38 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20251104; t=1787230120; x=1787834920; darn=nongnu.org;
+ d=gmail.com; s=20251104; t=1787230117; x=1787834917; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to:content-type;
- bh=hzX+dEd1qszbOG5kzSqRIrxHhRa8NHKy5vl7lbynnI4=;
- b=Vi/FY8WV/stPuXADAJ/q0ZGXpmobxEM60sjGWHK3JzHgotsxPqM08EEaaWr8EYpAln
- S713CGqBZ8z8B2Ybri2WZLn45cqTYHJEWBL5CSXJRyh41oqcwBJsutb0SffG6ED1V6c+
- rvJTjkoAxU/HnHFaLOmRZlAbgnlXQRn22Fiq76MF/cAHK+XXQhT+JId76rtBsjZKa84x
- n4fUTyp1BrtmGLulpFpJe/x/yEv++bz728s2fdD9iDitfrRDUulQOuoOuNiTeAY0uSN2
- l6ILQkv3ahJvYxHRbFGF40qG+9pKzDC4JEF1HnQQ7grauzlqD1njuZNnsWApR3cuooNg
- 7BYg==
+ bh=Mlx8fyJPMGGwXCk+Dpb/GgVYA1CTHyr1kyqzPiMgA+0=;
+ b=fKC57uy4gMIkxDvrMk4KcsxGGyU5vPy9fVQcZi5K89ivbKhMdDdw0WxcK5kZaH6swk
+ B42z552NFKM5COFMGugpXoOjYOoimvDv47udyjQfxIEyElHZo/VxOuUDgmrqlJX3bpGT
+ A1FmypbAY71ptC1U30lnXyaQIDp+Vj+IzTprY4qYpeoCwyVGX6jyH0QPyfyfn7AdWoKZ
+ 6CgTiV+E81aDxBGuD9qsPpLu5UF5lCEde0CG6Rm7TtbFbjqiK2ec+uIQiMIAdN176GC/
+ +0J1VjBR1ekuMz/2KR8f8N9TnXCi1QODKhFWQS/7RYX4BmXCXsOSRAyh01NdMfgxVLGm
+ 0Tng==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1787230120; x=1787834920;
+ d=1e100.net; s=20251104; t=1787230117; x=1787834917;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
  :to:cc:subject:date:message-id:reply-to:content-type;
- bh=hzX+dEd1qszbOG5kzSqRIrxHhRa8NHKy5vl7lbynnI4=;
- b=oTnMJU31bW1XqdmVOG69lGQJd8jtKJSuv7eBwu559aVjxwLv+scisXsbzOWxzB903c
- t/u2tT2n6PL/o2Gt3UN6YUGwnCH4YD4u6/LYd3a0buG8mZouWkfzPAmQtH59fALtOlLl
- 7iIwvuvn2ckZYv+lxyNnCGY+OW8SaSh5wmxyB5DN5qavnLpBaRQim+b+gu8CfpEI0Lct
- emxfNyIkgO/Y1Fj1B+WvdC55hBBMR2J1G4U0SZSd2gqHD+5HfTMANmH7UvzKlGfnru1+
- DXlOCoWHFau0S6WeYF4A7FAWmT1R0IW62SzNHmZmeCR3EUEH11uFiEVKs8xdzt88k7Na
- IwJw==
-X-Gm-Message-State: AOJu0Yw64DiPHpAwkkK9GpwDhNObbLUY5InTwpcIimHwdNbkm+VuY0jB
- vLcj/8HPwcyHZxFknKOW/OV6HzOYVrXJ+C5ay62LSkI6RQFMk6wh9RFu
-X-Gm-Gg: AR+sD12kc21Hxkxupi+yCYbAu+xqAHpoAiSQIcRjHpXdv9mtifIMmDeNIRma5ibw33L
- CPyhsgfpA4f4vhGjhgHJySbjqx+9TdSmoATk8U6qyWVDDhlv/aO8TnLEo4OYZ88N1mXp1XU2tqz
- JuPjkSUAcglvTbqpl8DKseuV63Q/ItzZW7XnH+LuhOTcwRF3gUXv52zR8w4vx8h7tt2jv7OvchV
- 1BoZwyejxG1HIgQgNZd/DlO6h0kFFyhyYz9rJAl9SsGYPVDVqDgbPfHwRs9+yoMGQvbNeUBHNgu
- KVR+dYFwLiQkIs18xFOdJWjphB16SmlotB/pX74fI8937Ks1jCDKJ78eSI1SCnJRzOjg09wKPPD
- JaMxLFMrj5bC34+46w4mYSmiwaYZ0Ew+HAE7gz6Brj+WRr/kRFv5oETtLjWk8MUVJH8HPRIWnZG
- MoxmOu/oZBUoFuevwKhN+/+N1fB6sZw499C88f1sKQ9Qt9BezIMhxmrGk+8hger/H2RsamwNNrw
- x8HfhChbRg=
-X-Received: by 2002:a17:907:a01:b0:c20:7cb0:f33c with SMTP id
- a640c23a62f3a-c244d86d229mr439477666b.16.1787230120211; 
- Thu, 20 Aug 2026 05:48:40 -0700 (PDT)
+ bh=Mlx8fyJPMGGwXCk+Dpb/GgVYA1CTHyr1kyqzPiMgA+0=;
+ b=ZBiwN3BhZI02+JZRqmWnABhP1goARsq7TU+7eNiHdviBPlDpgyB+gXLHYJ5CMV/F6C
+ B2oWNE9HKi/huH9E9GMvqnZ9CJOvXF5nTCZQdTw2qindvMtjC8FtAbMPlCO3wCtST6dD
+ +R0tso3TWxY34JNwH9VIWpCJen1Sdap/WzpJi5hGjrIDxm2sG68ahwZAb8FH/zPg/i4E
+ 5/VxSvjxrrq2AvVx4mGlyaLWRURzL7sZ7pJiQxW8lYVqT3RgxA/ZV3akqAtavm48pZT3
+ buH/XfktUy0RUYvQKWoXqNOPsdh3Vjgds/gUrSdqXV2OJUMyr1ukb3Bc6XHQ2koGMPA2
+ ZBng==
+X-Gm-Message-State: AFuF++kWUG1eChdeioM318AcF4t2sCn9YBP7Pm9k62IuSJ420oxTeGif
+ WnsOl8JjUBHJ6SdoHM+bqu/VzverDNVqbNRRybuJmmc6Loa1xy4wZkRsqBAVYNGY
+X-Gm-Gg: AR+sD13i3Doj9X3qnwA93AlXjHCAsmddnAEkTbaq8zwqrJAaKWWwbPH1ENGOXrZ1VLq
+ CukAvX9tlvBYF1xlXW+YzVRX/LJ2Eam3KEw4aA+wf6R6XMeNbFdTkT7I/lEvP41wXPpnICRu7K4
+ +I3RLn6IkDn/wWniOM/9ktm3U+rR4sP4PsMX5sD/5jKb3E+h+kTgUlfpVSbimnXPR3tIs53ob2A
+ gkdrACa43zPUMLJl1NgMW136VaDN24TNikvDI2urtQ7n2ud5X5PraLhigqmsG7RSml1poWdguja
+ G0v+AKQuGjWDPti9b1UDoGTFugBoyE64suib+fy9wqesNpjYdYxdr4mkvDv4CGHcxmL9dYCZr5p
+ laV8GrqK7ufLN8c9kmKpnTuO3cDJPu5BB3X+XXzvsxrJgM2o6go14TH6kMFHpRGY7W2Ay+F1mgi
+ wWGEXrtlDZZZC8R/xhu21UWmc7+YIrcN95c9vHYLqT3GgPuxMCjTExgbEXV/sD2Wljl1fzWHd40
+ v9tYWyn2lg=
+X-Received: by 2002:a05:6402:540e:b0:6a0:8885:e6f0 with SMTP id
+ 4fb4d7f45d1cf-6a403296d5fmr9996481a12.3.1787230117194; 
+ Thu, 20 Aug 2026 05:48:37 -0700 (PDT)
 Received: from DE-PF5B95TD.embedded.cmblu.dev ([87.129.199.250])
  by smtp.gmail.com with ESMTPSA id
- 4fb4d7f45d1cf-6a3ff1563c5sm2270449a12.14.2026.08.20.05.48.39
+ 4fb4d7f45d1cf-6a3ff1563c5sm2270449a12.14.2026.08.20.05.48.36
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 20 Aug 2026 05:48:39 -0700 (PDT)
+ Thu, 20 Aug 2026 05:48:36 -0700 (PDT)
 From: Wadim Mueller <wafgo01@gmail.com>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@mailo.com>,
  Bin Meng <bmeng.cn@gmail.com>, Paolo Bonzini <pbonzini@redhat.com>,
  Fabiano Rosas <farosas@suse.de>, Wadim Mueller <wafgo01@gmail.com>
-Subject: [RFC PATCH v2 09/14] hw/misc: add TI K3 secure proxy model
-Date: Thu, 20 Aug 2026 14:48:09 +0200
-Message-ID: <20260820124824.618671-10-wafgo01@gmail.com>
+Subject: [RFC PATCH v2 06/14] hw/misc: add TI K3 CTRL_MMR, GTC, DDRSS,
+ SDHCI PHY and TRNG models
+Date: Thu, 20 Aug 2026 14:48:06 +0200
+Message-ID: <20260820124824.618671-7-wafgo01@gmail.com>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20260820124824.618671-1-wafgo01@gmail.com>
 References: <20260820124824.618671-1-wafgo01@gmail.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::532;
- envelope-from=wafgo01@gmail.com; helo=mail-ed1-x532.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::52f;
+ envelope-from=wafgo01@gmail.com; helo=mail-ed1-x52f.google.com
 X-Spam_score_int: -17
 X-Spam_score: -1.8
 X-Spam_bar: -
@@ -102,262 +103,611 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-The secure proxy is the message transport between the K3 host cores and
-the device management and security controller (DMSC). Model the per-thread
-RT/SCFG register banks and the message buffers, and provide a callback
-interface, which the DMSC model plugs into.
+Add the small K3 support blocks the boot chain touches:
+
+ - ti-k3-ctrlmmr: control module registers, including the DEVSTAT boot
+   pins, which the ROM and SPL use to select the boot device.
+ - ti-k3-gtc: global timebase counter, read by TF-A.
+ - ti-k3-ddrss: DDR subsystem stub that reports a successful DRAM init
+   (including BIST/ECC priming status) to the R5 SPL.
+ - ti-k3-sdhci-phy: PHY control/calibration registers of the K3 SDHCI
+   wrapper, reporting calibration as done.
+ - ti-k3-trng: TRNG stub used by OP-TEE.
+
+These are register-level stubs: they implement the handshakes that
+firmware polls for, not the underlying hardware behaviour.
 
 Signed-off-by: Wadim Mueller <wafgo01@gmail.com>
 ---
- hw/misc/Kconfig                |   3 +
- hw/misc/meson.build            |   1 +
- hw/misc/ti-sec-proxy.c         | 446 +++++++++++++++++++++++++++++++++
- hw/misc/trace-events           |   8 +
- include/hw/misc/ti-sec-proxy.h | 108 ++++++++
- 5 files changed, 566 insertions(+)
- create mode 100644 hw/misc/ti-sec-proxy.c
- create mode 100644 include/hw/misc/ti-sec-proxy.h
+ hw/misc/Kconfig                   |  15 ++++
+ hw/misc/meson.build               |   6 ++
+ hw/misc/ti-k3-ctrlmmr.c           | 103 ++++++++++++++++++++++
+ hw/misc/ti-k3-ddrss.c             |  98 +++++++++++++++++++++
+ hw/misc/ti-k3-gtc.c               | 100 +++++++++++++++++++++
+ hw/misc/ti-k3-sdhci-phy.c         |  91 +++++++++++++++++++
+ hw/misc/ti-k3-trng.c              | 139 ++++++++++++++++++++++++++++++
+ hw/misc/trace-events              |   4 +
+ include/hw/misc/ti-k3-ctrlmmr.h   |  26 ++++++
+ include/hw/misc/ti-k3-ddrss.h     |  26 ++++++
+ include/hw/misc/ti-k3-gtc.h       |  23 +++++
+ include/hw/misc/ti-k3-sdhci-phy.h |  26 ++++++
+ include/hw/misc/ti-k3-trng.h      |  35 ++++++++
+ 13 files changed, 692 insertions(+)
+ create mode 100644 hw/misc/ti-k3-ctrlmmr.c
+ create mode 100644 hw/misc/ti-k3-ddrss.c
+ create mode 100644 hw/misc/ti-k3-gtc.c
+ create mode 100644 hw/misc/ti-k3-sdhci-phy.c
+ create mode 100644 hw/misc/ti-k3-trng.c
+ create mode 100644 include/hw/misc/ti-k3-ctrlmmr.h
+ create mode 100644 include/hw/misc/ti-k3-ddrss.h
+ create mode 100644 include/hw/misc/ti-k3-gtc.h
+ create mode 100644 include/hw/misc/ti-k3-sdhci-phy.h
+ create mode 100644 include/hw/misc/ti-k3-trng.h
 
 diff --git a/hw/misc/Kconfig b/hw/misc/Kconfig
-index e80fdc3214..bea8e9341f 100644
+index b8860dd3e7..3e499a902d 100644
 --- a/hw/misc/Kconfig
 +++ b/hw/misc/Kconfig
-@@ -161,6 +161,9 @@ config TI_K3_SDHCI_PHY
- config TI_K3_TRNG
+@@ -143,6 +143,21 @@ config MPS2_SCC
      bool
+     select LED
  
-+config TI_SEC_PROXY
++config TI_K3_CTRLMMR
 +    bool
 +
- config TI_MAILBOX
++config TI_K3_GTC
++    bool
++
++config TI_K3_DDRSS
++    bool
++
++config TI_K3_SDHCI_PHY
++    bool
++
++config TI_K3_TRNG
++    bool
++
+ config TZ_MPC
      bool
  
 diff --git a/hw/misc/meson.build b/hw/misc/meson.build
-index d190d8608a..a8a40ea2a7 100644
+index e86d9ad6b3..e973d7e8a4 100644
 --- a/hw/misc/meson.build
 +++ b/hw/misc/meson.build
-@@ -129,6 +129,7 @@ system_ss.add(when: 'CONFIG_TI_K3_GTC', if_true: files('ti-k3-gtc.c'))
- system_ss.add(when: 'CONFIG_TI_K3_DDRSS', if_true: files('ti-k3-ddrss.c'))
- system_ss.add(when: 'CONFIG_TI_K3_SDHCI_PHY', if_true: files('ti-k3-sdhci-phy.c'))
- system_ss.add(when: 'CONFIG_TI_K3_TRNG', if_true: files('ti-k3-trng.c'))
-+system_ss.add(when: 'CONFIG_TI_SEC_PROXY', if_true: files('ti-sec-proxy.c'))
- system_ss.add(when: 'CONFIG_TI_MAILBOX', if_true: files('ti-mailbox.c'))
+@@ -96,6 +96,7 @@ system_ss.add(when: 'CONFIG_RASPI', if_true: files(
+   'bcm2835_cprman.c',
+   'bcm2835_powermgt.c',
+ ))
++
+ system_ss.add(when: 'CONFIG_SLAVIO', if_true: files('slavio_misc.c'))
+ system_ss.add(when: 'CONFIG_ZYNQ', if_true: files('zynq_slcr.c'))
+ system_ss.add(when: 'CONFIG_XLNX_ZYNQ_DDRC', if_true: files('xlnx-zynq-ddrc.c'))
+@@ -122,6 +123,11 @@ system_ss.add(when: 'CONFIG_STM32L4X5_RCC', if_true: files('stm32l4x5_rcc.c'))
+ system_ss.add(when: 'CONFIG_MPS2_FPGAIO', if_true: files('mps2-fpgaio.c'))
+ system_ss.add(when: 'CONFIG_MPS2_SCC', if_true: files('mps2-scc.c'))
+ 
++system_ss.add(when: 'CONFIG_TI_K3_CTRLMMR', if_true: files('ti-k3-ctrlmmr.c'))
++system_ss.add(when: 'CONFIG_TI_K3_GTC', if_true: files('ti-k3-gtc.c'))
++system_ss.add(when: 'CONFIG_TI_K3_DDRSS', if_true: files('ti-k3-ddrss.c'))
++system_ss.add(when: 'CONFIG_TI_K3_SDHCI_PHY', if_true: files('ti-k3-sdhci-phy.c'))
++system_ss.add(when: 'CONFIG_TI_K3_TRNG', if_true: files('ti-k3-trng.c'))
  system_ss.add(when: 'CONFIG_TZ_MPC', if_true: files('tz-mpc.c'))
  system_ss.add(when: 'CONFIG_TZ_MSC', if_true: files('tz-msc.c'))
-diff --git a/hw/misc/ti-sec-proxy.c b/hw/misc/ti-sec-proxy.c
+ system_ss.add(when: 'CONFIG_TZ_PPC', if_true: files('tz-ppc.c'))
+diff --git a/hw/misc/ti-k3-ctrlmmr.c b/hw/misc/ti-k3-ctrlmmr.c
 new file mode 100644
-index 0000000000..524bd1353c
+index 0000000000..5925573075
 --- /dev/null
-+++ b/hw/misc/ti-sec-proxy.c
-@@ -0,0 +1,446 @@
++++ b/hw/misc/ti-k3-ctrlmmr.c
+@@ -0,0 +1,103 @@
 +/*
-+ * TI SEC PROXY SysBus device
++ * TI K3 CTRL_MMR stub
 + *
-+ * Copyright (c) 2025 CMBLU Energy AG
++ * Minimal AM64x control MMR model: selected boot, reset-source and
++ * security-status registers are configurable; other reads return zero,
++ * writes are ignored.
++ *
++ * Copyright (c) 2026 CMBLU Energy AG
 + * Author: Wadim Mueller <wafgo01@gmail.com>
 + *
 + * SPDX-License-Identifier: GPL-2.0-or-later
-+ *
-+ * TI K3 SoCs use it as mailbox transport to the DMSC/SYSFW endpoint.
 + */
-+
 +#include "qemu/osdep.h"
-+#include "qemu/cutils.h"
-+#include "hw/misc/ti-sec-proxy.h"
-+#include "hw/core/sysbus.h"
-+#include "hw/core/register.h"
 +#include "qemu/log.h"
-+#include "qapi/error.h"
-+#include "hw/core/irq.h"
-+#include "trace.h"
++#include "hw/core/qdev-properties.h"
++#include "hw/misc/ti-k3-ctrlmmr.h"
 +
-+#define SEC_PROXY_MAX_MSG (16)
++#define CTRLMMR_MAIN_DEVSTAT 0x30
++#define CTRLMMR_MCU_RST_SRC  0x18178
++/*
++ * K3_SEC_MGR_SYS_STATUS lives at offset 0x100 in the sec-ctrlmmr window.
++ * It reports the device type, e.g. GP or HS.
++ */
++#define CTRLMMR_SEC_MGR_SYS_STATUS 0x100
++#define CTRLMMR_SIZE 0x20000 /* partitions 0-7 */
 +
-+REG32(SEC_PROXY_0_thread_status, 0x0)
-+FIELD(SEC_PROXY_0_thread_status, ERROR, 31, 1)
-+FIELD(SEC_PROXY_0_thread_status, DIR, 30, 1)
-+FIELD(SEC_PROXY_0_thread_status, MAX_CNT, 16, 8)
-+FIELD(SEC_PROXY_0_thread_status, CUR_CNT, 0, 8)
++static uint64_t ti_k3_ctrlmmr_read(void *opaque, hwaddr addr, unsigned size)
++{
++    TIK3CtrlMmrState *s = TI_K3_CTRLMMR(opaque);
 +
-+REG32(SEC_PROXY_0_thread_threshold, 0x4)
-+FIELD(SEC_PROXY_0_thread_threshold, THR_CNT, 0, 8)
-+
-+REG32(SEC_PROXY_0_thread_private, 0x0)
-+FIELD(SEC_PROXY_0_thread_private, SRC_THR, 0, 10)
-+
-+REG32(SEC_PROXY_0_thread_message, 0x4)
-+
-+REG32(SEC_PROXY_0_buffer_l, 0x0)
-+REG32(SEC_PROXY_0_buffer_h, 0x4)
-+FIELD(SEC_PROXY_0_buffer_h, BASE_H, 0, 16)
-+
-+REG32(SEC_PROXY_0_target_l, 0x8)
-+REG32(SEC_PROXY_0_target_h, 0xc)
-+FIELD(SEC_PROXY_0_target_h, TARGET_H, 0, 16)
-+
-+REG32(SEC_PROXY_0_orderid, 0x10)
-+FIELD(SEC_PROXY_0_orderid, ORDERID, 0, 4)
-+FIELD(SEC_PROXY_0_orderid, REPLACE, 4, 1)
-+
-+REG32(SEC_PROXY_0_thread_ctl, 0x0)
-+FIELD(SEC_PROXY_0_thread_ctl, QUEUE, 0, 16)
-+FIELD(SEC_PROXY_0_thread_ctl, MAX_CNT, 16, 8)
-+FIELD(SEC_PROXY_0_thread_ctl, DIR, 31, 1)
-+
-+REG32(SEC_PROXY_0_thread_evt_map, 0x4)
-+FIELD(SEC_PROXY_0_thread_evt_map, THR_EVT, 0, 16)
-+FIELD(SEC_PROXY_0_thread_evt_map, ERR_EVT, 16, 16)
-+
-+REG32(SEC_PROXY_0_thread_dst, 0x8)
-+FIELD(SEC_PROXY_0_thread_dst, THREAD, 0, 16)
-+
-+REG32(SEC_PROXY_0_pid, 0x0)
-+FIELD(SEC_PROXY_0_pid, SCHEME, 30, 2)
-+FIELD(SEC_PROXY_0_pid, BU, 28, 2)
-+FIELD(SEC_PROXY_0_pid, FUNC, 16, 12)
-+FIELD(SEC_PROXY_0_pid, RTL, 11, 5)
-+FIELD(SEC_PROXY_0_pid, MAJOR, 8, 3)
-+FIELD(SEC_PROXY_0_pid, CUSTOM, 6, 2)
-+FIELD(SEC_PROXY_0_pid, MINOR, 0, 6)
-+
-+REG32(SEC_PROXY_0_config, 0x4)
-+FIELD(SEC_PROXY_0_config, MSG_SIZE, 16, 16)
-+FIELD(SEC_PROXY_0_config, THREADS, 0, 16)
-+
-+REG32(SEC_PROXY_0_glb_evt, 0x14)
-+FIELD(SEC_PROXY_0_glb_evt, ERR_EVENT, 0, 16)
-+
-+static RegisterAccessInfo sec_proxy_mmrs_regs_info[] = {
-+    {
-+        .name = "SEC_PROXY_0_pid",
-+        .addr = A_SEC_PROXY_0_pid,
-+        .ro = 0xffffffff,
-+        .reset = 1714843904,
-+    },
-+    {
-+        .name = "SEC_PROXY_0_config",
-+        .addr = A_SEC_PROXY_0_config,
-+        .ro = 0xffffffff,
-+        .reset = 4194380,
-+    },
-+    {
-+        .name = "SEC_PROXY_0_glb_evt",
-+        .addr = A_SEC_PROXY_0_glb_evt,
-+        .rsvd = 0xffff0000,
-+        .reset = 65535,
++    if (addr == CTRLMMR_MAIN_DEVSTAT) {
++        return s->devstat;
 +    }
++    if (addr == CTRLMMR_MCU_RST_SRC) {
++        return s->rst_src;
++    }
++    if (addr == CTRLMMR_SEC_MGR_SYS_STATUS) {
++        return s->sec_mgr_sys_status;
++    }
++    qemu_log_mask(LOG_UNIMP,
++                  "%s: unimplemented read @0x%" HWADDR_PRIx "\n",
++                  __func__, addr);
++    return 0;
++}
++
++static void ti_k3_ctrlmmr_write(void *opaque, hwaddr addr, uint64_t val,
++                                unsigned size)
++{
++    /* lock-kick and pinmux writes are accepted and ignored. */
++}
++
++static const MemoryRegionOps ti_k3_ctrlmmr_ops = {
++    .read = ti_k3_ctrlmmr_read,
++    .write = ti_k3_ctrlmmr_write,
++    .endianness = DEVICE_LITTLE_ENDIAN,
++    .valid.min_access_size = 1,
++    .valid.max_access_size = 4,
 +};
 +
-+static void ti_sec_proxy_realize(DeviceState *dev_soc, Error **errp)
++static void ti_k3_ctrlmmr_init(Object *obj)
 +{
-+    ERRP_GUARD();
-+    TISecProxyState *s = TI_SEC_PROXY(dev_soc);
++    TIK3CtrlMmrState *s = TI_K3_CTRLMMR(obj);
 +
-+    for (int i = 0; i < SEC_PROXY_THREAD_ID_MAX; ++i) {
-+        struct TISecProxyThreadInfo *ti = &s->thread_info[i];
-+        ti->thread_id = i;
-+        /* K3 secure proxy alternates inbound and outbound threads. */
-+        ti->is_outbound = (i % 2) ? true : false;
-+        ti->num_messages = ti->is_outbound ? SEC_PROXY_MSG_MAX_WORDS : 0;
-+        memset(ti->current_message, 0, sizeof(ti->current_message));
-+    }
++    memory_region_init_io(&s->iomem, obj, &ti_k3_ctrlmmr_ops, s,
++                          TYPE_TI_K3_CTRLMMR, CTRLMMR_SIZE);
++    sysbus_init_mmio(SYS_BUS_DEVICE(obj), &s->iomem);
 +}
 +
-+/* --- Backend API exported to DMSC -------------------------------------- */
-+void ti_sec_proxy_register_msg_cb(TISecProxyState *sp, uint16_t thread_id,
-+                                  TISecProxyMsgCb cb, void *opaque)
-+{
-+    if (thread_id >= ARRAY_SIZE(sp->thread_info)) {
-+        return;
-+    }
++static const Property ti_k3_ctrlmmr_properties[] = {
++    /* Default primary bootmode is eMMC (0x9 << 3). */
++    DEFINE_PROP_UINT32("devstat", TIK3CtrlMmrState, devstat, 0x48),
++    /*
++     * Report warm reset in MCU_RST_SRC. Cold/POR cause bits are not
++     * modelled by this reset-source stub.
++     */
++    DEFINE_PROP_UINT32("rst-src", TIK3CtrlMmrState, rst_src, 0x1),
++    /*
++     * Default to SYS_STATUS_DEV_TYPE_GP (0x3), matching a model without
++     * security manager and certificate authentication.
++     */
++    DEFINE_PROP_UINT32("sec-mgr-sys-status", TIK3CtrlMmrState,
++                       sec_mgr_sys_status, 0x3),
++};
 +
-+    sp->thread_info[thread_id].cb = cb;
-+    sp->thread_info[thread_id].cb_opaque = opaque;
++static void ti_k3_ctrlmmr_class_init(ObjectClass *klass, const void *data)
++{
++    device_class_set_props(DEVICE_CLASS(klass), ti_k3_ctrlmmr_properties);
 +}
 +
-+size_t ti_sec_proxy_push_msg(TISecProxyState *sp, uint16_t thread_id,
-+                             const uint32_t *words, size_t nbytes)
++static const TypeInfo ti_k3_ctrlmmr_info = {
++    .name = TYPE_TI_K3_CTRLMMR,
++    .parent = TYPE_SYS_BUS_DEVICE,
++    .instance_size = sizeof(TIK3CtrlMmrState),
++    .instance_init = ti_k3_ctrlmmr_init,
++    .class_init = ti_k3_ctrlmmr_class_init,
++};
++
++static void ti_k3_ctrlmmr_register_types(void)
 +{
-+    struct TISecProxyThreadInfo *ti;
-+
-+    if (thread_id >= ARRAY_SIZE(sp->thread_info)) {
-+        return 0;
-+    }
-+
-+    ti = &sp->thread_info[thread_id];
-+    if (nbytes > sizeof(ti->current_message) - sizeof(uint32_t)) {
-+        return 0;
-+    }
-+
-+    memcpy(&ti->current_message[1], words, nbytes);
-+    qemu_irq_raise(sp->irq_evt);
-+
-+    ti->num_messages++;
-+    return ti->num_messages;
++    type_register_static(&ti_k3_ctrlmmr_info);
 +}
 +
-+uint32_t ti_sec_proxy_get_msg_words(TISecProxyState *sp)
-+{
-+    return sp->msg_words;
-+}
++type_init(ti_k3_ctrlmmr_register_types)
+diff --git a/hw/misc/ti-k3-ddrss.c b/hw/misc/ti-k3-ddrss.c
+new file mode 100644
+index 0000000000..661b88b02c
+--- /dev/null
++++ b/hw/misc/ti-k3-ddrss.c
+@@ -0,0 +1,98 @@
++/*
++ * TI K3 DDRSS register-file stub (AM64x, DDR4 flavour)
++ *
++ * RAM-backed DENALI CTL/PI/PHY register file. Writes are stored and read
++ * back unchanged. Init-done and optional ECC BIST_DONE status bits are ORed
++ * into reads, so the DDR bring-up handshake completes immediately.
++ *
++ * Copyright (c) 2026 CMBLU Energy AG
++ * Author: Wadim Mueller <wafgo01@gmail.com>
++ *
++ * SPDX-License-Identifier: GPL-2.0-or-later
++ */
++#include "qemu/osdep.h"
++#include "qemu/log.h"
++#include "hw/misc/ti-k3-ddrss.h"
 +
-+void ti_sec_proxy_reset_thread_count(TISecProxyState *sp, uint16_t thread_id)
++/* Read-side OR masks: {offset, bits}. */
++static const struct {
++    hwaddr offset;
++    uint32_t bits;
++} ddrss_status_bits[] = {
++    { 0x214C, 1u << 0 },   /* DENALI_PI_83:  PI init done       */
++    { 0x0538, 1u << 13 },  /* DENALI_CTL_334: MASTER, MC_INIT grp */
++    { 0x0558, 1u << 25 },  /* DENALI_CTL_342: INT_STATUS_INIT bit1 */
++    /*
++     * ECC BIST_DONE is exposed in both places: INT_STATUS_MASTER bit 8 and
++     * INT_STATUS_BIST bit 0, resp. raw bit 16.
++     */
++    { 0x0538, 1u << 8 },   /* DENALI_CTL_334: MASTER, BIST grp     */
++    { 0x0554, 1u << 16 },  /* DENALI_CTL_341: BIST fld, BIST_DONE  */
++};
++
++static uint64_t ti_k3_ddrss_read(void *opaque, hwaddr addr, unsigned size)
 +{
-+    if (thread_id >= ARRAY_SIZE(sp->thread_info)) {
-+        return;
++    TIK3DdrssState *s = TI_K3_DDRSS(opaque);
++    uint32_t val = s->regs[addr >> 2];
++
++    for (size_t i = 0; i < ARRAY_SIZE(ddrss_status_bits); i++) {
++        if (addr == ddrss_status_bits[i].offset) {
++            val |= ddrss_status_bits[i].bits;
++        }
 +    }
-+
-+    sp->thread_info[thread_id].num_messages = 0;
++    return val;
 +}
 +
-+static const char *
-+ti_sec_proxy_get_thread_channel_name(enum TISciThreadIds thread_id)
++static void ti_k3_ddrss_write(void *opaque, hwaddr addr, uint64_t val,
++                              unsigned size)
 +{
-+    const char *thread_names[] = {
-+        "MAIN_0_R5_0_READ_RESPONSE_THREAD", "MAIN_0_R5_0_WRITE_THREAD",
-+        "MAIN_0_R5_1_READ_RESPONSE_THREAD", "MAIN_0_R5_1_WRITE_THREAD",
-+        "MAIN_0_R5_2_READ_RESPONSE_THREAD", "MAIN_0_R5_2_WRITE_THREAD",
-+        "MAIN_0_R5_3_READ_RESPONSE_THREAD", "MAIN_0_R5_3_WRITE_THREAD",
-+        "A53_0_READ_RESPONSE_THREAD",       "A53_0_WRITE_THREAD",
-+        "A53_1_READ_RESPONSE_THREAD",       "A53_1_WRITE_THREAD",
-+        "A53_2_READ_RESPONSE_THREAD",       "A53_2_WRITE_THREAD",
-+        "A53_3_READ_RESPONSE_THREAD",       "A53_3_WRITE_THREAD",
-+        "M4_0_READ_RESPONSE_THREAD",        "M4_0_WRITE_THREAD",
-+        "MAIN_1_R5_0_READ_RESPONSE_THREAD", "MAIN_1_R5_0_WRITE_THREAD",
-+        "MAIN_1_R5_1_READ_RESPONSE_THREAD", "MAIN_1_R5_1_WRITE_THREAD",
-+        "MAIN_1_R5_2_READ_RESPONSE_THREAD", "MAIN_1_R5_2_WRITE_THREAD",
-+        "MAIN_1_R5_3_READ_RESPONSE_THREAD", "MAIN_1_R5_3_WRITE_THREAD",
-+        "A53_4_READ_RESPONSE_THREAD",       "A53_4_WRITE_THREAD",
-+        "ICSSG_0_READ_RESPONSE_THREAD",     "ICSSG_0_WRITE_THREAD",
-+        "ICSSG_1_READ_RESPONSE_THREAD",     "ICSSG_1_WRITE_THREAD"};
++    TIK3DdrssState *s = TI_K3_DDRSS(opaque);
 +
-+    if (thread_id < ARRAY_SIZE(thread_names)) {
-+        return thread_names[thread_id];
-+    }
-+    return "UNKNOWN_THREAD";
++    s->regs[addr >> 2] = val;
 +}
 +
-+static void ti_sec_proxy_reset_hold(Object *obj, ResetType type)
++static const MemoryRegionOps ti_k3_ddrss_ops = {
++    .read = ti_k3_ddrss_read,
++    .write = ti_k3_ddrss_write,
++    .endianness = DEVICE_LITTLE_ENDIAN,
++    .valid.min_access_size = 4,
++    .valid.max_access_size = 4,
++};
++
++static void ti_k3_ddrss_reset(DeviceState *dev)
 +{
-+    TISecProxyState *s = TI_SEC_PROXY(obj);
++    TIK3DdrssState *s = TI_K3_DDRSS(dev);
 +
-+    for (int i = 0; i < ARRAY_SIZE(s->regs_info); ++i) {
-+        register_reset(&s->regs_info[i]);
-+    }
++    memset(s->regs, 0, sizeof(s->regs));
 +}
 +
-+static void ti_sec_proxy_class_init(ObjectClass *klass, const void *data)
++static void ti_k3_ddrss_init(Object *obj)
++{
++    TIK3DdrssState *s = TI_K3_DDRSS(obj);
++
++    memory_region_init_io(&s->iomem, obj, &ti_k3_ddrss_ops, s,
++                          TYPE_TI_K3_DDRSS, TI_K3_DDRSS_CFG_SIZE);
++    sysbus_init_mmio(SYS_BUS_DEVICE(obj), &s->iomem);
++}
++
++static void ti_k3_ddrss_class_init(ObjectClass *klass, const void *data)
 +{
 +    DeviceClass *dc = DEVICE_CLASS(klass);
-+    ResettableClass *rc = RESETTABLE_CLASS(klass);
 +
-+    dc->realize = ti_sec_proxy_realize;
-+    rc->phases.hold = ti_sec_proxy_reset_hold;
++    device_class_set_legacy_reset(dc, ti_k3_ddrss_reset);
 +}
 +
-+static const MemoryRegionOps ti_sec_proxy_mmr_ops = {
-+    .read = register_read_memory,
-+    .write = register_write_memory,
++static const TypeInfo ti_k3_ddrss_info = {
++    .name = TYPE_TI_K3_DDRSS,
++    .parent = TYPE_SYS_BUS_DEVICE,
++    .instance_size = sizeof(TIK3DdrssState),
++    .instance_init = ti_k3_ddrss_init,
++    .class_init = ti_k3_ddrss_class_init,
++};
++
++static void ti_k3_ddrss_register_types(void)
++{
++    type_register_static(&ti_k3_ddrss_info);
++}
++
++type_init(ti_k3_ddrss_register_types)
+diff --git a/hw/misc/ti-k3-gtc.c b/hw/misc/ti-k3-gtc.c
+new file mode 100644
+index 0000000000..b51baddc71
+--- /dev/null
++++ b/hw/misc/ti-k3-gtc.c
+@@ -0,0 +1,100 @@
++/* SPDX-License-Identifier: GPL-2.0-or-later */
++/*
++ * Copyright (c) 2026 CMBLU Energy AG
++ * Author: Wadim Mueller <wafgo01@gmail.com>
++ *
++ * TI K3 Global Timebase Counter (GTC) register stub.
++ *
++ * The GTC distributes a system counter and its nominal frequency to the ARM
++ * generic timers. Only CNTCR and CNTFID0 are implemented; the counter itself
++ * is not modelled. Reset reports an enabled 200 MHz counter, the AM64x
++ * default.
++ */
++#include "qemu/osdep.h"
++#include "qemu/log.h"
++#include "hw/core/qdev-properties.h"
++#include "hw/misc/ti-k3-gtc.h"
++
++#define TI_K3_GTC_SIZE       0x1000
++
++#define GTC_CNTCR            0x000   /* control; bit0 = EN */
++#define GTC_CNTFID0          0x020   /* frequency id 0 (Hz) */
++
++static uint64_t ti_k3_gtc_read(void *opaque, hwaddr addr, unsigned size)
++{
++    TIK3GtcState *s = TI_K3_GTC(opaque);
++
++    switch (addr) {
++    case GTC_CNTCR:
++        return s->cntcr;
++    case GTC_CNTFID0:
++        return s->cntfid0;
++    default:
++        qemu_log_mask(LOG_UNIMP,
++                      "%s: unimplemented read @0x%" HWADDR_PRIx "\n",
++                      __func__, addr);
++        return 0;
++    }
++}
++
++static void ti_k3_gtc_write(void *opaque, hwaddr addr, uint64_t val,
++                            unsigned size)
++{
++    TIK3GtcState *s = TI_K3_GTC(opaque);
++
++    switch (addr) {
++    case GTC_CNTCR:
++        s->cntcr = (uint32_t)val;
++        break;
++    case GTC_CNTFID0:
++        s->cntfid0 = (uint32_t)val;
++        break;
++    default:
++        qemu_log_mask(LOG_UNIMP,
++                      "%s: unimplemented write @0x%" HWADDR_PRIx "\n",
++                      __func__, addr);
++        break;
++    }
++}
++
++static const MemoryRegionOps ti_k3_gtc_ops = {
++    .read = ti_k3_gtc_read,
++    .write = ti_k3_gtc_write,
++    .endianness = DEVICE_LITTLE_ENDIAN,
++    .valid.min_access_size = 1,
++    .valid.max_access_size = 4,
++};
++
++static void ti_k3_gtc_init(Object *obj)
++{
++    TIK3GtcState *s = TI_K3_GTC(obj);
++
++    memory_region_init_io(&s->iomem, obj, &ti_k3_gtc_ops, s,
++                          TYPE_TI_K3_GTC, TI_K3_GTC_SIZE);
++    sysbus_init_mmio(SYS_BUS_DEVICE(obj), &s->iomem);
++}
++
++static const Property ti_k3_gtc_properties[] = {
++    DEFINE_PROP_UINT32("cntcr", TIK3GtcState, cntcr, 0x1),
++    DEFINE_PROP_UINT32("cntfid0", TIK3GtcState, cntfid0, 200000000),
++};
++
++static void ti_k3_gtc_class_init(ObjectClass *klass, const void *data)
++{
++    device_class_set_props(DEVICE_CLASS(klass), ti_k3_gtc_properties);
++}
++
++static const TypeInfo ti_k3_gtc_info = {
++    .name = TYPE_TI_K3_GTC,
++    .parent = TYPE_SYS_BUS_DEVICE,
++    .instance_size = sizeof(TIK3GtcState),
++    .instance_init = ti_k3_gtc_init,
++    .class_init = ti_k3_gtc_class_init,
++};
++
++static void ti_k3_gtc_register_types(void)
++{
++    type_register_static(&ti_k3_gtc_info);
++}
++
++type_init(ti_k3_gtc_register_types)
+diff --git a/hw/misc/ti-k3-sdhci-phy.c b/hw/misc/ti-k3-sdhci-phy.c
+new file mode 100644
+index 0000000000..10b1f56032
+--- /dev/null
++++ b/hw/misc/ti-k3-sdhci-phy.c
+@@ -0,0 +1,91 @@
++/*
++ * TI K3 SDHCI PHY register-file stub (AM64x)
++ *
++ * RAM-backed SDHCI companion PHY window. Drive and delay registers are stored
++ * as written. PHY_STAT1 reports CALDONE (bit 1) and DLLRDY (bit 0) set, so
++ * calibration resp. DLL lock complete immediately.
++ *
++ * Copyright (c) 2026 CMBLU Energy AG
++ * Author: Wadim Mueller <wafgo01@gmail.com>
++ *
++ * SPDX-License-Identifier: GPL-2.0-or-later
++ */
++#include "qemu/osdep.h"
++#include "qemu/log.h"
++#include "hw/misc/ti-k3-sdhci-phy.h"
++
++/* Read-side OR masks: {offset, bits}. */
++static const struct {
++    hwaddr offset;
++    uint32_t bits;
++} sdhci_phy_status_bits[] = {
++    /* PHY_STAT1: CALDONE (bit 1) | DLLRDY (bit 0) */
++    { 0x130, 0x3 },
++};
++
++static uint64_t ti_k3_sdhci_phy_read(void *opaque, hwaddr addr, unsigned size)
++{
++    TIK3SdhciPhyState *s = TI_K3_SDHCI_PHY(opaque);
++    uint32_t val = s->regs[addr >> 2];
++
++    for (size_t i = 0; i < ARRAY_SIZE(sdhci_phy_status_bits); i++) {
++        if (addr == sdhci_phy_status_bits[i].offset) {
++            val |= sdhci_phy_status_bits[i].bits;
++        }
++    }
++    return val;
++}
++
++static void ti_k3_sdhci_phy_write(void *opaque, hwaddr addr, uint64_t val,
++                                  unsigned size)
++{
++    TIK3SdhciPhyState *s = TI_K3_SDHCI_PHY(opaque);
++
++    s->regs[addr >> 2] = val;
++}
++
++static const MemoryRegionOps ti_k3_sdhci_phy_ops = {
++    .read = ti_k3_sdhci_phy_read,
++    .write = ti_k3_sdhci_phy_write,
++    .endianness = DEVICE_LITTLE_ENDIAN,
++    .valid.min_access_size = 4,
++    .valid.max_access_size = 4,
++};
++
++static void ti_k3_sdhci_phy_reset(DeviceState *dev)
++{
++    TIK3SdhciPhyState *s = TI_K3_SDHCI_PHY(dev);
++
++    memset(s->regs, 0, sizeof(s->regs));
++}
++
++static void ti_k3_sdhci_phy_init(Object *obj)
++{
++    TIK3SdhciPhyState *s = TI_K3_SDHCI_PHY(obj);
++
++    memory_region_init_io(&s->iomem, obj, &ti_k3_sdhci_phy_ops, s,
++                          TYPE_TI_K3_SDHCI_PHY, TI_K3_SDHCI_PHY_SIZE);
++    sysbus_init_mmio(SYS_BUS_DEVICE(obj), &s->iomem);
++}
++
++static void ti_k3_sdhci_phy_class_init(ObjectClass *klass, const void *data)
++{
++    DeviceClass *dc = DEVICE_CLASS(klass);
++
++    device_class_set_legacy_reset(dc, ti_k3_sdhci_phy_reset);
++}
++
++static const TypeInfo ti_k3_sdhci_phy_info = {
++    .name = TYPE_TI_K3_SDHCI_PHY,
++    .parent = TYPE_SYS_BUS_DEVICE,
++    .instance_size = sizeof(TIK3SdhciPhyState),
++    .instance_init = ti_k3_sdhci_phy_init,
++    .class_init = ti_k3_sdhci_phy_class_init,
++};
++
++static void ti_k3_sdhci_phy_register_types(void)
++{
++    type_register_static(&ti_k3_sdhci_phy_info);
++}
++
++type_init(ti_k3_sdhci_phy_register_types)
+diff --git a/hw/misc/ti-k3-trng.c b/hw/misc/ti-k3-trng.c
+new file mode 100644
+index 0000000000..14fb2d077c
+--- /dev/null
++++ b/hw/misc/ti-k3-trng.c
+@@ -0,0 +1,139 @@
++/*
++ * TI K3 SA2UL TRNG (EIP-76) stub (AM64x)
++ *
++ * Minimal EIP-76 register subset. STATUS reports RNG_READY, INTACK writes
++ * are accepted, OUTPUT_0..3 return two cached 64-bit pairs, and configuration
++ * registers are RAM-backed.
++ *
++ * Copyright (c) 2026 CMBLU Energy AG
++ * Author: Wadim Mueller <wafgo01@gmail.com>
++ *
++ * SPDX-License-Identifier: GPL-2.0-or-later
++ */
++#include "qemu/osdep.h"
++#include "hw/misc/ti-k3-trng.h"
++#include "trace.h"
++
++#define RNG_OUTPUT_0    0x00
++#define RNG_OUTPUT_1    0x04
++#define RNG_OUTPUT_2    0x08
++#define RNG_OUTPUT_3    0x0C
++#define RNG_STATUS      0x10
++#define RNG_READY       (1u << 0)
++#define RNG_CONTROL     0x14
++
++/* Nonzero xorshift64 state reaches never zero. */
++static uint64_t ti_k3_trng_next(TIK3TrngState *s)
++{
++    s->rng_state ^= s->rng_state << 13;
++    s->rng_state ^= s->rng_state >> 7;
++    s->rng_state ^= s->rng_state << 17;
++    return s->rng_state;
++}
++
++static uint64_t ti_k3_trng_read(void *opaque, hwaddr addr, unsigned size)
++{
++    TIK3TrngState *s = TI_K3_TRNG(opaque);
++    uint32_t val;
++
++    switch (addr) {
++    case RNG_OUTPUT_0:
++        s->pair_a = ti_k3_trng_next(s);
++        val = (uint32_t)s->pair_a;
++        break;
++    case RNG_OUTPUT_1:
++        val = (uint32_t)(s->pair_a >> 32);
++        break;
++    case RNG_OUTPUT_2:
++        s->pair_b = ti_k3_trng_next(s);
++        val = (uint32_t)s->pair_b;
++        break;
++    case RNG_OUTPUT_3:
++        val = (uint32_t)(s->pair_b >> 32);
++        break;
++    case RNG_STATUS:
++        /* Always ready, never in shutdown. */
++        val = RNG_READY;
++        break;
++    default:
++        val = s->regs[addr >> 2];
++        break;
++    }
++
++    trace_ti_k3_trng_read(addr, val);
++    return val;
++}
++
++static void ti_k3_trng_write(void *opaque, hwaddr addr, uint64_t value,
++                             unsigned size)
++{
++    TIK3TrngState *s = TI_K3_TRNG(opaque);
++
++    trace_ti_k3_trng_write(addr, value);
++
++    switch (addr) {
++    case RNG_OUTPUT_0:
++    case RNG_OUTPUT_1:
++    case RNG_OUTPUT_2:
++    case RNG_OUTPUT_3:
++        /* Output registers are read-only; use RAZ/WI. */
++        break;
++    case RNG_STATUS:
++        /* STATUS is synthesized on each read, so INTACK has no state. */
++        break;
++    default:
++        s->regs[addr >> 2] = (uint32_t)value;
++        break;
++    }
++}
++
++static const MemoryRegionOps ti_k3_trng_ops = {
++    .read = ti_k3_trng_read,
++    .write = ti_k3_trng_write,
 +    .endianness = DEVICE_LITTLE_ENDIAN,
 +    .valid = {
 +        .min_access_size = 4,
@@ -365,369 +715,223 @@ index 0000000000..524bd1353c
 +    },
 +};
 +
-+static uint64_t ti_sec_proxy_read_scfg(void *opaque, hwaddr addr, unsigned size)
++static void ti_k3_trng_reset(DeviceState *dev)
 +{
-+    TISecProxyState *s = opaque;
-+    if (addr <= 0x10) {
-+        return 0;
-+    }
++    TIK3TrngState *s = TI_K3_TRNG(dev);
 +
-+    hwaddr thread_rel_addr = addr - 0x10;
-+    int thread_num = thread_rel_addr / 0x1000;
-+    int reg = (thread_rel_addr % 0x1000) / 4;
-+    struct TISecProxyThreadInfo *tinfo = &s->thread_info[thread_num];
-+
-+    trace_ti_sec_proxy_read_scfg(
-+        ti_sec_proxy_get_thread_channel_name(thread_num), reg, addr);
-+    return tinfo->is_outbound ? 0x0 : 0x80000000;
++    memset(s->regs, 0, sizeof(s->regs));
++    s->rng_state = 0x9e3779b97f4a7c15ULL;
++    s->pair_a = 0;
++    s->pair_b = 0;
 +}
 +
-+static void ti_sec_proxy_write_scfg(void *opaque, hwaddr addr, uint64_t value,
-+                                    unsigned size)
++static void ti_k3_trng_init(Object *obj)
 +{
-+    if (addr <= 0x10) {
-+        return;
-+    }
++    TIK3TrngState *s = TI_K3_TRNG(obj);
 +
-+    int thread_num = addr / 0x1000;
-+    int reg = (addr % 0x1000) / 4;
-+
-+    trace_ti_sec_proxy_write_scfg(
-+        ti_sec_proxy_get_thread_channel_name(thread_num), reg, addr, value);
++    memory_region_init_io(&s->iomem, obj, &ti_k3_trng_ops, s,
++                          TYPE_TI_K3_TRNG, TI_K3_TRNG_REGS_SIZE);
++    sysbus_init_mmio(SYS_BUS_DEVICE(obj), &s->iomem);
 +}
 +
-+static const MemoryRegionOps ti_sec_proxy_scfg_ops = {
-+    .read = ti_sec_proxy_read_scfg,
-+    .write = ti_sec_proxy_write_scfg,
-+    .endianness = DEVICE_LITTLE_ENDIAN,
-+    .valid = {
-+        .min_access_size = 1,
-+        .max_access_size = 4,
-+    },
-+};
-+
-+static uint64_t ti_sec_proxy_read_rt(void *opaque, hwaddr addr, unsigned size)
++static void ti_k3_trng_class_init(ObjectClass *klass, const void *data)
 +{
-+    TISecProxyState *s = opaque;
-+    int thread_num = addr / 0x1000;
-+    hwaddr off = addr % 0x1000;
++    DeviceClass *dc = DEVICE_CLASS(klass);
 +
-+    int byte = off & 0x3;
-+
-+    struct TISecProxyThreadInfo *tinfo = &s->thread_info[thread_num];
-+
-+    uint32_t reg_val = (tinfo->num_messages) |
-+                       (tinfo->is_outbound ? 0x0 : 0x40000000) |
-+                       (tinfo->is_outbound ? (tinfo->num_messages << 16) : 0x0);
-+
-+    uint64_t ret;
-+
-+    if (size == 1) {
-+        ret = (reg_val >> (8 * byte)) & 0xff;
-+    } else if (size == 2) {
-+        ret = (reg_val >> (8 * (byte & ~1))) & 0xffff;
-+    } else if (size == 4) {
-+        ret = reg_val;
-+    } else {
-+        ret = 0;
-+    }
-+    trace_ti_sec_proxy_read_rt(ti_sec_proxy_get_thread_channel_name(thread_num),
-+                               ret, addr);
-+    return ret;
++    device_class_set_legacy_reset(dc, ti_k3_trng_reset);
 +}
 +
-+static void ti_sec_proxy_write_rt(void *opaque, hwaddr addr, uint64_t value,
-+                                  unsigned size)
-+{
-+}
-+
-+static const MemoryRegionOps ti_sec_proxy_rt_ops = {
-+    .read = ti_sec_proxy_read_rt,
-+    .write = ti_sec_proxy_write_rt,
-+    .endianness = DEVICE_LITTLE_ENDIAN,
-+    .valid = {
-+        .min_access_size = 1,
-+        .max_access_size = 4,
-+    },
-+};
-+
-+static uint64_t ti_sec_proxy_read_target(void *opaque, hwaddr addr,
-+                                         unsigned size)
-+{
-+    TISecProxyState *s = opaque;
-+    int thread_num = addr / 0x1000;
-+    hwaddr off = addr % 0x1000;
-+
-+    int reg = off >> 2;    /* 32-bit register index */
-+    int byte = off & 0x3;  /* byte offset within the 32-bit register */
-+
-+    struct TISecProxyThreadInfo *tinfo = &s->thread_info[thread_num];
-+
-+    /* First fetch the full little-endian 32-bit register. */
-+    uint32_t reg_val = (uint32_t)tinfo->current_message[reg];
-+    uint64_t ret = 0;
-+
-+    if (size == 1) {
-+        ret = (reg_val >> (8 * byte)) & 0xffu;
-+    } else if (size == 2) {
-+        /*
-+         * Odd halfword reads are rounded down. Guest drivers use aligned
-+         * accesses, but this keeps byte-lane handling tolerant.
-+         */
-+        ret = (reg_val >> (8 * (byte & ~1))) & 0xffffu;
-+    } else if (size == 4) {
-+        ret = reg_val;
-+    } else {
-+        /* Shouldn't happen given .valid, but be defensive. */
-+        ret = 0;
-+    }
-+
-+    /* For inbound threads reset the message counter */
-+    if (!tinfo->is_outbound && reg == SEC_PROXY_MAX_MSG - 1) {
-+        trace_ti_sec_proxy_complete_read(
-+            ti_sec_proxy_get_thread_channel_name(thread_num),
-+            tinfo->num_messages);
-+        tinfo->num_messages = 0;
-+        qemu_irq_lower(s->irq_evt);
-+    }
-+    return ret;
-+}
-+
-+static void ti_sec_proxy_write_target(void *opaque, hwaddr addr, uint64_t value,
-+                                      unsigned size)
-+{
-+    TISecProxyState *s = opaque;
-+    int thread_num = addr / 0x1000;
-+    hwaddr off = addr % 0x1000;
-+
-+    int reg = off >> 2;    /* 32-bit register index */
-+    int byte = off & 0x3;  /* byte offset within the 32-bit register */
-+
-+    struct TISecProxyThreadInfo *tinfo = &s->thread_info[thread_num];
-+
-+    if (reg >= 16) {
-+        return;
-+    }
-+
-+    uint32_t cur = (uint32_t)tinfo->current_message[reg];
-+    uint32_t v32 = (uint32_t)value;
-+
-+    if (size == 1) {
-+        uint32_t mask = 0xffu << (8 * byte);
-+        cur = (cur & ~mask) | ((v32 & 0xffu) << (8 * byte));
-+    } else if (size == 2) {
-+        /* Round odd halfword writes down, same as in the read path. */
-+        int hbyte = (byte & ~1);
-+        uint32_t mask = 0xffffu << (8 * hbyte);
-+        cur = (cur & ~mask) | ((v32 & 0xffffu) << (8 * hbyte));
-+    } else if (size == 4) {
-+        cur = v32;
-+    } else {
-+        return;
-+    }
-+
-+    tinfo->current_message[reg] = cur;
-+
-+    /*
-+     * The data-window commit point is the last register. Byte writes can
-+     * hit it more than once while the last word is assembled.
-+     */
-+    if (reg == SEC_PROXY_MAX_MSG - 1) {
-+        trace_ti_sec_proxy_complete_write(
-+            ti_sec_proxy_get_thread_channel_name(thread_num),
-+            tinfo->num_messages);
-+
-+        if (tinfo->cb) {
-+            trace_ti_sec_proxy_announce_callback(
-+                ti_sec_proxy_get_thread_channel_name(thread_num));
-+            tinfo->cb(tinfo->cb_opaque, thread_num, &tinfo->current_message[1],
-+                      SEC_PROXY_MAX_MSG);
-+        }
-+    }
-+}
-+
-+static const MemoryRegionOps ti_sec_proxy_target_ops = {
-+    .read = ti_sec_proxy_read_target,
-+    .write = ti_sec_proxy_write_target,
-+    .endianness = DEVICE_LITTLE_ENDIAN,
-+    .valid = {
-+        .min_access_size = 1,
-+        .max_access_size = 4,
-+    },
-+};
-+
-+static void ti_sec_proxy_init(Object *obj)
-+{
-+    TISecProxyState *s = TI_SEC_PROXY(obj);
-+    SysBusDevice *sbd = SYS_BUS_DEVICE(obj);
-+    s->reg_array = register_init_block32(DEVICE(obj), sec_proxy_mmrs_regs_info,
-+                                         ARRAY_SIZE(sec_proxy_mmrs_regs_info),
-+                                         s->regs_info, s->regs,
-+                                         &ti_sec_proxy_mmr_ops, true, 0x100);
-+    sysbus_init_mmio(sbd, &s->reg_array->mem);
-+
-+    memory_region_init_io(&s->iomem_scfg, OBJECT(s), &ti_sec_proxy_scfg_ops, s,
-+                          "ti-sec-proxy-scfg", 0x80000);
-+    sysbus_init_mmio(sbd, &s->iomem_scfg);
-+
-+    memory_region_init_io(&s->iomem_rt, OBJECT(s), &ti_sec_proxy_rt_ops, s,
-+                          "ti-sec-proxy-rt", 0x80000);
-+    sysbus_init_mmio(sbd, &s->iomem_rt);
-+
-+    memory_region_init_io(&s->iomem_target_data, OBJECT(s),
-+                          &ti_sec_proxy_target_ops, s, "ti-sec-proxy-target",
-+                          0x80000);
-+    sysbus_init_mmio(sbd, &s->iomem_target_data);
-+
-+    sysbus_init_irq(sbd, &s->irq_evt);
-+}
-+
-+static const TypeInfo ti_sec_proxy_info = {
-+    .name = TYPE_TI_SEC_PROXY,
++static const TypeInfo ti_k3_trng_info = {
++    .name = TYPE_TI_K3_TRNG,
 +    .parent = TYPE_SYS_BUS_DEVICE,
-+    .instance_size = sizeof(TISecProxyState),
-+    .class_init = ti_sec_proxy_class_init,
-+    .instance_init = ti_sec_proxy_init,
++    .instance_size = sizeof(TIK3TrngState),
++    .instance_init = ti_k3_trng_init,
++    .class_init = ti_k3_trng_class_init,
 +};
 +
-+static void ti_sec_proxy_types(void)
++static void ti_k3_trng_register_types(void)
 +{
-+    type_register_static(&ti_sec_proxy_info);
++    type_register_static(&ti_k3_trng_info);
 +}
 +
-+type_init(ti_sec_proxy_types)
++type_init(ti_k3_trng_register_types)
 diff --git a/hw/misc/trace-events b/hw/misc/trace-events
-index ea7cde021e..dfa2d04117 100644
+index c9a868b3ef..b32ce80ea9 100644
 --- a/hw/misc/trace-events
 +++ b/hw/misc/trace-events
-@@ -461,6 +461,14 @@ rat_enable_region(int idx, uint64_t size, uint64_t source, uint64_t dest) "Enabl
- rat_disable_region(int idx) "Disabling RAT Region %u"
- rat_read_entry(int entry, int rel_offset, uint64_t offset) "Reading Entry %i at offset %i: offset: 0x%"PRIx64
- 
-+# ti-sec-proxy.c
-+ti_sec_proxy_read_scfg(const char *name, int reg, uint64_t addr) "thread: %s, reg: %i. read from SCFG addr 0x%" PRIx64
-+ti_sec_proxy_write_scfg(const char *name, int reg, uint64_t addr, uint64_t value) "thread: %s, reg: %i. write 0x%" PRIx64 "0x%" PRIx64
-+ti_sec_proxy_complete_read(const char *name, int num) "thread: %s completed read message %i. Resetting number of messages"
-+ti_sec_proxy_complete_write(const char *name, int num) "thread: %s completed write message %i. Resetting number of messages"
-+ti_sec_proxy_announce_callback(const char *name) "invoce callback for thread: %s"
-+ti_sec_proxy_read_rt(const char *name, int reg, uint64_t addr) "thread: %s, reg: 0x%x, read from RT addr 0x%" PRIx64
+@@ -442,3 +442,7 @@ iommu_testdev_dma_read(uint64_t gva, uint32_t len) "gva=0x%" PRIx64 " len=%u"
+ iommu_testdev_dma_verify(uint32_t expected, uint32_t actual) "expected=0x%x actual=0x%x"
+ iommu_testdev_dma_result(uint32_t result) "DMA completed result=0x%x"
+ iommu_testdev_dma_armed(bool armed) "armed=%d"
 +
- # ti-k3-trng.c
- ti_k3_trng_read(uint64_t addr, uint32_t val) "offset 0x%" PRIx64 " -> 0x%08x"
- ti_k3_trng_write(uint64_t addr, uint64_t val) "offset 0x%" PRIx64 " <- 0x%" PRIx64
-diff --git a/include/hw/misc/ti-sec-proxy.h b/include/hw/misc/ti-sec-proxy.h
++# ti-k3-trng.c
++ti_k3_trng_read(uint64_t addr, uint32_t val) "offset 0x%" PRIx64 " -> 0x%08x"
++ti_k3_trng_write(uint64_t addr, uint64_t val) "offset 0x%" PRIx64 " <- 0x%" PRIx64
+diff --git a/include/hw/misc/ti-k3-ctrlmmr.h b/include/hw/misc/ti-k3-ctrlmmr.h
 new file mode 100644
-index 0000000000..d028242eff
+index 0000000000..01fb71bc74
 --- /dev/null
-+++ b/include/hw/misc/ti-sec-proxy.h
-@@ -0,0 +1,108 @@
++++ b/include/hw/misc/ti-k3-ctrlmmr.h
+@@ -0,0 +1,26 @@
 +/*
-+ * TI K3 secure proxy
++ * TI K3 CTRL_MMR stub
 + *
-+ * Copyright (c) 2025 CMBLU Energy AG
++ * Copyright (c) 2026 CMBLU Energy AG
 + * Author: Wadim Mueller <wafgo01@gmail.com>
 + *
 + * SPDX-License-Identifier: GPL-2.0-or-later
 + */
-+
-+#ifndef TI_SEC_PROXY_H
-+#define TI_SEC_PROXY_H
++#ifndef HW_MISC_TI_K3_CTRLMMR_H
++#define HW_MISC_TI_K3_CTRLMMR_H
 +
 +#include "hw/core/sysbus.h"
-+#include "hw/core/register.h"
-+#include "system/dma.h"
 +#include "qom/object.h"
 +
-+#define TYPE_TI_SEC_PROXY "ti.sec-proxy"
++#define TYPE_TI_K3_CTRLMMR "ti-k3-ctrlmmr"
++OBJECT_DECLARE_SIMPLE_TYPE(TIK3CtrlMmrState, TI_K3_CTRLMMR)
 +
-+#define RMAX_TI_SEC_PROXY (3)
-+
-+OBJECT_DECLARE_SIMPLE_TYPE(TISecProxyState, TI_SEC_PROXY)
-+
-+typedef void (*TISecProxyMsgCb)(void *opaque,
-+                               uint16_t thread_id,
-+                               const uint32_t *words,
-+                               size_t nwords);
-+
-+enum TISciThreadIds {
-+    MAIN_0_R5_0_READ_RESPONSE_THREAD_ID = 0,
-+    MAIN_0_R5_0_WRITE_THREAD_ID = 1,
-+    MAIN_0_R5_1_READ_RESPONSE_THREAD_ID = 2,
-+    MAIN_0_R5_1_WRITE_THREAD_ID = 3,
-+    MAIN_0_R5_2_READ_RESPONSE_THREAD_ID = 4,
-+    MAIN_0_R5_2_WRITE_THREAD_ID = 5,
-+    MAIN_0_R5_3_READ_RESPONSE_THREAD_ID = 6,
-+    MAIN_0_R5_3_WRITE_THREAD_ID = 7,
-+    A53_0_READ_RESPONSE_THREAD_ID = 8,
-+    A53_0_WRITE_THREAD_ID = 9,
-+    A53_1_READ_RESPONSE_THREAD_ID = 10,
-+    A53_1_WRITE_THREAD_ID = 11,
-+    A53_2_READ_RESPONSE_THREAD_ID = 12,
-+    A53_2_WRITE_THREAD_ID = 13,
-+    A53_3_READ_RESPONSE_THREAD_ID = 14,
-+    A53_3_WRITE_THREAD_ID = 15,
-+    M4_0_READ_RESPONSE_THREAD_ID = 16,
-+    M4_0_WRITE_THREAD_ID = 17,
-+    MAIN_1_R5_0_READ_RESPONSE_THREAD_ID = 18,
-+    MAIN_1_R5_0_WRITE_THREAD_ID = 19,
-+    MAIN_1_R5_1_READ_RESPONSE_THREAD_ID = 20,
-+    MAIN_1_R5_1_WRITE_THREAD_ID = 21,
-+    MAIN_1_R5_2_READ_RESPONSE_THREAD_ID = 22,
-+    MAIN_1_R5_2_WRITE_THREAD_ID = 23,
-+    MAIN_1_R5_3_READ_RESPONSE_THREAD_ID = 24,
-+    MAIN_1_R5_3_WRITE_THREAD_ID = 25,
-+    A53_4_READ_RESPONSE_THREAD_ID = 26,
-+    A53_4_WRITE_THREAD_ID = 27,
-+    ICSSG_0_READ_RESPONSE_THREAD_ID = 28,
-+    ICSSG_0_WRITE_THREAD_ID = 29,
-+    ICSSG_1_READ_RESPONSE_THREAD_ID = 30,
-+    ICSSG_1_WRITE_THREAD_ID = 31,
-+    SEC_PROXY_THREAD_ID_MAX,
-+};
-+
-+#define SEC_PROXY_MSG_MAX_WORDS (16)
-+#define SEC_PROXY_MSG_FIFO_DEPTH (16)
-+
-+struct TISecProxyThreadInfo {
-+    uint8_t thread_id;
-+    uint8_t num_messages;
-+    uint32_t current_message[SEC_PROXY_MSG_MAX_WORDS];
-+    bool is_outbound;
-+    /* Callback invoked on commit (outbound only) */
-+    TISecProxyMsgCb cb;
-+    void *cb_opaque;
-+};
-+
-+struct TISecProxyState {
++struct TIK3CtrlMmrState {
 +    SysBusDevice parent_obj;
-+    MemoryRegion iomem_scfg;
-+    MemoryRegion iomem_rt;
-+    MemoryRegion iomem_target_data;
-+    RegisterInfoArray *reg_array;
-+    qemu_irq irq_evt;
-+    uint32_t regs[RMAX_TI_SEC_PROXY];
-+    RegisterInfo regs_info[RMAX_TI_SEC_PROXY];
-+    struct TISecProxyThreadInfo thread_info[SEC_PROXY_THREAD_ID_MAX];
-+    uint32_t msg_words;
++    MemoryRegion iomem;
++    uint32_t devstat;
++    uint32_t rst_src;
++    uint32_t sec_mgr_sys_status;
 +};
 +
-+
-+/* Backend API used by ti-dmsc, resp. other consumers */
-+void ti_sec_proxy_register_msg_cb(TISecProxyState *sp,
-+                                  uint16_t thread_id,
-+                                  TISecProxyMsgCb cb,
-+                                  void *opaque);
-+
-+size_t ti_sec_proxy_push_msg(TISecProxyState *sp, uint16_t thread_id,
-+                             const uint32_t *words, size_t nbytes);
-+
-+uint32_t ti_sec_proxy_get_msg_words(TISecProxyState *sp);
-+
++#endif
+diff --git a/include/hw/misc/ti-k3-ddrss.h b/include/hw/misc/ti-k3-ddrss.h
+new file mode 100644
+index 0000000000..ed0f54e5c4
+--- /dev/null
++++ b/include/hw/misc/ti-k3-ddrss.h
+@@ -0,0 +1,26 @@
 +/*
-+ * Clear an outbound thread counter before requeueing unsolicited messages.
-+ * push_msg() only increments it; reads clear only inbound threads.
++ * TI K3 DDRSS register-file stub (AM64x)
++ *
++ * Copyright (c) 2026 CMBLU Energy AG
++ * Author: Wadim Mueller <wafgo01@gmail.com>
++ *
++ * SPDX-License-Identifier: GPL-2.0-or-later
 + */
-+void ti_sec_proxy_reset_thread_count(TISecProxyState *sp, uint16_t thread_id);
++#ifndef HW_MISC_TI_K3_DDRSS_H
++#define HW_MISC_TI_K3_DDRSS_H
++
++#include "hw/core/sysbus.h"
++#include "qom/object.h"
++
++#define TYPE_TI_K3_DDRSS "ti-k3-ddrss"
++OBJECT_DECLARE_SIMPLE_TYPE(TIK3DdrssState, TI_K3_DDRSS)
++
++#define TI_K3_DDRSS_CFG_SIZE 0x8000
++
++struct TIK3DdrssState {
++    SysBusDevice parent_obj;
++    MemoryRegion iomem;
++    uint32_t regs[TI_K3_DDRSS_CFG_SIZE / 4];
++};
++
++#endif
+diff --git a/include/hw/misc/ti-k3-gtc.h b/include/hw/misc/ti-k3-gtc.h
+new file mode 100644
+index 0000000000..a2a22afbf6
+--- /dev/null
++++ b/include/hw/misc/ti-k3-gtc.h
+@@ -0,0 +1,23 @@
++/* SPDX-License-Identifier: GPL-2.0-or-later */
++/*
++ * Copyright (c) 2026 CMBLU Energy AG
++ * Author: Wadim Mueller <wafgo01@gmail.com>
++ */
++#ifndef HW_MISC_TI_K3_GTC_H
++#define HW_MISC_TI_K3_GTC_H
++
++#include "hw/core/sysbus.h"
++#include "qom/object.h"
++
++#define TYPE_TI_K3_GTC "ti-k3-gtc"
++OBJECT_DECLARE_SIMPLE_TYPE(TIK3GtcState, TI_K3_GTC)
++
++struct TIK3GtcState {
++    SysBusDevice parent_obj;
++    MemoryRegion iomem;
++
++    uint32_t cntcr;    /* GTC control: bit0 EN. Read back enabled. */
++    uint32_t cntfid0;  /* GTC frequency id 0, in Hz. */
++};
++
++#endif /* HW_MISC_TI_K3_GTC_H */
+diff --git a/include/hw/misc/ti-k3-sdhci-phy.h b/include/hw/misc/ti-k3-sdhci-phy.h
+new file mode 100644
+index 0000000000..2a7296fc6f
+--- /dev/null
++++ b/include/hw/misc/ti-k3-sdhci-phy.h
+@@ -0,0 +1,26 @@
++/*
++ * TI K3 SDHCI PHY register-file stub (AM64x)
++ *
++ * Copyright (c) 2026 CMBLU Energy AG
++ * Author: Wadim Mueller <wafgo01@gmail.com>
++ *
++ * SPDX-License-Identifier: GPL-2.0-or-later
++ */
++#ifndef HW_MISC_TI_K3_SDHCI_PHY_H
++#define HW_MISC_TI_K3_SDHCI_PHY_H
++
++#include "hw/core/sysbus.h"
++#include "qom/object.h"
++
++#define TYPE_TI_K3_SDHCI_PHY "ti-k3-sdhci-phy"
++OBJECT_DECLARE_SIMPLE_TYPE(TIK3SdhciPhyState, TI_K3_SDHCI_PHY)
++
++#define TI_K3_SDHCI_PHY_SIZE 0x400
++
++struct TIK3SdhciPhyState {
++    SysBusDevice parent_obj;
++    MemoryRegion iomem;
++    uint32_t regs[TI_K3_SDHCI_PHY_SIZE / 4];
++};
++
++#endif
+diff --git a/include/hw/misc/ti-k3-trng.h b/include/hw/misc/ti-k3-trng.h
+new file mode 100644
+index 0000000000..b9c33b589f
+--- /dev/null
++++ b/include/hw/misc/ti-k3-trng.h
+@@ -0,0 +1,35 @@
++/*
++ * TI K3 SA2UL TRNG (EIP-76) stub (AM64x)
++ *
++ * Copyright (c) 2026 CMBLU Energy AG
++ * Author: Wadim Mueller <wafgo01@gmail.com>
++ *
++ * SPDX-License-Identifier: GPL-2.0-or-later
++ */
++#ifndef HW_MISC_TI_K3_TRNG_H
++#define HW_MISC_TI_K3_TRNG_H
++
++#include "hw/core/sysbus.h"
++#include "qom/object.h"
++
++#define TYPE_TI_K3_TRNG "ti-k3-trng"
++OBJECT_DECLARE_SIMPLE_TYPE(TIK3TrngState, TI_K3_TRNG)
++
++/* EIP-76 register window: offsets 0x00..0x7c. */
++#define TI_K3_TRNG_REGS_SIZE 0x80
++
++struct TIK3TrngState {
++    SysBusDevice parent_obj;
++    MemoryRegion iomem;
++
++    /* Nonzero xorshift64 generator state. */
++    uint64_t rng_state;
++    /* Cached pairs for OUTPUT_0/1 and OUTPUT_2/3. */
++    uint64_t pair_a;
++    uint64_t pair_b;
++
++    /* RAM-backed registers except OUTPUT_x and STATUS. */
++    uint32_t regs[TI_K3_TRNG_REGS_SIZE / 4];
++};
++
 +#endif
 -- 
 2.43.0

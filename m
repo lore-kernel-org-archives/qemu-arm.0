@@ -4,85 +4,85 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 894BFC5B572
-	for <qemu-arm@archiver.kernel.org>; Thu, 20 Aug 2026 02:51:36 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5B8E5C5B572
+	for <qemu-arm@archiver.kernel.org>; Thu, 20 Aug 2026 02:51:41 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wwsqR-00022Y-CK; Wed, 19 Aug 2026 22:49:31 -0400
+	id 1wwsqA-0001w0-SS; Wed, 19 Aug 2026 22:49:14 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <kylefoxaustin.github@gmail.com>)
- id 1wwsq6-0001ty-KD
- for qemu-arm@nongnu.org; Wed, 19 Aug 2026 22:49:11 -0400
-Received: from mail-yx1-xb12d.google.com ([2607:f8b0:4864:20::b12d])
+ id 1wwspp-0001q2-0B
+ for qemu-arm@nongnu.org; Wed, 19 Aug 2026 22:48:53 -0400
+Received: from mail-yx1-xb12b.google.com ([2607:f8b0:4864:20::b12b])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <kylefoxaustin.github@gmail.com>)
- id 1wwsq3-0000YR-QZ
- for qemu-arm@nongnu.org; Wed, 19 Aug 2026 22:49:10 -0400
-Received: by mail-yx1-xb12d.google.com with SMTP id
- 956f58d0204a3-66c82b32121so2883791d50.1
- for <qemu-arm@nongnu.org>; Wed, 19 Aug 2026 19:49:07 -0700 (PDT)
+ id 1wwspn-0000N2-1F
+ for qemu-arm@nongnu.org; Wed, 19 Aug 2026 22:48:52 -0400
+Received: by mail-yx1-xb12b.google.com with SMTP id
+ 956f58d0204a3-66ca4bdccfaso2809856d50.3
+ for <qemu-arm@nongnu.org>; Wed, 19 Aug 2026 19:48:50 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20251104; t=1787194147; x=1787798947; darn=nongnu.org;
+ d=gmail.com; s=20251104; t=1787194130; x=1787798930; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to:content-type;
- bh=TCYTy9d5gmT9RQQ2gbZfFGHaTBT8oPoZWb28xvQ5yu4=;
- b=rarmh6nmgMz7gfo9Iv04O3IHQQ3thcssGl8KtMnPmDvR7UpCMSGrEWvNS+DpAPfWBs
- Mimc6tdSsBlovmC28+ywDx/N8tPGtNOhnm0ChnOitlbpPNw4PH2O69Sra5VXCiZq1pLx
- HKbLF+0nFd2Iv68jW4IrlZpb5Thz8Ad4Dcs9YA4nPShrO5LbX4Mu0ET4UPZl0X/nZpEB
- 55NE/XTwBRDUuA5W2t4PRw3GoR77zkkjwVK8DMXAmfjUoaclWGikOeKMyiiQ288c+D27
- l1p3eKs3g8e6d4tWn/Rau6otiPv/q4jN3R8OAy2A/og6uTBswHTjkNyZjHddasGOxHEZ
- 6CKQ==
+ bh=eTvDxTUytdELgFkhMw1eLbOOivxcRj8qqSrmYJFQkO0=;
+ b=mx9UkjK+gwEw7hB5sO4Ha/hKr9O3GGzjYWIXk8q/L25Hv6xuH8jgrWjK50emshd2oQ
+ /AN01gzNHaHHJwB0w/S3UcpBnsx8GFmuv+yNuDR3MhtPtqNQ3NMUP2Lon1LUZXmrOpDD
+ B4beKsO2uq4tAyDjFLv7zwefDeVi+HOxzeGSSGvO+9soRPUsZnjQ/4CQrh4DQVgmvSGA
+ /gAYum6MxJxM5SX5PlnVLmL4JGnEh0TfKT/vLDoVr4IjaE/SC9OxVnHfLf0oqLKizyCc
+ kii4sq/VZMXf1hZKh++Z36BK2cXj9EEyd2fCemN7lY3Zb6/nKcIca279EvgOsHXetsEL
+ pg7A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1787194147; x=1787798947;
+ d=1e100.net; s=20251104; t=1787194130; x=1787798930;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
  :to:cc:subject:date:message-id:reply-to:content-type;
- bh=TCYTy9d5gmT9RQQ2gbZfFGHaTBT8oPoZWb28xvQ5yu4=;
- b=q2IAE6g4ACqDRVPJbaNmATk89Nev34Tj2ds1c21zG4Jjd0n2KoryjakaTYDwYvlJH5
- KQ4WSlCTlmRwv3DwlBI/lSwnyZdNIQHdd8XmjMI4iruS9P2uSDfHrInW5Dd360xNAvBW
- Q/r6s42P+NGMIhPdXZJ1qO7v2DO3Zu2H8NAevGG023MLASpmI88RoM/2tlXMttniIYhf
- OyyKe8u1QAalOZpOdjw4et/i3tpYSdiNEODCGqM3Wstut1UI8sHcWh+zFn4ylhGNzKla
- GVEa7hvP3JesKehk/NBQYsuiZjviI6sFEA6KcLkBw8ryHi4Id6YW4P2/vmesL3h6MlaI
- /qFA==
+ bh=eTvDxTUytdELgFkhMw1eLbOOivxcRj8qqSrmYJFQkO0=;
+ b=rMSwjyOPnJ+mOEi5lqrYJK2AdDd8cJIqMX3bFU3tiCRGm0ztpmu1inT8zX0hrGhM1D
+ V5v9Ews1U8Ad8qG3ODVlzccHWmGdUM2FCZaBFzjeGrYRc+p8lNYMaABbBd8OL1bTHzsx
+ h8LIB8pIuN/vOR09EjQiUOAyr2eRzNm6bnVC7jXf1l2bJebKcWsCGLZab+TcrCNNCo/f
+ o1uVguZMvGbbXA0YhsUpD1hdBTGqKnmI5CASnQMHKjdb70vLnh25+rPCaIzap9In0DKm
+ s2KM9l0zKeahO17L05HlEXFKhLoXB6aN8JU/uRgQWkZlqvpXa4Mq+8nRQRR0CatRAbCb
+ 84kA==
 X-Forwarded-Encrypted: i=1;
- AHgh+Roa2bJh0M2f5lBsGSVoIPsn36OB4VatpYxPZWZKm+BCiyNpM33YqFVPEfFz0AhunZk299ilq+W48A==@nongnu.org
-X-Gm-Message-State: AFuF++murEoM5UnAkb1Um7VM3Y+prcn6aGH6jcbs/CTfP31Oi7uePOXk
- XXzsljw9oyBXLA/uMxqltpOjePDIodK3EEUYI2pUcZmdmXj8FYM5btD6
-X-Gm-Gg: AR+sD1023nfaaNEMKp5rDAAu0diECBY+/Rb1zppAAW19v5Xlg1xwjF4owE8YvdCg3em
- pozXvgjKjGvxJvnL+R2iCeWRMeHfinTmUCJDcaphvBmlMjgjuOk4QUo3fSmD7mjQMWXkH5ifgLB
- etKYfhnHrTow9GAeJw/l0x5VBk+yez6VV43eIpYH/Lt0jWUQJRxGW43jIIBuaOj9FFWd6Bg2Xnz
- 4F5udCCKIjuVxxK0jRJpYXhE8JDAL/Bxfe6WlpGiIzDtTIPIoX6bq4DPNvACL0U/6oFRo9MLyG5
- ddjneuHoWjFcMATYUy6kLztIfeDf/a8v+hKeR7A260Ty5SroLvutFFcvRGsTpt7zU2mslYPbU9Y
- v7qpoyXaT7aMKCt3TNKexQetdZ9E3HR959t9rcBJEFPKZps1XJGvtRa+9cAIDM3vUUyszSRNMmD
- T1Omtm3hbXTIGRqNZQ1bx+saTGeWrZOpBkKnQuKeGwuTqi7//lHRh4pRnaibyPk0KuR4r1CWkYX
- X9lIkuHAO0j1xmPDHLcfWtMa/8IkuU6TZRfU0tenduq1hKQMboHvA==
-X-Received: by 2002:a05:690e:4090:b0:668:91a8:d447 with SMTP id
- 956f58d0204a3-66ccb7375c9mr2792359d50.43.1787194146591; 
- Wed, 19 Aug 2026 19:49:06 -0700 (PDT)
+ AHgh+RpXBpTR9Va7fx4lZ7DoUBHh7mm1lEOUJbTt8QdFAFnq9EJsiVu0/xgB3d1p/FtDcnAWyaW6Bco0ww==@nongnu.org
+X-Gm-Message-State: AFuF++nCraRxC7yP2T3HtqWCVJ7Qgz06JRwmgc/H7RhrGIPMLwsEw/CG
+ EfadTqG9EPsxymhuQP29e99OWQqGjG/lP2PxoC/VAyKUN+bdlqC13QWS
+X-Gm-Gg: AR+sD10ej7VUAESLec3VvXmJa5kNrlR4fumbzE3SwLtMfGDmTefOpEIZhKDRfLmEo0W
+ QWxqmOIYGPOnbrZDIirRAnX1C3dYq0G+7e6vJORiiKf+lvyjpZjgTYMRiXSDmTA/GZA/garVDWz
+ Sf2gSklVwMB5MLgekysK/q3vs3pCSG4F3AFLxejAYMVb5ju3unQL/P8+sDUulfs2UGg9JNkqy6r
+ 1JhTWL0NBeI4d1Zl/ygnfPM6tSykQF9wP7XqNC/HLsERGUAsWu4CCNDZUGIA+bhWDR1XI2P1/Ql
+ yNyCodaQSx1mbSp6nzbPL6A8DbdvzL/VYATJSMwHGw/aMcQqBE35jTk6HBPBIM0jioRviDyMsJk
+ dVTxB9ArUKBAXHQmF9vkAjFG8zgIIuAxCNysydWGonnCHJcDW7JdK2tmg/QkiL4LeiynDG7S/7x
+ AUxXvfqwAluURzaZJu3IUHdVW4B/Q8fItYHQBKuRqVLjkOKlAwox942QgtBQUjG+VjCOAFexoNe
+ ibC2kgaohQivLBz19NtjS1mHZ032joJQsbURIisCMyFMcQVF48UPQ==
+X-Received: by 2002:a05:690e:c4e:b0:667:a025:89a4 with SMTP id
+ 956f58d0204a3-66ccb618589mr3103247d50.18.1787194129879; 
+ Wed, 19 Aug 2026 19:48:49 -0700 (PDT)
 Received: from skippy.localdomain (99-61-67-1.lightspeed.austtx.sbcglobal.net.
  [99.61.67.1]) by smtp.gmail.com with ESMTPSA id
- 956f58d0204a3-66ccafd03basm1986454d50.1.2026.08.19.19.49.05
+ 956f58d0204a3-66ccafd03basm1986454d50.1.2026.08.19.19.48.48
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 19 Aug 2026 19:49:05 -0700 (PDT)
+ Wed, 19 Aug 2026 19:48:49 -0700 (PDT)
 From: Kyle Fox <kylefoxaustin.github@gmail.com>
 To: qemu-devel@nongnu.org
 Cc: Kyle Fox <kylefoxaustin.github@gmail.com>,
- Paolo Bonzini <pbonzini@redhat.com>,
- qemu-arm@nongnu.org (open list:MCIMX95-19X19-EVK...)
-Subject: [PATCH 12/16] hw/misc: add i.MX 95 PMIC (PF09/PF53/PCAL6408A) and
- xcache controllers
-Date: Wed, 19 Aug 2026 21:48:30 -0500
-Message-Id: <20260820024834.3286721-13-kylefoxaustin.github@gmail.com>
+ Peter Maydell <peter.maydell@linaro.org>,
+ qemu-arm@nongnu.org (open list:ARM TCG CPUs)
+Subject: [PATCH 03/16] target/arm: opt-in align-down for a misaligned PMSAv7
+ MPU RBAR
+Date: Wed, 19 Aug 2026 21:48:21 -0500
+Message-Id: <20260820024834.3286721-4-kylefoxaustin.github@gmail.com>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20260820024834.3286721-1-kylefoxaustin.github@gmail.com>
 References: <20260820024834.3286721-1-kylefoxaustin.github@gmail.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::b12d;
- envelope-from=kylefoxaustin.github@gmail.com; helo=mail-yx1-xb12d.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::b12b;
+ envelope-from=kylefoxaustin.github@gmail.com; helo=mail-yx1-xb12b.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -105,617 +105,118 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-The i.MX 95 EVK power devices on LPI2C - the PF09 and PF53 regulators
-and the PCAL6408A IO expander that the SM firmware sequences during
-power-up - modelled as I2C-slave register files, plus the xcache (cache
-controller) register block.
+A PMSAv7 MPU region base that is not aligned to its region size is
+UNPREDICTABLE per the architecture, and QEMU disables such a region.
+Some PMSAv7 implementations instead ignore the sub-size low bits of
+RBAR.ADDR and match against the aligned-down base. The NXP i.MX 95 RT
+core (Cortex-M7) SDK firmware relies on this for a peripheral region
+(DRBAR 0x4c800000 programmed with a 512MB size, intended as 0x40000000).
+
+Add an opt-in "pmsav7-rbar-align-down" property that aligns such a base
+down instead of dropping the region. It defaults to false, so existing
+behaviour is unchanged, and is only registered on PMSAv7 CPUs (v7-M and
+v7-R, i.e. v7 without v8), where get_phys_addr_pmsav7() runs.
 
 Signed-off-by: Kyle Fox <kylefoxaustin.github@gmail.com>
 ---
- hw/misc/Kconfig        |   7 +
- hw/misc/imx95_pmic.c   | 357 +++++++++++++++++++++++++++++++++++++++++
- hw/misc/imx95_xcache.c | 185 +++++++++++++++++++++
- hw/misc/meson.build    |   2 +
- hw/misc/trace-events   |   8 +
- 5 files changed, 559 insertions(+)
- create mode 100644 hw/misc/imx95_pmic.c
- create mode 100644 hw/misc/imx95_xcache.c
+ target/arm/cpu.c | 19 +++++++++++++++++++
+ target/arm/cpu.h |  6 ++++++
+ target/arm/ptw.c | 28 +++++++++++++++++++++++-----
+ 3 files changed, 48 insertions(+), 5 deletions(-)
 
-diff --git a/hw/misc/Kconfig b/hw/misc/Kconfig
-index 1e1cae92f6f..e1b8c390312 100644
---- a/hw/misc/Kconfig
-+++ b/hw/misc/Kconfig
-@@ -283,3 +283,10 @@ config IMX95_GPC
+diff --git a/target/arm/cpu.c b/target/arm/cpu.c
+index 77aa78f00e2..22e84c1ced2 100644
+--- a/target/arm/cpu.c
++++ b/target/arm/cpu.c
+@@ -1349,6 +1349,16 @@ static const Property arm_cpu_pmsav7_dregion_property =
+             DEFINE_PROP_UNSIGNED_NODEFAULT("pmsav7-dregion", ARMCPU,
+                                            pmsav7_dregion,
+                                            qdev_prop_uint32, uint32_t);
++
++/*
++ * Opt-in: treat a PMSAv7 MPU region base that is not aligned to its region
++ * size as aligned-down instead of UNPREDICTABLE (see get_phys_addr_pmsav7()).
++ * Only registered on PMSAv7 (v7-M / v7-R) CPUs, and only enabled by an
++ * integrator whose firmware relies on it (e.g. the i.MX 95 Cortex-M7).
++ */
++static const Property arm_cpu_pmsav7_rbar_align_down_property =
++            DEFINE_PROP_BOOL("pmsav7-rbar-align-down", ARMCPU,
++                             pmsav7_rbar_align_down, false);
+ #endif
  
- config IMX95_SRC
-     bool
-+
-+config IMX95_PMIC
-+    bool
-+    select I2C
-+
-+config IMX95_XCACHE
-+    bool
-diff --git a/hw/misc/imx95_pmic.c b/hw/misc/imx95_pmic.c
-new file mode 100644
-index 00000000000..e7101f1ed06
---- /dev/null
-+++ b/hw/misc/imx95_pmic.c
-@@ -0,0 +1,357 @@
-+/*
-+ * Minimal I2C device models for the i.MX 95 EVK System Manager:
-+ *   - PF09 (PF0900) PMIC          (TYPE_PF09_PMIC,  addr 0x08, CRC'd)
-+ *   - PCAL6408A 8-bit IO expander (TYPE_PCAL6408A,  addr 0x20)
-+ *   - PF53 buck regulator         (TYPE_PF53_PMIC,  addr 0x2a/0x29)
-+ *
-+ * Copyright (c) 2026, Kyle Fox
-+ *
-+ * SPDX-License-Identifier: GPL-2.0-or-later
-+ *
-+ * The NXP SM firmware probes/configures both over LPI2C1 during board
-+ * init (BRD_SM_SerialDevicesInit); a failed transfer aborts SM init.
-+ * These are register-file models: writes store, reads return the stored
-+ * byte. The PF09 driver protects each transfer with a J1850 CRC, so the
-+ * PF09 read path appends the CRC the driver expects
-+ * (CRC_J1850((devAddr<<1)|1, reg, data)); without it PF09_Init fails.
-+ * No actual PMIC/regulator or GPIO behaviour is modelled.
-+ */
-+
-+#include "qemu/osdep.h"
-+#include "qemu/module.h"
-+#include "hw/i2c/i2c.h"
-+#include "migration/vmstate.h"
-+#include "trace.h"
-+
-+/* ---- J1850 CRC (matches imx-sm components/crc/crc.c CRC_J1850) ---- */
-+#define CRC_J1850_POLY  0x1Du
-+
-+static uint8_t crc_j1850(const uint8_t *p, unsigned n)
-+{
-+    uint32_t crc = 0xffu;
-+
-+    for (unsigned i = 0; i < n; i++) {
-+        crc ^= p[i];
-+        for (unsigned b = 0; b < 8; b++) {
-+            crc = (crc & 0x80u) ? ((crc << 1) ^ CRC_J1850_POLY)
-+                                : ((crc << 1) & 0xffu);
-+        }
-+    }
-+    return (uint8_t)crc;
-+}
-+
-+/* ============================ PF09 PMIC ============================ */
-+
-+#define TYPE_PF09_PMIC "pf09-pmic"
-+OBJECT_DECLARE_SIMPLE_TYPE(PF09State, PF09_PMIC)
-+
-+#define PF09_NUM_REG    256
-+
-+struct PF09State {
-+    I2CSlave    parent_obj;
-+
-+    uint8_t     regs[PF09_NUM_REG];
-+    uint8_t     cur_reg;
-+    uint32_t    wcount;     /* bytes received since START(write) */
-+    uint32_t    rcount;     /* bytes returned since START(read) */
-+};
-+
-+static int pf09_event(I2CSlave *i2c, enum i2c_event event)
-+{
-+    PF09State *s = PF09_PMIC(i2c);
-+
-+    switch (event) {
-+    case I2C_START_SEND:
-+        s->wcount = 0;
-+        break;
-+    case I2C_START_RECV:
-+        s->rcount = 0;
-+        break;
-+    default:
-+        break;
-+    }
-+    return 0;   /* ACK */
-+}
-+
-+static int pf09_send(I2CSlave *i2c, uint8_t data)
-+{
-+    PF09State *s = PF09_PMIC(i2c);
-+
-+    if (s->wcount == 0) {
-+        s->cur_reg = data;          /* register address */
-+    } else if (s->wcount == 1) {
-+        s->regs[s->cur_reg] = data; /* data byte */
-+        trace_pf09_reg_write(s->cur_reg, data);
-+    }
-+    /* wcount >= 2 is the trailing CRC byte: accept and ignore. */
-+    s->wcount++;
-+    return 0;   /* ACK */
-+}
-+
-+static uint8_t pf09_recv(I2CSlave *i2c)
-+{
-+    PF09State *s = PF09_PMIC(i2c);
-+    uint8_t val;
-+
-+    if (s->rcount == 0) {
-+        val = s->regs[s->cur_reg];
-+        trace_pf09_reg_read(s->cur_reg, val);
-+    } else {
-+        /* CRC over (devAddr<<1)|1, reg, data - what PF09_PmicRead checks. */
-+        uint8_t buf[3] = {
-+            (uint8_t)((i2c->address << 1) | 1u),
-+            s->cur_reg,
-+            s->regs[s->cur_reg],
-+        };
-+        val = crc_j1850(buf, 3);
-+    }
-+    s->rcount++;
-+    return val;
-+}
-+
-+static void pf09_reset_hold(Object *obj, ResetType type)
-+{
-+    PF09State *s = PF09_PMIC(obj);
-+
-+    memset(s->regs, 0, sizeof(s->regs));
-+    s->cur_reg = 0;
-+    s->wcount = 0;
-+    s->rcount = 0;
-+    /* REV_ID >= 0x20 lets PF09_Init skip the STANDBY-monitor write. */
-+    s->regs[0x00] = 0x20;
-+}
-+
-+static const VMStateDescription vmstate_pf09 = {
-+    .name = TYPE_PF09_PMIC,
-+    .version_id = 1,
-+    .minimum_version_id = 1,
-+    .fields = (const VMStateField[]) {
-+        VMSTATE_I2C_SLAVE(parent_obj, PF09State),
-+        VMSTATE_UINT8_ARRAY(regs, PF09State, PF09_NUM_REG),
-+        VMSTATE_UINT8(cur_reg, PF09State),
-+        VMSTATE_UINT32(wcount, PF09State),
-+        VMSTATE_UINT32(rcount, PF09State),
-+        VMSTATE_END_OF_LIST()
-+    },
-+};
-+
-+static void pf09_class_init(ObjectClass *klass, const void *data)
-+{
-+    DeviceClass *dc = DEVICE_CLASS(klass);
-+    ResettableClass *rc = RESETTABLE_CLASS(klass);
-+    I2CSlaveClass *k = I2C_SLAVE_CLASS(klass);
-+
-+    k->event = pf09_event;
-+    k->recv = pf09_recv;
-+    k->send = pf09_send;
-+    dc->vmsd = &vmstate_pf09;
-+    rc->phases.hold = pf09_reset_hold;
-+    dc->desc = "NXP PF09 PMIC (i.MX95 SM stub)";
-+}
-+
-+static const TypeInfo pf09_info = {
-+    .name          = TYPE_PF09_PMIC,
-+    .parent        = TYPE_I2C_SLAVE,
-+    .instance_size = sizeof(PF09State),
-+    .class_init    = pf09_class_init,
-+};
-+
-+/* ========================== PCAL6408A ============================= */
-+
-+#define TYPE_PCAL6408A "pcal6408a"
-+OBJECT_DECLARE_SIMPLE_TYPE(PCAL6408AState, PCAL6408A)
-+
-+#define PCAL6408A_NUM_REG   256
-+
-+struct PCAL6408AState {
-+    I2CSlave    parent_obj;
-+
-+    uint8_t     regs[PCAL6408A_NUM_REG];
-+    uint8_t     cur_reg;
-+    uint32_t    wcount;
-+};
-+
-+static int pcal6408a_event(I2CSlave *i2c, enum i2c_event event)
-+{
-+    PCAL6408AState *s = PCAL6408A(i2c);
-+
-+    if (event == I2C_START_SEND) {
-+        s->wcount = 0;
-+    }
-+    return 0;
-+}
-+
-+static int pcal6408a_send(I2CSlave *i2c, uint8_t data)
-+{
-+    PCAL6408AState *s = PCAL6408A(i2c);
-+
-+    if (s->wcount == 0) {
-+        s->cur_reg = data;
-+    } else {
-+        trace_pcal6408a_reg_write(s->cur_reg, data);
-+        s->regs[s->cur_reg++] = data;
-+    }
-+    s->wcount++;
-+    return 0;
-+}
-+
-+static uint8_t pcal6408a_recv(I2CSlave *i2c)
-+{
-+    PCAL6408AState *s = PCAL6408A(i2c);
-+    uint8_t val = s->regs[s->cur_reg];
-+
-+    trace_pcal6408a_reg_read(s->cur_reg, val);
-+    s->cur_reg++;
-+    return val;
-+}
-+
-+static void pcal6408a_reset_hold(Object *obj, ResetType type)
-+{
-+    PCAL6408AState *s = PCAL6408A(obj);
-+
-+    memset(s->regs, 0, sizeof(s->regs));
-+    s->cur_reg = 0;
-+    s->wcount = 0;
-+}
-+
-+static const VMStateDescription vmstate_pcal6408a = {
-+    .name = TYPE_PCAL6408A,
-+    .version_id = 1,
-+    .minimum_version_id = 1,
-+    .fields = (const VMStateField[]) {
-+        VMSTATE_I2C_SLAVE(parent_obj, PCAL6408AState),
-+        VMSTATE_UINT8_ARRAY(regs, PCAL6408AState, PCAL6408A_NUM_REG),
-+        VMSTATE_UINT8(cur_reg, PCAL6408AState),
-+        VMSTATE_UINT32(wcount, PCAL6408AState),
-+        VMSTATE_END_OF_LIST()
-+    },
-+};
-+
-+static void pcal6408a_class_init(ObjectClass *klass, const void *data)
-+{
-+    DeviceClass *dc = DEVICE_CLASS(klass);
-+    ResettableClass *rc = RESETTABLE_CLASS(klass);
-+    I2CSlaveClass *k = I2C_SLAVE_CLASS(klass);
-+
-+    k->event = pcal6408a_event;
-+    k->recv = pcal6408a_recv;
-+    k->send = pcal6408a_send;
-+    dc->vmsd = &vmstate_pcal6408a;
-+    rc->phases.hold = pcal6408a_reset_hold;
-+    dc->desc = "NXP PCAL6408A IO expander (i.MX95 SM stub)";
-+}
-+
-+static const TypeInfo pcal6408a_info = {
-+    .name          = TYPE_PCAL6408A,
-+    .parent        = TYPE_I2C_SLAVE,
-+    .instance_size = sizeof(PCAL6408AState),
-+    .class_init    = pcal6408a_class_init,
-+};
-+
-+/* ============================ PF53 PMIC ============================ */
-+
-+/*
-+ * PF5301 / PF5302 (PF53-family) buck regulators on the same LPI2C bus.
-+ * BRD_SM_SerialDevicesInit calls PF53_Init() on each, which only reads
-+ * the DEV_ID register and checks that the transfer ACKs (it does not
-+ * validate the value, and the SM configures crcEn=false for these). So a
-+ * plain register file that ACKs is sufficient to get past SM init.
-+ */
-+#define TYPE_PF53_PMIC "pf53-pmic"
-+OBJECT_DECLARE_SIMPLE_TYPE(PF53State, PF53_PMIC)
-+
-+#define PF53_NUM_REG    256
-+
-+struct PF53State {
-+    I2CSlave    parent_obj;
-+
-+    uint8_t     regs[PF53_NUM_REG];
-+    uint8_t     cur_reg;
-+    uint32_t    wcount;
-+};
-+
-+static int pf53_event(I2CSlave *i2c, enum i2c_event event)
-+{
-+    PF53State *s = PF53_PMIC(i2c);
-+
-+    if (event == I2C_START_SEND) {
-+        s->wcount = 0;
-+    }
-+    return 0;
-+}
-+
-+static int pf53_send(I2CSlave *i2c, uint8_t data)
-+{
-+    PF53State *s = PF53_PMIC(i2c);
-+
-+    if (s->wcount == 0) {
-+        s->cur_reg = data;
-+    } else {
-+        trace_pf53_reg_write(s->cur_reg, data);
-+        s->regs[s->cur_reg++] = data;
-+    }
-+    s->wcount++;
-+    return 0;
-+}
-+
-+static uint8_t pf53_recv(I2CSlave *i2c)
-+{
-+    PF53State *s = PF53_PMIC(i2c);
-+    uint8_t val = s->regs[s->cur_reg];
-+
-+    trace_pf53_reg_read(s->cur_reg, val);
-+    s->cur_reg++;
-+    return val;
-+}
-+
-+static void pf53_reset_hold(Object *obj, ResetType type)
-+{
-+    PF53State *s = PF53_PMIC(obj);
-+
-+    memset(s->regs, 0, sizeof(s->regs));
-+    s->cur_reg = 0;
-+    s->wcount = 0;
-+}
-+
-+static const VMStateDescription vmstate_pf53 = {
-+    .name = TYPE_PF53_PMIC,
-+    .version_id = 1,
-+    .minimum_version_id = 1,
-+    .fields = (const VMStateField[]) {
-+        VMSTATE_I2C_SLAVE(parent_obj, PF53State),
-+        VMSTATE_UINT8_ARRAY(regs, PF53State, PF53_NUM_REG),
-+        VMSTATE_UINT8(cur_reg, PF53State),
-+        VMSTATE_UINT32(wcount, PF53State),
-+        VMSTATE_END_OF_LIST()
-+    },
-+};
-+
-+static void pf53_class_init(ObjectClass *klass, const void *data)
-+{
-+    DeviceClass *dc = DEVICE_CLASS(klass);
-+    ResettableClass *rc = RESETTABLE_CLASS(klass);
-+    I2CSlaveClass *k = I2C_SLAVE_CLASS(klass);
-+
-+    k->event = pf53_event;
-+    k->recv = pf53_recv;
-+    k->send = pf53_send;
-+    dc->vmsd = &vmstate_pf53;
-+    rc->phases.hold = pf53_reset_hold;
-+    dc->desc = "NXP PF53 PMIC (i.MX95 SM stub)";
-+}
-+
-+static const TypeInfo pf53_info = {
-+    .name          = TYPE_PF53_PMIC,
-+    .parent        = TYPE_I2C_SLAVE,
-+    .instance_size = sizeof(PF53State),
-+    .class_init    = pf53_class_init,
-+};
-+
-+static void imx95_pmic_register_types(void)
-+{
-+    type_register_static(&pf09_info);
-+    type_register_static(&pcal6408a_info);
-+    type_register_static(&pf53_info);
-+}
-+
-+type_init(imx95_pmic_register_types)
-diff --git a/hw/misc/imx95_xcache.c b/hw/misc/imx95_xcache.c
-new file mode 100644
-index 00000000000..ef7752a6201
---- /dev/null
-+++ b/hw/misc/imx95_xcache.c
-@@ -0,0 +1,185 @@
-+/*
-+ * NXP i.MX 95 XCACHE controller stub model
-+ *
-+ * Copyright (c) 2026, Kyle Fox
-+ *
-+ * SPDX-License-Identifier: GPL-2.0-or-later
-+ *
-+ * Minimal model of the M33 XCACHE controller (the two instances at
-+ * 0x44400000 "PC" and 0x44400800 "PS"). The NXP System Manager firmware
-+ * enables and invalidates its caches early in init by writing the cache
-+ * control register (CCR): it sets ENCACHE plus the invalidate/push
-+ * command bits and the GO bit, then polls.
-+ *
-+ * QEMU has no cache to model, so the only behaviour that matters is the
-+ * self-clearing of the command bits: real hardware clears GO and the
-+ * INVWn/PUSHWn bits once the (instantaneous, for us) operation completes,
-+ * and leaves ENCACHE/config bits set. A plain RAM stub would leave GO set
-+ * forever (the SM's "wait for GO to clear" loop would hang); a zero-return
-+ * stub would leave ENCACHE clear (an "is cache enabled" check would hang).
-+ * So CCR persists everything except the command bits, which read back 0.
-+ * The line-maintenance registers (CLCR/CSAR/CCVR) are plain storage.
-+ */
-+
-+#include "qemu/osdep.h"
-+#include "qemu/log.h"
-+#include "qemu/module.h"
-+#include "hw/core/sysbus.h"
-+#include "migration/vmstate.h"
-+#include "trace.h"
-+
-+#define TYPE_IMX95_XCACHE "imx95.xcache"
-+OBJECT_DECLARE_SIMPLE_TYPE(IMX95XCacheState, IMX95_XCACHE)
-+
-+/* Each instance owns 0x800 (the two M33 instances are 0x800 apart). */
-+#define IMX95_XCACHE_REG_SIZE   0x800
-+
-+#define XCACHE_CCR              0x00
-+#define XCACHE_CLCR             0x04
-+#define XCACHE_CSAR             0x08
-+#define XCACHE_CCVR             0x0C
-+
-+/* CCR bits that self-clear when the cache command completes. */
-+#define CCR_GO                  0x80000000u
-+#define CCR_PUSHW1              0x08000000u
-+#define CCR_INVW1               0x04000000u
-+#define CCR_PUSHW0              0x02000000u
-+#define CCR_INVW0               0x01000000u
-+#define CCR_CMD_BITS \
-+    (CCR_GO | CCR_PUSHW1 | CCR_INVW1 | CCR_PUSHW0 | CCR_INVW0)
-+
-+struct IMX95XCacheState {
-+    SysBusDevice    parent_obj;
-+    MemoryRegion    iomem;
-+
-+    uint32_t        ccr;
-+    uint32_t        clcr;
-+    uint32_t        csar;
-+    uint32_t        ccvr;
-+};
-+
-+static uint64_t imx95_xcache_read(void *opaque, hwaddr offset, unsigned size)
-+{
-+    IMX95XCacheState *s = opaque;
-+
-+    trace_imx95_xcache_read(offset);
-+
-+    switch (offset) {
-+    case XCACHE_CCR:
-+        return s->ccr;
-+    case XCACHE_CLCR:
-+        return s->clcr;
-+    case XCACHE_CSAR:
-+        return s->csar;
-+    case XCACHE_CCVR:
-+        return s->ccvr;
-+    default:
-+        qemu_log_mask(LOG_GUEST_ERROR,
-+                      "%s: bad read offset 0x%" HWADDR_PRIx "\n",
-+                      __func__, offset);
-+        return 0;
-+    }
-+}
-+
-+static void imx95_xcache_write(void *opaque, hwaddr offset,
-+                               uint64_t value, unsigned size)
-+{
-+    IMX95XCacheState *s = opaque;
-+
-+    trace_imx95_xcache_write(offset, value);
-+
-+    switch (offset) {
-+    case XCACHE_CCR:
-+        /* Command bits complete instantly: store everything else. */
-+        s->ccr = (uint32_t)value & ~CCR_CMD_BITS;
-+        break;
-+    case XCACHE_CLCR:
-+        s->clcr = value;
-+        break;
-+    case XCACHE_CSAR:
-+        s->csar = value;
-+        break;
-+    case XCACHE_CCVR:
-+        s->ccvr = value;
-+        break;
-+    default:
-+        qemu_log_mask(LOG_GUEST_ERROR,
-+                      "%s: bad write offset 0x%" HWADDR_PRIx
-+                      " value 0x%" PRIx64 "\n",
-+                      __func__, offset, value);
-+        break;
-+    }
-+}
-+
-+static const MemoryRegionOps imx95_xcache_ops = {
-+    .read = imx95_xcache_read,
-+    .write = imx95_xcache_write,
-+    .endianness = DEVICE_LITTLE_ENDIAN,
-+    .impl = {
-+        .min_access_size = 4,
-+        .max_access_size = 4,
-+    },
-+    .valid = {
-+        .min_access_size = 4,
-+        .max_access_size = 4,
-+    },
-+};
-+
-+static void imx95_xcache_reset_hold(Object *obj, ResetType type)
-+{
-+    IMX95XCacheState *s = IMX95_XCACHE(obj);
-+
-+    s->ccr = 0;
-+    s->clcr = 0;
-+    s->csar = 0;
-+    s->ccvr = 0;
-+}
-+
-+static void imx95_xcache_init(Object *obj)
-+{
-+    SysBusDevice *sbd = SYS_BUS_DEVICE(obj);
-+    IMX95XCacheState *s = IMX95_XCACHE(obj);
-+
-+    memory_region_init_io(&s->iomem, obj, &imx95_xcache_ops, s,
-+                          TYPE_IMX95_XCACHE, IMX95_XCACHE_REG_SIZE);
-+    sysbus_init_mmio(sbd, &s->iomem);
-+}
-+
-+static const VMStateDescription vmstate_imx95_xcache = {
-+    .name = TYPE_IMX95_XCACHE,
-+    .version_id = 1,
-+    .minimum_version_id = 1,
-+    .fields = (const VMStateField[]) {
-+        VMSTATE_UINT32(ccr, IMX95XCacheState),
-+        VMSTATE_UINT32(clcr, IMX95XCacheState),
-+        VMSTATE_UINT32(csar, IMX95XCacheState),
-+        VMSTATE_UINT32(ccvr, IMX95XCacheState),
-+        VMSTATE_END_OF_LIST()
-+    },
-+};
-+
-+static void imx95_xcache_class_init(ObjectClass *klass, const void *data)
-+{
-+    DeviceClass *dc = DEVICE_CLASS(klass);
-+    ResettableClass *rc = RESETTABLE_CLASS(klass);
-+
-+    dc->vmsd = &vmstate_imx95_xcache;
-+    rc->phases.hold = imx95_xcache_reset_hold;
-+    set_bit(DEVICE_CATEGORY_MISC, dc->categories);
-+    dc->desc = "NXP i.MX 95 XCACHE controller (stub)";
-+}
-+
-+static const TypeInfo imx95_xcache_info = {
-+    .name           = TYPE_IMX95_XCACHE,
-+    .parent         = TYPE_SYS_BUS_DEVICE,
-+    .instance_size  = sizeof(IMX95XCacheState),
-+    .instance_init  = imx95_xcache_init,
-+    .class_init     = imx95_xcache_class_init,
-+};
-+
-+static void imx95_xcache_register_types(void)
-+{
-+    type_register_static(&imx95_xcache_info);
-+}
-+
-+type_init(imx95_xcache_register_types)
-diff --git a/hw/misc/meson.build b/hw/misc/meson.build
-index 0b7f5e4382d..d7d283a191b 100644
---- a/hw/misc/meson.build
-+++ b/hw/misc/meson.build
-@@ -178,3 +178,5 @@ system_ss.add(when: 'CONFIG_IMX95_ANATOP', if_true: files('imx95_anatop.c'))
- system_ss.add(when: 'CONFIG_IMX95_AONMIX', if_true: files('imx95_aonmix.c'))
- system_ss.add(when: 'CONFIG_IMX95_GPC', if_true: files('imx95_gpc.c'))
- system_ss.add(when: 'CONFIG_IMX95_SRC', if_true: files('imx95_src.c'))
-+system_ss.add(when: 'CONFIG_IMX95_PMIC', if_true: files('imx95_pmic.c'))
-+system_ss.add(when: 'CONFIG_IMX95_XCACHE', if_true: files('imx95_xcache.c'))
-diff --git a/hw/misc/trace-events b/hw/misc/trace-events
-index 15fab0596c2..0555b15a1f3 100644
---- a/hw/misc/trace-events
-+++ b/hw/misc/trace-events
-@@ -458,3 +458,11 @@ imx95_aonmix_m7_gate(int run) "M7 wait gate -> run=%d"
- imx95_gpc_mode(uint64_t offset, uint32_t target) "CMC_MODE_CTRL off 0x%" PRIx64 " target %u"
- imx95_src_m7mix_release(void) "SRC_GEN.SCR M7MIX reset released"
- imx95_src_slice_ctrl(uint64_t offset, uint32_t value) "SLICE_SW_CTRL off 0x%" PRIx64 " <- 0x%08x"
-+imx95_xcache_read(uint64_t offset) "read off 0x%" PRIx64
-+imx95_xcache_write(uint64_t offset, uint64_t value) "write off 0x%" PRIx64 " <- 0x%08" PRIx64
-+pf09_reg_read(uint8_t reg, uint8_t val) "PF09 reg 0x%02x -> 0x%02x"
-+pf09_reg_write(uint8_t reg, uint8_t val) "PF09 reg 0x%02x <- 0x%02x"
-+pcal6408a_reg_read(uint8_t reg, uint8_t val) "PCAL6408A reg 0x%02x -> 0x%02x"
-+pcal6408a_reg_write(uint8_t reg, uint8_t val) "PCAL6408A reg 0x%02x <- 0x%02x"
-+pf53_reg_read(uint8_t reg, uint8_t val) "PF53 reg 0x%02x -> 0x%02x"
-+pf53_reg_write(uint8_t reg, uint8_t val) "PF53 reg 0x%02x <- 0x%02x"
+ static bool arm_get_pmu(Object *obj, Error **errp)
+@@ -1659,6 +1669,15 @@ static void arm_cpu_post_init(Object *obj)
+         if (arm_feature(&cpu->env, ARM_FEATURE_V7)) {
+             qdev_property_add_static(DEVICE(obj),
+                                      &arm_cpu_pmsav7_dregion_property);
++            /*
++             * get_phys_addr_pmsav7() only runs on PMSAv7 CPUs, i.e. v7
++             * without v8 (a v8 M/R core uses the PMSAv8 MPU, which has no
++             * such alignment rule), so only offer the property there.
++             */
++            if (!arm_feature(&cpu->env, ARM_FEATURE_V8)) {
++                qdev_property_add_static(DEVICE(obj),
++                        &arm_cpu_pmsav7_rbar_align_down_property);
++            }
+         }
+     }
+ 
+diff --git a/target/arm/cpu.h b/target/arm/cpu.h
+index c0492c8dfbc..03ead3cda15 100644
+--- a/target/arm/cpu.h
++++ b/target/arm/cpu.h
+@@ -1145,6 +1145,12 @@ struct ArchCPU {
+      * architecture version.
+      */
+     bool cfgend;
++    /*
++     * If set, a PMSAv7 MPU region base that is not aligned to its region
++     * size is treated as aligned-down (matching Cortex-M silicon such as the
++     * i.MX 95 M-cores) instead of the architectural UNPREDICTABLE drop.
++     */
++    bool pmsav7_rbar_align_down;
+ 
+     QLIST_HEAD(, ARMELChangeHook) pre_el_change_hooks;
+     QLIST_HEAD(, ARMELChangeHook) el_change_hooks;
+diff --git a/target/arm/ptw.c b/target/arm/ptw.c
+index a29de0385f4..51805c05226 100644
+--- a/target/arm/ptw.c
++++ b/target/arm/ptw.c
+@@ -2757,11 +2757,29 @@ static bool get_phys_addr_pmsav7(CPUARMState *env,
+             rmask = (1ull << rsize) - 1;
+ 
+             if (base & rmask) {
+-                qemu_log_mask(LOG_GUEST_ERROR,
+-                              "DRBAR[%d]: 0x%" PRIx32 " misaligned "
+-                              "to DRSR region size, mask = 0x%" PRIx32 "\n",
+-                              n, base, rmask);
+-                continue;
++                if (cpu->pmsav7_rbar_align_down) {
++                    /*
++                     * Opt-in behaviour for Cortex-M silicon such as the
++                     * i.MX 95 M-cores: a region base not aligned to its size
++                     * is treated as aligned-down (RBAR.ADDR is only
++                     * [31:log2(size)]), matching that hardware, whose SM/RT
++                     * firmware programs e.g. DRBAR 0x4c800000 with a 512MB
++                     * size intended as 0x40000000. Off by default because the
++                     * architecture calls a misaligned base UNPREDICTABLE.
++                     */
++                    qemu_log_mask(LOG_GUEST_ERROR,
++                                  "DRBAR[%d]: 0x%" PRIx32 " not aligned to "
++                                  "DRSR region size (mask 0x%" PRIx32 "); "
++                                  "aligning down to 0x%" PRIx32 "\n",
++                                  n, base, rmask, base & ~rmask);
++                    base &= ~rmask;
++                } else {
++                    qemu_log_mask(LOG_GUEST_ERROR,
++                                  "DRBAR[%d]: 0x%" PRIx32 " misaligned "
++                                  "to DRSR region size, mask = 0x%" PRIx32 "\n",
++                                  n, base, rmask);
++                    continue;
++                }
+             }
+ 
+             if (address < base || address > base + rmask) {
 -- 
 2.34.1
 

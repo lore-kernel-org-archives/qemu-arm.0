@@ -4,119 +4,192 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DCDEDC5DF82
-	for <qemu-arm@archiver.kernel.org>; Thu, 20 Aug 2026 06:22:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E3D48C5DF82
+	for <qemu-arm@archiver.kernel.org>; Thu, 20 Aug 2026 06:28:24 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wwwA6-00058C-Bw; Thu, 20 Aug 2026 02:22:03 -0400
+	id 1wwwFz-0007Gu-U5; Thu, 20 Aug 2026 02:28:08 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>)
- id 1wwwA5-000581-56; Thu, 20 Aug 2026 02:22:01 -0400
-Received: from smtpout1.mo528.mail-out.ovh.net ([46.105.34.251])
+ (Exim 4.90_1) (envelope-from <khushit.shah@nutanix.com>)
+ id 1wwwFy-0007GY-7N; Thu, 20 Aug 2026 02:28:06 -0400
+Received: from mx0b-002c1b01.pphosted.com ([148.163.155.12])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>)
- id 1wwwA1-0004Fx-3Y; Thu, 20 Aug 2026 02:22:00 -0400
-Received: from director4.derp.mail-out.ovh.net
- (director4.derp.mail-out.ovh.net [79.137.60.37])
- by mo528.mail-out.ovh.net (Postfix) with ESMTPS id 4hQYHd22ryz66gb;
- Thu, 20 Aug 2026 06:21:48 +0000 (UTC)
-Received: from director4.derp.mail-out.ovh.net
- (director4.derp.mail-out.ovh.net. [127.0.0.1])
- by director4.derp.mail-out.ovh.net (inspect_sender_mail_agent) with SMTP
- for <jamin_lin@aspeedtech.com>; Thu, 20 Aug 2026 06:21:48 +0000 (UTC)
-Received: from mta3.priv.ovhmail-u2.ea.mail.ovh.net (unknown [10.109.249.201])
- by director4.derp.mail-out.ovh.net (Postfix) with ESMTPS id
- 4hQYHc4Jv9z1ys0; Thu, 20 Aug 2026 06:21:48 +0000 (UTC)
-Received: from kaod.org (unknown [10.1.6.4])
- (Authenticated sender: clg@kaod.org)
- by mta3.priv.ovhmail-u2.ea.mail.ovh.net (Postfix) with ESMTPSA id 78A9012E3F5B;
- Thu, 20 Aug 2026 06:21:46 +0000 (UTC)
-Authentication-Results: garm.ovh; auth=pass
- (GARM-105G00661074592-f8eb-4f68-bcfb-8ba6520df982,
- 290C66463DCC85845983D07CBD6D5DF49C8F16C8) smtp.auth=clg@kaod.org
-X-OVh-ClientIp: 2.10.174.70
-Message-ID: <4135cc6c-2358-4b82-8eec-f49132799869@kaod.org>
-Date: Thu, 20 Aug 2026 08:21:45 +0200
+ (Exim 4.90_1) (envelope-from <khushit.shah@nutanix.com>)
+ id 1wwwFv-0005EH-OE; Thu, 20 Aug 2026 02:28:05 -0400
+Received: from pps.filterd (m0127844.ppops.net [127.0.0.1])
+ by mx0b-002c1b01.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id
+ 67JLB4qd1442591; Wed, 19 Aug 2026 23:27:32 -0700
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=nutanix.com; h=
+ cc:content-id:content-transfer-encoding:content-type:date:from
+ :in-reply-to:message-id:mime-version:references:subject:to; s=
+ proofpoint20171006; bh=eI/PgYOGh4Kpjr7E1Iys8ahVIU01EmgvzU6724sd4
+ V0=; b=Iwfe84BJe+TF/353KT+o/+IDalgL2pV8L0Aw3I0lBcWjPMgp3adfAkmf7
+ 40j58r9Gj/kxRL2PjqWUid1KWtM2G6PCYnYjgneO7tC4xDPg/K9pJy1ZYQYMZM3N
+ DmdMLT9PtYxLMjGFluQxLo6DXbmPt7t1TNq+b5YYGo16FE9tR+RS68Gm2uPMje48
+ E4LK+HnrLQtBfPKX33V8spkVqvA9aB0+4JTUkPjIk6ZVqeXQ901NLXgyqfpPNgVx
+ YNqUEMbkAQUL0ZekIMZLy7WMcRf6s1a7WgxcdV8l0cu4H/a2IzLPqwsFH9W9SJTS
+ 57hz7pe/6jJLuKlbLVnRK3HMRbnZA==
+Received: from dm5pr21cu001.outbound.protection.outlook.com
+ (mail-centralusazon11021127.outbound.protection.outlook.com [52.101.62.127])
+ by mx0b-002c1b01.pphosted.com (PPS) with ESMTPS id 4g4up4vw9t-1
+ (version=TLSv1.3 cipher=TLS_AES_256_GCM_SHA384 bits=256 verify=NOT);
+ Wed, 19 Aug 2026 23:27:32 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=GSFc9K9PLhfKGTNMrkHcw6NVq/1BJSIcx+suT3FmIAGcTD5l7htApUjVDTQcqY3v7uUduZFcmiSeB6DpDFbKRb1UzNyhplZaHs2+s6CVQV7Em2CcFOvqapkwLhn5Psoi0ZmdqzGdwh9TtscP5PPISrHxlga8CewNA61uWDzA/xhyTz7VyQvWtGBpyBSa5Cypr3b/5CLVVuH63YRXERmmazMEhONY906p3ka/mNg7y0Y/4560TuJxkUWdTBhwV4RnUxssTGWL3rXw7E1BM4/8j0l//VpJOsmHkH9z61BrjaR4P2z9Hyo9I7IKoDpgSV4XpEDIfL1q/fLyA+aL42z4Ag==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=eI/PgYOGh4Kpjr7E1Iys8ahVIU01EmgvzU6724sd4V0=;
+ b=l/lJHXOKfR4e3rAl4pLN6e/zc1lNdC8Z6kng1Tis+Dlku6/RCRL3J9AsdVp6/+3ERG8EmfSVqr7xtlPlAFxMPWal1qOIAmhhbk6cDK5OiYmriRWlXTM9SAwBzjApM0Io/sOsQGA1wWlR/KZ5sADnfHxu+S7YsWZJssNGeYkFKus+di/R8EqVKaj1qu21OUCknooZx81s/3oPZNRH33PfV+PPYkoXA++O3TyJipDzRL8NsnzaZK2SmBlv0tIPB5hlPaZSS7j1NV3ee19twYU0LqjOQzbUKFchtclSGMLGoH3uhshRZ0zaLO4K3CDHeR5xE1SNEZRUoszHbRo/dQP0dQ==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=nutanix.com; dmarc=pass action=none header.from=nutanix.com;
+ dkim=pass header.d=nutanix.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=nutanix.com;
+ s=selector1;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=eI/PgYOGh4Kpjr7E1Iys8ahVIU01EmgvzU6724sd4V0=;
+ b=J++H3dtDLisQ5QHl+o5CBBERU9X+lNSVQ/l0K+BPMW1yGMYpeul2j8dlsdp0wqRYtI83PwSbG/xhKQqk/oPxZjMfkMDZIg7D6M/3MMYb1zBhG7wyfZgstjmsiCdwHA7vzQLxfk3HJCcOag2sxLhdUq8ugrWeG++drkb31wJGpMw2ot6IamZH0iLtTJMWKmdl73MkEXXoacRCVCdb9z6D5dd3pKB36NPYjqerfAh63wvdL8CTD/3YRA1SgbGr+iBMmPbyn9SeQJUGJxdaeP9LGaCYb/LKY1PudTVb4hxccfIriArtyGy7K2NUZSziWq+TkcDFRmDM2Ia6yKhwbnQJvg==
+Received: from SA2PR02MB7564.namprd02.prod.outlook.com (2603:10b6:806:146::23)
+ by MW4PR02MB7300.namprd02.prod.outlook.com (2603:10b6:303:72::23)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.21.339.8; Thu, 20 Aug
+ 2026 06:27:28 +0000
+Received: from SA2PR02MB7564.namprd02.prod.outlook.com
+ ([fe80::1ea5:acb6:ebe1:e1c4]) by SA2PR02MB7564.namprd02.prod.outlook.com
+ ([fe80::1ea5:acb6:ebe1:e1c4%5]) with mapi id 15.21.0339.008; Thu, 20 Aug 2026
+ 06:27:28 +0000
+From: Khushit Shah <khushit.shah@nutanix.com>
+To: Eric Auger <eric.auger@redhat.com>
+CC: "eric.auger.pro@gmail.com" <eric.auger.pro@gmail.com>,
+ "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>, "qemu-arm@nongnu.org"
+ <qemu-arm@nongnu.org>, "kvmarm@lists.linux.dev" <kvmarm@lists.linux.dev>,
+ "peter.maydell@linaro.org" <peter.maydell@linaro.org>, Shaju Abraham
+ <shaju.abraham@nutanix.com>, "yangjinqian1@huawei.com"
+ <yangjinqian1@huawei.com>, "cohuck@redhat.com" <cohuck@redhat.com>,
+ "richard.henderson@linaro.org" <richard.henderson@linaro.org>,
+ "sebott@redhat.com" <sebott@redhat.com>, "skolothumtho@nvidia.com"
+ <skolothumtho@nvidia.com>, "philmd@oss.qualcomm.com"
+ <philmd@oss.qualcomm.com>, "maz@kernel.org" <maz@kernel.org>,
+ "oliver.upton@linux.dev" <oliver.upton@linux.dev>, "pbonzini@redhat.com"
+ <pbonzini@redhat.com>, "armbru@redhat.com" <armbru@redhat.com>,
+ "berrange@redhat.com" <berrange@redhat.com>, "abologna@redhat.com"
+ <abologna@redhat.com>, "jdenemar@redhat.com" <jdenemar@redhat.com>
+Subject: Re: [RFC PATCH v7 00/18] kvm/arm: Introduce a customizable aarch64
+ KVM host model
+Thread-Topic: [RFC PATCH v7 00/18] kvm/arm: Introduce a customizable aarch64
+ KVM host model
+Thread-Index: AQHdMGz4o1FvPV9HFUq/Vgw1esAzvQ==
+Date: Thu, 20 Aug 2026 06:27:27 +0000
+Message-ID: <3057A3BC-2BE9-4D2B-9D04-E3B31A6D0599@nutanix.com>
+References: <20260726153221.24773-1-eric.auger@redhat.com>
+In-Reply-To: <20260726153221.24773-1-eric.auger@redhat.com>
+Accept-Language: en-GB, en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+x-ms-publictraffictype: Email
+x-ms-traffictypediagnostic: SA2PR02MB7564:EE_|MW4PR02MB7300:EE_
+x-ms-office365-filtering-correlation-id: 0d225bba-7e14-47e6-0a56-08defe841b3f
+x-proofpoint-crosstenant: true
+x-ms-exchange-senderadcheck: 1
+x-ms-exchange-antispam-relay: 0
+x-microsoft-antispam: BCL:0;
+ ARA:13230040|1800799024|376014|7416014|23010399003|366016|38070700021|6133799003|56012099006|10067099003|22082099003|18002099003;
+x-microsoft-antispam-message-info: SwQoodKGq/pq/pAdijXi1q+UHP2E1jRinBIjXHcIV2nGK3Zgj8efJ41URNLsjsa8bH7uwN4JeFghpRtGFZxpkODiM6yyNtxcO/qtJuMIuYHC9ls7SbYQ10GbBQ2BFJ5wlOEjv16Dq9zzHLdvhYMHZzSDskA57UXBT0Cv5uuJ5Wy9wDAMVoEWyG6QURFgAuzAG3rpPE1IcjxHxzW5NaA0cwoifmlVDpyTS22/mlAJ9r697KVum01Zcq66c30xoUKtGckAEMxHExx7XfE5TLkgmL8pYp9OyejE/K3qLRvQL6HtEc6OrJrnf1tgoOeoKn5EEJFztTmUhPetsEz7iRwXJElDKyQg6yQfVIvUiuh5CtyjCRG+57VXd1bRi8NP9TT1hzTO02LpdU9zm/B1Zz01i9EQscXcnNAwLPoN8Zlc4w9P7alzcxsmaGAM+7v1KAKqVP9nuEDaCR9OKoy6rF+rmPtJq0ULUPFf7o6Mg5NaiAU2zt+UtUKI6Kok2W+GZsEw51LJLMAVhH1yqA3VIZGjDqqH+wQupt2ETe/ZA4YAKfGNHc+ZabdV+ZLKJdd8m6WPlAQ7YZONwa+lX4+t1arBuI1CXFmfpToH3tlinjFESj2nuQkB8pI+Ffeslj0wJgFc121GhZ2xASye+DNwxqxdBt/BE+hoMbgRJfE0+fy9C96tiB4oSX3B2SnVx2WhvhmB41/aQArb3FKDXKi3buHBmp4hsqIsuWr3ZCv3V6UZWpE=
+x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:SA2PR02MB7564.namprd02.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(13230040)(1800799024)(376014)(7416014)(23010399003)(366016)(38070700021)(6133799003)(56012099006)(10067099003)(22082099003)(18002099003);
+ DIR:OUT; SFP:1102; 
+x-ms-exchange-antispam-messagedata-chunkcount: 1
+x-ms-exchange-antispam-messagedata-0: =?utf-8?B?SXhLWVZLc2s2TndkWnY3WW1hREZsNzNucitqdmxlZlM0ZFBjQ0tuTHJzVUtX?=
+ =?utf-8?B?MjJKMG92eEJZeTlLV1AzRVpwbG9WVVMvRGNBd3JuUlM1emp0dFpLbFFzQnFO?=
+ =?utf-8?B?QWhuYmFhVXV4VkhPTlU5QzNmNmlYYVhyRHpWeWVNaWlmQ2JjU2o0K3JtZFhr?=
+ =?utf-8?B?YXNGZTk4NGEzYUlIV2U4cGVENUQvbTlESitWNGpZZ3dvQUZaN0JLamVZcDBJ?=
+ =?utf-8?B?TXBYOXB3RDROZHJjK3BxNHFVWnBGQTFRalFoWGh3REd4TUlaTkVxYlg2Mk5p?=
+ =?utf-8?B?Mll1aTNwbitQcFd4ckJ5S0NjNUJHL1Y2SE1wT1JGMGFYVFZKRmRzL29EYlpS?=
+ =?utf-8?B?U1hjNFg3VVlsOEl4eXB3dGthQ3IzRXlFanVhdXpYcDhXVXRJeGxFb21pRVhR?=
+ =?utf-8?B?WTJDWWN3OHhyRWZMbmczcTZuSUxnSWJWdU1hVS9iTW9zb0tPMVJJTWFlbzRK?=
+ =?utf-8?B?cjZac2VBaGpBd3MxVkxJcmVnc05rZHVLMStCREhaVFR4NE5uQXJNWEQ5emNa?=
+ =?utf-8?B?Y0czVnIrY081MTdSMzBNaFVTeEFCM21rVncvdkY1aEZzK0lsTkhXN0VJeGw0?=
+ =?utf-8?B?K05IcU1QakxZb2EyYXpoN04vREtYOUhoTUlxTTk0c0dnNThCb1A2QUEyS1FS?=
+ =?utf-8?B?QmpDTjl5aWQ2MFp2ME00L2VQUCtSM09EVjM0YmZKTXNkMFZCbGhIQVVNSEFn?=
+ =?utf-8?B?N2plRXdtNysySW1TZjVGa0dRZG9LaTVjZ0dUdGg5eWVIRXR4bExiWThpSFJH?=
+ =?utf-8?B?bUhVeklVK2FZTXlkSUg3M2xHU3BncHJKekoxM0d4RFJvRk9BZFcxZGNqVWtH?=
+ =?utf-8?B?Z0N2K2xGUkFTc3V0aDFQMXRlckdOTm4yYjE4SldwNjR3RWdqcktSVmVtTjk1?=
+ =?utf-8?B?YTVsZ1VjNWtTanBCZjBBMElxN2ZwaTZYdnk4TW9laXIyenJrNFMxWGVvM3pT?=
+ =?utf-8?B?bUtSZTFTR3JXZlRVeG5ZU2hHVkE3QkRoT2JmZURncDRJN3NKUDE1SVBhUDdi?=
+ =?utf-8?B?TFNnZkpjNGxMNGxab0hXK0hmODUvYmk0M0NnYkE2Q0ptd2NVTk1valBGVkhq?=
+ =?utf-8?B?SkdkUHJSdWlRaUd2UjJiME9CaG9ZbnJCcWVjTFVNWVJRL0VWSU40NFVpaTdm?=
+ =?utf-8?B?dFJuemdtZjRTQmMyS1VaNWhOUWhFS1RQUVJLcFdQZ0IxV25zWnNFMlcvcWp5?=
+ =?utf-8?B?cml6TGZRSVlTZmlZT21Rbkl4bno2RWtjYWovellDc3BaRnljTFBKZ01vOW5G?=
+ =?utf-8?B?M0p4c1NiQWU4TlpMREh6RzZqajlKM1NSTStYamc2MjNiczkrRlV2SVM4TVVG?=
+ =?utf-8?B?V0VCMUhMdVpveDhYZEV1eXA2Yy85Y283VVZ2VXlKRFAyZVpWZ1RyVm44aFhT?=
+ =?utf-8?B?ak4rVVdka1dFSTVWUGQ2VTBYa2tBUk4vbllhNkd3VXYvdW15bm9yaE03dUlY?=
+ =?utf-8?B?Mm53ZEZ5d0xSWllrU3k1Q3BSYVRIaitLenJIZllBVFcwVGtCTm14R05YMkov?=
+ =?utf-8?B?Mmx4bjB4TU9BNThMK2J1c3VvOEFyVjlmZHhETDBhSENoV1ZtclVtT1pzOHdm?=
+ =?utf-8?B?VFJFMm9qcXNZNlh3bnltNXQxL3E5c0NMcnd5amowckJYd3FPVkdSMlMxc1V1?=
+ =?utf-8?B?K0NqaTcxdHIrMk9GUjBaWUVObGVuUHNJbk5Kdks0OFp2QzE3N1hDVWFiQk9U?=
+ =?utf-8?B?WlNKQTNaNEwxTVJxUmNUd1h3UTJ4bVBMQ0dQT3d1Z0hodUl5cEl1d0ZpNUpK?=
+ =?utf-8?B?VnVwa1RoOHRlUHFjeTN2N2Z2dlZjMkQrdEpsbTZXRUJjVmF2UUdtd2p6bmcy?=
+ =?utf-8?B?UU9MVGpwbWpkWGxQZHdOK1VwYXFZM0l2NjZLVWNTTVZGVVlyY0FlcGdsWHFH?=
+ =?utf-8?B?c3B3bzFUdU13M3JxY2U0MTljMFM3RE9LN3ZMcFQrSEpjVXcyeUdYRWY4dFRV?=
+ =?utf-8?B?eWx2aHRpOWt6UWY5SWc0a08vajJDNUk2aXRpWC9sQ3ZqYjU3bXpIUnp2TEFF?=
+ =?utf-8?B?bngwanhWK2dxZnVma2NyZVFYMHlQMmdLUmVCTkFpNTVuNysxREdGaGkxNVBy?=
+ =?utf-8?B?YVBHZEhVNDlzWU5UR3pzMnZ5V2pBVytHWmp5dG1XMWYzUnZOczBGL2ZFWEdW?=
+ =?utf-8?B?a0l6WDEzais4bmdCaGNwY0VGZUZVZjZ6VnhkejZCWFdwYjVMMVF3dG5uZ0U2?=
+ =?utf-8?B?Y0dsL1dIVFk3eHk0eS8rSXBicUpzOXE1VjB5NUJGWDZXQzhsMU1pSmJCUHdO?=
+ =?utf-8?B?NUpGQWV0Y0ppL2pHMnNuRDE3UlNTa1cwdjk0WlRGTDhMZkJXQlh1cjVFa3g4?=
+ =?utf-8?B?Z0xzYzRvOU84WmxMWG81Wnd3UEhtWURZWVNPR2JzMGIxMmN1RzRIRHdwZHQw?=
+ =?utf-8?Q?gOoj6whHhm5rLjf8=3D?=
+Content-Type: text/plain; charset="utf-8"
+Content-ID: <979BD17B03D3C944B759D9A394152E75@namprd02.prod.outlook.com>
+Content-Transfer-Encoding: base64
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v4 0/7] Add IBM Huygens BMC machine for AST2700
-To: Mikail Sadic <mikail.sadic@ibm.com>, peter.maydell@linaro.org
-Cc: pbonzini@redhat.com, ninad@linux.ibm.com, titusr@google.com,
- jeuk20.kim@samsung.com, philmd@mailo.com, steven_lee@aspeedtech.com,
- leetroy@gmail.com, jamin_lin@aspeedtech.com, kane_chen@aspeedtech.com,
- andrew@codeconstruct.com.au, joel@jms.id.au, calebs@linux.ibm.com,
- milesg@linux.ibm.com, qemu-arm@nongnu.org, qemu-devel@nongnu.org
-References: <20260813193040.669533-1-mikail.sadic@ibm.com>
-From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
-Content-Language: en-US, fr
-Autocrypt: addr=clg@kaod.org; keydata=
- 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
-In-Reply-To: <20260813193040.669533-1-mikail.sadic@ibm.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-x-ovh-tracer-id: 11311916366334110851
-X-VR-SPAMSTATE: OK
-X-VR-SPAMSCORE: -100
-X-VR-SPAMCAUSE: dmFkZTGvX1GBrs/gm2aZdVM1fG23g7TdnevW+cVneaSX9Hj832O0dkJrHftAgucgH4CG6hJ+TcvqTNY7tT76SOPLhG7jIw7gwS1DUCLjaEiOdLnYwhRnU5kY5zaYJZEIFm81rSGejNpnR4GOCnXpwgKgBGE7ie5JIojf7SvfqblWo4o4S1cipCBpX/3UFJh5yOTfwXnqLowSDVvdtlj2EsS0u6t/NEDx9MLl/koAgDRkZ9dNdNe9IwksLi+FU/ZRq5N3smEaN0vHZuY7x2MEXwJSp0BZ62HkL+ayW6lFgVDQAxDrD6hxnRuuAJh2rROoaSv9hVtDPDmjY+XdgaZPbl8BgjuWpvdbjlX1s7h5gJdqNBWzau1vXs7IAqBS7eDIbBjkb38OJ17ruOO//bwNNs93lHY4Kuc1nrysnw8n9vFW2iYPibkLeJHbPe/VrVdCsuryurpqYMysJihKbaB1T1xVeTtWLIX22e0HI7OzGVVGlZ6Eg9MdZXwKKQ14Zg3w3H28BzepS/kkDetAGst/1WAmkZrEizO+mfEuHU4CoaAUx+bmGZoVUtX2tTeUoGdwrscn1C0Z2SfMlLw321dRxEw3KopW9tODhaGdiHoUAL2JldPxPDam4fkof+r+1f+dHyOxSXaRtmqgFOnEUKs9oRsp3lbxB4NC2EthS/LCz3xgnrv+kA
-DKIM-Signature: a=rsa-sha256; bh=SY6AZKdu9/TczBJfbeVeeI8RM7hWjOSy8PS7JlRBTmM=; 
- c=relaxed/relaxed; d=kaod.org; h=From; s=ovhmo393970-selector1;
- t=1787206911; v=1;
- b=VJg6YVLTaAw2os83l3Px/0PNgEvUc0dhmKCjaR40JJmKqhMiTrs3OL0Vrplc2rfeeJnNm2Sd
- +ye3qDQyNw2dGDroK5CF+qW0xgtwS+h/5dm+bFg2/ewzDyJb2IzKLIeICpCljgYHCoE+eekZQBB
- P0HGdbq0pWhugO5iOoaaty9QJ8H9hzbURZIL91ZlTFGQ7804Nib/gkUvKVRRKhOnXxdJsaeEsgq
- VtGtGzGkG2nQkioQrqHkIcPLCfeQ+MZPMcbMrOyh+GsK6OODr0jyEuXLldzRSdmME4O1Id+rTC0
- 07dE6p/YfAZOVwBKZigvsdM3B3n0m8vlsSMMdzMvDjtzA==
-Received-SPF: pass client-ip=46.105.34.251; envelope-from=clg@kaod.org;
- helo=smtpout1.mo528.mail-out.ovh.net
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Exchange-RoutingPolicyChecked: pJ5AXMVrm8MUBExl7v31p6cVuf6TB4t/W8bcNFIxLTPmykfPp5Loy/aryBoIoLJ39VryZZA8JFIvP96SkJvh8GqeDhhcOCf2j25Fze89oPbIyQcN5jj7McqJXefltkxk6ae3PfBuM81ThuJu5LOproO3HqM7JK4+lHsV22j9Ca/4O3GgqclsjdEAAz6EJoI4G9IFc8TBm88J0PPLbSVpNSbNAP4TZRo2Jw24NW6ABj/8n8XlpCIAYBarqVQ7hP+qest1f9p+rMJgFq3qxsZhPy39yRhghHeUZmkvwYa9xzSN8/1x33IdC2ZOi5Gx6BJcHsk2oXXnDzZxYM7He/RMYA==
+X-OriginatorOrg: nutanix.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-AuthSource: SA2PR02MB7564.namprd02.prod.outlook.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 0d225bba-7e14-47e6-0a56-08defe841b3f
+X-MS-Exchange-CrossTenant-originalarrivaltime: 20 Aug 2026 06:27:27.9109 (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: bb047546-786f-4de1-bd75-24e5b6f79043
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: lH/b/yuB/jHPiiC92I0U1WFp7mSXTfcIezXzehMTZwbmQ/ma3JTzmF1obRGm4NEks+Xuw5dkrA9+nmN9GH5lgdFBMRs7/iZBs3X9b0NsF6c=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: MW4PR02MB7300
+X-Proofpoint-ORIG-GUID: kx41yH8PsvxNxbciOJ3q-0gF0mtOdvmH
+X-Proofpoint-Spam-Info: AW1haW4tMjYwODIwMDA0NSBTYWx0ZWRfX99mcpkszRMD/
+ ydxsASVDqXw9wnACOZORoRtiTGqEdOTLjw3qKpg2Hg6oNkrnJw8w9Di9JIYyE3lNOie6iIj7VIl
+ fJN3tympfV+leA1R516ABhZkzN7Nmew=
+X-Proofpoint-GUID: kx41yH8PsvxNxbciOJ3q-0gF0mtOdvmH
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwODIwMDA0NSBTYWx0ZWRfXwvKGdwP+j+Py
+ oF7E8jCUv05B+n1Ouv1OKfRYDGso/02kJp3wMnWGJMd7ecXbyVQuW0zewYSMrzXgUMtOOjnw+mn
+ sXy2qca3laTLqt1SnWk+TDvafmMlPRYGGoL3BvlYjp+/F+xqyYdRmdw6dfq33jXcb/qebs3wwCE
+ dMVk7joU/SWm1p3p1fXV2IhecHDqLRMBkybYd8X6SoGztD0ozx2LJcyyPUzPClU2aaPkUq49hBG
+ H1NdCBKI8mlVU9FO7HOgpGqwswlG+y4N1gYLPmoRF1x/wEYK/kXRcNSCjnCWpg7reIbQsZbIfN7
+ JXtGKCWzkaqLj37dNngpGzu0DrODqzHr94FbyT4L9Az3CC+So1u3tVPOZ/hGxjm6qhi3jVpXO3J
+ u8WW4oxVNoAEpGJKFm8O7Ednj+koAcTOR8tBob26NNmZkL/EdkUudFqCGEUI/arK1o4qWQj7mX9
+ n7sDVcB3ieAy2m7JA3w==
+X-Authority-Analysis: v=2.4 cv=JpDBas4C c=1 sm=1 tr=0 ts=6a869e54 cx=c_pps
+ a=BmeY6EEv89IKwuNcnmf6GA==:117 a=z/mQ4Ysz8XfWz/Q5cLBRGdckG28=:19
+ a=lCpzRmAYbLLaTzLvsPZ7Mbvzbb8=:19 a=xqWC_Br6kY4A:10 a=IkcTkHD0fZMA:10
+ a=Sv0fKeRqtYgA:10 a=0kUYKlekyDsA:10 a=VkNPw1HP01LnGYTKEx00:22
+ a=VofLwUrZ8Iiv6rRUPXIb:22 a=0LlEyIVc8U2lsR7dKhuH:22 a=NEAV23lmAAAA:8
+ a=20KFwNOVAAAA:8 a=Q_UvipC71eb4zYPWmDAA:9 a=QEXdDO2ut3YA:10
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.293,Aquarius:18.0.1176,Hydra:6.1.134,FMLib:17.12.100.49
+ definitions=2026-08-19_06,2026-08-19_02,2025-10-01_01
+X-Proofpoint-Spam-Reason: safe
+Received-SPF: pass client-ip=148.163.155.12;
+ envelope-from=khushit.shah@nutanix.com; helo=mx0b-002c1b01.pphosted.com
+X-Spam_score_int: -30
+X-Spam_score: -3.1
+X-Spam_bar: ---
+X-Spam_report: (-3.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.341,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_LOW=-0.7, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -132,211 +205,151 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Mikail,
-
-On 8/13/26 21:30, Mikail Sadic wrote:
-> This series adds initial support for the IBM Huygens BMC, the baseboard
-> management controller of an IBM POWER12 server platform, based on the
-> ASPEED AST2700 A2 SoC.
-> 
-> It introduces a CFAM-S FSI responder model, wires the AST2700 FSI
-> controllers to their APB-to-OPB bridges, adds a TI UCD90320 PMBus
-> power-sequencer model, adds an AST2700 UFS host controller on top of the
-> generic sysbus UFS device, and finally adds the huygens-bmc machine that
-> ties these together to boot OpenBMC from FMC flash and a UFS root
-> filesystem.
-> 
-> Dependencies, both on-list, neither merged yet:
-> 
-> 1. Jeuk Kim's UFS restructure, which patches 5 and 6 build on:
-> 
->       https://lore.kernel.org/qemu-devel/cover.1786096976.git.jeuk20.kim@samsung.com/
-
-
-Since this series is the primary user of the UFS restructure, would you
-have time to review it ?
-
-> 
->     The base-commit trailer below therefore names a local commit: current
->     master plus those two patches. Patches 1-4 and 7 do not need it.
-> 
-> 2. Jamin Lin's I2C block-read fix:
-> 
->       https://patchwork.kernel.org/project/qemu-devel/patch/20260813090205.853307-1-jamin_lin@aspeedtech.com/
-
-Same here.
-
-Thanks,
-
-C.
-
-
->     This one is a runtime rather than a build dependency, which is why the
->     series is not based on it. Everything compiles and every machine
->     constructs without it, but the UCD90320 in patch 4 will not probe,
->     because the ucd9000 driver identifies the device with an SMBus block
->     read and the AST2700 reports the block length from a register that
->     patch models. I have tested his patch against that driver and it works;
->     the Huygens-BMC boot was run with it applied.
-> 
->     The guest also needs a kernel that reads the block length from the
->     right register on AST2700, i.e. one carrying
-> 
->       https://github.com/AspeedTech-BMC/linux/commit/f9938ec5799e
-> 
-> Patch summary:
-> 
->    1. fsi/cfam: a common CFAM model holding the slot, config table,
->       responder and local bus, with the existing cfam as its first
->       derivative. No functional change to the existing cfam.
->    2. fsi/cfam: the CFAM-S as a second derivative - its own config table,
->       the slave-ID alias window, and a v1 mailbox engine added to lbus.c
->       alongside the scratchpad.
->    3. arm/aspeed: wire the two AST2700 FSI controllers to their APB-to-OPB
->       bridges.
->    4. hw/sensor: TI UCD90320 24-rail PMBus power sequencer.
->    5. ufs: a configurable logical-block-size on ufs-lu, and an unmapped LUN
->       answering INQUIRY as "not connected". The ufs PCI device keeps its
->       current property set and geometry.
->    6. ufs/aspeed: the AST2700 UFS host controller as a subclass of
->       TYPE_SYSBUS_UFS, adding only the UFSHCI version.
->    7. arm/aspeed: the huygens-bmc machine.
-> 
-> Changes since v3:
-> 
-> * Dropped the i2c/aspeed patch (v3 4/8). Jamin Lin has posted the correct
->    implementation, which the UCD90320 now depends on instead; reviewed and
->    tested, see the dependency note above. The guest also needs the AST2700
->    kernel fix linked there.
-> 
-> * Rebased onto current master, which is past the 11.1.0 release. v3 was on
->    v11.1.0-rc3. The only conflict was hw/arm/Kconfig, where the UCD90320
->    select landed next to the newly added ADC128D818 one.
-> 
-> * No other patch changed. Patches 1-3 and 5-7 are the v3 patches with
->    only their numbering shifted.
-> 
-> Not addressed in this series:
-> 
-> * CFAM extended addressing (Miles): the mode where a single CFAM has 8MB
->    rather than four cascaded CFAMs sharing that space. This changes the
->    addressing model of the existing FSI/CFAM code rather than anything this
->    series introduces, so it's left as follow-up work. It does bear on
->    patch 2 though: the CFAM-S there aliases one 2MiB slot across the 8MiB
->    window to fold the slave-ID views together, and if extended addressing
->    is modelled properly that window is probably the wrong shape or should
->    not exist at all.
-> 
-> * A functional test for the machine. The v1 test depended on non-public
->    Huygens images and was dropped; it will be resent once images can be
->    published.
-> 
-> Testing done:
-> 
-> * Whole series builds, and each of the 7 patches builds standalone.
-> * make check passes.
-> * huygens-bmc boots OpenBMC to the login prompt and multi-user target
->    from FMC flash + UFS storage (internal images), with Jamin's I2C patch
->    applied. The UCD90320 probes, reports its device identification over an
->    SMBus block read, and the power sequencer publishes system power state.
-> * PCI UFS qtests pass (13/13), unchanged by patch 5.
-> * aspeed_fsi-test passes (4/4), unchanged by the CFAM patches.
-> * huygens-bmc, ast2700-evb and ast2600-evb all construct successfully.
-> * On huygens-bmc, the UFS version register reads 0x00000200, and the
->    ufs-lu created by the board reports a 512-byte block size and passes it
->    to its backing scsi-hd. The PCI ufs device with no property set still
->    reports 4096.
-> 
-> Changes since v2 (unchanged from the v3 posting, for reference):
-> 
-> * UFS: rebased onto Jeuk Kim's restructure, as requested. The v2 core
->    refactor (v2 patch 6) is dropped entirely, Jeuk's patch 1 supersedes it.
->    hw/ufs/aspeed_ufs.c is now a subclass of TYPE_SYSBUS_UFS whose only
->    AST2700-specific behavior is pinning the controller version register
->    to 2.0, chained after the parent realize. MMIO, IRQ, DMA address space,
->    properties, migration state and unrealize all come from the generic
->    sysbus device, and the Aspeed type adds no instance fields.
-> 
->    The two behaviors Huygens needs that the restructure does not provide
->    are now their own patch, placed ahead of the Aspeed patch: the ufs-lu
->    logical-block-size property (default unchanged, so the PCI device is
->    unaffected) and the unmapped-LUN INQUIRY reporting "not connected"
->    rather than failing the request. logical-block-size now also rejects
->    non-powers-of-two, values outside 512..UFS_BLOCK_SIZE, and a drive
->    shorter than one block, which would previously have realized a
->    zero-block unit.
-> 
->    The Aspeed SoC Kconfig now selects UFS_SYSBUS. It previously relied on
->    UFS_PCI being enabled via "imply PCI_DEVICES".
-> 
-> * CFAM: dropped the State suffix from the instance struct names (Miles).
->    FSICFAMCommonState becomes FSICFAMCommon; FSICFAMState, which predates
->    this series, becomes FSICFAM to match rather than leaving the two
->    spellings side by side in one header; FSICFAMSState becomes FSICFAMS.
->    The FSI prefix is kept. The class structs keep their suffix, as is
->    usual for QOM. Also fixed patch 1 to check the realize_engines() return
->    value.
-> 
-> * Machine: reworded the commit message (Miles). No code change.
-> 
-> Note: checkpatch reports a couple of MAINTAINERS/SPDX warnings for the
-> new files; they are covered by existing wildcard entries in the ASPEED
-> and FSI sections.
-> 
-> Thank you again for all of the feedback.
-> 
-> Mikail Sadic (7):
->    fsi/cfam: Add common CFAM base class
->    fsi/cfam: Add CFAM-S model
->    arm/aspeed: Wire AST2700 FSI controllers to APB-to-OPB bridges
->    hw/sensor: Add UCD90320 model
->    ufs: Make the logical block size configurable and answer absent LUNs
->    ufs/aspeed: Add AST2700 UFS host controller
->    arm/aspeed: Add AST2700 Huygens machine
-> 
->   MAINTAINERS                     |   3 +
->   docs/specs/aspeed-ufs.rst       |  46 ++++++
->   docs/specs/fsi.rst              |  15 ++
->   docs/specs/index.rst            |   2 +
->   docs/specs/ucd90320.rst         |  36 +++++
->   docs/system/arm/aspeed.rst      |  50 ++++++-
->   hw/ufs/ufs.h                    |   3 +
->   include/hw/arm/aspeed.h         |   1 +
->   include/hw/arm/aspeed_soc.h     |   3 +
->   include/hw/fsi/cfam-s.h         |  40 ++++++
->   include/hw/fsi/cfam.h           |  68 ++++++++-
->   include/hw/fsi/fsi-master.h     |   4 +-
->   include/hw/fsi/lbus.h           |  11 ++
->   include/hw/ufs/aspeed_ufs.h     |  15 ++
->   hw/arm/aspeed.c                 |  25 ++++
->   hw/arm/aspeed_ast27x0.c         |  31 ++++
->   hw/arm/aspeed_ast27x0_huygens.c | 241 ++++++++++++++++++++++++++++++++
->   hw/fsi/cfam-s.c                 |  91 ++++++++++++
->   hw/fsi/cfam.c                   | 125 ++++++++++-------
->   hw/fsi/fsi-master.c             |   9 +-
->   hw/fsi/lbus.c                   |  69 +++++++++
->   hw/sensor/ucd90320.c            | 169 ++++++++++++++++++++++
->   hw/ufs/aspeed_ufs.c             |  67 +++++++++
->   hw/ufs/lu.c                     |  67 ++++++++-
->   hw/ufs/ufs.c                    |   2 +-
->   hw/arm/Kconfig                  |   2 +
->   hw/arm/meson.build              |   1 +
->   hw/fsi/meson.build              |   2 +-
->   hw/fsi/trace-events             |   2 +
->   hw/sensor/Kconfig               |   4 +
->   hw/sensor/meson.build           |   1 +
->   hw/ufs/meson.build              |   1 +
->   32 files changed, 1142 insertions(+), 64 deletions(-)
->   create mode 100644 docs/specs/aspeed-ufs.rst
->   create mode 100644 docs/specs/ucd90320.rst
->   create mode 100644 include/hw/fsi/cfam-s.h
->   create mode 100644 include/hw/ufs/aspeed_ufs.h
->   create mode 100644 hw/arm/aspeed_ast27x0_huygens.c
->   create mode 100644 hw/fsi/cfam-s.c
->   create mode 100644 hw/sensor/ucd90320.c
->   create mode 100644 hw/ufs/aspeed_ufs.c
-> 
-> 
-> base-commit: 7a66901b243ca3b401db8a8e45245e0518339974
-
+DQoNCj4gT24gMjYgSnVsIDIwMjYsIGF0IDg6NTnigK9QTSwgRXJpYyBBdWdlciA8ZXJpYy5hdWdl
+ckByZWRoYXQuY29tPiB3cm90ZToNCj4gDQo+ICEtLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0t
+LS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tfA0KPiAgQ0FVVElPTjogRXh0
+ZXJuYWwgRW1haWwNCj4gDQo+IHwtLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0t
+LS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tIQ0KPiANCj4gVGhpcyBzZXJpZXMgZW5oYW5j
+ZXMgdGhlIGN1cnJlbnQgaG9zdCBLVk0gbW9kZWwgd2l0aCBjYXBhYmlsaXR5IHRvDQo+IHNldCB3
+cml0YWJsZSBJRCByZWcgZmllbGRzLiANCj4gDQo+IFNpbmNlIHY2Ljcga2VybmVsLCBLVk0vYXJt
+IGFsbG93cyB0aGUgdXNlcnNwYWNlIHRvIG92ZXJ3cml0ZSB0aGUgdmFsdWVzDQo+IG9mIGEgc3Vi
+c2V0IG9mIElEIHJlZ3MuIFRoZSBsaXN0IG9mIHdyaXRhYmxlIGZpZWxkcyBjb250aW51ZXMgdG8g
+Z3Jvdy4NCj4gVGhlIGZlYXR1cmUgSUQgcmFuZ2UgaXMgZGVmaW5lZCBhcyB0aGUgQUFyY2g2NCBT
+eXN0ZW0gcmVnaXN0ZXIgc3BhY2UNCj4gd2l0aCBvcDA9PTMsIG9wMT09ezAsIDEsIDN9LCBDUm49
+PTAsIENSbT09ezAtN30sIG9wMj09ezAtN30uDQo+IA0KPiBUaGUgZW5kIGdvYWwgaXMgdG8gZ2V0
+IG1vcmUgZmxleGliaWxpdHkgd2hlbiBtaWdyYXRpbmcgZ3Vlc3RzDQo+IGJldHdlZW4gZGlmZmVy
+ZW50IGhvc3QgaGFyZHdhcmUuDQo+IA0KPiBRRU1VIHJldHJpZXZlcyB0aGUgd3JpdGFibGUgSUQg
+ZmllbGRzIGZyb20gS1ZNIFVBUEkgWzFdIGFuZA0KPiBtYXRjaCB0aGVtIGFnYWluc3QgYSBnZW5l
+cmF0ZWQgZGVzY3JpcHRpb24gb2YgSUQgcmVncyBhbmQgdGhlaXINCj4gbmFtZWQgZmllbGRzIHRo
+YXQgc3RlbSBmcm9tIEFBUkNITVJTIFJlZ2lzdGVycy5qc29uIGZpbGUuDQo+IEN1cnJlbnQgZGVz
+Y3JpcHRpb24gaXMgYmFzZWQgb24gbGF0ZXN0IDIwMjYtMDMgZWRpdGlvbi4NCj4gVGhlIGNvbnRl
+bnQgb2YgdGhlIGdlbmVyYXRlZCBmaWxlcyB3YXMgY29tcGFyZWQgYWdhaW5zdCBrZXJuZWwNCj4g
+bGludXgvYXJjaC9hcm02NC90b29scy9zeXNyZWcgZmlsZS4gSXQgaXMgbm90IHN0cmFpZ2h0Zm9y
+d2FyZA0KPiB0byBoYXZlIHVuaXQgdGVzdHMgZm9yIHB5dGhvbiBzY3JpcHRzIGFzIHRoZXJlIGFy
+ZSBtYW55IGNhc2VzIGZvcg0KPiBmaWVsZCBleHRyYWN0aW9uLiANCj4gDQo+IEZvciBlYWNoIHdy
+aXRhYmxlIG5hbWVkIGZpZWxkIGEgdWludDY0IHByb3BlcnR5IGlzIGNyZWF0ZWQNCj4gZm9sbG93
+aW5nIHRoZSAiU1lTUkVHXzxSRUc+XzxGSUVMRD4iIG5hbWluZyBjb252ZW50aW9uLiBSRUcgYW5k
+DQo+IEZJRUxEIG5hbWVzIGFyZSB0aG9zZSBkZXNjcmliZWQgaW4gQVJNIEFSTSBSZWZlcmVuY2Ug
+bWFudWFsLg0KPiANCj4gVGhlIGxpc3Qgb2YgU1lTUkVHX0lEIHByb3BlcnRpZXMgY2FuIGJlIHJl
+dHJpZXZlZCB0aHJvdWdoIHRoZSBxbXANCj4gbW9uaXRvciB1c2luZyBxdWVyeS1jcHUtbW9kZWwt
+ZXhwYW5zaW9uIFsyXS4NCj4gDQo+IEZvciB0aGUgcmVjb3JkLCBKaW5xaWFuIHdhcyBhYmxlIHRv
+IG1pZ3JhdGUgYmV0d2VlbiBIaXNpbGljb24gS3VuUGVuZw0KPiBISVAwOSBhbmQgSElQMTIgY2hp
+cHMgd2l0aCB0aGlzIHNlcmllcyB1c2luZyB0aGlzIGtpbmQgb2YgY29tbWFuZDoNCj4gDQo+IC1j
+cHUgaG9zdCxwYXV0aD1vZmYscG11PW9mZixzdmU9b2ZmLFwNCj4gU1lTUkVHX0lEX0FBNjRQRlIx
+X0VMMV9OTUk9MHgwLFwNCj4gU1lTUkVHX0lEX0FBNjRJU0FSMV9FTDFfTFM2ND0weDAsXA0KPiBT
+WVNSRUdfSURfQUE2NElTQVIxX0VMMV9YUz0weDAsXA0KPiBTWVNSRUdfSURfQUE2NElTQVIxX0VM
+MV9MUkNQQz0weDIsXA0KPiBTWVNSRUdfSURfQUE2NElTQVIyX0VMMV9SUFJGTT0weDAsXA0KPiBT
+WVNSRUdfSURfQUE2NElTQVIyX0VMMV9DTFJCSEI9MHgwLFwNCj4gU1lTUkVHX0lEX0FBNjRJU0FS
+Ml9FTDFfUEFDX2ZyYWM9MHgwLFwNCj4gU1lTUkVHX0lEX0FBNjRJU0FSMl9FTDFfQkM9MHgwLFwN
+Cj4gU1lTUkVHX0lEX0FBNjRJU0FSMl9FTDFfUlBSRVM9MHgwLFwNCj4gU1lTUkVHX0lEX0FBNjRJ
+U0FSMl9FTDFfV0Z4VD0weDAsXA0KPiBTWVNSRUdfSURfQUE2NE1NRlIwX0VMMV9GR1Q9MHgwLFwN
+Cj4gU1lTUkVHX0lEX0FBNjRNTUZSMF9FTDFfQmlnRW5kPTB4MCxcDQo+IFNZU1JFR19JRF9BQTY0
+TU1GUjFfRUwxX0VDQkhCPTB4MCxcDQo+IFNZU1JFR19JRF9BQTY0TU1GUjFfRUwxX0NNT1c9MHgw
+LFwNCj4gU1lTUkVHX0lEX0FBNjRNTUZSMV9FTDFfVElEQ1AxPTB4MCxcDQo+IFNZU1JFR19JRF9B
+QTY0TU1GUjFfRUwxX25UTEJQQT0weDAsXA0KPiBTWVNSRUdfSURfQUE2NE1NRlIxX0VMMV9BRlA9
+MHgwLFwNCj4gU1lTUkVHX0lEX0FBNjRNTUZSMV9FTDFfSENYPTB4MCxcDQo+IFNZU1JFR19JRF9B
+QTY0TU1GUjFfRUwxX0VUUz0weDAsXA0KPiBTWVNSRUdfSURfQUE2NE1NRlIxX0VMMV9QQU49MHgy
+LFwNCj4gU1lTUkVHX0lEX0FBNjRNTUZSMV9FTDFfSEFGREJTPTB4MixcDQo+IFNZU1JFR19JRF9B
+QTY0TU1GUjJfRUwxX0NuUD0weDAsXA0KPiBTWVNSRUdfSURfQUE2NE1NRlIzX0VMMV9UQ1JYPTB4
+MCxcDQo+IFNZU1JFR19JRF9BQTY0REZSMF9FTDFfUE1VVmVyPTB4NixcDQo+IFNZU1JFR19JRF9B
+QTY0REZSMF9FTDFfRGVidWdWZXI9MHg5LFwNCj4gU1lTUkVHX0lEX0FBNjRERlIwX0VMMV9Eb3Vi
+bGVMb2NrPTB4ZixcDQo+IFNZU1JFR19JRF9BQTY0WkZSMF9FTDFfRjY0TU09MHgwLFwNCj4gU1lT
+UkVHX0lEX0FBNjRaRlIwX0VMMV9GMzJNTT0weDAsXA0KPiBTWVNSRUdfSURfQUE2NFpGUjBfRUwx
+X1NNND0weDAsXA0KPiBTWVNSRUdfSURfQUE2NFpGUjBfRUwxX1NIQTM9MHgwLFwNCj4gU1lTUkVH
+X0lEX0FBNjRaRlIwX0VMMV9CaXRQZXJtPTB4MCxcDQo+IFNZU1JFR19JRF9BQTY0WkZSMF9FTDFf
+QUVTPTB4MCxcDQo+IFNZU1JFR19JRF9BQTY0WkZSMF9FTDFfU1ZFdmVyPTB4MCxcDQo+IFNZU1JF
+R19DVFJfRUwwX0wxSXA9MHgyIFwNCj4gDQo+IENvbm5pZSAmIEVyaWMNCj4gDQo+IFRoaXMgc2Vy
+aWVzIGNhbiBiZSBmb3VuZCBhdDoNCj4gaHR0cHM6Ly91cmxkZWZlbnNlLnByb29mcG9pbnQuY29t
+L3YyL3VybD91PWh0dHBzLTNBX19naXRodWIuY29tX2VhdWdlcl9xZW11X3RyZWVfYXJtLTJEY3B1
+LTJEbW9kZWwtMkR2NyZkPUR3SURBZyZjPXM4ODNHcFVDT0NoS09IaW9jWXRHY2cmcj1QR1dNeWln
+bkEwTmlEbVRseVA3dk9USG96QndzX1ZOODZ5clZtU01rQnAwJm09eGg1dTctcjZhdVhpV1FTY2Fm
+ZGotMHdXNzBtWEI0RmhDbGg1OEdyeUhtRXhreDh1Wk4taDlqNEIyYzkwTG93ZCZzPVJvNHZfbWpv
+TmFMc3pueXhtNzgxbHpYQmNSdFhUdWRqaWJtZ0lob0pzTk0mZT0gDQo+IA0KPiBIaXN0b3J5Og0K
+PiAtLS0tLS0tLQ0KPiB2NiAtPiB2NzoNCj4gLSBxdWVyeS1jcHUtbW9kZWwtZXhwYW5zaW9uIG5v
+dyBhcHBsaWVzIHRoZSBzeXNyZWcgcHJvcHMNCj4gIG9udG8gYSBzY3JhdGNoIHZjcHUgKFBPQykg
+YWxsb3dpbmcgYSBmaW5lciB2YWxpZGF0aW9uIG9mIHNldHRpbmdzDQo+ICAobm90IHBlcmZlY3Qg
+dGhvdWdoIGFzIGluaXQgbWF5IGJlIHJldmlzaXRlZCBkZXBlbmRpbmcgb24NCj4gIHNldHRpbmdz
+KQ0KPiAtIFByb3Blcmx5IGhhbmRsZSBWYWx1ZVJhbmdlIChLaHVzaGl0KQ0KPiAtIFJlbW92ZSBj
+cHUgcGFyYW1ldGVyIGluIGdldF9ob3N0X2NwdV9pZHJlZ3MgY2FsbCBjaGFpbg0KPiAgKEtodXNo
+aXQpDQo+IA0KPiB2NSAtPiB2NjoNCj4gdjYgaXMgbW9zdGx5IGZvciBLaHVzaGl0IHRvIHNlZSBo
+b3cgaGUgbWF5IHdvcmsgb24gdG9wDQo+IG9mIHRoaXMgc2VyaWVzLiBJdCBmdWxmaWxscyBzb21l
+IG9mIGhpcyByZXF1aXJlbWVudHM6DQo+IC0gVXBvbiBLaHVzaGl0IHJlcXVlc3QgSSBhZGRlZCBk
+ZXNjcmlwdGlvbiBmb3IgZW51bSB2YWx1ZXMNCj4gIGFuZCByZXNlcnZlZCBmaWVsZHMNCj4gLSBz
+ZXRfc3lzcmVnX3Byb3AgY2hlY2tzIHRoZSBpbnB1dCB2YWx1ZSBhZ2FpbnN0IGVudW0gdmFsdWVz
+DQo+ICBpZiBhbnkNCj4gLSB3cml0YWJsZV9iaXRtYXAgaXMgbm93IGRpc3BhdGNoZWQgaW50byB0
+aGUgc3lzcmVnIGRlc2NyaXB0b24NCj4gIGFuZCBub3Qgc3RvcmVkIGluIHZjcHUgc3RhdGUgYW55
+bW9yZSAoYmVzaWRlcyBpdCBpcyBWTSB3aWRlKQ0KPiAtIGltcGxlbWVudGVkIHdyaXRlIGZvciBx
+bXAgaW5zcGVjdGlvbi4gSG93ZXZlciB0aGlzIGlzIG5vdA0KPiAgeWV0IGNoZWNrZWQgYWdhaW5z
+dCBLVk0uIFRoYXQncyB0aGUgbmV4dCBzdGVwIEkgdGhpbmssIGllLg0KPiAgaW5zdGFudGlhdGUg
+YSBzY3JhdGNoIHZjcHUgdG8gdGVzdCBpZiB0aGUgZmllbGQgdmFsdWUgY2FuIGJlDQo+ICBhcHBs
+aWVkPw0KPiAtIGlmIHNvbWUgaW5jb25zaXN0ZW5jaWVzIGJldHdlZW4gd3JpdGFibGUgbWFzayBh
+bmQgaWRyZWcNCj4gIGZpZWxkLCByZXNlcnZlZCBmaWVsZHMgb25seSBwcm9kdWNlIHRyYWNlcw0K
+PiAtIHRoaXMgdmVyc2lvbiBkb2VzIG5vdCB5ZXQgZml4IHNvbWUgcmVwb3J0ZWQgaXNzdWVzIGFi
+b3V0IGhvc3QNCj4gIHN1cHBvcnRpbmcgbmVzdGVkIHZpcnQuIEkgd2lsbCBmdXJ0aGVyIHN5bmMg
+d2l0aCBLaHVzaGl0Lg0KPiAgc28gdGhpcyBpcyBkZWZpbml0aXZlbHkgbm90IGNhbmRpZGF0ZSB0
+byBiZSBhcHBsaWVkLCBoZW5jZSB0aGUNCj4gIFJGQyB0YWcuDQo+IA0KPiBDb3JuZWxpYSBIdWNr
+ICgzKToNCj4gIHRhcmdldC9hcm0va3ZtOiBSZXRyaWV2ZSB3cml0YWJsZSBJRCByZWcgbWFwDQo+
+ICBhcm0vY3B1LWZlYXR1cmVzOiBkb2N1bWVudCBJRCByZWcgcHJvcGVydGllcw0KPiAgYXJtLXFt
+cC1jbWRzOiBpbnRyb3NwZWN0aW9uIGZvciBJRCByZWdpc3RlciBwcm9wcw0KPiANCj4gRXJpYyBB
+dWdlciAoMTQpOg0KPiAgc2NyaXB0czogaW50cm9kdWNlIHNjcmlwdHMvdXBkYXRlLWFhcmNoNjQt
+Y3B1LXN5c3JlZ3MtaGVhZGVyLnB5DQo+ICB0YXJnZXQvYXJtL2NwdS1zeXNyZWdzLmguaW5jOiBT
+b3J0IGJ5IG5hbWUgYWxwaGFiZXRpY2FsIG9yZGVyDQo+ICB0YXJnZXQvYXJtL2NwdS1zeXNyZWdz
+LmguaW5jOiBVcGRhdGUgd2l0aCBhdXRvbWF0aWMgZ2VuZXJhdGlvbg0KPiAgYXJtL2NwdTogQWRk
+IGluZnJhIHRvIGhhbmRsZSBnZW5lcmF0ZWQgSUQgcmVnaXN0ZXIgZGVmaW5pdGlvbnMNCj4gIHNj
+cmlwdHM6IEludHJvZHVjZSBzY3JpcHRzL2FhcmNoNjRfc3lzcmVnX2hlbHBlcnMgbW9kdWxlDQo+
+ICBzY3JpcHRzOiBJbnRyb2R1Y2Ugc2NyaXB0cy91cGRhdGUtYWFyY2g2NC1jcHUtc3lzcmVnLXBy
+b3BlcnRpZXMucHkNCj4gIHRhcmdldC9hcm0vY3B1LWlkcmVncy5oLmluYzogZ2VuZXJhdGUgd2l0
+aCBzY3JpcHQNCj4gIHRhcmdldC9hcm0vY3B1LWlkcmVncy5oLmluYzogR2VuZXJhdGUgZW51bSB2
+YWx1ZXMNCj4gIGFybS9rdm06IEluaXRpYWxpemUgYWxsIHdyaXRhYmxlIElEIHJlZ2lzdGVycyBm
+cm9tIGhvc3QNCj4gIHRhcmdldC9hcm0va3ZtOiBJbnRyb2R1Y2Uga3ZtX2FybV9leHBvc2VfaWRy
+ZWdfcHJvcGVydGllcw0KPiAgdGFyZ2V0L2FybS9jcHU6IEV4cG9zZSB3cml0YWJsZSBJRCByZWcg
+ZmllbGQgcHJvcGVydGllcyBvbiB0aGUga3ZtDQo+ICAgIGhvc3QgdmNwdSBtb2RlbA0KPiAgdGFy
+Z2V0L2FybS9jcHUtaWRyZWdzLmguaW5jOiBHZW5lcmF0ZSByZXNlcnZlZCBmaWVsZHMNCj4gIHRh
+cmdldC9hcm0va3ZtOiBJZ25vcmUgYW5kIHRyYWNlIHVuZXhwZWN0ZWQgd3JpdGFibGUgcmVzZXJ2
+ZWQgZmllbGRzDQo+ICB0YXJnZXQvYXJtL2t2bTogYWRkIHV0aWxpdHkgdG8gd3JpdGUgaWRyZWdz
+IGluIHNjcmF0Y2ggdmNwdQ0KPiANCj4gU2hhanUgQWJyYWhhbSAoMSk6DQo+ICB0YXJnZXQvYXJt
+L2NwdV9pZHJlZ3M6IGdlbmVyYXRlIHRhYmxlcyBmb3IgQXJtNjQgSUQgcmVnaXN0ZXJzIGFuZA0K
+PiAgICBmaWVsZHMNCj4gDQo+IGRvY3Mvc3lzdGVtL2FybS9jcHUtZmVhdHVyZXMucnN0ICAgICAg
+ICAgICAgICB8ICAxMDYgKy0NCj4gdGFyZ2V0L2FybS9jcHUtaWRyZWdzLmggICAgICAgICAgICAg
+ICAgICAgICAgIHwgICA0MSArDQo+IHRhcmdldC9hcm0va3ZtX2FybS5oICAgICAgICAgICAgICAg
+ICAgICAgICAgICB8ICAgMTMgKw0KPiB0YXJnZXQvYXJtL2NwdS1pZHJlZ3MuaC5pbmMgICAgICAg
+ICAgICAgICAgICAgfCAyMTY0ICsrKysrKysrKysrKysrKysrDQo+IHRhcmdldC9hcm0vY3B1LXN5
+c3JlZ3MuaC5pbmMgICAgICAgICAgICAgICAgICB8ICAgNTcgKy0NCj4gdGFyZ2V0L2FybS9hcm0t
+cW1wLWNtZHMuYyAgICAgICAgICAgICAgICAgICAgIHwgICA5OCArDQo+IHRhcmdldC9hcm0vY3B1
+LWlkcmVncy5jICAgICAgICAgICAgICAgICAgICAgICB8ICAgOTYgKw0KPiB0YXJnZXQvYXJtL2Nw
+dTY0LmMgICAgICAgICAgICAgICAgICAgICAgICAgICAgfCAgICA1ICsNCj4gdGFyZ2V0L2FybS9r
+dm0tc3R1Yi5jICAgICAgICAgICAgICAgICAgICAgICAgIHwgICAgNiArDQo+IHRhcmdldC9hcm0v
+a3ZtLmMgICAgICAgICAgICAgICAgICAgICAgICAgICAgICB8ICAzNjAgKystDQo+IHNjcmlwdHMv
+YWFyY2g2NF9zeXNyZWdfaGVscGVycy5weSAgICAgICAgICAgICB8ICAxMDkgKw0KPiAuLi4vdXBk
+YXRlLWFhcmNoNjQtY3B1LXN5c3JlZy1wcm9wZXJ0aWVzLnB5ICAgfCAgMjkwICsrKw0KPiBzY3Jp
+cHRzL3VwZGF0ZS1hYXJjaDY0LWNwdS1zeXNyZWdzLWhlYWRlci5weSAgfCAgIDUxICsNCj4gdGFy
+Z2V0L2FybS9tZXNvbi5idWlsZCAgICAgICAgICAgICAgICAgICAgICAgIHwgICAgMSArDQo+IHRh
+cmdldC9hcm0vdHJhY2UtZXZlbnRzICAgICAgICAgICAgICAgICAgICAgICB8ICAgIDggKw0KPiAx
+NSBmaWxlcyBjaGFuZ2VkLCAzMzczIGluc2VydGlvbnMoKyksIDMyIGRlbGV0aW9ucygtKQ0KPiBj
+cmVhdGUgbW9kZSAxMDA2NDQgdGFyZ2V0L2FybS9jcHUtaWRyZWdzLmgNCj4gY3JlYXRlIG1vZGUg
+MTAwNjQ0IHRhcmdldC9hcm0vY3B1LWlkcmVncy5oLmluYw0KPiBjcmVhdGUgbW9kZSAxMDA2NDQg
+dGFyZ2V0L2FybS9jcHUtaWRyZWdzLmMNCj4gY3JlYXRlIG1vZGUgMTAwNjQ0IHNjcmlwdHMvYWFy
+Y2g2NF9zeXNyZWdfaGVscGVycy5weQ0KPiBjcmVhdGUgbW9kZSAxMDA2NDQgc2NyaXB0cy91cGRh
+dGUtYWFyY2g2NC1jcHUtc3lzcmVnLXByb3BlcnRpZXMucHkNCj4gY3JlYXRlIG1vZGUgMTAwNzU1
+IHNjcmlwdHMvdXBkYXRlLWFhcmNoNjQtY3B1LXN5c3JlZ3MtaGVhZGVyLnB5DQo+IA0KPiAtLSAN
+Cj4gMi41My4wDQo+IA0KDQpIaSwNCg0KT24gbXkgYm94IHRoZSBidWlsZCBpcyBmYWlsaW5nIHdp
+dGg6DQpbOTcvMjE5Ml0gTGlua2luZyB0YXJnZXQgcWVtdS1zeXN0ZW0tYXJtDQpGQUlMRUQ6IHFl
+bXUtc3lzdGVtLWFybQ0KY2MgQHFlbXUtc3lzdGVtLWFybS5yc3ANCi91c3IvYmluL2xkOiBsaWJz
+eXN0ZW1fYXJtLmEucC90YXJnZXRfYXJtX2FybS1xbXAtY21kcy5jLm86IGluIGZ1bmN0aW9uIGBx
+bXBfcXVlcnlfY3B1X21vZGVsX2V4cGFuc2lvbic6DQovaG9tZS9haHYvcWVtdS9idWlsZC8uLi90
+YXJnZXQvYXJtL2FybS1xbXAtY21kcy5jOjE0NDooLnRleHQrMHg0ZDQpOiB1bmRlZmluZWQgcmVm
+ZXJlbmNlIHRvIGBrdm1fY2hlY2tfZXh0ZW5zaW9uJw0KL3Vzci9iaW4vbGQ6IC9ob21lL2Fodi9x
+ZW11L2J1aWxkLy4uL3RhcmdldC9hcm0vYXJtLXFtcC1jbWRzLmM6MTQ1OigudGV4dCsweDRlNCk6
+IHVuZGVmaW5lZCByZWZlcmVuY2UgdG8gYGt2bV9jaGVja19leHRlbnNpb24nDQovdXNyL2Jpbi9s
+ZDogL2hvbWUvYWh2L3FlbXUvYnVpbGQvLi4vdGFyZ2V0L2FybS9hcm0tcW1wLWNtZHMuYzoxNTE6
+KC50ZXh0KzB4NTE0KTogdW5kZWZpbmVkIHJlZmVyZW5jZSB0byBga3ZtX2NoZWNrX2V4dGVuc2lv
+bicNCi91c3IvYmluL2xkOiAvaG9tZS9haHYvcWVtdS9idWlsZC8uLi90YXJnZXQvYXJtL2FybS1x
+bXAtY21kcy5jOjE2ODooLnRleHQrMHg1NTQpOiB1bmRlZmluZWQgcmVmZXJlbmNlIHRvIGBrdm1f
+YXJtX2NyZWF0ZV9zY3JhdGNoX2hvc3RfdmNwdScNCi91c3IvYmluL2xkOiAvaG9tZS9haHYvcWVt
+dS9idWlsZC8uLi90YXJnZXQvYXJtL2FybS1xbXAtY21kcy5jOjE1MjooLnRleHQrMHg3ZDQpOiB1
+bmRlZmluZWQgcmVmZXJlbmNlIHRvIGBrdm1fY2hlY2tfZXh0ZW5zaW9uJw0KL3Vzci9iaW4vbGQ6
+IC9ob21lL2Fodi9xZW11L2J1aWxkLy4uL3RhcmdldC9hcm0vYXJtLXFtcC1jbWRzLmM6MjQ3Oigu
+dGV4dCsweDhmNCk6IHVuZGVmaW5lZCByZWZlcmVuY2UgdG8gYGt2bV9hcm1fZGVzdHJveV9zY3Jh
+dGNoX2hvc3RfdmNwdScNCmNvbGxlY3QyOiBlcnJvcjogbGQgcmV0dXJuZWQgMSBleGl0IHN0YXR1
+cw0KDQoNCg==
 

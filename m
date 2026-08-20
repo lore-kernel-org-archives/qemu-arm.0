@@ -4,85 +4,86 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C77EFC5B572
-	for <qemu-arm@archiver.kernel.org>; Thu, 20 Aug 2026 02:51:11 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 82AAAC5DF88
+	for <qemu-arm@archiver.kernel.org>; Thu, 20 Aug 2026 02:51:26 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wwsqZ-0002DC-Oa; Wed, 19 Aug 2026 22:49:40 -0400
+	id 1wwsqA-0001vw-4O; Wed, 19 Aug 2026 22:49:14 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <kylefoxaustin.github@gmail.com>)
- id 1wwsq6-0001tc-4s
- for qemu-arm@nongnu.org; Wed, 19 Aug 2026 22:49:11 -0400
-Received: from mail-yx1-xb131.google.com ([2607:f8b0:4864:20::b131])
+ id 1wwspu-0001qr-6e
+ for qemu-arm@nongnu.org; Wed, 19 Aug 2026 22:48:58 -0400
+Received: from mail-yx1-xb12d.google.com ([2607:f8b0:4864:20::b12d])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <kylefoxaustin.github@gmail.com>)
- id 1wwsq2-0000XE-9z
- for qemu-arm@nongnu.org; Wed, 19 Aug 2026 22:49:09 -0400
-Received: by mail-yx1-xb131.google.com with SMTP id
- 956f58d0204a3-66c71239c48so2875513d50.2
- for <qemu-arm@nongnu.org>; Wed, 19 Aug 2026 19:49:05 -0700 (PDT)
+ id 1wwspr-0000PN-A7
+ for qemu-arm@nongnu.org; Wed, 19 Aug 2026 22:48:57 -0400
+Received: by mail-yx1-xb12d.google.com with SMTP id
+ 956f58d0204a3-669944f60b3so2231464d50.1
+ for <qemu-arm@nongnu.org>; Wed, 19 Aug 2026 19:48:54 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20251104; t=1787194145; x=1787798945; darn=nongnu.org;
+ d=gmail.com; s=20251104; t=1787194134; x=1787798934; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to:content-type;
- bh=ygAKHpfEFntgLi2EqDMDtidbEQfQyaObkdNGGpsh9B4=;
- b=Un3KGDXrEn5ahE8LcY7TVfu9g5uOpL/J6fQQonD0T2lBc+NE8RK4J536UXcWf51kZi
- tipCsMMf6b5vq83kUesNTr4DXd/8n/jlTSmrBtpC5+L4rDd5JVwcOa7nJ9TLzfTSLOEi
- F96lXE37E6HUIyoNQuC5sJ1D2fe1C7bOT8oFxUHj7PCDI932FOmM9x8CyQzC5RBuPZk1
- ywSSaSj4YeTYdefHbNjm5aQJe52u/M9L5ICB/gWV13eQngviRNP1Rd1FEYtOb08jbz3p
- BVEKc8HRZgw/SbFPD4UkdVZOBMhqJdOwimrPPALl1ynqJKA8/eBFGmA0AjIAdS66wEl1
- YORg==
+ bh=uLySbPfUe/6ycb7XxkslGbgojMHRka83kHXjdiHFdOU=;
+ b=GU1zfrVuH1kam2eHm1sYCVI497JKq/L3qSsVknFtHmLPeAgXeWJlJM4W5WnYxV4r/I
+ ub2nD2ptc9Pl5wr+ENXaB8PwN9qPmJxxPByUtmo7e51EpXTSttXzBqrWQwIx4hAgD6Df
+ K8uE6AOuwjbr7LjIm58OvtAF1wo2bPUulroe7+PYJ60/WvfRdIGBEfBC0N08V1AGLl7U
+ /f+7+mIulGfwX1s3rlYl1zdodVAxh1qSOcyvoygPZQCzKqET5zLXDXENnyyktJAbXAvW
+ H/X/g0PkC7ItaGQRuMFAqVVEkRbfp8P95hymMajTHAWbZXX/LHSrKV6+3z4/2bFi4pLo
+ 1fQw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1787194145; x=1787798945;
+ d=1e100.net; s=20251104; t=1787194134; x=1787798934;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
  :to:cc:subject:date:message-id:reply-to:content-type;
- bh=ygAKHpfEFntgLi2EqDMDtidbEQfQyaObkdNGGpsh9B4=;
- b=gdkcQsE7axwhUKiuLWlsW16FU+7oFYfVtgGTpZTVUjuwLhqMsyEnjElSuMePxXz630
- coQYb62/kXiEySUwyKDq6oRvEJoByJFFxY/+ZNR5obJ/ipV5MmZhM6sWUpFlZT6luLka
- 0om3ZWDIyhFCHT1zLC8kccj99/5X6B8ksEjJSi2kFDF2LdtQO63AGZALDR74c3MiGPSq
- cLb6ULSbK8FE+ShXd+4QDt+RKx2s3Hd8aCJpx+TuZD6JSFmxpgP9C+XR9RkuHfWjFcO4
- tToVw2WsG/zWmvLTD4jvD5ADCPzaKwdyPFS0pQ6NY6bRfWnQbNf0u+0nRhbZ/6WrvLey
- DkGg==
+ bh=uLySbPfUe/6ycb7XxkslGbgojMHRka83kHXjdiHFdOU=;
+ b=kzDDJyyEYF8War+uhfrIeTBZMZNBG8WOAFqXofC0putcW8BhXj3oMBiqYXjzYQ3GC5
+ an70ZbyKFabFomSWtbu7wvzu1ruKpHF4oyPQCoRQWWuWUy6lsMulfvVzTzqOAwPPBvSg
+ 2DQ7DRMRyG0i2HwmazFCPEpasmE4oTeNNwzKXY5ij6eY4RXMn5mCNTsl1s7E0ExLs74c
+ oVXXVA6TYjRfuCNjuVlQFb4EICmlxLTtin5stvRkhWKrnLxndskdCqXaZsjs+vXDfFVY
+ cKt2shIzd0Ed9NXbdh7aIi79iaSOOx4LlrBMyGyM4WX+ExrTOXQd2pvhLeLAX+akEZ5W
+ h8Iw==
 X-Forwarded-Encrypted: i=1;
- AHgh+RrdW+/Q+PLjbbrvoNZRlkEZbH5JfSs67ZAZXu0Cl7CSTUWUzorUC7gjGMYcDbsqdCJelTD2LhJ5VA==@nongnu.org
-X-Gm-Message-State: AFuF++kdQx3cvOwR1p1VpLxZlfDT4Y0tXoYYifrIkcRD84PI9v6V5EZG
- ZbD2qjyWD0petuQvPIYF/uCNjBpB/bD1XTfXJSVf2wIfVKFQdlxto8Jt
-X-Gm-Gg: AR+sD130m1KvEbGPxXYogxSxbpewhj2odOwZhndqYUDEdmJb3j8ARC/ntqKuq4oi2zf
- /wFjFSXNhuxV2Gn2NyroBS/jvEJxOCHMqq9By26hro2YpQ6dN0I4dSVg1B/dvguul9SJ64/K8g0
- kgT2rGbUXFAsdshiMpD8tvow3XS2rLBjTgQT2c9BLSKJtgqDv6hZyJlluy3uwTx2+VQaiZU9E9K
- N9VSHrb08zk9V/hST+uTp82dFJFIV5c3YMfKzfT9EPzuntssuFCJStHuf7l1PFbA4+0doNoK09o
- YLsgUhw7PAqjOab/021rSnxykek/zYVNHNMfmSvEd/A9DW/Txgp2YgiClHNViUu/m9cyygq5bd1
- XqtjaOnC8hUfQMkGc4h2JEnXfmJcBEx9R4zgbaak4xc97xQbLRsLDWFzbTiTOCPVvyCsIvSbucK
- +FUGUwZUMvbujFSdvAj0ELPKqqbV013L8Gn2FNgf4z4OOTYs3W6g4awoLJ6vGCR96pA+fLdne5c
- YFircPASB6An3omhvBJ7CTjD7fNCPSM74jEDE1EXrtdRljHqBxoT3GiiUM=
-X-Received: by 2002:a05:690e:4368:b0:66c:7bd2:35a9 with SMTP id
- 956f58d0204a3-66ccb798350mr2800808d50.45.1787194144997; 
- Wed, 19 Aug 2026 19:49:04 -0700 (PDT)
+ AHgh+RplbzmNfVRVREKdbv4I6greVo9qoTs2709SA7JRibY7FZiOxMgeZIixuWN0eRkt+On8vVSWgRkIrw==@nongnu.org
+X-Gm-Message-State: AFuF++lJBJCDCp8GU4lTtpuGSngr+8reOjK0TAuABOfTMelZdevnPBEc
+ tBiisyuRUd9cc3/AGBp+hgiGFt8tXsRk/SgMVlFFlSTdf24ofy83p8eE06IJPg==
+X-Gm-Gg: AR+sD12FieQRPXb8eh+EAUNzQkuyTH9kB7X41M2enx46qipAtFVZzojUrq7FATUwiru
+ Cn9MGZhJjFgVZpvDPeQSPpOD3Lp3e5ETCFjBWqC91vfAO3tWwsDIX+BDHtPYgcQvXnIpOn1NgSu
+ Anod1k4GjPvRyzHbHr9gLQk3KsRImyqgLm5pTI3/qs+wFfVbm3sA44paJ8TixZIbqFwjng3JiYC
+ mndhaHyIYPiNxCJ3WiQwZ9Cbn4x+c2gxUFr5kPGZ5/R6s+P/ZpM8srUMN2H3dmAZP6sqOUWonTL
+ gAVzG3V179xlE4bhuu4cneqPEQhRsjN5qTAESA5a7on5HJR3ehJ3ADzXUfkmlaihnL6LSs6p1DT
+ kUNFZmk7AKOQ5atnxHMrlSB2bHZt3vzzTWa7LO6FjFxtG9Zu4sUXCOGdYs3od6ceKYFPrFQPh/j
+ SbPxVM0Ti7zNSeCwkrIxB1AYY8eeLMDYYmdBpDGE2rsYFJVdhR9/krfPesdDvsl+NiBKH3PlxbD
+ r0jeQhX+dAwVMK+L9Vfk+Gs78WcCA+Qc+axePKJUp9jwhd8RFJRPw==
+X-Received: by 2002:a53:bf0d:0:b0:667:7dae:8707 with SMTP id
+ 956f58d0204a3-66ccb5a56f1mr2558707d50.8.1787194134007; 
+ Wed, 19 Aug 2026 19:48:54 -0700 (PDT)
 Received: from skippy.localdomain (99-61-67-1.lightspeed.austtx.sbcglobal.net.
  [99.61.67.1]) by smtp.gmail.com with ESMTPSA id
- 956f58d0204a3-66ccafd03basm1986454d50.1.2026.08.19.19.49.02
+ 956f58d0204a3-66ccafd03basm1986454d50.1.2026.08.19.19.48.52
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 19 Aug 2026 19:49:03 -0700 (PDT)
+ Wed, 19 Aug 2026 19:48:52 -0700 (PDT)
 From: Kyle Fox <kylefoxaustin.github@gmail.com>
 To: qemu-devel@nongnu.org
 Cc: Kyle Fox <kylefoxaustin.github@gmail.com>,
  Paolo Bonzini <pbonzini@redhat.com>,
- qemu-arm@nongnu.org (open list:MCIMX95-19X19-EVK...)
-Subject: [PATCH 11/16] hw/misc: add i.MX 95 ANATOP/AONMIX/GPC/SRC power and
- clock blocks
-Date: Wed, 19 Aug 2026 21:48:29 -0500
-Message-Id: <20260820024834.3286721-12-kylefoxaustin.github@gmail.com>
+ =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ qemu-arm@nongnu.org (open list:i.MX31 (kzm))
+Subject: [PATCH 05/16] hw/char: add i.MX LPUART
+Date: Wed, 19 Aug 2026 21:48:23 -0500
+Message-Id: <20260820024834.3286721-6-kylefoxaustin.github@gmail.com>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20260820024834.3286721-1-kylefoxaustin.github@gmail.com>
 References: <20260820024834.3286721-1-kylefoxaustin.github@gmail.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::b131;
- envelope-from=kylefoxaustin.github@gmail.com; helo=mail-yx1-xb131.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::b12d;
+ envelope-from=kylefoxaustin.github@gmail.com; helo=mail-yx1-xb12d.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -105,354 +106,361 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-The power and clock bring-up blocks that the System Manager firmware
-programs before Linux starts: ANATOP (PLL lock / DFS status), SRC
-(system reset controller, including the M7 mix-slice release), GPC
-(general power controller mode requests) and the AONMIX block-control M7
-CPU-WAIT gate (the SM's M7 hold/run control). These are register-level
-models that return the lock, ack and status bits the firmware polls.
+The i.MX Low-Power UART. Models the register subset the Linux fsl-lpuart
+driver and the SM firmware drive (BAUD/CTRL/STAT/DATA plus the TX/RX
+FIFOs) as an interrupt- and poll-capable serial device. On this machine
+LPUART1 is the Linux console (ttyLP0), LPUART2 the SM debug monitor and
+LPUART3 the M7 console.
 
 Signed-off-by: Kyle Fox <kylefoxaustin.github@gmail.com>
 ---
- hw/misc/Kconfig        |  12 +++
- hw/misc/imx95_anatop.c | 201 ++++++++++++++++++++++++++++++++++++
- hw/misc/imx95_aonmix.c | 160 +++++++++++++++++++++++++++++
- hw/misc/imx95_gpc.c    | 160 +++++++++++++++++++++++++++++
- hw/misc/imx95_src.c    | 228 +++++++++++++++++++++++++++++++++++++++++
- hw/misc/meson.build    |   4 +
- hw/misc/trace-events   |   8 ++
- 7 files changed, 773 insertions(+)
- create mode 100644 hw/misc/imx95_anatop.c
- create mode 100644 hw/misc/imx95_aonmix.c
- create mode 100644 hw/misc/imx95_gpc.c
- create mode 100644 hw/misc/imx95_src.c
+ hw/char/Kconfig              |   3 +
+ hw/char/imx_lpuart.c         | 382 +++++++++++++++++++++++++++++++++++
+ hw/char/meson.build          |   1 +
+ hw/char/trace-events         |   3 +
+ include/hw/char/imx_lpuart.h | 123 +++++++++++
+ 5 files changed, 512 insertions(+)
+ create mode 100644 hw/char/imx_lpuart.c
+ create mode 100644 include/hw/char/imx_lpuart.h
 
-diff --git a/hw/misc/Kconfig b/hw/misc/Kconfig
-index 2bae76b4ec1..1e1cae92f6f 100644
---- a/hw/misc/Kconfig
-+++ b/hw/misc/Kconfig
-@@ -271,3 +271,15 @@ config IMX95_ELE_SERVER
- 
- config IMX95_WDOG
+diff --git a/hw/char/Kconfig b/hw/char/Kconfig
+index 020c0a84bb6..51b4c3e00ce 100644
+--- a/hw/char/Kconfig
++++ b/hw/char/Kconfig
+@@ -95,3 +95,6 @@ config IP_OCTAL_232
      bool
+     default y
+     depends on IPACK
 +
-+config IMX95_ANATOP
++config IMX_LPUART
 +    bool
-+
-+config IMX95_AONMIX
-+    bool
-+
-+config IMX95_GPC
-+    bool
-+
-+config IMX95_SRC
-+    bool
-diff --git a/hw/misc/imx95_anatop.c b/hw/misc/imx95_anatop.c
+diff --git a/hw/char/imx_lpuart.c b/hw/char/imx_lpuart.c
 new file mode 100644
-index 00000000000..b8b18d405d0
+index 00000000000..714bc3e52a4
 --- /dev/null
-+++ b/hw/misc/imx95_anatop.c
-@@ -0,0 +1,201 @@
++++ b/hw/char/imx_lpuart.c
+@@ -0,0 +1,382 @@
 +/*
-+ * NXP i.MX 95 ANATOP / PLL stub model
++ * NXP i.MX LPUART (Low-Power UART) device model
 + *
 + * Copyright (c) 2026, Kyle Fox
 + *
 + * SPDX-License-Identifier: GPL-2.0-or-later
 + *
-+ * Covers the ANATOP block at 0x44480000. Its PLL instances live at
-+ * 0x44481000..0x444819ff, one every 0x100 (SYS_PLL1, AUDIO_PLL1/2,
-+ * VIDEO_PLL1, ARM_PLL, DRAM_PLL, HSIO_PLL, LDB_PLL). Each PLL register
-+ * uses the i.MX RW/SET/CLR/TOG quad layout (a 16-byte group: write +0 =
-+ * assign, +4 = set bits, +8 = clear bits, +C = toggle; reads return the
-+ * accumulated value), and each PLL has two read-only status words:
-+ * PLL_STATUS (+0xf0, bit0 = PLL_LOCK) and DFS_STATUS (+0xf4, bits[3:0] =
-+ * per-DFS clock-ok).
-+ *
-+ * The System Manager's DVFS path (DEV_SM_PerfA55FreqUpdate via
-+ * FRACTPLL_UpdateRate / FRACTPLL_UpdateDfsRate) powers a PLL up by setting
-+ * CTRL.POWERUP and then polls PLL_STATUS.PLL_LOCK; it enables a DFS and
-+ * polls DFS_STATUS.DFS_OK (an unbounded wait). QEMU has no analog PLLs, so
-+ * the transition is instantaneous: PLL_LOCK mirrors CTRL.POWERUP and a
-+ * DFS's DFS_OK bit mirrors its DFS_CTRL.ENABLE. Everything else is plain
-+ * storage. Same status-mirrors-control idea as the GPC/SRC models.
-+ *
-+ * Non-PLL parts of ANATOP (e.g. TMPSNS at +0x2000) are plain RAM here -
-+ * the quad/status behaviour is confined to the PLL window.
++ * Modelled on hw/char/imx_serial.c for structural conventions but with
++ * the LPUART register set and semantics. TX bytes are pushed through the
++ * chardev backend synchronously; RX bytes are buffered one-deep and
++ * surface in DATA, with an interrupt raised when CTRL.RIE is set.
++ * FIFO depth is reported as 1; no DMA, no baud-rate timing, no flow
++ * control are modelled.
 + */
 +
 +#include "qemu/osdep.h"
 +#include "qemu/log.h"
 +#include "qemu/module.h"
-+#include "hw/core/sysbus.h"
-+#include "migration/vmstate.h"
-+#include "trace.h"
-+
-+#define TYPE_IMX95_ANATOP "imx95.anatop"
-+OBJECT_DECLARE_SIMPLE_TYPE(IMX95AnatopState, IMX95_ANATOP)
-+
-+#define IMX95_ANATOP_REG_SIZE   0x10000
-+#define IMX95_ANATOP_NUM_WORDS  (IMX95_ANATOP_REG_SIZE / 4)
-+
-+/* PLL window within ANATOP: [0x1000, 0x1a00), one PLL every 0x100. */
-+#define ANATOP_PLL_START        0x1000
-+#define ANATOP_PLL_END          0x1a00
-+#define PLL_BLOCK_SIZE          0x100
-+
-+/* Per-PLL register offsets. */
-+#define PLL_CTRL_OFF            0x00    /* RW/SET/CLR/TOG, POWERUP in bit 0 */
-+#define PLL_DFS0_OFF            0x70    /* DFS[0] DFS_CTRL; step 0x20 */
-+#define PLL_DFS_STEP            0x20
-+#define PLL_NUM_DFS             4
-+#define PLL_STATUS_OFF          0xf0    /* RO: PLL_LOCK in bit 0 */
-+#define PLL_DFS_STATUS_OFF      0xf4    /* RO: DFS_OK in bits [3:0] */
-+
-+#define PLL_CTRL_POWERUP        0x00000001u
-+#define PLL_STATUS_LOCK         0x00000001u
-+#define PLL_DFS_CTRL_ENABLE     0x80000000u
-+
-+struct IMX95AnatopState {
-+    SysBusDevice    parent_obj;
-+    MemoryRegion    iomem;
-+    uint32_t        regs[IMX95_ANATOP_NUM_WORDS];
-+};
-+
-+static bool anatop_in_pll_window(hwaddr offset)
-+{
-+    return offset >= ANATOP_PLL_START && offset < ANATOP_PLL_END;
-+}
-+
-+static uint64_t imx95_anatop_read(void *opaque, hwaddr offset, unsigned size)
-+{
-+    IMX95AnatopState *s = opaque;
-+
-+    trace_imx95_anatop_read(offset);
-+
-+    if (anatop_in_pll_window(offset)) {
-+        hwaddr blk = offset & ~(hwaddr)(PLL_BLOCK_SIZE - 1);
-+        uint32_t reg = offset & (PLL_BLOCK_SIZE - 1);
-+
-+        if (reg == PLL_STATUS_OFF) {
-+            /* PLL_LOCK mirrors CTRL.POWERUP (lock is instantaneous here). */
-+            uint32_t ctrl = s->regs[(blk + PLL_CTRL_OFF) / 4];
-+            return (ctrl & PLL_CTRL_POWERUP) ? PLL_STATUS_LOCK : 0;
-+        }
-+        if (reg == PLL_DFS_STATUS_OFF) {
-+            /* Each DFS_OK bit mirrors that DFS's DFS_CTRL.ENABLE. */
-+            uint32_t ok = 0;
-+            for (unsigned n = 0; n < PLL_NUM_DFS; n++) {
-+                hwaddr dfs = blk + PLL_DFS0_OFF + n * PLL_DFS_STEP;
-+                if (s->regs[dfs / 4] & PLL_DFS_CTRL_ENABLE) {
-+                    ok |= (1u << n);
-+                }
-+            }
-+            return ok;
-+        }
-+    }
-+    return s->regs[offset / 4];
-+}
-+
-+static void imx95_anatop_write(void *opaque, hwaddr offset,
-+                               uint64_t value, unsigned size)
-+{
-+    IMX95AnatopState *s = opaque;
-+
-+    trace_imx95_anatop_write(offset, value);
-+
-+    if (anatop_in_pll_window(offset)) {
-+        uint32_t reg = offset & (PLL_BLOCK_SIZE - 1);
-+
-+        /* PLL_STATUS / DFS_STATUS are read-only. */
-+        if (reg == PLL_STATUS_OFF || reg == PLL_DFS_STATUS_OFF) {
-+            return;
-+        }
-+
-+        /* RW/SET/CLR/TOG aliases of one logical register (16-byte group). */
-+        hwaddr base = offset & ~(hwaddr)0xc;
-+        switch (offset & 0xc) {
-+        case 0x0:
-+            s->regs[offset / 4] = value;
-+            break;
-+        case 0x4:
-+            s->regs[base / 4] |= value;
-+            break;
-+        case 0x8:
-+            s->regs[base / 4] &= ~(uint32_t)value;
-+            break;
-+        case 0xc:
-+            s->regs[base / 4] ^= value;
-+            break;
-+        }
-+        return;
-+    }
-+    s->regs[offset / 4] = value;
-+}
-+
-+static const MemoryRegionOps imx95_anatop_ops = {
-+    .read = imx95_anatop_read,
-+    .write = imx95_anatop_write,
-+    .endianness = DEVICE_LITTLE_ENDIAN,
-+    .impl = {
-+        .min_access_size = 4,
-+        .max_access_size = 4,
-+    },
-+    .valid = {
-+        .min_access_size = 4,
-+        .max_access_size = 4,
-+    },
-+};
-+
-+static void imx95_anatop_reset_hold(Object *obj, ResetType type)
-+{
-+    IMX95AnatopState *s = IMX95_ANATOP(obj);
-+
-+    memset(s->regs, 0, sizeof(s->regs));
-+}
-+
-+static void imx95_anatop_init(Object *obj)
-+{
-+    SysBusDevice *sbd = SYS_BUS_DEVICE(obj);
-+    IMX95AnatopState *s = IMX95_ANATOP(obj);
-+
-+    memory_region_init_io(&s->iomem, obj, &imx95_anatop_ops, s,
-+                          TYPE_IMX95_ANATOP, IMX95_ANATOP_REG_SIZE);
-+    sysbus_init_mmio(sbd, &s->iomem);
-+}
-+
-+static const VMStateDescription vmstate_imx95_anatop = {
-+    .name = TYPE_IMX95_ANATOP,
-+    .version_id = 1,
-+    .minimum_version_id = 1,
-+    .fields = (const VMStateField[]) {
-+        VMSTATE_UINT32_ARRAY(regs, IMX95AnatopState, IMX95_ANATOP_NUM_WORDS),
-+        VMSTATE_END_OF_LIST()
-+    },
-+};
-+
-+static void imx95_anatop_class_init(ObjectClass *klass, const void *data)
-+{
-+    DeviceClass *dc = DEVICE_CLASS(klass);
-+    ResettableClass *rc = RESETTABLE_CLASS(klass);
-+
-+    dc->vmsd = &vmstate_imx95_anatop;
-+    rc->phases.hold = imx95_anatop_reset_hold;
-+    set_bit(DEVICE_CATEGORY_MISC, dc->categories);
-+    dc->desc = "NXP i.MX 95 ANATOP/PLL (stub)";
-+}
-+
-+static const TypeInfo imx95_anatop_info = {
-+    .name           = TYPE_IMX95_ANATOP,
-+    .parent         = TYPE_SYS_BUS_DEVICE,
-+    .instance_size  = sizeof(IMX95AnatopState),
-+    .instance_init  = imx95_anatop_init,
-+    .class_init     = imx95_anatop_class_init,
-+};
-+
-+static void imx95_anatop_register_types(void)
-+{
-+    type_register_static(&imx95_anatop_info);
-+}
-+
-+type_init(imx95_anatop_register_types)
-diff --git a/hw/misc/imx95_aonmix.c b/hw/misc/imx95_aonmix.c
-new file mode 100644
-index 00000000000..d794440170e
---- /dev/null
-+++ b/hw/misc/imx95_aonmix.c
-@@ -0,0 +1,160 @@
-+/*
-+ * NXP i.MX 95 BLK_CTRL_S_AONMIX - minimal model for the M7 CPU-WAIT gate
-+ *
-+ * Copyright (c) 2026, Kyle Fox
-+ *
-+ * SPDX-License-Identifier: GPL-2.0-or-later
-+ *
-+ * Covers BLK_CTRL_S_AONMIX at 0x444f0000. The block is mostly plain
-+ * configuration storage, modelled here as a RAM-backed register file (an
-+ * improvement over the previous logging stub, which read back as zero).
-+ *
-+ * The one load-bearing register is M7_CFG (offset 0x124). Its WAIT bit
-+ * (bit 4) is the Cortex-M7 hold/run gate the System Manager uses to manage
-+ * the M7's lifecycle: CPU_RunModeGet reads it (WAIT set => HOLD, clear =>
-+ * START) and CPU_WaitSet sets/clears it. At reset WAIT is set, so the SM
-+ * sees the M7 held and runs its full DEV_SM_CpuStart sequence - releasing
-+ * CPUWAIT (which we surface as the m7-run gpio) and, crucially, enabling
-+ * the CM7_SYSRESETREQ fault IRQ so the SM can later cold-reset the M7 LM.
-+ * A WAIT 1->0 transition releases the M7; 0->1 holds it.
-+ *
-+ * INITVTOR (0x108) - the M7 boot vector the SM programs - is stored but
-+ * unused: our M7 boots from its ITCM reset vector (init-svtor = 0).
-+ */
-+
-+#include "qemu/osdep.h"
-+#include "qemu/log.h"
-+#include "qemu/module.h"
-+#include "hw/core/sysbus.h"
++#include "hw/char/imx_lpuart.h"
 +#include "hw/core/irq.h"
++#include "hw/core/qdev-properties.h"
++#include "hw/core/qdev-properties-system.h"
 +#include "migration/vmstate.h"
 +#include "trace.h"
 +
-+#define TYPE_IMX95_AONMIX "imx95.aonmix"
-+OBJECT_DECLARE_SIMPLE_TYPE(IMX95AonmixState, IMX95_AONMIX)
++static void imx_lpuart_update_irq(IMXLPUARTState *s);
 +
-+#define IMX95_AONMIX_REG_SIZE   0x10000
-+#define IMX95_AONMIX_NUM_WORDS  (IMX95_AONMIX_REG_SIZE / 4)
-+
-+#define AONMIX_M7_CFG           0x124       /* M7 configure register */
-+#define AONMIX_M7_CFG_WAIT      0x10        /* bit 4: M7 CPU-WAIT (hold) */
-+
-+struct IMX95AonmixState {
-+    SysBusDevice    parent_obj;
-+    MemoryRegion    iomem;
-+    uint32_t        regs[IMX95_AONMIX_NUM_WORDS];
-+
-+    /*
-+     * M7 run gate, driven by M7_CFG.WAIT (level: 1 = released/run,
-+     * 0 = held). The machine wires this to a handler that resets+resumes
-+     * the M7 on release and halts it on hold.
-+     */
-+    qemu_irq        m7_run;
-+};
-+
-+static uint64_t imx95_aonmix_read(void *opaque, hwaddr offset, unsigned size)
++static int imx_lpuart_post_load(void *opaque, int version_id)
 +{
-+    IMX95AonmixState *s = opaque;
-+
-+    trace_imx95_aonmix_read(offset);
-+    return s->regs[offset / 4];
++    /* Recompute the IRQ line level from the restored register state. */
++    imx_lpuart_update_irq(opaque);
++    return 0;
 +}
 +
-+static void imx95_aonmix_write(void *opaque, hwaddr offset,
-+                               uint64_t value, unsigned size)
++static const VMStateDescription vmstate_imx_lpuart = {
++    .name = TYPE_IMX_LPUART,
++    .version_id = 1,
++    .minimum_version_id = 1,
++    .post_load = imx_lpuart_post_load,
++    .fields = (const VMStateField[]) {
++        VMSTATE_UINT32(baud, IMXLPUARTState),
++        VMSTATE_UINT32(stat, IMXLPUARTState),
++        VMSTATE_UINT32(ctrl, IMXLPUARTState),
++        VMSTATE_UINT32(match, IMXLPUARTState),
++        VMSTATE_UINT32(modir, IMXLPUARTState),
++        VMSTATE_UINT32(fifo, IMXLPUARTState),
++        VMSTATE_UINT32(water, IMXLPUARTState),
++        VMSTATE_UINT32(pincfg, IMXLPUARTState),
++        VMSTATE_UINT8(rx_byte, IMXLPUARTState),
++        VMSTATE_BOOL(rx_full, IMXLPUARTState),
++        VMSTATE_END_OF_LIST()
++    },
++};
++
++/* Recompute the IRQ line from STAT & CTRL interrupt-enable bits. */
++static void imx_lpuart_update_irq(IMXLPUARTState *s)
 +{
-+    IMX95AonmixState *s = opaque;
++    bool level =
++        ((s->stat & LPUART_STAT_RDRF) && (s->ctrl & LPUART_CTRL_RIE)) ||
++        ((s->stat & LPUART_STAT_TDRE) && (s->ctrl & LPUART_CTRL_TIE)) ||
++        ((s->stat & LPUART_STAT_TC)   && (s->ctrl & LPUART_CTRL_TCIE)) ||
++        ((s->stat & LPUART_STAT_IDLE) && (s->ctrl & LPUART_CTRL_ILIE));
 +
-+    trace_imx95_aonmix_write(offset, value);
++    qemu_set_irq(s->irq, level);
++}
 +
++static void imx_lpuart_reset(IMXLPUARTState *s)
++{
 +    /*
-+     * M7_CFG.WAIT toggling is the SM holding (set) or releasing (clear) the
-+     * M7. Surface the released state on the m7-run line so the machine
-+     * cycles the core. Only fires on an actual WAIT transition.
++     * Power-on reset values per the i.MX LPUART chapter. STAT comes up
++     * with TDRE and TC set because the FIFO is empty.
 +     */
-+    if (offset == AONMIX_M7_CFG) {
-+        uint32_t old = s->regs[offset / 4];
-+        uint32_t new = (uint32_t)value;
++    s->baud   = 0x0F000004;     /* default OSR = 4 + SBR field */
++    s->stat   = LPUART_STAT_TDRE | LPUART_STAT_TC;
++    s->ctrl   = 0;
++    s->match  = 0;
++    s->modir  = 0;
++    s->fifo   = 0;
++    s->water  = 0;
++    s->pincfg = 0;
++    s->rx_byte = 0;
++    s->rx_full = false;
++}
 +
-+        s->regs[offset / 4] = new;
-+        if ((old ^ new) & AONMIX_M7_CFG_WAIT) {
-+            int run = (new & AONMIX_M7_CFG_WAIT) ? 0 : 1;
-+            trace_imx95_aonmix_m7_gate(run);
-+            qemu_set_irq(s->m7_run, run);
++static void imx_lpuart_reset_at_boot_hold(Object *obj, ResetType type)
++{
++    IMXLPUARTState *s = IMX_LPUART(obj);
++
++    imx_lpuart_reset(s);
++    imx_lpuart_update_irq(s);
++}
++
++static uint64_t imx_lpuart_read(void *opaque, hwaddr offset, unsigned size)
++{
++    IMXLPUARTState *s = opaque;
++    uint32_t value = 0;
++    uint32_t c;
++
++    switch (offset) {
++    case LPUART_VERID:
++        value = LPUART_VERID_VALUE;
++        break;
++
++    case LPUART_PARAM:
++        /* TXFIFO and RXFIFO size fields both zero -> depth = 1. */
++        value = 0;
++        break;
++
++    case LPUART_GLOBAL:
++        value = 0;
++        break;
++
++    case LPUART_PINCFG:
++        value = s->pincfg;
++        break;
++
++    case LPUART_BAUD:
++        value = s->baud;
++        break;
++
++    case LPUART_STAT:
++        value = s->stat;
++        break;
++
++    case LPUART_CTRL:
++        value = s->ctrl;
++        break;
++
++    case LPUART_DATA:
++        if (s->rx_full) {
++            c = s->rx_byte;
++            s->rx_full = false;
++            s->stat &= ~LPUART_STAT_RDRF;
++            value = c & LPUART_DATA_MASK;
++            imx_lpuart_update_irq(s);
++            qemu_chr_fe_accept_input(&s->chr);
++        } else {
++            value = LPUART_DATA_RXEMPT;
 +        }
++        break;
++
++    case LPUART_MATCH:
++        value = s->match;
++        break;
++
++    case LPUART_MODIR:
++        value = s->modir;
++        break;
++
++    case LPUART_FIFO:
++        /*
++         * Report the FIFO control bits the guest set, plus the read-only
++         * TXEMPT/RXEMPT status computed from our 1-deep model. The status
++         * bits must be derived fresh, never returned from s->fifo: the Linux
++         * driver read-modify-writes UARTFIFO during setup, so a stored RXEMPT
++         * would stick set and make its RX drain loop (while !(FIFO & RXEMPT))
++         * believe the RX FIFO is always empty - it would never read DATA, RDRF
++         * would never clear, and the RX interrupt would storm.
++         */
++        value = s->fifo & ~(LPUART_FIFO_TXEMPT | LPUART_FIFO_RXEMPT);
++        value |= LPUART_FIFO_TXEMPT;  /* we drain TX instantly */
++        if (!s->rx_full) {
++            value |= LPUART_FIFO_RXEMPT;
++        }
++        break;
++
++    case LPUART_WATER:
++        /*
++         * Reflect the current fifo state in the RX/TX count fields
++         * (bits[31:24] RXCOUNT, bits[15:8] TXCOUNT). U-Boot's
++         * _lpuart32_serial_tstc() polls (water >> 24) for incoming-
++         * char detection, so RXCOUNT must update when imx_lpuart_receive
++         * stashes a byte. We are 1-deep: 0 or 1 in either slot.
++         * Preserve the guest-written watermark bits unchanged.
++         */
++        value = (s->water & 0x00ff00ffu)
++              | ((uint32_t)(s->rx_full ? 1 : 0) << 24)
++              | 0u;  /* TXCOUNT always 0 - we drain TR writes instantly */
++        break;
++
++    default:
++        qemu_log_mask(LOG_GUEST_ERROR,
++                      "%s: bad read offset 0x%" HWADDR_PRIx "\n",
++                      __func__, offset);
++        break;
++    }
++
++    return value;
++}
++
++static void imx_lpuart_write(void *opaque, hwaddr offset,
++                             uint64_t value, unsigned size)
++{
++    IMXLPUARTState *s = opaque;
++    uint8_t ch;
++
++    switch (offset) {
++    case LPUART_VERID:
++    case LPUART_PARAM:
++        /* Read-only registers; silently ignore writes (HW behavior). */
++        break;
++
++    case LPUART_GLOBAL:
++        if (value & LPUART_GLOBAL_RST) {
++            imx_lpuart_reset(s);
++            imx_lpuart_update_irq(s);
++        }
++        break;
++
++    case LPUART_PINCFG:
++        s->pincfg = value;
++        break;
++
++    case LPUART_BAUD:
++        /*
++         * Baud-rate timing isn't modelled, but the driver reads back what
++         * it wrote. Preserve DMA-enable and other configuration bits.
++         */
++        s->baud = value;
++        trace_imx_lpuart_baud(s->baud);
++        break;
++
++    case LPUART_STAT:
++        /*
++         * STAT bits IDLE and OR are W1C; the rest are read-only status
++         * managed by the model.
++         */
++        s->stat &= ~(value & LPUART_STAT_W1C_MASK);
++        imx_lpuart_update_irq(s);
++        break;
++
++    case LPUART_CTRL:
++        s->ctrl = value;
++        imx_lpuart_update_irq(s);
++        break;
++
++    case LPUART_DATA:
++        ch = value & LPUART_DATA_MASK;
++        /*
++         * Always push the byte through the chardev backend, even if
++         * CTRL_TE is currently 0. Real silicon would queue or drop the
++         * byte until TE is enabled; in emulation we don't model that
++         * gating because some consumers (notably the Linux earlycon
++         * path under -kernel direct boot, which assumes firmware
++         * already set TE before the kernel runs) write to DATA without
++         * first enabling TE themselves. Without this, kernel console
++         * output vanishes silently and earlycon appears broken.
++         */
++        trace_imx_lpuart_tx(ch);
++        qemu_chr_fe_write_all(&s->chr, &ch, 1);
++        /*
++         * TDRE and TC are pinned high; the byte goes out instantly. A
++         * future model would clear them for one host tick, then set TC
++         * when the line goes idle.
++         */
++        s->stat |= LPUART_STAT_TDRE | LPUART_STAT_TC;
++        imx_lpuart_update_irq(s);
++        break;
++
++    case LPUART_MATCH:
++        s->match = value;
++        break;
++
++    case LPUART_MODIR:
++        s->modir = value;
++        break;
++
++    case LPUART_FIFO:
++        /*
++         * Store only the writable configuration bits. The read-only status
++         * bits (TXEMPT/RXEMPT/TXOF/RXUF) and the self-clearing flush commands
++         * (TXFLUSH/RXFLUSH) must NOT be latched: the driver read-modify-writes
++         * UARTFIFO, so latching RXEMPT would make it stick set and break the
++         * RX drain loop (see the FIFO read).
++         */
++        s->fifo = value & ~LPUART_FIFO_RO_MASK;
++        if (value & LPUART_FIFO_RXFLUSH) {
++            s->rx_full = false;
++            s->stat &= ~LPUART_STAT_RDRF;
++        }
++        imx_lpuart_update_irq(s);
++        break;
++
++    case LPUART_WATER:
++        s->water = value;
++        break;
++
++    default:
++        qemu_log_mask(LOG_GUEST_ERROR,
++                      "%s: bad write offset 0x%" HWADDR_PRIx
++                      " value 0x%" PRIx64 "\n",
++                      __func__, offset, value);
++        break;
++    }
++}
++
++static int imx_lpuart_can_receive(void *opaque)
++{
++    IMXLPUARTState *s = opaque;
++
++    return ((s->ctrl & LPUART_CTRL_RE) && !s->rx_full) ? 1 : 0;
++}
++
++static void imx_lpuart_receive(void *opaque, const uint8_t *buf, int size)
++{
++    IMXLPUARTState *s = opaque;
++
++    if (size <= 0 || s->rx_full) {
 +        return;
 +    }
 +
-+    s->regs[offset / 4] = value;
++    s->rx_byte = buf[0];
++    s->rx_full = true;
++    trace_imx_lpuart_rx(s->rx_byte);
++    s->stat |= LPUART_STAT_RDRF;
++    imx_lpuart_update_irq(s);
 +}
 +
-+static const MemoryRegionOps imx95_aonmix_ops = {
-+    .read = imx95_aonmix_read,
-+    .write = imx95_aonmix_write,
++static const MemoryRegionOps imx_lpuart_ops = {
++    .read = imx_lpuart_read,
++    .write = imx_lpuart_write,
 +    .endianness = DEVICE_LITTLE_ENDIAN,
 +    .impl = {
 +        .min_access_size = 4,
@@ -464,490 +472,205 @@ index 00000000000..d794440170e
 +    },
 +};
 +
-+static void imx95_aonmix_reset_hold(Object *obj, ResetType type)
++static void imx_lpuart_realize(DeviceState *dev, Error **errp)
 +{
-+    IMX95AonmixState *s = IMX95_AONMIX(obj);
++    IMXLPUARTState *s = IMX_LPUART(dev);
 +
-+    memset(s->regs, 0, sizeof(s->regs));
-+    /* M7 held at reset: the SM sees HOLD and runs its full CpuStart. */
-+    s->regs[AONMIX_M7_CFG / 4] = AONMIX_M7_CFG_WAIT;
++    qemu_chr_fe_set_handlers(&s->chr, imx_lpuart_can_receive,
++                             imx_lpuart_receive, NULL, NULL, s, NULL, true);
 +}
 +
-+static void imx95_aonmix_init(Object *obj)
++static void imx_lpuart_init(Object *obj)
 +{
 +    SysBusDevice *sbd = SYS_BUS_DEVICE(obj);
-+    IMX95AonmixState *s = IMX95_AONMIX(obj);
++    IMXLPUARTState *s = IMX_LPUART(obj);
 +
-+    memory_region_init_io(&s->iomem, obj, &imx95_aonmix_ops, s,
-+                          TYPE_IMX95_AONMIX, IMX95_AONMIX_REG_SIZE);
++    memory_region_init_io(&s->iomem, obj, &imx_lpuart_ops, s,
++                          TYPE_IMX_LPUART, IMX_LPUART_REG_SIZE);
 +    sysbus_init_mmio(sbd, &s->iomem);
-+
-+    qdev_init_gpio_out_named(DEVICE(obj), &s->m7_run, "m7-run", 1);
++    sysbus_init_irq(sbd, &s->irq);
 +}
 +
-+static const VMStateDescription vmstate_imx95_aonmix = {
-+    .name = TYPE_IMX95_AONMIX,
-+    .version_id = 1,
-+    .minimum_version_id = 1,
-+    .fields = (const VMStateField[]) {
-+        VMSTATE_UINT32_ARRAY(regs, IMX95AonmixState, IMX95_AONMIX_NUM_WORDS),
-+        VMSTATE_END_OF_LIST()
-+    },
++static const Property imx_lpuart_properties[] = {
++    DEFINE_PROP_CHR("chardev", IMXLPUARTState, chr),
 +};
 +
-+static void imx95_aonmix_class_init(ObjectClass *klass, const void *data)
++static void imx_lpuart_class_init(ObjectClass *klass, const void *data)
 +{
 +    DeviceClass *dc = DEVICE_CLASS(klass);
 +    ResettableClass *rc = RESETTABLE_CLASS(klass);
 +
-+    dc->vmsd = &vmstate_imx95_aonmix;
-+    rc->phases.hold = imx95_aonmix_reset_hold;
-+    set_bit(DEVICE_CATEGORY_MISC, dc->categories);
-+    dc->desc = "NXP i.MX 95 BLK_CTRL_S_AONMIX (M7 CPU-WAIT gate)";
++    dc->realize = imx_lpuart_realize;
++    dc->vmsd = &vmstate_imx_lpuart;
++    rc->phases.hold = imx_lpuart_reset_at_boot_hold;
++    set_bit(DEVICE_CATEGORY_INPUT, dc->categories);
++    dc->desc = "NXP i.MX LPUART";
++    device_class_set_props(dc, imx_lpuart_properties);
 +}
 +
-+static const TypeInfo imx95_aonmix_info = {
-+    .name           = TYPE_IMX95_AONMIX,
++static const TypeInfo imx_lpuart_info = {
++    .name           = TYPE_IMX_LPUART,
 +    .parent         = TYPE_SYS_BUS_DEVICE,
-+    .instance_size  = sizeof(IMX95AonmixState),
-+    .instance_init  = imx95_aonmix_init,
-+    .class_init     = imx95_aonmix_class_init,
++    .instance_size  = sizeof(IMXLPUARTState),
++    .instance_init  = imx_lpuart_init,
++    .class_init     = imx_lpuart_class_init,
 +};
 +
-+static void imx95_aonmix_register_types(void)
++static void imx_lpuart_register_types(void)
 +{
-+    type_register_static(&imx95_aonmix_info);
++    type_register_static(&imx_lpuart_info);
 +}
 +
-+type_init(imx95_aonmix_register_types)
-diff --git a/hw/misc/imx95_gpc.c b/hw/misc/imx95_gpc.c
++type_init(imx_lpuart_register_types)
+diff --git a/hw/char/meson.build b/hw/char/meson.build
+index fc3d7ee506f..440142ae803 100644
+--- a/hw/char/meson.build
++++ b/hw/char/meson.build
+@@ -41,3 +41,4 @@ system_ss.add(when: 'CONFIG_GOLDFISH_TTY', if_true: files('goldfish_tty.c'))
+ 
+ specific_ss.add(when: 'CONFIG_TERMINAL3270', if_true: files('terminal3270.c'))
+ specific_ss.add(when: 'CONFIG_PSERIES', if_true: files('spapr_vty.c'))
++system_ss.add(when: 'CONFIG_IMX_LPUART', if_true: files('imx_lpuart.c'))
+diff --git a/hw/char/trace-events b/hw/char/trace-events
+index a3fcc772877..6d9b71961e5 100644
+--- a/hw/char/trace-events
++++ b/hw/char/trace-events
+@@ -141,3 +141,6 @@ stm32f2xx_usart_receive(char *id, uint8_t chr) " %s receiving '%c'"
+ # riscv_htif.c
+ htif_uart_write_to_host(uint8_t device, uint8_t cmd, uint64_t payload) "device: %u cmd: %02u payload: %016" PRIx64
+ htif_uart_unknown_device_command(uint8_t device, uint8_t cmd, uint64_t payload) "device: %u cmd: %02u payload: %016" PRIx64
++imx_lpuart_tx(uint8_t ch) "tx 0x%02x"
++imx_lpuart_rx(uint8_t ch) "rx 0x%02x"
++imx_lpuart_baud(uint32_t baud) "baud <- 0x%08x"
+diff --git a/include/hw/char/imx_lpuart.h b/include/hw/char/imx_lpuart.h
 new file mode 100644
-index 00000000000..d18b6da13c0
+index 00000000000..a18809c432f
 --- /dev/null
-+++ b/hw/misc/imx95_gpc.c
-@@ -0,0 +1,160 @@
++++ b/include/hw/char/imx_lpuart.h
+@@ -0,0 +1,123 @@
 +/*
-+ * NXP i.MX 95 GPC (General Power Controller) stub model
++ * NXP i.MX LPUART (Low-Power UART) device model
 + *
 + * Copyright (c) 2026, Kyle Fox
 + *
 + * SPDX-License-Identifier: GPL-2.0-or-later
 + *
-+ * Covers the GPC block at 0x44470000: the per-domain GPC_CPU_CTRL
-+ * instances (CM33 @+0x0000, CM7 @+0x0800, CA55_0..5 @+0x1000..+0x3800,
-+ * CA55_CLUSTER @+0x4000) and GPC_GLOBAL @+0x4800.
-+ *
-+ * The System Manager drives CPU power modes by writing CMC_MODE_CTRL
-+ * (CPU_MODE_TARGET, offset 0x10 in a CPU_CTRL block) and polling
-+ * CMC_MODE_STAT (CPU_MODE_CURRENT, offset 0x14) until the mode settles.
-+ * It also uses the CMC_SLEEP_*_CTRL / *_STAT handshake pairs (a *_STAT
-+ * at *_CTRL + 4). QEMU has no power hardware, so transitions are
-+ * instantaneous: every status register reflects the value last written
-+ * to its paired control register. Everything else is plain storage.
-+ *
-+ * This is the register-class triage used for XCACHE applied to a
-+ * control/status block: control bits persist (RAM), status registers
-+ * mirror their control so "request X, wait for X" loops converge.
++ * Models the LPUART IP found in i.MX 7ULP / 8ULP / 8QXP / 95 and other
++ * recent NXP SoCs. Register layout matches the
++ * "fsl,imx95-lpuart" / "fsl,imx8ulp-lpuart" / "fsl,imx7ulp-lpuart"
++ * compatible string in the Linux fsl_lpuart driver.
 + */
 +
-+#include "qemu/osdep.h"
-+#include "qemu/log.h"
-+#include "qemu/module.h"
++#ifndef IMX_LPUART_H
++#define IMX_LPUART_H
++
 +#include "hw/core/sysbus.h"
-+#include "migration/vmstate.h"
-+#include "trace.h"
++#include "chardev/char-fe.h"
++#include "qom/object.h"
 +
-+#define TYPE_IMX95_GPC "imx95.gpc"
-+OBJECT_DECLARE_SIMPLE_TYPE(IMX95GPCState, IMX95_GPC)
++#define TYPE_IMX_LPUART "imx.lpuart"
++OBJECT_DECLARE_SIMPLE_TYPE(IMXLPUARTState, IMX_LPUART)
 +
-+#define IMX95_GPC_REG_SIZE      0x10000
-+#define IMX95_GPC_NUM_WORDS     (IMX95_GPC_REG_SIZE / 4)
++/* MMIO size of one LPUART instance (from the device tree). */
++#define IMX_LPUART_REG_SIZE     0x1000
 +
-+/* GPC_CPU_CTRL per-domain block layout (the GLOBAL block lives at +0x4800). */
-+#define GPC_GLOBAL_OFF          0x4800
-+#define CPU_CTRL_BLOCK_SIZE     0x800
-+#define CMC_MODE_CTRL           0x10    /* CPU_MODE_TARGET in [1:0] */
-+#define CMC_MODE_STAT           0x14    /* CPU_MODE_CURRENT in [1:0] */
++/*
++ * Register offsets. The first four 32-bit words (VERID/PARAM/GLOBAL/
++ * PINCFG) sit before the UART register block proper, which starts at
++ * BAUD = 0x10. The Linux driver compensates with sport->reg_off = 0x10
++ * on i.MX variants; the model exposes the absolute offsets directly.
++ */
++#define LPUART_VERID            0x00
++#define LPUART_PARAM            0x04
++#define LPUART_GLOBAL           0x08
++#define LPUART_PINCFG           0x0C
++#define LPUART_BAUD             0x10
++#define LPUART_STAT             0x14
++#define LPUART_CTRL             0x18
++#define LPUART_DATA             0x1C
++#define LPUART_MATCH            0x20
++#define LPUART_MODIR            0x24
++#define LPUART_FIFO             0x28
++#define LPUART_WATER            0x2C
 +
-+struct IMX95GPCState {
++/* GLOBAL: write GLOBAL_RST to trigger a software reset of the IP. */
++#define LPUART_GLOBAL_RST       0x00000002
++
++/* STAT bits the model implements. */
++#define LPUART_STAT_TDRE        0x00800000  /* TX data register empty */
++#define LPUART_STAT_TC          0x00400000  /* TX complete */
++#define LPUART_STAT_RDRF        0x00200000  /* RX data register full */
++#define LPUART_STAT_IDLE        0x00100000  /* RX line idle */
++#define LPUART_STAT_OR          0x00080000  /* RX overrun */
++/* RW1C mask: writing 1 to these bits clears them. */
++#define LPUART_STAT_W1C_MASK    (LPUART_STAT_IDLE | LPUART_STAT_OR)
++
++/* CTRL bits the model implements. */
++#define LPUART_CTRL_TIE         0x00800000  /* TDRE IRQ enable */
++#define LPUART_CTRL_TCIE        0x00400000  /* TC IRQ enable */
++#define LPUART_CTRL_RIE         0x00200000  /* RDRF IRQ enable */
++#define LPUART_CTRL_ILIE        0x00100000  /* IDLE IRQ enable */
++#define LPUART_CTRL_TE          0x00080000  /* Transmitter enable */
++#define LPUART_CTRL_RE          0x00040000  /* Receiver enable */
++
++/* DATA: bits [7:0] carry the actual character; upper bits are status. */
++#define LPUART_DATA_MASK        0x000000FF
++#define LPUART_DATA_RXEMPT      0x00001000  /* RX buffer was empty */
++
++/*
++ * FIFO bits. TXEMPT/RXEMPT/TXOF/RXUF are read-only (status) and must never be
++ * latched from a guest write - the Linux driver read-modify-writes UARTFIFO,
++ * so a stored RXEMPT would stick and break its RX drain loop. TXFLUSH/RXFLUSH
++ * are write-1 self-clearing commands.
++ */
++#define LPUART_FIFO_TXEMPT      0x00800000
++#define LPUART_FIFO_RXEMPT      0x00400000
++#define LPUART_FIFO_TXOF        0x00020000  /* TX overflow (W1C) */
++#define LPUART_FIFO_RXUF        0x00010000  /* RX underflow (W1C) */
++#define LPUART_FIFO_TXFLUSH     0x00008000  /* self-clearing */
++#define LPUART_FIFO_RXFLUSH     0x00004000  /* self-clearing */
++#define LPUART_FIFO_RO_MASK     (LPUART_FIFO_TXEMPT | LPUART_FIFO_RXEMPT | \
++                                 LPUART_FIFO_TXOF | LPUART_FIFO_RXUF | \
++                                 LPUART_FIFO_TXFLUSH | LPUART_FIFO_RXFLUSH)
++
++/*
++ * PARAM: FIFO depth is encoded as 1 << (field + 1) when nonzero, else 1.
++ * The model implements a single-byte TX path and a 1-deep RX buffer, so
++ * both TX and RX fields read back zero (depth = 1).
++ */
++#define LPUART_PARAM_TXFIFO_SHIFT   0
++#define LPUART_PARAM_RXFIFO_SHIFT   8
++
++/*
++ * VERID: report an i.MX 95-style version. The Linux driver
++ * does not branch on this field for any of the imx*ulp variants, so the
++ * exact value is not load-bearing.
++ */
++#define LPUART_VERID_VALUE      0x04040007
++
++struct IMXLPUARTState {
 +    SysBusDevice    parent_obj;
++
 +    MemoryRegion    iomem;
-+    uint32_t        regs[IMX95_GPC_NUM_WORDS];
++    CharFrontend    chr;
++    qemu_irq        irq;
++
++    /* Register state. Only the writable bits are tracked. */
++    uint32_t        baud;
++    uint32_t        stat;
++    uint32_t        ctrl;
++    uint32_t        match;
++    uint32_t        modir;
++    uint32_t        fifo;
++    uint32_t        water;
++    uint32_t        pincfg;
++
++    /* Single-byte RX buffer (1-deep). */
++    uint8_t         rx_byte;
++    bool            rx_full;
 +};
 +
-+/*
-+ * Is `reg` (offset within a CPU_CTRL block) a status register that mirrors
-+ * the control register 4 bytes below it? Covers CMC_MODE_STAT (0x14) and
-+ * the CMC_SLEEP_*_STAT handshake registers (0x204, 0x20c, ... 0x24c), all
-+ * of which sit at their paired *_CTRL + 4.
-+ */
-+static bool gpc_is_mirror_stat(uint32_t reg)
-+{
-+    if (reg == CMC_MODE_STAT) {
-+        return true;
-+    }
-+    /* SLEEP/WAKEUP handshake STATs: odd-word in the 0x200..0x2ff range. */
-+    if (reg >= 0x204 && reg <= 0x2fc && ((reg & 0x4) != 0)) {
-+        return true;
-+    }
-+    return false;
-+}
-+
-+static uint64_t imx95_gpc_read(void *opaque, hwaddr offset, unsigned size)
-+{
-+    IMX95GPCState *s = opaque;
-+
-+    if (offset < GPC_GLOBAL_OFF) {
-+        uint32_t reg = offset & (CPU_CTRL_BLOCK_SIZE - 1);
-+        if (gpc_is_mirror_stat(reg)) {
-+            /* Status mirrors the paired control (transition is instant). */
-+            return s->regs[(offset - 4) / 4];
-+        }
-+    }
-+    return s->regs[offset / 4];
-+}
-+
-+static void imx95_gpc_write(void *opaque, hwaddr offset,
-+                            uint64_t value, unsigned size)
-+{
-+    IMX95GPCState *s = opaque;
-+
-+    if (offset < GPC_GLOBAL_OFF &&
-+        (offset & (CPU_CTRL_BLOCK_SIZE - 1)) == CMC_MODE_CTRL) {
-+        trace_imx95_gpc_mode(offset, (uint32_t)value & 0x3);
-+    }
-+
-+    s->regs[offset / 4] = value;
-+}
-+
-+static const MemoryRegionOps imx95_gpc_ops = {
-+    .read = imx95_gpc_read,
-+    .write = imx95_gpc_write,
-+    .endianness = DEVICE_LITTLE_ENDIAN,
-+    .impl = {
-+        .min_access_size = 4,
-+        .max_access_size = 4,
-+    },
-+    .valid = {
-+        .min_access_size = 4,
-+        .max_access_size = 4,
-+    },
-+};
-+
-+static void imx95_gpc_reset_hold(Object *obj, ResetType type)
-+{
-+    IMX95GPCState *s = IMX95_GPC(obj);
-+
-+    memset(s->regs, 0, sizeof(s->regs));
-+}
-+
-+static void imx95_gpc_init(Object *obj)
-+{
-+    SysBusDevice *sbd = SYS_BUS_DEVICE(obj);
-+    IMX95GPCState *s = IMX95_GPC(obj);
-+
-+    memory_region_init_io(&s->iomem, obj, &imx95_gpc_ops, s,
-+                          TYPE_IMX95_GPC, IMX95_GPC_REG_SIZE);
-+    sysbus_init_mmio(sbd, &s->iomem);
-+}
-+
-+static const VMStateDescription vmstate_imx95_gpc = {
-+    .name = TYPE_IMX95_GPC,
-+    .version_id = 1,
-+    .minimum_version_id = 1,
-+    .fields = (const VMStateField[]) {
-+        VMSTATE_UINT32_ARRAY(regs, IMX95GPCState, IMX95_GPC_NUM_WORDS),
-+        VMSTATE_END_OF_LIST()
-+    },
-+};
-+
-+static void imx95_gpc_class_init(ObjectClass *klass, const void *data)
-+{
-+    DeviceClass *dc = DEVICE_CLASS(klass);
-+    ResettableClass *rc = RESETTABLE_CLASS(klass);
-+
-+    dc->vmsd = &vmstate_imx95_gpc;
-+    rc->phases.hold = imx95_gpc_reset_hold;
-+    set_bit(DEVICE_CATEGORY_MISC, dc->categories);
-+    dc->desc = "NXP i.MX 95 GPC (stub)";
-+}
-+
-+static const TypeInfo imx95_gpc_info = {
-+    .name           = TYPE_IMX95_GPC,
-+    .parent         = TYPE_SYS_BUS_DEVICE,
-+    .instance_size  = sizeof(IMX95GPCState),
-+    .instance_init  = imx95_gpc_init,
-+    .class_init     = imx95_gpc_class_init,
-+};
-+
-+static void imx95_gpc_register_types(void)
-+{
-+    type_register_static(&imx95_gpc_info);
-+}
-+
-+type_init(imx95_gpc_register_types)
-diff --git a/hw/misc/imx95_src.c b/hw/misc/imx95_src.c
-new file mode 100644
-index 00000000000..8aa1d7d56b4
---- /dev/null
-+++ b/hw/misc/imx95_src.c
-@@ -0,0 +1,228 @@
-+/*
-+ * NXP i.MX 95 SRC (System Reset Controller) mix-slice stub model
-+ *
-+ * Copyright (c) 2026, Kyle Fox
-+ *
-+ * SPDX-License-Identifier: GPL-2.0-or-later
-+ *
-+ * Covers the SRC block at 0x44460000: SRC_GEN at offset 0, then the
-+ * per-power-domain "mix slice" register blocks (SRC_XSPR) starting at
-+ * offset 0x400, one every 0x400 (ANAMIX, AONMIX, ..., CCMSRCGPCMIX, ...).
-+ *
-+ * The System Manager powers a mix down by setting SLICE_SW_CTRL.PDN_SOFT
-+ * (bit 31, slice offset 0x20) and powers it up by clearing it, then polls
-+ * the read-only FUNC_STAT (slice offset 0xb4) until the power state
-+ * settles. QEMU has no power switches, so the transition is instantaneous:
-+ * FUNC_STAT is derived from the slice's SLICE_SW_CTRL.PDN_SOFT -
-+ *   powered up   -> RST_STAT released                  (0x00000004)
-+ *   powered down -> PSW off, ISO on, handshakes done    (0x00005511)
-+ * matching PWR_MIX_FUNC_STAT_PUP / _PDN in the SM's fsl_power.h. Everything
-+ * else is plain storage. Same status-mirrors-control idea as the GPC model.
-+ */
-+
-+#include "qemu/osdep.h"
-+#include "qemu/log.h"
-+#include "qemu/module.h"
-+#include "hw/core/sysbus.h"
-+#include "hw/core/irq.h"
-+#include "migration/vmstate.h"
-+#include "trace.h"
-+
-+#define TYPE_IMX95_SRC "imx95.src"
-+OBJECT_DECLARE_SIMPLE_TYPE(IMX95SRCState, IMX95_SRC)
-+
-+#define IMX95_SRC_REG_SIZE      0x10000
-+#define IMX95_SRC_NUM_WORDS     (IMX95_SRC_REG_SIZE / 4)
-+
-+/* Mix-slice (SRC_XSPR) layout. SRC_GEN occupies the first slice-sized block. */
-+#define SRC_SLICE_STRIDE        0x400
-+#define SRC_SLICE_SW_CTRL       0x20    /* PDN_SOFT in bit 31 */
-+#define SRC_FUNC_STAT           0xb4    /* read-only power/reset status */
-+#define SRC_SLICE_SW_CTRL_PDN_SOFT  0x80000000u
-+
-+/* FUNC_STAT values for the fully-up / fully-down states (SM fsl_power.h). */
-+#define SRC_FUNC_STAT_PUP       0x00000004u
-+#define SRC_FUNC_STAT_PDN       0x00005511u
-+
-+/*
-+ * SRC_GEN.SCR - the boot-reset-release latch register at offset 0x10
-+ * within SRC_GEN (which sits at the SRC block base). Bit 12 is the
-+ * M7MIX release; per the i.MX 95 reference manual it is sticky:
-+ * "M7MIX will be held under reset until boot core writes this bit to 1.
-+ * Once this bit is set to 1, it will be locked." The SM's
-+ * DEV_SM_CpuStart(M7) path writes this bit during the LMM_Boot phase;
-+ * we use the 0->1 transition as a rising edge on the m7mix_release
-+ * gpio-out so the machine wrapper can release the M7 CPU from
-+ * start-powered-off (silicon-faithful M7 release).
-+ */
-+#define SRC_GEN_SCR_OFFSET                      0x10u
-+#define SRC_GEN_SCR_BOOT_RESET_RELEASE_M7MIX    (1u << 12)
-+
-+/*
-+ * Per-slice reset line. SLICE_SW_CTRL.RST_RSTR_0 (bit 20) asserts the
-+ * slice's core reset; the read-only RSTR_STAT.RSTR_0_RST_STAT (bit 0, slice
-+ * offset 0xb8) reports it back. The SM's SRC_MixSetResetLine writes RST_RSTR_0
-+ * and SRC_MixGetResetLine polls RSTR_STAT until it matches, so - like
-+ * FUNC_STAT mirroring PDN_SOFT - we derive RSTR_STAT from RST_RSTR_0 so the
-+ * SM's assert/deassert wait loops converge.
-+ */
-+#define SRC_RSTR_STAT                           0xb8
-+/*
-+ * SLICE_SW_CTRL.RST_RSTR[3:0] live in bits [23:20]; RSTR_STAT.RST_STAT[3:0] in
-+ * bits [3:0]. The reset lines (M7MIX + sub-resets) each use one of these.
-+ */
-+#define SRC_SLICE_SW_CTRL_RST_RSTR_SHIFT        20
-+
-+struct IMX95SRCState {
-+    SysBusDevice    parent_obj;
-+    MemoryRegion    iomem;
-+    uint32_t        regs[IMX95_SRC_NUM_WORDS];
-+
-+    /*
-+     * Rising edge when SRC_GEN.SCR.BOOT_RESET_RELEASE_M7MIX goes 0 -> 1.
-+     * Wired by the machine to a handler that releases the M7 CPU,
-+     * complementing the existing reset-time release path (which
-+     * releases M7 when -device loader has staged firmware into ITCM,
-+     * used by tests that boot the M7 standalone without the SM).
-+     */
-+    qemu_irq        m7mix_release;
-+};
-+
-+static uint64_t imx95_src_read(void *opaque, hwaddr offset, unsigned size)
-+{
-+    IMX95SRCState *s = opaque;
-+
-+    /* FUNC_STAT in a mix slice mirrors that slice's SLICE_SW_CTRL.PDN_SOFT. */
-+    if (offset >= SRC_SLICE_STRIDE &&
-+        (offset & (SRC_SLICE_STRIDE - 1)) == SRC_FUNC_STAT) {
-+        hwaddr slice = offset & ~(hwaddr)(SRC_SLICE_STRIDE - 1);
-+        uint32_t ctrl = s->regs[(slice + SRC_SLICE_SW_CTRL) / 4];
-+
-+        return (ctrl & SRC_SLICE_SW_CTRL_PDN_SOFT) ? SRC_FUNC_STAT_PDN
-+                                                   : SRC_FUNC_STAT_PUP;
-+    }
-+
-+    /*
-+     * RSTR_STAT mirrors that slice's SLICE_SW_CTRL reset lines: the SM
-+     * asserts one of RST_RSTR[3:0] (SLICE_SW_CTRL bits [23:20]) and polls the
-+     * matching RST_STAT[3:0] (RSTR_STAT bits [3:0]) until it tracks. The M7 LM
-+     * reset walks several reset lines (M7MIX + associated sub-resets), each on
-+     * a different RST_RSTR bit, so mirror all four.
-+     */
-+    if (offset >= SRC_SLICE_STRIDE &&
-+        (offset & (SRC_SLICE_STRIDE - 1)) == SRC_RSTR_STAT) {
-+        hwaddr slice = offset & ~(hwaddr)(SRC_SLICE_STRIDE - 1);
-+        uint32_t ctrl = s->regs[(slice + SRC_SLICE_SW_CTRL) / 4];
-+
-+        return (ctrl >> SRC_SLICE_SW_CTRL_RST_RSTR_SHIFT) & 0xf;
-+    }
-+    return s->regs[offset / 4];
-+}
-+
-+static void imx95_src_write(void *opaque, hwaddr offset,
-+                            uint64_t value, unsigned size)
-+{
-+    IMX95SRCState *s = opaque;
-+
-+    /*
-+     * SRC_GEN.SCR: bit 12 (M7MIX release) is sticky/locked once set per
-+     * the RM. Track the 0->1 transition and pulse the m7mix_release out
-+     * so the machine releases the M7 CPU.
-+     */
-+    if (offset == SRC_GEN_SCR_OFFSET) {
-+        uint32_t old = s->regs[offset / 4];
-+        uint32_t new = (uint32_t)value;
-+
-+        /* Lock any bit that was already 1: hardware-sticky behaviour. */
-+        new |= old & SRC_GEN_SCR_BOOT_RESET_RELEASE_M7MIX;
-+        s->regs[offset / 4] = new;
-+
-+        if (!(old & SRC_GEN_SCR_BOOT_RESET_RELEASE_M7MIX) &&
-+             (new & SRC_GEN_SCR_BOOT_RESET_RELEASE_M7MIX)) {
-+            trace_imx95_src_m7mix_release();
-+            qemu_irq_raise(s->m7mix_release);
-+        }
-+        return;
-+    }
-+
-+    if (offset >= SRC_SLICE_STRIDE &&
-+        (offset & (SRC_SLICE_STRIDE - 1)) == SRC_SLICE_SW_CTRL) {
-+        trace_imx95_src_slice_ctrl(offset, (uint32_t)value);
-+    }
-+
-+    s->regs[offset / 4] = value;
-+}
-+
-+static const MemoryRegionOps imx95_src_ops = {
-+    .read = imx95_src_read,
-+    .write = imx95_src_write,
-+    .endianness = DEVICE_LITTLE_ENDIAN,
-+    .impl = {
-+        .min_access_size = 4,
-+        .max_access_size = 4,
-+    },
-+    .valid = {
-+        .min_access_size = 4,
-+        .max_access_size = 4,
-+    },
-+};
-+
-+static void imx95_src_reset_hold(Object *obj, ResetType type)
-+{
-+    IMX95SRCState *s = IMX95_SRC(obj);
-+
-+    memset(s->regs, 0, sizeof(s->regs));
-+}
-+
-+static void imx95_src_init(Object *obj)
-+{
-+    SysBusDevice *sbd = SYS_BUS_DEVICE(obj);
-+    IMX95SRCState *s = IMX95_SRC(obj);
-+
-+    memory_region_init_io(&s->iomem, obj, &imx95_src_ops, s,
-+                          TYPE_IMX95_SRC, IMX95_SRC_REG_SIZE);
-+    sysbus_init_mmio(sbd, &s->iomem);
-+
-+    /*
-+     * Named gpio-out for SRC_GEN.SCR.M7MIX rising edge. Connected by
-+     * the machine wrapper to a handler that releases the M7 CPU.
-+     */
-+    qdev_init_gpio_out_named(DEVICE(obj), &s->m7mix_release,
-+                             "m7mix-release", 1);
-+}
-+
-+static const VMStateDescription vmstate_imx95_src = {
-+    .name = TYPE_IMX95_SRC,
-+    .version_id = 1,
-+    .minimum_version_id = 1,
-+    .fields = (const VMStateField[]) {
-+        VMSTATE_UINT32_ARRAY(regs, IMX95SRCState, IMX95_SRC_NUM_WORDS),
-+        VMSTATE_END_OF_LIST()
-+    },
-+};
-+
-+static void imx95_src_class_init(ObjectClass *klass, const void *data)
-+{
-+    DeviceClass *dc = DEVICE_CLASS(klass);
-+    ResettableClass *rc = RESETTABLE_CLASS(klass);
-+
-+    dc->vmsd = &vmstate_imx95_src;
-+    rc->phases.hold = imx95_src_reset_hold;
-+    set_bit(DEVICE_CATEGORY_MISC, dc->categories);
-+    dc->desc = "NXP i.MX 95 SRC (stub)";
-+}
-+
-+static const TypeInfo imx95_src_info = {
-+    .name           = TYPE_IMX95_SRC,
-+    .parent         = TYPE_SYS_BUS_DEVICE,
-+    .instance_size  = sizeof(IMX95SRCState),
-+    .instance_init  = imx95_src_init,
-+    .class_init     = imx95_src_class_init,
-+};
-+
-+static void imx95_src_register_types(void)
-+{
-+    type_register_static(&imx95_src_info);
-+}
-+
-+type_init(imx95_src_register_types)
-diff --git a/hw/misc/meson.build b/hw/misc/meson.build
-index 3f8cd1d825e..0b7f5e4382d 100644
---- a/hw/misc/meson.build
-+++ b/hw/misc/meson.build
-@@ -174,3 +174,7 @@ system_ss.add(when: 'CONFIG_AXIADO_CLK', if_true: files('axiado_clk.c'))
- system_ss.add(when: 'CONFIG_IMX_MU', if_true: files('imx_mu.c'))
- system_ss.add(when: 'CONFIG_IMX95_ELE_SERVER', if_true: files('imx95_ele_server.c'))
- system_ss.add(when: 'CONFIG_IMX95_WDOG', if_true: files('imx95_wdog.c'))
-+system_ss.add(when: 'CONFIG_IMX95_ANATOP', if_true: files('imx95_anatop.c'))
-+system_ss.add(when: 'CONFIG_IMX95_AONMIX', if_true: files('imx95_aonmix.c'))
-+system_ss.add(when: 'CONFIG_IMX95_GPC', if_true: files('imx95_gpc.c'))
-+system_ss.add(when: 'CONFIG_IMX95_SRC', if_true: files('imx95_src.c'))
-diff --git a/hw/misc/trace-events b/hw/misc/trace-events
-index 584c1f90963..15fab0596c2 100644
---- a/hw/misc/trace-events
-+++ b/hw/misc/trace-events
-@@ -450,3 +450,11 @@ imx95_ele_msg(uint8_t command, uint8_t tag, uint32_t size) "received cmd 0x%02x
- imx95_ele_response(uint8_t command) "response cmd 0x%02x"
- imx95_wdog_config(uint32_t cs) "CS <- 0x%08x"
- imx95_wdog_unlock(void) "unlock word written"
-+imx95_anatop_read(uint64_t offset) "read off 0x%" PRIx64
-+imx95_anatop_write(uint64_t offset, uint64_t value) "write off 0x%" PRIx64 " <- 0x%08" PRIx64
-+imx95_aonmix_read(uint64_t offset) "read off 0x%" PRIx64
-+imx95_aonmix_write(uint64_t offset, uint64_t value) "write off 0x%" PRIx64 " <- 0x%08" PRIx64
-+imx95_aonmix_m7_gate(int run) "M7 wait gate -> run=%d"
-+imx95_gpc_mode(uint64_t offset, uint32_t target) "CMC_MODE_CTRL off 0x%" PRIx64 " target %u"
-+imx95_src_m7mix_release(void) "SRC_GEN.SCR M7MIX reset released"
-+imx95_src_slice_ctrl(uint64_t offset, uint32_t value) "SLICE_SW_CTRL off 0x%" PRIx64 " <- 0x%08x"
++#endif /* IMX_LPUART_H */
 -- 
 2.34.1
 

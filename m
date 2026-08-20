@@ -4,91 +4,91 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E4A30C5DF88
-	for <qemu-arm@archiver.kernel.org>; Thu, 20 Aug 2026 20:16:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 19E66C5DF81
+	for <qemu-arm@archiver.kernel.org>; Thu, 20 Aug 2026 20:16:22 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wx9Am-0006zO-Ns; Thu, 20 Aug 2026 16:15:36 -0400
+	id 1wx9B2-0007US-Bn; Thu, 20 Aug 2026 16:15:52 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <philmd@oss.qualcomm.com>)
- id 1wx9Al-0006vo-9s
- for qemu-arm@nongnu.org; Thu, 20 Aug 2026 16:15:35 -0400
+ id 1wx9Ar-0007Bd-F8
+ for qemu-arm@nongnu.org; Thu, 20 Aug 2026 16:15:42 -0400
 Received: from mx0a-0031df01.pphosted.com ([205.220.168.131])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <philmd@oss.qualcomm.com>)
- id 1wx9Ah-0002ho-OB
- for qemu-arm@nongnu.org; Thu, 20 Aug 2026 16:15:35 -0400
+ id 1wx9Ao-0002ju-W6
+ for qemu-arm@nongnu.org; Thu, 20 Aug 2026 16:15:41 -0400
 Received: from pps.filterd (m0279865.ppops.net [127.0.0.1])
  by mx0a-0031df01.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id
- 67KK7pKq807694
- for <qemu-arm@nongnu.org>; Thu, 20 Aug 2026 20:15:20 GMT
+ 67KK87XQ808823
+ for <qemu-arm@nongnu.org>; Thu, 20 Aug 2026 20:15:27 GMT
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qualcomm.com; h=
  cc:content-transfer-encoding:content-type:date:from:in-reply-to
  :message-id:mime-version:references:subject:to; s=qcppdkim1; bh=
- LWQwdDV2fkgFjhmKLwyo93xfsCf8ZqnI4jIB05mjxx8=; b=QrFNjvV7I+dnZhZv
- RmFAmX0DwQdNmBnjYk89UzgbUIhSr0AKChxNrYs+qw/wHOM/7/Qi07lZzelwLuBu
- GW4olpPXV/M9txB8mmIb97Uw4LsgCduNYk/Mfosll6Fig4wny5ZZtqSE47X+r9pS
- sjrz3TOR2MIFJjKr47AWO5FjLFyQPnhYjmmRHaRjN5AkXDMAEDqkU1rNHcr1I1Ie
- HpD7ztS9gN4On3nxndNyBCHiIo/9D1XOMqToaEbgMBzrhWOINKPQS+XwFTIqWc81
- kWLna5qVQOw2/VIFEDfC8bHKLfgF+sPSuzE4zbbNUj4PUVEkcAA3pbo40JOanEg6
- voIz5Q==
+ GkfJ0DUVwjpw7Jql39GIYw8AYSod2OF3xVsMsf7lww4=; b=E0GZc+gJszC2ZA8t
+ 6i1yAjDOHPQf7Ezv3GJdsqJsIpwjx1eLyZjONKxIWDfvmPa8lCHMJ65a7K5q0Hlx
+ SGgKyPhWMuiFKJNTYcLus/xvHFDmrEBnHt1Lj3c4alc0zmIkMIDWXQaGT12rShCb
+ oX54p2EXW2hGMX0FGPXzXoEpNCMsI+8r5l47FV5y1j/OC09SCy9chTfcjx8mFHPv
+ 7juvCV6MJkN8aFq1CPQSbCyd0J4T227Pd2o3ucY1EU72SALpDcigTXqPXGiRgZ6a
+ ynEEfOhfinuJRntmXKCUS4YB6n6LwO4MoE3k72RbXHmCXoiOVpGm4JL+SmQhYQp3
+ ZyYrzw==
 Received: from mail-qt1-f199.google.com (mail-qt1-f199.google.com
  [209.85.160.199])
- by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 4g5xgcb39b-1
+ by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 4g5xgcb39r-1
  (version=TLSv1.3 cipher=TLS_AES_128_GCM_SHA256 bits=128 verify=NOT)
- for <qemu-arm@nongnu.org>; Thu, 20 Aug 2026 20:15:20 +0000 (GMT)
+ for <qemu-arm@nongnu.org>; Thu, 20 Aug 2026 20:15:27 +0000 (GMT)
 Received: by mail-qt1-f199.google.com with SMTP id
- d75a77b69052e-52d28f8737eso3817011cf.2
- for <qemu-arm@nongnu.org>; Thu, 20 Aug 2026 13:15:20 -0700 (PDT)
+ d75a77b69052e-52d28f8737eso3819851cf.2
+ for <qemu-arm@nongnu.org>; Thu, 20 Aug 2026 13:15:27 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=oss.qualcomm.com; s=google; t=1787256919; x=1787861719; darn=nongnu.org;
+ d=oss.qualcomm.com; s=google; t=1787256926; x=1787861726; darn=nongnu.org;
  h=content-transfer-encoding:content-type:mime-version:references
  :in-reply-to:message-id:date:subject:cc:to:from:from:to:cc:subject
  :date:message-id:reply-to:content-type;
- bh=LWQwdDV2fkgFjhmKLwyo93xfsCf8ZqnI4jIB05mjxx8=;
- b=cVpC5psV9K8l7uWbJxJnGaLmwfrsfBef8zCq++TkGzPM4ciRNIF/tiaIg3p5tm3s0T
- i2EbLO1+nUDWOLm1edaCJKdnKC6WcGgqTN2q9ZvAJBr4YNThzEjmxhc/lfIgNBoanhTH
- WyqLkxlXu/3yv54/f/gztobngAFBmwysqi7x+amhi4s4x9mKJZfSqqtucdfLqQ+85T0d
- 1/+Titw4yrxCDpo5dDrcx3IpHL9xO/4BfmfQWFRoppnIkolotdpRZNTmsK/GIBe6aNcB
- 9VpZaezvFLvjmeXqQIvZwYD6CXPMM08gkBcfV5kNYopFj7A5IyMFqzBsL2EzphKjYyT3
- CCoA==
+ bh=GkfJ0DUVwjpw7Jql39GIYw8AYSod2OF3xVsMsf7lww4=;
+ b=DfVB1eRTJNuR1k1pb4YFnQ9ptJmVvqRjnhmF72uA7XWjJ3KkAwq7gBe560krTKkR+F
+ FMxCLp25+dJYKYEcO7HpWG+6fZ+r6oSzudW43d/9mfBdv430cLfMBuumTQUqpO8bfoL/
+ 3MdU1nP1naARtJ47Yd5dTIYEXxPOroO0M6XYMGWFE7Easifjh0zpZ7MOgeKTItOQMWZg
+ D1YV+3A2Y8KSN8AHu7er20R86+QJwzKlOBDW9XcqwQDnHTZc+X/RP6lcRLxK74vDQ9h2
+ rHV5OV/5+tL/fwagbYapIk4/pkdfZZfDO58bsqFWUhS7bWOywEkdV3BmEENE2O/AS0wO
+ xXqg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1787256919; x=1787861719;
+ d=1e100.net; s=20251104; t=1787256926; x=1787861726;
  h=content-transfer-encoding:content-type:mime-version:references
  :in-reply-to:message-id:date:subject:cc:to:from:x-gm-gg
  :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
  :content-type;
- bh=LWQwdDV2fkgFjhmKLwyo93xfsCf8ZqnI4jIB05mjxx8=;
- b=Me0Kvmt+nH/9E4a6JWEOoWviEn2vqKzetYjjT9MlVv/e2Zpq8byY1YNRfkqRUVvLAY
- uGoyLblQNtn2UkiR9V9wi+CScidGQDBUMESEztUpEV72zKZqBQu0komIppMtKxVLXQrK
- evMgtC6StfJrSs7dT+9bGWYPjLJFXf8DJ5z1c0W6V2ajnX9WfBClh6ZmfVNz3+qDqenC
- u4gnhvqV7w2m9LxpgozU5XbM/x3j07wEinIZ8QXthtqO7oUe4VCj3g4BhPUjAKCPXeLx
- vqtb49rmfY9AIUE7bl/uMYQ16t4qa0LVVDb190y1JeXOxj7B9a7WY9MHUh7x3dqaiN7B
- KtKQ==
+ bh=GkfJ0DUVwjpw7Jql39GIYw8AYSod2OF3xVsMsf7lww4=;
+ b=a0VpAK6OIFWqv3/7gfUaYuAkGYGjvPnOfWPK2FtoIvHKLrpctSPyYsb+kABSJOHdqS
+ BvNtklswiWR0xtINZFbs2R2cqxBSHFkY72VYAdUPC/v+HNYDsD2CSBtwwdGf5PkSoIrV
+ QyrinwydBvZQhQ5lBvpsSHBkH0nQ4WoZe+AzoWre9PRV7hTj9v+GZFZkdOewDWn0kARL
+ 1CorctY3N5oxY3Hl9QGQruv8vicfDvFaiJZCUYw0nof/eeLEjuCzjAbJfGBt2YkOg1EF
+ +0BU5hHXvD5bEDKcD9SMcHYsv6E6Vhf+ZM4gbSAZ7VkCEDZE989kjfFM2VqFvDd7JsIV
+ saWQ==
 X-Forwarded-Encrypted: i=1;
- AHgh+RrkQPDNUaEL27wzZdy7o5sewZGbNH9t7JHvJKnwsq157BDix9yGbvPNxZHoPSQuN7vYKqbk2mu28A==@nongnu.org
-X-Gm-Message-State: AOJu0Yy+icIoVp7YqXdtqQP1VPW1+bk5jhwIT/WJx8j3iDHDw/5k/40V
- zjgNrsksY10yvlEPymsfVQzaxaDUqnks1PR6fo6nLIt/0zaX1YUkc9xJKCqrsR+08BO2YhIrMYN
- 2KgoDFOGCS6xnCKJcMnmRRVFsHEZB6QLk/Z8FG0Y0l8H1dKnDTwzf4cE=
-X-Gm-Gg: AR+sD1064UXul6STD1Fn88pnQ1MHNA1i4SMKosPglye9fmkfqGRsCiAOtmvWc4SfJrX
- xYWM+EnPmrPil4vCbSPibrYqfAm2CZ6dSayywMuAtFPb9RrkHjAZ9FA1q5QJaZGaJAmflulujM8
- P8Ulc4EeI5Cv6CDreSVoPlUzjkuqac35fh4FUnHpVi7BkV4HADTPPmcM9k2cezCLT2Q7qmOXC85
- yycHLkjVC6L1fIZGg/K9fubIBPy8m0OX+j0XA6wllbMjpm8zDOo/NP3x9QNxCP2fi89LWlAhgN2
- DrKzjsgPGDFB3zwToLZc9E0TsAndWrdzHNuc0nXyTmhjtp4bVVJNuhvkiKMpK9H6YVDHyFqV9Jq
- aIFQUnhq151NcbFQGl2MAmnyBgUtZQHZ4FzpznNz0og==
-X-Received: by 2002:a05:622a:144c:b0:517:a7ff:935f with SMTP id
- d75a77b69052e-52df565f835mr9789331cf.9.1787256919151; 
- Thu, 20 Aug 2026 13:15:19 -0700 (PDT)
-X-Received: by 2002:a05:622a:144c:b0:517:a7ff:935f with SMTP id
- d75a77b69052e-52df565f835mr9788371cf.9.1787256918246; 
- Thu, 20 Aug 2026 13:15:18 -0700 (PDT)
+ AHgh+RrIrh/tOH0MN5mZzwCi/84YrRmBGNmTi4M3OuPgBrif2j27Pz7q9zCE86QXyk/IFX8UCFLaPJBbgg==@nongnu.org
+X-Gm-Message-State: AOJu0YyvU/CaiMkqtJHNnZ2efFi6JHcdMTNvjEMVYdoUkiJYcFG7BT9A
+ gV2NexRsgh6RLG64bJDFbqJtSx6Fj/hq7JmRz3nuIaqBvjHtpg6iodfWh/7rjPLxoe9MbOAdXJN
+ JVtaCiEOwVF4++G9qxbGcWpMRSuw4nfitvVSlFTNw2C1cQ8oZmNzdKxA=
+X-Gm-Gg: AR+sD11synI2ApuxudOz4jI2TWdSA5lY8DvktZs+217xwWtk2pbLqw6iyQwAznlVJYj
+ CeUMeb8uzjvCq39lcs+B4f97uHlFIBFsqafgrLumwHb8/U5lZEUGEoNaDRLaZXzMhD7aGIRVAF6
+ Y3HyNum7QfM+ON+on27L8q4ICJq5vVrddMaH/yfhTf4Kg06SI8WS5ipeHpReZ5Iz+TNOSn2HYK8
+ nnfCxtAmbTDEwXWgchQ4taRXL5OBX4QyNUgz1fZd5v2XSFCyJiNB52duVhuxWSnxpVJ8+87HNPs
+ B1aOerCrROVZN7HIxGj16UWDKYZLNfAXbf5T4WtqkM1oEFG2bgiTy9kOn6eDjEsnsuMPv1DRRjB
+ 6O7FgvtyJ+Sijsckm76oMLUKvoZxfL0xOfU+RiZfN+g==
+X-Received: by 2002:a05:622a:118d:b0:52d:9a3f:85bc with SMTP id
+ d75a77b69052e-52df571351dmr9555321cf.18.1787256925950; 
+ Thu, 20 Aug 2026 13:15:25 -0700 (PDT)
+X-Received: by 2002:a05:622a:118d:b0:52d:9a3f:85bc with SMTP id
+ d75a77b69052e-52df571351dmr9554451cf.18.1787256925371; 
+ Thu, 20 Aug 2026 13:15:25 -0700 (PDT)
 Received: from localhost.localdomain (pmd666.hd.free.fr. [88.187.86.199])
  by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-482b14b8022sm12321331f8f.18.2026.08.20.13.15.16
+ 5b1f17b1804b1-499b90e7e20sm3822715e9.5.2026.08.20.13.15.24
  (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Thu, 20 Aug 2026 13:15:17 -0700 (PDT)
+ Thu, 20 Aug 2026 13:15:24 -0700 (PDT)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@oss.qualcomm.com>
 To: qemu-devel@nongnu.org
 Cc: qemu-riscv@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
@@ -97,41 +97,37 @@ Cc: qemu-riscv@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
  Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>, qemu-arm@nongnu.org,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@oss.qualcomm.com>,
  =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
- Palmer Dabbelt <palmer@dabbelt.com>,
- Alistair Francis <alistair.francis@wdc.com>,
- Weiwei Li <liwei1518@gmail.com>,
- Daniel Henrique Barboza <daniel.barboza@oss.qualcomm.com>,
- Liu Zhiwei <zhiwei_liu@linux.alibaba.com>,
- Chao Liu <chao.liu@processmission.com>
-Subject: [PATCH v2 10/15] target/riscv: Constify CPURISCVState for various
+ Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
+ Artyom Tarasenko <atar4qemu@gmail.com>
+Subject: [PATCH v2 11/15] target/sparc: Constify CPUSPARCState for various
  cpu_*() getters
-Date: Thu, 20 Aug 2026 22:13:50 +0200
-Message-ID: <20260820201356.29775-11-philmd@oss.qualcomm.com>
+Date: Thu, 20 Aug 2026 22:13:51 +0200
+Message-ID: <20260820201356.29775-12-philmd@oss.qualcomm.com>
 X-Mailer: git-send-email 2.53.0
 In-Reply-To: <20260820201356.29775-1-philmd@oss.qualcomm.com>
 References: <20260820201356.29775-1-philmd@oss.qualcomm.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Authority-Analysis: v=2.4 cv=GPM41ONK c=1 sm=1 tr=0 ts=6a876058 cx=c_pps
+X-Authority-Analysis: v=2.4 cv=GPM41ONK c=1 sm=1 tr=0 ts=6a87605f cx=c_pps
  a=WeENfcodrlLV9YRTxbY/uA==:117 a=4s3hRJSeHn4rkQlkrse1kQ==:17
  a=IkcTkHD0fZMA:10 a=Sv0fKeRqtYgA:10 a=M51BFTxLslgA:10 a=s4-Qcg_JpJYA:10
  a=VkNPw1HP01LnGYTKEx00:22 a=u7WPNUs3qKkmUXheDGA7:22 a=Um2Pa8k9VHT-vaBCBUpS:22
- a=EUspDBNiAAAA:8 a=20KFwNOVAAAA:8 a=T9gU_B0lrst8XM-M1voA:9 a=3ZKOabzyN94A:10
+ a=EUspDBNiAAAA:8 a=20KFwNOVAAAA:8 a=tlxghdvPRZsVr19qFskA:9 a=3ZKOabzyN94A:10
  a=QEXdDO2ut3YA:10 a=kacYvNCVWA4VmyqE58fU:22
-X-Proofpoint-ORIG-GUID: 8wgCVo_QsK90nLchwDSb3lQzffpSGoX_
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwODIwMDE1MiBTYWx0ZWRfX6MpTf/roAEE8
- sipPj0q/oNMvuvtvlHmVPDLVOZF5StBqG4NE02Net0hcJJX/oqYsyoMt2XPKqZGeqyf+ykTMJyf
- CtCTjr1BPHrcTOxEWcWkWO1e+oIiTvDuwgFTuhCWjog3BufrBut4UpRGjuIM+j01nXGJXUlBnMg
- tARjaCCym+ODKLvydy0NK9rNXNmITEAc0wLOkR/ocbCKuSWDM+/w+1jspNlK98hKajjsQd1kMul
- 4YyYkUXtnx/Qh7oRA2mxawhcx9jX2OXvdVadYP0Q2h1w7zYGS4oSPTLmLJoEN4bzhyEZaXLcdpP
- TU95tOQEGIXTjkTqLr1TGsncrhSC2ZA1pfDv51lPU2JY4kL/8phrals6Rg6xvp3soV7DIKILsln
- kRfBne5v8POgW6qbqnALRXAlOr5AG8OVKLh1xTX0JdtKfdS1SYm2bssMj3+qljHgpCcck1bSni6
- oG/TO9cc9gF/w9yvJWg==
-X-Proofpoint-GUID: 8wgCVo_QsK90nLchwDSb3lQzffpSGoX_
-X-Proofpoint-Spam-Info: AW1haW4tMjYwODIwMDE1MiBTYWx0ZWRfX/aWMJDDWAZ6V
- F3lUdO9WenIuA7e4JMwZd0+NjoKTQBna0NVUNJu53dk/qSn6SqFhLsUhtKXF4sj0da7K9fmH1iC
- ihPlYmYQoslkgkU8Ry9XXde+Y6Y8/mQ=
+X-Proofpoint-ORIG-GUID: jT2gSQyrDJQT47pg5XKqNRHRtY5sVQfr
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwODIwMDE1MiBTYWx0ZWRfX9BDFskcekmMm
+ OjyljdRbijRlQoyiu4o51r6p1pDDHLxJn+SI+alCObTS6KmMp3R7zaU6mx+Wr6unAhJWxapLQMU
+ 6Ax6LzvxUgMjeEBC9t7Ks1iIVTrqJQnkQC172FSo0wGsBEKdxXMTZYOo8nRYnJvGCw/d5ynuUuf
+ Q2JIr5Vlu+dnuz4hjHgGAbKmigxte0VHhtnEL1PHVhVJsaehNR1TD1Hhh5a2vTQaVEq4dhlSw4F
+ jyReTmC4hUUyYfbel0olBFDwmwlWa+ux2JNoTGRPbh79cuiQVWLhDC+YMrTSYmAyDTxdCd5E3so
+ bY+gU07L089xRpjnVpKLxIQRpxWyGNfVkAwok20qnAl+U1PaDG7KW6sKlB6ujlnKyg8X8sg4ABo
+ Dq+x6iliWqb33ctwUE+NME2HcEcgM+kyL9/r+dG1JzdixbdwHjQnKx2BTApkSdkK8pVbMly6ESm
+ LgmhU2j8s0VYYyt/dbA==
+X-Proofpoint-GUID: jT2gSQyrDJQT47pg5XKqNRHRtY5sVQfr
+X-Proofpoint-Spam-Info: AW1haW4tMjYwODIwMDE1MiBTYWx0ZWRfXwCnQkEoZDqYG
+ klwdc7RRAcsNKuI23OMI7UdbwdlB62V8TmKRKAv5d6NkGXgD9IAgYArnQ2t9d6/FanwkWES2gO+
+ 7yOJeFIVaQYi8YjnrQnqR5wDMvOJyDM=
 X-Proofpoint-Virus-Version: vendor=baseguard
  engine=ICAP:2.0.293,Aquarius:18.0.1176,Hydra:6.1.134,FMLib:17.12.100.49
  definitions=2026-08-20_02,2026-08-20_02,2025-10-01_01
@@ -164,167 +160,62 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Add the const qualifier to CPURISCVState when the
-argument is accessed without modification.
-Simplify directly using cpu_env() in riscv_cpu_has_work().
+Add the const qualifier to CPUSPARCState when
+the argument is accessed without modification.
 
 Signed-off-by: Philippe Mathieu-Daudé <philmd@oss.qualcomm.com>
 Reviewed-by: Marc-André Lureau <marcandre.lureau@redhat.com>
 ---
- target/riscv/cpu.h | 27 ++++++++++++++-------------
- target/riscv/cpu.c | 13 ++++++-------
- 2 files changed, 20 insertions(+), 20 deletions(-)
+ target/sparc/cpu.h | 12 ++++++------
+ 1 file changed, 6 insertions(+), 6 deletions(-)
 
-diff --git a/target/riscv/cpu.h b/target/riscv/cpu.h
-index bb4c8563554..c51e0d5f919 100644
---- a/target/riscv/cpu.h
-+++ b/target/riscv/cpu.h
-@@ -636,11 +636,11 @@ int riscv_cpu_gdb_read_register(CPUState *cpu, GByteArray *buf, int reg);
- int riscv_cpu_gdb_write_register(CPUState *cpu, uint8_t *buf, int reg);
- int riscv_cpu_hviprio_index2irq(int index, int *out_irq, int *out_rdzero);
- uint8_t riscv_cpu_default_priority(int irq);
--uint64_t riscv_cpu_all_pending(CPURISCVState *env);
--int riscv_cpu_mirq_pending(CPURISCVState *env);
--int riscv_cpu_sirq_pending(CPURISCVState *env);
--int riscv_cpu_vsirq_pending(CPURISCVState *env);
--int riscv_cpu_pending_to_irq(CPURISCVState *env,
-+uint64_t riscv_cpu_all_pending(const CPURISCVState *env);
-+int riscv_cpu_mirq_pending(const CPURISCVState *env);
-+int riscv_cpu_sirq_pending(const CPURISCVState *env);
-+int riscv_cpu_vsirq_pending(const CPURISCVState *env);
-+int riscv_cpu_pending_to_irq(const CPURISCVState *env,
-                              int extirq, unsigned int extirq_def_prio,
-                              uint64_t pending, const uint8_t *iprio);
- 
-@@ -746,20 +746,20 @@ FIELD(EXT_TB_FLAGS, BIG_ENDIAN, 33, 1)
- #ifdef TARGET_RISCV32
- #define riscv_cpu_mxl(env)  ((void)(env), MXL_RV32)
- #else
--static inline RISCVMXL riscv_cpu_mxl(CPURISCVState *env)
-+static inline RISCVMXL riscv_cpu_mxl(const CPURISCVState *env)
- {
-     return env->misa_mxl;
- }
+diff --git a/target/sparc/cpu.h b/target/sparc/cpu.h
+index 5f583ed9de2..31a16c2af03 100644
+--- a/target/sparc/cpu.h
++++ b/target/sparc/cpu.h
+@@ -680,28 +680,28 @@ hwaddr cpu_get_phys_page_nofault(CPUSPARCState *env, target_ulong addr,
  #endif
- #define riscv_cpu_mxl_bits(env) (1UL << (4 + riscv_cpu_mxl(env)))
  
--static inline const RISCVCPUConfig *riscv_cpu_cfg(CPURISCVState *env)
-+static inline const RISCVCPUConfig *riscv_cpu_cfg(const CPURISCVState *env)
+ #if defined (TARGET_SPARC64)
+-static inline int cpu_has_hypervisor(CPUSPARCState *env1)
++static inline int cpu_has_hypervisor(const CPUSPARCState *env1)
  {
-     return &env_archcpu(env)->cfg;
+     return env1->def.features & CPU_FEATURE_HYPV;
  }
  
- #if !defined(CONFIG_USER_ONLY)
--static inline privilege_mode_t cpu_address_mode(CPURISCVState *env)
-+static inline privilege_mode_t cpu_address_mode(const CPURISCVState *env)
+-static inline int cpu_hypervisor_mode(CPUSPARCState *env1)
++static inline int cpu_hypervisor_mode(const CPUSPARCState *env1)
  {
-     privilege_mode_t mode = env->priv;
- 
-@@ -769,7 +769,8 @@ static inline privilege_mode_t cpu_address_mode(CPURISCVState *env)
-     return mode;
+     return cpu_has_hypervisor(env1) && (env1->hpstate & HS_PRIV);
  }
  
--static inline RISCVMXL cpu_get_xl(CPURISCVState *env, privilege_mode_t mode)
-+static inline RISCVMXL cpu_get_xl(const CPURISCVState *env,
-+                                  privilege_mode_t mode)
+-static inline int cpu_supervisor_mode(CPUSPARCState *env1)
++static inline int cpu_supervisor_mode(const CPUSPARCState *env1)
  {
-     RISCVMXL xl = env->misa_mxl;
-     /*
-@@ -797,7 +798,7 @@ static inline RISCVMXL cpu_get_xl(CPURISCVState *env, privilege_mode_t mode)
- #if defined(TARGET_RISCV32)
- #define cpu_recompute_xl(env)  ((void)(env), MXL_RV32)
+     return env1->pstate & PS_PRIV;
+ }
  #else
--static inline RISCVMXL cpu_recompute_xl(CPURISCVState *env)
-+static inline RISCVMXL cpu_recompute_xl(const CPURISCVState *env)
+-static inline int cpu_supervisor_mode(CPUSPARCState *env1)
++static inline int cpu_supervisor_mode(const CPUSPARCState *env1)
  {
- #if !defined(CONFIG_USER_ONLY)
-     return cpu_get_xl(env, env->priv);
-@@ -810,7 +811,7 @@ static inline RISCVMXL cpu_recompute_xl(CPURISCVState *env)
- #if defined(TARGET_RISCV32)
- #define cpu_address_xl(env)  ((void)(env), MXL_RV32)
- #else
--static inline RISCVMXL cpu_address_xl(CPURISCVState *env)
-+static inline RISCVMXL cpu_address_xl(const CPURISCVState *env)
- {
- #ifdef CONFIG_USER_ONLY
-     return env->xl;
-@@ -822,7 +823,7 @@ static inline RISCVMXL cpu_address_xl(CPURISCVState *env)
+     return env1->psrs;
  }
  #endif
  
--static inline uint16_t riscv_cpu_xlen(CPURISCVState *env)
-+static inline uint16_t riscv_cpu_xlen(const CPURISCVState *env)
+-static inline int cpu_interrupts_enabled(CPUSPARCState *env1)
++static inline int cpu_interrupts_enabled(const CPUSPARCState *env1)
  {
-     return 16 << env->xl;
- }
-@@ -830,7 +831,7 @@ static inline uint16_t riscv_cpu_xlen(CPURISCVState *env)
- #ifdef TARGET_RISCV32
- #define riscv_cpu_sxl(env)  ((void)(env), MXL_RV32)
- #else
--static inline RISCVMXL riscv_cpu_sxl(CPURISCVState *env)
-+static inline RISCVMXL riscv_cpu_sxl(const CPURISCVState *env)
- {
- #ifdef CONFIG_USER_ONLY
-     return env->misa_mxl;
-diff --git a/target/riscv/cpu.c b/target/riscv/cpu.c
-index 858fbf865fd..4abf20d057a 100644
---- a/target/riscv/cpu.c
-+++ b/target/riscv/cpu.c
-@@ -864,7 +864,7 @@ uint8_t riscv_cpu_default_priority(int irq)
-     return default_iprio[irq] ? default_iprio[irq] : IPRIO_MMAXIPRIO;
- };
- 
--int riscv_cpu_pending_to_irq(CPURISCVState *env,
-+int riscv_cpu_pending_to_irq(const CPURISCVState *env,
-                              int extirq, unsigned int extirq_def_prio,
-                              uint64_t pending, const uint8_t *iprio)
- {
-@@ -908,7 +908,7 @@ int riscv_cpu_pending_to_irq(CPURISCVState *env,
-  * using hvip bits 13:63 from HS-mode. Those are returned in
-  * riscv_cpu_sirq_pending() and riscv_cpu_vsirq_pending().
-  */
--uint64_t riscv_cpu_all_pending(CPURISCVState *env)
-+uint64_t riscv_cpu_all_pending(const CPURISCVState *env)
- {
-     uint32_t gein = get_field(env->hstatus, HSTATUS_VGEIN);
-     uint64_t vsgein = (env->hgeip & (1ULL << gein)) ? MIP_VSEIP : 0;
-@@ -917,7 +917,7 @@ uint64_t riscv_cpu_all_pending(CPURISCVState *env)
-     return (env->mip | vsgein | vstip) & env->mie;
+ #if !defined (TARGET_SPARC64)
+     if (env1->psret != 0)
+@@ -715,7 +715,7 @@ static inline int cpu_interrupts_enabled(CPUSPARCState *env1)
+     return 0;
  }
  
--int riscv_cpu_mirq_pending(CPURISCVState *env)
-+int riscv_cpu_mirq_pending(const CPURISCVState *env)
+-static inline int cpu_pil_allowed(CPUSPARCState *env1, int pil)
++static inline int cpu_pil_allowed(const CPUSPARCState *env1, int pil)
  {
-     uint64_t irqs = riscv_cpu_all_pending(env) & ~env->mideleg &
-                     ~(MIP_SGEIP | MIP_VSSIP | MIP_VSTIP | MIP_VSEIP);
-@@ -926,7 +926,7 @@ int riscv_cpu_mirq_pending(CPURISCVState *env)
-                                     irqs, env->miprio);
- }
- 
--int riscv_cpu_sirq_pending(CPURISCVState *env)
-+int riscv_cpu_sirq_pending(const CPURISCVState *env)
- {
-     uint64_t irqs = riscv_cpu_all_pending(env) & env->mideleg & ~env->hideleg;
-     uint64_t irqs_f = env->mvip & env->mvien & ~env->mideleg & env->sie;
-@@ -935,7 +935,7 @@ int riscv_cpu_sirq_pending(CPURISCVState *env)
-                                     irqs | irqs_f, env->siprio);
- }
- 
--int riscv_cpu_vsirq_pending(CPURISCVState *env)
-+int riscv_cpu_vsirq_pending(const CPURISCVState *env)
- {
-     uint64_t irqs = riscv_cpu_all_pending(env) & env->mideleg & env->hideleg;
-     uint64_t irqs_f_vs = env->hvip & env->hvien & ~env->hideleg & env->vsie;
-@@ -952,8 +952,7 @@ int riscv_cpu_vsirq_pending(CPURISCVState *env)
- 
- static bool riscv_cpu_has_work(CPUState *cs)
- {
--    RISCVCPU *cpu = RISCV_CPU(cs);
--    CPURISCVState *env = &cpu->env;
-+    CPURISCVState *env = cpu_env(cs);
-     /*
-      * Definition of the WFI instruction requires it to ignore the privilege
-      * mode and delegation registers, but respect individual enables
+ #if !defined(TARGET_SPARC64)
+     /* level 15 is non-maskable on sparc v8 */
 -- 
 2.53.0
 

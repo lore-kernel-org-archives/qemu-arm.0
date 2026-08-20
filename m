@@ -4,82 +4,82 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A28CCC5DF87
-	for <qemu-arm@archiver.kernel.org>; Thu, 20 Aug 2026 12:51:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A3726C5DF81
+	for <qemu-arm@archiver.kernel.org>; Thu, 20 Aug 2026 12:51:40 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wx2CL-0004x9-VG; Thu, 20 Aug 2026 08:48:46 -0400
+	id 1wx2CL-0004wk-Il; Thu, 20 Aug 2026 08:48:45 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <wafgo01@gmail.com>) id 1wx2CI-0004u9-Qg
- for qemu-arm@nongnu.org; Thu, 20 Aug 2026 08:48:42 -0400
-Received: from mail-ed1-x52f.google.com ([2a00:1450:4864:20::52f])
+ (Exim 4.90_1) (envelope-from <wafgo01@gmail.com>) id 1wx2CJ-0004uw-EK
+ for qemu-arm@nongnu.org; Thu, 20 Aug 2026 08:48:43 -0400
+Received: from mail-ed1-x529.google.com ([2a00:1450:4864:20::529])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <wafgo01@gmail.com>) id 1wx2CF-0001ZF-85
- for qemu-arm@nongnu.org; Thu, 20 Aug 2026 08:48:42 -0400
-Received: by mail-ed1-x52f.google.com with SMTP id
- 4fb4d7f45d1cf-6a18840e2abso3594231a12.0
- for <qemu-arm@nongnu.org>; Thu, 20 Aug 2026 05:48:38 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <wafgo01@gmail.com>) id 1wx2CF-0001ZT-P6
+ for qemu-arm@nongnu.org; Thu, 20 Aug 2026 08:48:43 -0400
+Received: by mail-ed1-x529.google.com with SMTP id
+ 4fb4d7f45d1cf-6a36982a875so3484704a12.0
+ for <qemu-arm@nongnu.org>; Thu, 20 Aug 2026 05:48:39 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20251104; t=1787230117; x=1787834917; darn=nongnu.org;
+ d=gmail.com; s=20251104; t=1787230118; x=1787834918; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to:content-type;
- bh=Mlx8fyJPMGGwXCk+Dpb/GgVYA1CTHyr1kyqzPiMgA+0=;
- b=fKC57uy4gMIkxDvrMk4KcsxGGyU5vPy9fVQcZi5K89ivbKhMdDdw0WxcK5kZaH6swk
- B42z552NFKM5COFMGugpXoOjYOoimvDv47udyjQfxIEyElHZo/VxOuUDgmrqlJX3bpGT
- A1FmypbAY71ptC1U30lnXyaQIDp+Vj+IzTprY4qYpeoCwyVGX6jyH0QPyfyfn7AdWoKZ
- 6CgTiV+E81aDxBGuD9qsPpLu5UF5lCEde0CG6Rm7TtbFbjqiK2ec+uIQiMIAdN176GC/
- +0J1VjBR1ekuMz/2KR8f8N9TnXCi1QODKhFWQS/7RYX4BmXCXsOSRAyh01NdMfgxVLGm
- 0Tng==
+ bh=MqaVcqtkE7t2SvbA8+a94FGHj/ejmg1puu7JuAxVL1I=;
+ b=ADhONDo+d76ajcbnz5ev4L0L0FwfPCQKK1Ypp3Ggiy8avNsn8KNejbM7OlopTtvSqT
+ E+iAhZW5iix+CR4B2rmjuaw11szzU90l04OeN8MwJWMFsml/wb+9u5lqEO2FXpeW/bns
+ EHCnizrxVX023+hg8/7IqZ++lLCLD6oNReltR3+FPfVe7CCn96NvkamMI1lZn46qYWSc
+ VbLvHg2bTJqUlb8kGVLJMSxiQGBdGN9XJherVB9LgyvIpD+qCFkPheKsi3sjKEYMB9Sz
+ Y378IcNhmlU2f1/xbAuZ73khPh8fHT2vxbgoMvCTQvoGuRTBxi9DmD2J4DPaee3xehm/
+ eWbA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1787230117; x=1787834917;
+ d=1e100.net; s=20251104; t=1787230118; x=1787834918;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
  :to:cc:subject:date:message-id:reply-to:content-type;
- bh=Mlx8fyJPMGGwXCk+Dpb/GgVYA1CTHyr1kyqzPiMgA+0=;
- b=ZBiwN3BhZI02+JZRqmWnABhP1goARsq7TU+7eNiHdviBPlDpgyB+gXLHYJ5CMV/F6C
- B2oWNE9HKi/huH9E9GMvqnZ9CJOvXF5nTCZQdTw2qindvMtjC8FtAbMPlCO3wCtST6dD
- +R0tso3TWxY34JNwH9VIWpCJen1Sdap/WzpJi5hGjrIDxm2sG68ahwZAb8FH/zPg/i4E
- 5/VxSvjxrrq2AvVx4mGlyaLWRURzL7sZ7pJiQxW8lYVqT3RgxA/ZV3akqAtavm48pZT3
- buH/XfktUy0RUYvQKWoXqNOPsdh3Vjgds/gUrSdqXV2OJUMyr1ukb3Bc6XHQ2koGMPA2
- ZBng==
-X-Gm-Message-State: AFuF++kWUG1eChdeioM318AcF4t2sCn9YBP7Pm9k62IuSJ420oxTeGif
- WnsOl8JjUBHJ6SdoHM+bqu/VzverDNVqbNRRybuJmmc6Loa1xy4wZkRsqBAVYNGY
-X-Gm-Gg: AR+sD13i3Doj9X3qnwA93AlXjHCAsmddnAEkTbaq8zwqrJAaKWWwbPH1ENGOXrZ1VLq
- CukAvX9tlvBYF1xlXW+YzVRX/LJ2Eam3KEw4aA+wf6R6XMeNbFdTkT7I/lEvP41wXPpnICRu7K4
- +I3RLn6IkDn/wWniOM/9ktm3U+rR4sP4PsMX5sD/5jKb3E+h+kTgUlfpVSbimnXPR3tIs53ob2A
- gkdrACa43zPUMLJl1NgMW136VaDN24TNikvDI2urtQ7n2ud5X5PraLhigqmsG7RSml1poWdguja
- G0v+AKQuGjWDPti9b1UDoGTFugBoyE64suib+fy9wqesNpjYdYxdr4mkvDv4CGHcxmL9dYCZr5p
- laV8GrqK7ufLN8c9kmKpnTuO3cDJPu5BB3X+XXzvsxrJgM2o6go14TH6kMFHpRGY7W2Ay+F1mgi
- wWGEXrtlDZZZC8R/xhu21UWmc7+YIrcN95c9vHYLqT3GgPuxMCjTExgbEXV/sD2Wljl1fzWHd40
- v9tYWyn2lg=
-X-Received: by 2002:a05:6402:540e:b0:6a0:8885:e6f0 with SMTP id
- 4fb4d7f45d1cf-6a403296d5fmr9996481a12.3.1787230117194; 
- Thu, 20 Aug 2026 05:48:37 -0700 (PDT)
+ bh=MqaVcqtkE7t2SvbA8+a94FGHj/ejmg1puu7JuAxVL1I=;
+ b=N+8yYGi0Jp6gzjRbUldWFsqmQcg9sZv9GGywFcRyv5YBq2jSn2Yg9UJ+m50WOwPinL
+ fNm/86DxA2FhF46+sAsToJyLHBJVJv2q/SKgVbqajZpB3z2bVA1QBTFdina53w2tFL7S
+ WrXgGS9OA5xrxH29x/PxZit7aqVw2uVMq18XU6ZKMXzkLfIx6MnzqY2g6g72hnkcZ5kr
+ gAHpQKPDE0kigcAO+WPSx0zErmWotncHFN0985pidt+3fKvZXVQCI4fssQU7Zk5btNZS
+ o3yi4r2d/sel09kFBJMorMo+NjtReDP0soe31UobvOhsMcqyRXKsXKiae7NlXlI/0558
+ 14lA==
+X-Gm-Message-State: AFuF++lBWM8lwEApBHWVxpC3b8PU9d0q2uRIl3LUzvRolS26cfffHzef
+ ALDW+C1moHtaeRgO9hSNpWCKHT9mCO2cPshXJlyigTtPTDXJ3/zhL/eF
+X-Gm-Gg: AR+sD12IyN9WjwaYULv5F2gWUe/PF5GWpIdzAnw9s4ViN8lsn4LE+Agl8Is4Ua7Xb0m
+ LCu6lvSiY572+c7+FRQCpfnr9yVVzW0mprX3NlYy7GB+MuzcUiDgoIMSVVdyMPk76wUsTNtj4wv
+ ChD+1BivtijMfPB8roKOieiYemOMBh5TqEWcGeakLV0fQ97wOVzZGpt4Lz/9Boejnsafun5LbKL
+ oFrAoNX1qi7hcc4ct6zp+RKF4qfAk8vKTXvlHnGmZtBet4HUrPj/6ilPiJ6LgX1a2UOWlsTcIJ+
+ xUwzmox62S8h64UpNzesOu9sCKU4Fa1FU1XYHlXYccYkRLWmfnIUviJ7TjXYPXYEdjF6FEVh0pj
+ IgK6fYP7YeiujGOGZ6CJS6p+ndGRvKCJHq7gkSLuSsJDwOXNHlukXxVIgzHUD05zizJlsNIFbxD
+ +4m4bDetpACWTYrkiBuTjRgM9wcmCsGayLqAPtu7mXR+Z0lQ1E/3BeHvbIV7GWEWjOtK833CSC7
+ Bi3PADnECY=
+X-Received: by 2002:a05:6402:4555:b0:698:af31:5a9b with SMTP id
+ 4fb4d7f45d1cf-6a4032f9d1bmr7904220a12.9.1787230118217; 
+ Thu, 20 Aug 2026 05:48:38 -0700 (PDT)
 Received: from DE-PF5B95TD.embedded.cmblu.dev ([87.129.199.250])
  by smtp.gmail.com with ESMTPSA id
- 4fb4d7f45d1cf-6a3ff1563c5sm2270449a12.14.2026.08.20.05.48.36
+ 4fb4d7f45d1cf-6a3ff1563c5sm2270449a12.14.2026.08.20.05.48.37
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 20 Aug 2026 05:48:36 -0700 (PDT)
+ Thu, 20 Aug 2026 05:48:37 -0700 (PDT)
 From: Wadim Mueller <wafgo01@gmail.com>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@mailo.com>,
  Bin Meng <bmeng.cn@gmail.com>, Paolo Bonzini <pbonzini@redhat.com>,
  Fabiano Rosas <farosas@suse.de>, Wadim Mueller <wafgo01@gmail.com>
-Subject: [RFC PATCH v2 06/14] hw/misc: add TI K3 CTRL_MMR, GTC, DDRSS,
- SDHCI PHY and TRNG models
-Date: Thu, 20 Aug 2026 14:48:06 +0200
-Message-ID: <20260820124824.618671-7-wafgo01@gmail.com>
+Subject: [RFC PATCH v2 07/14] hw/misc: add TI RAT (region address translation)
+ model
+Date: Thu, 20 Aug 2026 14:48:07 +0200
+Message-ID: <20260820124824.618671-8-wafgo01@gmail.com>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20260820124824.618671-1-wafgo01@gmail.com>
 References: <20260820124824.618671-1-wafgo01@gmail.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::52f;
- envelope-from=wafgo01@gmail.com; helo=mail-ed1-x52f.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::529;
+ envelope-from=wafgo01@gmail.com; helo=mail-ed1-x529.google.com
 X-Spam_score_int: -17
 X-Spam_score: -1.8
 X-Spam_bar: -
@@ -103,834 +103,415 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Add the small K3 support blocks the boot chain touches:
-
- - ti-k3-ctrlmmr: control module registers, including the DEVSTAT boot
-   pins, which the ROM and SPL use to select the boot device.
- - ti-k3-gtc: global timebase counter, read by TF-A.
- - ti-k3-ddrss: DDR subsystem stub that reports a successful DRAM init
-   (including BIST/ECC priming status) to the R5 SPL.
- - ti-k3-sdhci-phy: PHY control/calibration registers of the K3 SDHCI
-   wrapper, reporting calibration as done.
- - ti-k3-trng: TRNG stub used by OP-TEE.
-
-These are register-level stubs: they implement the handshakes that
-firmware polls for, not the underlying hardware behaviour.
+The R5F and M4F subsystems of the K3 devices reach the 64-bit SoC address
+space through a RAT, which maps windows of the core's 32-bit view onto
+system addresses. Model it as a set of translation regions layered as
+memory region aliases into the core's address space.
 
 Signed-off-by: Wadim Mueller <wafgo01@gmail.com>
 ---
- hw/misc/Kconfig                   |  15 ++++
- hw/misc/meson.build               |   6 ++
- hw/misc/ti-k3-ctrlmmr.c           | 103 ++++++++++++++++++++++
- hw/misc/ti-k3-ddrss.c             |  98 +++++++++++++++++++++
- hw/misc/ti-k3-gtc.c               | 100 +++++++++++++++++++++
- hw/misc/ti-k3-sdhci-phy.c         |  91 +++++++++++++++++++
- hw/misc/ti-k3-trng.c              | 139 ++++++++++++++++++++++++++++++
- hw/misc/trace-events              |   4 +
- include/hw/misc/ti-k3-ctrlmmr.h   |  26 ++++++
- include/hw/misc/ti-k3-ddrss.h     |  26 ++++++
- include/hw/misc/ti-k3-gtc.h       |  23 +++++
- include/hw/misc/ti-k3-sdhci-phy.h |  26 ++++++
- include/hw/misc/ti-k3-trng.h      |  35 ++++++++
- 13 files changed, 692 insertions(+)
- create mode 100644 hw/misc/ti-k3-ctrlmmr.c
- create mode 100644 hw/misc/ti-k3-ddrss.c
- create mode 100644 hw/misc/ti-k3-gtc.c
- create mode 100644 hw/misc/ti-k3-sdhci-phy.c
- create mode 100644 hw/misc/ti-k3-trng.c
- create mode 100644 include/hw/misc/ti-k3-ctrlmmr.h
- create mode 100644 include/hw/misc/ti-k3-ddrss.h
- create mode 100644 include/hw/misc/ti-k3-gtc.h
- create mode 100644 include/hw/misc/ti-k3-sdhci-phy.h
- create mode 100644 include/hw/misc/ti-k3-trng.h
+ hw/misc/Kconfig          |   3 +
+ hw/misc/meson.build      |   1 +
+ hw/misc/ti-rat.c         | 290 +++++++++++++++++++++++++++++++++++++++
+ hw/misc/trace-events     |   5 +
+ include/hw/misc/ti-rat.h |  51 +++++++
+ 5 files changed, 350 insertions(+)
+ create mode 100644 hw/misc/ti-rat.c
+ create mode 100644 include/hw/misc/ti-rat.h
 
 diff --git a/hw/misc/Kconfig b/hw/misc/Kconfig
-index b8860dd3e7..3e499a902d 100644
+index 3e499a902d..c176d6d6c7 100644
 --- a/hw/misc/Kconfig
 +++ b/hw/misc/Kconfig
-@@ -143,6 +143,21 @@ config MPS2_SCC
+@@ -143,6 +143,9 @@ config MPS2_SCC
      bool
      select LED
  
-+config TI_K3_CTRLMMR
++config TI_RAT
 +    bool
 +
-+config TI_K3_GTC
-+    bool
-+
-+config TI_K3_DDRSS
-+    bool
-+
-+config TI_K3_SDHCI_PHY
-+    bool
-+
-+config TI_K3_TRNG
-+    bool
-+
- config TZ_MPC
+ config TI_K3_CTRLMMR
      bool
  
 diff --git a/hw/misc/meson.build b/hw/misc/meson.build
-index e86d9ad6b3..e973d7e8a4 100644
+index e973d7e8a4..952b7b7c2f 100644
 --- a/hw/misc/meson.build
 +++ b/hw/misc/meson.build
-@@ -96,6 +96,7 @@ system_ss.add(when: 'CONFIG_RASPI', if_true: files(
-   'bcm2835_cprman.c',
-   'bcm2835_powermgt.c',
- ))
-+
- system_ss.add(when: 'CONFIG_SLAVIO', if_true: files('slavio_misc.c'))
- system_ss.add(when: 'CONFIG_ZYNQ', if_true: files('zynq_slcr.c'))
- system_ss.add(when: 'CONFIG_XLNX_ZYNQ_DDRC', if_true: files('xlnx-zynq-ddrc.c'))
-@@ -122,6 +123,11 @@ system_ss.add(when: 'CONFIG_STM32L4X5_RCC', if_true: files('stm32l4x5_rcc.c'))
+@@ -123,6 +123,7 @@ system_ss.add(when: 'CONFIG_STM32L4X5_RCC', if_true: files('stm32l4x5_rcc.c'))
  system_ss.add(when: 'CONFIG_MPS2_FPGAIO', if_true: files('mps2-fpgaio.c'))
  system_ss.add(when: 'CONFIG_MPS2_SCC', if_true: files('mps2-scc.c'))
  
-+system_ss.add(when: 'CONFIG_TI_K3_CTRLMMR', if_true: files('ti-k3-ctrlmmr.c'))
-+system_ss.add(when: 'CONFIG_TI_K3_GTC', if_true: files('ti-k3-gtc.c'))
-+system_ss.add(when: 'CONFIG_TI_K3_DDRSS', if_true: files('ti-k3-ddrss.c'))
-+system_ss.add(when: 'CONFIG_TI_K3_SDHCI_PHY', if_true: files('ti-k3-sdhci-phy.c'))
-+system_ss.add(when: 'CONFIG_TI_K3_TRNG', if_true: files('ti-k3-trng.c'))
- system_ss.add(when: 'CONFIG_TZ_MPC', if_true: files('tz-mpc.c'))
- system_ss.add(when: 'CONFIG_TZ_MSC', if_true: files('tz-msc.c'))
- system_ss.add(when: 'CONFIG_TZ_PPC', if_true: files('tz-ppc.c'))
-diff --git a/hw/misc/ti-k3-ctrlmmr.c b/hw/misc/ti-k3-ctrlmmr.c
++system_ss.add(when: 'CONFIG_TI_RAT', if_true: files('ti-rat.c'))
+ system_ss.add(when: 'CONFIG_TI_K3_CTRLMMR', if_true: files('ti-k3-ctrlmmr.c'))
+ system_ss.add(when: 'CONFIG_TI_K3_GTC', if_true: files('ti-k3-gtc.c'))
+ system_ss.add(when: 'CONFIG_TI_K3_DDRSS', if_true: files('ti-k3-ddrss.c'))
+diff --git a/hw/misc/ti-rat.c b/hw/misc/ti-rat.c
 new file mode 100644
-index 0000000000..5925573075
+index 0000000000..719fdffa0a
 --- /dev/null
-+++ b/hw/misc/ti-k3-ctrlmmr.c
-@@ -0,0 +1,103 @@
++++ b/hw/misc/ti-rat.c
+@@ -0,0 +1,290 @@
 +/*
-+ * TI K3 CTRL_MMR stub
++ * TI RAT (Region Address Translation) SysBus device
 + *
-+ * Minimal AM64x control MMR model: selected boot, reset-source and
-+ * security-status registers are configurable; other reads return zero,
-+ * writes are ignored.
-+ *
-+ * Copyright (c) 2026 CMBLU Energy AG
++ * Copyright (c) 2025 CMBLU Energy AG
 + * Author: Wadim Mueller <wafgo01@gmail.com>
 + *
 + * SPDX-License-Identifier: GPL-2.0-or-later
++ *
++ * A RAT sits in front of a processor and translates accesses, which fall
++ * into its address window, into 64-bit system addresses. Each entry maps
++ * one aligned power-of-two region of the window onto a translated base;
++ * enabled entries are modelled as MemoryRegion aliases into the target
++ * address space.
++ *
++ * Where the window lies is not fixed. The "window-base" and "window-size"
++ * properties place it, and the "window-root" resp. "target-root" links
++ * select the address space the window is seen in and the one it
++ * translates into. TI_RAT_NUM_ENTRIES gives the number of entries.
 + */
++
 +#include "qemu/osdep.h"
++#include "exec/hwaddr.h"
++#include "qemu/bitops.h"
++#include "hw/core/qdev.h"
++#include "hw/core/sysbus.h"
++#include "system/address-spaces.h"
 +#include "qemu/log.h"
++#include "qemu/module.h"
++#include "qapi/error.h"
++#include "qemu/units.h"
++#include "hw/misc/ti-rat.h"
 +#include "hw/core/qdev-properties.h"
-+#include "hw/misc/ti-k3-ctrlmmr.h"
++#include "trace.h"
 +
-+#define CTRLMMR_MAIN_DEVSTAT 0x30
-+#define CTRLMMR_MCU_RST_SRC  0x18178
-+/*
-+ * K3_SEC_MGR_SYS_STATUS lives at offset 0x100 in the sec-ctrlmmr window.
-+ * It reports the device type, e.g. GP or HS.
-+ */
-+#define CTRLMMR_SEC_MGR_SYS_STATUS 0x100
-+#define CTRLMMR_SIZE 0x20000 /* partitions 0-7 */
++/* Property defaults: the AM64x MCU R5F RAT window. */
++#define TI_RAT_WINDOW_BASE 0x60000000ULL
++#define TI_RAT_WINDOW_SIZE (2ULL * GiB)
 +
-+static uint64_t ti_k3_ctrlmmr_read(void *opaque, hwaddr addr, unsigned size)
++#define RAT_PID 0x000
++#define RAT_CONFIG 0x004
++
++#define RAT_ENT_BASE 0x20
++#define RAT_ENT_STRIDE 0x10
++
++#define RAT_REG_CTRL 0x00
++#define RAT_REG_BASE 0x04
++#define RAT_REG_TRANS_L 0x08
++#define RAT_REG_TRANS_H 0x0C
++
++#define RAT_REGS_SIZE 0x1000
++
++static void ti_rat_apply_entry(TIRATState *s, TIRATEntry *e)
 +{
-+    TIK3CtrlMmrState *s = TI_K3_CTRLMMR(opaque);
++    bool en = (e->ctrl_reg & BIT(31)) != 0;
 +
-+    if (addr == CTRLMMR_MAIN_DEVSTAT) {
-+        return s->devstat;
++    uint64_t shift = e->ctrl_reg & 0x3f;
++    uint64_t size = (shift >= 63) ? 0 : (1ULL << shift);
++
++    hwaddr source_addr = (hwaddr)e->base_reg;
++    hwaddr dest_addr = (hwaddr)e->transl_reg | ((hwaddr)e->transh_reg << 32);
++
++    /* Validate before aliases are changed. */
++    if (!en) {
++        trace_rat_disable_region(e->idx);
++        if (e->inserted) {
++            memory_region_transaction_begin();
++            memory_region_del_subregion(&s->window_container, &e->alias);
++            memory_region_set_enabled(&e->alias, false);
++            memory_region_transaction_commit();
++            e->inserted = false;
++        }
++        return;
 +    }
-+    if (addr == CTRLMMR_MCU_RST_SRC) {
-+        return s->rst_src;
++
++    if (size < 0x1000) {
++        qemu_log_mask(LOG_GUEST_ERROR,
++                      "RAT %u: size too small: 0x%" PRIx64 "\n", e->idx, size);
++        return;
 +    }
-+    if (addr == CTRLMMR_SEC_MGR_SYS_STATUS) {
-+        return s->sec_mgr_sys_status;
++
++    if (source_addr < s->window_base ||
++        (source_addr - s->window_base) + size > s->window_size) {
++        qemu_log_mask(LOG_GUEST_ERROR,
++                      "RAT %u: source outside window: 0x%" HWADDR_PRIx "\n",
++                      e->idx, source_addr);
++        return;
 +    }
-+    qemu_log_mask(LOG_UNIMP,
-+                  "%s: unimplemented read @0x%" HWADDR_PRIx "\n",
-+                  __func__, addr);
++
++    hwaddr woff = source_addr - s->window_base;
++    e->size = size;
++    trace_rat_enable_region(e->idx, e->size, source_addr, dest_addr);
++
++    memory_region_transaction_begin();
++
++    /* Create or move the alias at programmed source offset. */
++    if (!e->inserted) {
++        memory_region_add_subregion(&s->window_container, woff, &e->alias);
++        e->inserted = true;
++    } else {
++        /* Move existing alias, when the source offset changes. */
++        memory_region_del_subregion(&s->window_container, &e->alias);
++        memory_region_add_subregion(&s->window_container, woff, &e->alias);
++    }
++    /* Point the alias to the programmed translated address. */
++    memory_region_set_alias_offset(&e->alias, dest_addr);
++    memory_region_set_size(&e->alias, size);
++    memory_region_set_enabled(&e->alias, true);
++    memory_region_transaction_commit();
++}
++
++static uint64_t ti_rat_read(void *opaque, hwaddr off, unsigned size)
++{
++    TIRATState *s = opaque;
++    int entry;
++    int rel_offset;
++
++    if (off == RAT_PID) {
++        return 0x66804100;
++    }
++
++    if (off == RAT_CONFIG) {
++        return 0x00300110;
++    }
++
++    if (off <= 4 || off > 0x800) {
++        qemu_log_mask(LOG_GUEST_ERROR,
++                      "TI-RAT: invalid read offset 0x%" PRIx64 "\n", off);
++        return 0;
++    }
++
++    entry = (off - RAT_ENT_BASE) / RAT_ENT_STRIDE;
++    rel_offset = (off - RAT_ENT_BASE) % RAT_ENT_STRIDE;
++    assert(entry < TI_RAT_NUM_ENTRIES);
++    trace_rat_read_entry(entry, rel_offset, off);
++
++    switch (rel_offset) {
++    case RAT_REG_CTRL:
++        return s->ent[entry].ctrl_reg;
++    case RAT_REG_BASE:
++        return s->ent[entry].base_reg;
++    case RAT_REG_TRANS_L:
++        return s->ent[entry].transl_reg;
++    case RAT_REG_TRANS_H:
++        return s->ent[entry].transh_reg;
++    default:
++        qemu_log_mask(LOG_GUEST_ERROR,
++                      "TI-RAT: invalid entry read offset 0x%x\n", rel_offset);
++        break;
++    }
++
 +    return 0;
 +}
 +
-+static void ti_k3_ctrlmmr_write(void *opaque, hwaddr addr, uint64_t val,
-+                                unsigned size)
++static void ti_rat_write(void *opaque, hwaddr off, uint64_t val, unsigned size)
 +{
-+    /* lock-kick and pinmux writes are accepted and ignored. */
-+}
++    TIRATState *s = opaque;
++    int entry;
++    int rel_offset;
 +
-+static const MemoryRegionOps ti_k3_ctrlmmr_ops = {
-+    .read = ti_k3_ctrlmmr_read,
-+    .write = ti_k3_ctrlmmr_write,
-+    .endianness = DEVICE_LITTLE_ENDIAN,
-+    .valid.min_access_size = 1,
-+    .valid.max_access_size = 4,
-+};
-+
-+static void ti_k3_ctrlmmr_init(Object *obj)
-+{
-+    TIK3CtrlMmrState *s = TI_K3_CTRLMMR(obj);
-+
-+    memory_region_init_io(&s->iomem, obj, &ti_k3_ctrlmmr_ops, s,
-+                          TYPE_TI_K3_CTRLMMR, CTRLMMR_SIZE);
-+    sysbus_init_mmio(SYS_BUS_DEVICE(obj), &s->iomem);
-+}
-+
-+static const Property ti_k3_ctrlmmr_properties[] = {
-+    /* Default primary bootmode is eMMC (0x9 << 3). */
-+    DEFINE_PROP_UINT32("devstat", TIK3CtrlMmrState, devstat, 0x48),
-+    /*
-+     * Report warm reset in MCU_RST_SRC. Cold/POR cause bits are not
-+     * modelled by this reset-source stub.
-+     */
-+    DEFINE_PROP_UINT32("rst-src", TIK3CtrlMmrState, rst_src, 0x1),
-+    /*
-+     * Default to SYS_STATUS_DEV_TYPE_GP (0x3), matching a model without
-+     * security manager and certificate authentication.
-+     */
-+    DEFINE_PROP_UINT32("sec-mgr-sys-status", TIK3CtrlMmrState,
-+                       sec_mgr_sys_status, 0x3),
-+};
-+
-+static void ti_k3_ctrlmmr_class_init(ObjectClass *klass, const void *data)
-+{
-+    device_class_set_props(DEVICE_CLASS(klass), ti_k3_ctrlmmr_properties);
-+}
-+
-+static const TypeInfo ti_k3_ctrlmmr_info = {
-+    .name = TYPE_TI_K3_CTRLMMR,
-+    .parent = TYPE_SYS_BUS_DEVICE,
-+    .instance_size = sizeof(TIK3CtrlMmrState),
-+    .instance_init = ti_k3_ctrlmmr_init,
-+    .class_init = ti_k3_ctrlmmr_class_init,
-+};
-+
-+static void ti_k3_ctrlmmr_register_types(void)
-+{
-+    type_register_static(&ti_k3_ctrlmmr_info);
-+}
-+
-+type_init(ti_k3_ctrlmmr_register_types)
-diff --git a/hw/misc/ti-k3-ddrss.c b/hw/misc/ti-k3-ddrss.c
-new file mode 100644
-index 0000000000..661b88b02c
---- /dev/null
-+++ b/hw/misc/ti-k3-ddrss.c
-@@ -0,0 +1,98 @@
-+/*
-+ * TI K3 DDRSS register-file stub (AM64x, DDR4 flavour)
-+ *
-+ * RAM-backed DENALI CTL/PI/PHY register file. Writes are stored and read
-+ * back unchanged. Init-done and optional ECC BIST_DONE status bits are ORed
-+ * into reads, so the DDR bring-up handshake completes immediately.
-+ *
-+ * Copyright (c) 2026 CMBLU Energy AG
-+ * Author: Wadim Mueller <wafgo01@gmail.com>
-+ *
-+ * SPDX-License-Identifier: GPL-2.0-or-later
-+ */
-+#include "qemu/osdep.h"
-+#include "qemu/log.h"
-+#include "hw/misc/ti-k3-ddrss.h"
-+
-+/* Read-side OR masks: {offset, bits}. */
-+static const struct {
-+    hwaddr offset;
-+    uint32_t bits;
-+} ddrss_status_bits[] = {
-+    { 0x214C, 1u << 0 },   /* DENALI_PI_83:  PI init done       */
-+    { 0x0538, 1u << 13 },  /* DENALI_CTL_334: MASTER, MC_INIT grp */
-+    { 0x0558, 1u << 25 },  /* DENALI_CTL_342: INT_STATUS_INIT bit1 */
-+    /*
-+     * ECC BIST_DONE is exposed in both places: INT_STATUS_MASTER bit 8 and
-+     * INT_STATUS_BIST bit 0, resp. raw bit 16.
-+     */
-+    { 0x0538, 1u << 8 },   /* DENALI_CTL_334: MASTER, BIST grp     */
-+    { 0x0554, 1u << 16 },  /* DENALI_CTL_341: BIST fld, BIST_DONE  */
-+};
-+
-+static uint64_t ti_k3_ddrss_read(void *opaque, hwaddr addr, unsigned size)
-+{
-+    TIK3DdrssState *s = TI_K3_DDRSS(opaque);
-+    uint32_t val = s->regs[addr >> 2];
-+
-+    for (size_t i = 0; i < ARRAY_SIZE(ddrss_status_bits); i++) {
-+        if (addr == ddrss_status_bits[i].offset) {
-+            val |= ddrss_status_bits[i].bits;
-+        }
++    if (off <= 4 || off > 0x800) {
++        qemu_log_mask(LOG_GUEST_ERROR,
++                      "TI-RAT: invalid write offset 0x%" PRIx64 "\n", off);
++        return;
 +    }
-+    return val;
++
++    entry = (off - RAT_ENT_BASE) / RAT_ENT_STRIDE;
++    rel_offset = (off - RAT_ENT_BASE) % RAT_ENT_STRIDE;
++
++    assert(entry < TI_RAT_NUM_ENTRIES);
++    TIRATEntry *e = &s->ent[entry];
++
++    switch (rel_offset) {
++    case RAT_REG_CTRL:
++        e->ctrl_reg = val;
++        break;
++    case RAT_REG_BASE:
++        e->base_reg = val;
++        break;
++    case RAT_REG_TRANS_L:
++        e->transl_reg = val;
++        break;
++    case RAT_REG_TRANS_H:
++        e->transh_reg = val;
++        break;
++    default:
++        qemu_log_mask(LOG_GUEST_ERROR,
++                      "TI-RAT: invalid entry write offset 0x%x\n", rel_offset);
++        break;
++    }
++
++    ti_rat_apply_entry(s, e);
 +}
 +
-+static void ti_k3_ddrss_write(void *opaque, hwaddr addr, uint64_t val,
-+                              unsigned size)
-+{
-+    TIK3DdrssState *s = TI_K3_DDRSS(opaque);
-+
-+    s->regs[addr >> 2] = val;
-+}
-+
-+static const MemoryRegionOps ti_k3_ddrss_ops = {
-+    .read = ti_k3_ddrss_read,
-+    .write = ti_k3_ddrss_write,
++static const MemoryRegionOps ti_rat_ops = {
++    .read = ti_rat_read,
++    .write = ti_rat_write,
 +    .endianness = DEVICE_LITTLE_ENDIAN,
 +    .valid.min_access_size = 4,
 +    .valid.max_access_size = 4,
 +};
 +
-+static void ti_k3_ddrss_reset(DeviceState *dev)
++static void ti_rat_reset(DeviceState *dev)
 +{
-+    TIK3DdrssState *s = TI_K3_DDRSS(dev);
++    TIRATState *s = TI_RAT(dev);
 +
-+    memset(s->regs, 0, sizeof(s->regs));
-+}
++    s->ctrl = 0;
 +
-+static void ti_k3_ddrss_init(Object *obj)
-+{
-+    TIK3DdrssState *s = TI_K3_DDRSS(obj);
-+
-+    memory_region_init_io(&s->iomem, obj, &ti_k3_ddrss_ops, s,
-+                          TYPE_TI_K3_DDRSS, TI_K3_DDRSS_CFG_SIZE);
-+    sysbus_init_mmio(SYS_BUS_DEVICE(obj), &s->iomem);
-+}
-+
-+static void ti_k3_ddrss_class_init(ObjectClass *klass, const void *data)
-+{
-+    DeviceClass *dc = DEVICE_CLASS(klass);
-+
-+    device_class_set_legacy_reset(dc, ti_k3_ddrss_reset);
-+}
-+
-+static const TypeInfo ti_k3_ddrss_info = {
-+    .name = TYPE_TI_K3_DDRSS,
-+    .parent = TYPE_SYS_BUS_DEVICE,
-+    .instance_size = sizeof(TIK3DdrssState),
-+    .instance_init = ti_k3_ddrss_init,
-+    .class_init = ti_k3_ddrss_class_init,
-+};
-+
-+static void ti_k3_ddrss_register_types(void)
-+{
-+    type_register_static(&ti_k3_ddrss_info);
-+}
-+
-+type_init(ti_k3_ddrss_register_types)
-diff --git a/hw/misc/ti-k3-gtc.c b/hw/misc/ti-k3-gtc.c
-new file mode 100644
-index 0000000000..b51baddc71
---- /dev/null
-+++ b/hw/misc/ti-k3-gtc.c
-@@ -0,0 +1,100 @@
-+/* SPDX-License-Identifier: GPL-2.0-or-later */
-+/*
-+ * Copyright (c) 2026 CMBLU Energy AG
-+ * Author: Wadim Mueller <wafgo01@gmail.com>
-+ *
-+ * TI K3 Global Timebase Counter (GTC) register stub.
-+ *
-+ * The GTC distributes a system counter and its nominal frequency to the ARM
-+ * generic timers. Only CNTCR and CNTFID0 are implemented; the counter itself
-+ * is not modelled. Reset reports an enabled 200 MHz counter, the AM64x
-+ * default.
-+ */
-+#include "qemu/osdep.h"
-+#include "qemu/log.h"
-+#include "hw/core/qdev-properties.h"
-+#include "hw/misc/ti-k3-gtc.h"
-+
-+#define TI_K3_GTC_SIZE       0x1000
-+
-+#define GTC_CNTCR            0x000   /* control; bit0 = EN */
-+#define GTC_CNTFID0          0x020   /* frequency id 0 (Hz) */
-+
-+static uint64_t ti_k3_gtc_read(void *opaque, hwaddr addr, unsigned size)
-+{
-+    TIK3GtcState *s = TI_K3_GTC(opaque);
-+
-+    switch (addr) {
-+    case GTC_CNTCR:
-+        return s->cntcr;
-+    case GTC_CNTFID0:
-+        return s->cntfid0;
-+    default:
-+        qemu_log_mask(LOG_UNIMP,
-+                      "%s: unimplemented read @0x%" HWADDR_PRIx "\n",
-+                      __func__, addr);
-+        return 0;
-+    }
-+}
-+
-+static void ti_k3_gtc_write(void *opaque, hwaddr addr, uint64_t val,
-+                            unsigned size)
-+{
-+    TIK3GtcState *s = TI_K3_GTC(opaque);
-+
-+    switch (addr) {
-+    case GTC_CNTCR:
-+        s->cntcr = (uint32_t)val;
-+        break;
-+    case GTC_CNTFID0:
-+        s->cntfid0 = (uint32_t)val;
-+        break;
-+    default:
-+        qemu_log_mask(LOG_UNIMP,
-+                      "%s: unimplemented write @0x%" HWADDR_PRIx "\n",
-+                      __func__, addr);
-+        break;
-+    }
-+}
-+
-+static const MemoryRegionOps ti_k3_gtc_ops = {
-+    .read = ti_k3_gtc_read,
-+    .write = ti_k3_gtc_write,
-+    .endianness = DEVICE_LITTLE_ENDIAN,
-+    .valid.min_access_size = 1,
-+    .valid.max_access_size = 4,
-+};
-+
-+static void ti_k3_gtc_init(Object *obj)
-+{
-+    TIK3GtcState *s = TI_K3_GTC(obj);
-+
-+    memory_region_init_io(&s->iomem, obj, &ti_k3_gtc_ops, s,
-+                          TYPE_TI_K3_GTC, TI_K3_GTC_SIZE);
-+    sysbus_init_mmio(SYS_BUS_DEVICE(obj), &s->iomem);
-+}
-+
-+static const Property ti_k3_gtc_properties[] = {
-+    DEFINE_PROP_UINT32("cntcr", TIK3GtcState, cntcr, 0x1),
-+    DEFINE_PROP_UINT32("cntfid0", TIK3GtcState, cntfid0, 200000000),
-+};
-+
-+static void ti_k3_gtc_class_init(ObjectClass *klass, const void *data)
-+{
-+    device_class_set_props(DEVICE_CLASS(klass), ti_k3_gtc_properties);
-+}
-+
-+static const TypeInfo ti_k3_gtc_info = {
-+    .name = TYPE_TI_K3_GTC,
-+    .parent = TYPE_SYS_BUS_DEVICE,
-+    .instance_size = sizeof(TIK3GtcState),
-+    .instance_init = ti_k3_gtc_init,
-+    .class_init = ti_k3_gtc_class_init,
-+};
-+
-+static void ti_k3_gtc_register_types(void)
-+{
-+    type_register_static(&ti_k3_gtc_info);
-+}
-+
-+type_init(ti_k3_gtc_register_types)
-diff --git a/hw/misc/ti-k3-sdhci-phy.c b/hw/misc/ti-k3-sdhci-phy.c
-new file mode 100644
-index 0000000000..10b1f56032
---- /dev/null
-+++ b/hw/misc/ti-k3-sdhci-phy.c
-@@ -0,0 +1,91 @@
-+/*
-+ * TI K3 SDHCI PHY register-file stub (AM64x)
-+ *
-+ * RAM-backed SDHCI companion PHY window. Drive and delay registers are stored
-+ * as written. PHY_STAT1 reports CALDONE (bit 1) and DLLRDY (bit 0) set, so
-+ * calibration resp. DLL lock complete immediately.
-+ *
-+ * Copyright (c) 2026 CMBLU Energy AG
-+ * Author: Wadim Mueller <wafgo01@gmail.com>
-+ *
-+ * SPDX-License-Identifier: GPL-2.0-or-later
-+ */
-+#include "qemu/osdep.h"
-+#include "qemu/log.h"
-+#include "hw/misc/ti-k3-sdhci-phy.h"
-+
-+/* Read-side OR masks: {offset, bits}. */
-+static const struct {
-+    hwaddr offset;
-+    uint32_t bits;
-+} sdhci_phy_status_bits[] = {
-+    /* PHY_STAT1: CALDONE (bit 1) | DLLRDY (bit 0) */
-+    { 0x130, 0x3 },
-+};
-+
-+static uint64_t ti_k3_sdhci_phy_read(void *opaque, hwaddr addr, unsigned size)
-+{
-+    TIK3SdhciPhyState *s = TI_K3_SDHCI_PHY(opaque);
-+    uint32_t val = s->regs[addr >> 2];
-+
-+    for (size_t i = 0; i < ARRAY_SIZE(sdhci_phy_status_bits); i++) {
-+        if (addr == sdhci_phy_status_bits[i].offset) {
-+            val |= sdhci_phy_status_bits[i].bits;
++    memory_region_transaction_begin();
++    for (int i = 0; i < TI_RAT_NUM_ENTRIES; i++) {
++        TIRATEntry *e = &s->ent[i];
++        if (e->inserted) {
++            memory_region_del_subregion(&s->window_container, &e->alias);
++            e->inserted = false;
 +        }
++        e->idx = i;
++        e->ctrl_reg = 0;
++        e->base_reg = 0;
++        e->trans_base = 0;
++        e->size = 0x0;
++        memory_region_set_enabled(&e->alias, false);
 +    }
-+    return val;
++    memory_region_transaction_commit();
 +}
 +
-+static void ti_k3_sdhci_phy_write(void *opaque, hwaddr addr, uint64_t val,
-+                                  unsigned size)
++static void ti_rat_realize(DeviceState *dev, Error **errp)
 +{
-+    TIK3SdhciPhyState *s = TI_K3_SDHCI_PHY(opaque);
++    TIRATState *s = TI_RAT(dev);
++    SysBusDevice *sbd = SYS_BUS_DEVICE(dev);
 +
-+    s->regs[addr >> 2] = val;
++    if (!s->window_root) {
++        error_setg(errp, "ti-rat: property 'window-root' must be set");
++        return;
++    }
++    if (!s->target_root) {
++        error_setg(errp, "ti-rat: property 'target-root' must be set");
++        return;
++    }
++    /* Register block is separate from the translated window. */
++    memory_region_init_io(&s->regs_mmio, OBJECT(s), &ti_rat_ops, s,
++                          "ti-rat-regs", RAT_REGS_SIZE);
++    sysbus_init_mmio(sbd, &s->regs_mmio);
++
++    memory_region_init(&s->window_container, OBJECT(s), "ti-rat-window",
++                       s->window_size);
++    memory_region_add_subregion(s->window_root, s->window_base,
++                                &s->window_container);
++
++    for (int i = 0; i < TI_RAT_NUM_ENTRIES; i++) {
++        g_autofree char *name = g_strdup_printf("ti-rat-alias[%d]", i);
++        memory_region_init_alias(&s->ent[i].alias, OBJECT(s), name,
++                                 s->target_root, 0, 0x1000);
++        memory_region_set_enabled(&s->ent[i].alias, false);
++    }
++
++    ti_rat_reset(dev);
 +}
 +
-+static const MemoryRegionOps ti_k3_sdhci_phy_ops = {
-+    .read = ti_k3_sdhci_phy_read,
-+    .write = ti_k3_sdhci_phy_write,
-+    .endianness = DEVICE_LITTLE_ENDIAN,
-+    .valid.min_access_size = 4,
-+    .valid.max_access_size = 4,
++static const Property ti_rat_props[] = {
++    DEFINE_PROP_UINT64("window-base", TIRATState, window_base,
++                       TI_RAT_WINDOW_BASE),
++    DEFINE_PROP_UINT64("window-size", TIRATState, window_size,
++                       TI_RAT_WINDOW_SIZE),
++    DEFINE_PROP_LINK("target-root", TIRATState, target_root, TYPE_MEMORY_REGION,
++                     MemoryRegion *),
++    DEFINE_PROP_LINK("window-root", TIRATState, window_root, TYPE_MEMORY_REGION,
++                     MemoryRegion *),
 +};
 +
-+static void ti_k3_sdhci_phy_reset(DeviceState *dev)
-+{
-+    TIK3SdhciPhyState *s = TI_K3_SDHCI_PHY(dev);
-+
-+    memset(s->regs, 0, sizeof(s->regs));
-+}
-+
-+static void ti_k3_sdhci_phy_init(Object *obj)
-+{
-+    TIK3SdhciPhyState *s = TI_K3_SDHCI_PHY(obj);
-+
-+    memory_region_init_io(&s->iomem, obj, &ti_k3_sdhci_phy_ops, s,
-+                          TYPE_TI_K3_SDHCI_PHY, TI_K3_SDHCI_PHY_SIZE);
-+    sysbus_init_mmio(SYS_BUS_DEVICE(obj), &s->iomem);
-+}
-+
-+static void ti_k3_sdhci_phy_class_init(ObjectClass *klass, const void *data)
++static void ti_rat_class_init(ObjectClass *klass, const void *data)
 +{
 +    DeviceClass *dc = DEVICE_CLASS(klass);
 +
-+    device_class_set_legacy_reset(dc, ti_k3_sdhci_phy_reset);
++    dc->realize = ti_rat_realize;
++    device_class_set_legacy_reset(dc, ti_rat_reset);
++    device_class_set_props(dc, ti_rat_props);
 +}
 +
-+static const TypeInfo ti_k3_sdhci_phy_info = {
-+    .name = TYPE_TI_K3_SDHCI_PHY,
++static const TypeInfo ti_rat_info = {
++    .name = TYPE_TI_RAT,
 +    .parent = TYPE_SYS_BUS_DEVICE,
-+    .instance_size = sizeof(TIK3SdhciPhyState),
-+    .instance_init = ti_k3_sdhci_phy_init,
-+    .class_init = ti_k3_sdhci_phy_class_init,
++    .instance_size = sizeof(TIRATState),
++    .class_init = ti_rat_class_init,
 +};
 +
-+static void ti_k3_sdhci_phy_register_types(void)
++static void ti_rat_register_types(void)
 +{
-+    type_register_static(&ti_k3_sdhci_phy_info);
++    type_register_static(&ti_rat_info);
 +}
 +
-+type_init(ti_k3_sdhci_phy_register_types)
-diff --git a/hw/misc/ti-k3-trng.c b/hw/misc/ti-k3-trng.c
-new file mode 100644
-index 0000000000..14fb2d077c
---- /dev/null
-+++ b/hw/misc/ti-k3-trng.c
-@@ -0,0 +1,139 @@
-+/*
-+ * TI K3 SA2UL TRNG (EIP-76) stub (AM64x)
-+ *
-+ * Minimal EIP-76 register subset. STATUS reports RNG_READY, INTACK writes
-+ * are accepted, OUTPUT_0..3 return two cached 64-bit pairs, and configuration
-+ * registers are RAM-backed.
-+ *
-+ * Copyright (c) 2026 CMBLU Energy AG
-+ * Author: Wadim Mueller <wafgo01@gmail.com>
-+ *
-+ * SPDX-License-Identifier: GPL-2.0-or-later
-+ */
-+#include "qemu/osdep.h"
-+#include "hw/misc/ti-k3-trng.h"
-+#include "trace.h"
-+
-+#define RNG_OUTPUT_0    0x00
-+#define RNG_OUTPUT_1    0x04
-+#define RNG_OUTPUT_2    0x08
-+#define RNG_OUTPUT_3    0x0C
-+#define RNG_STATUS      0x10
-+#define RNG_READY       (1u << 0)
-+#define RNG_CONTROL     0x14
-+
-+/* Nonzero xorshift64 state reaches never zero. */
-+static uint64_t ti_k3_trng_next(TIK3TrngState *s)
-+{
-+    s->rng_state ^= s->rng_state << 13;
-+    s->rng_state ^= s->rng_state >> 7;
-+    s->rng_state ^= s->rng_state << 17;
-+    return s->rng_state;
-+}
-+
-+static uint64_t ti_k3_trng_read(void *opaque, hwaddr addr, unsigned size)
-+{
-+    TIK3TrngState *s = TI_K3_TRNG(opaque);
-+    uint32_t val;
-+
-+    switch (addr) {
-+    case RNG_OUTPUT_0:
-+        s->pair_a = ti_k3_trng_next(s);
-+        val = (uint32_t)s->pair_a;
-+        break;
-+    case RNG_OUTPUT_1:
-+        val = (uint32_t)(s->pair_a >> 32);
-+        break;
-+    case RNG_OUTPUT_2:
-+        s->pair_b = ti_k3_trng_next(s);
-+        val = (uint32_t)s->pair_b;
-+        break;
-+    case RNG_OUTPUT_3:
-+        val = (uint32_t)(s->pair_b >> 32);
-+        break;
-+    case RNG_STATUS:
-+        /* Always ready, never in shutdown. */
-+        val = RNG_READY;
-+        break;
-+    default:
-+        val = s->regs[addr >> 2];
-+        break;
-+    }
-+
-+    trace_ti_k3_trng_read(addr, val);
-+    return val;
-+}
-+
-+static void ti_k3_trng_write(void *opaque, hwaddr addr, uint64_t value,
-+                             unsigned size)
-+{
-+    TIK3TrngState *s = TI_K3_TRNG(opaque);
-+
-+    trace_ti_k3_trng_write(addr, value);
-+
-+    switch (addr) {
-+    case RNG_OUTPUT_0:
-+    case RNG_OUTPUT_1:
-+    case RNG_OUTPUT_2:
-+    case RNG_OUTPUT_3:
-+        /* Output registers are read-only; use RAZ/WI. */
-+        break;
-+    case RNG_STATUS:
-+        /* STATUS is synthesized on each read, so INTACK has no state. */
-+        break;
-+    default:
-+        s->regs[addr >> 2] = (uint32_t)value;
-+        break;
-+    }
-+}
-+
-+static const MemoryRegionOps ti_k3_trng_ops = {
-+    .read = ti_k3_trng_read,
-+    .write = ti_k3_trng_write,
-+    .endianness = DEVICE_LITTLE_ENDIAN,
-+    .valid = {
-+        .min_access_size = 4,
-+        .max_access_size = 4,
-+    },
-+};
-+
-+static void ti_k3_trng_reset(DeviceState *dev)
-+{
-+    TIK3TrngState *s = TI_K3_TRNG(dev);
-+
-+    memset(s->regs, 0, sizeof(s->regs));
-+    s->rng_state = 0x9e3779b97f4a7c15ULL;
-+    s->pair_a = 0;
-+    s->pair_b = 0;
-+}
-+
-+static void ti_k3_trng_init(Object *obj)
-+{
-+    TIK3TrngState *s = TI_K3_TRNG(obj);
-+
-+    memory_region_init_io(&s->iomem, obj, &ti_k3_trng_ops, s,
-+                          TYPE_TI_K3_TRNG, TI_K3_TRNG_REGS_SIZE);
-+    sysbus_init_mmio(SYS_BUS_DEVICE(obj), &s->iomem);
-+}
-+
-+static void ti_k3_trng_class_init(ObjectClass *klass, const void *data)
-+{
-+    DeviceClass *dc = DEVICE_CLASS(klass);
-+
-+    device_class_set_legacy_reset(dc, ti_k3_trng_reset);
-+}
-+
-+static const TypeInfo ti_k3_trng_info = {
-+    .name = TYPE_TI_K3_TRNG,
-+    .parent = TYPE_SYS_BUS_DEVICE,
-+    .instance_size = sizeof(TIK3TrngState),
-+    .instance_init = ti_k3_trng_init,
-+    .class_init = ti_k3_trng_class_init,
-+};
-+
-+static void ti_k3_trng_register_types(void)
-+{
-+    type_register_static(&ti_k3_trng_info);
-+}
-+
-+type_init(ti_k3_trng_register_types)
++type_init(ti_rat_register_types);
 diff --git a/hw/misc/trace-events b/hw/misc/trace-events
-index c9a868b3ef..b32ce80ea9 100644
+index b32ce80ea9..fae1f90ee2 100644
 --- a/hw/misc/trace-events
 +++ b/hw/misc/trace-events
-@@ -442,3 +442,7 @@ iommu_testdev_dma_read(uint64_t gva, uint32_t len) "gva=0x%" PRIx64 " len=%u"
- iommu_testdev_dma_verify(uint32_t expected, uint32_t actual) "expected=0x%x actual=0x%x"
+@@ -443,6 +443,11 @@ iommu_testdev_dma_verify(uint32_t expected, uint32_t actual) "expected=0x%x actu
  iommu_testdev_dma_result(uint32_t result) "DMA completed result=0x%x"
  iommu_testdev_dma_armed(bool armed) "armed=%d"
+ 
++# ti-rat.c
++rat_enable_region(int idx, uint64_t size, uint64_t source, uint64_t dest) "Enabling RAT Region %u: size 0x%"PRIx64" map 0x%"PRIx64" -> 0x%"PRIx64
++rat_disable_region(int idx) "Disabling RAT Region %u"
++rat_read_entry(int entry, int rel_offset, uint64_t offset) "Reading Entry %i at offset %i: offset: 0x%"PRIx64
 +
-+# ti-k3-trng.c
-+ti_k3_trng_read(uint64_t addr, uint32_t val) "offset 0x%" PRIx64 " -> 0x%08x"
-+ti_k3_trng_write(uint64_t addr, uint64_t val) "offset 0x%" PRIx64 " <- 0x%" PRIx64
-diff --git a/include/hw/misc/ti-k3-ctrlmmr.h b/include/hw/misc/ti-k3-ctrlmmr.h
+ # ti-k3-trng.c
+ ti_k3_trng_read(uint64_t addr, uint32_t val) "offset 0x%" PRIx64 " -> 0x%08x"
+ ti_k3_trng_write(uint64_t addr, uint64_t val) "offset 0x%" PRIx64 " <- 0x%" PRIx64
+diff --git a/include/hw/misc/ti-rat.h b/include/hw/misc/ti-rat.h
 new file mode 100644
-index 0000000000..01fb71bc74
+index 0000000000..9f40a4a256
 --- /dev/null
-+++ b/include/hw/misc/ti-k3-ctrlmmr.h
-@@ -0,0 +1,26 @@
++++ b/include/hw/misc/ti-rat.h
+@@ -0,0 +1,51 @@
 +/*
-+ * TI K3 CTRL_MMR stub
++ * TI RAT (Region Address Translation)
 + *
-+ * Copyright (c) 2026 CMBLU Energy AG
++ * Copyright (c) 2025 CMBLU Energy AG
 + * Author: Wadim Mueller <wafgo01@gmail.com>
 + *
 + * SPDX-License-Identifier: GPL-2.0-or-later
 + */
-+#ifndef HW_MISC_TI_K3_CTRLMMR_H
-+#define HW_MISC_TI_K3_CTRLMMR_H
++
++#ifndef TI_RAT_H
++#define TI_RAT_H
 +
 +#include "hw/core/sysbus.h"
 +#include "qom/object.h"
 +
-+#define TYPE_TI_K3_CTRLMMR "ti-k3-ctrlmmr"
-+OBJECT_DECLARE_SIMPLE_TYPE(TIK3CtrlMmrState, TI_K3_CTRLMMR)
++#define TYPE_TI_RAT "ti-rat"
++OBJECT_DECLARE_SIMPLE_TYPE(TIRATState, TI_RAT)
 +
-+struct TIK3CtrlMmrState {
++#define TI_RAT_NUM_ENTRIES   16
++
++typedef struct TIRATEntry {
++    bool inserted;
++
++    int idx;
++    uint32_t ctrl_reg;
++    uint32_t base_reg;
++    uint32_t transl_reg;
++    uint32_t transh_reg;
++
++    uint64_t trans_base;   /* translated base */
++    uint64_t size;    /* bytes */
++
++    MemoryRegion alias;
++} TIRATEntry;
++
++typedef struct TIRATState {
 +    SysBusDevice parent_obj;
-+    MemoryRegion iomem;
-+    uint32_t devstat;
-+    uint32_t rst_src;
-+    uint32_t sec_mgr_sys_status;
-+};
 +
-+#endif
-diff --git a/include/hw/misc/ti-k3-ddrss.h b/include/hw/misc/ti-k3-ddrss.h
-new file mode 100644
-index 0000000000..ed0f54e5c4
---- /dev/null
-+++ b/include/hw/misc/ti-k3-ddrss.h
-@@ -0,0 +1,26 @@
-+/*
-+ * TI K3 DDRSS register-file stub (AM64x)
-+ *
-+ * Copyright (c) 2026 CMBLU Energy AG
-+ * Author: Wadim Mueller <wafgo01@gmail.com>
-+ *
-+ * SPDX-License-Identifier: GPL-2.0-or-later
-+ */
-+#ifndef HW_MISC_TI_K3_DDRSS_H
-+#define HW_MISC_TI_K3_DDRSS_H
++    uint32_t ctrl;
++    MemoryRegion *window_root;
++    MemoryRegion *target_root;
++    MemoryRegion regs_mmio;
++    MemoryRegion window_container;
 +
-+#include "hw/core/sysbus.h"
-+#include "qom/object.h"
++    uint64_t window_base;
++    uint64_t window_size;
 +
-+#define TYPE_TI_K3_DDRSS "ti-k3-ddrss"
-+OBJECT_DECLARE_SIMPLE_TYPE(TIK3DdrssState, TI_K3_DDRSS)
-+
-+#define TI_K3_DDRSS_CFG_SIZE 0x8000
-+
-+struct TIK3DdrssState {
-+    SysBusDevice parent_obj;
-+    MemoryRegion iomem;
-+    uint32_t regs[TI_K3_DDRSS_CFG_SIZE / 4];
-+};
-+
-+#endif
-diff --git a/include/hw/misc/ti-k3-gtc.h b/include/hw/misc/ti-k3-gtc.h
-new file mode 100644
-index 0000000000..a2a22afbf6
---- /dev/null
-+++ b/include/hw/misc/ti-k3-gtc.h
-@@ -0,0 +1,23 @@
-+/* SPDX-License-Identifier: GPL-2.0-or-later */
-+/*
-+ * Copyright (c) 2026 CMBLU Energy AG
-+ * Author: Wadim Mueller <wafgo01@gmail.com>
-+ */
-+#ifndef HW_MISC_TI_K3_GTC_H
-+#define HW_MISC_TI_K3_GTC_H
-+
-+#include "hw/core/sysbus.h"
-+#include "qom/object.h"
-+
-+#define TYPE_TI_K3_GTC "ti-k3-gtc"
-+OBJECT_DECLARE_SIMPLE_TYPE(TIK3GtcState, TI_K3_GTC)
-+
-+struct TIK3GtcState {
-+    SysBusDevice parent_obj;
-+    MemoryRegion iomem;
-+
-+    uint32_t cntcr;    /* GTC control: bit0 EN. Read back enabled. */
-+    uint32_t cntfid0;  /* GTC frequency id 0, in Hz. */
-+};
-+
-+#endif /* HW_MISC_TI_K3_GTC_H */
-diff --git a/include/hw/misc/ti-k3-sdhci-phy.h b/include/hw/misc/ti-k3-sdhci-phy.h
-new file mode 100644
-index 0000000000..2a7296fc6f
---- /dev/null
-+++ b/include/hw/misc/ti-k3-sdhci-phy.h
-@@ -0,0 +1,26 @@
-+/*
-+ * TI K3 SDHCI PHY register-file stub (AM64x)
-+ *
-+ * Copyright (c) 2026 CMBLU Energy AG
-+ * Author: Wadim Mueller <wafgo01@gmail.com>
-+ *
-+ * SPDX-License-Identifier: GPL-2.0-or-later
-+ */
-+#ifndef HW_MISC_TI_K3_SDHCI_PHY_H
-+#define HW_MISC_TI_K3_SDHCI_PHY_H
-+
-+#include "hw/core/sysbus.h"
-+#include "qom/object.h"
-+
-+#define TYPE_TI_K3_SDHCI_PHY "ti-k3-sdhci-phy"
-+OBJECT_DECLARE_SIMPLE_TYPE(TIK3SdhciPhyState, TI_K3_SDHCI_PHY)
-+
-+#define TI_K3_SDHCI_PHY_SIZE 0x400
-+
-+struct TIK3SdhciPhyState {
-+    SysBusDevice parent_obj;
-+    MemoryRegion iomem;
-+    uint32_t regs[TI_K3_SDHCI_PHY_SIZE / 4];
-+};
-+
-+#endif
-diff --git a/include/hw/misc/ti-k3-trng.h b/include/hw/misc/ti-k3-trng.h
-new file mode 100644
-index 0000000000..b9c33b589f
---- /dev/null
-+++ b/include/hw/misc/ti-k3-trng.h
-@@ -0,0 +1,35 @@
-+/*
-+ * TI K3 SA2UL TRNG (EIP-76) stub (AM64x)
-+ *
-+ * Copyright (c) 2026 CMBLU Energy AG
-+ * Author: Wadim Mueller <wafgo01@gmail.com>
-+ *
-+ * SPDX-License-Identifier: GPL-2.0-or-later
-+ */
-+#ifndef HW_MISC_TI_K3_TRNG_H
-+#define HW_MISC_TI_K3_TRNG_H
-+
-+#include "hw/core/sysbus.h"
-+#include "qom/object.h"
-+
-+#define TYPE_TI_K3_TRNG "ti-k3-trng"
-+OBJECT_DECLARE_SIMPLE_TYPE(TIK3TrngState, TI_K3_TRNG)
-+
-+/* EIP-76 register window: offsets 0x00..0x7c. */
-+#define TI_K3_TRNG_REGS_SIZE 0x80
-+
-+struct TIK3TrngState {
-+    SysBusDevice parent_obj;
-+    MemoryRegion iomem;
-+
-+    /* Nonzero xorshift64 generator state. */
-+    uint64_t rng_state;
-+    /* Cached pairs for OUTPUT_0/1 and OUTPUT_2/3. */
-+    uint64_t pair_a;
-+    uint64_t pair_b;
-+
-+    /* RAM-backed registers except OUTPUT_x and STATUS. */
-+    uint32_t regs[TI_K3_TRNG_REGS_SIZE / 4];
-+};
++    TIRATEntry ent[TI_RAT_NUM_ENTRIES];
++} TIRATState;
 +
 +#endif
 -- 

@@ -4,97 +4,97 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 354F2C5DF81
-	for <qemu-arm@archiver.kernel.org>; Thu, 20 Aug 2026 22:26:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7BE92C5DF81
+	for <qemu-arm@archiver.kernel.org>; Thu, 20 Aug 2026 22:29:21 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wxBD6-0007Rm-Es; Thu, 20 Aug 2026 18:26:08 -0400
+	id 1wxBG7-0000GR-4G; Thu, 20 Aug 2026 18:29:15 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <pierrick.bouvier@oss.qualcomm.com>)
- id 1wxBD5-0007RV-AT
- for qemu-arm@nongnu.org; Thu, 20 Aug 2026 18:26:07 -0400
-Received: from mx0b-0031df01.pphosted.com ([205.220.180.131])
+ id 1wxBG5-0000Fq-J1
+ for qemu-arm@nongnu.org; Thu, 20 Aug 2026 18:29:13 -0400
+Received: from mx0a-0031df01.pphosted.com ([205.220.168.131])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <pierrick.bouvier@oss.qualcomm.com>)
- id 1wxBD3-0003OM-Qt
- for qemu-arm@nongnu.org; Thu, 20 Aug 2026 18:26:07 -0400
-Received: from pps.filterd (m0279870.ppops.net [127.0.0.1])
+ id 1wxBG4-0004D2-3g
+ for qemu-arm@nongnu.org; Thu, 20 Aug 2026 18:29:13 -0400
+Received: from pps.filterd (m0279864.ppops.net [127.0.0.1])
  by mx0a-0031df01.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id
- 67KK7h2l268083
- for <qemu-arm@nongnu.org>; Thu, 20 Aug 2026 22:26:04 GMT
+ 67KK7ZJS3491366
+ for <qemu-arm@nongnu.org>; Thu, 20 Aug 2026 22:29:10 GMT
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qualcomm.com; h=
  cc:content-transfer-encoding:content-type:date:from:in-reply-to
  :message-id:mime-version:references:subject:to; s=qcppdkim1; bh=
- SHNxzLlb0bFi4mN7H5Km8ntRe6oiuSklItj9hrI5UyE=; b=ABuRNdCPhNRJT4Ii
- 0ip7gjRzJt19zy5JZWKtpXafzfWT1KJPh8N6lSWVAaR3aSU+uAGUvkcRXKNSbgTL
- y0QckDgFRQP39i3kdYOmK/8q22OqNBMj8XXm8AdWe4ZVdWQ3H8GcksWiwbVKYTdL
- 5SyRlffXz851nZkD6RHILEkifiP9ajlrf+hjS4GyMuBQVbgiwGDp8iMnUZVu03DG
- wPSg6nLyPm1JINaywxWwjfupwTa94Z+o7h9fk1HV1+4T5SFllj+i4WM/KlrtCX79
- GbU77UzmnOMdeAOMaAOFO5WHAqshIJHv7yjuDZbSZwvtb1oPpL+JaGXIWv0pFxpP
- jAtGjA==
-Received: from mail-pg1-f200.google.com (mail-pg1-f200.google.com
- [209.85.215.200])
- by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 4g5yg1b7cr-1
+ XpHC1BZeGxeFF9YH697vM6iZjhKAVmVy/IAiny80ZYA=; b=cQa4X2fzbQvuIdXi
+ yDsZYlZPXleG4SwNlEz0nl/Ymi/vEc+Gr95XpjWYi4JBM2ypVLmQ6bt2d1XZf3sq
+ J4hCSLLQHyTZgM0cEaCgQdy/Nhz86kF6+hEMBq0WCheJDDUhEoCb/U76jVXoMePW
+ BnRfzme7EzghXRT9nGhAAupoSPqLQFPXXrx6EH5vIcqPYvmXDEGxinBxGWhrTxTj
+ VxZUQq36QXBRa5utpotZC1ndOPpe8j7TiJByQt69EFzFhNom+OproAz8J1GMJL3w
+ 6pKjrSj7CUTLDOIuVDACYCgByim/HRCgsqxpz+LrCIf1h+PrPEeZv1j/6/QHyGJh
+ 38wzXw==
+Received: from mail-pj1-f69.google.com (mail-pj1-f69.google.com
+ [209.85.216.69])
+ by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 4g5ytcb4r2-1
  (version=TLSv1.3 cipher=TLS_AES_128_GCM_SHA256 bits=128 verify=NOT)
- for <qemu-arm@nongnu.org>; Thu, 20 Aug 2026 22:26:04 +0000 (GMT)
-Received: by mail-pg1-f200.google.com with SMTP id
- 41be03b00d2f7-cb7d6ba548eso493920a12.1
- for <qemu-arm@nongnu.org>; Thu, 20 Aug 2026 15:26:04 -0700 (PDT)
+ for <qemu-arm@nongnu.org>; Thu, 20 Aug 2026 22:29:10 +0000 (GMT)
+Received: by mail-pj1-f69.google.com with SMTP id
+ 98e67ed59e1d1-38dde0df80bso430798a91.3
+ for <qemu-arm@nongnu.org>; Thu, 20 Aug 2026 15:29:10 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=oss.qualcomm.com; s=google; t=1787264763; x=1787869563; darn=nongnu.org;
+ d=oss.qualcomm.com; s=google; t=1787264949; x=1787869749; darn=nongnu.org;
  h=content-transfer-encoding:content-type:in-reply-to:content-language
  :from:references:cc:to:subject:user-agent:mime-version:date
  :message-id:from:to:cc:subject:date:message-id:reply-to:content-type;
- bh=SHNxzLlb0bFi4mN7H5Km8ntRe6oiuSklItj9hrI5UyE=;
- b=irAzjgLtD+Y67P1OS3yfOG0WMYQ/mP47l9VQWeVt8JGemT5xCZRwy3kFT+dmB5FCsO
- ZqMIFOlXI2Cj6ayAyfuf0EhHtgZL0XfLNMux/R3i3oqlQxBKFYoi89yJxn+4zONtig6K
- 65fH6vbh92HgnOO45dSGCN4FgKKFA4VVo5XkAKM7aPVQRv8zlMZ5x0GEeTliDA1qypMf
- tAJInC2uta9tjk3JMqanfE/GlaQ+l4nFXZP9tdzpUyAlYgZzUEybY//ZTXChZqBBb4CZ
- IxPC84kV2XcMvrZeeO+sp0EVVGGYnz/4zlR36GhA0ElY6N4Rr2lSpagu3vR+uIdLxJQw
- Tg0w==
+ bh=XpHC1BZeGxeFF9YH697vM6iZjhKAVmVy/IAiny80ZYA=;
+ b=FHH6Kg7mOAczb4DaFEGYFMQ6z9YN4aUQBKxB2Pnxia/4/0Voem/doD+HPzocwwTh83
+ 70xVFVytYsOiF0K3SWTf/4k7KSn/7rsWNa7YpThMNVrRbVIHIcr//BbZIhkaFErRzuTH
+ JvY4Jwr78ZhEDxUzW2jwOUuYbi/w5lvv42GIjDsdv0v+D9RVfM48o9pKmwFX+c4j+Gif
+ 5lhZd3ckI8dnWymqldSEaAxGGcd9J7HCSOJoS/PKBT46gccz+e0wKFIGbmDaNvrjmjFh
+ uZDrC5AFsk0Plij73peUv4KpjAJwymItelMRiR7/LoVSncE+R8FtbSr0HBFel2MS9isw
+ /PjA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1787264763; x=1787869563;
+ d=1e100.net; s=20251104; t=1787264949; x=1787869749;
  h=content-transfer-encoding:content-type:in-reply-to:content-language
  :from:references:cc:to:subject:user-agent:mime-version:date
  :message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
  :message-id:reply-to:content-type;
- bh=SHNxzLlb0bFi4mN7H5Km8ntRe6oiuSklItj9hrI5UyE=;
- b=qre6yLpKCRcH4rhi/OXuqqnIXinshN7MBmsTf3SWg1kXHTC1pkSC+ZHzEpBnane/IX
- s3/Jpvw7UN+92d31tLAFhmUuYYn+CkLkQJdPQv55vQ/Hocn581uUrmipQ1Esei9ZLblw
- zUMsUpr3yBglsIn7OKWJR/lIxgFlPjkwG1k9t/X8i+8QtupNx0us8qK3FEXwMLIXae7g
- cw1rxedkNrKmQOOApDgKFTErHgy1Pvx33E491WTXEcUHjBjkXz0iN3yRzJIAp12BTz/9
- Qm1aKnt6i3ysi24A78H9XKH7D12dgjRLkqZFHvhMtNgPmY+Ni58I/zgpfg9WOYQRtVhu
- D3ZQ==
+ bh=XpHC1BZeGxeFF9YH697vM6iZjhKAVmVy/IAiny80ZYA=;
+ b=g2AsehSQxGHdf+Ts/EYfto3v6th82qtML6h6NxXN+5X1iHxCMsygG/5n0Y2daZTHnR
+ 3Qjyijrf/H7lDbnzVJF7HgMTM1R6gpseYMdPro3IYYdv6ZI0jrpB+CmU6UIBECc1tkj5
+ ve4t1eNrW9U9rhGPCl0I1KibWzmMpDEb9lXVvlZwS6e3C1XJy4LacwA7gkyeMDRmLIWk
+ y9hV9K9SX66/6qAat9mXDp1HoFTCPUKZZf9BZS7tONE5TJhxvcgp3n48Mzo6ZFEx9/IG
+ FeE2jUNrR2zPi1eOeWe32MTIayRUs8xvqkmcvSGa+HtF0EDvR+cDeRjbHIZYdUXPfz72
+ DNFw==
 X-Forwarded-Encrypted: i=1;
- AHgh+RqrJTIj1rb8NZ3+jb18jb04o92kCj3uJe54ZJXWm/6hZHesDlEvd8FHHjoZ79awV+VrVKYwQKWJNA==@nongnu.org
-X-Gm-Message-State: AOJu0Yyo7lLUZRhPCX7fi9jKqn2+iuBgPdiqA1NopYqh3sCleEPFfVcK
- zhhxtpliGfzVkGPZF0IvWo2vLn5/19aziueHneqwnY1T7LS0aCIEtrelWj0pw+pduj/eiuGuNHr
- SM1DmTlduomOB3YDry31SqGO3m2dXvxzEmRDq2QQfxMeqVgVsK54hVy4=
-X-Gm-Gg: AR+sD11CjifpQNCFgQzr2sBDrpHZX1jOOxiLBEu0zdOq7TJ9+3cqawHzo6+piOmUxn+
- hnEAFvveQumQ1NXb2ElLeVk5AE24n0/IXJ+yCUWIqspNqqI64P1ec4es3YkWranjUZFKo3HwPE6
- xOS6SFnnKXxUx1kV1qoFEGIOsZLkV+kU2x1MfxrezHTilMXEUqJWUuKQTDqWGQILIAvMFlD441M
- tkjRPkefXLoKV2ieDWVLmBu8LJRMvxyj8FliQT5F7L5rZ/9ANNAMYO3N2Yvv47F57huRq8QYAUE
- Tqrqg7zkQ1B4bPY3c/xUxevJDX6TlGgVyDody+3+76J5fVbieilKsTdpPvzOtxLbOBeeliHeDEq
- 4bw5bmxd4mJ7ao21+P3iSVzj1bLCnZ+mgcSQlOd7Af76stokclZuNs36qLzRkuoGp81bQ
-X-Received: by 2002:a05:6a21:1788:b0:3c3:9993:d5c3 with SMTP id
- adf61e73a8af0-3cd3008be95mr3361297637.9.1787264763478; 
- Thu, 20 Aug 2026 15:26:03 -0700 (PDT)
-X-Received: by 2002:a05:6a21:1788:b0:3c3:9993:d5c3 with SMTP id
- adf61e73a8af0-3cd3008be95mr3361227637.9.1787264763036; 
- Thu, 20 Aug 2026 15:26:03 -0700 (PDT)
+ AHgh+RpVGa52d35u/cH0c+KIJOYpivPFyziyggr61yJgMEb+gXkq0dnA05Pp4XQO52ihAPLiRtWqu774TA==@nongnu.org
+X-Gm-Message-State: AFuF++lXVqAnMli6+2XgnrvGWvsRXeSDRRKM9dzt+LRdbWM9X9McLTiV
+ exqlb5wNz/oVyC+2rRdYkq/arfrMswj4IyyKofSYl4RHCRTKRhrmXPHYnGq3y2y0KYi/3xBYJZE
+ ytEYjeEKHJosVVIdehlZR0qEQ1d+zwU0GihBfKzeBNnFtdcH2//0re+k=
+X-Gm-Gg: AR+sD12eoW3EMsi/sVTt5DrK/gkDC3TwO68+8UGngUvfBnFxKYC8wkuI+fo85UE62Qb
+ fu5kduZ/XZyYjRsn/YRBOHwJ4FRUQl+p2UnBX8k8wGJ0X+A72gaGxAiW3K4Df73VeiJaOW5QEon
+ O17T9SDjdrqFEtR7iRSLqvmzGCUpJlMXvlHDNxePYjUv9Q71BlfYnwPODmAnlCgcd18OYH6WsJO
+ bn7wojSzgefGX0L08zjrpYp5OCNXTOkrMZXv4iPb5UxQRKPh692/47k6eAby1e5GJrdgiN7lS/O
+ onGGixljg9u4nSPDxlDykWq2Mr0PdsOiAgrqlCVGgK0YIj1wD4h/vR8H0/wEEe/00WuY6PRpY65
+ AAaA3EgqNOVmeMHfRDEMo2OW3N+EZ+Wh8FAM78AE2XPe1nOgNq+NHID3VrVOuZBGBEcts
+X-Received: by 2002:a17:90b:530c:b0:395:5404:95 with SMTP id
+ 98e67ed59e1d1-395c35516a0mr3098881a91.12.1787264949551; 
+ Thu, 20 Aug 2026 15:29:09 -0700 (PDT)
+X-Received: by 2002:a17:90b:530c:b0:395:5404:95 with SMTP id
+ 98e67ed59e1d1-395c35516a0mr3098827a91.12.1787264949126; 
+ Thu, 20 Aug 2026 15:29:09 -0700 (PDT)
 Received: from [192.168.1.199] (216-71-219-44.dyn.novuscom.net.
  [216.71.219.44]) by smtp.gmail.com with ESMTPSA id
- a92af1059eb24-1416ae1416dsm26679783c88.11.2026.08.20.15.26.01
+ 98e67ed59e1d1-395c4b47ae8sm524884a91.13.2026.08.20.15.29.08
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 20 Aug 2026 15:26:02 -0700 (PDT)
-Message-ID: <11084bd6-361a-4696-bcba-572aa3020107@oss.qualcomm.com>
-Date: Thu, 20 Aug 2026 15:26:02 -0700
+ Thu, 20 Aug 2026 15:29:08 -0700 (PDT)
+Message-ID: <4b80bd7c-1002-4ae4-a9fe-7449c0637687@oss.qualcomm.com>
+Date: Thu, 20 Aug 2026 15:29:08 -0700
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [RFC v5 11/28] hw/arm/smmu-common: Implement secure state
- handling in ptw
+Subject: Re: [RFC v5 15/28] hw/arm/smmu: Make CMDQ invalidation security-state
+ aware
 To: Tao Tang <tangtao1634@phytium.com.cn>, Eric Auger <eric.auger@redhat.com>,
  Peter Maydell <peter.maydell@linaro.org>
 Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org,
@@ -104,48 +104,49 @@ Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org,
  Chao Liu <chao.liu@processmission.com>,
  Jim MacArthur <jim.macarthur@linaro.org>
 References: <20260813161515.2788900-1-tangtao1634@phytium.com.cn>
- <20260813162512.2807281-1-tangtao1634@phytium.com.cn>
+ <20260813162512.2807281-5-tangtao1634@phytium.com.cn>
 From: Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>
 Content-Language: en-US
-In-Reply-To: <20260813162512.2807281-1-tangtao1634@phytium.com.cn>
+In-Reply-To: <20260813162512.2807281-5-tangtao1634@phytium.com.cn>
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 7bit
-X-Proofpoint-ORIG-GUID: kaDHVIIQjn2B-QRXyncS7TXO_DKWcPcr
-X-Authority-Analysis: v=2.4 cv=G7Is1dk5 c=1 sm=1 tr=0 ts=6a877efc cx=c_pps
- a=oF/VQ+ItUULfLr/lQ2/icg==:117 a=iLqgmErQAxjCjdq5jj1Aqg==:17
+X-Authority-Analysis: v=2.4 cv=OqZ/DS/t c=1 sm=1 tr=0 ts=6a877fb6 cx=c_pps
+ a=vVfyC5vLCtgYJKYeQD43oA==:117 a=iLqgmErQAxjCjdq5jj1Aqg==:17
  a=IkcTkHD0fZMA:10 a=Sv0fKeRqtYgA:10 a=s4-Qcg_JpJYA:10
- a=VkNPw1HP01LnGYTKEx00:22 a=u7WPNUs3qKkmUXheDGA7:22 a=gowsoOTTUOVcmtlkKump:22
- a=fgrLqfBXAAAA:8 a=EUspDBNiAAAA:8 a=_zrsuuM1xf9QxEgsPNkA:9 a=QEXdDO2ut3YA:10
- a=3WC7DwWrALyhR5TkjVHa:22 a=_Ge82aPy-h_wFa7gWU4u:22
-X-Proofpoint-GUID: kaDHVIIQjn2B-QRXyncS7TXO_DKWcPcr
-X-Proofpoint-Spam-Info: AW1haW4tMjYwODIwMDE2NiBTYWx0ZWRfX+8OKAVYl/MVa
- 9bHMK726dZNf0xe3xugZ1n/QndjcsB4rDEuvPOZthQXcUWKcVX7WSq1BM4gR4sDmK4sXlbV5Ujb
- iF7Mw8Z04cUCg+GWu6N0U2N2P4E7h24=
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwODIwMDE2NiBTYWx0ZWRfXywY3qu7IwjSx
- BJvxLRUaGLFCmdi1C3I9dZuhAO12Daby/cqZ92tt1/xjsqbnWqJnJAfYLXDG70UrbqQRGq6ypzV
- 7WvvbV+WY4+vXGTx3pFtmieCe/H55A032DD1d/+32RbnZClIZwvzzc0WPkPQXfjh0skCew1UsS4
- 1zHjKQhdFADZPL7joXO2txUvkIny9fI+d20Dg5mARL3dVhdAjytesdqGfrZyT9oEQmmiLlBKgZ3
- Ufan/mX/pe19IaJWtOoJkco/VebWKC34ONAmMGdOehX0oVYjE4oupyd3S0KSuApgTqQbsORYdjI
- RxTHLeUhDLxhPa9vjGH0O6oy18VyRwn0RPYhjIBn9UIZe3wQz6HtizJSORxOZSZFJGkSNMhNDUU
- 7Y6FsJ26rKo4C/APsGQxUyD/pDJ+9kfxqtvRJ+POrdsmXpCT+a3jOb3XtYIiO4RlqUO2s6pAUCq
- 0VqO80+LFfB+eZg8Mkg==
+ a=VkNPw1HP01LnGYTKEx00:22 a=u7WPNUs3qKkmUXheDGA7:22 a=DJpcGTmdVt4CTyJn9g5Z:22
+ a=fgrLqfBXAAAA:8 a=Hmx-Tj00yXVqkUNXdAAA:9 a=QEXdDO2ut3YA:10
+ a=rl5im9kqc5Lf4LNbBjHf:22 a=_Ge82aPy-h_wFa7gWU4u:22
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwODIwMDE2NyBTYWx0ZWRfX2kfDdR0hcD56
+ 2dNVENl63EoJNVIfsnoDc4T6wHkn8Yq6XByFiYPkxXDqaR6YkJW/H108zN/pbgStnTrbeekA8hC
+ 6M8OWNj+Rs1puys92j+v0THF3zJCNYbXReqbs+33ge1pEDPZW/23DXB6ioa1vzjqJtkcth3OFhx
+ v2oYbLhAU2SZ1DLqmBNPkfzaUx10/AkuMS2ex77mLb5ZrRbx+odAqgCTdD2s6Jy69YVgLTRK4lK
+ o/YnCNpJFdtS+d9GWQ7tvSWx3shbuZ/FpiCLQhMS3OheINGzVhX9tMq5VomkI/HnZPGTOwRLMdh
+ nFDNTOZpg9ALoen+fp9OnE8wG0HqRsSYlE/IVfA7TM7ENIoRQqm2obRSLTIQjWVwkmXuUfamtkU
+ M8v39pyYNThEJbA2B8yVXB+8ZSu/CNHS4tSqds3oK6+32KzGbfD02l61Ul/T+ENk+auTGlrgAcY
+ onDwivg7VkqQuc6PP5A==
+X-Proofpoint-ORIG-GUID: FV0RVxe1eVyXMyO-sozR5WNy3164-yff
+X-Proofpoint-GUID: FV0RVxe1eVyXMyO-sozR5WNy3164-yff
+X-Proofpoint-Spam-Info: AW1haW4tMjYwODIwMDE2NyBTYWx0ZWRfXzd8u9hYzEBdK
+ GW/SBS5QHAjVJ+keeKfB6pk8TeqxjVYzEmGo+3lGteIm3/nhxFWOlfyRHfAUZqtyMmTD7d1N8Zn
+ atM42dKQjz3GqntkgJATj/8gNxaiQWs=
 X-Proofpoint-Virus-Version: vendor=baseguard
  engine=ICAP:2.0.293,Aquarius:18.0.1176,Hydra:6.1.134,FMLib:17.12.100.49
  definitions=2026-08-20_02,2026-08-20_02,2025-10-01_01
 X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
- impostorscore=0 suspectscore=0 clxscore=1015 phishscore=0 bulkscore=0
- lowpriorityscore=0 priorityscore=1501 adultscore=0 malwarescore=0 spamscore=0
- classifier=typeunknown authscore=0 authtc= authcc= route=outbound adjust=0
- reason=mlx scancount=1 engine=8.22.0-2606150000 definitions=main-2608200166
-Received-SPF: pass client-ip=205.220.180.131;
+ phishscore=0 spamscore=0 malwarescore=0 clxscore=1015 adultscore=0
+ bulkscore=0 suspectscore=0 lowpriorityscore=0 priorityscore=1501
+ impostorscore=0 classifier=typeunknown authscore=0 authtc= authcc=
+ route=outbound adjust=0 reason=mlx scancount=1 engine=8.22.0-2606150000
+ definitions=main-2608200167
+Received-SPF: pass client-ip=205.220.168.131;
  envelope-from=pierrick.bouvier@oss.qualcomm.com;
- helo=mx0b-0031df01.pphosted.com
+ helo=mx0a-0031df01.pphosted.com
 X-Spam_score_int: -27
 X-Spam_score: -2.8
 X-Spam_bar: --
 X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H2=0.001, SPF_HELO_NONE=0.001,
+ RCVD_IN_DNSWL_LOW=-0.7, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -163,39 +164,42 @@ Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
 On 8/13/2026 9:25 AM, Tao Tang wrote:
-> Enhance the page table walker to correctly handle secure and non-secure
-> memory accesses. This change introduces logic to select the appropriate
-> address space and enforce architectural security policies during walks.
+> Refactor CMDQ invalidation paths to carry security state and apply cache
+> invalidation per sec_sid instead of globally. Add separate helpers for
+> invalidating all entries and for invalidating entries belonging to one
+> valid sec_sid.
 > 
-> The page table walker now correctly processes Secure Stage 1
-> translations. Key changes include:
+> In smmuv3, propagate the command queue sec_sid and command SSec through
+> CFGI and TLBI handling, and gate VMID use on the stage-2 capability of
+> the selected command queue, including SMMU_S_IDR1.SEL2 for a Secure
+> Command queue.
 > 
-> - The get_pte() function now uses the effective security state to fetch
-> page-table entries from either the Secure or Non-secure address space,
-> with explicit transaction attributes matching that address space.
+> Keep acceleration and IOMMU notifier propagation Non-secure-only.
+> Commands targeting a programming interface other than Non-secure do not
+> reach the accelerated backend or Non-secure notifiers, while Non-secure
+> stage-1 CMD_TLBI_NH_ALL remains forwarded to the host.
 > 
-> - The stage 1 walker tracks the security state, respecting the NSCFG
-> and NSTable attributes. It correctly handles the hierarchical security
-> model: if a table descriptor in a secure walk has NSTable=1, all
-> subsequent lookups for that walk are forced into the Non-secure space.
-> This is a one-way transition, as specified by the architecture.
-> 
-> - The final TLB entry is tagged with the correct output address space,
-> ensuring proper memory isolation.
-> 
-> Note: We do not yet support secure stage 2 translations. This patch
-> only implements Secure stage 1 page-table walks. Baseline propagation
-> of the incoming NS attribute for stage 1 bypass is handled separately
-> in this series with ATTR_PERMS_OVR == 0. Full ATTR_PERMS_OVR support
-> is left for a separate series.
+> Include the command queue SEC_SID and target SEC_SID in the relevant
+> invalidation tracepoints.
 > 
 > Signed-off-by: Tao Tang <tangtao1634@phytium.com.cn>
 > ---
->  hw/arm/smmu-common.c         | 73 +++++++++++++++++++++++++++++-------
->  hw/arm/smmuv3.c              | 19 ++++++----
->  include/hw/arm/smmu-common.h |  7 ++--
->  3 files changed, 74 insertions(+), 25 deletions(-)
+>  hw/arm/smmu-common.c         | 100 ++++++++++++++++++++++++++++-
+>  hw/arm/smmuv3-accel-stubs.c  |   6 +-
+>  hw/arm/smmuv3-accel.c        |  30 +++++++--
+>  hw/arm/smmuv3-accel.h        |   6 +-
+>  hw/arm/smmuv3.c              | 121 ++++++++++++++++++++++++++---------
+>  hw/arm/trace-events          |  12 ++--
+>  include/hw/arm/smmu-common.h |   6 ++
+>  7 files changed, 231 insertions(+), 50 deletions(-)
 > 
 
-Reviewed-by: Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>
+Given this patch, would that be simpler to have multiple iotlb hashtable
+per sec_sid? This way, invalidation becomes trivial.
+
+It has been long time since last version, so I forgot if there was a
+specific reason to keep a single table and add sec_sid to each entry.
+
+Regards,
+Pierrick
 

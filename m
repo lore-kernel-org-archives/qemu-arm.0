@@ -4,81 +4,82 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B0D34C5DF88
-	for <qemu-arm@archiver.kernel.org>; Thu, 20 Aug 2026 12:50:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AE340C5DF88
+	for <qemu-arm@archiver.kernel.org>; Thu, 20 Aug 2026 12:50:50 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wx2CH-0004tB-BT; Thu, 20 Aug 2026 08:48:41 -0400
+	id 1wx2CF-0004q0-N9; Thu, 20 Aug 2026 08:48:39 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <wafgo01@gmail.com>) id 1wx2CF-0004pp-H3
- for qemu-arm@nongnu.org; Thu, 20 Aug 2026 08:48:39 -0400
-Received: from mail-ed1-x529.google.com ([2a00:1450:4864:20::529])
+ (Exim 4.90_1) (envelope-from <wafgo01@gmail.com>) id 1wx2CD-0004p2-Vr
+ for qemu-arm@nongnu.org; Thu, 20 Aug 2026 08:48:37 -0400
+Received: from mail-ed1-x52b.google.com ([2a00:1450:4864:20::52b])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <wafgo01@gmail.com>) id 1wx2CC-0001Y8-QM
- for qemu-arm@nongnu.org; Thu, 20 Aug 2026 08:48:39 -0400
-Received: by mail-ed1-x529.google.com with SMTP id
- 4fb4d7f45d1cf-6a10d02ff43so4290222a12.0
- for <qemu-arm@nongnu.org>; Thu, 20 Aug 2026 05:48:36 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <wafgo01@gmail.com>) id 1wx2CB-0001XJ-Dv
+ for qemu-arm@nongnu.org; Thu, 20 Aug 2026 08:48:37 -0400
+Received: by mail-ed1-x52b.google.com with SMTP id
+ 4fb4d7f45d1cf-6a18840e2abso3594135a12.0
+ for <qemu-arm@nongnu.org>; Thu, 20 Aug 2026 05:48:35 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20251104; t=1787230115; x=1787834915; darn=nongnu.org;
+ d=gmail.com; s=20251104; t=1787230114; x=1787834914; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to:content-type;
- bh=x1njBPUnRi7s8nimb7wTjieF3b/NWRrQDo6tfHwHCQ8=;
- b=tMtfRmsNX7/ydsffvfcCXzhbQs8sJHHKpYVm8GZgAGzzGcatlrAGzYF3pp6/nssoJf
- jA3qj70SoJtTEkF3vWzbirxP/1OgjT7LH0CZRJr4NpHPkzu/u/pA1D6+wQVrUzlb80C+
- fxi563HyPO8wA7H/J1GbyeWSe46PGgnhwC1zK/zcio3pxXArKdM20wO9fqOzr2IDivUd
- 36IPBrQEGMeUMoCyJ3wLTze5rAnrnQQR62CPzEduMHVoTURHzu1BIzok6ftr73XBBSwL
- jTqZwuPaaBiSVd8R9Zgbv/LaoFYF1gr2uKbHXoJOPboPFtNJEyGUv/UYISJRYnN+en4v
- Uzog==
+ bh=4MRvYdw615nh8ZPgiL5QIiN8untfHb3/fkVaP/Y9iL0=;
+ b=IeYnbHXjBv50SjvzQjBQzhnbv5BPSuMSL7q4m3RQuRtVkhuzHCOjJm91MRq3YMAMmK
+ 0RRx1rxP2TLdQlLuZHattVCjFvWqE3fd++80AuKDae9gbvcvX3TpiIQPv+a/r652U/tA
+ EsbQP5l0lYSYx0pwrAbHnuYF9LVvNt+7zwBhc+bRXvsKq6jWfPm1PqCNXpkIqM3d6MLQ
+ KPPHkoUuCHYg3FnFBrAjpb1v/cz/3Jb7e9PFWsFqyTthMh8u/LWK/RCke7Lsqd5disWY
+ xu/ntBqPFZ7izLo7O9hE/h0+r3cevpMB07BHhjCvUmsk7vFtikksMG+mtlVVBcSfLk3V
+ Tw1w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1787230115; x=1787834915;
+ d=1e100.net; s=20251104; t=1787230114; x=1787834914;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
  :to:cc:subject:date:message-id:reply-to:content-type;
- bh=x1njBPUnRi7s8nimb7wTjieF3b/NWRrQDo6tfHwHCQ8=;
- b=ZXZaBofT6ixhSfU+cF4Ec0raVgPMWlRrAWjJlChmRPIzVvhWoytrkJiUEZa4uiWIHN
- R3DSYV7MPoMowSBDD1jpZAXByqIe9293dTCTEub8L5dvkbW7A5/ocjxVUo/HOIUn4yob
- jx1hs/wcm0jg+/1piw6RHDgvjnX6ipE2xiLzBEE0CJYLuq8PLcI5O4XZqeQCzQruJEZw
- Rdz/PGZk4aI3ey2J0rhmTYOJzbITM81nlqfodU1J1lpUT2HBmDCaQ7fMAGp3bQvGLnEr
- nKuOvSlFTHEYknNqcaPHmd/dcW1RlDaUEOfDTaqhzZ2d5SggLxTBexzvOfCeUSROqd2/
- vo0w==
-X-Gm-Message-State: AFuF++laGlNTrTjLrQjvewvSa84ZV/Ny1bzq0EWq9bT/vhupPf5ZfVs/
- koE1qmX90FV/UE8mC39Bf+GgD7sjV/cOI3zXSRzFIs9F3QQ48SitSHsq
-X-Gm-Gg: AR+sD11i5wRis0s8JUhrviEZNuZPW8vr9cMXcZx/1Aj9YTGMBYWiEple8PxIaxctYEy
- 0hfG+ymMpYa7BXXCtXQYpqT33GOh9rw8E9F10yvUXPSIalXAoOWSG0xfHB217OOZgW3MzH72ma7
- OsSWKTOhRNVF1rI0+qTDzXMiOY4fm1yBOlnO2OmFPgbyBf4qNCyghBiRdMKfXs3ECwI5LIuRy82
- tMEuBRXBmI354Qluh5P5PskCGBHmGcAQXLopqcj7jnd6wq8WlkmRZ6xap886XQgViZkt4usc52A
- OaDYp8tEDZ205TZs2MtnMtWygMrVIgSLEPwn9VZ6aKu6QKZ3aJ4OE11f3Cqem7ad7jLa2SZWAAR
- /34FfY/sDqYOOpH4gwRysASgF0h2itWr0Y7q2mBisbem6b2nq6sC4fVrQ/tKcbIa1Bsal9cw2nS
- DJjmwr5IiiuHKR9lGji+E2zD4JERVlhteZELVn8+o/ZLVHwsFf/MApF//FDZG3eRwDbwmCBmKmm
- LLL8fZr2zE=
-X-Received: by 2002:a05:6402:3218:b0:6a3:efe6:3ef3 with SMTP id
- 4fb4d7f45d1cf-6a4032e364cmr9248971a12.7.1787230114948; 
- Thu, 20 Aug 2026 05:48:34 -0700 (PDT)
+ bh=4MRvYdw615nh8ZPgiL5QIiN8untfHb3/fkVaP/Y9iL0=;
+ b=Yh2/VdQNJyXOKlwcKyrWlkI+2iQTGVxqVlCdWArfjL8UCBUV6xBnMpjpccjaHw6I22
+ J9YAP7LhpmcWcdG89MhIegzFRiqcv3C6wll7fIt2dbVThyYmtwZMEqjT1Lc87xgSYu5Q
+ oaveG2n8e53wmEy1ABeJ4X1FlazESzet2SINgIvphQkzvxNHrEwzYAANyQe37ma8fmJs
+ AgWi8AX8J7+z77WSLNJLbVWCLkeEp6LuaW58oA0jxnbxICYZdqW2aDclMAhaCFrsFXPc
+ KJR2l7axwtcH+CWrkhsRjQwn1H/VWFnxRpbmyDw+BPmzRoKOUEYfHBvsL04V2YB3Bipu
+ wIWQ==
+X-Gm-Message-State: AFuF++ni3LVO8UnJIPk34tO95srBDF/fERDNu9tMe5eQMXWL1csUIrs7
+ ykEXgGrwbw/JbkCC6sUWPbmK1H2rnwSI6cyhIaUwyegZ/LOu4+0Th47+
+X-Gm-Gg: AR+sD12msR57OG0uyd22hONPPfOyHm0T+utj1iMawCle0wzqwGTU9F6f/RvS+1tU5Vh
+ CWjAIyfP3itUF2Da73b+9YCyZJbmcQ1OGDCcNsLovP3D/rJw4AdcYK3qZhC06ftIdVH2SY2vuq1
+ Mt5llLowtwcn36ZjOLWFwhgf1Iet28X3u1nSU5RlWLxCQNUUOuJitguTpGs1dvdTBDZastpZFM5
+ exO7aACXc7Pqc0S/5Np2tehto/KhJNpNzMZFjNHbOcxmiMXk7HCKLpv+M1zIbquq9e9JPTT7qfB
+ xsw1wTbDsOOqm09mOOfpUnrjS5fllyEPuryzfKWI0e405fSCg60d6sjlK1LgyGgQpUzm1J2mQV1
+ TDEIFlcrweTWn4pbHOh06FNzALLB16OO1tV2Y1mrjfX9J+IH6fPXqh7eU1wLdlLLCgs/Ndcw+11
+ olLapq1MgvDwvgnnIUNjyhsWgUQbq6qkjjikW1CXlBGILIklx1KIuayJ19xBZBq8mMf7CIIARnG
+ r6GSeG6qz4=
+X-Received: by 2002:a05:6402:42cb:b0:6a3:f8ab:19f7 with SMTP id
+ 4fb4d7f45d1cf-6a4032f4508mr8312845a12.11.1787230113266; 
+ Thu, 20 Aug 2026 05:48:33 -0700 (PDT)
 Received: from DE-PF5B95TD.embedded.cmblu.dev ([87.129.199.250])
  by smtp.gmail.com with ESMTPSA id
- 4fb4d7f45d1cf-6a3ff1563c5sm2270449a12.14.2026.08.20.05.48.34
+ 4fb4d7f45d1cf-6a3ff1563c5sm2270449a12.14.2026.08.20.05.48.32
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 20 Aug 2026 05:48:34 -0700 (PDT)
+ Thu, 20 Aug 2026 05:48:32 -0700 (PDT)
 From: Wadim Mueller <wafgo01@gmail.com>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@mailo.com>,
  Bin Meng <bmeng.cn@gmail.com>, Paolo Bonzini <pbonzini@redhat.com>,
  Fabiano Rosas <farosas@suse.de>, Wadim Mueller <wafgo01@gmail.com>
-Subject: [RFC PATCH v2 04/14] hw/char: add TI AM64x UART model
-Date: Thu, 20 Aug 2026 14:48:04 +0200
-Message-ID: <20260820124824.618671-5-wafgo01@gmail.com>
+Subject: [RFC PATCH v2 02/14] hw/i2c/omap_i2c: implement soft reset and NACK
+ reporting
+Date: Thu, 20 Aug 2026 14:48:02 +0200
+Message-ID: <20260820124824.618671-3-wafgo01@gmail.com>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20260820124824.618671-1-wafgo01@gmail.com>
 References: <20260820124824.618671-1-wafgo01@gmail.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::529;
- envelope-from=wafgo01@gmail.com; helo=mail-ed1-x529.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::52b;
+ envelope-from=wafgo01@gmail.com; helo=mail-ed1-x52b.google.com
 X-Spam_score_int: -17
 X-Spam_score: -1.8
 X-Spam_bar: -
@@ -102,197 +103,311 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-The AM64x UART is an 8250-compatible core with a TI-specific mode-select
-register (MDR1) that has to be taken out of "disabled" state before the
-UART transmits, plus a power/emulation management register. Wrap the
-generic 16550 model to provide these.
+Add the pieces of the controller that the TI K3 ROM/SPL and the Linux
+omap-i2c driver actually exercise:
+
+ - OMAP_I2C_SYSC.SRST triggers a soft reset and SYSS.RDONE reports its
+   completion, instead of the register being a plain scratch value.
+ - A transfer to an address that nobody acknowledges raises STAT.NACK and
+   ends the transfer, rather than being silently completed.
+
+This allows to let a guest probe an I2C bus and correctly conclude that a
+device is absent.
 
 Signed-off-by: Wadim Mueller <wafgo01@gmail.com>
 ---
- hw/char/Kconfig                |   4 ++
- hw/char/meson.build            |   1 +
- hw/char/ti-am64-uart.c         | 109 +++++++++++++++++++++++++++++++++
- include/hw/char/ti-am64-uart.h |  28 +++++++++
- 4 files changed, 142 insertions(+)
- create mode 100644 hw/char/ti-am64-uart.c
- create mode 100644 include/hw/char/ti-am64-uart.h
+ hw/i2c/omap_i2c.c | 234 +++++++++++++++++++++++++++++++++++++++++++++-
+ 1 file changed, 232 insertions(+), 2 deletions(-)
 
-diff --git a/hw/char/Kconfig b/hw/char/Kconfig
-index 020c0a84bb..c06811130a 100644
---- a/hw/char/Kconfig
-+++ b/hw/char/Kconfig
-@@ -31,6 +31,10 @@ config SERIAL_MM
-     bool
-     select SERIAL
+diff --git a/hw/i2c/omap_i2c.c b/hw/i2c/omap_i2c.c
+index d6e28a1a89..e56f75d6f5 100644
+--- a/hw/i2c/omap_i2c.c
++++ b/hw/i2c/omap_i2c.c
+@@ -37,6 +37,7 @@ struct OMAPI2CState {
+     I2CBus *bus;
  
-+config AM64_UART
-+    bool
-+    select SERIAL
-+
- config SERIAL_PCI
-     bool
-     default y if PCI_DEVICES
-diff --git a/hw/char/meson.build b/hw/char/meson.build
-index fc3d7ee506..71c35af357 100644
---- a/hw/char/meson.build
-+++ b/hw/char/meson.build
-@@ -22,6 +22,7 @@ system_ss.add(when: 'CONFIG_VIRTIO_SERIAL', if_true: files('virtio-console.c'))
- system_ss.add(when: 'CONFIG_XEN_BUS', if_true: files('xen_console.c'))
- system_ss.add(when: 'CONFIG_XILINX', if_true: files('xilinx_uartlite.c'))
- system_ss.add(when: 'CONFIG_DIVA_GSP', if_true: files('diva-gsp.c'))
-+system_ss.add(when: 'CONFIG_AM64_UART', if_true: files('ti-am64-uart.c'))
+     uint8_t revision;
++    uint8_t mmio_version;
+     void *iclk;
+     void *fclk;
  
- system_ss.add(when: 'CONFIG_AVR_USART', if_true: files('avr_usart.c'))
- system_ss.add(when: 'CONFIG_COLDFIRE', if_true: files('mcf_uart.c'))
-diff --git a/hw/char/ti-am64-uart.c b/hw/char/ti-am64-uart.c
-new file mode 100644
-index 0000000000..41d02060eb
---- /dev/null
-+++ b/hw/char/ti-am64-uart.c
-@@ -0,0 +1,109 @@
+@@ -58,6 +59,61 @@ struct OMAPI2CState {
+ #define OMAP2_INTR_REV  0x34
+ #define OMAP2_GC_REV    0x34
+ 
 +/*
-+ * TI AM64x UART emulation
-+ *
-+ * Copyright (c) 2025 CMBLU Energy AG
-+ * Author: Wadim Mueller <wafgo01@gmail.com>
-+ *
-+ * SPDX-License-Identifier: GPL-2.0-or-later
++ * MMIO register layout selector.  The classic OMAP1/OMAP2 "IP V1" map is the
++ * default and is what every existing OMAP board relies on.  "IP V2" is the
++ * OMAP4-and-later layout ("ti,omap4-i2c" / "ti,am64-i2c"), which relocates the
++ * registers and adds the IRQSTATUS_RAW / IRQENABLE_SET / IRQENABLE_CLR set.
++ * The transfer/reset/NACK engine is shared; only the address decode differs.
 + */
++#define OMAP_I2C_MMIO_V1  0
++#define OMAP_I2C_MMIO_V2  2
 +
-+#include "qemu/osdep.h"
-+#include "hw/char/ti-am64-uart.h"
-+#include "migration/vmstate.h"
-+#include "hw/core/qdev-properties.h"
++/* IP V2 register offsets, as used from OMAP4 onwards. */
++#define OMAP_I2C_V2_REVNB_LO       0x00
++#define OMAP_I2C_V2_REVNB_HI       0x04
++#define OMAP_I2C_V2_SYSC           0x10
++#define OMAP_I2C_V2_IRQSTATUS_RAW  0x24
++#define OMAP_I2C_V2_IRQSTATUS      0x28
++#define OMAP_I2C_V2_IRQENABLE_SET  0x2c
++#define OMAP_I2C_V2_IRQENABLE_CLR  0x30
++#define OMAP_I2C_V2_WE             0x34
++#define OMAP_I2C_V2_SYSS           0x90
++#define OMAP_I2C_V2_BUF            0x94
++#define OMAP_I2C_V2_CNT            0x98
++#define OMAP_I2C_V2_DATA           0x9c
++#define OMAP_I2C_V2_CON            0xa4
++#define OMAP_I2C_V2_OA             0xa8
++#define OMAP_I2C_V2_SA             0xac
++#define OMAP_I2C_V2_PSC            0xb0
++#define OMAP_I2C_V2_SCLL           0xb4
++#define OMAP_I2C_V2_SCLH           0xb8
++#define OMAP_I2C_V2_SYSTEST        0xbc
++#define OMAP_I2C_V2_BUFSTAT        0xc0
 +
-+static uint64_t am64_uart_read(void *opaque, hwaddr addr, unsigned size)
++/*
++ * Translate an IP-V2 offset for a register whose semantics are identical to
++ * the V1 model into the V1 offset the shared read/write switch decodes.
++ * Returns -1 for offsets that have no direct V1 equivalent (those are handled
++ * inline by the V2 front-end).
++ */
++static int omap_i2c_v2_to_v1(int offset)
 +{
-+    AM64Uart *au = AM64_UART(opaque);
-+
-+    if (addr >= (8 << au->regshift)) {
-+        return 0;
++    switch (offset) {
++    case OMAP_I2C_V2_BUF:     return 0x14;
++    case OMAP_I2C_V2_CNT:     return 0x18;
++    /* DATA (0x9c) is handled inline byte-wise by the V2 front-end. */
++    case OMAP_I2C_V2_CON:     return 0x24;
++    case OMAP_I2C_V2_OA:      return 0x28;
++    case OMAP_I2C_V2_SA:      return 0x2c;
++    case OMAP_I2C_V2_PSC:     return 0x30;
++    case OMAP_I2C_V2_SCLL:    return 0x34;
++    case OMAP_I2C_V2_SCLH:    return 0x38;
++    case OMAP_I2C_V2_SYSTEST: return 0x3c;
++    default:                  return -1;
 +    }
-+
-+    return serial_io_ops.read(&au->serial, addr >> au->regshift, 1);
 +}
 +
-+static void am64_uart_write(void *opaque, hwaddr addr,
-+                            uint64_t value, unsigned size)
-+{
-+    AM64Uart *au = AM64_UART(opaque);
-+    value &= 255;
-+    if (addr >= (8 << au->regshift)) {
+ static void omap_i2c_interrupts_update(OMAPI2CState *s)
+ {
+     qemu_set_irq(s->irq, s->stat & s->mask);
+@@ -162,6 +218,83 @@ static uint32_t omap_i2c_read(void *opaque, hwaddr addr)
+     int offset = addr & OMAP_MPUI_REG_MASK;
+     uint16_t ret;
+ 
++    if (s->mmio_version == OMAP_I2C_MMIO_V2) {
++        switch (offset) {
++        case OMAP_I2C_V2_REVNB_LO:
++            return s->revision;
++        case OMAP_I2C_V2_REVNB_HI:
++            return 0;
++        case OMAP_I2C_V2_SYSC:
++            return 0;
++        case OMAP_I2C_V2_IRQSTATUS_RAW:
++        case OMAP_I2C_V2_IRQSTATUS:     /* STAT mirrors IRQSTATUS_RAW */
++            return s->stat | (i2c_bus_busy(s->bus) << 12);
++        case OMAP_I2C_V2_IRQENABLE_SET:
++        case OMAP_I2C_V2_IRQENABLE_CLR:
++            return s->mask;
++        case OMAP_I2C_V2_WE:
++            return 0;
++        case OMAP_I2C_V2_SYSS:
++            /* reset is instantaneous in the model: RDONE always reads set */
++            return 1;
++        case OMAP_I2C_V2_BUFSTAT:
++            return 0;
++        case OMAP_I2C_V2_DATA: {
++            /*
++             * The OMAP4/AM64x driver accesses the DATA register one byte per
++             * MMIO access (readw of a single byte), unlike the classic V1
++             * 16-bit FIFO convention.  Pop exactly one byte (oldest first,
++             * FIFO is filled LSB-first by omap_i2c_fifo_run()).
++             */
++            uint8_t b = s->fifo & 0xff;
++            if (s->rxlen > 0) {
++                s->fifo >>= 8;
++                s->rxlen--;
++            }
++            /*
++             * Refill from the slave while the transfer is still live (this
++             * may complete count_cur and issue the STOP, leaving the last
++             * few prefetched bytes buffered in the FIFO with the bus idle).
++             */
++            omap_i2c_fifo_run(s);
++            /*
++             * Drive the RRDY/ARDY handshake directly off the FIFO drain
++             * state so it keeps working after the bus has gone idle: RRDY
++             * stays asserted while buffered bytes remain, and ARDY is raised
++             * once the last byte has been consumed (master-receive).
++             */
++            if (s->rxlen > 0) {
++                s->stat |= 1 << 3;                          /* RRDY */
++            } else {
++                s->stat &= ~(1 << 3);                       /* RRDY */
++                if (((s->control >> 10) & 1) &&             /* MST */
++                    ((~s->control >> 9) & 1)) {             /* TRX (receive) */
++                    s->stat |= 1 << 2;                      /* ARDY */
++                    s->control &= ~(1 << 10);               /* MST */
++                    /*
++                     * DCOUNT decrements to 0 on real hardware and stays
++                     * there; leave it at 0 so a following address-only probe
++                     * (which programs no CNT) starts from 0 and completes
++                     * with ARDY instead of waiting for phantom TX bytes.
++                     */
++                    s->count = 0;
++                    s->count_cur = 0;
++                }
++            }
++            s->stat &= ~(1 << 11);                          /* ROVR */
++            omap_i2c_interrupts_update(s);
++            return b;
++        }
++        default:
++            offset = omap_i2c_v2_to_v1(offset);
++            if (offset < 0) {
++                OMAP_BAD_REG(addr);
++                return 0;
++            }
++            break;
++        }
++    }
++
+     switch (offset) {
+     case 0x00:  /* I2C_REV */
+         return s->revision;                     /* REV */
+@@ -266,6 +399,83 @@ static void omap_i2c_write(void *opaque, hwaddr addr,
+     int offset = addr & OMAP_MPUI_REG_MASK;
+     int nack;
+ 
++    if (s->mmio_version == OMAP_I2C_MMIO_V2) {
++        switch (offset) {
++        case OMAP_I2C_V2_SYSC:
++            if (value & 2) {                    /* SRST */
++                omap_i2c_reset(DEVICE(s));
++            }
++            return;
++        case OMAP_I2C_V2_DATA:
++            /*
++             * The OMAP4/AM64x driver writes the DATA register one byte per
++             * MMIO access (writew of a single byte).  Push exactly one byte,
++             * mirroring the classic 8-bit FIFO path (omap_i2c_writeb()).
++             */
++            if (s->txlen <= 2) {
++                s->fifo <<= 8;
++                s->txlen += 1;
++                s->fifo |= value & 0xff;
++                s->stat &= ~(1 << 10);                  /* XUDF */
++                if (s->txlen > 2) {
++                    s->stat &= ~(1 << 4);               /* XRDY */
++                }
++                omap_i2c_fifo_run(s);
++                /*
++                 * If the transmit finished and issued its STOP, leave DCOUNT
++                 * at 0 (see the DATA read path) so the next probe/transfer
++                 * that does not reprogram CNT is not tricked into expecting
++                 * stale phantom bytes.
++                 */
++                if (!i2c_bus_busy(s->bus)) {
++                    s->count = 0;
++                    s->count_cur = 0;
++                }
++                omap_i2c_interrupts_update(s);
++            }
++            return;
++        case OMAP_I2C_V2_IRQSTATUS_RAW:
++        case OMAP_I2C_V2_IRQSTATUS:             /* write-1-to-clear */
++            s->stat &= ~(value & 0x7fff);
++            /*
++             * XRDY/RRDY are level events: after the driver clears them it
++             * expects them to re-assert while the transfer still has room /
++             * data.  Re-run the FIFO engine for a live transfer, then
++             * re-assert RRDY if bytes remain buffered even after the bus has
++             * gone idle (the tail of a receive drains from the FIFO).
++             */
++            omap_i2c_fifo_run(s);
++            if (s->rxlen > 0) {
++                s->stat |= 1 << 3;              /* RRDY */
++            }
++            omap_i2c_interrupts_update(s);
++            return;
++        case OMAP_I2C_V2_IRQENABLE_SET:
++            s->mask |= value & 0xff;
++            omap_i2c_interrupts_update(s);
++            return;
++        case OMAP_I2C_V2_IRQENABLE_CLR:
++            s->mask &= ~(value & 0xff);
++            omap_i2c_interrupts_update(s);
++            return;
++        case OMAP_I2C_V2_WE:
++            return;                             /* wakeup enable: ignored */
++        case OMAP_I2C_V2_REVNB_LO:
++        case OMAP_I2C_V2_REVNB_HI:
++        case OMAP_I2C_V2_SYSS:
++        case OMAP_I2C_V2_BUFSTAT:
++            OMAP_RO_REG(addr);
++            return;
++        default:
++            offset = omap_i2c_v2_to_v1(offset);
++            if (offset < 0) {
++                OMAP_BAD_REG(addr);
++                return;
++            }
++            break;
++        }
++    }
++
+     switch (offset) {
+     case 0x00:  /* I2C_REV */
+     case 0x0c:  /* I2C_IV */
+@@ -412,6 +622,10 @@ static void omap_i2c_writeb(void *opaque, hwaddr addr,
+     OMAPI2CState *s = opaque;
+     int offset = addr & OMAP_MPUI_REG_MASK;
+ 
++    if (s->mmio_version == OMAP_I2C_MMIO_V2 && offset == OMAP_I2C_V2_DATA) {
++        offset = 0x1c;                          /* I2C_DATA */
++    }
++
+     switch (offset) {
+     case 0x1c:  /* I2C_DATA */
+         if (s->txlen > 2) {
+@@ -489,10 +703,24 @@ static void omap_i2c_init(Object *obj)
+ static void omap_i2c_realize(DeviceState *dev, Error **errp)
+ {
+     OMAPI2CState *s = OMAP_I2C(dev);
++    uint64_t size;
+ 
++    if (s->mmio_version == OMAP_I2C_MMIO_V2) {
++        size = 0x100;                           /* AM64x main_i2c reg length */
++    } else {
++        size = (s->revision < OMAP2_INTR_REV) ? 0x800 : 0x1000;
++    }
+     memory_region_init_io(&s->iomem, OBJECT(dev), &omap_i2c_ops, s, "omap.i2c",
+-                          (s->revision < OMAP2_INTR_REV) ? 0x800 : 0x1000);
+-
++                          size);
++
++    /*
++     * The IP-V2 wiring (e.g. TI AM64x) drives the module from the SoC clock
++     * tree rather than the legacy omap_clk pointer stubs, so the fclk/iclk
++     * requirement only applies to the classic OMAP boards.
++     */
++    if (s->mmio_version == OMAP_I2C_MMIO_V2) {
 +        return;
 +    }
-+
-+    serial_io_ops.write(&au->serial, addr >> au->regshift, value, 1);
-+}
-+
-+/*
-+ * Registers are byte-wide and little-endian.  TI-specific registers outside
-+ * the 16550 window are RAZ/WI; MDR1 == 0 means the 16x mode we implement.
-+ */
-+static const MemoryRegionOps am64_uart_ops = {
-+    .read = am64_uart_read,
-+    .write = am64_uart_write,
-+    .endianness = DEVICE_LITTLE_ENDIAN,
-+    .valid.max_access_size = 8,
-+    .impl.max_access_size = 8,
-+};
-+
-+static void am64_uart_realize(DeviceState *dev, Error **errp)
-+{
-+    AM64Uart *au = AM64_UART(dev);
-+    SerialState *s = &au->serial;
-+
-+    if (!qdev_realize(DEVICE(s), NULL, errp)) {
-+        return;
-+    }
-+
-+    memory_region_init_io(&s->io, OBJECT(dev),
-+                          &am64_uart_ops, au, "serial",
-+                          64 << au->regshift);
-+    sysbus_init_mmio(SYS_BUS_DEVICE(au), &s->io);
-+    sysbus_init_irq(SYS_BUS_DEVICE(au), &au->serial.irq);
-+}
-+
-+static const VMStateDescription vmstate_am64_uart = {
-+    .name = "ti-am64-uart",
-+    .version_id = 1,
-+    .minimum_version_id = 1,
-+    .fields = (const VMStateField[]) {
-+        VMSTATE_STRUCT(serial, AM64Uart, 0, vmstate_serial, SerialState),
-+        VMSTATE_END_OF_LIST()
-+    }
-+};
-+
-+static void am64_uart_instance_init(Object *o)
-+{
-+    AM64Uart *au = AM64_UART(o);
-+
-+    object_initialize_child(o, "serial", &au->serial, TYPE_SERIAL);
-+
-+    qdev_alias_all_properties(DEVICE(&au->serial), o);
-+}
-+
-+static const Property am64_uart_properties[] = {
-+    /* AM64x has adjacent 16550 registers four bytes apart. */
-+    DEFINE_PROP_UINT8("regshift", AM64Uart, regshift, 2),
-+};
-+
-+static void am64_uart_class_init(ObjectClass *oc, const void *data)
-+{
-+    DeviceClass *dc = DEVICE_CLASS(oc);
-+
-+    device_class_set_props(dc, am64_uart_properties);
-+    dc->realize = am64_uart_realize;
-+    dc->vmsd = &vmstate_am64_uart;
-+}
-+
-+static const TypeInfo types[] = {
-+    {
-+        .name = TYPE_AM64_UART,
-+        .parent = TYPE_SYS_BUS_DEVICE,
-+        .class_init = am64_uart_class_init,
-+        .instance_init = am64_uart_instance_init,
-+        .instance_size = sizeof(AM64Uart),
-+    },
-+};
-+
-+DEFINE_TYPES(types)
-diff --git a/include/hw/char/ti-am64-uart.h b/include/hw/char/ti-am64-uart.h
-new file mode 100644
-index 0000000000..5cf820dc20
---- /dev/null
-+++ b/include/hw/char/ti-am64-uart.h
-@@ -0,0 +1,28 @@
-+/*
-+ * TI AM64x UART emulation
-+ *
-+ * Copyright (c) 2025 CMBLU Energy AG
-+ * Author: Wadim Mueller <wafgo01@gmail.com>
-+ *
-+ * SPDX-License-Identifier: GPL-2.0-or-later
-+ */
-+
-+#ifndef HW_SERIAL_TI_AM64_H
-+#define HW_SERIAL_TI_AM64_H
-+
-+#include "hw/char/serial.h"
-+#include "hw/core/sysbus.h"
-+#include "qom/object.h"
-+
-+#define TYPE_AM64_UART "ti-am64-uart"
-+OBJECT_DECLARE_SIMPLE_TYPE(AM64Uart, AM64_UART)
-+
-+struct AM64Uart {
-+    SysBusDevice parent;
-+
-+    SerialState serial;
-+
-+    uint8_t regshift;
-+};
-+
-+#endif
+     if (!s->fclk) {
+         error_setg(errp, "omap_i2c: fclk not connected");
+         return;
+@@ -516,6 +744,8 @@ void omap_i2c_set_fclk(OMAPI2CState *i2c, omap_clk clk)
+ 
+ static const Property omap_i2c_properties[] = {
+     DEFINE_PROP_UINT8("revision", OMAPI2CState, revision, 0),
++    DEFINE_PROP_UINT8("mmio-version", OMAPI2CState, mmio_version,
++                      OMAP_I2C_MMIO_V1),
+ };
+ 
+ static void omap_i2c_class_init(ObjectClass *klass, const void *data)
 -- 
 2.43.0
 

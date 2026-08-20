@@ -4,124 +4,150 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5CECAC5DF81
-	for <qemu-arm@archiver.kernel.org>; Thu, 20 Aug 2026 13:03:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AE7FFC5DF81
+	for <qemu-arm@archiver.kernel.org>; Thu, 20 Aug 2026 13:15:34 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wx2QX-0007A9-Si; Thu, 20 Aug 2026 09:03:26 -0400
+	id 1wx2c1-0005JI-RN; Thu, 20 Aug 2026 09:15:17 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1wx2QU-00076W-7g
- for qemu-arm@nongnu.org; Thu, 20 Aug 2026 09:03:22 -0400
-Received: from smtpout1.mo540.mail-out.ovh.net ([51.210.91.50])
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1wx2bz-0005GK-V3
+ for qemu-arm@nongnu.org; Thu, 20 Aug 2026 09:15:15 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1wx2QQ-0006W6-0h
- for qemu-arm@nongnu.org; Thu, 20 Aug 2026 09:03:21 -0400
-Received: from director2.derp.mail-out.ovh.net
- (director2.derp.mail-out.ovh.net [79.137.60.36])
- by mo540.mail-out.ovh.net (Postfix) with ESMTPS id 4hQkBq0cK7z41xL;
- Thu, 20 Aug 2026 13:03:15 +0000 (UTC)
-Received: from director2.derp.mail-out.ovh.net
- (director2.derp.mail-out.ovh.net. [127.0.0.1])
- by director2.derp.mail-out.ovh.net (inspect_sender_mail_agent) with SMTP
- for <jamin_lin@aspeedtech.com>; Thu, 20 Aug 2026 13:03:14 +0000 (UTC)
-Received: from mta10.priv.ovhmail-u2.ea.mail.ovh.net (unknown [10.110.178.118])
- by director2.derp.mail-out.ovh.net (Postfix) with ESMTPS id 4hQkBp6clMz1xq6;
- Thu, 20 Aug 2026 13:03:14 +0000 (UTC)
-Received: from kaod.org (unknown [10.1.6.3])
- (Authenticated sender: clg@kaod.org)
- by mta10.priv.ovhmail-u2.ea.mail.ovh.net (Postfix) with ESMTPSA id
- 035D41923F21; Thu, 20 Aug 2026 13:03:12 +0000 (UTC)
-Authentication-Results: garm.ovh; auth=pass
- (GARM-100R003e5666219-02a3-4a78-8cc0-99e313863aa5,
- 290C66463DCC85845983D07CBD6D5DF49C8F16C8) smtp.auth=clg@kaod.org
-X-OVh-ClientIp: 2.10.174.70
-Message-ID: <18945ddb-a9f0-48b0-bdd9-a44cdad9e899@kaod.org>
-Date: Thu, 20 Aug 2026 15:03:12 +0200
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1wx2by-00017o-61
+ for qemu-arm@nongnu.org; Thu, 20 Aug 2026 09:15:15 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1787231713;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
+ bh=txngaykquXZiq+V+U+/O3Xi4zPZHpCcoMSna6F3gejQ=;
+ b=ZlSbE3UqGi4gtSqqcDceR+0cHq1CyF5zKuOhXBAy+VRbW5JiAZ6C3ta+g93ZODDrkNpi3E
+ uF1hhnUDOHDCgVPLgs6rPpdU6WLTy4DV5MQjIxkUM/LEnZHXVet2/vElC4uHUd4Nmx20wa
+ u77bEgWWgmV5TzmcXxoU3+V7rGVMYS0=
+Received: from mail-wr1-f72.google.com (mail-wr1-f72.google.com
+ [209.85.221.72]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-138--l4d6KjBO9CYjeeo4Ypcsg-1; Thu, 20 Aug 2026 09:15:07 -0400
+X-MC-Unique: -l4d6KjBO9CYjeeo4Ypcsg-1
+X-Mimecast-MFC-AGG-ID: -l4d6KjBO9CYjeeo4Ypcsg_1787231707
+Received: by mail-wr1-f72.google.com with SMTP id
+ ffacd0b85a97d-481514be433so952441f8f.2
+ for <qemu-arm@nongnu.org>; Thu, 20 Aug 2026 06:15:07 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20251104; t=1787231707; x=1787836507;
+ h=content-transfer-encoding:content-type:in-reply-to:autocrypt:from
+ :content-language:references:cc:to:subject:user-agent:mime-version
+ :date:message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+ :message-id:reply-to:content-type;
+ bh=txngaykquXZiq+V+U+/O3Xi4zPZHpCcoMSna6F3gejQ=;
+ b=JI1TqBvQuWu8EqBLrzTc0V6Lb9EN55/l7kvAP7i+M0WpAeWRDGifY/mz178ENko5RV
+ TRiSxzL67TszPDaVJG4Wx9OCfqOSgtF5mbjz8LBh2sm7eXS5rvFP8l8lUDtDSL5ddvXf
+ kHuMnoZBkGZq1cV5qfA+8B6wrR7zsnlFvj5sv5qIuRUR/GE/0x7xXPcEVS2PXVpDuIsB
+ CtMR0nNRA6C9o8P9wWZrGYDPhGw/pfEkhZSv3cU91bBMGipoawsYhEyxN53aE0ahp8RQ
+ fyqYY8YCo+AVWgLuv+1IOU2CqbizpRMxqbVJIv76pwM9O5fT5V6lpMnKSIsjzmN1S4SG
+ lOfQ==
+X-Forwarded-Encrypted: i=1;
+ AHgh+RonPcc9eJJVW55Oq0h6Uok6oBfasYmP3EgoB04WM2kF6x4TMwiprkboB+twdpOJZ4y9uGioOjgSYg==@nongnu.org
+X-Gm-Message-State: AFuF++ll9KN0XJgSk/LEQSlx1Xw48pUXngjeWUODCbezwwQ4tHiyNsv3
+ wyQplSxXYDg3KZh4x13WsuktehpIqhR5JJzZQDjlSJR9Jbezy8pzsnVq+vPM6ZfsyXp7xseCCK9
+ XiAWEr+PlWrZlcKmTNxgOcCaRb7BzYWaC6YagdBJdv6YVHTAHIZaXFg==
+X-Gm-Gg: AR+sD107x8dVaP+5UoTD7UWpoeWLBPFxZLhkB0DgFZvpO7GdpZqcvqw8og1qwHphjDd
+ QkSbqRSe2eg7uGGvzFUtu0Phl5VYMfmp+eEe0r5q8SCVJ8Dlna9uGqL8X5Dbq3UH6Mv0JhF6Arw
+ FX3BJV+cerQZgZJLj42mg1vxd4KshbZ23jdKjyXs+91d+3GlI8miEzc8UI+ERtkAfCK5pcLdkQc
+ KOqearAA7fxZGJkZ3WLp+SnTjAoIybWEfmlnAGHMYw70rCPbHiCEcRFpSkx6gbx9CWVe0a+6rsh
+ cqDBFXajo0soKM00qb4GpvM4ECj6hOTUloBTa0+rQBn2tNP8PFkNnkJakguJoXVbSpBMxek=
+X-Received: by 2002:a05:6000:2605:b0:481:4f9b:282b with SMTP id
+ ffacd0b85a97d-482b1ff75bcmr22567038f8f.21.1787231706685; 
+ Thu, 20 Aug 2026 06:15:06 -0700 (PDT)
+X-Received: by 2002:a05:6000:2605:b0:481:4f9b:282b with SMTP id
+ ffacd0b85a97d-482b1ff75bcmr22566883f8f.21.1787231706140; 
+ Thu, 20 Aug 2026 06:15:06 -0700 (PDT)
+Received: from [10.22.3.81] ([91.26.127.10]) by smtp.gmail.com with ESMTPSA id
+ ffacd0b85a97d-482b14c46f2sm15050607f8f.29.2026.08.20.06.15.04
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Thu, 20 Aug 2026 06:15:05 -0700 (PDT)
+Message-ID: <110eb230-f61d-41d2-b498-2792cee37f65@redhat.com>
+Date: Thu, 20 Aug 2026 15:15:03 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 3/4] hw/arm/aspeed_ast2600: Wire up the ACRY model
-To: Jamin Lin <jamin_lin@aspeedtech.com>,
- Peter Maydell <peter.maydell@linaro.org>,
- Steven Lee <steven_lee@aspeedtech.com>, Troy Lee <leetroy@gmail.com>,
- Kane Chen <kane_chen@aspeedtech.com>,
- Andrew Jeffery <andrew@codeconstruct.com.au>, Joel Stanley <joel@jms.id.au>,
- Fabiano Rosas <farosas@suse.de>, Laurent Vivier <lvivier@redhat.com>,
- Paolo Bonzini <pbonzini@redhat.com>,
- "open list:ASPEED BMCs" <qemu-arm@nongnu.org>,
- "open list:All patches CC here" <qemu-devel@nongnu.org>
-Cc: Troy Lee <troy_lee@aspeedtech.com>
-References: <20260820081206.3353463-1-jamin_lin@aspeedtech.com>
- <20260820081206.3353463-4-jamin_lin@aspeedtech.com>
-From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
-Content-Language: en-US, fr
-Autocrypt: addr=clg@kaod.org; keydata=
- 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
-In-Reply-To: <20260820081206.3353463-4-jamin_lin@aspeedtech.com>
+Subject: Re: [PATCH 6/6] docs: deprecate virtio-crypto
+To: =?UTF-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>,
+ qemu-devel@nongnu.org, "Gonglei (Arei)" <arei.gonglei@huawei.com>
+Cc: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@mailo.com>,
+ Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>,
+ Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
+ zhenwei pi <zhenwei.pi@linux.dev>, "Michael S. Tsirkin" <mst@redhat.com>,
+ Stefano Garzarella <sgarzare@redhat.com>, Laurent Vivier
+ <lvivier@redhat.com>, Amit Shah <amit@kernel.org>,
+ =?UTF-8?Q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>,
+ Paolo Bonzini <pbonzini@redhat.com>, John Snow <jsnow@redhat.com>,
+ Kevin Wolf <kwolf@redhat.com>, Hanna Reitz <hreitz@redhat.com>,
+ qemu-block@nongnu.org, devel@lists.libvirt.org
+References: <20260819-fixes-for-11-2-v1-0-b7981c2cc371@linaro.org>
+ <20260819-fixes-for-11-2-v1-6-b7981c2cc371@linaro.org>
+From: Thomas Huth <thuth@redhat.com>
+Autocrypt: addr=thuth@redhat.com; keydata=
+ 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
+In-Reply-To: <20260819-fixes-for-11-2-v1-6-b7981c2cc371@linaro.org>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-MFC-PROC-ID: OHUAlzA4TOtArlCQvZoTUbQPuIdj6dKu30hCdD_l6jY_1787231707
+X-Mimecast-Originator: redhat.com
+Content-Language: en-US
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-x-ovh-tracer-id: 18091522654030507053
-X-VR-SPAMSTATE: OK
-X-VR-SPAMSCORE: -100
-X-VR-SPAMCAUSE: dmFkZTF1PGCcAwnx0WmeiPlR8WsqYQtOKStaZXuP90gj0pflBTQ2XZ4goRh8ly1Ax24rQvxIDktsHDNjvSZVV13qU1uLDOR33PQa+9/y6Uh3p5/RO+vx4VJr/Ea80PQs3BKnjfk7f8lmm1Hi/B+6B4+27JqcHlCu0Bvt5LffHGqDMdk3C2O5tqGVL/0UiX5w9yweRpQUfT5zQ5xAwztbNmfZo68UcFlAXdTt/HqJjtgrVIIOBlz27SlulpPKiQoCSRBDxyefupcOg4gvIOlvHhYJITZ3kvqlF+8SoPklybDaHvyQLI4G6znPop45ThOszK9oTi51scufV6jYlrCtdvSDR9v+XLafcc5Zy6pUZoc+LWGPfLLjr7ctqlgh/eZ+oASOFp9Ge6rhzbaXEytxwdEadRRw84Tdad8VMBoerW0MxxktNd/wIPyXPVx6HezLbV7kkr865Fm1XIW7XPhRw/DEfZYVU25jq/J83z+hbed/DM7vLNrW6ekSC2LD1EHSlBQ9DlY/RompY95xTYNy7BzVd5TVwY+QjD6fPfNd2maK8Rz6NnpqGFvYqLv0Zw8bM/Bh1QaYX9RNwzaw6uceSsMCEHUMDN/5zfHDx6OaXTYoweIGaJCr+rzU2b78wO9iACjVQoAnEKTTXNb0yBZm6DTjE0UuBP/IFVSyfg/9mGKjNkZtCw
-DKIM-Signature: a=rsa-sha256; bh=woGrygIhqvQO0TnXFL9rBmMuNdSt2FXIXslIK0gHLGk=; 
- c=relaxed/relaxed; d=kaod.org; h=From; s=ovhmo393970-selector1;
- t=1787230995; v=1;
- b=iY6vcE2HMfn4CXQlf14JaWkeRm/RBR33NuJiOs8djjB7DCVD/iDqdkPZhYDOFr8eQE6z4qHY
- KpP/P1RCpREdhSLo1KNG/HvUgepyn+7mOHsRLHEd+erB4rQh5Aw1xdGmRcxIy8sxfPm9qCEhuXV
- xrK0TBx+9b9YZwwL63EvwWqw1HbkCMELr6cHWEntwM9+0bmq97arJ8+bs87kd8k2ae5QIZMwd7M
- jHn5DaH7LndNkU4ROhPLr3bhjhc47Jlq9SorkXjyQzKazWXW8WgRUFPMEU2VCsg7BNxdzqcPXp5
- s3AAbOMzr2PYtIlfItWg8iK2SET9pwhDQd6WJYb/cxNYQ==
-Received-SPF: pass client-ip=51.210.91.50; envelope-from=clg@kaod.org;
- helo=smtpout1.mo540.mail-out.ovh.net
-X-Spam_score_int: -20
-X-Spam_score: -2.1
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=thuth@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -23
+X-Spam_score: -2.4
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-Spam_report: (-2.4 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.346,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -137,104 +163,41 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On 8/20/26 10:12, Jamin Lin wrote:
-> Introduce the ASPEED_DEV_ACRY enum slot and add the ACRY model state
-> to AspeedSoCState.
+On 19/08/2026 11.22, Alex Bennée wrote:
+> We have outstanding guest exploitable bugs in the code which is fairly
+> complex and needs some serious love to clean it up. As off-CPU
+> cryptography acceleration seems to be waning in popularity lets just
+> deprecate the sub-system with a view to removing it in a couple of
+> cycles.
 > 
-> Instantiate the new ACRY model on the AST2600 SoC using its
-> real-silicon register address and IRQ:
-> 
-> - ACRY register region 0x1e6fa000-0x1e6fafff
-> - IRQ 160
-> 
-> Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
+> Link: https://gitlab.com/qemu-project/qemu/-/work_items/3625
+> Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
+> Cc: Gonglei <arei.gonglei@huawei.com>
 > ---
->   include/hw/arm/aspeed_soc.h |  3 +++
->   hw/arm/aspeed_ast2600.c     | 17 +++++++++++++++++
->   2 files changed, 20 insertions(+)
+>   docs/about/deprecated.rst | 14 ++++++++++++++
+>   1 file changed, 14 insertions(+)
 > 
-> diff --git a/include/hw/arm/aspeed_soc.h b/include/hw/arm/aspeed_soc.h
-> index 46e7854727..8d80f16705 100644
-> --- a/include/hw/arm/aspeed_soc.h
-> +++ b/include/hw/arm/aspeed_soc.h
-> @@ -25,6 +25,7 @@
->   #include "hw/i2c/aspeed_i2c.h"
->   #include "hw/i3c/aspeed_i3c.h"
->   #include "hw/ssi/aspeed_smc.h"
-> +#include "hw/misc/aspeed_acry.h"
->   #include "hw/misc/aspeed_hace.h"
->   #include "hw/misc/aspeed_sbc.h"
->   #include "hw/misc/aspeed_sli.h"
-> @@ -82,6 +83,7 @@ struct AspeedSoCState {
->       AspeedSCUState scu;
->       AspeedSCUState scuio;
->       AspeedHACEState hace;
-> +    AspeedACRYState acry;
->       AspeedXDMAState xdma;
->       AspeedADCState adc;
->       AspeedSMCState fmc;
-> @@ -271,6 +273,7 @@ enum {
->       ASPEED_DEV_EMMC,
->       ASPEED_DEV_KCS,
->       ASPEED_DEV_HACE,
-> +    ASPEED_DEV_ACRY,
->       ASPEED_DEV_DPMCU,
->       ASPEED_DEV_DP,
->       ASPEED_DEV_I3C,
-> diff --git a/hw/arm/aspeed_ast2600.c b/hw/arm/aspeed_ast2600.c
-> index f23a51c8a4..f7c7ec7fb1 100644
-> --- a/hw/arm/aspeed_ast2600.c
-> +++ b/hw/arm/aspeed_ast2600.c
-> @@ -52,6 +52,7 @@ static const hwaddr aspeed_soc_ast2600_memmap[] = {
->       [ASPEED_DEV_DP]        = 0x1E6EB000,
->       [ASPEED_DEV_PCIE_PHY1] = 0x1E6ED200,
->       [ASPEED_DEV_SBC]       = 0x1E6F2000,
-> +    [ASPEED_DEV_ACRY]      = 0x1E6FA000,
->       [ASPEED_DEV_EMMC_BC]   = 0x1E6f5000,
->       [ASPEED_DEV_VIDEO]     = 0x1E700000,
->       [ASPEED_DEV_SDHCI]     = 0x1E740000,
-> @@ -144,6 +145,7 @@ static const int aspeed_soc_ast2600_irqmap[] = {
->       [ASPEED_DEV_FSI1]      = 100,
->       [ASPEED_DEV_FSI2]      = 101,
->       [ASPEED_DEV_I3C]       = 102,   /* 102 -> 107 */
-> +    [ASPEED_DEV_ACRY]      = 160,
->   };
+> diff --git a/docs/about/deprecated.rst b/docs/about/deprecated.rst
+> index 0c656a968fc..3c22981fc8a 100644
+> --- a/docs/about/deprecated.rst
+> +++ b/docs/about/deprecated.rst
+> @@ -276,6 +276,20 @@ future release. Where no 'dh-params.pem' file is provided, the DH
+>   parameters will be automatically negotiated in accordance with
+>   RFC7919.
 >   
->   static qemu_irq aspeed_soc_ast2600_get_irq(AspeedSoCState *s, int dev)
-> @@ -269,6 +271,8 @@ static void aspeed_soc_ast2600_init(Object *obj)
->       snprintf(typename, sizeof(typename), "aspeed.hace-%s", socname);
->       object_initialize_child(obj, "hace", &s->hace, typename);
->   
-> +    object_initialize_child(obj, "acry", &s->acry, TYPE_ASPEED_ACRY);
+> +Devices
+> +-------
 > +
->       object_initialize_child(obj, "i3c", &s->i3c, TYPE_ASPEED_I3C);
->   
->       object_initialize_child(obj, "sbc", &s->sbc, TYPE_ASPEED_AST2600_SBC);
-> @@ -726,6 +730,19 @@ static void aspeed_soc_ast2600_realize(DeviceState *dev, Error **errp)
->       sysbus_connect_irq(SYS_BUS_DEVICE(&s->hace), 0,
->                          aspeed_soc_ast2600_get_irq(s, ASPEED_DEV_HACE));
->   
-> +    /* ACRY */
-> +    object_property_set_link(OBJECT(&s->acry), "dram", OBJECT(s->dram_mr),
-> +                             &error_abort);
-> +    object_property_set_link(OBJECT(&s->acry), "sram", OBJECT(&s->sram[1]),
-> +                             &error_abort);
-> +    if (!sysbus_realize(SYS_BUS_DEVICE(&s->acry), errp)) {
-> +        return;
-> +    }
-> +    aspeed_mmio_map(s->memory, SYS_BUS_DEVICE(&s->acry), 0,
-> +                    sc->memmap[ASPEED_DEV_ACRY]);
-> +    sysbus_connect_irq(SYS_BUS_DEVICE(&s->acry), 0,
-> +                       aspeed_soc_ast2600_get_irq(s, ASPEED_DEV_ACRY));
+> +``virtio-crypto`` (since 11.2)
+> +''''''''''''''''''''''''''''''
 > +
->       /* I3C */
->       if (!sysbus_realize(SYS_BUS_DEVICE(&s->i3c), errp)) {
->           return;
-
-Reviewed-by: Cédric Le Goater <clg@kaod.org>
-
-Thanks,
-
-C.
+> +The ``virtio-crypto`` device emulation is quite complex code with a
+> +number of known flaws. It has never been migratable so is unlikely to
+> +be used in any serious virtualization setting. With most modern
+> +systems supporting on-CPU cryptography acceleration via their
+> +ISAs sets the need for off-CPU acceleration is also reduced. Add to
+> +that the kernel has recently removed the ability to use off-CPU
+> +acceleration suggests the time for this sort of off-load has passed.
+Reviewed-by: Thomas Huth <thuth@redhat.com>
 
 

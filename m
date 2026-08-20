@@ -4,82 +4,81 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 142A6C5DF81
-	for <qemu-arm@archiver.kernel.org>; Thu, 20 Aug 2026 12:50:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 190EBC5DF81
+	for <qemu-arm@archiver.kernel.org>; Thu, 20 Aug 2026 12:50:22 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wx2CE-0004pK-4M; Thu, 20 Aug 2026 08:48:38 -0400
+	id 1wx2CJ-0004ud-8N; Thu, 20 Aug 2026 08:48:43 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <wafgo01@gmail.com>) id 1wx2CC-0004oJ-Fy
- for qemu-arm@nongnu.org; Thu, 20 Aug 2026 08:48:36 -0400
-Received: from mail-ed1-x536.google.com ([2a00:1450:4864:20::536])
+ (Exim 4.90_1) (envelope-from <wafgo01@gmail.com>) id 1wx2CH-0004sr-AR
+ for qemu-arm@nongnu.org; Thu, 20 Aug 2026 08:48:41 -0400
+Received: from mail-ed1-x533.google.com ([2a00:1450:4864:20::533])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <wafgo01@gmail.com>) id 1wx2CA-0001Wu-Fv
- for qemu-arm@nongnu.org; Thu, 20 Aug 2026 08:48:36 -0400
-Received: by mail-ed1-x536.google.com with SMTP id
- 4fb4d7f45d1cf-6a0a4a28cbdso4117194a12.3
- for <qemu-arm@nongnu.org>; Thu, 20 Aug 2026 05:48:34 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <wafgo01@gmail.com>) id 1wx2CD-0001Ya-Qa
+ for qemu-arm@nongnu.org; Thu, 20 Aug 2026 08:48:40 -0400
+Received: by mail-ed1-x533.google.com with SMTP id
+ 4fb4d7f45d1cf-6a36982a875so3484641a12.0
+ for <qemu-arm@nongnu.org>; Thu, 20 Aug 2026 05:48:37 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20251104; t=1787230113; x=1787834913; darn=nongnu.org;
+ d=gmail.com; s=20251104; t=1787230116; x=1787834916; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to:content-type;
- bh=r9eBQ66b0pZml6duWgsrSsCww3MfIS9oHdUnfpbvlXc=;
- b=RGwLHUe9OKcoStjuamBz00cmZpGli800BhrAfWKdaEaGmhd+Js53Z+e/picmNryD0A
- 8bBqwAuhaK33VYlIkXm06cRhXw6Poh2NRzyuWyaGj3ML+W2ZEgwDY1GxT+lrkU4O7/Vp
- 3+Gl9lf+41jQpG3Km/1fa/4LMw85q4sfHLOgefYhX/R4UKIuzj1w3rA9CWHRGpzQ2hZQ
- FLXazvW7RLqyYPEr4rQd3/juxjfMZWBguH/tNOox7IC5aaUKsn7+Pn0lDMFVFqliVaNC
- N00cH/Mfjb6twyiqpFZPklgmFEuVHhWE862/nevPq6bQUdNq0JNYSt1tpzXsTxwxFG0N
- nHIQ==
+ bh=sS1gXEmemUC6ULE4hdREjbYJb8+o5+CI4A9QQ0fRey8=;
+ b=Tf8Cq8fKBOjXg/Zo4JN3ji8FDXzmQ8daG9kYB699w+bvC0jGmxWHO80E/iQ4/A4Pv8
+ B8IjNsd/OafDxrxPjtIucHL6HfII6GAHId5Ixpwpq6UmApvymgzFi+LHTKUVnP5U0pB7
+ frV+ct164jdKOKMr0sfM61jlPN+rkvX9qoic9SBNTek5JFe6tiqAjc2YWAvKopqn6/ja
+ wniy//nwJgyC7KetaIdVjI3MI4duAzaqkGBM4K0muK+GOX8nWwEcoA3PAUy3t/YNkfUr
+ Rkw+nn8+Z5FKb9VCKsK+TqdPIQPoB3ACRxWsYBGcqdyyhcP8wMebw+7E5xZa7fWpN4L/
+ kuUA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1787230113; x=1787834913;
+ d=1e100.net; s=20251104; t=1787230116; x=1787834916;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
  :to:cc:subject:date:message-id:reply-to:content-type;
- bh=r9eBQ66b0pZml6duWgsrSsCww3MfIS9oHdUnfpbvlXc=;
- b=cZ6sCKfDibLI+jdcFQpUFi+8cMBR6n/1Kbp4wkCokSNu32kJyX9sprtDBty/7FJZj7
- ZKSAl8vrlMNZxi9jOQ4weddfQFw2pkr1Udn5Ecsby9szu/0nmr2q8wStvEv8Uj1Ma3H3
- 0kfOEeq9l7z8uCi03wCwvHxdZ/gFkgRNFTOE9d2LLdyjWhDNtUxOLzY6PNu3k6Sgh9CN
- 2wq4rM0ReXlfuAXwJ2I3Hi/HFHgxj9l+6suBNXz7NS49JHkzLccSRIEKnObi2l+R6A4b
- 0S0AHTVRtmyJKXXusEjtTrL3Kp7BJ4nB2HF2P5rOFkftZouBlJEuyG1etIFLDJVYnwav
- NPbw==
-X-Gm-Message-State: AFuF++mgQBHFDDAiUy9Q5GsloF261Sxn2ON0sakNSuEUsGlH4tljTxce
- LqbFxtlgVtWW+CzZamlcLoQBfYMNG2WBjPb/yDCxZRj/THu0A1iFRGCX
-X-Gm-Gg: AR+sD11Hyr6+LYO8kUwsvajGDef36A1L2dl0vhr8JjxbcMoAuI20ZYex9r4rDKykAto
- zpj8DqOq3qSMxcznNEQGvfqXMeMCWTyT2b/S/cPHC1T06212krhPh37X0lRfybf6fgWGIV4owRW
- mRBmpCbLcIYpsvy4m0STMlXsZy7ZiIUvumV1oExszvhxTQtfwTJZyeY3zs85GOypXeVcMlOyYqg
- La3QlfXxOQPCU/zU9/ShagJBqiYyNXUVWriExp7pNKRA5azNFhWqehgl8RiJy2HZXpcymSfu+1x
- C7gHTWAtzO52+j7phPVKSiXiXOcxONrixpVne3te0MwkQFGXjqm4rzMER6JqdOl9I8ZFyAW/F4N
- wXuG8sTnxpwfnztr8KGBFuFyoWwwKifbcQs2+n5nnnYXRxSE+oUFw3cASQkKklHlFrxOt9QtXUl
- iJrH2oyX87VRNJ4PoIWAEGLp6yRXh4RS6aDJjQJtbVIZ77tvJ8TAWg+DeOw6+DXAC7FEq4DMVtL
- uCpPrReHtvK
-X-Received: by 2002:a05:6402:190a:b0:6a1:df2c:cfa3 with SMTP id
- 4fb4d7f45d1cf-6a40325446emr7813268a12.4.1787230112538; 
- Thu, 20 Aug 2026 05:48:32 -0700 (PDT)
+ bh=sS1gXEmemUC6ULE4hdREjbYJb8+o5+CI4A9QQ0fRey8=;
+ b=EuEBfsAlXHJTxixYv6WTnu26vbuAAgn1Auf+DdTyAFX9f8/+rv59GuzcnaQOqEyDKG
+ HD3kCF1echgNEhO4/IBoNhEHiBmQMHOS7i6hFcLo48Dlz+9PBYeDHLvri68FJQsjhVt/
+ k0sTP8EH2BQBtiHX02R20HzSEirWggoBCi2t9bMt/Cse9zwkfLH9yJJYCGiz00oNWyVh
+ 0GczpRsuQtFCj0WwMmL7hSO32188OmuFN9oL13PJEUHJOpPprHhwCuftIdCGG61+l45L
+ LjiMh/0q4IISH+CWwq0gJifggC7nKYC1d3RGckkkB3St2K1pUoJYjisdJtXQx6Klgqa6
+ yPPQ==
+X-Gm-Message-State: AFuF++l6/Dm3F5Ts1xpzOcEHwfxXpEBkS1IXmPdjy8S60fNQWGI5l4uL
+ 53G5fOR/ynmdT3D/ZrWJmNXUsnIN43z5IHq4Du9nJlgkTY15PAffAGHu
+X-Gm-Gg: AR+sD11xWu+NE6S6V41mFMPeM7cpDWWkydH1slB/jcvQj/6xuZcgtKGtijeSYQiiOpO
+ IVNNf4FMk7syW5FbHnAQLCEi9/OSNln5MwVBfND6TXW9DeFd9o2BWcJ6+sbMaWewO+I4In69YWQ
+ FBlbxrnhltBaxZCaQ4jMYKPkyBXYAwilG5dKTDYWy+4h5unt4HZM5aMGBU4DJSIACa23v9O+bb7
+ PC4OxsSAsbusHVBJesaRNZ4D0/7GiY0QX28eSmROq0xSGTZ7B8d/q2NP/iInDms4TTrdnhYs+Qv
+ g+pGb07ETIevPIFjG+TkZ1a5nzre+IO/AdhsNb1ITNN01sZCakU+mUMRkyvtFtl8nqGLyhDHlWr
+ TlpBLugXYcG1Bk8UIT9gItt7O5dhpZ+ymrn96C61kqylzQRRVm/+ydNEBBDD5qofpUbw/deFN23
+ 2dPPqJmH43PBC50G5UNXIG46VLYxxkjIV1Xz9OdqppyFjzwLrQy4PaAL2jVVJBN9XjMG0uaZw2h
+ eqZgpHp9BA=
+X-Received: by 2002:a05:6402:2403:b0:6a3:e813:8457 with SMTP id
+ 4fb4d7f45d1cf-6a4032f9c61mr9187666a12.12.1787230115922; 
+ Thu, 20 Aug 2026 05:48:35 -0700 (PDT)
 Received: from DE-PF5B95TD.embedded.cmblu.dev ([87.129.199.250])
  by smtp.gmail.com with ESMTPSA id
- 4fb4d7f45d1cf-6a3ff1563c5sm2270449a12.14.2026.08.20.05.48.31
+ 4fb4d7f45d1cf-6a3ff1563c5sm2270449a12.14.2026.08.20.05.48.35
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 20 Aug 2026 05:48:32 -0700 (PDT)
+ Thu, 20 Aug 2026 05:48:35 -0700 (PDT)
 From: Wadim Mueller <wafgo01@gmail.com>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@mailo.com>,
  Bin Meng <bmeng.cn@gmail.com>, Paolo Bonzini <pbonzini@redhat.com>,
  Fabiano Rosas <farosas@suse.de>, Wadim Mueller <wafgo01@gmail.com>
-Subject: [RFC PATCH v2 01/14] hw/i2c/omap_i2c: add a dedicated CONFIG_OMAP_I2C
- symbol
-Date: Thu, 20 Aug 2026 14:48:01 +0200
-Message-ID: <20260820124824.618671-2-wafgo01@gmail.com>
+Subject: [RFC PATCH v2 05/14] hw/timer: add TI K3 DMTimer model
+Date: Thu, 20 Aug 2026 14:48:05 +0200
+Message-ID: <20260820124824.618671-6-wafgo01@gmail.com>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20260820124824.618671-1-wafgo01@gmail.com>
 References: <20260820124824.618671-1-wafgo01@gmail.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::536;
- envelope-from=wafgo01@gmail.com; helo=mail-ed1-x536.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::533;
+ envelope-from=wafgo01@gmail.com; helo=mail-ed1-x533.google.com
 X-Spam_score_int: -17
 X-Spam_score: -1.8
 X-Spam_bar: -
@@ -103,59 +102,262 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-The OMAP I2C controller model was only buildable as part of the full OMAP1
-SoC (CONFIG_OMAP). The same IP is used by the TI K3 family (AM64x and
-friends), which shares nothing else with OMAP1.
-
-Give the device its own Kconfig symbol and select it from CONFIG_OMAP, so
-that other SoCs can reuse the model without pulling in OMAP1.
-
-No functional change.
+Add a model of the K3 DMTimer used, among others, by the R5 SPL for its
+udelay() implementation. It is a free-running counter with load/reload and
+overflow interrupt.
 
 Signed-off-by: Wadim Mueller <wafgo01@gmail.com>
 ---
- hw/arm/Kconfig     | 1 +
- hw/i2c/Kconfig     | 4 ++++
- hw/i2c/meson.build | 2 +-
- 3 files changed, 6 insertions(+), 1 deletion(-)
+ hw/timer/Kconfig                 |   3 +
+ hw/timer/meson.build             |   1 +
+ hw/timer/ti-k3-dmtimer.c         | 177 +++++++++++++++++++++++++++++++
+ include/hw/timer/ti-k3-dmtimer.h |  30 ++++++
+ 4 files changed, 211 insertions(+)
+ create mode 100644 hw/timer/ti-k3-dmtimer.c
+ create mode 100644 include/hw/timer/ti-k3-dmtimer.h
 
-diff --git a/hw/arm/Kconfig b/hw/arm/Kconfig
-index 260d2f0751..b2dc2714c0 100644
---- a/hw/arm/Kconfig
-+++ b/hw/arm/Kconfig
-@@ -137,6 +137,7 @@ config OMAP
+diff --git a/hw/timer/Kconfig b/hw/timer/Kconfig
+index e1b751a54a..fac5ba5a7e 100644
+--- a/hw/timer/Kconfig
++++ b/hw/timer/Kconfig
+@@ -68,3 +68,6 @@ config AVR_TIMER16
+ 
+ config HEX_QTIMER
      bool
-     select FRAMEBUFFER
-     select I2C
-+    select OMAP_I2C
-     select PFLASH_CFI01
-     select SD
-     select SERIAL_MM
-diff --git a/hw/i2c/Kconfig b/hw/i2c/Kconfig
-index 0766130b59..e7c0e2f8bf 100644
---- a/hw/i2c/Kconfig
-+++ b/hw/i2c/Kconfig
-@@ -54,3 +54,7 @@ config PMBUS
- config BCM2835_I2C
-     bool
-     select I2C
 +
-+config OMAP_I2C
++config TI_K3_DMTIMER
 +    bool
-+    select I2C
-diff --git a/hw/i2c/meson.build b/hw/i2c/meson.build
-index 88aea35662..760724e7bb 100644
---- a/hw/i2c/meson.build
-+++ b/hw/i2c/meson.build
-@@ -14,7 +14,7 @@ i2c_ss.add(when: 'CONFIG_NPCM7XX', if_true: files('npcm7xx_smbus.c'))
- i2c_ss.add(when: 'CONFIG_DESIGNWARE_I2C', if_true: files('designware_i2c.c'))
- i2c_ss.add(when: 'CONFIG_SMBUS_EEPROM', if_true: files('smbus_eeprom.c'))
- i2c_ss.add(when: 'CONFIG_ARM_SBCON_I2C', if_true: files('arm_sbcon_i2c.c'))
--i2c_ss.add(when: 'CONFIG_OMAP', if_true: files('omap_i2c.c'))
-+i2c_ss.add(when: 'CONFIG_OMAP_I2C', if_true: files('omap_i2c.c'))
- i2c_ss.add(when: 'CONFIG_PPC4XX', if_true: files('ppc4xx_i2c.c'))
- i2c_ss.add(when: 'CONFIG_PCA954X', if_true: files('i2c_mux_pca954x.c'))
- i2c_ss.add(when: 'CONFIG_PMBUS', if_true: files('pmbus_device.c'))
+diff --git a/hw/timer/meson.build b/hw/timer/meson.build
+index 8323efaf46..4cf49ef6d6 100644
+--- a/hw/timer/meson.build
++++ b/hw/timer/meson.build
+@@ -32,6 +32,7 @@ system_ss.add(when: 'CONFIG_STM32F2XX_TIMER', if_true: files('stm32f2xx_timer.c'
+ system_ss.add(when: 'CONFIG_XILINX', if_true: files('xilinx_timer.c'))
+ specific_ss.add(when: 'CONFIG_IBEX', if_true: files('ibex_timer.c'))
+ system_ss.add(when: 'CONFIG_SIFIVE_PWM', if_true: files('sifive_pwm.c'))
++system_ss.add(when: 'CONFIG_TI_K3_DMTIMER', if_true: files('ti-k3-dmtimer.c'))
+ 
+ system_ss.add(when: 'CONFIG_AVR_TIMER16', if_true: files('avr_timer16.c'))
+ 
+diff --git a/hw/timer/ti-k3-dmtimer.c b/hw/timer/ti-k3-dmtimer.c
+new file mode 100644
+index 0000000000..e65098d101
+--- /dev/null
++++ b/hw/timer/ti-k3-dmtimer.c
+@@ -0,0 +1,177 @@
++/*
++ * TI K3 DM timer (dmtimer, am654 register layout)
++ *
++ * Minimal TCRR counter model. TCLR.PRE_EN and TCLR.PTV divide the clock
++ * by (2 << PTV); interrupts and PWM we omit.
++ *
++ * Copyright (c) 2026 CMBLU Energy AG
++ * Author: Wadim Mueller <wafgo01@gmail.com>
++ *
++ * SPDX-License-Identifier: GPL-2.0-or-later
++ */
++#include "qemu/osdep.h"
++#include "qemu/log.h"
++#include "qemu/timer.h"
++#include "hw/core/qdev-properties.h"
++#include "hw/timer/ti-k3-dmtimer.h"
++
++#define R_TIDR  0x00
++#define R_TCLR  0x38
++#define R_TCRR  0x3c
++#define R_TLDR  0x40
++#define R_TTGR  0x44
++#define R_TWPS  0x48
++
++#define TCLR_ST     (1u << 0)
++#define TCLR_AR     (1u << 1)
++#define TCLR_PTV    (7u << 2)
++#define TCLR_PRE_EN (1u << 5)
++
++static uint32_t dmtimer_effective_freq(TIK3DmTimerState *s)
++{
++    uint32_t freq = s->freq_hz;
++
++    if (s->tclr & TCLR_PRE_EN) {
++        uint32_t ptv = (s->tclr >> 2) & 7;
++        freq = s->freq_hz / (2u << ptv);
++    }
++    return freq;
++}
++
++static uint32_t dmtimer_tcrr(TIK3DmTimerState *s)
++{
++    int64_t now;
++    uint32_t eff_freq;
++
++    if (!s->running) {
++        return s->tcrr_base;
++    }
++
++    now = qemu_clock_get_ns(QEMU_CLOCK_VIRTUAL);
++    eff_freq = dmtimer_effective_freq(s);
++
++    return s->tcrr_base +
++           (uint32_t)muldiv64(now - s->base_ns, eff_freq,
++                              NANOSECONDS_PER_SECOND);
++}
++
++static void dmtimer_set_tcrr(TIK3DmTimerState *s, uint32_t val)
++{
++    s->tcrr_base = val;
++    s->base_ns = qemu_clock_get_ns(QEMU_CLOCK_VIRTUAL);
++}
++
++static uint64_t ti_k3_dmtimer_read(void *opaque, hwaddr addr, unsigned size)
++{
++    TIK3DmTimerState *s = TI_K3_DMTIMER(opaque);
++
++    switch (addr) {
++    case R_TIDR:
++        return 0x0;
++    case R_TCLR:
++        return s->tclr;
++    case R_TCRR:
++        return dmtimer_tcrr(s);
++    case R_TLDR:
++        return s->tldr;
++    case R_TWPS:
++        return 0; /* no write is pending, ever */
++    default:
++        qemu_log_mask(LOG_UNIMP,
++                      "%s: unimplemented read @0x%" HWADDR_PRIx "\n",
++                      __func__, addr);
++        return 0;
++    }
++}
++
++static void ti_k3_dmtimer_write(void *opaque, hwaddr addr, uint64_t val,
++                                unsigned size)
++{
++    TIK3DmTimerState *s = TI_K3_DMTIMER(opaque);
++
++    switch (addr) {
++    case R_TCLR:
++        /*
++         * Rebase with the old TCLR first.  Prescaler changes must only
++         * affect ticks after this write.
++         */
++        dmtimer_set_tcrr(s, dmtimer_tcrr(s));
++        s->tclr = val;
++        s->running = (val & TCLR_ST) != 0;
++        break;
++    case R_TCRR:
++        dmtimer_set_tcrr(s, val);
++        break;
++    case R_TLDR:
++        s->tldr = val;
++        break;
++    case R_TTGR:
++        dmtimer_set_tcrr(s, s->tldr);
++        break;
++    default:
++        qemu_log_mask(LOG_UNIMP,
++                      "%s: unimplemented write @0x%" HWADDR_PRIx "\n",
++                      __func__, addr);
++        break;
++    }
++}
++
++static const MemoryRegionOps ti_k3_dmtimer_ops = {
++    .read = ti_k3_dmtimer_read,
++    .write = ti_k3_dmtimer_write,
++    .endianness = DEVICE_LITTLE_ENDIAN,
++    .valid.min_access_size = 4,
++    .valid.max_access_size = 4,
++};
++
++static void ti_k3_dmtimer_reset(DeviceState *dev)
++{
++    TIK3DmTimerState *s = TI_K3_DMTIMER(dev);
++
++    s->tclr = 0;
++    s->tldr = 0;
++    s->tcrr_base = 0;
++    s->base_ns = qemu_clock_get_ns(QEMU_CLOCK_VIRTUAL);
++    /*
++     * This model exposes TCRR as free-running already after reset; TCLR.ST
++     * still reads back as reset value 0.
++     */
++    s->running = true;
++}
++
++static void ti_k3_dmtimer_init(Object *obj)
++{
++    TIK3DmTimerState *s = TI_K3_DMTIMER(obj);
++
++    memory_region_init_io(&s->iomem, obj, &ti_k3_dmtimer_ops, s,
++                          TYPE_TI_K3_DMTIMER, 0x400);
++    sysbus_init_mmio(SYS_BUS_DEVICE(obj), &s->iomem);
++}
++
++static const Property ti_k3_dmtimer_properties[] = {
++    /* AM64 main_timer0 default input clock is 20 MHz. */
++    DEFINE_PROP_UINT32("freq-hz", TIK3DmTimerState, freq_hz, 20000000),
++};
++
++static void ti_k3_dmtimer_class_init(ObjectClass *klass, const void *data)
++{
++    DeviceClass *dc = DEVICE_CLASS(klass);
++
++    device_class_set_props(dc, ti_k3_dmtimer_properties);
++    device_class_set_legacy_reset(dc, ti_k3_dmtimer_reset);
++}
++
++static const TypeInfo ti_k3_dmtimer_info = {
++    .name = TYPE_TI_K3_DMTIMER,
++    .parent = TYPE_SYS_BUS_DEVICE,
++    .instance_size = sizeof(TIK3DmTimerState),
++    .instance_init = ti_k3_dmtimer_init,
++    .class_init = ti_k3_dmtimer_class_init,
++};
++
++static void ti_k3_dmtimer_register_types(void)
++{
++    type_register_static(&ti_k3_dmtimer_info);
++}
++
++type_init(ti_k3_dmtimer_register_types)
+diff --git a/include/hw/timer/ti-k3-dmtimer.h b/include/hw/timer/ti-k3-dmtimer.h
+new file mode 100644
+index 0000000000..04c3925e2d
+--- /dev/null
++++ b/include/hw/timer/ti-k3-dmtimer.h
+@@ -0,0 +1,30 @@
++/*
++ * TI K3 DM timer (am654 layout)
++ *
++ * Copyright (c) 2026 CMBLU Energy AG
++ * Author: Wadim Mueller <wafgo01@gmail.com>
++ *
++ * SPDX-License-Identifier: GPL-2.0-or-later
++ */
++#ifndef HW_TIMER_TI_K3_DMTIMER_H
++#define HW_TIMER_TI_K3_DMTIMER_H
++
++#include "hw/core/sysbus.h"
++#include "qom/object.h"
++
++#define TYPE_TI_K3_DMTIMER "ti-k3-dmtimer"
++OBJECT_DECLARE_SIMPLE_TYPE(TIK3DmTimerState, TI_K3_DMTIMER)
++
++struct TIK3DmTimerState {
++    SysBusDevice parent_obj;
++    MemoryRegion iomem;
++    uint32_t freq_hz;
++    uint32_t tclr;
++    uint32_t tldr;
++    /* counter value latched at last write/start */
++    uint32_t tcrr_base;
++    int64_t base_ns;
++    bool running;
++};
++
++#endif
 -- 
 2.43.0
 

@@ -4,92 +4,96 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0E3B9C5B572
-	for <qemu-arm@archiver.kernel.org>; Thu, 20 Aug 2026 02:52:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AB303C5DF85
+	for <qemu-arm@archiver.kernel.org>; Thu, 20 Aug 2026 05:35:51 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wwsqK-0001yw-9R; Wed, 19 Aug 2026 22:49:24 -0400
+	id 1wwvRF-0001VN-4E; Thu, 20 Aug 2026 01:35:41 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <kylefoxaustin.github@gmail.com>)
- id 1wwsq2-0001su-RF
- for qemu-arm@nongnu.org; Wed, 19 Aug 2026 22:49:08 -0400
-Received: from mail-yx1-xb129.google.com ([2607:f8b0:4864:20::b129])
+ (Exim 4.90_1) (envelope-from <77239050qq@gmail.com>)
+ id 1wwt5q-00020o-TI
+ for qemu-arm@nongnu.org; Wed, 19 Aug 2026 23:05:26 -0400
+Received: from mail-pl1-x62c.google.com ([2607:f8b0:4864:20::62c])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <kylefoxaustin.github@gmail.com>)
- id 1wwsq0-0000Uc-KH
- for qemu-arm@nongnu.org; Wed, 19 Aug 2026 22:49:06 -0400
-Received: by mail-yx1-xb129.google.com with SMTP id
- 956f58d0204a3-66807ba2f0fso2798234d50.3
- for <qemu-arm@nongnu.org>; Wed, 19 Aug 2026 19:49:03 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <77239050qq@gmail.com>)
+ id 1wwt5p-0004vp-B8
+ for qemu-arm@nongnu.org; Wed, 19 Aug 2026 23:05:26 -0400
+Received: by mail-pl1-x62c.google.com with SMTP id
+ d9443c01a7336-2d049069377so14882365ad.0
+ for <qemu-arm@nongnu.org>; Wed, 19 Aug 2026 20:05:24 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20251104; t=1787194142; x=1787798942; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:from:to:cc:subject:date
- :message-id:reply-to:content-type;
- bh=xDaaEt1n/sIlofl3Hx3umypupJKxlen86Rp6vXEYh9U=;
- b=r5BqqD/tbgS/OvnNIdcEtP85iWnAEITe9ExGWBIPbu9x632Lyoys/wsQtF++mbsD0w
- ExOa2pJ57Klf6InzIxxCD/e0O+RJTAyEJuBCLzje3J+vAogysLvLpL5PDu8WHb9wlOXj
- rF7cwsBEyBfuYeJaT+CXlJFRGtLVjP5BnbOn03qjyr8sn4taZK4jCvEd7ByI7oonO/ro
- /78w9k7/4m6RtGnHnOvsVsJURYdYbU+hkgThxovSNbF6hb+D4oQA0oG72dZKZ3GFgVDg
- NjAh3RsxRVm81zsfQ7vlo0vtLFfje/ME5//BGXSZMiNsL1qxGC+vxfMZ9nX3U5LeUNSh
- +frA==
+ d=gmail.com; s=20251104; t=1787195123; x=1787799923; darn=nongnu.org;
+ h=to:references:message-id:content-transfer-encoding:cc:date
+ :in-reply-to:subject:mime-version:content-type:from:from:to:cc
+ :subject:date:message-id:reply-to:content-type;
+ bh=ghxySRuNEwME97ZhSqGP3DACdmgq8OdxuvKRYGOW7qs=;
+ b=fjJfO6i2Ir+hCgu+CAEsiaFFHXsbHToPLQCJv0twrXSMI3wHb9VmPMKdKVoHH3pVSh
+ grxWKmoHA5Kf/pW0NBO3TcAx/melnzzdX0CYC4UGTiOtnm9AY98fZbegHHp8GLWfwYVC
+ FXZYonor4lkyyN4CLlF/1XpOFmzPL/nbhGdD3qzKiX9+VSVNMn7vxpt8OYWbElzlan7c
+ A9LKgxTFIbZX4Qc8DM1T/Tm/hwFEdavNvJqrdkbeqQB+mNIqDalSqwOJba4+DtZPYUw9
+ PgN/OfDap5kxVi3y6GIr+t3aguF/YugVJdi1hT9v0JSCteDJPhqKwFfsla72RZa6ALci
+ IKVg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1787194142; x=1787798942;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
- :to:cc:subject:date:message-id:reply-to:content-type;
- bh=xDaaEt1n/sIlofl3Hx3umypupJKxlen86Rp6vXEYh9U=;
- b=JMiTSxk0npXt6CLw6Bb/GcBNzmrivfJwDi/s/3qNQokb3E0mHUSnLJS15/LDCtXwpY
- ruWqVc8HpbB6Xls+nFu1ld+hltC/uJgZbReN1WHlaUBQJkBcr/G+d07WkD0Yn6x6IOoS
- HNdVjWDNKcyh9z8KQUkAMjZ1dIigXXQx2P4vzJAjkwROmHyH8UU7+bC2GvG5LNkZ6tKB
- Y5nCGA5AT5bVHMFcZc2vu4Mj9GTSj/wsKKXgj8A1ZB2jBiC7PVjO58xaOnJ78W6DcTq1
- Jqh42Xf/iIpeYoMtu0L1qq2Lotu+oZNhzTj4RFkLa0vCV95oMFrDLyjR+Sl0zCuOmCRx
- qGPg==
+ d=1e100.net; s=20251104; t=1787195123; x=1787799923;
+ h=to:references:message-id:content-transfer-encoding:cc:date
+ :in-reply-to:subject:mime-version:content-type:from:x-gm-gg
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
+ :content-type;
+ bh=ghxySRuNEwME97ZhSqGP3DACdmgq8OdxuvKRYGOW7qs=;
+ b=YlZqjYiqwx7ZjitSTxPG6nSNGmwbtz7HtmVx2YEWH/59LdcY8gi7gVAy/sOQLZCPNs
+ mtiB4ePM+zoRS7yoewbCIuI5fVaIf+SMgr3DAoL3M33YOugVkc35FIWVFm0sZLDg5xIi
+ Yxtpo7OdYWi/Y6ZlbaZODt4ghOBnH+6aeenDyyFT6gEBlLqdR3PjtrsyalUVtOVuuSiS
+ LSWo6GUzPJcvKAAEx1meLmIm2UmmupEEDCtzJTL7OWYdBVRj0HEvvvC1HG2MjEs2zTac
+ mcAnHCX+JdxnTmdd5NvfGfKQELKzEJ1FJhcTkArn0YfJCO+EA6Q9bL7Sz6hwtky0eJCJ
+ lDag==
 X-Forwarded-Encrypted: i=1;
- AHgh+RqlwdyAL0L2qni6cM+yWBdt4NVxvVeMs4ccRKAkGYiyZIhD+u/I1pZ1e/rrDhzSh6DHQcxmGhzvDQ==@nongnu.org
-X-Gm-Message-State: AFuF++kE45QAgHFhb21/2QUax4slCAtG3wq4bkQrtXpXVM7yyol8KmFG
- px6rVOpaOrvrT5E8QJ8jZS0vMWkXVZNe7DuqpdRSaGO3SFD+1uhfbTEo
-X-Gm-Gg: AR+sD12y0RvWns45ALcqkSms8ZdabTInoZo75275w40K1kExjYVsfaPAH6zA8QeMmVo
- tzC24hZpwF2T7KohW+emMExBgq1QZbkfOiXJRL7/TviXzt2va0JGZYQnwLnViJ+vQfpN9F4GsJ+
- qMhr5Pog3B6VLdremUbqoeC38I5MF9Cc+uNI+VLIs83EAOVZ+4DxOBMHbthqz6vZ2koHhUD6PgD
- eHteK9l9MqTdcpvSN0aRUkNDrofURZypqAl7pSUJv0ed+PBj0wiw46IkEg7PzSqX3WjtDnvYgby
- N8Qk8WvVkm64Wll7lRN26deHDoeD0wTM3+0NjzK2xgCw33PpYQhWzw/avdBFKLlZqf4UcOvH2TR
- QdVQ/MM3ky71oRYskpqnGEgW0cMT+epN85pFQ+FuUz4UCXYsY1Vm4Y1IYiwCsGj2HnWxA1Wojcj
- AeSSSAeQ/NAlDRcSNQIGN9vvwe3NwDarePhPTJ/doR3KWG3RoUNxaaY/DLZZxiDFjX5I3qlO181
- FhADyRx6F2vl8xk6zVpAYPmvk0eZqzsIMXIwM+pCSS/STKlrBnsJg==
-X-Received: by 2002:a05:690e:4147:b0:664:f064:f663 with SMTP id
- 956f58d0204a3-66ccb6f0969mr2843286d50.28.1787194142541; 
- Wed, 19 Aug 2026 19:49:02 -0700 (PDT)
-Received: from skippy.localdomain (99-61-67-1.lightspeed.austtx.sbcglobal.net.
- [99.61.67.1]) by smtp.gmail.com with ESMTPSA id
- 956f58d0204a3-66ccafd03basm1986454d50.1.2026.08.19.19.49.00
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 19 Aug 2026 19:49:01 -0700 (PDT)
-From: Kyle Fox <kylefoxaustin.github@gmail.com>
-To: qemu-devel@nongnu.org
-Cc: Kyle Fox <kylefoxaustin.github@gmail.com>,
- Paolo Bonzini <pbonzini@redhat.com>,
- qemu-arm@nongnu.org (open list:MCIMX95-19X19-EVK...)
-Subject: [PATCH 10/16] hw/misc: add i.MX 95 watchdog
-Date: Wed, 19 Aug 2026 21:48:28 -0500
-Message-Id: <20260820024834.3286721-11-kylefoxaustin.github@gmail.com>
-X-Mailer: git-send-email 2.34.1
-In-Reply-To: <20260820024834.3286721-1-kylefoxaustin.github@gmail.com>
-References: <20260820024834.3286721-1-kylefoxaustin.github@gmail.com>
-MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::b129;
- envelope-from=kylefoxaustin.github@gmail.com; helo=mail-yx1-xb129.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ AHgh+RrnaFefQltYbnfEZgVQcH3GUzn6OiAfWPntLJFBpiaatrMQ2uLu6MiZj+Ys9VCnOk6Y0vsei3MGgA==@nongnu.org
+X-Gm-Message-State: AFuF++noqfJuggI2Qiw9kTkNO3PDgSsj1eTQqOu2/808EZzBlMKlgOQR
+ yMZKHoxCm84aPwOp/pSA148C3qfNOMkkfX5vDF8t5R6ie5lHz3x7EwW4
+X-Gm-Gg: AR+sD13aSd9e/++yvoax+DzmMcCTqxdEYPvsyXrJ2gPXftKQfivTj5LdvDKwrh9c2sz
+ gq/O0UOdirBel9EscWiRL1ErnDA2ee0M0Mm+8j/NGA1Zl+hm5DaOFCP0JkNuCCG1dz0YmUQi2Zo
+ k6AUZjgNHkEu6WY0LkgnGja9CkLL7LJ/dPauE4xkp/N+yyJ6knpGfC8mnCAoO4kHuGts4+9qI8a
+ 4jaMw2HXxaWKR3KMXn5Kd954GGzmwUnhUamKSgSJfmmHDt8BWURlKihnKq/717fGejKtA1c6rdR
+ X8B9w26pLo8e8f2KdIjy+hfwEweQW3YRG2cjnUfgebmcm0JeN4M4DBk3bDd5mKOLKllo0zNp3E3
+ rzq02OKThaHXESTx/NHItMiojm40rnHiXmS6qDD/zIuEQsIwcnJPzubupFwAocRh3WTM0olBeqb
+ +Sr4t+URyzHInH/PzH2G4p7Er+0ykuLeMli5aFE8BMi6+qr0dUmvSslhfDwnrO2AL8b6GI
+X-Received: by 2002:a17:90b:4fd0:b0:38e:5b59:c2ff with SMTP id
+ 98e67ed59e1d1-39580a4d031mr17666946a91.3.1787195123371; 
+ Wed, 19 Aug 2026 20:05:23 -0700 (PDT)
+Received: from smtpclient.apple ([117.55.237.216])
+ by smtp.gmail.com with ESMTPSA id
+ a92af1059eb24-1416ae89189sm11636156c88.14.2026.08.19.20.05.20
+ (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+ Wed, 19 Aug 2026 20:05:22 -0700 (PDT)
+From: Jack Wang <77239050qq@gmail.com>
+X-Google-Original-From: Jack Wang <163wangjack@gmail.com>
+Content-Type: text/plain;
+	charset=utf-8
+Mime-Version: 1.0 (Mac OS X Mail 16.0 \(3864.600.51.1.1\))
+Subject: Re: [PATCH 1/3] hw/gpio: Allwinner A10 GPIO emulation
+In-Reply-To: <20260819-allwinner-gpio-v1-1-2a64866dff11@gmail.com>
+Date: Thu, 20 Aug 2026 11:05:07 +0800
+Cc: qemu-devel@nongnu.org, pbonzini@redhat.com, peter.maydell@linaro.org,
+ qemu-arm@nongnu.org, pierrick.bouvier@oss.qualcomm.com, farosas@suse.de,
+ lvivier@redhat.com
+Content-Transfer-Encoding: quoted-printable
+Message-Id: <F3E16C1D-C4C9-46AC-9762-FB0081B6A27A@gmail.com>
+References: <20260819-allwinner-gpio-v1-1-2a64866dff11@gmail.com>
+To: strahinja.p.jankovic@gmail.com
+X-Mailer: Apple Mail (2.3864.600.51.1.1)
+Received-SPF: pass client-ip=2607:f8b0:4864:20::62c;
+ envelope-from=77239050qq@gmail.com; helo=mail-pl1-x62c.google.com
+X-Spam_score_int: -13
+X-Spam_score: -1.4
+X-Spam_bar: -
+X-Spam_report: (-1.4 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ FROM_STARTS_WITH_NUMS=0.738, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
+X-Mailman-Approved-At: Thu, 20 Aug 2026 01:35:40 -0400
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -104,256 +108,44 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-The i.MX 95 watchdog. A register-level model of the CS/CNT/TOVAL/WIN
-registers and the unlock sequence, enough for the SM and Linux to
-configure and refresh it. It has no live timer and does not reset the
-machine on timeout; it exists so the watchdog node probes and is
-programmable rather than faulting on first access.
+Hi,jankovic,I read datasheet of Allwinner and confirm basic address and =
+most function do well. But there are still some place needing =
+improvement.
 
-Signed-off-by: Kyle Fox <kylefoxaustin.github@gmail.com>
----
- hw/misc/Kconfig      |   3 +
- hw/misc/imx95_wdog.c | 198 +++++++++++++++++++++++++++++++++++++++++++
- hw/misc/meson.build  |   1 +
- hw/misc/trace-events |   2 +
- 4 files changed, 204 insertions(+)
- create mode 100644 hw/misc/imx95_wdog.c
+> +static inline bool gpio_is_output(AWPortMap *port, uint32_t pin)
+> +{
+> +    uint32_t cfg_n =3D pin / CFG_PINS_PER_REG;
+> +    uint32_t pin_shift =3D (pin % CFG_PINS_PER_REG) * CFG_PIN_STRIDE;
+> +    return (extract32(port->cfg[cfg_n], pin_shift, CFG_PIN_STRIDE - =
+1) =3D=3D
+> +        CFG_OUTPUT_MASK);
+> +}
+> +
+> +static inline bool gpio_is_input(AWPortMap *port, uint32_t pin)
+> +{
+> +    uint32_t cfg_n =3D pin / CFG_PINS_PER_REG;
+> +    uint32_t pin_shift =3D (pin % CFG_PINS_PER_REG) * CFG_PIN_STRIDE;
+> +    return (extract32(port->cfg[cfg_n], pin_shift, CFG_PIN_STRIDE - =
+1) =3D=3D
+> +        CFG_INPUT_MASK);
+> +}
+> +
+> +static inline int int_ctl_cfg(AWGPIOState *s, int irq_line)
+> +{
+> +    unsigned int_cfg_n =3D s->regs[REG_INDEX(GPIO_INT_CFG0) + =
+irq_line / 8];
+> +    return extract32(int_cfg_n,
+> +                     (irq_line % INT_CFG_IRQ_PER_REG) * =
+INT_CFG_IRQ_STRIDE,
+> +                     INT_CFG_IRQ_STRIDE - 1);
+> +}
+> +
+there you use 'INT_CFG_IRQ_STRIDE - 1=E2=80=99 as stride for both two =
+function=E3=80=82For int_ctl_cfg the stride is supposed to be 4 =
+https://linux-sunxi.org/images/1/1e/Allwinner_A10_User_manual_V1.5.pdf =
+in page 333 you can find it, now all qtest pass because double edge do =
+not be designed in qtest=EF=BC=88better add this test=EF=BC=89. But for =
+input and output function it is right due to byte 3 is reserved.
 
-diff --git a/hw/misc/Kconfig b/hw/misc/Kconfig
-index ded60e21a6c..2bae76b4ec1 100644
---- a/hw/misc/Kconfig
-+++ b/hw/misc/Kconfig
-@@ -268,3 +268,6 @@ config IMX_MU
- config IMX95_ELE_SERVER
-     bool
-     select IMX_MU
-+
-+config IMX95_WDOG
-+    bool
-diff --git a/hw/misc/imx95_wdog.c b/hw/misc/imx95_wdog.c
-new file mode 100644
-index 00000000000..4fe91a92b6d
---- /dev/null
-+++ b/hw/misc/imx95_wdog.c
-@@ -0,0 +1,198 @@
-+/*
-+ * NXP i.MX 95 ULP Watchdog stub model
-+ *
-+ * Copyright (c) 2026, Kyle Fox
-+ *
-+ * SPDX-License-Identifier: GPL-2.0-or-later
-+ *
-+ * Minimal stub of the ULP watchdog (compatible "fsl,imx93-wdt") used
-+ * by U-Boot SPL's arch_cpu_init() to disable WDG3/4/5 before the
-+ * console comes up. SPL's disable_wdog() reads CS @ 0x00 and either
-+ * early-exits if the enable bit (0x80) is clear or runs an unlock +
-+ * disable handshake that polls for CS.ULK (0x800) and CS.RCS (0x400).
-+ *
-+ * The stub leaves the watchdog disabled at reset, so the first CS
-+ * read returns 0 and disable_wdog() returns immediately. The unlock
-+ * sequence is implemented for the cases where the guest forces the
-+ * unlock anyway: a write of 0xD928C520 to CNT @ 0x04 sets CS.ULK,
-+ * any subsequent write to CS sets CS.RCS. No timer behaviour is
-+ * modelled.
-+ */
-+
-+#include "qemu/osdep.h"
-+#include "qemu/log.h"
-+#include "qemu/module.h"
-+#include "hw/core/sysbus.h"
-+#include "hw/core/qdev-properties.h"
-+#include "migration/vmstate.h"
-+#include "trace.h"
-+
-+#define TYPE_IMX95_WDOG "imx95.wdog"
-+OBJECT_DECLARE_SIMPLE_TYPE(IMX95WDogState, IMX95_WDOG)
-+
-+#define IMX95_WDOG_REG_SIZE     0x10000
-+
-+/* Register offsets. */
-+#define WDOG_CS                 0x00
-+#define WDOG_CNT                0x04
-+#define WDOG_TOVAL              0x08
-+#define WDOG_WIN                0x0C
-+
-+/* CS bit fields exercised by U-Boot. */
-+#define CS_EN                   0x00000080
-+#define CS_RCS                  0x00000400  /* reconfig complete */
-+#define CS_ULK                  0x00000800  /* unlocked */
-+
-+#define UNLOCK_WORD             0xD928C520
-+
-+struct IMX95WDogState {
-+    SysBusDevice    parent_obj;
-+
-+    MemoryRegion    iomem;
-+
-+    uint32_t        cs;
-+    uint32_t        cnt;
-+    uint32_t        toval;
-+    uint32_t        win;
-+};
-+
-+static uint64_t imx95_wdog_read(void *opaque, hwaddr offset, unsigned size)
-+{
-+    IMX95WDogState *s = opaque;
-+
-+    switch (offset) {
-+    case WDOG_CS:
-+        return s->cs;
-+    case WDOG_CNT:
-+        return s->cnt;
-+    case WDOG_TOVAL:
-+        return s->toval;
-+    case WDOG_WIN:
-+        return s->win;
-+    default:
-+        qemu_log_mask(LOG_GUEST_ERROR,
-+                      "%s: bad read offset 0x%" HWADDR_PRIx "\n",
-+                      __func__, offset);
-+        return 0;
-+    }
-+}
-+
-+static void imx95_wdog_write(void *opaque, hwaddr offset,
-+                             uint64_t value, unsigned size)
-+{
-+    IMX95WDogState *s = opaque;
-+
-+    switch (offset) {
-+    case WDOG_CS:
-+        /*
-+         * SPL writes CS to update timeout + window and to clear EN.
-+         * Acknowledge by setting RCS (reconfig complete) so the
-+         * "wait for RCS" loop at the tail of disable_wdog() exits.
-+         */
-+        s->cs = (value & ~CS_RCS) | CS_RCS;
-+        trace_imx95_wdog_config(s->cs);
-+        break;
-+
-+    case WDOG_CNT:
-+        s->cnt = value;
-+        /*
-+         * A 32-bit UNLOCK_WORD write to CNT puts the watchdog into
-+         * the unlocked state. Any other value (e.g. REFRESH_WORD)
-+         * is just a refresh ping; ignore.
-+         */
-+        if ((uint32_t)value == UNLOCK_WORD) {
-+            s->cs |= CS_ULK;
-+            trace_imx95_wdog_unlock();
-+        }
-+        break;
-+
-+    case WDOG_TOVAL:
-+        s->toval = value;
-+        break;
-+
-+    case WDOG_WIN:
-+        s->win = value;
-+        break;
-+
-+    default:
-+        qemu_log_mask(LOG_GUEST_ERROR,
-+                      "%s: bad write offset 0x%" HWADDR_PRIx
-+                      " value 0x%" PRIx64 "\n",
-+                      __func__, offset, value);
-+        break;
-+    }
-+}
-+
-+static const MemoryRegionOps imx95_wdog_ops = {
-+    .read = imx95_wdog_read,
-+    .write = imx95_wdog_write,
-+    .endianness = DEVICE_LITTLE_ENDIAN,
-+    .impl = {
-+        .min_access_size = 4,
-+        .max_access_size = 4,
-+    },
-+    .valid = {
-+        .min_access_size = 4,
-+        .max_access_size = 4,
-+    },
-+};
-+
-+static void imx95_wdog_reset_hold(Object *obj, ResetType type)
-+{
-+    IMX95WDogState *s = IMX95_WDOG(obj);
-+
-+    /* Watchdog disabled at reset: CS = 0 makes disable_wdog() early-exit. */
-+    s->cs = 0;
-+    s->cnt = 0;
-+    s->toval = 0x400;
-+    s->win = 0;
-+}
-+
-+static void imx95_wdog_init(Object *obj)
-+{
-+    SysBusDevice *sbd = SYS_BUS_DEVICE(obj);
-+    IMX95WDogState *s = IMX95_WDOG(obj);
-+
-+    memory_region_init_io(&s->iomem, obj, &imx95_wdog_ops, s,
-+                          TYPE_IMX95_WDOG, IMX95_WDOG_REG_SIZE);
-+    sysbus_init_mmio(sbd, &s->iomem);
-+}
-+
-+static const VMStateDescription vmstate_imx95_wdog = {
-+    .name = TYPE_IMX95_WDOG,
-+    .version_id = 1,
-+    .minimum_version_id = 1,
-+    .fields = (const VMStateField[]) {
-+        VMSTATE_UINT32(cs, IMX95WDogState),
-+        VMSTATE_UINT32(cnt, IMX95WDogState),
-+        VMSTATE_UINT32(toval, IMX95WDogState),
-+        VMSTATE_UINT32(win, IMX95WDogState),
-+        VMSTATE_END_OF_LIST()
-+    },
-+};
-+
-+static void imx95_wdog_class_init(ObjectClass *klass, const void *data)
-+{
-+    DeviceClass *dc = DEVICE_CLASS(klass);
-+    ResettableClass *rc = RESETTABLE_CLASS(klass);
-+
-+    dc->vmsd = &vmstate_imx95_wdog;
-+    rc->phases.hold = imx95_wdog_reset_hold;
-+    set_bit(DEVICE_CATEGORY_MISC, dc->categories);
-+    dc->desc = "NXP i.MX 95 ULP watchdog (stub)";
-+}
-+
-+static const TypeInfo imx95_wdog_info = {
-+    .name           = TYPE_IMX95_WDOG,
-+    .parent         = TYPE_SYS_BUS_DEVICE,
-+    .instance_size  = sizeof(IMX95WDogState),
-+    .instance_init  = imx95_wdog_init,
-+    .class_init     = imx95_wdog_class_init,
-+};
-+
-+static void imx95_wdog_register_types(void)
-+{
-+    type_register_static(&imx95_wdog_info);
-+}
-+
-+type_init(imx95_wdog_register_types)
-diff --git a/hw/misc/meson.build b/hw/misc/meson.build
-index b0dade72c6c..3f8cd1d825e 100644
---- a/hw/misc/meson.build
-+++ b/hw/misc/meson.build
-@@ -173,3 +173,4 @@ system_ss.add(when: 'CONFIG_LASI', if_true: files('lasi.c'))
- system_ss.add(when: 'CONFIG_AXIADO_CLK', if_true: files('axiado_clk.c'))
- system_ss.add(when: 'CONFIG_IMX_MU', if_true: files('imx_mu.c'))
- system_ss.add(when: 'CONFIG_IMX95_ELE_SERVER', if_true: files('imx95_ele_server.c'))
-+system_ss.add(when: 'CONFIG_IMX95_WDOG', if_true: files('imx95_wdog.c'))
-diff --git a/hw/misc/trace-events b/hw/misc/trace-events
-index 6b3cff74549..584c1f90963 100644
---- a/hw/misc/trace-events
-+++ b/hw/misc/trace-events
-@@ -448,3 +448,5 @@ imx_mu_doorbell(unsigned idx) "doorbell GIR channel %u"
- imx_mu_gip(unsigned idx) "GIP assert channel %u"
- imx95_ele_msg(uint8_t command, uint8_t tag, uint32_t size) "received cmd 0x%02x tag 0x%02x size %u"
- imx95_ele_response(uint8_t command) "response cmd 0x%02x"
-+imx95_wdog_config(uint32_t cs) "CS <- 0x%08x"
-+imx95_wdog_unlock(void) "unlock word written"
--- 
-2.34.1
-
+Jack Wang
 

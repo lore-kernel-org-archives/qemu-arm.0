@@ -4,143 +4,127 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4C7B3C5DF81
-	for <qemu-arm@archiver.kernel.org>; Thu, 20 Aug 2026 15:57:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2FF73C5DF85
+	for <qemu-arm@archiver.kernel.org>; Thu, 20 Aug 2026 16:02:05 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wx58S-0007I6-FE; Thu, 20 Aug 2026 11:56:56 -0400
+	id 1wx5D7-0001Nc-CO; Thu, 20 Aug 2026 12:01:45 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mhonap@nvidia.com>)
- id 1wx58P-0007BI-S1; Thu, 20 Aug 2026 11:56:53 -0400
-Received: from mail-westus2azlp170100005.outbound.protection.outlook.com
- ([2a01:111:f403:c005::5] helo=CO1PR03CU002.outbound.protection.outlook.com)
+ (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
+ id 1wx5D4-0001J9-Ml
+ for qemu-arm@nongnu.org; Thu, 20 Aug 2026 12:01:44 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mhonap@nvidia.com>)
- id 1wx58O-0000l7-2E; Thu, 20 Aug 2026 11:56:53 -0400
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=SeW+zIsK4qs+gs0cAB1A/1oTl+WhPIxMS0n4cppGR/iZ1Lly4b4EjVnWTh0CKMnj+RUshnxNz3fa4xkoSMiUhYh2r5nghpv7Zppa9EVX2oO17EmsdvWWIeSUQrQstikwul6ZdEcZUS+C2LnfvaP2IZtfPi1fsH3uypv1E7pJTRoVwdSAlUFFqA/9m9o3TGCuCru1/IrzOxh2pHgNcbj8yE2GrBj5C4LcvIzmuhFQ1g17zbJRn0jyP2hk+kNIFho4tV374BfOHwMM3Sm8amIM+ntdNrOzH8gn9zDPvZdmnD43wdT+2OzDPhgsCJGN9yi/EnKeWUjGq3f280u2RiGXhQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector10001;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=DX3LmtDgDWEXhPcQhYEawYFDHYHhBp44OkRDHBSR/wY=;
- b=CDtbEHLgTMzkre7e91fIoQjIaP7jF+ADc8M+9bkKBVr/naBLcYwY7UkLea5YzDOPAnlHXj/EvOBtBB09IowlIi9L5edu48krm3170Mpj4lGlF/LJiOlZUYVs1uaqi+NYjmEH/9Vg7WwpSLzmM9EEaJvczXGDCMs0x3YLwhqPxWKs+BykQn1hoTr4kpLUnqqGZZnYpaMN7Rj6fiykGht9zuQEuhui2d/KaTRixg5wtU83uiknHLXybKMexs85XtdgAmT73zwn3wr3mBl8k6a5Vdcv+lyzeveAmb48W1HdjjpmHB1W/NbkJE4XjkqmIG+c4lx5LzcDuPNHbzRky9md9Q==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=nvidia.com; dmarc=pass action=none header.from=nvidia.com;
- dkim=pass header.d=nvidia.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Nvidia.com;
- s=selector2;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=DX3LmtDgDWEXhPcQhYEawYFDHYHhBp44OkRDHBSR/wY=;
- b=LJxmWmOdWi6jOzg/cnldkwg0FjcRtTXsuM7KhE9loXpDd6HIzn6gu5G0TVnils5JiUcvt7erICvr6Vpb+mpbggHO5Ss4WN/twN+xaj0jJVnw3xlvimZc5KTpiYSU3ldh2DKbsuLa1jEEnabaPEB67HCLCkzQzQT5FRbK6Z1HTdaK3kGC4VXQeITzAu+a6S6Bvahz78XJoj7SaalsF7yo9PtrzF2ofCAwB5mid0TfKiG3aI5JCOGN2yZ6NbIDkLHjT+dFy71LhCmmrl/sQ0oF8NLTOWCEXsVAE4Eq1NldjBFa6Jtlem3yJTjmHwEf5fd4Sh1KB32Kx0lJGESGPvd8KA==
-Received: from IA1PR12MB9030.namprd12.prod.outlook.com (2603:10b6:208:3f2::22)
- by CH3PR12MB8755.namprd12.prod.outlook.com (2603:10b6:610:17e::16)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.21.339.9; Thu, 20 Aug
- 2026 15:56:38 +0000
-Received: from IA1PR12MB9030.namprd12.prod.outlook.com
- ([fe80::2c1d:ed27:b53a:97d2]) by IA1PR12MB9030.namprd12.prod.outlook.com
- ([fe80::2c1d:ed27:b53a:97d2%7]) with mapi id 15.21.0339.007; Thu, 20 Aug 2026
- 15:56:38 +0000
-From: Manish Honap <mhonap@nvidia.com>
-To: Junjie Cao <junjie.cao@intel.com>
-CC: "alex@shazbot.org" <alex@shazbot.org>, Ankit Agrawal <ankita@nvidia.com>, 
- "jic23@kernel.org" <jic23@kernel.org>, "dave.jiang@intel.com"
- <dave.jiang@intel.com>, "alejandro.lucero-palau@amd.com"
- <alejandro.lucero-palau@amd.com>, Srirangan Madhavan <smadhavan@nvidia.com>,
- "pierrick.bouvier@oss.qualcomm.com" <pierrick.bouvier@oss.qualcomm.com>,
- "mst@redhat.com" <mst@redhat.com>, "imammedo@redhat.com"
- <imammedo@redhat.com>, "anisinha@redhat.com" <anisinha@redhat.com>,
- "pbonzini@redhat.com" <pbonzini@redhat.com>, "eric.auger@redhat.com"
- <eric.auger@redhat.com>, "peter.maydell@linaro.org"
- <peter.maydell@linaro.org>, "richard.henderson@linaro.org"
- <richard.henderson@linaro.org>, "clg@redhat.com" <clg@redhat.com>,
- "cohuck@redhat.com" <cohuck@redhat.com>, Krishnakant Jaju <kjaju@nvidia.com>, 
- Vikram Sethi <vsethi@nvidia.com>, Zhi Wang <zhiw@nvidia.com>,
- "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>, "qemu-arm@nongnu.org"
- <qemu-arm@nongnu.org>, Manish Honap <mhonap@nvidia.com>
-Subject: RE: [PATCH 07/10] hw/vfio/pci: Map the CXL memory on the guest
- decoder commit
-Thread-Topic: [PATCH 07/10] hw/vfio/pci: Map the CXL memory on the guest
- decoder commit
-Thread-Index: AQHdKyTGpyjbtwVurUmOVaDr4UiKUrajmF6AgAOH42A=
-Date: Thu, 20 Aug 2026 15:56:38 +0000
-Message-ID: <IA1PR12MB9030EECEA8236E6DAF73344CBDA42@IA1PR12MB9030.namprd12.prod.outlook.com>
-References: <20260813130623.2499506-8-mhonap@nvidia.com>
- <20260818095250.252230-1-junjie.cao@intel.com>
-In-Reply-To: <20260818095250.252230-1-junjie.cao@intel.com>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-authentication-results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=nvidia.com;
-x-ms-publictraffictype: Email
-x-ms-traffictypediagnostic: IA1PR12MB9030:EE_|CH3PR12MB8755:EE_
-x-ms-office365-filtering-correlation-id: 2b68c945-180a-47e9-b630-08defed39e5d
-x-ms-exchange-senderadcheck: 1
-x-ms-exchange-antispam-relay: 0
-x-microsoft-antispam: BCL:0;
- ARA:13230040|23010399003|366016|376014|7416014|1800799024|22082099003|18002099003|38070700021|5023799004|11063799006|4143699003|10067099003|56012099006;
-x-microsoft-antispam-message-info: xaozrG0H1/NPM0HVro54M31zQ/AqeQ4hgBwzHIeTgbT6z1aDQuYI7rjdKELXfPlqxRpguJy4qeoIF3GxJ9412+L2aEVl1wVYyFwNbF6LzH57avkO1ZDBsVCeSenSx95N8lCVM7OCGuHdSV/rn34bZQp4ONs26/18AlhXxQfKZSv41G0XeJHWn6NrMoehhgJx1O4b5EsY+Wk1CBEQWj64uzDZ1ESlIqGT2Imj9hJ4kPd602STDWRq6wnjhDKishED5r0SWCrIXtJ+ns6VbaJNSU7e3p/0GrIwXwo8GX1TRL+QU080T6k6BmI4p0alNEHG8hKNfl/vboVay/mpg3aW6oxXYJxrHiuanB6v7x4MBmt7WG69/qSQgVJW9cjCwCvG4iJgCXdGgo5McWEKdIBg5iXeWv1R1AYRN28f5EXtw+vzQCybvqwRTODo+IpYEsnFGUJ3/JAtnG85he6VEPQtMW09X5EhP8ms6ldyDGQpO5KHqq/ozzgVosGRdXPInpEXYbqm2TyzXwHyY9fbJ+9U4gQk09KIh7otMonOQ1y05rX4hCBubI1fHm1C1l+v0o+JWN8DLi7vmwQT9zDNFY/sLkuYjXqsOU9oBembtqMTIiVbA1861OnBkM5slOzE6DgO4ve92v5vzZrtMtr5UEi4dQ8/YR+DGGrsssSAgu2/r1a7VGR4Od25z7na1RNY+A4A1Vrv9AywCqn9958NmWB6swaInO8f+zU1VZ1dPO4OPus=
-x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:IA1PR12MB9030.namprd12.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(13230040)(23010399003)(366016)(376014)(7416014)(1800799024)(22082099003)(18002099003)(38070700021)(5023799004)(11063799006)(4143699003)(10067099003)(56012099006);
- DIR:OUT; SFP:1101; 
-x-ms-exchange-antispam-messagedata-chunkcount: 1
-x-ms-exchange-antispam-messagedata-0: =?us-ascii?Q?e5gW28G4PLS0OXvWGQeKlY6ymlsPI/WHbJ9j9mziNWz8/WjZrCHBmbZVKrNJ?=
- =?us-ascii?Q?FG1tojGIkjENVmGQP0/HX4phcNtMNfB00XyvRTSGjeBaZeEMTRzbetlk6gBK?=
- =?us-ascii?Q?khD6C2ZXfzkFw9KTYgxN1ReerSMdsAlcVuGpIesdOkm4Q9qF9+PWLMMPnyHV?=
- =?us-ascii?Q?mhRxRif905E3GbRSNJ/dx2u02rxCbM8myY6E8g28DdojSDDRTe7JexHifeRt?=
- =?us-ascii?Q?DlvSKQFlT2+Ne2WledvlVGluTVEaDslaqgckWcUYmNyDo+rPWN5WIUfkWdCA?=
- =?us-ascii?Q?UklWpEda6KNZZC7jmSdjTiQCE2Ftqg9WKOk8rhw4SNG51Dargvh2ru1HpiiJ?=
- =?us-ascii?Q?fxXlAEFyf81iSYR3Fm9cYhUdZoFcIUg/BPJW+GoJ3GpRa1LfsABMbLEU4jsY?=
- =?us-ascii?Q?/MUO2ae4x34joSY2Maetg5f+l0c6SG5HHQVHzmvpJQ0f1T6DnuAqS2DUxfX/?=
- =?us-ascii?Q?/CXtOQ74bXghm79nUrDL97hIFO6JhDzDx4zJvT+OxROGuBHu82IvGo5BIIq8?=
- =?us-ascii?Q?Ib4W3HanvF6+gSk4+jsYEuZwkYfVb3GUJ+Ar4ZJ3uyBG/9USonwTGTkZ467i?=
- =?us-ascii?Q?VbYzFzaPvl1PyQvFUbl/CCg9qg2VpNCj5bGuFBaNMriVqm3+xUG31qFaqPSA?=
- =?us-ascii?Q?3aG8fbeLG3d0LPJYqoDorIw448YVvrabHBAGzEBelyuBja86ghB80qVpNe3l?=
- =?us-ascii?Q?vkeg8044ioWz4woY45m5ofEXb8e6TXy6S88RUl+s4OqgYeczVH5rCWkpl1pX?=
- =?us-ascii?Q?PuP6QRpffUsGJKHlKW4B8ev7MXbOa39u/03p+thRw/Glg9OPCYMuldVSpALy?=
- =?us-ascii?Q?QiGLSjqiAW4SqGmLM6M16BUlkXhsL1oYub7L1hsCOnBmUvhi2OUpgioPa/2L?=
- =?us-ascii?Q?cpBvhD+45GYOkoJOeWxZEuMOhI54HogNy7ljLRCA3Cn4eduYuj8Ld9W0rRF3?=
- =?us-ascii?Q?FyBD9dwDYiKCFzxDXvnP0iocFAA4L/fnJgDUiKmsPoxFEwRqpMj2JZmOcgvB?=
- =?us-ascii?Q?e9Z5fnVfb7CRHJUJ5VPozRTFzA2PCLwRkNE/9/qaqifupcqzgSB8l1oc1wRI?=
- =?us-ascii?Q?RDgAXfSu/ONHc3tCdv4LBjDuuUXTxIIfK61XNDAzszHjpAC6jgPj+j3j4EQJ?=
- =?us-ascii?Q?Wlpqo7J7zGhzzmGRwPGZDvzwQPybSw+zpy6/vLTW68W99yABktyzWjUSzokP?=
- =?us-ascii?Q?PXfUjPvmjo22A+Of7sHQTEWHvdLhIMkoowWTcZjwwBol/3V7uryAQkZilAKK?=
- =?us-ascii?Q?0F5gcvncskXVcZdIm++ndEM6lu8UbV/wrf5iyzFIj6xDCs7OT6O79WaZg0Rk?=
- =?us-ascii?Q?I9QUU8j7Xf/BSSBrOWMGrqDzDZ+RwipaM7/bOLlpNH/aW5F9YToz0a98ULuM?=
- =?us-ascii?Q?yGYTFSpX69VGDbMzULUZx4VgsZSCLMtgnS3imAiHjAiW7Sh7tq/vgsm5XUZj?=
- =?us-ascii?Q?+nIVvIX0bEvnzCdhI6Bo8AK1YUZYOtrfqJ0VFYq3bNB/WiO/fGCj5upMllEo?=
- =?us-ascii?Q?985dap8k+xJrBgCFbyQ40c531S3Ja/FpGgpM6MNO/k0uA5hdlz/350Rk0Nz+?=
- =?us-ascii?Q?x4JFQpN3aT9w5OHffZpdxOh5vMQvcpUmFlhe/+2uAMBpCrPB8InNuaf98MDz?=
- =?us-ascii?Q?giSgk2cvA2rS3mh5bqoaHQtStAjcVOcK1xBkVb492WUon4KmEVPvB9EAPc9O?=
- =?us-ascii?Q?JHFYCApgW4M6s320NFB7VCxOYe9u9Qcp9ze4zWSskSSYDbc8?=
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: quoted-printable
+ (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
+ id 1wx5D2-0001Yt-UY
+ for qemu-arm@nongnu.org; Thu, 20 Aug 2026 12:01:42 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1787241700;
+ h=from:from:reply-to:reply-to:subject:subject:date:date:
+ message-id:message-id:to:to:cc:cc:mime-version:mime-version:
+ content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=jgxfJA5YmAPMWiGBYOTfNd4f6lfx0My1rIrOn4iPbsE=;
+ b=LzxFGFwvrMyTuCDnf+WMNUjClqJLp3x5zKkbxhZZ3DWGt8mFu2IsxRwMBZqdL4SUjNgaWJ
+ jLslVU2whBaOZS7lCPUmeoCYVa7QYC3+I3KH6iZSMNyeuLJLFdFMquZ5vzEJjn0ryMgYfw
+ ++sYmMdeYgjhvy5htqqRPsXH0pZUAbk=
+Received: from mail-wr1-f72.google.com (mail-wr1-f72.google.com
+ [209.85.221.72]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-175-K8Jilt4pOIOH8SMN9vOlEQ-1; Thu, 20 Aug 2026 12:01:38 -0400
+X-MC-Unique: K8Jilt4pOIOH8SMN9vOlEQ-1
+X-Mimecast-MFC-AGG-ID: K8Jilt4pOIOH8SMN9vOlEQ_1787241697
+Received: by mail-wr1-f72.google.com with SMTP id
+ ffacd0b85a97d-47eaa4006a1so565720f8f.0
+ for <qemu-arm@nongnu.org>; Thu, 20 Aug 2026 09:01:38 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20251104; t=1787241697; x=1787846497;
+ h=content-transfer-encoding:content-type:in-reply-to:from:references
+ :cc:to:content-language:subject:reply-to:user-agent:mime-version
+ :date:message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+ :message-id:reply-to:content-type;
+ bh=jgxfJA5YmAPMWiGBYOTfNd4f6lfx0My1rIrOn4iPbsE=;
+ b=XYxK9YBLdomCw9XUjZgzEY996sQ02aIhdOM0wv1B9KR2gDu/6mHPdZFoN3O0BSRIGr
+ EtYZilsAAmmO+OdcQnb/ZwQVaP60FzkOmOKyCn1oyYPTE0vrW57DoW6Isx6LJBGO87GB
+ IuwdAHH024j1JWIGHwlLSm7y/IJtwFaVo3QOoWelmI1IOQYwYYAyKL3sXzi7ie3hXLxC
+ D3cKg70TLvhpfirB0IujvtfXNjeWiwjukNZXs3jPuBuRTTF2X4Yc2kj+xzcJSQHATN5H
+ hdE03SCUb6J5WWnDuwu+jI+2fFiq1A7XHL345G9zhkhkVL9uc3DrED46U88xF+N72zmb
+ SNaQ==
+X-Forwarded-Encrypted: i=1;
+ AHgh+Rq6hR1RTq5KQSUPyqgBLEwDvJBHn6AwgEqNJElPZmqlikDgezE29iH8BPs6cEGDIPLtlzYAzmhXMQ==@nongnu.org
+X-Gm-Message-State: AFuF++nnPeyChfwaN84FqW1mdliF8L7AsbNowLYrQxQqhx1JRHrkc4Sx
+ deQpKUxy32ZXCE4viUtsuD7A9eUyvFFQjHBlpAcBn3wl7UnzGsCFXQFg2fNqtma4xREcqUGG2FE
+ faMScRyEifvT7J79nY4ElpVZodAmonghIsTBH1IpLTqhi63hsnjDBbw==
+X-Gm-Gg: AR+sD12rNDOCg40c7ZDCvImEFO+2bjC+Bmm9TIyeGNUMsQNCM5gGGhal/Sfqiyr7+Xv
+ ztxDBI9csYOZIojERJX/VyDz1q94Y+HQV3JTdXmDBG5AWt+NBeuUUDgB5B6L+qU3Jk78qJlyRUl
+ NKaw4EpP/LxQAcQZAgsZjz8wxfG2zCzuZ2Tzah0IXHI62g6JmJwRPCWiU+l1nlFdtWysaX0Hyey
+ mFLJITqF8ohvJzWKXzspC1P0Z+kFgrSRIHRUuv3h+xM06seSXu24+tZQKtzGpnZ9cVsQxLOGE22
+ 0fSNzLwoM4IivZecHFnG1E5u9x7CVu7Nzle22bS2CkJz21mDZyAUhvLxmQGgspT/pnERchx0Nwk
+ rn0KlU2RAuJsxFAXlhtKr7SBH35Soljkoc0w1g0yrblNd6Koy
+X-Received: by 2002:a05:6000:4b06:b0:47f:e746:dcab with SMTP id
+ ffacd0b85a97d-482b785dc08mr13918631f8f.10.1787241697479; 
+ Thu, 20 Aug 2026 09:01:37 -0700 (PDT)
+X-Received: by 2002:a05:6000:4b06:b0:47f:e746:dcab with SMTP id
+ ffacd0b85a97d-482b785dc08mr13918516f8f.10.1787241697127; 
+ Thu, 20 Aug 2026 09:01:37 -0700 (PDT)
+Received: from ?IPV6:2a01:e0a:f0e:9070:527b:9dff:feef:3874?
+ ([2a01:e0a:f0e:9070:527b:9dff:feef:3874])
+ by smtp.gmail.com with ESMTPSA id
+ ffacd0b85a97d-482bf82594esm267911f8f.29.2026.08.20.09.01.35
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Thu, 20 Aug 2026 09:01:36 -0700 (PDT)
+Message-ID: <9ac6089a-2dad-441b-8ec7-f6c03cdad312@redhat.com>
+Date: Thu, 20 Aug 2026 18:01:34 +0200
 MIME-Version: 1.0
-X-OriginatorOrg: Nvidia.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-AuthSource: IA1PR12MB9030.namprd12.prod.outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 2b68c945-180a-47e9-b630-08defed39e5d
-X-MS-Exchange-CrossTenant-originalarrivaltime: 20 Aug 2026 15:56:38.1557 (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: 43083d15-7273-40c1-b7db-39efd9ccc17a
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: 1r8bttrayAL9E2IXwXoqU3+2xGII5IRiwg+JpmtjZOioVLNJDeJ9AmcDaZ9dP6YTPMt3tu4Ytp3w5HLPRudPAg==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: CH3PR12MB8755
-Received-SPF: permerror client-ip=2a01:111:f403:c005::5;
- envelope-from=mhonap@nvidia.com;
- helo=CO1PR03CU002.outbound.protection.outlook.com
-X-Spam_score_int: -13
-X-Spam_score: -1.4
-X-Spam_bar: -
-X-Spam_report: (-1.4 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.346,
+User-Agent: Mozilla Thunderbird
+Subject: Re: [RFC PATCH v3 16/19] qmp: add query-cpu-props-info command
+To: Khushit Shah <khushit.shah@nutanix.com>
+Cc: Markus Armbruster <armbru@redhat.com>,
+ "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
+ "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
+ "kvmarm@lists.linux.dev" <kvmarm@lists.linux.dev>,
+ "cohuck@redhat.com" <cohuck@redhat.com>,
+ "peter.maydell@linaro.org" <peter.maydell@linaro.org>,
+ "richard.henderson@linaro.org" <richard.henderson@linaro.org>,
+ "maz@kernel.org" <maz@kernel.org>,
+ "oliver.upton@linux.dev" <oliver.upton@linux.dev>,
+ "berrange@redhat.com" <berrange@redhat.com>,
+ "abologna@redhat.com" <abologna@redhat.com>,
+ "jdenemar@redhat.com" <jdenemar@redhat.com>,
+ "gshan@redhat.com" <gshan@redhat.com>,
+ "skolothumtho@nvidia.com" <skolothumtho@nvidia.com>,
+ "sebott@redhat.com" <sebott@redhat.com>,
+ "philmd@linaro.org" <philmd@linaro.org>,
+ "yangjinqian1@huawei.com" <yangjinqian1@huawei.com>,
+ Shaju Abraham <shaju.abraham@nutanix.com>,
+ Mark Cave-Ayland <mark.caveayland@nutanix.com>,
+ Prerna Saxena <prerna.saxena@nutanix.com>
+References: <20260716213858.609699-1-khushit.shah@nutanix.com>
+ <20260716213858.609699-17-khushit.shah@nutanix.com>
+ <878q6m5qox.fsf@pond.sub.org>
+ <3099C064-6051-4B93-BE0F-C54B7FD91D82@nutanix.com>
+ <9909725f-7dd8-4f88-b016-2a6134906a60@redhat.com>
+ <676C0BA3-A842-4784-84D2-8B446E8CAB67@nutanix.com>
+From: Eric Auger <eric.auger@redhat.com>
+In-Reply-To: <676C0BA3-A842-4784-84D2-8B446E8CAB67@nutanix.com>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-MFC-PROC-ID: hjv5UNOOLMwtnugb3l3M6Cyp2fC1sRrjDpPZDXrwvOg_1787241697
+X-Mimecast-Originator: redhat.com
+Content-Language: en-US
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=170.10.129.124;
+ envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -23
+X-Spam_score: -2.4
+X-Spam_bar: --
+X-Spam_report: (-2.4 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.346,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- FORGED_SPF_HELO=1, SPF_HELO_PASS=-0.001,
- SPF_NONE=0.001 autolearn=no autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=0.001, SPF_HELO_PASS=-0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -153,105 +137,79 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Reply-To: eric.auger@redhat.com
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
 
 
-> -----Original Message-----
-> From: Junjie Cao <junjie.cao@intel.com>
-> Sent: 18 August 2026 15:23
-> To: Manish Honap <mhonap@nvidia.com>
-> Cc: alex@shazbot.org; Ankit Agrawal <ankita@nvidia.com>;
-> jic23@kernel.org; dave.jiang@intel.com; alejandro.lucero-palau@amd.com;
-> Srirangan Madhavan <smadhavan@nvidia.com>;
-> pierrick.bouvier@oss.qualcomm.com; mst@redhat.com; imammedo@redhat.com;
-> anisinha@redhat.com; pbonzini@redhat.com; eric.auger@redhat.com;
-> peter.maydell@linaro.org; richard.henderson@linaro.org; clg@redhat.com;
-> cohuck@redhat.com; Krishnakant Jaju <kjaju@nvidia.com>; Vikram Sethi
-> <vsethi@nvidia.com>; Zhi Wang <zhiw@nvidia.com>; qemu-devel@nongnu.org;
-> qemu-arm@nongnu.org
-> Subject: Re: [PATCH 07/10] hw/vfio/pci: Map the CXL memory on the guest
-> decoder commit
->=20
-> External email: Use caution opening links or attachments
->=20
->=20
-> Hi Manish,
->=20
-> On Thu, 13 Aug 2026 18:36:20 +0530, Manish Honap wrote:
-> > +    switch (le32_to_cpu(cap) & 0xf) {
-> > +    case 0:  return 1;
-> > +    case 1:  return 2;
-> > +    case 2:  return 4;
-> > +    case 3:  return 6;
-> > +    case 4:  return 8;
-> > +    default: return 1;
->=20
-> The encoding continues: 5h =3D 10 is the most a device may advertise, and
-> switch/host-bridge encodings go on to Ch =3D 32 (CXL r3.1 8.2.4.20.1), so
-> a 10-decoder endpoint takes the fallback and "walk every decoder"
-> becomes "check decoder 0 only". Unreachable while the kernel gates on a
-> single decoder. cxl_decoder_count_dec() in hw/cxl/cxl-component-utils.c
-> already carries the full table and this file already includes its
-> header; reusing it needs a floor of 1 (it decodes reserved encodings to
-> 0) plus the stub treatment patch 6 gives cxl_get_hb_passthrough().
+On 8/18/26 11:46 AM, Khushit Shah wrote:
+>
+>> On 14 Aug 2026, at 7:08 PM, Eric Auger <eric.auger@redhat.com> wrote:
+>>
+>> !-------------------------------------------------------------------|
+>>  CAUTION: External Email
+>>
+>> |-------------------------------------------------------------------!
+>>
+>> Hi Khushit,
+>>
+>> On 8/5/26 8:47 AM, Khushit Shah wrote:
+>>>> On 4 Aug 2026, at 12:15 PM, Markus Armbruster <armbru@redhat.com> wrote:
+>>>>
+>>>> !-------------------------------------------------------------------|
+>>>> CAUTION: External Email
+>>>>
+>>>> |-------------------------------------------------------------------!
+>>>>
+>>>> Khushit Shah <khushit.shah@nutanix.com> writes:
+>>>>
+>>>>> Introduce the 'query-cpu-props-info' QMP command. For CPU model
+>>>>> properties it reports the type (boolean or number) and the set of values
+>>>>> supported under the active accelerator and host.
+>>>>>
+>>>>> For numbers the supported values are expressed as a list of inclusive
+>>>>> {min, max} ranges; for booleans as the list of allowed true/false
+>>>>> values.
+>>>>>
+>>>>> The command and its return types (CpuPropertyType, CpuPropertyInfo and
+>>>>> friends) are defined in qapi/machine.json rather than an Arm-specific
+>>>>> schema, since the concept applies to other targets (e.g. x86, riscv)
+>>>>> too. Target that do not implement it return an error.
+>>>>>
+>>>>> The Arm/KVM implementation spins up a scratch "host" vCPU object,
+>>>>> walks its QOM properties: SYSREG_ ID-register fields become 'number'
+>>>>> properties whose ranges come from arm_field_get_supported_values(),
+>>>>> and the advertised feature toggles become 'boolean' properties.
+>>>>>
+>>>>> Signed-off-by: Khushit Shah <khushit.shah@nutanix.com>
+>>>> This explains what the command does and how it's implemented.  It's
+>>>> silent on the most important aspect: why do we want the command?  What
+>>>> is its intended purpose?
+>>> Will add something like:
+>>>
+>>> This helps the management stack to discover which values are supported
+>>> for a given CPU property. This is especially important for non-boolean
+>>> properties, where knowing that the host has value 'x' does not inherently
+>>> reveal the full range of valid values supported on the host.
+>> How does x86 handle this at the moment, they don't have the cmd either?
+>> How do they currently introspect what are the valid values for a
+>> specific host? Is it easier for them?
+> x86 is much simpler, all the cpu features properties are backed by cpuid bits
+> and assumption is simple, if host value is “true”, “false" is supported, and
+> if the host value is “false", “true" is not supported.
 
-Agreed, there is no reason to keep a partial table. I will use
-cxl_decoder_count_dec() with a floor of 1 for the reserved-to-0 case, and
-add the CONFIG_CXL stub the way patch 6 does for cxl_get_hb_passthrough().
+OK thanks!
 
->=20
-> > + * GPA and never sees the host physical base the kernel shadow holds;
-> > + the shadow
-> > + * base and size are not consulted here.
->=20
-> The cover has the guest driving its own virtual decoder, and this patch
-> handles a decommit. After a decommit, what refuses a re-commit with a
-> base elsewhere inside an oversized window (patch 6 only warns on size >
-> need)? The kernel FSM runs on the written shadow, QEMU maps at the
-> window base regardless, and the virtualized read-back also reports the
-> window base, so a divergence is silent -- guest accesses at the base it
-> programmed land in the CFMWS trap instead of the device memory. If the
-> FSM rejects any base other than the firmware value, a comment here
-> closes the question; otherwise the write trap already sees every base
-> write, so checking it against fmws_base on commit is cheap.
+Eric
+>
+> Warm Regards,
+> Khushit
+>>
+>> Thanks
+>>
+>> Eric
+>>>
+>>>
 
-Good point. The guest is only ever expected to program the base it reads
-back, but nothing is enforcing that...
-I will check the written base against fmws_base on commit and
-refuse the map on a mismatch, rather than rely on the kernel FSM implicitly=
-.
-
->=20
-> >  static void vfio_cxl_teardown(VFIOPCIDevice *vdev)
->=20
-> Nothing on the unrealize path drops the mapping: the teardown runs at
-> instance finalize, and the mapping itself blocks finalize, since adding
-> the region into system memory referenced its owner, the vdev, and only
-> the unmap drops that reference. An unplug flow that resets the device
-> escapes through vfio_pci_pre_reset()'s PCI_COMMAND clear; ACPI hotplug
-> eject unparents with no reset, so the vdev never finalizes, the VFIO fd
-> stays held, and the guest keeps reading the removed device's HDM at the
-> window base. Unmapping from vfio_exitfn() with the rest of the
-> unrealize-time teardown breaks the cycle.
-
-okay, I will drop the mapping from vfio_exitfn() at unrealize time.
-
->=20
-> Two notes from reading, no action needed:
->=20
-> The BASE_LOW[31:28]-only substitution is exact: cxl-fmw sizes are
-> validated as 256MiB multiples (hw/cxl/cxl-host.c) and both machines hand
-> cxl_fmws_set_memmap() a 256MiB-aligned start (hw/i386/pc.c,
-> hw/arm/virt.c), so fw->base cannot carry bits below 28.
->=20
-> Migration is blocked today by the auto-mode blocker your patch 3 comment
-> describes, but the destination path already holds for the day that
-> lifts: vfio_pci_load_config() pushes PCI_COMMAND through
-> vfio_pci_write_config(), which re-runs the commit scan after the
-> machine-done notifier has bound the window.
->=20
-> Many thanks,
-> Junjie
 

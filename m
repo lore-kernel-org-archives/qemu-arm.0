@@ -4,146 +4,91 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 73F1CC5DF81
-	for <qemu-arm@archiver.kernel.org>; Thu, 20 Aug 2026 01:00:57 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 406D3C5B572
+	for <qemu-arm@archiver.kernel.org>; Thu, 20 Aug 2026 02:50:12 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wwr8s-0001Z5-7k; Wed, 19 Aug 2026 21:00:29 -0400
+	id 1wwsqb-0002En-8O; Wed, 19 Aug 2026 22:49:41 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
- id 1wwr8p-0001X7-8l; Wed, 19 Aug 2026 21:00:24 -0400
-Received: from mail-koreacentralazlp170130006.outbound.protection.outlook.com
- ([2a01:111:f403:c40f::6] helo=SEYPR02CU001.outbound.protection.outlook.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
- id 1wwr8n-00013F-87; Wed, 19 Aug 2026 21:00:22 -0400
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=uNt6A6AIEjJY/7FldV7XXDplzR2ayECI/S7QMk3VIayYAgxJH08rp0aiYGXHqsBsyctiw+y7dKDJ20j+FBmf3hHYr/wgwON7BFMjwJutOzuwZu/9jDtEySXfmk8rdKmHyZWK7pHEfuLArtQnewe6T5LA2+6pMIFaMbQ4JZEoDQjA338lL5NW0L7zahRVl/JoWR408K1d4tuEqNkFCK2OhSwQIntm0dbQ3xeB/cAAM4VQV2ip/cKYty3ZcXkQMuRWTAMiApObqAmgsp+++WqW3IMSK0iyx+TEqZwgpGv/DmdRHz1k8434B/bfOBoG4eJUhE+0V0MidgFcE92BXieGZg==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector10001;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=OBTCM5kCZ4ZColRRR1kUyx+5tmMursUgKAAyYUTXTLc=;
- b=BEinA9LsqwXw84RAESzCNbtgUQ4nKUOybL7CSV4zXDDHsbOOKunLDVcS5/yF14Sl26f8VylfY+X/VXq/LCSmbDKFslNm6lsNVOHphJRfIyV2BJWEb/Izth8jdyP7ocpVg+oBpy4x/BiIok6TkNzvcn/TDlLVoSHR3I23g3Fu4tsj42FBWfP1FiON5RnibClz2GmfYMdF//Q7LMPOTPQIgsTtkDAGS45sxpkmVzUTliRE/VO86CIhWXZDk+f4CFr86tJqulV8L8oDLnJnrF9e3VC24JIYvSwBF5Vez0gdCMXyguH0bfZL/WkuALlncoi/THeLzhG96171t1JqvqfGCA==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=aspeedtech.com; dmarc=pass action=none
- header.from=aspeedtech.com; dkim=pass header.d=aspeedtech.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=aspeedtech.com;
- s=selector1;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=OBTCM5kCZ4ZColRRR1kUyx+5tmMursUgKAAyYUTXTLc=;
- b=isdaatSuMt2uwyzpLrUgsTfzypp/c2PH+Fljy8mLVW3STV14nw6eZUOdvKgWXm/uXqxS8big6U5Pt7M7QuGpC8oNC6WZ+sPdtJs0ymA12qRmm7zlLQ39S8ynHFUmaaY9/BW/Pv4+rsVMSrTKcgDaOPpST1XGxjolnP2FtO9JA450K8lV4aLBP1aW4r2RGz2tWn6IjZV6oNF5VbXdoPTo6S6kbyTSHKmtcABo0omxW1wsLG+knPKq8mjUBbmnqeLlNHkcdL1IsG8If2bKeqwFgcgbv7zkAARF2eGx06rbI80y7duZLkiqaYzLN9mKS8k2xNN2dRJxqH1DHn7zEcFdeA==
-Received: from TYZPR06MB4980.apcprd06.prod.outlook.com (2603:1096:400:1cc::10)
- by SEZPR06MB6815.apcprd06.prod.outlook.com (2603:1096:101:19d::13)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.21.339.8; Thu, 20 Aug
- 2026 01:00:11 +0000
-Received: from TYZPR06MB4980.apcprd06.prod.outlook.com
- ([fe80::ea8a:7cb7:4822:2fb3]) by TYZPR06MB4980.apcprd06.prod.outlook.com
- ([fe80::ea8a:7cb7:4822:2fb3%6]) with mapi id 15.21.0339.007; Thu, 20 Aug 2026
- 01:00:11 +0000
-From: Jamin Lin <jamin_lin@aspeedtech.com>
-To: =?utf-8?B?Q8OpZHJpYyBMZSBHb2F0ZXI=?= <clg@kaod.org>, Peter Maydell
- <peter.maydell@linaro.org>, Steven Lee <steven_lee@aspeedtech.com>, Troy Lee
- <leetroy@gmail.com>, Kane Chen <kane_chen@aspeedtech.com>, Andrew Jeffery
- <andrew@codeconstruct.com.au>, Joel Stanley <joel@jms.id.au>, Fabiano Rosas
- <farosas@suse.de>, Laurent Vivier <lvivier@redhat.com>, Paolo Bonzini
- <pbonzini@redhat.com>, "open list:ASPEED BMCs" <qemu-arm@nongnu.org>, "open
- list:All patches CC here" <qemu-devel@nongnu.org>
-CC: Troy Lee <troy_lee@aspeedtech.com>
-Subject: RE: [PATCH v1 3/5] hw/arm/aspeed_soc: Add the ACRY model to
- AspeedSoCState
-Thread-Topic: [PATCH v1 3/5] hw/arm/aspeed_soc: Add the ACRY model to
- AspeedSoCState
-Thread-Index: AQHdKuxXB3MNmnWAAEybbVlPXSYo1bal08aAgABUrDA=
-Date: Thu, 20 Aug 2026 01:00:11 +0000
-Message-ID: <TYZPR06MB498092F8F737DA51A9E28DF6FCA42@TYZPR06MB4980.apcprd06.prod.outlook.com>
-References: <20260813062359.425268-1-jamin_lin@aspeedtech.com>
- <20260813062359.425268-4-jamin_lin@aspeedtech.com>
- <932b207f-fdad-41ad-b220-9f50ef0bd712@kaod.org>
-In-Reply-To: <932b207f-fdad-41ad-b220-9f50ef0bd712@kaod.org>
-Accept-Language: zh-TW, en-US
-Content-Language: zh-TW
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-authentication-results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=aspeedtech.com;
-x-ms-publictraffictype: Email
-x-ms-traffictypediagnostic: TYZPR06MB4980:EE_|SEZPR06MB6815:EE_
-x-ms-office365-filtering-correlation-id: 6b04f5d6-e59d-4208-4e40-08defe566316
-x-ms-exchange-senderadcheck: 1
-x-ms-exchange-antispam-relay: 0
-x-microsoft-antispam: BCL:0;
- ARA:13230040|23010399003|376014|1800799024|7416014|366016|18002099003|22082099003|56012099006|38070700021|4143699003|10067099003|921020;
-x-microsoft-antispam-message-info: kW2dkfYcNs7Mh5glsGmu//J3Ao7fYUIA7MZeTeiOsOddjrVY+hgrmckI9Fh/fRgoZmsTmbLP596v5NEnLX0gHvR4U4991I/bKEAd+k3lB2bPplMr5Ro7Gr2XqFW7xLHIeW2v5WslHK6h72rC4PYuUDdKzWJ5HoMQsPw8gOMM9F1M6/bkbfQts5Sxx2TqjJG/XrpNH2228Cb2zmo46luIOiWlMYZg/qio4LKbVCHsYmz6ybtxbjvIDEsFOvnczfR0v+Ywi7g+m4ESNliciChRuxbzmuMXAlpANu0plSCyUU9fhKKyemzTb8s6SpQRVer83d60vgWSJbmxH/ASOTJkITjKX4NgCb8JfEL2sR9nraH8o70nKCIZZsmmvIpfXVaR1BI0PagPIsAtLB/VE5JU+8Srt0ItYyjQoGs3rrvoPsjZc04FUJHc775DnLyoZLYQIFN/FktOsm4IpYB1Izyv9UHeuyS/yjQj2JiUiNeBR4sqG/pRhjXiHaPCtSHuohil2rrhHnoS3cdbCPRWJAnmu6MeJXxAX5sXxg9kCIaNj0KmSn57syC3NPwfeq9pk6Dx3ybflNA0az4FIwOLC/ssOKuGBwBV2P4TY0CaDAXskn2LGYiwQ121AR7w1vuCpTChIvYLUKoW48wUPdUHstRsnWaQaWqjS5Tpf7VcwcBru0+khy5+KuCOmipIleEpo+rvhqTClXSBC0Owm/xmpTe7i6cd0RyGVx2qFV5Fp8NlB7tERyZ81K+Y9XAvlfgCo8zp
-x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:zh-tw; SCL:1;
- SRV:; IPV:NLI; SFV:NSPM; H:TYZPR06MB4980.apcprd06.prod.outlook.com; PTR:;
- CAT:NONE;
- SFS:(13230040)(23010399003)(376014)(1800799024)(7416014)(366016)(18002099003)(22082099003)(56012099006)(38070700021)(4143699003)(10067099003)(921020);
- DIR:OUT; SFP:1102; 
-x-ms-exchange-antispam-messagedata-chunkcount: 1
-x-ms-exchange-antispam-messagedata-0: =?utf-8?B?YjUwYnFkUkJEdVJLa2k4My9jTXlET1I2MXVoNVJGc2xPYjVhcFFhTzB6cGc0?=
- =?utf-8?B?V2NUS2VIT2tMTHpZM2JjdE00MWNXdXVPUGpUZy9DbTViK2RtYmt3MXFGMTFI?=
- =?utf-8?B?NnBNQnNCMXhvakFEU0pDK1Jld0EwM0p3cHBwNktBbDhBcm15TEswekM0aFAr?=
- =?utf-8?B?UEEvcFFWY3hLTi9uUVRwRjl1V2VuT3Z3bFNURVRGR1Rtd0dtY1ZGUEVZVkF1?=
- =?utf-8?B?ZmtnNE1zdmZmMlJycTNML09zUmFXb1JidUZIdGdFVFFiemgwZzVaMHU1aStI?=
- =?utf-8?B?emtSeGlHbzlpOURhb3MzeGpQYldweEFldzNGSTEweW1VbWNDbStkK3BzUWM3?=
- =?utf-8?B?UmQyYm8rZm9ucFR3d25kalp0N3djMlN5ekVIbnRlUjVBazNOUHRkTGJGdFVw?=
- =?utf-8?B?Lys0cDNaZEhDb3AyWEgxUUxaTGxLQTQ0M2V1TnJ2V1pPK2pnRUhWVWUvaWVq?=
- =?utf-8?B?NWRqRzFuMnZBUmEzUDlrNE9FQVVJcjVTQTMyV2F2eEpNbWNhS0xhOW81TlFk?=
- =?utf-8?B?R2dOajFObDAwUUs4c21vSTRPSnJRYmdCZmNEQ2krRjA0aXBBOGgyV2VucHRl?=
- =?utf-8?B?QUI2OHlzT29NOHVBZWVRZmxTTTNxNEJ1SjJpSmkxaDhHZDJUWXI1eGpWYTZK?=
- =?utf-8?B?V21QbUNHY29DSzJEUHluUHRtTUZZckExcnhjSDhwL3VmSDJ1Z0VYZDQxRlBm?=
- =?utf-8?B?NmIrdjR4YStxYjBwZy9MbUdLbkJqWjR6cWluVXNUTzc2NTBKeGxQM2RrRUh3?=
- =?utf-8?B?b0tucnRxaS9aeGFXZTRRL1FnNXB3VHVkSXJubkl2Zm9VVzd3MkhaWG9weXhF?=
- =?utf-8?B?UTJPdjZrUnFCOVYrUjZiVVJEU3AwZk85Z1lDcWxseGsxSkRMUTh4NFI5K2E5?=
- =?utf-8?B?SktvZS9aRWJXY0VzakZreXBWNE5lVUhkNEhHRCtvQy9iUkdla0RtV28wZHRr?=
- =?utf-8?B?YVB6MHNqRDEwS3pZQ1FsOExxcnJDa3NFRXpUQjFjTlZYWitIc1JqdDBZT0JX?=
- =?utf-8?B?bkQ2RFl4MHdBa3RXaFdzZnFDOXI2MkJXSUFKWVFVdjg4ME1MK2NpT0EwT2FF?=
- =?utf-8?B?ZUUwYXBWdlpmUEVQZDBKRkt4SU1pekZnTnovSXhNcXFsTzFZWktVSk9ZdllR?=
- =?utf-8?B?a2VyclgyeDlTNDVkWDEyZGVTNWxuaERyMmdHbmcvTzNQWGQ0VVErWTVUSVp3?=
- =?utf-8?B?RHlGaUZjVUdVc0xjbFUvY1o4Qjd5Z1lZRUlKMTZ5a3VvWTZTSC90TWhJbmpy?=
- =?utf-8?B?a3Y2RWFsK1ZLK2pTdktDdUNBU2xkUlpQS1dJYlc0bFltSHNpYzBzMGQyWXFY?=
- =?utf-8?B?OXE1UVlwRXd0Zkk3L0YwWnE4MDNBbksrTlRxRkNKa282MFVkeGExYmpLOWhK?=
- =?utf-8?B?dDJJUVRtVVh2aHJoeWxFTzErL0ozc2xpejZlZ2p4VitXOWRMLzh6d05TNU03?=
- =?utf-8?B?bG9hZWExY1N3WUE3Rm5qeWtabm0xM1F1QkxTUllqUGdaUmNkekh3WGpGdktz?=
- =?utf-8?B?Mi9OVVpVZHM2UE9JeWtjaVIxMTlkQ0tGYVVkUGVJeC8yeDN0c0h4YjVYcS9r?=
- =?utf-8?B?b0lLa2FiRnRFTDhKTDljZHF3a1pqZGR2L1Z2MDNsa0hKZlQrQXQreFJackZN?=
- =?utf-8?B?SDl0Mkt6NFcvU256WXJMcEdESmhUSDBFb1UrZ1BrSkJYeEhteWdORUZxbTk4?=
- =?utf-8?B?cEZNZTduUGk5cnVqY0RXT2xoaWhUVkJ5SXB6N2lnSVFhL1h6a2Y5MzZnL1Jt?=
- =?utf-8?B?TUljSGVldTkwcmNkT3hHT1NDNzlkTWtVU3RVNXg2S2ZlV01oUmFiQ0tRODg0?=
- =?utf-8?B?TnV0TTQrWUd4WWNrbWszMnFUV0lQQ0F5S0ZjZGJNN1l2UVNwbmZBeHpvWjB0?=
- =?utf-8?B?UDlhZVdnWGwwaVBQbXFhZVJiKytiRVp5VWJML0tGeUtwNGQ2VGhwS3ZoQ204?=
- =?utf-8?B?SHB6RGQxZXZZRmVtc2JhZXpEZ2JjdTBuVi9vWUlKTENFMjEybUxVa29EVDIv?=
- =?utf-8?B?NjB6VWJBWTlYeEVVdWVmdWlGcDNUbkQ3TXNtU0ZZWElscHhEeDNhSDE4cnZn?=
- =?utf-8?B?eTZSSloxeHJLZ3NVMTVTdGxWOFpIZUZlNC8xcU9IVy9SMnpVUkNqNWRQUkE5?=
- =?utf-8?B?a3lQWnBMdmNnM3BRSng0MFl1S1V2R0NLemdZc3lzZE9yWXdVQWV3VXRpQ0hr?=
- =?utf-8?B?MGVDSVNPbjl2a0tlYXc3NWVHMlpDVDhqMUFLMUZ1NXpVMHJ1eFdEeU5BSXpH?=
- =?utf-8?B?QWROcXc1YjRueTVKWmY1dldONlp3VmFrNGZjblFsazlzUkh0Z2FzcHp1Ulkx?=
- =?utf-8?B?aTBxVDcvSW84RE9wM3JmM1cvWC8vV3V4L3crWS84S2RRU1dtZzNKQT09?=
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+ (Exim 4.90_1) (envelope-from <kylefoxaustin.github@gmail.com>)
+ id 1wwsqA-0001w2-Uk
+ for qemu-arm@nongnu.org; Wed, 19 Aug 2026 22:49:15 -0400
+Received: from mail-yw1-x112b.google.com ([2607:f8b0:4864:20::112b])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <kylefoxaustin.github@gmail.com>)
+ id 1wwsq8-0000as-Qx
+ for qemu-arm@nongnu.org; Wed, 19 Aug 2026 22:49:14 -0400
+Received: by mail-yw1-x112b.google.com with SMTP id
+ 00721157ae682-836cde02992so23854217b3.2
+ for <qemu-arm@nongnu.org>; Wed, 19 Aug 2026 19:49:12 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=gmail.com; s=20251104; t=1787194152; x=1787798952; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+ :message-id:reply-to:content-type;
+ bh=Sn+x+uKMH7j7KOVVPKrmPvWpinOYdrhztY6mwQ/cHDA=;
+ b=KtRCi2dhNwNppuJgTzcVYX/cg8I3tRSMEKnuVIe28BiCaQTGCGFkFysjfHZ6YkDiY8
+ SrsPDVDG/LK4d0BLuENoFxnPhlCdtdcnTUkzwENp1Pqr61iKfdA5te6eFCsAyTGY3ulu
+ uvguezXj4dK6sy/dDpzBFEjmoL1ota4BAQdtC9KUaSK1P6deTPSWVGrVugiRZdek9XZd
+ cEPiz+iadvTcFl2LHmwwxqz7I6a7dZJrErxQZGqtPuFPI0k1bFjbz68zZCuoK2bzItbe
+ CvHXqfnmkXsjrBMLLQD+bBqjOLCiKVK44nsnZDSh2jJiPjkopJsW4f2vqlkKAu/fbc8R
+ /rtg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20251104; t=1787194152; x=1787798952;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
+ :to:cc:subject:date:message-id:reply-to:content-type;
+ bh=Sn+x+uKMH7j7KOVVPKrmPvWpinOYdrhztY6mwQ/cHDA=;
+ b=g7AoWTlJL9f2vBCCfZLXWVjdzUNFz2lhXXUMIFvtC4V/xK9/NEI7y1cXaTcHWiuCy/
+ ao5mvBao6t/X8JKixoOKiE/7VyoScnOkkzlBzSZj+gy7PPIpemCW+EQb+ZPR7sTm8s3g
+ w+tA6/zFod5+x4vOP2Io0lx4iLTZFwvYcPRTI7DvpVW+UEDc6hYh4Vif6k/elssFdLji
+ tKTT73BZjtfCfHFuJe3HTqxJpxxwa3VLhKtaw6HJyNr/1u+Ipx+FHWTZ3d6T5Lm/J9ej
+ h8Dey2i5+f5PytGGJQKGikurWBWoeReCWmW12Ukgyh15oThkz08yriXEaM1lSZ8vEKXq
+ pliw==
+X-Forwarded-Encrypted: i=1;
+ AHgh+RqaO/veXo0uAifB2G2gOji0UZlSpGCu7ZGHn/V4HGZxJZX0nKeoPIZpyI1mAduC2nO+ANQ9Iy+EGw==@nongnu.org
+X-Gm-Message-State: AFuF++mUHw2ORUjQ1hKKFGhJj4IzYKFgj4gT5GaLcJ4lpW6eN+nKe5rH
+ Gjp6/EZol7npeKJkT/YLZPkGvAYxYEtDy2tlKv6TWcSjzgaDLhG6cudp
+X-Gm-Gg: AR+sD12IJCTANV1F00d2oN2BpqtUiWWl2B9BjOTvlEs+x6UW1ftuZ2OyHeLC8GEpwoo
+ IH2PsjX3Uf/UiV3cXQ5OgD7wLewRJU83TC54lM29eFPKnTcTtQKnoxOO4AnwSPNHvOTsG6GX+1S
+ DXLEtw3iHlbERbYqISXPDTDOtmPTNgilhS2SWbq7okYTiLWOT6ITLEJ/OLHTMNsEbEqb/pYFIbe
+ GQFRCxPTyB1PaPderJHJ7FRF0uGlTFncM2qzyxY2sExJjGXVacNOnG4GTwMdYzqKIG8Jrcen8MH
+ l5gisZh/jQUJTX4HY+ng4PUWtWyNixqpOgpp4HInNyHGUBmhtIkmrsBce+5uuZeS6iFj93zMCiS
+ YX8UhGiKaTp0IyHINrfjRwp8AKHbZr4Fnqrxa023OEDgWPjwgrJu9i0eP5GWFw10Z7ctu3wB6Rj
+ puxz7QMfIoaTQvZLpGoNbgAP3i3GQ8tg4hznoEYa2hzuuafhiCKpdEFSScD+NUqqTQD5dTEQ7Z1
+ 4zqwknkDDc7/GDl0rXCWy8JNe5wbRd6vQBmPgOmqMdtyIPi5CaACA==
+X-Received: by 2002:a05:690e:2669:b0:66c:d36f:d2ef with SMTP id
+ 956f58d0204a3-66cd36fd386mr1346477d50.32.1787194151717; 
+ Wed, 19 Aug 2026 19:49:11 -0700 (PDT)
+Received: from skippy.localdomain (99-61-67-1.lightspeed.austtx.sbcglobal.net.
+ [99.61.67.1]) by smtp.gmail.com with ESMTPSA id
+ 956f58d0204a3-66ccafd03basm1986454d50.1.2026.08.19.19.49.10
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Wed, 19 Aug 2026 19:49:10 -0700 (PDT)
+From: Kyle Fox <kylefoxaustin.github@gmail.com>
+To: qemu-devel@nongnu.org
+Cc: Kyle Fox <kylefoxaustin.github@gmail.com>,
+ Paolo Bonzini <pbonzini@redhat.com>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ qemu-arm@nongnu.org (open list:ARM TCG CPUs)
+Subject: [PATCH 15/16] hw/arm: add i.MX 95 19x19 EVK board
+Date: Wed, 19 Aug 2026 21:48:33 -0500
+Message-Id: <20260820024834.3286721-16-kylefoxaustin.github@gmail.com>
+X-Mailer: git-send-email 2.34.1
+In-Reply-To: <20260820024834.3286721-1-kylefoxaustin.github@gmail.com>
+References: <20260820024834.3286721-1-kylefoxaustin.github@gmail.com>
 MIME-Version: 1.0
-X-Exchange-RoutingPolicyChecked: QIsyTB1xuIju4DhpQvFB3BAozZmfNnHUZ/567tFYsFaFgRBDjhwKnYuzwfaQat58niTiSuS7bCRtJRpbneK2wgkOv0Te3gqDki9tm4g+y5BExDFRLeDb96Fl0FdtPQXfwI32MJ5QdIi1WoGiGsFHpJ6KLxCzwsJiPBPOEGUVjv6pr7/oZ3u3FMDzrF/ooe6fUpMwoDU4SgseIfcO3ddaofVjeNBo3oAL1/h9RYvNbueROEZkLnv5fRG8pMrVqR3QnLe10E3TCgU3l/W3o+sT72d2nZzlre26u6RGiMsfc/CUcc7kgVInBo4tOzI99w+ROAzRRWLSC2nJI+gFmJ561A==
-X-OriginatorOrg: aspeedtech.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-AuthSource: TYZPR06MB4980.apcprd06.prod.outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 6b04f5d6-e59d-4208-4e40-08defe566316
-X-MS-Exchange-CrossTenant-originalarrivaltime: 20 Aug 2026 01:00:11.6120 (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: 43d4aa98-e35b-4575-8939-080e90d5a249
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: HAHJdaWHSiF82393vos0AcuYlIVHms7u84C3KHL2lQNK7eSEEdrqaFcEZQAHOCnl6y4El8bvPWw4KLII+UDU9EHPRSVV5wW26xTlLKZwFFY=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: SEZPR06MB6815
-Received-SPF: pass client-ip=2a01:111:f403:c40f::6;
- envelope-from=jamin_lin@aspeedtech.com;
- helo=SEYPR02CU001.outbound.protection.outlook.com
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2607:f8b0:4864:20::112b;
+ envelope-from=kylefoxaustin.github@gmail.com; helo=mail-yw1-x112b.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_PASS=-0.001,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -160,31 +105,188 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-SGkgQ8OpZHJpYw0KDQo+IFN1YmplY3Q6IFJlOiBbUEFUQ0ggdjEgMy81XSBody9hcm0vYXNwZWVk
-X3NvYzogQWRkIHRoZSBBQ1JZIG1vZGVsIHRvDQo+IEFzcGVlZFNvQ1N0YXRlDQo+IA0KPiBPbiA4
-LzEzLzI2IDA4OjI0LCBKYW1pbiBMaW4gd3JvdGU6DQo+ID4gSW50cm9kdWNlIHRoZSBBU1BFRURf
-REVWX0FDUlkgZW51bSBzbG90IGFuZCBhZGQgdGhlIEFDUlkgbW9kZWwgc3RhdGUNCj4gPiB0byBB
-c3BlZWRTb0NTdGF0ZS4NCj4gDQo+IEkgdGhpbmsgdGhpcyBjYW4gYmUgbWVyZ2VkIGluIHRoZSBm
-b2xsb3dpbmcgcGF0Y2guDQoNClRoYW5rcyBmb3IgdGhlIHN1Z2dlc3Rpb24gYW5kIHJldmlldy4N
-CldpbGwgZG8uDQoNCj4gDQo+IFRoYW5rcw0KPiANCj4gQy4NCj4gDQo+IA0KPiA+DQo+ID4gU2ln
-bmVkLW9mZi1ieTogSmFtaW4gTGluIDxqYW1pbl9saW5AYXNwZWVkdGVjaC5jb20+DQo+ID4gLS0t
-DQo+ID4gICBpbmNsdWRlL2h3L2FybS9hc3BlZWRfc29jLmggfCAzICsrKw0KPiA+ICAgMSBmaWxl
-IGNoYW5nZWQsIDMgaW5zZXJ0aW9ucygrKQ0KPiA+DQo+ID4gZGlmZiAtLWdpdCBhL2luY2x1ZGUv
-aHcvYXJtL2FzcGVlZF9zb2MuaCBiL2luY2x1ZGUvaHcvYXJtL2FzcGVlZF9zb2MuaA0KPiA+IGlu
-ZGV4IGNkNjhjN2YxY2EuLjJlNzk4N2Y5ZGMgMTAwNjQ0DQo+ID4gLS0tIGEvaW5jbHVkZS9ody9h
-cm0vYXNwZWVkX3NvYy5oDQo+ID4gKysrIGIvaW5jbHVkZS9ody9hcm0vYXNwZWVkX3NvYy5oDQo+
-ID4gQEAgLTI1LDYgKzI1LDcgQEANCj4gPiAgICNpbmNsdWRlICJody9pMmMvYXNwZWVkX2kyYy5o
-Ig0KPiA+ICAgI2luY2x1ZGUgImh3L2kzYy9hc3BlZWRfaTNjLmgiDQo+ID4gICAjaW5jbHVkZSAi
-aHcvc3NpL2FzcGVlZF9zbWMuaCINCj4gPiArI2luY2x1ZGUgImh3L21pc2MvYXNwZWVkX2Fjcnku
-aCINCj4gPiAgICNpbmNsdWRlICJody9taXNjL2FzcGVlZF9oYWNlLmgiDQo+ID4gICAjaW5jbHVk
-ZSAiaHcvbWlzYy9hc3BlZWRfc2JjLmgiDQo+ID4gICAjaW5jbHVkZSAiaHcvbWlzYy9hc3BlZWRf
-c2xpLmgiDQo+ID4gQEAgLTgxLDYgKzgyLDcgQEAgc3RydWN0IEFzcGVlZFNvQ1N0YXRlIHsNCj4g
-PiAgICAgICBBc3BlZWRTQ1VTdGF0ZSBzY3U7DQo+ID4gICAgICAgQXNwZWVkU0NVU3RhdGUgc2N1
-aW87DQo+ID4gICAgICAgQXNwZWVkSEFDRVN0YXRlIGhhY2U7DQo+ID4gKyAgICBBc3BlZWRBQ1JZ
-U3RhdGUgYWNyeTsNCj4gPiAgICAgICBBc3BlZWRYRE1BU3RhdGUgeGRtYTsNCj4gPiAgICAgICBB
-c3BlZWRBRENTdGF0ZSBhZGM7DQo+ID4gICAgICAgQXNwZWVkU01DU3RhdGUgZm1jOw0KPiA+IEBA
-IC0yNzAsNiArMjcyLDcgQEAgZW51bSB7DQo+ID4gICAgICAgQVNQRUVEX0RFVl9FTU1DLA0KPiA+
-ICAgICAgIEFTUEVFRF9ERVZfS0NTLA0KPiA+ICAgICAgIEFTUEVFRF9ERVZfSEFDRSwNCj4gPiAr
-ICAgIEFTUEVFRF9ERVZfQUNSWSwNCj4gPiAgICAgICBBU1BFRURfREVWX0RQTUNVLA0KPiA+ICAg
-ICAgIEFTUEVFRF9ERVZfRFAsDQo+ID4gICAgICAgQVNQRUVEX0RFVl9JM0MsDQoNCg==
+The i.MX 95 19x19 EVK board (machine type imx95-19x19-evk).
+Instantiates the SoC, sets up the LPDDR5 DRAM, and provides the direct
+-kernel/-dtb/-initrd Linux boot path alongside the System Manager
+firmware loaded on the M33. This is the user-facing machine type.
+
+Signed-off-by: Kyle Fox <kylefoxaustin.github@gmail.com>
+---
+ hw/arm/Kconfig     |   7 +++
+ hw/arm/imx95-evk.c | 136 +++++++++++++++++++++++++++++++++++++++++++++
+ hw/arm/meson.build |   1 +
+ 3 files changed, 144 insertions(+)
+ create mode 100644 hw/arm/imx95-evk.c
+
+diff --git a/hw/arm/Kconfig b/hw/arm/Kconfig
+index 7f1c0723ec0..d93808a48ee 100644
+--- a/hw/arm/Kconfig
++++ b/hw/arm/Kconfig
+@@ -764,3 +764,10 @@ config FSL_IMX95
+     select IMX_LPI2C
+     select SDHCI
+     select UNIMP
++
++config FSL_IMX95_EVK
++    bool
++    default y
++    depends on AARCH64
++    depends on TCG
++    select FSL_IMX95
+diff --git a/hw/arm/imx95-evk.c b/hw/arm/imx95-evk.c
+new file mode 100644
+index 00000000000..470ca112376
+--- /dev/null
++++ b/hw/arm/imx95-evk.c
+@@ -0,0 +1,136 @@
++/*
++ * NXP i.MX 95 19x19 Evaluation Kit (LPDDR5) - QEMU machine
++ *
++ * Modeled on hw/arm/imx8mp-evk.c by Bernhard Beschow
++ *
++ * Copyright (c) 2026, Kyle Fox
++ *
++ * SPDX-License-Identifier: GPL-2.0-or-later
++ *
++ * Instantiates the SoC, attaches DDR, and hands control to
++ * arm_load_kernel() so -kernel works.
++ */
++
++#include "qemu/osdep.h"
++#include "system/address-spaces.h"
++#include "hw/arm/boot.h"
++#include "hw/arm/fsl-imx95.h"
++#include "hw/arm/machines-qom.h"
++#include "hw/core/boards.h"
++#include "hw/core/qdev-properties.h"
++#include "system/kvm.h"
++#include "system/qtest.h"
++#include "qemu/error-report.h"
++#include "qapi/error.h"
++
++static void imx95_evk_init(MachineState *machine)
++{
++    static struct arm_boot_info boot_info;
++    FslImx95State *s;
++
++    if (kvm_enabled()) {
++        error_report("The imx95-19x19-evk machine requires TCG: it emulates "
++                     "Cortex-M33 and Cortex-M7 cores that KVM cannot run");
++        exit(1);
++    }
++
++    if (machine->ram_size > FSL_IMX95_RAM_SIZE_MAX) {
++        error_report("RAM size " RAM_ADDR_FMT
++                     " above max supported (0x%" PRIx64 ")",
++                     machine->ram_size, (uint64_t)FSL_IMX95_RAM_SIZE_MAX);
++        exit(1);
++    }
++
++    /*
++     * The board presets the DTB at RAM_START + 128 MiB and the initrd at
++     * RAM_START + 256 MiB (see below), so require enough RAM to hold them.
++     */
++    if (machine->ram_size < FSL_IMX95_RAM_SIZE_MIN) {
++        error_report("RAM size " RAM_ADDR_FMT
++                     " below min supported (0x%" PRIx64 ")",
++                     machine->ram_size, (uint64_t)FSL_IMX95_RAM_SIZE_MIN);
++        exit(1);
++    }
++
++    boot_info = (struct arm_boot_info) {
++        .loader_start = FSL_IMX95_RAM_START,
++        .board_id     = -1,
++        .ram_size     = machine->ram_size,
++        .psci_conduit = QEMU_PSCI_CONDUIT_SMC,
++        /*
++         * The default arm_load_kernel() heuristic lands the initrd (and the
++         * DTB right after it) at loader_start + 128 MiB == 0x88000000. That
++         * is exactly where the NXP BSP device tree places the Cortex-M7
++         * remoteproc carveout (vdev vrings + rsc-table @0x88220000). The
++         * collision makes Linux reserve those pages for the initrd/FDT, so
++         * the later reserved-memory no-map pass fails (-EBUSY) and imx-rproc
++         * cannot ioremap the rsc-table (probe fails with -ENOMEM). Force the
++         * initrd/DTB up to 0x90000000, in the free gap above the M7 carveout
++         * and below the GPU/VPU carveouts at 0xa0000000.
++         */
++        .initrd_start = FSL_IMX95_RAM_START + 256 * MiB,
++    };
++
++    s = FSL_IMX95(object_new(TYPE_FSL_IMX95));
++    object_property_add_child(OBJECT(machine), "soc", OBJECT(s));
++    sysbus_realize_and_unref(SYS_BUS_DEVICE(s), &error_fatal);
++
++    memory_region_add_subregion(get_system_memory(), FSL_IMX95_RAM_START,
++                                machine->ram);
++
++    if (!qtest_enabled()) {
++        arm_load_kernel(&s->cpu[0], machine, &boot_info);
++
++        /*
++         * arm_load_kernel() registers its boot reset hook on every CPU in
++         * the system and treats all non-boot cores as A-profile PSCI
++         * secondaries. That is correct for the five A55 secondaries, but
++         * the Cortex-M33 SM core and the Cortex-M7 RT core are not part of
++         * the A55 boot flow - each boots from its own ITCM vector table.
++         * Detach them from the A-profile boot machinery so their reset just
++         * runs the normal M-profile vector-table reset. Whether each then
++         * actually runs is decided by the SoC's M33/M7 reset hooks (only if
++         * firmware was loaded into the respective ITCM).
++         */
++        if (s->m33.cpu) {
++            s->m33.cpu->env.boot_info = NULL;
++        }
++        if (s->m7.cpu) {
++            s->m7.cpu->env.boot_info = NULL;
++        }
++    }
++}
++
++static const char *imx95_evk_get_default_cpu_type(const MachineState *ms)
++{
++    return ARM_CPU_TYPE_NAME("cortex-a55");
++}
++
++static const char * const imx95_evk_valid_cpu_types[] = {
++    ARM_CPU_TYPE_NAME("cortex-a55"),
++    NULL
++};
++
++static void imx95_19x19_evk_machine_init(MachineClass *mc)
++{
++    mc->desc                  = "NXP i.MX 95 19x19 EVK (LPDDR5)";
++    mc->init                  = imx95_evk_init;
++    /*
++     * Total vCPUs = 6 A55 + 1 Cortex-M33 System Manager core + 1 Cortex-M7
++     * real-time core that the SoC always instantiates. TCG sizes its
++     * per-CPU context table from the resolved smp.max_cpus, which defaults
++     * to smp.cpus when -smp is not given - so both the default and the
++     * max must include the M33 and the M7, otherwise the 8th CPU's
++     * tcg_register_thread() asserts. The A55 cluster size is fixed in
++     * the SoC regardless of -smp; this count is really "A55 cluster +
++     * SM core + RT core".
++     */
++    mc->default_cpus          = FSL_IMX95_NUM_A55_CPUS + 2;
++    mc->max_cpus              = FSL_IMX95_NUM_A55_CPUS + 2;
++    mc->default_ram_id        = "imx95-19x19-evk.ram";
++    mc->default_ram_size      = 8 * GiB;   /* 19x19 EVK has 8 GiB LPDDR5 */
++    mc->get_default_cpu_type  = imx95_evk_get_default_cpu_type;
++    mc->valid_cpu_types       = imx95_evk_valid_cpu_types;
++}
++
++DEFINE_MACHINE_AARCH64("imx95-19x19-evk", imx95_19x19_evk_machine_init)
+diff --git a/hw/arm/meson.build b/hw/arm/meson.build
+index 96fef4c5b5f..cdb61fa1612 100644
+--- a/hw/arm/meson.build
++++ b/hw/arm/meson.build
+@@ -118,5 +118,6 @@ arm_common_ss.add(when: ['CONFIG_AXIADO_EVK', 'TARGET_AARCH64'], if_true: files(
+ 
+ arm_common_ss.add(files('boot.c'))
+ arm_common_ss.add(when: 'CONFIG_FSL_IMX95', if_true: files('fsl-imx95.c'))
++arm_common_ss.add(when: 'CONFIG_FSL_IMX95_EVK', if_true: files('imx95-evk.c'))
+ 
+ hw_common_arch += {'arm': arm_common_ss}
+-- 
+2.34.1
+
 

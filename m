@@ -4,93 +4,96 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2C073C5DF94
-	for <qemu-arm@archiver.kernel.org>; Fri, 21 Aug 2026 16:45:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D32CDC5DF94
+	for <qemu-arm@archiver.kernel.org>; Fri, 21 Aug 2026 17:08:31 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wxSMM-0007UV-Bi; Fri, 21 Aug 2026 12:44:50 -0400
+	id 1wxSiP-0006XK-0V; Fri, 21 Aug 2026 13:07:37 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1wxSMK-0007Tf-Fb
- for qemu-arm@nongnu.org; Fri, 21 Aug 2026 12:44:48 -0400
-Received: from mail-pf1-x434.google.com ([2607:f8b0:4864:20::434])
+ id 1wxSiN-0006WK-Em
+ for qemu-arm@nongnu.org; Fri, 21 Aug 2026 13:07:35 -0400
+Received: from mail-pf1-x42e.google.com ([2607:f8b0:4864:20::42e])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1wxSMI-0000t6-0E
- for qemu-arm@nongnu.org; Fri, 21 Aug 2026 12:44:48 -0400
-Received: by mail-pf1-x434.google.com with SMTP id
- d2e1a72fcca58-84a4d8fd6ecso1239351b3a.1
- for <qemu-arm@nongnu.org>; Fri, 21 Aug 2026 09:44:45 -0700 (PDT)
+ id 1wxSiK-000629-Hd
+ for qemu-arm@nongnu.org; Fri, 21 Aug 2026 13:07:35 -0400
+Received: by mail-pf1-x42e.google.com with SMTP id
+ d2e1a72fcca58-84e27035206so450513b3a.3
+ for <qemu-arm@nongnu.org>; Fri, 21 Aug 2026 10:07:32 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1787330684; x=1787935484; darn=nongnu.org;
+ d=linaro.org; s=google; t=1787332051; x=1787936851; darn=nongnu.org;
  h=content-transfer-encoding:content-type:in-reply-to:content-language
  :from:references:cc:to:subject:user-agent:mime-version:date
  :message-id:from:to:cc:subject:date:message-id:reply-to:content-type;
- bh=AbqaBiunWuN/LvRZX1FaCwbCv223Zk9IBDABCk4POsg=;
- b=qq8EIPytYa/Voz7Gua0V72FgFgKBgjJ4xgl2jjCWqN0mkkzIABNnmMHXN5d/4MrWo4
- pd7DNF6fC45+iDky4XJ4zWA85+5N9nac7H7Cs+3yY8TxdDcM244QxKxN/gI/6IoUv5rS
- sX8C+i+JUdMzC2snzktmlrrGJEXk/yYhMcz0FB+AKs7jaPLR98fkfhgcpRZ0gvbuZc31
- V/CH9eNUS78BuvrfuVZdFVpaEoepBj+FLJJrIvs/jTTonIuRUQ2cHOwhr4i0PLy6ZAzD
- hJwUcSxL2jMWMIgA/Kvt8Dky5OJ2Ww2AiZJ6Nz8LVHpwijTCsk6eC0iDzaznZLm3Q4Ww
- Lo2A==
+ bh=iwoY3fBtLl9fRUQCLLgjCX29uMCeiWJhu1A2Z6V/jpY=;
+ b=mbW+cRXnbJGB61egv1/zXf9TTa5c4R7KAQoAvrfti9+nDWMFgfFaNUyZ3nL40+j2ZU
+ UdrsPiFBUtwSZ88Fva7WneS+Tvrc6gwWwMulDEHdb+K19mEV6yHBE62OB6vo6KX76qGc
+ KhfzVFpvZWm23b7JMsolaaG3T3pQsRj4EbzQMhYQE6SUAeeeCuSu616aHoASN5fxLEox
+ N/Ks4Abelx9SUZmNxJfAUY8x50TTDfsJL1/0aJoFfeSV7p+NXQBtrc8OaDKGjQNA1pFo
+ tcs2nn6vpWUGqpkSjAcmty0be1+HEddt/+vQlrlTroLjhLTBNByaco4UOZWHNbz2NyX2
+ ze+Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1787330684; x=1787935484;
+ d=1e100.net; s=20251104; t=1787332051; x=1787936851;
  h=content-transfer-encoding:content-type:in-reply-to:content-language
  :from:references:cc:to:subject:user-agent:mime-version:date
  :message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
  :message-id:reply-to:content-type;
- bh=AbqaBiunWuN/LvRZX1FaCwbCv223Zk9IBDABCk4POsg=;
- b=QqwPWxlAbkLAHTDh4VsIFXFZDVSNa8K/3aWItOHmYIjQBhpUTRk2moSpOktTpj28I3
- lNC8e37bRewiN2XvxJBJV+3YlXszQLyfq6wHP52BeKuCmKJ0gMDLwFOD2IOUUfn0ZTZ6
- 5I/EoPn3xOPARhGD0sAsFesTgPepXZsJOrV51d3PZvoBZ/9Byw/uWCsQvFNLl4Ud0dC0
- JNBnC5doAN/ApCD9v4H8k6rAnqqQCMmA9zM8ziXzjTo8fksupDb7Ao/e6kTVzyZZqWvj
- /5v81lU8vv8lioI66hR9sxM8p/9rpSzHi2o3bpnEyTdcOK4GskYx5d7DFjkjZYpEKMfm
- kL1A==
+ bh=iwoY3fBtLl9fRUQCLLgjCX29uMCeiWJhu1A2Z6V/jpY=;
+ b=dI+UUS7R3XUkyvCIMyaF46KrR3fquL3ssO+89bgsLqfbhlg/cv87FNS14e0TfaUon+
+ 5lYFpjFx6Rm+Kh0vwrKSckYIBPg0fMcLo7TShAVyHqrd4aXUt7E10asAJHhc5QlsP7Hr
+ epTVhxiE3pLwPwing9lbVWSI+9osJJVAB68A7EsK2Cq/hCkmuNXpcKQUKCSXYVXD3QlU
+ Rd51yfUK4N+LCUq85qYocKudDpXymAXXCFbAfQx0G6r89eVqO5Odnuz8jnkcYGAGWCwr
+ JIecEGciqQoNE5JjihjJkgG4PjbmtKWvxIWJzdSSRgY58njQ9Igypfs+Ypti04Le1JUe
+ lA/g==
 X-Forwarded-Encrypted: i=1;
- AHgh+Ro/roYcN/whTWjVxu4B+rUU8uSag2eYLnhJmPEdhQj0IgKqm3mYCvcJgxWJgFDkOKu3J7SVTnbkIQ==@nongnu.org
-X-Gm-Message-State: AFuF++nzU3wGqiIgv1uJM3etBoZrkbfq2jrOvy+LsHCa1hVHKE9SL/2u
- q2hfvDtcDGcxGBbjljjDlNeSOP59lfAKgqJdO+CmdrX1cRAAotw2xmwAunMkvVqsK/o=
-X-Gm-Gg: AR+sD13DLc2FdGi3Gg0l0vCvofBvmohGbKc5Ae8ych2gPSwmp9QgHVYivuurOnoXSuq
- bTNbzcA6RTUC+34hMnnnF5OFH0r/JIMS7PTxvq9h4MW8MGPor7RxDNQI0hZrHKUWgSfmV0xJ3Uf
- pqEnJx59S5xx5ouP2ipXvYLT1BFuKN7f8/Xrf1EJrA/Y3ZHbly8Ldc5FohjN8tM7OVofeb92Q2O
- Ias0MCyzDh7Bee+rFAXWJmTnQ7oGkvQkR9CVhRc0pdoM3t07QCb87xkei+eBvK98AsY/E92cOq9
- rlyl91RRBwAyq7cflJveg+Ltg9vWq8pRfkdPKrRrZp6QSYui9ROuZU4rwtmPtzW+6oFXr+XiXcC
- w8qr4dHoGrl0/ynyTA7E6/pysUk49oEVbvVsyEpXoFsppnQdWSki9gMKvUfzLuYvTE0RYADL27L
- wf0ZgMPFKrtATGQDXQo7vCVVuvTt9huO5hzKFw/hLvpKmAYHSRm+GFn7CTjonozVog/2uaPwole
- uU+
-X-Received: by 2002:a05:6a00:4195:b0:84f:b01d:3693 with SMTP id
- d2e1a72fcca58-851fa05af7dmr13403307b3a.15.1787330684425; 
- Fri, 21 Aug 2026 09:44:44 -0700 (PDT)
+ AHgh+Rr8bOEPEJ1Vaqn/uV41E1ldDt5knDKntAFDW1f2PFYs+qiE8CZcvIC8yeueTqQBuJwyChw3Vgn2Zw==@nongnu.org
+X-Gm-Message-State: AFuF++kRqLx94Xt1oYFn87Qzy9QCqYAOcb4YOK4HH8NdE49G9TNysQDT
+ u1v3zMDEJTLec/3/VFXd2iz8iDqhBzsmyYz1CBq3c8nXCeRfHuUks7XsAtxyX41POBE=
+X-Gm-Gg: AR+sD11jHHqPDhmasXHdJyELoREan+xusH1AGtLNT6Pnf6Nj2q4sCaJkLrEN1sPRc42
+ I1AUgHTVHPmvyo7SQvKbxPiz3wLxwtda0nZ+EQntgWxlB6ojlsu5G068jB8RrGoeXTk2Gqvmufc
+ IWhgO5dpHyCPWLWiGvDvjFP+ba/TS5L9mFbi8n9CP2tBamRKcHu1BVetmu1BFXxXeTTKPb6qdsR
+ cRyrAeJcXM55luGunmlfa4tMA+jeaO3K0dD4Id2XNYf8AHA6mDE7EoA34ppTzP/+Wq0DgAhuu9G
+ xvAHKXr6D16oJU9sgCcmrdRAqyMZJlGp8vu8sSyUi7pKk6X6hAen7SDZ064zAqv33Q9CUR5zucm
+ uaYDLzKFDGyzf/cfX/paWotQqUnmrWRcFN2pOZ0VGOyQyF9n6iDEdO7dK++DY6q4sqeTlQUlLmq
+ OzZkUr7QWDiE6OpJU4ug64C6SG6ozGSxMOmj4kZwqBVbFl4dHPlZhtgL48HWz0ivzwOv7f64SLI
+ oLk
+X-Received: by 2002:a05:6a00:4c98:b0:84f:dc19:b77d with SMTP id
+ d2e1a72fcca58-851fa011e87mr14038569b3a.12.1787332050732; 
+ Fri, 21 Aug 2026 10:07:30 -0700 (PDT)
 Received: from [172.20.6.168] ([108.174.179.84])
  by smtp.gmail.com with ESMTPSA id
- d2e1a72fcca58-851d366d65dsm3271690b3a.50.2026.08.21.09.44.43
+ d2e1a72fcca58-851d366eebfsm3124052b3a.52.2026.08.21.10.07.29
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Fri, 21 Aug 2026 09:44:44 -0700 (PDT)
-Message-ID: <c9988841-9b74-4274-bf54-b7f5d411b70d@linaro.org>
-Date: Fri, 21 Aug 2026 09:44:42 -0700
+ Fri, 21 Aug 2026 10:07:30 -0700 (PDT)
+Message-ID: <bde71c0c-ba94-4bd6-9ef9-e868fbd8562e@linaro.org>
+Date: Fri, 21 Aug 2026 10:07:27 -0700
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
 Subject: Re: [PATCH v3 02/15] cpus: Add const-qualified CPU environment
  accessors
 To: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@oss.qualcomm.com>,
- qemu-devel@nongnu.org
+ qemu-devel@nongnu.org, =?UTF-8?Q?Marc-Andr=C3=A9_Lureau?=
+ <marcandre.lureau@redhat.com>, Pierrick Bouvier <pierrick.bouvier@linaro.org>
 Cc: Paolo Bonzini <pbonzini@redhat.com>, qemu-arm@nongnu.org,
  qemu-s390x@nongnu.org, qemu-riscv@nongnu.org, qemu-ppc@nongnu.org,
  =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- =?UTF-8?Q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>,
  =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@mailo.com>,
- Zhao Liu <zhao1.liu@intel.com>
+ Zhao Liu <zhao1.liu@intel.com>, =?UTF-8?Q?Alex_Benn=C3=A9e?=
+ <alex.bennee@linaro.org>, Eric Blake <eblake@redhat.com>
 References: <20260821104950.32108-1-philmd@oss.qualcomm.com>
  <20260821104950.32108-3-philmd@oss.qualcomm.com>
+ <3c9fe944-2b51-412c-bd30-26bf013cff46@oss.qualcomm.com>
+ <22188776-edeb-44e6-b79d-0b877292221d@oss.qualcomm.com>
 From: Richard Henderson <richard.henderson@linaro.org>
 Content-Language: en-US
-In-Reply-To: <20260821104950.32108-3-philmd@oss.qualcomm.com>
+In-Reply-To: <22188776-edeb-44e6-b79d-0b877292221d@oss.qualcomm.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::434;
- envelope-from=richard.henderson@linaro.org; helo=mail-pf1-x434.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::42e;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pf1-x42e.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -113,11 +116,33 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On 8/21/26 03:49, Philippe Mathieu-Daudé wrote:
-> +#define cpu_env(cpu) _Generic(*(cpu), \
-> +        /* We validate that CPUArchState follows CPUState in cpu-target.c */ \
+On 8/21/26 08:51, Philippe Mathieu-Daudé wrote:
+> No, this now fails distinctly on Ubuntu 24.04:
+> 
+> In file included from ../accel/tcg/tcg-runtime.c:26:
+> ../accel/tcg/tcg-runtime.c: In function ‘helper_exit_atomic’:
+> /home/runner/work/qemu/qemu/include/exec/cpu-common.h:100:31: error: expected expression 
+> before ‘typeof’
+>    100 | #define env_cpu(env) _Generic(typeof(*env), \
+>        |                               ^~~~~~
+> ../accel/tcg/tcg-runtime.c:135:26: note: in expansion of macro ‘env_cpu’
+>    135 |     cpu_loop_exit_atomic(env_cpu(env), GETPC());
+>        |                          ^~~~~~~
 
-Out of date -- currently in target-info-stub.c.
+Yeah, this of course fails because _Generic wants an expression and typeof() is a type not 
+an expression.
+
+However, in this case less is more -- just don't dereference env:
+
+#define env_cpu(env) _Generic(env, \
+             CPUArchState *: \
+                 (CPUState *)((void *)(env) - sizeof(CPUState)), \
+             const CPUArchState *: \
+                 (const CPUState *)((const void *)(env) - sizeof(CPUState)))
+
+etc.  It's only top-level qualifiers that are stripped (so const int -> const), but 
+qualified pointers aren't top level (so const int * and int * do not match).
+
 
 r~
 

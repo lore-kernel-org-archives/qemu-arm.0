@@ -4,103 +4,89 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 30F14C5DF8E
-	for <qemu-arm@archiver.kernel.org>; Fri, 21 Aug 2026 09:50:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A253FC5DF8C
+	for <qemu-arm@archiver.kernel.org>; Fri, 21 Aug 2026 09:53:02 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wxLsk-0002O6-Vx; Fri, 21 Aug 2026 05:49:51 -0400
+	id 1wxLvm-0004XV-SM; Fri, 21 Aug 2026 05:52:59 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1wxLsj-0002Nb-EA
- for qemu-arm@nongnu.org; Fri, 21 Aug 2026 05:49:49 -0400
-Received: from mail-yx1-xb12f.google.com ([2607:f8b0:4864:20::b12f])
+ (Exim 4.90_1) (envelope-from <jim.macarthur@linaro.org>)
+ id 1wxLvj-0004Wr-HF
+ for qemu-arm@nongnu.org; Fri, 21 Aug 2026 05:52:55 -0400
+Received: from mail-wm1-x32a.google.com ([2a00:1450:4864:20::32a])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1wxLsh-00021N-Q1
- for qemu-arm@nongnu.org; Fri, 21 Aug 2026 05:49:49 -0400
-Received: by mail-yx1-xb12f.google.com with SMTP id
- 956f58d0204a3-66c67a73eb7so3036729d50.0
- for <qemu-arm@nongnu.org>; Fri, 21 Aug 2026 02:49:47 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1787305786; cv=none;
- d=google.com; s=arc-20260327;
- b=NgUWIvapQpkQKJa/+71vMOnm1r4Ov67dHP3IL8DymiHDcq2ES6ooe6juKa8uJtbSQZ
- JgHxNCGumOroBfm+rd9wKOwGzQ7ZZhp5nxtu6FemXE70IUJQmZ8gR96kVkc4fGsANeBP
- 1+SxHtcAJfm06wL0fOakTCV7DjbUypebnNNUUwd8m21GrmHQtS5vGRopzTf+AAVPbbAb
- ESqAQfi7SBwVocNHW2fNxMMauisTbGOBT4XxG6ZrUqFVsx4O3qNC10Pjibbd9tjavT1R
- 3pVfDWsmR66BzIEACgcEnF+iDPiIfm2fY6axGSxoCqlRu/YEaui+6kvC6kCdnyExAX0J
- 8HHQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
- s=arc-20260327; 
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:dkim-signature;
- bh=tg7EuQje/tPVZdyMbR4UCbpPTRRW2oBS8zrQvxBp0pY=;
- fh=cBeQNL9hgIPKU7N+BkYYU9bjkuhUJxniDo5frDH5rlw=;
- b=dJYYmnISz4EMNjUGfQCGLWt1TBSEuwtj3RqIqzx1nCsAefB2bibrUqQqrn/FAz0Z3b
- VGTa3VqcduSNEXItYvgzpzDTBAWs2Y9unRp1w1vlXu8bGMowtS1RYPUYji8Q86j45buJ
- DoT3dGyBbCFa8g5ZedHZVHT128i7bZT3v51x+lfAu4E8aPmcyhQZQRWcQCGCPohjTVEt
- ANmfX1WRYhasa6BF14ygdZgIwgq2BaFFr40i2MSm4TGKbZN9WlmiYZ+LKG44nBy+5V90
- NRW2lRiV0tzyHw9x9TZvBooXl/LzKf5fm484wuwPVEKpNKisGjCKnvYYjxucV9Qar4nw
- M/Ug==; darn=nongnu.org
-ARC-Authentication-Results: i=1; mx.google.com; arc=none
+ (Exim 4.90_1) (envelope-from <jim.macarthur@linaro.org>)
+ id 1wxLvh-00036F-2X
+ for qemu-arm@nongnu.org; Fri, 21 Aug 2026 05:52:54 -0400
+Received: by mail-wm1-x32a.google.com with SMTP id
+ 5b1f17b1804b1-499b2981a7bso8770495e9.3
+ for <qemu-arm@nongnu.org>; Fri, 21 Aug 2026 02:52:52 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1787305786; x=1787910586; darn=nongnu.org;
- h=content-transfer-encoding:content-type:cc:to:subject:message-id
- :date:from:in-reply-to:references:mime-version:from:to:cc:subject
+ d=linaro.org; s=google; t=1787305971; x=1787910771; darn=nongnu.org;
+ h=in-reply-to:content-disposition:content-type:mime-version
+ :references:message-id:subject:cc:to:from:date:from:to:cc:subject
  :date:message-id:reply-to:content-type;
- bh=tg7EuQje/tPVZdyMbR4UCbpPTRRW2oBS8zrQvxBp0pY=;
- b=iI6Ebnh12HVPWKGFb2osMPEEQLT4ryKvyt85zVEAnVXRfwXN/k67pHneLkZdu9nH5c
- EFkJl6mKJUwi5A2XEwtF82wCd1Kp1LQC4uIiuRl/5eESyYxIGIAL1tfu/A1Jalqc15mE
- ZRH3V1bbBEAUEeWzdB6JBXtmrFzZJw/8Z2WLDz90hVrNHut8vHH9M4JUHWdm9pHcXGBA
- 9Wp+/XL76/IAyxdLtxHa2Q/5JCYlHiE+BrSi6XmI4MNkdYAzqiGpSa4ZC9vGUh45iDzQ
- 96/WGAeRK327Rs5S76Io+ujKT/ZgkNGXr6rKMswgYju7xCb6aUyumGVZoWvxBeo+l5Ro
- IAgA==
+ bh=AwP/yWfGPx1h2d5TCJ6y+1qxsK3YP7lopFi3pzqk8ko=;
+ b=G64q80TSLA5pHgr9/qpQ9B44R78Xom1RenqQP/rU1ACXrozkXmd8EA5nE3+33IjZ6s
+ Au+Q82rA7wwt9jInC74/4Ws8KWcWMS4XXAE9mkN2lPllN2oe3bPN7hCOpVlSQ4Yb5ogp
+ 1bdLjS2YY4l+YVDmXmAsnPcCpsVOl2+FFTVuH1jv26X/3DKO6/k442P5kOUBCoTyknsE
+ aTKjHQhRr9EDYpHVqXA4SoUEQh0pdyzWDM/ttLhImMpXP+akbkZcK20tDAVDYwr6b/pA
+ edw4J49svW14mfdQHdyU1TAAFYopAcnFhwk1+7uuNkDCxeavCNdO3/vnP/pGwl3EJ6Ld
+ rqAw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1787305786; x=1787910586;
- h=content-transfer-encoding:content-type:cc:to:subject:message-id
- :date:from:in-reply-to:references:mime-version:x-gm-gg
+ d=1e100.net; s=20251104; t=1787305971; x=1787910771;
+ h=in-reply-to:content-disposition:content-type:mime-version
+ :references:message-id:subject:cc:to:from:date:x-gm-gg
  :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
  :content-type;
- bh=tg7EuQje/tPVZdyMbR4UCbpPTRRW2oBS8zrQvxBp0pY=;
- b=o8NHKK10q99j/i90wqihr5UqAvnB1aH2/CwhGFWmimCeqBahEJwGscyxQpbMv6ET3+
- 52cJDMeGhHXA0zzHSFZCCRqQGrf4Y8JQ1DBEOmFXTAaa9xtqYSlU5Ksu4sAX39Z9HhJB
- AOL4ff1XCN2bHI27ooUU4RqC2PAJB+xoqHA1vxSZMLl4QyN/k3Qy9m+/ubtwOzXWmNZk
- NOgrKMO5FDGr55Qm6DzlCAHGwuuHEzIwwD/RlHoCDT7LQJi/zQqbqsocHCvWqNl7Imtt
- AZGDbhNfO96qM93Zm611j4V8ZL15KFmhxQtukIE50SVs03Bm4aYeUCAhkogoYEDvnlY4
- 1nQQ==
+ bh=AwP/yWfGPx1h2d5TCJ6y+1qxsK3YP7lopFi3pzqk8ko=;
+ b=P7VIVxlyj6DVA+UexrxFfsEVH+ttD6v6zqApyTlKssAPxd285QcZ9RKbid4mb2zIeo
+ DO0uCHMDV6aewaW4YC0fa4r0GkBrwOpE6ohsRjY3hUIBjjpZg9wJn8BCvIZm0guM5np0
+ GVOj1x81Du06hxNq82Fet5Xcq9UscCSxFuOAz87Wqoyg13qEh/2Qtb9RRMZT3ZPfQy2K
+ 6ZqyA+dyOByUypQaenG8VPrzUI87rDabzr7TVbc5YLtJFOS55gaeLtKANfPER7vXXXtX
+ A1CAiKNtCSvCQSw0DvOMD9wS/vDXBwKqjSku91BX/7/SPzBNUQM60dZZhbncENvtiR8N
+ i3VQ==
 X-Forwarded-Encrypted: i=1;
- AHgh+RokCDU4XyJjUroq3nAcYobLs07ZqSyO38zY94aytL/shVCTH5u9Ut4eulcNqoita37gUkCzCNWb6Q==@nongnu.org
-X-Gm-Message-State: AFuF++mB36LwZwpnynyyJejlp21IjFpgwRVBssD7gjpMsgv+Q0mfLOe8
- VJ80yOOpDtASOB4XJNoyu2t6MYqulV1z8NgSxMFObj8u32Mi4pwtChD2VH5KLmHVDJNfCoduHOu
- mKmxaBuViUF7loFic2J/pm5vWLYg51I4aGj+Zr2h8HmafzL6njIK1
-X-Gm-Gg: AR+sD11wMFl+xgH3VNcU7nA2AL8yiHQDx2aK2qtA9/vlfI2BzGllwISI9kC1d45SWPz
- 1CWllPGgch/MYsQe/vzqZYesMtEoad5UAC+aIlVGRmXlay4ZZcIBVcXg3iBOtKYl4cSkEH1aNye
- NdAY3Ijji+ewY1ZDy84Kuy8bjuULIvwLe1Doa62kodrFsSoomRYZr3lY1Tzvra3lBfsuO294rfm
- 3EUXV2x+eG5K0qEXknAWFU6hBtFi+0wu2AKy6Li/9z6AH8NWOPqpO/jM4EQFzXR9AIBa4dATKwL
- /tCoA4/1nbRT6yCva3dSCUsZUUoJfXBui8WQFxgzmncjKY5u6AgJWk5nbol4AoQwNdCMCszoE3X
- wAzrx2e8QebiSEt97q0am9VElFo1f
-X-Received: by 2002:a05:690e:454c:20b0:66c:e9ae:d90 with SMTP id
- 956f58d0204a3-66ce9ae0e82mr533447d50.18.1787305786480; Fri, 21 Aug 2026
- 02:49:46 -0700 (PDT)
+ AHgh+RoybPMUoGN9jfp3sgnWhhjeUPrT2dvfxKjLmSXlGMgpOZPJe/s8Ln3bHQNZi+JxxUPGP9OLVMnaeQ==@nongnu.org
+X-Gm-Message-State: AOJu0YzSyN1sDYE0cUHFVaOmBbtJcWs7wuqm57FUy3UNHaeLmOIyYjQZ
+ CmKqpIbhsAQL4pycFuepZUBwebmlzLlvjnmNJqmIjfopktuH9F92zB+ZA74RESr8m5c=
+X-Gm-Gg: AR+sD12v9TofYJdz3yr+mPdu8cYJ/vQK3dIqkTJia9urIhfX/sgtF4S2wwNdrttW6DF
+ 9bm7NPT1XmlISa/WbDdDm4HbYs5hn5eHZUnkWfDFRRDUfzMeVWQvifmDpcd+4lb7n5wUuy4oBXA
+ VlIKde3qL1a/aHalR01aUYUFq79PEVR/Lb5ncK6hn5VPWGp952niDAEqlXvXKpAMzpb8Xy1t21L
+ Y9RbNCGTNRUE2yaQEf6bWtCzWR/Hcz24euc6y6aE9RI5GtHP0L3RP/n5kkZkKgDmzCGe77Ekc3J
+ v2ghRLm6kdTKqriINBy/WsvUxFr8HJv+0dAc8ZuWfefAKa9+MnVitnnUQVPQM/FFsZySe8Fbif8
+ 960PIe7pnNUHyCqiOxtI80Ar+Fpo1+HbGxU353xQojogP0vFRmNmKfan3Vctih48+XW0Cbn4piG
+ 6zLSaKT90rbu4DsvsVX7huNkIMp4CKeNxnxPeHtvT7HaML5oTOcOS4ZYBs+vV/TQ==
+X-Received: by 2002:a05:600c:3544:b0:493:f140:c3fb with SMTP id
+ 5b1f17b1804b1-499b8301874mr65796535e9.7.1787305971175; 
+ Fri, 21 Aug 2026 02:52:51 -0700 (PDT)
+Received: from linaro.org ([2a10:d582:31e:0:fa47:b339:78a1:d4c6])
+ by smtp.gmail.com with ESMTPSA id
+ 5b1f17b1804b1-499b90e3138sm22336665e9.4.2026.08.21.02.52.50
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Fri, 21 Aug 2026 02:52:50 -0700 (PDT)
+Date: Fri, 21 Aug 2026 10:52:48 +0100
+From: Jim MacArthur <jim.macarthur@linaro.org>
+To: Tao Tang <tangtao1634@phytium.com.cn>
+Cc: Eric Auger <eric.auger@redhat.com>,
+ Peter Maydell <peter.maydell@linaro.org>, qemu-devel@nongnu.org,
+ qemu-arm@nongnu.org, Chen Baozi <chenbaozi@phytium.com.cn>,
+ Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>,
+ Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <philmd@mailo.com>,
+ Mostafa Saleh <smostafa@google.com>, Chao Liu <chao.liu@processmission.com>
+Subject: Re: [RFC v5 02/28] hw/arm/smmuv3: Introduce banked registers for
+ SMMUv3 state
+Message-ID: <aogf8EmOJ_JEGKWl@linaro.org>
+References: <20260813161515.2788900-1-tangtao1634@phytium.com.cn>
+ <20260813162410.2805113-2-tangtao1634@phytium.com.cn>
 MIME-Version: 1.0
-References: <20260816131300.51799-1-bin.meng@processmission.com>
- <20260816131300.51799-20-bin.meng@processmission.com>
- <10643a9a-8b04-48d9-a8ad-6dd86a4f29d1@oss.qualcomm.com>
-In-Reply-To: <10643a9a-8b04-48d9-a8ad-6dd86a4f29d1@oss.qualcomm.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Fri, 21 Aug 2026 10:49:35 +0100
-X-Gm-Features: AcwNN1XKI7dyak-hFl1wBBn7Epxb8hO4yMquCFY7uZoQL4qHgnRy5WIXjxXQ4lY
-Message-ID: <CAFEAcA_U9dwtJqigcaPJHWUgn5bRACG+zz4q+pDETzMfk5qXuQ@mail.gmail.com>
-Subject: Re: [PATCH v2 19/20] hw/arm: versatilepb: Store boot info in the
- machine state
-To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@oss.qualcomm.com>
-Cc: Bin Meng <bin.meng@processmission.com>, QEMU <qemu-devel@nongnu.org>, 
- qemu-arm@nongnu.org
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2607:f8b0:4864:20::b12f;
- envelope-from=peter.maydell@linaro.org; helo=mail-yx1-xb12f.google.com
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20260813162410.2805113-2-tangtao1634@phytium.com.cn>
+Received-SPF: pass client-ip=2a00:1450:4864:20::32a;
+ envelope-from=jim.macarthur@linaro.org; helo=mail-wm1-x32a.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -123,71 +109,74 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Sun, 16 Aug 2026 at 16:07, Philippe Mathieu-Daud=C3=A9
-<philmd@oss.qualcomm.com> wrote:
->
-> On 16/8/26 15:12, Bin Meng wrote:
-> > arm_load_kernel() keeps a pointer to the boot info struct for the
-> > lifetime of the VM, so the struct logically belongs to the machine
-> > rather than to a file scoped static object.
-> >
-> > Give both machine types the same VersatileMachineState instance struct
-> > and store the boot info there.
-> >
-> > As in the xlnx-zcu102 and raspi machines, the boot info belongs to
-> > the machine rather than to a static object:
-> >
-> > 4d1ac883a7 ("hw/arm: xlnx-zcu102: Move arm_boot_info into XlnxZCU102")
-> > 0f15c6e338 ("hw/arm/raspi: Move arm_boot_info structure to RaspiMachine=
-State")
-> >
-> > Signed-off-by: Bin Meng <bin.meng@processmission.com>
-> > ---
-> >
-> >   hw/arm/versatilepb.c | 16 ++++++++++++----
-> >   1 file changed, 12 insertions(+), 4 deletions(-)
-> >
-> > diff --git a/hw/arm/versatilepb.c b/hw/arm/versatilepb.c
-> > index c6991a52e6..520af79c80 100644
-> > --- a/hw/arm/versatilepb.c
-> > +++ b/hw/arm/versatilepb.c
-> > @@ -182,10 +182,16 @@ static void vpb_sic_init(Object *obj)
-> >      peripherals and expansion busses.  For now we emulate a subset of =
-the
-> >      PB peripherals and just change the board ID.  */
-> >
-> > -static struct arm_boot_info versatile_binfo;
-> > +typedef struct VersatileMachineState {
-> > +    MachineState parent;
-> > +
-> > +    struct arm_boot_info bootinfo;
-> > +} VersatileMachineState;
-> >
-> >   static void versatile_init(MachineState *machine, int board_id)
-> >   {
-> > +    /* versatilepb and versatileab embed the same state as first membe=
-r */
-> > +    VersatileMachineState *vms =3D (VersatileMachineState *)machine;
->
-> Use OBJECT_DECLARE_SIMPLE_TYPE() and the defined macro?
+On Fri, Aug 14, 2026 at 12:24:07AM +0800, Tao Tang wrote:
+> Rework the SMMUv3 state management by introducing a banked register
+> structure. This is a purely mechanical refactoring with no functional
+> changes.
+> 
+> To support multiple security states, a new enum, SMMUSecSID, is
+> introduced to identify each state, sticking to the spec terminology.
+> 
+> A new structure, SMMUv3RegBank, is then defined to hold the state
+> for a single security context. The main SMMUv3State now contains an
+> array of these banks, indexed by SMMUSecSID. This avoids the need for
+> separate fields for non-secure and future secure registers.
+> 
+> All existing code, which handles only the Non-secure state, is updated
+> to access its state via s->bank[SMMU_SEC_SID_NS]. A local bank helper
+> pointer is used where it improves readability.
+> 
+> Function signatures and logic remain untouched in this commit to
+> isolate the structural changes and simplify review. This is the
+> foundational step for building multi-security-state support.
+> 
+>  static void smmuv3_reset(SMMUv3State *s)
+>  {
+> -    s->cmdq.base = deposit64(s->cmdq.base, 0, 5, SMMU_CMDQS);
+> -    s->cmdq.prod = 0;
+> -    s->cmdq.cons = 0;
+> -    s->cmdq.entry_size = sizeof(struct Cmd);
+> -    s->eventq.base = deposit64(s->eventq.base, 0, 5, SMMU_EVENTQS);
+> -    s->eventq.prod = 0;
+> -    s->eventq.cons = 0;
+> -    s->eventq.entry_size = sizeof(struct Evt);
+> -
+> -    s->features = 0;
+> -    s->sid_split = 0;
+> -    s->cr[0] = 0;
+> -    s->cr0ack = 0;
+> -    s->irq_ctrl = 0;
+> -    s->gerror = 0;
+> -    s->gerrorn = 0;
+> +    SMMUv3RegBank *bank = smmuv3_bank(s, SMMU_SEC_SID_NS);
+> +
+> +    bank->cmdq.base = deposit64(bank->cmdq.base, 0, 5, SMMU_CMDQS);
+> +    bank->cmdq.prod = 0;
+> +    bank->cmdq.cons = 0;
+> +    bank->cmdq.entry_size = sizeof(struct Cmd);
+> +    bank->eventq.base = deposit64(bank->eventq.base, 0, 5, SMMU_EVENTQS);
+> +    bank->eventq.prod = 0;
+> +    bank->eventq.cons = 0;
+> +    bank->eventq.entry_size = sizeof(struct Evt);
+> +
+> +    bank->features = 0;
+> +    bank->sid_split = 0;
+> +    bank->cr[0] = 0;
+> +    bank->cr0ack = 0;
+> +    bank->irq_ctrl = 0;
+> +    bank->gerror = 0;
+> +    bank->gerrorn = 0;
+> +    bank->gbpa = SMMU_GBPA_RESET_VAL;
+> +
+> +    s->aidr = 0x1;
+>      s->statusr = 0;
+> -    s->gbpa = SMMU_GBPA_RESET_VAL;
+>  }
 
-That doesn't work, unfortunately, because in this file we define
-two machine types (versatileab and versatilepb) which are separate
-classes directly inheriting from TYPE_MACHINE but which share
-a common init function (both classes have an instance_init
-method which calls versatile_init()). OBJECT_DECLARE_SIMPLE_TYPE
-wants a 1:1 relation between the state struct and the type.
+Why reset s->aidr here? It should be read-only and set in smmuv3_init_id_regs. 
 
-I think to get this into a shape where we could use the standard
-QOM macros we would probably need to define a common abstract
-class that both the leaf machine types inherited from. That
-feels like it's probably a worthwhile cleanup, but I'm OK
-with what this patch is doing rather than making the "create
-the abstract parent" refactor a dependency for this series.
+It won't do any harm and the reset of this patch looks correct, so:
 
-The same applies for the omap_sx1.c and realview.c patches
-in this series, which do a similar thing.
+Reviewed-by: Jim MacArthur <jim.macarthur@linaro.org>
 
-thanks
--- PMM
 

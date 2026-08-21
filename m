@@ -4,96 +4,112 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A253FC5DF8C
-	for <qemu-arm@archiver.kernel.org>; Fri, 21 Aug 2026 09:53:02 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A2DC6C5DF7D
+	for <qemu-arm@archiver.kernel.org>; Fri, 21 Aug 2026 09:57:44 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wxLvm-0004XV-SM; Fri, 21 Aug 2026 05:52:59 -0400
+	id 1wxM09-0005it-8v; Fri, 21 Aug 2026 05:57:29 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jim.macarthur@linaro.org>)
- id 1wxLvj-0004Wr-HF
- for qemu-arm@nongnu.org; Fri, 21 Aug 2026 05:52:55 -0400
-Received: from mail-wm1-x32a.google.com ([2a00:1450:4864:20::32a])
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1wxM08-0005iN-4b
+ for qemu-arm@nongnu.org; Fri, 21 Aug 2026 05:57:28 -0400
+Received: from mail-yx1-xb131.google.com ([2607:f8b0:4864:20::b131])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <jim.macarthur@linaro.org>)
- id 1wxLvh-00036F-2X
- for qemu-arm@nongnu.org; Fri, 21 Aug 2026 05:52:54 -0400
-Received: by mail-wm1-x32a.google.com with SMTP id
- 5b1f17b1804b1-499b2981a7bso8770495e9.3
- for <qemu-arm@nongnu.org>; Fri, 21 Aug 2026 02:52:52 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1wxM05-0004c8-2Z
+ for qemu-arm@nongnu.org; Fri, 21 Aug 2026 05:57:27 -0400
+Received: by mail-yx1-xb131.google.com with SMTP id
+ 956f58d0204a3-66ceaade3f1so247086d50.1
+ for <qemu-arm@nongnu.org>; Fri, 21 Aug 2026 02:57:24 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1787306243; cv=none;
+ d=google.com; s=arc-20260327;
+ b=FJ5txtD7DylJCvU1hbieFHt8Y59DqS1IL8iI+N8PMEWu4c6HaYG0ESDEQ511w+qwXL
+ G+UYuEHsVOr7yL16MnPcjCG2Sf7ucjJpyMzsMKfFBet5LWTMOMnhLivdKQRG9Yo/gthL
+ o6VVlF5gq7BnZpAWlPgz1fmD0lboTIOklaBubMCnjgdPsdIDQNJ7YEMAFBqgF7ZyTUsQ
+ 9KHmlQR9hZYirZm5xiteQeTS+jMZjs2wwo3MK+FXc4TGC0SRcrcv10HDg+KUL9JlDfQv
+ +BQz0Vx9IupwkuJzWUqpUDKkci0xSexoxZoUHhCzHS8SPxSoPdYko6s3wuD5aAQLOLzw
+ QY/Q==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
+ s=arc-20260327; 
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:dkim-signature;
+ bh=QlwE2BZT0vFPaM9sreHJ6Q5FEFcI6GiSfHphOHDg26c=;
+ fh=Hnlhg+k1LNaT0Fp5jeLZ1WK+LMTgXBaN0Tox1F5Gw9s=;
+ b=ofXerq2QKOVrobjHbksCUQc9M2XKjGO8GdT6s75uBF8ye8ig9RN+qJYCFb5yGG8N6d
+ zmdFWrXjP6UlbdAdoyrYpkITOgMpkzBa1feN0WPHzZlFyuthZELomDNGSafyy9uqRunT
+ xijHyINsfOu/bfOZaDPD1QIR63Rna1+8BjDZk3JDhnVK4C7N4t94eL6LpixqpG/ZP+vv
+ kO2dkauCU3myw5k/kqyhYukdNPxqlenTdFoEQrB1S0UIFUA9kHPVnyATCE5a3eIw22rf
+ 387qptjxTUfbBuLoUnblP2RiCVoRSg1aFdfPbLLq6POmtKlQbvpyJi476mvDevFv3yDE
+ lvhA==; darn=nongnu.org
+ARC-Authentication-Results: i=1; mx.google.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1787305971; x=1787910771; darn=nongnu.org;
- h=in-reply-to:content-disposition:content-type:mime-version
- :references:message-id:subject:cc:to:from:date:from:to:cc:subject
+ d=linaro.org; s=google; t=1787306243; x=1787911043; darn=nongnu.org;
+ h=content-transfer-encoding:content-type:cc:to:subject:message-id
+ :date:from:in-reply-to:references:mime-version:from:to:cc:subject
  :date:message-id:reply-to:content-type;
- bh=AwP/yWfGPx1h2d5TCJ6y+1qxsK3YP7lopFi3pzqk8ko=;
- b=G64q80TSLA5pHgr9/qpQ9B44R78Xom1RenqQP/rU1ACXrozkXmd8EA5nE3+33IjZ6s
- Au+Q82rA7wwt9jInC74/4Ws8KWcWMS4XXAE9mkN2lPllN2oe3bPN7hCOpVlSQ4Yb5ogp
- 1bdLjS2YY4l+YVDmXmAsnPcCpsVOl2+FFTVuH1jv26X/3DKO6/k442P5kOUBCoTyknsE
- aTKjHQhRr9EDYpHVqXA4SoUEQh0pdyzWDM/ttLhImMpXP+akbkZcK20tDAVDYwr6b/pA
- edw4J49svW14mfdQHdyU1TAAFYopAcnFhwk1+7uuNkDCxeavCNdO3/vnP/pGwl3EJ6Ld
- rqAw==
+ bh=QlwE2BZT0vFPaM9sreHJ6Q5FEFcI6GiSfHphOHDg26c=;
+ b=xCW2u4Wsxe5Zotj/kBQUAVn3q4jsLfnJGTj1gIVhmdDDDHtbBMI+HBpc92hkgPqTpn
+ 7XX2z5qn9qTZMpAkVBIyL08JjW9YyVDqAfrkE7i9Nl/NjllVx4tzXwlNGUYTWM8a+azd
+ /rG6Upm5T4fC0myNsTi25vWsdkUcqsgYtER9/O7zOHcNNOULtwO21+8Qfk+ShwK6rMld
+ H0gw9T3OOVOw1xxPSOAt1LSKDGfo+hRvmOiE26rD2MGMFXTkoutxfB0Q7/OIv/zucPcf
+ dpIs/zO14qboFR0/53EHPkLp6a+4eeuveEd8Pmi7aJv3p+DaJQ5NwZ3TgQBMZY72IeCS
+ GZ0A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1787305971; x=1787910771;
- h=in-reply-to:content-disposition:content-type:mime-version
- :references:message-id:subject:cc:to:from:date:x-gm-gg
+ d=1e100.net; s=20251104; t=1787306243; x=1787911043;
+ h=content-transfer-encoding:content-type:cc:to:subject:message-id
+ :date:from:in-reply-to:references:mime-version:x-gm-gg
  :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
  :content-type;
- bh=AwP/yWfGPx1h2d5TCJ6y+1qxsK3YP7lopFi3pzqk8ko=;
- b=P7VIVxlyj6DVA+UexrxFfsEVH+ttD6v6zqApyTlKssAPxd285QcZ9RKbid4mb2zIeo
- DO0uCHMDV6aewaW4YC0fa4r0GkBrwOpE6ohsRjY3hUIBjjpZg9wJn8BCvIZm0guM5np0
- GVOj1x81Du06hxNq82Fet5Xcq9UscCSxFuOAz87Wqoyg13qEh/2Qtb9RRMZT3ZPfQy2K
- 6ZqyA+dyOByUypQaenG8VPrzUI87rDabzr7TVbc5YLtJFOS55gaeLtKANfPER7vXXXtX
- A1CAiKNtCSvCQSw0DvOMD9wS/vDXBwKqjSku91BX/7/SPzBNUQM60dZZhbncENvtiR8N
- i3VQ==
+ bh=QlwE2BZT0vFPaM9sreHJ6Q5FEFcI6GiSfHphOHDg26c=;
+ b=D5TdUwNZ2knIhsmg5WUcgbSEIEsSEFdn8CfCYm5TCPwuPlz0oUekvt4OgGTQ6CvlvA
+ eFnJJAcI47PQ6HT4y1I7mwDANk71wiGjl8pz2jxL3f2lYklYSR+dfiTZOkgeEbUE91FO
+ Vot0cF3Xtl6r+RcgCNjCOb4X99i6w0fAuVUBGljgDrieqFMvg33vtS92MHE/BiHIs/QL
+ ZQfq60xz/cXPqH8yJ56lhreZidut0DFHZ3pOPOISuQrlGPK7p+JpQh8IyHBaFiRX6G8i
+ weU+puWp/As6HzWg1vUVwSwELeC5EEzfJrqSSLbvKvERZVECzZcj0x19YsqXfzJhDArA
+ coMw==
 X-Forwarded-Encrypted: i=1;
- AHgh+RoybPMUoGN9jfp3sgnWhhjeUPrT2dvfxKjLmSXlGMgpOZPJe/s8Ln3bHQNZi+JxxUPGP9OLVMnaeQ==@nongnu.org
-X-Gm-Message-State: AOJu0YzSyN1sDYE0cUHFVaOmBbtJcWs7wuqm57FUy3UNHaeLmOIyYjQZ
- CmKqpIbhsAQL4pycFuepZUBwebmlzLlvjnmNJqmIjfopktuH9F92zB+ZA74RESr8m5c=
-X-Gm-Gg: AR+sD12v9TofYJdz3yr+mPdu8cYJ/vQK3dIqkTJia9urIhfX/sgtF4S2wwNdrttW6DF
- 9bm7NPT1XmlISa/WbDdDm4HbYs5hn5eHZUnkWfDFRRDUfzMeVWQvifmDpcd+4lb7n5wUuy4oBXA
- VlIKde3qL1a/aHalR01aUYUFq79PEVR/Lb5ncK6hn5VPWGp952niDAEqlXvXKpAMzpb8Xy1t21L
- Y9RbNCGTNRUE2yaQEf6bWtCzWR/Hcz24euc6y6aE9RI5GtHP0L3RP/n5kkZkKgDmzCGe77Ekc3J
- v2ghRLm6kdTKqriINBy/WsvUxFr8HJv+0dAc8ZuWfefAKa9+MnVitnnUQVPQM/FFsZySe8Fbif8
- 960PIe7pnNUHyCqiOxtI80Ar+Fpo1+HbGxU353xQojogP0vFRmNmKfan3Vctih48+XW0Cbn4piG
- 6zLSaKT90rbu4DsvsVX7huNkIMp4CKeNxnxPeHtvT7HaML5oTOcOS4ZYBs+vV/TQ==
-X-Received: by 2002:a05:600c:3544:b0:493:f140:c3fb with SMTP id
- 5b1f17b1804b1-499b8301874mr65796535e9.7.1787305971175; 
- Fri, 21 Aug 2026 02:52:51 -0700 (PDT)
-Received: from linaro.org ([2a10:d582:31e:0:fa47:b339:78a1:d4c6])
- by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-499b90e3138sm22336665e9.4.2026.08.21.02.52.50
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 21 Aug 2026 02:52:50 -0700 (PDT)
-Date: Fri, 21 Aug 2026 10:52:48 +0100
-From: Jim MacArthur <jim.macarthur@linaro.org>
-To: Tao Tang <tangtao1634@phytium.com.cn>
-Cc: Eric Auger <eric.auger@redhat.com>,
- Peter Maydell <peter.maydell@linaro.org>, qemu-devel@nongnu.org,
- qemu-arm@nongnu.org, Chen Baozi <chenbaozi@phytium.com.cn>,
- Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>,
- Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <philmd@mailo.com>,
- Mostafa Saleh <smostafa@google.com>, Chao Liu <chao.liu@processmission.com>
-Subject: Re: [RFC v5 02/28] hw/arm/smmuv3: Introduce banked registers for
- SMMUv3 state
-Message-ID: <aogf8EmOJ_JEGKWl@linaro.org>
-References: <20260813161515.2788900-1-tangtao1634@phytium.com.cn>
- <20260813162410.2805113-2-tangtao1634@phytium.com.cn>
+ AHgh+RqHfuQ+3IE7cSdyV7Zgq5jg71fk7/EQZcjU0mmU6pc4bkOu7b38XsfiZh6MqJC05ZABTs64PUiFCQ==@nongnu.org
+X-Gm-Message-State: AFuF++llckHXtZJgwP7RURoCZtrp9AcHjeXI6+2+g8y0Da6EA4KAuusd
+ rZA5j8Out7Rtl59Ol3WIbdwF8yF046rLj/Uns6BsfdDPtTbwEUpApPqDJ5QawYzWAedqpiyv9Gm
+ rJrb9iHAGv8/7lJ9h226gTpA1gUlwgN2W9PiSkNsPsg==
+X-Gm-Gg: AR+sD10X6lWOrSTQul6+3tYFjCdCzQIh3nkOrgrRACxIZ+OU8aHIVRDiqbbBKUfr8Ex
+ YfADH8f9sMhzg291EeHw58YswSuvkYdOhDRecthMgkjugY6R2IX/rrYncYyqxWYX4OOMk/tE3Iv
+ x9rIseS8GAv0hxyy9LGeb4IZcVu32IP1+/zFOSdR0nDgiwO+5IckAOxcmmKcqBoFwhTOR/1l2nw
+ 1idFJ/kaexOij4Ts4aiNqfcHLzU2iG/xnDBWTG/6irP5SDpGs3PeLwiG+v02XueQY6Fpc+3pUtq
+ quxIMukpjIXSNoXnx4VPchww8GTl0AcvUkTVXJp+8EIZMPDFmaosiFMP7wa4eBZtHgpaWZYUwbY
+ b1ekL6jGe/dqZVGPKtoIC6aL5TPar
+X-Received: by 2002:a05:690e:1c0c:b0:66b:2f08:db1f with SMTP id
+ 956f58d0204a3-66ce4a54085mr2022772d50.19.1787306243478; Fri, 21 Aug 2026
+ 02:57:23 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20260813162410.2805113-2-tangtao1634@phytium.com.cn>
-Received-SPF: pass client-ip=2a00:1450:4864:20::32a;
- envelope-from=jim.macarthur@linaro.org; helo=mail-wm1-x32a.google.com
+References: <20260817113349.103833-1-alexander@mihalicyn.com>
+In-Reply-To: <20260817113349.103833-1-alexander@mihalicyn.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Fri, 21 Aug 2026 10:57:10 +0100
+X-Gm-Features: AcwNN1X-J4scuRABFwA-0Icsm2oGAxxK0j1_zYAKmr-eyqDSlvc_c65wnUXDd2A
+Message-ID: <CAFEAcA-BsxOCC4eM1ohcnr3_xmCabKNWQchtdsVzO91stiir-Q@mail.gmail.com>
+Subject: Re: [PATCH v3] hw/char/pl011: support backend hotswap
+To: Alexander Mikhalitsyn <alexander@mihalicyn.com>
+Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, 
+ =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@oss.qualcomm.com>, 
+ =?UTF-8?Q?St=C3=A9phane_Graber?= <stgraber@stgraber.org>, 
+ Paolo Bonzini <pbonzini@redhat.com>, 
+ Alexander Mikhalitsyn <aleksandr.mikhalitsyn@futurfusion.io>, 
+ =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>, 
+ =?UTF-8?B?TWFyYy1BbmRyw6kgTHVyZWF1?= <marcandre.lureau@redhat.com>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2607:f8b0:4864:20::b131;
+ envelope-from=peter.maydell@linaro.org; helo=mail-yx1-xb131.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -109,74 +125,108 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Fri, Aug 14, 2026 at 12:24:07AM +0800, Tao Tang wrote:
-> Rework the SMMUv3 state management by introducing a banked register
-> structure. This is a purely mechanical refactoring with no functional
-> changes.
-> 
-> To support multiple security states, a new enum, SMMUSecSID, is
-> introduced to identify each state, sticking to the spec terminology.
-> 
-> A new structure, SMMUv3RegBank, is then defined to hold the state
-> for a single security context. The main SMMUv3State now contains an
-> array of these banks, indexed by SMMUSecSID. This avoids the need for
-> separate fields for non-secure and future secure registers.
-> 
-> All existing code, which handles only the Non-secure state, is updated
-> to access its state via s->bank[SMMU_SEC_SID_NS]. A local bank helper
-> pointer is used where it improves readability.
-> 
-> Function signatures and logic remain untouched in this commit to
-> isolate the structural changes and simplify review. This is the
-> foundational step for building multi-security-state support.
-> 
->  static void smmuv3_reset(SMMUv3State *s)
+On Mon, 17 Aug 2026 at 12:33, Alexander Mikhalitsyn
+<alexander@mihalicyn.com> wrote:
+>
+> From: Alexander Mikhalitsyn <aleksandr.mikhalitsyn@futurfusion.io>
+>
+> Currently, when Incus issues "chardev-change" QMP command to change
+> chardev backend from ringbuf to socket it receives an error (with aarch64=
+ VM):
+> "Chardev user does not support chardev hotswap" [1], [2]
+>
+> Let's fix this by properly implementing BackendChangeHandler for pl011.
+>
+> Please, note that we have to "replay" CHR_IOCTL_SERIAL_SET_BREAK, because
+> if BRK bit was set before backend change (i.e. (s->lcr & LCR_BRK) is true=
+),
+> then after change we need to send break to a new backend too.
+>
+> Link: https://discuss.linuxcontainers.org/t/unable-to-connect-to-vm-conso=
+le-on-arm-architecture/23096/3 [1]
+> Link: https://github.com/lxc/distrobuilder/issues/892 [2]
+> Reported-by: St=C3=A9phane Graber <stgraber@stgraber.org>
+> Reviewed-by: Alex Benn=C3=A9e <alex.bennee@linaro.org>
+> Signed-off-by: Alexander Mikhalitsyn <aleksandr.mikhalitsyn@futurfusion.i=
+o>
+> ---
+> v3:
+>         - introduced pl011_set_handlers()
+>           [ as suggested by Alex Benn=C3=A9e ]
+>         - introduced pl011_set_break()
+>           [ as suggested by Philippe Mathieu-Daud=C3=A9 ]
+> v2:
+>         - fixed a typo in commit author name
+>           [ I did `git format-patch` and copied this patch from my Raspbe=
+rry PI
+>             dev/test machine and it turns out that I have a stupid typo i=
+n my
+>             `git config get user.name` on that machine. ]
+>         - added RWB tag from Alex Benn=C3=A9e
+>         - adjusted a commit message
+
+I have one review suggestion here:
+
+> +static inline int pl011_set_break(PL011State *s, uint64_t lcr)
+> +{
+> +    int break_enable =3D lcr & LCR_BRK;
+> +
+> +    qemu_chr_fe_ioctl(&s->chr, CHR_IOCTL_SERIAL_SET_BREAK, &break_enable=
+);
+> +
+> +    return break_enable;
+> +}
+
+I think this would be better with a similar API to
+pl011_loopback_break(): make it take a bool brk_enable,
+and return void. (pl011_loopback_break() takes an int,
+but we shouldn't copy that: it uses it as a bool, so it
+ought to take a bool.)
+
+>  static void pl011_write(void *opaque, hwaddr offset,
+>                          uint64_t value, unsigned size)
 >  {
-> -    s->cmdq.base = deposit64(s->cmdq.base, 0, 5, SMMU_CMDQS);
-> -    s->cmdq.prod = 0;
-> -    s->cmdq.cons = 0;
-> -    s->cmdq.entry_size = sizeof(struct Cmd);
-> -    s->eventq.base = deposit64(s->eventq.base, 0, 5, SMMU_EVENTQS);
-> -    s->eventq.prod = 0;
-> -    s->eventq.cons = 0;
-> -    s->eventq.entry_size = sizeof(struct Evt);
-> -
-> -    s->features = 0;
-> -    s->sid_split = 0;
-> -    s->cr[0] = 0;
-> -    s->cr0ack = 0;
-> -    s->irq_ctrl = 0;
-> -    s->gerror = 0;
-> -    s->gerrorn = 0;
-> +    SMMUv3RegBank *bank = smmuv3_bank(s, SMMU_SEC_SID_NS);
+> @@ -462,9 +471,7 @@ static void pl011_write(void *opaque, hwaddr offset,
+>              pl011_reset_tx_fifo(s);
+>          }
+>          if ((s->lcr ^ value) & LCR_BRK) {
+> -            int break_enable =3D value & LCR_BRK;
+> -            qemu_chr_fe_ioctl(&s->chr, CHR_IOCTL_SERIAL_SET_BREAK,
+> -                              &break_enable);
+> +            int break_enable =3D pl011_set_break(s, value);
+>              pl011_loopback_break(s, break_enable);
+
+Then this code becomes something like
+    bool break_enable =3D value & LCR_BRK;
+    pl011_set_break(s, break_enable);
+    pl011_loopback_break(s, break_enable);
+
+which is more straightforward than passing the raw LCR value
+to pl011_set_break and relying on it returning the "is BRK set?"
+information that we then pass to pl011_loopback_break().
+
+> +static int pl011_be_change(void *opaque);
+
+> +static inline void pl011_set_handlers(PL011State *s)
+> +{
+> +    qemu_chr_fe_set_handlers(&s->chr, pl011_can_receive, pl011_receive,
+> +                             pl011_event, pl011_be_change, s, NULL, true=
+);
+> +}
 > +
-> +    bank->cmdq.base = deposit64(bank->cmdq.base, 0, 5, SMMU_CMDQS);
-> +    bank->cmdq.prod = 0;
-> +    bank->cmdq.cons = 0;
-> +    bank->cmdq.entry_size = sizeof(struct Cmd);
-> +    bank->eventq.base = deposit64(bank->eventq.base, 0, 5, SMMU_EVENTQS);
-> +    bank->eventq.prod = 0;
-> +    bank->eventq.cons = 0;
-> +    bank->eventq.entry_size = sizeof(struct Evt);
+> +static int pl011_be_change(void *opaque)
+> +{
+> +    PL011State *s =3D opaque;
 > +
-> +    bank->features = 0;
-> +    bank->sid_split = 0;
-> +    bank->cr[0] = 0;
-> +    bank->cr0ack = 0;
-> +    bank->irq_ctrl = 0;
-> +    bank->gerror = 0;
-> +    bank->gerrorn = 0;
-> +    bank->gbpa = SMMU_GBPA_RESET_VAL;
+> +    pl011_set_handlers(s);
+> +    pl011_set_break(s, s->lcr);
+
+and here we would then pass in s->lcr & LCR_BRK.
+
 > +
-> +    s->aidr = 0x1;
->      s->statusr = 0;
-> -    s->gbpa = SMMU_GBPA_RESET_VAL;
->  }
+> +    return 0;
+> +}
 
-Why reset s->aidr here? It should be read-only and set in smmuv3_init_id_regs. 
-
-It won't do any harm and the reset of this patch looks correct, so:
-
-Reviewed-by: Jim MacArthur <jim.macarthur@linaro.org>
-
+thanks
+-- PMM
 

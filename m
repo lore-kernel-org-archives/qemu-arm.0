@@ -4,94 +4,93 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 617D1C5DF87
-	for <qemu-arm@archiver.kernel.org>; Fri, 21 Aug 2026 08:33:22 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C4B72C5DF7D
+	for <qemu-arm@archiver.kernel.org>; Fri, 21 Aug 2026 08:38:32 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wxKgJ-0000o5-Mv; Fri, 21 Aug 2026 04:32:55 -0400
+	id 1wxKlZ-0003ih-32; Fri, 21 Aug 2026 04:38:25 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1wxKgH-0000lj-N5
- for qemu-arm@nongnu.org; Fri, 21 Aug 2026 04:32:53 -0400
-Received: from mail-yx1-xb135.google.com ([2607:f8b0:4864:20::b135])
+ id 1wxKlQ-0003iA-DJ
+ for qemu-arm@nongnu.org; Fri, 21 Aug 2026 04:38:13 -0400
+Received: from mail-yw1-x112f.google.com ([2607:f8b0:4864:20::112f])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1wxKgG-0006Sm-5v
- for qemu-arm@nongnu.org; Fri, 21 Aug 2026 04:32:53 -0400
-Received: by mail-yx1-xb135.google.com with SMTP id
- 956f58d0204a3-6688acd1a51so1243360d50.3
- for <qemu-arm@nongnu.org>; Fri, 21 Aug 2026 01:32:51 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1787301170; cv=none;
+ id 1wxKlO-000884-RQ
+ for qemu-arm@nongnu.org; Fri, 21 Aug 2026 04:38:12 -0400
+Received: by mail-yw1-x112f.google.com with SMTP id
+ 00721157ae682-836c91bd782so11117687b3.0
+ for <qemu-arm@nongnu.org>; Fri, 21 Aug 2026 01:38:10 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1787301489; cv=none;
  d=google.com; s=arc-20260327;
- b=gk3h7KD9SYdM013cln9Bq3bhnylixkoa8pDyah3fx04TEYbNHf9g48EH3VdZFVfNQN
- qFt2WHXgUeGjHLoBxjHrrh/0xTkwMqRBPAl+ZtGEuo6iVKao93bYPc9EBFbdAC0bugVV
- Eo/QgYFBZ34DEyac9mfmio51Jm7XCE3PLMbdHvmI08nb8nzGZZtdm0L4r4e44QniYtpr
- D6JJp1Ky33di9cl68BcMAI/Wtdj8I3ZNGFR+7cn0zjAQ16/G7gGKagnjs4SEIKKuNeqx
- VSHncRBzYerus9j7b61H44CAo5SzeVjGAwfhGggdtwWEP01xXQrRFUNdf/WLR4r9zMv/
- CUQg==
+ b=PSmFLcP0/w3pUNg3c6SOQJEDh7lNxiIbbTtcOa/73QTn67iBkC/D2tAYuAxcc3H0n6
+ AwolBUXAffYLveJNaq4Pnkq+bk1CTgSO5AXJCD2cTzBtAppT45hYd1AfhON4Xk0kGJIw
+ SIs5yRbKNFfM+Dn+3+0QVObLmEcrnSiW/F6NiJOpVHjpfsqv0RhqRiOZ1OhZpCIepEpH
+ dd6BBMyXppvHZ9c+0boMyl8DbwzyYjEYBGnr1kGHzdUDRACyO5vEzkaBIRsS1A6bx9yp
+ q/3iF1Q3/OJvr2GdUD7nbJ+9PP/OzhC3Rtyxxyr1OAE+ojUoFpEQWsAloqk6CSbma9Cb
+ Mnkg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
  s=arc-20260327; 
  h=content-transfer-encoding:cc:to:subject:message-id:date:from
  :in-reply-to:references:mime-version:dkim-signature;
- bh=X7V8EptM7f7oCanY7XL4s7R6X3Lifn2fSE2td+MsNQY=;
+ bh=driJv/iU1TGZAuFqXjz6qvmHy4wstCWvAUdKjcx/EAc=;
  fh=DlLTM6KvEch87Dtvu2JeAFhJhcKYM31xP2SsUFlZijQ=;
- b=QF7nZI3OFhhJHX/REtXMf24ydwecwdc5VVrMnn9pjl3EWqu+PHYdKv3ckZKToFZ7DO
- /Jjcy9FDtno4RFu9yi15/BlFqZ22txssvlpvtYPDemtNRVBDWPzbpksAUQVCWCWWm2sZ
- Ig8F6An4xIVtlF56cPfOmVYYjjlhXEvx+rWwXEs6e28SUuGYK5HPZSHm0/MLANvGjrnx
- 1IPfinujw9quaZP67O3H5IzXiltGhvMGPAmqz22+GMUkLtTH0VnsV7BrvOctdvTLlvxx
- XRdJsrSS+LJW5KHdrkp0KpWz+2PzfScZdHmVVMGV8sKE1i4fTVzV8aDBIb9ytoZlvm2a
- pCYw==; darn=nongnu.org
+ b=SEKrgwFBOyJMwJkag3x118PHM+4ANNnuoPDStnzDs+0qxm3iU4jfi8W/FG5y1AiiDe
+ qnIXHlYxSHh8+mv3TThkmirPsdL4mR3iaITfea+lB4fbCeYvXCErCaCoiJ2X4QKQzIyo
+ 9Vdg9KT7iGrv3SZyRriXI0wOeJDLXgV9P9OA7A5GF9RsMunEvLWFCMARlCWCskMdaF2s
+ KfZLoHMsImPrwB/6KpS8Wmc5s6cBfMnXuTvI72nFfRlVlLi2LQNFdwXIkcQWW/Af0ohZ
+ pSgQgpQfXqnhwfD7J5PSdrcLnl79XTSBJw/d3lxe3cBHjPE67DtRARGfHl/OMLNc1lS2
+ ACPw==; darn=nongnu.org
 ARC-Authentication-Results: i=1; mx.google.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1787301170; x=1787905970; darn=nongnu.org;
+ d=linaro.org; s=google; t=1787301489; x=1787906289; darn=nongnu.org;
  h=content-transfer-encoding:content-type:cc:to:subject:message-id
  :date:from:in-reply-to:references:mime-version:from:to:cc:subject
  :date:message-id:reply-to:content-type;
- bh=X7V8EptM7f7oCanY7XL4s7R6X3Lifn2fSE2td+MsNQY=;
- b=ERzFwEd5yHRfWaNQbga3KWWhpv5Nktdwc1Rv5kmBOoKEOTu4L+pwwtyqRgwxJaIlHq
- SNcuMAMDYgw5zcoSXeO8WeSVf8jLrXybkpTAWOrvacRh7nXF0NcmtzK5Bjmjl0E/qZBX
- vwyuRT2KGNDR/hp2K+sheRITREJZEYa6PclXI/J1bk7Ql/LXfEMQLWajyrFpykHJGAia
- +Ruje1VipRi0Wb9f1EkyRuX+hRe0NLD2HWN0nMgca7H8P18sUvkCibW3uhtGMiB2O1F1
- MSeDvxCX2uSPeKN2t5Kh2rcfYj9zmWphiZrmwWEwJ/bCxjtjjiM2+RMT/vBT78VbV6sw
- Y5Vg==
+ bh=driJv/iU1TGZAuFqXjz6qvmHy4wstCWvAUdKjcx/EAc=;
+ b=ln76Wsxsxv58B6HPyrisEgFQYplooGOyUBRFaj/M3jDMtVxMo5hxc3Zrweu8XB5TS1
+ EZdIV8VirxZ3KAZ6PJ8qcq8qz88JI71aLqKjzHFbSmuhfJoyfyMHw0j0hSj+MI66EX6Z
+ GVge0vYrDXdWlCg4nfuFW7RCESzUU1/9C5Ks9DGzw8CUPCFzQBeu9Xxv43Lc5LDi4VZa
+ tVdrlEmNlg3fzjkEAmODv1Xpk7LkkQRo+UKbrJ/jZwjbRKg1Ia2/zRtbxyB5d2rkAbsU
+ /Ea9JfHZRr9rEkbW0Edm5gclnw/qSagjwWm6I4Z5VKJ+i7FTX6gIHUgn5z2tOnWHugVV
+ 1Qgg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1787301170; x=1787905970;
+ d=1e100.net; s=20251104; t=1787301489; x=1787906289;
  h=content-transfer-encoding:content-type:cc:to:subject:message-id
  :date:from:in-reply-to:references:mime-version:x-gm-gg
  :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
  :content-type;
- bh=X7V8EptM7f7oCanY7XL4s7R6X3Lifn2fSE2td+MsNQY=;
- b=kHfTDmB6gXRBHgNwmpRIQkj9YW2Zwsjjh1FfbbOlECfaKxq+h13FdUYKGtS9PSpQLn
- ICwkM2pdZHLAjOG4ogyqblPwLW4cOXHqJFzCSf7rHs9t+fA66SPmDZNTKydAHZbb85YP
- TR32U9fnZYP3721myOoADiQgNsu3THhAPOWoSPwjDZYfi9mUkvVlB2dEpcS3NPb7Or38
- qMtMaqagimw+8qMeeOJTyFc+hCDlOpu5bdT3RfgcqWn1CRZfJ5NR1qjv7iCPNprsAjJs
- RPkgp9QSftxuBssC2cyqorJEpI8LpBKkeAPW3P4nBdiLtLWwrZxvyCHphOTf6632PYoE
- 3Wig==
-X-Gm-Message-State: AFuF++kHkTEwG9ljquMmvakrczgYLkLAiLx3JrevecGj80N+vwy+8Jh6
- aVdO7EhGVWRsq5jsnMUz6SEKVGGKSl3FXDltgqsaPpPjjuTQA+vx+tq6AtvEAJeF1elZCgyUq7y
- Dg4UwU3I6PKF9oWtkAHVnlPp+2WvspqjcZe2SesrQzg==
-X-Gm-Gg: AR+sD114OfLd91ys5jbh10YliV+2bt1Mw+E2H+6NXQmIs66KeSSUIJKSEsomOzyZO2O
- 8XLKmzISfWPQJ6Fiq97YdL4awBmbBXanGZucxkQru3LjB6+3hvdNVTFoymYE+n2RO7gVpHb8DA3
- eK4v4TfcQb0TCWl+9lP5qO3W7wrGSdRJwoGbRZ90WtyBW7IMIu8ScrietNeddja8DgVW2kcYvOn
- uKoaqYeZQCsK3mxy8a37heL//DVaYO5VIAIaZ5J3wYBXKhn4eaIUMoO4nhx4WFpXwQyivHBZTD4
- ECNh2nH57dLY5JMRN12FwR9PiaVCR1syMNqjJlojj/PrH4X2/YApCBhI58fV830Gjvj6FCVEhu8
- Y2zhls/E32E2iLQn9iCm6Bnx9gm5Cz0fn4vkko5M=
-X-Received: by 2002:a53:c203:0:b0:66c:b8ff:fa9d with SMTP id
- 956f58d0204a3-66ce4b343fdmr1550464d50.43.1787301170232; Fri, 21 Aug 2026
- 01:32:50 -0700 (PDT)
+ bh=driJv/iU1TGZAuFqXjz6qvmHy4wstCWvAUdKjcx/EAc=;
+ b=C8plFe/rrIcIowyA/mBS7YPpTrX/MqL7ancn5VoFI6xvpt03BCeUAL6L2WQylgaZEk
+ mEGXzgez0pNQMJ87iuxPlnJd0bCrJ42tSa9p22plzx2NcOtbk4W8N6cRHiNfa36BfRuK
+ HjCGdnLrEszBabyiAX60wj4l/0go0L5djEol1XDO2nMyJOkddbeEIX0szp+LlW3Efgeg
+ W28icE9up5awHZPFE9lcLKXrQbm0mUYTVJ1829LGD0o97vlK2xTMD86IcJ07FGYCK6vR
+ 6f5xc1IszPi4Ub7hwCHG5TPhn15hnBTSnDdVMNiShwQHX2vksGc6vh7iLTHVPXFs48uM
+ z+sQ==
+X-Gm-Message-State: AFuF++klk7dOt+H+PnQNeV9Id8MX4xukVtyz6Ox6+iyXLcgZ6lbnTGZ0
+ SDQkpbyE59Dpd2ua83GGiZ03HFzeslKJJZh03fk64UYMvaWPeBGlL+zHD1u1iIrq5LUjnjH4kfV
+ bUbcu5/1Zo7V26xmRvVg8hZ1CFPdYZ5vtPDx/ta5fuw==
+X-Gm-Gg: AR+sD13T/F8TJarpkcK7gIbmdisySFe1PdP3m2v/CHlFu4hrMuRViww5SLdRtQUxeIA
+ w+g7R7PJZX5b/eHJt6uj18Uq3BIiGo9Fr3quHzahmXP0Gj3weSHOy34RqGu7XTvcEJpi8W7pAcZ
+ ZzxioQoMhHNyHxbHS3tAjo7MVrnTuD++pHHrP9HYUtzZoss7l6BgF/0+Y0HdAz1l3kKB//Qe6L9
+ PUGL1aH4yLVBchN7YQqC2SvGRqrrZZ/OUGWvPp5JxON2h0r/MRrkrD1Qkj+XdtsrkC20k+BtuPe
+ FkT2fLnM5SwQJwdwxTTa+sbsuvW1b4kUPeqmhhsFMD9GMrve/RwJNCAAgTS8xoS5/o7LdfDp22S
+ Vy5I3CPJJ8vmkP6qtUoXPGxhXNJcK
+X-Received: by 2002:a53:d7c5:0:b0:667:cf87:5838 with SMTP id
+ 956f58d0204a3-66ce4b65f65mr1559505d50.25.1787301489312; Fri, 21 Aug 2026
+ 01:38:09 -0700 (PDT)
 MIME-Version: 1.0
 References: <20260819185430.3467629-1-peter.maydell@linaro.org>
- <20260819185430.3467629-3-peter.maydell@linaro.org>
- <be278ba9-1e87-4def-8bb9-eeb14b17a03a@oss.qualcomm.com>
-In-Reply-To: <be278ba9-1e87-4def-8bb9-eeb14b17a03a@oss.qualcomm.com>
+ <20260819185430.3467629-5-peter.maydell@linaro.org>
+ <6a3faf4b-2b03-48ce-aa85-0406e0ec4b67@oss.qualcomm.com>
+In-Reply-To: <6a3faf4b-2b03-48ce-aa85-0406e0ec4b67@oss.qualcomm.com>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Fri, 21 Aug 2026 09:32:38 +0100
-X-Gm-Features: AcwNN1WQ9Gkaemd4bv8KUaD5itzpcG2M1Nw1KHhx8Nj6LmceEfSfTfhvcyOGlQM
-Message-ID: <CAFEAcA9ui8LDnYK4uWFEMMATvxSkx2QZZ6aNFMs2Ag5PcuFvzw@mail.gmail.com>
-Subject: Re: [PATCH 2/5] hw/arm: Remove spurious WM8750 dependency from
- Realview Kconfig
+Date: Fri, 21 Aug 2026 09:37:57 +0100
+X-Gm-Features: AcwNN1VjM-xDsL_X43BT7HBtEpmMLE4QIyuFuVa3KTGXcl5E4BzjUHYsS8tZibA
+Message-ID: <CAFEAcA_q3joQUYfDjvti8MGTm0Hbpzg6dPjF6Z2wuK_P9gBBNA@mail.gmail.com>
+Subject: Re: [PATCH 4/5] hw: Remove Marvell 88W8618 devices
 To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@oss.qualcomm.com>
 Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, 
  Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>, 
@@ -99,15 +98,15 @@ Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org,
  Jan Kiszka <jan.kiszka@web.de>
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2607:f8b0:4864:20::b135;
- envelope-from=peter.maydell@linaro.org; helo=mail-yx1-xb135.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::112f;
+ envelope-from=peter.maydell@linaro.org; helo=mail-yw1-x112f.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -123,20 +122,78 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Thu, 20 Aug 2026 at 11:55, Philippe Mathieu-Daud=C3=A9
+On Thu, 20 Aug 2026 at 11:59, Philippe Mathieu-Daud=C3=A9
 <philmd@oss.qualcomm.com> wrote:
 >
 > On 19/8/26 20:54, Peter Maydell wrote:
-> > The REALVIEW Kconfig stanza has a "select WM8750"; however the board
-> > itself doesn't actually use this i2c audio device: its audio is
-> > provided by the pl041 (which connects to an LM4549). Remove the
-> > spurious dependency.
+> > The mv88w8618 ethernet and audio devices were used only by the
+> > now-removed musicpal machine, so can also be deleted.
 > >
+> > Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+> > ---
+> >   hw/arm/Kconfig                 |   3 -
+> >   hw/audio/marvell_88w8618.c     | 315 --------------------------
+> >   hw/audio/meson.build           |   1 -
+> >   hw/net/meson.build             |   1 -
+> >   hw/net/mv88w8618_eth.c         | 403 --------------------------------=
+-
+> >   include/hw/net/mv88w8618_eth.h |  13 --
+> >   6 files changed, 736 deletions(-)
+> >   delete mode 100644 hw/audio/marvell_88w8618.c
+> >   delete mode 100644 hw/net/mv88w8618_eth.c
+> >   delete mode 100644 include/hw/net/mv88w8618_eth.h
 >
-> Is it worth Cc'ing stable?
+>
+> > -static void mv88w8618_audio_callback(void *opaque, int free_out, int f=
+ree_in)
+> > -{
+> > -    mv88w8618_audio_state *s =3D opaque;
+> > -    int16_t *codec_buffer;
+> > -    QEMU_UNINITIALIZED int8_t buf[4096];
+> > -    int8_t *mem_buffer;
+> > -    int pos, block_size;
+> > -
+> > -    if (!(s->playback_mode & MP_AUDIO_PLAYBACK_EN)) {
+> > -        return;
+> > -    }
+> > -    if (s->playback_mode & MP_AUDIO_16BIT_SAMPLE) {
+> > -        free_out <<=3D 1;
+> > -    }
+> > -    if (!(s->playback_mode & MP_AUDIO_MONO)) {
+> > -        free_out <<=3D 1;
+> > -    }
+> > -    block_size =3D s->threshold / 2;
+> > -    if (free_out - s->last_free < block_size) {
+> > -        return;
+> > -    }
+> > -    if (block_size > 4096) {
+> > -        return;
+> > -    }
+> > -    physical_memory_read(s->target_buffer + s->play_pos, buf, block_si=
+ze);
+> > -    mem_buffer =3D buf;
+> > -    if (s->playback_mode & MP_AUDIO_16BIT_SAMPLE) {
+> > -        if (s->playback_mode & MP_AUDIO_MONO) {
+> > -            codec_buffer =3D wm8750_dac_buffer(s->wm, block_size >> 1)=
+;
+> > -            for (pos =3D 0; pos < block_size; pos +=3D 2) {
+> > -                *codec_buffer++ =3D *(int16_t *)mem_buffer;
+> > -                *codec_buffer++ =3D *(int16_t *)mem_buffer;
+>
+> There seems to be an endianness bug here.
 
-I don't think so -- the dependency is harmless and has been there
-for years. We only need to drop it so we can delete the WM8750 code.
+Not that it matters, since the code is being deleted, but I don't
+think there is. In guest memory the sample data is 16-bit little
+endian values; in this code path we copy it directly into the
+DAC buffer. The wm8750 code then copies from the DAC buffer to
+the audio backend, and it has created the backend with formats
+with big_endian =3D=3D false. This matches up with the 8-bit-sample
+codepaths in this function, where because we calculate a
+(host-order) 16-bit sample value from the guest's 8-bit sample
+we need to use cpu_to_le16() to write the LE16 data into the DAC
+buffer.
+
+> Reviewed-by: Philippe Mathieu-Daud=C3=A9 <philmd@oss.qualcomm.com>
 
 thanks
 -- PMM

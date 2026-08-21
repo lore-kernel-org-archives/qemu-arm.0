@@ -4,103 +4,93 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D32CDC5DF94
-	for <qemu-arm@archiver.kernel.org>; Fri, 21 Aug 2026 17:08:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0D338C5DF94
+	for <qemu-arm@archiver.kernel.org>; Fri, 21 Aug 2026 17:18:48 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wxSiP-0006XK-0V; Fri, 21 Aug 2026 13:07:37 -0400
+	id 1wxSsa-0000Om-BU; Fri, 21 Aug 2026 13:18:11 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1wxSiN-0006WK-Em
- for qemu-arm@nongnu.org; Fri, 21 Aug 2026 13:07:35 -0400
-Received: from mail-pf1-x42e.google.com ([2607:f8b0:4864:20::42e])
+ id 1wxSsR-0000NK-In
+ for qemu-arm@nongnu.org; Fri, 21 Aug 2026 13:17:59 -0400
+Received: from mail-pj1-x102c.google.com ([2607:f8b0:4864:20::102c])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1wxSiK-000629-Hd
- for qemu-arm@nongnu.org; Fri, 21 Aug 2026 13:07:35 -0400
-Received: by mail-pf1-x42e.google.com with SMTP id
- d2e1a72fcca58-84e27035206so450513b3a.3
- for <qemu-arm@nongnu.org>; Fri, 21 Aug 2026 10:07:32 -0700 (PDT)
+ id 1wxSsP-0008Qo-TQ
+ for qemu-arm@nongnu.org; Fri, 21 Aug 2026 13:17:59 -0400
+Received: by mail-pj1-x102c.google.com with SMTP id
+ 98e67ed59e1d1-3900e39d935so1174210a91.0
+ for <qemu-arm@nongnu.org>; Fri, 21 Aug 2026 10:17:57 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1787332051; x=1787936851; darn=nongnu.org;
+ d=linaro.org; s=google; t=1787332676; x=1787937476; darn=nongnu.org;
  h=content-transfer-encoding:content-type:in-reply-to:content-language
  :from:references:cc:to:subject:user-agent:mime-version:date
  :message-id:from:to:cc:subject:date:message-id:reply-to:content-type;
- bh=iwoY3fBtLl9fRUQCLLgjCX29uMCeiWJhu1A2Z6V/jpY=;
- b=mbW+cRXnbJGB61egv1/zXf9TTa5c4R7KAQoAvrfti9+nDWMFgfFaNUyZ3nL40+j2ZU
- UdrsPiFBUtwSZ88Fva7WneS+Tvrc6gwWwMulDEHdb+K19mEV6yHBE62OB6vo6KX76qGc
- KhfzVFpvZWm23b7JMsolaaG3T3pQsRj4EbzQMhYQE6SUAeeeCuSu616aHoASN5fxLEox
- N/Ks4Abelx9SUZmNxJfAUY8x50TTDfsJL1/0aJoFfeSV7p+NXQBtrc8OaDKGjQNA1pFo
- tcs2nn6vpWUGqpkSjAcmty0be1+HEddt/+vQlrlTroLjhLTBNByaco4UOZWHNbz2NyX2
- ze+Q==
+ bh=UYI4F1cApmfOtb7XzffJo6/yvlOr9M0glusv6ZmqiFQ=;
+ b=HZv/k2Q6PcMd3DSgxpNYAbA7Q4ngD1cu1OLUHEfe59ryTx7ormJwvbrALkVzoKNimv
+ zjYDR+qdgFRIrNKJ4XFweLmsUSxExLNi4ze0aD8ByOW+N7/xLWc3FqI1n8B5vglqTxLv
+ yUU2L5YKVqJN2CWcnTUHLx/tJqYbhPCXbyJ2KdnJYLdcc8wlcumDw43N5wZi7TP8NgEO
+ T10aL0XZEI5KbzNeTqqgOmD+Bk3uADW3BSwKvuz8sUZh4sB98aiCRrEovfgkkArr8gN0
+ P07pzH8VGfDd+3VCD01DNw9BpiIJqrj+D4rckRMUzYKhpaH3t/vb96E87/z/7h7H7ewv
+ yQEQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1787332051; x=1787936851;
+ d=1e100.net; s=20251104; t=1787332676; x=1787937476;
  h=content-transfer-encoding:content-type:in-reply-to:content-language
  :from:references:cc:to:subject:user-agent:mime-version:date
  :message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
  :message-id:reply-to:content-type;
- bh=iwoY3fBtLl9fRUQCLLgjCX29uMCeiWJhu1A2Z6V/jpY=;
- b=dI+UUS7R3XUkyvCIMyaF46KrR3fquL3ssO+89bgsLqfbhlg/cv87FNS14e0TfaUon+
- 5lYFpjFx6Rm+Kh0vwrKSckYIBPg0fMcLo7TShAVyHqrd4aXUt7E10asAJHhc5QlsP7Hr
- epTVhxiE3pLwPwing9lbVWSI+9osJJVAB68A7EsK2Cq/hCkmuNXpcKQUKCSXYVXD3QlU
- Rd51yfUK4N+LCUq85qYocKudDpXymAXXCFbAfQx0G6r89eVqO5Odnuz8jnkcYGAGWCwr
- JIecEGciqQoNE5JjihjJkgG4PjbmtKWvxIWJzdSSRgY58njQ9Igypfs+Ypti04Le1JUe
- lA/g==
-X-Forwarded-Encrypted: i=1;
- AHgh+Rr8bOEPEJ1Vaqn/uV41E1ldDt5knDKntAFDW1f2PFYs+qiE8CZcvIC8yeueTqQBuJwyChw3Vgn2Zw==@nongnu.org
-X-Gm-Message-State: AFuF++kRqLx94Xt1oYFn87Qzy9QCqYAOcb4YOK4HH8NdE49G9TNysQDT
- u1v3zMDEJTLec/3/VFXd2iz8iDqhBzsmyYz1CBq3c8nXCeRfHuUks7XsAtxyX41POBE=
-X-Gm-Gg: AR+sD11jHHqPDhmasXHdJyELoREan+xusH1AGtLNT6Pnf6Nj2q4sCaJkLrEN1sPRc42
- I1AUgHTVHPmvyo7SQvKbxPiz3wLxwtda0nZ+EQntgWxlB6ojlsu5G068jB8RrGoeXTk2Gqvmufc
- IWhgO5dpHyCPWLWiGvDvjFP+ba/TS5L9mFbi8n9CP2tBamRKcHu1BVetmu1BFXxXeTTKPb6qdsR
- cRyrAeJcXM55luGunmlfa4tMA+jeaO3K0dD4Id2XNYf8AHA6mDE7EoA34ppTzP/+Wq0DgAhuu9G
- xvAHKXr6D16oJU9sgCcmrdRAqyMZJlGp8vu8sSyUi7pKk6X6hAen7SDZ064zAqv33Q9CUR5zucm
- uaYDLzKFDGyzf/cfX/paWotQqUnmrWRcFN2pOZ0VGOyQyF9n6iDEdO7dK++DY6q4sqeTlQUlLmq
- OzZkUr7QWDiE6OpJU4ug64C6SG6ozGSxMOmj4kZwqBVbFl4dHPlZhtgL48HWz0ivzwOv7f64SLI
- oLk
-X-Received: by 2002:a05:6a00:4c98:b0:84f:dc19:b77d with SMTP id
- d2e1a72fcca58-851fa011e87mr14038569b3a.12.1787332050732; 
- Fri, 21 Aug 2026 10:07:30 -0700 (PDT)
+ bh=UYI4F1cApmfOtb7XzffJo6/yvlOr9M0glusv6ZmqiFQ=;
+ b=rvQrXlaTNoocnjNfTa3jNotbSvCOQEERhrn71CCA5wz+CoQ7dUmO8maTAb1/u2I7GY
+ NBHadd3wbowTx/3pFj1+9oLALtX8DntmEWhBkp8KwL0SbZc/4cy4v+dfJl9zI//OMFBk
+ /gOBHYEHEF6qOaeCKOfz7RGDho4sZViVKrNdlSARaMftzuCVRZdCFSL4OXYJ8pt5pwNl
+ Swmq/o112ca4C5FgIh8e/lUdd3OAVd74dTQnH9ylBpOFISEBE0lDmcF61qf/6atREzEh
+ ryOW0EjG/iUmMymFiLU0yJSJQZ7+MTUs0MeuUYxCKQ+34ALVRa+cyb7jNi1VOFk7m1oZ
+ Orkg==
+X-Gm-Message-State: AFuF++nSDK4xZVyppkkwMd0bxENcsRjTPOUqwxDYgrVeUfnpz9DAeEpB
+ ju8agYlL1KlhbW9ooD1V+JK0pC1yoGtkBGzK1Hz7VUwH/DXp3Gm7yuhGeup+Kw37YzQ=
+X-Gm-Gg: AR+sD13E7ioF3KKKV1NmxtVOZ8VzutwTttkbaOSFrTheZZvwZX/8PhsBfpiTwLcdDJW
+ 57s80jbcT8C43p6ZMgN8U5RjyP1Y+vcKQxsjvn2lIl+z+4dVEiJ0AKhdeO3EjIEn/lYNPXxucM0
+ NVTcD7NLpHdCQVn2tRhBILwVzahX6JrMHG2YLAvbfrUo+rDaFw6+/HDY6KHOavB2SkLtOQTlug3
+ EMxFBY+ow7Rm2O4Dda8INpBCKVvmgPBcD4osel38ZyiwY3YmHOk6a0qB6v6GfTyL74NcUSbZG+f
+ fvr9YnT6L65i4BWvxGh02sdiEtnRw6dOxDmazCaxhsPYVFIh+WurkAXcuiwlo667AWZdyBW5l3L
+ 199jP68fX+Yah3Pcwt+kJOISz2VIgxjQidgqKH1nYX4oKqu0pDlaaRRhFDS6ul0DO9mYMoXSTKG
+ MsVIraj8tvGTCQMt3hi2ob/LYER/7qNwJMXhPpFeIOmYvL3bjEBZpeuAaPV1aw29LnqDPScv9aT
+ OLW
+X-Received: by 2002:a17:90b:4b89:b0:38e:67e1:15b with SMTP id
+ 98e67ed59e1d1-395deeae6e3mr256963a91.6.1787332676018; 
+ Fri, 21 Aug 2026 10:17:56 -0700 (PDT)
 Received: from [172.20.6.168] ([108.174.179.84])
  by smtp.gmail.com with ESMTPSA id
- d2e1a72fcca58-851d366eebfsm3124052b3a.52.2026.08.21.10.07.29
+ 98e67ed59e1d1-395c4697358sm3930350a91.8.2026.08.21.10.17.55
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Fri, 21 Aug 2026 10:07:30 -0700 (PDT)
-Message-ID: <bde71c0c-ba94-4bd6-9ef9-e868fbd8562e@linaro.org>
-Date: Fri, 21 Aug 2026 10:07:27 -0700
+ Fri, 21 Aug 2026 10:17:55 -0700 (PDT)
+Message-ID: <c3e339b2-f315-4be6-b5d2-28de79a1d505@linaro.org>
+Date: Fri, 21 Aug 2026 10:17:53 -0700
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v3 02/15] cpus: Add const-qualified CPU environment
- accessors
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@oss.qualcomm.com>,
- qemu-devel@nongnu.org, =?UTF-8?Q?Marc-Andr=C3=A9_Lureau?=
- <marcandre.lureau@redhat.com>, Pierrick Bouvier <pierrick.bouvier@linaro.org>
-Cc: Paolo Bonzini <pbonzini@redhat.com>, qemu-arm@nongnu.org,
- qemu-s390x@nongnu.org, qemu-riscv@nongnu.org, qemu-ppc@nongnu.org,
- =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@mailo.com>,
- Zhao Liu <zhao1.liu@intel.com>, =?UTF-8?Q?Alex_Benn=C3=A9e?=
- <alex.bennee@linaro.org>, Eric Blake <eblake@redhat.com>
-References: <20260821104950.32108-1-philmd@oss.qualcomm.com>
- <20260821104950.32108-3-philmd@oss.qualcomm.com>
- <3c9fe944-2b51-412c-bd30-26bf013cff46@oss.qualcomm.com>
- <22188776-edeb-44e6-b79d-0b877292221d@oss.qualcomm.com>
+Subject: Re: [PATCH 2/3] target/arm: Make IT insn undef when not present
+To: Peter Maydell <peter.maydell@linaro.org>
+Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org
+References: <20260821132550.168896-1-peter.maydell@linaro.org>
+ <20260821132550.168896-3-peter.maydell@linaro.org>
+ <0a7ca30b-e623-48dd-8db9-c53c76f9407e@linaro.org>
+ <CAFEAcA_UKRZQFiuJV0bq9BhLCPXbVVsKEmCiO1egdmrRgBe9mg@mail.gmail.com>
 From: Richard Henderson <richard.henderson@linaro.org>
 Content-Language: en-US
-In-Reply-To: <22188776-edeb-44e6-b79d-0b877292221d@oss.qualcomm.com>
+In-Reply-To: <CAFEAcA_UKRZQFiuJV0bq9BhLCPXbVVsKEmCiO1egdmrRgBe9mg@mail.gmail.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::42e;
- envelope-from=richard.henderson@linaro.org; helo=mail-pf1-x42e.google.com
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=2607:f8b0:4864:20::102c;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pj1-x102c.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -116,32 +106,30 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On 8/21/26 08:51, Philippe Mathieu-Daudé wrote:
-> No, this now fails distinctly on Ubuntu 24.04:
+On 8/21/26 07:58, Peter Maydell wrote:
+>> In practice this is going to be the same as just thumb2, because v7M has v7 which implies
+>> thumb2, and all v7M have m_main.
 > 
-> In file included from ../accel/tcg/tcg-runtime.c:26:
-> ../accel/tcg/tcg-runtime.c: In function ‘helper_exit_atomic’:
-> /home/runner/work/qemu/qemu/include/exec/cpu-common.h:100:31: error: expected expression 
-> before ‘typeof’
->    100 | #define env_cpu(env) _Generic(typeof(*env), \
->        |                               ^~~~~~
-> ../accel/tcg/tcg-runtime.c:135:26: note: in expansion of macro ‘env_cpu’
->    135 |     cpu_loop_exit_atomic(env_cpu(env), GETPC());
->        |                          ^~~~~~~
+> v8M without the main extension exists, though we don't model any
+> of those CPUs at the moment. That will have ARM_FEATURE_THUMB2
+> (because FEATURE_V8 implies FEATURE_V7 and FEATURE_V7 implies
+> FEATURE_THUMB2).
 
-Yeah, this of course fails because _Generic wants an expression and typeof() is a type not 
-an expression.
+Right-o.
 
-However, in this case less is more -- just don't dereference env:
+>> Is it clearer as
+>>
+>>          !(arm_dc_feature(s, ARM_FEATURE_M)
+>>             ? arm_dc_feature(s, ARM_FEATURE_M_MAIN)
+>>             : arm_dc_feature(s, ARM_FEATURE_THUMB2))
+>>
+>> ?
+> 
+> Yeah, I think so. (I actually wrote it first with nested if()s
+> roughly like that.)
+Excellent.  With that
 
-#define env_cpu(env) _Generic(env, \
-             CPUArchState *: \
-                 (CPUState *)((void *)(env) - sizeof(CPUState)), \
-             const CPUArchState *: \
-                 (const CPUState *)((const void *)(env) - sizeof(CPUState)))
-
-etc.  It's only top-level qualifiers that are stripped (so const int -> const), but 
-qualified pointers aren't top level (so const int * and int * do not match).
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 
 
 r~

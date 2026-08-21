@@ -4,143 +4,109 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4F2FCC5DF87
-	for <qemu-arm@archiver.kernel.org>; Fri, 21 Aug 2026 10:29:04 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1B88DC5DF7D
+	for <qemu-arm@archiver.kernel.org>; Fri, 21 Aug 2026 10:38:46 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wxMUc-0006Dq-H2; Fri, 21 Aug 2026 06:28:58 -0400
+	id 1wxMdw-00016b-7Q; Fri, 21 Aug 2026 06:38:36 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@oss.qualcomm.com>)
- id 1wxMUc-0006Di-1d
- for qemu-arm@nongnu.org; Fri, 21 Aug 2026 06:28:58 -0400
-Received: from mx0b-0031df01.pphosted.com ([205.220.180.131])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@oss.qualcomm.com>)
- id 1wxMUa-0005iI-FJ
- for qemu-arm@nongnu.org; Fri, 21 Aug 2026 06:28:57 -0400
-Received: from pps.filterd (m0279872.ppops.net [127.0.0.1])
- by mx0a-0031df01.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id
- 67L9LtwP1570843
- for <qemu-arm@nongnu.org>; Fri, 21 Aug 2026 10:28:54 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qualcomm.com; h=
- cc:content-transfer-encoding:content-type:date:from:in-reply-to
- :message-id:mime-version:references:subject:to; s=qcppdkim1; bh=
- xWCeMIeLWcjhSJ+VNhO8kr4XOU2m5CV/bJ4/7dCo2lA=; b=lCzTVCpPuFbkqmUs
- /xBBXnZQgQPEgjGI6bXkKnZOB6GHKFDTdbfL6hsmyAdjJLkbhp/h4ceXafen6qx9
- hDU7o8jwMgoMmNMhiz1dUoT2W1MHBcoQqeha0+WdUiM4ku/hnZ2EnoNrfnSMStTb
- 2j9Q6oAsL7ooFK3rOzxn1fLu2MXDv13hve23PFQqTgwqsG+qOAFrXYi4gydf7SmJ
- IfHvjy1qME39vNxPTdtiFe8ha4mh0mq7rHtrsF7Z11qdRl746B0vvBzF4/lVW7QT
- QZdlLIouQJEtnNK6ldSGZWMYGjhJNdxVMbZ7pEehcy6jXTLK1h74oRtj+JFafJhG
- hch+NQ==
-Received: from mail-qt1-f198.google.com (mail-qt1-f198.google.com
- [209.85.160.198])
- by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 4g6fue16rr-1
- (version=TLSv1.3 cipher=TLS_AES_128_GCM_SHA256 bits=128 verify=NOT)
- for <qemu-arm@nongnu.org>; Fri, 21 Aug 2026 10:28:53 +0000 (GMT)
-Received: by mail-qt1-f198.google.com with SMTP id
- d75a77b69052e-52d28f8737eso14384721cf.2
- for <qemu-arm@nongnu.org>; Fri, 21 Aug 2026 03:28:53 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <alexander@mihalicyn.com>)
+ id 1wxMdv-00015I-7n
+ for qemu-arm@nongnu.org; Fri, 21 Aug 2026 06:38:35 -0400
+Received: from mail-ej1-x635.google.com ([2a00:1450:4864:20::635])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <alexander@mihalicyn.com>)
+ id 1wxMdt-00009U-3r
+ for qemu-arm@nongnu.org; Fri, 21 Aug 2026 06:38:34 -0400
+Received: by mail-ej1-x635.google.com with SMTP id
+ a640c23a62f3a-c15c42a45adso327780966b.0
+ for <qemu-arm@nongnu.org>; Fri, 21 Aug 2026 03:38:31 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1787308711; cv=none;
+ d=google.com; s=arc-20260327;
+ b=HC4in2We66iGXG6wGX9k+eK9YYEdzX7a+G0GSiO8T0KkJcskZ2hS042agYrJCaut+d
+ SuKKMj4uEJ7Cu+kSuZ3SlTRrRnBkq6R6RyXsR8imrd57ug2Fps+gCs5ehl/gK139hUcp
+ U6IdHbRsIWW/LBHh6ID/QFeS9yvAoF0V42UHjwQVp7JDCUj6HweUVaH4VlKUJ+dgEYS3
+ FtNE1H4wDh3nHc76gBHBLcvdDClNt7BBaXZYij5lOEvXQkMxbv9X+/1buQmjlLHc61+J
+ 4/vvgg8Y1/IggC3brwIIvGbzM1ANtDzzqSZxxZmC64JnfyEQQ7tmxKnyCLHCuYy+zZa8
+ WdKA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
+ s=arc-20260327; 
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:dkim-signature;
+ bh=YDiTFJFgXmJVItqIZoQblfN5qchlanA5Lo23Yv5j74E=;
+ fh=p1NQkEJqnwpxV7empgaMr3UZrFGc3wCPoNw8zp3fRms=;
+ b=U6vfSc8cOdDsTHzgSd5HjArA9rW2jB7CtHDh4KGmJQDWsDBzq+DaTktZFIw1dOXJ4I
+ 0TXjVFxjxsrCzefp9M2Q78UibUyMkdXQP/lLjUP+MVB+BBZ5yxaH3TAhEJMh/ja8uSrz
+ YqQxvk5lIKcRzLy+ZK52aaNdFXgnHJCm4KKqev2fsMEqRcmABrau+0Gm82IY8YQ4uOFg
+ V+WpAF7zysdGIIhvK/T7EBvRcHE2Ov53jxbtRn8qv/2yvJ9X0VFwv5LQfYQunm9VIiaF
+ smtmCuLe2cSvaCU7EOJCI3gvgyFRgSlGKQ0uLBASW8z2ndG+ZiKOKSrHPgkGp0qakSg/
+ PNJg==; darn=nongnu.org
+ARC-Authentication-Results: i=1; mx.google.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=oss.qualcomm.com; s=google; t=1787308133; x=1787912933; darn=nongnu.org;
- h=content-transfer-encoding:content-type:in-reply-to:from:references
- :cc:to:content-language:subject:user-agent:mime-version:date
- :message-id:from:to:cc:subject:date:message-id:reply-to:content-type;
- bh=xWCeMIeLWcjhSJ+VNhO8kr4XOU2m5CV/bJ4/7dCo2lA=;
- b=KTuu9Z0pjMF/HbHUJ7bLUizfdgfnphSjF2kQIW7ukwbn2L2So7YenogqWsPqIr2DXL
- ZTMOpzQe/wPc+GPnGAzpHsS0ojIzSSBLb9v8G9f3seHpQsQZsH/2WENHTJutYDtUA4dH
- IzzjROzM3QUt+0GvGsOxb/SFg2ik+lQQKVVecACzaNdwABCA0+FePf2F8Y+fjgt6Feyx
- 3DAHlPNVVTHXkypanrcJK22KL+X8WKHphPzqO6sv4ztQoi9C+qtILNTgv3iZ8KSj1gxy
- axtSzGejAjtVtpkLVqwRgObGmg4h92OmfBtfjExV5OkqXahI9E3eXC60qSGxJYNsbkKb
- z9ew==
+ d=mihalicyn.com; s=mihalicyn; t=1787308711; x=1787913511; darn=nongnu.org;
+ h=content-transfer-encoding:content-type:cc:to:subject:message-id
+ :date:from:in-reply-to:references:mime-version:from:to:cc:subject
+ :date:message-id:reply-to:content-type;
+ bh=YDiTFJFgXmJVItqIZoQblfN5qchlanA5Lo23Yv5j74E=;
+ b=VIO89pKpyUD85uFss7L3WAsExvX3505i3ItfZERYN35eq5JwG0AG5EgB35KlGAH0wa
+ rzoj2ZWe9y3OZNY1CV0/Kxa4bFQKjvHIN3lunmojTCKhu9XVgMhaBckNXX/WAreYlc9U
+ PSoIyTN0UEvRR3yJhY91As18v7z7Gsc9DXXt8=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1787308133; x=1787912933;
- h=content-transfer-encoding:content-type:in-reply-to:from:references
- :cc:to:content-language:subject:user-agent:mime-version:date
- :message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
- :message-id:reply-to:content-type;
- bh=xWCeMIeLWcjhSJ+VNhO8kr4XOU2m5CV/bJ4/7dCo2lA=;
- b=U+fFEpnO8HXc/K7bhH4q8TG8kM0ccg0m77w7OaY5rjj8vMI/3jcgxXLzgRWYSSnPCU
- U6/VBRzXh2jC4dPulU3hZqkfgmUmseQh/Dpo2pMufg9QX51tAx6TXnjBMLAGzYys/LVK
- MChnD1l581LbqjJ9HozJFO8TJReFijDb53avZMcveyAZztEV+IrXzb7AlWTIsUVU7rgR
- /rJMTlce4QvTqYnSWrnR+IFV5G6rrB4sJW8bhtEF4xcKpUl6ryGrJIgmMw6S52sKYN2x
- SR5jOrYJMyUpCTckC3P80R5xcLAAsSDGKZ4A2jxmu27tCntGgBu+J3PlHoisuyEohnvo
- RXJg==
+ d=1e100.net; s=20251104; t=1787308711; x=1787913511;
+ h=content-transfer-encoding:content-type:cc:to:subject:message-id
+ :date:from:in-reply-to:references:mime-version:x-gm-gg
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
+ :content-type;
+ bh=YDiTFJFgXmJVItqIZoQblfN5qchlanA5Lo23Yv5j74E=;
+ b=EoBycDaED2CxkTo/xYNfwWET4AZ4+KiA8lCYll7MTixBpFQlMxcW0G70+10hN3eIIl
+ v0x0qrufkMw3h3cWpAwquAT7h8ejKdOO7tWfPPmCrVCkS0G9/Onu6QLtZN0c8Ig5rofE
+ 4u7vr8pTIT9+nt/Li5EUJRs541HL8PGbhe+jw1/GSa9VfQ4ZOHpk82dCRoouNrJrzyzO
+ zaARANPoKUP1gDv0OcUkPRbUwA74VVwOAezh09nc8hhRVAPpojjWuQMQNsShnPH1KOFy
+ KjqK1Km5p6BtiSyZk9fZXk3Cd/z9bC3cIt2WlEzMTgL4zKAzqFL9cdA5MnwnOfWkgNtR
+ 2CVw==
 X-Forwarded-Encrypted: i=1;
- AHgh+Rr0YT2iMLBrUqC3NfqmVnh7AZOJyr/4/EpGiSuPNe7AJOrUW8wlI87WHmSeAui5ewmeezFxKago3g==@nongnu.org
-X-Gm-Message-State: AOJu0Yyejg+cYloFNXZBa54x1EEXc052cB1+ZNZ7+bjDLkuM6Qi0G9Ng
- OSbFy99/wTdxm0EqiA3hwkQ0N4K744QLUgoJRrX0OZBTyqLdxtfBu4oz+bWSIbCUOaYze4ikNZ4
- OeA9Zes5z4+4Le5n9ZJkHsZgv6dDidOIgCmpYMgfORt6LBPDIhK5iNME=
-X-Gm-Gg: AR+sD1186+JAIuSQvMtGlejuSYtaJGI7G82lCPsCT6EK8kOhQKMoUue6Xnp44W34lPO
- +KL5BYvlZQoZctUWxRPiIjbO+ZlB++Pw82ykuOmSZT3Mht2gtr2WBuP3uOnTLIic1DGxIs1laaW
- 8hPMtc5NJtVhmhuVYcSKg8q/Td9emTbtjcRo08mpADEO8FyExgs1q/+BFCl1P1ovMxfq0Tt6Eo8
- 5CpH26esOaShaO9VSn3glA5C671KAI01g6q+hYlnLCIjBOpZHGTJlvlFl8Sp8xUvQ8xgRRN9pSq
- qOn3RWalHmEYCI4rsLu0bRlQkNHai4XZRQVHzjVYLTjRDTHpTL+ALRTuh40DxICmVjX2KjK4BwU
- EQC4SdHx4EPymAIdKjNspN33PAJgEUaTYLKE=
-X-Received: by 2002:ac8:5941:0:b0:516:e10f:7140 with SMTP id
- d75a77b69052e-52df5a28a86mr43943131cf.35.1787308133323; 
- Fri, 21 Aug 2026 03:28:53 -0700 (PDT)
-X-Received: by 2002:ac8:5941:0:b0:516:e10f:7140 with SMTP id
- d75a77b69052e-52df5a28a86mr43942781cf.35.1787308132850; 
- Fri, 21 Aug 2026 03:28:52 -0700 (PDT)
-Received: from [192.168.69.231] (pmd666.hd.free.fr. [88.187.86.199])
- by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-499b90e3855sm23501275e9.6.2026.08.21.03.28.51
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Fri, 21 Aug 2026 03:28:51 -0700 (PDT)
-Message-ID: <9aabdd1c-4673-4609-aaa2-f27e04d4d0ad@oss.qualcomm.com>
-Date: Fri, 21 Aug 2026 12:28:50 +0200
+ AHgh+RoiuQvxfj/hQTVBPV+d48hxihDa2FEA6ojDYsFzA44ZdY8QFZoRip4iF/9Cpm6Svg0glvNuxyBPXw==@nongnu.org
+X-Gm-Message-State: AFuF++l8DQyEDfFXwqrS/nk1NE2ss0BsY9EXIGiwObnApfF0pgHnmyIg
+ WVjr2cVR7L1GidMnNoywytnLYjOfn8YAzU4SaivkYNauZrZ/oYiz/5gd/YogiRn/lsYLYzKQ64S
+ y12DIi/BnT5jQKzfUzR0xEKsm03Gbf5PllNQbUUglCQ==
+X-Gm-Gg: AR+sD10/nmNa3boPjBtkB7W9NVUF679r7blqEUXthPsFqT1rdb9BKVXUFTde5oOGJPN
+ q1QkLX+CmVeObKyg3HyHJjho0doeuYlaIN85TkBJ7/QH+mlcAESjtVjdq4gYbGay4RHHH7Goou4
+ E5e9O3N+skjRm7wmi3NjoiCYkx3OxueE0E1IFCxDklsAFwtanc1vg1u4Gz8dHRsQAovqxDr4aUQ
+ k8GdcL02R9rOBd3gorwSqxEIasjpfmD0ATtsvqZa4mknyJ/E9BpOYzgSkkcuDHprC+NOgAiLNRl
+ YgefH/zXCfv+d6ve+Abjpzw6LllzqOsQT/E4ov1xRlH/RpG9+bi0bRllElrYPWd3VwbgqO3tK3g
+ 3
+X-Received: by 2002:a17:907:e8c:b0:c20:f85f:e7c6 with SMTP id
+ a640c23a62f3a-c244d69f833mr955306666b.8.1787308710528; Fri, 21 Aug 2026
+ 03:38:30 -0700 (PDT)
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 00/15] cpus: Constify @cpu in SysemuCPUOps::has_work()
- handler
-Content-Language: en-US
-To: qemu-devel@nongnu.org
-Cc: qemu-riscv@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
- Paolo Bonzini <pbonzini@redhat.com>, qemu-s390x@nongnu.org,
- Richard Henderson <richard.henderson@linaro.org>, qemu-ppc@nongnu.org,
- Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>, qemu-arm@nongnu.org
-References: <20260820201356.29775-1-philmd@oss.qualcomm.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@oss.qualcomm.com>
-In-Reply-To: <20260820201356.29775-1-philmd@oss.qualcomm.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-X-Proofpoint-Spam-Info: AW1haW4tMjYwODIxMDA3OCBTYWx0ZWRfX8mll33URqWLJ
- ZfRtPbqFaD5BLbFME3DbG96RCTK9u3ygUxl+FybkvkEvNqSZ0ooHLgdUDaGxezX5Fk/C/2TBnQ7
- gaQRelv+eZYfXCv6jE+/GAOrir+qoKc=
-X-Authority-Analysis: v=2.4 cv=U9+iy+ru c=1 sm=1 tr=0 ts=6a882866 cx=c_pps
- a=mPf7EqFMSY9/WdsSgAYMbA==:117 a=4s3hRJSeHn4rkQlkrse1kQ==:17
- a=IkcTkHD0fZMA:10 a=Sv0fKeRqtYgA:10 a=M51BFTxLslgA:10 a=s4-Qcg_JpJYA:10
- a=VkNPw1HP01LnGYTKEx00:22 a=u7WPNUs3qKkmUXheDGA7:22 a=yx91gb_oNiZeI1HMLzn7:22
- a=ivBIR6OCMuaYdoXQm0EA:9 a=3ZKOabzyN94A:10 a=QEXdDO2ut3YA:10
- a=dawVfQjAaf238kedN5IG:22
-X-Proofpoint-GUID: Z5FgHnGZCKmR1zRoWEVOe7MYn7zI_9pF
-X-Proofpoint-ORIG-GUID: Z5FgHnGZCKmR1zRoWEVOe7MYn7zI_9pF
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwODIxMDA3OCBTYWx0ZWRfX1l76x9H6+uOs
- RLwjP5hQFYu+JrhKL7fU4uaWrKziDysWJysuuxCd5L6dD0gyimU0oT95VhinViUYAczsDbdqlfR
- iK3QKhXisnTO0GW0fmqS0v6ZTgMZ3l5NdT2EIBbESclFRLgdX2OUCx5V45XV8yp6NGvHOMjcPXA
- G404c6jgLCdWaNToQqxrdtGlmCG9aVvvRQjDLCYnVo2WA+SG7Z90Fiw41H8RUa5K9J27l74fEiY
- BLOvDEa3tw3dFUKoSmnszLoLVhdR+akmIP8etWo4ZxgfYEb0qgbgW+LNV21MY8o3tUnPmQ8PT5U
- s9+zfTJMKlqB2DDkhUwegvAw884AGJMi1RwhjTlQ9gtbKQDUL66Jl1bDvHolG3bMq9FNgDaj53m
- lSvJ8JvmRMopWJLAXorABlQeKdMlMum60bafhszL0X1PfRDaeJu8+Q7MiKNrki4hb1wsODu4U16
- popNWfJvkjxZIYqilBg==
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.293,Aquarius:18.0.1176,Hydra:6.1.134,FMLib:17.12.100.49
- definitions=2026-08-21_03,2026-08-21_01,2025-10-01_01
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
- impostorscore=0 adultscore=0 lowpriorityscore=0 bulkscore=0 clxscore=1015
- malwarescore=0 phishscore=0 suspectscore=0 spamscore=0 priorityscore=1501
- classifier=typeunknown authscore=0 authtc= authcc= route=outbound adjust=0
- reason=mlx scancount=1 engine=8.22.0-2606150000 definitions=main-2608210078
-Received-SPF: pass client-ip=205.220.180.131;
- envelope-from=philmd@oss.qualcomm.com; helo=mx0b-0031df01.pphosted.com
-X-Spam_score_int: -27
-X-Spam_score: -2.8
+References: <20260817113349.103833-1-alexander@mihalicyn.com>
+ <CAFEAcA-BsxOCC4eM1ohcnr3_xmCabKNWQchtdsVzO91stiir-Q@mail.gmail.com>
+In-Reply-To: <CAFEAcA-BsxOCC4eM1ohcnr3_xmCabKNWQchtdsVzO91stiir-Q@mail.gmail.com>
+From: Alexander Mikhalitsyn <alexander@mihalicyn.com>
+Date: Fri, 21 Aug 2026 12:38:18 +0200
+X-Gm-Features: AcwNN1WDP8i18Z9l7PTydhOY1B1ZEJmaUUSq_o2UY3hV1AztTS_gaDrP8QiwNrY
+Message-ID: <CAJqdLrpdp1mfFU9ci62z4Ck29o9LMAbCOgq22xdCBvezkrov4g@mail.gmail.com>
+Subject: Re: [PATCH v3] hw/char/pl011: support backend hotswap
+To: Peter Maydell <peter.maydell@linaro.org>
+Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, 
+ =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@oss.qualcomm.com>, 
+ =?UTF-8?Q?St=C3=A9phane_Graber?= <stgraber@stgraber.org>, 
+ Paolo Bonzini <pbonzini@redhat.com>, 
+ Alexander Mikhalitsyn <aleksandr.mikhalitsyn@futurfusion.io>, 
+ =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>, 
+ =?UTF-8?B?TWFyYy1BbmRyw6kgTHVyZWF1?= <marcandre.lureau@redhat.com>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2a00:1450:4864:20::635;
+ envelope-from=alexander@mihalicyn.com; helo=mail-ej1-x635.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H2=0.001, SPF_HELO_NONE=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -157,47 +123,141 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On 20/8/26 22:13, Philippe Mathieu-DaudÃ© wrote:
-> Missing review: 2,12,14,15
-> 
-> Since v1:
->    - use _Generic (rth)
->    - no more RFC
-> 
-> - Patches 2-11 trivially add const qualifier for various
->    cpu_is/has() getters
-> - Patch 12-14 add const-qualified variants of cpu_env(),
->    env_cpu(), and env_archcpu() using _Generic() macros;
->    consolidate the redundant env_cpu_const() alias and update
->    linux-user to use the generic accessor
+Am Fr., 21. Aug. 2026 um 11:57 Uhr schrieb Peter Maydell
+<peter.maydell@linaro.org>:
+>
+> On Mon, 17 Aug 2026 at 12:33, Alexander Mikhalitsyn
+> <alexander@mihalicyn.com> wrote:
+> >
+> > From: Alexander Mikhalitsyn <aleksandr.mikhalitsyn@futurfusion.io>
+> >
+> > Currently, when Incus issues "chardev-change" QMP command to change
+> > chardev backend from ringbuf to socket it receives an error (with aarch=
+64 VM):
+> > "Chardev user does not support chardev hotswap" [1], [2]
+> >
+> > Let's fix this by properly implementing BackendChangeHandler for pl011.
+> >
+> > Please, note that we have to "replay" CHR_IOCTL_SERIAL_SET_BREAK, becau=
+se
+> > if BRK bit was set before backend change (i.e. (s->lcr & LCR_BRK) is tr=
+ue),
+> > then after change we need to send break to a new backend too.
+> >
+> > Link: https://discuss.linuxcontainers.org/t/unable-to-connect-to-vm-con=
+sole-on-arm-architecture/23096/3 [1]
+> > Link: https://github.com/lxc/distrobuilder/issues/892 [2]
+> > Reported-by: St=C3=A9phane Graber <stgraber@stgraber.org>
+> > Reviewed-by: Alex Benn=C3=A9e <alex.bennee@linaro.org>
+> > Signed-off-by: Alexander Mikhalitsyn <aleksandr.mikhalitsyn@futurfusion=
+.io>
+> > ---
+> > v3:
+> >         - introduced pl011_set_handlers()
+> >           [ as suggested by Alex Benn=C3=A9e ]
+> >         - introduced pl011_set_break()
+> >           [ as suggested by Philippe Mathieu-Daud=C3=A9 ]
+> > v2:
+> >         - fixed a typo in commit author name
+> >           [ I did `git format-patch` and copied this patch from my Rasp=
+berry PI
+> >             dev/test machine and it turns out that I have a stupid typo=
+ in my
+> >             `git config get user.name` on that machine. ]
+> >         - added RWB tag from Alex Benn=C3=A9e
+> >         - adjusted a commit message
+>
+> I have one review suggestion here:
+>
+> > +static inline int pl011_set_break(PL011State *s, uint64_t lcr)
+> > +{
+> > +    int break_enable =3D lcr & LCR_BRK;
+> > +
+> > +    qemu_chr_fe_ioctl(&s->chr, CHR_IOCTL_SERIAL_SET_BREAK, &break_enab=
+le);
+> > +
+> > +    return break_enable;
+> > +}
+>
+> I think this would be better with a similar API to
+> pl011_loopback_break(): make it take a bool brk_enable,
+> and return void. (pl011_loopback_break() takes an int,
+> but we shouldn't copy that: it uses it as a bool, so it
+> ought to take a bool.)
 
-After reworking _Generic from v1, this patchset ordering is not
-bisectable anymore. Patches 12-14 must come first.
+Dear Peter,
 
-> - Patch 15 finally convert the SysemuCPUOps::has_work
->    hook and all target implementations.
-> 
-> No functional change; purely const-correctness improvment
-> to enforce has_work() callees don't mutate CPUState.
+Sure, I've changed this ;-) The only thing is that I kept brk_enable
+as int, because in serial_chr_ioctl we have:
+static int serial_chr_ioctl(Chardev *chr, int cmd, void *arg)
+{
+<...>
+    case CHR_IOCTL_SERIAL_SET_BREAK:
+        {
+            int enable =3D *(int *)arg; // << int is assumed
+            if (enable) {
+                tcsendbreak(fioc->fd, 1);
+            }
+        }
 
+I'll send -v4 in a moment.
 
-> Philippe Mathieu-Daudé (15):
->    target/tricore: Document architectural interrupts as not implemented
->    system/cpus: Constify various CPUState arguments
->    target/avr: Constify CPUAVRState for some cpu_*() getters
->    target/hexagon: Constify CPUHexagonState in
->      hexagon_thread_is_enabled()
->    target/i386: Constify CPU*State for cpu_*_interrupt() getters
->    target/loongarch: Constify CPULoongArchState for various cpu_*()
->      getters
->    target/mips: Constify CPUMIPSState for various cpu_*() getters
->    target/s390x: Constify S390CPU for cpu_has_*() getters
->    target/riscv: Constify @iprio argument in riscv_cpu_pending_to_irq()
->    target/riscv: Constify CPURISCVState for various cpu_*() getters
->    target/sparc: Constify CPUSPARCState for various cpu_*() getters
->    linux-user: Uncast void pointer argument as Object in
->      target_cpu_free()
->    cpus: Add const-qualified CPU environment accessors
->    linux-user: Replace env_cpu_const() by generic env_cpu() equivalent
->    cpus: Constify @cpu in SysemuCPUOps::has_work() handler
+Kind regards,
+Alex
+
+>
+> >  static void pl011_write(void *opaque, hwaddr offset,
+> >                          uint64_t value, unsigned size)
+> >  {
+> > @@ -462,9 +471,7 @@ static void pl011_write(void *opaque, hwaddr offset=
+,
+> >              pl011_reset_tx_fifo(s);
+> >          }
+> >          if ((s->lcr ^ value) & LCR_BRK) {
+> > -            int break_enable =3D value & LCR_BRK;
+> > -            qemu_chr_fe_ioctl(&s->chr, CHR_IOCTL_SERIAL_SET_BREAK,
+> > -                              &break_enable);
+> > +            int break_enable =3D pl011_set_break(s, value);
+> >              pl011_loopback_break(s, break_enable);
+>
+> Then this code becomes something like
+>     bool break_enable =3D value & LCR_BRK;
+>     pl011_set_break(s, break_enable);
+>     pl011_loopback_break(s, break_enable);
+>
+> which is more straightforward than passing the raw LCR value
+> to pl011_set_break and relying on it returning the "is BRK set?"
+> information that we then pass to pl011_loopback_break().
+
++
+
+>
+> > +static int pl011_be_change(void *opaque);
+>
+> > +static inline void pl011_set_handlers(PL011State *s)
+> > +{
+> > +    qemu_chr_fe_set_handlers(&s->chr, pl011_can_receive, pl011_receive=
+,
+> > +                             pl011_event, pl011_be_change, s, NULL, tr=
+ue);
+> > +}
+> > +
+> > +static int pl011_be_change(void *opaque)
+> > +{
+> > +    PL011State *s =3D opaque;
+> > +
+> > +    pl011_set_handlers(s);
+> > +    pl011_set_break(s, s->lcr);
+>
+> and here we would then pass in s->lcr & LCR_BRK.
+
++
+
+>
+> > +
+> > +    return 0;
+> > +}
+>
+> thanks
+> -- PMM
 

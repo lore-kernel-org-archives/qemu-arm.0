@@ -4,49 +4,49 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 11CAEC61CE3
-	for <qemu-arm@archiver.kernel.org>; Fri, 21 Aug 2026 16:13:16 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 30085C5DF94
+	for <qemu-arm@archiver.kernel.org>; Fri, 21 Aug 2026 16:13:18 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wxRpt-0006UM-6m; Fri, 21 Aug 2026 12:11:17 -0400
+	id 1wxRpy-0006Y0-3L; Fri, 21 Aug 2026 12:11:22 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <kraxel@redhat.com>) id 1wxRps-0006Tp-8P
- for qemu-arm@nongnu.org; Fri, 21 Aug 2026 12:11:16 -0400
+ (Exim 4.90_1) (envelope-from <kraxel@redhat.com>) id 1wxRpw-0006Wy-PF
+ for qemu-arm@nongnu.org; Fri, 21 Aug 2026 12:11:20 -0400
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <kraxel@redhat.com>) id 1wxRpq-0001Xu-Kj
- for qemu-arm@nongnu.org; Fri, 21 Aug 2026 12:11:15 -0400
+ (Exim 4.90_1) (envelope-from <kraxel@redhat.com>) id 1wxRpu-0001ZW-Bu
+ for qemu-arm@nongnu.org; Fri, 21 Aug 2026 12:11:20 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1787328673;
+ s=mimecast20190719; t=1787328677;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=YEeZJYKJX1xIk+QWnsyka0rk9xsQ+a9ce5gIMMhuxXw=;
- b=Ya10Gr4883E3NYv3oOtqrzf6r2jVB4BmdmkixMJYMzxEMP0yv4uHHB68FyMbBpI9+oZd/4
- 1a2qg8TlH9mKu3txZOfEugAnsNBUyAXQO/EqJyMK2xZQ5zbkn/1p3jjQO4XPrVzbb7kC1C
- BsNWShplcQX+lBQQeZ8gQMbGUnXdDag=
-Received: from mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com
+ bh=FiHebt2K8ov/fB/KWfyWW+Ff1zEX9PPLHSk7DxO9ZPI=;
+ b=Ifz+ikupoOhN8ThHl+LfYe6bY4t8UOlJcMc65u0vU/iXtiuNieadxQWK4Q0YDsgpTHNUQe
+ yVTAf6xBhDVISg4UyaJseYictX9VLxYtN09L3QFjhrT3AohJBi50+nKqeHaTkSgtZBcSeM
+ lKHL1OKoz6t5lLqCEBCvXwBmg6gOZHA=
+Received: from mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com
  (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-645-NKOqdrIyOQi6eniOXrIwPQ-1; Fri,
- 21 Aug 2026 12:11:09 -0400
-X-MC-Unique: NKOqdrIyOQi6eniOXrIwPQ-1
-X-Mimecast-MFC-AGG-ID: NKOqdrIyOQi6eniOXrIwPQ_1787328668
-Received: from mx-prod-int-10.mail-002.prod.us-west-2.aws.redhat.com
- (mx-prod-int-10.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.95])
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-661-7RPysQJ3MI6tH6DU7EZieg-1; Fri,
+ 21 Aug 2026 12:11:14 -0400
+X-MC-Unique: 7RPysQJ3MI6tH6DU7EZieg-1
+X-Mimecast-MFC-AGG-ID: 7RPysQJ3MI6tH6DU7EZieg_1787328672
+Received: from mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com
+ (mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.111])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 17E761953993; Fri, 21 Aug 2026 16:11:08 +0000 (UTC)
+ by mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id CC40B1954AE9; Fri, 21 Aug 2026 16:11:12 +0000 (UTC)
 Received: from sirius.home.kraxel.org (unknown [10.44.48.30])
- by mx-prod-int-10.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id D2B297D9; Fri, 21 Aug 2026 16:11:06 +0000 (UTC)
+ by mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
+ id 8531C18005BD; Fri, 21 Aug 2026 16:11:12 +0000 (UTC)
 Received: by sirius.home.kraxel.org (Postfix, from userid 1000)
- id 7845C1800795; Fri, 21 Aug 2026 18:11:03 +0200 (CEST)
+ id 47229180124A; Fri, 21 Aug 2026 18:11:04 +0200 (CEST)
 From: Gerd Hoffmann <kraxel@redhat.com>
 To: qemu-devel@nongnu.org
 Cc: Ani Sinha <anisinha@redhat.com>, Cornelia Huck <cohuck@redhat.com>,
@@ -58,17 +58,17 @@ Cc: Ani Sinha <anisinha@redhat.com>, Cornelia Huck <cohuck@redhat.com>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@mailo.com>,
  Laurent Vivier <lvivier@redhat.com>, Fabiano Rosas <farosas@suse.de>,
  Paolo Bonzini <pbonzini@redhat.com>, Alexander Graf <graf@amazon.com>
-Subject: [PULL 03/12] igvm: track memory regions
-Date: Fri, 21 Aug 2026 18:10:51 +0200
-Message-ID: <20260821161103.3489298-4-kraxel@redhat.com>
+Subject: [PULL 12/12] Update MAINTAINERS
+Date: Fri, 21 Aug 2026 18:11:00 +0200
+Message-ID: <20260821161103.3489298-13-kraxel@redhat.com>
 In-Reply-To: <20260821161103.3489298-1-kraxel@redhat.com>
 References: <20260821161103.3489298-1-kraxel@redhat.com>
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 3.6 on 10.30.177.95
-X-Mimecast-MFC-PROC-ID: YR0Dx0upKU-Ic5Lohz9KNF3HQ_zQyMGozChcpGuvafY_1787328668
+X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.111
+X-Mimecast-MFC-PROC-ID: 6onTwjqDtgWIl8PVrCqeeUhWWr7pE3RYUfp01sIvr_o_1787328672
 X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-content-type: text/plain; charset="US-ASCII"; x-default=true
 Received-SPF: pass client-ip=170.10.129.124; envelope-from=kraxel@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: 9
@@ -93,104 +93,43 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Memory regions added by the current IGVM needs to be tracked so that they can be
-freed when a new IGVM is loaded.
+From: Ani Sinha <anisinha@redhat.com>
 
-Reviewed-by: Ani Sinha <anisinha@redhat.com>
+Add maintainers for vm-launch-update device and associated documentation and
+test code.
+
 Reviewed-by: Alexander Graf <graf@amazon.com>
-Signed-off-by: Gerd Hoffmann <kraxel@redhat.com>
-Message-ID: <20260817142010.80693-3-anisinha@redhat.com>
+Signed-off-by: Ani Sinha <anisinha@redhat.com>
+Message-ID: <20260817142010.80693-12-anisinha@redhat.com>
 Signed-off-by: Gerd Hoffmann <kraxel@redhat.com>
 ---
- include/system/igvm-internal.h |  6 ++++++
- backends/igvm-cfg.c            |  1 +
- backends/igvm.c                | 20 ++++++++++++--------
- 3 files changed, 19 insertions(+), 8 deletions(-)
+ MAINTAINERS | 13 +++++++++++++
+ 1 file changed, 13 insertions(+)
 
-diff --git a/include/system/igvm-internal.h b/include/system/igvm-internal.h
-index b5720fae0c00..9e9fa1d9afdb 100644
---- a/include/system/igvm-internal.h
-+++ b/include/system/igvm-internal.h
-@@ -18,6 +18,11 @@
- #include "system/confidential-guest-support.h"
- #include <igvm/igvm.h>
+diff --git a/MAINTAINERS b/MAINTAINERS
+index 9e0a2a656f4c..1f9c08d76601 100644
+--- a/MAINTAINERS
++++ b/MAINTAINERS
+@@ -2851,6 +2851,19 @@ F: include/hw/acpi/vmgenid.h
+ F: docs/specs/vmgenid.rst
+ F: tests/qtest/vmgenid-test.c
  
-+typedef struct IgvmMemoryRegion {
-+    QTAILQ_ENTRY(IgvmMemoryRegion) next;
-+    MemoryRegion *mr;
-+} IgvmMemoryRegion;
++VM Launch Update
++M: Ani Sinha <anisinha@redhat.com>
++M: Gerd Hoffman <kraxel@redhat.com>
++S: Maintained
++F: hw/misc/vmlaunchupdate.c
++F: include/hw/misc/vmlaunchupdate.h
++F: include/standard-headers/misc/vmlaunchupdate.h
++F: docs/specs/vmlaunchupdate.rst
++F: tests/functional/aarch64/test_vm_launch_update_aarch.py
++F: tests/functional/x86_64/test_vm_launch_update.py
++F: tests/qtest/launchupdate-test.c
++F: tests/data/igvm/*
 +
- struct IgvmCfg {
-     Object parent_obj;
- 
-@@ -29,6 +34,7 @@ struct IgvmCfg {
-     char *filename;
-     IgvmHandle file;
-     ResettableState reset_state;
-+    QTAILQ_HEAD(, IgvmMemoryRegion) memory_regions;
- };
- 
- typedef struct QIgvmParameterData {
-diff --git a/backends/igvm-cfg.c b/backends/igvm-cfg.c
-index e1f09855f66d..38438a7b1e2c 100644
---- a/backends/igvm-cfg.c
-+++ b/backends/igvm-cfg.c
-@@ -65,6 +65,7 @@ static void igvm_complete(UserCreatable *uc, Error **errp)
-     IgvmCfg *igvm = IGVM_CFG(uc);
- 
-     igvm->file = qigvm_file_init(igvm->filename, errp);
-+    QTAILQ_INIT(&igvm->memory_regions);
- }
- 
- OBJECT_DEFINE_TYPE_WITH_INTERFACES(IgvmCfg, igvm_cfg, IGVM_CFG, OBJECT,
-diff --git a/backends/igvm.c b/backends/igvm.c
-index 534032fed812..9e7c90d386d1 100644
---- a/backends/igvm.c
-+++ b/backends/igvm.c
-@@ -220,7 +220,7 @@ static void *qigvm_prepare_memory(QIgvm *ctx, uint64_t addr, uint64_t size,
-                                   int region_identifier, Error **errp)
- {
-     ERRP_GUARD();
--    MemoryRegion *igvm_pages = NULL;
-+    IgvmMemoryRegion *imr = NULL;
-     Int128 gpa_region_size;
-     MemoryRegionSection mrs =
-         memory_region_find(get_system_memory(), addr, size);
-@@ -254,23 +254,27 @@ static void *qigvm_prepare_memory(QIgvm *ctx, uint64_t addr, uint64_t size,
-          */
-         g_autofree char *region_name =
-             g_strdup_printf("igvm.%X", region_identifier);
--        igvm_pages = g_new0(MemoryRegion, 1);
-+        imr = g_new0(IgvmMemoryRegion, 1);
-+        imr->mr = g_new0(MemoryRegion, 1);
-         if (ctx->machine_state->cgs &&
-             ctx->machine_state->cgs->require_guest_memfd) {
--            if (!memory_region_init_ram_guest_memfd(igvm_pages, NULL,
-+            if (!memory_region_init_ram_guest_memfd(imr->mr, NULL,
-                                                     region_name, size, errp)) {
--                g_free(igvm_pages);
-+                g_free(imr->mr);
-+                g_free(imr);
-                 return NULL;
-             }
-         } else {
--            if (!memory_region_init_ram(igvm_pages, NULL, region_name, size,
-+            if (!memory_region_init_ram(imr->mr, NULL, region_name, size,
-                                         errp)) {
--                g_free(igvm_pages);
-+                g_free(imr->mr);
-+                g_free(imr);
-                 return NULL;
-             }
-         }
--        memory_region_add_subregion(get_system_memory(), addr, igvm_pages);
--        return memory_region_get_ram_ptr(igvm_pages);
-+        memory_region_add_subregion(get_system_memory(), addr, imr->mr);
-+        QTAILQ_INSERT_TAIL(&ctx->cfg->memory_regions, imr, next);
-+        return memory_region_get_ram_ptr(imr->mr);
-     }
- }
- 
+ LED
+ M: Philippe Mathieu-Daudé <philmd@mailo.com>
+ S: Maintained
 -- 
 2.55.0
 

@@ -4,49 +4,49 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 30085C5DF94
-	for <qemu-arm@archiver.kernel.org>; Fri, 21 Aug 2026 16:13:18 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C2CDEC5DF98
+	for <qemu-arm@archiver.kernel.org>; Fri, 21 Aug 2026 16:13:23 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wxRpy-0006Y0-3L; Fri, 21 Aug 2026 12:11:22 -0400
+	id 1wxRps-0006U7-Ue; Fri, 21 Aug 2026 12:11:16 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <kraxel@redhat.com>) id 1wxRpw-0006Wy-PF
- for qemu-arm@nongnu.org; Fri, 21 Aug 2026 12:11:20 -0400
+ (Exim 4.90_1) (envelope-from <kraxel@redhat.com>) id 1wxRpr-0006TF-QF
+ for qemu-arm@nongnu.org; Fri, 21 Aug 2026 12:11:15 -0400
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <kraxel@redhat.com>) id 1wxRpu-0001ZW-Bu
- for qemu-arm@nongnu.org; Fri, 21 Aug 2026 12:11:20 -0400
+ (Exim 4.90_1) (envelope-from <kraxel@redhat.com>) id 1wxRpp-0001XS-Ip
+ for qemu-arm@nongnu.org; Fri, 21 Aug 2026 12:11:15 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1787328677;
+ s=mimecast20190719; t=1787328672;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=FiHebt2K8ov/fB/KWfyWW+Ff1zEX9PPLHSk7DxO9ZPI=;
- b=Ifz+ikupoOhN8ThHl+LfYe6bY4t8UOlJcMc65u0vU/iXtiuNieadxQWK4Q0YDsgpTHNUQe
- yVTAf6xBhDVISg4UyaJseYictX9VLxYtN09L3QFjhrT3AohJBi50+nKqeHaTkSgtZBcSeM
- lKHL1OKoz6t5lLqCEBCvXwBmg6gOZHA=
+ bh=dGUzv5WHptor2idlHZr5nwRiEW5XDSx77shBFL6pTfI=;
+ b=WdGJRBHK2cmcPoW459RCTMHfoMyCC40RrjOZHeABGn5y2xBwqZcIqN9jPRP1APYDsHabU3
+ MgrzM67Qm758qgbC2NugRso2hVALuz88t25KwwZSrVOCQMZ3Nkie2KX38WNYIypZHohImT
+ U5pisKDWnQi7p1ug7b3oQYUIbzewDx4=
 Received: from mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com
  (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-661-7RPysQJ3MI6tH6DU7EZieg-1; Fri,
- 21 Aug 2026 12:11:14 -0400
-X-MC-Unique: 7RPysQJ3MI6tH6DU7EZieg-1
-X-Mimecast-MFC-AGG-ID: 7RPysQJ3MI6tH6DU7EZieg_1787328672
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-637-pzBuqZobOeGjCKv6aKx5ow-1; Fri,
+ 21 Aug 2026 12:11:09 -0400
+X-MC-Unique: pzBuqZobOeGjCKv6aKx5ow-1
+X-Mimecast-MFC-AGG-ID: pzBuqZobOeGjCKv6aKx5ow_1787328668
 Received: from mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com
  (mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.111])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
  by mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id CC40B1954AE9; Fri, 21 Aug 2026 16:11:12 +0000 (UTC)
+ id F3E571954221; Fri, 21 Aug 2026 16:11:07 +0000 (UTC)
 Received: from sirius.home.kraxel.org (unknown [10.44.48.30])
  by mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id 8531C18005BD; Fri, 21 Aug 2026 16:11:12 +0000 (UTC)
+ id D08A81800346; Fri, 21 Aug 2026 16:11:06 +0000 (UTC)
 Received: by sirius.home.kraxel.org (Postfix, from userid 1000)
- id 47229180124A; Fri, 21 Aug 2026 18:11:04 +0200 (CEST)
+ id 632811800613; Fri, 21 Aug 2026 18:11:03 +0200 (CEST)
 From: Gerd Hoffmann <kraxel@redhat.com>
 To: qemu-devel@nongnu.org
 Cc: Ani Sinha <anisinha@redhat.com>, Cornelia Huck <cohuck@redhat.com>,
@@ -58,17 +58,17 @@ Cc: Ani Sinha <anisinha@redhat.com>, Cornelia Huck <cohuck@redhat.com>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@mailo.com>,
  Laurent Vivier <lvivier@redhat.com>, Fabiano Rosas <farosas@suse.de>,
  Paolo Bonzini <pbonzini@redhat.com>, Alexander Graf <graf@amazon.com>
-Subject: [PULL 12/12] Update MAINTAINERS
-Date: Fri, 21 Aug 2026 18:11:00 +0200
-Message-ID: <20260821161103.3489298-13-kraxel@redhat.com>
+Subject: [PULL 02/12] igvm: store IgvmCfg pointer in QIgvm
+Date: Fri, 21 Aug 2026 18:10:50 +0200
+Message-ID: <20260821161103.3489298-3-kraxel@redhat.com>
 In-Reply-To: <20260821161103.3489298-1-kraxel@redhat.com>
 References: <20260821161103.3489298-1-kraxel@redhat.com>
 MIME-Version: 1.0
 X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.111
-X-Mimecast-MFC-PROC-ID: 6onTwjqDtgWIl8PVrCqeeUhWWr7pE3RYUfp01sIvr_o_1787328672
+X-Mimecast-MFC-PROC-ID: dIQJL6hWUeL98MuVFRvp9Kuoe2DFmTOUXh_coqQ_v98_1787328668
 X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
+content-type: text/plain; charset="US-ASCII"; x-default=true
 Received-SPF: pass client-ip=170.10.129.124; envelope-from=kraxel@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: 9
@@ -93,43 +93,244 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-From: Ani Sinha <anisinha@redhat.com>
+Store a pointer to IgvmCfg instead of only IgvmFile in QIgvm.  Allows to
+store additional state in the (persistent) IgvmCfg struct.
 
-Add maintainers for vm-launch-update device and associated documentation and
-test code.
-
+Reviewed-by: Ani Sinha <anisinha@redhat.com>
 Reviewed-by: Alexander Graf <graf@amazon.com>
-Signed-off-by: Ani Sinha <anisinha@redhat.com>
-Message-ID: <20260817142010.80693-12-anisinha@redhat.com>
+Signed-off-by: Gerd Hoffmann <kraxel@redhat.com>
+Message-ID: <20260817142010.80693-2-anisinha@redhat.com>
 Signed-off-by: Gerd Hoffmann <kraxel@redhat.com>
 ---
- MAINTAINERS | 13 +++++++++++++
- 1 file changed, 13 insertions(+)
+ include/system/igvm-internal.h |  2 +-
+ backends/igvm.c                | 57 ++++++++++++++++++++--------------
+ 2 files changed, 34 insertions(+), 25 deletions(-)
 
-diff --git a/MAINTAINERS b/MAINTAINERS
-index 9e0a2a656f4c..1f9c08d76601 100644
---- a/MAINTAINERS
-+++ b/MAINTAINERS
-@@ -2851,6 +2851,19 @@ F: include/hw/acpi/vmgenid.h
- F: docs/specs/vmgenid.rst
- F: tests/qtest/vmgenid-test.c
+diff --git a/include/system/igvm-internal.h b/include/system/igvm-internal.h
+index 7eb3792ed8c5..b5720fae0c00 100644
+--- a/include/system/igvm-internal.h
++++ b/include/system/igvm-internal.h
+@@ -43,7 +43,7 @@ typedef struct QIgvmParameterData {
+  * file.
+  */
+ struct QIgvm {
+-    IgvmHandle file;
++    IgvmCfg *cfg;
+     MachineState *machine_state;
+     ConfidentialGuestSupportClass *cgsc;
+     uint32_t compatibility_mask;
+diff --git a/backends/igvm.c b/backends/igvm.c
+index 80e87fe6029a..534032fed812 100644
+--- a/backends/igvm.c
++++ b/backends/igvm.c
+@@ -178,7 +178,8 @@ static int qigvm_handler(QIgvm *ctx, IgvmVariableHeaderType raw_type,
+         if (handlers[handler].type != type) {
+             continue;
+         }
+-        header_handle = igvm_get_header(ctx->file, handlers[handler].section,
++        header_handle = igvm_get_header(ctx->cfg->file,
++                                        handlers[handler].section,
+                                         ctx->current_header_index);
+         if (header_handle < 0) {
+             error_setg(
+@@ -187,7 +188,7 @@ static int qigvm_handler(QIgvm *ctx, IgvmVariableHeaderType raw_type,
+                 (int)header_handle);
+             return -1;
+         }
+-        header_data = igvm_get_buffer(ctx->file, header_handle);
++        header_data = igvm_get_buffer(ctx->cfg->file, header_handle);
+         if (header_data != NULL) {
+             header_data += sizeof(IGVM_VHS_VARIABLE_HEADER);
+             result = handlers[handler].handler(ctx, header_data, errp);
+@@ -198,7 +199,7 @@ static int qigvm_handler(QIgvm *ctx, IgvmVariableHeaderType raw_type,
+                     header_handle, type);
+             result = -1;
+         }
+-        igvm_free_buffer(ctx->file, header_handle);
++        igvm_free_buffer(ctx->cfg->file, header_handle);
+         return result;
+     }
  
-+VM Launch Update
-+M: Ani Sinha <anisinha@redhat.com>
-+M: Gerd Hoffman <kraxel@redhat.com>
-+S: Maintained
-+F: hw/misc/vmlaunchupdate.c
-+F: include/hw/misc/vmlaunchupdate.h
-+F: include/standard-headers/misc/vmlaunchupdate.h
-+F: docs/specs/vmlaunchupdate.rst
-+F: tests/functional/aarch64/test_vm_launch_update_aarch.py
-+F: tests/functional/x86_64/test_vm_launch_update.py
-+F: tests/qtest/launchupdate-test.c
-+F: tests/data/igvm/*
-+
- LED
- M: Philippe Mathieu-Daudé <philmd@mailo.com>
- S: Maintained
+@@ -344,7 +345,8 @@ static int qigvm_process_mem_region(QIgvm *ctx, unsigned start_index,
+ 
+     for (page_index = 0; page_index < page_count; page_index++) {
+         data_handle = igvm_get_header_data(
+-            ctx->file, IGVM_HEADER_SECTION_DIRECTIVE, page_index + start_index);
++            ctx->cfg->file, IGVM_HEADER_SECTION_DIRECTIVE,
++            page_index + start_index);
+         if (data_handle == IGVMAPI_NO_DATA) {
+             /* No data indicates a zero page */
+             memset(&region[page_index * page_size], 0, page_size);
+@@ -357,7 +359,7 @@ static int qigvm_process_mem_region(QIgvm *ctx, unsigned start_index,
+             return -1;
+         } else {
+             zero = false;
+-            data_size = igvm_get_buffer_size(ctx->file, data_handle);
++            data_size = igvm_get_buffer_size(ctx->cfg->file, data_handle);
+             if (data_size < page_size) {
+                 memset(&region[page_index * page_size], 0, page_size);
+             } else if (data_size > page_size) {
+@@ -367,14 +369,14 @@ static int qigvm_process_mem_region(QIgvm *ctx, unsigned start_index,
+                            page_index + start_index);
+                 return -1;
+             }
+-            data = igvm_get_buffer(ctx->file, data_handle);
++            data = igvm_get_buffer(ctx->cfg->file, data_handle);
+             if (data == NULL) {
+                 error_setg(errp, "IGVM: No buffer for handle %d", data_handle);
+-                igvm_free_buffer(ctx->file, data_handle);
++                igvm_free_buffer(ctx->cfg->file, data_handle);
+                 return -1;
+             }
+             memcpy(&region[page_index * page_size], data, data_size);
+-            igvm_free_buffer(ctx->file, data_handle);
++            igvm_free_buffer(ctx->cfg->file, data_handle);
+         }
+     }
+ 
+@@ -411,7 +413,8 @@ static int qigvm_process_mem_page(QIgvm *ctx,
+             ctx->region_start = page_data->gpa;
+             ctx->region_start_index = ctx->current_header_index;
+         } else {
+-            if (!qigvm_page_attrs_equal(ctx->file, ctx->current_header_index,
++            if (!qigvm_page_attrs_equal(ctx->cfg->file,
++                                        ctx->current_header_index,
+                                         page_data,
+                                         &ctx->region_prev_page_data) ||
+                 ((ctx->region_prev_page_data.gpa +
+@@ -474,7 +477,8 @@ static int qigvm_directive_vp_context(QIgvm *ctx, const uint8_t *header_data,
+         return 0;
+     }
+ 
+-    data_handle = igvm_get_header_data(ctx->file, IGVM_HEADER_SECTION_DIRECTIVE,
++    data_handle = igvm_get_header_data(ctx->cfg->file,
++                                       IGVM_HEADER_SECTION_DIRECTIVE,
+                                        ctx->current_header_index);
+     if (data_handle < 0) {
+         error_setg(errp, "Invalid VP context in IGVM file. Error code: %X",
+@@ -482,7 +486,7 @@ static int qigvm_directive_vp_context(QIgvm *ctx, const uint8_t *header_data,
+         return -1;
+     }
+ 
+-    data = (uint8_t *)igvm_get_buffer(ctx->file, data_handle);
++    data = (uint8_t *)igvm_get_buffer(ctx->cfg->file, data_handle);
+     if (data == NULL) {
+         error_setg(errp, "IGVM: No buffer for handle %d", data_handle);
+         result = -1;
+@@ -491,7 +495,8 @@ static int qigvm_directive_vp_context(QIgvm *ctx, const uint8_t *header_data,
+ 
+     if (ctx->machine_state->cgs) {
+         result = ctx->cgsc->set_guest_state(
+-            vp_context->gpa, data, igvm_get_buffer_size(ctx->file, data_handle),
++            vp_context->gpa, data,
++            igvm_get_buffer_size(ctx->cfg->file, data_handle),
+             CGS_PAGE_TYPE_VMSA, vp_context->vp_index, errp);
+     } else if (target_arch() == SYS_EMU_TARGET_X86_64) {
+         result = qigvm_x86_set_vp_context(data, vp_context->vp_index, errp);
+@@ -504,7 +509,7 @@ static int qigvm_directive_vp_context(QIgvm *ctx, const uint8_t *header_data,
+     }
+ 
+ exit:
+-    igvm_free_buffer(ctx->file, data_handle);
++    igvm_free_buffer(ctx->cfg->file, data_handle);
+     if (result < 0) {
+         return result;
+     }
+@@ -863,7 +868,8 @@ static int qigvm_supported_platform_compat_mask(QIgvm *ctx, Error **errp)
+     uint32_t compatibility_mask_sev_snp = 0;
+     uint32_t compatibility_mask = 0;
+ 
+-    header_count = igvm_header_count(ctx->file, IGVM_HEADER_SECTION_PLATFORM);
++    header_count = igvm_header_count(ctx->cfg->file,
++                                     IGVM_HEADER_SECTION_PLATFORM);
+     if (header_count < 0) {
+         error_setg(errp,
+                    "Invalid platform header count in IGVM file. Error code: %X",
+@@ -874,11 +880,11 @@ static int qigvm_supported_platform_compat_mask(QIgvm *ctx, Error **errp)
+     for (header_index = 0; header_index < (unsigned)header_count;
+          header_index++) {
+         IgvmVariableHeaderType typ = igvm_get_header_type(
+-            ctx->file, IGVM_HEADER_SECTION_PLATFORM, header_index);
++            ctx->cfg->file, IGVM_HEADER_SECTION_PLATFORM, header_index);
+         typ = igvm_vht_type(typ);
+         if (typ == IGVM_VHT_SUPPORTED_PLATFORM) {
+             header_handle = igvm_get_header(
+-                ctx->file, IGVM_HEADER_SECTION_PLATFORM, header_index);
++                ctx->cfg->file, IGVM_HEADER_SECTION_PLATFORM, header_index);
+             if (header_handle < 0) {
+                 error_setg(errp,
+                            "Invalid platform header in IGVM file. "
+@@ -887,11 +893,11 @@ static int qigvm_supported_platform_compat_mask(QIgvm *ctx, Error **errp)
+                 return -1;
+             }
+             platform =
+-                (IGVM_VHS_SUPPORTED_PLATFORM *)(igvm_get_buffer(ctx->file,
++                (IGVM_VHS_SUPPORTED_PLATFORM *)(igvm_get_buffer(ctx->cfg->file,
+                                                                 header_handle));
+             if (platform == NULL) {
+                 error_setg(errp, "IGVM: No buffer for handle %d", header_handle);
+-                igvm_free_buffer(ctx->file, header_handle);
++                igvm_free_buffer(ctx->cfg->file, header_handle);
+                 return -1;
+             }
+ 
+@@ -922,7 +928,7 @@ static int qigvm_supported_platform_compat_mask(QIgvm *ctx, Error **errp)
+             } else if (platform->platform_type == IGVM_PLATFORM_TYPE_NATIVE) {
+                 compatibility_mask = platform->compatibility_mask;
+             }
+-            igvm_free_buffer(ctx->file, header_handle);
++            igvm_free_buffer(ctx->cfg->file, header_handle);
+         }
+     }
+     /* Choose the strongest supported isolation technology */
+@@ -999,7 +1005,7 @@ int qigvm_process_file(IgvmCfg *cfg, MachineState *machine_state,
+         error_setg(errp, "No IGVM file loaded.");
+         return -1;
+     }
+-    ctx.file = cfg->file;
++    ctx.cfg = cfg;
+     trace_igvm_process_file(cfg->file, onlyVpContext);
+ 
+     ctx.machine_state = machine_state;
+@@ -1021,7 +1027,8 @@ int qigvm_process_file(IgvmCfg *cfg, MachineState *machine_state,
+         goto cleanup;
+     }
+ 
+-    header_count = igvm_header_count(ctx.file, IGVM_HEADER_SECTION_DIRECTIVE);
++    header_count = igvm_header_count(ctx.cfg->file,
++                                     IGVM_HEADER_SECTION_DIRECTIVE);
+     if (header_count <= 0) {
+         error_setg(
+             errp, "Invalid directive header count in IGVM file. Error code: %X",
+@@ -1035,7 +1042,8 @@ int qigvm_process_file(IgvmCfg *cfg, MachineState *machine_state,
+          ctx.current_header_index < (unsigned)header_count;
+          ctx.current_header_index++) {
+         IgvmVariableHeaderType raw_type = igvm_get_header_type(
+-            ctx.file, IGVM_HEADER_SECTION_DIRECTIVE, ctx.current_header_index);
++            ctx.cfg->file, IGVM_HEADER_SECTION_DIRECTIVE,
++            ctx.current_header_index);
+         if (!onlyVpContext || igvm_vht_type(raw_type) == IGVM_VHT_VP_CONTEXT) {
+             if (qigvm_handler(&ctx, raw_type, errp) < 0) {
+                 goto cleanup_parameters;
+@@ -1053,7 +1061,7 @@ int qigvm_process_file(IgvmCfg *cfg, MachineState *machine_state,
+     }
+ 
+     header_count =
+-        igvm_header_count(ctx.file, IGVM_HEADER_SECTION_INITIALIZATION);
++        igvm_header_count(ctx.cfg->file, IGVM_HEADER_SECTION_INITIALIZATION);
+     if (header_count < 0) {
+         error_setg(
+             errp,
+@@ -1066,7 +1074,8 @@ int qigvm_process_file(IgvmCfg *cfg, MachineState *machine_state,
+          ctx.current_header_index < (unsigned)header_count;
+          ctx.current_header_index++) {
+         IgvmVariableHeaderType type =
+-            igvm_get_header_type(ctx.file, IGVM_HEADER_SECTION_INITIALIZATION,
++            igvm_get_header_type(ctx.cfg->file,
++                                 IGVM_HEADER_SECTION_INITIALIZATION,
+                                  ctx.current_header_index);
+         if (qigvm_handler(&ctx, type, errp) < 0) {
+             goto cleanup_parameters;
 -- 
 2.55.0
 

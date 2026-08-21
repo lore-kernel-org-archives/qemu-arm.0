@@ -4,95 +4,98 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C3134C5DF7D
-	for <qemu-arm@archiver.kernel.org>; Fri, 21 Aug 2026 10:09:53 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 07FBBC5DF7D
+	for <qemu-arm@archiver.kernel.org>; Fri, 21 Aug 2026 10:27:30 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wxMBe-0000Hc-Jg; Fri, 21 Aug 2026 06:09:22 -0400
+	id 1wxMSf-0004m7-PV; Fri, 21 Aug 2026 06:26:57 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jim.macarthur@linaro.org>)
- id 1wxMBd-0000Gu-EO
- for qemu-arm@nongnu.org; Fri, 21 Aug 2026 06:09:21 -0400
-Received: from mail-wm1-x329.google.com ([2a00:1450:4864:20::329])
+ (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
+ id 1wxMSe-0004lh-OU
+ for qemu-arm@nongnu.org; Fri, 21 Aug 2026 06:26:56 -0400
+Received: from mail-ej1-x62b.google.com ([2a00:1450:4864:20::62b])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <jim.macarthur@linaro.org>)
- id 1wxMBb-0007zt-V8
- for qemu-arm@nongnu.org; Fri, 21 Aug 2026 06:09:21 -0400
-Received: by mail-wm1-x329.google.com with SMTP id
- 5b1f17b1804b1-499840a2575so4525515e9.3
- for <qemu-arm@nongnu.org>; Fri, 21 Aug 2026 03:09:19 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
+ id 1wxMSc-0004tQ-UU
+ for qemu-arm@nongnu.org; Fri, 21 Aug 2026 06:26:56 -0400
+Received: by mail-ej1-x62b.google.com with SMTP id
+ a640c23a62f3a-c1c50c1e29bso132460866b.3
+ for <qemu-arm@nongnu.org>; Fri, 21 Aug 2026 03:26:54 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1787306958; x=1787911758; darn=nongnu.org;
- h=in-reply-to:content-disposition:content-type:mime-version
- :references:message-id:subject:cc:to:from:date:from:to:cc:subject
- :date:message-id:reply-to:content-type;
- bh=g/gdBmzu33681/PYHYRHRIGnDaHKhvM1Or/mJzAjaYk=;
- b=VRyE7Uufl8o4ZtrWEEZ92+Or8Wc367Vm6VBMzjeFxlPeLtvqD7kkm8vHykDWPXtXFi
- JD0dRm2hjbhaUt63jlD/FX8Vr2jRhAS/bL4RsLg++3+Qu82D98Czn3lsqSVo1P6j14xE
- 3jclJg5pOPm/7UvY/1xXH6kqBvB4RSaccfkEuydmkUtYTDk26Scp2wX2vvnzp7aERDqW
- 14fTPe089L9lo+go8P+c9q0z6I2OZw41/M9oSHIMNS+lvBgYlS6fGqmBpb/zF0WvyOSb
- MYuGNmKnb5yEEowWW/9j6bkpRB8jklu4bmr54QJcxK4wdRrIDAKd0zKfTo24SDUxCjld
- kuhQ==
+ d=linaro.org; s=google; t=1787308013; x=1787912813; darn=nongnu.org;
+ h=content-transfer-encoding:content-type:mime-version:message-id:date
+ :user-agent:references:in-reply-to:subject:cc:to:from:from:to:cc
+ :subject:date:message-id:reply-to:content-type;
+ bh=Dg3CiEYsyDNW/bZP32EasqmYY+4b11u/dJQBRxZREow=;
+ b=aUeeCCc+gwt2922cYUW5X7I0A5uecQLo9NSAalSc+JCY2F1wIVJlQGrlyf7Prz0/AQ
+ DINS+1olAJ2xfgl4v/3wiHoesH3gdt7Ro+H9bK/BmbrOBZSmqgDUWjqnzfkMp52Fsume
+ Iirhb9mvO5ydIEet3+eotLyOazENxYw+DTaOXyz+U6GIa76UUC6sBQBlsfq46ZJ9Y7II
+ 69iZ+CxQaFWtTk/yUxj3Qjzfzk219b4odwDJYkslXhIo+zZab+ryTCxY8zUxbaP8+cJ4
+ tJt9nfsPuT6rvJdjT4LuSzHMdpzuOFTpjKKL5OtVUZHVMVUj3G6bBIvFGOTea8mXBksr
+ qHdg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1787306958; x=1787911758;
- h=in-reply-to:content-disposition:content-type:mime-version
- :references:message-id:subject:cc:to:from:date:x-gm-gg
+ d=1e100.net; s=20251104; t=1787308013; x=1787912813;
+ h=content-transfer-encoding:content-type:mime-version:message-id:date
+ :user-agent:references:in-reply-to:subject:cc:to:from:x-gm-gg
  :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
  :content-type;
- bh=g/gdBmzu33681/PYHYRHRIGnDaHKhvM1Or/mJzAjaYk=;
- b=EhhdnfxULcMZOwFBUPx8qN4cejA3rRdXf92xyZSKcaQUOxf9I7srIddlsdqXRFcA0c
- r/Ad4vdaLSFPq1A5hy+SXVb1TVRwBK+8+TPserTecAI8CFStY0q9gcIQuy4IFMQeJkMR
- iM1kT+bXHSLj4GNnSz6kzKDX+FdRG37nCE3ans96QhMvbr57MmWCCDU3bsSBv3rwbMdw
- aU8brScp0/KzUQ3wII6Pu5noWblO/F2mdqYzUUboH1qQXr2j8xVZCrTDCLl9OwGu2Ftz
- KyfmN5FlUId5oZ3c16PT4wrNT8EYgAGecC6Ik4MtGLpNgjYi5ltDboSbTDwqiJAcDKqI
- YTNg==
+ bh=Dg3CiEYsyDNW/bZP32EasqmYY+4b11u/dJQBRxZREow=;
+ b=MXn07YD0eI7JuR+gKh44TvpT4alqpaaUqYcrK/rMwcxJikXxXtQVpmP1RYjKgh/fdz
+ 3TIKSMRo4vU4oWzf+rFJLiDCyrapQQAqfeeW5OZqAiJgE5f1gWgPWAEk8ZZnM9fObmb+
+ X1BGF6SKiTnSxnvWpAIcF6KZckCkODaYv1UdX3RGtW9pmnAsIsJV/pu5RxbmIXc+wfkI
+ Jz3Rp7puophpf+CxIFosTdpb6rQP5g7mRKEey7GkEETvq4R/4YBZLg5kTpr6IdpGQ+Xt
+ 0uNo0xC08eDzXzc0XXfb27wU4qLop9QRe7jwnL0T8MvH0nJmhK/Db2duMHiXBBaSQhaI
+ cKQA==
 X-Forwarded-Encrypted: i=1;
- AHgh+RrPCoLIs+R2p/LohIEY5XL10tABCzJMSx+AmLoOsQjma0ieLSHfhS6vn7lqtU1uywGrUq3G/rwh9g==@nongnu.org
-X-Gm-Message-State: AOJu0Yw/2d9JtQMqsRpZDSbGCRI6IODvreeR78a83vihw0XxjQ06Y4N1
- Ebzc0jouGvMPJdtl6cgBd1xE2ElVhRu6K4vNwNWNFjFkQL9xxVtgpTIosg/HL4dCtuA=
-X-Gm-Gg: AR+sD11A3SNeJaEa0dFxKxIW1LsksEnyZOjLTvarR8VlejN3h6m6JY58kn61D5yS7NT
- E0hcFYbpe8hmVh/WXl2vAs5DU5dSDQDf+Hd5/1/T3sewNHDD40AaqscnPhOUM2h+p80mlyWaEyf
- 8nm87T6BfB76UegEaewttcdevlHMN7gchD5QaCrcjw35ug4+Pcxee/kXD+eN3sTEsjohbRtpfJG
- qXWnKaz1mRELYVaWY8piIsGxqg3oaPnVUFdk+uexFdOV5IaruB6BQUqe3TMW5xwI0CF6ZAX6t0S
- N05bZcbgIYy7Q3irUG5DBsqXw6uqrvhPiWwUyNpiHCmsil6DDUoYPua6cf3RubE7Pr9VOa/TnWr
- h5+5Dr1J/pnBcZMqS3qF98alJM8kHgzn4ND2o5owqICeWdq9ZgpRZ5/J/CCVR4BLJB1xQ4jBaxu
- vbkNecxaAfKGOn102LhpZz1MFX9U/jCP5fJv030QEid6m4w9QcPYHv9OOmISGr7bI=
-X-Received: by 2002:a05:600c:6089:b0:499:a6ae:20a1 with SMTP id
- 5b1f17b1804b1-499b8474fdfmr83945115e9.14.1787306958006; 
- Fri, 21 Aug 2026 03:09:18 -0700 (PDT)
-Received: from linaro.org ([2a10:d582:31e:0:fa47:b339:78a1:d4c6])
- by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-499b90d297esm22206405e9.2.2026.08.21.03.09.17
+ AHgh+RrN9W5H5GW+EZ5DWYFsbmALMPEsumVuY8snRl5UFfI0f+5dB+J+BGRo3Fkm9BJpwyt7U7WRU7mtgg==@nongnu.org
+X-Gm-Message-State: AFuF++m+10K2fejV9Z15Nu5j24N1PYqcFsxFHiBRiFPHgPh7x8rSaUXm
+ VLaIqnuHdYarUw6pEGYSBgvEaZT1FxZLDxkuYj/qfmeAnx2WZTKW2g+V1BBANNpUOhY=
+X-Gm-Gg: AR+sD13xeMSm2Kx2TobmLZsL+U5bswg7feIjsPrezGhq5k023ojR1lCVQj/WvLHDie2
+ +u9Me4inRn5n2Hho5miHNQk2BNT4lVBZdkxilSC/B7tFHoRGECdrxaMxckDyZzDmjxIirlmudby
+ f4zQPstuTMaSp1TNRL6yFBZ/3yhj54sIPRNtAQWt/0XdGONztCClrGlultnFpe2y7GtKNqCgm4u
+ 7nnHauDsXIPYOa81mXpvZrBlv07K2fsv3LhASvmaYuT1RfYM4k7RLT4fx5OXI3vlFR9g/oUQOtj
+ dYMlPcYC3wIDgxvfHgvGspWFJm84NtK49fpL+mZDCzM5dOdL22j2t6OK7bDKDAK3jrQwCxlz9rt
+ bEBYp/8QN9B5JsjwJAGoQv4Aneht2478nzeko1JPIvDQGJrXUr0frQz9aRIwZ0wKT7omsiCKBh/
+ 45MR5z4p+8QpZmxiFhTxH8eTACwH9kmxDL984xPEunkAy3sBvokpqoet/WxkGO
+X-Received: by 2002:a17:907:842:b0:c21:74ad:8b11 with SMTP id
+ a640c23a62f3a-c246a60ca24mr510962366b.15.1787308013032; 
+ Fri, 21 Aug 2026 03:26:53 -0700 (PDT)
+Received: from draig.lan ([185.124.0.156]) by smtp.gmail.com with ESMTPSA id
+ a640c23a62f3a-c2459222200sm374475566b.56.2026.08.21.03.26.52
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 21 Aug 2026 03:09:17 -0700 (PDT)
-Date: Fri, 21 Aug 2026 11:09:15 +0100
-From: Jim MacArthur <jim.macarthur@linaro.org>
-To: Tao Tang <tangtao1634@phytium.com.cn>
-Cc: Eric Auger <eric.auger@redhat.com>,
- Peter Maydell <peter.maydell@linaro.org>, qemu-devel@nongnu.org,
- qemu-arm@nongnu.org, Chen Baozi <chenbaozi@phytium.com.cn>,
- Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>,
- Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <philmd@mailo.com>,
- Mostafa Saleh <smostafa@google.com>, Chao Liu <chao.liu@processmission.com>
-Subject: Re: [RFC v5 03/28] hw/arm/smmuv3: Thread SEC_SID through helper APIs
-Message-ID: <aogjywAovIWoiiVO@linaro.org>
-References: <20260813161515.2788900-1-tangtao1634@phytium.com.cn>
- <20260813162410.2805113-3-tangtao1634@phytium.com.cn>
+ Fri, 21 Aug 2026 03:26:52 -0700 (PDT)
+Received: from draig (localhost [IPv6:::1])
+ by draig.lan (Postfix) with ESMTP id E8AEE5F809;
+ Fri, 21 Aug 2026 11:26:50 +0100 (BST)
+From: =?utf-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>
+To: Wadim Mueller <wafgo01@gmail.com>
+Cc: qemu-devel@nongnu.org,  qemu-arm@nongnu.org,  Peter Maydell
+ <peter.maydell@linaro.org>,  Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?=
+ <philmd@mailo.com>,
+ Bin Meng <bmeng.cn@gmail.com>,  Paolo Bonzini <pbonzini@redhat.com>,
+ Fabiano Rosas <farosas@suse.de>
+Subject: Re: [RFC PATCH v2 00/14] hw/arm: add TI AM64x SoC and am64-virt
+ machine
+In-Reply-To: <20260820124824.618671-1-wafgo01@gmail.com> (Wadim Mueller's
+ message of "Thu, 20 Aug 2026 14:48:00 +0200")
+References: <20260820124824.618671-1-wafgo01@gmail.com>
+User-Agent: mu4e 1.14.3; emacs 30.1
+Date: Fri, 21 Aug 2026 11:26:50 +0100
+Message-ID: <87qzjrojkl.fsf@draig.linaro.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20260813162410.2805113-3-tangtao1634@phytium.com.cn>
-Received-SPF: pass client-ip=2a00:1450:4864:20::329;
- envelope-from=jim.macarthur@linaro.org; helo=mail-wm1-x329.google.com
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2a00:1450:4864:20::62b;
+ envelope-from=alex.bennee@linaro.org; helo=mail-ej1-x62b.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -108,26 +111,57 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Fri, Aug 14, 2026 at 12:24:08AM +0800, Tao Tang wrote:
-> Extend the register and queue helper routines to accept an explicit
-> SEC_SID argument instead of hard-coding the non-secure bank.
-> 
-> All existing callers are updated to pass SMMU_SEC_SID_NS, so the
-> behavior remains identical. This prepares the code for handling
-> additional security state banks in the future. So Non-secure state
-> is the only state bank supported for now.
-> 
-> Signed-off-by: Tao Tang <tangtao1634@phytium.com.cn>
-> Reviewed-by: Eric Auger <eric.auger@redhat.com>
-> Reviewed-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
-> Link: https://lore.kernel.org/qemu-devel/3097d58e-3793-4434-8beb-2e4f4c52f772@redhat.com/
-> ---
->  hw/arm/smmuv3-accel.c    |  5 +++--
->  hw/arm/smmuv3-internal.h | 21 +++++++++------------
->  hw/arm/smmuv3.c          | 15 ++++++++-------
->  3 files changed, 20 insertions(+), 21 deletions(-)
-> 
+Wadim Mueller <wafgo01@gmail.com> writes:
 
-Reviewed-by: Jim MacArthur <jim.macarthur@linaro.org>
+> Add support for the TI AM64x (Sitara AM6442) SoC and a board around it,
+> ``am64-virt``. The model is complete enough to run the stock TI boot chain
+> end to end:
+>
+>   ROM boot (tiboot3.bin) -> R5 SPL -> TF-A/OP-TEE -> U-Boot -> Linux SMP
+>
+> This is a resend: I posted a first RFC back in May [1] but got no feedback
+> on it. Since then was the series rebased onto actual master, reworked for
+> style and split into reviewable pieces, so I send it out again in the hope
+> of getting some review.
+>
+> RFC because I would like feedback on the overall approach before polishing
+> further; see the open questions at the end.
+>
+> [1] https://lore.kernel.org/qemu-devel/20260528211210.74266-1-wafgo01@gma=
+il.com/
+>
+> What is modelled
+> =3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D
+<snip>
+> Open questions
+> =3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D
+>
+>   * pc-bios/dtb/am64-virt.dtb: patch 13 checks in a generated DTB (with
+>     its source) for convenience. I am not sure a machine-specific blob
+>     belongs in pc-bios; happy to drop it and have the functional test
+>     generate it with dtc instead, or drop the Linux-boot part of the test.
+>
+>   * Splitting the DMSC: hw/misc/ti-dmsc.c is large because TI-SCI is
+>     large. It could be split per message class (clocks / devices /
+>     processor boot / security) if reviewers prefer, at the cost of a
+>     non-functional intermediate state.
+>
+>   * Only one of the four R5F cores is modelled. mc->max_cpus reserves
+>     room for the rest. Because the SoC realizes M4F/R5F vCPUs in addition
+>     to the A53s and every vCPU needs a TCG context slot inside
+>     smp.max_cpus, the machine defaults to the full vCPU budget. I would
+>     appreciate a better idea than the actual "fail early with an
+>     explanatory message" handling when the user passes a too-small -smp.
+>
+>   * The register-level stubs (DDRSS in particular) fake success rather
+>     than modelling the hardware. That is deliberate, but tell me if you
+>     would rather see them as plain unimplemented-device windows plus
+>     firmware quirks elsewhere.
 
+I would add one more which is who is committing to maintain this model
+if it is merged?
+
+--=20
+Alex Benn=C3=A9e
+Virtualisation Tech Lead @ Linaro
 

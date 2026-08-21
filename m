@@ -4,103 +4,96 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 79BA2C5DF93
-	for <qemu-arm@archiver.kernel.org>; Fri, 21 Aug 2026 14:58:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 093AFC5DF94
+	for <qemu-arm@archiver.kernel.org>; Fri, 21 Aug 2026 15:02:14 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wxQhP-0008Sy-Oi; Fri, 21 Aug 2026 10:58:27 -0400
+	id 1wxQkm-0001Ar-Cm; Fri, 21 Aug 2026 11:01:56 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1wxQhO-0008Sp-VK
- for qemu-arm@nongnu.org; Fri, 21 Aug 2026 10:58:26 -0400
-Received: from mail-yx1-xb12a.google.com ([2607:f8b0:4864:20::b12a])
+ (Exim 4.90_1) (envelope-from <jim.macarthur@linaro.org>)
+ id 1wxQkk-0001AE-Sz
+ for qemu-arm@nongnu.org; Fri, 21 Aug 2026 11:01:54 -0400
+Received: from mail-wm1-x335.google.com ([2a00:1450:4864:20::335])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1wxQhN-0006cb-CA
- for qemu-arm@nongnu.org; Fri, 21 Aug 2026 10:58:26 -0400
-Received: by mail-yx1-xb12a.google.com with SMTP id
- 956f58d0204a3-6682259cae6so1332958d50.3
- for <qemu-arm@nongnu.org>; Fri, 21 Aug 2026 07:58:24 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1787324304; cv=none;
- d=google.com; s=arc-20260327;
- b=reWfUTGY8vejyk0PM239DcU8lfa3YgyAzGFnppd7NoWsQkrie5akcNz30Dnuk60p2O
- fYx4jn3qyqGNrFbHnYvLxjTC+MZ+rUrEXsgqUfgELhjnJHxptWDdLN868U4e5FIDoV2e
- UDy1ZesxWuII/9GYjfS2eB7ZSKwuYlAozGKFEBCSXtR1CFkClzFz8jRpEPe3MXmUOF6a
- MUSb4uBiq76UQwMDv/kB5jK4IGWEBGsf1lTUh5RuepwmUYgbzZa3vQ+rJrM6Kex9BF8l
- 5Iu61BYFzXvFeu698sRKRWjliGsn3Ec8Z4xs+yoWhaI+/1Lgg7/KNOkAj1f//QA+Of62
- 4B3g==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
- s=arc-20260327; 
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:dkim-signature;
- bh=Z79hWShm9VccnWd+uC/1NaHgQD4YoYjiNLaCCez5k6M=;
- fh=PKodlsZ4sLOulf3vcyB9a9UvxkkwctzJ7UL5PZ8dNXQ=;
- b=rc16GHnxI1p1l54PCiTLVV7sABW2qOc8qZzrUO705RTPBcPE1Fqn2n2LlJjaw1CDKL
- o6oByvP9AtAkmM4LU0gLJkMMs81kOhobZdLF0iqeoO9b1LLxsM7AD+NwTLgeIAWllTAs
- u6thnjCzhHa2XfhfiTqZMPOBNlNqGpM43RDwgZzXKvUg2TMOr0mvo1T5/HSHXSX8qVEN
- O39aCKG0u23TAbOML+zHQ/He/TCbPseuwnMS/kaBFzosiv+Nn4KhtF7BBdhFxd69Hzlh
- qdWHToYYeF2hy0S89r1RvToQJ4iSDSkt8tO+SA23lbKWc+s7tphl7btjxWi6RYXKa1k6
- JVAw==; darn=nongnu.org
-ARC-Authentication-Results: i=1; mx.google.com; arc=none
+ (Exim 4.90_1) (envelope-from <jim.macarthur@linaro.org>)
+ id 1wxQki-0007rF-MR
+ for qemu-arm@nongnu.org; Fri, 21 Aug 2026 11:01:54 -0400
+Received: by mail-wm1-x335.google.com with SMTP id
+ 5b1f17b1804b1-495590dde14so9835475e9.0
+ for <qemu-arm@nongnu.org>; Fri, 21 Aug 2026 08:01:52 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1787324304; x=1787929104; darn=nongnu.org;
- h=content-type:cc:to:subject:message-id:date:from:in-reply-to
- :references:mime-version:from:to:cc:subject:date:message-id:reply-to
- :content-type; bh=Z79hWShm9VccnWd+uC/1NaHgQD4YoYjiNLaCCez5k6M=;
- b=fMR7i4OLZGlXD5MnfKQzu4CmH0K1JJvdMUihGZGk8UzHwF7sKvfplE/yXG9mQJRDtQ
- 04eWSBKsyjul8roCMMfeMkKkynZoIp9g6YvKjza/jVENiyDHq8W5SLKm6Y3yHOv5/PpQ
- R+AJIegRQ7wjtF27S5mVDC4pjlvVMAOV7i/KaEAboq69RlATtYfOJaXH6zLO4B+EO4xr
- AnzPmw8Ux9SofCq0w+JW2nQNhkUYFKIV47WfK2jKLi5Y+C9DLb0n4dJ4NR8FeZZTJxQU
- R7+LrSJHg3fytjA3sCcStSV7F/CjnMSJDJP0CfeThuvyIyGz/UFD19s2ifWLxuLR1oms
- 8fSQ==
+ d=linaro.org; s=google; t=1787324511; x=1787929311; darn=nongnu.org;
+ h=in-reply-to:content-disposition:content-type:mime-version
+ :references:message-id:subject:cc:to:from:date:from:to:cc:subject
+ :date:message-id:reply-to:content-type;
+ bh=wcgTPIPEEcyDjQzsJSz/BrGPi75SyypM30Btlcy9NRE=;
+ b=ktRPWtMYLow7LcqV14NfHQ7KJFT1IgC/oOkCivOBd6B2s3k/ilkRToH1A47FneeNP5
+ lzQHJJ18IJM/3Sodd6UeaHqNr2w0FrWNjjvmBuzJBv3hkNiEFF/tl07d2W4vX/by4HxA
+ +BP6V7UwbHt74ONwGlRy1NcvEXWRjXuAyAP9/SjzP4iugtH0B+k9Mrlw5KIwIXJ2GuBa
+ 55M70LqUTT7nZQSoLpmfSvRgU0KMJeGLLPLYpgHeZXq77SuBenIrkEaRRwkZeUpPRHEE
+ bgUrBAi9MdoHBMcuZ6VQ10qyw3yu6DmBq0cQZ2kWUmmXOr4BE/R8HjKQHwE56RRXCz9E
+ ApFg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1787324304; x=1787929104;
- h=content-type:cc:to:subject:message-id:date:from:in-reply-to
- :references:mime-version:x-gm-gg:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to:content-type;
- bh=Z79hWShm9VccnWd+uC/1NaHgQD4YoYjiNLaCCez5k6M=;
- b=S5kat7dr5tBkwi50T2J+MXN3cdT89Ca7FMu0c2UkeZPXKB67AQB2RRS+gc25/AU/OC
- TIMlpNHGkX39zSyZzQkmH13VDnX7BBN6pNVO+pwyJ4L445qHvao0ktoQwu5JfvCfY5CZ
- 7UUTu/oatDPvt+KlKQUHG+mgoW7a0aNK8+571d8dKJTJug8P7h2zFtEZTV4uO4wRIgMk
- VUE+quiTff5Hw4UPNbuzHh6lLph6/KbEKlh+rVxnAB1P6BrhG5Ie/TrQhw+EuckFFLsu
- IRNPYbzPLaHt+aetcINEES3CQwNPMsKolKjjgN1VLhVQTR89SuUT1y5tgsZTeFhknhJn
- PHgQ==
-X-Gm-Message-State: AFuF++nHB8Jt0QSx/Fx70ZisuRJM8RUwCmsfR63xVDN02RfDlJMHk1SO
- 7O4w0KL9x2j8eY6B1aruAlmXXfCp/iS12DIlTBQ9jwr5TlWoW8tbD130NcEaCuvnqVZOkai4yie
- FN60FXNOV3qOBqrM80Q477OdoPwDLHWR5firUF172pw==
-X-Gm-Gg: AR+sD11CiQrBlRzwJPIsGIp9Fp2XvTXPzAl6IemAeQS4P61hT1LRDoRtY0/r8wOmys2
- /uuCR0SICdH6KrvF43j4lVaugZZ6DAV24IDOVR5V4IbtSB9SyAm8KJCP8ocwFbqZ1hjm1V8p91/
- nqI3jYdZDZVd9BMR9QiaMtMdIN+lBUbwJsP+FHUupy2z+o/xH+A98Cz0VmtEmhuIOcXO85eP7Z8
- dMKuGExsNfL784/4Bfs6MyPtTnFz8vKEl+YO34TRFKTSqIpj1nAeqmzxaj3DqBM9W5EQzt2sVJo
- tIKIpQuprEWEwocHqLibxHBe1spmtwaEawGYCFjF1x4K25G3aqy1mBf8DSgk5tosw9WKCdG34EG
- srh3KfeY8GONAnXcbk+H5ALkVetsf
-X-Received: by 2002:a05:690e:4814:b0:667:aa5c:d2d1 with SMTP id
- 956f58d0204a3-66ce4bab296mr2101378d50.38.1787324303582; Fri, 21 Aug 2026
- 07:58:23 -0700 (PDT)
+ d=1e100.net; s=20251104; t=1787324511; x=1787929311;
+ h=in-reply-to:content-disposition:content-type:mime-version
+ :references:message-id:subject:cc:to:from:date:x-gm-gg
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
+ :content-type;
+ bh=wcgTPIPEEcyDjQzsJSz/BrGPi75SyypM30Btlcy9NRE=;
+ b=O6uFQkO7jL0iI4niFFWe3wBs81OzitHy1nzNmqWLyEZfB40uQV52lfWq6c7G2Lg5qy
+ cGSj55S5vVqcpBa+4qzxrrTMpB6tepjvycmA3CAWROnrXWQzikGJi0Q7ABifcpU+TIpO
+ Wbo/68vDSGbvX3N1LDS4vP1QrI0LqA8+w3zIadoVoYria5Y+IWxwTtBfcxhnt3gD7/O8
+ hkzyOoF1j1+9U3MSy2dVz3YPV0xIdl2YoPO7xdn815jKrYV9lHflDwz6o7WG7fnkOFoi
+ pN7AAXknRccrBXdJ4q2sDs77qYecS/TI2efypGIVW4D024b7oeLg8vy0F0/6Q8ZtVlD8
+ eysQ==
+X-Forwarded-Encrypted: i=1;
+ AHgh+RpRw7GDiYDSQgBeGxKrnFZ74T2xOljBFL26dkIRkzQcVgB5cJDlfcnEWowVPhejHHsPc4L6NmoOiQ==@nongnu.org
+X-Gm-Message-State: AOJu0YwfW5f6BkEJVTu/WWX32W9ElwBbhq/YzyyKYQfuCXB+Sxh324lm
+ 0iKtD4+Impfmz7NlHXB0ckET8NYI2b+52fMv8rvK4d0nhFwyMUCB5bmA6yBkQALRnGs=
+X-Gm-Gg: AR+sD117IxDsFJJ+qKds3L6yJ8bEmoMBPQ7jiYDCbzUt9YjO3pL3sSJBnIaFbw8S5gu
+ h9xZnIFeg6fS8QBpPRtQkNCnGv3y2k9SJXS2wlINuiCwYzJ+UZgAbweY8uSTEoZKlg7dJjtvYyc
+ Tidr43+5SrtJxQwu6nEG7y2CnpaRZhAQXA0gqGJIdrsXmXUobamqTlDJZDGqN6OxmP996i9/qe6
+ vp8oqewMfCB4vhfkbLVjP9xMafOcXyaLHo2N7jiI4pblwa2UygMU8gaJyOyr7sn1zcvrJbycbaN
+ mzYCx8f9wQkXxPBF6DR/TQbrOnBCIim79wlOoPQAlNAGb0XX+pqHGW6jdOLygeb71u+FnVX0Gui
+ p4K18YBnRhMaX6ws2bY9aCtov3FVt4y7v32IaBBrucqvtBWMM+7Fq9uj+Y/dSAEaXGCJ0wALwzg
+ lB51qIjh2JyJrIh86LVF0nu5uqBSwm3VlXLdiXL6MhQEBM/YTFgs47jCnesuo8izs=
+X-Received: by 2002:a05:600c:4e56:b0:495:4859:8f9b with SMTP id
+ 5b1f17b1804b1-499b8454b9cmr119150295e9.9.1787324510823; 
+ Fri, 21 Aug 2026 08:01:50 -0700 (PDT)
+Received: from linaro.org ([2a10:d582:31e:0:fa47:b339:78a1:d4c6])
+ by smtp.gmail.com with ESMTPSA id
+ 5b1f17b1804b1-499b9049f84sm30884575e9.0.2026.08.21.08.01.49
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Fri, 21 Aug 2026 08:01:50 -0700 (PDT)
+Date: Fri, 21 Aug 2026 16:01:48 +0100
+From: Jim MacArthur <jim.macarthur@linaro.org>
+To: Tao Tang <tangtao1634@phytium.com.cn>
+Cc: Eric Auger <eric.auger@redhat.com>,
+ Peter Maydell <peter.maydell@linaro.org>, qemu-devel@nongnu.org,
+ qemu-arm@nongnu.org, Chen Baozi <chenbaozi@phytium.com.cn>,
+ Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>,
+ Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <philmd@mailo.com>,
+ Mostafa Saleh <smostafa@google.com>, Chao Liu <chao.liu@processmission.com>
+Subject: Re: [RFC v5 08/28] hw/arm/smmu-common: Key configuration cache on
+ SMMUDevice and SEC_SID
+Message-ID: <aohoXPhB3gEsNSA2@linaro.org>
+References: <20260813161515.2788900-1-tangtao1634@phytium.com.cn>
+ <20260813162446.2806393-3-tangtao1634@phytium.com.cn>
 MIME-Version: 1.0
-References: <20260821132550.168896-1-peter.maydell@linaro.org>
- <20260821132550.168896-3-peter.maydell@linaro.org>
- <0a7ca30b-e623-48dd-8db9-c53c76f9407e@linaro.org>
-In-Reply-To: <0a7ca30b-e623-48dd-8db9-c53c76f9407e@linaro.org>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Fri, 21 Aug 2026 15:58:11 +0100
-X-Gm-Features: AcwNN1Uq3s4_dG3mePj7BLzqAanyFDzLKm0umz8IhT3SI8uDS-STqAo38Duse3g
-Message-ID: <CAFEAcA_UKRZQFiuJV0bq9BhLCPXbVVsKEmCiO1egdmrRgBe9mg@mail.gmail.com>
-Subject: Re: [PATCH 2/3] target/arm: Make IT insn undef when not present
-To: Richard Henderson <richard.henderson@linaro.org>
-Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::b12a;
- envelope-from=peter.maydell@linaro.org; helo=mail-yx1-xb12a.google.com
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20260813162446.2806393-3-tangtao1634@phytium.com.cn>
+Received-SPF: pass client-ip=2a00:1450:4864:20::335;
+ envelope-from=jim.macarthur@linaro.org; helo=mail-wm1-x335.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -116,59 +109,29 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Fri, 21 Aug 2026 at 15:21, Richard Henderson
-<richard.henderson@linaro.org> wrote:
->
-> On 8/21/26 06:25, Peter Maydell wrote:
-> > The IT insn is introduced for A-profile starting in v6T2; for
-> > M-profile it is present when the Main Extension is implemented (which
-> > includes v7M and excludes v6M).  We were missing the feature-check,
-> > so fail to UNDEF on earlier cores.
-> >
-> > Add the missing check.
-> >
-> > Cc: qemu-stable@nongnu.org
-> > Fixes: 9ee6e8bb853bde ("ARMv7 support.")
-> > Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
-> > ---
-> >   target/arm/tcg/translate.c | 10 ++++++++++
-> >   1 file changed, 10 insertions(+)
-> >
-> > diff --git a/target/arm/tcg/translate.c b/target/arm/tcg/translate.c
-> > index df98dc2e34d..103e2fe7c73 100644
-> > --- a/target/arm/tcg/translate.c
-> > +++ b/target/arm/tcg/translate.c
-> > @@ -6038,6 +6038,16 @@ static bool trans_IT(DisasContext *s, arg_IT *a)
-> >   {
-> >       int cond_mask = a->cond_mask;
-> >
-> > +    /*
-> > +     * IT insn introduced in v6T2 for A-profile; it is only present
-> > +     * on M-profile if the Main Extension is implemented.
-> > +     */
-> > +    if (!arm_dc_feature(s, ARM_FEATURE_THUMB2) ||
-> > +        (arm_dc_feature(s, ARM_FEATURE_M) &&
-> > +         !arm_dc_feature(s, ARM_FEATURE_M_MAIN))) {
-> > +        return false;
-> > +    }
-> In practice this is going to be the same as just thumb2, because v7M has v7 which implies
-> thumb2, and all v7M have m_main.
+On Fri, Aug 14, 2026 at 12:24:44AM +0800, Tao Tang wrote:
+> Adapt the configuration cache to distinguish entries decoded through
+> different SEC_SID-selected programming interfaces by introducing a
+> composite SMMUConfigKey. The key combines SMMUDevice with SEC_SID,
+> preventing Secure and Non-secure configuration entries from aliasing in
+> the cache and leaving the key extensible for a future Realm SEC_SID
+> namespace.
+> 
+> The cache lookup, insertion, and invalidation mechanisms are updated to
+> use this new keying infrastructure.
+> 
+> Signed-off-by: Tao Tang <tangtao1634@phytium.com.cn>
+> Reviewed-by: Eric Auger <eric.auger@redhat.com>
+> Reviewed-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
+> Link: https://lore.kernel.org/qemu-devel/a9a840a6-c65f-4352-9a49-ddd1b5483f43@redhat.com/
+> ---
+>  hw/arm/smmu-common.c         | 45 ++++++++++++++++++++++++++++++++++--
+>  hw/arm/smmuv3.c              | 12 ++++++----
+>  include/hw/arm/smmu-common.h |  7 ++++++
+>  3 files changed, 57 insertions(+), 7 deletions(-)
+> 
 
-v8M without the main extension exists, though we don't model any
-of those CPUs at the moment. That will have ARM_FEATURE_THUMB2
-(because FEATURE_V8 implies FEATURE_V7 and FEATURE_V7 implies
-FEATURE_THUMB2).
+Reviewed-by: Jim MacArthur <jim.macarthur@linaro.org>
 
-> Is it clearer as
->
->         !(arm_dc_feature(s, ARM_FEATURE_M)
->            ? arm_dc_feature(s, ARM_FEATURE_M_MAIN)
->            : arm_dc_feature(s, ARM_FEATURE_THUMB2))
->
-> ?
 
-Yeah, I think so. (I actually wrote it first with nested if()s
-roughly like that.)
-
--- PMM
 

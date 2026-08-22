@@ -4,78 +4,80 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 62256C5DF97
-	for <qemu-arm@archiver.kernel.org>; Sat, 22 Aug 2026 16:56:22 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id F0A03C5DF9B
+	for <qemu-arm@archiver.kernel.org>; Sat, 22 Aug 2026 16:56:23 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wxozv-0002jg-Ny; Sat, 22 Aug 2026 12:55:11 -0400
+	id 1wxozm-0002fw-Rx; Sat, 22 Aug 2026 12:55:02 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <163wangjack@gmail.com>)
- id 1wxozu-0002iZ-Bb
- for qemu-arm@nongnu.org; Sat, 22 Aug 2026 12:55:10 -0400
-Received: from mail-pg1-x535.google.com ([2607:f8b0:4864:20::535])
+ id 1wxozl-0002fF-Qq
+ for qemu-arm@nongnu.org; Sat, 22 Aug 2026 12:55:01 -0400
+Received: from mail-pg1-x52c.google.com ([2607:f8b0:4864:20::52c])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <163wangjack@gmail.com>)
- id 1wxozr-0006u0-PC
- for qemu-arm@nongnu.org; Sat, 22 Aug 2026 12:55:10 -0400
-Received: by mail-pg1-x535.google.com with SMTP id
- 41be03b00d2f7-c9e7391839cso2007532a12.0
- for <qemu-arm@nongnu.org>; Sat, 22 Aug 2026 09:55:07 -0700 (PDT)
+ id 1wxozj-0006gx-Kk
+ for qemu-arm@nongnu.org; Sat, 22 Aug 2026 12:55:01 -0400
+Received: by mail-pg1-x52c.google.com with SMTP id
+ 41be03b00d2f7-cbedf433a99so2023482a12.2
+ for <qemu-arm@nongnu.org>; Sat, 22 Aug 2026 09:54:59 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20251104; t=1787417705; x=1788022505; darn=nongnu.org;
+ d=gmail.com; s=20251104; t=1787417698; x=1788022498; darn=nongnu.org;
  h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
  :content-type:mime-version:subject:date:from:from:to:cc:subject:date
  :message-id:reply-to:content-type;
- bh=4bkFOugZCHA30/oOrSCQXtGUjmus+VNjc/uLTyUbkVc=;
- b=TKZS2GNhTMDOqJ6BdYCnnzYWQEDHLRVg6jnvB4kKYqssJYZDxGbNKGiyu++C/7QC35
- jALQ5S6i1AelBZhzoVHhvyzJPmZs0f+KaMa+p2pCN0xULSs8usrbuDUvsV4bMDuzFDsk
- WXBeVM886s306halF5D/akE64t2bPYerwcAXtVwPr4JSbFInrMd1xkIeP06mMf4id1/L
- 17FaJN/8oI1NMDp+uDXzYcNX6w9xQneWWWC+LhvcPMkcktMaQhc6uB6awWawSwrCvaHB
- Q2rfqaqKbIs0WsNvHY4qF1YF9nvVVA/8SuPfufgU8HdMTSI+PuXgybHLUWihw2aDuYIe
- /USg==
+ bh=f2PQRSPvPljDWMrjBTrlNl9RDQbiYdM8LPCBein4cVY=;
+ b=QZVXuG4BwPnAw+5cM6VpKSqWGp+sZWqZI04Nx/4ndL0DfYUie3QZnI1e35phC1LKWx
+ vgb500j0burunPScTy2zHfiyTcKvpAtJla0jMKswz6e+qu4+hrrBV8u029VkAhbrdBfx
+ borJF0/lpsVqtW778acTiCk1zGN9vLw5f81zbwRuAULi/6aapDa5Qz7tSzPWi1r/wLyV
+ tQDUsnZOCGgUUqNuup3kDUiVCWHdVVW46iqMGroe3qtabq0enBrqXkdgV69VwSwYSJeQ
+ nUTsmjXLxAxqIrmLuIsuZ5H4xvYcJLfkWBllVzFjHPM7LhMDE3Zf3snrOyiRn9mUZWZg
+ WH3g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1787417705; x=1788022505;
+ d=1e100.net; s=20251104; t=1787417698; x=1788022498;
  h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
  :content-type:mime-version:subject:date:from:x-gm-gg
  :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
  :content-type;
- bh=4bkFOugZCHA30/oOrSCQXtGUjmus+VNjc/uLTyUbkVc=;
- b=OzMygPFrBaQHfMNrtPVB2n3oZaSRWkfIy6skK4NByRu3E6I42tCQ9YdBUwe+PdCBIX
- mLSRYB8+opSeAk+kcoP+lhf4OEqXWFSaTNeZ20SEmi5JFX5Y+i6blKSxhnuj2GErugPD
- chYXegZnPW69bpzCVKhbwEJqfCzg4MnO03S09XQgB2PaP6D9/Td5Znveq05wnnrA0OfM
- AgQ2ffdG1SbdeMvkLuMT7owODgAcFtuHu65HQiVfq7QOUYXQIU4vjkJUQonmOJNG0nYI
- PI72+g5Ah/yD1+2lv8eaGpDugG/gHPia2/AT4Lccthg52MFyhTFEIVy/DgR2AxoTD7pW
- MQrw==
+ bh=f2PQRSPvPljDWMrjBTrlNl9RDQbiYdM8LPCBein4cVY=;
+ b=hy1VGgrM2lugSksYy/UE3BpOO2yfO992cSouFH9n7ffLcVU/POmrUEoLuM9EDrzuDT
+ RkEptJpg4w+ZBYQM7vZSzj43OaAeH50WR5RSNpyfHmbDZLqJYqe5823kXGqk8EGi7Gyy
+ Wk0F0wmlYCjy500XZ3jZYiLMp+ksQhadMqU4ZzZvsij83asBWBWhb+rzVCBkNzQv4o4o
+ 9CA6KXSxWr4CvFhf3hzvA+WmzCw52Ybx2vJ+6ckfpATNAIMho+l9zf1Zx9ncX2eMTk1c
+ waeUIkIh+q8M1iY6XXKGZLx8oHxk+nBTa/d74KIB822P/tLvb+OAGy+wvx6LDZ/2FO3I
+ oSTg==
 X-Forwarded-Encrypted: i=1;
- AHgh+Rp1vsw343gHwRXlsLTqvWX+zSjf5pC8Dck2gfOcf4TuOvaWYKCSQ9IPmruglV5dTn0jwP6rEfn69g==@nongnu.org
-X-Gm-Message-State: AFuF++mnfjiF8BwBL++r2ml9kWzSNqDrJ2n0UZdbieQbBdAXIgZ7BzUs
- W3Q1gCNgw386TUIHAfWg8BSZibnqpnUAgBN47KtS4GVLBWzilbP9Sw15
-X-Gm-Gg: AR+sD137qFHgc1ui6duzjZoa+aO3pSRGsP+s5TrPO9whYV23Y4dg9wSY1CWaosYCNYg
- W2E1pQQy5/ZyCPLYxvFyc3Mhmb6BBpJcKUbxpxwdxWAFSD6t6i60uWeDW65DmhlBtIlpINIqqFh
- DoDlokJezihrThWCzi47IngppQ0RiZaQhHFqqdHPGmBYfR+gIEENlq5TsNj/tCF5SfLBYgwChL4
- LeDw95hiCWTMOkj3UZUv0jRnS52PtdwN46lwXFwqwAJEr4ddQe8o79ZxYLnyRRlUGNTCg4I4aGt
- mQ2s/H7az7gAdNv1DXxloWS6z2BmP0bZ9ClTb5WFLKfP8VxCw6F0HZDcB4nKOIxZlLeuGWztxIX
- w2zjOT+TvoAxUkA9cnir/QShnN4i4hXukT734Pczax0N5JEW5e9FNBsSFfyPcSqHDe8MLIZc2Me
- YJlH/yw4f4tUiw3RQFtUgtd8pHkVmBCqMethshTOvAjdbbgD55jMWF3TGYnv6hbkVi5PMGB/N08
- XPg8G0F37ucaVGCqLVoYwAPode98YIVDjDMyDb9PFKWNjNnWsbQ0YTSW1baDUdPtWxgPyI=
-X-Received: by 2002:a05:6a20:1605:b0:3c3:b57b:6285 with SMTP id
- adf61e73a8af0-3cd3003dc4fmr30205314637.13.1787417704776; 
- Sat, 22 Aug 2026 09:55:04 -0700 (PDT)
+ AHgh+RrLV2YHnwN3bP+5PGh6PHXH5+B09b/tn6uH4kbJnoEe3fNIiNoU2nFtxdPznjvMZ0JojbVd9gT21A==@nongnu.org
+X-Gm-Message-State: AFuF++nqd85xy17cIDjyV4OyaT2+xEaDaj+GZcSQRdisL9N+jLK+elGu
+ P5XLfF1r6lzFPWsq72Cd0Ep5kcer7aA6GFupo4I5/oCAlLmlsZYAo+jG
+X-Gm-Gg: AR+sD1001m7SLp4y8qIZ6qH1z8ONx5mZIwchVV/uDmiO3UrWF1TNHMidYpdAfwrxDtv
+ 7ANR+2gsTSAx57MfBnSRPtDzPh2wmiB3MlGx7E2nX9HGeAcessnbYifJj8VnLHj3CXLJKDkjjR0
+ LBcnvUfZHP7ZevEYgva1sxu++CAhS1/JJxOU/KlCZDQ5Nk+sO4T1hO3iaR39NIynuaVjOgS5UbP
+ xvf7qqx2v6QAeh0ctcuybc4J8lgRWNQp3FhonODcSnsyWqwxmbEqzZEEErNN3OBNAuXXtfWQIP0
+ QGiJXeYuQv+//PDxFpeWLFvSmg0t0xfd6icQpBjOlQ8sWokOP5QCHNrJfmRQaPRV/htv7TbaxZr
+ 8/Lcf9yqCInEPARjMb337nkPg8GD3xw/Iv3ORVzktC5GBaQTRv7MvF1Pcy6bATDeuFv0VRpS2ad
+ hFB8CR5gZdPLnsaBqH0wTu8/dTsMUcvkfe+BY5PR71w2o3bJRzoWmYI61HHrmOzGIEDRuH85rYP
+ jCO2CUgNopQK4RcHxl3BFnUjmXBt5Jb3Sfc4LojIUSYtACSCJPI8EN+Lu2i3LTGBrGSPBFyYZdy
+ QHMUsw==
+X-Received: by 2002:a05:6a20:e607:b0:3c3:89ce:b5bc with SMTP id
+ adf61e73a8af0-3cd3009a920mr29213877637.15.1787417697631; 
+ Sat, 22 Aug 2026 09:54:57 -0700 (PDT)
 Received: from
  1.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.ip6.arpa
  ([117.55.237.216]) by smtp.gmail.com with ESMTPSA id
- 5a478bee46e88-327f91d2d1esm8688456eec.17.2026.08.22.09.55.01
+ 5a478bee46e88-327f91d2d1esm8688456eec.17.2026.08.22.09.54.54
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sat, 22 Aug 2026 09:55:04 -0700 (PDT)
+ Sat, 22 Aug 2026 09:54:57 -0700 (PDT)
 From: Jack Wang <163wangjack@gmail.com>
-Date: Sun, 23 Aug 2026 00:54:39 +0800
-Subject: [PATCH RFC v2 5/5] rust/hw/gpio: add native unit tests
+Date: Sun, 23 Aug 2026 00:54:37 +0800
+Subject: [PATCH RFC v2 3/5] hw/arm/stm32f100: instantiate and map GPIO
+ ports
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20260823-stm32f100-gpio-v2-final-v2-5-02e31f589dd0@gmail.com>
+Message-Id: <20260823-stm32f100-gpio-v2-final-v2-3-02e31f589dd0@gmail.com>
 References: <20260823-stm32f100-gpio-v2-final-v2-0-02e31f589dd0@gmail.com>
 In-Reply-To: <20260823-stm32f100-gpio-v2-final-v2-0-02e31f589dd0@gmail.com>
 To: qemu-devel@nongnu.org
@@ -85,25 +87,25 @@ Cc: Paolo Bonzini <pbonzini@redhat.com>, qemu-rust@nongnu.org,
  Alistair Francis <alistair@alistair23.me>, qemu-arm@nongnu.org, 
  Fabiano Rosas <farosas@suse.de>, Laurent Vivier <lvivier@redhat.com>
 X-Mailer: b4 0.16.0
-X-Developer-Signature: v=1; a=openpgp-sha256; l=7737; i=163wangjack@gmail.com; 
+X-Developer-Signature: v=1; a=openpgp-sha256; l=4850; i=163wangjack@gmail.com; 
  h=from:subject:message-id;
- bh=yVYaUseLeN8GbT/eETcCIH3Pg/3pKTO9OpyITwmHEYY=; 
- b=owEBiQJ2/ZANAwAIARVa4Yx0u1BNAcsmYgBqidRSVSM2VblINnot2yuUKr7JfwzbuOWvcM8SM
- 8+nb0s9jmmJAk8EAAEIADkWIQQlXkw4qdbVYyKFm20VWuGMdLtQTQUCaonUUhsUgAAAAAAEAA5t
- YW51MiwyLjUrMS4xMiwwLDMACgkQFVrhjHS7UE0E8g/9ECvfLDioTMcPVb4kdC8z2C0ZukRLrt2
- +6bSoaIFWc6TSKG9VfLp4aO/uhcgU3vOZ2Ki9XZ2kued/Oo59Z7qye5Qson8Hky6Msy/OuWMnA6
- JErbzF0mBm+/CyU0f0KBna1cvnMXXUpgnADTpWVmF4XukA33sgso2REA7nCUmCDxSrPi6P9WRrj
- nMNsFJLxvsUfRnftTAv6RtyToym39E1jUp7fZDlhswSCAMjd4X7oFEMcb//AoORBsd8PcveVXUs
- +1hZYV93ptRK3GsMmK0HbiVkf4IrPsrvo3U4UlUWFv9sjB0IcuSbC/TPLC9BrO9G4UF7l10pPih
- Lj0cAGVIBrnqxhdoAjzspzuyGu9ggOfHVkzV2b/BsVb4mIr4/v5fgBcZgHBJlna5JTkfLLhaVtS
- 91iYv5FqfocrrPwnI3sQEWucTIQyPzw9+X0k2W+dRhADJCXzS3MUWH/PEDX4NJw8U+P/nApp3SS
- AK/d+LW7sy9aHoX+AFdEtO14xp5G/36uOxM2Mcdc1yZ/jSRig7MTEmJ7ne+lQRJrDLY2t+gSjh3
- +DqZ9nSZkFzUD/SytEHlGuSg4rNkNUtHDLG4+BNFbsAJ0+Jejp5Hmrl34GGnGp/OuYR0YfUGBhc
- CXeczQ/TFGb3empci8gLW5tolOues8ASWmJD9VRGIy4I/aGVMmjU=
+ bh=mP8WffifX+6XqQ5W3gSIX1W/Wm1uvmeNzY6B0uMYAJU=; 
+ b=owEBiQJ2/ZANAwAIARVa4Yx0u1BNAcsmYgBqidRSayA+zoSRZzV3j4TyFdxMtwn3h765CkFZe
+ CaYvxiUPuyJAk8EAAEIADkWIQQlXkw4qdbVYyKFm20VWuGMdLtQTQUCaonUUhsUgAAAAAAEAA5t
+ YW51MiwyLjUrMS4xMiwwLDMACgkQFVrhjHS7UE2UQBAAks/cuHe+IXUf/WsS0uPcqT3N0kb5YM/
+ jTZm4/PPWP5wWqfma8SXrkDWuhS5pR6RJJSTWDQcwwM71xg+YkGyihLQGhfpap8R0sR81fiva5Z
+ T+3sRJydN4tywr2oG4ahynnKf+kHoBU4ReJzgu0Z81hNzzZ9L8ctxuZhVdNFdiMUG/+OCpb4A6f
+ 4oAN9HFXI+MroH36VS/cfkqYrPxgFo23D1ohyYendUpK5hYhlaXJqt3uPBgsfEjID7B1+kWfveD
+ 9vRFEoxDBjwEk83m+D8kIthJePGYrTtNquyYWQ4b9DUHVvSzpcDUEmO5QOM5FIDx0XDYqrT1D4p
+ w6IFF36FWE1AXgSdgJhbcN7yx204VkizdPSyXIF+479mgtX0/c/8I9LFZqPW324HkHH4yQVmTmv
+ wVHpSOFkO/tIS0CIE4yAnOJv0bVZtKhKzHwSY1vOG8hAeJlxe08J/hBujz07Oyy51Ky1lkO1dnZ
+ I5MmxV8rljSAIh2lB2aI51vM9cx88gA8SPv2z5VJwNW/IelM9Fi6KeXQXzNjwcFx3w2Syzu4+rJ
+ tJSTRfYx9nfTezU7ePiJW2M/Y/0mOefjsuWm2BnH8U/dBpfR87l432v8O4R8Ewat19BEcNSyV5F
+ CU4mRibBeBrJzzyPDW9v0uI4hBK2iZYxt3ZLRS5fXnzjXx/v9I4g=
 X-Developer-Key: i=163wangjack@gmail.com; a=openpgp;
  fpr=255E4C38A9D6D56322859B6D155AE18C74BB504D
-Received-SPF: pass client-ip=2607:f8b0:4864:20::535;
- envelope-from=163wangjack@gmail.com; helo=mail-pg1-x535.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::52c;
+ envelope-from=163wangjack@gmail.com; helo=mail-pg1-x52c.google.com
 X-Spam_score_int: -13
 X-Spam_score: -1.4
 X-Spam_bar: -
@@ -126,289 +128,122 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Add native tests for the STM32F1xx GPIO register logic based on STM32F100xx RM0041.
+Instantiate the Rust STM32F1xx GPIO device for GPIOA through GPIOE on the STM32F100RBT6 used by the stm32vldiscovery machine.
 
-Retain the v1 reset, push-pull, floating-input, pull and BSRR/BRR coverage. Add focused cases for analog input, released open-drain sampling, AF-output isolation, reset output deassertion and explicitly unimplemented LCKR behavior.
+Use a fixed-size address table tied to STM32F100_NUM_GPIOS. When the Rust type is unavailable, retain the existing unimplemented-device regions so a --disable-rust build does not leave the GPIO windows unbacked.
 
-Register the native test target together with its source so intermediate commits do not reference a missing file.
+Do not connect the GPIO ports directly to the NVIC because external interrupts are routed through the currently unmodelled EXTI.
 
 Signed-off-by: Jack Wang <163wangjack@gmail.com>
 ---
- rust/hw/gpio/meson.build    |  41 +++++++++
- rust/hw/gpio/tests/tests.rs | 216 ++++++++++++++++++++++++++++++++++++++++++++
- 2 files changed, 257 insertions(+)
+ hw/arm/Kconfig                 |  1 +
+ hw/arm/stm32f100_soc.c         | 35 ++++++++++++++++++++++++++++++-----
+ include/hw/arm/stm32f100_soc.h |  2 ++
+ 3 files changed, 33 insertions(+), 5 deletions(-)
 
-diff --git a/rust/hw/gpio/meson.build b/rust/hw/gpio/meson.build
-index e359d7e329..f0dd7d4acb 100644
---- a/rust/hw/gpio/meson.build
-+++ b/rust/hw/gpio/meson.build
-@@ -6,3 +6,44 @@ rust_devices_ss.add(when: 'CONFIG_X_STM32F1XX_GPIO_RUST', if_true: [declare_depe
-   link_whole: [_libstm32f1xx_gpio_rs],
-   variables: {'crate': 'stm32f1xx_gpio'},
- )])
+diff --git a/hw/arm/Kconfig b/hw/arm/Kconfig
+index 260d2f0751..6333c0ca09 100644
+--- a/hw/arm/Kconfig
++++ b/hw/arm/Kconfig
+@@ -373,6 +373,7 @@ config STM32F100_SOC
+     select ARM_V7M
+     select STM32F2XX_USART
+     select STM32F2XX_SPI
++    select STM32F1XX_GPIO if HAVE_RUST
+ 
+ config STM32F205_SOC
+     bool
+diff --git a/hw/arm/stm32f100_soc.c b/hw/arm/stm32f100_soc.c
+index 2358368dba..769f8e5ff0 100644
+--- a/hw/arm/stm32f100_soc.c
++++ b/hw/arm/stm32f100_soc.c
+@@ -26,6 +26,7 @@
+ #include "qemu/osdep.h"
+ #include "qapi/error.h"
+ #include "qemu/module.h"
++#include "qom/object.h"
+ #include "hw/arm/boot.h"
+ #include "system/address-spaces.h"
+ #include "hw/arm/stm32f100_soc.h"
+@@ -36,10 +37,20 @@
+ 
+ /* stm32f100_soc implementation is derived from stm32f205_soc */
+ 
++#define TYPE_STM32F1XX_GPIO_RUST "stm32f1xx-gpio-rust"
 +
-+stm32f1xx_gpio_rs = declare_dependency(
-+  link_with: [_libstm32f1xx_gpio_rs],
-+  dependencies: [
-+    common_rs,
-+    qom_rs,
-+    hwcore_rs,
-+    bql_rs,
-+    migration_rs,
-+    system_rs,
-+    util_rs,
-+  ],
-+)
-+
-+test(
-+  'rust-stm32f1xx-gpio-integration',
-+  executable(
-+    'rust-stm32f1xx-gpio-integration',
-+    files('tests/tests.rs'),
-+    override_options: ['rust_std=2021', 'build.rust_std=2021'],
-+    rust_args: ['--test'],
-+    install: false,
-+    dependencies: [
-+      stm32f1xx_gpio_rs,
-+      common_rs,
-+      qom_rs,
-+      hwcore_rs,
-+      bql_rs,
-+      migration_rs,
-+      system_rs,
-+      util_rs,
-+    ],
-+  ),
-+  args: [
-+    '--test',
-+    '--test-threads', '1',
-+    '--format', 'pretty',
-+  ],
-+  protocol: 'rust',
-+  suite: ['unit', 'rust'],
-+)
-diff --git a/rust/hw/gpio/tests/tests.rs b/rust/hw/gpio/tests/tests.rs
-new file mode 100644
-index 0000000000..df71d205e0
---- /dev/null
-+++ b/rust/hw/gpio/tests/tests.rs
-@@ -0,0 +1,216 @@
-+// Copyright 2026, Jack Wang
-+// Author(s): Jack Wang <163wangjack@gmail.com>
-+// SPDX-License-Identifier: GPL-2.0-or-later
-+
-+use stm32f1xx_gpio::gpio::{
-+    GpioRegisters, PinUpdate, REG_BRR, REG_BSRR, REG_CRH, REG_CRL, REG_IDR, REG_LCKR, REG_ODR,
-+    RESET_CRH, RESET_CRL,
+ static const uint32_t usart_addr[STM_NUM_USARTS] = { 0x40013800, 0x40004400,
+     0x40004800 };
+ static const uint32_t spi_addr[STM_NUM_SPIS] = { 0x40013000, 0x40003800 };
+ 
++static const uint32_t gpio_addr[STM32F100_NUM_GPIOS] = {
++    0x40010800, 0x40010c00, 0x40011000, 0x40011400, 0x40011800,
 +};
 +
-+fn regs() -> GpioRegisters {
-+    bql::start_test();
-+    GpioRegisters::new()
-+}
++static const char *const gpio_name[STM32F100_NUM_GPIOS] = {
++    "GPIOA", "GPIOB", "GPIOC", "GPIOD", "GPIOE",
++};
 +
-+const CFG_INPUT_ANALOG: u32 = 0x0;
-+const CFG_INPUT_FLOATING: u32 = 0x4;
-+const CFG_INPUT_PULL: u32 = 0x8;
-+const CFG_OUTPUT_PP: u32 = 0x1;
-+const CFG_OUTPUT_OD: u32 = 0x5;
-+const CFG_AF_PP: u32 = 0x9;
+ static const int usart_irq[STM_NUM_USARTS] = {37, 38, 39};
+ static const int spi_irq[STM_NUM_SPIS] = {35, 36};
+ 
+@@ -149,6 +160,25 @@ static void stm32f100_soc_realize(DeviceState *dev_soc, Error **errp)
+         sysbus_connect_irq(busdev, 0, qdev_get_gpio_in(armv7m, spi_irq[i]));
+     }
+ 
++    /* GPIO interrupts are routed through the currently unmodelled EXTI. */
++    if (object_class_by_name(TYPE_STM32F1XX_GPIO_RUST)) {
++        for (i = 0; i < STM32F100_NUM_GPIOS; i++) {
++            g_autofree char *name = g_strdup_printf("gpio%c", 'a' + i);
 +
-+fn set_config(r: &GpioRegisters, pin: usize, cfg: u32) {
-+    let reg = if pin < 8 { REG_CRL } else { REG_CRH };
-+    let shift = ((pin % 8) * 4) as u32;
-+    let old = r.read(reg);
-+    r.write(reg, (old & !(0xF << shift)) | (cfg << shift));
-+}
++            s->gpio[i] = qdev_new(TYPE_STM32F1XX_GPIO_RUST);
++            object_property_add_child(OBJECT(s), name, OBJECT(s->gpio[i]));
++            busdev = SYS_BUS_DEVICE(s->gpio[i]);
++            if (!sysbus_realize_and_unref(busdev, errp)) {
++                return;
++            }
++            sysbus_mmio_map(busdev, 0, gpio_addr[i]);
++        }
++    } else {
++        for (i = 0; i < STM32F100_NUM_GPIOS; i++) {
++            create_unimplemented_device(gpio_name[i], gpio_addr[i], 0x400);
++        }
++    }
 +
-+fn set_odr_bit(r: &GpioRegisters, pin: usize, value: u32) {
-+    let old = r.read(REG_ODR);
-+    r.write(REG_ODR, (old & !(1 << pin)) | (value << pin));
-+}
-+
-+fn pin_changed_to(upd: PinUpdate, pin: usize, level: bool) -> bool {
-+    (upd.mask & (1 << pin)) != 0 && (((upd.levels >> pin) & 1) != 0) == level
-+}
-+
-+#[test]
-+fn test_reset_values() {
-+    let r = regs();
-+    assert_eq!(r.read(REG_CRL), RESET_CRL);
-+    assert_eq!(r.read(REG_CRH), RESET_CRH);
-+    assert_eq!(r.read(REG_IDR), 0);
-+    assert_eq!(r.read(REG_ODR), 0);
-+}
-+
-+#[test]
-+fn test_reset_restores() {
-+    let r = regs();
-+    r.write(REG_CRL, 0xDEAD_BEEF);
-+    r.write(REG_ODR, 0x0000_FFFF);
-+    assert_ne!(r.read(REG_CRL), RESET_CRL);
-+
-+    r.reset();
-+
-+    assert_eq!(r.read(REG_CRL), RESET_CRL);
-+    assert_eq!(r.read(REG_CRH), RESET_CRH);
-+    assert_eq!(r.read(REG_IDR), 0);
-+    assert_eq!(r.read(REG_ODR), 0);
-+}
-+
-+#[test]
-+fn test_output_mode() {
-+    let r = regs();
-+    let pin = 5;
-+
-+    let idle = set_odr_and_report(&r, pin, 1);
-+    assert_eq!(r.read(REG_IDR), 0);
-+    assert_eq!(idle.mask & (1 << pin), 0);
-+
-+    let old = r.read(REG_CRL);
-+    let to_output = r.write(
-+        REG_CRL,
-+        (old & !(0xF << (pin * 4))) | (CFG_OUTPUT_PP << (pin * 4)),
-+    );
-+    assert_eq!(r.read(REG_IDR), 1 << pin);
-+    assert!(pin_changed_to(to_output, pin, true));
-+
-+    let to_low = set_odr_and_report(&r, pin, 0);
-+    assert_eq!(r.read(REG_IDR), 0);
-+    assert!(pin_changed_to(to_low, pin, false));
-+}
-+
-+fn set_odr_and_report(r: &GpioRegisters, pin: usize, value: u32) -> PinUpdate {
-+    let old = r.read(REG_ODR);
-+    r.write(REG_ODR, (old & !(1 << pin)) | (value << pin))
-+}
-+
-+#[test]
-+fn test_input_mode() {
-+    let r = regs();
-+    let pin = 6usize;
-+
-+    set_config(&r, pin, CFG_INPUT_FLOATING);
-+
-+    let drive_high = r.gpio_set(pin, 1);
-+    assert_eq!(r.read(REG_IDR), 1 << pin);
-+    assert!(pin_changed_to(drive_high, pin, true));
-+
-+    let drive_low = r.gpio_set(pin, 0);
-+    assert_eq!(r.read(REG_IDR), 0);
-+    assert!(pin_changed_to(drive_low, pin, false));
-+}
-+
-+#[test]
-+fn test_pull_up_down() {
-+    let r = regs();
-+    let pin = 0;
-+
-+    set_odr_bit(&r, pin, 1);
-+    set_config(&r, pin, CFG_INPUT_PULL);
-+    assert_eq!(r.read(REG_IDR), 1 << pin);
-+
-+    set_odr_bit(&r, pin, 0);
-+    assert_eq!(r.read(REG_IDR), 0);
-+}
-+
-+#[test]
-+fn test_bsrr_brr() {
-+    let r = regs();
-+    let pin = 1;
-+
-+    r.write(REG_BSRR, 1 << pin);
-+    assert_eq!(r.read(REG_ODR), 1 << pin);
-+
-+    r.write(REG_BSRR, 1 << (pin + 16));
-+    assert_eq!(r.read(REG_ODR), 0);
-+
-+    r.write(REG_BSRR, 1 << pin);
-+    r.write(REG_BRR, 1 << pin);
-+    assert_eq!(r.read(REG_ODR), 0);
-+
-+    // Set has priority over reset within one BSRR write.
-+    r.write(REG_BSRR, (1 << pin) | (1 << (pin + 16)));
-+    assert_eq!(r.read(REG_ODR), 1 << pin);
-+}
-+
-+#[test]
-+fn test_push_pull_disconnect() {
-+    let r = regs();
-+    let pin = 7usize;
-+
-+    set_config(&r, pin, CFG_INPUT_FLOATING);
-+    r.gpio_set(pin, 1);
-+    assert_eq!(r.read(REG_IDR), 1 << pin);
-+    assert_eq!(r.disconnected_pins() & (1 << pin), 0);
-+
-+    set_odr_bit(&r, pin, 0);
-+    set_config(&r, pin, CFG_OUTPUT_PP);
-+    assert_eq!(r.read(REG_IDR), 0);
-+    assert_ne!(r.disconnected_pins() & (1 << pin), 0);
-+
-+    r.gpio_set(pin, 1);
-+    assert_eq!(r.read(REG_IDR), 0);
-+}
-+
-+#[test]
-+fn test_analog_input_is_digitally_low() {
-+    let r = regs();
-+    let pin = 0;
-+
-+    set_config(&r, pin, CFG_INPUT_ANALOG);
-+    r.gpio_set(pin, 1);
-+
-+    assert_eq!(r.read(REG_IDR) & (1 << pin), 0);
-+}
-+
-+#[test]
-+fn test_open_drain_released_samples_external_input() {
-+    let r = regs();
-+    let pin = 1;
-+
-+    set_config(&r, pin, CFG_OUTPUT_OD);
-+    set_odr_bit(&r, pin, 1);
-+
-+    r.gpio_set(pin, 1);
-+    assert_eq!(r.read(REG_IDR) & (1 << pin), 1 << pin);
-+
-+    r.gpio_set(pin, 0);
-+    assert_eq!(r.read(REG_IDR) & (1 << pin), 0);
-+}
-+
-+#[test]
-+fn test_af_output_does_not_follow_odr() {
-+    let r = regs();
-+    let pin = 2;
-+
-+    set_config(&r, pin, CFG_AF_PP);
-+    set_odr_bit(&r, pin, 1);
-+
-+    assert_eq!(r.read(REG_IDR) & (1 << pin), 0);
-+}
-+
-+#[test]
-+fn test_reset_deasserts_previous_high_output() {
-+    let r = regs();
-+    let pin = 3;
-+
-+    set_config(&r, pin, CFG_OUTPUT_PP);
-+    set_odr_bit(&r, pin, 1);
-+    assert_eq!(r.read(REG_IDR) & (1 << pin), 1 << pin);
-+
-+    let update = r.reset();
-+
-+    assert_ne!(update.mask & (1 << pin), 0);
-+    assert_eq!(update.levels & (1 << pin), 0);
-+}
-+
-+#[test]
-+fn test_lckr_is_explicitly_unimplemented() {
-+    let r = regs();
-+
-+    r.write(REG_LCKR, 0x0001_0001);
-+
-+    assert_eq!(r.read(REG_LCKR), 0);
-+}
+     create_unimplemented_device("timer[2]",  0x40000000, 0x400);
+     create_unimplemented_device("timer[3]",  0x40000400, 0x400);
+     create_unimplemented_device("timer[4]",  0x40000800, 0x400);
+@@ -165,11 +195,6 @@ static void stm32f100_soc_realize(DeviceState *dev_soc, Error **errp)
+     create_unimplemented_device("CEC",       0x40007800, 0x400);
+     create_unimplemented_device("AFIO",      0x40010000, 0x400);
+     create_unimplemented_device("EXTI",      0x40010400, 0x400);
+-    create_unimplemented_device("GPIOA",     0x40010800, 0x400);
+-    create_unimplemented_device("GPIOB",     0x40010C00, 0x400);
+-    create_unimplemented_device("GPIOC",     0x40011000, 0x400);
+-    create_unimplemented_device("GPIOD",     0x40011400, 0x400);
+-    create_unimplemented_device("GPIOE",     0x40011800, 0x400);
+     create_unimplemented_device("ADC1",      0x40012400, 0x400);
+     create_unimplemented_device("timer[1]",  0x40012C00, 0x400);
+     create_unimplemented_device("timer[15]", 0x40014000, 0x400);
+diff --git a/include/hw/arm/stm32f100_soc.h b/include/hw/arm/stm32f100_soc.h
+index 4c113d6774..401794242d 100644
+--- a/include/hw/arm/stm32f100_soc.h
++++ b/include/hw/arm/stm32f100_soc.h
+@@ -36,6 +36,7 @@ OBJECT_DECLARE_SIMPLE_TYPE(STM32F100State, STM32F100_SOC)
+ 
+ #define STM_NUM_USARTS 3
+ #define STM_NUM_SPIS 2
++#define STM32F100_NUM_GPIOS 5
+ 
+ #define FLASH_BASE_ADDRESS 0x08000000
+ #define FLASH_SIZE (128 * 1024)
+@@ -49,6 +50,7 @@ struct STM32F100State {
+ 
+     STM32F2XXUsartState usart[STM_NUM_USARTS];
+     STM32F2XXSPIState spi[STM_NUM_SPIS];
++    DeviceState *gpio[STM32F100_NUM_GPIOS];
+ 
+     MemoryRegion sram;
+     MemoryRegion flash;
 
 -- 
 2.53.0

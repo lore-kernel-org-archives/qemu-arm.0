@@ -4,99 +4,107 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6147DC5DF97
-	for <qemu-arm@archiver.kernel.org>; Fri, 21 Aug 2026 23:12:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 38F26C5B572
+	for <qemu-arm@archiver.kernel.org>; Sat, 22 Aug 2026 05:22:59 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wxYOl-0002gI-Bc; Fri, 21 Aug 2026 19:11:43 -0400
+	id 1wxeBg-0002o9-M5; Sat, 22 Aug 2026 01:22:36 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1wxYOk-0002fz-6k
- for qemu-arm@nongnu.org; Fri, 21 Aug 2026 19:11:42 -0400
-Received: from mail-pg1-x530.google.com ([2607:f8b0:4864:20::530])
+ (Exim 4.90_1) (envelope-from <bmeng.cn@gmail.com>)
+ id 1wxeBf-0002nn-Cc
+ for qemu-arm@nongnu.org; Sat, 22 Aug 2026 01:22:35 -0400
+Received: from mail-yx1-xb12f.google.com ([2607:f8b0:4864:20::b12f])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1wxYOi-0004vX-Kh
- for qemu-arm@nongnu.org; Fri, 21 Aug 2026 19:11:41 -0400
-Received: by mail-pg1-x530.google.com with SMTP id
- 41be03b00d2f7-cb5b8572b70so1988094a12.2
- for <qemu-arm@nongnu.org>; Fri, 21 Aug 2026 16:11:40 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <bmeng.cn@gmail.com>)
+ id 1wxeBd-0002PL-0Y
+ for qemu-arm@nongnu.org; Sat, 22 Aug 2026 01:22:35 -0400
+Received: by mail-yx1-xb12f.google.com with SMTP id
+ 956f58d0204a3-66c67a73eb7so4398829d50.0
+ for <qemu-arm@nongnu.org>; Fri, 21 Aug 2026 22:22:32 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1787376152; cv=none;
+ d=google.com; s=arc-20260327;
+ b=RMALQMG64+JweQTdbPA0ne+qz80rQN5duYxvm8BPmgsB8CCiDdHvoJXEGzAd/Xw8D7
+ OylUpBzReJJDyXUhpa7sj4J6Jeg3CrVFEE5co4PSPbHo+rZqZRT33NqoEEH0U+dqj2SP
+ fweFx+KDirDBWaovGwNWrA7jgMDQARHk5glrF9JAFIyNB18RN7rX8fIsu5w+7bifVcnu
+ m8lra27tXJf7q3a/aQJCJyJmzFuKWQ+odorwIkY7/FXh2Ns501NhFZ7XKH/7KR1kx548
+ z03GxPDO4lBcYtnQ/XhCeSIJpilIQr5+ZMG87B/wEgfAcfGrAk3xhBtnVGEj4feqCths
+ ZBew==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
+ s=arc-20260327; 
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:dkim-signature;
+ bh=IuNeS52eXLwMIRLBzCbUX74yu+Fua1F9mkKCt6lwxLY=;
+ fh=QImGx9lgUhe/JOL2ASZ+izQ8ViLSWSJsDZvN7jXdQMQ=;
+ b=clxPH+8HhXs9mFU4y8ui7esmMUFKGDJcZMiID0uxgG8zMMPo6LEIfYynSTUK4f6SX8
+ RlCBIqO4HOzNJn4Qi5jR5Dj0eR8RnLtLrJg5GThOPHkTQqyv2BvkKfeyfGZI1rzFlloN
+ oZTSSkKILmqcu5zqt26EGJkuyvi/GsnX5jOFoMIuZlLhBSjvswufe2bA3TBzj0IMZ1Gg
+ lI2JoneF/YdAur6OY/Uwv6XZqjAF1+KPVGh5UXwOAHuvu+oV9yU5wYtSlKRfxLmSYgBM
+ arzrKd+YGvhBP2I7ezQ2FTbiv5V5ISLjO18yeY/ZDjAiEVwJ7O7VjgDzT4/5gQLDPiRw
+ 1zSA==; darn=nongnu.org
+ARC-Authentication-Results: i=1; mx.google.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1787353899; x=1787958699; darn=nongnu.org;
- h=content-transfer-encoding:content-type:in-reply-to:content-language
- :from:references:cc:to:subject:user-agent:mime-version:date
- :message-id:from:to:cc:subject:date:message-id:reply-to:content-type;
- bh=T26CDWfmqq4Q7TILhhMDl7DvT2hnD6KCeMd1SqYDqH4=;
- b=ph7sIlyG7O1A8dKvW7yjjM5gMhEB3IsixsfsvptoDDDVoRIk3w0XzTMzeEkhvXdiyu
- Ri8PHooabOyU2XQwG0EL+IKtk4BQiufsjsC6vOG9jjDQ7ZuJrL1IMsxHLTSNezwaNdl5
- bhP+0ijckYbU6epXYQ5CIoIPjjVT7akbL7Nc4rixia4JRmwtDVfMEsxpHJkLklY+GR7+
- x8NMCxzTr+WtACxrTSDLgJd9mvICRTb4e8JtCeg941SpbhnhmUYERQo4gjhyMfG2j86U
- dJKslNZJVU1TJcoWij39wTpeTcJ9tN9m+VGClauU0vBV5iywnQgexspVoT0sK4srYxa+
- gpug==
+ d=gmail.com; s=20251104; t=1787376152; x=1787980952; darn=nongnu.org;
+ h=content-transfer-encoding:content-type:cc:to:subject:message-id
+ :date:from:in-reply-to:references:mime-version:from:to:cc:subject
+ :date:message-id:reply-to:content-type;
+ bh=IuNeS52eXLwMIRLBzCbUX74yu+Fua1F9mkKCt6lwxLY=;
+ b=crH8MEGjkgMDYFyj5v6e++3/qgovalzbDWPY0pgviQ/GKsC+iFMA3efZGNk8wux3LQ
+ 6guJOhmL8xbmawz3n+JbmsNk62T/9pS/JZzZ4lvVC4Ii/LswogqmcPfq/Ky51gfrLKPn
+ vr0Qdos+8gRPUKAGgSigBiDENC8t0F0RO6aRmRIl4QcAUkxTWdJ5IWsi3jWin0LfR7vH
+ tDgL7lHmZlmkEUjYFcLKtlGxE4MVGTvZI3WCWiHdZulVxb54UxCMVifqD3vOUogsY4Fd
+ 4CG6wfEmfy2wETHRFW80IhCVEP+6ZVZT2aKbrObpho0Kjccnz5YthC/Wh3zhHatV3It4
+ Dutw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1787353899; x=1787958699;
- h=content-transfer-encoding:content-type:in-reply-to:content-language
- :from:references:cc:to:subject:user-agent:mime-version:date
- :message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
- :message-id:reply-to:content-type;
- bh=T26CDWfmqq4Q7TILhhMDl7DvT2hnD6KCeMd1SqYDqH4=;
- b=HXBTlpDPVTPPaouAxNUGqgUwVuuJkjc8H720osKWDPowc7LVx03mIkqSe1GUSt8hsy
- tT+6Gt/mW9BO0hKe+VXiOBcRLO518nSGrCW0Ml+/81VZgM+ijyDc0gDLTaEeSmIR3Xss
- mdvvif0AXI+rYbpq3vPjCeg6Lh0d0ZaMVYfW6Zszl1DOYjJf6yYoM84MKn40lj7EyZtR
- iZHwv9FpaJq14o0nQSjaHxoTgSAcMHp4aodNyOT8Te4B3GZHyAdp3iUaLB8Uz3mUxPd8
- xV2C3GbdYSTVBm4Y5mC6OF38m+w6n304Qp/l1Rc92GGGU8enYM2SShIetS9zG8N3UQbJ
- gjNw==
+ d=1e100.net; s=20251104; t=1787376152; x=1787980952;
+ h=content-transfer-encoding:content-type:cc:to:subject:message-id
+ :date:from:in-reply-to:references:mime-version:x-gm-gg
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
+ :content-type;
+ bh=IuNeS52eXLwMIRLBzCbUX74yu+Fua1F9mkKCt6lwxLY=;
+ b=RKviga2hV9PtyDjf9RAWkELKhdRdG2g/Ikrg681rbARrLblYkh6yzWkH12Csn2q8bn
+ 5FcyeTOK4VgMzL5rciWBweKUlyT6+KGJgQ/IFzRqoKAlIMi9XtWIy7VHgHI7FMEOXkyn
+ kiJx+ODiUHi1ra+SDTPet+taMtWmKJq80IhdXYNRHsPZICLroYB+Zlg9x1LuqSZ+niNv
+ DBMMMg6JY/PEheJTtKwKp/gErg6ELUyrtV4ZfGGKKS3HNByvEwmc5xIsz3+kjyu3pXYI
+ CWbpOE5SYYuLcwhdNvutYYw6+KsmAjSPcW5F4SoOzz1Lg5yZ1Xeb05KN3fraexnZO4nk
+ bUkA==
 X-Forwarded-Encrypted: i=1;
- AHgh+RqdsSvmazGty5X8c/e23Uwlhge5nrJhJg9PVtWwJYmOWAPfF4FDW3q10c1V/dPzLThwzhzaPoy++w==@nongnu.org
-X-Gm-Message-State: AFuF++kvl9Df+WfYsVtWPfV+lA5DRL5PXDWBSJ0jk2SUxl/d8Qp4C3jW
- 3i/P2QqJf4ZQPOCsCrcHHzgsns007jGDNfn2tFTRurbCnCVywSmTcDgNTH38zrBzhcM=
-X-Gm-Gg: AR+sD13bUEEmwbSPYZSxY9gC9wyIY+oJVSPD3C1lREhNHH3uV4mkSOhsyPl6wTCiK2A
- ti+xXh684B9tCKybeHxJE881onOHGVDorx2o2yyYUyU4pTNuON0C87aHwOtghp+fjW0lWYM5XI+
- UoKFzdrmvw/3hrCk+uU1dXsnPJTx+yY1jFez+l8/+8b1YLMsZbmf5KEN6RborwlFfLrOLgVa9pZ
- iLg6aAL2bVvG1er+x+KIHxGUKM5v8EA1AXYbuJtLofuqBxGCqE00Y5Tmcmw6qwdf96MBwseW+ds
- FgSvVCPT1dYwq93t8yAOUSk98WmXOdXv67YjZLW5aNkMo2sGeGVID8K2f89/h017fh/U3Twipb2
- q/ZT8Oa17bMkQEBFapBM2N+XySU0zhiiuRgdEzTIZU4sx7RIeHwGk1ia8axRo7TY/wxJWQA7yql
- SQlRkHYfvs9ooSKr9d1Gc2pjW58fL/SpGE+8BVKbvvRxH0DTuaLYlZ6QbtQGr43AuxawcKlnQk7
- 4AsgbeUyQKaLfivXSN8zZBgKKhmY4Ee/DeIW3WVGYDu6yzkRw==
-X-Received: by 2002:a05:6a20:394a:b0:3c3:791e:5e18 with SMTP id
- adf61e73a8af0-3cd2fe7a34cmr17385811637.7.1787353898875; 
- Fri, 21 Aug 2026 16:11:38 -0700 (PDT)
-Received: from ?IPV6:2607:fb90:339b:bfd7:dac5:d94a:debc:5ef7?
- ([2607:fb90:339b:bfd7:dac5:d94a:debc:5ef7])
- by smtp.gmail.com with ESMTPSA id
- 41be03b00d2f7-cc1593060e8sm3357847a12.32.2026.08.21.16.11.37
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Fri, 21 Aug 2026 16:11:38 -0700 (PDT)
-Message-ID: <ef89a1f0-1df1-4d41-b0a9-603556a76b33@linaro.org>
-Date: Fri, 21 Aug 2026 16:11:35 -0700
+ AHgh+Rr+zubXvqACfhKEFqNnIbz6MAyI6EplIYIjv/hJ98li+sotP4S9aauxIZ+/FcQrGFLxe6mpZ3vs+w==@nongnu.org
+X-Gm-Message-State: AFuF++nfRvBFSlM0oTJmRCdip/d94l0TV9oUYc9BxSFLbLvVh0bR8+Ed
+ ruSgMzR8XmutdUg9iVJlND+8MTkQrtmY+MyUSzFYBC5pRlP/U/E2ROh8SU7WHgHNzZiEw2T+CDY
+ 3jfN8salRf+3L08Rz6n58gJzaKwu6Jto=
+X-Gm-Gg: AR+sD10TNdUA+kyk6RS+XIME9XGkpkpFzO6Y1xgvPX8ERNM6nxcxylO5a4Y1iy5VzXQ
+ apLFKTMKnx3PU4yXWlV3PYNSDlKVBXF5Va/heJHNBU7FNpQXNCsyTYnyLDd5b1MMNFtftpSmvBN
+ 63+Behjb33FsnrWb7io3PhODbMpC8OajojeMT60Dx9k3JSG0vB1yyMHyYU+CsfEYyW4DUKkzZXD
+ t4lKA+rvuoH6TCTitbNSeoBxO04c/LfRdGzqStp8BeHzx6A938ATnJG6Es/K0Ts4EF8NkHb0qTf
+ F3L/hmKyLRFzZXnsb4Fz+UjWy7TquuFK8oloQqHlppp9
+X-Received: by 2002:a05:690e:b87:b0:66c:ea75:cdbc with SMTP id
+ 956f58d0204a3-66cea75cee4mr2532449d50.19.1787376151698; Fri, 21 Aug 2026
+ 22:22:31 -0700 (PDT)
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PULL 00/12] Igvm 20260821 patches
-To: Gerd Hoffmann <kraxel@redhat.com>, qemu-devel@nongnu.org
-Cc: Ani Sinha <anisinha@redhat.com>, Cornelia Huck <cohuck@redhat.com>,
- Peter Maydell <peter.maydell@linaro.org>, Zhao Liu <zhao1.liu@intel.com>,
- Peter Xu <peterx@redhat.com>, qemu-arm@nongnu.org,
- Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>,
- "Michael S. Tsirkin" <mst@redhat.com>,
- Stefano Garzarella <sgarzare@redhat.com>,
- =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@mailo.com>,
- Laurent Vivier <lvivier@redhat.com>, Fabiano Rosas <farosas@suse.de>,
- Paolo Bonzini <pbonzini@redhat.com>
-References: <20260821161103.3489298-1-kraxel@redhat.com>
-From: Richard Henderson <richard.henderson@linaro.org>
-Content-Language: en-US
-In-Reply-To: <20260821161103.3489298-1-kraxel@redhat.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::530;
- envelope-from=richard.henderson@linaro.org; helo=mail-pg1-x530.google.com
+References: <20260820124824.618671-1-wafgo01@gmail.com>
+In-Reply-To: <20260820124824.618671-1-wafgo01@gmail.com>
+From: Bin Meng <bmeng.cn@gmail.com>
+Date: Sat, 22 Aug 2026 13:22:19 +0800
+X-Gm-Features: AcwNN1V4NZIZJ2HmLDKamR_Uy1MVHHd4kMrPDMF0uwBLEFAeDYEAACnaMIgPaHk
+Message-ID: <CAEUhbmXSy7LfbkJeQcjEyOPQ_6WAYsqOdHR4ZHzkSJ7H6kOLJQ@mail.gmail.com>
+Subject: Re: [RFC PATCH v2 00/14] hw/arm: add TI AM64x SoC and am64-virt
+ machine
+To: Wadim Mueller <wafgo01@gmail.com>
+Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, 
+ Peter Maydell <peter.maydell@linaro.org>,
+ =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@mailo.com>, 
+ Paolo Bonzini <pbonzini@redhat.com>, Fabiano Rosas <farosas@suse.de>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2607:f8b0:4864:20::b12f;
+ envelope-from=bmeng.cn@gmail.com; helo=mail-yx1-xb12f.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
@@ -114,24 +122,245 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On 8/21/26 09:10, Gerd Hoffmann wrote:
-> The following changes since commit ae4f3443209ab154b48b706a146e5f557ab147cb:
-> 
->    Merge tag 'qtest-20260819-pull-request' ofhttps://gitlab.com/farosas/qemu into staging (2026-08-19 08:21:57 -0700)
-> 
-> are available in the Git repository at:
-> 
->    https://gitlab.com/kraxel/qemu.git tags/igvm-20260821-pull-request
-> 
-> for you to fetch changes up to e27a2b5f36a0fc913ab9a55a00f77a33ec6cc4f0:
-> 
->    Update MAINTAINERS (2026-08-20 16:40:33 +0200)
-> 
-> ----------------------------------------------------------------
-> igvm + vmlaunchupdate: allow guests supply their own igvm firmware images.
+Hi Wadim,
 
+On Thu, Aug 20, 2026 at 8:48=E2=80=AFPM Wadim Mueller <wafgo01@gmail.com> w=
+rote:
+>
+> Add support for the TI AM64x (Sitara AM6442) SoC and a board around it,
+> ``am64-virt``. The model is complete enough to run the stock TI boot chai=
+n
+> end to end:
 
-Applied, thanks.  Please update https://wiki.qemu.org/ChangeLog/11.2 as appropriate.
+Should the machine be named as something that matches an existing
+board from TI, instead of `am64-virt`, which makes me think it's just
+something we created just for emulation purpose?
 
-r~
+>
+>   ROM boot (tiboot3.bin) -> R5 SPL -> TF-A/OP-TEE -> U-Boot -> Linux SMP
+>
+> This is a resend: I posted a first RFC back in May [1] but got no feedbac=
+k
+> on it. Since then was the series rebased onto actual master, reworked for
+> style and split into reviewable pieces, so I send it out again in the hop=
+e
+> of getting some review.
+>
+> RFC because I would like feedback on the overall approach before polishin=
+g
+> further; see the open questions at the end.
+>
+> [1] https://lore.kernel.org/qemu-devel/20260528211210.74266-1-wafgo01@gma=
+il.com/
+>
+> What is modelled
+> =3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D
+>
+> The SoC is heterogeneous, and the model reflects that: a Cortex-A53
+> cluster behind a GICv3 (GIC-500) at the real addresses, the Cortex-R5F
+> MCU boot core, and the Cortex-M4F, each with their own RAT (region
+> address translation) view of the memory map.
+>
+> The interesting part is the DMSC. On real silicon it is a hidden core
+> running TI's system firmware (SYSFW) which answers TI-SCI requests for
+> clocks, power, firewalls and processor boot control from every other core=
+.
+> Rather than trying to execute the vendor blob, patch 10 models the DMSC
+> as a TI-SCI endpoint sitting on top of the secure proxy model (patch 9).
+> That is what actually starts the A53 and M4F cores when the R5 SPL asks
+> for it, and what TF-A, OP-TEE, U-Boot and Linux talk to for clock/power
+> management.
+>
+> The remaining devices (patches 4-8) are the supporting cast: the UART,
+> the K3 DMTimer, mailboxes, and register-level stubs for CTRL_MMR
+> (including the DEVSTAT boot pins), GTC, DDRSS, the SDHCI PHY wrapper and
+> the TRNG. The
+> stubs implement the handshakes, which firmware polls for, not the
+> underlying hardware.
+>
+> Patches 1-3 are prerequisites that touch existing code:
+>
+>   1-2  give the OMAP I2C model its own Kconfig symbol so it can be reused
+>        outside the OMAP1 SoC, and implement soft reset and NACK reporting
+>   3    fixes SDHCI ADMA chain processing; without it, transfer rate
+>        depends from the virtual clock instead of on the guest's
+>        programming. Patch 14 contains a qtest that fails without it.
+>
+> To patch 3: it is only needed as long as Bin Meng's SDHCI series [2] (on
+> top of the SDMA boundary fix [3]) is not merged. I posted the same fix
+> standalone in August, Bin showed then, that his series already covers
+> the AM64x case, and I have withdrawn it there [4]. It is kept here only
+> so that this series works on actual master - please drop patch 3
+> together with the pacing qtest in patch 14 as soon as [2] lands. A
+> version of that qtest for the Icicle Kit was posted separately [5].
+>
+> [2] https://patchwork.ozlabs.org/project/qemu-devel/list/?series=3D515264
+> [3] https://patchwork.ozlabs.org/project/qemu-devel/list/?series=3D513930
+> [4] https://lore.kernel.org/qemu-devel/20260810124519.34501-1-wafgo01@gma=
+il.com/
+> [5] https://lore.kernel.org/qemu-devel/20260813123210.28987-1-wafgo01@gma=
+il.com/
+>
+> Testing
+> =3D=3D=3D=3D=3D=3D=3D
+>
+> Patch 14 adds:
+>
+>   * a unit test for the combined-boot-image parser
+>   * qtests for the machine topology, GICv3 layout, SMP handling and the
+>     DMSC TI-SCI request/response path
+>   * an I2C qtest (soft reset, NACK, and a read from an at24c EEPROM which
+>     the test attaches with -device)
+>   * the SDHCI ADMA pacing reproducer
+>   * a functional test that builds a synthetic tiboot3.bin containing a
+>     bare-metal R5 payload and checks it runs from the certified entry
+>     point. Setting QEMU_TEST_TIBOOT3 boots a real image instead.
+>
+> Migration is not supported yet: none of the new devices has a VMState.
+> I left it out for the RFC, but can add it if you want it before merge.
+>
+> The series was built and tested on top of ae4f344320. Every patch builds
+> on its own, and checkpatch reports no errors.
+>
+> Open questions
+> =3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D
+>
+>   * pc-bios/dtb/am64-virt.dtb: patch 13 checks in a generated DTB (with
+>     its source) for convenience. I am not sure a machine-specific blob
+>     belongs in pc-bios; happy to drop it and have the functional test
+>     generate it with dtc instead, or drop the Linux-boot part of the test=
+.
+>
+>   * Splitting the DMSC: hw/misc/ti-dmsc.c is large because TI-SCI is
+>     large. It could be split per message class (clocks / devices /
+>     processor boot / security) if reviewers prefer, at the cost of a
+>     non-functional intermediate state.
+>
+>   * Only one of the four R5F cores is modelled. mc->max_cpus reserves
+>     room for the rest. Because the SoC realizes M4F/R5F vCPUs in addition
+>     to the A53s and every vCPU needs a TCG context slot inside
+>     smp.max_cpus, the machine defaults to the full vCPU budget. I would
+>     appreciate a better idea than the actual "fail early with an
+>     explanatory message" handling when the user passes a too-small -smp.
+>
+>   * The register-level stubs (DDRSS in particular) fake success rather
+>     than modelling the hardware. That is deliberate, but tell me if you
+>     would rather see them as plain unimplemented-device windows plus
+>     firmware quirks elsewhere.
+>
+> Wadim Mueller (14):
+>   hw/i2c/omap_i2c: add a dedicated CONFIG_OMAP_I2C symbol
+>   hw/i2c/omap_i2c: implement soft reset and NACK reporting
+>   hw/sd/sdhci: complete non-interrupt ADMA descriptor chains in one pass
+>   hw/char: add TI AM64x UART model
+>   hw/timer: add TI K3 DMTimer model
+>   hw/misc: add TI K3 CTRL_MMR, GTC, DDRSS, SDHCI PHY and TRNG models
+>   hw/misc: add TI RAT (region address translation) model
+>   hw/misc: add TI mailbox (IPC) model
+>   hw/misc: add TI K3 secure proxy model
+>   hw/misc: add TI DMSC (TI-SCI system controller) model
+>   hw/arm: add TI K3 combined boot image parser
+>   hw/arm: add TI AM64x SoC model
+>   hw/arm: add the am64-virt machine
+>   tests: add AM64x unit, qtest and functional tests
+>
+>  MAINTAINERS                                   |   22 +
+>  docs/system/arm/am64.rst                      |   74 +
+>  docs/system/target-arm.rst                    |    1 +
+>  hw/arm/Kconfig                                |   26 +
+>  hw/arm/am64-virt.c                            |  347 ++++
+>  hw/arm/k3-bootrom-parse.c                     |  250 +++
+>  hw/arm/k3-bootrom.c                           |  125 ++
+>  hw/arm/meson.build                            |    4 +
+>  hw/arm/ti-am64x.c                             | 1223 ++++++++++++
+>  hw/arm/trace-events                           |    4 +
+>  hw/char/Kconfig                               |    4 +
+>  hw/char/meson.build                           |    1 +
+>  hw/char/ti-am64-uart.c                        |  109 ++
+>  hw/i2c/Kconfig                                |    4 +
+>  hw/i2c/meson.build                            |    2 +-
+>  hw/i2c/omap_i2c.c                             |  234 ++-
+>  hw/misc/Kconfig                               |   27 +
+>  hw/misc/meson.build                           |   10 +
+>  hw/misc/ti-dmsc.c                             | 1725 +++++++++++++++++
+>  hw/misc/ti-k3-ctrlmmr.c                       |  103 +
+>  hw/misc/ti-k3-ddrss.c                         |   98 +
+>  hw/misc/ti-k3-gtc.c                           |  100 +
+>  hw/misc/ti-k3-sdhci-phy.c                     |   91 +
+>  hw/misc/ti-k3-trng.c                          |  139 ++
+>  hw/misc/ti-mailbox.c                          |  566 ++++++
+>  hw/misc/ti-rat.c                              |  290 +++
+>  hw/misc/ti-sec-proxy.c                        |  446 +++++
+>  hw/misc/trace-events                          |   62 +
+>  hw/sd/sdhci-internal.h                        |    9 +
+>  hw/sd/sdhci.c                                 |   23 +-
+>  hw/timer/Kconfig                              |    3 +
+>  hw/timer/meson.build                          |    1 +
+>  hw/timer/ti-k3-dmtimer.c                      |  177 ++
+>  include/hw/arm/k3-bootrom.h                   |   43 +
+>  include/hw/arm/ti-am64x.h                     |   86 +
+>  include/hw/char/ti-am64-uart.h                |   28 +
+>  include/hw/misc/ti-dmsc.h                     |  661 +++++++
+>  include/hw/misc/ti-k3-ctrlmmr.h               |   26 +
+>  include/hw/misc/ti-k3-ddrss.h                 |   26 +
+>  include/hw/misc/ti-k3-gtc.h                   |   23 +
+>  include/hw/misc/ti-k3-sdhci-phy.h             |   26 +
+>  include/hw/misc/ti-k3-trng.h                  |   35 +
+>  include/hw/misc/ti-mailbox.h                  |   44 +
+>  include/hw/misc/ti-rat.h                      |   51 +
+>  include/hw/misc/ti-sec-proxy.h                |  108 ++
+>  include/hw/timer/ti-k3-dmtimer.h              |   30 +
+>  pc-bios/dtb/am64-virt.dtb                     |  Bin 0 -> 6116 bytes
+>  pc-bios/dtb/am64-virt.dts                     |  292 +++
+>  tests/functional/aarch64/meson.build          |    2 +
+>  tests/functional/aarch64/test_am64_bootrom.py |  137 ++
+>  tests/qtest/am64-adma-pacing-test.c           |  243 +++
+>  tests/qtest/am64-virt-test.c                  |  502 +++++
+>  tests/qtest/meson.build                       |    1 +
+>  tests/qtest/ti-am64-i2c-test.c                |  137 ++
+>  tests/unit/meson.build                        |    1 +
+>  tests/unit/test-k3-bootrom.c                  |  263 +++
+>  56 files changed, 9060 insertions(+), 5 deletions(-)
+>  create mode 100644 docs/system/arm/am64.rst
+>  create mode 100644 hw/arm/am64-virt.c
+>  create mode 100644 hw/arm/k3-bootrom-parse.c
+>  create mode 100644 hw/arm/k3-bootrom.c
+>  create mode 100644 hw/arm/ti-am64x.c
+>  create mode 100644 hw/char/ti-am64-uart.c
+>  create mode 100644 hw/misc/ti-dmsc.c
+>  create mode 100644 hw/misc/ti-k3-ctrlmmr.c
+>  create mode 100644 hw/misc/ti-k3-ddrss.c
+>  create mode 100644 hw/misc/ti-k3-gtc.c
+>  create mode 100644 hw/misc/ti-k3-sdhci-phy.c
+>  create mode 100644 hw/misc/ti-k3-trng.c
+>  create mode 100644 hw/misc/ti-mailbox.c
+>  create mode 100644 hw/misc/ti-rat.c
+>  create mode 100644 hw/misc/ti-sec-proxy.c
+>  create mode 100644 hw/timer/ti-k3-dmtimer.c
+>  create mode 100644 include/hw/arm/k3-bootrom.h
+>  create mode 100644 include/hw/arm/ti-am64x.h
+>  create mode 100644 include/hw/char/ti-am64-uart.h
+>  create mode 100644 include/hw/misc/ti-dmsc.h
+>  create mode 100644 include/hw/misc/ti-k3-ctrlmmr.h
+>  create mode 100644 include/hw/misc/ti-k3-ddrss.h
+>  create mode 100644 include/hw/misc/ti-k3-gtc.h
+>  create mode 100644 include/hw/misc/ti-k3-sdhci-phy.h
+>  create mode 100644 include/hw/misc/ti-k3-trng.h
+>  create mode 100644 include/hw/misc/ti-mailbox.h
+>  create mode 100644 include/hw/misc/ti-rat.h
+>  create mode 100644 include/hw/misc/ti-sec-proxy.h
+>  create mode 100644 include/hw/timer/ti-k3-dmtimer.h
+>  create mode 100644 pc-bios/dtb/am64-virt.dtb
+>  create mode 100644 pc-bios/dtb/am64-virt.dts
+>  create mode 100644 tests/functional/aarch64/test_am64_bootrom.py
+>  create mode 100644 tests/qtest/am64-adma-pacing-test.c
+>  create mode 100644 tests/qtest/am64-virt-test.c
+>  create mode 100644 tests/qtest/ti-am64-i2c-test.c
+>  create mode 100644 tests/unit/test-k3-bootrom.c
+>
+>
+> base-commit: ae4f3443209ab154b48b706a146e5f557ab147cb
+
+Regards,
+Bin
 

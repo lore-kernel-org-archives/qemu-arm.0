@@ -4,122 +4,113 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0FD05C5DF8C
-	for <qemu-arm@archiver.kernel.org>; Sat, 22 Aug 2026 12:59:15 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9FE2DC5DF97
+	for <qemu-arm@archiver.kernel.org>; Sat, 22 Aug 2026 16:55:27 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wxlJN-0000v7-UH; Sat, 22 Aug 2026 08:59:01 -0400
+	id 1wxozr-0002h1-2I; Sat, 22 Aug 2026 12:55:07 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1wxlJM-0000ul-Iy
- for qemu-arm@nongnu.org; Sat, 22 Aug 2026 08:59:00 -0400
-Received: from smtpout10.mo536.mail-out.ovh.net ([51.210.91.19])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1wxlJK-000448-77
- for qemu-arm@nongnu.org; Sat, 22 Aug 2026 08:59:00 -0400
-Received: from director2.derp.mail-out.ovh.net
- (director2.derp.mail-out.ovh.net [79.137.60.36])
- by mo536.mail-out.ovh.net (Postfix) with ESMTPS id 4hRy0k72mSz87xv;
- Sat, 22 Aug 2026 12:58:46 +0000 (UTC)
-Received: from director2.derp.mail-out.ovh.net
- (director2.derp.mail-out.ovh.net. [127.0.0.1])
- by director2.derp.mail-out.ovh.net (inspect_sender_mail_agent) with SMTP
- for <jamin_lin@aspeedtech.com>; Sat, 22 Aug 2026 12:58:46 +0000 (UTC)
-Received: from mta11.priv.ovhmail-u2.ea.mail.ovh.net (unknown [10.110.0.206])
- by director2.derp.mail-out.ovh.net (Postfix) with ESMTPS id
- 4hRy0k2B1wz1xq5; Sat, 22 Aug 2026 12:58:46 +0000 (UTC)
-Received: from kaod.org (unknown [10.1.6.3])
- (Authenticated sender: clg@kaod.org)
- by mta11.priv.ovhmail-u2.ea.mail.ovh.net (Postfix) with ESMTPSA id
- C2E392403F6C; Sat, 22 Aug 2026 12:58:44 +0000 (UTC)
-Authentication-Results: garm.ovh; auth=pass
- (GARM-114S0083f942e2d-af53-4753-b6ea-97a1464eeca8,
- E8B800FEFED6146C3308969C34F18DEAE428D2DF) smtp.auth=clg@kaod.org
-X-OVh-ClientIp: 2.10.174.70
-Message-ID: <5f045be6-b0c5-4332-b8dc-03bb25262679@kaod.org>
-Date: Sat, 22 Aug 2026 14:58:43 +0200
+ (Exim 4.90_1) (envelope-from <163wangjack@gmail.com>)
+ id 1wxozp-0002gH-I1
+ for qemu-arm@nongnu.org; Sat, 22 Aug 2026 12:55:05 -0400
+Received: from mail-pj1-x1031.google.com ([2607:f8b0:4864:20::1031])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <163wangjack@gmail.com>)
+ id 1wxozm-0006iB-Qg
+ for qemu-arm@nongnu.org; Sat, 22 Aug 2026 12:55:05 -0400
+Received: by mail-pj1-x1031.google.com with SMTP id
+ 98e67ed59e1d1-38dc4553f62so2688845a91.0
+ for <qemu-arm@nongnu.org>; Sat, 22 Aug 2026 09:55:02 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=gmail.com; s=20251104; t=1787417701; x=1788022501; darn=nongnu.org;
+ h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
+ :content-type:mime-version:subject:date:from:from:to:cc:subject:date
+ :message-id:reply-to:content-type;
+ bh=If1q46hsy+fNHIxv/NY6fJEaikfzuAFWzoaODXwM524=;
+ b=YwwjKUVSxgkRDZopTFtzspcU/6JvlMiwvtcnJOrP49SFSKkTcvwqJNuKMh7d9LRWtB
+ AqsTlXx1ZBdXT+GG95/nWvL+tH7KLtSn1rt49HtJt8yOjwrhXPop/CGB4hzuNnLX/l2R
+ 3d8VqqskW0byqF4QJPsosCPwX+mwicZrElnr8gLD9YQQmSEjgMZ+6XSfQmXaF0i+nRZi
+ PlM2lvRuk/XUZd+3FYmx0gX9QkMNGhGzy/2kIw2tQt/lyIQLNSbJjX/NYUg0dX/yoZLs
+ diP2tizVxU7vpDvIyHSWPyimBz95qcjrq8V6mX3gygO1lEKT8K8bZre84m40SaosGr6g
+ loTg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20251104; t=1787417701; x=1788022501;
+ h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
+ :content-type:mime-version:subject:date:from:x-gm-gg
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
+ :content-type;
+ bh=If1q46hsy+fNHIxv/NY6fJEaikfzuAFWzoaODXwM524=;
+ b=NWNS0ZjJ/EZLPB7icbJH5DASqz/zEh6e5kizPpNhjdCYNYD10I5bcxv57nYgg6CBia
+ rI/patPrzU+o6nrRkmrSBK0VnH1e8pvOz0Fqz/CczAetb7IvzXnoXJ82jyxZbu3ltN9G
+ fd640R1rkiGgJqgRvw2w2d5no1wDhsz2S6TSRa+UsRMS5dVcwVhmJafN0U/MZYpon+DO
+ RXqoLEcw5MFJ13FLzdRaZml3rF7lHAVSFz7dkXU4UodjyfO1fPhsznwRxYdP4pbjCXNj
+ DXHlRFaEtzpUs4I6m5ccsMBd8R1Gug9Err2n5M8VZLx2Qa8N3ho4k+/MXLHxI+RkGEPZ
+ 6wiQ==
+X-Forwarded-Encrypted: i=1;
+ AHgh+Rr8sNnCno1bh3tImm4St13gt4Trx+G1vxxl7I0GhQ7qkyEMJ4pwtUQCJz0g6OeQ1AQ5T5mNc1S4jg==@nongnu.org
+X-Gm-Message-State: AFuF++lhUpfNXiu8qj8xc4Eh3Kg/N09VP1YTgeiWyAwKZ0SdDUUFXFGj
+ XGgZ0Av7EN+EQiV5Q/0TPYenbcq/TAG4qgq3nKI7j2KZkgjfNPXuyUAA
+X-Gm-Gg: AR+sD10FVGj9b7jBCsd8Uv6K1JiC2QDCi1OtDRdPWgNcO81q8PBk82tJmdTC7wwFNqn
+ EH4YgXGKY/PGKI5mc7mDMKdAUIijHZ6hhzHhVIlW/Zxgld+qq2HVu6DjYR+fN6LBIcTkcO9P0YU
+ Vyj56YBKC04MvzKT60INjunE6IY2TX6iQRUHzEqynmIUF698VG0UM8punXMhPdkyLfoKBtssV9/
+ mhj/pY4xF4/zsje9Ywv2id3uHaMJ9dR3uPQ0EmctzGo4wUwegUdoISwLhfo0CiG0Ms2KSDTvx0a
+ aXbwZvGB9dwfsZrLwjBQw9qOYvzwcBZpmVanuo/ufeRGyOBl+sYFL/+ZbtYimlGZijLEfIEBehs
+ SJUdTeN3iyvA1BUCK7yND+4LHDxOIcHVM9p6Cgz7xP/AyzTnfQEYBrsuAP/Lvm67/0V/f4YRspI
+ q9kspG4eH0NseJnmEyrSsUi3yB/TarimXwt0/7V75A0Atg/2rgZRr4ePTIJ6vsWjIjPJvSlpiWj
+ 1pKhlIBlv0o4xg4ExBX+pcuE6WIombrXmr+Nsehk4rV0hiYL476ucg50LwhLvzI/gRbz+0=
+X-Received: by 2002:a17:90b:384d:b0:38e:6aa7:68ad with SMTP id
+ 98e67ed59e1d1-395c3503b04mr23027179a91.5.1787417701124; 
+ Sat, 22 Aug 2026 09:55:01 -0700 (PDT)
+Received: from
+ 1.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.ip6.arpa
+ ([117.55.237.216]) by smtp.gmail.com with ESMTPSA id
+ 5a478bee46e88-327f91d2d1esm8688456eec.17.2026.08.22.09.54.57
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Sat, 22 Aug 2026 09:55:00 -0700 (PDT)
+From: Jack Wang <163wangjack@gmail.com>
+Date: Sun, 23 Aug 2026 00:54:38 +0800
+Subject: [PATCH RFC v2 4/5] tests/qtest: add STM32F100 GPIO tests
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v1] hw/misc/aspeed_scu: Support the second random number
- generator
-To: Jamin Lin <jamin_lin@aspeedtech.com>,
- Peter Maydell <peter.maydell@linaro.org>,
- Steven Lee <steven_lee@aspeedtech.com>, Troy Lee <leetroy@gmail.com>,
- Kane Chen <kane_chen@aspeedtech.com>,
- Andrew Jeffery <andrew@codeconstruct.com.au>, Joel Stanley <joel@jms.id.au>,
- "open list:ASPEED BMCs" <qemu-arm@nongnu.org>,
- "open list:All patches CC here" <qemu-devel@nongnu.org>
-Cc: Troy Lee <troy_lee@aspeedtech.com>
-References: <20260821080408.2503092-1-jamin_lin@aspeedtech.com>
-From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
-Content-Language: en-US, fr
-Autocrypt: addr=clg@kaod.org; keydata=
- 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
-In-Reply-To: <20260821080408.2503092-1-jamin_lin@aspeedtech.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-x-ovh-tracer-id: 11314731116522941451
-X-VR-SPAMSTATE: OK
-X-VR-SPAMSCORE: -100
-X-VR-SPAMCAUSE: dmFkZTFiu4RMswsgExA3Kh/2FF96p2+jVnc4SCoFAiFAlY0UDYv+0WUXmDs+/2XE+1Oq9IDA5z0ddV8hjPWUdtK/yNoTeiuh61TuQtBcwloPcvk/IG+ralU9BdUORgq7NZ2mIvzCuNlNzywHwDKES7PCDZo/ABF4epWQcNWrWsRON0zmLOMVW0Sd06rRJSDptE3hVYjLlSNaE8tKel3nOfqIZDYf+aDUohufsgws2RZgEj/hkB8ooaPbaSs+/9QkkFZ9txdDlDfHCrn3D0stIzejofzbxxmPXHRKpWDuLspnt5+MxXuZKwEOtvsPWjNibgNOax5IT6CBCxArNeSga4xtnJb+XwHFBrq0EZ37n84PlwLXH1EAG0uIPVPnXQ+7qjRhYCKvuy35rQ/GsQMe5yHWyEU5GOx1Z8+SiDam2wGy4FRi/8Lwmixiv63I2E2Pgw3Z7Nxk32hokKLMOOViegM2h0IEsW78CTUQ0ff/gl0xRuRqCs1EghF+NnmECX3hLL5KZdFU6whRysVM8/eAHrd+F9zxhi1O+ymBagcRyQsppeUWCf0r4/nyzHoZcqymbZRCfS2Qx6WssRTJbYfpLG4OyVtRViyayis4XbX2a383N0gxHIBMEzqMRLpsmnnsuTFiQpf1YI4FI0vHNeQKy3LGBJ27OFnN+YP+HE0OXEoAwT3LJQ
-DKIM-Signature: a=rsa-sha256; bh=91xHvCxL6qS1hHNxOp74gV1uq2e5F9hh3DUAAhVqCrc=; 
- c=relaxed/relaxed; d=kaod.org; h=From; s=ovhmo393970-selector1;
- t=1787403528; v=1;
- b=qV8LY6R1o6Sn0k8Ryc89y9X6snb090T6ZU8oBFKslyjPHvJsyZGw2vDan7IVQbG1rXwt3NIG
- lUCDPnfpUfKMGZJtoR0rGhwW4J2Oih31YeeHfyPsNHfRISusqypOZlukvOYarWYKWPubRY4/ey0
- I38FDxJUIqih2+y1q7s9brl+fr/McZjUFuC8qSIA0Uzu87jHNdQKVTXWSbdi/bU4PZz7akZI8zE
- XS+9qOnPOKh/PzONeD5CYH4M9PScN1LbiZAIkfYvql0rYFlY8RHElf7XvXYK501X0a9ev5MJ7B7
- BywiJo6VhcWBiHAhNjtHYEZXKpJgYdgl/LA/MMbPE3edQ==
-Received-SPF: pass client-ip=51.210.91.19; envelope-from=clg@kaod.org;
- helo=smtpout10.mo536.mail-out.ovh.net
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+Message-Id: <20260823-stm32f100-gpio-v2-final-v2-4-02e31f589dd0@gmail.com>
+References: <20260823-stm32f100-gpio-v2-final-v2-0-02e31f589dd0@gmail.com>
+In-Reply-To: <20260823-stm32f100-gpio-v2-final-v2-0-02e31f589dd0@gmail.com>
+To: qemu-devel@nongnu.org
+Cc: Paolo Bonzini <pbonzini@redhat.com>, qemu-rust@nongnu.org, 
+ Peter Maydell <peter.maydell@linaro.org>, 
+ Alexandre Iooss <erdnaxe@crans.org>, 
+ Alistair Francis <alistair@alistair23.me>, qemu-arm@nongnu.org, 
+ Fabiano Rosas <farosas@suse.de>, Laurent Vivier <lvivier@redhat.com>
+X-Mailer: b4 0.16.0
+X-Developer-Signature: v=1; a=openpgp-sha256; l=13486;
+ i=163wangjack@gmail.com; h=from:subject:message-id;
+ bh=IE9tGBd8c/9oqC9mEVDgI2WpJzFdjT8+Z1kPz4HWt/Q=;
+ b=owEBiQJ2/ZANAwAIARVa4Yx0u1BNAcsmYgBqidRSgcyTvc9sHN8+JjttDh8I0qgno3F5pYC6e
+ TelsLa0oI+JAk8EAAEIADkWIQQlXkw4qdbVYyKFm20VWuGMdLtQTQUCaonUUhsUgAAAAAAEAA5t
+ YW51MiwyLjUrMS4xMiwwLDMACgkQFVrhjHS7UE3rWA/+Kfm1lQY2dnyVDk7bvU4NH/+X6sVQfRN
+ sateym7tVJWhlqA1vcpMS0q8TBHePGwlOxvmYCw+xgvvks9SytK6sHJDHrnwroli8eM1U90MrR0
+ 07IBa0NSxwNVKcdYuQBY30Ak8vgyIQD+kOBXW6lsoDYYydB26fyDgBWmm8D7WRLKuB5OMycjXhO
+ DdQ3TPSwULw8ex8VO4Zjikk8icO/XAyP1lvEk9K8uTo/d8QnM4u7OGnUxDMmIq4PzxGoOgFNn73
+ ejZ67w+EZ0t/se3gxVURaOxECHCc+mKgBgVTTzqYTBAfVkyc+pV1d1Y7S3iWOk2kWEYMLjqph+v
+ 8uX7W7u+SFKvYGcYDXfsAUjMkRuvOpk+JKUloVrJKD8qn8w1bLr7NSsrF7R1QCblQN3pFzDDLlW
+ AvYnuCfdsNaXEWKggyx6wwLbMeQidQASTc05aByj6/FcuolHxIbf9Bpl/rzGq+GoVVI8d9RLaVv
+ 52KCWdJ/BmgJQ7hsD52nNA1KIOCyZePEW5lMsAlCYZ0EU1R/SDSI+VXjsyli+hvG40I6rs2WIdh
+ Yag26ziNOumGaC26tBmUZg0Q/GOQ58oNFH1MW1BVmQ/Sri1p0X1RT8MYWyuELmlGQG2KU5c/V4n
+ AculGMh3enxQIitfDa3ACXRvoZl3gkFiH83ZQgDFddUNMGQc8vEo=
+X-Developer-Key: i=163wangjack@gmail.com; a=openpgp;
+ fpr=255E4C38A9D6D56322859B6D155AE18C74BB504D
+Received-SPF: pass client-ip=2607:f8b0:4864:20::1031;
+ envelope-from=163wangjack@gmail.com; helo=mail-pj1-x1031.google.com
+X-Spam_score_int: -13
+X-Spam_score: -1.4
+X-Spam_bar: -
+X-Spam_report: (-1.4 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ FROM_STARTS_WITH_NUMS=0.738, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -135,96 +126,428 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On 8/21/26 10:04, Jamin Lin wrote:
-> Implement SCU530 and SCU534, the control and data registers of the
-> AST2600 second random number generator.
-> 
-> Per the AST2600 datasheet, only SCU530[5:0] are writable and the
-> read-only SCU530[31] reports that random data is valid, which is only
-> meaningful while SCU530[4] is set. Report it as set whenever SCU530[4]
-> is, and initialise SCU530 to its datasheet reset value.
-> 
-> Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
-> ---
->   hw/misc/aspeed_scu.c | 18 +++++++++++++++++-
->   1 file changed, 17 insertions(+), 1 deletion(-)
-> 
-> diff --git a/hw/misc/aspeed_scu.c b/hw/misc/aspeed_scu.c
-> index ca93c3699d..ca79a93b15 100644
-> --- a/hw/misc/aspeed_scu.c
-> +++ b/hw/misc/aspeed_scu.c
-> @@ -130,6 +130,10 @@
->   #define AST2600_HW_STRAP2_PROT    TO_REG(0x518)
->   #define AST2600_RNG_CTRL          TO_REG(0x520)
->   #define AST2600_RNG_DATA          TO_REG(0x524)
-> +#define AST2600_RNG2_CTRL         TO_REG(0x530)
-> +#define AST2600_RNG2_CTRL_MASK    0x3F
-> +#define AST2600_RNG2_CTRL_VLD     BIT(31)
-> +#define AST2600_RNG2_DATA         TO_REG(0x534)
->   #define AST2600_CHIP_ID0          TO_REG(0x5B0)
->   #define AST2600_CHIP_ID1          TO_REG(0x5B4)
->   
-> @@ -679,13 +683,14 @@ static uint64_t aspeed_ast2600_scu_read(void *opaque, hwaddr offset,
->           /* PLLs are always "locked" */
->           return s->regs[reg] | BIT(31);
->       case AST2600_RNG_DATA:
-> +    case AST2600_RNG2_DATA:
->           /*
->            * On hardware, RNG_DATA works regardless of the state of the
->            * enable bit in RNG_CTRL
->            *
->            * TODO: Check this is true for ast2600
->            */
-> -        s->regs[AST2600_RNG_DATA] = aspeed_scu_get_random();
-> +        s->regs[reg] = aspeed_scu_get_random();
->           break;
->       }
->   
-> @@ -756,6 +761,7 @@ static void aspeed_ast2600_scu_write(void *opaque, hwaddr offset,
->           return;
->   
->       case AST2600_RNG_DATA:
-> +    case AST2600_RNG2_DATA:
->       case AST2600_SILICON_REV:
->       case AST2600_SILICON_REV2:
->       case AST2600_CHIP_ID0:
-> @@ -765,6 +771,14 @@ static void aspeed_ast2600_scu_write(void *opaque, hwaddr offset,
->                         "%s: Write to read-only offset 0x%" HWADDR_PRIx "\n",
->                         __func__, offset);
->           return;
-> +    case AST2600_RNG2_CTRL:
-> +        data &= AST2600_RNG2_CTRL_MASK;
-> +        if (data & BIT(4)) {
-> +            data |= AST2600_RNG2_CTRL_VLD;
-> +        } else {
-> +            data &= ~AST2600_RNG2_CTRL_VLD;
-> +        }
-> +        break;
->       }
->   
->       s->regs[reg] = data;
-> @@ -803,6 +817,7 @@ static const uint32_t ast2600_a3_resets[ASPEED_AST2600_SCU_NR_REGS] = {
->       [AST2600_HUARTCLK]          = 0x000145C0,
->       [AST2600_CHIP_ID0]          = 0x1234ABCD,
->       [AST2600_CHIP_ID1]          = 0x88884444,
-> +    [AST2600_RNG2_CTRL]         = 0x8000000E,
->   };
->   
->   static void aspeed_ast2600_scu_reset_hold(Object *obj, ResetType type)
-> @@ -1122,6 +1137,7 @@ static void aspeed_ast1030_scu_reset_hold(Object *obj, ResetType type)
->       s->regs[AST2600_HW_STRAP1] = s->hw_strap1;
->       s->regs[AST2600_HW_STRAP2] = s->hw_strap2;
->       s->regs[PROT_KEY] = s->hw_prot_key;
-> +    s->regs[AST2600_RNG2_CTRL] = 0x8000000E;
->   }
->   
->   static void aspeed_1030_scu_class_init(ObjectClass *klass, const void *data)
+Add integration coverage for the STM32F1xx GPIO device on the stm32vldiscovery machine and its five GPIOA-E instances.
 
-Reviewed-by: Cédric Le Goater <clg@kaod.org>
+Retain the v1 register and GPIO-line coverage and add focused cases for analog input, released open-drain sampling, AF-output isolation, reset output deassertion, word-only MMIO and explicitly unimplemented LCKR behavior.
 
-Thanks,
+When the Rust device is unavailable, keep a machine-start smoke test for the unimplemented-device fallback.
 
-C.
+Signed-off-by: Jack Wang <163wangjack@gmail.com>
+---
+ tests/qtest/meson.build           |   4 +
+ tests/qtest/stm32f100_gpio-test.c | 380 ++++++++++++++++++++++++++++++++++++++
+ 2 files changed, 384 insertions(+)
 
+diff --git a/tests/qtest/meson.build b/tests/qtest/meson.build
+index 12ed368997..d05ce065cd 100644
+--- a/tests/qtest/meson.build
++++ b/tests/qtest/meson.build
+@@ -239,6 +239,9 @@ qtests_stm32l4x5 = \
+    'stm32l4x5_gpio-test',
+    'stm32l4x5_usart-test']
+ 
++qtests_stm32f100 = \
++  ['stm32f100_gpio-test']
++
+ qtests_arm = \
+   (config_all_devices.has_key('CONFIG_MPS2') ? ['sse-timer-test'] : []) + \
+   (config_all_devices.has_key('CONFIG_CMSDK_APB_DUALTIMER') ? ['cmsdk-apb-dualtimer-test'] : []) + \
+@@ -254,6 +257,7 @@ qtests_arm = \
+   (config_all_devices.has_key('CONFIG_VEXPRESS') ? ['test-arm-mptimer'] : []) + \
+   (config_all_devices.has_key('CONFIG_MICROBIT') ? ['microbit-test'] : []) + \
+   (config_all_devices.has_key('CONFIG_STM32L4X5_SOC') ? qtests_stm32l4x5 : []) + \
++  (config_all_devices.has_key('CONFIG_STM32F100_SOC') ? qtests_stm32f100 : []) + \
+   (config_all_devices.has_key('CONFIG_FSI_APB2OPB_ASPEED') ? ['aspeed_fsi-test'] : []) + \
+   (config_all_devices.has_key('CONFIG_CAN_FLEXCAN') ? ['flexcan-test'] : []) + \
+   (config_all_devices.has_key('CONFIG_STM32L4X5_SOC') and
+diff --git a/tests/qtest/stm32f100_gpio-test.c b/tests/qtest/stm32f100_gpio-test.c
+new file mode 100644
+index 0000000000..ea8483c1e4
+--- /dev/null
++++ b/tests/qtest/stm32f100_gpio-test.c
+@@ -0,0 +1,380 @@
++/*
++ * QTest testcase for STM32F100 GPIO (Rust device "stm32f1xx-gpio-rust")
++ *
++ * SPDX-License-Identifier: GPL-2.0-or-later
++ *
++ * Copyright (c) 2026 QEMU contributors
++ *
++ * The STM32F1 GPIO differs from the L4 family: each pin is configured by a
++ * 4-bit field MODE[1:0]+CNF[1:0] packed into CRL (pins 0-7) and CRH (pins
++ * 8-15), instead of the separate MODER/OTYPER/PUPDR registers of the L4.
++ * See ST RM0041 for the register map and reset values.
++ */
++
++#include "qemu/osdep.h"
++#include "libqtest-single.h"
++
++#define GPIO_BASE_ADDR 0x40010800
++#define GPIO_SIZE      0x400
++#define NUM_GPIOS      5
++#define NUM_GPIO_PINS  16
++
++#define GPIO_A 0x40010800
++#define GPIO_B 0x40010C00
++#define GPIO_C 0x40011000
++#define GPIO_D 0x40011400
++#define GPIO_E 0x40011800
++
++#define CRL  0x00
++#define CRH  0x04
++#define IDR  0x08
++#define ODR  0x0C
++#define BSRR 0x10
++#define BRR  0x14
++#define LCKR 0x18
++
++#define CFG_INPUT_FLOATING   0x4
++#define CFG_INPUT_ANALOG     0x0
++#define CFG_INPUT_PULL       0x8
++#define CFG_OUTPUT_PP        0x1
++#define CFG_OUTPUT_OD        0x5
++#define CFG_AF_PP            0x9
++
++#define CR_RESET 0x44444444
++
++static uint32_t gpio_readl(unsigned int gpio, unsigned int offset)
++{
++    return readl(gpio + offset);
++}
++
++static void gpio_writel(unsigned int gpio, unsigned int offset, uint32_t value)
++{
++    writel(gpio + offset, value);
++}
++
++static void gpio_set_config(unsigned int gpio, unsigned int pin, uint8_t cfg)
++{
++    unsigned int reg = (pin < 8) ? CRL : CRH;
++    unsigned int shift = (pin % 8) * 4;
++    uint32_t mask = ~(0xFu << shift);
++    uint32_t val = (gpio_readl(gpio, reg) & mask) | ((uint32_t)cfg << shift);
++    gpio_writel(gpio, reg, val);
++}
++
++static void gpio_set_odr_bit(unsigned int gpio, unsigned int pin,
++                             uint32_t value)
++{
++    uint32_t mask = ~(0x1u << pin);
++    gpio_writel(gpio, ODR, (gpio_readl(gpio, ODR) & mask) | (value << pin));
++}
++
++static unsigned int get_gpio_id(uint32_t gpio_addr)
++{
++    return (gpio_addr - GPIO_BASE_ADDR) / GPIO_SIZE;
++}
++
++static const char *gpio_path(uint32_t gpio)
++{
++    static char buf[32];
++    snprintf(buf, sizeof(buf), "/machine/soc/gpio%c", 'a' + get_gpio_id(gpio));
++    return buf;
++}
++
++static void gpio_set_irq(unsigned int gpio, int num, int level)
++{
++    qtest_set_irq_in(global_qtest, gpio_path(gpio), NULL, num, level);
++}
++
++/* qtest can intercept one device's outputs per session; use GPIOA. */
++static void intercept_out(unsigned int gpio)
++{
++    qtest_irq_intercept_out(global_qtest, gpio_path(gpio));
++}
++
++static void reset_gpio(unsigned int gpio)
++{
++    gpio_writel(gpio, CRL, CR_RESET);
++    gpio_writel(gpio, CRH, CR_RESET);
++    gpio_writel(gpio, ODR, 0);
++}
++
++static void test_reset_values(void)
++{
++    gpio_writel(GPIO_A, CRL, 0xDEADBEEF);
++    gpio_writel(GPIO_A, CRH, 0xDEADBEEF);
++    gpio_writel(GPIO_A, ODR, 0xDEADBEEF);
++
++    gpio_writel(GPIO_C, CRL, 0x12345678);
++    gpio_writel(GPIO_C, ODR, 0x0000FFFF);
++
++    qtest_system_reset(global_qtest);
++
++    g_assert_cmphex(gpio_readl(GPIO_A, CRL), ==, CR_RESET);
++    g_assert_cmphex(gpio_readl(GPIO_A, CRH), ==, CR_RESET);
++    g_assert_cmphex(gpio_readl(GPIO_A, IDR), ==, 0);
++    g_assert_cmphex(gpio_readl(GPIO_A, ODR), ==, 0);
++
++    g_assert_cmphex(gpio_readl(GPIO_C, CRL), ==, CR_RESET);
++    g_assert_cmphex(gpio_readl(GPIO_C, IDR), ==, 0);
++    g_assert_cmphex(gpio_readl(GPIO_C, ODR), ==, 0);
++}
++
++static void test_output_mode(const void *data)
++{
++    unsigned int pin = (uintptr_t)data & 0xF;
++    uint32_t gpio = (uintptr_t)data & ~(GPIO_SIZE - 1);
++    bool observe = (gpio == GPIO_A);
++
++    reset_gpio(gpio);
++    if (observe) {
++        intercept_out(gpio);
++    }
++
++    gpio_set_odr_bit(gpio, pin, 1);
++    g_assert_cmphex(gpio_readl(gpio, IDR), ==, 0);
++    if (observe) {
++        g_assert_false(get_irq(pin));
++    }
++
++    gpio_set_config(gpio, pin, CFG_OUTPUT_PP);
++    g_assert_cmphex(gpio_readl(gpio, IDR), ==, (1u << pin));
++    if (observe) {
++        g_assert_true(get_irq(pin));
++    }
++
++    gpio_set_odr_bit(gpio, pin, 0);
++    g_assert_cmphex(gpio_readl(gpio, IDR), ==, 0);
++    if (observe) {
++        g_assert_false(get_irq(pin));
++    }
++
++    reset_gpio(gpio);
++}
++
++static void test_input_mode(const void *data)
++{
++    unsigned int pin = (uintptr_t)data & 0xF;
++    uint32_t gpio = (uintptr_t)data & ~(GPIO_SIZE - 1);
++    bool observe = (gpio == GPIO_A);
++
++    reset_gpio(gpio);
++    if (observe) {
++        intercept_out(gpio);
++    }
++
++    gpio_set_config(gpio, pin, CFG_INPUT_FLOATING);
++
++    gpio_set_irq(gpio, pin, 1);
++    g_assert_cmphex(gpio_readl(gpio, IDR), ==, (1u << pin));
++    if (observe) {
++        g_assert_true(get_irq(pin));
++    }
++
++    gpio_set_irq(gpio, pin, 0);
++    g_assert_cmphex(gpio_readl(gpio, IDR), ==, 0);
++    if (observe) {
++        g_assert_false(get_irq(pin));
++    }
++
++    reset_gpio(gpio);
++}
++
++static void test_pull_up_down(const void *data)
++{
++    unsigned int pin = (uintptr_t)data & 0xF;
++    uint32_t gpio = (uintptr_t)data & ~(GPIO_SIZE - 1);
++
++    reset_gpio(gpio);
++    intercept_out(gpio);
++
++    gpio_set_odr_bit(gpio, pin, 1);
++    gpio_set_config(gpio, pin, CFG_INPUT_PULL);
++    g_assert_cmphex(gpio_readl(gpio, IDR), ==, (1u << pin));
++    g_assert_true(get_irq(pin));
++
++    gpio_set_odr_bit(gpio, pin, 0);
++    g_assert_cmphex(gpio_readl(gpio, IDR), ==, 0);
++    g_assert_false(get_irq(pin));
++
++    reset_gpio(gpio);
++}
++
++static void test_bsrr_brr(const void *data)
++{
++    unsigned int pin = (uintptr_t)data & 0xF;
++    uint32_t gpio = (uintptr_t)data & ~(GPIO_SIZE - 1);
++
++    reset_gpio(gpio);
++
++    gpio_writel(gpio, BSRR, (1u << pin));
++    g_assert_cmphex(gpio_readl(gpio, ODR), ==, (1u << pin));
++
++    gpio_writel(gpio, BSRR, (1u << (pin + 16)));
++    g_assert_cmphex(gpio_readl(gpio, ODR), ==, 0);
++
++    gpio_writel(gpio, BSRR, (1u << pin));
++    g_assert_cmphex(gpio_readl(gpio, ODR), ==, (1u << pin));
++
++    gpio_writel(gpio, BRR, (1u << pin));
++    g_assert_cmphex(gpio_readl(gpio, ODR), ==, 0);
++
++    /* Set has priority over reset in BSRR. */
++    gpio_writel(gpio, BSRR, (1u << pin) | (1u << (pin + 16)));
++    g_assert_cmphex(gpio_readl(gpio, ODR), ==, (1u << pin));
++
++    reset_gpio(gpio);
++}
++
++static void test_push_pull_disconnect(const void *data)
++{
++    unsigned int pin = (uintptr_t)data & 0xF;
++    uint32_t gpio = (uintptr_t)data & ~(GPIO_SIZE - 1);
++
++    reset_gpio(gpio);
++
++    gpio_set_config(gpio, pin, CFG_INPUT_FLOATING);
++    gpio_set_irq(gpio, pin, 1);
++    g_assert_cmphex(gpio_readl(gpio, IDR), ==, (1u << pin));
++
++    gpio_set_odr_bit(gpio, pin, 0);
++    gpio_set_config(gpio, pin, CFG_OUTPUT_PP);
++    g_assert_cmphex(gpio_readl(gpio, IDR), ==, 0);
++
++    gpio_set_irq(gpio, pin, 1);
++    g_assert_cmphex(gpio_readl(gpio, IDR), ==, 0);
++
++    reset_gpio(gpio);
++}
++
++static void test_analog_input(void)
++{
++    reset_gpio(GPIO_A);
++    gpio_set_config(GPIO_A, 0, CFG_INPUT_ANALOG);
++    gpio_set_irq(GPIO_A, 0, 1);
++
++    g_assert_cmphex(gpio_readl(GPIO_A, IDR) & 1, ==, 0);
++
++    reset_gpio(GPIO_A);
++}
++
++static void test_open_drain_released(void)
++{
++    reset_gpio(GPIO_A);
++    gpio_set_config(GPIO_A, 1, CFG_OUTPUT_OD);
++    gpio_set_odr_bit(GPIO_A, 1, 1);
++
++    gpio_set_irq(GPIO_A, 1, 1);
++    g_assert_cmphex(gpio_readl(GPIO_A, IDR) & (1u << 1), ==, 1u << 1);
++
++    gpio_set_irq(GPIO_A, 1, 0);
++    g_assert_cmphex(gpio_readl(GPIO_A, IDR) & (1u << 1), ==, 0);
++
++    reset_gpio(GPIO_A);
++}
++
++static void test_af_output_not_driven_by_odr(void)
++{
++    reset_gpio(GPIO_A);
++    gpio_set_config(GPIO_A, 2, CFG_AF_PP);
++    gpio_set_odr_bit(GPIO_A, 2, 1);
++
++    g_assert_cmphex(gpio_readl(GPIO_A, IDR) & (1u << 2), ==, 0);
++
++    reset_gpio(GPIO_A);
++}
++
++static void test_reset_deasserts_output(void)
++{
++    reset_gpio(GPIO_A);
++    intercept_out(GPIO_A);
++    gpio_set_config(GPIO_A, 3, CFG_OUTPUT_PP);
++    gpio_set_odr_bit(GPIO_A, 3, 1);
++    g_assert_true(get_irq(3));
++
++    qtest_system_reset(global_qtest);
++
++    g_assert_false(get_irq(3));
++    g_assert_cmphex(gpio_readl(GPIO_A, ODR), ==, 0);
++}
++
++static void test_lckr_unimplemented(void)
++{
++    reset_gpio(GPIO_A);
++    gpio_writel(GPIO_A, LCKR, 0x00010001);
++    g_assert_cmphex(gpio_readl(GPIO_A, LCKR), ==, 0);
++}
++
++static void test_word_access_only(void)
++{
++    gpio_writel(GPIO_A, ODR, 0x55aa);
++
++    writeb(GPIO_A + ODR, 0xff);
++    g_assert_cmphex(gpio_readl(GPIO_A, ODR), ==, 0x55aa);
++
++    writew(GPIO_A + ODR, 0xffff);
++    g_assert_cmphex(gpio_readl(GPIO_A, ODR), ==, 0x55aa);
++
++    writel(GPIO_A + ODR + 1, 0xffffffff);
++    g_assert_cmphex(gpio_readl(GPIO_A, ODR), ==, 0x55aa);
++
++    reset_gpio(GPIO_A);
++}
++
++static void test_machine_started(void)
++{
++    g_assert_nonnull(global_qtest);
++}
++
++static void register_gpio_tests(void)
++{
++    qtest_add_func("stm32f100/gpio/reset_values", test_reset_values);
++    qtest_add_data_func("stm32f100/gpio/output_mode_a5",
++                        (void *)(uintptr_t)(GPIO_A | 5), test_output_mode);
++    qtest_add_data_func("stm32f100/gpio/output_mode_c13",
++                        (void *)(uintptr_t)(GPIO_C | 13), test_output_mode);
++    qtest_add_data_func("stm32f100/gpio/input_mode_b6",
++                        (void *)(uintptr_t)(GPIO_B | 6), test_input_mode);
++    qtest_add_data_func("stm32f100/gpio/input_mode_d10",
++                        (void *)(uintptr_t)(GPIO_D | 10), test_input_mode);
++    qtest_add_data_func("stm32f100/gpio/pull_up_down_a0",
++                        (void *)(uintptr_t)(GPIO_A | 0), test_pull_up_down);
++    qtest_add_data_func("stm32f100/gpio/bsrr_brr_a1",
++                        (void *)(uintptr_t)(GPIO_A | 1), test_bsrr_brr);
++    qtest_add_data_func("stm32f100/gpio/bsrr_brr_e12",
++                        (void *)(uintptr_t)(GPIO_E | 12), test_bsrr_brr);
++    qtest_add_data_func("stm32f100/gpio/push_pull_disconnect_e7",
++                        (void *)(uintptr_t)(GPIO_E | 7),
++                        test_push_pull_disconnect);
++    qtest_add_func("stm32f100/gpio/analog_input", test_analog_input);
++    qtest_add_func("stm32f100/gpio/open_drain_released",
++                   test_open_drain_released);
++    qtest_add_func("stm32f100/gpio/af_output_not_driven_by_odr",
++                   test_af_output_not_driven_by_odr);
++    qtest_add_func("stm32f100/gpio/reset_deasserts_output",
++                   test_reset_deasserts_output);
++    qtest_add_func("stm32f100/gpio/lckr_unimplemented",
++                   test_lckr_unimplemented);
++    qtest_add_func("stm32f100/gpio/word_access_only",
++                   test_word_access_only);
++}
++
++int main(int argc, char **argv)
++{
++    int ret;
++
++    g_test_init(&argc, &argv, NULL);
++    g_test_set_nonfatal_assertions();
++
++    if (qtest_has_device("stm32f1xx-gpio-rust")) {
++        register_gpio_tests();
++    } else {
++        qtest_add_func("stm32f100/gpio/no_rust_machine_start",
++                       test_machine_started);
++    }
++
++    qtest_start("-machine stm32vldiscovery");
++    ret = g_test_run();
++    qtest_end();
++
++    return ret;
++}
+
+-- 
+2.53.0
 
 

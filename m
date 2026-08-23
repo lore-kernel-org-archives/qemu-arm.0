@@ -4,69 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 22FFBC5DF9D
-	for <qemu-arm@archiver.kernel.org>; Sun, 23 Aug 2026 15:09:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 72605C5DF81
+	for <qemu-arm@archiver.kernel.org>; Sun, 23 Aug 2026 15:10:05 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wy9p7-0000tn-7t; Sun, 23 Aug 2026 11:09:25 -0400
+	id 1wy9nt-0007SC-MW; Sun, 23 Aug 2026 11:08:09 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <luoyonggang@gmail.com>)
- id 1wy9p5-0000jk-KE
- for qemu-arm@nongnu.org; Sun, 23 Aug 2026 11:09:23 -0400
-Received: from mail-pj1-x1032.google.com ([2607:f8b0:4864:20::1032])
+ id 1wy9nq-0007RC-VF
+ for qemu-arm@nongnu.org; Sun, 23 Aug 2026 11:08:06 -0400
+Received: from mail-pj1-x1030.google.com ([2607:f8b0:4864:20::1030])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <luoyonggang@gmail.com>)
- id 1wy9p1-0000PS-VO
- for qemu-arm@nongnu.org; Sun, 23 Aug 2026 11:09:23 -0400
-Received: by mail-pj1-x1032.google.com with SMTP id
- 98e67ed59e1d1-3811f512167so3526298a91.3
- for <qemu-arm@nongnu.org>; Sun, 23 Aug 2026 08:09:18 -0700 (PDT)
+ id 1wy9np-0008KR-Cc
+ for qemu-arm@nongnu.org; Sun, 23 Aug 2026 11:08:06 -0400
+Received: by mail-pj1-x1030.google.com with SMTP id
+ 98e67ed59e1d1-39266382df6so2011907a91.3
+ for <qemu-arm@nongnu.org>; Sun, 23 Aug 2026 08:08:05 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20251104; t=1787497758; x=1788102558; darn=nongnu.org;
+ d=gmail.com; s=20251104; t=1787497684; x=1788102484; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to:content-type;
- bh=McOEX656sGwdTTJCIpURIyAYYj2SmU5EIhHs1+kHacM=;
- b=TYHzrpmgy6uPtN/MOPl48ppSSwAVva9+uvAMz1mOZsdzz9WdhuMLymYgpgT2k5wcao
- fWyWgH9mgmb98XunFyvAcDpzqamQXxDg3ZmdW12aJ9AHsOSRK/cdEKEfaqYsnAXgLgM7
- VF8v6axYjudeJ/Eny66Dz1nLku1kUJrpuE8M98ZesKsREISbbRyMMVkfACTpoJIObEkJ
- SaG6tICM0wpnFHwgmuDJ1CLknJDABINNhGlbpqh8zREjSj/Nk1DWDBk7fKnadNviTbaU
- 3ok6mnLveFA7UVHyjDQSlJVVbb3cTENS7b8IaN2HOLrScTbyouBIjo3eJ7Z10lp9FVRI
- Gd2g==
+ bh=ySPa6h2ifrYJcA6pQJgvXQ8WNCjDkVVB+L9hgfcGq1Y=;
+ b=h5HjiKu9/FE1JZpnGIPt+zwVwuYMgjahJIZKOgJdymhCMC1PzOy6IpLcqrv1dplge4
+ mebmgellNfLjjSkas2FRr+z7CmjGJnPu9UwJpudHQ/WO3iTKefMXXzlPTbkCiR5UWP6t
+ NJs4Ftxko8ShIBBP6nl+xF9Bg/BmOCbLx69HU8hMBP1kc1B4z/VoaHyl3ou/zR5wZrXt
+ ulykdFmQ2LLfxFoydAilip49XzCGpXXulz+Z6dx+byK+qjclOGguNB0FvaMJjmBu1ZrS
+ aNaKkeyhfCFTXTekhimQ+vbEXWq2UYR3XPd9WbwzDiqmReH2btYqP/EbH0C3nCzIEuy6
+ dDYw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1787497758; x=1788102558;
+ d=1e100.net; s=20251104; t=1787497684; x=1788102484;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
  :to:cc:subject:date:message-id:reply-to:content-type;
- bh=McOEX656sGwdTTJCIpURIyAYYj2SmU5EIhHs1+kHacM=;
- b=Az8nEB0xOIs/9nzCHoTS6pejtJNlOk8kM+whtkZYTqxo2w9FGvyzCjRCli9G7lIi30
- h+5Sg0AwWQw42fFmQdY6SXPrj6TbiidJLCCOl+oPfW43b/fRoFqgN7KjPRJeXm5XXMcK
- SIGYTsIHTZlo7wsljIqLPRAwzoWL3oB7eR5o04BwLWIQYJTficK+3VHfd0CI418VSjbM
- 1c094WEUVHO2cSjMiQm76T3K94AT5mgtACEpDogrIMoq8hHBoKlFdQ4/WC7Kjwab6XCJ
- ZYzPlVW1NJsfWyM60N2Xn08LYGzl8p3NBtpXmcNSWK9Fed5B7+wwIigieta5kVHIi656
- uuJA==
+ bh=ySPa6h2ifrYJcA6pQJgvXQ8WNCjDkVVB+L9hgfcGq1Y=;
+ b=VZJ/f4KU08xRZ6tKBVMQcDCJ14cKYisn3JhEeGfpgVf8J1/FPuX4016RnJF6sKxS12
+ VAoKL2fSdcRc0uPQmjrV3/w6IGb3SRof3UcJ7Iwd45xmK8j3VDPItjQOmYTaq7y3TcEu
+ +weIrSGwHYvI/e3nCUaV8h5fqJz1Br+QfNITfMUXwkKFvmGRjQ2roqcBiR9bWJzzJVl1
+ PaSXrG8ItAYNppJ17jZCXXIQUMVXNYLI16z3ZjuLqiGxw85uZWi9G4aZWPLnyezS0d39
+ 7Wt/5DGZuc3YiNzeTkVfr0fL8psxW3TjaOVyRMwHRJeCLqOoOn5QNBaO7I7tdCDhg9vW
+ DaFg==
 X-Forwarded-Encrypted: i=1;
- AHgh+RoXzDgcg0xvIGRwId7PztJkn2u6s1RCR00L0W7iIrjrxe3bxgxmkFIQVgSUx0XGXx753zzUPI8i3w==@nongnu.org
-X-Gm-Message-State: AFuF++nK7VoNu2YFiN695IbHRMvag1u1NBMsrGI5ptdaujqU0O4/Jb4h
- 59ubCi16M/Kdmwwlw2TVvyLS8FALY0cKIzXUMsE4Gohkvjk2z1qU7rB/
-X-Gm-Gg: AR+sD11T/u3ZtPVg7obSxoLZ1RqanfaSG1NzI1MrghEYMS6F/o8mGo+6O5k0Sb61qeQ
- HMzN9VU7HdKhdEO2mBxznqD3mTQOOQvflMiPis9Fh9WHlltmMxV3mLlGa8geYPNQ+75VlVQex3B
- +8a67tDH21Nm/7NPmGGTRWhKu0bsL6tCScn/AEI9GwA3sGXAL8K/CwO5SuDsNTqwj9fRAcPTt6O
- 9ue0S3nvNq4+YIZ7vjcU/N3tZl+/OFm0jpRyy93x8b8UG4D9+GjuB9X5yoc9DKbW94IrTBFaUw4
- 3WyARGK49+v37coRiIDcC39n7BNb/pTXrLOEJiFEwLcbaC1RiUTrTmUzyGkNlMt5kFYSR9mgnmB
- Yej2oT5TFOnnzL2CLYazfzf9oPynoqmOS58wUrZ8njpbx/MobSUKG4zGI09/9cVvyvAHtNLfzZr
- mMiiipG8bYfbm4sYDMcV9YryyV2XSAHId15P4lgT08XIsUTioiwgpE7RZ03nPVgkoH8+djk94B4
- UEY6RhXtwPeXqn31SzICw==
-X-Received: by 2002:a17:90b:4a81:b0:381:a766:efcb with SMTP id
- 98e67ed59e1d1-395c34fed98mr31058811a91.4.1787497757907; 
- Sun, 23 Aug 2026 08:09:17 -0700 (PDT)
+ AHgh+Rrvd5B4cI5DhIvCiaPeYKvg0qBoT/wiyy0UZjhFosWW2xy215WqHuD1Ieprx+Id1hVfuQtc3oJowA==@nongnu.org
+X-Gm-Message-State: AFuF++mkCb0jskU6fAw5qcBhEN56u/2NoNkcd+3BKjCAe4N+8Yn2UXzH
+ zRICxQYRKwLnYiE0iJE5IjdX7tPbweAet349ZvrTTIoKh3qFUFgbRe0R
+X-Gm-Gg: AR+sD132eL4j9rDFdZvHHZL5W+D5L5ehxlkTOWz9YLRoYsK8CC1SJ3hCjkeRt5DYYEp
+ f8n62TM0HzwVmQQgkSTtrQWWz7K+782fiuzmdFWK/D/UM/rKqoRkU17fvZqpNOwFQ5T4k5vrgib
+ ShuG9vpJVsFJ7125KqaxtBpeny8LrGLn4X8i2cRzuGMljIcEyhSaDeoNnnS8Iehvk/kJVCB3iQp
+ fbjmO2vCanq+04f2yUXatlY1QlHlmlfMRb8fBcWj7f9lhSaA5w6NFat4EttLs18XgmZ/ykm/29Z
+ z1ytkdDFoSP8IOIs2RFDJ391oZz40NVvExyHL3G+5c/AMYRwwYQCE8LfFL7AlK2MGBxeA7ah4/+
+ 7MBrE7nZHHarcTAQgRrGBjNt2xnifrXZzZeFO1cSTeCXu6DEvQogdYT7I2NVYtuHBIKBDPNjD/+
+ +SQa9E1U6B+MG/fE5NUn7KfmF4a4SAB8FafkTHLxmp6b12305hlgwBirwNz/oEtOWGwKzg2sxuD
+ dn2Ca0R84ke3cJ/TwxiNp8tnTXG7e6N
+X-Received: by 2002:a17:90b:3902:b0:395:bbfe:fc6f with SMTP id
+ 98e67ed59e1d1-395c333710emr32506801a91.3.1787497683982; 
+ Sun, 23 Aug 2026 08:08:03 -0700 (PDT)
 Received: from WIN-BH9M8FJACR9 ([103.94.185.75])
  by smtp.googlemail.com with ESMTPSA id
- a92af1059eb24-1418619d6ecsm16024511c88.14.2026.08.23.08.09.10
+ a92af1059eb24-1418619d6ecsm16024511c88.14.2026.08.23.08.07.55
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sun, 23 Aug 2026 08:09:17 -0700 (PDT)
+ Sun, 23 Aug 2026 08:08:02 -0700 (PDT)
 From: Yonggang Luo <luoyonggang@gmail.com>
 To: qemu-devel@nongnu.org
 Cc: Xianglai Li <lixianglai@loongson.cn>,
@@ -100,16 +100,16 @@ Cc: Xianglai Li <lixianglai@loongson.cn>,
  =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
  Matthew Rosato <mjrosato@linux.ibm.com>, Weiwei Li <liwei1518@gmail.com>,
  Darren Kenny <darren.kenny@oracle.com>
-Subject: [PATCH 10/12] target-info: add -target and program-name selection
-Date: Sun, 23 Aug 2026 23:07:28 +0800
-Message-ID: <20260823150731.896-11-luoyonggang@gmail.com>
+Subject: [PATCH 02/12] hw/riscv/virt: use unique QOM name and target filter
+Date: Sun, 23 Aug 2026 23:07:20 +0800
+Message-ID: <20260823150731.896-3-luoyonggang@gmail.com>
 X-Mailer: git-send-email 2.52.0.windows.1
 In-Reply-To: <20260823150731.896-1-luoyonggang@gmail.com>
 References: <20260823150731.896-1-luoyonggang@gmail.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::1032;
- envelope-from=luoyonggang@gmail.com; helo=mail-pj1-x1032.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::1030;
+ envelope-from=luoyonggang@gmail.com; helo=mail-pj1-x1030.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -132,352 +132,69 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-- Parse -target before TargetInfo is fixed; CLI overrides the program
-  basename.
-- Tokens are target_name or target_name-be / -le; -target help lists
-  registered names in sorted order.
-- When -target is omitted, infer the token from g_get_prgname(): strip
-  .exe, take the longest dash-separated registered suffix, and retry
-  without a trailing w for Windows GUI binaries.
-- A basename that matches no registered token falls through to the
-  unique default. Combined binaries with no suffix require -target
-  when more than one default TargetInfo is registered.
+- Set TYPE_RISCV_VIRT_MACHINE to MACHINE_TYPE_NAME("riscv-virt") so
+  RISC-V virt no longer collides with ARM virt-machine in one process.
+- Register TYPE_TARGET_SPECIFIC with is_available = target_base_riscv.
+- Keep -machine virt via mc->alias after the selected target is applied.
 
 Signed-off-by: Yonggang Luo <luoyonggang@gmail.com>
 ---
- include/qemu/target-info-qom.h |  10 +-
- qemu-options.hx                |  13 +++
- system/vl.c                    |  28 ++++--
- target-info-qom.c              | 167 ++++++++++++++++++++++++++++++---
- tests/qtest/fuzz/fuzz.c        |   2 +-
- 5 files changed, 197 insertions(+), 23 deletions(-)
+ hw/riscv/virt.c         | 6 +++++-
+ include/hw/riscv/virt.h | 2 +-
+ 2 files changed, 6 insertions(+), 2 deletions(-)
 
-diff --git a/include/qemu/target-info-qom.h b/include/qemu/target-info-qom.h
-index 842cf241e0a..3b59cf82d65 100644
---- a/include/qemu/target-info-qom.h
-+++ b/include/qemu/target-info-qom.h
-@@ -40,7 +40,15 @@ typedef struct TargetInfoQomClass {
- 
- OBJECT_DECLARE_TYPE(TargetInfoQom, TargetInfoQomClass, TARGET_INFO)
- 
--void target_info_qom_set_target(void);
-+/**
-+ * target_info_qom_set_target:
-+ * @name: -target token, or NULL/%empty to infer from the program
-+ * basename or the unique default
-+ *
-+ * Tokens are target_name (arch default endian) or target_name-be /
-+ * target_name-le. -target overrides the program basename.
-+ */
-+void target_info_qom_set_target(const char *name);
- 
- /**
-  * get_machine_types_available:
-diff --git a/qemu-options.hx b/qemu-options.hx
-index 34970fffc94..638b531aa49 100644
---- a/qemu-options.hx
-+++ b/qemu-options.hx
-@@ -223,6 +223,19 @@ SRST
-     as -machine.
- ERST
- 
-+DEF("target", HAS_ARG, QEMU_OPTION_target,
-+    "-target name    select target ('-target help' for list)\n", QEMU_ARCH_ALL)
-+SRST
-+``-target name``
-+    Select the emulation target (``-target help`` for the list). The
-+    default endian is the architecture default (``riscv64`` is little
-+    endian). The other endian uses a ``-be`` or ``-le`` suffix
-+    (``riscv64-be``, ``ppc64-le``). If omitted, a matching suffix of
-+    the program basename is used (``qemu-system-riscv64-be``, and
-+    ``qemu-system-aarch64w.exe`` on Windows). ``-target`` overrides
-+    the program name.
-+ERST
-+
- DEF("cpu", HAS_ARG, QEMU_OPTION_cpu,
-     "-cpu cpu        select CPU ('-cpu help' for list)\n", QEMU_ARCH_ALL)
- SRST
-diff --git a/system/vl.c b/system/vl.c
-index 83b9425de9b..405f434e036 100644
---- a/system/vl.c
-+++ b/system/vl.c
-@@ -166,6 +166,7 @@ typedef struct DeviceOption {
-     QTAILQ_ENTRY(DeviceOption) next;
- } DeviceOption;
- 
-+static const char *target_option;
- static const char *cpu_option;
- static const char *mem_path;
- static const char *incoming;
-@@ -2899,19 +2900,12 @@ void qemu_init(int argc, char **argv)
- 
-     os_setup_limits();
- 
--    module_call_init(MODULE_INIT_TARGET_INFO);
--    target_info_qom_set_target();
--
--    module_init_info(qemu_modinfo);
--    module_allow_arch(target_name());
--
--    qemu_init_subsystems();
--
--    /* first pass of option parsing */
-+    /*
-+     * First pass: options needed before TargetInfo is fixed.
-+     */
-     optind = 1;
-     while (optind < argc) {
-         if (argv[optind][0] != '-') {
--            /* disk image */
-             optind++;
-         } else {
-             const QEMUOption *popt;
-@@ -2921,10 +2915,21 @@ void qemu_init(int argc, char **argv)
-             case QEMU_OPTION_nouserconfig:
-                 userconfig = false;
-                 break;
-+            case QEMU_OPTION_target:
-+                target_option = optarg;
-+                break;
-             }
-         }
-     }
- 
-+    module_call_init(MODULE_INIT_TARGET_INFO);
-+    target_info_qom_set_target(target_option);
-+
-+    module_init_info(qemu_modinfo);
-+    module_allow_arch(target_name());
-+
-+    qemu_init_subsystems();
-+
-     machine_opts_dict = qdict_new();
-     if (userconfig) {
-         qemu_read_default_config_file(&error_fatal);
-@@ -3687,6 +3692,9 @@ void qemu_init(int argc, char **argv)
-             case QEMU_OPTION_nouserconfig:
-                 /* Nothing to be parsed here. Especially, do not error out below. */
-                 break;
-+            case QEMU_OPTION_target:
-+                /* Parsed before TargetInfo is selected. */
-+                break;
- #if defined(CONFIG_POSIX) && !defined(EMSCRIPTEN)
-             case QEMU_OPTION_daemonize:
-                 os_set_daemonize(true);
-diff --git a/target-info-qom.c b/target-info-qom.c
-index 2c1c57b05fd..be03573a699 100644
---- a/target-info-qom.c
-+++ b/target-info-qom.c
-@@ -7,6 +7,7 @@
-  */
- 
- #include "qemu/osdep.h"
-+#include "qemu/help_option.h"
+diff --git a/hw/riscv/virt.c b/hw/riscv/virt.c
+index 2d242ef71a5..1b672b2169d 100644
+--- a/hw/riscv/virt.c
++++ b/hw/riscv/virt.c
+@@ -22,6 +22,7 @@
+ #include "qemu/units.h"
+ #include "qemu/error-report.h"
+ #include "qemu/guest-random.h"
++#include "qemu/target-info.h"
  #include "qapi/error.h"
- #include "qom/object.h"
- #include "qemu/target-info-impl.h"
-@@ -87,7 +88,139 @@ const TargetInfo *target_info(void)
-     return target_info_ptr;
+ #include "hw/core/boards.h"
+ #include "hw/core/loader.h"
+@@ -1718,7 +1719,9 @@ static void virt_machine_class_init(ObjectClass *oc, const void *data)
+     MachineClass *mc = MACHINE_CLASS(oc);
+     HotplugHandlerClass *hc = HOTPLUG_HANDLER_CLASS(oc);
+ 
++    TARGET_SPECIFIC_CLASS(oc)->is_available = target_base_riscv;
+     mc->desc = "RISC-V VirtIO board";
++    mc->alias = "virt";
+     mc->init = virt_machine_init;
+     mc->max_cpus = VIRT_CPUS_MAX;
+     mc->default_cpu_type = TYPE_RISCV_CPU_BASE;
+@@ -1782,7 +1785,7 @@ static void virt_machine_class_init(ObjectClass *oc, const void *data)
  }
  
--void target_info_qom_set_target(void)
-+static const TargetInfo *target_info_from_class(ObjectClass *oc)
-+{
-+    return TARGET_INFO_CLASS(oc)->target_info;
-+}
-+
-+/* Default token is target_name; the other endian is target_name-le or -be. */
-+static char *target_info_option_name(const TargetInfo *ti)
-+{
-+    if (ti->is_default) {
-+        return g_strdup(ti->target_name);
-+    }
-+    if (ti->endianness == ENDIAN_MODE_BIG) {
-+        return g_strdup_printf("%s-be", ti->target_name);
-+    }
-+    return g_strdup_printf("%s-le", ti->target_name);
-+}
-+
-+static gint target_info_token_name_cmp(gconstpointer a, gconstpointer b,
-+                                       gpointer data)
-+{
-+    const TargetInfo *ta = target_info_from_class((ObjectClass *)a);
-+    const TargetInfo *tb = target_info_from_class((ObjectClass *)b);
-+    g_autofree char *na = target_info_option_name(ta);
-+    g_autofree char *nb = target_info_option_name(tb);
-+
-+    return strcmp(na, nb);
-+}
-+
-+static void G_NORETURN target_info_list_and_exit(GSList *targets)
-+{
-+    printf("Supported targets:\n");
-+    for (GSList *l = targets; l; l = l->next) {
-+        const TargetInfo *ti = target_info_from_class(l->data);
-+        g_autofree char *opt_name = target_info_option_name(ti);
-+
-+        printf("  %s%s\n", opt_name, ti->is_default ? " (default)" : "");
-+    }
-+    exit(0);
-+}
-+
-+static const TargetInfo *target_info_find_default(GSList *targets,
-+                                                  size_t *num_default)
-+{
-+    const TargetInfo *chosen = NULL;
-+
-+    *num_default = 0;
-+    for (GSList *l = targets; l; l = l->next) {
-+        const TargetInfo *ti = target_info_from_class(l->data);
-+
-+        if (ti->is_default) {
-+            (*num_default)++;
-+            chosen = ti;
-+        }
-+    }
-+    return chosen;
-+}
-+
-+static const TargetInfo *target_info_find_token(GSList *targets,
-+                                                const char *token)
-+{
-+    for (GSList *l = targets; l; l = l->next) {
-+        const TargetInfo *ti = target_info_from_class(l->data);
-+        g_autofree char *opt_name = target_info_option_name(ti);
-+
-+        if (!strcmp(opt_name, token)) {
-+            return ti;
-+        }
-+    }
-+    return NULL;
-+}
-+
-+static bool target_info_base_match_token(const char *base, const char *token)
-+{
-+    size_t nlen = strlen(token);
-+    size_t blen;
-+
-+    if (!base || !token[0] || !g_str_has_suffix(base, token)) {
-+        return false;
-+    }
-+    blen = strlen(base);
-+    return blen == nlen || base[blen - nlen - 1] == '-';
-+}
-+
-+static const TargetInfo *target_info_find_prgname(GSList *targets,
-+                                                  const char *base)
-+{
-+    const TargetInfo *chosen = NULL;
-+    size_t best_len = 0;
-+
-+    if (!base || !base[0]) {
-+        return NULL;
-+    }
-+
-+    for (GSList *l = targets; l; l = l->next) {
-+        const TargetInfo *ti = target_info_from_class(l->data);
-+        g_autofree char *opt_name = target_info_option_name(ti);
-+        size_t nlen = strlen(opt_name);
-+
-+        if (nlen > best_len &&
-+            target_info_base_match_token(base, opt_name)) {
-+            chosen = ti;
-+            best_len = nlen;
-+        }
-+    }
-+    return chosen;
-+}
-+
-+static const TargetInfo *target_info_from_prgname(GSList *targets)
-+{
-+    const char *prg = g_get_prgname();
-+    g_autofree char *base = NULL;
-+    char *dot;
-+    const TargetInfo *chosen;
-+
-+    if (!prg || !prg[0]) {
-+        return NULL;
-+    }
-+
-+    base = g_path_get_basename(prg);
-+    dot = strrchr(base, '.');
-+    if (dot && g_ascii_strcasecmp(dot, ".exe") == 0) {
-+        *dot = '\0';
-+    }
-+
-+    chosen = target_info_find_prgname(targets, base);
-+    if (!chosen && strlen(base) > 1 && g_str_has_suffix(base, "w")) {
-+        base[strlen(base) - 1] = '\0';
-+        chosen = target_info_find_prgname(targets, base);
-+    }
-+    return chosen;
-+}
-+
-+void target_info_qom_set_target(const char *name)
- {
-     g_autoptr(GSList) targets = object_class_get_list(TYPE_TARGET_INFO, false);
-     const TargetInfo *chosen = NULL;
-@@ -98,25 +231,37 @@ void target_info_qom_set_target(void)
-         error_setg(&error_fatal, "no target-info is available");
-     }
+ static const TypeInfo virt_machine_typeinfo = {
+-    .name       = MACHINE_TYPE_NAME("virt"),
++    .name       = TYPE_RISCV_VIRT_MACHINE,
+     .parent     = TYPE_MACHINE,
+     .class_init = virt_machine_class_init,
+     .instance_init = virt_machine_instance_init,
+@@ -1790,6 +1793,7 @@ static const TypeInfo virt_machine_typeinfo = {
+     .instance_size = sizeof(RISCVVirtState),
+     .interfaces = (const InterfaceInfo[]) {
+          { TYPE_HOTPLUG_HANDLER },
++         { TYPE_TARGET_SPECIFIC },
+          { }
+     },
+ };
+diff --git a/include/hw/riscv/virt.h b/include/hw/riscv/virt.h
+index 36a2def4109..5559783aebb 100644
+--- a/include/hw/riscv/virt.h
++++ b/include/hw/riscv/virt.h
+@@ -30,7 +30,7 @@
+ #define VIRT_SOCKETS_MAX_BITS          2
+ #define VIRT_SOCKETS_MAX               (1 << VIRT_SOCKETS_MAX_BITS)
  
--    if (num_found == 1) {
--        target_info_ptr = TARGET_INFO_CLASS(targets->data)->target_info;
-+    if (name && is_help_option(name)) {
-+        targets = g_slist_sort_with_data(targets, target_info_token_name_cmp,
-+                                         NULL);
-+        target_info_list_and_exit(targets);
-+    }
-+
-+    if (name && name[0]) {
-+        chosen = target_info_find_token(targets, name);
-+        if (!chosen) {
-+            error_setg(&error_fatal, "unknown target '%s'", name);
-+        }
-+        target_info_ptr = chosen;
-         return;
-     }
- 
--    for (GSList *l = targets; l; l = l->next) {
--        const TargetInfo *ti = TARGET_INFO_CLASS(l->data)->target_info;
-+    chosen = target_info_from_prgname(targets);
-+    if (chosen) {
-+        target_info_ptr = chosen;
-+        return;
-+    }
- 
--        if (ti->is_default) {
--            num_default++;
--            chosen = ti;
--        }
-+    if (num_found == 1) {
-+        target_info_ptr = target_info_from_class(targets->data);
-+        return;
-     }
- 
-+    chosen = target_info_find_default(targets, &num_default);
-     if (num_default != 1) {
-         error_setg(&error_fatal, num_default == 0 ?
-                                  "no default target-info is available" :
--                                 "more than one default target-info "
--                                 "is available");
-+                                 "multiple default targets; use -target");
-     }
- 
-     target_info_ptr = chosen;
-diff --git a/tests/qtest/fuzz/fuzz.c b/tests/qtest/fuzz/fuzz.c
-index a3a131c80f8..489c7138bb9 100644
---- a/tests/qtest/fuzz/fuzz.c
-+++ b/tests/qtest/fuzz/fuzz.c
-@@ -174,7 +174,7 @@ int LLVMFuzzerInitialize(int *argc, char ***argv, char ***envp)
-     /* Initialize qgraph and modules */
-     qos_graph_init();
-     module_call_init(MODULE_INIT_TARGET_INFO);
--    target_info_qom_set_target();
-+    target_info_qom_set_target(NULL);
-     module_call_init(MODULE_INIT_FUZZ_TARGET);
-     module_call_init(MODULE_INIT_QOM);
-     module_call_init(MODULE_INIT_LIBQOS);
+-#define TYPE_RISCV_VIRT_MACHINE MACHINE_TYPE_NAME("virt")
++#define TYPE_RISCV_VIRT_MACHINE MACHINE_TYPE_NAME("riscv-virt")
+ typedef struct RISCVVirtState RISCVVirtState;
+ DECLARE_INSTANCE_CHECKER(RISCVVirtState, RISCV_VIRT_MACHINE,
+                          TYPE_RISCV_VIRT_MACHINE)
 -- 
 2.52.0.windows.1
 

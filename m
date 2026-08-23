@@ -4,68 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C7758C5DF81
-	for <qemu-arm@archiver.kernel.org>; Sun, 23 Aug 2026 15:08:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3ED5EC5DF81
+	for <qemu-arm@archiver.kernel.org>; Sun, 23 Aug 2026 15:09:05 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wy9ne-0007O2-Si; Sun, 23 Aug 2026 11:07:56 -0400
+	id 1wy9o1-0007Tw-5G; Sun, 23 Aug 2026 11:08:17 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <luoyonggang@gmail.com>)
- id 1wy9na-0007NG-HS
- for qemu-arm@nongnu.org; Sun, 23 Aug 2026 11:07:52 -0400
-Received: from mail-pg1-x530.google.com ([2607:f8b0:4864:20::530])
+ id 1wy9nz-0007TM-Tb
+ for qemu-arm@nongnu.org; Sun, 23 Aug 2026 11:08:15 -0400
+Received: from mail-pj1-x102b.google.com ([2607:f8b0:4864:20::102b])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <luoyonggang@gmail.com>)
- id 1wy9nY-0008Eu-AW
- for qemu-arm@nongnu.org; Sun, 23 Aug 2026 11:07:50 -0400
-Received: by mail-pg1-x530.google.com with SMTP id
- 41be03b00d2f7-cbedf433a99so2582337a12.2
- for <qemu-arm@nongnu.org>; Sun, 23 Aug 2026 08:07:47 -0700 (PDT)
+ id 1wy9ny-0008PA-7F
+ for qemu-arm@nongnu.org; Sun, 23 Aug 2026 11:08:15 -0400
+Received: by mail-pj1-x102b.google.com with SMTP id
+ 98e67ed59e1d1-38d489b6b71so2799686a91.0
+ for <qemu-arm@nongnu.org>; Sun, 23 Aug 2026 08:08:13 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20251104; t=1787497666; x=1788102466; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:content-type:message-id:date
- :subject:cc:to:from:from:to:cc:subject:date:message-id:reply-to
- :content-type; bh=Rl3Ci7OZX6aBpxGKWeFuniwc0kLF7yJe6HIaEkuGg4U=;
- b=pz3y32tm+VZXE+fClue6pg5twC8Wu/gaxcrN0i6Kze5S0C411x946+3LBlPCtgbV3T
- VBWEJ3/6kzEmOw9jJ1UQ0+L0A2b+v5sOZoN1C51tyP5AnOkYWrIGSiAefT8WKWr1sT8V
- lc3Gwcb+wPrQ5K6vCcsMaoh4+acLTE1HzwQYGwCCHeK1oU7TgAdtPjEodlcATquEnX/U
- ZW3QztcBZkAuXOdA2Li/UeuFf97iQPgNdQWLvery/YajHoP7S2UdNfq8FkPQ/V0tc0UA
- KE+rOjV4AEhxPbCvJx/SS7YGK0N4Wc4uRrMot1V30q/ZSzXsYvPAAKCmMrS1SD/O6Ihp
- TgVQ==
+ d=gmail.com; s=20251104; t=1787497693; x=1788102493; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+ :message-id:reply-to:content-type;
+ bh=YO5tPXTvZnsSWgxbIFedFGvu6p+yK1KpPNY8fcd24GM=;
+ b=Ra1julEJqkjAhTvGN8D9zULhbLXkar1EcCoeULN6udBl/sxzpOv1T/O5/Jhax3/Sk1
+ uXX4gZ0Jv4rAksmr0uFtoY/8uz6RSFS/jAS3PU6jQsTm3oT9f+e4tmpTsIYtH+uzzFEQ
+ SMh3Jjy0tSnrHQP8avGgfJg2sBLNLy3AA0aGicrFkWjS69gj1sTkUElnmiJKegeBaAbx
+ w5bRj9ma/rRcqK34jToF+nBoj+5nREYmrfd48iV7mZM7oHtAcZOeyJij7Ci95vuv9sTq
+ 0TxlA1p9U7AkLOUykW37Qsh5Eh2IlEp0nQO/BX0CzCjXVv18fjK70ASOMbnSJgH9585e
+ 8/4Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1787497666; x=1788102466;
- h=content-transfer-encoding:mime-version:content-type:message-id:date
- :subject:cc:to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject
- :date:message-id:reply-to:content-type;
- bh=Rl3Ci7OZX6aBpxGKWeFuniwc0kLF7yJe6HIaEkuGg4U=;
- b=fNs0ivLH9BLp7PYUeStjZUN9NZqmDoq55BUSq4q2RNHKRDP/t0wI1XeW8EN8LmOvTT
- lCJO1giWknEVeRQyiU7V8M7xPaY8dO6y0ixvsxE53mVYps/2InESRD4/4VBq+Js8Ozfa
- MWasn5va0/YkqvRgYlZLxnVjxObgCNlJdyXpG3+y2FpSTLM4loG37PWPZWRtLf9+oiZm
- B6tooJwObbuhG1M4V+w4g0JCRaCyQtgR3/Js/tbl6IUcKRbcahIDpMYEEpmZvsWwF5Ah
- 3f32n0kvkBUR4vqAq1jISiBacPkkD7eeMQxfktQ3ozyZh4RBhURhkD2zoQnNV8eFZ0nY
- eUbg==
+ d=1e100.net; s=20251104; t=1787497693; x=1788102493;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
+ :to:cc:subject:date:message-id:reply-to:content-type;
+ bh=YO5tPXTvZnsSWgxbIFedFGvu6p+yK1KpPNY8fcd24GM=;
+ b=nMPKsCoCsXwY0ooIIO1lOSRVcY7USOUkPQax43032Vwfyj5Of1Z1k9JQCYHzcBHPga
+ n66NH6zYkExv94Q+YI9s976xbKl9PTT4DcCX5CY1J6JUTQQrTffiEcum+QHytGxCoUpG
+ Q78HMCpTPFLyQhrtzI5vcz+Xpuog9Hh01YevyCORarjMPqRW78BG+GwNDK/LY+Zs/yb0
+ jPu/uLHcTFu19GGOU4dnOXBwGgh2A39sf8MzTt1n4fO9ZnzFLCq69bcWT9TdI+IyOXng
+ yu/uYwY2GjgnpOxfIN/+45N3Z9vRbGW1HMimKfHn6whI7e+tYXiIhBABSYHa0fns7NN5
+ nHCg==
 X-Forwarded-Encrypted: i=1;
- AHgh+RpPBUGltyjrTHaBh9aXdeDcxv2DIyjaVDaKhsnZqmq4AI6qAeeQk4rpt/4uyLaGD6GGMLTeOxeZ+Q==@nongnu.org
-X-Gm-Message-State: AFuF++mhUrr26B0Bi8+NVrxFcGmoyK4RJYd9iSTuqK3oYND1PMRJOAmL
- hkA7iXqyK0NiccHiTU6IOjHw2qs37lqHP7mKwOPc39GpDk2OirrHp+vp
-X-Gm-Gg: AR+sD11hbEwDgmNIdL5aY5+epAeL9CYwUEwQhy3hSIF5vT1y/Bqd0y+TtCRBjpXDk1C
- oBzibi3CoEYOtLbyPg0ADK/FyrQTns9QjKMfoYFcqXcD9142y1sP2K02QSXuXIQcWIJ9Us90wJC
- qVy+StFnRRG4ixyD2WEw6c+0hU/cTrhajQSHfHRThJ9AGIefXPps5rV81ocdGS7UelYwfo2Fi/e
- oAK0eqQEQieat2XvO/9rSaHTcYzZvCBZFLi9XJyqLz0EhQ6hs+GEANhBSKW0f+9o3JxWitWRH99
- KQjEiyga2tKW9xlBpTQNivc4FAhna9b0QBsXD4zpVxAcbcuacimar5YrdD+5neBWO+wT9RTfK7d
- oJ25gJvhmmzh5S+E9A+sSiuI21RFHw2ZoiBSSC/UUH99qrbcBjwUzNoi/I0hhi3MvVPdZKmH5Jq
- Nor4nVIeUKz9hpW6PR56Nd346KM3koWzKThwycOEW459BC5HXFeUFyvhhlvcDwsYOXBYOmRKwMa
- Oy7bjNctrHCrwOT84j1MQ==
-X-Received: by 2002:a17:90b:3b4d:b0:38d:ef48:b04 with SMTP id
- 98e67ed59e1d1-395c39b1750mr32759887a91.10.1787497665915; 
- Sun, 23 Aug 2026 08:07:45 -0700 (PDT)
+ AHgh+RrdtPbOHmYCwxgcAwRs0r54cEcsRJ5IHTMhhJzhlDEkp6GysyC51wJtm5sI7dH3ibsGvTHNWZHAyw==@nongnu.org
+X-Gm-Message-State: AFuF++m03tqIivZ42PCRu5DFWmINO7UG6WCEhB5VlFyaBPDy5iyJoIre
+ vDleHLRzgzIehGjO/t5DCcbW58vpk296EYqo/Xa+sGQsZMwCsSbMyIuH
+X-Gm-Gg: AR+sD13UoYik0RZT+acyEoa0cOUyz8jJNWs7NQT0Cq3IacmmeFCHZtz+WPNqR21Ut5V
+ k+jGtf2VIh4japHgJOy3USFuzKDmM8K5gHzL/Oq4CBcop63Xo7rbzrC/T0La2ZjI9j5v1PU/xlj
+ /PdEg/XzE9MKmO5lF9AOEfW/CwJJkteYBM64bL/toxf9b7qhyk+QEIgZm1hZ+nXe42aOZSJSU/x
+ 3xUkuDR+Pt6LKWxowPoEP+T6ba+tVbFyKa8jchGEgI3i6lnMnQIYDbuwXCnW1VCoJEScuO+jG36
+ 0oQjpoWhYi2L1pvg3pMoLC2v+6RJZYZ8yD02tAdqbdxJjWPfWvFFmGZX4YwxgdIv5bQ1Qipp2pU
+ e5sleVllaWhptPX3o2pYAGjU4l4M2FCKxPLYoNw7NTnz+ybLne6dWePlKZNzFa13fUOYLoSIt56
+ NezSgRm68IpRmaezhFuD8xIzqPCAe7pgw9VjQUaUFPf/E9llUedHvxe2gBH8UTe6SBXoWkW7YaJ
+ tKeRxqtIB4vwm/OiSgMzR8s0kGLE/RHaWSLaA==
+X-Received: by 2002:a17:90b:530c:b0:395:5404:95 with SMTP id
+ 98e67ed59e1d1-395c35516a0mr36575704a91.12.1787497692854; 
+ Sun, 23 Aug 2026 08:08:12 -0700 (PDT)
 Received: from WIN-BH9M8FJACR9 ([103.94.185.75])
  by smtp.googlemail.com with ESMTPSA id
- a92af1059eb24-1418619d6ecsm16024511c88.14.2026.08.23.08.07.37
+ a92af1059eb24-1418619d6ecsm16024511c88.14.2026.08.23.08.08.04
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sun, 23 Aug 2026 08:07:44 -0700 (PDT)
+ Sun, 23 Aug 2026 08:08:12 -0700 (PDT)
 From: Yonggang Luo <luoyonggang@gmail.com>
 To: qemu-devel@nongnu.org
 Cc: Xianglai Li <lixianglai@loongson.cn>,
@@ -99,15 +100,16 @@ Cc: Xianglai Li <lixianglai@loongson.cn>,
  =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
  Matthew Rosato <mjrosato@linux.ibm.com>, Weiwei Li <liwei1518@gmail.com>,
  Darren Kenny <darren.kenny@oracle.com>
-Subject: [PATCH 00/12] single-binary: link ARM and RISC-V into qemu-system
-Date: Sun, 23 Aug 2026 23:07:18 +0800
-Message-ID: <20260823150731.896-1-luoyonggang@gmail.com>
+Subject: [PATCH 03/12] hw/arm/virt: use unique QOM name and target filter
+Date: Sun, 23 Aug 2026 23:07:21 +0800
+Message-ID: <20260823150731.896-4-luoyonggang@gmail.com>
 X-Mailer: git-send-email 2.52.0.windows.1
-Content-Type: text/plain; charset="utf-8"
+In-Reply-To: <20260823150731.896-1-luoyonggang@gmail.com>
+References: <20260823150731.896-1-luoyonggang@gmail.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::530;
- envelope-from=luoyonggang@gmail.com; helo=mail-pg1-x530.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::102b;
+ envelope-from=luoyonggang@gmail.com; helo=mail-pj1-x102b.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -130,135 +132,51 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-This series produces one qemu-system binary that can run ARM (32 and 64)
-and RISC-V (32 and 64, little- and big-endian TargetInfo). It follows
-Pierrick Bouvier's merged series "single-binary: implement dynamic
-filtering for machine types":
+- Set TYPE_VIRT_MACHINE to MACHINE_TYPE_NAME("arm-virt") so ARM virt
+  no longer collides with other virt-machine types in one process.
+- Register TYPE_TARGET_SPECIFIC with is_available = target_base_arm on
+  the abstract parent.
+- Keep -machine virt via mc->alias on the latest versioned machine.
 
-  https://patchew.org/QEMU/20260724000948.234657-1-pierrick.bouvier@oss.qualcomm.com/
+Signed-off-by: Yonggang Luo <luoyonggang@gmail.com>
+---
+ hw/arm/virt.c         | 2 ++
+ include/hw/arm/virt.h | 2 +-
+ 2 files changed, 3 insertions(+), 1 deletion(-)
 
-That work added TYPE_TARGET_SPECIFIC so machines can be filtered per
-target in one process. This series uniquifies remaining per-target C
-symbols and QOM names, selects TargetInfo at runtime, and links ARM
-plus RISC-V into qemu-system.
-
-A combined link cannot keep C symbols or QOM type names that were unique
-only because each qemu-system-$arch was a separate binary. The first
-patches remove those collisions:
-
-- TYPE_ACCEL_CPU is a single abstract accel-cpu parent, registered once
-  next to TYPE_ACCEL. Leaf names still encode the CPU type so
-  accel_init_cpu_interfaces() can look up "<accel>-accel-"
-  CPU_RESOLVING_TYPE.
-- ARM and RISC-V virt QOM names become arm-virt and riscv-virt. The
-  boards keep -machine virt via mc->alias after the selected target is
-  applied.
-- virt ACPI helpers and RISC-V TCG crc32/crc32c/wfi helpers get an arch
-  prefix so the combined link does not need meson -D name mangling.
-  LoongArch virt_acpi_setup is renamed in the same pass.
-
-Target selection then has to work with more than one TargetInfo in the
-process:
-
-- Register target-info-<name>-le and -be from one system
-  target-info-def.c unit, sharing arch fields. is_default follows
-  TARGET_BIG_ENDIAN so riscv/arm stay LE and ppc/s390x stay BE when
-  -target is omitted.
-- Parse -target before TargetInfo is fixed. Tokens are target_name or
-  target_name-be / -le. When -target is omitted, infer the token from
-  the program basename (strip .exe, longest registered suffix, drop a
-  trailing w for Windows GUI binaries).
-- Combined binaries cannot keep one global C symbol per arch for
-  query-cpu-definitions, dump notes, or Angel semihosting. Those
-  handlers move onto a process-wide TargetCpuOps table.
-
-The last patch builds qemu-system (and qemu-systemw on Windows) from
-aarch64 common/system objects plus RISC-V arch objects, and installs
-qemu-system-{arm,aarch64,riscv32,riscv64} as symlinks so argv[0] still
-selects TargetInfo.
-
-Examples:
-
-  qemu-system -target aarch64 -M virt ...
-  qemu-system-riscv64 -M virt ...
-
-A basename that matches no registered token falls through to the unique
-default. A combined binary with no suffix requires -target when more
-than one default TargetInfo is registered.
-
-Based-on: <20260724000948.234657-1-pierrick.bouvier@oss.qualcomm.com>
-
-Yonggang Luo (12):
-  accel: use a shared TYPE_ACCEL_CPU parent
-  hw/riscv/virt: use unique QOM name and target filter
-  hw/arm/virt: use unique QOM name and target filter
-  hw/arm/virt: prefix ACPI helpers with arm_virt_
-  hw/riscv/virt: prefix ACPI helpers with riscv_virt_
-  hw/loongarch/virt: prefix ACPI helper with loongarch_virt_
-  target/riscv: uniquify TCG crc32, crc32c, and wfi helper names
-  target/riscv: seed cfg.big_endian from TargetInfo
-  target-info: register le and be TargetInfo variants
-  target-info: add -target and program-name selection
-  target-info: dispatch CPU QMP, dump, and Angel semihosting
-  meson: link ARM and RISC-V into qemu-system
-
- MAINTAINERS                                   |   1 -
- accel/accel-common.c                          |  21 +-
- hw/arm/virt-acpi-build.c                      |   4 +-
- hw/arm/virt.c                                 |  14 +-
- hw/core/cpu-system.c                          |  23 +++
- hw/core/machine-qmp-cmds.c                    |  26 +++
- hw/loongarch/virt-acpi-build.c                |   6 +-
- hw/loongarch/virt.c                           |   2 +-
- hw/riscv/virt-acpi-build.c                    |   2 +-
- hw/riscv/virt.c                               |  12 +-
- include/accel/accel-cpu-target.h              |   3 +-
- include/accel/accel-cpu.h                     |   2 +
- include/hw/arm/virt.h                         |   6 +-
- include/hw/loongarch/virt.h                   |   2 +-
- include/hw/riscv/virt.h                       |   6 +-
- include/qemu/target-info-impl.h               |   6 +
- include/qemu/target-info-init.h               |  29 ++-
- include/qemu/target-info-qom.h                |  51 ++++-
- include/semihosting/common-semi.h             |  56 +++++-
- meson.build                                   | 156 ++++++++++++++-
- qemu-options.hx                               |  13 ++
- stubs/dump.c                                  |  27 ---
- stubs/meson.build                             |   2 -
- stubs/qmp-cpu.c                               |  21 --
- system/vl.c                                   |  28 ++-
- target-info-def.c                             |  61 ++++--
- target-info-qom.c                             | 180 +++++++++++++++++-
- target-info.c                                 |  32 ++++
- target/arm/arch_dump.c                        |   8 +-
- target/arm/arm-qmp-cmds.c                     |  15 +-
- target/arm/common-semi-target.c               |  23 ++-
- target/arm/meson.build                        |   7 +-
- target/i386/arch_dump.c                       |   8 +-
- target/i386/cpu-system.c                      |  12 +-
- target/i386/cpu.c                             |   6 +-
- target/loongarch/arch_dump.c                  |   8 +-
- target/loongarch/loongarch-qmp-cmds.c         |  15 +-
- target/mips/system/mips-qmp-cmds.c            |  15 +-
- target/ppc/arch_dump.c                        |   8 +-
- target/ppc/ppc-qmp-cmds.c                     |  15 +-
- target/riscv/arch_dump.c                      |   8 +-
- target/riscv/common-semi-target.c             |  25 ++-
- target/riscv/cpu.c                            |  10 +
- target/riscv/helper.h                         |   6 +-
- target/riscv/meson.build                      |   4 +-
- target/riscv/riscv-qmp-cmds.c                 |  15 +-
- target/riscv/tcg/bitmanip_helper.c            |   4 +-
- .../tcg/insn_trans/trans_privileged.c.inc     |   2 +-
- target/riscv/tcg/insn_trans/trans_xlrbr.c.inc |   4 +-
- target/riscv/tcg/op_helper.c                  |   2 +-
- target/s390x/arch_dump.c                      |   8 +-
- target/s390x/cpu_models_system.c              |  15 +-
- tests/qtest/fuzz/fuzz.c                       |   2 +-
- 53 files changed, 809 insertions(+), 228 deletions(-)
- delete mode 100644 stubs/dump.c
- delete mode 100644 stubs/qmp-cpu.c
-
+diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+index daba9af79f1..c2ace7706f1 100644
+--- a/hw/arm/virt.c
++++ b/hw/arm/virt.c
+@@ -4161,6 +4161,7 @@ static void virt_machine_class_init(ObjectClass *oc, const void *data)
+     MachineClass *mc = MACHINE_CLASS(oc);
+     HotplugHandlerClass *hc = HOTPLUG_HANDLER_CLASS(oc);
+ 
++    TARGET_SPECIFIC_CLASS(oc)->is_available = target_base_arm;
+     mc->init = machvirt_init;
+     /* Start with max_cpus set to 512, which is the maximum supported by KVM.
+      * The value may be reduced later when we have more information about the
+@@ -4431,6 +4432,7 @@ static const TypeInfo virt_machine_info = {
+     .instance_finalize = virt_instance_finalize,
+     .interfaces = (const InterfaceInfo[]) {
+          { TYPE_HOTPLUG_HANDLER },
++         { TYPE_TARGET_SPECIFIC },
+          { }
+     },
+ };
+diff --git a/include/hw/arm/virt.h b/include/hw/arm/virt.h
+index 22e66d1a113..383ee320948 100644
+--- a/include/hw/arm/virt.h
++++ b/include/hw/arm/virt.h
+@@ -215,7 +215,7 @@ struct VirtMachineState {
+ 
+ #define VIRT_ECAM_ID(high) (high ? VIRT_HIGH_PCIE_ECAM : VIRT_PCIE_ECAM)
+ 
+-#define TYPE_VIRT_MACHINE   MACHINE_TYPE_NAME("virt")
++#define TYPE_VIRT_MACHINE   MACHINE_TYPE_NAME("arm-virt")
+ OBJECT_DECLARE_TYPE(VirtMachineState, VirtMachineClass, VIRT_MACHINE)
+ 
+ void virt_acpi_setup(VirtMachineState *vms);
 -- 
 2.52.0.windows.1
 

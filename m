@@ -4,92 +4,100 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 190C3C5DF9C
-	for <qemu-arm@archiver.kernel.org>; Mon, 24 Aug 2026 15:54:01 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6A132C5DF81
+	for <qemu-arm@archiver.kernel.org>; Mon, 24 Aug 2026 16:02:55 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wyWzL-0003CM-Nm; Mon, 24 Aug 2026 11:53:31 -0400
+	id 1wyX7f-0002vm-Tk; Mon, 24 Aug 2026 12:02:08 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1wyWzJ-0003Bh-KL
- for qemu-arm@nongnu.org; Mon, 24 Aug 2026 11:53:29 -0400
-Received: from mail-ed1-x534.google.com ([2a00:1450:4864:20::534])
+ id 1wyX7S-0002nN-VX
+ for qemu-arm@nongnu.org; Mon, 24 Aug 2026 12:02:00 -0400
+Received: from mail-ed1-x530.google.com ([2a00:1450:4864:20::530])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1wyWzH-0000Y2-JH
- for qemu-arm@nongnu.org; Mon, 24 Aug 2026 11:53:29 -0400
-Received: by mail-ed1-x534.google.com with SMTP id
- 4fb4d7f45d1cf-6a0a4a28cbdso6454144a12.3
- for <qemu-arm@nongnu.org>; Mon, 24 Aug 2026 08:53:27 -0700 (PDT)
+ id 1wyX7Q-0003Gi-K8
+ for qemu-arm@nongnu.org; Mon, 24 Aug 2026 12:01:54 -0400
+Received: by mail-ed1-x530.google.com with SMTP id
+ 4fb4d7f45d1cf-6a082b3671fso5999082a12.3
+ for <qemu-arm@nongnu.org>; Mon, 24 Aug 2026 09:01:51 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1787586806; x=1788191606; darn=nongnu.org;
+ d=linaro.org; s=google; t=1787587311; x=1788192111; darn=nongnu.org;
  h=content-transfer-encoding:content-type:mime-version:message-id:date
  :user-agent:references:in-reply-to:subject:cc:to:from:from:to:cc
  :subject:date:message-id:reply-to:content-type;
- bh=86xh+S/ZKc9aeRZHKG5S4+38sEi0XNLBzt4Trs+dF1k=;
- b=z8v5djszKTyE+svjCz6+umfO9UN5s2I2e2nUOCcQMZz4+tj4QyJsrzLe0c4TqCQQa3
- w9Pf8TLAwecWlcllYJPdrMQHARuELrju3uKj2/iAfgse+M1fDr+BuH6iqz1+C01KRdOQ
- PixTDU4xGXx5tHSLs+yy5bFA4aySysO6JQ9hAJ0UuTsuS6JB8w84YO/lw2cbV/GkUBG0
- xMa2vy2Bfxuv5tVTOvGYfN+DZOqt8dXgu91X/JpgT9p/l9t2ZEvYtQ6NoLsH73UOdEIi
- yD2rVodoXEgzAjQAuHpQTpHpe1LZ7g9nujg2AUaXcEM9LKgWLkUPYlxOA2V6T6qDwYnQ
- GDug==
+ bh=+Jnhu5+PvC2KeRhTRV9ZI7CDYeUyxbjrSrClEiJEA1Y=;
+ b=oxVOauDvazW41zGJfAVCU5BW5PzL2B0v5G6QWuxRHW2ZfFVEkSsBAIznhY0THjjH7i
+ Tl6toSgpm/VBOs2QX8S/VVNN4Qybv3e/73FZ3J196c7ZeUKwvQcOhv0alno7EwUZhSNr
+ Dy+EzGsIkdwPJvoEtl8cxuuElmAeIF3Ub086ROv9aWboNdBgsTQtHZROu6+nJ/Wia/Zs
+ MjrSwiXcqX+1dXyM6YCJb3GDklfWDp441lOF0Bui5mquZvS0/M+8RO7z5k1jcM3Enirs
+ Hl81ycdOJN7DG9B1dWukyfzu0wDY1sBSVIYKLP7K1n0oYshOa3MzEUw3yrLvrxrnd7CC
+ 5yVg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1787586806; x=1788191606;
+ d=1e100.net; s=20251104; t=1787587311; x=1788192111;
  h=content-transfer-encoding:content-type:mime-version:message-id:date
  :user-agent:references:in-reply-to:subject:cc:to:from:x-gm-gg
  :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
  :content-type;
- bh=86xh+S/ZKc9aeRZHKG5S4+38sEi0XNLBzt4Trs+dF1k=;
- b=D0oMLxmXlf3dBV+s94Yi/zOUMOgphb0zzgV7Ej404zKO9lr6b3Gj4Yu76veMMV8hJb
- pSN2AqPeXn7uvXeq15duIoF2+FW52I9Hx2Ff3pc+V3r2FIHs4q6xhaxubgyewa3CBchK
- 1p2+Saog8k6hi68K/m6MSugm5AosVjOMbZlQTMThO+FolGtaConLfZgZzSXaIepy+C05
- UhR2xQ6fK+iB+RylHzQDgN/E4/w/KEDtmskoAOOldxlbrlhVWy3+8Dl3q3rcgQ/J+Pp2
- twSh/k2jnbQZCoseP+pyrprE1ymX0WtdJLh8YahPjgsRPbW/lbsCwPuDdmFUiGbNuO8s
- 0oJA==
+ bh=+Jnhu5+PvC2KeRhTRV9ZI7CDYeUyxbjrSrClEiJEA1Y=;
+ b=aV1p3EwIkvSAnxrtekg/fULy/ieUZaUoUxtVo7HFKADeJdGvz8ScIBTTOOb8BBWeHd
+ 2FRWDiLxXDfoVkB/I6qYT9SHWxJg7vXTHdFDpQhNatPal9sa7tkJlWHT/Kx4pHdahiHu
+ KnuyUP/KzYtZxx+zV+aR6p1jjM+Ek/suWGUbSUYffbr6WWOrvqBaVfVdJ5G6awnNAqE5
+ O0cYiul8N+fFCmGE+F14g7Z4E0twPTQ7jyYIn4cCpGO66Q0kSSGvh+8f7CwBem+gC7zv
+ 1qLc8QYbRbN/zS5dP7KQBn+54OdccgN8QY17w4d/4HRS+D/aU55uJRWZT15tCTPkIZDF
+ eJGg==
 X-Forwarded-Encrypted: i=1;
- AHgh+Rqe5A85zX5CGU0cwUm+w/GU++IvLpev+4JfhR3iQA1EJb8lpvjGx1kFIiiV4UteKkIgHC9DlgK13g==@nongnu.org
-X-Gm-Message-State: AFuF++mxdTGXQskPdEQ35M6jk61d8AbjcsGhKG0EQhagSS6lrX4UoTp2
- jirC1ZCVEGMpl6Pycr4KLFKYbLdpVS9n4o+QlFQHs1tLzjBJIGvBAgL6q9FIuBNtaPM=
-X-Gm-Gg: AR+sD10ZhouUmbj5S9FbetIagau1xtAJ9JzWM1JmF45TgmK0/DwLjoBYpWoMk3ZjZAN
- RGKmXfMZhH0QlOzQvzENK03bwH/PDg1n81a6lSOWJ3q+OiAyR2Pj+uOWq4K2K5gHLuqc2EXGc5d
- uOqEkLn84lXJgDKaocZy+CHl/aRpiLjgJzuLTGSGhzTldlCNP+lUDqeMm4NEPlUr4kgGMYGtME2
- kdVW6pXLmMf3fKynfnZTt/M++m4heF9YvWKCHZymarM0kifzhoh/qTsBccB4J8Ukru3eRgnwt8m
- 1CTvKapQ2cXDuPgbP/HIwC+uMx50iGHezGS66K9DdoBgMYrZg7GUvUIHqjKtgqKOWDEH62xovFA
- lCO6EtvdMbfvYkS9XW9NFPPM3/8ZXRzo2UHTVnUSG9s31cLSmpb0Ihpv5t+brPjnftZJPT4d0OB
- W71euvBrMU/z9MLcigv/fKYrZHqLhvXwPrM0J1fp2He2OsYPQjQ+RdHqSx0iTa
-X-Received: by 2002:a05:6402:2402:b0:6a1:854:e75e with SMTP id
- 4fb4d7f45d1cf-6a582b8ebc4mr23841554a12.15.1787586805706; 
- Mon, 24 Aug 2026 08:53:25 -0700 (PDT)
+ AHgh+RosVKWvxIisKhtgyop0iMmwAQ1j+PW5f+6nVgb20p5BQuM4kRQEhY3h531v0zDX7BhTh/HDwkaIxw==@nongnu.org
+X-Gm-Message-State: AFuF++k0PRSv7TbsFK4dt9WskbblXkEhQeFIHe71dCPCKyBvEi6+z7GQ
+ lh3uIlM1XvNjUIZ5OXg32mrgtrr3p8B2U6so793xbCs/Geotpn2Q5MB7A3eAyKBaiJY=
+X-Gm-Gg: AR+sD11nWy+TpCWUhixH/jYgMT8BPPqKAoIa8fS8fIeezukVrKoIzzBL0TZrzmjO4+E
+ JbIYXOYIj/sPTy0Hs/c/IkxB7apZRhyUA0X/zn39DBWJ9FDQgWLcMNBIMKaTsammFBoiC24I0J+
+ CQqSl44v5K0fiaqjOShTjWkLTQ8Hy5qzhY+VfaDAmFVCB0Tkl9Ty0s+b2fiFH8sa0FlmB/gtKat
+ jqKaDoQIHTtFn/x0PIu/gcp2ofcxxrmbVxdZOcWGtokT0MLATG52BsKXRPXMdmQBwV+sqZ/vBpK
+ pwiRWhGQKkX5Qi3/zBhIN7Fwl3tS9/Ux9oWd4cvWJQ868ZRoYADQUIrCn+emQY6pTToSjcWDsEn
+ zZbV446RqAKogfTcgb3XorozvwHEEQdVZfpwD83OcuQhL6ITT8CVrpaAf4pate6oXxU18V/4fwq
+ mWZmfJFIB2JshcTjLqWhdOMaNSjiDQjRiea8EBa1Xr6enrgfwPJ+y+PMl0e0vy
+X-Received: by 2002:a05:6402:a0c5:b0:6a1:f26d:ba78 with SMTP id
+ 4fb4d7f45d1cf-6a42f1f2166mr32323230a12.11.1787587310624; 
+ Mon, 24 Aug 2026 09:01:50 -0700 (PDT)
 Received: from draig.lan ([185.124.0.156]) by smtp.gmail.com with ESMTPSA id
- 4fb4d7f45d1cf-6a59e2e2826sm9264063a12.31.2026.08.24.08.53.24
+ 4fb4d7f45d1cf-6a59e199c4asm9067932a12.14.2026.08.24.09.01.48
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 24 Aug 2026 08:53:24 -0700 (PDT)
+ Mon, 24 Aug 2026 09:01:49 -0700 (PDT)
 Received: from draig (localhost [IPv6:::1])
- by draig.lan (Postfix) with ESMTP id B23E45F7F5;
- Mon, 24 Aug 2026 16:53:23 +0100 (BST)
+ by draig.lan (Postfix) with ESMTP id 2DCA05F7F5;
+ Mon, 24 Aug 2026 17:01:48 +0100 (BST)
 From: =?utf-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>
-To: Wadim Mueller <wafgo01@gmail.com>
-Cc: qemu-devel@nongnu.org,  qemu-arm@nongnu.org,  Peter Maydell
- <peter.maydell@linaro.org>,  Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?=
+To: Daniel P. =?utf-8?Q?Berrang=C3=A9?= <berrange@redhat.com>
+Cc: qemu-devel@nongnu.org,  Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?=
  <philmd@mailo.com>,
- Bin Meng <bmeng.cn@gmail.com>,  Paolo Bonzini <pbonzini@redhat.com>,
- Fabiano Rosas <farosas@suse.de>
-Subject: Re: [RFC PATCH v2 03/14] hw/sd/sdhci: complete non-interrupt ADMA
- descriptor chains in one pass
-In-Reply-To: <20260820124824.618671-4-wafgo01@gmail.com> (Wadim Mueller's
- message of "Thu, 20 Aug 2026 14:48:03 +0200")
-References: <20260820124824.618671-1-wafgo01@gmail.com>
- <20260820124824.618671-4-wafgo01@gmail.com>
+ Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>,  Peter Maydell
+ <peter.maydell@linaro.org>,  qemu-arm@nongnu.org,  "Gonglei (Arei)"
+ <arei.gonglei@huawei.com>,  zhenwei pi <zhenwei.pi@linux.dev>,  "Michael
+ S. Tsirkin" <mst@redhat.com>,  Stefano Garzarella <sgarzare@redhat.com>,
+ Laurent Vivier <lvivier@redhat.com>,  Amit Shah <amit@kernel.org>,
+ =?utf-8?Q?Marc-Andr=C3=A9?= Lureau <marcandre.lureau@redhat.com>,  Paolo
+ Bonzini <pbonzini@redhat.com>,  John Snow <jsnow@redhat.com>,  Kevin Wolf
+ <kwolf@redhat.com>,  Hanna Reitz <hreitz@redhat.com>,
+ qemu-block@nongnu.org,  devel@lists.libvirt.org,  Fabiano Rosas
+ <farosas@suse.de>
+Subject: Re: [PATCH v2 6/8] tests/qtest: add test case for fdc sector overflow
+In-Reply-To: <aoxjLcRuc7sHnIPz@redhat.com> ("Daniel P. =?utf-8?Q?Berrang?=
+ =?utf-8?Q?=C3=A9=22's?= message of
+ "Mon, 24 Aug 2026 16:28:45 +0100")
+References: <20260824-fixes-for-11-2-v2-0-352c6b890402@linaro.org>
+ <20260824-fixes-for-11-2-v2-6-352c6b890402@linaro.org>
+ <aoxjLcRuc7sHnIPz@redhat.com>
 User-Agent: mu4e 1.14.4-pre1; emacs 30.1
-Date: Mon, 24 Aug 2026 16:53:23 +0100
-Message-ID: <87v78zqzv0.fsf@draig.linaro.org>
+Date: Mon, 24 Aug 2026 17:01:48 +0100
+Message-ID: <87pkz7qzgz.fsf@draig.linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2a00:1450:4864:20::534;
- envelope-from=alex.bennee@linaro.org; helo=mail-ed1-x534.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::530;
+ envelope-from=alex.bennee@linaro.org; helo=mail-ed1-x530.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -112,118 +120,104 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Wadim Mueller <wafgo01@gmail.com> writes:
+Daniel P. Berrang=C3=A9 <berrange@redhat.com> writes:
 
-> sdhci_do_adma() returns to the main loop after every descriptor and relies
-> on a timer re-entry to pick up the next one. For a descriptor chain whose
-> entries do not request an interrupt this makes the transfer rate depend
-> from the virtual clock rather than on the guest's programming, which
-> significantly slows down large transfers and makes guest-visible timing
-> depend on host timer behaviour.
+> On Mon, Aug 24, 2026 at 04:24:53PM +0100, Alex Benn=C3=A9e wrote:
+>> Add a test case for #3800 where we check that the last sector is
+>> properly bounded by the physical media that is inserted.
+>>=20
+>> Link: https://gitlab.com/qemu-project/qemu/-/issues/3800
+>> AI-used-for: initial draft of test
 >
-> Keep processing the chain in the same invocation while no descriptor asks
-> for an interrupt and the transfer has not finished, and only fall back to
-> the deferred path when the guest actually requested a notification.
+> Wasn't the change in AI policy still pending a new patch
+> proposal from Paolo ?
+
+Yes it is, however given I was rushed and am not super familiar with the
+fdc qtest code I took a shortcut to get something posted. FWIW it's mostly
+as the original prompt created apart from:
+
+  - I added the TEST_IMAGE_xxx changes
+  - I suggested fake_lastsect/fake_getsect naming over the original suggest=
+ion
+  - I asked it to expand the comments on using RESTORE/SAVE after
+    consulting the datasheet myself when reviewing the code
+
+Think of it as a road test for the proposal...
+
 >
-> A qtest reproducer is added later in this series.
->
-> Signed-off-by: Wadim Mueller <wafgo01@gmail.com>
-> ---
-> This patch can be dropped once Bin Meng's SDHCI series
-> https://patchwork.ozlabs.org/project/qemu-devel/list/?series=3D515264
-> (which needs series=3D513930 applied first) is merged - it covers the
-> same AM64x failure, see
-> https://lore.kernel.org/qemu-devel/20260810124519.34501-1-wafgo01@gmail.c=
-om/
-> It is included here only so that the series works on actual master.
->
->  hw/sd/sdhci-internal.h |  9 +++++++++
->  hw/sd/sdhci.c          | 23 +++++++++++++++++++++--
->  2 files changed, 30 insertions(+), 2 deletions(-)
->
-> diff --git a/hw/sd/sdhci-internal.h b/hw/sd/sdhci-internal.h
-> index 4aeed120bf..e6ce12617e 100644
-> --- a/hw/sd/sdhci-internal.h
-> +++ b/hw/sd/sdhci-internal.h
-> @@ -277,6 +277,15 @@ FIELD(SDHC_MAXCURR, V18_VDD2,         32, 8); /* sin=
-ce v4.20 */
->  #define SDHC_INSERTION_DELAY            (NANOSECONDS_PER_SECOND)
->  #define SDHC_TRANSFER_DELAY             100
->  #define SDHC_ADMA_DESCS_PER_DELAY       5
-> +/*
-> + * Upper bound on ADMA2 descriptors handled in a single sdhci_do_adma()
-> + * call, as a safety valve against a malformed or circular descriptor
-> + * list. A well-formed transfer terminates far below this via END or
-> + * blkcnt =3D=3D 0 (even a 4 GiB transfer built from 64 KiB TRAN descrip=
-tors
-> + * is only ~64K descriptors); the bound merely guarantees the loop makes
-> + * a decision instead of spinning forever.
-> + */
-> +#define SDHC_ADMA_MAX_DESCRIPTORS       (1 << 20)
->  #define SDHC_CMD_RESPONSE               (3 << 0)
->=20=20
->  enum {
-> diff --git a/hw/sd/sdhci.c b/hw/sd/sdhci.c
-> index e58a610397..9a5dd1d93f 100644
-> --- a/hw/sd/sdhci.c
-> +++ b/hw/sd/sdhci.c
-> @@ -780,7 +780,6 @@ static void sdhci_do_adma(SDHCIState *s)
->      const MemTxAttrs attrs =3D { .memory =3D true };
->      ADMADescr dscr =3D {};
->      MemTxResult res =3D MEMTX_ERROR;
-> -    int i;
->=20=20
->      if (s->trnmod & SDHC_TRNS_BLK_CNT_EN && !s->blkcnt) {
->          /* Stop Multiple Transfer */
-> @@ -788,7 +787,27 @@ static void sdhci_do_adma(SDHCIState *s)
->          return;
->      }
->=20=20
-> -    for (i =3D 0; i < SDHC_ADMA_DESCS_PER_DELAY; ++i) {
-> +    /*
-> +     * Process the descriptor chain to completion (END or blkcnt =3D=3D =
-0),
-> +     * yielding to the guest only for a descriptor carrying the INT
-> +     * attribute (a DMA-boundary interrupt, handled at the end of the lo=
-op).
-> +     *
-> +     * Historically at most SDHC_ADMA_DESCS_PER_DELAY descriptors were
-> +     * handled per call before rescheduling SDHC_TRANSFER_DELAY ns later=
- on
-> +     * QEMU_CLOCK_VIRTUAL. That pacing is only needed so a guest can obs=
-erve
-> +     * the intermediate DMA-interrupt state; a bulk transfer that reques=
-ts
-> +     * no interrupt does not need slicing, and throttling it across many
-> +     * virtual-clock round-trips can make it race a guest-side transfer
-> +     * timeout. Run such chains to completion in one call instead.
-> +     *
-> +     * SDHC_ADMA_MAX_DESCRIPTORS bounds the loop so a malformed or circu=
-lar
-> +     * chain cannot spin here forever; on overflow, break to the resched=
-ule
-> +     * path so the main loop stays responsive.
-
-Hmm SDHC_ADMA_MAX_DESCRIPTORS is (1 << 20) which seems an awful lot to
-handle in dma session especially if this is a guest controlled thing.
-
-> +     */
-> +    for (unsigned int adma_descs =3D 0; ; adma_descs++) {
-> +        if (adma_descs >=3D SDHC_ADMA_MAX_DESCRIPTORS) {
-> +            break;
-> +        }
-
-Seems an odd formulation when you have the for loop construct already.
-Although I see sdhci_do_adma already has multiple exit paths that skip
-the final timer reset so it is hard to follow the control flow anyway.
-
-I wonder if there is a better way to structure this logic so its easier
-to see where irq's are set, transfers ended and timers scheduled for
-continuation?
-
->          s->admaerr &=3D ~SDHC_ADMAERR_LENGTH_MISMATCH;
->=20=20
->          get_adma_description(s, &dscr);
+<snip>
+>>=20=20
+>> -#define TEST_IMAGE_SIZE 1440 * 1024
+>> +#define TEST_IMAGE_1440KB (1440 * 1024)
+>> +#define TEST_IMAGE_720KB (720 * 1024)
+>>=20=20
+<snip>
+>>=20=20
+>> +/*
+>> + * Query cur_drv->last_sect using the SAVE command (CMD_SAVE, 0x2e).
+>> + * Byte 8 of the 15 result bytes returned by CMD_SAVE holds last_sect.
+>> + */
+>> +static uint8_t get_lastsect(void)
+>> +{
+>> +    uint8_t res[15];
+>> +    int i;
+>> +
+>> +    floppy_send(CMD_SAVE);
+>> +    for (i =3D 0; i < 15; i++) {
+>> +        res[i] =3D floppy_recv();
+>> +    }
+>> +    return res[8];
+>> +}
+>> +
+>> +/*
+>> + * Attempt to set cur_drv->last_sect directly using the RESTORE command
+>> + * (CMD_RESTORE, 0x4e).
+>> + * While the 82078 datasheet describes RESTORE for restoring a previous=
+ly
+>> + * saved state, a guest can issue raw RESTORE commands with arbitrary
+>> + * parameters without having issued SAVE. Parameter byte 9 is used by t=
+he
+>> + * controller to restore cur_drv->last_sect.
+>> + */
+>> +static void fake_lastsect(uint8_t last_sect)
+>> +{
+>> +    floppy_send(CMD_RESTORE);
+>> +    floppy_send(0); /* fifo[1] */
+>> +    floppy_send(0); /* fifo[2] */
+>> +    floppy_send(0); /* fifo[3]: drv0 track */
+>> +    floppy_send(0); /* fifo[4]: drv1 track */
+>> +    floppy_send(0); /* fifo[5]: drv2 track */
+>> +    floppy_send(0); /* fifo[6]: drv3 track */
+>> +    floppy_send(0); /* fifo[7]: timer0 */
+>> +    floppy_send(0); /* fifo[8]: timer1 */
+>> +    floppy_send(last_sect); /* fifo[9]: last_sect */
+>> +    floppy_send(0); /* fifo[10]: lock/perpendicular */
+>> +    floppy_send(0); /* fifo[11]: config */
+>> +    floppy_send(0); /* fifo[12]: precomp_trk */
+>> +    floppy_send(0); /* fifo[13]: pwrd */
+>> +    floppy_send(0); /* fifo[14] */
+>> +    floppy_send(0); /* fifo[15] */
+>> +    floppy_send(0); /* fifo[16] */
+>> +    floppy_send(0); /* fifo[17] */
+>> +}
+>> +
+<snip>
+>>=20=20
+>> -    /* Create a temporary raw image */
+>> +    /* Create temporary raw images */
+>>      fd =3D g_file_open_tmp("qtest.XXXXXX", &test_image, NULL);
+>>      g_assert(fd >=3D 0);
+>> -    ret =3D ftruncate(fd, TEST_IMAGE_SIZE);
+>> +    ret =3D ftruncate(fd, TEST_IMAGE_1440KB);
+>> +    g_assert(ret =3D=3D 0);
+>> +    close(fd);
+>> +
+>> +    fd =3D g_file_open_tmp("qtest720.XXXXXX", &test_image_720k, NULL);
+>> +    g_assert(fd >=3D 0);
+>> +    ret =3D ftruncate(fd, TEST_IMAGE_720KB);
+>>      g_assert(ret =3D=3D 0);
+>>      close(fd);
+<snip>
 
 --=20
 Alex Benn=C3=A9e

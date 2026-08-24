@@ -4,82 +4,81 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6B5E5C61CE3
-	for <qemu-arm@archiver.kernel.org>; Mon, 24 Aug 2026 12:46:34 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1D397C5DF81
+	for <qemu-arm@archiver.kernel.org>; Mon, 24 Aug 2026 12:48:03 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wyU4N-0002dP-Sx; Mon, 24 Aug 2026 08:46:31 -0400
+	id 1wyU5Z-0003ZZ-9w; Mon, 24 Aug 2026 08:47:46 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
- id 1wyU4B-0002Wk-Vs
- for qemu-arm@nongnu.org; Mon, 24 Aug 2026 08:46:27 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ id 1wyU5W-0003ZM-Qz
+ for qemu-arm@nongnu.org; Mon, 24 Aug 2026 08:47:42 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
- id 1wyU49-0003dg-JM
- for qemu-arm@nongnu.org; Mon, 24 Aug 2026 08:46:18 -0400
+ id 1wyU5V-0003nX-8A
+ for qemu-arm@nongnu.org; Mon, 24 Aug 2026 08:47:42 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1787575575;
+ s=mimecast20190719; t=1787575660;
  h=from:from:reply-to:reply-to:subject:subject:date:date:
  message-id:message-id:to:to:cc:cc:mime-version:mime-version:
  content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=/866lKaAtCCU2MYAvKjjeCmOjHxzFGuRDtxT+9I9xVM=;
- b=YSO/WfhbmOPweR0zaTAyoWaNEn+LVXblwU3WnVtozSg3HJNDyDTqTjU6V8f6BnESNYWE1b
- EvUUsMYnyWsaUd4vtyfiX0jwCei8V2Q5KUjMHdngJk3qCTANcag3WS1aGau6BUB5D9akxi
- MHNYX4THjR3HNQvtWnM2QDhfC1CrTiM=
-Received: from mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com
+ bh=kkuNtvssszqnS+D3xhHum9pmFupVEZCcIc1l8Bq0mxs=;
+ b=KV77pgpb4IKlbZFnNwYrqviaF/bz1vEZInoKW8w4agtoXWE/jxYQV+kI7fLbPuhEiMP/xd
+ 6DBzSYmJ7GmICICVWnSEwlagfAlMe/vUW2pYjZCq8xKpGr0djMpzl1dGLlouMwnOYneh/n
+ 0YJ16irzm7fhbuxhTe+bnhh3ITnwdYY=
+Received: from mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com
  (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-178-paHfLQhGNiafe_tgEFo2-Q-1; Mon,
- 24 Aug 2026 08:46:11 -0400
-X-MC-Unique: paHfLQhGNiafe_tgEFo2-Q-1
-X-Mimecast-MFC-AGG-ID: paHfLQhGNiafe_tgEFo2-Q_1787575569
-Received: from mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com
- (mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.17])
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-665-h9ELdUl-Ou-y5gqM1FZyMg-1; Mon,
+ 24 Aug 2026 08:47:38 -0400
+X-MC-Unique: h9ELdUl-Ou-y5gqM1FZyMg-1
+X-Mimecast-MFC-AGG-ID: h9ELdUl-Ou-y5gqM1FZyMg_1787575657
+Received: from mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com
+ (mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.12])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 43E551977515; Mon, 24 Aug 2026 12:46:09 +0000 (UTC)
+ by mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 6250B195F16C; Mon, 24 Aug 2026 12:47:37 +0000 (UTC)
 Received: from redhat.com (headnet05.pony-001.prod.iad2.dc.redhat.com
  [10.2.32.117])
- by mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 59D221955DAA; Mon, 24 Aug 2026 12:46:06 +0000 (UTC)
-Date: Mon, 24 Aug 2026 13:46:03 +0100
+ by mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 840DF1955F10; Mon, 24 Aug 2026 12:47:34 +0000 (UTC)
+Date: Mon, 24 Aug 2026 13:47:31 +0100
 From: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
 To: Mark Cave-Ayland <mark.caveayland@nutanix.com>
 Cc: mst@redhat.com, imammedo@redhat.com, anisinha@redhat.com,
  philmd@mailo.com, aurelien@aurel32.net, peter.maydell@linaro.org,
  richard.henderson@linaro.org, marcandre.lureau@redhat.com,
  qemu-devel@nongnu.org, qemu-arm@nongnu.org
-Subject: Re: [PATCH v4 05/16] qom/object.c: add
- object_class_property_add_uint64_ptr()
-Message-ID: <aow9C4389WTpOadD@redhat.com>
+Subject: Re: [PATCH v4 06/16] hw/isa/lpc_ich9.c: convert ich9_lpc_initfn()
+ object props to class props
+Message-ID: <aow9Y5HIXptt_mUQ@redhat.com>
 References: <20260821111550.276011-1-mark.caveayland@nutanix.com>
- <20260821111550.276011-6-mark.caveayland@nutanix.com>
+ <20260821111550.276011-7-mark.caveayland@nutanix.com>
 MIME-Version: 1.0
-In-Reply-To: <20260821111550.276011-6-mark.caveayland@nutanix.com>
+In-Reply-To: <20260821111550.276011-7-mark.caveayland@nutanix.com>
 User-Agent: Mutt/2.4.0 (2026-06-19)
-X-Scanned-By: MIMEDefang 3.0 on 10.30.177.17
-X-Mimecast-MFC-PROC-ID: MKAZBhf9oqBdpGAtkl-W_T5OLR9JflA1mp-Zf39fYXw_1787575569
+X-Scanned-By: MIMEDefang 3.0 on 10.30.177.12
+X-Mimecast-MFC-PROC-ID: K77aE4e3sh3LUg8dJ1fnLCK281KTzvFE0VRH3ztPpkw_1787575657
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=utf-8
 Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=berrange@redhat.com;
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=berrange@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: 12
 X-Spam_score: 1.2
 X-Spam_bar: +
 X-Spam_report: (1.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
- RCVD_IN_SBL_CSS=3.335, SPF_HELO_PASS=-0.001,
- SPF_PASS=-0.001 autolearn=no autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=0.001, RCVD_IN_SBL_CSS=3.335,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -96,15 +95,15 @@ Reply-To: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Fri, Aug 21, 2026 at 12:14:17PM +0100, Mark Cave-Ayland wrote:
-> This adds a class property that references a uint8_t within the object instance
-> and is intended to be a replacement for object_property_add_uint64_ptr().
+On Fri, Aug 21, 2026 at 12:14:18PM +0100, Mark Cave-Ayland wrote:
+> ACPI_PM_PROP_SCI_INT can be updated to use object_class_property_add_uint8_ptr()
+> with OBJ_PROP_FLAG_READ, whilst ICH9_LPC_SMI_NEGOTIATED_FEAT_PROP can be updated
+> to use object_class_property_add_uint64_ptr().
 > 
 > Signed-off-by: Mark Cave-Ayland <mark.caveayland@nutanix.com>
 > ---
->  include/qom/object.h | 18 ++++++++++++++++++
->  qom/object.c         | 21 +++++++++++++++++++++
->  2 files changed, 39 insertions(+)
+>  hw/isa/lpc_ich9.c | 33 ++++++++++++++++++++-------------
+>  1 file changed, 20 insertions(+), 13 deletions(-)
 
 Reviewed-by: Daniel P. Berrangé <berrange@redhat.com>
 

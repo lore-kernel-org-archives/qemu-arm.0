@@ -4,88 +4,89 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3D43AC5DF94
-	for <qemu-arm@archiver.kernel.org>; Mon, 24 Aug 2026 10:28:53 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CFBBFC5DF94
+	for <qemu-arm@archiver.kernel.org>; Mon, 24 Aug 2026 10:29:40 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wyRup-00037d-HU; Mon, 24 Aug 2026 06:28:31 -0400
+	id 1wyRuw-00038Z-0T; Mon, 24 Aug 2026 06:28:38 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1wyRud-00035E-SW
- for qemu-arm@nongnu.org; Mon, 24 Aug 2026 06:28:20 -0400
-Received: from mail-wm1-x332.google.com ([2a00:1450:4864:20::332])
+ id 1wyRuc-00033o-AE
+ for qemu-arm@nongnu.org; Mon, 24 Aug 2026 06:28:18 -0400
+Received: from mail-wm1-x32c.google.com ([2a00:1450:4864:20::32c])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1wyRua-0001qZ-Ht
- for qemu-arm@nongnu.org; Mon, 24 Aug 2026 06:28:19 -0400
-Received: by mail-wm1-x332.google.com with SMTP id
- 5b1f17b1804b1-4954dff6536so24565485e9.0
- for <qemu-arm@nongnu.org>; Mon, 24 Aug 2026 03:28:16 -0700 (PDT)
+ id 1wyRuY-0001pf-Iy
+ for qemu-arm@nongnu.org; Mon, 24 Aug 2026 06:28:16 -0400
+Received: by mail-wm1-x32c.google.com with SMTP id
+ 5b1f17b1804b1-49978908b35so20480745e9.0
+ for <qemu-arm@nongnu.org>; Mon, 24 Aug 2026 03:28:10 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1787567295; x=1788172095; darn=nongnu.org;
+ d=linaro.org; s=google; t=1787567289; x=1788172089; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:to:from:from:to:cc:subject:date:message-id
  :reply-to:content-type;
- bh=b+5usmdHTznNDEGIvxe7BfpQfxtTJ2JOpHQUhBK8vMo=;
- b=w3mvN03ARCLvrNmd23e/mOgJy/W2F6n+D2sCffkhDL7X3BZ+w065hHVsbQwKGOAHLT
- PV8mmU5Ycyo/QDEq2aGFSmSiy+WAaJUXLThQVvmU8aQNyIiSsc2aHXj0yck8YbbnwJ8a
- VQeinUCWjOnpWtzQCLd9BqiVdKHA5eHvVs294OM/RSxAovMcA+gUJxp8mNxdIqSLAcnr
- UQ/NPFVSNUyw/I6rHZ5lemBxEUI3ayDq7DljWh4zrnzkvgwBn0KtGb0weBxDS+WpThi+
- YuWCFS7s5P3qoqr9MLzIcfZ0llrZL1L9LdF8RY3t/29HhfNhxLwG8mdyw/YKUS+RirN4
- X49A==
+ bh=I0r2nXlXjUB7wD1f3dT3ydAdxG7m+kDY629ovNa4ajA=;
+ b=WRgd69QaX7rsMqzfqEED+1UnZmzk3bppswvhZ1aJMxhdaOX4R0mbHioCnfkwS4ef7P
+ myNIN5/La0akMlB7Ncijkupo6nBp8I50Ykb0D/xtxeIQcozB23WXDMwlZJqNgFQVOSDE
+ UEptD3NUuQu1Hnk0j5nOQD8Sw6NFkGnYft2oHEWwNKPCZN25Ir0Qw/IfE6LK5CZju92V
+ AfQdW+TAbD3VSwd42j005b4Z5HGjwHmPdNOcwuolw0t+CYcv+Fom6Es++8ZXAmFwkzsg
+ NYQhLp/bKcqAvE/S8EG0sMlHvxhDvLp7ZGXYBsSGZlr/FgFU7J8nVkDKtWbI8hFq9ugR
+ rYVA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1787567295; x=1788172095;
+ d=1e100.net; s=20251104; t=1787567289; x=1788172089;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:to:from:x-gm-gg:x-gm-message-state:from:to
  :cc:subject:date:message-id:reply-to:content-type;
- bh=b+5usmdHTznNDEGIvxe7BfpQfxtTJ2JOpHQUhBK8vMo=;
- b=sd9Lh28Dfy8zAPKwpc5uNrBY6NNr7McqIUAKy5FthiXmgyvzKJrpUxiof0BuAo1fvf
- QPXBO50N63ht6L1rvNFwp8fcjTgHcE5Hf7iK8V7jYoLcMsS1d8r0OUpMLjjTcMN6UReU
- sF6aB56HX2dCIiLRcb1I4S2nryOvl0O0iHKaq9N61CouMV/cz7vq33RF65azWKhXl1qk
- tCM0w51WkCMryu6G8RgnrnhBlczngNXV1Om4WsODitsw0dfbvrY7/BF63uc8o5UR3gBv
- 0DwleqfLtkhVjiJH21u4w6pKpx4JRI+qyrbfc7MWM+j1HPEwB6SArpKB4/5XahwZGOv8
- 8YXA==
-X-Gm-Message-State: AFuF++lQOnDrabDb1xRXCp8Quc/jMzw1vqFBXluDOHDo7PiJ50dEsGMM
- RV9ogh/al7l5cxPju7BPy6HXRe6b58SYkTyqN9+Yw69qzOTrT8rSFFjgFT0Eei+miuXG/G6qmOV
- +3JFL50c=
-X-Gm-Gg: AR+sD13vFsAqlEZGd/61nI9zfEi1KHsfIbynLO+XDKOcPUsEIJdZZkEVdiWG6H4+Afg
- QRdCPKbY/LLu1fzsQE7FpfKql07Cvo4gMy0AHqfJxtGop1vdLujG+ooqW0wjopXVn5oqB29kAac
- OxWKqfQbYkgxlEK9w/lbq2MXs2I+RyHmX2plrVcyarf472OwhsqkpMUTbX41shZJnPpyIX7p50N
- DvkmfXBM1xA9H/w6ELF1560zs/6lTRBPtGiu6qCDE+FWJWGhTCL6WdunFS9rhqEp/3XOKlI120F
- Gd12gQjWsM0aozawFG/mC6/M9tD6obIWIEJ1k5hSpK5rN9EMhlMdgigOmo0UtQmR1r0cUquyQq+
- uRkGH4uXiG//oia1U2pcbw+vUJFw/JbM0BBfXuF5PUe8gX/OzCTUMSbjusjdVjHrrrIb25g1H4F
- waYd6jF5l7wAcWlxZ4LwDy+tMTt6qZ9gMli3uFEzsQ4eX7bfBO7/7xxQMXtQg/qWAZhmcM9JKmS
- rDThy7vOBs7hIkoeOiZUO9+C3f7BYvJOp0ehSjKHE6uaywGuTz/lIwoiJdhyoF/pKpmyw==
-X-Received: by 2002:a05:600c:1383:b0:499:84fe:ca8c with SMTP id
- 5b1f17b1804b1-499b830dd98mr278303945e9.5.1787567295048; 
- Mon, 24 Aug 2026 03:28:15 -0700 (PDT)
+ bh=I0r2nXlXjUB7wD1f3dT3ydAdxG7m+kDY629ovNa4ajA=;
+ b=Hr04oOSeerU7Ujfp6MHurBOHAjXOioPDg+KWqTZXgDW4Y+aTelbLegrucUvhI/rwtp
+ rWo9z70n9HAIZchN4ogZjLkI2hUw4JZKRnM3W0NGBQIByNIrkjXHb3kvHb5J5v8oRuRm
+ FPhhz6MdzAP8DUZz2jWERfDm30l9YkAVRjQ/CztHckRkG0rtlkMWKhSMEJoZqe26944Q
+ DkZ0/DlEhplFXH6W/OzWCrBNtuS6idqnUPnkJff7ILNnocJ4tpD/PsHvU+IEdJ5ecOWc
+ rrkTNNeUQ5UaP+cwfkE0fMfmG73kkGuQqwyrfWjoXHfVVBYaIzXSm86pQ8kfu8bCt8xW
+ D7Hw==
+X-Gm-Message-State: AFuF++nfKnbuH1aoEXTX/7NrAyhKnDFGGFnx03pX6eUJBQySi1glvDAZ
+ DYqijLQ5X8p1jekLuIWfRs6hffRbCgdxgSwSMs5sWPH8Gvu3LUE+lfzwwYkN+RKn7CoPlW+uKaG
+ x3y/j9yE=
+X-Gm-Gg: AR+sD11ATydDbQIIex+A0R6EX5uMp7chFN0wLr5n6yKr9LRSntkLsTjXP0JCvEXex40
+ b7zSEq2fhB5S0g39ISSrYUnkoBPbfy/+ZGrAK4c0Bcia/Y4C7obWcnOpc1Lse5Gs7DpK+NMovQf
+ O+I3ImdnPrELdkUpc5kHdxB1aMzptsYb9C93xxzTujUAqoUqL3XzYGln2LVyBptx6GWlOXyRvx5
+ GlxbsrLx8m0SyaSRAPQDj9j7CZecyi/C9xVG6a4byxfWnJK+uT+QsAksFFuXdvb2cV34tVeCvJt
+ ohkY2cAevD9Mov31H5Lzoj+VGRysIoCMtiS577zCfWl+srYmDLz8gMS//uM/qCFM2ovPw6WYs3y
+ Hv6SuC+wxd1nscf4epFzyTmIcy6AOAKBUcyuexMu6KNRwCSBgBgfndmHlEOMyW/AlliJG7VWU/g
+ rax3HWuwffPR+Uld2rb/oTAHK+aHNkqOvBOnKPe2j3e3UoClYCmY+HIdD50450ocZcExv+W6/pZ
+ t36FFS8ZHyyifx8oyEIfOU1yH/84XKtyJTjunyw8if8jlM50BrMGx4QuvtBkH+DgXiFwyx/U/TO
+ 0sqN
+X-Received: by 2002:a05:600c:a087:b0:499:86ce:465e with SMTP id
+ 5b1f17b1804b1-499b8324b09mr321172385e9.4.1787567289130; 
+ Mon, 24 Aug 2026 03:28:09 -0700 (PDT)
 Received: from lanath.. (wildly.archaic.org.uk. [81.2.115.145])
  by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-499c355e6d1sm77730095e9.6.2026.08.24.03.28.14
+ 5b1f17b1804b1-499c355e6d1sm77730095e9.6.2026.08.24.03.28.08
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 24 Aug 2026 03:28:14 -0700 (PDT)
+ Mon, 24 Aug 2026 03:28:08 -0700 (PDT)
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Subject: [PATCH 5/6] hw/intc/arm_gicv5: Free memory in finalize
-Date: Mon, 24 Aug 2026 11:28:04 +0100
-Message-ID: <20260824102805.639072-6-peter.maydell@linaro.org>
+Subject: [PATCH 1/6] hw/intc/arm_gicv5: Ignore low bits in IRS_IST_BASER.ADDR
+Date: Mon, 24 Aug 2026 11:28:00 +0100
+Message-ID: <20260824102805.639072-2-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20260824102805.639072-1-peter.maydell@linaro.org>
 References: <20260824102805.639072-1-peter.maydell@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::332;
- envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x332.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::32c;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x32c.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -101,55 +102,88 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-The GICv5 allocates memory and creates hashtables during realize and
-as part of its operation.  Free those resources in finalize.
+The IRS_IST_BASER.ADDR documentation says:
 
-Since the GICv5 is created at QEMU startup and remains in existence
-for the lifetime of the process, this isn't an in-practice leak,
-only a theoretical one.
+For IRS_IST_CFGR.STRUCTURE = 0:
+ Bits[N:0] of the resulting address are 0 where N depends on the ISTSZ
+ and LPI_ID_BITS fields in IRS_IST_CFGR as follows:
+    N = Max(5, (ISTSZ + 1) + LPI_ID_BITS)
+For IRS_IST_CFGR.STRUCTURE = 1:
+
+ Bits[N:0] of the resulting address are 0 where N depends on L2SZ,
+ ISTSZ, and LPI_ID_BITS in IRS_IST_CFGR as follows:
+    N = Max(5, LPI_ID_BITS - ((10 - ISTSZ) + (2 * L2SZ)) + 2)
+
+This enforces that the IST is aligned to the size of the IST table,
+or to a 64-byte boundary if the table is smaller than 64 bytes, even
+if the guest programs the low bits in the ADDR field to specify an
+insufficiently aligned address.
+
+We were missing this check, and instead trusted the guest-provided
+address to be sufficiently aligned already; add the alignment
+enforcement.
+
+The GICv5 spec defines the masking to be used with the expressions
+quoted above, which work with the raw field values from the
+IRS_IST_CFGR register; these simplify down to some straightforward
+expressions based on the sanitized values we've already extracted
+form those fields.  You can get to the expressions we use here either
+by working through the simplification of the GIC spec expressions, or
+from first principles (the number of bits needed for the size of the
+table in bytes is the number of bits that index it plus the number of
+bits specifying the size of an individual table entry).
 
 Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 ---
- hw/intc/arm_gicv5.c        | 11 +++++++++++
- hw/intc/arm_gicv5_common.c |  3 +++
- 2 files changed, 14 insertions(+)
+ hw/intc/arm_gicv5.c | 28 ++++++++++++++++++++++++++++
+ 1 file changed, 28 insertions(+)
 
 diff --git a/hw/intc/arm_gicv5.c b/hw/intc/arm_gicv5.c
-index 8ffb2a49020..de0044df9c6 100644
+index 08878193dfc..cdc6c9d3466 100644
 --- a/hw/intc/arm_gicv5.c
 +++ b/hw/intc/arm_gicv5.c
-@@ -1970,6 +1970,17 @@ static void gicv5_init(Object *obj)
- 
- static void gicv5_finalize(Object *obj)
- {
-+    GICv5 *s = ARM_GICV5(obj);
+@@ -1313,6 +1313,7 @@ static void irs_ist_baser_write(GICv5 *s, GICv5Domain domain, uint64_t value)
+          */
+         GICv5ISTConfig *cfg = &s->phys_lpi_config[domain];
+         uint8_t istbits, l2bits, l2_idx_bits;
++        int tableszbits;
+         uint8_t id_bits = FIELD_EX64(cs->irs_ist_cfgr[domain],
+                                      IRS_IST_CFGR, LPI_ID_BITS);
+         id_bits = MIN(MAX(id_bits, QEMU_GICV5_MIN_LPI_ID_BITS), QEMU_GICV5_ID_BITS);
+@@ -1359,6 +1360,33 @@ static void irs_ist_baser_write(GICv5 *s, GICv5Domain domain, uint64_t value)
+         cfg->l2_idx_bits = l2_idx_bits;
+         cfg->structure = FIELD_EX64(cs->irs_ist_cfgr[domain],
+                                     IRS_IST_CFGR, STRUCTURE);
 +
-+    for (int i = 0; i < NUM_GICV5_DOMAINS; i++) {
-+        GHashTable *ht = s->phys_lpi_config[i].lpi_cache;
-+
-+        if (ht) {
-+            g_hash_table_destroy(ht);
++        /*
++         * Bits [N:0] of the base addr are ignored, to enforce that in a
++         * 1-level IST it is aligned to the size of the ISTE array,
++         * and in a 2-level IST it is aligned to the size of the L1 table.
++         * The spec defines N in terms of the raw L2SZ, ISTSZ and LPI_ID_BITS
++         * fields, but we have already sanitized these to
++         *  istbits = ISTSZ + 2
++         *  l2bits = (L2SZ * 2) + 12
++         *  id_bits = LPI_ID_BITS
++         * We have also already enforced the "bottom 6 bits are 0" via
++         * R_IRS_IST_BASER_ADDR_MASK, so can skip the Max() operation.
++         * We want tableszbits == the number of bits to zero, which is N + 1.
++         */
++        if (cfg->structure) {
++            /*
++             * L1 table is indexed by the (id_bits - l2_idx_bits) bits in
++             * the ID, so has 2^(id_bits - l2_idx_bits) entries, and each
++             * entry is 8 bytes == 2^3.
++             */
++            tableszbits = id_bits - l2_idx_bits + 3;
++        } else {
++            /* table has 2^id_bits entries of 2^istbits size each */
++            tableszbits = id_bits + istbits;
 +        }
++        cfg->base &= MAKE_64BIT_MASK(0, tableszbits);
 +
-+        g_free(s->hppi[i]);
-+    }
- }
- 
- static void gicv5_class_init(ObjectClass *oc, const void *data)
-diff --git a/hw/intc/arm_gicv5_common.c b/hw/intc/arm_gicv5_common.c
-index b155486af65..cc67246686e 100644
---- a/hw/intc/arm_gicv5_common.c
-+++ b/hw/intc/arm_gicv5_common.c
-@@ -112,6 +112,9 @@ static void gicv5_common_init(Object *obj)
- 
- static void gicv5_common_finalize(Object *obj)
- {
-+    GICv5Common *cs = ARM_GICV5_COMMON(obj);
-+
-+    g_free(cs->spi);
- }
- 
- static void gicv5_common_realize(DeviceState *dev, Error **errp)
+         if (!cfg->lpi_cache) {
+             /*
+              * Keys are GINT_TO_POINTER(intid), so we want the g_direct_hash
 -- 
 2.43.0
 

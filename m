@@ -4,99 +4,112 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1D92DC5DF94
-	for <qemu-arm@archiver.kernel.org>; Mon, 24 Aug 2026 14:16:25 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 632BDC5DF9B
+	for <qemu-arm@archiver.kernel.org>; Mon, 24 Aug 2026 15:25:18 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wyVT0-0005z6-TJ; Mon, 24 Aug 2026 10:16:02 -0400
+	id 1wyWXz-0005ct-6F; Mon, 24 Aug 2026 11:25:15 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1wyVSz-0005yQ-2f
- for qemu-arm@nongnu.org; Mon, 24 Aug 2026 10:16:01 -0400
-Received: from mail-yx1-xb129.google.com ([2607:f8b0:4864:20::b129])
+ (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
+ id 1wyWXy-0005bs-KN
+ for qemu-arm@nongnu.org; Mon, 24 Aug 2026 11:25:14 -0400
+Received: from mail-ed1-x531.google.com ([2a00:1450:4864:20::531])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1wyVSt-0006rJ-Hd
- for qemu-arm@nongnu.org; Mon, 24 Aug 2026 10:15:59 -0400
-Received: by mail-yx1-xb129.google.com with SMTP id
- 956f58d0204a3-66c711b7f2aso5174239d50.3
- for <qemu-arm@nongnu.org>; Mon, 24 Aug 2026 07:15:54 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1787580953; cv=none;
- d=google.com; s=arc-20260327;
- b=m3mK5NNayJFTNVA+NTOFQQF0NzSG8WtAcs8oCWsYZ2LB4f77YsbnnQ7z6EBreDoaBH
- nfkjW+G14Op/xgaDIWAiEWM8AZUq7wdANBxYvvBNS1Dv9bxHSlAw3doqJU+cNmT6TrOw
- MIia+snlCOhHRNRcyEsCWL7/d40GpycPvS3oZrpdZA+6CPDuve+DWRI/ffx1wErw/E47
- +7PSZE9zqnBRJC3wdVRRGyx2p6g9LoBoZUjiukTc4cWWhlT3jvd7CItYvBoitSyHVst/
- 4PrWIl6LlA6fhyKYuR0K8QwdRBdhi7AKfjnVJsS6KGTHjAR4aKOe9of0lieYAKm/Q5QX
- Zqew==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
- s=arc-20260327; 
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:dkim-signature;
- bh=bOE19ddvt3OiBdu36MUo3HBusa8hq0RDUQcKaDJOVPg=;
- fh=bylHTlXKagR60JR6hlKikcBZkjoax/Kz3v/HLA7SjSY=;
- b=gl6IjyBw1ETMX3tBEoUuVp9cu3XdWwqQ9oK1S9CNWvwiL3Q+OYRh7p9ayuNbZ4iAZ+
- mK3mcn91VQTaThk6N1tL+67ylCtEPCPnD9LBawyCtuMISXxFG2o1DBg2VZzYcU7OVhjZ
- 1xH6QJLoUXG0vJiRhTe3HjMQYv6UgpoGnYJrTAnMiYRUT6O/ZVHseQLQkdQctVtyKAex
- qz3UCPkZjn9LuKViqeBNlVYi4npgPn2hNbTvvTmKkGdjfvyLUQRwqHEfqo5h0p6XBvYs
- ZGsytFncwClOFfd/f/AK66B/seiJviBoKNtW9SoqnLcEzPEuqM4hKRXrgNzhK4Fs+nXR
- sKBQ==; darn=nongnu.org
-ARC-Authentication-Results: i=1; mx.google.com; arc=none
+ (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
+ id 1wyWXv-0007D7-7y
+ for qemu-arm@nongnu.org; Mon, 24 Aug 2026 11:25:14 -0400
+Received: by mail-ed1-x531.google.com with SMTP id
+ 4fb4d7f45d1cf-6a3efa2b38aso6584270a12.2
+ for <qemu-arm@nongnu.org>; Mon, 24 Aug 2026 08:25:10 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1787580953; x=1788185753; darn=nongnu.org;
- h=content-transfer-encoding:content-type:cc:to:subject:message-id
- :date:from:in-reply-to:references:mime-version:from:to:cc:subject
- :date:message-id:reply-to:content-type;
- bh=bOE19ddvt3OiBdu36MUo3HBusa8hq0RDUQcKaDJOVPg=;
- b=nGSs81BxnkggcsP8tpD4VcmDSzwCJ/2mb8cZjwGUKuA4PlxydZc0EA/eoerFpUSOj6
- 3MlJrFOkIDUzDrARdwRjBdQWI4L6IrkNLIpJ1svLNFnzkLSSkUkSVuHzj/KsxmY0Y3Jz
- ytnpXbjT+uvCgoC9k7xk0IXtdfG2X79kF2tBos3TfZxDnN6e2Q0K4Mez1JF0ccqRcpJU
- VGXjtX8GxbwvQyOH7pas4VlzZrQWyOPHSp7eaNmzHCpwuN9TIfePb1yC00d946PlAcO8
- 1r5UbWVaX7OXGmuHy54kBEmZveZbJd1ac2STinfSefL3vOcAlSAaFeVYG7SIkWLn/NJh
- wyRQ==
+ d=linaro.org; s=google; t=1787585109; x=1788189909; darn=nongnu.org;
+ h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
+ :content-type:mime-version:subject:date:from:from:to:cc:subject:date
+ :message-id:reply-to:content-type;
+ bh=G0Wd3sJhbhnAigDSbOw80EWCSyIFhk3lURnLFBsiUDE=;
+ b=S2SquJKLL320UGqf73K9Qlacfirb6HMSk6HdcrhFafDHDFynkQGximtAg1eCZynmJE
+ baDd6ffpi8eG7/a9nQLOjtWNZXrRzimRf3Ps6KPqmAwWDZU2EKaPF3iOf0lxCFTODaFM
+ Rdqd4ZhpUW/mvF4LhkUdSWVTLyjPTPQmDcD+aedjxgh+lOdF5oaUxwQfnkPPGAs95Q+M
+ gXz3WNfTiG8/CiXeMnKt912yi//W5RUD9GsMNWcDZxcwPNq9owTmvNBpSDWAEdO9eoKC
+ EtR6HCAB1N3jiaCPpLBek98jWqLJZ+6Z4vIQrdlqQa3vi+0GAD/7DVmhiA3ndOzT2Czp
+ 07Pg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1787580953; x=1788185753;
- h=content-transfer-encoding:content-type:cc:to:subject:message-id
- :date:from:in-reply-to:references:mime-version:x-gm-gg
+ d=1e100.net; s=20251104; t=1787585109; x=1788189909;
+ h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
+ :content-type:mime-version:subject:date:from:x-gm-gg
  :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
  :content-type;
- bh=bOE19ddvt3OiBdu36MUo3HBusa8hq0RDUQcKaDJOVPg=;
- b=XCQxuco9CXxbbQAnh3prNOogIWTEpEiMCr4kVqlNyp+FnhVkM7MeaFOgaubrZZcGgb
- glBJPbgYauOCCfbB1zEJjsISrK7wCBsFH1q1xJKiEZSosGju3zwjVGzifhHEjEUFdscd
- NRK/APCYgKF2CIOw4zaETw9FngE4NaeoZeACL3y2o6s6OwaCi/ceoZORarcKyrkTIa16
- hqq8yaIJ6/8rARXXzO8WNZFSUZ6/jSqRvifgeRp8SIcNFLAPXIsrunnyjnT763CKCz9k
- 8TZOPe+JChPObXmhSmlNZVWOxY00Qw9pp4Z7vKO6pa7azOWrNv94om2YKUlVGFqaFMnA
- tL7A==
-X-Gm-Message-State: AFuF++k5hj7TtEqKPgLColn/l3rWX8pJxu1BtJnCJUYr0azXPNOTood1
- c+gEwIOgyfhqX2ZoYtJ+SyufE25H0fXKlUqKGmDziWPH/kDURtteuTK7rxtf6pts0QDyWBoeTxQ
- kFSCQhv/uzSNofdlk7ika0sncMjqwLlca5XwCe74zlg==
-X-Gm-Gg: AR+sD13DoZDh2FLLM2V1Ov33sgqX0VzHpPEkQa105tkJe0dlQE2nxoHsam5Fs2PBJ73
- ncXP8OUkQWfylieVVhSq6F6GU0vdAJPTA9nqrtgEAgoEA7G4abxJyiuODy0ePaVXbnudtBaZkAP
- iHWeAvPBwh/17ELKvzcqDH07WDQk9jlEHJHmdEU21YUm1/HRTtJsSUwaCc7WrN+/OTlHXNScfql
- CRf6h+xNk/Z5iAs5JRsjZFtDgK4HqNxwpCkSo2gupsA+GMJxVYZhJEVcANmyY9mV1IaoskoQ7Ui
- EjPJk704QhbSwwIEmbp43Pq+s/SJj3r/DNSJnLvEJdrlPBURAYvS1ClmJ/V4Evk1rO/SG/t2w5g
- mt8J5qNd/S0nGcx5uC9GAOXZV7v6u
-X-Received: by 2002:a53:bbcb:0:b0:668:8acd:14df with SMTP id
- 956f58d0204a3-66ce4b8d8femr6465718d50.54.1787580953113; Mon, 24 Aug 2026
- 07:15:53 -0700 (PDT)
+ bh=G0Wd3sJhbhnAigDSbOw80EWCSyIFhk3lURnLFBsiUDE=;
+ b=YpUWJ/CAPz/Nr1LYBzMMYK8NcQFclXfK3AYkcOhsmneperIkmrg18gtrMoBdGbyvBY
+ oiSff1vM3ayA824O+NL0Jmnh5VuS9hv+bslxSYR77T65JSe5imuEVPF7vu8dhDZaRVlg
+ qskvHTU1wAhURBCjrtVUYcgZ1VmrVUNnehi+T9pDCJC+Zn3rNKS9ILkz21vG6LOw3wRc
+ OJdEaIf5psvboFnQP7GCEbnqNPsBstOpWeTja1dXR+xjL+W6tRTDmofwdDkoOrApoBCx
+ swmUidyOETgwdw5VR37JqYyCB4kewTJI7K3terxPEcTy8ZGg8GCDMFECKVQs5fUyLkA3
+ iFnA==
+X-Forwarded-Encrypted: i=1;
+ AHgh+RrnmaXccRj8iKxvei5TwC5uYw6amxlDYjApniPB7ODTXChbnZrOwfUB7btoRj9Xw4KtzRahMXOBMQ==@nongnu.org
+X-Gm-Message-State: AFuF++m0woOgSgmcjbcvm7keybJoUGSUHFQD66oM+Zch8wVohYGx9umR
+ alDtuforCX6UQ+SqbA3b7CIw19rXc2X3eU/Mop/okkowtDRzrQDmlx8WoDlNcP3bwUw=
+X-Gm-Gg: AR+sD12oxW70VwXOXxqW0dprcIwpPwBzuUiitNyMrllm9J4RXOAlNJuB3TKi3oxMHBA
+ /zNNL4y7Fp5eWCarq/Bfd0sVsNqIpIvQwPGpFGH2XCt7W2ui8XQ9mGfzeB1wS85eXoGGd/h4WZv
+ 610PBCUL3cvlA5D/b3p1Z4dSSqUMFQxq9ILpj4g28hgalYx7uWQqGKlESoKLlPHNjBeoE6ALHuS
+ 3ZwzWZ4Aq5W/1RD4/CzXia9C9PplgWulpmbezgrpRtQubRKgfkWRTGBdmU9JzyVkeutBrhrluzW
+ 2U5brYmcGfa3FUWKJvyzN2H0RVORANlxi7rs4jeLuooZ1dvZ94JbpCLhO0OzjmS+LblDZPUeO1L
+ a54glhuY0rPdL+tYK/UxLGca+8BHYALX1zJspHuQhuaRbfwy3kQ/c6f8Tu1PC+Ik47e/m+wwSou
+ NztOuC51u1HJvaujBMvA80GOy1zqlCm1BwZfUDszuxXNhT3vtMHfUiKMUkIA4A
+X-Received: by 2002:a17:907:9308:b0:c12:695b:8876 with SMTP id
+ a640c23a62f3a-c246a39efb5mr3122286666b.5.1787585109460; 
+ Mon, 24 Aug 2026 08:25:09 -0700 (PDT)
+Received: from draig.lan ([185.124.0.156]) by smtp.gmail.com with ESMTPSA id
+ a640c23a62f3a-c24966f8f08sm1282381266b.35.2026.08.24.08.25.05
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Mon, 24 Aug 2026 08:25:07 -0700 (PDT)
+Received: from draig.lan (localhost [IPv6:::1])
+ by draig.lan (Postfix) with ESMTP id 6F9625FC28;
+ Mon, 24 Aug 2026 16:25:02 +0100 (BST)
+From: =?utf-8?q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>
+Date: Mon, 24 Aug 2026 16:24:55 +0100
+Subject: [PATCH v2 8/8] mailmap: map the last From-munged author back to a
+ real identity
 MIME-Version: 1.0
-References: <20260824102805.639072-1-peter.maydell@linaro.org>
- <20260824102805.639072-6-peter.maydell@linaro.org>
- <03dfa51a-64c2-4b79-b524-2bac3e53335c@oss.qualcomm.com>
-In-Reply-To: <03dfa51a-64c2-4b79-b524-2bac3e53335c@oss.qualcomm.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Mon, 24 Aug 2026 15:15:40 +0100
-X-Gm-Features: AcwNN1XIdjJmFRvIiK6phJWJ4XpuAWCRNEG52YayHrDMB-K21_FpubgxphzL82A
-Message-ID: <CAFEAcA8HOx3nQN00LTtqRVLqBGuQTT8bu7gaSntJyeot=hzcHQ@mail.gmail.com>
-Subject: Re: [PATCH 5/6] hw/intc/arm_gicv5: Free memory in finalize
-To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@oss.qualcomm.com>
-Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2607:f8b0:4864:20::b129;
- envelope-from=peter.maydell@linaro.org; helo=mail-yx1-xb129.google.com
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 8bit
+Message-Id: <20260824-fixes-for-11-2-v2-8-352c6b890402@linaro.org>
+References: <20260824-fixes-for-11-2-v2-0-352c6b890402@linaro.org>
+In-Reply-To: <20260824-fixes-for-11-2-v2-0-352c6b890402@linaro.org>
+To: qemu-devel@nongnu.org
+Cc: =?utf-8?q?Philippe_Mathieu-Daud=C3=A9?= <philmd@mailo.com>, 
+ Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>, 
+ Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org, 
+ "Gonglei (Arei)" <arei.gonglei@huawei.com>, 
+ zhenwei pi <zhenwei.pi@linux.dev>, "Michael S. Tsirkin" <mst@redhat.com>, 
+ Stefano Garzarella <sgarzare@redhat.com>, 
+ Laurent Vivier <lvivier@redhat.com>, Amit Shah <amit@kernel.org>, 
+ =?utf-8?q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>, 
+ Paolo Bonzini <pbonzini@redhat.com>, John Snow <jsnow@redhat.com>, 
+ Kevin Wolf <kwolf@redhat.com>, Hanna Reitz <hreitz@redhat.com>, 
+ qemu-block@nongnu.org, devel@lists.libvirt.org, 
+ =?utf-8?q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>, 
+ Fabiano Rosas <farosas@suse.de>, "Denis V. Lunev" <den@openvz.org>, 
+ "Denis V. Lunev" <den@openvz.org>, 
+ =?utf-8?q?Philippe_Mathieu-Daud=C3=A9?= <philmd@oss.qualcomm.com>
+X-Mailer: b4 0.16.0
+X-Developer-Signature: v=1; a=openpgp-sha256; l=1397;
+ i=alex.bennee@linaro.org; h=from:subject:message-id;
+ bh=NdHao0lP1Djp3lKZKg7V1dUUByr13KB4ogSPisoA2Zw=;
+ b=owEBbQGS/pANAwAKAfvQ2wlanipEAcsmYgBqjGJOm4MljmbHGBaQ+ZWY6OcUDfX3DPsXn6aLM
+ ouGea0w/meJATMEAAEKAB0WIQRmha6Z51FnvK/I3zX70NsJWp4qRAUCaoxiTgAKCRD70NsJWp4q
+ RKI/B/4lI5UStKcb/v/9Eb8iHi2CMsgYvCZ5+PAc6ny49MWoGtFDwhbdQBX4AUcRhBZu6wHzvSo
+ kVNwoClyOz14GHi7Z9wBiuGp0CUZevLKYWL5J9AHor3acqEaTndrvPKCGYnP1SM3oizvWDJiuap
+ oAY4mTFF2B3wGzWdNgvK6nkLEJnu0Tmg6g3lHx4KPNXZ/1DtKhx5fNcZCkEJS25ouRm5gZZuYlx
+ FmclU3HlRfi8fBO7/kTZONGAQRxdfRFvZoSLG94vqHqG4oAcStP4TmI76LqOsuA0dWK/F0wYpBK
+ pW0AE1CIEZG4DA3iq6FrTSQhS0IibE0geVXpzWSEfuWmy6AF
+X-Developer-Key: i=alex.bennee@linaro.org; a=openpgp;
+ fpr=6685AE99E75167BCAFC8DF35FBD0DB095A9E2A44
+Received-SPF: pass client-ip=2a00:1450:4864:20::531;
+ envelope-from=alex.bennee@linaro.org; helo=mail-ed1-x531.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -119,19 +132,38 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Mon, 24 Aug 2026 at 14:55, Philippe Mathieu-Daud=C3=A9
-<philmd@oss.qualcomm.com> wrote:
->
-> Hi Peter,
->
-> On 24/8/26 12:28, Peter Maydell wrote:
-> > The GICv5 allocates memory and creates hashtables during realize and
-> > as part of its operation.  Free those resources in finalize.
->
-> Why not in unrealize() path?
+From: "Denis V. Lunev" <den@openvz.org>
 
-No particular strong reason. Do we have some life-cycle/style
-guidance on when we should put things in unrealize vs finalize ?
+qemu-block@nongnu.org rewrote the From: header of commit b67e353863
+("block: drop force_dup parameter of raw_reconfigure_getfd()") for
+DMARC reasons, so it landed in git attributed to the list instead of
+to its author, whose real address is in the Signed-off-by trailer.
+Map it like the other munged identities collected in that section.
+This was the last one left unmapped, so 'git log --format="%aN"' no
+longer reports any author 'via' a list.
 
--- PMM
+Signed-off-by: Denis V. Lunev <den@openvz.org>
+Reviewed-by: Philippe Mathieu-Daudé <philmd@oss.qualcomm.com>
+Message-ID: <20260812112456.970371-1-den@openvz.org>
+Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
+---
+ .mailmap | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/.mailmap b/.mailmap
+index e5dc644623f..08f0fa9e118 100644
+--- a/.mailmap
++++ b/.mailmap
+@@ -68,6 +68,7 @@ Stefan Weil <sw@weilnetz.de> Stefan Weil via <qemu-devel@nongnu.org>
+ Stefan Weil <sw@weilnetz.de> Stefan Weil via <qemu-trivial@nongnu.org>
+ Andrey Drobyshev <andrey.drobyshev@virtuozzo.com> Andrey Drobyshev via <qemu-block@nongnu.org>
+ BALATON Zoltan <balaton@eik.bme.hu> BALATON Zoltan via <qemu-ppc@nongnu.org>
++Denis V. Lunev <den@openvz.org> Denis V. Lunev via <qemu-block@nongnu.org>
+ 
+ # Next, replace old addresses by a more recent one.
+ Akihiko Odaki <odaki@rsg.ci.i.u-tokyo.ac.jp> <akihiko.odaki@daynix.com>
+
+-- 
+2.47.3
+
 

@@ -4,79 +4,78 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 632BDC5DF9B
-	for <qemu-arm@archiver.kernel.org>; Mon, 24 Aug 2026 15:25:18 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5F8C3C5DF94
+	for <qemu-arm@archiver.kernel.org>; Mon, 24 Aug 2026 15:25:26 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wyWXz-0005ct-6F; Mon, 24 Aug 2026 11:25:15 -0400
+	id 1wyWY6-0005sl-K2; Mon, 24 Aug 2026 11:25:23 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1wyWXy-0005bs-KN
- for qemu-arm@nongnu.org; Mon, 24 Aug 2026 11:25:14 -0400
-Received: from mail-ed1-x531.google.com ([2a00:1450:4864:20::531])
+ id 1wyWY4-0005mu-Dt
+ for qemu-arm@nongnu.org; Mon, 24 Aug 2026 11:25:21 -0400
+Received: from mail-ej1-x62e.google.com ([2a00:1450:4864:20::62e])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1wyWXv-0007D7-7y
- for qemu-arm@nongnu.org; Mon, 24 Aug 2026 11:25:14 -0400
-Received: by mail-ed1-x531.google.com with SMTP id
- 4fb4d7f45d1cf-6a3efa2b38aso6584270a12.2
- for <qemu-arm@nongnu.org>; Mon, 24 Aug 2026 08:25:10 -0700 (PDT)
+ id 1wyWXw-0007Ef-Ix
+ for qemu-arm@nongnu.org; Mon, 24 Aug 2026 11:25:20 -0400
+Received: by mail-ej1-x62e.google.com with SMTP id
+ a640c23a62f3a-c1600d040e4so536644266b.1
+ for <qemu-arm@nongnu.org>; Mon, 24 Aug 2026 08:25:12 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1787585109; x=1788189909; darn=nongnu.org;
+ d=linaro.org; s=google; t=1787585111; x=1788189911; darn=nongnu.org;
  h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
  :content-type:mime-version:subject:date:from:from:to:cc:subject:date
  :message-id:reply-to:content-type;
- bh=G0Wd3sJhbhnAigDSbOw80EWCSyIFhk3lURnLFBsiUDE=;
- b=S2SquJKLL320UGqf73K9Qlacfirb6HMSk6HdcrhFafDHDFynkQGximtAg1eCZynmJE
- baDd6ffpi8eG7/a9nQLOjtWNZXrRzimRf3Ps6KPqmAwWDZU2EKaPF3iOf0lxCFTODaFM
- Rdqd4ZhpUW/mvF4LhkUdSWVTLyjPTPQmDcD+aedjxgh+lOdF5oaUxwQfnkPPGAs95Q+M
- gXz3WNfTiG8/CiXeMnKt912yi//W5RUD9GsMNWcDZxcwPNq9owTmvNBpSDWAEdO9eoKC
- EtR6HCAB1N3jiaCPpLBek98jWqLJZ+6Z4vIQrdlqQa3vi+0GAD/7DVmhiA3ndOzT2Czp
- 07Pg==
+ bh=aUlRGxcy2rZEj1QS7x2oqaNrmrRAbDWz5zlA+zLfboE=;
+ b=GUArX8v68kFiTj2HAh4hyygzD5zi6p7UbOhYUl2DipOZODKFs32UGEdbqiPXrAG1OU
+ SxxD37P5vDdGRdOsrwKAdwcyHokVgkcxDeQtI0rJov4kr5D4qG7ZhztAsbAMrRFRredQ
+ oAp1pdqLbg2GAVT8yK8znHIgcYqgi7jJywgMHRlrtMZpFUucXOuIUmHWeodW5Vpd9zkg
+ tbK/NqQRlsPRRkW7OyrLEhLsYz+8Gsw3DjsjMFOR7CwNPeSzk6E753qxE093KA/MkvJF
+ 2S51RsdvW6VqS2d+yYZKfwlJEkbMixHsSjdmXXrfHYndjIpfch2Wd1MurnzafMKewa9H
+ Ruxg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1787585109; x=1788189909;
+ d=1e100.net; s=20251104; t=1787585111; x=1788189911;
  h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
  :content-type:mime-version:subject:date:from:x-gm-gg
  :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
  :content-type;
- bh=G0Wd3sJhbhnAigDSbOw80EWCSyIFhk3lURnLFBsiUDE=;
- b=YpUWJ/CAPz/Nr1LYBzMMYK8NcQFclXfK3AYkcOhsmneperIkmrg18gtrMoBdGbyvBY
- oiSff1vM3ayA824O+NL0Jmnh5VuS9hv+bslxSYR77T65JSe5imuEVPF7vu8dhDZaRVlg
- qskvHTU1wAhURBCjrtVUYcgZ1VmrVUNnehi+T9pDCJC+Zn3rNKS9ILkz21vG6LOw3wRc
- OJdEaIf5psvboFnQP7GCEbnqNPsBstOpWeTja1dXR+xjL+W6tRTDmofwdDkoOrApoBCx
- swmUidyOETgwdw5VR37JqYyCB4kewTJI7K3terxPEcTy8ZGg8GCDMFECKVQs5fUyLkA3
- iFnA==
+ bh=aUlRGxcy2rZEj1QS7x2oqaNrmrRAbDWz5zlA+zLfboE=;
+ b=LJ3he8LFXniC54cazjSGOC2pMHuLaWCUn/61XPXmZa/fTGa2zBwWP+srvT888WAXPS
+ LxpdYAuDyI9ofkQQ4kzHaq5mBecfmMQChe8M+8LoBgMl3o0VI5VvT3hidbQwVIcfoxHs
+ qvKyJ30a9Pu3+3KGDT0IBOEZBefAOkfluJIM5Oosr8niwSouWq7TPWt+7GpXDnMUx+l0
+ iUAyv/LpAufn474eLfTBqxoIA3k889ghPMcAXbgn/9QFPNytUP1mgGSNnZ0jDVy/gpXr
+ mumXH3xK1q+g517LBccImjSOlKY5u6BH/MMSQUiZxHMi6ctqmIxRHZ9CvYXsxFu3hCI4
+ rm7A==
 X-Forwarded-Encrypted: i=1;
- AHgh+RrnmaXccRj8iKxvei5TwC5uYw6amxlDYjApniPB7ODTXChbnZrOwfUB7btoRj9Xw4KtzRahMXOBMQ==@nongnu.org
-X-Gm-Message-State: AFuF++m0woOgSgmcjbcvm7keybJoUGSUHFQD66oM+Zch8wVohYGx9umR
- alDtuforCX6UQ+SqbA3b7CIw19rXc2X3eU/Mop/okkowtDRzrQDmlx8WoDlNcP3bwUw=
-X-Gm-Gg: AR+sD12oxW70VwXOXxqW0dprcIwpPwBzuUiitNyMrllm9J4RXOAlNJuB3TKi3oxMHBA
- /zNNL4y7Fp5eWCarq/Bfd0sVsNqIpIvQwPGpFGH2XCt7W2ui8XQ9mGfzeB1wS85eXoGGd/h4WZv
- 610PBCUL3cvlA5D/b3p1Z4dSSqUMFQxq9ILpj4g28hgalYx7uWQqGKlESoKLlPHNjBeoE6ALHuS
- 3ZwzWZ4Aq5W/1RD4/CzXia9C9PplgWulpmbezgrpRtQubRKgfkWRTGBdmU9JzyVkeutBrhrluzW
- 2U5brYmcGfa3FUWKJvyzN2H0RVORANlxi7rs4jeLuooZ1dvZ94JbpCLhO0OzjmS+LblDZPUeO1L
- a54glhuY0rPdL+tYK/UxLGca+8BHYALX1zJspHuQhuaRbfwy3kQ/c6f8Tu1PC+Ik47e/m+wwSou
- NztOuC51u1HJvaujBMvA80GOy1zqlCm1BwZfUDszuxXNhT3vtMHfUiKMUkIA4A
-X-Received: by 2002:a17:907:9308:b0:c12:695b:8876 with SMTP id
- a640c23a62f3a-c246a39efb5mr3122286666b.5.1787585109460; 
- Mon, 24 Aug 2026 08:25:09 -0700 (PDT)
+ AHgh+RosJ63xVJR7ZMqUhb/h6H6KRn4PIQ5oqRIIgCm62du1QU3/SiqINgtm4s0gr0iipFgb5HuszcdG4w==@nongnu.org
+X-Gm-Message-State: AFuF++lVAw4UQR+XZCrzUZQ3M77YF8TlcTwgsIxqJnQy2z7jj54xQK4K
+ B5Y1H0tl3YPRdchTm3Z0F3YXMF8esywQbA8YJkMJx+92N4h8l/tSYlJV9vvmTkDv90E=
+X-Gm-Gg: AR+sD12gkMtDZPJLUP2Fai/97LyUzUiVlx249gJWpBg60rACG72vklGnWi+p24YQ2uB
+ YqyjEnos4FZBvMRqbAA3T5vwCQjXrSB4UlLVxO7cEwHfxWoIqiRVLIs6IvBT1DZMdASbYe/Xn/Y
+ D8QGFHEcMAp0EYSZVbDYj1EL8qeEZ5QpspQuP5/XoSXgM6BoedoUTn5QfHaWQTtXW68K51iqG89
+ 3WUp5ODYfC214rSwPZ7tIDOk5Pxeun24HkWlr12SWZOzI+fRetyre8AE1i1zPsPBtRYJy8UH3Yn
+ D2tnYIRwQEhJ8e/TAnrJvlUDzkwgAmp8tiQ9z50adRyslOROjWLllSWrof6xIctFFS5NytOvPDg
+ 4mSq/rJfkcu+kRlUHXSrhRbt5bQg2ZYbZ+/r9tifi2vhLP21GhcvTxPGp+6NXn9QoyCktYIsu7+
+ TnrzYT/6Dj2FhQhVkU/cNiPpckX6IYsTDDRnUh7YaCz/PYGetCEWcVJePZTqVhvb5DUdesyZ4=
+X-Received: by 2002:a17:907:8dc9:b0:c16:6dac:a008 with SMTP id
+ a640c23a62f3a-c246dc97d69mr2504648266b.8.1787585110895; 
+ Mon, 24 Aug 2026 08:25:10 -0700 (PDT)
 Received: from draig.lan ([185.124.0.156]) by smtp.gmail.com with ESMTPSA id
- a640c23a62f3a-c24966f8f08sm1282381266b.35.2026.08.24.08.25.05
+ a640c23a62f3a-c249689fa97sm1158371166b.57.2026.08.24.08.25.04
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
  Mon, 24 Aug 2026 08:25:07 -0700 (PDT)
 Received: from draig.lan (localhost [IPv6:::1])
- by draig.lan (Postfix) with ESMTP id 6F9625FC28;
+ by draig.lan (Postfix) with ESMTP id 6A8EE5FBDB;
  Mon, 24 Aug 2026 16:25:02 +0100 (BST)
 From: =?utf-8?q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>
-Date: Mon, 24 Aug 2026 16:24:55 +0100
-Subject: [PATCH v2 8/8] mailmap: map the last From-munged author back to a
- real identity
+Date: Mon, 24 Aug 2026 16:24:53 +0100
+Subject: [PATCH v2 6/8] tests/qtest: add test case for fdc sector overflow
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
-Message-Id: <20260824-fixes-for-11-2-v2-8-352c6b890402@linaro.org>
+Message-Id: <20260824-fixes-for-11-2-v2-6-352c6b890402@linaro.org>
 References: <20260824-fixes-for-11-2-v2-0-352c6b890402@linaro.org>
 In-Reply-To: <20260824-fixes-for-11-2-v2-0-352c6b890402@linaro.org>
 To: qemu-devel@nongnu.org
@@ -92,24 +91,22 @@ Cc: =?utf-8?q?Philippe_Mathieu-Daud=C3=A9?= <philmd@mailo.com>,
  Kevin Wolf <kwolf@redhat.com>, Hanna Reitz <hreitz@redhat.com>, 
  qemu-block@nongnu.org, devel@lists.libvirt.org, 
  =?utf-8?q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>, 
- Fabiano Rosas <farosas@suse.de>, "Denis V. Lunev" <den@openvz.org>, 
- "Denis V. Lunev" <den@openvz.org>, 
- =?utf-8?q?Philippe_Mathieu-Daud=C3=A9?= <philmd@oss.qualcomm.com>
+ Fabiano Rosas <farosas@suse.de>
 X-Mailer: b4 0.16.0
-X-Developer-Signature: v=1; a=openpgp-sha256; l=1397;
+X-Developer-Signature: v=1; a=openpgp-sha256; l=10652;
  i=alex.bennee@linaro.org; h=from:subject:message-id;
- bh=NdHao0lP1Djp3lKZKg7V1dUUByr13KB4ogSPisoA2Zw=;
- b=owEBbQGS/pANAwAKAfvQ2wlanipEAcsmYgBqjGJOm4MljmbHGBaQ+ZWY6OcUDfX3DPsXn6aLM
- ouGea0w/meJATMEAAEKAB0WIQRmha6Z51FnvK/I3zX70NsJWp4qRAUCaoxiTgAKCRD70NsJWp4q
- RKI/B/4lI5UStKcb/v/9Eb8iHi2CMsgYvCZ5+PAc6ny49MWoGtFDwhbdQBX4AUcRhBZu6wHzvSo
- kVNwoClyOz14GHi7Z9wBiuGp0CUZevLKYWL5J9AHor3acqEaTndrvPKCGYnP1SM3oizvWDJiuap
- oAY4mTFF2B3wGzWdNgvK6nkLEJnu0Tmg6g3lHx4KPNXZ/1DtKhx5fNcZCkEJS25ouRm5gZZuYlx
- FmclU3HlRfi8fBO7/kTZONGAQRxdfRFvZoSLG94vqHqG4oAcStP4TmI76LqOsuA0dWK/F0wYpBK
- pW0AE1CIEZG4DA3iq6FrTSQhS0IibE0geVXpzWSEfuWmy6AF
+ bh=TVs3th5ucYmnjcYnTts8iJZexWW8EZ/0P70j7X/7Wy8=;
+ b=owEBbQGS/pANAwAKAfvQ2wlanipEAcsmYgBqjGJOwK5vH2h3meJq0WXNFYqlbOHUwPhp08X6A
+ /maULgMqruJATMEAAEKAB0WIQRmha6Z51FnvK/I3zX70NsJWp4qRAUCaoxiTgAKCRD70NsJWp4q
+ RH5OCACLczSMuPnc+l8KPp0/4nbAFmz7n9LqJ2qj3E7ihpqPRS+3nOTkt5wNsBlqntkixoXuU+5
+ nimRUWV8zVydIFXBg6E9RXfzh26Uq6fouO6aP7+NXL5wFY1pBwj5V9Uvah6Vq4eC1Ikp+U7cYZy
+ 07OTB1nkgK2uIxvesea5DwJeXulFr4J1X+IUaXgManT3SJPdQ+/MjaimOIVna6fuvGPswBClxkn
+ LrSaxWjyVDZRf4Mn6imnLG+z6Aligljp1n+UNiwcqeOya1ETDFKUPPlVGfSQgK+s3JS+ssHupWB
+ gdRmn4MlRNym0IUc/qSJ+u1+cJEnz7f7U2gvL7h+k9BJeeeA
 X-Developer-Key: i=alex.bennee@linaro.org; a=openpgp;
  fpr=6685AE99E75167BCAFC8DF35FBD0DB095A9E2A44
-Received-SPF: pass client-ip=2a00:1450:4864:20::531;
- envelope-from=alex.bennee@linaro.org; helo=mail-ed1-x531.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::62e;
+ envelope-from=alex.bennee@linaro.org; helo=mail-ej1-x62e.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -132,36 +129,333 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-From: "Denis V. Lunev" <den@openvz.org>
+Add a test case for #3800 where we check that the last sector is
+properly bounded by the physical media that is inserted.
 
-qemu-block@nongnu.org rewrote the From: header of commit b67e353863
-("block: drop force_dup parameter of raw_reconfigure_getfd()") for
-DMARC reasons, so it landed in git attributed to the list instead of
-to its author, whose real address is in the Signed-off-by trailer.
-Map it like the other munged identities collected in that section.
-This was the last one left unmapped, so 'git log --format="%aN"' no
-longer reports any author 'via' a list.
-
-Signed-off-by: Denis V. Lunev <den@openvz.org>
-Reviewed-by: Philippe Mathieu-Daudé <philmd@oss.qualcomm.com>
-Message-ID: <20260812112456.970371-1-den@openvz.org>
+Link: https://gitlab.com/qemu-project/qemu/-/issues/3800
+AI-used-for: initial draft of test
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
 ---
- .mailmap | 1 +
- 1 file changed, 1 insertion(+)
+ tests/qtest/fdc-test.c | 246 ++++++++++++++++++++++++++++++++++++++++++++++++-
+ 1 file changed, 241 insertions(+), 5 deletions(-)
 
-diff --git a/.mailmap b/.mailmap
-index e5dc644623f..08f0fa9e118 100644
---- a/.mailmap
-+++ b/.mailmap
-@@ -68,6 +68,7 @@ Stefan Weil <sw@weilnetz.de> Stefan Weil via <qemu-devel@nongnu.org>
- Stefan Weil <sw@weilnetz.de> Stefan Weil via <qemu-trivial@nongnu.org>
- Andrey Drobyshev <andrey.drobyshev@virtuozzo.com> Andrey Drobyshev via <qemu-block@nongnu.org>
- BALATON Zoltan <balaton@eik.bme.hu> BALATON Zoltan via <qemu-ppc@nongnu.org>
-+Denis V. Lunev <den@openvz.org> Denis V. Lunev via <qemu-block@nongnu.org>
+diff --git a/tests/qtest/fdc-test.c b/tests/qtest/fdc-test.c
+index 1e1dd8659d0..3f2642fe671 100644
+--- a/tests/qtest/fdc-test.c
++++ b/tests/qtest/fdc-test.c
+@@ -31,7 +31,8 @@
+ #define DRIVE_FLOPPY_BLANK \
+     "-drive if=floppy,file=null-co://,file.read-zeroes=on,format=raw,size=1440k"
  
- # Next, replace old addresses by a more recent one.
- Akihiko Odaki <odaki@rsg.ci.i.u-tokyo.ac.jp> <akihiko.odaki@daynix.com>
+-#define TEST_IMAGE_SIZE 1440 * 1024
++#define TEST_IMAGE_1440KB (1440 * 1024)
++#define TEST_IMAGE_720KB (720 * 1024)
+ 
+ #define FLOPPY_BASE 0x3f0
+ #define FLOPPY_IRQ 6
+@@ -49,8 +50,11 @@ enum {
+ enum {
+     CMD_SENSE_INT           = 0x08,
+     CMD_READ_ID             = 0x0a,
++    CMD_FORMAT_TRACK        = 0x4d,
+     CMD_SEEK                = 0x0f,
+     CMD_VERIFY              = 0x16,
++    CMD_SAVE                = 0x2e,
++    CMD_RESTORE             = 0x4e,
+     CMD_READ                = 0xe6,
+     CMD_RELATIVE_SEEK_OUT   = 0x8f,
+     CMD_RELATIVE_SEEK_IN    = 0xcf,
+@@ -69,9 +73,11 @@ enum {
+     ST0_IC_ABNTERM = 0x40,  /* abnormal termination */
+ 
+     ST1_MA       = 0x01,    /* missing address mark */
++    ST1_EC       = 0x80,    /* end of cylinder / sector past last_sect */
+ };
+ 
+ static char *test_image;
++static char *test_image_720k;
+ 
+ #define assert_bit_set(data, mask) g_assert_cmphex((data) & (mask), ==, (mask))
+ #define assert_bit_clear(data, mask) g_assert_cmphex((data) & (mask), ==, 0)
+@@ -276,12 +282,17 @@ static void test_cmos(void)
+     g_assert(cmos == 0x40 || cmos == 0x50);
+ }
+ 
+-static void media_insert(void)
++static void media_insert_path(const char *path)
+ {
+     qtest_qmp_assert_success(global_qtest,
+                              "{'execute':'blockdev-change-medium', 'arguments':{"
+                              " 'id':'floppy0', 'filename': %s, 'format': 'raw' }}",
+-                             test_image);
++                             path);
++}
++
++static void media_insert(void)
++{
++    media_insert_path(test_image);
+ }
+ 
+ static void media_eject(void)
+@@ -586,6 +597,222 @@ static void test_verify(void)
+     g_assert(ret == 0);
+ }
+ 
++/*
++ * Query cur_drv->last_sect using the SAVE command (CMD_SAVE, 0x2e).
++ * Byte 8 of the 15 result bytes returned by CMD_SAVE holds last_sect.
++ */
++static uint8_t get_lastsect(void)
++{
++    uint8_t res[15];
++    int i;
++
++    floppy_send(CMD_SAVE);
++    for (i = 0; i < 15; i++) {
++        res[i] = floppy_recv();
++    }
++    return res[8];
++}
++
++/*
++ * Attempt to set cur_drv->last_sect directly using the RESTORE command
++ * (CMD_RESTORE, 0x4e).
++ * While the 82078 datasheet describes RESTORE for restoring a previously
++ * saved state, a guest can issue raw RESTORE commands with arbitrary
++ * parameters without having issued SAVE. Parameter byte 9 is used by the
++ * controller to restore cur_drv->last_sect.
++ */
++static void fake_lastsect(uint8_t last_sect)
++{
++    floppy_send(CMD_RESTORE);
++    floppy_send(0); /* fifo[1] */
++    floppy_send(0); /* fifo[2] */
++    floppy_send(0); /* fifo[3]: drv0 track */
++    floppy_send(0); /* fifo[4]: drv1 track */
++    floppy_send(0); /* fifo[5]: drv2 track */
++    floppy_send(0); /* fifo[6]: drv3 track */
++    floppy_send(0); /* fifo[7]: timer0 */
++    floppy_send(0); /* fifo[8]: timer1 */
++    floppy_send(last_sect); /* fifo[9]: last_sect */
++    floppy_send(0); /* fifo[10]: lock/perpendicular */
++    floppy_send(0); /* fifo[11]: config */
++    floppy_send(0); /* fifo[12]: precomp_trk */
++    floppy_send(0); /* fifo[13]: pwrd */
++    floppy_send(0); /* fifo[14] */
++    floppy_send(0); /* fifo[15] */
++    floppy_send(0); /* fifo[16] */
++    floppy_send(0); /* fifo[17] */
++}
++
++static void send_format_track(uint8_t drive, uint8_t head, uint8_t last_sect,
++                              uint8_t *st0_out, uint8_t *st1_out)
++{
++    uint8_t st0, st1;
++
++    floppy_send(CMD_FORMAT_TRACK);
++    floppy_send((head << 2) | drive);
++    floppy_send(2);          /* 512 bytes per sector */
++    floppy_send(last_sect);  /* sectors per track */
++    floppy_send(0x1b);       /* GAP length */
++    floppy_send(0x00);       /* filler byte */
++
++    g_assert(get_irq(FLOPPY_IRQ));
++    st0 = floppy_recv();
++    st1 = floppy_recv();
++    floppy_recv(); /* st2 */
++    floppy_recv(); /* track */
++    floppy_recv(); /* head */
++    floppy_recv(); /* sect */
++    g_assert(get_irq(FLOPPY_IRQ));
++    floppy_recv(); /* sz */
++    g_assert(!get_irq(FLOPPY_IRQ));
++
++    if (st0_out) {
++        *st0_out = st0;
++    }
++    if (st1_out) {
++        *st1_out = st1;
++    }
++}
++
++/*
++ * Test that guest cannot set last_sect beyond the probed media size
++ * via RESTORE or FORMAT TRACK commands (gitlab issue #3800).
++ */
++static void test_last_sect_bounds(void)
++{
++    uint8_t st0, st1;
++
++    /* Start with 1.44 MB media inserted (last_sect = 18) */
++    media_insert();
++    send_seek(1);
++    send_seek(0);
++
++    /* Valid last_sect values (<= 18) should succeed */
++    fake_lastsect(18);
++    g_assert(!get_irq(FLOPPY_IRQ));
++    g_assert_cmpint(get_lastsect(), ==, 18);
++
++    fake_lastsect(9);
++    g_assert(!get_irq(FLOPPY_IRQ));
++    g_assert_cmpint(get_lastsect(), ==, 9);
++
++    /* Restoring to the default 18 */
++    fake_lastsect(18);
++    g_assert(!get_irq(FLOPPY_IRQ));
++    g_assert_cmpint(get_lastsect(), ==, 18);
++
++    /* Invalid last_sect value (> 18) must fail */
++    fake_lastsect(19);
++    g_assert(get_irq(FLOPPY_IRQ));
++    st0 = floppy_recv();
++    st1 = floppy_recv();
++    floppy_recv(); /* st2 */
++    floppy_recv(); /* track */
++    floppy_recv(); /* head */
++    floppy_recv(); /* sect */
++    g_assert(get_irq(FLOPPY_IRQ));
++    floppy_recv(); /* sz */
++    g_assert(!get_irq(FLOPPY_IRQ));
++    g_assert_cmpint(st0 & ST0_IC_MASK, ==, ST0_IC_ABNTERM);
++    g_assert_cmpint(st1 & ST1_EC, ==, ST1_EC);
++
++    /* Verify last_sect was not changed to 19 */
++    g_assert_cmpint(get_lastsect(), ==, 18);
++
++    /* FORMAT TRACK with valid last_sect (18) should succeed */
++    send_format_track(0, 0, 18, &st0, &st1);
++    g_assert_cmpint(st0 & ST0_IC_MASK, ==, 0);
++    g_assert_cmpint(st1, ==, 0);
++
++    /* FORMAT TRACK with invalid last_sect (19) must fail */
++    send_format_track(0, 0, 19, &st0, &st1);
++    g_assert_cmpint(st0 & ST0_IC_MASK, ==, ST0_IC_ABNTERM);
++    g_assert_cmpint(st1 & ST1_EC, ==, ST1_EC);
++
++    /* Change media to 720 kB floppy (last_sect = 9) */
++    media_eject();
++    media_insert_path(test_image_720k);
++    send_seek(1);
++    send_seek(0);
++
++    /* Probed geometry now has last_sect = 9 */
++    fake_lastsect(9);
++    g_assert(!get_irq(FLOPPY_IRQ));
++    g_assert_cmpint(get_lastsect(), ==, 9);
++
++    /* Values exceeding 9 (e.g. 10 or 18) must now fail */
++    fake_lastsect(10);
++    g_assert(get_irq(FLOPPY_IRQ));
++    st0 = floppy_recv();
++    st1 = floppy_recv();
++    floppy_recv();
++    floppy_recv();
++    floppy_recv();
++    floppy_recv();
++    g_assert(get_irq(FLOPPY_IRQ));
++    floppy_recv();
++    g_assert(!get_irq(FLOPPY_IRQ));
++    g_assert_cmpint(st0 & ST0_IC_MASK, ==, ST0_IC_ABNTERM);
++    g_assert_cmpint(st1 & ST1_EC, ==, ST1_EC);
++
++    fake_lastsect(18);
++    g_assert(get_irq(FLOPPY_IRQ));
++    st0 = floppy_recv();
++    st1 = floppy_recv();
++    floppy_recv();
++    floppy_recv();
++    floppy_recv();
++    floppy_recv();
++    g_assert(get_irq(FLOPPY_IRQ));
++    floppy_recv();
++    g_assert(!get_irq(FLOPPY_IRQ));
++    g_assert_cmpint(st0 & ST0_IC_MASK, ==, ST0_IC_ABNTERM);
++    g_assert_cmpint(st1 & ST1_EC, ==, ST1_EC);
++
++    /* FORMAT TRACK on 720 kB floppy */
++    send_format_track(0, 0, 9, &st0, &st1);
++    g_assert_cmpint(st0 & ST0_IC_MASK, ==, 0);
++    g_assert_cmpint(st1, ==, 0);
++
++    send_format_track(0, 0, 10, &st0, &st1);
++    g_assert_cmpint(st0 & ST0_IC_MASK, ==, ST0_IC_ABNTERM);
++    g_assert_cmpint(st1 & ST1_EC, ==, ST1_EC);
++
++    send_format_track(0, 0, 18, &st0, &st1);
++    g_assert_cmpint(st0 & ST0_IC_MASK, ==, ST0_IC_ABNTERM);
++    g_assert_cmpint(st1 & ST1_EC, ==, ST1_EC);
++
++    /*
++     * Change back to 1.44 MB floppy and verify last_sect = 18 is allowed
++     * again.
++     */
++    media_eject();
++    media_insert();
++    send_seek(1);
++    send_seek(0);
++
++    fake_lastsect(18);
++    g_assert(!get_irq(FLOPPY_IRQ));
++    g_assert_cmpint(get_lastsect(), ==, 18);
++
++    fake_lastsect(19);
++    g_assert(get_irq(FLOPPY_IRQ));
++    st0 = floppy_recv();
++    st1 = floppy_recv();
++    floppy_recv();
++    floppy_recv();
++    floppy_recv();
++    floppy_recv();
++    g_assert(get_irq(FLOPPY_IRQ));
++    floppy_recv();
++    g_assert(!get_irq(FLOPPY_IRQ));
++    g_assert_cmpint(st0 & ST0_IC_MASK, ==, ST0_IC_ABNTERM);
++    g_assert_cmpint(st1 & ST1_EC, ==, ST1_EC);
++
++    /* Leave drive empty */
++    media_eject();
++}
++
+ /* success if no crash or abort */
+ static void fuzz_registers(void)
+ {
+@@ -661,10 +888,16 @@ int main(int argc, char **argv)
+     int fd;
+     int ret;
+ 
+-    /* Create a temporary raw image */
++    /* Create temporary raw images */
+     fd = g_file_open_tmp("qtest.XXXXXX", &test_image, NULL);
+     g_assert(fd >= 0);
+-    ret = ftruncate(fd, TEST_IMAGE_SIZE);
++    ret = ftruncate(fd, TEST_IMAGE_1440KB);
++    g_assert(ret == 0);
++    close(fd);
++
++    fd = g_file_open_tmp("qtest720.XXXXXX", &test_image_720k, NULL);
++    g_assert(fd >= 0);
++    ret = ftruncate(fd, TEST_IMAGE_720KB);
+     g_assert(ret == 0);
+     close(fd);
+ 
+@@ -686,6 +919,7 @@ int main(int argc, char **argv)
+     qtest_add_func("/fdc/read_no_dma_1", test_read_no_dma_1);
+     qtest_add_func("/fdc/read_no_dma_18", test_read_no_dma_18);
+     qtest_add_func("/fdc/read_no_dma_19", test_read_no_dma_19);
++    qtest_add_func("/fdc/last_sect_bounds", test_last_sect_bounds);
+     qtest_add_func("/fdc/fuzz-registers", fuzz_registers);
+     qtest_add_func("/fdc/fuzz/cve_2021_20196", test_cve_2021_20196);
+     qtest_add_func("/fdc/fuzz/cve_2021_3507", test_cve_2021_3507);
+@@ -696,6 +930,8 @@ int main(int argc, char **argv)
+     qtest_end();
+     unlink(test_image);
+     g_free(test_image);
++    unlink(test_image_720k);
++    g_free(test_image_720k);
+ 
+     return ret;
+ }
 
 -- 
 2.47.3

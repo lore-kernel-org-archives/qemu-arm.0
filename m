@@ -4,68 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 304B5C5DF81
-	for <qemu-arm@archiver.kernel.org>; Mon, 24 Aug 2026 12:49:33 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CFA08C5DF81
+	for <qemu-arm@archiver.kernel.org>; Mon, 24 Aug 2026 12:50:59 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wyU6s-0004Mw-K1; Mon, 24 Aug 2026 08:49:06 -0400
+	id 1wyU8d-0005td-7R; Mon, 24 Aug 2026 08:50:55 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
- id 1wyU6c-0004Co-Sl
- for qemu-arm@nongnu.org; Mon, 24 Aug 2026 08:48:50 -0400
+ id 1wyU8b-0005sw-Bk
+ for qemu-arm@nongnu.org; Mon, 24 Aug 2026 08:50:53 -0400
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
- id 1wyU6b-0003xy-Ej
- for qemu-arm@nongnu.org; Mon, 24 Aug 2026 08:48:50 -0400
+ id 1wyU8Z-0004C4-TH
+ for qemu-arm@nongnu.org; Mon, 24 Aug 2026 08:50:53 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1787575728;
+ s=mimecast20190719; t=1787575851;
  h=from:from:reply-to:reply-to:subject:subject:date:date:
  message-id:message-id:to:to:cc:cc:mime-version:mime-version:
  content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=i5ee7DYKGiLPZEM5wORp1ll7gtoXLWwOh1KehFXSOgc=;
- b=GHJHPV9sIZKFErcpsZ7RGw8edM3rzlOnsEUpDCkP8frxNdFbUFOsVWfHk5TYn4Vzz+AAoQ
- GoIdg6eT4jusEIBFEi7NvRKFpDsIuiRvUWL+fHZ7qHoUj8/Qx6VQ4xPNjjfPIUAjHeShWt
- RrNfksx0fLH2fStA7YlfIlXN/U2nUkM=
-Received: from mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com
+ bh=Yj6Op70F2KZmdPAHOnbSsv8N4dA6NoSB768bYTcq9/I=;
+ b=ciI08WMc62DrSAtUYdftJAajfihG2f59fjZj1umd7zib4EyM5FCllcLpFrZfmEHCnTmEHG
+ pSlWdn0lY3EDDRTBhGtNNZxAbt8gi0SVOCJ95vKfD/Ke92S7b5z0OHEA+5BVKu9q2gh9ci
+ wlPdBXruz4Hl1iztfrzrTasJq4hgg/w=
+Received: from mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com
  (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-104-TFsUEazmMwa8yGDmzqf_RA-1; Mon,
- 24 Aug 2026 08:48:45 -0400
-X-MC-Unique: TFsUEazmMwa8yGDmzqf_RA-1
-X-Mimecast-MFC-AGG-ID: TFsUEazmMwa8yGDmzqf_RA_1787575724
-Received: from mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com
- (mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.93])
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-588-97mBJDQmPLCmmywYJBGnaw-1; Mon,
+ 24 Aug 2026 08:50:48 -0400
+X-MC-Unique: 97mBJDQmPLCmmywYJBGnaw-1
+X-Mimecast-MFC-AGG-ID: 97mBJDQmPLCmmywYJBGnaw_1787575846
+Received: from mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com
+ (mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.12])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id E461319774E7; Mon, 24 Aug 2026 12:48:43 +0000 (UTC)
+ by mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 2C40C1944EB7; Mon, 24 Aug 2026 12:50:46 +0000 (UTC)
 Received: from redhat.com (headnet05.pony-001.prod.iad2.dc.redhat.com
  [10.2.32.117])
- by mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id BB10C18005AD; Mon, 24 Aug 2026 12:48:40 +0000 (UTC)
-Date: Mon, 24 Aug 2026 13:48:37 +0100
+ by mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 87B811955F0D; Mon, 24 Aug 2026 12:50:42 +0000 (UTC)
+Date: Mon, 24 Aug 2026 13:50:39 +0100
 From: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
 To: Mark Cave-Ayland <mark.caveayland@nutanix.com>
 Cc: mst@redhat.com, imammedo@redhat.com, anisinha@redhat.com,
  philmd@mailo.com, aurelien@aurel32.net, peter.maydell@linaro.org,
  richard.henderson@linaro.org, marcandre.lureau@redhat.com,
  qemu-devel@nongnu.org, qemu-arm@nongnu.org
-Subject: Re: [PATCH v4 08/16] qom/object.c: add
- object_class_property_add_uint32_ptr()
-Message-ID: <aow9pfdVRTapDaRl@redhat.com>
+Subject: Re: [PATCH v4 09/16] hw/acpi/ich9.c: convert
+ ACPI_PM_PROP_GPE0_BLK_LEN to a static class property
+Message-ID: <aow-HzVNQ7Dq9Bgd@redhat.com>
 References: <20260821111550.276011-1-mark.caveayland@nutanix.com>
- <20260821111550.276011-9-mark.caveayland@nutanix.com>
+ <20260821111550.276011-10-mark.caveayland@nutanix.com>
 MIME-Version: 1.0
-In-Reply-To: <20260821111550.276011-9-mark.caveayland@nutanix.com>
+In-Reply-To: <20260821111550.276011-10-mark.caveayland@nutanix.com>
 User-Agent: Mutt/2.4.0 (2026-06-19)
-X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.93
-X-Mimecast-MFC-PROC-ID: VRPdpzv-qT3qS2wafYPk-fSA7rz1WLLwPbeSIJVxk5g_1787575724
+X-Scanned-By: MIMEDefang 3.0 on 10.30.177.12
+X-Mimecast-MFC-PROC-ID: tvaIVkJa-Nys9q0PLmpefcAKbOTRN-4LQGm8g4DiTBM_1787575846
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=utf-8
 Content-Disposition: inline
@@ -96,16 +96,20 @@ Reply-To: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Fri, Aug 21, 2026 at 12:14:20PM +0100, Mark Cave-Ayland wrote:
-> This adds a class property that references a uint32_t within the object instance
-> and is intended to be a replacement for object_property_add_uint32_ptr().
+On Fri, Aug 21, 2026 at 12:14:21PM +0100, Mark Cave-Ayland wrote:
+> The ACPI_PM_PROP_GPE0_BLK_LEN property is assigned to a static variable and so
+> can be converted to a static class property. Introduce
+> ich9_pm_add_class_properties() to hold the ACPI_PM_PROP_GPE0_BLK_LEN property
+> and soon all other class props after they have been converted from object props.
 > 
 > Signed-off-by: Mark Cave-Ayland <mark.caveayland@nutanix.com>
+> Reviewed-by: Philippe Mathieu-Daudé <philmd@oss.qualcomm.com>
 > Reviewed-by: Marc-André Lureau <marcandre.lureau@redhat.com>
 > ---
->  include/qom/object.h | 18 ++++++++++++++++++
->  qom/object.c         | 21 +++++++++++++++++++++
->  2 files changed, 39 insertions(+)
+>  include/hw/acpi/ich9.h |  1 +
+>  hw/acpi/ich9.c         | 14 ++++++++++----
+>  hw/isa/lpc_ich9.c      |  2 ++
+>  3 files changed, 13 insertions(+), 4 deletions(-)
 
 Reviewed-by: Daniel P. Berrangé <berrange@redhat.com>
 

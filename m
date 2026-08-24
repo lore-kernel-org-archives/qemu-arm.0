@@ -4,81 +4,81 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4632AC5DF94
-	for <qemu-arm@archiver.kernel.org>; Mon, 24 Aug 2026 12:53:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id F0D4BC5DF81
+	for <qemu-arm@archiver.kernel.org>; Mon, 24 Aug 2026 13:00:41 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wyUBH-00074O-U2; Mon, 24 Aug 2026 08:53:39 -0400
+	id 1wyUHd-0000YA-Ro; Mon, 24 Aug 2026 09:00:13 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
- id 1wyUBG-00073x-0C
- for qemu-arm@nongnu.org; Mon, 24 Aug 2026 08:53:38 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ id 1wyUHa-0000Rk-U6
+ for qemu-arm@nongnu.org; Mon, 24 Aug 2026 09:00:11 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
- id 1wyUBE-0004s0-0o
- for qemu-arm@nongnu.org; Mon, 24 Aug 2026 08:53:37 -0400
+ id 1wyUHZ-0006t9-1Z
+ for qemu-arm@nongnu.org; Mon, 24 Aug 2026 09:00:10 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1787576014;
+ s=mimecast20190719; t=1787576408;
  h=from:from:reply-to:reply-to:subject:subject:date:date:
  message-id:message-id:to:to:cc:cc:mime-version:mime-version:
  content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=kxzsloYyRenkWCLBll3xFF8LX9NlcG/cXusr+k3ZNMY=;
- b=dl37XCDfTCWkWRcl+mHASnElog6FZEjijDwTeKX6GSglPH0zp1/Qjq4A+k89V231v/Ky60
- sw6Y5fGTbgAYjQOXXF65114aP9Zn24/J5nk/96QXkrsjGBcP5vNRYSlXpSY5ZZiU854H5e
- Be7O3UuGnRRGMXHxgUaaN4zyo5dSPdo=
-Received: from mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
+ bh=Uvm8v3i+XgnteFyBnFT7BPk71UD+tdwGIox8fqc9Cao=;
+ b=WNho3lgA8RV29Qlf2PMJsmLDcie1FEZzuTRoMiz5NVqzqXVcsj0nq+me2q/+U2awPA/Its
+ lrgGrTiT2Geu0141NjwLet36C1M71TcHtajkyMZ4SCndbnGkPl/awOZ2+1UNQXACiZj9BX
+ 6fDJuTMjYcNN5FlMAwNeyfhhejqNJ+E=
+Received: from mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-211-XuPkCe_DM2-O5vXk1Hj9dQ-1; Mon,
- 24 Aug 2026 08:53:30 -0400
-X-MC-Unique: XuPkCe_DM2-O5vXk1Hj9dQ-1
-X-Mimecast-MFC-AGG-ID: XuPkCe_DM2-O5vXk1Hj9dQ_1787576009
-Received: from mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com
- (mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.111])
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-650-KAleOBGwOwyZTS6M6yKLSw-1; Mon,
+ 24 Aug 2026 09:00:03 -0400
+X-MC-Unique: KAleOBGwOwyZTS6M6yKLSw-1
+X-Mimecast-MFC-AGG-ID: KAleOBGwOwyZTS6M6yKLSw_1787576402
+Received: from mx-prod-int-10.mail-002.prod.us-west-2.aws.redhat.com
+ (mx-prod-int-10.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.95])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id CE7DB195F178; Mon, 24 Aug 2026 12:53:28 +0000 (UTC)
+ by mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id AF813185FCE7; Mon, 24 Aug 2026 13:00:01 +0000 (UTC)
 Received: from redhat.com (headnet05.pony-001.prod.iad2.dc.redhat.com
  [10.2.32.117])
- by mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id C55281800605; Mon, 24 Aug 2026 12:53:25 +0000 (UTC)
-Date: Mon, 24 Aug 2026 13:53:22 +0100
+ by mx-prod-int-10.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 0ACE47D5; Mon, 24 Aug 2026 12:59:55 +0000 (UTC)
+Date: Mon, 24 Aug 2026 13:59:53 +0100
 From: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
 To: Mark Cave-Ayland <mark.caveayland@nutanix.com>
 Cc: mst@redhat.com, imammedo@redhat.com, anisinha@redhat.com,
  philmd@mailo.com, aurelien@aurel32.net, peter.maydell@linaro.org,
  richard.henderson@linaro.org, marcandre.lureau@redhat.com,
  qemu-devel@nongnu.org, qemu-arm@nongnu.org
-Subject: Re: [PATCH v4 10/16] qom/object.c: add
- object_class_property_add_bool_ptr()
-Message-ID: <aow-wlxrMnOS8Vqv@redhat.com>
+Subject: Re: [PATCH v4 11/16] hw/acpi/ich9.c: convert object props in
+ ICH9_LPC_DEVICE to class props
+Message-ID: <aoxASVcLT03dVwCj@redhat.com>
 References: <20260821111550.276011-1-mark.caveayland@nutanix.com>
- <20260821111550.276011-11-mark.caveayland@nutanix.com>
+ <20260821111550.276011-12-mark.caveayland@nutanix.com>
 MIME-Version: 1.0
-In-Reply-To: <20260821111550.276011-11-mark.caveayland@nutanix.com>
+In-Reply-To: <20260821111550.276011-12-mark.caveayland@nutanix.com>
 User-Agent: Mutt/2.4.0 (2026-06-19)
-X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.111
-X-Mimecast-MFC-PROC-ID: 30ebgJnFKLo8eVZSurNTdHld7ptvlTG0xJQEcDFdqc0_1787576009
+X-Scanned-By: MIMEDefang 3.6 on 10.30.177.95
+X-Mimecast-MFC-PROC-ID: 5R0F_ujg93D1J46zIPvFowA53LgdPF0P6P9-QztLQ6o_1787576402
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=utf-8
 Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=berrange@redhat.com;
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=berrange@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: 12
-X-Spam_score: 1.2
-X-Spam_bar: +
-X-Spam_report: (1.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=0.001, RCVD_IN_SBL_CSS=3.335,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=no autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -95,108 +95,113 @@ Reply-To: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Fri, Aug 21, 2026 at 12:14:22PM +0100, Mark Cave-Ayland wrote:
-> This adds a class property that references a bool within the object instance
-> and is intended to be used as a replacement for object_class_property_add_bool()
-> where possible.
+On Fri, Aug 21, 2026 at 12:14:23PM +0100, Mark Cave-Ayland wrote:
+> ACPI_PM_PROP_TCO_ENABLED, ACPI_PM_PROP_ACPI_PCIHP_BRIDGE and x-keep-pci-slot-hpc
+> properties can be converted to use object_class_property_add_bool_ptr(). Remove
+> the now unused ich9_pm_add_properties() function.
 > 
 > Signed-off-by: Mark Cave-Ayland <mark.caveayland@nutanix.com>
 > Reviewed-by: Marc-André Lureau <marcandre.lureau@redhat.com>
 > ---
->  include/qom/object.h | 18 ++++++++++++++++++
->  qom/object.c         | 43 +++++++++++++++++++++++++++++++++++++++++++
->  2 files changed, 61 insertions(+)
-> 
-> diff --git a/include/qom/object.h b/include/qom/object.h
-> index 8dead29284..de37016ba8 100644
-> --- a/include/qom/object.h
-> +++ b/include/qom/object.h
-> @@ -2017,6 +2017,24 @@ typedef enum {
->      OBJ_PROP_FLAG_READWRITE = (OBJ_PROP_FLAG_READ | OBJ_PROP_FLAG_WRITE),
->  } ObjectPropertyFlags;
+>  include/hw/acpi/ich9.h |   3 +-
+>  hw/acpi/ich9.c         | 111 ++++++++++++++++-------------------------
+>  hw/isa/lpc_ich9.c      |   3 +-
+>  3 files changed, 44 insertions(+), 73 deletions(-)
+
+Reviewed-by: Daniel P. Berrangé <berrange@redhat.com>
+
+but...
+
+
+> @@ -436,6 +368,47 @@ void ich9_pm_add_class_properties(ObjectClass *oc)
+>                                                  ACPI_PM_PROP_GPE0_BLK_LEN,
+>                                                  &gpe0_len,
+>                                                  OBJ_PROP_FLAG_READ);
+...it'd read nicer with
+
+  #define REG_FIELD(n) \
+    (pm_offset + offsetof(ICH9LPCPMRegs, n))
+
+> +    object_class_property_add_uint32_ptr(oc, ACPI_PM_PROP_PM_IO_BASE,
+> +                                         pm_offset +
+> +                                         offsetof(ICH9LPCPMRegs,
+> +                                                  pm_io_base),
+> +                                         OBJ_PROP_FLAG_READ);
+
+
+....
+
+    object_class_property_add_uint32_ptr(oc, ACPI_PM_PROP_PM_IO_BASE,
+                                         REG_FIELD(pm_io_base),
+                                         OBJ_PROP_FLAG_READ);
+
+...
+
+> +    object_class_property_add_link(oc, "bus",
+> +                                   TYPE_PCI_BUS,
+> +                                   pm_offset +
+> +                                   offsetof(ICH9LPCPMRegs,
+> +                                            acpi_pci_hotplug.root),
+> +                                   object_property_allow_set_link,
+> +                                   OBJ_PROP_LINK_STRONG);
+> +    object_class_property_add(oc, ACPI_PM_PROP_GPE0_BLK, "uint32",
+> +                              ich9_pm_get_gpe0_blk,
+> +                              NULL, NULL, NULL);
+> +    object_class_property_add_uint8_ptr(oc, ACPI_PM_PROP_S3_DISABLED,
+> +                                        pm_offset +
+> +                                        offsetof(ICH9LPCPMRegs, disable_s3),
+> +                                        OBJ_PROP_FLAG_READWRITE);
+> +    object_class_property_add_uint8_ptr(oc, ACPI_PM_PROP_S4_DISABLED,
+> +                                        pm_offset +
+> +                                        offsetof(ICH9LPCPMRegs, disable_s4),
+> +                                        OBJ_PROP_FLAG_READWRITE);
+> +    object_class_property_add_uint8_ptr(oc, ACPI_PM_PROP_S4_VAL,
+> +                                        pm_offset +
+> +                                        offsetof(ICH9LPCPMRegs, s4_val),
+> +                                        OBJ_PROP_FLAG_READWRITE);
+> +    object_class_property_add_bool_ptr(oc, ACPI_PM_PROP_TCO_ENABLED,
+> +                                       pm_offset +
+> +                                       offsetof(ICH9LPCPMRegs, enable_tco),
+> +                                       OBJ_PROP_FLAG_READWRITE);
+> +    object_class_property_add_bool_ptr(oc, ACPI_PM_PROP_ACPI_PCIHP_BRIDGE,
+> +                               pm_offset +
+> +                               offsetof(ICH9LPCPMRegs,
+> +                                   acpi_pci_hotplug.use_acpi_hotplug_bridge),
+> +                               OBJ_PROP_FLAG_READWRITE);
+> +    object_class_property_add_bool_ptr(oc, "x-keep-pci-slot-hpc",
+> +                                       pm_offset +
+> +                                       offsetof(ICH9LPCPMRegs,
+> +                                                keep_pci_slot_hpc),
+> +                                       OBJ_PROP_FLAG_READWRITE);
+
+...
+
+  #undef REG_FIELD
+
+>  }
 >  
-> +/**
-> + * object_class_property_add_bool_ptr:
-> + * @klass: the object class to add a property to
-> + * @name: the name of the property
-> + * @offset: the offset from the object instance where the bool value is
-> + *   stored
-> + * @flags: bitwise-or'd ObjectPropertyFlags
-> + *
-> + * Add an boolean property in memory.  This function will add a
-> + * property of type 'bool'.
-> + *
-> + * Returns: The newly added property on success, or %NULL on failure.
-> + */
-> +ObjectProperty *object_class_property_add_bool_ptr(ObjectClass *klass,
-> +                                         const char *name,
-> +                                         ptrdiff_t offset,
-> +                                         ObjectPropertyFlags flags);
-> +
->  /**
->   * object_property_add_uint8_ptr:
->   * @obj: the object to add a property to
-> diff --git a/qom/object.c b/qom/object.c
-> index f91764aaa7..635eeeac77 100644
-> --- a/qom/object.c
-> +++ b/qom/object.c
-> @@ -2750,6 +2750,49 @@ DEFINE_OBJECT_CLASS_PROPERTY_SCALAR_METHODS(uint64)
->  #undef DEFINE_OBJECT_CLASS_PROPERTY_SCALAR_METHODS
+>  void ich9_pm_device_pre_plug_cb(HotplugHandler *hotplug_dev, DeviceState *dev,
+> diff --git a/hw/isa/lpc_ich9.c b/hw/isa/lpc_ich9.c
+> index d3f1358887..b55b5136a3 100644
+> --- a/hw/isa/lpc_ich9.c
+> +++ b/hw/isa/lpc_ich9.c
+> @@ -689,7 +689,6 @@ static void ich9_lpc_initfn(Object *obj)
+>                               IOAPIC_NUM_PINS);
 >  
+>      ich9_pm_reset_properties(&lpc->pm);
+> -    ich9_pm_add_properties(obj, &lpc->pm);
+>  }
 >  
-> +static void property_class_get_bool_ptr(Object *obj, Visitor *v,
-> +                                        const char *name,
-> +                                        void *opaque, Error **errp)
-> +{
-> +    bool value = *(bool *)object_class_prop_ptr(obj, (ptrdiff_t)opaque);
-> +
-> +    visit_type_bool(v, name, &value, errp);
-> +}
-> +
-> +static void property_class_set_bool_ptr(Object *obj, Visitor *v,
-> +                                        const char *name,
-> +                                        void *opaque, Error **errp)
-> +{
-> +    bool *field = (bool *)object_class_prop_ptr(obj, (ptrdiff_t)opaque);
-> +    bool value;
-> +
-> +    if (!visit_type_bool(v, name, &value, errp)) {
-> +        return;
-> +    }
-> +
-> +    *field = value;
-> +}
-
-Am I missing the reason why we can't use
-
-  DEFINE_OBJECT_CLASS_PROPERTY_SCALAR_METHODS(bool)
-
-?  If so, could that be mentioned in the commit message.
-
-> +
-> +ObjectProperty *
-> +object_class_property_add_bool_ptr(ObjectClass *klass, const char *name,
-> +                                   ptrdiff_t offset,
-> +                                   ObjectPropertyFlags flags)
-> +{
-> +    ObjectPropertyAccessor *getter = NULL;
-> +    ObjectPropertyAccessor *setter = NULL;
-> +
-> +    if ((flags & OBJ_PROP_FLAG_READ) == OBJ_PROP_FLAG_READ) {
-> +        getter = property_class_get_bool_ptr;
-> +    }
-> +
-> +    if ((flags & OBJ_PROP_FLAG_WRITE) == OBJ_PROP_FLAG_WRITE) {
-> +        setter = property_class_set_bool_ptr;
-> +    }
-> +
-> +    return object_class_property_add(klass, name, "bool",
-> +                                     getter, setter, NULL, (void *)offset);
-> +}
-> +
->  ObjectProperty *
->  object_property_add_uint8_ptr(Object *obj, const char *name,
->                                const uint8_t *v,
+>  static void ich9_lpc_realize(PCIDevice *d, Error **errp)
+> @@ -920,7 +919,7 @@ static void ich9_lpc_class_init(ObjectClass *klass, const void *data)
+>                                                 &acpi_disable_cmd,
+>                                                 OBJ_PROP_FLAG_READ);
+>  
+> -    ich9_pm_add_class_properties(klass);
+> +    ich9_pm_add_class_properties(klass, offsetof(ICH9LPCState, pm));
+>  }
+>  
+>  static const TypeInfo ich9_lpc_info = {
 > -- 
 > 2.43.0
 > 

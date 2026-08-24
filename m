@@ -4,78 +4,78 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0096CC5DF94
-	for <qemu-arm@archiver.kernel.org>; Mon, 24 Aug 2026 15:25:53 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B0E73C5DF9B
+	for <qemu-arm@archiver.kernel.org>; Mon, 24 Aug 2026 15:26:05 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wyWXw-0005W2-4Z; Mon, 24 Aug 2026 11:25:12 -0400
+	id 1wyWXy-0005cQ-R9; Mon, 24 Aug 2026 11:25:14 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1wyWXt-0005IH-44
- for qemu-arm@nongnu.org; Mon, 24 Aug 2026 11:25:09 -0400
-Received: from mail-ej1-x633.google.com ([2a00:1450:4864:20::633])
+ id 1wyWXw-0005Y5-Jq
+ for qemu-arm@nongnu.org; Mon, 24 Aug 2026 11:25:12 -0400
+Received: from mail-ej1-x632.google.com ([2a00:1450:4864:20::632])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1wyWXq-0007Ai-D8
- for qemu-arm@nongnu.org; Mon, 24 Aug 2026 11:25:08 -0400
-Received: by mail-ej1-x633.google.com with SMTP id
- a640c23a62f3a-c20e70a0962so546242266b.2
- for <qemu-arm@nongnu.org>; Mon, 24 Aug 2026 08:25:05 -0700 (PDT)
+ id 1wyWXt-0007C6-D9
+ for qemu-arm@nongnu.org; Mon, 24 Aug 2026 11:25:12 -0400
+Received: by mail-ej1-x632.google.com with SMTP id
+ a640c23a62f3a-c16794450aeso521570666b.2
+ for <qemu-arm@nongnu.org>; Mon, 24 Aug 2026 08:25:08 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1787585104; x=1788189904; darn=nongnu.org;
+ d=linaro.org; s=google; t=1787585108; x=1788189908; darn=nongnu.org;
  h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
  :content-type:mime-version:subject:date:from:from:to:cc:subject:date
  :message-id:reply-to:content-type;
- bh=pc/GOaaPlMM8Rx6IwwNSVab3AJ0ESXz+I20bcOy9tBo=;
- b=jEnYjZ4PTL191QLfr721KUEkIoooDsPk+No4e7QmOL6Na6YS8pLtBt4zUNxcU/zgLR
- RKprX9aVEy8MR2H1/XaM4YTb+hcz0XFDc1+8gqohdp+XFLsVYG9wocOkmzA0my9YlwuU
- rlhh0oPVhJd24Ox94juXl4/AvBz+OqUtpXne/wbL+wddwDltXPLNcmUqPU1ATmp8j5tU
- l+tM/IcJDaslmEaLz7YbJw+HRlsyrIWAdoSbcmhtwc6gpYHS3cphK52Ylw90cLbNggal
- 0JPdXOhce1MNhvo17IRfS03OsuHrnKitVFIpt5cYpMsFAh8wy4SYtqDfbTrucbu/0UEW
- PIqA==
+ bh=WJwqaddlExuj8k565K3Q7CEWlxwfLdXIcKUzKJqIN0Y=;
+ b=SyFPXMnoDnR53e1dyUkanUcvDnbelCFvh3uwYlZ2E0rGUfHd1jnGGD/8zxRHDEShz0
+ iCTWtFrUc4JgT8KRA0wpzeHxQQgFv+mEEVv1f4YjTVhht9hIKwDIv0fpH+OKVhGixrE8
+ 8LTgBaA8Bom/nmwtq4P11OkA+E2LkWaIdmqzSrXzHhpj9cVqnNobMGobD82mfhQy1KrD
+ qI+FwvX3vWO25KR1XnD6jwS0ru+ewDQckVPK2aKMsGAUji+T0dxztzgR8iDWC19488Tw
+ kXnUfaoOHolitmx/OtXXOoLIg7ZwkmDIJpw/j5srSB8r7NFVtjywtPrOT/eP8BUkXK4y
+ 3qzw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1787585104; x=1788189904;
+ d=1e100.net; s=20251104; t=1787585108; x=1788189908;
  h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
  :content-type:mime-version:subject:date:from:x-gm-gg
  :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
  :content-type;
- bh=pc/GOaaPlMM8Rx6IwwNSVab3AJ0ESXz+I20bcOy9tBo=;
- b=SXD706Gy2AeSNQ1vy2UINaRJ0BFbokiNpkenZJ4IKZJx2fO4IvrxZ/Lr0zYuSviN4B
- AdOk4iD3qchJ0MUVTomu64nkTAtt1z2s5ajGo/spVRWluE6attsFhvkIYszRhrkAc4Nn
- 6khelOObvXwxRgYoY+2UGnb9D7GMasElHMLz3NiQgtcDkj6p8tlxQuB4kJrGsxO0KkQQ
- UEyc8vtVg2CkHATNdN9L5L9kR0Jmo9oTivhVZPx6QDxGyPM4FP2D4N7cheQ4RDDIhyRX
- vuEW7RJ9SJ3A/V5R1FQp9kgiYDt2WTi3mT9smy/Cn/tAHPJZbB8xV7QIKUVtF8rcKFzT
- 3w6g==
+ bh=WJwqaddlExuj8k565K3Q7CEWlxwfLdXIcKUzKJqIN0Y=;
+ b=gUxLM0mPn56ZOK78FwDgUwHbPvyIjTrWk31p1yI4ArdtQKDzHF8jWe9fES868P/IZl
+ rZa0l+tfiTXMVpts2sE7n1pc/yX7cGxB6bB799M63sf9cXbm9jQxwWPADRNZQPIgfHTZ
+ L7hCRXXP+HT1IAqQ701OuRxiO1vq2oDedL9jpCWhNsgQQH8yTRCQNVFabRqe9t9QTxFo
+ zDLSB/7ssZE8g1ljsYOUvpb/3h0pVMpvV/wpqUlSy7ZU++cWEJEqawRM+FXaQRUl4bG0
+ IzG7LvLKs0YmBqY/YKINPyKx5kM3Ec82Cb1MSL61CXNhrgxmq2AelcRZkMkGuDvHyntM
+ h/LQ==
 X-Forwarded-Encrypted: i=1;
- AHgh+RpJRNDfpgGOhJ+cm3AOS0a0d5Ufghr0O9TBsJjFM3IXhgEwW7dKUsHdGUQ6LphiT9E0NPlsFQS5Cg==@nongnu.org
-X-Gm-Message-State: AFuF++kB4fsS1YxXSO3nUuA7z/6UorHnyTNJpOh0DOTxBtfFl3DAhDIJ
- 9pU48jT8gWIrNfwqq353Mzh+RtsGofQhl4OF7q0sFqAZWL6FxWUcQnqOC/3oxzhVMng=
-X-Gm-Gg: AR+sD10r7ZcORv5rDSbv93rPbpV+albsk31p8QbNBsBCL5UMtQ0QoCejtul3ga3Asny
- ivactLQvU13CNf5H991nmHZ0BaIhuv0WfxfahRzNG5IOrgYaLSM6Do0BzAIA2gK5r4PJS/Lu69v
- XihjatQ6WpQSe+IWoEyiMN+kbqr4duUtaN/SV1eDmW4z46Q3lM8ZuATxGXoJzB4iDJaWO11x25I
- 7K7btiJICNaHAXwlmsPcn6wWTEyndM0lDlDXWeInG2bXYWbi5rEjpqlRfkDydG3UBq7K083z79G
- ZsEx5I8p1jGJXIbwqKnbsPiXSY8cQJZNrZR41LdHuSwOQfR4TDUKdZBmymaHQfibPQFF0H5kEJ7
- P6WoWvyrtqr3t0WLci5Y2VSjQiMyX2/sMGcX6JvQEzIowdDeHo0VvHcFrGJt6LE1we7vPMZUP8F
- X4od0E/XYTPpljpXCkqZ0l1eW2ry2YJHCt2OJwJVlVjT01Y0KUlSrNBq7j+U+t
-X-Received: by 2002:a17:906:6a25:b0:c16:12ff:dc8d with SMTP id
- a640c23a62f3a-c246a69a22fmr3123468166b.14.1787585104127; 
- Mon, 24 Aug 2026 08:25:04 -0700 (PDT)
+ AHgh+RrOvq397hd8c4jslVukbvddaCi43dbncsdIvnNdPohU3TxGXRA5tMv4plWyH3FBfJZqJfAJ+SH8FQ==@nongnu.org
+X-Gm-Message-State: AFuF++lV6WaS3LdbnfRXPfxmBoLTSfIPlIrrbrxY+bVfIFp6Oj1MwLKd
+ m7A/MfGeQghnBZ3lJ/ll0kyc39orOvklNT/pz+5Se1yJlTIHsYgmnqhCBG0JY4SH+rI=
+X-Gm-Gg: AR+sD11qUzTDFuKcUihzDqRFJYa9bwwH3epkxPEV1Q7aBy4JbguMl3aqVEQ0Hen7fNT
+ UhUjIzHa6afJReETvVbtnMeAzctOQV+AF8guZk9UhbppcTf/Xq9hveNy6kOHMDK+UiVQMjizymW
+ R9p777Yx4G4hDLpx7wJWXMDLHW6VgiIp2GRj6t21gn2Vu0ZRYiZWNi4vUjHFPGU+Ex4qWS1mNZA
+ 0AeTxYH4Dad+Ttu7GtjEnThKcSElxLZWscfTzk+SgeKEoN4XBP4re7bKzB5S0QkcmTy6W2N0WI4
+ NMBIEquVGdTrvV5KlaWTbTGJjqpm02iqUlbmxiICoxC7eqAAjWbDTucOu8nhapbrBXJYmjnA27Q
+ 3zve/XBmQyqJ42VXCnLxaCf1/Wk8GI+UKcZ12KYB+pqIEbfxicjAol+/14V4f2qYRFZbvWMUAva
+ GrnblwchbrDmq/GfxlaQkgQO5+EJ3hGh6AcLScdKznlsNzN1IaRw34a8bFKZPA
+X-Received: by 2002:a17:906:b286:b0:c21:752f:c44e with SMTP id
+ a640c23a62f3a-c246a67492cmr2450696566b.16.1787585107685; 
+ Mon, 24 Aug 2026 08:25:07 -0700 (PDT)
 Received: from draig.lan ([185.124.0.156]) by smtp.gmail.com with ESMTPSA id
- a640c23a62f3a-c249606a8fasm1465132966b.8.2026.08.24.08.25.03
+ a640c23a62f3a-c24d6f203acsm290790166b.24.2026.08.24.08.25.03
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
  Mon, 24 Aug 2026 08:25:03 -0700 (PDT)
 Received: from draig.lan (localhost [IPv6:::1])
- by draig.lan (Postfix) with ESMTP id 608875F8FD;
+ by draig.lan (Postfix) with ESMTP id 65CBD5FAE2;
  Mon, 24 Aug 2026 16:25:02 +0100 (BST)
 From: =?utf-8?q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>
-Date: Mon, 24 Aug 2026 16:24:49 +0100
-Subject: [PATCH v2 2/8] tests/arm: add explicit CFLAGS for system build
+Date: Mon, 24 Aug 2026 16:24:51 +0100
+Subject: [PATCH v2 4/8] char-fe: implement qemu_chr_fe_backend_name
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
-Message-Id: <20260824-fixes-for-11-2-v2-2-352c6b890402@linaro.org>
+Message-Id: <20260824-fixes-for-11-2-v2-4-352c6b890402@linaro.org>
 References: <20260824-fixes-for-11-2-v2-0-352c6b890402@linaro.org>
 In-Reply-To: <20260824-fixes-for-11-2-v2-0-352c6b890402@linaro.org>
 To: qemu-devel@nongnu.org
@@ -93,27 +93,27 @@ Cc: =?utf-8?q?Philippe_Mathieu-Daud=C3=A9?= <philmd@mailo.com>,
  =?utf-8?q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>, 
  Fabiano Rosas <farosas@suse.de>
 X-Mailer: b4 0.16.0
-X-Developer-Signature: v=1; a=openpgp-sha256; l=1369;
+X-Developer-Signature: v=1; a=openpgp-sha256; l=4652;
  i=alex.bennee@linaro.org; h=from:subject:message-id;
- bh=MJWvive3XIw267cYiTNdmu4ac2myJrVPkfmdAGEdR0E=;
- b=owEBbQGS/pANAwAKAfvQ2wlanipEAcsmYgBqjGJNIbE5WMJ4v7LnQtMv6FVYwlBxKdGD0QOOr
- x5YJTvxZAKJATMEAAEKAB0WIQRmha6Z51FnvK/I3zX70NsJWp4qRAUCaoxiTQAKCRD70NsJWp4q
- RBChB/4jlOMnCgcSpBlSGkJ8E2S+1E4zQgaNj9Dp9pVaknv9fjSpt4gEPBwdPiMppN5Q/4ownut
- 0nmoS6j2OkprCTeJ8J389Fbi7D7GhNumamKmg9hoTXLHY0h6RCQc7tOyMozOkYbOPmWidfuOGaj
- HxBo5UmWCHFNT0MkjNhQdOykjSbm0xiXGxkUJNuR+rdpH6yEa6FMp0iZv3RVlQOBL3kfUjmGXd+
- DZb5FlsY4+SKeEzobakfTvblv9rdONx0ZcwRwZfTXa4EOubjCtOfiB9YIoxI478TSjdEkP8Oz2S
- 1jTTnMLav2My3A2UbToPtIfySi4+oN/lEYfJA+Urmzp5qnsM
+ bh=16o9aOALfN4xkFpmwmkWkdn+kTLD6/M+CAi326lKzSg=;
+ b=owEBbQGS/pANAwAKAfvQ2wlanipEAcsmYgBqjGJNe6mH5ki8B16GAGABc2EqP9oIVS4aNDGSy
+ nc9Kp0JtAyJATMEAAEKAB0WIQRmha6Z51FnvK/I3zX70NsJWp4qRAUCaoxiTQAKCRD70NsJWp4q
+ RB3RB/4uLlgFy8NoIadYwryQpj1CzM+lWTx/wjpGU6SCyP/Y9PROSjqeVEpqtK/swiqZGGkwglG
+ 6tb4qmDsfPU3+e1Hsl9XyjobW4ZODOLYlDyo/ja0RcoBbwDE02NgFt1Ub4dlf2X9Tlq+KulyYrD
+ Fzvnp+7VVhew4VlBB4J3YhsoCVVV6vKq81K6H1rGuEtGt5xa0fdePb5MdouZTDihC2w0YqAJDCQ
+ 39BaJtoOqFnuGCr6Psr3P/gFBOuboM03t1RqURLUzzFsGictFIXs4oLeZlo8Xq7joIet7hQflEU
+ iNl8e56VoZV0bv/OxAuhk98cceJ9lizeHCwdHNm5kVE4+5uQ
 X-Developer-Key: i=alex.bennee@linaro.org; a=openpgp;
  fpr=6685AE99E75167BCAFC8DF35FBD0DB095A9E2A44
-Received-SPF: pass client-ip=2a00:1450:4864:20::633;
- envelope-from=alex.bennee@linaro.org; helo=mail-ej1-x633.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::632;
+ envelope-from=alex.bennee@linaro.org; helo=mail-ej1-x632.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -129,36 +129,134 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-The brew toolchain on macOS (arm-none-eabi-gcc) is a little different
-from the default on Debian (arm-linux-gnueabihf-gcc) as a result it
-defaults to an older architectural baseline (without isb's), assumes
-softfloat and will get confused by including stdint.h without being
-told it is compiling freestanding code.
+A number of chardev users where calling qemu_chr_fe_get_driver() which
+is discouraged as it blocks backend hotswap. As the pattern is common
+and need for the string is transitory add a helper and keep
+qemu_chr_fe_get_driver() for those that really need the funkiness of
+poking around the backend setup.
 
-Make these all explicit so we can build arm-softmmu tests on macOS.
-The test-armv6m-undef is unaffected as it has it's very own build
-stanza.
-
-Reviewed-by: Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>
-Message-ID: <20260723200904.224413-3-alex.bennee@linaro.org>
+Suggested-by: Peter Maydell <peter.maydell@linaro.org>
+Reviewed-by: Marc-André Lureau <marcandre.lureau@redhat.com>
+Message-ID: <20260810153503.2652324-1-alex.bennee@linaro.org>
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
----
- tests/tcg/arm/Makefile.softmmu-target | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/tests/tcg/arm/Makefile.softmmu-target b/tests/tcg/arm/Makefile.softmmu-target
-index b66074b0b43..3e8a9b4073e 100644
---- a/tests/tcg/arm/Makefile.softmmu-target
-+++ b/tests/tcg/arm/Makefile.softmmu-target
-@@ -29,7 +29,7 @@ ARM_TESTS+=$(patsubst $(ARM_SRC)/%.c, %, $(ARM_TEST_SRCS))
- CRT_PATH=$(ARM_SRC)
- LINK_SCRIPT=$(ARM_SRC)/kernel.ld
- LDFLAGS=-Wl,-T$(LINK_SCRIPT)
--CFLAGS+=-nostdlib -ggdb -O0 $(MINILIB_INC)
-+CFLAGS+=-march=armv7-a+fp -ffreestanding -nostdlib -ggdb -O0 $(MINILIB_INC)
- LDFLAGS+=-static -nostdlib $(CRT_OBJS) $(MINILIB_OBJS) -lgcc
+---
+v2
+  - checkpatch fixes
+  - r-b
+---
+ include/chardev/char-fe.h       | 13 ++++++++++++-
+ backends/cryptodev-vhost-user.c |  8 +-------
+ backends/rng-egd.c              |  8 +-------
+ backends/vhost-user.c           |  8 +-------
+ hw/char/imx_serial.c            |  4 ++--
+ 5 files changed, 17 insertions(+), 24 deletions(-)
+
+diff --git a/include/chardev/char-fe.h b/include/chardev/char-fe.h
+index 5f8a6df17dc..a82894e1d51 100644
+--- a/include/chardev/char-fe.h
++++ b/include/chardev/char-fe.h
+@@ -52,7 +52,8 @@ void qemu_chr_fe_deinit(CharFrontend *c, bool del);
+  * associated Chardev.
+  * Note: avoid this function as the driver should never be accessed directly,
+  *       especially by the frontends that support chardevice hotswap.
+- *       Consider qemu_chr_fe_backend_connected() to check for driver existence
++ *       Consider qemu_chr_fe_backend_connected() to check for driver
++ *       existence or qemu_chr_fe_backend_name() if you need the name.
+  */
+ Chardev *qemu_chr_fe_get_driver(CharFrontend *c);
  
- # building head blobs
+@@ -70,6 +71,16 @@ bool qemu_chr_fe_backend_connected(CharFrontend *c);
+  */
+ bool qemu_chr_fe_backend_open(CharFrontend *c);
+ 
++/**
++ * qemu_chr_fe_backend_name:
++ *
++ * Returns: caller freeable string or NULL
++ */
++static inline char *qemu_chr_fe_backend_name(CharFrontend *c)
++{
++    return (c->chr && c->chr->label) ? g_strdup(c->chr->label) : NULL;
++}
++
+ /**
+  * qemu_chr_fe_set_handlers_full:
+  * @c: a CharFrontend
+diff --git a/backends/cryptodev-vhost-user.c b/backends/cryptodev-vhost-user.c
+index cc478d9902d..3334e280a27 100644
+--- a/backends/cryptodev-vhost-user.c
++++ b/backends/cryptodev-vhost-user.c
+@@ -373,13 +373,7 @@ cryptodev_vhost_user_get_chardev(Object *obj, Error **errp)
+ {
+     CryptoDevBackendVhostUser *s =
+                       CRYPTODEV_BACKEND_VHOST_USER(obj);
+-    Chardev *chr = qemu_chr_fe_get_driver(&s->chr);
+-
+-    if (chr && chr->label) {
+-        return g_strdup(chr->label);
+-    }
+-
+-    return NULL;
++    return qemu_chr_fe_backend_name(&s->chr);
+ }
+ 
+ static void cryptodev_vhost_user_finalize(Object *obj)
+diff --git a/backends/rng-egd.c b/backends/rng-egd.c
+index 1d92bd71cf7..c2207f40c5c 100644
+--- a/backends/rng-egd.c
++++ b/backends/rng-egd.c
+@@ -126,13 +126,7 @@ static void rng_egd_set_chardev(Object *obj, const char *value, Error **errp)
+ static char *rng_egd_get_chardev(Object *obj, Error **errp)
+ {
+     RngEgd *s = RNG_EGD(obj);
+-    Chardev *chr = qemu_chr_fe_get_driver(&s->chr);
+-
+-    if (chr && chr->label) {
+-        return g_strdup(chr->label);
+-    }
+-
+-    return NULL;
++    return qemu_chr_fe_backend_name(&s->chr);
+ }
+ 
+ static void rng_egd_finalize(Object *obj)
+diff --git a/backends/vhost-user.c b/backends/vhost-user.c
+index 380d8250233..46dadb74800 100644
+--- a/backends/vhost-user.c
++++ b/backends/vhost-user.c
+@@ -152,13 +152,7 @@ static void set_chardev(Object *obj, const char *value, Error **errp)
+ static char *get_chardev(Object *obj, Error **errp)
+ {
+     VhostUserBackend *b = VHOST_USER_BACKEND(obj);
+-    Chardev *chr = qemu_chr_fe_get_driver(&b->chr);
+-
+-    if (chr && chr->label) {
+-        return g_strdup(chr->label);
+-    }
+-
+-    return NULL;
++    return qemu_chr_fe_backend_name(&b->chr);
+ }
+ 
+ static void vhost_user_backend_class_init(ObjectClass *oc, const void *data)
+diff --git a/hw/char/imx_serial.c b/hw/char/imx_serial.c
+index fb41ee2ac50..8ac4efbb5e9 100644
+--- a/hw/char/imx_serial.c
++++ b/hw/char/imx_serial.c
+@@ -278,10 +278,10 @@ static void imx_serial_write(void *opaque, hwaddr offset,
+                              uint64_t value, unsigned size)
+ {
+     IMXSerialState *s = (IMXSerialState *)opaque;
+-    Chardev *chr = qemu_chr_fe_get_driver(&s->chr);
++    g_autofree char *label = qemu_chr_fe_backend_name(&s->chr);
+     unsigned char ch;
+ 
+-    trace_imx_serial_write(chr ? chr->label : "NODEV", offset, value);
++    trace_imx_serial_write(label ? label : "NODEV", offset, value);
+ 
+     switch (offset >> 2) {
+     case 0x10: /* UTXD */
 
 -- 
 2.47.3

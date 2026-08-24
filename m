@@ -4,96 +4,96 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C80ADC5DF81
-	for <qemu-arm@archiver.kernel.org>; Mon, 24 Aug 2026 16:21:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B45CCC5DF81
+	for <qemu-arm@archiver.kernel.org>; Mon, 24 Aug 2026 16:22:31 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wyXPs-0000BQ-CP; Mon, 24 Aug 2026 12:20:56 -0400
+	id 1wyXRB-0001dd-Vv; Mon, 24 Aug 2026 12:22:18 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <pierrick.bouvier@oss.qualcomm.com>)
- id 1wyXPn-0008W4-Qz
- for qemu-arm@nongnu.org; Mon, 24 Aug 2026 12:20:51 -0400
+ id 1wyXRA-0001YI-Jz
+ for qemu-arm@nongnu.org; Mon, 24 Aug 2026 12:22:16 -0400
 Received: from mx0a-0031df01.pphosted.com ([205.220.168.131])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <pierrick.bouvier@oss.qualcomm.com>)
- id 1wyXPj-0001B8-Az
- for qemu-arm@nongnu.org; Mon, 24 Aug 2026 12:20:51 -0400
-Received: from pps.filterd (m0279863.ppops.net [127.0.0.1])
+ id 1wyXR7-0001g6-Hc
+ for qemu-arm@nongnu.org; Mon, 24 Aug 2026 12:22:16 -0400
+Received: from pps.filterd (m0279865.ppops.net [127.0.0.1])
  by mx0a-0031df01.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id
- 67OFmkfo3433625
- for <qemu-arm@nongnu.org>; Mon, 24 Aug 2026 16:20:45 GMT
+ 67OFmiPi3994143
+ for <qemu-arm@nongnu.org>; Mon, 24 Aug 2026 16:22:12 GMT
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qualcomm.com; h=
- cc:content-type:date:from:in-reply-to:message-id:mime-version
- :references:subject:to; s=qcppdkim1; bh=QarRks+gJGQhwE7iWD/xbdr/
- NfkL13gWb6JqEtCMovk=; b=jKUA6wzVGwV8pAYvIATYqy+PR/OFeQK/aAzkw1tA
- xJDsFZXQeWxvHEfqSR0qSBNUna5OMbbsIrTmv1tyczHlrwVQjLkYaxLdj/AWLkhT
- Tizn1VDkcncPaBW5nuGth1wvyk1CemBFKvYagnYJSN67hDeoPfq+rSeipqxc8UAe
- nIERmHeVoyar+lEinXhyo3bSaw5CE8TJbtpuYeC30V70ciHQpiK9JZ9gnduEPCmh
- wQelHWHSs8jqSud2+9N85+6slz2zJAFvezNMiOLuWXu1i4s29e/c0THDTSPwN3Jk
- FblaXJZlTVogapYr6VhSAIbdwrUlZZHPRoo+g+x5NaZ6JQ==
+ cc:content-transfer-encoding:content-type:date:from:in-reply-to
+ :message-id:mime-version:references:subject:to; s=qcppdkim1; bh=
+ vfgMB4pTML5LLhB92ZPYfZFzI4L4O0kkGzL95VEiS8w=; b=Zt8kA9fErliaYIfY
+ 4a4TVZjeKyi1eGG1GpsoFKjwXFkrUAK/3Kt+s6ifxqtAdtAU1JvIUoctyXTMMMC5
+ orSfxePaYZMaUzcXQ+O0m5YO1IJ37eIYwqSmg9cjVbTgK6B9xAjzF/Zqc9oKEo6N
+ Z1lJwQVipElEOEWPMmaBfPmeDuC5vN1CHqIKM+/NKs9LsgIEWs3xZe+TQNY2csC4
+ NpUkigsfFHxwgESzx07ApgE/89sbRjxv10FQalY9GsPzQgR8iuC9iXfAYQCfAUWP
+ 7dsrTJboV4THgbYu0vcdNima0K3VsNvaqkS9/kgVr9XHJvIgVlgQEGzQ9AnWLEvq
+ ZDeofg==
 Received: from mail-pj1-f72.google.com (mail-pj1-f72.google.com
  [209.85.216.72])
- by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 4g88k7ksdp-1
+ by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 4g8jgk259y-1
  (version=TLSv1.3 cipher=TLS_AES_128_GCM_SHA256 bits=128 verify=NOT)
- for <qemu-arm@nongnu.org>; Mon, 24 Aug 2026 16:20:44 +0000 (GMT)
+ for <qemu-arm@nongnu.org>; Mon, 24 Aug 2026 16:22:11 +0000 (GMT)
 Received: by mail-pj1-f72.google.com with SMTP id
- 98e67ed59e1d1-38e8e864ef0so7188525a91.0
- for <qemu-arm@nongnu.org>; Mon, 24 Aug 2026 09:20:44 -0700 (PDT)
+ 98e67ed59e1d1-39533bb224cso4535076a91.3
+ for <qemu-arm@nongnu.org>; Mon, 24 Aug 2026 09:22:11 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=oss.qualcomm.com; s=google; t=1787588444; x=1788193244; darn=nongnu.org;
- h=in-reply-to:content-language:from:references:cc:to:subject
- :user-agent:mime-version:date:message-id:content-type:from:to:cc
- :subject:date:message-id:reply-to:content-type;
- bh=QarRks+gJGQhwE7iWD/xbdr/NfkL13gWb6JqEtCMovk=;
- b=FQWvqPvhD+n7u6Xqv8pvHj6Aimy1WtHW99vyAgIjt3BVIdaPwvqkMSzmruvO6xTiaJ
- VvRxMMFBd5fP8vgkwW0Thra+47UWe+k7v8sJg4UUFGKURzCtxIk1UjPE8yR+5Xj9oZfP
- g9O8UPJjUCToNw58gfSdXO0PNZAFNXYd/W/wGgqymTQrOUjUCQ7F46Mcs+k7UQ/aBWwc
- cHMxGlqwifPLhX+oFVjEpEKBY8QdrR8oE7bkgtfuLXxzOGMTxJLA+gsJZtY4AvMTkFLe
- aXN7uWhI5vJc+LOEJ/SwRc3Qi3xdtwa8Sich75GHcGUyc0QccsohEpwQd9QuIuksWZnZ
- RgKg==
+ d=oss.qualcomm.com; s=google; t=1787588531; x=1788193331; darn=nongnu.org;
+ h=content-transfer-encoding:content-type:in-reply-to:content-language
+ :from:references:cc:to:subject:user-agent:mime-version:date
+ :message-id:from:to:cc:subject:date:message-id:reply-to:content-type;
+ bh=vfgMB4pTML5LLhB92ZPYfZFzI4L4O0kkGzL95VEiS8w=;
+ b=NAxcGOZrc/w1FT1yCHlfOX0b80JX2qDZD+rBVoqkLazu+qXxOh3LYr26KhM2Ub2thU
+ vqqHGD0XPN2orsJ0K69BQ41+IfwRmoz1ZQQr7pC67r6BzfdBl4D1/BElTisNWjiDS8Mj
+ ILPQrwXZMxNEEMDKFflAYlg0yaGYl0c28JTFYFRh0SzCuNDRAhdZGbSm6zD+vt74smEH
+ 8Gi7EpJkJJaej1pX8evt41yk3KOjVu+q92hyJ+hDdCTWqFT6nHYBGi/iMcqzwczUmB3d
+ wJZpZZMvDKqQzlGWsWnT4/XK9LXBrFrQBWLwZfSgbiwumjuHsCoXT7CBf8EbM29qKIiJ
+ Geaw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1787588444; x=1788193244;
- h=in-reply-to:content-language:from:references:cc:to:subject
- :user-agent:mime-version:date:message-id:content-type:x-gm-gg
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
- :content-type;
- bh=QarRks+gJGQhwE7iWD/xbdr/NfkL13gWb6JqEtCMovk=;
- b=KnFfG/89miIwQhWjVLpJMjOt8OHaZCZlmNBtdJydtwF1mZe1tfgnix68Oa6LZSYhk1
- M9+A1lcPdOxmr3soyGJevBQ1gLA5Lr1QVX2Os9f//mq/2aoM1xH9AQVWM1BGiaEMw9qx
- e0QFbP4zN4j6+I2C7im1znqSBnLMiq1zXBJSai5ZKGT/YFoobyWioCJdV9mcA6saDlT5
- 3V5k6PkIq4g074td8MuNO5LCy4u/N8PNIJVbLmhB2D6BkPHgKBNHjUojPd/FECiW7d93
- aX0FgnEFUo4hfJBstnWJHgf7WOAWhNw+CH0Sm3Lujtj3f5OlI1Kb/OOcCQiD6DYeAVt5
- H/Tw==
+ d=1e100.net; s=20251104; t=1787588531; x=1788193331;
+ h=content-transfer-encoding:content-type:in-reply-to:content-language
+ :from:references:cc:to:subject:user-agent:mime-version:date
+ :message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+ :message-id:reply-to:content-type;
+ bh=vfgMB4pTML5LLhB92ZPYfZFzI4L4O0kkGzL95VEiS8w=;
+ b=tDlsx0bCfUSirMgjIMJWfFKzdQUckX1YqaF0Ehj/J6naF+BbkXQJQedVqHyhwY7cfG
+ jD484VzQzJEJIkUPszW6VTotRCeEjvAUUQmBdK8Xh1dXBlyAnayGBsN6ILTV5ynLx6WH
+ Dc7O54qCpkJr7hsu/dHZdPmvRQxHPze2QT1OcZo9VF1yu3ViD0nDn9tx7MuGvmqp5OHR
+ UBot40c4QqPC9MxylMmE6nZEmwuZNREALufQLLyX8epQVSBtcz/HkB748fk2ktOv5D2K
+ L6qMez3XHKc0SDE7yYWrlMcKKXLZsGcpP1ZkV6oyjYXax9MXA1gxOiC6NVUew+eO5SBy
+ z9xw==
 X-Forwarded-Encrypted: i=1;
- AHgh+Rq25pc3cTgHMeC7I8Dg6rCh9KKT6O2GxHfBo6A60URzMTyOrEsuKdF0uAGPGoD3u5swyqMqdwGA+w==@nongnu.org
-X-Gm-Message-State: AFuF++lH+7JggPTxWlKG9rEYzzsbfcA9tipKf/xscwwKXV0m9/mANx9M
- cJAeiecMqlANDhMxOBMXL1pkdmvJhRzzhXrMzDKWZqojpHNE6oXsLeaz9zTWPfvyJ1xfNDsmt1y
- YGVqxTxxNYPDJUkz4t/gczGN/HaQSRCk4r1XIl7Oa7r4sJRl5uNYMH1Y=
-X-Gm-Gg: AR+sD13sgyIaaev2zaJqlnLKiLqlNoGjIhlEPpXntgLGSm6/wlIWY05Y/l8SXwR2n2q
- SB725vE6usMJwEAQIzgJWZIeEqriASqwQLzJNPPedfDvyN389UOgsdA5W+PKz3tlILUmS4MCVwb
- kxs8xWwfmg3Gpiw4oLgAifC411pDh2jP9Xne3UA8p4Xg4NsRWEo8tne3NNJecBsUGGXRPDvZmR+
- JxvMf7cJvvmpKIPkCqAnDgB5cf2Vm/FsY/MlAzre3wfVBXYKm3N+OsnqOoP5oXJY8FmIpyyGgCe
- iSd5NFWo14hrCPriI6eYogGIf7r36BAhaOCUzRP1pPYgejwyY8uAmyZdNlYSvG4YbLYb39gyoqk
- 8NEMukF8R6She837Sox6VG8LFrh1vSPx371QCalEoiD95T4JSen0wl746ythSrJH3cT2X
-X-Received: by 2002:a17:90b:1b04:b0:38d:dfd1:7c1 with SMTP id
- 98e67ed59e1d1-395c33406e0mr46672373a91.2.1787588444046; 
- Mon, 24 Aug 2026 09:20:44 -0700 (PDT)
-X-Received: by 2002:a17:90b:1b04:b0:38d:dfd1:7c1 with SMTP id
- 98e67ed59e1d1-395c33406e0mr46672188a91.2.1787588443278; 
- Mon, 24 Aug 2026 09:20:43 -0700 (PDT)
+ AHgh+Rp1ZxCcV32kJGOHI07j1n8FK1HNgsqG2U1BCKURpvD8+iMKxndo5EktyZN0fJJmoMA7Ub/HxkvP7w==@nongnu.org
+X-Gm-Message-State: AFuF++l10HACPu+Nar4abgd2yNFi6RGqEaNydH+2BtcLRhSyw4/e+lHQ
+ y+FFtBchxrvKIBPo14c5yNVO23oVPg2zP/7QvYYtH3STkU9dMcmmxKx9XMdg2SGNjwk2Arpw/fZ
+ 9gNz9ul+lKnKxZOfZVCq+dxxrYihBzvyeOoQf6AnNISKWP708gY0dTz8=
+X-Gm-Gg: AR+sD119AcGbzFFncxAN3Hkjn7OQ1dipBk22qFOmtheiJGjwlqHM9ucwLycGVa0SNJN
+ F3KAEEgYmY5fpWHpgoc/XlpfOYhWopTCV9TFBCzLNFPuXOHIrwEhrE3z+S2e60UPBsCDMPjP3hl
+ 48ywqAE2hvahCbckL+dCG1zfWMCs5sJAh5bO6cUNOZntjZIAl72R/xTEy8wDYll25XnOSM/sfwC
+ PQ02XRwIjkpJ8CKc7/uWhi5jm0BcpMwuUHE7Bb7V6TMCAePQoE/9DeIs2ICtFppa5MivbZbBWvX
+ uQ79O7Lo59Mug6ayjf7bjcCcUZFTiaUD+C9ITVKtwI9oOgwx1wIp+bzs+omQiBhXo48i6panmg0
+ dXpWWgsI/WGEjBBA0gnGNjFVjEveomqiBYpapMSNuCmC4bHiFriWJ/KpHQ/D4FFzeAYCd
+X-Received: by 2002:a17:90b:39ab:b0:393:19a3:4e5 with SMTP id
+ 98e67ed59e1d1-395df686f1dmr34246525a91.16.1787588531131; 
+ Mon, 24 Aug 2026 09:22:11 -0700 (PDT)
+X-Received: by 2002:a17:90b:39ab:b0:393:19a3:4e5 with SMTP id
+ 98e67ed59e1d1-395df686f1dmr34246387a91.16.1787588530546; 
+ Mon, 24 Aug 2026 09:22:10 -0700 (PDT)
 Received: from [192.168.1.199] (216-71-219-44.dyn.novuscom.net.
  [216.71.219.44]) by smtp.gmail.com with ESMTPSA id
- a92af1059eb24-1418619d6ecsm25727002c88.14.2026.08.24.09.20.39
+ 5a478bee46e88-327f9236166sm27570254eec.28.2026.08.24.09.22.07
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 24 Aug 2026 09:20:42 -0700 (PDT)
-Content-Type: multipart/mixed; boundary="------------Y1YbvhavawekLLmLAYAwQoLQ"
-Message-ID: <b9f0853b-adda-457d-94e1-add9bb2a2548@oss.qualcomm.com>
-Date: Mon, 24 Aug 2026 09:20:38 -0700
+ Mon, 24 Aug 2026 09:22:09 -0700 (PDT)
+Message-ID: <9b5a4586-be66-4d69-8d08-fc1796336b2c@oss.qualcomm.com>
+Date: Mon, 24 Aug 2026 09:22:06 -0700
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 12/12] meson: link ARM and RISC-V into qemu-system
+Subject: Re: [PATCH 09/12] target-info: register le and be TargetInfo variants
 To: Yonggang Luo <luoyonggang@gmail.com>, qemu-devel@nongnu.org
 Cc: Xianglai Li <lixianglai@loongson.cn>,
  Alistair Francis <alistair.francis@wdc.com>,
@@ -127,38 +127,39 @@ Cc: Xianglai Li <lixianglai@loongson.cn>,
  Matthew Rosato <mjrosato@linux.ibm.com>, Weiwei Li <liwei1518@gmail.com>,
  Darren Kenny <darren.kenny@oracle.com>
 References: <20260823150731.896-1-luoyonggang@gmail.com>
- <20260823150731.896-13-luoyonggang@gmail.com>
+ <20260823150731.896-10-luoyonggang@gmail.com>
 From: Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>
 Content-Language: en-US
-In-Reply-To: <20260823150731.896-13-luoyonggang@gmail.com>
-X-Authority-Analysis: v=2.4 cv=b4iCJNGx c=1 sm=1 tr=0 ts=6a8c6f5c cx=c_pps
+In-Reply-To: <20260823150731.896-10-luoyonggang@gmail.com>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
+X-Proofpoint-ORIG-GUID: V4XlXDEViUxgDUkQJocPQhRO4MZR0Uhj
+X-Proofpoint-GUID: V4XlXDEViUxgDUkQJocPQhRO4MZR0Uhj
+X-Proofpoint-Spam-Info: AW1haW4tMjYwODI0MDEzOCBTYWx0ZWRfX8LcPhwbmZF+o
+ Pw0L6VjvTlQ8El2M6WcuL3RTtXZE6qoa1YZFOqWorPlfc6B/REwhPkYMpah4PfHIvo1dG6F8vSn
+ /eSwggkP7nvB7ggKR8E0CGlLqiiIhK0=
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwODI0MDEzOCBTYWx0ZWRfX4hg8kLPU7AJ0
+ oNad6kByOMWLSPl1cjNYARdpcjYG45KxBLt8hH0aZRsAqB4LDr7iah+AaDD6Stm7LhdVCbwMFcv
+ IpKudPAdvZH3oPd/LLhjXjoJ4M107jnvp7PUYT2TVeWkhTSF7sunlr0vVIvXcYBQf6XdgCen7WO
+ SoeDE5nzF8XPkiqgVS8j9XlnHnMzv+rSjtZbnpSp95V63R7zNjaI3oUl6UKyuQAjpNRSX65h6ct
+ X0b8d8YLCkK57OqpV1XQN745366P/BgWp+dnsHAAx4E0LeU/xd6cGl9vjWaUtrLdrQmPc4LnmY7
+ 3K329dFdFDceqOjenl+D35QKe/psTjlZAQLmBgzGeIg57YvtkbosYTZ4XHe0pDOJi3GlooCqVtt
+ SRmxgftVneLVwnwSbRA12uDeFXc/L2fV5Qkr/dtA6/BwlRt42O2TWRYkf9fZaj1cm5azaZ/BAo6
+ mEmYAuBjAsxC83LU0kA==
+X-Authority-Analysis: v=2.4 cv=KcvidwYD c=1 sm=1 tr=0 ts=6a8c6fb3 cx=c_pps
  a=RP+M6JBNLl+fLTcSJhASfg==:117 a=iLqgmErQAxjCjdq5jj1Aqg==:17
- a=Sv0fKeRqtYgA:10 a=s4-Qcg_JpJYA:10 a=VkNPw1HP01LnGYTKEx00:22
- a=u7WPNUs3qKkmUXheDGA7:22 a=yOCtJkima9RkubShWh1s:22 a=r77TgQKjGQsHNAKrUKIA:9
- a=pGLkceISAAAA:8 a=A_whQAWMKvOnfy3BOIUA:9 a=QEXdDO2ut3YA:10
- a=dtgYW6BSnhTwMfQShTcA:9 a=m-Z_27IZkzAA:10 a=iS9zxrgQBfv6-_F4QbHw:22
-X-Proofpoint-Spam-Info: AW1haW4tMjYwODI0MDEzNyBTYWx0ZWRfX7c/xV3armh9M
- odJyu08d7d7qGsQyJL4EP0AsF9qsUSlO/Bt1ot8lF5GpzpndeQQB8bJsA6sRCYdln4hjI8XcPzf
- Cd7l2tWVuafuMWVRE3/2orwKApKwj6g=
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwODI0MDEzNyBTYWx0ZWRfX3wHCNSFxbimu
- Lu+yxNSh2r7v5LueHDrjdkORbxTfjM2N2gheJRM8LcxjLLiG2aF8Vpy4UFjg/dkcQUgAYbLS4dF
- e5uTuClJOi4AUl5nGF5twVbuCm8zhLT7pNAoZz7uLLtGBVjCR6LZjxqaGd5YxLUnmz5ZUxjIZDU
- Lgwaa5g81ZIvtybze0UKHh8w5+ilzD8+WHqPmWhHPEkXEH1d1tU8XTf0jXaYLqSbXYfEQpTekyU
- vRZwEeE71ztYDuGnz5zQZhTMNstcpYLaEi9wIk49+SlmKzkmzJjKfsXJTcSb4zDPwNl1DmOPkur
- IQm7lvuu7i1PjGTbDwzXe+0BG46aUJJLBBVSDJ7yFT0MViT46b695oRyE+S778dwP0hhoqZNiyd
- aK3hdiTZxMWTGdsxIE6mWDve03oQJ0xkN9Pu+h7z6uJH016fxsDkwTeB/O2VNdurM0yJiNQLiZA
- JBo36t3EfJDC0r7taNQ==
-X-Proofpoint-ORIG-GUID: jcF51zHWHYMUZuH18DYIFO-W9qtIwdoC
-X-Proofpoint-GUID: jcF51zHWHYMUZuH18DYIFO-W9qtIwdoC
+ a=IkcTkHD0fZMA:10 a=Sv0fKeRqtYgA:10 a=s4-Qcg_JpJYA:10
+ a=VkNPw1HP01LnGYTKEx00:22 a=u7WPNUs3qKkmUXheDGA7:22 a=Um2Pa8k9VHT-vaBCBUpS:22
+ a=pGLkceISAAAA:8 a=XXGCr3TU2SxsloKilKUA:9 a=QEXdDO2ut3YA:10
+ a=iS9zxrgQBfv6-_F4QbHw:22
 X-Proofpoint-Virus-Version: vendor=baseguard
  engine=ICAP:2.0.293,Aquarius:18.0.1176,Hydra:6.1.134,FMLib:17.12.100.49
  definitions=2026-08-24_05,2026-08-24_01,2025-10-01_01
 X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
- suspectscore=0 spamscore=0 phishscore=0 bulkscore=0 clxscore=1015
- lowpriorityscore=0 impostorscore=0 adultscore=0 priorityscore=1501
- malwarescore=0 classifier=typeunknown authscore=0 authtc= authcc=
- route=outbound adjust=0 reason=mlx scancount=1 engine=8.22.0-2606150000
- definitions=main-2608240137
+ phishscore=0 impostorscore=0 adultscore=0 spamscore=0 priorityscore=1501
+ lowpriorityscore=0 bulkscore=0 clxscore=1015 suspectscore=0 malwarescore=0
+ classifier=typeunknown authscore=0 authtc= authcc= route=outbound adjust=0
+ reason=mlx scancount=1 engine=8.22.0-2606150000 definitions=main-2608240138
 Received-SPF: pass client-ip=205.220.168.131;
  envelope-from=pierrick.bouvier@oss.qualcomm.com;
  helo=mx0a-0031df01.pphosted.com
@@ -184,281 +185,222 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-This is a multi-part message in MIME format.
---------------Y1YbvhavawekLLmLAYAwQoLQ
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
-
 On 8/23/2026 8:07 AM, Yonggang Luo wrote:
-> - Build qemu-system (and qemu-systemw on Windows) from aarch64
->   common/system objects plus RISC-V arch objects taken from the
->   existing riscv64 lib.
-> - Pull 32-bit TargetInfo and 32-only boards from the arm/riscv32
->   libs so hw/arm and target/riscv are not compiled twice.
-> - Skip linking qemu-system-{arm,aarch64,riscv32,riscv64} and the
->   Windows *w variants; symlink those names to qemu-system so
->   argv[0] still selects TargetInfo.
+> - Register target-info-<name>-le and -be from one system
+>   target-info-def.c unit, sharing arch fields.
+> - Mark is_default from TARGET_BIG_ENDIAN so riscv/arm stay LE and
+>   ppc/s390x stay BE when -target is omitted.
+> - Pick the unique default in target_info_qom_set_target() when more
+>   than one TargetInfo is registered. Leave user-mode as a single
+>   target_info().
 > 
 > Signed-off-by: Yonggang Luo <luoyonggang@gmail.com>
 > ---
->  meson.build | 156 +++++++++++++++++++++++++++++++++++++++++++++++++---
->  1 file changed, 147 insertions(+), 9 deletions(-)
+>  include/qemu/target-info-impl.h |  6 ++++
+>  include/qemu/target-info-init.h | 29 +++++++++++++---
+>  target-info-def.c               | 61 +++++++++++++++++++++++++--------
+>  target-info-qom.c               | 33 ++++++++++++++----
+>  4 files changed, 104 insertions(+), 25 deletions(-)
 > 
-> diff --git a/meson.build b/meson.build
-> index 449d50f2983..b4f435f6a22 100644
-> --- a/meson.build
-> +++ b/meson.build
-> @@ -4250,6 +4250,10 @@ endif
+> diff --git a/include/qemu/target-info-impl.h b/include/qemu/target-info-impl.h
+> index de329ec2b86..b4222e4455e 100644
+> --- a/include/qemu/target-info-impl.h
+> +++ b/include/qemu/target-info-impl.h
+> @@ -23,6 +23,12 @@ typedef struct TargetInfo {
+>      const char *cpu_type;
+>      /* related to TARGET_BIG_ENDIAN definition */
+>      EndianMode endianness;
+> +    /*
+> +     * True on the endian variant that matches this translation unit's
+> +     * TARGET_BIG_ENDIAN. target_info_qom_set_target() uses this when
+> +     * more than one TargetInfo is registered and -target is omitted.
+> +     */
+> +    bool is_default;
+>      /*
+>       * runtime equivalent of
+>       *   TARGET_PAGE_BITS_VARY ? TARGET_PAGE_BITS_LEGACY : TARGET_PAGE_BITS
+> diff --git a/include/qemu/target-info-init.h b/include/qemu/target-info-init.h
+> index b7024c9faef..25d00adcc66 100644
+> --- a/include/qemu/target-info-init.h
+> +++ b/include/qemu/target-info-init.h
+> @@ -37,15 +37,34 @@ const TargetInfo *target_info(void)     \
+>  #include "qemu/target-info-qom.h"
+>  #include "qom/object.h"
 >  
->  traceable = []
->  emulators = {}
-> +target_softmmu = {}
-> +combo_softmmu = ['aarch64-softmmu', 'arm-softmmu', 'riscv32-softmmu', 'riscv64-softmmu']
-> +have_qemu_system_combo = ('aarch64-softmmu' in target_dirs
-> +                          and 'riscv64-softmmu' in target_dirs)
->  foreach target : target_dirs
->    config_target = config_target_mak[target]
->    target_name = config_target['TARGET_NAME']
-> @@ -4399,20 +4403,37 @@ foreach target : target_dirs
->                   c_args: c_args,
->                   build_by_default: false)
->  
-> +  if target in combo_softmmu
-> +    target_softmmu += {target: {
-> +      'lib': lib,
-> +      'arch_srcs': arch_srcs,
-> +      'arch_deps': arch_deps,
-> +      'c_args': c_args,
-> +      'link_args': link_args,
-> +      'target_stubs': target_stubs,
-> +      'main_rs': main_rs,
-> +      'config_target': config_target,
-> +      'target_base_arch': target_base_arch,
-> +    }}
-> +  endif
+> -#define target_info_init(ti_var)                                            \
+> -static const TypeInfo target_info_qom_target_type_info = {                  \
+> -    .name =  TYPE_TARGET_INFO"-"TARGET_NAME,                                \
+> +/*
+> + * QOM type names are target-info-<TARGET_NAME>-le and -be so both
+> + * endian variants can be registered from one system translation unit.
+> + */
+> +#define TARGET_INFO_QOM_SUFFIX_0 "-le"
+> +#define TARGET_INFO_QOM_SUFFIX_1 "-be"
 > +
->    if target.endswith('-softmmu')
-> -    execs = [{
-> -      'name': 'qemu-system-' + target_name,
-> -      'win_subsystem': 'console',
-> -      'sources': [main_rs, files('system/main.c')],
-> -      'dependencies': [sdl, target_stubs],
-> -    }]
-> -    if host_os == 'windows' and (sdl.found() or gtk.found())
-> +    execs = []
-> +    if not (have_qemu_system_combo and target in combo_softmmu)
->        execs += [{
-> -        'name': 'qemu-system-' + target_name + 'w',
-> -        'win_subsystem': 'windows',
-> +        'name': 'qemu-system-' + target_name,
-> +        'win_subsystem': 'console',
->          'sources': [main_rs, files('system/main.c')],
->          'dependencies': [sdl, target_stubs],
->        }]
-> +      if host_os == 'windows' and (sdl.found() or gtk.found())
-> +        execs += [{
-> +          'name': 'qemu-system-' + target_name + 'w',
-> +          'win_subsystem': 'windows',
-> +          'sources': [main_rs, files('system/main.c')],
-> +          'dependencies': [sdl, target_stubs],
-> +        }]
-> +      endif
->      endif
->      if get_option('fuzzing')
->        specific_fuzz = specific_fuzz_ss.apply(config_target, strict: false)
-> @@ -4481,6 +4502,123 @@ foreach target : target_dirs
->    endforeach
->  endforeach
->  
-> +# Combined ARM + RISC-V system emulator (32 and 64).
-> +# Common/system objects come from aarch64. RISC-V arch objects come
-> +# from the existing riscv64 lib. 32-bit TargetInfo and 32-only boards
-> +# come from the arm/riscv32 libs. Per-target qemu-system-* names are
-> +# symlinks to qemu-system (argv[0] selects TargetInfo).
-> +if have_qemu_system_combo
-> +  a64 = target_softmmu['aarch64-softmmu']
-> +  rv = target_softmmu['riscv64-softmmu']
-> +  extra_objs = []
-> +  target_info_def = files('target-info-def.c')
-> +  foreach spec : [[common_ss, common_all], [system_ss, libsystem]]
-> +    rv_src = spec[0].apply(rv['config_target'], strict: false)
-> +    a64_src = spec[0].apply(a64['config_target'], strict: false)
-> +    extra = []
-> +    foreach f : rv_src.sources()
-> +      if f not in a64_src.sources() and not f.full_path().endswith('_stubs.c')
-> +        extra += f
-> +      endif
-> +    endforeach
-> +    if extra.length() > 0
-> +      extra_objs += spec[1].extract_objects(extra)
-> +    endif
-> +  endforeach
-> +  rv_base = rv['target_base_arch']
-> +  if rv_base in target_common_arch_libs
-> +    src = target_common_arch[rv_base].apply(rv['config_target'], strict: false)
-> +    extra_objs += target_common_arch_libs[rv_base].extract_objects(src.sources())
-> +  endif
-> +  if rv_base in target_common_system_arch_libs
-> +    src = target_common_system_arch[rv_base].apply(rv['config_target'], strict: false)
-> +    extra_objs += target_common_system_arch_libs[rv_base].extract_objects(src.sources())
-> +  endif
-> +  foreach pair : [['arm-softmmu', 'aarch64-softmmu'], ['riscv32-softmmu', 'riscv64-softmmu']]
-> +    t32 = pair[0]
-> +    t64 = pair[1]
-> +    if t32 in target_softmmu
-> +      extra_objs += target_softmmu[t32]['lib'].extract_objects(target_info_def)
-> +      base32 = target_softmmu[t32]['target_base_arch']
-> +      if base32 in hw_arch
-> +        hw32 = hw_arch[base32].apply(target_softmmu[t32]['config_target'], strict: false)
-> +        hw64 = hw_arch[base32].apply(target_softmmu[t64]['config_target'], strict: false)
-> +        extra_hw = []
-> +        foreach f : hw32.sources()
-> +          if f not in hw64.sources()
-> +            extra_hw += f
-> +          endif
-> +        endforeach
-> +        if extra_hw.length() > 0
-> +          extra_objs += target_softmmu[t32]['lib'].extract_objects(extra_hw)
-> +        endif
-> +      endif
-> +    endif
-> +  endforeach
-> +  combo_objects = extra_objs
-> +  combo_objects += a64['lib'].extract_all_objects(recursive: true)
-> +  combo_objects += rv['lib'].extract_objects(rv['arch_srcs'])
-> +  combo_deps = a64['arch_deps'] + rv['arch_deps'] + [sdl, a64['target_stubs'], rv['target_stubs']]
-> +  if 'arm-softmmu' in target_softmmu
-> +    combo_deps += target_softmmu['arm-softmmu']['arch_deps']
-> +  endif
-> +  if 'riscv32-softmmu' in target_softmmu
-> +    combo_deps += target_softmmu['riscv32-softmmu']['arch_deps']
-> +  endif
-> +  combo_execs = [{
-> +    'name': 'qemu-system',
-> +    'win_subsystem': 'console',
-> +  }]
-> +  if host_os == 'windows' and (sdl.found() or gtk.found())
-> +    combo_execs += [{
-> +      'name': 'qemu-systemw',
-> +      'win_subsystem': 'windows',
-> +    }]
-> +  endif
-> +  combo_exe_suffix = host_os == 'windows' ? '.exe' : ''
-> +  combo_alias_py = 'import os, sys; src, dst = sys.argv[1:3]; os.path.exists(dst) and os.remove(dst); os.symlink(os.path.basename(src), dst)'
-> +  foreach exe : combo_execs
-> +    emulator = executable(exe['name'], [a64['main_rs'], files('system/main.c')],
-> +               install: true,
-> +               c_args: a64['c_args'],
-> +               dependencies: combo_deps,
-> +               objects: combo_objects,
-> +               link_depends: [block_syms, qemu_syms],
-> +               link_args: a64['link_args'],
-> +               win_subsystem: exe['win_subsystem'])
-> +    emulators += {exe['name']: emulator}
-> +    traceable += [{
-> +      'exe': exe['name'],
-> +      'probe-prefix': 'qemu.system.multi',
-> +    }]
-> +    foreach t : combo_softmmu
-> +      if t not in target_softmmu
-> +        continue
-> +      endif
-> +      tname = target_softmmu[t]['config_target']['TARGET_NAME']
-> +      if exe['name'] == 'qemu-systemw'
-> +        alias = 'qemu-system-' + tname + 'w'
-> +      else
-> +        alias = 'qemu-system-' + tname
-> +      endif
-> +      alias_tgt = custom_target(alias,
-> +                                input: emulator,
-> +                                output: alias + combo_exe_suffix,
-> +                                command: [python, '-c', combo_alias_py, '@INPUT@', '@OUTPUT@'],
-> +                                build_by_default: true,
-> +                                install: false)
-> +      emulators += {alias: alias_tgt}
-> +      install_symlink(alias + combo_exe_suffix,
-> +                      pointing_to: exe['name'] + combo_exe_suffix,
-> +                      install_dir: get_option('bindir'))
-> +      traceable += [{
-> +        'exe': alias,
-> +        'probe-prefix': 'qemu.system.' + tname,
-> +      }]
-> +    endforeach
-> +  endforeach
-> +endif
+> +#define TARGET_INFO_QOM_NAME(sel)                                           \
+> +    TYPE_TARGET_INFO "-" TARGET_NAME glue(TARGET_INFO_QOM_SUFFIX_, sel)
 > +
->  # Other build targets
+> +#define TARGET_INFO_QOM_TYPEINFO(ti_var, sel)                               \
+> +static const TypeInfo glue(target_info_qom_type_, sel) = {                  \
+> +    .name = TARGET_INFO_QOM_NAME(sel),                                      \
+>      .parent = TYPE_TARGET_INFO,                                             \
+>      .instance_size = sizeof(TargetInfoQom),                                 \
+>      .class_size = sizeof(TargetInfoQomClass),                               \
+>      .class_data = &ti_var,                                                  \
+> -};                                                                          \
+> -DEFINE_TARGET_INFO_TYPE(target_info_qom_target_type_info)
+> +}
+> +
+> +#define target_info_init_le_be(ti_le, ti_be)                                \
+> +TARGET_INFO_QOM_TYPEINFO(ti_le, 0);                                         \
+> +TARGET_INFO_QOM_TYPEINFO(ti_be, 1);                                         \
+> +static void do_qemu_init_target_info(void)                                  \
+> +{                                                                           \
+> +    type_register_static(&target_info_qom_type_0);                          \
+> +    type_register_static(&target_info_qom_type_1);                          \
+> +}                                                                           \
+> +module_init(do_qemu_init_target_info, MODULE_INIT_TARGET_INFO)
 >  
->  if get_option('plugins')
+>  #endif /* CONFIG_USER_ONLY */
+>  #endif /* COMPILING_PER_TARGET */
+> diff --git a/target-info-def.c b/target-info-def.c
+> index 5d38e405735..6722c43a08f 100644
+> --- a/target-info-def.c
+> +++ b/target-info-def.c
+> @@ -28,39 +28,72 @@ QEMU_BUILD_BUG_ON(offsetof(ArchCPU, env) != sizeof(CPUState));
+>  QEMU_BUILD_BUG_ON(TARGET_PAGE_BITS < TARGET_PAGE_BITS_MIN);
+>  #endif
+>  
+> -static const TargetInfo target_info_def = {
+> -    .target_name = TARGET_NAME,
+> -    .target_arch = glue(SYS_EMU_TARGET_, TARGET_ARCH),
+> -    .long_bits = TARGET_LONG_BITS,
+> -    .cpu_type = CPU_RESOLVING_TYPE,
+> -    .endianness = TARGET_BIG_ENDIAN ? ENDIAN_MODE_BIG : ENDIAN_MODE_LITTLE,
+>  #ifdef TARGET_PAGE_BITS_VARY
+> -    .page_bits_vary = true,
+>  # ifdef TARGET_PAGE_BITS_LEGACY
+> +#  define TARGET_INFO_PAGE_BITS \
+> +    .page_bits_vary = true, \
+>      .page_bits_init = TARGET_PAGE_BITS_LEGACY,
+> +# else
+> +#  define TARGET_INFO_PAGE_BITS \
+> +    .page_bits_vary = true,
+>  # endif
+>  #else
+> -    .page_bits_vary = false,
+> +# define TARGET_INFO_PAGE_BITS \
+> +    .page_bits_vary = false, \
+>      .page_bits_init = TARGET_PAGE_BITS,
+>  #endif
+>  
+>  #ifndef CONFIG_USER_ONLY
+>  # ifdef CONFIG_MULTIPROCESS
+> -    .config_multiprocess = true,
+> +#  define TARGET_INFO_CONFIG_MULTIPROCESS .config_multiprocess = true,
+>  # else
+> -    .config_multiprocess = false,
+> +#  define TARGET_INFO_CONFIG_MULTIPROCESS .config_multiprocess = false,
+>  # endif
+>  # ifdef CONFIG_NITRO
+> -    .config_nitro = true,
+> +#  define TARGET_INFO_CONFIG_NITRO .config_nitro = true,
+>  # else
+> -    .config_nitro = false,
+> +#  define TARGET_INFO_CONFIG_NITRO .config_nitro = false,
+>  # endif
+>  # ifdef CONFIG_XEN
+> -    .config_xen = true,
+> +#  define TARGET_INFO_CONFIG_XEN .config_xen = true,
+>  # else
+> -    .config_xen = false,
+> +#  define TARGET_INFO_CONFIG_XEN .config_xen = false,
+>  # endif
+> +# define TARGET_INFO_CONFIG \
+> +    TARGET_INFO_CONFIG_MULTIPROCESS \
+> +    TARGET_INFO_CONFIG_NITRO \
+> +    TARGET_INFO_CONFIG_XEN
+> +#else
+> +# define TARGET_INFO_CONFIG
+>  #endif
+> +
+> +#define TARGET_INFO_COMMON                                                  \
+> +    .target_name = TARGET_NAME,                                             \
+> +    .target_arch = glue(SYS_EMU_TARGET_, TARGET_ARCH),                      \
+> +    .long_bits = TARGET_LONG_BITS,                                          \
+> +    .cpu_type = CPU_RESOLVING_TYPE,                                         \
+> +    TARGET_INFO_PAGE_BITS                                                   \
+> +    TARGET_INFO_CONFIG
+> +
+> +#ifdef CONFIG_USER_ONLY
+> +static const TargetInfo target_info_def = {
+> +    TARGET_INFO_COMMON
+> +    .endianness = TARGET_BIG_ENDIAN ? ENDIAN_MODE_BIG : ENDIAN_MODE_LITTLE,
+>  };
+>  
+>  target_info_init(target_info_def)
+> +#else
+> +static const TargetInfo target_info_le = {
+> +    TARGET_INFO_COMMON
+> +    .endianness = ENDIAN_MODE_LITTLE,
+> +    .is_default = !TARGET_BIG_ENDIAN,
+> +};
+> +
+> +static const TargetInfo target_info_be = {
+> +    TARGET_INFO_COMMON
+> +    .endianness = ENDIAN_MODE_BIG,
+> +    .is_default = TARGET_BIG_ENDIAN,
+> +};
+> +
+> +target_info_init_le_be(target_info_le, target_info_be)
+> +#endif
+> diff --git a/target-info-qom.c b/target-info-qom.c
+> index 68ad734049c..2c1c57b05fd 100644
+> --- a/target-info-qom.c
+> +++ b/target-info-qom.c
+> @@ -90,13 +90,34 @@ const TargetInfo *target_info(void)
+>  void target_info_qom_set_target(void)
+>  {
+>      g_autoptr(GSList) targets = object_class_get_list(TYPE_TARGET_INFO, false);
+> -
+> +    const TargetInfo *chosen = NULL;
+>      size_t num_found = g_slist_length(targets);
+> -    if (num_found != 1) {
+> -        error_setg(&error_fatal, num_found == 0 ?
+> -                                 "no target-info is available" :
+> -                                 "more than one target-info is available");
+> +    size_t num_default = 0;
+> +
+> +    if (num_found == 0) {
+> +        error_setg(&error_fatal, "no target-info is available");
+> +    }
+> +
+> +    if (num_found == 1) {
+> +        target_info_ptr = TARGET_INFO_CLASS(targets->data)->target_info;
+> +        return;
+> +    }
+> +
+> +    for (GSList *l = targets; l; l = l->next) {
+> +        const TargetInfo *ti = TARGET_INFO_CLASS(l->data)->target_info;
+> +
+> +        if (ti->is_default) {
+> +            num_default++;
+> +            chosen = ti;
+> +        }
+> +    }
+> +
+> +    if (num_default != 1) {
+> +        error_setg(&error_fatal, num_default == 0 ?
+> +                                 "no default target-info is available" :
+> +                                 "more than one default target-info "
+> +                                 "is available");
+>      }
+>  
+> -    target_info_ptr = TARGET_INFO_CLASS(targets->data)->target_info;
+> +    target_info_ptr = chosen;
+>  }
 
-Please find attached a much simpler implementation, which only requires
-a single line update as we add new targets in single-binary.
-
-Regards,
-Pierrick
---------------Y1YbvhavawekLLmLAYAwQoLQ
-Content-Type: text/plain; charset=UTF-8;
- name="6261b0c255e1a8f0df2b41928b8dfb365d0fa488.patch.txt"
-Content-Disposition: attachment;
- filename="6261b0c255e1a8f0df2b41928b8dfb365d0fa488.patch.txt"
-Content-Transfer-Encoding: base64
-
-RnJvbSA2MjYxYjBjMjU1ZTFhOGYwZGYyYjQxOTI4YjhkZmIzNjVkMGZhNDg4IE1vbiBTZXAg
-MTcgMDA6MDA6MDAgMjAwMQpGcm9tOiBQaWVycmljayBCb3V2aWVyIDxwaWVycmljay5ib3V2
-aWVyQG9zcy5xdWFsY29tbS5jb20+CkRhdGU6IFR1ZSwgMTQgQXByIDIwMjYgMTA6NTY6MTUg
-LTA3MDAKU3ViamVjdDogW1BBVENIXSBtZXNvbjogYnVpbGQgc2luZ2xlIGJpbmFyeQoKVGhp
-cyBpcyBub3QgYnVpbHQgYnkgZGVmYXVsdC4KQnVpbGQgd2l0aDogbmluamEgLUMgYnVpbGQg
-cWVtdS1zeXN0ZW0KCkFsbCBhdmFpbGFibGUgKi1zb2Z0bW11IHRhcmdldHMgYXJlIGFnZ3Jl
-Z2F0ZWQsIC4vY29uZmlndXJlCi0tdGFyZ2V0LWxpc3QgY2FuIGJlIHVzZWQgdG8gcmVzdHJp
-Y3Qgd2hpY2ggdGFyZ2V0cyBhcmUgaW5jbHVkZWQuCgpJbiBjYXNlIHVzZXIgaGFzIHRhcmdl
-dHMgdGhhdCBhcmUgbm90IHN1cHBvcnRlZCwgd2UgZW1pdCBhbiBlcnJvcgptZXNzYWdlIHdo
-ZW4gYnVpbGQgcWVtdS1zeXN0ZW0gdGFyZ2V0LiBUaGlzIHdheSwgaXQncyBub3QgbmVjZXNz
-YXJ5IHRvCmhhdmUgYSBjdXN0b20gY29uZmlndXJlIGZsYWcsIGFuZCBxZW11LXN5c3RlbSBj
-YW4gbGl2ZSBuZXh0IHRvIGV4aXN0aW5nCmJpbmFyaWVzIHdpdGhvdXQgY29tcGxleGlmeWlu
-ZyB0aGUgd29ya2Zsb3cgbW9yZSB0aGFuIGl0IGlzIGFscmVhZHkuCgpTaWduZWQtb2ZmLWJ5
-OiBQaWVycmljayBCb3V2aWVyIDxwaWVycmljay5ib3V2aWVyQG9zcy5xdWFsY29tbS5jb20+
-Ci0tLQogbWVzb24uYnVpbGQgfCA0OCArKysrKysrKysrKysrKysrKysrKysrKysrKysrKysr
-KysrKysrKysrKysrKysrKysKIDEgZmlsZSBjaGFuZ2VkLCA0OCBpbnNlcnRpb25zKCspCgpk
-aWZmIC0tZ2l0IGEvbWVzb24uYnVpbGQgYi9tZXNvbi5idWlsZAppbmRleCA1NTNkZjNlN2Yw
-NTMuLjRhMzFhNTIwZDllYiAxMDA2NDQKLS0tIGEvbWVzb24uYnVpbGQKKysrIGIvbWVzb24u
-YnVpbGQKQEAgLTQyNjQsNiArNDI2NCw5IEBAIGlmIGhvc3Rfb3MgPT0gJ2RhcndpbicKIGVu
-ZGlmCiAKIHRyYWNlYWJsZSA9IFtdCitzaW5nbGVfYmluYXJ5X2xpYnMgPSBbXQorc2luZ2xl
-X2JpbmFyeV9kZXBzID0gW10KK3NpbmdsZV9iaW5hcnlfY3JhdGVzID0gW10KIGVtdWxhdG9y
-cyA9IHt9CiBmb3JlYWNoIHRhcmdldCA6IHRhcmdldF9kaXJzCiAgIGNvbmZpZ190YXJnZXQg
-PSBjb25maWdfdGFyZ2V0X21ha1t0YXJnZXRdCkBAIC00NDE5LDYgKzQ0MjIsMTAgQEAgZm9y
-ZWFjaCB0YXJnZXQgOiB0YXJnZXRfZGlycwogICAgICAgICAgICAgICAgICBidWlsZF9ieV9k
-ZWZhdWx0OiBmYWxzZSkKIAogICBpZiB0YXJnZXQuZW5kc3dpdGgoJy1zb2Z0bW11JykKKyAg
-ICBzaW5nbGVfYmluYXJ5X2xpYnMgKz0gbGliCisgICAgc2luZ2xlX2JpbmFyeV9kZXBzICs9
-IGFyY2hfZGVwcworICAgIHNpbmdsZV9iaW5hcnlfZGVwcyArPSB0YXJnZXRfc3R1YnMKKyAg
-ICBzaW5nbGVfYmluYXJ5X2NyYXRlcyArPSBtYWluX3JzCiAgICAgZXhlY3MgPSBbewogICAg
-ICAgJ25hbWUnOiAncWVtdS1zeXN0ZW0tJyArIHRhcmdldF9uYW1lLAogICAgICAgJ3dpbl9z
-dWJzeXN0ZW0nOiAnY29uc29sZScsCkBAIC00NTAwLDYgKzQ1MDcsNDcgQEAgZm9yZWFjaCB0
-YXJnZXQgOiB0YXJnZXRfZGlycwogICBlbmRmb3JlYWNoCiBlbmRmb3JlYWNoCiAKK3Npbmds
-ZV9iaW5hcnlfb2JqZWN0cyA9IFtdCitmb3JlYWNoIGxpYjogc2luZ2xlX2JpbmFyeV9saWJz
-CisgIHNpbmdsZV9iaW5hcnlfb2JqZWN0cyArPSBsaWIuZXh0cmFjdF9hbGxfb2JqZWN0cyhy
-ZWN1cnNpdmU6IHRydWUpCitlbmRmb3JlYWNoCisKK3NpbmdsZV9iaW5hcnlfbGlua19hcmdz
-ID0gZW11bGF0b3JfbGlua19hcmdzCitzaW5nbGVfYmluYXJ5X2xpbmtfYXJncyArPSBlbmFi
-bGVfbW9kdWxlcyA/IFsnQGJsb2NrLnN5bXMnLCAnQHFlbXUuc3ltcyddIDogW10KKworc3Vw
-cG9ydGVkX3RhcmdldHMgPSBbCisgICdhYXJjaDY0LXNvZnRtbXUnLAorICAnYXJtLXNvZnRt
-bXUnLAorXQordW5zdXBwb3J0ZWRfdGFyZ2V0cyA9IFtdCitmb3JlYWNoIHRhcmdldCA6IHRh
-cmdldF9kaXJzCisgIGlmIHRhcmdldC5lbmRzd2l0aCgnLXNvZnRtbXUnKSBhbmQgdGFyZ2V0
-IG5vdCBpbiBzdXBwb3J0ZWRfdGFyZ2V0cworICAgIHVuc3VwcG9ydGVkX3RhcmdldHMgKz0g
-dGFyZ2V0CisgIGVuZGlmCitlbmRmb3JlYWNoCisKK2lmIHVuc3VwcG9ydGVkX3RhcmdldHMu
-bGVuZ3RoKCkgPT0gMAorICBleGVjdXRhYmxlKCdxZW11LXN5c3RlbScsCisgICAgICAgICAg
-ICAgc291cmNlczogW3NpbmdsZV9iaW5hcnlfY3JhdGVzLCBmaWxlcygnc3lzdGVtL21haW4u
-YycpXSwKKyAgICAgICAgICAgICBkZXBlbmRlbmNpZXM6IHNpbmdsZV9iaW5hcnlfZGVwcywK
-KyAgICAgICAgICAgICBvYmplY3RzOiBzaW5nbGVfYmluYXJ5X29iamVjdHMsCisgICAgICAg
-ICAgICAgbGlua19kZXBlbmRzOiBbYmxvY2tfc3ltcywgcWVtdV9zeW1zXSwKKyAgICAgICAg
-ICAgICBsaW5rX2FyZ3M6IHNpbmdsZV9iaW5hcnlfbGlua19hcmdzLAorICAgICAgICAgICAg
-IGJ1aWxkX2J5X2RlZmF1bHQ6IGZhbHNlKQorZWxzZQorICBlcnJvcl9zdHIgPSBmJycncWVt
-dS1zeXN0ZW0gb25seSBzdXBwb3J0IHRhcmdldHM6CitAc3VwcG9ydGVkX3RhcmdldHNACisK
-K3Vuc3VwcG9ydGVkIHRhcmdldHM6CitAdW5zdXBwb3J0ZWRfdGFyZ2V0c0AKKwordXNlIC4v
-Y29uZmlndXJlIC0tdGFyZ2V0LWxpc3Q9IHRvIGNob29zZSBsaXN0IG9mIHRhcmdldHMnJycK
-KyAgdCA9IGN1c3RvbV90YXJnZXQoY29tbWFuZDogWydzaCcsICctYycsICdlY2hvICInICsg
-ZXJyb3Jfc3RyICsgJyIgJiYgZXhpdCAxJ10sCisgICAgICAgICAgICAgICAgICAgIG91dHB1
-dDogJ25vbmUnLAorICAgICAgICAgICAgICAgICAgICBidWlsZF9ieV9kZWZhdWx0OiBmYWxz
-ZSkKKyAgYWxpYXNfdGFyZ2V0KCdxZW11LXN5c3RlbScsIHQpCitlbmRpZgorCiAjIE90aGVy
-IGJ1aWxkIHRhcmdldHMKIAogaWYgZ2V0X29wdGlvbigncGx1Z2lucycpCg==
-
---------------Y1YbvhavawekLLmLAYAwQoLQ--
+Is it representing existing targets, or adding new ones per endianness?
+I'm not sure if the goal is to add new binaries, or mimic existing ones
+with specific parameters.
 

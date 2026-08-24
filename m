@@ -4,172 +4,94 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2ACCEC5DF81
-	for <qemu-arm@archiver.kernel.org>; Mon, 24 Aug 2026 11:22:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 399A0C5DF81
+	for <qemu-arm@archiver.kernel.org>; Mon, 24 Aug 2026 11:51:57 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wySjn-0003NS-Gn; Mon, 24 Aug 2026 07:21:11 -0400
+	id 1wyTDH-0004QN-8S; Mon, 24 Aug 2026 07:51:39 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@oss.qualcomm.com>)
- id 1wySjl-0003Jn-Lx
- for qemu-arm@nongnu.org; Mon, 24 Aug 2026 07:21:09 -0400
-Received: from mx0b-0031df01.pphosted.com ([205.220.180.131])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@oss.qualcomm.com>)
- id 1wySji-0006hW-SR
- for qemu-arm@nongnu.org; Mon, 24 Aug 2026 07:21:09 -0400
-Received: from pps.filterd (m0279870.ppops.net [127.0.0.1])
- by mx0a-0031df01.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id
- 67O99c672572094
- for <qemu-arm@nongnu.org>; Mon, 24 Aug 2026 11:20:56 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qualcomm.com; h=
- cc:content-transfer-encoding:content-type:date:from:in-reply-to
- :message-id:mime-version:references:subject:to; s=qcppdkim1; bh=
- j1XOVSaLCGnAoH6ObhRaJLXXnPSTAlmpiy+W0QG8Az4=; b=JtwEtxsa5j1LCv96
- Rp9pVZFw1ZwqRMp/BQh2kUpV4/cr/yz+oSoTY7udqWSZh/s03K6xVOYWLaJu0RX2
- bFUTYNHg54dkGiY/sh6NZPpQwsI4pnod1f5YS/IUM+4nlgeCLIjE0v/AKXe4VclB
- l8I8zLY8/6OdOm9ZXdZKixDl44KaEM5wEDkzX6NHaarIdmntGzm44JNPyeyoqRr9
- 2WTfEDef/NKW1H6fVjdNZFwbN4FBOXwwGWKkr3iFYoQtVJD++scLj68Xu12SCcgS
- Czlau+v9f4xBlwKMSaVQbuQ8PuzqsD+9q6rEsiXrq0xthWLp2kyCHFu0pQzFB62G
- 88su6g==
-Received: from mail-qt1-f199.google.com (mail-qt1-f199.google.com
- [209.85.160.199])
- by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 4g8bdr2625-1
- (version=TLSv1.3 cipher=TLS_AES_128_GCM_SHA256 bits=128 verify=NOT)
- for <qemu-arm@nongnu.org>; Mon, 24 Aug 2026 11:20:55 +0000 (GMT)
-Received: by mail-qt1-f199.google.com with SMTP id
- d75a77b69052e-52ce64c41efso68046551cf.3
- for <qemu-arm@nongnu.org>; Mon, 24 Aug 2026 04:20:55 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <sef1548@gmail.com>) id 1wyTDF-0004P3-Rf
+ for qemu-arm@nongnu.org; Mon, 24 Aug 2026 07:51:37 -0400
+Received: from mail-pg1-x536.google.com ([2607:f8b0:4864:20::536])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <sef1548@gmail.com>) id 1wyTDD-0000iT-Bj
+ for qemu-arm@nongnu.org; Mon, 24 Aug 2026 07:51:37 -0400
+Received: by mail-pg1-x536.google.com with SMTP id
+ 41be03b00d2f7-cbedbaba5fdso1944877a12.0
+ for <qemu-arm@nongnu.org>; Mon, 24 Aug 2026 04:51:34 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=oss.qualcomm.com; s=google; t=1787570455; x=1788175255; darn=nongnu.org;
- h=content-transfer-encoding:content-type:mime-version:references
- :in-reply-to:message-id:date:subject:cc:to:from:from:to:cc:subject
- :date:message-id:reply-to:content-type;
- bh=j1XOVSaLCGnAoH6ObhRaJLXXnPSTAlmpiy+W0QG8Az4=;
- b=ZNli0m7ta/CAexOSJxpUm1ZHRErYfU3oaEfcV6dwRhd6G0fAwtPfxODth95fno7P7K
- PhSA+01gL39kcAkBuwmgK0Jqj7RwPKOBghbgbIN+ER6nIgsuYShKNUUXXqraSUpOnOh3
- kftsov/UwsieOiduvk6/nuX3rMUc4ijL3TDtFBHiF3imZ6s9X9J0KRZ8t+N4g7nOhwZ0
- IrMYXVxmrkhEYd/avXXpdIg8ZQCDUKur1DSe1zB/SYkkaS08uv3gBxL2HsToYXn1aqf/
- h0DR8uYc82X/v5R/zrTnggdAAWnbGqjuD3oL+zfNhETsed62mQkg3u9lIwInnZHEfadE
- J7dw==
+ d=gmail.com; s=20251104; t=1787572293; x=1788177093; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+ :message-id:reply-to:content-type;
+ bh=89PkCCpOw+bFLi7D2eR9te11PvgGH1BvJIB0HRSCKSg=;
+ b=okQ9x1GS08u0vrsf4rYVl8KY/um95hLf7JWscDbVA638bnyPw02VI/1GoYZhvtIPS0
+ tAtzU+OGYVII4Wsgx3tnFDhwwLsJ0+SUxAfdUxhwYBoGiXnsEJQ/XGq0ag4F/cldc3gh
+ R+GmtIhSQsPups/PBtQ3hk4cRj+y+/QZwfJGuNoB/LrP5n8ITE0pGkMAFzuTQmEyOvAl
+ hcP3zfG3Y1OskKyW1VBA2gPdR9r7oOvYD9TqTYQejGZcPzBAeD0TmJOZmPT3WXTSIyt4
+ 2u+CArHaFU1KR/O+RIVS8WUJb7TOAFAP/+QTaXhqQYEuLxnEXc82c77X3VpKP6WmU9Ca
+ HagA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1787570455; x=1788175255;
- h=content-transfer-encoding:content-type:mime-version:references
- :in-reply-to:message-id:date:subject:cc:to:from:x-gm-gg
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
- :content-type;
- bh=j1XOVSaLCGnAoH6ObhRaJLXXnPSTAlmpiy+W0QG8Az4=;
- b=e70BN6I7mxWtyCZUVuTJ4qAziZhN41lRWNgytWfC0s0VgiAv/eyq+8Mwh9fXjbywY9
- c+E6spAImioL+rXblYv6Ltm8SQNuqC745vTfw+fjjkbdSPUF5ukFGn/GxcjCHnS0884A
- xOZZ3WEXKpIsu59XehbP5QGxCnXBjvbsXd2SFg8ZsSZ38ayCO0/Pjl2ftlTK9M9bnfKY
- xm7Bp3/ai5fbCMwpPCkmgb49Vfuyu5cXqqiO9I2iDkYYYMQ1/zqFvHNELBkITC4Tsjwb
- 8+mPxZ+ukrUVJP1gdSKfIX7Ra2Uh6jlzZlXeEs6Az/PlG7LMbfQDBSmCGvAPdiPw/u14
- bzmg==
+ d=1e100.net; s=20251104; t=1787572293; x=1788177093;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
+ :to:cc:subject:date:message-id:reply-to:content-type;
+ bh=89PkCCpOw+bFLi7D2eR9te11PvgGH1BvJIB0HRSCKSg=;
+ b=nWSgAEngLSEcsahA0Y72QJyFVCVVwsmrr57E4RZB8fLpqGeARSqetGndPvtsgyZHjZ
+ YiE52xQpD2P934hs0xL/cAADjxm65cSiClV6YLrg0KtVtNl9ZWP5Lv2mrXZYqb1qR7Uy
+ BMGytkMY3zZF0jMwbzg0D1NMBwuLKE10e8vN71lDoAm+dlpKbyM3TmJgRS1HM223sDpD
+ 2ZPDzWbCNlvlRoaLUA4NAd3OuGb/MWHPc8yWMovEC4qHwK/Zd4/aiaP83PSXThLHjSp6
+ 9kLR9hAMl+wzBHLN1Hpp5+nidW9TEQ4zwEoKiC60eWDWyVe2tEkP+m6TxZVtnfgFjUP8
+ 1Bxg==
 X-Forwarded-Encrypted: i=1;
- AHgh+RpQcPf468c6jIZH5Ug57rtvQEh2XcRgsvf3E0eOcLiKkys0iCABV9ELaWB+iTNo84cCpiODfm53LQ==@nongnu.org
-X-Gm-Message-State: AFuF++mO/vkoqT71J9r3QxrYBMQYP3FIl2TmcwNMc8W47yLGpBXLOG+h
- 6nyEXRQqplZuoOC2lOg8DwvAivktu9dacN2wkMguJa+ul7O3nJGgG0L4CAKgCp48XtLQIxGUWM2
- iJfFW3u88QeXaibEdCD7TuzgYXj9cqSnQqgLzyJFHe/vCEYnrLDJSuAs=
-X-Gm-Gg: AR+sD126K94Qxk/0/Fm6PLKmMkRg/E9728eyX7vG5BkwtDMvmEy/WS5njUFpQyzyEfA
- h2OVlcqOTIFa3b3n81t2olDtCjdiDsjG+0AsLFRmfjENilHGGq2GCYgjfkeQgpkP0qrCUYxT80t
- tEV8WN1hhkmIO5wXiNIWroU03jAKqSbBo657AAhTBV3NG2V4gDZpzlL8x+Md3DJ47u6SFO7+ckK
- dYLD2eO89nSvJSARPQO8lN5xxtcK1l4MAGDNzprfpwuZsy3ADPQQEv0kpC4CTEguqHkIhLY/AR9
- CSGT29u09nY161QYg8xsd2emFZDD3qVrFn5gCagCARiTXSPw7FNdjT+rKSAedW2Ax774p2aChlY
- wNS7s4F/K4Xc7ahTa9w9+s6wfTSiuccdxHcU/B2RDr7x3B6KbXQ==
-X-Received: by 2002:a05:622a:4d03:b0:517:2c1e:8b6 with SMTP id
- d75a77b69052e-52e09d0619bmr189224631cf.38.1787570455005; 
- Mon, 24 Aug 2026 04:20:55 -0700 (PDT)
-X-Received: by 2002:a05:622a:4d03:b0:517:2c1e:8b6 with SMTP id
- d75a77b69052e-52e09d0619bmr189223771cf.38.1787570454489; 
- Mon, 24 Aug 2026 04:20:54 -0700 (PDT)
-Received: from localhost.localdomain (44.170.88.92.rev.sfr.net. [92.88.170.44])
+ AHgh+RoOgdX2/ujhg2Otb+vhaVOjghOak/L3McyYxiywKefDit/3K0Xgm9u7ieTWQHJ1CYXmtf4Gw8bOQg==@nongnu.org
+X-Gm-Message-State: AFuF++kNWo7xGtHfnBk3FZQfodCh4CZ0dMEjF57OZGad3UYWNbBmfiCy
+ 6i3liyImYFsVWmot1FjXkXSFjJitouCrv5W54OzSdMyanrWjZkS8OXRj
+X-Gm-Gg: AR+sD121xx1kyZHn41VzbX6IG1ztvhTKHEhCNObSUgg08/fvzhdIHytmZdTLhdmUEcZ
+ lww1UHg3jPTCpS2+RseousFXuGjOc4FagKcH6ldYAGItko14+yRnxgRKViBPBR6sJQ8fBh2Z4Tv
+ woFJgwf2Dgi49DX26pHqBDM8HnUlaDN5NPNkv1NYrOYWZuyuvjzZBpxLg8575E1A8TV8917s+sn
+ q0cEgg0leH3IWl0edvYU5c/H/HPXmY7m3mZFlLQkTIaCjMxcJ9kBCELgIK+pqTi2CDyLGOlh/pd
+ yttTGEt6karP4hnmtSOcLNGbQIovZY2VFh4IznaFbF0mBIJiOi9XVN9cCT3yoIWp3YYlfhNpbRb
+ eyOOehqlHiALEae+HKT7kqlwkP7JQzVaaFCuwQVRx073uQbh6gry2HrUDqCKxOJHhojk1ZLJ7HH
+ XnpDQYaTO+sx9R8SZ3nLi1onEdmBWz/lVh4XzTzM6KufoXO9eBmkxx85OcUYMRhyhLhlC3lOhTI
+ kVeCE118hbXJSA/pN5j7F7pyhK+PDVieXnePqUiA9DtG7i5TwzzX/Eg6c+WgQjBbm5+jqhMQXpr
+ l2GqZd+aBxnnqT0Ex954rafksmk=
+X-Received: by 2002:a05:6a21:58b:b0:3c3:875d:7053 with SMTP id
+ adf61e73a8af0-3cd2febf6c4mr48902664637.8.1787572293296; 
+ Mon, 24 Aug 2026 04:51:33 -0700 (PDT)
+Received: from nickhuang..
+ (2001-b400-e2a6-81a4-7c3d-29c5-dd1d-e725.emome-ip6.hinet.net.
+ [2001:b400:e2a6:81a4:7c3d:29c5:dd1d:e725])
  by smtp.gmail.com with ESMTPSA id
- a640c23a62f3a-c24968a2183sm1179731666b.58.2026.08.24.04.20.49
- (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Mon, 24 Aug 2026 04:20:53 -0700 (PDT)
-From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@oss.qualcomm.com>
-To: qemu-devel@nongnu.org
-Cc: qemu-riscv@nongnu.org, qemu-arm@nongnu.org,
- Richard Henderson <richard.henderson@linaro.org>, qemu-ppc@nongnu.org,
- qemu-s390x@nongnu.org,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@oss.qualcomm.com>,
- Paolo Bonzini <pbonzini@redhat.com>,
- Peter Maydell <peter.maydell@linaro.org>,
- Michael Rolnik <mrolnik@gmail.com>,
- Brian Cain <brian.cain@oss.qualcomm.com>,
- Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>,
- Helge Deller <deller@gmx.de>, Song Gao <17746591750@163.com>,
- Bibo Mao <maobibo@loongson.cn>, Xianglai Li <lixianglai@loongson.cn>,
- Laurent Vivier <laurent@vivier.eu>,
- "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@mailo.com>,
- Aurelien Jarno <aurelien@aurel32.net>,
- Jiaxun Yang <jiaxun.yang@flygoat.com>,
- Aleksandar Rikalo <arikalo@gmail.com>,
- Stafford Horne <shorne@gmail.com>, Nicholas Piggin <npiggin@gmail.com>,
- Chinmay Rath <rathc@linux.ibm.com>, Glenn Miles <milesg@linux.ibm.com>,
- Harsh Prateek Bora <harshpb@linux.ibm.com>,
- Palmer Dabbelt <palmer@dabbelt.com>,
- Alistair Francis <alistair.francis@wdc.com>,
- Weiwei Li <liwei1518@gmail.com>,
- Daniel Henrique Barboza <daniel.barboza@oss.qualcomm.com>,
- Liu Zhiwei <zhiwei_liu@linux.alibaba.com>,
- Chao Liu <chao.liu@processmission.com>,
- Yoshinori Sato <yoshinori.sato@nifty.com>,
- Cornelia Huck <cohuck@redhat.com>, Eric Farman <farman@linux.ibm.com>,
- Matthew Rosato <mjrosato@linux.ibm.com>,
- Ilya Leoshkevich <iii@linux.ibm.com>, David Hildenbrand <david@kernel.org>,
- Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
- Artyom Tarasenko <atar4qemu@gmail.com>, Max Filippov <jcmvbkbc@gmail.com>
-Subject: [PATCH v4 20/20] accel/tcg: Constify @cpu in cpu_mmu_index() and
- TCGCPUOps handlers
-Date: Mon, 24 Aug 2026 13:17:09 +0200
-Message-ID: <20260824111711.26297-21-philmd@oss.qualcomm.com>
-X-Mailer: git-send-email 2.53.0
-In-Reply-To: <20260824111711.26297-1-philmd@oss.qualcomm.com>
-References: <20260824111711.26297-1-philmd@oss.qualcomm.com>
+ 41be03b00d2f7-cc199e4b1cbsm976400a12.19.2026.08.24.04.51.29
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Mon, 24 Aug 2026 04:51:32 -0700 (PDT)
+From: Nick Huang <sef1548@gmail.com>
+To: wafgo01@gmail.com
+Cc: bmeng.cn@gmail.com, farosas@suse.de, pbonzini@redhat.com,
+ peter.maydell@linaro.org, philmd@mailo.com, qemu-arm@nongnu.org,
+ qemu-devel@nongnu.org
+Subject: Re: [RFC PATCH v2 00/14] hw/arm: add TI AM64x SoC and am64-virt
+ machine
+Date: Mon, 24 Aug 2026 11:51:23 +0000
+Message-ID: <20260824115123.7089-1-sef1548@gmail.com>
+X-Mailer: git-send-email 2.43.0
+In-Reply-To: <20260820124824.618671-1-wafgo01@gmail.com>
+References: <20260820124824.618671-1-wafgo01@gmail.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwODI0MDA5NCBTYWx0ZWRfX/PDRY1v6tP17
- /9tDL+tKwGM7eCKMm2MolS1Hm73Ul9QxY9v6plTFgii36RN6q1PCd3Y0Xyoy7iCVb3DjnyEYh23
- QlQpQnBdADw1Jndc6HcuTi8mUCpHvvyYx6VTVkn/8pKwfOognJduGjx4YD8Hota2Qxim1yfYp6y
- ks3/jMePrRyY74kuYQ7C1NQDjzH5+kkE9ElKf3a1PybGaNM7zSUS77Zpkt9tA8x3+D1S/79MFxw
- b97B+KvWfldcpeLaqnqInhn8D0hIlL9mqsVSTXOxMv26EG8ChK3kFK8PxSp3SFzVeVMK89tSW/g
- HcUPwGoshopbcNFQ5OoSeH0JQdi9+7s0G4aqXYgTc38IQ7kma3coK6Vgeg+8VgyRA4wDB1HVVy8
- z21E++ZWr4vCJJJ7DKtfqPUw4ppHeSEu9RvqLiKJ7Rg5e6i4YOS6j2mP9les+FoqJ2V0kZXy7SD
- 69Z1gYPG4Da11PW5Vrg==
-X-Proofpoint-GUID: rPgn1VrWWxqYZsxA-_kGW231MwnO0F3c
-X-Proofpoint-ORIG-GUID: rPgn1VrWWxqYZsxA-_kGW231MwnO0F3c
-X-Proofpoint-Spam-Info: AW1haW4tMjYwODI0MDA5NCBTYWx0ZWRfX3b7LPN2U1TA/
- LEfL2ncRE1PrtnxZds1wraiWde5XUNjqFVGNFk0DSPQdTPLnNDC/dytY9AlQEI0aBM+MZjVQq6j
- zpvmtv3T51SjedUmaoulC/2KeSUJHvI=
-X-Authority-Analysis: v=2.4 cv=W8cIkxWk c=1 sm=1 tr=0 ts=6a8c2917 cx=c_pps
- a=WeENfcodrlLV9YRTxbY/uA==:117 a=s1NLoHz9uzatdv2VNqxUSg==:17
- a=IkcTkHD0fZMA:10 a=Sv0fKeRqtYgA:10 a=M51BFTxLslgA:10 a=s4-Qcg_JpJYA:10
- a=VkNPw1HP01LnGYTKEx00:22 a=u7WPNUs3qKkmUXheDGA7:22 a=gowsoOTTUOVcmtlkKump:22
- a=EUspDBNiAAAA:8 a=g_x95mRnQQNavG41apYA:9 a=3ZKOabzyN94A:10 a=QEXdDO2ut3YA:10
- a=kacYvNCVWA4VmyqE58fU:22
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.293,Aquarius:18.0.1176,Hydra:6.1.134,FMLib:17.12.100.49
- definitions=2026-08-24_03,2026-08-21_02,2025-10-01_01
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
- impostorscore=0 suspectscore=0 lowpriorityscore=0 spamscore=0
- priorityscore=1501 clxscore=1015 bulkscore=0 malwarescore=0 adultscore=0
- phishscore=0 classifier=typeunknown authscore=0 authtc= authcc=
- route=outbound adjust=0 reason=mlx scancount=1 engine=8.22.0-2606150000
- definitions=main-2608240094
-Received-SPF: pass client-ip=205.220.180.131;
- envelope-from=philmd@oss.qualcomm.com; helo=mx0b-0031df01.pphosted.com
-X-Spam_score_int: -27
-X-Spam_score: -2.8
-X-Spam_bar: --
-X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+Received-SPF: pass client-ip=2607:f8b0:4864:20::536;
+ envelope-from=sef1548@gmail.com; helo=mail-pg1-x536.google.com
+X-Spam_score_int: -17
+X-Spam_score: -1.8
+X-Spam_bar: -
+X-Spam_report: (-1.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ FREEMAIL_ENVFROM_END_DIGIT=0.25, FREEMAIL_FROM=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -185,426 +107,11 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-All functions called by cpu_mmu_index() take a const
-@cpu argument. Propagate the constness to the caller
-(CPU state should not mutate when resolving the MMU
-index of the current translation regime).
+Hi Wadim,
 
-Signed-off-by: Philippe Mathieu-Daudé <philmd@oss.qualcomm.com>
----
- include/accel/tcg/cpu-mmu-index.h | 2 +-
- include/accel/tcg/cpu-ops.h       | 2 +-
- target/alpha/cpu.h                | 2 +-
- target/arm/internals.h            | 4 ++--
- target/i386/tcg/tcg-cpu.h         | 2 +-
- target/ppc/cpu.h                  | 2 +-
- target/s390x/cpu.h                | 2 +-
- target/alpha/cpu.c                | 2 +-
- target/arm/cpu.c                  | 2 +-
- target/avr/cpu.c                  | 2 +-
- target/hexagon/cpu.c              | 6 +++---
- target/hppa/cpu.c                 | 4 ++--
- target/i386/tcg/tcg-cpu.c         | 6 +++---
- target/loongarch/tcg/tcg_cpu.c    | 4 ++--
- target/m68k/cpu.c                 | 2 +-
- target/microblaze/cpu.c           | 6 +++---
- target/mips/cpu.c                 | 2 +-
- target/or1k/cpu.c                 | 4 ++--
- target/ppc/cpu_init.c             | 2 +-
- target/riscv/tcg/tcg-cpu.c        | 2 +-
- target/rx/cpu.c                   | 2 +-
- target/s390x/cpu.c                | 2 +-
- target/sh4/cpu.c                  | 4 ++--
- target/sparc/cpu.c                | 4 ++--
- target/tricore/cpu.c              | 2 +-
- target/xtensa/cpu.c               | 2 +-
- 26 files changed, 38 insertions(+), 38 deletions(-)
+Does the current version support booting the Linux kernel from
+PROCESSOR-SDK-AM62X?
 
-diff --git a/include/accel/tcg/cpu-mmu-index.h b/include/accel/tcg/cpu-mmu-index.h
-index e0fb6ef91c8..01152075372 100644
---- a/include/accel/tcg/cpu-mmu-index.h
-+++ b/include/accel/tcg/cpu-mmu-index.h
-@@ -30,7 +30,7 @@
-  * Return the core mmu index for the current translation regime.
-  * This function is used by generic TCG code paths.
-  */
--static inline int cpu_mmu_index(CPUState *cs, bool ifetch)
-+static inline int cpu_mmu_index(const CPUState *cs, bool ifetch)
- {
- #ifdef COMPILING_PER_TARGET
- # ifdef CONFIG_USER_ONLY
-diff --git a/include/accel/tcg/cpu-ops.h b/include/accel/tcg/cpu-ops.h
-index a88cc4dc572..69d7ec29115 100644
---- a/include/accel/tcg/cpu-ops.h
-+++ b/include/accel/tcg/cpu-ops.h
-@@ -102,7 +102,7 @@ struct TCGCPUOps {
-     void (*debug_excp_handler)(CPUState *cpu);
- 
-     /** @mmu_index: Callback for choosing softmmu mmu index */
--    int (*mmu_index)(CPUState *cpu, bool ifetch);
-+    int (*mmu_index)(const CPUState *cpu, bool ifetch);
- 
- #ifdef CONFIG_USER_ONLY
-     /**
-diff --git a/target/alpha/cpu.h b/target/alpha/cpu.h
-index 378bd96d941..1c9f9fce20b 100644
---- a/target/alpha/cpu.h
-+++ b/target/alpha/cpu.h
-@@ -383,7 +383,7 @@ enum {
- 
- #define TB_FLAG_UNALIGN       (1u << 1)
- 
--static inline int alpha_env_mmu_index(CPUAlphaState *env)
-+static inline int alpha_env_mmu_index(const CPUAlphaState *env)
- {
-     int ret = env->flags & ENV_FLAG_PS_USER ? MMU_USER_IDX : MMU_KERNEL_IDX;
-     if (env->flags & ENV_FLAG_PAL_MODE) {
-diff --git a/target/arm/internals.h b/target/arm/internals.h
-index f1a80c890ee..d582cefcfa4 100644
---- a/target/arm/internals.h
-+++ b/target/arm/internals.h
-@@ -55,7 +55,7 @@ static inline MemOp mo_endian(const CPUARMState *env)
-     return EX_TBFLAG_ANY(env->hflags, BE_DATA) ? MO_BE : MO_LE;
- }
- 
--static inline int arm_env_mmu_index(CPUARMState *env)
-+static inline int arm_env_mmu_index(const CPUARMState *env)
- {
-     return EX_TBFLAG_ANY(env->hflags, MMUIDX);
- }
-@@ -431,7 +431,7 @@ void arm_restore_state_to_opc(CPUState *cs,
- #ifdef CONFIG_TCG
- TCGTBCPUState arm_get_tb_cpu_state(CPUState *cs);
- void arm_cpu_synchronize_from_tb(CPUState *cs, const TranslationBlock *tb);
--int arm_cpu_mmu_index(CPUState *cs, bool ifetch);
-+int arm_cpu_mmu_index(const CPUState *cs, bool ifetch);
- #endif /* CONFIG_TCG */
- 
- typedef enum ARMFPRounding {
-diff --git a/target/i386/tcg/tcg-cpu.h b/target/i386/tcg/tcg-cpu.h
-index 85bcd61678f..1127861e337 100644
---- a/target/i386/tcg/tcg-cpu.h
-+++ b/target/i386/tcg/tcg-cpu.h
-@@ -82,6 +82,6 @@ extern const TCGCPUOps x86_tcg_ops;
- 
- bool tcg_cpu_realizefn(CPUState *cs, Error **errp);
- 
--int x86_mmu_index_pl(CPUX86State *env, unsigned pl);
-+int x86_mmu_index_pl(const CPUX86State *env, unsigned pl);
- 
- #endif /* TCG_CPU_H */
-diff --git a/target/ppc/cpu.h b/target/ppc/cpu.h
-index cbd5964b1ac..0da472f3c05 100644
---- a/target/ppc/cpu.h
-+++ b/target/ppc/cpu.h
-@@ -1736,7 +1736,7 @@ int ppc_dcr_write(ppc_dcr_t *dcr_env, int dcrn, uint32_t val);
- 
- /* MMU modes definitions */
- #define MMU_USER_IDX 0
--static inline int ppc_env_mmu_index(CPUPPCState *env, bool ifetch)
-+static inline int ppc_env_mmu_index(const CPUPPCState *env, bool ifetch)
- {
- #ifdef CONFIG_USER_ONLY
-     return MMU_USER_IDX;
-diff --git a/target/s390x/cpu.h b/target/s390x/cpu.h
-index 998bbb0d7ff..cd5f9256b24 100644
---- a/target/s390x/cpu.h
-+++ b/target/s390x/cpu.h
-@@ -373,7 +373,7 @@ QEMU_BUILD_BUG_ON(FLAG_MASK_DAT != PSW_MASK_DAT >> FLAG_MASK_PSW_SHIFT);
- #define MMU_HOME_IDX            2
- #define MMU_REAL_IDX            3
- 
--static inline int s390x_env_mmu_index(CPUS390XState *env, bool ifetch)
-+static inline int s390x_env_mmu_index(const CPUS390XState *env, bool ifetch)
- {
- #ifdef CONFIG_USER_ONLY
-     return MMU_USER_IDX;
-diff --git a/target/alpha/cpu.c b/target/alpha/cpu.c
-index 21d4f8ac23b..3bf88702dc1 100644
---- a/target/alpha/cpu.c
-+++ b/target/alpha/cpu.c
-@@ -93,7 +93,7 @@ static bool alpha_cpu_has_work(const CPUState *cs)
- }
- #endif /* !CONFIG_USER_ONLY */
- 
--static int alpha_cpu_mmu_index(CPUState *cs, bool ifetch)
-+static int alpha_cpu_mmu_index(const CPUState *cs, bool ifetch)
- {
-     return alpha_env_mmu_index(cpu_env(cs));
- }
-diff --git a/target/arm/cpu.c b/target/arm/cpu.c
-index ba66359d410..63ef00735ca 100644
---- a/target/arm/cpu.c
-+++ b/target/arm/cpu.c
-@@ -126,7 +126,7 @@ void arm_restore_state_to_opc(CPUState *cs,
-     }
- }
- 
--int arm_cpu_mmu_index(CPUState *cs, bool ifetch)
-+int arm_cpu_mmu_index(const CPUState *cs, bool ifetch)
- {
-     return arm_env_mmu_index(cpu_env(cs));
- }
-diff --git a/target/avr/cpu.c b/target/avr/cpu.c
-index a96bef46ff1..24a5a9debc9 100644
---- a/target/avr/cpu.c
-+++ b/target/avr/cpu.c
-@@ -50,7 +50,7 @@ static bool avr_cpu_has_work(const CPUState *cs)
-             && cpu_interrupts_enabled(cpu_env(cs));
- }
- 
--static int avr_cpu_mmu_index(CPUState *cs, bool ifetch)
-+static int avr_cpu_mmu_index(const CPUState *cs, bool ifetch)
- {
-     return ifetch ? MMU_CODE_IDX : MMU_DATA_IDX;
- }
-diff --git a/target/hexagon/cpu.c b/target/hexagon/cpu.c
-index 868aef0cde4..2bc58fc6305 100644
---- a/target/hexagon/cpu.c
-+++ b/target/hexagon/cpu.c
-@@ -482,11 +482,11 @@ static void hexagon_cpu_realize(DeviceState *dev, Error **errp)
-     mcc->parent_realize(dev, errp);
- }
- 
--static int hexagon_cpu_mmu_index(CPUState *cs, bool ifetch)
-+static int hexagon_cpu_mmu_index(const CPUState *cs, bool ifetch)
- {
- #ifndef CONFIG_USER_ONLY
--    CPUHexagonState *env = cpu_env(cs);
--    HexagonCPU *cpu = HEXAGON_CPU(cs);
-+    const CPUHexagonState *env = cpu_env(cs);
-+    const HexagonCPU *cpu = HEXAGON_CPU(cs);
-     int cpu_mode;
- 
-     BQL_LOCK_GUARD();
-diff --git a/target/hppa/cpu.c b/target/hppa/cpu.c
-index dbf58466c24..ec351302406 100644
---- a/target/hppa/cpu.c
-+++ b/target/hppa/cpu.c
-@@ -140,9 +140,9 @@ static bool hppa_cpu_has_work(const CPUState *cs)
- }
- #endif /* !CONFIG_USER_ONLY */
- 
--static int hppa_cpu_mmu_index(CPUState *cs, bool ifetch)
-+static int hppa_cpu_mmu_index(const CPUState *cs, bool ifetch)
- {
--    CPUHPPAState *env = cpu_env(cs);
-+    const CPUHPPAState *env = cpu_env(cs);
- 
-     if (env->psw & (ifetch ? PSW_C : PSW_D)) {
-         return PRIV_P_TO_MMU_IDX(env->iaoq_f & 3, env->psw & PSW_P);
-diff --git a/target/i386/tcg/tcg-cpu.c b/target/i386/tcg/tcg-cpu.c
-index e4fc212aca5..da1498ee45d 100644
---- a/target/i386/tcg/tcg-cpu.c
-+++ b/target/i386/tcg/tcg-cpu.c
-@@ -114,7 +114,7 @@ static void x86_restore_state_to_opc(CPUState *cs,
-     }
- }
- 
--int x86_mmu_index_pl(CPUX86State *env, unsigned pl)
-+int x86_mmu_index_pl(const CPUX86State *env, unsigned pl)
- {
-     int mmu_index_32 = (env->hflags & HF_CS64_MASK) ? 0 : 1;
-     int mmu_index_base =
-@@ -125,9 +125,9 @@ int x86_mmu_index_pl(CPUX86State *env, unsigned pl)
-     return mmu_index_base + mmu_index_32;
- }
- 
--static int x86_cpu_mmu_index(CPUState *cs, bool ifetch)
-+static int x86_cpu_mmu_index(const CPUState *cs, bool ifetch)
- {
--    CPUX86State *env = cpu_env(cs);
-+    const CPUX86State *env = cpu_env(cs);
-     return x86_mmu_index_pl(env, env->hflags & HF_CPL_MASK);
- }
- 
-diff --git a/target/loongarch/tcg/tcg_cpu.c b/target/loongarch/tcg/tcg_cpu.c
-index 7ea2a1eb933..a26233d5eed 100644
---- a/target/loongarch/tcg/tcg_cpu.c
-+++ b/target/loongarch/tcg/tcg_cpu.c
-@@ -301,9 +301,9 @@ static void loongarch_restore_state_to_opc(CPUState *cs,
-     set_pc(cpu_env(cs), data[0]);
- }
- 
--static int loongarch_cpu_mmu_index(CPUState *cs, bool ifetch)
-+static int loongarch_cpu_mmu_index(const CPUState *cs, bool ifetch)
- {
--    CPULoongArchState *env = cpu_env(cs);
-+    const CPULoongArchState *env = cpu_env(cs);
-     CPUSysState *sys = env_sys(env);
- 
-     if (FIELD_EX64(sys->CSR_CRMD, CSR_CRMD, PG)) {
-diff --git a/target/m68k/cpu.c b/target/m68k/cpu.c
-index da3681fab1f..f1fd2e6f14d 100644
---- a/target/m68k/cpu.c
-+++ b/target/m68k/cpu.c
-@@ -82,7 +82,7 @@ static bool m68k_cpu_has_work(const CPUState *cs)
- }
- #endif /* !CONFIG_USER_ONLY */
- 
--static int m68k_cpu_mmu_index(CPUState *cs, bool ifetch)
-+static int m68k_cpu_mmu_index(const CPUState *cs, bool ifetch)
- {
-     return cpu_env(cs)->sr & SR_S ? MMU_KERNEL_IDX : MMU_USER_IDX;
- }
-diff --git a/target/microblaze/cpu.c b/target/microblaze/cpu.c
-index d1d2f0ec7e3..524175d2236 100644
---- a/target/microblaze/cpu.c
-+++ b/target/microblaze/cpu.c
-@@ -133,10 +133,10 @@ static bool mb_cpu_has_work(const CPUState *cs)
- }
- #endif /* !CONFIG_USER_ONLY */
- 
--static int mb_cpu_mmu_index(CPUState *cs, bool ifetch)
-+static int mb_cpu_mmu_index(const CPUState *cs, bool ifetch)
- {
--    CPUMBState *env = cpu_env(cs);
--    MicroBlazeCPU *cpu = env_archcpu(env);
-+    const CPUMBState *env = cpu_env(cs);
-+    const MicroBlazeCPU *cpu = env_archcpu(env);
- 
-     /* Are we in nommu mode?.  */
-     if (!(env->msr & MSR_VM) || !cpu->cfg.use_mmu) {
-diff --git a/target/mips/cpu.c b/target/mips/cpu.c
-index 0f39f8fe0a5..a428176d9e8 100644
---- a/target/mips/cpu.c
-+++ b/target/mips/cpu.c
-@@ -671,7 +671,7 @@ static const Property mips_cpu_properties[] = {
- #ifdef CONFIG_TCG
- #include "accel/tcg/cpu-ops.h"
- 
--static int mips_cpu_mmu_index(CPUState *cs, bool ifunc)
-+static int mips_cpu_mmu_index(const CPUState *cs, bool ifunc)
- {
-     return mips_env_mmu_index(cpu_env(cs));
- }
-diff --git a/target/or1k/cpu.c b/target/or1k/cpu.c
-index 10b13ae69cd..c9ab5c0f1c1 100644
---- a/target/or1k/cpu.c
-+++ b/target/or1k/cpu.c
-@@ -82,9 +82,9 @@ static bool openrisc_cpu_has_work(const CPUState *cs)
- }
- #endif /* !CONFIG_USER_ONLY */
- 
--static int openrisc_cpu_mmu_index(CPUState *cs, bool ifetch)
-+static int openrisc_cpu_mmu_index(const CPUState *cs, bool ifetch)
- {
--    CPUOpenRISCState *env = cpu_env(cs);
-+    const CPUOpenRISCState *env = cpu_env(cs);
- 
-     if (env->sr & (ifetch ? SR_IME : SR_DME)) {
-         /* The mmu is enabled; test supervisor state.  */
-diff --git a/target/ppc/cpu_init.c b/target/ppc/cpu_init.c
-index fd63cd6ab09..da9d60d260b 100644
---- a/target/ppc/cpu_init.c
-+++ b/target/ppc/cpu_init.c
-@@ -7217,7 +7217,7 @@ static void ppc_restore_state_to_opc(CPUState *cs,
-     cpu->env.nip = data[0];
- }
- 
--static int ppc_cpu_mmu_index(CPUState *cs, bool ifetch)
-+static int ppc_cpu_mmu_index(const CPUState *cs, bool ifetch)
- {
-     return ppc_env_mmu_index(cpu_env(cs), ifetch);
- }
-diff --git a/target/riscv/tcg/tcg-cpu.c b/target/riscv/tcg/tcg-cpu.c
-index cd303660f1f..a0210ca50e3 100644
---- a/target/riscv/tcg/tcg-cpu.c
-+++ b/target/riscv/tcg/tcg-cpu.c
-@@ -95,7 +95,7 @@ static const char *cpu_priv_ver_to_str(int priv_ver)
-     return priv_spec_str;
- }
- 
--static int riscv_cpu_mmu_index(CPUState *cs, bool ifetch)
-+static int riscv_cpu_mmu_index(const CPUState *cs, bool ifetch)
- {
-     return riscv_env_mmu_index(cpu_env(cs), ifetch);
- }
-diff --git a/target/rx/cpu.c b/target/rx/cpu.c
-index dfa09a85bce..c5dfba8976a 100644
---- a/target/rx/cpu.c
-+++ b/target/rx/cpu.c
-@@ -78,7 +78,7 @@ static bool rx_cpu_has_work(const CPUState *cs)
-     return cpu_test_interrupt(cs, CPU_INTERRUPT_HARD | CPU_INTERRUPT_FIR);
- }
- 
--static int rx_cpu_mmu_index(CPUState *cs, bool ifunc)
-+static int rx_cpu_mmu_index(const CPUState *cs, bool ifunc)
- {
-     return 0;
- }
-diff --git a/target/s390x/cpu.c b/target/s390x/cpu.c
-index c34f4b23472..a043f1e7920 100644
---- a/target/s390x/cpu.c
-+++ b/target/s390x/cpu.c
-@@ -311,7 +311,7 @@ static const Property s390x_cpu_properties[] = {
- #include "accel/tcg/cpu-ops.h"
- #include "tcg/tcg_s390x.h"
- 
--static int s390x_cpu_mmu_index(CPUState *cs, bool ifetch)
-+static int s390x_cpu_mmu_index(const CPUState *cs, bool ifetch)
- {
-     return s390x_env_mmu_index(cpu_env(cs), ifetch);
- }
-diff --git a/target/sh4/cpu.c b/target/sh4/cpu.c
-index b0ed356d0f7..f8b33844d2a 100644
---- a/target/sh4/cpu.c
-+++ b/target/sh4/cpu.c
-@@ -113,9 +113,9 @@ static bool superh_cpu_has_work(const CPUState *cs)
- }
- #endif /* !CONFIG_USER_ONLY */
- 
--static int sh4_cpu_mmu_index(CPUState *cs, bool ifetch)
-+static int sh4_cpu_mmu_index(const CPUState *cs, bool ifetch)
- {
--    CPUSH4State *env = cpu_env(cs);
-+    const CPUSH4State *env = cpu_env(cs);
- 
-     /*
-      * The instruction in a RTE delay slot is fetched in privileged mode,
-diff --git a/target/sparc/cpu.c b/target/sparc/cpu.c
-index 8dd9b0d5ee3..f1ae16c91e9 100644
---- a/target/sparc/cpu.c
-+++ b/target/sparc/cpu.c
-@@ -790,9 +790,9 @@ static bool sparc_cpu_has_work(const CPUState *cs)
- }
- #endif /* !CONFIG_USER_ONLY */
- 
--static int sparc_cpu_mmu_index(CPUState *cs, bool ifetch)
-+static int sparc_cpu_mmu_index(const CPUState *cs, bool ifetch)
- {
--    CPUSPARCState *env = cpu_env(cs);
-+    const CPUSPARCState *env = cpu_env(cs);
- 
- #ifndef TARGET_SPARC64
-     if ((env->mmuregs[0] & MMU_E) == 0) { /* MMU disabled */
-diff --git a/target/tricore/cpu.c b/target/tricore/cpu.c
-index 357f3737053..09d4270df60 100644
---- a/target/tricore/cpu.c
-+++ b/target/tricore/cpu.c
-@@ -117,7 +117,7 @@ static bool tricore_cpu_has_work(const CPUState *cs)
-     return true;
- }
- 
--static int tricore_cpu_mmu_index(CPUState *cs, bool ifetch)
-+static int tricore_cpu_mmu_index(const CPUState *cs, bool ifetch)
- {
-     return 0;
- }
-diff --git a/target/xtensa/cpu.c b/target/xtensa/cpu.c
-index 1b299568776..8cf973632e7 100644
---- a/target/xtensa/cpu.c
-+++ b/target/xtensa/cpu.c
-@@ -148,7 +148,7 @@ static bool xtensa_cpu_has_work(const CPUState *cs)
- }
- #endif /* !CONFIG_USER_ONLY */
- 
--static int xtensa_cpu_mmu_index(CPUState *cs, bool ifetch)
-+static int xtensa_cpu_mmu_index(const CPUState *cs, bool ifetch)
- {
-     return xtensa_get_cring(cpu_env(cs));
- }
--- 
-2.53.0
-
+Thanks,
+Nick
 

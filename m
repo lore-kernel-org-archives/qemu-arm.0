@@ -4,98 +4,109 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 17134C61DBE
-	for <qemu-arm@archiver.kernel.org>; Tue, 25 Aug 2026 11:19:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8BF9CC61DBD
+	for <qemu-arm@archiver.kernel.org>; Tue, 25 Aug 2026 11:58:12 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wypAO-0008UF-11; Tue, 25 Aug 2026 07:18:08 -0400
+	id 1wypms-00046T-VT; Tue, 25 Aug 2026 07:57:55 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jim.macarthur@linaro.org>)
- id 1wypAJ-0008Sl-NO
- for qemu-arm@nongnu.org; Tue, 25 Aug 2026 07:18:03 -0400
-Received: from mail-wm1-x32f.google.com ([2a00:1450:4864:20::32f])
+ (Exim 4.90_1) (envelope-from <stephensportia@gmail.com>)
+ id 1wyiPn-0006JW-KD
+ for qemu-arm@nongnu.org; Tue, 25 Aug 2026 00:05:35 -0400
+Received: from mail-pg1-x531.google.com ([2607:f8b0:4864:20::531])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <jim.macarthur@linaro.org>)
- id 1wypAH-0001XT-4T
- for qemu-arm@nongnu.org; Tue, 25 Aug 2026 07:18:03 -0400
-Received: by mail-wm1-x32f.google.com with SMTP id
- 5b1f17b1804b1-4954df200ddso25134005e9.0
- for <qemu-arm@nongnu.org>; Tue, 25 Aug 2026 04:18:00 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <stephensportia@gmail.com>)
+ id 1wyiPm-0007eA-41
+ for qemu-arm@nongnu.org; Tue, 25 Aug 2026 00:05:35 -0400
+Received: by mail-pg1-x531.google.com with SMTP id
+ 41be03b00d2f7-cc1469c1b83so5707886a12.1
+ for <qemu-arm@nongnu.org>; Mon, 24 Aug 2026 21:05:33 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1787656679; x=1788261479; darn=nongnu.org;
- h=in-reply-to:content-disposition:content-type:mime-version
- :references:message-id:subject:cc:to:from:date:from:to:cc:subject
- :date:message-id:reply-to:content-type;
- bh=NXEB9Wku5bRHDkNsh9wY6W5EuW8k1uhaqYa1LQ+jfcE=;
- b=Ep49Npyf6OxwM5r7TnKQkHpokGSe0pVbT+1z4WT8eE+4VWkmXhKumSabVHmZ2+BGpd
- 9Lpq+jO8LPmDpL25vR+S33GDe55kYzbvHwCJSM7IYj/FKgPKNB2rPFAUJ18MFGIA61j6
- THCKgijEK2/ev/R+rCXj4p39Gusbk9UMq5zgnTON7SgSwarmxhAl70K683R93VneTqYL
- zH0R2nmpTEjiIunJuhqNqrycsHtdwRrL3pnv0vzszGTh2HdJWCjSMmkKUvb5mUdxZBY8
- N/gqaL/hwGsYVxxaMyKilOJA3lSedofDWs1hf3tzrL6k49623F9wSZNbILF1ow07z5Cg
- HUfw==
+ d=gmail.com; s=20251104; t=1787630732; x=1788235532; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+ :message-id:reply-to:content-type;
+ bh=aobazBPH903Nn7eCzJVoO7AB8KnEtMzG35AgTewbhFg=;
+ b=ia6OqR71sQgA+I/bhwIw9YHtXoEnl3gRBexfM9eGs9hV1cpjWeXb16RqR0D0+2aKcj
+ w/QDz4gWwkrCMZ2QMxzTn2H1zzaicbvX6Nt+AmLWOWifniLoOOz5q2jASR0Mf82dabOb
+ yWWFpyY2SQTQh1/997YZ4ahyLIUatb2JL+ZpdAgtl6NlNCC7rgEdD9QTuZ8zEPXNCXqB
+ K9faUkHZTx1um35JFt2FnY1BxUpAz+drks9EsTrGeyL71/XCksAzMiL/+jzjo0oSsetc
+ GdElLO2eiZJSty+zf8cHPgcq89B7hUrFW8suV95SI0/ZI244Zwielf0cr7KtBJDTKpZO
+ pO4w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1787656679; x=1788261479;
- h=in-reply-to:content-disposition:content-type:mime-version
- :references:message-id:subject:cc:to:from:date:x-gm-gg
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
- :content-type;
- bh=NXEB9Wku5bRHDkNsh9wY6W5EuW8k1uhaqYa1LQ+jfcE=;
- b=B3y6ojmwFxkdLaQxu2d+0+ra4XUa3JUun/948A7vH6Wxiymf84LY1zdc9BHKQcqg6p
- hA2DmwGRCEJb9EdSgoFYP7B79UNKEmJfLFR0yGtJJOT8HC7VZU/KDt0lQAeNk/iKOjxh
- x0qTpuDllYBv7TfA7JM65/Fi34gUizDTjHcwSboSGzIw326lYlPw6pDZrNPT3onPeSVC
- sZa4l1gNEXaPTLngV83Yq0F25/BIITO6MAXWXIBZbCZk7Ac5xcrHp7Ytm4Fq3N33p/dz
- 2Q4DrX/JNaeUP0Xv/t2lMWPQ0gOwiLHM0nEGGxByFh7Dz623/P1wXcVXSDfKSLH1ULVb
- 3DQQ==
+ d=1e100.net; s=20251104; t=1787630732; x=1788235532;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
+ :to:cc:subject:date:message-id:reply-to:content-type;
+ bh=aobazBPH903Nn7eCzJVoO7AB8KnEtMzG35AgTewbhFg=;
+ b=WwaQuzOR2MQM3eRRhWk+YaZ0diye0rHT36+M+pCHDX/xg0RZ/d9JQaVXO0f8JrH5RI
+ +8E4C3RdwTEcnkGR5WfO2kIKm1+7NKTLcccCNuqDJ7lb+amPm1dSUz/59MVL4xNE/JsW
+ WRsGTsx/WkBm1Uj+JKp6B0jCNa9EYjZ40p3ySXvT0ZJHk/A4rAvCxaFf7PPFXZItbdUi
+ GNDIhkmssUSN1Im33624NOX1YOw+75Xb9inZC5wCoTp10s6wq5SeyLQYwQnhwbfPpBhW
+ UtAjA6YQmIoT0xgO/qEhlE8sOa7GU9jzwo3zcWrzfEC8FnkE5Yx08VV7zkfLB57uosZS
+ do2A==
 X-Forwarded-Encrypted: i=1;
- AHgh+Rp61aMA8Fg/xG+aRUNKl4fFfNrZYfCX427r0nr7s0s7HrGud4MA7UtfnTRfJxv1dg5B/hUqUdmf8g==@nongnu.org
-X-Gm-Message-State: AFuF++m9M0zGSf6WF/+UYai9SFNF0xK7RnbrpXVftjl+NCJbnZR3vgop
- Uec9+w3c0ZVuyP1e+aHqMI4kE5PvdzylpTZ7DrTBOol/6bGPYxaYeZNLWWVJldBaiJc=
-X-Gm-Gg: AR+sD10DNNlJLREXuhaBX9o8tuflMUUR98tLn5+G90uwPJ7H+GZKBb/mEiDBnkBun5X
- Z+f14oKA+DCqusfFvatcpIdqoGE3psCY3lM+ZbKlSROVMu3fWpSsfj38QIjLfX99WpIlLP4aGtK
- D8tuStdA/0Sd00DFlQgfGYk7FACyWYbmDoDNG5LYj9NGzT6B62VU5zxOy0+JXsJnhif3gwm4XDm
- UOqL1UX3ZRy0wmKJnWxFbLtrLVutkJOcLtIEwMXBxaD/YdVZjn0k/0wHPL+lHHe4gG8CjQ0gysz
- +dVTarLYZysfREUtnAiWhLY8qI48nG0s0Pqy2ZueNppFjoLl/LZFrx6j7h1Pi6DaTkbXEaOW2GY
- MXWb713LMVa/XZO9c+uKoXH/kPearvee+Mn2kjCekV0cwYbucJ3XC962am9LUqsOJqcTFy9xRw+
- y3hAA3tG4TiMYsbbAL2927Pc2eoIrw2dp38mLvyUM3SO7kUEukgUKBJYPYQRl8vgI7r1dkxKJ1M
- 3o=
-X-Received: by 2002:a05:600c:a01:b0:499:bdf1:7578 with SMTP id
- 5b1f17b1804b1-499c19bfd2dmr256070885e9.3.1787656678581; 
- Tue, 25 Aug 2026 04:17:58 -0700 (PDT)
-Received: from linaro.org ([2a10:d582:31e:0:8679:ff59:1b3a:5e93])
+ AHgh+Rp3CBq32JWOUVSMWybtGgyaHYl3cRzrMhupfpuPr1SJ9ZljeXwDCNwk09+Hf5PUF0LMGGC+ZKBpTA==@nongnu.org
+X-Gm-Message-State: AFuF++nOhPFGgTSdwX7naG+OidDD4/zhtOlqtSTOeP9hjawpQYnejG5B
+ S8gg2ae3XBUfgtQGoeqDuHfLy9yZDQiiXMFIvYxkZl86YU76LMblwsac
+X-Gm-Gg: AR+sD13jsU3H7wIH2DoyqXygmblKWBwftP1vaFBgDQ3LjZUt36zdvAPYpRxiZLU98+s
+ ErlWoN3WWqCGarUdf0DSt+79b/W3JBeIWB+yuC2b+5BxxNoKzbJGftEUOubUGbjSNcHll7S9G+i
+ wsCFZPwaKvIRRJDA99s452ULcbY89nBc1vuJdj6pbNkAzBLettuOUP7o1mU//zL3xzYcvJsD3qJ
+ ngJYoO5lWUIm2MZxaAKEoc9QGLbIycNA8jxDnk5F9DzT8mj+4Rxt6IkHl19I6C8uRlpuU/jjP8c
+ iyn93m7MfHMa9vrMhqDCYaDj+7z3eoieCw5a1J7EYVQ+ACDsKsSQUintp4LoSqy/WKfgU5bN/ok
+ LfTetDejfW6HlSUH6Go1eo/SNPXrYQtITbtQgYuXzfR3GglQ/WxsxCsyDMK2L/ZK2RZ8Z7fWfh6
+ LeRvBCRB5K3V5i9//AxevhY5vYrv6asNJxAExHNEedoC1BtG8FJ/3fE16gjGQWcMy74XJizRMdw
+ gEnsfnbOMVxC77DfHUHvI/4z8FIXYozCg==
+X-Received: by 2002:a05:6a20:a110:b0:3c3:bbe6:95c9 with SMTP id
+ adf61e73a8af0-3cd301795c8mr57364255637.16.1787630732578; 
+ Mon, 24 Aug 2026 21:05:32 -0700 (PDT)
+Received: from lima-default.tail89d63.ts.net ([159.196.41.205])
  by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-499d5cbd702sm18213095e9.0.2026.08.25.04.17.57
+ 5a478bee46e88-327f909adc8sm34104212eec.2.2026.08.24.21.05.23
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 25 Aug 2026 04:17:58 -0700 (PDT)
-Date: Tue, 25 Aug 2026 12:17:56 +0100
-From: Jim MacArthur <jim.macarthur@linaro.org>
-To: Tao Tang <tangtao1634@phytium.com.cn>
-Cc: Eric Auger <eric.auger@redhat.com>,
- Peter Maydell <peter.maydell@linaro.org>, qemu-devel@nongnu.org,
- qemu-arm@nongnu.org, Chen Baozi <chenbaozi@phytium.com.cn>,
- Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>,
- Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <philmd@mailo.com>,
- Mostafa Saleh <smostafa@google.com>, Chao Liu <chao.liu@processmission.com>
-Subject: Re: [RFC v5 19/28] hw/arm/smmuv3: Determine register bank from MMIO
- offset
-Message-ID: <ao155KStbs_MFr7m@linaro.org>
-References: <20260813161515.2788900-1-tangtao1634@phytium.com.cn>
- <20260813162558.2808607-4-tangtao1634@phytium.com.cn>
+ Mon, 24 Aug 2026 21:05:32 -0700 (PDT)
+From: stephensportia@gmail.com
+To: qemu-devel@nongnu.org
+Cc: Palmer Dabbelt <palmer@dabbelt.com>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ Jamin Lin <jamin_lin@aspeedtech.com>, qemu-ppc@nongnu.org,
+ =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
+ Steven Lee <steven_lee@aspeedtech.com>,
+ Andrew Jeffery <andrew@codeconstruct.com.au>,
+ Harsh Prateek Bora <harshpb@linux.ibm.com>,
+ Subbaraya Sundeep <sundeep.lkml@gmail.com>, Troy Lee <leetroy@gmail.com>,
+ "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@mailo.com>,
+ Alistair Francis <alistair@alistair23.me>,
+ Strahinja Jankovic <strahinja.p.jankovic@gmail.com>, qemu-arm@nongnu.org,
+ Tyrone Ting <kfting@nuvoton.com>, Nicholas Piggin <npiggin@gmail.com>,
+ Aditya Gupta <adityag@linux.ibm.com>, Kane Chen <kane_chen@aspeedtech.com>,
+ Francisco Iglesias <francisco.iglesias@amd.com>,
+ Joel Stanley <joel@jms.id.au>, Hao Wu <wuhaotsh@google.com>,
+ Glenn Miles <milesg@linux.ibm.com>, qemu-riscv@nongnu.org,
+ Jean-Christophe Dubois <jcd@tribudubois.net>,
+ Portia Stephens <portias@oss.tenstorrent.com>
+Subject: [PATCH 3/4] hw/arm/strongarm: Fix dropped upper byte of ssi transfer
+Date: Tue, 25 Aug 2026 14:04:51 +1000
+Message-ID: <20260825040452.1322251-4-stephensportia@gmail.com>
+X-Mailer: git-send-email 2.43.0
+In-Reply-To: <20260825040452.1322251-1-stephensportia@gmail.com>
+References: <20260825040452.1322251-1-stephensportia@gmail.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20260813162558.2808607-4-tangtao1634@phytium.com.cn>
-Received-SPF: pass client-ip=2a00:1450:4864:20::32f;
- envelope-from=jim.macarthur@linaro.org; helo=mail-wm1-x32f.google.com
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2607:f8b0:4864:20::531;
+ envelope-from=stephensportia@gmail.com; helo=mail-pg1-x531.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
+X-Mailman-Approved-At: Tue, 25 Aug 2026 07:57:54 -0400
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -110,26 +121,41 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Fri, Aug 14, 2026 at 12:25:57AM +0800, Tao Tang wrote:
-> Modify the main MMIO handlers to select the target register bank from the
-> memory-mapped offset.
-> 
-> Offsets in the Secure register window select SMMU_SEC_SID_S and are
-> normalized by subtracting SMMU_SECURE_REG_START. Other offsets select the
-> Non-secure bank. Pass the selected SEC_SID to the register access helpers,
-> where the normalized bank-local offset identifies the register.
-> 
-> Keep bank-specific differences explicit, such as S_IDR5 being unimplemented.
-> This patch implements Non-secure and Secure bank dispatch and prepares for
-> later access checks; Realm and Root programming interfaces are not modeled.
-> 
-> Signed-off-by: Tao Tang <tangtao1634@phytium.com.cn>
-> Reviewed-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
-> ---
->  hw/arm/smmuv3.c | 44 ++++++++++++++++++++++++++++++++------------
->  1 file changed, 32 insertions(+), 12 deletions(-)
-> 
+From: Portia Stephens <portias@oss.tenstorrent.com>
 
-Reviewed-by: Jim MacArthur <jim.macarthur@linaro.org>
+The strongarm model intends to transfer a 16-bit value over SSI. There
+is no machine using this model with a peripheral attached so it is
+impossible to know what the intended SSI peripheral is.
+There is no in-tree peripheral support for 16-bit transfer, update to
+use 8-bit transfer.
+
+Signed-off-by: Portia Stephens <portias@oss.tenstorrent.com>
+---
+ hw/arm/strongarm.c | 7 +++++--
+ 1 file changed, 5 insertions(+), 2 deletions(-)
+
+diff --git a/hw/arm/strongarm.c b/hw/arm/strongarm.c
+index e400f0a185..2df895c75b 100644
+--- a/hw/arm/strongarm.c
++++ b/hw/arm/strongarm.c
+@@ -1512,11 +1512,14 @@ static void strongarm_ssp_write(void *opaque, hwaddr addr,
+          * there directly to the slave, no need to buffer it.
+          */
+         if (s->sscr[0] & SSCR0_SSE) {
+-            uint32_t readval;
++            uint32_t readval = 0;
+             if (s->sscr[1] & SSCR1_LBM) {
+                 readval = value;
+             } else {
+-                readval = ssi_transfer8(s->bus, value);
++                if (SSCR0_DSS(s->sscr[0]) > 8) {
++                    readval |= ssi_transfer8(s->bus, (value >> 8) & 0xff) << 8;
++                }
++                readval |= ssi_transfer8(s->bus, value & 0xff);
+             }
+ 
+             if (s->rx_level < 0x08) {
+-- 
+2.43.0
 
 

@@ -4,124 +4,113 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 08CB1C61DBE
-	for <qemu-arm@archiver.kernel.org>; Tue, 25 Aug 2026 14:08:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2115FC61DB9
+	for <qemu-arm@archiver.kernel.org>; Tue, 25 Aug 2026 14:12:56 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wyrpM-0008DK-Ro; Tue, 25 Aug 2026 10:08:36 -0400
+	id 1wyrsx-0000as-Tx; Tue, 25 Aug 2026 10:12:19 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1wyrpL-0008Ch-43
- for qemu-arm@nongnu.org; Tue, 25 Aug 2026 10:08:35 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ id 1wyrsv-0000a6-RR
+ for qemu-arm@nongnu.org; Tue, 25 Aug 2026 10:12:17 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1wyrpJ-0000gM-L7
- for qemu-arm@nongnu.org; Tue, 25 Aug 2026 10:08:34 -0400
+ id 1wyrst-0002Oq-Jc
+ for qemu-arm@nongnu.org; Tue, 25 Aug 2026 10:12:17 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1787666910;
+ s=mimecast20190719; t=1787667133;
  h=from:from:reply-to:reply-to:subject:subject:date:date:
  message-id:message-id:to:to:cc:cc:mime-version:mime-version:
  content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=RWZ36ssQuMggl10NX4pB67A6/gc4A8ViF4utTFslLtk=;
- b=Eouqqe9jqLRRntTeMu3WP2o0mJ5evn5Qqo5cWUKUUYG3z7tQTlB26hCbj0weGV78ZXh8XE
- F+lnodPwD2+pwuscodCpmVHgHl+gL0JJznbNCvDn0y+8ER17HtXoDdVeWdA3nieTj9queq
- CvKAyhRpqJfz8GXHMOa1RD7SA7873Lc=
-Received: from mail-ej1-f69.google.com (mail-ej1-f69.google.com
- [209.85.218.69]) by relay.mimecast.com with ESMTP with STARTTLS
+ bh=M4iL8cm9xLlw42MXWWTWh2uxD3jujV4/hT7MHer/4wA=;
+ b=A0ifL1TIPDaNHhDcOH6B6l7d9Bj20WjKOD3TLxON8C4pifhVe3jiTI9ay0pLso4w+j5zIQ
+ YPEBVQ7nIWbBgPVhHh2kM1ijEtUVuM0Mb63XIgTBoTa4Gjwt4BCMgdfRyWQGOPPidzfWys
+ iYCzRR7wEZ5bx8nxJVG+ZV7R01ppTSA=
+Received: from mail-ej1-f71.google.com (mail-ej1-f71.google.com
+ [209.85.218.71]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-264-hrywr2nbN5-rUYne9SAqlQ-1; Tue, 25 Aug 2026 10:08:29 -0400
-X-MC-Unique: hrywr2nbN5-rUYne9SAqlQ-1
-X-Mimecast-MFC-AGG-ID: hrywr2nbN5-rUYne9SAqlQ_1787666908
-Received: by mail-ej1-f69.google.com with SMTP id
- a640c23a62f3a-c20e5890680so240824366b.1
- for <qemu-arm@nongnu.org>; Tue, 25 Aug 2026 07:08:28 -0700 (PDT)
+ us-mta-25-1dYF_4JONIKShwX2GIjn6w-1; Tue, 25 Aug 2026 10:12:11 -0400
+X-MC-Unique: 1dYF_4JONIKShwX2GIjn6w-1
+X-Mimecast-MFC-AGG-ID: 1dYF_4JONIKShwX2GIjn6w_1787667130
+Received: by mail-ej1-f71.google.com with SMTP id
+ a640c23a62f3a-c15c6a68406so324463666b.3
+ for <qemu-arm@nongnu.org>; Tue, 25 Aug 2026 07:12:11 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1787666908; x=1788271708;
+ d=1e100.net; s=20251104; t=1787667130; x=1788271930;
  h=content-transfer-encoding:content-type:in-reply-to:from:references
  :cc:to:content-language:subject:reply-to:user-agent:mime-version
  :date:message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
  :message-id:reply-to:content-type;
- bh=RWZ36ssQuMggl10NX4pB67A6/gc4A8ViF4utTFslLtk=;
- b=r2FZB7mxql3XpbpN8tbYilmgDNoaYg8UFMS86qdjPdBsHvyi0wlSW5C0scCF1Avh8o
- 1Khi6pj6lv330cIoXYk57HqUuntz2CKyXYuwCB3vZUZA0WmTwCM6PSKiij5OZTSBK6st
- xRTF1nfOgJpWnMkD2OtuDHj4SkwqO/M2k1b+EKwEodVsXYaMBFWMHzmtz3EJiAwClwL+
- AwtZr4QTay7W/CCtuwR9DcCHMXa9d+xzVv2sx7S6JVVAcjhuhCsXfC+th/rqDKEh91Ze
- cH9KAAu7iJYstBbuFDZCXQxPPKENXLat25Kpjli/wImmsnFTOBO9WflixRzLSbmKJFv0
- DzIQ==
+ bh=M4iL8cm9xLlw42MXWWTWh2uxD3jujV4/hT7MHer/4wA=;
+ b=TZHghfOd5oqjkf08xCvSQAAdfm66NHqZ7T1JnWs7jlNv2AOlknciXXghJX8QxqZRpk
+ NYKhzogY/rBPGn1M64ujfocmE8jJ/DYBzqBK6LU/uA28v7kYcge1pqXaQAGoqm2ij/8s
+ BS1/RBj8kosRw4GY2uqxt2Z7qzNgmO6MaN+QlBEK4qYA1tZCNKyCmLKu/7jqVrXnW2B8
+ lG+GbxWv0cvhadz2epTGdMAGkr8s36cSrX0+PJN7cv8PRyyLtF9B/OUiaolRIG5L6rpE
+ DOEQ02kWs76+25URQDeRZmvhORK2fFPlETn6SMhQ4AlzCE2+y3t7Oz3qxsx/dxAcKOBH
+ oy0g==
 X-Forwarded-Encrypted: i=1;
- AHgh+RqJjEnVQCgM5/ZCT7fIS8tX2wqoCKp7bdlP0kTCNVYZEeXb2bk7jAs46Ts7dQVfiGXm8/oCRdEV/g==@nongnu.org
-X-Gm-Message-State: AFuF++mrpW/ZeDgx1TK7yukzmWZblrh5V+yOi+7CLGzBPOmwkJMjkyFM
- SOXTKq3j/u8JlGnd7JtvDikQctTI4UDyral56AnOZ5L6BJb1dyrPmxxhwDg6zH3/P778/SFcnzl
- oMH9T7xgcZPicMh48sKk7HzPNyxEqKGDMcuUYmY0nRVZ06DQmE87WAg==
-X-Gm-Gg: AR+sD12DKU8P4zBJS9PSPBM69fIbaAbRamWquuyeV8ik7Z7z5bz/FvWMe9DwRKRR6tP
- /yLxN5t2RdnX60nyeT9zn0qpH7iCtdoBZo4f78SgF0fpDX8UgfqeBw1i+Qm73dAkLmdubVWOPzS
- s7InWQO8YIWPKT4ow0c9nOW/5efKipuyhWZ/07ImpFArH4wHSufhM55qeGV4lSmFZQapQYFDsdy
- YwvDycCFQJo4itn4sgAfpeMfJRZ/zWq/Kzu0dpztzS765BJ84CrAQKCfM0wxRZixfM1dt8DJ362
- FwPnp9bdejaZYGxjXl2uozQv8M9clZZofMam5yN8EVPNxRDH+BmuNyZerSPc0KIDf39Ts3d/SG/
- mQHBdJKiYdcPFBBJdtlnFNg8UaMg6bDEbVAki9CvSOyFOwOby
-X-Received: by 2002:a17:907:8990:b0:c20:3679:a2e6 with SMTP id
- a640c23a62f3a-c24925eb3ffmr3225005066b.10.1787666907597; 
- Tue, 25 Aug 2026 07:08:27 -0700 (PDT)
-X-Received: by 2002:a17:907:8990:b0:c20:3679:a2e6 with SMTP id
- a640c23a62f3a-c24925eb3ffmr3224991966b.10.1787666906874; 
- Tue, 25 Aug 2026 07:08:26 -0700 (PDT)
+ AHgh+Ro/2U43trgFfm+vjPvLxXs7QrQidg4RmCg6iTZIyW8EHKFXXTbnGYGdqPRtpw1+rqYyaRIco19vrA==@nongnu.org
+X-Gm-Message-State: AFuF++lZyY2hQm44iQt/XSWIpuGRizgZPjko/FJ2doNLaUgbzEx5DAvz
+ 2NaMVo8Fsbc1/I8Slu7I9dyLJgCTuJLiITFdN1x2xAQfyd4cmQIUzC6DYt/aR7SKQhx047IdjoC
+ yybT2Ci53bru+9IXMrnZIP5Mkh3vxAxcrQHj+sltNHcftNzzdBnuqt+vlpPJGSQ==
+X-Gm-Gg: AR+sD11gGL8EmMXc+5tDb8cV4AqNIHeWZ340ewM54Gskx1YQegUtEqTwZ2TIiAnb5JN
+ xuvvrW4VI2VF8zSSI58ALip0vVQr6VtTf4LA0lV5xc18Nqa+fRMcggrqXI1BHro+Ue7VHswBO1b
+ sY8iECBD1nPo9y18IoZqCQVfcZzhEAZT7Eu3mfeWk7p4gyipK2kXR4ZPN9/e3M2JCdO7Nyy4U99
+ jzECyBI9ADfN+rW/TKPLfMqDqk5kWSg+qGbgE/l/QRH9tro30PPJU0d15LZyZVVetGAur0bMk1L
+ xoEnBtTXtPFBEFi+W+ooRXkhA4fpTAZoeD8g3M+HnFaHqk40s0VbJfI5KMii6HkyHfmACg9RJW3
+ D8wz2r+65dfc2WCPJrq5arSx5jPGjPPa6uhlagcYncWsCXfWM
+X-Received: by 2002:a17:906:9f8e:b0:c24:b11a:46fc with SMTP id
+ a640c23a62f3a-c24e5be5ae6mr717380166b.22.1787667130120; 
+ Tue, 25 Aug 2026 07:12:10 -0700 (PDT)
+X-Received: by 2002:a17:906:9f8e:b0:c24:b11a:46fc with SMTP id
+ a640c23a62f3a-c24e5be5ae6mr717373766b.22.1787667129592; 
+ Tue, 25 Aug 2026 07:12:09 -0700 (PDT)
 Received: from ?IPV6:2a01:e0a:f0e:9070:527b:9dff:feef:3874?
  ([2a01:e0a:f0e:9070:527b:9dff:feef:3874])
  by smtp.gmail.com with ESMTPSA id
- a640c23a62f3a-c249606b161sm1933953266b.11.2026.08.25.07.08.24
+ 4fb4d7f45d1cf-6a59e1d7399sm20394026a12.26.2026.08.25.07.12.07
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 25 Aug 2026 07:08:25 -0700 (PDT)
-Message-ID: <09b39de5-b0ae-40ec-9977-00fefa59561f@redhat.com>
-Date: Tue, 25 Aug 2026 16:08:23 +0200
+ Tue, 25 Aug 2026 07:12:08 -0700 (PDT)
+Message-ID: <54207f52-e9f0-49f1-9ac2-1653e4a1bd53@redhat.com>
+Date: Tue, 25 Aug 2026 16:12:06 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [RFC PATCH v7 04/18] arm/cpu: Add infra to handle generated ID
- register definitions
-To: Khushit Shah <khushit.shah@nutanix.com>
-Cc: "eric.auger.pro@gmail.com" <eric.auger.pro@gmail.com>,
- "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
- "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
- "kvmarm@lists.linux.dev" <kvmarm@lists.linux.dev>,
- "peter.maydell@linaro.org" <peter.maydell@linaro.org>,
- Shaju Abraham <shaju.abraham@nutanix.com>,
- "yangjinqian1@huawei.com" <yangjinqian1@huawei.com>,
- "cohuck@redhat.com" <cohuck@redhat.com>,
- "richard.henderson@linaro.org" <richard.henderson@linaro.org>,
- "sebott@redhat.com" <sebott@redhat.com>,
- "skolothumtho@nvidia.com" <skolothumtho@nvidia.com>,
- "philmd@oss.qualcomm.com" <philmd@oss.qualcomm.com>,
- "maz@kernel.org" <maz@kernel.org>,
- "oliver.upton@linux.dev" <oliver.upton@linux.dev>,
- "pbonzini@redhat.com" <pbonzini@redhat.com>,
- "armbru@redhat.com" <armbru@redhat.com>,
- "berrange@redhat.com" <berrange@redhat.com>,
- "abologna@redhat.com" <abologna@redhat.com>,
- "jdenemar@redhat.com" <jdenemar@redhat.com>
+Subject: Re: [RFC PATCH v7 18/18] arm-qmp-cmds: introspection for ID register
+ props
+To: Markus Armbruster <armbru@redhat.com>
+Cc: eric.auger.pro@gmail.com, qemu-devel@nongnu.org, qemu-arm@nongnu.org,
+ kvmarm@lists.linux.dev, peter.maydell@linaro.org, shaju.abraham@nutanix.com,
+ khushit.shah@nutanix.com, yangjinqian1@huawei.com, cohuck@redhat.com,
+ richard.henderson@linaro.org, sebott@redhat.com, skolothumtho@nvidia.com,
+ philmd@oss.qualcomm.com, maz@kernel.org, oliver.upton@linux.dev,
+ pbonzini@redhat.com, berrange@redhat.com, abologna@redhat.com,
+ jdenemar@redhat.com
 References: <20260726153221.24773-1-eric.auger@redhat.com>
- <20260726153221.24773-5-eric.auger@redhat.com>
- <557850AC-880C-4A6D-AA7A-7A0F38B3C9CD@nutanix.com>
+ <20260726153221.24773-19-eric.auger@redhat.com> <878q613tae.fsf@pond.sub.org>
+ <cae6f5c2-edb2-4811-a915-cbd93bbd903b@redhat.com>
+ <87wltemu97.fsf@pond.sub.org>
 From: Eric Auger <eric.auger@redhat.com>
-In-Reply-To: <557850AC-880C-4A6D-AA7A-7A0F38B3C9CD@nutanix.com>
+In-Reply-To: <87wltemu97.fsf@pond.sub.org>
 X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: NXxEKwELCrahxUVbHCvzK8_EWlA0ZJUcYnnXfKo_nig_1787666908
+X-Mimecast-MFC-PROC-ID: mV9phlYJTCM1VkjDlm-0160OCmTNlukNcjzSxdWPu-o_1787667130
 X-Mimecast-Originator: redhat.com
 Content-Language: en-US
 Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=170.10.133.124;
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=170.10.129.124;
  envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=0.001, SPF_HELO_PASS=-0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -138,93 +127,169 @@ Reply-To: eric.auger@redhat.com
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Hi Khushit,
+Markus,
 
-On 8/20/26 8:35 AM, Khushit Shah wrote:
+On 8/25/26 11:20 AM, Markus Armbruster wrote:
+> Eric Auger <eric.auger@redhat.com> writes:
 >
->> On 26 Jul 2026, at 8:59 PM, Eric Auger <eric.auger@redhat.com> wrote:
+>> Hi Markus,
 >>
->> !-------------------------------------------------------------------|
->>  CAUTION: External Email
->>
->> |-------------------------------------------------------------------!
->>
->> Introduce an infrastructure to store the definition of all ID regs:
->> This include their name, index and array of named fields.
->>
->> Signed-off-by: Eric Auger <eric.auger@redhat.com>
->> Signed-off-by: Cornelia Huck <cohuck@redhat.com>
->> Co-authored-by: Khushit Shah <khushit.shah@nutanix.com>
->>
->> ---
->>
->> v5 -> v6:
->> - add ArmIdRegArchVal
->> ---
->> target/arm/cpu-idregs.h | 41 +++++++++++++++++++++++++++++++++++++++++
->> 1 file changed, 41 insertions(+)
->> create mode 100644 target/arm/cpu-idregs.h
->>
->> diff --git a/target/arm/cpu-idregs.h b/target/arm/cpu-idregs.h
->> new file mode 100644
->> index 0000000000..245f1c8103
->> --- /dev/null
->> +++ b/target/arm/cpu-idregs.h
->> @@ -0,0 +1,41 @@
->> +/*
->> + * handle ID registers and their fields
->> + *
->> + * SPDX-License-Identifier: GPL-2.0-or-later
->> + */
->> +#ifndef TARGET_ARM_CPU_IDREGS_H
->> +#define TARGET_ARM_CPU_IDREGS_H
->> +
->> +#include "qemu/osdep.h"
->> +#include "qemu/error-report.h"
->> +#include "cpu.h"
->> +#include "cpu-sysregs.h"
->> +
->> +typedef struct ArmIdRegArchVal {
->> +    uint64_t value;
->> +    const char *name;
-> I guess the name is not required, right?
+>> On 8/20/26 1:50 PM, Markus Armbruster wrote:
+>>> Eric Auger <eric.auger@redhat.com> writes:
+>>>
+>>>> From: Cornelia Huck <cohuck@redhat.com>
+>>>>
+>>>> Implement the capability to query available ID register values by
+>>>> adding SYSREG_* options and values to the cpu model expansion for the
+>>>> host model, if available.
+>>>>
+>>>> Excerpt:
+>>>> (QEMU) query-cpu-model-expansion type=full model={"name":"host"}
+>>> Is this qmp-shell?
+>> yes it is. Is that a problem?
+> I wouldn't call use of qmp-shell a problem.  Except some reader may not
+> recognize it from the example input, or may not even know it exists.
+> Mentioning it takes care of all that.
+>
+> I prefer to use QMP directly myself, like this:
+>
+>     $ socat "READLINE,history=$HOME/.qmp_history,prompt=QMP> " UNIX-CONNECT:/path/to/socket
+>
+> But that's just personal preference.
 
-indeed, this is not required. Removed and used uint64_t in place of 
-
-typedef struct ArmIdRegArchVal in subsequent patches.
-
-Thanks!
+OK thank you for the details. For now I clarified in the commit msg that
+those are qmp-shell examples.
 
 Eric
-
 >
->> +} ArmIdRegArchVal;
->> +
->> +typedef struct ARM64SysRegField {
->> +    const char *name; /* name of the field, for instance CTR_EL0_IDC */
->> +    ARMIDRegisterIdx index; /* parent register, e.g. CTR_EL0_IDX */
->> +    int shift; /* lsb of the field in the register */
->> +    int length; /* highest bit number */
->> +    ArmIdRegArchVal *arch_vals;
->> +    uint32_t arch_vals_count;
->> +} ARM64SysRegField;
->> +
->> +typedef struct ARM64SysReg {
->> +    const char *name;   /* name of the sysreg, for instance CTR_EL0 */
->> +    ARMIDRegisterIdx index; /* register index, e.g. CTR_EL0_IDX */
->> +    struct ARM64SysRegField *fields;
->> +    uint32_t fields_count;
->> +    uint64_t writable_mask;
->> +} ARM64SysReg;
->> +
->> +/*
->> + * List of exposed ID regs (automatically populated from AARCHMRS Registers.json)
->> + */
->> +extern ARM64SysReg arm64_id_regs[NUM_ID_IDX];
->> +
->> +#endif
->> -- 
->> 2.53.0
->>
+>>>> {"return": {"model": {"name": "host", "props": {"SYSREG_ID_AA64PFR0_EL1_EL3": 1,
+>>>> "SYSREG_ID_AA64ISAR2_EL1_CLRBHB": 0, "SYSREG_CTR_EL0_L1Ip": 3,
+>>>> "SYSREG_MIDR_EL1_PartNum": 3407, "SYSREG_CTR_EL0_DminLine": 4,
+>>>> "SYSREG_ID_AA64MMFR0_EL1_PARange": 5, "SYSREG_ID_AA64MMFR1_EL1_ECBHB": 0
+>>>> ../..
+>>>>
+>>>> This allows the upper stack to detect available writable ID regs and
+>>>> the "host passthrough model" values.
+>>>>
+>>>> It also allows to test some ID reg field values:
+>>>> (QEMU) query-cpu-model-expansion type=full model={"name":"host","props":{"SYSREG_ID_AA64ISAR0_EL1_DP":0x13}}
+>>>> {"error": {"class": "GenericError", "desc": "idreg SYSREG_ID_AA64ISAR0_EL1_DP set value (0x13) exceeds length of field (4)!"}}
+>>>>
+>>>> (QEMU) query-cpu-model-expansion type=full model={"name":"host","props":{"SYSREG_ID_AA64ISAR0_EL1_DP":0x2}}
+>>>> {"error": {"class": "GenericError", "desc": "idreg SYSREG_ID_AA64ISAR0_EL1_DP set value (0x2) does not match any arch valid enum value!"}}
+>>> The examples use CPU "host".  Inconvenient for me, because I run into
+>>> "The CPU type 'host' requires KVM" when I try to play with them myself.
+>>> If you don't actually need "host" here, consider using something that
+>>> works more widely, just to help reviewers.
+>> It only applies to the host model, that's the reason. Extending this to
+>> TCG models is theorerically feasible but would induce huge changes
+>> without much benefits I think. With TCG you already have named vcpu
+>> models you can migrate as is. The purpose of this series is to allow
+>> tweaking the host passthrough model to allow migration between
+>> differents hosts.
+> Thanks!
+>
+>>>> The following checks are performed:
+>>>> - the value does not exceed the field size
+>>>> - if the field is associated to enum values, the set value must be one
+>>>>   of those enum values
+>>>> - the value is applied against a scratch vcpu making sure the setting is
+>>>>   not rejected for this host
+>>>>
+>>>> Signed-off-by: Eric Auger <eric.auger@redhat.com>
+>>>> Signed-off-by: Cornelia Huck <cohuck@redhat.com>
+>>>>
+>>>> ---
+>>>>
+>>>> v5 -> v6:
+>>>> - add the write capability
+>>>> ---
+>>>>  target/arm/arm-qmp-cmds.c | 98 +++++++++++++++++++++++++++++++++++++++
+>>>>  1 file changed, 98 insertions(+)
+>>>>
+>>>> diff --git a/target/arm/arm-qmp-cmds.c b/target/arm/arm-qmp-cmds.c
+>>>> index 83ec95c290..41fefadcea 100644
+>>>> --- a/target/arm/arm-qmp-cmds.c
+>>>> +++ b/target/arm/arm-qmp-cmds.c
+>>>> @@ -21,6 +21,7 @@
+>>>>   */
+>>>>  
+>>>>  #include "qemu/osdep.h"
+>>>> +#include "qemu/error-report.h"
+>>>>  #include "qemu/target-info.h"
+>>>>  #include "hw/core/boards.h"
+>>>>  #include "kvm_arm.h"
+>>>> @@ -30,7 +31,10 @@
+>>>>  #include "qapi/qapi-commands-machine.h"
+>>>>  #include "qapi/qapi-commands-misc-arm.h"
+>>>>  #include "qobject/qdict.h"
+>>>> +#include "qobject/qnum.h"
+>>>>  #include "qom/qom-qobject.h"
+>>>> +#include <linux/kvm.h>
+>>>> +#include "system/kvm.h"
+>>>>  #include "cpu.h"
+>>>>  
+>>>>  static GICCapability *gic_cap_new(int version)
+>>>> @@ -84,11 +88,14 @@ CpuModelExpansionInfo *qmp_query_cpu_model_expansion(CpuModelExpansionType type,
+>>>>                                                       Error **errp)
+>>>>  {
+>>>>      CpuModelExpansionInfo *expansion_info;
+>>>> +    ObjectPropertyIterator iter;
+>>>>      const QDict *qdict_in;
+>>>> +    ObjectProperty *idregprop;
+>>>>      QDict *qdict_out;
+>>>>      ObjectClass *oc;
+>>>>      Object *obj;
+>>>>      const char *name;
+>>>> +    int fdarray[3];
+>>>>      int i;
+>>>>  
+>>>>      if (type != CPU_MODEL_EXPANSION_TYPE_FULL) {
+>>>> @@ -133,6 +140,38 @@ CpuModelExpansionInfo *qmp_query_cpu_model_expansion(CpuModelExpansionType type,
+>>>>  
+>>>>      obj = object_new(object_class_get_name(oc));
+>>>>  
+>>>> +    if (kvm_enabled()) {
+>>>> +        bool pmuv3_supported = kvm_check_extension(kvm_state, KVM_CAP_ARM_PMU_V3);
+>>>> +        bool sve_supported = kvm_check_extension(kvm_state, KVM_CAP_ARM_SVE);
+>>>> +        struct kvm_vcpu_init init = { .target = -1, };
+>>>> +        bool el2_supported = kvm_arm_el2_supported();
+>>>> +        bool pauth_supported;
+>>>> +        int ret;
+>>>> +
+>>>> +        pauth_supported = kvm_check_extension(kvm_state, KVM_CAP_ARM_PTRAUTH_ADDRESS) &&
+>>>> +                          kvm_check_extension(kvm_state, KVM_CAP_ARM_PTRAUTH_GENERIC);
+>>>> +
+>>>> +        if (sve_supported) {
+>>>> +            init.features[0] |= 1 << KVM_ARM_VCPU_SVE;
+>>>> +        }
+>>>> +        if (el2_supported) {
+>>>> +            init.features[0] |= 1 << KVM_ARM_VCPU_HAS_EL2;
+>>>> +        }
+>>>> +        if (pauth_supported) {
+>>>> +            init.features[0] |= (1 << KVM_ARM_VCPU_PTRAUTH_ADDRESS |
+>>>> +                             1 << KVM_ARM_VCPU_PTRAUTH_GENERIC);
+>>>> +        }
+>>>> +        if (pmuv3_supported) {
+>>>> +            init.features[0] |= 1 << KVM_ARM_VCPU_PMU_V3;
+>>>> +        }
+>>>> +
+>>>> +        ret = kvm_arm_create_scratch_host_vcpu(fdarray, &init);
+>>>> +        if (!ret) {
+>>>> +            error_setg(errp, "failing creating a scratch vcpu");
+>>> This error message feels off.  I'd use something like "can't create
+>>> FOO".  Still bad, because it provides no clue on why.  What are the
+>>> possible failure modes?
+>> OK. There are quite a lot of possible failures which are handled in
+>> kvm_arm_create_scratch_host_vcpu()
+>> opening of /dev/kvm, KVM_CREATE_VM, KVM_CREATE_VCPU,
+>> KVM_ARM_PREFERRED_TARGET, KVM_ARM_VCPU_INIT.
+>> In next version I will add an Error handle to
+>> kvm_arm_create_scratch_host_vcpu() so that precise error message gets
+>> returned.
+> Makes sense.
+>
+> [...]
+>
 
 

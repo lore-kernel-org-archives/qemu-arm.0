@@ -4,107 +4,96 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A5C95C61DBE
-	for <qemu-arm@archiver.kernel.org>; Tue, 25 Aug 2026 11:59:00 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 94919C61DBD
+	for <qemu-arm@archiver.kernel.org>; Tue, 25 Aug 2026 12:06:39 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wypmt-00046q-P6; Tue, 25 Aug 2026 07:57:55 -0400
+	id 1wypv5-00080W-3P; Tue, 25 Aug 2026 08:06:27 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <stephensportia@gmail.com>)
- id 1wyiPO-00063X-3i
- for qemu-arm@nongnu.org; Tue, 25 Aug 2026 00:05:10 -0400
-Received: from mail-pg1-x531.google.com ([2607:f8b0:4864:20::531])
+ (Exim 4.90_1) (envelope-from <jim.macarthur@linaro.org>)
+ id 1wypv0-0007zl-4s
+ for qemu-arm@nongnu.org; Tue, 25 Aug 2026 08:06:19 -0400
+Received: from mail-wm1-x32e.google.com ([2a00:1450:4864:20::32e])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <stephensportia@gmail.com>)
- id 1wyiPK-0007bC-V5
- for qemu-arm@nongnu.org; Tue, 25 Aug 2026 00:05:09 -0400
-Received: by mail-pg1-x531.google.com with SMTP id
- 41be03b00d2f7-cbedf318752so3279091a12.0
- for <qemu-arm@nongnu.org>; Mon, 24 Aug 2026 21:05:06 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <jim.macarthur@linaro.org>)
+ id 1wypuy-0008L2-3t
+ for qemu-arm@nongnu.org; Tue, 25 Aug 2026 08:06:17 -0400
+Received: by mail-wm1-x32e.google.com with SMTP id
+ 5b1f17b1804b1-4980dc26022so31994385e9.1
+ for <qemu-arm@nongnu.org>; Tue, 25 Aug 2026 05:06:14 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20251104; t=1787630705; x=1788235505; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:content-type:message-id:date
- :subject:cc:to:from:from:to:cc:subject:date:message-id:reply-to
- :content-type; bh=AUTHHBqmyJCPOXohtw2QY9zPZWECZBFWzrfwTsE4DA0=;
- b=iEad8K1jk4+LZSKJ6M5Nxsip/lCXZ1j/+MQ8uD9ksukj4EeXy2DTjvnhao+79l4ZVS
- xD4/JaT69o70iXGIWvtmXwmkJ1gxHjxWNmW7Nl+ooyGY5Gn/ZdLU22owNIDCpxgZSMMH
- ZU+tXG2JUqAcZ9clTnLfw+hT+kHXAeanF1Wn3M/by10sVtgH3v3lpshlOSXHD/oLwdsI
- b0bPIVumx3f8laZj6xn/Mk/5A2g5EFpufNWe1DjMeu25uOwG39G24hBY7trMS+nTclVY
- BzfejBgOLuPgOjYR7YS7nTCxJrUDtIGTa+UVLsohAb3+9z0HPFY73VHeImyQe0si8Mw/
- hGvA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1787630705; x=1788235505;
- h=content-transfer-encoding:mime-version:content-type:message-id:date
- :subject:cc:to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject
+ d=linaro.org; s=google; t=1787659573; x=1788264373; darn=nongnu.org;
+ h=in-reply-to:content-disposition:content-type:mime-version
+ :references:message-id:subject:cc:to:from:date:from:to:cc:subject
  :date:message-id:reply-to:content-type;
- bh=AUTHHBqmyJCPOXohtw2QY9zPZWECZBFWzrfwTsE4DA0=;
- b=DUqXchdGlvmQ1IJElHI1pcNP2da+AL2FF0leUocAtD8B7ZcAQwgtHP7OOyVAK5ik2m
- 6HLafabWdxzs0IcA2nDia94Nqquo8D3WlfNPO37dmFJgsRBwJ9sQZ+vAEOIWLeUPHxwW
- U0HFBr0cPe6qcxs69JTGB1jFfYI+Hkp2p3DZ4or9+MD4h5xS76qiGL01SjghMS31OuEa
- /N80hpg7uxem3TKqzOlqHUL6ANW+v1IIAPi33KnTrN/cAQFJwwZRbgSwttukwhpsx6LD
- gDdjKgfpeLYF1VOt8wRj03LXrg4+KRrCcI0wnCV1QRCQngoG0ywLDZ3gWqJLEy0/fCLP
- 5iVQ==
+ bh=k2i5vU1W42aXUk2NAHduwOU7V4+cTMnTETM9dlai+r4=;
+ b=CyrUadvu4RBbRPszatWAilILa5cRgdjUrfG/bCP4ltri0bIitQa/n9GdWxe2HxYaC9
+ CyBYgfCddyQ1sY8bmq2hsHfo7ARt4QmvRe/MWBcEFxf2rlE66Epsx/GREiY2ZWRjchxL
+ tBmzsFJqE3vGfs0dJdiUYdhBTo2sGMZOt8FFITj96JhJdhQELEYa2n7rSlATU8gciste
+ EWOVXdiWq5igZXmldC0VdL+ArkZqV9ED9trkfEYR70qQdcDx3kfp0AnA+V+miHD/Pyjj
+ tY1RcTVVWKPk5bZCmz3Cyy9t7XGj086fH68HSz2ShHvhw/SZzMK0A74zoRBXccGszUCk
+ klgg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20251104; t=1787659573; x=1788264373;
+ h=in-reply-to:content-disposition:content-type:mime-version
+ :references:message-id:subject:cc:to:from:date:x-gm-gg
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
+ :content-type;
+ bh=k2i5vU1W42aXUk2NAHduwOU7V4+cTMnTETM9dlai+r4=;
+ b=JFG39hDUxWyrPuqfwNkpxozZlRIjoi0utCfEx5v1xSUy2czboUgr5z+bySaF1Be0Fx
+ pBes7imSv+fgvVno7zri/o7esAYSY1vnT9DPgvofDPO87kgB7kdB5mmJF6K3NQJEdTd4
+ Rd6BCioNRWLXci6GcQDmmQj2ugXd7OSlpODZzo0sbomVzjeqE3wRr27gh+sPYBiYp3Ip
+ ycfAYw1u1bZJ7dvaNHVE84wO9h/xi+b0WLPTvU+9DGOQv3kfk0wbxghHEEwWwmuL1y0M
+ zzDSt1ePhLIoZc4Op8uwKyZQMRga3vdzm65cqiiovjgvskqFuY8jsaIV7uLoIFhHp4nT
+ KGxw==
 X-Forwarded-Encrypted: i=1;
- AHgh+RqtGel5GLK8SUgL+owHWDzafFuLpSXi8ovNkDUXZ0QDbKOT/N7KR0/O7NHIwar5z5culNIAPSxlxQ==@nongnu.org
-X-Gm-Message-State: AFuF++m/7gKmA88N8FHwAifekpSK2HtF8D+0G5lJ4s9fZqKZegnEYrBk
- Q7ecYvQClHORRMEH681he1haZidFOfDQPj638B745U9X8LdHpSo+1D8G
-X-Gm-Gg: AR+sD13qHtUur60f5Hfvno3Gu95TLxcKLDkENu3wuuqjkC5xVkyDQecRxop1LrCyPqS
- 6XBtK0L1MXfORMmTiNAa0kDAKv/87OiDF57fe1kIgkMntN3TXwVChhA+UW5/VBRRaJ5tu+FiCZ6
- tFLEuUYL1YXf8jo57/HOXcPw9XsnYcEqWw2wd100FzK9ns6j0HPSEllAKyN58d0stawOi/j50w3
- 9fN5zxapWSikZN7OR9LASFQLwNuZRfVkaKwow3DwF6vN17ddYxnk2hysvp4xvWPgwW3M2c4hBMX
- iCjbBzaLt22wDkZo1eyKiz6mHqmspNsPEh89DgtVgyNVL8Z5HI0IQmkQ7zrwF7Oj0v2TgFIdGPc
- ag41aZTfLYC8t9vbnA+6pVTQTC4CAcFx+0tcbVdOxPPbi5clLUWOTO6h8RH9yD9MiBYUGHs1COQ
- VlfH2069llKt/pHOnC+GigNv0uqTBddBvwYbDRdh+mdOHwDTyTaA5XrZG7YYNV0/Z1DC0HCWX2R
- 2lIi/4AJtGU6nAOMTNNXsciZ6YTcxiVuw==
-X-Received: by 2002:a05:6a21:70c8:b0:3c4:3767:adb2 with SMTP id
- adf61e73a8af0-3cd90f41247mr7722021637.1.1787630704648; 
- Mon, 24 Aug 2026 21:05:04 -0700 (PDT)
-Received: from lima-default.tail89d63.ts.net ([159.196.41.205])
+ AHgh+RqIjUZb6T8GPbT6l5N3FZOmJXvGk+K1gLX7Eqt2S34385iPZgTv2HihrdaTzSahv7h1GLzcp13e1g==@nongnu.org
+X-Gm-Message-State: AFuF++lXD3P0IqOvX5YKJGPMkh5Bgy2cmJaf6+EG8XFaT35Lnf520KgQ
+ p42P7TWl1ILsJEwxUi/M/aUv8I0bH4futEzbIgouf0RUgqHURqqj5nmcUSu4skO9q/A=
+X-Gm-Gg: AR+sD10LFB1p2Pk7zQQ6L8B+PSLFZFYqQcdPjBw//Uin5Zp8P8w5MRnm4NamlgguUTD
+ yMtPYM/IheCGuBwqN0N1p04UKQzuEtrnclYEgXuCZMyJRuCVCt95e79b5ZV0mQ4wNRppiPGYPNh
+ r43JnwVSSy5vOzZFTM4Sa+F/SIFWArrW9HUwf+FnN+oJ8O7Py8ljgEp9bHJ6Dnj6a9f71CcWWEO
+ dlk7pfRWsej0aF13FUOD740YL+np/IBMUrqdvgyEJLAMJ8ewvOormPEITdeTrr4p1RXKdGjFhFj
+ pOQbtkIpeUVP864D2d2JDkIFvDFy8F/sfzn13tLqs4J3QLeEZ23vn4sKk+GSqVM4E9K6f/iwE5s
+ SygJuot8qa2wmTKhlsMn4qc6xEKFCEnbZBA8JeKH0Ui3JGPzgGOYURrNYS7gIO/oh7VCQLDanT3
+ Xik/BIumlFmTWFHi/4Mwmvv8+KH7GQ4UgFlqUoiJtPLLze1Pf44WiqAwxg3VkF9uk=
+X-Received: by 2002:a05:600d:7:b0:499:db6e:40a5 with SMTP id
+ 5b1f17b1804b1-499db6e4107mr8120205e9.4.1787659572701; 
+ Tue, 25 Aug 2026 05:06:12 -0700 (PDT)
+Received: from linaro.org ([2a10:d582:31e:0:8679:ff59:1b3a:5e93])
  by smtp.gmail.com with ESMTPSA id
- 5a478bee46e88-327f909adc8sm34104212eec.2.2026.08.24.21.04.55
+ 5b1f17b1804b1-499d6349e2dsm28228315e9.5.2026.08.25.05.06.11
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 24 Aug 2026 21:05:04 -0700 (PDT)
-From: stephensportia@gmail.com
-To: qemu-devel@nongnu.org
-Cc: Palmer Dabbelt <palmer@dabbelt.com>,
- Peter Maydell <peter.maydell@linaro.org>,
- Jamin Lin <jamin_lin@aspeedtech.com>, qemu-ppc@nongnu.org,
- =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
- Steven Lee <steven_lee@aspeedtech.com>,
- Andrew Jeffery <andrew@codeconstruct.com.au>,
- Harsh Prateek Bora <harshpb@linux.ibm.com>,
- Subbaraya Sundeep <sundeep.lkml@gmail.com>, Troy Lee <leetroy@gmail.com>,
- "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@mailo.com>,
- Alistair Francis <alistair@alistair23.me>,
- Strahinja Jankovic <strahinja.p.jankovic@gmail.com>, qemu-arm@nongnu.org,
- Tyrone Ting <kfting@nuvoton.com>, Nicholas Piggin <npiggin@gmail.com>,
- Aditya Gupta <adityag@linux.ibm.com>, Kane Chen <kane_chen@aspeedtech.com>,
- Francisco Iglesias <francisco.iglesias@amd.com>,
- Joel Stanley <joel@jms.id.au>, Hao Wu <wuhaotsh@google.com>,
- Glenn Miles <milesg@linux.ibm.com>, qemu-riscv@nongnu.org,
- Jean-Christophe Dubois <jcd@tribudubois.net>,
- Portia Stephens <portias@oss.tenstorrent.com>
-Subject: [PATCH 0/4] Rename ssi_transfer to ssi_transfer8
-Date: Tue, 25 Aug 2026 14:04:48 +1000
-Message-ID: <20260825040452.1322251-1-stephensportia@gmail.com>
-X-Mailer: git-send-email 2.43.0
-Content-Type: text/plain; charset="utf-8"
+ Tue, 25 Aug 2026 05:06:12 -0700 (PDT)
+Date: Tue, 25 Aug 2026 13:06:09 +0100
+From: Jim MacArthur <jim.macarthur@linaro.org>
+To: Tao Tang <tangtao1634@phytium.com.cn>
+Cc: Eric Auger <eric.auger@redhat.com>,
+ Peter Maydell <peter.maydell@linaro.org>, qemu-devel@nongnu.org,
+ qemu-arm@nongnu.org, Chen Baozi <chenbaozi@phytium.com.cn>,
+ Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>,
+ Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <philmd@mailo.com>,
+ Mostafa Saleh <smostafa@google.com>, Chao Liu <chao.liu@processmission.com>
+Subject: Re: [RFC v5 21/28] hw/arm/smmuv3: Implement SMMU_S_INIT register
+Message-ID: <ao2FMdD7kbdZGiWW@linaro.org>
+References: <20260813161515.2788900-1-tangtao1634@phytium.com.cn>
+ <20260813162624.2809349-1-tangtao1634@phytium.com.cn>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::531;
- envelope-from=stephensportia@gmail.com; helo=mail-pg1-x531.google.com
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20260813162624.2809349-1-tangtao1634@phytium.com.cn>
+Received-SPF: pass client-ip=2a00:1450:4864:20::32e;
+ envelope-from=jim.macarthur@linaro.org; helo=mail-wm1-x32e.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-Mailman-Approved-At: Tue, 25 Aug 2026 07:57:54 -0400
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -119,56 +108,28 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-From: Portia Stephens <portias@oss.tenstorrent.com>
+On Fri, Aug 14, 2026 at 12:26:20AM +0800, Tao Tang wrote:
+> Implement read/write handlers for the SMMU_S_INIT secure-only register.
+> 
+> Writing INV_ALL provides a mechanism for software to perform a global
+> invalidation of ALL caches within the SMMU, including IOTLBs and
+> configuration caches across all security states.
+> 
+> The MMIO dispatcher decodes the target register bank from the offset and
+> normalizes Secure-window offsets by subtracting SMMU_SECURE_REG_START
+> before switching on the bank-local offset. S_INIT is a Secure-only
+> register and its A_S_INIT constant is an absolute Secure-window offset,
+> so the handler matches it using A_S_INIT - SMMU_SECURE_REG_START and
+> rejects accesses through Non-secure banks.
+> 
+> Signed-off-by: Tao Tang <tangtao1634@phytium.com.cn>
+> Reviewed-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
+> ---
+>  hw/arm/smmuv3.c     | 43 +++++++++++++++++++++++++++++++++++++++++++
+>  hw/arm/trace-events |  1 +
+>  2 files changed, 44 insertions(+)
+> 
 
-The ssi_transfer function comments say that it takes a word varying
-between 8-bits and 32-bits. ssi_transfer takes a 32-bit arg to transfer
-but there is no means to indicate the number of bits that should
-actually be transferred. All child classes of SSI_PERIPHERAL class have
-transfer functions that, despite accepting a 32-bit tx, only transfer a
-single byte; m25p80_transfer8(), ssi_sd_transfer(), ssd0323_transfer().
-
-The current implementation depends on the SSI model to know
-what peripheral model will be attached and what transfer size it
-expects which is error prone. If a SSI_PERIPHERAL model was written that
-accepted 32-bit transfers, it could not attach to any existing SSI
-models.
-
-This change updates the the naming of ssi_transfer to ssi_transfer8, as
-well as changes the return value and transmit argument to be 8-bit.
-
-Most ssi models handle this correctly already, sending a single byte at
-a time. There are a few models that are written to support non 8-bit
-transfers but there are no in-tree use cases that connect a peripheral
-to the SSI device. These have been updated to use 8-bit transfers.
-
-Portia Stephens (4):
-  hw/ssi: Rename ssi_transfer to ssi_transfer8
-  hw/ssi/pl022: Fix dropped upper bytes of ssi transfer
-  hw/arm/strongarm: Fix dropped upper byte of ssi transfer
-  hw/ssi/pnv_spi: Fix dropped upper bytes of ssi transfer
-
- hw/arm/strongarm.c         |  7 +++++--
- hw/ssi/allwinner-a10-spi.c |  2 +-
- hw/ssi/aspeed_smc.c        | 14 ++++++-------
- hw/ssi/bcm2835_spi.c       |  2 +-
- hw/ssi/ibex_spi_host.c     |  5 +++--
- hw/ssi/imx_spi.c           |  2 +-
- hw/ssi/mss-spi.c           |  2 +-
- hw/ssi/npcm7xx_fiu.c       | 42 +++++++++++++++++++-------------------
- hw/ssi/npcm_pspi.c         |  4 ++--
- hw/ssi/pl022.c             | 12 +++++++----
- hw/ssi/pnv_spi.c           | 28 ++++++++++---------------
- hw/ssi/sifive_spi.c        |  2 +-
- hw/ssi/ssi.c               |  4 ++--
- hw/ssi/stm32f2xx_spi.c     |  2 +-
- hw/ssi/xilinx_spi.c        | 10 ++++-----
- hw/ssi/xilinx_spips.c      |  4 ++--
- hw/ssi/xlnx-versal-ospi.c  |  4 ++--
- include/hw/ssi/ssi.h       | 17 ++++++++-------
- 18 files changed, 82 insertions(+), 81 deletions(-)
-
--- 
-2.43.0
+Reviewed-by: Jim MacArthur <jim.macarthur@linaro.org>
 
 

@@ -4,107 +4,93 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 48938C5DF94
-	for <qemu-arm@archiver.kernel.org>; Tue, 25 Aug 2026 09:27:04 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 11FA3C61DBD
+	for <qemu-arm@archiver.kernel.org>; Tue, 25 Aug 2026 10:58:42 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wynQc-0001wt-8H; Tue, 25 Aug 2026 05:26:46 -0400
+	id 1wyorT-0002Om-Ha; Tue, 25 Aug 2026 06:58:35 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1wynQb-0001wY-1w
- for qemu-arm@nongnu.org; Tue, 25 Aug 2026 05:26:45 -0400
-Received: from mail-yx1-xb12d.google.com ([2607:f8b0:4864:20::b12d])
+ (Exim 4.90_1) (envelope-from <163wangjack@gmail.com>)
+ id 1wyorS-0002Nl-7w
+ for qemu-arm@nongnu.org; Tue, 25 Aug 2026 06:58:34 -0400
+Received: from mail-pl1-x629.google.com ([2607:f8b0:4864:20::629])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1wynQY-0001P7-Up
- for qemu-arm@nongnu.org; Tue, 25 Aug 2026 05:26:44 -0400
-Received: by mail-yx1-xb12d.google.com with SMTP id
- 956f58d0204a3-66d06b5f023so2933191d50.2
- for <qemu-arm@nongnu.org>; Tue, 25 Aug 2026 02:26:42 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1787650001; cv=none;
- d=google.com; s=arc-20260327;
- b=Iee9jx3T4NYu3j65KB5HQa/CuaLvDzVVgP7BuF8UNfvcj7Ma9IXJ/3Z/KUta9yN+NK
- fYlNkfZLea7Fd7yuTeItWkCw5AC6s0BfLVJ+xYpG/chRee+K4YyEQyMVDnZcx811+DhJ
- biMbR1waUPA/LP3a8avDMoJkRzIADuP7xtA5EvWzOBbK3e9YnEdAOTdcT/eLs38fY8eM
- bcA5PLyDxDk0s0GKlkXY+E575EW7fgL4vaw9/B6WIJXjEgZW/XCgStItF6Ng9VEXE732
- 52ejwDK1ptgcQSV0ImjLlMeor8ZaDIlytkvttVomsr5HNY7N5+WzAq6EdME0A2Dw7LbV
- T/PA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
- s=arc-20260327; 
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:dkim-signature;
- bh=rv4C4op9b/+H/RxL4FDvYBB1nWUocf+3RodK5gCKWeI=;
- fh=spul+1muL+H0pM4NBzUGH1fPOuUXbTbkMGUsWdpic1E=;
- b=lUEVZuc6RKBq/6TIzynFLGFgmaabjxITsx3DQ21r4HURJu7OKuHyCUDpgly67SMJO2
- IGOQyOOz4Al3WNaJlKtS0VCilm1O/bDuzdtR7irbDj6C03nsxT3oai1A+3Hnu0cisewZ
- WOKmxKEhJaiZDbGvbcZ4h7hZ/V4eeQHDHRFvBHRKKbdJQwtSvtDHf3N/GW9CHBhij78f
- MjUilHDTrZ5zLtgrCQVZ/fyHshRqDTcbmPQNWbJRMB/0+CuNJXT/YtYJNam4vBXoNXVH
- svbcDrIpLcaeZWKbKsTwyt+oNYenGHDuRUncAXZWD6FrYBkAi5Gzxcw5T0JGUefZ9Dy0
- LlxA==; darn=nongnu.org
-ARC-Authentication-Results: i=1; mx.google.com; arc=none
+ (Exim 4.90_1) (envelope-from <163wangjack@gmail.com>)
+ id 1wyorQ-00013x-A8
+ for qemu-arm@nongnu.org; Tue, 25 Aug 2026 06:58:33 -0400
+Received: by mail-pl1-x629.google.com with SMTP id
+ d9443c01a7336-2cc891373e0so50090955ad.2
+ for <qemu-arm@nongnu.org>; Tue, 25 Aug 2026 03:58:31 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1787650001; x=1788254801; darn=nongnu.org;
- h=content-type:cc:to:subject:message-id:date:from:in-reply-to
- :references:mime-version:from:to:cc:subject:date:message-id:reply-to
- :content-type; bh=rv4C4op9b/+H/RxL4FDvYBB1nWUocf+3RodK5gCKWeI=;
- b=nefJIlLy9M4bogJsH2xpyfIJvruhacYbUSCwIQI5KdL/BRnmCDFHnVgDx44GimM1Nv
- Ds3DoxUs+uOt375T5VTB/vP+7CmV93jLgCtbws8HN0o++PAEMRFQkaUmUxF27Eo++jmQ
- Nj9xb7I9EWSrPdmYiLW6kb8d7jctVqEY2I5catn30n/MAkKdZUiFfrGWRrMThy8pKKVJ
- blZKwXAXKEo9ddwcprWZGacGZ4W6kkLXDkoN1A8DTNf8JfvKwSi2yVvNu2vyaSarPzTc
- /33sld0u+dXY6IwX1EeU67jX9ACRKnS1jVMd3jm4AiuDX2Mop96QJ9+E0ccnDoLxRAYA
- BZDA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1787650001; x=1788254801;
- h=content-type:cc:to:subject:message-id:date:from:in-reply-to
- :references:mime-version:x-gm-gg:x-gm-message-state:from:to:cc
+ d=gmail.com; s=20251104; t=1787655510; x=1788260310; darn=nongnu.org;
+ h=to:references:message-id:content-transfer-encoding:cc:date
+ :in-reply-to:from:subject:mime-version:content-type:from:to:cc
  :subject:date:message-id:reply-to:content-type;
- bh=rv4C4op9b/+H/RxL4FDvYBB1nWUocf+3RodK5gCKWeI=;
- b=IqRxZN7Ey2j+ylHfaLheSjjq8eYzQhjV0NPETOW1Gq0+pqSXjgOVz4sUWRDX8Jv4a0
- gIV2b2DDcwWRNMZphm2bRF34iu/RhWTB9VukPifgD2uNaRf90qEHnx19ej0cAWyozNwa
- vZXQRT+BBjRWlgD+jX7qMp5sx4GA821eYGWSyqIHJCKCA/Qgp3qNF/o1J6W/oSbDMT8X
- BZz8BEpBU+udmn1x54QIxxq4wI7owY5zxH+6CEvwsP/upvBsmTPpT7213Vt+pLzEcE15
- /aqmGof/vclWe9mxUw/JSuPcvmAAQnvMk9XoSobO/InpfFkd+kg/nY44ApM+P1eqj6Zu
- DLsg==
+ bh=wJH8/RrH1ySCaOtBK1cfZYcIMrE1PR4KK6ULBlUoMQ4=;
+ b=aSniS6flPVY1+H4bz4oOift9ekfjCfA0OYwz1H3/sH0FajDBMJOCukiXq8fZCW+nZV
+ IyIRM5fBj/0TYBjRL3bh2ODH9T7hKLfKGqbwPH145XyEjVT1EZDT0tRKTuvdiBErOCgV
+ 6glQ2Nex3qiGxPvTVror8bzLBEMLPb+GyN5WTayfdz4BVKqk8C7f18znFL3D7llG0oT/
+ u3/z6jQ5uK7djjaiwjutB4n9AtqREWLhsSxdEZIbm/q0oUTY1sSDjK9x78967EfPqvNo
+ y+gl7B70B1KocrC1aDD8z0L47vJAdKfC02nt45A73t/TA1zQKJD/Gs5leUxxXrX9pz+c
+ GBIw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20251104; t=1787655510; x=1788260310;
+ h=to:references:message-id:content-transfer-encoding:cc:date
+ :in-reply-to:from:subject:mime-version:content-type:x-gm-gg
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
+ :content-type;
+ bh=wJH8/RrH1ySCaOtBK1cfZYcIMrE1PR4KK6ULBlUoMQ4=;
+ b=FViikeB8PvTY6ScKZT29xGVdnE+Oop530DJhCjwALesorpM8pzUsp7NgKHEhdKE81p
+ juCCws/sT2UPe+QQF+1ZOmdztZ3p3HHBlqiN18GvTFAfgPsKIIf/nkYJJowl1wpfTBkn
+ sWtXUIYEvf9qZZDS45C1I2vrTFkz1h7Xfepu3IJnOME7E+9IlcOnUG8EQF5BiE8rqqyX
+ VD4zIgckyoj36h+0ytAEqSlf2jFZQ2JEg/WFZxL8I8r6D8MjyNSgVJyH7vIK1PDwxjh0
+ w1wL5m20b1J5zh4HsM1JEw57SOGYiw66Eb5UvaGHIDIh1Sq0EMbvHehWBERTQHE2m2K0
+ xmWg==
 X-Forwarded-Encrypted: i=1;
- AHgh+RpUWvaqCeCB1RlccwlK829iaPqhc6tqF5dp2t6QyCVWYP26nWvvKNLcojgDawN4m80yIZ0n3eh36A==@nongnu.org
-X-Gm-Message-State: AFuF++mWVu06NBzehgx4kTOsxI+tHD18TaZTsfSXLUV/YCOYa6RYz4MP
- CH8uuTXthcexkcF3/Ib5Fh4vkBjf7/VZS7Kmszu5DcI40oYnvumXH9T5QUwGaYyAqIrU/6qeMOE
- QIsdxO9d/t0Z9x0OOAcOgGLBpHcioPmM3CZkPnOoU4w==
-X-Gm-Gg: AR+sD11yB8Dfln7L+maTZMkgdezB0zYePEQ5QZoLIiOESSzLAltx/YdgzjeJPX5Oxsg
- XwBrfH+aKSCPYlum6Mr6KoTgzvMgJGmOWeXsTD1iPgBDebsGfdkSYpYs24GW/hmtrVnYthh202r
- mWejIDOOjiX2+4nEeAbcv9grWFRYYedJ7sSJHbc09bGDORBchhUbLQVCTMZKxmwg51aSOiPc1mX
- 6eMARjXZovTN6D+BLVBUMl53hBeFiDvPm0WQ/ELNuXvbaSypoUNVhGJqyjnKhHXzj3AcLwpI8lr
- d/a8xhl7UsBY2dvslIyCkNW0dlLFQBlOIzOfXXh/OLEtRUYdseMe+FtxSH2DOH0koS1xHvgoN/m
- xB5jXIHnMXSfeoi2PmqvfyVY/PcpO
-X-Received: by 2002:a05:690e:1449:b0:66d:1131:b81d with SMTP id
- 956f58d0204a3-66d1131bc41mr2756351d50.29.1787650001294; Tue, 25 Aug 2026
- 02:26:41 -0700 (PDT)
-MIME-Version: 1.0
-References: <20260627154225.863984-1-bin.meng@processmission.com>
- <20260627154225.863984-2-bin.meng@processmission.com>
- <4c1c01709d9e903fbe93fbce5b901ff959a5a01f.camel@alistair23.me>
-In-Reply-To: <4c1c01709d9e903fbe93fbce5b901ff959a5a01f.camel@alistair23.me>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 25 Aug 2026 10:26:29 +0100
-X-Gm-Features: AcwNN1WMUESrB3U3h05wX1Kvwv9VRxetZ7MD9KvJUFZHGc8mH5meqMDiXNCiHEM
-Message-ID: <CAFEAcA8VtORuoLj4p62vj2dGtsawWmaUWUw4dW6vtxn3g5aG8w@mail.gmail.com>
-Subject: Re: [PATCH 1/1] hw/arm: xlnx-zcu102: Fix up DTB for direct Linux boot
-To: Alistair <alistair@alistair23.me>
-Cc: Bin Meng <bin.meng@processmission.com>, QEMU <qemu-devel@nongnu.org>, 
- "Edgar E. Iglesias" <edgar.iglesias@gmail.com>, 
- Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>, qemu-arm@nongnu.org
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::b12d;
- envelope-from=peter.maydell@linaro.org; helo=mail-yx1-xb12d.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ AHgh+Rq4NYA5ewcbutWi+mJzniTMZ/U2Wt9eMFR2nKYZtax1ez3970Z1cX/ge/WYlJpJajJtRJxUpBJvAQ==@nongnu.org
+X-Gm-Message-State: AFuF++kml/SaSuBszsiwzHnxakWRc6aeep/JRMKcxFTKRN6wKfZ3u2ZA
+ OKsR4/+MKdxMofyE6W9aJU8L9MWDfIkgkm9yyR7M+RaXL+a0Yj9MjEAG
+X-Gm-Gg: AR+sD11yZzFMEF1ug3B0IVO4EDKHBF6VY2jPstpUltVTMxAq4U68zanLoGHObnKAQ+x
+ AHnG1BWIQGExcpDjAFOtY529uKExc9dbOUGf3c0zr8TL4xU1JWz3j7tl0luYPkmKfDUhWTDUML+
+ UljouENaAU88JXbRHRCh3QHj4jloYDKb0Va8fUdBSt+44txb5dE3aIB1sev329fJHC3JLGCPHrz
+ 6vptiTSaO3EQvYPzHwqK2xTPnWVFFaj85ZYQZpEyx5gilHCbwph3AfRJMELm81jDgBLb6HXcWHt
+ NYHTqHapy96+5MwECgv9xLPaa7bU7bkKM76MZDAcmpx3hMDp+e/NpQwg0sQioCHIKK/F/xv4I5K
+ T7zHzYeJJSB82hlobXrk0hSzByxaadtNvIelSr/oqai+iFlOUjwlvxZeRUDKDSGl8CjsKvS+Crw
+ uKcIYfpXihjagEj5ksg/Iw9mqn1FsD+u0NozuZ6WboxHFKxKPRAy9LX/qHhvxTd+IVjJCJ
+X-Received: by 2002:a17:90b:5886:b0:395:4de4:92c7 with SMTP id
+ 98e67ed59e1d1-395dee7d5f6mr51250158a91.3.1787655510516; 
+ Tue, 25 Aug 2026 03:58:30 -0700 (PDT)
+Received: from smtpclient.apple ([117.55.237.216])
+ by smtp.gmail.com with ESMTPSA id
+ 98e67ed59e1d1-39662c80d6csm482192a91.1.2026.08.25.03.58.28
+ (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+ Tue, 25 Aug 2026 03:58:30 -0700 (PDT)
+Content-Type: text/plain;
+	charset=utf-8
+Mime-Version: 1.0 (Mac OS X Mail 16.0 \(3864.600.51.1.1\))
+Subject: Re: [PATCH v3 5/5] hw/arm: Add Axiado Ax3005 EVB
+From: Jack Wang <163wangjack@gmail.com>
+In-Reply-To: <0c46e698-a668-4d49-b991-0a131d1ab956@axiado.com>
+Date: Tue, 25 Aug 2026 18:58:06 +0800
+Cc: qemu-devel@nongnu.org,
+ peter.maydell@linaro.org,
+ qemu-arm@nongnu.org
+Content-Transfer-Encoding: quoted-printable
+Message-Id: <35D20AA7-14D7-4C92-91E6-6E6E27C331A8@gmail.com>
+References: <0c46e698-a668-4d49-b991-0a131d1ab956@axiado.com>
+To: kchiu@axiado.com
+X-Mailer: Apple Mail (2.3864.600.51.1.1)
+Received-SPF: pass client-ip=2607:f8b0:4864:20::629;
+ envelope-from=163wangjack@gmail.com; helo=mail-pl1-x629.google.com
+X-Spam_score_int: -13
+X-Spam_score: -1.4
+X-Spam_bar: -
+X-Spam_report: (-1.4 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ FROM_STARTS_WITH_NUMS=0.738, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -120,33 +106,100 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Tue, 25 Aug 2026 at 05:20, Alistair <alistair@alistair23.me> wrote:
->
-> On Sat, 2026-06-27 at 23:42 +0800, Bin Meng wrote:
-> > Real-board ZCU102 DTBs describe the UART, SDHCI and GQSPI nodes
-> > in terms of ZynqMP PM firmware providers for clocks, resets, power
-> > domains and pin control. QEMU does not model those runtime firmware
-> > providers, so using such a DTB with -kernel currently requires users
-> > to edit the DTB before Linux can probe the boot-critical devices.
 
-> > +    zcu102_fdt_fixup_clocks(fdt, "/axi/serial@ff000000",
-> > pss_ref_clk);
-> > +    zcu102_fdt_fixup_clocks(fdt, "/axi/serial@ff010000",
-> > pss_ref_clk);
-> > +    zcu102_fdt_fixup_clocks(fdt, "/axi/mmc@ff170000", pss_ref_clk);
-> > +    zcu102_fdt_fixup_clocks(fdt, "/axi/spi@ff0f0000", pss_ref_clk);
->
-> I don't think this is something QEMU should be doing. Modifying the DTB
-> on the fly just seems very brittle and prone to breakage and confusion.
+Yep looks good to me
+We need v4 for this problem and uart address problem
 
-It is something we do already in some limited cases on other boards where
-we don't model all the hardware, for example in imx8mm_evk_modify_dtb()
-we nop out some nodes and make some other minor tweaks. I'm not a
-huge fan of having to do that but it's a pragmatic thing where we
-don't have models of the hardware the kernel is expecting.
-This patch does seem to make slightly more extensive edits than that,
-though.
+Thanks : )
+JW..
 
-thanks
--- PMM
+> On Tue, 25 Aug 2026 17:13:57 +0800, Kuan-Jui Chiu <kchiu@axiado.com> =
+wrote:
+> Hi Jack
+>=20
+> Jack Wang =E6=96=BC 2026/8/25 =E4=B8=8B=E5=8D=88 03:25 =E5=AF=AB=E9=81=93=
+:
+>=20
+>> CAUTION: This email originated from outside of the organization. Do =
+not click links or open attachments unless you recognize the sender and =
+know the content is safe.
+>>=20
+>>=20
+>> Hi Kuan-Jui
+>>=20
+>> In patch 4, the AX3005 DRAM MemoryRegion is created with a fixed size =
+of 2 GiB, as defined by AX3005_DRAM_SIZE. However, this patch passes =
+machine->ram_size to the kernel loader:
+>>=20
+>> This allows the value supplied through the -m option to differ from =
+the size of the actual DRAM MemoryRegion.
+>>=20
+>> I am not sure whether the machine is intended to support configurable =
+RAM or only a fixed 2 GiB configuration, but the current implementation =
+makes the machine configuration and the physical memory map
+>> inconsistent.
+>=20
+> The 2 GiB is on-chip RAM, so I would like to fix the value with 2 GiB.
+>=20
+> For the inconsistent size issue in QMP, I would like to add a guard in=20=
+
+> board level to fix the memory size like
+>=20
+>  if (machine->ram_size !=3D AX3005_DRAM_SIZE) {
+>      g_autofree char *size_str =3D size_to_str(AX3005_DRAM_SIZE);
+>      error_report("Invalid RAM size, should be %s", size_str);
+>      exit(1);
+>=20
+>  }
+>=20
+> and assign default_ram_size of MachineClass like
+>=20
+> mc->default_ram_size =3D AX3005_DRAM_SIZE;
+>=20
+>=20
+> Is it acceptable?
+>=20
+>=20
+
+>> On Tue, 25 Aug 2026 15:25:54 +0800, Jack Wang <163wangjack@gmail.com> =
+wrote:
+>> Hi Kuan-Jui
+>>=20
+>> In patch 4, the AX3005 DRAM MemoryRegion is created with a fixed size =
+of 2 GiB, as defined by AX3005_DRAM_SIZE. However, this patch passes =
+machine->ram_size to the kernel loader:
+>>=20
+>>> +    ax3005_binfo.ram_size =3D machine->ram_size;
+>>=20
+>> This allows the value supplied through the -m option to differ from =
+the size of the actual DRAM MemoryRegion.
+>>=20
+>> I am not sure whether the machine is intended to support configurable =
+RAM or only a fixed 2 GiB configuration, but the current implementation =
+makes the machine configuration and the physical memory map
+>> inconsistent.
+>>=20
+>> I checked the configured memory size with:
+>>=20
+>> for ram in 1G 3G; do echo "QMP case: -m $ram"; printf '%s\n' =
+'{"execute":"qmp_capabilities"}' =
+'{"execute":"query-memory-size-summary"}' '{"execute":"quit"}' | =
+"$QEMU_BIN" -M ax3005-evb -m "$ram" -display none -serial none -qmp =
+stdio -S | rg 'base-memory'; done
+>>=20
+>> I then checked the actual memory map with:
+>>=20
+>> for ram in 1G 3G; do echo "MemoryRegion case: -m $ram"; printf 'info =
+mtree -f\nquit\n' | "$QEMU_BIN" -M ax3005-evb -m "$ram" -display none =
+-serial none -monitor stdio -S | rg '\(prio 0, ram\): dram'; done
+>>=20
+>> Therefore, the actual DRAM remains fixed at 2 GiB, while =
+machine->ram_size and the value passed to arm_load_kernel() can report 1 =
+GiB or 3 GiB.(QEMU_BIN points to the newly built qemu-system-aarch64 =
+binary.)
+>>=20
+>> Best regards : )
+>> JW..
+>>=20
+>>=20
 

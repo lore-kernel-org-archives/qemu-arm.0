@@ -4,108 +4,95 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 55D46C5DF81
-	for <qemu-arm@archiver.kernel.org>; Tue, 25 Aug 2026 02:13:30 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 41D0FC5DF81
+	for <qemu-arm@archiver.kernel.org>; Tue, 25 Aug 2026 04:21:24 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wygeO-000526-1N; Mon, 24 Aug 2026 22:12:32 -0400
+	id 1wyiem-0006Cy-AN; Tue, 25 Aug 2026 00:21:04 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <kchiu@axiado.com>)
- id 1wygeM-00050e-6E; Mon, 24 Aug 2026 22:12:30 -0400
-Received: from mail-northcentralusazlp170130007.outbound.protection.outlook.com
- ([2a01:111:f403:c105::7] helo=CH4PR04CU002.outbound.protection.outlook.com)
+ (Exim 4.90_1) (envelope-from <alistair@alistair23.me>)
+ id 1wyiek-0006Ce-PT; Tue, 25 Aug 2026 00:21:02 -0400
+Received: from fout-b6-smtp.messagingengine.com ([202.12.124.149])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <kchiu@axiado.com>)
- id 1wygeJ-0005rt-Ow; Mon, 24 Aug 2026 22:12:29 -0400
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=xJY8IMkmWiTFQ+pLp87aSc9WfGOpS/9YRi8dsPh8Uq5x2Ppuus2sA4uJFrhO8l0xV846Xn6yfYFYjxxGx41+7t7Mwc+h5j3l+n4UNypx1fBnriX1GtFfac3VAtAVulae6E+gW2UyAceUjZoYVt1K1Rlwqol3v1Aoh3MUOZK7QNjDfqdWi8pbvK5uIO6oy1STeuXrUWbbSwQ5ELkkDQkAmshOMxnVM58r4w6gY2jT3RLQp8fTmByiYsWP0VApwRDv2QpEoZoFRYU1zsBpNuO8yYTmkjNDgf/rOVAOQM7pYyTv8WPUv27J0EURVdAOp4hizjIQ0HgnIazjXDWUfoDczQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector10001;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=CBzznv2IiNdsrQ2KkKaSPhApYtdPwgmrJC6oaaUCIro=;
- b=cNm+nU3VmZ8VCkKrcrdQfgxEulbFoOGJv8HqRawAHAMoW8jeccFUg2qM4+icgmi92vaEOqV60yYrla5lGP4zQ2IF7apu22KmDD7ScCdvTZxB4lLWSH52Gz8JaB9e7/xHmVQBJDttqVID+LL0dz4DXM8P2ML5o0SDgg8/TrWD5waFSrejvNr6o4bJdEq/zWZrzWiwq+vn7xZRsia8PPA4bC7l/EednQEldhkLOBJ1vcwfSGG8QBLJ7QAhOX154UNE8y6RPGAJXBeY2W0i2s/LJ3mNRrXopjE+1AiJCh0Xz53CsVAFKB+eGXF+YbL/yUegYhyH+Ab/eWW7rhFu21i5CQ==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=fail (sender ip is
- 64.62.143.114) smtp.rcpttodomain=axiado.com smtp.mailfrom=axiado.com;
- dmarc=none action=none header.from=axiado.com; dkim=none (message not
- signed); arc=none (0)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=axiado.com;
- s=selector1;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=CBzznv2IiNdsrQ2KkKaSPhApYtdPwgmrJC6oaaUCIro=;
- b=HZ8nNjP8uLI4M5Vuhv6HyitY/cURRpqBl1lBs2H2cIA8dbRIvxzgNLO7iwHeK9VYtkNz7ttTMboGXWsMsg36QkNf6n39Ju6KHr9CyXsoJz9hFZeqPiAKHQKZh4p7D4Q5K3sxjw/iIVbffxh6fYw9KU1gp4FMzsRiHXN1avdCungxYIXgvuUOw+Gi2cMfiiDgFGV1H0YNdnZrd+rCFNxCuNyI5RdG1LKtlw34ZsHpZeYaxbBnGu1w0dGTfqNfed/bOpLgNpfovx/UF3DJ7VFxqeRv5bRaJp3WynkCtNPWLcnm67vhMTfnAtfmuHAvbe3+zhaEyZ0bPCtNsFhp7Ifm5g==
-Received: from CH2PR16CA0016.namprd16.prod.outlook.com (2603:10b6:610:50::26)
- by SJ2PR18MB5609.namprd18.prod.outlook.com (2603:10b6:a03:554::15)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.21.339.12; Tue, 25 Aug
- 2026 02:12:18 +0000
-Received: from CH2PEPF00000149.namprd02.prod.outlook.com
- (2603:10b6:610:50:cafe::63) by CH2PR16CA0016.outlook.office365.com
- (2603:10b6:610:50::26) with Microsoft SMTP Server (version=TLS1_3,
- cipher=TLS_AES_256_GCM_SHA384) id 15.21.339.12 via Frontend Transport; Tue,
- 25 Aug 2026 02:12:18 +0000
-X-MS-Exchange-Authentication-Results: spf=fail (sender IP is 64.62.143.114)
- smtp.mailfrom=axiado.com; dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=axiado.com;
-Received-SPF: Fail (protection.outlook.com: domain of axiado.com does not
- designate 64.62.143.114 as permitted sender) receiver=protection.outlook.com; 
- client-ip=64.62.143.114; helo=smtp.corp.axiado.com;
-Received: from smtp.corp.axiado.com (64.62.143.114) by
- CH2PEPF00000149.mail.protection.outlook.com (10.167.244.106) with Microsoft
- SMTP Server (version=TLS1_3, cipher=TLS_AES_256_GCM_SHA384) id 15.21.360.3
- via Frontend Transport; Tue, 25 Aug 2026 02:12:17 +0000
-Received: from axiado.com (unknown [10.4.1.181])
- by smtp.corp.axiado.com (Postfix) with ESMTP id E1F7340BFE07;
- Mon, 24 Aug 2026 19:12:16 -0700 (PDT)
-From: Kuan-Jui Chiu <kchiu@axiado.com>
-To: qemu-devel@nongnu.org, peter.maydell@linaro.org, qemu-arm@nongnu.org,
- 163wangjack@gmail.com
-Cc: Kuan-Jui Chiu <kchiu@axiado.com>
-Subject: [PATCH v3 4/5] hw/arm: Add Axiado SoC AX3005
-Date: Mon, 24 Aug 2026 19:11:54 -0700
-Message-Id: <20260825021155.2475879-5-kchiu@axiado.com>
-X-Mailer: git-send-email 2.34.1
-In-Reply-To: <20260825021155.2475879-1-kchiu@axiado.com>
-References: <20260825021155.2475879-1-kchiu@axiado.com>
+ (Exim 4.90_1) (envelope-from <alistair@alistair23.me>)
+ id 1wyiei-0003ii-1R; Tue, 25 Aug 2026 00:21:02 -0400
+Received: from phl-compute-06.internal (phl-compute-06.internal [10.202.2.46])
+ by mailfout.stl.internal (Postfix) with ESMTP id 712681D00144;
+ Tue, 25 Aug 2026 00:20:56 -0400 (EDT)
+Received: from phl-frontend-03 ([10.202.2.162])
+ by phl-compute-06.internal (MEProxy); Tue, 25 Aug 2026 00:20:56 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=alistair23.me;
+ h=cc:cc:content-transfer-encoding:content-type:content-type
+ :date:date:from:from:in-reply-to:in-reply-to:message-id
+ :mime-version:references:reply-to:subject:subject:to:to; s=fm3;
+ t=1787631656; x=1787718056; bh=b+781eN3zL1DV+j8WdVUkBGQWppDyygz
+ KeAJXlJZWWg=; b=gmYfH5qPu2yYbNP3hWLuP9/X6CuZBgwTgQeB3p5FG+SvbGDA
+ IcOq/CPs52wEgIKGIa7b0MqDaceALCKRrVwiNYIbGC7CxmiHKMTu04bjZ5Asc7qN
+ fbwpjIKuLkDbQCqOyRzxZd1itUYw7oeWNSbX/wz0Kipdrx8avY/E3W4Jrn++pj6l
+ RLi9XZNZc2nvIdwyEggowRvRIG7IJdT7ZbyjmvaJgaFE9SQfoKnvzquuBKx2ECeu
+ wBPtF9aDVsYF0O71Dzh6xISfkcBW8dqiGerfqlHREURgTUOLs5PVRve3pJy0FMv4
+ hSedqaUQ9vyijUsnZqdBorG8xESoIAxR8xZ6PA==
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
+ messagingengine.com; h=cc:cc:content-transfer-encoding
+ :content-type:content-type:date:date:feedback-id:feedback-id
+ :from:from:in-reply-to:in-reply-to:message-id:mime-version
+ :references:reply-to:subject:subject:to:to:x-me-proxy
+ :x-me-sender:x-me-sender:x-sasl-enc; s=fm3; t=1787631656; x=
+ 1787718056; bh=b+781eN3zL1DV+j8WdVUkBGQWppDyygzKeAJXlJZWWg=; b=T
+ /y6M4AauSXYvlO6WgOMnH4MOPy3lfDkvU9G8ZeDyxvQU281+HV/B2kvESYbdU0sG
+ wk/PJKdmaS75IGXKkvyiALkwrGot567WdDokbKVOL1ktmqSeC9qm0g4MvXhy568B
+ fYO4fhliOGrM5WLae3lCNBMZ+GnZSLHhSHyxcApykMsslntu8aGyhTgwonbqaUMf
+ 9bpYUVbKkViFH0EffRAZs0xhblMKQqEyArmyskRP+TCBkm0vM0PLPuTo1JxDfVlX
+ eNOOary6SAUa4+oIWzT1TuqNMpIAS0CeMuaKrKL5Tro5SeUJNQ1xueAsXt+P7aMa
+ wWuFtCP/nI4XBc1sV8gzw==
+X-ME-Sender: <xms:JxiNakkIg5w01XvrI1gh8pslNd7PXw-WxXfxn8ZDCQBNjye8oxAjWg>
+ <xme:JxiNanhe-UUNfcjS56SQjxcRj0GmC78uS83AAWhw6-lRcZaV19vvsRUSqiS-qUTFg
+ 22fA4b4hKYrojedX0R8ks1-2n14IZx36VFq1Q5wu0vmKSwGU-HURaM>
+X-ME-Received: <xmr:JxiNasdjcEUWK1fSxz0TxFAgXfZUX4r_sAEgcZj23Y3ifujSPDICgoOs_Xajn6ud4EYbji0wqUFu7LP7hyR4x34jabM>
+X-ME-Proxy-Cause: dmFkZTELm/yGqF/abJz4HJTB3Nxaack2JE5Mm+wLDqZSH6byP1nesleUbdtFA+Zp0ZzsFU
+ SJBBS4saJkaiOSvvIAL2A/9bz+xLN8b31x7xFXP0si2seNfMp3UjcJ9c1jfmcqslLvp7Ou
+ Fygu/boAmBT7stUV7ssOLyZ+VmdVo1ksuQFazlREGItSI6nCCK4W/yEbMl+XETlZTfGKIH
+ vZwa3OmFMcWHH8zIkQDlBN4rmQAp5ZyTI2JLgpVkbVwLRmGFxpiZe9sPUlb2RUqfGAWrX7
+ N/LOAl5pn/5Ry1OHYkHHfVyuKhcGODb4/WC/KxgbHZnjkRXXw9QVfNHf5Rx/qYjgOla9tY
+ gVLFYMo87nvfq0iN5FKGLO6KAj4i2E1VuIgc9c8/MOT1MUSc5Z3KqEHomRwlOj5EXL14Vr
+ +Vc18MdVRRUUWIZ5gBJ8y43mnBlAfO9XLmilzO6ehC+W3Ibs6+jBLuEWMerwCYW8RfDPkP
+ xjNR34wgjlEexloVn14+wJK4hTtP1jI2p5JBq9ywAtBNCvM9HkMYqVMy90H2Xkhu042r3w
+ mOA0VRFrmaRnIC7xJ5u0QgkuJbhdXyIwlJbzCx47T+ImLOhtJki34bc0GE2UO6wMS9n4RP
+ FONrYDk0B3SYxCs9fy0h4brevCct38uBFWxU8bMc113UYJEmTjzrNbqIP2ww
+X-ME-Proxy: <xmx:KBiNani14Pspn64a4eOzcMeQCiiyXT8MCb_du4FoRtuRiaRLAeGRWA>
+ <xmx:KBiNakzjzOIKJvz0LQTT32iKlewgv74OFu52JCMhDb3Lopy7e5873g>
+ <xmx:KBiNajMus6ZDNi4OHH63LdjXAVXXFMTg0qtkH271BzzYQBbA6t16sA>
+ <xmx:KBiNalX02NTGkT_o2GArDdhddbDzm2_xnk5WZ2Ar9AQJJOVvsu75CQ>
+ <xmx:KBiNap5YhfZTiButj3M_PgQdIX8jsF3WIGAS9HEloKk4-UB0GkC3TLYS>
+Feedback-ID: ifd214418:Fastmail
+Received: by mail.messagingengine.com (Postfix) with ESMTPA; Tue,
+ 25 Aug 2026 00:20:53 -0400 (EDT)
+Message-ID: <4c1c01709d9e903fbe93fbce5b901ff959a5a01f.camel@alistair23.me>
+Subject: Re: [PATCH 1/1] hw/arm: xlnx-zcu102: Fix up DTB for direct Linux boot
+From: Alistair <alistair@alistair23.me>
+To: Bin Meng <bin.meng@processmission.com>, QEMU <qemu-devel@nongnu.org>
+Cc: "Edgar E. Iglesias" <edgar.iglesias@gmail.com>, Peter Maydell	
+ <peter.maydell@linaro.org>, Pierrick Bouvier
+ <pierrick.bouvier@oss.qualcomm.com>, 	qemu-arm@nongnu.org
+Date: Tue, 25 Aug 2026 14:20:51 +1000
+In-Reply-To: <20260627154225.863984-2-bin.meng@processmission.com>
+References: <20260627154225.863984-1-bin.meng@processmission.com>
+ <20260627154225.863984-2-bin.meng@processmission.com>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+User-Agent: Evolution 3.60.2 (by Flathub.org) 
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-X-EOPAttributedMessage: 0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: CH2PEPF00000149:EE_|SJ2PR18MB5609:EE_
-Content-Type: text/plain
-X-MS-Office365-Filtering-Correlation-Id: 417a5874-decb-4365-ade5-08df024e49c6
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;
- ARA:13230040|23010399003|1800799024|82310400026|36860700016|376014|56012099006|10067099003|6133799003|3023799007|5023799004|22082099003|18002099003;
-X-Microsoft-Antispam-Message-Info: U5DqyP7A4qoxy4pNCEJAhrCVzEXR467RL3DnvAvbcq7jS+v5pcceqe8PGOHv0WCVY4df6osM8LI/8MGwOTflM1yKHthVt29HOyfrPOalI0/V/OBwwmFnw3mRFL7DgLOoWzVclsjWa5LwfRHYm8x4zP7VgKgMy6eZY4Eoc0y3GHHLF41KUKppLqoeGe12X3sjX0rTLKdfTW+CwNaZiH4ULnnTehA350KIEojJkYmG05iSA+T+2aE/jERZ2mZzVy6eUlbNkFKFpSSUzpYnZcuebGvpbcJYFKi+OM/pHIwhK/31k9MKX93W7S9M70pn0OLK0K+KJK1JD2+m6zgcm45N5jpZnneofAPm8XrNk6sEIlvNuopwTFuP68/olSQQm9AHA22lo71qdRbVAAeMFvshTL7bYzA5RvMPyTrYynrKfHy8+qhXuLf55fXgLIuyC4zZ6TLR1pultWeUwkGxbuf2gF6piRad2/suB5SyTA1fU0nU6mBWa7nXre2j/+ga9eV1CbGE0aKdz2kgviTCd1A/Y8bctM+mjz741H8fXE/2FdHEqvik7zC7C4QA7j5pWXAnN9w9ji6Vlogpaz766iBAp01fA7vqu0jGKAHKvKN9Edkh3OSnJF/+n0muzfXdEAUYt3i7RkgzNnlFzIMy98m6kFnEiUfu8sjgshgpe3Q0oA50bcmtiyUy4Q82SuaINYRs/8EtgWpu5dvy38OWipy5sg==
-X-Forefront-Antispam-Report: CIP:64.62.143.114; CTRY:US; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:smtp.corp.axiado.com; PTR:InfoDomainNonexistent; CAT:NONE;
- SFS:(13230040)(23010399003)(1800799024)(82310400026)(36860700016)(376014)(56012099006)(10067099003)(6133799003)(3023799007)(5023799004)(22082099003)(18002099003);
- DIR:OUT; SFP:1102; 
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: xBrU2Ez03dMNoK3f2VxjfY2JaKEZObb66sKA+x/l2N1XgpSZFlP2qlxTsagge0BJzkXEvZryCpjhvnPigGFVFUeQyyLmsVLAHy80SLbCiqAIzxlIJkKJcFBRmeLdFXlM7M0RNn4JtlafoFzVsEp+mopHaOLRiIAUnRsmpNorhA8cpAxz0kBhgWJ0wXCnJEg9HTMwuPmPHSm9pNNVDrDz3kFlkpu0y0droGWXrbr4nMNajA7IbELK/yjqO21LUcIpa5ySQmSz4jLfltYwvhZDdBZq3S0qDdpjL9apretT5wB7EoCWcJTCd/Lx4HsWrbG04WtWNpUq5AB+QYc8RU8aPJKkm8fDgfb4cujjEqrRAiQsp/oOnNZvsow0dxbSsc19P91HRJHnujQAlf9pedqeu8Nt4b+zKv00R2sOLkFpDn63QEg5xlwSRAhpzs9DqLkK
-X-OriginatorOrg: axiado.com
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 25 Aug 2026 02:12:17.6315 (UTC)
-X-MS-Exchange-CrossTenant-Network-Message-Id: 417a5874-decb-4365-ade5-08df024e49c6
-X-MS-Exchange-CrossTenant-Id: ff2db17c-4338-408e-9036-2dee8e3e17d7
-X-MS-Exchange-CrossTenant-OriginalAttributedTenantConnectingIp: TenantId=ff2db17c-4338-408e-9036-2dee8e3e17d7; Ip=[64.62.143.114];
- Helo=[smtp.corp.axiado.com]
-X-MS-Exchange-CrossTenant-AuthSource: CH2PEPF00000149.namprd02.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Anonymous
-X-MS-Exchange-CrossTenant-FromEntityHeader: HybridOnPrem
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: SJ2PR18MB5609
-Received-SPF: pass client-ip=2a01:111:f403:c105::7;
- envelope-from=kchiu@axiado.com;
- helo=CH4PR04CU002.outbound.protection.outlook.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
+Received-SPF: pass client-ip=202.12.124.149;
+ envelope-from=alistair@alistair23.me; helo=fout-b6-smtp.messagingengine.com
+X-Spam_score_int: -27
+X-Spam_score: -2.8
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_PASS=-0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ RCVD_IN_DNSWL_LOW=-0.7, SPF_HELO_PASS=-0.001, SPF_PASS=-0.001,
+ WEIRD_QUOTING=0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -121,392 +108,413 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-This patch adds new model for Axiado SoC AX3005 which supports
-    4 Cortex-A53 ARM64 CPUs
-    Arm Generic Interrupt Controller v3
-    9 Cadence UARTs
-    1 SDHCI controller with PHY
-    8 Cadence GPIOs
+On Sat, 2026-06-27 at 23:42 +0800, Bin Meng wrote:
+> Real-board ZCU102 DTBs describe the UART, SDHCI and GQSPI nodes
+> in terms of ZynqMP PM firmware providers for clocks, resets, power
+> domains and pin control. QEMU does not model those runtime firmware
+> providers, so using such a DTB with -kernel currently requires users
+> to edit the DTB before Linux can probe the boot-critical devices.
+>=20
+> Add a board DTB fix-up for direct kernel boot that removes those
+> provider-only properties from the boot-critical nodes and rewrites
+> their clocks to fixed reference clocks already present in the DTB.
+> This keeps the user command line using the Buildroot-generated DTB
+> while limiting the compatibility adjustment to devices modeled by
+> QEMU.
+>=20
+> Document the direct boot flow, the SD and QSPI image layout details,
+> and the remaining firmware and real-board peripheral limitations.
+>=20
+> Signed-off-by: Bin Meng <bin.meng@processmission.com>
+>=20
+> ---
+>=20
+> =C2=A0docs/system/arm/xlnx-zcu102.rst | 139
+> +++++++++++++++++++++++++++++++-
+> =C2=A0hw/arm/xlnx-zcu102.c=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0 | 109 +++++++++++++++++++++++++
+> =C2=A02 files changed, 247 insertions(+), 1 deletion(-)
+>=20
+> diff --git a/docs/system/arm/xlnx-zcu102.rst b/docs/system/arm/xlnx-
+> zcu102.rst
+> index 534cd1dc88..41ddd15592 100644
+> --- a/docs/system/arm/xlnx-zcu102.rst
+> +++ b/docs/system/arm/xlnx-zcu102.rst
+> @@ -4,8 +4,30 @@ Xilinx ZynqMP ZCU102 (``xlnx-zcu102``)
+> =C2=A0The ``xlnx-zcu102`` board models the Xilinx ZynqMP ZCU102 board.
+> =C2=A0This board has 4 Cortex-A53 CPUs and 2 Cortex-R5F CPUs.
+> =C2=A0
+> +Supported devices
+> +-----------------
+> +
+> +The machine is based on QEMU's Xilinx ZynqMP SoC model and includes
+> +the following Processing System devices:
+> +
+> + * Cortex-A53 APU and Cortex-R5F RPU CPU cores
+> + * Generic Interrupt Controller
+> + * DDR memory
+> + * On-chip memory
+> + * Cadence UARTs
+> + * Cadence GEM Ethernet controllers
+> + * SDHCI controllers
+> + * SPI controllers
+> + * GQSPI controller
+> + * RTC
+> + * CAN controllers
+> + * USB controllers
+> + * SATA controller
+> + * DMA controllers
+> + * BBRAM and eFUSE devices
+> +
+> =C2=A0Machine-specific options
+> -""""""""""""""""""""""""
+> +------------------------
+> =C2=A0
+> =C2=A0The following machine-specific options are supported:
+> =C2=A0
+> @@ -17,3 +39,118 @@ virtualization
+> =C2=A0=C2=A0 Set ``on``/``off`` to enable/disable emulating a guest CPU w=
+hich
+> implements the
+> =C2=A0=C2=A0 Arm Virtualization Extensions. The default is ``off``.
+> =C2=A0
+> +Boot options
+> +------------
+> +
+> +The ``xlnx-zcu102`` machine can start a Linux kernel directly with
+> +``-kernel``. It does not provide a ZynqMP BootROM flow for loading a
+> +Xilinx boot image from SD or QSPI flash, so images such as
+> ``boot.bin``
+> +or ``qspi.bin`` cannot be passed alone and expected to boot like
+> they
+> +would on real hardware.
+> +
+> +QEMU does not generate a built-in device tree for this machine. Pass
+> a DTB
+> +with ``-dtb``. For direct Linux boot with a real-board ZCU102 DTB,
+> QEMU
+> +applies compatibility adjustments for the boot-critical UART, SDHCI
+> and
+> +GQSPI nodes so that Linux can use the devices modeled by QEMU
+> without
+> +requiring user-side DTB edits.
+> +
+> +This is not the same as emulating the complete ZynqMP firmware
+> stack. The
+> +DTB can still contain non-boot devices that depend on board
+> peripherals,
+> +external clock chips, power domains, pin control, or firmware
+> services
+> +that QEMU does not model.
+> +
+> +Direct Linux boot with Buildroot
+> +--------------------------------
+> +
+> +Buildroot has a ZCU102 defconfig. Buildroot 2026.05 release is
+> tested at the
+> +time of writing. From the Buildroot source tree:
+> +
+> +.. code-block:: bash
+> +
+> +=C2=A0 $ make zynqmp_zcu102_defconfig
+> +=C2=A0 $ make
+> +
+> +The generated files are in ``output/images/``. The examples below
+> use:
+> +
+> + * ``Image``
+> + * ``zynqmp-zcu102-rev1.0.dtb``
+> + * ``sdcard.img``
+> + * ``qspi.bin`` if QSPI flash probing is desired
+> +
+> +QEMU's SD card model requires a power-of-two image size. Work on a
+> copy
+> +of the Buildroot SD image and resize the copy, not the original
+> output:
+> +
+> +.. code-block:: bash
+> +
+> +=C2=A0 $ cp output/images/sdcard.img sdcard-qemu.img
+> +=C2=A0 $ qemu-img resize -f raw sdcard-qemu.img 128M
+> +
+> +The real-board DTB enables the SDHCI controller at ``mmc@ff170000``.
+> +In QEMU this is SD index 1, so attach the SD card with
+> +``if=3Dsd,index=3D1``.
+> +
+> +Boot Linux with the Buildroot kernel and the native Buildroot DTB:
+> +
+> +.. code-block:: bash
+> +
+> +=C2=A0 $ qemu-system-aarch64 -M xlnx-zcu102 -m 2G -nographic \
+> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 -kernel output/images/Image \
+> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 -dtb output/images/zynqmp-zcu102-rev1.0.d=
+tb \
+> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 -append "earlycon=3Dcdns,mmio,0xff000000,=
+115200n8 \
+> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0 console=3DttyPS0,115200 root=3D/dev/mmcblk0p2 rw
+> rootwait" \
+> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 -drive file=3Dsdcard-qemu.img,if=3Dsd,ind=
+ex=3D1,format=3Draw
+> +
+> +This should get the kernel booting all the way to the Buildroot
+> login
+> +prompt on ``ttyPS0``.
+> +
+> +QSPI flash
+> +----------
+> +
+> +The board creates two PS SPI NOR flashes first and the ZynqMP GQSPI
+> +flashes after them. Therefore the first GQSPI flash is
+> +``if=3Dmtd,index=3D2``. The remaining GQSPI flash backends use indices
+> 3, 4
+> +and 5.
+> +
+> +The Buildroot ``qspi.bin`` image is smaller than the 64 MiB
+> +``n25q512a11`` flash model. To attach it as the first GQSPI flash,
+> +place it in a 64 MiB raw backing file:
+> +
+> +.. code-block:: bash
+> +
+> +=C2=A0 $ qemu-img create -f raw qspi-cs0.img 64M
+> +=C2=A0 $ dd if=3Doutput/images/qspi.bin of=3Dqspi-cs0.img bs=3D1M conv=
+=3Dnotrunc
+> +
+> +Add the following drive to the direct Linux boot command above:
+> +
+> +.. code-block:: bash
+> +
+> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 -drive file=3Dqspi-cs0.img,if=3Dmtd,index=
+=3D2,format=3Draw
+> +
+> +With this drive attached, Linux should probe the ZynqMP GQSPI
+> +controller and register the SPI NOR partitions from the DTB, for
+> +example ``qspi-fsbl-uboot``, ``qspi-linux``, ``qspi-device-tree``
+> and
+> +``qspi-rootfs``.
+> +
+> +The default Buildroot ``qspi.bin`` is a boot image, not a root
+> +filesystem image. The default DTB's ``qspi-rootfs`` partition is
+> also
+> +too small for Buildroot's ``rootfs.ext2``. Booting with the root
+> +filesystem in QSPI flash therefore requires a custom image layout
+> and
+> +matching DTB changes.
+> +
+> +Known limitations
+> +-----------------
+> +
+> +The machine does not emulate the complete real-board firmware stack.
+> +In particular:
+> +
+> + * ZynqMP BootROM boot-mode selection is not modeled.
+> + * Passing the Buildroot ``boot.bin`` with ``-bios`` does not boot
+> Linux.
+> + * Attaching ``qspi.bin`` as an MTD drive without ``-kernel`` does
+> not
+> +=C2=A0=C2=A0 boot from QSPI flash.
+> + * ZynqMP PM firmware services are not modeled. For direct Linux
+> boot,
+> +=C2=A0=C2=A0 QEMU adjusts the supplied DTB only for the boot-critical UA=
+RT,
+> SDHCI
+> +=C2=A0=C2=A0 and GQSPI nodes.
+> + * Other real-board DTB nodes can still defer or fail probing when
+> they
+> +=C2=A0=C2=A0 depend on devices that are not present in the QEMU model, s=
+uch as
+> +=C2=A0=C2=A0 external I2C clock generators, board sensors, some GPIO
+> consumers,
+> +=C2=A0=C2=A0 PHYs, or non-boot DMA/display paths.
+> diff --git a/hw/arm/xlnx-zcu102.c b/hw/arm/xlnx-zcu102.c
+> index 4e48970274..839e4e90d5 100644
+> --- a/hw/arm/xlnx-zcu102.c
+> +++ b/hw/arm/xlnx-zcu102.c
+> @@ -26,6 +26,7 @@
+> =C2=A0#include "system/device_tree.h"
+> =C2=A0#include "qom/object.h"
+> =C2=A0#include "net/can_emu.h"
+> +#include <libfdt.h>
+> =C2=A0
+> =C2=A0struct XlnxZCU102 {
+> =C2=A0=C2=A0=C2=A0=C2=A0 MachineState parent_obj;
+> @@ -43,6 +44,112 @@ struct XlnxZCU102 {
+> =C2=A0#define TYPE_ZCU102_MACHINE=C2=A0=C2=A0 MACHINE_TYPE_NAME("xlnx-zcu=
+102")
+> =C2=A0OBJECT_DECLARE_SIMPLE_TYPE(XlnxZCU102, ZCU102_MACHINE)
+> =C2=A0
+> +static bool zcu102_fdt_get_phandle(void *fdt, const char *node_path,
+> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 uint32_t *phandle=
+)
+> +{
+> +=C2=A0=C2=A0=C2=A0 int offset;
+> +
+> +=C2=A0=C2=A0=C2=A0 offset =3D fdt_path_offset(fdt, node_path);
+> +=C2=A0=C2=A0=C2=A0 if (offset < 0) {
+> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 return false;
+> +=C2=A0=C2=A0=C2=A0 }
+> +
+> +=C2=A0=C2=A0=C2=A0 *phandle =3D fdt_get_phandle(fdt, offset);
+> +=C2=A0=C2=A0=C2=A0 return *phandle !=3D 0;
+> +}
+> +
+> +static void zcu102_fdt_nop_prop(void *fdt, const char *node_path,
+> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 const char *prop)
+> +{
+> +=C2=A0=C2=A0=C2=A0 int ret;
+> +=C2=A0=C2=A0=C2=A0 int offset;
+> +
+> +=C2=A0=C2=A0=C2=A0 offset =3D fdt_path_offset(fdt, node_path);
+> +=C2=A0=C2=A0=C2=A0 if (offset < 0) {
+> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 return;
+> +=C2=A0=C2=A0=C2=A0 }
+> +
+> +=C2=A0=C2=A0=C2=A0 ret =3D fdt_nop_property(fdt, offset, prop);
+> +=C2=A0=C2=A0=C2=A0 if (ret < 0 && ret !=3D -FDT_ERR_NOTFOUND) {
+> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 error_report("%s: Couldn't no=
+p %s/%s: %s", __func__,
+> node_path,
+> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 prop, fdt_strerror(ret));
+> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 exit(1);
+> +=C2=A0=C2=A0=C2=A0 }
+> +}
+> +
+> +static void zcu102_fdt_fixup_clocks(void *fdt, const char
+> *node_path,
+> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 uint32_t ph=
+andle)
+> +{
+> +=C2=A0=C2=A0=C2=A0 if (fdt_path_offset(fdt, node_path) < 0) {
+> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 return;
+> +=C2=A0=C2=A0=C2=A0 }
+> +
+> +=C2=A0=C2=A0=C2=A0 qemu_fdt_setprop_cells(fdt, node_path, "clocks", phan=
+dle,
+> phandle);
+> +}
+> +
+> +static void zcu102_fdt_fixup_qemu_direct_boot_nodes(void *fdt)
+> +{
+> +=C2=A0=C2=A0=C2=A0 uint32_t pss_ref_clk;
+> +=C2=A0=C2=A0=C2=A0 int i, j;
+> +
+> +=C2=A0=C2=A0=C2=A0 static const char * const provider_props[] =3D {
+> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 "power-domains",
+> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 "resets",
+> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 "assigned-clocks",
+> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 "assigned-clock-rates",
+> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 "assigned-clock-parents",
+> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 "pinctrl-names",
+> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 "pinctrl-0",
+> +=C2=A0=C2=A0=C2=A0 };
+> +=C2=A0=C2=A0=C2=A0 static const char * const direct_boot_nodes[] =3D {
+> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 "/axi/serial@ff000000",
+> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 "/axi/serial@ff010000",
+> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 "/axi/mmc@ff170000",
+> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 "/axi/spi@ff0f0000",
+> +=C2=A0=C2=A0=C2=A0 };
+> +
+> +=C2=A0=C2=A0=C2=A0 /*
+> +=C2=A0=C2=A0=C2=A0=C2=A0 * The Linux ZCU102 DTB inherits these boot-crit=
+ical nodes from
+> +=C2=A0=C2=A0=C2=A0=C2=A0 * arch/arm64/boot/dts/xilinx/zynqmp.dtsi:
+> +=C2=A0=C2=A0=C2=A0=C2=A0 *
+> +=C2=A0=C2=A0=C2=A0=C2=A0 *=C2=A0=C2=A0 uart0: serial@ff000000
+> +=C2=A0=C2=A0=C2=A0=C2=A0 *=C2=A0=C2=A0 uart1: serial@ff010000
+> +=C2=A0=C2=A0=C2=A0=C2=A0 *=C2=A0=C2=A0 sdhci1: mmc@ff170000
+> +=C2=A0=C2=A0=C2=A0=C2=A0 *=C2=A0=C2=A0 qspi: spi@ff0f0000
+> +=C2=A0=C2=A0=C2=A0=C2=A0 *
+> +=C2=A0=C2=A0=C2=A0=C2=A0 * zynqmp.dtsi, zynqmp-clk-ccf.dtsi and zynqmp-z=
+cu102-revA.dts
+> +=C2=A0=C2=A0=C2=A0=C2=A0 * wire them to PM firmware-backed clock, reset =
+and pinctrl
+> providers.
+> +=C2=A0=C2=A0=C2=A0=C2=A0 * Linux reaches that firmware through zynqmp_pm=
+_invoke_fn() in
+> +=C2=A0=C2=A0=C2=A0=C2=A0 * drivers/firmware/xilinx/zynqmp-core.c; exampl=
+es include
+> +=C2=A0=C2=A0=C2=A0=C2=A0 * zynqmp_pm_query_data() for drivers/clk/zynqmp=
+/clkc.c,
+> +=C2=A0=C2=A0=C2=A0=C2=A0 * zynqmp_pm_reset_assert() for drivers/reset/re=
+set-zynqmp.c,
+> and
+> +=C2=A0=C2=A0=C2=A0=C2=A0 * zynqmp_pm_pinctrl_request() for drivers/pinct=
+rl/pinctrl-
+> zynqmp.c.
+> +=C2=A0=C2=A0=C2=A0=C2=A0 *
+> +=C2=A0=C2=A0=C2=A0=C2=A0 * Direct kernel boot has no PM firmware stage f=
+or those calls.
+> Bypass the
+> +=C2=A0=C2=A0=C2=A0=C2=A0 * firmware-backed providers for just these node=
+s and describe
+> their clocks
+> +=C2=A0=C2=A0=C2=A0=C2=A0 * as fixed inputs, avoiding a QEMU model of the=
+ runtime PM
+> firmware.
+> +=C2=A0=C2=A0=C2=A0=C2=A0 *
+> +=C2=A0=C2=A0=C2=A0=C2=A0 * The Linux ZynqMP clock description defines ps=
+s-ref-clk as a
+> 33.333333 MHz
+> +=C2=A0=C2=A0=C2=A0=C2=A0 * fixed clock with #clock-cells =3D <0>. Use it=
+ as a conservative
+> direct-boot
+> +=C2=A0=C2=A0=C2=A0=C2=A0 * fallback for both clock inputs of these devic=
+es. That
+> satisfies the
+> +=C2=A0=C2=A0=C2=A0=C2=A0 * existing two clock-names entries while keepin=
+g the DTB
+> independent from
+> +=C2=A0=C2=A0=C2=A0=C2=A0 * the firmware-backed ZynqMP clock controller.
+> +=C2=A0=C2=A0=C2=A0=C2=A0 */
+> +=C2=A0=C2=A0=C2=A0 if (!zcu102_fdt_get_phandle(fdt, "/pss-ref-clk", &pss=
+_ref_clk))
+> {
+> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 return;
+> +=C2=A0=C2=A0=C2=A0 }
+> +
+> +=C2=A0=C2=A0=C2=A0 for (i =3D 0; i < ARRAY_SIZE(direct_boot_nodes); i++)=
+ {
+> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 for (j =3D 0; j < ARRAY_SIZE(=
+provider_props); j++) {
+> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 zcu10=
+2_fdt_nop_prop(fdt, direct_boot_nodes[i],
+> provider_props[j]);
+> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 }
+> +=C2=A0=C2=A0=C2=A0 }
+> +
+> +=C2=A0=C2=A0=C2=A0 zcu102_fdt_fixup_clocks(fdt, "/axi/serial@ff000000",
+> pss_ref_clk);
+> +=C2=A0=C2=A0=C2=A0 zcu102_fdt_fixup_clocks(fdt, "/axi/serial@ff010000",
+> pss_ref_clk);
+> +=C2=A0=C2=A0=C2=A0 zcu102_fdt_fixup_clocks(fdt, "/axi/mmc@ff170000", pss=
+_ref_clk);
+> +=C2=A0=C2=A0=C2=A0 zcu102_fdt_fixup_clocks(fdt, "/axi/spi@ff0f0000", pss=
+_ref_clk);
 
-Signed-off-by: Kuan-Jui Chiu <kchiu@axiado.com>
----
- MAINTAINERS                 |   2 +
- hw/arm/ax3005-soc.c         | 225 ++++++++++++++++++++++++++++++++++++
- hw/arm/meson.build          |   3 +-
- include/hw/arm/ax3005-soc.h | 102 ++++++++++++++++
- 4 files changed, 331 insertions(+), 1 deletion(-)
- create mode 100644 hw/arm/ax3005-soc.c
- create mode 100644 include/hw/arm/ax3005-soc.h
+I don't think this is something QEMU should be doing. Modifying the DTB
+on the fly just seems very brittle and prone to breakage and confusion.
 
-diff --git a/MAINTAINERS b/MAINTAINERS
-index 2a0ee348c4..1920618ee0 100644
---- a/MAINTAINERS
-+++ b/MAINTAINERS
-@@ -1314,8 +1314,10 @@ M: Kuan-Jui Chiu <kchiu@axiado.com>
- L: qemu-arm@nongnu.org
- S: Maintained
- F: hw/arm/ax3000*.c
-+F: hw/arm/ax3005*.c
- F: hw/*/axiado*.c
- F: include/hw/arm/ax3000*.h
-+F: include/hw/arm/ax3005*.h
- F: include/hw/*/axiado*.h
- 
- AVR Machines
-diff --git a/hw/arm/ax3005-soc.c b/hw/arm/ax3005-soc.c
-new file mode 100644
-index 0000000000..c4abac17d0
---- /dev/null
-+++ b/hw/arm/ax3005-soc.c
-@@ -0,0 +1,225 @@
-+/*
-+ * Axiado SoC AX3005
-+ *
-+ * Author: Kuan-Jui Chiu <kchiu@axiado.com>
-+ *
-+ * SPDX-License-Identifier: GPL-2.0-or-later
-+ */
-+
-+#include "qemu/osdep.h"
-+#include "system/address-spaces.h"
-+#include "hw/arm/bsa.h"
-+#include "hw/arm/ax3005-soc.h"
-+#include "hw/misc/unimp.h"
-+#include "system/system.h"
-+#include "qobject/qlist.h"
-+#include "qom/object.h"
-+#include "hw/core/boards.h"
-+
-+static void ax3005_init(Object *obj)
-+{
-+    Ax3005SoCState *s = AX3005_SOC(obj);
-+    Ax3005SoCClass *sc = AX3005_SOC_GET_CLASS(s);
-+
-+    for (int i = 0; i < sc->num_cpus; i++) {
-+        g_autofree char *name = g_strdup_printf("cpu%d", i);
-+        object_initialize_child(obj, name, &s->cpu[i],
-+                                ARM_CPU_TYPE_NAME("cortex-a53"));
-+    }
-+
-+    object_initialize_child(obj, "gic", &s->gic, gicv3_class_name());
-+
-+    for (int i = 0; i < AX3005_NUM_UARTS; i++) {
-+        g_autofree char *name = g_strdup_printf("uart%d", i);
-+        object_initialize_child(obj, name, &s->uart[i], TYPE_CADENCE_UART);
-+    }
-+
-+    object_initialize_child(obj, "sdhci0", &s->sdhci0, TYPE_AXIADO_SDHCI);
-+
-+    for (int i = 0; i < AX3005_NUM_GPIOS; i++) {
-+        g_autofree char *name = g_strdup_printf("gpio%d", i);
-+        object_initialize_child(obj, name, &s->gpio[i], TYPE_CADENCE_GPIO);
-+    }
-+}
-+
-+static void ax3005_realize(DeviceState *dev, Error **errp)
-+{
-+    Ax3005SoCState *s = AX3005_SOC(dev);
-+    Ax3005SoCClass *sc = AX3005_SOC_GET_CLASS(s);
-+    SysBusDevice *gic_sbd = SYS_BUS_DEVICE(&s->gic);
-+    DeviceState *gic_dev = DEVICE(&s->gic);
-+    QList *redist_region_count;
-+    SysBusDevice *sdhci0_sbd;
-+    DeviceState *card;
-+    DriveInfo *dinfo;
-+
-+    /* CPUs */
-+    for (int i = 0; i < sc->num_cpus; i++) {
-+        object_property_set_int(OBJECT(&s->cpu[i]), "cntfrq", 1000000000,
-+                                &error_abort);
-+
-+        if (!qdev_realize(DEVICE(&s->cpu[i]), NULL, errp)) {
-+            return;
-+        }
-+    }
-+
-+    /* GIC */
-+    qdev_prop_set_uint32(gic_dev, "num-cpu", sc->num_cpus);
-+    qdev_prop_set_uint32(gic_dev, "num-irq",
-+                         AX3005_NUM_IRQS + GIC_INTERNAL);
-+
-+    redist_region_count = qlist_new();
-+    qlist_append_int(redist_region_count, sc->num_cpus);
-+    qdev_prop_set_array(gic_dev, "redist-region-count", redist_region_count);
-+
-+    if (!sysbus_realize(gic_sbd, errp)) {
-+        return;
-+    }
-+
-+    sysbus_mmio_map(gic_sbd, 0, AX3005_GIC_DIST_BASE);
-+    sysbus_mmio_map(gic_sbd, 1, AX3005_GIC_REDIST_BASE);
-+
-+    /*
-+     * Mapping from the output timer irq lines from the CPU to the
-+     * GIC PPI inputs.
-+     */
-+    const int timer_irqs[] = {
-+        [GTIMER_PHYS] = ARCH_TIMER_NS_EL1_IRQ,
-+        [GTIMER_VIRT] = ARCH_TIMER_VIRT_IRQ,
-+        [GTIMER_HYP]  = ARCH_TIMER_NS_EL2_IRQ,
-+        [GTIMER_SEC]  = ARCH_TIMER_S_EL1_IRQ
-+    };
-+
-+    /*
-+     * Wire the outputs from each CPU's generic timer and the GICv3
-+     * maintenance interrupt signal to the appropriate GIC PPI inputs, and
-+     * the GIC's IRQ/FIQ interrupt outputs to the CPU's inputs.
-+     */
-+    for (int i = 0; i < sc->num_cpus; i++) {
-+        DeviceState *cpu_dev = DEVICE(&s->cpu[i]);
-+        int intidbase = AX3005_NUM_IRQS + i * GIC_INTERNAL;
-+        qemu_irq irq;
-+
-+        for (int j = 0; j < ARRAY_SIZE(timer_irqs); j++) {
-+            irq = qdev_get_gpio_in(gic_dev, intidbase + timer_irqs[j]);
-+            qdev_connect_gpio_out(cpu_dev, j, irq);
-+        }
-+
-+        irq = qdev_get_gpio_in(gic_dev, intidbase + ARCH_GIC_MAINT_IRQ);
-+        qdev_connect_gpio_out_named(cpu_dev, "gicv3-maintenance-interrupt",
-+                                        0, irq);
-+
-+        sysbus_connect_irq(gic_sbd, i,
-+                           qdev_get_gpio_in(cpu_dev, ARM_CPU_IRQ));
-+        sysbus_connect_irq(gic_sbd, i + sc->num_cpus,
-+                           qdev_get_gpio_in(cpu_dev, ARM_CPU_FIQ));
-+        sysbus_connect_irq(gic_sbd, i + 2 * sc->num_cpus,
-+                           qdev_get_gpio_in(cpu_dev, ARM_CPU_VIRQ));
-+        sysbus_connect_irq(gic_sbd, i + 3 * sc->num_cpus,
-+                           qdev_get_gpio_in(cpu_dev, ARM_CPU_VFIQ));
-+    }
-+
-+    /* DRAM */
-+    memory_region_init_ram(&s->dram, OBJECT(s), "dram", AX3005_DRAM_SIZE,
-+                           &error_fatal);
-+    memory_region_add_subregion(get_system_memory(), AX3005_DRAM_BASE,
-+                                &s->dram);
-+
-+    /* UARTs */
-+    const struct {
-+        hwaddr addr;
-+        unsigned int irq;
-+    } serial_table[] = {
-+        { AX3005_UART0_BASE, AX3005_UART0_IRQ },
-+        { AX3005_UART1_BASE, AX3005_UART1_IRQ },
-+        { AX3005_UART2_BASE, AX3005_UART2_IRQ },
-+        { AX3005_UART3_BASE, AX3005_UART3_IRQ },
-+        { AX3005_UART4_BASE, AX3005_UART4_IRQ },
-+        { AX3005_UART5_BASE, AX3005_UART5_IRQ },
-+        { AX3005_UART6_BASE, AX3005_UART6_IRQ },
-+        { AX3005_UART7_BASE, AX3005_UART7_IRQ },
-+        { AX3005_UART8_BASE, AX3005_UART8_IRQ }
-+    };
-+
-+    for (int i = 0; i < AX3005_NUM_UARTS; i++) {
-+        qdev_prop_set_chr(DEVICE(&s->uart[i]), "chardev", serial_hd(i));
-+        if (!sysbus_realize(SYS_BUS_DEVICE(&s->uart[i]), errp)) {
-+            return;
-+        }
-+
-+        sysbus_mmio_map(SYS_BUS_DEVICE(&s->uart[i]), 0, serial_table[i].addr);
-+        sysbus_connect_irq(SYS_BUS_DEVICE(&s->uart[i]), 0,
-+                           qdev_get_gpio_in(gic_dev, serial_table[i].irq));
-+    }
-+
-+    /* Timer control */
-+    create_unimplemented_device("ax3005.timerctrl", AX3005_TIMER_CTRL, 32);
-+
-+    /* SDHCI */
-+    sdhci0_sbd = SYS_BUS_DEVICE(&s->sdhci0);
-+    if (!sysbus_realize(sdhci0_sbd, errp)) {
-+        return;
-+    }
-+
-+    sysbus_mmio_map(sdhci0_sbd, 0, AX3005_SDHCI0_BASE);
-+    sysbus_mmio_map(sdhci0_sbd, 1, AX3005_EMMC_PHY_BASE);
-+    sysbus_connect_irq(sdhci0_sbd, 0,
-+                       qdev_get_gpio_in(gic_dev, AX3005_SDHCI0_IRQ));
-+
-+    dinfo = drive_get(IF_SD, 0, 0);
-+    if (dinfo) {
-+        card = qdev_new(TYPE_SD_CARD);
-+        qdev_prop_set_drive_err(card, "drive",
-+                                blk_by_legacy_dinfo(dinfo),
-+                                &error_fatal);
-+        qdev_realize_and_unref(card, s->sdhci0.sd_bus, &error_fatal);
-+    }
-+
-+    /* GPIOs */
-+    const struct {
-+        hwaddr addr;
-+        unsigned int irq;
-+    } gpio_table[] = {
-+        { AX3005_GPIO0_BASE, AX3005_GPIO0_IRQ },
-+        { AX3005_GPIO1_BASE, AX3005_GPIO1_IRQ },
-+        { AX3005_GPIO2_BASE, AX3005_GPIO2_IRQ },
-+        { AX3005_GPIO3_BASE, AX3005_GPIO3_IRQ },
-+        { AX3005_GPIO4_BASE, AX3005_GPIO4_IRQ },
-+        { AX3005_GPIO5_BASE, AX3005_GPIO5_IRQ },
-+        { AX3005_GPIO6_BASE, AX3005_GPIO6_IRQ },
-+        { AX3005_GPIO7_BASE, AX3005_GPIO7_IRQ }
-+    };
-+
-+    for (int i = 0; i < AX3005_NUM_GPIOS; i++) {
-+        if (!sysbus_realize(SYS_BUS_DEVICE(&s->gpio[i]), errp)) {
-+            return;
-+        }
-+
-+        sysbus_mmio_map(SYS_BUS_DEVICE(&s->gpio[i]), 0, gpio_table[i].addr);
-+        sysbus_connect_irq(SYS_BUS_DEVICE(&s->gpio[i]), 0,
-+                           qdev_get_gpio_in(gic_dev, gpio_table[i].irq));
-+    }
-+}
-+
-+static void ax3005_class_init(ObjectClass *oc, const void *data)
-+{
-+    DeviceClass *dc = DEVICE_CLASS(oc);
-+    Ax3005SoCClass *sc = AX3005_SOC_CLASS(oc);
-+
-+    dc->desc = "Axiado SoC AX3005";
-+    dc->realize = ax3005_realize;
-+    sc->num_cpus = AX3005_NUM_CPUS;
-+}
-+
-+static const TypeInfo ax3005_soc_types[] = {
-+    {
-+        .name           = TYPE_AX3005_SOC,
-+        .parent         = TYPE_SYS_BUS_DEVICE,
-+        .instance_size  = sizeof(Ax3005SoCState),
-+        .instance_init  = ax3005_init,
-+        .class_size     = sizeof(Ax3005SoCClass),
-+        .class_init     = ax3005_class_init,
-+    }
-+};
-+
-+DEFINE_TYPES(ax3005_soc_types)
-diff --git a/hw/arm/meson.build b/hw/arm/meson.build
-index 8ee5307a91..9fceb8d2e7 100644
---- a/hw/arm/meson.build
-+++ b/hw/arm/meson.build
-@@ -111,7 +111,8 @@ arm_common_ss.add(when: 'CONFIG_VERSATILE', if_true: files('versatilepb.c'))
- arm_common_ss.add(when: 'CONFIG_VEXPRESS', if_true: files('vexpress.c'))
- 
- arm_common_ss.add(when: ['CONFIG_AXIADO_SOC', 'TARGET_AARCH64'], if_true: files(
--  'ax3000-soc.c'))
-+  'ax3000-soc.c',
-+  'ax3005-soc.c'))
- arm_common_ss.add(when: ['CONFIG_AXIADO_EVK', 'TARGET_AARCH64'], if_true: files(
-   'ax3000-boards.c',
-   'ax3000-evk.c'))
-diff --git a/include/hw/arm/ax3005-soc.h b/include/hw/arm/ax3005-soc.h
-new file mode 100644
-index 0000000000..2a383a8084
---- /dev/null
-+++ b/include/hw/arm/ax3005-soc.h
-@@ -0,0 +1,102 @@
-+/*
-+ * Axiado SoC AX3005
-+ *
-+ * Author: Kuan-Jui Chiu <kchiu@axiado.com>
-+ *
-+ * SPDX-License-Identifier: GPL-2.0-or-later
-+ */
-+
-+#ifndef AXIADO_AX3005_H
-+#define AXIADO_AX3005_H
-+
-+#include "cpu.h"
-+#include "hw/intc/arm_gicv3_common.h"
-+#include "hw/char/cadence_uart.h"
-+#include "hw/gpio/cadence_gpio.h"
-+#include "hw/sd/axiado_sdhci.h"
-+#include "hw/core/sysbus.h"
-+#include "qemu/units.h"
-+
-+#define TYPE_AX3005_SOC "ax3005"
-+OBJECT_DECLARE_TYPE(Ax3005SoCState, Ax3005SoCClass, AX3005_SOC)
-+
-+#define AX3005_DRAM_BASE        0x80000000
-+#define AX3005_DRAM_SIZE        (2 * GiB)
-+
-+#define AX3005_GIC_DIST_BASE    0x40400000
-+#define AX3005_GIC_DIST_SIZE    (64 * KiB)
-+#define AX3005_GIC_REDIST_BASE  0x40500000
-+#define AX3005_GIC_REDIST_SIZE  (768 * KiB)
-+
-+#define AX3005_UART0_BASE       0x33020000
-+#define AX3005_UART1_BASE       0x330A0000
-+#define AX3005_UART2_BASE       0x33120000
-+#define AX3005_UART3_BASE       0x33020800
-+#define AX3005_UART4_BASE       0x331A0400
-+#define AX3005_UART5_BASE       0x33381D00
-+#define AX3005_UART6_BASE       0x33381E00
-+#define AX3005_UART7_BASE       0x33381F00
-+#define AX3005_UART8_BASE       0x330C0000
-+
-+#define AX3005_SDHCI0_BASE      0x46000000
-+#define AX3005_EMMC_PHY_BASE    0x33301C00
-+
-+#define AX3005_GPIO0_BASE       0x33000000
-+#define AX3005_GPIO1_BASE       0x33080000
-+#define AX3005_GPIO2_BASE       0x33100000
-+#define AX3005_GPIO3_BASE       0x33180000
-+#define AX3005_GPIO4_BASE       0x33200000
-+#define AX3005_GPIO5_BASE       0x33280000
-+#define AX3005_GPIO6_BASE       0x33300000
-+#define AX3005_GPIO7_BASE       0x33380000
-+
-+#define AX3005_TIMER_CTRL       0x48016000
-+
-+enum Ax3005Configuration {
-+    AX3005_NUM_CPUS     = 4,
-+    AX3005_NUM_IRQS     = 224,
-+    AX3005_NUM_UARTS    = 9,
-+    AX3005_NUM_GPIOS    = 8,
-+};
-+
-+typedef struct Ax3005SoCState {
-+    SysBusDevice        parent;
-+
-+    ARMCPU              cpu[AX3005_NUM_CPUS];
-+    GICv3State          gic;
-+    MemoryRegion        dram;
-+    CadenceUARTState    uart[AX3005_NUM_UARTS];
-+    CadenceGPIOState    gpio[AX3005_NUM_GPIOS];
-+    AxiadoSDHCIState    sdhci0;
-+} Ax3005SoCState;
-+
-+typedef struct Ax3005SoCClass {
-+    SysBusDeviceClass   parent;
-+
-+    uint32_t            num_cpus;
-+} Ax3005SoCClass;
-+
-+enum Ax3005Irqs {
-+    AX3005_UART0_IRQ    = 112,
-+    AX3005_UART1_IRQ    = 113,
-+    AX3005_UART2_IRQ    = 114,
-+    AX3005_UART3_IRQ    = 170,
-+    AX3005_UART4_IRQ    = 208,
-+    AX3005_UART5_IRQ    = 209,
-+    AX3005_UART6_IRQ    = 210,
-+    AX3005_UART7_IRQ    = 211,
-+    AX3005_UART8_IRQ    = 212,
-+
-+    AX3005_SDHCI0_IRQ   = 123,
-+
-+    AX3005_GPIO0_IRQ    = 183,
-+    AX3005_GPIO1_IRQ    = 184,
-+    AX3005_GPIO2_IRQ    = 185,
-+    AX3005_GPIO3_IRQ    = 186,
-+    AX3005_GPIO4_IRQ    = 187,
-+    AX3005_GPIO5_IRQ    = 188,
-+    AX3005_GPIO6_IRQ    = 189,
-+    AX3005_GPIO7_IRQ    = 190,
-+};
-+
-+#endif /* AXIADO_AX3005_H */
--- 
-2.34.1
+Alistair
 
+> +}
+> =C2=A0
+> =C2=A0static bool zcu102_get_secure(Object *obj, Error **errp)
+> =C2=A0{
+> @@ -98,6 +205,8 @@ static void zcu102_modify_dtb(const struct
+> arm_boot_info *binfo, void *fdt)
+> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 }
+> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 g_strfreev(node_path);
+> =C2=A0=C2=A0=C2=A0=C2=A0 }
+> +
+> +=C2=A0=C2=A0=C2=A0 zcu102_fdt_fixup_qemu_direct_boot_nodes(fdt);
+> =C2=A0}
+> =C2=A0
+> =C2=A0static void bbram_attach_drive(XlnxBBRam *dev)
 

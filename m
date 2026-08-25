@@ -4,70 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0324EC61DBD
-	for <qemu-arm@archiver.kernel.org>; Tue, 25 Aug 2026 22:01:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 36BD1C61DBD
+	for <qemu-arm@archiver.kernel.org>; Tue, 25 Aug 2026 22:02:03 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wyzCp-0003GM-QH; Tue, 25 Aug 2026 18:01:20 -0400
+	id 1wyzCo-0003BP-0H; Tue, 25 Aug 2026 18:01:18 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mathieu.poirier@linaro.org>)
- id 1wyzCg-0002qv-TN
- for qemu-arm@nongnu.org; Tue, 25 Aug 2026 18:01:11 -0400
-Received: from mail-pj1-x1032.google.com ([2607:f8b0:4864:20::1032])
+ id 1wyzCf-0002mC-Pb
+ for qemu-arm@nongnu.org; Tue, 25 Aug 2026 18:01:10 -0400
+Received: from mail-pj1-x1031.google.com ([2607:f8b0:4864:20::1031])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <mathieu.poirier@linaro.org>)
- id 1wyzCe-00018Z-FI
- for qemu-arm@nongnu.org; Tue, 25 Aug 2026 18:01:10 -0400
-Received: by mail-pj1-x1032.google.com with SMTP id
- 98e67ed59e1d1-38e42560ebcso394815a91.1
- for <qemu-arm@nongnu.org>; Tue, 25 Aug 2026 15:01:08 -0700 (PDT)
+ id 1wyzCd-00015y-5x
+ for qemu-arm@nongnu.org; Tue, 25 Aug 2026 18:01:09 -0400
+Received: by mail-pj1-x1031.google.com with SMTP id
+ 98e67ed59e1d1-38dfe910e9dso433307a91.3
+ for <qemu-arm@nongnu.org>; Tue, 25 Aug 2026 15:01:06 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1787695267; x=1788300067; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:from:to:cc:subject:date
- :message-id:reply-to:content-type;
- bh=ndrOCsdwllHKG3R8sNfPufN5ST5eyC5FSUsoL8k0SoY=;
- b=jBOXoj8QEHYMTYq7aPhNTURfflySBF6RNsehMtGG/xItQv5XI/z/g2WQXTjZnc8jK2
- X6aDISAbzWjL8CXSh2mQqHEoeA6pjf88d3A2mIdsH+RvD9IMdRiyGFNah3KUvd59YU3x
- ABxOluajnASrbGkxXJrK/XRioaViNXsglPP12OA7ly+4zpL+3NbJsotfEdyrL0Am8Qc/
- 7MksxtgIiTw482sd9yjGnO4oJXQfSwrL8nMMV9h5+hubqsB6Nh+ivzmNEnGzr64PWmgS
- a8eQ+xPxTuJGgWh58nvlgpY6f97QrIyOyE+hApY7V6cEznBR6iAenfNYNKOauJqlIuk/
- CBAw==
+ d=linaro.org; s=google; t=1787695265; x=1788300065; darn=nongnu.org;
+ h=content-transfer-encoding:content-type:mime-version:message-id:date
+ :subject:cc:to:from:from:to:cc:subject:date:message-id:reply-to
+ :content-type; bh=QiElhV40kLZgn2p0ydPjTL1vJDUlrNWu2jfkcIQqWeo=;
+ b=miLndCZuRukfYf9CZFxdl/clBNt+J25Aii1OKhrCZ0RM52lrkg5fA1E8t7XIZf7LHW
+ fFFlQYnjckjJIP8BDvR4KXJ26sHOTJR1RN2cf/B/zSwG5KRBLxCs+X83G9iHXXW92OzG
+ L/goTX3VTTY+SipHAzq04fVTc4Z6Y/ADQNb+TaOM7XAODiA9XRGHDFLF2Iimy2Dn9eFd
+ JBRysgmDO51MpHhNiubVszXPXEKGwjL1Tax1GWFYtNcFX7KUtM5YwWaNnSADyWIziotn
+ +EPg8lLmQZl8W8xV/k09FQtXfzUyb2MUa435DoF/zoGkvaTN9Cy2jrj+Io/ZFpP8fTc2
+ +b2w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1787695267; x=1788300067;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
- :to:cc:subject:date:message-id:reply-to:content-type;
- bh=ndrOCsdwllHKG3R8sNfPufN5ST5eyC5FSUsoL8k0SoY=;
- b=ZiSn1oPS3TtVOOPy8XhX5POIYfqi3nLvlvDwgN6mJjIBXxgN4zFvaUnQC0S/B6v8Mh
- i2V3mHd3L5DdshgLEk85v6y07jDrPWvUK9tYEyLto+EUNjhM80nYIpD5bxYJXtXf55fE
- HbU3dIBTnrduCK8wAoPTgVhSJ3/oRjsgDGpggd0i/+eBZqMKeDp/7Lg4DvFq5km16cAI
- cZFE3bsfTgGOv+J9wWby/8dGzdVYoFSbX01YY5L4tl0H6yrVP+pvWFHhKsYTFgDSqyLU
- g/bwO7/6IgBcsK6UPtq4wuaZJKBmGTvZ+rclNWAlojjsf0k8F5IzUycQVgefWcYAezLO
- +wJA==
+ d=1e100.net; s=20251104; t=1787695265; x=1788300065;
+ h=content-transfer-encoding:content-type:mime-version:message-id:date
+ :subject:cc:to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject
+ :date:message-id:reply-to:content-type;
+ bh=QiElhV40kLZgn2p0ydPjTL1vJDUlrNWu2jfkcIQqWeo=;
+ b=ofDdZ59UeSH8PyfumnXTq5iNNBtYoVlFkiREc4JkAT0Z3xFPMwZpCARETjQ0An8Kr1
+ ZFYWVDgg1Z2VsAI6WrlzIeJJNATm0J2dYym3W7fyHDc06aIc8Mjxgam4NK7rLLsLCpRc
+ HJKXxLamK3CrjcpBUH6pAbmlk+yqRjLmM3oSBQfjVfFUVayZQmBNLtRfO+ATKhz0Z3hK
+ FdqgNjQJCQU7Dbjz3vC5K+kkZr6gCeQAUG4PLrkMYSW2QzHreJWjYCyCgwiS3pkbzD/x
+ Ch3SMbB/CvqexI79pztX0mDXAiXdq2PjYjY+Hxf1v75pyeGu3QdDQqD0RrKFrxr4lXq1
+ VwTA==
 X-Forwarded-Encrypted: i=1;
- AHgh+Rqs+K9oYNWsRqnF+PmHHXsU0y2MgmziGxXjY+sfjPJxrAsrzvPzLk1E+xpor74fbXUlHuJpoC4uDg==@nongnu.org
-X-Gm-Message-State: AFuF++mhNy/EIx5mH5KKgkV77ErawJ113Mv7rHda+JPGmJSKJonHyqMe
- itmPCJtZvZlmNwFkrLii/aV3d/NMviUlTsttFsD+BgEEcMVGzlZAT5BpnITuczbCt+I=
-X-Gm-Gg: AR+sD11OOM2uKhZrPyEU0H9Se+uuAFHksr8X34jthbyNA5hcL8Yj/dBx5HKNdGd7Jck
- UF006R8Eaz5SDqFfLscpizOse35esy1Hm2gh+BbFF/jLGeiVN9Ah4X96MdbX2juLBgcTT+U4yAZ
- C8+DT6x5SbTqcfCC5uqcqg3QULdHmlmbaazx2/DnbufOOi2T2UtesRRUdytkFzRCC2702gCVVOj
- TUsBqy/DgSdAsAaFTnqLhLiiQpBzjFBgBLWiKrCQWwhDOb2sgEjP7A59ez61jU8of8R3+UPBvPK
- E23r+vI78fBSBXtmsIOTVjM5xaklcG7aBRoKs/vC3pG2jx9bqbIookzLTVB6/gtTw8xTcXqofDN
- juDwoiaPOL82W1ywi9AUNNxnaa2gSoUH7EX8Bpu8nhADM2qsYvaC58wJIC3wyGppwk2L0at+2Xq
- iWlT05ZLUdKuC1J+Q3QpDFm3f614NvlBYH9pK8r5LSJscgUDMaMMRKSnxujOEDuMF/jX2FZ+lSf
- 1ut6Pvlh3IZnPM=
-X-Received: by 2002:a17:90b:4a87:b0:38f:efed:5445 with SMTP id
- 98e67ed59e1d1-3966d18f5a4mr4066265a91.4.1787695266606; 
- Tue, 25 Aug 2026 15:01:06 -0700 (PDT)
+ AHgh+Rqg19Wc+0kCbrZIqB0ugmX9mhnp5a9tFp5LcazrOQbALRYITz0S425L6KM4TObUiLZgndoMdMX9bA==@nongnu.org
+X-Gm-Message-State: AFuF++mZmoBze97WlHjYU6aWQCSjwa27IMzZkpUVCjYxzmrtqqcI7VK8
+ Y8sfVRvcWgFs7DmmhOkuw4bUmStDq2uBOWByqQ5SdH/HZqCCwFo1+jyaACPv6DBWTpY=
+X-Gm-Gg: AR+sD13icSHQqpCM/qhzay8TcgpbsdbL5lscwNgXzyEzlWrE3XqDHSg2MqWTOfmvdKt
+ 5jgsewH8TaqqIHAhZ6HWtRngYzihWEQ3mLe89lUU3T1eoWrufTGBg5ESWtugU7PnZO5gUk/xDd+
+ bT+8ZZbeK5hNFiYRvoG0x+ngk41G8SRsJP8CUaao441QbzQfMyVaA2y6T/UCS8D3Il/iAG3PAp6
+ dAPIeBA060tgoDe3epVHf60UsUYydZzPKbGzzBgg2YYmR31NQfWgFdEpjlS1YHAEyB6/rmcZSo8
+ HoJKRAjHo2Tql7a/9OZIl+2U6Rp3U968Pu9FSU5CszyJkmwoQ96YYlalgfGgmbVmxr6BI+Zqb2E
+ ZgTR5ci4rVGgx+4207YpRn3IseVvf5OeHMG9PC+//ZK3Nje1iIcLs81ZaMk5fSiUKM4fjd16HTn
+ r0+svISoVkeIhlg5lPOKSUuVN2NyOYE6xkrS9cd0TVFu0r6hWClIX1GlzOwukke5rckgrQ3Yj0A
+ xk5mmhYs3odHXw=
+X-Received: by 2002:a17:90b:2885:b0:380:71eb:4014 with SMTP id
+ 98e67ed59e1d1-3966d5c1a78mr4454909a91.15.1787695264783; 
+ Tue, 25 Aug 2026 15:01:04 -0700 (PDT)
 Received: from p14s.cg.shawcable.net
  ([2604:3d09:148c:c800:a37a:292f:1363:c0af])
  by smtp.gmail.com with ESMTPSA id
- 98e67ed59e1d1-3965d119724sm3090120a91.2.2026.08.25.15.01.05
+ 98e67ed59e1d1-3965d119724sm3090120a91.2.2026.08.25.15.01.02
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 25 Aug 2026 15:01:06 -0700 (PDT)
+ Tue, 25 Aug 2026 15:01:03 -0700 (PDT)
 From: Mathieu Poirier <mathieu.poirier@linaro.org>
 To: berrange@redhat.com, kchamart@redhat.com,
  pierrick.bouvier@oss.qualcomm.com, peter.maydell@linaro.org,
@@ -76,23 +75,22 @@ To: berrange@redhat.com, kchamart@redhat.com,
  enju.kohei@fujitsu.com
 Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, kvm@vger.kernel.org,
  mathieu.poirier@linaro.org
-Subject: [RFC v3 01/24] linux-headers: Add RME related definitions
-Date: Tue, 25 Aug 2026 16:00:38 -0600
-Message-ID: <20260825220101.3443954-2-mathieu.poirier@linaro.org>
+Subject: [RFC v3 00/24] Add Realm support to QEMU-VMM
+Date: Tue, 25 Aug 2026 16:00:37 -0600
+Message-ID: <20260825220101.3443954-1-mathieu.poirier@linaro.org>
 X-Mailer: git-send-email 2.43.0
-In-Reply-To: <20260825220101.3443954-1-mathieu.poirier@linaro.org>
-References: <20260825220101.3443954-1-mathieu.poirier@linaro.org>
 MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::1032;
- envelope-from=mathieu.poirier@linaro.org; helo=mail-pj1-x1032.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::1031;
+ envelope-from=mathieu.poirier@linaro.org; helo=mail-pj1-x1031.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -108,82 +106,99 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-From: Jean-Philippe Brucker <jean-philippe@linaro.org>
+This patchset provides minimal functionality to start a Realm VM
+from an Arm RME capable host using the following command line:
 
-This is a temporary patch intended for testing purposes only. It provides
-definitions related to supporting Realms by the QEMU-VMM.
+qemu-system-aarch64 \
+ -M confidential-guest-support=rme0,memory-backend=ram0 \
+ -object rme-guest,id=rme0,convert-in-place=on \
+ -object memory-backend-guest-memfd,id=ram0,size=1G,share=on \
+ -cpu host -M virt -enable-kvm -M gic-version=3,its=on -nodefaults ..
 
-Signed-off-by: Jean-Philippe Brucker <jean-philippe@linaro.org>
-Signed-off-by: Mathieu Poirier <mathieu.poirier@linaro.org>
----
- linux-headers/asm-arm64/kvm.h |  9 +++++++++
- linux-headers/linux/kvm.h     | 12 ++++++++++--
- 2 files changed, 19 insertions(+), 2 deletions(-)
+It is a refactoring of Jean-Philippe Brucker's initial work dating from a while
+back.  It is compatible with Steven Price's v16 revision [1] of his work adding
+CCA support to KVM.
 
-diff --git a/linux-headers/asm-arm64/kvm.h b/linux-headers/asm-arm64/kvm.h
-index 6aefe7973814..4c08631ec7d2 100644
---- a/linux-headers/asm-arm64/kvm.h
-+++ b/linux-headers/asm-arm64/kvm.h
-@@ -208,6 +208,15 @@ struct kvm_arm_counter_offset {
- 	__u64 reserved;
- };
- 
-+#define KVM_ARM_RMI_POPULATE_FLAGS_MEASURE     (1 << 0)
-+struct kvm_arm_rmi_populate {
-+	__u64 base;
-+	__u64 size;
-+	__u64 source_uaddr;
-+	__u32 flags;
-+	__u32 reserved;
-+};
-+
- #define KVM_ARM_TAGS_TO_GUEST		0
- #define KVM_ARM_TAGS_FROM_GUEST		1
- 
-diff --git a/linux-headers/linux/kvm.h b/linux-headers/linux/kvm.h
-index c1baca430277..cd09c7a4a60f 100644
---- a/linux-headers/linux/kvm.h
-+++ b/linux-headers/linux/kvm.h
-@@ -689,14 +689,19 @@ struct kvm_enable_cap {
-  * address size for the VM. Bits[7-0] are reserved for the guest
-  * PA size shift (i.e, log2(PA_Size)). For backward compatibility,
-  * value 0 implies the default IPA size, 40bits.
-+ *
-+ * Bits[30-31] are reserved for the VM type
-  */
- #define KVM_VM_TYPE_ARM_IPA_SIZE_MASK	0xffULL
- #define KVM_VM_TYPE_ARM_IPA_SIZE(x)		\
- 	((x) & KVM_VM_TYPE_ARM_IPA_SIZE_MASK)
- 
-+#define KVM_VM_TYPE_ARM_NORMAL		0
-+#define KVM_VM_TYPE_ARM_REALM		(1UL << 30)
- #define KVM_VM_TYPE_ARM_PROTECTED	(1UL << 31)
- #define KVM_VM_TYPE_ARM_MASK		(KVM_VM_TYPE_ARM_IPA_SIZE_MASK | \
--					 KVM_VM_TYPE_ARM_PROTECTED)
-+					 KVM_VM_TYPE_ARM_PROTECTED | \
-+					 KVM_VM_TYPE_ARM_REALM)
- 
- /*
-  * ioctls for /dev/kvm fds:
-@@ -719,6 +724,8 @@ struct kvm_enable_cap {
- #define KVM_GET_EMULATED_CPUID	  _IOWR(KVMIO, 0x09, struct kvm_cpuid2)
- #define KVM_GET_MSR_FEATURE_INDEX_LIST    _IOWR(KVMIO, 0x0a, struct kvm_msr_list)
- 
-+#define KVM_ARM_RMI_POPULATE	  _IOWR(KVMIO, 0xd7, struct kvm_arm_rmi_populate)
-+
- /*
-  * Extension capability list.
-  */
-@@ -985,7 +992,8 @@ struct kvm_enable_cap {
- #define KVM_CAP_S390_USER_OPEREXEC 246
- #define KVM_CAP_S390_KEYOP 247
- #define KVM_CAP_S390_VSIE_ESAMODE 248
--#define KVM_CAP_GUEST_MEMFD_MEMORY_ATTRIBUTES 249
-+#define KVM_CAP_GUEST_MEMFD_MEMORY_ATTRIBUTES 250
-+#define KVM_CAP_ARM_RMI 251
- 
- struct kvm_irq_routing_irqchip {
- 	__u32 irqchip;
+This revision is based on Michael Roth's work on guest memfd in-place memory
+conversion [2] and as such, the QEMU baseline is different from 'master'.  Other
+than modifications to use in-place memory conversion from Lorenzo Pieralisi that
+were integrated to patches 04, 08-11, it is identical to V2.   
+
+It was tested on the QEMU SBSA machine.  For convenience, a repository is hosted
+here [3], along with the TF-A [4] and RMM [5] for the SBSA machine (compatible
+with Steven's v16 patchset).  The Repository for the kernel [6] is available
+from Arm.
+
+Instructions to compile and run the entire stack can be found here [7].
+
+Device Assignment is not included.
+
+Thanks,
+Mathieu
+
+[1]. https://lore.kernel.org/kvm/20260803134403.80630-1-steven.price@arm.com/
+[2]. https://lore.kernel.org/kvm/20260528000416.8161-1-michael.roth@amd.com/
+[3]. https://gitlab.com/Linaro/cca-public/qemu/-/tree/upstream-v3?ref_type=heads
+[4]. https://gitlab.com/Linaro/cca-public/tf-a/trusted-firmware-a/-/tree/cca/v13?ref_type=heads
+[5]. https://gitlab.com/Linaro/cca-public/rmm/-/tree/cca/v16?ref_type=heads
+[6]. https://gitlab.arm.com/linux-arm/linux-cca/-/tree/cca-host/v16?ref_type=heads
+[7]. https://gitlab.com/Linaro/cca-public/build-instructions
+
+RFC v2: https://lore.kernel.org/kvm/20260728192630.240375-1-mathieu.poirier@linaro.org/
+RFC v1: https://lists.gnu.org/archive/html/qemu-devel/2026-07/msg02307.html
+
+Jean-Philippe Brucker (23):
+  linux-headers: Add RME related definitions
+  target/arm/kvm: Return immediately on error in kvm_arch_init()
+  target/arm: Add confidential guest support
+  target/arm/kvm: Split kvm_arch_get/put_registers
+  target/arm/kvm-rme: Initialize vCPU
+  target/arm/kvm: Create scratch Realm VM when requested
+  target/arm/kvm: Use kvm_vm_check_extension() where necessary
+  hw/core/loader: Add a ROM loader notifier
+  target/arm/kvm-rme: Keep track of images loaded in Realm memory
+  target/arm/kvm-rme: Populate Realm with runtime images
+  target/arm/cpu: Set number of breakpoints and watchpoints in KVM
+  target/arm/cpu: Set number of PMU counters in KVM
+  target/arm/cpu: Don't read Realm registers
+  hw/arm/virt: Set proper conduit method for Realms
+  hw/arm/virt: Embed Realm VM type with IPA address space
+  hw/arm/virt: Reserve one bit of guest physical address for RME
+  hw/arm/virt: Disable DTB randomness for confidential VMs
+  hw/arm/virt: Move virt_flash_create() to machvirt_init()
+  hw/arm/virt: Use RAM instead of flash for confidential guest firmware
+  target/arm/kvm-rme: Add DMA remapping for the shared memory region
+  docs/interop/firmware.json: Add arm-rme firmware feature
+  hw/arm/boot: Load DTB as is for confidential VMs
+  hw/arm/boot: Skip bootloader for confidential guests
+
+Mathieu Poirier (1):
+  target/arm/kvm-rme: Add mechanic to initialize realms
+
+ docs/interop/firmware.json                 |   5 +-
+ docs/system/arm/virt.rst                   |   9 +-
+ docs/system/confidential-guest-support.rst |   1 +
+ hw/arm/boot.c                              |  70 ++++-
+ hw/arm/virt.c                              | 142 +++++++--
+ hw/core/loader.c                           |  15 +
+ include/hw/arm/boot.h                      |   9 +
+ include/hw/arm/virt.h                      |   2 +-
+ include/hw/core/loader.h                   |  17 ++
+ linux-headers/asm-arm64/kvm.h              |   9 +
+ linux-headers/linux/kvm.h                  |  12 +-
+ qapi/qom.json                              |  13 +
+ target/arm/arm-qmp-cmds.c                  |   1 +
+ target/arm/cpu.c                           |   5 +
+ target/arm/cpu.h                           |  10 +
+ target/arm/cpu64.c                         | 122 ++++++++
+ target/arm/kvm-rme.c                       | 336 +++++++++++++++++++++
+ target/arm/kvm-stub.c                      |   9 +
+ target/arm/kvm.c                           | 202 ++++++++++++-
+ target/arm/kvm_arm.h                       |  20 ++
+ target/arm/meson.build                     |   5 +-
+ 21 files changed, 963 insertions(+), 51 deletions(-)
+ create mode 100644 target/arm/kvm-rme.c
+
 -- 
 2.43.0
 

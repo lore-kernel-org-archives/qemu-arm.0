@@ -4,80 +4,80 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9A20CC61DBD
-	for <qemu-arm@archiver.kernel.org>; Tue, 25 Aug 2026 21:31:02 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 50023C61DB9
+	for <qemu-arm@archiver.kernel.org>; Tue, 25 Aug 2026 21:31:03 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wyyig-0002R1-Bx; Tue, 25 Aug 2026 17:30:10 -0400
+	id 1wyyim-0002X9-8U; Tue, 25 Aug 2026 17:30:16 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1wyyib-0002MI-WD
- for qemu-arm@nongnu.org; Tue, 25 Aug 2026 17:30:07 -0400
-Received: from mail-pj1-x1029.google.com ([2607:f8b0:4864:20::1029])
+ id 1wyyif-0002Q9-Pa
+ for qemu-arm@nongnu.org; Tue, 25 Aug 2026 17:30:09 -0400
+Received: from mail-pj1-x102c.google.com ([2607:f8b0:4864:20::102c])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1wyyiZ-0003L3-Hf
- for qemu-arm@nongnu.org; Tue, 25 Aug 2026 17:30:05 -0400
-Received: by mail-pj1-x1029.google.com with SMTP id
- 98e67ed59e1d1-38a0c7e841fso520129a91.2
- for <qemu-arm@nongnu.org>; Tue, 25 Aug 2026 14:30:02 -0700 (PDT)
+ id 1wyyia-0003Le-5I
+ for qemu-arm@nongnu.org; Tue, 25 Aug 2026 17:30:07 -0400
+Received: by mail-pj1-x102c.google.com with SMTP id
+ 98e67ed59e1d1-39652a6e963so1138513a91.0
+ for <qemu-arm@nongnu.org>; Tue, 25 Aug 2026 14:30:03 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1787693402; x=1788298202; darn=nongnu.org;
+ d=linaro.org; s=google; t=1787693403; x=1788298203; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to:content-type;
- bh=KR13c9n0s+ysXjQ32jlNfW+FisQREx18vtaeYTqxrDc=;
- b=w6dvxCL3C8wuJKC2iBcsZv08raJhq8YfIlpzeoFIqWDXQb1bm3dtcEImy5ue3T+XVo
- D3Meykl1WWPWPnzswgu7lVaZHto6K8Gm37ZcGR+cEa7sZ3MZq9ZiOpyuMrzGtwSGYo/V
- 5CbAzKqTKZ9MqIgP0MxAVZJH/tg4fN3WRSJ+3jEDsqiAzaTBdFOavfVhDBc0MtJbo5eg
- 8lYzJ0e+KrWt3wP0x4pBhGAi8cWXaWyS3n5msJMXOpCWuE7rZWdPAGd0Rp2xJnKpGjje
- kE9M64JTPYvzYC896j+pFuUYeItjA77TOjqV9QttEiTsbEd44s4fKWHFfsgI9QZlanNU
- ZeGg==
+ bh=5OlP4xmBxJaU39dQm0XttdRoWfw/hb/T/Y+p7JEg/bw=;
+ b=lDCHs9tNHfF0VkjO4uDKZLwYBquXIbxl+mB9OF2G38GZWTwmBfu2mZaf0/5ez+p9+o
+ /ytGDMQVFifZSwRjfrtweFmybTVrUvUbu/HOAGNhQLGVElr7JHd6ZPIfGUTtHDlc0ba/
+ Gr2XMK5x38Erds0Ks6RnoccfreFPla6d7qT6HMeTfdoely6O3lJtD1s66aZwysnL3RiC
+ ypjo3Dfdi600yPaKKQy9NSdWkvZIEYVE+FQ2bpxJFBrmdk6FZs8n2CTRfpHNdm3mKUKF
+ m/3y04bZs/V8ixfRTwut/aUrbpp6TPN49MRVRaRVa45W+EKJggKoYxhKjncrKK2goFt/
+ qcCQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1787693402; x=1788298202;
+ d=1e100.net; s=20251104; t=1787693403; x=1788298203;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
  :to:cc:subject:date:message-id:reply-to:content-type;
- bh=KR13c9n0s+ysXjQ32jlNfW+FisQREx18vtaeYTqxrDc=;
- b=ELwv/xRs3J/n/nJ8heVRQ3nI+fLohcHxXP8sysaMoN4KM31vLYM0PfcD8Kqtrz9Mak
- IwvgBfQeKXNGS7Bl0JmvenIcmSOaik6uwC6xEPNWtFN7Zz0NlA3pZvTHZD/QWHqzp/SH
- HILJJi0sOVKQyxJecgVe6xY1RE9LW8a7ktBTDxmZ78vn6j5dTTZuNzwlfbYaIRZkizhB
- uuKuLzipJbULXDy92d5zHvNBw7BDj4KmirtWNhQ229t7nrUof25mEwASvGuR7IOqPhYz
- dEIcbOqMJol7CDqPjO1cNa2gVzLwloHaN7MCH91wgBJ4Lvmoq9h70RaIotB2bBvNESQ7
- AxHg==
-X-Gm-Message-State: AFuF++mTHNJS9nv+WWqsvZsZmfDGh/w9N2SweWGe60zExA8kpjci/bSN
- wNgFo3zSMf2SWemZKLwUjEJNTvpF7qc4f9AuokqvB8H6w+KJHC7f3GpvFk2g2R5+cuU=
-X-Gm-Gg: AR+sD12MlKCpXELHPzUQQ/3PifcR9AcKihAOFk4hPzBwdM4Swjie4BGUbHlTKZ7anep
- e28+a9OgZ4wdBljikaU4N6v9CQEA5ZPA06iZTVV9xjJ2Y5f1o57GO6scnw2QcNahH6trPtCN3Kk
- gH0R8AZuDPvdeFz1WxpycXXXBYDa5halg2VfzTvtxuypr2J+AzXdE1uKmJFI40EhenJza/gIMKo
- tPS/M2Tc5fNUMSHYhYXQxELu+/tra7XPR7aPD6Lt7tjdYfop3Iz1o4TtyskdthWOnNQi8UZ8QvK
- vkllZB7O437P1iwfYmGcFtPqkAz+xRhBOP03bXTKNyZa84YmA28xL+XKUNAkQyEu6asd6g4NZVu
- 3x3cBWv/wDQ4SrjHN7wHO41PPYqUYS3QzqCc1huDm7ThM/n5fV2sOaxAQW/hu9HS9U0CtQJ4S/B
- jYfpX1BIfVOXRAeg8iJ0UDUf6VgSmQsms9IrPvr5cOowVS5E+seCxRghefeLqEXYYBlqdurmnOZ
- QLaokLkfdLFwB4gDA==
-X-Received: by 2002:a17:90b:1fd0:b0:38e:70d5:b12d with SMTP id
- 98e67ed59e1d1-3966d3ed042mr4377795a91.6.1787693402083; 
+ bh=5OlP4xmBxJaU39dQm0XttdRoWfw/hb/T/Y+p7JEg/bw=;
+ b=oAXQFDR3P7Ds9JdQvipActylS97WTI7bDA2UNBngkiKK6QNANS9i26pikOBCGgVKM6
+ HUzWhFNkMk4Lv8L1KyYNz/hG7GouWq6xzAHom7dm2/10z6wZ4hMGHeO5bm1Csdi0iK53
+ VfV8s0ncf/yM1wS1KIERou0uS+O9MEWySxGcXA9+K4+mTKUOMx/zQ1QhFzJDJjwmM2Kq
+ CaejMTm8S2hlRv/B6N3vT8yYq7X69JPY/MPsUe4zhtMsXW6uPOHBexx0F5jRqDhQ0gI7
+ 8//+vhTrjiCUqmdZm/wOChFQWCtHbHwnyq22fLJXFGJ4zmMB9HxANcpwIR4qQ0BeBKm3
+ xnWQ==
+X-Gm-Message-State: AFuF++lCbny7T0U6ux7Rk823LI5bME7AmjfnEcFIK/jvYnsISFOu3j2w
+ +I+CgnDeyO+XQ6uiqUIhxRSb6OipjVhlWjJIj/X9bTHl4FXvUX2vFhdCUaEfVCCUz+Y=
+X-Gm-Gg: AR+sD10aDucs32SF/bGMGmeV/EfoUbXhk/OW4s1YMGymrC778CewOD8QmP9FI8IbWTe
+ 1vsHQdAbD54XlXTCmaTd2DdP13RuXxdrTrPIZF3f4HY8S5/nkGl5tuEVq6R441slPJmRY/mREec
+ yhjEAH5JnVLYmbkGkNAflKgZf0ojUk5iIclI/GYkOj13cZvzvjTzP41w6STAt5BI1CUIRuSDQoT
+ AnWxeaX3GS4IKbbsiL61C2BsKi/LiBML19jDjG++3L13dleE6CjTbsVXURIK6OiDC8GPwzqPBrB
+ MIaK9Nwe3umsfNGiNH56L2XdzeWhX8V2U+3pklR00OMzIK+EGCeXUmWdoCS7bR9HCgXLT3Kcf2I
+ rlO3lP1VDyG5oQWng+eDlPGAidcMRvkjEdqlqZ5/iC0vCP41ORpXHWhnAQC26RC6MEz41lyBVvA
+ N8LP3Z1KYJL/lzzJOYQk3pekFfFWI8zqVGMIZZtCHNQupNDapXx971QXvNtyyEvHv0AjjwcVrQr
+ PcQ3RZM7+5puytqRw==
+X-Received: by 2002:a17:90a:d407:b0:390:84db:888e with SMTP id
+ 98e67ed59e1d1-3966d8528c7mr2200439a91.7.1787693402688; 
  Tue, 25 Aug 2026 14:30:02 -0700 (PDT)
 Received: from stoup (174-21-93-59.tukw.qwest.net. [174.21.93.59])
  by smtp.gmail.com with ESMTPSA id
- 98e67ed59e1d1-396689fa52csm1207163a91.12.2026.08.25.14.30.01
+ 98e67ed59e1d1-396689fa52csm1207163a91.12.2026.08.25.14.30.02
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 25 Aug 2026 14:30:01 -0700 (PDT)
+ Tue, 25 Aug 2026 14:30:02 -0700 (PDT)
 From: Richard Henderson <richard.henderson@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org
-Subject: [PATCH v3 1/4] target/arm: Rename and adjust aarch32_max_v8_tcg_initfn
-Date: Tue, 25 Aug 2026 14:29:57 -0700
-Message-ID: <20260825213000.221822-2-richard.henderson@linaro.org>
+Subject: [PATCH v3 2/4] target/arm: Introduce cpu types max-v8 and max-v9
+Date: Tue, 25 Aug 2026 14:29:58 -0700
+Message-ID: <20260825213000.221822-3-richard.henderson@linaro.org>
 X-Mailer: git-send-email 2.53.0
 In-Reply-To: <20260825213000.221822-1-richard.henderson@linaro.org>
 References: <20260825213000.221822-1-richard.henderson@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::1029;
- envelope-from=richard.henderson@linaro.org; helo=mail-pj1-x1029.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::102c;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pj1-x102c.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -100,58 +100,78 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Rename from aarch32_max_tcg_init and take an Object pointer,
-in preparation from being used with TypeInit.
+Introduce the names and allow them with the virt and sbsa-ref
+machine types.  So far, the cpu types both exactly match "max".
 
 Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- target/arm/internals.h | 2 +-
- target/arm/cpu-max.c   | 2 +-
- target/arm/tcg/cpu32.c | 4 +++-
- 3 files changed, 5 insertions(+), 3 deletions(-)
+ hw/arm/sbsa-ref.c      | 2 ++
+ hw/arm/virt.c          | 2 ++
+ target/arm/tcg/cpu32.c | 4 ++++
+ target/arm/tcg/cpu64.c | 2 ++
+ 4 files changed, 10 insertions(+)
 
-diff --git a/target/arm/internals.h b/target/arm/internals.h
-index f6b4e173a54..fc7d5ad6f2c 100644
---- a/target/arm/internals.h
-+++ b/target/arm/internals.h
-@@ -1838,7 +1838,7 @@ uint32_t *arm_v7m_get_sp_ptr(CPUARMState *env, bool secure,
- bool el_is_in_host(CPUARMState *env, int el);
+diff --git a/hw/arm/sbsa-ref.c b/hw/arm/sbsa-ref.c
+index 484b90053e8..56d08f605c8 100644
+--- a/hw/arm/sbsa-ref.c
++++ b/hw/arm/sbsa-ref.c
+@@ -913,6 +913,8 @@ static void sbsa_ref_class_init(ObjectClass *oc, const void *data)
+         ARM_CPU_TYPE_NAME("neoverse-v1"),
+         ARM_CPU_TYPE_NAME("neoverse-n2"),
+         ARM_CPU_TYPE_NAME("max"),
++        ARM_CPU_TYPE_NAME("max-v8"),
++        ARM_CPU_TYPE_NAME("max-v9"),
+         NULL,
+     };
  
- void aa32_max_features(ARMCPU *cpu);
--void aarch32_max_tcg_init(ARMCPU *cpu);
-+void aarch32_max_v8_tcg_initfn(Object *obj);
- int exception_target_el(CPUARMState *env);
- bool arm_singlestep_active(CPUARMState *env);
- bool arm_generate_debug_exceptions(CPUARMState *env);
-diff --git a/target/arm/cpu-max.c b/target/arm/cpu-max.c
-index 4df52bcb08e..9ed45c8764f 100644
---- a/target/arm/cpu-max.c
-+++ b/target/arm/cpu-max.c
-@@ -108,7 +108,7 @@ static void cpu_max_initfn(Object *obj)
- 
+diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+index e7a56e37f73..d738b95c726 100644
+--- a/hw/arm/virt.c
++++ b/hw/arm/virt.c
+@@ -4132,6 +4132,7 @@ static GPtrArray *virt_get_valid_cpu_types(const MachineState *ms)
      if (tcg_enabled()) {
-         if (!aarch64_enabled) {
--            aarch32_max_tcg_init(cpu);
-+            aarch32_max_v8_tcg_initfn(obj);
-         } else {
-             aarch64_max_tcg_initfn(obj);
-         }
+         g_ptr_array_add(vct, g_strdup(ARM_CPU_TYPE_NAME("cortex-a7")));
+         g_ptr_array_add(vct, g_strdup(ARM_CPU_TYPE_NAME("cortex-a15")));
++        g_ptr_array_add(vct, g_strdup(ARM_CPU_TYPE_NAME("max-v8")));
+     }
+     if (tcg_enabled() && target_aarch64()) {
+         g_ptr_array_add(vct, g_strdup(ARM_CPU_TYPE_NAME("cortex-a35")));
+@@ -4143,6 +4144,7 @@ static GPtrArray *virt_get_valid_cpu_types(const MachineState *ms)
+         g_ptr_array_add(vct, g_strdup(ARM_CPU_TYPE_NAME("neoverse-n1")));
+         g_ptr_array_add(vct, g_strdup(ARM_CPU_TYPE_NAME("neoverse-v1")));
+         g_ptr_array_add(vct, g_strdup(ARM_CPU_TYPE_NAME("neoverse-n2")));
++        g_ptr_array_add(vct, g_strdup(ARM_CPU_TYPE_NAME("max-v9")));
+     }
+     if (target_aarch64()) {
+         g_ptr_array_add(vct, g_strdup(ARM_CPU_TYPE_NAME("cortex-a53")));
 diff --git a/target/arm/tcg/cpu32.c b/target/arm/tcg/cpu32.c
-index bc07e33877a..8397f26a864 100644
+index 8397f26a864..12e70ded9c1 100644
 --- a/target/arm/tcg/cpu32.c
 +++ b/target/arm/tcg/cpu32.c
-@@ -855,8 +855,10 @@ void aa32_max_features(ARMCPU *cpu)
-     FIELD_DP32_IDREG(isar, ID_DFR1, HPMN0, 1);         /* FEAT_HPMN0 */
- }
+@@ -744,6 +744,10 @@ static const ARMCPUInfo arm_tcg_cpus[] = {
+     { .name = "ti925t",      .initfn = ti925t_initfn },
+     { .name = "sa1100",      .initfn = sa1100_initfn },
+     { .name = "sa1110",      .initfn = sa1110_initfn },
++#ifndef TARGET_AARCH64
++    /* For aarch64, max-v8 is defined in cpu64.c */
++    { .name = "max-v8",      .initfn = aarch32_max_v8_tcg_initfn },
++#endif
+ };
  
--void aarch32_max_tcg_init(ARMCPU *cpu)
-+void aarch32_max_v8_tcg_initfn(Object *obj)
- {
-+    ARMCPU *cpu = ARM_CPU(obj);
-+
-     aarch64_aa32_a57_init(cpu, false);
-     aa32_max_features(cpu);
- #ifdef CONFIG_USER_ONLY
+ static void arm_tcg_cpu_register_types(void)
+diff --git a/target/arm/tcg/cpu64.c b/target/arm/tcg/cpu64.c
+index b38c61ba623..4f5375deb25 100644
+--- a/target/arm/tcg/cpu64.c
++++ b/target/arm/tcg/cpu64.c
+@@ -1488,6 +1488,8 @@ static const ARMCPUInfo aarch64_cpus[] = {
+     { .name = "neoverse-n1",        .initfn = aarch64_neoverse_n1_initfn },
+     { .name = "neoverse-v1",        .initfn = aarch64_neoverse_v1_initfn },
+     { .name = "neoverse-n2",        .initfn = aarch64_neoverse_n2_initfn },
++    { .name = "max-v8",             .initfn = aarch64_max_tcg_initfn },
++    { .name = "max-v9",             .initfn = aarch64_max_tcg_initfn },
+ };
+ 
+ static void aarch64_cpu_register_types(void)
 -- 
 2.53.0
 

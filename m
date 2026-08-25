@@ -4,112 +4,89 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2115FC61DB9
-	for <qemu-arm@archiver.kernel.org>; Tue, 25 Aug 2026 14:12:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C6E17C61DBE
+	for <qemu-arm@archiver.kernel.org>; Tue, 25 Aug 2026 14:54:08 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wyrsx-0000as-Tx; Tue, 25 Aug 2026 10:12:19 -0400
+	id 1wysXJ-0007jO-MH; Tue, 25 Aug 2026 10:54:01 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1wyrsv-0000a6-RR
- for qemu-arm@nongnu.org; Tue, 25 Aug 2026 10:12:17 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1wyrst-0002Oq-Jc
- for qemu-arm@nongnu.org; Tue, 25 Aug 2026 10:12:17 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1787667133;
- h=from:from:reply-to:reply-to:subject:subject:date:date:
- message-id:message-id:to:to:cc:cc:mime-version:mime-version:
- content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=M4iL8cm9xLlw42MXWWTWh2uxD3jujV4/hT7MHer/4wA=;
- b=A0ifL1TIPDaNHhDcOH6B6l7d9Bj20WjKOD3TLxON8C4pifhVe3jiTI9ay0pLso4w+j5zIQ
- YPEBVQ7nIWbBgPVhHh2kM1ijEtUVuM0Mb63XIgTBoTa4Gjwt4BCMgdfRyWQGOPPidzfWys
- iYCzRR7wEZ5bx8nxJVG+ZV7R01ppTSA=
-Received: from mail-ej1-f71.google.com (mail-ej1-f71.google.com
- [209.85.218.71]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-25-1dYF_4JONIKShwX2GIjn6w-1; Tue, 25 Aug 2026 10:12:11 -0400
-X-MC-Unique: 1dYF_4JONIKShwX2GIjn6w-1
-X-Mimecast-MFC-AGG-ID: 1dYF_4JONIKShwX2GIjn6w_1787667130
-Received: by mail-ej1-f71.google.com with SMTP id
- a640c23a62f3a-c15c6a68406so324463666b.3
- for <qemu-arm@nongnu.org>; Tue, 25 Aug 2026 07:12:11 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
+ id 1wysXI-0007j9-ET
+ for qemu-arm@nongnu.org; Tue, 25 Aug 2026 10:54:00 -0400
+Received: from mail-ej1-x629.google.com ([2a00:1450:4864:20::629])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
+ id 1wysXF-0001XF-Q5
+ for qemu-arm@nongnu.org; Tue, 25 Aug 2026 10:54:00 -0400
+Received: by mail-ej1-x629.google.com with SMTP id
+ a640c23a62f3a-c25099bb1fbso10919666b.3
+ for <qemu-arm@nongnu.org>; Tue, 25 Aug 2026 07:53:57 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1787669636; x=1788274436; darn=nongnu.org;
+ h=content-transfer-encoding:content-type:mime-version:message-id:date
+ :subject:cc:to:from:from:to:cc:subject:date:message-id:reply-to
+ :content-type; bh=3IQr885EL1Y9Z+2gfA0Gs15Nor/ucudTGCA5cK6mgkY=;
+ b=el+KjIVk8cJoIGEflSxDuFpL/JGiLYzaOm5cnM9MXFT58ZgnFbqM60qbjDVUUcdwxn
+ WpxoQnKDW0YmZeixcBOy9SZTA0MVx0gzbJIXw/1wgqSAce0bXJCl5At/+IzjTemTRGo8
+ eqGtxm2X7MV0KpN/iiGd0SCmKv3KHdQJKQRIBmGhp2006OnPQFhO9yS8UbNbOqbGxGV0
+ vspbH8ZdpHp5jYoiNd+L1AtQbD8b91MXi08Fw1stfCzIZsyD1XxY+arIoj1a2MZlv4dn
+ hYKK7w1NYt+jGp7/d2mfISAcQGCwEHZqgrnQHidT/PQ23bugJ2hbELPeAsjw9Y9TSOB7
+ x0hA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1787667130; x=1788271930;
- h=content-transfer-encoding:content-type:in-reply-to:from:references
- :cc:to:content-language:subject:reply-to:user-agent:mime-version
- :date:message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
- :message-id:reply-to:content-type;
- bh=M4iL8cm9xLlw42MXWWTWh2uxD3jujV4/hT7MHer/4wA=;
- b=TZHghfOd5oqjkf08xCvSQAAdfm66NHqZ7T1JnWs7jlNv2AOlknciXXghJX8QxqZRpk
- NYKhzogY/rBPGn1M64ujfocmE8jJ/DYBzqBK6LU/uA28v7kYcge1pqXaQAGoqm2ij/8s
- BS1/RBj8kosRw4GY2uqxt2Z7qzNgmO6MaN+QlBEK4qYA1tZCNKyCmLKu/7jqVrXnW2B8
- lG+GbxWv0cvhadz2epTGdMAGkr8s36cSrX0+PJN7cv8PRyyLtF9B/OUiaolRIG5L6rpE
- DOEQ02kWs76+25URQDeRZmvhORK2fFPlETn6SMhQ4AlzCE2+y3t7Oz3qxsx/dxAcKOBH
- oy0g==
+ d=1e100.net; s=20251104; t=1787669636; x=1788274436;
+ h=content-transfer-encoding:content-type:mime-version:message-id:date
+ :subject:cc:to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject
+ :date:message-id:reply-to:content-type;
+ bh=3IQr885EL1Y9Z+2gfA0Gs15Nor/ucudTGCA5cK6mgkY=;
+ b=XDlxV8IUTAcsBaGlJwuCNpHk845GE9W2LEH/Gop/rc1zStbQJ87LH9cP+LORYRbSW8
+ GQENvtt6gDmptUDoxJs6bufqyfE5UaTgBBaePK7a0GoEouM/mt7yJZz0GgYvo40Oh1qs
+ O1z5i7Nq8LEFiS9nB+M3xQdhZS61FcnMzQYjdX9vsUKKf7U5Ojh8XZWZ5khZ7yZWqwW/
+ TBHd0nJdWVgL1EqK9kvLql0+ZN6kKQ4dj5NvIXy8f2hhvwHglLCGaTXAOjVhM2g24cZL
+ gAP/dK9qdmemLiBgDKlcmEaBxiZDyB0eSs7hwXpxyaStve5nB+N97pkiABuChoxIfX/q
+ C+Ew==
 X-Forwarded-Encrypted: i=1;
- AHgh+Ro/2U43trgFfm+vjPvLxXs7QrQidg4RmCg6iTZIyW8EHKFXXTbnGYGdqPRtpw1+rqYyaRIco19vrA==@nongnu.org
-X-Gm-Message-State: AFuF++lZyY2hQm44iQt/XSWIpuGRizgZPjko/FJ2doNLaUgbzEx5DAvz
- 2NaMVo8Fsbc1/I8Slu7I9dyLJgCTuJLiITFdN1x2xAQfyd4cmQIUzC6DYt/aR7SKQhx047IdjoC
- yybT2Ci53bru+9IXMrnZIP5Mkh3vxAxcrQHj+sltNHcftNzzdBnuqt+vlpPJGSQ==
-X-Gm-Gg: AR+sD11gGL8EmMXc+5tDb8cV4AqNIHeWZ340ewM54Gskx1YQegUtEqTwZ2TIiAnb5JN
- xuvvrW4VI2VF8zSSI58ALip0vVQr6VtTf4LA0lV5xc18Nqa+fRMcggrqXI1BHro+Ue7VHswBO1b
- sY8iECBD1nPo9y18IoZqCQVfcZzhEAZT7Eu3mfeWk7p4gyipK2kXR4ZPN9/e3M2JCdO7Nyy4U99
- jzECyBI9ADfN+rW/TKPLfMqDqk5kWSg+qGbgE/l/QRH9tro30PPJU0d15LZyZVVetGAur0bMk1L
- xoEnBtTXtPFBEFi+W+ooRXkhA4fpTAZoeD8g3M+HnFaHqk40s0VbJfI5KMii6HkyHfmACg9RJW3
- D8wz2r+65dfc2WCPJrq5arSx5jPGjPPa6uhlagcYncWsCXfWM
-X-Received: by 2002:a17:906:9f8e:b0:c24:b11a:46fc with SMTP id
- a640c23a62f3a-c24e5be5ae6mr717380166b.22.1787667130120; 
- Tue, 25 Aug 2026 07:12:10 -0700 (PDT)
-X-Received: by 2002:a17:906:9f8e:b0:c24:b11a:46fc with SMTP id
- a640c23a62f3a-c24e5be5ae6mr717373766b.22.1787667129592; 
- Tue, 25 Aug 2026 07:12:09 -0700 (PDT)
-Received: from ?IPV6:2a01:e0a:f0e:9070:527b:9dff:feef:3874?
- ([2a01:e0a:f0e:9070:527b:9dff:feef:3874])
- by smtp.gmail.com with ESMTPSA id
- 4fb4d7f45d1cf-6a59e1d7399sm20394026a12.26.2026.08.25.07.12.07
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 25 Aug 2026 07:12:08 -0700 (PDT)
-Message-ID: <54207f52-e9f0-49f1-9ac2-1653e4a1bd53@redhat.com>
-Date: Tue, 25 Aug 2026 16:12:06 +0200
+ AHgh+RqQy11zXKwExVCb0PBXyNhBeMCFkk3bnmIk4QEVL2EqA2cxw6aIPU+OBDLdoZlmIH9wYdBWppforA==@nongnu.org
+X-Gm-Message-State: AFuF++kS5qNuoyLvC+Auul8P4c1vMqS3OeMz38FBZxemcP/Exm9z+Fo8
+ xlY3l4j8cQik4Pt7ef8W5y9i7p4RJxQ9byetEXNvXtaK56L4yTAL2kYMck9/APVGCN4=
+X-Gm-Gg: AR+sD119wxVEUWtsbMIiXo66UAoStVVSF2ap6pqIOsSeclQ6Pno6HIKjUNOeVPD8WcT
+ H1wjpgkZ/uTCLuzY3aOH0PXJpsr9SQ8VAVepsYSKMcVBNfCZEofhX6ViFJt+hoF/sKA/xGzDJF3
+ 7UwObKDdjpRYbJRVshzTfwc7O85h1DobYY5p77Obcm8sAeiPBrNEKjTz/ZZsA4Y56X/8FTORrwU
+ 0QGiCGehtQSQ4hWyHu+0bdE/KRhD/XPbOjOg8vD0C64Uzs5fds7EZZcil4m9p5FgMd99Wx0ouf0
+ yfRtxlAtCSis5iNzXBl4C5hg+oROlBkyPlgPFv7LllXqZzmumRd01pZhAzPH0NoQxVVlW+Jf4Nv
+ Dq9UO7pfrL70wi/IRXpiyZm073mbsC4Bg8qEF7V/Z9g7aF0Wc1DDfLwXmfx+HLFDBQ5hXbSC3uN
+ XCqm3CiCJYFQizENp4PFFFyBNEuKpMUZpJKSq30Rwwh/2XZdW008lJM+qeJJLQ
+X-Received: by 2002:a17:907:9451:b0:c25:5d2:acf0 with SMTP id
+ a640c23a62f3a-c2505d2b360mr177834766b.8.1787669635186; 
+ Tue, 25 Aug 2026 07:53:55 -0700 (PDT)
+Received: from draig.lan ([185.124.0.156]) by smtp.gmail.com with ESMTPSA id
+ a640c23a62f3a-c24962bbea6sm1725921766b.27.2026.08.25.07.53.53
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Tue, 25 Aug 2026 07:53:54 -0700 (PDT)
+Received: from draig.lan (localhost [IPv6:::1])
+ by draig.lan (Postfix) with ESMTP id 042E25F86C;
+ Tue, 25 Aug 2026 15:53:53 +0100 (BST)
+From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
+To: qemu-devel@nongnu.org
+Cc: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ qemu-arm@nongnu.org (open list:ARM TCG CPUs)
+Subject: [RFC PATCH] target/arm: re-order ARMFault_Domain check for v5/v6 ptw
+Date: Tue, 25 Aug 2026 15:53:50 +0100
+Message-ID: <20260825145350.3726466-1-alex.bennee@linaro.org>
+X-Mailer: git-send-email 2.47.3
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [RFC PATCH v7 18/18] arm-qmp-cmds: introspection for ID register
- props
-To: Markus Armbruster <armbru@redhat.com>
-Cc: eric.auger.pro@gmail.com, qemu-devel@nongnu.org, qemu-arm@nongnu.org,
- kvmarm@lists.linux.dev, peter.maydell@linaro.org, shaju.abraham@nutanix.com,
- khushit.shah@nutanix.com, yangjinqian1@huawei.com, cohuck@redhat.com,
- richard.henderson@linaro.org, sebott@redhat.com, skolothumtho@nvidia.com,
- philmd@oss.qualcomm.com, maz@kernel.org, oliver.upton@linux.dev,
- pbonzini@redhat.com, berrange@redhat.com, abologna@redhat.com,
- jdenemar@redhat.com
-References: <20260726153221.24773-1-eric.auger@redhat.com>
- <20260726153221.24773-19-eric.auger@redhat.com> <878q613tae.fsf@pond.sub.org>
- <cae6f5c2-edb2-4811-a915-cbd93bbd903b@redhat.com>
- <87wltemu97.fsf@pond.sub.org>
-From: Eric Auger <eric.auger@redhat.com>
-In-Reply-To: <87wltemu97.fsf@pond.sub.org>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: mV9phlYJTCM1VkjDlm-0160OCmTNlukNcjzSxdWPu-o_1787667130
-X-Mimecast-Originator: redhat.com
-Content-Language: en-US
 Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=170.10.129.124;
- envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::629;
+ envelope-from=alex.bennee@linaro.org; helo=mail-ej1-x629.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=0.001, SPF_HELO_PASS=-0.001,
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -123,173 +100,414 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-To: eric.auger@redhat.com
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Markus,
+In the Armv7 ARM (DDI0406C) any walk of the short descriptor
+table (TranslationTableWalkSD()) which has a second stage has the
+opportunity to fault with a translation fault in
+SecondStageTranslate() before a potential domain checking fault.
 
-On 8/25/26 11:20 AM, Markus Armbruster wrote:
-> Eric Auger <eric.auger@redhat.com> writes:
->
->> Hi Markus,
->>
->> On 8/20/26 1:50 PM, Markus Armbruster wrote:
->>> Eric Auger <eric.auger@redhat.com> writes:
->>>
->>>> From: Cornelia Huck <cohuck@redhat.com>
->>>>
->>>> Implement the capability to query available ID register values by
->>>> adding SYSREG_* options and values to the cpu model expansion for the
->>>> host model, if available.
->>>>
->>>> Excerpt:
->>>> (QEMU) query-cpu-model-expansion type=full model={"name":"host"}
->>> Is this qmp-shell?
->> yes it is. Is that a problem?
-> I wouldn't call use of qmp-shell a problem.  Except some reader may not
-> recognize it from the example input, or may not even know it exists.
-> Mentioning it takes care of all that.
->
-> I prefer to use QMP directly myself, like this:
->
->     $ socat "READLINE,history=$HOME/.qmp_history,prompt=QMP> " UNIX-CONNECT:/path/to/socket
->
-> But that's just personal preference.
+Moving the check down and lightly re-factoring setting level = 2 we
+can more closely match the architectural behaviour.
 
-OK thank you for the details. For now I clarified in the commit msg that
-those are qmp-shell examples.
+Reported-by: Karl Mehltretter (@kmehltretter)
+Resolves: https://gitlab.com/qemu-project/qemu/-/work_items/4233
+Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
 
-Eric
->
->>>> {"return": {"model": {"name": "host", "props": {"SYSREG_ID_AA64PFR0_EL1_EL3": 1,
->>>> "SYSREG_ID_AA64ISAR2_EL1_CLRBHB": 0, "SYSREG_CTR_EL0_L1Ip": 3,
->>>> "SYSREG_MIDR_EL1_PartNum": 3407, "SYSREG_CTR_EL0_DminLine": 4,
->>>> "SYSREG_ID_AA64MMFR0_EL1_PARange": 5, "SYSREG_ID_AA64MMFR1_EL1_ECBHB": 0
->>>> ../..
->>>>
->>>> This allows the upper stack to detect available writable ID regs and
->>>> the "host passthrough model" values.
->>>>
->>>> It also allows to test some ID reg field values:
->>>> (QEMU) query-cpu-model-expansion type=full model={"name":"host","props":{"SYSREG_ID_AA64ISAR0_EL1_DP":0x13}}
->>>> {"error": {"class": "GenericError", "desc": "idreg SYSREG_ID_AA64ISAR0_EL1_DP set value (0x13) exceeds length of field (4)!"}}
->>>>
->>>> (QEMU) query-cpu-model-expansion type=full model={"name":"host","props":{"SYSREG_ID_AA64ISAR0_EL1_DP":0x2}}
->>>> {"error": {"class": "GenericError", "desc": "idreg SYSREG_ID_AA64ISAR0_EL1_DP set value (0x2) does not match any arch valid enum value!"}}
->>> The examples use CPU "host".  Inconvenient for me, because I run into
->>> "The CPU type 'host' requires KVM" when I try to play with them myself.
->>> If you don't actually need "host" here, consider using something that
->>> works more widely, just to help reviewers.
->> It only applies to the host model, that's the reason. Extending this to
->> TCG models is theorerically feasible but would induce huge changes
->> without much benefits I think. With TCG you already have named vcpu
->> models you can migrate as is. The purpose of this series is to allow
->> tweaking the host passthrough model to allow migration between
->> differents hosts.
-> Thanks!
->
->>>> The following checks are performed:
->>>> - the value does not exceed the field size
->>>> - if the field is associated to enum values, the set value must be one
->>>>   of those enum values
->>>> - the value is applied against a scratch vcpu making sure the setting is
->>>>   not rejected for this host
->>>>
->>>> Signed-off-by: Eric Auger <eric.auger@redhat.com>
->>>> Signed-off-by: Cornelia Huck <cohuck@redhat.com>
->>>>
->>>> ---
->>>>
->>>> v5 -> v6:
->>>> - add the write capability
->>>> ---
->>>>  target/arm/arm-qmp-cmds.c | 98 +++++++++++++++++++++++++++++++++++++++
->>>>  1 file changed, 98 insertions(+)
->>>>
->>>> diff --git a/target/arm/arm-qmp-cmds.c b/target/arm/arm-qmp-cmds.c
->>>> index 83ec95c290..41fefadcea 100644
->>>> --- a/target/arm/arm-qmp-cmds.c
->>>> +++ b/target/arm/arm-qmp-cmds.c
->>>> @@ -21,6 +21,7 @@
->>>>   */
->>>>  
->>>>  #include "qemu/osdep.h"
->>>> +#include "qemu/error-report.h"
->>>>  #include "qemu/target-info.h"
->>>>  #include "hw/core/boards.h"
->>>>  #include "kvm_arm.h"
->>>> @@ -30,7 +31,10 @@
->>>>  #include "qapi/qapi-commands-machine.h"
->>>>  #include "qapi/qapi-commands-misc-arm.h"
->>>>  #include "qobject/qdict.h"
->>>> +#include "qobject/qnum.h"
->>>>  #include "qom/qom-qobject.h"
->>>> +#include <linux/kvm.h>
->>>> +#include "system/kvm.h"
->>>>  #include "cpu.h"
->>>>  
->>>>  static GICCapability *gic_cap_new(int version)
->>>> @@ -84,11 +88,14 @@ CpuModelExpansionInfo *qmp_query_cpu_model_expansion(CpuModelExpansionType type,
->>>>                                                       Error **errp)
->>>>  {
->>>>      CpuModelExpansionInfo *expansion_info;
->>>> +    ObjectPropertyIterator iter;
->>>>      const QDict *qdict_in;
->>>> +    ObjectProperty *idregprop;
->>>>      QDict *qdict_out;
->>>>      ObjectClass *oc;
->>>>      Object *obj;
->>>>      const char *name;
->>>> +    int fdarray[3];
->>>>      int i;
->>>>  
->>>>      if (type != CPU_MODEL_EXPANSION_TYPE_FULL) {
->>>> @@ -133,6 +140,38 @@ CpuModelExpansionInfo *qmp_query_cpu_model_expansion(CpuModelExpansionType type,
->>>>  
->>>>      obj = object_new(object_class_get_name(oc));
->>>>  
->>>> +    if (kvm_enabled()) {
->>>> +        bool pmuv3_supported = kvm_check_extension(kvm_state, KVM_CAP_ARM_PMU_V3);
->>>> +        bool sve_supported = kvm_check_extension(kvm_state, KVM_CAP_ARM_SVE);
->>>> +        struct kvm_vcpu_init init = { .target = -1, };
->>>> +        bool el2_supported = kvm_arm_el2_supported();
->>>> +        bool pauth_supported;
->>>> +        int ret;
->>>> +
->>>> +        pauth_supported = kvm_check_extension(kvm_state, KVM_CAP_ARM_PTRAUTH_ADDRESS) &&
->>>> +                          kvm_check_extension(kvm_state, KVM_CAP_ARM_PTRAUTH_GENERIC);
->>>> +
->>>> +        if (sve_supported) {
->>>> +            init.features[0] |= 1 << KVM_ARM_VCPU_SVE;
->>>> +        }
->>>> +        if (el2_supported) {
->>>> +            init.features[0] |= 1 << KVM_ARM_VCPU_HAS_EL2;
->>>> +        }
->>>> +        if (pauth_supported) {
->>>> +            init.features[0] |= (1 << KVM_ARM_VCPU_PTRAUTH_ADDRESS |
->>>> +                             1 << KVM_ARM_VCPU_PTRAUTH_GENERIC);
->>>> +        }
->>>> +        if (pmuv3_supported) {
->>>> +            init.features[0] |= 1 << KVM_ARM_VCPU_PMU_V3;
->>>> +        }
->>>> +
->>>> +        ret = kvm_arm_create_scratch_host_vcpu(fdarray, &init);
->>>> +        if (!ret) {
->>>> +            error_setg(errp, "failing creating a scratch vcpu");
->>> This error message feels off.  I'd use something like "can't create
->>> FOO".  Still bad, because it provides no clue on why.  What are the
->>> possible failure modes?
->> OK. There are quite a lot of possible failures which are handled in
->> kvm_arm_create_scratch_host_vcpu()
->> opening of /dev/kvm, KVM_CREATE_VM, KVM_CREATE_VCPU,
->> KVM_ARM_PREFERRED_TARGET, KVM_ARM_VCPU_INIT.
->> In next version I will add an Error handle to
->> kvm_arm_create_scratch_host_vcpu() so that precise error message gets
->> returned.
-> Makes sense.
->
-> [...]
->
+---
+I've only checked the get_phys_addr_v6 change against the Arm ARM but
+I've fairly confident the v5 one is the same. I've bundled everything
+together for review but this patch can't be merged as is because it
+does too much in one commit. Some open questions:
+
+  - should we properly factor out a boot_v6.S and share with other tests
+  - could the ptw code better match the psuedocode (e.g. case l1desc<1:0>)
+  - which Arm ARM should be checked for get_phys_addr_v5
+---
+ target/arm/ptw.c                              |  31 ++--
+ tests/tcg/arm/system/test-domainfault.c       | 148 ++++++++++++++++++
+ tests/tcg/arm/Makefile.softmmu-target         |  23 ++-
+ tests/tcg/arm/system/test-domainfault-start.S |  62 ++++++++
+ tests/tcg/arm/system/test-domainfault.ld      |  17 ++
+ 5 files changed, 264 insertions(+), 17 deletions(-)
+ create mode 100644 tests/tcg/arm/system/test-domainfault.c
+ create mode 100644 tests/tcg/arm/system/test-domainfault-start.S
+ create mode 100644 tests/tcg/arm/system/test-domainfault.ld
+
+diff --git a/target/arm/ptw.c b/target/arm/ptw.c
+index a29de0385f4..ddfbb79beb6 100644
+--- a/target/arm/ptw.c
++++ b/target/arm/ptw.c
+@@ -1172,19 +1172,13 @@ static bool get_phys_addr_v5(CPUARMState *env, S1Translate *ptw,
+         fi->type = ARMFault_Translation;
+         goto do_fault;
+     }
+-    if (type != 2) {
+-        level = 2;
+-    }
+-    if (domain_prot == 0 || domain_prot == 2) {
+-        fi->type = ARMFault_Domain;
+-        goto do_fault;
+-    }
+     if (type == 2) {
+         /* 1Mb section.  */
+         phys_addr = (desc & 0xfff00000) | (address & 0x000fffff);
+         ap = (desc >> 10) & 3;
+         result->f.lg_page_size = 20; /* 1MB */
+     } else {
++        level = 2;
+         /* Lookup l2 entry.  */
+         if (type == 1) {
+             /* Coarse pagetable.  */
+@@ -1239,6 +1233,10 @@ static bool get_phys_addr_v5(CPUARMState *env, S1Translate *ptw,
+             g_assert_not_reached();
+         }
+     }
++    if (domain_prot == 0 || domain_prot == 2) {
++        fi->type = ARMFault_Domain;
++        goto do_fault;
++    }
+     result->f.prot = ap_to_rw_prot(env, ptw->in_mmu_idx, ap, domain_prot);
+     result->f.prot |= result->f.prot ? PAGE_EXEC : 0;
+     if (ptw->in_prot_check & ~result->f.prot) {
+@@ -1254,6 +1252,7 @@ do_fault:
+     return false;
+ }
+ 
++/* See TranslationTableWalkSD() in Armv7 ARM (DDI0406C) */
+ static bool get_phys_addr_v6(CPUARMState *env, S1Translate *ptw,
+                              uint32_t address, MMUAccessType access_type,
+                              GetPhysAddrResult *result, ARMMMUFaultInfo *fi)
+@@ -1288,6 +1287,7 @@ static bool get_phys_addr_v6(CPUARMState *env, S1Translate *ptw,
+     if (fi->type != ARMFault_None) {
+         goto do_fault;
+     }
++    /* l1desc<1:0> */
+     type = (desc & 3);
+     if (type == 0 || (type == 3 && !cpu_isar_feature(aa32_pxn, cpu))) {
+         /* Section translation fault, or attempt to use the encoding
+@@ -1305,15 +1305,6 @@ static bool get_phys_addr_v6(CPUARMState *env, S1Translate *ptw,
+     } else {
+         dacr = env->cp15.dacr_s;
+     }
+-    if (type == 1) {
+-        level = 2;
+-    }
+-    domain_prot = (dacr >> (domain * 2)) & 3;
+-    if (domain_prot == 0 || domain_prot == 2) {
+-        /* Section or Page domain fault */
+-        fi->type = ARMFault_Domain;
+-        goto do_fault;
+-    }
+     if (type != 1) {
+         if (desc & (1 << 18)) {
+             /* Supersection.  */
+@@ -1331,6 +1322,7 @@ static bool get_phys_addr_v6(CPUARMState *env, S1Translate *ptw,
+         pxn = desc & 1;
+         ns = extract32(desc, 19, 1);
+     } else {
++        level = 2;
+         if (cpu_isar_feature(aa32_pxn, cpu)) {
+             pxn = (desc >> 2) & 1;
+         }
+@@ -1373,6 +1365,13 @@ static bool get_phys_addr_v6(CPUARMState *env, S1Translate *ptw,
+          */
+         out_space = ARMSS_NonSecure;
+     }
++    /* Extract from DACR indexed by domain */
++    domain_prot = (dacr >> (domain * 2)) & 3;
++    if (domain_prot == 0 || domain_prot == 2) {
++        /* Section or Page domain fault */
++        fi->type = ARMFault_Domain;
++        goto do_fault;
++    }
+     if (domain_prot == 3) {
+         result->f.prot = PAGE_READ | PAGE_WRITE | PAGE_EXEC;
+     } else {
+diff --git a/tests/tcg/arm/system/test-domainfault.c b/tests/tcg/arm/system/test-domainfault.c
+new file mode 100644
+index 00000000000..3b2593b0107
+--- /dev/null
++++ b/tests/tcg/arm/system/test-domainfault.c
+@@ -0,0 +1,148 @@
++/*
++ * Test short-descriptor domain fault vs. L2-descriptor validity ordering.
++ * (GitLab issue #4233)
++ *
++ * SPDX-License-Identifier: GPL-2.0-or-later
++ *
++ * Sets up a non-LPAE (short-descriptor) page table:
++ *  - L1[0]       section, identity map of the low 1MB (our own code/data),
++ *                domain 0.
++ *  - L1[4]       coarse (page-table) entry for VA 0x00400000, domain 1,
++ *                pointing at an L2 table that is left entirely zeroed
++ *                (every L2 entry therefore decodes as "invalid").
++ *  - DACR: domain 0 = Client (viable), domain 1 = No Access.
++ *
++ * Then reads VA 0x00400000. Spec (ARM DDI 0100I/E, Figure B4-2 and
++ * ARM DDI 0406C): the domain is checked only after a valid second-level
++ * descriptor is returned. Since the L2 entry is invalid (0), a spec-faithful
++ * walker must report a page Translation Fault (DFSR[3:0] = 0x7),
++ * independent of DACR[1].
++ *
++ * QEMU previously checked the domain from the L1 descriptor before fetching
++ * L2, incorrectly reporting a Domain Fault (DFSR[3:0] = 0xb).
++ */
++
++#include <stdint.h>
++
++#define VICTIM_VA 0x00400000u
++
++#ifdef V6_SHORT_DESC_TEST
++#define L1_SECTION_EXEC_FLAGS ((3u << 10) | 0x2u)
++#define SCTLR_TEST_FORMAT_BIT (1u << 23) /* XP: use v6 short descriptors */
++#else
++#define L1_SECTION_EXEC_FLAGS ((3u << 10) | (1u << 4) | 0x2u)
++#define SCTLR_TEST_FORMAT_BIT 0u
++#endif
++
++static inline void semihost_write0(const char *str)
++{
++    register uint32_t r0 __asm__("r0") = 0x04; /* SYS_WRITE0 */
++    register uint32_t r1 __asm__("r1") = (uint32_t)(uintptr_t)str;
++    __asm__ volatile ("svc 0x123456" : : "r"(r0), "r"(r1) : "memory");
++}
++
++static inline void semihost_exit(int status)
++{
++    register uint32_t r0 __asm__("r0") = 0x18; /* SYS_EXIT */
++    register uint32_t r1 __asm__("r1") = status ? 0x20024 : 0x20026;
++    __asm__ volatile ("svc 0x123456" : : "r"(r0), "r"(r1) : "memory");
++}
++
++static void puthex32(uint32_t v)
++{
++    static const char hex[] = "0123456789abcdef";
++    char buf[9];
++    int i;
++
++    for (i = 7; i >= 0; i--) {
++        buf[i] = hex[v & 0xf];
++        v >>= 4;
++    }
++    buf[8] = '\0';
++    semihost_write0(buf);
++}
++
++static void report(const char *label, uint32_t v)
++{
++    semihost_write0(label);
++    puthex32(v);
++    semihost_write0("\n");
++}
++
++/* L1: 4096 entries, 16KB, 16KB-aligned. L2: 256 entries, 1KB, 1KB-aligned. */
++static uint32_t l1_table[4096] __attribute__((aligned(16384)));
++static uint32_t l2_table[256] __attribute__((aligned(1024)));
++
++void c_main(void)
++{
++    uint32_t i;
++    uint32_t l2_phys = (uint32_t)(uintptr_t)l2_table;
++    uint32_t sctlr;
++
++    semihost_write0("=== Domain fault ordering test ===\n");
++
++    for (i = 0; i < 4096; i++) {
++        l1_table[i] = 0;
++    }
++    for (i = 0; i < 256; i++) {
++        l2_table[i] = 0;
++    }
++
++    /* L1[0]: identity section for our code/data/stack, domain 0. */
++    l1_table[0] = 0x00000000u | (0u << 5) | L1_SECTION_EXEC_FLAGS;
++
++    /* L1[4]: coarse entry for VICTIM_VA, domain 1, L2 all-invalid. */
++    l1_table[VICTIM_VA >> 20] =
++        (l2_phys & 0xfffffc00u) | (1u << 5) | (1u << 4) | 0x1u;
++
++    report("L1 table @ 0x", (uint32_t)(uintptr_t)l1_table);
++    report("L2 table @ 0x", l2_phys);
++    report("L1[victim] = 0x", l1_table[VICTIM_VA >> 20]);
++
++    /* DACR: domain0 = Client (0b01), domain1 = No Access (0b00). */
++    __asm__ volatile ("mcr p15, 0, %0, c3, c0, 0" : : "r"(0x00000001u));
++
++    /* TTBR0 */
++    __asm__ volatile ("mcr p15, 0, %0, c2, c0, 0"
++                      : : "r"((uint32_t)(uintptr_t)l1_table));
++
++    /* Invalidate unified TLB */
++    __asm__ volatile ("mcr p15, 0, %0, c8, c7, 0" : : "r"(0));
++
++    __asm__ volatile ("mrc p15, 0, %0, c1, c0, 0" : "=r"(sctlr));
++    report("SCTLR before MMU on = 0x", sctlr);
++    sctlr |= 1u | SCTLR_TEST_FORMAT_BIT;
++    __asm__ volatile (
++        "mcr p15, 0, %0, c1, c0, 0\n"
++        "nop\n\tnop\n\tnop\n\tnop\n"
++        : : "r"(sctlr));
++
++    semihost_write0("MMU enabled, reading victim VA (expect abort)...\n");
++    {
++        /* Trigger data abort at VICTIM_VA */
++        volatile uint32_t *victim = (volatile uint32_t *)VICTIM_VA;
++        uint32_t v = *victim;
++        report("UNEXPECTED: read succeeded, value = 0x", v);
++        semihost_exit(1);
++    }
++}
++
++void report_fault(uint32_t dfsr, uint32_t dfar)
++{
++    uint32_t fs = dfsr & 0xfu;
++
++    report("DFAR = 0x", dfar);
++    report("DFSR = 0x", dfsr);
++    report("DFSR[3:0] = 0x", fs);
++
++    if (dfar == VICTIM_VA && fs == 0x7) {
++        semihost_write0("PASS: level-2 translation fault (0x7)\n");
++        semihost_exit(0);
++    } else {
++        semihost_write0("FAIL: expected translation fault (0x7), "
++                        "got fault status 0x");
++        puthex32(fs);
++        semihost_write0("\n");
++        semihost_exit(1);
++    }
++}
+diff --git a/tests/tcg/arm/Makefile.softmmu-target b/tests/tcg/arm/Makefile.softmmu-target
+index b66074b0b43..3fda4d41689 100644
+--- a/tests/tcg/arm/Makefile.softmmu-target
++++ b/tests/tcg/arm/Makefile.softmmu-target
+@@ -20,10 +20,31 @@ run-test-armv6m-undef: QEMU_OPTS=-semihosting-config enable=on,target=native,cha
+ 
+ ARM_TESTS+=test-armv6m-undef
+ 
++# Domain fault ordering tests (GitLab issue #4233)
++test-armv5-domainfault: test-domainfault-start.S test-domainfault.c
++	$(CC) -march=armv5te -marm -mfloat-abi=soft \
++		-ffreestanding -fno-builtin -nostdlib -static \
++		-Wl,--build-id=none -Wl,--no-warn-rwx-segments \
++		$< $(ARM_SRC)/test-domainfault.c -o $@ \
++		-T $(ARM_SRC)/test-domainfault.ld
++
++run-test-armv5-domainfault: QEMU_OPTS=-audio none -semihosting-config enable=on,target=native,chardev=output -M versatilepb -cpu arm926 -kernel
++
++test-armv6-domainfault: test-domainfault-start.S test-domainfault.c
++	$(CC) -march=armv6k -marm -mfloat-abi=soft -DV6_SHORT_DESC_TEST \
++		-ffreestanding -fno-builtin -nostdlib -static \
++		-Wl,--build-id=none -Wl,--no-warn-rwx-segments \
++		$< $(ARM_SRC)/test-domainfault.c -o $@ \
++		-T $(ARM_SRC)/test-domainfault.ld
++
++run-test-armv6-domainfault: QEMU_OPTS=-audio none -semihosting-config enable=on,target=native,chardev=output -M versatilepb -cpu arm11mpcore -kernel
++
++ARM_TESTS+=test-armv5-domainfault test-armv6-domainfault
++
+ # These objects provide the basic boot code and helper functions for all tests
+ CRT_OBJS=boot.o
+ 
+-ARM_TEST_SRCS=$(wildcard $(ARM_SRC)/*.c)
++ARM_TEST_SRCS=$(filter-out $(ARM_SRC)/test-domainfault.c, $(wildcard $(ARM_SRC)/*.c))
+ ARM_TESTS+=$(patsubst $(ARM_SRC)/%.c, %, $(ARM_TEST_SRCS))
+ 
+ CRT_PATH=$(ARM_SRC)
+diff --git a/tests/tcg/arm/system/test-domainfault-start.S b/tests/tcg/arm/system/test-domainfault-start.S
+new file mode 100644
+index 00000000000..8d024c822d6
+--- /dev/null
++++ b/tests/tcg/arm/system/test-domainfault-start.S
+@@ -0,0 +1,62 @@
++/*
++ * Vector table + minimal mode/stack init for domain-fault-ordering test.
++ * (GitLab issue #4233)
++ *
++ * SPDX-License-Identifier: GPL-2.0-or-later
++ */
++.syntax unified
++.arm
++
++.equ MODE_UND, 0x1B
++.equ MODE_ABT, 0x17
++.equ MODE_IRQ, 0x12
++.equ MODE_FIQ, 0x11
++.equ MODE_SVC, 0x13
++.equ NOINT,    0xC0   /* IRQ+FIQ disabled */
++
++.section .vectors, "ax"
++.global _vectors
++_vectors:
++    b reset_handler
++    b hang            /* undefined instruction */
++    b hang            /* swi */
++    b hang            /* prefetch abort */
++    b data_abort_handler
++    b hang            /* reserved */
++    b hang            /* irq */
++    b hang            /* fiq */
++
++.section .text
++reset_handler:
++    msr cpsr_c, #(MODE_UND | NOINT)
++    ldr sp, =und_stack_top
++    msr cpsr_c, #(MODE_ABT | NOINT)
++    ldr sp, =abt_stack_top
++    msr cpsr_c, #(MODE_IRQ | NOINT)
++    ldr sp, =irq_stack_top
++    msr cpsr_c, #(MODE_FIQ | NOINT)
++    ldr sp, =fiq_stack_top
++    msr cpsr_c, #(MODE_SVC | NOINT)
++    ldr sp, =svc_stack_top
++    bl c_main
++hang:
++    b hang
++
++data_abort_handler:
++    mrc p15, 0, r0, c5, c0, 0   /* DFSR */
++    mrc p15, 0, r1, c6, c0, 0   /* DFAR */
++    bl report_fault
++    b hang
++
++.section .bss
++.align 4
++und_stack: .space 256
++und_stack_top:
++abt_stack: .space 256
++abt_stack_top:
++irq_stack: .space 256
++irq_stack_top:
++fiq_stack: .space 256
++fiq_stack_top:
++svc_stack: .space 4096
++svc_stack_top:
+diff --git a/tests/tcg/arm/system/test-domainfault.ld b/tests/tcg/arm/system/test-domainfault.ld
+new file mode 100644
+index 00000000000..4d1809ddb8f
+--- /dev/null
++++ b/tests/tcg/arm/system/test-domainfault.ld
+@@ -0,0 +1,17 @@
++/*
++ * Linker script for domain-fault-ordering test.
++ *
++ * SPDX-License-Identifier: GPL-2.0-or-later
++ */
++ENTRY(_vectors)
++
++SECTIONS
++{
++    . = 0x00000000;
++    .vectors : { *(.vectors) }
++    .text : { *(.text*) }
++    .rodata : { *(.rodata*) }
++    .data : { *(.data*) }
++    .bss : { *(.bss*) *(COMMON) }
++    /DISCARD/ : { *(.comment) *(.ARM.attributes) }
++}
+-- 
+2.47.3
 
 

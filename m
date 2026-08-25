@@ -4,70 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8254CC61DBD
-	for <qemu-arm@archiver.kernel.org>; Tue, 25 Aug 2026 22:03:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D88DAC61DC4
+	for <qemu-arm@archiver.kernel.org>; Tue, 25 Aug 2026 22:03:45 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wyzDm-0004pu-HN; Tue, 25 Aug 2026 18:02:19 -0400
+	id 1wyzDm-0004nA-5I; Tue, 25 Aug 2026 18:02:18 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mathieu.poirier@linaro.org>)
- id 1wyzCz-0003Wo-Sj
- for qemu-arm@nongnu.org; Tue, 25 Aug 2026 18:01:30 -0400
-Received: from mail-pg1-x52c.google.com ([2607:f8b0:4864:20::52c])
+ id 1wyzDG-0003zz-Dw
+ for qemu-arm@nongnu.org; Tue, 25 Aug 2026 18:01:47 -0400
+Received: from mail-pj1-x102d.google.com ([2607:f8b0:4864:20::102d])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <mathieu.poirier@linaro.org>)
- id 1wyzCx-0001bn-NG
- for qemu-arm@nongnu.org; Tue, 25 Aug 2026 18:01:29 -0400
-Received: by mail-pg1-x52c.google.com with SMTP id
- 41be03b00d2f7-cbe6295f05bso1041956a12.1
- for <qemu-arm@nongnu.org>; Tue, 25 Aug 2026 15:01:27 -0700 (PDT)
+ id 1wyzDE-0001vl-ET
+ for qemu-arm@nongnu.org; Tue, 25 Aug 2026 18:01:46 -0400
+Received: by mail-pj1-x102d.google.com with SMTP id
+ 98e67ed59e1d1-395ea741d07so382656a91.1
+ for <qemu-arm@nongnu.org>; Tue, 25 Aug 2026 15:01:43 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1787695286; x=1788300086; darn=nongnu.org;
+ d=linaro.org; s=google; t=1787695303; x=1788300103; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to:content-type;
- bh=6yAZYi7h64i0sOWTrsMVth4dHq383ltCyuAo47L2qv8=;
- b=EXH4oFUsKceaP9ddeM7E/AQpe5dia3FhjNTOxvzBrT3BFKxnT3iZYHKukjgwYI16/X
- WvXgYZ4bL9wzRaw2rQXpCF81hm12KKfnKKbEmJTzkGR1K7UNRdM6XjzME5vfqo/l8T5Z
- 3E1Y/zn7MozL7GTanN8tWn6GqeIbFM7F4TohQtWvg/abMTp0jMgPi7/0JsEtLcAo6nMz
- rbOj3+3K4bLd21WN+69ADjqFlb9EOck6X82svyROm5Byaf+cqJzZCCD+L1DzbUY+41e5
- p67u1q/9SL+NVliHjnST0VXwO2zuVHxWkWXnOElh7cF0ugxxY88DyaBdrJeCepE052Ru
- 2S9A==
+ bh=xAzEL9ZlLXCfuWjde/xvRNITLPTF4bTeTvJhthxiQHA=;
+ b=UjrOIewF0bMZCSNqogMWybLkzDZIz6V5Kb40LOJ3Tdj3kY77D4fXfTWFlvUbGwQG8Q
+ BByL4/7zi92mAIqEjGB00Tf/NA/6LHXRovVWvX8LWyDWQ9AUqOYQB2Gcr8FQAyuRpsr1
+ Td1Yqlq4W8XA2OAFQ2bUtkbsrfacoKRa/cULCifw1dW5fiVJxOGr4Dc9V/ErE/GJttvv
+ UrhyXmOTDAskP/s+QU31D1I6KYXIJo38f690QsYQI6u3CAS46rWwF+3m7QcrliopHVXC
+ K5IPqUKjZ4VJC9J2gvLy4tgBH1838RDwhXNtdZ6OpaJ82g88v0vXwFby7SPB5gEQGnKQ
+ a5bg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1787695286; x=1788300086;
+ d=1e100.net; s=20251104; t=1787695303; x=1788300103;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
  :to:cc:subject:date:message-id:reply-to:content-type;
- bh=6yAZYi7h64i0sOWTrsMVth4dHq383ltCyuAo47L2qv8=;
- b=Wh0Ofe4URevPlitgYNHYzwBILxgR8MALidX1ybdHD8+J9XZNP1ID+KWlZQaTgyNxyd
- Nst4e2tGzD1VEGy3I4ogo5Uxqez/ItIYy+8fI66MvBJdFLi2ZWMl+GsvVdhZO9lH7Iiz
- lYcZ12oltIwXmCzLSEqjXBt7niNRzOemUcs/rBKxHV19mVF6Uv7aUtsZjIccmimIFe0b
- Dd3+6wYkUt+f168sg2Fm9UdsR/6qDTnwovsxfD3uMvWDmLYpzuecq3Rn6CLRTvhy/FDV
- GpDXI+ZV3/7SuAQqLSSEotzYf6mEiGwFuLfzcxrNjsw5WXFhPCPHMFf/Adyudt9qG591
- mn6g==
+ bh=xAzEL9ZlLXCfuWjde/xvRNITLPTF4bTeTvJhthxiQHA=;
+ b=acJ6mDxqj58ZqmVYmNGGChLN8CNI1qx4gAB6l0m++l+Nj0bgdACo8mEQlLyuEMSvzF
+ /DWl8ZO3BqIzf8Negmnk7ywUZFDQ0QtPpm75Mg7G5ZhyP0S7oBe3TbdZngUA5sKxm+ew
+ SjsBeErAUSSZMb4gsfC5fVhI/mxaXdGruSgEBrbPNiRvAjY68YI483ejeqo8aOnZiUZU
+ 4J/PbbGonJef0/fa5xGwKmHxY/qU69XzNRqaWRHW3hdnBuURDw4O9DScnirgmab3x7Aw
+ ksT/nb/Og7ZQZeYYzbRZ9ikDwfL5DDhjS6Bw0ch0l30u9Vh02g18DlDtYlPNyNiIKv3m
+ nEGA==
 X-Forwarded-Encrypted: i=1;
- AHgh+Rrktzy5GPuRyPwvCvocA9KSM2o5vYsqmsU5GCLETB1asWhIwAqvvBKh1vgW+ZPolHuI0x4uqrw5VA==@nongnu.org
-X-Gm-Message-State: AFuF++mCD/InPMsNl/pLlm3OBthryEF3KQng0g+nGJ+ser3OAllYceJb
- W18WYu9cN5r1GxI1JWFwgoIQqa8O3e72nVLp3hugF3dwgnZzIdQk/fP2MF1IBxOsjw0=
-X-Gm-Gg: AR+sD139Yx/kdRWiry9aC1dFka4GZR1uMClgi1Pd++k4ZIUoC2aswpSEDIguBy96+iA
- UssN9E2T6qoy3M3mQ8EKGHXQ2nq5ZyknDjNq2Iha/KuuCp3pRMe+ymRXuIQEGGvn2z8+XT8cFFE
- HoWFBKffCsmwmrzGJRAlebMd8rfYSvLMpd8SmXkNt/DgqvAJ1k4FSjPcF0GRoWE5zI5Ug6dFyPd
- lNP30Zg6X/LQbcAW9mFtKfnekR+fOQHIrf/BB4eOIPxSCJXc3D17fdLV7RXyshq0HHq/tlLbKbz
- Fh8R0XgX1eOz2byDEbGv59UnyJy24Bu7OGp8utmXQNQ7wKXUHxqwcHUZDsfHrA1neZ8YrmC7U1v
- mrTveT8nea3bSCgQUKzaofLK3mai1lOglRq+k+FldlSgZmCab5XOwyCjogY5gIjV7EIAAyRsyM+
- 2eWgIv90W7sdyXAslpkvA+vPZqx3zCIlQNguvxN76VH59XCQOnmIuPnIsA6PsHI3nI+p165LM8Y
- CPc+OVEEExkzVc=
-X-Received: by 2002:a17:90b:2ccf:b0:38e:9ca8:e99 with SMTP id
- 98e67ed59e1d1-3966d70a74fmr2259623a91.5.1787695286153; 
- Tue, 25 Aug 2026 15:01:26 -0700 (PDT)
+ AHgh+Rrh36BOahRtNUHXdisqUgWuTBw2IrQsV/5Z12gzyq7OLHCaHe4hyj2Q/Wecp5NLaZdigB72ehdHUA==@nongnu.org
+X-Gm-Message-State: AFuF++ksPqGAxChdADjCLiC91Shkqs9FlZEXQ93B41H62kxdMIwp6WaT
+ TROcJ8tdYtIMcaH73Awrj0ADYopzIHiNNweLx4TWpkK3Z6qgTctRleiVUiDZDnW4aGs=
+X-Gm-Gg: AR+sD11rZTX8EOm1VZ3g/V7tAuAiE/mtH52WfUNC2UWCzus2xdj0Cx86KaCGjlyoU9G
+ OI3eEkzASRoxcCDxPBlS79ukkW/lYjfmAf3M3QUEUzBDMQ39w+uDBE51GXho5wvtRPGfj7LlW5V
+ f0s5tKmQhBgvU9l9VjFdeop29aIfGmRNpWxzSbHVnwrfwYhAfWvxHV+m/SbwE0A+57LetpjShwM
+ GUv/MoUaYUHyjVR9pRRWjUYZFeDjffe2hm2zlklIXNUnnU2W1zmWFpQM2029CJHCTXu9keVD6s9
+ 7hb1DUn2XBl6BWOqWMuBcGqsiYW4YXdIaRbwBNUn7suhJuulgDKY2lNW2Sy5+gDheXd6h5lKsz1
+ GOL4ShfP5TdVcoIIc606mWrRlCebgbc17McLUkyN1rz0TREJM7N41huciW7ZCobOoKgC3F+BmvW
+ LAc8ZexcfPrmxyNt3rzldH4Yk0SaSaML8B8kMuvcfgxv4BXiI5IxByO4AIygGgiXyphUaBlqe6Z
+ 5xQqCJMdhUvYBAe
+X-Received: by 2002:a17:90b:54cb:b0:37d:f206:a2ac with SMTP id
+ 98e67ed59e1d1-3966d5b7c62mr4486212a91.7.1787695302766; 
+ Tue, 25 Aug 2026 15:01:42 -0700 (PDT)
 Received: from p14s.cg.shawcable.net
  ([2604:3d09:148c:c800:a37a:292f:1363:c0af])
  by smtp.gmail.com with ESMTPSA id
- 98e67ed59e1d1-3965d119724sm3090120a91.2.2026.08.25.15.01.24
+ 98e67ed59e1d1-3965d119724sm3090120a91.2.2026.08.25.15.01.41
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 25 Aug 2026 15:01:25 -0700 (PDT)
+ Tue, 25 Aug 2026 15:01:42 -0700 (PDT)
 From: Mathieu Poirier <mathieu.poirier@linaro.org>
 To: berrange@redhat.com, kchamart@redhat.com,
  pierrick.bouvier@oss.qualcomm.com, peter.maydell@linaro.org,
@@ -76,24 +76,24 @@ To: berrange@redhat.com, kchamart@redhat.com,
  enju.kohei@fujitsu.com
 Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, kvm@vger.kernel.org,
  mathieu.poirier@linaro.org
-Subject: [RFC v3 10/24] target/arm/kvm-rme: Keep track of images loaded in
- Realm memory
-Date: Tue, 25 Aug 2026 16:00:47 -0600
-Message-ID: <20260825220101.3443954-11-mathieu.poirier@linaro.org>
+Subject: [RFC v3 18/24] hw/arm/virt: Disable DTB randomness for confidential
+ VMs
+Date: Tue, 25 Aug 2026 16:00:55 -0600
+Message-ID: <20260825220101.3443954-19-mathieu.poirier@linaro.org>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20260825220101.3443954-1-mathieu.poirier@linaro.org>
 References: <20260825220101.3443954-1-mathieu.poirier@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::52c;
- envelope-from=mathieu.poirier@linaro.org; helo=mail-pg1-x52c.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::102d;
+ envelope-from=mathieu.poirier@linaro.org; helo=mail-pj1-x102d.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -111,102 +111,161 @@ Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
 From: Jean-Philippe Brucker <jean-philippe@linaro.org>
 
-Add a Rom notifier to keep track of binary blobs loaded in Realm memory.
-That way we can deterministically calculate the Realm Initial Measurement (RIM).
+The dtb-randomness feature, which adds random seeds to the DTB, isn't
+really compatible with confidential VMs since it randomizes the Realm
+Initial Measurement. Enabling it is not an error, but it prevents
+attestation. It also isn't useful to a Realm, which doesn't trust host
+input.
+
+Currently the feature is automatically enabled, unless the user disables
+it on the command-line. Change it to OnOffAuto, and automatically
+disable it for confidential VMs, unless the user explicitly enables it.
 
 Signed-off-by: Jean-Philippe Brucker <jean-philippe@linaro.org>
-Signed-off-by: Lorenzo Pieralisi <lorenzo.pieralisi@linaro.org>
 Signed-off-by: Mathieu Poirier <mathieu.poirier@linaro.org>
 ---
- target/arm/kvm-rme.c | 52 ++++++++++++++++++++++++++++++++++++++++++++
- 1 file changed, 52 insertions(+)
+ docs/system/arm/virt.rst |  9 +++++----
+ hw/arm/virt.c            | 41 +++++++++++++++++++++++++---------------
+ include/hw/arm/virt.h    |  2 +-
+ 3 files changed, 32 insertions(+), 20 deletions(-)
 
-diff --git a/target/arm/kvm-rme.c b/target/arm/kvm-rme.c
-index f7c2cc786e2c..9985f5daba89 100644
---- a/target/arm/kvm-rme.c
-+++ b/target/arm/kvm-rme.c
-@@ -10,6 +10,7 @@
+diff --git a/docs/system/arm/virt.rst b/docs/system/arm/virt.rst
+index f811e662d68d..faae97848d2e 100644
+--- a/docs/system/arm/virt.rst
++++ b/docs/system/arm/virt.rst
+@@ -237,10 +237,11 @@ dtb-randomness
+   rng-seed and kaslr-seed nodes (in both "/chosen" and
+   "/secure-chosen") to use for features like the random number
+   generator and address space randomisation. The default is
+-  ``on``. You will want to disable it if your trusted boot chain
+-  will verify the DTB it is passed, since this option causes the
+-  DTB to be non-deterministic. It would be the responsibility of
+-  the firmware to come up with a seed and pass it on if it wants to.
++  ``off`` for confidential VMs, and ``on`` otherwise. You will want
++  to disable it if your trusted boot chain will verify the DTB it is
++  passed, since this option causes the DTB to be non-deterministic.
++  It would be the responsibility of the firmware to come up with a
++  seed and pass it on if it wants to.
  
- #include "hw/core/boards.h"
- #include "hw/core/cpu.h"
-+#include "hw/core/loader.h"
- #include "kvm_arm.h"
- #include "migration/blocker.h"
- #include "qapi/error.h"
-@@ -22,8 +23,18 @@
- #define TYPE_RME_GUEST "rme-guest"
- OBJECT_DECLARE_SIMPLE_TYPE(RmeGuest, RME_GUEST)
+ dtb-kaslr-seed
+   A deprecated synonym for dtb-randomness.
+diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+index 2132e6595baf..c300224f19e7 100644
+--- a/hw/arm/virt.c
++++ b/hw/arm/virt.c
+@@ -394,6 +394,7 @@ static int gic_fdt_irq_type_spi(const VirtMachineState *vms)
  
-+#define RME_PAGE_SIZE qemu_real_host_page_size()
-+
-+typedef struct {
-+    hwaddr base;
-+    hwaddr size;
-+    uint8_t *data;
-+} RmeRamRegion;
-+
- struct RmeGuest {
-     ConfidentialGuestSupport parent_obj;
-+    Notifier rom_load_notifier;
-+    GSList *ram_regions;
- };
+ static void create_fdt(VirtMachineState *vms)
+ {
++    bool dtb_randomness = true;
+     MachineState *ms = MACHINE(vms);
+     int nb_numa_nodes = ms->numa_state->num_nodes;
+     void *fdt = create_device_tree(&vms->fdt_size);
+@@ -403,6 +404,16 @@ static void create_fdt(VirtMachineState *vms)
+         exit(1);
+     }
  
- OBJECT_DEFINE_SIMPLE_TYPE_WITH_INTERFACES(RmeGuest, rme_guest, RME_GUEST,
-@@ -41,6 +52,44 @@ static void rme_vm_state_change(void *opaque, bool running, RunState state)
-     kvm_mark_guest_state_protected();
- }
- 
-+static gint rme_compare_ram_regions(gconstpointer a, gconstpointer b)
-+{
-+    const RmeRamRegion *ra = a;
-+    const RmeRamRegion *rb = b;
-+
-+    g_assert(ra->base != rb->base);
-+    return ra->base < rb->base ? -1 : 1;
-+}
-+
-+static void rme_rom_load_notify(Notifier *notifier, void *data)
-+{
-+    RmeRamRegion *region;
-+    RomLoaderNotifyData *rom = data;
-+
-+    if (rom->addr == -1) {
-+        /*
-+         * These blobs (ACPI tables) are not loaded into guest RAM at reset.
-+         * Instead the firmware will load them via fw_cfg and measure them
-+         * itself.
-+         */
-+        return;
++    /*
++     * Including random data in the DTB causes random intial measurement on CCA,
++     * so disable it for confidential VMs.
++     */
++    if (vms->dtb_randomness == ON_OFF_AUTO_OFF ||
++        (vms->dtb_randomness == ON_OFF_AUTO_AUTO &&
++         virt_machine_is_confidential(vms))) {
++        dtb_randomness = false;
 +    }
 +
-+    region = g_new0(RmeRamRegion, 1);
-+    region->base = rom->addr;
-+    region->size = rom->len;
-+    region->data = rom->data;
-+
-+    /*
-+     * The Realm Initial Measurement (RIM) depends on the order in which we
-+     * initialize and populate the RAM regions. To help a verifier
-+     * independently calculate the RIM, sort regions by GPA.
-+     */
-+    rme_guest->ram_regions = g_slist_insert_sorted(rme_guest->ram_regions,
-+                                                   region,
-+                                                   rme_compare_ram_regions);
-+}
-+
- static int kvm_arm_rme_init(ConfidentialGuestSupport *cgs, Error **errp)
- {
-     KVMState *s = KVM_STATE(current_accel());
-@@ -58,6 +107,9 @@ static int kvm_arm_rme_init(ConfidentialGuestSupport *cgs, Error **errp)
-     error_setg(&rme_mig_blocker, "RME: migration is not implemented");
-     migrate_add_blocker(&rme_mig_blocker, &error_fatal);
+     ms->fdt = fdt;
  
-+    rme_guest->rom_load_notifier.notify = rme_rom_load_notify;
-+    rom_add_load_notifier(&rme_guest->rom_load_notifier);
-+
-     /*
-      * The realm activation is done last, when the VM starts, after all images
-      * have been loaded and all vcpus finalized.
+     /* Header */
+@@ -424,13 +435,13 @@ static void create_fdt(VirtMachineState *vms)
+ 
+     /* /chosen must exist for load_dtb to fill in necessary properties later */
+     qemu_fdt_add_subnode(fdt, "/chosen");
+-    if (vms->dtb_randomness) {
++    if (dtb_randomness) {
+         create_randomness(ms, "/chosen");
+     }
+ 
+     if (vms->secure) {
+         qemu_fdt_add_subnode(fdt, "/secure-chosen");
+-        if (vms->dtb_randomness) {
++        if (dtb_randomness) {
+             create_randomness(ms, "/secure-chosen");
+         }
+     }
+@@ -3462,18 +3473,21 @@ static void virt_set_virtio_transports(Object *obj, Visitor *v,
+     vms->virtio_transports = transports;
+ }
+ 
+-static bool virt_get_dtb_randomness(Object *obj, Error **errp)
++static void virt_get_dtb_randomness(Object *obj, Visitor *v, const char *name,
++                                    void *opaque, Error **errp)
+ {
+     VirtMachineState *vms = VIRT_MACHINE(obj);
++    OnOffAuto dtb_randomness = vms->dtb_randomness;
+ 
+-    return vms->dtb_randomness;
++    visit_type_OnOffAuto(v, name, &dtb_randomness, errp);
+ }
+ 
+-static void virt_set_dtb_randomness(Object *obj, bool value, Error **errp)
++static void virt_set_dtb_randomness(Object *obj, Visitor *v, const char *name,
++                                    void *opaque, Error **errp)
+ {
+     VirtMachineState *vms = VIRT_MACHINE(obj);
+ 
+-    vms->dtb_randomness = value;
++    visit_type_OnOffAuto(v, name, &vms->dtb_randomness, errp);
+ }
+ 
+ static char *virt_get_oem_id(Object *obj, Error **errp)
+@@ -4260,16 +4274,16 @@ static void virt_machine_class_init(ObjectClass *oc, const void *data)
+                                           "Set MSI settings. "
+                                           "Valid values are auto, gicv2m, its and off");
+ 
+-    object_class_property_add_bool(oc, "dtb-randomness",
+-                                   virt_get_dtb_randomness,
+-                                   virt_set_dtb_randomness);
++    object_class_property_add(oc, "dtb-randomness", "OnOffAuto",
++                              virt_get_dtb_randomness, virt_set_dtb_randomness,
++                              NULL, NULL);
+     object_class_property_set_description(oc, "dtb-randomness",
+                                           "Set off to disable passing random or "
+                                           "non-deterministic dtb nodes to guest");
+ 
+-    object_class_property_add_bool(oc, "dtb-kaslr-seed",
+-                                   virt_get_dtb_randomness,
+-                                   virt_set_dtb_randomness);
++    object_class_property_add(oc, "dtb-kaslr-seed", "OnOffAuto",
++                              virt_get_dtb_randomness, virt_set_dtb_randomness,
++                              NULL, NULL);
+     object_class_property_set_description(oc, "dtb-kaslr-seed",
+                                           "Deprecated synonym of dtb-randomness");
+ 
+@@ -4332,9 +4346,6 @@ static void virt_instance_init(Object *obj)
+     /* MTE is disabled by default.  */
+     vms->mte = false;
+ 
+-    /* Supply kaslr-seed and rng-seed by default */
+-    vms->dtb_randomness = true;
+-
+     vms->irqmap = a15irqmap;
+ 
+     vms->virtio_transports = NUM_VIRTIO_TRANSPORTS;
+diff --git a/include/hw/arm/virt.h b/include/hw/arm/virt.h
+index 3ba33b4bd274..ef9fe3238022 100644
+--- a/include/hw/arm/virt.h
++++ b/include/hw/arm/virt.h
+@@ -173,7 +173,7 @@ struct VirtMachineState {
+     bool virt;
+     bool ras;
+     bool mte;
+-    bool dtb_randomness;
++    OnOffAuto dtb_randomness;
+     bool second_ns_uart_present;
+     OnOffAuto acpi;
+     VirtGICType gic_version;
 -- 
 2.43.0
 

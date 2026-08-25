@@ -4,89 +4,88 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2B292C61DBD
-	for <qemu-arm@archiver.kernel.org>; Tue, 25 Aug 2026 12:18:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 70706C61DBD
+	for <qemu-arm@archiver.kernel.org>; Tue, 25 Aug 2026 12:20:49 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wyq6q-00020s-Lt; Tue, 25 Aug 2026 08:18:32 -0400
+	id 1wyq8l-0002nU-W0; Tue, 25 Aug 2026 08:20:32 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <jim.macarthur@linaro.org>)
- id 1wyq6o-00020X-Ic
- for qemu-arm@nongnu.org; Tue, 25 Aug 2026 08:18:30 -0400
-Received: from mail-wr1-x433.google.com ([2a00:1450:4864:20::433])
+ id 1wyq8k-0002n6-92
+ for qemu-arm@nongnu.org; Tue, 25 Aug 2026 08:20:30 -0400
+Received: from mail-wm1-x336.google.com ([2a00:1450:4864:20::336])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <jim.macarthur@linaro.org>)
- id 1wyq6n-000562-0R
- for qemu-arm@nongnu.org; Tue, 25 Aug 2026 08:18:30 -0400
-Received: by mail-wr1-x433.google.com with SMTP id
- ffacd0b85a97d-47f7027ca11so2376036f8f.3
- for <qemu-arm@nongnu.org>; Tue, 25 Aug 2026 05:18:28 -0700 (PDT)
+ id 1wyq8i-0005x2-It
+ for qemu-arm@nongnu.org; Tue, 25 Aug 2026 08:20:30 -0400
+Received: by mail-wm1-x336.google.com with SMTP id
+ 5b1f17b1804b1-4956869750eso26901345e9.2
+ for <qemu-arm@nongnu.org>; Tue, 25 Aug 2026 05:20:28 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1787660307; x=1788265107; darn=nongnu.org;
+ d=linaro.org; s=google; t=1787660427; x=1788265227; darn=nongnu.org;
  h=in-reply-to:content-disposition:content-type:mime-version
  :references:message-id:subject:cc:to:from:date:from:to:cc:subject
  :date:message-id:reply-to:content-type;
- bh=DT4QrbFI3IsncY1zCuQdV9ZdCP1rmNgzkzyyROTMyFU=;
- b=Dayewew+q3ou4qPKILef6LqtzHEdWYjCfIuMyAJYMCit4uit5QS7QkbmMtctNGdM4n
- NJJ0s4pERhBSqz9uhQODGDL3A6VAxXCg1cvjauggRmCnNT7x+7cBMFbJwxb8QHXJGk6K
- cc6jH0kU8u8Rce9YhRrGWhkXuIwQdfZW5rj4lBrwMLUSaFpwEeU74Bol//HotvfIOO4L
- NnNnAmAwkDAUKSwcrpsDClozY+OZgGeQYdku4gaKFXVcLuiXWLpijFKx8N2bTQmcodSU
- j13Zsvh4k/gKxz3xYlEh2EETBUYLaMevCnT8FWYIyvu42P/NJ9cytnizdoRDSwmBj+3B
- dSxA==
+ bh=ejFp3dmc3VLYD3MlC883OMJGVfdC/fpo+ilkNBBuIQU=;
+ b=XCwXPOVJ/HmEOzmftZ/Bra6V8//ayYGlgCfi65gcV+r0Ke1ysbGkFWZHRKD0fkzviA
+ zbix6JhV08PPshs3sLiEzS2jRjD+9GCYiWBual6pRsFzkyWppSQsJlTc88YGhQvOaLiE
+ NEVcy733ott9CDfHV5QpYbT5xlLzVzb9qTdAKDXosstR2G/LOHt9X9MdYxScLFB47Sjv
+ ZEczOymMlvucpl91m2769x4l1taBV5ol+idPUi6WtsmiYj01d2r6TIaBQ7DdaP/KFzeN
+ FzkNqD87Eg4zgrSBi9y5G+eMTUPqTVB6EPyjmu1aGDUMRAqCZ9mqYdJFt108jxKbSb+L
+ /cCA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1787660307; x=1788265107;
+ d=1e100.net; s=20251104; t=1787660427; x=1788265227;
  h=in-reply-to:content-disposition:content-type:mime-version
  :references:message-id:subject:cc:to:from:date:x-gm-gg
  :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
  :content-type;
- bh=DT4QrbFI3IsncY1zCuQdV9ZdCP1rmNgzkzyyROTMyFU=;
- b=eq/4uKk+PI+K6iF0M4OkU9LxKZ/VhDSNRCqta9NcoKIEEdTesxVrCu3LpTzDVyuawq
- DP/9kNX8DnnNLZZiXdvYbrCVP3Qp8Yc8Gewqj1bv9ztYHqqFLB3uCKVf4//PHDRz7MCE
- he42dbS/lP1dsfOpsC7ZyVc3Ljr0NsM5zQB0YaLqaImSvld85cpJ3kxC0FQoFveLeuSX
- tK1T6X4iUsIOCaAY9MItcnzuJx6CfIK9TlXLoNwXgrsiKjrVXER9nEFYWZFg1csM2k/K
- lsJp7QwtRi6PJXWZQPFxK3A59RE1IooJnm/v9yGX/tTik2QeRpgYnDcxhSu/S9xAUdPE
- tsMQ==
+ bh=ejFp3dmc3VLYD3MlC883OMJGVfdC/fpo+ilkNBBuIQU=;
+ b=KjzlTlQVrCYa0yEUpQLrkSt4XMluHanNHGRCs5sAseDmqu+0LAE7lYJv+sCCApH+uJ
+ EAI9RoICiaS/dGg6Q0jVBYlCZS4Mj490sAyXtTCffIYUKW1270OsAM3hGMV8Lq26Rxjx
+ TqvffzAUglFLjswiy15CpJlNZ0lcIiXUvlWAykWd8lpg1alf51Kt3YwipETZ+oYmtlW8
+ 3Mqq7uHW6jKRK+cpD1EmM5ixp0iHWQDAQOji+s6lUqDnLO5KUsdZ5HUAwOVycEwblOQW
+ kGeuuRirNm82Cpf+1wFDb+aTaAD38nlQNdgn4Mo1RpvdFQApkyQrpHuBltuo4hXEn4EE
+ 8xSQ==
 X-Forwarded-Encrypted: i=1;
- AHgh+RrJgDdsQA8PBh3GAgl+QI3DnCWRB2zvogpWAlunIULDixCXo8AUCggPocJ3onr1D4q9M/uHGPwuuw==@nongnu.org
-X-Gm-Message-State: AFuF++k2FMY0tjzLWShPRfcgAZFZI1vR3W/i/kytvmJTgv9/0PUSRv+s
- bZaBhXV1kKLStNVsMLVrcaTdkKV03R79kcx1N2Bkq2LjSXFXmaR3MHJ8lmttiZP/g00=
-X-Gm-Gg: AR+sD12RZam6hOJi24UHynHCO5NriZ6ScGFQmMoGq2wY7lWcC2StxYnJxkM1Gx5w8QF
- CS/Pkyv1H7VlfRwT335adX9M7L3yN50V5zfT1LWaYCcYGOl5sb+XO90g4KqtfqiDjJzZgQlr0ld
- jrJfofCyq+iU9ctAd6TnXQpI2CIInL5Lq5fHXXK+rBlJqi4+ODdIO9DTIl/HXBESuSE7OEkglOv
- CGLsXM2cujAY/sGeJ+feIHErDHddPE1M5fF4NqFSBtg3VhST4nmz6J8ajOSVBphCJTbfo9aJS8w
- syCfkCPQNaIQ/J1RBMsj6UAxz6m1iQ0+D22dzYg4qawFAiYBxyJ9HgvIY975uD4+o8tRqgVi0Ey
- Us8NJrdKgOevX2ZsTdPFScFTkiha/792P8ZpjncVQ7NapQMYW18jrLeSq6TmTuSD97onmy0HxZe
- W1ouBrCFqiAWlwwFI11dwlsVVYtLEPTG77cqNWtO0xPQ0vSyu4KUymI0qtQSlQeahLjnfrzZse
-X-Received: by 2002:a05:600c:3e0b:b0:499:84fe:5f3e with SMTP id
- 5b1f17b1804b1-499d656bb33mr70263465e9.9.1787660306775; 
- Tue, 25 Aug 2026 05:18:26 -0700 (PDT)
+ AHgh+RpVkGZTF/zbkJUi/KM9tDHKlT6Z6TefMzRu+aitUW/DazMJhoLaRah+8yDABBVLZiMFzf5qes/2Bw==@nongnu.org
+X-Gm-Message-State: AFuF++l93u351oN8tpbfICfJKWSGrXQC3OB3VbOVriYLgUMYiv1eoFmT
+ cKxGAyTdn1d6LnzS1U6gTVFfwGUNiIkEX397Xod7JEeYgUpz1hIEaAeueXya5oxDk5w=
+X-Gm-Gg: AR+sD119Tf8h0sJWAT6OypykONKjDickvmgXHdJONT6zJoquxb3JUBg7ScK+mmy390g
+ gWC+w6UCy47hHxNR+WdJQ5kT2NmMMLRmKMtY/x8EkQ29T0/hh2v9k4KX+zGgB+AGCCgwMkZqqt6
+ UVXyVbWW5Nao6X6DzgRYDjltDhz5/TxqddPXGf9rodAqkWHjuc5kFS7wnjgAtW2H7XhEKB7EwP0
+ qHxm1vMoDqbELSVM5J4NcP0Pm/EyDuTG8Ss0QPKgfDdbt/8gCFnkxBKK6stPgV9Sf/yoSVywvnK
+ zsdk1r+Wnk8Aym01jbSCH8RayH0QeH60SFfa+YEp0O0mLIB6Glc/MBZrvlKRfyLFQca1hR6M26A
+ 5i8TGktlxCS8GMiOWqVgJlLlojJx7orjsYPbVDtCAE+NbhVvoHp0ibVoaXcxUvy3g4zx8r2WZDD
+ wR0U9eNpjhryq7rXSbsDMj+o5+LLMkq3oOYad5eOxBJ/uAY8bvHKA9A7KUU6lfEA8=
+X-Received: by 2002:a05:600c:548c:b0:499:8aff:59b6 with SMTP id
+ 5b1f17b1804b1-499c19f514emr282212415e9.14.1787660426815; 
+ Tue, 25 Aug 2026 05:20:26 -0700 (PDT)
 Received: from linaro.org ([2a10:d582:31e:0:8679:ff59:1b3a:5e93])
  by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-499d5d64ffdsm21677175e9.2.2026.08.25.05.18.25
+ 5b1f17b1804b1-499d6364720sm28618395e9.12.2026.08.25.05.20.25
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 25 Aug 2026 05:18:26 -0700 (PDT)
-Date: Tue, 25 Aug 2026 13:18:23 +0100
+ Tue, 25 Aug 2026 05:20:26 -0700 (PDT)
+Date: Tue, 25 Aug 2026 13:20:24 +0100
 From: Jim MacArthur <jim.macarthur@linaro.org>
 To: Tao Tang <tangtao1634@phytium.com.cn>
-Cc: Eric Auger <eric.auger@redhat.com>,
+Cc: "Michael S . Tsirkin" <mst@redhat.com>, Eric Auger <eric.auger@redhat.com>,
  Peter Maydell <peter.maydell@linaro.org>, qemu-devel@nongnu.org,
  qemu-arm@nongnu.org, Chen Baozi <chenbaozi@phytium.com.cn>,
  Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>,
  Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <philmd@mailo.com>,
  Mostafa Saleh <smostafa@google.com>, Chao Liu <chao.liu@processmission.com>
-Subject: Re: [RFC v5 22/28] hw/arm/smmuv3: Harden security checks in MMIO
- handlers
-Message-ID: <ao2ID_3urG4gejDH@linaro.org>
+Subject: Re: [RFC v5 23/28] hw/pci: Add sec-sid property to PCIDevice
+Message-ID: <ao2IiIW427gRN7Cq@linaro.org>
 References: <20260813161515.2788900-1-tangtao1634@phytium.com.cn>
- <20260813162624.2809349-2-tangtao1634@phytium.com.cn>
+ <20260813162145.2800835-1-tangtao1634@phytium.com.cn>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20260813162624.2809349-2-tangtao1634@phytium.com.cn>
-Received-SPF: pass client-ip=2a00:1450:4864:20::433;
- envelope-from=jim.macarthur@linaro.org; helo=mail-wr1-x433.google.com
+In-Reply-To: <20260813162145.2800835-1-tangtao1634@phytium.com.cn>
+Received-SPF: pass client-ip=2a00:1450:4864:20::336;
+ envelope-from=jim.macarthur@linaro.org; helo=mail-wm1-x336.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -109,25 +108,64 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Fri, Aug 14, 2026 at 12:26:21AM +0800, Tao Tang wrote:
-> This patch hardens the security validation within the main MMIO
-> dispatcher functions (smmu_read_mmio and smmu_write_mmio).
+On Fri, Aug 14, 2026 at 12:21:45AM +0800, Tao Tang wrote:
+> Arm SMMUv3 uses a SEC_SID (StreamID Security state) to determine the
+> security state of the programming interface that controls a transaction.
+> The architecture explicitly states that the association between a device
+> and its SEC_SID is a system-defined property, not something derived from
+> the physical address space.
 > 
-> First, accesses to the Secure register space are gated by whether
-> SECURE_IMPL is enabled. When it is disabled, all SMMU_S_* registers are
-> read-as-zero and write-ignored.
+> We need a way to represent this system-defined SEC_SID for PCI devices
+> if we want to implement SMMU's Secure state. So that SMMUv3 can select
+> the correct register bank and configuration when handling their streams.
 > 
-> Second, the check for the input stream's security is made more robust.
-> It now validates not only the legacy MemTxAttrs.secure bit, but also
-> the .space field. This improves compatibility with Arm security space
-> handling.
+> This patch adds a new char *sec_sid field to PCIDevice, together with
+> a "sec-sid" QOM property. The property is intended to carry the
+> platform-defined SEC_SID for the device; for now only Non-secure and
+> Secure security states are supported.
 > 
 > Signed-off-by: Tao Tang <tangtao1634@phytium.com.cn>
 > Reviewed-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
 > ---
->  hw/arm/smmuv3.c | 55 +++++++++++++++++++++++++++++++++++++++++++++++++
->  1 file changed, 55 insertions(+)
+>  hw/pci/pci.c                | 7 +++++++
+>  include/hw/pci/pci_device.h | 3 +++
+>  2 files changed, 10 insertions(+)
 > 
+> diff --git a/hw/pci/pci.c b/hw/pci/pci.c
+> index d3191609e28..b86135af96d 100644
+> --- a/hw/pci/pci.c
+> +++ b/hw/pci/pci.c
+> @@ -104,6 +104,13 @@ static const Property pci_props[] = {
+>      DEFINE_PROP_STRING("sriov-pf", PCIDevice, sriov_pf),
+>      DEFINE_PROP_BIT("x-pcie-ext-tag", PCIDevice, cap_present,
+>                      QEMU_PCIE_EXT_TAG_BITNR, true),
+> +
+> +    /*
+> +     * System-defined, statically configured SEC_SID for this PCI device, used
+> +     * by Arm SMMU. Only support "non-secure" and "secure" security states.
+> +     */
+> +    DEFINE_PROP_STRING("sec-sid", PCIDevice, sec_sid),
+> +
+>      { .name = "busnr", .info = &prop_pci_busnr },
+>  };
+>  
+> diff --git a/include/hw/pci/pci_device.h b/include/hw/pci/pci_device.h
+> index 5cac6e16886..6e6c49fdd19 100644
+> --- a/include/hw/pci/pci_device.h
+> +++ b/include/hw/pci/pci_device.h
+> @@ -187,6 +187,9 @@ struct PCIDevice {
+>      uint32_t max_bounce_buffer_size;
+>  
+>      char *sriov_pf;
+> +
+> +    /* Arm SMMU SEC_SID */
+> +    char *sec_sid;
+>  };
+>  
+>  static inline int pci_intx(PCIDevice *pci_dev)
+> -- 
+> 2.34.1
 
 Reviewed-by: Jim MacArthur <jim.macarthur@linaro.org>
+
 

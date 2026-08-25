@@ -4,107 +4,105 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 95421C61DBD
-	for <qemu-arm@archiver.kernel.org>; Tue, 25 Aug 2026 17:23:53 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A936FC61DBD
+	for <qemu-arm@archiver.kernel.org>; Tue, 25 Aug 2026 20:28:43 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wyurj-000770-KE; Tue, 25 Aug 2026 13:23:15 -0400
+	id 1wyxkq-0003wv-Ea; Tue, 25 Aug 2026 16:28:20 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
- id 1wyurh-00075i-KO
- for qemu-arm@nongnu.org; Tue, 25 Aug 2026 13:23:13 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
- id 1wyurf-0006Ga-QZ
- for qemu-arm@nongnu.org; Tue, 25 Aug 2026 13:23:13 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1787678590;
- h=from:from:reply-to:reply-to:subject:subject:date:date:
- message-id:message-id:to:to:cc:cc:mime-version:mime-version:
- content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=XuZTlrHrZSZrZiDnPA8GLaqwaeOOU8nEvR6bMb/exdU=;
- b=A99IQqkYGRJczx04zoojBwxeibBZ5iS/0zyCTsb2ybqEi8eKWGUYAE1MyACs2KY+msko+B
- gxrll0kMI8alqm6zW2rOiGD6mHuVFbi/wx0F5Rem1jEqOp9D5xSlUOBfc9B71rGqk/F1NL
- InhY+Gj/o8IU/GIiJZZgj0R6q9y8jzM=
-Received: from mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
- relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-609-z_mem7U-OROg9-5ffAcTGw-1; Tue,
- 25 Aug 2026 13:23:07 -0400
-X-MC-Unique: z_mem7U-OROg9-5ffAcTGw-1
-X-Mimecast-MFC-AGG-ID: z_mem7U-OROg9-5ffAcTGw_1787678581
-Received: from mx-prod-int-10.mail-002.prod.us-west-2.aws.redhat.com
- (mx-prod-int-10.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.95])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
- (No client certificate requested)
- by mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 00133195411C; Tue, 25 Aug 2026 17:23:00 +0000 (UTC)
-Received: from redhat.com (headnet03.pony-001.prod.iad2.dc.redhat.com
- [10.2.32.114])
- by mx-prod-int-10.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id EFCCA422; Tue, 25 Aug 2026 17:22:47 +0000 (UTC)
-Date: Tue, 25 Aug 2026 18:22:45 +0100
-From: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
-To: Yonggang Luo <luoyonggang@gmail.com>
-Cc: qemu-devel@nongnu.org, Xianglai Li <lixianglai@loongson.cn>,
- Alistair Francis <alistair.francis@wdc.com>,
- Chinmay Rath <rathc@linux.ibm.com>,
- Sunil V L <sunilvl@ventanamicro.com>, qemu-riscv@nongnu.org,
- Alexander Bulekov <alxndr@bu.edu>, Zhao Liu <zhao1.liu@intel.com>,
- Eric Farman <farman@linux.ibm.com>, Laurent Vivier <lvivier@redhat.com>,
- Peter Maydell <peter.maydell@linaro.org>,
- Chao Liu <chao.liu@processmission.com>,
- Liu Zhiwei <zhiwei_liu@linux.alibaba.com>,
- Palmer Dabbelt <palmer@dabbelt.com>, Song Gao <17746591750@163.com>,
- Harsh Prateek Bora <harshpb@linux.ibm.com>,
- Glenn Miles <milesg@linux.ibm.com>,
- Daniel Henrique Barboza <daniel.barboza@oss.qualcomm.com>,
- Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>,
- qemu-s390x@nongnu.org, Jiaxun Yang <jiaxun.yang@flygoat.com>,
- Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@mailo.com>,
- "Michael S. Tsirkin" <mst@redhat.com>,
- Stefan Hajnoczi <stefanha@redhat.com>,
- Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>,
- David Hildenbrand <david@kernel.org>, qemu-ppc@nongnu.org,
- qemu-arm@nongnu.org, Igor Mammedov <imammedo@redhat.com>,
- Aleksandar Rikalo <arikalo@gmail.com>, Nicholas Piggin <npiggin@gmail.com>,
- Cornelia Huck <cohuck@redhat.com>,
- Richard Henderson <richard.henderson@linaro.org>,
- Ilya Leoshkevich <iii@linux.ibm.com>, Fabiano Rosas <farosas@suse.de>,
- Aurelien Jarno <aurelien@aurel32.net>, Paolo Bonzini <pbonzini@redhat.com>,
- Ani Sinha <anisinha@redhat.com>, Bibo Mao <maobibo@loongson.cn>,
- =?utf-8?Q?Marc-Andr=C3=A9?= Lureau <marcandre.lureau@redhat.com>,
- Matthew Rosato <mjrosato@linux.ibm.com>, Weiwei Li <liwei1518@gmail.com>,
- Darren Kenny <darren.kenny@oracle.com>
-Subject: Re: [PATCH 00/12] single-binary: link ARM and RISC-V into qemu-system
-Message-ID: <ao3PZSfHQZOgY58V@redhat.com>
-References: <20260823150731.896-1-luoyonggang@gmail.com>
- <ao235Hm8Uovrk0ON@redhat.com>
- <CAE2XoE-EJQH7c3TWvpioa7yokNR6cf6pGMjZ2e001yU4-F7rag@mail.gmail.com>
+ (Exim 4.90_1) (envelope-from <strahinjapjankovic@gmail.com>)
+ id 1wyxko-0003wQ-Jj
+ for qemu-arm@nongnu.org; Tue, 25 Aug 2026 16:28:18 -0400
+Received: from mail-yx1-xb130.google.com ([2607:f8b0:4864:20::b130])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <strahinjapjankovic@gmail.com>)
+ id 1wyxkm-0005g0-3D
+ for qemu-arm@nongnu.org; Tue, 25 Aug 2026 16:28:17 -0400
+Received: by mail-yx1-xb130.google.com with SMTP id
+ 956f58d0204a3-66d1442b24eso366911d50.1
+ for <qemu-arm@nongnu.org>; Tue, 25 Aug 2026 13:28:15 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1787689694; cv=none;
+ d=google.com; s=arc-20260327;
+ b=s8gyab0SF9/Kx2PstNw08n+HkBSzA4jNSNorjUvBwqCwkZoER9MDv+2eyO4qMCemcU
+ gUpKUrXO9F+5G3QpShNq2dwwZsxI7wz0cLWmqF0QFQ9d5+20twRouqGQuY77nPcX1ZR0
+ E2zgBbEUEIRVjsjHg0XaztmZ+mIJ/FVjjJRChXYF2/zDaQtd7lTYBHL56vn3Zg3WabOS
+ dpimoEjDqdCPhl9wGbTL5PHM1Fwdm7uVsGMcA34WtGF+r4vaq6CevqCNrFOPET903jmf
+ lzMI/vZCb9s+EPYsd/oL0Veh5Wce3vHQwuF3GbA5QsKbGdVLFsnTabl489EbHJbBjzNW
+ qgbA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
+ s=arc-20260327; 
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:dkim-signature;
+ bh=F3QhrohopVBpQ0k+0yAWhp4MAlB2PhAZNw4lP6AkXFI=;
+ fh=0r5CnGcASYQotPzRW3Cdeh5QgKzW+dHtsDyxbgLx2mQ=;
+ b=PJx6rUvcff1pb0SjNDJqmlPm1SfNaKK1dbJHSPkv4gbptAS3h0+J/unNwG6Xe6lJsd
+ xWRJR0UhSjRf7zYLRLNFRLbxyBDo3dwnNIw1LYg+XhrLv4+LUoG7vxUq0XD1vO8bJfSb
+ 2jyrs386G5uN7blQD/2emciT3nadTmKbUOH5Ocqm6VOAk5Imwy7kd5lNjcvQePH4/z2Q
+ 4yBkmz4zHHypAT2lFxoTTBwVFVAKoGbUD/LXEp44hxA/+OgLehURPNPYUSx5j/OUa/Cx
+ wLi5gRDKiS8Tj7zwiQZ4i+gtsgd4EHYraekZv/5TxAgYRwgLWlYqGOAb1jmUhPCRxIK3
+ L2ow==; darn=nongnu.org
+ARC-Authentication-Results: i=1; mx.google.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=gmail.com; s=20251104; t=1787689694; x=1788294494; darn=nongnu.org;
+ h=content-type:cc:to:subject:message-id:date:from:in-reply-to
+ :references:mime-version:from:to:cc:subject:date:message-id:reply-to
+ :content-type; bh=F3QhrohopVBpQ0k+0yAWhp4MAlB2PhAZNw4lP6AkXFI=;
+ b=grtlnHgk2CPYMbrawOIZzFwu+g5EG97ylCMmL44OF3y44jyFO4evp/UhtCmadN5dda
+ 2D5yHn/28oDE18svw3jTF0cbNDab1hH5/yg5eCI74MfBh/jVekS6Bol5rs3+/6EgO5Oq
+ 6rqm/aJoQB50bsdnCzjH+2ecVBEqpf2hyx7qKaUlfBtN8nnIHQjKrME5XpR5DnDGycOT
+ W+LKul6uvqPmEVpUm+hlWolBCaz5SWvBWHMuHWkgAlG5RX5NmeHhc/zQT0jA1TPMup3z
+ 2Ce7O720rAYw9kM4NgfRyZg7eadeGEM3a3zWHNuzjCqygLyq2it5d2XDWJDmSRHHt3sp
+ LFGQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20251104; t=1787689694; x=1788294494;
+ h=content-type:cc:to:subject:message-id:date:from:in-reply-to
+ :references:mime-version:x-gm-gg:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to:content-type;
+ bh=F3QhrohopVBpQ0k+0yAWhp4MAlB2PhAZNw4lP6AkXFI=;
+ b=a5ooQgdcnmP4jUwi74VZfjVTTq59rAk/HO6tDcgpBAvzUWwgODlcrzYiJoolvy/QRr
+ lM/iH6Wj061dGNWVb1JPqqStWgRj7yMnq7KWzuTgpHutf6wo5XP9SWJbbNoQb//NXfYX
+ XJdfSANtUTKF3sFRHqoHjQkbbfjX+1DSDbbq7/RKLoEGiPMYtssIRwfHE+lylv+5CGf0
+ JPQNYAeqGU4jf8mDBFDCffMkM0WPgF24/qI/2gWQHHtw0VGyKGbp0h/+G4+8KnNh6UeY
+ RvymbPE8KPn/20W5xiVl/rDKIKkgLSHJ2YNoPMIxMQY7Px7YOQlMUSKQPXmUwAGjLZAB
+ C9lQ==
+X-Forwarded-Encrypted: i=1;
+ AHgh+RqX1CvibmfmCpVjdDhg7yJgUOLn2KTO6p6LeJMBVMWKQcVbO0+FRSSR7hvhBPemHAjz425wZB+Nlw==@nongnu.org
+X-Gm-Message-State: AFuF++kfOo5pFnNHkPKYjT/hKUWrl5r2I2iw5IaIsq52pdn0xXznKcBq
+ grxj0H3GeXRYEr6alRiOCnfAU+k1JRYRUgKk7//Zlry+l7BCiVUn3C5rR3s7n/H8M2qsY1c6Gco
+ IItQNTYlgINM/BPOAhseqZIsEQZ00cLk=
+X-Gm-Gg: AR+sD111+O0cWXh8T7JG0rcyLwwRAihUk8M41gOBWSmQNTe1yPkH1vgniucjrIjrYgR
+ Pqj5YeNU1RLYq/74fRC2peI/N3n2NUQTP+07XR3zuJ0Ayi+qh/SCOSlk13Pb5nMOqpeK7fxyrWL
+ MwJITUbUPLqeCI8ES3ZungTtqso3nxe9kvtil5RACzaZVG/pH1M5QYceo2lyz2b/aHWAAGm3Yb7
+ UQFMrLALDjLyNhuoK+T67mzFELGVwhRF+R6mhZCw/bd3ATLirmuhnIkJtJKbjlt9ndi++eLtXUR
+ JGFpHkUXVzuPHkYD4N5/OrpPV+g5ADGAcIQtEk6zT6QH7A==
+X-Received: by 2002:a53:ebc5:0:b0:66d:1be8:9f08 with SMTP id
+ 956f58d0204a3-66d2568d05emr421023d50.16.1787689694298; Tue, 25 Aug 2026
+ 13:28:14 -0700 (PDT)
 MIME-Version: 1.0
-In-Reply-To: <CAE2XoE-EJQH7c3TWvpioa7yokNR6cf6pGMjZ2e001yU4-F7rag@mail.gmail.com>
-User-Agent: Mutt/2.4.0 (2026-06-19)
-X-Scanned-By: MIMEDefang 3.6 on 10.30.177.95
-X-Mimecast-MFC-PROC-ID: 08IBUJEg6eO3ldGFdf7Qa--5giLAAimT2qm4LwuYSPE_1787678581
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=berrange@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: 12
-X-Spam_score: 1.2
-X-Spam_bar: +
-X-Spam_report: (1.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=0.001, RCVD_IN_SBL_CSS=3.335,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=no autolearn_force=no
+References: <20260819-allwinner-gpio-v1-1-2a64866dff11@gmail.com>
+ <F3E16C1D-C4C9-46AC-9762-FB0081B6A27A@gmail.com>
+In-Reply-To: <F3E16C1D-C4C9-46AC-9762-FB0081B6A27A@gmail.com>
+From: Strahinja Jankovic <strahinja.p.jankovic@gmail.com>
+Date: Tue, 25 Aug 2026 22:28:02 +0200
+X-Gm-Features: AcwNN1WCwNv2hc-nFjaSMJ_drTNjjZeF0Flxp9Z5zf6gXwb3rQmAGtEDktKG0g0
+Message-ID: <CABtshVRRm=vwTXagZ=C9kEVvuhadiD3hMbnsAfLxAzeS8J+jug@mail.gmail.com>
+Subject: Re: [PATCH 1/3] hw/gpio: Allwinner A10 GPIO emulation
+To: Jack Wang <77239050qq@gmail.com>
+Cc: qemu-devel@nongnu.org, pbonzini@redhat.com, peter.maydell@linaro.org, 
+ qemu-arm@nongnu.org, pierrick.bouvier@oss.qualcomm.com, farosas@suse.de, 
+ lvivier@redhat.com
+Content-Type: multipart/alternative; boundary="0000000000003288910659e4f162"
+Received-SPF: pass client-ip=2607:f8b0:4864:20::b130;
+ envelope-from=strahinjapjankovic@gmail.com; helo=mail-yx1-xb130.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ HTML_MESSAGE=0.001, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -117,42 +115,140 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-To: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Wed, Aug 26, 2026 at 12:55:09AM +0800, Yonggang Luo wrote:
-> On Tue, Aug 25, 2026 at 11:42 PM Daniel P. Berrangé <berrange@redhat.com>
-> wrote:
-> >
-> > On Sun, Aug 23, 2026 at 11:07:18PM +0800, Yonggang Luo wrote:
-> > > This series produces one qemu-system binary that can run ARM (32 and 64)
-> > > and RISC-V (32 and 64, little- and big-endian TargetInfo). It follows
-> > > Pierrick Bouvier's merged series "single-binary: implement dynamic
-> > > filtering for machine types":
-> > >
-> > >
-> https://patchew.org/QEMU/20260724000948.234657-1-pierrick.bouvier@oss.qualcomm.com/
-> >
-> > Do you have a public git branch somewhere with this series ? I'm
-> > having trouble getting either this series or Pierrick's to cleanly
-> > apply at any point to test it.
-> 
-> 
-> https://patchew.org/QEMU/20260823150731.896-1-luoyonggang@gmail.com/
-> 
-> you can use git patchew do it
-> 
-> git fetch https://github.com/patchew-project/qemu tags/patchew/
-> 20260823150731.896-1-luoyonggang@gmail.com
+--0000000000003288910659e4f162
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 
-Oh yes, thanks for the reminder about patchew, that does the job.
+Hi Jack,
 
-With regards,
-Daniel
--- 
-|: https://berrange.com       ~~        https://hachyderm.io/@berrange :|
-|: https://libvirt.org          ~~          https://entangle-photo.org :|
-|: https://pixelfed.art/berrange   ~~    https://fstop138.berrange.com :|
+Thanks for reviewing the changes.
 
+On Thu, Aug 20, 2026 at 5:05=E2=80=AFAM Jack Wang <77239050qq@gmail.com> wr=
+ote:
+
+> Hi,jankovic,I read datasheet of Allwinner and confirm basic address and
+> most function do well. But there are still some place needing improvement=
+.
+>
+> > +static inline bool gpio_is_output(AWPortMap *port, uint32_t pin)
+> > +{
+> > +    uint32_t cfg_n =3D pin / CFG_PINS_PER_REG;
+> > +    uint32_t pin_shift =3D (pin % CFG_PINS_PER_REG) * CFG_PIN_STRIDE;
+> > +    return (extract32(port->cfg[cfg_n], pin_shift, CFG_PIN_STRIDE - 1)
+> =3D=3D
+> > +        CFG_OUTPUT_MASK);
+> > +}
+> > +
+> > +static inline bool gpio_is_input(AWPortMap *port, uint32_t pin)
+> > +{
+> > +    uint32_t cfg_n =3D pin / CFG_PINS_PER_REG;
+> > +    uint32_t pin_shift =3D (pin % CFG_PINS_PER_REG) * CFG_PIN_STRIDE;
+> > +    return (extract32(port->cfg[cfg_n], pin_shift, CFG_PIN_STRIDE - 1)
+> =3D=3D
+> > +        CFG_INPUT_MASK);
+> > +}
+> > +
+> > +static inline int int_ctl_cfg(AWGPIOState *s, int irq_line)
+> > +{
+> > +    unsigned int_cfg_n =3D s->regs[REG_INDEX(GPIO_INT_CFG0) + irq_line=
+ /
+> 8];
+> > +    return extract32(int_cfg_n,
+> > +                     (irq_line % INT_CFG_IRQ_PER_REG) *
+> INT_CFG_IRQ_STRIDE,
+> > +                     INT_CFG_IRQ_STRIDE - 1);
+> > +}
+> > +
+> there you use 'INT_CFG_IRQ_STRIDE - 1=E2=80=99 as stride for both two fun=
+ction=E3=80=82For
+> int_ctl_cfg the stride is supposed to be 4
+> https://linux-sunxi.org/images/1/1e/Allwinner_A10_User_manual_V1.5.pdf in
+> page 333 you can find it, now all qtest pass because double edge do not b=
+e
+> designed in qtest=EF=BC=88better add this test=EF=BC=89. But for input an=
+d output function
+> it is right due to byte 3 is reserved.
+>
+
+The stride is set to 4 bits, but I am using only 3 bits when extracting the
+value for specific interrupt pin configuration, since the maximum
+non-reserved value that can be configured is 4 (for double edge). I will
+add the double edge test as well in the v2 patches.
+
+Best regards,
+Strahinja Jankovic
+
+
+>
+> Jack Wang
+>
+
+--0000000000003288910659e4f162
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr"><div dir=3D"ltr">Hi Jack,<div><br></div><div>Thanks for re=
+viewing the changes.</div></div><br><div class=3D"gmail_quote gmail_quote_c=
+ontainer"><div dir=3D"ltr" class=3D"gmail_attr">On Thu, Aug 20, 2026 at 5:0=
+5=E2=80=AFAM Jack Wang &lt;<a href=3D"mailto:77239050qq@gmail.com">77239050=
+qq@gmail.com</a>&gt; wrote:<br></div><blockquote class=3D"gmail_quote" styl=
+e=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204);paddin=
+g-left:1ex">Hi,jankovic,I read datasheet of Allwinner and confirm basic add=
+ress and most function do well. But there are still some place needing impr=
+ovement.<br>
+<br>
+&gt; +static inline bool gpio_is_output(AWPortMap *port, uint32_t pin)<br>
+&gt; +{<br>
+&gt; +=C2=A0 =C2=A0 uint32_t cfg_n =3D pin / CFG_PINS_PER_REG;<br>
+&gt; +=C2=A0 =C2=A0 uint32_t pin_shift =3D (pin % CFG_PINS_PER_REG) * CFG_P=
+IN_STRIDE;<br>
+&gt; +=C2=A0 =C2=A0 return (extract32(port-&gt;cfg[cfg_n], pin_shift, CFG_P=
+IN_STRIDE - 1) =3D=3D<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 CFG_OUTPUT_MASK);<br>
+&gt; +}<br>
+&gt; +<br>
+&gt; +static inline bool gpio_is_input(AWPortMap *port, uint32_t pin)<br>
+&gt; +{<br>
+&gt; +=C2=A0 =C2=A0 uint32_t cfg_n =3D pin / CFG_PINS_PER_REG;<br>
+&gt; +=C2=A0 =C2=A0 uint32_t pin_shift =3D (pin % CFG_PINS_PER_REG) * CFG_P=
+IN_STRIDE;<br>
+&gt; +=C2=A0 =C2=A0 return (extract32(port-&gt;cfg[cfg_n], pin_shift, CFG_P=
+IN_STRIDE - 1) =3D=3D<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 CFG_INPUT_MASK);<br>
+&gt; +}<br>
+&gt; +<br>
+&gt; +static inline int int_ctl_cfg(AWGPIOState *s, int irq_line)<br>
+&gt; +{<br>
+&gt; +=C2=A0 =C2=A0 unsigned int_cfg_n =3D s-&gt;regs[REG_INDEX(GPIO_INT_CF=
+G0) + irq_line / 8];<br>
+&gt; +=C2=A0 =C2=A0 return extract32(int_cfg_n,<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
+ =C2=A0(irq_line % INT_CFG_IRQ_PER_REG) * INT_CFG_IRQ_STRIDE,<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
+ =C2=A0INT_CFG_IRQ_STRIDE - 1);<br>
+&gt; +}<br>
+&gt; +<br>
+there you use &#39;INT_CFG_IRQ_STRIDE - 1=E2=80=99 as stride for both two f=
+unction=E3=80=82For int_ctl_cfg the stride is supposed to be 4 <a href=3D"h=
+ttps://linux-sunxi.org/images/1/1e/Allwinner_A10_User_manual_V1.5.pdf" rel=
+=3D"noreferrer" target=3D"_blank">https://linux-sunxi.org/images/1/1e/Allwi=
+nner_A10_User_manual_V1.5.pdf</a> in page 333 you can find it, now all qtes=
+t pass because double edge do not be designed in qtest=EF=BC=88better add t=
+his test=EF=BC=89. But for input and output function it is right due to byt=
+e 3 is reserved.<br></blockquote><div><br></div><div>The stride is set to 4=
+ bits, but I am using only 3 bits when extracting the value for specific in=
+terrupt pin configuration, since the maximum non-reserved value that can be=
+ configured is 4 (for double edge). I will add the double edge test as well=
+ in the v2 patches.</div><div><br></div><div>Best regards,</div><div>Strahi=
+nja Jankovic</div><div>=C2=A0</div><blockquote class=3D"gmail_quote" style=
+=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204);padding=
+-left:1ex">
+<br>
+Jack Wang<br>
+</blockquote></div></div>
+
+--0000000000003288910659e4f162--
 

@@ -4,70 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 959E7C61DC4
-	for <qemu-arm@archiver.kernel.org>; Tue, 25 Aug 2026 22:03:04 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 98C1FC61DB9
+	for <qemu-arm@archiver.kernel.org>; Tue, 25 Aug 2026 22:03:12 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wyzDu-0005Ak-NE; Tue, 25 Aug 2026 18:02:27 -0400
+	id 1wyzEb-00076C-E6; Tue, 25 Aug 2026 18:03:11 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mathieu.poirier@linaro.org>)
- id 1wyzD2-0003cA-PB
- for qemu-arm@nongnu.org; Tue, 25 Aug 2026 18:01:34 -0400
-Received: from mail-pj1-x1030.google.com ([2607:f8b0:4864:20::1030])
+ id 1wyzDP-0004GM-4k
+ for qemu-arm@nongnu.org; Tue, 25 Aug 2026 18:01:55 -0400
+Received: from mail-pg1-x52a.google.com ([2607:f8b0:4864:20::52a])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <mathieu.poirier@linaro.org>)
- id 1wyzD1-0001gp-1l
- for qemu-arm@nongnu.org; Tue, 25 Aug 2026 18:01:32 -0400
-Received: by mail-pj1-x1030.google.com with SMTP id
- 98e67ed59e1d1-38fdeaed181so666152a91.1
- for <qemu-arm@nongnu.org>; Tue, 25 Aug 2026 15:01:30 -0700 (PDT)
+ id 1wyzDN-00021d-7V
+ for qemu-arm@nongnu.org; Tue, 25 Aug 2026 18:01:54 -0400
+Received: by mail-pg1-x52a.google.com with SMTP id
+ 41be03b00d2f7-c96b08cdd1cso244631a12.0
+ for <qemu-arm@nongnu.org>; Tue, 25 Aug 2026 15:01:52 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1787695289; x=1788300089; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:from:to:cc:subject:date
- :message-id:reply-to:content-type;
- bh=v/EbG9/3Hb8DCKZa1jZljaYOgVIsiNG77AyoF+zPvP4=;
- b=WBSbHCnxyitDp/XHTmueOXOWX8wGlr3uh4jXTEXcP3mlb0XJFWT5cjGFulQEj53AhS
- 9F4T29D+AzNk4TUbR/aoqViV3YQu1swQTgri9L+Sj6vOkV5j+uf56Ed5uaxOjh3Lnf50
- cHYjJ+HNACVQaItR5xjwzJvJ6miAgr5z9fSfLjLdsiJA/b7/HWoDkAddumK4M/aQfzcx
- wDLVNyKr4cPG+r/RJ3ECuocuWvfAsRW+ye29r3nVBVMqUGlse8yzOnJt4MVoRG3nwC8E
- lug5yBfnJmCf3kzd8tErD1rp9+4SlsNOXdm3yxRrn88ZsPUSf56Jgc9xGCN0/SWfEXcm
- lkug==
+ d=linaro.org; s=google; t=1787695312; x=1788300112; darn=nongnu.org;
+ h=content-transfer-encoding:content-type:mime-version:references
+ :in-reply-to:message-id:date:subject:cc:to:from:from:to:cc:subject
+ :date:message-id:reply-to:content-type;
+ bh=osGTHClTLaBLi3JCE0COpcCCRCh2Va5dTzvXjc97G4M=;
+ b=hIskFb4/F3DGeYNOaBsE0W/9qAkyqmwpzQGujPqrKkJOk4liSd3T8npzbhFtK+3c+W
+ zDvpsuzRGaft824c3UT7sY40QtlIPQiLI7CI8vMiQfMwZxkQy0O40eAVwW8NGJ2VB+l+
+ RzrrUC10m9M81fde5nZUXsp0ULGVLRat5z/RSONoCdBi7IhogFB5Lf3+QZFMirRLuMAi
+ f5tZ0clRkzsafXGtypyBAEu82KtTnN8Gf9r1sdL3h0aCwcAWT+ZBIvruae44hQtA+BYs
+ pb7OqzNYnS0ckdkmJeoz6JBAp050Otwjt+3i9+nYRIXVTmtNyGpwl0x+OQjEhdvfiBGw
+ it6w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1787695289; x=1788300089;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
- :to:cc:subject:date:message-id:reply-to:content-type;
- bh=v/EbG9/3Hb8DCKZa1jZljaYOgVIsiNG77AyoF+zPvP4=;
- b=q1DXrI8nk36GYIZwOy+5lUZvVT/FNBoh9q2no/TZpYmovYoI7NEcxvlJvb3gYRitFl
- 8w27TFrJ18IVW2lKMyQZicDpwrn1KfhXRO9ONOpYr/NyJUvmOvhveR0pnJVVjuPBmf0d
- e8hgL0gxoL6J9cf+F+Qs6sA5XlolqTlUaRQtGP4jabF62htI9L8F0pj0VTrFh6qrfaoB
- vesHtL7ZRc1Bn2oh/Ebf0Jeg76S+5Pk+HXpyHufLW/QYsLQwpw5WpUimcYOK4lSKaXPZ
- w18kQg/jcxfV0FS2e3IyQMbZFfMYA2PLFe9vhnelaOsTKbTjKZoZb6peDOnwebNMdnH8
- MBiw==
+ d=1e100.net; s=20251104; t=1787695312; x=1788300112;
+ h=content-transfer-encoding:content-type:mime-version:references
+ :in-reply-to:message-id:date:subject:cc:to:from:x-gm-gg
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
+ :content-type;
+ bh=osGTHClTLaBLi3JCE0COpcCCRCh2Va5dTzvXjc97G4M=;
+ b=SS4EAGuZmIHuylY4tSHVTY2qQcZsDYaxOSLVPVHqDISAdnH4NgLdfIEFSOb5He5HKO
+ rVQmIpymxFUkEQfgYfJuLlkyGxn3pHxB6fHmCQ7vczFQf7cJKncaXsyDUBTLMT6E5Gso
+ YHDKrYM/yJR+ds6I55v3Nw7ObERcS/pj9SUh+4KRcBHVcxIDy/u9Td1t8HNSYi9oxRyF
+ upq+a77dyPaBkd42WA6wmrAi9dk+0Up2NYoD6F86FXbGZiXhKEY2NTZ2CMKHrs/nzQgs
+ 9HmmV7L/RXyU84xzvk02VvIfhag7PYm99Ibacop6g8EVBuQApqQZAQ4MidAcjI+sUgks
+ qcOg==
 X-Forwarded-Encrypted: i=1;
- AHgh+RqnenoQrcQQij0J8kSth9Pjpo3zbHY2FGPFc9fx/vesSmlNREdScWit5P/kp9qA5aDwv1GZWJee+w==@nongnu.org
-X-Gm-Message-State: AFuF++nLF9ea9ZTQwRvwcM+lUOD1ylUdJ/2tE9TQ2z4PPebWdT5Jrjbg
- SScKT3fPj/biH7CWXE05oSqwPHlSCtghEqiGY1m8KoTQKNfG0lX+b9/5cF3Fb/0hEDI=
-X-Gm-Gg: AR+sD109aLWqDtviJtvagCljQouPTFhsEbBkrK/i40S7WUcA7Ddn8I2nrxSFvQD1680
- +Kc35zOaPXPtsH5mmH23WUNj+BhKYNEGnkKX6NsaB+BS0VWJJWW7Ioeew+6jYwG+3CshhM/sn1e
- +jj1InHeOnDI2jEPzNQ1onmTr23J5Q419VPyj7fa6lTpGeXTEHl0bJEr1FVfpA/tlNhGKeN4dqG
- UnHiS4BnYESysSDDgOwvfuTx7trBroK8nOdaeUESvUPA/VhiUOMKNlAhpj8UEX55r75K8CvtRPV
- 2bE+xSsZu5jQz9KnApcw0tm2Xr2FeZQEUo/DgXm6sEWEybZnhV5U7rrJUzWJEyQisR2vXezTHwB
- X1ZrkrNAGuPJTB7WJ9nbI+27EBQnyM+xTLdRoMW7hZSDViQFTcWsnTq0QEJLrfMCEXnC8WIXy/2
- tPRLlkryKNu6FZ5bUagaI5xqTUN2SCNPfB6g/TRmmpk5v7VTBIoyE4p3EYCGTfCKn4Y+HXimLug
- 3OGbYr6fodGiptlNr+WV50gng==
-X-Received: by 2002:a17:90b:1641:b0:38e:2524:724f with SMTP id
- 98e67ed59e1d1-3966d421936mr3799826a91.12.1787695288928; 
- Tue, 25 Aug 2026 15:01:28 -0700 (PDT)
+ AHgh+RrnkfYp3eVQmhM+05xHHgXx8giF7wnheF3Ia36vLVbJAeZBqh9jzQBL/XCXKLx0wk5iHS4Y+3qTPA==@nongnu.org
+X-Gm-Message-State: AFuF++kT88DUH4HDDFQPowzRmr0hnDFS/aZhUWGqwTXhw8+IlkWleguC
+ iyKo3XjzQqk3uOpKd8FMnjBnnppPX8qANLWDGSnVGzPVPhglzDtr4gixupyI+YTHeBE=
+X-Gm-Gg: AR+sD12oZ6aAwigrHMAE0xupEfRSGq4FNyMDnWBFVANGq+PQ8nQQBiY3cwCaQErt4Oa
+ QpAmEivr+yT3EyEUiRyeBmee9yVyTw11o3oBaU9nNiClM/eA7BW/xgQrsy/oCtAMn4CIUN1pkwW
+ MYuAXInq1DtgPSOA0huvAYL5L0TT3+mcHm6KMQS+dnDNN9MkcYhrgd81hnZ1p3SwEVpQTz6E2u9
+ huZn72yLJghLZoR0imx+5OrRgffUl6BO/uHQlOfq+x/m3b+74ejqUH74jEinVWHiIrzc/ClJLvo
+ CMegPQCvnx8hBBtZfJGSS0PyOkWHp+bDlCn09mcXuLP4GBym/5ccTZDVPO8nK825NP9iiEvlkAq
+ 1uh0a/zzhXFEiXKWYNkEtIlpdBO7QMmZFxhwTnU8+t3q1bR/X1NkVa0pGb4QW6XB0336DExtUAp
+ 9eE/cszWtr4Jjx4YRWtaNPxnNCLpOUZnsK3osbZ9sCMZLoRWmqZA8YUz0GgoVi9bCjBlxwoDL2a
+ 8Sfsd7gux3EjuQ=
+X-Received: by 2002:a17:90b:4acc:b0:396:5c22:b1f1 with SMTP id
+ 98e67ed59e1d1-3966d413283mr4235262a91.8.1787695311886; 
+ Tue, 25 Aug 2026 15:01:51 -0700 (PDT)
 Received: from p14s.cg.shawcable.net
  ([2604:3d09:148c:c800:a37a:292f:1363:c0af])
  by smtp.gmail.com with ESMTPSA id
- 98e67ed59e1d1-3965d119724sm3090120a91.2.2026.08.25.15.01.26
+ 98e67ed59e1d1-3965d119724sm3090120a91.2.2026.08.25.15.01.50
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 25 Aug 2026 15:01:27 -0700 (PDT)
+ Tue, 25 Aug 2026 15:01:51 -0700 (PDT)
 From: Mathieu Poirier <mathieu.poirier@linaro.org>
 To: berrange@redhat.com, kchamart@redhat.com,
  pierrick.bouvier@oss.qualcomm.com, peter.maydell@linaro.org,
@@ -76,23 +77,25 @@ To: berrange@redhat.com, kchamart@redhat.com,
  enju.kohei@fujitsu.com
 Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, kvm@vger.kernel.org,
  mathieu.poirier@linaro.org
-Subject: [RFC v3 11/24] target/arm/kvm-rme: Populate Realm with runtime images
-Date: Tue, 25 Aug 2026 16:00:48 -0600
-Message-ID: <20260825220101.3443954-12-mathieu.poirier@linaro.org>
+Subject: [RFC v3 22/24] docs/interop/firmware.json: Add arm-rme firmware
+ feature
+Date: Tue, 25 Aug 2026 16:00:59 -0600
+Message-ID: <20260825220101.3443954-23-mathieu.poirier@linaro.org>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20260825220101.3443954-1-mathieu.poirier@linaro.org>
 References: <20260825220101.3443954-1-mathieu.poirier@linaro.org>
 MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::1030;
- envelope-from=mathieu.poirier@linaro.org; helo=mail-pj1-x1030.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::52a;
+ envelope-from=mathieu.poirier@linaro.org; helo=mail-pg1-x52a.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -110,116 +113,48 @@ Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
 From: Jean-Philippe Brucker <jean-philippe@linaro.org>
 
-Once the Realm descriptor has been created, tell KVM to transfer runtime
-images (kernel, DT, and rootfs) from guest memory to Realm memory.
+Some distributions provide packages continaing firmware to be run under
+QEMU, such as "qemu-efi-aarch64" or "edk2-aarch64". Those packages also
+contain descriptors in /usr/share/qemu/firmware/*.json listing the
+firmware features, so that environments like libvirt can figure out
+which firmware they can load.
+
+Define an optional feature for arm64 firmware to indicate that a
+firmware supports running in a Realm. Firmware implementations need
+extra support for running in a Realm, in particular to distinguish
+shared from private guest memory.
 
 Signed-off-by: Jean-Philippe Brucker <jean-philippe@linaro.org>
-Signed-off-by: Lorenzo Pieralisi <lorenzo.pieralisi@linaro.org>
+Acked-by: Markus Armbruster <armbru@redhat.com>
+Reviewed-by: Philippe Mathieu-Daudé <philmd@oss.qualcomm.com>
 Signed-off-by: Mathieu Poirier <mathieu.poirier@linaro.org>
 ---
- target/arm/kvm-rme.c | 76 ++++++++++++++++++++++++++++++++++++++++++++
- 1 file changed, 76 insertions(+)
+ docs/interop/firmware.json | 5 ++++-
+ 1 file changed, 4 insertions(+), 1 deletion(-)
 
-diff --git a/target/arm/kvm-rme.c b/target/arm/kvm-rme.c
-index 9985f5daba89..c082a5d8f3d1 100644
---- a/target/arm/kvm-rme.c
-+++ b/target/arm/kvm-rme.c
-@@ -15,6 +15,7 @@
- #include "migration/blocker.h"
- #include "qapi/error.h"
- #include "qemu/error-report.h"
-+#include "qemu/memalign.h"
- #include "qom/object_interfaces.h"
- #include "system/confidential-guest-support.h"
- #include "system/kvm.h"
-@@ -43,12 +44,87 @@ OBJECT_DEFINE_SIMPLE_TYPE_WITH_INTERFACES(RmeGuest, rme_guest, RME_GUEST,
- 
- static RmeGuest *rme_guest;
- 
-+static int rme_populate_range(const RmeRamRegion *region, bool measure,
-+                              Error **errp)
-+{
-+    int ret;
-+    void *buffer;
-+    hwaddr size = region->size;
-+    hwaddr base = region->base;
-+    hwaddr start = QEMU_ALIGN_DOWN(base, RME_PAGE_SIZE);
-+    hwaddr end = QEMU_ALIGN_UP(base + size, RME_PAGE_SIZE);
-+    struct kvm_arm_rmi_populate populate_args;
-+    size_t aligned_size = ROUND_UP(region->size, qemu_real_host_page_size());
-+
-+    if (!region->data) {
-+        return -ENODEV;
-+    }
-+
-+    ret = kvm_set_memory_attributes_private(start, end - start);
-+    if (ret) {
-+        error_report("RME: failed to configure initial"
-+                     "private guest memory");
-+        return ret;
-+    }
-+
-+    /* Allocate page-aligned memory */
-+    buffer = qemu_memalign(qemu_real_host_page_size(), aligned_size);
-+
-+    if (!buffer) {
-+        return -ENOMEM;
-+    }
-+
-+    memset(buffer, 0, aligned_size);
-+    memcpy(buffer, region->data, region->size);
-+
-+    populate_args = (struct kvm_arm_rmi_populate) {
-+        .base = start,
-+        .size = end - start,
-+        .source_uaddr = (uintptr_t)buffer,
-+        .flags = measure ? KVM_ARM_RMI_POPULATE_FLAGS_MEASURE : 0,
-+    };
-+
-+    while (populate_args.size > 0) {
-+        ret = kvm_vm_ioctl(kvm_state, KVM_ARM_RMI_POPULATE, &populate_args, 0);
-+        if (ret) {
-+            error_setg_errno(errp, -ret,
-+                "failed to populate realm [0x%"HWADDR_PRIx", 0x%"HWADDR_PRIx")",
-+                start, end);
-+            break;
-+        }
-+    }
-+
-+    qemu_vfree(buffer);
-+
-+    return ret;
-+}
-+
-+static void rme_populate_ram_region(gpointer data, gpointer err)
-+{
-+    Error **errp = err;
-+    const RmeRamRegion *region = data;
-+
-+    if (*errp) {
-+        return;
-+    }
-+
-+    rme_populate_range(region, /* measure */ true, errp);
-+}
-+
- static void rme_vm_state_change(void *opaque, bool running, RunState state)
- {
-+    Error *errp = NULL;
-+
-     if (!running) {
-         return;
-     }
- 
-+    g_slist_foreach(rme_guest->ram_regions, rme_populate_ram_region, &errp);
-+    g_slist_free_full(g_steal_pointer(&rme_guest->ram_regions), g_free);
-+    if (errp) {
-+        return;
-+    }
-+
-     kvm_mark_guest_state_protected();
- }
- 
+diff --git a/docs/interop/firmware.json b/docs/interop/firmware.json
+index 421bee0e5ed4..2850b91078d9 100644
+--- a/docs/interop/firmware.json
++++ b/docs/interop/firmware.json
+@@ -161,6 +161,9 @@
+ #     options related to this feature are documented in
+ #     "docs/system/i386/amd-memory-encryption.rst".
+ #
++# @arm-rme: The firmware supports running in a Realm, under the Arm Realm
++#     Management Extension (RME).
++#
+ # @intel-tdx: The firmware supports running under Intel Trust Domain
+ #     Extensions (TDX).
+ #
+@@ -229,7 +232,7 @@
+ { 'enum' : 'FirmwareFeature',
+   'data' : [ 'acpi-s3', 'acpi-s4',
+              'amd-sev', 'amd-sev-es', 'amd-sev-snp',
+-             'intel-tdx',
++             'arm-rme', 'intel-tdx',
+              'enrolled-keys', 'requires-smm',
+              'secure-boot', 'host-uefi-vars',
+              'verbose-dynamic', 'verbose-static' ] }
 -- 
 2.43.0
 

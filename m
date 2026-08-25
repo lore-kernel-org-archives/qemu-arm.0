@@ -4,69 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A1C1EC61DBE
-	for <qemu-arm@archiver.kernel.org>; Tue, 25 Aug 2026 11:58:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A5C95C61DBE
+	for <qemu-arm@archiver.kernel.org>; Tue, 25 Aug 2026 11:59:00 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wypmu-000476-2Z; Tue, 25 Aug 2026 07:57:56 -0400
+	id 1wypmt-00046q-P6; Tue, 25 Aug 2026 07:57:55 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <stephensportia@gmail.com>)
- id 1wyiPe-0006HE-9k
- for qemu-arm@nongnu.org; Tue, 25 Aug 2026 00:05:26 -0400
-Received: from mail-pl1-x632.google.com ([2607:f8b0:4864:20::632])
+ id 1wyiPO-00063X-3i
+ for qemu-arm@nongnu.org; Tue, 25 Aug 2026 00:05:10 -0400
+Received: from mail-pg1-x531.google.com ([2607:f8b0:4864:20::531])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <stephensportia@gmail.com>)
- id 1wyiPc-0007dL-MB
- for qemu-arm@nongnu.org; Tue, 25 Aug 2026 00:05:26 -0400
-Received: by mail-pl1-x632.google.com with SMTP id
- d9443c01a7336-2cab973140bso54702655ad.3
- for <qemu-arm@nongnu.org>; Mon, 24 Aug 2026 21:05:24 -0700 (PDT)
+ id 1wyiPK-0007bC-V5
+ for qemu-arm@nongnu.org; Tue, 25 Aug 2026 00:05:09 -0400
+Received: by mail-pg1-x531.google.com with SMTP id
+ 41be03b00d2f7-cbedf318752so3279091a12.0
+ for <qemu-arm@nongnu.org>; Mon, 24 Aug 2026 21:05:06 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20251104; t=1787630723; x=1788235523; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:from:to:cc:subject:date
- :message-id:reply-to:content-type;
- bh=r9YZtJePZ3XT7IoRh5uSQAmm2CNF2ALweHO4SvoI3s4=;
- b=FIPwN1mCqMpPRzI7qAiRnstt843eeHXP4thBPy6SIU/pk5cmGaWzNiv6fnkJYReM32
- uvEHYaWoN3MCrmX32m7S+CTF4eZ95n1vHTqmfAaw2Rtpd4PLjI63MrR/6BadJmxKOh19
- 2iEJlLiQ2RWUTpsw7r4Xzf92T/Uxxi0UPADXNxP+8jVrMWOWM1r8jEcBvzGWvQDpqTgo
- WCHY4VkxiVp+UBZlJqo4jktXvCBbGmRQ8fDy6my3uzkW4Jneyj3v5W/Q0Jw4N/GObF9n
- DVJYd04jHh6tzVcWMWxKObkVD1pBPS/fCqwtgMq/Kl9TCCWeqIFOmDqx8EyX4vrM9yt9
- 3t1g==
+ d=gmail.com; s=20251104; t=1787630705; x=1788235505; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:content-type:message-id:date
+ :subject:cc:to:from:from:to:cc:subject:date:message-id:reply-to
+ :content-type; bh=AUTHHBqmyJCPOXohtw2QY9zPZWECZBFWzrfwTsE4DA0=;
+ b=iEad8K1jk4+LZSKJ6M5Nxsip/lCXZ1j/+MQ8uD9ksukj4EeXy2DTjvnhao+79l4ZVS
+ xD4/JaT69o70iXGIWvtmXwmkJ1gxHjxWNmW7Nl+ooyGY5Gn/ZdLU22owNIDCpxgZSMMH
+ ZU+tXG2JUqAcZ9clTnLfw+hT+kHXAeanF1Wn3M/by10sVtgH3v3lpshlOSXHD/oLwdsI
+ b0bPIVumx3f8laZj6xn/Mk/5A2g5EFpufNWe1DjMeu25uOwG39G24hBY7trMS+nTclVY
+ BzfejBgOLuPgOjYR7YS7nTCxJrUDtIGTa+UVLsohAb3+9z0HPFY73VHeImyQe0si8Mw/
+ hGvA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1787630723; x=1788235523;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
- :to:cc:subject:date:message-id:reply-to:content-type;
- bh=r9YZtJePZ3XT7IoRh5uSQAmm2CNF2ALweHO4SvoI3s4=;
- b=fbDlTgHcHNFVnyS5E+qmOH7mnLMULXWcX1/J1oxz5GTN/tn4zdNhIJsxxT+nCKYKxm
- qO4c+kU/HPdkNIzHpPthKxlk8ijH7DZMsFdDJgaVwZc+275OZUvhyYoJaPM5+QETm1I8
- sLZa9i3VF/OgIZMykb2MKl0e+OF9d460+INdjTcnTuYDepdJRgTOuL6uR4J7eTSbZY6v
- XPxFCp9mmSP86a30HnYfEMYOJ0GRnoDGnLIY2xgimyKRpLmbciPcpT+oAHywf0zH/KpF
- 0BH1HKeM/xrAXOVNOPd85SfmU9YLV7kW5CJCic826x6xVnn0ZT8zOLHb05qVdKan+ji0
- WjLg==
+ d=1e100.net; s=20251104; t=1787630705; x=1788235505;
+ h=content-transfer-encoding:mime-version:content-type:message-id:date
+ :subject:cc:to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject
+ :date:message-id:reply-to:content-type;
+ bh=AUTHHBqmyJCPOXohtw2QY9zPZWECZBFWzrfwTsE4DA0=;
+ b=DUqXchdGlvmQ1IJElHI1pcNP2da+AL2FF0leUocAtD8B7ZcAQwgtHP7OOyVAK5ik2m
+ 6HLafabWdxzs0IcA2nDia94Nqquo8D3WlfNPO37dmFJgsRBwJ9sQZ+vAEOIWLeUPHxwW
+ U0HFBr0cPe6qcxs69JTGB1jFfYI+Hkp2p3DZ4or9+MD4h5xS76qiGL01SjghMS31OuEa
+ /N80hpg7uxem3TKqzOlqHUL6ANW+v1IIAPi33KnTrN/cAQFJwwZRbgSwttukwhpsx6LD
+ gDdjKgfpeLYF1VOt8wRj03LXrg4+KRrCcI0wnCV1QRCQngoG0ywLDZ3gWqJLEy0/fCLP
+ 5iVQ==
 X-Forwarded-Encrypted: i=1;
- AHgh+RogccvjCE0QI55hYdOI1TVxX/ioHLuWJ7CDha8aykGlzU60FNWGKquwwk57UfB/Tw3oW34lMxJoUg==@nongnu.org
-X-Gm-Message-State: AFuF++ncazPwgg3UYT05NB0ztLGsengrNdYRiS6auVDZQ7BKSIAl4Jxs
- azM7b8UFEAN+LHYK3EDJx8xN4wQFWhDUsenTqTs6L7XjGtibOBz/glJB
-X-Gm-Gg: AR+sD11La+GhMSQQa4PWWBSHenylzx8kK/Q/bOoIHlAOFqOX7ZcEvu9UM37cV974T05
- iDtsfTm+rUHtTHgjF4c3pfnuHzhElh7lOpaw06V5m69TLhIBbp3ov5MWvnDTDFEwVUZwmw8XNtv
- p+NQNkHbUq1P2AUh17dqn6VDT8KhcL/PY88KNjq54o5w6hE05qwh/0gTsK4k9DxKMm0rNOhR7me
- GqYOiSxz5g062VUyWIU6CNkBSCA/6nc8m/PsvvemZeoGIFscjFT6T42s+x7ODNL2etp8OPOZhUi
- uSokUqmfVeBSFWeetq4VILwph668tFYzXEtrIMPir/WDUNDW5uzVHXDASZ7RIdaun33cO3Badaw
- 3LJgpzZJHiGmMOF0eIIvXGMKg1wkqNlAi3xNIwP8IKBZp3Pk6+Rz7TAzw7bNrv0tpaj0VMTTDmG
- Pq5y0ganAer6B8iSpgY0UHX4FPodxw+24Svu7egM5QTlFniFdO5zgTOyyYuFaUv+rpe15K6JbNS
- ZiQQK5pabU4k9i71Kg54eRl6bl4lVbVsg==
-X-Received: by 2002:a17:903:3888:b0:2d0:cc92:f7c2 with SMTP id
- d9443c01a7336-2d670b4cdc9mr431321115ad.1.1787630723312; 
- Mon, 24 Aug 2026 21:05:23 -0700 (PDT)
+ AHgh+RqtGel5GLK8SUgL+owHWDzafFuLpSXi8ovNkDUXZ0QDbKOT/N7KR0/O7NHIwar5z5culNIAPSxlxQ==@nongnu.org
+X-Gm-Message-State: AFuF++m/7gKmA88N8FHwAifekpSK2HtF8D+0G5lJ4s9fZqKZegnEYrBk
+ Q7ecYvQClHORRMEH681he1haZidFOfDQPj638B745U9X8LdHpSo+1D8G
+X-Gm-Gg: AR+sD13qHtUur60f5Hfvno3Gu95TLxcKLDkENu3wuuqjkC5xVkyDQecRxop1LrCyPqS
+ 6XBtK0L1MXfORMmTiNAa0kDAKv/87OiDF57fe1kIgkMntN3TXwVChhA+UW5/VBRRaJ5tu+FiCZ6
+ tFLEuUYL1YXf8jo57/HOXcPw9XsnYcEqWw2wd100FzK9ns6j0HPSEllAKyN58d0stawOi/j50w3
+ 9fN5zxapWSikZN7OR9LASFQLwNuZRfVkaKwow3DwF6vN17ddYxnk2hysvp4xvWPgwW3M2c4hBMX
+ iCjbBzaLt22wDkZo1eyKiz6mHqmspNsPEh89DgtVgyNVL8Z5HI0IQmkQ7zrwF7Oj0v2TgFIdGPc
+ ag41aZTfLYC8t9vbnA+6pVTQTC4CAcFx+0tcbVdOxPPbi5clLUWOTO6h8RH9yD9MiBYUGHs1COQ
+ VlfH2069llKt/pHOnC+GigNv0uqTBddBvwYbDRdh+mdOHwDTyTaA5XrZG7YYNV0/Z1DC0HCWX2R
+ 2lIi/4AJtGU6nAOMTNNXsciZ6YTcxiVuw==
+X-Received: by 2002:a05:6a21:70c8:b0:3c4:3767:adb2 with SMTP id
+ adf61e73a8af0-3cd90f41247mr7722021637.1.1787630704648; 
+ Mon, 24 Aug 2026 21:05:04 -0700 (PDT)
 Received: from lima-default.tail89d63.ts.net ([159.196.41.205])
  by smtp.gmail.com with ESMTPSA id
- 5a478bee46e88-327f909adc8sm34104212eec.2.2026.08.24.21.05.14
+ 5a478bee46e88-327f909adc8sm34104212eec.2.2026.08.24.21.04.55
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 24 Aug 2026 21:05:22 -0700 (PDT)
+ Mon, 24 Aug 2026 21:05:04 -0700 (PDT)
 From: stephensportia@gmail.com
 To: qemu-devel@nongnu.org
 Cc: Palmer Dabbelt <palmer@dabbelt.com>,
@@ -88,16 +87,15 @@ Cc: Palmer Dabbelt <palmer@dabbelt.com>,
  Glenn Miles <milesg@linux.ibm.com>, qemu-riscv@nongnu.org,
  Jean-Christophe Dubois <jcd@tribudubois.net>,
  Portia Stephens <portias@oss.tenstorrent.com>
-Subject: [PATCH 2/4] hw/ssi/pl022: Fix dropped upper bytes of ssi transfer
-Date: Tue, 25 Aug 2026 14:04:50 +1000
-Message-ID: <20260825040452.1322251-3-stephensportia@gmail.com>
+Subject: [PATCH 0/4] Rename ssi_transfer to ssi_transfer8
+Date: Tue, 25 Aug 2026 14:04:48 +1000
+Message-ID: <20260825040452.1322251-1-stephensportia@gmail.com>
 X-Mailer: git-send-email 2.43.0
-In-Reply-To: <20260825040452.1322251-1-stephensportia@gmail.com>
-References: <20260825040452.1322251-1-stephensportia@gmail.com>
+Content-Type: text/plain; charset="utf-8"
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::632;
- envelope-from=stephensportia@gmail.com; helo=mail-pl1-x632.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::531;
+ envelope-from=stephensportia@gmail.com; helo=mail-pg1-x531.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -123,50 +121,53 @@ Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
 From: Portia Stephens <portias@oss.tenstorrent.com>
 
-The pl022 model suports transferring a 8-bit or 16-bit frame width. The
-16-bit transfer is broken since the upper 8-bits are being dropped by
-the SSI peripheral transfer function. Fix this by adding a second call
-to ssi_transfer8() when the frame wdith is 16-bits.
+The ssi_transfer function comments say that it takes a word varying
+between 8-bits and 32-bits. ssi_transfer takes a 32-bit arg to transfer
+but there is no means to indicate the number of bits that should
+actually be transferred. All child classes of SSI_PERIPHERAL class have
+transfer functions that, despite accepting a 32-bit tx, only transfer a
+single byte; m25p80_transfer8(), ssi_sd_transfer(), ssd0323_transfer().
 
-Signed-off-by: Portia Stephens <portias@oss.tenstorrent.com>
----
- hw/ssi/pl022.c | 12 ++++++++----
- 1 file changed, 8 insertions(+), 4 deletions(-)
+The current implementation depends on the SSI model to know
+what peripheral model will be attached and what transfer size it
+expects which is error prone. If a SSI_PERIPHERAL model was written that
+accepted 32-bit transfers, it could not attach to any existing SSI
+models.
 
-diff --git a/hw/ssi/pl022.c b/hw/ssi/pl022.c
-index eaac664ec5..f4ade45ca9 100644
---- a/hw/ssi/pl022.c
-+++ b/hw/ssi/pl022.c
-@@ -74,7 +74,6 @@ static void pl022_xfer(PL022State *s)
- {
-     int i;
-     int o;
--    int val;
- 
-     if ((s->cr1 & PL022_CR1_SSE) == 0) {
-         pl022_update(s);
-@@ -99,13 +98,18 @@ static void pl022_xfer(PL022State *s)
-        the transfer has completed.  */
-     while (s->tx_fifo_len && s->rx_fifo_len < 8) {
-         DPRINTF("xfer\n");
--        val = s->tx_fifo[i];
-+        uint16_t tx = s->tx_fifo[i];
-+        uint16_t rx = 0;
-         if (s->cr1 & PL022_CR1_LBM) {
-             /* Loopback mode.  */
-+            rx = tx;
-         } else {
--            val = ssi_transfer8(s->ssi, val);
-+            if (s->bitmask > 0xff) {
-+                rx |= (ssi_transfer8(s->ssi, (tx >> 8) & 0xff) << 8);
-+            }
-+            rx |= ssi_transfer8(s->ssi, tx & 0xff);
-         }
--        s->rx_fifo[o] = val & s->bitmask;
-+        s->rx_fifo[o] = rx & s->bitmask;
-         i = (i + 1) & 7;
-         o = (o + 1) & 7;
-         s->tx_fifo_len--;
+This change updates the the naming of ssi_transfer to ssi_transfer8, as
+well as changes the return value and transmit argument to be 8-bit.
+
+Most ssi models handle this correctly already, sending a single byte at
+a time. There are a few models that are written to support non 8-bit
+transfers but there are no in-tree use cases that connect a peripheral
+to the SSI device. These have been updated to use 8-bit transfers.
+
+Portia Stephens (4):
+  hw/ssi: Rename ssi_transfer to ssi_transfer8
+  hw/ssi/pl022: Fix dropped upper bytes of ssi transfer
+  hw/arm/strongarm: Fix dropped upper byte of ssi transfer
+  hw/ssi/pnv_spi: Fix dropped upper bytes of ssi transfer
+
+ hw/arm/strongarm.c         |  7 +++++--
+ hw/ssi/allwinner-a10-spi.c |  2 +-
+ hw/ssi/aspeed_smc.c        | 14 ++++++-------
+ hw/ssi/bcm2835_spi.c       |  2 +-
+ hw/ssi/ibex_spi_host.c     |  5 +++--
+ hw/ssi/imx_spi.c           |  2 +-
+ hw/ssi/mss-spi.c           |  2 +-
+ hw/ssi/npcm7xx_fiu.c       | 42 +++++++++++++++++++-------------------
+ hw/ssi/npcm_pspi.c         |  4 ++--
+ hw/ssi/pl022.c             | 12 +++++++----
+ hw/ssi/pnv_spi.c           | 28 ++++++++++---------------
+ hw/ssi/sifive_spi.c        |  2 +-
+ hw/ssi/ssi.c               |  4 ++--
+ hw/ssi/stm32f2xx_spi.c     |  2 +-
+ hw/ssi/xilinx_spi.c        | 10 ++++-----
+ hw/ssi/xilinx_spips.c      |  4 ++--
+ hw/ssi/xlnx-versal-ospi.c  |  4 ++--
+ include/hw/ssi/ssi.h       | 17 ++++++++-------
+ 18 files changed, 82 insertions(+), 81 deletions(-)
+
 -- 
 2.43.0
 

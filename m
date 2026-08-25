@@ -4,111 +4,107 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3261EC61DB6
-	for <qemu-arm@archiver.kernel.org>; Tue, 25 Aug 2026 08:54:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B8399C61DB6
+	for <qemu-arm@archiver.kernel.org>; Tue, 25 Aug 2026 09:09:53 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wymux-0003Z5-Vw; Tue, 25 Aug 2026 04:54:04 -0400
+	id 1wynAA-000386-Lm; Tue, 25 Aug 2026 05:09:46 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jcmvbkbc@gmail.com>)
- id 1wymuw-0003YI-Rk
- for qemu-arm@nongnu.org; Tue, 25 Aug 2026 04:54:02 -0400
-Received: from mail-qk1-x72d.google.com ([2607:f8b0:4864:20::72d])
+ (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
+ id 1wynAA-00037m-1a
+ for qemu-arm@nongnu.org; Tue, 25 Aug 2026 05:09:46 -0400
+Received: from mail-ed1-x52c.google.com ([2a00:1450:4864:20::52c])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <jcmvbkbc@gmail.com>)
- id 1wymuu-0001km-LO
- for qemu-arm@nongnu.org; Tue, 25 Aug 2026 04:54:02 -0400
-Received: by mail-qk1-x72d.google.com with SMTP id
- af79cd13be357-93695893ac1so268444385a.0
- for <qemu-arm@nongnu.org>; Tue, 25 Aug 2026 01:54:00 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1787648039; cv=none;
- d=google.com; s=arc-20260327;
- b=XI4F2/aIEayijAmRCWCvQ6P2Xc/NfQ6J839qzwLrEiNskhU1k4zeIyyPvVnMT5pLHJ
- tPUvqzRQYMX04UV3+QhAX7VtYqzZsb4o2hXTrW3099P5x51OE0B0XwZ5gevhlq/5ONK1
- EQvkw2U4n4Rzy6Sz8wRxJLIH1v9itK8vrQymI+cdM8Gz+syeF5RdhdrgVzemfTEmIuq7
- 7Cr/Q55bykCAFeOATEbxpnrJXIZTLblClWNEjFA/YwMtGhYt3Ik/da+SWrC2HlUGFb0T
- 9sFm3SpgPLmjjejJ87fPxG14mfpRjb9AJqJ6k5ZBKsAfdQBHUWDv4I3NsZCJLZymhbdq
- jiZg==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
- s=arc-20260327; 
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:dkim-signature;
- bh=IxATitYurc8EbXYI2BSj9Hs3kEcBruMDQ56bb7ZIbcg=;
- fh=Li7OcrCFNzvtI0l5mw+hZ8EFhP8OjgOBRSMI7K99rng=;
- b=RO/JFmFIsCP6utghOJVCFDKwP0/DN0gRIzHpCQs5A2CL8v8jCpZvKHjuPrwyXrvPNQ
- voIOXm7Mp7OFbo4nAPQZmangVAKAB6Tn70t3o9nqvcAso4MYlsKra+tqdvrUmemK6Sgb
- bInJJNRaO/EY+6UAv/ICvLhV3XAVmwfiBWgyKzbzrtqQ/I/PWjmZLW/ohit5l/z8BS5y
- UshNXo5afdXzx8bxz37Mez8vbWFDqCL9C7Vi3Vna2QlwLZ2xdOhGV0i2V5q2yNxAh7X4
- yor01deaVcosnD/p5wDvpzCl9CF7eFJfWHPcx7Pie/KehcNFZYjz42lCOCnlH4Ds/kO9
- I73Q==; darn=nongnu.org
-ARC-Authentication-Results: i=1; mx.google.com; arc=none
+ (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
+ id 1wynA7-0004iQ-GE
+ for qemu-arm@nongnu.org; Tue, 25 Aug 2026 05:09:45 -0400
+Received: by mail-ed1-x52c.google.com with SMTP id
+ 4fb4d7f45d1cf-6a3819e8be8so1259939a12.0
+ for <qemu-arm@nongnu.org>; Tue, 25 Aug 2026 02:09:43 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20251104; t=1787648039; x=1788252839; darn=nongnu.org;
- h=content-transfer-encoding:content-type:cc:to:subject:message-id
- :date:from:in-reply-to:references:mime-version:from:to:cc:subject
- :date:message-id:reply-to:content-type;
- bh=IxATitYurc8EbXYI2BSj9Hs3kEcBruMDQ56bb7ZIbcg=;
- b=AFyq+X6RZmIcRuxrROboRrqv2KFoTUZWAaDeTnYk7RYWKogNzohIynNze0Howa7oJc
- wdU03bDSRwaESW3iyIorvznlu3DpqmDVLJQX73Q3xAMU2UEkHKNLgk9uJY+L9kQL4w6t
- IBIygnJTv/cfTgdx0b+7mDO1AeJo60J2Efq3cZX+GeovwdxWNKdwiv38WHyfDDnXRPez
- vd9kE7yhvfBUnR1wOW2rY4udSbpurfxkwNoAjV6zLDg0S9rYIksIWzldYegdazMYq3MJ
- 7yo8KXSP0gJB7nIqL638sWfU+cUHU5nkCU0UFDfsi+R52smt3CSBPfuCO2PhX2N/98Z8
- QBGQ==
+ d=linaro.org; s=google; t=1787648981; x=1788253781; darn=nongnu.org;
+ h=content-transfer-encoding:content-type:mime-version:message-id:date
+ :user-agent:references:in-reply-to:subject:cc:to:from:from:to:cc
+ :subject:date:message-id:reply-to:content-type;
+ bh=fL8XwWEUt2XqCFR9h3EPj7YOpktrz+Uvr5FCS9wX/Vo=;
+ b=pO2TtLmIV4k/jqC/tlEtWis0cwn6XDCcd5NKVIfC6OSMHg2E6KZDfR17UKk+JXC3e1
+ ZPwEv1s8JGnsq29lB91GfDx0p2BJ9WQs2eA19grTmdn6g+xVeiTsxyQFIwAWRbT8RROh
+ 87hWWHFzZ/rU0wMCHE6iWL+IuTLjEZpY+GxA9w9XHMVbGS2FdnVtHXzXXkf7S+i5v8L9
+ CUh5PvORx5GQfkbv7xAgadivTAeD0Vqu4aKANP0Msa4YC3Ts4ahclflsy5ldaw2YvxLx
+ S1sH4c9306JCsyIHf7DRXwN+e3ERtoXdQDO9oNSPOytJedcVe8p7gZif/qrTfR6VeXtB
+ SNuA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1787648039; x=1788252839;
- h=content-transfer-encoding:content-type:cc:to:subject:message-id
- :date:from:in-reply-to:references:mime-version:x-gm-gg
+ d=1e100.net; s=20251104; t=1787648981; x=1788253781;
+ h=content-transfer-encoding:content-type:mime-version:message-id:date
+ :user-agent:references:in-reply-to:subject:cc:to:from:x-gm-gg
  :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
  :content-type;
- bh=IxATitYurc8EbXYI2BSj9Hs3kEcBruMDQ56bb7ZIbcg=;
- b=IsONs7zS/7fe9LXBp/JjCt4A0KiKlKBUubzSyL2IG/hL6cN7oh7guYc/oEvIcfFguS
- 8tvy9wngM6Jb0KYHSOeXqhynmOnc9Okhk9TweXOKWMm/xwG2aQOiNlYHnJHtlcrkfriZ
- 7mrfhLrL9qqfL738FLdOefGYH5D58umo1FemMmP+dK72O8KKW7Ajae08uVfkMa/tgYgW
- 3bFCxdJEYknpztpGQ0JyROMqMt59WfO9/fu0Vj6FgNHeNVBSz10aRh2kIVQdRfNpG61b
- EZHsb+Q1Da2Bj4CyFYBkq0qPF1YCWrRMrOu2IzpjMd1uZrJoUsq+zir+pZTEo9YQiY+/
- 8bgQ==
+ bh=fL8XwWEUt2XqCFR9h3EPj7YOpktrz+Uvr5FCS9wX/Vo=;
+ b=ODhTa0Rvl2lo7SPfsLzizR5ulh6nH849+JKakEqjYXsHTkQq+RnfJHX+ZBilCYykz4
+ MsiWQUCm32fKOV9QpjdIoeNTJs98mrt+j2vQ1pmba2u1yqgN8xWszhUDQUxshsj+ICrK
+ qSsUcKwvXFrDsPFjlkg5qJAwByS63MY3PP4UPeB8jTWqgQHATDSzWe6f3mxVRb19aZ6f
+ 50iX0LEf+H7Rkyvaz26gX49UEnK0qfSD4EMBqyVDqoyeNLEt7vmU5oTr/Oj53xAxV+5E
+ ddK+qryZwlgeplARNRV/7+C/xKg0cZ4ay8ombLMnJErZMaK3aXVrFDpu6vDjegjRZde2
+ Qa1w==
 X-Forwarded-Encrypted: i=1;
- AHgh+Rp/LMQHK30CaLTjIG6II5/4FKlKEjvoo7TtgPv6wagsgcNMKunJaw4u+HM5Jnf5Q0C6wW436AtLWA==@nongnu.org
-X-Gm-Message-State: AFuF++kGjCrd4F3ikLgG4iS+rimUTLlkPRoTwAumFWBYlqNaqlqaj6HW
- 0p+n4smsffI+PUQvR3cCYNvumVwtIz84tDjCCEkFFdMvZbm+yjntSb20FPcGOyNXxsiMYktH7kv
- aVrM10tFomjlXNwXOrJuMfzehsJhFtgw=
-X-Gm-Gg: AR+sD11CJdNTKSjurXUykaXA2xJaz/zGbOwYAkBTdKMcLduMwS+r9hAq7CRD85MXz60
- kJzllNMMZcWbrZ1cIwJGGoU7Z/VxtabvFOv4n+gt88Zn/qx/NFeddusUyiRccQJxKkufVr/LUH1
- xqQKeyA9vI/dtC79x2YfW8v47TpNTdy3CjQjBB50EF9HVEpa0jKC17UO+kMP9zoF/2FHrqwEfRQ
- uE1SC6IEECw59numWVlGndfrI1whyo+Pb3YxEC5j73W10ZrIB2Xx50YtAu1lmaNCoJ89z56q29i
- Wmpo6MvdbP0Me7oGU7tZItlAT/QJ+wZeiq2G98qwUIfRDZTrlUCnBZg9eTeEwTrM/aqoXKQcCUf
- zAqwITTaXIGY3Vv5Mgx6mjJVHjDTz0dp2KS1ZRhpOTCqlZ8Kq/luTSQHg+yW6hNE=
-X-Received: by 2002:a05:620a:1a1d:b0:937:6771:e7e7 with SMTP id
- af79cd13be357-9376771e8damr829132685a.30.1787648039244; Tue, 25 Aug 2026
- 01:53:59 -0700 (PDT)
+ AHgh+Rod/qMVqCKXcg0szvILSb+WAViOdcP8IqX5mazcwhUfSlyU+nSJDAEOhRWJq/UWhBqZEg4X1qnnHg==@nongnu.org
+X-Gm-Message-State: AFuF++nQIRJaqlHjVTSdNUbInxw0gmFybdjG34rs0NiNCY/SrdIe+Le5
+ i5b+sbliLiCxzZ6KtkdD5AYMCcfy8khf2fXiuRuOkgABbqSt2/5rhDK0WeAnyNUj/4s=
+X-Gm-Gg: AR+sD13WXZjwkQXlKWcTA3qP4OUE+PrC0CMj/3SxwReCJQ01semUCxgkDXHmDCf+r7O
+ jB8YqiVXKcbJW8QlZkvx9U/+caG9iXKfLHdCmQUfJOHpRcGMkz+nG6lmiYIyMR/UQJs7eeSx1p3
+ tNvsXfmBgRpmi3pXHq2dwkfoJqq/onVQCRx7NsdIxhk6wApChdMf9Cdok3AYSM6+nsr9qn7EOhP
+ nA4If05TgFSP3LAD2AKbGiQNhuexrFhriyIbTjmGrebxVSSv2/534a03BMbsac/Lu1ypC0p2OVb
+ lsLL2l7Mb8wItft6DPSLPCMDkZ0K44YBYg8J8HgoW7C2MQcYLgJvDWHeh3VwoI76zhAMjLxd1Ms
+ bWItJpU4QSn9AlppwKcoprxAKXH7lQZ2qjvJ6agH0Cr/h5IHgMRhqCS0XBYTRxNj6gCNR5bYF71
+ cTlTR7ALO1rnre03vv6xn9FBliL2V9b9aadgnedVLQoNASyMyDD3Cl5g15DXAm
+X-Received: by 2002:a05:6402:4288:b0:6a3:eb3c:4142 with SMTP id
+ 4fb4d7f45d1cf-6a5c3f0fed4mr5653555a12.8.1787648981090; 
+ Tue, 25 Aug 2026 02:09:41 -0700 (PDT)
+Received: from draig.lan ([185.124.0.156]) by smtp.gmail.com with ESMTPSA id
+ 4fb4d7f45d1cf-6a59e2da49bsm14554142a12.29.2026.08.25.02.09.39
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Tue, 25 Aug 2026 02:09:40 -0700 (PDT)
+Received: from draig (localhost [IPv6:::1])
+ by draig.lan (Postfix) with ESMTP id EB2275F7DF;
+ Tue, 25 Aug 2026 10:09:38 +0100 (BST)
+From: =?utf-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>
+To: Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@oss.qualcomm.com>
+Cc: qemu-devel@nongnu.org,  Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?=
+ <philmd@mailo.com>,
+ Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>,  Peter Maydell
+ <peter.maydell@linaro.org>,  qemu-arm@nongnu.org,  "Gonglei (Arei)"
+ <arei.gonglei@huawei.com>,  zhenwei pi <zhenwei.pi@linux.dev>,  "Michael
+ S. Tsirkin" <mst@redhat.com>,  Stefano Garzarella <sgarzare@redhat.com>,
+ Laurent Vivier <lvivier@redhat.com>,  Amit Shah <amit@kernel.org>,
+ =?utf-8?Q?Marc-Andr=C3=A9?= Lureau <marcandre.lureau@redhat.com>,  Paolo
+ Bonzini <pbonzini@redhat.com>,  John Snow <jsnow@redhat.com>,  Kevin Wolf
+ <kwolf@redhat.com>,  Hanna Reitz <hreitz@redhat.com>,
+ qemu-block@nongnu.org,  devel@lists.libvirt.org,  Fabiano Rosas
+ <farosas@suse.de>
+Subject: Re: [PATCH v2 3/8] gitlab: add arm-softmmu tests to the macOS build
+In-Reply-To: <1a491e92-d7e7-446a-9b08-53b12a930be3@oss.qualcomm.com>
+ ("Philippe =?utf-8?Q?Mathieu-Daud=C3=A9=22's?= message of "Mon, 24 Aug 2026
+ 23:28:28 +0200")
+References: <20260824-fixes-for-11-2-v2-0-352c6b890402@linaro.org>
+ <20260824-fixes-for-11-2-v2-3-352c6b890402@linaro.org>
+ <1a491e92-d7e7-446a-9b08-53b12a930be3@oss.qualcomm.com>
+User-Agent: mu4e 1.14.4-pre1; emacs 30.1
+Date: Tue, 25 Aug 2026 10:09:38 +0100
+Message-ID: <87jyper2gd.fsf@draig.linaro.org>
 MIME-Version: 1.0
-References: <20260824111711.26297-1-philmd@oss.qualcomm.com>
- <20260824111711.26297-19-philmd@oss.qualcomm.com>
-In-Reply-To: <20260824111711.26297-19-philmd@oss.qualcomm.com>
-From: Max Filippov <jcmvbkbc@gmail.com>
-Date: Tue, 25 Aug 2026 01:53:47 -0700
-X-Gm-Features: AcwNN1WEwK2DUZH45Zj_m2ROUpqkMXxheouHHKZZ_3nAzeD16f7z7iGe_QZUvgg
-Message-ID: <CAMo8BfL88QP4WCRc_X3AXHZNjXp5L_6W1spUpZg06vQjR_fceg@mail.gmail.com>
-Subject: Re: [PATCH v4 18/20] target/xtensa: Constify CPUXtensaState in
- xtensa_replicate_windowstart()
-To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@oss.qualcomm.com>
-Cc: qemu-devel@nongnu.org, qemu-riscv@nongnu.org, qemu-arm@nongnu.org, 
- Richard Henderson <richard.henderson@linaro.org>, qemu-ppc@nongnu.org,
- qemu-s390x@nongnu.org
-Content-Type: text/plain; charset="UTF-8"
+Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2607:f8b0:4864:20::72d;
- envelope-from=jcmvbkbc@gmail.com; helo=mail-qk1-x72d.google.com
-X-Spam_score_int: -5
-X-Spam_score: -0.6
-X-Spam_bar: /
-X-Spam_report: (-0.6 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- FROM_LOCAL_NOVOWEL=0.5, HK_RANDOM_ENVFROM=0.004, HK_RANDOM_FROM=0.999,
+Received-SPF: pass client-ip=2a00:1450:4864:20::52c;
+ envelope-from=alex.bennee@linaro.org; helo=mail-ed1-x52c.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=no autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -124,38 +120,57 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Mon, Aug 24, 2026 at 4:20=E2=80=AFAM Philippe Mathieu-Daud=C3=A9
-<philmd@oss.qualcomm.com> wrote:
->
-> Add the const qualifier to CPUXtensaState when the
-> argument is accessed without modification.
->
-> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@oss.qualcomm.com>
-> ---
->  target/xtensa/cpu.h | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
+Philippe Mathieu-Daud=C3=A9 <philmd@oss.qualcomm.com> writes:
 
-Reviewed-by: Max Filippov <jcmvbkbc@gmail.com>
+> On 24/8/26 17:24, Alex Benn=C3=83=C2=A9e wrote:
+>> Now we have fixed the compiler issues lets have at it.
+>
+> The rational isn't clear about the benefit of adding this target.
+> 32-bit is already covered by i686, ARM by aarch64.
 
-> diff --git a/target/xtensa/cpu.h b/target/xtensa/cpu.h
-> index 442e98bd1ba..49d6ad9083d 100644
-> --- a/target/xtensa/cpu.h
-> +++ b/target/xtensa/cpu.h
-> @@ -708,7 +708,7 @@ void xtensa_set_abi_call0(void);
->  bool xtensa_abi_call0(void);
->  #endif
+The MacOS coverage is pretty woeful for all guests given the paucity of
+compilers available. I haven't done any in-depth measurement of how
+much extra coverage this gets but it will be some.
+
 >
-> -static inline uint32_t xtensa_replicate_windowstart(CPUXtensaState *env)
-> +static inline uint32_t xtensa_replicate_windowstart(const CPUXtensaState=
- *env)
->  {
->      return env->sregs[WINDOW_START] |
->          (env->sregs[WINDOW_START] << env->config->nareg / 4);
-> --
-> 2.53.0
->
+>> Reviewed-by: Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>
+>> Message-ID: <20260723200904.224413-4-alex.bennee@linaro.org>
+>> Signed-off-by: Alex Benn=C3=A9e <alex.bennee@linaro.org>
+>> ---
+>>   .gitlab-ci.d/macos.yml | 5 +++--
+>>   1 file changed, 3 insertions(+), 2 deletions(-)
+>> diff --git a/.gitlab-ci.d/macos.yml b/.gitlab-ci.d/macos.yml
+>> index bdb3eae18f0..40b9b637b3b 100644
+>> --- a/.gitlab-ci.d/macos.yml
+>> +++ b/.gitlab-ci.d/macos.yml
+>> @@ -22,7 +22,7 @@
+>>       - export PKG_CONFIG_PATH=3D"$PKG_CONFIG_PATH"
+>>       - brew update
+>>       - brew install $PKGS
+>> -    - brew install aarch64-elf-gcc i686-elf-gcc x86_64-elf-gcc
+>> +    - brew install arm-none-eabi-gcc aarch64-elf-gcc i686-elf-gcc x86_6=
+4-elf-gcc
+>>       - if test -n "$PYPI_PKGS" ; then PYLIB=3D$($PYTHON -c 'import sysc=
+onfig; print(sysconfig.get_path("stdlib"))'); rm -f $PYLIB/EXTERNALLY-MANAG=
+ED; $PIP3 install --break-system-packages $PYPI_PKGS ; fi
+>>     script:
+>>       - mkdir build
+>> @@ -40,8 +40,9 @@ aarch64-macos-15-build:
+>>       PATH_EXTRA: /opt/homebrew/gettext/bin
+>>       PKG_CONFIG_PATH: /opt/homebrew/curl/lib/pkgconfig:/opt/homebrew/nc=
+urses/lib/pkgconfig:/opt/homebrew/readline/lib/pkgconfig
+>>       CONFIGURE_ARGS:
+>> -        --target-list=3Daarch64-softmmu,i386-softmmu,x86_64-softmmu
+>> +        --target-list=3Daarch64-softmmu,arm-softmmu,i386-softmmu,x86_64=
+-softmmu
+>>           --cross-prefix-aarch64=3Daarch64-elf-
+>> +        --cross-prefix-arm=3Darm-none-eabi-
+>>           --cross-prefix-i386=3Di686-elf-
+>>           --cross-prefix-x86_64=3Dx86_64-elf-
+>>           --disable-plugins
+>>=20
 
 --=20
-Thanks.
--- Max
+Alex Benn=C3=A9e
+Virtualisation Tech Lead @ Linaro
 

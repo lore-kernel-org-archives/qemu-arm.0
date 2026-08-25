@@ -4,93 +4,97 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 11FA3C61DBD
-	for <qemu-arm@archiver.kernel.org>; Tue, 25 Aug 2026 10:58:42 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 17134C61DBE
+	for <qemu-arm@archiver.kernel.org>; Tue, 25 Aug 2026 11:19:44 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wyorT-0002Om-Ha; Tue, 25 Aug 2026 06:58:35 -0400
+	id 1wypAO-0008UF-11; Tue, 25 Aug 2026 07:18:08 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <163wangjack@gmail.com>)
- id 1wyorS-0002Nl-7w
- for qemu-arm@nongnu.org; Tue, 25 Aug 2026 06:58:34 -0400
-Received: from mail-pl1-x629.google.com ([2607:f8b0:4864:20::629])
+ (Exim 4.90_1) (envelope-from <jim.macarthur@linaro.org>)
+ id 1wypAJ-0008Sl-NO
+ for qemu-arm@nongnu.org; Tue, 25 Aug 2026 07:18:03 -0400
+Received: from mail-wm1-x32f.google.com ([2a00:1450:4864:20::32f])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <163wangjack@gmail.com>)
- id 1wyorQ-00013x-A8
- for qemu-arm@nongnu.org; Tue, 25 Aug 2026 06:58:33 -0400
-Received: by mail-pl1-x629.google.com with SMTP id
- d9443c01a7336-2cc891373e0so50090955ad.2
- for <qemu-arm@nongnu.org>; Tue, 25 Aug 2026 03:58:31 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <jim.macarthur@linaro.org>)
+ id 1wypAH-0001XT-4T
+ for qemu-arm@nongnu.org; Tue, 25 Aug 2026 07:18:03 -0400
+Received: by mail-wm1-x32f.google.com with SMTP id
+ 5b1f17b1804b1-4954df200ddso25134005e9.0
+ for <qemu-arm@nongnu.org>; Tue, 25 Aug 2026 04:18:00 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20251104; t=1787655510; x=1788260310; darn=nongnu.org;
- h=to:references:message-id:content-transfer-encoding:cc:date
- :in-reply-to:from:subject:mime-version:content-type:from:to:cc
- :subject:date:message-id:reply-to:content-type;
- bh=wJH8/RrH1ySCaOtBK1cfZYcIMrE1PR4KK6ULBlUoMQ4=;
- b=aSniS6flPVY1+H4bz4oOift9ekfjCfA0OYwz1H3/sH0FajDBMJOCukiXq8fZCW+nZV
- IyIRM5fBj/0TYBjRL3bh2ODH9T7hKLfKGqbwPH145XyEjVT1EZDT0tRKTuvdiBErOCgV
- 6glQ2Nex3qiGxPvTVror8bzLBEMLPb+GyN5WTayfdz4BVKqk8C7f18znFL3D7llG0oT/
- u3/z6jQ5uK7djjaiwjutB4n9AtqREWLhsSxdEZIbm/q0oUTY1sSDjK9x78967EfPqvNo
- y+gl7B70B1KocrC1aDD8z0L47vJAdKfC02nt45A73t/TA1zQKJD/Gs5leUxxXrX9pz+c
- GBIw==
+ d=linaro.org; s=google; t=1787656679; x=1788261479; darn=nongnu.org;
+ h=in-reply-to:content-disposition:content-type:mime-version
+ :references:message-id:subject:cc:to:from:date:from:to:cc:subject
+ :date:message-id:reply-to:content-type;
+ bh=NXEB9Wku5bRHDkNsh9wY6W5EuW8k1uhaqYa1LQ+jfcE=;
+ b=Ep49Npyf6OxwM5r7TnKQkHpokGSe0pVbT+1z4WT8eE+4VWkmXhKumSabVHmZ2+BGpd
+ 9Lpq+jO8LPmDpL25vR+S33GDe55kYzbvHwCJSM7IYj/FKgPKNB2rPFAUJ18MFGIA61j6
+ THCKgijEK2/ev/R+rCXj4p39Gusbk9UMq5zgnTON7SgSwarmxhAl70K683R93VneTqYL
+ zH0R2nmpTEjiIunJuhqNqrycsHtdwRrL3pnv0vzszGTh2HdJWCjSMmkKUvb5mUdxZBY8
+ N/gqaL/hwGsYVxxaMyKilOJA3lSedofDWs1hf3tzrL6k49623F9wSZNbILF1ow07z5Cg
+ HUfw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1787655510; x=1788260310;
- h=to:references:message-id:content-transfer-encoding:cc:date
- :in-reply-to:from:subject:mime-version:content-type:x-gm-gg
+ d=1e100.net; s=20251104; t=1787656679; x=1788261479;
+ h=in-reply-to:content-disposition:content-type:mime-version
+ :references:message-id:subject:cc:to:from:date:x-gm-gg
  :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
  :content-type;
- bh=wJH8/RrH1ySCaOtBK1cfZYcIMrE1PR4KK6ULBlUoMQ4=;
- b=FViikeB8PvTY6ScKZT29xGVdnE+Oop530DJhCjwALesorpM8pzUsp7NgKHEhdKE81p
- juCCws/sT2UPe+QQF+1ZOmdztZ3p3HHBlqiN18GvTFAfgPsKIIf/nkYJJowl1wpfTBkn
- sWtXUIYEvf9qZZDS45C1I2vrTFkz1h7Xfepu3IJnOME7E+9IlcOnUG8EQF5BiE8rqqyX
- VD4zIgckyoj36h+0ytAEqSlf2jFZQ2JEg/WFZxL8I8r6D8MjyNSgVJyH7vIK1PDwxjh0
- w1wL5m20b1J5zh4HsM1JEw57SOGYiw66Eb5UvaGHIDIh1Sq0EMbvHehWBERTQHE2m2K0
- xmWg==
+ bh=NXEB9Wku5bRHDkNsh9wY6W5EuW8k1uhaqYa1LQ+jfcE=;
+ b=B3y6ojmwFxkdLaQxu2d+0+ra4XUa3JUun/948A7vH6Wxiymf84LY1zdc9BHKQcqg6p
+ hA2DmwGRCEJb9EdSgoFYP7B79UNKEmJfLFR0yGtJJOT8HC7VZU/KDt0lQAeNk/iKOjxh
+ x0qTpuDllYBv7TfA7JM65/Fi34gUizDTjHcwSboSGzIw326lYlPw6pDZrNPT3onPeSVC
+ sZa4l1gNEXaPTLngV83Yq0F25/BIITO6MAXWXIBZbCZk7Ac5xcrHp7Ytm4Fq3N33p/dz
+ 2Q4DrX/JNaeUP0Xv/t2lMWPQ0gOwiLHM0nEGGxByFh7Dz623/P1wXcVXSDfKSLH1ULVb
+ 3DQQ==
 X-Forwarded-Encrypted: i=1;
- AHgh+Rq4NYA5ewcbutWi+mJzniTMZ/U2Wt9eMFR2nKYZtax1ez3970Z1cX/ge/WYlJpJajJtRJxUpBJvAQ==@nongnu.org
-X-Gm-Message-State: AFuF++kml/SaSuBszsiwzHnxakWRc6aeep/JRMKcxFTKRN6wKfZ3u2ZA
- OKsR4/+MKdxMofyE6W9aJU8L9MWDfIkgkm9yyR7M+RaXL+a0Yj9MjEAG
-X-Gm-Gg: AR+sD11yZzFMEF1ug3B0IVO4EDKHBF6VY2jPstpUltVTMxAq4U68zanLoGHObnKAQ+x
- AHnG1BWIQGExcpDjAFOtY529uKExc9dbOUGf3c0zr8TL4xU1JWz3j7tl0luYPkmKfDUhWTDUML+
- UljouENaAU88JXbRHRCh3QHj4jloYDKb0Va8fUdBSt+44txb5dE3aIB1sev329fJHC3JLGCPHrz
- 6vptiTSaO3EQvYPzHwqK2xTPnWVFFaj85ZYQZpEyx5gilHCbwph3AfRJMELm81jDgBLb6HXcWHt
- NYHTqHapy96+5MwECgv9xLPaa7bU7bkKM76MZDAcmpx3hMDp+e/NpQwg0sQioCHIKK/F/xv4I5K
- T7zHzYeJJSB82hlobXrk0hSzByxaadtNvIelSr/oqai+iFlOUjwlvxZeRUDKDSGl8CjsKvS+Crw
- uKcIYfpXihjagEj5ksg/Iw9mqn1FsD+u0NozuZ6WboxHFKxKPRAy9LX/qHhvxTd+IVjJCJ
-X-Received: by 2002:a17:90b:5886:b0:395:4de4:92c7 with SMTP id
- 98e67ed59e1d1-395dee7d5f6mr51250158a91.3.1787655510516; 
- Tue, 25 Aug 2026 03:58:30 -0700 (PDT)
-Received: from smtpclient.apple ([117.55.237.216])
+ AHgh+Rp61aMA8Fg/xG+aRUNKl4fFfNrZYfCX427r0nr7s0s7HrGud4MA7UtfnTRfJxv1dg5B/hUqUdmf8g==@nongnu.org
+X-Gm-Message-State: AFuF++m9M0zGSf6WF/+UYai9SFNF0xK7RnbrpXVftjl+NCJbnZR3vgop
+ Uec9+w3c0ZVuyP1e+aHqMI4kE5PvdzylpTZ7DrTBOol/6bGPYxaYeZNLWWVJldBaiJc=
+X-Gm-Gg: AR+sD10DNNlJLREXuhaBX9o8tuflMUUR98tLn5+G90uwPJ7H+GZKBb/mEiDBnkBun5X
+ Z+f14oKA+DCqusfFvatcpIdqoGE3psCY3lM+ZbKlSROVMu3fWpSsfj38QIjLfX99WpIlLP4aGtK
+ D8tuStdA/0Sd00DFlQgfGYk7FACyWYbmDoDNG5LYj9NGzT6B62VU5zxOy0+JXsJnhif3gwm4XDm
+ UOqL1UX3ZRy0wmKJnWxFbLtrLVutkJOcLtIEwMXBxaD/YdVZjn0k/0wHPL+lHHe4gG8CjQ0gysz
+ +dVTarLYZysfREUtnAiWhLY8qI48nG0s0Pqy2ZueNppFjoLl/LZFrx6j7h1Pi6DaTkbXEaOW2GY
+ MXWb713LMVa/XZO9c+uKoXH/kPearvee+Mn2kjCekV0cwYbucJ3XC962am9LUqsOJqcTFy9xRw+
+ y3hAA3tG4TiMYsbbAL2927Pc2eoIrw2dp38mLvyUM3SO7kUEukgUKBJYPYQRl8vgI7r1dkxKJ1M
+ 3o=
+X-Received: by 2002:a05:600c:a01:b0:499:bdf1:7578 with SMTP id
+ 5b1f17b1804b1-499c19bfd2dmr256070885e9.3.1787656678581; 
+ Tue, 25 Aug 2026 04:17:58 -0700 (PDT)
+Received: from linaro.org ([2a10:d582:31e:0:8679:ff59:1b3a:5e93])
  by smtp.gmail.com with ESMTPSA id
- 98e67ed59e1d1-39662c80d6csm482192a91.1.2026.08.25.03.58.28
- (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
- Tue, 25 Aug 2026 03:58:30 -0700 (PDT)
-Content-Type: text/plain;
-	charset=utf-8
-Mime-Version: 1.0 (Mac OS X Mail 16.0 \(3864.600.51.1.1\))
-Subject: Re: [PATCH v3 5/5] hw/arm: Add Axiado Ax3005 EVB
-From: Jack Wang <163wangjack@gmail.com>
-In-Reply-To: <0c46e698-a668-4d49-b991-0a131d1ab956@axiado.com>
-Date: Tue, 25 Aug 2026 18:58:06 +0800
-Cc: qemu-devel@nongnu.org,
- peter.maydell@linaro.org,
- qemu-arm@nongnu.org
-Content-Transfer-Encoding: quoted-printable
-Message-Id: <35D20AA7-14D7-4C92-91E6-6E6E27C331A8@gmail.com>
-References: <0c46e698-a668-4d49-b991-0a131d1ab956@axiado.com>
-To: kchiu@axiado.com
-X-Mailer: Apple Mail (2.3864.600.51.1.1)
-Received-SPF: pass client-ip=2607:f8b0:4864:20::629;
- envelope-from=163wangjack@gmail.com; helo=mail-pl1-x629.google.com
-X-Spam_score_int: -13
-X-Spam_score: -1.4
-X-Spam_bar: -
-X-Spam_report: (-1.4 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- FROM_STARTS_WITH_NUMS=0.738, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=no autolearn_force=no
+ 5b1f17b1804b1-499d5cbd702sm18213095e9.0.2026.08.25.04.17.57
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Tue, 25 Aug 2026 04:17:58 -0700 (PDT)
+Date: Tue, 25 Aug 2026 12:17:56 +0100
+From: Jim MacArthur <jim.macarthur@linaro.org>
+To: Tao Tang <tangtao1634@phytium.com.cn>
+Cc: Eric Auger <eric.auger@redhat.com>,
+ Peter Maydell <peter.maydell@linaro.org>, qemu-devel@nongnu.org,
+ qemu-arm@nongnu.org, Chen Baozi <chenbaozi@phytium.com.cn>,
+ Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>,
+ Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <philmd@mailo.com>,
+ Mostafa Saleh <smostafa@google.com>, Chao Liu <chao.liu@processmission.com>
+Subject: Re: [RFC v5 19/28] hw/arm/smmuv3: Determine register bank from MMIO
+ offset
+Message-ID: <ao155KStbs_MFr7m@linaro.org>
+References: <20260813161515.2788900-1-tangtao1634@phytium.com.cn>
+ <20260813162558.2808607-4-tangtao1634@phytium.com.cn>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20260813162558.2808607-4-tangtao1634@phytium.com.cn>
+Received-SPF: pass client-ip=2a00:1450:4864:20::32f;
+ envelope-from=jim.macarthur@linaro.org; helo=mail-wm1-x32f.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -106,100 +110,26 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
+On Fri, Aug 14, 2026 at 12:25:57AM +0800, Tao Tang wrote:
+> Modify the main MMIO handlers to select the target register bank from the
+> memory-mapped offset.
+> 
+> Offsets in the Secure register window select SMMU_SEC_SID_S and are
+> normalized by subtracting SMMU_SECURE_REG_START. Other offsets select the
+> Non-secure bank. Pass the selected SEC_SID to the register access helpers,
+> where the normalized bank-local offset identifies the register.
+> 
+> Keep bank-specific differences explicit, such as S_IDR5 being unimplemented.
+> This patch implements Non-secure and Secure bank dispatch and prepares for
+> later access checks; Realm and Root programming interfaces are not modeled.
+> 
+> Signed-off-by: Tao Tang <tangtao1634@phytium.com.cn>
+> Reviewed-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
+> ---
+>  hw/arm/smmuv3.c | 44 ++++++++++++++++++++++++++++++++------------
+>  1 file changed, 32 insertions(+), 12 deletions(-)
+> 
 
-Yep looks good to me
-We need v4 for this problem and uart address problem
+Reviewed-by: Jim MacArthur <jim.macarthur@linaro.org>
 
-Thanks : )
-JW..
-
-> On Tue, 25 Aug 2026 17:13:57 +0800, Kuan-Jui Chiu <kchiu@axiado.com> =
-wrote:
-> Hi Jack
->=20
-> Jack Wang =E6=96=BC 2026/8/25 =E4=B8=8B=E5=8D=88 03:25 =E5=AF=AB=E9=81=93=
-:
->=20
->> CAUTION: This email originated from outside of the organization. Do =
-not click links or open attachments unless you recognize the sender and =
-know the content is safe.
->>=20
->>=20
->> Hi Kuan-Jui
->>=20
->> In patch 4, the AX3005 DRAM MemoryRegion is created with a fixed size =
-of 2 GiB, as defined by AX3005_DRAM_SIZE. However, this patch passes =
-machine->ram_size to the kernel loader:
->>=20
->> This allows the value supplied through the -m option to differ from =
-the size of the actual DRAM MemoryRegion.
->>=20
->> I am not sure whether the machine is intended to support configurable =
-RAM or only a fixed 2 GiB configuration, but the current implementation =
-makes the machine configuration and the physical memory map
->> inconsistent.
->=20
-> The 2 GiB is on-chip RAM, so I would like to fix the value with 2 GiB.
->=20
-> For the inconsistent size issue in QMP, I would like to add a guard in=20=
-
-> board level to fix the memory size like
->=20
->  if (machine->ram_size !=3D AX3005_DRAM_SIZE) {
->      g_autofree char *size_str =3D size_to_str(AX3005_DRAM_SIZE);
->      error_report("Invalid RAM size, should be %s", size_str);
->      exit(1);
->=20
->  }
->=20
-> and assign default_ram_size of MachineClass like
->=20
-> mc->default_ram_size =3D AX3005_DRAM_SIZE;
->=20
->=20
-> Is it acceptable?
->=20
->=20
-
->> On Tue, 25 Aug 2026 15:25:54 +0800, Jack Wang <163wangjack@gmail.com> =
-wrote:
->> Hi Kuan-Jui
->>=20
->> In patch 4, the AX3005 DRAM MemoryRegion is created with a fixed size =
-of 2 GiB, as defined by AX3005_DRAM_SIZE. However, this patch passes =
-machine->ram_size to the kernel loader:
->>=20
->>> +    ax3005_binfo.ram_size =3D machine->ram_size;
->>=20
->> This allows the value supplied through the -m option to differ from =
-the size of the actual DRAM MemoryRegion.
->>=20
->> I am not sure whether the machine is intended to support configurable =
-RAM or only a fixed 2 GiB configuration, but the current implementation =
-makes the machine configuration and the physical memory map
->> inconsistent.
->>=20
->> I checked the configured memory size with:
->>=20
->> for ram in 1G 3G; do echo "QMP case: -m $ram"; printf '%s\n' =
-'{"execute":"qmp_capabilities"}' =
-'{"execute":"query-memory-size-summary"}' '{"execute":"quit"}' | =
-"$QEMU_BIN" -M ax3005-evb -m "$ram" -display none -serial none -qmp =
-stdio -S | rg 'base-memory'; done
->>=20
->> I then checked the actual memory map with:
->>=20
->> for ram in 1G 3G; do echo "MemoryRegion case: -m $ram"; printf 'info =
-mtree -f\nquit\n' | "$QEMU_BIN" -M ax3005-evb -m "$ram" -display none =
--serial none -monitor stdio -S | rg '\(prio 0, ram\): dram'; done
->>=20
->> Therefore, the actual DRAM remains fixed at 2 GiB, while =
-machine->ram_size and the value passed to arm_load_kernel() can report 1 =
-GiB or 3 GiB.(QEMU_BIN points to the newly built qemu-system-aarch64 =
-binary.)
->>=20
->> Best regards : )
->> JW..
->>=20
->>=20
 

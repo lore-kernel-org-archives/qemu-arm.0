@@ -4,83 +4,96 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BCED0C61DB9
-	for <qemu-arm@archiver.kernel.org>; Tue, 25 Aug 2026 13:30:00 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 16B63C61DBE
+	for <qemu-arm@archiver.kernel.org>; Tue, 25 Aug 2026 13:39:40 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wyrDe-0001CY-Hk; Tue, 25 Aug 2026 09:29:38 -0400
+	id 1wyrN0-0002i4-21; Tue, 25 Aug 2026 09:39:18 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1wyrDd-0001CI-S8
- for qemu-arm@nongnu.org; Tue, 25 Aug 2026 09:29:37 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1wyrDc-0006ep-Ex
- for qemu-arm@nongnu.org; Tue, 25 Aug 2026 09:29:37 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1787664574;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=bzkIFCZZIsxLexbkMexhnvbZt64Y23EsiRO7Y6mWj5k=;
- b=KZU7JoZKa09Djn1UrfEutdZKb7Vwa72FFQUbh31i0SPc7GEd0IUtx3UqpKk/hJQ5TYi23W
- R25dzdQgEseSR/u6KBmcGVqxzltVfD5UJZMPGIyGMMlsOE1q//ee92RLmoz0c29JmNVYHv
- dgbFxhGOT7TmUYk2/dfP/iMALDWl0bU=
-Received: from mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
- relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-282-sk-HR7MZNFuIOde-Zs0iPA-1; Tue,
- 25 Aug 2026 09:29:31 -0400
-X-MC-Unique: sk-HR7MZNFuIOde-Zs0iPA-1
-X-Mimecast-MFC-AGG-ID: sk-HR7MZNFuIOde-Zs0iPA_1787664569
-Received: from mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com
- (mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.4])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
- (No client certificate requested)
- by mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id DE16419373F3; Tue, 25 Aug 2026 13:29:28 +0000 (UTC)
-Received: from blackfin.pond.sub.org (unknown [10.44.22.12])
- by mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 07EB330002F1; Tue, 25 Aug 2026 13:29:27 +0000 (UTC)
-Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
- id 7414921E6920; Tue, 25 Aug 2026 15:29:25 +0200 (CEST)
-From: Markus Armbruster <armbru@redhat.com>
-To: Mark Cave-Ayland <mark.caveayland@nutanix.com>
-Cc: Daniel P. =?utf-8?Q?Berrang=C3=A9?= <berrange@redhat.com>, mst@redhat.com,
- imammedo@redhat.com,  anisinha@redhat.com,  philmd@mailo.com,
- aurelien@aurel32.net,  peter.maydell@linaro.org,
- richard.henderson@linaro.org,  marcandre.lureau@redhat.com,
- qemu-devel@nongnu.org,  qemu-arm@nongnu.org
-Subject: Re: [PATCH v4 14/16] hw/acpi/pcihp.c: convert ACPI_PCIHP_PROP_BSEL
- from object prop to class prop
-In-Reply-To: <277163fc-e50b-4b56-b3a9-79db32313c33@nutanix.com> (Mark
- Cave-Ayland's message of "Tue, 25 Aug 2026 13:53:33 +0100")
-References: <20260821111550.276011-1-mark.caveayland@nutanix.com>
- <20260821111550.276011-15-mark.caveayland@nutanix.com>
- <aoxBd0tGArc8rwdf@redhat.com>
- <1fd9946e-1d2a-462a-93e3-238f2c67a1b6@nutanix.com>
- <87fr02pt27.fsf@pond.sub.org>
- <277163fc-e50b-4b56-b3a9-79db32313c33@nutanix.com>
-Date: Tue, 25 Aug 2026 15:29:25 +0200
-Message-ID: <87o6eql45m.fsf@pond.sub.org>
-User-Agent: Gnus/5.13 (Gnus v5.13)
+ (Exim 4.90_1) (envelope-from <jim.macarthur@linaro.org>)
+ id 1wyrMz-0002he-1R
+ for qemu-arm@nongnu.org; Tue, 25 Aug 2026 09:39:17 -0400
+Received: from mail-ej1-x633.google.com ([2a00:1450:4864:20::633])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <jim.macarthur@linaro.org>)
+ id 1wyrMx-0000dz-H4
+ for qemu-arm@nongnu.org; Tue, 25 Aug 2026 09:39:16 -0400
+Received: by mail-ej1-x633.google.com with SMTP id
+ a640c23a62f3a-c1c52d920b8so678956466b.2
+ for <qemu-arm@nongnu.org>; Tue, 25 Aug 2026 06:39:14 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1787665154; x=1788269954; darn=nongnu.org;
+ h=in-reply-to:content-disposition:content-type:mime-version
+ :references:message-id:subject:cc:to:from:date:from:to:cc:subject
+ :date:message-id:reply-to:content-type;
+ bh=dcqrBR9zLvo/3xxADurhNk8ys9RwYSSiyiJMH61KDH8=;
+ b=vALQb5SXo06Lr0EOGPSkC0t87fyTEVjAdFezFPvAbXdVpVxXyHqUhRKY3qW+ddj1tv
+ YnmbdkWmAx2xkegeqdX2TD7wSdL0pxQUa6iBE5/oOYxd1aeMHyHobRstpyCP4mOR283v
+ o5i3TrjcNPjpVxjJ7LgFTqkNPGSiGhIcZ4Ff/BFItMkLW/K1VBFJD61fc24hQ7SIedr9
+ Ac3LUzUV1av3g7CsQXGKM5FPf7GrBzTyOzg/MyQy1aMGOWmdPVfBa47rU9+QDQ9+k8Gd
+ bNKEMpr1vOKt1XhTgVoRN0icEt2c1Rlg4sJerxDAVBjktA9anltj91sikCR9sXkmagZE
+ jF5A==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20251104; t=1787665154; x=1788269954;
+ h=in-reply-to:content-disposition:content-type:mime-version
+ :references:message-id:subject:cc:to:from:date:x-gm-gg
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
+ :content-type;
+ bh=dcqrBR9zLvo/3xxADurhNk8ys9RwYSSiyiJMH61KDH8=;
+ b=A3BHBHfZwxcEi4bvmBv/vwGaGDed6UZz9KMVU/ihgJpnbPNbRc01OBPy/j6meCY5gu
+ m4kiZ6TSTVgMCtVPbYpJx8vThPsjPLJwCxYJJ6CM+Jl8c9fKovhrjywVgVAQKLcO99Sf
+ RJx75Ro9r9Y9MD62B3XmLwKvTTxqp4SOgIcmlbEn0pDHHe9MHsW+wOM+AH4rH6zNPiba
+ YQkh8KG46XCkH0kAJaPI4lnkBqoAlGrEQnZdNFIhzyTMcYB2zDsGIVajMBdnuN0DURGg
+ vx/79fT1QdXAJM/DtWQLFGrre+OBBui9JKx5yRSK4S7tTfpoFKQQ0l02vtqcjiB1+y0u
+ 52GA==
+X-Forwarded-Encrypted: i=1;
+ AHgh+RoF82Mjo/Oq1/r4JKCN4sY7JxZ9tksy5ChOfCjAzlrfAhJhw+7ycr4MtBCBSDNJORG3DcTBEUXfbg==@nongnu.org
+X-Gm-Message-State: AFuF++m3XECU18stlgAAiQRhksK+4r3T2y9baI3tLntJ9jxcd2rhLvnJ
+ SyYHjDEuMr5lQMgmt1BgN5zJ4uY23DgVNTaKIrp2MyHcgBC9qtLoTsa8+vtbqBFqEcI=
+X-Gm-Gg: AR+sD12/8eVlbLlcgraviY733DemL0Thfx6uOmXcZC5V5OYwVeMEfeKgr3Ai9EXeOBX
+ qYW6Q28yro3bdBP3TCtkIHdK5ov/vTIA3QyR7EHaT8zeRQ0vgqG4H8lO5QrIF44ed4z7y+EI+VU
+ oOFn/8liCkrEn5Rz+XcL+9msxyUvxSsp72u7VXLN6ziMqh+8ANtotN2td5KhQqwqDdfgZzHm+6t
+ Y7xSxvFUNyObYnysBtBKl7/fpVIlsxm2AnJkdfOT5+pl9LV03xxs/H/0yhujqDBLS9daPPaW5IR
+ SPAwfWj7dZvU2USsQflVsDlfVQPxnDxupXcLS1Cx/oyhuvz3wWVJ6dLXUFkSWwoDdclWsayodza
+ YHXuBTnUYaq74fvwYtI44Ta47J4Fo2GhoNvnmz3LKCNNSd2qv4f1uFKsuFP3Vvjxp6b6NQW5BLt
+ KCr6xDHkq96D70NFGLV/F443uvJIk1bp7X6nCFpUfdzI0dXIFMQxL1UiAVLREhtuYKPQcK8qVvk
+ eQ=
+X-Received: by 2002:a17:906:fd8c:b0:c24:b11c:6c05 with SMTP id
+ a640c23a62f3a-c24e5b541a3mr715720166b.14.1787665153689; 
+ Tue, 25 Aug 2026 06:39:13 -0700 (PDT)
+Received: from linaro.org ([2a10:d582:31e:0:8679:ff59:1b3a:5e93])
+ by smtp.gmail.com with ESMTPSA id
+ a640c23a62f3a-c24d6f203acsm809960966b.24.2026.08.25.06.39.12
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Tue, 25 Aug 2026 06:39:12 -0700 (PDT)
+Date: Tue, 25 Aug 2026 14:39:10 +0100
+From: Jim MacArthur <jim.macarthur@linaro.org>
+To: Tao Tang <tangtao1634@phytium.com.cn>
+Cc: Eric Auger <eric.auger@redhat.com>,
+ Peter Maydell <peter.maydell@linaro.org>, qemu-devel@nongnu.org,
+ qemu-arm@nongnu.org, Chen Baozi <chenbaozi@phytium.com.cn>,
+ Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>,
+ Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <philmd@mailo.com>,
+ Mostafa Saleh <smostafa@google.com>, Chao Liu <chao.liu@processmission.com>
+Subject: Re: [RFC v5 26/28] hw/arm/smmuv3: Initialize the secure register bank
+Message-ID: <ao2a_vm8vwEzpvVC@linaro.org>
+References: <20260813161515.2788900-1-tangtao1634@phytium.com.cn>
+ <20260813162624.2809349-5-tangtao1634@phytium.com.cn>
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.4
-X-Mimecast-MFC-PROC-ID: i5hTsXuO20KTCiLu7o9IbD1xOg5vjI8YW8sTuPfx9L4_1787664569
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=armbru@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: 12
-X-Spam_score: 1.2
-X-Spam_bar: +
-X-Spam_report: (1.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
- RCVD_IN_SBL_CSS=3.335, SPF_HELO_PASS=-0.001,
- SPF_PASS=-0.001 autolearn=no autolearn_force=no
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20260813162624.2809349-5-tangtao1634@phytium.com.cn>
+Received-SPF: pass client-ip=2a00:1450:4864:20::633;
+ envelope-from=jim.macarthur@linaro.org; helo=mail-ej1-x633.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -96,16 +109,26 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Mark Cave-Ayland <mark.caveayland@nutanix.com> writes:
+On Fri, Aug 14, 2026 at 12:26:24AM +0800, Tao Tang wrote:
+> Initialize the secure register bank (SMMU_SEC_SID_S) with sane default
+> values during the SMMU's reset sequence.
+> 
+> This change ensures that key fields, such as the secure ID registers,
+> GBPA reset value, and queue entry sizes, are set to a known-good state.
+> The SECURE_IMPL attribute of the S_IDR1 register will be introduced
+> later via device properties.
+> 
+> This is a necessary step to prevent undefined behavior when secure SMMU
+> features are subsequently enabled and used by software.
+> 
+> Signed-off-by: Tao Tang <tangtao1634@phytium.com.cn>
+> Reviewed-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
+> ---
+>  hw/arm/smmuv3.c | 29 ++++++++++++++++++++++++++++-
+>  1 file changed, 28 insertions(+), 1 deletion(-)
+> 
 
-[...]
 
-> Thanks for the pointers as it's something else to add to my set of notes as to how we should best model these things in QEMU. I wonder if there is a suitable place in the documentation we could add this?
-
-docs/devel/style.rst has a section "Error handling and reporting".
-
-There's quite a bit of documentation in qapi/error.h.
-
-Feel free to propose improvements.
+Reviewed-by: Jim MacArthur <jim.macarthur@linaro.org>
 
 

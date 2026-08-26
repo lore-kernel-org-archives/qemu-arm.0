@@ -4,49 +4,49 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E71C6C61DC2
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B6C66C61DC7
 	for <qemu-arm@archiver.kernel.org>; Wed, 26 Aug 2026 09:38:45 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wzA5M-0002rd-BC; Wed, 26 Aug 2026 05:38:20 -0400
+	id 1wzA5Y-0003C2-M9; Wed, 26 Aug 2026 05:38:32 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1wzA5K-0002qs-QN
- for qemu-arm@nongnu.org; Wed, 26 Aug 2026 05:38:18 -0400
+ id 1wzA5W-000372-Nc
+ for qemu-arm@nongnu.org; Wed, 26 Aug 2026 05:38:30 -0400
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1wzA5J-0003Fx-7u
- for qemu-arm@nongnu.org; Wed, 26 Aug 2026 05:38:18 -0400
+ id 1wzA5V-0003Gv-7N
+ for qemu-arm@nongnu.org; Wed, 26 Aug 2026 05:38:30 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1787737096;
+ s=mimecast20190719; t=1787737108;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=PGwhGSRwbZ5oBDYs0gjQNDzMSLjGv9rxTmsKdTjHBlA=;
- b=XwFvImu4qJxPVSWAo746fvDWUyuX0iexC7iqAq2OaNxU3YV42id1k/pneRVLtAx3M/YdbP
- ljgKJ8EZ7TGUn1DR8yfFBiltVlhTVQiyeaR/Xk8mYDTwdDeWTcMrogJb8eR7Rbd/n2y1MD
- YXN7pFFeZphnJiwSS5TUCacddmNIQ2c=
-Received: from mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com
+ bh=CYMDAiuX3NMXS8zhqozIt3cUizP2vJsejo6cSarl3BA=;
+ b=KaSAxlxvtW+sIDlr2m5z825LMMargv/T5dCD7ppypfgTzBqAwUibTeGdmKNRFp2AXBrqjY
+ 6dvZ6jv4TRhcr0XdxeYYq6ktuFcPnYmILcomPqliGSLAeSzC1EofpOisMXWMHLde5TYn0r
+ BbRCoyStSNRhKKXBvXDxDq+6kC2TbHg=
+Received: from mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com
  (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-465-xEHeRsUjPpam_RyajDUDYQ-1; Wed,
- 26 Aug 2026 05:38:12 -0400
-X-MC-Unique: xEHeRsUjPpam_RyajDUDYQ-1
-X-Mimecast-MFC-AGG-ID: xEHeRsUjPpam_RyajDUDYQ_1787737090
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-557-VmDD3r8fPwquTFttcLukuw-1; Wed,
+ 26 Aug 2026 05:38:25 -0400
+X-MC-Unique: VmDD3r8fPwquTFttcLukuw-1
+X-Mimecast-MFC-AGG-ID: VmDD3r8fPwquTFttcLukuw_1787737103
 Received: from mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com
  (mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.12])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 1651D1944EBC; Wed, 26 Aug 2026 09:38:10 +0000 (UTC)
+ by mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 3A3D0197765F; Wed, 26 Aug 2026 09:38:23 +0000 (UTC)
 Received: from laptop.redhat.com (unknown [10.44.48.93])
  by mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id E89E81955F05; Wed, 26 Aug 2026 09:38:03 +0000 (UTC)
+ id 5CC9F1955F05; Wed, 26 Aug 2026 09:38:17 +0000 (UTC)
 From: Eric Auger <eric.auger@redhat.com>
 To: eric.auger.pro@gmail.com, eric.auger@redhat.com, qemu-devel@nongnu.org,
  qemu-arm@nongnu.org, kvmarm@lists.linux.dev, peter.maydell@linaro.org,
@@ -56,15 +56,15 @@ To: eric.auger.pro@gmail.com, eric.auger@redhat.com, qemu-devel@nongnu.org,
 Cc: maz@kernel.org, oliver.upton@linux.dev, pbonzini@redhat.com,
  armbru@redhat.com, berrange@redhat.com, abologna@redhat.com,
  jdenemar@redhat.com
-Subject: [RFC PATCH v8 02/20] target/arm/cpu-sysregs.h.inc: Sort by name
- alphabetical order
-Date: Wed, 26 Aug 2026 11:36:07 +0200
-Message-ID: <20260826093747.1670077-3-eric.auger@redhat.com>
+Subject: [RFC PATCH v8 04/20] arm/cpu: Add infra to handle generated ID
+ register definitions
+Date: Wed, 26 Aug 2026 11:36:09 +0200
+Message-ID: <20260826093747.1670077-5-eric.auger@redhat.com>
 In-Reply-To: <20260826093747.1670077-1-eric.auger@redhat.com>
 References: <20260826093747.1670077-1-eric.auger@redhat.com>
 MIME-Version: 1.0
 X-Scanned-By: MIMEDefang 3.0 on 10.30.177.12
-X-Mimecast-MFC-PROC-ID: IZ73LOqDrM_wyd_nq8QTZyugJGHR71JCryCbzllHc9w_1787737090
+X-Mimecast-MFC-PROC-ID: krX99dMf0GFCMiq55YGFe8vwTYG0Em_PagVeTbLxsME_1787737103
 X-Mimecast-Originator: redhat.com
 Content-Transfer-Encoding: 8bit
 content-type: text/plain; charset="US-ASCII"; x-default=true
@@ -92,97 +92,67 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Sort by register name alphabetical order. This will allow to
-easily diff with the future content, automatically generated.
-
-No functional change intended.
+Introduce an infrastructure to store the definition of all ID regs:
+This include their name, index and array of named fields.
 
 Signed-off-by: Eric Auger <eric.auger@redhat.com>
 Signed-off-by: Cornelia Huck <cohuck@redhat.com>
-Reviewed-by: Shameer Kolothum <skolothumtho@nvidia.com>
-Reviewed-by: Khushit Shah <khushit.shah@nutanix.com>
+Co-authored-by: Khushit Shah <khushit.shah@nutanix.com>
+Signed-off-by: Khushit Shah <khushit.shah@nutanix.com>
 
 ---
+v7 -> v8:
+- remove typedef struct ArmIdRegArchVal
+
 v5 -> v6:
-- v5 version conflicted because ID_AA64FPFR0_EL1 has been
-  added
-
-v4 -> v5:
-- remove spurious CCSIDR definition
+- add ArmIdRegArchVal
 ---
- target/arm/cpu-sysregs.h.inc | 44 ++++++++++++++++++------------------
- 1 file changed, 22 insertions(+), 22 deletions(-)
+ target/arm/cpu-idregs.h | 36 ++++++++++++++++++++++++++++++++++++
+ 1 file changed, 36 insertions(+)
+ create mode 100644 target/arm/cpu-idregs.h
 
-diff --git a/target/arm/cpu-sysregs.h.inc b/target/arm/cpu-sysregs.h.inc
-index 6e8b335b8f..ec5a12b0f4 100644
---- a/target/arm/cpu-sysregs.h.inc
-+++ b/target/arm/cpu-sysregs.h.inc
-@@ -1,13 +1,12 @@
- /* SPDX-License-Identifier: GPL-2.0-or-later */
--DEF(ID_AA64PFR0_EL1, 3, 0, 0, 4, 0)
--DEF(ID_AA64PFR1_EL1, 3, 0, 0, 4, 1)
--DEF(ID_AA64PFR2_EL1, 3, 0, 0, 4, 2)
--DEF(ID_AA64SMFR0_EL1, 3, 0, 0, 4, 5)
--DEF(ID_AA64FPFR0_EL1, 3, 0, 0, 4, 7)
--DEF(ID_AA64DFR0_EL1, 3, 0, 0, 5, 0)
--DEF(ID_AA64DFR1_EL1, 3, 0, 0, 5, 1)
-+DEF(CLIDR_EL1, 3, 1, 0, 0, 1)
-+DEF(CTR_EL0, 3, 3, 0, 0, 1)
-+DEF(DCZID_EL0, 3, 3, 0, 0, 7)
- DEF(ID_AA64AFR0_EL1, 3, 0, 0, 5, 4)
- DEF(ID_AA64AFR1_EL1, 3, 0, 0, 5, 5)
-+DEF(ID_AA64DFR0_EL1, 3, 0, 0, 5, 0)
-+DEF(ID_AA64DFR1_EL1, 3, 0, 0, 5, 1)
-+DEF(ID_AA64FPFR0_EL1, 3, 0, 0, 4, 7)
- DEF(ID_AA64ISAR0_EL1, 3, 0, 0, 6, 0)
- DEF(ID_AA64ISAR1_EL1, 3, 0, 0, 6, 1)
- DEF(ID_AA64ISAR2_EL1, 3, 0, 0, 6, 2)
-@@ -17,29 +16,30 @@ DEF(ID_AA64MMFR1_EL1, 3, 0, 0, 7, 1)
- DEF(ID_AA64MMFR2_EL1, 3, 0, 0, 7, 2)
- DEF(ID_AA64MMFR3_EL1, 3, 0, 0, 7, 3)
- DEF(ID_AA64MMFR4_EL1, 3, 0, 0, 7, 4)
--DEF(ID_PFR0_EL1, 3, 0, 0, 1, 0)
--DEF(ID_PFR1_EL1, 3, 0, 0, 1, 1)
--DEF(ID_DFR0_EL1, 3, 0, 0, 1, 2)
-+DEF(ID_AA64PFR0_EL1, 3, 0, 0, 4, 0)
-+DEF(ID_AA64PFR1_EL1, 3, 0, 0, 4, 1)
-+DEF(ID_AA64PFR2_EL1, 3, 0, 0, 4, 2)
-+DEF(ID_AA64SMFR0_EL1, 3, 0, 0, 4, 5)
-+DEF(ID_AA64ZFR0_EL1, 3, 0, 0, 4, 4)
- DEF(ID_AFR0_EL1, 3, 0, 0, 1, 3)
--DEF(ID_MMFR0_EL1, 3, 0, 0, 1, 4)
--DEF(ID_MMFR1_EL1, 3, 0, 0, 1, 5)
--DEF(ID_MMFR2_EL1, 3, 0, 0, 1, 6)
--DEF(ID_MMFR3_EL1, 3, 0, 0, 1, 7)
-+DEF(ID_DFR0_EL1, 3, 0, 0, 1, 2)
-+DEF(ID_DFR1_EL1, 3, 0, 0, 3, 5)
- DEF(ID_ISAR0_EL1, 3, 0, 0, 2, 0)
- DEF(ID_ISAR1_EL1, 3, 0, 0, 2, 1)
- DEF(ID_ISAR2_EL1, 3, 0, 0, 2, 2)
- DEF(ID_ISAR3_EL1, 3, 0, 0, 2, 3)
- DEF(ID_ISAR4_EL1, 3, 0, 0, 2, 4)
- DEF(ID_ISAR5_EL1, 3, 0, 0, 2, 5)
--DEF(ID_MMFR4_EL1, 3, 0, 0, 2, 6)
- DEF(ID_ISAR6_EL1, 3, 0, 0, 2, 7)
-+DEF(ID_MMFR0_EL1, 3, 0, 0, 1, 4)
-+DEF(ID_MMFR1_EL1, 3, 0, 0, 1, 5)
-+DEF(ID_MMFR2_EL1, 3, 0, 0, 1, 6)
-+DEF(ID_MMFR3_EL1, 3, 0, 0, 1, 7)
-+DEF(ID_MMFR4_EL1, 3, 0, 0, 2, 6)
-+DEF(ID_MMFR5_EL1, 3, 0, 0, 3, 6)
-+DEF(ID_PFR0_EL1, 3, 0, 0, 1, 0)
-+DEF(ID_PFR1_EL1, 3, 0, 0, 1, 1)
-+DEF(ID_PFR2_EL1, 3, 0, 0, 3, 4)
- DEF(MVFR0_EL1, 3, 0, 0, 3, 0)
- DEF(MVFR1_EL1, 3, 0, 0, 3, 1)
- DEF(MVFR2_EL1, 3, 0, 0, 3, 2)
--DEF(ID_PFR2_EL1, 3, 0, 0, 3, 4)
--DEF(ID_DFR1_EL1, 3, 0, 0, 3, 5)
--DEF(ID_MMFR5_EL1, 3, 0, 0, 3, 6)
--DEF(CLIDR_EL1, 3, 1, 0, 0, 1)
--DEF(ID_AA64ZFR0_EL1, 3, 0, 0, 4, 4)
--DEF(CTR_EL0, 3, 3, 0, 0, 1)
--DEF(DCZID_EL0, 3, 3, 0, 0, 7)
+diff --git a/target/arm/cpu-idregs.h b/target/arm/cpu-idregs.h
+new file mode 100644
+index 0000000000..98c7a7518f
+--- /dev/null
++++ b/target/arm/cpu-idregs.h
+@@ -0,0 +1,36 @@
++/*
++ * handle ID registers and their fields
++ *
++ * SPDX-License-Identifier: GPL-2.0-or-later
++ */
++#ifndef TARGET_ARM_CPU_IDREGS_H
++#define TARGET_ARM_CPU_IDREGS_H
++
++#include "qemu/osdep.h"
++#include "qemu/error-report.h"
++#include "cpu.h"
++#include "cpu-sysregs.h"
++
++typedef struct ARM64SysRegField {
++    const char *name; /* name of the field, for instance CTR_EL0_IDC */
++    ARMIDRegisterIdx index; /* parent register, e.g. CTR_EL0_IDX */
++    int shift; /* lsb of the field in the register */
++    int length; /* highest bit number */
++    uint64_t *arch_vals;
++    uint32_t arch_vals_count;
++} ARM64SysRegField;
++
++typedef struct ARM64SysReg {
++    const char *name;   /* name of the sysreg, for instance CTR_EL0 */
++    ARMIDRegisterIdx index; /* register index, e.g. CTR_EL0_IDX */
++    struct ARM64SysRegField *fields;
++    uint32_t fields_count;
++    uint64_t writable_mask;
++} ARM64SysReg;
++
++/*
++ * List of exposed ID regs (automatically populated from AARCHMRS Registers.json)
++ */
++extern ARM64SysReg arm64_id_regs[NUM_ID_IDX];
++
++#endif
 -- 
 2.53.0
 

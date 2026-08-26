@@ -4,88 +4,176 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5BE2CC61DBD
-	for <qemu-arm@archiver.kernel.org>; Wed, 26 Aug 2026 17:46:16 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BB952C5DF97
+	for <qemu-arm@archiver.kernel.org>; Wed, 26 Aug 2026 18:05:44 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wzHet-0001R7-Lf; Wed, 26 Aug 2026 13:43:31 -0400
+	id 1wzHzz-0008Pe-9t; Wed, 26 Aug 2026 14:05:19 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1wzHe9-0000EB-Sk
- for qemu-arm@nongnu.org; Wed, 26 Aug 2026 13:42:47 -0400
-Received: from mail-pf1-x431.google.com ([2607:f8b0:4864:20::431])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1wzHe6-0004sS-MZ
- for qemu-arm@nongnu.org; Wed, 26 Aug 2026 13:42:44 -0400
-Received: by mail-pf1-x431.google.com with SMTP id
- d2e1a72fcca58-8486ac3f347so147150b3a.1
- for <qemu-arm@nongnu.org>; Wed, 26 Aug 2026 10:42:41 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <philmd@oss.qualcomm.com>)
+ id 1wzHzt-0008OB-4d
+ for qemu-arm@nongnu.org; Wed, 26 Aug 2026 14:05:13 -0400
+Received: from mx0b-0031df01.pphosted.com ([205.220.180.131])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <philmd@oss.qualcomm.com>)
+ id 1wzHzr-0003DA-4a
+ for qemu-arm@nongnu.org; Wed, 26 Aug 2026 14:05:12 -0400
+Received: from pps.filterd (m0279873.ppops.net [127.0.0.1])
+ by mx0a-0031df01.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id
+ 67QGug3g1408693
+ for <qemu-arm@nongnu.org>; Wed, 26 Aug 2026 18:05:09 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qualcomm.com; h=
+ cc:content-transfer-encoding:content-type:date:from:in-reply-to
+ :message-id:mime-version:references:subject:to; s=qcppdkim1; bh=
+ 0aKBEAAFRVYLid2OaLjFOGC+DQV42SuupgQ5UtPS3LE=; b=K3we8OUyrZCA7TcY
+ +SK6ViiKGqeinNxE2N97725xBZhSbTqdcUcfkMSHtpS6ORdKHe8KGfFWZEgOtsRU
+ KauUWbwA3kmblKbFfs1xlM0Rl4J0o0O3A/CYodoU6DJbmpDgsaIh695Bx/ycGFxt
+ 9/Y6mR7x9fIN3vxirBIb1YvhcCP6tFe8IQ2lt+JQ5qmaomiqkqCKpGqZvJ3LAe3X
+ VfGXO9R/0Y74rwA3dL/BO0PJ+tqowcwMb6c2ZD05w3fzuMks7me2YnxijNCDAIN4
+ ht1dH2hFVmrqmiVGYyq3XC1YnTeg1TSl8K0t8Nb0ur9WhWwbF+wxdnr9U7mH3s76
+ LUGa6g==
+Received: from mail-qt1-f198.google.com (mail-qt1-f198.google.com
+ [209.85.160.198])
+ by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 4g9x2n1vg8-1
+ (version=TLSv1.3 cipher=TLS_AES_128_GCM_SHA256 bits=128 verify=NOT)
+ for <qemu-arm@nongnu.org>; Wed, 26 Aug 2026 18:05:09 +0000 (GMT)
+Received: by mail-qt1-f198.google.com with SMTP id
+ d75a77b69052e-52f64c48bf2so8045151cf.0
+ for <qemu-arm@nongnu.org>; Wed, 26 Aug 2026 11:05:09 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1787766160; x=1788370960; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:from:to:cc:subject:date
- :message-id:reply-to:content-type;
- bh=BJ83ukAktt+ErEtZMU9oLoeoJZPG6BepLZk3A1SHS74=;
- b=i+cLOtsaDkMCZaOCX4DzhTDKXF5GG+qREaYJ7al4uRX2e0gMWsXs54w+UYarbVrv14
- mwrkLdQDilg4Bq5GcPjeqbxD6+2TomdiOSa7AVCpB7OSPwOMOm/svUgJ9N/SLB9Xj5S5
- RadQ90gxtW1Aen1/igwz0EcPQaezP5Y82xzgNiDfiK082b85/lX2wGiiU4U+LnMES02R
- fB+hP49SLP7eDhA5CM9Na2cmY0n+QF9zLNoesMhc845ITNRfJ8xLzNZyZWu+JlGjoY5D
- MMFA32JNnfHbiEZJC9mI7HxVPgEfVYNs2nMDO4AsOpbgpwDazR6gNL0W1On1HKyVQ18a
- hFjQ==
+ d=oss.qualcomm.com; s=google; t=1787767509; x=1788372309; darn=nongnu.org;
+ h=content-transfer-encoding:content-type:in-reply-to:from:references
+ :cc:to:content-language:subject:user-agent:mime-version:date
+ :message-id:from:to:cc:subject:date:message-id:reply-to:content-type;
+ bh=0aKBEAAFRVYLid2OaLjFOGC+DQV42SuupgQ5UtPS3LE=;
+ b=A8oRUJNBAJKConSpH3vCDEmRj8FHmmVz8r1aJD+iGvYfJSARXKz6K0ZIfAlK2Bx+pQ
+ mTfWJ+kEITA0Gj/rUuKuMPSP+HimQ9sra4UlPOlx6DbH/N4igUlYWzK8wHkn/AprfkEC
+ 8PK3dBMTNSMG2AgusbHxJ4wDSPBYWC7iRJ1Br1bCLfL8APKWFq1LQ3W7pPmzR1J83tpo
+ oB/9Aj3Bu7qhtniQToxiEGP65SS4c/n1T+cYOuVsyapa9Q3TEeekCxLiJUXYsqtoISkm
+ G/UzfmktfcXPugzU4zGAQpSeXcWaeH0JzrgydCfs4mNSKgUcKhbIgW8Z5BURcITx6msh
+ 5VvQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1787766160; x=1788370960;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
- :to:cc:subject:date:message-id:reply-to:content-type;
- bh=BJ83ukAktt+ErEtZMU9oLoeoJZPG6BepLZk3A1SHS74=;
- b=Zmfi5s4b1338bYc3uFFASyO5Nf0ykqWQHgW2fL+zFQrP7i1fG7xdLcLVmMI4QmXHR/
- dOjJtSeMCVQ0rCkV0fI9hFU6wpTtdi6GU+ZgdHZD/fpP7wJ27E08zh0IY88s0nHt5Caf
- +TA1kn4Bm+V/o5L8LCOOmhPsVzZgXt1xQlWfYeS3IRHVxD0jMJMdwu+TgElaO8D4gkLI
- dXFNhlJWX5AmlU9fl/wY6HW3d2xEtfFIxr1pQopG74ZH+eZCRCp8J+4jwfIU/fnpGcFF
- LKl5u9Rac7XUcklu9u9o3eZ6//PYtnnjDoQwsiRJCFZW+uphQFnpHfnbGbwMM01VvTpb
- FvDg==
-X-Gm-Message-State: AFuF++lqd/E03S/dR0oOfr71YDGz6/Uk1vKHrOOBDEwdGyQO4ueR7Csm
- Nt721vm2FTbaqvmeJMp27j7mOjycaMQWqULGEIVhNOOunUyTh2QolM5VJBSFlcFPCHg=
-X-Gm-Gg: AR+sD11sQZ9ysV4Q98CyEXMXVr8xo/JqYc80yiC5auHSL/DOQVUy9zmug4YGP0KRKfo
- naF9R6jpqDGjidKpotfDqzjkUsRGZUrIFrEH9PK0HduYlVQdRL+FekhwYJ95n2HV56ndhWZoJfP
- nuSHSL3ZuNLYj7UScABf1FeRqpT2y/CUdO3PUzAVKXakZQvV64vNG2I3vYae9fCmeMU4dYZDA+/
- Z42CUYl5g2qWwrOQxQqZ7p8Jh8ALxZ9eceiOapI8/2CjjpgY5QdCZYlJh8TutbOR46NCsFx40x1
- l8cuq9FShg69lfiG11kV5KU0kRgjmuKyBd0CdrahoDeBjxabgrtO+w4NJOnqxS7Hpn/B0aw+GA0
- 7VFA5cythskPYFV61TC4WXpYyv0B75j2g/Y0sPXpxErty33AsHqpfkeVMN87udmWzLRx2AYBP0Q
- O5KRTRdnPkOW1Pt/MTEdwYZ6fLFFFWA+7iPdvHGsVuI4xqX38fqtR50zJEht9eZwzEVKYtbGPaI
- kNEm1VwkahJKctGkWc=
-X-Received: by 2002:a05:6a00:1d89:b0:842:3c77:5996 with SMTP id
- d2e1a72fcca58-854c648573dmr1011054b3a.1.1787766160240; 
- Wed, 26 Aug 2026 10:42:40 -0700 (PDT)
-Received: from stoup (174-21-93-59.tukw.qwest.net. [174.21.93.59])
+ d=1e100.net; s=20251104; t=1787767509; x=1788372309;
+ h=content-transfer-encoding:content-type:in-reply-to:from:references
+ :cc:to:content-language:subject:user-agent:mime-version:date
+ :message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+ :message-id:reply-to:content-type;
+ bh=0aKBEAAFRVYLid2OaLjFOGC+DQV42SuupgQ5UtPS3LE=;
+ b=gjKDPsNgEYtMuEDjuq9pOQAlzvwxaZKWEfulMNndUYbAEZoJm9yzfaR5l3nxIzf+mT
+ +/X6PC9vRXAE7j7G6L26fgKCkiouBfbfF97Oij1U9uzevdKP+utEdHv8ItGZbZWl/MOS
+ 37Mo7KcGnJeWBjDdrupZcDTI/yj7D0YoLOvV9jcl591zgnS6QXDeqfxT641hkI/NPOHH
+ f65p6cfW2HYc+2kyiZR0hWx6ntQ6kfMwv4xnwkdWh2Q3ysVRUGuKC4iDpo5xR/oyg33o
+ i/diYR7T6yTB/nLdn0+M0BYNB9TJoEaDeyJVu+LUJBdWxKMWjYQRPC7iSlHOtlfJOWJS
+ 7LZw==
+X-Forwarded-Encrypted: i=1;
+ AHgh+Rr0gG4qZhVS0MiI4Obz6IILjx9UQn7IO+W7c4scCSmjf1V8r/FL2zPDv5kjdp1YyCnyL7qqrrdP2w==@nongnu.org
+X-Gm-Message-State: AFuF++m+Y6UIvGJaP5SAAoaTgmJVchpL3yCs6qSoDyuFQWUFZNA1Cmt7
+ JfCAe6+ES6Y01Xapx1tvSm2HR1gNKlInc/0L/W3xp0GkqfOTUb0E1yVnmr4u6w/hT3yzeRmchHj
+ mQb4FSOFppssBEwAWF7fcVtqRkpoHO4fK9Tc5Tj0H/xjupnIUTOaQrso=
+X-Gm-Gg: AR+sD10sN+WfN3JNvB4RNDZtIw9Iyb/1vSn1z6Za36qHNCk0kiZVEbqPwyfqrd+fPeM
+ vSmsQSXJRNxzdFQ0aOSbFgCSzJrCKxgwVq247T8Ufx7KQaDdvl+J2THqHtN5EVCDK2HS0QXa5Bv
+ lJzt5z/Tv6w5c/Z+//yxMTNZ4jBC3s5xbyVfubStxYElAHwjSlak7ox4vDD7cCOt2moyVHTc0Iy
+ uRhddlGjZOQVg1d/FqWXDVymS8iezx143dtARegg3BjSD1tFBsJfSgUkPwBLu7dhb/gsVTmySOP
+ dXsNlgTuux4WDem21vo26TgQgAqRqB7bf2lm/0CrBHzDzQFYI1yC7+1WplN5Gd2DyaGPE/nXxJp
+ Kp9RKzGfmKjNGuQPJqUOFiFssiNYdC8jQlxDVuIF9Ip8lF/ckMg==
+X-Received: by 2002:a05:622a:30f:b0:51c:1568:3a53 with SMTP id
+ d75a77b69052e-52e422ebbc3mr89594981cf.16.1787767508698; 
+ Wed, 26 Aug 2026 11:05:08 -0700 (PDT)
+X-Received: by 2002:a05:622a:30f:b0:51c:1568:3a53 with SMTP id
+ d75a77b69052e-52e422ebbc3mr89593571cf.16.1787767508021; 
+ Wed, 26 Aug 2026 11:05:08 -0700 (PDT)
+Received: from [10.254.188.74] (134.171.88.92.rev.sfr.net. [92.88.171.134])
  by smtp.gmail.com with ESMTPSA id
- 41be03b00d2f7-cc1bec66020sm1260072a12.21.2026.08.26.10.42.39
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 26 Aug 2026 10:42:39 -0700 (PDT)
-From: Richard Henderson <richard.henderson@linaro.org>
-To: qemu-devel@nongnu.org
-Cc: qemu-arm@nongnu.org,
-	Peter Maydell <peter.maydell@linaro.org>
-Subject: [PATCH v2 22/25] target/arm: Implement AESEMC
-Date: Wed, 26 Aug 2026 10:42:09 -0700
-Message-ID: <20260826174213.614571-23-richard.henderson@linaro.org>
-X-Mailer: git-send-email 2.53.0
-In-Reply-To: <20260826174213.614571-1-richard.henderson@linaro.org>
-References: <20260826174213.614571-1-richard.henderson@linaro.org>
+ a640c23a62f3a-c250a722400sm557869766b.23.2026.08.26.11.05.04
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Wed, 26 Aug 2026 11:05:06 -0700 (PDT)
+Message-ID: <c36279c6-6595-48e9-8cad-2896064e9e33@oss.qualcomm.com>
+Date: Wed, 26 Aug 2026 20:05:03 +0200
 MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 12/12] meson: link ARM and RISC-V into qemu-system
+Content-Language: en-US
+To: Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>,
+ =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>
+Cc: Yonggang Luo <luoyonggang@gmail.com>, qemu-devel@nongnu.org,
+ Xianglai Li <lixianglai@loongson.cn>,
+ Alistair Francis <alistair.francis@wdc.com>,
+ Chinmay Rath <rathc@linux.ibm.com>,
+ Sunil V L <sunilvl@ventanamicro.com>, qemu-riscv@nongnu.org,
+ Alexander Bulekov <alxndr@bu.edu>, Zhao Liu <zhao1.liu@intel.com>,
+ Eric Farman <farman@linux.ibm.com>, Laurent Vivier <lvivier@redhat.com>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ Chao Liu <chao.liu@processmission.com>,
+ Liu Zhiwei <zhiwei_liu@linux.alibaba.com>,
+ Palmer Dabbelt <palmer@dabbelt.com>, Song Gao <17746591750@163.com>,
+ Harsh Prateek Bora <harshpb@linux.ibm.com>,
+ Glenn Miles <milesg@linux.ibm.com>,
+ Daniel Henrique Barboza <daniel.barboza@oss.qualcomm.com>,
+ qemu-s390x@nongnu.org, Jiaxun Yang <jiaxun.yang@flygoat.com>,
+ =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@mailo.com>,
+ "Michael S. Tsirkin" <mst@redhat.com>, Stefan Hajnoczi
+ <stefanha@redhat.com>, =?UTF-8?Q?Alex_Benn=C3=A9e?=
+ <alex.bennee@linaro.org>,
+ David Hildenbrand <david@kernel.org>, qemu-ppc@nongnu.org,
+ qemu-arm@nongnu.org, Igor Mammedov <imammedo@redhat.com>,
+ Aleksandar Rikalo <arikalo@gmail.com>,
+ Nicholas Piggin <npiggin@gmail.com>, Cornelia Huck <cohuck@redhat.com>,
+ Richard Henderson <richard.henderson@linaro.org>,
+ Ilya Leoshkevich <iii@linux.ibm.com>, Fabiano Rosas <farosas@suse.de>,
+ Aurelien Jarno <aurelien@aurel32.net>,
+ Paolo Bonzini <pbonzini@redhat.com>, Ani Sinha <anisinha@redhat.com>,
+ Bibo Mao <maobibo@loongson.cn>,
+ =?UTF-8?Q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>,
+ Matthew Rosato <mjrosato@linux.ibm.com>, Weiwei Li <liwei1518@gmail.com>,
+ Darren Kenny <darren.kenny@oracle.com>
+References: <20260823150731.896-1-luoyonggang@gmail.com>
+ <20260823150731.896-13-luoyonggang@gmail.com>
+ <b9f0853b-adda-457d-94e1-add9bb2a2548@oss.qualcomm.com>
+ <ao7jWx-zfmB9AUEb@redhat.com>
+ <d7d5e491-430b-4781-8746-eebcc1e4177e@oss.qualcomm.com>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@oss.qualcomm.com>
+In-Reply-To: <d7d5e491-430b-4781-8746-eebcc1e4177e@oss.qualcomm.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::431;
- envelope-from=richard.henderson@linaro.org; helo=mail-pf1-x431.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
+X-Proofpoint-ORIG-GUID: Lbf51TzeJVVB10Wv-H1gfzBo-y9NfBfT
+X-Proofpoint-Spam-Info: AW1haW4tMjYwODI2MDE1MSBTYWx0ZWRfX3Dy0fjUMsuRM
+ KXJaFdYNH5HCetd2LuvseIedPIS2LM8m52CiK2hqZ0PiSkrF0fmKlmV4MBQsSL5ggLAfgsX7V4X
+ /NzVJB9OJ6dqsDr4S+GgTPvA/QXdmjI=
+X-Proofpoint-GUID: Lbf51TzeJVVB10Wv-H1gfzBo-y9NfBfT
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwODI2MDE1MSBTYWx0ZWRfX2Yb0Ynrcjeiq
+ 0rMJ1FBCJ3KN16beEYr96G6H0tfUbeFFfFW3z60KMJMgnzNGYmyCOPsLJ16oa3+ZbHt1D5HnMKL
+ N8hsMxy3erCwSYRo1ltKaNEHk4mEWYBs0Yq5OyfF8w31fB/iak15h9RTrHMn/Hh8MSBNwNzeTKq
+ MQpIqRYsQ6tX0laC/zoz3s+iyALpSzAR5daK3ajtSg3MUvFLQf4m4CWS+Q8eF/RN5+LIWBuAQNh
+ 4JAuMQHVnldCDQXS0jJimMIQmg+wIR4ysh7FRNEuS9FpeHYCuQqgPpDkEOn9PcOpryf1VSRlLyO
+ DrF/g8ywjmk1TYVRUb+UC3CJ7HacCYhjpbaqkYrWQD++VvSYebVIYK8X/7g4IGHh8SsTxYgxMg1
+ 4msWYoRiUeJmjLEvTWSWyyR66/ZNylR54u6wzMOe8pjOy1N/6p3Yk629gtvEDKJJ7P3nNoxrcuz
+ ViQ3LFmQTv9euezMBOA==
+X-Authority-Analysis: v=2.4 cv=PPQ/P/qC c=1 sm=1 tr=0 ts=6a8f2ad5 cx=c_pps
+ a=mPf7EqFMSY9/WdsSgAYMbA==:117 a=o1isufRNksZXpKP+aqnsag==:17
+ a=IkcTkHD0fZMA:10 a=Sv0fKeRqtYgA:10 a=M51BFTxLslgA:10 a=s4-Qcg_JpJYA:10
+ a=VkNPw1HP01LnGYTKEx00:22 a=u7WPNUs3qKkmUXheDGA7:22 a=rJkE3RaqiGZ5pbrm-msn:22
+ a=pGLkceISAAAA:8 a=EUspDBNiAAAA:8 a=WGUbI1f7ho_wN7Lv0PAA:9 a=3ZKOabzyN94A:10
+ a=QEXdDO2ut3YA:10 a=dawVfQjAaf238kedN5IG:22
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.293,Aquarius:18.0.1176,Hydra:6.1.134,FMLib:17.12.100.49
+ definitions=2026-08-26_05,2026-08-26_02,2025-10-01_01
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
+ bulkscore=0 priorityscore=1501 malwarescore=0 lowpriorityscore=0
+ clxscore=1015 suspectscore=0 impostorscore=0 spamscore=0 adultscore=0
+ phishscore=0 classifier=typeunknown authscore=0 authtc= authcc=
+ route=outbound adjust=0 reason=mlx scancount=1 engine=8.22.0-2606150000
+ definitions=main-2608260151
+Received-SPF: pass client-ip=205.220.180.131;
+ envelope-from=philmd@oss.qualcomm.com; helo=mx0b-0031df01.pphosted.com
+X-Spam_score_int: -27
+X-Spam_score: -2.8
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ RCVD_IN_DNSWL_LOW=-0.7, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -101,97 +189,123 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
-Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
----
- target/arm/tcg/helper-defs.h   |  1 +
- target/arm/tcg/crypto_helper.c | 31 +++++++++++++++++++++++++++++++
- target/arm/tcg/translate-sve.c |  2 ++
- target/arm/tcg/sve.decode      |  3 +++
- 4 files changed, 37 insertions(+)
+On 26/8/26 19:40, Pierrick Bouvier wrote:
+> On 8/26/2026 6:00 AM, Daniel P. Berrangé wrote:
+>> On Mon, Aug 24, 2026 at 09:20:38AM -0700, Pierrick Bouvier wrote:
+>>> On 8/23/2026 8:07 AM, Yonggang Luo wrote:
+>>>> - Build qemu-system (and qemu-systemw on Windows) from aarch64
+>>>>    common/system objects plus RISC-V arch objects taken from the
+>>>>    existing riscv64 lib.
+>>>> - Pull 32-bit TargetInfo and 32-only boards from the arm/riscv32
+>>>>    libs so hw/arm and target/riscv are not compiled twice.
+>>>> - Skip linking qemu-system-{arm,aarch64,riscv32,riscv64} and the
+>>>>    Windows *w variants; symlink those names to qemu-system so
+>>>>    argv[0] still selects TargetInfo.
+>>>>
+>>>> Signed-off-by: Yonggang Luo <luoyonggang@gmail.com>
+>>>> ---
+>>>>   meson.build | 156 +++++++++++++++++++++++++++++++++++++++++++++++++---
+>>>>   1 file changed, 147 insertions(+), 9 deletions(-)
+>>
+>> I think this approach of taking common/system from aarch64
+>> and adding in riscv specific objects only works by luck.
+>>
+>> That's not obvious from your patch, but Pierrick's counterproposal
+>> below will expose it with a little  tweak....
+>>
+>>
+>>>  From 6261b0c255e1a8f0df2b41928b8dfb365d0fa488 Mon Sep 17 00:00:00 2001
+>>> From: Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>
+>>> Date: Tue, 14 Apr 2026 10:56:15 -0700
+>>> Subject: [PATCH] meson: build single binary
+>>>
+>>> This is not built by default.
+>>> Build with: ninja -C build qemu-system
+>>>
+>>> All available *-softmmu targets are aggregated, ./configure
+>>> --target-list can be used to restrict which targets are included.
+>>>
+>>> In case user has targets that are not supported, we emit an error
+>>> message when build qemu-system target. This way, it's not necessary to
+>>> have a custom configure flag, and qemu-system can live next to existing
+>>> binaries without complexifying the workflow more than it is already.
+>>>
+>>> Signed-off-by: Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>
+>>> ---
+>>>   meson.build | 48 ++++++++++++++++++++++++++++++++++++++++++++++++
+>>>   1 file changed, 48 insertions(+)
+>>>
+>>> diff --git a/meson.build b/meson.build
+>>> index 553df3e7f053..4a31a520d9eb 100644
+>>> --- a/meson.build
+>>> +++ b/meson.build
+>>> @@ -4264,6 +4264,9 @@ if host_os == 'darwin'
+>>>   endif
+>>>   
+>>>   traceable = []
+>>> +single_binary_libs = []
+>>> +single_binary_deps = []
+>>> +single_binary_crates = []
+>>>   emulators = {}
+>>>   foreach target : target_dirs
+>>>     config_target = config_target_mak[target]
+>>> @@ -4419,6 +4422,10 @@ foreach target : target_dirs
+>>>                    build_by_default: false)
+>>>   
+>>>     if target.endswith('-softmmu')
+>>> +    single_binary_libs += lib
+>>> +    single_binary_deps += arch_deps
+>>> +    single_binary_deps += target_stubs
+>>> +    single_binary_crates += main_rs
+>>>       execs = [{
+>>>         'name': 'qemu-system-' + target_name,
+>>>         'win_subsystem': 'console',
+>>> @@ -4500,6 +4507,47 @@ foreach target : target_dirs
+>>>     endforeach
+>>>   endforeach
+>>>   
+>>> +single_binary_objects = []
+>>> +foreach lib: single_binary_libs
+>>> +  single_binary_objects += lib.extract_all_objects(recursive: true)
+>>> +endforeach
+>>> +
+>>> +single_binary_link_args = emulator_link_args
+>>> +single_binary_link_args += enable_modules ? ['@block.syms', '@qemu.syms'] : []
+>>> +
+>>> +supported_targets = [
+>>> +  'aarch64-softmmu',
+>>> +  'arm-softmmu',
+>>> +]
+>>
+>> Adding in riscv64-softmmu to this list and building with
+>> configure --target-list=aarch64-softmmu,riscv64-softmmu
+>> will fail with this meson approach.
+>>
+> 
+> Maybe it's now more obvious why our original goal, presented at KVM
+> Forum 2025, was to have only arm/aarch64/microblaze, and not riscv.
+> It just requires more work to have it, and iteration is key. But we need
+> a minimum viable product to start somewhere.
+> 
+> It is still our goal to this date.
+> 
+>> Specifically we'll hit duplicate symbols to to taking
+>> different KConfig branches, resulting in building in
+>> both the real impl and the stubs:
+>>
+>>    /usr/bin/ld.bfd: libsystem.a.p/hw_pci-bridge_pci_expander_bridge_stubs.c.o: in function `pxb_cxl_hook_up_registers':
+>> /home/berrange/src/virt/qemu/build-alt/../hw/pci-bridge/pci_expander_bridge_stubs.c:14: multiple definition of `pxb_cxl_hook_up_registers'; libsystem.a.p/hw_pci-bridge_pci_expander_bridge.c.o:/home/berrange/src/virt/qemu/build-alt/../hw/pci-bridge/pci_expander_bridge.c:214: first defined here
+>>
+> 
+> There is nothing new here, and we discovered all that more than a year
+> ago. That's why we started using stub_ss more, as it provides the weak
+> symbol semantic we need. It's not the end of the story though, as we'll
+> have to adapt some functions to this new "multi target" world.
+> But to be able to test and debug that, we need to have a single-binary
+> first.
 
-diff --git a/target/arm/tcg/helper-defs.h b/target/arm/tcg/helper-defs.h
-index 1a0e4130aa2..512054d2f5d 100644
---- a/target/arm/tcg/helper-defs.h
-+++ b/target/arm/tcg/helper-defs.h
-@@ -460,6 +460,7 @@ DEF_HELPER_FLAGS_4(crypto_aese, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
- DEF_HELPER_FLAGS_4(crypto_aesd, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
- DEF_HELPER_FLAGS_3(crypto_aesmc, TCG_CALL_NO_RWG, void, ptr, ptr, i32)
- DEF_HELPER_FLAGS_3(crypto_aesimc, TCG_CALL_NO_RWG, void, ptr, ptr, i32)
-+DEF_HELPER_FLAGS_4(crypto_aesemc, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
- 
- DEF_HELPER_FLAGS_4(crypto_aese_idx, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
- DEF_HELPER_FLAGS_4(crypto_aesd_idx, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
-diff --git a/target/arm/tcg/crypto_helper.c b/target/arm/tcg/crypto_helper.c
-index 05f193b3d17..ae677cdf209 100644
---- a/target/arm/tcg/crypto_helper.c
-+++ b/target/arm/tcg/crypto_helper.c
-@@ -193,6 +193,37 @@ void HELPER(crypto_aesimc)(void *vd, void *vm, uint32_t desc)
-     clear_tail(vd, opr_sz, simd_maxsz(desc));
- }
- 
-+void HELPER(crypto_aesemc)(void *vd, void *vn, void *vm, uint32_t desc)
-+{
-+    intptr_t opr_sz = simd_oprsz(desc);
-+    intptr_t idx = simd_data(desc);
-+    void *vm_idx = vm + idx * 16;
-+    intptr_t s = opr_sz - 16;
-+
-+    do {
-+        intptr_t base = ROUND_DOWN(s, 4 * 16);
-+        AESState rk = *(AESState *)(vm_idx + base);
-+        do {
-+            AESState *ad = (AESState *)(vd + s);
-+            AESState *st = (AESState *)(vn + s);
-+            AESState t;
-+
-+            /* Like above: Arm AK comes first; api AK comes last */
-+            if (HOST_BIG_ENDIAN) {
-+                t.d[0] = st->d[1] ^ rk.d[1];
-+                t.d[1] = st->d[0] ^ rk.d[0];
-+                aesenc_SB_SR_MC_AK(&t, &t, &aes_zero, false);
-+                ad->d[0] = t.d[1];
-+                ad->d[1] = t.d[0];
-+            } else {
-+                t.v = st->v ^ rk.v;
-+                aesenc_SB_SR_MC_AK(ad, &t, &aes_zero, false);
-+            }
-+            s -= 16;
-+        } while (s >= base);
-+    } while (s > 0);
-+}
-+
- /*
-  * SHA-1 logical functions
-  */
-diff --git a/target/arm/tcg/translate-sve.c b/target/arm/tcg/translate-sve.c
-index cb1542f3931..64ff2345307 100644
---- a/target/arm/tcg/translate-sve.c
-+++ b/target/arm/tcg/translate-sve.c
-@@ -8346,6 +8346,8 @@ TRANS_FEAT_STREAMING_IF(AESE_idx, aa64_sve_aes2, aa64_ssve_aes,
-                         do_aes2_idx, a, gen_helper_crypto_aese_idx)
- TRANS_FEAT_STREAMING_IF(AESD_idx, aa64_sve_aes2, aa64_ssve_aes,
-                         do_aes2_idx, a, gen_helper_crypto_aesd_idx)
-+TRANS_FEAT_STREAMING_IF(AESEMC, aa64_sve_aes2, aa64_ssve_aes,
-+                        do_aes2_idx, a, gen_helper_crypto_aesemc)
- 
- TRANS_FEAT(FCVTNT_sh_m, aa64_sme_or_sve2, gen_gvec_fpst_arg_zpz,
-            gen_helper_sve2_fcvtnt_sh, a, 0, FPST_A64)
-diff --git a/target/arm/tcg/sve.decode b/target/arm/tcg/sve.decode
-index 1ab1b4042b5..5832e0190c6 100644
---- a/target/arm/tcg/sve.decode
-+++ b/target/arm/tcg/sve.decode
-@@ -1988,6 +1988,9 @@ AESE_idx        01000101 00 1 .. .10111010 ..... ...00   @aes2_4
- AESD_idx        01000101 00 1 .. .10111011 ..... ....0   @aes2_2
- AESD_idx        01000101 00 1 .. .10111011 ..... ...00   @aes2_4
- 
-+AESEMC          01000101 00 1 .. .11111010 ..... ....0   @aes2_2
-+AESEMC          01000101 00 1 .. .11111010 ..... ...00   @aes2_4
-+
- # SVE2 crypto constructive binary operations
- SM4EKEY         01000101 00 1 ..... 11110 0 ..... .....  @rd_rn_rm_e0
- RAX1            01000101 00 1 ..... 11110 1 ..... .....  @rd_rn_rm_e0
--- 
-2.53.0
-
+I will try to find time to finish that 'HOWTO convert to single-binary'
+document I proposed to Daniel Barboza and Anton Johansson which is
+structured as "why / how / commit references", that could help Yonggang
+and others to understand why this effort is taking so long.
 

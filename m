@@ -4,126 +4,102 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8B12AC5DF97
-	for <qemu-arm@archiver.kernel.org>; Wed, 26 Aug 2026 12:09:22 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E370DC5DF97
+	for <qemu-arm@archiver.kernel.org>; Wed, 26 Aug 2026 12:33:40 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wzCRH-0000VK-ND; Wed, 26 Aug 2026 08:09:07 -0400
+	id 1wzCor-0007tp-Rh; Wed, 26 Aug 2026 08:33:29 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1wzCRG-0000Uv-17
- for qemu-arm@nongnu.org; Wed, 26 Aug 2026 08:09:06 -0400
+ (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
+ id 1wzCor-0007tX-1Z
+ for qemu-arm@nongnu.org; Wed, 26 Aug 2026 08:33:29 -0400
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1wzCRD-0003Yr-Lc
- for qemu-arm@nongnu.org; Wed, 26 Aug 2026 08:09:05 -0400
+ (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
+ id 1wzCop-00043R-2q
+ for qemu-arm@nongnu.org; Wed, 26 Aug 2026 08:33:28 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1787746141;
+ s=mimecast20190719; t=1787747605;
  h=from:from:reply-to:reply-to:subject:subject:date:date:
  message-id:message-id:to:to:cc:cc:mime-version:mime-version:
- content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=L5peZa147xJVXbKRW6hHPWf3rzav94fX9X576/tVQs8=;
- b=Aze0l2Uh2/BsN9HLZYbwvrbUckePceV2XWdTNSfaJT2kJOGLgDknBcsLiFlsVEgz8fB9zJ
- y1YWBdddotTSPj0F3QPD/wji9CpgWyUJDO+DYJ+CGD8CoDgp7ZMs6UZdH5VnS5hilUZE+u
- gBR8aKGb2NukAhX/vjZRrDHMrVfSh3s=
-Received: from mail-ej1-f69.google.com (mail-ej1-f69.google.com
- [209.85.218.69]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-225-3wmrYE8uPNeR1sN5_wXOfA-1; Wed, 26 Aug 2026 08:09:00 -0400
-X-MC-Unique: 3wmrYE8uPNeR1sN5_wXOfA-1
-X-Mimecast-MFC-AGG-ID: 3wmrYE8uPNeR1sN5_wXOfA_1787746139
-Received: by mail-ej1-f69.google.com with SMTP id
- a640c23a62f3a-c15dfd34e4cso69129166b.0
- for <qemu-arm@nongnu.org>; Wed, 26 Aug 2026 05:09:00 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1787746139; x=1788350939;
- h=content-transfer-encoding:content-type:in-reply-to:from:references
- :cc:to:content-language:subject:reply-to:user-agent:mime-version
- :date:message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
- :message-id:reply-to:content-type;
- bh=L5peZa147xJVXbKRW6hHPWf3rzav94fX9X576/tVQs8=;
- b=qIzCXrZ7Xjv6HwHtCyE4+xXtPKY8UYauaeeCnWGs9fJ7m8Mzt7nHaWgxYxPDea7r65
- tz4n2ddhs0tR9V3t5z3Hpum3S0S41lM8AEyc124jH4Vl0D1xx+paV1rmriBZROC0TfVb
- 20pncLWYs4VSvD2Vs1+YJyMMpxBjlR/v1EtGE4SChvqYR7wSFQCdcPfGcrLwHKyHJBiE
- EUqSKR+4QNc7SgNIYDbB5RiwkMkHxDHFuM9n8BtB6/h0wgQFyGNOGUWqRsz6qpeQE7cd
- RIqjjB2583BSGpNHQKbsjTm7leCHuymLHKaDaZzM2510Ny9WT+WX8Cf63EFByrpZWIkv
- nUzA==
-X-Forwarded-Encrypted: i=1;
- AHgh+RohYI7SLdnoWVBWw19urcoXGpahya5uzpQSsjXeV2qz5UvvgAPxWbKshgbQje5VdfannzujBfFL6g==@nongnu.org
-X-Gm-Message-State: AFuF++lSeKXvHPGAe4e3t4otT1o47rkKSuLIjKODDYgcK0Ijqmkk0k99
- nWRYyOPH2QNvSrKLp3pM9Tz1R9CY8TDkSFhynG+qXbBNwLa2Lqbc4XC9A7kGxAMDPz1onH8UuQw
- ZHqeHJ4OI4ZNkl1iHFgIyoX2mFlyFts91dMi+8rbivMIh7ywfI7Ptxw==
-X-Gm-Gg: AR+sD13EhpqF/7TUsw6oguvkdd2H+iltUuM/wqc4so43v3XjR4HP4wusDhLHbS7yLNR
- fz2t/hRmXPFNXA6UfUfohnK1TmfLAYNAotpfTafT2wGVvHoFch9xncwOLjOuSh9n7rf9oGeL25o
- qzdC4quSZ3xF2qA8+YpoJ1DH88doaGLovS2MLUAvLktIKsw4LEz8V9jJ+cszLNfryFKfKJtcPPh
- a35fsSNQSS3bV83OC1H5xDBBkXPSofNMqj0iq+o0uQcxRRsoO4mJ/G9YGVblkLqGb6e7TtMKYes
- wmTfbqY5Mj/CrIJdhNuo1nkAxCuF8TMnEgViWJOm49FO45XB/Av863uHgAS4u+M0mkMDRGW2kF1
- EE69SlJUQgjcvsUVYuStTSTKCDXBzfoWEdQjKjcr2cGkwUYLU
-X-Received: by 2002:a17:907:6c0f:b0:c21:167b:47f0 with SMTP id
- a640c23a62f3a-c250bb371c9mr899280566b.2.1787746139028; 
- Wed, 26 Aug 2026 05:08:59 -0700 (PDT)
-X-Received: by 2002:a17:907:6c0f:b0:c21:167b:47f0 with SMTP id
- a640c23a62f3a-c250bb371c9mr899272566b.2.1787746138476; 
- Wed, 26 Aug 2026 05:08:58 -0700 (PDT)
-Received: from ?IPV6:2a01:e0a:f0e:9070:527b:9dff:feef:3874?
- ([2a01:e0a:f0e:9070:527b:9dff:feef:3874])
- by smtp.gmail.com with ESMTPSA id
- a640c23a62f3a-c250a73038asm407393566b.26.2026.08.26.05.08.56
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 26 Aug 2026 05:08:57 -0700 (PDT)
-Message-ID: <7bc2c3ae-8192-4622-82b7-6d88f11a6d82@redhat.com>
-Date: Wed, 26 Aug 2026 14:08:55 +0200
+ content-type:content-type:in-reply-to:in-reply-to:  references:references;
+ bh=3IZbLtMK+eaeWJqSopYckXC2Rifx6mwRmusak3iCl3k=;
+ b=XrA4C0xaIYNxLYlH/TSWkX5WS6CpL48E1q4vQBk5kgdq+SazkmUWO3b9fxEF73jTT27DuR
+ t5nTSltcgOs9YD4JcI4oPjdfQ8y+blWGmAjg4Sdb/5hqk/LSClmRySMgxiAHXgFJUuIu3i
+ UV8PDr9S3K851gDgktjAxWkzA4D4LyI=
+Received: from mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
+ relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-279-oqGOJo7BOWuwHfujpyszow-1; Wed,
+ 26 Aug 2026 08:33:20 -0400
+X-MC-Unique: oqGOJo7BOWuwHfujpyszow-1
+X-Mimecast-MFC-AGG-ID: oqGOJo7BOWuwHfujpyszow_1787747592
+Received: from mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com
+ (mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.12])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+ (No client certificate requested)
+ by mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 9320119560A5; Wed, 26 Aug 2026 12:33:11 +0000 (UTC)
+Received: from redhat.com (headnet03.pony-001.prod.iad2.dc.redhat.com
+ [10.2.32.114])
+ by mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id AFFCB1955F05; Wed, 26 Aug 2026 12:32:59 +0000 (UTC)
+Date: Wed, 26 Aug 2026 13:32:56 +0100
+From: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
+To: Yonggang Luo <luoyonggang@gmail.com>
+Cc: qemu-devel@nongnu.org, Xianglai Li <lixianglai@loongson.cn>,
+ Alistair Francis <alistair.francis@wdc.com>,
+ Chinmay Rath <rathc@linux.ibm.com>,
+ Sunil V L <sunilvl@ventanamicro.com>, qemu-riscv@nongnu.org,
+ Alexander Bulekov <alxndr@bu.edu>, Zhao Liu <zhao1.liu@intel.com>,
+ Eric Farman <farman@linux.ibm.com>, Laurent Vivier <lvivier@redhat.com>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ Chao Liu <chao.liu@processmission.com>,
+ Liu Zhiwei <zhiwei_liu@linux.alibaba.com>,
+ Palmer Dabbelt <palmer@dabbelt.com>, Song Gao <17746591750@163.com>,
+ Harsh Prateek Bora <harshpb@linux.ibm.com>,
+ Glenn Miles <milesg@linux.ibm.com>,
+ Daniel Henrique Barboza <daniel.barboza@oss.qualcomm.com>,
+ Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>,
+ qemu-s390x@nongnu.org, Jiaxun Yang <jiaxun.yang@flygoat.com>,
+ Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@mailo.com>,
+ "Michael S. Tsirkin" <mst@redhat.com>,
+ Stefan Hajnoczi <stefanha@redhat.com>,
+ Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>,
+ David Hildenbrand <david@kernel.org>, qemu-ppc@nongnu.org,
+ qemu-arm@nongnu.org, Igor Mammedov <imammedo@redhat.com>,
+ Aleksandar Rikalo <arikalo@gmail.com>, Nicholas Piggin <npiggin@gmail.com>,
+ Cornelia Huck <cohuck@redhat.com>,
+ Richard Henderson <richard.henderson@linaro.org>,
+ Ilya Leoshkevich <iii@linux.ibm.com>, Fabiano Rosas <farosas@suse.de>,
+ Aurelien Jarno <aurelien@aurel32.net>, Paolo Bonzini <pbonzini@redhat.com>,
+ Ani Sinha <anisinha@redhat.com>, Bibo Mao <maobibo@loongson.cn>,
+ =?utf-8?Q?Marc-Andr=C3=A9?= Lureau <marcandre.lureau@redhat.com>,
+ Matthew Rosato <mjrosato@linux.ibm.com>, Weiwei Li <liwei1518@gmail.com>,
+ Darren Kenny <darren.kenny@oracle.com>
+Subject: Re: [PATCH 00/12] single-binary: link ARM and RISC-V into qemu-system
+Message-ID: <ao7c-FiawF9sMCGj@redhat.com>
+References: <20260823150731.896-1-luoyonggang@gmail.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [RFC PATCH v7 18/18] arm-qmp-cmds: introspection for ID register
- props
-To: Khushit Shah <khushit.shah@nutanix.com>
-Cc: "eric.auger.pro@gmail.com" <eric.auger.pro@gmail.com>,
- "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
- "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
- "kvmarm@lists.linux.dev" <kvmarm@lists.linux.dev>,
- "peter.maydell@linaro.org" <peter.maydell@linaro.org>,
- Shaju Abraham <shaju.abraham@nutanix.com>,
- "yangjinqian1@huawei.com" <yangjinqian1@huawei.com>,
- "cohuck@redhat.com" <cohuck@redhat.com>,
- "richard.henderson@linaro.org" <richard.henderson@linaro.org>,
- "sebott@redhat.com" <sebott@redhat.com>,
- "skolothumtho@nvidia.com" <skolothumtho@nvidia.com>,
- "philmd@oss.qualcomm.com" <philmd@oss.qualcomm.com>,
- "maz@kernel.org" <maz@kernel.org>,
- "oliver.upton@linux.dev" <oliver.upton@linux.dev>,
- "pbonzini@redhat.com" <pbonzini@redhat.com>,
- "armbru@redhat.com" <armbru@redhat.com>,
- "berrange@redhat.com" <berrange@redhat.com>,
- "abologna@redhat.com" <abologna@redhat.com>,
- "jdenemar@redhat.com" <jdenemar@redhat.com>
-References: <20260726153221.24773-1-eric.auger@redhat.com>
- <20260726153221.24773-19-eric.auger@redhat.com>
- <C950721B-25A3-477F-ABF0-56491A2C968F@nutanix.com>
- <07a65f67-0ac5-425a-af3f-e4e38a1a6500@redhat.com>
- <B9191525-673E-43D9-B7E1-04D05952EE8D@nutanix.com>
-From: Eric Auger <eric.auger@redhat.com>
-In-Reply-To: <B9191525-673E-43D9-B7E1-04D05952EE8D@nutanix.com>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: uOINRbDcP052h01cJHUSc-TiuRDWTclajNhrcKt1Vok_1787746139
+In-Reply-To: <20260823150731.896-1-luoyonggang@gmail.com>
+User-Agent: Mutt/2.4.0 (2026-06-19)
+X-Scanned-By: MIMEDefang 3.0 on 10.30.177.12
+X-Mimecast-MFC-PROC-ID: iMEx_SJOyArVTiYaAkkqfmLfO0S8TZjRrIiXjREuVkQ_1787747592
 X-Mimecast-Originator: redhat.com
-Content-Language: en-US
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=170.10.129.124;
- envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=berrange@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: 12
+X-Spam_score: 1.2
+X-Spam_bar: +
+X-Spam_report: (1.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=0.001, SPF_HELO_PASS=-0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=0.001, RCVD_IN_SBL_CSS=3.335,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -136,309 +112,155 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-To: eric.auger@redhat.com
+Reply-To: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
+On Sun, Aug 23, 2026 at 11:07:18PM +0800, Yonggang Luo wrote:
+
+snip,
+
+..to comment just on the end result for now..
+
+> The last patch builds qemu-system (and qemu-systemw on Windows) from
+> aarch64 common/system objects plus RISC-V arch objects, and installs
+> qemu-system-{arm,aarch64,riscv32,riscv64} as symlinks so argv[0] still
+> selects TargetInfo.
+> 
+> Examples:
+> 
+>   qemu-system -target aarch64 -M virt ...
+>   qemu-system-riscv64 -M virt ...
+> 
+> A basename that matches no registered token falls through to the unique
+> default. A combined binary with no suffix requires -target when more
+> than one default TargetInfo is registered.
+
+In testing and comparing  the new qemu-system-riscv64 symlink
+to qemu-system vs the current standalone qemu-system-riscv64
+binary there are some significant user visible changes.
+
+The simplest is 'qom-list-types' went from reporting approx
+770 classes, to reporting approx 1530 classes. IOW, the
+qemu-system-riscv64 binary is now reporting supporting for
+all the classes that were unique to arm.
+
+The '-device help' output similarly shows a great many more
+devices
+
+TL;DR introspecting qemu-system-riscv64 is no longer accurate
+wrt riscv64 capabilities. 
+
+This is not suprising, since we register all TypeInfo meaning
+we get all QOM classes present. Some of Pierricks patches try
+to filter places which iterate over classes, but this does not
+have full coverage.
 
 
-On 8/26/26 1:27 PM, Khushit Shah wrote:
->
->> On 26 Aug 2026, at 12:20 PM, Eric Auger <eric.auger@redhat.com> wrote:
->>
->> !-------------------------------------------------------------------|
->>  CAUTION: External Email
->>
->> |-------------------------------------------------------------------!
->>
->> Hi Khushit,
->>
->> On 8/24/26 1:59 PM, Khushit Shah wrote:
->>>> On 26 Jul 2026, at 8:59 PM, Eric Auger <eric.auger@redhat.com> wrote:
->>>>
->>>> !-------------------------------------------------------------------|
->>>> CAUTION: External Email
->>>>
->>>> |-------------------------------------------------------------------!
->>>>
->>>> From: Cornelia Huck <cohuck@redhat.com>
->>>>
->>>> Implement the capability to query available ID register values by
->>>> adding SYSREG_* options and values to the cpu model expansion for the
->>>> host model, if available.
->>>>
->>>> Excerpt:
->>>> (QEMU) query-cpu-model-expansion type=full model={"name":"host"}
->>>> {"return": {"model": {"name": "host", "props": {"SYSREG_ID_AA64PFR0_EL1_EL3": 1,
->>>> "SYSREG_ID_AA64ISAR2_EL1_CLRBHB": 0, "SYSREG_CTR_EL0_L1Ip": 3,
->>>> "SYSREG_MIDR_EL1_PartNum": 3407, "SYSREG_CTR_EL0_DminLine": 4,
->>>> "SYSREG_ID_AA64MMFR0_EL1_PARange": 5, "SYSREG_ID_AA64MMFR1_EL1_ECBHB": 0
->>>> ../..
->>>>
->>>> This allows the upper stack to detect available writable ID regs and
->>>> the "host passthrough model" values.
->>>>
->>>> It also allows to test some ID reg field values:
->>>> (QEMU) query-cpu-model-expansion type=full model={"name":"host","props":{"SYSREG_ID_AA64ISAR0_EL1_DP":0x13}}
->>>> {"error": {"class": "GenericError", "desc": "idreg SYSREG_ID_AA64ISAR0_EL1_DP set value (0x13) exceeds length of field (4)!"}}
->>>>
->>>> (QEMU) query-cpu-model-expansion type=full model={"name":"host","props":{"SYSREG_ID_AA64ISAR0_EL1_DP":0x2}}
->>>> {"error": {"class": "GenericError", "desc": "idreg SYSREG_ID_AA64ISAR0_EL1_DP set value (0x2) does not match any arch valid enum value!”}}
->>> My reasoning here is: User never asked to run the CPU model/configuration. The QMP command is supposed to
->>> return the final prop values which QEMU will set/request from KVM.
->>>
->>> Like on x86, the query-cpu-model-expansion type=full model={“host”: “props”: {“amx-tile": true}} does not return
->>> with error even if host does not have AMX.
->>>
->>> But, maybe we can append CpuModelInfo or CpuModelExpansionInfo with optional ‘usable’ boolean. This even
->>> fills an existing gap, as, query-cpu-definitions cannot take property values.
->> Refering to docs/system/arm/cpu-features.rst it looks a normal case the
->> command fails in case settings cannot apply:
->>
->> See 
->>
->> (3) Let's try to disable ``aarch64``, which enables the AArch32 CPU
->> feature::
->>
->>       (QEMU) query-cpu-model-expansion type=full
->> model={"name":"max","props":{"aarch64":false}}
->>       {"error": {
->>        "class": "GenericError", "desc":
->>        "'aarch64' feature cannot be disabled unless KVM is enabled and
->> 32-bit EL1 is supported"
->>       }}
->>
->> So my understanding is query-cpu-model-expansion is well suited to
->> settings dry-run
-> I don't really like the current handling from the named models
-> perspective.
->
-> query-cpu-model-expansion should not be performing host-compatibility
-> checks. We should decouple applying the requested props from asking
-> whether this host can actually run them. x86 and s390x are designed
-> the same way.
->
-> While this patch only dry-runs SYSREG_* props if they are passed,
-> once named models exist:
->   query-cpu-model-expansion type=full model={"name":"ampere-1a"}
->
-> should not fail because it is not host-compatible. It should still
-> return the model's SYSREG prop values on a host that cannot
-> realise it.
-Looking at qapi/machine.json, 
+I think this is probably also what leads to the increased RAM
+usage in qemu-system-riscv64. Starting
 
-# Errors:
-#     - if expanding CPU models is not supported
-#     - if the model cannot be expanded
-#     - if the model contains an unknown CPU definition name, unknown
-#       properties or properties with a wrong type
-#     - if an expansion type is not supported
+  qemu-system-riscv64 -nodefaults -display none -M none
 
-Maybe we could use the "static" parameter which is not currently
-implement on ARM.
+shows an increase in RAM usage from  17.3 to 20.7 MB which
+is about 15% increase. NB this is dirty, private RAM per
+process. The shared RAM pages also increase but that's not
+a concern since they're common to all QEMU processes.
 
-# * machine options (including accelerator): in some architectures,
-#   CPU models may look different depending on machine and accelerator
-#   options.  (Except for CPU models reported as "static" in
-#   `query-cpu-definitions`.)
+qemu-system-aarch64 shows a much smaller RAM increase, since
+it only grew from 1430 classes to 1530 classes.
 
-in case you use static we don't expand against the accelerator, while
-with full we would do?
+We have many more target though, so if we assume the end
+point where every single target is unified, the the union
+of all classes for all targets comes to approx 3600.
 
-Thanks
+My guesstimate is that would mean a memory increase for
+qemu-system-riscv64 from 17.3 to 39.9 MB, which is a
+72% increase.
 
-Eric
+In absolute terms this is still modest, but for deployments
+with large VM counts  and small RAM sizes, that gets to be
+significant.
 
 
+None of this means single binary is a bad idea.
 
 
->
-> Warm Regards,
-> Khushit
->
->> Thanks
->>
->> Eric
->>
->>> Warm Regards,
->>> Khushit
->>>> The following checks are performed:
->>>> - the value does not exceed the field size
->>>> - if the field is associated to enum values, the set value must be one
->>>> of those enum values
->>>> - the value is applied against a scratch vcpu making sure the setting is
->>>> not rejected for this host
->>>>
->>>> Signed-off-by: Eric Auger <eric.auger@redhat.com>
->>>> Signed-off-by: Cornelia Huck <cohuck@redhat.com>
->>>>
->>>> ---
->>>>
->>>> v5 -> v6:
->>>> - add the write capability
->>>> ---
->>>> target/arm/arm-qmp-cmds.c | 98 +++++++++++++++++++++++++++++++++++++++
->>>> 1 file changed, 98 insertions(+)
->>>>
->>>> diff --git a/target/arm/arm-qmp-cmds.c b/target/arm/arm-qmp-cmds.c
->>>> index 83ec95c290..41fefadcea 100644
->>>> --- a/target/arm/arm-qmp-cmds.c
->>>> +++ b/target/arm/arm-qmp-cmds.c
->>>> @@ -21,6 +21,7 @@
->>>> */
->>>>
->>>> #include "qemu/osdep.h"
->>>> +#include "qemu/error-report.h"
->>>> #include "qemu/target-info.h"
->>>> #include "hw/core/boards.h"
->>>> #include "kvm_arm.h"
->>>> @@ -30,7 +31,10 @@
->>>> #include "qapi/qapi-commands-machine.h"
->>>> #include "qapi/qapi-commands-misc-arm.h"
->>>> #include "qobject/qdict.h"
->>>> +#include "qobject/qnum.h"
->>>> #include "qom/qom-qobject.h"
->>>> +#include <linux/kvm.h>
->>>> +#include "system/kvm.h"
->>>> #include "cpu.h"
->>>>
->>>> static GICCapability *gic_cap_new(int version)
->>>> @@ -84,11 +88,14 @@ CpuModelExpansionInfo *qmp_query_cpu_model_expansion(CpuModelExpansionType type,
->>>>                                                     Error **errp)
->>>> {
->>>>    CpuModelExpansionInfo *expansion_info;
->>>> +    ObjectPropertyIterator iter;
->>>>    const QDict *qdict_in;
->>>> +    ObjectProperty *idregprop;
->>>>    QDict *qdict_out;
->>>>    ObjectClass *oc;
->>>>    Object *obj;
->>>>    const char *name;
->>>> +    int fdarray[3];
->>>>    int i;
->>>>
->>>>    if (type != CPU_MODEL_EXPANSION_TYPE_FULL) {
->>>> @@ -133,6 +140,38 @@ CpuModelExpansionInfo *qmp_query_cpu_model_expansion(CpuModelExpansionType type,
->>>>
->>>>    obj = object_new(object_class_get_name(oc));
->>>>
->>>> +    if (kvm_enabled()) {
->>>> +        bool pmuv3_supported = kvm_check_extension(kvm_state, KVM_CAP_ARM_PMU_V3);
->>>> +        bool sve_supported = kvm_check_extension(kvm_state, KVM_CAP_ARM_SVE);
->>>> +        struct kvm_vcpu_init init = { .target = -1, };
->>>> +        bool el2_supported = kvm_arm_el2_supported();
->>>> +        bool pauth_supported;
->>>> +        int ret;
->>>> +
->>>> +        pauth_supported = kvm_check_extension(kvm_state, KVM_CAP_ARM_PTRAUTH_ADDRESS) &&
->>>> +                          kvm_check_extension(kvm_state, KVM_CAP_ARM_PTRAUTH_GENERIC);
->>>> +
->>>> +        if (sve_supported) {
->>>> +            init.features[0] |= 1 << KVM_ARM_VCPU_SVE;
->>>> +        }
->>>> +        if (el2_supported) {
->>>> +            init.features[0] |= 1 << KVM_ARM_VCPU_HAS_EL2;
->>>> +        }
->>>> +        if (pauth_supported) {
->>>> +            init.features[0] |= (1 << KVM_ARM_VCPU_PTRAUTH_ADDRESS |
->>>> +                             1 << KVM_ARM_VCPU_PTRAUTH_GENERIC);
->>>> +        }
->>>> +        if (pmuv3_supported) {
->>>> +            init.features[0] |= 1 << KVM_ARM_VCPU_PMU_V3;
->>>> +        }
->>>> +
->>>> +        ret = kvm_arm_create_scratch_host_vcpu(fdarray, &init);
->>>> +        if (!ret) {
->>>> +            error_setg(errp, "failing creating a scratch vcpu");
->>>> +            return NULL;
->>>> +        }
->>>> +    }
->>>> +
->>>>    if (model->props) {
->>>>        Visitor *visitor;
->>>>        Error *err = NULL;
->>>> @@ -145,6 +184,49 @@ CpuModelExpansionInfo *qmp_query_cpu_model_expansion(CpuModelExpansionType type,
->>>>        }
->>>>
->>>>        qdict_in = qobject_to(QDict, model->props);
->>>> +
->>>> +        for (const QDictEntry *entry = qdict_first(qdict_in);
->>>> +                 entry != NULL; entry = qdict_next(qdict_in, entry)) {
->>>> +            const char *key = qdict_entry_key(entry);
->>>> +            QObject *val_obj = qdict_entry_value(entry);
->>>> +            ObjectProperty *prop;
->>>> +            Visitor *v;
->>>> +            bool success;
->>>> +            uint64_t val;
->>>> +
->>>> +            prop = object_property_find(obj, key);
->>>> +            if (!prop) {
->>>> +                error_setg(errp, "%s does not exist!", key);
->>>> +                return NULL;
->>>> +            }
->>>> +
->>>> +            if (!g_str_has_prefix(key, "SYSREG_")) {
->>>> +                continue;
->>>> +            }
->>>> +
->>>> +            /* consume the prop to avoid unexpected parameter */
->>>> +            if (!visit_type_uint64(visitor, key, &val, errp)) {
->>>> +                return NULL;
->>>> +            }
->>>> +
->>>> +            v = qobject_input_visitor_new(val_obj);
->>>> +
->>>> +            if (!object_property_set(obj, key, v, &err)) {
->>>> +                error_propagate(errp, err);
->>>> +                visit_free(v);
->>>> +                return NULL;
->>>> +            }
->>>> +
->>>> +            success = kvm_idreg_write_scratch_vcpu(fdarray[2], v, key,
->>>> +                                                   prop->opaque, &err);
->>>> +            if (!success) {
->>>> +                error_propagate(errp, err);
->>>> +                visit_free(v);
->>>> +                return NULL;
->>>> +            }
->>>> +            visit_free(v);
->>>> +        }
->>>> +
->>>>        i = 0;
->>>>        while ((name = cpu_model_advertised_features[i++]) != NULL) {
->>>>            if (qdict_get(qdict_in, name)) {
->>>> @@ -160,6 +242,10 @@ CpuModelExpansionInfo *qmp_query_cpu_model_expansion(CpuModelExpansionType type,
->>>>        if (!err) {
->>>>            arm_cpu_finalize_features(ARM_CPU(obj), &err);
->>>>        }
->>>> +
->>>> +        if (kvm_enabled()) {
->>>> +            kvm_arm_destroy_scratch_host_vcpu(fdarray);
->>>> +        }
->>>>        visit_end_struct(visitor, NULL);
->>>>        visit_free(visitor);
->>>>        if (err) {
->>>> @@ -190,6 +276,18 @@ CpuModelExpansionInfo *qmp_query_cpu_model_expansion(CpuModelExpansionType type,
->>>>        }
->>>>    }
->>>>
->>>> +    object_property_iter_init(&iter, obj);
->>>> +
->>>> +    while ((idregprop = object_property_iter_next(&iter))) {
->>>> +        QObject *value;
->>>> +
->>>> +        if (!g_str_has_prefix(idregprop->name, "SYSREG_")) {
->>>> +            continue;
->>>> +        }
->>>> +        value = object_property_get_qobject(obj, idregprop->name, &error_abort);
->>>> +        qdict_put_obj(qdict_out, idregprop->name, value);
->>>> +    }
->>>> +
->>>>    if (!qdict_size(qdict_out)) {
->>>>        qobject_unref(qdict_out);
->>>>    } else {
->>>> -- 
->>>> 2.53.0
->
+My main takeaway is that we're creating uneccessary work
+for ourselves by trying to make 'qemu-sytem' identical
+in behaviour to qemu-system-$TARGET.
+
+The complex filtering patches / QOM interfaces that I
+found uncomfortable in Pierrick's base series are largely
+around the filtering needed to simulate qemu-system-$TARGET,
+and they're still incomplete. I don't have high confidence
+in our ability to avoid regressions if we go route this
+route.
+
+
+IMHO we should make a clean break with the past. Leave
+the existing qemu-system-$TARGET binaries being built
+from the same pieces they are today, such that there
+is better confidence that we are not making behavioural
+changes to them.
+
+
+qemu-system should be built alongside qemu-system-$TARGET
+and offer new semantics where it is documented as exposing
+everything from all targets whenever introspected and does
+not apply target type or target Kconfig filtering to inputs/
+outputs. 
+
+We still get the benefit of only building most  .o files
+once, so keeping qemu-system-$TARGET is only a small
+overhead in the final step of linking everything together.
+
+
+qemu-system will still have the increased memory overhead
+but that's fine as qemu-system-$TARGET will be unaffected.
+We can tackle the memory overhead of qemu-system at our
+leisure through use of loadable modules, and thus not have
+that as a task to think about today.
+
+
+With the clean break with the past, we also have the
+ability to tackle various long standing design mistakes
+present in qemu-system-$TARGET instead of carrying them
+over into the new binary.
+
+Specifically
+
+ * -nodefaults should become the default
+ 
+ * All CLI args should be processed in order from
+   the command line, so we eliminate the nonsense
+   where we process some -object, then -chardev,
+   then more -object through hand crafted deps
+
+ * No default machine type
+
+ * Drop all legacy syntax so we only have a single
+   QAPI based way of configuring.
+   eg drop -hda, -hdb, -cdrom, -drive, etc
+      only keeping -blockdev
+   eg drop -mon, -monitor, -qmp, etc only
+      keeping -object
+
+We don't have to do all that straightaway. If we declare
+qemu-system "experimental" initially we can iterate on
+that intentionally breaking compat in releases, without
+any impact on qemu-system-$TARGET.
+
+Avoiding the back compat task will give us more flexibility
+with the follow on work when people come to create new
+machine types with heterogenous CPU targets.
+
+
+With regards,
+Daniel
+-- 
+|: https://berrange.com       ~~        https://hachyderm.io/@berrange :|
+|: https://libvirt.org          ~~          https://entangle-photo.org :|
+|: https://pixelfed.art/berrange   ~~    https://fstop138.berrange.com :|
 
 

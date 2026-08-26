@@ -4,141 +4,80 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 84129C61DBD
-	for <qemu-arm@archiver.kernel.org>; Wed, 26 Aug 2026 08:20:57 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 124A7C61DC2
+	for <qemu-arm@archiver.kernel.org>; Wed, 26 Aug 2026 09:38:19 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wz8sK-0006m3-J6; Wed, 26 Aug 2026 04:20:48 -0400
+	id 1wzA5F-0002mX-FI; Wed, 26 Aug 2026 05:38:13 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@oss.qualcomm.com>)
- id 1wz8sJ-0006lv-Fj
- for qemu-arm@nongnu.org; Wed, 26 Aug 2026 04:20:47 -0400
-Received: from mx0a-0031df01.pphosted.com ([205.220.168.131])
+ (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
+ id 1wzA5E-0002lY-6M
+ for qemu-arm@nongnu.org; Wed, 26 Aug 2026 05:38:12 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@oss.qualcomm.com>)
- id 1wz8sH-0006h9-SN
- for qemu-arm@nongnu.org; Wed, 26 Aug 2026 04:20:47 -0400
-Received: from pps.filterd (m0279866.ppops.net [127.0.0.1])
- by mx0a-0031df01.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id
- 67Q6Rg1j3689287
- for <qemu-arm@nongnu.org>; Wed, 26 Aug 2026 08:20:43 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qualcomm.com; h=
- content-transfer-encoding:content-type:date:from:in-reply-to
- :message-id:mime-version:references:subject:to; s=qcppdkim1; bh=
- SMm49n7lMlJCLijzQbo4X+czm78mPK0STpAMVPWsgaA=; b=VCsB+cRW01SDtiaA
- QTsM2Q56BL8TAvbqEz75mXf6mKTIEsEnjMKVsRIURU8UZZRf1Jo1PbZOd2krcrrW
- j5XBSRHkGz2w+WXwW4p37C9dx3jzGyVyCAjZ37sBLLhCEOLBxdro8nSEIeBq/+mn
- uop9PD1U5eObmIejKYYDvOzFBYY5+Z51fWUTg1RXXlLXswtJt2T0G4df89YBluKC
- LVWQXOU4IazzN9jdawaOLJcD4Ua3VcXo45luM2q8LcuMWi8IdHhtVpXTM5LloHEo
- YUdidZM4wkOqy8U22XPqdM9ilDMaLLK3hgAwMFEHAINRcRR15qlOaJNA/kjpy6eh
- rKOevw==
-Received: from mail-qt1-f198.google.com (mail-qt1-f198.google.com
- [209.85.160.198])
- by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 4g9fjn2wc8-1
- (version=TLSv1.3 cipher=TLS_AES_128_GCM_SHA256 bits=128 verify=NOT)
- for <qemu-arm@nongnu.org>; Wed, 26 Aug 2026 08:20:43 +0000 (GMT)
-Received: by mail-qt1-f198.google.com with SMTP id
- d75a77b69052e-51c1a9764f0so6886481cf.1
- for <qemu-arm@nongnu.org>; Wed, 26 Aug 2026 01:20:43 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=oss.qualcomm.com; s=google; t=1787732443; x=1788337243; darn=nongnu.org;
- h=content-transfer-encoding:content-type:in-reply-to:from:references
- :to:content-language:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to:content-type;
- bh=SMm49n7lMlJCLijzQbo4X+czm78mPK0STpAMVPWsgaA=;
- b=jnWy70kC1jUIC75ZAcdYI068AblUOZw5OaheiOHZVW/dLfmL5WS8N7Fc4fH3b5hPhK
- dROY40FdvflWaAWU+Ms8fv8IgfMrWl3MsW9m1MJ1GysV/k3TM1Xxc2LyZPLY4AVPhAgY
- K6uZwMPYf9ZVqtMU5/OMpsB3lXLpFp2CIKU/mn86N8eTpieugpMSSa7icC6OhQE5IIHf
- PZ22Adjp/dMTq3FyWnVZphGydvOlGkOv52FdGkyndPdk9paCzHiYGzGjxQkdpJKzgGZC
- eIjQ/3QFXjNLnm2Nnz3bpnZH4vlEB93sbSOLt8frh7e14BdCV6LQ3/x2yZq4F3O7oBLY
- kUMQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1787732443; x=1788337243;
- h=content-transfer-encoding:content-type:in-reply-to:from:references
- :to:content-language:subject:user-agent:mime-version:date:message-id
- :x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to:content-type;
- bh=SMm49n7lMlJCLijzQbo4X+czm78mPK0STpAMVPWsgaA=;
- b=jVPsi614iP49V50IPljGoJPvZYvSQ8xCasOCHBSsWcLP5Cv3uqp8CARVI5catG+WH2
- YO3Q0j5/X0yO4F6jdpz5o+IBu06rJ1LZJ5DNrnCKeNfGnZMV5FISaXuoRAEm/vqPir9X
- BNWgwL9kkLpqxuaANBXB9qJsefqE+fCDrpwmcPnex34KYhOp1pDjsIETNUj06hzJB3zi
- okj2DK+JD/DwTSysr1WI0Py7Rfn7/0C+V+YFGylzMhSRY8XjuiO8bQ1YHwcEIfp/3syu
- cIA+Dx+Cc4gRGeNT71rNz+qJp/ltil0nT8YBYj6/YOhbMoVwEw8mZ464fhqOwoSlOE3C
- M+Rw==
-X-Forwarded-Encrypted: i=1;
- AHgh+Ro6KKkTNMTErAWfTv5DP0kqOS04aMv3WpkKph0vk7tArAzB2Pvff3B4kAKIV3Y06Vrg9t/qbRvFcA==@nongnu.org
-X-Gm-Message-State: AFuF++nf7KaPZUsPDhhid5Vta3Drdmax4HZkkl1cQqcNZ1/hWDkoiC5M
- TgtFIIgYi8eNb7oZkFxg1STCvJ4ZJCXt1xGRpeP6sknltQlt5j+KOqIX8vKXcp7T2kPH02GQnAB
- oQIE2oLLK1NOmj7WlfwOEFGwYVB70st0f8mbI8XZie3EP4a9NDwZJsIr3WjJ/onk=
-X-Gm-Gg: AR+sD10AtD/DgFCAWQDzL1p7PddiRkhpi6pc/58slO17vvw54bUHpyJrLwEvGARjBpE
- LtYr7Id0p+FomJvWMFWVFEaNbLQoCjRfL1kK3EjpGx+Uz1c078vK31W0nRVSjcG5Kx6h98oQ8ik
- cNUnLfJ2tGfvq02oDrJYShzerOBQKmFsT1WcmGZ331LlZGSmf2svV3sDHTpib1kDwKw/Hb0BHiG
- nU/A5lzCGjvWYE64RUInpTq/UHQbz18QGNdH+5fqYB48VPmktdmFgIwJNxUR41ZMZn467u6J0MR
- F89CDmYyCSV9w77m01Ap7T0JNj2hI9GP4qPClLoTq1PsH9IP7zjjSyuSL2VeoIqeJBvdu+DAgOA
- HN8D1aIYXvbz+mGlQjdcIKvG4qpHkD1KCWWJdRg==
-X-Received: by 2002:a05:622a:164d:b0:52e:3a32:e73d with SMTP id
- d75a77b69052e-52e42344b22mr41649751cf.21.1787732442549; 
- Wed, 26 Aug 2026 01:20:42 -0700 (PDT)
-X-Received: by 2002:a05:622a:164d:b0:52e:3a32:e73d with SMTP id
- d75a77b69052e-52e42344b22mr41649501cf.21.1787732442054; 
- Wed, 26 Aug 2026 01:20:42 -0700 (PDT)
-Received: from [10.254.188.74] (14.89.66.37.rev.sfr.net. [37.66.89.14])
- by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-482e27a9945sm1887212f8f.9.2026.08.26.01.20.40
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 26 Aug 2026 01:20:41 -0700 (PDT)
-Message-ID: <de9dd447-80f2-45a8-b166-beccdd950287@oss.qualcomm.com>
-Date: Wed, 26 Aug 2026 10:20:39 +0200
+ (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
+ id 1wzA5C-0003F6-5u
+ for qemu-arm@nongnu.org; Wed, 26 Aug 2026 05:38:11 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1787737089;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=KmuEzpXCD6VmoJtt/XZUs9llE/2YuHOKrCwlztASk6g=;
+ b=IQ3SlusgU7Oaah5RaGiquIiyAp4hMHHGGkacv1Qudc8TuLxteyC4oDmyOtuHCBn3Z41Mcr
+ gMvRcjvDSPoFmgeEss1LCB5gMKhPUY9aSav1nf9d9V0jcHI1hgFyxoCaA2GAsAa+HQbrVn
+ hnCO1D69JfsZ4HUoaW45G4AgIUXO+lo=
+Received: from mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
+ relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-192-R76zvBtUNuatUzaYT3uWRA-1; Wed,
+ 26 Aug 2026 05:38:05 -0400
+X-MC-Unique: R76zvBtUNuatUzaYT3uWRA-1
+X-Mimecast-MFC-AGG-ID: R76zvBtUNuatUzaYT3uWRA_1787737084
+Received: from mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com
+ (mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.12])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+ (No client certificate requested)
+ by mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 7402B19539A4; Wed, 26 Aug 2026 09:38:03 +0000 (UTC)
+Received: from laptop.redhat.com (unknown [10.44.48.93])
+ by mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
+ id 4FDE91955F0B; Wed, 26 Aug 2026 09:37:57 +0000 (UTC)
+From: Eric Auger <eric.auger@redhat.com>
+To: eric.auger.pro@gmail.com, eric.auger@redhat.com, qemu-devel@nongnu.org,
+ qemu-arm@nongnu.org, kvmarm@lists.linux.dev, peter.maydell@linaro.org,
+ shaju.abraham@nutanix.com, khushit.shah@nutanix.com,
+ yangjinqian1@huawei.com, cohuck@redhat.com, richard.henderson@linaro.org,
+ sebott@redhat.com, skolothumtho@nvidia.com, philmd@oss.qualcomm.com
+Cc: maz@kernel.org, oliver.upton@linux.dev, pbonzini@redhat.com,
+ armbru@redhat.com, berrange@redhat.com, abologna@redhat.com,
+ jdenemar@redhat.com
+Subject: [RFC PATCH v8 01/20] scripts: introduce
+ scripts/update-aarch64-cpu-sysregs-header.py
+Date: Wed, 26 Aug 2026 11:36:06 +0200
+Message-ID: <20260826093747.1670077-2-eric.auger@redhat.com>
+In-Reply-To: <20260826093747.1670077-1-eric.auger@redhat.com>
+References: <20260826093747.1670077-1-eric.auger@redhat.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v4 8/8] hw/arm: Add Axiado Ax3005 EVB
-Content-Language: en-US
-To: Kuan-Jui Chiu <kchiu@axiado.com>, 163wangjack@gmail.com,
- qemu-devel@nongnu.org, peter.maydell@linaro.org, qemu-arm@nongnu.org
-References: <20260826074635.2850931-1-kchiu@axiado.com>
- <20260826074635.2850931-9-kchiu@axiado.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@oss.qualcomm.com>
-In-Reply-To: <20260826074635.2850931-9-kchiu@axiado.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-X-Proofpoint-GUID: qIp_vRf7BZEPQmpMZFqwLH3nkCZpYEG7
-X-Proofpoint-Spam-Info: AW1haW4tMjYwODI2MDA2OCBTYWx0ZWRfX+//tYpSubWIa
- pknQRyNlT4aE7z/954mpeeoSqBaz+0adr2hpJkh6O9NtlwvVVDa49QEgm9X/ABjHlMZRPCeWUHi
- dwFamzESJ7VUaFOzBHMrHyKVYvPKhYI=
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwODI2MDA2OCBTYWx0ZWRfXzNnbFWS8y0ct
- c1OEDunTKc15gQyoDn2H7yc7OsOw7Kfd2mlFGu/Uow16lZUj4GxOdYeOtrTjhvxQKSw5o0ND4Gd
- TKur/glzuH6fyx3MJoUPGWgHmhYuoEGVtRELZpVNzH/oOBQZVtdCcy8kHtC8b4+lfWQuTQ1PDLg
- dS9BcyVGWDVbcc9Cb/xyDIEIMhCbNt2gF/27xxgMlsjmDT583pu9sfs3e5PjzWn9k602ehKFKLg
- rB6jBfT81YQBSYhnEmgYe9krMKksCTYyb/yT4mMnPg44VyjNo4rZLcWMDyXwzdlVnHBb4Kf1Fbl
- 9rRJVKPf0KBwjFe5pKTKl/ZwOCaV6uCkjoTS/c77PGhGbk1vDgz34kwW32OY7/TH4LjepJFqWJU
- C18CwKhBmE47qoCadd1z5DW3b7vYP6wI8IxBJS0ZOHCuJQ5IOj0fbjRnXKlLgUE1mK8L1PpMyWZ
- hBMnrsRnSUd0pkQczfg==
-X-Authority-Analysis: v=2.4 cv=ccziaHDM c=1 sm=1 tr=0 ts=6a8ea1db cx=c_pps
- a=mPf7EqFMSY9/WdsSgAYMbA==:117 a=JQZmDyB7+sUo+n2VpL1TLQ==:17
- a=IkcTkHD0fZMA:10 a=Sv0fKeRqtYgA:10 a=M51BFTxLslgA:10 a=s4-Qcg_JpJYA:10
- a=VkNPw1HP01LnGYTKEx00:22 a=u7WPNUs3qKkmUXheDGA7:22 a=YMgV9FUhrdKAYTUUvYB2:22
- a=440cDlBIAAAA:8 a=-GMYWo8RcLAl5XYbW6cA:9 a=QEXdDO2ut3YA:10
- a=dawVfQjAaf238kedN5IG:22 a=d9D1X1bx8dWolqnE4HNT:22
-X-Proofpoint-ORIG-GUID: qIp_vRf7BZEPQmpMZFqwLH3nkCZpYEG7
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.293,Aquarius:18.0.1176,Hydra:6.1.134,FMLib:17.12.100.49
- definitions=2026-08-26_02,2026-08-24_01,2025-10-01_01
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
- priorityscore=1501 phishscore=0 lowpriorityscore=0 spamscore=0 suspectscore=0
- clxscore=1015 malwarescore=0 bulkscore=0 adultscore=0 impostorscore=0
- classifier=typeunknown authscore=0 authtc= authcc= route=outbound adjust=0
- reason=mlx scancount=1 engine=8.22.0-2606150000 definitions=main-2608260068
-Received-SPF: pass client-ip=205.220.168.131;
- envelope-from=philmd@oss.qualcomm.com; helo=mx0a-0031df01.pphosted.com
-X-Spam_score_int: -27
-X-Spam_score: -2.8
-X-Spam_bar: --
-X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Scanned-By: MIMEDefang 3.0 on 10.30.177.12
+X-Mimecast-MFC-PROC-ID: mIrdij2cbqOk5GVdskIcLqduOe7MEg9FsH2uFRM054Y_1787737084
+X-Mimecast-Originator: redhat.com
+Content-Transfer-Encoding: 8bit
+content-type: text/plain; charset="US-ASCII"; x-default=true
+Received-SPF: pass client-ip=170.10.133.124;
+ envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: 12
+X-Spam_score: 1.2
+X-Spam_bar: +
+X-Spam_report: (1.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ RCVD_IN_SBL_CSS=3.335, SPF_HELO_PASS=-0.001,
+ SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -154,48 +93,177 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On 26/8/26 09:46, Kuan-Jui Chiu wrote:
-> Add EVK ax3005-evb built with AX3005 SoC
-> 
-> Signed-off-by: Kuan-Jui Chiu <kchiu@axiado.com>
-> ---
->   hw/arm/ax3005-evk.c            | 64 ++++++++++++++++++++++++++++++++++
->   hw/arm/meson.build             |  3 +-
->   include/hw/arm/axiado-boards.h | 10 ++++++
->   3 files changed, 76 insertions(+), 1 deletion(-)
->   create mode 100644 hw/arm/ax3005-evk.c
+Introduce a script that takes as input the Registers.json file
+delivered in the AARCHMRS Features Model downloadable from the
+Arm Developer A-Profile Architecture Exploration Tools page:
+https://developer.arm.com/Architectures/A-Profile%20Architecture#Downloads
+and outputs the list of ID regs in target/arm/cpu-sysregs.h.inc
+under the form of DEF(<name>, <op0>, <op1>, <crn>, <crm>, <op2>).
 
-Missing some description in docs/system/arm/.
+We only care about IDregs with opcodes satisfying:
+op0 = 3, op1 = {0,1,3}, crn = 0, crm within [0, 7], op2 within [0, 7]
 
-> diff --git a/include/hw/arm/axiado-boards.h b/include/hw/arm/axiado-boards.h
-> index 4a632661e1..7a610ecfda 100644
-> --- a/include/hw/arm/axiado-boards.h
-> +++ b/include/hw/arm/axiado-boards.h
-> @@ -11,6 +11,7 @@
->   
->   #include "hw/core/boards.h"
->   #include "hw/arm/ax3000-soc.h"
-> +#include "hw/arm/ax3005-soc.h"
->   
->   #define TYPE_AX3000_MACHINE       MACHINE_TYPE_NAME("ax3000")
->   OBJECT_DECLARE_TYPE(Ax3000MachineState, Ax3000MachineClass, AX3000_MACHINE)
-> @@ -25,4 +26,13 @@ typedef struct Ax3000MachineClass {
->       MachineClass parent;
->   
->   } Ax3000MachineClass;
-> +
-> +#define TYPE_AX3005_MACHINE       MACHINE_TYPE_NAME("ax3005-evb")
-> +OBJECT_DECLARE_SIMPLE_TYPE(Ax3005MachineState, AX3005_MACHINE)
-> +
-> +struct Ax3005MachineState {
-> +    MachineState parent;
-> +
-> +    Ax3005SoCState *soc;
+Signed-off-by: Eric Auger <eric.auger@redhat.com>
+Signed-off-by: Cornelia Huck <cohuck@redhat.com>
+Reviewed-by: Khushit Shah <khushit.shah@nutanix.com>
+---
+ scripts/update-aarch64-cpu-sysregs-header.py | 146 +++++++++++++++++++
+ 1 file changed, 146 insertions(+)
+ create mode 100755 scripts/update-aarch64-cpu-sysregs-header.py
 
-When a component is not optional, our style is to allocate it in
-place (IOW this shouldn't be a pointer here but the plain struct).
-
-> +};
->   #endif
+diff --git a/scripts/update-aarch64-cpu-sysregs-header.py b/scripts/update-aarch64-cpu-sysregs-header.py
+new file mode 100755
+index 0000000000..ef1471a197
+--- /dev/null
++++ b/scripts/update-aarch64-cpu-sysregs-header.py
+@@ -0,0 +1,146 @@
++#!/usr/bin/env python3
++
++# This script takes as input the Registers.json file delivered in
++# the AARCHMRS Features Model downloadable from the Arm Developer
++# A-Profile Architecture Exploration Tools page:
++# https://developer.arm.com/Architectures/A-Profile%20Architecture#Downloads
++# and outputs the list of ID regs in target/arm/cpu-sysregs.h.inc
++# under the form of DEF(<name>, <op0>, <op1>, <crn>, <crm>, <op2>)
++#
++# Copyright (C) 2026 Red Hat, Inc.
++#
++# Authors: Eric Auger <eric.auger@redhat.com>
++#
++# SPDX-License-Identifier: GPL-2.0-or-later
++
++
++import json
++import os
++import sys
++
++def is_demux_register(r):
++    name = r.get('name', '')
++
++    if name.startswith("CCSIDR"):
++        return True
++
++    return False
++
++# Some regs have op code values like 000x, 001x. Anyway we don't need
++# them. Besides some regs are undesired in the generated file such as
++# VMPIDR_EL2 and VPIDR_EL2 which are outside of the IDreg scope we
++# are interested in and are tricky to decode as their system accessor
++# refer to MPIDR_EL1/MIDR_EL1 respectively
++
++skiplist = ['ALLINT', 'PM', 'S1_', 'S3_', 'SVCR', \
++            'VMPIDR_EL2', 'VPIDR_EL2']
++
++# returns the int value of a given @opcode for a reg @encoding
++def get_opcode(encoding, opcode):
++    fvalue = encoding.get(opcode)
++    if fvalue:
++        value = fvalue.get('value')
++        if isinstance(value, str):
++            value = value.strip("'")
++            value = int(value, 2)
++            return value
++    return -1
++
++def extract_idregs_from_registers_json(filename):
++    """
++    Load a Registers.json file and extract all ID registers, decode their
++    opcode and dump the information in target/arm/cpu-sysregs.h.inc
++
++    Args:
++        filename (str): The path to the Registers.json
++    returns:
++        idregs: list of ID regs and their encoding
++    """
++    if not os.path.exists(filename):
++        print(f"Error: {filename} could not be found!")
++        return {}
++
++    try:
++        with open(filename, 'r') as f:
++            register_data = json.load(f)
++
++    except json.JSONDecodeError:
++        print(f"Could not decode json from '{filename}'!")
++        return {}
++    except Exception as e:
++        print(f"Unexpected error while reading {filename}: {e}")
++        return {}
++
++    registers = [
++        r for r in register_data
++        if isinstance(r, dict)
++        and r.get('_type') == 'Register'
++        and not is_demux_register(r)
++    ]
++
++    idregs = {}
++
++    for register in registers:
++        reg_name = register.get('name')
++
++        is_skipped = any(term in (reg_name or "").upper() for term in skiplist)
++
++        if reg_name and not is_skipped:
++            accessors = register.get('accessors', [])
++
++            for accessor in accessors:
++                type = accessor.get('_type')
++                if type in ['Accessors.SystemAccessor']:
++                    encoding_list = accessor.get('encoding')
++
++                    if isinstance(encoding_list, list) and encoding_list and \
++                       isinstance(encoding_list[0], dict):
++                        encoding_wrapper = encoding_list[0]
++                        encoding_source = encoding_wrapper.get('encodings', \
++                                                               encoding_wrapper)
++
++                        if isinstance(encoding_source, dict):
++                                op0 = get_opcode(encoding_source, 'op0')
++                                op1 = get_opcode(encoding_source, 'op1')
++                                op2 = get_opcode(encoding_source, 'op2')
++                                crn = get_opcode(encoding_source, 'CRn')
++                                crm = get_opcode(encoding_source, 'CRm')
++                                encoding_str=f"{op0} {op1} {crn} {crm} {op2}"
++
++                # ID regs are assumed within this scope
++                if op0 == 3 and (op1 == 0 or op1 == 1 or op1 == 3) and \
++                   crn == 0 and (crm >= 0 and crm <= 7) and (op2 >= 0 and op2 <= 7):
++                    idregs[reg_name] = encoding_str
++
++    return idregs
++
++if __name__ == "__main__":
++    # Single arg expected: the path to the Registers.json file
++    if len(sys.argv) < 2:
++        print("Usage: python scripts/update-aarch64-cpu-sysregs-header.py "
++              "<path_to_registers_json>")
++        sys.exit(1)
++    else:
++        json_file_path = sys.argv[1]
++
++    extracted_registers = extract_idregs_from_registers_json(json_file_path)
++
++    if extracted_registers:
++        output_list = extracted_registers.items()
++
++        # Sort by register name
++        sorted_output = sorted(output_list, key=lambda item: item[0])
++
++        # format lines as DEF(<name>, <op0>, <op1>, <crn>, <crm>, <op2>)
++        final_output = ""
++        for reg_name, encoding in sorted_output:
++            reformatted_encoding = encoding.replace(" ", ", ")
++            final_output += f"DEF({reg_name}, {reformatted_encoding})\n"
++
++        with open("target/arm/cpu-sysregs.h.inc", 'w') as f:
++            f.write("/* SPDX-License-Identifier: GPL-2.0-or-later */\n\n")
++            f.write("/* This file is autogenerated by ")
++            f.write("scripts/update-aarch64-cpu-sysregs-header.py */\n")
++            f.write("/* DEF(<name>, <op0>, <op1>, <crn>, <crm>, <op2>) */\n\n")
++            f.write(final_output)
++        print("updated target/arm/cpu-sysregs.h.inc")
+-- 
+2.53.0
 
 

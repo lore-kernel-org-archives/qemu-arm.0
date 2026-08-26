@@ -4,69 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E9391C61DC7
-	for <qemu-arm@archiver.kernel.org>; Wed, 26 Aug 2026 18:43:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0F20CC61DBD
+	for <qemu-arm@archiver.kernel.org>; Wed, 26 Aug 2026 18:44:04 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wzIau-00080H-UV; Wed, 26 Aug 2026 14:43:28 -0400
+	id 1wzIb8-0000UP-04; Wed, 26 Aug 2026 14:43:42 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <luoyonggang@gmail.com>)
- id 1wzIah-0007WL-7N
- for qemu-arm@nongnu.org; Wed, 26 Aug 2026 14:43:16 -0400
-Received: from mail-pj1-x102c.google.com ([2607:f8b0:4864:20::102c])
+ id 1wzIb6-0000MS-56
+ for qemu-arm@nongnu.org; Wed, 26 Aug 2026 14:43:40 -0400
+Received: from mail-pg1-x536.google.com ([2607:f8b0:4864:20::536])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <luoyonggang@gmail.com>)
- id 1wzIad-0002IN-70
- for qemu-arm@nongnu.org; Wed, 26 Aug 2026 14:43:14 -0400
-Received: by mail-pj1-x102c.google.com with SMTP id
- 98e67ed59e1d1-39647184c73so185190a91.1
- for <qemu-arm@nongnu.org>; Wed, 26 Aug 2026 11:43:10 -0700 (PDT)
+ id 1wzIb3-0002Ul-D4
+ for qemu-arm@nongnu.org; Wed, 26 Aug 2026 14:43:39 -0400
+Received: by mail-pg1-x536.google.com with SMTP id
+ 41be03b00d2f7-c9e7391839cso1162978a12.0
+ for <qemu-arm@nongnu.org>; Wed, 26 Aug 2026 11:43:37 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20251104; t=1787769790; x=1788374590; darn=nongnu.org;
+ d=gmail.com; s=20251104; t=1787769816; x=1788374616; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to:content-type;
- bh=esiIQQ8j+uvEVKSy2+ZWdGzm2PcDAqeU44dys6a2Fmc=;
- b=LaHV+3ospoSnq2nPSuxnZN4wkZBxGzcDJzGalw3kA9oDC4eULJieufGH06Mahiw+YA
- 0pLy14MJsPO3ZcCjkuJw3eb9XGPCvjVBE8bxK48udEHwLbveoTOhHDrzDq5QCPZanBKi
- J6gm203u2bv/RdhW8H6ENlIg3HrHPkFajvYtBGvmKCR/j0cFVp4GK3oJZUUF241UwC1F
- qw+lXEBrlyb1H+OOP0bbu1k+0YPz5vzrQbb5a2c16Bpj1sTd8r5/oxtYKNzJlBwZYxH8
- unzu8DKYNRU3VeeRbc3vq8W3lLwuAOb1FzO41jd4P/l7UBnY2maE5lQBZwXc0DARCWcq
- /lRQ==
+ bh=3Hv9iWfS7mfY+j+Db48HXpOFPwt6LwOOGwuKKSASBkg=;
+ b=gxZRd9XxuLgTruvOXEDrMgpfnIvNhlflvj23vColCHZewrzwXQm9ko4nuoddaZuRVe
+ GnAbwRo7IgHLW7umK3tvGCBy3RmKbtXFpZnJMZiArxJ44vKhqeHlorY6DlkeES0Y3+gg
+ DkZM9NY6M4WYk3TyIatrq9x4W368tGOX62nf2aJyv+imEgvR7seNLOvPmSQOeXVk/Jv3
+ kT4pTEDoEB1B8chY1rVH+zHw5daWUdAWzO4tXO/moNzwr+d6PJCMqzl0/opfXEha3IP8
+ mLnaZHqnqn64rRtUjDJVoRQedoCye4ltfDVI7KcDS1VD0MgcOBHnLZyoCJGfROGdx1YV
+ gPXg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1787769790; x=1788374590;
+ d=1e100.net; s=20251104; t=1787769816; x=1788374616;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
  :to:cc:subject:date:message-id:reply-to:content-type;
- bh=esiIQQ8j+uvEVKSy2+ZWdGzm2PcDAqeU44dys6a2Fmc=;
- b=gU+0U0SahLiVI2cnTdoTcFKR0+MP+wbOPr8Hkayp+dWIGG/De37EtPbbk+75VR9837
- VhxZRg2eQ/gUUKBmduVif6Vyx/fuHRXLn3WvqLtlBTZTg+vCkFiDzp7FRnduq73VWMCY
- CUB6nHEMOoO2EQTv0x7fURof8YsfEn2/QR2w8u7u30ppai7+FcfDYxYgTDP5EAGDCGnL
- M6SDRonFM7/QA7sZ+IYE8Zdbd9X26XDH2m4CZlXJAjPaeL0qA3Kg+rDae8N5TBKN86C1
- W7Gxixc4M/r1VLCt0YsPg6qoBagQWoBkarMYvAVLp4tmY6b5WeKtxHw4hFyWuUwigRFC
- qe6Q==
+ bh=3Hv9iWfS7mfY+j+Db48HXpOFPwt6LwOOGwuKKSASBkg=;
+ b=ryvCcAb6kQNkHxp31m1sjVD5shlj5epJBCuDgbbK0e59ECZEO1zMvS6xonoOIE5bDt
+ 3xXUnkyYiN6HKf9pOn9TL0gSzSLTrdRGR7PHy4Q9MNrliiZSjukFOu0hIx9/hEjLQ4wk
+ c+/4AI97pDXlh9tiRkWx4LY6CTF14fvP4mI0HBL8CZD2t/LquziZhS2c8BVvGVLIXI0K
+ CuB1/QTnoeSOl1ucEIhg5OvRCfIpj7J1uMTWOoJC/wEvWj1ulwoUgCv4YSx26S396W5J
+ +n8PZMvzpvp4UmL5GdWWv3mLeA7IG0RmzXUbHH0H1ciJJB4/xDLB2PMifYRuVFEapkdo
+ isdQ==
 X-Forwarded-Encrypted: i=1;
- AHgh+RqnFfCS5M8k9ezb1XxK7N9DT4X1p+CCVtMTMZkM3A0Es6wPF6YTJz2FDi5Kekx2MNlempApZLkR4Q==@nongnu.org
-X-Gm-Message-State: AFuF++mZzz00XCqmdjeaK8hEy0jpgLvUR/7W6dWVvp0gcDboEEI5XAjV
- KDHbbeU2n49ul1LyKpfd7yCvmrkXTf5jcKo73PmUIgmjUASmUiDD2J2C
-X-Gm-Gg: AR+sD12QbyUt7/CbUtamEoztl+g6r340i3SxA4hil3QnOI/69iUt3FX2aJlvZXgWitb
- iIQ9J8g3uT2NDnfdjQq+dJ8Je5cjxW2Pr9VGkqAv1+dykp8ZZjnX20gEFt3UzhwAbD5IC3j3qJa
- 6txXGbDcy+NNPJMaorZrqlbCfNt/RFwaPdthbCThDgm8QtWnUgn+ff/b4N9azEnTRd6QnHhhdGg
- F1/6zrClCNGtb+u/ZjD/sdSYEGWx3MxauBJw9Dn/QSpRky5pJv5CT1HYz4oIYucctNXhh3+Y81s
- YxTPw8IwhlKk1N8PdI9HQCGS/zl7qnw+Z/PS4QsZKjq7pMmqbBUFgQnxciIUCGW2r1d4LQ/1Zjx
- FLMSFo2FJkXBlfj4Gyyu9r1EMaCxFySdpQEbBCXT8cYX1LnRuLN70pTszHk02/1xg7/YflT1h4q
- iVNCovFW8LrAkuj6x2T5w6NlZc4iH7yHm29vivH1X+wtFZLdgyawT3DRyqlcgCfgz9ITefBfl1k
- XCCl4Z8mNbt/VUIjwLGvg==
-X-Received: by 2002:a17:90b:3811:b0:37e:1620:dabc with SMTP id
- 98e67ed59e1d1-3969b7e33acmr1328049a91.0.1787769789662; 
- Wed, 26 Aug 2026 11:43:09 -0700 (PDT)
+ AHgh+RooJtXj8wzyR8ZIlIL7iukxHrbmbT4xVVPXsJU/l05mC0nwfahYp+IrA5bRdFABMu8E4I66TbV4Cg==@nongnu.org
+X-Gm-Message-State: AFuF++k7bfMocCaHZ2rEUJc04N9uzUaswpvc2shdUcmECOYUnh/MYY4f
+ G5Hef4HK1CZUrYrrZ5qi0XcQ27GdcpKNW9d5t/gNgUTjyrAFrqSEh+F5
+X-Gm-Gg: AR+sD12yqMDnPU6Ib0Ge+ns66nMsb8g6SblNC6NXOlhAIlaFeYRZrnKzBk3Pju5/3n0
+ flby6Fe6qTKRkam5lNrpSa/KbS6WnbUHbpdZPn5Tp4Zb0rsAuIBtwHLkvD8LB8SQPh2GvoPWTRI
+ E62tyquwEvhXaX79UFjyvURcHjILyLA3CLRAlCO9cS82SPcRk7d8DPCewNpSu5/ekPrV8PjwHg8
+ xeQvdid91Jzlp77wG/S241rfwFMYqrIAcWbcAG/WMN4ij9LIQYu8KlUDmv/SQvD2zZGou1xPLAq
+ 4gCn97qgvwIb+EpE5O43Upmf7asLxm4E0xLOavcAICiXVS/aaJjst9CSgHCHWnG61AhM0CU08Sb
+ iIxN0F1duq+9y7yWjN2iK0aTVwmvW8urAVLamkQxC0p45CXGyDaGkcBaAQZtZfWIlpktpE5WqsE
+ M8/CTOUCG9cLwbUQ9pgWaaZgS0q9lB6Ub6rxQzxPUeyBpfkAJdfVwovO5VgcLpMgi+/JFRMH5SY
+ atLlm74Y191p/lZwhXMIELl90lsLyKZ
+X-Received: by 2002:a17:90a:e70f:b0:38e:49c0:75a7 with SMTP id
+ 98e67ed59e1d1-3966d43471cmr19184220a91.8.1787769815927; 
+ Wed, 26 Aug 2026 11:43:35 -0700 (PDT)
 Received: from WIN-BH9M8FJACR9 ([103.94.185.75])
  by smtp.googlemail.com with ESMTPSA id
- 5a478bee46e88-3283d60c291sm17681846eec.6.2026.08.26.11.43.00
+ 5a478bee46e88-3283d60c291sm17681846eec.6.2026.08.26.11.43.27
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 26 Aug 2026 11:43:07 -0700 (PDT)
+ Wed, 26 Aug 2026 11:43:35 -0700 (PDT)
 From: Yonggang Luo <luoyonggang@gmail.com>
 To: qemu-devel@nongnu.org
 Cc: Peter Maydell <peter.maydell@linaro.org>, Fabiano Rosas <farosas@suse.de>,
@@ -99,17 +99,16 @@ Cc: Peter Maydell <peter.maydell@linaro.org>, Fabiano Rosas <farosas@suse.de>,
  =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
  Liu Zhiwei <zhiwei_liu@linux.alibaba.com>,
  Igor Mammedov <imammedo@redhat.com>
-Subject: [PATCH v2 03/13] hw/arm/virt: register TYPE_TARGET_SPECIFIC on the
- abstract parent
-Date: Thu, 27 Aug 2026 02:42:17 +0800
-Message-ID: <20260826184229.1145-4-luoyonggang@gmail.com>
+Subject: [PATCH v2 06/13] hw/arm/virt: use unique QOM name
+Date: Thu, 27 Aug 2026 02:42:20 +0800
+Message-ID: <20260826184229.1145-7-luoyonggang@gmail.com>
 X-Mailer: git-send-email 2.52.0.windows.1
 In-Reply-To: <20260826184229.1145-1-luoyonggang@gmail.com>
 References: <20260826184229.1145-1-luoyonggang@gmail.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::102c;
- envelope-from=luoyonggang@gmail.com; helo=mail-pj1-x102c.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::536;
+ envelope-from=luoyonggang@gmail.com; helo=mail-pg1-x536.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -132,35 +131,50 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Hide the ARM virt machine when the selected target is not ARM in a
-combined qemu-system binary. Versioned virt types already implement
-TYPE_TARGET_SPECIFIC; register it on the abstract parent as well.
+Set TYPE_VIRT_MACHINE to MACHINE_TYPE_NAME("arm-virt") so ARM virt
+no longer collides with other virt-machine types in one process.
+Keep the -M / help / migration name as virt-* via
+machine_class_set_name().
 
 Signed-off-by: Yonggang Luo <luoyonggang@gmail.com>
 ---
- hw/arm/virt.c | 2 ++
- 1 file changed, 2 insertions(+)
+ hw/arm/virt.c         | 3 ++-
+ include/hw/arm/virt.h | 2 +-
+ 2 files changed, 3 insertions(+), 2 deletions(-)
 
 diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-index daba9af79f1..c2ace7706f1 100644
+index c2ace7706f1..ee71974e67a 100644
 --- a/hw/arm/virt.c
 +++ b/hw/arm/virt.c
-@@ -4161,6 +4161,7 @@ static void virt_machine_class_init(ObjectClass *oc, const void *data)
-     MachineClass *mc = MACHINE_CLASS(oc);
-     HotplugHandlerClass *hc = HOTPLUG_HANDLER_CLASS(oc);
+@@ -124,13 +124,14 @@ static void arm_virt_compat_default_set(MachineClass *mc)
+         MACHINE_VER_SYM(options, virt, __VA_ARGS__)(mc); \
+         mc->desc = "QEMU " MACHINE_VER_STR(__VA_ARGS__) " ARM Virtual Machine"; \
+         MACHINE_VER_DEPRECATION(__VA_ARGS__); \
++        machine_class_set_name(mc, "virt-" MACHINE_VER_STR(__VA_ARGS__)); \
+         if (latest) { \
+             mc->alias = "virt"; \
+         } \
+     } \
+     static const TypeInfo MACHINE_VER_SYM(info, virt, __VA_ARGS__) = \
+     { \
+-        .name = MACHINE_VER_TYPE_NAME("virt", __VA_ARGS__), \
++        .name = MACHINE_VER_TYPE_NAME("arm-virt", __VA_ARGS__), \
+         .parent = TYPE_VIRT_MACHINE, \
+         .class_init = MACHINE_VER_SYM(class_init, virt, __VA_ARGS__), \
+         .interfaces = type_target_specific, \
+diff --git a/include/hw/arm/virt.h b/include/hw/arm/virt.h
+index 22e66d1a113..383ee320948 100644
+--- a/include/hw/arm/virt.h
++++ b/include/hw/arm/virt.h
+@@ -215,7 +215,7 @@ struct VirtMachineState {
  
-+    TARGET_SPECIFIC_CLASS(oc)->is_available = target_base_arm;
-     mc->init = machvirt_init;
-     /* Start with max_cpus set to 512, which is the maximum supported by KVM.
-      * The value may be reduced later when we have more information about the
-@@ -4431,6 +4432,7 @@ static const TypeInfo virt_machine_info = {
-     .instance_finalize = virt_instance_finalize,
-     .interfaces = (const InterfaceInfo[]) {
-          { TYPE_HOTPLUG_HANDLER },
-+         { TYPE_TARGET_SPECIFIC },
-          { }
-     },
- };
+ #define VIRT_ECAM_ID(high) (high ? VIRT_HIGH_PCIE_ECAM : VIRT_PCIE_ECAM)
+ 
+-#define TYPE_VIRT_MACHINE   MACHINE_TYPE_NAME("virt")
++#define TYPE_VIRT_MACHINE   MACHINE_TYPE_NAME("arm-virt")
+ OBJECT_DECLARE_TYPE(VirtMachineState, VirtMachineClass, VIRT_MACHINE)
+ 
+ void virt_acpi_setup(VirtMachineState *vms);
 -- 
 2.52.0.windows.1
 

@@ -4,124 +4,106 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C5F87C61DBD
-	for <qemu-arm@archiver.kernel.org>; Wed, 26 Aug 2026 06:50:52 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E8019C61DBD
+	for <qemu-arm@archiver.kernel.org>; Wed, 26 Aug 2026 07:47:28 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wz7T9-0005fL-Mi; Wed, 26 Aug 2026 02:50:43 -0400
+	id 1wz8Lf-0004z3-PE; Wed, 26 Aug 2026 03:47:03 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1wz7T7-0005ep-GA
- for qemu-arm@nongnu.org; Wed, 26 Aug 2026 02:50:41 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ (Exim 4.90_1) (envelope-from <kchiu@axiado.com>)
+ id 1wz8Le-0004yc-3q; Wed, 26 Aug 2026 03:47:02 -0400
+Received: from mail-westusazlp170100001.outbound.protection.outlook.com
+ ([2a01:111:f403:c000::1] helo=BYAPR05CU005.outbound.protection.outlook.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1wz7T5-00008p-HX
- for qemu-arm@nongnu.org; Wed, 26 Aug 2026 02:50:41 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1787727038;
- h=from:from:reply-to:reply-to:subject:subject:date:date:
- message-id:message-id:to:to:cc:cc:mime-version:mime-version:
- content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=emv//XrvYholXANOqMWwHQIYAyRIppZnX63sxgczXdU=;
- b=IXCEHnz8pyjVt97t0zSKLn6oxMX6AdproU9G4toA1+O4NjCnR9NEKCFcuqw8tIN3Zw5yvg
- lnqMuWG0BP8TFMzuYfvFZDtBydVW9mkJfSEDDbhVelKPBQHXvNT/SWKhWVOGnDWMD7BGH8
- yPxCzlOPPShKE5bx5ZfqZ9JHGAxjT9Q=
-Received: from mail-ej1-f69.google.com (mail-ej1-f69.google.com
- [209.85.218.69]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-655-sfe-mzXJMCmZyb5AxVF6PQ-1; Wed, 26 Aug 2026 02:50:37 -0400
-X-MC-Unique: sfe-mzXJMCmZyb5AxVF6PQ-1
-X-Mimecast-MFC-AGG-ID: sfe-mzXJMCmZyb5AxVF6PQ_1787727036
-Received: by mail-ej1-f69.google.com with SMTP id
- a640c23a62f3a-c251a48d473so38927466b.0
- for <qemu-arm@nongnu.org>; Tue, 25 Aug 2026 23:50:37 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1787727036; x=1788331836;
- h=content-transfer-encoding:content-type:in-reply-to:from:references
- :cc:to:content-language:subject:reply-to:user-agent:mime-version
- :date:message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
- :message-id:reply-to:content-type;
- bh=emv//XrvYholXANOqMWwHQIYAyRIppZnX63sxgczXdU=;
- b=aF0hB+J+E7uCv0kZZfxTg2FIqewfEMex/X4XqKhQ3BwRZV1wBcdCRpEt4D6hB7kX2I
- DmTrNg58//DmbBJOeBdmUl7QQM2tjOTL58X+oVQVm0rBKbpV1U9Ma23bGeL7qoNhF8Ze
- 5vC8/2mqXLVYb4baK64kUseFP0ZVshhpbw/8obrVMAKd9rJRhj+/6rEBrrKWtmxCwpCe
- V4V3qBZ3CIygewcN5JaekghgtchLV2PHTB3Ifg4u8YY2N9cYc0XEpbEpgh5eGz9g3+GM
- nBVo/zplpgFAbQIv/CSr7WmMwsnmo32zr8EQlSBQ3WZ2Ag/61RxA9JkAUu7vJqBaBB9R
- p+gA==
-X-Forwarded-Encrypted: i=1;
- AHgh+RrbXpzFPpOgAeWkuWssI8daVcNhkj/tsB5nVjFuY5YQQBC13hmqvSax0muDqXD8KstjOPQrQnfbog==@nongnu.org
-X-Gm-Message-State: AFuF++mup2nWLJSs7BQNBiyml5Y7NGSMBipKjTx4egVuC7QjYlLNXqEy
- GFg7T884hOKf/6j+0GjHvZwyg+T8EuQLUA9Spc88fwrin70wxurDd1BOjN18EOmgkdqWlyrs9ja
- jDcFglFcrtbTSQB+fxf6J8F0EqJi5c3VLLQ8ECE49Xt0UNslEXcCv3Q==
-X-Gm-Gg: AR+sD12dXIukf7tE5LqGBbmHrPGnVcsYfdX+UkBosqUOYDCx67kJk6c0axHM1MHz6q+
- CHl5Xr0bI3hQ5oYLFJyDal7h4I2FdXkj75kMd9HkXjFMoYXDJGwMpMcaqvtHuM5MW7ykO708Jwu
- YBZloJwgBnimESzsZL+Cbnsa7HHye8m+mmGt73xfZ77ez/27xg46VoC4Hre3pc5sBf8uIKyxMT7
- xg3sug2/52i+y93fDCbGRwyiBDE5Cn1Lb66LKBJABbU4xINiwp6TSpKguJAlmnPV1jp55BYlO1b
- wepNV0qvStFTjSC3MUBQtQrZzCK1dcwC0ovjM+37ujYSP1pFJ/TuHZrox8Gwq77wgZTZsw5Taz7
- S7eGrzt0BD6dZ7lurF7cNrgX5kLrMWetcHqkTwe1/WEUjIDTR
-X-Received: by 2002:a17:907:94cd:b0:c20:d90b:2ccf with SMTP id
- a640c23a62f3a-c250bb7d9ecmr522280066b.7.1787727036265; 
- Tue, 25 Aug 2026 23:50:36 -0700 (PDT)
-X-Received: by 2002:a17:907:94cd:b0:c20:d90b:2ccf with SMTP id
- a640c23a62f3a-c250bb7d9ecmr522172866b.7.1787727024169; 
- Tue, 25 Aug 2026 23:50:24 -0700 (PDT)
-Received: from ?IPV6:2a01:e0a:f0e:9070:527b:9dff:feef:3874?
- ([2a01:e0a:f0e:9070:527b:9dff:feef:3874])
- by smtp.gmail.com with ESMTPSA id
- a640c23a62f3a-c250a9e96bdsm249263366b.55.2026.08.25.23.50.22
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 25 Aug 2026 23:50:23 -0700 (PDT)
-Message-ID: <07a65f67-0ac5-425a-af3f-e4e38a1a6500@redhat.com>
-Date: Wed, 26 Aug 2026 08:50:20 +0200
+ (Exim 4.90_1) (envelope-from <kchiu@axiado.com>)
+ id 1wz8Lb-0001Xd-Pt; Wed, 26 Aug 2026 03:47:01 -0400
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=mjO1YGxa8vcNStXzHkIGKujNkAqG1ut+I+J1QuV+TQzNKXajpWHduw9PJgxaplU9pr9V3gsgb+2HUsA36DQILR9gLBqsJ+wDGrGcaHN8WVu2P8xIxwmn0XOaZyuRIgqR4BMekpisfdPBiKvtlSmCXULAbYrZ/l8c3R5HvYzIaGnlvaYwfhiQEBwsFxPxicKvjvalw90swk96REsDiwaFllBGGoVmyr3adREJqCoGIisYaifqP6UAT+0JMOqVLFTN0Sj6U/nQsQtN2ngnfSenASg5C9p38j2eJu2ShF6bsujNhm+J6B7NETRY3u231k/VCjuid2nVZ6yaqF69yhlAJw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=HLSg9qRSL3EUluGAqlz78mSiQvqGkxwOYz8kvmcrsZI=;
+ b=k3oMtZdE8wzi5FhT4A2Ir6TgOJ7/b7Q08xkaBKMjBZ1O4Zbg8atiEMZ/+gQXEE/Aqs8bphhQ9SBZcgFQWQa03gQWODi/t6WDxebNHwhANtoucBI5ROhbVqnH+w0Te4hnh6XoFdWGi8h3sYxaRx6pwylaDit0TU2xVnIjDYQpUcz66e0dWRFo/UtEBipA6bVzYDCnATkoWtcXmNDvernk+hlFVqOjr+ehFJ916Cx4B7dnwT7UaHMk4Ga0Qv+gY02n9Pr4nlgd0DQ5tlwaLyXdbPD7j38Go+pViLCZs6wbEFd49yZDZdK46Df4tm6UxbbeRyuSwyZ/dOQDD/9yRseycA==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=fail (sender ip is
+ 64.62.143.114) smtp.rcpttodomain=axiado.com smtp.mailfrom=axiado.com;
+ dmarc=none action=none header.from=axiado.com; dkim=none (message not
+ signed); arc=none (0)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=axiado.com;
+ s=selector1;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=HLSg9qRSL3EUluGAqlz78mSiQvqGkxwOYz8kvmcrsZI=;
+ b=Q5QOsRiG30samPbVoGm178KlcDC8GKuXNJh0dwP/hIgMm+r8zQL7n9lfx50d+hz5ILdQNnjeVsS7FZdVyholyLUMz0prRi/UtXywKyqB8R3a5UPzVTn7FdpSTO4FZUdVHrf9CzTr6HMTCVB1uo2EezBJyzw3ySaIeDE+eQFI161Q60mDnPHH/NjQygBWc6cofJZFvpDPloMwgWcehNC5OwB0uo/9YLp+WexwzbyXx0zsgNo9Md7JYFvQuVOOJBxemcn+9L8jX+dxa6tr9tHTa3cI5c3+fxpv8ABItjMP+UCcniRMZxJDOSAZe9G82Amf6I862s5LR7FyS6RT8P9wxA==
+Received: from CH3P221CA0017.NAMP221.PROD.OUTLOOK.COM (2603:10b6:610:1e7::16)
+ by CH0PR18MB5483.namprd18.prod.outlook.com (2603:10b6:610:182::21)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.21.360.8; Wed, 26 Aug
+ 2026 07:46:51 +0000
+Received: from BL6PEPF0001AB54.namprd02.prod.outlook.com
+ (2603:10b6:610:1e7:cafe::38) by CH3P221CA0017.outlook.office365.com
+ (2603:10b6:610:1e7::16) with Microsoft SMTP Server (version=TLS1_3,
+ cipher=TLS_AES_256_GCM_SHA384) id 15.21.360.8 via Frontend Transport; Wed, 26
+ Aug 2026 07:46:51 +0000
+X-MS-Exchange-Authentication-Results: spf=fail (sender IP is 64.62.143.114)
+ smtp.mailfrom=axiado.com; dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=axiado.com;
+Received-SPF: Fail (protection.outlook.com: domain of axiado.com does not
+ designate 64.62.143.114 as permitted sender) receiver=protection.outlook.com; 
+ client-ip=64.62.143.114; helo=smtp.corp.axiado.com;
+Received: from smtp.corp.axiado.com (64.62.143.114) by
+ BL6PEPF0001AB54.mail.protection.outlook.com (10.167.241.6) with Microsoft
+ SMTP Server (version=TLS1_3, cipher=TLS_AES_256_GCM_SHA384) id 15.21.360.3
+ via Frontend Transport; Wed, 26 Aug 2026 07:46:50 +0000
+Received: from axiado.com (unknown [10.4.1.181])
+ by smtp.corp.axiado.com (Postfix) with ESMTP id 211F24186B51;
+ Wed, 26 Aug 2026 00:46:50 -0700 (PDT)
+From: Kuan-Jui Chiu <kchiu@axiado.com>
+To: 163wangjack@gmail.com, qemu-devel@nongnu.org, peter.maydell@linaro.org,
+ qemu-arm@nongnu.org
+Cc: Kuan-Jui Chiu <kchiu@axiado.com>
+Subject: [PATCH v4 0/8] Add Axiado SoC AX3005 and EVB
+Date: Wed, 26 Aug 2026 00:46:26 -0700
+Message-Id: <20260826074635.2850931-1-kchiu@axiado.com>
+X-Mailer: git-send-email 2.34.1
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [RFC PATCH v7 18/18] arm-qmp-cmds: introspection for ID register
- props
-To: Khushit Shah <khushit.shah@nutanix.com>
-Cc: "eric.auger.pro@gmail.com" <eric.auger.pro@gmail.com>,
- "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
- "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
- "kvmarm@lists.linux.dev" <kvmarm@lists.linux.dev>,
- "peter.maydell@linaro.org" <peter.maydell@linaro.org>,
- Shaju Abraham <shaju.abraham@nutanix.com>,
- "yangjinqian1@huawei.com" <yangjinqian1@huawei.com>,
- "cohuck@redhat.com" <cohuck@redhat.com>,
- "richard.henderson@linaro.org" <richard.henderson@linaro.org>,
- "sebott@redhat.com" <sebott@redhat.com>,
- "skolothumtho@nvidia.com" <skolothumtho@nvidia.com>,
- "philmd@oss.qualcomm.com" <philmd@oss.qualcomm.com>,
- "maz@kernel.org" <maz@kernel.org>,
- "oliver.upton@linux.dev" <oliver.upton@linux.dev>,
- "pbonzini@redhat.com" <pbonzini@redhat.com>,
- "armbru@redhat.com" <armbru@redhat.com>,
- "berrange@redhat.com" <berrange@redhat.com>,
- "abologna@redhat.com" <abologna@redhat.com>,
- "jdenemar@redhat.com" <jdenemar@redhat.com>
-References: <20260726153221.24773-1-eric.auger@redhat.com>
- <20260726153221.24773-19-eric.auger@redhat.com>
- <C950721B-25A3-477F-ABF0-56491A2C968F@nutanix.com>
-From: Eric Auger <eric.auger@redhat.com>
-In-Reply-To: <C950721B-25A3-477F-ABF0-56491A2C968F@nutanix.com>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: lvEzxWxIXz4SXLSl_xZoNqAfl7W357pNBklkF4RHoD4_1787727036
-X-Mimecast-Originator: redhat.com
-Content-Language: en-US
-Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=170.10.129.124;
- envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
+X-EOPAttributedMessage: 0
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: BL6PEPF0001AB54:EE_|CH0PR18MB5483:EE_
+Content-Type: text/plain
+X-MS-Office365-Filtering-Correlation-Id: 0bb3399b-caef-4895-cd23-08df034630c4
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;
+ ARA:13230040|23010399003|36860700016|1800799024|82310400026|376014|56012099006|10067099003|18002099003|13003099007;
+X-Microsoft-Antispam-Message-Info: FFggMSKOqmAjJB1n9ofLLdXr3QTKBpq1IuVY3rWBHYfLR33hwtXdajGi+B+rQI7DS/GPmWy0kSoFveYVPHfoLRnWp7bWKEMQOGOrphrFNHQitzqpiXwJcqAAtHJa88olnI/3C5tpdxT56++5pq2gnx8heNTjhdFeyZ9BH5GtETH/V7uggQlNbh28z7XkpRgqMCq3pzJOc82HITSVTL+iPSinCf4rPTNWJYuYBr2kqJYbjRsgPmXlPuU7/N6E2JZlpfAU1HcVz7adINzCUesdDojCBPyALTHdt6S3Dq1C/2dGcoHvajp8jOCM/Z/JZ72B6KztBpB7l49uD77/fCGQdqayN6DXLSwTsJwve7vQCsn6aOKQ/7baoKZL+EnpEiaHpQIZdRIE+K0cl1EysCshYTrLCm+mYBNAOJcdCCkWqXhS0y6xZLhMvEMtwZ5pXSArBBocLA/YWvBwk89pzdzg10AD9afIiMKDjDuUUdHpP4RTM/DebKpeG733p0uH5wQ6CYdpSy6e68e3p99LMBc29PGOa1ZYmZKvB+da2qxqmhAEjw0b/2vZbVeOMZwbXmim9JIIk/dP4yGwM8oDH4bO/nxDidYIJtuevW+uRGXxPxTNvCXbfwss8VYeQVxEBC1msmWrKPih/Lfp7lssLbmJAg==
+X-Forefront-Antispam-Report: CIP:64.62.143.114; CTRY:US; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:smtp.corp.axiado.com; PTR:InfoDomainNonexistent; CAT:NONE;
+ SFS:(13230040)(23010399003)(36860700016)(1800799024)(82310400026)(376014)(56012099006)(10067099003)(18002099003)(13003099007);
+ DIR:OUT; SFP:1102; 
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: dm5Uty49XrSppkHEtyf2zglmJFq6SFSftLkS0u3g6y/k+C7eFwTFcD1QYTnRowRYYCkieTMsggq3Me0ZRkZ9zLwDunu7jhEc7An25RkbMnYQTbPsuSxD2zn1M5KjR2ahPgIUhih33gVw/09kb6bj8zjyKY+BsoeBulLd8yTtV6dEmf0NWzL8GuAfn36di2ZW42v2CiB4d18k6xXTPJ7ILtr4JStnzjBDLSEYYYaVQ7s1zciSeIKYqq6llGGPVUy9s1MbiID9Y7d0Ddbp9QPVPLn9hZ32ezIIt4fAu1ZVjEQdrtfxZdiWRy0Sw8Uj2VIyRI2I7SPlizQR0BsGV3YnUSd5JvjR7Cv/LDKjGIOY5LG5uBmgBjAsWPGzY9w6q41KTwkVun5nFeJmqIRxXK7fp/rkrQqLjZce080j8nt9TxoZl8u5i9mhSwgQZV1DrXZq
+X-OriginatorOrg: axiado.com
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 26 Aug 2026 07:46:50.8928 (UTC)
+X-MS-Exchange-CrossTenant-Network-Message-Id: 0bb3399b-caef-4895-cd23-08df034630c4
+X-MS-Exchange-CrossTenant-Id: ff2db17c-4338-408e-9036-2dee8e3e17d7
+X-MS-Exchange-CrossTenant-OriginalAttributedTenantConnectingIp: TenantId=ff2db17c-4338-408e-9036-2dee8e3e17d7; Ip=[64.62.143.114];
+ Helo=[smtp.corp.axiado.com]
+X-MS-Exchange-CrossTenant-AuthSource: BL6PEPF0001AB54.namprd02.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Anonymous
+X-MS-Exchange-CrossTenant-FromEntityHeader: HybridOnPrem
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: CH0PR18MB5483
+Received-SPF: pass client-ip=2a01:111:f403:c000::1;
+ envelope-from=kchiu@axiado.com;
+ helo=BYAPR05CU005.outbound.protection.outlook.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=0.001, SPF_HELO_PASS=-0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_PASS=-0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -134,255 +116,104 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-To: eric.auger@redhat.com
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Hi Khushit,
+This patchset introduces Axiado SoC AX3005 and evaluation board for emulation
+The model for Axiado SoC AX3005 supports
+  4 Cortex-A53 CPUs
+  Arm Generic Interrupt Controller v3
+  9 Cadence UARTs
+  1 SDHCI controller with PHY
+  8 Cadence GPIOs
 
-On 8/24/26 1:59 PM, Khushit Shah wrote:
->
->> On 26 Jul 2026, at 8:59 PM, Eric Auger <eric.auger@redhat.com> wrote:
->>
->> !-------------------------------------------------------------------|
->>  CAUTION: External Email
->>
->> |-------------------------------------------------------------------!
->>
->> From: Cornelia Huck <cohuck@redhat.com>
->>
->> Implement the capability to query available ID register values by
->> adding SYSREG_* options and values to the cpu model expansion for the
->> host model, if available.
->>
->> Excerpt:
->> (QEMU) query-cpu-model-expansion type=full model={"name":"host"}
->> {"return": {"model": {"name": "host", "props": {"SYSREG_ID_AA64PFR0_EL1_EL3": 1,
->> "SYSREG_ID_AA64ISAR2_EL1_CLRBHB": 0, "SYSREG_CTR_EL0_L1Ip": 3,
->> "SYSREG_MIDR_EL1_PartNum": 3407, "SYSREG_CTR_EL0_DminLine": 4,
->> "SYSREG_ID_AA64MMFR0_EL1_PARange": 5, "SYSREG_ID_AA64MMFR1_EL1_ECBHB": 0
->> ../..
->>
->> This allows the upper stack to detect available writable ID regs and
->> the "host passthrough model" values.
->>
->> It also allows to test some ID reg field values:
->> (QEMU) query-cpu-model-expansion type=full model={"name":"host","props":{"SYSREG_ID_AA64ISAR0_EL1_DP":0x13}}
->> {"error": {"class": "GenericError", "desc": "idreg SYSREG_ID_AA64ISAR0_EL1_DP set value (0x13) exceeds length of field (4)!"}}
->>
->> (QEMU) query-cpu-model-expansion type=full model={"name":"host","props":{"SYSREG_ID_AA64ISAR0_EL1_DP":0x2}}
->> {"error": {"class": "GenericError", "desc": "idreg SYSREG_ID_AA64ISAR0_EL1_DP set value (0x2) does not match any arch valid enum value!”}}
-> My reasoning here is: User never asked to run the CPU model/configuration. The QMP command is supposed to
-> return the final prop values which QEMU will set/request from KVM.
->
-> Like on x86, the query-cpu-model-expansion type=full model={“host”: “props”: {“amx-tile": true}} does not return
-> with error even if host does not have AMX.
->
-> But, maybe we can append CpuModelInfo or CpuModelExpansionInfo with optional ‘usable’ boolean. This even
-> fills an existing gap, as, query-cpu-definitions cannot take property values.
+Refer Axiado website for more product information
+https://axiado.com/products/
 
-Refering to docs/system/arm/cpu-features.rst it looks a normal case the
-command fails in case settings cannot apply:
+and minor changes for the compatibility with existing AX3000 SoC model
 
-See 
+Test plan:
+1. Verified the machine "ax3005-evb" with following command
 
-(3) Let's try to disable ``aarch64``, which enables the AArch32 CPU
-feature::
+qemu-system-aarch64 \
+    -m 2G \
+    -machine ax3005-evb \
+    -device loader,file=bl31.bin,addr=0x88300000 \
+    -device loader,file=tee-raw.bin,addr=0x88400000 \
+    -device loader,file=u-boot.bin,addr=0x80000000 \
+    -device loader,file=fitImage,addr=0x80100000 \
+    -device loader,file=obmc-phosphor-image-evk-ax3005-qemu.squashfs-xz,addr=0x80B00000 \
+    -device loader,cpu-num=0,addr=0x88300000 \
+    -device loader,cpu-num=1,addr=0x88300000 \
+    -device loader,cpu-num=2,addr=0x88300000 \
+    -device loader,cpu-num=3,addr=0x88300000 \
+    -nographic \
+    -serial null \
+    -serial null \
+    -serial null \
+    -serial mon:stdio \
+    -drive if=sd,file=obmc-phosphor-image-evk-ax3005-qemu.wic,format=raw
 
-      (QEMU) query-cpu-model-expansion type=full
-model={"name":"max","props":{"aarch64":false}}
-      {"error": {
-       "class": "GenericError", "desc":
-       "'aarch64' feature cannot be disabled unless KVM is enabled and
-32-bit EL1 is supported"
-      }}
+2. Run QEMU test suite
+make check
+Ok:                331
+Fail:              0
+Skipped:           17
 
-So my understanding is query-cpu-model-expansion is well suited to
-settings dry-run
+make check-functional
+Ok:                28
+Fail:              0
+Skipped:           7
 
-Thanks
+Changes in v4:
+  1. Add patch ("hw/char/cadence_uart: Reserve MMIO with dynamic size") which 
+     allow other models to revise the MMIO size of Cadence UART
+  2. Change the MMIO size of Cadence UART to 512 KiB in Ax3000/Ax3005 SoC to 
+     resolve the overlapping region issue
+  3. Add memory guard in Ax3000/Ax3005 EVK to check the memory size specified by 
+     -m option and set the default_ram_size to the RAM size supported by Axiado 
+     SoC
 
-Eric
+Changes in v3:
+  1. Remove patch "hw/arm/ax3000-soc: Add missing class_size to TypeInfo" 
+     because it was fixed by commit 4f50d637e2
+     ("hw/arm/ax3000-soc: fix heap overflow from missing class_size")
 
-> Warm Regards,
-> Khushit
->> The following checks are performed:
->> - the value does not exceed the field size
->> - if the field is associated to enum values, the set value must be one
->>  of those enum values
->> - the value is applied against a scratch vcpu making sure the setting is
->>  not rejected for this host
->>
->> Signed-off-by: Eric Auger <eric.auger@redhat.com>
->> Signed-off-by: Cornelia Huck <cohuck@redhat.com>
->>
->> ---
->>
->> v5 -> v6:
->> - add the write capability
->> ---
->> target/arm/arm-qmp-cmds.c | 98 +++++++++++++++++++++++++++++++++++++++
->> 1 file changed, 98 insertions(+)
->>
->> diff --git a/target/arm/arm-qmp-cmds.c b/target/arm/arm-qmp-cmds.c
->> index 83ec95c290..41fefadcea 100644
->> --- a/target/arm/arm-qmp-cmds.c
->> +++ b/target/arm/arm-qmp-cmds.c
->> @@ -21,6 +21,7 @@
->>  */
->>
->> #include "qemu/osdep.h"
->> +#include "qemu/error-report.h"
->> #include "qemu/target-info.h"
->> #include "hw/core/boards.h"
->> #include "kvm_arm.h"
->> @@ -30,7 +31,10 @@
->> #include "qapi/qapi-commands-machine.h"
->> #include "qapi/qapi-commands-misc-arm.h"
->> #include "qobject/qdict.h"
->> +#include "qobject/qnum.h"
->> #include "qom/qom-qobject.h"
->> +#include <linux/kvm.h>
->> +#include "system/kvm.h"
->> #include "cpu.h"
->>
->> static GICCapability *gic_cap_new(int version)
->> @@ -84,11 +88,14 @@ CpuModelExpansionInfo *qmp_query_cpu_model_expansion(CpuModelExpansionType type,
->>                                                      Error **errp)
->> {
->>     CpuModelExpansionInfo *expansion_info;
->> +    ObjectPropertyIterator iter;
->>     const QDict *qdict_in;
->> +    ObjectProperty *idregprop;
->>     QDict *qdict_out;
->>     ObjectClass *oc;
->>     Object *obj;
->>     const char *name;
->> +    int fdarray[3];
->>     int i;
->>
->>     if (type != CPU_MODEL_EXPANSION_TYPE_FULL) {
->> @@ -133,6 +140,38 @@ CpuModelExpansionInfo *qmp_query_cpu_model_expansion(CpuModelExpansionType type,
->>
->>     obj = object_new(object_class_get_name(oc));
->>
->> +    if (kvm_enabled()) {
->> +        bool pmuv3_supported = kvm_check_extension(kvm_state, KVM_CAP_ARM_PMU_V3);
->> +        bool sve_supported = kvm_check_extension(kvm_state, KVM_CAP_ARM_SVE);
->> +        struct kvm_vcpu_init init = { .target = -1, };
->> +        bool el2_supported = kvm_arm_el2_supported();
->> +        bool pauth_supported;
->> +        int ret;
->> +
->> +        pauth_supported = kvm_check_extension(kvm_state, KVM_CAP_ARM_PTRAUTH_ADDRESS) &&
->> +                          kvm_check_extension(kvm_state, KVM_CAP_ARM_PTRAUTH_GENERIC);
->> +
->> +        if (sve_supported) {
->> +            init.features[0] |= 1 << KVM_ARM_VCPU_SVE;
->> +        }
->> +        if (el2_supported) {
->> +            init.features[0] |= 1 << KVM_ARM_VCPU_HAS_EL2;
->> +        }
->> +        if (pauth_supported) {
->> +            init.features[0] |= (1 << KVM_ARM_VCPU_PTRAUTH_ADDRESS |
->> +                             1 << KVM_ARM_VCPU_PTRAUTH_GENERIC);
->> +        }
->> +        if (pmuv3_supported) {
->> +            init.features[0] |= 1 << KVM_ARM_VCPU_PMU_V3;
->> +        }
->> +
->> +        ret = kvm_arm_create_scratch_host_vcpu(fdarray, &init);
->> +        if (!ret) {
->> +            error_setg(errp, "failing creating a scratch vcpu");
->> +            return NULL;
->> +        }
->> +    }
->> +
->>     if (model->props) {
->>         Visitor *visitor;
->>         Error *err = NULL;
->> @@ -145,6 +184,49 @@ CpuModelExpansionInfo *qmp_query_cpu_model_expansion(CpuModelExpansionType type,
->>         }
->>
->>         qdict_in = qobject_to(QDict, model->props);
->> +
->> +        for (const QDictEntry *entry = qdict_first(qdict_in);
->> +                 entry != NULL; entry = qdict_next(qdict_in, entry)) {
->> +            const char *key = qdict_entry_key(entry);
->> +            QObject *val_obj = qdict_entry_value(entry);
->> +            ObjectProperty *prop;
->> +            Visitor *v;
->> +            bool success;
->> +            uint64_t val;
->> +
->> +            prop = object_property_find(obj, key);
->> +            if (!prop) {
->> +                error_setg(errp, "%s does not exist!", key);
->> +                return NULL;
->> +            }
->> +
->> +            if (!g_str_has_prefix(key, "SYSREG_")) {
->> +                continue;
->> +            }
->> +
->> +            /* consume the prop to avoid unexpected parameter */
->> +            if (!visit_type_uint64(visitor, key, &val, errp)) {
->> +                return NULL;
->> +            }
->> +
->> +            v = qobject_input_visitor_new(val_obj);
->> +
->> +            if (!object_property_set(obj, key, v, &err)) {
->> +                error_propagate(errp, err);
->> +                visit_free(v);
->> +                return NULL;
->> +            }
->> +
->> +            success = kvm_idreg_write_scratch_vcpu(fdarray[2], v, key,
->> +                                                   prop->opaque, &err);
->> +            if (!success) {
->> +                error_propagate(errp, err);
->> +                visit_free(v);
->> +                return NULL;
->> +            }
->> +            visit_free(v);
->> +        }
->> +
->>         i = 0;
->>         while ((name = cpu_model_advertised_features[i++]) != NULL) {
->>             if (qdict_get(qdict_in, name)) {
->> @@ -160,6 +242,10 @@ CpuModelExpansionInfo *qmp_query_cpu_model_expansion(CpuModelExpansionType type,
->>         if (!err) {
->>             arm_cpu_finalize_features(ARM_CPU(obj), &err);
->>         }
->> +
->> +        if (kvm_enabled()) {
->> +            kvm_arm_destroy_scratch_host_vcpu(fdarray);
->> +        }
->>         visit_end_struct(visitor, NULL);
->>         visit_free(visitor);
->>         if (err) {
->> @@ -190,6 +276,18 @@ CpuModelExpansionInfo *qmp_query_cpu_model_expansion(CpuModelExpansionType type,
->>         }
->>     }
->>
->> +    object_property_iter_init(&iter, obj);
->> +
->> +    while ((idregprop = object_property_iter_next(&iter))) {
->> +        QObject *value;
->> +
->> +        if (!g_str_has_prefix(idregprop->name, "SYSREG_")) {
->> +            continue;
->> +        }
->> +        value = object_property_get_qobject(obj, idregprop->name, &error_abort);
->> +        qdict_put_obj(qdict_out, idregprop->name, value);
->> +    }
->> +
->>     if (!qdict_size(qdict_out)) {
->>         qobject_unref(qdict_out);
->>     } else {
->> -- 
->> 2.53.0
->>
+Changes in v2:
+  1. Add patch "hw/arm/ax3000-soc: Add missing class_size to TypeInfo" 
+     to fix incorrect class size
+  2. Add missing class_size "Ax3005SoCClass" to ax3005_soc_types
+
+Kuan-Jui Chiu (8):
+  hw/sd/axiado_sdhci: Add header guard
+  hw/arm: Rename ax3000-boards as axiado-boards
+  hw/arm/ax3000: Specify SoC name in header and variable
+  hw/char/cadence_uart: Reserve MMIO with dynamic size
+  hw/arm/ax3000-soc: Reserve MMIO of UART with 512 KiB
+  hw/arm/ax3000-boards: Add memory guard
+  hw/arm: Add Axiado SoC AX3005
+  hw/arm: Add Axiado Ax3005 EVB
+
+ MAINTAINERS                                   |   2 +
+ hw/arm/ax3000-boards.c                        |  13 +-
+ hw/arm/ax3000-evk.c                           |   4 +-
+ hw/arm/ax3000-soc.c                           |   6 +-
+ hw/arm/ax3005-evk.c                           |  64 +++++
+ hw/arm/ax3005-soc.c                           | 227 ++++++++++++++++++
+ hw/arm/meson.build                            |   6 +-
+ hw/char/cadence_uart.c                        |   8 +-
+ include/hw/arm/ax3000-soc.h                   |   2 +
+ include/hw/arm/ax3005-soc.h                   | 103 ++++++++
+ .../arm/{ax3000-boards.h => axiado-boards.h}  |  10 +
+ include/hw/char/cadence_uart.h                |   3 +
+ include/hw/sd/axiado_sdhci.h                  |   5 +
+ 13 files changed, 443 insertions(+), 10 deletions(-)
+ create mode 100644 hw/arm/ax3005-evk.c
+ create mode 100644 hw/arm/ax3005-soc.c
+ create mode 100644 include/hw/arm/ax3005-soc.h
+ rename include/hw/arm/{ax3000-boards.h => axiado-boards.h} (69%)
+
+-- 
+2.34.1
 
 

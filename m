@@ -4,128 +4,154 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 84C6DC61DBD
-	for <qemu-arm@archiver.kernel.org>; Wed, 26 Aug 2026 18:11:59 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 488BFC61DBD
+	for <qemu-arm@archiver.kernel.org>; Wed, 26 Aug 2026 18:13:36 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wzI65-0002Kj-D2; Wed, 26 Aug 2026 14:11:37 -0400
+	id 1wzI7m-00033V-Ju; Wed, 26 Aug 2026 14:13:26 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@oss.qualcomm.com>)
- id 1wzI63-0002JQ-HM
- for qemu-arm@nongnu.org; Wed, 26 Aug 2026 14:11:35 -0400
+ (Exim 4.90_1) (envelope-from <pierrick.bouvier@oss.qualcomm.com>)
+ id 1wzI7d-00030q-Ff
+ for qemu-arm@nongnu.org; Wed, 26 Aug 2026 14:13:14 -0400
 Received: from mx0b-0031df01.pphosted.com ([205.220.180.131])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@oss.qualcomm.com>)
- id 1wzI62-0004eo-2D
- for qemu-arm@nongnu.org; Wed, 26 Aug 2026 14:11:35 -0400
+ (Exim 4.90_1) (envelope-from <pierrick.bouvier@oss.qualcomm.com>)
+ id 1wzI7b-0004xl-9p
+ for qemu-arm@nongnu.org; Wed, 26 Aug 2026 14:13:13 -0400
 Received: from pps.filterd (m0279872.ppops.net [127.0.0.1])
  by mx0a-0031df01.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id
- 67QHMA2O1044511
- for <qemu-arm@nongnu.org>; Wed, 26 Aug 2026 18:11:32 GMT
+ 67QHM5Va1044330
+ for <qemu-arm@nongnu.org>; Wed, 26 Aug 2026 18:13:10 GMT
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qualcomm.com; h=
- content-transfer-encoding:content-type:date:from:in-reply-to
+ cc:content-transfer-encoding:content-type:date:from:in-reply-to
  :message-id:mime-version:references:subject:to; s=qcppdkim1; bh=
- dJJDHyKkgiP6QxGZDNOvMkdOgtqf8YD7+eMFij3EVkI=; b=F8Qh0QGxlDCFTnLO
- Ww2k3DlTN7QiIkFHLC9La4Gpv76nRpcYazOOG+Z+FuWdI9+nVQE6IHrq+Q5KEEAF
- 167yY78PurkA/j2R6YiEwOK9FTtCd8M6tGLUrzHLEe5f0LMVONipB64ysppr5GC5
- +8Gw0+YXVYdAYNyJAJ/79PsdohrdmOV0fZmT65jHfnt0ZibyVYAGMcZ1p1txbqRb
- vsAmN8iVCL6WIjodM986LixlMJujO4hQTZtqk4M5uRIG16qNvQjkm0emtTTsPXIf
- PGg3nXnfGVbMac7pHWGpKqr2qNOx4NGoJEKF+JLPKHZ9SBOoOIypr/02p4ur4UDX
- 004bww==
-Received: from mail-qt1-f199.google.com (mail-qt1-f199.google.com
- [209.85.160.199])
- by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 4ga4fwg6s9-1
+ 4Ql5Ylx+NIsh1sezBqRcWzJvr43JL44lD8FsD/4QeSQ=; b=YiITLFwTo4ZmqYfv
+ K837S3boQp79xWpbBEoVF/I7njUHt9/cXVc20k9u+RE5SJ/w1xAwMEX+hF3+tQnN
+ 5NfsVTj4WqFURMqdtcP6UH4AwkjPMrLey+9nkMzh+lMsaxXEqXg4FUWXFtjE+8sL
+ DHrbQm71OU5RbFggjjp81vBkCWrIdProVKjf8UvfPHoJ+/zkYD8JeOMcBsDZS7ts
+ IwpB1QG3qcbKoL8QF+Z7CgTTvohdChH2Lk8eSeMpkAWHjRJSKrn54UJTVz/EPoqk
+ Ok1wMDcDUwHJKOjs+vfFS3eGXg+jbCvarT8U5j9d9TjlAUoQbnG4JXaWRODaZPAd
+ G4+5Zw==
+Received: from mail-pl1-f200.google.com (mail-pl1-f200.google.com
+ [209.85.214.200])
+ by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 4ga4fwg6yc-1
  (version=TLSv1.3 cipher=TLS_AES_128_GCM_SHA256 bits=128 verify=NOT)
- for <qemu-arm@nongnu.org>; Wed, 26 Aug 2026 18:11:31 +0000 (GMT)
-Received: by mail-qt1-f199.google.com with SMTP id
- d75a77b69052e-52ce64c41efso21124151cf.3
- for <qemu-arm@nongnu.org>; Wed, 26 Aug 2026 11:11:31 -0700 (PDT)
+ for <qemu-arm@nongnu.org>; Wed, 26 Aug 2026 18:13:10 +0000 (GMT)
+Received: by mail-pl1-f200.google.com with SMTP id
+ d9443c01a7336-2d63c16fc5bso27079595ad.1
+ for <qemu-arm@nongnu.org>; Wed, 26 Aug 2026 11:13:10 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=oss.qualcomm.com; s=google; t=1787767891; x=1788372691; darn=nongnu.org;
- h=content-transfer-encoding:content-type:in-reply-to:from:references
- :to:content-language:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to:content-type;
- bh=dJJDHyKkgiP6QxGZDNOvMkdOgtqf8YD7+eMFij3EVkI=;
- b=NP1TjlkFyH9PwxxmGBvCeN4qUtfMtcrNwPPy0XkDGPLBfhvZ9SUPwbDkM/wutnbCpU
- UkAOJlPAebz5Sgj+EYMtdxL9C9+J97h3EY8KA4lhDTpdqluXL1xswcu73n5DQiPbphLX
- MwDoK9JJfEAtCJSnHde/h0ZbLx7tj0myTtsvsQkQvC54edCD/O26+eUgZb/dDnEz9ui8
- qaminSF6z2WPkmOwWVv+YhgBFEj+qBs99G6FUITB7a1YAB6JwrG/GV1vNaX6JnRVekbc
- rXZ6iSgwHQBYsJ5IFv8xAAH1VJYkgzTZoonAvepmk/hnhEOkWyVg71igDAoXPat44h8I
- GRIw==
+ d=oss.qualcomm.com; s=google; t=1787767989; x=1788372789; darn=nongnu.org;
+ h=content-transfer-encoding:content-type:in-reply-to:content-language
+ :from:references:cc:to:subject:user-agent:mime-version:date
+ :message-id:from:to:cc:subject:date:message-id:reply-to:content-type;
+ bh=4Ql5Ylx+NIsh1sezBqRcWzJvr43JL44lD8FsD/4QeSQ=;
+ b=V4qRr/l4lHYwHeN/Iw904UdmmAWAUzI33umFnAgvuUYgigqe+T5az2J0mREZE0LKZA
+ OxXeh4yQA18Pd/XSb7yEQe3hyVynxWsjax7qfMkhnkJSUWfDtYD0lvBlmZM5G56IoWTD
+ QMjVZ4HAOHARhVJlv/rPVUYivOJHn1JpCkqJrXVU+zv9JFJR6ICeX3ciXszKTW2SYf1/
+ kZrV9qBWcFfF3iNFK6xk7j5y/gRle/lA7F7tnQZ3YhU+mc/alzabMS/b2gzlx1VbQr1G
+ ARNxJ0svKHPSquZvAdW5B6sCKyUU2tt+knuZXoWRerafKrz/RtM3iVBbe7WNiPPa+i0d
+ T8Ew==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1787767891; x=1788372691;
- h=content-transfer-encoding:content-type:in-reply-to:from:references
- :to:content-language:subject:user-agent:mime-version:date:message-id
- :x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to:content-type;
- bh=dJJDHyKkgiP6QxGZDNOvMkdOgtqf8YD7+eMFij3EVkI=;
- b=ZDXPIVbGZJQtUwIncxSxGNunY3jdj4dsR3QGFRy+oVMgnY/GiH9o3BEXYcBvhb9zno
- a3ZEsRX4C/uLxaX1xWFj1AKz3XXcQRAurQ/hSlv0zcLQ5Il6xymVsSunM99tmoagu+a0
- fkFObfSXqmfvG4BLwj4KtQ5frjnf5xCdOUAXAwrxWiGFPKUy3JKIg4znkysndcjLU3et
- oWegmRTw+EP9e+nwvHxGXgvsMiBRLIRHthFnRFvd5NAMRznaI0IYPeoraRphtSv5pDeF
- JMOeoEi6fvfGf0jJ5MdP549wqQAIAh70nnK8RgF4LVq/5bbazj3X+yfuGFitiTtxvds4
- DU/A==
+ d=1e100.net; s=20251104; t=1787767989; x=1788372789;
+ h=content-transfer-encoding:content-type:in-reply-to:content-language
+ :from:references:cc:to:subject:user-agent:mime-version:date
+ :message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+ :message-id:reply-to:content-type;
+ bh=4Ql5Ylx+NIsh1sezBqRcWzJvr43JL44lD8FsD/4QeSQ=;
+ b=dmpaFWYj0BslaRxQ1EdeCdATuukNrcdzcyVRzD1i5enGL7acEA/xxL3KuwVwH9ZK8d
+ 8XW2bexhP/HZ0k1lWeuz9O/ih2YyULr4w4Bb5bmjtUoYGgBcPSNR7LYa+CpBn/m8y28T
+ RGQdmK0j1x5xK4vQvUfkTZlRc+MZOyq34DBIt3J/j+IoSLY44+gdcW9j4riwKsCWOlvR
+ DtvE4oDuEoi2SxhaDJyFwB4yptgqNDq6CXjyN0enncQOSeWDpyhPBVREG+32fDxip3P5
+ h7gWnaiIxtlrWXVrrgXDyqfKJAftgky4KGrs4zljLaLNDCY6Cdlh98h6cSNMjrrAZNED
+ RAvA==
 X-Forwarded-Encrypted: i=1;
- AHgh+Rrh4DcQm9akMqx1Lh0oDEFFkwCsR8cYmQwx+06Y69bgBaKWJive4zNrMqMfsd/QjCuyf1DI9CQP6A==@nongnu.org
-X-Gm-Message-State: AFuF++nC7WEMKQgZ+ptt9ZtNiRfUv5YsFav7LreuasJ52plKrw61/sIO
- OPTkgFr8LSF4NoKQ4b71wJi8HEBSnOVbBOHWYmm0CbJca75xVJt51KOcUvE1AOy4K3tRuRRWP8D
- gCN+g8wlCcA7/9OpIK9FnbH8AK6/Q/MTzmDCt786wC1fqUiI9SiYGGHw=
-X-Gm-Gg: AR+sD10FDPPEl6vdfURWDdRWvmOd8FQNfLPYfofyyneYFLrP98ZPDluldu4kCsej7EC
- 59053bAyN9WiDzZza3bCcGaN4sftCd7YXzUg6Wbp8ZYgqDAb2dvJML4lHAYb/Ju4TCg5/ApGLxA
- 7a+5fW/RCpvpL+t8rPbQI6gxV5fGkWpA1cFmwRhER/fDfOdnd93Do85lN9gdmJp9a7vj2Uj52OU
- yPJAD01KLszQgmkrvUQDLUSkqCth7BumwSMVVzoOmEDhD+FS/yJYr4xwqQthw8V5nVwF52Xc7w3
- ADxLFiNSJdGfuICNnJXS42DGin7XXR90sOYg65wWXrJ9DlbZ1gRKGveOkrpBEp83ON55EaBBZ6w
- G3DLYvkWap5/l0IItCtL4RM3V7PnTJd5Udcl61kTqaGm/79tZ
-X-Received: by 2002:a05:622a:98f:b0:51c:217f:518 with SMTP id
- d75a77b69052e-52e4222dd55mr88084611cf.6.1787767891413; 
- Wed, 26 Aug 2026 11:11:31 -0700 (PDT)
-X-Received: by 2002:a05:622a:98f:b0:51c:217f:518 with SMTP id
- d75a77b69052e-52e4222dd55mr88083991cf.6.1787767891039; 
- Wed, 26 Aug 2026 11:11:31 -0700 (PDT)
-Received: from [10.254.188.74] (134.171.88.92.rev.sfr.net. [92.88.171.134])
- by smtp.gmail.com with ESMTPSA id
- 4fb4d7f45d1cf-6a5dea83babsm5615341a12.16.2026.08.26.11.11.29
+ AHgh+RqiIZdFy9xoTFJOKXw8aUwt7BlBn3R9taxddHHKoxCGglM+qyuKxGlYty154s+d+xg1BeaLDci7PQ==@nongnu.org
+X-Gm-Message-State: AFuF++mPof4XoM7UG+u4FiCaKEHSg3/t170+kgG+qKm6Spy0dq8gliYY
+ 01+Q1MAngo9dV3jFCIAO7M75rYOmVJTz9c/0NOp5d3SidTpthV2sSiE0sNX8Lgvjn5ko+8ELB5s
+ Lw1m640eKIsExuS1DP48A+PI2p6IWmsk00L3Y2C0aPPfdCg62EIl5lbI=
+X-Gm-Gg: AR+sD13+fbhsz88cfUGGNRO5lr2wrpDUMudtWoe08LCfx2zBYj5X1oHFzKppT+oWrbu
+ wjtDkk1MEQjbh7vIS7C4aEkkRcRz0aXTsO7st1xjcE174yZFe5gUFwkmvGk3f35oC7vkVkuL2oI
+ qD+RnSFPo17zIgWpRWdD4+5Go2Jmgk+dxL9NJeMi3qy30DbrMhWoPVxb0hPQQ0hzdBvw4tUFBHg
+ ct4EgZ4IZ3J209aevjHd5sahPYoQE5ts8894BSOdBY8e9zcNQY25iCw3ooS8fBpte+3Cv5YQXcg
+ M5Yxy52fah6X19FGJiVxeRO4gtUXCI+MDbentOtLhHVsELEBJ4yuTmwgZZFdAt72iI1i8T/T41O
+ myhzhlYBZln7i6GnV6IQKzYqX5qDdl+EWjbcaim5hfp6pRGC/8y0JReehuhsuPFgKBgPD
+X-Received: by 2002:a17:903:3810:b0:2ca:d91d:d3a7 with SMTP id
+ d9443c01a7336-2d707aea3aamr172527515ad.10.1787767989288; 
+ Wed, 26 Aug 2026 11:13:09 -0700 (PDT)
+X-Received: by 2002:a17:903:3810:b0:2ca:d91d:d3a7 with SMTP id
+ d9443c01a7336-2d707aea3aamr172526225ad.10.1787767988756; 
+ Wed, 26 Aug 2026 11:13:08 -0700 (PDT)
+Received: from [192.168.1.199] (216-71-219-44.dyn.novuscom.net.
+ [216.71.219.44]) by smtp.gmail.com with ESMTPSA id
+ 5a478bee46e88-3283d63bb23sm10776870eec.7.2026.08.26.11.13.06
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 26 Aug 2026 11:11:30 -0700 (PDT)
-Message-ID: <2d0a87bf-dd2b-4e34-b44d-c19f69923565@oss.qualcomm.com>
-Date: Wed, 26 Aug 2026 20:11:28 +0200
+ Wed, 26 Aug 2026 11:13:08 -0700 (PDT)
+Message-ID: <0f3d8fe9-b3ad-40c5-9078-c13738997998@oss.qualcomm.com>
+Date: Wed, 26 Aug 2026 11:13:05 -0700
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v5 16/16] hw/acpi/piix4.c: convert ACPI_PM_PROP_PM_IO_BASE
- to a class prop
+Subject: Re: [PATCH 10/12] target-info: add -target and program-name selection
+To: =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>,
+ Yonggang Luo <luoyonggang@gmail.com>
+Cc: qemu-devel@nongnu.org, Xianglai Li <lixianglai@loongson.cn>,
+ Alistair Francis <alistair.francis@wdc.com>,
+ Chinmay Rath <rathc@linux.ibm.com>,
+ Sunil V L <sunilvl@ventanamicro.com>, qemu-riscv@nongnu.org,
+ Alexander Bulekov <alxndr@bu.edu>, Zhao Liu <zhao1.liu@intel.com>,
+ Eric Farman <farman@linux.ibm.com>, Laurent Vivier <lvivier@redhat.com>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ Chao Liu <chao.liu@processmission.com>,
+ Liu Zhiwei <zhiwei_liu@linux.alibaba.com>,
+ Palmer Dabbelt <palmer@dabbelt.com>, Song Gao <17746591750@163.com>,
+ Harsh Prateek Bora <harshpb@linux.ibm.com>,
+ Glenn Miles <milesg@linux.ibm.com>,
+ Daniel Henrique Barboza <daniel.barboza@oss.qualcomm.com>,
+ qemu-s390x@nongnu.org, Jiaxun Yang <jiaxun.yang@flygoat.com>,
+ =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@mailo.com>,
+ "Michael S. Tsirkin" <mst@redhat.com>, Stefan Hajnoczi
+ <stefanha@redhat.com>, =?UTF-8?Q?Alex_Benn=C3=A9e?=
+ <alex.bennee@linaro.org>,
+ David Hildenbrand <david@kernel.org>, qemu-ppc@nongnu.org,
+ qemu-arm@nongnu.org, Igor Mammedov <imammedo@redhat.com>,
+ Aleksandar Rikalo <arikalo@gmail.com>,
+ Nicholas Piggin <npiggin@gmail.com>, Cornelia Huck <cohuck@redhat.com>,
+ Richard Henderson <richard.henderson@linaro.org>,
+ Ilya Leoshkevich <iii@linux.ibm.com>, Fabiano Rosas <farosas@suse.de>,
+ Aurelien Jarno <aurelien@aurel32.net>,
+ Paolo Bonzini <pbonzini@redhat.com>, Ani Sinha <anisinha@redhat.com>,
+ Bibo Mao <maobibo@loongson.cn>,
+ =?UTF-8?Q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>,
+ Matthew Rosato <mjrosato@linux.ibm.com>, Weiwei Li <liwei1518@gmail.com>,
+ Darren Kenny <darren.kenny@oracle.com>
+References: <20260823150731.896-1-luoyonggang@gmail.com>
+ <20260823150731.896-11-luoyonggang@gmail.com> <ao7gGVuiDcVZSN6v@redhat.com>
+From: Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>
 Content-Language: en-US
-To: Mark Cave-Ayland <mark.caveayland@nutanix.com>, mst@redhat.com,
- imammedo@redhat.com, anisinha@redhat.com, philmd@mailo.com,
- aurelien@aurel32.net, peter.maydell@linaro.org,
- richard.henderson@linaro.org, berrange@redhat.com,
- marcandre.lureau@redhat.com, qemu-devel@nongnu.org, qemu-arm@nongnu.org
-References: <20260825134320.1039012-1-mark.caveayland@nutanix.com>
- <20260825134320.1039012-17-mark.caveayland@nutanix.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@oss.qualcomm.com>
-In-Reply-To: <20260825134320.1039012-17-mark.caveayland@nutanix.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
+In-Reply-To: <ao7gGVuiDcVZSN6v@redhat.com>
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Proofpoint-GUID: 6_zYtrStCWRdyXlxCZWRe_3o9PTEu_C9
-X-Authority-Analysis: v=2.4 cv=OtZ/DS/t c=1 sm=1 tr=0 ts=6a8f2c54 cx=c_pps
- a=WeENfcodrlLV9YRTxbY/uA==:117 a=o1isufRNksZXpKP+aqnsag==:17
- a=IkcTkHD0fZMA:10 a=Sv0fKeRqtYgA:10 a=M51BFTxLslgA:10 a=s4-Qcg_JpJYA:10
+X-Proofpoint-GUID: MOzCZVEgnmgAR8xyQc_6uwtTzmn4ed8J
+X-Authority-Analysis: v=2.4 cv=OtZ/DS/t c=1 sm=1 tr=0 ts=6a8f2cb6 cx=c_pps
+ a=IZJwPbhc+fLeJZngyXXI0A==:117 a=iLqgmErQAxjCjdq5jj1Aqg==:17
+ a=IkcTkHD0fZMA:10 a=Sv0fKeRqtYgA:10 a=s4-Qcg_JpJYA:10
  a=VkNPw1HP01LnGYTKEx00:22 a=u7WPNUs3qKkmUXheDGA7:22 a=yx91gb_oNiZeI1HMLzn7:22
- a=64Cc0HZtAAAA:8 a=20KFwNOVAAAA:8 a=EUspDBNiAAAA:8 a=1tSEMpTH9XP_W59IOagA:9
- a=3ZKOabzyN94A:10 a=QEXdDO2ut3YA:10 a=kacYvNCVWA4VmyqE58fU:22
-X-Proofpoint-ORIG-GUID: 6_zYtrStCWRdyXlxCZWRe_3o9PTEu_C9
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwODI2MDE1MiBTYWx0ZWRfX0Md9T0CP63Rj
- p7ggRFzJu0YhrsYFlipdPsdAZdYfW4rJbhJJPJqlbHYp5a8NhlRpY8xAG8sA7Of6x/ztL0oXDic
- jkfgKZD8CcDBtQVb9oQNn8ZmrhjPcaMdoE++ztQKlq/gdSsYfoOTc5Z9YepOPlj/uPBJqyIAXZQ
- tGhSA8P+MJU6fvfnjrvwW7B/X9a1oLlOwes7we7KjmFpU1ymoyG75l6EzfP/ugcVLLJm1Ip2ESz
- 1JLP1e1vjW/osimZm/HcNi35ozg/SGNjCMXMiSfBbdzG71klygSZVrLXYQZaIjs28AZ7p5T2RiB
- JvmL/7Ek+F9esFmXKvPMwmRVE+Eu8DzMJdosDzdRYR+6NHI7yBhyL2NTF3RJbQ/mbOD8NA4kw7U
- oU1clLHsaZfwNWS59flmI+4U362wvLpYFZzSOkT0bhDK4D9JMV0lZVDAohvtsEM73aDtOm+2W+S
- wq82X2cdrBk7ckG+d1w==
-X-Proofpoint-Spam-Info: AW1haW4tMjYwODI2MDE1MiBTYWx0ZWRfX30wqKDDO3PX6
- PynHh90XC+Ws2EQ4IWkMJ3iEC/WwNL20YTcG3LgTaj8z7ohpdaZ9JvfERHjQiJASXyFH0Vbz7fN
- y56dbphM08cdnrn1cZZFuk+0ULQ314I=
+ a=T6xLaqk5IrJfH2V9iLQA:9 a=3ZKOabzyN94A:10 a=QEXdDO2ut3YA:10
+ a=uG9DUKGECoFWVXl0Dc02:22
+X-Proofpoint-ORIG-GUID: MOzCZVEgnmgAR8xyQc_6uwtTzmn4ed8J
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwODI2MDE1MiBTYWx0ZWRfX6QCTlX3jskCH
+ 7JDHUptwnMfyuvUjSEhqrDEnc1Ml42Wfq4uDwqZQWCdYGsfnU/GERx3p0Ghy4nEpj6dzHPZvJ8x
+ OfsbNqsaaTvjoMgyeqne75qRD/sxbzdBqt/ZPlJ6agNi3xRvaNaz0hsqXZZJLEoLlCHpioCJNWK
+ CV0/mCf7Vn7HAuPFk36MUslRPfCm7mjN3IndyODkqnJJZ6jhjBtdAB2CSO+L5E1dOKRs8nX3Qui
+ uz2QMjK3s8cYk41rzDqxoHqFZD+RXP2uiLuRhPsZEHvKAp/sWdblePoVi7idK40e1GWRxpeCkTR
+ WBXvR9ixZnwxqX/ww6zUG3AjFZapLPDPBq2mYK8HRP5b2Pcs+0rOsmKje+ibWbKLnsdzpNrNpQN
+ bcGNxtW9vPKQeE59pEJrB2XG1IBxrv03w4IUbQVNZ4Ek810/Jt+UCeqbGaj8NPHQK/raXVQuLEN
+ utbABXhPRLsqiZ0/yow==
+X-Proofpoint-Spam-Info: AW1haW4tMjYwODI2MDE1MiBTYWx0ZWRfXzUSG4ROpNwOq
+ w7elHvMnVvuTu/zynweaRNcdNfPvDD2YDjSD2R05OQ2WErsmtaQabsIw3w/C1LQMXUNWaKhItQx
+ uUBcdrKOQm5LFhJ0NhEtfLbJyMw/yhE=
 X-Proofpoint-Virus-Version: vendor=baseguard
  engine=ICAP:2.0.293,Aquarius:18.0.1176,Hydra:6.1.134,FMLib:17.12.100.49
  definitions=2026-08-26_05,2026-08-26_02,2025-10-01_01
@@ -136,7 +162,8 @@ X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
  route=outbound adjust=0 reason=mlx scancount=1 engine=8.22.0-2606150000
  definitions=main-2608260152
 Received-SPF: pass client-ip=205.220.180.131;
- envelope-from=philmd@oss.qualcomm.com; helo=mx0b-0031df01.pphosted.com
+ envelope-from=pierrick.bouvier@oss.qualcomm.com;
+ helo=mx0b-0031df01.pphosted.com
 X-Spam_score_int: -27
 X-Spam_score: -2.8
 X-Spam_bar: --
@@ -159,16 +186,97 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On 25/8/26 15:41, Mark Cave-Ayland wrote:
-> ACPI_PM_PROP_PM_IO_BASE can be converted to use object_class_property_add_uint32_ptr().
-> Remove the now unused piix4_pm_add_properties() function.
+On 8/26/2026 5:46 AM, Daniel P. Berrangé wrote:
+> On Sun, Aug 23, 2026 at 11:07:28PM +0800, Yonggang Luo wrote:
+>> - Parse -target before TargetInfo is fixed; CLI overrides the program
+>>   basename.
+>> - Tokens are target_name or target_name-be / -le; -target help lists
+>>   registered names in sorted order.
+>> - When -target is omitted, infer the token from g_get_prgname(): strip
+>>   .exe, take the longest dash-separated registered suffix, and retry
+>>   without a trailing w for Windows GUI binaries.
+>> - A basename that matches no registered token falls through to the
+>>   unique default. Combined binaries with no suffix require -target
+>>   when more than one default TargetInfo is registered.
 > 
-> Signed-off-by: Mark Cave-Ayland <mark.caveayland@nutanix.com>
-> Reviewed-by: Marc-André Lureau <marcandre.lureau@redhat.com>
-> Reviewed-by: Daniel P. Berrangé <berrange@redhat.com>
-> ---
->   hw/acpi/piix4.c | 12 ++++--------
->   1 file changed, 4 insertions(+), 8 deletions(-)
+> IMHO this -target argument and the target interference from
+> program name is a mistaken direction.  We're being led off
+> course by the attempt to make the new qemu-system be identical
+> to qemu-system-$TARGET.
+>
 
-Reviewed-by: Philippe Mathieu-Daudé <philmd@oss.qualcomm.com>
+Heterogeneous emulation has been discussed for a very long time in the
+community. The main breakthrough that we (precisely Philippe and I) made
+in 2025 was to offer a simple path towards it. The approach is as simple
+as "let's put the code together and make sure it links", and it worked
+incredibly well, bringing our attention to all the details we needed to
+take care of one after another. No more, no less.
+
+By implementing *strict* identical behavior with existing binaries, we
+indeed didn't add any new feature, but:
+- we reduced total number of compilation units by 30%
+- we cleaned up a lot of headers and did a lot of refactoring
+- we have a systematic approach to add new targets in single-binary
+while being able to reuse all existing tests without any change.
+
+From my point of view, what you see as a detour was precisely what made
+us progress so far in a year.
+
+> If we ignore historical compat and treat qemu-system as a
+> clean break, then I'd suggest that 'target' is not a concept
+> to be exposed to the user at all.
+>
+
+If your only problem is with having a new -target option, I would be
+happy to just keep the behavior to derive the target from current binary
+name. That's a very small compromise on my side, and -target is just
+here for convenience. It's not the end of the path.
+
+> The user cares about the machine (and CPUs) they want to run,
+> and their choice in this respect is what should determine the
+> target(s) QEMU needs to enable. We should take
+> 
+>   qemu-system --machine vexpress-a15
+> 
+> that tells us we need the arm target. If we need to distinguish
+> arm7 vs aarch64, then the choice of -cpu should determine 32
+> bs 64 bit.
+> 
+> This extends better into the future world where we have
+> machine type that could involve CPUs from multiple targets.
+> 
+> IOW machine config option / QOM class is what we should pivot
+> off rather than a global target config option.
+> 
+> This likely implies that the MachineClass should gain a class
+> method to query the QEMU_ARCH_XXXX bitmask required. Initially
+> restricted to only a single target, so you can wire that through
+> to the current global target info at startup. Later expanded to
+> support multiple concurrent targets.
+>
+
+While it sounds nice on paper, you will be doomed to ambiguity with this:
+
+qemu-system -machine virt -cpu max
+
+What is your next plan? add an environment variable to solve it?
+Name aliases that require us to use gdb or -d qom_debug to know what is
+really instantiated?
+
+Deriving target from argv(0) or -target is explicit, predictable, boring
+and reliable, and it's exactly what we need now.
+
+There are other paths for heterogeneous, and I would ask you some
+patience, so we can talk about it at/after KVM Forum 2026, where I'll
+present a talk about Heterogeneous emulation and some of our exploratory
+ideas on how to run this.
+
+Meanwhile, let's all focus on having a boring/predictable single-binary
+please, and then we can all have fun reinventing the wheel.
+
+> With regards,
+> Daniel
+
+Regards,
+Pierrick
 

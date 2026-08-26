@@ -4,69 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BEE2BC61DBD
-	for <qemu-arm@archiver.kernel.org>; Wed, 26 Aug 2026 18:44:55 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2444DC61DBD
+	for <qemu-arm@archiver.kernel.org>; Wed, 26 Aug 2026 18:45:21 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wzIbg-0002pQ-Be; Wed, 26 Aug 2026 14:44:16 -0400
+	id 1wzIc6-0004HP-09; Wed, 26 Aug 2026 14:44:42 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <luoyonggang@gmail.com>)
- id 1wzIbe-0002jD-P2
- for qemu-arm@nongnu.org; Wed, 26 Aug 2026 14:44:14 -0400
-Received: from mail-pl1-x635.google.com ([2607:f8b0:4864:20::635])
+ id 1wzIc4-0004FM-W6
+ for qemu-arm@nongnu.org; Wed, 26 Aug 2026 14:44:41 -0400
+Received: from mail-pg1-x536.google.com ([2607:f8b0:4864:20::536])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <luoyonggang@gmail.com>)
- id 1wzIbc-0002dE-GU
- for qemu-arm@nongnu.org; Wed, 26 Aug 2026 14:44:14 -0400
-Received: by mail-pl1-x635.google.com with SMTP id
- d9443c01a7336-2d7200b2e15so3741085ad.3
- for <qemu-arm@nongnu.org>; Wed, 26 Aug 2026 11:44:12 -0700 (PDT)
+ id 1wzIc2-0002mp-TK
+ for qemu-arm@nongnu.org; Wed, 26 Aug 2026 14:44:40 -0400
+Received: by mail-pg1-x536.google.com with SMTP id
+ 41be03b00d2f7-c9aea40d799so819310a12.0
+ for <qemu-arm@nongnu.org>; Wed, 26 Aug 2026 11:44:38 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20251104; t=1787769851; x=1788374651; darn=nongnu.org;
+ d=gmail.com; s=20251104; t=1787769877; x=1788374677; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to:content-type;
- bh=eug6luKp4bq+h2AS/jTlsfDJn7/9afiJb85NExHjGfA=;
- b=QIbqgkRxr/pzimwRLzJ0Btotm5k4RcsHs6Q/4GW/rsLZfL4JrPkW1y09tvR8n7LIQs
- VVqRGGscB6ityjg890dfGQcD5H5cNIZFC829w6UGTbkUdGAt2QAPgphR5AaRe/WYE4vn
- vOyv8KPjoTO1kRNA11XUW34NVFrcd7ZCJmrdOx6gkbQUHrFk/Ug3TXg2NdX5TlWrQ/r+
- mbokCMfVrww5Jpk+t44zmuieRLCwhelVhnGh9MDRJ+CoUfPIeekP5f/NqacvaMGTiGD/
- o6Xk7jb1Iwv1ga09uX35pQgedlFQh/or0i4NO/gnaw365aIIMz3dFouaPMhHzVz+Tfob
- mCgA==
+ bh=SlgR5G4e0qMheZ9Whg473zPM26cmao6BYvDobt8PbCE=;
+ b=f789p3dcP5eGN38Auwc/ut6b2IhYQ3N+Jog8exoFFsL3AfolTXtUZeiEZD/a82jcKi
+ ZJCVLFImhrBMYVMyQEBXIel1FksT2Dcg5JS5mjxxCTGqHnkZec54Mcfg4zvJ5nv4fY2L
+ tLPy36t8vQAb+RIpqYyak8lkxqF/oyHMLa08zfxHs87N1/WjgZXQU+zE13Zz6S9aoxuV
+ HJJYmIElgjDuOZRPKSfDH7rPScNyhdDfbhZ0/p+Xr0WRU6qmaVP12UEMVnlO0n0bBW1R
+ DPKGDenDwMbA/FTRh6t7LYDL9dyTN/mJwG6qLMvYCiLg0RlpcmD9geVbGRW8sNtZ1b0K
+ THbg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1787769851; x=1788374651;
+ d=1e100.net; s=20251104; t=1787769877; x=1788374677;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
  :to:cc:subject:date:message-id:reply-to:content-type;
- bh=eug6luKp4bq+h2AS/jTlsfDJn7/9afiJb85NExHjGfA=;
- b=BYmRs2qHX4cCg5rxyykGZqgU1xFGR+wwUMk/j9cXvoAqcGSMJPHQS0Gs97DbeTXE2z
- bq7ZvZZinxx1FmnWcPUI5bljFHMUCAsnY1KG7MyJlsby5gfFB39S2i8HYU1Ups9DgzHb
- MmAmq07TnIbEkLNHR+ekTx4rw1U1i53cMk+vtdfxP85JsXHtbvGnxPdm1/xbUNom7gay
- 7cpSAcrnkxjUC1brE6h7kp36w+kM5UdioYKqLNPiWHa0Et/VKqlWPx0TIFguLnCV6Ian
- PJdY3Pid6SiT3YtulQeY9e6W82CHZqII8URmgv9NqCV0Cj42AXpbKonGRbnVTiGs76NB
- a3cg==
+ bh=SlgR5G4e0qMheZ9Whg473zPM26cmao6BYvDobt8PbCE=;
+ b=RH7pXWkfrr61E6uZ71tk0y7XfS2wQSc/h6A6qtU0tL8M0x/LiLR5v/Sf6OGqElxU8B
+ 9rPqTEMVszbCu2ue0gzKv6lD8Cl1Ycf/B+ytXnIH/6m/hmnTx3jQWsBmePjbztQZCcAh
+ 6DfVV+RU5KLab1v884bjrJaBErZBJLeQv0Udapn57A7aeV0e+nZgjW0Mo4hnQ4E9amJd
+ 4Hqu7m9GVVRkUGM3ejMMVa4jjP8mB64+XZo+liDsOUKwprOpd5PYzJDrwWNW+o/KK0CM
+ Dgec7I/mvzU5M1jpoHY1LFH+k8rjcrOHeDM0TPgCXC5WuSVGoI6L9IecrF1HAJk/FQr3
+ g5jw==
 X-Forwarded-Encrypted: i=1;
- AHgh+RpqKUh5sPzWMj4IKOW1EFBbLxLcHUxG9Jgh+g0H56tPvKXxK/c5CBFuzL4h68FwhBtNdfnapMnmrw==@nongnu.org
-X-Gm-Message-State: AFuF++nL7pOJJp8lVaIOz1E1Sw4ls/q3a7w7a9iE2JGHOw1qzcZ3sesZ
- 7BC98oke80XfEc/guX6KniAnt0mB9mHBQKZ4L0Qb2wtbMp4b8J3ZBWSU
-X-Gm-Gg: AR+sD10cWmMgMiMkGOPzWEg33frMWasL87+3/i/HyBbp3WRyMVg06LZ7NJzOuFpw8QT
- R9PMtgye60e4DWUx5CHqYa7ACW9kDUHwd9RiQ+GGekCHfPcK/4/JmgPHndVaqJGTX9IMoHAT6ex
- uBGNsL0VhOum4YAImrEI2j0xnUSUgu+WqhfzRoTP+97LMwXalIBtM81qBa0qdOiyseoiiVo5jym
- OYbph7BmO4dH68KMZn1JlRSaBu7c7fUCqgrN1DiQCfatNI9C4isogc0KxV6PpHQiWgbYcuLgrgX
- 5fKUtO3JD8xwh0ohUiERzweXHMjgVU7FgWrSQzDAfwCiItd09lZkECMzwGgyR/BgEdEw7+U0tG2
- cXTutLZp57AuG1DtLxIsayEKpUEuAwzbIKYHr75a2Wr4Umwr4CfCMGhPVPyRBGb+jl13xG0AcG/
- VRFVVudwStn8qGbisctuPyJCzp0oRerbZa3sDh3kGxuTvG74aTcRAbsDkSDdSj05FPoiZZ0SStq
- qiy2dGu0q29JSTM3wRXXdWFw1jp9nF1
-X-Received: by 2002:a17:903:2392:b0:2d0:cc92:f7a3 with SMTP id
- d9443c01a7336-2d707a53a0fmr178131955ad.2.1787769851181; 
- Wed, 26 Aug 2026 11:44:11 -0700 (PDT)
+ AHgh+RqrHegtLNmz4UTksBRwK0qqw0fI9ve9bhLEpxxNfVRTIdDscEXf7gUy0QzB1ub/Usor+o+z3X2QDw==@nongnu.org
+X-Gm-Message-State: AFuF++lt3WqMBxaLYWGLKQ1cbF5yrVFhC3RfDlEgWwFY1/xkQv1y+XsS
+ lfYkv1FMXLDCxYtO5ME6ybdrK+4iYDyawAfqO4funkK2+A0Ur5ogH3YF
+X-Gm-Gg: AR+sD13oKA8N7IzgnyFt3XA0D+18ft7sRiGOuV0lOYPNv65scfSbb1v9vECYcVs6HU6
+ h2R9iOzkpiYTo6jKd5e+IJY1yCctX8KdNYqncUMwejg3rw6r4t2lFT4yTwZpMmIbPcOowlZtyNc
+ 736Qzy235SV0M46zibh3yUrw1VRc4yDG3WGdSMq0tqA+AuonhMcj+0+Xiho0b6lfB+omPzkat/u
+ f5R6fYXVp45rN4ye296nHQ+1OiOaNhTabQb5f11WgfmRelufSLaPiR8cMggE8uAKmAVjGPJuVcL
+ Ql4hTPHwUIuszeXgKhQVuXPbFy7YeZ02awYp7Eee4BpVyV+jmXZhlhMlS8fdTXaOHJK0A3OHrwB
+ EIn5Yhp2AmsctcEJrhv39HUWu1YnrZ94HiCe/dBch0k8zE2z0HKyk3BH0y5wCJSnPV1DnVawzF8
+ 117HHJU7NluQdtDCqgOnbNJTNV9M6LTeahlPRJIGsIdxMBwR8dlLKRMGhPPmWCCkFIwme62+w4e
+ iLd/0cG8lS30kKuXZSBMg==
+X-Received: by 2002:a05:6a21:390:b0:3cc:b26a:7686 with SMTP id
+ adf61e73a8af0-3cf7628564bmr19886931637.6.1787769877472; 
+ Wed, 26 Aug 2026 11:44:37 -0700 (PDT)
 Received: from WIN-BH9M8FJACR9 ([103.94.185.75])
  by smtp.googlemail.com with ESMTPSA id
- 5a478bee46e88-3283d60c291sm17681846eec.6.2026.08.26.11.44.03
+ 5a478bee46e88-3283d60c291sm17681846eec.6.2026.08.26.11.44.29
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 26 Aug 2026 11:44:10 -0700 (PDT)
+ Wed, 26 Aug 2026 11:44:36 -0700 (PDT)
 From: Yonggang Luo <luoyonggang@gmail.com>
 To: qemu-devel@nongnu.org
 Cc: Peter Maydell <peter.maydell@linaro.org>, Fabiano Rosas <farosas@suse.de>,
@@ -99,24 +99,23 @@ Cc: Peter Maydell <peter.maydell@linaro.org>, Fabiano Rosas <farosas@suse.de>,
  =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
  Liu Zhiwei <zhiwei_liu@linux.alibaba.com>,
  Igor Mammedov <imammedo@redhat.com>
-Subject: [PATCH v2 10/13] target/riscv: uniquify TCG crc32, crc32c,
- and wfi helper names
-Date: Thu, 27 Aug 2026 02:42:24 +0800
-Message-ID: <20260826184229.1145-11-luoyonggang@gmail.com>
+Subject: [PATCH v2 13/13] meson: build single binary
+Date: Thu, 27 Aug 2026 02:42:27 +0800
+Message-ID: <20260826184229.1145-14-luoyonggang@gmail.com>
 X-Mailer: git-send-email 2.52.0.windows.1
 In-Reply-To: <20260826184229.1145-1-luoyonggang@gmail.com>
 References: <20260826184229.1145-1-luoyonggang@gmail.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::635;
- envelope-from=luoyonggang@gmail.com; helo=mail-pl1-x635.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::536;
+ envelope-from=luoyonggang@gmail.com; helo=mail-pg1-x536.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -132,111 +131,178 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-- ARM already exports helper_crc32, helper_crc32c, helper_wfi, and the
-  matching helper_info_* objects. RISC-V used the same DEF_HELPER names,
-  which collide in a combined qemu-system link.
-- Rename the RISC-V helpers to riscv_crc32, riscv_crc32c, and riscv_wfi
-  so the generated C symbols are unique without meson -D prefixes.
+- Add -Dsingle_binary / --enable-single-binary (default true) and
+  --disable-single-binary to gate the combined qemu-system binary.
+- Map each base arch to a primary softmmu target (arm ->
+  aarch64-softmmu, riscv -> riscv64-softmmu) that supplies arch_srcs.
+  Sibling targets contribute target-info-def.c only.
+- Apply common_ss and system_ss once against the union of those
+  base-arch configs so constructors and Kconfig stubs are not
+  duplicated.
+- Build qemu-system only, including on Windows. Do not add
+  qemu-systemw: a GUI twin would keep QEMU exporting data from the
+  .exe into DLLs, and those data exports cannot be delay-loaded
+  (qdev_prop_array and other qdev_prop_*). That would block enabling
+  modules globally on Windows.
 
+Signed-off-by: Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>
 Signed-off-by: Yonggang Luo <luoyonggang@gmail.com>
 ---
- target/riscv/helper.h                              | 6 +++---
- target/riscv/tcg/bitmanip_helper.c                 | 4 ++--
- target/riscv/tcg/insn_trans/trans_privileged.c.inc | 2 +-
- target/riscv/tcg/insn_trans/trans_xlrbr.c.inc      | 4 ++--
- target/riscv/tcg/op_helper.c                       | 2 +-
- 5 files changed, 9 insertions(+), 9 deletions(-)
+ meson.build                   | 69 +++++++++++++++++++++++++++++++++--
+ meson_options.txt             |  2 +
+ scripts/meson-buildoptions.sh |  3 ++
+ 3 files changed, 71 insertions(+), 3 deletions(-)
 
-diff --git a/target/riscv/helper.h b/target/riscv/helper.h
-index 542b7c264fc..dd4623d2a79 100644
---- a/target/riscv/helper.h
-+++ b/target/riscv/helper.h
-@@ -84,8 +84,8 @@ DEF_HELPER_FLAGS_1(unzip, TCG_CALL_NO_RWG_SE, tl, tl)
- DEF_HELPER_FLAGS_1(zip, TCG_CALL_NO_RWG_SE, tl, tl)
- DEF_HELPER_FLAGS_2(xperm4, TCG_CALL_NO_RWG_SE, tl, tl, tl)
- DEF_HELPER_FLAGS_2(xperm8, TCG_CALL_NO_RWG_SE, tl, tl, tl)
--DEF_HELPER_FLAGS_2(crc32, TCG_CALL_NO_RWG_SE, tl, tl, tl)
--DEF_HELPER_FLAGS_2(crc32c, TCG_CALL_NO_RWG_SE, tl, tl, tl)
-+DEF_HELPER_FLAGS_2(riscv_crc32, TCG_CALL_NO_RWG_SE, tl, tl, tl)
-+DEF_HELPER_FLAGS_2(riscv_crc32c, TCG_CALL_NO_RWG_SE, tl, tl, tl)
+diff --git a/meson.build b/meson.build
+index 449d50f2983..eea54fd0ba3 100644
+--- a/meson.build
++++ b/meson.build
+@@ -4249,6 +4249,18 @@ if host_os == 'darwin'
+ endif
  
- /* Floating Point - Half Precision */
- DEF_HELPER_FLAGS_3(fadd_h, TCG_CALL_NO_RWG, i64, env, i64, i64)
-@@ -135,7 +135,7 @@ DEF_HELPER_1(sret, tl, env)
- DEF_HELPER_1(mret, tl, env)
- DEF_HELPER_1(mnret, tl, env)
- DEF_HELPER_1(ctr_clear, void, env)
--DEF_HELPER_1(wfi, void, env)
-+DEF_HELPER_1(riscv_wfi, void, env)
- DEF_HELPER_1(wrs_nto, void, env)
- DEF_HELPER_1(tlb_flush, void, env)
- DEF_HELPER_1(tlb_flush_all, void, env)
-diff --git a/target/riscv/tcg/bitmanip_helper.c b/target/riscv/tcg/bitmanip_helper.c
-index 1156a87dd31..18ad2fae1c9 100644
---- a/target/riscv/tcg/bitmanip_helper.c
-+++ b/target/riscv/tcg/bitmanip_helper.c
-@@ -132,7 +132,7 @@ target_ulong HELPER(xperm8)(target_ulong rs1, target_ulong rs2)
-     return do_xperm(rs1, rs2, 3);
- }
+ traceable = []
++single_binary_arch_objects = []
++single_binary_bases_config = {}
++single_binary_deps = []
++single_binary_crates = []
++# base arch -> softmmu target that supplies arch_srcs
++single_binary_primary = {
++  'arm': 'aarch64-softmmu',
++  'riscv': 'riscv64-softmmu',
++}
++if not get_option('single_binary')
++  single_binary_primary = {}
++endif
+ emulators = {}
+ foreach target : target_dirs
+   config_target = config_target_mak[target]
+@@ -4321,8 +4333,6 @@ foreach target : target_dirs
+     endif
+   endif
  
--target_ulong HELPER(crc32)(target_ulong rs1, target_ulong sz)
-+target_ulong HELPER(riscv_crc32)(target_ulong rs1, target_ulong sz)
- {
-     for (target_ulong i = 0; i < sz; i++) {
-         rs1 = crc32_table[rs1 & 0xFF] ^ (rs1 >> 8);
-@@ -141,7 +141,7 @@ target_ulong HELPER(crc32)(target_ulong rs1, target_ulong sz)
-     return rs1;
- }
+-  arch_srcs += files('target-info-def.c')
+-
+   if target_base_arch in target_arch
+     t = target_arch[target_base_arch].apply(config_target, strict: false)
+     arch_srcs += t.sources()
+@@ -4391,8 +4401,9 @@ foreach target : target_dirs
+     lib_deps += dep.partial_dependency(compile_args: true, includes: true)
+   endforeach
  
--target_ulong HELPER(crc32c)(target_ulong rs1, target_ulong sz)
-+target_ulong HELPER(riscv_crc32c)(target_ulong rs1, target_ulong sz)
- {
-     for (target_ulong i = 0; i < sz; i++) {
-         rs1 = crc32c_table[rs1 & 0xFF] ^ (rs1 >> 8);
-diff --git a/target/riscv/tcg/insn_trans/trans_privileged.c.inc b/target/riscv/tcg/insn_trans/trans_privileged.c.inc
-index a8eaccef67e..0df78e89745 100644
---- a/target/riscv/tcg/insn_trans/trans_privileged.c.inc
-+++ b/target/riscv/tcg/insn_trans/trans_privileged.c.inc
-@@ -144,7 +144,7 @@ static bool trans_wfi(DisasContext *ctx, arg_wfi *a)
- #ifndef CONFIG_USER_ONLY
-     decode_save_opc(ctx, 0);
-     gen_update_pc(ctx, ctx->cur_insn_len);
--    gen_helper_wfi(tcg_env);
-+    gen_helper_riscv_wfi(tcg_env);
-     return true;
- #else
-     return false;
-diff --git a/target/riscv/tcg/insn_trans/trans_xlrbr.c.inc b/target/riscv/tcg/insn_trans/trans_xlrbr.c.inc
-index 01da2b6ce1d..795231f0839 100644
---- a/target/riscv/tcg/insn_trans/trans_xlrbr.c.inc
-+++ b/target/riscv/tcg/insn_trans/trans_xlrbr.c.inc
-@@ -29,11 +29,11 @@ static bool gen_crc(DisasContext *ctx, arg_r2 *a,
- #define TRANS_CRC32(NAME, SIZE) \
-     static bool trans_crc32_##NAME(DisasContext *ctx, arg_r2 *a) \
-     { if (SIZE == 8) { REQUIRE_64BIT(ctx); }; \
--      return gen_crc(ctx, a, gen_helper_crc32, tcg_constant_tl(SIZE)); }
-+      return gen_crc(ctx, a, gen_helper_riscv_crc32, tcg_constant_tl(SIZE)); }
- #define TRANS_CRC32C(NAME, SIZE) \
-     static bool trans_crc32c_##NAME(DisasContext *ctx, arg_r2 *a) \
-     { if (SIZE == 8) { REQUIRE_64BIT(ctx); }; \
--      return gen_crc(ctx, a, gen_helper_crc32c, tcg_constant_tl(SIZE)); }
-+      return gen_crc(ctx, a, gen_helper_riscv_crc32c, tcg_constant_tl(SIZE)); }
++  target_info_src = files('target-info-def.c')
+   lib = static_library('qemu-' + target,
+-                 sources: arch_srcs + genh,
++                 sources: target_info_src + arch_srcs + genh,
+                  dependencies: lib_deps,
+                  objects: objects,
+                  include_directories: target_inc,
+@@ -4400,6 +4411,16 @@ foreach target : target_dirs
+                  build_by_default: false)
  
- TRANS_CRC32(b, 1);
- TRANS_CRC32(h, 2);
-diff --git a/target/riscv/tcg/op_helper.c b/target/riscv/tcg/op_helper.c
-index ba3c7da375a..52bcedc7c6e 100644
---- a/target/riscv/tcg/op_helper.c
-+++ b/target/riscv/tcg/op_helper.c
-@@ -541,7 +541,7 @@ void helper_ctr_clear(CPURISCVState *env)
-     riscv_ctr_clear(env);
- }
+   if target.endswith('-softmmu')
++    if target_base_arch in single_binary_primary
++      single_binary_bases_config += config_target
++      single_binary_arch_objects += lib.extract_objects(target_info_src)
++      if target == single_binary_primary[target_base_arch]
++        single_binary_arch_objects += lib.extract_objects(arch_srcs)
++        single_binary_deps += arch_deps
++        single_binary_deps += target_stubs
++        single_binary_crates += main_rs
++      endif
++    endif
+     execs = [{
+       'name': 'qemu-system-' + target_name,
+       'win_subsystem': 'console',
+@@ -4481,6 +4502,47 @@ foreach target : target_dirs
+   endforeach
+ endforeach
  
--void helper_wfi(CPURISCVState *env)
-+void HELPER(riscv_wfi)(CPURISCVState *env)
- {
-     CPUState *cs = env_cpu(env);
-     bool rvs = riscv_has_ext(env, RVS);
++if single_binary_arch_objects.length() != 0
++  single_binary_objects = []
++  foreach spec: [[common_ss, common_all], [system_ss, libsystem]]
++    src = spec[0].apply(single_binary_bases_config, strict: false)
++    single_binary_objects += spec[1].extract_objects(src.sources())
++    single_binary_deps += src.dependencies()
++  endforeach
++  foreach base, tgt: single_binary_primary
++    if base in target_common_arch_libs
++      src = target_common_arch[base].apply(single_binary_bases_config,
++                                           strict: false)
++      single_binary_objects += target_common_arch_libs[base].extract_objects(
++        src.sources())
++      single_binary_deps += src.dependencies()
++    endif
++    if base in target_common_system_arch_libs
++      src = target_common_system_arch[base].apply(single_binary_bases_config,
++                                                  strict: false)
++      single_binary_objects += target_common_system_arch_libs[base].extract_objects(
++        src.sources())
++      single_binary_deps += src.dependencies()
++    endif
++  endforeach
++  single_binary_objects += single_binary_arch_objects
++
++  single_binary_link_args = emulator_link_args
++  single_binary_link_args += enable_modules ? ['@block.syms', '@qemu.syms'] : []
++  emulator = executable('qemu-system',
++             sources: [single_binary_crates, files('system/main.c')],
++             dependencies: single_binary_deps + [sdl],
++             objects: single_binary_objects,
++             link_depends: [block_syms, qemu_syms],
++             link_args: single_binary_link_args,
++             install: true)
++  emulators += {'qemu-system': emulator}
++  traceable += [{
++    'exe': 'qemu-system',
++    'probe-prefix': 'qemu.system.multi',
++  }]
++endif
++
+ # Other build targets
+ 
+ if get_option('plugins')
+@@ -4833,6 +4895,7 @@ if config_all_accel.has_key('CONFIG_TCG')
+   endif
+ endif
+ summary_info += {'target list':       ' '.join(target_dirs)}
++summary_info += {'single binary':     get_option('single_binary')}
+ if have_system
+   summary_info += {'default devices':   get_option('default_devices')}
+   summary_info += {'out of process emulation': multiprocess_allowed}
+diff --git a/meson_options.txt b/meson_options.txt
+index a07cb47d35e..9d86a46fba7 100644
+--- a/meson_options.txt
++++ b/meson_options.txt
+@@ -91,6 +91,8 @@ option('tcg', type: 'feature', value: 'enabled',
+        description: 'TCG support')
+ option('plugins', type: 'boolean', value: false,
+        description: 'TCG plugins via shared library loading')
++option('single_binary', type: 'boolean', value: true,
++       description: 'combined qemu-system binary')
+ option('debug_tcg', type: 'boolean', value: false,
+        description: 'TCG debugging')
+ option('debug_remap', type: 'boolean', value: false,
+diff --git a/scripts/meson-buildoptions.sh b/scripts/meson-buildoptions.sh
+index c003985047c..d8e49111ac7 100644
+--- a/scripts/meson-buildoptions.sh
++++ b/scripts/meson-buildoptions.sh
+@@ -19,6 +19,7 @@ meson_options_help() {
+   printf "%s\n" '  --disable-install-blobs  install provided firmware blobs'
+   printf "%s\n" '  --disable-qom-cast-debug cast debugging support'
+   printf "%s\n" '  --disable-relocatable    toggle relocatable install'
++  printf "%s\n" '  --disable-single-binary  combined qemu-system binary'
+   printf "%s\n" '  --docdir=VALUE           Base directory for documentation installation'
+   printf "%s\n" '                           (can be empty) [share/doc]'
+   printf "%s\n" '  --enable-asan            enable address sanitizer'
+@@ -486,6 +487,8 @@ _meson_option_parse() {
+     --disable-seccomp) printf "%s" -Dseccomp=disabled ;;
+     --enable-selinux) printf "%s" -Dselinux=enabled ;;
+     --disable-selinux) printf "%s" -Dselinux=disabled ;;
++    --enable-single-binary) printf "%s" -Dsingle_binary=true ;;
++    --disable-single-binary) printf "%s" -Dsingle_binary=false ;;
+     --enable-slirp) printf "%s" -Dslirp=enabled ;;
+     --disable-slirp) printf "%s" -Dslirp=disabled ;;
+     --enable-slirp-smbd) printf "%s" -Dslirp_smbd=enabled ;;
 -- 
 2.52.0.windows.1
 

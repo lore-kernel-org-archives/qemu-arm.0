@@ -4,81 +4,81 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A6CA0C61DC6
-	for <qemu-arm@archiver.kernel.org>; Wed, 26 Aug 2026 17:43:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A00E3C61DC4
+	for <qemu-arm@archiver.kernel.org>; Wed, 26 Aug 2026 17:43:46 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wzHea-0000vb-9v; Wed, 26 Aug 2026 13:43:12 -0400
+	id 1wzHds-0008Uj-79; Wed, 26 Aug 2026 13:42:28 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1wzHe3-0000CT-MV
- for qemu-arm@nongnu.org; Wed, 26 Aug 2026 13:42:47 -0400
-Received: from mail-pg1-x533.google.com ([2607:f8b0:4864:20::533])
+ id 1wzHdo-0008QN-Jy
+ for qemu-arm@nongnu.org; Wed, 26 Aug 2026 13:42:25 -0400
+Received: from mail-pf1-x430.google.com ([2607:f8b0:4864:20::430])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1wzHe1-0004qz-S2
- for qemu-arm@nongnu.org; Wed, 26 Aug 2026 13:42:39 -0400
-Received: by mail-pg1-x533.google.com with SMTP id
- 41be03b00d2f7-cbe827e3cb4so1349540a12.3
- for <qemu-arm@nongnu.org>; Wed, 26 Aug 2026 10:42:37 -0700 (PDT)
+ id 1wzHdl-0004kK-Us
+ for qemu-arm@nongnu.org; Wed, 26 Aug 2026 13:42:24 -0400
+Received: by mail-pf1-x430.google.com with SMTP id
+ d2e1a72fcca58-84e507b079dso1006461b3a.0
+ for <qemu-arm@nongnu.org>; Wed, 26 Aug 2026 10:42:21 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1787766156; x=1788370956; darn=nongnu.org;
+ d=linaro.org; s=google; t=1787766140; x=1788370940; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to:content-type;
- bh=98SZj8G2qM95HopKhGAt9krvgt80d6igX2ZzSUH8XYg=;
- b=gExZhvciMHXm8T/WgjrCST3iO9+HGTWTHVz3X5rygcUh/eveaNp6YSEV5xmBWRs3vJ
- HMLXJ+RhlI/1QbCmowpsL903coz0O/IYRVu9iZvLigsspnEh+isKRDJv32jIhGP9L7H9
- vZ51EHPCEIn2gqWzMTuGh301PEuJxvrTlnK89YqOeAnB05cIaFjlvMo/u/2OblNDpm7t
- r4eQHsp2MhaykPTd2eULt4tX7u9+lqWLXszr2eqtTkEuQygidWv9f6vGX+2WiE+JOz5Y
- iHF8EpQTUasMhQltvhMCc12ALqMLPeAlOv3TZHrv2J9tOo4P2q6MVJuG5E42Z+esE5Ih
- SRQw==
+ bh=eacrHo9Y3lmkTm8JFf4RKHpF6JxecOscKoMmlksHtLM=;
+ b=I/Xdd222YHFlfWHFngUpAK6dZax1tnzLd9JKVDfsmM/vKD2ws6h+n0csQ5DbhL6wY/
+ SNZSlUJJ4QDHlyj+5Ela9Sfrh1Bv3EwL9m/aSTq4P9NRghY+PdjhnUkd32jn7/93tw26
+ aKos2QLX/+XFID7UR5z4wUdGrEmj0aKpa3c8Ex/+hVUqwCLW8NRwsudPtdspxvfPwjvd
+ lt3LkzdVEOE3A8Y09G5YBLFuX1c5p8MwNPeFckIa9pVx44rQD7Vse2M3jG/Bu2qPXAV3
+ VhTPdKckmmNvyCTgioADraNUUAXnnYy1vYj6IBlYbApKyU00hLbiI8mDTCU4er4+zez4
+ kw/g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1787766156; x=1788370956;
+ d=1e100.net; s=20251104; t=1787766140; x=1788370940;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
  :to:cc:subject:date:message-id:reply-to:content-type;
- bh=98SZj8G2qM95HopKhGAt9krvgt80d6igX2ZzSUH8XYg=;
- b=P4PCGYNLK4/MUWUIeZmMFTYFy9fsj8IdjYoTVzd7zVO6UWBlxhlFiF4MqeKhwAStt4
- 0vW88FOnjVHBCGdDh87hMtTfgwps5vevgwQneZ6Z3XYE3NTrOGyGsg9jio2eS+cwzvA1
- iVxMyYMQBDX3EvWKQIhnp/CnB4f1q2Hkf85BUmhXos6EjRDdVlxEaHVbP8o/t+NJpYEL
- yJbEazvkzU5Sfk+GA5T6ozGHALKXBLs5LRMhAtDibUG4VpFAH/+6mk3yPs5COJmXNaK/
- s6mLToWCiuF49V66L+zcwOsaqdVqLddW/hw75/8qekyoZkYrtK+QtLmONCUOrJbPmuDb
- RDlQ==
-X-Gm-Message-State: AFuF++mc6dYUB8KhLCNfDzoeWWOFt+baUi7dIJ6yDG0Amy1maLKtrmCi
- mcjTqbjVxUsvRoPzqaTwGXQtaHfJlNzNF+R4nNUcBYLEt+eYLruBf1ZMClB6o7jthhc=
-X-Gm-Gg: AR+sD13mgmiQXRVXsOjLClBZIHpT+AWJpa6A4+zQNxS597XwcPXru3I9jXEa26XTxuI
- GsuLuXc0pQQgLQJdAYOC/Qt2dbDP9rjBjGaB0dg4cuMaDSkBPDf39QteCXcVZNaYE6oi1af3sX7
- cUzQR2sC1e1yuQgv7Odi4Xsu97jgVw3XY4TE7GPBRMg6/LsVr+Af/jnwIk/qFIbjZ4+lzpZl4JR
- A0jdeOnnUAXnR7EyAYcpc+NMCgFbFnH4TkHvpezgltYiGobfYaXS9HDGdtm1BNbBtC3VpD7Z6Fn
- Yy3g5mJG2sGPJ8Sf3rNjxxz2xy++995yYij/4s4ule4stk66aPrZaWppeOjtTCtop3FqCqTRJDK
- TGT8GO2OARr8HZEPm3ghS+ulfss9NakbTse+/1TU2T/0kGHEwsg7Mp6hzNQhGSjENVIMnZYffAz
- FmR3OQqZ81RzT6UoR8A7XQCVMB1bH+E8CGFLdbyyDjYkU+z6i0jxjYq4WjLOYQXjnavhiZ7owMm
- uTYdZ/PcreUCQs3pw==
-X-Received: by 2002:a05:6300:6681:b0:3c3:7ac4:dac0 with SMTP id
- adf61e73a8af0-3cf85676aa1mr19610852637.13.1787766156091; 
- Wed, 26 Aug 2026 10:42:36 -0700 (PDT)
+ bh=eacrHo9Y3lmkTm8JFf4RKHpF6JxecOscKoMmlksHtLM=;
+ b=sP1rH+7ipTzAg4zynrowgvd9G0fAavDAEu8YFjWgC4macRStSy7xt5XQyxexzt+ka+
+ /Az8tbPG1sv4iSQsJeIKrmQ2mYUQy5jqxC7wYD7DdRK7VcShpojE2Yno4S6eOMCC43pk
+ 8gv52a5bRfpXuNfRrjFz5hRcTiXybWcBKfM9lsp/GIvOlLR3fTTmbs+ZT6y0CkHypZlK
+ n/l5PxwFBgJ2hEZKYrIZ4gsWNgu7jo9Wrt5qVkSSSPGd+Xf44lsA1Q2yGPyTc+JszdLs
+ TaRFA0qLTD4yoslxjIiZ7NhgjLoMioeZ1Zi+/NhJ1fzhqa0YSvfAZYdZyBKy6NwZSfFA
+ Kh6g==
+X-Gm-Message-State: AFuF++ljmgQCb0+JV04RLVBj4Fvsy6uo4v7X6ZAniFbaco5OXGup84Jr
+ SJVxrNqKh+GBZLs1yCPLTC80Xpz0guBqu+ee8ctIwPNoqREERBjnd1Fuosa/I8+iaNlCX4wUTVF
+ ulfPwheA=
+X-Gm-Gg: AR+sD11aKR5VxaZTsmWKI4GhS8Z8aaaiBpGJ4//n7/qcPqgtVQg/PVXuEe3V+uAcWxX
+ n44DwvhNlehAP6A8lxJv2ihz/Y7yibSGsGe6XUlqHRJE0mBqPjqqPlnzGjQzMR6yTiAv7NXJgpZ
+ erSMS0z+WiESDvNvZWige6L7ndHtIQmLrPp0cuOBm6sB4DOlGh6k8YqckAJwcyhd8brA7PWrzBG
+ Qp+ibYwnY18J5vBl/aOPGjHseo+/dkSXtVqy8i1s36Xo7kufbdseTe85qH/BBOseBKUjwghAa6/
+ khmtPwDRlHifB+TCm2WjUFO9Q0CEevrGxItDTVr9E5TbpUZ6allnAsT41zNqs+GGUyvH+ZbKH7/
+ ScFsR920mi6iRZSVQgrZzfuWb/VzjRdSPKk142ve+apuGvnZeDL4Tj8rQI5bVJNBKrl3NBXeqsW
+ YCa0hC4vglhu8dzsltGQHOhxkJNE0zBECSE/dROHTF1gNcJWEe9ap6juQV53SgDRbt7NYizzMc8
+ b37TtIlSXqSEt7hyQ==
+X-Received: by 2002:a05:6a21:7008:b0:3bf:7bf7:7913 with SMTP id
+ adf61e73a8af0-3cf8445170emr18217181637.14.1787766139993; 
+ Wed, 26 Aug 2026 10:42:19 -0700 (PDT)
 Received: from stoup (174-21-93-59.tukw.qwest.net. [174.21.93.59])
  by smtp.gmail.com with ESMTPSA id
- 41be03b00d2f7-cc1bec66020sm1260072a12.21.2026.08.26.10.42.34
+ 41be03b00d2f7-cc1bec66020sm1260072a12.21.2026.08.26.10.42.18
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 26 Aug 2026 10:42:34 -0700 (PDT)
+ Wed, 26 Aug 2026 10:42:19 -0700 (PDT)
 From: Richard Henderson <richard.henderson@linaro.org>
 To: qemu-devel@nongnu.org
-Cc: qemu-arm@nongnu.org,
-	Peter Maydell <peter.maydell@linaro.org>
-Subject: [PATCH v2 18/25] target/arm: Rename isar_feature_aa64_sve_sm4
-Date: Wed, 26 Aug 2026 10:42:05 -0700
-Message-ID: <20260826174213.614571-19-richard.henderson@linaro.org>
+Cc: qemu-arm@nongnu.org
+Subject: [PATCH v2 03/25] target/arm: Split decode of BFloat SME FMAX/FMIN
+Date: Wed, 26 Aug 2026 10:41:50 -0700
+Message-ID: <20260826174213.614571-4-richard.henderson@linaro.org>
 X-Mailer: git-send-email 2.53.0
 In-Reply-To: <20260826174213.614571-1-richard.henderson@linaro.org>
 References: <20260826174213.614571-1-richard.henderson@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::533;
- envelope-from=richard.henderson@linaro.org; helo=mail-pg1-x533.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::430;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pf1-x430.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -101,73 +101,308 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Rename from isar_feature_aa64_sve2_sm4 to match
-the feature name: FEAT_SVE_SM4.
+Split decode so that feature detection can be handled
+external to do_zzz_{n1,nn}_fpst.
 
-Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- bsd-user/aarch64/target_arch_elf.h | 2 +-
- target/arm/cpu-features.h          | 2 +-
- linux-user/aarch64/elfload.c       | 2 +-
- target/arm/tcg/translate-sve.c     | 4 ++--
- 4 files changed, 5 insertions(+), 5 deletions(-)
+ target/arm/cpu-features.h      |  5 ++
+ target/arm/tcg/translate-sme.c | 65 +++++++++++++-----------
+ target/arm/tcg/sme.decode      | 90 ++++++++++++++++++++++++++++------
+ 3 files changed, 115 insertions(+), 45 deletions(-)
 
-diff --git a/bsd-user/aarch64/target_arch_elf.h b/bsd-user/aarch64/target_arch_elf.h
-index 8669f3f8330..0ec7a7b5859 100644
---- a/bsd-user/aarch64/target_arch_elf.h
-+++ b/bsd-user/aarch64/target_arch_elf.h
-@@ -130,7 +130,7 @@ static uint32_t get_elf_hwcap2(void)
-     GET_FEATURE_ID(aa64_sve_pmull128, ARM_HWCAP2_A64_SVEPMULL);
-     GET_FEATURE_ID(aa64_sve_bitperm, ARM_HWCAP2_A64_SVEBITPERM);
-     GET_FEATURE_ID(aa64_sve_sha3, ARM_HWCAP2_A64_SVESHA3);
--    GET_FEATURE_ID(aa64_sve2_sm4, ARM_HWCAP2_A64_SVESM4);
-+    GET_FEATURE_ID(aa64_sve_sm4, ARM_HWCAP2_A64_SVESM4);
-     GET_FEATURE_ID(aa64_condm_5, ARM_HWCAP2_A64_FLAGM2);
-     GET_FEATURE_ID(aa64_frint, ARM_HWCAP2_A64_FRINT);
-     GET_FEATURE_ID(aa64_sve_i8mm, ARM_HWCAP2_A64_SVEI8MM);
 diff --git a/target/arm/cpu-features.h b/target/arm/cpu-features.h
-index f94e8efe471..44dfc7d457c 100644
+index 280ead6f9cb..e444397a478 100644
 --- a/target/arm/cpu-features.h
 +++ b/target/arm/cpu-features.h
-@@ -1554,7 +1554,7 @@ static inline bool isar_feature_aa64_sve_sha3(const ARMISARegisters *id)
-     return FIELD_EX64_IDREG(id, ID_AA64ZFR0, SHA3) != 0;
+@@ -1743,6 +1743,11 @@ static inline bool isar_feature_aa64_sme2p2_or_sve2p2(const ARMISARegisters *id)
+     return isar_feature_aa64_sme2p2(id) || isar_feature_aa64_sve2p2(id);
  }
  
--static inline bool isar_feature_aa64_sve2_sm4(const ARMISARegisters *id)
-+static inline bool isar_feature_aa64_sve_sm4(const ARMISARegisters *id)
++static inline bool isar_feature_aa64_sme2_sve_b16b16(const ARMISARegisters *id)
++{
++    return isar_feature_aa64_sme2(id) && isar_feature_aa64_sve_b16b16(id);
++}
++
+ static inline bool isar_feature_aa64_sme2_i16i64(const ARMISARegisters *id)
  {
-     return FIELD_EX64_IDREG(id, ID_AA64ZFR0, SM4) != 0;
+     return isar_feature_aa64_sme2(id) && isar_feature_aa64_sme_i16i64(id);
+diff --git a/target/arm/tcg/translate-sme.c b/target/arm/tcg/translate-sme.c
+index ca88b3cdcc7..db1950f407b 100644
+--- a/target/arm/tcg/translate-sme.c
++++ b/target/arm/tcg/translate-sme.c
+@@ -747,20 +747,15 @@ TRANS_FEAT(URSHL_nn, aa64_sme2, do_zzz_nn, a, gen_sme2_urshl)
+ TRANS_FEAT(SQDMULH_nn, aa64_sme2, do_zzz_nn, a, gen_gvec_sve2_sqdmulh)
+ 
+ static bool do_zzz_n1_fpst(DisasContext *s, arg_zzz_en *a,
+-                           gen_helper_gvec_3_ptr * const fns[4])
++                           gen_helper_gvec_3_ptr *fn)
+ {
+     int esz = a->esz, vsz, mofs;
+     int overlap = -1;
+-    gen_helper_gvec_3_ptr *fn = fns[esz];
+     TCGv_ptr fpst;
+ 
+     if (fn == NULL) {
+         return false;
+     }
+-    /* These insns use MO_8 to encode BFloat16. */
+-    if (esz == MO_8 && !dc_isar_feature(aa64_sve_b16b16, s)) {
+-        return false;
+-    }
+     if (!sme_sm_enabled_check(s)) {
+         return true;
+     }
+@@ -786,18 +781,14 @@ static bool do_zzz_n1_fpst(DisasContext *s, arg_zzz_en *a,
  }
-diff --git a/linux-user/aarch64/elfload.c b/linux-user/aarch64/elfload.c
-index 83791768c6e..7afbfca4183 100644
---- a/linux-user/aarch64/elfload.c
-+++ b/linux-user/aarch64/elfload.c
-@@ -196,7 +196,7 @@ abi_ulong get_elf_hwcap2(CPUState *cs)
-     GET_FEATURE_ID(aa64_sve_pmull128, ARM_HWCAP2_A64_SVEPMULL);
-     GET_FEATURE_ID(aa64_sve_bitperm, ARM_HWCAP2_A64_SVEBITPERM);
-     GET_FEATURE_ID(aa64_sve_sha3, ARM_HWCAP2_A64_SVESHA3);
--    GET_FEATURE_ID(aa64_sve2_sm4, ARM_HWCAP2_A64_SVESM4);
-+    GET_FEATURE_ID(aa64_sve_sm4, ARM_HWCAP2_A64_SVESM4);
-     GET_FEATURE_ID(aa64_condm_5, ARM_HWCAP2_A64_FLAGM2);
-     GET_FEATURE_ID(aa64_frint, ARM_HWCAP2_A64_FRINT);
-     GET_FEATURE_ID(aa64_sve_i8mm, ARM_HWCAP2_A64_SVEI8MM);
-diff --git a/target/arm/tcg/translate-sve.c b/target/arm/tcg/translate-sve.c
-index cf5445870cc..3d823674cca 100644
---- a/target/arm/tcg/translate-sve.c
-+++ b/target/arm/tcg/translate-sve.c
-@@ -8302,9 +8302,9 @@ TRANS_FEAT_STREAMING_IF(AESE, aa64_sve_aes, aa64_ssve_aes,
- TRANS_FEAT_STREAMING_IF(AESD, aa64_sve_aes, aa64_ssve_aes,
-                         gen_gvec_ool_arg_zzz, gen_helper_crypto_aesd, a, 0)
  
--TRANS_FEAT_NONSTREAMING(SM4E, aa64_sve2_sm4, gen_gvec_ool_arg_zzz,
-+TRANS_FEAT_NONSTREAMING(SM4E, aa64_sve_sm4, gen_gvec_ool_arg_zzz,
-                         gen_helper_crypto_sm4e, a, 0)
--TRANS_FEAT_NONSTREAMING(SM4EKEY, aa64_sve2_sm4, gen_gvec_ool_arg_zzz,
-+TRANS_FEAT_NONSTREAMING(SM4EKEY, aa64_sve_sm4, gen_gvec_ool_arg_zzz,
-                         gen_helper_crypto_sm4ekey, a, 0)
+ static bool do_zzz_nn_fpst(DisasContext *s, arg_zzz_en *a,
+-                           gen_helper_gvec_3_ptr * const fns[4])
++                           gen_helper_gvec_3_ptr *fn)
+ {
+     int esz = a->esz, vsz;
+-    gen_helper_gvec_3_ptr *fn = fns[esz];
+     TCGv_ptr fpst;
  
- TRANS_FEAT_STREAMING_IF(RAX1, aa64_sve_sha3, aa64_sme2p1,
+     if (fn == NULL) {
+         return false;
+     }
+-    if (esz == MO_8 && !dc_isar_feature(aa64_sve_b16b16, s)) {
+-        return false;
+-    }
+     if (!sme_sm_enabled_check(s)) {
+         return true;
+     }
+@@ -816,48 +807,64 @@ static bool do_zzz_nn_fpst(DisasContext *s, arg_zzz_en *a,
+ }
+ 
+ static gen_helper_gvec_3_ptr * const f_vector_fmax[2][4] = {
+-    { gen_helper_gvec_fmax_b16,
++    { NULL,
+       gen_helper_gvec_fmax_h,
+       gen_helper_gvec_fmax_s,
+       gen_helper_gvec_fmax_d },
+-    { gen_helper_gvec_ah_fmax_b16,
++    { NULL,
+       gen_helper_gvec_ah_fmax_h,
+       gen_helper_gvec_ah_fmax_s,
+       gen_helper_gvec_ah_fmax_d },
+ };
+-TRANS_FEAT(FMAX_n1, aa64_sme2, do_zzz_n1_fpst, a, f_vector_fmax[s->fpcr_ah])
+-TRANS_FEAT(FMAX_nn, aa64_sme2, do_zzz_nn_fpst, a, f_vector_fmax[s->fpcr_ah])
++TRANS_FEAT(FMAX_n1, aa64_sme2, do_zzz_n1_fpst, a, f_vector_fmax[s->fpcr_ah][a->esz])
++TRANS_FEAT(FMAX_nn, aa64_sme2, do_zzz_nn_fpst, a, f_vector_fmax[s->fpcr_ah][a->esz])
++TRANS_FEAT(BFMAX_n1, aa64_sme2_sve_b16b16, do_zzz_n1_fpst, a,
++           s->fpcr_ah ? gen_helper_gvec_ah_fmax_b16 : gen_helper_gvec_fmax_b16)
++TRANS_FEAT(BFMAX_nn, aa64_sme2_sve_b16b16, do_zzz_nn_fpst, a,
++           s->fpcr_ah ? gen_helper_gvec_ah_fmax_b16 : gen_helper_gvec_fmax_b16)
+ 
+ static gen_helper_gvec_3_ptr * const f_vector_fmin[2][4] = {
+-    { gen_helper_gvec_fmin_b16,
++    { NULL,
+       gen_helper_gvec_fmin_h,
+       gen_helper_gvec_fmin_s,
+       gen_helper_gvec_fmin_d },
+-    { gen_helper_gvec_ah_fmin_b16,
++    { NULL,
+       gen_helper_gvec_ah_fmin_h,
+       gen_helper_gvec_ah_fmin_s,
+       gen_helper_gvec_ah_fmin_d },
+ };
+-TRANS_FEAT(FMIN_n1, aa64_sme2, do_zzz_n1_fpst, a, f_vector_fmin[s->fpcr_ah])
+-TRANS_FEAT(FMIN_nn, aa64_sme2, do_zzz_nn_fpst, a, f_vector_fmin[s->fpcr_ah])
++TRANS_FEAT(FMIN_n1, aa64_sme2, do_zzz_n1_fpst, a, f_vector_fmin[s->fpcr_ah][a->esz])
++TRANS_FEAT(FMIN_nn, aa64_sme2, do_zzz_nn_fpst, a, f_vector_fmin[s->fpcr_ah][a->esz])
++TRANS_FEAT(BFMIN_n1, aa64_sme2_sve_b16b16, do_zzz_n1_fpst, a,
++           s->fpcr_ah ? gen_helper_gvec_ah_fmin_b16 : gen_helper_gvec_fmin_b16)
++TRANS_FEAT(BFMIN_nn, aa64_sme2_sve_b16b16, do_zzz_nn_fpst, a,
++           s->fpcr_ah ? gen_helper_gvec_ah_fmin_b16 : gen_helper_gvec_fmin_b16)
+ 
+ static gen_helper_gvec_3_ptr * const f_vector_fmaxnm[4] = {
+-    gen_helper_gvec_fmaxnum_b16,
++    NULL,
+     gen_helper_gvec_fmaxnum_h,
+     gen_helper_gvec_fmaxnum_s,
+     gen_helper_gvec_fmaxnum_d,
+ };
+-TRANS_FEAT(FMAXNM_n1, aa64_sme2, do_zzz_n1_fpst, a, f_vector_fmaxnm)
+-TRANS_FEAT(FMAXNM_nn, aa64_sme2, do_zzz_nn_fpst, a, f_vector_fmaxnm)
++TRANS_FEAT(FMAXNM_n1, aa64_sme2, do_zzz_n1_fpst, a, f_vector_fmaxnm[a->esz])
++TRANS_FEAT(FMAXNM_nn, aa64_sme2, do_zzz_nn_fpst, a, f_vector_fmaxnm[a->esz])
++TRANS_FEAT(BFMAXNM_n1, aa64_sme2_sve_b16b16, do_zzz_n1_fpst, a,
++           gen_helper_gvec_fmaxnum_b16)
++TRANS_FEAT(BFMAXNM_nn, aa64_sme2_sve_b16b16, do_zzz_nn_fpst, a,
++           gen_helper_gvec_fmaxnum_b16)
+ 
+ static gen_helper_gvec_3_ptr * const f_vector_fminnm[4] = {
+-    gen_helper_gvec_fminnum_b16,
++    NULL,
+     gen_helper_gvec_fminnum_h,
+     gen_helper_gvec_fminnum_s,
+     gen_helper_gvec_fminnum_d,
+ };
+-TRANS_FEAT(FMINNM_n1, aa64_sme2, do_zzz_n1_fpst, a, f_vector_fminnm)
+-TRANS_FEAT(FMINNM_nn, aa64_sme2, do_zzz_nn_fpst, a, f_vector_fminnm)
++TRANS_FEAT(FMINNM_n1, aa64_sme2, do_zzz_n1_fpst, a, f_vector_fminnm[a->esz])
++TRANS_FEAT(FMINNM_nn, aa64_sme2, do_zzz_nn_fpst, a, f_vector_fminnm[a->esz])
++TRANS_FEAT(BFMINNM_n1, aa64_sme2_sve_b16b16, do_zzz_n1_fpst, a,
++           gen_helper_gvec_fminnum_b16)
++TRANS_FEAT(BFMINNM_nn, aa64_sme2_sve_b16b16, do_zzz_nn_fpst, a,
++           gen_helper_gvec_fminnum_b16)
+ 
+ static gen_helper_gvec_3_ptr * const f_vector_famax[4] = {
+     NULL,
+@@ -865,7 +872,7 @@ static gen_helper_gvec_3_ptr * const f_vector_famax[4] = {
+     gen_helper_gvec_famax_s,
+     gen_helper_gvec_famax_d,
+ };
+-TRANS_FEAT(FAMAX_nn, aa64_sme2_faminmax, do_zzz_nn_fpst, a, f_vector_famax)
++TRANS_FEAT(FAMAX_nn, aa64_sme2_faminmax, do_zzz_nn_fpst, a, f_vector_famax[a->esz])
+ 
+ static gen_helper_gvec_3_ptr * const f_vector_famin[4] = {
+     NULL,
+@@ -873,7 +880,7 @@ static gen_helper_gvec_3_ptr * const f_vector_famin[4] = {
+     gen_helper_gvec_famin_s,
+     gen_helper_gvec_famin_d,
+ };
+-TRANS_FEAT(FAMIN_nn, aa64_sme2_faminmax, do_zzz_nn_fpst, a, f_vector_famin)
++TRANS_FEAT(FAMIN_nn, aa64_sme2_faminmax, do_zzz_nn_fpst, a, f_vector_famin[a->esz])
+ 
+ static gen_helper_gvec_3_ptr * const f_vector_fscale[4] = {
+     NULL,
+@@ -881,8 +888,8 @@ static gen_helper_gvec_3_ptr * const f_vector_fscale[4] = {
+     gen_helper_gvec_fscale_s,
+     gen_helper_gvec_fscale_d,
+ };
+-TRANS_FEAT(FSCALE_n1, aa64_sme2_f8cvt, do_zzz_n1_fpst, a, f_vector_fscale)
+-TRANS_FEAT(FSCALE_nn, aa64_sme2_f8cvt, do_zzz_nn_fpst, a, f_vector_fscale)
++TRANS_FEAT(FSCALE_n1, aa64_sme2_f8cvt, do_zzz_n1_fpst, a, f_vector_fscale[a->esz])
++TRANS_FEAT(FSCALE_nn, aa64_sme2_f8cvt, do_zzz_nn_fpst, a, f_vector_fscale[a->esz])
+ 
+ /* Add/Sub vector Z[m] to each Z[n*N] with result in ZA[d*N]. */
+ static bool do_azz_n1(DisasContext *s, arg_azz_n *a, int esz,
+diff --git a/target/arm/tcg/sme.decode b/target/arm/tcg/sme.decode
+index 36fbe24faf8..e1bef9987b0 100644
+--- a/target/arm/tcg/sme.decode
++++ b/target/arm/tcg/sme.decode
+@@ -227,6 +227,11 @@ UMOPA2_s        1010000 1 10 0 ..... ... ... ..... . 10 ..      @op_32
+ @z2z_4x1        ....... . esz:2 .. zm:4 ....1. ..... ...0 . \
+                 &zzz_en n=4 zd=%zd_ax4 zn=%zd_ax4
+ 
++@z2z_2x1_e0     ....... . .. .. zm:4 ....0. ..... .... . \
++                &zzz_en esz=0 n=2 zd=%zd_ax2 zn=%zd_ax2
++@z2z_4x1_e0     ....... . .. .. zm:4 ....1. ..... ...0 . \
++                &zzz_en esz=0 n=4 zd=%zd_ax4 zn=%zd_ax4
++
+ SMAX_n1        1100000 1 .. 10 .... 1010.0 00000 .... 0    @z2z_2x1
+ SMAX_n1        1100000 1 .. 10 .... 1010.0 00000 .... 0    @z2z_4x1
+ UMAX_n1        1100000 1 .. 10 .... 1010.0 00000 .... 1    @z2z_2x1
+@@ -236,14 +241,38 @@ SMIN_n1        1100000 1 .. 10 .... 1010.0 00001 .... 0    @z2z_4x1
+ UMIN_n1        1100000 1 .. 10 .... 1010.0 00001 .... 1    @z2z_2x1
+ UMIN_n1        1100000 1 .. 10 .... 1010.0 00001 .... 1    @z2z_4x1
+ 
+-FMAX_n1        1100000 1 .. 10 .... 1010.0 01000 .... 0    @z2z_2x1
+-FMAX_n1        1100000 1 .. 10 .... 1010.0 01000 .... 0    @z2z_4x1
+-FMIN_n1        1100000 1 .. 10 .... 1010.0 01000 .... 1    @z2z_2x1
+-FMIN_n1        1100000 1 .. 10 .... 1010.0 01000 .... 1    @z2z_4x1
+-FMAXNM_n1      1100000 1 .. 10 .... 1010.0 01001 .... 0    @z2z_2x1
+-FMAXNM_n1      1100000 1 .. 10 .... 1010.0 01001 .... 0    @z2z_4x1
+-FMINNM_n1      1100000 1 .. 10 .... 1010.0 01001 .... 1    @z2z_2x1
+-FMINNM_n1      1100000 1 .. 10 .... 1010.0 01001 .... 1    @z2z_4x1
++{
++  BFMAX_n1     1100000 1 00 10 .... 1010.0 01000 .... 0    @z2z_2x1_e0
++  FMAX_n1      1100000 1 .. 10 .... 1010.0 01000 .... 0    @z2z_2x1
++}
++{
++  BFMAX_n1     1100000 1 00 10 .... 1010.0 01000 .... 0    @z2z_4x1_e0
++  FMAX_n1      1100000 1 .. 10 .... 1010.0 01000 .... 0    @z2z_4x1
++}
++{
++  BFMIN_n1     1100000 1 00 10 .... 1010.0 01000 .... 1    @z2z_2x1_e0
++  FMIN_n1      1100000 1 .. 10 .... 1010.0 01000 .... 1    @z2z_2x1
++}
++{
++  BFMIN_n1     1100000 1 00 10 .... 1010.0 01000 .... 1    @z2z_4x1_e0
++  FMIN_n1      1100000 1 .. 10 .... 1010.0 01000 .... 1    @z2z_4x1
++}
++{
++  BFMAXNM_n1   1100000 1 00 10 .... 1010.0 01001 .... 0    @z2z_2x1_e0
++  FMAXNM_n1    1100000 1 .. 10 .... 1010.0 01001 .... 0    @z2z_2x1
++}
++{
++  BFMAXNM_n1   1100000 1 00 10 .... 1010.0 01001 .... 0    @z2z_4x1_e0
++  FMAXNM_n1    1100000 1 .. 10 .... 1010.0 01001 .... 0    @z2z_4x1
++}
++{
++  BFMINNM_n1   1100000 1 00 10 .... 1010.0 01001 .... 1    @z2z_2x1_e0
++  FMINNM_n1    1100000 1 .. 10 .... 1010.0 01001 .... 1    @z2z_2x1
++}
++{
++  BFMINNM_n1   1100000 1 00 10 .... 1010.0 01001 .... 1    @z2z_4x1_e0
++  FMINNM_n1    1100000 1 .. 10 .... 1010.0 01001 .... 1    @z2z_4x1
++}
+ 
+ SRSHL_n1       1100000 1 .. 10 .... 1010.0 10001 .... 0    @z2z_2x1
+ SRSHL_n1       1100000 1 .. 10 .... 1010.0 10001 .... 0    @z2z_4x1
+@@ -269,6 +298,11 @@ FSCALE_n1      1100000 1 .. 10 .... 1010.0 01100 .... 0    @z2z_4x1
+ @z2z_4x4        ....... . esz:2 . ...00 ....1. ..... ...0 . \
+                 &zzz_en n=4 zd=%zd_ax4 zn=%zd_ax4 zm=%zm_ax4
+ 
++@z2z_2x2_e0     ....... . .. . ....0 ....0. ..... .... . \
++                &zzz_en esz=0 n=2 zd=%zd_ax2 zn=%zd_ax2 zm=%zm_ax2
++@z2z_4x4_e0     ....... . .. . ...00 ....1. ..... ...0 . \
++                &zzz_en esz=0 n=4 zd=%zd_ax4 zn=%zd_ax4 zm=%zm_ax4
++
+ SMAX_nn        1100000 1 .. 1 ..... 1011.0 00000 .... 0    @z2z_2x2
+ SMAX_nn        1100000 1 .. 1 ..... 1011.0 00000 .... 0    @z2z_4x4
+ UMAX_nn        1100000 1 .. 1 ..... 1011.0 00000 .... 1    @z2z_2x2
+@@ -278,14 +312,38 @@ SMIN_nn        1100000 1 .. 1 ..... 1011.0 00001 .... 0    @z2z_4x4
+ UMIN_nn        1100000 1 .. 1 ..... 1011.0 00001 .... 1    @z2z_2x2
+ UMIN_nn        1100000 1 .. 1 ..... 1011.0 00001 .... 1    @z2z_4x4
+ 
+-FMAX_nn        1100000 1 .. 1 ..... 1011.0 01000 .... 0    @z2z_2x2
+-FMAX_nn        1100000 1 .. 1 ..... 1011.0 01000 .... 0    @z2z_4x4
+-FMIN_nn        1100000 1 .. 1 ..... 1011.0 01000 .... 1    @z2z_2x2
+-FMIN_nn        1100000 1 .. 1 ..... 1011.0 01000 .... 1    @z2z_4x4
+-FMAXNM_nn      1100000 1 .. 1 ..... 1011.0 01001 .... 0    @z2z_2x2
+-FMAXNM_nn      1100000 1 .. 1 ..... 1011.0 01001 .... 0    @z2z_4x4
+-FMINNM_nn      1100000 1 .. 1 ..... 1011.0 01001 .... 1    @z2z_2x2
+-FMINNM_nn      1100000 1 .. 1 ..... 1011.0 01001 .... 1    @z2z_4x4
++{
++  BFMAX_nn     1100000 1 00 1 ..... 1011.0 01000 .... 0    @z2z_2x2_e0
++  FMAX_nn      1100000 1 .. 1 ..... 1011.0 01000 .... 0    @z2z_2x2
++}
++{
++  BFMAX_nn     1100000 1 00 1 ..... 1011.0 01000 .... 0    @z2z_4x4_e0
++  FMAX_nn      1100000 1 .. 1 ..... 1011.0 01000 .... 0    @z2z_4x4
++}
++{
++  BFMIN_nn     1100000 1 00 1 ..... 1011.0 01000 .... 1    @z2z_2x2_e0
++  FMIN_nn      1100000 1 .. 1 ..... 1011.0 01000 .... 1    @z2z_2x2
++}
++{
++  BFMIN_nn     1100000 1 00 1 ..... 1011.0 01000 .... 1    @z2z_4x4_e0
++  FMIN_nn      1100000 1 .. 1 ..... 1011.0 01000 .... 1    @z2z_4x4
++}
++{
++  BFMAXNM_nn   1100000 1 00 1 ..... 1011.0 01001 .... 0    @z2z_2x2_e0
++  FMAXNM_nn    1100000 1 .. 1 ..... 1011.0 01001 .... 0    @z2z_2x2
++}
++{
++  BFMAXNM_nn   1100000 1 00 1 ..... 1011.0 01001 .... 0    @z2z_4x4_e0
++  FMAXNM_nn    1100000 1 .. 1 ..... 1011.0 01001 .... 0    @z2z_4x4
++}
++{
++  BFMINNM_nn   1100000 1 00 1 ..... 1011.0 01001 .... 1    @z2z_2x2_e0
++  FMINNM_nn    1100000 1 .. 1 ..... 1011.0 01001 .... 1    @z2z_2x2
++}
++{
++  BFMINNM_nn   1100000 1 00 1 ..... 1011.0 01001 .... 1    @z2z_4x4_e0
++  FMINNM_nn    1100000 1 .. 1 ..... 1011.0 01001 .... 1    @z2z_4x4
++}
+ 
+ SRSHL_nn       1100000 1 .. 1 ..... 1011.0 10001 .... 0    @z2z_2x2
+ SRSHL_nn       1100000 1 .. 1 ..... 1011.0 10001 .... 0    @z2z_4x4
 -- 
 2.53.0
 

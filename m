@@ -4,99 +4,99 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 16940C5DF97
-	for <qemu-arm@archiver.kernel.org>; Wed, 26 Aug 2026 18:38:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AE4D0C61DBD
+	for <qemu-arm@archiver.kernel.org>; Wed, 26 Aug 2026 18:42:57 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wzIVW-0004LC-Hj; Wed, 26 Aug 2026 14:37:54 -0400
+	id 1wzIZa-000659-3c; Wed, 26 Aug 2026 14:42:06 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <philmd@oss.qualcomm.com>)
- id 1wzIVU-0004Is-5C
- for qemu-arm@nongnu.org; Wed, 26 Aug 2026 14:37:52 -0400
-Received: from mx0b-0031df01.pphosted.com ([205.220.180.131])
+ id 1wzIZY-00063b-2T
+ for qemu-arm@nongnu.org; Wed, 26 Aug 2026 14:42:04 -0400
+Received: from mx0a-0031df01.pphosted.com ([205.220.168.131])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <philmd@oss.qualcomm.com>)
- id 1wzIVS-0001Od-3I
- for qemu-arm@nongnu.org; Wed, 26 Aug 2026 14:37:51 -0400
-Received: from pps.filterd (m0279870.ppops.net [127.0.0.1])
+ id 1wzIZU-00026E-Rk
+ for qemu-arm@nongnu.org; Wed, 26 Aug 2026 14:42:03 -0400
+Received: from pps.filterd (m0279865.ppops.net [127.0.0.1])
  by mx0a-0031df01.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id
- 67QGup881541292
- for <qemu-arm@nongnu.org>; Wed, 26 Aug 2026 18:37:49 GMT
+ 67QGubp72103197
+ for <qemu-arm@nongnu.org>; Wed, 26 Aug 2026 18:41:59 GMT
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qualcomm.com; h=
  cc:content-transfer-encoding:content-type:date:from:in-reply-to
  :message-id:mime-version:references:subject:to; s=qcppdkim1; bh=
- JCwYThXifyy6LfW29TURN+uYYGzGJkJKgx2XvULwgnY=; b=kfv/+SBhdXsHWsxh
- pw95aOiEaMmuT9ofByLsvf5yLpH0m3nLuxdh1e8lIzTnyIVjAVte+mNR572h/1g/
- 7O5SsYfghCXh5pk+PkoK/m8zs6dYsN+41qOiUKF/tBcnWiq9qE0aW2vowhYDV/w1
- usy2msIlDUH7jFvAkqXZJiQ7qtFb6B/6HgG6JrdlUSgL9PUpgNuJBV5m8ANGQIbx
- KNX8Od1aXj9I2s5U9mp2TxXtSUguZ7OkWh3eBPyGiPAGzqzbPq2U0W1cmos4uVHZ
- 5HEGmtdEeb0Aolm8YIUi6lUTPYJ4vaRY2lfPOkSeljJqgWVI8HItnANXygE7zSYw
- xZGNLg==
-Received: from mail-qt1-f197.google.com (mail-qt1-f197.google.com
- [209.85.160.197])
- by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 4ga0759g3b-1
+ XC9ChOqETLb+aTPzpYEupRJSR0qghypA3tBJYMOrzMM=; b=K6kAfgWtGoCpZOht
+ xYDP4377BxcRX+WZMm0SdDznxYxKF8wm7wxDwojZpcBfUbfEG/dq70+N+g68hz71
+ UtxyWMbMTNYroix+84266hyIFyh7Ro/YkA24M97b8cwBlkVSxc3CazCs1U+FK30e
+ 6V0U8po+vi7N4B3s0Zm5VIAMsAPVist1XI4tX00d/vw4VZ1QSKx3UjQzXlDyU9oa
+ FBgAOKpNnqLnrI0KzdoCvp2KyLuqEXGp4Q3W9kpdhdBQEZmDbU8rmUqBujV4jyyW
+ GuZousNQuExBWLntjxF1zlHFhj1gB+kKfwKt9byAKHZiRoeTgu88NelrFAJ8/5ZO
+ svtVWw==
+Received: from mail-qv1-f71.google.com (mail-qv1-f71.google.com
+ [209.85.219.71])
+ by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 4ga0wbs9ha-1
  (version=TLSv1.3 cipher=TLS_AES_128_GCM_SHA256 bits=128 verify=NOT)
- for <qemu-arm@nongnu.org>; Wed, 26 Aug 2026 18:37:48 +0000 (GMT)
-Received: by mail-qt1-f197.google.com with SMTP id
- d75a77b69052e-51c1a9764f0so13334261cf.1
- for <qemu-arm@nongnu.org>; Wed, 26 Aug 2026 11:37:48 -0700 (PDT)
+ for <qemu-arm@nongnu.org>; Wed, 26 Aug 2026 18:41:58 +0000 (GMT)
+Received: by mail-qv1-f71.google.com with SMTP id
+ 6a1803df08f44-8eec6acbe21so23446166d6.3
+ for <qemu-arm@nongnu.org>; Wed, 26 Aug 2026 11:41:58 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=oss.qualcomm.com; s=google; t=1787769468; x=1788374268; darn=nongnu.org;
+ d=oss.qualcomm.com; s=google; t=1787769718; x=1788374518; darn=nongnu.org;
  h=content-transfer-encoding:content-type:in-reply-to:from:references
  :cc:to:content-language:subject:user-agent:mime-version:date
  :message-id:from:to:cc:subject:date:message-id:reply-to:content-type;
- bh=JCwYThXifyy6LfW29TURN+uYYGzGJkJKgx2XvULwgnY=;
- b=ehGK3iJkmJOnSxNbO43zEoDSlPB5zRbbQNeJT4JqNxiEyNYvMEz8qPbyTbg4thESyw
- aNmjEe2QCT7QdV9myQIEhgixv8p41sZkweYg7+5bSp5Ci9t+tCFkoqaXXH/m+xdP0vvv
- b6HzH4WLbaKKjqZ1yznvTksDS6FUjF0e4oiHmPySqQDtwBOLuE8tTHCvMv0cSFQoSRRZ
- KgIkU9NWr1L574haq3KoZ9OxrXMKhxD4vSCthgcepY6eoZlkzN5CzD6K7oTkKfPGxRO8
- Ed3apULY6PGdE9INceA5PVLDrFXAlqnHIZdSIBrnG11jnyG0bx02snbcYDfhNAjKsXkE
- hp5w==
+ bh=XC9ChOqETLb+aTPzpYEupRJSR0qghypA3tBJYMOrzMM=;
+ b=OrpZZlALKfJ7ytso5nHl8ohEIocqmbOqyDrn5wH1EbPzc62BIqy/SdR/3nhQgz832c
+ 0A5IPtlonfxyTnf23IWyvY1VLUpG9aIVvenwdWApqH9PHntVOsI0HjvD5G4URhg8b3vf
+ UZUVlpX0KOF1Y+DvD6NSwsB4rWA68wb75Q9KG+PxkpzhgNMcrwXGRQg3ngm9FNvdQsUv
+ qS5A6bS28fHINYxh8ET1xD4Hn2fQW8NKWkoaVR09w2ZdWNL+R5Lk/3gJplr1phcTEoe3
+ qN0uY5RuX3AvVMzDfL+6YgiqBUngVU+W6zagci88/5AWqpeMdJG7MAW+nZdNDtH/Npxm
+ lsHA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1787769468; x=1788374268;
+ d=1e100.net; s=20251104; t=1787769718; x=1788374518;
  h=content-transfer-encoding:content-type:in-reply-to:from:references
  :cc:to:content-language:subject:user-agent:mime-version:date
  :message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
  :message-id:reply-to:content-type;
- bh=JCwYThXifyy6LfW29TURN+uYYGzGJkJKgx2XvULwgnY=;
- b=e/hrPjSoLr3JdbLfAhJxmlEye2DfVy5DKNW6yRg3TJo+zlQg3qHVogViIH8MsazT07
- 6gKlYKFUn3Sh+h8lF9yvSZRNvUbIdbZYVaMX1XnII/pfUGf1kGO1NWQRmARVIE93ist/
- wQENoQLhIE8mWvlGDA+C2hqIRcAJieJQjeu+NYNr95f7kx/txwx2IisC+7VVUYo36bgr
- g0JCi06H3vHPwvAJJjKimCBanv6hMQWdSUA78KRqsnpfHyLGXSZkWPU97m8FdbbkhljF
- PTSO38HsSM0Nc0XywzsNRu+RncEi8njm0g4B5QId7JfXQE38oCxG8VH4GR2/B4bS2xRF
- HM1A==
+ bh=XC9ChOqETLb+aTPzpYEupRJSR0qghypA3tBJYMOrzMM=;
+ b=aKvDXPIvKSYQV/zIrUbCF4Y8DSarzHWLGOJnSGVchYcKjRov6M7YUDSzBW6yh0yW7H
+ 5NZ/uu3B89LSB3s4n1JNLUXKF5Cr/BPUUjSP1fxqIlrzXr+598eA8/TOHnkSNy4+jiao
+ 6VUgQVcUk2ySWTQIHkzEe8l/kzdgktThgWieCFp5luxXeW8+walEhmMJJ4IZUN7/rkwi
+ 3melCvO614EkuwOTqAg/7kyZADVFLg8HyXR4rU3q2mKje75olicvqiz1t0+s3Gg3uvlF
+ n+cESworwTilCt412tWLKLyBruNp8Y0JRFJEvElOPH7xVuSszxm0B+/j4IdXYLjmyUIB
+ zhUA==
 X-Forwarded-Encrypted: i=1;
- AHgh+Rq2K4x4UFGk2D/mtl3N+s8Q025TLAo3qPKhyFpR4ENmpMtAhCNeZXfAOS12tO4IABfxwfHTr+GRmw==@nongnu.org
-X-Gm-Message-State: AFuF++kCBpPl3SgklhEsf1DDG/Rp2tUAcuFwCbE8DjejADhaneCVsQY3
- OJgC+kD/hJorW5tGX/XEAMe2+TNmblaCEbdGU80ycGHyad/h8FwMNeDSACYNqNUK0BCPO6lvlW9
- h+Cfxpu6Chfq3JXgl89TcWmSBDOVZTWNuBr2yxpmymXkpTlxcTgos4mI=
-X-Gm-Gg: AR+sD10d96zoqh8NG/mq1ASpG9M/pwK0CahgFpoYD+T6/CyCXRZ1eRX8gzbr3o8GpkH
- TzY1aKGL5rEn2wSwhIjhlzVfCjLGAARLb15mR+c6bsmZdQvg0qLYVOf5DHb5O/YI8RDLxZ2n5pZ
- pZgldiqOdkHmMhhOnZSp0/AOwvrxf6eCGVxeeR+zIrZc2AT9GqMTZJSdn0a+NnnVYnoDXTXb6NR
- AKhEwmfSgS/oP1dtZvDpobxIQ52+bvS7BTFT4b9Q1TFvYAhzNFVLEZXWLoCSrRXjGQlJ/907heh
- Cb1c/LWoj9ngJvY2E3RnWlUxy+eAc7HbXS/29Bcunqr7gW9/CsjtTd9niTrI05sK9jqosdJL78Y
- x3O2QOzLXRz/Sr/TDbK36NbrYW7dc2PxQSwCZp/nf9ISngrEc4A==
-X-Received: by 2002:a05:622a:1111:b0:528:32b1:c202 with SMTP id
- d75a77b69052e-52e42235670mr90966761cf.7.1787769468265; 
- Wed, 26 Aug 2026 11:37:48 -0700 (PDT)
-X-Received: by 2002:a05:622a:1111:b0:528:32b1:c202 with SMTP id
- d75a77b69052e-52e42235670mr90964331cf.7.1787769466529; 
- Wed, 26 Aug 2026 11:37:46 -0700 (PDT)
+ AHgh+RoDBJSyi0s00bIm3nF6FP3KfzeWztmyD/4nNN98q93am9iDa1mdHuud3TVSlWS0ZM7H4M43qGCr6w==@nongnu.org
+X-Gm-Message-State: AFuF++n6tcnn2LFL/4d+7/ah0/AHUKD/zUq4jJqg94W2NPmJc40WNHS/
+ WMqypve6pPDefFH10xzszLbUEs0w3v+ex+xsAq54cmtWHtAMnDaXx044verKvfaAHc30wUhUH0u
+ hYr7cG0C2ar6eJlF3ICy5NdVyfstjEX7Whi/dp5XNIZiFy6vJ0CVbVxg=
+X-Gm-Gg: AR+sD108rwsK6+YrLMGOUXoeAnbnQp64kNDSNbZOVCE3X+98ypKHr4qi2h94gFkoLAU
+ 7jS7PaiANCaomeqyMDwZY6YG5y4GkHTFoWKcI2uQWMRgTjqDC6hjn512GJ6FyO0VK7GUnSSJ3+0
+ MWIDPtHGZ48eBtN36YKMp3g7y/WR7W9aOGnhi7/drBsgcI3yqp6A3ZpeGTd0SLSF4vpz3p5dVvp
+ GFFv1ylznWrAjc9fz7gVVU6KS5BTta6qznOz1nVuPopXBZC1Knw30ZuICG8ZOYv36RYEKl5t7XP
+ TanYmjemFQvW8NQuTpZa3yeEUR07t5eKZwAf7YDcNWF3jWkGNvr21xetgCPE21MKShdbwZoIWUd
+ bDLUwl+g4ngLHDZNqVfY4doDReNenFV86lQJ2gEzFN0IPlODv
+X-Received: by 2002:a05:622a:1916:b0:52d:882e:4986 with SMTP id
+ d75a77b69052e-52e422da0e8mr103266801cf.4.1787769717753; 
+ Wed, 26 Aug 2026 11:41:57 -0700 (PDT)
+X-Received: by 2002:a05:622a:1916:b0:52d:882e:4986 with SMTP id
+ d75a77b69052e-52e422da0e8mr103266251cf.4.1787769717315; 
+ Wed, 26 Aug 2026 11:41:57 -0700 (PDT)
 Received: from [10.254.188.74] (134.171.88.92.rev.sfr.net. [92.88.171.134])
  by smtp.gmail.com with ESMTPSA id
- a640c23a62f3a-c250a6fd00csm662040566b.15.2026.08.26.11.37.38
+ 4fb4d7f45d1cf-6a5de8b621fsm6142510a12.5.2026.08.26.11.41.50
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 26 Aug 2026 11:37:45 -0700 (PDT)
-Message-ID: <11ab11dc-aa98-467c-bd36-4dad90bc0069@oss.qualcomm.com>
-Date: Wed, 26 Aug 2026 20:37:37 +0200
+ Wed, 26 Aug 2026 11:41:56 -0700 (PDT)
+Message-ID: <e95c14f2-7a39-4ce1-8540-0d6f80301449@oss.qualcomm.com>
+Date: Wed, 26 Aug 2026 20:41:49 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 08/12] target/riscv: seed cfg.big_endian from TargetInfo
+Subject: Re: [PATCH 09/12] target-info: register le and be TargetInfo variants
 Content-Language: en-US
-To: Yonggang Luo <luoyonggang@gmail.com>, qemu-devel@nongnu.org
-Cc: Xianglai Li <lixianglai@loongson.cn>,
+To: luoyonggang@gmail.com, Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>
+Cc: qemu-devel@nongnu.org, Xianglai Li <lixianglai@loongson.cn>,
  Alistair Francis <alistair.francis@wdc.com>,
  Chinmay Rath <rathc@linux.ibm.com>,
  Sunil V L <sunilvl@ventanamicro.com>, qemu-riscv@nongnu.org,
@@ -110,7 +110,6 @@ Cc: Xianglai Li <lixianglai@loongson.cn>,
  Glenn Miles <milesg@linux.ibm.com>, =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?=
  <berrange@redhat.com>,
  Daniel Henrique Barboza <daniel.barboza@oss.qualcomm.com>,
- Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>,
  qemu-s390x@nongnu.org, Jiaxun Yang <jiaxun.yang@flygoat.com>,
  =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@mailo.com>,
  "Michael S. Tsirkin" <mst@redhat.com>, Stefan Hajnoczi
@@ -129,40 +128,43 @@ Cc: Xianglai Li <lixianglai@loongson.cn>,
  Matthew Rosato <mjrosato@linux.ibm.com>, Weiwei Li <liwei1518@gmail.com>,
  Darren Kenny <darren.kenny@oracle.com>
 References: <20260823150731.896-1-luoyonggang@gmail.com>
- <20260823150731.896-9-luoyonggang@gmail.com>
+ <20260823150731.896-10-luoyonggang@gmail.com>
+ <9b5a4586-be66-4d69-8d08-fc1796336b2c@oss.qualcomm.com>
+ <CAE2XoE99hEfbdKEqW-kF7YLeSatPGe0v-Azb9TMXa-sm31TyWg@mail.gmail.com>
 From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@oss.qualcomm.com>
-In-Reply-To: <20260823150731.896-9-luoyonggang@gmail.com>
+In-Reply-To: <CAE2XoE99hEfbdKEqW-kF7YLeSatPGe0v-Azb9TMXa-sm31TyWg@mail.gmail.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-X-Proofpoint-ORIG-GUID: VHlU0BUVqKx8NwL54dWhMd0bfiPMZCtM
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwODI2MDE1NiBTYWx0ZWRfX7AlpHemTNAu5
- jYq+Ns2NfKDScvAwmk2WtgeHVHmKytqYtM2pb62Tn/f7yHnvcu7LeGqGD8XqHLVvVbNGdLMGxn+
- UoJjFnjySeFobvnOrbzZa1io+jmN4Y9kXNEv0ghmQBublBLgwnKo3araATLxZQlN6WCqX6KnFjQ
- Gq2ZwTvYc+WodOjupj+jE70tdHnIj5q7dpeDEe/D+r9PTJKHQfN8pqT3HJZoKjI8OdYqyzjJ3c6
- dD1R1jjKbvmyBu5NFbdAPAPl8qj2BtI4vo4hJtMT3clZ1LM9AlgVx/imNrDvbV/QpXWuJG7+CUK
- B91I6O/uMod2HY2F8E8hoBKBZs9rio/o1LMVIV1ImdL2NoJKI0Wx9GgICuhWgTLbMznoyB5zpUk
- plUz61rwKBcpoxmc7x50sb4ub5rGs/ID3774D4WjmHrbe6gahbIhX991vSsggihMPbjYF4p0IVi
- NTJ6VdlwnfvakV2g+qQ==
-X-Proofpoint-GUID: VHlU0BUVqKx8NwL54dWhMd0bfiPMZCtM
-X-Proofpoint-Spam-Info: AW1haW4tMjYwODI2MDE1NiBTYWx0ZWRfX/As2iCSWaW1u
- Al1hQwbjDgSD2iDppeY0X8gx1j07cTCQnkAIazEy/XYpnPYzJDCY7srPUWxc1+gDaDx5sTHLFO1
- 2XygaB2Qz2qHSK/F6ThvPJZ23g9+H4U=
-X-Authority-Analysis: v=2.4 cv=RPiD2Yi+ c=1 sm=1 tr=0 ts=6a8f327d cx=c_pps
- a=EVbN6Ke/fEF3bsl7X48z0g==:117 a=o1isufRNksZXpKP+aqnsag==:17
+Content-Transfer-Encoding: 8bit
+X-Proofpoint-ORIG-GUID: AbeLxi255JuJsWLhRfVbToUreBKc0qlL
+X-Proofpoint-Spam-Info: AW1haW4tMjYwODI2MDE1NiBTYWx0ZWRfX2B7BKWLorOtP
+ F1+4lUfdUbsWJ/EEYdvdEOabWVqu6wbW6NQmq8aAIML+Z2GM5Ovfdb+TpTYVJPtVbaVYOihcs5h
+ Wib72tsKlWWW1bH8KJTZEByWUB+gtJI=
+X-Proofpoint-GUID: AbeLxi255JuJsWLhRfVbToUreBKc0qlL
+X-Authority-Analysis: v=2.4 cv=SoCgLvO0 c=1 sm=1 tr=0 ts=6a8f3376 cx=c_pps
+ a=UgVkIMxJMSkC9lv97toC5g==:117 a=o1isufRNksZXpKP+aqnsag==:17
  a=IkcTkHD0fZMA:10 a=Sv0fKeRqtYgA:10 a=M51BFTxLslgA:10 a=s4-Qcg_JpJYA:10
- a=VkNPw1HP01LnGYTKEx00:22 a=u7WPNUs3qKkmUXheDGA7:22 a=gowsoOTTUOVcmtlkKump:22
- a=pGLkceISAAAA:8 a=sk3sBhc6xHwubYSXd84A:9 a=QEXdDO2ut3YA:10
- a=a_PwQJl-kcHnX1M80qC6:22
+ a=VkNPw1HP01LnGYTKEx00:22 a=u7WPNUs3qKkmUXheDGA7:22 a=Um2Pa8k9VHT-vaBCBUpS:22
+ a=EUspDBNiAAAA:8 a=pGLkceISAAAA:8 a=P7ypQ-ddqiMMtdoUKUYA:9 a=3ZKOabzyN94A:10
+ a=QEXdDO2ut3YA:10 a=1HOtulTD9v-eNWfpl4qZ:22
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwODI2MDE1NiBTYWx0ZWRfX6Q0e+UnflWUd
+ VZN+REPp37zEPdKiujZF1hgC2NkU5UUjqx6lZvPDJ26eBnALyGn4klw3+u6cdYhs9Gkigq5Qrkp
+ ZXAaRqmQrPSe9n4+s3tKSDILuhnwCVYTAG58om5iSeEnUGBOmc2P6770UfrMwZsied1EKHawciY
+ xHcl5BYV6zc6onX7uMokQzP1rXOKvhAk8e/X45mtdeBkOOO9JOVYYqRfe6QQ0Kesr4zkE9Tafky
+ rtn4PF4d7cc4bDhDifAAy1BRlXr+bxbhu8RKCzb+SQ70MiBsgASI9g45U0Uk/7p+ffMjO8G0tW+
+ FoCNYYPcsPr00Xc46OqYQBaYDZxVt2ZRqufDiar9Y7KyEOwVK9hsT5bbrusxzc8pAeFTPQfXLOF
+ Njf5AYMEtk5FGrMeKA4rNFfAiSPABPVUON1bLEfCUBp12R24AGlzmT1b379kISTKVIT7/fZjFRr
+ JLJ6lnO4vjtK5vYGUOg==
 X-Proofpoint-Virus-Version: vendor=baseguard
  engine=ICAP:2.0.293,Aquarius:18.0.1176,Hydra:6.1.134,FMLib:17.12.100.49
  definitions=2026-08-26_05,2026-08-26_02,2025-10-01_01
 X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
- adultscore=0 clxscore=1015 priorityscore=1501 spamscore=0 lowpriorityscore=0
- malwarescore=0 phishscore=0 suspectscore=0 bulkscore=0 impostorscore=0
- classifier=typeunknown authscore=0 authtc= authcc= route=outbound adjust=0
- reason=mlx scancount=1 engine=8.22.0-2606150000 definitions=main-2608260156
-Received-SPF: pass client-ip=205.220.180.131;
- envelope-from=philmd@oss.qualcomm.com; helo=mx0b-0031df01.pphosted.com
+ phishscore=0 impostorscore=0 malwarescore=0 bulkscore=0 spamscore=0
+ clxscore=1015 lowpriorityscore=0 priorityscore=1501 suspectscore=0
+ adultscore=0 classifier=typeunknown authscore=0 authtc= authcc=
+ route=outbound adjust=0 reason=mlx scancount=1 engine=8.22.0-2606150000
+ definitions=main-2608260156
+Received-SPF: pass client-ip=205.220.168.131;
+ envelope-from=philmd@oss.qualcomm.com; helo=mx0a-0031df01.pphosted.com
 X-Spam_score_int: -27
 X-Spam_score: -2.8
 X-Spam_bar: --
@@ -185,54 +187,66 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On 23/8/26 17:07, Yonggang Luo wrote:
-> GDB register packets use target_big_endian() only (gdb_get_reg16/32/64).
-> RISC-V gdbstub already goes through those helpers, so future GDB
-> big-endian support does not need a second endian source in the CPU
-> gdbstub. It needs TargetInfo and the hart to agree.
-> 
-> Hart endian is cpu->cfg.big_endian, copied into mstatus MBE/SBE/UBE at
-> reset. The CPU property still defaults to little-endian, so a
-> big-endian TargetInfo would make GDB swap as BE while the hart stayed
-> LE.
-> 
-> - Initialize cfg.big_endian from target_big_endian() in cpu init so a
->    big-endian TargetInfo also sets the hart.
-> - Fail realize when -cpu big-endian= disagrees with that selection.
->    GDB cannot follow a per-CPU override, so a split would silently
->    corrupt register byte order.
-> 
-> Signed-off-by: Yonggang Luo <luoyonggang@gmail.com>
-> ---
->   target/riscv/cpu.c | 10 ++++++++++
->   1 file changed, 10 insertions(+)
-> 
-> diff --git a/target/riscv/cpu.c b/target/riscv/cpu.c
-> index 5a82e6563bf..0681bec0bef 100644
-> --- a/target/riscv/cpu.c
-> +++ b/target/riscv/cpu.c
-> @@ -29,6 +29,7 @@
->   #include "qapi/error.h"
->   #include "qapi/visitor.h"
->   #include "qemu/error-report.h"
-> +#include "qemu/target-info.h"
->   #include "qemu/timer.h"
->   #include "hw/core/qdev-properties.h"
->   #include "hw/core/qdev-prop-internal.h"
-> @@ -1226,6 +1227,13 @@ static void riscv_cpu_realize(DeviceState *dev, Error **errp)
->       RISCVCPUClass *mcc = RISCV_CPU_GET_CLASS(dev);
->       Error *local_err = NULL;
->   
-> +    if (cpu->cfg.big_endian != target_big_endian()) {
-> +        error_setg(errp,
-> +                   "CPU big-endian=%s does not match selected target endian",
-> +                   cpu->cfg.big_endian ? "on" : "off");
+On 24/8/26 21:01, Yonggang Luo wrote:
+> On Tue, Aug 25, 2026 at 12:22 AM Pierrick Bouvier <
+> pierrick.bouvier@oss.qualcomm.com> wrote:
+>>
+>> On 8/23/2026 8:07 AM, Yonggang Luo wrote:
+>>> - Register target-info-<name>-le and -be from one system
+>>>    target-info-def.c unit, sharing arch fields.
+>>> - Mark is_default from TARGET_BIG_ENDIAN so riscv/arm stay LE and
+>>>    ppc/s390x stay BE when -target is omitted.
+>>> - Pick the unique default in target_info_qom_set_target() when more
+>>>    than one TargetInfo is registered. Leave user-mode as a single
+>>>    target_info().
+>>>
+>>> Signed-off-by: Yonggang Luo <luoyonggang@gmail.com>
+>>> ---
+>>>   include/qemu/target-info-impl.h |  6 ++++
+>>>   include/qemu/target-info-init.h | 29 +++++++++++++---
+>>>   target-info-def.c               | 61 +++++++++++++++++++++++++--------
+>>>   target-info-qom.c               | 33 ++++++++++++++----
+>>>   4 files changed, 104 insertions(+), 25 deletions(-)
 
-Surely the bug is on the GDB path.
-> +        return;
-> +    }
-> +
->       cpu_exec_realizefn(cs, &local_err);
->       if (local_err != NULL) {
->           error_propagate(errp, local_err);
+Clearly not the path we choose, have a look for example at how
+we converted MicroBlaze:
+
+$ git log --oneline */microblaze/ | fgrep -i endian
+41c417290df target/microblaze: Fix endianness used to disassemble
+1346a811234 hw/microblaze: Replace TARGET_BIG_ENDIAN -> target_big_endian()
+9281c68deca target/microblaze: Directly check endianness via 
+CPUConfig::endi flag
+91fc6d8101d linux-user/microblaze: Fix little-endianness binary
+0e259fa5a13 hw/microblaze: Remove the big-endian variants of ml605 and 
+xlnx-zynqmp-pmu
+141ec228deb hw/microblaze: Add endianness property to the 
+petalogix_s3adsp1800 machine
+eb3020b6ed2 hw/microblaze: Evaluate TARGET_BIG_ENDIAN at compile time
+840e0862c52 target/microblaze: Set disassemble_info::endian value in 
+disas_set_info
+415aae543ed target/microblaze: Consider endianness while translating code
+2c9e8ddd769 target/microblaze: Introduce mo_endian() helper
+e87c93df113 hw/ssi/xilinx_spi: Make device endianness configurable
+8a8c92c8afb hw/char/xilinx_uartlite: Make device endianness configurable
+df1f35ab67e hw/timer/xilinx_timer: Make device endianness configurable
+644276db5d7 hw/net/xilinx_ethlite: Make device endianness configurable
+2cdf693b197 hw/intc/xilinx_intc: Make device endianness configurable
+adc1a4a26a9 hw/loader: Pass ELFDATA endian order argument to load_elf()
+8f27e70e3bc hw/microblaze: Propagate CPU endianness to 
+microblaze_load_kernel()
+c36ec3a9655 hw/microblaze/s3adsp1800: Explicit CPU endianness
+181b3a7bb03 hw/microblaze: Deprecate big-endian petalogix-ml605 & 
+xlnx-zynqmp-pmu
+6c8cec822f1 target/microblaze: Alias CPU endianness property as 
+'little-endian'
+
+>> Is it representing existing targets, or adding new ones per endianness?
+>> I'm not sure if the goal is to add new binaries, or mimic existing ones
+>> with specific parameters.
+> 
+> 
+> Is optional now, not a force requirement, this is needed when we use GDB
+> debug qemu riscv-be, as gdbstub are depends on target_info
+
+Again the bug you want to fix is on the gdbstub path.
 

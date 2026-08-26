@@ -4,70 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A245DC5DF97
-	for <qemu-arm@archiver.kernel.org>; Wed, 26 Aug 2026 18:44:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A83D9C61DCD
+	for <qemu-arm@archiver.kernel.org>; Wed, 26 Aug 2026 18:44:45 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wzIbX-0002ND-0A; Wed, 26 Aug 2026 14:44:07 -0400
+	id 1wzIbR-00023M-MW; Wed, 26 Aug 2026 14:44:01 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <luoyonggang@gmail.com>)
- id 1wzIbV-0002Gv-QQ
- for qemu-arm@nongnu.org; Wed, 26 Aug 2026 14:44:05 -0400
-Received: from mail-pg1-x52b.google.com ([2607:f8b0:4864:20::52b])
+ id 1wzIbQ-0001t3-5a
+ for qemu-arm@nongnu.org; Wed, 26 Aug 2026 14:44:00 -0400
+Received: from mail-pg1-x52e.google.com ([2607:f8b0:4864:20::52e])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <luoyonggang@gmail.com>)
- id 1wzIbT-0002b9-VM
- for qemu-arm@nongnu.org; Wed, 26 Aug 2026 14:44:05 -0400
-Received: by mail-pg1-x52b.google.com with SMTP id
- 41be03b00d2f7-cc1bc88a20eso1445100a12.3
- for <qemu-arm@nongnu.org>; Wed, 26 Aug 2026 11:44:03 -0700 (PDT)
+ id 1wzIbL-0002Z7-5t
+ for qemu-arm@nongnu.org; Wed, 26 Aug 2026 14:43:59 -0400
+Received: by mail-pg1-x52e.google.com with SMTP id
+ 41be03b00d2f7-cc149372c14so1014698a12.1
+ for <qemu-arm@nongnu.org>; Wed, 26 Aug 2026 11:43:54 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20251104; t=1787769842; x=1788374642; darn=nongnu.org;
+ d=gmail.com; s=20251104; t=1787769834; x=1788374634; darn=nongnu.org;
  h=content-transfer-encoding:content-type:mime-version:references
  :in-reply-to:message-id:date:subject:cc:to:from:from:to:cc:subject
  :date:message-id:reply-to:content-type;
- bh=qwzEZxEmFuyhMgoWNMywLma5RZEuBk1uut9/tIFYhTY=;
- b=qvwiQ6OZrXG1J/EbTBIU//8IaUc4bTb6VDIKHOJKSveqI5esEcBSJf7FpVIXjx91A5
- lJgySmz3cmTArAnChjc7MRBG6+XjoQWXM0NpsGTjimjaSmXnovzK76QXCtbIPaHfQsqB
- bDl9746eClKZ1KjYiDwO24O8khNI3AcaxJpEZnmbfsnk8H+xYCvTThsdklCqnD2cLdd9
- rYwrRqaEFoOx/gTxPn2taSry0Q+4Vr0E1ba7dHDu0wI+kgk2jffGllBjjgyMDDWtM3y1
- OsqhG58x8Tt80RmpvNgzLol5cbYaBHuLVwUSets0Gi5bDmWmMAIVhWjE7fNkDK7hhXzP
- FHRw==
+ bh=MAgTvhPJuUZv8l3S0IaG46RWM0hrZ4KFv/YgJfLhx0k=;
+ b=PHyEWXnTHY/UmOr13InFzmO4sun6gwFjjrr3JoHA4Jp8O1cGvkqiCjfqYlZtqcSjng
+ DlLjWn2Tac04Yaf2QkYNG/1iwB/nCFfZQOzMXJGLIvtRmz44Z2l3ZVlX1PUqxRdTnP1o
+ SRiebGRMYdkpIcuiyfO5AmJdCefE5ABiftaCUO4tBZIg+ONf++m6U9Jwz8eXJar4CzsZ
+ PdtyczIRrMsJin7sJY6S5DWwy+cLSHeaHeR4Ks+5dts7TooWeyeU1nq0gOk8kmLYSMYw
+ pL2FP1BVzNJwPIxezYU6XlxSN4K/PBaCFa4Eqe9cBbWkcJ9VDK0LbqWP168WYBR7o7Vq
+ pnvg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1787769842; x=1788374642;
+ d=1e100.net; s=20251104; t=1787769834; x=1788374634;
  h=content-transfer-encoding:content-type:mime-version:references
  :in-reply-to:message-id:date:subject:cc:to:from:x-gm-gg
  :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
  :content-type;
- bh=qwzEZxEmFuyhMgoWNMywLma5RZEuBk1uut9/tIFYhTY=;
- b=YlLzK2kLuV9zi0H09KT3jwyfbsv1uLo92gDtJwVGapAfj1xUt9Iv/G7yqTqC6LCnF8
- 0oTjOU39ZefQqK3NycoODaZEoKA/BSoGc6mr9Ae0wPgRuqy8sUJPvdFm1rdKIzLfebaa
- 8DZeYMeKXrS9oknpD9ndZHAs8b3AMijp//fUa/XCKyGP4FfpxP5TflpaU7SdHdp2TZgs
- 9OFMRueq7aJ+5C9Vp1tRSs4532+/YYr2wmL7+KRf83Q833xqqx/bmjzrlReydbzwP+Jq
- YOOTstmXXL6eF5iqDyZh8UcuAW5wtirR2NUVgeekdKXIM8IQM/cdE/rg7H4ShiAgrgUM
- EPOQ==
+ bh=MAgTvhPJuUZv8l3S0IaG46RWM0hrZ4KFv/YgJfLhx0k=;
+ b=DiLo0PfsMjEGwCG8EDbVP0855/FW653FswvxyRUf6+o5eARjPpof9nzYKvga0nDtvk
+ Ttz37GvuCgKShDRsIrQTv8TPIVFhTFu3o9DtA2DwvhZdjLqEW1Sb3AuujDs0RntQULA8
+ KZutg2ka1jqcQlZLEERIcnPyK2SJRdXkURXGOHafKiAklGgM2xrgJ7cafN4yAx8qhYNr
+ FvICkRioeGx0sfGi500EtVMq0aYaEp3HEVg7ugvfNZhIjzMpVEAABOCMCD4XDiDCn85p
+ BRGOrSkKXS+I+43473lG2IPXeVFUiyMzqvqnAe4UUtTO+nfj/K4LddintH8/fws+KSrF
+ sUCw==
 X-Forwarded-Encrypted: i=1;
- AHgh+RrrI9K+BFPUZsGxbq6RmzzDd8Sxguje8529J04p1QN0yEXNNrcLGpAi8eSt+G9w4CTDhVVr0PiNaw==@nongnu.org
-X-Gm-Message-State: AFuF++lpQFoSbVMREk08/ZXoQUK1JqImvunyF7uXCcS0HvWMlovXZlDj
- 4+lIdGJmUrENRlpL02QtIuYl3t1+PSw5/7FkNLnKpZF8dx650mK2IkQk
-X-Gm-Gg: AR+sD12RFZzs2Pwz91ZTvkYLrleaLXkRRSucC3oTqz8IlrWaVh+TS5C6idsrq47ZFQH
- l7uwT9UOxrxu81Rp4Eh384GOJb8RfyeR/ymyasfXy/jdkKE151psSoKnI9Pw98sxFJ61tTFFKck
- z0idPSA36Q6MZaJTCj4fzehk43ct3ltjo/R1av2fmT4Yx6bq7iVQu5xS2DDkqhL3rm6qw/mJ3WH
- Kbn6mOEvX3sJKZKFb3wxg7PFX98s6JNmyAihzR+qx1HCiHYChxcddTLLA9Qb3ruc7p2xWN6oj45
- Zhlc+3kAWVKJJUasXpTBl2uhVmp11VlZDUxKWVspw6u77YcQR3j8EiyqKcWWlhYaZHDmJczcAZz
- E6LvvW0tnmEMLd/1RHQi5pzZeebNdPryp1FLHzLsSo2682ZnruQPrMw4nlX9MqdPjxNB6C3QwtP
- N/m6ae26ilQa5Lf/RvqHx19IzZcd+ObsBfST89CstMuvCzSV8gCD7Kp6wv8qhNVATqxJGQKwklE
- +bop7eB4HVdvyqClOPZ7w==
-X-Received: by 2002:a05:6a20:938c:b0:3b3:216b:2743 with SMTP id
- adf61e73a8af0-3cf7576c44emr17712748637.4.1787769842497; 
- Wed, 26 Aug 2026 11:44:02 -0700 (PDT)
+ AHgh+RqRX5DgJuw5A4RZfu9VGBQSS/Aygp/3o6+gk8qyTFQzA7dHTJwPmk4O+fYSJxrvQnrKV40r8xesuw==@nongnu.org
+X-Gm-Message-State: AFuF++mZZase134nlBPbzESLvCqApsCvoH9Xjk9U62KswyzS2UiajF2a
+ r0mk9U6UBDwd+bZ36OSJUBMtu2uyGm3KppFEhZQZtL17E0nroAshpx6i
+X-Gm-Gg: AR+sD11EJ0k5USwKi49NRQ0aMjAj58VTJOvFFiucAnH5BnVsQsuKoKhTyPOhl6oqu1X
+ aEaghlcxiY66l9n7SSWvZiJaFmfDY8Enq1CGBF4Jf8THixpjJC6z+Cu+cCF9rBV8Xkbws5C6ub6
+ bltMiLM6lkY7ZARGMZw8I4Bq0g1jHRgpn/J8e8u85lLUvnOW9Z2naB1ecZGnhs6mgEThAY5015w
+ ogFHREvtEVJQhwyPkfeMetiC+FIkKkwNGkEt5bTMDomvu+PsEUDQI+nmGcyVcYzRYRtA44HWXRN
+ /7x0eKYp5LiUJUU6A3bc3Cd9+H1B2gG7Y/O+Ib+OCM3E0TT/uBd0YvK+tDCLIUvMq/vOU494adg
+ buEA9NyO1xd7e/g6XgIwHcDFhQabO8Yx5zqGxi+YisE8Z5AaLBp8zHtKtdXI8UMPxAg+KOWSxmY
+ B69afRIcKkxMVbrVVOfFN4XTH9U5Ck9xfKDqzcyCdtu/r+o9J7gCWf5Zi314MWYQdXBEutPklrU
+ qF1JGNJLbWQRgfvc6t3qdceku2Mom0d
+X-Received: by 2002:a05:6a21:3a83:b0:3cc:841d:bb26 with SMTP id
+ adf61e73a8af0-3cf8485c070mr16100519637.15.1787769833619; 
+ Wed, 26 Aug 2026 11:43:53 -0700 (PDT)
 Received: from WIN-BH9M8FJACR9 ([103.94.185.75])
  by smtp.googlemail.com with ESMTPSA id
- 5a478bee46e88-3283d60c291sm17681846eec.6.2026.08.26.11.43.54
+ 5a478bee46e88-3283d60c291sm17681846eec.6.2026.08.26.11.43.45
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 26 Aug 2026 11:44:01 -0700 (PDT)
+ Wed, 26 Aug 2026 11:43:52 -0700 (PDT)
 From: Yonggang Luo <luoyonggang@gmail.com>
 To: qemu-devel@nongnu.org
 Cc: Peter Maydell <peter.maydell@linaro.org>, Fabiano Rosas <farosas@suse.de>,
@@ -100,18 +100,17 @@ Cc: Peter Maydell <peter.maydell@linaro.org>, Fabiano Rosas <farosas@suse.de>,
  =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
  Liu Zhiwei <zhiwei_liu@linux.alibaba.com>,
  Igor Mammedov <imammedo@redhat.com>
-Subject: [PATCH v2 09/13] hw/loongarch/virt: prefix ACPI helper with
- loongarch_virt_
-Date: Thu, 27 Aug 2026 02:42:23 +0800
-Message-ID: <20260826184229.1145-10-luoyonggang@gmail.com>
+Subject: [PATCH v2 08/13] hw/riscv/virt: prefix ACPI helpers with riscv_virt_
+Date: Thu, 27 Aug 2026 02:42:22 +0800
+Message-ID: <20260826184229.1145-9-luoyonggang@gmail.com>
 X-Mailer: git-send-email 2.52.0.windows.1
 In-Reply-To: <20260826184229.1145-1-luoyonggang@gmail.com>
 References: <20260826184229.1145-1-luoyonggang@gmail.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::52b;
- envelope-from=luoyonggang@gmail.com; helo=mail-pg1-x52b.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::52e;
+ envelope-from=luoyonggang@gmail.com; helo=mail-pg1-x52e.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -134,78 +133,73 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-- virt_acpi_setup is the same C symbol used by ARM and RISC-V virt.
-  Rename it now so a later combined binary does not need meson -D
-  prefixes for LoongArch.
-- Rename the file-local virt_is_acpi_enabled to
-  loongarch_virt_is_acpi_enabled to match.
+- virt_acpi_setup and virt_is_acpi_enabled collide with ARM virt when
+  both architectures are linked into one qemu-system binary.
+- Rename the RISC-V helpers to riscv_virt_acpi_setup and
+  riscv_virt_is_acpi_enabled. Leave file-local virt_acpi_build* names
+  unchanged.
 
 Signed-off-by: Yonggang Luo <luoyonggang@gmail.com>
 Reviewed-by: Philippe Mathieu-Daudé <philmd@oss.qualcomm.com>
-Reviewed-by: Song Gao <gaosong@loongson.cn>
 ---
- hw/loongarch/virt-acpi-build.c | 6 +++---
- hw/loongarch/virt.c            | 2 +-
- include/hw/loongarch/virt.h    | 2 +-
- 3 files changed, 5 insertions(+), 5 deletions(-)
+ hw/riscv/virt-acpi-build.c | 2 +-
+ hw/riscv/virt.c            | 6 +++---
+ include/hw/riscv/virt.h    | 4 ++--
+ 3 files changed, 6 insertions(+), 6 deletions(-)
 
-diff --git a/hw/loongarch/virt-acpi-build.c b/hw/loongarch/virt-acpi-build.c
-index a0b445f297b..bbbac289b49 100644
---- a/hw/loongarch/virt-acpi-build.c
-+++ b/hw/loongarch/virt-acpi-build.c
-@@ -674,7 +674,7 @@ static const VMStateDescription vmstate_acpi_build = {
+diff --git a/hw/riscv/virt-acpi-build.c b/hw/riscv/virt-acpi-build.c
+index 59c454f4f94..832261391d5 100644
+--- a/hw/riscv/virt-acpi-build.c
++++ b/hw/riscv/virt-acpi-build.c
+@@ -1017,7 +1017,7 @@ static const VMStateDescription vmstate_virt_acpi_build = {
      },
  };
  
--static bool virt_is_acpi_enabled(LoongArchVirtMachineState *lvms)
-+static bool loongarch_virt_is_acpi_enabled(LoongArchVirtMachineState *lvms)
- {
-     if (lvms->acpi == ON_OFF_AUTO_OFF) {
-         return false;
-@@ -682,7 +682,7 @@ static bool virt_is_acpi_enabled(LoongArchVirtMachineState *lvms)
-     return true;
- }
- 
--void virt_acpi_setup(LoongArchVirtMachineState *lvms)
-+void loongarch_virt_acpi_setup(LoongArchVirtMachineState *lvms)
+-void virt_acpi_setup(RISCVVirtState *s)
++void riscv_virt_acpi_setup(RISCVVirtState *s)
  {
      AcpiBuildTables tables;
      AcpiBuildState *build_state;
-@@ -692,7 +692,7 @@ void virt_acpi_setup(LoongArchVirtMachineState *lvms)
-         return;
-     }
+diff --git a/hw/riscv/virt.c b/hw/riscv/virt.c
+index 9019a0a04d6..c53370a35f5 100644
+--- a/hw/riscv/virt.c
++++ b/hw/riscv/virt.c
+@@ -1293,8 +1293,8 @@ static void virt_machine_done(Notifier *notifier, void *data)
  
--    if (!virt_is_acpi_enabled(lvms)) {
-+    if (!loongarch_virt_is_acpi_enabled(lvms)) {
-         ACPI_BUILD_DPRINTF("ACPI disabled. Bailing out.\n");
-         return;
+     virt_build_smbios(s);
+ 
+-    if (virt_is_acpi_enabled(s)) {
+-        virt_acpi_setup(s);
++    if (riscv_virt_is_acpi_enabled(s)) {
++        riscv_virt_acpi_setup(s);
      }
-diff --git a/hw/loongarch/virt.c b/hw/loongarch/virt.c
-index 6693dea647b..74c9668b6e6 100644
---- a/hw/loongarch/virt.c
-+++ b/hw/loongarch/virt.c
-@@ -242,7 +242,7 @@ static void virt_done(Notifier *notifier, void *data)
-     LoongArchVirtMachineState *lvms = container_of(notifier,
-                                       LoongArchVirtMachineState, machine_done);
-     virt_build_smbios(lvms);
--    virt_acpi_setup(lvms);
-+    loongarch_virt_acpi_setup(lvms);
-     virt_fdt_setup(lvms);
  }
  
-diff --git a/include/hw/loongarch/virt.h b/include/hw/loongarch/virt.h
-index d39a9bbf5dd..72268466def 100644
---- a/include/hw/loongarch/virt.h
-+++ b/include/hw/loongarch/virt.h
-@@ -132,7 +132,7 @@ struct LoongArchVirtMachineState {
+@@ -1652,7 +1652,7 @@ static void virt_set_iommu_sys(Object *obj, Visitor *v, const char *name,
+     visit_type_OnOffAuto(v, name, &s->iommu_sys, errp);
+ }
  
- #define TYPE_LOONGARCH_VIRT_MACHINE  MACHINE_TYPE_NAME("virt")
- OBJECT_DECLARE_SIMPLE_TYPE(LoongArchVirtMachineState, LOONGARCH_VIRT_MACHINE)
--void virt_acpi_setup(LoongArchVirtMachineState *lvms);
-+void loongarch_virt_acpi_setup(LoongArchVirtMachineState *lvms);
- void virt_fdt_setup(LoongArchVirtMachineState *lvms);
+-bool virt_is_acpi_enabled(RISCVVirtState *s)
++bool riscv_virt_is_acpi_enabled(RISCVVirtState *s)
+ {
+     return s->acpi != ON_OFF_AUTO_OFF;
+ }
+diff --git a/include/hw/riscv/virt.h b/include/hw/riscv/virt.h
+index 5559783aebb..38ad8b0097e 100644
+--- a/include/hw/riscv/virt.h
++++ b/include/hw/riscv/virt.h
+@@ -133,9 +133,9 @@ enum {
+ #define FDT_APLIC_INT_MAP_WIDTH (FDT_PCI_ADDR_CELLS + FDT_PCI_INT_CELLS + \
+                                  1 + FDT_APLIC_INT_CELLS)
  
- static inline bool virt_has_dmsi(LoongArchVirtMachineState *lvms)
+-bool virt_is_acpi_enabled(RISCVVirtState *s);
++bool riscv_virt_is_acpi_enabled(RISCVVirtState *s);
+ bool virt_is_iommu_sys_enabled(RISCVVirtState *s);
+-void virt_acpi_setup(RISCVVirtState *vms);
++void riscv_virt_acpi_setup(RISCVVirtState *vms);
+ 
+ /*
+  * The virt machine physical address space used by some of the devices
 -- 
 2.52.0.windows.1
 

@@ -4,88 +4,88 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 47B2DC61DC4
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 41878C61DBD
 	for <qemu-arm@archiver.kernel.org>; Wed, 26 Aug 2026 17:44:14 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wzHeL-0000Q9-06; Wed, 26 Aug 2026 13:42:57 -0400
+	id 1wzHea-0000vd-Ad; Wed, 26 Aug 2026 13:43:12 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1wzHdy-00007A-1N
- for qemu-arm@nongnu.org; Wed, 26 Aug 2026 13:42:34 -0400
-Received: from mail-pf1-x42a.google.com ([2607:f8b0:4864:20::42a])
+ id 1wzHeB-0000FE-SB
+ for qemu-arm@nongnu.org; Wed, 26 Aug 2026 13:42:49 -0400
+Received: from mail-pf1-x42c.google.com ([2607:f8b0:4864:20::42c])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1wzHdw-0004p8-F5
- for qemu-arm@nongnu.org; Wed, 26 Aug 2026 13:42:33 -0400
-Received: by mail-pf1-x42a.google.com with SMTP id
- d2e1a72fcca58-852c481415fso1518441b3a.3
- for <qemu-arm@nongnu.org>; Wed, 26 Aug 2026 10:42:32 -0700 (PDT)
+ id 1wzHe9-0004tC-Kj
+ for qemu-arm@nongnu.org; Wed, 26 Aug 2026 13:42:47 -0400
+Received: by mail-pf1-x42c.google.com with SMTP id
+ d2e1a72fcca58-8548db7428aso346750b3a.1
+ for <qemu-arm@nongnu.org>; Wed, 26 Aug 2026 10:42:44 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1787766151; x=1788370951; darn=nongnu.org;
+ d=linaro.org; s=google; t=1787766163; x=1788370963; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to:content-type;
- bh=oZW3qoD7QrbM4MXrB8JSaCeBkeFxfPJqAEghSbxmme4=;
- b=nJZ6G3yxx3ksDSa/G+pWfoWA8KDwXV77mAartVWWBZ6ZE/Mpgl2LlFqeoHo1lNfDyf
- w5eZF6L8AZYMjJulUUZ/VGqEePHuBaAaj4WfX2Zy03okpeQ9Icg1BBStlC2I/PDzAJ7D
- zmGogfgih9yDmXLeQ2p5FHYj7iHXNRA02jLWGZVTlKQNIMDpkzptG/20PeGEc9NNDXsf
- faVBAl4GF61CxhhGJTTSDyvAskEQTEE9B/ArIlJ5GNbvf8/sTaergolg5/dwb57nakXF
- THsQ8nWlTlO9BB1YfXtcFuzcy971FmAXH5ZB1nPaoMbzdouP5L8+2MLEC/yWJmpMDpHO
- P40Q==
+ bh=WrrRWKpGNWDrU8AN2wOPobSA2FL+e0hgHNz5HBTnLvM=;
+ b=mbfmvcaXkfZQNtJTodnu397UALlTaaAFdC9q6LA+/lqfx1Spz1dO9vHm6ZQp4VN/oF
+ t17aUNUN5VtclYrPvHQj2st7pI7wNeqHq1skSl6GZi0a9ul1nZWAgO5UpcInVYf9N+At
+ IFai0cGA0geAG81IxA3bmG86mOYQmHDRhL23kg91+5cqw46Cjeod0VXJOx+ywo5RjU2U
+ S9NWtiVezCELZfxH5TRH9KXJjGcrI+hk1L/zXzCJfPNl49LzRwfjGPFw1Lv5dSkpbuGG
+ Zdo/hmGksqpL92g9n3AL67OmX96Z+tzWAPCaiyda0rQimtkjwamhdWlSOxt0lT8XP5qH
+ vUIQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1787766151; x=1788370951;
+ d=1e100.net; s=20251104; t=1787766163; x=1788370963;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
  :to:cc:subject:date:message-id:reply-to:content-type;
- bh=oZW3qoD7QrbM4MXrB8JSaCeBkeFxfPJqAEghSbxmme4=;
- b=gzREpYwR9JmibUTxRGhDm9Vw/r2+gat1Fo1GKzBPrzVkNDknr6588SQpvYDGqdzOiI
- HcKeLVDv0Bg+9gCv9tkKPfkPoen+YmJ1rg0KOxaoV7B+54oHPL5rpdFkTD1bVKQb75FA
- DrACIS39LirT59cZJyHrGLNI1iTm2gAVI4WfRL9DScEfFL90zdVbG+YvJ+lriVtKIS4w
- nEgFbuwDpGGZPCYJLRIFeqy0K6zfNcPfUNh/rSvItag87kitDEyD/UJyJFRRHYzyro6Z
- Jm8Xunq3H7k1cxmYjuf1gis/dkgXtfwJK9qxG+lq3aSeMh3CJy3x/HwJXH3kXz+0qxfx
- o5Ng==
-X-Gm-Message-State: AFuF++mQJ+ORbUPQKu3ygSX6vRDvWzuOoAWwFXWpP3zLIS8JzEm+7Tta
- QcfSSiClnhZWuMs0mxFdaj8ycC1eRX6p4wkadzYqFa/z7WrsPZY9QkWI8QDSPaoJKUM=
-X-Gm-Gg: AR+sD125qE4H98gpWbF/T9+apbeutmZ7Rp3ubu2NqcfVp94AnqR0tO3SRYvSXQr9eSA
- YD8jP0u3iorO0aMkAK5gktG03S/pIeWdDEOM8vA6Ppd0B1XdfnUQ8rIVESpeUK6v6cVRKwv7Uy2
- KxQUnp80ledFfSwIycoKMwqfXPQxIp0Z337z6U+iRXEcB+fR4FCY6ccSw/9Vn1J8EKvEvBgTWL/
- VroySJLr7gY/5jj0qc48p8riwSoHlRk5GRwUVfLBGgmi+W1t7K5TMyqIfvelCj/vQT5wHdQULrv
- 3kX4F13eOAQkv4PWTR6GdxJNLAtqUsTGCBUGi6ss7vmaD23wqfyFK8LMJTIk3OYKfR9Y+8+/xB0
- GSrWfuKsMA0ERL3bELwU1h7l7VEYOdMo215hENlG39cZya257OCF5sG7PghY1+cglmKUQbosaRZ
- HhHn9jXcV6pZDRkaUmpWu4xBucYvKCX3Vy+eiiCI/Ct9irWHDN+brFwO0Ed/ooOEMZWIGrF+r+4
- eLE06dl+MACuAL8htkV6iwfhied
-X-Received: by 2002:a05:6a21:3315:b0:3c3:875d:c52f with SMTP id
- adf61e73a8af0-3cf83239ac1mr18129710637.10.1787766151051; 
- Wed, 26 Aug 2026 10:42:31 -0700 (PDT)
+ bh=WrrRWKpGNWDrU8AN2wOPobSA2FL+e0hgHNz5HBTnLvM=;
+ b=QZcq9EKiF4R73t4fc7TXyVeEIBQmTrOs4bKP/El/1wNxdXXk1NaOvc2bDLSesmaC72
+ JUVFCD94oXl60bqsKpr6EJXqLGCIdlLFJ5/VXoQ/0AzirG/hRhLlFEt7UX80jq73QDmm
+ FAFkblpTo+02MOIaC69dUFZmeW/02o9QGyUESn9SXq7aZ3DWiaIbVs1id/TiKaj52LXP
+ f0g9B+cr4AWKS6mTp8ln7ZZWwRncd12FIiPV90ZdohibyjUsp3ObJTroBH80Pj7sf/+7
+ h/KJ6MWw9wHtGNTP36qeQwQ6/BUlF9hzvAD3MzY4ZhQHCrAGirnXwSz2HWfDhMBg5QRK
+ iU+A==
+X-Gm-Message-State: AFuF++krSuFLfL03iBeM09rvIARUWexbV9I6VHdss619bxeM632G7+u8
+ 6SKWVG212ZZSdt4YQhQcXLNeUR2WFnm73pWC76h9Jh+G+nEuxMXCx6xPisg5RqsjExvMJL5wHsK
+ Km7WJGww=
+X-Gm-Gg: AR+sD12X3LuavolSCoiWlEbMqccVNYtzmzvgY8j2uH0M+pUVR7pgD9pvVbWzYjBlLBS
+ iPimWWfAoTvS96knR8vudEJrwK9vVfBAzHecL3kNJLJVHUkaDfEuvZPUmU1afTES3xwHvF4pnJh
+ xHquuFE1bTQEKJ7Fkx2eQNKlMjnMfGdwox7jOiSmGrZam3kQsoieACh+nWA5zQsGErSerPiu9eZ
+ Ls/H9XdCY5EWYygkD+hWOWyFnI+W3sYzbY+I+0Gy5AE+8LvENR5YRrmqLLmhr52ugNypiT5MsMc
+ 0v5QF4DknSXcWjcXZ4e02Hf2+VtRM3KA0z1TJ0Yrh6iConiPEMthb/t0P88Llo0kK6G/nryqhiw
+ 1FsxTrF1VtHys82kDdiGszNejauIhJTB/G+V6yCdzV/yekCCF2DC1rUEYt6vMdAT5/QNW6ojFxt
+ qq6sUMFyHs42RncDpHrwPf79y2aEpAeHQn1ndizhGJcxlSjN098E264KfsrrGBCnhaJDvHqQPVQ
+ OGlCys1odcGOOvyeg==
+X-Received: by 2002:a05:6a21:a87:b0:3c3:a3f4:5485 with SMTP id
+ adf61e73a8af0-3cf75773e9dmr18258053637.6.1787766163170; 
+ Wed, 26 Aug 2026 10:42:43 -0700 (PDT)
 Received: from stoup (174-21-93-59.tukw.qwest.net. [174.21.93.59])
  by smtp.gmail.com with ESMTPSA id
- 41be03b00d2f7-cc1bec66020sm1260072a12.21.2026.08.26.10.42.30
+ 41be03b00d2f7-cc1bec66020sm1260072a12.21.2026.08.26.10.42.41
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 26 Aug 2026 10:42:30 -0700 (PDT)
+ Wed, 26 Aug 2026 10:42:41 -0700 (PDT)
 From: Richard Henderson <richard.henderson@linaro.org>
 To: qemu-devel@nongnu.org
-Cc: qemu-arm@nongnu.org,
-	Peter Maydell <peter.maydell@linaro.org>
-Subject: [PATCH v2 14/25] target/arm: Enable FEAT_SVE_BFSCALE for -cpu max
-Date: Wed, 26 Aug 2026 10:42:01 -0700
-Message-ID: <20260826174213.614571-15-richard.henderson@linaro.org>
+Cc: qemu-arm@nongnu.org
+Subject: [PATCH v2 24/25] target/arm: Implement PMULL, PMLAL
+Date: Wed, 26 Aug 2026 10:42:11 -0700
+Message-ID: <20260826174213.614571-25-richard.henderson@linaro.org>
 X-Mailer: git-send-email 2.53.0
 In-Reply-To: <20260826174213.614571-1-richard.henderson@linaro.org>
 References: <20260826174213.614571-1-richard.henderson@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::42a;
- envelope-from=richard.henderson@linaro.org; helo=mail-pf1-x42a.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::42c;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pf1-x42c.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -101,51 +101,102 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- linux-user/aarch64/elfload.c  | 1 +
- target/arm/tcg/cpu64.c        | 2 +-
- docs/system/arm/emulation.rst | 1 +
- 3 files changed, 3 insertions(+), 1 deletion(-)
+ target/arm/tcg/helper-sve-defs.h |  3 +++
+ target/arm/tcg/translate-sve.c   |  5 +++++
+ target/arm/tcg/vec_helper64.c    | 34 ++++++++++++++++++++++++++++++++
+ target/arm/tcg/sve.decode        |  5 +++++
+ 4 files changed, 47 insertions(+)
 
-diff --git a/linux-user/aarch64/elfload.c b/linux-user/aarch64/elfload.c
-index c086548f7fd..bcf2e6b9c18 100644
---- a/linux-user/aarch64/elfload.c
-+++ b/linux-user/aarch64/elfload.c
-@@ -180,6 +180,7 @@ abi_ulong get_elf_hwcap(CPUState *cs)
-     GET_FEATURE_ID(aa64_sme_tmop, ARM_HWCAP_A64_SME_STMOP);
-     GET_FEATURE_ID(aa64_sve2p2, ARM_HWCAP_A64_SVE2P2);
-     GET_FEATURE_ID(aa64_sme2p2, ARM_HWCAP_A64_SME2P2);
-+    GET_FEATURE_ID(aa64_sve_bfscale, ARM_HWCAP_A64_SVE_BFSCALE);
+diff --git a/target/arm/tcg/helper-sve-defs.h b/target/arm/tcg/helper-sve-defs.h
+index f78e77662de..498468a7723 100644
+--- a/target/arm/tcg/helper-sve-defs.h
++++ b/target/arm/tcg/helper-sve-defs.h
+@@ -3215,3 +3215,6 @@ DEF_HELPER_FLAGS_4(sve_expand_b, TCG_CALL_NO_WG, void, ptr, ptr, ptr, i32)
+ DEF_HELPER_FLAGS_4(sve_expand_h, TCG_CALL_NO_WG, void, ptr, ptr, ptr, i32)
+ DEF_HELPER_FLAGS_4(sve_expand_s, TCG_CALL_NO_WG, void, ptr, ptr, ptr, i32)
+ DEF_HELPER_FLAGS_4(sve_expand_d, TCG_CALL_NO_WG, void, ptr, ptr, ptr, i32)
++
++DEF_HELPER_FLAGS_4(sve_pmull_q, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
++DEF_HELPER_FLAGS_4(sve_pmlal_q, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
+diff --git a/target/arm/tcg/translate-sve.c b/target/arm/tcg/translate-sve.c
+index 1098cf0b388..10375577b1e 100644
+--- a/target/arm/tcg/translate-sve.c
++++ b/target/arm/tcg/translate-sve.c
+@@ -8351,6 +8351,11 @@ TRANS_FEAT_STREAMING_IF(AESEMC, aa64_sve_aes2, aa64_ssve_aes,
+ TRANS_FEAT_STREAMING_IF(AESDIMC, aa64_sve_aes2, aa64_ssve_aes,
+                         do_aes2_idx, a, gen_helper_crypto_aesdimc)
  
-     return hwcaps;
++TRANS_FEAT_STREAMING_IF(PMULL, aa64_sve_aes2, aa64_ssve_aes,
++                        gen_gvec_ool_arg_zzz, gen_helper_sve_pmull_q, a, 0)
++TRANS_FEAT_STREAMING_IF(PMLAL, aa64_sve_aes2, aa64_ssve_aes,
++                        gen_gvec_ool_arg_zzz, gen_helper_sve_pmlal_q, a, 0)
++
+ TRANS_FEAT(FCVTNT_sh_m, aa64_sme_or_sve2, gen_gvec_fpst_arg_zpz,
+            gen_helper_sve2_fcvtnt_sh, a, 0, FPST_A64)
+ TRANS_FEAT(FCVTNT_sh_z, aa64_sme2p2_or_sve2p2, gen_gvec_fpst_arg_zpz,
+diff --git a/target/arm/tcg/vec_helper64.c b/target/arm/tcg/vec_helper64.c
+index 88799693507..4f43869d9e9 100644
+--- a/target/arm/tcg/vec_helper64.c
++++ b/target/arm/tcg/vec_helper64.c
+@@ -89,6 +89,40 @@ void HELPER(sve2_pmull_d)(void *vd, void *vn, void *vm, uint32_t desc)
+     }
  }
-diff --git a/target/arm/tcg/cpu64.c b/target/arm/tcg/cpu64.c
-index 7cad37ae61a..f04d708bcc2 100644
---- a/target/arm/tcg/cpu64.c
-+++ b/target/arm/tcg/cpu64.c
-@@ -1473,7 +1473,7 @@ void aarch64_max_v9_tcg_initfn(Object *obj)
-     t = FIELD_DP64(t, ID_AA64ZFR0, AES, 2);       /* v9.0: FEAT_SVE_PMULL128 */
-     t = FIELD_DP64(t, ID_AA64ZFR0, ELTPERM, 1);   /* v9.4: FEAT_SVE2p2 */
-     t = FIELD_DP64(t, ID_AA64ZFR0, BITPERM, 1);   /* v9.0: FEAT_SVE_BitPerm */
--    t = FIELD_DP64(t, ID_AA64ZFR0, B16B16, 1);    /* v9.2: FEAT_SVE_B16B16 */
-+    t = FIELD_DP64(t, ID_AA64ZFR0, B16B16, 2);    /* v9.2: FEAT_SVE_BFSCALE */
-     t = FIELD_DP64(t, ID_AA64ZFR0, SHA3, 1);      /* v9.0: FEAT_SVE_SHA3 */
-     t = FIELD_DP64(t, ID_AA64ZFR0, SM4, 1);       /* v9.0: FEAT_SVE_SM4 */
-     SET_IDREG(isar, ID_AA64ZFR0, t);
-diff --git a/docs/system/arm/emulation.rst b/docs/system/arm/emulation.rst
-index eb22469bb36..d41ad978bbd 100644
---- a/docs/system/arm/emulation.rst
-+++ b/docs/system/arm/emulation.rst
-@@ -198,6 +198,7 @@ the following architecture extensions:
- - FEAT_SVE (Scalable Vector Extension)
- - FEAT_SVE_AES (Scalable Vector AES instructions)
- - FEAT_SVE_B16B16 (Non-widening BFloat16 arithmetic for SVE2)
-+- FEAT_SVE_BFSCALE (BFloat16 Floating-Point Adjust Exponent)
- - FEAT_SVE_BitPerm (Scalable Vector Bit Permutes instructions)
- - FEAT_SVE_PMULL128 (Scalable Vector PMULL instructions)
- - FEAT_SVE_SHA3 (Scalable Vector SHA3 instructions)
+ 
++void HELPER(sve_pmull_q)(void *vd, void *vn, void *vm, uint32_t desc)
++{
++    intptr_t opr_sz = simd_oprsz(desc);
++    uint64_t *n = vn, *m = vm;
++    uint64_t *d0 = vd;
++    uint64_t *d1 = vd + sizeof(ARMVectorReg);
++
++    for (intptr_t i = 0; i < opr_sz / 16; ++i) {
++        Int128 rl = clmul_64(n[2 * i + 0], m[2 * i + 0]);
++        Int128 rh = clmul_64(n[2 * i + 1], m[2 * i + 1]);
++        d0[2 * i + 0] = int128_getlo(rl);
++        d0[2 * i + 1] = int128_gethi(rl);
++        d1[2 * i + 0] = int128_getlo(rh);
++        d1[2 * i + 1] = int128_gethi(rh);
++    }
++}
++
++void HELPER(sve_pmlal_q)(void *vd, void *vn, void *vm, uint32_t desc)
++{
++    intptr_t opr_sz = simd_oprsz(desc);
++    uint64_t *n = vn, *m = vm;
++    uint64_t *d0 = vd;
++    uint64_t *d1 = vd + sizeof(ARMVectorReg);
++
++    for (intptr_t i = 0; i < opr_sz / 16; ++i) {
++        Int128 rl = clmul_64(n[2 * i + 0], m[2 * i + 0]);
++        Int128 rh = clmul_64(n[2 * i + 1], m[2 * i + 1]);
++        d0[2 * i + 0] ^= int128_getlo(rl);
++        d0[2 * i + 1] ^= int128_gethi(rl);
++        d1[2 * i + 0] ^= int128_getlo(rh);
++        d1[2 * i + 1] ^= int128_gethi(rh);
++    }
++}
++
+ DO_3OP_PAIR(gvec_ah_fmaxp_h, helper_vfp_ah_maxh, float16, H2)
+ DO_3OP_PAIR(gvec_ah_fmaxp_s, helper_vfp_ah_maxs, float32, H4)
+ DO_3OP_PAIR(gvec_ah_fmaxp_d, helper_vfp_ah_maxd, float64, /**/)
+diff --git a/target/arm/tcg/sve.decode b/target/arm/tcg/sve.decode
+index 7030d81db7e..42f451ff9f0 100644
+--- a/target/arm/tcg/sve.decode
++++ b/target/arm/tcg/sve.decode
+@@ -1994,6 +1994,11 @@ AESEMC          01000101 00 1 .. .11111010 ..... ...00   @aes2_4
+ AESDIMC         01000101 00 1 .. .11111011 ..... ....0   @aes2_2
+ AESDIMC         01000101 00 1 .. .11111011 ..... ...00   @aes2_4
+ 
++PMULL           01000101 00 1 rm:5 111110 rn:5 ....0 \
++                &rrr_esz esz=0 rd=%zd_ax2
++PMLAL           01000101 00 1 rm:5 111111 rn:5 ....0 \
++                &rrr_esz esz=0 rd=%zd_ax2
++
+ # SVE2 crypto constructive binary operations
+ SM4EKEY         01000101 00 1 ..... 11110 0 ..... .....  @rd_rn_rm_e0
+ RAX1            01000101 00 1 ..... 11110 1 ..... .....  @rd_rn_rm_e0
 -- 
 2.53.0
 

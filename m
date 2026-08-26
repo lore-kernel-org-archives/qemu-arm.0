@@ -4,69 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C8464C5DF97
-	for <qemu-arm@archiver.kernel.org>; Wed, 26 Aug 2026 18:43:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E9391C61DC7
+	for <qemu-arm@archiver.kernel.org>; Wed, 26 Aug 2026 18:43:46 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wzIaP-0006ya-N3; Wed, 26 Aug 2026 14:42:57 -0400
+	id 1wzIau-00080H-UV; Wed, 26 Aug 2026 14:43:28 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <luoyonggang@gmail.com>)
- id 1wzIaN-0006sD-LI
- for qemu-arm@nongnu.org; Wed, 26 Aug 2026 14:42:55 -0400
-Received: from mail-pl1-x62c.google.com ([2607:f8b0:4864:20::62c])
+ id 1wzIah-0007WL-7N
+ for qemu-arm@nongnu.org; Wed, 26 Aug 2026 14:43:16 -0400
+Received: from mail-pj1-x102c.google.com ([2607:f8b0:4864:20::102c])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <luoyonggang@gmail.com>)
- id 1wzIaK-00029K-Ky
- for qemu-arm@nongnu.org; Wed, 26 Aug 2026 14:42:55 -0400
-Received: by mail-pl1-x62c.google.com with SMTP id
- d9443c01a7336-2caea3f742bso20643475ad.0
- for <qemu-arm@nongnu.org>; Wed, 26 Aug 2026 11:42:52 -0700 (PDT)
+ id 1wzIad-0002IN-70
+ for qemu-arm@nongnu.org; Wed, 26 Aug 2026 14:43:14 -0400
+Received: by mail-pj1-x102c.google.com with SMTP id
+ 98e67ed59e1d1-39647184c73so185190a91.1
+ for <qemu-arm@nongnu.org>; Wed, 26 Aug 2026 11:43:10 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20251104; t=1787769771; x=1788374571; darn=nongnu.org;
+ d=gmail.com; s=20251104; t=1787769790; x=1788374590; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to:content-type;
- bh=IukQGcRHMsVbGXSG1mzI1R3dLtKOyYm2L7shctiJxkE=;
- b=joIL65oGCWHBM68YknwbarQ86NWE6PJIuU0usv3GZ34DvI+Lh3RO03h0F//fDJMmq+
- wIJeZTcRYV5n/2ofIyOL8f4/3ZkKE9jC+zkaZPajjUbW0BBjsw5xxB6IYCYwpCUGqpEG
- QZMIzmwduYHcHLwZrUvaurVCFhoTJp/1FyMWYNKEXAdrbk0ePIu8dyE9Mk4jPG5OWkmK
- OZW7SAq2d2APxke/IF9OWMKvyqpc1lLBRBJFHN5V6ZTjoDs45WkxIQFtREHBM1ZEb+7d
- t48/YBYKs1uhGmkwukbiy7Q9PivS+KfASN+k6hkOUyJ7BUQzT4Dyj5oT6nqDevhmF5YF
- Dh5w==
+ bh=esiIQQ8j+uvEVKSy2+ZWdGzm2PcDAqeU44dys6a2Fmc=;
+ b=LaHV+3ospoSnq2nPSuxnZN4wkZBxGzcDJzGalw3kA9oDC4eULJieufGH06Mahiw+YA
+ 0pLy14MJsPO3ZcCjkuJw3eb9XGPCvjVBE8bxK48udEHwLbveoTOhHDrzDq5QCPZanBKi
+ J6gm203u2bv/RdhW8H6ENlIg3HrHPkFajvYtBGvmKCR/j0cFVp4GK3oJZUUF241UwC1F
+ qw+lXEBrlyb1H+OOP0bbu1k+0YPz5vzrQbb5a2c16Bpj1sTd8r5/oxtYKNzJlBwZYxH8
+ unzu8DKYNRU3VeeRbc3vq8W3lLwuAOb1FzO41jd4P/l7UBnY2maE5lQBZwXc0DARCWcq
+ /lRQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1787769771; x=1788374571;
+ d=1e100.net; s=20251104; t=1787769790; x=1788374590;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
  :to:cc:subject:date:message-id:reply-to:content-type;
- bh=IukQGcRHMsVbGXSG1mzI1R3dLtKOyYm2L7shctiJxkE=;
- b=pCfWwlY/VBgRsaCvj6vtxhqn15LHJ2ZVqXn8Mfkm3q0qf41Svk8CU82c1NhDqWwqOf
- WlZx2919z/X9lmnLXJROxK2puOUBAwUbCxtbFH4yM5UuUlkyBCyDfgflc0W7Gi0yTxyk
- wWZjVqVhY9WjwsIkRftlTPmpNMUv7/yZEd1PTqPN1O9OoijnALay83G7GJYN5r6S9TcW
- 5fLQ7RUu9HvWSMqLYazAOBPlegW1pNRplu2IWisP4p/0mRTicr+nrToi7paWeZJP10CM
- UKbIbtUnR0OgmFWBAx9MC9tof9KJuzt9Ixbw4+/wgp9ZwHDdZlcEsRxVZfZe5r6AGatr
- 1qmg==
+ bh=esiIQQ8j+uvEVKSy2+ZWdGzm2PcDAqeU44dys6a2Fmc=;
+ b=gU+0U0SahLiVI2cnTdoTcFKR0+MP+wbOPr8Hkayp+dWIGG/De37EtPbbk+75VR9837
+ VhxZRg2eQ/gUUKBmduVif6Vyx/fuHRXLn3WvqLtlBTZTg+vCkFiDzp7FRnduq73VWMCY
+ CUB6nHEMOoO2EQTv0x7fURof8YsfEn2/QR2w8u7u30ppai7+FcfDYxYgTDP5EAGDCGnL
+ M6SDRonFM7/QA7sZ+IYE8Zdbd9X26XDH2m4CZlXJAjPaeL0qA3Kg+rDae8N5TBKN86C1
+ W7Gxixc4M/r1VLCt0YsPg6qoBagQWoBkarMYvAVLp4tmY6b5WeKtxHw4hFyWuUwigRFC
+ qe6Q==
 X-Forwarded-Encrypted: i=1;
- AHgh+RrR/VJgPcSSFZ56YlCMBwvHOahuVvzaDjTWoKk+QYv0GgydEDw/zumQi4o3hv+MEXRjkPnJZMlzug==@nongnu.org
-X-Gm-Message-State: AFuF++mg0VPqsJUUc4L+ggCKXP4Pzsq5mEoeXcGeisjl7MjVN+0oN0y3
- 6uy40EZALUJCyzQCjif1FNb1+gwAEaAltedGG99KETB2vvFkr4XhE9Ys
-X-Gm-Gg: AR+sD13xNVqKJExdDnug5Jw7K0e3cfEIyEdinJzUFAIkk0m+BDOCXr7mJuCvNrIIpiE
- Rj+di/8IFo4/V40SgPt4OP6y8DnUs54orCuw1r12OECHBNng4weAzx2epSPQ8f97bYomGtQr/go
- ay0NzbyXNheCSMy/GDUZWJQdIwTKx6BEpy5mGX6jbuSirJyEe/0fwo+e+g7ZlgNAHGdmZiR+yBI
- aqeBN3ti1oFGG+dFNuo00UZWwaDO7/yxcwFCS1mPY9ZXDuVPJc4dS2L3kB1SGv0U5K8+RDYkDTp
- 0mVS0f/uVyeF6PER4N8w21eHWmHcH+0rDjzLqmnJanAIxnm6jCPHy2c7HMGkrNS2F1hiLHl/Jsa
- jheCW7kUI7FjJnOUp1OvFB+aZKAbYnzfZFsQiAjtrj3zbE7kB3aWlOBm/N0ZP/sphTh2GQSnl4k
- oru4VQzJpqEV+zmrxpDYCNx6grxFT4j1M9mDorWyvXvoQvhhWcmEduzXdm0x6UoYnSdtSa4H5Uh
- xVDRqVOiipV3UOYb++t8Q==
-X-Received: by 2002:a05:6a21:a382:b0:3cc:22bb:8911 with SMTP id
- adf61e73a8af0-3cf833389c9mr19772223637.6.1787769770909; 
- Wed, 26 Aug 2026 11:42:50 -0700 (PDT)
+ AHgh+RqnFfCS5M8k9ezb1XxK7N9DT4X1p+CCVtMTMZkM3A0Es6wPF6YTJz2FDi5Kekx2MNlempApZLkR4Q==@nongnu.org
+X-Gm-Message-State: AFuF++mZzz00XCqmdjeaK8hEy0jpgLvUR/7W6dWVvp0gcDboEEI5XAjV
+ KDHbbeU2n49ul1LyKpfd7yCvmrkXTf5jcKo73PmUIgmjUASmUiDD2J2C
+X-Gm-Gg: AR+sD12QbyUt7/CbUtamEoztl+g6r340i3SxA4hil3QnOI/69iUt3FX2aJlvZXgWitb
+ iIQ9J8g3uT2NDnfdjQq+dJ8Je5cjxW2Pr9VGkqAv1+dykp8ZZjnX20gEFt3UzhwAbD5IC3j3qJa
+ 6txXGbDcy+NNPJMaorZrqlbCfNt/RFwaPdthbCThDgm8QtWnUgn+ff/b4N9azEnTRd6QnHhhdGg
+ F1/6zrClCNGtb+u/ZjD/sdSYEGWx3MxauBJw9Dn/QSpRky5pJv5CT1HYz4oIYucctNXhh3+Y81s
+ YxTPw8IwhlKk1N8PdI9HQCGS/zl7qnw+Z/PS4QsZKjq7pMmqbBUFgQnxciIUCGW2r1d4LQ/1Zjx
+ FLMSFo2FJkXBlfj4Gyyu9r1EMaCxFySdpQEbBCXT8cYX1LnRuLN70pTszHk02/1xg7/YflT1h4q
+ iVNCovFW8LrAkuj6x2T5w6NlZc4iH7yHm29vivH1X+wtFZLdgyawT3DRyqlcgCfgz9ITefBfl1k
+ XCCl4Z8mNbt/VUIjwLGvg==
+X-Received: by 2002:a17:90b:3811:b0:37e:1620:dabc with SMTP id
+ 98e67ed59e1d1-3969b7e33acmr1328049a91.0.1787769789662; 
+ Wed, 26 Aug 2026 11:43:09 -0700 (PDT)
 Received: from WIN-BH9M8FJACR9 ([103.94.185.75])
  by smtp.googlemail.com with ESMTPSA id
- 5a478bee46e88-3283d60c291sm17681846eec.6.2026.08.26.11.42.42
+ 5a478bee46e88-3283d60c291sm17681846eec.6.2026.08.26.11.43.00
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 26 Aug 2026 11:42:50 -0700 (PDT)
+ Wed, 26 Aug 2026 11:43:07 -0700 (PDT)
 From: Yonggang Luo <luoyonggang@gmail.com>
 To: qemu-devel@nongnu.org
 Cc: Peter Maydell <peter.maydell@linaro.org>, Fabiano Rosas <farosas@suse.de>,
@@ -99,16 +99,17 @@ Cc: Peter Maydell <peter.maydell@linaro.org>, Fabiano Rosas <farosas@suse.de>,
  =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
  Liu Zhiwei <zhiwei_liu@linux.alibaba.com>,
  Igor Mammedov <imammedo@redhat.com>
-Subject: [PATCH v2 01/13] accel: use a shared TYPE_ACCEL_CPU parent
-Date: Thu, 27 Aug 2026 02:42:15 +0800
-Message-ID: <20260826184229.1145-2-luoyonggang@gmail.com>
+Subject: [PATCH v2 03/13] hw/arm/virt: register TYPE_TARGET_SPECIFIC on the
+ abstract parent
+Date: Thu, 27 Aug 2026 02:42:17 +0800
+Message-ID: <20260826184229.1145-4-luoyonggang@gmail.com>
 X-Mailer: git-send-email 2.52.0.windows.1
 In-Reply-To: <20260826184229.1145-1-luoyonggang@gmail.com>
 References: <20260826184229.1145-1-luoyonggang@gmail.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::62c;
- envelope-from=luoyonggang@gmail.com; helo=mail-pl1-x62c.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::102c;
+ envelope-from=luoyonggang@gmail.com; helo=mail-pj1-x102c.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -131,92 +132,35 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-- TYPE_ACCEL_CPU was "accel-" CPU_RESOLVING_TYPE, so each arch compiled
-  a different parent (accel-arm-cpu, accel-riscv-cpu, ...). Common code
-  registered only one of those names from target_cpu_type() at
-  MODULE_INIT_QOM.
-- A combined binary still registers every linked AccelCPU subclass.
-  RISC-V tcg-accel-riscv-cpu has parent accel-riscv-cpu even when the
-  selected target is ARM, so the old one-parent type_init does not
-  cover the other family. Creating the parent in the subclass
-  register path would hide that, but it keeps per-arch parents that
-  AccelCPUClass does not need.
-- AccelCPUClass is arch-independent. The parent only supplies
-  class_size and ACCEL_CPU_CLASS(). Make TYPE_ACCEL_CPU the fixed
-  abstract type accel-cpu and register it once next to TYPE_ACCEL.
-- Leaf names still encode the CPU type so accel_init_cpu_interfaces()
-  can look up "<accel>-accel-" CPU_RESOLVING_TYPE (for example
-  tcg-accel-arm-cpu). ACCEL_CPU_NAME() keeps that string; it is no
-  longer derived from the parent type name.
-- Drop register_accel_target_type(). Subclasses keep
-  type_register_static() with .parent = TYPE_ACCEL_CPU.
+Hide the ARM virt machine when the selected target is not ARM in a
+combined qemu-system binary. Versioned virt types already implement
+TYPE_TARGET_SPECIFIC; register it on the abstract parent as well.
 
 Signed-off-by: Yonggang Luo <luoyonggang@gmail.com>
 ---
- accel/accel-common.c             | 21 ++++++---------------
- include/accel/accel-cpu-target.h |  3 +--
- include/accel/accel-cpu.h        |  2 ++
- 3 files changed, 9 insertions(+), 17 deletions(-)
+ hw/arm/virt.c | 2 ++
+ 1 file changed, 2 insertions(+)
 
-diff --git a/accel/accel-common.c b/accel/accel-common.c
-index 00a400243f0..c4c365f38c7 100644
---- a/accel/accel-common.c
-+++ b/accel/accel-common.c
-@@ -126,21 +126,12 @@ static const TypeInfo accel_types[] = {
-         .instance_size  = sizeof(AccelState),
-         .abstract       = true,
+diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+index daba9af79f1..c2ace7706f1 100644
+--- a/hw/arm/virt.c
++++ b/hw/arm/virt.c
+@@ -4161,6 +4161,7 @@ static void virt_machine_class_init(ObjectClass *oc, const void *data)
+     MachineClass *mc = MACHINE_CLASS(oc);
+     HotplugHandlerClass *hc = HOTPLUG_HANDLER_CLASS(oc);
+ 
++    TARGET_SPECIFIC_CLASS(oc)->is_available = target_base_arm;
+     mc->init = machvirt_init;
+     /* Start with max_cpus set to 512, which is the maximum supported by KVM.
+      * The value may be reduced later when we have more information about the
+@@ -4431,6 +4432,7 @@ static const TypeInfo virt_machine_info = {
+     .instance_finalize = virt_instance_finalize,
+     .interfaces = (const InterfaceInfo[]) {
+          { TYPE_HOTPLUG_HANDLER },
++         { TYPE_TARGET_SPECIFIC },
+          { }
      },
-+    {
-+        .name           = TYPE_ACCEL_CPU,
-+        .parent         = TYPE_OBJECT,
-+        .abstract       = true,
-+        .class_size     = sizeof(AccelCPUClass),
-+    },
  };
- 
- DEFINE_TYPES(accel_types)
--
--static void register_accel_target_type(void)
--{
--    g_autofree char *name = g_strconcat("accel-", target_cpu_type(), NULL);
--    const TypeInfo accel_cpu_type = {
--        .name = name,
--        .parent = TYPE_OBJECT,
--        .abstract = true,
--        .class_size = sizeof(AccelCPUClass),
--    };
--
--    type_register_static(&accel_cpu_type);
--}
--
--type_init(register_accel_target_type);
-diff --git a/include/accel/accel-cpu-target.h b/include/accel/accel-cpu-target.h
-index 6feb344e29b..cf33ebd79fc 100644
---- a/include/accel/accel-cpu-target.h
-+++ b/include/accel/accel-cpu-target.h
-@@ -24,8 +24,7 @@
- #include "accel/accel-cpu.h"
- #include "cpu.h"
- 
--#define TYPE_ACCEL_CPU "accel-" CPU_RESOLVING_TYPE
--#define ACCEL_CPU_NAME(name) (name "-" TYPE_ACCEL_CPU)
-+#define ACCEL_CPU_NAME(name) (name "-accel-" CPU_RESOLVING_TYPE)
- DECLARE_CLASS_CHECKERS(AccelCPUClass, ACCEL_CPU, TYPE_ACCEL_CPU)
- 
- #endif /* ACCEL_CPU_H */
-diff --git a/include/accel/accel-cpu.h b/include/accel/accel-cpu.h
-index 9e7eede7c3c..5cfc2b24223 100644
---- a/include/accel/accel-cpu.h
-+++ b/include/accel/accel-cpu.h
-@@ -12,6 +12,8 @@
- #include "qom/object.h"
- #include "hw/core/cpu.h"
- 
-+#define TYPE_ACCEL_CPU "accel-cpu"
-+
- typedef struct AccelCPUClass {
-     ObjectClass parent_class;
- 
 -- 
 2.52.0.windows.1
 

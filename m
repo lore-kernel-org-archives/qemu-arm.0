@@ -4,111 +4,121 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 999F9C61DB9
-	for <qemu-arm@archiver.kernel.org>; Thu, 27 Aug 2026 11:07:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EC52BC61DC6
+	for <qemu-arm@archiver.kernel.org>; Thu, 27 Aug 2026 11:18:20 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wzXwp-00078t-G5; Thu, 27 Aug 2026 07:07:07 -0400
+	id 1wzY7A-0003qV-Qz; Thu, 27 Aug 2026 07:17:48 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <alistair@alistair23.me>)
- id 1wzXwn-00077u-Dr; Thu, 27 Aug 2026 07:07:05 -0400
-Received: from fout-b2-smtp.messagingengine.com ([202.12.124.145])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <alistair@alistair23.me>)
- id 1wzXwl-0004HD-Ng; Thu, 27 Aug 2026 07:07:05 -0400
-Received: from phl-compute-02.internal (phl-compute-02.internal [10.202.2.42])
- by mailfout.stl.internal (Postfix) with ESMTP id 4E3F91D000F0;
- Thu, 27 Aug 2026 07:07:01 -0400 (EDT)
-Received: from phl-frontend-04 ([10.202.2.163])
- by phl-compute-02.internal (MEProxy); Thu, 27 Aug 2026 07:07:02 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=alistair23.me;
- h=cc:cc:content-transfer-encoding:content-type:content-type
- :date:date:from:from:in-reply-to:in-reply-to:message-id
- :mime-version:references:reply-to:subject:subject:to:to; s=fm3;
- t=1787828821; x=1787915221; bh=XztJHRpcO9IJGDHgZHcfXNqajY7MGL7t
- JlQ4vnPQER8=; b=Kk7TXezOeJcurKRerY+gAZVNh+3VAnvu9yGsNO7Ia+9QhfYn
- rslylGnhO0T/DtDhlHG06gER4l2ao/gqa8j6nWCJaHbgIAa+6bU81+Og87MDK7Cb
- y/4Nz2AgWgQ5Vbd9TMrO3NzKhZb/6OECTCbog0iIcjt+XNulsFeNe8ungduvckeG
- WRuwtUA7YfjHSvKB21xXIsaJthLdgy+ZLiPZfy3DfLdEscaQIHfS0g37DQ2Tn4cU
- 65SzVop5uUCyTBvymcxHqSXMdjzhH3aqrdT3gjLq3grA6FuoyxZt0uxoCiRh20Gp
- 7H3B7WVbzGudCwLp6DAwayrcIO2g/tSGTcpMhg==
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
- messagingengine.com; h=cc:cc:content-transfer-encoding
- :content-type:content-type:date:date:feedback-id:feedback-id
- :from:from:in-reply-to:in-reply-to:message-id:mime-version
- :references:reply-to:subject:subject:to:to:x-me-proxy
- :x-me-sender:x-me-sender:x-sasl-enc; s=fm3; t=1787828821; x=
- 1787915221; bh=XztJHRpcO9IJGDHgZHcfXNqajY7MGL7tJlQ4vnPQER8=; b=D
- mnva2OvJ3TsqXIOAMoaattLrjfzsFo94RQH5UbuwYv/l3LnCexmgLtJTHpIZxCCe
- QjKk4bTVDJhkV1BAyOR4iY0rCMzfxBruEe/M3q5DVVVTpv2BDbRSFKw40rQxIfCk
- v7PbFo1u7fOv0OM63veryUl2PM5sBLQ1GCMFteZGe4yGA7P6OqvSmUviRXbvCFqW
- 4OgViWNth3n/O12DWYkHlq94BW0jItCJPwV9jZ++u9FI/Z5J3EgJeMlnxfCg8bCU
- 1HFXAdHVQSbpgYOOVO4w5YXksATcaE1PhdZ4FVfCwUoLljWuPs03JVsodYccr0wC
- ExR0jrZItH+ahIZ3F4pMA==
-X-ME-Sender: <xms:VBqQar5yzdxiHlnveqLb097e6utFUbqJlEw-ASxdXhj4atySDX01jQ>
- <xme:VBqQaijux2dq9YVOe4RZ0rukuF4ibi64k9wsrM7lu92ZWRo_t8YgfByXg1XDjokCc
- 6mUW6eh-n6yEutFmkLsHgNK--pBbc1IUSi_8Sd7xsRjPUwLQhP3AeYr>
-X-ME-Received: <xmr:VBqQahIB6rAiCnhfV-5nkKIU3ZKfhox4VOsUVQ6jiSfRf7RycvzmdlHa4mouKZOdhG12inx7XfXavwBLb7jW>
-X-ME-Proxy-Cause: dmFkZTEm9UgKYeNLo1/fbZ+KeAKIAO+VA0MHj5qTsLBez87SjMicA3wwd9qhocMO+IPYbv
- 37sIIckPQczY6GJBhiwE9vZRbIWUaYRHsmFZm2gkwuuy7dBK50b6vmi0krbOcGeNl1zwh6
- bBOokES6Fu6uXHpqtLRR+qN8Cd6tEEt1EO4uhAfC5PbFRk/sBg33/cs66x3RNENS6VsFRV
- Sy+tnIjYa7uLqosNCaOpSuq2UTUzNy/8YpVBfU6tB4Ka/QBELuJB3llCpkrWIrhkbffDM5
- Qr+2p7X+VgufWK0LyoSm1JHR8PJfkCEmGSUsdQ1m8gVh7gBNCz3pfC+JNL9iRy6x18LhLu
- pSZvTWV0abGoq0ltXqbEu5LK7TjoyZwKNFmbmRXhVaSvLJQ04Nfw8PQyDpRG/P1takqLvf
- KeobDrL2qJlm/VjxbSw6d6wCB/E4AjmTdN73QxHSQsa1I1yJ0lOTnUSRWUXhfmNyq0EWB3
- eqeWCwsngwDtkroyLeY0E4slhuUtsQkn/d7bK+Z2b0zwgAqLP5GyDIyMcNJO2xqzZYvFtP
- fVtJz3Tol1btK5q1h7UxDPYarSEqK5jmaoeMt/hGF6nvRTo8YXoIWSmZu90HepSAIkEvaa
- DMpnnlVC/25vE2l/qMwuLlxJmSZly1KGnm6BjxpLkcJkcWlaELoVBE3nEQqQ
-X-ME-Proxy: <xmx:VBqQakr4J-Ee2OyPfZzdOoVS-WhFn2oN7dx5EINKF-efouWbbGWmMQ>
- <xmx:VBqQavxJ82D3eb1GyfBN9caq2LxUHc0TmPVXpt7FEc-bMgGQJ8J6VQ>
- <xmx:VBqQagfyD-i-Ph-ec8I3GOSNy0ROXV7sTOzsjnkASCr0SfGYCueNaA>
- <xmx:VBqQajc4XlA8fG76ztcj4uyQDdm8iMjbCwcG3juDTraOS1hr3FYjNw>
- <xmx:VRqQaumJMl117c03gJ1tk897NEAHsUDJtnX2T2qzYwUlWyi5GdQssXRa>
-Feedback-ID: ifd214418:Fastmail
-Received: by mail.messagingengine.com (Postfix) with ESMTPA; Thu,
- 27 Aug 2026 07:06:51 -0400 (EDT)
-Message-ID: <e45c6442cda83608af1259e99b31f2be1c0ee473.camel@alistair23.me>
-Subject: Re: [PATCH 0/4] Rename ssi_transfer to ssi_transfer8
-From: Alistair <alistair@alistair23.me>
-To: Peter Maydell <peter.maydell@linaro.org>
-Cc: stephensportia@gmail.com, qemu-devel@nongnu.org,
- Palmer Dabbelt	 <palmer@dabbelt.com>,
- Jamin Lin <jamin_lin@aspeedtech.com>, qemu-ppc@nongnu.org,
- =?ISO-8859-1?Q?C=E9dric?= Le Goater	 <clg@kaod.org>,
- Steven Lee <steven_lee@aspeedtech.com>,
- Andrew Jeffery	 <andrew@codeconstruct.com.au>,
- Harsh Prateek Bora <harshpb@linux.ibm.com>,
- Subbaraya Sundeep <sundeep.lkml@gmail.com>, Troy Lee <leetroy@gmail.com>,
- "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
- Philippe =?ISO-8859-1?Q?Mathieu-Daud=E9?=	 <philmd@mailo.com>,
- Strahinja Jankovic <strahinja.p.jankovic@gmail.com>,
- qemu-arm@nongnu.org, Tyrone Ting <kfting@nuvoton.com>,
- Nicholas Piggin	 <npiggin@gmail.com>, Aditya Gupta <adityag@linux.ibm.com>,
- Kane Chen	 <kane_chen@aspeedtech.com>,
- Francisco Iglesias <francisco.iglesias@amd.com>,
- Joel Stanley <joel@jms.id.au>, Hao Wu <wuhaotsh@google.com>,
- Glenn Miles <milesg@linux.ibm.com>, 	qemu-riscv@nongnu.org,
- Jean-Christophe Dubois <jcd@tribudubois.net>,
- Portia Stephens <portias@oss.tenstorrent.com>
-Date: Thu, 27 Aug 2026 21:06:48 +1000
-In-Reply-To: <CAFEAcA-OE2+H0Gapxqv61kSSgTzns-FWCyagAX0hzewu0Ab2xA@mail.gmail.com>
-References: <20260825040452.1322251-1-stephensportia@gmail.com>
- <d88347aa69db68c498b593eabcd2377413ff4af5.camel@alistair23.me>
- <CAFEAcA-OE2+H0Gapxqv61kSSgTzns-FWCyagAX0hzewu0Ab2xA@mail.gmail.com>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-User-Agent: Evolution 3.60.2 (by Flathub.org) 
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1wzY79-0003qB-Md
+ for qemu-arm@nongnu.org; Thu, 27 Aug 2026 07:17:47 -0400
+Received: from mail-yw1-x1136.google.com ([2607:f8b0:4864:20::1136])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1wzY77-0006x5-PP
+ for qemu-arm@nongnu.org; Thu, 27 Aug 2026 07:17:47 -0400
+Received: by mail-yw1-x1136.google.com with SMTP id
+ 00721157ae682-81ecf499af9so35775357b3.1
+ for <qemu-arm@nongnu.org>; Thu, 27 Aug 2026 04:17:45 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1787829464; cv=none;
+ d=google.com; s=arc-20260327;
+ b=O2BDn/Er8Fj2TmFxnDotZ+HCvlj1f/Zte5wgtBkXY1FXopRwGerj7A5NbrGU8A+FmS
+ OgFJo4ihEPNl6b4kvxdbJk1SzlHfCR7SBSPLs5UWtPIgI7w2XmkvtTKMJlLV7kVOG1mN
+ sQKDqS5ALBp4kM2Cxk4v04rxrWByaRiq9E9kPM/xxPhusNs4o3xCC33ZdxIef0yDBY7w
+ DUrRvMR3j/KTX/4Wvcn5rTqzZi6RecvA0i/yeqTG/ohoHrGzC8UCdVNTBVhoi3YW4BlL
+ Td9MnOP4zEQP4SCzhoXWE6z5+YpPowHMsUY1XP9lAJQ8I71utCY5ySQePvFiov/eUAbY
+ Ge1Q==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
+ s=arc-20260327; 
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:dkim-signature;
+ bh=IAupx9RnMDjq1cK/7Ka5dp50NQm4KtdcDaWyz2bg2Ko=;
+ fh=YLhwGJhoQ2Q9WB0IwdtdY1Wta5T62GeB4DYFv7JAgTw=;
+ b=ASBVhL5JBctay0ZP8Wa5lSGodSCKkFXYY9D6nfW+CFqt3rL4WYylXAwZ2tLEaSCNr0
+ 99j0t5Q2kitdz6FEsHXocHNh1OVVSpLJ3GfRNkTOK0mCx+uTJEXHIIg/fV+LyeTJby33
+ l5A0+fdJWoMIqpMdiJ31T8de1rxqtRfeeun23Qr1vohhVOfmQMjX9VGdpc3+IG/6/n1u
+ VJSSoCWPljTreaLkwIR1tvFkbW28f3Gs8flojABKe97NXawacOVq0KNeQ/LuWDCo2pmE
+ NDrHuJLJVlZ6a9DoIMecEG0c5119r/Txx9VkqeW9neME/+QSSdn22iTGiO388+Z7e2cM
+ EdFg==; darn=nongnu.org
+ARC-Authentication-Results: i=1; mx.google.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1787829464; x=1788434264; darn=nongnu.org;
+ h=content-type:cc:to:subject:message-id:date:from:in-reply-to
+ :references:mime-version:from:to:cc:subject:date:message-id:reply-to
+ :content-type; bh=IAupx9RnMDjq1cK/7Ka5dp50NQm4KtdcDaWyz2bg2Ko=;
+ b=NTXkFgx3ZCNpcV9z4ZOTvlgirvJPsptVGhNauNzF4uv9Wv0tuVUTaKRBuZPcCKPdH7
+ H4U03WBsbQLPa2vupa3weFANMpqpHmdbYuXP1znFFKaunKOWeA552dhIbXwr+zTz8Wh4
+ 022Z9zlKciV0u6WxnzCGjXwvn5ZZPUpmONSV/lywIE+HncGk+9AWNJND/qhuom2Inqx6
+ IXR1r4GOAdZk57ztxsmLeZfci5H7jcCy5HPSr0+Rddvrgtl0MGrWmz2ORl4LWloc6fXF
+ B5b0m4Zda3RvNPIkvV2LffyOowmAqlgpvPTHVc2Z2ft2YiwQquUx2t1N5IHWvpEEFQJw
+ E8Fw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20251104; t=1787829464; x=1788434264;
+ h=content-type:cc:to:subject:message-id:date:from:in-reply-to
+ :references:mime-version:x-gm-gg:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to:content-type;
+ bh=IAupx9RnMDjq1cK/7Ka5dp50NQm4KtdcDaWyz2bg2Ko=;
+ b=iE1DOVHfKjFgNj5K3duyE08c5DeiRMxDA2dkclA1YMSAF8HBT/hyqLwykvMhFxbRqa
+ +Qj1Vz4Q/7RVHr+YUxpprDPTQ9dDrQyuOsQFpa7fXYSXbRevHMGI32O6dQoeEkYa5pDm
+ RQgRyByF7Fo6MtsVnbou4cxIdS2ogOVqYt4V3D9YQf3PV+ClLCfUCaPsKvPY83kndSJY
+ APlFge5Z9K6p/Dy+vVqax1nMA5ohT+v0J+67P1720L2NHN5dcl/dVr5DogA5Bsux6iR3
+ 23G0WprxQGOes1x8aitU5rmlXEnxxBeY5FdS8US8tH72qld5E2fS8Ae8XzPQ88DAO0ul
+ Zajw==
+X-Forwarded-Encrypted: i=1;
+ AHgh+RqRPCag5P9s3OiFfOtjy3hAI01FYurhuXLG1Y2ALrEYN1mqOeBLW0SJCA2q6zkBiCHLVbJ4h7Rhng==@nongnu.org
+X-Gm-Message-State: AFuF++kJFgi/CZQn/uBWjwKlFF0x6mBXIVVT8NSTeISBNCZZzLLjK1O6
+ 82rgjA2cxC7amhk1lvGSHgbttoqqXqWjMww4+jTmNWs2LSvPA29AW+PKqQicWUFP6+8wz5NrfUy
+ 3RhnZauNl081Sg9S+6YNsMw8pW9qtWwk9pgjrQOaK1Q==
+X-Gm-Gg: AR+sD11CHCBmzFn0FtsJwCme+FRIW/MrHJxWO2mCcOgQRyoxQ0BZqyJjDf3CW/HeUg7
+ puaZxK3Z7u8Alyr+xl3joZTH37lgACzTXEJu9GH9aQaBdMFr0xdk/O292tXM2e9d16B0K2NVb8a
+ CzmLootmnvPrjvZL7xAmIxiBBw9T1m169TMx45umgxIBRfRO53xIT2oK1zicdj2dv5859+dVzlH
+ JNeJkzb+6ieG+OTGR1U3MZXoecJBb1oTK/lwcCM6SO6plu37xiQheV0jCdvDeczV0gTEL+3zohZ
+ J2fg22UGbbN4YN3eonxN4vCmVC8/cXYiYWqrZF7bZs6pmVDh7oY1Mew5Axo5OAs+vu004y5YDdx
+ tQh1NSQppkwd07wLqFMAfQEHWoWip
+X-Received: by 2002:a05:690c:c3a5:b0:845:69ad:b9b1 with SMTP id
+ 00721157ae682-8573be1b343mr53332187b3.3.1787829464363; Thu, 27 Aug 2026
+ 04:17:44 -0700 (PDT)
 MIME-Version: 1.0
-Received-SPF: pass client-ip=202.12.124.145;
- envelope-from=alistair@alistair23.me; helo=fout-b2-smtp.messagingengine.com
-X-Spam_score_int: -27
-X-Spam_score: -2.8
+References: <20260825040452.1322251-1-stephensportia@gmail.com>
+ <CAFEAcA9etHvjL1igO4mFy5iQNy1pCbNFGaSg5HFva+YCeMkGEA@mail.gmail.com>
+ <CACYNXwKU_UuhrBWHNFtYYmSfzRsUd5jRFjSc1++xvQHxPk6rew@mail.gmail.com>
+ <CAFEAcA-Ncv9_jMMg1i+Ox_xa9oM4D_MMLGnPpqbyGJV_5B9iMg@mail.gmail.com>
+ <ac30bd54b6f1f4e4753638c9e95dbb85d8b81eca.camel@alistair23.me>
+In-Reply-To: <ac30bd54b6f1f4e4753638c9e95dbb85d8b81eca.camel@alistair23.me>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Thu, 27 Aug 2026 12:17:33 +0100
+X-Gm-Features: AcwNN1VUVmzqWF2W5hkS0W2o-_zqfDDH0ebmLyctS6dkcWYA5KVyPN2vudg4X80
+Message-ID: <CAFEAcA9zz60hTDMEMePnc1osis7dPjn5KmSksrWKATpSMc8SHw@mail.gmail.com>
+Subject: Re: [PATCH 0/4] Rename ssi_transfer to ssi_transfer8
+To: Alistair <alistair@alistair23.me>
+Cc: Portia Stephens <stephensportia@gmail.com>, qemu-devel@nongnu.org, 
+ Palmer Dabbelt <palmer@dabbelt.com>, Jamin Lin <jamin_lin@aspeedtech.com>,
+ qemu-ppc@nongnu.org, =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>, 
+ Steven Lee <steven_lee@aspeedtech.com>,
+ Andrew Jeffery <andrew@codeconstruct.com.au>, 
+ Harsh Prateek Bora <harshpb@linux.ibm.com>,
+ Subbaraya Sundeep <sundeep.lkml@gmail.com>, 
+ Troy Lee <leetroy@gmail.com>, "Edgar E. Iglesias" <edgar.iglesias@gmail.com>, 
+ =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@mailo.com>, 
+ Strahinja Jankovic <strahinja.p.jankovic@gmail.com>, qemu-arm@nongnu.org, 
+ Tyrone Ting <kfting@nuvoton.com>, Nicholas Piggin <npiggin@gmail.com>, 
+ Aditya Gupta <adityag@linux.ibm.com>, Kane Chen <kane_chen@aspeedtech.com>, 
+ Francisco Iglesias <francisco.iglesias@amd.com>, Joel Stanley <joel@jms.id.au>,
+ Hao Wu <wuhaotsh@google.com>, Glenn Miles <milesg@linux.ibm.com>,
+ qemu-riscv@nongnu.org, Jean-Christophe Dubois <jcd@tribudubois.net>,
+ Portia Stephens <portias@oss.tenstorrent.com>
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2607:f8b0:4864:20::1136;
+ envelope-from=peter.maydell@linaro.org; helo=mail-yw1-x1136.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, SPF_HELO_PASS=-0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -125,71 +135,33 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Thu, 2026-08-27 at 10:20 +0100, Peter Maydell wrote:
-> On Thu, 27 Aug 2026 at 06:37, Alistair <alistair@alistair23.me>
-> wrote:
-> >=20
-> > On Tue, 2026-08-25 at 14:04 +1000, stephensportia@gmail.com=C2=A0wrote:
-> > > From: Portia Stephens <portias@oss.tenstorrent.com>
-> > >=20
-> > > The ssi_transfer function comments say that it takes a word
-> > > varying
-> > > between 8-bits and 32-bits. ssi_transfer takes a 32-bit arg to
-> > > transfer
-> > > but there is no means to indicate the number of bits that should
-> > > actually be transferred. All child classes of SSI_PERIPHERAL
-> > > class
-> > > have
-> > > transfer functions that, despite accepting a 32-bit tx, only
-> > > transfer
-> > > a
-> > > single byte; m25p80_transfer8(), ssi_sd_transfer(),
-> > > ssd0323_transfer().
-> > >=20
-> > > The current implementation depends on the SSI model to know
-> > > what peripheral model will be attached and what transfer size it
-> > > expects which is error prone. If a SSI_PERIPHERAL model was
-> > > written
-> > > that
-> > > accepted 32-bit transfers, it could not attach to any existing
-> > > SSI
-> > > models.
-> > >=20
-> > > This change updates the the naming of ssi_transfer to
-> > > ssi_transfer8,
-> > > as
-> > > well as changes the return value and transmit argument to be 8-
-> > > bit.
-> > >=20
-> > > Most ssi models handle this correctly already, sending a single
-> > > byte
-> > > at
-> > > a time. There are a few models that are written to support non 8-
-> > > bit
-> > > transfers but there are no in-tree use cases that connect a
-> > > peripheral
-> > > to the SSI device. These have been updated to use 8-bit
-> > > transfers.
-> > >=20
-> > > Portia Stephens (4):
-> > > =C2=A0 hw/ssi: Rename ssi_transfer to ssi_transfer8
-> > > =C2=A0 hw/ssi/pl022: Fix dropped upper bytes of ssi transfer
-> > > =C2=A0 hw/arm/strongarm: Fix dropped upper byte of ssi transfer
-> > > =C2=A0 hw/ssi/pnv_spi: Fix dropped upper bytes of ssi transfer
-> >=20
-> > Thanks!
-> >=20
-> > Applied to riscv-to-apply.next
->=20
-> Would you mind holding off on that until we figure out whether
-> this is a correct change and why we need it, please?
+On Thu, 27 Aug 2026 at 12:03, Alistair <alistair@alistair23.me> wrote:
+>
+> On Thu, 2026-08-27 at 11:53 +0100, Peter Maydell wrote:
+> > But isn't this just the way the SSI specification is? If we're
+> > modelling a "you just have to get this right in software" bit
+> > of hardware then we don't need to somehow try to add extra
+> > checks in QEMU for whether the software hasn't actually done
+> > things right.
+>
+> From my reading of things this is a bug in QEMU, not a guest issue.
+>
+> The fact that aspeed_smc_flash_setup() for example iterates over a
+> larger value to send a single byte at a time shows that currently
+> everyone *thinks* think function should send a single byte.
 
-Sure. Sorry I thought no one else was interested in reading it. Will
-drop it until discussions are sorted
+Doesn't that just show that the aspeed flash controller knows
+it is always talking to an 8-bit SSI device ? It wouldn't
+surprise me if the SPI-NOR standard in particular insisted on
+8-bit transfers, though I can't find anything claiming to be
+that standard.
 
-Alistair
+> So it does seem broken today. Making the current function clear seems
+> like a good step. Supporting different or larger transfers in the
+> future is then possible.
 
->=20
-> thanks
-> -- PMM
+I think the current interface already supports different or
+larger transfers. We just happen to not be using that.
+
+-- PMM
 

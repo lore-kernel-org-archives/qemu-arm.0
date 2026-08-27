@@ -4,122 +4,111 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EC52BC61DC6
-	for <qemu-arm@archiver.kernel.org>; Thu, 27 Aug 2026 11:18:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A95FBC61DC6
+	for <qemu-arm@archiver.kernel.org>; Thu, 27 Aug 2026 12:09:47 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wzY7A-0003qV-Qz; Thu, 27 Aug 2026 07:17:48 -0400
+	id 1wzYvQ-0001Zf-7O; Thu, 27 Aug 2026 08:09:44 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1wzY79-0003qB-Md
- for qemu-arm@nongnu.org; Thu, 27 Aug 2026 07:17:47 -0400
-Received: from mail-yw1-x1136.google.com ([2607:f8b0:4864:20::1136])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1wzY77-0006x5-PP
- for qemu-arm@nongnu.org; Thu, 27 Aug 2026 07:17:47 -0400
-Received: by mail-yw1-x1136.google.com with SMTP id
- 00721157ae682-81ecf499af9so35775357b3.1
- for <qemu-arm@nongnu.org>; Thu, 27 Aug 2026 04:17:45 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1787829464; cv=none;
- d=google.com; s=arc-20260327;
- b=O2BDn/Er8Fj2TmFxnDotZ+HCvlj1f/Zte5wgtBkXY1FXopRwGerj7A5NbrGU8A+FmS
- OgFJo4ihEPNl6b4kvxdbJk1SzlHfCR7SBSPLs5UWtPIgI7w2XmkvtTKMJlLV7kVOG1mN
- sQKDqS5ALBp4kM2Cxk4v04rxrWByaRiq9E9kPM/xxPhusNs4o3xCC33ZdxIef0yDBY7w
- DUrRvMR3j/KTX/4Wvcn5rTqzZi6RecvA0i/yeqTG/ohoHrGzC8UCdVNTBVhoi3YW4BlL
- Td9MnOP4zEQP4SCzhoXWE6z5+YpPowHMsUY1XP9lAJQ8I71utCY5ySQePvFiov/eUAbY
- Ge1Q==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
- s=arc-20260327; 
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:dkim-signature;
- bh=IAupx9RnMDjq1cK/7Ka5dp50NQm4KtdcDaWyz2bg2Ko=;
- fh=YLhwGJhoQ2Q9WB0IwdtdY1Wta5T62GeB4DYFv7JAgTw=;
- b=ASBVhL5JBctay0ZP8Wa5lSGodSCKkFXYY9D6nfW+CFqt3rL4WYylXAwZ2tLEaSCNr0
- 99j0t5Q2kitdz6FEsHXocHNh1OVVSpLJ3GfRNkTOK0mCx+uTJEXHIIg/fV+LyeTJby33
- l5A0+fdJWoMIqpMdiJ31T8de1rxqtRfeeun23Qr1vohhVOfmQMjX9VGdpc3+IG/6/n1u
- VJSSoCWPljTreaLkwIR1tvFkbW28f3Gs8flojABKe97NXawacOVq0KNeQ/LuWDCo2pmE
- NDrHuJLJVlZ6a9DoIMecEG0c5119r/Txx9VkqeW9neME/+QSSdn22iTGiO388+Z7e2cM
- EdFg==; darn=nongnu.org
-ARC-Authentication-Results: i=1; mx.google.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1787829464; x=1788434264; darn=nongnu.org;
- h=content-type:cc:to:subject:message-id:date:from:in-reply-to
- :references:mime-version:from:to:cc:subject:date:message-id:reply-to
- :content-type; bh=IAupx9RnMDjq1cK/7Ka5dp50NQm4KtdcDaWyz2bg2Ko=;
- b=NTXkFgx3ZCNpcV9z4ZOTvlgirvJPsptVGhNauNzF4uv9Wv0tuVUTaKRBuZPcCKPdH7
- H4U03WBsbQLPa2vupa3weFANMpqpHmdbYuXP1znFFKaunKOWeA552dhIbXwr+zTz8Wh4
- 022Z9zlKciV0u6WxnzCGjXwvn5ZZPUpmONSV/lywIE+HncGk+9AWNJND/qhuom2Inqx6
- IXR1r4GOAdZk57ztxsmLeZfci5H7jcCy5HPSr0+Rddvrgtl0MGrWmz2ORl4LWloc6fXF
- B5b0m4Zda3RvNPIkvV2LffyOowmAqlgpvPTHVc2Z2ft2YiwQquUx2t1N5IHWvpEEFQJw
- E8Fw==
+ (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
+ id 1wzYvP-0001Yr-7t
+ for qemu-arm@nongnu.org; Thu, 27 Aug 2026 08:09:43 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
+ id 1wzYvM-0007wm-TS
+ for qemu-arm@nongnu.org; Thu, 27 Aug 2026 08:09:42 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1787832579;
+ h=from:from:reply-to:reply-to:subject:subject:date:date:
+ message-id:message-id:to:to:cc:cc:mime-version:mime-version:
+ content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=PgeeWjtfQltgIjCPzXNpTJTj8fAdJm1l7RIL8AatcnM=;
+ b=NKKhANAdt/ZdIFMnZkKh11P9dSsaJi/PKotyttMqURRrAnzXzm7EEBPyN3y/pZ4LtbhEEy
+ dhk15dtcwCvyatYDuDGmGqXjClYuGrsHRm9bE/1UYzF5DRC18Xo6pu4LN7HfUS9EreZCnm
+ icuTO+BYSS6pDOVQB9Wy/ubG41kMkts=
+Received: from mail-wm1-f72.google.com (mail-wm1-f72.google.com
+ [209.85.128.72]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-634-_vYdpOyWOUmZF3FuJCUbgA-1; Thu, 27 Aug 2026 08:09:38 -0400
+X-MC-Unique: _vYdpOyWOUmZF3FuJCUbgA-1
+X-Mimecast-MFC-AGG-ID: _vYdpOyWOUmZF3FuJCUbgA_1787832577
+Received: by mail-wm1-f72.google.com with SMTP id
+ 5b1f17b1804b1-495474a5fbcso18393345e9.1
+ for <qemu-arm@nongnu.org>; Thu, 27 Aug 2026 05:09:37 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1787829464; x=1788434264;
- h=content-type:cc:to:subject:message-id:date:from:in-reply-to
- :references:mime-version:x-gm-gg:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to:content-type;
- bh=IAupx9RnMDjq1cK/7Ka5dp50NQm4KtdcDaWyz2bg2Ko=;
- b=iE1DOVHfKjFgNj5K3duyE08c5DeiRMxDA2dkclA1YMSAF8HBT/hyqLwykvMhFxbRqa
- +Qj1Vz4Q/7RVHr+YUxpprDPTQ9dDrQyuOsQFpa7fXYSXbRevHMGI32O6dQoeEkYa5pDm
- RQgRyByF7Fo6MtsVnbou4cxIdS2ogOVqYt4V3D9YQf3PV+ClLCfUCaPsKvPY83kndSJY
- APlFge5Z9K6p/Dy+vVqax1nMA5ohT+v0J+67P1720L2NHN5dcl/dVr5DogA5Bsux6iR3
- 23G0WprxQGOes1x8aitU5rmlXEnxxBeY5FdS8US8tH72qld5E2fS8Ae8XzPQ88DAO0ul
- Zajw==
+ d=1e100.net; s=20251104; t=1787832577; x=1788437377;
+ h=content-transfer-encoding:content-type:in-reply-to:from:references
+ :cc:to:content-language:subject:reply-to:user-agent:mime-version
+ :date:message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+ :message-id:reply-to:content-type;
+ bh=PgeeWjtfQltgIjCPzXNpTJTj8fAdJm1l7RIL8AatcnM=;
+ b=iCZloRQngflJSB28955f6g6A+To2bmTzx0ylo/tded5Y7l+w0vZ8v4wMLmCDqQD1Qc
+ 1pFU0Sojr/LKPhqCbjuxund9/kyxcIDP3LyYIyMzePnA5vtICZRQ+kKEi+9UqjK/cGOM
+ Fd0t/VgSHyffIHaXaJdVOtU1F+2+UvMDmkxTSiNVuqOfqpxnMhP29xiTY+0FDMkwi2Al
+ RULVls+05oOtC1niMb3Q21Pu9RbB/4aQXUxtZ5ydObd4cJfO9xGDwd1XudCvZe3n1/Ol
+ Mcyam7e6dDSPMe0Wy51h7h0YdZaO5/h6FdO7rMfViJcUsqyShVfwU8wiGlCx2cKu47Mu
+ ofKQ==
 X-Forwarded-Encrypted: i=1;
- AHgh+RqRPCag5P9s3OiFfOtjy3hAI01FYurhuXLG1Y2ALrEYN1mqOeBLW0SJCA2q6zkBiCHLVbJ4h7Rhng==@nongnu.org
-X-Gm-Message-State: AFuF++kJFgi/CZQn/uBWjwKlFF0x6mBXIVVT8NSTeISBNCZZzLLjK1O6
- 82rgjA2cxC7amhk1lvGSHgbttoqqXqWjMww4+jTmNWs2LSvPA29AW+PKqQicWUFP6+8wz5NrfUy
- 3RhnZauNl081Sg9S+6YNsMw8pW9qtWwk9pgjrQOaK1Q==
-X-Gm-Gg: AR+sD11CHCBmzFn0FtsJwCme+FRIW/MrHJxWO2mCcOgQRyoxQ0BZqyJjDf3CW/HeUg7
- puaZxK3Z7u8Alyr+xl3joZTH37lgACzTXEJu9GH9aQaBdMFr0xdk/O292tXM2e9d16B0K2NVb8a
- CzmLootmnvPrjvZL7xAmIxiBBw9T1m169TMx45umgxIBRfRO53xIT2oK1zicdj2dv5859+dVzlH
- JNeJkzb+6ieG+OTGR1U3MZXoecJBb1oTK/lwcCM6SO6plu37xiQheV0jCdvDeczV0gTEL+3zohZ
- J2fg22UGbbN4YN3eonxN4vCmVC8/cXYiYWqrZF7bZs6pmVDh7oY1Mew5Axo5OAs+vu004y5YDdx
- tQh1NSQppkwd07wLqFMAfQEHWoWip
-X-Received: by 2002:a05:690c:c3a5:b0:845:69ad:b9b1 with SMTP id
- 00721157ae682-8573be1b343mr53332187b3.3.1787829464363; Thu, 27 Aug 2026
- 04:17:44 -0700 (PDT)
+ AHgh+RrdJ/knTWyZwgzMcgMiRLX6zikXWL6niadAZS63aOVz1yBPX8jQbRy4XrKamWQGHw5rL8aPWdqrPw==@nongnu.org
+X-Gm-Message-State: AFuF++nzl5iyMCZR/8qG18p7fF86PzREv83kzwnKrIbl1jqWRe63JvtY
+ PZtFXHjmz3mAdluPGKbTPNeqnLc7ymSV236VCnkg3P99Qvr3eshUs3FjYIsfjKg9/oml/8Ht95o
+ GyCsixcutmrGxVsxFrgfMn5dkqzGDYdd4b2BcxnNyivizSpXBXMM/mw==
+X-Gm-Gg: AR+sD10Rt4BFDW4apY8odx8eV9jx32opNGQfyl9dD8IBsqF1ADQ7sqRGtxJMDFa70/U
+ 6MqZp/ibmrbTWa8gFpMXKW05fKCEePTiH8kEd80jI4/M7/HlhFHm4FeNYq/xgSw3tRBAE+YDml0
+ OBv1593POb4A6nu/fCjd2SFSYJ4TPdvG4lFz4YsrUjv3cyZkHiARrhushUB8PydtgkSBLdnKOqd
+ j8U+UmlYcfNPZ5LQEnuqyHr0/b2i8G57TcbDh2gyMZE4un0Pa4ktSYXGwdWutGD6X/nqrl8dSjc
+ qvzltPkz3Fmb10SfcV8X73DWrafkpUMegmcxMebqZfWGaznim73TBNmQ59m65x0JApdWJR041Jg
+ k3GyDaGCyOcw63D41TeMumSVXD34ZetdNWj/P7hIs4uhbr59l
+X-Received: by 2002:a05:600c:6912:b0:499:cd34:100d with SMTP id
+ 5b1f17b1804b1-499dc703bd3mr187757435e9.7.1787832576809; 
+ Thu, 27 Aug 2026 05:09:36 -0700 (PDT)
+X-Received: by 2002:a05:600c:6912:b0:499:cd34:100d with SMTP id
+ 5b1f17b1804b1-499dc703bd3mr187756495e9.7.1787832576403; 
+ Thu, 27 Aug 2026 05:09:36 -0700 (PDT)
+Received: from ?IPV6:2a01:e0a:f0e:9070:527b:9dff:feef:3874?
+ ([2a01:e0a:f0e:9070:527b:9dff:feef:3874])
+ by smtp.gmail.com with ESMTPSA id
+ 5b1f17b1804b1-49b49610170sm110944935e9.6.2026.08.27.05.09.34
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Thu, 27 Aug 2026 05:09:35 -0700 (PDT)
+Message-ID: <7eb87bf3-39c4-47b8-804d-15cbbafb78a7@redhat.com>
+Date: Thu, 27 Aug 2026 14:09:34 +0200
 MIME-Version: 1.0
-References: <20260825040452.1322251-1-stephensportia@gmail.com>
- <CAFEAcA9etHvjL1igO4mFy5iQNy1pCbNFGaSg5HFva+YCeMkGEA@mail.gmail.com>
- <CACYNXwKU_UuhrBWHNFtYYmSfzRsUd5jRFjSc1++xvQHxPk6rew@mail.gmail.com>
- <CAFEAcA-Ncv9_jMMg1i+Ox_xa9oM4D_MMLGnPpqbyGJV_5B9iMg@mail.gmail.com>
- <ac30bd54b6f1f4e4753638c9e95dbb85d8b81eca.camel@alistair23.me>
-In-Reply-To: <ac30bd54b6f1f4e4753638c9e95dbb85d8b81eca.camel@alistair23.me>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 27 Aug 2026 12:17:33 +0100
-X-Gm-Features: AcwNN1VUVmzqWF2W5hkS0W2o-_zqfDDH0ebmLyctS6dkcWYA5KVyPN2vudg4X80
-Message-ID: <CAFEAcA9zz60hTDMEMePnc1osis7dPjn5KmSksrWKATpSMc8SHw@mail.gmail.com>
-Subject: Re: [PATCH 0/4] Rename ssi_transfer to ssi_transfer8
-To: Alistair <alistair@alistair23.me>
-Cc: Portia Stephens <stephensportia@gmail.com>, qemu-devel@nongnu.org, 
- Palmer Dabbelt <palmer@dabbelt.com>, Jamin Lin <jamin_lin@aspeedtech.com>,
- qemu-ppc@nongnu.org, =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>, 
- Steven Lee <steven_lee@aspeedtech.com>,
- Andrew Jeffery <andrew@codeconstruct.com.au>, 
- Harsh Prateek Bora <harshpb@linux.ibm.com>,
- Subbaraya Sundeep <sundeep.lkml@gmail.com>, 
- Troy Lee <leetroy@gmail.com>, "Edgar E. Iglesias" <edgar.iglesias@gmail.com>, 
- =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@mailo.com>, 
- Strahinja Jankovic <strahinja.p.jankovic@gmail.com>, qemu-arm@nongnu.org, 
- Tyrone Ting <kfting@nuvoton.com>, Nicholas Piggin <npiggin@gmail.com>, 
- Aditya Gupta <adityag@linux.ibm.com>, Kane Chen <kane_chen@aspeedtech.com>, 
- Francisco Iglesias <francisco.iglesias@amd.com>, Joel Stanley <joel@jms.id.au>,
- Hao Wu <wuhaotsh@google.com>, Glenn Miles <milesg@linux.ibm.com>,
- qemu-riscv@nongnu.org, Jean-Christophe Dubois <jcd@tribudubois.net>,
- Portia Stephens <portias@oss.tenstorrent.com>
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::1136;
- envelope-from=peter.maydell@linaro.org; helo=mail-yw1-x1136.google.com
+User-Agent: Mozilla Thunderbird
+Subject: Re: [RFC v5 07/28] hw/arm/smmuv3: Reject secure STEs with stage-2
+ enabled
+To: Tao Tang <tangtao1634@phytium.com.cn>,
+ Peter Maydell <peter.maydell@linaro.org>
+Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org,
+ Chen Baozi <chenbaozi@phytium.com.cn>,
+ Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>,
+ =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@mailo.com>,
+ Mostafa Saleh <smostafa@google.com>, Chao Liu <chao.liu@processmission.com>,
+ Jim MacArthur <jim.macarthur@linaro.org>
+References: <20260813161515.2788900-1-tangtao1634@phytium.com.cn>
+ <20260813162446.2806393-2-tangtao1634@phytium.com.cn>
+From: Eric Auger <eric.auger@redhat.com>
+In-Reply-To: <20260813162446.2806393-2-tangtao1634@phytium.com.cn>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-MFC-PROC-ID: 74TcfQFj_6kvz2R7VMlz18bxZfkyT_boVZE6nH-zGKA_1787832577
+X-Mimecast-Originator: redhat.com
+Content-Language: en-US
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=170.10.133.124;
+ envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -132,36 +121,76 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Reply-To: eric.auger@redhat.com
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Thu, 27 Aug 2026 at 12:03, Alistair <alistair@alistair23.me> wrote:
+Hi Tao,
+
+On 8/13/26 6:24 PM, Tao Tang wrote:
+> Pass sec_sid into decode_ste() and treat a secure STE that enables stage-2
+> translation as an illegal STE.
+some coming back to [RFC v5 06/28] hw/arm/smmuv3: Plumb transaction
+attributes into config helpers
+
+why did we need to modify smmu_ptw_64_s2()
+
 >
-> On Thu, 2026-08-27 at 11:53 +0100, Peter Maydell wrote:
-> > But isn't this just the way the SSI specification is? If we're
-> > modelling a "you just have to get this right in software" bit
-> > of hardware then we don't need to somehow try to add extra
-> > checks in QEMU for whether the software hasn't actually done
-> > things right.
+> The current model does not implement Secure stage-2 translation, so reject
+> Secure STE configurations that enable stage 2 and report BAD_STE. This
+> restriction can be relaxed when SEL2 and Secure stage-2 support are
+SMMU_S_IDR1.SEL2  (secure EL2 and secure stage 2 support)
+
+Besides I don't get why you set SEL2 in last patch
+[NOT-MERGE] hw/arm/smmuv3: temporarily enable SEL2 bit and some other
+features
+> implemented.
+
 >
-> From my reading of things this is a bug in QEMU, not a guest issue.
+> Signed-off-by: Tao Tang <tangtao1634@phytium.com.cn>
+> ---
+>  hw/arm/smmuv3.c | 12 ++++++++++--
+>  1 file changed, 10 insertions(+), 2 deletions(-)
 >
-> The fact that aspeed_smc_flash_setup() for example iterates over a
-> larger value to send a single byte at a time shows that currently
-> everyone *thinks* think function should send a single byte.
+> diff --git a/hw/arm/smmuv3.c b/hw/arm/smmuv3.c
+> index b5dc67dcb01..3ff2f498a3b 100644
+> --- a/hw/arm/smmuv3.c
+> +++ b/hw/arm/smmuv3.c
+> @@ -597,7 +597,7 @@ static void decode_ste_config(SMMUTransCfg *cfg, uint32_t config)
+>  
+>  /* Returns < 0 in case of invalid STE, 0 otherwise */
+>  static int decode_ste(SMMUv3State *s, SMMUTransCfg *cfg,
+> -                      STE *ste, SMMUEventInfo *event)
+> +                      STE *ste, SMMUEventInfo *event, SMMUSecSID sec_sid)
+>  {
+>      uint32_t config;
+>      /* OAS field only presents on NS-IDR5 so we use hardcoded SMMU_SEC_SID_NS */
+> @@ -651,6 +651,14 @@ static int decode_ste(SMMUv3State *s, SMMUTransCfg *cfg,
+>          if (ret) {
+>              goto bad_ste;
+>          }
+> +
+> +        /*
+> +         * It is ILLEGAL to set STE.Config == 0b11x according to (IHI 0070G.b)
+> +         * 5.2 STE, Stream Table Entry, Page 218.
+> +         */
+> +        if (sec_sid == SMMU_SEC_SID_S) {
+> +            goto bad_ste;
+> +        }
+>      }
+>  
+>      /* Multiple context descriptors require SubstreamID support */
+> @@ -916,7 +924,7 @@ static int smmuv3_decode_config(IOMMUMemoryRegion *mr, SMMUTransCfg *cfg,
+>          return ret;
+>      }
+>  
+> -    ret = decode_ste(s, cfg, &ste, event);
+> +    ret = decode_ste(s, cfg, &ste, event, sec_sid);
+>      if (ret) {
+>          return ret;
+>      }
+Thanks
 
-Doesn't that just show that the aspeed flash controller knows
-it is always talking to an 8-bit SSI device ? It wouldn't
-surprise me if the SPI-NOR standard in particular insisted on
-8-bit transfers, though I can't find anything claiming to be
-that standard.
+Eric
 
-> So it does seem broken today. Making the current function clear seems
-> like a good step. Supporting different or larger transfers in the
-> future is then possible.
-
-I think the current interface already supports different or
-larger transfers. We just happen to not be using that.
-
--- PMM
 

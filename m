@@ -4,71 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 381FEC5DF9D
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5474AC61DC4
 	for <qemu-arm@archiver.kernel.org>; Thu, 27 Aug 2026 05:12:28 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wzSO1-0002gm-Fw; Thu, 27 Aug 2026 01:10:49 -0400
+	id 1wzSO8-0002nT-EK; Thu, 27 Aug 2026 01:10:56 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <joel.stan@gmail.com>)
- id 1wzSO0-0002gG-6E
- for qemu-arm@nongnu.org; Thu, 27 Aug 2026 01:10:48 -0400
-Received: from mail-pj1-x102c.google.com ([2607:f8b0:4864:20::102c])
+ id 1wzSO6-0002kW-1f
+ for qemu-arm@nongnu.org; Thu, 27 Aug 2026 01:10:54 -0400
+Received: from mail-pg1-x52b.google.com ([2607:f8b0:4864:20::52b])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <joel.stan@gmail.com>)
- id 1wzSNy-00046E-CS
- for qemu-arm@nongnu.org; Thu, 27 Aug 2026 01:10:47 -0400
-Received: by mail-pj1-x102c.google.com with SMTP id
- 98e67ed59e1d1-38e7109321dso1345882a91.3
- for <qemu-arm@nongnu.org>; Wed, 26 Aug 2026 22:10:46 -0700 (PDT)
+ id 1wzSO4-00047c-A9
+ for qemu-arm@nongnu.org; Thu, 27 Aug 2026 01:10:53 -0400
+Received: by mail-pg1-x52b.google.com with SMTP id
+ 41be03b00d2f7-cbedf318752so1449305a12.0
+ for <qemu-arm@nongnu.org>; Wed, 26 Aug 2026 22:10:51 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20251104; t=1787807445; x=1788412245; darn=nongnu.org;
+ d=gmail.com; s=20251104; t=1787807451; x=1788412251; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:sender:from:to:cc:subject:date
  :message-id:reply-to:content-type;
- bh=Joidts5BLCkEz7fojZ/OWB99swVN9xOZwsIzW5vlcdM=;
- b=msYNNOGlTMe/8hQMjLdXCH1rIM2VnKZnjZAcyoMd4LmrWiijaX3ICBFqMJlv9cwgTe
- VYgKzvwHOZ2Eeq7Jf9er2wBfr025xKS53qOY/QEBMJpa8DiNodxRIKDGk0XY01JqNdL6
- czVK88TXpMM0nTCjZgTfMOwT2ZbbTbAKaBt/28vemppIqkaFe6y8mg+HN/5763lZJueb
- 7RG9WRFUevLfrZycAfvD8OoglruczJktTaIE6hdu4G+QSOrnoftz4DsFnHtKLSffuVMJ
- EEYZ7qvecBZ5+LXdj8am/rwevSbL7p/mlkgiRhO08tjkgM4Tbi7sVF7yVa3Sxu8daNWT
- sE3Q==
+ bh=H3JPY4jlJyqqJXUD7/t3iwMSegC7rW8M+Jxwt7XCKQo=;
+ b=Y2u1fXWp0uRUb0/n1Mcw6zxj9jxjP6ov8nvwEWgJaYrbFN7IO0CCd/aZk0CDCuvh+9
+ 3Qo1bi83BRO4gd03beP12+S2kqKjYJE72yuZGvzgbqNLtxGAExVE9FTetwfrOHcADl7o
+ /qn9N19WEfp0RYLMpyypCY8VqeKnIiiwN2XJZ59HAGS0sE3h/xt9kpuWeUM20nYbL9Ig
+ Rwy8LMtnVXseLtUZc3TxYiG9f/ZM/tHQCcybaYxesA4l5bLTIbR4mJXZlkzS21kTiSOh
+ jx0udSUc5C/CBOvD8fpNOOEoYZKzQZXwFltofR6lm5U8ywrQMSRUFjSzTtuGjV34KUQ9
+ rFmA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1787807445; x=1788412245;
+ d=1e100.net; s=20251104; t=1787807451; x=1788412251;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:sender:x-gm-gg
  :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
  :content-type;
- bh=Joidts5BLCkEz7fojZ/OWB99swVN9xOZwsIzW5vlcdM=;
- b=s8YcK+MYM1dCZpqmj/ayNuYXwr/In2wfc0qt/SvEzuczVO3W4k/tMX8Wf3AaWP2EAn
- 7d8an9FwXhPKBqiFGcfjbiY0Xhf+t4imTBvzX7St0n3nyZSH030pA44eEliUC4zKuzp/
- gacbVuFhIEsAabY39JrrOACI76tvjASa83ymstd8c/7TbMXbugWLI3iaTwcSHIGNFT9X
- WI65tYhGoZTaaVZvv1NG70CyNNr+MkQ2i1Dz/Ec0yx10eD+BhUwM4uNRSBdygguOp7+D
- xGHLPxhieE9qOD49apDdF2pksW+uEPVtBky1QFro7963h5vHHy3/Ej4kqJS9WbuvbevM
- Ik+A==
+ bh=H3JPY4jlJyqqJXUD7/t3iwMSegC7rW8M+Jxwt7XCKQo=;
+ b=jaSXd0EpPmCS/ETwu0JkJ+UHds2hsL3D3tuO2Ea6v8gzWjCrQRxRUdjSKNWsEIZhM1
+ U2siS8KlihxtSyhExhddS7To4SDFatdxtlO2+yrWApE5kKjzqRvYzY6tJ2PYzuKRXykr
+ Td5I1CuzUPN9n2gzjbl5fQJ+ahXcKSrwqzT0b7j3U+7TbqbP0+0aTSveCyIHmiXyA35S
+ N4VIxMDYKqq4KInDdQb7EhXwZNALQGmRDHsgiYb/ggYAxJEhJTvvHPXydVYY1YW4rQpc
+ LbpwunBTU1PvgHEfM5SF6v3Sa3zZBs8AJlfsGthX/We5OOI2iX2eNqqagbGlUqkokXvm
+ glnw==
 X-Forwarded-Encrypted: i=1;
- AHgh+Ros8wdyIzKiP2wl11BphxzN+zweUkU1gFANJKstA/tibiTTMddgFFlKlgmHJ1t9aQhg8Ddj4BnnxQ==@nongnu.org
-X-Gm-Message-State: AFuF++mR1PAoFsQIAmxytj2ZkudlPPutNw5FqoLXkJSDcxLw5WfRRn6T
- 086dXYS22Z/cXEfcht23JkEvi796C1Lw/yWeLSoneVZ0dAnuNLwVBurC
-X-Gm-Gg: AR+sD13BV6qv9fRCAQRJbLqbt+YxMenMF1b8Xl5L4fCPcY/nWwlLKCc6IRFgMp1u/5x
- eJjY4S+T3QnRQ/iLQWRHJOslfvB2zhSDewaGJljQyoS1j+hMA8VTTd87kdG04Eh8D+PtCQiXRJ3
- MSnDS+1W2oTuedZaDhIVOTKHQe5bcXws3TNA0I3S8qXokHZK0JEDGK9tqxqW60mSMq2beTroNG4
- BPkwLDPBxn9xkKmRSsmBuXiaGirhmJHEpxYt/gWyrfH2YCMmiveTHrvUOgmK4rNdFmdvPv8TGlY
- 6pxsIgSe6WZqGlHAB/7DFw9VYSghLrIoiqXbt6KVy3Csmh3n5FmQqn7G8O8bsAOezS1x9gK16nO
- SJ5EIS1g+MpBHkGcIt1XblFi1P7YDtExfORVz1vNtZk/Xlo58jwNxE3qnvjz82g3FuhzfaDfhir
- cqh8edx9Sj0pMeN1qAJbpjmUJNXC5ckuyn4HaJZdpVh7/i/FdKSZplNoC2cs2KNkYZrh1NeUHy0
- pcfk0+lPWhHrlMhVEZxis21EXXzeDuDE4hBfzrOjp2XmFtHH5zhlu1TpO0x0IJ3fpUoAg5bzYOI
- edB7dbeI0rc8Sh+a850+
-X-Received: by 2002:a17:90b:1dce:b0:366:10f1:3d91 with SMTP id
- 98e67ed59e1d1-3966d13eb80mr25058039a91.1.1787807445036; 
- Wed, 26 Aug 2026 22:10:45 -0700 (PDT)
+ AHgh+Rr4xc4T0ju2iVu2FUuV6Di+6Wltiia65hdoTD877L/mu+MxQfVJ39JUhmZ+K+hpQ3bPnFk4JulNEQ==@nongnu.org
+X-Gm-Message-State: AFuF++kezCPhILlQvc5C/YUgNvSno6VenU6dXNWFlbJ4pL/CV7VoweEe
+ aOs52gsmfqZNL41Mzh0VZkgX7T0MXks8ATYWBWXTPZp2qR85N7M0JpHn
+X-Gm-Gg: AR+sD10FaTvtaeDOmVPu6P3IIEJnq+j6pD54KALtRFxsPOIPGlBgnpS5d7rE+ELrXHV
+ Ed457Ge1kd5DAwPtT676L8EheQQ+JRbPcBrnGLR0JRaO2pLBZMFdduHkDunz5caWhbrEunpVUpn
+ LWkQP30T848ETJ/d9wzYrjQNVEz5f/w3QGjZ/31h+uf0ISCT4I1kLCTq43xMOmXbaXiOJhFWTNC
+ ZYeUctfYg+EJdGCKh7D1g/CG/EbimcSqkaNgcT5A/uREdePo/F0T9xJ1IIDLcImIqvbAGJpZ/Ro
+ 9nYa3N35d6aPA64o+uy+SK+qhTMTwj/kKfxgeVRTirgHzJnChh1a84Zt0faLT+YzrqN6DOQrwZJ
+ CdlVrABQwE/FJjhILZ9ohUbhuaiLojcxTS2Ciy8OINxry5ZWjn7exhU0l5AIfhvzT4lfSiD3LXs
+ DQFaKphE0J3LKQ+b13BCpuDtAeBokrRR7YQwYPDltLKOIqB1dFnLILpk7VwTSKjtxPig1e8YTsd
+ Jl9CK9RY/9I2ZrXsXDv/0TCmugsQ0UzlqQpnQfwCX8D8//TTYwJkXQOSWPd87lWuzDnQ5msySdr
+ wVpxpAsA0AK6pkKQ5JoM
+X-Received: by 2002:a17:90b:2604:b0:38e:ad9d:1151 with SMTP id
+ 98e67ed59e1d1-3966d18ec9dmr25886586a91.4.1787807450883; 
+ Wed, 26 Aug 2026 22:10:50 -0700 (PDT)
 Received: from donnager-debian.. ([180.150.112.50])
  by smtp.gmail.com with ESMTPSA id
- 98e67ed59e1d1-39670599275sm2210473a91.0.2026.08.26.22.10.39
+ 98e67ed59e1d1-39670599275sm2210473a91.0.2026.08.26.22.10.45
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 26 Aug 2026 22:10:44 -0700 (PDT)
+ Wed, 26 Aug 2026 22:10:50 -0700 (PDT)
 From: Joel Stanley <joel@jms.id.au>
 To: Alistair Francis <alistair.francis@wdc.com>,
  Daniel Henrique Barboza <daniel.barboza@oss.qualcomm.com>,
@@ -82,16 +82,16 @@ Cc: Peter Maydell <peter.maydell@linaro.org>, Weiwei Li <liwei1518@gmail.com>,
  Michael Ellerman <mpe@kernel.org>,
  Portia Stephens <portias@oss.tenstorrent.com>, qemu-riscv@nongnu.org,
  qemu-devel@nongnu.org, qemu-arm@nongnu.org
-Subject: [PATCH 05/12] tests/tcg/riscv64: Rework rules for semihost tests
-Date: Thu, 27 Aug 2026 14:39:44 +0930
-Message-ID: <20260827050953.67184-6-joel@jms.id.au>
+Subject: [PATCH 06/12] tests/tcg/riscv64: Enable multiarch system tests
+Date: Thu, 27 Aug 2026 14:39:45 +0930
+Message-ID: <20260827050953.67184-7-joel@jms.id.au>
 X-Mailer: git-send-email 2.47.3
 In-Reply-To: <20260827050953.67184-1-joel@jms.id.au>
 References: <20260827050953.67184-1-joel@jms.id.au>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::102c;
- envelope-from=joel.stan@gmail.com; helo=mail-pj1-x102c.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::52b;
+ envelope-from=joel.stan@gmail.com; helo=mail-pg1-x52b.google.com
 X-Spam_score_int: -16
 X-Spam_score: -1.7
 X-Spam_bar: -
@@ -115,141 +115,162 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Rework the makefile so the semihost tests can share run rules, with
-individual tests overwriting QEMU_CPU or providing more options via
-QEMU_EXTRA.
+Add the boot code and semihosting helpers needed to run the multiarch
+system tests on riscv64, and add riscv64 to MULTIARCH_SOFTMMU_TARGETS.
+The aarch64 makefile was used as a guide for the make rules.
 
-The program output now comes from the test framework's output chardev
-instead of stdout, but there is no functional change as none of the
-tests use semihosting putc.
-
-Add quiet-command to the compile and link rules so builds print
-CC/LD lines like the run rules.
+boot.S does not clear bss as the libmem plugin test would count the
+stores and fail with a mismatch. Instead the BSS is described as
+PT_LOAD, so the QEMU ELF loader fills the region with zero, the same as
+aarch64 and loongarch64.
 
 Signed-off-by: Joel Stanley <joel@jms.id.au>
 ---
- tests/tcg/riscv64/Makefile.softmmu-target | 94 +++++++++++------------
- 1 file changed, 47 insertions(+), 47 deletions(-)
+ tests/tcg/riscv64/system.c                | 30 +++++++++++++++++
+ tests/tcg/Makefile.target                 |  2 +-
+ tests/tcg/riscv64/Makefile.softmmu-target | 40 ++++++++++++-----------
+ tests/tcg/riscv64/boot.S                  | 23 +++++++++++++
+ 4 files changed, 75 insertions(+), 20 deletions(-)
+ create mode 100644 tests/tcg/riscv64/system.c
+ create mode 100644 tests/tcg/riscv64/boot.S
 
+diff --git a/tests/tcg/riscv64/system.c b/tests/tcg/riscv64/system.c
+new file mode 100644
+index 000000000000..08196a540f96
+--- /dev/null
++++ b/tests/tcg/riscv64/system.c
+@@ -0,0 +1,30 @@
++/*
++ * RISC-V semihosting support for multiarch test suite
++ *
++ * Copyright 2026 Tenstorrent USA Inc
++ * SPDX-License-Identifier: GPL-2.0-or-later
++ */
++
++#include "semicall.h"
++
++#define SYS_WRITEC      0x3
++#define SYS_EXIT        0x18
++
++#define ADP_Stopped_ApplicationExit 0x20026
++
++void __sys_outc(char c)
++{
++    __semi_call(SYS_WRITEC, (uintptr_t)&c);
++}
++
++void _exit(int code)
++{
++    const uintptr_t args[2] = { ADP_Stopped_ApplicationExit, (uintptr_t)code };
++
++    __semi_call(SYS_EXIT, (uintptr_t)args);
++
++    /* Hang if QEMU fails to exit */
++    while (1) {
++        asm volatile("wfi");
++    }
++}
+diff --git a/tests/tcg/Makefile.target b/tests/tcg/Makefile.target
+index 1b83824ff4e7..d4dd0fec650d 100644
+--- a/tests/tcg/Makefile.target
++++ b/tests/tcg/Makefile.target
+@@ -129,7 +129,7 @@ else
+ EXTRA_CFLAGS += -ffreestanding -fno-stack-protector
+ 
+ # We skip the multiarch tests if the target hasn't provided a boot.S
+-MULTIARCH_SOFTMMU_TARGETS = i386 alpha aarch64 arm loongarch64 s390x x86_64
++MULTIARCH_SOFTMMU_TARGETS = i386 alpha aarch64 arm loongarch64 s390x x86_64 riscv64
+ 
+ ifneq ($(filter $(TARGET_NAME),$(MULTIARCH_SOFTMMU_TARGETS)),)
+ -include $(SRC_PATH)/tests/tcg/minilib/Makefile.target
 diff --git a/tests/tcg/riscv64/Makefile.softmmu-target b/tests/tcg/riscv64/Makefile.softmmu-target
-index 562ac9b0e0fb..f2850a194084 100644
+index f2850a194084..82e8fe2664b0 100644
 --- a/tests/tcg/riscv64/Makefile.softmmu-target
 +++ b/tests/tcg/riscv64/Makefile.softmmu-target
-@@ -9,67 +9,67 @@ LINK_SCRIPT = $(TEST_SRC)/semihost.ld
- LDFLAGS = -T $(LINK_SCRIPT)
- CFLAGS += -g -Og
+@@ -5,9 +5,11 @@
+ TEST_SRC = $(SRC_PATH)/tests/tcg/riscv64
+ VPATH += $(TEST_SRC)
  
-+# Used by riscv64 tcg tests and shared 'multiarch' tests
-+QEMU_CPU = rv64
-+QEMU_BASE_MACHINE = -M virt -cpu $(QEMU_CPU) -display none -bios none
-+QEMU_BASE_ARGS = -semihosting-config enable=on,chardev=output
-+QEMU_OPTS += $(QEMU_BASE_MACHINE) $(QEMU_EXTRA) $(QEMU_BASE_ARGS) -kernel
++CRT_OBJS = boot.o system.o
 +
-+# These tests provide _start and use semihosting directly.
-+# -kernel entry point is the lowest loaded address, not the ELF entry
-+# point, so _start must remain first in .text.
-+RISCV64_TESTS = issue1060 test-mepc-masking test-minstret-ecall \
-+	doubletrap interruptedmemory test-crc32 \
-+	test-zicclsm test-zicclsm-off test-misa-w
+ LINK_SCRIPT = $(TEST_SRC)/semihost.ld
+-LDFLAGS = -T $(LINK_SCRIPT)
+-CFLAGS += -g -Og
++LDFLAGS = -Wl,-T$(LINK_SCRIPT) -static -nostdlib $(MINILIB_OBJS) -lgcc
++CFLAGS += -g -Og $(MINILIB_INC)
+ 
+ # Used by riscv64 tcg tests and shared 'multiarch' tests
+ QEMU_CPU = rv64
+@@ -53,23 +55,23 @@ test-zicclsm-off.o: test-zicclsm.S
+ 	$(call quiet-command, \
+ 	  $(CC) $(CFLAGS) $< -Wa$(COMMA)--noexecstack -c -o $@, CC, $@)
+ 
+-EXTRA_RUNS += run-plugin-doubletrap
+-run-plugin-doubletrap: doubletrap
+-	$(call run-test, $<, \
+-	  $(QEMU) -monitor none -display none \
+-		  -chardev file$(COMMA)path=$<.out$(COMMA)id=output \
+-		  -plugin ../plugins/libdiscons.so -d plugin -D $<.pout \
+-		  $(QEMU_OPTS) $<)
+-
+-EXTRA_RUNS += run-plugin-interruptedmemory
+-run-plugin-interruptedmemory: interruptedmemory
+-	$(call run-test, $<, \
+-	  $(QEMU) -monitor none -display none \
+-		  -chardev file$(COMMA)path=$<.out$(COMMA)id=output \
+-		  -plugin ../plugins/libdiscons.so -d plugin -D $<.pout \
+-		  $(QEMU_OPTS) $<)
++ifeq ($(CONFIG_PLUGIN),y)
++EXTRA_RUNS_WITH_PLUGIN += run-plugin-doubletrap-with-libdiscons.so \
++	run-plugin-interruptedmemory-with-libdiscons.so
++endif
+ 
+ CLEANFILES += interruptedmemory doubletrap
+ 
+-# We don't currently support the multiarch system tests
+-undefine MULTIARCH_TESTS
++# Multiarch tests
++TESTS += $(MULTIARCH_TESTS)
++EXTRA_RUNS += $(MULTIARCH_RUNS)
 +
-+# -Wl,--noexecstack to avoid linker warnings for .S files
- %.o: %.S
--	$(CC) $(CFLAGS) $< -Wa,--noexecstack -c -o $@
--%: %.o $(LINK_SCRIPT)
--	$(LD) $(LDFLAGS) $< -o $@
-+	$(call quiet-command, \
-+	  $(CC) $(CFLAGS) $(EXTRA_CFLAGS) $< -Wa$(COMMA)--noexecstack -c -o $@, CC, $@)
- 
--QEMU_OPTS += -M virt -display none -bios none -semihosting -kernel
-+%.o: %.c
-+	$(call quiet-command, \
-+	  $(CC) $(CFLAGS) $(EXTRA_CFLAGS) $< -c -o $@, CC, $@)
- 
--EXTRA_RUNS += run-issue1060
--run-issue1060: issue1060
--	$(call run-test, $<, $(QEMU) $(QEMU_OPTS) $<)
-+$(RISCV64_TESTS): %: %.o $(LINK_SCRIPT)
-+	$(call quiet-command, $(LD) -T $(LINK_SCRIPT) $< -o $@, LD, $@)
- 
--EXTRA_RUNS += run-test-mepc-masking
--run-test-mepc-masking: test-mepc-masking
--	$(call run-test, $<, $(QEMU) $(QEMU_OPTS) $<)
-+TESTS += issue1060 test-mepc-masking test-minstret-ecall test-crc32 \
-+	 test-misa-w test-zicclsm test-zicclsm-off
- 
--EXTRA_RUNS += run-test-minstret-ecall
--run-test-minstret-ecall: test-minstret-ecall
--	$(call run-test, $<, $(QEMU) -icount shift=1 $(QEMU_OPTS) $<)
-+# Tests can provide a custom kernel command line here
-+run-test-minstret-ecall: QEMU_EXTRA = -icount shift=1
-+run-test-crc32: QEMU_CPU = rv64,xlrbr=true
-+run-test-misa-w: QEMU_CPU = rv64,x-misa-w=true,c=true,v=true
-+run-test-zicclsm: QEMU_CPU = rv64,v=true,zfh=true,zicclsm=true
-+run-test-zicclsm-off: QEMU_CPU = rv64,v=true,zfh=true,zicclsm=false
++.PRECIOUS: $(CRT_OBJS)
 +
-+# Zicclsm: misaligned load/store support. Assemble one source twice: the
-+# default build expects every misaligned access to succeed (zicclsm=true),
-+# the -DZICCLSM_DISABLED build expects every one to trap (zicclsm=false).
-+test-zicclsm.o test-zicclsm-off.o: CFLAGS += -march=rv64gcv_zfh
-+test-zicclsm-off.o: CFLAGS += -DZICCLSM_DISABLED
-+test-zicclsm-off.o: test-zicclsm.S
++# Build and link the multiarch tests
++%: %.c $(LINK_SCRIPT) $(CRT_OBJS) $(MINILIB_OBJS)
 +	$(call quiet-command, \
-+	  $(CC) $(CFLAGS) $< -Wa$(COMMA)--noexecstack -c -o $@, CC, $@)
- 
- EXTRA_RUNS += run-plugin-doubletrap
- run-plugin-doubletrap: doubletrap
- 	$(call run-test, $<, \
--	  $(QEMU) -plugin ../plugins/libdiscons.so -d plugin -D $<.pout \
--	  $(QEMU_OPTS) $<)
-+	  $(QEMU) -monitor none -display none \
-+		  -chardev file$(COMMA)path=$<.out$(COMMA)id=output \
-+		  -plugin ../plugins/libdiscons.so -d plugin -D $<.pout \
-+		  $(QEMU_OPTS) $<)
- 
- EXTRA_RUNS += run-plugin-interruptedmemory
- run-plugin-interruptedmemory: interruptedmemory
- 	$(call run-test, $<, \
--	  $(QEMU) -plugin ../plugins/libdiscons.so -d plugin -D $<.pout \
--	  $(QEMU_OPTS) $<)
--
--EXTRA_RUNS += run-test-crc32
--comma:= ,
--run-test-crc32: test-crc32
--	$(call run-test, $<, $(QEMU) -cpu rv64$(comma)xlrbr=true $(QEMU_OPTS) $<)
--
--# Zicclsm: misaligned load/store support. Assemble one source twice: the
--# default build expects every misaligned access to succeed (zicclsm=true),
--# the -DZICCLSM_DISABLED build expects every one to trap (zicclsm=false).
--ZICCLSM_MARCH = -march=rv64gcv_zfh
--CLEANFILES += test-zicclsm test-zicclsm-off
--
--test-zicclsm: test-zicclsm.S $(LINK_SCRIPT)
--	$(CC) $(CFLAGS) $(ZICCLSM_MARCH) $< -Wa,--noexecstack -c -o test-zicclsm.o
--	$(LD) $(LDFLAGS) test-zicclsm.o -o $@
--
--test-zicclsm-off: test-zicclsm.S $(LINK_SCRIPT)
--	$(CC) $(CFLAGS) $(ZICCLSM_MARCH) -DZICCLSM_DISABLED $< -Wa,--noexecstack -c -o test-zicclsm-off.o
--	$(LD) $(LDFLAGS) test-zicclsm-off.o -o $@
--
--EXTRA_RUNS += run-test-zicclsm
--run-test-zicclsm: test-zicclsm
--	$(call run-test, $<, $(QEMU) -cpu rv64$(comma)v=true$(comma)zfh=true$(comma)zicclsm=true $(QEMU_OPTS) $<)
--
--EXTRA_RUNS += run-test-zicclsm-off
--run-test-zicclsm-off: test-zicclsm-off
--	$(call run-test, $<, $(QEMU) -cpu rv64$(comma)v=true$(comma)zfh=true$(comma)zicclsm=false $(QEMU_OPTS) $<)
-+	  $(QEMU) -monitor none -display none \
-+		  -chardev file$(COMMA)path=$<.out$(COMMA)id=output \
-+		  -plugin ../plugins/libdiscons.so -d plugin -D $<.pout \
-+		  $(QEMU_OPTS) $<)
- 
--EXTRA_RUNS += run-test-misa-w
--run-test-misa-w: test-misa-w
--	$(call run-test, $<, $(QEMU) -cpu rv64$(comma)x-misa-w=true$(comma)c=true$(comma)v=true $(QEMU_OPTS)$<)
-+CLEANFILES += interruptedmemory doubletrap
- 
- # We don't currently support the multiarch system tests
- undefine MULTIARCH_TESTS
++	 $(CC) $(CFLAGS) $(EXTRA_CFLAGS) $< -o $@ $(LDFLAGS) $(CRT_OBJS), CC, $@)
++
++# Default is zicclsm=true, so misaligned accesses must work
++memory: private CFLAGS += -DCHECK_UNALIGNED=1
+diff --git a/tests/tcg/riscv64/boot.S b/tests/tcg/riscv64/boot.S
+new file mode 100644
+index 000000000000..b403549345a1
+--- /dev/null
++++ b/tests/tcg/riscv64/boot.S
+@@ -0,0 +1,23 @@
++/*
++ * RISC-V boot code for multiarch test suite
++ *
++ * Copyright 2026 Tenstorrent USA Inc
++ * SPDX-License-Identifier: GPL-2.0-or-later
++ */
++
++#define MSTATUS_VS          0x00000600
++#define MSTATUS_FS          0x00006000
++
++.section .text._start
++        .global _start
++        .type _start, @function
++_start:
++        /* Enable FPU and vector unit */
++        li      t0, (MSTATUS_FS | MSTATUS_VS)
++        csrs    mstatus, t0
++        la      sp, __stack_top
++        call    main
++
++exit:
++        /* exit with main()'s return code */
++        call    _exit
 -- 
 2.47.3
 

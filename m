@@ -4,89 +4,95 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 33E6DC61DC2
-	for <qemu-arm@archiver.kernel.org>; Thu, 27 Aug 2026 13:39:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 13D89C61DC2
+	for <qemu-arm@archiver.kernel.org>; Thu, 27 Aug 2026 13:47:58 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wzaJq-0007Ot-Qz; Thu, 27 Aug 2026 09:39:06 -0400
+	id 1wzaSH-0001IU-V7; Thu, 27 Aug 2026 09:47:46 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <neither@nut.email>) id 1wzaJn-0007O6-Gg
- for qemu-arm@nongnu.org; Thu, 27 Aug 2026 09:38:59 -0400
-Received: from mailgate02.uberspace.is ([185.26.156.114])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <neither@nut.email>) id 1wzaJl-0003d4-Lp
- for qemu-arm@nongnu.org; Thu, 27 Aug 2026 09:38:59 -0400
-Received: from skiff.uberspace.de (skiff.uberspace.de [185.26.156.131])
- by mailgate02.uberspace.is (Postfix) with ESMTPS id CDD81180432
- for <qemu-arm@nongnu.org>; Thu, 27 Aug 2026 15:38:48 +0200 (CEST)
-Received: (qmail 16823 invoked by uid 990); 27 Aug 2026 13:38:48 -0000
-Authentication-Results: skiff.uberspace.de;
-	auth=pass (plain)
-Received: from unknown (HELO unknown) (::1)
- by skiff.uberspace.de (Haraka/3.1.1) with ESMTPSA;
- Thu, 27 Aug 2026 15:38:48 +0200
+ (Exim 4.90_1) (envelope-from <alex@shazbot.org>)
+ id 1wzaSG-0001I3-Gv; Thu, 27 Aug 2026 09:47:44 -0400
+Received: from fhigh-b4-smtp.messagingengine.com ([202.12.124.155])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <alex@shazbot.org>)
+ id 1wzaSC-0006fg-Rn; Thu, 27 Aug 2026 09:47:44 -0400
+Received: from phl-compute-05.internal (phl-compute-05.internal [10.202.2.45])
+ by mailfhigh.stl.internal (Postfix) with ESMTP id 038297A0191;
+ Thu, 27 Aug 2026 09:47:36 -0400 (EDT)
+Received: from phl-frontend-03 ([10.202.2.162])
+ by phl-compute-05.internal (MEProxy); Thu, 27 Aug 2026 09:47:37 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=shazbot.org; h=
+ cc:cc:content-transfer-encoding:content-type:content-type:date
+ :date:from:from:in-reply-to:in-reply-to:message-id:mime-version
+ :references:reply-to:subject:subject:to:to; s=fm2; t=1787838456;
+ x=1787924856; bh=cGwT4DEVg2M8EW1Yh2hp/p+ZG1i2W5kMpe+M+1QEuY0=; b=
+ Ud3tcY4V7nYfjdaRNLRCVCUnw61HhWDyIHxQH4xT5HOsuH7vY1f0IZ4KY5D5taAy
+ clouGkesTyezLvM0wHsYVy/6cEDXYHogTBfACyEud9nEmdXob4syeKE2KaJ3T5Xd
+ fVE/RazUr4Z9U98VWlvfBg8joZwV/y4+A2MTzCg7GB5d4SlG2Pr5e6NUc7sL/Oec
+ pcYwzJW2sbl2JLIDeoNtbYGFXKZpszXc7a/fEaEt/e6dB/zOR6fov/79ikw7zg49
+ KaXHA3/LepM4tGf7I+FLs89qwZpUxVoeoPdpoAEOK0kBrmBR8koyRpy+i7RW6hlm
+ ijYudhKbPxo2iNWxb+Zugw==
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
+ messagingengine.com; h=cc:cc:content-transfer-encoding
+ :content-type:content-type:date:date:feedback-id:feedback-id
+ :from:from:in-reply-to:in-reply-to:message-id:mime-version
+ :references:reply-to:subject:subject:to:to:x-me-proxy
+ :x-me-sender:x-me-sender:x-sasl-enc; s=fm3; t=1787838456; x=
+ 1787924856; bh=cGwT4DEVg2M8EW1Yh2hp/p+ZG1i2W5kMpe+M+1QEuY0=; b=E
+ hrUkQBV4l5sVqBQtzVbM03KOZaepEXPDVQedfxcsyZiNdfwHwuMolXLlV7Bugk57
+ 8WF5rrVO+377ejilYVvm1h+hd/Dije29oZE6L+1PVnXv0Z7sIS8mfwDr7uAU3Buk
+ mXMJBUa9FMjS8awHOJ47V9TBrW5l7//6ugSAEAMToQkr7UtfjiS5xOdXSgWXZ9qH
+ GinxzeXKnuR6YwZwNlhwSqtSC6EO6bwqzlfUt2arVlhzNmgpQ9tFDu5ZWyE3BQ7+
+ kfnnQt0/xC7qo/n9tq+JoS9hiMtqWlErmEQz8lreUtFRBlXT2Tiz8OS+7POQI3M7
+ w4oPyF94GvpyCAv7IX7Jg==
+X-ME-Sender: <xms:-D-QasjHFfdn4bb3UWpS-Mz80rXpwgcyAfJTvZs07bNa-6S4T8AW_A>
+ <xme:-D-QatPQlSRppriVtKezzRfhmuE1nD1rlNinVlT9ZscKKNyTtM2w6fPECQ0wpIBVg
+ 8rA52XqdRIDmetRHemSqpU9cAOqbAksHdqhMBDk7JPT2-VVy8tuvA>
+X-ME-Received: <xmr:-D-Qavo9ZjNMn3ImdkOHG0lUPEdf5xphqKS5j0oAYGj1yepdCWaaWQcpKHAztQ>
+X-ME-Proxy-Cause: dmFkZTEMuZ7veVXHtQmzYDEDfY+Mr1XAMWCgcMg2aqOVGpl226CClR0Ld7sVVfWV7GV9b5
+ FDxxTLyStD0x88aqd/kSFO88zdlEm1YRvGL+y6R2ttdZrRDbZmBzMTo2AhedJb7bu4UAbC
+ nSckBwJBZPAh5a45VSlbPR0E3qaECVgdlyXteE3Z9lmPgbJylieh6ciD6Bc8diSOnLFEba
+ Yj/3i9EYST/rd+q26+1mx763nZG5QSpYNgCYqQ/isWCNo4o7GBWWZfmwmsEXbRWAPawn8x
+ bX7X8KL3EjNAuHNx/DfjCANIsljXogoN1qB9QTVG8cM1FrMX6dXCnaVxlsEO8Vf699bRHk
+ nenB0v58+hm4X59jFtaV8WqNWyCK8JYXaGcugTg/xWeDpdo/2n41xJF9vYDuaLSkEfVjwC
+ DXpHDZG0yO8Jgoe20YqSoaZjnTtB1YkIpJx2i8MbpeyE5NJ/GK8tUH+uLmJTxWHVV4arPI
+ nN+cTOw3Cf7xSxInUtg7gm6c3ghzIG5Z9nsBYYKya9FvB+FQGgur59XqL6yuHgX9OPLBNT
+ gsJjeJHe10frONg/vv9GouIFyXH2SsG5fW5FiYKEIWSm8TSNs01/Hj0HRb5UYsZEIaaO7W
+ Yd+xhKrsqwvuDxBnCwor7zobhEib5DE3b8cn/JFh0VJRTlIp62TZYv0EG4Uw
+X-ME-Proxy: <xmx:-D-Qan6FJw8tHYauWqQMPsSw3f_x2FI1DGoujBW6_I7RyACp_Ba5iA>
+ <xmx:-D-QalhOOUF9ACFlV5lSxBGBr2EIMB8ZlzRWCFnGb4sbFyJp1m7lcA>
+ <xmx:-D-Qal4-zsHjhKMXGyZ5LxBbyRqd1SbGh0RsRzxRJioInYYm1Qu5rA>
+ <xmx:-D-QaiEdTKO_OUpfpc1iC8Xw1K8qBONeWAc0rjEjpXAQ_BHG_FuCGw>
+ <xmx:-D-Qagf--YS3efjgH4t71PD8FjNlANIqxY1BOFia3v9CSqm9TM3za087>
+Feedback-ID: i03f14258:Fastmail
+Received: by mail.messagingengine.com (Postfix) with ESMTPA; Thu,
+ 27 Aug 2026 09:47:35 -0400 (EDT)
+Date: Thu, 27 Aug 2026 07:47:33 -0600
+From: Alex Williamson <alex@shazbot.org>
+To: Gerd Hoffmann <kraxel@redhat.com>
+Cc: alex@shazbot.org, Tushar Dave <tdave@nvidia.com>, qemu-devel@nongnu.org,
+ jgg@nvidia.com, skolothumtho@nvidia.com, qemu-arm@nongnu.org,
+ peter.maydell@linaro.org, mst@redhat.com, marcel.apfelbaum@gmail.com,
+ devel@edk2.groups.io
+Subject: Re: [RFC PATCH v2 0/5] hw/pci, hw/arm/virt: fixed PCI BAR placement
+Message-ID: <20260827074733.340aeb0c@shazbot.org>
+In-Reply-To: <ao_fX3cYersq6TRd@sirius.home.kraxel.org>
+References: <20260827004024.598351-1-tdave@nvidia.com>
+ <ao_fX3cYersq6TRd@sirius.home.kraxel.org>
+X-Mailer: Claws Mail 4.4.0 (GTK 3.24.52; x86_64-pc-linux-gnu)
 MIME-Version: 1.0
-Date: Thu, 27 Aug 2026 13:38:47 +0000
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: quoted-printable
-From: "Julian Ganz" <neither@nut.email>
-Message-ID: <39c0afbc330cd144bc1ae3757e7638b2a8c8fc57@nut.email>
-TLS-Required: No
-Subject: Re: [PATCH 13/35] target/avr: call plugin trap callbacks
-To: "=?utf-8?B?UGhpbGlwcGUgTWF0aGlldS1EYXVkw6k=?=" <philmd@oss.qualcomm.com>, 
- "=?utf-8?B?QWxleCBCZW5uw6ll?=" <alex.bennee@linaro.org>,
- qemu-devel@nongnu.org
-Cc: "Liu Zhiwei" <zhiwei_liu@linux.alibaba.com>, "Alexandre Iooss"
- <erdnaxe@crans.org>, "Chinmay Rath" <rathc@linux.ibm.com>,
- qemu-arm@nongnu.org, "Peter Maydell" <peter.maydell@linaro.org>,
- "Nicholas Piggin" <npiggin@gmail.com>, "Ilya Leoshkevich"
- <iii@linux.ibm.com>, "David Hildenbrand" <david@redhat.com>,
- qemu-ppc@nongnu.org, "Paolo Bonzini" <pbonzini@redhat.com>,
- qemu-s390x@nongnu.org, "Bastian Koppelmann"
- <kbastian@mail.uni-paderborn.de>, "Helge Deller" <deller@gmx.de>,
- "Stafford Horne" <shorne@gmail.com>, "Mahmoud Mandour"
- <ma.mandourr@gmail.com>, "Artyom Tarasenko" <atar4qemu@gmail.com>,
- "Eduardo Habkost" <eduardo@habkost.net>, "Palmer Dabbelt"
- <palmer@dabbelt.com>, "Alistair Francis" <alistair.francis@wdc.com>,
- "Laurent Vivier" <laurent@vivier.eu>, "Weiwei Li" <liwei1518@gmail.com>,
- "Daniel Henrique Barboza" <dbarboza@ventanamicro.com>, "Mark Cave-Ayland"
- <mark.cave-ayland@ilande.co.uk>, "Yoshinori Sato"
- <yoshinori.sato@nifty.com>, "Edgar E. Iglesias"
- <edgar.iglesias@gmail.com>, "Aurelien Jarno" <aurelien@aurel32.net>,
- "Richard Henderson" <richard.henderson@linaro.org>, "Thomas Huth"
- <thuth@redhat.com>, "Max Filippov" <jcmvbkbc@gmail.com>, "Jiaxun Yang"
- <jiaxun.yang@flygoat.com>, "Michael Rolnik" <mrolnik@gmail.com>, "Song 
- Gao" <gaosong@loongson.cn>, qemu-riscv@nongnu.org, "Aleksandar Rikalo"
- <arikalo@gmail.com>, "Pierrick Bouvier" <pierrick.bouvier@oss.qualcomm.com>
-In-Reply-To: <aa4bdaf5-6669-4ed7-90fb-4e766f160118@oss.qualcomm.com>
-References: <20251027110344.2289945-1-alex.bennee@linaro.org>
- <20251027110344.2289945-14-alex.bennee@linaro.org>
- <aa4bdaf5-6669-4ed7-90fb-4e766f160118@oss.qualcomm.com>
-X-Rspamd-Bar: +
-X-Rspamd-Report: SUSPICIOUS_RECIPS(1.5) BAYES_HAM(-0.035663) MIME_GOOD(-0.1)
-X-Rspamd-Score: 1.364336
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=nut.email; s=uberspace;
- h=from:to:cc:subject:date;
- bh=3YLSykSOgjx+A88sO5o8Doo1klTySZuA845vpIUw5f0=;
- b=H1PcMs5+zwTIkGKISmDQF6XsH1GKukHw6JTHx/8TPfnydTyCr4ykemYtPDftAjnQoJ020j7vm9
- AmseTI8Zro2L70wLz2Njk3pqaBdB5WCQpO/JjbRlY8wTJdIN77cNftOLtQZDIf6ATqP9o5JOLEyx
- yDiIVMEzndB344dUfhnXSaOE+QWJIwu4w/WprywWJifQTvtHODRT1nlXSiSsnKbLaQQ/5BkoZp7h
- tJcDSnJKXVR8IoZGw2DMIS1VxP8P2C3gpa5HerBPZTQN8CJHu2lVKLdJz69ZPtxxsLFDMrVhcRXh
- cEuQHpxZ4xL2yOFxM63RydIALfQOc2QdG+49xvXXJXn3lzqybSnl8MNFtOFsEOsflsk/AH5/Xu3k
- OpafC1ImSENz15gil/HpHDH5BK71wO8dDAeU/kyYkOIlXyCf1YawOb9UssC6R5lDVyWNfkvq5oCa
- Gx5o+9xml+2eXRIsblZA0bw5oCndn5ZQjx8YGM1LpfVvxvBclbY08bc3/DQMHX5GsZ3BDK+Sh4Dz
- 588aAsBB+dBe51yR82sNO7Ru9RydbThLbcN4Vguujf9h/UUwqGgIbHl7ZWrmaFIB9+eevERTOZBw
- r9nRZiTyL4S8p2VTNiibysLDlYONScXBN8cM36KltX2scgObYGT3rbUwTGKcO06H4wa4j4A2UL0T
- A=
-Received-SPF: pass client-ip=185.26.156.114; envelope-from=neither@nut.email;
- helo=mailgate02.uberspace.is
-X-Spam_score_int: -20
-X-Spam_score: -2.1
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=202.12.124.155; envelope-from=alex@shazbot.org;
+ helo=fhigh-b4-smtp.messagingengine.com
+X-Spam_score_int: -27
+X-Spam_score: -2.8
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_NONE=0.001,
+X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_LOW=-0.7, SPF_HELO_PASS=-0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -103,63 +109,77 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Hi Philippe,
+On Thu, 27 Aug 2026 09:18:50 +0200
+Gerd Hoffmann <kraxel@redhat.com> wrote:
 
-sorry for the late reply. Did not realize I hadn't checked mails this
-long.
+>   Hi,
+> 
+> > Following the feedback, RFC v2 keeps PCI enumeration and resource
+> > assignment in firmware. QEMU only validates the user-provided fixed
+> > BAR configuration and provides the required metadata to firmware
+> > through the "etc/fixed-bars" fw_cfg file.  
+> 
+> qemu already has vendor-specific pci capabilities.  They are used to
+> pass hints for the bridge window sizes of pci bridges (including pcie
+> root ports) with hotplug support.  See OvmfPkg/PciHotPlugInitDxe/ for
+> the firmware side support.
+> 
+> I'd strongly recommend to do the same for the fixed bars:  Add a pci
+> capability to pass that information.  All the logic you have today to
+> link the information in the fw_cfg file to the correct pci device is
+> simply not needed any more then.
 
-August 17, 2026 at 1:14 PM, "Philippe Mathieu-Daud=C3=A9" wrote:
-> Expanding a bit ...
->=20
->=20 77 void avr_cpu_do_interrupt(CPUState *cs)
->  78 {
->  79 CPUAVRState *env =3D cpu_env(cs);
->  80
->  81 uint32_t ret =3D env->pc_w;
->  82 int vector =3D 0;
->  83 int size =3D avr_feature(env, AVR_FEATURE_JMP_CALL) ? 2 : 1;
->  84 int base =3D 0;
->  85
->  86 if (cs->exception_index =3D=3D EXCP_RESET) {
->  87 vector =3D 0;
->  88 } else if (env->intsrc !=3D 0) {
->  89 vector =3D ctz64(env->intsrc) + 1;
->  90 }
->=20
->=20Unconditionally recording exception vector as interrupt seems wrong,
-> shouldn't we call qemu_plugin_vcpu_exception_cb() in that case?
->=20
->=20 91
->  92 if (avr_feature(env, AVR_FEATURE_3_BYTE_PC)) {
->  93 do_stb(env, env->sp--, ret, 0);
->  94 do_stb(env, env->sp--, ret >> 8, 0);
->  95 do_stb(env, env->sp--, ret >> 16, 0);
->  96 } else if (avr_feature(env, AVR_FEATURE_2_BYTE_PC)) {
->  97 do_stb(env, env->sp--, ret, 0);
->  98 do_stb(env, env->sp--, ret >> 8, 0);
->  99 } else {
-> 100 do_stb(env, env->sp--, ret, 0);
-> 101 }
-> 102
-> 103 env->pc_w =3D base + vector * size;
-> 104 env->sregI =3D 0; /* clear Global Interrupt Flag */
-> 105
-> 106 cs->exception_index =3D -1;
-> 107
-> 108 qemu_plugin_vcpu_interrupt_cb(cs, ret);
-> 109 }
+Placement of a VMM defined capability into a vfio-pci device is not
+such a trivial problem as it is for emulated devices.  Space may not be
+readily available and the capability may mask non-architected registers.
 
-Yes. As should be apparent from _some_ commit message, I wrote this
-under the impression that AVR did not have exceptions. Or rather, what
-we call exceptions in the discon API, which are synchronous events or
-traps resulting from specific instructions being executed (including
-things such as invalid instructios and instruction load failures).
+Does this suggestion relate to fixing the gap between mapping fw_cfg
+entries by vendor/device IDs or is there something fundamentally
+undesirable about using fw_cfg here?
+ 
+> > * fixed-bar=on on a PCIe root port marks its subordinate hierarchy for
+> >   fixed BAR placement. Every device with memory BARs in that hierarchy
+> >   must provide a complete pci-bars= configuration.  
+> 
+> Why is this needed?
 
-We _do_ want to make sure to call qemu_plugin_vcpu_interrupt_cb only for
-interrupts. At the same time, we don't necessarily want to call
-qemu_plugin_vcpu_exceptions_cb either, at least if AVR just resets on an
-illegal instructions.
+AIUI, the problem space is greatly expanded if we mix user provided
+fixed-bars with firmware assigned BARs and it's possible that there is
+no solution that meets the requirements.  This option both simplifies
+the problem space and allows the resource windows to be audited to
+generate user actionable errors in QEMU.
 
-Regards,
-Julian
+> > * pci-bars=barN@<addr>[,barM@<addr>]... on a PCI endpoint specifies the
+> >   required address for each memory BAR. All memory BARs on the device
+> >   must have an explicitly assigned address.  
+> 
+> fixed-bar-<nr>=<addr> ?
+
+Could be a reasonable alternative.  I'll let Tushar or others wrestle
+with the deeper edk2 comments below ;)  Thanks,
+
+Alex
+
+> > On the firmware side, a new DXE driver, QemuFixedBarsDxe, installs
+> > EFI_INCOMPATIBLE_PCI_DEVICE_SUPPORT_PROTOCOL before PciBusDxe starts.
+> > When PciBusDxe calls CheckDevice() for a discovered PCI function, the
+> > driver returns ACPI address descriptors with _MIF|_MAF set for fixed
+> > BARs. Two small changes to PciBusDxe preserve these fixed addresses and
+> > program them into the BAR registers during BAR programming.  
+> 
+> Expecting PciBusDxe respecting AddrRangeMin looks sensible to me ...
+> 
+> > After PciEnumerationComplete, QemuFixedBarsDxe walks each fixed
+> > root-port hierarchy and programs the bridge memory windows to cover
+> > the fixed BAR ranges assigned to endpoint devices.  
+> 
+> ... but changing things after-the-fact in platform code is a complete
+> non-starter.  PciBusDxe needs to do that, i.e. take care that the bridge
+> window assigned actually cover the fixed pci bars.
+> 
+> take care,
+>   Gerd
+> 
+> 
+
 

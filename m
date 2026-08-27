@@ -4,141 +4,119 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0BDD3C61DC2
-	for <qemu-arm@archiver.kernel.org>; Thu, 27 Aug 2026 09:15:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9AAAFC61DC2
+	for <qemu-arm@archiver.kernel.org>; Thu, 27 Aug 2026 09:19:57 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wzWCI-0000PQ-5A; Thu, 27 Aug 2026 05:14:58 -0400
+	id 1wzWGy-0006Sl-F4; Thu, 27 Aug 2026 05:19:48 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <kchiu@axiado.com>)
- id 1wzWCF-0000H6-K5; Thu, 27 Aug 2026 05:14:55 -0400
-Received: from mail-northcentralusazlp170130007.outbound.protection.outlook.com
- ([2a01:111:f403:c105::7] helo=CH4PR04CU002.outbound.protection.outlook.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <kchiu@axiado.com>)
- id 1wzWCB-0004XN-VY; Thu, 27 Aug 2026 05:14:54 -0400
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=lzkC0udvJT/2SX3i5CwxFHc/7LJNiqNWDq45GP7LLKzW/REfxtRHaGnbY3rFgZBqGRlQrkkHrSARxUEg0dLpv1JraokFvURGfwqlxP3hzszUYIHw9dxdkojkd/Q4Qmka8ChInXKETkON5ev6VQ6jexqVnyt0eBa8KQ3j1KJssnBlo7S2psq8E1wSZV6lie/bUYasqq7FV+B5/o4ZWtqBAZaloLqyU5CV4BPc0ouFk3q5zMkw4csyFaKeuKamN7b/842bae1cT9QJLeE+ddEeclA0HjlZ8J4DcItDiH9gq+3ZqPJUxS059Bv+kIQaOHXJxrmiaS0bOizSabwEP0HDtA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector10001;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=sj87Rl0GrCEIpTTFZXoIMrJTlpPi09gonGvtB75TcRY=;
- b=JKoGI3owTkgQeiehORyUhEarWK7NUYuC5RARsBXf2vwKCPORBoa3q87vUZftbdoMMztro42gN6y3Wp7kQCJ41TxusAmYL/vFdSL4jKfnE/1ykYfo29YHCO4PTk+nTxdLQHFXcs9en02+Q8aXg1EjCc1zXR5D48TTU87SVn6+rXJyCixqj5EUWVow5s8LJgk0W0WNLI5tiqDC925fB+YpjEpjw3OTW2Hdigx5Puw29qZ5FeLyWxNfiM2XPzA0loW2R4+0Y676dB7e9FqupJNaI4nu9EOhf5iP84mEXemP0rmVeQMV03qg2HyFcOkhDfDKYOGCMK7ed573TaqTXLQKWg==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=axiado.com; dmarc=pass action=none header.from=axiado.com;
- dkim=pass header.d=axiado.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=axiado.com;
- s=selector1;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=sj87Rl0GrCEIpTTFZXoIMrJTlpPi09gonGvtB75TcRY=;
- b=vFN314Az3ddnF54+g9FD/hCVKtmQnMMRUT29+Q9c9EXcbvvFg8bcv2JDOTdJsu+//hg6LVdCEwo5d0bfiem+2Fzugu+aae9+arg8jD6vxY8fsk25nim+xB+XYKK0OgmuJA8V+4CQInCMdqHp6yW7ATrKDbol5oHJ1Zr7gyes5E6/q8sxqvNO35asU2YSD6xm7STnV66bNTQm81WZGYxQ1AyT5Ta8ohF3niGKppWOYZlC1xDp7mGhvb5rfQtE4KHEOkg9D4gzaH3tLDOaE5U2XRdzWWclrAmqgnYkl3cTfUwSNDuIK2Dl0xCgNdWUpV63m630bL516o5RBK70ukJk8g==
-Authentication-Results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=axiado.com;
-Received: from SJ0PR18MB4479.namprd18.prod.outlook.com (2603:10b6:a03:37f::19)
- by PH3PPF33C709630.namprd18.prod.outlook.com (2603:10b6:518:1::c91)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.21.360.10; Thu, 27 Aug
- 2026 09:14:45 +0000
-Received: from SJ0PR18MB4479.namprd18.prod.outlook.com
- ([fe80::eaf4:3aec:73e:d5ba]) by SJ0PR18MB4479.namprd18.prod.outlook.com
- ([fe80::eaf4:3aec:73e:d5ba%3]) with mapi id 15.21.0360.008; Thu, 27 Aug 2026
- 09:14:45 +0000
-Message-ID: <42e7024e-43d9-47a2-9816-229aa8ee4d2a@axiado.com>
-Date: Thu, 27 Aug 2026 17:14:40 +0800
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v4 4/8] hw/char/cadence_uart: Reserve MMIO with dynamic
- size
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@oss.qualcomm.com>,
- 163wangjack@gmail.com, qemu-devel@nongnu.org, peter.maydell@linaro.org,
- qemu-arm@nongnu.org
-References: <20260826074635.2850931-1-kchiu@axiado.com>
- <20260826074635.2850931-5-kchiu@axiado.com>
- <5e22ac73-0650-493d-a099-c88cbb74b397@oss.qualcomm.com>
- <a3210074-7795-4a9b-b72e-aea0efb53664@axiado.com>
- <33c9db8d-2004-482a-8d86-5400252fe2d2@oss.qualcomm.com>
-Content-Language: en-US
-From: Kuan-Jui Chiu <kchiu@axiado.com>
-In-Reply-To: <33c9db8d-2004-482a-8d86-5400252fe2d2@oss.qualcomm.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-X-ClientProxiedBy: TPYP295CA0032.TWNP295.PROD.OUTLOOK.COM
- (2603:1096:7d0:7::13) To SJ0PR18MB4479.namprd18.prod.outlook.com
- (2603:10b6:a03:37f::19)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1wzWGw-0006SH-Rd
+ for qemu-arm@nongnu.org; Thu, 27 Aug 2026 05:19:46 -0400
+Received: from mail-yw1-x112c.google.com ([2607:f8b0:4864:20::112c])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1wzWGv-0006pK-CD
+ for qemu-arm@nongnu.org; Thu, 27 Aug 2026 05:19:46 -0400
+Received: by mail-yw1-x112c.google.com with SMTP id
+ 00721157ae682-836c718715fso20004417b3.0
+ for <qemu-arm@nongnu.org>; Thu, 27 Aug 2026 02:19:45 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1787822384; cv=none;
+ d=google.com; s=arc-20260327;
+ b=nG5Cj48k3p21xqAPmDw0PuK0sqAWmdFVuURyxaTCRvPUHePPai9nZqhooCQ/Ebfp46
+ KyM5KJHQKo3UPFkwDyyKQ/5udqIo/Ftcg1tq9xOulnZbTH2szBLAr1M8PnWPLcU5iObC
+ ZJ+uhhZ9dHdjWiqh+aEtSU1RBmLvkMVaylY8LDYpQKt6xy3IbUwslWsN6f/Bbb6Wsrhu
+ MJPpzY8YphjgInUa4lS4gdfwoi5xv7Tc8wmmkNYWnvo+RMbnJdGS5IHB4ALXfPYdVWMo
+ qAUclbg714uw09kpuiGxrqqfb/cJo8YKPsguLVx5bCwdNi/6G3eQXwgPCz99u6DycyB2
+ Sp+g==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
+ s=arc-20260327; 
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:dkim-signature;
+ bh=HtBlM6Z6bTfGegu7sb9BhAkdE/aBn0pvhLP8tvsv0vY=;
+ fh=P2HKXT9rOKaGdgZGBuyTfQy5rJ3jOe3dtB+12lvL6yg=;
+ b=iIrS4iDXrXq7cGJDKnxHk2QRLTN+T8xwEsmOF8wPSGWofjU3PDf9y+j/XOmxOvyBmT
+ 9FE4nLmSeZs5SoZTsNjBwVEFkOmt+QUFfeA3aUiaAB+eLDAKQaFxQjyOIckXZac0Vw1s
+ UEXiNToDsoLQ7bd3OrOdy2K9+0qR78bUx3wII8uX6T31ghZB0TM62eSgEjcUbGoCHrbr
+ k7yhLM/getjNMwVSQAHRwsHGxkv7j0xA/Dn2ew/JuJyrsUGRtgPsJXzaypME/AE/22qp
+ lI5fYfWDLtz/JsOO4kdjZ6EaC5LDG0IddKA3KsrvuEELao9lxeONdygkYPEB1JV9M70u
+ rc8A==; darn=nongnu.org
+ARC-Authentication-Results: i=1; mx.google.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1787822384; x=1788427184; darn=nongnu.org;
+ h=content-type:cc:to:subject:message-id:date:from:in-reply-to
+ :references:mime-version:from:to:cc:subject:date:message-id:reply-to
+ :content-type; bh=HtBlM6Z6bTfGegu7sb9BhAkdE/aBn0pvhLP8tvsv0vY=;
+ b=vaSd+ylC6T4XL8g4ktIbpRRCCBWTgoKVOa7PVwODYCHn6Gl7qcRyfvvPedDglwlTA5
+ bfnPTGOawUJ3aYOvXdifdKewnM3AjsHYkJ3X3sEm/6+Us8bdX+e8jjk6KOJbvr0R+fT0
+ qd6Ly9q0M4zqVLL6RjUOmtZyP3nGFoEXUj7Auz96Fr6ACetGwHX3TGjjFo72CsI1kk+W
+ 2pAu/y7VZpnddkdSgxXXQs9Hl4EzO8sr7rJp2WQz8PI7EYPxN8FY8gdtI2U8y7Pva7AB
+ q/hwUaTgrmOcRJMUbYV78RHSFekfUFUyfaYcMmJ7CGGc1hL+KXANFHwTVCUa+hGmWxGA
+ UHrw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20251104; t=1787822384; x=1788427184;
+ h=content-type:cc:to:subject:message-id:date:from:in-reply-to
+ :references:mime-version:x-gm-gg:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to:content-type;
+ bh=HtBlM6Z6bTfGegu7sb9BhAkdE/aBn0pvhLP8tvsv0vY=;
+ b=KG6n4D+Vy1xvu3K7o2j1PeCuTlViDzPVTkx9PwnK/8X0I7usS3nOiMVB9v0UoHhrIv
+ WYaOZ1ahdQC+GHlT+37wqi/eMjqoPnOeG+P/jfz8P7yXuZ5ebrY9JUt4VRUFLaKJGWUY
+ g2fNjHMDzRnHejOsO9KjoigtIi7g16C+lgwnjnQgpYF0GDwclFu+5tR5LPeoWWeSIY2u
+ iLd9ajNs4Vq1nqwmp9niuLDfNoGMaItK9hKAU+X9Zn/+T/kW59ZEnhlhPDqhxzHVCQNk
+ tDbIQ75sU1GrRYNp4qDPxxqzTRlZK62uvc+t10N06k8jr4LOeBVX9UaT+hIq0PuvlkKY
+ cKuQ==
+X-Forwarded-Encrypted: i=1;
+ AHgh+RoTFDPJmaNnFOAITj6jJKbo+4ReRhDyNBLm/NQuRwfy1Z7eeYjyTpN6dxgS4m+ixaD8OjCZ1wZQQA==@nongnu.org
+X-Gm-Message-State: AFuF++lFwt+mjPCNypfyxzymekj0miASpdLdyjpxxf8pGpnrqekWSgrv
+ MGusZ5oS/RktnvGY0HS17IwwxbQwx1Fb5XA/ribIs3BwMxXKDED2oNTg1+syN3MA6eFfHOMchME
+ UaBYQrq0VTouxCpM8Ld6bO3zfN1ObqNOwiPAlR+6DIA==
+X-Gm-Gg: AR+sD1376y0ivo3gjHQAiRbMpplwSggQ8biZc2OcuxvMoJxLNWe3VGEj6qYncqiwcCJ
+ f6hoOtn0Z911ScLDtt56LRhnRPPoi4tHl+YyYOMZ0tblj6/YI9/VLSDcQWMv8VZTsZQYh36OqA4
+ +q3UHpobNswTAaPDkeSQU10dcWexxLcxH+1hWQeA98dgUPyMJQxYpZY3OjBXGIES9KuvMMtfcYr
+ ckdb2swczt+jVe4XEEjMSTXfx6NTuuApxNOnSAaKNXhHC9VNXAR4ozX9CSdnK7TKffA6UR7N+lA
+ MP9h1goPg+xR5KDvTNUdFPD+o+8yJXaqACZLIlidKmUWMC9mHgHDTmdZOAesNnsNoJNNA6AL3Lr
+ TmIzjM9dInJLO85VZJmPLeenVzAgJ
+X-Received: by 2002:a05:690c:9c0c:b0:80c:ebd4:762 with SMTP id
+ 00721157ae682-8573be1e4c0mr61989607b3.7.1787822379833; Thu, 27 Aug 2026
+ 02:19:39 -0700 (PDT)
 MIME-Version: 1.0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: SJ0PR18MB4479:EE_|PH3PPF33C709630:EE_
-X-MS-Office365-Filtering-Correlation-Id: bfa075e1-f71f-499b-e65d-08df041ba29a
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;
- ARA:13230040|23010399003|1800799024|366016|376014|6133799003|10067099003|4143699003|56012099006|22082099003|18002099003|3023799007;
-X-Microsoft-Antispam-Message-Info: MiCy/xfZZOIMnQfZcVzUsElU2qB6zJZqTRODaWLIS/6AZW+vZPOJJWxmfjiSYflb1YODd3XH6t0M7oNtx5yUuu8qtKBCho8vVJpwfT3E6dIZ5lWlPKoXC4lbjuICZSmzGa9M/SRGsYR6Fwsl/x1WuzgEukKCZMrK+mysc0n4Z9jlM5P5dnWWUbWo61gtAM76qe3GxFjEfE7BYrMpJLp3SnnbJX+UzI1DW8hvGvI0tedmBDYIQwdFdnhKrhVQ2e9tl0OOtTYK2WxvvRW0esrHM7oK/FMcCFjbRgrvPXb/TOXEn0qHUWsGhIxlqdq+p6EzL7Xrc+GntGCliib1ZIXA7ogsmxwMf5Udaw9cRd1J7YJq0EYpqFILTOkwYImNjsWKAwYLXKtt3O7WAjCDqIj8NiP7JelcrAAxpjNFWFsV1upV73z0pEnbGqq2xQ93RMR/Fdhkgu8Kv09M1oXvv3U9tbo5FWpUhX7bHWVKwG8Dda2cVYtI37faSNOCjOPDUZwCDXHVO2ly6ovtB7tEpD6Qy/EMMlik2hzN55Ehjq1+iji+inZi896+CaMZtb1SPHxg5jjWujQdj1rAuubY7PwpQSKMMH6P0H48JmJzK+QIp94bPOJ1Zvm2dz9SglxUD6NxGqyuhxshDfzbzeWbaTGupcYILTdK761n0UrUeRoGphA=
-X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:SJ0PR18MB4479.namprd18.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(13230040)(23010399003)(1800799024)(366016)(376014)(6133799003)(10067099003)(4143699003)(56012099006)(22082099003)(18002099003)(3023799007);
- DIR:OUT; SFP:1102; 
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?a2wwMXdlRFd2YStzTExiWEFCYVE3SU82aHNFRHZqODJGQzZzWUV6bHVPOXVj?=
- =?utf-8?B?ZGQyTU95OWJiUFpmbFFUaWtaYWMvSXpTMWJ0eUMyREE4Mi9mNExiM3JkRml1?=
- =?utf-8?B?SytqU3g5TWdiK1NCUkFoYnMrcVRKSXFwR2g0R2xoM01SYTQ5YWNldXd2aWto?=
- =?utf-8?B?UEpTMkQraHVQSjdoN091V2o3NjFIZkxSMFRvTUpzRkUwSWFyd2FIMHhqeStu?=
- =?utf-8?B?R2FQc3NGeGU2UXRsSFN0TnVtV1FlUGNoZWx6ZXlkenozdDVXTHVoVFRaVC95?=
- =?utf-8?B?MTJ3amZxZHQ0ejBwV2N5Y2RQRmcyS1RGM3dEYXlTNkV2UTY2ekMxM3FIaDRB?=
- =?utf-8?B?bGVxNVRkQ09GM2JjL3V6QzBNMmVlN3Z5WERUNC9kUUw3MkEveDV6MTE5bWFJ?=
- =?utf-8?B?QW5UYmdKdlk0aWlrVTFUVThyNU9scTlHNFFSNTRYN29KanFjd21xV2hkSFVq?=
- =?utf-8?B?dVEwN0U3Mmxlb2tnWERUY2htSUh0R3Q1QXpJTmdhWVpqYWtFMk50RnNZYkJT?=
- =?utf-8?B?cmVqdTVSdjZ4YnBaMWt1RzgvanVad0Q5OXJqeEE5eHE5Y2dPc2ZMNTVKdFRR?=
- =?utf-8?B?QUk2TVhha25MemJJZkNwOW80SVlJaXhzdXdRRzdWTjZJd2Q0Wk0zVUErSWkz?=
- =?utf-8?B?czlwSmdTTk1nMTB2RVpLMUlGYWtuVVQwZ2JJK0xDdnN3dUR3NC8xRDc1cmo1?=
- =?utf-8?B?bm9rUEpGN2lXSVQ5UFd3MzlSMDdJa3NHdHNHNHVJa0pHVllsUDdTOXZwZ2dh?=
- =?utf-8?B?eFpNS2ZnT0xkOUVOWXBNdU43bXhpdjFGVUVsL2NKci9CYW9JdEVSYzFUN0xy?=
- =?utf-8?B?NUlLY0szSHlLSlBPcTV4djhWa29XVTVsK1Joc1lEQnpkbHNmSWxKc0xSNWZz?=
- =?utf-8?B?NVIyd2NJWTBoUFZVeGZrV240c0FQd3N2VFdvbUFxNlpQNnFwdkJoY3ppU1JO?=
- =?utf-8?B?V0V6c0tRU1dwcWt6M0V6Rk9QUm5DeWU5SlUrRHQvY1ljUWFIWkR4VFVMQWFG?=
- =?utf-8?B?TG5tUTJmZDJLd0xQTjF1Ukl0b3dFbUVGMjB2M2ZVeUpxcWdQc2syUk8wQ0J2?=
- =?utf-8?B?VlY1VEc1ODJkb0o5cnFXYi94c2d6L1FiWGxpR1dscEdKMTN3bXZFbUt4Q3g3?=
- =?utf-8?B?ZHUvSWU5MU9HQjVzTWRzNGtHZzIyUEdrNkFnREtZbzZ6eEdiWktOS2dzd2Q2?=
- =?utf-8?B?ZEFmOEpFR0QvUVcwazdhd0xOZllDQTQ2VGsvYXEvM3J4R0tLOGlyRlFMNmNl?=
- =?utf-8?B?SWE0Wm11TkJRK1dYcU5jZVV0T29ZRzJQbUNUeUpZZUx6WCs1UjgzODBROWlC?=
- =?utf-8?B?dDI5a0c1QVBPNFh6Sk9wSVdhRkczSTVpeWRvVy9jUXh0VXJRTS9MSG1YWU94?=
- =?utf-8?B?UEFTWnZVYXBXMDQ4T0RjMkhyRXJ4cHFHSHRrbGNqVkhxall4T2tKekthSnJB?=
- =?utf-8?B?U2FQWXBHT00xZllhVEVZaUpldVpIYlVTOFo3bUlkQ01iWTQreVdTYmhYRUN4?=
- =?utf-8?B?MjVNQ3FHMmZnTXVFcFlEcU1SM0loaXlLVUZiSUgzc3QxUWMxQ2JDTkd6ajM1?=
- =?utf-8?B?NHRpYTE2Qzc0RHg1czQrWDJqU2lyTkIyTXp6MlZKUTM1M0NTNFNxNmVKSUlX?=
- =?utf-8?B?OEh2WnhPbGc1OGhacVBPUFpVMi8vK0FUS2V0My9lOGZlQnIwWW5WTXNnNjJo?=
- =?utf-8?B?dFA4OUJDYlRrWlU3bDhONzlYTGtyZGVlMytDZjVIOUZWdmxXMkdVVjVOd1VT?=
- =?utf-8?B?K2pNV2dKcmFFa253a0tjUWVUYmNIc0hHSit4RDZ4T3hsa21yekFuSXBsV2tl?=
- =?utf-8?B?THV4Vml4MmxwTkxPR0dDUHhXV0Q4SUtac2tyNWRYczhvaTRva1J4Rko2K0Jo?=
- =?utf-8?B?eG5oc3ZKdCs4Umd3RkZNK0F6NUdrMDlwbEFsanVHdlpNd29nSWRUOE1PeXRy?=
- =?utf-8?B?azVOSjg0TGt0L0VXdGxrNzJsaW9hZTArenVXYW94enRqUWREWkphcFhFWkVS?=
- =?utf-8?B?WGdVYlg2Q09KM25yeVk1RnpraEhBTkovSGppV092cFNyWHk0dnc4aG5Ja1Ar?=
- =?utf-8?B?Q0VESEhqcmpIbG9XTHNndWVIcFVLRE5rekVFY2NjMFh4S1BNbDg5S2xldW42?=
- =?utf-8?B?Tm95bjRoR1IxWWF6Z2wvMVN6bTBtNE9Wc1ByVllrakg0V0JnWU02TVJkQklO?=
- =?utf-8?B?QlJRU2lkelorZXI4SkhlRFppU2s1Wml1aE1Ib2Vzd2t5eTNyUk1JR2NHM3RG?=
- =?utf-8?B?WWhZNEtsNnk2T3pySEdxUlJrbzF4R1pPelNYeU90TE9Xa3pncHNNb215OG1B?=
- =?utf-8?B?dzJEN3NGOFNiSk1BdUZlcy96K1ZFSHlncFd5cXl5NEN5bUxqT2h4dz09?=
-X-OriginatorOrg: axiado.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: bfa075e1-f71f-499b-e65d-08df041ba29a
-X-MS-Exchange-CrossTenant-AuthSource: SJ0PR18MB4479.namprd18.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 27 Aug 2026 09:14:45.0131 (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: ff2db17c-4338-408e-9036-2dee8e3e17d7
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: kX1Cgwq/2hhKfTMYbmo2IhUiJGg10UtiryDU1/UQlSckoSEeIlv5Mubns8r/DxnEJ09kPOWkLnyBnDcekJZwUg==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: PH3PPF33C709630
-Received-SPF: pass client-ip=2a01:111:f403:c105::7;
- envelope-from=kchiu@axiado.com;
- helo=CH4PR04CU002.outbound.protection.outlook.com
+References: <20260825040452.1322251-1-stephensportia@gmail.com>
+In-Reply-To: <20260825040452.1322251-1-stephensportia@gmail.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Thu, 27 Aug 2026 10:19:28 +0100
+X-Gm-Features: AcwNN1XRZThkv23MUPhrrgokKre1Ig6vtj8xgI-faEZYcmow70zlT5AbwWYVdik
+Message-ID: <CAFEAcA9etHvjL1igO4mFy5iQNy1pCbNFGaSg5HFva+YCeMkGEA@mail.gmail.com>
+Subject: Re: [PATCH 0/4] Rename ssi_transfer to ssi_transfer8
+To: stephensportia@gmail.com
+Cc: qemu-devel@nongnu.org, Palmer Dabbelt <palmer@dabbelt.com>, 
+ Jamin Lin <jamin_lin@aspeedtech.com>, qemu-ppc@nongnu.org, 
+ =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>, 
+ Steven Lee <steven_lee@aspeedtech.com>,
+ Andrew Jeffery <andrew@codeconstruct.com.au>, 
+ Harsh Prateek Bora <harshpb@linux.ibm.com>,
+ Subbaraya Sundeep <sundeep.lkml@gmail.com>, 
+ Troy Lee <leetroy@gmail.com>, "Edgar E. Iglesias" <edgar.iglesias@gmail.com>, 
+ =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@mailo.com>, 
+ Alistair Francis <alistair@alistair23.me>, 
+ Strahinja Jankovic <strahinja.p.jankovic@gmail.com>, qemu-arm@nongnu.org, 
+ Tyrone Ting <kfting@nuvoton.com>, Nicholas Piggin <npiggin@gmail.com>, 
+ Aditya Gupta <adityag@linux.ibm.com>, Kane Chen <kane_chen@aspeedtech.com>, 
+ Francisco Iglesias <francisco.iglesias@amd.com>, Joel Stanley <joel@jms.id.au>,
+ Hao Wu <wuhaotsh@google.com>, Glenn Miles <milesg@linux.ibm.com>,
+ qemu-riscv@nongnu.org, Jean-Christophe Dubois <jcd@tribudubois.net>,
+ Portia Stephens <portias@oss.tenstorrent.com>
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2607:f8b0:4864:20::112c;
+ envelope-from=peter.maydell@linaro.org; helo=mail-yw1-x112c.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_PASS=-0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -154,97 +132,38 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Hi
+On Tue, 25 Aug 2026 at 05:05, <stephensportia@gmail.com> wrote:
+>
+> From: Portia Stephens <portias@oss.tenstorrent.com>
+>
+> The ssi_transfer function comments say that it takes a word varying
+> between 8-bits and 32-bits. ssi_transfer takes a 32-bit arg to transfer
+> but there is no means to indicate the number of bits that should
+> actually be transferred. All child classes of SSI_PERIPHERAL class have
+> transfer functions that, despite accepting a 32-bit tx, only transfer a
+> single byte; m25p80_transfer8(), ssi_sd_transfer(), ssd0323_transfer().
+>
+> The current implementation depends on the SSI model to know
+> what peripheral model will be attached and what transfer size it
+> expects which is error prone. If a SSI_PERIPHERAL model was written that
+> accepted 32-bit transfers, it could not attach to any existing SSI
+> models.
 
+What is the motivation for this change?
 
-Philippe Mathieu-Daudé 於 2026/8/27 下午 04:50 寫道:
-> CAUTION: This email originated from outside of the organization. Do 
-> not click links or open attachments unless you recognize the sender 
-> and know the content is safe.
->
->
-> On 27/8/26 06:26, Kuan-Jui Chiu wrote:
->> Hi
->>
->> Philippe Mathieu-Daudé 於 2026/8/26 下午 04:11 寫道:
->>> CAUTION: This email originated from outside of the organization. Do
->>> not click links or open attachments unless you recognize the sender
->>> and know the content is safe.
->>>
->>>
->>> Hi,
->>>
->>> On 26/8/26 09:46, Kuan-Jui Chiu wrote:
->>>> Candence UART model is reserving 4 KiB for registers statically
->>>> For other SoC models, the MMIO size may be not 4 KiB which would have
->>>> overlapping sysbus regions in QEMU
->>>>
->>>> This patch adds a property which allows other models to revise the 
->>>> MMIO
->>>> size and it is 4 KiB by default
->>>>
->>>> Signed-off-by: Kuan-Jui Chiu <kchiu@axiado.com>
->>>> ---
->>>>   hw/char/cadence_uart.c         | 8 ++++++--
->>>>   include/hw/char/cadence_uart.h | 3 +++
->>>>   2 files changed, 9 insertions(+), 2 deletions(-)
->>>>
->>>> diff --git a/hw/char/cadence_uart.c b/hw/char/cadence_uart.c
->>>> index f57cad57a8..d83c71b877 100644
->>>> --- a/hw/char/cadence_uart.c
->>>> +++ b/hw/char/cadence_uart.c
->>>> @@ -541,6 +541,10 @@ static void cadence_uart_realize(DeviceState
->>>> *dev, Error **errp)
->>>>   {
->>>>       CadenceUARTState *s = CADENCE_UART(dev);
->>>>
->>>> +    memory_region_init_io(&s->iomem, OBJECT(dev), &uart_ops, s, 
->>>> "uart",
->>>> +                          s->mmio_size);
->>>> +    sysbus_init_mmio(SYS_BUS_DEVICE(dev), &s->iomem);
->>>> +
->>>>       s->fifo_trigger_handle = timer_new_ns(QEMU_CLOCK_VIRTUAL,
->>>> fifo_trigger_update, s);
->>>>
->>>> @@ -561,8 +565,6 @@ static void cadence_uart_init(Object *obj)
->>>>       SysBusDevice *sbd = SYS_BUS_DEVICE(obj);
->>>>       CadenceUARTState *s = CADENCE_UART(obj);
->>>>
->>>> -    memory_region_init_io(&s->iomem, obj, &uart_ops, s, "uart",
->>>> 0x1000);
->>>
->>> Are we sure this size is even correct and not a copy/paste error?
->>> We can clearly reduce it up to 0x80 (so far the last register
->>> implemented is R_TTRIG at address 0x44).
->>>
->> No
->>
->> It is 0x1000 since the first release of this model
->
-> QEMU model use 0x1000, but what the datasheet says? I'm
-> suspicious using 0x1000 for the current model is correct.
-> Can you point me to the datasheet please?
->
-This is the datasheet provided by Edgar previously
+As far as I know for the hardware SSI protocol, it is indeed
+the case that the SSI controller (and/or the guest software) needs
+to know what transfer size the attached device expects: the
+controller just transmits (or expects to receive) however many
+bits it is programmed for.
 
-https://docs.amd.com/r/en-US/ug1087-zynq-ultrascale-registers/UART-Module
+> This change updates the the naming of ssi_transfer to ssi_transfer8, as
+> well as changes the return value and transmit argument to be 8-bit.
 
->>
->> Sure, I will change it to 0x80. It would be a simpler fix
->>
->>>> -    sysbus_init_mmio(sbd, &s->iomem);
->>>>       sysbus_init_irq(sbd, &s->irq);
->>>>
->>>>       s->refclk = qdev_init_clock_in(DEVICE(obj), "refclk",
->>>> @@ -621,6 +623,8 @@ static const VMStateDescription
->>>> vmstate_cadence_uart = {
->>>>
->>>>   static const Property cadence_uart_properties[] = {
->>>>       DEFINE_PROP_CHR("chardev", CadenceUARTState, chr),
->>>> +    DEFINE_PROP_SIZE("mmio-size", CadenceUARTState, mmio_size,
->>>> +                     CADENCE_UART_MMIO_SIZE),
->>>>   };
->>>
->>
->
+This means that the API will no longer work for a controller
+and device that aren't 8-bit. We happen not to have any of those
+devices today, but why specifically stop them working?
+
+thanks
+-- PMM
 

@@ -4,71 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E1C3CC61DC4
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E5007C61DCB
 	for <qemu-arm@archiver.kernel.org>; Thu, 27 Aug 2026 05:11:20 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wzSNq-0002bP-5E; Thu, 27 Aug 2026 01:10:38 -0400
+	id 1wzSNv-0002eM-GA; Thu, 27 Aug 2026 01:10:43 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <joel.stan@gmail.com>)
- id 1wzSNo-0002aa-An
- for qemu-arm@nongnu.org; Thu, 27 Aug 2026 01:10:36 -0400
-Received: from mail-pj1-x1031.google.com ([2607:f8b0:4864:20::1031])
+ id 1wzSNu-0002dQ-6h
+ for qemu-arm@nongnu.org; Thu, 27 Aug 2026 01:10:42 -0400
+Received: from mail-pj1-x102a.google.com ([2607:f8b0:4864:20::102a])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <joel.stan@gmail.com>)
- id 1wzSNm-00043l-Lg
- for qemu-arm@nongnu.org; Thu, 27 Aug 2026 01:10:36 -0400
-Received: by mail-pj1-x1031.google.com with SMTP id
- 98e67ed59e1d1-38f620399a0so1230687a91.2
- for <qemu-arm@nongnu.org>; Wed, 26 Aug 2026 22:10:34 -0700 (PDT)
+ id 1wzSNs-00044r-LV
+ for qemu-arm@nongnu.org; Thu, 27 Aug 2026 01:10:41 -0400
+Received: by mail-pj1-x102a.google.com with SMTP id
+ 98e67ed59e1d1-38e58034d05so308438a91.2
+ for <qemu-arm@nongnu.org>; Wed, 26 Aug 2026 22:10:40 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20251104; t=1787807433; x=1788412233; darn=nongnu.org;
+ d=gmail.com; s=20251104; t=1787807439; x=1788412239; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:sender:from:to:cc:subject:date
  :message-id:reply-to:content-type;
- bh=vh4dj4cz7gBkDt8LT9ZzL10T8leVWvoTLVZlSAppwZk=;
- b=nKrjF2CmxV6/J4vzLD/eZEMk8OKrylIn77HQeL2ErRBC54UyiiUwyOVN71/mM+laf5
- PcTshddp5Ju68GpEzGCuhQML2ELMz4Xfm521Rul+2jM/MEmElzHEB9PujfMQtu82Unf6
- tGv3eCHDtzTwCPe5Q/elX4p6rL27ZD4hXVHYMLQnKEKf+5WRQeOD9GQWFcedzLQD26LJ
- Y1bS8VPwmeXv+virFE7kpD227MnRhKD6+nR3vqHazqLRev0zWlbsfnn4Mqmvm72OQZg2
- /n5OygOHW4bf05jey8z/CeO/aX6UZVesOLLRVN6AeM7yFItAGmdxdblHUZZrMd+B0vmT
- TfDA==
+ bh=NK/DHlEW6EIk2cf6PmuhEA3oo9/juwtu7TT1AMLm/g0=;
+ b=MN+PJrckJmToPiqCxsohwOw3lBpS5sIcJky5xGhi/Mpb9R3X/U3TBHdRVJjbB6+wLf
+ zkQTLfdW38KjMbv86kEsaC8YvWoCDxBiKvfT4BFSRXUDzGhQP8L/NpjZmEoJOi11YCJl
+ fV9kq4VK0Rq5c52LELAsTnFac8MXjXWHgn/e7rROyecQBySLecYiTIZm0Oqd6f81iFkC
+ BaPOc6LHr5ejW2hZl5pbTKtM5xKFAW0f7Q0SA71guWyJIZqGrASchGhGyt1xRERphaE8
+ btwB/EGm6uaL7L654ZTr1MA/vJt5Z3oRZvEVg2UCF2G29KdLSqkT9+pIuwPg4ALvYcUh
+ XHjg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1787807433; x=1788412233;
+ d=1e100.net; s=20251104; t=1787807439; x=1788412239;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:sender:x-gm-gg
  :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
  :content-type;
- bh=vh4dj4cz7gBkDt8LT9ZzL10T8leVWvoTLVZlSAppwZk=;
- b=suqUjal3Pm+OvOOoUIw/5QM1muXzkZLY5TBFKH7dxhj4gcqfXDcCnfiLxX3EWZ3ou4
- SxURn66GfWyztSkIH87ZO4xcCFy9jjtpq2Rlh+qnyApjnTi4e/iJ5xMJVF7ReoTSzZKI
- 7ndsQ1xKagyJTJKMonDi7V4DvRnRdfF9J6B+vmadp7igmMWL8qPkhxml6h0eA4a9fVYg
- o/avSQG1Z1dX6d7bgaLv9TpahKk8HXkAtMIPo+N4ppkyJOv7wjsY767ChN9CdIeBxjcY
- BnJHsc5/MCuJ+prabNoE1NkG2AzUcb+7AgIkhAfCvgUjK8zgPw1FPDecLG0o5ZqM1b7C
- MFjA==
+ bh=NK/DHlEW6EIk2cf6PmuhEA3oo9/juwtu7TT1AMLm/g0=;
+ b=ArKRVc5OxE05KgPiNid7trkzy9RKQnwhg8YTxWdv6AqvAY/giez9RlK84s5emy7Swe
+ gML/11+3cgKZLa+6+YNRthajA0wPwyrX3eY3yAPr3TLAEQ+ZpyS0AumDRZe7f7GHMptm
+ mma+fPM1hcNQMU8dVznKZ2DrTjDfX5zWoRrbmbIylaAcpm9BjNOxe8+ZDJdnNfJDI/Jf
+ eWyQnUnkia07kPI6sMZHGByahXcafcog+VDyHo17GMMCETGj2OQjSy0Zvg+m6N7D/L/F
+ Wl32qmnghQiWs8GCJPKbGHdSc1mRnI1lpOElK6/EtotWeEy9yHEKVDhzwibJN5O71uy5
+ Z0Zg==
 X-Forwarded-Encrypted: i=1;
- AHgh+RoHAy6J5sdCTeTqv6zrOG8dXI5/ig7C0Y9NyIasQ+NuquQ7srPpxy4H5DVHKp/hcl9xduP3QEYSJg==@nongnu.org
-X-Gm-Message-State: AFuF++mSC1J7fQe5ce/bxONVtBQfsWlb2AzN4A0Y/wmoB6JKdCXhVhQ2
- 58WkLi+voIHvBSqBnidSzlJ5E/Jm64RdES5oaiRvxV6X5SmvBqWct6rt
-X-Gm-Gg: AR+sD11/TPIQpTqd8PEUGXUfl85yRsXPcwh+DcL+cDK6n5+0II/TEV08zcxJe7pyvj+
- V77LA8MvHlfug6JF1mxOTm4sfkXqThsDSLWMLh7YWuzRgd4OZ26wqHMSZQxocbvQ2WNdTTyPk/h
- k0x6KF0eMxVziWUzYTQknwe37+E7ckRvzS/xpnex8N99so4T0zZVPH+oCDfBN3EuTwe8AR9xpAa
- RtehNuY/Gaiyp5O2UwM7FGwKTUtHPSrskLn9ectEP0pchrW85g8ZZw69vfg86wbQANo37I7P3WR
- OXkt26DXQ/v3gzPiNkBf6w4TnpYzTAbLf6ZdnIgpVlIReGlhP90K2sj0VazZr6DBDhsJg3bmVWr
- qruwVt/nRz2CHtS3yUSN5MabVjzFxWrOTHN0leq8gFJCZzXzMsCaWGDRRvAXFgSgPlCaJRkpxJm
- pwp9MTQ2898TukC6lLPs7TopROPgK57AYag5wYkg+WA2YS+6W/UQ3JpTncefWp9doLnQx9BtxD9
- +mAGCkMBpnP9uG07U3Q7ARmOhlma3+XUqMBmN2ZfPzcBissWCeI+fUN80Bpp0VTafVKVYxz9Pf0
- tp/tg7VYNgW+eHI+mWS5
-X-Received: by 2002:a17:90b:4a50:b0:392:b509:b1a5 with SMTP id
- 98e67ed59e1d1-3966d48c3e9mr22557303a91.14.1787807433348; 
- Wed, 26 Aug 2026 22:10:33 -0700 (PDT)
+ AHgh+RrfsJ0UGbO6bqa+JL/DQv76Jf3HIVztPdjRnAC9Jw1TXGacLo6MYds8p16yAF0YvLljy+VWLPGZIw==@nongnu.org
+X-Gm-Message-State: AFuF++kXEdAUHffMps2TmjZ38Gd+rJbJO89mq0NoQOq5YkjVl4L9dZCm
+ enI8u3AmiBWIOGJOoztfhnkhmnYXtOqgN4Rk2rvqpQ+z2m80FoC0pFoM
+X-Gm-Gg: AR+sD12wDOLWH6B+S7cdsO/bNWaOX5JXqvueNCCWasWql8DSvMImn1oIi64j+H/glCY
+ 627YwZzkXLVBfE94Uy3QgqJeLObk6o9apoTDtX1P//F2CbMFpjGlchfFsPyrA9ZuYbXYjpsjhV/
+ ncupXX76uMjEDks498ArPtU7W2bVKsfzbv54AalsvasDRtWiffL4lG1pjcxUX7mGqeqFD+yJ5lv
+ c0lHP4Tfie5lZps0wEzE9oYLr+W0oZhzm0lyvDnm14TUrJv11VkQiwg0Sxclijv5KDAWSktZPkd
+ fFVoqlBS704AfwjjvUH5TH4ubjfs+puDZehC3COqpc1zlDQxody8P2AdorGcKBFm4rdL3L+KOjr
+ nuhFYC/v1x+Vq8zn3kMKTnNje++5fcaHsawrAi+CpbgOioN4oLQ3ChjmLw9ftzxdW87sBrMWeT/
+ xOjvcok8WIhItRVikQyjDljnYq1I/tcCRu85WdNpBLGuiRK933LOhmnIloBmpk60DrXhjvwnvsO
+ /42OVWihs1ilsNe24Ed+uphw9hSIryr4R/ZdXQFendui1V8CtbKg5Fqf9BWH7OPafWdz3iEgjzJ
+ vM3cTYwDD6I8aRjdnobm
+X-Received: by 2002:a17:90b:3b4b:b0:381:11eb:d78e with SMTP id
+ 98e67ed59e1d1-3966d8b6295mr25121340a91.14.1787807439137; 
+ Wed, 26 Aug 2026 22:10:39 -0700 (PDT)
 Received: from donnager-debian.. ([180.150.112.50])
  by smtp.gmail.com with ESMTPSA id
- 98e67ed59e1d1-39670599275sm2210473a91.0.2026.08.26.22.10.27
+ 98e67ed59e1d1-39670599275sm2210473a91.0.2026.08.26.22.10.33
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 26 Aug 2026 22:10:32 -0700 (PDT)
+ Wed, 26 Aug 2026 22:10:38 -0700 (PDT)
 From: Joel Stanley <joel@jms.id.au>
 To: Alistair Francis <alistair.francis@wdc.com>,
  Daniel Henrique Barboza <daniel.barboza@oss.qualcomm.com>,
@@ -82,17 +82,16 @@ Cc: Peter Maydell <peter.maydell@linaro.org>, Weiwei Li <liwei1518@gmail.com>,
  Michael Ellerman <mpe@kernel.org>,
  Portia Stephens <portias@oss.tenstorrent.com>, qemu-riscv@nongnu.org,
  qemu-devel@nongnu.org, qemu-arm@nongnu.org
-Subject: [PATCH 03/12] tests/tcg/riscv64: Boot semihost tests with -bios none
- -kernel
-Date: Thu, 27 Aug 2026 14:39:42 +0930
-Message-ID: <20260827050953.67184-4-joel@jms.id.au>
+Subject: [PATCH 04/12] tests/tcg/riscv64: Update semihosting linker script
+Date: Thu, 27 Aug 2026 14:39:43 +0930
+Message-ID: <20260827050953.67184-5-joel@jms.id.au>
 X-Mailer: git-send-email 2.47.3
 In-Reply-To: <20260827050953.67184-1-joel@jms.id.au>
 References: <20260827050953.67184-1-joel@jms.id.au>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::1031;
- envelope-from=joel.stan@gmail.com; helo=mail-pj1-x1031.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::102a;
+ envelope-from=joel.stan@gmail.com; helo=mail-pj1-x102a.google.com
 X-Spam_score_int: -16
 X-Spam_score: -1.7
 X-Spam_bar: -
@@ -116,82 +115,87 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Loading tests should conflict with the opensbi ROM, however the generic
-loader writes through the CPU address space which bypasses the ROM
-overlap check.
+Keep the tests at the start of RAM but bound them with a MEMORY region,
+and use this to define __stack_top, which the multiarch system test boot
+code will use.
 
-Instead of depending on this happy accident, set -bios none to skip
-loading opensbi. This frees up the address space to load the test with
--kernel, required by a future change that uses the same rules to run the
-multiarch tests for riscv64.
+Add more sections generated by the test binaries so they are placed
+explicitly.
+
+Split text and data into separate rx/rw regions, instead of one rwx
+region to avoid binutils warnings.
+
+A -kernel boot jumps to the lowest loaded address rather than the ELF
+entry point, so _start must be first in .text. Use a .text._start input
+section to make that explicit.
 
 Signed-off-by: Joel Stanley <joel@jms.id.au>
 ---
- tests/tcg/riscv64/Makefile.softmmu-target | 18 +++++++++---------
- 1 file changed, 9 insertions(+), 9 deletions(-)
+ tests/tcg/riscv64/semihost.ld | 47 +++++++++++++++++++++++++++--------
+ 1 file changed, 36 insertions(+), 11 deletions(-)
 
-diff --git a/tests/tcg/riscv64/Makefile.softmmu-target b/tests/tcg/riscv64/Makefile.softmmu-target
-index 6a219c306c43..562ac9b0e0fb 100644
---- a/tests/tcg/riscv64/Makefile.softmmu-target
-+++ b/tests/tcg/riscv64/Makefile.softmmu-target
-@@ -14,36 +14,36 @@ CFLAGS += -g -Og
- %: %.o $(LINK_SCRIPT)
- 	$(LD) $(LDFLAGS) $< -o $@
+diff --git a/tests/tcg/riscv64/semihost.ld b/tests/tcg/riscv64/semihost.ld
+index a59cc56b289a..eff3701e4a19 100644
+--- a/tests/tcg/riscv64/semihost.ld
++++ b/tests/tcg/riscv64/semihost.ld
+@@ -1,21 +1,46 @@
++/*
++ * Linker script for the RISC-V system tests
++ * SPDX-License-Identifier: GPL-2.0-or-later
++ */
++
+ ENTRY(_start)
  
--QEMU_OPTS += -M virt -display none -semihosting -device loader,file=
-+QEMU_OPTS += -M virt -display none -bios none -semihosting -kernel
- 
- EXTRA_RUNS += run-issue1060
- run-issue1060: issue1060
--	$(call run-test, $<, $(QEMU) $(QEMU_OPTS)$<)
-+	$(call run-test, $<, $(QEMU) $(QEMU_OPTS) $<)
- 
- EXTRA_RUNS += run-test-mepc-masking
- run-test-mepc-masking: test-mepc-masking
--	$(call run-test, $<, $(QEMU) $(QEMU_OPTS)$<)
-+	$(call run-test, $<, $(QEMU) $(QEMU_OPTS) $<)
- 
- EXTRA_RUNS += run-test-minstret-ecall
- run-test-minstret-ecall: test-minstret-ecall
--	$(call run-test, $<, $(QEMU) -icount shift=1 $(QEMU_OPTS)$<)
-+	$(call run-test, $<, $(QEMU) -icount shift=1 $(QEMU_OPTS) $<)
- 
- EXTRA_RUNS += run-plugin-doubletrap
- run-plugin-doubletrap: doubletrap
- 	$(call run-test, $<, \
- 	  $(QEMU) -plugin ../plugins/libdiscons.so -d plugin -D $<.pout \
--	  $(QEMU_OPTS)$<)
-+	  $(QEMU_OPTS) $<)
- 
- EXTRA_RUNS += run-plugin-interruptedmemory
- run-plugin-interruptedmemory: interruptedmemory
- 	$(call run-test, $<, \
- 	  $(QEMU) -plugin ../plugins/libdiscons.so -d plugin -D $<.pout \
--	  $(QEMU_OPTS)$<)
-+	  $(QEMU_OPTS) $<)
- 
- EXTRA_RUNS += run-test-crc32
- comma:= ,
- run-test-crc32: test-crc32
--	$(call run-test, $<, $(QEMU) -cpu rv64$(comma)xlrbr=true $(QEMU_OPTS)$<)
-+	$(call run-test, $<, $(QEMU) -cpu rv64$(comma)xlrbr=true $(QEMU_OPTS) $<)
- 
- # Zicclsm: misaligned load/store support. Assemble one source twice: the
- # default build expects every misaligned access to succeed (zicclsm=true),
-@@ -61,11 +61,11 @@ test-zicclsm-off: test-zicclsm.S $(LINK_SCRIPT)
- 
- EXTRA_RUNS += run-test-zicclsm
- run-test-zicclsm: test-zicclsm
--	$(call run-test, $<, $(QEMU) -cpu rv64$(comma)v=true$(comma)zfh=true$(comma)zicclsm=true $(QEMU_OPTS)$<)
-+	$(call run-test, $<, $(QEMU) -cpu rv64$(comma)v=true$(comma)zfh=true$(comma)zicclsm=true $(QEMU_OPTS) $<)
- 
- EXTRA_RUNS += run-test-zicclsm-off
- run-test-zicclsm-off: test-zicclsm-off
--	$(call run-test, $<, $(QEMU) -cpu rv64$(comma)v=true$(comma)zfh=true$(comma)zicclsm=false $(QEMU_OPTS)$<)
-+	$(call run-test, $<, $(QEMU) -cpu rv64$(comma)v=true$(comma)zfh=true$(comma)zicclsm=false $(QEMU_OPTS) $<)
- 
- EXTRA_RUNS += run-test-misa-w
- run-test-misa-w: test-misa-w
++MEMORY
++{
++    /*
++     * Virt machine, RAM starts at 2GB
++     *
++     * Separate sections for executable and writable data to avoid linker
++     * warnings.
++     */
++    TXT (rx) : ORIGIN = 0x80000000, LENGTH = 2M
++    DAT (rw) : ORIGIN = 0x80000000 + 2M, LENGTH = 2M
++}
++
+ SECTIONS
+ {
+-    /* virt machine, RAM starts at 2gb */
+-    . = 0x80000000;
+     .text : {
++        *(.text._start)
+         *(.text)
+-    }
++    } > TXT
++
+     .rodata : {
+-        *(.rodata)
+-    }
+-    /* align r/w section to next 2mb */
+-    . = ALIGN(1 << 21);
++        *(.rodata .rodata.*)
++        *(.eh_frame)
++    } > TXT
++
++    .got : {
++        *(.got .got.plt)
++    } > DAT
++
+     .data : {
+-        *(.data)
+-    }
++        *(.data .data.* .sdata .sdata.*)
++    } > DAT
++
+     .bss : {
+-        *(.bss)
+-    }
++        *(.bss .bss.* .sbss .sbss.*)
++    } > DAT
++
++    /* Stack grows down from the end of the data region */
++    __stack_top = ORIGIN(DAT) + LENGTH(DAT);
+ }
 -- 
 2.47.3
 

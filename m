@@ -4,112 +4,102 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 01503C61DCB
-	for <qemu-arm@archiver.kernel.org>; Thu, 27 Aug 2026 08:21:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B1DB5C61DC2
+	for <qemu-arm@archiver.kernel.org>; Thu, 27 Aug 2026 08:30:04 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wzVM7-0003gJ-Bp; Thu, 27 Aug 2026 04:21:03 -0400
+	id 1wzVUn-0005RB-VS; Thu, 27 Aug 2026 04:30:01 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1wzVM5-0003fn-Qd
- for qemu-arm@nongnu.org; Thu, 27 Aug 2026 04:21:01 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ (Exim 4.90_1) (envelope-from <leonardi@redhat.com>)
+ id 1wzVUm-0005Q8-Du
+ for qemu-arm@nongnu.org; Thu, 27 Aug 2026 04:30:00 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1wzVM4-0003LQ-2S
- for qemu-arm@nongnu.org; Thu, 27 Aug 2026 04:21:01 -0400
+ (Exim 4.90_1) (envelope-from <leonardi@redhat.com>)
+ id 1wzVUk-0004P9-Tq
+ for qemu-arm@nongnu.org; Thu, 27 Aug 2026 04:30:00 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1787818857;
- h=from:from:reply-to:reply-to:subject:subject:date:date:
- message-id:message-id:to:to:cc:cc:mime-version:mime-version:
- content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
+ s=mimecast20190719; t=1787819397;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  in-reply-to:in-reply-to:references:references;
- bh=hdSvTeBfLysofWli5ed9Pk2UjOgKDdG69Cf4fAXhbcs=;
- b=GVc6FNjjS8/X3vLNvHAWx+UnICkDb+GSESKt+bFG1jrQ3VcswoEq5LPrAOw4+9U4g1xtyB
- uBJ6n1Kcm0ZiLms7oepQiXAHO9YOAd/RHX+1I5xK5ew9O4Q5+dqXM5CfM7xSDvQ+Sifc0H
- eqWcQGAkGYqQF9g3088zlZ1fmmnnn/c=
-Received: from mail-wm1-f70.google.com (mail-wm1-f70.google.com
- [209.85.128.70]) by relay.mimecast.com with ESMTP with STARTTLS
+ bh=DBdUyAsqfJt4r9dXvva+et1CD5naD6J/mWEbiwE2yWI=;
+ b=R5DXwoSAX/IN4hn7kjO/YxnfuE0i3LVA1BOv7VxI4X/eiO/FylEymoNctym86MJbKjmsAY
+ eogq0TGlj9dwDvV9YRtW4UnJ3jb2VTyg3ke9rVdjk8a9gWKOCA0i6foVt6WPJi4OsN85dc
+ GvX6XX02SjLMd5osgDd09bTtb5Zr6hE=
+Received: from mail-wr1-f70.google.com (mail-wr1-f70.google.com
+ [209.85.221.70]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-8-P340uuuGN3KueQAeu8arDQ-1; Thu, 27 Aug 2026 04:20:56 -0400
-X-MC-Unique: P340uuuGN3KueQAeu8arDQ-1
-X-Mimecast-MFC-AGG-ID: P340uuuGN3KueQAeu8arDQ_1787818855
-Received: by mail-wm1-f70.google.com with SMTP id
- 5b1f17b1804b1-49554715277so4047575e9.1
- for <qemu-arm@nongnu.org>; Thu, 27 Aug 2026 01:20:56 -0700 (PDT)
+ us-mta-37-20EloIMSNY27lfkybsONRA-1; Thu, 27 Aug 2026 04:29:54 -0400
+X-MC-Unique: 20EloIMSNY27lfkybsONRA-1
+X-Mimecast-MFC-AGG-ID: 20EloIMSNY27lfkybsONRA_1787819393
+Received: by mail-wr1-f70.google.com with SMTP id
+ ffacd0b85a97d-482e8e1ac69so334027f8f.0
+ for <qemu-arm@nongnu.org>; Thu, 27 Aug 2026 01:29:54 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1787818855; x=1788423655;
- h=content-transfer-encoding:content-type:in-reply-to:from:references
- :cc:to:content-language:subject:reply-to:user-agent:mime-version
- :date:message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
- :message-id:reply-to:content-type;
- bh=hdSvTeBfLysofWli5ed9Pk2UjOgKDdG69Cf4fAXhbcs=;
- b=R2hod5DFUQ6/PN6IBdQeutxG6z5f8V3zdnfBJqcIJdJSxbVb3O1jKuj0gzhn6RfFcA
- 5CokkQEKkEabo8lg0LDq/p1gPs5fs30/UN/wLg6LudodNVbqLAeWlk8W3qjSc031ptP+
- 5h3coXwO9aSeemS1tTGLwRrfimVrsFarg2/GlRyklfRAiXiXOJIsjtSCtgmLqAwbPLVM
- zMwzDHG3E8vgA0mqzi3jBIJVfNsN+63FuVquzdhIZfcxFMkeZhCeLg2iOoIc+T7a8HJj
- TMkthxrwGHJMfzQF2V9si0q5n83qTpTBRVB3dPA9ajBuIfgia5fsGjQRmiSFT56jduU2
- rqJA==
+ d=1e100.net; s=20251104; t=1787819393; x=1788424193;
+ h=in-reply-to:content-disposition:content-type:mime-version
+ :references:message-id:subject:cc:to:from:date:x-gm-gg
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
+ :content-type;
+ bh=DBdUyAsqfJt4r9dXvva+et1CD5naD6J/mWEbiwE2yWI=;
+ b=q+3a+e8vfXuTWtmESE8fib48tYmIEJYed3NxJIC3PakCUTLKQF24S0yLtMiZi20hvt
+ lIC4JpClFbsqSMq87T9qWsKgKNbT7v4657fAspD4F/Rxzv6Hxey4hpkkhzA6JU6DMDVh
+ OMM0i4KaKh7CGD7m1tIGEWqOeh1zl1v62vfimlA/JeUwhRU43T3To10KAGnrf6BEUJPG
+ TnQSTDLi/3s7814+nNl5KX6XygVBM2PeKn7b8zV3ggCbfI2UfH3FqnBjTl1odLOcKb4P
+ Qwn5HK3eG9QHUhLL2+FUi1GYr5Ni8PXiI8Wcz3MAGoYVb4Qq4QrhH1Bv1tFBCoSRaIrk
+ A2fg==
 X-Forwarded-Encrypted: i=1;
- AHgh+RphgrT18U0hZekIIraVWPz+0ZSQqBdJY2XoVoFvj+ngw4FSneLmBMJDFssdc3cOU3jlRI+xATEo/w==@nongnu.org
-X-Gm-Message-State: AFuF++nis+/MBdTY8rMgJL+JsA6kPwMQo8/xcHQGW/uYtnoL+umBZPXi
- TNs8DLnfH2vJLnUtIlQGyxomrfoaatT7uSCdY2W4h9FXLQaXsuh+sz/VJ6CN6dZGPVnFgeohc9P
- TcPb0WzL4FHPsPbsxi80gWx0eM+FkUAD+PTK76okulSM0gioyS6k+sQ==
-X-Gm-Gg: AR+sD11o3nEHMS0qic0+sHw9HC2ZZ2fJzSJJvPxY90Ls25wZxpvUrOxDhAiys1ATuiv
- wjTRZkPprmbYMVAUDHSGPL5tpnlVaVJE2+/59sodKV0KGkyG0N1GoHs5fHiXtzzHmERXIxK71M3
- cnGN49zdgrPhbtEYDgiY8GH6hgvqMNMeNF/1myR4wriTWjyedXmKp51jWnS1JRd0sbJCK3IwtkX
- pdAnXY/vqs/9q2XofTKNvX39QNF0Pw8Tj2QbAHgQNyEl3T2zkcme07PdCv2r9+HPEV5fVMvEudD
- sBS/FxnniOJsaHMVWcSzIXUKjQ73LWYjSZQY6aMST5fy3MMwmZJSIEyVraxH+IK4RsbvmW5Ad7A
- ON1Hl5EsZZjMuKKeXKJUfRprMDe1eYBgraT12UKLKT5FzQQ+4
-X-Received: by 2002:a05:600c:3baa:b0:499:ae94:be05 with SMTP id
- 5b1f17b1804b1-499dc6a3e86mr169025505e9.0.1787818855207; 
- Thu, 27 Aug 2026 01:20:55 -0700 (PDT)
-X-Received: by 2002:a05:600c:3baa:b0:499:ae94:be05 with SMTP id
- 5b1f17b1804b1-499dc6a3e86mr169024705e9.0.1787818854838; 
- Thu, 27 Aug 2026 01:20:54 -0700 (PDT)
-Received: from ?IPV6:2a01:e0a:f0e:9070:527b:9dff:feef:3874?
- ([2a01:e0a:f0e:9070:527b:9dff:feef:3874])
+ AHgh+Ro2abp7CsycPPraQI+ZTIAO9kJCPZggA8PjAV7KLh2BqUrqPjtJk84VZt1HynMgcCIfRjw6ydPeWw==@nongnu.org
+X-Gm-Message-State: AFuF++lK715426sEJVRp7ZPRlXgeP2ctqYiQqz5Vg3KxvnmHtgDbASQN
+ ciuqjDjruomnqos8EjkKHXiXz7OVN1pazK2ATD0+YDTq1CYD9UoPzT2vavd21PYf6YQkPBCXhmv
+ I3vN3XGrZfJoAN87kCwnJ9ImQqZSL1xkHFynB0na0/RlGd/Iq6w57lg==
+X-Gm-Gg: AR+sD12NNLkuLuj0nvnJgazchgQgqZGpHJw7fn1ow8+xg4zdXFDji54Lw+PVa+6uVJ2
+ 661iX1xS2qVeghephIFkhhlVH7MzN0VSyK1/24u+IGgTRmZTkuAij74TYLfmW+X1fFnVzsGvAxV
+ FHzVre3jMdRUEz7STbQ8h6BrYtr6awrPrWQbCtO4Kd7qP42MueKTlcvdIOBg1Re+fOkBtxlBUrH
+ +vhk0PLoMCwTtvR2A8Hr1Qb3ZHOQWZkalN7paa3peqOUKU4OYKQpu6/N0XmAj6aJEi26+Fabb2X
+ WMPKqAYIiQponGgdaxJyerEwOj/Utkl+qX57YFB/Y3AkuGBof/dy1unMwMe982HlPHskQBjyKb7
+ aGylyZEjnhcCZXz6buwzDID3K8gdd+gpvqsbc
+X-Received: by 2002:a05:600c:138e:b0:49a:ce8f:1a5e with SMTP id
+ 5b1f17b1804b1-49b0dea94a8mr47891225e9.2.1787819393207; 
+ Thu, 27 Aug 2026 01:29:53 -0700 (PDT)
+X-Received: by 2002:a05:600c:138e:b0:49a:ce8f:1a5e with SMTP id
+ 5b1f17b1804b1-49b0dea94a8mr47890615e9.2.1787819392771; 
+ Thu, 27 Aug 2026 01:29:52 -0700 (PDT)
+Received: from leonardi-redhat ([109.52.148.58])
  by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-499dd55dd4bsm52286485e9.3.2026.08.27.01.20.53
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 27 Aug 2026 01:20:53 -0700 (PDT)
-Message-ID: <612d54f3-929a-45bc-9c7c-1e3cbfcd71eb@redhat.com>
-Date: Thu, 27 Aug 2026 10:20:51 +0200
+ 5b1f17b1804b1-499dd5616f7sm57605615e9.2.2026.08.27.01.29.51
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Thu, 27 Aug 2026 01:29:52 -0700 (PDT)
+Date: Thu, 27 Aug 2026 10:29:49 +0200
+From: Luigi Leonardi <leonardi@redhat.com>
+To: Gerd Hoffmann <kraxel@redhat.com>
+Cc: qemu-devel@nongnu.org, Peter Maydell <peter.maydell@linaro.org>, 
+ qemu-arm@nongnu.org, Igor Mammedov <imammedo@redhat.com>, 
+ "Michael S. Tsirkin" <mst@redhat.com>, Ani Sinha <anisinha@redhat.com>, 
+ Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+Subject: Re: [PATCH v3 03/12] edk2: update submodule to edk2-stable202508
+Message-ID: <ao_1WPt4pzUf5M-J@leonardi-redhat>
+References: <20260824164751.1700783-1-kraxel@redhat.com>
+ <20260824164751.1700783-4-kraxel@redhat.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [RFC v5 05/28] hw/arm/smmu-common: Add security-aware address
- space selector
-To: Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>,
- Tao Tang <tangtao1634@phytium.com.cn>,
- Peter Maydell <peter.maydell@linaro.org>
-Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org,
- Chen Baozi <chenbaozi@phytium.com.cn>,
- =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@mailo.com>,
- Mostafa Saleh <smostafa@google.com>, Chao Liu <chao.liu@processmission.com>,
- Jim MacArthur <jim.macarthur@linaro.org>
-References: <20260813161515.2788900-1-tangtao1634@phytium.com.cn>
- <20260813162410.2805113-5-tangtao1634@phytium.com.cn>
- <94e049b6-f144-4494-a089-2bef2251ca07@oss.qualcomm.com>
-From: Eric Auger <eric.auger@redhat.com>
-In-Reply-To: <94e049b6-f144-4494-a089-2bef2251ca07@oss.qualcomm.com>
+In-Reply-To: <20260824164751.1700783-4-kraxel@redhat.com>
 X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: G3ZaXtxSi1s8HY2hf2M_tSxgMy4ijivmI6bn-wE9tiY_1787818855
+X-Mimecast-MFC-PROC-ID: E7ETFPrKux2wHmdZhlRn_mofsU6RuEzciT-0k9qkyl8_1787819393
 X-Mimecast-Originator: redhat.com
-Content-Language: en-US
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=170.10.133.124;
- envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
+Content-Type: text/plain; charset=us-ascii; format=flowed
+Content-Disposition: inline
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=leonardi@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=0.001, SPF_HELO_PASS=-0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -122,81 +112,43 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-To: eric.auger@redhat.com
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Hi Tao, Pierrick,
+nit: /s/202508/202608
 
-On 8/21/26 12:17 AM, Pierrick Bouvier wrote:
-> On 8/13/2026 9:24 AM, Tao Tang wrote:
->> Introduce SMMU_SEC_SID_S to represent SEC_SID == 1, meaning Secure. And
->> then provide smmu_get_address_space, a SMMU instance-based address space
->> selector. The helper returns the per-device memory or secure-memory
->> AddressSpace selected by SEC_SID.
->>
->> Signed-off-by: Tao Tang <tangtao1634@phytium.com.cn>
->> ---
->>  hw/arm/smmu-common.c         | 15 +++++++++++++++
->>  include/hw/arm/smmu-common.h |  3 +++
->>  2 files changed, 18 insertions(+)
->>
->> diff --git a/hw/arm/smmu-common.c b/hw/arm/smmu-common.c
->> index 8e40ba603d3..54a6a9f4d62 100644
->> --- a/hw/arm/smmu-common.c
->> +++ b/hw/arm/smmu-common.c
->> @@ -30,6 +30,21 @@
->>  #include "hw/arm/smmu-common.h"
->>  #include "smmu-internal.h"
->>  
->> +AddressSpace *smmu_get_address_space(SMMUState *s, SMMUSecSID sec_sid)
->> +{
->> +    switch (sec_sid) {
->> +    case SMMU_SEC_SID_NS:
->> +        return &s->memory_as;
->> +    case SMMU_SEC_SID_S:
->> +        g_assert(s->secure_memory);
->> +        g_assert(s->secure_memory_as.root);
-> This second assert is not needed as we know it was initialized in realize.
-agreed, with that removed
-Reviewed-by: Eric Auger <eric.auger@redhat.com>
+that said
 
-Thanks
+Reviewed-by: Luigi Leonardi <leonardi@redhat.com>
 
-Eric
+Luigi
+
+On Mon, Aug 24, 2026 at 06:47:35PM +0200, Gerd Hoffmann wrote:
+>Signed-off-by: Gerd Hoffmann <kraxel@redhat.com>
+>---
+> roms/edk2         | 2 +-
+> roms/edk2-version | 4 ++--
+> 2 files changed, 3 insertions(+), 3 deletions(-)
 >
->> +        return &s->secure_memory_as;
->> +    case SMMU_SEC_SID_NUM:
->> +        g_assert_not_reached();
->> +    }
->> +    g_assert_not_reached();
->> +}
->> +
->>  /* IOTLB Management */
->>  
->>  static guint smmu_iotlb_key_hash(gconstpointer v)
->> diff --git a/include/hw/arm/smmu-common.h b/include/hw/arm/smmu-common.h
->> index 6ea40f6b074..9d6e2d3038f 100644
->> --- a/include/hw/arm/smmu-common.h
->> +++ b/include/hw/arm/smmu-common.h
->> @@ -43,6 +43,7 @@
->>  /* StreamID Security state */
->>  typedef enum SMMUSecSID {
->>      SMMU_SEC_SID_NS = 0,
->> +    SMMU_SEC_SID_S,
->>      SMMU_SEC_SID_NUM,
->>  } SMMUSecSID;
->>  
->> @@ -188,6 +189,8 @@ struct SMMUBaseClass {
->>  #define TYPE_ARM_SMMU "arm-smmu"
->>  OBJECT_DECLARE_TYPE(SMMUState, SMMUBaseClass, ARM_SMMU)
->>  
->> +AddressSpace *smmu_get_address_space(SMMUState *s, SMMUSecSID sec_sid);
->> +
->>  /* Return the SMMUPciBus handle associated to a PCI bus number */
->>  SMMUPciBus *smmu_find_smmu_pcibus(SMMUState *s, uint8_t bus_num);
->>  
-> Reviewed-by: Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>
+>diff --git a/roms/edk2 b/roms/edk2
+>index 4dfdca63a934..2970e5699ba6 160000
+>--- a/roms/edk2
+>+++ b/roms/edk2
+>@@ -1 +1 @@
+>-Subproject commit 4dfdca63a93497203f197ec98ba20e2327e4afe4
+>+Subproject commit 2970e5699ba6267f3384ffab20f96647578aebc8
+>diff --git a/roms/edk2-version b/roms/edk2-version
+>index 069f19f8bf49..8a0cf62749cf 100644
+>--- a/roms/edk2-version
+>+++ b/roms/edk2-version
+>@@ -1,2 +1,2 @@
+>-EDK2_STABLE = edk2-stable202408
+>-EDK2_DATE = 08/13/2024
+>+EDK2_STABLE = edk2-stable202608
+>+EDK2_DATE = 08/12/2026
+>-- 
+>2.55.0
+>
 >
 
 

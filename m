@@ -4,107 +4,160 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id F35B8C61DB9
-	for <qemu-arm@archiver.kernel.org>; Thu, 27 Aug 2026 10:23:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7743BC61DC2
+	for <qemu-arm@archiver.kernel.org>; Thu, 27 Aug 2026 10:32:22 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wzXGE-0007Lm-3R; Thu, 27 Aug 2026 06:23:06 -0400
+	id 1wzXP0-0001so-24; Thu, 27 Aug 2026 06:32:11 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
- id 1wzXGC-0007L6-7T
- for qemu-arm@nongnu.org; Thu, 27 Aug 2026 06:23:04 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ (Exim 4.90_1) (envelope-from <philmd@oss.qualcomm.com>)
+ id 1wzXOw-0001s5-4u
+ for qemu-arm@nongnu.org; Thu, 27 Aug 2026 06:32:06 -0400
+Received: from mx0a-0031df01.pphosted.com ([205.220.168.131])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
- id 1wzXG9-0004d3-4C
- for qemu-arm@nongnu.org; Thu, 27 Aug 2026 06:23:03 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1787826180;
- h=from:from:reply-to:reply-to:subject:subject:date:date:
- message-id:message-id:to:to:cc:cc:mime-version:mime-version:
- content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=EFG4une+pOjvmf8kvC8piq6u39t1e5EkqpJ+4mfgZOI=;
- b=MPfazZiuGiZNE4DPPq1pcVBsQyFJVyBJDArnehbDbMG2qbg1Pna4zal3zCfDmb+hsQYoVJ
- MvSklR87NWvhBZsvdNbR7EwI/TkCYjhniy/dVEhs1uMvZzzVxapjx68YM08xZQBvCAK4Ug
- N9I8TgEiGj5DzYM03hVFx3hjCLsTf80=
-Received: from mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
- relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-615-D8-y7MpaPd-oY3yG4MydeA-1; Thu,
- 27 Aug 2026 06:22:57 -0400
-X-MC-Unique: D8-y7MpaPd-oY3yG4MydeA-1
-X-Mimecast-MFC-AGG-ID: D8-y7MpaPd-oY3yG4MydeA_1787826173
-Received: from mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com
- (mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.111])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
- (No client certificate requested)
- by mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id EF12A1954227; Thu, 27 Aug 2026 10:22:52 +0000 (UTC)
-Received: from redhat.com (headnet05.pony-001.prod.iad2.dc.redhat.com
- [10.2.32.117])
- by mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 62CFA18005BC; Thu, 27 Aug 2026 10:22:41 +0000 (UTC)
-Date: Thu, 27 Aug 2026 11:22:38 +0100
-From: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
-To: Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>
-Cc: Yonggang Luo <luoyonggang@gmail.com>, qemu-devel@nongnu.org,
- Xianglai Li <lixianglai@loongson.cn>,
- Alistair Francis <alistair.francis@wdc.com>,
- Chinmay Rath <rathc@linux.ibm.com>,
- Sunil V L <sunilvl@ventanamicro.com>, qemu-riscv@nongnu.org,
- Alexander Bulekov <alxndr@bu.edu>, Zhao Liu <zhao1.liu@intel.com>,
- Eric Farman <farman@linux.ibm.com>, Laurent Vivier <lvivier@redhat.com>,
- Peter Maydell <peter.maydell@linaro.org>,
- Chao Liu <chao.liu@processmission.com>,
- Liu Zhiwei <zhiwei_liu@linux.alibaba.com>,
- Palmer Dabbelt <palmer@dabbelt.com>, Song Gao <17746591750@163.com>,
- Harsh Prateek Bora <harshpb@linux.ibm.com>,
- Glenn Miles <milesg@linux.ibm.com>,
- Daniel Henrique Barboza <daniel.barboza@oss.qualcomm.com>,
- qemu-s390x@nongnu.org, Jiaxun Yang <jiaxun.yang@flygoat.com>,
- Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@mailo.com>,
- "Michael S. Tsirkin" <mst@redhat.com>,
- Stefan Hajnoczi <stefanha@redhat.com>,
- Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>,
- David Hildenbrand <david@kernel.org>, qemu-ppc@nongnu.org,
- qemu-arm@nongnu.org, Igor Mammedov <imammedo@redhat.com>,
- Aleksandar Rikalo <arikalo@gmail.com>, Nicholas Piggin <npiggin@gmail.com>,
- Cornelia Huck <cohuck@redhat.com>,
- Richard Henderson <richard.henderson@linaro.org>,
- Ilya Leoshkevich <iii@linux.ibm.com>, Fabiano Rosas <farosas@suse.de>,
- Aurelien Jarno <aurelien@aurel32.net>, Paolo Bonzini <pbonzini@redhat.com>,
- Ani Sinha <anisinha@redhat.com>, Bibo Mao <maobibo@loongson.cn>,
- =?utf-8?Q?Marc-Andr=C3=A9?= Lureau <marcandre.lureau@redhat.com>,
- Matthew Rosato <mjrosato@linux.ibm.com>, Weiwei Li <liwei1518@gmail.com>,
- Darren Kenny <darren.kenny@oracle.com>
-Subject: Re: [PATCH 00/12] single-binary: link ARM and RISC-V into qemu-system
-Message-ID: <apAP7r--ejtgqwpy@redhat.com>
-References: <20260823150731.896-1-luoyonggang@gmail.com>
- <ao7c-FiawF9sMCGj@redhat.com>
- <b2b1d77e-c3e3-4aad-87d2-f5d4834abd1a@oss.qualcomm.com>
+ (Exim 4.90_1) (envelope-from <philmd@oss.qualcomm.com>)
+ id 1wzXOt-0005qN-L5
+ for qemu-arm@nongnu.org; Thu, 27 Aug 2026 06:32:05 -0400
+Received: from pps.filterd (m0279867.ppops.net [127.0.0.1])
+ by mx0a-0031df01.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id
+ 67R9Gm6L470812
+ for <qemu-arm@nongnu.org>; Thu, 27 Aug 2026 10:32:01 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qualcomm.com; h=
+ cc:content-transfer-encoding:content-type:date:from:in-reply-to
+ :message-id:mime-version:references:subject:to; s=qcppdkim1; bh=
+ 2DBINuFMm58bjywl49w88Q8ntiTVwCXL5/JJ9jLbOUk=; b=CT588Ai/L4MtbD/N
+ pq8Hzn/5S/K/UAW7noUxqq8PUSoO+edGRyxiZWTlIamtFKtg2JFcp64403PYiAU0
+ vSU0dz/LOi4Yv20tnK8c/81Qb0FZ0OpbIzyBfUoihuxJMeJl47wh/UJEEthVN9wo
+ 7KPSZZbUWfpdsJxEXyKHeKJ2n5YDBZmjJEcvMswyKPD6+IyeTz/DCv2XBng1WK4o
+ atDyIiidoXG68p4cJWDifk1cNgw0c09CBjlxnpfrEMlgq+C0m/x2NtN7Ugb55Dp3
+ BZF45Nb19hzxdHZVplGte1NIUqxjtdjROpEubp4P0AjxP228WPr0kLoUktEdHpLl
+ 4z3A4w==
+Received: from mail-qt1-f200.google.com (mail-qt1-f200.google.com
+ [209.85.160.200])
+ by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 4ga8m5jacx-1
+ (version=TLSv1.3 cipher=TLS_AES_128_GCM_SHA256 bits=128 verify=NOT)
+ for <qemu-arm@nongnu.org>; Thu, 27 Aug 2026 10:32:01 +0000 (GMT)
+Received: by mail-qt1-f200.google.com with SMTP id
+ d75a77b69052e-52dcf1bb6e9so7429211cf.1
+ for <qemu-arm@nongnu.org>; Thu, 27 Aug 2026 03:32:01 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=oss.qualcomm.com; s=google; t=1787826721; x=1788431521; darn=nongnu.org;
+ h=content-transfer-encoding:content-type:in-reply-to:from:references
+ :cc:to:content-language:subject:user-agent:mime-version:date
+ :message-id:from:to:cc:subject:date:message-id:reply-to:content-type;
+ bh=2DBINuFMm58bjywl49w88Q8ntiTVwCXL5/JJ9jLbOUk=;
+ b=EReQBofNvmUKzaKKmTvTlYDtQsBQd5GCyp6EyecsGu14X2bfGAGOmPKHdOGNE4CTC1
+ blI3cBjQGfWJcb/PhfNhZXjlDE5wteBmVlA57VsUaSLE5AE9/jKACF+HydR35Xbts1qG
+ 71vFCmYaSeGyIoTKP7oMFelyqwwWZFV0rfHO2YfUdfH/8blaJjG97+ywx34MbbQjlt0e
+ 2kmwYBMKrsIi/EA4//Io8REwnkBkqPMpQo+2SxHjhSolQqBe3nxrxp/x1D9szZhtQ7MD
+ 1mK77VwiGEcx/jlWFi4pOVR7xnduzHlj0SKsTyNw8n+eoTMYgc/eDixiNgiSGU6JoktW
+ Wgyg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20251104; t=1787826721; x=1788431521;
+ h=content-transfer-encoding:content-type:in-reply-to:from:references
+ :cc:to:content-language:subject:user-agent:mime-version:date
+ :message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+ :message-id:reply-to:content-type;
+ bh=2DBINuFMm58bjywl49w88Q8ntiTVwCXL5/JJ9jLbOUk=;
+ b=drlsVUZGFA0B0XLGZg6DkeQkkMjmJa4ghjBzNf10tz9spkqO2KtukrlC99K7hfISz3
+ BQkltGiYOtMmnKdMn2JdhKHMDj23WZQz8qLxdUn06RHI4i+A4T3ZjDDxisXIx6j0IPFq
+ Pn83wr7KgClRn4n2Ta51tLiQiNE5C+bJQ6xKttwJ15PFneYjbyBcTW2GOBzfCB7tSqpD
+ /e41Alig7NDM24pY9opWd3+8kEItcPdF2bUZM3JVYjiwPgMEcVlUQHFZPxx0vUkUBUAB
+ fDJjEI9yxm2mu7KUXz/8CBFlHECF/ybHeDSq+rhEEmltZ6hhE52kUxRtNTG461vdrZDv
+ v+aQ==
+X-Forwarded-Encrypted: i=1;
+ AHgh+RrLqjA/zcsB0U90JEUQ4hMWBzCJRg8oHPmcJR7TW+MaSBFWvEX8oylqjbFZ1s4Qr2N4n6sC2MUKPQ==@nongnu.org
+X-Gm-Message-State: AFuF++nkKXI6sTh8xQLldW58IV3Lah7t0t/anjrAak8RodnnjqIXtWhy
+ eIm96vDqMlJc1Gd699e08QHI9Kmp5CJ17DtOwU6qtTMJs0t1xHYPs535mzCdVN6+xIV56L1VAm9
+ elkkbrzncAiFrFQylqRj4GduTB8sKbIR2W9fNO0E82OG3XM37I74bLu4=
+X-Gm-Gg: AR+sD12Q988OEoYnz/N9nqEVsI0fwBp3Vex6hwFEdROvM6PwN7SkKLrpqe1dDf3zFZB
+ TNqjuzecluj/cBC8MggmTQrjqqjLMOupvzf/LF4WmtBFdtoiD1paaPwBjeSail0qXO/PKxN6yiX
+ NQlr4NyCBt4OpQFVOJmA8ZnfzIbit87Fovs6/lm0rsgu3/2O6uLRhlypRgCaPNcrOuvXn/AEzEn
+ yAl/mk6ub5+CIcbtVITgy7n/dtyOQXDyaf1kurdvpWNx4Lg8NGWwAj9oX9xby/cAslYNBQNwBnQ
+ ABuPY9L9jDZjzkEzcm7Nes1JJM8VemXHeeO1l0kgte/8FodcXs03xu/0r7GmU8SaeL3EG7hDZpm
+ srjfEsaHEF2v5U6vK5MA3R1TmyBDcFnRtlQ==
+X-Received: by 2002:a05:622a:4291:b0:52d:9cfa:663c with SMTP id
+ d75a77b69052e-52fa185dc9amr59596591cf.0.1787826720506; 
+ Thu, 27 Aug 2026 03:32:00 -0700 (PDT)
+X-Received: by 2002:a05:622a:4291:b0:52d:9cfa:663c with SMTP id
+ d75a77b69052e-52fa185dc9amr59595761cf.0.1787826719892; 
+ Thu, 27 Aug 2026 03:31:59 -0700 (PDT)
+Received: from [192.168.69.226] (pmd666.hd.free.fr. [88.187.86.199])
+ by smtp.gmail.com with ESMTPSA id
+ ffacd0b85a97d-482e28f854dsm8106335f8f.36.2026.08.27.03.31.58
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Thu, 27 Aug 2026 03:31:59 -0700 (PDT)
+Message-ID: <53ce22e0-a26e-4641-ba20-0ae65b290bc7@oss.qualcomm.com>
+Date: Thu, 27 Aug 2026 12:31:57 +0200
 MIME-Version: 1.0
-In-Reply-To: <b2b1d77e-c3e3-4aad-87d2-f5d4834abd1a@oss.qualcomm.com>
-User-Agent: Mutt/2.4.0 (2026-06-19)
-X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.111
-X-Mimecast-MFC-PROC-ID: v9PynI6j_FakkicpFRgdE6_77_Zbfllmm-sSdVhD8i4_1787826173
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 0/4] Rename ssi_transfer to ssi_transfer8
+Content-Language: en-US
+To: Alistair <alistair@alistair23.me>, stephensportia@gmail.com,
+ qemu-devel@nongnu.org, Bin Meng <bin.meng@processmission.com>
+Cc: Palmer Dabbelt <palmer@dabbelt.com>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ Jamin Lin <jamin_lin@aspeedtech.com>, qemu-ppc@nongnu.org,
+ =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>,
+ Steven Lee <steven_lee@aspeedtech.com>,
+ Andrew Jeffery <andrew@codeconstruct.com.au>,
+ Harsh Prateek Bora <harshpb@linux.ibm.com>,
+ Subbaraya Sundeep <sundeep.lkml@gmail.com>, Troy Lee <leetroy@gmail.com>,
+ "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
+ =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@mailo.com>,
+ Strahinja Jankovic <strahinja.p.jankovic@gmail.com>,
+ qemu-arm@nongnu.org, Tyrone Ting <kfting@nuvoton.com>,
+ Nicholas Piggin <npiggin@gmail.com>, Aditya Gupta <adityag@linux.ibm.com>,
+ Kane Chen <kane_chen@aspeedtech.com>,
+ Francisco Iglesias <francisco.iglesias@amd.com>,
+ Joel Stanley <joel@jms.id.au>, Hao Wu <wuhaotsh@google.com>,
+ Glenn Miles <milesg@linux.ibm.com>, qemu-riscv@nongnu.org,
+ Jean-Christophe Dubois <jcd@tribudubois.net>,
+ Portia Stephens <portias@oss.tenstorrent.com>
+References: <20260825040452.1322251-1-stephensportia@gmail.com>
+ <d88347aa69db68c498b593eabcd2377413ff4af5.camel@alistair23.me>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@oss.qualcomm.com>
+In-Reply-To: <d88347aa69db68c498b593eabcd2377413ff4af5.camel@alistair23.me>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=berrange@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: 12
-X-Spam_score: 1.2
-X-Spam_bar: +
-X-Spam_report: (1.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=0.001, RCVD_IN_SBL_CSS=3.335,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=no autolearn_force=no
+X-Proofpoint-ORIG-GUID: DQwRDTg3coq8eGkGMQ3VvUtqy1D_LD7d
+X-Proofpoint-Spam-Info: AW1haW4tMjYwODI3MDA4NyBTYWx0ZWRfX8pb+yk8Lu8ec
+ yrTlCo33sAsp9dgl3qYs+bMKF0aeIgl46YXe+iFCg71eV4DtBmoto1ryT0KNK02H4s+yFn3rf1v
+ drxv7/hPow5HJLlbi4He+H1Nio1cBDY=
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwODI3MDA4NyBTYWx0ZWRfX0LB/y6gtL913
+ MmLAFy0sSBFu2v9eiTdco7GtCLcoceVfYdM5Ccvb0OcqAuG4J2ImMpQl6QankRJqwiDiiPJ++D5
+ fJyfFfpUTFrQ1pLzQGnOnuydWKU5eCTQNlfbcRcUKEXX5pO27YpTniN8bMU5dzYbvI7U23dO2+I
+ en5HwVEZz6XjxwQW/p6xjvR9gVrGXNnvitBCYceiXUJwKkEWKh9QXrdKAgb45iQJrwk/ewbE9V+
+ RgpfWCgRo27XUVu6BoIBM9z/EGM2wt1Dv4E9SVcpntZPz/Xa8/JUHTvuwkXst/eg5UW1WbCiGpS
+ 4Gqk/kfH7NbrBbQ0jSDdXF//y1mNSBSrVzCgSkh8ek28Rrn4xsGAqBSVgRAqx/GvbKPjV6q2FIL
+ YHW29sprTFdoQcOHYYa5NPEeuVQBgnFJP9q9B1FWiY72JUvW6JvNnZHk7nzTPVSH+MHM4b0qntR
+ K5WyQJI6tRo2rdbXg5A==
+X-Proofpoint-GUID: DQwRDTg3coq8eGkGMQ3VvUtqy1D_LD7d
+X-Authority-Analysis: v=2.4 cv=SomgLvO0 c=1 sm=1 tr=0 ts=6a901221 cx=c_pps
+ a=JbAStetqSzwMeJznSMzCyw==:117 a=4s3hRJSeHn4rkQlkrse1kQ==:17
+ a=IkcTkHD0fZMA:10 a=Sv0fKeRqtYgA:10 a=M51BFTxLslgA:10 a=s4-Qcg_JpJYA:10
+ a=VkNPw1HP01LnGYTKEx00:22 a=u7WPNUs3qKkmUXheDGA7:22 a=eoimf2acIAo5FJnRuUoq:22
+ a=pGLkceISAAAA:8 a=t9496tuAAAAA:8 a=6o3zYDZGyaI6ylSOKDgA:9 a=3ZKOabzyN94A:10
+ a=QEXdDO2ut3YA:10 a=uxP6HrT_eTzRwkO_Te1X:22 a=4wQ91nGE5lQcD7eh5OX0:22
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.293,Aquarius:18.0.1176,Hydra:6.1.134,FMLib:17.12.100.49
+ definitions=2026-08-27_04,2026-08-26_02,2025-10-01_01
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
+ malwarescore=0 clxscore=1015 phishscore=0 spamscore=0 priorityscore=1501
+ suspectscore=0 bulkscore=0 impostorscore=0 lowpriorityscore=0 adultscore=0
+ classifier=typeunknown authscore=0 authtc= authcc= route=outbound adjust=0
+ reason=mlx scancount=1 engine=8.22.0-2606150000 definitions=main-2608270087
+Received-SPF: pass client-ip=205.220.168.131;
+ envelope-from=philmd@oss.qualcomm.com; helo=mx0a-0031df01.pphosted.com
+X-Spam_score_int: -27
+X-Spam_score: -2.8
+X-Spam_bar: --
+X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_LOW=-0.7, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -117,91 +170,70 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-To: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Wed, Aug 26, 2026 at 11:35:11AM -0700, Pierrick Bouvier wrote:
-> On 8/26/2026 5:32 AM, Daniel P. Berrangé wrote:
-> > I think this is probably also what leads to the increased RAM
-> > usage in qemu-system-riscv64. Starting
-> > 
-> >   qemu-system-riscv64 -nodefaults -display none -M none
-> > 
-> > shows an increase in RAM usage from  17.3 to 20.7 MB which
-> > is about 15% increase. NB this is dirty, private RAM per
-> > process. The shared RAM pages also increase but that's not
-> > a concern since they're common to all QEMU processes.
-> > 
-> > qemu-system-aarch64 shows a much smaller RAM increase, since
-> > it only grew from 1430 classes to 1530 classes.
-> > 
-> > We have many more target though, so if we assume the end
-> > point where every single target is unified, the the union
-> > of all classes for all targets comes to approx 3600.
-> > 
-> > My guesstimate is that would mean a memory increase for
-> > qemu-system-riscv64 from 17.3 to 39.9 MB, which is a
-> > 72% increase.
-> > 
-> > In absolute terms this is still modest, but for deployments
-> > with large VM counts  and small RAM sizes, that gets to be
-> > significant.
-> >
+Hi Alistair,
+
+On 27/8/26 07:37, Alistair wrote:
+> On Tue, 2026-08-25 at 14:04 +1000, stephensportia@gmail.com wrote:
+>> From: Portia Stephens <portias@oss.tenstorrent.com>
+>>
+>> The ssi_transfer function comments say that it takes a word varying
+>> between 8-bits and 32-bits. ssi_transfer takes a 32-bit arg to
+>> transfer
+>> but there is no means to indicate the number of bits that should
+>> actually be transferred. All child classes of SSI_PERIPHERAL class
+>> have
+>> transfer functions that, despite accepting a 32-bit tx, only transfer
+>> a
+>> single byte; m25p80_transfer8(), ssi_sd_transfer(),
+>> ssd0323_transfer().
+>>
+>> The current implementation depends on the SSI model to know
+>> what peripheral model will be attached and what transfer size it
+>> expects which is error prone. If a SSI_PERIPHERAL model was written
+>> that
+>> accepted 32-bit transfers, it could not attach to any existing SSI
+>> models.
+>>
+>> This change updates the the naming of ssi_transfer to ssi_transfer8,
+>> as
+>> well as changes the return value and transmit argument to be 8-bit.
+>>
+>> Most ssi models handle this correctly already, sending a single byte
+>> at
+>> a time. There are a few models that are written to support non 8-bit
+>> transfers but there are no in-tree use cases that connect a
+>> peripheral
+>> to the SSI device. These have been updated to use 8-bit transfers.
+>>
+>> Portia Stephens (4):
+>>    hw/ssi: Rename ssi_transfer to ssi_transfer8
+>>    hw/ssi/pl022: Fix dropped upper bytes of ssi transfer
+>>    hw/arm/strongarm: Fix dropped upper byte of ssi transfer
+>>    hw/ssi/pnv_spi: Fix dropped upper bytes of ssi transfer
 > 
-> How surprising (:eye-roll:) it is that adding more code and more classes
-> would result in a higher memory usage, or bigger binary size for
-> qemu-system.
-
-It is not a surprise, I'm just examining the effect.
-
-> More seriously. If someone is concerned about it, the simple solution is
-> to restrict list of targets and/or Kconfig to include less.
-
-Building custom minimized QEMU is not a path that works for
-distro vendors, as we can't tailor to distinct use cases,
-so the footprint of the generic build and any impact on our
-packaging is a factor I'm interested in.
-
-The 'modules' feature came out of our work to lower the
-footprint of a default "all features" QEMU build.
-
-As long as qemu-system-$target stays around as its current
-impl, it isn't a blocker. If qemu-system-$target were changed
-into a symlink to qemu-system, then it becomes a critical path
-problem for the distro packaging.
-
-I think the solution long term is to further expand the use
-of modules to more of the code.
-
-> > IMHO we should make a clean break with the past. Leave
-> > the existing qemu-system-$TARGET binaries being built
-> > from the same pieces they are today, such that there
-> > is better confidence that we are not making behavioural
-> > changes to them.
-> >
+> Thanks!
 > 
-> Funny enough, it reminded me word for word of a blog post from a
-> Microsoft employee where he explained that powershell existed only
-> because young developers were scared to modify original cmd shell.
-> 
-> Regression issues are solved with testing and good design, not by
-> inventing new things.
+> Applied to riscv-to-apply.next
 
-We don't have sufficient testing, nor is the current QEMU
-qemu-system-$target especially good from a design POV as
-it has decades of historical baggage holding us back. The
-introduction of a new binary is the ideal time to address
-this long term problem. It frees us to do changes that are
-otherwise impossible and to experiment with new ideas
-without worrying about implications for the current binaries
-and their users.
+Can you hold on before merging this please (or drop it from
+your riscv queue)? I tagged this series to review but didn't
+got a sufficient large enough slot to look at it.
 
-With regards,
-Daniel
--- 
-|: https://berrange.com       ~~        https://hachyderm.io/@berrange :|
-|: https://libvirt.org          ~~          https://entangle-photo.org :|
-|: https://pixelfed.art/berrange   ~~    https://fstop138.berrange.com :|
+In short, the reason I think this isn't the correct way to go
+is SPI "words" can be any number of bits. While QEMU only
+models 8-bit word devices, I have be working with 16-bit and
+even 24-bit words ones, so I believe the current implementation
+is right. I have be thinking of a better way to model this
+granularity in our class hooks, but haven't find a good one yet.
+Restricting some devices to 8-bit to simplify them move part
+of the complexity to the host controller so I'm not sure it
+is useful. I'll return with clearer comments when I get more
+time.
 
+Thanks,
+
+Phil.
 

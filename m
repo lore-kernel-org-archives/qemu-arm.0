@@ -4,102 +4,109 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B1DB5C61DC2
-	for <qemu-arm@archiver.kernel.org>; Thu, 27 Aug 2026 08:30:04 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 132E5C61DC2
+	for <qemu-arm@archiver.kernel.org>; Thu, 27 Aug 2026 08:43:50 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wzVUn-0005RB-VS; Thu, 27 Aug 2026 04:30:01 -0400
+	id 1wzVhs-0002zp-2k; Thu, 27 Aug 2026 04:43:32 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <leonardi@redhat.com>)
- id 1wzVUm-0005Q8-Du
- for qemu-arm@nongnu.org; Thu, 27 Aug 2026 04:30:00 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <leonardi@redhat.com>)
- id 1wzVUk-0004P9-Tq
- for qemu-arm@nongnu.org; Thu, 27 Aug 2026 04:30:00 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1787819397;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=DBdUyAsqfJt4r9dXvva+et1CD5naD6J/mWEbiwE2yWI=;
- b=R5DXwoSAX/IN4hn7kjO/YxnfuE0i3LVA1BOv7VxI4X/eiO/FylEymoNctym86MJbKjmsAY
- eogq0TGlj9dwDvV9YRtW4UnJ3jb2VTyg3ke9rVdjk8a9gWKOCA0i6foVt6WPJi4OsN85dc
- GvX6XX02SjLMd5osgDd09bTtb5Zr6hE=
-Received: from mail-wr1-f70.google.com (mail-wr1-f70.google.com
- [209.85.221.70]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-37-20EloIMSNY27lfkybsONRA-1; Thu, 27 Aug 2026 04:29:54 -0400
-X-MC-Unique: 20EloIMSNY27lfkybsONRA-1
-X-Mimecast-MFC-AGG-ID: 20EloIMSNY27lfkybsONRA_1787819393
-Received: by mail-wr1-f70.google.com with SMTP id
- ffacd0b85a97d-482e8e1ac69so334027f8f.0
- for <qemu-arm@nongnu.org>; Thu, 27 Aug 2026 01:29:54 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1wzVhq-0002yH-JK
+ for qemu-arm@nongnu.org; Thu, 27 Aug 2026 04:43:30 -0400
+Received: from mail-yw1-x112c.google.com ([2607:f8b0:4864:20::112c])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1wzVho-0006uQ-51
+ for qemu-arm@nongnu.org; Thu, 27 Aug 2026 04:43:30 -0400
+Received: by mail-yw1-x112c.google.com with SMTP id
+ 00721157ae682-81f64e8dfbcso10913387b3.2
+ for <qemu-arm@nongnu.org>; Thu, 27 Aug 2026 01:43:26 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1787820206; cv=none;
+ d=google.com; s=arc-20260327;
+ b=ETu5MOPRHF7cSZDD+T996/woDzC86dsDVh3FcfA/uH7zrFVX+/i4wKosbIJCGcTy5a
+ 9/7Du9+z47DKMJy2yn0VQAcY7WXKBTl7tVYMJictQT2c1cPdQFrj9NLB3be5J3U3SweA
+ hMpnKRPQzSGYtZ2Du1FjFs9QoQ0z6Lk3Sg7Agc8b5y4HANbgI9J6ls+Pc5aPLupDgM0x
+ lBzAf6dlbQrblCJ7qsCCQFGRizAoJqDWBkpGz7ilS1raZPa3vdw35z8nMUc1a2YI0ACc
+ M+qL8FkefhcVr1VvXXKR2paTbNawnrMFr1QKXatWZTWa0ypb6Hqc8Pg3ZfYbmMgNU4Wy
+ pABQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
+ s=arc-20260327; 
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:dkim-signature;
+ bh=fmTjhSvtnJsTs9f2WlIUngWxh9jpt5Q0EV8XjjrlYbE=;
+ fh=bP9f4RM+2ffiwjbSMq21rXiG3Pcm1esyQWd8r5phr4U=;
+ b=aiwymKx3L2uS6SqNghMILG/RRmWccR+vl1Wr3bGKKSAcKCWeG7YOLuLuLbWUothyph
+ cdfHcjyiayLHLj0UO00wzSJ3HFePiro9b+mGOLYJMMnvYtzUWVQMriFSM2tp/AHAmlzV
+ RHuNGqByBAwy20EwIMPTgieODGpazZ0cQE8FjfQwIpIeb0pQhMCicDOtE6rF6Lbjqpv4
+ 206+swB0bfEYTM5NQl+cJVwKzvK75o/P2gwQiu2KH1S/3bS+InijBOfRUASDJfy9HwlK
+ rcz4JkCWQs9RcFsyJ/9Z8g2q9BMP5LW7YvHtyFI6hndyxmPjyxfufV7M+KQFuv0JA+nK
+ cVvA==; darn=nongnu.org
+ARC-Authentication-Results: i=1; mx.google.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1787820206; x=1788425006; darn=nongnu.org;
+ h=content-transfer-encoding:content-type:cc:to:subject:message-id
+ :date:from:in-reply-to:references:mime-version:from:to:cc:subject
+ :date:message-id:reply-to:content-type;
+ bh=fmTjhSvtnJsTs9f2WlIUngWxh9jpt5Q0EV8XjjrlYbE=;
+ b=JDALbyH/7b2B8m5MU68vZwCKhPeGMG4iUwWeCwIrOjO2cO63UWvnXCDSORwd1S2y9s
+ 1HP7Rzf9Bbqwpkykiad6HtEhI015V36Ri0USQXsEW9vtnqdcNnxJWxWVPbuvqG4tzP45
+ 9mZVtAM6zZxBWDJ3TxZLcblwpCmEXrkWEmnukmopp2xR5OZAtNswavQUz4ufjl6uKsxN
+ Qk8VF/ywU5hkVLRBNW2NrLZgGDkKf9R6blAaVe2Yq0LYkpOYRoJIF9KwKC9ua4Ucg+sf
+ 6cr1FtO8YJaAHykg70ItS5mwBvcRxWpQFIZfKYe07MKS/3LcxxDVsrcpcV3rHtoliEpN
+ UxxQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1787819393; x=1788424193;
- h=in-reply-to:content-disposition:content-type:mime-version
- :references:message-id:subject:cc:to:from:date:x-gm-gg
+ d=1e100.net; s=20251104; t=1787820206; x=1788425006;
+ h=content-transfer-encoding:content-type:cc:to:subject:message-id
+ :date:from:in-reply-to:references:mime-version:x-gm-gg
  :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
  :content-type;
- bh=DBdUyAsqfJt4r9dXvva+et1CD5naD6J/mWEbiwE2yWI=;
- b=q+3a+e8vfXuTWtmESE8fib48tYmIEJYed3NxJIC3PakCUTLKQF24S0yLtMiZi20hvt
- lIC4JpClFbsqSMq87T9qWsKgKNbT7v4657fAspD4F/Rxzv6Hxey4hpkkhzA6JU6DMDVh
- OMM0i4KaKh7CGD7m1tIGEWqOeh1zl1v62vfimlA/JeUwhRU43T3To10KAGnrf6BEUJPG
- TnQSTDLi/3s7814+nNl5KX6XygVBM2PeKn7b8zV3ggCbfI2UfH3FqnBjTl1odLOcKb4P
- Qwn5HK3eG9QHUhLL2+FUi1GYr5Ni8PXiI8Wcz3MAGoYVb4Qq4QrhH1Bv1tFBCoSRaIrk
- A2fg==
+ bh=fmTjhSvtnJsTs9f2WlIUngWxh9jpt5Q0EV8XjjrlYbE=;
+ b=CAVuP5KMrwcPJcPlD7nL102z6YcgM9KjtusznEjPdtMyMtuFOAC426BlEQfrBYN6lw
+ DGzbHNl+8YFYEPw+p5rMHfUfm5yFOOO8J5RZ9fSmSC8e7ByY5bek/T/1tLlsjo4yt0ZM
+ 3d+nYxFZpzhyLnH7t0hkhkLtN3s4JxJdyqhbh72UECVD8QpnFXmVmCHmZlxEycW7fj+F
+ zHsQpfhRjeHHf20wIBeWMsVDWFYvLj9LhXiDxaMjpbwIK2FhjhHHhKskvEqR0hZwQgKC
+ p5+JXUxExFt4OkxUoikrWpicxrfPSF5Q8ZSCS4VRC1x0m+YSViztBhU3NfL0f7v2VY9b
+ cv9A==
 X-Forwarded-Encrypted: i=1;
- AHgh+Ro2abp7CsycPPraQI+ZTIAO9kJCPZggA8PjAV7KLh2BqUrqPjtJk84VZt1HynMgcCIfRjw6ydPeWw==@nongnu.org
-X-Gm-Message-State: AFuF++lK715426sEJVRp7ZPRlXgeP2ctqYiQqz5Vg3KxvnmHtgDbASQN
- ciuqjDjruomnqos8EjkKHXiXz7OVN1pazK2ATD0+YDTq1CYD9UoPzT2vavd21PYf6YQkPBCXhmv
- I3vN3XGrZfJoAN87kCwnJ9ImQqZSL1xkHFynB0na0/RlGd/Iq6w57lg==
-X-Gm-Gg: AR+sD12NNLkuLuj0nvnJgazchgQgqZGpHJw7fn1ow8+xg4zdXFDji54Lw+PVa+6uVJ2
- 661iX1xS2qVeghephIFkhhlVH7MzN0VSyK1/24u+IGgTRmZTkuAij74TYLfmW+X1fFnVzsGvAxV
- FHzVre3jMdRUEz7STbQ8h6BrYtr6awrPrWQbCtO4Kd7qP42MueKTlcvdIOBg1Re+fOkBtxlBUrH
- +vhk0PLoMCwTtvR2A8Hr1Qb3ZHOQWZkalN7paa3peqOUKU4OYKQpu6/N0XmAj6aJEi26+Fabb2X
- WMPKqAYIiQponGgdaxJyerEwOj/Utkl+qX57YFB/Y3AkuGBof/dy1unMwMe982HlPHskQBjyKb7
- aGylyZEjnhcCZXz6buwzDID3K8gdd+gpvqsbc
-X-Received: by 2002:a05:600c:138e:b0:49a:ce8f:1a5e with SMTP id
- 5b1f17b1804b1-49b0dea94a8mr47891225e9.2.1787819393207; 
- Thu, 27 Aug 2026 01:29:53 -0700 (PDT)
-X-Received: by 2002:a05:600c:138e:b0:49a:ce8f:1a5e with SMTP id
- 5b1f17b1804b1-49b0dea94a8mr47890615e9.2.1787819392771; 
- Thu, 27 Aug 2026 01:29:52 -0700 (PDT)
-Received: from leonardi-redhat ([109.52.148.58])
- by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-499dd5616f7sm57605615e9.2.2026.08.27.01.29.51
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 27 Aug 2026 01:29:52 -0700 (PDT)
-Date: Thu, 27 Aug 2026 10:29:49 +0200
-From: Luigi Leonardi <leonardi@redhat.com>
-To: Gerd Hoffmann <kraxel@redhat.com>
-Cc: qemu-devel@nongnu.org, Peter Maydell <peter.maydell@linaro.org>, 
- qemu-arm@nongnu.org, Igor Mammedov <imammedo@redhat.com>, 
- "Michael S. Tsirkin" <mst@redhat.com>, Ani Sinha <anisinha@redhat.com>, 
- Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-Subject: Re: [PATCH v3 03/12] edk2: update submodule to edk2-stable202508
-Message-ID: <ao_1WPt4pzUf5M-J@leonardi-redhat>
-References: <20260824164751.1700783-1-kraxel@redhat.com>
- <20260824164751.1700783-4-kraxel@redhat.com>
+ AHgh+RrB4anHaZSu8gdDRP666OhbIWjCCvyyouOcPlLypF94lpRkeZxphP305uhAxaVk2ThB0GrBEt2h4w==@nongnu.org
+X-Gm-Message-State: AFuF++k96VVZFNV5lCvJJCcYv6bK9G2o6u5r312Ql5aBGUruOjw3wfy/
+ F84E0AqCWZHBviyDCeo3W8PqFh4dS+uhYxG9oyL6DTstFY2rSo1vYD0cz/5Ws9YgA/9W21v/lUp
+ PCxHJBTnziiddnHk9L5FYGYmGjVry5Zrq0kW7XkbctA==
+X-Gm-Gg: AR+sD11Ob/3h3mQPVScUO97CPstjgd6mrMg49wjOUW9Pbe2vagn4gQTfgDFzRv9WljE
+ LRdBztW7JGBz7k4oTTB2a4Uba4qvTKvcOzd1AONnI3t9/GQg0gDjjaUvvJ3FhjcWPYbLi64iW0D
+ +jLrVj6py5gh8Jhp9Czwa008MwzVb7H5JNKO2Yx/Ntvb86YyVcDLEz3BS+/AW+zQQkcIThwf6UL
+ OYyJ4qAeS6/PdiRuqKGCgpUME1K9aOqfPLIKD8jKqnAnqaqdJkkZvVd6zpXsSKFMhZ2J3s/1Tw0
+ qCkyPIy7Ad3pqP4ddqlypkpFlQEH5tIGB0qIxGlBMgfxenyleOe9roeY+aihaj/O96JZqH8OcJq
+ qNnGtjyqnvum//qbJyfZqlyXWNujW
+X-Received: by 2002:a05:690c:e296:10b0:80c:d342:955c with SMTP id
+ 00721157ae682-8573c2fdcabmr48193347b3.3.1787820206006; Thu, 27 Aug 2026
+ 01:43:26 -0700 (PDT)
 MIME-Version: 1.0
-In-Reply-To: <20260824164751.1700783-4-kraxel@redhat.com>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: E7ETFPrKux2wHmdZhlRn_mofsU6RuEzciT-0k9qkyl8_1787819393
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=us-ascii; format=flowed
-Content-Disposition: inline
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=leonardi@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
+References: <20260826074635.2850931-1-kchiu@axiado.com>
+ <a665849f-3b20-4ad3-a35b-02259e882628@oss.qualcomm.com>
+ <c15422ab-6a58-45b8-8df6-b2f54e0620cf@axiado.com>
+In-Reply-To: <c15422ab-6a58-45b8-8df6-b2f54e0620cf@axiado.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Thu, 27 Aug 2026 09:43:14 +0100
+X-Gm-Features: AcwNN1V0V9pI_S7sEMSJ-Wr_3nHSLX4cvEHbr4NU9oGIMUrGy3_hZoalRiqLJS4
+Message-ID: <CAFEAcA_2GiDUY36TAEk3OhJfJLLDkQja-A=x9UTFGeHAP86t7g@mail.gmail.com>
+Subject: Re: [PATCH v4 0/8] Add Axiado SoC AX3005 and EVB
+To: Kuan-Jui Chiu <kchiu@axiado.com>
+Cc: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@oss.qualcomm.com>, 
+ 163wangjack@gmail.com, qemu-devel@nongnu.org, qemu-arm@nongnu.org
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2607:f8b0:4864:20::112c;
+ envelope-from=peter.maydell@linaro.org; helo=mail-yw1-x112c.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=0.001, SPF_HELO_PASS=-0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -115,40 +122,32 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-nit: /s/202508/202608
-
-that said
-
-Reviewed-by: Luigi Leonardi <leonardi@redhat.com>
-
-Luigi
-
-On Mon, Aug 24, 2026 at 06:47:35PM +0200, Gerd Hoffmann wrote:
->Signed-off-by: Gerd Hoffmann <kraxel@redhat.com>
->---
-> roms/edk2         | 2 +-
-> roms/edk2-version | 4 ++--
-> 2 files changed, 3 insertions(+), 3 deletions(-)
+On Thu, 27 Aug 2026 at 07:39, Kuan-Jui Chiu <kchiu@axiado.com> wrote:
 >
->diff --git a/roms/edk2 b/roms/edk2
->index 4dfdca63a934..2970e5699ba6 160000
->--- a/roms/edk2
->+++ b/roms/edk2
->@@ -1 +1 @@
->-Subproject commit 4dfdca63a93497203f197ec98ba20e2327e4afe4
->+Subproject commit 2970e5699ba6267f3384ffab20f96647578aebc8
->diff --git a/roms/edk2-version b/roms/edk2-version
->index 069f19f8bf49..8a0cf62749cf 100644
->--- a/roms/edk2-version
->+++ b/roms/edk2-version
->@@ -1,2 +1,2 @@
->-EDK2_STABLE = edk2-stable202408
->-EDK2_DATE = 08/13/2024
->+EDK2_STABLE = edk2-stable202608
->+EDK2_DATE = 08/12/2026
->-- 
->2.55.0
+> Hi
 >
->
+> Philippe Mathieu-Daud=C3=A9 =E6=96=BC 2026/8/26 =E4=B8=8B=E5=8D=88 04:18 =
+=E5=AF=AB=E9=81=93:
+> > Could you add a functional test? See:
+> >
+> > $ git grep -l obmc tests
+> > tests/functional/arm/test_aspeed_anacapa.py
+> > tests/functional/arm/test_aspeed_ast2500_sdk.py
+> > tests/functional/arm/test_aspeed_ast2500_sdk_515.py
+> > tests/functional/arm/test_aspeed_bletchley.py
+> > tests/functional/arm/test_aspeed_catalina.py
+> > tests/functional/arm/test_aspeed_gb200nvl_bmc.py
+> > tests/functional/arm/test_aspeed_palmetto.py
+> > tests/functional/arm/test_aspeed_romulus.py
+> > tests/functional/arm/test_aspeed_witherspoon.py
+> > tests/functional/arm/test_quanta_gsj.py
+> >
+> Please allow me to add functional test cases in another patch set
+> because we did not release firmware package on our Github for
+> downloading yet.
 
+Can we get a functional test for the machine model you've
+already landed before we add more machines in this family, please?
+
+-- PMM
 

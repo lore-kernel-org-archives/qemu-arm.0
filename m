@@ -4,106 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 145E7C61DC6
-	for <qemu-arm@archiver.kernel.org>; Thu, 27 Aug 2026 13:25:24 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2493DC61DC2
+	for <qemu-arm@archiver.kernel.org>; Thu, 27 Aug 2026 13:28:20 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wza6N-0006S1-75; Thu, 27 Aug 2026 09:25:07 -0400
+	id 1wza9S-0007t5-FG; Thu, 27 Aug 2026 09:28:18 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1wza6L-0006QY-Lc
- for qemu-arm@nongnu.org; Thu, 27 Aug 2026 09:25:05 -0400
-Received: from mail-yw1-x112b.google.com ([2607:f8b0:4864:20::112b])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1wza6K-0008Qs-1c
- for qemu-arm@nongnu.org; Thu, 27 Aug 2026 09:25:05 -0400
-Received: by mail-yw1-x112b.google.com with SMTP id
- 00721157ae682-836ce5d6e85so35799167b3.1
- for <qemu-arm@nongnu.org>; Thu, 27 Aug 2026 06:25:03 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1787837103; cv=none;
- d=google.com; s=arc-20260327;
- b=V5J52Nq0R60gm3oLY5ymAeFRazWNb2NAqwUu7OamxtW4ctAhyGd9OBsgRwqJ8KH2zK
- Z40D4+3wYp2JwTGa0qfA8T81CP60N4TzVuWYMzZeRGyLOguk/Q16vZwD1qtzG4YcLWXx
- jnf1UlRNGaNGils+cO1t8p8ROdBmifzpKgBffpYkErQT8yJ9Uqz+jhkmFaZku+YEq1Gm
- A1ajbBHBcIwNUlD03Arv3SvyjQ/+Rz7SmxLVjfH9o5pus6mTQIY5+u6vJtpeN4afzAeI
- yAjjOw4yev/1B+IiXpviepdYrg/E+v88NNT8fpY8DtSZHupHi4ANmEAa/mCG521/bqeB
- bVDg==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
- s=arc-20260327; 
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:dkim-signature;
- bh=XfjMHc10et9ReVOFdjsA4jI9Vmgt2LhsatNQBv0Y6DU=;
- fh=5b0hivkRJAy/mV6y5XWqZ1UT+7rMaqgc6ihu5LzLF0c=;
- b=R4iFJ83D7u8MvRrjpScAmBfJI+noRls/dTB1jHgTTEmdjR53J7KRnvGB9HyfsDKMFD
- AxyDsQRIhhE2gCO5T5TaS8QRxBK7lPtmXm76WrpWUIQQIgkX7U0FP8riGWWZvRUKJ6bf
- rA4VMq/xKMkmVV10iPSrbcBWY2Cbn9jGVWR6ELqkbbRWL1Gvvx/6hiYxcU+B/atmaWob
- K3M/OMPT3po/jjIFaCuGdqobko/nEvCd4dJK2RfRS8o3Q9cD1lP3jZ5oK74ihKJpd2To
- 6UDZK0It1xZEAMReeNPEzWOHpbJYrcxg4Mwqy6ul1saAW6xd7d3YZe7wW6YeLZAUz45i
- ukSg==; darn=nongnu.org
-ARC-Authentication-Results: i=1; mx.google.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1787837103; x=1788441903; darn=nongnu.org;
- h=content-type:cc:to:subject:message-id:date:from:in-reply-to
- :references:mime-version:from:to:cc:subject:date:message-id:reply-to
- :content-type; bh=XfjMHc10et9ReVOFdjsA4jI9Vmgt2LhsatNQBv0Y6DU=;
- b=YNe4Cc9NmwSSHU0yfJqzTz5iyIU/AQ5TulYQTjTUfb3yRBqbeSiEBYaWejcNaH+asi
- rwe6Yi4khyl67pkUtiUG0Ht9WAMa25LL8u6Xoq3GMwCn1uVUEoQwkiVE4IV10eexXT9r
- +zapV6am9MXighrz1yz2GzcjWSdTAM1x2uftIwNjbsystyfap5Xx/X+JOYAb3WWhS0qc
- 6gZ9LYTMrKlMiX+szvVIM7w+zZyvVqLtvZ1s/MreHM2RNbzMFsmMHWQWa8jGRbN3OQnA
- 3wggWxMSJR+5Ul28IEzi/8YM+5KY2u2n0dsDj8kLwFUY1dh6e6j2r4+yaM8dRaLxh1HU
- DyJw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1787837103; x=1788441903;
- h=content-type:cc:to:subject:message-id:date:from:in-reply-to
- :references:mime-version:x-gm-gg:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to:content-type;
- bh=XfjMHc10et9ReVOFdjsA4jI9Vmgt2LhsatNQBv0Y6DU=;
- b=fuOqVWDTNuuqyPTale1Ji87KKVIr2PaqVhKD8abqGdJLDKek35UsbX+As5eMuGKQzG
- 4mWTNM6Ie3Nfo6uCje5N9IEGYOEz72fLiXX9EpF5HNdVanwJfOPEri79bDdxjkCV8Skz
- hf9fy5jqtx9D8KFpjv1Gq76d7LQmAsl3hf+PWq6ck23g8G9h+PXhHT57C0WZCexEMR5l
- rv+k1mpMm/NPKGouk7wm823jKzul716DbXa9YIqsJqv243e3TKUz93Xxkg9idLzOM1+q
- B6oBagoGbrjomJVr6Ui6afkhuyIgVB+HWsOyIm8Y93qjAkvxKHN0fUIq0vqez6eVALQN
- ZcIQ==
-X-Forwarded-Encrypted: i=1;
- AHgh+Rqe6gwjPek4ITJQR8C4gB3/duUL5g5W/hLPfD4TnWDQnQG0NncU4hTjZgVGP/25TrwlrFWWl4zKZQ==@nongnu.org
-X-Gm-Message-State: AFuF++kxiN0YYT81zQNta2PjauZGHWGtWrh1XzxOBxKZYFU9MGDNAkSt
- q04BaP0sTw8BR+/jZ4NJ5JPye4QNY7bDPLni4sqDyI46TdpV9p+4KMe0yFawdNoxPjMNpNDKan1
- WuLdz4GIz/EsAOo6xHP+NhYa7/dAvWV3CHnMrE95oqg==
-X-Gm-Gg: AR+sD139hWHPEpcds+YY/iYA8uk3w69RpqBl3R/pXXpbI7vkPRL/ZXQayiXm6yKmQoD
- vnNcfHRePKig0iU0pLEX94s3DKvSZb/RW+/RsiLNe2yIligIksyYc8IJTt+46rJTR6fn4jb4K18
- EQwpUaGJNbrTOAG4rpe89aOd1mk0sF+zi/j1q4kM+6kQcS34xGXkTvgvEtyNSucn6U6vvd45Hzp
- iBMXgCqYamazWDXVkC9jpN32VdWNkpQPbj1u6/Oia40nZ9ifCSeQHTb0n7+U8Rk2gMLUfrrxnYc
- cnwHNGkAUDtUF/QPcPKwZyKP7I9G1faJ8jWXXfui1WsN0jr3foN8+6h/WxssqMkfRWtylt5QiIG
- 5C/v5Ip2hh6nzr7s8BMuZO0BloRm7
-X-Received: by 2002:a05:690c:89:b0:857:b539:c43f with SMTP id
- 00721157ae682-857b539d443mr56834937b3.26.1787837102655; Thu, 27 Aug 2026
- 06:25:02 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <lpieralisi@kernel.org>)
+ id 1wza9P-0007sk-CO; Thu, 27 Aug 2026 09:28:15 -0400
+Received: from tor.source.kernel.org ([2600:3c04:e001:324:0:1991:8:25])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <lpieralisi@kernel.org>)
+ id 1wza9N-0000Mj-Gj; Thu, 27 Aug 2026 09:28:14 -0400
+Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
+ by tor.source.kernel.org (Postfix) with ESMTP id 19A25600D3;
+ Thu, 27 Aug 2026 13:28:10 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 018051F000E9;
+ Thu, 27 Aug 2026 13:28:05 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
+ s=k20260515; t=1787837289;
+ bh=YoiuiV7BuiVkrt8iov95SFQ61pmnoDw60YzzsiWw5ms=;
+ h=Date:From:To:Cc:Subject:References:In-Reply-To;
+ b=TWTXxhtPSBhbUDlaXPW8owhBrzMuM51QNTsBlaYj8E3rogpmptJX9wqI6a5830ZTr
+ N5hWNYG/3SL7Clty+bZ11ZgQ3pBlLqE+xWxHydkWV9j38ZEh+0ohY1tahqC2kS+Yy+
+ irlGOnGnIq7yPxzH9joYvSDEGPhnDY0RvDt2tCpvPa0ssydYzuZF29MznUQC4fHfB8
+ T3lzkt+663pSsv+7GLEpmFj/bGsit3k3OGNr3HaTVTtytTpNBDITf/14oBxrAJFXj8
+ /8Oq0LlwLzDu9KPkzTmSLYyC+LNZpm3LGOtOlAjSvWWk4jm2zu+sIlnpHGyjRWqXex
+ 743b9W3tF90LQ==
+Date: Thu, 27 Aug 2026 15:28:03 +0200
+From: Lorenzo Pieralisi <lpieralisi@kernel.org>
+To: Daniel =?iso-8859-1?Q?P=2E_Berrang=E9?= <berrange@redhat.com>
+Cc: Mathieu Poirier <mathieu.poirier@linaro.org>, kchamart@redhat.com,
+ pierrick.bouvier@oss.qualcomm.com, peter.maydell@linaro.org,
+ mst@redhat.com, cohuck@redhat.com, pbonzini@redhat.com,
+ eblake@redhat.com, armbru@redhat.com, lorenzo.pieralisi@linaro.org,
+ gshan@redhat.com, enju.kohei@fujitsu.com, qemu-devel@nongnu.org,
+ qemu-arm@nongnu.org, kvm@vger.kernel.org
+Subject: Re: [RFC v3 00/24] Add Realm support to QEMU-VMM
+Message-ID: <apA7Y37myawAspZk@red-moon>
+References: <20260825220101.3443954-1-mathieu.poirier@linaro.org>
+ <apA2aSd4Gcic9vAP@redhat.com>
 MIME-Version: 1.0
-References: <20260818002629.172827-1-simonxhy0404@gmail.com>
- <20260818002629.172827-4-simonxhy0404@gmail.com>
-In-Reply-To: <20260818002629.172827-4-simonxhy0404@gmail.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 27 Aug 2026 14:24:50 +0100
-X-Gm-Features: AcwNN1XLCfAouug5BgrkFYDY0KdyTVkPrqcTuZNWq5_PneG-NlKiPf3UuhzrwF4
-Message-ID: <CAFEAcA-jp-rQ2rdE-xYpZ75CbBC3ow4x6xj+P_3uNy3M0qevuw@mail.gmail.com>
-Subject: Re: [PATCH v3 3/9] hw/misc/iotkit-sysctl.c: add SSE-310 support
-To: Simon Xu <simonxhy0404@gmail.com>
-Cc: qemu-devel@nongnu.org, 
- Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>, qemu-arm@nongnu.org, 
- Owen Giles <owen.giles@hpe.com>, Robert Elliott <elliott@hpe.com>
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::112b;
- envelope-from=peter.maydell@linaro.org; helo=mail-yw1-x112b.google.com
+Content-Type: text/plain; charset=iso-8859-1
+Content-Disposition: inline
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <apA2aSd4Gcic9vAP@redhat.com>
+Received-SPF: pass client-ip=2600:3c04:e001:324:0:1991:8:25;
+ envelope-from=lpieralisi@kernel.org; helo=tor.source.kernel.org
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -119,20 +74,31 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Tue, 18 Aug 2026 at 01:26, Simon Xu <simonxhy0404@gmail.com> wrote:
->
-> Add SSE-310 case statements for reads and writes.
-> Add new SSE-310 PIDR and CLIDR values.
-> Add new SSE-310 PPUINTSTAT register as RAZ with LOG_UMIMP on reads and
-> RO on writes.
->
-> Reviewed-by: Owen Giles <owen.giles@hpe.com>
-> Reviewed-by: Robert Elliott <elliott@hpe.com>
-> Signed-off-by: Simon Xu <simonxhy0404@gmail.com>
-> Message-Id: <20260805153005.9989-4-simonxhy0404@gmail.com>
+On Thu, Aug 27, 2026 at 02:06:49PM +0100, Daniel P. Berrangé wrote:
+> On Tue, Aug 25, 2026 at 04:00:37PM -0600, Mathieu Poirier wrote:
+> > This patchset provides minimal functionality to start a Realm VM
+> > from an Arm RME capable host using the following command line:
+> > 
+> > qemu-system-aarch64 \
+> >  -M confidential-guest-support=rme0,memory-backend=ram0 \
+> >  -object rme-guest,id=rme0,convert-in-place=on \
+> >  -object memory-backend-guest-memfd,id=ram0,size=1G,share=on \
+> >  -cpu host -M virt -enable-kvm -M gic-version=3,its=on -nodefaults ..
+> 
+> This example mentions 'convert-in-place=on', but I don't see that property
+> implemented in this series. Is the example a mistake or is this from a
+> further follow-on series yet to come ?
 
-Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
+This series depends on Michael's patchset [0] as Mathieu mentioned in
+this cover letter (+ a fixlet that was added in the QEmu repo reported
+in this cover letter too that Michael should hopefully squash in in
+his series to make it work for CCA and possible other arches).
 
-thanks
--- PMM
+[1] contains all of the above.
+
+[0] https://lore.kernel.org/kvm/20260528000416.8161-1-michael.roth@amd.com/
+[1] https://gitlab.com/Linaro/cca-public/qemu/-/tree/upstream-v3
+
+Thanks,
+Lorenzo
 

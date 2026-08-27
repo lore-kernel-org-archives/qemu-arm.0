@@ -4,105 +4,105 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A4C79C61DCD
-	for <qemu-arm@archiver.kernel.org>; Thu, 27 Aug 2026 15:37:36 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7E151C61DC4
+	for <qemu-arm@archiver.kernel.org>; Thu, 27 Aug 2026 15:38:32 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wzc9y-0003XL-0R; Thu, 27 Aug 2026 11:36:58 -0400
+	id 1wzcB7-0004Cl-Il; Thu, 27 Aug 2026 11:38:09 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1wzc9x-0003XD-7d
- for qemu-arm@nongnu.org; Thu, 27 Aug 2026 11:36:57 -0400
-Received: from mail-yx1-xb12a.google.com ([2607:f8b0:4864:20::b12a])
+ id 1wzcB6-0004Bv-6a
+ for qemu-arm@nongnu.org; Thu, 27 Aug 2026 11:38:08 -0400
+Received: from mail-yw1-x1133.google.com ([2607:f8b0:4864:20::1133])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1wzc9v-0007fa-JL
- for qemu-arm@nongnu.org; Thu, 27 Aug 2026 11:36:56 -0400
-Received: by mail-yx1-xb12a.google.com with SMTP id
- 956f58d0204a3-66dee7a0c09so157314d50.0
- for <qemu-arm@nongnu.org>; Thu, 27 Aug 2026 08:36:55 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1787845013; cv=none;
+ id 1wzcB4-00080q-Jv
+ for qemu-arm@nongnu.org; Thu, 27 Aug 2026 11:38:07 -0400
+Received: by mail-yw1-x1133.google.com with SMTP id
+ 00721157ae682-836f34a0ceaso26540667b3.1
+ for <qemu-arm@nongnu.org>; Thu, 27 Aug 2026 08:38:06 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1787845085; cv=none;
  d=google.com; s=arc-20260327;
- b=V7J05HU/+rRwFrECgL8J/udzwZfbugCAX+6NhLWWh78N01nFgEptYEQihb3d2FgNCI
- JxaMMg36uePJ4obaG8SSV/+UjFrdVnDacwmaz7w20bVJ3JqYN6NNrekocjCTTUh0G+m7
- MLfzX3S5dER4lhi0jfEz38PIbAXaHPaAbSwnXn0g0+HsgdqXMX3PKWOxbBZo50flxu0K
- DQstu2D9CLVQ7EbGGNTcsAutPgEloiVr9IMzDPyxQzGi/4U8mRh5AUPPIEraZsGatLar
- 7zMWJmFMC6gtQ4IBJmNz7yTtcrbp9r/wAbbmRwAmbfMfs5nW024TZcPvsbjxF8HeR8Id
- /87Q==
+ b=UUdndqkV/8VlZf7MuWJUh8xMHgyL41CFCBrSFPQBiSyM7C0MswoRqxW5UekUmydYv4
+ RYHSlK7kkOGibJDZ/0HiSrIebM6ASc1MoypH7V3xdP5g5IeyaWFjG51ACXkTwXj8uDxg
+ wvAgH6GGJGHX85afuszNslmX1BvDABMLRM9TpiyWesuU8p9XAowQsf8KzL96Z+hnSdBi
+ cXdc86iqJtVPKyfVI4G5r38i/F/+In4BehokvD+BtgyQpfs2Qb7xFCn487TlgJ11L+of
+ xTFVm2zAyNPhNcWoV/G5Had6wBkH2YDtiDNDSXDKodAPjyH0MzdHV4gusiBxBeHygbXl
+ UJcw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
  s=arc-20260327; 
  h=cc:to:subject:message-id:date:from:in-reply-to:references
  :mime-version:dkim-signature;
- bh=l/TIyVx59OMApJQbBVsOFK1nHzU6lLIk98gtKNMSbdc=;
- fh=eRtWDfrKLZMNBtVK84GKsD2rS7cIg+XMIV4uOlqiaq4=;
- b=DS8xzRcTE9De7nou0fc1ByTIZppn7vzioC3esfAX9Gf4/ZQkRG8Y/vmc+t/a9b0YYz
- TK2OcwHmLrqB0nZEG1q3V8bq2+MQv1FILeDyuwVBnyU39aX0E18INrbLv9/PdXvxldC4
- uLG0CsUNH2rReml7JGn2xzz3xF/rAAQrmY+RvrC9TPOgzB0K+FeGTT4ZD5H0rfraGEd/
- uCJtfZ501tEPeN1FLNho6ah/Ymm/jJRUKTfBay2QngwhGRb3O8lINVSSJyGb9BeDC17x
- V65UagxdSX6UZLrW/Zbe1atfSB+VkNG0vjfUcoHqE60pNBQ4R8/uE5CVkNeWcS9uel2v
- pV/A==; darn=nongnu.org
+ bh=evPZoOd3J89BjWhfOiGTl7xqmjIVFC1jrvFqOzTwlSU=;
+ fh=CePyfLLQYsZTzsnIB/pCDi17MpXL7W1jg8pxuh/pVIY=;
+ b=jvrS4e/+IfGHGDnN2SMFNEHDXnMMWaPN5o+hW6jLGDm0P3St3vvwbR5Py8GLTmGZSh
+ 6R4xJrONbOa5nxtgCYs1hEIQ6i41hSu38EU53MIvModenGVlFnR5uawpfZTmP9PrsDGj
+ nBVyooU9cWNjB6I0me5NbFwmBdU+R8O8+awXrJyr0CskuTpIvM22fEk8KSmYInbMXru3
+ CN36Xyt5JKx1y4q38vWat/UNi8uVEE3HrC8T1fHqJpKsNf1CVPfszpxcrCCBYhVD/fSZ
+ xGpl0yRA0MdnUefrmhxanGWQgxjCpfeg6L2CnFTSROPJ4KZkcGQjoWiOJsz81RL22jN7
+ jY7w==; darn=nongnu.org
 ARC-Authentication-Results: i=1; mx.google.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1787845013; x=1788449813; darn=nongnu.org;
+ d=linaro.org; s=google; t=1787845085; x=1788449885; darn=nongnu.org;
  h=content-type:cc:to:subject:message-id:date:from:in-reply-to
  :references:mime-version:from:to:cc:subject:date:message-id:reply-to
- :content-type; bh=l/TIyVx59OMApJQbBVsOFK1nHzU6lLIk98gtKNMSbdc=;
- b=QtA0KBtnuxpV0FnJiYEqRzceMyBzwJEBIEAmwZNG15iOHNnZQuez1zhLruh9bMIqKX
- 40iyn8bOd+J2ZsjOZdXIoEN8ihWBktNZ3GA98tL2Y7dxRbIYx0MpAWgzN7svBQmOde70
- gPI6jRnFMg0gc/nzA3hugzOwDDEBd4pHVwRDBew7rNTczo73qRLiQHGIMEqqDiU2TfvE
- tMfQBXcrkxPxgLhaskFvFGtp34/jRAjL4XHRV7M3ORLRhOzR75UolSlv0+3VcU/J5L3b
- dMD87gbuckW2hYGlpKuqQmJuAW9sBovZcq2/Q/4shFre3G0p5nLfzEMQ+wQC2FWn/ZWw
- rATw==
+ :content-type; bh=evPZoOd3J89BjWhfOiGTl7xqmjIVFC1jrvFqOzTwlSU=;
+ b=jlxYAZFS3LKEGm1PYl7X1sZMcDhkf6sOu4Rfh1eJObAnoLu/rrDTe3Mf7j+eegEr8W
+ K9fl+Uq3HpycKv/gTql/Seq/0KK3dz0IGTYqi30XygCCRl34UlCT+BO7gMWfbDeD9rCV
+ JVF+EOAGY4eKT2FzgZxqZjhQ00rEXqLpi4yD4MKpvCuCaGVsab6qAJdH4ARR0TXkuYy8
+ H5mPz3qwcD6S/Kz1bog8oB+9yDSPQNoModvvW70qJ0eGVoWUtXKFn0vDoOodZB0DR0ka
+ +3fK2cq8Uy/S99tHGh5T7KrB6daQQxTjSCbgApkaqMPUWIHxsCiS4PshGewvjCv3X4XS
+ mJcA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1787845013; x=1788449813;
+ d=1e100.net; s=20251104; t=1787845085; x=1788449885;
  h=content-type:cc:to:subject:message-id:date:from:in-reply-to
  :references:mime-version:x-gm-gg:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to:content-type;
- bh=l/TIyVx59OMApJQbBVsOFK1nHzU6lLIk98gtKNMSbdc=;
- b=DM3WRcaSFaxktjrkiYaPKz7aWTmFW9RnoFMaTCKalQpHoh2a1OpcYYD8iYjg5Y8JYK
- bZ6+Ok5p95jQwh/s0/omyI8iguHfhYaj72g76N4CD+6txQIuFCihpQyuYOh3nbj7NmUE
- Ih6rc0I/R0eQlH9Udij/TZmYaxRqjYu0la7/XctnfkgMZ0ORuEbrZHUi+cOMGrfKyX/F
- 5HbQl/uBQm4cPVCmb+f3cTpH8ece9Y+tJ7poaocpLnvRsGC6VY4d7TDhzqD+z6HP14gj
- p3i8uNFuIE3PVD+Is+wH04xsYI+Q0mxPaODHWY6/CWN8pwq73uuzjSDZDAblEsDyJiHz
- mE4Q==
+ bh=evPZoOd3J89BjWhfOiGTl7xqmjIVFC1jrvFqOzTwlSU=;
+ b=gDLyV+w3+G/cmbMbRvOeL4PtQJWarH4z4GbdDnlYeikEvUNspYARumv82suZcp2sHI
+ fPVb1allr+gll9wEkZeAZqGjPHdnbCTc4nJtQCV4rELhy+0L6ZlHtSsI1LcrgDqcsD3U
+ bh4I0wiDKAG5Ux07X9v9KFIUWLD7RSAFaJmL+XO/7u89moaLKmhJ/wpsbwMANOiUJVT6
+ lJUojhUWKWpP05IwLtJItwXnMjgQo4TMgCxuqCmzkk7QD/Ae0o8Gdzca+RHGBx8QQ7WD
+ K2ryOjEKFKKEfdIN+zLXX0k6x3EABP4D6RqSouXd7WIXfPYWcONNh9mI4G9pkAZQmmEf
+ tBNA==
 X-Forwarded-Encrypted: i=1;
- AHgh+RotBmUYsQUkS2ob8NFClRNEH8dmzOGCfAebXXH+r1oCeH8zpnqyYlpqsA5bTrT4E/K3Qfolhzi70A==@nongnu.org
-X-Gm-Message-State: AFuF++kMGy22nt/JAiQ0kYTs4F4vw6BPsPsy4zVDRaP6/CpRssvrDmKd
- TtTyDXaZbHoNqR7hpbQ0wu38+3j8uR0CG0NlEQBYN6YR5alRl+fxAznXPUA/xOiKd88PjtGXjuu
- tOHvKUGofUFHmPy4owvgqjUwD5HkILXiuIUV/HSbxgw==
-X-Gm-Gg: AR+sD10/1ajKT3IZxpFvjwEC6uLbi1UlJEZogZ3KYxp1qqz0rw2wzZm0vkhSzaHalLR
- EwBD+ks/J3aTh3cDZDGsfXgF9hSmuw6Fm+c5JbMBa1n8TF//mRkOFQmOFPiKG+5tGxGwB9pCgqs
- SDSIkY25OMkpGBx8y5mKWYwHzdUXwJfMPYsjYSLKIhoQJ+xbCkO63Fbh+YLdwU3RKP1BzY1n6M1
- lyVoE4IEluLyk7EJU2jzL7ubNO5hsVCPVlLoIulTOfnmEdtG5lsh1A5LrDoBLUBXO/2NMKKh5tf
- F13a+jcE+L+Wp6WrML8XYLgezVLJPJIixry9bQ/6MoWUhz8f5BWvluxcQCzZV445qFQAwbCjUoV
- 461a0Dhu1DhlVCiILU/NKBXo/brQM
-X-Received: by 2002:a53:d4cd:0:b0:66b:245f:bc5c with SMTP id
- 956f58d0204a3-66d265b185emr4118134d50.24.1787845013526; Thu, 27 Aug 2026
- 08:36:53 -0700 (PDT)
+ AHgh+RrTMeQPn4wMOfQdIIQVc499nDjcsVkZ1ZF0oi/bP1D2VxtoH0DymGb5FE5kUkCKLR6Y1wUM/Gn2cw==@nongnu.org
+X-Gm-Message-State: AFuF++m5/FVyjQgvEwiifkPOXHIsZtY6xGNx4w479spmOfl0P39Gvf/R
+ PeaZlVCldpBm0auqgKjuSe77TP9T89sn/y4jz48bcCUkkqDb54ocYaMDQqr4wN5BZqtT/TKZ03z
+ 4vA0tVQ9OOzXFXDLOX/GSGWxjBu32hczVvTJ+ZtdzGA==
+X-Gm-Gg: AR+sD10muCZqApkNBy0GxMtn/e8akiIJ0wfm0UHoCOfOcRvHzYBwBCq+eVmZKd5PQWx
+ cImMFt+uwo5gq/+C9WHWtlIG0pdgpvVYvm7LhiT/dEo9MbRdpsUn5FQkgRe4Msa2L69leWMiLG5
+ vF2KdLt8PfvnLxHmlQ+3SMHko/53x1LbW2ewWDNj0JSvWxxVPrkMNiL5YM78NN656ZbVk/Hf+eu
+ zIBPx2lebLYT9ITD25xLDAEGmB3LzclJaUWHkMI1MVXE3DTirYTMMZmtGM/3p+g52O8qAzv1u+l
+ qt9AfPB8fsCd8p7HC2223AGMCqYlwl0SMi5ByUKzs51YI/wDBHAiubPR3rsudZ+c4PcWexeYevM
+ Ci/8B++RGVdbdyjhVYJfyoxY/328r
+X-Received: by 2002:a05:690c:660b:b0:80e:dc2:873b with SMTP id
+ 00721157ae682-85d6c7ea528mr103807b3.16.1787845085072; Thu, 27 Aug 2026
+ 08:38:05 -0700 (PDT)
 MIME-Version: 1.0
 References: <20260827041557.775080-1-richard.henderson@linaro.org>
- <20260827041557.775080-7-richard.henderson@linaro.org>
-In-Reply-To: <20260827041557.775080-7-richard.henderson@linaro.org>
+ <20260827041557.775080-5-richard.henderson@linaro.org>
+In-Reply-To: <20260827041557.775080-5-richard.henderson@linaro.org>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 27 Aug 2026 16:36:42 +0100
-X-Gm-Features: AcwNN1VE4A6DEQBsF9B2SBkhWaLHpuI2MlkXT4GBej8LorOtY5HOOEoOTmHpQtA
-Message-ID: <CAFEAcA9HkALxGJ-iExtMCyw-KKnJD2UGwfjh85iKo0zi0cf4Ug@mail.gmail.com>
-Subject: Re: [PATCH v4 6/6] target/arm: Separate cpu types max-v8 and max-v9
+Date: Thu, 27 Aug 2026 16:37:53 +0100
+X-Gm-Features: AcwNN1XttaOzpnC91BNEx_86K4PMo7UkBT5co3atTT9xspb5NiKgrkKAOBQHpGc
+Message-ID: <CAFEAcA8jk7w00+avXj14pkMEgvS0DPY8uR87psLP6+e2_fE1NQ@mail.gmail.com>
+Subject: Re: [PATCH v4 4/6] target/arm: Introduce cpu types max-v8 and max-v9
 To: Richard Henderson <richard.henderson@linaro.org>
 Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, 
  pierrick.bouvier@oss.qualcomm.com, philmd@oss.qualcomm.com
 Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::b12a;
- envelope-from=peter.maydell@linaro.org; helo=mail-yx1-xb12a.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::1133;
+ envelope-from=peter.maydell@linaro.org; helo=mail-yw1-x1133.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -121,12 +121,10 @@ Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 On Thu, 27 Aug 2026 at 05:17, Richard Henderson
 <richard.henderson@linaro.org> wrote:
 >
-> Do not include v9-only features in "max-v8".
-> Do not include the prohibited v8 features in "max-v9".
-> In aarch64 tcg mode, define "max" as "max-v9".
+> Introduce the names and allow them with the virt and sbsa-ref
+> machine types.  So far, the cpu types both exactly match "max".
 >
 > Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
-> ---
 
 Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 

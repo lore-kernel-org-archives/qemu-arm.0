@@ -4,105 +4,88 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CB74EC61DC4
-	for <qemu-arm@archiver.kernel.org>; Thu, 27 Aug 2026 14:20:25 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 61A25C61DC4
+	for <qemu-arm@archiver.kernel.org>; Thu, 27 Aug 2026 14:39:41 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wzaxo-0004gV-Lk; Thu, 27 Aug 2026 10:20:20 -0400
+	id 1wzbG6-0006RY-8u; Thu, 27 Aug 2026 10:39:14 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1wzaxn-0004fy-HM
- for qemu-arm@nongnu.org; Thu, 27 Aug 2026 10:20:19 -0400
-Received: from mail-ej1-x62c.google.com ([2a00:1450:4864:20::62c])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1wzaxk-00082a-UL
- for qemu-arm@nongnu.org; Thu, 27 Aug 2026 10:20:19 -0400
-Received: by mail-ej1-x62c.google.com with SMTP id
- a640c23a62f3a-c20ce3c118aso220263866b.0
- for <qemu-arm@nongnu.org>; Thu, 27 Aug 2026 07:20:15 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1787840414; cv=none;
- d=google.com; s=arc-20260327;
- b=JBQg4bXi6JvDbATqBZ5U/7EMXI2ZZobISovI0or//HK0Qumz6rmSrCJ3bsd3Ssc+hF
- 9R9aNIXbEUlOj1ssxoB/40/9sRKAyhStvSOw1xa21a69pnOz3kEygca8iNTHCJ1HmJZj
- IKySXllzOtGmfEwkeNMRRylwRWoV6u5+rfM0poJl6hCEG3Wb6DDLRCjZkkX73X3Khxtq
- SQZvnV2E53rwRncmTZKSaWFT4UPZt2ld2L/tyQZkytAqy28DXdCyLA92y1HrUdSS52op
- Jy2j9bOTLAqyDU9IT5UPgRSkpPtjEPWYawTFwgLK2eXNye8k2fH25FivQDiv6IiwHUrY
- p47g==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
- s=arc-20260327; 
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:dkim-signature;
- bh=jo5QvHdCL1a8NnANUDEcncw8+Elfzj8WFiScGEWgQFk=;
- fh=9beSpFyCNLt4Dl9QMIwWiM/VQuT3rOz/ezwnisy249o=;
- b=AwHm430s5n/BL2QfdvzZ2FWTKFDPRaiktH2qqgnMSXRfkqYXlupkQVFstl++9HKT12
- 5qzxR+bMiY57SglBg0fmuESaLjPd1qbwNAATMW/rjuy+O0a3bftgCtaiCwnEPgasJNuZ
- ZXPJpp4kJLGMSnRoWgkMhczSLx8TPSzfNmWDr6LzksbwS0LfS9BU3JIo4iAQmsO7TU/6
- 3YWBFZZcsf8vhMeuavG19Ouox8mmHDN/8j61MMNxQXs2CpiL6d3lhhQlXDhBiwpkY6H8
- n7RdGLoj/ZX4MjRmrVfn30QmuvSLHr7GgwKVf406Nc5ad3ETbQsc3MF6+qqXCxSFkrq6
- jOTw==; darn=nongnu.org
-ARC-Authentication-Results: i=1; mx.google.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1787840414; x=1788445214; darn=nongnu.org;
- h=content-type:cc:to:subject:message-id:date:from:in-reply-to
- :references:mime-version:from:to:cc:subject:date:message-id:reply-to
- :content-type; bh=jo5QvHdCL1a8NnANUDEcncw8+Elfzj8WFiScGEWgQFk=;
- b=jpQBGpvpj4b+AKiooW9OXIadCoezKEK4zweuBLeox2Fq/tPnZ5cPJcdbYjyYhau+1p
- tohMYsYr6M0pWv7FODuN7oo5eYXTI9hcCyZFiSw/GHh6gDfqlWN2BkI080u3X9pL5o1J
- 0hU0vpAUYNNdWSyp+KQWRLbuTvb6NIRSModREtPK1scVcXIlgHMMn9rga0dXwqYoH4H6
- MpJGVF63sfj+4uP5au1VGFayqb1NPwzzZKN9Qk+CPmdCxHd60W5dE+6c+c9oaHgiXA4Z
- /UI4/yGxphMaSzP1wf6W72NDxZOkPdGUnd8WLz4SXJ+o5Hastke31kzDrrJpago7UUdF
- I4TA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1787840414; x=1788445214;
- h=content-type:cc:to:subject:message-id:date:from:in-reply-to
- :references:mime-version:x-gm-gg:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to:content-type;
- bh=jo5QvHdCL1a8NnANUDEcncw8+Elfzj8WFiScGEWgQFk=;
- b=Wp/k9HDY9IDm692fGfgZE1WMhoXB1FGGUUfoRK+GhlJkL1nXSWx6ZKWBQyj3YrG7Ss
- ZPGR00EaBJ87aMd+Lq/3CZ6tOfOxww6YqY9+xzfTMFtXUddErf/T+jyyTwZ1j6n9BM5g
- l9EHldk8tNJQlGf8KF2eXuSKqCriGfe4Ze/NlYZRFny3YBBUZfM2HxZ57fkVJpvVflqD
- V7+TqbFfiqnW6mGhs/3r1As1d5l+VzqRZkLbdv7l3nHjBaPPD+3wTP7Gt3704gjwMfQN
- 4dd28aYo6jYHYn9OO2mIaeegWD+FFeDnCLue/VbtEEkJRzIhRdJe9u1MMiYov6LJak7w
- HSgQ==
-X-Forwarded-Encrypted: i=1;
- AHgh+Rq7ZedTB3ITvCMFJZucz3KWrDKL11qcr6nexccGjmWJ1PoKN8RVkA8I5zrnqMhOJyCmmIOHEuWmxA==@nongnu.org
-X-Gm-Message-State: AFuF++kZpsg6yYEVYXe0jDD9DPOZvY07roaVn0qpKtNomoGNy/wl5sf9
- OIR65etO/nTzsLpTU8KmV9px33V+EKtE/F98nbuMjGIUgNTPiQdfk2uRq+dtVI/cUe4hRSr3iGf
- 8RHHSgxgUGBFOlALLjjNx2Z3tCh19UyWR+oSlV/uDHA==
-X-Gm-Gg: AR+sD12m02yxKtoOj49P2NDX58qVwGLioqBaIyeVDx5M+p8YAwABVz1TciqXuhN7K0H
- yEGZMwkj/fXCGIR3VU2cqBZ1HMa/4D847+EHnJcRI8Jz3TaiaspMPqqdt70Bt3jXj7AvCOuP1fr
- 6GXkSc6PtVSnVv4d7JcRw2hYxM3KvMwl8a5iTlK4tGxbavo54xEhOJ/Q/M4g8dLPgwb30lSaCFP
- b2limKfrlKLTNFMKEX6IU4iXdOiqxJTd0wgnFzZ5wJzONdNxHjVVmy/5k5nnOf/yrPicVGSCZt8
- d6wZsmxGJpx9ZUKRcO98JACTkxODUaIhVTmo7W0ehjMg7aBrfwsLTTNmXUTO2MImHRIkXnIaT6T
- YW3bK6CbghYSl5G0+n/sYq3W06OsE
-X-Received: by 2002:a17:907:3ea8:b0:c25:35cd:fdb2 with SMTP id
- a640c23a62f3a-c253602a2bfmr582938666b.7.1787840413382; Thu, 27 Aug 2026
- 07:20:13 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <ardb@kernel.org>) id 1wzbG5-0006RC-3K
+ for qemu-arm@nongnu.org; Thu, 27 Aug 2026 10:39:13 -0400
+Received: from sea.source.kernel.org ([172.234.252.31])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <ardb@kernel.org>) id 1wzbG1-0002pA-RJ
+ for qemu-arm@nongnu.org; Thu, 27 Aug 2026 10:39:12 -0400
+Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
+ by sea.source.kernel.org (Postfix) with ESMTP id EC77542E5B;
+ Thu, 27 Aug 2026 14:39:06 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id E5F5A1F00A3A;
+ Thu, 27 Aug 2026 14:39:05 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
+ s=k20260515; t=1787841546;
+ bh=SPp5v2Ff49Y/mUeynzjh0w1Ir2EPdQrn16iLhxNqWAk=;
+ h=Date:From:To:Cc:In-Reply-To:References:Subject;
+ b=fF8rk+NRNKAeTKL+jcWMGuW0bxSonP35vSqyXi0ZYEs2/ti+CA96GmBe6ryxBV3OH
+ TE9d+z2JJitx/62VqgbbiADfIACH+KxYwvRwSh823cX/kevmTzFr4qwNntpQ9i9zfA
+ pRUVrOllC3xMDiRFIvJInlzQxUJ0bgcIwb+7nKp38bn0GOAWmCEk/c7omOJ9ivix+o
+ hpPCKGRJJBQGPxCfxvP9IxvtXI6vbsxWGmOKeD5qucz70r6AkPFPg+aWZSUj8hesYn
+ Xrwc1w4lhSXgAEZ2ccRXIKCD8BLLp3AFA3NuphhXqyFXXaSzaNgBq277hVo3lfShbE
+ 7L2TrUgGpJdBA==
+Received: from ams-compute-02.internal (ams-compute-02.internal [10.64.2.62])
+ by mailfauth.ams.internal (Postfix) with ESMTP id 6FDB31980076;
+ Thu, 27 Aug 2026 10:39:04 -0400 (EDT)
+Received: from ams-imap-11 ([10.64.2.31])
+ by ams-compute-02.internal (MEProxy); Thu, 27 Aug 2026 10:39:04 -0400
+X-ME-Sender: <xms:BkyQarus-AbPnjU__8sqXqWv2X00qdZAXRJ8jQLsRHpe7rzFD6nvxg>
+ <xme:BkyQanRhBKV3OEly3o-NumwKYLWvvlxVrdPDrbdrwMUYn4PKdopHaBKNNf6aXuqRp
+ oVcHvYymLGk5fvpVclUEm4K6GOVSgg_Auy0vBjGfScSgslSsBbicBg>
+X-ME-Proxy-Cause: dmFkZTFMZ8fxNLT6c+5aiMav8wHkxaSbkbWi4hhCahSIePd4hYyHy+zTnG4OBIA5fFtG4b
+ HtgstLqm7OlrXpAfFYKZVEFlE1mmoSnnZ7pwWnogGTvS91x5a9TXqjl56cmzyerdCkX5hI
+ 24HsUBmhGxNYuJ2RFYkOPREJduRAinHeGiMcq26JL5ro1bR3koZr+44mZyzRg0PoYrXsE5
+ 39Eerz9gSlx3sUdQyotDN3kcko/6RXN2hhds8V/TtPC19/ZraMBcoLwF2rcekdwKCa6qTK
+ cyPcajPJEBSAYk/yd4+IDYXEYEnW4aEIrwzxhn9HAjwbVa8EFibLkoC8Fpt3pzIbp1iELq
+ m+sU/h4FyEc9p2rW2nf2VJYxh4AevMAn0PYP3kP0kE4MKPmEpARRdLp9hV7Cwtzv0/PIz6
+ oNHdVQrHrpUjUUCRzdO8uU++HymHevjCRYD7l6kmruqnO8OgBeLC8O3Q8oygQ2ht515+He
+ Z7L3nMzoCoN/F1kEl3Qfk3phUo7z7PvtCPt5rSSVWKWmGp/MiV1Ucdc2mZ2dabW8d1iuC0
+ 5CazODk2zh8rM7l4hatFloTlfXjOHTKRGiwbZIek6qHnK3mcjqnNCem3LUv0fdt7Bu37tn
+ AvCxHpEdFiAL6zZ+Em4nQJjaR+6fwh7mFLDkDxRxo3OcTl7bhiuWdT42TiLA
+X-ME-Proxy: <xmx:CEyQajaoBJVxpxTRHYraxd7t5GWPF5Ny3Lb_MGT-SFQ1RicsRnxouQ>
+ <xmx:CEyQagqpXOqKgQs9TotsVG_6QlTgHMzOSkpR_E3y7w_wuz3a45r8cw>
+ <xmx:CEyQavQ42YHa6r1A6t6-mQCi3eWeBN-8TpxarBdDnrL0B754Wk3JJw>
+ <xmx:CEyQaspKfYIa-oDspSSPp5RzjnB11hrNt6Cygt6xVK0rSIS-bAEIdA>
+ <xmx:CEyQah1vjQ70v-EQSKe9tLwF_3oW6LAVofsa_UXJHUAeVDGABJ9ieQcK>
+Feedback-ID: ice86485a:Fastmail
+Received: by mailuser.ams.internal (Postfix, from userid 501)
+ id 143C7F8007B; Thu, 27 Aug 2026 10:39:02 -0400 (EDT)
+X-Mailer: MessagingEngine.com Webmail Interface
 MIME-Version: 1.0
-References: <20260821213536.433273-1-pierrick.bouvier@oss.qualcomm.com>
-In-Reply-To: <20260821213536.433273-1-pierrick.bouvier@oss.qualcomm.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 27 Aug 2026 15:20:00 +0100
-X-Gm-Features: AcwNN1W-CDmOnrz8puj-d53M2XjGvXbnyFRB6QxQbp8bjPZiwY25hBg7XfbY3IE
-Message-ID: <CAFEAcA-gqJb-1k3viJng4V3uKFs+j4L5-_x=6Cgz_GP4crpzPA@mail.gmail.com>
-Subject: Re: [PATCH] target/arm/tcg/cpu32: make compilation unit common
-To: Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>
-Cc: qemu-devel@nongnu.org,
- =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@oss.qualcomm.com>, 
- qemu-arm@nongnu.org
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2a00:1450:4864:20::62c;
- envelope-from=peter.maydell@linaro.org; helo=mail-ej1-x62c.google.com
+Date: Thu, 27 Aug 2026 16:38:41 +0200
+From: "Ard Biesheuvel" <ardb@kernel.org>
+To: "devel@edk2.groups.io" <devel@edk2.groups.io>,
+ "Alex Williamson" <alex@shazbot.org>, "Gerd Hoffmann" <kraxel@redhat.com>
+Cc: "Tushar Dave" <tdave@nvidia.com>, qemu-devel@nongnu.org,
+ "Jason Gunthorpe" <jgg@nvidia.com>, skolothumtho@nvidia.com,
+ qemu-arm@nongnu.org, peter.maydell@linaro.org,
+ "Michael S. Tsirkin" <mst@redhat.com>, marcel.apfelbaum@gmail.com
+Message-Id: <46b4544a-6e97-4433-b3e2-60cf43e62c7b@app.fastmail.com>
+In-Reply-To: <20260827074733.340aeb0c@shazbot.org>
+References: <20260827004024.598351-1-tdave@nvidia.com>
+ <ao_fX3cYersq6TRd@sirius.home.kraxel.org>
+ <20260827074733.340aeb0c@shazbot.org>
+Subject: Re: [edk2-devel] [RFC PATCH v2 0/5] hw/pci, hw/arm/virt: fixed PCI BAR
+ placement
+Content-Type: text/plain
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=172.234.252.31; envelope-from=ardb@kernel.org;
+ helo=sea.source.kernel.org
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -118,19 +101,70 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Fri, 21 Aug 2026 at 22:35, Pierrick Bouvier
-<pierrick.bouvier@oss.qualcomm.com> wrote:
->
-> We just need to remove TARGET_AARCH64. Simply expose all the code and
-> conditionnally register types.
-> This fixes single-binary with arm + aarch64 targets.
->
-> Signed-off-by: Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>
 
-RTH has proposed an alternative in
-https://patchew.org/QEMU/20260827041557.775080-1-richard.henderson@linaro.org/20260827041557.775080-3-richard.henderson@linaro.org/
- -- are you OK with that approach instead, or do you prefer this patch?
+On Thu, 27 Aug 2026, at 15:47, Alex Williamson via groups.io wrote:
+> On Thu, 27 Aug 2026 09:18:50 +0200
+> Gerd Hoffmann <kraxel@redhat.com> wrote:
+>
+>>   Hi,
+>> 
+>> > Following the feedback, RFC v2 keeps PCI enumeration and resource
+>> > assignment in firmware. QEMU only validates the user-provided fixed
+>> > BAR configuration and provides the required metadata to firmware
+>> > through the "etc/fixed-bars" fw_cfg file.  
+>> 
+>> qemu already has vendor-specific pci capabilities.  They are used to
+>> pass hints for the bridge window sizes of pci bridges (including pcie
+>> root ports) with hotplug support.  See OvmfPkg/PciHotPlugInitDxe/ for
+>> the firmware side support.
+>> 
+>> I'd strongly recommend to do the same for the fixed bars:  Add a pci
+>> capability to pass that information.  All the logic you have today to
+>> link the information in the fw_cfg file to the correct pci device is
+>> simply not needed any more then.
+>
+> Placement of a VMM defined capability into a vfio-pci device is not
+> such a trivial problem as it is for emulated devices.  Space may not be
+> readily available and the capability may mask non-architected registers.
+>
 
-thanks
--- PMM
+Is this the reason we cannot rely on the Enhanced Allocation (EA)
+capability here?
+
+> Does this suggestion relate to fixing the gap between mapping fw_cfg
+> entries by vendor/device IDs or is there something fundamentally
+> undesirable about using fw_cfg here?
+> 
+
+I much prefer this approach over the previous one, as the PCI resource
+allocation logic remains in the firmware where it belongs.
+
+However, the OS may still re-assign/re-balance things in some cases, and
+so using a non-standard mechanism here means that the OS needs to learn
+that these devices are special.
+
+...
+>
+>> > On the firmware side, a new DXE driver, QemuFixedBarsDxe, installs
+>> > EFI_INCOMPATIBLE_PCI_DEVICE_SUPPORT_PROTOCOL before PciBusDxe starts.
+>> > When PciBusDxe calls CheckDevice() for a discovered PCI function, the
+>> > driver returns ACPI address descriptors with _MIF|_MAF set for fixed
+>> > BARs. Two small changes to PciBusDxe preserve these fixed addresses and
+>> > program them into the BAR registers during BAR programming.  
+>> 
+>> Expecting PciBusDxe respecting AddrRangeMin looks sensible to me ...
+>> 
+>> > After PciEnumerationComplete, QemuFixedBarsDxe walks each fixed
+>> > root-port hierarchy and programs the bridge memory windows to cover
+>> > the fixed BAR ranges assigned to endpoint devices.  
+>> 
+>> ... but changing things after-the-fact in platform code is a complete
+>> non-starter.  PciBusDxe needs to do that, i.e. take care that the bridge
+>> window assigned actually cover the fixed pci bars.
+>> 
+
+Agreed - if the bridge windows are not programmed correctly on the first
+pass, there is something in the code that needs to be fixed. I don't think
+papering over it like this is the right approach.
+
 

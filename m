@@ -4,71 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E5007C61DCB
-	for <qemu-arm@archiver.kernel.org>; Thu, 27 Aug 2026 05:11:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2799AC5DF9D
+	for <qemu-arm@archiver.kernel.org>; Thu, 27 Aug 2026 05:11:38 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wzSNv-0002eM-GA; Thu, 27 Aug 2026 01:10:43 -0400
+	id 1wzSOU-0003zj-Sb; Thu, 27 Aug 2026 01:11:18 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <joel.stan@gmail.com>)
- id 1wzSNu-0002dQ-6h
- for qemu-arm@nongnu.org; Thu, 27 Aug 2026 01:10:42 -0400
-Received: from mail-pj1-x102a.google.com ([2607:f8b0:4864:20::102a])
+ id 1wzSOT-0003uE-4z
+ for qemu-arm@nongnu.org; Thu, 27 Aug 2026 01:11:17 -0400
+Received: from mail-pj1-x1032.google.com ([2607:f8b0:4864:20::1032])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <joel.stan@gmail.com>)
- id 1wzSNs-00044r-LV
- for qemu-arm@nongnu.org; Thu, 27 Aug 2026 01:10:41 -0400
-Received: by mail-pj1-x102a.google.com with SMTP id
- 98e67ed59e1d1-38e58034d05so308438a91.2
- for <qemu-arm@nongnu.org>; Wed, 26 Aug 2026 22:10:40 -0700 (PDT)
+ id 1wzSOR-0004Cd-Ha
+ for qemu-arm@nongnu.org; Thu, 27 Aug 2026 01:11:16 -0400
+Received: by mail-pj1-x1032.google.com with SMTP id
+ 98e67ed59e1d1-38759bcd877so2406931a91.2
+ for <qemu-arm@nongnu.org>; Wed, 26 Aug 2026 22:11:15 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20251104; t=1787807439; x=1788412239; darn=nongnu.org;
+ d=gmail.com; s=20251104; t=1787807474; x=1788412274; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:sender:from:to:cc:subject:date
  :message-id:reply-to:content-type;
- bh=NK/DHlEW6EIk2cf6PmuhEA3oo9/juwtu7TT1AMLm/g0=;
- b=MN+PJrckJmToPiqCxsohwOw3lBpS5sIcJky5xGhi/Mpb9R3X/U3TBHdRVJjbB6+wLf
- zkQTLfdW38KjMbv86kEsaC8YvWoCDxBiKvfT4BFSRXUDzGhQP8L/NpjZmEoJOi11YCJl
- fV9kq4VK0Rq5c52LELAsTnFac8MXjXWHgn/e7rROyecQBySLecYiTIZm0Oqd6f81iFkC
- BaPOc6LHr5ejW2hZl5pbTKtM5xKFAW0f7Q0SA71guWyJIZqGrASchGhGyt1xRERphaE8
- btwB/EGm6uaL7L654ZTr1MA/vJt5Z3oRZvEVg2UCF2G29KdLSqkT9+pIuwPg4ALvYcUh
- XHjg==
+ bh=c0YS6jznp++FiM/vCZWCrH/hv2wY1w+aZ3YBUBkwkEI=;
+ b=hcvWiW/+1ViWGzjR79HEO2O8E4SzPuuiHsRHJabmG3VVc5ww1KXKxANMM1HSLjQC59
+ LXidZvgfILN2xkg7OlIC0UpDp1l4d9r6KvSn7sga/VoxrCJNLw6AA4s03n53gvix/OOy
+ 8j18Ww4eFwpIVlW7DdjIeYjbEm3oK2lDWaq6f+2ZrB2oZM4X9MeRT/nbep6Ih3i6mc+F
+ 3RvS0fYj6Y2FuvbyKNAgP/DSk+UeZzXu/ZnrvE9aqQJOOeBAXZwHEi9W9SRvfUj6tqzz
+ 3VRXba3JlorJ6rVITMqc9FKhCxpzWcOmg5If2BExoHTkjysm8rZYNqJqUH9ohQMn8STr
+ F3YA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1787807439; x=1788412239;
+ d=1e100.net; s=20251104; t=1787807474; x=1788412274;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:sender:x-gm-gg
  :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
  :content-type;
- bh=NK/DHlEW6EIk2cf6PmuhEA3oo9/juwtu7TT1AMLm/g0=;
- b=ArKRVc5OxE05KgPiNid7trkzy9RKQnwhg8YTxWdv6AqvAY/giez9RlK84s5emy7Swe
- gML/11+3cgKZLa+6+YNRthajA0wPwyrX3eY3yAPr3TLAEQ+ZpyS0AumDRZe7f7GHMptm
- mma+fPM1hcNQMU8dVznKZ2DrTjDfX5zWoRrbmbIylaAcpm9BjNOxe8+ZDJdnNfJDI/Jf
- eWyQnUnkia07kPI6sMZHGByahXcafcog+VDyHo17GMMCETGj2OQjSy0Zvg+m6N7D/L/F
- Wl32qmnghQiWs8GCJPKbGHdSc1mRnI1lpOElK6/EtotWeEy9yHEKVDhzwibJN5O71uy5
- Z0Zg==
+ bh=c0YS6jznp++FiM/vCZWCrH/hv2wY1w+aZ3YBUBkwkEI=;
+ b=BQGppZeWZNGegEJjAl2zec6pzysFTfiX5cu3sFREPRD5CDV9TmmNUPogqdevj+A2Nm
+ Hqc6wXE73LcO3jyiwRntp+O1V9apdgIjrM49LRMzQp5IsdgiOPg9M1jVX2JTISZ0OXB6
+ i8H/1sOyBqgX9yQ+JSULNvuI+GcZOCeoXHHf6nQsKozf61vVK01eT4KUNEghDObL9qOp
+ aDzJHM8J3kKTBMmj0lfojv48jDXVr/pL9BDZcPSzRddyRiHEUMfVzGuxqDMs9r0925xy
+ Z3aYe8xyd/Lf7LwQqeJ0ffQL5fDQuH1iC18D1QTbYv6maxQ9D/WiLPoLg3rg2TViYNr7
+ NGcQ==
 X-Forwarded-Encrypted: i=1;
- AHgh+RrfsJ0UGbO6bqa+JL/DQv76Jf3HIVztPdjRnAC9Jw1TXGacLo6MYds8p16yAF0YvLljy+VWLPGZIw==@nongnu.org
-X-Gm-Message-State: AFuF++kXEdAUHffMps2TmjZ38Gd+rJbJO89mq0NoQOq5YkjVl4L9dZCm
- enI8u3AmiBWIOGJOoztfhnkhmnYXtOqgN4Rk2rvqpQ+z2m80FoC0pFoM
-X-Gm-Gg: AR+sD12wDOLWH6B+S7cdsO/bNWaOX5JXqvueNCCWasWql8DSvMImn1oIi64j+H/glCY
- 627YwZzkXLVBfE94Uy3QgqJeLObk6o9apoTDtX1P//F2CbMFpjGlchfFsPyrA9ZuYbXYjpsjhV/
- ncupXX76uMjEDks498ArPtU7W2bVKsfzbv54AalsvasDRtWiffL4lG1pjcxUX7mGqeqFD+yJ5lv
- c0lHP4Tfie5lZps0wEzE9oYLr+W0oZhzm0lyvDnm14TUrJv11VkQiwg0Sxclijv5KDAWSktZPkd
- fFVoqlBS704AfwjjvUH5TH4ubjfs+puDZehC3COqpc1zlDQxody8P2AdorGcKBFm4rdL3L+KOjr
- nuhFYC/v1x+Vq8zn3kMKTnNje++5fcaHsawrAi+CpbgOioN4oLQ3ChjmLw9ftzxdW87sBrMWeT/
- xOjvcok8WIhItRVikQyjDljnYq1I/tcCRu85WdNpBLGuiRK933LOhmnIloBmpk60DrXhjvwnvsO
- /42OVWihs1ilsNe24Ed+uphw9hSIryr4R/ZdXQFendui1V8CtbKg5Fqf9BWH7OPafWdz3iEgjzJ
- vM3cTYwDD6I8aRjdnobm
-X-Received: by 2002:a17:90b:3b4b:b0:381:11eb:d78e with SMTP id
- 98e67ed59e1d1-3966d8b6295mr25121340a91.14.1787807439137; 
- Wed, 26 Aug 2026 22:10:39 -0700 (PDT)
+ AHgh+RpSizdhVXUyUFcbSc3VUKGVGzPmBNscGou+vEjcLsH3LAJRQKqdl7EdCjsaOz/pXT2cGNEe62tltw==@nongnu.org
+X-Gm-Message-State: AFuF++k3OdxBvuX1PoKYTPYEeEvfmU0SoBIS8mNppYP432LXdV7xgbbX
+ lQqic8PZ2T8BGowB+ca7UlSO9CrkRJxUmeftjbH2CH3dPMomBw6GErpL
+X-Gm-Gg: AR+sD1363pk8faX3Gg9dYK9LU1XrRgDoE0JyRvRPysp79kGXVaQK4Lf6nYG5skuaMFI
+ VMW3e1BIgGyY2+Wf6Itjz9dnrcyfwn2VrucjyNozxdoMPb/gYG1C0lY1uP4ZNrOAEtbVKm7sqo/
+ 1kejNi4HWtXhmh1nHWytN/sqSp8RDrrOZdM5oF4cVybbvPyISw6GYTC3ECxV3FwHtlNjE0H2lVK
+ O3wPg1KB4DnqWw2rcdbhwYkmpzmiRvkyCiNDK8vOPwk8SXPc5aTWghZzB+GB01a63VBe0kyU9cs
+ 7nSw/umZkfmo6atGw00Sc4clbSsyBxLNsS12xKOvn4+uH6FADCALuj0Qh/NnKwVIF0y3t/6XlIV
+ 6ByrAKFtXhtOi+PcTMyI54zOOul7Xy0F+3yS7HQVfgBnF9SCOdX2YZPykKWKB6S6gZhzFcnQowJ
+ peoa1L+zlCupkvXcDMYopPijr3zsLwhKaD0lSlPWvEkbMeOW8VXGc9zOpq/A8uuJ3aGOPB+4eis
+ 3ZuupxOyxBqKqNDtrO46ksG/xujkvVDddh53w1KJq0uWxnVFnUfs6x49zNOteQiPAHB28kv7MLS
+ +Vfp8oBWMtOJwP8Jpadn
+X-Received: by 2002:a17:90b:3cc3:b0:38f:18f9:785 with SMTP id
+ 98e67ed59e1d1-3966d20cde1mr26855588a91.8.1787807474185; 
+ Wed, 26 Aug 2026 22:11:14 -0700 (PDT)
 Received: from donnager-debian.. ([180.150.112.50])
  by smtp.gmail.com with ESMTPSA id
- 98e67ed59e1d1-39670599275sm2210473a91.0.2026.08.26.22.10.33
+ 98e67ed59e1d1-39670599275sm2210473a91.0.2026.08.26.22.11.08
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 26 Aug 2026 22:10:38 -0700 (PDT)
+ Wed, 26 Aug 2026 22:11:13 -0700 (PDT)
 From: Joel Stanley <joel@jms.id.au>
 To: Alistair Francis <alistair.francis@wdc.com>,
  Daniel Henrique Barboza <daniel.barboza@oss.qualcomm.com>,
@@ -82,16 +82,16 @@ Cc: Peter Maydell <peter.maydell@linaro.org>, Weiwei Li <liwei1518@gmail.com>,
  Michael Ellerman <mpe@kernel.org>,
  Portia Stephens <portias@oss.tenstorrent.com>, qemu-riscv@nongnu.org,
  qemu-devel@nongnu.org, qemu-arm@nongnu.org
-Subject: [PATCH 04/12] tests/tcg/riscv64: Update semihosting linker script
-Date: Thu, 27 Aug 2026 14:39:43 +0930
-Message-ID: <20260827050953.67184-5-joel@jms.id.au>
+Subject: [PATCH 10/12] tests/tcg/riscv64: Enable vectorised memory test
+Date: Thu, 27 Aug 2026 14:39:49 +0930
+Message-ID: <20260827050953.67184-11-joel@jms.id.au>
 X-Mailer: git-send-email 2.47.3
 In-Reply-To: <20260827050953.67184-1-joel@jms.id.au>
 References: <20260827050953.67184-1-joel@jms.id.au>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::102a;
- envelope-from=joel.stan@gmail.com; helo=mail-pj1-x102a.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::1032;
+ envelope-from=joel.stan@gmail.com; helo=mail-pj1-x1032.google.com
 X-Spam_score_int: -16
 X-Spam_score: -1.7
 X-Spam_bar: -
@@ -115,87 +115,36 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Keep the tests at the start of RAM but bound them with a MEMORY region,
-and use this to define __stack_top, which the multiarch system test boot
-code will use.
+Build memory.c a second time with -march=rv64gcv -O3, similar to
+aarch64's memory-sve, so the memory test checks RVV loads and
+stores, including across page boundaries.
 
-Add more sections generated by the test binaries so they are placed
-explicitly.
-
-Split text and data into separate rx/rw regions, instead of one rwx
-region to avoid binutils warnings.
-
-A -kernel boot jumps to the lowest loaded address rather than the ELF
-entry point, so _start must be first in .text. Use a .text._start input
-section to make that explicit.
+Run it under -cpu rv64,v=true.
 
 Signed-off-by: Joel Stanley <joel@jms.id.au>
 ---
- tests/tcg/riscv64/semihost.ld | 47 +++++++++++++++++++++++++++--------
- 1 file changed, 36 insertions(+), 11 deletions(-)
+ tests/tcg/riscv64/Makefile.softmmu-target | 8 ++++++++
+ 1 file changed, 8 insertions(+)
 
-diff --git a/tests/tcg/riscv64/semihost.ld b/tests/tcg/riscv64/semihost.ld
-index a59cc56b289a..eff3701e4a19 100644
---- a/tests/tcg/riscv64/semihost.ld
-+++ b/tests/tcg/riscv64/semihost.ld
-@@ -1,21 +1,46 @@
-+/*
-+ * Linker script for the RISC-V system tests
-+ * SPDX-License-Identifier: GPL-2.0-or-later
-+ */
-+
- ENTRY(_start)
+diff --git a/tests/tcg/riscv64/Makefile.softmmu-target b/tests/tcg/riscv64/Makefile.softmmu-target
+index 3f2a8ed16142..301a6e6e5700 100644
+--- a/tests/tcg/riscv64/Makefile.softmmu-target
++++ b/tests/tcg/riscv64/Makefile.softmmu-target
+@@ -76,6 +76,14 @@ EXTRA_RUNS += $(MULTIARCH_RUNS)
+ # Default is zicclsm=true, so misaligned accesses must work
+ memory: private CFLAGS += -DCHECK_UNALIGNED=1
  
-+MEMORY
-+{
-+    /*
-+     * Virt machine, RAM starts at 2GB
-+     *
-+     * Separate sections for executable and writable data to avoid linker
-+     * warnings.
-+     */
-+    TXT (rx) : ORIGIN = 0x80000000, LENGTH = 2M
-+    DAT (rw) : ORIGIN = 0x80000000 + 2M, LENGTH = 2M
-+}
++memory-rvv: memory.c $(LINK_SCRIPT) $(CRT_OBJS) $(MINILIB_OBJS)
++	$(call quiet-command, \
++	 $(CC) $(CFLAGS) $(EXTRA_CFLAGS) $< -o $@ $(LDFLAGS) $(CRT_OBJS), CC, $@)
++memory-rvv: private CFLAGS += -DCHECK_UNALIGNED=1 -march=rv64gcv -O3
++run-memory-rvv: QEMU_CPU = rv64,v=true
 +
- SECTIONS
- {
--    /* virt machine, RAM starts at 2gb */
--    . = 0x80000000;
-     .text : {
-+        *(.text._start)
-         *(.text)
--    }
-+    } > TXT
++TESTS += memory-rvv
 +
-     .rodata : {
--        *(.rodata)
--    }
--    /* align r/w section to next 2mb */
--    . = ALIGN(1 << 21);
-+        *(.rodata .rodata.*)
-+        *(.eh_frame)
-+    } > TXT
-+
-+    .got : {
-+        *(.got .got.plt)
-+    } > DAT
-+
-     .data : {
--        *(.data)
--    }
-+        *(.data .data.* .sdata .sdata.*)
-+    } > DAT
-+
-     .bss : {
--        *(.bss)
--    }
-+        *(.bss .bss.* .sbss .sbss.*)
-+    } > DAT
-+
-+    /* Stack grows down from the end of the data region */
-+    __stack_top = ORIGIN(DAT) + LENGTH(DAT);
- }
+ # Simple Record/Replay Test
+ .PHONY: memory-record
+ run-memory-record: memory-record memory
 -- 
 2.47.3
 

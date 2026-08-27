@@ -4,71 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E4D00C61DB9
-	for <qemu-arm@archiver.kernel.org>; Thu, 27 Aug 2026 05:12:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AA66CC5DF9D
+	for <qemu-arm@archiver.kernel.org>; Thu, 27 Aug 2026 05:12:59 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wzSOI-00037Q-JZ; Thu, 27 Aug 2026 01:11:06 -0400
+	id 1wzSNm-0002aC-6l; Thu, 27 Aug 2026 01:10:34 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <joel.stan@gmail.com>)
- id 1wzSOH-00036X-EE
- for qemu-arm@nongnu.org; Thu, 27 Aug 2026 01:11:05 -0400
-Received: from mail-pj1-x1034.google.com ([2607:f8b0:4864:20::1034])
+ id 1wzSNj-0002Yl-GG
+ for qemu-arm@nongnu.org; Thu, 27 Aug 2026 01:10:31 -0400
+Received: from mail-pj1-x102f.google.com ([2607:f8b0:4864:20::102f])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <joel.stan@gmail.com>)
- id 1wzSOF-0004A7-QT
- for qemu-arm@nongnu.org; Thu, 27 Aug 2026 01:11:05 -0400
-Received: by mail-pj1-x1034.google.com with SMTP id
- 98e67ed59e1d1-39266382df6so258258a91.3
- for <qemu-arm@nongnu.org>; Wed, 26 Aug 2026 22:11:03 -0700 (PDT)
+ id 1wzSNg-00042Q-Ro
+ for qemu-arm@nongnu.org; Thu, 27 Aug 2026 01:10:31 -0400
+Received: by mail-pj1-x102f.google.com with SMTP id
+ 98e67ed59e1d1-396750cfee6so1499774a91.2
+ for <qemu-arm@nongnu.org>; Wed, 26 Aug 2026 22:10:28 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20251104; t=1787807462; x=1788412262; darn=nongnu.org;
+ d=gmail.com; s=20251104; t=1787807427; x=1788412227; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:sender:from:to:cc:subject:date
  :message-id:reply-to:content-type;
- bh=0rPIO/eJ4fCcyXhjl8aHWuRIEQEoWUmTA8VQtKKUv40=;
- b=n2Lyj2rZXnhOCRDT/rYsGgsRP8Vg2zFrx1UkAtmTGvMONU8fxYTbW5LvUgU0DEPZgp
- yd1NGM3adHzHfWaeDntlMnsNrNmTQwVxcbDy4VwBVirpxS15ZKwSX93AG5kicp1XHY4L
- 3JXqFwuV7ooohhOTY8BiA/RSsZZNOU7BNd9kXqUalUnSmyCc7d0odRsNxnnvJHtxtHT4
- UePvb/9LZjr9/Skn9HbZjMQd35/sPkdsPuq82i+6pLXI472kfj+X0QHxg1Yn6j4nylcd
- IxPusnRwcPhT3Z1dkd+4aueNZ028gD4alJBXAm1nfZ0/Q9pxAioVjE/WTNdDXg58uOSO
- abJA==
+ bh=5bkCYeMhO7/zC3uMA+VZFpZtFUWR2ZdudiB4U3VtuDk=;
+ b=C+VFqoSJx6ySmnz0hGIs9tEavgHwK5algRgh3gVPwdmg90stCx/m5uyZtIlggQLrlU
+ RZC+6EvcbCJ/wtCckrynkLhVf5laCuJcrZ70M9Am9qnDZXBciK+HVFegnuybonXsylvv
+ dyAWuyoPn1jQarw/jQYGF294MER+lEeve1Cav19nuQQJ2QQhGByQEz9eyfRyyR7XFh+e
+ 2GKH2Nf0wakedQ1bmxm7mn82jRFLflOnJiIA1x4rQNNiiZP5KQYZqnGsp1JHHgnlJJMW
+ lii5PDNulC+u8kOGw6XAZbuME860QOAztej+2D6MIP477lMuHCCJ1ziWdw1Aup//hCy9
+ cUVQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1787807462; x=1788412262;
+ d=1e100.net; s=20251104; t=1787807427; x=1788412227;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:sender:x-gm-gg
  :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
  :content-type;
- bh=0rPIO/eJ4fCcyXhjl8aHWuRIEQEoWUmTA8VQtKKUv40=;
- b=XLd1dy/g4YzCCvJ64y3mE4iokYZ30J4B/b5pQgH2SyMn2FtUp13yZkTLnPF/a3UXF1
- uhcBsiyPEiGFkjYUSDIMAhrVvYPQZmhaKtF7qqAGP8ty43wNgyIKLvCViyxiuhSoRlaZ
- kO8WssaTkr8zqn0pv6wX0yXM+Nu3rlW2y7AxyZe5YruiDhuik1/h6fORMRrXPsyzb/n6
- EjdvPav6eE0KNGJ5SafXSeSomS7CNIy7E9lCoyw0SKKIpCbLc/KmjfEamHX6G6EEjVuV
- EIsdzzQB6YNNl9CNK026jHOSOQWOF8thEhYwD9oEwHMH7IP1m7964OBpyDuZD4okqnbT
- xsHw==
+ bh=5bkCYeMhO7/zC3uMA+VZFpZtFUWR2ZdudiB4U3VtuDk=;
+ b=sygb3BXRiVo3pBcMKZ2FmSk65rzC5dMIRCOoViNyQoYAqunAJxXltWmcopIARTzQON
+ ezC8CT1Mwl26IU3PsXxxYrtyND8+urM+sdPGmFXJpSGDkKLtFh2PP5K1E2CIdl/zcxH2
+ 5D5gT/hYW5TDZVM01dBsueRe2QOAFbI0MXJ3BaeHtRQ6HpL4DnjNl91cimDDVf3Zu98c
+ KvSxXs4VGW3mejxUJvqkVD+gAUudDyTWjnRZBOsez9NboCx2utMjYgiqMsijPd4MWPIN
+ rt/8qh7pjt2oboAd3IziCfKfoOiWrjZHfkjc8JXaTMqjns8lUSTVNy5bLMi3sMhQwIbU
+ l1Ew==
 X-Forwarded-Encrypted: i=1;
- AHgh+RoHjSzKoRM32OlF6X8fRr8oNvBgRTAFORxgnQHHqGdfIUUEBpZbfFqiPRwD/aUJObG8plclZszNaA==@nongnu.org
-X-Gm-Message-State: AFuF++mSY7Wq/6kI/ISCpn4yXnzcP9XTquPpmRs60nDqGKC8MwHpEqdF
- tB9Qwy5Fp+uugHKIF08l+TPlTsb/yolis1HzUwLKOvFFUA6tUKhVYoG2
-X-Gm-Gg: AR+sD10jz+hkHMIJUgQn9wpEobGxQ9ijIIKUJK/+5d0lj79VEBCtFci/fw1O6Y8lbVZ
- B6k7wy4vdkYA3pAeHLS9EqNa5nD3+ctcl9nbvajDwe3I1YIqHevc0jG1D06rPPOWBUFMisD+/Ye
- tNtXZzD7d5mQGYs7If0YL+7D0bTAD3hvgMWP4MAeicx8iD+al8bxgb9ZiyD6VM0DJSDdbZVWrI8
- 4c8u992m4eMnfYERQ8Mb/DSY4wHSx25YwjPOVj7adBtfOm9Zarj1Z2RTOYfRKktlXv9E6g8lBdV
- V9S7CiMJ+1Nj7koN+Y9kGHqGaXB5rWMOzeAXv8FZUIO2d/fZKCEpDEy0+GkESnuMf0fTUsSp8jv
- DDatSyoTlSk3Udwb7xYI5s37jpD2vRlhBYz92EaUkuwyL6wQC6KGKOD0bfyDVdPYIKATU1NMzTR
- +uO/xqVHxzNZgp2UPjAfXiXpSAt+6RDpOlmk1tRAGAjFX3GaZ4UVWUpWkrNz/CFMrPYjsK1Fk6m
- x2qyILToHoqZ9YY2x/oWEhR9EUL1/SC4ock8mMu8X6Q3woNn3JKzCxRcZdZXsBiN+f/68iIF96P
- Z7prWMpAXWPfdZCmtMR/
-X-Received: by 2002:a17:90b:3cc3:b0:393:194d:5366 with SMTP id
- 98e67ed59e1d1-3966d85de70mr26456394a91.10.1787807462371; 
- Wed, 26 Aug 2026 22:11:02 -0700 (PDT)
+ AHgh+Rrm/wr7T6ueC+BRVb75txNAftwJ8ClUd/R/6a7yNq8kLf2NGuTu3ZFr+SBElkvkq0wQo2see6n0Kg==@nongnu.org
+X-Gm-Message-State: AFuF++lCFQmdYOL7+IjmkyJOMzZ5i63WV2OiLwrLwYv0O7aSf/0HFvF0
+ 4XWFQsOncDOLQ+J7dkou1FegUj6Zj2lGZjNoWVsCAYNQjh5TtIUNpmEg
+X-Gm-Gg: AR+sD11FcBgxtGCOoFmJd4UL2E8n6GEQjnFWMD+in2X+X50biuPrnqNGnYyCEfgEju8
+ HgEt/WZGbmK8LwW9RU8MLt6Amvr4faLSLBaLzC44+WaXP7zXLDzT6dX58SS7QdRyWLs94cz4sVL
+ U2lVkmmTNT8RoCMhpH6iTkrh6u2nQazK39ckGGUYbXOjIX9+Fs3N0Jni6/BfxUje/OpiNOkYXjn
+ N/au9iAv6srvtp1ocMwrvBXx5tW2hAbdRyqVbeSahO7VDkXffbwZ9fz/s420GhQJnWMFvU4T59a
+ 9ZdM5HjobW3qPLWQpAScSA/070W9ijqGDrMxkMJNwmFNTu4gCPKEIck94+JLNnIhwZo2OAqdyXy
+ wwatlP/MRYY/42aBeZkvjLR2QwE87qdHgNm2FPnJ84L5o2MOTxrJ6ag2ETHOW6O5HcWkQaQsTIR
+ +9Gi2rRwrB160grA6HspkzkJOq8hkxud5yoyuNltiyFn/XO4By3h8yzA7hUz4YKXtWqwOMOGtIo
+ Hdz+EgK6ScXPCuerm0cNkjYgWUjfTDNY98i+g3D91+PoAbdnWxD7GJUGjyaVfiI8NbKSDRlDR+c
+ JarxG5xisdp1fbAXLS/0NJWnkUnhahQ=
+X-Received: by 2002:a17:90b:4acc:b0:396:5c22:b1f1 with SMTP id
+ 98e67ed59e1d1-3966d413283mr24086293a91.8.1787807427473; 
+ Wed, 26 Aug 2026 22:10:27 -0700 (PDT)
 Received: from donnager-debian.. ([180.150.112.50])
  by smtp.gmail.com with ESMTPSA id
- 98e67ed59e1d1-39670599275sm2210473a91.0.2026.08.26.22.10.57
+ 98e67ed59e1d1-39670599275sm2210473a91.0.2026.08.26.22.10.21
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 26 Aug 2026 22:11:01 -0700 (PDT)
+ Wed, 26 Aug 2026 22:10:25 -0700 (PDT)
 From: Joel Stanley <joel@jms.id.au>
 To: Alistair Francis <alistair.francis@wdc.com>,
  Daniel Henrique Barboza <daniel.barboza@oss.qualcomm.com>,
@@ -82,16 +82,16 @@ Cc: Peter Maydell <peter.maydell@linaro.org>, Weiwei Li <liwei1518@gmail.com>,
  Michael Ellerman <mpe@kernel.org>,
  Portia Stephens <portias@oss.tenstorrent.com>, qemu-riscv@nongnu.org,
  qemu-devel@nongnu.org, qemu-arm@nongnu.org
-Subject: [PATCH 08/12] tests/tcg/aarch64: Don't leak memory-sve CFLAGS
-Date: Thu, 27 Aug 2026 14:39:47 +0930
-Message-ID: <20260827050953.67184-9-joel@jms.id.au>
+Subject: [PATCH 02/12] tests/tcg/riscv64: Clean up semicall.h inline asm
+Date: Thu, 27 Aug 2026 14:39:41 +0930
+Message-ID: <20260827050953.67184-3-joel@jms.id.au>
 X-Mailer: git-send-email 2.47.3
 In-Reply-To: <20260827050953.67184-1-joel@jms.id.au>
 References: <20260827050953.67184-1-joel@jms.id.au>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::1034;
- envelope-from=joel.stan@gmail.com; helo=mail-pj1-x1034.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::102f;
+ envelope-from=joel.stan@gmail.com; helo=mail-pj1-x102f.google.com
 X-Spam_score_int: -16
 X-Spam_score: -1.7
 X-Spam_bar: -
@@ -115,35 +115,47 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-The CFLAGS are added to prerequisites, so if memory-sve causes a build
-of printf.o and boot.o, they will be compiled with -march=armv8.1-a+sve
--O3, and the executables that link printf.o and boot.o after that will
-also get SVE instructions.
+Make __semi_call static inline so semicall.h can be included more
+than once in a program.
 
-https://www.gnu.org/software/make/manual/html_node/Suppressing-Inheritance.html
+Use .option push/pop rather than leaving norvc set for the rest of
+the file.
 
-By marking the rule 'private' printf.o and boot.o won't be built with
-SVE, which avoids SVE for other binaries, and is okay for the memory-sve
-case.
+Set the constraints for the asm block.
 
 Signed-off-by: Joel Stanley <joel@jms.id.au>
 ---
- tests/tcg/aarch64/Makefile.softmmu-target | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ tests/tcg/riscv64/semicall.h | 11 +++++++----
+ 1 file changed, 7 insertions(+), 4 deletions(-)
 
-diff --git a/tests/tcg/aarch64/Makefile.softmmu-target b/tests/tcg/aarch64/Makefile.softmmu-target
-index 3f30be6c5d63..196a2afa50ee 100644
---- a/tests/tcg/aarch64/Makefile.softmmu-target
-+++ b/tests/tcg/aarch64/Makefile.softmmu-target
-@@ -51,7 +51,7 @@ memory: CFLAGS+=-DCHECK_UNALIGNED=1
- memory-sve: memory.c $(LINK_SCRIPT) $(CRT_OBJS) $(MINILIB_OBJS)
- 	$(CC) $(CFLAGS) $(EXTRA_CFLAGS) $< -o $@ $(LDFLAGS) boot.o
+diff --git a/tests/tcg/riscv64/semicall.h b/tests/tcg/riscv64/semicall.h
+index 2fdd322af91f..34e87332de44 100644
+--- a/tests/tcg/riscv64/semicall.h
++++ b/tests/tcg/riscv64/semicall.h
+@@ -8,16 +8,19 @@
+  */
+ #include <stdint.h>
  
--memory-sve: CFLAGS+=-DCHECK_UNALIGNED=1 -march=armv8.1-a+sve -O3
-+memory-sve: private CFLAGS+=-DCHECK_UNALIGNED=1 -march=armv8.1-a+sve -O3
- 
- gpc-test: gpc-test.c $(LINK_SCRIPT) vector_log_boot.o $(MINILIB_OBJS)
- 	$(CC) $(CFLAGS) $(EXTRA_CFLAGS) $< -o $@ $(LDFLAGS) vector_log_boot.o
+-uintptr_t __semi_call(uintptr_t type, uintptr_t arg0)
++static inline uintptr_t __semi_call(uintptr_t type, uintptr_t arg0)
+ {
+     register uintptr_t t asm("a0") = type;
+     register uintptr_t a0 asm("a1") = arg0;
+-    asm(".option norvc\n\t"
++    asm(".option push\n\t"
++        ".option norvc\n\t"
+         ".balign 16\n\t"
+         "slli zero, zero, 0x1f\n\t"
+         "ebreak\n\t"
+         "srai zero, zero, 0x7\n\t"
+-        : "=r" (t)
+-        : "r" (t), "r" (a0));
++        ".option pop\n\t"
++        : "+r" (t)          /* Output: read as input, written as return value */
++        : "r" (a0)          /* Input: arg0 */
++        : "memory");        /* Clobber: may modify memory, depending on type */
+     return t;
+ }
 -- 
 2.47.3
 

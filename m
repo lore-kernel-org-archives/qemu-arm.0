@@ -4,96 +4,106 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 13D89C61DC2
-	for <qemu-arm@archiver.kernel.org>; Thu, 27 Aug 2026 13:47:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7CF41C61DC4
+	for <qemu-arm@archiver.kernel.org>; Thu, 27 Aug 2026 13:56:01 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wzaSH-0001IU-V7; Thu, 27 Aug 2026 09:47:46 -0400
+	id 1wzaZm-0004M1-OH; Thu, 27 Aug 2026 09:55:30 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <alex@shazbot.org>)
- id 1wzaSG-0001I3-Gv; Thu, 27 Aug 2026 09:47:44 -0400
-Received: from fhigh-b4-smtp.messagingengine.com ([202.12.124.155])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <alex@shazbot.org>)
- id 1wzaSC-0006fg-Rn; Thu, 27 Aug 2026 09:47:44 -0400
-Received: from phl-compute-05.internal (phl-compute-05.internal [10.202.2.45])
- by mailfhigh.stl.internal (Postfix) with ESMTP id 038297A0191;
- Thu, 27 Aug 2026 09:47:36 -0400 (EDT)
-Received: from phl-frontend-03 ([10.202.2.162])
- by phl-compute-05.internal (MEProxy); Thu, 27 Aug 2026 09:47:37 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=shazbot.org; h=
- cc:cc:content-transfer-encoding:content-type:content-type:date
- :date:from:from:in-reply-to:in-reply-to:message-id:mime-version
- :references:reply-to:subject:subject:to:to; s=fm2; t=1787838456;
- x=1787924856; bh=cGwT4DEVg2M8EW1Yh2hp/p+ZG1i2W5kMpe+M+1QEuY0=; b=
- Ud3tcY4V7nYfjdaRNLRCVCUnw61HhWDyIHxQH4xT5HOsuH7vY1f0IZ4KY5D5taAy
- clouGkesTyezLvM0wHsYVy/6cEDXYHogTBfACyEud9nEmdXob4syeKE2KaJ3T5Xd
- fVE/RazUr4Z9U98VWlvfBg8joZwV/y4+A2MTzCg7GB5d4SlG2Pr5e6NUc7sL/Oec
- pcYwzJW2sbl2JLIDeoNtbYGFXKZpszXc7a/fEaEt/e6dB/zOR6fov/79ikw7zg49
- KaXHA3/LepM4tGf7I+FLs89qwZpUxVoeoPdpoAEOK0kBrmBR8koyRpy+i7RW6hlm
- ijYudhKbPxo2iNWxb+Zugw==
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
- messagingengine.com; h=cc:cc:content-transfer-encoding
- :content-type:content-type:date:date:feedback-id:feedback-id
- :from:from:in-reply-to:in-reply-to:message-id:mime-version
- :references:reply-to:subject:subject:to:to:x-me-proxy
- :x-me-sender:x-me-sender:x-sasl-enc; s=fm3; t=1787838456; x=
- 1787924856; bh=cGwT4DEVg2M8EW1Yh2hp/p+ZG1i2W5kMpe+M+1QEuY0=; b=E
- hrUkQBV4l5sVqBQtzVbM03KOZaepEXPDVQedfxcsyZiNdfwHwuMolXLlV7Bugk57
- 8WF5rrVO+377ejilYVvm1h+hd/Dije29oZE6L+1PVnXv0Z7sIS8mfwDr7uAU3Buk
- mXMJBUa9FMjS8awHOJ47V9TBrW5l7//6ugSAEAMToQkr7UtfjiS5xOdXSgWXZ9qH
- GinxzeXKnuR6YwZwNlhwSqtSC6EO6bwqzlfUt2arVlhzNmgpQ9tFDu5ZWyE3BQ7+
- kfnnQt0/xC7qo/n9tq+JoS9hiMtqWlErmEQz8lreUtFRBlXT2Tiz8OS+7POQI3M7
- w4oPyF94GvpyCAv7IX7Jg==
-X-ME-Sender: <xms:-D-QasjHFfdn4bb3UWpS-Mz80rXpwgcyAfJTvZs07bNa-6S4T8AW_A>
- <xme:-D-QatPQlSRppriVtKezzRfhmuE1nD1rlNinVlT9ZscKKNyTtM2w6fPECQ0wpIBVg
- 8rA52XqdRIDmetRHemSqpU9cAOqbAksHdqhMBDk7JPT2-VVy8tuvA>
-X-ME-Received: <xmr:-D-Qavo9ZjNMn3ImdkOHG0lUPEdf5xphqKS5j0oAYGj1yepdCWaaWQcpKHAztQ>
-X-ME-Proxy-Cause: dmFkZTEMuZ7veVXHtQmzYDEDfY+Mr1XAMWCgcMg2aqOVGpl226CClR0Ld7sVVfWV7GV9b5
- FDxxTLyStD0x88aqd/kSFO88zdlEm1YRvGL+y6R2ttdZrRDbZmBzMTo2AhedJb7bu4UAbC
- nSckBwJBZPAh5a45VSlbPR0E3qaECVgdlyXteE3Z9lmPgbJylieh6ciD6Bc8diSOnLFEba
- Yj/3i9EYST/rd+q26+1mx763nZG5QSpYNgCYqQ/isWCNo4o7GBWWZfmwmsEXbRWAPawn8x
- bX7X8KL3EjNAuHNx/DfjCANIsljXogoN1qB9QTVG8cM1FrMX6dXCnaVxlsEO8Vf699bRHk
- nenB0v58+hm4X59jFtaV8WqNWyCK8JYXaGcugTg/xWeDpdo/2n41xJF9vYDuaLSkEfVjwC
- DXpHDZG0yO8Jgoe20YqSoaZjnTtB1YkIpJx2i8MbpeyE5NJ/GK8tUH+uLmJTxWHVV4arPI
- nN+cTOw3Cf7xSxInUtg7gm6c3ghzIG5Z9nsBYYKya9FvB+FQGgur59XqL6yuHgX9OPLBNT
- gsJjeJHe10frONg/vv9GouIFyXH2SsG5fW5FiYKEIWSm8TSNs01/Hj0HRb5UYsZEIaaO7W
- Yd+xhKrsqwvuDxBnCwor7zobhEib5DE3b8cn/JFh0VJRTlIp62TZYv0EG4Uw
-X-ME-Proxy: <xmx:-D-Qan6FJw8tHYauWqQMPsSw3f_x2FI1DGoujBW6_I7RyACp_Ba5iA>
- <xmx:-D-QalhOOUF9ACFlV5lSxBGBr2EIMB8ZlzRWCFnGb4sbFyJp1m7lcA>
- <xmx:-D-Qal4-zsHjhKMXGyZ5LxBbyRqd1SbGh0RsRzxRJioInYYm1Qu5rA>
- <xmx:-D-QaiEdTKO_OUpfpc1iC8Xw1K8qBONeWAc0rjEjpXAQ_BHG_FuCGw>
- <xmx:-D-Qagf--YS3efjgH4t71PD8FjNlANIqxY1BOFia3v9CSqm9TM3za087>
-Feedback-ID: i03f14258:Fastmail
-Received: by mail.messagingengine.com (Postfix) with ESMTPA; Thu,
- 27 Aug 2026 09:47:35 -0400 (EDT)
-Date: Thu, 27 Aug 2026 07:47:33 -0600
-From: Alex Williamson <alex@shazbot.org>
-To: Gerd Hoffmann <kraxel@redhat.com>
-Cc: alex@shazbot.org, Tushar Dave <tdave@nvidia.com>, qemu-devel@nongnu.org,
- jgg@nvidia.com, skolothumtho@nvidia.com, qemu-arm@nongnu.org,
- peter.maydell@linaro.org, mst@redhat.com, marcel.apfelbaum@gmail.com,
- devel@edk2.groups.io
-Subject: Re: [RFC PATCH v2 0/5] hw/pci, hw/arm/virt: fixed PCI BAR placement
-Message-ID: <20260827074733.340aeb0c@shazbot.org>
-In-Reply-To: <ao_fX3cYersq6TRd@sirius.home.kraxel.org>
-References: <20260827004024.598351-1-tdave@nvidia.com>
- <ao_fX3cYersq6TRd@sirius.home.kraxel.org>
-X-Mailer: Claws Mail 4.4.0 (GTK 3.24.52; x86_64-pc-linux-gnu)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1wzaZl-0004LM-Fp
+ for qemu-arm@nongnu.org; Thu, 27 Aug 2026 09:55:29 -0400
+Received: from mail-ed1-x530.google.com ([2a00:1450:4864:20::530])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1wzaZj-0001Ey-Cv
+ for qemu-arm@nongnu.org; Thu, 27 Aug 2026 09:55:29 -0400
+Received: by mail-ed1-x530.google.com with SMTP id
+ 4fb4d7f45d1cf-6a1a546a6bbso3454990a12.1
+ for <qemu-arm@nongnu.org>; Thu, 27 Aug 2026 06:55:26 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1787838925; cv=none;
+ d=google.com; s=arc-20260327;
+ b=HsovfOHAIOm4PI0GYltEGXvc/gt0VwLIlXyYWZqNytupGhXoWb4RcgIouLOf9kjqbP
+ IDEebmYVmsvCu1llPSdSrWH2tpkLTXJQ704PSbhGVZErPYaDInbGsk5xa3GLJOqd4adu
+ NzYGODvo5LpUmAhu1SDEsx0c7Ssq6G3xP/ZQgJVZJRH3edFCazAXW+DG/WG7QbInVPzz
+ bRhcDKBwMl4qZxk5YTAeqGpkcetERMApOzmHbXBz4FNYY619GrEUb0uLztURTRmfe/ue
+ rPLsKUeSKgjXqXa2qy5Ec6Lz7TyXCrvEDk81RCqQruxdA5VBxQ0e3D9ulWkUUn7ZfKFU
+ S/Zg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
+ s=arc-20260327; 
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:dkim-signature;
+ bh=Z7iyjWDK1mAgB/lcxDDjJqAVJcg1hit6hAafcQvHTxQ=;
+ fh=i/X6XS2ApjGOo0PFpxp827ZvT9GsQ0aP+RBmh+M4Xs4=;
+ b=Pae5S4N9/etkDJOCwrpNMykcAxWGgV5FavQOOXEIIyZsq5MdVlFTvK7f4wp3/o1nFh
+ l4JH+la9EbRJSZ/ldB7sv/hytEbDrfqvY1KExO7/7Zat9H7EVzCHIGs+B5i+rqlCwyzI
+ H17bnXSPeY6/w/El2T7QERDh85opIexBBUq81k/cI4Nwg4O/SD0BOwVaCQKQ0UTmoh8P
+ RR/Zf7KpD+Uq6IgTdkE3tbp3BzAeKQbxAvLD9TgLZVXZC6PL9EFwFWE3MfaLXfL0nNaO
+ KzqUubWxcEF79gvULtaIGQRkedamuB1V7Apvsbi89bFMIjAq33yJHz0tKH+bWmnx6oi/
+ 84qA==; darn=nongnu.org
+ARC-Authentication-Results: i=1; mx.google.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1787838925; x=1788443725; darn=nongnu.org;
+ h=content-type:cc:to:subject:message-id:date:from:in-reply-to
+ :references:mime-version:from:to:cc:subject:date:message-id:reply-to
+ :content-type; bh=Z7iyjWDK1mAgB/lcxDDjJqAVJcg1hit6hAafcQvHTxQ=;
+ b=E0esFl3Jgnjxx6rFFFQn49s4oU8gPV84ltbRp5YBvshqRgWgzHAObiwdnRIJmZCl2O
+ ecU03jfWlentzgxslAzywURU/Zh2Z6QmZpC0RNb6YDh3ogIHEomxrPwfaVxdRHHDK3O0
+ R3wtduW4u/Vk+bYVTE2FAufTHfIVYk377stG93BXxFTwe7SUt6kHZ2RLm5f7gfQiIdnJ
+ xe2v9lX718G8Em8B26dhF9AEkBNRzfJaUXkgGA6sRzvxLiEBNKBUL0ObVXGhKCt2Gxoj
+ jp/wtjWQ6JFgAz2YJDSfuD2iHWAhF0yizBtZsfE9cQyzWHaVc8E5XXx/NY3mN85jhq4g
+ sltQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20251104; t=1787838925; x=1788443725;
+ h=content-type:cc:to:subject:message-id:date:from:in-reply-to
+ :references:mime-version:x-gm-gg:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to:content-type;
+ bh=Z7iyjWDK1mAgB/lcxDDjJqAVJcg1hit6hAafcQvHTxQ=;
+ b=hCyvjcYyDwzOojYQvhR3gFfTN30RcigWXCCzX1lvt3p5ksQfIkLkkFHLvvZLmZh3Ds
+ uhxp2Ra1kf6227f1vDMz3NWj7wnBkf7I6wPr+F4IZLcdUEU//Ix57aNzCwroW0zdVa/u
+ IYgMyPG+b+MtneC2sCCuN8C85UyhNTV0USG0Nz0V6G+GDXSojNhW8aIHx+g5/djgTXU3
+ UweQ9wWaGB/2TbKwhcCqDkDMTqFIq1AFuXcoCBtLE7lgCtEj0QYURukcrYUOrR4ZPl68
+ 7wcmdlNU2jHiNiXQHvdViAuDf9TBJrYoCUg/cXZpgge/KHmlGdbn/3G4aPZlGBUe2OC3
+ 7JTQ==
+X-Forwarded-Encrypted: i=1;
+ AHgh+RodFu/IIYfuM0ANMWFmH3dL5nnKLKI35Pq0QgYjXdKeoId2Veq4d+iVG6+Iquj3NdtA50HLLhkoSA==@nongnu.org
+X-Gm-Message-State: AFuF++kXAo2JXa5TIdnRj9aaVb30nmET9oiT9rP5ds87JtHryCs6nnU2
+ Jek7vrY59Dj8D2+ki4qeWzRjtdE6oiIPZXAIISpTosxY/cR8cEaMWjZIgYwDMwF6dQCv5naPJPz
+ CPvLMIgMe51J6xD+g6aR7lrCni9qrzC7JQAVd0xq0cQ==
+X-Gm-Gg: AR+sD13yJCeFL6BTXSYcF6eM78mBaQR0uS41GH6qeV8YNaIvcU9KFNGib7Tt7NvAPMi
+ 1xJ9E6vZxdkzCZ4F/rVaAdIqK7wejoK08PazC+jj9/mOR6ofDkTEFSsIJSYG6rBtSk4/ECMRJhA
+ r1OaPDiLiHmDzUCIGMwriEBcfrtao03OOQ09Avp6wwkPCLxcQhtMNJts47rXf+Hug8bUkAYYZdP
+ NjtUGc236IlEP5/O+uncZooxmeg1o0n+ZB/4d9y+3S4BSyaZZm8qCeiWd5JNKVE/y2IiipmBlIs
+ FVbmW6xDt8Do1oEet2VUdIJD1vlCLf2+QBJ85MBnhm0I1eQeLdsN/vq4HJk6twhDxonG9u/mm5d
+ r4nhgmKz/K9JJt7R0ht16kyF+43SqObGHeJ3Hh/8=
+X-Received: by 2002:a17:907:728e:b0:c20:53c7:488d with SMTP id
+ a640c23a62f3a-c250bc2d085mr1208203166b.14.1787838925445; Thu, 27 Aug 2026
+ 06:55:25 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=202.12.124.155; envelope-from=alex@shazbot.org;
- helo=fhigh-b4-smtp.messagingengine.com
-X-Spam_score_int: -27
-X-Spam_score: -2.8
+References: <20260818002629.172827-1-simonxhy0404@gmail.com>
+ <20260818002629.172827-2-simonxhy0404@gmail.com>
+In-Reply-To: <20260818002629.172827-2-simonxhy0404@gmail.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Thu, 27 Aug 2026 14:55:11 +0100
+X-Gm-Features: AcwNN1XwAno_RQlVog7vUGr6bLcpZM7nv0cCXnsG2FP_eXcxKsjFNYEpL3SA3cs
+Message-ID: <CAFEAcA9Y-tzX_a=jwWEBJ6BivowF_=+D_RBmA92KKJ03QvVyzg@mail.gmail.com>
+Subject: Re: [PATCH v3 1/9] target/arm/tcg/cpu-v7m.c: add cortex-m85 model
+To: Simon Xu <simonxhy0404@gmail.com>
+Cc: qemu-devel@nongnu.org, 
+ Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>, qemu-arm@nongnu.org, 
+ Owen Giles <owen.giles@hpe.com>, Robert Elliott <elliott@hpe.com>
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2a00:1450:4864:20::530;
+ envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x530.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, SPF_HELO_PASS=-0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -109,77 +119,61 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Thu, 27 Aug 2026 09:18:50 +0200
-Gerd Hoffmann <kraxel@redhat.com> wrote:
+On Tue, 18 Aug 2026 at 01:26, Simon Xu <simonxhy0404@gmail.com> wrote:
+>
+> Add Arm Cortex-M85 CPU, modeld after the existing M55 CPU.
+> The new M85 feature PACBTI is not implemented in QEMU and the midr value
+> is based off the r1p1 product revision identifier.
+>
+> Arm Cortex-M85 TRM:
+> https://developer.arm.com/documentation/101924/0101/
+>
+> Reviewed-by: Owen Giles <owen.giles@hpe.com>
+> Reviewed-by: Robert Elliott <elliott@hpe.com>
+> Signed-off-by: Simon Xu <simonxhy0404@gmail.com>
+> Message-Id: <20260805153005.9989-2-simonxhy0404@gmail.com>
+> ---
+>  target/arm/tcg/cpu-v7m.c | 41 ++++++++++++++++++++++++++++++++++++++++
+>  1 file changed, 41 insertions(+)
+>
+> diff --git a/target/arm/tcg/cpu-v7m.c b/target/arm/tcg/cpu-v7m.c
+> index dc249ce1f1..a1e62a20f8 100644
+> --- a/target/arm/tcg/cpu-v7m.c
+> +++ b/target/arm/tcg/cpu-v7m.c
+> @@ -237,6 +237,45 @@ static void cortex_m55_initfn(Object *obj)
+>      cpu->ctr = 0x8303c003;
+>  }
+>
+> +static void cortex_m85_initfn(Object *obj)
+> +{
+> +    ARMCPU *cpu = ARM_CPU(obj);
+> +    ARMISARegisters *isar = &cpu->isar;
+> +
+> +    /* QEMU currently does not support the PACBTI feature */
 
->   Hi,
-> 
-> > Following the feedback, RFC v2 keeps PCI enumeration and resource
-> > assignment in firmware. QEMU only validates the user-provided fixed
-> > BAR configuration and provides the required metadata to firmware
-> > through the "etc/fixed-bars" fw_cfg file.  
-> 
-> qemu already has vendor-specific pci capabilities.  They are used to
-> pass hints for the bridge window sizes of pci bridges (including pcie
-> root ports) with hotplug support.  See OvmfPkg/PciHotPlugInitDxe/ for
-> the firmware side support.
-> 
-> I'd strongly recommend to do the same for the fixed bars:  Add a pci
-> capability to pass that information.  All the logic you have today to
-> link the information in the fw_cfg file to the correct pci device is
-> simply not needed any more then.
+Looking at the M85 TRM, PACBTI is a configurable feature there
+(that is, you can have a real hardware M85 without it).
+So I think we're OK to start with a Cortex-M85 which doesn't
+implement PACBTI yet, and add that afterwards. We'll have to
+add a note to the an555 docs that we don't implement it yet,
+because the AN555 does configure its CPU to have PACBTI.
 
-Placement of a VMM defined capability into a vfio-pci device is not
-such a trivial problem as it is for emulated devices.  Space may not be
-readily available and the capability may mask non-architected registers.
+We can improve the comment about this:
++    /*
++     * Real Cortex-M85 CPUs can be configured with or without PACBTI.
++     * If PACBTI is present then ID_ISAR5[23:20] read as 0b0100,
++     * indicating that QARMA3 is used. QEMU does not yet implement
++     * PACBTI emulation for M-profile, so we report as a "no-PACBTI"
++     * CPU for now.
++     */
+but otherwise
+Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 
-Does this suggestion relate to fixing the gap between mapping fw_cfg
-entries by vendor/device IDs or is there something fundamentally
-undesirable about using fw_cfg here?
- 
-> > * fixed-bar=on on a PCIe root port marks its subordinate hierarchy for
-> >   fixed BAR placement. Every device with memory BARs in that hierarchy
-> >   must provide a complete pci-bars= configuration.  
-> 
-> Why is this needed?
 
-AIUI, the problem space is greatly expanded if we mix user provided
-fixed-bars with firmware assigned BARs and it's possible that there is
-no solution that meets the requirements.  This option both simplifies
-the problem space and allows the resource windows to be audited to
-generate user actionable errors in QEMU.
+On the Linaro side, Richard Henderson is planning to have a
+look at emulation of PACBTI for M-profile, which should fill
+in this missing piece.
 
-> > * pci-bars=barN@<addr>[,barM@<addr>]... on a PCI endpoint specifies the
-> >   required address for each memory BAR. All memory BARs on the device
-> >   must have an explicitly assigned address.  
-> 
-> fixed-bar-<nr>=<addr> ?
-
-Could be a reasonable alternative.  I'll let Tushar or others wrestle
-with the deeper edk2 comments below ;)  Thanks,
-
-Alex
-
-> > On the firmware side, a new DXE driver, QemuFixedBarsDxe, installs
-> > EFI_INCOMPATIBLE_PCI_DEVICE_SUPPORT_PROTOCOL before PciBusDxe starts.
-> > When PciBusDxe calls CheckDevice() for a discovered PCI function, the
-> > driver returns ACPI address descriptors with _MIF|_MAF set for fixed
-> > BARs. Two small changes to PciBusDxe preserve these fixed addresses and
-> > program them into the BAR registers during BAR programming.  
-> 
-> Expecting PciBusDxe respecting AddrRangeMin looks sensible to me ...
-> 
-> > After PciEnumerationComplete, QemuFixedBarsDxe walks each fixed
-> > root-port hierarchy and programs the bridge memory windows to cover
-> > the fixed BAR ranges assigned to endpoint devices.  
-> 
-> ... but changing things after-the-fact in platform code is a complete
-> non-starter.  PciBusDxe needs to do that, i.e. take care that the bridge
-> window assigned actually cover the fixed pci bars.
-> 
-> take care,
->   Gerd
-> 
-> 
-
+thanks
+-- PMM
 

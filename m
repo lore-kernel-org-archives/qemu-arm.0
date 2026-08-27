@@ -4,125 +4,88 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1CB51C61DBE
-	for <qemu-arm@archiver.kernel.org>; Thu, 27 Aug 2026 00:43:02 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 26F03C5DF9D
+	for <qemu-arm@archiver.kernel.org>; Thu, 27 Aug 2026 04:16:49 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wzOBn-0005nX-9f; Wed, 26 Aug 2026 20:41:55 -0400
+	id 1wzRXF-00076r-65; Thu, 27 Aug 2026 00:16:17 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <tdave@nvidia.com>)
- id 1wzOBl-0005ms-Fz; Wed, 26 Aug 2026 20:41:53 -0400
-Received: from mail-westus3azlp170100009.outbound.protection.outlook.com
- ([2a01:111:f403:c107::9] helo=PH7PR06CU001.outbound.protection.outlook.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <tdave@nvidia.com>)
- id 1wzOBj-0004l8-Vt; Wed, 26 Aug 2026 20:41:53 -0400
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=lVVF6SsJjfzDoAVn5AQzCiPWXKlOz1KnnF3qwSnYhOrv53Yl/TZH8U0lZMz3ubIVDHbXN7ge7DoJ1bU12d+qJut4xhMrGWMhHc39ee32WKxnERmAEvYceykzmsMuYcmut+un0C3OBpqA2N9dZCgEV41K4LxZ7At8AdQ5u6OYl9FgiZN9v2WG68BD0thP0fSmbxCqnMOlmMNFDhAQkAi+eVBtFG78AQjAWxIl2JqfFWLmuY8gIji21qtTs2qFocWkGDv1VmR432l4ImMVsDttPcrJTQY/gg3wWS82MZNutGiKGq0MwMaVSGr9zifEiRVjVt5LjNLY3BfY1qdVqsImGg==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector10001;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=Srjhx+SPolKf9relAUuL8yqTNJaPt46pyf7Munv1d8s=;
- b=EPr1Z6qWh/jRpPp03N+/3qSknpjHkw5dXkS9YxdTpwDhvZ7J4lliAbUjQK8DXGh+K+YUY5sjgA8F4kr87MXiVaCtydIIMiFF/MxiQ2xizbggHSji/+3cEyhRwyORgwpWkYIi+v64qdLuFZU6rcsCUJXJ8xiFV7of+tgfvoxva51R45gJ71Do9TMGdD5jaJFR4gpqoZYgv/KKjTOvQIP2RULFZtFe2d2leGo3nuZYILZotTwl1MU8xBF+WgwbXe8GKnrbuShRHYGV1owdha4Dk8hpNfGuEWuXpi3/N1I+GAjC/Hr2xT8OEA2+w0E3DPwHCrWy/vwP7SB6gILRfzXdSQ==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=nvidia.com; dmarc=pass action=none header.from=nvidia.com;
- dkim=pass header.d=nvidia.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Nvidia.com;
- s=selector2;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=Srjhx+SPolKf9relAUuL8yqTNJaPt46pyf7Munv1d8s=;
- b=nXns8hjvrXydXeqdHBAjgRC4IrHXd6mdBpW1Q4Ffnoq9PyA4H00Kel2+D5Hc7FqtXzjnHniQcRgDqv+vrYZYsEdytVSqNz1WDidW6mtvjA2ILL0+/wBAGbFIGYR/Dkc5xe8Rox2m28AEmv1ek1+TK88/VYAXlLxhAlJLzLKPJMQUvAzil9nuDhV1pvDdmcPOj7AECIeZd+V6TnNW7aBRqpoaExcen7Jwev2b7VFcZED9KXhsAtyb1g6DkmEUB9bexy9gmR3nsxeq9KFHHmBSDkMfMO7q0Dpnvof28s/PRHYT4eOw+gmfh39hyaFwRXGKOngae7ZenxbkvCIz7haF6Q==
-Authentication-Results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=nvidia.com;
-Received: from DM4PR12MB9736.namprd12.prod.outlook.com (2603:10b6:8:225::9) by
- BN7PPF2E18BD747.namprd12.prod.outlook.com (2603:10b6:40f:fc02::6ca)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.21.360.7; Thu, 27 Aug
- 2026 00:41:33 +0000
-Received: from DM4PR12MB9736.namprd12.prod.outlook.com
- ([fe80::ed33:f342:886b:dc8e]) by DM4PR12MB9736.namprd12.prod.outlook.com
- ([fe80::ed33:f342:886b:dc8e%6]) with mapi id 15.21.0360.006; Thu, 27 Aug 2026
- 00:41:33 +0000
-From: Tushar Dave <tdave@nvidia.com>
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1wzRXE-00075p-1x
+ for qemu-arm@nongnu.org; Thu, 27 Aug 2026 00:16:16 -0400
+Received: from mail-pj1-x1035.google.com ([2607:f8b0:4864:20::1035])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1wzRXA-0006RP-Pv
+ for qemu-arm@nongnu.org; Thu, 27 Aug 2026 00:16:15 -0400
+Received: by mail-pj1-x1035.google.com with SMTP id
+ 98e67ed59e1d1-3964e76d0f4so2142879a91.3
+ for <qemu-arm@nongnu.org>; Wed, 26 Aug 2026 21:16:12 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1787804171; x=1788408971; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+ :message-id:reply-to:content-type;
+ bh=O6gacjEjxvbm1cJ+51qk4C26wlA+IFFiXxYyLIR8Ft0=;
+ b=W7QlXN258XQ3pNnsXmrm7itN436yIV5UcyUo2uplpp8L9NJFlWaZTRv5Kfz7X7zU1/
+ 2Cx313vxmyeGVmrC0FC9ZVAarsv6Ad+akI/EL1/xrU7Hj07hOT96ejSScbts6qhJey1L
+ N0dDT6jtbMNwEeU0TntkyT9vKYO/3LLF1hVeFyl+gZo9pO9BgsmgVSV5pgIXoISFp9wa
+ i4kQRkSgOfnZxPIGzaAI3hf7bK57oJgAPu8b/hYCLZmmAXHqspWsLrbkjfbqeOWlFC1k
+ MzHV2Q8fZXhSbnyic/9bSnRp8LD64f3yNDAckmK6QecsEd6zvRfdVKv2KVX683NlcDZ8
+ L0EA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20251104; t=1787804171; x=1788408971;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
+ :to:cc:subject:date:message-id:reply-to:content-type;
+ bh=O6gacjEjxvbm1cJ+51qk4C26wlA+IFFiXxYyLIR8Ft0=;
+ b=DUZJ09F6F3H1xiuksrlYZTVJB+M0NPL29x6WP08p+T7lQoy2RNpBvy130h3rapm2CQ
+ QAnnEn3OE9OoLz1gaMr/YzUCoMYprJ5WA6+vgl3e7godkOqK7IeDk7S67oLtQ7Z9in3e
+ J8LaTjJFmbpnY7qFSVx/228hlq7V3XW87wrzGLgbuh3trc674gCWXUwJ/95Fy/OtEA+r
+ goV1qj1kFoNKssOFlHK1XqYKPEzYVeltKvU/X3tbSWR3u430Ucf77r74oJTSIsfPjbZV
+ 6ueoWSwVmwAvezI/nNzoUvrSMZIieerRqCC4FkgqVcqSlMphUtk+6TgNAzGdyZbDKtQP
+ Dg+w==
+X-Gm-Message-State: AFuF++nzcSV5vFZ2nQCBmeRd5Kid0G7K6BYQ5drj6Of8rtmDl8twqy6V
+ FifYrkI5SytZJcor6+uIoSKh0hoCpF1wi6EGKiNJdMA4fbSj3ruvl1np1Mx/r5EonDQ=
+X-Gm-Gg: AR+sD13BEwzEDDY3GVk2l0QLTMYwxCHIBJ8ZUPKHzniCdnGKrSU5wB9oIiX7LuhCWJ1
+ M6//nYNh+ei5XFIYgOwcbPu8qQ42uUmVIx+9ZxWvz/G7WhAJjSsysq7akB8itQaaebtXVknFiaY
+ jdmkuGTLyvyafxFYeCVkMC+rPZL/6yyRMIrmtgmItQulXavSDj14p9tk/uo6OpMI4620wW1DLfY
+ qGUJfVh5EIo712aaqL2yN7hhDKHurUtA6WEQtu1qFcXTNfdYwnc6tLYLOS6Y1txNxdfBAnJH2E6
+ jlMds3qT8By0CjyTpMh5NGbVWJCJCkAUGhQucRJsuCIQJFbRltJtls2H6GcCbEbwfGQHb4aVi0p
+ XBnhdL6FyWOjk8Eu5JgjRgy3iLOBfBWIGuFpzgcIt1U2MIDDoD/VKARMsmf9y+kd4CjcbfkTcdm
+ wkMGymZ8TLPz+oE2viCxLanhcGPIq7O5Q0PHuAET8Fee1iwjGTqTNaaD7vtZPYVmA7sOThs2RrW
+ GlxOoAMG7f+ummMoQ==
+X-Received: by 2002:a17:90b:586d:b0:396:4cbf:45bc with SMTP id
+ 98e67ed59e1d1-3966d491c45mr25902004a91.16.1787804171206; 
+ Wed, 26 Aug 2026 21:16:11 -0700 (PDT)
+Received: from stoup (174-21-93-59.tukw.qwest.net. [174.21.93.59])
+ by smtp.gmail.com with ESMTPSA id
+ 98e67ed59e1d1-396b0d81682sm969597a91.7.2026.08.26.21.16.10
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Wed, 26 Aug 2026 21:16:10 -0700 (PDT)
+From: Richard Henderson <richard.henderson@linaro.org>
 To: qemu-devel@nongnu.org
-Cc: alwilliamson@nvidia.com, jgg@nvidia.com, skolothumtho@nvidia.com,
- qemu-arm@nongnu.org, peter.maydell@linaro.org, mst@redhat.com,
- marcel.apfelbaum@gmail.com, devel@edk2.groups.io
-Subject: [RFC PATCH v2 5/5] hw/arm/virt: add highmem-mmio-base property
-Date: Wed, 26 Aug 2026 19:40:24 -0500
-Message-Id: <20260827004024.598351-6-tdave@nvidia.com>
-X-Mailer: git-send-email 2.34.1
-In-Reply-To: <20260827004024.598351-1-tdave@nvidia.com>
-References: <20260827004024.598351-1-tdave@nvidia.com>
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-ClientProxiedBy: SJ0PR03CA0267.namprd03.prod.outlook.com
- (2603:10b6:a03:3a0::32) To DM4PR12MB9736.namprd12.prod.outlook.com
- (2603:10b6:8:225::9)
+Cc: qemu-arm@nongnu.org, pierrick.bouvier@oss.qualcomm.com,
+ philmd@oss.qualcomm.com
+Subject: [PATCH v4 1/6] target/arm: Move -cpu max stuff out of cpu32.c
+Date: Wed, 26 Aug 2026 21:15:52 -0700
+Message-ID: <20260827041557.775080-2-richard.henderson@linaro.org>
+X-Mailer: git-send-email 2.53.0
+In-Reply-To: <20260827041557.775080-1-richard.henderson@linaro.org>
+References: <20260827041557.775080-1-richard.henderson@linaro.org>
 MIME-Version: 1.0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: DM4PR12MB9736:EE_|BN7PPF2E18BD747:EE_
-X-MS-Office365-Filtering-Correlation-Id: 7118be92-baac-43fd-8358-08df03d3f176
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;
- ARA:13230040|1800799024|23010399003|366016|376014|10067099003|18002099003|22082099003|3023799007|56012099006|11063799006;
-X-Microsoft-Antispam-Message-Info: MYYwLQ5nq4M48VCS6GZJEXJ2RpfM8X5bRE1nWc74Fw01f42PE2XwZKvyPu0YmZvlMBxwk7+chzkr1vNFfjI+RJFw8QGMIu5x9qI1aArL39Q2AHqz9jXW228PD0bj9U+XLfF5YZ6MerXhAoIxnDN02HU26IKY5Bxnuw0yhfiTYHSzrmO5F43Nl2pPtZX0Q46ueVnBh1tlVuGyYZ67L9Jp3OFPGMDEsrbjQw7oRLVincMUGtY+a/obRw8g/qvNWSVBN8mO0aWCrdYCeVlu/YWngjMcL+aM4P0Paf5/BnlB6BYeQI5OLHaxbJY7gLBUl4VK5ZE/lirl4xETlRqAC6M6qLr+G1NWAX28qqcHp4OMio3/8mGwNVcQDtbxMYQxNXpC4//oWf5GqGAY2Ga6K/BMKFT70bRHeIW9VrkEu09UAnl69fvypVreLv/3EKaNYE4glsc+5GTlhLOlJMUB2HBzbd0aw70qX39sZylW0ysEuwejx93T5sWvgzrBwWjJ0Kv9NxsRKatFqjf6shdXCg6FbaLxwlxb0kLIE50BOvTeu71W2HrupE88o/XP+OR2WtM9zm2T8MdIpe7KejLCssee/7nFQ5PJ3mNd2T/JPF4ShhT02MQADL2dCoeP3XlGhV1J77yHvspwrn5nwNPIGwhjCgd1mWJrkBSSoewkJWNZcp8=
-X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:DM4PR12MB9736.namprd12.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(13230040)(1800799024)(23010399003)(366016)(376014)(10067099003)(18002099003)(22082099003)(3023799007)(56012099006)(11063799006);
- DIR:OUT; SFP:1101; 
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?FIqwW+P7xPJF0IsHx4pBkzAfqNRuMYSlVLsbcQjsgUGQH0LyKFQfVhVfFZjF?=
- =?us-ascii?Q?mDT4jMF+oViUFWjD8SMd10EZvenjXeSXHCtlbB4oudYzlqk7Sykf7OFz3QHr?=
- =?us-ascii?Q?WQoNywSC9E4aJzyMfU+CaR5Xp5qe4Zcz29pzU0wEyTN9NnSET9ZFFeYvswCv?=
- =?us-ascii?Q?zcrhVVPSu4o8sCV2p74yOmL9MAM4WpcXBsqomWQa2YCfYXSXaMtFJRDDwNot?=
- =?us-ascii?Q?E+LW1Zyo+eiuXw7f2XyYwVcZUp1NBBryBLcgZo17ZI0AUgFZ47hT4DW/XAir?=
- =?us-ascii?Q?D5fwDIwo5skvKOWiM3AxV7BS1muUiAi3oD5SKPiyfuoVnJd2h0gl1XlBW/oJ?=
- =?us-ascii?Q?pI8TV79j1DzgXLMY1W2kSnOhCCH2wQJvpY+lls2u2boGh+e5M0DpKHoCmmKO?=
- =?us-ascii?Q?JLqXvGqQVb7kXHm2PvHD+mBpwg8Hn6mFWYm1lAAfRsAZolYSXRAIIpHaAYHg?=
- =?us-ascii?Q?ErjS0Liaw7mJtTBe6nZSZaarLeXYfYfqukqy1bUQgRJmnLdIUudfvxfsEsx7?=
- =?us-ascii?Q?gKyX/MoktGJ4IXz/f7gSvpVKg2gCugtQinjqiWl/VnR1QWv+NcfBitzoK8i5?=
- =?us-ascii?Q?nCAoBRus2I39pOTufJj8Ip29autvFpqiFx7O5D2ayjksaTlQ7/+Wxn5YREJ3?=
- =?us-ascii?Q?YE3O5qIKgTiOixYKARgqtUM3LJpd2Fxhn5d3x9dXOdCyE63NsMIVFbyoEjE4?=
- =?us-ascii?Q?IgSQjuWtC6VJwMk66Frc61E0l6OnPBFnNkpPlvLPrxwvHKXrVZFPh+1wLQtg?=
- =?us-ascii?Q?Aq1B/QCbu2Vf4ZA/BWV8d8G23rpQjBNufntZGp/LekYUFjMvfv47dEivTXe0?=
- =?us-ascii?Q?hhpGJbN7cUX82T4CI/SWJQETJ+5OpQrysvesaYXBrOX4wWjpe7N55TztWREE?=
- =?us-ascii?Q?1rLyPDTMeaOWfPgEQfMizjOGEWocQ54OYVA5w/8gLvzgBTSd1ljM9/r9Q4v5?=
- =?us-ascii?Q?NBAymnCapA984LPpCdOwfxKXmIR/Rmgpiy/TdGz8nMJSWS9kLskx2zFkhtUs?=
- =?us-ascii?Q?s8EiSqKIPYEp0rAZB0jrXcuBMx9HAtfKGFEe5itxEnbHj7IkYVbIv7cxQbSQ?=
- =?us-ascii?Q?oFLMKKz1Zqaup9lKa60SX0IQw60GkRjVlwmcenLQO1dCkOS06zyW1UV3As3G?=
- =?us-ascii?Q?DwN+bgAuCgPPkXnIxaCgUWbQQAiAIGnNuDYs+Adt5nZN2dmyb6jPrsB0msDi?=
- =?us-ascii?Q?AePzBceYCzcX0bcTnu0Q/iSMbNtHBFId6F6oInZSfUkxa2rm/AP89H13nKkH?=
- =?us-ascii?Q?PBGGxM6qpVD9YSAG7FMgjEXtYB20axs5y8d8ZmNAwpc+rX6MUQAJyW89yS7x?=
- =?us-ascii?Q?vemaR/hyqVPiBKRoTwRmI+D+kHdf0YJbyraUJFH3T6ehlnEA7iwsjZrGNYxK?=
- =?us-ascii?Q?5sEvVfSgPyd4+tPMBuZMlEfHxzG8BGQoBuzCBNfK0hQedsgrQZPVRBbHQaSN?=
- =?us-ascii?Q?hQAQMOQvIOIB1aIDbsYozC/gPb7Ls87pykMVwR9vBVaxxirXsp2mSoP5kQ0a?=
- =?us-ascii?Q?Ze48CTqqDJY1EGFsojfpy77HHmrBOG9jUYibKSTQMSJ9VQEKSR8tPR1rNPvR?=
- =?us-ascii?Q?MsILQ8Rd2fSt8RvOiPNlGQmP/aMGs6PYAaILFgNbwp1nqvnaLZuL/9BbOuqF?=
- =?us-ascii?Q?XSKT3muhvdbFgCLx+6pWhLkqQGNMmSw8g7DiOIYQ9gRDE+tPgZJEx3/DWw22?=
- =?us-ascii?Q?1viFBwxmh0nJeGbGyYdhhb6fFsGA/ITQBhBR+/iLBPE3B2Ah?=
-X-OriginatorOrg: Nvidia.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 7118be92-baac-43fd-8358-08df03d3f176
-X-MS-Exchange-CrossTenant-AuthSource: DM4PR12MB9736.namprd12.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 27 Aug 2026 00:41:33.4944 (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 43083d15-7273-40c1-b7db-39efd9ccc17a
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: Syqm2DBnmX+1Uwg9qeOCMYegzEh5C/E4mRVYH8ab1UFuZnq6cj+QY3naSqecUZpzm9y7J2b2tbdX9nXIYzQJEA==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: BN7PPF2E18BD747
-Received-SPF: permerror client-ip=2a01:111:f403:c107::9;
- envelope-from=tdave@nvidia.com;
- helo=PH7PR06CU001.outbound.protection.outlook.com
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2607:f8b0:4864:20::1035;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pj1-x1035.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- SPF_HELO_NONE=0.001, SPF_NONE=0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ UPPERCASE_50_75=0.008 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -138,113 +101,269 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Add a highmem-mmio-base property to override the base of the virt
-machine's high PCIe MMIO window, alongside the existing
-highmem-mmio-size:
-
-  -machine virt,highmem-mmio-base=<addr>,highmem-mmio-size=<size>
-
-Some PCI devices require MMIO resources to be placed within a
-specific address range that cannot be satisfied by the default
-placement. The configured base is validated to be non-zero, aligned
-to highmem-mmio-size, non-overlapping with the existing high memory
-layout, and within the configured physical address space.
-
-Signed-off-by: Tushar Dave <tdave@nvidia.com>
+Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- hw/arm/virt.c | 62 ++++++++++++++++++++++++++++++++++++++++++++++++++-
- 1 file changed, 61 insertions(+), 1 deletion(-)
+ target/arm/tcg/cpu-max-v8.c | 117 ++++++++++++++++++++++++++++++++++++
+ target/arm/tcg/cpu32.c      | 111 ----------------------------------
+ target/arm/tcg/meson.build  |   1 +
+ 3 files changed, 118 insertions(+), 111 deletions(-)
+ create mode 100644 target/arm/tcg/cpu-max-v8.c
 
-diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-index cb9cd2d25c..47653b8753 100644
---- a/hw/arm/virt.c
-+++ b/hw/arm/virt.c
-@@ -2515,9 +2515,34 @@ static void virt_set_high_memmap(VirtMachineState *vms,
- 
-     for (i = VIRT_LOWMEMMAP_LAST; i < ARRAY_SIZE(extended_memmap); i++) {
-         region_enabled = virt_get_high_memmap_enabled(vms, i);
--        region_base = ROUND_UP(base, extended_memmap[i].size);
-         region_size = extended_memmap[i].size;
- 
-+        if (i == VIRT_HIGH_PCIE_MMIO && extended_memmap[i].base) {
-+            region_base = extended_memmap[i].base;
+diff --git a/target/arm/tcg/cpu-max-v8.c b/target/arm/tcg/cpu-max-v8.c
+new file mode 100644
+index 00000000000..5c0ba28edf8
+--- /dev/null
++++ b/target/arm/tcg/cpu-max-v8.c
+@@ -0,0 +1,117 @@
++/* SPDX-License-Identifier: GPL-2.0-or-later */
 +
-+            if (region_base < base) {
-+                error_report("highmem-mmio-base 0x%"PRIx64" overlaps prior "
-+                             "high memory layout (must be >= 0x%"PRIx64")",
-+                             region_base, base);
-+                exit(1);
-+            }
-+            if (region_base % region_size != 0) {
-+                error_report("highmem-mmio-base 0x%"PRIx64" must be "
-+                             "aligned to highmem-mmio-size 0x%"PRIx64,
-+                             region_base, region_size);
-+                exit(1);
-+            }
-+            if (region_base + region_size > BIT_ULL(pa_bits)) {
-+                error_report("highmem-mmio-base + highmem-mmio-size "
-+                             "[0x%"PRIx64", 0x%"PRIx64") exceeds %d-bit PA "
-+                             "space", region_base,
-+                             region_base + region_size, pa_bits);
-+                exit(1);
-+            }
-+        } else {
-+            region_base = ROUND_UP(base, region_size);
-+        }
++#include "qemu/osdep.h"
++#include "cpu.h"
++#include "internals.h"
 +
-         vms->memmap[i].base = region_base;
-         vms->memmap[i].size = region_size;
- 
-@@ -3418,6 +3443,33 @@ static void virt_set_highmem_mmio_size(Object *obj, Visitor *v,
-     extended_memmap[VIRT_HIGH_PCIE_MMIO].size = size;
- }
- 
-+static void virt_get_highmem_mmio_base(Object *obj, Visitor *v,
-+                                       const char *name, void *opaque,
-+                                       Error **errp)
++
++/* Share AArch32 -cpu max features with AArch64. */
++void aa32_max_features(ARMCPU *cpu)
 +{
-+    uint64_t base = extended_memmap[VIRT_HIGH_PCIE_MMIO].base;
++    uint32_t t;
++    ARMISARegisters *isar = &cpu->isar;
 +
-+    visit_type_size(v, name, &base, errp);
++    /* Add additional features supported by QEMU */
++    t = GET_IDREG(isar, ID_ISAR5);
++    t = FIELD_DP32(t, ID_ISAR5, AES, 2);          /* FEAT_PMULL */
++    t = FIELD_DP32(t, ID_ISAR5, SHA1, 1);         /* FEAT_SHA1 */
++    t = FIELD_DP32(t, ID_ISAR5, SHA2, 1);         /* FEAT_SHA256 */
++    t = FIELD_DP32(t, ID_ISAR5, CRC32, 1);
++    t = FIELD_DP32(t, ID_ISAR5, RDM, 1);          /* FEAT_RDM */
++    t = FIELD_DP32(t, ID_ISAR5, VCMA, 1);         /* FEAT_FCMA */
++    SET_IDREG(isar, ID_ISAR5, t);
++
++    t = GET_IDREG(isar, ID_ISAR6);
++    t = FIELD_DP32(t, ID_ISAR6, JSCVT, 1);        /* FEAT_JSCVT */
++    t = FIELD_DP32(t, ID_ISAR6, DP, 1);           /* Feat_DotProd */
++    t = FIELD_DP32(t, ID_ISAR6, FHM, 1);          /* FEAT_FHM */
++    t = FIELD_DP32(t, ID_ISAR6, SB, 1);           /* FEAT_SB */
++    t = FIELD_DP32(t, ID_ISAR6, SPECRES, 1);      /* FEAT_SPECRES */
++    t = FIELD_DP32(t, ID_ISAR6, BF16, 1);         /* FEAT_AA32BF16 */
++    t = FIELD_DP32(t, ID_ISAR6, I8MM, 1);         /* FEAT_AA32I8MM */
++    SET_IDREG(isar, ID_ISAR6, t);
++
++    t = cpu->isar.mvfr1;
++    t = FIELD_DP32(t, MVFR1, FPHP, 3);            /* FEAT_FP16 */
++    t = FIELD_DP32(t, MVFR1, SIMDHP, 2);          /* FEAT_FP16 */
++    cpu->isar.mvfr1 = t;
++
++    t = cpu->isar.mvfr2;
++    t = FIELD_DP32(t, MVFR2, SIMDMISC, 3);        /* SIMD MaxNum */
++    t = FIELD_DP32(t, MVFR2, FPMISC, 4);          /* FP MaxNum */
++    cpu->isar.mvfr2 = t;
++
++    FIELD_DP32_IDREG(isar, ID_MMFR3, PAN, 2);          /* FEAT_PAN2 */
++
++    t = GET_IDREG(isar, ID_MMFR4);
++    t = FIELD_DP32(t, ID_MMFR4, HPDS, 2);         /* FEAT_HPDS2 */
++    t = FIELD_DP32(t, ID_MMFR4, AC2, 1);          /* ACTLR2, HACTLR2 */
++    t = FIELD_DP32(t, ID_MMFR4, CNP, 1);          /* FEAT_TTCNP */
++    t = FIELD_DP32(t, ID_MMFR4, XNX, 1);          /* FEAT_XNX */
++    t = FIELD_DP32(t, ID_MMFR4, EVT, 2);          /* FEAT_EVT2 */
++    SET_IDREG(isar, ID_MMFR4, t);
++
++    FIELD_DP32_IDREG(isar, ID_MMFR5, ETS, 2);          /* FEAT_ETS2 */
++
++    t = GET_IDREG(isar, ID_PFR0);
++    t = FIELD_DP32(t, ID_PFR0, CSV2, 2);          /* FEAT_CSV2 */
++    t = FIELD_DP32(t, ID_PFR0, DIT, 1);           /* FEAT_DIT */
++    t = FIELD_DP32(t, ID_PFR0, RAS, 1);           /* FEAT_RAS */
++    SET_IDREG(isar, ID_PFR0, t);
++
++    t = GET_IDREG(isar, ID_PFR2);
++    t = FIELD_DP32(t, ID_PFR2, CSV3, 1);          /* FEAT_CSV3 */
++    t = FIELD_DP32(t, ID_PFR2, SSBS, 1);          /* FEAT_SSBS */
++    SET_IDREG(isar, ID_PFR2, t);
++
++    t = GET_IDREG(isar, ID_DFR0);
++    t = FIELD_DP32(t, ID_DFR0, COPDBG, 10);       /* FEAT_Debugv8p8 */
++    t = FIELD_DP32(t, ID_DFR0, COPSDBG, 10);      /* FEAT_Debugv8p8 */
++    t = FIELD_DP32(t, ID_DFR0, PERFMON, 6);       /* FEAT_PMUv3p5 */
++    SET_IDREG(isar, ID_DFR0, t);
++
++    /* Debug ID registers. */
++
++    /* Bit[15] is RES1, Bit[13] and Bits[11:0] are RES0. */
++    t = 0x00008000;
++    t = FIELD_DP32(t, DBGDIDR, SE_IMP, 1);
++    t = FIELD_DP32(t, DBGDIDR, NSUHD_IMP, 1);
++    t = FIELD_DP32(t, DBGDIDR, VERSION, 10);      /* FEAT_Debugv8p8 */
++    t = FIELD_DP32(t, DBGDIDR, CTX_CMPS, 1);
++    t = FIELD_DP32(t, DBGDIDR, BRPS, 5);
++    t = FIELD_DP32(t, DBGDIDR, WRPS, 3);
++    cpu->isar.dbgdidr = t;
++
++    t = 0;
++    t = FIELD_DP32(t, DBGDEVID, PCSAMPLE, 3);
++    t = FIELD_DP32(t, DBGDEVID, WPADDRMASK, 1);
++    t = FIELD_DP32(t, DBGDEVID, BPADDRMASK, 15);
++    t = FIELD_DP32(t, DBGDEVID, VECTORCATCH, 0);
++    t = FIELD_DP32(t, DBGDEVID, VIRTEXTNS, 1);
++    t = FIELD_DP32(t, DBGDEVID, DOUBLELOCK, 1);
++    t = FIELD_DP32(t, DBGDEVID, AUXREGS, 0);
++    t = FIELD_DP32(t, DBGDEVID, CIDMASK, 0);
++    cpu->isar.dbgdevid = t;
++
++    /* Bits[31:4] are RES0. */
++    t = 0;
++    t = FIELD_DP32(t, DBGDEVID1, PCSROFFSET, 2);
++    cpu->isar.dbgdevid1 = t;
++
++    FIELD_DP32_IDREG(isar, ID_DFR1, HPMN0, 1);         /* FEAT_HPMN0 */
 +}
 +
-+static void virt_set_highmem_mmio_base(Object *obj, Visitor *v,
-+                                       const char *name, void *opaque,
-+                                       Error **errp)
++void aarch32_max_tcg_init(ARMCPU *cpu)
 +{
-+    uint64_t base;
-+
-+    if (!visit_type_size(v, name, &base, errp)) {
-+        return;
-+    }
-+
-+    if (base == 0) {
-+        error_setg(errp, "highmem-mmio-base cannot be 0");
-+        return;
-+    }
-+
-+    extended_memmap[VIRT_HIGH_PCIE_MMIO].base = base;
++    aarch64_aa32_a57_init(cpu, false);
++    aa32_max_features(cpu);
++#ifdef CONFIG_USER_ONLY
++    /*
++     * Break with true ARMv8 and add back old-style VFP short-vector
++     * support. Only do this for user-mode, where -cpu max is the default,
++     * so that older v6 and v7 programs are more likely to work without
++     * adjustment.
++     */
++    cpu->isar.mvfr0 = FIELD_DP32(cpu->isar.mvfr0, MVFR0, FPSHVEC, 1);
++#endif
 +}
-+
- static char *virt_get_msi(Object *obj, Error **errp)
- {
-     VirtMachineState *vms = VIRT_MACHINE(obj);
-@@ -4285,6 +4337,14 @@ static void virt_machine_class_init(ObjectClass *oc, const void *data)
-                                           "Set the high memory region size "
-                                           "for PCI MMIO");
+diff --git a/target/arm/tcg/cpu32.c b/target/arm/tcg/cpu32.c
+index bc07e33877a..34436ad6ec4 100644
+--- a/target/arm/tcg/cpu32.c
++++ b/target/arm/tcg/cpu32.c
+@@ -758,114 +758,3 @@ static void arm_tcg_cpu_register_types(void)
+ type_init(arm_tcg_cpu_register_types)
  
-+    object_class_property_add(oc, "highmem-mmio-base", "size",
-+                                   virt_get_highmem_mmio_base,
-+                                   virt_set_highmem_mmio_base,
-+                                   NULL, NULL);
-+    object_class_property_set_description(oc, "highmem-mmio-base",
-+                                          "Set the high memory region base "
-+                                          "for PCI MMIO");
-+
-     object_class_property_add(oc, "virtio-mmio-transports", "uint8",
-                                    virt_get_virtio_transports,
-                                    virt_set_virtio_transports,
+ #endif /* !CONFIG_USER_ONLY || !TARGET_AARCH64 */
+-
+-/* Share AArch32 -cpu max features with AArch64. */
+-void aa32_max_features(ARMCPU *cpu)
+-{
+-    uint32_t t;
+-    ARMISARegisters *isar = &cpu->isar;
+-
+-    /* Add additional features supported by QEMU */
+-    t = GET_IDREG(isar, ID_ISAR5);
+-    t = FIELD_DP32(t, ID_ISAR5, AES, 2);          /* FEAT_PMULL */
+-    t = FIELD_DP32(t, ID_ISAR5, SHA1, 1);         /* FEAT_SHA1 */
+-    t = FIELD_DP32(t, ID_ISAR5, SHA2, 1);         /* FEAT_SHA256 */
+-    t = FIELD_DP32(t, ID_ISAR5, CRC32, 1);
+-    t = FIELD_DP32(t, ID_ISAR5, RDM, 1);          /* FEAT_RDM */
+-    t = FIELD_DP32(t, ID_ISAR5, VCMA, 1);         /* FEAT_FCMA */
+-    SET_IDREG(isar, ID_ISAR5, t);
+-
+-    t = GET_IDREG(isar, ID_ISAR6);
+-    t = FIELD_DP32(t, ID_ISAR6, JSCVT, 1);        /* FEAT_JSCVT */
+-    t = FIELD_DP32(t, ID_ISAR6, DP, 1);           /* Feat_DotProd */
+-    t = FIELD_DP32(t, ID_ISAR6, FHM, 1);          /* FEAT_FHM */
+-    t = FIELD_DP32(t, ID_ISAR6, SB, 1);           /* FEAT_SB */
+-    t = FIELD_DP32(t, ID_ISAR6, SPECRES, 1);      /* FEAT_SPECRES */
+-    t = FIELD_DP32(t, ID_ISAR6, BF16, 1);         /* FEAT_AA32BF16 */
+-    t = FIELD_DP32(t, ID_ISAR6, I8MM, 1);         /* FEAT_AA32I8MM */
+-    SET_IDREG(isar, ID_ISAR6, t);
+-
+-    t = cpu->isar.mvfr1;
+-    t = FIELD_DP32(t, MVFR1, FPHP, 3);            /* FEAT_FP16 */
+-    t = FIELD_DP32(t, MVFR1, SIMDHP, 2);          /* FEAT_FP16 */
+-    cpu->isar.mvfr1 = t;
+-
+-    t = cpu->isar.mvfr2;
+-    t = FIELD_DP32(t, MVFR2, SIMDMISC, 3);        /* SIMD MaxNum */
+-    t = FIELD_DP32(t, MVFR2, FPMISC, 4);          /* FP MaxNum */
+-    cpu->isar.mvfr2 = t;
+-
+-    FIELD_DP32_IDREG(isar, ID_MMFR3, PAN, 2);          /* FEAT_PAN2 */
+-
+-    t = GET_IDREG(isar, ID_MMFR4);
+-    t = FIELD_DP32(t, ID_MMFR4, HPDS, 2);         /* FEAT_HPDS2 */
+-    t = FIELD_DP32(t, ID_MMFR4, AC2, 1);          /* ACTLR2, HACTLR2 */
+-    t = FIELD_DP32(t, ID_MMFR4, CNP, 1);          /* FEAT_TTCNP */
+-    t = FIELD_DP32(t, ID_MMFR4, XNX, 1);          /* FEAT_XNX */
+-    t = FIELD_DP32(t, ID_MMFR4, EVT, 2);          /* FEAT_EVT2 */
+-    SET_IDREG(isar, ID_MMFR4, t);
+-
+-    FIELD_DP32_IDREG(isar, ID_MMFR5, ETS, 2);          /* FEAT_ETS2 */
+-
+-    t = GET_IDREG(isar, ID_PFR0);
+-    t = FIELD_DP32(t, ID_PFR0, CSV2, 2);          /* FEAT_CSV2 */
+-    t = FIELD_DP32(t, ID_PFR0, DIT, 1);           /* FEAT_DIT */
+-    t = FIELD_DP32(t, ID_PFR0, RAS, 1);           /* FEAT_RAS */
+-    SET_IDREG(isar, ID_PFR0, t);
+-
+-    t = GET_IDREG(isar, ID_PFR2);
+-    t = FIELD_DP32(t, ID_PFR2, CSV3, 1);          /* FEAT_CSV3 */
+-    t = FIELD_DP32(t, ID_PFR2, SSBS, 1);          /* FEAT_SSBS */
+-    SET_IDREG(isar, ID_PFR2, t);
+-
+-    t = GET_IDREG(isar, ID_DFR0);
+-    t = FIELD_DP32(t, ID_DFR0, COPDBG, 10);       /* FEAT_Debugv8p8 */
+-    t = FIELD_DP32(t, ID_DFR0, COPSDBG, 10);      /* FEAT_Debugv8p8 */
+-    t = FIELD_DP32(t, ID_DFR0, PERFMON, 6);       /* FEAT_PMUv3p5 */
+-    SET_IDREG(isar, ID_DFR0, t);
+-
+-    /* Debug ID registers. */
+-
+-    /* Bit[15] is RES1, Bit[13] and Bits[11:0] are RES0. */
+-    t = 0x00008000;
+-    t = FIELD_DP32(t, DBGDIDR, SE_IMP, 1);
+-    t = FIELD_DP32(t, DBGDIDR, NSUHD_IMP, 1);
+-    t = FIELD_DP32(t, DBGDIDR, VERSION, 10);      /* FEAT_Debugv8p8 */
+-    t = FIELD_DP32(t, DBGDIDR, CTX_CMPS, 1);
+-    t = FIELD_DP32(t, DBGDIDR, BRPS, 5);
+-    t = FIELD_DP32(t, DBGDIDR, WRPS, 3);
+-    cpu->isar.dbgdidr = t;
+-
+-    t = 0;
+-    t = FIELD_DP32(t, DBGDEVID, PCSAMPLE, 3);
+-    t = FIELD_DP32(t, DBGDEVID, WPADDRMASK, 1);
+-    t = FIELD_DP32(t, DBGDEVID, BPADDRMASK, 15);
+-    t = FIELD_DP32(t, DBGDEVID, VECTORCATCH, 0);
+-    t = FIELD_DP32(t, DBGDEVID, VIRTEXTNS, 1);
+-    t = FIELD_DP32(t, DBGDEVID, DOUBLELOCK, 1);
+-    t = FIELD_DP32(t, DBGDEVID, AUXREGS, 0);
+-    t = FIELD_DP32(t, DBGDEVID, CIDMASK, 0);
+-    cpu->isar.dbgdevid = t;
+-
+-    /* Bits[31:4] are RES0. */
+-    t = 0;
+-    t = FIELD_DP32(t, DBGDEVID1, PCSROFFSET, 2);
+-    cpu->isar.dbgdevid1 = t;
+-
+-    FIELD_DP32_IDREG(isar, ID_DFR1, HPMN0, 1);         /* FEAT_HPMN0 */
+-}
+-
+-void aarch32_max_tcg_init(ARMCPU *cpu)
+-{
+-    aarch64_aa32_a57_init(cpu, false);
+-    aa32_max_features(cpu);
+-#ifdef CONFIG_USER_ONLY
+-    /*
+-     * Break with true ARMv8 and add back old-style VFP short-vector
+-     * support. Only do this for user-mode, where -cpu max is the default,
+-     * so that older v6 and v7 programs are more likely to work without
+-     * adjustment.
+-     */
+-    cpu->isar.mvfr0 = FIELD_DP32(cpu->isar.mvfr0, MVFR0, FPSHVEC, 1);
+-#endif
+-}
+diff --git a/target/arm/tcg/meson.build b/target/arm/tcg/meson.build
+index cbfac0036e7..35e70b004d9 100644
+--- a/target/arm/tcg/meson.build
++++ b/target/arm/tcg/meson.build
+@@ -65,6 +65,7 @@ arm_common_user_system_ss.add(
+   translate32_d,
+   vfp_d,
+   files(
++  'cpu-max-v8.c',
+   'debug.c',
+   'gengvec.c',
+   'hflags.c',
 -- 
-2.34.1
+2.53.0
 
 

@@ -4,139 +4,114 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9605DC61DC4
-	for <qemu-arm@archiver.kernel.org>; Thu, 27 Aug 2026 22:51:14 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 17B13C61DB9
+	for <qemu-arm@archiver.kernel.org>; Fri, 28 Aug 2026 00:08:34 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wziw4-0003qJ-21; Thu, 27 Aug 2026 18:51:05 -0400
+	id 1wzk8l-0006Dp-Mh; Thu, 27 Aug 2026 20:08:15 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <pierrick.bouvier@oss.qualcomm.com>)
- id 1wziw0-0003pv-SL
- for qemu-arm@nongnu.org; Thu, 27 Aug 2026 18:51:00 -0400
-Received: from mx0b-0031df01.pphosted.com ([205.220.180.131])
+ (Exim 4.90_1) (envelope-from <alistair@alistair23.me>)
+ id 1wzk8k-0006DO-Kb; Thu, 27 Aug 2026 20:08:14 -0400
+Received: from fhigh-b1-smtp.messagingengine.com ([202.12.124.152])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <pierrick.bouvier@oss.qualcomm.com>)
- id 1wzivz-0008LB-3W
- for qemu-arm@nongnu.org; Thu, 27 Aug 2026 18:51:00 -0400
-Received: from pps.filterd (m0279869.ppops.net [127.0.0.1])
- by mx0a-0031df01.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id
- 67RMdfFS1268023
- for <qemu-arm@nongnu.org>; Thu, 27 Aug 2026 22:50:56 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qualcomm.com; h=
- cc:content-transfer-encoding:content-type:date:from:in-reply-to
- :message-id:mime-version:references:subject:to; s=qcppdkim1; bh=
- zSqXmmGO52LKPy+zDIzGfsXMDBn7E1gw+1GsgRIOGig=; b=M4ZAUBBjeDC0T2IJ
- 8bA7YzTV0IZbZsX8gOOoIc6vdP5n3EdMChGRoJwGluJSYDIoSqNLZFsflZrcyHhb
- +X1iNfMmksXx2PTSgbgBTCf/SYUvQ/qrDOpcBvBY9PDShmxDkgL6bK5Zp8YePHPG
- oGM7swOc93/tdIb+c33AA77eAFXgdxrYHbC+OZ/zlN+odFeA79zBU1NqOyrFVIi+
- la2E9uX04qlsexi7odPCxTLGlEpOQEkjAo7M3ENwz8SnHO0oAyUiSxprrRhK/U21
- 47v/xJC+wNKwyrSS+R9JfECYW2fI50t05+inSdW7EK2e3wCknFt4Xq+DoAaidcJs
- Cy9hiQ==
-Received: from mail-pj1-f72.google.com (mail-pj1-f72.google.com
- [209.85.216.72])
- by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 4ganr6a9xx-1
- (version=TLSv1.3 cipher=TLS_AES_128_GCM_SHA256 bits=128 verify=NOT)
- for <qemu-arm@nongnu.org>; Thu, 27 Aug 2026 22:50:56 +0000 (GMT)
-Received: by mail-pj1-f72.google.com with SMTP id
- 98e67ed59e1d1-39640eebc57so964777a91.0
- for <qemu-arm@nongnu.org>; Thu, 27 Aug 2026 15:50:56 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=oss.qualcomm.com; s=google; t=1787871056; x=1788475856; darn=nongnu.org;
- h=content-transfer-encoding:content-type:in-reply-to:content-language
- :from:references:cc:to:subject:user-agent:mime-version:date
- :message-id:from:to:cc:subject:date:message-id:reply-to:content-type;
- bh=zSqXmmGO52LKPy+zDIzGfsXMDBn7E1gw+1GsgRIOGig=;
- b=cJaL52yAq+tlIXirHGatpMnZg2KE2umRKteV4ug4OySem4dieRYV5BGC+EPROhCXui
- LV7SOuIVpOq63z1WM/j6QKFAuKHA1POAyVqNyh/86RGbfQnjP7Xxae3ErIR02tzvho6y
- +eQLlnS3YB/oMNDzaYkpbYcEpgqEBGAci/xL2/rdBdSWwcpNv2r8MZ7WBPGTBksrsZxA
- ZDOWl//qXMlzhTvhWTJnCxw1Cucpy1AXdszYqDpLUYVc9WKMqbqVfTyr0vYnkIuacUD0
- l+u52jXJ+ROHMfdhEhAw+wRHJdFKW9aA+BqG/vtobeDFi6VIcoq9+u4Qj4GTHIwFGkCt
- 6cWQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1787871056; x=1788475856;
- h=content-transfer-encoding:content-type:in-reply-to:content-language
- :from:references:cc:to:subject:user-agent:mime-version:date
- :message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
- :message-id:reply-to:content-type;
- bh=zSqXmmGO52LKPy+zDIzGfsXMDBn7E1gw+1GsgRIOGig=;
- b=Ip9BCQXv/7eKdZz9R//HFeUbllciVa8goprjUfshN8q0BAtF6pa/N/DfNL72G/HSbp
- IoGcaL9DBeVvaflz8wZdry2CLSVeAahObA5C6XnSBMdL0JKcYGDqLuTLrgbA3k6txV5N
- GAWZxAiSFlBVaLS4n/tiO1WzJpa2QS4JjPf0o0Er8iejBA2DeK7hyhoactcqfNi19NFP
- K1BSZLKp4jiVNYfHgednomB7+AYd7n5VJjS04QjMbEFOZvD0102G7sL1ezBT1Fd75+6+
- Tq1sXYLSaJPw5gCWJgrWr8hO1x+ectwTFRO5a6JcuDjpa517a+g7yKgeah/F36V0Spgw
- tadA==
-X-Gm-Message-State: AFuF++k6QRopXDWmjchEdJihdQaT5eI1TrU0ReWsa9N7L2zQfzYwXR9o
- jb0N1lf+GVd8DPxur6SPu8KBp2MBYObFCmBfpsg/fyJNjkHkTh06ljDJbqDc9qb23iWcQ5tZOOk
- oQMStWWexQqzN4t0Yn3jLKUpF+MaWe90G/TwRqK4i3kYbHw6D2RbOyYU=
-X-Gm-Gg: AR+sD11/UbiwBS0BuHYlJgCTi3tIoDfRszBtPseEdMGCz0+UaU0uX3zrlHNIju1Fdli
- IbzZNSwU4B6+ztx/AQDqLRbC5eUDQG9lL6Rj4s75Rnurqgld1LGjidXlFSKuT+PqSrkBZ9pVYNO
- UPO/VCLyV7eyPVuyD9NDFoIshKvLxHMDYjrQgjeTvFKBCrIChcT5Ow/GUTalTA6agRyRWLGD2Hd
- bZpgnM2UbPCl6Ol/A4bS8asAJQsw8hiYapBHp/ThTnE8klOxoQPjljRoLw38t9yKP9V7mLedI1c
- 84R7KSgCe3oRgDP3IneGg+wgJhouMseaIwi/e+ydS+GpVBHOKdWswXD1ngl0wJ4epyKGkl++7l4
- T9oRlV4tnV/mkBC+8Jpw5tEQ6LyK8BqG29BoV7jsEtTor2PXsa/WM7gk+uyIu3Bvi3QRf
-X-Received: by 2002:a17:90b:51d2:b0:38f:26c7:165e with SMTP id
- 98e67ed59e1d1-396d0f8ffdamr4945981a91.9.1787871055813; 
- Thu, 27 Aug 2026 15:50:55 -0700 (PDT)
-X-Received: by 2002:a17:90b:51d2:b0:38f:26c7:165e with SMTP id
- 98e67ed59e1d1-396d0f8ffdamr4945900a91.9.1787871055297; 
- Thu, 27 Aug 2026 15:50:55 -0700 (PDT)
-Received: from [192.168.1.199] (216-71-219-44.dyn.novuscom.net.
- [216.71.219.44]) by smtp.gmail.com with ESMTPSA id
- 5a478bee46e88-3283d60b539sm20907481eec.1.2026.08.27.15.50.54
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 27 Aug 2026 15:50:54 -0700 (PDT)
-Message-ID: <b3609e37-cd97-4f7e-8d84-9b6e2feeced5@oss.qualcomm.com>
-Date: Thu, 27 Aug 2026 15:50:53 -0700
+ (Exim 4.90_1) (envelope-from <alistair@alistair23.me>)
+ id 1wzk8h-0006WG-Ix; Thu, 27 Aug 2026 20:08:14 -0400
+Received: from phl-compute-02.internal (phl-compute-02.internal [10.202.2.42])
+ by mailfhigh.stl.internal (Postfix) with ESMTP id 690807A00D9;
+ Thu, 27 Aug 2026 20:08:08 -0400 (EDT)
+Received: from phl-frontend-04 ([10.202.2.163])
+ by phl-compute-02.internal (MEProxy); Thu, 27 Aug 2026 20:08:09 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=alistair23.me;
+ h=cc:cc:content-transfer-encoding:content-type:content-type
+ :date:date:from:from:in-reply-to:in-reply-to:message-id
+ :mime-version:references:reply-to:subject:subject:to:to; s=fm3;
+ t=1787875688; x=1787962088; bh=BOZJR3VVH47eUCp5RvSlZ5FawNdXQA0y
+ 3EkgMljkMEE=; b=wlJ4MkH9wFSWsO3Sji2Sq4BGe1fZEROW8EQTS09diOtPla+E
+ FtAD0tYQv+0UCWHyqYoeAxdoMcjJ28JEyP1W6ZsLmaftpC/rzL/CBB0xF7LAgaGr
+ uDBbxvR6M9BYL8YatwFzBNqqTJ5AETIY1BluGZLCCXS16TDhY4+VECIepeNqUuKe
+ qXGxZKIgisNh+UoVRcM6sW+/hYbbNeUrUZykCEPqBKXWpUYSsS9apJVGhk5IiibB
+ Jo5/Z77ZS/MOksIHgXwfSbcp+uAIiUsAQWQirrPJQ+n1iGOs6V2sZdOTV122QsIa
+ NexX/hI6f6VNj4zbpmHapXb6pO1p9AJ6KB8PVQ==
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
+ messagingengine.com; h=cc:cc:content-transfer-encoding
+ :content-type:content-type:date:date:feedback-id:feedback-id
+ :from:from:in-reply-to:in-reply-to:message-id:mime-version
+ :references:reply-to:subject:subject:to:to:x-me-proxy
+ :x-me-sender:x-me-sender:x-sasl-enc; s=fm3; t=1787875688; x=
+ 1787962088; bh=BOZJR3VVH47eUCp5RvSlZ5FawNdXQA0y3EkgMljkMEE=; b=j
+ RnTxIfa3eoQqesteWXOgr8PtLGrnHL4k4sqBx9FXRw/dSgkhADwIs7wYg9z58z/E
+ kKGWUxD6FUbu53RjUi4YVPJVmm5wS/UUN9mLP+H5VwS3a8DRTF8FqluASO9k21jE
+ ITbojPyc0jU3RegJAw41IV8LzzdbQSjRQEQ0muWcirNQMnbU927weCbBGerANhs6
+ vz2PpeE+DQYgWQKiC13j3Jm1TcUMBJmu8E3PjPRtEvD4RkAZiJmjtyoRRy3KOY2D
+ YQt7oB/o1E8mjkGZI/V9zO5q3yuGaOt2jgYti0PbNblsfaOEmgSfaKL8qnIq0W2m
+ ShS1TB7xo6/ZvQ6sz4lxg==
+X-ME-Sender: <xms:ZtGQari9ElGEo5z4Ywi-IoaHF_OaJtodeg-XMXufi66iGKTVc2qbQA>
+ <xme:ZtGQapp2HRWHezFxL_JOqFdko50RjukKXl8reimjyNREwwuvmdd6pdhZ-WBxBRPWX
+ En3-cXZuafEMjLJlrTF72otDSqk664LjQSsrWj-HaEb9A0he5HxPN4>
+X-ME-Received: <xmr:ZtGQapyFA_zD3oJqCSNkHtwbDLnn_vnWHsNRVW2jRrqXiap55XmvmO-Z0PCU2f5fRQqiY-q9q3Fbo_IJ8srlMmRy9jQ>
+X-ME-Proxy-Cause: dmFkZTGoUImZX0MgnIa0NA3cVRDDZ6yZQ5ecoNAMTTjH5DBE+LuNLzuOjXKtL75mZvws5Y
+ Vdg4ooMMVtA6b5uOkOqkw7ZxcjoszrZMJF0GX76e9m2fuALSZ3VPf8dZz+Rio2fCdjRcfd
+ Y/2+9fSkN2dWy37jzlCSQHbSTBQuGi8OpbkZsIa+Ads0CsMHCqMopQmfk7El0TdV8php9N
+ SdXFmVZwod+58HRfVGaOfE12IN6Kr2gthhOMqSO0ntB0Hp6vpZUZYaHwrkfH2JLlK/QShM
+ w04AHAfErEIWbd2457e4GqNEqjL1cQl2dwBWCBRrTlRTT6Rdvx0W/DY4/Z1scdBn0Kr1ET
+ VKmhZv9ea7oihM9VdeM0jQqh9qzbzJmjPB7AD3HEizb5IpIb4SoNZbKTbLXNKp1R9+ilQQ
+ TLifrnBr9zhjRk2AwdlJhCiJI5yHx5GWuJy+O1sqSBUaWoJo0ZpZiCTvXoRITv1EXhhawg
+ TZ1V/3BkycSk0xDGRPnNaBvuByv83g+Q9eKeC68rLFa3oKwQog9e6xkxA3l6T085SHdsnA
+ Ftpy0pPtW+pcomoNfByUK8WYM4g/NByXF4k8wZy3KyybcsRTsQT8zPkDgfPFLidil1cBt1
+ nam2p0l7YktKqFUNZpbPNgE0RXKHEtjMKKF6pBG6toLPvG41VNWBtaaZAxpg
+X-ME-Proxy: <xmx:ZtGQagxjUaPhUtrEd6rDMEgXcELYugXOKr2LuWVXRVUkpW1hEdmpuQ>
+ <xmx:ZtGQapYKWOlxQKqwiJZIMUfQAigGf5wA4vFy9lXX7Ei3C8CFOs4XPw>
+ <xmx:ZtGQaplP-JlbZ9cRZ35KiBxlFgZUvkIspJxljmNwCtPXEn9r6oi5wA>
+ <xmx:ZtGQamE797IGoIqSMu4ZURzdWaEfuvp0gGMQU3hsuBfO6lA-5k8-Ow>
+ <xmx:aNGQanYQZCrO1hjVsEvuInoY3yRZM7KRbF2Vuzq-62oQXM9ujdpGXj9M>
+Feedback-ID: ifd214418:Fastmail
+Received: by mail.messagingengine.com (Postfix) with ESMTPA; Thu,
+ 27 Aug 2026 20:07:58 -0400 (EDT)
+Message-ID: <3796c9917796a0fe26f2462645d95cc7039539af.camel@alistair23.me>
+Subject: Re: [PATCH 0/4] Rename ssi_transfer to ssi_transfer8
+From: Alistair <alistair@alistair23.me>
+To: Peter Maydell <peter.maydell@linaro.org>
+Cc: Portia Stephens <stephensportia@gmail.com>, qemu-devel@nongnu.org,
+ Palmer Dabbelt <palmer@dabbelt.com>,
+ Jamin Lin <jamin_lin@aspeedtech.com>, qemu-ppc@nongnu.org,
+ =?ISO-8859-1?Q?C=E9dric?= Le Goater	 <clg@kaod.org>,
+ Steven Lee <steven_lee@aspeedtech.com>,
+ Andrew Jeffery	 <andrew@codeconstruct.com.au>,
+ Harsh Prateek Bora <harshpb@linux.ibm.com>,
+ Subbaraya Sundeep <sundeep.lkml@gmail.com>, Troy Lee <leetroy@gmail.com>,
+ "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
+ Philippe =?ISO-8859-1?Q?Mathieu-Daud=E9?=	 <philmd@mailo.com>,
+ Strahinja Jankovic <strahinja.p.jankovic@gmail.com>,
+ qemu-arm@nongnu.org, Tyrone Ting <kfting@nuvoton.com>,
+ Nicholas Piggin	 <npiggin@gmail.com>, Aditya Gupta <adityag@linux.ibm.com>,
+ Kane Chen	 <kane_chen@aspeedtech.com>,
+ Francisco Iglesias <francisco.iglesias@amd.com>,
+ Joel Stanley <joel@jms.id.au>, Hao Wu <wuhaotsh@google.com>,
+ Glenn Miles <milesg@linux.ibm.com>, 	qemu-riscv@nongnu.org,
+ Jean-Christophe Dubois <jcd@tribudubois.net>,
+ Portia Stephens <portias@oss.tenstorrent.com>
+Date: Fri, 28 Aug 2026 10:07:56 +1000
+In-Reply-To: <CAFEAcA9zz60hTDMEMePnc1osis7dPjn5KmSksrWKATpSMc8SHw@mail.gmail.com>
+References: <20260825040452.1322251-1-stephensportia@gmail.com>
+ <CAFEAcA9etHvjL1igO4mFy5iQNy1pCbNFGaSg5HFva+YCeMkGEA@mail.gmail.com>
+ <CACYNXwKU_UuhrBWHNFtYYmSfzRsUd5jRFjSc1++xvQHxPk6rew@mail.gmail.com>
+ <CAFEAcA-Ncv9_jMMg1i+Ox_xa9oM4D_MMLGnPpqbyGJV_5B9iMg@mail.gmail.com>
+ <ac30bd54b6f1f4e4753638c9e95dbb85d8b81eca.camel@alistair23.me>
+ <CAFEAcA9zz60hTDMEMePnc1osis7dPjn5KmSksrWKATpSMc8SHw@mail.gmail.com>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+User-Agent: Evolution 3.60.2 (by Flathub.org) 
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v4 1/6] target/arm: Move -cpu max stuff out of cpu32.c
-To: Richard Henderson <richard.henderson@linaro.org>, qemu-devel@nongnu.org
-Cc: qemu-arm@nongnu.org, philmd@oss.qualcomm.com
-References: <20260827041557.775080-1-richard.henderson@linaro.org>
- <20260827041557.775080-2-richard.henderson@linaro.org>
-From: Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>
-Content-Language: en-US
-In-Reply-To: <20260827041557.775080-2-richard.henderson@linaro.org>
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwODI3MDE5MiBTYWx0ZWRfX4SVbvZ0kXwSZ
- kRd9ycx82q+iQ+a4hFYSyQghDVmP5j/DDffbRMJKNepcNQ+J1Qu1qKpDYqVMjunZ8UQHdqNK5ar
- WeH5RA3VxNGcJB/L9f6k6L75TGQEpYjrWxE3tvvaiQc3u5NCg9Wb2+We9kBmaAZ8gsNNvz4vTn8
- /Op3XNvxXXboRB0WKtas8oqHICjNSi0HdhaoGXbHZIbIxIrrrUVFESsg5r9XXD2LxPc3Nc5zfQt
- TBcCiBLR/qDE2pSex4vRttMmkgGkZH1+muykFToYfWZHWL+RKqvaRLvMCx3gCVCsgv6FB/2g79e
- OVqL6WPEZ4wsunsjjQDRESMPIy6+vAOqd7Y4XukplkkQQOZs012ppFYnZgf4dscEg+PV3oTtKvc
- rVGvCan+VJZNWrrOZoVph+KHXxvQrZ7nYpmPvzMpvktr/gz5xxL+Tu8TpAeW6w5H9ZD4aUFOki+
- lp+4n3uZjg8tAtTfIxQ==
-X-Authority-Analysis: v=2.4 cv=d5DFDxjE c=1 sm=1 tr=0 ts=6a90bf50 cx=c_pps
- a=RP+M6JBNLl+fLTcSJhASfg==:117 a=iLqgmErQAxjCjdq5jj1Aqg==:17
- a=IkcTkHD0fZMA:10 a=Sv0fKeRqtYgA:10 a=s4-Qcg_JpJYA:10
- a=VkNPw1HP01LnGYTKEx00:22 a=u7WPNUs3qKkmUXheDGA7:22 a=_glEPmIy2e8OvE2BGh3C:22
- a=KKAkSRfTAAAA:8 a=EUspDBNiAAAA:8 a=CQGHVcWclJPO4PMvv7cA:9 a=QEXdDO2ut3YA:10
- a=iS9zxrgQBfv6-_F4QbHw:22 a=cvBusfyB2V15izCimMoJ:22
-X-Proofpoint-GUID: oI2L71BLAd24OkQxbuYyqTzvKnqfuGHL
-X-Proofpoint-ORIG-GUID: oI2L71BLAd24OkQxbuYyqTzvKnqfuGHL
-X-Proofpoint-Spam-Info: AW1haW4tMjYwODI3MDE5MiBTYWx0ZWRfXzM3xIltYvJdl
- u+cdF8vZUbqO+RoWONOzz92TwoHikfbwiq3Tm0LH3ziY9KtKfWkrt1E4MlW6EwRZTX37Z9uhsfm
- PWpy8QvVoNacbrs/bJYsCo9LIWbrW+s=
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.293,Aquarius:18.0.1176,Hydra:6.1.134,FMLib:17.12.100.49
- definitions=2026-08-27_09,2026-08-27_02,2025-10-01_01
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
- phishscore=0 malwarescore=0 lowpriorityscore=0 impostorscore=0 clxscore=1015
- priorityscore=1501 spamscore=0 adultscore=0 suspectscore=0 bulkscore=0
- classifier=typeunknown authscore=0 authtc= authcc= route=outbound adjust=0
- reason=mlx scancount=1 engine=8.22.0-2606150000 definitions=main-2608270192
-Received-SPF: pass client-ip=205.220.180.131;
- envelope-from=pierrick.bouvier@oss.qualcomm.com;
- helo=mx0b-0031df01.pphosted.com
+Received-SPF: pass client-ip=202.12.124.152;
+ envelope-from=alistair@alistair23.me; helo=fhigh-b1-smtp.messagingengine.com
 X-Spam_score_int: -27
 X-Spam_score: -2.8
 X-Spam_bar: --
 X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, SPF_HELO_NONE=0.001,
+ RCVD_IN_DNSWL_LOW=-0.7, SPF_HELO_PASS=-0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -153,15 +128,60 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On 8/26/2026 9:15 PM, Richard Henderson wrote:
-> Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
-> ---
->  target/arm/tcg/cpu-max-v8.c | 117 ++++++++++++++++++++++++++++++++++++
->  target/arm/tcg/cpu32.c      | 111 ----------------------------------
->  target/arm/tcg/meson.build  |   1 +
->  3 files changed, 118 insertions(+), 111 deletions(-)
->  create mode 100644 target/arm/tcg/cpu-max-v8.c
-> 
+On Thu, 2026-08-27 at 12:17 +0100, Peter Maydell wrote:
+> On Thu, 27 Aug 2026 at 12:03, Alistair <alistair@alistair23.me>
+> wrote:
+> >=20
+> > On Thu, 2026-08-27 at 11:53 +0100, Peter Maydell wrote:
+> > > But isn't this just the way the SSI specification is? If we're
+> > > modelling a "you just have to get this right in software" bit
+> > > of hardware then we don't need to somehow try to add extra
+> > > checks in QEMU for whether the software hasn't actually done
+> > > things right.
+> >=20
+> > From my reading of things this is a bug in QEMU, not a guest issue.
+> >=20
+> > The fact that aspeed_smc_flash_setup() for example iterates over a
+> > larger value to send a single byte at a time shows that currently
+> > everyone *thinks* think function should send a single byte.
+>=20
+> Doesn't that just show that the aspeed flash controller knows
+> it is always talking to an 8-bit SSI device ? It wouldn't
 
-Reviewed-by: Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>
+But I don't think that's guaranteed to be true.
+
+On real hardware the software could know that it's only ever connected
+to an 8-bit SSI device, and set the driver accordingly. That seems
+entirely possible.
+
+But the hardware seems to support larger sizes reading [1].
+
+In this case the QEMU code is the hardware, and I don't see how we know
+we are only ever accessing an 8-bit device.
+
+1:
+https://patchew.org/linux/20220304083643.1079142-1-clg@kaod.org/20220304083=
+643.1079142-5-clg@kaod.org/
+
+> surprise me if the SPI-NOR standard in particular insisted on
+> 8-bit transfers, though I can't find anything claiming to be
+> that standard.
+>=20
+> > So it does seem broken today. Making the current function clear
+> > seems
+> > like a good step. Supporting different or larger transfers in the
+> > future is then possible.
+>=20
+> I think the current interface already supports different or
+> larger transfers. We just happen to not be using that.
+
+Kind of. It does support larger transfers, but there is no size
+argument. So how can the SSI device know how much was sent? Everything
+seems to just assume a single byte, but it has no way to actually know
+that.
+
+Alistair
+
+>=20
+> -- PMM
 

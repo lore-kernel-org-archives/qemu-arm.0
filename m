@@ -4,79 +4,81 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CB6AEC61DCB
-	for <qemu-arm@archiver.kernel.org>; Fri, 28 Aug 2026 22:27:42 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5B0B1C61DB9
+	for <qemu-arm@archiver.kernel.org>; Fri, 28 Aug 2026 22:27:50 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1x0526-0002il-D0; Fri, 28 Aug 2026 18:26:46 -0400
+	id 1x052L-0002tR-Mt; Fri, 28 Aug 2026 18:27:01 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1x0524-0002iN-U5
- for qemu-arm@nongnu.org; Fri, 28 Aug 2026 18:26:44 -0400
-Received: from mail-pl1-x62b.google.com ([2607:f8b0:4864:20::62b])
+ id 1x052J-0002rL-CF
+ for qemu-arm@nongnu.org; Fri, 28 Aug 2026 18:26:59 -0400
+Received: from mail-pl1-x62d.google.com ([2607:f8b0:4864:20::62d])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1x0523-0002HO-Bs
- for qemu-arm@nongnu.org; Fri, 28 Aug 2026 18:26:44 -0400
-Received: by mail-pl1-x62b.google.com with SMTP id
- d9443c01a7336-2cacb8416a1so13935995ad.1
- for <qemu-arm@nongnu.org>; Fri, 28 Aug 2026 15:26:42 -0700 (PDT)
+ id 1x052F-0002Kp-42
+ for qemu-arm@nongnu.org; Fri, 28 Aug 2026 18:26:59 -0400
+Received: by mail-pl1-x62d.google.com with SMTP id
+ d9443c01a7336-2ce7d2adef4so22998455ad.3
+ for <qemu-arm@nongnu.org>; Fri, 28 Aug 2026 15:26:51 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1787956001; x=1788560801; darn=nongnu.org;
- h=content-transfer-encoding:content-type:mime-version:message-id:date
- :subject:cc:to:from:from:to:cc:subject:date:message-id:reply-to
- :content-type; bh=0ufLUr+4cUEKYM/Z9xjrYtxWtD8GHEnQXDnj4Sgo7XY=;
- b=zteiRAcnbpKcciHftf23g/VZykyiwTh1j+mRZ09HqbIu63Jl6v2gbXgEFvLTW3d+JA
- fnMlSIB0CNw7tFAzJAbKj88sUmam6vJIsK5g9KJwPUsGlPREYJtBTnjQf26+5xzUUO5I
- zZevhnQ0eKZ7eNYHLv5q9HiF8qRQwM8GN4k5yeVoPB0iIQfiRjTVFg5o7yDazYm1UEIN
- VC7t7y6YvSEmHw6SVJ8QpikXrHaBAzbx/KuKQ2BMIAWS7txwsB6hOZcKhguls11QOZre
- wAI99egOUwa28UnmKquj9YCr2xGwK8q13ZjrTet+S8GRRI9I/TQIe7abWF59dQUstMZS
- xALw==
+ d=linaro.org; s=google; t=1787956011; x=1788560811; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+ :message-id:reply-to:content-type;
+ bh=H7anQ+nZ6nEMZWsgrQz0HJu50fb8m+vAd3J9mjoNV9E=;
+ b=m/LIY+sqUdCY3vLx4ta8Yjztw5YVhYUaj/jfXUkoLz/WvJBVJGtT6KFe2uq9hdgTlO
+ 9aX8tmnMbPzWuWnnAoOnO406MKFw3swlvt3v7+nZ5WKrH6VtxcUqTfeCef3649vIx8/P
+ N6gQWipHzZ4pADks0v0KolOcdwdmamZVW9z0km+nCJZtGaEhxxU30jmV6UOHSOBp5NFo
+ wwZ98F0Y2LQj9z+JfqF47wdXMfReNysrP9OgOTrUdktPB17iykUh166hrG0EN4DYSukz
+ AO7J2uCMMS4wh5szddx44DqSIviCImapaoueVtmrlFCj0ij4lrtMR/82zZ0uqbCND3hJ
+ Wftw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1787956001; x=1788560801;
- h=content-transfer-encoding:content-type:mime-version:message-id:date
- :subject:cc:to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject
- :date:message-id:reply-to:content-type;
- bh=0ufLUr+4cUEKYM/Z9xjrYtxWtD8GHEnQXDnj4Sgo7XY=;
- b=rASMJ4l6G0XmJb4d1+3PiwYRtfGFQuvoUIRYZUurOkD4fnR+dLBFyz2ZXKRtwgRkVI
- 27/yWiUBmr9XaYPR3YfDS93hrJIseXr8JcOVL/KKx6rhlJGZ61WZ354yaj8qDc2BTCGy
- aU15hcPyOqxyn/GkPOyYS14hFfv76gwrZwsy4yLItH8GVHfVj6yv5yQPUivJBK3/BhS1
- JCkI29zLa5e9QKmnrZiCUIjxaAzRD0g8UJEodKS+10FsK/QLSDwhKXtWTHKvkeOe+dYw
- o5UYSxeSYybIsz6kpNHlRv2E0ovSua/1OzaA6bqL9lafzIy3Sps/i2kTGmjwCdXefhM1
- U4Gw==
-X-Gm-Message-State: AFuF++nteoQ+EvqtiSc8/PvWwuXqKA4V6LWymbSgq0dYLuYNOMlthzLV
- qcJp717GdnqnuJEK2qBo3u6p+xujbNg9eq2LVkdgZsRcSAJFKFzTlN3RHEeWVCy9Zo512YpmPlt
- R4bfBZz0=
-X-Gm-Gg: AYBFou0JHIlO/pD8i++R55MPyWbVaQL2bzKG3cqxGDM2nMC2D4Pw5Iid3/DChc9Z9C0
- ajpzQn5RqUeM676zb1BL2F6P5VGPexHH8hwLQhJ113/GwYD7HHLfcrPuDisifLonUbuExuSPm3H
- GYFcXQiyQFX4shTczsC6Zj/LYJhu7UDYeW3t5L+l7YOPit8uZM0+VhpLAhUvE0e8dVON/LDIfiL
- 3ki/M+01VwxC8OYNB2xxAI00meRdnBRYhhdX1lnGFP1sD9l0e2ZaJItcv8qeBH3Xb9xep4O16lV
- 16pGnfkEgOodGOvtUNOffWrJ7PrgUJSHn/b1msXHQ74WvRlP8sxEaD6N6+rgcrrK/oOmG281T0U
- ortsnXccrbeBEvaxIHgG6+bzfMFfkgcQoaMryEaCJSQrCL8T+3btG8TrOElnnekQ2cGaPbMmHZN
- ztaFy4/Mrp9Q137urpqWx++pbgVLQcGbf7ho7ZZrajFxxzmj14BEPiLWV260+uU1KNoqhay1OAW
- DchVh71vkAtLEiPk8rq
-X-Received: by 2002:a17:903:32c4:b0:2ca:2079:91cc with SMTP id
- d9443c01a7336-2d74ddd6755mr135091615ad.5.1787956001383; 
- Fri, 28 Aug 2026 15:26:41 -0700 (PDT)
+ d=1e100.net; s=20251104; t=1787956011; x=1788560811;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
+ :to:cc:subject:date:message-id:reply-to:content-type;
+ bh=H7anQ+nZ6nEMZWsgrQz0HJu50fb8m+vAd3J9mjoNV9E=;
+ b=iWzjdLyMw4zODTs8THQRN6cMYrezKFIsiHCl1pmWUml35JrHPixra8idY0l1K+mpMW
+ MuKFwviFpg5CcA251Snd38fWpZIE8Hiz0lc1HCGzML1kk+k0aupYo7pbCYygGcFo1SzF
+ fukKy5l8PZ9D3SFDtbnYgx3Iixk5Utt+/Z0gmuxCLyJxHQrIWqjvILBF4euoHLrf9Q57
+ KUmdiUvDkOLlGZUykKmzwH2reVTHqp0kfyNk3OYSprKsoN+aXfP5386n0vZWU4u2lfqa
+ I2ep2TOnypWY6Efwu6Nm6pgFVIeEiG2TzRjIBWA0E2R9BmFhtccYOeaBO6pIOY3SwXeV
+ hrUg==
+X-Gm-Message-State: AFuF++lndosZR5L9GihRsNKkKF8aT/v3nuD8BJFwU9AkkpwfdMNje98T
+ FsuRFsBr2/WS/2gasSV/SQrkKWpaNCkP0lTmxeKEZZwZnaOGP9VfvEiS9QF6YSJbnnDhEPC/C4J
+ allwUo4s=
+X-Gm-Gg: AYBFou34/llnCvw3FRZFrW+BFKeO/4Eo6eGjeB2+imEW0qhSb1OeNr+K12bXQfrUPIs
+ 9r1YX/MEfo1AwI8HHH5wRcRrD7qdJlhHtYVKymtKcihq9zF6nk9Qzzoj9SeQc+CDhVZQIcaqAeU
+ aSA+UfwF0YNh+OFmTCqBALU8arB1clXmzTEQDkYj+JgUVJFsd9cMEgvLzQL8fiyUUsBSRpXkcta
+ 0zheDWmidPbxyzRVcmE+LYUQwnqnFUVqr6gjohZDx8IbtX8JsJKWA/XoEZ5rRAhCATKqcG3FAol
+ Hx0jjLa2yWIcZnuRqRuTRR3gkrO6z+UtDVlVqsbg4lVAszhJdmzBzKxdkMZMwHnFcaqhSAaPcmD
+ 5DysI/mHeBGZOI1ixNsexWo4ypAq7YX1bCRFDmbePj5kOaWQgYQV6RspSnMV8kGlBxAIOhLU9P6
+ GohVnfO8+sLh6+VaX04oU6kIn/2jOSF9tKEqSesewZfGmaCB1FW8wfl3mf4uLQp+eYNAFqTLTB9
+ 1kK7U6ulhuoS+ARXc/FRg==
+X-Received: by 2002:a17:903:2a8b:b0:2d7:1cee:3682 with SMTP id
+ d9443c01a7336-2d74dc21e53mr184210425ad.5.1787956010902; 
+ Fri, 28 Aug 2026 15:26:50 -0700 (PDT)
 Received: from stoup (71-212-39-143.tukw.qwest.net. [71.212.39.143])
  by smtp.gmail.com with ESMTPSA id
- d9443c01a7336-2d759640270sm9178355ad.34.2026.08.28.15.26.40
+ d9443c01a7336-2d759640270sm9178355ad.34.2026.08.28.15.26.50
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 28 Aug 2026 15:26:40 -0700 (PDT)
+ Fri, 28 Aug 2026 15:26:50 -0700 (PDT)
 From: Richard Henderson <richard.henderson@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org
-Subject: [PATCH 00/13] target/arm: Implement FEAT_UINJ
-Date: Fri, 28 Aug 2026 15:26:26 -0700
-Message-ID: <20260828222639.1432046-1-richard.henderson@linaro.org>
+Subject: [PATCH 13/13] target/arm: Enable FEAT_UINJ for -cpu max-v9
+Date: Fri, 28 Aug 2026 15:26:39 -0700
+Message-ID: <20260828222639.1432046-14-richard.henderson@linaro.org>
 X-Mailer: git-send-email 2.53.0
+In-Reply-To: <20260828222639.1432046-1-richard.henderson@linaro.org>
+References: <20260828222639.1432046-1-richard.henderson@linaro.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::62b;
- envelope-from=richard.henderson@linaro.org; helo=mail-pl1-x62b.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::62d;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pl1-x62d.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -99,54 +101,36 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Based-on: 20260827041557.775080-1-richard.henderson@linaro.org
-("[PATCH v4 0/6] target/arm: Introduce cpu types max-v8 and max-v9")
+Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
+---
+ target/arm/tcg/cpu64.c        | 1 +
+ docs/system/arm/emulation.rst | 1 +
+ 2 files changed, 2 insertions(+)
 
-Another trivial little extension.
-
-Like PSTATE.IL, the priority of the exception raised by PSTATE.UINJ 
-is below translation and below single-step.  Thus we must defer to
-translation, after such things have been recognized.
-
-
-r~
-
-
-Richard Henderson (13):
-  target/arm: Rename and adjust aarch32_max_v8_tcg_initfn
-  target/arm: Introduce cpu types max-v8 and max-v9
-  target/arm: Use -cpu max-v8 with aarch64=off
-  target/arm: Separate cpu types max-v8 and max-v9
-  target/arm: Move ID_AA64PFR2 feature tests together
-  target/arm: Add isar_feature_aa64_uinj
-  target/arm: Drop U from most PSTATE bits
-  target/arm: Clear PSTATE.UINJ when taking exceptions
-  target/arm: Widen cpsr_{read,write}_for_spsr_elx to uint64_t
-  target/arm: Read and write PSTATE.UINJ
-  target/arm: Add PSTATE.UINJ to tbflags
-  target/arm: Honor PSTATE.UINJ during translation
-  target/arm: Enable FEAT_UINJ for -cpu max-v9
-
- target/arm/cpu-features.h                     |  26 +--
- target/arm/cpu.h                              |  42 ++---
- target/arm/internals.h                        |  11 +-
- target/arm/tcg/translate.h                    |   2 +
- hw/arm/sbsa-ref.c                             |   2 +
- hw/arm/virt.c                                 |   2 +
- target/arm/cpu-max.c                          |   4 +-
- target/arm/helper.c                           |  28 ++-
- target/arm/tcg/cpu32.c                        |   8 +-
- target/arm/tcg/cpu64.c                        | 161 ++++++++++++------
- target/arm/tcg/helper-a64.c                   |   2 +
- target/arm/tcg/hflags.c                       |   6 +
- target/arm/tcg/stubs32.c                      |   2 +-
- target/arm/tcg/translate-a64.c                |   9 +
- target/arm/tcg/translate.c                    |  17 ++
- tests/qtest/arm-cpu-features.c                |   4 +-
- docs/system/arm/emulation.rst                 |  14 +-
- .../aarch64/test_virt_aarch64_off.py          |   4 +-
- 18 files changed, 243 insertions(+), 101 deletions(-)
-
+diff --git a/target/arm/tcg/cpu64.c b/target/arm/tcg/cpu64.c
+index 4ef412a6575..3b745b5a85a 100644
+--- a/target/arm/tcg/cpu64.c
++++ b/target/arm/tcg/cpu64.c
+@@ -1457,6 +1457,7 @@ void aarch64_max_v9_tcg_initfn(Object *obj)
+     SET_IDREG(isar, ID_AA64PFR1, t);
+ 
+     t = GET_IDREG(isar, ID_AA64PFR2);
++    t = FIELD_DP64(t, ID_AA64PFR2, UINJ, 1);      /* v9.0: FEAT_UINJ */
+     t = FIELD_DP64(t, ID_AA64PFR2, FPMR, 1);      /* v9.2: FEAT_FPMR */
+     SET_IDREG(isar, ID_AA64PFR2, t);
+ 
+diff --git a/docs/system/arm/emulation.rst b/docs/system/arm/emulation.rst
+index ff02435975b..59114abe6e9 100644
+--- a/docs/system/arm/emulation.rst
++++ b/docs/system/arm/emulation.rst
+@@ -217,6 +217,7 @@ the following architecture extensions:
+ - FEAT_TTL (Translation Table Level)
+ - FEAT_TTST (Small translation tables)
+ - FEAT_UAO (Unprivileged Access Override control)
++- FEAT_UINJ (Injection of Undefined Instruction exceptions)
+ - FEAT_VHE (Virtualization Host Extensions)
+ - FEAT_VMID16 (16-bit VMID)
+ - FEAT_WFxT (WFE and WFI instructions with timeout)
 -- 
 2.53.0
 

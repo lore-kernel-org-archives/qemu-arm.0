@@ -4,84 +4,84 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 672E0C61DBD
-	for <qemu-arm@archiver.kernel.org>; Fri, 28 Aug 2026 09:47:52 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DBB57C61DBD
+	for <qemu-arm@archiver.kernel.org>; Fri, 28 Aug 2026 10:06:01 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1wztBF-0000GQ-Ag; Fri, 28 Aug 2026 05:47:25 -0400
+	id 1wztT1-0005i1-QF; Fri, 28 Aug 2026 06:05:47 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1wztBD-0000G8-VG
- for qemu-arm@nongnu.org; Fri, 28 Aug 2026 05:47:23 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ id 1wztT0-0005ha-Gp
+ for qemu-arm@nongnu.org; Fri, 28 Aug 2026 06:05:46 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1wztBA-0002V7-4V
- for qemu-arm@nongnu.org; Fri, 28 Aug 2026 05:47:23 -0400
+ id 1wztSx-0007bf-BQ
+ for qemu-arm@nongnu.org; Fri, 28 Aug 2026 06:05:46 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1787910438;
+ s=mimecast20190719; t=1787911541;
  h=from:from:reply-to:reply-to:subject:subject:date:date:
  message-id:message-id:to:to:cc:cc:mime-version:mime-version:
  content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=Qm7YizpKPZpv7PCuyBgXL6ZHDWQBYClCWWtnxZlCtkE=;
- b=WpJCc4ZNjjmJjPJhqSi5gmw1whF0i5A5RAntedhnXBAvG93Ysp7zm6cpKK3g3kNN6ZdkM2
- VibabX3qnM8aYOfEavToineFilq+4lgWFNUmbhYO4fVfm74ZCs7Lrbt/TWyuKZG5hk+5CM
- j2hNOsI8gXkf+Q/+QODXC1o3qZfS4pc=
-Received: from mail-wm1-f72.google.com (mail-wm1-f72.google.com
- [209.85.128.72]) by relay.mimecast.com with ESMTP with STARTTLS
+ bh=B0T1v1gUFn9kw++oMMF/nAACbn/31DNDdMLztt8cKFQ=;
+ b=JLw55bolrTp8i530EoyIvMaMoDl4FXxIErDcV+PQg6ANXFRCV9sziap7RajS/+UVsFisy2
+ w1dayXiLyUybyQj49n9V9TxwR2Nu6s6GIRm1NH3SAY1EYmxUnjno2tEzQx3PnfxgoY6WC2
+ jRo2UYfzEL7xa5/LQlY82+4XIcFqzZc=
+Received: from mail-wr1-f69.google.com (mail-wr1-f69.google.com
+ [209.85.221.69]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-211-ppgX3UY_O5C1Wrq3ZOMPSw-1; Fri, 28 Aug 2026 05:47:17 -0400
-X-MC-Unique: ppgX3UY_O5C1Wrq3ZOMPSw-1
-X-Mimecast-MFC-AGG-ID: ppgX3UY_O5C1Wrq3ZOMPSw_1787910436
-Received: by mail-wm1-f72.google.com with SMTP id
- 5b1f17b1804b1-49b7c1dc61eso5013995e9.3
- for <qemu-arm@nongnu.org>; Fri, 28 Aug 2026 02:47:16 -0700 (PDT)
+ us-mta-208-m9u-9D0pMzia9GyJpJwCIg-1; Fri, 28 Aug 2026 06:05:40 -0400
+X-MC-Unique: m9u-9D0pMzia9GyJpJwCIg-1
+X-Mimecast-MFC-AGG-ID: m9u-9D0pMzia9GyJpJwCIg_1787911539
+Received: by mail-wr1-f69.google.com with SMTP id
+ ffacd0b85a97d-47eaa4006a1so325003f8f.0
+ for <qemu-arm@nongnu.org>; Fri, 28 Aug 2026 03:05:39 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1787910436; x=1788515236;
+ d=1e100.net; s=20251104; t=1787911539; x=1788516339;
  h=content-transfer-encoding:content-type:in-reply-to:from:references
  :cc:to:content-language:subject:reply-to:user-agent:mime-version
  :date:message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
  :message-id:reply-to:content-type;
- bh=Qm7YizpKPZpv7PCuyBgXL6ZHDWQBYClCWWtnxZlCtkE=;
- b=qqlB/roBZ/s9bKzgafkBVFp0o0wbKg9tzFqvd0bzyLYR9ElbTptmGR+BTAElPL8Qep
- GcSmvpqJWrfS8l01sg/uoBO1g/OQ0SjSNzNf7EOGSJcfiBXil1Vtet1ui34mJMTnxArQ
- O1Xv5UUc6Vk62AgxJuDqmdUBgVDAur6ORwknmMZhcr8/ivtnEUhbOAhZ5HnqD6FoPwHE
- NfOXPOUw/0rJXD5C01PDHTVwXMxxo1ERn9ErKj7QQNEFCxML8RWCf3Ai7v4Vmrl0O4nI
- cHMEUyzWRH/dMrDTsqsJLbgtSHdUcgESONkKm7pPLmxhluHztJbE8M2N12+Wj4EBiB55
- Sbrw==
+ bh=B0T1v1gUFn9kw++oMMF/nAACbn/31DNDdMLztt8cKFQ=;
+ b=FmuTDpJcy4V/J73qNQAD73Tr3B8dnwLtdV6U23fki+HIC/cWConXONTV+7ABVULsHN
+ EoPNqKbgdLnFroU+Ox6mt7cPk5t0Znf/otQVwi111MTyGPyY9qqTRhyfhqkZJap3yJqz
+ /OHq2lSBXzZCAa6wHatqNUEYslcHq3UIobW2NM+IBbEZP3vr7Ptpy2TDwXEBFPcshuf8
+ RtHPrn9olGAE7EHGC1pNpSpqNkoV5LIlxec8G8OrXHuByAUVlVXQr/hyy8yUn8hFnIJD
+ 5CejdK1xGzrCq91z2X/X1lMvTgpb16vuKTwCGUXjNHnX8gduQqBT3qx+XIFskSQgBSI5
+ 69JQ==
 X-Forwarded-Encrypted: i=1;
- AHgh+Ro6sAXCaRQIfuoXG2ES8cAqJ1lWx3VSO4BmHBw0WMHElU3ZZ85jE4Q8nLayaNagPgcc7yEud0tPBQ==@nongnu.org
-X-Gm-Message-State: AFuF++mD7llxbBgPxB48eJ/5gus/YX5VFPUiaQlMsqNJwcVL3KTX8g4y
- y3G+z5+1bTM7BvOihAXfxk7Devvn5dc/CiKfycZmok4ETTs7gu/T5jet2wwwi3+D7ROCtjiA8sK
- ZQdqPlMvltpM94nfFslVBVMyIvPf2g7Zg3x9wHwB/EeCjZHYFsC/RPg==
-X-Gm-Gg: AR+sD127QCDu3A5SNGzPwFKRr6hXS2rqZR5oviXlmaHimea5u6SagrXRA+ICVqjv8DX
- GL7H6DNlSVwvugH2TAD8s/IlD1oPdsQfOE05bty3i7+ynd+H/nzbjjb9F4goQxucNtcKjT49b4Y
- kYbzbI2o82friIU4BOVrrY8Ro9YrW/ojCnBXqpc1hkgls5LCxX62jZuWuOxXWTaZr9yfbHAFTQF
- seej+bB5zemgMza9E/hUkNjftZGwY7i87DzKPMgNck/dUwD3oSqKLm/aIitHs7mniLl5pTQ30HS
- dhLUKVAHjItzTrR0I152AjyE/IEGyiKLo5qSt8/CfV1dV6VixR11lgrM/fb7NMDmWtwBjYXbkp3
- ExlVPK/wa/Z8GHkr4yvB07Jhmja725QdsNbCSFD0X1fmApN3C
-X-Received: by 2002:a05:600c:1d08:b0:499:bf0e:95c8 with SMTP id
- 5b1f17b1804b1-49b91c2e145mr81879415e9.1.1787910435804; 
- Fri, 28 Aug 2026 02:47:15 -0700 (PDT)
-X-Received: by 2002:a05:600c:1d08:b0:499:bf0e:95c8 with SMTP id
- 5b1f17b1804b1-49b91c2e145mr81878285e9.1.1787910435193; 
- Fri, 28 Aug 2026 02:47:15 -0700 (PDT)
+ AHgh+RoZC64SyFYmWRKDRqVnCF02By5mOgetYjPCBzbPwaFozqqjalImzO4Okl2RFNmFhokWgqQOfsNobw==@nongnu.org
+X-Gm-Message-State: AFuF++nbcW7riU+o80O9FabWWF9nj6Fa41RqOkMXNq8tUY0Rqs5T4V5Q
+ tDlv3n9VtRsIChDtfWCvPv2nV3w7xnuEYp4EEk/RP/WMmOaJ2bj4YHpYFxEZPnPi9Zs6Cro4ivy
+ EgPOKM7pq/a3mmJqYI/fqBRO4+HsqqCS4UJSsovxncGZQJqrp+p/t5Q==
+X-Gm-Gg: AR+sD13ika7mtVSNSdIoS3Wbj4CbD1yN32O+JTICFk6KL5sAxp/rkyLyJCHpdEq4ra/
+ FlOmnJsT5B16gE8yBgT5Ishn1/PORWAMM5M/XSLLj4Ngz1rQocJuSCsgQWgDgu/aQLh5u7aNS/q
+ MLC+24bBcuHhOjuD33ZIPVh+TfRINjvjO8uM3qN+9OpxApxk2EPBxMVa83tXLHDBH2awZccIpvr
+ sDiW3x+SHIFG9tfCgrxmP3a3dSSPm4puBo4wDh6EAJ2bW5D6X0NmaPCj3129YBfihls2Kj9wBF6
+ Ohgg+LwGAkrx1jQgEmyG11VsGTKyNQQUFxwUPjjNZ0EkP6O/19bsRWJCgtAlBOw2UAs5Csp+cgr
+ DHAI9kx2XE7UJQmcGaQgGj9j82e6L7qedK0z5Gi9fornPHSRD
+X-Received: by 2002:a05:6000:461e:b0:481:50ae:df9a with SMTP id
+ ffacd0b85a97d-482eab9cdd4mr20198382f8f.9.1787911538857; 
+ Fri, 28 Aug 2026 03:05:38 -0700 (PDT)
+X-Received: by 2002:a05:6000:461e:b0:481:50ae:df9a with SMTP id
+ ffacd0b85a97d-482eab9cdd4mr20198277f8f.9.1787911538437; 
+ Fri, 28 Aug 2026 03:05:38 -0700 (PDT)
 Received: from ?IPV6:2a01:e0a:f0e:9070:527b:9dff:feef:3874?
  ([2a01:e0a:f0e:9070:527b:9dff:feef:3874])
  by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-49b9266d45esm28298695e9.2.2026.08.28.02.47.13
+ ffacd0b85a97d-482fbb2794dsm2956275f8f.25.2026.08.28.03.05.37
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Fri, 28 Aug 2026 02:47:14 -0700 (PDT)
-Message-ID: <7b5f99bb-891f-4184-9278-207664b02fb0@redhat.com>
-Date: Fri, 28 Aug 2026 11:47:12 +0200
+ Fri, 28 Aug 2026 03:05:37 -0700 (PDT)
+Message-ID: <485db89a-e0b8-46ec-b586-24e1ce0033a4@redhat.com>
+Date: Fri, 28 Aug 2026 12:05:36 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [RFC v5 16/28] hw/arm/smmuv3: Add access checks for
- GERROR_IRQ_CFG registers
+Subject: Re: [RFC v5 17/28] hw/arm/smmuv3: Add access checks for STRTAB_BASE
+ and CR2 registers
 To: Tao Tang <tangtao1634@phytium.com.cn>,
  Peter Maydell <peter.maydell@linaro.org>
 Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org,
@@ -91,24 +91,24 @@ Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org,
  Mostafa Saleh <smostafa@google.com>, Chao Liu <chao.liu@processmission.com>,
  Jim MacArthur <jim.macarthur@linaro.org>
 References: <20260813161515.2788900-1-tangtao1634@phytium.com.cn>
- <20260813162558.2808607-1-tangtao1634@phytium.com.cn>
+ <20260813162558.2808607-2-tangtao1634@phytium.com.cn>
 From: Eric Auger <eric.auger@redhat.com>
-In-Reply-To: <20260813162558.2808607-1-tangtao1634@phytium.com.cn>
+In-Reply-To: <20260813162558.2808607-2-tangtao1634@phytium.com.cn>
 X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: 42c7vNxz79u3stmmG14SRVH3ToHdAZk31PALNRi5yJ4_1787910436
+X-Mimecast-MFC-PROC-ID: iw67tq4i7mrQJIi0ewaZ4EsbYATuKVkL5KiEcJXwfKM_1787911539
 X-Mimecast-Originator: redhat.com
 Content-Language: en-US
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=170.10.129.124;
+Received-SPF: pass client-ip=170.10.133.124;
  envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=0.001, SPF_HELO_PASS=-0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -128,241 +128,186 @@ Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Hi Tao,
 
 On 8/13/26 6:25 PM, Tao Tang wrote:
-Please directly explain what is the problem we want to fix before what
-is actually done in the patch.
+> Add access control for SMMU_STRTAB_BASE and SMMU_CR2 registers to
+> ensure they can only be modified when the SMMU is disabled.
 
-Spec says: "SMMU_GERROR_IRQ_CFG0 is Guarded by
-SMMU_IRQ_CTRL.GERROR_IRQEN and must only be modified
-when SMMU_IRQ_CTRL.GERROR_IRQEN == 0." This check is currently not
-performed 
-
-In SMMUv3.2 and later, a write while SMMU_IRQ_CTRL.GERROR_IRQEN == 1 is
-IGNORED.
-Accesses to this register use the following encodings:
-Accessible at offset 0x0068 from SMMUv3_PAGE_0
-• When SMMU_IRQ_CTRL.GERROR_IRQEN == 0 and SMMU_IRQ_CTRLACK.GERROR_IRQEN
-== 0,
-accesses to this register are RW.
+About SMMU_STRTAB_BASE "
+SMMU_STRTAB_BASE is Guarded by SMMU_CR0.SMMUEN and must only be written when
+SMMU_CR0.SMMUEN == 0
+.../..
+In SMMUv3.2 and later, a write while SMMU_CR0.SMMUEN == 1 is IGNORED.
+../..
+Accessible at offset 0x0080 from SMMUv3_PAGE_0
+• When SMMU_IDR1.TABLES_PRESET == 1, accesses to this register are RO.
+• When SMMU_CR0.SMMUEN == 0 and SMMU_CR0ACK.SMMUEN == 0, accesses to
+this register are
+RW.
 • Otherwise, accesses to this register are RO.
 "
 
-By the way you are not checking  SMMU_IRQ_CTRLACK.GERROR_IRQEN
+About SMMU_CR2:
+"
+This register is made read-only when the associated SMMU_CR0.SMMUEN is
+Updated to 1. This register must
+only be changed when SMMU_CR0.SMMUEN == 0.
+A write to this register after SMMU_CR0.SMMUEN has been changed but
+before its Update completes is
+CONSTRAINED UNPREDICTABLE and has one of the following behaviors:
+• Apply the new value.
+• Ignore the write. In SMMUv3.2 and later, this is the only permitted
+behavior.
+"
 
-Nevertheless our emulation does not support MSI, right? So why don't we
-hardcode this behavior on SMMU_GERROR_IRQ_CFG0 access, ie.
 
-"This register is present only when SMMU_IDR0.MSI == 1.
-SMMU_GERROR_IRQ_CFG0 are RES 0."
-
-That would be simpler.
-> Add helpers that separate IRQ_CFG register presence from the runtime
-> IRQ enable guard. The Non-secure and Secure GERROR_IRQ_CFG register sets
-> both use SMMU_IDR0.MSI for presence, while writability additionally
-> requires GERROR_IRQEN to be clear. IRQ_CTRL and IRQ_CTRLACK share one
-> synchronous backing field in the current model.
 >
-> Reads return RES0 when the register set is absent. Writes are ignored
-> when it is absent or GERROR_IRQEN is set. Apply the same checks to all
-> three GERROR_IRQ_CFG registers and mask reserved bits in CFG0 and CFG2.
+> This implements:
+> - smmuv3_smmu_disabled_stable(): Check whether the SMMU is in a stable
+>    disabled state (CR0.SMMUEN == 0 and CR0ACK.SMMUEN == 0);
+> - smmu_strtab_base_writable(): returns true only when IDR1.TABLES_PRESET==0
+>    and SMMU is completely disabled.
+>
+> Additionally, mask reserved bits on writes to SMMU_STRTAB_BASE using
+> SMMU_STRTAB_BASE_RESERVED.
 >
 > Fixes: fae4be38b35d ("hw/arm/smmuv3: Implement MMIO write operations")
-above is enought I think
-> Fixes: 10a83cb9887e ("hw/arm/smmuv3: Skeleton")
 > Signed-off-by: Tao Tang <tangtao1634@phytium.com.cn>
 > Reviewed-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
 > ---
->  hw/arm/smmuv3.c | 118 +++++++++++++++++++++++++++++++++++++++++++++++-
->  1 file changed, 116 insertions(+), 2 deletions(-)
+>  hw/arm/smmuv3.c | 69 +++++++++++++++++++++++++++++++++++++++++++++++--
+>  1 file changed, 67 insertions(+), 2 deletions(-)
 >
 > diff --git a/hw/arm/smmuv3.c b/hw/arm/smmuv3.c
-> index 47f0d575817..628911d3f21 100644
+> index 628911d3f21..de8ca7cda48 100644
 > --- a/hw/arm/smmuv3.c
 > +++ b/hw/arm/smmuv3.c
-> @@ -1428,6 +1428,62 @@ smmu_cmdq_stage2_supported(SMMUv3State *s, SMMUSecSID sec_sid)
->      return true;
+> @@ -1484,6 +1484,36 @@ smmu_gerror_irq_cfg_writable(SMMUv3State *s, SMMUSecSID sec_sid)
+>      return smmu_irq_cfg_writable(s, sec_sid, SMMU_IRQ_GERROR);
 >  }
 >  
-> +/* Check whether the selected IRQ_CFG register set is present. */
-Remove the final "."
-Besides worth to add, check if MSI are supported. Even I would rather
-rename the helper to reflect what is pratcically does, even if your
-eventual interest is to know if SMMU_PRIQ_IRQ_CFGn and
-SMMU_GERROR_IRQ_CFGn are not RES 0. By the way IRQ_CFG is always present
-;-)
-> +static bool smmu_irq_cfg_present(SMMUv3State *s, SMMUSecSID sec_sid,
-> +                                 SMMUIrq irq)
+> +static inline int smmuv3_get_cr0ack_smmuen(SMMUv3State *s, SMMUSecSID sec_sid)
 > +{
-> +    SMMUv3RegBank *bank = smmuv3_bank(s, SMMU_SEC_SID_NS);
-> +
-> +    switch (irq) {
-> +    case SMMU_IRQ_GERROR:
-> +        switch (sec_sid) {
-> +        case SMMU_SEC_SID_NS:
-> +        case SMMU_SEC_SID_S:
-> +            return FIELD_EX32(bank->idr[0], IDR0, MSI);
-> +        case SMMU_SEC_SID_NUM:
-> +            g_assert_not_reached();
-> +        }
-> +        break;
-> +    case SMMU_IRQ_EVTQ:
-why do you pass irq if everything besides 
-
-SMMU_IRQ_GERROR is unexpected?
-
-> +    case SMMU_IRQ_PRIQ:
-> +    case SMMU_IRQ_CMD_SYNC:
-> +        g_assert_not_reached();
-> +    }
-> +
-> +    g_assert_not_reached();
+> +    /*
+> +     * CR0, CR0ACK, S_CR0 and S_CR0ACK are bit-layout compatible, so we reuse
+> +     * the CR0 field definitions and only switch banks via sec_sid to reduce
+> +     * code duplication. Also the other bits in CR0/CR0ACK are relevant here.
+> +     */
+> +    return FIELD_EX32(s->bank[sec_sid].cr0ack, CR0, SMMUEN);
 > +}
 > +
-> +/* Check whether the selected IRQ_CFG register set is writable. */
-> +static bool smmu_irq_cfg_writable(SMMUv3State *s, SMMUSecSID sec_sid,
-> +                                  SMMUIrq irq)
+> +/* Check if SMMU is disabled in stable status */
+> +static inline bool smmuv3_smmu_disabled_stable(SMMUv3State *s, SMMUSecSID sec_sid)
+s/stable/updated?
+SMMU_CR0 spec quote:
+
 > +{
-> +    SMMUv3RegBank *bank = smmuv3_bank(s, sec_sid);
-> +    uint32_t irqen;
+> +    int cr0_smmuen = smmu_enabled(s, sec_sid);
+> +    int cr0ack_smmuen = smmuv3_get_cr0ack_smmuen(s, sec_sid);
+> +    return (cr0_smmuen == 0 && cr0ack_smmuen == 0);
+
+Each field in this register has a corresponding field in SMMU_CR0ACK. An
+individual field is described as
+Updated after the value of the field observed in SMMU_CR0ACK matches the
+value that was written to the field
+in SMMU_CR0.
+
+Besides I don't if its wort that complexity here because the update is
+done in the emulation
+    case A_CR0:
+        bank->cr[0] = data;
+        bank->cr0ack = data & ~SMMU_CR0_RESERVED;
+
+Just adding a coment would be enough I think
+
+I would split this patch into 2 sparate patches, first one CR2 and then
+STRTAB_BASE
+
+
+
+
+> +}
 > +
-> +    if (!smmu_irq_cfg_present(s, sec_sid, irq)) {
+> +/* Check if STRTAB_BASE register is writable */
+> +static bool smmu_strtab_base_writable(SMMUv3State *s, SMMUSecSID sec_sid)
+> +{
+> +    /* SMMU_IDR1.TABLES_PRESET applies to both modeled interfaces. */
+> +    if (FIELD_EX32(s->bank[SMMU_SEC_SID_NS].idr[1], IDR1, TABLES_PRESET)) {
 > +        return false;
 > +    }
 > +
-> +    switch (irq) {
-> +    case SMMU_IRQ_GERROR:
-> +        irqen = FIELD_EX32(bank->irq_ctrl, IRQ_CTRL, GERROR_IRQEN);
-again the name of the helper does not reflect what it does. 
-GERROR_IRQENMeaning
-0b0 interrupts are disabled.
-0b1 Interrupts are enabled.
-> +        break;
-> +    case SMMU_IRQ_EVTQ:
-> +    case SMMU_IRQ_PRIQ:
-> +    case SMMU_IRQ_CMD_SYNC:
-> +        g_assert_not_reached();
-> +    }
-> +
-> +    /* IRQ_CTRL and IRQ_CTRLACK share one synchronous backing field. */
-> +    return irqen == 0;
-> +}
-> +
-> +static bool
-> +smmu_gerror_irq_cfg_writable(SMMUv3State *s, SMMUSecSID sec_sid)
-> +{
-> +    return smmu_irq_cfg_writable(s, sec_sid, SMMU_IRQ_GERROR);
+> +    /* Check SMMUEN conditions for the specific security domain */
+> +    return smmuv3_smmu_disabled_stable(s, sec_sid);
 > +}
 > +
 >  static int smmuv3_cmdq_consume(SMMUv3State *s, Error **errp, SMMUSecSID sec_sid)
 >  {
 >      SMMUState *bs = ARM_SMMU(s);
-> @@ -1735,7 +1791,14 @@ static MemTxResult smmu_writell(SMMUv3State *s, hwaddr offset,
->  
->      switch (offset) {
->      case A_GERROR_IRQ_CFG0:
-> -        bank->gerror_irq_cfg0 = data;
-> +        if (!smmu_gerror_irq_cfg_writable(s, reg_sec_sid)) {
-> +            /* SMMU_(*_)_IRQ_CTRL.GERROR_IRQEN == 1: IGNORED this write */
-> +            qemu_log_mask(LOG_GUEST_ERROR, "GERROR_IRQ_CFG0 write ignored: "
-> +                         "register is RO when IRQ enabled\n");
-> +            return MEMTX_OK;
-> +        }
-> +
-> +        bank->gerror_irq_cfg0 = data & SMMU_GERROR_IRQ_CFG0_RESERVED;
+> @@ -1801,7 +1831,14 @@ static MemTxResult smmu_writell(SMMUv3State *s, hwaddr offset,
+>          bank->gerror_irq_cfg0 = data & SMMU_GERROR_IRQ_CFG0_RESERVED;
 >          return MEMTX_OK;
 >      case A_STRTAB_BASE:
->          bank->strtab_base = data;
-> @@ -1803,16 +1866,42 @@ static MemTxResult smmu_writel(SMMUv3State *s, hwaddr offset,
->          smmuv3_cmdq_consume(s, &local_err, reg_sec_sid);
+> -        bank->strtab_base = data;
+> +        if (!smmu_strtab_base_writable(s, reg_sec_sid)) {
+> +            qemu_log_mask(LOG_GUEST_ERROR,
+> +                          "STRTAB_BASE write ignored: register is RO\n");
+> +            return MEMTX_OK;
+> +        }
+> +
+> +        /* Clear reserved bits according to spec */
+> +        bank->strtab_base = data & SMMU_STRTAB_BASE_RESERVED;
+>          return MEMTX_OK;
+>      case A_CMDQ_BASE:
+>          bank->cmdq.base = data;
+> @@ -1852,7 +1889,15 @@ static MemTxResult smmu_writel(SMMUv3State *s, hwaddr offset,
+>          bank->cr[1] = data;
 >          break;
->      case A_GERROR_IRQ_CFG0: /* 64b */
-> +        if (!smmu_gerror_irq_cfg_writable(s, reg_sec_sid)) {
-> +            qemu_log_mask(LOG_GUEST_ERROR, "GERROR_IRQ_CFG0 write ignored: "
-> +                          "register is RO when IRQ enabled\n");
-> +            return MEMTX_OK;
+>      case A_CR2:
+> -        bank->cr[2] = data;
+> +        if (smmuv3_smmu_disabled_stable(s, reg_sec_sid)) {
+> +            /* Allow write: SMMUEN is 0 in both CR0 and CR0ACK */
+> +            bank->cr[2] = data;
+> +        } else {
+> +            /* CONSTRAINED UNPREDICTABLE behavior: Ignore this write */
+> +            qemu_log_mask(LOG_GUEST_ERROR,
+> +                          "CR2 write ignored: register is read-only when "
+> +                          "CR0.SMMUEN or CR0ACK.SMMUEN is set\n");
+not sure those logs are requested.
 > +        }
-> +
-> +        data &= SMMU_GERROR_IRQ_CFG0_RESERVED;
->          bank->gerror_irq_cfg0 = deposit64(bank->gerror_irq_cfg0, 0, 32, data);
 >          break;
->      case A_GERROR_IRQ_CFG0 + 4:
-> +        if (!smmu_gerror_irq_cfg_writable(s, reg_sec_sid)) {
-> +            qemu_log_mask(LOG_GUEST_ERROR, "GERROR_IRQ_CFG0 + 4 write ignored: "
-> +                          "register is RO when IRQ enabled\n");
-> +            return MEMTX_OK;
-> +        }
-> +
-> +        data &= SMMU_GERROR_IRQ_CFG0_RESERVED >> 32;
->          bank->gerror_irq_cfg0 = deposit64(bank->gerror_irq_cfg0, 32, 32, data);
+>      case A_IRQ_CTRL:
+>          bank->irq_ctrl = data;
+> @@ -1915,12 +1960,32 @@ static MemTxResult smmu_writel(SMMUv3State *s, hwaddr offset,
+>          }
 >          break;
->      case A_GERROR_IRQ_CFG1:
-> +        if (!smmu_gerror_irq_cfg_writable(s, reg_sec_sid)) {
-> +            qemu_log_mask(LOG_GUEST_ERROR, "GERROR_IRQ_CFG1 write ignored: "
-> +                          "register is RO when IRQ enabled\n");
-> +            return MEMTX_OK;
-> +        }
-> +
->          bank->gerror_irq_cfg1 = data;
->          break;
->      case A_GERROR_IRQ_CFG2:
-> -        bank->gerror_irq_cfg2 = data;
-> +        if (!smmu_gerror_irq_cfg_writable(s, reg_sec_sid)) {
-> +            qemu_log_mask(LOG_GUEST_ERROR, "GERROR_IRQ_CFG2 write ignored: "
-> +                          "register is RO when IRQ enabled\n");
-> +            return MEMTX_OK;
-> +        }
-> +
-> +        bank->gerror_irq_cfg2 = data & SMMU_GERROR_IRQ_CFG2_RESERVED;
->          break;
->      case A_GBPA:
->          /*
-> @@ -1938,6 +2027,11 @@ static MemTxResult smmu_readll(SMMUv3State *s, hwaddr offset,
->  
->      switch (offset) {
->      case A_GERROR_IRQ_CFG0:
-> +        if (!smmu_irq_cfg_present(s, reg_sec_sid, SMMU_IRQ_GERROR)) {
-> +            *data = 0; /* RES0 */
-> +            return MEMTX_OK;
-> +        }
-> +
->          *data = bank->gerror_irq_cfg0;
->          return MEMTX_OK;
->      case A_STRTAB_BASE:
-> @@ -2006,15 +2100,35 @@ static MemTxResult smmu_readl(SMMUv3State *s, hwaddr offset,
->          *data = bank->gerrorn;
->          return MEMTX_OK;
->      case A_GERROR_IRQ_CFG0: /* 64b */
-> +        if (!smmu_irq_cfg_present(s, reg_sec_sid, SMMU_IRQ_GERROR)) {
-> +            *data = 0; /* RES0 */
-> +            return MEMTX_OK;
-> +        }
-> +
->          *data = extract64(bank->gerror_irq_cfg0, 0, 32);
->          return MEMTX_OK;
->      case A_GERROR_IRQ_CFG0 + 4:
-> +        if (!smmu_irq_cfg_present(s, reg_sec_sid, SMMU_IRQ_GERROR)) {
-> +            *data = 0; /* RES0 */
-> +            return MEMTX_OK;
-> +        }
-> +
->          *data = extract64(bank->gerror_irq_cfg0, 32, 32);
->          return MEMTX_OK;
->      case A_GERROR_IRQ_CFG1:
-> +        if (!smmu_irq_cfg_present(s, reg_sec_sid, SMMU_IRQ_GERROR)) {
-> +            *data = 0; /* RES0 */
-> +            return MEMTX_OK;
-> +        }
-> +
->          *data = bank->gerror_irq_cfg1;
->          return MEMTX_OK;
->      case A_GERROR_IRQ_CFG2:
-> +        if (!smmu_irq_cfg_present(s, reg_sec_sid, SMMU_IRQ_GERROR)) {
-> +            *data = 0; /* RES0 */
-> +            return MEMTX_OK;
-> +        }
-> +
->          *data = bank->gerror_irq_cfg2;
->          return MEMTX_OK;
 >      case A_STRTAB_BASE: /* 64b */
+> +        if (!smmu_strtab_base_writable(s, reg_sec_sid)) {
+> +            qemu_log_mask(LOG_GUEST_ERROR,
+> +                          "STRTAB_BASE write ignored: register is RO\n");
+> +            return MEMTX_OK;
+> +        }
+> +
+> +        data &= SMMU_STRTAB_BASE_RESERVED;
+>          bank->strtab_base = deposit64(bank->strtab_base, 0, 32, data);
+>          break;
+>      case A_STRTAB_BASE + 4:
+> +        if (!smmu_strtab_base_writable(s, reg_sec_sid)) {
+> +            qemu_log_mask(LOG_GUEST_ERROR,
+> +                          "STRTAB_BASE + 4 write ignored: register is RO\n");
+> +            return MEMTX_OK;
+> +        }
+> +
+> +        data &= SMMU_STRTAB_BASE_RESERVED;
+>          bank->strtab_base = deposit64(bank->strtab_base, 32, 32, data);
+>          break;
+>      case A_STRTAB_BASE_CFG:
+> +        if (!smmu_strtab_base_writable(s, reg_sec_sid)) {
+> +            qemu_log_mask(LOG_GUEST_ERROR,
+> +                          "STRTAB_BASE_CFG write ignored: register is RO\n");
+> +            return MEMTX_OK;
+> +        }
+> +
+>          bank->strtab_base_cfg = data;
+>          if (FIELD_EX32(data, STRTAB_BASE_CFG, FMT) == 1) {
+>              bank->sid_split = FIELD_EX32(data, STRTAB_BASE_CFG, SPLIT);
 Thanks
 
 Eric

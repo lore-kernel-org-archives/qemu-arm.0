@@ -4,170 +4,97 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AEE95C61DCB
-	for <qemu-arm@archiver.kernel.org>; Fri, 28 Aug 2026 23:06:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 13DB6C61DBE
+	for <qemu-arm@archiver.kernel.org>; Sat, 29 Aug 2026 12:56:14 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1x05eM-0001b2-5T; Fri, 28 Aug 2026 19:06:18 -0400
+	id 1x0IbQ-0001Vx-IE; Sat, 29 Aug 2026 08:56:08 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <pierrick.bouvier@oss.qualcomm.com>)
- id 1x05eK-0001a4-Jk
- for qemu-arm@nongnu.org; Fri, 28 Aug 2026 19:06:16 -0400
-Received: from mx0b-0031df01.pphosted.com ([205.220.180.131])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <pierrick.bouvier@oss.qualcomm.com>)
- id 1x05eG-0006UY-F3
- for qemu-arm@nongnu.org; Fri, 28 Aug 2026 19:06:16 -0400
-Received: from pps.filterd (m0279871.ppops.net [127.0.0.1])
- by mx0a-0031df01.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id
- 67SMTIuG501938
- for <qemu-arm@nongnu.org>; Fri, 28 Aug 2026 23:06:11 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qualcomm.com; h=
- cc:content-transfer-encoding:content-type:date:from:in-reply-to
- :message-id:mime-version:references:subject:to; s=qcppdkim1; bh=
- fE5+FoZiKr2Sa5RCsVANMuI+3ptLbhtUFLS1svoTdA4=; b=EXXGVaICo/QVg9qY
- Y8cQYPhdHzYL5BLgpZq03XtypJQZDx+1byAixEIezaVjHPC0on9xSS0iRdfOwWcE
- 2PzPgRZ7IS97KRGo+zo8qzQouPlDksKssXZN8O0qEziFYm8V4ru8nc7Lz2TdFel1
- SASeKXPcq1kaoajV93tD1kOaPxIHMzMFzD/FH8FQN/Kt7GA7c57vK067vnJcjiuD
- KYek0ADOPrDlSfDkNpe5tnBwLTErqkyy+QCGvQwGwkmXfgZaXtYkaT6vZwXa4mGg
- LGHybc26lIPpCC9dOYYApPo3aRcq7mZZSOwEI867yhd7VxEuZmllo/LHucsrzmHH
- dh+8Lg==
-Received: from mail-pj1-f70.google.com (mail-pj1-f70.google.com
- [209.85.216.70])
- by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 4gbgpc0h6x-1
- (version=TLSv1.3 cipher=TLS_AES_128_GCM_SHA256 bits=128 verify=NOT)
- for <qemu-arm@nongnu.org>; Fri, 28 Aug 2026 23:06:11 +0000 (GMT)
-Received: by mail-pj1-f70.google.com with SMTP id
- 98e67ed59e1d1-38e4758ab46so2924065a91.0
- for <qemu-arm@nongnu.org>; Fri, 28 Aug 2026 16:06:10 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <strahinja.p.jankovic@gmail.com>)
+ id 1x0IbP-0001Ve-H6
+ for qemu-arm@nongnu.org; Sat, 29 Aug 2026 08:56:07 -0400
+Received: from mail-lf1-x133.google.com ([2a00:1450:4864:20::133])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <strahinja.p.jankovic@gmail.com>)
+ id 1x0IbN-00021A-Na
+ for qemu-arm@nongnu.org; Sat, 29 Aug 2026 08:56:07 -0400
+Received: by mail-lf1-x133.google.com with SMTP id
+ 2adb3069b0e04-5aeb98460c6so2535690e87.2
+ for <qemu-arm@nongnu.org>; Sat, 29 Aug 2026 05:56:04 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=oss.qualcomm.com; s=google; t=1787958370; x=1788563170; darn=nongnu.org;
- h=content-transfer-encoding:content-type:in-reply-to:content-language
- :from:references:cc:to:subject:user-agent:mime-version:date
- :message-id:from:to:cc:subject:date:message-id:reply-to:content-type;
- bh=fE5+FoZiKr2Sa5RCsVANMuI+3ptLbhtUFLS1svoTdA4=;
- b=hvIAHa4cC8duElMvfAe+ytXJz4FSz2mYOm2YNv/bXFezbW4K6PPtJZiFrCd6nbFhKL
- mdqvQjSVb/Npf5HZuTwgyF3wm2KBoq4/pzXSQejbCaDS6FDVDoA9DoB19ETtr9/Swt5t
- vQzIzr5BXFbBF1esMzAiLL2zW0Pp49MPRkSgarob/2eXA8YgjAAngwShTtrrTMGdZkI5
- wXRSQH0B1Tq5iZTLpMU7ag8pY+XpgR2uCi3mKQLNq/BoR4eS2Ak5VCu1YOmMMCfGBQDv
- OnIcqhHR/6syZjKO7IN95YLUInJ1tQf85/bk0uK4ICcHFYqXbQEEVnVxEghG8AxDBFJH
- wshw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1787958370; x=1788563170;
- h=content-transfer-encoding:content-type:in-reply-to:content-language
- :from:references:cc:to:subject:user-agent:mime-version:date
- :message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+ d=gmail.com; s=20251104; t=1788008163; x=1788612963; darn=nongnu.org;
+ h=cc:to:content-transfer-encoding:content-type:mime-version
+ :message-id:date:subject:from:sender:from:to:cc:subject:date
  :message-id:reply-to:content-type;
- bh=fE5+FoZiKr2Sa5RCsVANMuI+3ptLbhtUFLS1svoTdA4=;
- b=G3Bh9cPuAwXxccEqjVNTMqboG4Ryeok1FwVnIYz2bPDmaFuoP4NIcpIslhs6rQQnV/
- iCqZww80a70rJerE+/aMeBkgbBg1fTeoYmMtTeaaYYW9HLVK8UbZ+kyF7+P/3z3ituFV
- 3edw5DqahWK4IflK+BjQ8+z5/LU3UdTBq3upAqv1L4AeW5CrFES0lteLMwMlWKOQjYFs
- BDs4cloVPMI03O0L3Psrqjjz9U5I35laKGr+xmSGRNVMkGNznpNvqa08qjh4Izml9Ck2
- oZi6FBaU1j4Qzin7n3qbMmkar6YbcUwzHgJ3K7jIoPNaaadxquZn9+B2Wo4Abx3Difyd
- 9eag==
+ bh=tBI87hi+w7tju9vmpR81JRr0gonsniLIcX+bUh7+jTE=;
+ b=ESJpymtHywBIoIQOnUlhuVd7rtkpvpx/EQz+fReLBYjHjmG2q1ESOrxcRZsK0PVkmX
+ G1zaPiedwOzfejbc2U3NC+DE2MfKkuQAcZ/8Et71uL3aeyGPGz57QFx/CMhWmH2N35di
+ 8/mMNqtV4KLHm6+CYGkUmJJsdGn/BSdBhBc2H2lB95rvUeJH8ADyyEj+TFHc1eEjb7+2
+ 01INkXKnRv7pD2O3z1ILulaiqV9mThooN+tWzZzPZ6PFVdCatQrv8Tojg1IAEve15GFb
+ AgjDmt/Ofux6tkgXkgVKE8c/Ww6vsMRAD6wvGBq97gCRrid/IYqY+mRBH2tsnd4vwDKN
+ 7wjg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20251104; t=1788008163; x=1788612963;
+ h=cc:to:content-transfer-encoding:content-type:mime-version
+ :message-id:date:subject:from:sender:x-gm-gg:x-gm-message-state:from
+ :to:cc:subject:date:message-id:reply-to:content-type;
+ bh=tBI87hi+w7tju9vmpR81JRr0gonsniLIcX+bUh7+jTE=;
+ b=KbAn33yutew0knCq+1iI9p1hdyUozSVIqcZNclC6q72QXgKWbgibAdeGLepNQHVKqf
+ fGsQqXNd9A758j6lqSmJDKbnOM93SLG/A2CYr+QdQ3aKDE0f8GmdACkaJ+klDAARKJ8j
+ IrBXXeI+rVJdEHhrctg8966SMYUlJpB503ST02hAGoU8innfjmEcoiLEPaEb/1vgrQlM
+ fWxpymD+oPO2rQmg17FIEozedr6/NqnqK0X+DhfVVQ9p8vM+/jjYkvkbS4Zui9WtBdrH
+ ZVQQxbzzjfDNb9CZNnKGpwUiMMJO2vgGMSKDBRUeamRmDxQV3gq3ovENBtJPszADeXRf
+ EGjg==
 X-Forwarded-Encrypted: i=1;
- AKwUvBzIUbFOFAXh13kB/JwiD7baC81YKC74qgxvjwXtgxQQuITgYfjrTMjKPXhX9SuK5MS86AFYcxMgjA==@nongnu.org
-X-Gm-Message-State: AFuF++ldaNpGiOTCe5e9bRUZl6iQ6uuyNhxSlx1B64biLQMAVnF06VpC
- ARG+EUIRKvdl6EG6pdJ5FTlmKxwPYFymDwovdYqeP70BN2T+F/Yr7aVrEMMzDnbV35xkyCtYtdm
- GGyDhFqMG3n7w5xvNeQvEae9ogVcn0tguaVKl5W3fQlcFqsIlVuhhtIc=
-X-Gm-Gg: AYBFou0+RI8PROJ47rrOLmsivJMzoJgbkVUraB/h5tdwrIvD9r8tCtC/GIbLmmAU4PL
- bVXV6bPHIcO1GzM0gZiJIAKFuRVqYiHI3ipeTDjClIqGoMiiOqNSWNyZwwYMXQd+rC9MQstE1Hy
- 2G+xTOLPZxXPx5Bs65MpidtG2Sbx5bqdk0lzSSNKorYsBrZe7b/1UA+pGbE1jbW2lLurGmiNoOs
- OqlY3PtwfoJdKQgJks4gSMuRN0ZcVT9ISLEzxb5wh+pDnXSygFENNw5ovrnkcVAyqe7AG3c28IK
- RmFxqE/PhuGblHKa4natjwomrfFCbEhg5qjek2xqrTCDDfO2n2lC8RekvQFTevMwLz66lcxtHli
- z1tly3fkXBuicXwZDySRjY7X9ht5fhL8IO3GTG3Rd+JHMbw5zGeFjJaTiyUkKIKK3ZmGo
-X-Received: by 2002:a17:90b:380b:b0:380:f85c:94b4 with SMTP id
- 98e67ed59e1d1-396d0f2391cmr17399798a91.7.1787958369964; 
- Fri, 28 Aug 2026 16:06:09 -0700 (PDT)
-X-Received: by 2002:a17:90b:380b:b0:380:f85c:94b4 with SMTP id
- 98e67ed59e1d1-396d0f2391cmr17399719a91.7.1787958369403; 
- Fri, 28 Aug 2026 16:06:09 -0700 (PDT)
-Received: from [192.168.1.199] (216-71-219-44.dyn.novuscom.net.
- [216.71.219.44]) by smtp.gmail.com with ESMTPSA id
- a92af1059eb24-142e0d1abbdsm8506420c88.2.2026.08.28.16.06.06
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Fri, 28 Aug 2026 16:06:08 -0700 (PDT)
-Message-ID: <e62fd6e2-d5f2-4c2d-b4c6-d40ee17cbcf1@oss.qualcomm.com>
-Date: Fri, 28 Aug 2026 16:06:05 -0700
+ AKwUvBxu0dFqmK9AeHGH5hNnwS8OwviU38ltV12Zm+g6pp3mg2qDJoxpxZlv+V3e7QMi8Uk0fu2tC+tJHA==@nongnu.org
+X-Gm-Message-State: AFuF++kJDupXnhMIR6TGlamBDKQ6P324nrzn4HGP0X7+2LHQoPcvuIfA
+ gTcPVUkyl06908qzYLVrnz9BQopokdGrnqLNO4tdx/4hrpoc2v/n/Dm9
+X-Gm-Gg: AYBFou0AtRON0OwivUw5lkcc339qnlujueYB0p2s21O2MBHTSOV1JHzj1w6JTfFJx1N
+ 8GjdQbanuQnmOGqmkxUyHNSkMpNoCq2tRbOedaKDIG5xL+2nGFdPrQOvPqdEZDLiah3vfe8Fbwy
+ WUftXJuaM0fBQmaVIBuV0fe57vgfXkRo71DSy7Y//hIseTy5x5zGsXr3D5KNyWEDScxhd8456oC
+ UwDxi+CPhB2wJDN4JKZcEuE6JlvT7wGsEvE8fZPj4pvyhEl7UWR2COrFD55aO0OlfuHF9bZiLGs
+ 4IP7jPDPkah6gbVX8bH6DEYSrlfhwG6bNEwSwefkR2ioRHs60vJcAPPJNWQ9axRZf9aE4w7e8AC
+ 9pNYL//0pDfR/qXw1XlunpPyhCX46Ol6/qBPsdxsHlzpd+5RpnrOcE/ROIQR4o5yX2FLJzlGGC3
+ 20I19tQgSYV/cfnsDFOlz48nXg/yMQa1nz59oTpOqqeN1dIra+7SmeRkBO4vKlnY7VF1c9h/RDb
+ uv7QeT37rgatVuxHWZcE2h9zZ00iC7JVbUD1NKyvWe2cRI1LcN4l4FOwgA=
+X-Received: by 2002:ac2:568d:0:b0:5b5:e8f1:ee86 with SMTP id
+ 2adb3069b0e04-5b5e8f1f2acmr3542124e87.2.1788008162896; 
+ Sat, 29 Aug 2026 05:56:02 -0700 (PDT)
+Received: from [192.168.31.141] (213-65-111-204-no600.tbcn.telia.com.
+ [213.65.111.204]) by smtp.gmail.com with ESMTPSA id
+ 2adb3069b0e04-5b5e8a0ce42sm968866e87.57.2026.08.29.05.56.00
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Sat, 29 Aug 2026 05:56:01 -0700 (PDT)
+From: Strahinja Jankovic <strahinja.p.jankovic@gmail.com>
+Subject: [PATCH v2 0/3] Allwinner A10 GPIO support
+Date: Sat, 29 Aug 2026 14:55:42 +0200
+Message-Id: <20260829-allwinner-gpio-v2-0-f0ebcb07302e@gmail.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 00/13] single-binary: link ARM and RISC-V into
- qemu-system
-To: Yonggang Luo <luoyonggang@gmail.com>, qemu-devel@nongnu.org
-Cc: Peter Maydell <peter.maydell@linaro.org>, Fabiano Rosas <farosas@suse.de>,
- Aurelien Jarno <aurelien@aurel32.net>, qemu-riscv@nongnu.org,
- Song Gao <17746591750@163.com>, "Michael S. Tsirkin" <mst@redhat.com>,
- Jiaxun Yang <jiaxun.yang@flygoat.com>, qemu-ppc@nongnu.org,
- Xianglai Li <lixianglai@loongson.cn>, David Hildenbrand <david@kernel.org>,
- Richard Henderson <richard.henderson@linaro.org>,
- Palmer Dabbelt <palmer@dabbelt.com>, Aleksandar Rikalo <arikalo@gmail.com>,
- Harsh Prateek Bora <harshpb@linux.ibm.com>,
- Bibo Mao <maobibo@loongson.cn>, Weiwei Li <liwei1518@gmail.com>,
- =?UTF-8?Q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>,
- Matthew Rosato <mjrosato@linux.ibm.com>,
- Chinmay Rath <rathc@linux.ibm.com>,
- Alistair Francis <alistair.francis@wdc.com>,
- Alexander Bulekov <alxndr@bu.edu>, Chao Liu <chao.liu@processmission.com>,
- =?UTF-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>,
- Glenn Miles <milesg@linux.ibm.com>, =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?=
- <philmd@mailo.com>,
- Laurent Vivier <lvivier@redhat.com>, Cornelia Huck <cohuck@redhat.com>,
- Zhao Liu <zhao1.liu@intel.com>, Eric Farman <farman@linux.ibm.com>,
- qemu-s390x@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>,
- Stefan Hajnoczi <stefanha@redhat.com>, qemu-arm@nongnu.org,
- Ilya Leoshkevich <iii@linux.ibm.com>,
- Darren Kenny <darren.kenny@oracle.com>, Sunil V L
- <sunilvl@ventanamicro.com>,
- Daniel Henrique Barboza <daniel.barboza@oss.qualcomm.com>,
- Ani Sinha <anisinha@redhat.com>, Nicholas Piggin <npiggin@gmail.com>,
- =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>,
- Liu Zhiwei <zhiwei_liu@linux.alibaba.com>,
- Igor Mammedov <imammedo@redhat.com>
-References: <20260826184229.1145-1-luoyonggang@gmail.com>
-From: Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>
-Content-Language: en-US
-In-Reply-To: <20260826184229.1145-1-luoyonggang@gmail.com>
-Content-Type: text/plain; charset=UTF-8
+Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-X-Proofpoint-ORIG-GUID: ECbfMFsfJ7B_hjKfvwvB-ELVR8Zovzkt
-X-Proofpoint-GUID: ECbfMFsfJ7B_hjKfvwvB-ELVR8Zovzkt
-X-Proofpoint-Spam-Info: AW1haW4tMjYwODI4MDIwMCBTYWx0ZWRfXw7F9Ks0V68Dw
- HF9v/oFFuGhHYjskKjvbJaED0wuysp0RQGepm9Xh0lEABLI6TYWqfA/X0U/WewoVgm7ta7/FH6c
- UAVRJ7+dxrnUd7Lxgr8QVaVhP3gljlo=
-X-Authority-Analysis: v=2.4 cv=dtfrzVg4 c=1 sm=1 tr=0 ts=6a921463 cx=c_pps
- a=0uOsjrqzRL749jD1oC5vDA==:117 a=iLqgmErQAxjCjdq5jj1Aqg==:17
- a=IkcTkHD0fZMA:10 a=Sv0fKeRqtYgA:10 a=s4-Qcg_JpJYA:10
- a=VkNPw1HP01LnGYTKEx00:22 a=u7WPNUs3qKkmUXheDGA7:22 a=3WHJM1ZQz_JShphwDgj5:22
- a=GaQpPoNlAAAA:8 a=EUspDBNiAAAA:8 a=VwQbUJbxAAAA:8 a=wAUz5CRPtLaz9UZ5HuIA:9
- a=QEXdDO2ut3YA:10 a=mQ_c8vxmzFEMiUWkPHU9:22 a=xF5q_uoM5gZT5J3czcBi:22
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwODI4MDIwMCBTYWx0ZWRfX+tvjePIw04Tj
- RZCKsBsdGGuqJGXvf9rw1BgSx4oOo5hXSgggKsoUU92/jlEIseJB3YEX9zlueZkaQclreACO2X9
- gDsU95fUcGLZQATRlYiaI7QIu263Zb4N+UohmfbFpSsnEZEqOupzEuCStIyMOrZdvWcmw+c2Xkx
- ELq4fHKfwyGLTNQHxltnXhbphloTqKACGij8iOWUYXIxr8ntj3ektztyPTpTaRFxCMxeZn02iZl
- cKK8ZkoqGhngMt+0GPgSH+dd1qkv4H44QSBVPBCSYjoBpqwvYQTHJetiUoNIDhbbvBueXfOSykv
- V7v7mIVptF9E7jmcHE/h4KeQ/8l0Kyb0mzDEf4NH5aaq+7mKS6X3N3fC9cUPnVpIkWdYfdoJnv1
- MON4woh4/dDvZoM3p636sRDPL5GxkhVya5RAwlzFv6OaW0xPGUnSJ7w6GZkyu6okI9GVZmWtu2b
- u2VLPcNoHMJ61OFM8AA==
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.293,Aquarius:18.0.1176,Hydra:6.1.134,FMLib:17.12.100.49
- definitions=2026-08-28_07,2026-08-27_02,2025-10-01_01
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
- impostorscore=0 spamscore=0 suspectscore=0 lowpriorityscore=0 bulkscore=0
- adultscore=0 phishscore=0 priorityscore=1501 malwarescore=0 clxscore=1015
- classifier=typeunknown authscore=0 authtc= authcc= route=outbound adjust=0
- reason=mlx scancount=1 engine=8.22.0-2606150000 definitions=main-2608280200
-Received-SPF: pass client-ip=205.220.180.131;
- envelope-from=pierrick.bouvier@oss.qualcomm.com;
- helo=mx0b-0031df01.pphosted.com
-X-Spam_score_int: -27
-X-Spam_score: -2.8
-X-Spam_bar: --
-X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-B4-Tracking: v=1; b=H4sIAAAAAAAC/13MQQrCMBCF4auUWRvphBBTV95DugjNpB1ok5JIV
+ Ervbiy4cfk/eN8GmRJThmuzQaLCmWOoIU8NDJMNIwl2tUG2UrcGjbDz/OQQKIlx5Sg0WaMQL85
+ 3CuppTeT5dYD3vvbE+RHT+/ALftcf1f1TBUUrpNXKaO28R7yNi+X5PMQF+n3fP42OquOsAAAA
+X-Change-ID: 20260818-allwinner-gpio-6ea84117df94
+To: qemu-devel@nongnu.org
+Cc: Paolo Bonzini <pbonzini@redhat.com>, 
+ Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org, 
+ Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>, 
+ Fabiano Rosas <farosas@suse.de>, Laurent Vivier <lvivier@redhat.com>, 
+ Jack wang <163wangjack@gmail.com>, 
+ Strahinja Jankovic <strahinja.p.jankovic@gmail.com>
+X-Mailer: b4 0.14.3
+Received-SPF: pass client-ip=2a00:1450:4864:20::133;
+ envelope-from=strahinja.p.jankovic@gmail.com; helo=mail-lf1-x133.google.com
+X-Spam_score_int: -10
+X-Spam_score: -1.1
+X-Spam_bar: -
+X-Spam_report: (-1.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FORGED_GMAIL_RCVD=1,
+ FREEMAIL_FROM=0.001, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -183,163 +110,46 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On 8/26/2026 11:42 AM, Yonggang Luo wrote:
-> This series produces one qemu-system binary that can run ARM (32 and 64)
-> and RISC-V (32 and 64). It follows Pierrick Bouvier's merged series
-> "single-binary: implement dynamic filtering for machine types":
-> 
->   https://patchew.org/QEMU/20260724000948.234657-1-pierrick.bouvier@oss.qualcomm.com/
-> 
-> That work added TYPE_TARGET_SPECIFIC so machines can be filtered per
-> target in one process. This series uniquifies remaining per-target C
-> symbols and QOM names, selects TargetInfo at runtime, and links ARM
-> plus RISC-V into qemu-system.
-> 
-> A combined link cannot keep C symbols or QOM type names that were unique
-> only because each qemu-system-$arch was a separate binary. The first
-> patches remove those collisions:
-> 
-> - TYPE_ACCEL_CPU is a single abstract accel-cpu parent, registered once
->   next to TYPE_ACCEL. Leaf names still encode the CPU type so
->   accel_init_cpu_interfaces() can look up "<accel>-accel-"
->   CPU_RESOLVING_TYPE.
-> - ARM and RISC-V virt QOM names become arm-virt and riscv-virt. The
->   boards keep -machine virt via machine_class_set_name() after the
->   selected target is applied. Latest ARM virt still sets mc->alias.
-> - virt ACPI helpers and RISC-V TCG crc32/crc32c/wfi helpers get an arch
->   prefix so the combined link does not need meson -D name mangling.
->   LoongArch virt_acpi_setup is renamed in the same pass.
-> 
-> Target selection then has to work with more than one TargetInfo in the
-> process:
-> 
-> - Parse -target before TargetInfo is fixed. The token is target_name
->   (arm, aarch64, riscv32, riscv64). When -target is omitted, infer it
->   from the program basename (qemu-system-aarch64, strip .exe).
->   qemu-system with no arch suffix always requires -target; there is
->   no unique-TargetInfo fallback. Use -target ? to list names.
-> - Combined binaries cannot keep one global C symbol per arch for
->   query-cpu-definitions, dump notes, or Angel semihosting. Those
->   handlers move onto a process-wide TargetCpuOps table.
-> 
-> The last patch still builds qemu-system-$TARGET. qemu-system is extra,
-> from the union of ARM and RISC-V Kconfig plus aarch64/riscv64 arch
-> objects. Do not replace the per-target binaries with symlinks to
-> qemu-system. Do not add qemu-systemw on Windows: a GUI twin of the
-> combined binary would keep QEMU exporting data from the .exe into
-> DLLs, and those data exports cannot be delay-loaded (qdev_prop_array
-> and other qdev_prop_*). That would block enabling modules globally
-> on Windows.
-> 
-> Examples:
-> 
->   qemu-system -target aarch64 -M virt ...
->   qemu-system-riscv64 -M virt ...
-> 
-> A combined binary named qemu-system with no arch suffix always
-> requires -target. A missing or unknown name fails and points at
-> -target ?.
-> 
-> Changes v1 -> v2:
-> - Drop little- and big-endian TargetInfo variants from this series.
->   v1 registered target-info-<name>-le and -be, selected is_default from
->   TARGET_BIG_ENDIAN, and accepted -target tokens such as aarch64-le.
->   v2 keeps one TargetInfo per target_name. Endian variants are later
->   work, not required to link ARM and RISC-V into qemu-system.
-> - -target help/? lists target_name only. Unknown names point at
->   -target ? rather than printing the list and exit(1).
-> - qemu-system with no arch suffix always requires -target. v1 could
->   still pick a unique TargetInfo when only one was registered.
-> - Keep qemu-system-$TARGET; qemu-system is an extra binary. v1
->   described installing per-arch names as symlinks to qemu-system.
-> - Do not build qemu-systemw for the combined binary. A Windows GUI
->   twin would keep using exe symbols from DLLs, and data exports
->   cannot be delay-loaded (qdev_prop_array / qdev_prop_*), which
->   would block enabling modules globally on Windows.
-> 
-> Based-on: <20260724000948.234657-1-pierrick.bouvier@oss.qualcomm.com>
-> 
-> Yonggang Luo (13):
->   accel: use a shared TYPE_ACCEL_CPU parent
->   hw/riscv/virt: register TYPE_TARGET_SPECIFIC
->   hw/arm/virt: register TYPE_TARGET_SPECIFIC on the abstract parent
->   machine: allow -M name to differ from QOM type
->   hw/riscv/virt: use unique QOM name
->   hw/arm/virt: use unique QOM name
->   hw/arm/virt: prefix ACPI helpers with arm_virt_
->   hw/riscv/virt: prefix ACPI helpers with riscv_virt_
->   hw/loongarch/virt: prefix ACPI helper with loongarch_virt_
->   target/riscv: uniquify TCG crc32, crc32c, and wfi helper names
->   system/vl: add new option -target
->   target-info: dispatch CPU QMP, dump, and arm/riscv semihosting
->   meson: build single binary
-> 
->  MAINTAINERS                                   |  1 -
->  accel/accel-common.c                          | 21 ++---
->  hw/arm/virt-acpi-build.c                      |  4 +-
->  hw/arm/virt.c                                 | 17 ++--
->  hw/core/cpu-system.c                          | 23 ++++++
->  hw/core/machine-qmp-cmds.c                    | 26 +++++++
->  hw/core/machine.c                             |  6 ++
->  hw/loongarch/virt-acpi-build.c                |  6 +-
->  hw/loongarch/virt.c                           |  2 +-
->  hw/riscv/virt-acpi-build.c                    |  2 +-
->  hw/riscv/virt.c                               | 12 ++-
->  include/accel/accel-cpu-target.h              |  3 +-
->  include/accel/accel-cpu.h                     |  2 +
->  include/hw/arm/virt.h                         |  6 +-
->  include/hw/core/boards.h                      | 12 ++-
->  include/hw/loongarch/virt.h                   |  2 +-
->  include/hw/riscv/virt.h                       |  6 +-
->  include/qemu/target-info-qom.h                | 42 +++++++++-
->  include/semihosting/common-semi.h             | 56 ++++++++++++--
->  meson.build                                   | 69 ++++++++++++++++-
->  meson_options.txt                             |  2 +
->  qemu-options.hx                               |  8 ++
->  scripts/meson-buildoptions.sh                 |  3 +
->  stubs/dump.c                                  | 27 -------
->  stubs/meson.build                             |  2 -
->  stubs/qmp-cpu.c                               | 21 -----
->  system/vl.c                                   | 44 ++++++++---
->  target-info-qom.c                             | 77 +++++++++++++++++--
->  target-info.c                                 | 32 ++++++++
->  target/arm/arch_dump.c                        |  8 +-
->  target/arm/arm-qmp-cmds.c                     | 15 +++-
->  target/arm/common-semi-target.c               | 23 ++++--
->  target/arm/meson.build                        |  7 +-
->  target/i386/arch_dump.c                       |  8 +-
->  target/i386/cpu-system.c                      | 12 ++-
->  target/i386/cpu.c                             |  6 +-
->  target/loongarch/arch_dump.c                  |  8 +-
->  target/loongarch/loongarch-qmp-cmds.c         | 15 +++-
->  target/mips/system/mips-qmp-cmds.c            | 15 ++--
->  target/ppc/arch_dump.c                        |  8 +-
->  target/ppc/ppc-qmp-cmds.c                     | 15 ++--
->  target/riscv/arch_dump.c                      |  8 +-
->  target/riscv/common-semi-target.c             | 25 ++++--
->  target/riscv/helper.h                         |  6 +-
->  target/riscv/meson.build                      |  4 +-
->  target/riscv/riscv-qmp-cmds.c                 | 15 +++-
->  target/riscv/tcg/bitmanip_helper.c            |  4 +-
->  .../tcg/insn_trans/trans_privileged.c.inc     |  2 +-
->  target/riscv/tcg/insn_trans/trans_xlrbr.c.inc |  4 +-
->  target/riscv/tcg/op_helper.c                  |  2 +-
->  target/s390x/arch_dump.c                      |  8 +-
->  target/s390x/cpu_models_system.c              | 15 +++-
->  tests/qtest/fuzz/fuzz.c                       |  2 +-
->  53 files changed, 562 insertions(+), 207 deletions(-)
->  delete mode 100644 stubs/dump.c
->  delete mode 100644 stubs/qmp-cpu.c
-> 
+This patch series introduces GPIO support for Allwinner A10 and
+Cubieboard.
 
-This series iterates on v1, but still does not tackle filtering of
-devices/cpus between the targets. This is a prerequisite before being to
-mix multiple targets together.
+The support is focused on input/output and interrupt functionality.
+The qtest suite is also updated with tests for implemented
+functionality.
 
-I sent the following series to show how a full filtering would work, and
-if it's a direction people here would be interested to follow:
-https://lore.kernel.org/qemu-devel/20260828225901.367438-1-pierrick.bouvier@oss.qualcomm.com/T/#t
+Signed-off-by: Strahinja Jankovic <strahinja.p.jankovic@gmail.com>
+---
+Changes in v2:
+- allwinner-gpio-test: Added test for interrupt triggered on both rising
+  and falling edge
+- Link to v1: https://lore.kernel.org/qemu-devel/20260819-allwinner-gpio-v1-0-2a64866dff11@gmail.com
 
-Regards,
-Pierrick
+---
+Strahinja Jankovic (3):
+      hw/gpio: Allwinner A10 GPIO emulation
+      hw/arm: Add GPIO to Allwinner A10 model
+      tests/qtest: Allwinner GPIO tests
+
+ MAINTAINERS                           |   3 +
+ docs/system/arm/cubieboard.rst        |   1 +
+ hw/arm/Kconfig                        |   1 +
+ hw/arm/allwinner-a10.c                |   8 +
+ hw/gpio/Kconfig                       |   3 +
+ hw/gpio/allwinner-gpio.c              | 465 +++++++++++++++++++++++++++++
+ hw/gpio/meson.build                   |   1 +
+ hw/gpio/trace-events                  |   6 +
+ include/hw/arm/allwinner-a10.h        |   2 +
+ include/hw/gpio/allwinner-gpio-regs.h | 228 ++++++++++++++
+ include/hw/gpio/allwinner-gpio.h      |  41 +++
+ tests/qtest/allwinner-gpio-test.c     | 538 ++++++++++++++++++++++++++++++++++
+ tests/qtest/meson.build               |   3 +-
+ 13 files changed, 1299 insertions(+), 1 deletion(-)
+---
+base-commit: fa19879df1658f96ac07365fca8835b7decd6995
+change-id: 20260818-allwinner-gpio-6ea84117df94
+
+Best regards,
+-- 
+Strahinja Jankovic <strahinja.p.jankovic@gmail.com>
+
 

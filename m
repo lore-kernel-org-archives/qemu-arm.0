@@ -4,52 +4,54 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 961BCC61DDE
-	for <qemu-arm@archiver.kernel.org>; Sat, 29 Aug 2026 23:45:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0C6FFC61DD6
+	for <qemu-arm@archiver.kernel.org>; Sat, 29 Aug 2026 23:46:05 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1x0SiN-000850-1X; Sat, 29 Aug 2026 19:43:59 -0400
+	id 1x0Sir-0008Dy-Sy; Sat, 29 Aug 2026 19:44:29 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <gilles.grimaud@univ-lille.fr>)
- id 1x0SiM-00084g-41; Sat, 29 Aug 2026 19:43:58 -0400
-Received: from smtp-out-1.univ-lille.fr ([194.254.129.82])
+ id 1x0Sip-0008Db-Kl; Sat, 29 Aug 2026 19:44:27 -0400
+Received: from smtp-out-2.univ-lille.fr ([194.254.129.106])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <gilles.grimaud@univ-lille.fr>)
- id 1x0SiK-0006DI-2P; Sat, 29 Aug 2026 19:43:57 -0400
+ id 1x0Sil-0006H2-Ua; Sat, 29 Aug 2026 19:44:27 -0400
 Received: from smtp01.univ-lille.fr (smtp01.univ-lille.fr [194.254.129.95])
- by smtp-out-1.univ-lille.fr (Postfix) with ESMTPS id 4hXWzb6syjzBqXf;
- Sun, 30 Aug 2026 01:43:39 +0200 (CEST)
+ by smtp-out-2.univ-lille.fr (Postfix) with ESMTPS id 4hXWzf3Gm7z838H;
+ Sun, 30 Aug 2026 01:43:42 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=univ-lille.fr;
- s=dkim; t=1788047020;
- bh=9iAgLGXyWoTTI0QSPHKdEKH5qEMaoF2aVyd4k8UxUSE=;
+ s=dkim; t=1788047022;
+ bh=jaGznRlhYw7viXdXk7BC2gWQcp908uo1V4fO1DssXg8=;
  h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=ZcnznBlTAyAsrpNtQ2XyfPHtm0kmGzUo/8n8rw+htDM4SWR6u/oW68BI3GM36y5rK
- t7k/i9hFX4k1qfJEzlVM/vuwlMJPq1Hbf8QpwDVDfHQcZbFbPW3RnczugpvYeRH1lQ
- B3tkMOCrw7fev+jPDcXN1nMn5JQIKgX/TB3frA1muuj0PX6GVska0zUaIG9Z8POZQ5
- cHVnNVmvCQnE0poz8gK9HBtwSVg5wjTBmOZ7a6YbqT+nAYuGcUjxAf0I5e+tjfVEkv
- xzWZDSI4CnYNQX88x2OkuKWVou2Gnc0yhQJkozfVTaVb1KSyG2FWykudwlSO+F3Mod
- KRJSqvBX3MPUQ==
+ b=BoqApYQ0kdvdU9NUEr4dALvT2CPU7UxFMOP8g2Il0Tz08oBcEY29ymduPZn11WdJ2
+ 57v7K9iOYCwmHjzSy02qCHLgXRwHfUXuYvRjQAxgkYbU1w+GMkBt5uTNBk+wMb8UhN
+ oGz3pwZmFRdZFLnpXkqRMvvndcC2/6aHuIcl3UEQRtk++MCWFy7NxFHFHyaI/TjWUk
+ n+aIuG3eYasXPmMZrOEqAzs2oD4NfsjEN7hEnPWHVCLx8KVmRie3GLk5IJ9Lo9/IwJ
+ utNJpzy5K4WmXssk5ObFTZsxNh8Ii+5c8oVpGkO+dQnUSri51VdoB5g1ZU5N0+/Icl
+ /t1Q9EIs5YU5g==
 Received: from localhost.localdomain (unknown [10.134.14.34])
  (Authenticated sender: gilles.grimaud)
- by smtp01.univ-lille.fr (Postfix) with ESMTPSA id 4hXWzb53KHz7vrV;
- Sun, 30 Aug 2026 01:43:39 +0200 (CEST)
+ by smtp01.univ-lille.fr (Postfix) with ESMTPSA id 4hXWzf10dVz7vrV;
+ Sun, 30 Aug 2026 01:43:42 +0200 (CEST)
 From: Gilles Grimaud <gilles.grimaud@univ-lille.fr>
 To: qemu-devel@nongnu.org
 Cc: alex.bennee@linaro.org, qemu-arm@nongnu.org,
  gilles grimaud <gilles.grimaud@univ-lille.fr>,
- Peter Maydell <peter.maydell@linaro.org>
-Subject: [PATCH RFC v2 05/30] tests/tcg/arm: add Raspberry Pi Pico smoke tests
-Date: Sun, 30 Aug 2026 01:42:39 +0200
-Message-ID: <20260829234308.33725-6-gilles.grimaud@univ-lille.fr>
+ Paolo Bonzini <pbonzini@redhat.com>,
+ Peter Maydell <peter.maydell@linaro.org>, Fabiano Rosas <farosas@suse.de>,
+ Laurent Vivier <lvivier@redhat.com>
+Subject: [PATCH RFC v2 11/30] hw/misc: add RP2040 watchdog
+Date: Sun, 30 Aug 2026 01:42:45 +0200
+Message-ID: <20260829234308.33725-12-gilles.grimaud@univ-lille.fr>
 X-Mailer: git-send-email 2.55.0
 In-Reply-To: <20260829234308.33725-1-gilles.grimaud@univ-lille.fr>
 References: <20260829234308.33725-1-gilles.grimaud@univ-lille.fr>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=194.254.129.82;
- envelope-from=gilles.grimaud@univ-lille.fr; helo=smtp-out-1.univ-lille.fr
+Received-SPF: pass client-ip=194.254.129.106;
+ envelope-from=gilles.grimaud@univ-lille.fr; helo=smtp-out-2.univ-lille.fr
 X-Spam_score_int: -43
 X-Spam_score: -4.4
 X-Spam_bar: ----
@@ -74,421 +76,694 @@ Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
 From: gilles grimaud <gilles.grimaud@univ-lille.fr>
 
-Build Cortex-M0+ guest programs from assembly sources to exercise the minimal Pico boot path, UART0 output, and the Cortex-M0+ MPU. Keep the vector table at the XIP base so these tests match the initial synthetic boot stub without depending on boot2 or the later flash controller model.
+Model the RP2040 watchdog control, load, reason, scratch and tick registers. Drive the counter from clk_ref with the RP2040-E1 twice-per-tick behavior and use QEMU's standard watchdog action for timer expiry and forced resets. Add qtests for reset state, sub-word scratch accesses, timer expiry and forced triggering.
 
 Signed-off-by: gilles grimaud <gilles.grimaud@univ-lille.fr>
 ---
- MAINTAINERS                            |   1 +
- tests/tcg/arm/Makefile.softmmu-target  |  24 ++++
- tests/tcg/arm/system/rp2040-boot.S     |  30 ++++
- tests/tcg/arm/system/rp2040-minimal.ld |  40 ++++++
- tests/tcg/arm/system/rp2040-mpu.S      | 183 +++++++++++++++++++++++++
- tests/tcg/arm/system/rp2040-mpu.ref    |   5 +
- tests/tcg/arm/system/rp2040-uart.S     |  53 +++++++
- tests/tcg/arm/system/rp2040-uart.ref   |   1 +
- 8 files changed, 337 insertions(+)
- create mode 100644 tests/tcg/arm/system/rp2040-boot.S
- create mode 100644 tests/tcg/arm/system/rp2040-minimal.ld
- create mode 100644 tests/tcg/arm/system/rp2040-mpu.S
- create mode 100644 tests/tcg/arm/system/rp2040-mpu.ref
- create mode 100644 tests/tcg/arm/system/rp2040-uart.S
- create mode 100644 tests/tcg/arm/system/rp2040-uart.ref
+ hw/arm/Kconfig                     |   1 +
+ hw/arm/rp2040.c                    |  11 +-
+ hw/misc/Kconfig                    |   3 +
+ hw/misc/meson.build                |   1 +
+ hw/misc/rp2040_watchdog.c          | 361 +++++++++++++++++++++++++++++
+ include/hw/arm/rp2040.h            |   2 +
+ include/hw/misc/rp2040_watchdog.h  |  35 +++
+ tests/qtest/meson.build            |   3 +-
+ tests/qtest/rp2040-watchdog-test.c | 148 ++++++++++++
+ 9 files changed, 563 insertions(+), 2 deletions(-)
+ create mode 100644 hw/misc/rp2040_watchdog.c
+ create mode 100644 include/hw/misc/rp2040_watchdog.h
+ create mode 100644 tests/qtest/rp2040-watchdog-test.c
 
-diff --git a/MAINTAINERS b/MAINTAINERS
-index 8fd7385d83..b000b3287d 100644
---- a/MAINTAINERS
-+++ b/MAINTAINERS
-@@ -1042,6 +1042,7 @@ S: Maintained
- F: hw/*/rp2040*
- F: include/hw/*/rp2040*
- F: hw/arm/raspi_pico.c
-+F: tests/tcg/arm/system/rp2040*
+diff --git a/hw/arm/Kconfig b/hw/arm/Kconfig
+index 2ea9ec31df..384ea0520f 100644
+--- a/hw/arm/Kconfig
++++ b/hw/arm/Kconfig
+@@ -388,6 +388,7 @@ config RP2040
+     select RP2040_SYSINFO
+     select RP2040_TBMAN
+     select RP2040_VREG
++    select RP2040_WATCHDOG
+     select RP2040_XOSC
+     select UNIMP
  
- Real View
- M: Peter Maydell <peter.maydell@linaro.org>
-diff --git a/tests/tcg/arm/Makefile.softmmu-target b/tests/tcg/arm/Makefile.softmmu-target
-index 3e8a9b4073..429416ca58 100644
---- a/tests/tcg/arm/Makefile.softmmu-target
-+++ b/tests/tcg/arm/Makefile.softmmu-target
-@@ -20,6 +20,30 @@ run-test-armv6m-undef: QEMU_OPTS=-semihosting-config enable=on,target=native,cha
+diff --git a/hw/arm/rp2040.c b/hw/arm/rp2040.c
+index 28b4079ff9..7b3bb0e7b1 100644
+--- a/hw/arm/rp2040.c
++++ b/hw/arm/rp2040.c
+@@ -62,7 +62,6 @@ static const struct {
+     { "rp2040.adc",      0x4004c000, 0x4000 },
+     { "rp2040.pwm",      0x40050000, 0x4000 },
+     { "rp2040.timer",    0x40054000, 0x4000 },
+-    { "rp2040.watchdog", 0x40058000, 0x4000 },
+     { "rp2040.rtc",      0x4005c000, 0x4000 },
+     { "rp2040.dma",      0x50000000, 0x1000 },
+     { "rp2040.usbctrl_dpram", 0x50100000, 0x10000 },
+@@ -187,6 +186,8 @@ static void rp2040_soc_init(Object *obj)
+     object_initialize_child(obj, "rosc", &s->rosc, TYPE_RP2040_ROSC);
+     object_initialize_child(obj, "tbman", &s->tbman, TYPE_RP2040_TBMAN);
+     object_initialize_child(obj, "vreg", &s->vreg, TYPE_RP2040_VREG);
++    object_initialize_child(obj, "watchdog", &s->watchdog,
++                            TYPE_RP2040_WATCHDOG);
+     object_initialize_child(obj, "xosc", &s->xosc, TYPE_RP2040_XOSC);
  
- ARM_TESTS+=test-armv6m-undef
+     s->irq = qemu_allocate_irqs(rp2040_set_irq, s, RP2040_NUM_IRQS);
+@@ -379,6 +380,14 @@ static void rp2040_soc_realize(DeviceState *dev, Error **errp)
+     }
+     sysbus_mmio_map(SYS_BUS_DEVICE(&s->vreg), 0, RP2040_VREG_BASE);
  
-+RP2040_TESTS=rp2040-boot rp2040-uart rp2040-mpu
++    qdev_connect_clock_in(DEVICE(&s->watchdog), "clk-ref",
++                          qdev_get_clock_out(DEVICE(&s->clocks), "clk-ref"));
++    if (!sysbus_realize(SYS_BUS_DEVICE(&s->watchdog), errp)) {
++        return;
++    }
++    sysbus_mmio_map(SYS_BUS_DEVICE(&s->watchdog), 0,
++                    RP2040_WATCHDOG_BASE);
 +
-+$(RP2040_TESTS): %: %.S rp2040-minimal.ld
-+	$(CC) -mcpu=cortex-m0plus -mthumb -mfloat-abi=soft \
-+		-Wl,--build-id=none -x assembler-with-cpp \
-+		$< -o $@ -nostdlib -static \
-+		-T $(ARM_SRC)/rp2040-minimal.ld
-+
-+run-rp2040-boot: QEMU_OPTS=-M raspi-pico \
-+	-semihosting-config enable=on,target=native -kernel
-+
-+run-rp2040-uart run-rp2040-mpu: QEMU_OPTS=-M raspi-pico \
-+	-serial chardev:output \
-+	-semihosting-config enable=on,target=native -kernel
-+
-+run-rp2040-uart run-rp2040-mpu: run-rp2040-%: rp2040-%
-+	$(call run-test, $<, \
-+	  $(QEMU) -monitor none -display none \
-+		  -chardev file$(COMMA)path=$<.out$(COMMA)id=output \
-+		  $(QEMU_OPTS) $<)
-+	$(call diff-out,$<,$(ARM_SRC)/$<.ref)
-+
-+ARM_TESTS+=$(RP2040_TESTS)
-+
- # These objects provide the basic boot code and helper functions for all tests
- CRT_OBJS=boot.o
+     if (!sysbus_realize(SYS_BUS_DEVICE(&s->xosc), errp)) {
+         return;
+     }
+diff --git a/hw/misc/Kconfig b/hw/misc/Kconfig
+index 9c15b56f74..c6a815f9bc 100644
+--- a/hw/misc/Kconfig
++++ b/hw/misc/Kconfig
+@@ -131,6 +131,9 @@ config RP2040_TBMAN
+ config RP2040_VREG
+     bool
  
-diff --git a/tests/tcg/arm/system/rp2040-boot.S b/tests/tcg/arm/system/rp2040-boot.S
++config RP2040_WATCHDOG
++    bool
++
+ config RP2040_XOSC
+     bool
+ 
+diff --git a/hw/misc/meson.build b/hw/misc/meson.build
+index 2589bec8a6..cdbfa7de31 100644
+--- a/hw/misc/meson.build
++++ b/hw/misc/meson.build
+@@ -108,6 +108,7 @@ system_ss.add(when: 'CONFIG_RP2040_SYSCFG', if_true: files('rp2040_syscfg.c'))
+ system_ss.add(when: 'CONFIG_RP2040_SYSINFO', if_true: files('rp2040_sysinfo.c'))
+ system_ss.add(when: 'CONFIG_RP2040_TBMAN', if_true: files('rp2040_tbman.c'))
+ system_ss.add(when: 'CONFIG_RP2040_VREG', if_true: files('rp2040_vreg.c'))
++system_ss.add(when: 'CONFIG_RP2040_WATCHDOG', if_true: files('rp2040_watchdog.c'))
+ system_ss.add(when: 'CONFIG_RP2040_XOSC', if_true: files('rp2040_xosc.c'))
+ system_ss.add(when: 'CONFIG_SLAVIO', if_true: files('slavio_misc.c'))
+ system_ss.add(when: 'CONFIG_ZYNQ', if_true: files('zynq_slcr.c'))
+diff --git a/hw/misc/rp2040_watchdog.c b/hw/misc/rp2040_watchdog.c
 new file mode 100644
-index 0000000000..0537a54d44
+index 0000000000..eb767304b2
 --- /dev/null
-+++ b/tests/tcg/arm/system/rp2040-boot.S
-@@ -0,0 +1,30 @@
++++ b/hw/misc/rp2040_watchdog.c
+@@ -0,0 +1,361 @@
 +/*
-+ * Raspberry Pi Pico boot smoke test.
++ * RP2040 watchdog emulation
 + *
-+ * Copyright 2026 Gilles Grimaud
 + * SPDX-License-Identifier: GPL-2.0-or-later
 + */
 +
-+.syntax unified
-+.cpu cortex-m0plus
-+.thumb
++#include "qemu/osdep.h"
++#include "hw/core/qdev-clock.h"
++#include "hw/misc/rp2040_nyi.h"
++#include "hw/misc/rp2040_watchdog.h"
++#include "migration/vmstate.h"
++#include "qapi/error.h"
++#include "qemu/log.h"
++#include "qemu/module.h"
++#include "qemu/timer.h"
++#include "system/watchdog.h"
 +
-+#define SRAM_END 0x20042000
-+#define SYS_EXIT 0x18
-+#define ADP_STOPPED_APPLICATION_EXIT 0x20026
++#define WATCHDOG_CTRL       0x00
++#define WATCHDOG_LOAD       0x04
++#define WATCHDOG_REASON     0x08
++#define WATCHDOG_SCRATCH0   0x0c
++#define WATCHDOG_SCRATCH7   0x28
++#define WATCHDOG_TICK       0x2c
 +
-+.section .vectors, "a", %progbits
-+vector_table:
-+    .word SRAM_END
-+    .word reset_handler + 1
++#define WATCHDOG_CTRL_TRIGGER   BIT(31)
++#define WATCHDOG_CTRL_ENABLE    BIT(30)
++#define WATCHDOG_CTRL_PAUSE_DBG1 BIT(26)
++#define WATCHDOG_CTRL_PAUSE_DBG0 BIT(25)
++#define WATCHDOG_CTRL_PAUSE_JTAG BIT(24)
++#define WATCHDOG_CTRL_PAUSE_MASK \
++    (WATCHDOG_CTRL_PAUSE_DBG1 | WATCHDOG_CTRL_PAUSE_DBG0 | \
++     WATCHDOG_CTRL_PAUSE_JTAG)
++#define WATCHDOG_CTRL_TIME_MASK 0x00ffffff
++#define WATCHDOG_CTRL_RW_MASK \
++    (WATCHDOG_CTRL_ENABLE | WATCHDOG_CTRL_PAUSE_MASK)
 +
-+.section .text, "ax", %progbits
-+.thumb_func
-+.global reset_handler
-+reset_handler:
-+    movs r0, SYS_EXIT
-+    ldr r1, =ADP_STOPPED_APPLICATION_EXIT
-+    bkpt 0xab
++#define WATCHDOG_LOAD_MASK  0x00ffffff
++#define WATCHDOG_REASON_FORCE   BIT(1)
++#define WATCHDOG_REASON_TIMER   BIT(0)
 +
-+1:
-+    b 1b
-diff --git a/tests/tcg/arm/system/rp2040-minimal.ld b/tests/tcg/arm/system/rp2040-minimal.ld
-new file mode 100644
-index 0000000000..ebfbac8cf2
---- /dev/null
-+++ b/tests/tcg/arm/system/rp2040-minimal.ld
-@@ -0,0 +1,40 @@
-+/* SPDX-License-Identifier: GPL-2.0-or-later */
++#define WATCHDOG_TICK_ENABLE    BIT(9)
++#define WATCHDOG_TICK_RUNNING   BIT(10)
++#define WATCHDOG_TICK_CYCLES_MASK 0x000001ff
++#define WATCHDOG_TICK_RW_MASK \
++    (WATCHDOG_TICK_ENABLE | WATCHDOG_TICK_CYCLES_MASK)
++#define WATCHDOG_TICK_COUNT_SHIFT 11
 +
-+ENTRY(reset_handler)
++#define ATOMIC_ALIAS_MASK   0x3000
++#define ATOMIC_XOR          0x1000
++#define ATOMIC_SET          0x2000
++#define ATOMIC_CLR          0x3000
 +
-+MEMORY
++static uint32_t rp2040_watchdog_apply_alias(uint32_t old, uint32_t value,
++                                            hwaddr alias)
 +{
-+    FLASH (rx) : ORIGIN = 0x10000000, LENGTH = 2M
-+    SRAM (rwx) : ORIGIN = 0x20000000, LENGTH = 264K
-+}
-+
-+SECTIONS
-+{
-+    .vectors ORIGIN(FLASH) :
-+    {
-+        KEEP(*(.vectors))
-+    } > FLASH
-+
-+    .text :
-+    {
-+        *(.text*)
-+        *(.rodata*)
-+    } > FLASH
-+
-+    .data :
-+    {
-+        *(.data*)
-+    } > SRAM AT > FLASH
-+
-+    .bss (NOLOAD) :
-+    {
-+        *(.bss*)
-+        *(COMMON)
-+    } > SRAM
-+
-+    /DISCARD/ :
-+    {
-+        *(.ARM.attributes)
-+        *(.comment)
++    switch (alias) {
++    case ATOMIC_XOR:
++        return old ^ value;
++    case ATOMIC_SET:
++        return old | value;
++    case ATOMIC_CLR:
++        return old & ~value;
++    default:
++        return value;
 +    }
 +}
-diff --git a/tests/tcg/arm/system/rp2040-mpu.S b/tests/tcg/arm/system/rp2040-mpu.S
++
++static uint32_t rp2040_watchdog_expand_write(uint32_t value, unsigned size)
++{
++    switch (size) {
++    case 1:
++        return value * 0x01010101u;
++    case 2:
++        return (value & 0xffffu) * 0x00010001u;
++    default:
++        return value;
++    }
++}
++
++static bool rp2040_watchdog_scratch_offset(hwaddr offset, unsigned *index)
++{
++    if (offset < WATCHDOG_SCRATCH0 || offset > WATCHDOG_SCRATCH7) {
++        return false;
++    }
++
++    *index = (offset - WATCHDOG_SCRATCH0) / sizeof(uint32_t);
++    return true;
++}
++
++static bool rp2040_watchdog_tick_running(RP2040WatchdogState *s)
++{
++    return (s->tick & WATCHDOG_TICK_ENABLE) &&
++           (s->tick & WATCHDOG_TICK_CYCLES_MASK) &&
++           clock_get_hz(s->clk_ref);
++}
++
++static uint32_t rp2040_watchdog_tick_freq_hz(RP2040WatchdogState *s)
++{
++    uint64_t clk_ref_hz = clock_get_hz(s->clk_ref);
++    uint32_t cycles = s->tick & WATCHDOG_TICK_CYCLES_MASK;
++
++    if (!cycles || !clk_ref_hz || !(s->tick & WATCHDOG_TICK_ENABLE)) {
++        return 0;
++    }
++
++    return MIN(UINT32_MAX, (uint32_t)(clk_ref_hz / cycles));
++}
++
++static uint32_t rp2040_watchdog_tick_read(RP2040WatchdogState *s)
++{
++    uint32_t value = s->tick & WATCHDOG_TICK_RW_MASK;
++
++    if (rp2040_watchdog_tick_running(s)) {
++        /*
++         * The precise divider phase is not observable by current firmware
++         * tests. Report a stable running state and a valid non-zero count.
++         */
++        value |= WATCHDOG_TICK_RUNNING;
++        value |= (s->tick & WATCHDOG_TICK_CYCLES_MASK) <<
++                 WATCHDOG_TICK_COUNT_SHIFT;
++    }
++
++    return value;
++}
++
++static void rp2040_watchdog_update(RP2040WatchdogState *s)
++{
++    uint32_t tick_hz = rp2040_watchdog_tick_freq_hz(s);
++    uint64_t watchdog_hz = (uint64_t)tick_hz * 2;
++
++    ptimer_transaction_begin(s->timer);
++    if (!tick_hz) {
++        ptimer_stop(s->timer);
++    } else {
++        /*
++         * RP2040-E1: the watchdog counter decrements twice per watchdog
++         * tick, so a LOAD of N expires after N / 2 generated ticks.
++         */
++        ptimer_set_freq(s->timer, MIN(watchdog_hz, (uint64_t)UINT32_MAX));
++        if (s->ctrl & WATCHDOG_CTRL_ENABLE) {
++            ptimer_run(s->timer, 1);
++        } else {
++            ptimer_stop(s->timer);
++        }
++    }
++    ptimer_transaction_commit(s->timer);
++}
++
++static uint32_t rp2040_watchdog_ctrl_read(RP2040WatchdogState *s)
++{
++    uint32_t time = MIN(ptimer_get_count(s->timer), WATCHDOG_CTRL_TIME_MASK);
++
++    return (s->ctrl & WATCHDOG_CTRL_RW_MASK) | time;
++}
++
++static void rp2040_watchdog_reset_request(RP2040WatchdogState *s,
++                                          uint32_t reason,
++                                          bool in_ptimer_transaction)
++{
++    s->reason = reason;
++    if (!in_ptimer_transaction) {
++        ptimer_transaction_begin(s->timer);
++    }
++    ptimer_stop(s->timer);
++    if (!in_ptimer_transaction) {
++        ptimer_transaction_commit(s->timer);
++    }
++    watchdog_perform_action();
++}
++
++static uint64_t rp2040_watchdog_read(void *opaque, hwaddr addr, unsigned size)
++{
++    RP2040WatchdogState *s = opaque;
++    hwaddr offset = addr & 0xfff;
++    hwaddr word_offset = offset & ~3ULL;
++    unsigned scratch;
++    uint64_t value;
++
++    switch (word_offset) {
++    case WATCHDOG_CTRL:
++        value = rp2040_watchdog_ctrl_read(s);
++        break;
++    case WATCHDOG_LOAD:
++        value = 0;
++        break;
++    case WATCHDOG_REASON:
++        value = s->reason;
++        break;
++    case WATCHDOG_TICK:
++        value = rp2040_watchdog_tick_read(s);
++        break;
++    default:
++        if (rp2040_watchdog_scratch_offset(word_offset, &scratch)) {
++            value = s->scratch[scratch];
++        } else {
++            value = 0;
++            rp2040_log_unimplemented_read("watchdog", size,
++                                          RP2040_WATCHDOG_BASE + addr,
++                                          offset, value);
++        }
++        break;
++    }
++
++    return extract64(value, (offset & 3) * 8, size * 8);
++}
++
++static void rp2040_watchdog_write(void *opaque, hwaddr addr,
++                                  uint64_t value64, unsigned size)
++{
++    RP2040WatchdogState *s = opaque;
++    hwaddr alias = addr & ATOMIC_ALIAS_MASK;
++    hwaddr offset = addr & 0xfff;
++    hwaddr word_offset = offset & ~3ULL;
++    unsigned scratch;
++    uint32_t value = rp2040_watchdog_expand_write(value64, size);
++
++    switch (word_offset) {
++    case WATCHDOG_CTRL: {
++        uint32_t old = rp2040_watchdog_ctrl_read(s);
++        uint32_t newval = rp2040_watchdog_apply_alias(old, value, alias);
++
++        s->ctrl = newval & WATCHDOG_CTRL_RW_MASK;
++        rp2040_watchdog_update(s);
++        if (newval & WATCHDOG_CTRL_TRIGGER) {
++            rp2040_watchdog_reset_request(s, WATCHDOG_REASON_FORCE, false);
++        }
++        break;
++    }
++    case WATCHDOG_LOAD:
++        s->load = rp2040_watchdog_apply_alias(s->load, value, alias) &
++                  WATCHDOG_LOAD_MASK;
++        ptimer_transaction_begin(s->timer);
++        ptimer_set_limit(s->timer, s->load, 1);
++        ptimer_transaction_commit(s->timer);
++        rp2040_watchdog_update(s);
++        break;
++    case WATCHDOG_REASON:
++        break;
++    case WATCHDOG_TICK:
++        s->tick = rp2040_watchdog_apply_alias(s->tick, value, alias) &
++                  WATCHDOG_TICK_RW_MASK;
++        rp2040_watchdog_update(s);
++        break;
++    default:
++        if (rp2040_watchdog_scratch_offset(word_offset, &scratch)) {
++            s->scratch[scratch] =
++                rp2040_watchdog_apply_alias(s->scratch[scratch], value,
++                                            alias);
++        } else {
++            rp2040_log_unimplemented_write("watchdog", size,
++                                           RP2040_WATCHDOG_BASE + addr,
++                                           offset, value64);
++        }
++        break;
++    }
++}
++
++static const MemoryRegionOps rp2040_watchdog_ops = {
++    .read = rp2040_watchdog_read,
++    .write = rp2040_watchdog_write,
++    .endianness = DEVICE_LITTLE_ENDIAN,
++    .valid = {
++        .min_access_size = 1,
++        .max_access_size = 4,
++        .unaligned = false,
++    },
++};
++
++static void rp2040_watchdog_reset(DeviceState *dev)
++{
++    RP2040WatchdogState *s = RP2040_WATCHDOG(dev);
++
++    s->ctrl = WATCHDOG_CTRL_PAUSE_MASK;
++    s->load = 0;
++    s->tick = WATCHDOG_TICK_ENABLE;
++
++    ptimer_transaction_begin(s->timer);
++    ptimer_stop(s->timer);
++    ptimer_set_limit(s->timer, 0, 1);
++    ptimer_transaction_commit(s->timer);
++}
++
++static void rp2040_watchdog_clk_ref_update(void *opaque, ClockEvent event)
++{
++    rp2040_watchdog_update(opaque);
++}
++
++static void rp2040_watchdog_tick(void *opaque)
++{
++    RP2040WatchdogState *s = RP2040_WATCHDOG(opaque);
++
++    rp2040_watchdog_reset_request(s, WATCHDOG_REASON_TIMER, true);
++}
++
++static void rp2040_watchdog_init(Object *obj)
++{
++    RP2040WatchdogState *s = RP2040_WATCHDOG(obj);
++    DeviceState *dev = DEVICE(obj);
++
++    s->clk_ref = qdev_init_clock_in(dev, "clk-ref",
++                                    rp2040_watchdog_clk_ref_update, s,
++                                    ClockUpdate);
++    memory_region_init_io(&s->iomem, obj, &rp2040_watchdog_ops, s,
++                          "rp2040.watchdog", RP2040_WATCHDOG_SIZE);
++    sysbus_init_mmio(SYS_BUS_DEVICE(obj), &s->iomem);
++}
++
++static void rp2040_watchdog_realize(DeviceState *dev, Error **errp)
++{
++    RP2040WatchdogState *s = RP2040_WATCHDOG(dev);
++
++    if (!clock_has_source(s->clk_ref)) {
++        error_setg(errp, "RP2040 watchdog: clk-ref clock must be connected");
++        return;
++    }
++
++    s->timer = ptimer_init(rp2040_watchdog_tick, s,
++                           PTIMER_POLICY_WRAP_AFTER_ONE_PERIOD |
++                           PTIMER_POLICY_TRIGGER_ONLY_ON_DECREMENT |
++                           PTIMER_POLICY_NO_IMMEDIATE_RELOAD |
++                           PTIMER_POLICY_NO_COUNTER_ROUND_DOWN);
++}
++
++static const VMStateDescription rp2040_watchdog_vmstate = {
++    .name = TYPE_RP2040_WATCHDOG,
++    .version_id = 1,
++    .minimum_version_id = 1,
++    .fields = (const VMStateField[]) {
++        VMSTATE_CLOCK(clk_ref, RP2040WatchdogState),
++        VMSTATE_PTIMER(timer, RP2040WatchdogState),
++        VMSTATE_UINT32(ctrl, RP2040WatchdogState),
++        VMSTATE_UINT32(load, RP2040WatchdogState),
++        VMSTATE_UINT32(reason, RP2040WatchdogState),
++        VMSTATE_UINT32_ARRAY(scratch, RP2040WatchdogState, 8),
++        VMSTATE_UINT32(tick, RP2040WatchdogState),
++        VMSTATE_END_OF_LIST()
++    }
++};
++
++static void rp2040_watchdog_class_init(ObjectClass *klass, const void *data)
++{
++    DeviceClass *dc = DEVICE_CLASS(klass);
++
++    dc->realize = rp2040_watchdog_realize;
++    device_class_set_legacy_reset(dc, rp2040_watchdog_reset);
++    dc->vmsd = &rp2040_watchdog_vmstate;
++}
++
++static const TypeInfo rp2040_watchdog_info = {
++    .name          = TYPE_RP2040_WATCHDOG,
++    .parent        = TYPE_SYS_BUS_DEVICE,
++    .instance_size = sizeof(RP2040WatchdogState),
++    .instance_init = rp2040_watchdog_init,
++    .class_init    = rp2040_watchdog_class_init,
++};
++
++static void rp2040_watchdog_register_types(void)
++{
++    type_register_static(&rp2040_watchdog_info);
++}
++type_init(rp2040_watchdog_register_types)
+diff --git a/include/hw/arm/rp2040.h b/include/hw/arm/rp2040.h
+index 431648af63..6c6eb3d927 100644
+--- a/include/hw/arm/rp2040.h
++++ b/include/hw/arm/rp2040.h
+@@ -22,6 +22,7 @@
+ #include "hw/misc/rp2040_sysinfo.h"
+ #include "hw/misc/rp2040_tbman.h"
+ #include "hw/misc/rp2040_vreg.h"
++#include "hw/misc/rp2040_watchdog.h"
+ #include "hw/misc/rp2040_xosc.h"
+ #include "qom/object.h"
+ 
+@@ -54,6 +55,7 @@ struct RP2040State {
+     RP2040RoscState rosc;
+     RP2040TbmanState tbman;
+     RP2040VregState vreg;
++    RP2040WatchdogState watchdog;
+     RP2040XoscState xosc;
+ 
+     MemoryRegion *board_memory;
+diff --git a/include/hw/misc/rp2040_watchdog.h b/include/hw/misc/rp2040_watchdog.h
 new file mode 100644
-index 0000000000..a3aef55f5f
+index 0000000000..2da12c9441
 --- /dev/null
-+++ b/tests/tcg/arm/system/rp2040-mpu.S
-@@ -0,0 +1,183 @@
++++ b/include/hw/misc/rp2040_watchdog.h
+@@ -0,0 +1,35 @@
 +/*
-+ * Raspberry Pi Pico Cortex-M0+ MPU test.
++ * RP2040 watchdog emulation
 + *
-+ * Copyright 2026 Gilles Grimaud
 + * SPDX-License-Identifier: GPL-2.0-or-later
 + */
 +
-+.syntax unified
-+.cpu cortex-m0plus
-+.thumb
++#ifndef HW_MISC_RP2040_WATCHDOG_H
++#define HW_MISC_RP2040_WATCHDOG_H
 +
-+#define SRAM_END 0x20042000
-+#define TEST_ADDRESS 0x20001000
-+#define TEST_VALUE 0x12345678
-+#define UART0_DR 0x40034000
-+#define MPU_TYPE 0xe000ed90
-+#define MPU_CTRL 0xe000ed94
-+#define MPU_RNR 0xe000ed98
-+#define MPU_RBAR 0xe000ed9c
-+#define MPU_RASR 0xe000eda0
-+#define MPU_TYPE_DREGION_MASK 0x0000ff00
-+#define MPU_TYPE_DREGION_SHIFT 8
-+#define MPU_CTRL_ENABLE_PRIVDEFENA 0x05
-+#define MPU_RASR_SRAM_FULL_ACCESS 0x03000025
-+#define MPU_RASR_XIP_READ_ONLY 0x06000039
-+#define MPU_RASR_TEST_PRIV_RW 0x0100000f
-+#define SYS_EXIT 0x18
-+#define ADP_STOPPED_APPLICATION_EXIT 0x20026
-+#define ADP_STOPPED_RUNTIME_ERROR 0x20023
++#include "hw/core/clock.h"
++#include "hw/core/ptimer.h"
++#include "hw/core/sysbus.h"
++#include "qom/object.h"
 +
-+.section .vectors, "a", %progbits
-+vector_table:
-+    .word SRAM_END
-+    .word reset_handler + 1
-+    .word default_handler + 1
-+    .word hardfault_handler + 1
++#define TYPE_RP2040_WATCHDOG "rp2040-watchdog"
++OBJECT_DECLARE_SIMPLE_TYPE(RP2040WatchdogState, RP2040_WATCHDOG)
 +
-+.section .text, "ax", %progbits
-+.thumb_func
-+.global reset_handler
-+reset_handler:
-+    ldr r0, =start_message
-+    bl puts
++#define RP2040_WATCHDOG_BASE 0x40058000
++#define RP2040_WATCHDOG_SIZE 0x4000
 +
-+    ldr r0, =MPU_TYPE
-+    ldr r0, [r0]
-+    ldr r1, =MPU_TYPE_DREGION_MASK
-+    ands r0, r1
-+    lsrs r0, r0, MPU_TYPE_DREGION_SHIFT
-+    cmp r0, 8
-+    bne fail_type
++struct RP2040WatchdogState {
++    SysBusDevice parent_obj;
 +
-+    ldr r0, =type_message
-+    bl puts
++    MemoryRegion iomem;
++    Clock *clk_ref;
++    ptimer_state *timer;
 +
-+    ldr r4, =TEST_ADDRESS
-+    ldr r5, =TEST_VALUE
-+    str r5, [r4]
-+    ldr r0, [r4]
-+    cmp r0, r5
-+    bne fail_plain
++    uint32_t ctrl;
++    uint32_t load;
++    uint32_t reason;
++    uint32_t scratch[8];
++    uint32_t tick;
++};
 +
-+    ldr r0, =plain_message
-+    bl puts
-+
-+    movs r0, 0
-+    ldr r1, =0x20000000
-+    ldr r2, =MPU_RASR_SRAM_FULL_ACCESS
-+    bl configure_region
-+
-+    movs r0, 1
-+    movs r1, 0
-+    ldr r2, =MPU_RASR_XIP_READ_ONLY
-+    bl configure_region
-+
-+    movs r0, 2
-+    ldr r1, =TEST_ADDRESS
-+    ldr r2, =MPU_RASR_TEST_PRIV_RW
-+    bl configure_region
-+
-+    ldr r0, =MPU_CTRL
-+    movs r1, MPU_CTRL_ENABLE_PRIVDEFENA
-+    str r1, [r0]
-+    dsb
-+    isb
-+
-+    ldr r0, [r4]
-+    cmp r0, r5
-+    bne fail_privileged
-+
-+    ldr r0, =privileged_message
-+    bl puts
-+
-+    movs r0, 1
-+    msr control, r0
-+    isb
-+
-+    ldr r0, [r4]
-+    ldr r0, =fail_no_fault_message
-+    b test_failed
-+
-+.thumb_func
-+configure_region:
-+    ldr r3, =MPU_RNR
-+    str r0, [r3]
-+    ldr r3, =MPU_RBAR
-+    str r1, [r3]
-+    ldr r3, =MPU_RASR
-+    str r2, [r3]
-+    bx lr
-+
-+fail_type:
-+    ldr r0, =fail_type_message
-+    b test_failed
-+
-+fail_plain:
-+    ldr r0, =fail_plain_message
-+    b test_failed
-+
-+fail_privileged:
-+    ldr r0, =fail_privileged_message
-+
-+test_failed:
-+    bl puts
-+    movs r0, SYS_EXIT
-+    ldr r1, =ADP_STOPPED_RUNTIME_ERROR
-+    bkpt 0xab
-+
-+1:
-+    b 1b
-+
-+.thumb_func
-+hardfault_handler:
-+    ldr r0, =ok_message
-+    bl puts
-+    movs r0, SYS_EXIT
-+    ldr r1, =ADP_STOPPED_APPLICATION_EXIT
-+    bkpt 0xab
-+
-+2:
-+    b 2b
-+
-+.thumb_func
-+default_handler:
-+    ldr r0, =fail_exception_message
-+    b test_failed
-+
-+.thumb_func
-+puts:
-+    ldr r2, =UART0_DR
-+
-+3:
-+    ldrb r1, [r0]
-+    cmp r1, 0
-+    beq 4f
-+    str r1, [r2]
-+    adds r0, 1
-+    b 3b
-+
-+4:
-+    bx lr
-+
-+.section .rodata, "a", %progbits
-+start_message:
-+    .asciz "PICO TCG MPU START\n"
-+type_message:
-+    .asciz "PICO TCG MPU TYPE\n"
-+plain_message:
-+    .asciz "PICO TCG MPU PLAIN\n"
-+privileged_message:
-+    .asciz "PICO TCG MPU PRIV\n"
-+ok_message:
-+    .asciz "PICO TCG MPU OK\n"
-+fail_type_message:
-+    .asciz "PICO TCG MPU FAIL: TYPE\n"
-+fail_plain_message:
-+    .asciz "PICO TCG MPU FAIL: PLAIN\n"
-+fail_privileged_message:
-+    .asciz "PICO TCG MPU FAIL: PRIV\n"
-+fail_no_fault_message:
-+    .asciz "PICO TCG MPU FAIL: NOFAULT\n"
-+fail_exception_message:
-+    .asciz "PICO TCG MPU FAIL: EXCEPTION\n"
-diff --git a/tests/tcg/arm/system/rp2040-mpu.ref b/tests/tcg/arm/system/rp2040-mpu.ref
++#endif
+diff --git a/tests/qtest/meson.build b/tests/qtest/meson.build
+index 03bd78b551..e5ddd4ce3b 100644
+--- a/tests/qtest/meson.build
++++ b/tests/qtest/meson.build
+@@ -260,7 +260,8 @@ qtests_arm = \
+                                                        'rp2040-resets-test',
+                                                        'rp2040-rosc-test',
+                                                        'rp2040-tbman-test',
+-                                                       'rp2040-vreg-test'] : []) + \
++                                                       'rp2040-vreg-test',
++                                                       'rp2040-watchdog-test'] : []) + \
+   (config_all_devices.has_key('CONFIG_STM32L4X5_SOC') ? qtests_stm32l4x5 : []) + \
+   (config_all_devices.has_key('CONFIG_FSI_APB2OPB_ASPEED') ? ['aspeed_fsi-test'] : []) + \
+   (config_all_devices.has_key('CONFIG_CAN_FLEXCAN') ? ['flexcan-test'] : []) + \
+diff --git a/tests/qtest/rp2040-watchdog-test.c b/tests/qtest/rp2040-watchdog-test.c
 new file mode 100644
-index 0000000000..e55590ea16
+index 0000000000..14b6f12f1a
 --- /dev/null
-+++ b/tests/tcg/arm/system/rp2040-mpu.ref
-@@ -0,0 +1,5 @@
-+PICO TCG MPU START
-+PICO TCG MPU TYPE
-+PICO TCG MPU PLAIN
-+PICO TCG MPU PRIV
-+PICO TCG MPU OK
-diff --git a/tests/tcg/arm/system/rp2040-uart.S b/tests/tcg/arm/system/rp2040-uart.S
-new file mode 100644
-index 0000000000..bdb58cc7f2
---- /dev/null
-+++ b/tests/tcg/arm/system/rp2040-uart.S
-@@ -0,0 +1,53 @@
++++ b/tests/qtest/rp2040-watchdog-test.c
+@@ -0,0 +1,148 @@
 +/*
-+ * Raspberry Pi Pico UART boot smoke test.
++ * QTest testcase for the RP2040 watchdog.
 + *
-+ * Copyright 2026 Gilles Grimaud
 + * SPDX-License-Identifier: GPL-2.0-or-later
 + */
 +
-+.syntax unified
-+.cpu cortex-m0plus
-+.thumb
++#include "qemu/osdep.h"
++#include "libqtest.h"
++#include "qemu/bitops.h"
++#include "qemu/timer.h"
++#include "qobject/qdict.h"
 +
-+#define SRAM_END 0x20042000
-+#define UART0_DR 0x40034000
-+#define SYS_EXIT 0x18
-+#define ADP_STOPPED_APPLICATION_EXIT 0x20026
++#define WATCHDOG_BASE       0x40058000
++#define WATCHDOG_CTRL       0x00
++#define WATCHDOG_LOAD       0x04
++#define WATCHDOG_REASON     0x08
++#define WATCHDOG_SCRATCH0   0x0c
++#define WATCHDOG_TICK       0x2c
 +
-+.section .vectors, "a", %progbits
-+vector_table:
-+    .word SRAM_END
-+    .word reset_handler + 1
-+    .word default_handler + 1
-+    .word default_handler + 1
++#define CTRL_TRIGGER        BIT(31)
++#define CTRL_ENABLE         BIT(30)
++#define CTRL_PAUSE_DBG1     BIT(26)
++#define CTRL_PAUSE_DBG0     BIT(25)
++#define CTRL_PAUSE_JTAG     BIT(24)
++#define CTRL_TIME_MASK      0x00ffffff
 +
-+.section .text, "ax", %progbits
-+.thumb_func
-+.global reset_handler
-+reset_handler:
-+    ldr r0, =UART0_DR
-+    ldr r1, =message
++#define REASON_FORCE        BIT(1)
++#define REASON_TIMER        BIT(0)
 +
-+1:
-+    ldrb r2, [r1]
-+    cmp r2, 0
-+    beq 2f
-+    str r2, [r0]
-+    adds r1, 1
-+    b 1b
++#define TICK_RUNNING        BIT(10)
++#define TICK_ENABLE         BIT(9)
 +
-+2:
-+    movs r0, SYS_EXIT
-+    ldr r1, =ADP_STOPPED_APPLICATION_EXIT
-+    bkpt 0xab
++#define NS_PER_US           1000
 +
-+3:
-+    b 3b
++static QTestState *rp2040_watchdog_start(void)
++{
++    return qtest_init("-machine raspi-pico -watchdog-action none");
++}
 +
-+.thumb_func
-+default_handler:
-+    b default_handler
++static void check_watchdog_event(QTestState *qts)
++{
++    QDict *event = qtest_qmp_eventwait_ref(qts, "WATCHDOG");
++    QDict *data = qdict_get_qdict(event, "data");
 +
-+.section .rodata, "a", %progbits
-+message:
-+    .asciz "PICO TCG UART OK\n"
-diff --git a/tests/tcg/arm/system/rp2040-uart.ref b/tests/tcg/arm/system/rp2040-uart.ref
-new file mode 100644
-index 0000000000..1ef16e8299
---- /dev/null
-+++ b/tests/tcg/arm/system/rp2040-uart.ref
-@@ -0,0 +1 @@
-+PICO TCG UART OK
++    g_assert_cmpstr(qdict_get_str(data, "action"), ==, "none");
++    qobject_unref(event);
++}
++
++static void test_reset_values(void)
++{
++    QTestState *qts = rp2040_watchdog_start();
++
++    g_assert_cmphex(qtest_readl(qts, WATCHDOG_BASE + WATCHDOG_CTRL), ==,
++                    CTRL_PAUSE_DBG1 | CTRL_PAUSE_DBG0 | CTRL_PAUSE_JTAG);
++    g_assert_cmphex(qtest_readl(qts, WATCHDOG_BASE + WATCHDOG_LOAD), ==, 0);
++    g_assert_cmphex(qtest_readl(qts, WATCHDOG_BASE + WATCHDOG_REASON), ==, 0);
++    g_assert_cmphex(qtest_readl(qts, WATCHDOG_BASE + WATCHDOG_TICK), ==,
++                    TICK_ENABLE);
++
++    qtest_quit(qts);
++}
++
++static void test_scratch_registers(void)
++{
++    QTestState *qts = rp2040_watchdog_start();
++
++    qtest_writel(qts, WATCHDOG_BASE + WATCHDOG_SCRATCH0, 0x12345678);
++    g_assert_cmphex(qtest_readl(qts, WATCHDOG_BASE + WATCHDOG_SCRATCH0), ==,
++                    0x12345678);
++
++    g_assert_cmphex(qtest_readb(qts, WATCHDOG_BASE + WATCHDOG_SCRATCH0), ==,
++                    0x78);
++    g_assert_cmphex(qtest_readb(qts, WATCHDOG_BASE + WATCHDOG_SCRATCH0 + 1),
++                    ==, 0x56);
++    g_assert_cmphex(qtest_readb(qts, WATCHDOG_BASE + WATCHDOG_SCRATCH0 + 2),
++                    ==, 0x34);
++    g_assert_cmphex(qtest_readb(qts, WATCHDOG_BASE + WATCHDOG_SCRATCH0 + 3),
++                    ==, 0x12);
++
++    qtest_writeb(qts, WATCHDOG_BASE + WATCHDOG_SCRATCH0, 0xa5);
++    g_assert_cmphex(qtest_readl(qts, WATCHDOG_BASE + WATCHDOG_SCRATCH0), ==,
++                    0xa5a5a5a5);
++
++    qtest_writeb(qts, WATCHDOG_BASE + WATCHDOG_SCRATCH0 + 1, 0x3c);
++    g_assert_cmphex(qtest_readl(qts, WATCHDOG_BASE + WATCHDOG_SCRATCH0), ==,
++                    0x3c3c3c3c);
++
++    qtest_writew(qts, WATCHDOG_BASE + WATCHDOG_SCRATCH0, 0xf00d);
++    g_assert_cmphex(qtest_readl(qts, WATCHDOG_BASE + WATCHDOG_SCRATCH0), ==,
++                    0xf00df00d);
++
++    qtest_quit(qts);
++}
++
++static void test_timer_expiry(void)
++{
++    QTestState *qts = rp2040_watchdog_start();
++    uint32_t ctrl;
++
++    /*
++     * The default clk_ref is 6 MHz. CYCLES=6 generates a 1 MHz watchdog
++     * tick; RP2040-E1 makes the counter decrement twice per tick.
++     */
++    qtest_writel(qts, WATCHDOG_BASE + WATCHDOG_TICK, TICK_ENABLE | 6);
++    g_assert_cmphex(qtest_readl(qts, WATCHDOG_BASE + WATCHDOG_TICK) &
++                    (TICK_RUNNING | TICK_ENABLE), ==,
++                    TICK_RUNNING | TICK_ENABLE);
++
++    qtest_writel(qts, WATCHDOG_BASE + WATCHDOG_LOAD, 20);
++    qtest_writel(qts, WATCHDOG_BASE + WATCHDOG_CTRL, CTRL_ENABLE);
++
++    qtest_clock_step(qts, 5 * NS_PER_US);
++    ctrl = qtest_readl(qts, WATCHDOG_BASE + WATCHDOG_CTRL);
++    g_assert_cmpuint(ctrl & CTRL_TIME_MASK, <, 20);
++    g_assert_cmpuint(ctrl & CTRL_TIME_MASK, >, 0);
++
++    qtest_clock_step(qts, 10 * NS_PER_US);
++    check_watchdog_event(qts);
++    g_assert_cmphex(qtest_readl(qts, WATCHDOG_BASE + WATCHDOG_REASON), ==,
++                    REASON_TIMER);
++
++    qtest_quit(qts);
++}
++
++static void test_force_trigger(void)
++{
++    QTestState *qts = rp2040_watchdog_start();
++
++    qtest_writel(qts, WATCHDOG_BASE + WATCHDOG_CTRL, CTRL_TRIGGER);
++    check_watchdog_event(qts);
++    g_assert_cmphex(qtest_readl(qts, WATCHDOG_BASE + WATCHDOG_REASON), ==,
++                    REASON_FORCE);
++
++    qtest_quit(qts);
++}
++
++int main(int argc, char **argv)
++{
++    g_test_init(&argc, &argv, NULL);
++
++    qtest_add_func("/rp2040-watchdog/reset-values", test_reset_values);
++    qtest_add_func("/rp2040-watchdog/scratch-registers",
++                   test_scratch_registers);
++    qtest_add_func("/rp2040-watchdog/timer-expiry", test_timer_expiry);
++    qtest_add_func("/rp2040-watchdog/force-trigger", test_force_trigger);
++
++    return g_test_run();
++}
 -- 
 2.55.0
 

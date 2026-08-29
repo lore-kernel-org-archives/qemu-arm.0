@@ -4,48 +4,45 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 19FA4C61DD6
-	for <qemu-arm@archiver.kernel.org>; Sat, 29 Aug 2026 23:44:01 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 76C14C61DDE
+	for <qemu-arm@archiver.kernel.org>; Sat, 29 Aug 2026 23:44:13 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1x0SiF-00082A-Uh; Sat, 29 Aug 2026 19:43:51 -0400
+	id 1x0SiJ-00083W-9D; Sat, 29 Aug 2026 19:43:55 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <gilles.grimaud@univ-lille.fr>)
- id 1x0SiE-00081y-Uf; Sat, 29 Aug 2026 19:43:50 -0400
+ id 1x0SiI-00082j-0u; Sat, 29 Aug 2026 19:43:54 -0400
 Received: from smtp-out-1.univ-lille.fr ([194.254.129.82])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <gilles.grimaud@univ-lille.fr>)
- id 1x0SiC-0006CN-WB; Sat, 29 Aug 2026 19:43:50 -0400
+ id 1x0SiG-0006Cm-AL; Sat, 29 Aug 2026 19:43:53 -0400
 Received: from smtp01.univ-lille.fr (smtp01.univ-lille.fr [194.254.129.95])
- by smtp-out-1.univ-lille.fr (Postfix) with ESMTPS id 4hXWzb0T8dzBqXY;
+ by smtp-out-1.univ-lille.fr (Postfix) with ESMTPS id 4hXWzb28MzzBqXZ;
  Sun, 30 Aug 2026 01:43:39 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=univ-lille.fr;
  s=dkim; t=1788047019;
- bh=mR3cZMhs8jJwtsg810+4NT9bWS2wNRA6jz/tsbJBO84=;
+ bh=cBVN2elGMHwvfeXc8aJbqK7Eg2e45SlSAax/Afk10WY=;
  h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=ZMwjgUdfxt/J1bI5824g7tf7ZMiKSC3IuzSvU91r1CiWy/t9DwQMrXTVXFbqdCUWf
- ql8z3W+iWLUlY3NsC//KCIWBBSVVS1v0sFVSRUsQ1e2r8A5ywbKGP7nGp179Zvp9g0
- w8XZxHvfKoEaEou8F10mi9oxqKNE9qKs+nW71ZXKp3O1uGb8BAADrQfPP8Dv2aqQ96
- hafJVP9jYiz6Zcx/ElIEx5snuw2GYgCzEniudvlsxItavEbyO3FV3yB94rbdOpD88B
- eaIv1Tcgy0Nw3xH5IdrO/N2Gvb9z6Mz6rYhu2A6E/LscLlFsSmJDsnXCAc0VOzNB54
- PzQQa05TJcGdA==
+ b=c/xdt58n9LalEbIA7a3sY8SY8f3T3P9eIFhFcv+j/l7L8JA0Xk3Eigw7mohhVs6Yd
+ 9K60LtgzSqi632fSNhxVYEDnatDPHdgwrSgZgGM887tG5iMpjCHOZI4AY4mlpKXtZn
+ UIRrp7pvOQH9OKbz73Hnvg1PNSmw0agVa9x9a/t6kIzRkGesTNjX8QfL5FSoM6UC3J
+ dmXl5KC5sWDUe3k7fSm+aFQBdXZAuFOPIbgMM5qMJq9lebplzMd/Sfbi9c0wCS+YYJ
+ he1imJDYZm/M3oNBsNGYmASJ+BUAXEBAmaJxVzV0GIfJcPXRCR4WOlLQiJ8SVROU5+
+ sieCQYHJYvHww==
 Received: from localhost.localdomain (unknown [10.134.14.34])
  (Authenticated sender: gilles.grimaud)
- by smtp01.univ-lille.fr (Postfix) with ESMTPSA id 4hXWzZ52Mjz7v19;
- Sun, 30 Aug 2026 01:43:38 +0200 (CEST)
+ by smtp01.univ-lille.fr (Postfix) with ESMTPSA id 4hXWzb0gZBz7vrV;
+ Sun, 30 Aug 2026 01:43:39 +0200 (CEST)
 From: Gilles Grimaud <gilles.grimaud@univ-lille.fr>
 To: qemu-devel@nongnu.org
 Cc: alex.bennee@linaro.org, qemu-arm@nongnu.org,
  gilles grimaud <gilles.grimaud@univ-lille.fr>,
- Peter Maydell <peter.maydell@linaro.org>,
- =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
- Paolo Bonzini <pbonzini@redhat.com>, Fabiano Rosas <farosas@suse.de>,
- Laurent Vivier <lvivier@redhat.com>
-Subject: [PATCH RFC v2 02/30] hw/char/pl011: expose DMA request outputs
-Date: Sun, 30 Aug 2026 01:42:36 +0200
-Message-ID: <20260829234308.33725-3-gilles.grimaud@univ-lille.fr>
+ Paolo Bonzini <pbonzini@redhat.com>
+Subject: [PATCH RFC v2 03/30] hw/misc: add RP2040 diagnostic helpers
+Date: Sun, 30 Aug 2026 01:42:37 +0200
+Message-ID: <20260829234308.33725-4-gilles.grimaud@univ-lille.fr>
 X-Mailer: git-send-email 2.55.0
 In-Reply-To: <20260829234308.33725-1-gilles.grimaud@univ-lille.fr>
 References: <20260829234308.33725-1-gilles.grimaud@univ-lille.fr>
@@ -77,262 +74,143 @@ Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
 From: gilles grimaud <gilles.grimaud@univ-lille.fr>
 
-Expose named TX and RX DMA request GPIO outputs from the PL011 model. Update them when UARTDMACR or FIFO state changes so SoC DMA controllers can consume PL011 pacing without device-specific callbacks.
+Add shared helpers for reporting unimplemented RP2040 features and register accesses. Keeping the formatting in one place makes shallow peripheral models explicit and gives their diagnostics a consistent component, address, offset and value format.
 
-Add a qtest covering TX and RX request assertion and deassertion.
+Add a dedicated Kconfig symbol so the helpers remain disabled until selected by the RP2040 SoC.
 
 Signed-off-by: gilles grimaud <gilles.grimaud@univ-lille.fr>
 ---
- MAINTAINERS              |  1 +
- hw/char/pl011.c          | 29 ++++++++++--
- include/hw/char/pl011.h  |  2 +
- tests/qtest/meson.build  |  2 +
- tests/qtest/pl011-test.c | 95 ++++++++++++++++++++++++++++++++++++++++
- 5 files changed, 125 insertions(+), 4 deletions(-)
- create mode 100644 tests/qtest/pl011-test.c
+ MAINTAINERS                  |  7 ++++++
+ hw/misc/Kconfig              |  3 +++
+ hw/misc/meson.build          |  1 +
+ hw/misc/rp2040_nyi.c         | 47 ++++++++++++++++++++++++++++++++++++
+ include/hw/misc/rp2040_nyi.h | 19 +++++++++++++++
+ 5 files changed, 77 insertions(+)
+ create mode 100644 hw/misc/rp2040_nyi.c
+ create mode 100644 include/hw/misc/rp2040_nyi.h
 
 diff --git a/MAINTAINERS b/MAINTAINERS
-index 4a49a40294..55f6f2e3c0 100644
+index 55f6f2e3c0..db641d9c4c 100644
 --- a/MAINTAINERS
 +++ b/MAINTAINERS
-@@ -763,6 +763,7 @@ L: qemu-arm@nongnu.org
- S: Maintained
- F: hw/char/pl011.c
- F: include/hw/char/pl011.h
-+F: tests/qtest/pl011-test.c
- F: hw/display/pl110*
- F: hw/dma/pl080.c
- F: include/hw/dma/pl080.h
-diff --git a/hw/char/pl011.c b/hw/char/pl011.c
-index cb12c3e224..77fa29ae28 100644
---- a/hw/char/pl011.c
-+++ b/hw/char/pl011.c
-@@ -80,6 +80,11 @@ DeviceState *pl011_create(hwaddr addr, qemu_irq irq, Chardev *chr)
- #define LCR_FEN     (1 << 4)
- #define LCR_BRK     (1 << 0)
+@@ -1035,6 +1035,13 @@ F: docs/system/arm/raspi.rst
+ F: tests/functional/arm/test_raspi2.py
+ F: tests/functional/aarch64/test_raspi*.py
  
-+/* DMA Control Register, UARTDMACR */
-+#define DMACR_RXDMAE    (1 << 0)
-+#define DMACR_TXDMAE    (1 << 1)
-+#define DMACR_DMAONERR  (1 << 2)
++Raspberry Pi Pico / RP2040
++M: Gilles Grimaud <gilles.grimaud@univ-lille.fr>
++L: qemu-arm@nongnu.org
++S: Maintained
++F: hw/*/rp2040*
++F: include/hw/*/rp2040*
 +
- /* Control Register, UARTCR */
- #define CR_OUT2     (1 << 13)
- #define CR_OUT1     (1 << 12)
-@@ -157,6 +162,15 @@ static inline unsigned pl011_get_fifo_depth(PL011State *s)
-     return pl011_is_fifo_enabled(s) ? PL011_FIFO_DEPTH : 1;
- }
+ Real View
+ M: Peter Maydell <peter.maydell@linaro.org>
+ L: qemu-arm@nongnu.org
+diff --git a/hw/misc/Kconfig b/hw/misc/Kconfig
+index 46e3c03cc8..de7a0f56fa 100644
+--- a/hw/misc/Kconfig
++++ b/hw/misc/Kconfig
+@@ -101,6 +101,9 @@ config FSL_IMX8MP_ANALOG
+ config FSL_IMX8MP_CCM
+     bool
  
-+static void pl011_update_dreq(PL011State *s)
-+{
-+    qemu_set_irq(s->dreq_tx,
-+                 (s->dmacr & DMACR_TXDMAE) &&
-+                 !(s->flags & PL011_FLAG_TXFF));
-+    qemu_set_irq(s->dreq_rx,
-+                 (s->dmacr & DMACR_RXDMAE) && s->read_count > 0);
-+}
++config RP2040_NYI
++    bool
 +
- static inline void pl011_reset_rx_fifo(PL011State *s)
- {
-     s->read_count = 0;
-@@ -190,6 +204,7 @@ static void pl011_fifo_rx_put(void *opaque, uint32_t value)
-         trace_pl011_fifo_rx_full();
-         s->flags |= PL011_FLAG_RXFF;
-     }
-+    pl011_update_dreq(s);
-     if (s->read_count == s->read_trigger) {
-         s->int_level |= INT_RX;
-         pl011_update(s);
-@@ -258,6 +273,7 @@ static void pl011_write_txdata(PL011State *s, uint8_t data)
-     pl011_loopback_tx(s, data);
-     s->int_level |= INT_TX;
-     pl011_update(s);
-+    pl011_update_dreq(s);
- }
+ config STM32_RCC
+     bool
  
- static uint32_t pl011_read_rxdata(PL011State *s)
-@@ -280,6 +296,7 @@ static uint32_t pl011_read_rxdata(PL011State *s)
-     trace_pl011_read_fifo(s->read_count, fifo_depth);
-     s->rsr = c >> 8;
-     pl011_update(s);
-+    pl011_update_dreq(s);
-     qemu_chr_fe_accept_input(&s->chr);
-     return c;
- }
-@@ -469,6 +486,7 @@ static void pl011_write(void *opaque, hwaddr offset,
-         }
-         s->lcr = value;
-         pl011_set_read_trigger(s);
-+        pl011_update_dreq(s);
-         break;
-     case 12: /* UARTCR */
-         /* ??? Need to implement the enable bit.  */
-@@ -492,10 +510,8 @@ static void pl011_write(void *opaque, hwaddr offset,
-         pl011_update(s);
-         break;
-     case 18: /* UARTDMACR */
--        s->dmacr = value;
--        if (value & 3) {
--            qemu_log_mask(LOG_UNIMP, "pl011: DMA not implemented\n");
--        }
-+        s->dmacr = value & (DMACR_RXDMAE | DMACR_TXDMAE | DMACR_DMAONERR);
-+        pl011_update_dreq(s);
-         break;
-     default:
-         qemu_log_mask(LOG_GUEST_ERROR,
-@@ -603,6 +619,8 @@ static int pl011_post_load(void *opaque, int version_id)
- 
-     s->ibrd &= IBRD_MASK;
-     s->fbrd &= FBRD_MASK;
-+    s->dmacr &= DMACR_RXDMAE | DMACR_TXDMAE | DMACR_DMAONERR;
-+    pl011_update_dreq(s);
- 
-     return 0;
- }
-@@ -653,6 +671,8 @@ static void pl011_init(Object *obj)
-     for (i = 0; i < ARRAY_SIZE(s->irq); i++) {
-         sysbus_init_irq(sbd, &s->irq[i]);
-     }
-+    qdev_init_gpio_out_named(DEVICE(obj), &s->dreq_tx, "dreq-tx", 1);
-+    qdev_init_gpio_out_named(DEVICE(obj), &s->dreq_rx, "dreq-rx", 1);
- 
-     s->clk = qdev_init_clock_in(DEVICE(obj), "clk", pl011_clock_update, s,
-                                 ClockUpdate);
-@@ -687,6 +707,7 @@ static void pl011_reset(DeviceState *dev)
-     s->logged_disabled_uart = false;
-     pl011_reset_rx_fifo(s);
-     pl011_reset_tx_fifo(s);
-+    pl011_update_dreq(s);
- }
- 
- static void pl011_class_init(ObjectClass *oc, const void *data)
-diff --git a/include/hw/char/pl011.h b/include/hw/char/pl011.h
-index 5695787650..c7b5a3a2b3 100644
---- a/include/hw/char/pl011.h
-+++ b/include/hw/char/pl011.h
-@@ -49,6 +49,8 @@ struct PL011State {
-     int read_trigger;
-     CharFrontend chr;
-     qemu_irq irq[6];
-+    qemu_irq dreq_tx;
-+    qemu_irq dreq_rx;
-     Clock *clk;
-     bool migrate_clk;
-     bool logged_disabled_uart;
-diff --git a/tests/qtest/meson.build b/tests/qtest/meson.build
-index cbdef5a545..5555ce4eae 100644
---- a/tests/qtest/meson.build
-+++ b/tests/qtest/meson.build
-@@ -240,6 +240,8 @@ qtests_stm32l4x5 = \
-    'stm32l4x5_usart-test']
- 
- qtests_arm = \
-+  (config_all_devices.has_key('CONFIG_ARM_VIRT') and
-+   config_all_devices.has_key('CONFIG_PL011_C') ? ['pl011-test'] : []) + \
-   (config_all_devices.has_key('CONFIG_MPS2') ? ['sse-timer-test'] : []) + \
-   (config_all_devices.has_key('CONFIG_CMSDK_APB_DUALTIMER') ? ['cmsdk-apb-dualtimer-test'] : []) + \
-   (config_all_devices.has_key('CONFIG_CMSDK_APB_TIMER') ? ['cmsdk-apb-timer-test'] : []) + \
-diff --git a/tests/qtest/pl011-test.c b/tests/qtest/pl011-test.c
+diff --git a/hw/misc/meson.build b/hw/misc/meson.build
+index 54e07aacda..8611d59437 100644
+--- a/hw/misc/meson.build
++++ b/hw/misc/meson.build
+@@ -98,6 +98,7 @@ system_ss.add(when: 'CONFIG_RASPI', if_true: files(
+   'bcm2835_cprman.c',
+   'bcm2835_powermgt.c',
+ ))
++system_ss.add(when: 'CONFIG_RP2040_NYI', if_true: files('rp2040_nyi.c'))
+ system_ss.add(when: 'CONFIG_SLAVIO', if_true: files('slavio_misc.c'))
+ system_ss.add(when: 'CONFIG_ZYNQ', if_true: files('zynq_slcr.c'))
+ system_ss.add(when: 'CONFIG_XLNX_ZYNQ_DDRC', if_true: files('xlnx-zynq-ddrc.c'))
+diff --git a/hw/misc/rp2040_nyi.c b/hw/misc/rp2040_nyi.c
 new file mode 100644
-index 0000000000..30722cf9e2
+index 0000000000..7e9e4c09a1
 --- /dev/null
-+++ b/tests/qtest/pl011-test.c
-@@ -0,0 +1,95 @@
++++ b/hw/misc/rp2040_nyi.c
+@@ -0,0 +1,47 @@
 +/*
-+ * QTest testcase for the Arm PL011 UART DMA request outputs.
-+ *
-+ * Copyright (c) 2026 Gilles Grimaud
++ * RP2040 "not yet implemented" diagnostics
 + *
 + * SPDX-License-Identifier: GPL-2.0-or-later
 + */
 +
 +#include "qemu/osdep.h"
-+#include "qobject/qdict.h"
-+#include "qobject/qlist.h"
-+#include "libqtest.h"
++#include "hw/misc/rp2040_nyi.h"
++#include "qemu/log.h"
 +
-+#define PL011_BASE          0x09000000
-+#define PL011_DR            0x000
-+#define PL011_CR            0x030
-+#define PL011_DMACR         0x048
-+
-+#define CR_RXE              (1 << 9)
-+#define CR_TXE              (1 << 8)
-+#define CR_LBE              (1 << 7)
-+#define CR_UARTEN           (1 << 0)
-+
-+#define DMACR_RXDMAE        (1 << 0)
-+#define DMACR_TXDMAE        (1 << 1)
-+
-+static char *find_pl011_path(QTestState *qts)
++void rp2040_log_nyi(const char *component, const char *feature,
++                    const char *detail)
 +{
-+    g_autoptr(QDict) response = NULL;
-+    QListEntry *entry;
-+    QList *children;
-+
-+    response = qtest_qmp(qts,
-+                         "{ 'execute': 'qom-list',"
-+                         "  'arguments': { 'path': '/machine/unattached' } }");
-+    children = qdict_get_qlist(response, "return");
-+
-+    QLIST_FOREACH_ENTRY(children, entry) {
-+        QDict *child = qobject_to(QDict, qlist_entry_obj(entry));
-+
-+        if (g_str_equal(qdict_get_str(child, "type"), "child<pl011>")) {
-+            return g_strdup_printf("/machine/unattached/%s",
-+                                   qdict_get_str(child, "name"));
-+        }
++    if (g_str_has_prefix(component, "rp2040.")) {
++        component += strlen("rp2040.");
 +    }
 +
-+    g_assert_not_reached();
++    qemu_log_mask(LOG_UNIMP, "Not yet implemented: rp2040.%s: %s%s%s\n",
++                  component, feature, detail ? ": " : "",
++                  detail ? detail : "");
 +}
 +
-+static void test_tx_dreq(void)
++void rp2040_log_unimplemented_read(const char *component, unsigned size,
++                                   uint64_t addr, uint64_t offset,
++                                   uint64_t value)
 +{
-+    QTestState *qts = qtest_init("-M virt");
-+    g_autofree char *path = find_pl011_path(qts);
++    char detail[128];
 +
-+    qtest_irq_intercept_out_named(qts, path, "dreq-tx");
-+    g_assert_false(qtest_get_irq(qts, 0));
-+
-+    qtest_writel(qts, PL011_BASE + PL011_DMACR, DMACR_TXDMAE);
-+    g_assert_true(qtest_get_irq(qts, 0));
-+    g_assert_cmphex(qtest_readl(qts, PL011_BASE + PL011_DMACR), ==,
-+                    DMACR_TXDMAE);
-+
-+    qtest_writel(qts, PL011_BASE + PL011_DMACR, 0);
-+    g_assert_false(qtest_get_irq(qts, 0));
-+
-+    qtest_quit(qts);
++    snprintf(detail, sizeof(detail),
++             "size %u, addr 0x%08" PRIx64 ", offset 0x%04" PRIx64
++             " -> 0x%0*" PRIx64,
++             size, addr, offset, size << 1, value);
++    rp2040_log_nyi(component, "unimplemented read", detail);
 +}
 +
-+static void test_rx_dreq(void)
++void rp2040_log_unimplemented_write(const char *component, unsigned size,
++                                    uint64_t addr, uint64_t offset,
++                                    uint64_t value)
 +{
-+    QTestState *qts = qtest_init("-M virt");
-+    g_autofree char *path = find_pl011_path(qts);
++    char detail[128];
 +
-+    qtest_irq_intercept_out_named(qts, path, "dreq-rx");
-+    qtest_writel(qts, PL011_BASE + PL011_CR,
-+                 CR_RXE | CR_TXE | CR_LBE | CR_UARTEN);
-+    qtest_writel(qts, PL011_BASE + PL011_DMACR, DMACR_RXDMAE);
-+    g_assert_false(qtest_get_irq(qts, 0));
-+
-+    qtest_writel(qts, PL011_BASE + PL011_DR, 'x');
-+    g_assert_true(qtest_get_irq(qts, 0));
-+    g_assert_cmphex(qtest_readl(qts, PL011_BASE + PL011_DR), ==, 'x');
-+    g_assert_false(qtest_get_irq(qts, 0));
-+
-+    qtest_quit(qts);
++    snprintf(detail, sizeof(detail),
++             "size %u, addr 0x%08" PRIx64 ", offset 0x%04" PRIx64
++             ", value 0x%0*" PRIx64,
++             size, addr, offset, size << 1, value);
++    rp2040_log_nyi(component, "unimplemented write", detail);
 +}
+diff --git a/include/hw/misc/rp2040_nyi.h b/include/hw/misc/rp2040_nyi.h
+new file mode 100644
+index 0000000000..c23805973b
+--- /dev/null
++++ b/include/hw/misc/rp2040_nyi.h
+@@ -0,0 +1,19 @@
++/*
++ * RP2040 "not yet implemented" diagnostics
++ *
++ * SPDX-License-Identifier: GPL-2.0-or-later
++ */
 +
-+int main(int argc, char **argv)
-+{
-+    g_test_init(&argc, &argv, NULL);
-+    qtest_add_func("/pl011/dreq/tx", test_tx_dreq);
-+    qtest_add_func("/pl011/dreq/rx", test_rx_dreq);
++#ifndef HW_MISC_RP2040_NYI_H
++#define HW_MISC_RP2040_NYI_H
 +
-+    return g_test_run();
-+}
++void rp2040_log_nyi(const char *component, const char *feature,
++                    const char *detail);
++void rp2040_log_unimplemented_read(const char *component, unsigned size,
++                                   uint64_t addr, uint64_t offset,
++                                   uint64_t value);
++void rp2040_log_unimplemented_write(const char *component, unsigned size,
++                                    uint64_t addr, uint64_t offset,
++                                    uint64_t value);
++
++#endif
 -- 
 2.55.0
 

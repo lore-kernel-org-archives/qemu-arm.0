@@ -4,52 +4,55 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4E92CC61DD6
-	for <qemu-arm@archiver.kernel.org>; Sat, 29 Aug 2026 23:43:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 19FA4C61DD6
+	for <qemu-arm@archiver.kernel.org>; Sat, 29 Aug 2026 23:44:01 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1x0SiA-000816-T2; Sat, 29 Aug 2026 19:43:46 -0400
+	id 1x0SiF-00082A-Uh; Sat, 29 Aug 2026 19:43:51 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <gilles.grimaud@univ-lille.fr>)
- id 1x0Si9-00080R-7E; Sat, 29 Aug 2026 19:43:45 -0400
-Received: from smtp-out-2.univ-lille.fr ([194.254.129.106])
+ id 1x0SiE-00081y-Uf; Sat, 29 Aug 2026 19:43:50 -0400
+Received: from smtp-out-1.univ-lille.fr ([194.254.129.82])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <gilles.grimaud@univ-lille.fr>)
- id 1x0Si6-0006BT-Vf; Sat, 29 Aug 2026 19:43:44 -0400
+ id 1x0SiC-0006CN-WB; Sat, 29 Aug 2026 19:43:50 -0400
 Received: from smtp01.univ-lille.fr (smtp01.univ-lille.fr [194.254.129.95])
- by smtp-out-2.univ-lille.fr (Postfix) with ESMTPS id 4hXWzZ5GmLz7xf0;
- Sun, 30 Aug 2026 01:43:38 +0200 (CEST)
+ by smtp-out-1.univ-lille.fr (Postfix) with ESMTPS id 4hXWzb0T8dzBqXY;
+ Sun, 30 Aug 2026 01:43:39 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=univ-lille.fr;
- s=dkim; t=1788047018;
- bh=RMucFzJPN2MoGUfPz33012reZYmnxRZy02J6azk5YUM=;
+ s=dkim; t=1788047019;
+ bh=mR3cZMhs8jJwtsg810+4NT9bWS2wNRA6jz/tsbJBO84=;
  h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=hBJztcWL0MBIyd8VcJpKa5v9W2R4iF7QKC5JjVwt8uUAvD7ur7cruaF84PMdnpBEW
- FQVxPheMIQLy2O1UIyP4rLl/e8H5h0aB4RUsygawniD5sPgd5GnLUM57Z+xGPu+oc+
- e103lig8xC6Hqo/xAXNYwRzFO8PVt9rT9N7TKDTO4NxaOm4S7BrKAgDH5k/9Yi5BJ6
- z0JTRogJMFfR3VI5b7vbHSI9TgDmrA3bQDzH+ElwUOFyhcBWJjgnlbBTi6x2aCNYeG
- PoGpFe6SNtHL1Xt/LjYWML6gXnfQN2F73YKPMixxpvN7yb/UJLVTcpdIxg2lVBs4ZY
- ygcN1dHBeRRYw==
+ b=ZMwjgUdfxt/J1bI5824g7tf7ZMiKSC3IuzSvU91r1CiWy/t9DwQMrXTVXFbqdCUWf
+ ql8z3W+iWLUlY3NsC//KCIWBBSVVS1v0sFVSRUsQ1e2r8A5ywbKGP7nGp179Zvp9g0
+ w8XZxHvfKoEaEou8F10mi9oxqKNE9qKs+nW71ZXKp3O1uGb8BAADrQfPP8Dv2aqQ96
+ hafJVP9jYiz6Zcx/ElIEx5snuw2GYgCzEniudvlsxItavEbyO3FV3yB94rbdOpD88B
+ eaIv1Tcgy0Nw3xH5IdrO/N2Gvb9z6Mz6rYhu2A6E/LscLlFsSmJDsnXCAc0VOzNB54
+ PzQQa05TJcGdA==
 Received: from localhost.localdomain (unknown [10.134.14.34])
  (Authenticated sender: gilles.grimaud)
- by smtp01.univ-lille.fr (Postfix) with ESMTPSA id 4hXWzZ3DfLz7vrV;
+ by smtp01.univ-lille.fr (Postfix) with ESMTPSA id 4hXWzZ52Mjz7v19;
  Sun, 30 Aug 2026 01:43:38 +0200 (CEST)
 From: Gilles Grimaud <gilles.grimaud@univ-lille.fr>
 To: qemu-devel@nongnu.org
 Cc: alex.bennee@linaro.org, qemu-arm@nongnu.org,
  gilles grimaud <gilles.grimaud@univ-lille.fr>,
- Peter Maydell <peter.maydell@linaro.org>
-Subject: [PATCH RFC v2 01/30] target/arm: support Cortex-M0+ MPU
-Date: Sun, 30 Aug 2026 01:42:35 +0200
-Message-ID: <20260829234308.33725-2-gilles.grimaud@univ-lille.fr>
+ Peter Maydell <peter.maydell@linaro.org>,
+ =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
+ Paolo Bonzini <pbonzini@redhat.com>, Fabiano Rosas <farosas@suse.de>,
+ Laurent Vivier <lvivier@redhat.com>
+Subject: [PATCH RFC v2 02/30] hw/char/pl011: expose DMA request outputs
+Date: Sun, 30 Aug 2026 01:42:36 +0200
+Message-ID: <20260829234308.33725-3-gilles.grimaud@univ-lille.fr>
 X-Mailer: git-send-email 2.55.0
 In-Reply-To: <20260829234308.33725-1-gilles.grimaud@univ-lille.fr>
 References: <20260829234308.33725-1-gilles.grimaud@univ-lille.fr>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=194.254.129.106;
- envelope-from=gilles.grimaud@univ-lille.fr; helo=smtp-out-2.univ-lille.fr
+Received-SPF: pass client-ip=194.254.129.82;
+ envelope-from=gilles.grimaud@univ-lille.fr; helo=smtp-out-1.univ-lille.fr
 X-Spam_score_int: -43
 X-Spam_score: -4.4
 X-Spam_bar: ----
@@ -74,113 +77,262 @@ Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
 From: gilles grimaud <gilles.grimaud@univ-lille.fr>
 
-Cortex-M0+ implementations may provide an Armv6 PMSA MPU with eight regions. QEMU already marks M-profile CPUs as PMSA, but only exposes and allocates the existing region model for Armv7 CPUs. This prevents a Cortex-M0+ board from enabling its optional MPU.
+Expose named TX and RX DMA request GPIO outputs from the PL011 model. Update them when UARTDMACR or FIFO state changes so SoC DMA controllers can consume PL011 pacing without device-specific callbacks.
 
-Use QEMU's PMSAv7 state and translation path for the compatible Armv6-M MPU register layout. Permit CONTROL.nPRIV changes when the optional MPU is present and clear the region state on reset.
+Add a qtest covering TX and RX request assertion and deassertion.
 
 Signed-off-by: gilles grimaud <gilles.grimaud@univ-lille.fr>
 ---
- hw/intc/armv7m_nvic.c     |  3 +++
- target/arm/cpu.c          | 12 +++++++++---
- target/arm/ptw.c          |  3 ++-
- target/arm/tcg/m_helper.c | 10 +++++++++-
- 4 files changed, 23 insertions(+), 5 deletions(-)
+ MAINTAINERS              |  1 +
+ hw/char/pl011.c          | 29 ++++++++++--
+ include/hw/char/pl011.h  |  2 +
+ tests/qtest/meson.build  |  2 +
+ tests/qtest/pl011-test.c | 95 ++++++++++++++++++++++++++++++++++++++++
+ 5 files changed, 125 insertions(+), 4 deletions(-)
+ create mode 100644 tests/qtest/pl011-test.c
 
-diff --git a/hw/intc/armv7m_nvic.c b/hw/intc/armv7m_nvic.c
-index a7651f831e..3140599ac1 100644
---- a/hw/intc/armv7m_nvic.c
-+++ b/hw/intc/armv7m_nvic.c
-@@ -1626,6 +1626,9 @@ static void nvic_writel(NVICState *s, uint32_t offset, uint32_t value,
-         break;
-     case 0xd08: /* Vector Table Offset.  */
-         cpu->env.v7m.vecbase[attrs.secure] = value & 0xffffff80;
-+        if (!arm_feature(&cpu->env, ARM_FEATURE_M_SECURITY)) {
-+            cpu->env.v7m.vecbase[!attrs.secure] = value & 0xffffff80;
-+        }
-         break;
-     case 0xd0c: /* Application Interrupt/Reset Control (AIRCR) */
-         if ((value >> R_V7M_AIRCR_VECTKEY_SHIFT) == 0x05fa) {
-diff --git a/target/arm/cpu.c b/target/arm/cpu.c
-index 77aa78f00e..f58a1db843 100644
---- a/target/arm/cpu.c
-+++ b/target/arm/cpu.c
-@@ -617,7 +617,8 @@ static void arm_cpu_reset_hold(Object *obj, ResetType type)
-                            sizeof(*env->pmsav8.rlar[M_REG_S])
-                            * cpu->pmsav7_dregion);
-                 }
--            } else if (arm_feature(env, ARM_FEATURE_V7)) {
-+            } else if (arm_feature(env, ARM_FEATURE_V7) ||
-+                       arm_feature(env, ARM_FEATURE_M)) {
-                 memset(env->pmsav7.drbar, 0,
-                        sizeof(*env->pmsav7.drbar) * cpu->pmsav7_dregion);
-                 memset(env->pmsav7.drsr, 0,
-@@ -1656,7 +1657,11 @@ static void arm_cpu_post_init(Object *obj)
- #ifndef CONFIG_USER_ONLY
-     if (arm_feature(&cpu->env, ARM_FEATURE_PMSA)) {
-         qdev_property_add_static(DEVICE(obj), &arm_cpu_has_mpu_property);
--        if (arm_feature(&cpu->env, ARM_FEATURE_V7)) {
-+        /*
-+         * QEMU's PMSAv7 state also models the Armv6-M MPU register layout.
-+         */
-+        if (arm_feature(&cpu->env, ARM_FEATURE_V7) ||
-+            arm_feature(&cpu->env, ARM_FEATURE_M)) {
-             qdev_property_add_static(DEVICE(obj),
-                                      &arm_cpu_pmsav7_dregion_property);
-         }
-@@ -2332,7 +2337,8 @@ static void arm_cpu_realizefn(DeviceState *dev, Error **errp)
-     }
+diff --git a/MAINTAINERS b/MAINTAINERS
+index 4a49a40294..55f6f2e3c0 100644
+--- a/MAINTAINERS
++++ b/MAINTAINERS
+@@ -763,6 +763,7 @@ L: qemu-arm@nongnu.org
+ S: Maintained
+ F: hw/char/pl011.c
+ F: include/hw/char/pl011.h
++F: tests/qtest/pl011-test.c
+ F: hw/display/pl110*
+ F: hw/dma/pl080.c
+ F: include/hw/dma/pl080.h
+diff --git a/hw/char/pl011.c b/hw/char/pl011.c
+index cb12c3e224..77fa29ae28 100644
+--- a/hw/char/pl011.c
++++ b/hw/char/pl011.c
+@@ -80,6 +80,11 @@ DeviceState *pl011_create(hwaddr addr, qemu_irq irq, Chardev *chr)
+ #define LCR_FEN     (1 << 4)
+ #define LCR_BRK     (1 << 0)
  
-     if (arm_feature(env, ARM_FEATURE_PMSA) &&
--        arm_feature(env, ARM_FEATURE_V7)) {
-+        (arm_feature(env, ARM_FEATURE_V7) ||
-+         arm_feature(env, ARM_FEATURE_M))) {
-         uint32_t nr = cpu->pmsav7_dregion;
- 
-         if (nr > 0xff) {
-diff --git a/target/arm/ptw.c b/target/arm/ptw.c
-index a29de0385f..b366a8d3dd 100644
---- a/target/arm/ptw.c
-+++ b/target/arm/ptw.c
-@@ -3901,7 +3901,8 @@ static bool get_phys_addr_nogpc(CPUARMState *env, S1Translate *ptw,
-             /* PMSAv8 */
-             ret = get_phys_addr_pmsav8(env, ptw, address, access_type,
-                                        result, fi);
--        } else if (arm_feature(env, ARM_FEATURE_V7)) {
-+        } else if (arm_feature(env, ARM_FEATURE_V7) ||
-+                   arm_feature(env, ARM_FEATURE_M)) {
-             /* PMSAv7 */
-             ret = get_phys_addr_pmsav7(env, ptw, address, access_type,
-                                        result, fi);
-diff --git a/target/arm/tcg/m_helper.c b/target/arm/tcg/m_helper.c
-index f4ba93b291..667b2a3cbd 100644
---- a/target/arm/tcg/m_helper.c
-+++ b/target/arm/tcg/m_helper.c
-@@ -16,6 +16,7 @@
- #include "qemu/bitops.h"
- #include "qemu/log.h"
- #include "exec/page-protection.h"
-+#include "exec/cputlb.h"
- #ifdef CONFIG_TCG
- #include "accel/tcg/cpu-ldst-common.h"
- #include "semihosting/common-semi.h"
-@@ -2775,9 +2776,16 @@ void HELPER(v7m_msr)(CPUARMState *env, uint32_t maskreg, uint32_t val)
-                            !arm_v7m_is_handler_mode(env))) {
-             write_v7m_control_spsel(env, (val & R_V7M_CONTROL_SPSEL_MASK) != 0);
-         }
--        if (cur_el > 0 && arm_feature(env, ARM_FEATURE_M_MAIN)) {
-+        if (cur_el > 0 && (arm_feature(env, ARM_FEATURE_M_MAIN) ||
-+                           env_archcpu(env)->has_mpu)) {
-+            uint32_t old_control = env->v7m.control[env->v7m.secure];
++/* DMA Control Register, UARTDMACR */
++#define DMACR_RXDMAE    (1 << 0)
++#define DMACR_TXDMAE    (1 << 1)
++#define DMACR_DMAONERR  (1 << 2)
 +
-             env->v7m.control[env->v7m.secure] &= ~R_V7M_CONTROL_NPRIV_MASK;
-             env->v7m.control[env->v7m.secure] |= val & R_V7M_CONTROL_NPRIV_MASK;
-+            if ((old_control ^ env->v7m.control[env->v7m.secure]) &
-+                R_V7M_CONTROL_NPRIV_MASK) {
-+                tlb_flush(env_cpu(env));
-+            }
+ /* Control Register, UARTCR */
+ #define CR_OUT2     (1 << 13)
+ #define CR_OUT1     (1 << 12)
+@@ -157,6 +162,15 @@ static inline unsigned pl011_get_fifo_depth(PL011State *s)
+     return pl011_is_fifo_enabled(s) ? PL011_FIFO_DEPTH : 1;
+ }
+ 
++static void pl011_update_dreq(PL011State *s)
++{
++    qemu_set_irq(s->dreq_tx,
++                 (s->dmacr & DMACR_TXDMAE) &&
++                 !(s->flags & PL011_FLAG_TXFF));
++    qemu_set_irq(s->dreq_rx,
++                 (s->dmacr & DMACR_RXDMAE) && s->read_count > 0);
++}
++
+ static inline void pl011_reset_rx_fifo(PL011State *s)
+ {
+     s->read_count = 0;
+@@ -190,6 +204,7 @@ static void pl011_fifo_rx_put(void *opaque, uint32_t value)
+         trace_pl011_fifo_rx_full();
+         s->flags |= PL011_FLAG_RXFF;
+     }
++    pl011_update_dreq(s);
+     if (s->read_count == s->read_trigger) {
+         s->int_level |= INT_RX;
+         pl011_update(s);
+@@ -258,6 +273,7 @@ static void pl011_write_txdata(PL011State *s, uint8_t data)
+     pl011_loopback_tx(s, data);
+     s->int_level |= INT_TX;
+     pl011_update(s);
++    pl011_update_dreq(s);
+ }
+ 
+ static uint32_t pl011_read_rxdata(PL011State *s)
+@@ -280,6 +296,7 @@ static uint32_t pl011_read_rxdata(PL011State *s)
+     trace_pl011_read_fifo(s->read_count, fifo_depth);
+     s->rsr = c >> 8;
+     pl011_update(s);
++    pl011_update_dreq(s);
+     qemu_chr_fe_accept_input(&s->chr);
+     return c;
+ }
+@@ -469,6 +486,7 @@ static void pl011_write(void *opaque, hwaddr offset,
          }
-         if (cpu_isar_feature(aa32_vfp_simd, env_archcpu(env))) {
-             /*
+         s->lcr = value;
+         pl011_set_read_trigger(s);
++        pl011_update_dreq(s);
+         break;
+     case 12: /* UARTCR */
+         /* ??? Need to implement the enable bit.  */
+@@ -492,10 +510,8 @@ static void pl011_write(void *opaque, hwaddr offset,
+         pl011_update(s);
+         break;
+     case 18: /* UARTDMACR */
+-        s->dmacr = value;
+-        if (value & 3) {
+-            qemu_log_mask(LOG_UNIMP, "pl011: DMA not implemented\n");
+-        }
++        s->dmacr = value & (DMACR_RXDMAE | DMACR_TXDMAE | DMACR_DMAONERR);
++        pl011_update_dreq(s);
+         break;
+     default:
+         qemu_log_mask(LOG_GUEST_ERROR,
+@@ -603,6 +619,8 @@ static int pl011_post_load(void *opaque, int version_id)
+ 
+     s->ibrd &= IBRD_MASK;
+     s->fbrd &= FBRD_MASK;
++    s->dmacr &= DMACR_RXDMAE | DMACR_TXDMAE | DMACR_DMAONERR;
++    pl011_update_dreq(s);
+ 
+     return 0;
+ }
+@@ -653,6 +671,8 @@ static void pl011_init(Object *obj)
+     for (i = 0; i < ARRAY_SIZE(s->irq); i++) {
+         sysbus_init_irq(sbd, &s->irq[i]);
+     }
++    qdev_init_gpio_out_named(DEVICE(obj), &s->dreq_tx, "dreq-tx", 1);
++    qdev_init_gpio_out_named(DEVICE(obj), &s->dreq_rx, "dreq-rx", 1);
+ 
+     s->clk = qdev_init_clock_in(DEVICE(obj), "clk", pl011_clock_update, s,
+                                 ClockUpdate);
+@@ -687,6 +707,7 @@ static void pl011_reset(DeviceState *dev)
+     s->logged_disabled_uart = false;
+     pl011_reset_rx_fifo(s);
+     pl011_reset_tx_fifo(s);
++    pl011_update_dreq(s);
+ }
+ 
+ static void pl011_class_init(ObjectClass *oc, const void *data)
+diff --git a/include/hw/char/pl011.h b/include/hw/char/pl011.h
+index 5695787650..c7b5a3a2b3 100644
+--- a/include/hw/char/pl011.h
++++ b/include/hw/char/pl011.h
+@@ -49,6 +49,8 @@ struct PL011State {
+     int read_trigger;
+     CharFrontend chr;
+     qemu_irq irq[6];
++    qemu_irq dreq_tx;
++    qemu_irq dreq_rx;
+     Clock *clk;
+     bool migrate_clk;
+     bool logged_disabled_uart;
+diff --git a/tests/qtest/meson.build b/tests/qtest/meson.build
+index cbdef5a545..5555ce4eae 100644
+--- a/tests/qtest/meson.build
++++ b/tests/qtest/meson.build
+@@ -240,6 +240,8 @@ qtests_stm32l4x5 = \
+    'stm32l4x5_usart-test']
+ 
+ qtests_arm = \
++  (config_all_devices.has_key('CONFIG_ARM_VIRT') and
++   config_all_devices.has_key('CONFIG_PL011_C') ? ['pl011-test'] : []) + \
+   (config_all_devices.has_key('CONFIG_MPS2') ? ['sse-timer-test'] : []) + \
+   (config_all_devices.has_key('CONFIG_CMSDK_APB_DUALTIMER') ? ['cmsdk-apb-dualtimer-test'] : []) + \
+   (config_all_devices.has_key('CONFIG_CMSDK_APB_TIMER') ? ['cmsdk-apb-timer-test'] : []) + \
+diff --git a/tests/qtest/pl011-test.c b/tests/qtest/pl011-test.c
+new file mode 100644
+index 0000000000..30722cf9e2
+--- /dev/null
++++ b/tests/qtest/pl011-test.c
+@@ -0,0 +1,95 @@
++/*
++ * QTest testcase for the Arm PL011 UART DMA request outputs.
++ *
++ * Copyright (c) 2026 Gilles Grimaud
++ *
++ * SPDX-License-Identifier: GPL-2.0-or-later
++ */
++
++#include "qemu/osdep.h"
++#include "qobject/qdict.h"
++#include "qobject/qlist.h"
++#include "libqtest.h"
++
++#define PL011_BASE          0x09000000
++#define PL011_DR            0x000
++#define PL011_CR            0x030
++#define PL011_DMACR         0x048
++
++#define CR_RXE              (1 << 9)
++#define CR_TXE              (1 << 8)
++#define CR_LBE              (1 << 7)
++#define CR_UARTEN           (1 << 0)
++
++#define DMACR_RXDMAE        (1 << 0)
++#define DMACR_TXDMAE        (1 << 1)
++
++static char *find_pl011_path(QTestState *qts)
++{
++    g_autoptr(QDict) response = NULL;
++    QListEntry *entry;
++    QList *children;
++
++    response = qtest_qmp(qts,
++                         "{ 'execute': 'qom-list',"
++                         "  'arguments': { 'path': '/machine/unattached' } }");
++    children = qdict_get_qlist(response, "return");
++
++    QLIST_FOREACH_ENTRY(children, entry) {
++        QDict *child = qobject_to(QDict, qlist_entry_obj(entry));
++
++        if (g_str_equal(qdict_get_str(child, "type"), "child<pl011>")) {
++            return g_strdup_printf("/machine/unattached/%s",
++                                   qdict_get_str(child, "name"));
++        }
++    }
++
++    g_assert_not_reached();
++}
++
++static void test_tx_dreq(void)
++{
++    QTestState *qts = qtest_init("-M virt");
++    g_autofree char *path = find_pl011_path(qts);
++
++    qtest_irq_intercept_out_named(qts, path, "dreq-tx");
++    g_assert_false(qtest_get_irq(qts, 0));
++
++    qtest_writel(qts, PL011_BASE + PL011_DMACR, DMACR_TXDMAE);
++    g_assert_true(qtest_get_irq(qts, 0));
++    g_assert_cmphex(qtest_readl(qts, PL011_BASE + PL011_DMACR), ==,
++                    DMACR_TXDMAE);
++
++    qtest_writel(qts, PL011_BASE + PL011_DMACR, 0);
++    g_assert_false(qtest_get_irq(qts, 0));
++
++    qtest_quit(qts);
++}
++
++static void test_rx_dreq(void)
++{
++    QTestState *qts = qtest_init("-M virt");
++    g_autofree char *path = find_pl011_path(qts);
++
++    qtest_irq_intercept_out_named(qts, path, "dreq-rx");
++    qtest_writel(qts, PL011_BASE + PL011_CR,
++                 CR_RXE | CR_TXE | CR_LBE | CR_UARTEN);
++    qtest_writel(qts, PL011_BASE + PL011_DMACR, DMACR_RXDMAE);
++    g_assert_false(qtest_get_irq(qts, 0));
++
++    qtest_writel(qts, PL011_BASE + PL011_DR, 'x');
++    g_assert_true(qtest_get_irq(qts, 0));
++    g_assert_cmphex(qtest_readl(qts, PL011_BASE + PL011_DR), ==, 'x');
++    g_assert_false(qtest_get_irq(qts, 0));
++
++    qtest_quit(qts);
++}
++
++int main(int argc, char **argv)
++{
++    g_test_init(&argc, &argv, NULL);
++    qtest_add_func("/pl011/dreq/tx", test_tx_dreq);
++    qtest_add_func("/pl011/dreq/rx", test_rx_dreq);
++
++    return g_test_run();
++}
 -- 
 2.55.0
 

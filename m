@@ -4,45 +4,45 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6EC12C61DE2
-	for <qemu-arm@archiver.kernel.org>; Sun, 30 Aug 2026 06:19:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EBDF6C61DE2
+	for <qemu-arm@archiver.kernel.org>; Sun, 30 Aug 2026 06:19:55 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1x0YsH-0003Zh-1W; Sun, 30 Aug 2026 02:18:37 -0400
+	id 1x0YrW-0002cH-1X; Sun, 30 Aug 2026 02:17:50 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <gilles.grimaud@univ-lille.fr>)
- id 1x0YsG-0003Z5-4G; Sun, 30 Aug 2026 02:18:36 -0400
+ id 1x0YrS-0002aC-3F; Sun, 30 Aug 2026 02:17:46 -0400
 Received: from smtp-out-2.univ-lille.fr ([194.254.129.106])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <gilles.grimaud@univ-lille.fr>)
- id 1x0YsD-0005Na-GV; Sun, 30 Aug 2026 02:18:35 -0400
+ id 1x0YrM-0005I6-Vw; Sun, 30 Aug 2026 02:17:45 -0400
 Received: from smtp01.univ-lille.fr (smtp01.univ-lille.fr [194.254.129.95])
- by smtp-out-2.univ-lille.fr (Postfix) with ESMTPS id 4hXhjq4Zpzz835H;
- Sun, 30 Aug 2026 08:17:19 +0200 (CEST)
+ by smtp-out-2.univ-lille.fr (Postfix) with ESMTPS id 4hXhjp1FlNz833X;
+ Sun, 30 Aug 2026 08:17:18 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=univ-lille.fr;
- s=dkim; t=1788070639;
- bh=2jNIm2DZsw+/80O3hSGisl0rPQJu2OjNuzFE/l70qI0=;
+ s=dkim; t=1788070638;
+ bh=XXc8xY6jbSJdHuZ5c/p5UvxqIcENO+prlnwXQ9kmufs=;
  h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=qPySLHTE+K2+T1yxxY1YF8HaskOVJa/wY8nTUm/B//BnQbZcdtOty8c9Kxb4WQN5V
- 4MyssybP/fVRg9MQi1LFbtmyuFnxgseP15C/a80CCXM7t0NXBKOQKePK3wRv4QGwQh
- 1UuNdOzjeb84nJ3aipslapQEbbvOOzQ7tiwMZg/gK105y+MKKeXxZLLYIrA+H/opO6
- vLJpvygvNbPD+TuorBzRMSUalE8XAYi6ChYiqVjJFlmD+V/qTky6DUHO1ccLcrM/Oq
- pbPcDAA2NHn/m/NlMiv4V8DALWEzhzngKBDxb07l0SiN3tCscRLmCEyaEJpIJ+DgKw
- dKJ7rjH6GHnjg==
+ b=oyQEiDXUoN+SHhrPccs9XAy/n+gxoVn3l6TG4nlFjuixl+OZASfL8H/HtwXU8f8QJ
+ VgccXIx4rcIh8Dv0ERR/s0MLB/Q/NfC5yeQgsAq8MCR8QABH8GILgf/jmMxVrRboXn
+ MusNJSk+z48fzbtA4tYy8Z06CN7rsty8I2vVkGvrZmEBEuUcZRoe6MLuADzDRECrgB
+ eBG0vFf1Po7Gbq5ohuJRgYF1Nq9IyrXLgU7Nl4ge+4ZmYTNcZ4uzk7PJzCvWMb1bkB
+ UJVZbOzFiPQpCBbMjrlR9RihBGQVbmnZiW1ZK7ccI9qSofevdCkJsVBs4SU1Qq5Tbb
+ r2iB+6qBuWqsQ==
 Received: from localhost.localdomain (unknown [10.134.14.34])
  (Authenticated sender: gilles.grimaud)
- by smtp01.univ-lille.fr (Postfix) with ESMTPSA id 4hXhjq33M6z7swM;
- Sun, 30 Aug 2026 08:17:19 +0200 (CEST)
+ by smtp01.univ-lille.fr (Postfix) with ESMTPSA id 4hXhjn6tkMz7swM;
+ Sun, 30 Aug 2026 08:17:17 +0200 (CEST)
 From: Gilles Grimaud <gilles.grimaud@univ-lille.fr>
 To: qemu-devel@nongnu.org
 Cc: alex.bennee@linaro.org,
 	qemu-arm@nongnu.org,
 	peter.maydell@linaro.org
-Subject: [PATCH RFC v2 29/30] hw/arm: add optional Pico SDK exit handling
-Date: Sun, 30 Aug 2026 08:16:00 +0200
-Message-ID: <20260830061601.52136-15-gilles.grimaud@univ-lille.fr>
+Subject: [PATCH RFC v2 21/30] tests/tcg/arm: test RP2040 flash and XIP behavior
+Date: Sun, 30 Aug 2026 08:15:52 +0200
+Message-ID: <20260830061601.52136-7-gilles.grimaud@univ-lille.fr>
 X-Mailer: git-send-email 2.55.0
 In-Reply-To: <20260829234308.33725-1-gilles.grimaud@univ-lille.fr>
 References: <20260829234308.33725-1-gilles.grimaud@univ-lille.fr>
@@ -74,367 +74,124 @@ Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
 From: gilles grimaud <gilles.grimaud@univ-lille.fr>
 
-Add an opt-in raspi-pico machine property that converts the Pico SDK's BKPT #0 exit convention into a QEMU guest shutdown. Keep the default architectural BKPT-to-HardFault behavior unchanged and chain non-BKPT faults to the application handler.
-
-Cover the default HardFault path, explicit semihosting exit, and the optional Pico SDK exit path with compiled check-tcg guests.
+Exercise write-enable, page programming, sector erase and NOR bit semantics through the RP2040 SSI command path. Verify raw flash persistence across QEMU invocations and IO_QSPI chip-select behavior.\n\nCover XIP accesses while the flash is busy, including direct HardFault delivery, multicore lockout, and faults observed independently by core 0 and core 1.
 
 Signed-off-by: gilles grimaud <gilles.grimaud@univ-lille.fr>
 ---
- hw/arm/raspi_pico.c                           |  23 ++++
- hw/arm/rp2040.c                               | 117 ++++++++++++++++++
- include/hw/arm/rp2040.h                       |   7 ++
- tests/tcg/arm/Makefile.softmmu-target         |  50 ++++++++
- tests/tcg/arm/system/rp2040-bkpt-hardfault.S  |  94 ++++++++++++++
- .../tcg/arm/system/rp2040-bkpt-hardfault.ref  |   2 +
- tests/tcg/arm/system/rp2040-exit.S            |  55 ++++++++
- 7 files changed, 348 insertions(+)
- create mode 100644 tests/tcg/arm/system/rp2040-bkpt-hardfault.S
- create mode 100644 tests/tcg/arm/system/rp2040-bkpt-hardfault.ref
- create mode 100644 tests/tcg/arm/system/rp2040-exit.S
+ tests/tcg/arm/Makefile.softmmu-target         |  43 +-
+ tests/tcg/arm/system/rp2040-core0-xip-fault.S | 193 ++++++++
+ .../tcg/arm/system/rp2040-core0-xip-fault.ref |   2 +
+ tests/tcg/arm/system/rp2040-core1-xip-fault.S | 331 +++++++++++++
+ .../tcg/arm/system/rp2040-core1-xip-fault.ref |   3 +
+ .../arm/system/rp2040-flash-busy-hardfault.S  | 179 ++++++++
+ .../system/rp2040-flash-busy-hardfault.ref    |   2 +
+ .../arm/system/rp2040-flash-busy-lockout.S    | 434 ++++++++++++++++++
+ .../arm/system/rp2040-flash-busy-lockout.ref  |   4 +
+ tests/tcg/arm/system/rp2040-flash-commands.S  | 375 +++++++++++++++
+ .../tcg/arm/system/rp2040-flash-commands.ref  |   6 +
+ tests/tcg/arm/system/rp2040-flash-ioqspi.S    | 212 +++++++++
+ tests/tcg/arm/system/rp2040-flash-ioqspi.ref  |   2 +
+ .../arm/system/rp2040-flash-persist-reader.S  |  87 ++++
+ .../system/rp2040-flash-persist-reader.ref    |   1 +
+ 15 files changed, 1869 insertions(+), 5 deletions(-)
+ create mode 100644 tests/tcg/arm/system/rp2040-core0-xip-fault.S
+ create mode 100644 tests/tcg/arm/system/rp2040-core0-xip-fault.ref
+ create mode 100644 tests/tcg/arm/system/rp2040-core1-xip-fault.S
+ create mode 100644 tests/tcg/arm/system/rp2040-core1-xip-fault.ref
+ create mode 100644 tests/tcg/arm/system/rp2040-flash-busy-hardfault.S
+ create mode 100644 tests/tcg/arm/system/rp2040-flash-busy-hardfault.ref
+ create mode 100644 tests/tcg/arm/system/rp2040-flash-busy-lockout.S
+ create mode 100644 tests/tcg/arm/system/rp2040-flash-busy-lockout.ref
+ create mode 100644 tests/tcg/arm/system/rp2040-flash-commands.S
+ create mode 100644 tests/tcg/arm/system/rp2040-flash-commands.ref
+ create mode 100644 tests/tcg/arm/system/rp2040-flash-ioqspi.S
+ create mode 100644 tests/tcg/arm/system/rp2040-flash-ioqspi.ref
+ create mode 100644 tests/tcg/arm/system/rp2040-flash-persist-reader.S
+ create mode 100644 tests/tcg/arm/system/rp2040-flash-persist-reader.ref
 
-diff --git a/hw/arm/raspi_pico.c b/hw/arm/raspi_pico.c
-index 2696a24951..2f87ee1a2d 100644
---- a/hw/arm/raspi_pico.c
-+++ b/hw/arm/raspi_pico.c
-@@ -34,6 +34,7 @@ struct RaspiPicoMachineState {
-     uint64_t rosc_random_seed_value;
-     bool rosc_random_seed_set;
-     bool strict_uart_pins;
-+    bool pico_sdk_exit;
- };
- 
- static char *raspi_pico_get_flash_file(Object *obj, Error **errp)
-@@ -164,6 +165,7 @@ static void raspi_pico_init(MachineState *machine)
- 
-     rp2040_xip_load_image(&s->soc.xip, machine->kernel_filename,
-                           &error_fatal);
-+    rp2040_set_pico_sdk_exit(&s->soc, s->pico_sdk_exit, &error_fatal);
-     armv7m_load_kernel(s->soc.armv7m[0].cpu, NULL,
-                        RP2040_XIP_BASE, 2 * MiB);
-     rp2040_xip_set_writable(&s->soc.xip, false);
-@@ -193,6 +195,21 @@ static void raspi_pico_set_strict_uart_pins(Object *obj, bool value,
-     s->strict_uart_pins = value;
- }
- 
-+static bool raspi_pico_get_pico_sdk_exit(Object *obj, Error **errp)
-+{
-+    RaspiPicoMachineState *s = RASPI_PICO_MACHINE(obj);
-+
-+    return s->pico_sdk_exit;
-+}
-+
-+static void raspi_pico_set_pico_sdk_exit(Object *obj, bool value,
-+                                         Error **errp)
-+{
-+    RaspiPicoMachineState *s = RASPI_PICO_MACHINE(obj);
-+
-+    s->pico_sdk_exit = value;
-+}
-+
- static void raspi_pico_machine_initfn(Object *obj)
- {
-     RaspiPicoMachineState *s = RASPI_PICO_MACHINE(obj);
-@@ -241,6 +258,12 @@ static void raspi_pico_machine_class_init(ObjectClass *oc, const void *data)
-                                           "Require the RP2040 IO_BANK0 "
-                                           "UART pinmux before UART0 or UART1 "
-                                           "reaches its host serial backend");
-+    object_class_property_add_bool(oc, "pico-sdk-exit",
-+                                   raspi_pico_get_pico_sdk_exit,
-+                                   raspi_pico_set_pico_sdk_exit);
-+    object_class_property_set_description(oc, "pico-sdk-exit",
-+                                          "Convert Pico SDK exit BKPT #0 "
-+                                          "HardFaults into QEMU exits");
- }
- 
- static const TypeInfo raspi_pico_machine_info = {
-diff --git a/hw/arm/rp2040.c b/hw/arm/rp2040.c
-index 6c06570586..fc61088d82 100644
---- a/hw/arm/rp2040.c
-+++ b/hw/arm/rp2040.c
-@@ -20,6 +20,7 @@
- #include "qemu/datadir.h"
- #include "qemu/log.h"
- #include "system/address-spaces.h"
-+#include "system/runstate.h"
- #include "target/arm/cpu.h"
- #include "target/arm/cpu-qom.h"
- #include "trace.h"
-@@ -76,6 +77,8 @@
- #define RP2040_BOOTROM_FLOAT_STUBS_OFFSET 0x0600
- #define RP2040_BOOTROM_DOUBLE_STUBS_OFFSET 0x0b00
- #define RP2040_BOOTROM_FP_STUB_SIZE 36
-+#define RP2040_APP_HARDFAULT_VECTOR_OFFSET 0x10c
-+#define RP2040_PICO_SDK_EXIT_ORIGINAL_HANDLER_OFFSET 0x38
- 
- #define RP2040_SYNTHETIC_ROM_DBG_CMD  0x00
- #define RP2040_SYNTHETIC_ROM_DBG_ARG0 0x04
-@@ -87,6 +90,7 @@
- #define RP2040_SYNTHETIC_ROM_DBG_RESULT2 0x1c
- #define RP2040_SYNTHETIC_ROM_DBG_RESULT3 0x20
- #define RP2040_SYNTHETIC_ROM_DBG_FLASH_COUNT0 0x40
-+#define RP2040_SYNTHETIC_ROM_DBG_CMD_EXIT 0x54495845 /* "EXIT" */
- 
- #define RP2040_SYNTHETIC_FP_CMD_MASK   0xffffff00
- #define RP2040_SYNTHETIC_FP_CMD_FLOAT  0x80000000
-@@ -475,6 +479,17 @@ static const uint8_t rp2040_bootrom_nyi_stub[] = {
-     0x00, 0x00, 0x00, 0x00, /* function code literal */
- };
- 
-+static const uint8_t rp2040_pico_sdk_exit_trampoline[] = {
-+    0x73, 0x46, 0x04, 0x22, 0x13, 0x42, 0x02, 0xd0,
-+    0xef, 0xf3, 0x09, 0x80, 0x01, 0xe0, 0xef, 0xf3,
-+    0x08, 0x80, 0x81, 0x69, 0x0a, 0x88, 0x05, 0x4b,
-+    0x9a, 0x42, 0x05, 0xd1, 0x01, 0x68, 0x04, 0x4a,
-+    0x51, 0x60, 0x04, 0x49, 0x11, 0x60, 0xfe, 0xe7,
-+    0x03, 0x48, 0x00, 0x47, 0x00, 0xbe, 0x00, 0x00,
-+    0x00, 0x00, 0xff, 0x5f, 0x45, 0x58, 0x49, 0x54,
-+    0x00, 0x00, 0x00, 0x00,
-+};
-+
- static void rp2040_store_hword(uint8_t *rom, uint32_t offset, uint16_t value)
- {
-     rom[offset] = value;
-@@ -1316,6 +1331,12 @@ static void rp2040_synthetic_rom_dbg_write(void *opaque, hwaddr addr,
-         return;
-     }
- 
-+    if (command == RP2040_SYNTHETIC_ROM_DBG_CMD_EXIT) {
-+        qemu_system_shutdown_request_with_code(SHUTDOWN_CAUSE_GUEST_SHUTDOWN,
-+                                               s->synthetic_rom_dbg_arg[0]);
-+        return;
-+    }
-+
-     switch (code) {
-     case RP2040_ROM_TABLE_CODE('C', 'X'):
-         rp2040_synthetic_flash_helper_hit(
-@@ -1421,6 +1442,55 @@ static const MemoryRegionOps rp2040_synthetic_rom_dbg_ops = {
-     },
- };
- 
-+static MemTxResult rp2040_pico_sdk_exit_page_read(void *opaque, hwaddr addr,
-+                                                  uint64_t *data,
-+                                                  unsigned size,
-+                                                  MemTxAttrs attrs)
-+{
-+    RP2040State *s = opaque;
-+    MemTxResult result;
-+    unsigned int i;
-+
-+    result = rp2040_xip_read_data(&s->xip, addr, data, size);
-+    if (result != MEMTX_OK) {
-+        return result;
-+    }
-+
-+    for (i = 0; i < size; i++) {
-+        hwaddr cur = addr + i;
-+
-+        if (cur >= RP2040_APP_HARDFAULT_VECTOR_OFFSET &&
-+            cur < RP2040_APP_HARDFAULT_VECTOR_OFFSET + sizeof(uint32_t)) {
-+            uint8_t byte = extract32(
-+                RP2040_PICO_SDK_EXIT_TRAMPOLINE_BASE | 1,
-+                (cur - RP2040_APP_HARDFAULT_VECTOR_OFFSET) * 8, 8);
-+
-+            *data = deposit64(*data, i * 8, 8, byte);
-+        }
-+    }
-+    return MEMTX_OK;
-+}
-+
-+static MemTxResult rp2040_pico_sdk_exit_page_write(void *opaque,
-+                                                   hwaddr addr,
-+                                                   uint64_t value,
-+                                                   unsigned size,
-+                                                   MemTxAttrs attrs)
-+{
-+    return MEMTX_ERROR;
-+}
-+
-+static const MemoryRegionOps rp2040_pico_sdk_exit_page_ops = {
-+    .read_with_attrs = rp2040_pico_sdk_exit_page_read,
-+    .write_with_attrs = rp2040_pico_sdk_exit_page_write,
-+    .endianness = DEVICE_LITTLE_ENDIAN,
-+    .valid = {
-+        .min_access_size = 1,
-+        .max_access_size = 4,
-+        .unaligned = true,
-+    },
-+};
-+
- static void rp2040_update_nmi(RP2040State *s)
- {
-     uint32_t nmi_mask = rp2040_syscfg_get_proc0_nmi_mask(&s->syscfg);
-@@ -1729,6 +1799,15 @@ static bool rp2040_init_memory(RP2040State *s, Error **errp)
-     memory_region_add_subregion(s->board_memory,
-                                 RP2040_SYNTHETIC_ROM_DBG_BASE,
-                                 &s->synthetic_rom_dbg);
-+    if (!memory_region_init_rom(&s->pico_sdk_exit_trampoline, OBJECT(s),
-+                                "rp2040.pico-sdk-exit-trampoline",
-+                                RP2040_PICO_SDK_EXIT_TRAMPOLINE_SIZE, errp)) {
-+        return false;
-+    }
-+    memory_region_add_subregion(s->board_memory,
-+                                RP2040_PICO_SDK_EXIT_TRAMPOLINE_BASE,
-+                                &s->pico_sdk_exit_trampoline);
-+    memory_region_set_enabled(&s->pico_sdk_exit_trampoline, false);
- 
-     s->mempowerdown_ready = true;
- 
-@@ -1778,6 +1857,13 @@ static void rp2040_soc_realize(DeviceState *dev, Error **errp)
-     sysbus_mmio_map(SYS_BUS_DEVICE(&s->xip), 1, RP2040_XIP_CTRL_BASE);
-     sysbus_mmio_map(SYS_BUS_DEVICE(&s->xip), 2, RP2040_XIP_SSI_BASE);
-     sysbus_mmio_map(SYS_BUS_DEVICE(&s->xip), 3, RP2040_XIP_AUX_BASE);
-+    /* A page-sized overlay avoids QEMU's slower subpage dispatch path. */
-+    memory_region_init_io(&s->pico_sdk_exit_page, OBJECT(dev),
-+                          &rp2040_pico_sdk_exit_page_ops, s,
-+                          "rp2040.pico-sdk-exit-page", 4 * KiB);
-+    memory_region_add_subregion_overlap(
-+        s->board_memory, RP2040_XIP_BASE, &s->pico_sdk_exit_page, 1);
-+    memory_region_set_enabled(&s->pico_sdk_exit_page, false);
-     memory_region_add_subregion(get_system_memory(), RP2040_XIP_NOALLOC_BASE,
-                                 &s->xip.xip_noalloc);
-     memory_region_add_subregion(get_system_memory(), RP2040_XIP_NOCACHE_BASE,
-@@ -2001,6 +2087,37 @@ static void rp2040_soc_realize(DeviceState *dev, Error **errp)
-     rp2040_update_uart_pins(s);
- }
- 
-+void rp2040_set_pico_sdk_exit(RP2040State *s, bool enabled, Error **errp)
-+{
-+    uint8_t *trampoline;
-+    uint32_t original_handler;
-+
-+    memory_region_set_enabled(&s->pico_sdk_exit_page, false);
-+    memory_region_set_enabled(&s->pico_sdk_exit_trampoline, false);
-+    if (!enabled) {
-+        return;
-+    }
-+
-+    original_handler = ldl_le_p(
-+        s->xip.storage + RP2040_APP_HARDFAULT_VECTOR_OFFSET);
-+    if (!(original_handler & 1) || original_handler == UINT32_MAX) {
-+        error_setg(errp, "pico-sdk-exit requires a valid Thumb HardFault "
-+                   "handler at 0x%08x",
-+                   RP2040_XIP_BASE + RP2040_APP_HARDFAULT_VECTOR_OFFSET);
-+        return;
-+    }
-+
-+    trampoline = memory_region_get_ram_ptr(&s->pico_sdk_exit_trampoline);
-+    memset(trampoline, 0, RP2040_PICO_SDK_EXIT_TRAMPOLINE_SIZE);
-+    memcpy(trampoline, rp2040_pico_sdk_exit_trampoline,
-+           sizeof(rp2040_pico_sdk_exit_trampoline));
-+    stl_le_p(trampoline + RP2040_PICO_SDK_EXIT_ORIGINAL_HANDLER_OFFSET,
-+             original_handler);
-+    s->pico_sdk_exit_original_handler = original_handler;
-+    memory_region_set_enabled(&s->pico_sdk_exit_trampoline, true);
-+    memory_region_set_enabled(&s->pico_sdk_exit_page, true);
-+}
-+
- static const Property rp2040_soc_properties[] = {
-     DEFINE_PROP_LINK("memory", RP2040State, board_memory, TYPE_MEMORY_REGION,
-                      MemoryRegion *),
-diff --git a/include/hw/arm/rp2040.h b/include/hw/arm/rp2040.h
-index 29269c913b..2e65e76893 100644
---- a/include/hw/arm/rp2040.h
-+++ b/include/hw/arm/rp2040.h
-@@ -54,6 +54,8 @@ OBJECT_DECLARE_SIMPLE_TYPE(RP2040State, RP2040)
- #define RP2040_USBCTRL_REGS_SIZE  0x4000
- #define RP2040_SYNTHETIC_ROM_DBG_BASE 0x5fff0000
- #define RP2040_SYNTHETIC_ROM_DBG_SIZE 0x1000
-+#define RP2040_PICO_SDK_EXIT_TRAMPOLINE_BASE 0x00004000
-+#define RP2040_PICO_SDK_EXIT_TRAMPOLINE_SIZE 0x1000
- #define RP2040_SYNTHETIC_ROM_FLASH_HELPER_COUNT 6
- 
- #define RP2040_NUM_CORES      2
-@@ -96,6 +98,8 @@ struct RP2040State {
-     MemoryRegion usbctrl_dpram_poweroff;
-     MemoryRegion usbctrl_regs;
-     MemoryRegion synthetic_rom_dbg;
-+    MemoryRegion pico_sdk_exit_trampoline;
-+    MemoryRegion pico_sdk_exit_page;
-     uint32_t usbctrl_reg[0x100 / sizeof(uint32_t)];
-     char *bootrom_file;
- 
-@@ -113,8 +117,11 @@ struct RP2040State {
-     uint32_t synthetic_rom_dbg_result[4];
-     uint32_t synthetic_rom_flash_helper_count[
-         RP2040_SYNTHETIC_ROM_FLASH_HELPER_COUNT];
-+    uint32_t pico_sdk_exit_original_handler;
- 
-     Clock *sysclk;
- };
- 
-+void rp2040_set_pico_sdk_exit(RP2040State *s, bool enabled, Error **errp);
-+
- #endif
 diff --git a/tests/tcg/arm/Makefile.softmmu-target b/tests/tcg/arm/Makefile.softmmu-target
-index 2f5878c1fa..19355ee2c4 100644
+index a07264fd89..c282ff5ad0 100644
 --- a/tests/tcg/arm/Makefile.softmmu-target
 +++ b/tests/tcg/arm/Makefile.softmmu-target
-@@ -152,6 +152,56 @@ run-rp2040-bootrom-float run-rp2040-flash-lockout: run-%: %
+@@ -24,7 +24,14 @@ RP2040_TESTS=rp2040-boot rp2040-uart rp2040-mpu \
+ 	rp2040-sio-fifo rp2040-sio-divider rp2040-psm-proc1 \
+ 	rp2040-core1-launch rp2040-timer
  
- RP2040_TESTS+=rp2040-bootrom-float rp2040-flash-lockout
- 
-+rp2040-bkpt-hardfault: rp2040-bkpt-hardfault.S \
-+		rp2040-boot2-w25q080.S rp2040.ld
-+	$(CC) -mcpu=cortex-m0plus -mthumb -mfloat-abi=soft \
-+		-Wl,--build-id=none -x assembler-with-cpp \
-+		$(ARM_SRC)/rp2040-boot2-w25q080.S $< \
-+		-o $@ -nostdlib -static \
-+		-T $(ARM_SRC)/rp2040.ld
+-$(RP2040_TESTS): %: %.S rp2040-boot2-w25q080.S rp2040.ld
++RP2040_FLASH_TESTS=rp2040-flash-commands rp2040-flash-ioqspi \
++	rp2040-flash-busy-hardfault rp2040-flash-busy-lockout \
++	rp2040-core0-xip-fault rp2040-core1-xip-fault
 +
-+run-rp2040-bkpt-hardfault: QEMU_OPTS=-M raspi-pico,strict-uart-pins=off \
-+	-serial chardev:output \
-+	-semihosting-config enable=on,target=native -kernel
-+run-rp2040-bkpt-hardfault: rp2040-bkpt-hardfault
++RP2040_GUESTS=$(RP2040_TESTS) $(RP2040_FLASH_TESTS) \
++	rp2040-flash-persist-reader
++
++$(RP2040_GUESTS): %: %.S rp2040-boot2-w25q080.S rp2040.ld
+ 	$(CC) -mcpu=cortex-m0plus -mthumb -mfloat-abi=soft \
+ 		-Wl,--build-id=none -x assembler-with-cpp \
+ 		$(ARM_SRC)/rp2040-boot2-w25q080.S $< \
+@@ -36,7 +43,10 @@ run-rp2040-boot: QEMU_OPTS=-M raspi-pico \
+ 
+ run-rp2040-uart run-rp2040-mpu \
+ run-rp2040-sio-fifo run-rp2040-sio-divider \
+-run-rp2040-psm-proc1 run-rp2040-core1-launch run-rp2040-timer: \
++run-rp2040-psm-proc1 run-rp2040-core1-launch run-rp2040-timer \
++run-rp2040-flash-commands run-rp2040-flash-ioqspi \
++run-rp2040-flash-busy-hardfault run-rp2040-flash-busy-lockout \
++run-rp2040-core0-xip-fault run-rp2040-core1-xip-fault: \
+ 	QEMU_OPTS=-M raspi-pico,strict-uart-pins=off \
+ 	-serial chardev:output \
+ 	-semihosting-config enable=on,target=native -kernel
+@@ -44,14 +54,37 @@ run-rp2040-psm-proc1 run-rp2040-core1-launch run-rp2040-timer: \
+ run-rp2040-uart run-rp2040-mpu \
+ run-rp2040-sio-fifo run-rp2040-sio-divider \
+ run-rp2040-psm-proc1 run-rp2040-core1-launch \
+-run-rp2040-timer: run-rp2040-%: rp2040-%
++run-rp2040-timer run-rp2040-flash-ioqspi \
++run-rp2040-flash-busy-hardfault run-rp2040-flash-busy-lockout \
++run-rp2040-core0-xip-fault \
++run-rp2040-core1-xip-fault: run-rp2040-%: rp2040-%
+ 	$(call run-test, $<, \
+ 	  $(QEMU) -monitor none -display none \
+ 		  -chardev file$(COMMA)path=$<.out$(COMMA)id=output \
+ 		  $(QEMU_OPTS) $<)
+ 	$(call diff-out,$<,$(ARM_SRC)/$<.ref)
+-
+-ARM_TESTS+=$(RP2040_TESTS)
++run-rp2040-flash-commands: rp2040-flash-commands \
++		rp2040-flash-persist-reader
 +	$(call run-test, $<, \
 +	  $(QEMU) -monitor none -display none \
 +		  -chardev file$(COMMA)path=$<.out$(COMMA)id=output \
 +		  $(QEMU_OPTS) $<)
-+	$(call diff-out,$<,$(ARM_SRC)/rp2040-bkpt-hardfault.ref)
-+
-+RP2040_TESTS+=rp2040-bkpt-hardfault
-+
-+rp2040-semihost-exit: rp2040-exit.S \
-+		rp2040-boot2-w25q080.S rp2040.ld
-+	$(CC) -mcpu=cortex-m0plus -mthumb -mfloat-abi=soft \
-+		-DEXIT_MODE=0 -Wl,--build-id=none -x assembler-with-cpp \
-+		$(ARM_SRC)/rp2040-boot2-w25q080.S $< \
-+		-o $@ -nostdlib -static \
-+		-T $(ARM_SRC)/rp2040.ld
-+
-+run-rp2040-semihost-exit: rp2040-semihost-exit
-+	@$(QEMU) -M raspi-pico -monitor none -display none -serial none \
++	$(call diff-out,$<,$(ARM_SRC)/rp2040-flash-commands.ref)
++	$(PYTHON) -c "open('$<.flash', 'wb').write(b'\xff' * 512)"
++	$(QEMU) -monitor none -display none \
++		-M raspi-pico$(COMMA)strict-uart-pins=off$(COMMA)flash-file=$<.flash \
++		-serial null -semihosting-config enable=on$(COMMA)target=native \
++		-kernel $<
++	$(QEMU) -monitor none -display none \
++		-chardev file$(COMMA)path=$<.persist.out$(COMMA)id=output \
++		-M raspi-pico$(COMMA)strict-uart-pins=off$(COMMA)flash-file=$<.flash \
++		-serial chardev:output \
 +		-semihosting-config enable=on$(COMMA)target=native \
-+		-kernel $<; rc=$$?; test $$rc -eq 23
++		-kernel rp2040-flash-persist-reader
++	$(call diff-out,$<.persist,$(ARM_SRC)/rp2040-flash-persist-reader.ref)
++	rm -f $<.flash $<.persist.out
 +
-+RP2040_TESTS+=rp2040-semihost-exit
-+
-+rp2040-pico-sdk-exit: rp2040-exit.S \
-+		rp2040-boot2-w25q080.S rp2040.ld
-+	$(CC) -mcpu=cortex-m0plus -mthumb -mfloat-abi=soft \
-+		-DEXIT_MODE=1 -Wl,--build-id=none -x assembler-with-cpp \
-+		$(ARM_SRC)/rp2040-boot2-w25q080.S $< \
-+		-o $@ -nostdlib -static \
-+		-T $(ARM_SRC)/rp2040.ld
-+
-+run-rp2040-pico-sdk-exit: rp2040-pico-sdk-exit
-+	@$(QEMU) -M raspi-pico$(COMMA)pico-sdk-exit=on \
-+		-monitor none -display none -serial none -kernel $<; \
-+		rc=$$?; test $$rc -eq 23
-+
-+RP2040_TESTS+=rp2040-pico-sdk-exit
-+
- ARM_TESTS+=$(RP2040_TESTS) $(RP2040_FLASH_TESTS) $(RP2040_DMA_TESTS)
++ARM_TESTS+=$(RP2040_TESTS) $(RP2040_FLASH_TESTS)
  
  # These objects provide the basic boot code and helper functions for all tests
-diff --git a/tests/tcg/arm/system/rp2040-bkpt-hardfault.S b/tests/tcg/arm/system/rp2040-bkpt-hardfault.S
+ CRT_OBJS=boot.o
+diff --git a/tests/tcg/arm/system/rp2040-core0-xip-fault.S b/tests/tcg/arm/system/rp2040-core0-xip-fault.S
 new file mode 100644
-index 0000000000..68873d6a8d
+index 0000000000..675dd231d2
 --- /dev/null
-+++ b/tests/tcg/arm/system/rp2040-bkpt-hardfault.S
-@@ -0,0 +1,94 @@
++++ b/tests/tcg/arm/system/rp2040-core0-xip-fault.S
+@@ -0,0 +1,193 @@
 +/*
-+ * Raspberry Pi Pico BKPT-to-HardFault test
++ * Raspberry Pi Pico core 0 XIP-busy instruction fault test.
 + *
++ * Copyright 2026 Gilles Grimaud
 + * SPDX-License-Identifier: GPL-2.0-or-later
 + */
 +
@@ -443,8 +200,16 @@ index 0000000000..68873d6a8d
 +.thumb
 +
 +#define SRAM_END               0x20042000
++#define SRAM_BASE              0x20000000
 +#define UART0_DR               0x40034000
-+#define HARDFAULT_EXCEPTION    3
++#define SCB_VTOR               0xe000ed08
++#define SSI_BASE               0x18000000
++#define SSI_CTRLR0             0x00
++#define SSI_SSIENR             0x08
++#define SSI_SER                0x10
++#define SSI_RXFLR              0x24
++#define SSI_DR0                0x60
++#define SSI_CTRLR0_SPI_TXRX    0x00070000
 +#define SYS_EXIT               0x18
 +#define ADP_STOPPED_APPLICATION_EXIT 0x20026
 +#define ADP_STOPPED_RUNTIME_ERROR    0x20023
@@ -455,7 +220,767 @@ index 0000000000..68873d6a8d
 +    .word SRAM_END
 +    .word reset_handler + 1
 +    .word default_handler + 1
-+    .word hardfault_handler + 1
++    .word default_handler + 1
++
++.section .text, "ax", %progbits
++.thumb_func
++.global reset_handler
++reset_handler:
++    ldr r0, =start_message
++    bl xip_puts
++    ldr r0, =SRAM_BASE
++    ldr r1, =sram_start
++    ldr r2, =sram_end
++
++1:
++    cmp r1, r2
++    bhs 2f
++    ldr r3, [r1]
++    str r3, [r0]
++    adds r1, 4
++    adds r0, 4
++    b 1b
++
++2:
++    ldr r0, =SRAM_BASE
++    adds r0, 1
++    bx r0
++
++.thumb_func
++default_handler:
++    b default_handler
++
++.thumb_func
++xip_probe:
++    ldr r0, =xip_no_fault_message
++    bl xip_puts
++    movs r0, SYS_EXIT
++    ldr r1, =ADP_STOPPED_RUNTIME_ERROR
++    bkpt 0xab
++
++3:
++    b 3b
++
++.thumb_func
++xip_puts:
++    ldr r2, =UART0_DR
++
++4:
++    ldrb r1, [r0]
++    cmp r1, 0
++    beq 5f
++    str r1, [r2]
++    adds r0, 1
++    b 4b
++
++5:
++    bx lr
++
++.align 2
++sram_start:
++    ldr r0, =SRAM_BASE
++    ldr r1, =SRAM_END
++    str r1, [r0]
++    adr r1, sram_entry
++    adds r1, 1
++    str r1, [r0, 4]
++    movs r1, 0
++    str r1, [r0, 8]
++    adr r1, sram_hardfault
++    adds r1, 1
++    str r1, [r0, 12]
++    ldr r2, =SCB_VTOR
++    str r0, [r2]
++
++.align 2
++.thumb_func
++sram_entry:
++    ldr r4, =SSI_BASE
++    movs r0, 0
++    str r0, [r4, SSI_SSIENR]
++    ldr r0, =SSI_CTRLR0_SPI_TXRX
++    str r0, [r4, SSI_CTRLR0]
++    movs r0, 1
++    str r0, [r4, SSI_SSIENR]
++
++    str r0, [r4, SSI_SER]
++    movs r0, 0x06
++    bl sram_ssi_txrx
++    movs r0, 0
++    str r0, [r4, SSI_SER]
++
++    movs r0, 1
++    str r0, [r4, SSI_SER]
++    movs r0, 0x02
++    bl sram_ssi_txrx
++    movs r0, 0x00
++    bl sram_ssi_txrx
++    movs r0, 0x20
++    bl sram_ssi_txrx
++    movs r0, 0x00
++    bl sram_ssi_txrx
++    movs r0, 0x5a
++    bl sram_ssi_txrx
++    movs r0, 0
++    str r0, [r4, SSI_SER]
++
++    ldr r0, =xip_probe
++    adds r0, 1
++    bx r0
++
++.thumb_func
++sram_ssi_txrx:
++    ldr r2, =(SSI_BASE + SSI_DR0)
++    str r0, [r2]
++    ldr r3, =(SSI_BASE + SSI_RXFLR)
++
++6:
++    ldr r0, [r3]
++    cmp r0, 0
++    beq 6b
++    ldr r0, [r2]
++    bx lr
++
++.align 2
++.thumb_func
++sram_hardfault:
++    adr r0, sram_ok_message
++    bl sram_puts
++    movs r0, SYS_EXIT
++    ldr r1, =ADP_STOPPED_APPLICATION_EXIT
++    bkpt 0xab
++
++7:
++    b 7b
++
++.thumb_func
++sram_puts:
++    ldr r2, =UART0_DR
++
++8:
++    ldrb r1, [r0]
++    cmp r1, 0
++    beq 9f
++    str r1, [r2]
++    adds r0, 1
++    b 8b
++
++9:
++    bx lr
++
++.align 2
++sram_ok_message:
++    .asciz "PICO TCG CORE0 XIP HARDFAULT OK\n"
++
++.ltorg
++.align 2
++sram_end:
++
++.section .rodata, "a", %progbits
++start_message:
++    .asciz "PICO TCG CORE0 XIP START\n"
++xip_no_fault_message:
++    .asciz "PICO TCG CORE0 XIP FAIL: NO FAULT\n"
+diff --git a/tests/tcg/arm/system/rp2040-core0-xip-fault.ref b/tests/tcg/arm/system/rp2040-core0-xip-fault.ref
+new file mode 100644
+index 0000000000..22232ee864
+--- /dev/null
++++ b/tests/tcg/arm/system/rp2040-core0-xip-fault.ref
+@@ -0,0 +1,2 @@
++PICO TCG CORE0 XIP START
++PICO TCG CORE0 XIP HARDFAULT OK
+diff --git a/tests/tcg/arm/system/rp2040-core1-xip-fault.S b/tests/tcg/arm/system/rp2040-core1-xip-fault.S
+new file mode 100644
+index 0000000000..5f8a1217eb
+--- /dev/null
++++ b/tests/tcg/arm/system/rp2040-core1-xip-fault.S
+@@ -0,0 +1,331 @@
++/*
++ * Raspberry Pi Pico core 1 XIP-busy instruction fault test.
++ *
++ * Copyright 2026 Gilles Grimaud
++ * SPDX-License-Identifier: GPL-2.0-or-later
++ */
++
++.syntax unified
++.cpu cortex-m0plus
++.thumb
++
++#define SRAM_END               0x20042000
++#define SRAM_BASE              0x20000000
++#define CORE1_STACK            0x20041000
++#define UART0_DR               0x40034000
++#define SIO_BASE               0xd0000000
++#define SIO_CPUID              0x00
++#define SIO_FIFO_ST            0x50
++#define SIO_FIFO_WR            0x54
++#define SIO_FIFO_RD            0x58
++#define SIO_FIFO_ST_VLD        0x01
++#define SIO_FIFO_ST_RDY        0x02
++#define SCB_VTOR               0xe000ed08
++#define SSI_BASE               0x18000000
++#define SSI_CTRLR0             0x00
++#define SSI_SSIENR             0x08
++#define SSI_SER                0x10
++#define SSI_RXFLR              0x24
++#define SSI_DR0                0x60
++#define SSI_CTRLR0_SPI_TXRX    0x00070000
++#define CORE1_READY            0xc01e1001
++#define SYS_EXIT               0x18
++#define ADP_STOPPED_APPLICATION_EXIT 0x20026
++#define ADP_STOPPED_RUNTIME_ERROR    0x20023
++
++.section .vectors, "a", %progbits
++.global vector_table
++vector_table:
++    .word SRAM_END
++    .word reset_handler + 1
++    .word default_handler + 1
++    .word default_handler + 1
++
++.section .text, "ax", %progbits
++.thumb_func
++.global reset_handler
++reset_handler:
++    ldr r0, =start_message
++    bl xip_puts
++    ldr r0, =SRAM_BASE
++    ldr r1, =sram_start
++    ldr r2, =sram_end
++
++1:
++    cmp r1, r2
++    bhs 2f
++    ldr r3, [r1]
++    str r3, [r0]
++    adds r1, 4
++    adds r0, 4
++    b 1b
++
++2:
++    ldr r0, =SRAM_BASE
++    adds r0, sram_core0_main - sram_start + 1
++    bx r0
++
++.thumb_func
++default_handler:
++    b default_handler
++
++.thumb_func
++xip_core1_loop:
++    ldr r0, =CORE1_READY
++    bl xip_fifo_push
++
++3:
++    b 3b
++
++.thumb_func
++xip_fifo_push:
++    ldr r1, =(SIO_BASE + SIO_FIFO_ST)
++
++4:
++    ldr r2, [r1]
++    movs r3, SIO_FIFO_ST_RDY
++    tst r2, r3
++    beq 4b
++    ldr r1, =(SIO_BASE + SIO_FIFO_WR)
++    str r0, [r1]
++    bx lr
++
++.thumb_func
++xip_puts:
++    ldr r2, =UART0_DR
++
++5:
++    ldrb r1, [r0]
++    cmp r1, 0
++    beq 6f
++    str r1, [r2]
++    adds r0, 1
++    b 5b
++
++6:
++    bx lr
++
++.align 2
++sram_start:
++    .word SRAM_END
++    .word SRAM_BASE + (sram_core0_main - sram_start) + 1
++    .word 0
++    .word SRAM_BASE + (sram_hardfault - sram_start) + 1
++
++.align 2
++.thumb_func
++sram_core0_main:
++    ldr r0, =SCB_VTOR
++    ldr r1, =SRAM_BASE
++    str r1, [r0]
++    bl sram_launch_core1
++    bl sram_fifo_pop
++    ldr r1, =CORE1_READY
++    cmp r0, r1
++    bne sram_fail_ready
++
++    adr r0, sram_ready_message
++    bl sram_puts
++    bl sram_start_flash_program
++
++7:
++    b 7b
++
++.thumb_func
++sram_launch_core1:
++    push {r4, r5, lr}
++    adr r4, sram_launch_sequence
++    movs r5, 6
++
++8:
++    ldr r0, [r4]
++    cmp r0, 0
++    bne 9f
++    bl sram_fifo_drain
++    sev
++    ldr r0, [r4]
++
++9:
++    bl sram_fifo_push
++    sev
++    bl sram_fifo_pop
++    ldr r1, [r4]
++    cmp r0, r1
++    bne sram_fail_launch
++    adds r4, 4
++    subs r5, 1
++    bne 8b
++    pop {r4, r5, pc}
++
++.thumb_func
++sram_fifo_push:
++    ldr r1, =(SIO_BASE + SIO_FIFO_ST)
++
++10:
++    ldr r2, [r1]
++    movs r3, SIO_FIFO_ST_RDY
++    tst r2, r3
++    beq 10b
++    ldr r1, =(SIO_BASE + SIO_FIFO_WR)
++    str r0, [r1]
++    bx lr
++
++.thumb_func
++sram_fifo_pop:
++    ldr r1, =(SIO_BASE + SIO_FIFO_ST)
++
++11:
++    ldr r2, [r1]
++    movs r3, SIO_FIFO_ST_VLD
++    tst r2, r3
++    beq 11b
++    ldr r1, =(SIO_BASE + SIO_FIFO_RD)
++    ldr r0, [r1]
++    bx lr
++
++.thumb_func
++sram_fifo_drain:
++    push {r0, r1, r2, r3, lr}
++    ldr r1, =(SIO_BASE + SIO_FIFO_ST)
++
++12:
++    ldr r2, [r1]
++    movs r3, SIO_FIFO_ST_VLD
++    tst r2, r3
++    beq 13f
++    ldr r0, =(SIO_BASE + SIO_FIFO_RD)
++    ldr r0, [r0]
++    b 12b
++
++13:
++    pop {r0, r1, r2, r3, pc}
++
++.thumb_func
++sram_start_flash_program:
++    push {lr}
++    ldr r4, =SSI_BASE
++    movs r0, 0
++    str r0, [r4, SSI_SSIENR]
++    ldr r0, =SSI_CTRLR0_SPI_TXRX
++    str r0, [r4, SSI_CTRLR0]
++    movs r0, 1
++    str r0, [r4, SSI_SSIENR]
++
++    str r0, [r4, SSI_SER]
++    movs r0, 0x06
++    bl sram_ssi_txrx
++    movs r0, 0
++    str r0, [r4, SSI_SER]
++
++    movs r0, 1
++    str r0, [r4, SSI_SER]
++    movs r0, 0x02
++    bl sram_ssi_txrx
++    movs r0, 0x00
++    bl sram_ssi_txrx
++    movs r0, 0x30
++    bl sram_ssi_txrx
++    movs r0, 0x00
++    bl sram_ssi_txrx
++    movs r0, 0xa5
++    bl sram_ssi_txrx
++    movs r0, 0
++    str r0, [r4, SSI_SER]
++    pop {pc}
++
++.thumb_func
++sram_ssi_txrx:
++    ldr r2, =(SSI_BASE + SSI_DR0)
++    str r0, [r2]
++    ldr r3, =(SSI_BASE + SSI_RXFLR)
++
++14:
++    ldr r0, [r3]
++    cmp r0, 0
++    beq 14b
++    ldr r0, [r2]
++    bx lr
++
++.align 2
++.thumb_func
++sram_hardfault:
++    ldr r0, =SIO_BASE
++    ldr r0, [r0, SIO_CPUID]
++    cmp r0, 1
++    bne sram_fail_core
++    adr r0, sram_ok_message
++    bl sram_puts
++    movs r0, SYS_EXIT
++    ldr r1, =ADP_STOPPED_APPLICATION_EXIT
++    bkpt 0xab
++
++15:
++    b 15b
++
++sram_fail_launch:
++    adr r0, sram_fail_launch_message
++    b sram_test_failed
++
++sram_fail_ready:
++    adr r0, sram_fail_ready_message
++    b sram_test_failed
++
++sram_fail_core:
++    adr r0, sram_fail_core_message
++
++sram_test_failed:
++    bl sram_puts
++    movs r0, SYS_EXIT
++    ldr r1, =ADP_STOPPED_RUNTIME_ERROR
++    bkpt 0xab
++
++16:
++    b 16b
++
++.thumb_func
++sram_puts:
++    ldr r2, =UART0_DR
++
++17:
++    ldrb r1, [r0]
++    cmp r1, 0
++    beq 18f
++    str r1, [r2]
++    adds r0, 1
++    b 17b
++
++18:
++    bx lr
++
++.align 2
++sram_launch_sequence:
++    .word 0
++    .word 0
++    .word 1
++    .word SRAM_BASE
++    .word CORE1_STACK
++    .word xip_core1_loop + 1
++
++.align 2
++sram_ready_message:
++    .asciz "PICO TCG CORE1 XIP READY\n"
++.align 2
++sram_ok_message:
++    .asciz "PICO TCG CORE1 XIP HARDFAULT OK\n"
++.align 2
++sram_fail_launch_message:
++    .asciz "PICO TCG CORE1 XIP FAIL: LAUNCH\n"
++.align 2
++sram_fail_ready_message:
++    .asciz "PICO TCG CORE1 XIP FAIL: READY\n"
++.align 2
++sram_fail_core_message:
++    .asciz "PICO TCG CORE1 XIP FAIL: CPUID\n"
++
++.ltorg
++.align 2
++sram_end:
++
++.section .rodata, "a", %progbits
++start_message:
++    .asciz "PICO TCG CORE1 XIP START\n"
+diff --git a/tests/tcg/arm/system/rp2040-core1-xip-fault.ref b/tests/tcg/arm/system/rp2040-core1-xip-fault.ref
+new file mode 100644
+index 0000000000..4488763747
+--- /dev/null
++++ b/tests/tcg/arm/system/rp2040-core1-xip-fault.ref
+@@ -0,0 +1,3 @@
++PICO TCG CORE1 XIP START
++PICO TCG CORE1 XIP READY
++PICO TCG CORE1 XIP HARDFAULT OK
+diff --git a/tests/tcg/arm/system/rp2040-flash-busy-hardfault.S b/tests/tcg/arm/system/rp2040-flash-busy-hardfault.S
+new file mode 100644
+index 0000000000..81bcafe260
+--- /dev/null
++++ b/tests/tcg/arm/system/rp2040-flash-busy-hardfault.S
+@@ -0,0 +1,179 @@
++/*
++ * Raspberry Pi Pico XIP access while flash is busy test.
++ *
++ * Copyright 2026 Gilles Grimaud
++ * SPDX-License-Identifier: GPL-2.0-or-later
++ */
++
++.syntax unified
++.cpu cortex-m0plus
++.thumb
++
++#define SRAM_BASE               0x20000000
++#define SRAM_VTOR               0x20001000
++#define SRAM_END                0x20042000
++#define VTOR                    0xe000ed08
++#define UART0_DR                0x40034000
++#define SSI_SER                 0x18000010
++#define SSI_RXFLR               0x18000024
++#define SSI_DR0                 0x18000060
++#define XIP_TARGET              0x10001400
++#define SYS_EXIT                0x18
++#define ADP_STOPPED_APPLICATION_EXIT 0x20026
++#define ADP_STOPPED_RUNTIME_ERROR    0x20023
++
++.section .vectors, "a", %progbits
++vector_table:
++    .word SRAM_END
++    .word reset_handler + 1
++    .word default_handler + 1
++    .word default_handler + 1
++
++.section .text, "ax", %progbits
++.thumb_func
++.global reset_handler
++reset_handler:
++    ldr r0, =SRAM_BASE
++    ldr r1, =ram_code_start
++    ldr r2, =ram_code_end
++
++copy_loop:
++    cmp r1, r2
++    bhs copy_done
++    ldr r3, [r1]
++    str r3, [r0]
++    adds r0, 4
++    adds r1, 4
++    b copy_loop
++
++copy_done:
++    ldr r0, =SRAM_BASE + 1
++    bx r0
++
++.thumb_func
++default_handler:
++    b default_handler
++
++.align 2
++ram_code_start:
++.thumb_func
++ram_main:
++    ldr r0, =SRAM_VTOR
++    ldr r1, =SRAM_END
++    str r1, [r0]
++    ldr r1, =SRAM_BASE + 1
++    str r1, [r0, 4]
++    movs r1, 0
++    str r1, [r0, 8]
++    adr r1, hardfault_handler
++    adds r1, 1
++    str r1, [r0, 12]
++    ldr r1, =VTOR
++    str r0, [r1]
++
++    adr r0, start_message
++    bl puts
++    bl write_enable
++    bl select_flash
++    movs r0, 0x02
++    bl ssi_byte
++    movs r0, 0x00
++    bl ssi_byte
++    movs r0, 0x14
++    bl ssi_byte
++    movs r0, 0x00
++    bl ssi_byte
++    movs r0, 'X'
++    bl ssi_byte
++    bl deselect_flash
++
++    ldr r1, =XIP_TARGET
++faulting_access:
++    ldrb r0, [r1]
++    adr r0, fail_message
++    b test_failed
++
++.thumb_func
++write_enable:
++    push {lr}
++    bl select_flash
++    movs r0, 0x06
++    bl ssi_byte
++    bl deselect_flash
++    pop {pc}
++
++.thumb_func
++select_flash:
++    ldr r1, =SSI_SER
++    movs r0, 1
++    str r0, [r1]
++    bx lr
++
++.thumb_func
++deselect_flash:
++    ldr r1, =SSI_SER
++    movs r0, 0
++    str r0, [r1]
++    bx lr
++
++.thumb_func
++ssi_byte:
++    ldr r2, =SSI_DR0
++    str r0, [r2]
++    ldr r3, =SSI_RXFLR
++
++1:
++    ldr r0, [r3]
++    cmp r0, 0
++    beq 1b
++    ldr r0, [r2]
++    bx lr
++
++.align 2
++.thumb_func
++hardfault_handler:
++    adr r0, ok_message
++    bl puts
++    movs r0, SYS_EXIT
++    ldr r1, =ADP_STOPPED_APPLICATION_EXIT
++    bkpt 0xab
++
++2:
++    b 2b
++
++test_failed:
++    bl puts
++    movs r0, SYS_EXIT
++    ldr r1, =ADP_STOPPED_RUNTIME_ERROR
++    bkpt 0xab
++
++3:
++    b 3b
++
++.thumb_func
++puts:
++    ldr r2, =UART0_DR
++
++4:
++    ldrb r1, [r0]
++    cmp r1, 0
++    beq 5f
++    str r1, [r2]
++    adds r0, 1
++    b 4b
++
++5:
++    bx lr
++
++.align 2
++start_message:
++    .asciz "PICO TCG FLASH XIP BUSY START\n"
++.align 2
++ok_message:
++    .asciz "PICO TCG FLASH XIP BUSY HARDFAULT OK\n"
++.align 2
++fail_message:
++    .asciz "PICO TCG FLASH XIP BUSY FAIL: NO HARDFAULT\n"
++.align 2
++.ltorg
++ram_code_end:
+diff --git a/tests/tcg/arm/system/rp2040-flash-busy-hardfault.ref b/tests/tcg/arm/system/rp2040-flash-busy-hardfault.ref
+new file mode 100644
+index 0000000000..ee43e3ae15
+--- /dev/null
++++ b/tests/tcg/arm/system/rp2040-flash-busy-hardfault.ref
+@@ -0,0 +1,2 @@
++PICO TCG FLASH XIP BUSY START
++PICO TCG FLASH XIP BUSY HARDFAULT OK
+diff --git a/tests/tcg/arm/system/rp2040-flash-busy-lockout.S b/tests/tcg/arm/system/rp2040-flash-busy-lockout.S
+new file mode 100644
+index 0000000000..a0397d7a1d
+--- /dev/null
++++ b/tests/tcg/arm/system/rp2040-flash-busy-lockout.S
+@@ -0,0 +1,434 @@
++/*
++ * Raspberry Pi Pico multicore flash-busy lockout test.
++ *
++ * Copyright 2026 Gilles Grimaud
++ * SPDX-License-Identifier: GPL-2.0-or-later
++ */
++
++.syntax unified
++.cpu cortex-m0plus
++.thumb
++
++#define SRAM_END               0x20042000
++#define CORE0_SRAM_VTOR        0x20000000
++#define CORE0_SRAM_CODE        0x20000100
++#define PAGE_BUFFER            0x20000400
++#define CORE1_SRAM_VTOR        0x20001000
++#define CORE1_STACK            0x20041000
++#define UART0_DR               0x40034000
++#define SIO_BASE               0xd0000000
++#define SIO_FIFO_ST            0x50
++#define SIO_FIFO_WR            0x54
++#define SIO_FIFO_RD            0x58
++#define SIO_SPINLOCK0          0x100
++#define SIO_FIFO_ST_VLD        0x01
++#define SIO_FIFO_ST_RDY        0x02
++#define NVIC_ISER              0xe000e100
++#define SCB_VTOR               0xe000ed08
++#define SIO_IRQ_PROC1_MASK     0x00010000
++#define SSI_BASE               0x18000000
++#define SSI_SSIENR             0x08
++#define SSI_SER                0x10
++#define SSI_DR0                0x60
++#define FLASH_ADDRESS          0x10101000
++#define LOCK_REQUEST           0xfacefeed
++#define LOCK_ACK               0xface0001
++#define BAD_ACK                0xbad10003
++#define SYS_EXIT               0x18
++#define ADP_STOPPED_APPLICATION_EXIT 0x20026
++#define ADP_STOPPED_RUNTIME_ERROR    0x20023
++
++.section .vectors, "a", %progbits
++.global vector_table
++vector_table:
++    .word SRAM_END
++    .word reset_handler + 1
++    .word default_handler + 1
++    .word default_handler + 1
 +
 +.section .text, "ax", %progbits
 +.thumb_func
@@ -463,16 +988,540 @@ index 0000000000..68873d6a8d
 +reset_handler:
 +    ldr r0, =start_message
 +    bl puts
-+    bkpt 0
++    bl copy_core1_sram
++    bl launch_core1
 +
++    ldr r0, =launch_message
++    bl puts
++    bl claim_spinlock
++    ldr r0, =LOCK_REQUEST
++    bl fifo_push
++    sev
++    ldr r0, =LOCK_ACK
++    bl fifo_pop_expect
++
++    ldr r0, =locked_message
++    bl puts
++    bl copy_and_run_core0_sram
 +    ldr r0, =fail_return_message
 +    b test_failed
 +
 +.thumb_func
-+hardfault_handler:
-+    mrs r0, ipsr
-+    cmp r0, HARDFAULT_EXCEPTION
-+    bne fail_exception
++launch_core1:
++    push {r4, r5, lr}
++    ldr r4, =launch_sequence
++    movs r5, 6
++
++1:
++    ldr r0, [r4]
++    cmp r0, 0
++    bne 2f
++    bl fifo_drain
++    sev
++    ldr r0, [r4]
++
++2:
++    bl fifo_push
++    sev
++    bl fifo_pop
++    ldr r1, [r4]
++    cmp r0, r1
++    bne fail_launch
++    adds r4, 4
++    subs r5, 1
++    bne 1b
++    pop {r4, r5, pc}
++
++.thumb_func
++copy_core1_sram:
++    ldr r0, =core1_sram_start
++    ldr r1, =CORE1_SRAM_VTOR
++    ldr r2, =core1_sram_end
++
++3:
++    cmp r0, r2
++    bhs 4f
++    ldr r3, [r0]
++    str r3, [r1]
++    adds r0, 4
++    adds r1, 4
++    b 3b
++
++4:
++    bx lr
++
++.thumb_func
++claim_spinlock:
++    ldr r0, =(SIO_BASE + SIO_SPINLOCK0)
++    ldr r1, [r0]
++    cmp r1, 0
++    beq fail_spinlock
++    bx lr
++
++.thumb_func
++copy_and_run_core0_sram:
++    ldr r0, =core0_sram_start
++    ldr r1, =CORE0_SRAM_CODE
++    ldr r2, =core0_sram_end
++
++5:
++    cmp r0, r2
++    bhs 6f
++    ldr r3, [r0]
++    str r3, [r1]
++    adds r0, 4
++    adds r1, 4
++    b 5b
++
++6:
++    ldr r0, =CORE0_SRAM_CODE
++    adds r0, 1
++    bx r0
++
++.thumb_func
++fifo_push:
++    push {r1, r2, r3, lr}
++    ldr r1, =SIO_BASE
++
++7:
++    ldr r2, [r1, SIO_FIFO_ST]
++    movs r3, SIO_FIFO_ST_RDY
++    tst r2, r3
++    beq 7b
++    str r0, [r1, SIO_FIFO_WR]
++    pop {r1, r2, r3, pc}
++
++.thumb_func
++fifo_pop:
++    push {r1, r2, r3, lr}
++    ldr r1, =SIO_BASE
++
++8:
++    ldr r2, [r1, SIO_FIFO_ST]
++    movs r3, SIO_FIFO_ST_VLD
++    tst r2, r3
++    beq 8b
++    ldr r0, [r1, SIO_FIFO_RD]
++    pop {r1, r2, r3, pc}
++
++.thumb_func
++fifo_drain:
++    push {r0, r1, r2, r3, lr}
++    ldr r1, =SIO_BASE
++
++9:
++    ldr r2, [r1, SIO_FIFO_ST]
++    movs r3, SIO_FIFO_ST_VLD
++    tst r2, r3
++    beq 10f
++    ldr r0, [r1, SIO_FIFO_RD]
++    b 9b
++
++10:
++    pop {r0, r1, r2, r3, pc}
++
++.thumb_func
++fifo_pop_expect:
++    push {r4, lr}
++    mov r4, r0
++    bl fifo_pop
++    cmp r0, r4
++    bne fail_fifo
++    pop {r4, pc}
++
++fail_launch:
++    ldr r0, =fail_launch_message
++    b test_failed
++
++fail_spinlock:
++    ldr r0, =fail_spinlock_message
++    b test_failed
++
++fail_fifo:
++    ldr r0, =fail_fifo_message
++    b test_failed
++
++test_failed:
++    bl puts
++    movs r0, SYS_EXIT
++    ldr r1, =ADP_STOPPED_RUNTIME_ERROR
++    bkpt 0xab
++
++11:
++    b 11b
++
++.thumb_func
++default_handler:
++    ldr r0, =fail_exception_message
++    b test_failed
++
++.thumb_func
++puts:
++    push {r1, r2, lr}
++    ldr r1, =UART0_DR
++
++12:
++    ldrb r2, [r0]
++    cmp r2, 0
++    beq 13f
++    str r2, [r1]
++    adds r0, 1
++    b 12b
++
++13:
++    pop {r1, r2, pc}
++
++.align 2
++core0_sram_start:
++    ldr r0, =CORE0_SRAM_VTOR
++    ldr r1, =SRAM_END
++    str r1, [r0]
++    movs r1, 0
++    str r1, [r0, 4]
++    ldr r1, =core0_sram_hardfault
++    ldr r2, =core0_sram_start
++    subs r1, r2
++    ldr r2, =CORE0_SRAM_CODE
++    adds r1, r1, r2
++    str r1, [r0, 12]
++    ldr r0, =SCB_VTOR
++    ldr r1, =CORE0_SRAM_VTOR
++    str r1, [r0]
++
++    ldr r0, =PAGE_BUFFER
++    movs r1, 0x5a
++    str r1, [r0]
++
++    ldr r4, =SSI_BASE
++    movs r0, 1
++    str r0, [r4, SSI_SSIENR]
++    str r0, [r4, SSI_SER]
++    movs r0, 0x06
++    str r0, [r4, SSI_DR0]
++    movs r0, 0
++    str r0, [r4, SSI_SER]
++
++    movs r0, 1
++    str r0, [r4, SSI_SER]
++    movs r0, 0x02
++    str r0, [r4, SSI_DR0]
++    movs r0, 0x10
++    str r0, [r4, SSI_DR0]
++    str r0, [r4, SSI_DR0]
++    movs r0, 0
++    str r0, [r4, SSI_DR0]
++    movs r0, 0x5a
++    str r0, [r4, SSI_DR0]
++    movs r0, 0
++    str r0, [r4, SSI_SER]
++
++    ldr r0, =FLASH_ADDRESS
++    ldrb r0, [r0]
++    ldr r0, =core0_sram_no_fault_message
++    ldr r1, =core0_sram_start
++    subs r0, r1
++    ldr r1, =CORE0_SRAM_CODE
++    adds r0, r1
++    bl core0_sram_puts
++    movs r0, SYS_EXIT
++    ldr r1, =ADP_STOPPED_RUNTIME_ERROR
++    bkpt 0xab
++
++14:
++    b 14b
++
++.thumb_func
++core0_sram_hardfault:
++    ldr r0, =core0_sram_ok_message
++    ldr r1, =core0_sram_start
++    subs r0, r1
++    ldr r1, =CORE0_SRAM_CODE
++    adds r0, r1
++    bl core0_sram_puts
++    movs r0, SYS_EXIT
++    ldr r1, =ADP_STOPPED_APPLICATION_EXIT
++    bkpt 0xab
++
++15:
++    b 15b
++
++.thumb_func
++core0_sram_puts:
++    ldr r1, =UART0_DR
++
++16:
++    ldrb r2, [r0]
++    cmp r2, 0
++    beq 17f
++    str r2, [r1]
++    adds r0, 1
++    b 16b
++
++17:
++    bx lr
++
++.align 2
++core0_sram_ok_message:
++    .asciz "PICO TCG FLASH BUSY LOCKOUT OK\n"
++core0_sram_no_fault_message:
++    .asciz "PICO TCG FLASH BUSY LOCKOUT FAIL: NO FAULT\n"
++
++.ltorg
++.align 2
++core0_sram_end:
++
++core1_sram_start:
++    .word CORE1_STACK
++    .word CORE1_SRAM_VTOR + (core1_sram_entry - core1_sram_start) + 1
++    .word 0
++    .word 0
++    .space 0x80 - 16
++    .word CORE1_SRAM_VTOR + (core1_sram_fifo_irq - core1_sram_start) + 1
++    .space 0x100 - 0x84
++
++.thumb_func
++core1_sram_entry:
++    ldr r0, =SCB_VTOR
++    ldr r1, =CORE1_SRAM_VTOR
++    str r1, [r0]
++    ldr r0, =NVIC_ISER
++    ldr r1, =SIO_IRQ_PROC1_MASK
++    str r1, [r0]
++    cpsie i
++
++18:
++    wfe
++    b 18b
++
++.thumb_func
++core1_sram_fifo_irq:
++    push {r0, r1, r2, r3, lr}
++    bl core1_sram_fifo_pop
++    ldr r1, =LOCK_REQUEST
++    cmp r0, r1
++    bne core1_sram_bad_request
++    ldr r0, =LOCK_ACK
++    bl core1_sram_fifo_push
++
++19:
++    wfe
++    b 19b
++
++core1_sram_bad_request:
++    ldr r0, =BAD_ACK
++    bl core1_sram_fifo_push
++
++20:
++    b 20b
++
++.thumb_func
++core1_sram_fifo_push:
++    ldr r1, =SIO_BASE
++
++21:
++    ldr r2, [r1, SIO_FIFO_ST]
++    movs r3, SIO_FIFO_ST_RDY
++    tst r2, r3
++    beq 21b
++    str r0, [r1, SIO_FIFO_WR]
++    bx lr
++
++.thumb_func
++core1_sram_fifo_pop:
++    ldr r1, =SIO_BASE
++
++22:
++    ldr r2, [r1, SIO_FIFO_ST]
++    movs r3, SIO_FIFO_ST_VLD
++    tst r2, r3
++    beq 22b
++    ldr r0, [r1, SIO_FIFO_RD]
++    bx lr
++
++.ltorg
++.align 2
++core1_sram_end:
++
++.section .rodata, "a", %progbits
++.align 2
++launch_sequence:
++    .word 0
++    .word 0
++    .word 1
++    .word CORE1_SRAM_VTOR
++    .word CORE1_STACK
++    .word CORE1_SRAM_VTOR + (core1_sram_entry - core1_sram_start) + 1
++
++start_message:
++    .asciz "PICO TCG FLASH BUSY START\n"
++launch_message:
++    .asciz "PICO TCG FLASH BUSY CORE1 SRAM OK\n"
++locked_message:
++    .asciz "PICO TCG FLASH BUSY LOCKED\n"
++fail_launch_message:
++    .asciz "PICO TCG FLASH BUSY FAIL: LAUNCH\n"
++fail_spinlock_message:
++    .asciz "PICO TCG FLASH BUSY FAIL: SPINLOCK\n"
++fail_fifo_message:
++    .asciz "PICO TCG FLASH BUSY FAIL: FIFO\n"
++fail_return_message:
++    .asciz "PICO TCG FLASH BUSY FAIL: RETURN\n"
++fail_exception_message:
++    .asciz "PICO TCG FLASH BUSY FAIL: EXCEPTION\n"
+diff --git a/tests/tcg/arm/system/rp2040-flash-busy-lockout.ref b/tests/tcg/arm/system/rp2040-flash-busy-lockout.ref
+new file mode 100644
+index 0000000000..53b85daabd
+--- /dev/null
++++ b/tests/tcg/arm/system/rp2040-flash-busy-lockout.ref
+@@ -0,0 +1,4 @@
++PICO TCG FLASH BUSY START
++PICO TCG FLASH BUSY CORE1 SRAM OK
++PICO TCG FLASH BUSY LOCKED
++PICO TCG FLASH BUSY LOCKOUT OK
+diff --git a/tests/tcg/arm/system/rp2040-flash-commands.S b/tests/tcg/arm/system/rp2040-flash-commands.S
+new file mode 100644
+index 0000000000..1245c88c4e
+--- /dev/null
++++ b/tests/tcg/arm/system/rp2040-flash-commands.S
+@@ -0,0 +1,375 @@
++/*
++ * Raspberry Pi Pico flash command and NOR semantics test.
++ *
++ * Copyright 2026 Gilles Grimaud
++ * SPDX-License-Identifier: GPL-2.0-or-later
++ */
++
++.syntax unified
++.cpu cortex-m0plus
++.thumb
++
++#define SRAM_BASE               0x20000000
++#define SRAM_END                0x20042000
++#define UART0_DR                0x40034000
++#define SSI_SER                 0x18000010
++#define SSI_RXFLR               0x18000024
++#define SSI_DR0                 0x18000060
++#define XIP_TARGET              0x10001000
++#define FLASH_TARGET_OFFSET     0x00001000
++#define FLASH_STATUS_WIP        0x01
++#define FLASH_STATUS_WEL        0x02
++#define SYS_EXIT                0x18
++#define ADP_STOPPED_APPLICATION_EXIT 0x20026
++#define ADP_STOPPED_RUNTIME_ERROR    0x20023
++
++.section .vectors, "a", %progbits
++.global vector_table
++vector_table:
++    .word SRAM_END
++    .word reset_handler + 1
++    .word default_handler + 1
++    .word default_handler + 1
++
++.section .text, "ax", %progbits
++.thumb_func
++.global reset_handler
++reset_handler:
++    ldr r0, =SRAM_BASE
++    ldr r1, =ram_code_start
++    ldr r2, =ram_code_end
++
++copy_loop:
++    cmp r1, r2
++    bhs copy_done
++    ldr r3, [r1]
++    str r3, [r0]
++    adds r0, 4
++    adds r1, 4
++    b copy_loop
++
++copy_done:
++    ldr r0, =SRAM_BASE + 1
++    bx r0
++
++.thumb_func
++default_handler:
++    b default_handler
++
++.align 2
++ram_code_start:
++.thumb_func
++ram_main:
++    ldr r0, =start_message
++    bl puts
++
++    bl write_enable
++    bl expect_wel
++    ldr r0, =FLASH_TARGET_OFFSET
++    bl erase_sector
++    bl expect_busy_wel_clear
++    bl expect_target_erased
++
++    bl write_enable
++    bl expect_wel
++    ldr r0, =FLASH_TARGET_OFFSET
++    ldr r1, =flash_message
++    movs r2, 5
++    bl program_data
++    bl expect_busy_wel_clear
++    bl expect_flash_message
++    ldr r0, =program_ok_message
++    bl puts
++
++    bl write_enable
++    ldr r0, =FLASH_TARGET_OFFSET
++    bl erase_sector
++    bl expect_busy_wel_clear
++    bl expect_target_erased
++    ldr r0, =erase_ok_message
++    bl puts
++
++    bl write_enable
++    ldr r0, =FLASH_TARGET_OFFSET
++    ldr r1, =flash_message
++    movs r2, 5
++    bl program_data
++    bl expect_busy_wel_clear
++    bl expect_flash_message
++
++    ldr r0, =FLASH_TARGET_OFFSET + 8
++    ldr r1, =no_wel_value
++    movs r2, 1
++    bl program_data
++    bl read_status
++    movs r1, FLASH_STATUS_WIP | FLASH_STATUS_WEL
++    tst r0, r1
++    beq 8f
++    b fail_no_wel
++8:
++    ldr r1, =XIP_TARGET + 8
++    ldrb r0, [r1]
++    cmp r0, 0xff
++    beq 9f
++    b fail_no_wel
++9:
++    ldr r0, =no_wel_ok_message
++    bl puts
++
++    bl write_enable
++    ldr r0, =FLASH_TARGET_OFFSET + 16
++    ldr r1, =zero_value
++    movs r2, 1
++    bl program_data
++    bl expect_busy_wel_clear
++    bl write_enable
++    ldr r0, =FLASH_TARGET_OFFSET + 16
++    ldr r1, =erased_value
++    movs r2, 1
++    bl program_data
++    bl expect_busy_wel_clear
++    ldr r1, =XIP_TARGET + 16
++    ldrb r0, [r1]
++    cmp r0, 0
++    beq 10f
++    b fail_old_and_new
++10:
++    ldr r0, =old_and_new_ok_message
++    bl puts
 +
 +    ldr r0, =ok_message
 +    bl puts
@@ -483,10 +1532,531 @@ index 0000000000..68873d6a8d
 +1:
 +    b 1b
 +
-+fail_exception:
-+    ldr r0, =fail_exception_message
++.thumb_func
++write_enable:
++    push {lr}
++    bl select_flash
++    movs r0, 0x06
++    bl ssi_byte
++    bl deselect_flash
++    pop {pc}
++
++.thumb_func
++read_status:
++    push {r4, lr}
++    bl select_flash
++    movs r0, 0x05
++    bl ssi_byte
++    mov r4, r0
++    bl deselect_flash
++    mov r0, r4
++    pop {r4, pc}
++
++.thumb_func
++expect_wel:
++    push {lr}
++    bl read_status
++    movs r1, FLASH_STATUS_WEL
++    tst r0, r1
++    beq fail_wel
++    pop {pc}
++
++.thumb_func
++expect_busy_wel_clear:
++    push {lr}
++    bl read_status
++    movs r1, FLASH_STATUS_WIP
++    tst r0, r1
++    beq fail_status
++    movs r1, FLASH_STATUS_WEL
++    tst r0, r1
++    bne fail_status
++    pop {pc}
++
++.thumb_func
++erase_sector:
++    push {r4, lr}
++    mov r4, r0
++    bl select_flash
++    movs r0, 0x20
++    bl ssi_byte
++    lsrs r0, r4, 16
++    bl ssi_byte
++    lsrs r0, r4, 8
++    bl ssi_byte
++    mov r0, r4
++    bl ssi_byte
++    bl deselect_flash
++    pop {r4, pc}
++
++.thumb_func
++program_data:
++    push {r4, r5, r6, lr}
++    mov r4, r0
++    mov r5, r1
++    mov r6, r2
++    bl select_flash
++    movs r0, 0x02
++    bl ssi_byte
++    lsrs r0, r4, 16
++    bl ssi_byte
++    lsrs r0, r4, 8
++    bl ssi_byte
++    mov r0, r4
++    bl ssi_byte
++
++program_loop:
++    cmp r6, 0
++    beq program_done
++    ldrb r0, [r5]
++    bl ssi_byte
++    adds r5, 1
++    subs r6, 1
++    b program_loop
++
++program_done:
++    bl deselect_flash
++    pop {r4, r5, r6, pc}
++
++.thumb_func
++select_flash:
++    ldr r1, =SSI_SER
++    movs r0, 1
++    str r0, [r1]
++    bx lr
++
++.thumb_func
++deselect_flash:
++    ldr r1, =SSI_SER
++    movs r0, 0
++    str r0, [r1]
++    bx lr
++
++.thumb_func
++ssi_byte:
++    ldr r2, =SSI_DR0
++    str r0, [r2]
++    ldr r3, =SSI_RXFLR
++
++2:
++    ldr r0, [r3]
++    cmp r0, 0
++    beq 2b
++    ldr r0, [r2]
++    bx lr
++
++.thumb_func
++expect_target_erased:
++    ldr r1, =XIP_TARGET
++    movs r2, 20
++
++3:
++    ldrb r0, [r1]
++    cmp r0, 0xff
++    bne fail_erase
++    adds r1, 1
++    subs r2, 1
++    bne 3b
++    bx lr
++
++.thumb_func
++expect_flash_message:
++    ldr r0, =XIP_TARGET
++    ldr r1, =flash_message
++    movs r2, 5
++
++4:
++    ldrb r3, [r0]
++    ldrb r4, [r1]
++    cmp r3, r4
++    bne fail_program
++    adds r0, 1
++    adds r1, 1
++    subs r2, 1
++    bne 4b
++    bx lr
++
++fail_wel:
++    ldr r0, =fail_wel_message
++    b test_failed
++
++fail_status:
++    ldr r0, =fail_status_message
++    b test_failed
++
++fail_program:
++    ldr r0, =fail_program_message
++    b test_failed
++
++fail_erase:
++    ldr r0, =fail_erase_message
++    b test_failed
++
++fail_no_wel:
++    ldr r0, =fail_no_wel_message
++    b test_failed
++
++fail_old_and_new:
++    ldr r0, =fail_old_and_new_message
 +
 +test_failed:
++    bl puts
++    movs r0, SYS_EXIT
++    ldr r1, =ADP_STOPPED_RUNTIME_ERROR
++    bkpt 0xab
++
++5:
++    b 5b
++
++.thumb_func
++puts:
++    ldr r2, =UART0_DR
++
++6:
++    ldrb r1, [r0]
++    cmp r1, 0
++    beq 7f
++    str r1, [r2]
++    adds r0, 1
++    b 6b
++
++7:
++    bx lr
++
++.align 2
++flash_message:
++    .ascii "FLASH"
++no_wel_value:
++    .byte 0xa5
++zero_value:
++    .byte 0x00
++erased_value:
++    .byte 0xff
++start_message:
++    .asciz "PICO TCG FLASH COMMANDS START\n"
++program_ok_message:
++    .asciz "PICO TCG FLASH PROGRAM OK\n"
++erase_ok_message:
++    .asciz "PICO TCG FLASH ERASE OK\n"
++no_wel_ok_message:
++    .asciz "PICO TCG FLASH NO WEL OK\n"
++old_and_new_ok_message:
++    .asciz "PICO TCG FLASH OLD AND NEW OK\n"
++ok_message:
++    .asciz "PICO TCG FLASH COMMANDS OK\n"
++fail_wel_message:
++    .asciz "PICO TCG FLASH COMMANDS FAIL: WEL\n"
++fail_status_message:
++    .asciz "PICO TCG FLASH COMMANDS FAIL: STATUS\n"
++fail_program_message:
++    .asciz "PICO TCG FLASH COMMANDS FAIL: PROGRAM\n"
++fail_erase_message:
++    .asciz "PICO TCG FLASH COMMANDS FAIL: ERASE\n"
++fail_no_wel_message:
++    .asciz "PICO TCG FLASH COMMANDS FAIL: NO WEL\n"
++fail_old_and_new_message:
++    .asciz "PICO TCG FLASH COMMANDS FAIL: OLD AND NEW\n"
++.align 2
++.ltorg
++ram_code_end:
+diff --git a/tests/tcg/arm/system/rp2040-flash-commands.ref b/tests/tcg/arm/system/rp2040-flash-commands.ref
+new file mode 100644
+index 0000000000..ac90dcb404
+--- /dev/null
++++ b/tests/tcg/arm/system/rp2040-flash-commands.ref
+@@ -0,0 +1,6 @@
++PICO TCG FLASH COMMANDS START
++PICO TCG FLASH PROGRAM OK
++PICO TCG FLASH ERASE OK
++PICO TCG FLASH NO WEL OK
++PICO TCG FLASH OLD AND NEW OK
++PICO TCG FLASH COMMANDS OK
+diff --git a/tests/tcg/arm/system/rp2040-flash-ioqspi.S b/tests/tcg/arm/system/rp2040-flash-ioqspi.S
+new file mode 100644
+index 0000000000..081c643529
+--- /dev/null
++++ b/tests/tcg/arm/system/rp2040-flash-ioqspi.S
+@@ -0,0 +1,212 @@
++/*
++ * Raspberry Pi Pico IO_QSPI chip-select flash command test.
++ *
++ * Copyright 2026 Gilles Grimaud
++ * SPDX-License-Identifier: GPL-2.0-or-later
++ */
++
++.syntax unified
++.cpu cortex-m0plus
++.thumb
++
++#define SRAM_BASE               0x20000000
++#define SRAM_END                0x20042000
++#define UART0_DR                0x40034000
++#define SSI_CTRLR0              0x18000000
++#define SSI_SSIENR              0x18000008
++#define SSI_RXFLR               0x18000024
++#define SSI_DR0                 0x18000060
++#define IO_QSPI_SS_CTRL         0x4001800c
++#define XIP_TARGET              0x10001200
++#define FLASH_TARGET_OFFSET     0x00001200
++#define SYS_EXIT                0x18
++#define ADP_STOPPED_APPLICATION_EXIT 0x20026
++#define ADP_STOPPED_RUNTIME_ERROR    0x20023
++
++.section .vectors, "a", %progbits
++vector_table:
++    .word SRAM_END
++    .word reset_handler + 1
++    .word default_handler + 1
++    .word default_handler + 1
++
++.section .text, "ax", %progbits
++.thumb_func
++.global reset_handler
++reset_handler:
++    ldr r0, =SRAM_BASE
++    ldr r1, =ram_code_start
++    ldr r2, =ram_code_end
++
++copy_loop:
++    cmp r1, r2
++    bhs copy_done
++    ldr r3, [r1]
++    str r3, [r0]
++    adds r0, 4
++    adds r1, 4
++    b copy_loop
++
++copy_done:
++    ldr r0, =SRAM_BASE + 1
++    bx r0
++
++.thumb_func
++default_handler:
++    b default_handler
++
++.align 2
++ram_code_start:
++.thumb_func
++ram_main:
++    ldr r0, =start_message
++    bl puts
++    ldr r1, =SSI_SSIENR
++    movs r0, 0
++    str r0, [r1]
++    ldr r1, =SSI_CTRLR0
++    ldr r0, =0x00070000
++    str r0, [r1]
++    ldr r1, =SSI_SSIENR
++    movs r0, 1
++    str r0, [r1]
++
++    bl write_enable
++    bl cs_low
++    movs r0, 0x20
++    bl ssi_byte
++    movs r0, 0x00
++    bl ssi_byte
++    movs r0, 0x12
++    bl ssi_byte
++    movs r0, 0x00
++    bl ssi_byte
++    bl cs_high
++    bl read_status
++
++    bl write_enable
++    bl cs_low
++    movs r0, 0x02
++    bl ssi_byte
++    movs r0, 0x00
++    bl ssi_byte
++    movs r0, 0x12
++    bl ssi_byte
++    movs r0, 0x00
++    bl ssi_byte
++    movs r0, 'Q'
++    bl ssi_byte
++    movs r0, 'S'
++    bl ssi_byte
++    movs r0, 'P'
++    bl ssi_byte
++    movs r0, 'I'
++    bl ssi_byte
++    bl cs_high
++    bl read_status
++
++    ldr r1, =XIP_TARGET
++    ldrb r0, [r1]
++    cmp r0, 'Q'
++    bne test_failed
++    ldrb r0, [r1, 1]
++    cmp r0, 'S'
++    bne test_failed
++    ldrb r0, [r1, 2]
++    cmp r0, 'P'
++    bne test_failed
++    ldrb r0, [r1, 3]
++    cmp r0, 'I'
++    bne test_failed
++
++    ldr r0, =ok_message
++    bl puts
++    movs r0, SYS_EXIT
++    ldr r1, =ADP_STOPPED_APPLICATION_EXIT
++    bkpt 0xab
++
++1:
++    b 1b
++
++.thumb_func
++write_enable:
++    push {lr}
++    bl cs_low
++    movs r0, 0x06
++    bl ssi_byte
++    bl cs_high
++    pop {pc}
++
++.thumb_func
++read_status:
++    push {lr}
++    bl cs_low
++    movs r0, 0x05
++    bl ssi_byte
++    bl cs_high
++    pop {pc}
++
++.thumb_func
++ssi_byte:
++    ldr r2, =SSI_DR0
++    str r0, [r2]
++    ldr r3, =SSI_RXFLR
++
++2:
++    ldr r0, [r3]
++    cmp r0, 0
++    beq 2b
++    ldr r0, [r2]
++    bx lr
++
++.thumb_func
++cs_low:
++    ldr r1, =IO_QSPI_SS_CTRL
++    movs r0, 2
++    lsls r0, r0, 8
++    str r0, [r1]
++    bx lr
++
++.thumb_func
++cs_high:
++    ldr r1, =IO_QSPI_SS_CTRL
++    movs r0, 3
++    lsls r0, r0, 8
++    str r0, [r1]
++    bx lr
++
++test_failed:
++    ldr r0, =fail_message
++    bl puts
++    movs r0, SYS_EXIT
++    ldr r1, =ADP_STOPPED_RUNTIME_ERROR
++    bkpt 0xab
++
++3:
++    b 3b
++
++.thumb_func
++puts:
++    ldr r2, =UART0_DR
++
++4:
++    ldrb r1, [r0]
++    cmp r1, 0
++    beq 5f
++    str r1, [r2]
++    adds r0, 1
++    b 4b
++
++5:
++    bx lr
++
++.align 2
++start_message:
++    .asciz "PICO TCG IO_QSPI FLASH START\n"
++ok_message:
++    .asciz "PICO TCG IO_QSPI FLASH OK\n"
++fail_message:
++    .asciz "PICO TCG IO_QSPI FLASH FAIL\n"
++.align 2
++.ltorg
++ram_code_end:
+diff --git a/tests/tcg/arm/system/rp2040-flash-ioqspi.ref b/tests/tcg/arm/system/rp2040-flash-ioqspi.ref
+new file mode 100644
+index 0000000000..8261199083
+--- /dev/null
++++ b/tests/tcg/arm/system/rp2040-flash-ioqspi.ref
+@@ -0,0 +1,2 @@
++PICO TCG IO_QSPI FLASH START
++PICO TCG IO_QSPI FLASH OK
+diff --git a/tests/tcg/arm/system/rp2040-flash-persist-reader.S b/tests/tcg/arm/system/rp2040-flash-persist-reader.S
+new file mode 100644
+index 0000000000..1232664370
+--- /dev/null
++++ b/tests/tcg/arm/system/rp2040-flash-persist-reader.S
+@@ -0,0 +1,87 @@
++/*
++ * Raspberry Pi Pico persistent flash reader test.
++ *
++ * Copyright 2026 Gilles Grimaud
++ * SPDX-License-Identifier: GPL-2.0-or-later
++ */
++
++.syntax unified
++.cpu cortex-m0plus
++.thumb
++
++#define SRAM_END                0x20042000
++#define UART0_DR                0x40034000
++#define XIP_TARGET              0x10001000
++#define SYS_EXIT                0x18
++#define ADP_STOPPED_APPLICATION_EXIT 0x20026
++#define ADP_STOPPED_RUNTIME_ERROR    0x20023
++
++.section .vectors, "a", %progbits
++vector_table:
++    .word SRAM_END
++    .word reset_handler + 1
++    .word default_handler + 1
++    .word default_handler + 1
++
++.section .text, "ax", %progbits
++.thumb_func
++.global reset_handler
++reset_handler:
++    ldr r0, =XIP_TARGET
++    ldr r1, =expected_message
++    movs r2, 5
++
++check_loop:
++    ldrb r3, [r0]
++    ldrb r4, [r1]
++    cmp r3, r4
++    bne test_failed
++    adds r0, 1
++    adds r1, 1
++    subs r2, 1
++    bne check_loop
++
++    ldr r0, =ok_message
++    bl puts
++    movs r0, SYS_EXIT
++    ldr r1, =ADP_STOPPED_APPLICATION_EXIT
++    bkpt 0xab
++
++1:
++    b 1b
++
++test_failed:
++    ldr r0, =fail_message
 +    bl puts
 +    movs r0, SYS_EXIT
 +    ldr r1, =ADP_STOPPED_RUNTIME_ERROR
@@ -497,8 +2067,7 @@ index 0000000000..68873d6a8d
 +
 +.thumb_func
 +default_handler:
-+    ldr r0, =fail_vector_message
-+    b test_failed
++    b default_handler
 +
 +.thumb_func
 +puts:
@@ -515,86 +2084,19 @@ index 0000000000..68873d6a8d
 +4:
 +    bx lr
 +
-+.section .rodata, "a", %progbits
-+start_message:
-+    .asciz "PICO TCG BKPT START\n"
++expected_message:
++    .ascii "FLASH"
 +ok_message:
-+    .asciz "PICO TCG BKPT HARDFAULT OK\n"
-+fail_return_message:
-+    .asciz "PICO TCG BKPT FAIL: RETURNED\n"
-+fail_exception_message:
-+    .asciz "PICO TCG BKPT FAIL: IPSR\n"
-+fail_vector_message:
-+    .asciz "PICO TCG BKPT FAIL: VECTOR\n"
-diff --git a/tests/tcg/arm/system/rp2040-bkpt-hardfault.ref b/tests/tcg/arm/system/rp2040-bkpt-hardfault.ref
++    .asciz "PICO TCG FLASH PERSIST OK\n"
++fail_message:
++    .asciz "PICO TCG FLASH PERSIST FAIL\n"
+diff --git a/tests/tcg/arm/system/rp2040-flash-persist-reader.ref b/tests/tcg/arm/system/rp2040-flash-persist-reader.ref
 new file mode 100644
-index 0000000000..0f023cf1e7
+index 0000000000..0ac066b0cf
 --- /dev/null
-+++ b/tests/tcg/arm/system/rp2040-bkpt-hardfault.ref
-@@ -0,0 +1,2 @@
-+PICO TCG BKPT START
-+PICO TCG BKPT HARDFAULT OK
-diff --git a/tests/tcg/arm/system/rp2040-exit.S b/tests/tcg/arm/system/rp2040-exit.S
-new file mode 100644
-index 0000000000..ad6d428bd7
---- /dev/null
-+++ b/tests/tcg/arm/system/rp2040-exit.S
-@@ -0,0 +1,55 @@
-+/*
-+ * Raspberry Pi Pico host-exit behavior tests
-+ *
-+ * SPDX-License-Identifier: GPL-2.0-or-later
-+ */
-+
-+.syntax unified
-+.cpu cortex-m0plus
-+.thumb
-+
-+#ifndef EXIT_MODE
-+#error EXIT_MODE must select semihosting or Pico SDK exit
-+#endif
-+
-+#define EXIT_MODE_SEMIHOST      0
-+#define EXIT_MODE_PICO_SDK      1
-+#define SRAM_END                0x20042000
-+#define SYS_EXIT_EXTENDED       0x20
-+#define ADP_STOPPED_APPLICATION_EXIT 0x20026
-+#define TEST_EXIT_STATUS        23
-+
-+.section .vectors, "a", %progbits
-+vector_table:
-+    .word SRAM_END
-+    .word reset_handler + 1
-+    .word hardfault_handler + 1
-+    .word hardfault_handler + 1
-+
-+.section .text, "ax", %progbits
-+.thumb_func
-+.global reset_handler
-+reset_handler:
-+#if EXIT_MODE == EXIT_MODE_SEMIHOST
-+    movs r0, SYS_EXIT_EXTENDED
-+    ldr r1, =semihost_exit_block
-+    bkpt 0xab
-+#elif EXIT_MODE == EXIT_MODE_PICO_SDK
-+    movs r0, TEST_EXIT_STATUS
-+    bkpt 0
-+#else
-+#error Unsupported EXIT_MODE
-+#endif
-+
-+1:
-+    b 1b
-+
-+.thumb_func
-+hardfault_handler:
-+    b hardfault_handler
-+
-+.section .rodata, "a", %progbits
-+.align 2
-+semihost_exit_block:
-+    .word ADP_STOPPED_APPLICATION_EXIT
-+    .word TEST_EXIT_STATUS
++++ b/tests/tcg/arm/system/rp2040-flash-persist-reader.ref
+@@ -0,0 +1 @@
++PICO TCG FLASH PERSIST OK
 -- 
 2.55.0
 

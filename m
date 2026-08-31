@@ -4,55 +4,56 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 02E82C61DE2
-	for <qemu-arm@archiver.kernel.org>; Mon, 31 Aug 2026 11:14:23 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DDC25C61DE2
+	for <qemu-arm@archiver.kernel.org>; Mon, 31 Aug 2026 11:46:19 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1x0zy0-0003Jk-T2; Mon, 31 Aug 2026 07:14:20 -0400
+	id 1x10Sr-0001CW-TG; Mon, 31 Aug 2026 07:46:13 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1x0zxz-0003E6-Jg
- for qemu-arm@nongnu.org; Mon, 31 Aug 2026 07:14:19 -0400
-Received: from smtpout9.mo540.mail-out.ovh.net ([51.210.91.58])
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1x10Sc-0001BJ-G3
+ for qemu-arm@nongnu.org; Mon, 31 Aug 2026 07:46:04 -0400
+Received: from smtpout2.mo538.mail-out.ovh.net ([51.210.91.31])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1x0zxs-0003ec-AO
- for qemu-arm@nongnu.org; Mon, 31 Aug 2026 07:14:18 -0400
-Received: from director1.derp.mail-out.ovh.net
- (director1.derp.mail-out.ovh.net [79.137.60.221])
- by mo540.mail-out.ovh.net (Postfix) with ESMTPS id 4hYRFr4Qd1z44lM;
- Mon, 31 Aug 2026 11:14:08 +0000 (UTC)
-Received: from director1.derp.mail-out.ovh.net
- (director1.derp.mail-out.ovh.net. [127.0.0.1])
- by director1.derp.mail-out.ovh.net (inspect_sender_mail_agent) with SMTP
- for <jamin_lin@aspeedtech.com>; Mon, 31 Aug 2026 11:14:07 +0000 (UTC)
-Received: from mta11.priv.ovhmail-u2.ea.mail.ovh.net (unknown [10.110.58.168])
- by director1.derp.mail-out.ovh.net (Postfix) with ESMTPS id
- 4hYRFq6snnz6GrT; Mon, 31 Aug 2026 11:14:07 +0000 (UTC)
-Received: from kaod.org (unknown [10.1.6.3])
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1x10SX-000883-WE
+ for qemu-arm@nongnu.org; Mon, 31 Aug 2026 07:45:57 -0400
+Received: from director4.derp.mail-out.ovh.net
+ (director4.derp.mail-out.ovh.net [79.137.60.37])
+ by mo538.mail-out.ovh.net (Postfix) with ESMTPS id 4hYRyQ0mKFz62Wh;
+ Mon, 31 Aug 2026 11:45:50 +0000 (UTC)
+Received: from director4.derp.mail-out.ovh.net
+ (director4.derp.mail-out.ovh.net. [127.0.0.1])
+ by director4.derp.mail-out.ovh.net (inspect_sender_mail_agent) with SMTP
+ for <jamin_lin@aspeedtech.com>; Mon, 31 Aug 2026 11:45:49 +0000 (UTC)
+Received: from mta10.priv.ovhmail-u2.ea.mail.ovh.net (unknown [10.110.101.67])
+ by director4.derp.mail-out.ovh.net (Postfix) with ESMTPS id
+ 4hYRyP6m9Wz1xsy; Mon, 31 Aug 2026 11:45:49 +0000 (UTC)
+Received: from kaod.org (unknown [10.1.6.1])
  (Authenticated sender: clg@kaod.org)
- by mta11.priv.ovhmail-u2.ea.mail.ovh.net (Postfix) with ESMTPSA id
- A4DFA2403FCF; Mon, 31 Aug 2026 11:14:06 +0000 (UTC)
+ by mta10.priv.ovhmail-u2.ea.mail.ovh.net (Postfix) with ESMTPSA id
+ 176AB1923F98; Mon, 31 Aug 2026 11:45:48 +0000 (UTC)
 Authentication-Results: garm.ovh; auth=pass
- (GARM-106R0067c340bd9-e64f-47f1-8006-12aba91b76da,
+ (GARM-102R00434a8d306-0cef-45e6-8cbc-c502fbc21640,
  20713A92955D5A277E4AF24F7FE8A47CC1774BFC) smtp.auth=clg@kaod.org
 X-OVh-ClientIp: 82.64.250.170
-Message-ID: <463ed44f-4f40-4e49-9dae-e4f1f2ef721b@kaod.org>
-Date: Mon, 31 Aug 2026 13:14:06 +0200
+Message-ID: <deb3454c-a74a-4fa6-9c60-cf5103ebc52a@kaod.org>
+Date: Mon, 31 Aug 2026 13:45:47 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v1 2/2] hw/misc/aspeed_sbc: Derive secure boot state from
- OTP config straps
-To: Kane Chen <kane_chen@aspeedtech.com>,
+Subject: Re: [PATCH v1] tests/qtest/aspeed-hace-utils: Replace g_printerr()
+ with g_test_skip()
+To: Jamin Lin <jamin_lin@aspeedtech.com>,
  Peter Maydell <peter.maydell@linaro.org>,
  Steven Lee <steven_lee@aspeedtech.com>, Troy Lee <leetroy@gmail.com>,
- Jamin Lin <jamin_lin@aspeedtech.com>,
+ Kane Chen <kane_chen@aspeedtech.com>,
  Andrew Jeffery <andrew@codeconstruct.com.au>, Joel Stanley <joel@jms.id.au>,
+ Fabiano Rosas <farosas@suse.de>, Laurent Vivier <lvivier@redhat.com>,
+ Paolo Bonzini <pbonzini@redhat.com>,
  "open list:ASPEED BMCs" <qemu-arm@nongnu.org>,
  "open list:All patches CC here" <qemu-devel@nongnu.org>
 Cc: Troy Lee <troy_lee@aspeedtech.com>
-References: <20260831053658.462203-1-kane_chen@aspeedtech.com>
- <20260831053658.462203-3-kane_chen@aspeedtech.com>
+References: <20260831050213.381443-1-jamin_lin@aspeedtech.com>
 From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
 Content-Language: en-US, fr
 Autocrypt: addr=clg@kaod.org; keydata=
@@ -97,30 +98,29 @@ Autocrypt: addr=clg@kaod.org; keydata=
  3GlqivBNkmYsHYSlFsbxc37E1HpTEaSWsGfAHQoPn9qrDJgsgcbBVc1gkUT6hnxShKPp4Pls
  ZVMNjvPAnr5TEBgHkk54HQRhhwcYv1T2QumQizDiU6iOrUzBThaMhZO3i927SG2DwWDVzZlt
  KrCMD1aMPvb3NU8FOYRhNmIFR3fcalYr+9gDuVKe8BVz4atMOoktmt0GWTOC8P4=
-In-Reply-To: <20260831053658.462203-3-kane_chen@aspeedtech.com>
+In-Reply-To: <20260831050213.381443-1-jamin_lin@aspeedtech.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
-x-ovh-tracer-id: 7061362744860322827
+x-ovh-tracer-id: 7596728149991664685
 X-VR-SPAMSTATE: OK
 X-VR-SPAMSCORE: -100
-X-VR-SPAMCAUSE: dmFkZTE/sE9c0CZySgCJR978j52jRRUAwg3V2UjdhKxDeYDQ4LRB42n5sjCFRWBsNYphkHDIpy4J+BwzaPHOwidZf9jg2DuaEih2W+fQO9tJTOJqS2pfjTtrJN66rBjTuEkzz2nvOJIEagdmdIbF4g0YczZwhfCJiJ3scpJg3Mg2PBYZFka3w9cGv4/fVU7k7/ddmYHa/N/bOH0ibUU57SoSjAOH4CdYPuC8NRqqlG7SKkdgVjJhIFoa7/OajNTaTn2EwpavQvdiJb4n0wRFcXjSk8mk/dYQTEvZCNfVjlc49OvopS0m+j89pmjD4JTv9nP3c+7omDJp+N7EkfTDh/6RrNkFtxfShvhFjSctOwxN63/gAAm5qffMkq2PW8B8oaNpfZW2dxz7kINK5bkcU78XfzO8UjWwjwwwvLCucP+YutRfG+EMhXAvOVFn4Z8vndl398ZHElc5yv/TGzIGSPl72tTIlVsc562TWMngnXoFXORAKFCxPPPKEaNhEOgpAu3uoUsKuDaya7QFPpUq9hsPBeyD+DVeTc0x60832sYsN3oJBlZVo3LmH+nns1oTL/iotKIWMC6FqbjGs8lJOxoXHpR0fTvwPYYrygpcjctUvCDAdBkXmktJXk+nsx+L5wwoGJnMdNv0FCHTEdfQHM6MywLcaCVq5gM+BCHWAulCtc0HIA
-DKIM-Signature: a=rsa-sha256; bh=TSlSS0BctMlt8Ba7lIj34UNuKuXkbWo0cVsDfqWiwtI=; 
+X-VR-SPAMCAUSE: dmFkZTFSylR9U6RzDL+/Pmk8UZvNT0Pk1+M0P8txBfcMzrQmBrTQygKhNqS184VgwOqXI8ghPxLoOkQKKnEkDCn6zUc9xt1caCqp2C3EDtwb77UwQoqy9QynnEKh36w+PqAAGCsk+E0e1SohiSTUxhHPZjdEIWYcBVddKQEzInt4RxeUNb2nzzJFC5cgBln6bqZT6mYGuMkLaJqnb7sUikMuuiHW0+F1VMuEpsBivRpDu8XJXC9CDG2L39MF1oKhPuNKHvGTUNg2VOvKjnhAo2sKru25VQAk7eVg4jNfVnqwDK6Bl3nUuU9m1fdV5PXuzhSdaePHqg6O8Bhjzo2WYUNRMKE8eBOvznpwEFJJSf2tLl2OM1Wasg03FlQewlhoNpPpzNErHabVChYAhkMZbm3+neNxETFmvPNPJbZjzNkV1XT1U/DbajW1AVsS2reF/+dqJjP4G45QMkL38ZSDG/f3doSxHFv3z1IX9l5Bzdmjdup0B+SmyxSlBBMkZ5NF0+/6Z3axqvSbf4U8hOTuc5Fsr5erFjrLTYRoM40MLXD3bYQMe+zW7juEQCBnzwenuorBIk2oh+PLTy0Db2bD2rxMo/o2cEyqI5tLzfec40hnDNSvTbhYbmsTOO6sDkg36juiTZm4Y6k6MccilYjKSaE8qX58NqT23Dp0/t2mD/e9j7dPcw
+DKIM-Signature: a=rsa-sha256; bh=lHrvGmkHcGr3+k3wbc1rkwEpvVNOzyEXUoGY0R6D5BY=; 
  c=relaxed/relaxed; d=kaod.org; h=From; s=ovhmo393970-selector1;
- t=1788174849; v=1;
- b=oKRPbDk93bi3iJE0OVsmOtzvSSaWM2taS2JpDNPtjeA7FtvCcI8gv55Tu/p4a0qzoAonb1bD
- Y+TYSkc0hBL8DGFzeb6IZLwXDWx618oXB7PqE/DLPoBHFyS33n0rhK2dC93wNycTL//BYCLsdFo
- N0FfivvGvB6WzoUixfr/ZyiUV9VW9DmI7nbfDNDoq0+zEj0f5Mksw7IqldZ+YMTiEREIcE+FN8Y
- cQfteOxfSz+BJY00l3GN/E091Xb3ddygmwaF1Ot/9TU9WDPI+KabY7AF9qcKWWDwHDEcHYkksWy
- GPCWc6iCHIhk4dxuIQurlvzMjG/XnFDTxm7Nt348V+iCA==
-Received-SPF: pass client-ip=51.210.91.58; envelope-from=clg@kaod.org;
- helo=smtpout9.mo540.mail-out.ovh.net
+ t=1788176751; v=1;
+ b=ZDUBm9jF+Lmwcg98Ph4atYww39JjMRjXihD87e8ddflcEN2nLNBnbXCwF0mnM/xPGUNbpO2k
+ l7hLcXuUPLRLYlGMJ5RwoRCBQDzADJeGhyUr08WoJiUYIbNHMJsSLFltkiHA97Nql8e4m26Ltkh
+ bIpt+qB3sYszM6TPyi9tgrLrUER1JHg/d1ghGYo/zCqmIXQ0R+ynMay5qj2pKzALOaUp1eX5Ukf
+ sFGuOkaXXjaqs7Gi8+BvUuV/lwRPyekNV5nu6WQeag3m/5BAu+FY0g1WlbIa2iuQobPuio+M1kg
+ HodstJOjXvi8+UwBaavgPFMuDKugumTVJ0qqByCzxVj6Q==
+Received-SPF: pass client-ip=51.210.91.31; envelope-from=clg@kaod.org;
+ helo=smtpout2.mo538.mail-out.ovh.net
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -136,126 +136,79 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On 8/31/26 07:37, Kane Chen wrote:
-> The secure boot enable bit in R_STATUS and the R_QSR signing settings
-> were both driven by a fixed "signing-settings" machine property, but
-> the two ended up inconsistent: the logic guarding the R_STATUS enable
-> bit was broken and never actually set it, while R_QSR still reported
-> the configured signing settings, so a machine could show secure boot
-> configured in R_QSR while R_STATUS said it was disabled.
+On 8/31/26 07:02, Jamin Lin wrote:
+> Skip a cipher unsupported by the crypto backend with g_test_skip() from
+> the test, instead of not registering it and printing a TAP "# skip" line,
+> so the qtest does not assume TAP output.
 > 
-> Instead of relying on the property, read the relevant OTP
-> configuration bits directly and derive both the R_STATUS secure boot
-> enable state and the QSR value from them, matching how the real
-> hardware determines these settings. The now-unused "signing-settings"
-> property is removed.
-> 
-> Signed-off-by: Kane-Chen-AS <kane_chen@aspeedtech.com>
+> Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
 > ---
->   include/hw/misc/aspeed_sbc.h |  2 --
->   hw/misc/aspeed_sbc.c         | 34 ++++++++++++++++++++++++----------
->   2 files changed, 24 insertions(+), 12 deletions(-)
+>   tests/qtest/aspeed-hace-utils.c | 24 ++++++++++++++++--------
+>   1 file changed, 16 insertions(+), 8 deletions(-)
 > 
-> diff --git a/include/hw/misc/aspeed_sbc.h b/include/hw/misc/aspeed_sbc.h
-> index 7152497b2a..474922cbd2 100644
-> --- a/include/hw/misc/aspeed_sbc.h
-> +++ b/include/hw/misc/aspeed_sbc.h
-> @@ -32,8 +32,6 @@ OBJECT_DECLARE_TYPE(AspeedSBCState, AspeedSBCClass, ASPEED_SBC)
->   struct AspeedSBCState {
->       SysBusDevice parent;
+> diff --git a/tests/qtest/aspeed-hace-utils.c b/tests/qtest/aspeed-hace-utils.c
+> index 260eec043c..d20562fac9 100644
+> --- a/tests/qtest/aspeed-hace-utils.c
+> +++ b/tests/qtest/aspeed-hace-utils.c
+> @@ -1248,11 +1248,18 @@ static void aspeed_test_crypto(const void *data)
+>   {
+>       const AspeedCryptoTest *c = data;
+>       const CryptTest *t = &crypt_tests[c->index];
+> -    QTestState *s = qtest_init(c->machine);
+> +    QTestState *s;
+>       uint8_t out[64];
+>       uint8_t iv[16];
+>       size_t iv_off;
 >   
-> -    uint32_t signing_settings;
+> +    if (!qcrypto_cipher_supports(t->alg, t->mode)) {
+> +        g_test_skip("cipher not supported by the crypto backend");
+> +        return;
+> +    }
+> +
+> +    s = qtest_init(c->machine);
+> +
+>       g_assert_cmpuint(t->len, <=, sizeof(out));
+>   
+>       /* Encrypt: ptext -> ctext */
+> @@ -1284,10 +1291,17 @@ static void aspeed_test_crypto_gcm(const void *data)
+>   {
+>       const AspeedCryptoTest *c = data;
+>       const CryptTest *t = &crypt_tests[c->index];
+> -    QTestState *s = qtest_init(c->machine);
+> +    QTestState *s;
+>       uint8_t out[64];
+>       uint8_t tag[16];
+>   
+> +    if (!qcrypto_cipher_supports(t->alg, t->mode)) {
+> +        g_test_skip("cipher not supported by the crypto backend");
+> +        return;
+> +    }
+> +
+> +    s = qtest_init(c->machine);
+> +
+>       g_assert_cmpuint(t->len, <=, sizeof(out));
+>   
+>       /* Encrypt: ptext -> ctext, then check the authentication tag. */
+> @@ -1318,12 +1332,6 @@ void aspeed_add_crypto_tests(const char *prefix, const char *machine,
+>               continue;
+>           }
+>   
+> -        if (!qcrypto_cipher_supports(crypt_tests[i].alg,
+> -                                     crypt_tests[i].mode)) {
+> -            g_printerr("# skip unsupported %s\n", crypt_tests[i].name);
+> -            continue;
+> -        }
 > -
->       MemoryRegion iomem;
->   
->       uint32_t regs[ASPEED_SBC_NR_REGS];
-> diff --git a/hw/misc/aspeed_sbc.c b/hw/misc/aspeed_sbc.c
-> index 5d4da39d30..ce03f717a9 100644
-> --- a/hw/misc/aspeed_sbc.c
-> +++ b/hw/misc/aspeed_sbc.c
-> @@ -63,6 +63,19 @@
->   /* OTP Address */
->   #define OTP_CFG0                (0x800)
->   
-> +static bool aspeed_sbc_otp_read(AspeedSBCState *s, uint32_t otp_addr);
-> +
-> +static uint32_t aspeed_otp_read_cfg0(AspeedSBCState *s)
-> +{
-> +    uint32_t value = 0;
-> +
-> +    if (aspeed_sbc_otp_read(s, OTP_CFG0)) {
+>           path = g_strdup_printf("%s/hace/crypto/%s", prefix,
+>                                  crypt_tests[i].name);
+>           t = g_new0(AspeedCryptoTest, 1);
 
-This call is clobbering s->regs[R_CAMP1]. Let's see how we can improve
-patch 1 first.
+Applied to
+
+     https://github.com/legoater/qemu aspeed-next
 
 Thanks,
 
 C.
-
-
-> +        value = s->regs[R_CAMP1];
-> +    }
->> +    return value;> +}
-> +
->   static uint64_t aspeed_sbc_read(void *opaque, hwaddr addr, unsigned int size)
->   {
->       AspeedSBCState *s = ASPEED_SBC(opaque);
-> @@ -76,7 +89,12 @@ static uint64_t aspeed_sbc_read(void *opaque, hwaddr addr, unsigned int size)
->           return 0;
->       }
->   
-> -    return s->regs[addr];
-> +    switch (addr) {
-> +    case R_QSR:
-> +        return aspeed_otp_read_cfg0(s);
-> +    default:
-> +        return s->regs[addr];
-> +    }
->   }
->   
->   static bool aspeed_sbc_otp_read(AspeedSBCState *s,
-> @@ -291,6 +309,7 @@ static bool aspeed_get_abr_state(AspeedSBCState *s)
->   static void aspeed_sbc_reset_hold(Object *obj, ResetType type)
->   {
->       AspeedSBCState *s = ASPEED_SBC(obj);
-> +    uint32_t value;
->       bool abr;
->   
->       memset(s->regs, 0, sizeof(s->regs));
-> @@ -304,11 +323,11 @@ static void aspeed_sbc_reset_hold(Object *obj, ResetType type)
->           s->regs[R_STATUS] |= ABR_EN;
->       }
->   
-> -    if (s->signing_settings) {
-> -        s->regs[R_STATUS] &= SECURE_BOOT_EN;
-> -    }
-> +    value = aspeed_otp_read_cfg0(s);
->   
-> -    s->regs[R_QSR] = s->signing_settings;
-> +    if (value & BIT(1)) {
-> +        s->regs[R_STATUS] |= SECURE_BOOT_EN;
-> +    }
->   }
->   
->   static void aspeed_sbc_instance_init(Object *obj)
-> @@ -352,10 +371,6 @@ static const VMStateDescription vmstate_aspeed_sbc = {
->       }
->   };
->   
-> -static const Property aspeed_sbc_properties[] = {
-> -    DEFINE_PROP_UINT32("signing-settings", AspeedSBCState, signing_settings, 0),
-> -};
-> -
->   static void aspeed_sbc_class_init(ObjectClass *klass, const void *data)
->   {
->       DeviceClass *dc = DEVICE_CLASS(klass);
-> @@ -364,7 +379,6 @@ static void aspeed_sbc_class_init(ObjectClass *klass, const void *data)
->       dc->realize = aspeed_sbc_realize;
->       rc->phases.hold = aspeed_sbc_reset_hold;
->       dc->vmsd = &vmstate_aspeed_sbc;
-> -    device_class_set_props(dc, aspeed_sbc_properties);
->   }
->   
->   
 
 

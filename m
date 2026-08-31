@@ -4,140 +4,132 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EC075C61DD3
-	for <qemu-arm@archiver.kernel.org>; Mon, 31 Aug 2026 10:04:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4E289C61DD3
+	for <qemu-arm@archiver.kernel.org>; Mon, 31 Aug 2026 10:07:32 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1x0ysZ-0006dt-P1; Mon, 31 Aug 2026 06:04:39 -0400
+	id 1x0yvA-0007Ih-RT; Mon, 31 Aug 2026 06:07:21 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <philmd@oss.qualcomm.com>)
- id 1x0ysY-0006bx-Ei
- for qemu-arm@nongnu.org; Mon, 31 Aug 2026 06:04:38 -0400
+ id 1x0yv9-0007IF-2N
+ for qemu-arm@nongnu.org; Mon, 31 Aug 2026 06:07:19 -0400
 Received: from mx0a-0031df01.pphosted.com ([205.220.168.131])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <philmd@oss.qualcomm.com>)
- id 1x0ysW-0001tq-4h
- for qemu-arm@nongnu.org; Mon, 31 Aug 2026 06:04:38 -0400
-Received: from pps.filterd (m0279862.ppops.net [127.0.0.1])
+ id 1x0yv7-0002My-7F
+ for qemu-arm@nongnu.org; Mon, 31 Aug 2026 06:07:18 -0400
+Received: from pps.filterd (m0279864.ppops.net [127.0.0.1])
  by mx0a-0031df01.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id
- 67V7xKSr2460302
- for <qemu-arm@nongnu.org>; Mon, 31 Aug 2026 10:04:34 GMT
+ 67V9Iavr2026429
+ for <qemu-arm@nongnu.org>; Mon, 31 Aug 2026 10:07:15 GMT
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qualcomm.com; h=
  cc:content-transfer-encoding:content-type:date:from:in-reply-to
  :message-id:mime-version:references:subject:to; s=qcppdkim1; bh=
- fUBo6xidHc+IM+BTVd0Bbr4FdBSolOTLMl94iGaA8Sg=; b=JOxnIc68qb2RuWD6
- Q94AVb0bgfakM001u25hH212Y7UHOMczrjqPBJ3lsVlHj0ClYFFkVfKSoLSHoPF6
- +e2o7gA4TM9P/F+uWMbL36B4cQf5eZvsx0hjeKj58Y6SdVJI05WuY4oKXhhiVVix
- AuVtXSC2aSp0n6duO+DXd1EKT1VSVxyJASSSgJv5Y9hDTx9ybmvC6ACYSOZP75SS
- 5gbD7TXpWAtYqVU4p0cTlRgGnUR5kD1bT7hrQVKABB9xELXkcH3RF5HNUde7HNUl
- 5/PGYypJ5QvnL9MtFu5jzFyX7btgtvbO4NrwO6fKvvOHi8z6X7BO/sgIFW8OxYZV
- npzoaw==
-Received: from mail-qk1-f198.google.com (mail-qk1-f198.google.com
- [209.85.222.198])
- by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 4gd556rnwb-1
+ 00w1IMURz4rm7i99No7qXBIIG82fkRgdQU3Qu8obpqc=; b=QbbjyHJifXA+UEUt
+ MKLN8OxeJKLS0J1Zo9+11GHqd3DVXCxoHbCy/pWyIHalofrAdEv3iJ4sCxvFfMg1
+ rZhaGLAUBZUlOAYnA1hWG+qng2vWKQAyVcC2TOswC1iMsbUw6OWOWH8fbd+JM9Oz
+ zcutsCAcPWR2DLnU/P91r5itAO/mQnLjhvUtcAqShZ8PwrF4x3GXDGIkD55jE9vh
+ eMqZkF4/0yvzk1i8+e+CHmg4/rPGAS/nesq/UP7PnBMrM5cf3mpIHO2dDoul7LAP
+ mIgKD2q6H3+GM5sVRyu6GMMWwu3jDxtewdnGym8vrzu7G3N8uhUCokhcZd+OGihk
+ +SspgA==
+Received: from mail-qk1-f199.google.com (mail-qk1-f199.google.com
+ [209.85.222.199])
+ by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 4gd6vag66b-1
  (version=TLSv1.3 cipher=TLS_AES_128_GCM_SHA256 bits=128 verify=NOT)
- for <qemu-arm@nongnu.org>; Mon, 31 Aug 2026 10:04:34 +0000 (GMT)
-Received: by mail-qk1-f198.google.com with SMTP id
- af79cd13be357-92e820609d9so658432485a.2
- for <qemu-arm@nongnu.org>; Mon, 31 Aug 2026 03:04:34 -0700 (PDT)
+ for <qemu-arm@nongnu.org>; Mon, 31 Aug 2026 10:07:15 +0000 (GMT)
+Received: by mail-qk1-f199.google.com with SMTP id
+ af79cd13be357-93915f50a5cso614469285a.1
+ for <qemu-arm@nongnu.org>; Mon, 31 Aug 2026 03:07:15 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=oss.qualcomm.com; s=google; t=1788170674; x=1788775474; darn=nongnu.org;
+ d=oss.qualcomm.com; s=google; t=1788170834; x=1788775634; darn=nongnu.org;
  h=content-transfer-encoding:content-type:in-reply-to:from:references
  :cc:to:content-language:subject:user-agent:mime-version:date
  :message-id:from:to:cc:subject:date:message-id:reply-to:content-type;
- bh=fUBo6xidHc+IM+BTVd0Bbr4FdBSolOTLMl94iGaA8Sg=;
- b=bbtgyvZEQPphwDYzD8bxFoejaT+U9BfAWL6qM3dT96eWdHsA8h5BQM7/Un9yYd5Gr2
- UBUg9wlfOEZFKW+PF9grTFZzuRVKrT6i3cLLRykMoKmp5MFuEtlH/LMCDfjS7ZZyCcrI
- ixO9ft2w4U0tzco+a5hgQuPQbvyMTvHYr6mBO/IPSLkxf8KGXCAYKdWzs5amvG1WO9cn
- d66HPVM98oYVXATbd//g3iUUn2uPz0aUngwDli3UE8e/3kq6OvrYscEsfm20bmeXaEa2
- rpZA7pCOLvUy6ijkbQWc16KAA6tJ89lxnq5xmU6us8nXRI0hdcB/lwlShcu3QmwDjrR0
- 5o6A==
+ bh=00w1IMURz4rm7i99No7qXBIIG82fkRgdQU3Qu8obpqc=;
+ b=OWoC3GviFUWNCC7FnSQUs/eDADzYoJ9RKoR45BpWCQIAVfEnp3mSxXIiyl3dZVcLnX
+ Yu81Z8yj4Z3GYctdkflR2EXvLtUDvHGbPJbLTbFU4MWxu9gqfP0QUvtg/zbpusUafPjJ
+ h9osHzy+VyW9VeY/bRMwOujjFr/lT8vY8SI8GkadCjwgGsuEQHcYtf+xhtIR/Q8DERTy
+ a1Vet+8l1KPiOuLVXg5ajjRZUsNAumTClIneP7HJHWJh14RE9AosOz3Vkg0PWXHA8Sxf
+ QbwgrbpnDKVghwGzcI2SM7iBR9eOloVKHkbe9UMgPHt4SxUPqCBNAxmxNCDq5BjgKLE/
+ b2Iw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1788170674; x=1788775474;
+ d=1e100.net; s=20251104; t=1788170834; x=1788775634;
  h=content-transfer-encoding:content-type:in-reply-to:from:references
  :cc:to:content-language:subject:user-agent:mime-version:date
  :message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
  :message-id:reply-to:content-type;
- bh=fUBo6xidHc+IM+BTVd0Bbr4FdBSolOTLMl94iGaA8Sg=;
- b=JsbnBRrnAcR3NBst7ffxF06LIaOs31mQmmiZn8P5WUQVasc8/6Cdi+nszH5bwAYB7z
- Bum/GbRvuskpiqGnEnMONOWNj/bOB7HNULPQUYEdGTJwqa49NvmuhTvKhDZu6aaHmkAQ
- PIDW4iRXFjyKVyCCJCsKCDe3qAVSADLDohm7eg9NRysW2z8iAQyQMhiQh7u2wBAJkrPs
- momAb4L0WXW6GxU7gNrN238PHwSL5T13BMSgJF6dyPteVv03W7jrX+uZBX3dbE5DXEq8
- +kLbgjNjJUDs5mawf7OLVDRq4aHOj3M3jhmdW1NrKit6OXroMx5oiefmvFyW7+ky6Dzb
- 86UQ==
+ bh=00w1IMURz4rm7i99No7qXBIIG82fkRgdQU3Qu8obpqc=;
+ b=lFlM3GFfnY6YVDNXj0Oh6s41/pzYYsw2j7ZSK59sssuWbb1QPgeNvVqbRgBIfvVUsX
+ lU/tWhKc3PKUiJ+zhv/9hEIB+cvqMPUe9FIAkxkjw1iEPqlv7zxlQ2D9N4Jak2kp/liT
+ xhHsX4jOwja6CreDwequVBgOcq88JWTsoBjm/nMLpU+u/SPvD1kvgn7Evdlr7qbSOCkm
+ lXA880WusXi0vA9sjrCcDofkGKSRltqTjlHeXC+Cfx7em4GEX38UaZ75/bOGPE0YWXYd
+ QuU9rtUIzxmImIfRdVARmp9ulO7wK7O2pmE/WB+AGPNE96spN20AQSRZhwHXJXME7/ku
+ i4LQ==
 X-Forwarded-Encrypted: i=1;
- AHgh+RrtDKoXTrcupK7kHGGmvH0MenPxLa3OrIz4Ne+SPrSQOqNXYa5YvhKUKhTRM60sfDIKYeN69SBUSQ==@nongnu.org
-X-Gm-Message-State: AFuF++lmHfE31yWVXinX/zN6rFQG9hYcpocUSsAL5pho0C8x9O9O9MJO
- Hvx2DN5xZeU0bdo/HfOP4s0MOav/q58k82Fd83dXA4UHNc1I3tVB90qT7fowQXhPHXBKLvznmLs
- 7smZvVjEAFmARIndTBabALOT+2bc3aCVE1diQqAR5VaCzWFBQ5ZF/uJE=
-X-Gm-Gg: AR+sD11YuaiwdLE+W3gCchcasDxuBWo9qTcQa7RACGRgSB1UeoplKLs6kLiupHpMNQE
- Y6/o2tl6n9L7gt90XFUAND9pwZ8xnm/CmKH4LZS6lsyJ3Iv46HGEBb9wypMk6upv8xTUE8wRY3Y
- TKSCJUZxf9h67JwdpeannV33Lgx9wWmMkKp3RZANPFecsQfgmKVyTTr9RB0Qg7G3h+Fc9TwkiHu
- v0Hi6BPqWNaYtwwK8P49gK9e08TR1NrE2gjwsPnWPofymlW0d1BdxsZH/Wrhzv4r5oLFjx5G/zA
- 68Wb62FfL09KD4wvCUkZbNoJrSHMYV2fxboYPlWzsFWOCPMEnJZgF2CE/+LLB1M4pEmDydLn7Yp
- us6HTlIFjHA9fPGtx5B9yAi0zppkVQase2Q==
-X-Received: by 2002:a05:620a:4416:b0:939:16f5:94cf with SMTP id
- af79cd13be357-93942b473bdmr171002285a.22.1788170673633; 
- Mon, 31 Aug 2026 03:04:33 -0700 (PDT)
-X-Received: by 2002:a05:620a:4416:b0:939:16f5:94cf with SMTP id
- af79cd13be357-93942b473bdmr170992585a.22.1788170673155; 
- Mon, 31 Aug 2026 03:04:33 -0700 (PDT)
+ AHgh+Rr6k7GKSup0OCUZctwkIUev/90tp6w4W5VnyQbsomEDD8gnaGGoRPoof7GT6wgEeTfMmb4zHDY9Rw==@nongnu.org
+X-Gm-Message-State: AFuF++kKLWtKIyBgACQuq0hj8IXS0V+cQ7UrZDxMmUfDUnckpXd0xoEG
+ zO487VFfLCsQDx1rYEYBnZin1WvynUX+TxczUT7Tbr8kHQv0SecX7TSleFglg5+u84yNJtTaS/2
+ g/rX21BPf0elrWMxWupF5x3SQWoPmXx2+cTFyElZDy5oORzXUPh9HATs=
+X-Gm-Gg: AR+sD12ggJ+eAnnfEdbQjrayEIXtnpDJlQhh8trRds0Nnos+l9cDDIkv8+1yymV/p5U
+ whr7c5nRfr0CI3MV9s/WJ9EaPewoerENnVeh+mYjQ0FgiOw0OQnkzIuddKY1FLWJhv+HD+p9YFI
+ J+9sncqcsAuclZ8TL/9K0TAUNTZNV+5xli0jDpXYbwLn6m4n9CzYqrDfhpClu7/mMBwGx1VRuxl
+ CjwaMv3SyVDyEnE7fnhPSjIXXjPT1QL/K4x7chNgX+F5KPv2n+Fk7Pgpc9/uUSJ4hUCGpnDB9SL
+ FnbT6zIh1cxs5eO3DRbfOh1MFNPDc9dId2C5kJha0v0nW8b0W0d8XoSf0THl1EAbMEO5Z63CjcD
+ LfgNF1m9LN/s7snkGhMQ2GUhK8iEeXMjkUQ==
+X-Received: by 2002:a05:620a:44d3:b0:936:78c8:91f3 with SMTP id
+ af79cd13be357-93936cc2ff6mr558880085a.11.1788170834187; 
+ Mon, 31 Aug 2026 03:07:14 -0700 (PDT)
+X-Received: by 2002:a05:620a:44d3:b0:936:78c8:91f3 with SMTP id
+ af79cd13be357-93936cc2ff6mr558876585a.11.1788170833747; 
+ Mon, 31 Aug 2026 03:07:13 -0700 (PDT)
 Received: from [192.168.69.226] (pmd666.hd.free.fr. [88.187.86.199])
  by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-482fbb20793sm21222048f8f.17.2026.08.31.03.04.22
+ 5b1f17b1804b1-49b49cc6446sm322673445e9.7.2026.08.31.03.06.57
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 31 Aug 2026 03:04:24 -0700 (PDT)
-Message-ID: <4a1dc959-98f9-4be8-a842-badd4622a890@oss.qualcomm.com>
-Date: Mon, 31 Aug 2026 12:04:21 +0200
+ Mon, 31 Aug 2026 03:07:00 -0700 (PDT)
+Message-ID: <b5c70deb-bdcc-409d-adb2-54081a6b3102@oss.qualcomm.com>
+Date: Mon, 31 Aug 2026 12:06:56 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v3 2/4] hw/usb/aspeed-udc: Add ASPEED UDC gadget USB device
+Subject: Re: [PATCH] hw/intc/bcm2835_ic: reject out-of-range FIQ source values
 Content-Language: en-US
-To: Jamin Lin <jamin_lin@aspeedtech.com>, Paolo Bonzini <pbonzini@redhat.com>,
- Peter Maydell <peter.maydell@linaro.org>,
- =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>,
- Steven Lee <steven_lee@aspeedtech.com>, Troy Lee <leetroy@gmail.com>,
- Kane Chen <kane_chen@aspeedtech.com>,
- Andrew Jeffery <andrew@codeconstruct.com.au>,
- Joel Stanley <joel@jms.id.au>,
- "open list:ARM TCG CPUs" <qemu-arm@nongnu.org>,
- "open list:All patches CC here" <qemu-devel@nongnu.org>
-Cc: Troy Lee <troy_lee@aspeedtech.com>
-References: <20260831092125.1022201-1-jamin_lin@aspeedtech.com>
- <20260831092125.1022201-3-jamin_lin@aspeedtech.com>
+To: Bin Guo <guobin@linux.alibaba.com>, qemu-devel@nongnu.org
+Cc: peter.maydell@linaro.org, philmd@mailo.com, farosas@suse.de,
+ lvivier@redhat.com, pbonzini@redhat.com, qemu-arm@nongnu.org
+References: <20260831081709.77725-1-guobin@linux.alibaba.com>
 From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@oss.qualcomm.com>
-In-Reply-To: <20260831092125.1022201-3-jamin_lin@aspeedtech.com>
+In-Reply-To: <20260831081709.77725-1-guobin@linux.alibaba.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-X-Proofpoint-Spam-Info: AW1haW4tMjYwODMxMDA4NiBTYWx0ZWRfXxjXjGXL0PA+H
- igcFxCXf4aWEqdQ7tqqjr3xd+J9RerId9yc0xI45F2w0X4tnKxNu8GMG3UTWXE9H6b9W9f2thsr
- BaP9o69t/dGCSTGGVIGjcRNDwtmPtdQ=
-X-Authority-Analysis: v=2.4 cv=O7sJeh9W c=1 sm=1 tr=0 ts=6a9551b2 cx=c_pps
- a=qKBjSQ1v91RyAK45QCPf5w==:117 a=4s3hRJSeHn4rkQlkrse1kQ==:17
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwODMxMDA4NyBTYWx0ZWRfX0Q2ggRDolTM/
+ fS8gXfBHocSqzSeHviPYIoQb2Vqm+5h2FjHN+qkxy0C+It48gPdAnxktu8nzdsoRuLZn2tN3eKv
+ VIqOUVUAqcyUEAj7RIQ3XopTujzW3KeqgPFPOVqa283xRYW3TGztmPDrJdgUiej5+mdni/RuhZl
+ j17pdUjEvFSP1ISHn8+K27NBkOgUGUhvw3m5m/9Y1p5E1AIgJlLrQqUukZKfXnV3FHizHw1APd4
+ 75VZZr6Hb0SyS227nT6QESQRpvV05cBTv1/p2SwbD7y4KY66BF4c76tuaZlFONnuRim5XEKGMDX
+ IRNmCuZmdHk2GjDkwusgZVFlSLrAw+NGYjN7LBIqt2JahXkCbyqyk6/vXHBz17IXbS/elHA8Gsq
+ xG2cFaRgmDYADabVTsGO2sYYlytQ6Wubu4mr9+GfRm04YMF1pEvnfAA8HtfetLs/ls2GAkIADVs
+ UEvpXUJeakb/lJRLnzQ==
+X-Authority-Analysis: v=2.4 cv=YYmNIQRf c=1 sm=1 tr=0 ts=6a955253 cx=c_pps
+ a=HLyN3IcIa5EE8TELMZ618Q==:117 a=4s3hRJSeHn4rkQlkrse1kQ==:17
  a=IkcTkHD0fZMA:10 a=Sv0fKeRqtYgA:10 a=M51BFTxLslgA:10 a=s4-Qcg_JpJYA:10
- a=VkNPw1HP01LnGYTKEx00:22 a=u7WPNUs3qKkmUXheDGA7:22 a=_K5XuSEh1TEqbUxoQ0s3:22
- a=V2NxCb60AAAA:8 a=EUspDBNiAAAA:8 a=fsNtAQk0wgLITp3n_WMA:9 a=3ZKOabzyN94A:10
- a=QEXdDO2ut3YA:10 a=NFOGd7dJGGMPyQGDc5-O:22 a=3L6qF29SlnrayQqPM2jZ:22
-X-Proofpoint-ORIG-GUID: kDWc4M5PGGj9fWhr6QS6syTC2XrYxrjC
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwODMxMDA4NiBTYWx0ZWRfX1X9nQEnKaHXb
- M6D9iviuJgB9yz/FvNe5vShinV85R+Z4uRnnMHldcWuyoVlE7sJFzfCVWGPAJ9UKvhWxJkFJuVs
- zvOAq09uTFY7NYodtHcbvEQJNct8UB+wGj80ZED1MwNprPSP2DAQBhkxkwkWLnqLgdz5EnOcMIk
- O5eYMAYtzk5OUxNCmzNsQPBr3CetM74jFD5Ubj/QH+uz1z1iwlae39gU3sr9Iu6AyEzEciSUsMo
- Uaggs3vyqTVcBQqiTJnNvTyHGBY/itHyKKWONoSqPx9+m1B5xPyZUi3UJ6OG1dDOP7mIRNdBte5
- B2ffaabRWlHZdOOqcdni2SdIBBqmpfkDXOyk5HILOL0BltzMvMrArXnaLpnaW1THDtq+X9kmS9w
- Bktk/8+FiQxOsACiVZ9Mu4eXB72FkAjMKRBSQxD68aTsXJWlo7SmbrWCR+MNZMfdEnds4Z+5RLQ
- OSXugJtAwN4CBDtcsiQ==
-X-Proofpoint-GUID: kDWc4M5PGGj9fWhr6QS6syTC2XrYxrjC
+ a=VkNPw1HP01LnGYTKEx00:22 a=u7WPNUs3qKkmUXheDGA7:22 a=DJpcGTmdVt4CTyJn9g5Z:22
+ a=p0WdMEafAAAA:8 a=SRrdq9N9AAAA:8 a=EUspDBNiAAAA:8 a=ptpCNiVU-4DG3ZlGizMA:9
+ a=3ZKOabzyN94A:10 a=QEXdDO2ut3YA:10 a=bTQJ7kPSJx9SKPbeHEYW:22
+X-Proofpoint-Spam-Info: AW1haW4tMjYwODMxMDA4NyBTYWx0ZWRfXz/T3CpBaF5Cy
+ fKuphHVLuOrbOGc5zcL9mXOz9S3frVeIgIHN8gGmiFVpW5Ub+8p5n7nv+zurTlK/ZARmpyooqWT
+ 0j2HI90hRCWVSVv+miNkOdT6IoJXjoU=
+X-Proofpoint-GUID: S5n1uKTvuHC6_xtEdT2AJKKRxD85yYDy
+X-Proofpoint-ORIG-GUID: S5n1uKTvuHC6_xtEdT2AJKKRxD85yYDy
 X-Proofpoint-Virus-Version: vendor=baseguard
  engine=ICAP:2.0.293,Aquarius:18.0.1176,Hydra:6.1.134,FMLib:17.12.100.49
  definitions=2026-08-31_03,2026-08-27_02,2025-10-01_01
 X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
- phishscore=0 priorityscore=1501 malwarescore=0 adultscore=0 suspectscore=0
- bulkscore=0 spamscore=0 lowpriorityscore=0 impostorscore=0 clxscore=1015
+ phishscore=0 spamscore=0 adultscore=0 priorityscore=1501 lowpriorityscore=0
+ bulkscore=0 impostorscore=0 malwarescore=0 clxscore=1015 suspectscore=0
  classifier=typeunknown authscore=0 authtc= authcc= route=outbound adjust=0
- reason=mlx scancount=1 engine=8.22.0-2606150000 definitions=main-2608310086
+ reason=mlx scancount=1 engine=8.22.0-2606150000 definitions=main-2608310087
 Received-SPF: pass client-ip=205.220.168.131;
  envelope-from=philmd@oss.qualcomm.com; helo=mx0a-0031df01.pphosted.com
 X-Spam_score_int: -27
@@ -146,7 +138,7 @@ X-Spam_bar: --
 X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_LOW=-0.7, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -162,33 +154,26 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On 31/8/26 11:21, Jamin Lin wrote:
-> Present the UDC gadget side to a USB host controller as a USB device
-> (TYPE_ASPEED_UDC_GADGET). This is a normal QEMU USB device, so it can be
-> attached to any USB host controller bus, not only the BMC's own EHCI. It
-> links back to its controller through the "udc" property.
+On 31/8/26 10:17, Bin Guo wrote:
+> The FIQ_CONTROL register accepts a 7-bit source selector, but only
+> sources 0..71 (64 GPU + 8 ARM IRQs) exist.  Values 96..127 cause
+> bcm2835_ic_update() to call extract32(arm_irq_level, start, 1) with
+> start >= 32, which trips the assertion in bitops.h and aborts QEMU.
 > 
-> This patch implements the control endpoint (EP0), which is enough for the
-> host to enumerate the gadget. Host control transfers are handled
-> asynchronously: the SETUP packet is mirrored into the SETUP data buffer,
-> the EP0 interrupt is raised and the host packet is parked (USB_RET_ASYNC).
-> The guest gadget driver then drives the data and status stages by writing
-> UDC_EP0_CTRL; that moves data to/from the driver's DMA buffer and completes
-> the parked packet back to the host.
+> Reject writes that select a non-existent source and log a guest error,
+> so that a malicious or buggy guest cannot kill the emulator.
 > 
-> SET_ADDRESS is the exception: it is applied synchronously, because the host
-> controller keeps the transfer bound to address 0 until it completes.
+> Add a qtest that verifies both valid and out-of-range FIQ source
+> selections on raspi3b.
 > 
-> The gadget connects to / disconnects from the host bus when the driver
-> sets or clears the upstream-enable (pull-up) bit, and is detached on reset.
-> 
-> Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
+> Resolves: https://gitlab.com/qemu-project/qemu/-/work_items/4368
+> Signed-off-by: Bin Guo <guobin@linux.alibaba.com>
 > ---
->   include/hw/usb/aspeed-udc.h |  28 +++
->   hw/usb/aspeed-udc.c         | 382 +++++++++++++++++++++++++++++++++++-
->   hw/usb/trace-events         |   5 +
->   3 files changed, 412 insertions(+), 3 deletions(-)
+>   hw/intc/bcm2835_ic.c          | 13 +++++--
+>   tests/qtest/bcm2835-ic-test.c | 66 +++++++++++++++++++++++++++++++++++
+>   tests/qtest/meson.build       |  2 +-
+>   3 files changed, 78 insertions(+), 3 deletions(-)
+>   create mode 100644 tests/qtest/bcm2835-ic-test.c
 
-QOM/QDev:
 Reviewed-by: Philippe Mathieu-Daudé <philmd@oss.qualcomm.com>
 

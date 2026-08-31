@@ -4,150 +4,111 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 66986C61DD3
-	for <qemu-arm@archiver.kernel.org>; Mon, 31 Aug 2026 05:54:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 28745C61DF0
+	for <qemu-arm@archiver.kernel.org>; Mon, 31 Aug 2026 05:57:04 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1x0uy7-00009T-5Z; Mon, 31 Aug 2026 01:54:07 -0400
+	id 1x0v0e-0000oZ-OU; Mon, 31 Aug 2026 01:56:44 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@oss.qualcomm.com>)
- id 1x0uy2-00008n-FU
- for qemu-arm@nongnu.org; Mon, 31 Aug 2026 01:54:02 -0400
-Received: from mx0a-0031df01.pphosted.com ([205.220.168.131])
+ (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
+ id 1x0v0c-0000nn-QJ
+ for qemu-arm@nongnu.org; Mon, 31 Aug 2026 01:56:42 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@oss.qualcomm.com>)
- id 1x0uy0-0002fw-Qe
- for qemu-arm@nongnu.org; Mon, 31 Aug 2026 01:54:02 -0400
-Received: from pps.filterd (m0279867.ppops.net [127.0.0.1])
- by mx0a-0031df01.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id
- 67V52ggg3679001
- for <qemu-arm@nongnu.org>; Mon, 31 Aug 2026 05:53:57 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qualcomm.com; h=
- cc:content-transfer-encoding:content-type:date:from:in-reply-to
- :message-id:mime-version:references:subject:to; s=qcppdkim1; bh=
- SrnuZPEgbqsNZX+EDFhpL5l9ORFgkxif3h2CBXkGLIw=; b=OAzlXkJO5a85in72
- kH6PsPpyFUa4jbLa84a/34gAqFribiDcXTGrRLZnKJUUjniSDCOkgTPKLiMIA0nN
- ncBxN0qvDpfOXTj+KdQsoAl+cEwlXrpSF8vS5gmCQm0ANcuHr67YU8ePgyIKW3hY
- UPuEJk+kmUUljskqFfk8PygnDRtaCI34L7aNY+hqhtC6NcQuUVyqbSGSQAdrQkQO
- BdYxuBIeML6bWkuXp0Hcm3oFvFegQVnwKDd64CR4baT0xZGwW9IQcxO3Mp0euDHA
- g0AYlwESMVoNT8W2NPm/0M8MA5vLtuJRYYbfs9hTPkQhQIqnxPVstuRxGaTL342j
- jvwt0A==
-Received: from mail-qk1-f198.google.com (mail-qk1-f198.google.com
- [209.85.222.198])
- by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 4gcv8h11r9-1
- (version=TLSv1.3 cipher=TLS_AES_128_GCM_SHA256 bits=128 verify=NOT)
- for <qemu-arm@nongnu.org>; Mon, 31 Aug 2026 05:53:57 +0000 (GMT)
-Received: by mail-qk1-f198.google.com with SMTP id
- af79cd13be357-92e62e3459fso374462085a.0
- for <qemu-arm@nongnu.org>; Sun, 30 Aug 2026 22:53:57 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=oss.qualcomm.com; s=google; t=1788155636; x=1788760436; darn=nongnu.org;
- h=content-transfer-encoding:content-type:in-reply-to:from:references
- :cc:to:content-language:subject:user-agent:mime-version:date
- :message-id:from:to:cc:subject:date:message-id:reply-to:content-type;
- bh=SrnuZPEgbqsNZX+EDFhpL5l9ORFgkxif3h2CBXkGLIw=;
- b=VdPIRxC3Bbx+AHn/sjZhu25rACW2pCTS4P+WmF5NgWSURbKmKGR9cJmKGtq2ZPrh9b
- NN+65hF8woPS6hJbrcUykt3wWZ87Wd0z6SheXVE74+/BeTsg6z6aIsE1bOSnfZAjWBPj
- wp9MW+HLkSXYJ15V7XhckrkKCYVeI36ZrJqtTrJmcA0BAgnND0dguMSYPRDZysnonzt1
- PnjqnFufbHBR3fKnXMUSXmsI18wqre1AOQwOsrGeUL2rdMQj7bneBOez8K67y45GCVQN
- bzd8UfmUFN63TiF0I0GL6eHxMnMxUgLYWmKJQk8XzxEtqG7hPMOlOPn3xC5UmsP4wb/c
- yv3A==
+ (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
+ id 1x0v0b-00039I-2J
+ for qemu-arm@nongnu.org; Mon, 31 Aug 2026 01:56:42 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1788155799;
+ h=from:from:reply-to:reply-to:subject:subject:date:date:
+ message-id:message-id:to:to:cc:cc:mime-version:mime-version:
+ content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=+ecbFYv+BZVCEsHoBeRK/1GAi/tQuEbRoNMjrdxZPzA=;
+ b=IymcUHrZ3lVuA7S6/KN7e84P+KtDIBBUWiyKrzJPlJQ0SvuOU0axzGdF9qWIeZ3rJpq1Hq
+ Vpny5361M9Yl76gVqOO9gNkP8U0if35eiS47ycSkcB3TViCno7UDwjNKNZtENxS4in3gTA
+ 0cNXAxqTtK8aWLNgZ3leAyKrgb/3tdA=
+Received: from mail-wr1-f72.google.com (mail-wr1-f72.google.com
+ [209.85.221.72]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-187-_Sx9EwQENyiMS1PTRmct3g-1; Mon, 31 Aug 2026 01:56:36 -0400
+X-MC-Unique: _Sx9EwQENyiMS1PTRmct3g-1
+X-Mimecast-MFC-AGG-ID: _Sx9EwQENyiMS1PTRmct3g_1788155796
+Received: by mail-wr1-f72.google.com with SMTP id
+ ffacd0b85a97d-4843d9ab895so349109f8f.0
+ for <qemu-arm@nongnu.org>; Sun, 30 Aug 2026 22:56:36 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1788155636; x=1788760436;
+ d=1e100.net; s=20251104; t=1788155795; x=1788760595;
  h=content-transfer-encoding:content-type:in-reply-to:from:references
- :cc:to:content-language:subject:user-agent:mime-version:date
- :message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+ :cc:to:content-language:subject:reply-to:user-agent:mime-version
+ :date:message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
  :message-id:reply-to:content-type;
- bh=SrnuZPEgbqsNZX+EDFhpL5l9ORFgkxif3h2CBXkGLIw=;
- b=MfNLh4bp/lHTmk/3DpGoeFHRUde0QJEdgo0j1z24RnNkvXqgFUczqTtf4oJQbb3eid
- H4k7P7s9cQfZCmTS2m872w7bVuSWjrui/tPgksbvz5ZoeU+Z//DiSvW6R24AoiUsHMZL
- NwTD0Ke//f7UB4PuC9NZ5a3zyMHNVhEiEXXd66kpaWxjyeWaG8AwAl2oEINqVgtIB0sI
- 2P3VQp6Y4WsP9RJbZ787EgOLevJkd6hg/npL219/JVw1sD96wx38xF9msm1sDjJB5qDf
- 8CLLTLWq8adKvpt1fHlX58zjJW/Ty9IbeiL0qTxlKiALRXeq5Dthb7yeqzC3grTTpUjz
- LmRw==
+ bh=+ecbFYv+BZVCEsHoBeRK/1GAi/tQuEbRoNMjrdxZPzA=;
+ b=UVooJlAe+rUCKJx3MozsCNi7EAcWlP71chtPY+Tsn/DXz4+EczYgQYnNWNq2UO5B/Y
+ 1cvpt5jRtblvVgbNu4zOlF7HAVMLOZZfJcmhmY7FCMHD1bnLYMWHeHsk51lMR3Dcd+Mb
+ Pf6wMGtzEuOEZMUCopDjmm522/A9KDqolB9kLwn/68aUgMCX+LHm5ga67t7otnH3pi/O
+ kFew1+/RUNyncKDKgv9rBN+mCu+vrisdeE6k1+E0lZrFym7FB1n34rYJnnp6OtKM3gKK
+ s8a/hMIwXzktUkKdykJH1LNLJk5j2xwNgl3N8+Rc1lzDtLrB/sA9EOygFRHRVyCJ8e/N
+ RYEQ==
 X-Forwarded-Encrypted: i=1;
- AHgh+Rq1+urMvWZ6P5gfnVcnAYLL8uKTQkgTv5YnDFkmabZ5cj6oR5/nlb8Rc7ro8JdrmqLgl3pZZuU/Lw==@nongnu.org
-X-Gm-Message-State: AFuF++lv5XCDqHvkTWusCT9hFqjUperiTQ233pfB5RW6lZe2DIv6Qewf
- fLhiuHYEtqFTDxmlQnOw4lcBSovepO1fyofIheztl10ePMEhqZin1KHPU6jqD415vXopZ0VwYyS
- 9GWAsgKlxpvX4inXLZCK/iVByCsGzvpK7rZmdDt1F7HCKazyqzYTsC/4=
-X-Gm-Gg: AR+sD10GS4psJo5BQ5ZSGgLs4oWZZH/d88ZjZ9AQURKgAyNsziXxX4Tfuua2DwboXJo
- z8pN/wO653g4R848dTe9puwkQ2Vmz/cdCYgNG9wkLGZ/gOldv++mnS6dVJqh8/soPa9P0avV1b9
- Yzc7Vu3UrT9J/xZG9qiO9bXFSiuluN8pJesWfXH+SU7AHJAqoDSQTJStrV17m/eVFWMLfi9XVhS
- phlX+elXR9Oaz3e587THvIyAIyAYENEf0FrRr5ijkm4WmmYbMs03Fa+gbix0YW6jYcli1yqoKHR
- ExRBTyOfdefO3/cYWNR0Ns3m2wUTZJu+1aBTMw64w13ezDJMRJ2FI0H2nx/HzKfmTvl0VtfGMv8
- k+d90kUM50CHjxbunPH7iX6Xg0FQ0AM8TZg==
-X-Received: by 2002:a05:620a:294e:b0:931:18e:8642 with SMTP id
- af79cd13be357-9391374c511mr2579108585a.2.1788155636253; 
- Sun, 30 Aug 2026 22:53:56 -0700 (PDT)
-X-Received: by 2002:a05:620a:294e:b0:931:18e:8642 with SMTP id
- af79cd13be357-9391374c511mr2579105785a.2.1788155635771; 
- Sun, 30 Aug 2026 22:53:55 -0700 (PDT)
-Received: from [192.168.69.226] (pmd666.hd.free.fr. [88.187.86.199])
+ AKwUvBx5m2S+g2bzzIlkmj6eU6Q236NXIcuW2er80E+rLQB7851D4NWCYLB+flXxXMscc/OpIRSlqSZt7Q==@nongnu.org
+X-Gm-Message-State: AFuF++nWH51xJtZI+/Sh5qsamg/0XELg+Mfa+r33SP6wTp7xW/hszTCM
+ uNiPD8JuOinaq8CMiz92RWADuvqe1WW7wKY/0Knq8CMQzXR5NI3fcIO0lE9UTMvITmVO2hBOL2B
+ iuTnsJnUKyOBMsBZrMkvloVyDGoxWRFYrtmS9PA1lCucfxtxmY0fe+Q==
+X-Gm-Gg: AYBFou1UTmpSp2E7UJdbSvufYq/UX2O7pAYwjPC1mc9FQhB5yRSDVASHYkBWOwA3kbH
+ svgvu608GiP/jhAtUUTZxskhcuCHMNmE25UGhA1nzI9a20gGwff/dLaJQqWmK13225ofg3tW4Cw
+ 05tIA6VXYBF73Wz+cePprguey1hGLQ5fkgiE6RP6pjd201mUyMGf3HGFT+aZxOj5F1kYqwWrOtQ
+ wJ30gYMme0K20HSCCIW1XzyXixeDiLOzbGQ9++GM1BrlZGP2gezshoweXPIB6gB6jVsCS3skH37
+ /1ZtjqqH6oWLzv+vOn92BbyalDUvlmMmmJM2usb1Q4R4fZOdDkviIflT61sqXytRlSPCmbeOUPc
+ 2Oi8eH9txd+dRxgB4XSZVGwG4GqkjmnWjzuXWF7jBlSfRzcK0
+X-Received: by 2002:a05:6000:2510:b0:483:ca4a:6b9d with SMTP id
+ ffacd0b85a97d-483ca4a6d9cmr21158911f8f.20.1788155795485; 
+ Sun, 30 Aug 2026 22:56:35 -0700 (PDT)
+X-Received: by 2002:a05:6000:2510:b0:483:ca4a:6b9d with SMTP id
+ ffacd0b85a97d-483ca4a6d9cmr21158871f8f.20.1788155795072; 
+ Sun, 30 Aug 2026 22:56:35 -0700 (PDT)
+Received: from ?IPV6:2a01:e0a:f0e:9070:527b:9dff:feef:3874?
+ ([2a01:e0a:f0e:9070:527b:9dff:feef:3874])
  by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-49b468009f8sm353514685e9.0.2026.08.30.22.53.54
+ ffacd0b85a97d-482fbb20713sm19516454f8f.21.2026.08.30.22.56.32
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Sun, 30 Aug 2026 22:53:55 -0700 (PDT)
-Message-ID: <aba45d1c-c96d-4b6e-acc8-5bdb7123c940@oss.qualcomm.com>
-Date: Mon, 31 Aug 2026 07:53:54 +0200
+ Sun, 30 Aug 2026 22:56:33 -0700 (PDT)
+Message-ID: <40aae38d-a013-4be1-a259-93174fe52a69@redhat.com>
+Date: Mon, 31 Aug 2026 07:56:31 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v3 3/4] hw/arm/aspeed_ast2600: Wire up the ACRY model
+Subject: Re: [RFC v5 22/28] hw/arm/smmuv3: Harden security checks in MMIO
+ handlers
+To: Tao Tang <tangtao1634@phytium.com.cn>,
+ Peter Maydell <peter.maydell@linaro.org>
+Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org,
+ Chen Baozi <chenbaozi@phytium.com.cn>,
+ Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>,
+ =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@mailo.com>,
+ Mostafa Saleh <smostafa@google.com>, Chao Liu <chao.liu@processmission.com>,
+ Jim MacArthur <jim.macarthur@linaro.org>
+References: <20260813161515.2788900-1-tangtao1634@phytium.com.cn>
+ <20260813162624.2809349-2-tangtao1634@phytium.com.cn>
+From: Eric Auger <eric.auger@redhat.com>
+In-Reply-To: <20260813162624.2809349-2-tangtao1634@phytium.com.cn>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-MFC-PROC-ID: uCVjx-C-9-XdJcQps99X8BvNu6bJlkSzaqYFc4D5Dvg_1788155796
+X-Mimecast-Originator: redhat.com
 Content-Language: en-US
-To: Jamin Lin <jamin_lin@aspeedtech.com>, =?UTF-8?Q?C=C3=A9dric_Le_Goater?=
- <clg@kaod.org>, Peter Maydell <peter.maydell@linaro.org>,
- Steven Lee <steven_lee@aspeedtech.com>, Troy Lee <leetroy@gmail.com>,
- Kane Chen <kane_chen@aspeedtech.com>,
- Andrew Jeffery <andrew@codeconstruct.com.au>,
- Joel Stanley <joel@jms.id.au>, Fabiano Rosas <farosas@suse.de>,
- Laurent Vivier <lvivier@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
- "open list:ASPEED BMCs" <qemu-arm@nongnu.org>,
- "open list:All patches CC here" <qemu-devel@nongnu.org>
-Cc: Troy Lee <troy_lee@aspeedtech.com>
-References: <20260831024450.27178-1-jamin_lin@aspeedtech.com>
- <20260831024450.27178-4-jamin_lin@aspeedtech.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@oss.qualcomm.com>
-In-Reply-To: <20260831024450.27178-4-jamin_lin@aspeedtech.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-X-Authority-Analysis: v=2.4 cv=DY0nbPtW c=1 sm=1 tr=0 ts=6a9516f5 cx=c_pps
- a=qKBjSQ1v91RyAK45QCPf5w==:117 a=4s3hRJSeHn4rkQlkrse1kQ==:17
- a=IkcTkHD0fZMA:10 a=Sv0fKeRqtYgA:10 a=M51BFTxLslgA:10 a=s4-Qcg_JpJYA:10
- a=VkNPw1HP01LnGYTKEx00:22 a=u7WPNUs3qKkmUXheDGA7:22 a=eoimf2acIAo5FJnRuUoq:22
- a=V2NxCb60AAAA:8 a=aow-egSQAAAA:8 a=EUspDBNiAAAA:8 a=1tSEMpTH9XP_W59IOagA:9
- a=3ZKOabzyN94A:10 a=QEXdDO2ut3YA:10 a=NFOGd7dJGGMPyQGDc5-O:22
- a=3L6qF29SlnrayQqPM2jZ:22 a=gFNbaldVC-z-bsjSTzMo:22
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwODMxMDA0OCBTYWx0ZWRfX59eo7BVSsbF/
- Q0J7wYmu/ra7bSoYQoXnq7PK5qycUnYYYNqZou5b7lGy40FyDYx/IQWnjBuFuoT/V1zeLFCOxO6
- yzOjyAlOK4FUd4cxp0ube4GJBHcLhWx10eNqxuwNHn27a3lRxWWinPktSnlZd+1HHsbWsog3uuQ
- 92HcLNwGXeRQmjRUwPCzfTHFbmCrE6yraSpJl4/yrl5FPwxVC/Izyq66catvPEA9I9tEH32L2b0
- gCOkcfWiuVT8AkmnCqV8/qZ8dF0Wgfl5tQKPcgyiVjNPhZ5BWuznCHCqab9hhzwdCqU5OvecBqL
- 6J3tWjbaJr9ypZRb83oyEUe80ZZoIqoB6XbcI1pmf3Ps17fhDblOrl/uxq6WmDWZ2MmulT0g5Dt
- +kVqJD+7b3gbjc+uRvnR8R0Ln8p5TgaaoGzOFL4cBlMTBOgSaktxYxyroq4H8iZAONLdLDB7OG3
- iG9AIARTlZCfRfUjiQg==
-X-Proofpoint-ORIG-GUID: OFOuJZ_W1KJ_wrH7PfIaNMW5gqI71mTL
-X-Proofpoint-Spam-Info: AW1haW4tMjYwODMxMDA0OCBTYWx0ZWRfX6JeX4vqL5RrY
- wFLBdjBTJwrksjd+USfUKwhpEIVge74nrd/JthL4k2YF7uiJByRtt1NelFNAVHv3+NtRLVQhSUo
- Wo9RKkeyD1toSs2vapP5JMzSO7mS/Mg=
-X-Proofpoint-GUID: OFOuJZ_W1KJ_wrH7PfIaNMW5gqI71mTL
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.293,Aquarius:18.0.1176,Hydra:6.1.134,FMLib:17.12.100.49
- definitions=2026-08-31_02,2026-08-27_02,2025-10-01_01
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
- phishscore=0 adultscore=0 clxscore=1015 priorityscore=1501 spamscore=0
- suspectscore=0 malwarescore=0 bulkscore=0 lowpriorityscore=0 impostorscore=0
- classifier=typeunknown authscore=0 authtc= authcc= route=outbound adjust=0
- reason=mlx scancount=1 engine=8.22.0-2606150000 definitions=main-2608310048
-Received-SPF: pass client-ip=205.220.168.131;
- envelope-from=philmd@oss.qualcomm.com; helo=mx0a-0031df01.pphosted.com
-X-Spam_score_int: -27
-X-Spam_score: -2.8
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=170.10.129.124;
+ envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.01, SPF_HELO_PASS=-0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -160,25 +121,134 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Reply-To: eric.auger@redhat.com
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On 31/8/26 04:44, Jamin Lin wrote:
-> Introduce the ASPEED_DEV_ACRY enum slot and add the ACRY model state
-> to AspeedSoCState.
-> 
-> Instantiate the new ACRY model on the AST2600 SoC using its
-> real-silicon register address and IRQ:
-> 
-> - ACRY register region 0x1e6fa000-0x1e6fafff
-> - IRQ 160
-> 
-> Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
-> Reviewed-by: Cédric Le Goater <clg@kaod.org>
-> ---
->   include/hw/arm/aspeed_soc.h |  3 +++
->   hw/arm/aspeed_ast2600.c     | 17 +++++++++++++++++
->   2 files changed, 20 insertions(+)
+Hi Tao,
 
-Reviewed-by: Philippe Mathieu-Daudé <philmd@oss.qualcomm.com>
+On 8/13/26 6:26 PM, Tao Tang wrote:
+> This patch hardens the security validation within the main MMIO
+> dispatcher functions (smmu_read_mmio and smmu_write_mmio).
+>
+> First, accesses to the Secure register space are gated by whether
+> SECURE_IMPL is enabled. When it is disabled, all SMMU_S_* registers are
+> read-as-zero and write-ignored.
+>
+> Second, the check for the input stream's security is made more robust.
+> It now validates not only the legacy MemTxAttrs.secure bit, but also
+> the .space field. This improves compatibility with Arm security space
+> handling.
+>
+> Signed-off-by: Tao Tang <tangtao1634@phytium.com.cn>
+> Reviewed-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
+> ---
+>  hw/arm/smmuv3.c | 55 +++++++++++++++++++++++++++++++++++++++++++++++++
+>  1 file changed, 55 insertions(+)
+>
+> diff --git a/hw/arm/smmuv3.c b/hw/arm/smmuv3.c
+> index dc3fa618883..e5f0bc18415 100644
+> --- a/hw/arm/smmuv3.c
+> +++ b/hw/arm/smmuv3.c
+> @@ -1605,6 +1605,12 @@ static bool smmu_eventq_irq_cfg_writable(SMMUv3State *s, SMMUSecSID sec_sid)
+>      return smmu_irq_cfg_writable(s, sec_sid, SMMU_IRQ_EVTQ);
+>  }
+>  
+> +/* Check if the SMMU hardware itself implements secure state features */
+> +static inline bool smmu_hw_secure_implemented(SMMUv3State *s)
+> +{
+> +    return FIELD_EX32(s->bank[SMMU_SEC_SID_S].idr[1], S_IDR1, SECURE_IMPL);
+> +}
+> +
+>  static int smmuv3_cmdq_consume(SMMUv3State *s, Error **errp, SMMUSecSID sec_sid)
+>  {
+>      SMMUState *bs = ARM_SMMU(s);
+> @@ -1905,6 +1911,38 @@ static int smmuv3_cmdq_consume(SMMUv3State *s, Error **errp, SMMUSecSID sec_sid)
+>      return 0;
+>  }
+>  
+> +/*
+> + * Helper function for Secure register access validation.
+> + *
+> + * Follow S_IDR1.SECURE_IMPL accessibility rules for SMMU_S_*:
+> + *  - SECURE_IMPL == 0: Secure state is not implemented; SMMU_S_* are RAZ/WI to
+> + *    all accesses.
+> + *  - SECURE_IMPL == 1: Non-secure accesses to SMMU_S_* are RAZ/WI.
+> + */
+> +static bool smmu_check_secure_access(SMMUv3State *s, MemTxAttrs attrs,
+> +                                     hwaddr offset, bool is_read)
+> +{
+> +    /* Check if the access is secure */
+> +    if (!(attrs.space == ARMSS_Secure ||
+> +          attrs.secure == 1)) {
+> +        qemu_log_mask(LOG_GUEST_ERROR,
+> +            "%s: Non-secure %s attempt at offset 0x%" PRIx64 " (%s)\n",
+would suggest
+
+"%s: Non-secure %s at secure offset 0x%" PRIx64 " (%s)\n"
+I am not sure we shall detail the end behavior here but rather put that in the call site
+
+> +            __func__, is_read ? "read" : "write", offset,
+> +            is_read ? "RAZ" : "WI");
+> +        return false;
+> +    }
+> +
+> +    /* Check if the secure state is implemented. */
+> +    if (!smmu_hw_secure_implemented(s)) {
+> +        qemu_log_mask(LOG_GUEST_ERROR,
+> +            "%s: Secure %s attempt at offset 0x%" PRIx64 ". But Secure state "
+> +            "is not implemented (RES0)\n",
+> +            __func__, is_read ? "read" : "write", offset);
+
+"%s: Secure %s at secure offset 0x%" PRIx64 "without support of secure state\n"
+RES0 is a bit ambiguous. is it the capability which is RES0 or is it some end behavior associated to the access? I would skip this and detail in the caller instead
+
++ *  - SECURE_IMPL == 0: Secure state is not implemented; SMMU_S_* are RAZ/WI to
++ *    all accesses.
+
+> +        return false;
+> +    }
+> +    return true;
+> +}
+> +
+>  static MemTxResult smmu_writell(SMMUv3State *s, hwaddr offset,
+>                                  uint64_t data, MemTxAttrs attrs,
+>                                  SMMUSecSID reg_sec_sid)
+> @@ -2272,6 +2310,18 @@ static MemTxResult smmu_write_mmio(void *opaque, hwaddr offset, uint64_t data,
+>       * translate the Secure window to its bank-local register offsets.
+>       */
+>      if (offset >= SMMU_SECURE_REG_START) {
+> +        if (!smmu_check_secure_access(s, attrs, offset, false)) {
+> +            trace_smmuv3_write_mmio(offset, data, size, MEMTX_OK);
+> +            /*
+> +             * RAZ/WI/RES0 are deterministic register-level behaviors and do not
+> +             * imply a bus protocol error or abort. Therefore we acknowledge the
+> +             * MMIO transaction with MEMTX_OK and implement
+> +             * "Read-As-Zero / Write-Ignored" in the register model, instead of
+> +             * returning MEMTX_*_ERROR which is reserved for real decode/access
+> +             * failures.
+So here you document again the associated end behavior. I think si could
+be simplied to "WI single line", no?
+> +             */
+> +            return MEMTX_OK;
+> +        }
+>          reg_sec_sid = SMMU_SEC_SID_S;
+>          offset -= SMMU_SECURE_REG_START;
+>      }
+> @@ -2508,6 +2558,11 @@ static MemTxResult smmu_read_mmio(void *opaque, hwaddr offset, uint64_t *data,
+>      /* CONSTRAINED UNPREDICTABLE choice to have page0/1 be exact aliases */
+>      offset &= ~0x10000;
+>      if (offset >= SMMU_SECURE_REG_START) {
+> +        if (!smmu_check_secure_access(s, attrs, offset, true)) {
+> +            *data = 0;
+> +            trace_smmuv3_read_mmio(offset, *data, size, MEMTX_OK);
+> +            return MEMTX_OK;
+> +        }
+>          reg_sec_sid = SMMU_SEC_SID_S;
+>          offset -= SMMU_SECURE_REG_START;
+>      }
+Thanks
+
+Eric
+
 

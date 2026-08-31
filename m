@@ -4,45 +4,45 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7C237C624A5
-	for <qemu-arm@archiver.kernel.org>; Mon, 31 Aug 2026 03:42:42 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 49CCCC61DF0
+	for <qemu-arm@archiver.kernel.org>; Mon, 31 Aug 2026 03:42:57 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1x0suk-0006BD-Mb; Sun, 30 Aug 2026 23:42:30 -0400
+	id 1x0sud-00068L-DN; Sun, 30 Aug 2026 23:42:23 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
- id 1x0sub-000686-JR; Sun, 30 Aug 2026 23:42:22 -0400
+ id 1x0suY-00067S-Ov; Sun, 30 Aug 2026 23:42:19 -0400
 Received: from mail-japaneastazlp170120005.outbound.protection.outlook.com
  ([2a01:111:f403:c405::5] helo=TYPPR03CU001.outbound.protection.outlook.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
- id 1x0suZ-0006yh-KI; Sun, 30 Aug 2026 23:42:21 -0400
+ id 1x0suX-0006yh-73; Sun, 30 Aug 2026 23:42:18 -0400
 ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=rZ27kEDWzrjIORi8NGaFfD4nmcFUtqCC53ee1jH0PywMZwXnRnB1Ew2+i2HPrEka4qkC1XadGqr1An/8FcaMMmjXeNWldZiMhVLkyqfv7bhszoajOb2c1GhTM4soFREbGDa2zsqJBWTcgG/lOAZCB7QzCojYVmApKOmoJxMG6hTvH3SKLaomSfOyRz0OJ1WZK+6W+Ia4u8AtGTlTy/xWDqi2PMFkIqVTcUFHJyuMmg0OcgAb/nychJ8Xzo94FA/pd1Amc9w23DOJjKYJas6ZwakcvB5pzHnwPsx5xFj82cPzKFDWgkQpHIOVQ7SXj3OT6Jvze5pr4dcNyDoozOsJ6Q==
+ b=euz7wP58wPLLTsdrVeAouKGsjTSAPHC/l4KVa0n/5RS+qNVqTm+LP/Xhc0Yg/6GGIr4S2r0mgB8K+n5K1CKFZ0Wv6gNsE1YAtitd7asgOD0cJ9RxfVSth/fLBd6VJQ/maJiibW18UZxpMzKH75pZcKxHxYD6mHMqN9vEosRgK0+KnCEJfT+O7G+08MikIUC63a3n7aWzXM0oz8iZcJttcFGNUCjrskxJn0MhT5RMgUlfStuOrc7xogqlXCKlUXo0T10bWGa6U16ATKZ9irTYCM6kEMm1bZbxSk0gBmdYz9CKnbNTMgtZQ9cVAPG25mWBJKIvyzl4N95kD/FuXqO3fA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
  s=arcselector10001;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=Ly/COslt995cMfTRFT2y5Hq+NlO4rCGv7moCdE2KUe0=;
- b=AqdwA+9MF+bLW7OrbysAAmvujcXAglXKGglysDXUuGe4CLMWSYZgJTqBFnqZjjqd7AMNXaYzm++spZGAESDiaHPrN/0b3vZtlrX7coR8paGlRioq1E5EkV8iZEwkpNuKi6n6gjlm8+PaUBaaUUsPsWWiOvvCfFGwBT7OIYPf5fnMLXwLnuAInIdp8bKHk9JSd2dfU78qIOHD06iIGGV0PuUDgVOO5ouVMrif9Mi/ZLN/eciKAoKLLg+qzNae0lVDF6m2ASe4WCcFN57sLZub1E0kCgtyUWA0E+aakSesykKAgZDfc2h+A2sfZQT8Cu6mhWtfY70LqcWVMGY7U2GFXw==
+ bh=YLh3qbry4TnrTdKx4ccYTK/Fi5KDO/milR4FSYxDxF8=;
+ b=rn0pmHoNWM5sqszgGm0ZdcG1lPeX8WEfyCD5fTtWYFqDcvH/JMZBRSqad9LdHKjFUdpoYzIBJ2faEtbTJlJz+0ZUKn+DciyphzeJ9Hy3rbzEJIj++vdwXPm87Huzj2aiY9ulUnFLYw1kBn3wYNxplLPMb+Bai9Nv9MgSCmpASqT8MdX081tztgjwbFDG5yoPZreG03dy+WCUP9vPqKUpKkl9syUFyBpQkv3pfUzS5uqfXGiFoDGlA+tzn1llpyChJrs01unh9WJUnDh8DkgrPGynMwn+/z/wFgv+ozAith30p7/VlvMWjoayS+pKQx0FcVg08+u0QSOSmFFnLIHMwA==
 ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
  smtp.mailfrom=aspeedtech.com; dmarc=pass action=none
  header.from=aspeedtech.com; dkim=pass header.d=aspeedtech.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=aspeedtech.com;
  s=selector1;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=Ly/COslt995cMfTRFT2y5Hq+NlO4rCGv7moCdE2KUe0=;
- b=pxxcZRfgsti9XTrfTRk+AnniVDVd8EMIGi7ZkiFinWUP6hz4q2FcEK2H0DXoNzMUXuVKrOMIIy9o+P3Z2JjaXyhpxJT6izzvM3bqZlVgUZZYEQQD0cQL3wXnkKBVFm0kj4srUqVfDRi08i5xLUu2RkqtOnd+Mv4pI3KUqfu1pQs9oDN0dqeBKvJRFkVPTgQGKunskDNR+FzpOstSZWjP2axoItEecbRKxMSOn+84EqIX/2mCJunrGiWcwxt3IZHcB+54JK9L1INNAIe56qjICzBBSFR5OEAHdFekZ/qHyoZwCXz5EwTrGuPBioJGkUHfziQmSbV89AselU7l7xWW2g==
+ bh=YLh3qbry4TnrTdKx4ccYTK/Fi5KDO/milR4FSYxDxF8=;
+ b=Dum0ivO8AL6KVXYPl3Udqc7CfJs7aCcj1+9NcFFG8634/jraoyaMyiwmFU42tKAYCJi1Hla7l9TqzMSM1g6VyWQV/E4eYzO0FcLPzhDdma3yjl8JoemOXh91mUsL7MQMCzf/j6H3tELmc8FMEXyQYGO3zBqbi+RQdfyU66n/AnNEegD0dl/miHh/V+Ibr75RNxwS3U5eyX4d9fu2SXsF94WSpkicqHs6nmoFOhzAPG3ietLkMY51YHGHcRPNUGbRv1cqPQ9h0pqjCLXQWftTft7v/7MIqu0Jk/wXAN0jdCMzisO/BaijvvJL1JgR+agQl/3vQsaHMBafK9O0349n9w==
 Received: from TYZPR06MB4980.apcprd06.prod.outlook.com (2603:1096:400:1cc::10)
  by KL1PR06MB6164.apcprd06.prod.outlook.com (2603:1096:820:d1::10)
  with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.21.360.13; Mon, 31 Aug
- 2026 03:42:02 +0000
+ 2026 03:41:59 +0000
 Received: from TYZPR06MB4980.apcprd06.prod.outlook.com
  ([fe80::ea8a:7cb7:4822:2fb3]) by TYZPR06MB4980.apcprd06.prod.outlook.com
  ([fe80::ea8a:7cb7:4822:2fb3%6]) with mapi id 15.21.0360.008; Mon, 31 Aug 2026
- 03:42:02 +0000
+ 03:41:59 +0000
 From: Jamin Lin <jamin_lin@aspeedtech.com>
 To: =?iso-8859-1?Q?Daniel_P=2E_Berrang=E9?= <berrange@redhat.com>,
  =?iso-8859-1?Q?C=E9dric_Le_Goater?= <clg@kaod.org>, Peter Maydell
@@ -54,12 +54,13 @@ To: =?iso-8859-1?Q?Daniel_P=2E_Berrang=E9?= <berrange@redhat.com>,
  <pbonzini@redhat.com>, "open list:All patches CC here"
  <qemu-devel@nongnu.org>, "open list:ASPEED BMCs" <qemu-arm@nongnu.org>
 CC: Jamin Lin <jamin_lin@aspeedtech.com>, Troy Lee <troy_lee@aspeedtech.com>
-Subject: [PATCH v3 6/9] hw/misc/aspeed_sbc: Support the ECDSA verify command
-Thread-Topic: [PATCH v3 6/9] hw/misc/aspeed_sbc: Support the ECDSA verify
- command
-Thread-Index: AQHdOPqu78cMyAsp+0Wr+ymnO58Ekw==
-Date: Mon, 31 Aug 2026 03:42:01 +0000
-Message-ID: <20260831034153.192916-7-jamin_lin@aspeedtech.com>
+Subject: [PATCH v3 4/9] hw/arm/aspeed_ast10x0: Remove obsolete unimplemented
+ SBC mapping
+Thread-Topic: [PATCH v3 4/9] hw/arm/aspeed_ast10x0: Remove obsolete
+ unimplemented SBC mapping
+Thread-Index: AQHdOPqtd5QUDj8ZqUSVCEfgziBplw==
+Date: Mon, 31 Aug 2026 03:41:59 +0000
+Message-ID: <20260831034153.192916-5-jamin_lin@aspeedtech.com>
 References: <20260831034153.192916-1-jamin_lin@aspeedtech.com>
 In-Reply-To: <20260831034153.192916-1-jamin_lin@aspeedtech.com>
 Accept-Language: zh-TW, en-US
@@ -70,61 +71,61 @@ authentication-results: dkim=none (message not signed)
  header.d=none;dmarc=none action=none header.from=aspeedtech.com;
 x-ms-publictraffictype: Email
 x-ms-traffictypediagnostic: TYZPR06MB4980:EE_|KL1PR06MB6164:EE_
-x-ms-office365-filtering-correlation-id: 54f4120d-3e46-4996-0637-08df0711d182
+x-ms-office365-filtering-correlation-id: e2b5121a-0708-4922-5430-08df0711d00a
 x-ms-exchange-senderadcheck: 1
 x-ms-exchange-antispam-relay: 0
 x-microsoft-antispam: BCL:0;
- ARA:13230040|1800799024|7416014|376014|23010399003|366016|921020|38070700021|6133799003|10067099003|56012099006|22082099003|18002099003;
-x-microsoft-antispam-message-info: PIlzsatofalAuR0dZgtumPJpdnmV6V/GqjzHft1RDhdPJjcjZGHGv7PRIjetzSPbLV4zSh5iXwORiVH0EDBtM0jVve4xEUYx7M/L8tXrlpkJxxIxh2KQQ+RI1/ekzafevYmBcjYfxQgoI5sY2pfgFLb6nAhQW3uzBH8KhqBHh52qfJp2Qf21LsvvySRCLpLCg6RkSsNDH0PbyHSVWGfeyA/QmndzWXldLKuitrceJum8MPeyC/0ShxOv4gZt/7rkcxhJBKfXbpmdOu5X/z85pHGMOxgodDAcp699vlkIo0pfgnYwsjefcsdoT6AeYetWEc7li3oRWK36LB7r0epV6+YwdJaTpNDUk29vstQAqE3otX3cDSYkN1vC9hjWWJbPK45J+SeiIpFL6V+RJJQTO227uRgJWkAn+s3ke3LgobJaOFDCOWEMBbSoE3pgjHuUNOryMnWdebDzyCeuoRsevPKzo0DS/pueh8OjmTNMukAIqe+5x8lljDw2l7X9MOYZz5jB3qDc0NGNU5QQPZt+9nRY6jUaRJXaDEGCC0hfllHQJkQBkL+KxGMgF+JESOXKLsFuQLEjk+KyCfSuF5mjuYLSHy8/Y/00g2O/rb3K+M1Bn4B9V+8GIDmGRCqPFmfDuCEOwiKDcmCB0a8m0us02zPHc796/uqpcZqXuwWOj7H8sWIq/pfBf1hL4eYlPBmndIoV0rUXh2ndJI16hd9H6pS+1IMuhbbMB7gMoFcmFwqkKbZl3ppgRmV0J2HDTDvY
+ ARA:13230040|1800799024|7416014|376014|23010399003|366016|921020|38070700021|10067099003|56012099006|22082099003|18002099003;
+x-microsoft-antispam-message-info: sXQGE8dyC0jqGlHsLU3D+t6iO9uDbFc+xFvYvyKcu9godQ9xoWMzMtls5bmgb+uRH+WCKHe7MiA0YHdURvFKLkAPZlzNUy0OHTl7QChlZXL9y+iMyVPzkt8szga1SQ4oiO6hoNL5WEid+iUWSLa8qYgI/aE8yDJIdu0UNdsXkRkjVhHQt4zX43c/RbcAaA9rLeHSwfZHQMuGf3I3N7aoEriIaDCGSIEoEKfCNZy0gzYak98M2FIvhxs4JSOS613Zoqr2F0z9YyTZmNq3LgtG4XC8N7KKwK7lSESdeFZGz8uFJ8uPBbEDKgi92C4N+yMVIiX8VAanUrm7T/T391ybxGgpqQ9uLILkAJ418hqfTNXlSpd5ZsAGt7N7E3Bv7JpwXBiy20lMFUl/lWIclNAn4V9ZNU6BSZALnvd7/5ni22/r6hq2aER/9YXWBYWc3BXEMvX/2OYxgOjxNa+qiF4+xaAKX+U4ASQTHO11SJzI1/b27j6jYRY2W9AXAV/lr5QEgwYL+Whn5aZsCtv0EvnZesD94Xt3djA8tby3y7KDurPBnZNrt+AS9CwXfkqgbWJMiON9xOGgejJBQIsJs+Q1YL52LfCE4wzvlg05sLSsaKFiTYpmWVH27EokeanyLPFJNFaz6mWHTD8xxZSBosHscQHmqkRgCDl25dDsPZ9Kpv5RcU7Nyy+kl3wp+UKT4P5Yh+mG6t7snQGRNwCtHIJAArAGRTbA83CHz/DSujmKgnY=
 x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
  IPV:NLI; SFV:NSPM; H:TYZPR06MB4980.apcprd06.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(13230040)(1800799024)(7416014)(376014)(23010399003)(366016)(921020)(38070700021)(6133799003)(10067099003)(56012099006)(22082099003)(18002099003);
+ SFS:(13230040)(1800799024)(7416014)(376014)(23010399003)(366016)(921020)(38070700021)(10067099003)(56012099006)(22082099003)(18002099003);
  DIR:OUT; SFP:1102; 
 x-ms-exchange-antispam-messagedata-chunkcount: 1
-x-ms-exchange-antispam-messagedata-0: =?iso-8859-1?Q?6J/sbAVtKWcW5/yKyIh4L5KqLwwrnphOI8OgN842BocIcM3EGZ9tTZrFDo?=
- =?iso-8859-1?Q?YVNWdIZmg0QyN8XRznp5Y0N3bqnFYskdm3kQdK0Ud8As/WZV/ZwC92tdR1?=
- =?iso-8859-1?Q?adOQUG3lQMNb6y+Se0lOBpNR/N51eKwm04KwIYY9EFN4cMtyPXnIkKGhsL?=
- =?iso-8859-1?Q?ooCRJGiEIGHiQbu2yH+FGonM3brauIxKmDL6VDG0LkOmla+xVTUjZnX6nS?=
- =?iso-8859-1?Q?b2QP0lvHTIGcZO0MxPKC7ik0udV3uZfvTwwqD49mjMxVI8QzE1FGxusXrN?=
- =?iso-8859-1?Q?B304bzZ6eRf+Ba6OADGE614nFOphKzMW7JNmlX0rW7QSaBJ/4b6vIdqyxb?=
- =?iso-8859-1?Q?YmaBANHIMidsSaj3wGvtJm1qoXL29jjcac5v06ZXoXKPoIeUQf4QZD2rm4?=
- =?iso-8859-1?Q?Ya+x4JVdp0SDFbQduMlbcF1SurQnMaFuOR/IcL4blkjqrDN01rvmQcNqpb?=
- =?iso-8859-1?Q?cj6VIOpZhSlweV3QOY+bMJ7oRE+EQTcWlJTv0IdBoqgbTeMw30qJ0kLw2/?=
- =?iso-8859-1?Q?HlUElU3rTn5MefoI7IV0a4HEgW6E9HmvCsbdIS3gol2Vb0trekvugvbYp2?=
- =?iso-8859-1?Q?zOl5NrFWN2OSsdJ29fdghmYYjLnZfU9tliDbeW9z+sMDbDvxAC5wdtlH5s?=
- =?iso-8859-1?Q?x+ItfSIGX926DcCSN+2peQGnAud7Se+zb+1cFD0pbsLDSawHacYJ3manaw?=
- =?iso-8859-1?Q?BXktXmZ1C+y4xDLxn91I5ZbNoJP7oJN6rcAG5t10e5TvxxvhY54cJ35E9d?=
- =?iso-8859-1?Q?YKzYPbMmAnzBwY3BgXpxW+3hM/43YIUX32aKazkHtDt6zgrRa72WZbO3d3?=
- =?iso-8859-1?Q?1UOacBh7xb6BxTDFXLHzLcDdpDhAj8VB6g/dQES3/N1hukEqfK1L6fJzij?=
- =?iso-8859-1?Q?SMMqFtUqsa3F3sjVfrHwBRU2gctF0tBIPrsKrw1hfCLQ4Iw6B4cdn5sLj8?=
- =?iso-8859-1?Q?f82NqTCVhbf3CzCPVEwo/93ycqBQGe8wdnHnaAu1s/Wo4mYwsRm+zmdH67?=
- =?iso-8859-1?Q?PD5cE77Iih9GAEv62hnHfVN8ZmIBWaphTEOl+D4aBAIU8wkKabv0kc44wI?=
- =?iso-8859-1?Q?76vj7QCfTNovMPf/w7hrH95bUey6tj4X327xECoZ68y/7DAkpHqHAnIgWN?=
- =?iso-8859-1?Q?uLUP0l5ghhL4bQGdlbL3iAzBX6Q3zrL3SDqJnzyLUPaRUemjBKeX2+m94u?=
- =?iso-8859-1?Q?DzWWz1fG9XTweGtVUHU2X/s2oPl3u+dOoZRHdGkNVK/RQtVbTuhTOw3/k6?=
- =?iso-8859-1?Q?RxAxZUIw6TCpNrJXNJNiA7UWPp136vBXLpHEYQnzHPy+bsCNV/CswegmQW?=
- =?iso-8859-1?Q?66+nN/jTSMjmrN7ETMdbgSTONlR7fkNBMD6hJN/TR9orZWECWoJTrGkZ96?=
- =?iso-8859-1?Q?vB8I1oJXbX5goTtYZZabBnnvEVsGDWKMzmhti7F5bAX+/Dl1bHqTt3sv+c?=
- =?iso-8859-1?Q?PwZoIkQ57V2GKDjw4v/7a0STqKU93v1opr6nUrRBtabAen7R1B5G4gGdC3?=
- =?iso-8859-1?Q?O94zkA4x3y/terjCscfqxij2XzAjniWMXh9I3iV9UDkyv8d88pi0tlenmr?=
- =?iso-8859-1?Q?vkmtrlsxjsEEEGMRxIGR/Mjj06Gqw8SGwDVrDjKDDutvzSl2q67daFougq?=
- =?iso-8859-1?Q?39VNjV/jsyO1MfGlWvrLTwqYL6OMa0xiDhoG/3/E/89SUty6U5fXu6v5Lv?=
- =?iso-8859-1?Q?MOREzbchH6eeZWH10ZYqDkdicVZx0Y54Tj9L1/hqvXvrIw90VKgp+pDOZ/?=
- =?iso-8859-1?Q?inD5VKbdwwO+hG+6HJszmZ3EHduNGG5RdCOw8UGp9zOlAj2utYcRziTo40?=
- =?iso-8859-1?Q?62IHuC7o2w=3D=3D?=
+x-ms-exchange-antispam-messagedata-0: =?iso-8859-1?Q?6212aCtio61YjgkYXnhUMuTTWLYFp6wbM783xKUV8QmlsugdorWRRCp6AV?=
+ =?iso-8859-1?Q?aqNAc1VWGecK8f9lL4pz4SjX5vQaihUXkBANJ18CExBaF7jT2X9m/vYmWJ?=
+ =?iso-8859-1?Q?Fx9kQm2mnhXeiGTPX9F6kLUGNnhY8VPY7gBHZscK2ilhxpARS6Dp0Yn7+l?=
+ =?iso-8859-1?Q?2KDtxDeMKfUMi/6cOAzR1JVCMVM8bXtZdsX2+X3XGTC7X/zK0/m1q9BqXV?=
+ =?iso-8859-1?Q?8XQlz2Nw+CBOCLuGp+qURsD9BDXl27EncFN759f8EK24g4oXgfk3MgtHcR?=
+ =?iso-8859-1?Q?Pcz5Jprm2EmGGRofrYjvcM+EoMc4w2YKtX0IOGKT29MdpbUblGoTlBkIGR?=
+ =?iso-8859-1?Q?VF6uoczjmgKJKLLhhw4xYK9s/FbbRMrS07eKRlYiUT7WJAuwlApUwNI3lR?=
+ =?iso-8859-1?Q?HM2fKVJpMhVDFoSddqpbdCRQZw9JOjmzcp8bPl7RV/nht+WfkMOL0R6ABP?=
+ =?iso-8859-1?Q?+4Wyp+rI2j8A/Uq3+kHNyHaC2BFMCpV8Rdiyz2dhsIST9IFugAM7S2GmPV?=
+ =?iso-8859-1?Q?axO48dIwkgNhGuwuBXVDOL+lPNyb/N20Z9EV14RRCZlVySL+mDJpPr2sFJ?=
+ =?iso-8859-1?Q?ponVNp1I7uKhwlp4+9zG4htTLt6vqr6ug9B53RaSZpUTX53rbWSYr4tzET?=
+ =?iso-8859-1?Q?9FP5xQU8ExoRVAZgq/0PmTDfzYYOmF/9oyWsuUPSJiLqcm1DMyl3U4KAA1?=
+ =?iso-8859-1?Q?hzWH6s4fELc/aBboF2cgRczPMvyB5RXXVTGFuvD6TnzqjE3oadXpOPiqFQ?=
+ =?iso-8859-1?Q?Rf7OIKY6e8Ye2/LGoUJDX5YuhDFdPt3nSDfZWtjF4lE8s3oFHEwYNic0Ou?=
+ =?iso-8859-1?Q?MS8obKEs17XmqFelsmA5Smw581IOZFWMys4n0Vqm9Q8eURW1xAn50XIIQ3?=
+ =?iso-8859-1?Q?lMWU5zA37DWk0e3Xn051EFFCy8SM1K/3pFIDGcKIshAcPbzqW5Ly78uodU?=
+ =?iso-8859-1?Q?30fI8XqGN+5J/emM6ME/rnA0Jn99CK/08pA2MWP8fYYsclnZM5Ac3xLKXj?=
+ =?iso-8859-1?Q?irSOlAAPeVV30SNFT3Ir92veJw7WLTVOpqwjwvqGhKqaqNPl3xo3uAo5l8?=
+ =?iso-8859-1?Q?jiahGp2a1Jo3Qj/OeG4xSFshXpLumY+eoSYyUNkd/wz82sC5hu04B1l4UA?=
+ =?iso-8859-1?Q?dB4GXo1dvxf2cVQBI7vwaPCpApJBo0WUToswJgkiv1wRzgXjllttC3VG0r?=
+ =?iso-8859-1?Q?esD0AaN+NaZSqQUzpHbFDIYIjyC7AJO5S1Hzp7M29tGqe2EABcevyV5NZ5?=
+ =?iso-8859-1?Q?npgMsbGdsOYn+opMAh27Iubr1bD1NUFsHRsZW/++43fez1nW2/n+Olyum6?=
+ =?iso-8859-1?Q?T+hXmNPbXB0W5OQkMcqUv6XwRjP2bVohZOOz4z09JV1t6h99w6VkOj+mA7?=
+ =?iso-8859-1?Q?nxwhCDHqG7rxyOO/a8xkoEgS0bREhYoqSIgvXju6kL1BkMkruqbD8JvoqD?=
+ =?iso-8859-1?Q?KHe2z3QndxJVEt+vWf7ZO+kJqMkcu8q+HSVqzvWEL6hxrgq0Z5YheLdA8N?=
+ =?iso-8859-1?Q?vRKipL5ooS+zYL4psGkS1q0PNSMnWAJ+m0aPC9iSgtjHeRxfCp3gKsLL+1?=
+ =?iso-8859-1?Q?MdRi8+8P2HAFKv/HeqjPJolzppGcgnZnfru4txKH59/FxAHDrEyp29112A?=
+ =?iso-8859-1?Q?ZUQHEqQ5DYpJ9vc+hPF3SF8rFVEo5WKR971+tVu+smxsXmz0JqpATa/fZv?=
+ =?iso-8859-1?Q?/mcPnzmxZ7+DbgalwYIE3R3eqxjm0BLgibYGVzb30wmaEEeYPb/8QaR6AT?=
+ =?iso-8859-1?Q?KJ7dTAZQP2+mfiWjv0aQMrVZEAHWHlk1Nd/V8EbdyXhXH5WVqxfKnNX4fv?=
+ =?iso-8859-1?Q?LkIDTjdLqA=3D=3D?=
 Content-Type: text/plain; charset="iso-8859-1"
 Content-Transfer-Encoding: quoted-printable
 MIME-Version: 1.0
-X-Exchange-RoutingPolicyChecked: ifOFVpHgAliSHb5hbyO6vfPg0fi2Me7MNrrHKyzRRuS8JcsTcTTzsp7W6USb95AOhHQshVtN9z10m3AkLEi8+WxTf15dJyCaI5NO3KEt2beKEGSpYMaQCMuuCGJGSNYIKkAdfqPnUkIStMNJsr0swUJpaohSucf10zSnR4Prpet49k1SZuwnkUWJvfEqxzUkR06cJDVhhsSo9/JRkfhxUjSMymHjRyg5HndvmH2MjrIKlwYRqN39gK+RioWwWZoBAwdw99YXw1R7cDkCF5+wwAxygumF9hE7rM+nSSNmtUo1bjfirGLfjiK3qwG68MgIAoJogU5aLymiafI0CGR9AA==
+X-Exchange-RoutingPolicyChecked: FsLJWe3douvVdKXDQ1BIrvzKzzcQzRSEEwe7alIBxmtmjeE4tE4bT66RU4Qx2Rjyec2JLV2jN/cdZ7xc5Ft/tIsiPLQ3/IXulzTkPnTd69A1Kdy0az+C+JK4ikAIGsfuagvbqLt4+dye/vLcgXAg4jdBOMxmTWRnDJ+sWyVZaDMuam3zmUEaeza/kzkeG6weHbYvpW/m0UXHQ2qS/Q6CbJCTkQOAANqSrLiS2FNSLmKGBYP3kozmd5d4v1ZlDO8pHFGAa1njX1uQF+kMPGqxkancGbOrbEuto7e92qvilxEiuW4zZ1IcDjQgZAmRL9YhagL4ofqGh3bk6mpy/Ufrrg==
 X-OriginatorOrg: aspeedtech.com
 X-MS-Exchange-CrossTenant-AuthAs: Internal
 X-MS-Exchange-CrossTenant-AuthSource: TYZPR06MB4980.apcprd06.prod.outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 54f4120d-3e46-4996-0637-08df0711d182
-X-MS-Exchange-CrossTenant-originalarrivaltime: 31 Aug 2026 03:42:02.0252 (UTC)
+X-MS-Exchange-CrossTenant-Network-Message-Id: e2b5121a-0708-4922-5430-08df0711d00a
+X-MS-Exchange-CrossTenant-originalarrivaltime: 31 Aug 2026 03:41:59.5915 (UTC)
 X-MS-Exchange-CrossTenant-fromentityheader: Hosted
 X-MS-Exchange-CrossTenant-id: 43d4aa98-e35b-4575-8939-080e90d5a249
 X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: +po2EAZGrn3ZXoTO+eAnXUzVugVf0+Qd1Jj4Hi62ZDjp5vYHGtZI2f6gtibhZDBP4IrtlO8Kncp8uSr0XCjniXb/gNtW4HPpKcploRF/DwQ=
+X-MS-Exchange-CrossTenant-userprincipalname: BUaJgVLR1Qo8ZJlxlXIsO0TEkWXhIrdvyr571p3Ki33ooBqvMfEg5udNPVzA5Xxiu20MyjdLMO879rV+EhobvgX9ojnWfwdv+9wSqAjhYaI=
 X-MS-Exchange-Transport-CrossTenantHeadersStamped: KL1PR06MB6164
 Received-SPF: pass client-ip=2a01:111:f403:c405::5;
  envelope-from=jamin_lin@aspeedtech.com;
@@ -151,311 +152,50 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-The AST10x0 secure boot controller register block also hosts an ECDSA=0A=
-engine. Emulate its secp384r1 "verify" command: on a trigger write to=0A=
-the command register, read the public key, signature and SHA-384 digest=0A=
-that the firmware staged in the SEC SRAM and defer the verification to the=
+The AST10x0 SoC now implements the SBC device model. However, the=0A=
+old unimplemented SBC mapping was left in place.=0A=
 =0A=
-crypto akcipher backend, reporting the result through the status=0A=
-register.=0A=
-=0A=
-The model reads its operands from the SEC SRAM through a dedicated=0A=
-address space, using a 'sram' link. The SEC SRAM is mapped at offset 0=0A=
-of that address space, so the engine addresses each operand directly=0A=
-with its SRAM-relative offset.=0A=
+Remove the obsolete mapping now that the SBC device is implemented.=0A=
 =0A=
 Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>=0A=
 ---=0A=
- include/hw/misc/aspeed_sbc.h |   4 +=0A=
- hw/misc/aspeed_sbc.c         | 152 +++++++++++++++++++++++++++++++++++=0A=
- hw/misc/trace-events         |   2 +=0A=
- 3 files changed, 158 insertions(+)=0A=
+ hw/arm/aspeed_ast10x0.c | 7 -------=0A=
+ 1 file changed, 7 deletions(-)=0A=
 =0A=
-diff --git a/include/hw/misc/aspeed_sbc.h b/include/hw/misc/aspeed_sbc.h=0A=
-index 07c7c22a86..8d3f9207fc 100644=0A=
---- a/include/hw/misc/aspeed_sbc.h=0A=
-+++ b/include/hw/misc/aspeed_sbc.h=0A=
-@@ -40,12 +40,16 @@ struct AspeedSBCState {=0A=
-     uint32_t regs[ASPEED_SBC_NR_REGS];=0A=
+diff --git a/hw/arm/aspeed_ast10x0.c b/hw/arm/aspeed_ast10x0.c=0A=
+index 93c81195b5..5165dcce59 100644=0A=
+--- a/hw/arm/aspeed_ast10x0.c=0A=
++++ b/hw/arm/aspeed_ast10x0.c=0A=
+@@ -163,8 +163,6 @@ static void aspeed_soc_ast10x0_init(Object *obj, const =
+char *socname)=0A=
+     object_initialize_child(obj, "hace", &s->hace, typename);=0A=
  =0A=
-     AspeedOTPState otp;=0A=
-+=0A=
-+    MemoryRegion *sram;=0A=
-+    AddressSpace sram_as;=0A=
- };=0A=
- =0A=
- struct AspeedSBCClass {=0A=
-     SysBusDeviceClass parent_class;=0A=
- =0A=
-     bool has_otp;=0A=
-+    bool has_ecdsa;=0A=
- };=0A=
- =0A=
- #endif /* ASPEED_SBC_H */=0A=
-diff --git a/hw/misc/aspeed_sbc.c b/hw/misc/aspeed_sbc.c=0A=
-index 1dfcf14e5b..aa167be4c0 100644=0A=
---- a/hw/misc/aspeed_sbc.c=0A=
-+++ b/hw/misc/aspeed_sbc.c=0A=
-@@ -10,11 +10,13 @@=0A=
- =0A=
- #include "qemu/osdep.h"=0A=
- #include "qemu/log.h"=0A=
-+#include "qemu/cutils.h"=0A=
- #include "qemu/error-report.h"=0A=
- #include "hw/core/qdev-properties.h"=0A=
- #include "hw/misc/aspeed_sbc.h"=0A=
- #include "qapi/error.h"=0A=
- #include "migration/vmstate.h"=0A=
-+#include "crypto/akcipher.h"=0A=
- #include "trace.h"=0A=
- =0A=
- #define R_PROT          (0x000 / 4)=0A=
-@@ -24,8 +26,22 @@=0A=
- #define R_CAMP1         (0x020 / 4)=0A=
- #define R_CAMP2         (0x024 / 4)=0A=
- #define R_QSR           (0x040 / 4)=0A=
-+#define R_SEC_TRIGGER   (0x0bc / 4)=0A=
-+=0A=
-+/*=0A=
-+ * SEC SRAM layout for a secp384r1 ECDSA verify operation. All operands ar=
-e=0A=
-+ * 48-byte big-endian values.=0A=
-+ */=0A=
-+#define ECDSA_SRAM_QX   0x2080=0A=
-+#define ECDSA_SRAM_QY   0x20c0=0A=
-+#define ECDSA_SRAM_R    0x21c0=0A=
-+#define ECDSA_SRAM_S    0x2200=0A=
-+#define ECDSA_SRAM_M    0x2240=0A=
-+#define ECDSA_P384_COORD_LEN    48=0A=
- =0A=
- /* R_STATUS */=0A=
-+#define ECDSA_VERIFY_PASS       BIT(21)=0A=
-+#define ECDSA_VERIFY_DONE       BIT(20)=0A=
- #define ABR_EN                  BIT(14) /* Mirrors SCU510[11] */=0A=
- #define ABR_IMAGE_SOURCE        BIT(13)=0A=
- #define SPI_ABR_IMAGE_SOURCE    BIT(12)=0A=
-@@ -42,6 +58,10 @@=0A=
- #define OTP_MEM_IDLE            BIT(1)=0A=
- #define OTP_COMPARE_STATUS      BIT(0)=0A=
- =0A=
-+/* R_SEC_TRIGGER */=0A=
-+#define ECDSA_CMD_TRIGGER BIT(1)=0A=
-+#define RSA_CMD_TRIGGER   BIT(0)=0A=
-+=0A=
- /* QSR */=0A=
- #define QSR_RSA_MASK           (0x3 << 12)=0A=
- #define QSR_HASH_MASK          (0x3 << 10)=0A=
-@@ -220,10 +240,111 @@ static void aspeed_sbc_handle_command(void *opaque, =
-uint32_t cmd)=0A=
-     s->regs[R_STATUS] |=3D (OTP_MEM_IDLE | OTP_IDLE);=0A=
- }=0A=
- =0A=
-+static void sbc_ecdsa_hexdump(const char *desc, const char *buf, size_t si=
-ze)=0A=
-+{=0A=
-+    g_autoptr(GString) str =3D g_string_sized_new(64);=0A=
-+    size_t len;=0A=
-+    size_t i;=0A=
-+=0A=
-+    for (i =3D 0; i < size; i +=3D len) {=0A=
-+        len =3D MIN(16, size - i);=0A=
-+        g_string_truncate(str, 0);=0A=
-+        qemu_hexdump_line(str, buf + i, len, 1, 4);=0A=
-+        trace_aspeed_sbc_ecdsa_hexdump(desc, i, str->str);=0A=
-+    }=0A=
-+}=0A=
-+=0A=
-+/*=0A=
-+ * The hardware only supports ECDSA secp384r1 (NIST P-384). The firmware h=
-as=0A=
-+ * already staged the public key, signature and digest in the SEC SRAM; re=
-ad=0A=
-+ * them out and defer the actual verification to the crypto backend.=0A=
-+ */=0A=
-+static bool aspeed_sbc_ecdsa_verify(AspeedSBCState *s)=0A=
-+{=0A=
-+    QCryptoAkCipherOptions opts =3D {=0A=
-+        .alg =3D QCRYPTO_AK_CIPHER_ALGO_ECDSA,=0A=
-+        .u.ecdsa.curve_id =3D QCRYPTO_CURVE_ID_SECP384R1,=0A=
-+    };=0A=
-+    g_autoptr(QCryptoAkCipher) akcipher =3D NULL;=0A=
-+    uint8_t pubkey[ECDSA_P384_COORD_LEN * 2];=0A=
-+    uint8_t sig[ECDSA_P384_COORD_LEN * 2];=0A=
-+    uint8_t dgst[ECDSA_P384_COORD_LEN];=0A=
-+    Error *err =3D NULL;=0A=
-+=0A=
-+    if (!qcrypto_akcipher_supports(&opts)) {=0A=
-+        qemu_log_mask(LOG_GUEST_ERROR,=0A=
-+                      "%s: ECDSA secp384r1 is not supported by the crypto =
-"=0A=
-+                      "backend\n", __func__);=0A=
-+        return false;=0A=
-+    }=0A=
-+=0A=
-+    if (address_space_read(&s->sram_as, ECDSA_SRAM_QX,=0A=
-+                           MEMTXATTRS_UNSPECIFIED, pubkey,=0A=
-+                           ECDSA_P384_COORD_LEN) !=3D MEMTX_OK) {=0A=
-+        qemu_log_mask(LOG_GUEST_ERROR,=0A=
-+                      "%s: failed to read ECDSA QX from SEC SRAM\n", __fun=
-c__);=0A=
-+        return false;=0A=
-+    }=0A=
-+    if (address_space_read(&s->sram_as, ECDSA_SRAM_QY,=0A=
-+                           MEMTXATTRS_UNSPECIFIED,=0A=
-+                           pubkey + ECDSA_P384_COORD_LEN,=0A=
-+                           ECDSA_P384_COORD_LEN) !=3D MEMTX_OK) {=0A=
-+        qemu_log_mask(LOG_GUEST_ERROR,=0A=
-+                      "%s: failed to read ECDSA QY from SEC SRAM\n", __fun=
-c__);=0A=
-+        return false;=0A=
-+    }=0A=
-+    if (address_space_read(&s->sram_as, ECDSA_SRAM_R,=0A=
-+                           MEMTXATTRS_UNSPECIFIED, sig,=0A=
-+                           ECDSA_P384_COORD_LEN) !=3D MEMTX_OK) {=0A=
-+        qemu_log_mask(LOG_GUEST_ERROR,=0A=
-+                      "%s: failed to read ECDSA R from SEC SRAM\n", __func=
-__);=0A=
-+        return false;=0A=
-+    }=0A=
-+    if (address_space_read(&s->sram_as, ECDSA_SRAM_S,=0A=
-+                           MEMTXATTRS_UNSPECIFIED, sig + ECDSA_P384_COORD_=
-LEN,=0A=
-+                           ECDSA_P384_COORD_LEN) !=3D MEMTX_OK) {=0A=
-+        qemu_log_mask(LOG_GUEST_ERROR,=0A=
-+                      "%s: failed to read ECDSA S from SEC SRAM\n", __func=
-__);=0A=
-+        return false;=0A=
-+    }=0A=
-+    if (address_space_read(&s->sram_as, ECDSA_SRAM_M,=0A=
-+                           MEMTXATTRS_UNSPECIFIED, dgst,=0A=
-+                           ECDSA_P384_COORD_LEN) !=3D MEMTX_OK) {=0A=
-+        qemu_log_mask(LOG_GUEST_ERROR,=0A=
-+                      "%s: failed to read ECDSA M from SEC SRAM\n",=0A=
-+                      __func__);=0A=
-+        return false;=0A=
-+    }=0A=
-+=0A=
-+    if (trace_event_get_state_backends(TRACE_ASPEED_SBC_ECDSA_HEXDUMP)) {=
-=0A=
-+        sbc_ecdsa_hexdump("pubkey", (char *)pubkey, sizeof(pubkey));=0A=
-+        sbc_ecdsa_hexdump("signature", (char *)sig, sizeof(sig));=0A=
-+        sbc_ecdsa_hexdump("digest", (char *)dgst, sizeof(dgst));=0A=
-+    }=0A=
-+=0A=
-+    akcipher =3D qcrypto_akcipher_new(&opts, QCRYPTO_AK_CIPHER_KEY_TYPE_PU=
-BLIC,=0A=
-+                                    pubkey, sizeof(pubkey), &err);=0A=
-+    if (!akcipher) {=0A=
-+        qemu_log_mask(LOG_GUEST_ERROR, "%s: %s\n", __func__,=0A=
-+                      error_get_pretty(err));=0A=
-+        error_free(err);=0A=
-+        return false;=0A=
-+    }=0A=
-+=0A=
-+    if (qcrypto_akcipher_verify(akcipher, sig, sizeof(sig),=0A=
-+                                dgst, sizeof(dgst), &err) !=3D 0) {=0A=
-+        error_free(err);=0A=
-+        return false;=0A=
-+    }=0A=
-+=0A=
-+    return true;=0A=
-+}=0A=
-+=0A=
- static void aspeed_sbc_write(void *opaque, hwaddr addr, uint64_t data,=0A=
-                               unsigned int size)=0A=
- {=0A=
-     AspeedSBCState *s =3D ASPEED_SBC(opaque);=0A=
-+    AspeedSBCClass *sc =3D ASPEED_SBC_GET_CLASS(s);=0A=
- =0A=
-     addr >>=3D 2;=0A=
- =0A=
-@@ -244,6 +365,26 @@ static void aspeed_sbc_write(void *opaque, hwaddr addr=
-, uint64_t data,=0A=
-     case R_CMD:=0A=
-         aspeed_sbc_handle_command(opaque, data);=0A=
-         return;=0A=
-+    case R_SEC_TRIGGER:=0A=
-+        if (data & RSA_CMD_TRIGGER) {=0A=
-+            qemu_log_mask(LOG_UNIMP,=0A=
-+                          "%s: RSA is not supported\n", __func__);=0A=
-+        }=0A=
-+        if (data & ECDSA_CMD_TRIGGER) {=0A=
-+            if (!sc->has_ecdsa) {=0A=
-+                qemu_log_mask(LOG_GUEST_ERROR,=0A=
-+                              "%s: ECDSA is not supported\n", __func__);=
-=0A=
-+                return;=0A=
-+            }=0A=
-+            s->regs[R_STATUS] &=3D ~(ECDSA_VERIFY_DONE | ECDSA_VERIFY_PASS=
+     object_initialize_child(obj, "iomem", &s->iomem, TYPE_UNIMPLEMENTED_DE=
+VICE);=0A=
+-    object_initialize_child(obj, "sbc-unimplemented", &s->sbc_unimplemente=
+d,=0A=
+-                            TYPE_UNIMPLEMENTED_DEVICE);=0A=
+     object_initialize_child(obj, "pwm", &s->pwm, TYPE_UNIMPLEMENTED_DEVICE=
 );=0A=
-+            if (aspeed_sbc_ecdsa_verify(s)) {=0A=
-+                s->regs[R_STATUS] |=3D ECDSA_VERIFY_PASS;=0A=
-+            }=0A=
-+            s->regs[R_STATUS] |=3D ECDSA_VERIFY_DONE;=0A=
-+            trace_aspeed_sbc_ecdsa_verify(=0A=
-+                (s->regs[R_STATUS] & ECDSA_VERIFY_PASS) ? "pass" : "fail")=
-;=0A=
-+        }=0A=
-+        return;=0A=
-     default:=0A=
-         break;=0A=
-     }=0A=
-@@ -306,6 +447,14 @@ static void aspeed_sbc_realize(DeviceState *dev, Error=
- **errp)=0A=
-         }=0A=
-     }=0A=
- =0A=
-+    if (sc->has_ecdsa) {=0A=
-+        if (!s->sram) {=0A=
-+            error_setg(errp, TYPE_ASPEED_SBC ": 'sram' link not set");=0A=
-+            return;=0A=
-+        }=0A=
-+        address_space_init(&s->sram_as, s->sram, TYPE_ASPEED_SBC ".sram");=
+     object_initialize_child(obj, "espi", &s->espi, TYPE_UNIMPLEMENTED_DEVI=
+CE);=0A=
+     object_initialize_child(obj, "udc", &s->udc, TYPE_UNIMPLEMENTED_DEVICE=
+);=0A=
+@@ -222,11 +220,6 @@ static bool aspeed_soc_ast10x0_realize(Aspeed10x0SoCSt=
+ate *a, Error **errp)=0A=
+                                   "aspeed.io",=0A=
+                                   sc->memmap[ASPEED_DEV_IOMEM],=0A=
+                                   ASPEED_SOC_IOMEM_SIZE);=0A=
+-    aspeed_mmio_map_unimplemented(s->memory,=0A=
+-                                  SYS_BUS_DEVICE(&s->sbc_unimplemented),=
 =0A=
-+    }=0A=
-+=0A=
-     memory_region_init_io(&s->iomem, OBJECT(s), &aspeed_sbc_ops, s,=0A=
-             TYPE_ASPEED_SBC, 0x1000);=0A=
- =0A=
-@@ -325,6 +474,8 @@ static const VMStateDescription vmstate_aspeed_sbc =3D =
-{=0A=
- static const Property aspeed_sbc_properties[] =3D {=0A=
-     DEFINE_PROP_BOOL("emmc-abr", AspeedSBCState, emmc_abr, 0),=0A=
-     DEFINE_PROP_UINT32("signing-settings", AspeedSBCState, signing_setting=
-s, 0),=0A=
-+    DEFINE_PROP_LINK("sram", AspeedSBCState, sram,=0A=
-+                     TYPE_MEMORY_REGION, MemoryRegion *),=0A=
- };=0A=
- =0A=
- static void aspeed_sbc_class_init(ObjectClass *klass, const void *data)=0A=
-@@ -355,6 +506,7 @@ static void aspeed_ast10x0_sbc_class_init(ObjectClass *=
-klass, const void *data)=0A=
- =0A=
-     dc->desc =3D "AST10X0 Secure Boot Controller";=0A=
-     sc->has_otp =3D true;=0A=
-+    sc->has_ecdsa =3D true;=0A=
- }=0A=
- =0A=
- static const TypeInfo aspeed_sbc_types[] =3D {=0A=
-diff --git a/hw/misc/trace-events b/hw/misc/trace-events=0A=
-index bbec0d2178..735d11d447 100644=0A=
---- a/hw/misc/trace-events=0A=
-+++ b/hw/misc/trace-events=0A=
-@@ -95,6 +95,8 @@ aspeed_sbc_ignore_cmd(uint32_t cmd) "Ignoring command 0x%=
-" PRIx32=0A=
- aspeed_sbc_handle_cmd(uint32_t cmd, uint32_t addr, bool ret) "Handling com=
-mand 0x%" PRIx32 " for OTP addr 0x%" PRIx32 " Result: %d"=0A=
- aspeed_sbc_otp_read(uint32_t addr, uint32_t value) "OTP Memory read: addr =
-0x%" PRIx32 " value 0x%" PRIx32=0A=
- aspeed_sbc_otp_prog(uint32_t addr, uint32_t value) "OTP Memory write: addr=
- 0x%" PRIx32 " value 0x%" PRIx32=0A=
-+aspeed_sbc_ecdsa_verify(const char *result) "ECDSA verify done: %s"=0A=
-+aspeed_sbc_ecdsa_hexdump(const char *desc, uint32_t offset, const char *s)=
- "%s: 0x%08x: %s"=0A=
- =0A=
- # aspeed_scu.c=0A=
- aspeed_scu_write(uint64_t offset, unsigned size, uint32_t data) "To 0x%" P=
-RIx64 " of size %u: 0x%" PRIx32=0A=
+-                                  "aspeed.sbc", sc->memmap[ASPEED_DEV_SBC]=
+,=0A=
+-                                  0x40000);=0A=
+-=0A=
+     /* AST10x0 CPU Core */=0A=
+     armv7m =3D DEVICE(&a->armv7m);=0A=
+     qdev_prop_set_uint32(armv7m, "num-irq", 256);=0A=
 -- =0A=
 2.53.0=0A=
 

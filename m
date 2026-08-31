@@ -4,127 +4,111 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A17CEC624A5
-	for <qemu-arm@archiver.kernel.org>; Mon, 31 Aug 2026 08:04:11 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 22FCEC61DE2
+	for <qemu-arm@archiver.kernel.org>; Mon, 31 Aug 2026 08:22:28 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1x0wzr-0002Gp-Q2; Mon, 31 Aug 2026 04:04:04 -0400
+	id 1x0xHT-00070n-HA; Mon, 31 Aug 2026 04:22:15 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1x0wzp-0002GX-Bg
- for qemu-arm@nongnu.org; Mon, 31 Aug 2026 04:04:01 -0400
-Received: from smtpout6.mo539.mail-out.ovh.net ([51.210.91.45])
+ (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
+ id 1x0xHR-0006zm-C7
+ for qemu-arm@nongnu.org; Mon, 31 Aug 2026 04:22:13 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1x0wzn-0002tO-IB
- for qemu-arm@nongnu.org; Mon, 31 Aug 2026 04:04:01 -0400
-Received: from director4.derp.mail-out.ovh.net
- (director4.derp.mail-out.ovh.net [79.137.60.37])
- by mo539.mail-out.ovh.net (Postfix) with ESMTPS id 4hYM2P0Ng7z41xm;
- Mon, 31 Aug 2026 08:03:57 +0000 (UTC)
-Received: from director4.derp.mail-out.ovh.net
- (director4.derp.mail-out.ovh.net. [127.0.0.1])
- by director4.derp.mail-out.ovh.net (inspect_sender_mail_agent) with SMTP
- for <jamin_lin@aspeedtech.com>; Mon, 31 Aug 2026 08:03:56 +0000 (UTC)
-Received: from mta2.priv.ovhmail-u2.ea.mail.ovh.net (unknown [10.110.113.129])
- by director4.derp.mail-out.ovh.net (Postfix) with ESMTPS id
- 4hYM2N6J2tz1xv1; Mon, 31 Aug 2026 08:03:56 +0000 (UTC)
-Received: from kaod.org (unknown [10.1.6.1])
- (Authenticated sender: clg@kaod.org)
- by mta2.priv.ovhmail-u2.ea.mail.ovh.net (Postfix) with ESMTPSA id 0437E941BCE; 
- Mon, 31 Aug 2026 08:03:54 +0000 (UTC)
-Authentication-Results: garm.ovh; auth=pass
- (GARM-104R00586932015-059f-40bb-a56c-9c0d6a7860b0,
- 20713A92955D5A277E4AF24F7FE8A47CC1774BFC) smtp.auth=clg@kaod.org
-X-OVh-ClientIp: 82.64.250.170
-Message-ID: <7d141b4c-8f72-4414-b2ee-316711a1a26f@kaod.org>
-Date: Mon, 31 Aug 2026 10:03:54 +0200
+ (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
+ id 1x0xHP-0007fZ-3L
+ for qemu-arm@nongnu.org; Mon, 31 Aug 2026 04:22:12 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1788164530;
+ h=from:from:reply-to:reply-to:subject:subject:date:date:
+ message-id:message-id:to:to:cc:cc:mime-version:mime-version:
+ content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=L8Ldt1YBVISozb9qkOKpxIhlCDL59wdrai+nFgDmB7Q=;
+ b=DmjPahOW3fJX8xpqCaPwk6+7846Z14rL/KhPLF8odScl4bBo1WN28kX3R5A8PGa9MYlOlC
+ SUUw5c+yWeUUlibhAd7o0dYx52UausSpDZ2rEnPuvTnRs8ILRQ6LrtMUqxL5IOCVrIKuQg
+ LoMXYLn0Hf8GaMpRqPtaYPmnNx9T2F4=
+Received: from mail-wm1-f71.google.com (mail-wm1-f71.google.com
+ [209.85.128.71]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-588-LvRC05IAPgO7d2RWImZD_Q-1; Mon, 31 Aug 2026 04:22:07 -0400
+X-MC-Unique: LvRC05IAPgO7d2RWImZD_Q-1
+X-Mimecast-MFC-AGG-ID: LvRC05IAPgO7d2RWImZD_Q_1788164527
+Received: by mail-wm1-f71.google.com with SMTP id
+ 5b1f17b1804b1-49545071724so26136675e9.0
+ for <qemu-arm@nongnu.org>; Mon, 31 Aug 2026 01:22:07 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20251104; t=1788164527; x=1788769327;
+ h=content-transfer-encoding:content-type:in-reply-to:from:references
+ :cc:to:content-language:subject:reply-to:user-agent:mime-version
+ :date:message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+ :message-id:reply-to:content-type;
+ bh=L8Ldt1YBVISozb9qkOKpxIhlCDL59wdrai+nFgDmB7Q=;
+ b=rzZx459YQPPSWZz+s70PHqa1uJCMQb6PDpPuwkh5/fEy940Z32hQp4bW3A8XIF3sA/
+ p1CSDHSka0scZj0tfe6pUBXcY51vtuJMX4cz28EeFS9Gvxfewgq0eC+w8jr09qKSjQeo
+ vgIMAIjGLBvWaOvzJgp4MUQr2qwwSYokKocZxLzXK/++FY7yQBqzgWyGFurAeQ88kPUt
+ KWmj141Xx7Crm8pWLM5hOLNF4WQrzxTPORZTDCl31PoxCLcLMGWUqha4DzoUguQjK4Nj
+ g9GQN1cMgJJj6VeLrrdDe323Jb/KeITbibC9xfl1rqH1TNjX2LuXvB6QT6AfjG3DV3NH
+ XGgA==
+X-Forwarded-Encrypted: i=1;
+ AHgh+RrXAVCcZifH8zbbVKKDNXPuARI6LeYhNvIg/V6CauoiQCluKl7j8W3/XFtJMpdBfc1G1bgrHj0gXw==@nongnu.org
+X-Gm-Message-State: AFuF++lVO4N7pZxOQ014TTBuF20rFAzwaTAICe958lH1T6pgNQV72Vs3
+ TwNAZVYR26oaYaUwKMzzybzPz8mWCZNQ6vDhaS7XKy99lAZX9WASpBVw3lBcxlUxgMdCa3flpYD
+ apnN59Jojb81rU9RLjHkYD4401jdE7AQqPrMn9shx4ybx0rDKLsjlCg==
+X-Gm-Gg: AR+sD10vlam+g6R1ylkhcod66R3GIGAm77u95z9moMHQCV4DqwpuIDVD23N5TbJjAEh
+ 71kaWspva+1v2uchnRUTE2TI8EV8sbSSFTsbxsoB12VK1217lh6D8AN8UC01AUnINZIAqHkT6Ya
+ vbk6W5qf+tzMf7MtKSOehsVpJViGrnL1w8uTVZ2h6sRwZGtNlSyyLPwtDdQt/ESJcVQJNiFH+/C
+ lqEcDJ2cALcOJkanDWMB73tYorCD6E+a6aXD0tBOCWYYzDenVBLqarj7QMqxdp406mCySIU6zYK
+ mCTukt16IPan9kKltYq0i0+ZgxSLHctKTQOJksa5lhE0LpYnxyQTSje12MFLAP4UN4iE5gwA8vb
+ xLhcOLuedQPXTGzArZByawTFv2Eif3r/9pLB9i/cf6lw85Vij
+X-Received: by 2002:a05:600c:4744:b0:499:8b13:3a98 with SMTP id
+ 5b1f17b1804b1-49b91c2479amr364442865e9.4.1788164526602; 
+ Mon, 31 Aug 2026 01:22:06 -0700 (PDT)
+X-Received: by 2002:a05:600c:4744:b0:499:8b13:3a98 with SMTP id
+ 5b1f17b1804b1-49b91c2479amr364441805e9.4.1788164526116; 
+ Mon, 31 Aug 2026 01:22:06 -0700 (PDT)
+Received: from ?IPV6:2a01:e0a:f0e:9070:527b:9dff:feef:3874?
+ ([2a01:e0a:f0e:9070:527b:9dff:feef:3874])
+ by smtp.gmail.com with ESMTPSA id
+ ffacd0b85a97d-482fbad08d2sm23127779f8f.16.2026.08.31.01.22.04
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Mon, 31 Aug 2026 01:22:05 -0700 (PDT)
+Message-ID: <33586975-6707-42d9-8744-d3cc70a38fb2@redhat.com>
+Date: Mon, 31 Aug 2026 10:22:04 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v3 7/9] hw/misc/aspeed_sbc: Increase register space to
- 0x1000
-To: Jamin Lin <jamin_lin@aspeedtech.com>,
- =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>,
- Peter Maydell <peter.maydell@linaro.org>,
- Steven Lee <steven_lee@aspeedtech.com>, Troy Lee <leetroy@gmail.com>,
- Kane Chen <kane_chen@aspeedtech.com>,
- Andrew Jeffery <andrew@codeconstruct.com.au>, Joel Stanley <joel@jms.id.au>,
- Eric Blake <eblake@redhat.com>, Markus Armbruster <armbru@redhat.com>,
- Fabiano Rosas <farosas@suse.de>, Laurent Vivier <lvivier@redhat.com>,
- Paolo Bonzini <pbonzini@redhat.com>,
- "open list:All patches CC here" <qemu-devel@nongnu.org>,
- "open list:ASPEED BMCs" <qemu-arm@nongnu.org>
-Cc: Troy Lee <troy_lee@aspeedtech.com>
-References: <20260831034153.192916-1-jamin_lin@aspeedtech.com>
- <20260831034153.192916-8-jamin_lin@aspeedtech.com>
-From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
-Content-Language: en-US, fr
-Autocrypt: addr=clg@kaod.org; keydata=
- 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
-In-Reply-To: <20260831034153.192916-8-jamin_lin@aspeedtech.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-x-ovh-tracer-id: 3849451782853798957
-X-VR-SPAMSTATE: OK
-X-VR-SPAMSCORE: -100
-X-VR-SPAMCAUSE: dmFkZTFsqCKVDCrq+AJDwjAG6zTpVQ1I1Zq/Vxy1uQLlt5jEHVxapc3EMiHRQo+n1VF4/YzjbgmbhMWMRed5QvtZ0MDlSE0FcRTF5ZvEQpNdtZHGv7mdcZurSGdYADSw5njf1gT1oqch5Qj6A1MXX/gptvaiVZHTHdVS/B1Xom54tNmUVPBerUjnA8TUCcUmcaLmvaa35q/hyxaRZadYZsHcOZYQO/QCGuMjRQNgg0X2CFCwm36XSwur6OJ2cUKJ4sIBTrD1O05cPg96c/96NhBVzXn7aPAo6MBOTqx7SvYWFKOvcTwESPQAd+zD3M8yljl4FmdIS/atMes0NIoZCIjRkbrKSIsmjaN7+kEOtrfkqgQiNHlYBeTM3KsJyfgk6eL3yjfC0A6LlD7p7UnZV/qrXelduXOC2royvj6fhVnMxvci5D1WgAB5XvBouwFXgtVWT1YqYiXFr8khpCWGDxIHIGMFKGFcFNg+RYmb2Z375oe/ZHKTPV/ecZ/C6/uyn6umilSY/5z2Y/1z5pDRZ3qfoZPyy0cHUKVfLdCImHLvbyS2uyDTh9SA0WmSn4Z9NHnWpm1ZHkFgLAWn2vST8/q4tT7O7jxfFyY41Pcn8vMu5UEwB6tzGFef7EIieuCIggoRN1xvpCznKNDUXwPTfyznIZc0YCqAKxKycGAXKP9PH46upA
-DKIM-Signature: a=rsa-sha256; bh=PFpipJLBeSdILC6t0pkAsFVuVnwACi0GX+3uRYEOCpM=; 
- c=relaxed/relaxed; d=kaod.org; h=From; s=ovhmo393970-selector1;
- t=1788163437; v=1;
- b=JfjrXQchHaTIRr7GwvyhOXW9kvkq/aKVyqTiuJFFyLD/UW5QVikEGPRb5LiIZSah1JLcCeY+
- 1uz279GrzB0db3mqZtBozOsf/maNAypGmCWDUfUbTK3aC4zVdBWcnjettx8EQ7DpsG99xhs+ZOR
- HX8J/aG0eOhpgw2jYuwc3y8bzbU8hAAcnGg3ZLP7/qIQemWdj607Lqh6x5P7cfnIBCXHTF695S6
- v8V5F5wM3sZ+ccgad7y/Dl3+AQVOyBE9oLNe9F0Bo3dcD+o7n86LrjSI6pHyQJCZK3qcZSxgj1L
- OqzzsZvadP7NATamTWx2SOJ5HId2iQxja/Q6V/9vx8LbQ==
-Received-SPF: pass client-ip=51.210.91.45; envelope-from=clg@kaod.org;
- helo=smtpout6.mo539.mail-out.ovh.net
+Subject: Re: [RFC v5 24/28] hw/arm/smmuv3: Select sec-sid from PCI property
+ and validate SECURE_IMPL
+To: Tao Tang <tangtao1634@phytium.com.cn>,
+ Peter Maydell <peter.maydell@linaro.org>
+Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org,
+ Chen Baozi <chenbaozi@phytium.com.cn>,
+ Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>,
+ =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@mailo.com>,
+ Mostafa Saleh <smostafa@google.com>, Chao Liu <chao.liu@processmission.com>,
+ Jim MacArthur <jim.macarthur@linaro.org>
+References: <20260813161515.2788900-1-tangtao1634@phytium.com.cn>
+ <20260813162624.2809349-3-tangtao1634@phytium.com.cn>
+From: Eric Auger <eric.auger@redhat.com>
+In-Reply-To: <20260813162624.2809349-3-tangtao1634@phytium.com.cn>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-MFC-PROC-ID: exATbxj-zY0yilLyPb9ugN1cetAdqPoPoS3JNHHMUQI_1788164527
+X-Mimecast-Originator: redhat.com
+Content-Language: en-US
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=170.10.133.124;
+ envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=-0.01, RCVD_IN_MSPIKE_WL=-0.01,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -137,68 +121,260 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Reply-To: eric.auger@redhat.com
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On 8/31/26 05:42, Jamin Lin wrote:
-> The SBC controller register space is 0x1000.
-> Increase ASPEED_SBC_NR_REGS accordingly to cover the
-> full register space.
-> 
-> Bump the VMState version to 2.
+Hi Tao,
 
-Which means QEMU cannot load a migration stream from any older QEMU
-version. Just add that migration compatibilty is broken.
-
-That's ok, Aspeed machines are not intended for virtualization use
-case.
-
-Thanks,
-
-C.
-
-> 
-> Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
+On 8/13/26 6:26 PM, Tao Tang wrote:
+> Parse each PCI device's sec-sid property during SMMU device initialization
+> and cache it in SMMUDevice::sec_sid. Support "non-secure" and "secure",
+> default to non-secure when unspecified, and reject invalid values with an
+> explicit error. Use sdev->sec_sid in smmuv3_translate() to select the
+> register bank instead of hardcoding the non-secure context.
+>
+> Keep sec-sid parsing in smmu-common, and add a SMMUv3-specific validation
+> hook to enforce architectural constraints: fail fast when sec-sid=secure
+> while SMMU_S_IDR1.SECURE_IMPL is 0 or secure AS is not available.
+>
+> Typically, SEC_SID is a system-defined attribute (e.g. sideband or tied-off)
+> rather than something a PCIe endpoint can freely toggle in pre-RME scenario.
+> So this PCI sec-sid property is used as a static platform/testing knob to
+> drive the SMMU bank selection.
+>
+> For future RME-DA and TDISP support, this static property will need to be
+> replaced by runtime platform plumbing that derives the effective SEC_SID
+> from the device security assignment.
+>
+> Signed-off-by: Tao Tang <tangtao1634@phytium.com.cn>
+> Reviewed-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
 > ---
->   include/hw/misc/aspeed_sbc.h | 2 +-
->   hw/misc/aspeed_sbc.c         | 6 +++---
->   2 files changed, 4 insertions(+), 4 deletions(-)
-> 
-> diff --git a/include/hw/misc/aspeed_sbc.h b/include/hw/misc/aspeed_sbc.h
-> index 8d3f9207fc..756c612356 100644
-> --- a/include/hw/misc/aspeed_sbc.h
-> +++ b/include/hw/misc/aspeed_sbc.h
-> @@ -17,7 +17,7 @@
->   #define TYPE_ASPEED_AST10X0_SBC TYPE_ASPEED_SBC "-ast10x0"
->   OBJECT_DECLARE_TYPE(AspeedSBCState, AspeedSBCClass, ASPEED_SBC)
->   
-> -#define ASPEED_SBC_NR_REGS (0x93c >> 2)
-> +#define ASPEED_SBC_NR_REGS (0x1000 >> 2)
->   
->   #define QSR_AES                     BIT(27)
->   #define QSR_RSA1024                 (0x0 << 12)
-> diff --git a/hw/misc/aspeed_sbc.c b/hw/misc/aspeed_sbc.c
-> index aa167be4c0..5c193d9086 100644
-> --- a/hw/misc/aspeed_sbc.c
-> +++ b/hw/misc/aspeed_sbc.c
-> @@ -456,15 +456,15 @@ static void aspeed_sbc_realize(DeviceState *dev, Error **errp)
->       }
->   
->       memory_region_init_io(&s->iomem, OBJECT(s), &aspeed_sbc_ops, s,
-> -            TYPE_ASPEED_SBC, 0x1000);
-> +            TYPE_ASPEED_SBC, ASPEED_SBC_NR_REGS << 2);
->   
->       sysbus_init_mmio(sbd, &s->iomem);
->   }
->   
->   static const VMStateDescription vmstate_aspeed_sbc = {
->       .name = TYPE_ASPEED_SBC,
-> -    .version_id = 1,
-> -    .minimum_version_id = 1,
-> +    .version_id = 2,
-> +    .minimum_version_id = 2,
->       .fields = (const VMStateField[]) {
->           VMSTATE_UINT32_ARRAY(regs, AspeedSBCState, ASPEED_SBC_NR_REGS),
->           VMSTATE_END_OF_LIST(),
+>  hw/arm/smmu-common.c         | 37 ++++++++++++++++++++++
+>  hw/arm/smmuv3.c              | 61 +++++++++++++++++++++++++++++++++++-
+>  include/hw/arm/smmu-common.h |  2 ++
+>  3 files changed, 99 insertions(+), 1 deletion(-)
+>
+> diff --git a/hw/arm/smmu-common.c b/hw/arm/smmu-common.c
+> index e8a1ed65c19..4a94799fb0d 100644
+> --- a/hw/arm/smmu-common.c
+> +++ b/hw/arm/smmu-common.c
+> @@ -21,6 +21,7 @@
+>  #include "exec/target_page.h"
+>  #include "hw/core/cpu.h"
+>  #include "hw/pci/pci_bridge.h"
+> +#include "hw/pci/pci_device.h"
+>  #include "hw/core/qdev-properties.h"
+>  #include "qapi/error.h"
+>  #include "qemu/jhash.h"
+> @@ -1100,14 +1101,50 @@ SMMUPciBus *smmu_find_smmu_pcibus(SMMUState *s, uint8_t bus_num)
+>      return NULL;
+>  }
+>  
+> +static SMMUSecSID smmu_parse_pci_sec_sid(PCIDevice *pdev, int bus_num,
+> +                                         int devfn)
+> +{
+> +    const char *sec_sid;
+> +
+> +    if (!pdev || !pdev->sec_sid) {
+> +        return SMMU_SEC_SID_NS;
+> +    }
+> +
+> +    sec_sid = pdev->sec_sid;
+> +    if (!strcmp(sec_sid, "non-secure")) {
+> +        return SMMU_SEC_SID_NS;
+> +    }
+else if?
+> +    if (!strcmp(sec_sid, "secure")) {
+> +        return SMMU_SEC_SID_S;
+> +    }
+> +
+> +    error_report("Invalid sec-sid value '%s' for PCI device %02x:%02x.%x; "
+> +                 "allowed values: non-secure or secure (case-sensitive)",
+To me this is not the place where pci property validation should happen.
+This should happen in the pcie device instead, on property setting.
+> +                 sec_sid, bus_num, PCI_SLOT(devfn), PCI_FUNC(devfn));
+> +    exit(EXIT_FAILURE);
+> +}
+> +
+>  void smmu_init_sdev(SMMUState *s, SMMUDevice *sdev, PCIBus *bus, int devfn)
+>  {
+>      static unsigned int index;
+>      g_autofree char *name = g_strdup_printf("%s-%d-%d", s->mrtypename, devfn,
+>                                              index++);
+> +    SMMUBaseClass *sbc = ARM_SMMU_GET_CLASS(s);
+> +    PCIDevice *pdev;
+> +    int bus_num;
+> +
+>      sdev->smmu = s;
+>      sdev->bus = bus;
+>      sdev->devfn = devfn;
+> +    sdev->sec_sid = SMMU_SEC_SID_NS;
+do we need this init? smmu_parse_pci_sec_sid() already implements the
+default.
+> +
+> +    bus_num = pci_bus_num(bus);
+> +    pdev = pci_find_device(bus, bus_num, devfn);
+> +    sdev->sec_sid = smmu_parse_pci_sec_sid(pdev, bus_num, devfn);
+> +    if (sbc->validate_sec_sid &&
+> +        !sbc->validate_sec_sid(s, sdev, bus_num)) {
+> +        exit(EXIT_FAILURE);
+The problem is any attempt to hotplu a secure device will exit QEMU.
+I wonder if we shouldn't implement a PCIIOMMUOps that detects the
+incompatibility.
+Maybe supports_address_space() could do that. At the moment it is used
+to check accel mode only but another implementation could check secure
+compatibility I think. The advantage is this callback passes an errp.
+> +    }
+>  
+>      memory_region_init_iommu(&sdev->iommu, sizeof(sdev->iommu),
+>                               s->mrtypename, OBJECT(s), name, UINT64_MAX);
+> diff --git a/hw/arm/smmuv3.c b/hw/arm/smmuv3.c
+> index e5f0bc18415..a755f1ebd69 100644
+> --- a/hw/arm/smmuv3.c
+> +++ b/hw/arm/smmuv3.c
+> @@ -43,6 +43,12 @@
+>                                          ((ptw_info).stage == SMMU_STAGE_2 && \
+>                                          (cfg)->s2cfg.record_faults))
+>  
+> +enum {
+> +    SMMU_IOMMU_IDX_NS,
+> +    SMMU_IOMMU_IDX_S,
+> +    SMMU_IOMMU_IDX_NUM,
+> +};
+why do we need another enum, can't we reuse SMMUSecSID? 
+> +
+>  /**
+>   * smmuv3_trigger_irq - pulse @irq if enabled and update
+>   * GERROR register in case of GERROR interrupt
+> @@ -1157,6 +1163,33 @@ static void smmuv3_fixup_event(SMMUEventInfo *event, hwaddr iova)
+>      }
+>  }
+>  
+> +static int smmuv3_attrs_to_index(IOMMUMemoryRegion *iommu, MemTxAttrs attrs)
+> +{
+> +    if (attrs.unspecified) {
+> +        return SMMU_IOMMU_IDX_NS;
+> +    }
+> +    return attrs.secure ? SMMU_IOMMU_IDX_S : SMMU_IOMMU_IDX_NS;
+> +}
+> +
+> +static int smmuv3_num_indexes(IOMMUMemoryRegion *iommu)
+> +{
+> +    return SMMU_IOMMU_IDX_NUM;
+> +}
+> +
+> +static AddressSpace *smmuv3_bypass_target_as(SMMUv3State *s,
+> +                                             SMMUSecSID sec_sid,
+> +                                             int iommu_idx)
+> +{
+> +    g_assert(iommu_idx >= SMMU_IOMMU_IDX_NS &&
+> +             iommu_idx < SMMU_IOMMU_IDX_NUM);
+> +
+> +    if (smmu_sec_sid_is_secure(sec_sid) &&
+> +        iommu_idx == SMMU_IOMMU_IDX_S) {
+> +        return smmu_get_address_space(&s->smmu_state, SMMU_SEC_SID_S);
+> +    }
+> +    return smmu_get_address_space(&s->smmu_state, SMMU_SEC_SID_NS);
+> +}
+> +
+>  /* Entry point to SMMU, does everything. */
+>  static IOMMUTLBEntry smmuv3_translate(IOMMUMemoryRegion *mr, hwaddr addr,
+>                                        IOMMUAccessFlags flag, int iommu_idx)
+> @@ -1164,7 +1197,7 @@ static IOMMUTLBEntry smmuv3_translate(IOMMUMemoryRegion *mr, hwaddr addr,
+>      SMMUDevice *sdev = container_of(mr, SMMUDevice, iommu);
+>      SMMUv3State *s = sdev->smmu;
+>      uint32_t sid = smmu_get_sid(sdev);
+> -    SMMUSecSID sec_sid = SMMU_SEC_SID_NS;
+> +    SMMUSecSID sec_sid = sdev->sec_sid;
+>      SMMUv3RegBank *bank = smmuv3_bank(s, sec_sid);
+>      SMMUEventInfo event = {.type = SMMU_EVT_NONE,
+>                             .sid = sid,
+> @@ -1181,6 +1214,8 @@ static IOMMUTLBEntry smmuv3_translate(IOMMUMemoryRegion *mr, hwaddr addr,
+>      };
+>      SMMUTLBEntry *cached_entry = NULL;
+>  
+> +    entry.target_as = smmuv3_bypass_target_as(s, sec_sid, iommu_idx);
+> +
+>      qemu_mutex_lock(&s->mutex);
+>  
+>      if (!smmu_enabled(s, sec_sid)) {
+> @@ -1611,6 +1646,26 @@ static inline bool smmu_hw_secure_implemented(SMMUv3State *s)
+>      return FIELD_EX32(s->bank[SMMU_SEC_SID_S].idr[1], S_IDR1, SECURE_IMPL);
+>  }
+>  
+> +static bool smmuv3_validate_sec_sid(SMMUState *bs, SMMUDevice *sdev,
+> +                                    int bus_num)
+> +{
+> +    SMMUv3State *s = ARM_SMMUV3(bs);
+> +
+> +    if (sdev->sec_sid != SMMU_SEC_SID_S) {
+> +        return true;
+> +    }
+> +
+> +    if (!smmu_hw_secure_implemented(s)) {
+> +        error_report("Invalid sec-sid value 'secure' for PCI device "
+> +                     "%02x:%02x.%x: S_IDR1.SECURE_IMPL is 0, so only "
+> +                     "non-secure is allowed",
+> +                     bus_num, PCI_SLOT(sdev->devfn), PCI_FUNC(sdev->devfn));
+> +        return false;
+> +    }
+> +
+> +    return true;
+> +}
+> +
+>  static int smmuv3_cmdq_consume(SMMUv3State *s, Error **errp, SMMUSecSID sec_sid)
+>  {
+>      SMMUState *bs = ARM_SMMU(s);
+> @@ -2823,6 +2878,7 @@ static void smmuv3_class_init(ObjectClass *klass, const void *data)
+>      DeviceClass *dc = DEVICE_CLASS(klass);
+>      ResettableClass *rc = RESETTABLE_CLASS(klass);
+>      SMMUv3Class *c = ARM_SMMUV3_CLASS(klass);
+> +    SMMUBaseClass *sbc = ARM_SMMU_CLASS(klass);
+>  
+>      dc->vmsd = &vmstate_smmuv3;
+>      resettable_class_set_parent_phases(rc, NULL, NULL, smmu_reset_exit,
+> @@ -2832,6 +2888,7 @@ static void smmuv3_class_init(ObjectClass *klass, const void *data)
+>      device_class_set_props(dc, smmuv3_properties);
+>      dc->hotpluggable = false;
+>      dc->user_creatable = true;
+> +    sbc->validate_sec_sid = smmuv3_validate_sec_sid;
+>  
+>      object_class_property_set_description(klass, "accel",
+>          "Enable SMMUv3 accelerator support. Allows host SMMUv3 to be "
+> @@ -2905,6 +2962,8 @@ static void smmuv3_iommu_memory_region_class_init(ObjectClass *klass,
+>  
+>      imrc->translate = smmuv3_translate;
+>      imrc->notify_flag_changed = smmuv3_notify_flag_changed;
+> +    imrc->attrs_to_index = smmuv3_attrs_to_index;
+> +    imrc->num_indexes = smmuv3_num_indexes;
+Why do we need the above ops? Isn't it generic enough to stay in smmu
+base code?
+>  }
+>  
+>  static const TypeInfo smmuv3_type_info = {
+> diff --git a/include/hw/arm/smmu-common.h b/include/hw/arm/smmu-common.h
+> index a21c6061808..9da54221f20 100644
+> --- a/include/hw/arm/smmu-common.h
+> +++ b/include/hw/arm/smmu-common.h
+> @@ -134,6 +134,7 @@ typedef struct SMMUDevice {
+>      void               *smmu;
+>      PCIBus             *bus;
+>      int                devfn;
+> +    SMMUSecSID         sec_sid;
+>      IOMMUMemoryRegion  iommu;
+>      AddressSpace       as;
+>      uint32_t           cfg_cache_hits;
+> @@ -204,6 +205,7 @@ struct SMMUBaseClass {
+>      /*< public >*/
+>  
+>      DeviceRealize parent_realize;
+> +    bool (*validate_sec_sid)(struct SMMUState *s, SMMUDevice *sdev, int bus_num);
+>  
+>  };
+>  
+Thanks
+
+Eric
 
 

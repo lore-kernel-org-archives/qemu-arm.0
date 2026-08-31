@@ -4,66 +4,78 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0B31EC624C6
-	for <qemu-arm@archiver.kernel.org>; Mon, 31 Aug 2026 13:25:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0528BC624C6
+	for <qemu-arm@archiver.kernel.org>; Mon, 31 Aug 2026 13:42:51 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1x1218-0004v8-0U; Mon, 31 Aug 2026 09:25:42 -0400
+	id 1x12Hc-0001qX-FI; Mon, 31 Aug 2026 09:42:44 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <kraxel@redhat.com>) id 1x1216-0004ln-F1
- for qemu-arm@nongnu.org; Mon, 31 Aug 2026 09:25:40 -0400
+ (Exim 4.90_1) (envelope-from <kraxel@redhat.com>) id 1x12Ha-0001q3-SL
+ for qemu-arm@nongnu.org; Mon, 31 Aug 2026 09:42:42 -0400
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <kraxel@redhat.com>) id 1x1214-0007HC-63
- for qemu-arm@nongnu.org; Mon, 31 Aug 2026 09:25:39 -0400
+ (Exim 4.90_1) (envelope-from <kraxel@redhat.com>) id 1x12HY-0002HE-HQ
+ for qemu-arm@nongnu.org; Mon, 31 Aug 2026 09:42:42 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1788182736;
+ s=mimecast20190719; t=1788183759;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=ZEK0PmZytTXd/hQoFTmucufl0WA8TC6IEgfPXV7mS1Y=;
- b=WqkFKr3IsHJ0XsCb7pe54L41WqQkQGHalnmSmKKNcX9qBKBjYJcHTX02tPNTxHYtvu5bCB
- yORREaVPGd30HSot+cKMLnHAMcfjkMh3BdETD8biDlqtA3jUJ/3e41MAIUUyU0OVJJRQxc
- XXLAhUjGqm1mpkxg87mGhAiN5p9EtpA=
-Received: from mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com
+ bh=KW+EfrcAlAZxDlB3wkAXnWrAGUZNFmQDm4PwFH/MxKY=;
+ b=O5OZHoemKlgGLTRumi3ZCAQNIWHN8Owd7qgjY+WEn7xgZWRBz1T+MypPT5C2J91ubqKQUP
+ U55iPNuj53f/zvX+xwWQ5jKltGf1X6JUFUsknN/5Q2QdyZIyTbXWfY225CrOtD3lbMwX2k
+ mWpWXcRD3xw1IXVBmSleIkjuplCJ7Ew=
+Received: from mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com
  (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-605--9rHE051PyW1vX0LaqV6VQ-1; Mon,
- 31 Aug 2026 09:25:30 -0400
-X-MC-Unique: -9rHE051PyW1vX0LaqV6VQ-1
-X-Mimecast-MFC-AGG-ID: -9rHE051PyW1vX0LaqV6VQ_1788182728
-Received: from mx-prod-int-10.mail-002.prod.us-west-2.aws.redhat.com
- (mx-prod-int-10.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.95])
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-103-7ULG_3YJPfCW0aRwavHRuQ-1; Mon,
+ 31 Aug 2026 09:42:35 -0400
+X-MC-Unique: 7ULG_3YJPfCW0aRwavHRuQ-1
+X-Mimecast-MFC-AGG-ID: 7ULG_3YJPfCW0aRwavHRuQ_1788183754
+Received: from mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com
+ (mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.12])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 205CE196DFC6; Mon, 31 Aug 2026 13:25:00 +0000 (UTC)
+ by mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id D9C2A197768E; Mon, 31 Aug 2026 13:42:33 +0000 (UTC)
 Received: from sirius.home.kraxel.org (unknown [10.44.48.41])
- by mx-prod-int-10.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id AB33A377EB; Mon, 31 Aug 2026 13:24:58 +0000 (UTC)
+ by mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
+ id 0F9021955F03; Mon, 31 Aug 2026 13:42:32 +0000 (UTC)
 Received: by sirius.home.kraxel.org (Postfix, from userid 1000)
- id 3C983180060B; Mon, 31 Aug 2026 15:24:09 +0200 (CEST)
-Date: Mon, 31 Aug 2026 15:24:09 +0200
+ id C72D2180060B; Mon, 31 Aug 2026 15:42:31 +0200 (CEST)
+Date: Mon, 31 Aug 2026 15:42:31 +0200
 From: Gerd Hoffmann <kraxel@redhat.com>
-To: Alex Williamson <alex@shazbot.org>
-Cc: Tushar Dave <tdave@nvidia.com>, qemu-devel@nongnu.org, jgg@nvidia.com, 
- skolothumtho@nvidia.com, qemu-arm@nongnu.org, peter.maydell@linaro.org,
- mst@redhat.com, marcel.apfelbaum@gmail.com, devel@edk2.groups.io
-Subject: Re: [RFC PATCH v2 0/5] hw/pci, hw/arm/virt: fixed PCI BAR placement
-Message-ID: <apV1FXabgOVdAqQu@sirius.home.kraxel.org>
+To: Tushar Dave <tdave@nvidia.com>
+Cc: Ard Biesheuvel <ardb@kernel.org>, 
+ "devel@edk2.groups.io" <devel@edk2.groups.io>,
+ Alex Williamson <alex@shazbot.org>, 
+ "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
+ Jason Gunthorpe <jgg@nvidia.com>, 
+ Shameer Kolothum Thodi <skolothumtho@nvidia.com>,
+ "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>, 
+ "peter.maydell@linaro.org" <peter.maydell@linaro.org>,
+ "Michael S. Tsirkin" <mst@redhat.com>, 
+ "marcel.apfelbaum@gmail.com" <marcel.apfelbaum@gmail.com>
+Subject: Re: [edk2-devel] [RFC PATCH v2 0/5] hw/pci, hw/arm/virt: fixed PCI
+ BAR placement
+Message-ID: <apWAprXWglNIWjdp@sirius.home.kraxel.org>
 References: <20260827004024.598351-1-tdave@nvidia.com>
  <ao_fX3cYersq6TRd@sirius.home.kraxel.org>
  <20260827074733.340aeb0c@shazbot.org>
+ <46b4544a-6e97-4433-b3e2-60cf43e62c7b@app.fastmail.com>
+ <f2fe3c7f-4a8f-4025-ac09-777eb5cfc31c@nvidia.com>
 MIME-Version: 1.0
-In-Reply-To: <20260827074733.340aeb0c@shazbot.org>
-X-Scanned-By: MIMEDefang 3.6 on 10.30.177.95
-X-Mimecast-MFC-PROC-ID: 2SLZ4htQNzUov31GJHDFdo0H7MInM_Lz07vD8YroLdA_1788182728
+In-Reply-To: <f2fe3c7f-4a8f-4025-ac09-777eb5cfc31c@nvidia.com>
+X-Scanned-By: MIMEDefang 3.0 on 10.30.177.12
+X-Mimecast-MFC-PROC-ID: ZhNjrOKddMojkCJldlwGvMx46mzyKmtVE8k9--jBRO0_1788183754
 X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=us-ascii
+Content-Type: text/plain; charset=utf-8
 Content-Disposition: inline
+Content-Transfer-Encoding: 8bit
 Received-SPF: pass client-ip=170.10.129.124; envelope-from=kraxel@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: 12
@@ -88,74 +100,69 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Thu, Aug 27, 2026 at 07:47:33AM -0600, Alex Williamson wrote:
-> On Thu, 27 Aug 2026 09:18:50 +0200
-> Gerd Hoffmann <kraxel@redhat.com> wrote:
+  Hi,
+
+> > Is this the reason we cannot rely on the Enhanced Allocation (EA)
+> > capability here?
 > 
-> > I'd strongly recommend to do the same for the fixed bars:  Add a pci
-> > capability to pass that information.  All the logic you have today to
-> > link the information in the fw_cfg file to the correct pci device is
-> > simply not needed any more then.
+> AFAICT, this was explored on RFC v1.
+
+> EFI_INCOMPATIBLE_PCI_DEVICE_SUPPORT_PROTOCOL was suggested as the
+> shorter path at the time, which is what this series uses.
+
+Essentially we have *two* problems to solve here.  The first is how do
+we get the fixed bar information from qemu to the firmware, and the
+second is how we integrate that into edk2.
+
+So we could have a driver which parses EA and passes along the
+information found to PciDxe using
+EFI_INCOMPATIBLE_PCI_DEVICE_SUPPORT_PROTOCOL.
+
+Not sure how much of a win that would be compared to adding EA support
+to PciDxe directly given that the PciDxe bridge window logic needs
+enhancements to properly handle fixed bars (as discussed below).
+
+> > Agreed - if the bridge windows are not programmed correctly on the first
+> > pass, there is something in the code that needs to be fixed. I don't think
+> > papering over it like this is the right approach.
 > 
-> Placement of a VMM defined capability into a vfio-pci device is not
-> such a trivial problem as it is for emulated devices.  Space may not be
-> readily available and the capability may mask non-architected registers.
+> That's a fair point. I did the window-sizing after PciBusDxe because I
+> didn't want to touch existing PciBusDxe code too much.
 > 
-> Does this suggestion relate to fixing the gap between mapping fw_cfg
-> entries by vendor/device IDs or is there something fundamentally
-> undesirable about using fw_cfg here?
-
-Well, fw_cfg is the fallback option if we don't have any better way.
-Attaching the information directly to the device by placing it in a
-pci capability is at very minimum worth exploring.  If this is not
-working for vfio devices, ok, we have to accept that I guess.
-
-And, yes, the logic to match entries in the fw_cfg file with the correct
-device using vendor and device id looks somewhat fragile to me too.
-
-Existing code in qemu+firmware (for example bootorder) uses the location
-in the physical device tree to identify devices, like this:
-
-/pci@i0cf8/pci-bridge@3/*@0/*@0/*@0,0
- ^^^^^^^^^                             pcie root bus
-           ^^^^^^^^^^^^                pcie root port @ slot 3
-                        ^^^            virtio-scsi-pci @ slot 0
-                            ^^^        scsi controller bus #0
-                                ^^^^^  scsi device target 0, lun 0
-
-> > > * fixed-bar=on on a PCIe root port marks its subordinate hierarchy for
-> > >   fixed BAR placement. Every device with memory BARs in that hierarchy
-> > >   must provide a complete pci-bars= configuration.  
-> > 
-> > Why is this needed?
+> As per my understanding, PciBusDxe's enumeration splits into three phases:
 > 
-> AIUI, the problem space is greatly expanded if we mix user provided
-> fixed-bars with firmware assigned BARs and it's possible that there is
-> no solution that meets the requirements.  This option both simplifies
-> the problem space and allows the resource windows to be audited to
-> generate user actionable errors in QEMU.
-
-I can see that allowing fixed and non-fixed bars mix is much harder to
-handle.  Do we need to ask the user to manually set that though?  I'd
-prefer pci devices propagating automatically to the parent bus that they
-have fixed bars and additional constrains apply.
-
-Also: if the main use case for this is to map vfio devices with guest
-physical address == host physical address, is there a need to specify
-this manually at all?  Shouldn't we have a 'vfio-pci-fixed' device which
-handles this automatically?
-
-> > > * pci-bars=barN@<addr>[,barM@<addr>]... on a PCI endpoint specifies the
-> > >   required address for each memory BAR. All memory BARs on the device
-> > >   must have an explicitly assigned address.  
-> > 
-> > fixed-bar-<nr>=<addr> ?
+> Phase 1 (PciHostBridgeEnumerator) walks the whole tree and calls
+> CheckDevice() per device — by the time this phase finishes, every fixed
+> BAR address is already known and cached on the device
+> (PciBar[Bar].FixedBaseAddress).
 > 
-> Could be a reasonable alternative.
+> Phase 2 (PciHostBridgeResourceAllocator) prepares an address for every
+> resource node in the tree — both individual BARs and bridge windows
+> alike — purely from size and alignment; PCI_RESOURCE_NODE has no address
+> field at all, so this is entirely blind to whether a fixed address was
+> already required.
+> 
+> Phase 3 (ProgramResource) then writes the actual PCI config-space
+> registers, and by default it just writes whatever address Phase 2
+> prepared, for both BARs and bridge windows. The one exception is
+> ProgramBar() — it specifically checks whether that particular BAR was
+> marked fixed back in Phase 1, and if so, overrides Phase 2's prepared
+> base address with the real fixed one. However, ProgramPpbApperture(),
+> which writes the bridge's own window registers, has no equivalent
+> override — it always writes whatever Phase 2 prepared, with no awareness
+> of a fixed BAR anywhere underneath it. And that needs fixing, and for
+> that I have to change the existing code.
+> 
+> I think the fix would be to extend Phase 2's own sizing step
+> (CalculateResourceAperture() in PciResourceSupport.c) to check for the
+> already-known fixed address on each child and, when present, size and
+> position the window as the exact union of those addresses instead of the
+> blind size-only sum. Does that match the direction you had in mind, or
+> is there a different integration point you'd suggest?
 
-Parsing (and quoting) property strings with commas in the middle is a
-PITA, also when using numerical properties you can use the 'size'
-property type which accepts things like '16G'.
+Sounds about right, when propagating resource requirements up from
+devices to bridges looking only at the size is not enough if we want
+properly support pci bars at fixed locations.
 
 take care,
   Gerd

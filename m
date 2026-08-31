@@ -4,72 +4,149 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8BF45C61DD3
-	for <qemu-arm@archiver.kernel.org>; Mon, 31 Aug 2026 09:53:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8B2DCC61DD3
+	for <qemu-arm@archiver.kernel.org>; Mon, 31 Aug 2026 10:04:37 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1x0ygq-0007t6-30; Mon, 31 Aug 2026 05:52:32 -0400
+	id 1x0ysA-0006EQ-7z; Mon, 31 Aug 2026 06:04:14 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <zhenzhong.duan@intel.com>)
- id 1x0ygn-0007qu-RD; Mon, 31 Aug 2026 05:52:30 -0400
-Received: from mgamail.intel.com ([198.175.65.19])
+ (Exim 4.90_1) (envelope-from <philmd@oss.qualcomm.com>)
+ id 1x0ys8-0006Dm-Nw
+ for qemu-arm@nongnu.org; Mon, 31 Aug 2026 06:04:12 -0400
+Received: from mx0a-0031df01.pphosted.com ([205.220.168.131])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <zhenzhong.duan@intel.com>)
- id 1x0ygl-0000DF-Vz; Mon, 31 Aug 2026 05:52:29 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1788169948; x=1819705948;
- h=from:to:cc:subject:date:message-id:in-reply-to:
- references:mime-version:content-transfer-encoding;
- bh=ANljbMPtLm3wIof2Yd4tWH9Bd4Cq/LlVMNDGpCgwtbA=;
- b=E3ji62uUQWYQiXcOS+nrkOqVa1SyKgq3d9m4VbwswSzB4OTdWxYCCBpl
- Rc5KsQcz1IeJ4k7mAgKsLnUXO4iQJWRWFyCMf2scW7p3g/pkDXXQoRjSZ
- zIBW10SHaxLAEkwWkmQzEQZxaaOOPwSbR+9lBFFoM/X9JPfC4PZI3qraZ
- kYMLRDTTUlLLaP48Mdbxny3ruy3yg+3ua4EoM4Vd/H/+3eWbnZb2NlqOU
- HfRhrRAJnvLf0kcXoi79SdNN1oHGzTSIaSJpy5RgYG1jYdfbP+wabGtQz
- yDTpS7xJy7BKJiwnHIWXibeT4nrLVVVPo7T7tMzjNvpW510grfy8wg3E8 A==;
-X-CSE-ConnectionGUID: dufSuEIgThyx/YJ0h566eA==
-X-CSE-MsgGUID: UxCD3RhBQyyCW4TMDvTcZQ==
-X-IronPort-AV: E=McAfee;i="6800,10657,11891"; a="88499991"
-X-IronPort-AV: E=Sophos;i="6.25,252,1779174000"; d="scan'208";a="88499991"
-Received: from orviesa004.jf.intel.com ([10.64.159.144])
- by orvoesa111.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 31 Aug 2026 02:52:27 -0700
-X-CSE-ConnectionGUID: mA0We9kTSPCzge3mNrPMsw==
-X-CSE-MsgGUID: uMz4IwtsTImtlEpb6VLDuQ==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.25,252,1779174000"; d="scan'208";a="272554386"
-Received: from unknown (HELO gnr-sp-2s-612.sh.intel.com) ([10.112.229.148])
- by orviesa004-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 31 Aug 2026 02:52:23 -0700
-From: Zhenzhong Duan <zhenzhong.duan@intel.com>
-To: qemu-devel@nongnu.org
-Cc: alex@shazbot.org, clg@redhat.com, eric.auger@redhat.com, mst@redhat.com,
- jasowangio@gmail.com, jgg@nvidia.com, nicolinc@nvidia.com,
- skolothumtho@nvidia.com, joao.m.martins@oracle.com,
- clement.mathieu--drif@bull.com, kevin.tian@intel.com, yi.l.liu@intel.com,
- Zhenzhong Duan <zhenzhong.duan@intel.com>,
- Xudong Hao <xudong.hao@intel.com>, qemu-arm@nongnu.org
-Subject: [PATCH v5 3/6] backends/iommufd: Extend iommufd_backend_alloc_hwpt()
- with fault_id
-Date: Mon, 31 Aug 2026 17:51:56 +0800
-Message-ID: <20260831095200.1279366-4-zhenzhong.duan@intel.com>
-X-Mailer: git-send-email 2.52.0
-In-Reply-To: <20260831095200.1279366-1-zhenzhong.duan@intel.com>
-References: <20260831095200.1279366-1-zhenzhong.duan@intel.com>
+ (Exim 4.90_1) (envelope-from <philmd@oss.qualcomm.com>)
+ id 1x0ys6-0001rz-0i
+ for qemu-arm@nongnu.org; Mon, 31 Aug 2026 06:04:12 -0400
+Received: from pps.filterd (m0279865.ppops.net [127.0.0.1])
+ by mx0a-0031df01.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id
+ 67V7x9Et3664459
+ for <qemu-arm@nongnu.org>; Mon, 31 Aug 2026 10:04:08 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qualcomm.com; h=
+ cc:content-transfer-encoding:content-type:date:from:in-reply-to
+ :message-id:mime-version:references:subject:to; s=qcppdkim1; bh=
+ CAvjhrTWIDlxuDsoV+PXY8FuaILNHNxf/CszDeM/f10=; b=RlFzVGrmFo5UjK7u
+ Sdssm7gEJJ49yhJ31CNQBhnNBnxwZot/5zgdArS1K6cfO7BgdrYx5z81fkypW2Hi
+ MuXSYGXVaXbY+kf6bFYLkAWk6TalxX+Yg8JJBUfx+Amyi4Wn2VV46/+TNlyQ4BgS
+ ku0QG8APkt0QtBHNcl0qjw/85Y8J+C5vts0uJQhxwOrZuJmZ4Z9zJRPBVaBNCJs9
+ GefAEDl7jPBztS68zEspnk0zAH+LyoX0RQiVR8PEmoKxQl4NiYIeC3kiWbt0AdXg
+ wmwe+setUI3aARugxU+Xt6HY2fSgPTGw1Am+8XcAFFpJvdwW9Ymr7mY4lX9N6tw5
+ N6ggQg==
+Received: from mail-qk1-f199.google.com (mail-qk1-f199.google.com
+ [209.85.222.199])
+ by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 4gd4x08rn6-1
+ (version=TLSv1.3 cipher=TLS_AES_128_GCM_SHA256 bits=128 verify=NOT)
+ for <qemu-arm@nongnu.org>; Mon, 31 Aug 2026 10:04:07 +0000 (GMT)
+Received: by mail-qk1-f199.google.com with SMTP id
+ af79cd13be357-93915f50a5cso613847185a.1
+ for <qemu-arm@nongnu.org>; Mon, 31 Aug 2026 03:04:07 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=oss.qualcomm.com; s=google; t=1788170647; x=1788775447; darn=nongnu.org;
+ h=content-transfer-encoding:content-type:in-reply-to:from:references
+ :cc:to:content-language:subject:user-agent:mime-version:date
+ :message-id:from:to:cc:subject:date:message-id:reply-to:content-type;
+ bh=CAvjhrTWIDlxuDsoV+PXY8FuaILNHNxf/CszDeM/f10=;
+ b=XloVb2PW6xD6nX45Ll4D6UZSalHp/6nSbSm2qLjqvpba9QRPn4A9Ik5p6VQe42+Dh7
+ 9lVvUk88rizjcsn+LKmZr2eczU2DBAz2VjbnfC/mCiXYSy23FHtioh4Z8nDC+90pNQaa
+ KVps7osBMO+oR45/i9uDBcE8vYeh3m58YlG2EOEVuDKTJtnW5Zq2tRIjh9iE5vjitd81
+ rXDX4pQKIC6+BuqAjbwXK7n6kioaguILO71CT5xtDsjRUyB8XI+VWQCCERATxjyhPFcK
+ xOqDjGNjw7Zkq8BXKwv9YseSHxp3CzDYQGtRVAUGTp2+CylNduVFnUCK07kxVes1YJS9
+ 8WJA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20251104; t=1788170647; x=1788775447;
+ h=content-transfer-encoding:content-type:in-reply-to:from:references
+ :cc:to:content-language:subject:user-agent:mime-version:date
+ :message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+ :message-id:reply-to:content-type;
+ bh=CAvjhrTWIDlxuDsoV+PXY8FuaILNHNxf/CszDeM/f10=;
+ b=ijGgBtfKsiroMriX312WLD924Khlvk881Iuoz49M8xievFaV8uhsM7jG50wGOQgws/
+ o53Adrm8so3UpOOVHvIZ7lBbkBQ0UiQ/RnK4iShmprVnGknpmgGjQm9HF/rJvC6avo3S
+ AOEALPBOUdc6nWqb16jooFOcQ0gZc3tna6i4Fdd78JzXHsA+5+XOffIQPZv6cvQagSdf
+ 2aLTLD/H6hbbcsrHpDUdVSrjA4XGNltSc1H+he97DVZw1Z40NbbYZczlUa0crrJrIN5q
+ aYkVhhLql3DTFz5RFzDGO0JEDSw7K61tfwJLvQP7bOhwqByLJljE4HUtkCUXU6CLvuQV
+ 77kg==
+X-Forwarded-Encrypted: i=1;
+ AHgh+Rpx6S3Nh5L8NvU0MzAFC9Lvv7uDgNqZF6mWydr5htkwczbb6g8wShQeYQPxEpYdIPFEpE8yv/rIXw==@nongnu.org
+X-Gm-Message-State: AFuF++na4HSFOzTYPZ4riigSdTXIrCCzdj0toLVdm2MPc3FxbnHZ+bTl
+ kIF8rnnQItCmnMavTtilrDjKGrexpIPiNpusVnh6ZY6WcUAwhI2HBq3DW3BM9EGgtSQ4cl5sv/d
+ 19YG+cbdij44jfrBiDIXnkcIuUbRqglCMSUgSJNoJLfAGR2sTo+m+bSM=
+X-Gm-Gg: AR+sD13g0JSN9V6TFRx7DkpzncaLusoZrIynrKMRcLAiwmsBgTZTVrYFONeSViMqHPI
+ i4aHLu7wwXOaFzZ8olRtgpeI+TV3bT1gk490ZC5zHRhcOgEx18s8NOLQLzuXF8JCXYgVCAyX+gG
+ riZcJH4DBZJ3F+sAGSIxYr7b3vLo2eAbBzPUv5ccnrVI6T2Cay5xUpZBRYqQqzgy9VJui60N3i/
+ pYiRAbdM4OLHKtGsUfWxE2OjbcVSJ1qZ+Aydnv6aegp4rgLfTiBE6f8+HOHw7XRcFU1h6lNtiMJ
+ H99OYBUBU5VYMqyPPhna0EKGdr6B/5CkxDeBi3Sqebk1ibNrhL5+BFEiRfkWRR0ISWvEojO3+tL
+ IAH7vcmS1UxGI5uKLpfdcR6QDBsoR7Kj5ZQ==
+X-Received: by 2002:a05:620a:1787:b0:939:957:ed2a with SMTP id
+ af79cd13be357-93936cca294mr645186885a.15.1788170646816; 
+ Mon, 31 Aug 2026 03:04:06 -0700 (PDT)
+X-Received: by 2002:a05:620a:1787:b0:939:957:ed2a with SMTP id
+ af79cd13be357-93936cca294mr645179085a.15.1788170646308; 
+ Mon, 31 Aug 2026 03:04:06 -0700 (PDT)
+Received: from [192.168.69.226] (pmd666.hd.free.fr. [88.187.86.199])
+ by smtp.gmail.com with ESMTPSA id
+ 5b1f17b1804b1-49b497fa9c5sm335200445e9.4.2026.08.31.03.03.42
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Mon, 31 Aug 2026 03:03:48 -0700 (PDT)
+Message-ID: <ff5c148e-d187-4d97-aeb4-6ab5448f79e6@oss.qualcomm.com>
+Date: Mon, 31 Aug 2026 12:03:41 +0200
 MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v3 1/4] hw/usb/aspeed-udc: Add ASPEED UDC device controller
+Content-Language: en-US
+To: Jamin Lin <jamin_lin@aspeedtech.com>, Paolo Bonzini <pbonzini@redhat.com>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>,
+ Steven Lee <steven_lee@aspeedtech.com>, Troy Lee <leetroy@gmail.com>,
+ Kane Chen <kane_chen@aspeedtech.com>,
+ Andrew Jeffery <andrew@codeconstruct.com.au>,
+ Joel Stanley <joel@jms.id.au>,
+ "open list:ARM TCG CPUs" <qemu-arm@nongnu.org>,
+ "open list:All patches CC here" <qemu-devel@nongnu.org>
+Cc: Troy Lee <troy_lee@aspeedtech.com>
+References: <20260831092125.1022201-1-jamin_lin@aspeedtech.com>
+ <20260831092125.1022201-2-jamin_lin@aspeedtech.com>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@oss.qualcomm.com>
+In-Reply-To: <20260831092125.1022201-2-jamin_lin@aspeedtech.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=198.175.65.19;
- envelope-from=zhenzhong.duan@intel.com; helo=mgamail.intel.com
-X-Spam_score_int: -43
-X-Spam_score: -4.4
-X-Spam_bar: ----
-X-Spam_report: (-4.4 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_MED=-2.3, SPF_HELO_NONE=0.001,
- SPF_NONE=0.001 autolearn=ham autolearn_force=no
+X-Proofpoint-Spam-Info: AW1haW4tMjYwODMxMDA4NiBTYWx0ZWRfXw5GJZ6MjVCx7
+ Ew4aJOyiGw7M+l4KdnZvETUjV7T1ulJyGQ6XixMYYlibg4O0elut2sp0B5wFk1UfG7A3sEZLnbx
+ C6tbd2sJSWfhDSTRFEQTp0MpPaOOnzc=
+X-Proofpoint-ORIG-GUID: 32pDnLgzaPI24jDLnO0nqnq7_uDA2NQX
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwODMxMDA4NiBTYWx0ZWRfX5ap0lHU7L00c
+ FckaacaWxCf3MGN/RQ+QEbZSeYHxPnazGkvPLrosoJYFofh5WAmID2IAWR0kuMPkcHgMmQk31hR
+ iYOHrXbVsJ1opxerp9FrVV+uXfRh0Ou09zOJnvaSsY3lPkzXpkCrVfnScEiWQSA9SXXBXk46JOP
+ azR3yUjwkYFKxi2m+u9rVhSq8G8wLjdO6DcHzkGeAMumW+qc/62c1fAUTgo7TJDTZCrHp7s0lbF
+ 6L2potFA0bWK0bZWtOmcRmlZvHtGmGWjApFOK26TbGRCGaoyMtCUf288ihF1nz+Y6A0fI/SmFgG
+ /uG3UqLQHI+eV2UxRQ8hOPq6pAr5lvSZDGnukjjkzP2Dbf84T32lyt2IgyyIRlfk/SbJx2Otq0j
+ cXmkj5AFzjTINwk5VN5HCPVj1JuNb9y9xqBEpBGdahLZKB7NYtCuFrLuGi8Jh9/IAFtKNFlfinJ
+ isL7lzgXZjOkjPTnQcQ==
+X-Authority-Analysis: v=2.4 cv=Iqsutr/g c=1 sm=1 tr=0 ts=6a955197 cx=c_pps
+ a=HLyN3IcIa5EE8TELMZ618Q==:117 a=4s3hRJSeHn4rkQlkrse1kQ==:17
+ a=IkcTkHD0fZMA:10 a=Sv0fKeRqtYgA:10 a=M51BFTxLslgA:10 a=s4-Qcg_JpJYA:10
+ a=VkNPw1HP01LnGYTKEx00:22 a=u7WPNUs3qKkmUXheDGA7:22 a=Um2Pa8k9VHT-vaBCBUpS:22
+ a=V2NxCb60AAAA:8 a=EUspDBNiAAAA:8 a=LfsA7Cq2GQzuzbZ-N0YA:9 a=3ZKOabzyN94A:10
+ a=QEXdDO2ut3YA:10 a=bTQJ7kPSJx9SKPbeHEYW:22 a=3L6qF29SlnrayQqPM2jZ:22
+X-Proofpoint-GUID: 32pDnLgzaPI24jDLnO0nqnq7_uDA2NQX
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.293,Aquarius:18.0.1176,Hydra:6.1.134,FMLib:17.12.100.49
+ definitions=2026-08-31_03,2026-08-27_02,2025-10-01_01
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
+ clxscore=1015 priorityscore=1501 spamscore=0 malwarescore=0 adultscore=0
+ lowpriorityscore=0 impostorscore=0 phishscore=0 suspectscore=0 bulkscore=0
+ classifier=typeunknown authscore=0 authtc= authcc= route=outbound adjust=0
+ reason=mlx scancount=1 engine=8.22.0-2606150000 definitions=main-2608310086
+Received-SPF: pass client-ip=205.220.168.131;
+ envelope-from=philmd@oss.qualcomm.com; helo=mx0a-0031df01.pphosted.com
+X-Spam_score_int: -27
+X-Spam_score: -2.8
+X-Spam_bar: --
+X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_LOW=-0.7, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -85,135 +162,46 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-We should set flags IOMMU_HWPT_FAULT_ID_VALID when pass in a fault
-object id in the caller.
+On 31/8/26 11:21, Jamin Lin wrote:
+> The AST2600 has a USB 2.0 Device Controller (UDC) at 0x1e6a2000 with one
+> control endpoint and four programmable endpoints.
+> 
+> Add the controller as a sysbus (system) device: the MMIO register map
+> described with the registerfields macros, the interrupt line and the
+> soft reset. This is only the register/system side.
+> 
+> Note: this "device controller" is the system-bus device (TYPE_ASPEED_UDC).
+> It is not the gadget USB device (TYPE_ASPEED_UDC_GADGET) that a host
+> controller enumerates, which is added in the next patch.
+> 
+> Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
+> ---
+>   include/hw/usb/aspeed-udc.h |  49 ++++++++
+>   hw/usb/aspeed-udc.c         | 236 ++++++++++++++++++++++++++++++++++++
+>   hw/arm/Kconfig              |   1 +
+>   hw/usb/Kconfig              |   4 +
+>   hw/usb/meson.build          |   1 +
+>   hw/usb/trace-events         |   7 ++
+>   6 files changed, 298 insertions(+)
+>   create mode 100644 include/hw/usb/aspeed-udc.h
+>   create mode 100644 hw/usb/aspeed-udc.c
 
-Signed-off-by: Zhenzhong Duan <zhenzhong.duan@intel.com>
-Reviewed-by: Clement Mathieu--Drif <clement.mathieu--drif@bull.com>
-Tested-by: Xudong Hao <xudong.hao@intel.com>
----
- include/system/iommufd.h    | 4 ++--
- backends/iommufd.c          | 7 ++++---
- hw/arm/smmuv3-accel.c       | 6 +++---
- hw/i386/intel_iommu_accel.c | 2 +-
- hw/vfio/iommufd.c           | 2 +-
- backends/trace-events       | 2 +-
- 6 files changed, 12 insertions(+), 11 deletions(-)
 
-diff --git a/include/system/iommufd.h b/include/system/iommufd.h
-index 36b34b4899..79b8dabfb6 100644
---- a/include/system/iommufd.h
-+++ b/include/system/iommufd.h
-@@ -90,8 +90,8 @@ bool iommufd_backend_get_device_info(IOMMUFDBackend *be, uint32_t devid,
- bool iommufd_backend_alloc_hwpt(IOMMUFDBackend *be, uint32_t dev_id,
-                                 uint32_t pt_id, uint32_t flags,
-                                 uint32_t data_type, uint32_t data_len,
--                                void *data_ptr, uint32_t *out_hwpt,
--                                Error **errp);
-+                                void *data_ptr, uint32_t fault_id,
-+                                uint32_t *out_hwpt, Error **errp);
- bool iommufd_backend_alloc_viommu(IOMMUFDBackend *be, uint32_t dev_id,
-                                   uint32_t viommu_type, uint32_t hwpt_id,
-                                   void *data_ptr, uint32_t data_len,
-diff --git a/backends/iommufd.c b/backends/iommufd.c
-index 2775eef741..f46b3bfa7e 100644
---- a/backends/iommufd.c
-+++ b/backends/iommufd.c
-@@ -315,8 +315,8 @@ int iommufd_backend_unmap_dma(IOMMUFDBackend *be, uint32_t ioas_id,
- bool iommufd_backend_alloc_hwpt(IOMMUFDBackend *be, uint32_t dev_id,
-                                 uint32_t pt_id, uint32_t flags,
-                                 uint32_t data_type, uint32_t data_len,
--                                void *data_ptr, uint32_t *out_hwpt,
--                                Error **errp)
-+                                void *data_ptr, uint32_t fault_id,
-+                                uint32_t *out_hwpt, Error **errp)
- {
-     int ret, fd = be->fd;
-     struct iommu_hwpt_alloc alloc_hwpt = {
-@@ -327,11 +327,12 @@ bool iommufd_backend_alloc_hwpt(IOMMUFDBackend *be, uint32_t dev_id,
-         .data_type = data_type,
-         .data_len = data_len,
-         .data_uptr = (uintptr_t)data_ptr,
-+        .fault_id = fault_id,
-     };
- 
-     ret = ioctl(fd, IOMMU_HWPT_ALLOC, &alloc_hwpt);
-     trace_iommufd_backend_alloc_hwpt(fd, dev_id, pt_id, flags, data_type,
--                                     data_len, (uintptr_t)data_ptr,
-+                                     data_len, (uintptr_t)data_ptr, fault_id,
-                                      alloc_hwpt.out_hwpt_id, ret);
-     if (ret) {
-         error_setg_errno(errp, errno, "Failed to allocate hwpt");
-diff --git a/hw/arm/smmuv3-accel.c b/hw/arm/smmuv3-accel.c
-index 91aca1aa14..66e6a5011a 100644
---- a/hw/arm/smmuv3-accel.c
-+++ b/hw/arm/smmuv3-accel.c
-@@ -268,7 +268,7 @@ smmuv3_accel_dev_alloc_translate(SMMUv3AccelDevice *accel_dev, STE *ste,
-                                     accel->viommu->viommu_id, flags,
-                                     IOMMU_HWPT_DATA_ARM_SMMUV3,
-                                     sizeof(nested_data), &nested_data,
--                                    &hwpt_id, errp)) {
-+                                    0, &hwpt_id, errp)) {
-             return NULL;
-     }
- 
-@@ -632,14 +632,14 @@ smmuv3_accel_alloc_viommu(SMMUv3State *s, HostIOMMUDeviceIOMMUFD *hiodi,
-     if (!iommufd_backend_alloc_hwpt(hiodi->iommufd, hiodi->devid, viommu_id,
-                                     0, IOMMU_HWPT_DATA_ARM_SMMUV3,
-                                     sizeof(abort_data), &abort_data,
--                                    &accel->abort_hwpt_id, errp)) {
-+                                    0, &accel->abort_hwpt_id, errp)) {
-         goto free_viommu;
-     }
- 
-     if (!iommufd_backend_alloc_hwpt(hiodi->iommufd, hiodi->devid, viommu_id,
-                                     0, IOMMU_HWPT_DATA_ARM_SMMUV3,
-                                     sizeof(bypass_data), &bypass_data,
--                                    &accel->bypass_hwpt_id, errp)) {
-+                                    0, &accel->bypass_hwpt_id, errp)) {
-         goto free_abort_hwpt;
-     }
- 
-diff --git a/hw/i386/intel_iommu_accel.c b/hw/i386/intel_iommu_accel.c
-index c03435f8a2..d2f41f18f1 100644
---- a/hw/i386/intel_iommu_accel.c
-+++ b/hw/i386/intel_iommu_accel.c
-@@ -94,7 +94,7 @@ static bool vtd_create_fs_hwpt(VTDHostIOMMUDevice *vtd_hiod,
-     return iommufd_backend_alloc_hwpt(hiodi->iommufd, hiodi->devid,
-                                       hiodi->hwpt_id, flags,
-                                       IOMMU_HWPT_DATA_VTD_S1, sizeof(vtd), &vtd,
--                                      fs_hwpt_id, errp);
-+                                      0, fs_hwpt_id, errp);
- }
- 
- static void vtd_destroy_old_fs_hwpt(VTDAccelPASIDCacheEntry *vtd_pce)
-diff --git a/hw/vfio/iommufd.c b/hw/vfio/iommufd.c
-index 242644aa00..74a5d77dcc 100644
---- a/hw/vfio/iommufd.c
-+++ b/hw/vfio/iommufd.c
-@@ -476,7 +476,7 @@ static bool iommufd_cdev_autodomains_get(VFIODevice *vbasedev,
-     if (!iommufd_backend_alloc_hwpt(iommufd, vbasedev->devid,
-                                     container->ioas_id, flags,
-                                     IOMMU_HWPT_DATA_NONE, 0, NULL,
--                                    &hwpt_id, errp)) {
-+                                    0, &hwpt_id, errp)) {
-         return false;
-     }
- 
-diff --git a/backends/trace-events b/backends/trace-events
-index b1c1d89dd8..2f242feb78 100644
---- a/backends/trace-events
-+++ b/backends/trace-events
-@@ -16,7 +16,7 @@ iommufd_backend_map_file_dma(int iommufd, uint32_t ioas, uint64_t iova, uint64_t
- iommufd_backend_unmap_dma_non_exist(int iommufd, uint32_t ioas, uint64_t iova, uint64_t size, int ret) " Unmap nonexistent mapping: iommufd=%d ioas=%d iova=0x%"PRIx64" size=0x%"PRIx64" (%d)"
- iommufd_backend_unmap_dma(int iommufd, uint32_t ioas, uint64_t iova, uint64_t size, int ret) " iommufd=%d ioas=%d iova=0x%"PRIx64" size=0x%"PRIx64" (%d)"
- iommufd_backend_alloc_ioas(int iommufd, uint32_t ioas) " iommufd=%d ioas=%d"
--iommufd_backend_alloc_hwpt(int iommufd, uint32_t dev_id, uint32_t pt_id, uint32_t flags, uint32_t hwpt_type, uint32_t len, uint64_t data_ptr, uint32_t out_hwpt_id, int ret) " iommufd=%d dev_id=%u pt_id=%u flags=0x%x hwpt_type=%u len=%u data_ptr=0x%"PRIx64" out_hwpt=%u (%d)"
-+iommufd_backend_alloc_hwpt(int iommufd, uint32_t dev_id, uint32_t pt_id, uint32_t flags, uint32_t hwpt_type, uint32_t len, uint64_t data_ptr, uint32_t fault_id, uint32_t out_hwpt_id, int ret) " iommufd=%d dev_id=%u pt_id=%u flags=0x%x hwpt_type=%u len=%u data_ptr=0x%"PRIx64" fault_id=%u out_hwpt=%u (%d)"
- iommufd_backend_alloc_faultq(int iommufd, uint32_t fault_id, uint32_t fault_fd, int ret) " iommufd=%d fault_id=%u fault_fd=%u (%d)"
- iommufd_backend_free_id(int iommufd, uint32_t id, int ret) " iommufd=%d id=%d (%d)"
- iommufd_backend_set_dirty(int iommufd, uint32_t hwpt_id, bool start, int ret) " iommufd=%d hwpt=%u enable=%d (%d)"
--- 
-2.52.0
+> diff --git a/hw/usb/Kconfig b/hw/usb/Kconfig
+> index de95686720..e8c00f813a 100644
+> --- a/hw/usb/Kconfig
+> +++ b/hw/usb/Kconfig
+> @@ -146,3 +146,7 @@ config XLNX_USB_SUBSYS
+>   config USB_CHIPIDEA
+>       bool
+>       select USB_EHCI_SYSBUS
+> +
+> +config ASPEED_UDC
+> +    bool
+> +    select USB
+Nothing depends on USB so far, so "select USB" would be
+better added in the following patch. Otherwise QOM/QDev:
+
+Reviewed-by: Philippe Mathieu-Daudé <philmd@oss.qualcomm.com>
 
 

@@ -4,45 +4,45 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 18AF4C61DE2
-	for <qemu-arm@archiver.kernel.org>; Mon, 31 Aug 2026 11:10:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 02E82C61DE2
+	for <qemu-arm@archiver.kernel.org>; Mon, 31 Aug 2026 11:14:23 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1x0zuS-0001D8-2V; Mon, 31 Aug 2026 07:10:40 -0400
-Received: from [2001:470:142:3::10] (helo=eggs.gnu.org)
+	id 1x0zy0-0003Jk-T2; Mon, 31 Aug 2026 07:14:20 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1x0zuP-000193-Ve
- for qemu-arm@nongnu.org; Mon, 31 Aug 2026 07:10:37 -0400
-Received: from smtpout9.mo536.mail-out.ovh.net ([51.210.91.18])
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1x0zxz-0003E6-Jg
+ for qemu-arm@nongnu.org; Mon, 31 Aug 2026 07:14:19 -0400
+Received: from smtpout9.mo540.mail-out.ovh.net ([51.210.91.58])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1x0zuL-0002t3-Bt
- for qemu-arm@nongnu.org; Mon, 31 Aug 2026 07:10:37 -0400
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1x0zxs-0003ec-AO
+ for qemu-arm@nongnu.org; Mon, 31 Aug 2026 07:14:18 -0400
 Received: from director1.derp.mail-out.ovh.net
  (director1.derp.mail-out.ovh.net [79.137.60.221])
- by mo536.mail-out.ovh.net (Postfix) with ESMTPS id 4hYR9c25y8z88kF;
- Mon, 31 Aug 2026 11:10:27 +0000 (UTC)
+ by mo540.mail-out.ovh.net (Postfix) with ESMTPS id 4hYRFr4Qd1z44lM;
+ Mon, 31 Aug 2026 11:14:08 +0000 (UTC)
 Received: from director1.derp.mail-out.ovh.net
  (director1.derp.mail-out.ovh.net. [127.0.0.1])
  by director1.derp.mail-out.ovh.net (inspect_sender_mail_agent) with SMTP
- for <jamin_lin@aspeedtech.com>; Mon, 31 Aug 2026 11:10:27 +0000 (UTC)
-Received: from mta2.priv.ovhmail-u2.ea.mail.ovh.net (unknown [10.110.164.171])
+ for <jamin_lin@aspeedtech.com>; Mon, 31 Aug 2026 11:14:07 +0000 (UTC)
+Received: from mta11.priv.ovhmail-u2.ea.mail.ovh.net (unknown [10.110.58.168])
  by director1.derp.mail-out.ovh.net (Postfix) with ESMTPS id
- 4hYR9b45Sfz6GrV; Mon, 31 Aug 2026 11:10:27 +0000 (UTC)
-Received: from kaod.org (unknown [10.1.6.5])
+ 4hYRFq6snnz6GrT; Mon, 31 Aug 2026 11:14:07 +0000 (UTC)
+Received: from kaod.org (unknown [10.1.6.3])
  (Authenticated sender: clg@kaod.org)
- by mta2.priv.ovhmail-u2.ea.mail.ovh.net (Postfix) with ESMTPSA id 63E59941BCC; 
- Mon, 31 Aug 2026 11:10:26 +0000 (UTC)
+ by mta11.priv.ovhmail-u2.ea.mail.ovh.net (Postfix) with ESMTPSA id
+ A4DFA2403FCF; Mon, 31 Aug 2026 11:14:06 +0000 (UTC)
 Authentication-Results: garm.ovh; auth=pass
- (GARM-105G006776fafc3-9b89-4419-a60c-87c73a25996e,
+ (GARM-106R0067c340bd9-e64f-47f1-8006-12aba91b76da,
  20713A92955D5A277E4AF24F7FE8A47CC1774BFC) smtp.auth=clg@kaod.org
 X-OVh-ClientIp: 82.64.250.170
-Message-ID: <f60d0cb7-5981-4dd5-b65b-4a6e9b8a30ed@kaod.org>
-Date: Mon, 31 Aug 2026 13:10:25 +0200
+Message-ID: <463ed44f-4f40-4e49-9dae-e4f1f2ef721b@kaod.org>
+Date: Mon, 31 Aug 2026 13:14:06 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v1 1/2] hw/misc/aspeed_sbc: Derive ABR state from OTP
- config straps
+Subject: Re: [PATCH v1 2/2] hw/misc/aspeed_sbc: Derive secure boot state from
+ OTP config straps
 To: Kane Chen <kane_chen@aspeedtech.com>,
  Peter Maydell <peter.maydell@linaro.org>,
  Steven Lee <steven_lee@aspeedtech.com>, Troy Lee <leetroy@gmail.com>,
@@ -52,7 +52,7 @@ To: Kane Chen <kane_chen@aspeedtech.com>,
  "open list:All patches CC here" <qemu-devel@nongnu.org>
 Cc: Troy Lee <troy_lee@aspeedtech.com>
 References: <20260831053658.462203-1-kane_chen@aspeedtech.com>
- <20260831053658.462203-2-kane_chen@aspeedtech.com>
+ <20260831053658.462203-3-kane_chen@aspeedtech.com>
 From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
 Content-Language: en-US, fr
 Autocrypt: addr=clg@kaod.org; keydata=
@@ -97,30 +97,30 @@ Autocrypt: addr=clg@kaod.org; keydata=
  3GlqivBNkmYsHYSlFsbxc37E1HpTEaSWsGfAHQoPn9qrDJgsgcbBVc1gkUT6hnxShKPp4Pls
  ZVMNjvPAnr5TEBgHkk54HQRhhwcYv1T2QumQizDiU6iOrUzBThaMhZO3i927SG2DwWDVzZlt
  KrCMD1aMPvb3NU8FOYRhNmIFR3fcalYr+9gDuVKe8BVz4atMOoktmt0GWTOC8P4=
-In-Reply-To: <20260831053658.462203-2-kane_chen@aspeedtech.com>
+In-Reply-To: <20260831053658.462203-3-kane_chen@aspeedtech.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
-x-ovh-tracer-id: 6999438247581428747
+x-ovh-tracer-id: 7061362744860322827
 X-VR-SPAMSTATE: OK
 X-VR-SPAMSCORE: -100
-X-VR-SPAMCAUSE: dmFkZTGgy4wAOF82O17Mm7/H5tH6PgiMI81Z7V3R3eHKVxnj7A/oucwg17jKXLBPhiAIu8ExUo3w9a0vy0xpCWKyIzXPtMaML03vkrmKqLZilyBWJSnWr9tfLBQQDU5z8hpu40q7OCNGhRfL29zV3viKBN1rqsOZ6Lp6AX1D7EA9ciC9jS0tbzgGb5Lv2bzzcDXA+Mk9fdmzaUMvj901nMDJHPAatwr/khCQnnVRfLvxqPXQn4SZUpPRKhRt6vixMMXfINOa5CxMC4LReVlX0mv4qKlwsX4eZQvgCS9E5Z1sXGzmL84l3/guWqHShZ8vMj/W6UXh7JX+uvUEU2srjjlP03BWPUPJk2ra7jrMU/mQAAnU8HUpMI55alj3w4WXnRxOBXmFoIdNrR6yOVuJNT0lN0B7jZ8Sa/Mw4DkhxdzjzwEzL/7d+z3FPpg2l8IW5EkFviTvcJUvGM5MBmIsEy+uU9DXVSly43cKlckIYEl84ei6j/QDHeGuqqAq62W3lVmw7jNymkFFaQiaicUlC2Y7xnpsaabndFOq5VIfmu6QG1ZW/k3XntTee4v3jsZfS6pVvoeGXjmku58dYPzU+s23WUhtOzouFVyQ1qyUvw72DAwpIpAGayS5syKDwC0a0nmWXYUhJ6Zj2cSAeAW6d2jQcLtWh9yK/5bDWV5O8+MMyreF2w
-DKIM-Signature: a=rsa-sha256; bh=g6rj9toCi95jLgo12wFjmYKZ7TzGJLty6MFcri8UdsE=; 
+X-VR-SPAMCAUSE: dmFkZTE/sE9c0CZySgCJR978j52jRRUAwg3V2UjdhKxDeYDQ4LRB42n5sjCFRWBsNYphkHDIpy4J+BwzaPHOwidZf9jg2DuaEih2W+fQO9tJTOJqS2pfjTtrJN66rBjTuEkzz2nvOJIEagdmdIbF4g0YczZwhfCJiJ3scpJg3Mg2PBYZFka3w9cGv4/fVU7k7/ddmYHa/N/bOH0ibUU57SoSjAOH4CdYPuC8NRqqlG7SKkdgVjJhIFoa7/OajNTaTn2EwpavQvdiJb4n0wRFcXjSk8mk/dYQTEvZCNfVjlc49OvopS0m+j89pmjD4JTv9nP3c+7omDJp+N7EkfTDh/6RrNkFtxfShvhFjSctOwxN63/gAAm5qffMkq2PW8B8oaNpfZW2dxz7kINK5bkcU78XfzO8UjWwjwwwvLCucP+YutRfG+EMhXAvOVFn4Z8vndl398ZHElc5yv/TGzIGSPl72tTIlVsc562TWMngnXoFXORAKFCxPPPKEaNhEOgpAu3uoUsKuDaya7QFPpUq9hsPBeyD+DVeTc0x60832sYsN3oJBlZVo3LmH+nns1oTL/iotKIWMC6FqbjGs8lJOxoXHpR0fTvwPYYrygpcjctUvCDAdBkXmktJXk+nsx+L5wwoGJnMdNv0FCHTEdfQHM6MywLcaCVq5gM+BCHWAulCtc0HIA
+DKIM-Signature: a=rsa-sha256; bh=TSlSS0BctMlt8Ba7lIj34UNuKuXkbWo0cVsDfqWiwtI=; 
  c=relaxed/relaxed; d=kaod.org; h=From; s=ovhmo393970-selector1;
- t=1788174629; v=1;
- b=Pbb2v+IoyGtxRsu4t9ReDPR9QR1GLU65mnkeMp6DArRgjI9SLxmAcmeSWOYbqo7jr5S+ebzz
- PvfWjB04vCzHtOh29VmVNEosXuvEksQiWXHuE94Cm+9x8PeXKXYhz0PGpgbwEP0lVaUOK2ssEPH
- YIi1jR/XrQi99f3TWVxg1JHtCVlVOcK54s3lHHuBK+wKZyQMX6yBOBhM4v4upJM2KPJp/Gfo1wf
- 0UVLcKGItBESe5dn6pGIAr/A1lCD2soUFRAA0uzMN8FS1Bjr/1BqZbGYJfaSJ/ZM5HE5TBJs3Wi
- 8BRVo00lXDGrpFmS26u0KQtLkQL/0kMy/oIyBSygWMFlQ==
-Received-SPF: pass client-ip=51.210.91.18; envelope-from=clg@kaod.org;
- helo=smtpout9.mo536.mail-out.ovh.net
+ t=1788174849; v=1;
+ b=oKRPbDk93bi3iJE0OVsmOtzvSSaWM2taS2JpDNPtjeA7FtvCcI8gv55Tu/p4a0qzoAonb1bD
+ Y+TYSkc0hBL8DGFzeb6IZLwXDWx618oXB7PqE/DLPoBHFyS33n0rhK2dC93wNycTL//BYCLsdFo
+ N0FfivvGvB6WzoUixfr/ZyiUV9VW9DmI7nbfDNDoq0+zEj0f5Mksw7IqldZ+YMTiEREIcE+FN8Y
+ cQfteOxfSz+BJY00l3GN/E091Xb3ddygmwaF1Ot/9TU9WDPI+KabY7AF9qcKWWDwHDEcHYkksWy
+ GPCWc6iCHIhk4dxuIQurlvzMjG/XnFDTxm7Nt348V+iCA==
+Received-SPF: pass client-ip=51.210.91.58; envelope-from=clg@kaod.org;
+ helo=smtpout9.mo540.mail-out.ovh.net
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -137,165 +137,125 @@ Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
 On 8/31/26 07:37, Kane Chen wrote:
-> The eMMC ABR (Alternate Boot Recovery) enable state was controlled by
-> a fixed "emmc-abr" machine property, and the logic reflecting it in
-> R_STATUS was broken so ABR could never actually be reported as
-> enabled.
+> The secure boot enable bit in R_STATUS and the R_QSR signing settings
+> were both driven by a fixed "signing-settings" machine property, but
+> the two ended up inconsistent: the logic guarding the R_STATUS enable
+> bit was broken and never actually set it, while R_QSR still reported
+> the configured signing settings, so a machine could show secure boot
+> configured in R_QSR while R_STATUS said it was disabled.
 > 
-> Instead of relying on the property, read the ABR strap value directly
-> from the OTP configuration space and derive the enable state from it,
-> matching how the real hardware determines ABR. The now-unused
-> "emmc-abr" property is removed.
-
-This is an ABI breakage. It was never used and broken. I guess we are fine.
-
+> Instead of relying on the property, read the relevant OTP
+> configuration bits directly and derive both the R_STATUS secure boot
+> enable state and the QSR value from them, matching how the real
+> hardware determines these settings. The now-unused "signing-settings"
+> property is removed.
+> 
 > Signed-off-by: Kane-Chen-AS <kane_chen@aspeedtech.com>
 > ---
->   include/hw/misc/aspeed_sbc.h |  1 -
->   hw/misc/aspeed_sbc.c         | 35 ++++++++++++++++++++++++++++++++---
->   2 files changed, 32 insertions(+), 4 deletions(-)
+>   include/hw/misc/aspeed_sbc.h |  2 --
+>   hw/misc/aspeed_sbc.c         | 34 ++++++++++++++++++++++++----------
+>   2 files changed, 24 insertions(+), 12 deletions(-)
 > 
 > diff --git a/include/hw/misc/aspeed_sbc.h b/include/hw/misc/aspeed_sbc.h
-> index 07c7c22a86..7152497b2a 100644
+> index 7152497b2a..474922cbd2 100644
 > --- a/include/hw/misc/aspeed_sbc.h
 > +++ b/include/hw/misc/aspeed_sbc.h
-> @@ -32,7 +32,6 @@ OBJECT_DECLARE_TYPE(AspeedSBCState, AspeedSBCClass, ASPEED_SBC)
+> @@ -32,8 +32,6 @@ OBJECT_DECLARE_TYPE(AspeedSBCState, AspeedSBCClass, ASPEED_SBC)
 >   struct AspeedSBCState {
 >       SysBusDevice parent;
 >   
-> -    bool emmc_abr;
->       uint32_t signing_settings;
->   
+> -    uint32_t signing_settings;
+> -
 >       MemoryRegion iomem;
+>   
+>       uint32_t regs[ASPEED_SBC_NR_REGS];
 > diff --git a/hw/misc/aspeed_sbc.c b/hw/misc/aspeed_sbc.c
-> index 1dfcf14e5b..5d4da39d30 100644
+> index 5d4da39d30..ce03f717a9 100644
 > --- a/hw/misc/aspeed_sbc.c
 > +++ b/hw/misc/aspeed_sbc.c
-> @@ -60,6 +60,9 @@
->   #define MODE_REGISTER_A             (0x3000)
->   #define MODE_REGISTER_B             (0x5000)
+> @@ -63,6 +63,19 @@
+>   /* OTP Address */
+>   #define OTP_CFG0                (0x800)
 >   
-> +/* OTP Address */
-> +#define OTP_CFG0                (0x800)
+> +static bool aspeed_sbc_otp_read(AspeedSBCState *s, uint32_t otp_addr);
 > +
+> +static uint32_t aspeed_otp_read_cfg0(AspeedSBCState *s)
+> +{
+> +    uint32_t value = 0;
+> +
+> +    if (aspeed_sbc_otp_read(s, OTP_CFG0)) {
 
-I think that several OTP defines describing the OTP address space
-would be better placed in aspeed_otp.h :
+This call is clobbering s->regs[R_CAMP1]. Let's see how we can improve
+patch 1 first.
 
-     #define OTP_MEMORY_SIZE 0x4000
+Thanks,
 
-     #define OTP_DATA_DWORD_COUNT        (0x800)
-     #define OTP_TOTAL_DWORD_COUNT       (0x1000)
-
-     /* OTP Address */
-     #define OTP_CFG0                (0x800)
-
-Please explain the various regions.
-
-also, does this test makes sense :
-
-     if (otp_addr >= OTP_TOTAL_DWORD_COUNT) {
-         qemu_log_mask(LOG_GUEST_ERROR,
-                       "Invalid OTP addr 0x%x\n",
-                       otp_addr);
-         return false;
-     }
-
-since the transaction on the address_space should fail. Or it could be
-
-Please rework aspeed_sbc_otp_read() which duplicate the same code twice.
+C.
 
 
-   static bool aspeed_otp_read_raw(AspeedSBCState *s, uint32_t otp_addr,
-                                   uint32_t *value)
-   {
-       uint32_t otp_offset = otp_addr << 2;
-
-       if (address_space_read(&s->otp.as, otp_offset, MEMTXATTRS_UNSPECIFIED,
-                              value, sizeof(*value)) != MEMTX_OK) {
-           qemu_log_mask(LOG_GUEST_ERROR,
-                         "Failed to read OTP memory, addr = %x\n", otp_addr);
-           return false;
-       }
-
-       return true;
-   }
+> +        value = s->regs[R_CAMP1];
+> +    }
+>> +    return value;> +}
+> +
 >   static uint64_t aspeed_sbc_read(void *opaque, hwaddr addr, unsigned int size)
 >   {
 >       AspeedSBCState *s = ASPEED_SBC(opaque);
-> @@ -261,17 +264,44 @@ static const MemoryRegionOps aspeed_sbc_ops = {
->       },
->   };
+> @@ -76,7 +89,12 @@ static uint64_t aspeed_sbc_read(void *opaque, hwaddr addr, unsigned int size)
+>           return 0;
+>       }
 >   
-> +static bool aspeed_get_abr_state(AspeedSBCState *s)
-
-aspeed_sbc_otp_get_abr_state()
-
-Shouln't this be done in the OP model instead.
-
-> +{
-> +    uint32_t value;
-> +    int i;
-> +    bool enable = false;
-> +    int config_offset;
-> +
-> +    /*
-> +     * ABR is a strap setting, and each strap setting consists of six
-> +     * sub-values. Read all sub-values to retrieve the latest setting.
-> +     */
-> +    for (i = 17; i < 28; i += 2) {
-
-sigh. What are these magic values ... ?  Please explain.
-
-> +        config_offset = OTP_CFG0; 
-> +        config_offset |= (i / 8) * 0x200;
-> +        config_offset |= (i % 8) * 0x2;
-> +
-> +        aspeed_sbc_otp_read(s, config_offset);
-
-May be introduce a aspeed_sbc_otp_read_config() helper.
-
-> +        value = s->regs[R_CAMP1];
-> +        enable ^= (value >> 11) & 0x1;
+> -    return s->regs[addr];
+> +    switch (addr) {
+> +    case R_QSR:
+> +        return aspeed_otp_read_cfg0(s);
+> +    default:
+> +        return s->regs[addr];
 > +    }
-> +
-> +    return enable;
-> +}
-> +
+>   }
+>   
+>   static bool aspeed_sbc_otp_read(AspeedSBCState *s,
+> @@ -291,6 +309,7 @@ static bool aspeed_get_abr_state(AspeedSBCState *s)
 >   static void aspeed_sbc_reset_hold(Object *obj, ResetType type)
 >   {
 >       AspeedSBCState *s = ASPEED_SBC(obj);
-> +    bool abr;
+> +    uint32_t value;
+>       bool abr;
 >   
 >       memset(s->regs, 0, sizeof(s->regs));
->   
-> +    abr = aspeed_get_abr_state(s);
-
-This creates an implicit ordering dependency: works because OTP is
-a QOM child of the SBC, so its reset runs first.
-
-So, can't we do that at OTP realize time instead ? OTP content is
-non-volatile and doesn't change across resets, so reading it once
-at realize time is sufficient.
-
-> +
->       /* Set secure boot enabled with RSA4096_SHA256 and enable eMMC ABR */
->       s->regs[R_STATUS] = OTP_IDLE | OTP_MEM_IDLE;
->   
-> -    if (s->emmc_abr) {
-> -        s->regs[R_STATUS] &= ABR_EN;
-> +    if (abr) {
-> +        s->regs[R_STATUS] |= ABR_EN;
+> @@ -304,11 +323,11 @@ static void aspeed_sbc_reset_hold(Object *obj, ResetType type)
+>           s->regs[R_STATUS] |= ABR_EN;
 >       }
 >   
->       if (s->signing_settings) {
-> @@ -323,7 +353,6 @@ static const VMStateDescription vmstate_aspeed_sbc = {
+> -    if (s->signing_settings) {
+> -        s->regs[R_STATUS] &= SECURE_BOOT_EN;
+> -    }
+> +    value = aspeed_otp_read_cfg0(s);
+>   
+> -    s->regs[R_QSR] = s->signing_settings;
+> +    if (value & BIT(1)) {
+> +        s->regs[R_STATUS] |= SECURE_BOOT_EN;
+> +    }
+>   }
+>   
+>   static void aspeed_sbc_instance_init(Object *obj)
+> @@ -352,10 +371,6 @@ static const VMStateDescription vmstate_aspeed_sbc = {
+>       }
 >   };
 >   
->   static const Property aspeed_sbc_properties[] = {
-> -    DEFINE_PROP_BOOL("emmc-abr", AspeedSBCState, emmc_abr, 0),
->       DEFINE_PROP_UINT32("signing-settings", AspeedSBCState, signing_settings, 0),
->   };
+> -static const Property aspeed_sbc_properties[] = {
+> -    DEFINE_PROP_UINT32("signing-settings", AspeedSBCState, signing_settings, 0),
+> -};
+> -
+>   static void aspeed_sbc_class_init(ObjectClass *klass, const void *data)
+>   {
+>       DeviceClass *dc = DEVICE_CLASS(klass);
+> @@ -364,7 +379,6 @@ static void aspeed_sbc_class_init(ObjectClass *klass, const void *data)
+>       dc->realize = aspeed_sbc_realize;
+>       rc->phases.hold = aspeed_sbc_reset_hold;
+>       dc->vmsd = &vmstate_aspeed_sbc;
+> -    device_class_set_props(dc, aspeed_sbc_properties);
+>   }
+>   
 >   
 
 

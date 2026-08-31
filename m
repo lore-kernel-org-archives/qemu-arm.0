@@ -4,153 +4,110 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 59E0BC61DD3
-	for <qemu-arm@archiver.kernel.org>; Mon, 31 Aug 2026 06:00:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 64538C61DD3
+	for <qemu-arm@archiver.kernel.org>; Mon, 31 Aug 2026 06:03:56 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1x0v40-0001ps-R2; Mon, 31 Aug 2026 02:00:12 -0400
+	id 1x0v7M-0002py-SI; Mon, 31 Aug 2026 02:03:40 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@oss.qualcomm.com>)
- id 1x0v3z-0001pa-R4
- for qemu-arm@nongnu.org; Mon, 31 Aug 2026 02:00:11 -0400
-Received: from mx0b-0031df01.pphosted.com ([205.220.180.131])
+ (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
+ id 1x0v7L-0002pF-6I
+ for qemu-arm@nongnu.org; Mon, 31 Aug 2026 02:03:39 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@oss.qualcomm.com>)
- id 1x0v3x-0003mL-Tx
- for qemu-arm@nongnu.org; Mon, 31 Aug 2026 02:00:11 -0400
-Received: from pps.filterd (m0279869.ppops.net [127.0.0.1])
- by mx0a-0031df01.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id
- 67V52cRH2764557
- for <qemu-arm@nongnu.org>; Mon, 31 Aug 2026 06:00:08 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qualcomm.com; h=
- cc:content-transfer-encoding:content-type:date:from:in-reply-to
- :message-id:mime-version:references:subject:to; s=qcppdkim1; bh=
- Cx1mfF16N24mRm3e1dMX8wA/WYCMowNZRnFxI7KBlOk=; b=WQbK4/IhPfzBnIu1
- C6v9juWO3Ljgo1HhMr4TFsS6d2MVogcmQMTIb6BvtWiTKMNERGBtkX+d9X1C6SvM
- /2S7x9G+3kyEBdLoGXyNnzYmgTPcD5rLy10VA9nwsZU7KyK6872+pV60YGHF8CiD
- h0rAK+kSwg04/g4xPU63w6Pjt8eNQ5BP6CdQIIApRPgtVu4bmQvhizFDhJtvB2yy
- Vj+bw/qkQeDJWr3HlCwKgB9BmQ/bH0K1fN2NWI1WA/+al9JFY6/5w/bY5eC/rEd3
- IpGTABoa9+gF4Zl0JOolZWpo3+pgHWh+0Q34k6V/3spLWWIUoR5XswUHGHKeQ9Y5
- z3FYxA==
-Received: from mail-qk1-f197.google.com (mail-qk1-f197.google.com
- [209.85.222.197])
- by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 4gbqgymtn9-1
- (version=TLSv1.3 cipher=TLS_AES_128_GCM_SHA256 bits=128 verify=NOT)
- for <qemu-arm@nongnu.org>; Mon, 31 Aug 2026 06:00:07 +0000 (GMT)
-Received: by mail-qk1-f197.google.com with SMTP id
- af79cd13be357-934956beec8so529787285a.0
- for <qemu-arm@nongnu.org>; Sun, 30 Aug 2026 23:00:07 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=oss.qualcomm.com; s=google; t=1788156007; x=1788760807; darn=nongnu.org;
- h=content-transfer-encoding:content-type:in-reply-to:references:cc:to
- :from:content-language:subject:user-agent:mime-version:date
- :message-id:from:to:cc:subject:date:message-id:reply-to:content-type;
- bh=Cx1mfF16N24mRm3e1dMX8wA/WYCMowNZRnFxI7KBlOk=;
- b=hk0yTvAsVc0YYvZwsJhRDB2BFzYkJVgP7fnUj4tLPUCNY0HylJZrx0w25Woxu4rg1M
- V26KZ2ud5yQaG98fGI7pjIwgu7lBV2Zz7JZc/wMLcX3HLmi/Zbs2C0wgMF2DwnKR17sw
- idV2mm4t6sm91/6ctIWx3UndiUdYej4MLuKUxkF8NDMRiLNLh1poZYroILe6g2ONTgoZ
- DWU+om64HHagzhd2xXutILUh51EFjFGYdshkhSIAtv6qQKy+SoLpijzkoKa7VGAGjD6R
- XvDAeLgDO4+edigp3IfZqRusX773m1hdOQGcDOqAmsNMbRC1jcR+XT0yICYdLJszfcmo
- Ve0g==
+ (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
+ id 1x0v7J-0004Y9-J0
+ for qemu-arm@nongnu.org; Mon, 31 Aug 2026 02:03:38 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1788156216;
+ h=from:from:reply-to:reply-to:subject:subject:date:date:
+ message-id:message-id:to:to:cc:cc:mime-version:mime-version:
+ content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=zCDBNus9TBiBwZTC1+pGakvksppGAl5R+lI++O6o6ds=;
+ b=bZ/7yI4n33LAZpycnmyT4TQCs5qD5yMP5oi3wjchs3Vzhm69SFx8BUv5obxPiBsooEIV/z
+ K+9pABSSjRCqi3R08hKZY22ZrA4s5iG2P5IU4aHyRfi6FgbV94TTdXsI6gYe2OJs7BDoid
+ tu1praMwfo1Tw7ljPNlM6YyvkzzZCK8=
+Received: from mail-wm1-f70.google.com (mail-wm1-f70.google.com
+ [209.85.128.70]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-73-UiWbqAnwMx-nlXb6FrLD1A-1; Mon, 31 Aug 2026 02:03:35 -0400
+X-MC-Unique: UiWbqAnwMx-nlXb6FrLD1A-1
+X-Mimecast-MFC-AGG-ID: UiWbqAnwMx-nlXb6FrLD1A_1788156214
+Received: by mail-wm1-f70.google.com with SMTP id
+ 5b1f17b1804b1-49b8c651ac0so29845035e9.2
+ for <qemu-arm@nongnu.org>; Sun, 30 Aug 2026 23:03:34 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1788156007; x=1788760807;
- h=content-transfer-encoding:content-type:in-reply-to:references:cc:to
- :from:content-language:subject:user-agent:mime-version:date
- :message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+ d=1e100.net; s=20251104; t=1788156214; x=1788761014;
+ h=content-transfer-encoding:content-type:in-reply-to:from:references
+ :cc:to:content-language:subject:reply-to:user-agent:mime-version
+ :date:message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
  :message-id:reply-to:content-type;
- bh=Cx1mfF16N24mRm3e1dMX8wA/WYCMowNZRnFxI7KBlOk=;
- b=Gkfi2atAXf822tkPpuMnjhM1vovj/8eKVEj24mFGtM+vLS2Wslny1nbXKDY917qcjY
- vBdhkMyUdj2nbYJ69y7aBDqQlVQUhKWgVTA1BwXie+KdSWA4/OruYOynxFTqeTKTS6fi
- ECiHG2nopAgg1/Qatx/uBHjePEm/g0cAuutTe97AlXlupJY9fOBmjVWWbpv815UNdURN
- Xd07PbGL5G2Vej+/dh9dlxJ7GquqHFdla3ETEjvGHPHzcN5Ub+8QF8Z+0rl0HCRNJmWV
- WvzXtPuKBMVuDjtvygPnNeBj75/t/ZzzIWBJB9W18gyzkP9dnCeeedDwOrghZnxzL45c
- ZD9g==
+ bh=zCDBNus9TBiBwZTC1+pGakvksppGAl5R+lI++O6o6ds=;
+ b=D+zs+SOy0iG44VNFGjzP1KUjIHlZn0xtpmMNi7ZZGaMIH1fdcZ1Xioe9Arcck5uXjx
+ Wpqvz+kjICWLTLoAkB6g04MlK0fJmCilfMN4tOTHH0ZyCDZC/r4v5zjPuYxNLwmIDXH2
+ /uHjh7TY4i+fLCW1mmHjAO5ti+xGmHtwdfIQ3cYci5c2mF38j0U+6sllMrPZilwLiVA4
+ bVA+YHLkf6Nl1EKjLAOIxcEFqMA8nGYkKnmF7QyFLIteIZ6uHi9cErXdfXzcTQRRRGT1
+ BBYgUGK1vor8GfEcx6az6Z3UnwO9XwOW6OA/gy1VMENHxmolN/S9S3/eE7Hry0vjJfNK
+ pujA==
 X-Forwarded-Encrypted: i=1;
- AHgh+RrdaOvULUxMb+u3VXC7wFHn/5heh423ClwMEYGgxo2RvudrefJhgexUnkIq92q2B8bdR+DGD8NiiA==@nongnu.org
-X-Gm-Message-State: AFuF++k66o3MXgeAV1mAADeLOTiQr8NMClyo8rlcly+YtlG7IxMCBxGN
- kHDQlK6GVo4NMVdMzKYvlNMygKNPaQPqRFHSQlN+7enO0n6lssdQcRJEKPxiCOJuSxhTHPohP36
- PFAQVA1ExKOcXuZ9/Dg5cK4xsr6zru2cz5CSJ4owadDhZcYkuZ/cKnwM=
-X-Gm-Gg: AR+sD11RlvslB4FrJJxsQmta0BTrM/Aloli3k+XKv5ff1WW4WUsGkYhUD6OkAFf+vJo
- AxI1D9uKnaxlM34OwXISFIoD+1J81eFRz7GiULIcEI2XARnJgJEMA/0Kq7WO/szNlx0SxPXfMLa
- zXryiwoX3dyWWoPWYOKaRJHcJOYUjHElYTzkaphWSEObEVHHk8VrMiNyeERMSLAn5vInS3OrqvL
- vdvBAMKRgbtsgi5ENyUTQE+f2ajE754/yTMJ/0/KgVgcDY+kj+x8+QFXujyANU04DCI9FP/8UNv
- 5+RapmFZ/7qtGNkUUvJqUgoF6cY8TK+vasok1WebABb55RhYW7TW3h6hlZrkdR61VXAB6fe2qjm
- GKl2sDvnJryieDX+B+Y9OR5hKGKvEcjAO+g==
-X-Received: by 2002:a05:620a:4b41:b0:939:3c0:144 with SMTP id
- af79cd13be357-93913958c0amr2005519585a.33.1788156007334; 
- Sun, 30 Aug 2026 23:00:07 -0700 (PDT)
-X-Received: by 2002:a05:620a:4b41:b0:939:3c0:144 with SMTP id
- af79cd13be357-93913958c0amr2005513985a.33.1788156006847; 
- Sun, 30 Aug 2026 23:00:06 -0700 (PDT)
-Received: from [192.168.69.226] (pmd666.hd.free.fr. [88.187.86.199])
+ AHgh+RpuTT2dtrmEyywckk4ugj/MwlAFvoSSThPnR0Yh2NNuToqbBba8yrsCCrffCyBDyPvbMebb015XFw==@nongnu.org
+X-Gm-Message-State: AFuF++lnhjeqkpd3kk6lgbDQFPm+ADUQ+8dkji62Gj5eczbBczn6CM71
+ loZxL4hK1R+aZHDUTjaGvHeGA1Yt0i03Y7mvNo+3t0RJmyMOcaoOg3vdPHbuJcUZcr0D5IUh8Fs
+ 83lhyqaJhRb9ubZ4+6ZCgylCq9EKKaLWNUZkpX0JdatpM8fhX/cDc0g==
+X-Gm-Gg: AR+sD11p02fcmf/+jEBTUgqNe0pfdelETZJZwOiSAwSIZEEg1RimpTgyHp63QBdbnvE
+ d26BcgruQ2zy7kUpD2xKn7q2AVmluGNjdYUkcWdnw7SyP75QFqOEEQnrw7hOLOjDkcte65ft1Z6
+ UOzAV+p+E7HmKoDKOST28eQsMoDRaLnVqaXuyirdI97jTW0rMOmEZVd5FGIRaxxZhUOl0mIrMq7
+ 35W/bBgke0mscu5tMbDuvzhmka7KbVMD/lY75EzHBGHClVh1zaC6CMOgrnCkBe09PScleNIylPr
+ lj7VB24998zWqidHKtUtaoM2sM6e8/BfaBat42HRtIITR5nNUj3s7SkW69XXkUenV4mYQApcsrW
+ ho2rZ09t6FYuPVI+mv45qcfQBP2PpCdoANNxk+TtsN2xoEvPs
+X-Received: by 2002:a05:600c:1393:b0:49b:12c2:104f with SMTP id
+ 5b1f17b1804b1-49b91c2660amr326613845e9.1.1788156213563; 
+ Sun, 30 Aug 2026 23:03:33 -0700 (PDT)
+X-Received: by 2002:a05:600c:1393:b0:49b:12c2:104f with SMTP id
+ 5b1f17b1804b1-49b91c2660amr326612875e9.1.1788156213067; 
+ Sun, 30 Aug 2026 23:03:33 -0700 (PDT)
+Received: from ?IPV6:2a01:e0a:f0e:9070:527b:9dff:feef:3874?
+ ([2a01:e0a:f0e:9070:527b:9dff:feef:3874])
  by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-49ccae954f9sm195158315e9.13.2026.08.30.23.00.05
+ 5b1f17b1804b1-49b963c3c0asm468566735e9.10.2026.08.30.23.03.31
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Sun, 30 Aug 2026 23:00:05 -0700 (PDT)
-Message-ID: <5f9b574d-84aa-4220-afcd-a5d5bf80dcff@oss.qualcomm.com>
-Date: Mon, 31 Aug 2026 08:00:03 +0200
+ Sun, 30 Aug 2026 23:03:32 -0700 (PDT)
+Message-ID: <d39ce149-8479-40bc-8411-a52a635c7a0a@redhat.com>
+Date: Mon, 31 Aug 2026 08:03:30 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v3 4/9] hw/arm/aspeed_ast10x0: Remove obsolete
- unimplemented SBC mapping
+Subject: Re: [RFC v5 23/28] hw/pci: Add sec-sid property to PCIDevice
+To: Tao Tang <tangtao1634@phytium.com.cn>,
+ "Michael S . Tsirkin" <mst@redhat.com>,
+ Peter Maydell <peter.maydell@linaro.org>
+Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org,
+ Chen Baozi <chenbaozi@phytium.com.cn>,
+ Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>,
+ =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@mailo.com>,
+ Mostafa Saleh <smostafa@google.com>, Chao Liu <chao.liu@processmission.com>,
+ Jim MacArthur <jim.macarthur@linaro.org>
+References: <20260813161515.2788900-1-tangtao1634@phytium.com.cn>
+ <20260813162145.2800835-1-tangtao1634@phytium.com.cn>
+From: Eric Auger <eric.auger@redhat.com>
+In-Reply-To: <20260813162145.2800835-1-tangtao1634@phytium.com.cn>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-MFC-PROC-ID: OWML8JjcUh8wM_cCuDV5Q8_umXEbvd3wTwJ_J6kPnJw_1788156214
+X-Mimecast-Originator: redhat.com
 Content-Language: en-US
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@oss.qualcomm.com>
-To: Jamin Lin <jamin_lin@aspeedtech.com>,
- =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>,
- =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>,
- Peter Maydell <peter.maydell@linaro.org>,
- Steven Lee <steven_lee@aspeedtech.com>, Troy Lee <leetroy@gmail.com>,
- Kane Chen <kane_chen@aspeedtech.com>,
- Andrew Jeffery <andrew@codeconstruct.com.au>,
- Joel Stanley <joel@jms.id.au>, Eric Blake <eblake@redhat.com>,
- Markus Armbruster <armbru@redhat.com>, Fabiano Rosas <farosas@suse.de>,
- Laurent Vivier <lvivier@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
- "open list:All patches CC here" <qemu-devel@nongnu.org>,
- "open list:ASPEED BMCs" <qemu-arm@nongnu.org>
-Cc: Troy Lee <troy_lee@aspeedtech.com>
-References: <20260831034153.192916-1-jamin_lin@aspeedtech.com>
- <20260831034153.192916-5-jamin_lin@aspeedtech.com>
- <c8e259b7-3b42-4dc3-963d-2ce8ee680500@oss.qualcomm.com>
-In-Reply-To: <c8e259b7-3b42-4dc3-963d-2ce8ee680500@oss.qualcomm.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-X-Proofpoint-Spam-Info: AW1haW4tMjYwODMxMDA0OSBTYWx0ZWRfXyKVJgGNzTltA
- W6Xc0PuheMAFkVBcbonuMeRYj+XbkKnv55ZSd1cChlrpmYm8tjak15B+6ObKw9Hh0t93cenU7uz
- RUPEbNpkLJJTt28cHyV6brwZz373krU=
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwODMxMDA0OSBTYWx0ZWRfXwlguuebyVDFT
- D1gBgDLKr3nZ+ImFXV3c7nPR9Kegl5b/C/5f0pXG9zGydkBrelpwuefNotkIyeNEJ6cV5Ah1q+5
- WxHMLywAimyuPWGBEkkkWvTfzH0anqwptEpn0WM6qVJvPQYhHyzA4EgXnBM2sC8pAM/Jx8q9IIp
- P/WZ8y8kjzsC2SDGU15aIogVF4NoT8+vjBMin7Btbjb7TyTBquw14tCsxtadALVGwZaWHaL/O6r
- C2LqGjw/mZbr3/gJQB+2GeVW2bJVrcXEEs4xDSzgiMHkVsZM562gLEJc7SqdQwe4zrYRDKSn/H7
- 5b43j7J2VgoogaWW1T8CT4x3/9GTio+ayhu0wSjdqoqVVZcij5eQt9tzPOP2DcWX8YFlC4IakPO
- hHfXhANGJQrfG/ggUZu0FbdeIL9C8ljK2E2eWENVWlTJ9DPhPOFwMHCknmVYoq7hArC1FncaFnq
- WpAGX0TJaJogdT1fVTQ==
-X-Proofpoint-ORIG-GUID: Vy66t4r6RGE62NB_cpAnZI5agUnxgwYo
-X-Authority-Analysis: v=2.4 cv=R5Ez39RX c=1 sm=1 tr=0 ts=6a951868 cx=c_pps
- a=50t2pK5VMbmlHzFWWp8p/g==:117 a=4s3hRJSeHn4rkQlkrse1kQ==:17
- a=IkcTkHD0fZMA:10 a=Sv0fKeRqtYgA:10 a=M51BFTxLslgA:10 a=s4-Qcg_JpJYA:10
- a=VkNPw1HP01LnGYTKEx00:22 a=u7WPNUs3qKkmUXheDGA7:22 a=_glEPmIy2e8OvE2BGh3C:22
- a=V2NxCb60AAAA:8 a=EUspDBNiAAAA:8 a=iSX6IlxhHMlephMWIyAA:9 a=3ZKOabzyN94A:10
- a=QEXdDO2ut3YA:10 a=IoWCM6iH3mJn3m4BftBB:22 a=3L6qF29SlnrayQqPM2jZ:22
-X-Proofpoint-GUID: Vy66t4r6RGE62NB_cpAnZI5agUnxgwYo
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.293,Aquarius:18.0.1176,Hydra:6.1.134,FMLib:17.12.100.49
- definitions=2026-08-31_02,2026-08-27_02,2025-10-01_01
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
- malwarescore=0 suspectscore=0 phishscore=0 impostorscore=0 spamscore=0
- bulkscore=0 adultscore=0 clxscore=1015 priorityscore=1501 lowpriorityscore=0
- classifier=typeunknown authscore=0 authtc= authcc= route=outbound adjust=0
- reason=mlx scancount=1 engine=8.22.0-2606150000 definitions=main-2608310049
-Received-SPF: pass client-ip=205.220.180.131;
- envelope-from=philmd@oss.qualcomm.com; helo=mx0b-0031df01.pphosted.com
-X-Spam_score_int: -27
-X-Spam_score: -2.8
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=170.10.129.124;
+ envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, SPF_HELO_NONE=0.001,
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.01, SPF_HELO_PASS=-0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -164,41 +121,73 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Reply-To: eric.auger@redhat.com
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On 31/8/26 07:57, Philippe Mathieu-Daudé wrote:
-> On 31/8/26 05:41, Jamin Lin wrote:
->> The AST10x0 SoC now implements the SBC device model. However, the
->> old unimplemented SBC mapping was left in place.
-> 
-> Since the introduction in commit 356b230ed13 ("aspeed/soc : Add AST1030
-> support") indeed.
-> 
->>
->> Remove the obsolete mapping now that the SBC device is implemented.
->>
->> Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
->> ---
->>   hw/arm/aspeed_ast10x0.c | 7 -------
->>   1 file changed, 7 deletions(-)
-> 
-> Reviewed-by: Philippe Mathieu-Daudé <philmd@oss.qualcomm.com>
+Hi Tao,
 
-Please squash:
+On 8/13/26 6:21 PM, Tao Tang wrote:
+> Arm SMMUv3 uses a SEC_SID (StreamID Security state) to determine the
+> security state of the programming interface that controls a transaction.
+> The architecture explicitly states that the association between a device
+> and its SEC_SID is a system-defined property, not something derived from
+> the physical address space.
+>
+> We need a way to represent this system-defined SEC_SID for PCI devices
+> if we want to implement SMMU's Secure state. So that SMMUv3 can select
+> the correct register bank and configuration when handling their streams.
+>
+> This patch adds a new char *sec_sid field to PCIDevice, together with
+> a "sec-sid" QOM property. The property is intended to carry the
+> platform-defined SEC_SID for the device; for now only Non-secure and
+> Secure security states are supported.
 
--- >8 --
-diff --git a/include/hw/arm/aspeed_soc.h b/include/hw/arm/aspeed_soc.h
-index cd68c7f1caa..eb5b9291950 100644
---- a/include/hw/arm/aspeed_soc.h
-+++ b/include/hw/arm/aspeed_soc.h
-@@ -89,7 +89,6 @@ struct AspeedSoCState {
-      AspeedSBCState sbc;
-      AspeedSLIState sli;
-      AspeedSLIState sliio;
--    UnimplementedDeviceState sbc_unimplemented;
-      AspeedSDMCState sdmc;
-      AspeedPWMState pwm;
-      AspeedWDTState wdt[ASPEED_WDTS_NUM];
----
+You shall add PCI maintainers in cc.
+
+Is it only SMMU intended? I mean if you set this property, the PCI
+device shall send DMA requests with secure attributes too?
+
+Eric
+>
+> Signed-off-by: Tao Tang <tangtao1634@phytium.com.cn>
+> Reviewed-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
+> ---
+>  hw/pci/pci.c                | 7 +++++++
+>  include/hw/pci/pci_device.h | 3 +++
+>  2 files changed, 10 insertions(+)
+>
+> diff --git a/hw/pci/pci.c b/hw/pci/pci.c
+> index d3191609e28..b86135af96d 100644
+> --- a/hw/pci/pci.c
+> +++ b/hw/pci/pci.c
+> @@ -104,6 +104,13 @@ static const Property pci_props[] = {
+>      DEFINE_PROP_STRING("sriov-pf", PCIDevice, sriov_pf),
+>      DEFINE_PROP_BIT("x-pcie-ext-tag", PCIDevice, cap_present,
+>                      QEMU_PCIE_EXT_TAG_BITNR, true),
+> +
+> +    /*
+> +     * System-defined, statically configured SEC_SID for this PCI device, used
+> +     * by Arm SMMU. Only support "non-secure" and "secure" security states.
+> +     */
+> +    DEFINE_PROP_STRING("sec-sid", PCIDevice, sec_sid),
+> +
+>      { .name = "busnr", .info = &prop_pci_busnr },
+>  };
+>  
+> diff --git a/include/hw/pci/pci_device.h b/include/hw/pci/pci_device.h
+> index 5cac6e16886..6e6c49fdd19 100644
+> --- a/include/hw/pci/pci_device.h
+> +++ b/include/hw/pci/pci_device.h
+> @@ -187,6 +187,9 @@ struct PCIDevice {
+>      uint32_t max_bounce_buffer_size;
+>  
+>      char *sriov_pf;
+> +
+> +    /* Arm SMMU SEC_SID */
+> +    char *sec_sid;
+>  };
+>  
+>  static inline int pci_intx(PCIDevice *pci_dev)
+
 

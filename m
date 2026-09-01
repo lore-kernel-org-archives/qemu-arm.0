@@ -4,66 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AD047C61DD3
-	for <qemu-arm@archiver.kernel.org>; Tue,  1 Sep 2026 08:27:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 073ACC624C6
+	for <qemu-arm@archiver.kernel.org>; Tue,  1 Sep 2026 08:27:18 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1x1JpN-0003Gn-2K; Tue, 01 Sep 2026 04:26:45 -0400
+	id 1x1JpC-00036h-Am; Tue, 01 Sep 2026 04:26:34 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <kraxel@redhat.com>) id 1x1JpM-0003GB-5H
- for qemu-arm@nongnu.org; Tue, 01 Sep 2026 04:26:44 -0400
+ (Exim 4.90_1) (envelope-from <kraxel@redhat.com>) id 1x1JpB-00035j-3x
+ for qemu-arm@nongnu.org; Tue, 01 Sep 2026 04:26:33 -0400
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <kraxel@redhat.com>) id 1x1JpK-0003L5-Mz
- for qemu-arm@nongnu.org; Tue, 01 Sep 2026 04:26:43 -0400
+ (Exim 4.90_1) (envelope-from <kraxel@redhat.com>) id 1x1Jp9-0003Ik-Hi
+ for qemu-arm@nongnu.org; Tue, 01 Sep 2026 04:26:32 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1788251202;
+ s=mimecast20190719; t=1788251190;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=qcBH9MRu+UyWrEdPkSpzYMK+ELNZvt65WCUQRlcZetQ=;
- b=ZjqDfykwW3zX6QW3XcoTmO813fbR2I3Ed0ZkNH29xatqGaO7/StMq1uz2X7mwHSqKHfzLa
- Qe1wdJj4Bqidmzlo4YDkLLAJmrpxubX16z3COU+fA/RgGmDt2cH/rTIUHk5wploMZx/5Bv
- Y9gFIpYy19mIz4Ix2Ti5wCVz5N2M/Hw=
-Received: from mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com
+ bh=VAoMAhOTUZrLnHZJQmjOpsn6LODTuo6wWCzjDIlG2RQ=;
+ b=AfiiAUmDtJgCeXpKEAJg56Qu8qc+gzYeR7Zig8jqZ3enmLPhSNwV5TkB6DgOr+yZqS4DNN
+ OO5bhp9gYTzUdQYOgUDG1vtAO47K8J/02W/ESFWxjFsv/MW9oo7n9vI6FqwUsm0NvQ/9ri
+ g2bjLSREKO4A0pSXcr6CYrxBC9Mbb4A=
+Received: from mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com
  (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-190-yZNeiHhZNbCgD3UFJL-2sQ-1; Tue,
- 01 Sept 2026 04:26:30 -0400
-X-MC-Unique: yZNeiHhZNbCgD3UFJL-2sQ-1
-X-Mimecast-MFC-AGG-ID: yZNeiHhZNbCgD3UFJL-2sQ_1788251189
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-680-ciKjRTWaOaes18n7_X-8Fg-1; Tue,
+ 01 Sept 2026 04:26:27 -0400
+X-MC-Unique: ciKjRTWaOaes18n7_X-8Fg-1
+X-Mimecast-MFC-AGG-ID: ciKjRTWaOaes18n7_X-8Fg_1788251186
 Received: from mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com
  (mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.111])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 9CC0419560B2; Tue,  1 Sep 2026 08:26:29 +0000 (UTC)
+ by mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 80FB119541B4; Tue,  1 Sep 2026 08:26:26 +0000 (UTC)
 Received: from sirius.home.kraxel.org (unknown [10.44.48.41])
  by mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id 4289418001CF; Tue,  1 Sep 2026 08:26:29 +0000 (UTC)
+ id 22C3318001CF; Tue,  1 Sep 2026 08:26:26 +0000 (UTC)
 Received: by sirius.home.kraxel.org (Postfix, from userid 1000)
- id A93881808E14; Tue, 01 Sep 2026 10:26:01 +0200 (CEST)
+ id 653C91801B0F; Tue, 01 Sep 2026 10:26:01 +0200 (CEST)
 From: Gerd Hoffmann <kraxel@redhat.com>
 To: qemu-devel@nongnu.org
 Cc: Gerd Hoffmann <kraxel@redhat.com>, Igor Mammedov <imammedo@redhat.com>,
  Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
- Ani Sinha <anisinha@redhat.com>, "Michael S. Tsirkin" <mst@redhat.com>
-Subject: [PULL 13/13] hw/misc/vmlaunchupdate: do not clear control bits upon
- fw-cfg select op
-Date: Tue,  1 Sep 2026 10:25:46 +0200
-Message-ID: <20260901082554.804169-14-kraxel@redhat.com>
+ Ani Sinha <anisinha@redhat.com>, "Michael S. Tsirkin" <mst@redhat.com>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@oss.qualcomm.com>
+Subject: [PULL 09/13] tests/acpi: skip FPDT oem field test
+Date: Tue,  1 Sep 2026 10:25:42 +0200
+Message-ID: <20260901082554.804169-10-kraxel@redhat.com>
 In-Reply-To: <20260901082554.804169-1-kraxel@redhat.com>
 References: <20260901082554.804169-1-kraxel@redhat.com>
 MIME-Version: 1.0
 X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.111
-X-Mimecast-MFC-PROC-ID: kwP24viqlV8T2gCGZFIvZlgLibTpAbDU0M4hxSRkOFE_1788251189
+X-Mimecast-MFC-PROC-ID: O3HgiQ0PqMrd4CDv8STx68rymcenpYISGDAWr0ehjh0_1788251186
 X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-content-type: text/plain; charset="US-ASCII"; x-default=true
 Received-SPF: pass client-ip=170.10.133.124; envelope-from=kraxel@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: 12
@@ -89,35 +89,32 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-From: Ani Sinha <anisinha@redhat.com>
+The table comes from edk2 not qemu, so qemu
+has no control over these fields.
 
-The control bits define the behavior of the interface and clearing the bits
-upon reading or select operation will break that behavior. For example, after
-CTL_HOST_IGVM is set by the guest through a write and then subsequently, if the
-guest tried to read back the values from the fw-cfg interface, the read would
-clear CTL_HOST_IGVM. This would break restoring the host IGVM upon subsequent
-reset.
-
-Fixes: 30688c02a76e50e4 ("hw/misc/vmlaunchupdate: Introduce hypervisor fw-cfg interface support")
-Signed-off-by: Ani Sinha <anisinha@redhat.com>
-Message-ID: <20260825124139.6900-1-anisinha@redhat.com>
+Reviewed-by: Philippe Mathieu-Daudé <philmd@oss.qualcomm.com>
 Signed-off-by: Gerd Hoffmann <kraxel@redhat.com>
+Message-ID: <20260824164751.1700783-10-kraxel@redhat.com>
 ---
- hw/misc/vmlaunchupdate.c | 1 -
- 1 file changed, 1 deletion(-)
+ tests/qtest/bios-tables-test.c | 5 +++++
+ 1 file changed, 5 insertions(+)
 
-diff --git a/hw/misc/vmlaunchupdate.c b/hw/misc/vmlaunchupdate.c
-index afa2d278aefc..847d2d963f10 100644
---- a/hw/misc/vmlaunchupdate.c
-+++ b/hw/misc/vmlaunchupdate.c
-@@ -41,7 +41,6 @@ static bool vmlaunchupdate_supported(void)
- static void init_vm_launch_update(VMLaunchUpdateState *s)
- {
-     s->launch_update.capabilities = VM_LAUNCHUPDATE_FORMAT_IGVM;
--    s->launch_update.control = 0;
+diff --git a/tests/qtest/bios-tables-test.c b/tests/qtest/bios-tables-test.c
+index a85ca8e98253..f6dfa4131b89 100644
+--- a/tests/qtest/bios-tables-test.c
++++ b/tests/qtest/bios-tables-test.c
+@@ -2616,6 +2616,11 @@ static void test_oem_fields(test_data *data)
+             continue;
+         }
  
-     if (s->disabled) {
-         s->launch_update.control |= VM_LAUNCHUPDATE_CTL_DISABLE;
++        /* Firmware Performance Data created by EDK2 not QEMU */
++        if (compare_signature(sdt, "FPDT")) {
++            continue;
++        }
++
+         if (verbosity_level >= 2) {
+             fprintf(stderr, "Checking '%.4s'\n", sdt->aml);
+         }
 -- 
 2.55.0
 

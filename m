@@ -4,45 +4,45 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0A707C624CE
-	for <qemu-arm@archiver.kernel.org>; Tue,  1 Sep 2026 02:44:21 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0C475C624CE
+	for <qemu-arm@archiver.kernel.org>; Tue,  1 Sep 2026 02:44:48 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1x1ETv-0006GY-3I; Mon, 31 Aug 2026 22:44:15 -0400
+	id 1x1ETy-0006Hd-V4; Mon, 31 Aug 2026 22:44:18 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
- id 1x1ETt-0006GM-1W; Mon, 31 Aug 2026 22:44:13 -0400
+ id 1x1ETx-0006HG-3H; Mon, 31 Aug 2026 22:44:17 -0400
 Received: from mail-japaneastazlp170130007.outbound.protection.outlook.com
  ([2a01:111:f403:c405::7] helo=TYDPR03CU002.outbound.protection.outlook.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
- id 1x1ETp-0003Kq-6M; Mon, 31 Aug 2026 22:44:12 -0400
+ id 1x1ETt-0003Kq-R7; Mon, 31 Aug 2026 22:44:16 -0400
 ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=zMLCqs0bC4OEM96+GaA3c8ZqSP5ontB163L7t/7fxQ50eCFgwH/+tiLZe68FC1s8r2DGHicJcSKv8CauyVJ6tBtvMSX9SwkVJdF5IXe/BIs2fR3oH3b0uXhJg09SO1mXlwS0MaoJYa4otZ6BXM84T3v8Iw1DdOnrDV9yNsallSnl8mypZPTkzYNZWTsHLi8iZ/jGL8XzeqQ6XpTrEC/dpgriKJrBljpcvdjkrOAlSg0uJVWipol+tB5N4OuYUpShbObhMO60KtT0LxekbdC8RobTWUMivRHKcwKzoD7jwjE313SIv4rPD2BqnZGlgdLATTlAP3o5Ogk/yW/NBCM7Pg==
+ b=x3hrzkG1lZrwzVLcJqnVP/xfncUQmLdhG+kEr0NEd7gt3OLCURS0lzl5Y3lL/NZxi2ZuzdjPr13pisMKxuqhEC58RAO//QChBCdtoh+m3OrhtB7wD+0pBBlsS+Ap+5i6TOpTRzuOKaOcEJcoXPDACq4UYVqw6o0id8x44wfSPniUM+0kX0nO46OHdMjcWaOEdukOn2/TMyPhTZ4WCZzeGXG3kNury3YhwCFLw31Pca05Sc5TqTKMWfc9YjxbzvhyRAo0TgKKbzQorvd3YDQsyEvm5CUw3g4zIj8KJPn1uQYt/CYyNHZkcAJZh6omsBXsuppQc0uhIzDtm9veK5z2pw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
  s=arcselector10001;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=FWtFCtxSiwMlz9z9t7s1tbL58XWfLOtZD1H+IvGCTPE=;
- b=y28TWQQhn6Wfrd2LNYiDAbEVR2zevT/nsGXkgJ5nEIwVHZXv9KVczfIrW/CgLTFZZFiJm5E45EsgoOR1ZnvtmNHJH+XrqxswnNSrqh6+V9iEz3Icjyt610lJqdfhXED/n7yboTR7tU1kSJn+3VJzU2ZN7mv0I1asUJLrfybPEZ+wMj7T5NChokCr9bPW4U/OV+M7MBuA8wKQPE+0cT7ccQ7wFurc4q4tdsJFnyL4NRY8hurGFzhq1kTbvqUp1TpUrU+IgLpKVrGC6s7wZqXvcVCJTHwK12RkE5XxpZeP2rHjn6N9pXsplpGfIFl4OXaEXN0uaQ7eq9YniQrmn9eWSQ==
+ bh=LKIrdCTG0wts6rT5pEVKKY0/w55JJekA3V7j0vUHLVw=;
+ b=WV8ZOWHGWpcNFELsjFyxRPDE1RSkpumDliAegKgfyxYWkAZH5yfrGYZ5d8KqlE1x13RBVOvlHelKDlU01s9AXMjSfgVXpEHHQIH81/hYU0A2Z0TtF5Hku54aqvOwgVWd7LzEQ8fKExYoLnVo96zBOScc0JbPku9uSPza1P7yk8jJ9mp5TKdpHDoPi11CpGsF4KR/JRy0rny22dapsfHBrOh+EZhfkaVldR9Dgao5eA8/TAr7uBMlu+0ndGI/BMD9BT/HQVRjxwbVDxwuUriN4MyyHKal6BxR5rCZtSlXeQ0KHuHvRySB8JqJpcs+MIb8cetHrKCWcFdKQsY9bbOxrw==
 ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
  smtp.mailfrom=aspeedtech.com; dmarc=pass action=none
  header.from=aspeedtech.com; dkim=pass header.d=aspeedtech.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=aspeedtech.com;
  s=selector1;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=FWtFCtxSiwMlz9z9t7s1tbL58XWfLOtZD1H+IvGCTPE=;
- b=OoWFaHQnQV2bA/6hLL3FymCdeJASDSK5M928VWYXL7nWhIE/DH1ri0oPxm0/R/Gtac2ajGrA0Ska/ttiyA6zHSYsbMivgt0TtGWzM2MQ/oIVDhuZkWuW9D0yjxyrkUtLksIioS7jX6uop3fdL8e/+F0UmyhY06hxqMnoYTiyDhJoaC2Dn59nB11JydgT13H6o+wL/jH/MC2iO0VeTVN0eBOrx2VlZkZNHD8UEYI2xyoC++dOZui35IuekX00CaKjv6zzP5DGogs4KLZ00Nl85AuEY9KwEOaJH/47z14ooL2/p2WVn6X3AQZ8IUsH+uiWIjUE9GHrfja9+tC1ZgLMqA==
+ bh=LKIrdCTG0wts6rT5pEVKKY0/w55JJekA3V7j0vUHLVw=;
+ b=a8twLUgpGa6xnnQ6FF9Yc6d5S6LX91rLesPrTTJdAGUD9+1jXDl3ZskUys0/bRXSNwkjNjuN7SRMOudq0zawpzNrE6/NeU/3y0jP1lLN7myDlza/cKlh5565q2si5Xm09XVMtYIyIwWCq9xWTRgFZJBYtf9cqvVQdLsMl6CfRcLWC/Pg+M/cVI8pY748ABlWeNoxusERjVHB8rFRVfngEgChu2s58UGk7aIpSt80Efrk3nxVG3924KU3gmRZdHG+G7W5ifFcZwTWhYBfnfVCN5UW2S0uppjRL/TJb7/Ma6g4IgbnTj9kTC4f9Bgnm+/CcM1BfHYiZ4X6zMdI+zz8xw==
 Received: from TYZPR06MB4980.apcprd06.prod.outlook.com (2603:1096:400:1cc::10)
  by SI4PR06MB8448.apcprd06.prod.outlook.com (2603:1096:4:299::10) with
  Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.21.360.13; Tue, 1 Sep
- 2026 02:44:01 +0000
+ 2026 02:44:02 +0000
 Received: from TYZPR06MB4980.apcprd06.prod.outlook.com
  ([fe80::ea8a:7cb7:4822:2fb3]) by TYZPR06MB4980.apcprd06.prod.outlook.com
  ([fe80::ea8a:7cb7:4822:2fb3%6]) with mapi id 15.21.0360.008; Tue, 1 Sep 2026
- 02:44:01 +0000
+ 02:44:02 +0000
 From: Jamin Lin <jamin_lin@aspeedtech.com>
 To: Paolo Bonzini <pbonzini@redhat.com>, Peter Maydell
  <peter.maydell@linaro.org>, =?iso-8859-1?Q?C=E9dric_Le_Goater?=
@@ -51,12 +51,16 @@ To: Paolo Bonzini <pbonzini@redhat.com>, Peter Maydell
  <andrew@codeconstruct.com.au>, Joel Stanley <joel@jms.id.au>, "open list:ARM
  TCG CPUs" <qemu-arm@nongnu.org>, "open list:All patches CC here"
  <qemu-devel@nongnu.org>
-CC: Jamin Lin <jamin_lin@aspeedtech.com>, Troy Lee <troy_lee@aspeedtech.com>
-Subject: [PATCH v4 0/4] hw/usb: Add ASPEED USB Device Controller (UDC)
-Thread-Topic: [PATCH v4 0/4] hw/usb: Add ASPEED USB Device Controller (UDC)
-Thread-Index: AQHdObu+ZodCU1JLZkSOn/AECqi5lQ==
-Date: Tue, 1 Sep 2026 02:44:01 +0000
-Message-ID: <20260901024400.3488429-1-jamin_lin@aspeedtech.com>
+CC: Jamin Lin <jamin_lin@aspeedtech.com>, Troy Lee <troy_lee@aspeedtech.com>, 
+ =?iso-8859-1?Q?Philippe_Mathieu-Daud=E9?= <philmd@oss.qualcomm.com>
+Subject: [PATCH v4 1/4] hw/usb/aspeed-udc: Add ASPEED UDC device controller
+Thread-Topic: [PATCH v4 1/4] hw/usb/aspeed-udc: Add ASPEED UDC device
+ controller
+Thread-Index: AQHdObu/DqeJGndzL0iuEikY3pGgyQ==
+Date: Tue, 1 Sep 2026 02:44:02 +0000
+Message-ID: <20260901024400.3488429-2-jamin_lin@aspeedtech.com>
+References: <20260901024400.3488429-1-jamin_lin@aspeedtech.com>
+In-Reply-To: <20260901024400.3488429-1-jamin_lin@aspeedtech.com>
 Accept-Language: zh-TW, en-US
 Content-Language: en-US
 X-MS-Has-Attach: 
@@ -65,61 +69,61 @@ authentication-results: dkim=none (message not signed)
  header.d=none;dmarc=none action=none header.from=aspeedtech.com;
 x-ms-publictraffictype: Email
 x-ms-traffictypediagnostic: TYZPR06MB4980:EE_|SI4PR06MB8448:EE_
-x-ms-office365-filtering-correlation-id: 1774cbc8-aa59-4dd4-7b65-08df07d2e154
+x-ms-office365-filtering-correlation-id: 45477abe-b871-4dd9-9211-08df07d2e215
 x-ms-exchange-senderadcheck: 1
 x-ms-exchange-antispam-relay: 0
 x-microsoft-antispam: BCL:0;
- ARA:13230040|376014|23010399003|1800799024|366016|38070700021|921020|6133799003|10067099003|18002099003|3023799007|56012099006;
-x-microsoft-antispam-message-info: YYp9eAIlBlOcbxj6XxLoUIuQtHCUM//ab5UvGfbfXIfpMoi2Tvw3CcqIy6FaYKEh/AxCnBaQT8xVrUVz5gn2d0pTxlZhEN6ycI+HAumsOEJPAgkUT4ZSoFNglBljk2dR2ckD0N7BVkN0uwHiVN53j/pnMPDemaJQI96l0R75LBIsdxOqP7L04WWTbX2LezKKC1XZE5BRAWns3+LxAb/fgHoExxnAizYD8VRBqXjCWC0KwmU2fJFEWdrVN4dBQZB2ma+LYSf6+V8xnOOwOhRSIsd6W2kx38TmrWisAJvR5yk7gJqhuNfg1G1wPKbv2zFxJDs+cjidaO7B9DxokAgVS0jH2ELfz8Cth9yqBP/TaUjrm9p9QBBSrOjBwEQumO6wulby8gJPklMe+h73icayNV145jwWpCPPjgziD+LoIK/Xk5YZ/SnOdNr/hFfUnS9S6N6UvEUJk4RWQ0iv1wkkjp5GGCrczhCj6TVx3SEqbSvDt/WrHomiweDwnzoxPFihTdTIg02NGxtc6lTdkSXIy/u4B4T1w7aDuhpFlT9gArZwSB4ue7QpJVsSOqQnVc6w0yq0XU6PF/9wShS8YXKKwOPJNP5MfvqlI3AJgwbLHPOWDTmjT2fk9f3leBGuC6cUK6eBFfBbLSHVtmjFbHN8aV9BIaGy4Tfdr1/vNKg9KAbqhw6Dg1KzdDg6RrFHwLnL2bnA3E9TjnjPgd01UMBxDpyvcOh/eOfTblu3oNLPhso9jaHKPYASpwfQgQGQIL2k
+ ARA:13230040|376014|23010399003|1800799024|366016|38070700021|921020|6133799003|10067099003|22082099003|18002099003|3023799007|56012099006;
+x-microsoft-antispam-message-info: ztQarmDE5FQpOP6jP23SGCDYZL9wTdPNcITVeP3dSEWqFfHBZDrhbv7UPhPvGicSrA4Zqz7Gyff51R+llezB0AlAeluKlLThozMZc24kUHpvYgIRcOU7Bd+Ilpu13HsYy0RQd3HMExCc2eocYktV9um0GsmT6F3itIRlWvn1w4zgFVpKZrLhedkyMUeCEK7N8iodreT/gJkEW2/3UPFRZi/F9POhHAyeEHAoskkAzR5S37Yggi9qYemgbhJZ3MrtSBIks1rSHpN/Y/EZh9cBZhSFDF61fY+k+/CcrvCUNLZc/2EOXiAyx34KC+sw5Py/lWIidHH1qJQw4pNrRkLRbAUElfE/3EkqvW51Q7zmtsWBU8rWESJTJIlU3cjqs40w0twnPUPFO2D0+tU9xKkbILRZRaJqir7mrvRClcNyECIghSvJVpfjQhKuTlwfsdRoP2BNOv6nzPH1B9TxrWnSWnRaMfyQmog2CrC/igJU6wPWZLpGTr9dXK1k1VJkpwFZSD+bCY3G2xGr//28At5YG2lffguQevNrCaxhS/xGC5JZbwe4nylr/eyYFgRTHF15VvEaRYH6b+H/gbqpedExNNp9+iC6n2hnPfeG876ppcvokpwyefMov6rtUl9CCnMtb1v0FLVdopZIJBfHlro9ZwAzFasiahTtGOcZjuXlvn7ZS0k8yD3v9hyrvlrFjDOKdWNo90aKnJJh6eomS+MkaThbx1UYiqwix5+SKd3qhUNB1reSzTKl+aSvSh9C/0ZY
 x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
  IPV:NLI; SFV:NSPM; H:TYZPR06MB4980.apcprd06.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(13230040)(376014)(23010399003)(1800799024)(366016)(38070700021)(921020)(6133799003)(10067099003)(18002099003)(3023799007)(56012099006);
+ SFS:(13230040)(376014)(23010399003)(1800799024)(366016)(38070700021)(921020)(6133799003)(10067099003)(22082099003)(18002099003)(3023799007)(56012099006);
  DIR:OUT; SFP:1102; 
 x-ms-exchange-antispam-messagedata-chunkcount: 1
-x-ms-exchange-antispam-messagedata-0: =?iso-8859-1?Q?Ow089/lLu7gDGXah3YrzJoQh3PQoZUz9LZETN/46WV8WlaL5VZ6si9Kbvy?=
- =?iso-8859-1?Q?sHKjyl+d6cQyoxbk+86E37PKju3uJeTqlr9vaJZ+bJdkI/5FnhDcUsXMNB?=
- =?iso-8859-1?Q?mkN8VA2gMqWg03giDd3KZJFu3jGaiWXha7Qc4GyY0MvqJSlUl2g8+DyroH?=
- =?iso-8859-1?Q?5Zlz4ST+ohKjeCmTnPbeo3YDnLSfIKr/PTsJNF6HyxVaRyceOUeFIg0cRy?=
- =?iso-8859-1?Q?2k263+Io+LnAtJXvoK2bzPWIwpR+BwIf1/LDajYikMXM5FqPz+dzdhBD2+?=
- =?iso-8859-1?Q?bxovNdFMVo9dmpR5apY7KdUqOWlO6JDfLpHGfxdHCYLVwo7jzuYCtD/jB0?=
- =?iso-8859-1?Q?55u40xgnQfJEi8fdT3RqBejA7RjypD3ISI35Va4Nm9kX3Pq5pE2I4/gBN7?=
- =?iso-8859-1?Q?uwtvPfKjGKeLaJu6n2QtbGVkwruZTlKoi5vtgcnyOx3Hq1VrcJ26OwNWZl?=
- =?iso-8859-1?Q?KXXYTinh+xa2Ydu1oPWmGeIlEfWEf8LX/Lldv5bCLzgFaNvqNPYAmWRiuu?=
- =?iso-8859-1?Q?pocvq99BC2oaRealQdke+bu4Y9PwIM0n8LYztG9glybJ554avRSXLfJ9or?=
- =?iso-8859-1?Q?D+2ksQr8WD2mAwsEuWZY/SldkHFGglthrhH69DM/rnty9QrWH9Alxf7/xo?=
- =?iso-8859-1?Q?68XKxMDiAdwlHQwzoaezDX9axJmIFK2wwgIwJr3tuOXxzltHfEymeOujqN?=
- =?iso-8859-1?Q?F2rL52znXyOmoQqO+9auj/qjSbrx6toyUkm4aomnhQ1+P4KW1UpapQEliR?=
- =?iso-8859-1?Q?s6fRZIOb0T2O0Z0cXvdIVf7VkYBajOvjdbqR1pBCzc7sbwQLHfckVwRYiV?=
- =?iso-8859-1?Q?6ANeADaNofvDXllQB3lh1APZCucAqJALQ5oHYLNFhKZ9ss330Pg5KjXgN+?=
- =?iso-8859-1?Q?/0iL3TZlf/9QhhDpvDiyN/mRbqnvX+dJgLd7ftjJHeRdpgChsNFcjMelD9?=
- =?iso-8859-1?Q?zjbHsX6MUrr0kCQrbR9HtkHDPBd8EIn2OW2NESrxfSFCp+XNwmyHv10KcY?=
- =?iso-8859-1?Q?/8PpthL7lzBmoDwqeSLhFtQ25rWo9MQxvNOYVkg/EHUrnWZINFsPEU1FyA?=
- =?iso-8859-1?Q?A0o7KfnY8IYH3D9J9Rw3oDM8OvnVtljGPUPhb3Dh2c1B4EjJ8LRoWluijL?=
- =?iso-8859-1?Q?IxRjdzIK5io+CoALVRyKTa7vD+ugPkQkI4+JnFFF2lS3lq3+Y1k97v03TP?=
- =?iso-8859-1?Q?mhYyzezRBARY1pvkWdS3bZeTG1WobgB2gCQwiRv/cZ4rblPIxU4WKsYbUM?=
- =?iso-8859-1?Q?dqPJEjNyGOu86kSL5GGQ4/ud8whW9HAdvEgEYsOha5V6BjRJ+iYTKu77rD?=
- =?iso-8859-1?Q?eRglXzzXlv64QUeePT1Q474B7gwgmo+Jaj7P06y6sS+HxCnXREISamKPcZ?=
- =?iso-8859-1?Q?B5kzUfGKkLjte3CCGrxzRWoV5R15nkxGP2ZEW2he/j8scsERAB0+BwpJGl?=
- =?iso-8859-1?Q?TZ4SMsKFgaZ9eaMXwp5jNfjiuUM8KjivhM9MKyp02cYwrwH1D3CtZcxbHa?=
- =?iso-8859-1?Q?5YQm5ePLRbt9WXbLnbxdPi/Bw3kY3MsPfbFbSn7G5Fun57Jx1BdFpqKl4d?=
- =?iso-8859-1?Q?mX/2W09lbGr0DEuyUydQ5B1qk20Xm5jHeaLEKBWUnHAtmoCEQ4KOnTur9f?=
- =?iso-8859-1?Q?tjdqyLilwhfVMIr76dGcmZpTLWLym/fayKJtQXuFQYZCbAdvTluvdfKyyo?=
- =?iso-8859-1?Q?279wQROWsUqqu7zFqg0PIW56Dvi7LIIgUmIFTwNhvJoY6IGZSmM6XAVJsI?=
- =?iso-8859-1?Q?YJbQr37I57bCR4dhLdanJOZfkwg6nyulQWhjWKPhH7StahMK7Js92Ut9fG?=
- =?iso-8859-1?Q?eRL5spJ72Q=3D=3D?=
+x-ms-exchange-antispam-messagedata-0: =?iso-8859-1?Q?q3KZdtLta8YRJUTezH3TgeK8u+HuQtLn3V9xHGcEq1YD3bS7HgGAw+NNo4?=
+ =?iso-8859-1?Q?cp7+bD4ocBPX5lNVgkemplMxrHXl0WRSioddO+ihXhQ4rBoQAuH65CIoGq?=
+ =?iso-8859-1?Q?cciHrcNja3d32Wguk35ynov59lxzHKES+sRfcI0C1FPBRm/4bDTMIQc8/z?=
+ =?iso-8859-1?Q?2Ljw80ZrDNWE4RB1653c9qs5D6KtbKJ/gh1OkuuK5DrtGYXN+w+/lV/+tv?=
+ =?iso-8859-1?Q?MD2u+1XOdtjhOaGaTfOg/tHYsg2oTsgddL14LfUetzMfyQT4y/t43z3EWF?=
+ =?iso-8859-1?Q?cq9ZNINA2tTV2UEoRw4pBD8hPEz1AHtzFKCkVbvfKzPj3iqYr28mljMpES?=
+ =?iso-8859-1?Q?PNtay4RMYDlzFllR661Jx7M6YT8q4/g2ZVgtz1J3I4ZwJJd0gY5dnUOnfU?=
+ =?iso-8859-1?Q?V5DI/UvwQUSGGjrNP7J67OqywHaudAAPcrK8N94BypOt2vV6m6jGB1UZBw?=
+ =?iso-8859-1?Q?J/ebUzugtMa+x8B+Hf5igk7tsFkIdT+pqb/HtDeCAuFv2RG3XNe6YLfqz7?=
+ =?iso-8859-1?Q?EepX7bIA+GlD0CeDU0mseoyHX0d0P/fjJ5i5hAdSyMYWK+XMTTOixl0YBO?=
+ =?iso-8859-1?Q?ivnuX445Rf9jkb0jL4dpEl2WocYD+jcmzrHY/CMfIzw7dg/MQTmEpOVQF8?=
+ =?iso-8859-1?Q?kYeQ3N6ELtdqPO6kOFq/hB7QBzuQ52KZLliYJ0lpdMJjPv7ldSUzCqCJGm?=
+ =?iso-8859-1?Q?OX2KJc+ToCgVmRPMzPSYTaQexIeVkenXHVqDdLfKtf0xTBQIT3cxgwqg21?=
+ =?iso-8859-1?Q?gjBoTm5PreWc9knN+ysgdw93lZGhalQ4rX+wTVPom1kXLQwHyDinYg4p2u?=
+ =?iso-8859-1?Q?tvH9OgpYnsvpTHQM8kzF029lZDVnweihRF/rx/Mc5tljJrlA+FVTcrn6/4?=
+ =?iso-8859-1?Q?ZnRPX8BxWcZJn5yFlXvbXOgAE2DlJkv39sVDp+F3pcdOB436FfwkSEOEdx?=
+ =?iso-8859-1?Q?peBJrGThE7LjErUllqlT5Ivz5CooBzAIbT5abxu7sVRXWRuu9WXYkGEAnR?=
+ =?iso-8859-1?Q?O/nYVBbhNCLNk4F/1h6J9EhziXUoGyhfUHRUW2CdkDOI5NVQKogI7dOrpB?=
+ =?iso-8859-1?Q?iLraTC9rGANVQizEBeR89qKsBkEPP0Bl840ia8U5VcfYplqkIxph1B+bnk?=
+ =?iso-8859-1?Q?VN3nuluv0MVbthPzfH65Exn0opyaWCObfgB1z9fd1cS/nyF8dR4AGlNQSg?=
+ =?iso-8859-1?Q?25E4Hvdjy1994TVGVY25YmhCOYYF6xDFErsIstKEMzli9S4DTA9nx6+ALO?=
+ =?iso-8859-1?Q?ZmBpv9ZyvzaOcUW7jpiU+h1nRPE7GvbGTnKvFGGoEykJEJnRS5TxSlbm2l?=
+ =?iso-8859-1?Q?rwqm1pqlwhvmJb2r1aRCv5ZtoW2tk1wpJgX5dVRBeQ1gZmYvroPeLhGsog?=
+ =?iso-8859-1?Q?GXHV8V3h0a4ZWW3ENcoSDLbieCzGOiY7iBaPajsTSFFdKT1+bk6LfskG4n?=
+ =?iso-8859-1?Q?LkQBIp1qXt+htmQPQ/MKI7/8pijMO+Hx0dLEPjWGhZNI1vKBhVVaGxEiG2?=
+ =?iso-8859-1?Q?uLkxP7RyDUBQNJ1atZwxnyQjATU29cc0LRzkoWYpYwpt3YbLzoB0kkvIZ1?=
+ =?iso-8859-1?Q?JR5HWG31KHMtjqfZa7HDj7Hr5iAcrq0eIuz9eVAFGcGeZCqTooXpbiY3Cj?=
+ =?iso-8859-1?Q?k696hCnHvw/nwJY4ZF+m3Mh54xDXpQSzPoZyoC2T1VRCesT4s/DuwH7qea?=
+ =?iso-8859-1?Q?FFO4GXU4NdUXJCKkK3jfjXlbssW41g2/EyZZfrUa522TUwiKp4CnKqxa0D?=
+ =?iso-8859-1?Q?y/1psFaYY1gpF1s4LbjCiLPrWwyPHhCNAgzsCuWvSQ68FqtTan7dHc8k+a?=
+ =?iso-8859-1?Q?eZk+LVVXBw=3D=3D?=
 Content-Type: text/plain; charset="iso-8859-1"
 Content-Transfer-Encoding: quoted-printable
 MIME-Version: 1.0
-X-Exchange-RoutingPolicyChecked: MmJ61n+GuFT0UoraZbZc8j8FipggYk+T9nuG9SSLarrrxAIrlHN7tooSTl0w2Xo+wvYZJI6ZVI/fBYloJNV38syGGOQ9oV2WWxUuUlo4LJUn7/LQoT+u1NtFFyc5DJ3hiIUjo06cHVghLZ9c0IsLEoklH5s5CJ1vuL/zxWWgg7DsJmW+aYhWhA3pRUVnzAo0h0nIladsIbQXfLmJjUmUtM+2JrcDpbX3oRSIo8XccEiNbLNLVO2ELx4oq8G+9Noct7rTyITEuIWVciaOxKw16VcBHxn3/E92gssHJTlkoLZ8denOuCf002ne5TC3vxcZZSLxlpom9A2LKN86sdB8UQ==
+X-Exchange-RoutingPolicyChecked: OhyP9Fe+T8McNSBlb7ZmA1IC5zxXdWJ4Pps3CwfXEOPh99CTKtJNbNsMYo/5wHV2NchKTl9jVveK7bNOc7UmpZktVbSC6YmIINtZlGbKqfYQgXuPVBL0WU//v1HO2FXDJoVMTDQeCXuE0oi4x3QNDvj6zwYM7/wd0i4VMk1tVj65fS22aOt/DFyf6OY4E+mYAYqwGTs5huUsrnNTFk/k3iENhcUTHn4JsWgnXIuxVMvozCHc1xiqh/i/fWW37Fge+YH9n6QZ24sz2ApNcZyw8Z0YPf/BLgX1SH/0eWj388/vlywdqVJCq5MXkL4R8eOKywxlZ1uM3Xfubb47yzm3lA==
 X-OriginatorOrg: aspeedtech.com
 X-MS-Exchange-CrossTenant-AuthAs: Internal
 X-MS-Exchange-CrossTenant-AuthSource: TYZPR06MB4980.apcprd06.prod.outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 1774cbc8-aa59-4dd4-7b65-08df07d2e154
-X-MS-Exchange-CrossTenant-originalarrivaltime: 01 Sep 2026 02:44:01.4293 (UTC)
+X-MS-Exchange-CrossTenant-Network-Message-Id: 45477abe-b871-4dd9-9211-08df07d2e215
+X-MS-Exchange-CrossTenant-originalarrivaltime: 01 Sep 2026 02:44:02.7423 (UTC)
 X-MS-Exchange-CrossTenant-fromentityheader: Hosted
 X-MS-Exchange-CrossTenant-id: 43d4aa98-e35b-4575-8939-080e90d5a249
 X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: N4/Vz7J/iuZ6/qCgMd/M+Hq8hrVslXAji3x+sCwW4vdbnDsYO5EIGeT8X4+4e6sofI9Tzu3XgV1ZTy7r6+03XePhsjpCleviNBhNu+JENlY=
+X-MS-Exchange-CrossTenant-userprincipalname: Fsbz3n1NT/C4qF5PTdoJveSrerjwbSyb3h8nBLQsvKt/39BeNaTI2xVK85dcGQlnxYcJqIULvyuGhiQsRyz9oedHOK6wcsMo+3LneJn5X9U=
 X-MS-Exchange-Transport-CrossTenantHeadersStamped: SI4PR06MB8448
 Received-SPF: pass client-ip=2a01:111:f403:c405::7;
  envelope-from=jamin_lin@aspeedtech.com;
@@ -146,304 +150,406 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-This series adds a QEMU model for the ASPEED USB Device Controller (UDC),=
+The AST2600 has a USB 2.0 Device Controller (UDC) at 0x1e6a2000 with one=0A=
+control endpoint and four programmable endpoints.=0A=
 =0A=
-driven by the Linux "aspeed_udc" gadget driver.=0A=
+Add the controller as a sysbus (system) device: the MMIO register map=0A=
+described with the registerfields macros, the interrupt line and the=0A=
+soft reset. This is only the register/system side.=0A=
 =0A=
-It is the first step of a larger plan to model USB device-side support on=
+Note: this "device controller" is the system-bus device (TYPE_ASPEED_UDC).=
 =0A=
-ASPEED BMC/BIC SoCs, which has three goals:=0A=
+It is not the gadget USB device (TYPE_ASPEED_UDC_GADGET) that a host=0A=
+controller enumerates, which is added in the next patch.=0A=
 =0A=
-1. Model the ASPEED UDC (AST2600 / AST1030). The AST2600 also has USB host=
-=0A=
-   (EHCI) controllers, so this series targets the AST2600 UDC: its gadget c=
-an=0A=
-   be attached to the SoC's own EHCI bus, letting the guest enumerate its o=
-wn=0A=
-   gadget and exercise the UDC end-to-end.  [this series]=0A=
-=0A=
-2. AST1030 UDC. The AST1030 has no USB host controller, so testing its UDC=
-=0A=
-   needs a second QEMU instance. The plan is to redirect the UDC gadget out=
-=0A=
-   of the guest using libusbredir and attach it to another QEMU that runs a=
-=0A=
-   USB host (a VMM, or an AST2600 / AST2700 guest).  [on-going]=0A=
-   =0A=
-3. ASPEED vHub, as a longer-term goal towards BMC KVM / Virtual Media suppo=
-rt=0A=
-   in QEMU.  [future]=0A=
-=0A=
-This series implements goal 1 only.=0A=
-=0A=
-Design=0A=
-------=0A=
-The UDC is modelled as two QOM objects, because a single object cannot be=
-=0A=
-both a SysBusDevice and a USBDevice:=0A=
-=0A=
-  - "aspeed.udc": the sysbus device (MMIO register map, IRQ and DMA engine)=
-=0A=
-    that the guest gadget driver programs.=0A=
-=0A=
-  - "aspeed.udc-gadget": a user-creatable USB device presented on a USB hos=
-t=0A=
-    controller's bus. It links back to its controller through the "udc"=0A=
-    property.=0A=
-=0A=
-The SoC creates the controller; the gadget is added on the command line, e.=
-g.=0A=
-=0A=
-  -device aspeed.udc-gadget,udc=3D/machine/soc/udc=0A=
-     =0A=
-Test result:=0A=
------------=0A=
-The default ASPEED SDK prebuilt image does not enable the UDC driver, so=0A=
-build a kernel with CONFIG_USB_ASPEED_UDC=3Dy first.=0A=
-=0A=
-Start QEMU with the gadget attached to the on-SoC EHCI:=0A=
-=0A=
-  qemu-system-arm -machine ast2600-evb -drive file=3D<image>,if=3Dmtd,forma=
-t=3Draw \=0A=
-      -device aspeed.udc-gadget,udc=3D/machine/soc/udc -nographic=0A=
-=0A=
-In the guest, bring up a mass-storage gadget and verify enumeration and I/O=
-:=0A=
-=0A=
-1. Before: only the host controllers are present=0A=
-root@ast2600-default:~# lsusb=0A=
-unable to initialize usb specBus 001 Device 001: ID 1d6b:0002 Linux 6.18.20=
--dirty-32e49fb4a22b-g32e49fb4a22b-dirty ehci_hcd EHCI Host Controller=0A=
-Bus 002 Device 001: ID 1d6b:0001 Linux 6.18.20-dirty-32e49fb4a22b-g32e49fb4=
-a22b-dirty uhci_hcd Generic UHCI Host Controller=0A=
-=0A=
-2. Enable the gadget=0A=
-root@ast2600-default:~# ./usb-storage.sh=0A=
-Using UDC: 1e6a2000.usb=0A=
-[  598.582205] Mass Storage Function, version: 2009/09/11=0A=
-[  598.582635] LUN: removable file: (no medium)=0A=
-USB Mass Storage gadget is enabled.=0A=
-Backing file: /home/root/jamin=0A=
-root@ast2600-default:~# [  598.876395] usb 1-1: new high-speed USB device n=
-umber 2 using ehci-platform=0A=
-[  599.070035] usb 1-1: New USB device found, idVendor=3D1d6b, idProduct=3D=
-0104, bcdDevice=3D 1.00=0A=
-[  599.070821] usb 1-1: New USB device strings: Mfr=3D1, Product=3D2, Seria=
-lNumber=3D3=0A=
-[  599.071448] usb 1-1: Product: ASPEED USB Storage=0A=
-[  599.072687] usb 1-1: Manufacturer: ASPEED=0A=
-[  599.073384] usb 1-1: SerialNumber: 1234567890=0A=
-[  599.103625] usb-storage 1-1:1.0: USB Mass Storage device detected=0A=
-[  599.136326] scsi host0: usb-storage 1-1:1.0=0A=
-[  600.230921] scsi 0:0:0:0: Direct-Access     Linux    File-Stor Gadget 06=
-18 PQ: 0 ANSI: 2=0A=
-[  600.243758] sd 0:0:0:0: Attached scsi generic sg0 type 0=0A=
-[  600.263452] sd 0:0:0:0: Power-on or device reset occurred=0A=
-[  600.289381] sd 0:0:0:0: [sda] 2048 512-byte logical blocks: (1.05 MB/1.0=
-0 MiB)=0A=
-[  600.297896] sd 0:0:0:0: [sda] Write Protect is off=0A=
-[  600.306379] sd 0:0:0:0: [sda] Write cache: enabled, read cache: enabled,=
- doesn't support DPO or FUA=0A=
-[  600.424608]  sda:=0A=
-[  600.425526] sd 0:0:0:0: [sda] Attached SCSI removable disk=0A=
-=0A=
-3. After: the gadget enumerates on the EHCI bus=0A=
-root@ast2600-default:~# lsusb=0A=
-unable to initialize usb specBus 001 Device 001: ID 1d6b:0002 Linux 6.18.20=
--dirty-32e49fb4a22b-g32e49fb4a22b-dirty ehci_hcd EHCI Host Controller=0A=
-Bus 001 Device 002: ID 1d6b:0104 ASPEED ASPEED USB Storage=0A=
-Bus 002 Device 001: ID 1d6b:0001 Linux 6.18.20-dirty-32e49fb4a22b-g32e49fb4=
-a22b-dirty uhci_hcd Generic UHCI Host Controller=0A=
-=0A=
-4. Mount and verify data=0A=
-root@ast2600-default:~# mount /dev/sda /mnt/=0A=
-root@ast2600-default:~# sha256sum /mnt/testfile=0A=
-3308890a1289f6a327c014537523e8ebd0833301af3d25a7c5893dc7050d2c70  /mnt/test=
-file=0A=
-root@ast2600-default:~# umount /mnt=0A=
-=0A=
-5. Stop the gadget -> clean disconnect=0A=
-root@ast2600-default:~# ./usb-storage.sh stop=0A=
-Stopping USB gadget...=0A=
-[  669.866439] usb 1-1: USB disconnect, device number 2=0A=
-Stopped.=0A=
-root@ast2600-default:~# [  669.968156] sd 0:0:0:0: [sda] Synchronizing SCSI=
- cache=0A=
-[  669.969307] sd 0:0:0:0: [sda] Synchronize Cache(10) failed: Result: host=
-byte=3D0x01 driverbyte=3DDRIVER_OK=0A=
-=0A=
-root@ast2600-default:~# lsusb=0A=
-unable to initialize usb specBus 001 Device 001: ID 1d6b:0002 Linux 6.18.20=
--dirty-32e49fb4a22b-g32e49fb4a22b-dirty ehci_hcd EHCI Host Controller=0A=
-Bus 002 Device 001: ID 1d6b:0001 Linux 6.18.20-dirty-32e49fb4a22b-g32e49fb4=
-a22b-dirty uhci_hcd Generic UHCI Host Controller=0A=
-=0A=
-=0A=
-The contents of this scripts=0A=
----------------------------=0A=
-root@ast2600-default:~# cat  usb-storage.sh=0A=
-#!/bin/sh=0A=
-set -e=0A=
-=0A=
-G=3D/sys/kernel/config/usb_gadget/g1=0A=
-IMG=3D/home/root/jamin=0A=
-SIZE_MB=3D64=0A=
-=0A=
-mount_configfs()=0A=
-{=0A=
-    mountpoint -q /sys/kernel/config || mount -t configfs none /sys/kernel/=
-config=0A=
-}=0A=
-=0A=
-get_udc()=0A=
-{=0A=
-    ls /sys/class/udc | head -n 1=0A=
-}=0A=
-=0A=
-stop_gadget()=0A=
-{=0A=
-    if [ ! -d "$G" ]; then=0A=
-        return=0A=
-    fi=0A=
-=0A=
-    echo "Stopping USB gadget..."=0A=
-=0A=
-    # Unbind UDC first=0A=
-    if [ -f "$G/UDC" ]; then=0A=
-        echo "" > "$G/UDC" 2>/dev/null || true=0A=
-    fi=0A=
-=0A=
-    # Clear backing file to release image=0A=
-    if [ -f "$G/functions/mass_storage.0/lun.0/file" ]; then=0A=
-        echo "" > "$G/functions/mass_storage.0/lun.0/file" 2>/dev/null || t=
-rue=0A=
-    fi=0A=
-=0A=
-    # Remove function link from config=0A=
-    rm -f "$G/configs/c.1/mass_storage.0" 2>/dev/null || true=0A=
-=0A=
-    echo "Stopped."=0A=
-}=0A=
-=0A=
-start_gadget()=0A=
-{=0A=
-    mount_configfs=0A=
-=0A=
-    UDC=3D"$(get_udc)"=0A=
-    if [ -z "$UDC" ]; then=0A=
-        echo "ERROR: No UDC found in /sys/class/udc"=0A=
-        exit 1=0A=
-    fi=0A=
-=0A=
-    stop_gadget=0A=
-=0A=
-    echo "Using UDC: $UDC"=0A=
-=0A=
-    modprobe libcomposite 2>/dev/null || true=0A=
-=0A=
-    mkdir -p "$G"=0A=
-    cd "$G"=0A=
-=0A=
-    echo 0x1d6b > idVendor=0A=
-    echo 0x0104 > idProduct=0A=
-    echo 0x0200 > bcdUSB=0A=
-    echo 0x0100 > bcdDevice=0A=
-=0A=
-    mkdir -p strings/0x409=0A=
-    echo "1234567890" > strings/0x409/serialnumber=0A=
-    echo "ASPEED" > strings/0x409/manufacturer=0A=
-    echo "ASPEED USB Storage" > strings/0x409/product=0A=
-=0A=
-    mkdir -p configs/c.1/strings/0x409=0A=
-    echo "Mass Storage" > configs/c.1/strings/0x409/configuration=0A=
-    echo 120 > configs/c.1/MaxPower=0A=
-=0A=
-    if [ ! -f "$IMG" ]; then=0A=
-        echo "Creating backing image: $IMG"=0A=
-        dd if=3D/dev/zero of=3D"$IMG" bs=3D1M count=3D"$SIZE_MB"=0A=
-        mkfs.vfat "$IMG"=0A=
-    fi=0A=
-=0A=
-    mkdir -p functions/mass_storage.0=0A=
-=0A=
-    # Make sure old LUN is detached before changing attributes=0A=
-    echo "" > functions/mass_storage.0/lun.0/file 2>/dev/null || true=0A=
-=0A=
-    echo 0 > functions/mass_storage.0/stall=0A=
-    echo 0 > functions/mass_storage.0/lun.0/cdrom=0A=
-    echo 0 > functions/mass_storage.0/lun.0/ro=0A=
-    echo 1 > functions/mass_storage.0/lun.0/removable=0A=
-    echo "$IMG" > functions/mass_storage.0/lun.0/file=0A=
-=0A=
-    ln -sf functions/mass_storage.0 configs/c.1/mass_storage.0=0A=
-=0A=
-    echo "$UDC" > UDC=0A=
-=0A=
-    echo "USB Mass Storage gadget is enabled."=0A=
-    echo "Backing file: $IMG"=0A=
-}=0A=
-=0A=
-case "$1" in=0A=
-    start|"")=0A=
-        start_gadget=0A=
-        ;;=0A=
-    stop)=0A=
-        stop_gadget=0A=
-        ;;=0A=
-    restart)=0A=
-        stop_gadget=0A=
-        sleep 1=0A=
-        start_gadget=0A=
-        ;;=0A=
-    *)=0A=
-        echo "Usage: $0 {start|stop|restart}"=0A=
-        exit 1=0A=
-        ;;=0A=
-esac=0A=
-=0A=
-=0A=
-v1:=0A=
-  1. Add ASPEED UDC device controller=0A=
-  2. Add ASPEED UDC gadget USB device=0A=
-=0A=
-v2:=0A=
-  1. Replace dynamic memory allocation with fixed-size arrays.=0A=
-  2. Use an OR gate to route the interrupt signals from the UDC and EHCI2.=
-=0A=
-  3. Split the "Add ASPEED UDC gadget USB device" patch into two patches:=
-=0A=
-    a. Add ASPEED UDC gadget USB device=0A=
-      Implement EP0 control transfers.=0A=
-    b. Add programmable endpoint DMA transfers=0A=
-      Implement DMA transfers for programmable endpoints.=0A=
-  4. Remove unused macros.=0A=
-  =0A=
-v3:=0A=
-  1. Remove unused macros.=0A=
-  2. Bind the gadget to the controller via a QOM link property=0A=
-   ("usbgadget", weak) instead of writing the back-pointer directly=0A=
-=0A=
-v4:=0A=
-  1. Move the "select USB" dependency to the appropriate patch.=0A=
-=0A=
-Jamin Lin (4):=0A=
-  hw/usb/aspeed-udc: Add ASPEED UDC device controller=0A=
-  hw/usb/aspeed-udc: Add ASPEED UDC gadget USB device=0A=
-  hw/usb/aspeed-udc: Add programmable endpoint DMA transfers=0A=
-  hw/arm/aspeed_ast2600: Wire up the UDC=0A=
-=0A=
- include/hw/arm/aspeed_soc.h |    4 +=0A=
- include/hw/usb/aspeed-udc.h |   85 +++=0A=
- hw/arm/aspeed_ast2600.c     |   37 +-=0A=
- hw/usb/aspeed-udc.c         | 1059 +++++++++++++++++++++++++++++++++++=0A=
- hw/arm/Kconfig              |    1 +=0A=
- hw/usb/Kconfig              |    4 +=0A=
- hw/usb/meson.build          |    1 +=0A=
- hw/usb/trace-events         |   16 +=0A=
- 8 files changed, 1204 insertions(+), 3 deletions(-)=0A=
+Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>=0A=
+Reviewed-by: Philippe Mathieu-Daud=E9 <philmd@oss.qualcomm.com>=0A=
+---=0A=
+ include/hw/usb/aspeed-udc.h |  49 ++++++++=0A=
+ hw/usb/aspeed-udc.c         | 236 ++++++++++++++++++++++++++++++++++++=0A=
+ hw/arm/Kconfig              |   1 +=0A=
+ hw/usb/Kconfig              |   3 +=0A=
+ hw/usb/meson.build          |   1 +=0A=
+ hw/usb/trace-events         |   7 ++=0A=
+ 6 files changed, 297 insertions(+)=0A=
  create mode 100644 include/hw/usb/aspeed-udc.h=0A=
  create mode 100644 hw/usb/aspeed-udc.c=0A=
 =0A=
+diff --git a/include/hw/usb/aspeed-udc.h b/include/hw/usb/aspeed-udc.h=0A=
+new file mode 100644=0A=
+index 0000000000..58fed5f9a2=0A=
+--- /dev/null=0A=
++++ b/include/hw/usb/aspeed-udc.h=0A=
+@@ -0,0 +1,49 @@=0A=
++/*=0A=
++ * ASPEED USB Device Controller (UDC)=0A=
++ *=0A=
++ * Copyright (c) 2026 ASPEED Technology Inc.=0A=
++ *=0A=
++ * SPDX-License-Identifier: GPL-2.0-or-later=0A=
++ */=0A=
++=0A=
++#ifndef HW_USB_ASPEED_UDC_H=0A=
++#define HW_USB_ASPEED_UDC_H=0A=
++=0A=
++#include "hw/core/sysbus.h"=0A=
++#include "qom/object.h"=0A=
++=0A=
++#define TYPE_ASPEED_UDC "aspeed.udc"=0A=
++OBJECT_DECLARE_SIMPLE_TYPE(AspeedUDCState, ASPEED_UDC)=0A=
++=0A=
++/*=0A=
++ * Register map: root/global block at 0x000 - 0x087, then one 0x10 byte ba=
+nk=0A=
++ * per programmable endpoint from 0x200.=0A=
++ */=0A=
++#define ASPEED_UDC_MEM_SIZE     0x300=0A=
++#define ASPEED_UDC_ROOT_NR_REGS (0x88 >> 2)=0A=
++#define ASPEED_UDC_EP_REG_BASE  0x200=0A=
++#define ASPEED_UDC_EP_NR_REGS   (0x10 >> 2)=0A=
++=0A=
++/*=0A=
++ * EP0 (control) is served through the root registers (UDC_EP0_*), so only=
+=0A=
++ * the 4 programmable endpoints get their own register bank / ep[] entry.=
+=0A=
++ */=0A=
++#define ASPEED_UDC_NUM_EP   4=0A=
++=0A=
++typedef struct AspeedUDCEP {=0A=
++    MemoryRegion mr;=0A=
++    uint32_t regs[ASPEED_UDC_EP_NR_REGS];=0A=
++    int index;=0A=
++} AspeedUDCEP;=0A=
++=0A=
++struct AspeedUDCState {=0A=
++    SysBusDevice parent_obj;=0A=
++=0A=
++    MemoryRegion udc_container;=0A=
++    MemoryRegion root_mr;=0A=
++    uint32_t regs[ASPEED_UDC_ROOT_NR_REGS];=0A=
++    AspeedUDCEP ep[ASPEED_UDC_NUM_EP];=0A=
++    qemu_irq irq;=0A=
++};=0A=
++=0A=
++#endif /* HW_USB_ASPEED_UDC_H */=0A=
+diff --git a/hw/usb/aspeed-udc.c b/hw/usb/aspeed-udc.c=0A=
+new file mode 100644=0A=
+index 0000000000..cd773e979b=0A=
+--- /dev/null=0A=
++++ b/hw/usb/aspeed-udc.c=0A=
+@@ -0,0 +1,236 @@=0A=
++/*=0A=
++ * ASPEED USB Device Controller (UDC)=0A=
++ *=0A=
++ * Copyright (c) 2026 ASPEED Technology Inc.=0A=
++ *=0A=
++ * SPDX-License-Identifier: GPL-2.0-or-later=0A=
++ *=0A=
++ * Models the ASPEED USB Device Controller (UDC). It implements one contro=
+l=0A=
++ * endpoint (EP0) and 4 programmable endpoints.=0A=
++ *=0A=
++ * This file is the system-bus side of the controller: the MMIO register m=
+ap,=0A=
++ * the interrupt and the soft reset. The gadget USB device presented to a =
+host=0A=
++ * controller (and the endpoint data path) is added on top of this.=0A=
++ */=0A=
++=0A=
++#include "qemu/osdep.h"=0A=
++#include "hw/core/irq.h"=0A=
++#include "hw/core/registerfields.h"=0A=
++#include "hw/usb/aspeed-udc.h"=0A=
++#include "qemu/module.h"=0A=
++#include "trace.h"=0A=
++=0A=
++/* Root / Global registers (offset from the controller base) */=0A=
++REG32(UDC_FUNC_CTRL, 0x00)=0A=
++    FIELD(UDC_FUNC_CTRL, UPSTREAM_EN,       0, 1)=0A=
++REG32(UDC_IER, 0x08)=0A=
++REG32(UDC_ISR, 0x0C)=0A=
++    FIELD(UDC_ISR, EP_POOL_ACK,            16, 1)=0A=
++    FIELD(UDC_ISR, BUS_RESET,               6, 1)=0A=
++    FIELD(UDC_ISR, EP0_IN_ACK,              3, 1)=0A=
++    FIELD(UDC_ISR, EP0_OUT_ACK,             1, 1)=0A=
++    FIELD(UDC_ISR, EP0_SETUP,               0, 1)=0A=
++REG32(UDC_EP_ACK_IER, 0x10)=0A=
++REG32(UDC_EP_NAK_IER, 0x14)=0A=
++REG32(UDC_EP_ACK_ISR, 0x18)=0A=
++REG32(UDC_EP_NAK_ISR, 0x1C)=0A=
++REG32(UDC_DEV_RESET, 0x20)=0A=
++    FIELD(UDC_DEV_RESET, EP_POOL,           9, 1)=0A=
++    FIELD(UDC_DEV_RESET, DMA,               8, 1)=0A=
++    FIELD(UDC_DEV_RESET, ROOT,              0, 1)=0A=
++REG32(UDC_STS, 0x24)=0A=
++    FIELD(UDC_STS, HIGHSPEED,              27, 1)=0A=
++REG32(UDC_EP0_CTRL, 0x30)=0A=
++    FIELD(UDC_EP0_CTRL, RX_LEN,            16, 7)=0A=
++    FIELD(UDC_EP0_CTRL, TX_LEN,             8, 7)=0A=
++    FIELD(UDC_EP0_CTRL, RX_RDY,             2, 1)=0A=
++    FIELD(UDC_EP0_CTRL, TX_RDY,             1, 1)=0A=
++    FIELD(UDC_EP0_CTRL, STALL,              0, 1)=0A=
++REG32(UDC_EP0_DATA_BUFF, 0x34)=0A=
++/* EP0 SETUP packet buffer: SETUP0 =3D bytes 0...3, SETUP1 =3D bytes 4...7=
+ */=0A=
++REG32(UDC_SETUP0, 0x80)=0A=
++REG32(UDC_SETUP1, 0x84)=0A=
++=0A=
++/* Per programmable-endpoint registers (offset from the EP register base) =
+*/=0A=
++REG32(EP_CONFIG, 0x00)=0A=
++    FIELD(EP_CONFIG, MAX_PKT,              16, 10)=0A=
++    FIELD(EP_CONFIG, EP_NUM,                8, 4)=0A=
++    FIELD(EP_CONFIG, DIR_OUT,               4, 1)=0A=
++    FIELD(EP_CONFIG, ENABLE,                0, 1)=0A=
++REG32(EP_DMA_CTRL, 0x04)=0A=
++    FIELD(EP_DMA_CTRL, PROC_STS,            4, 4)=0A=
++    FIELD(EP_DMA_CTRL, DESC_OP_EN,          0, 1)=0A=
++REG32(EP_DMA_BUFF, 0x08)=0A=
++REG32(EP_DMA_STS, 0x0C)=0A=
++    FIELD(EP_DMA_STS, PKT_SIZE,            16, 11)=0A=
++    FIELD(EP_DMA_STS, RPTR,                 8, 8)=0A=
++    FIELD(EP_DMA_STS, WPTR,                 0, 8)=0A=
++=0A=
++static void aspeed_udc_update_irq(AspeedUDCState *s)=0A=
++{=0A=
++    bool level;=0A=
++=0A=
++    level =3D (s->regs[R_UDC_ISR] & s->regs[R_UDC_IER]) ||=0A=
++            (s->regs[R_UDC_EP_ACK_ISR] & s->regs[R_UDC_EP_ACK_IER]) ||=0A=
++            (s->regs[R_UDC_EP_NAK_ISR] & s->regs[R_UDC_EP_NAK_IER]);=0A=
++=0A=
++    trace_aspeed_udc_irq(s->regs[R_UDC_ISR], s->regs[R_UDC_IER], level);=
+=0A=
++    qemu_set_irq(s->irq, level);=0A=
++}=0A=
++=0A=
++static uint64_t aspeed_udc_read(void *opaque, hwaddr offset, unsigned size=
+)=0A=
++{=0A=
++    AspeedUDCState *s =3D ASPEED_UDC(opaque);=0A=
++    uint32_t reg =3D offset >> 2;=0A=
++    uint32_t val;=0A=
++=0A=
++    val =3D s->regs[reg];=0A=
++    trace_aspeed_udc_read(offset, val);=0A=
++=0A=
++    return val;=0A=
++}=0A=
++=0A=
++static void aspeed_udc_write(void *opaque, hwaddr offset, uint64_t data,=
+=0A=
++                             unsigned size)=0A=
++{=0A=
++    AspeedUDCState *s =3D ASPEED_UDC(opaque);=0A=
++    uint32_t reg =3D offset >> 2;=0A=
++    uint32_t val =3D data;=0A=
++=0A=
++    trace_aspeed_udc_write(offset, val);=0A=
++=0A=
++    switch (reg) {=0A=
++    case R_UDC_IER:=0A=
++    case R_UDC_EP_ACK_IER:=0A=
++    case R_UDC_EP_NAK_IER:=0A=
++        s->regs[reg] =3D val;=0A=
++        aspeed_udc_update_irq(s);=0A=
++        break;=0A=
++    case R_UDC_ISR:=0A=
++    case R_UDC_EP_ACK_ISR:=0A=
++    case R_UDC_EP_NAK_ISR:=0A=
++        s->regs[reg] &=3D ~val;=0A=
++        aspeed_udc_update_irq(s);=0A=
++        break;=0A=
++    default:=0A=
++        s->regs[reg] =3D val;=0A=
++        break;=0A=
++    }=0A=
++}=0A=
++=0A=
++static const MemoryRegionOps aspeed_udc_ops =3D {=0A=
++    .read =3D aspeed_udc_read,=0A=
++    .write =3D aspeed_udc_write,=0A=
++    .endianness =3D DEVICE_LITTLE_ENDIAN,=0A=
++    .valid =3D {=0A=
++        .min_access_size =3D 1,=0A=
++        .max_access_size =3D 4,=0A=
++    },=0A=
++    .impl =3D {=0A=
++        .min_access_size =3D 4,=0A=
++        .max_access_size =3D 4,=0A=
++    },=0A=
++};=0A=
++=0A=
++static uint64_t aspeed_udc_ep_read(void *opaque, hwaddr offset, unsigned s=
+ize)=0A=
++{=0A=
++    AspeedUDCEP *e =3D opaque;=0A=
++    uint32_t reg =3D offset >> 2;=0A=
++    uint32_t val;=0A=
++=0A=
++    val =3D e->regs[reg];=0A=
++    trace_aspeed_udc_ep_read(e->index, offset, val);=0A=
++=0A=
++    return val;=0A=
++}=0A=
++=0A=
++static void aspeed_udc_ep_write(void *opaque, hwaddr offset, uint64_t data=
+,=0A=
++                                unsigned size)=0A=
++{=0A=
++    AspeedUDCEP *e =3D opaque;=0A=
++    uint32_t reg =3D offset >> 2;=0A=
++=0A=
++    trace_aspeed_udc_ep_write(e->index, offset, data);=0A=
++    e->regs[reg] =3D data;=0A=
++}=0A=
++=0A=
++static const MemoryRegionOps aspeed_udc_ep_ops =3D {=0A=
++    .read =3D aspeed_udc_ep_read,=0A=
++    .write =3D aspeed_udc_ep_write,=0A=
++    .endianness =3D DEVICE_LITTLE_ENDIAN,=0A=
++    .valid =3D {=0A=
++        .min_access_size =3D 1,=0A=
++        .max_access_size =3D 4,=0A=
++    },=0A=
++    .impl =3D {=0A=
++        .min_access_size =3D 4,=0A=
++        .max_access_size =3D 4,=0A=
++    },=0A=
++};=0A=
++=0A=
++static void aspeed_udc_reset_hold(Object *obj, ResetType type)=0A=
++{=0A=
++    AspeedUDCState *s =3D ASPEED_UDC(obj);=0A=
++    int i;=0A=
++=0A=
++    memset(s->regs, 0, sizeof(s->regs));=0A=
++    for (i =3D 0; i < ASPEED_UDC_NUM_EP; i++) {=0A=
++        memset(s->ep[i].regs, 0, sizeof(s->ep[i].regs));=0A=
++    }=0A=
++=0A=
++    /* Device-reset default: root, DMA and EP-pool soft-reset bits set */=
+=0A=
++    s->regs[R_UDC_DEV_RESET] =3D (R_UDC_DEV_RESET_ROOT_MASK |=0A=
++                                R_UDC_DEV_RESET_DMA_MASK |=0A=
++                                R_UDC_DEV_RESET_EP_POOL_MASK);=0A=
++}=0A=
++=0A=
++static void aspeed_udc_realize(DeviceState *dev, Error **errp)=0A=
++{=0A=
++    SysBusDevice *sbd =3D SYS_BUS_DEVICE(dev);=0A=
++    AspeedUDCState *s =3D ASPEED_UDC(dev);=0A=
++    int i;=0A=
++=0A=
++    memory_region_init(&s->udc_container, OBJECT(s), TYPE_ASPEED_UDC,=0A=
++                       ASPEED_UDC_MEM_SIZE);=0A=
++    memory_region_init_io(&s->root_mr, OBJECT(s), &aspeed_udc_ops, s,=0A=
++                          TYPE_ASPEED_UDC ".root",=0A=
++                          ASPEED_UDC_ROOT_NR_REGS << 2);=0A=
++    memory_region_add_subregion(&s->udc_container, 0, &s->root_mr);=0A=
++=0A=
++    /* Each programmable endpoint has its own register bank */=0A=
++    for (i =3D 0; i < ASPEED_UDC_NUM_EP; i++) {=0A=
++        g_autofree char *name =3D g_strdup_printf(TYPE_ASPEED_UDC ".ep%d",=
+ i);=0A=
++=0A=
++        s->ep[i].index =3D i;=0A=
++        memory_region_init_io(&s->ep[i].mr, OBJECT(s), &aspeed_udc_ep_ops,=
+=0A=
++                              &s->ep[i], name, ASPEED_UDC_EP_NR_REGS << 2)=
+;=0A=
++        memory_region_add_subregion(&s->udc_container,=0A=
++                                    ASPEED_UDC_EP_REG_BASE +=0A=
++                                    i * (ASPEED_UDC_EP_NR_REGS << 2),=0A=
++                                    &s->ep[i].mr);=0A=
++    }=0A=
++=0A=
++    sysbus_init_mmio(sbd, &s->udc_container);=0A=
++    sysbus_init_irq(sbd, &s->irq);=0A=
++}=0A=
++=0A=
++static void aspeed_udc_class_init(ObjectClass *klass, const void *data)=0A=
++{=0A=
++    DeviceClass *dc =3D DEVICE_CLASS(klass);=0A=
++    ResettableClass *rc =3D RESETTABLE_CLASS(klass);=0A=
++=0A=
++    dc->desc =3D "ASPEED USB Device Controller";=0A=
++    dc->realize =3D aspeed_udc_realize;=0A=
++    rc->phases.hold =3D aspeed_udc_reset_hold;=0A=
++}=0A=
++=0A=
++static const TypeInfo aspeed_udc_types[] =3D {=0A=
++    {=0A=
++        .name          =3D TYPE_ASPEED_UDC,=0A=
++        .parent        =3D TYPE_SYS_BUS_DEVICE,=0A=
++        .instance_size =3D sizeof(AspeedUDCState),=0A=
++        .class_init    =3D aspeed_udc_class_init,=0A=
++    },=0A=
++};=0A=
++=0A=
++DEFINE_TYPES(aspeed_udc_types)=0A=
+diff --git a/hw/arm/Kconfig b/hw/arm/Kconfig=0A=
+index 260d2f0751..146ed1a0be 100644=0A=
+--- a/hw/arm/Kconfig=0A=
++++ b/hw/arm/Kconfig=0A=
+@@ -536,6 +536,7 @@ config ASPEED_SOC=0A=
+     imply GENERIC_LOADER=0A=
+     imply PCI_DEVICES=0A=
+     imply E1000E_PCI_EXPRESS=0A=
++    select ASPEED_UDC=0A=
+     select DS1338=0A=
+     select FTGMAC100=0A=
+     select I2C=0A=
+diff --git a/hw/usb/Kconfig b/hw/usb/Kconfig=0A=
+index de95686720..e4df15fe7c 100644=0A=
+--- a/hw/usb/Kconfig=0A=
++++ b/hw/usb/Kconfig=0A=
+@@ -146,3 +146,6 @@ config XLNX_USB_SUBSYS=0A=
+ config USB_CHIPIDEA=0A=
+     bool=0A=
+     select USB_EHCI_SYSBUS=0A=
++=0A=
++config ASPEED_UDC=0A=
++    bool=0A=
+diff --git a/hw/usb/meson.build b/hw/usb/meson.build=0A=
+index ba55c28ef6..d4ba60a91c 100644=0A=
+--- a/hw/usb/meson.build=0A=
++++ b/hw/usb/meson.build=0A=
+@@ -27,6 +27,7 @@ system_ss.add(when: 'CONFIG_USB_XHCI_NEC', if_true: files=
+('hcd-xhci-nec.c'))=0A=
+ system_ss.add(when: 'CONFIG_USB_DWC2', if_true: files('hcd-dwc2.c'))=0A=
+ system_ss.add(when: 'CONFIG_USB_DWC3', if_true: files('hcd-dwc3.c'))=0A=
+ system_ss.add(when: 'CONFIG_USB_CHIPIDEA', if_true: files('chipidea.c'))=
+=0A=
++system_ss.add(when: 'CONFIG_ASPEED_UDC', if_true: files('aspeed-udc.c'))=
+=0A=
+ =0A=
+ system_ss.add(when: 'CONFIG_IMX_USBPHY', if_true: files('imx-usb-phy.c'))=
+=0A=
+ system_ss.add(when: 'CONFIG_VT82C686', if_true: files('vt82c686-uhci-pci.c=
+'))=0A=
+diff --git a/hw/usb/trace-events b/hw/usb/trace-events=0A=
+index 67249d69c2..ed05304520 100644=0A=
+--- a/hw/usb/trace-events=0A=
++++ b/hw/usb/trace-events=0A=
+@@ -377,3 +377,10 @@ canokey_handle_data_out(uint8_t ep_out, uint32_t out_l=
+en) "ep %d len %d"=0A=
+ canokey_handle_data_in(uint8_t ep_in, uint32_t in_len) "ep %d len %d"=0A=
+ canokey_realize(void)=0A=
+ canokey_unrealize(void)=0A=
++=0A=
++# aspeed-udc.c=0A=
++aspeed_udc_read(uint64_t offset, uint32_t value) "offset 0x%" PRIx64 " val=
+ue 0x%x"=0A=
++aspeed_udc_write(uint64_t offset, uint32_t value) "offset 0x%" PRIx64 " va=
+lue 0x%x"=0A=
++aspeed_udc_ep_read(int ep, uint64_t offset, uint32_t value) "ep %d, offset=
+ 0x%" PRIx64 " value 0x%x"=0A=
++aspeed_udc_ep_write(int ep, uint64_t offset, uint32_t value) "ep %d, offse=
+t 0x%" PRIx64 " value 0x%x"=0A=
++aspeed_udc_irq(uint32_t isr, uint32_t ier, int level) "isr 0x%x, ier 0x%x,=
+ level %d"=0A=
 -- =0A=
 2.53.0=0A=
 

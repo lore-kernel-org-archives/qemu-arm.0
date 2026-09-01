@@ -4,95 +4,96 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2D0CBC61DD3
-	for <qemu-arm@archiver.kernel.org>; Tue,  1 Sep 2026 17:52:59 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 72DA2C624D0
+	for <qemu-arm@archiver.kernel.org>; Tue,  1 Sep 2026 18:30:34 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1x1SfH-0007F0-5o; Tue, 01 Sep 2026 13:52:55 -0400
+	id 1x1TFQ-0006oG-Ss; Tue, 01 Sep 2026 14:30:16 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1x1SfF-0007EE-S4
- for qemu-arm@nongnu.org; Tue, 01 Sep 2026 13:52:53 -0400
-Received: from mail-wm1-x330.google.com ([2a00:1450:4864:20::330])
+ id 1x1TFP-0006nV-Gl
+ for qemu-arm@nongnu.org; Tue, 01 Sep 2026 14:30:15 -0400
+Received: from mail-wr1-x42e.google.com ([2a00:1450:4864:20::42e])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1x1SfD-0003Jg-Us
- for qemu-arm@nongnu.org; Tue, 01 Sep 2026 13:52:53 -0400
-Received: by mail-wm1-x330.google.com with SMTP id
- 5b1f17b1804b1-49b8eeb3ff2so417335e9.2
- for <qemu-arm@nongnu.org>; Tue, 01 Sep 2026 10:52:51 -0700 (PDT)
+ id 1x1TFN-00049e-Eg
+ for qemu-arm@nongnu.org; Tue, 01 Sep 2026 14:30:15 -0400
+Received: by mail-wr1-x42e.google.com with SMTP id
+ ffacd0b85a97d-482fc2b44a7so235499f8f.2
+ for <qemu-arm@nongnu.org>; Tue, 01 Sep 2026 11:30:13 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1788285170; x=1788889970; darn=nongnu.org;
+ d=linaro.org; s=google; t=1788287412; x=1788892212; darn=nongnu.org;
  h=content-transfer-encoding:content-type:mime-version:message-id:date
  :user-agent:references:in-reply-to:subject:cc:to:from:from:to:cc
  :subject:date:message-id:reply-to:content-type;
- bh=vxVrMcjTp9d44QOfwg9Ae5iqjbM1/OsoddojrKC5OEA=;
- b=JkOnRUEc82g8INNIfRudjl5MJR3u9FKgkQqNQHTWtX/Scl0jsNpLfViZ2QShT8TvU0
- lJYegUX345h4t3YYkUzFxjEcxPRfJHe/+aP4X8PEhDHaAkq4X/Wcgh2S83dvSTDM3Prq
- +DeUFYrvBlgdFfGYa/08BbQY6kQ4FQ/FM7MjswIVtnH2P2GZldqQ1flc24nm7o5o+Yf+
- V+DGBIm793vuoVUqRmF4VfI52ACX8e/nZuvnKzBRSxCuxzVAHyDe2gGrB9Xv2b2VFX87
- hm1ntRf+I8MD74bhnfPVrNX++LDzg9KbgQxRKZvKcKqVmqcBMbxk6jjXArQUbYvWc9sY
- 4CDA==
+ bh=KfjqZhErL/EdtsvfbBVory2WLrTqH+TJKNOungvW8G4=;
+ b=l0uwl6zeLfG416z6NvJnc083lKKyTTXdqqMzMaXyA3AoGjw4vYJz8jdVu/26kgiCu1
+ sDsYTDFzH4McuQq7AiSYlmEE9msstzaAk08BGkTxHTKPlI6EBF8Byen731eB0fh/zKdm
+ ubQP+Ui4LFOKMz8+rsMMHar8TAWe2NOgfx5O8daQsvO018hsX3ij6X7F9hZfRNlRygTB
+ 9Fa1oS0xWT2KRkRmmJ4/rLQIB1u+gvZdZ5dkoEInhl/FinWiAWHEDpw2zAfpkU01+vTt
+ H2P7aGvm3KBQRWLc+8WUDqRvlU7IBQaVo7oAtwCeRhbijVxoAfo1+bZt38eRGKqFRBeT
+ 8YhQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1788285170; x=1788889970;
+ d=1e100.net; s=20251104; t=1788287412; x=1788892212;
  h=content-transfer-encoding:content-type:mime-version:message-id:date
  :user-agent:references:in-reply-to:subject:cc:to:from:x-gm-gg
  :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
  :content-type;
- bh=vxVrMcjTp9d44QOfwg9Ae5iqjbM1/OsoddojrKC5OEA=;
- b=kJF9t0jYU/Eocswc4X+g7bggTifx+nPyihucBpSMHTx8KIaJlBJJDoXYCGlVFcokfy
- SSx6TnAZumRhdu0SDC5cIUykRMLwaOG9xB/YJ+6peVRaxPtn035ePqbw2inyio1BpH4H
- Z24TdXHajdplf2hG4xfGwcLnGsTWYdHmbsW/uvmmY/PFIlOOabV2qxxIJg/DQUmgSiOU
- ud+nPaxYBnoD+p9LQJG4kJIxf02bs1BdR87PMDVu/49IQq7xNxtf2IyWip8k2nhzrmaK
- blcLjv0mpYDs7Wm6twG8QVX6A2idDtbxKB+FkY5JeaSbYayi+GrBvnq4rDcrOYGneB/3
- +qzQ==
+ bh=KfjqZhErL/EdtsvfbBVory2WLrTqH+TJKNOungvW8G4=;
+ b=KGzOpPThABSqdPpBCxmGg+MBizGf5/A9aSYEEfw+vpjXEidqEbOYUMhPvjbgF7/HY2
+ rNngTFU4QudVJFrVNtUEpSQ+nyV15GeNBuopZnuzNi7/a8zXu9igAVCQYwBuFZJ2Fzfw
+ 3/T/3A6CtKMlCD3knHk9FdV3skgRD85HGKv9nWmLj2d/O/kgW0Z1pAEvpFMv1ZyaUJGi
+ xT21/jHYFafS+WdRZgyA4pfiX+tsDc3G0aVMnTeHrpeltmMUic7KzAQgR7o9Sy/HqaYo
+ SBCdkWuwYVdsHmWm2baqRtUw/B7VspYoeWBmHQpfJ27GP81zP5HadPYr4O98dEgckUuD
+ 6bYQ==
 X-Forwarded-Encrypted: i=1;
- AHgh+RrEOrdzGrfFeqz3rLVTZXF8uu7LR9T8nZWs8P4H9aP7jxcE+h2QFnuV8oJ1fGabGGiDfPcWhWIIbg==@nongnu.org
-X-Gm-Message-State: AFuF++lKijvu5E5hHEfPkIP/8Orh7ML8HIs4HvmvPddEj0b7McKt1SED
- 74WT8P4sXjAacZcQV5IOZ774VzvTDgQNmFG+97aUOfkhGQs14CvOXbM6iXyZ33mq+PY=
-X-Gm-Gg: AR+sD10ogE8SeC+Shifili6UN3sqpzHKl4xK+x9usi4MRustkjH5TOxhk5GlrIClGUS
- MDSlUhYzeNUIyXcDOi+yfRML+FZEmt/mvrAXTkIGvbjP8KFJRDbdu0lez8HbwwGxmC7Q1AK0nZi
- 5Fp3Sp6ARuFktahZZOgV0G38YzHlFOpiakbdolBZigo/xE2dKglWsT1oJ5/dwonyo3qUP8tZcDp
- Z7YRSNYfqJyjZ9EerLsHXLI0maIPyJbiSUcm75IPm41k/Xo7NH7MGJEtvxAFl7Cxx1yHA4A5i1/
- yOnhhNpCinUdqNnA2zf6gXyer5iV/FlYGi2hynpTzoE4HR4rFZa/zqJH3fdRHGgv0lW2YxEm+Y+
- 87a/+CialwnqkGDAHSNKgmbQg3g12JO72qUG3iXLd6zdshGkL1mDf/ldMmiZDpWFBeQjElzldi0
- p8CA1W6leSmTf0PeFsxvYhEdcfPYQn5hHPmvwXPqQj7EhBCKm1bnCICHDgQOgc
-X-Received: by 2002:a05:600c:1d8c:b0:499:4e47:eaf2 with SMTP id
- 5b1f17b1804b1-49cdc417b87mr198583725e9.6.1788285169991; 
- Tue, 01 Sep 2026 10:52:49 -0700 (PDT)
+ AHgh+RqCNBqfh8g9WtQjDe21r0w6JvZrCORFCasodZD95+aQ+sHJashC2xe7saPfdhqScInZIrWroYMpfQ==@nongnu.org
+X-Gm-Message-State: AFuF++mbEPLQUZZFAYGvZIVSYhHkWWvMWJQO+mty0BogBO/PdM1nlCqX
+ sCBS/aRgbQWMryVBNx85wJpS9UOKZOBfC+O0UxpBNGPWUP6/sBuzsirMvIe4crB4bV5UtUVg0Ld
+ LKk1Zbnc=
+X-Gm-Gg: AR+sD13fgCy2fWdxhgjGNOpKZwkldHDNwFd5lqnqvSAJlvZr4XeZibblDZ4a0gN3Hye
+ xASpygA60w9Q1SDGScSDq4Tfv0INsQvkxu2PUI2HNzoJSnldyeouzBMdhsFEFxchWN3z1+sMlGO
+ NUUItUbT+lk0CSg0mXEBBGVvtCyGQjN1q9o/xhqUjo6NxFYPKrUz2YNYiBzssU5TuDEwWGWrhHe
+ 6QdOwUbyGTQyWEVIgNz+tHxPiSUn0oQ5fPePwFGyCWrk0rgml+ZXcWCoIp9YCqGvBMpC2OwBaWo
+ PMzqG4fbcXkInYbDfHQONXSGhOW5OYgPYRHx9Q6Ytt5RsNfxcaG+KsEm0EpQSugcLrzq2gf4Tx3
+ nY3vMAZzEqV9X04PCmDP1Lh1aD9KjNtEKe/i1JMz3HjSumrzoVF3JrFr8oL1fyXK7NzsYyai0g9
+ 680MAseU1yJvF2KM4km4rFWrk7V0sFjSSWKdZYS3qD8a/BQOg3uONugszoE3sM
+X-Received: by 2002:a05:600c:3b20:b0:499:8704:242c with SMTP id
+ 5b1f17b1804b1-49b91bd78cdmr478656905e9.0.1788287411775; 
+ Tue, 01 Sep 2026 11:30:11 -0700 (PDT)
 Received: from draig.lan ([185.124.0.156]) by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-49ce464aa70sm3655225e9.6.2026.09.01.10.52.48
+ ffacd0b85a97d-48448ed3706sm690916f8f.18.2026.09.01.11.30.10
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 01 Sep 2026 10:52:49 -0700 (PDT)
+ Tue, 01 Sep 2026 11:30:11 -0700 (PDT)
 Received: from draig (localhost [IPv6:::1])
- by draig.lan (Postfix) with ESMTP id E1B525F829;
- Tue, 01 Sep 2026 18:52:47 +0100 (BST)
+ by draig.lan (Postfix) with ESMTP id ED85A5F829;
+ Tue, 01 Sep 2026 19:30:09 +0100 (BST)
 From: =?utf-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: Gilles Grimaud <gilles.grimaud@univ-lille.fr>
-Cc: qemu-devel@nongnu.org,  qemu-arm@nongnu.org,  Peter Maydell
- <peter.maydell@linaro.org>
-Subject: Re: [PATCH RFC v2 01/30] target/arm: support Cortex-M0+ MPU
-In-Reply-To: <20260829234308.33725-2-gilles.grimaud@univ-lille.fr> (Gilles
- Grimaud's message of "Sun, 30 Aug 2026 01:42:35 +0200")
+Cc: qemu-devel@nongnu.org,  qemu-arm@nongnu.org,  Paolo Bonzini
+ <pbonzini@redhat.com>
+Subject: Re: [PATCH RFC v2 03/30] hw/misc: add RP2040 diagnostic helpers
+In-Reply-To: <20260829234308.33725-4-gilles.grimaud@univ-lille.fr> (Gilles
+ Grimaud's message of "Sun, 30 Aug 2026 01:42:37 +0200")
 References: <20260829234308.33725-1-gilles.grimaud@univ-lille.fr>
- <20260829234308.33725-2-gilles.grimaud@univ-lille.fr>
+ <20260829234308.33725-4-gilles.grimaud@univ-lille.fr>
 User-Agent: mu4e 1.14.4-pre1; emacs 30.1
-Date: Tue, 01 Sep 2026 18:52:47 +0100
-Message-ID: <87wlt4uads.fsf@draig.linaro.org>
+Date: Tue, 01 Sep 2026 19:30:09 +0100
+Message-ID: <87qzjcu8ni.fsf@draig.linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2a00:1450:4864:20::330;
- envelope-from=alex.bennee@linaro.org; helo=mail-wm1-x330.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::42e;
+ envelope-from=alex.bennee@linaro.org; helo=mail-wr1-x42e.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -112,147 +113,158 @@ Gilles Grimaud <gilles.grimaud@univ-lille.fr> writes:
 
 > From: gilles grimaud <gilles.grimaud@univ-lille.fr>
 >
-> Cortex-M0+ implementations may provide an Armv6 PMSA MPU with eight regio=
-ns. QEMU already marks M-profile CPUs as PMSA, but only exposes and allocat=
-es the existing region model for Armv7 CPUs. This prevents a Cortex-M0+ boa=
-rd from enabling its optional MPU.
+> Add shared helpers for reporting unimplemented RP2040 features and regist=
+er accesses. Keeping the formatting in one place makes shallow peripheral m=
+odels explicit and gives their diagnostics a consistent component, address,=
+ offset and value format.
 >
+> Add a dedicated Kconfig symbol so the helpers remain disabled until
+> selected by the RP2040 SoC.
 
-Just a comment for all patches, you should ensure your editor wraps at
-80 columns (72 for title) as patches are often read on terminals.
+This seems over-engineered. What is wrong with:
 
-It's good habit to run through checkpatch.pl to pick up the minor
-oft-forgotten stuff.
+  qemu_log_mask(LOG_UNIMP, "%s: ....", __func__, ...);
 
-> Use QEMU's PMSAv7 state and translation path for the compatible
-> Armv6-M MPU register layout. Permit CONTROL.nPRIV changes when the
-> optional MPU is present and clear the region state on reset.
+In the various call sites. Most of the funcs seem to be prefixed anyway.
 
-Hmm will need to think about this - the file is explicitly targeting the
-armv7_nvic so we might want to consider renaming if indeed special
-casing the differences is the right thing to do.
-
-That does make the spread of changes about both nvic and cpu hard to
-review. Is env->pmsav7.drbar related to env.v7m.vecbase[!attrs.secure]
-for example.
+In the meantime you can instantiate TYPE_UNIMPLEMENTED_DEVICE for any
+memory regions you have no implementation for.
 
 >
 > Signed-off-by: gilles grimaud <gilles.grimaud@univ-lille.fr>
 > ---
->  hw/intc/armv7m_nvic.c     |  3 +++
->  target/arm/cpu.c          | 12 +++++++++---
->  target/arm/ptw.c          |  3 ++-
->  target/arm/tcg/m_helper.c | 10 +++++++++-
->  4 files changed, 23 insertions(+), 5 deletions(-)
+>  MAINTAINERS                  |  7 ++++++
+>  hw/misc/Kconfig              |  3 +++
+>  hw/misc/meson.build          |  1 +
+>  hw/misc/rp2040_nyi.c         | 47 ++++++++++++++++++++++++++++++++++++
+>  include/hw/misc/rp2040_nyi.h | 19 +++++++++++++++
+>  5 files changed, 77 insertions(+)
+>  create mode 100644 hw/misc/rp2040_nyi.c
+>  create mode 100644 include/hw/misc/rp2040_nyi.h
 >
-> diff --git a/hw/intc/armv7m_nvic.c b/hw/intc/armv7m_nvic.c
-> index a7651f831e..3140599ac1 100644
-> --- a/hw/intc/armv7m_nvic.c
-> +++ b/hw/intc/armv7m_nvic.c
-> @@ -1626,6 +1626,9 @@ static void nvic_writel(NVICState *s, uint32_t offs=
-et, uint32_t value,
->          break;
->      case 0xd08: /* Vector Table Offset.  */
->          cpu->env.v7m.vecbase[attrs.secure] =3D value & 0xffffff80;
-> +        if (!arm_feature(&cpu->env, ARM_FEATURE_M_SECURITY)) {
-> +            cpu->env.v7m.vecbase[!attrs.secure] =3D value & 0xffffff80;
-> +        }
->          break;
->      case 0xd0c: /* Application Interrupt/Reset Control (AIRCR) */
->          if ((value >> R_V7M_AIRCR_VECTKEY_SHIFT) =3D=3D 0x05fa) {
-> diff --git a/target/arm/cpu.c b/target/arm/cpu.c
-> index 77aa78f00e..f58a1db843 100644
-> --- a/target/arm/cpu.c
-> +++ b/target/arm/cpu.c
-> @@ -617,7 +617,8 @@ static void arm_cpu_reset_hold(Object *obj, ResetType=
- type)
->                             sizeof(*env->pmsav8.rlar[M_REG_S])
->                             * cpu->pmsav7_dregion);
->                  }
-> -            } else if (arm_feature(env, ARM_FEATURE_V7)) {
-> +            } else if (arm_feature(env, ARM_FEATURE_V7) ||
-> +                       arm_feature(env, ARM_FEATURE_M)) {
->                  memset(env->pmsav7.drbar, 0,
->                         sizeof(*env->pmsav7.drbar) * cpu->pmsav7_dregion);
->                  memset(env->pmsav7.drsr, 0,
-> @@ -1656,7 +1657,11 @@ static void arm_cpu_post_init(Object *obj)
->  #ifndef CONFIG_USER_ONLY
->      if (arm_feature(&cpu->env, ARM_FEATURE_PMSA)) {
->          qdev_property_add_static(DEVICE(obj), &arm_cpu_has_mpu_property);
-> -        if (arm_feature(&cpu->env, ARM_FEATURE_V7)) {
-> +        /*
-> +         * QEMU's PMSAv7 state also models the Armv6-M MPU register layo=
-ut.
-> +         */
-> +        if (arm_feature(&cpu->env, ARM_FEATURE_V7) ||
-> +            arm_feature(&cpu->env, ARM_FEATURE_M)) {
->              qdev_property_add_static(DEVICE(obj),
->                                       &arm_cpu_pmsav7_dregion_property);
->          }
-> @@ -2332,7 +2337,8 @@ static void arm_cpu_realizefn(DeviceState *dev, Err=
-or **errp)
->      }
+> diff --git a/MAINTAINERS b/MAINTAINERS
+> index 55f6f2e3c0..db641d9c4c 100644
+> --- a/MAINTAINERS
+> +++ b/MAINTAINERS
+> @@ -1035,6 +1035,13 @@ F: docs/system/arm/raspi.rst
+>  F: tests/functional/arm/test_raspi2.py
+>  F: tests/functional/aarch64/test_raspi*.py
 >=20=20
->      if (arm_feature(env, ARM_FEATURE_PMSA) &&
-> -        arm_feature(env, ARM_FEATURE_V7)) {
-> +        (arm_feature(env, ARM_FEATURE_V7) ||
-> +         arm_feature(env, ARM_FEATURE_M))) {
->          uint32_t nr =3D cpu->pmsav7_dregion;
->=20=20
->          if (nr > 0xff) {
-> diff --git a/target/arm/ptw.c b/target/arm/ptw.c
-> index a29de0385f..b366a8d3dd 100644
-> --- a/target/arm/ptw.c
-> +++ b/target/arm/ptw.c
-> @@ -3901,7 +3901,8 @@ static bool get_phys_addr_nogpc(CPUARMState *env, S=
-1Translate *ptw,
->              /* PMSAv8 */
->              ret =3D get_phys_addr_pmsav8(env, ptw, address, access_type,
->                                         result, fi);
-> -        } else if (arm_feature(env, ARM_FEATURE_V7)) {
-> +        } else if (arm_feature(env, ARM_FEATURE_V7) ||
-> +                   arm_feature(env, ARM_FEATURE_M)) {
->              /* PMSAv7 */
-
-And again by definition this is PMSAv7, not v6 - you'll note we have
-plenty of places where we do check against ARM_FEATURE_V6 (or V6K).
-
->              ret =3D get_phys_addr_pmsav7(env, ptw, address, access_type,
->                                         result, fi);
-> diff --git a/target/arm/tcg/m_helper.c b/target/arm/tcg/m_helper.c
-> index f4ba93b291..667b2a3cbd 100644
-> --- a/target/arm/tcg/m_helper.c
-> +++ b/target/arm/tcg/m_helper.c
-> @@ -16,6 +16,7 @@
->  #include "qemu/bitops.h"
->  #include "qemu/log.h"
->  #include "exec/page-protection.h"
-> +#include "exec/cputlb.h"
->  #ifdef CONFIG_TCG
->  #include "accel/tcg/cpu-ldst-common.h"
->  #include "semihosting/common-semi.h"
-> @@ -2775,9 +2776,16 @@ void HELPER(v7m_msr)(CPUARMState *env, uint32_t ma=
-skreg, uint32_t val)
->                             !arm_v7m_is_handler_mode(env))) {
->              write_v7m_control_spsel(env, (val & R_V7M_CONTROL_SPSEL_MASK=
-) !=3D 0);
->          }
-> -        if (cur_el > 0 && arm_feature(env, ARM_FEATURE_M_MAIN)) {
-> +        if (cur_el > 0 && (arm_feature(env, ARM_FEATURE_M_MAIN) ||
-> +                           env_archcpu(env)->has_mpu)) {
-> +            uint32_t old_control =3D env->v7m.control[env->v7m.secure];
+> +Raspberry Pi Pico / RP2040
+> +M: Gilles Grimaud <gilles.grimaud@univ-lille.fr>
+> +L: qemu-arm@nongnu.org
+> +S: Maintained
+> +F: hw/*/rp2040*
+> +F: include/hw/*/rp2040*
 > +
->              env->v7m.control[env->v7m.secure] &=3D ~R_V7M_CONTROL_NPRIV_=
-MASK;
->              env->v7m.control[env->v7m.secure] |=3D val & R_V7M_CONTROL_N=
-PRIV_MASK;
-> +            if ((old_control ^ env->v7m.control[env->v7m.secure]) &
-> +                R_V7M_CONTROL_NPRIV_MASK) {
-> +                tlb_flush(env_cpu(env));
-> +            }
->          }
->          if (cpu_isar_feature(aa32_vfp_simd, env_archcpu(env))) {
->              /*
+>  Real View
+>  M: Peter Maydell <peter.maydell@linaro.org>
+>  L: qemu-arm@nongnu.org
+> diff --git a/hw/misc/Kconfig b/hw/misc/Kconfig
+> index 46e3c03cc8..de7a0f56fa 100644
+> --- a/hw/misc/Kconfig
+> +++ b/hw/misc/Kconfig
+> @@ -101,6 +101,9 @@ config FSL_IMX8MP_ANALOG
+>  config FSL_IMX8MP_CCM
+>      bool
+>=20=20
+> +config RP2040_NYI
+> +    bool
+> +
+>  config STM32_RCC
+>      bool
+>=20=20
+> diff --git a/hw/misc/meson.build b/hw/misc/meson.build
+> index 54e07aacda..8611d59437 100644
+> --- a/hw/misc/meson.build
+> +++ b/hw/misc/meson.build
+> @@ -98,6 +98,7 @@ system_ss.add(when: 'CONFIG_RASPI', if_true: files(
+>    'bcm2835_cprman.c',
+>    'bcm2835_powermgt.c',
+>  ))
+> +system_ss.add(when: 'CONFIG_RP2040_NYI', if_true: files('rp2040_nyi.c'))
+>  system_ss.add(when: 'CONFIG_SLAVIO', if_true: files('slavio_misc.c'))
+>  system_ss.add(when: 'CONFIG_ZYNQ', if_true: files('zynq_slcr.c'))
+>  system_ss.add(when: 'CONFIG_XLNX_ZYNQ_DDRC', if_true: files('xlnx-zynq-d=
+drc.c'))
+> diff --git a/hw/misc/rp2040_nyi.c b/hw/misc/rp2040_nyi.c
+> new file mode 100644
+> index 0000000000..7e9e4c09a1
+> --- /dev/null
+> +++ b/hw/misc/rp2040_nyi.c
+> @@ -0,0 +1,47 @@
+> +/*
+> + * RP2040 "not yet implemented" diagnostics
+> + *
+> + * SPDX-License-Identifier: GPL-2.0-or-later
+> + */
+> +
+> +#include "qemu/osdep.h"
+> +#include "hw/misc/rp2040_nyi.h"
+> +#include "qemu/log.h"
+> +
+> +void rp2040_log_nyi(const char *component, const char *feature,
+> +                    const char *detail)
+> +{
+> +    if (g_str_has_prefix(component, "rp2040.")) {
+> +        component +=3D strlen("rp2040.");
+> +    }
+> +
+> +    qemu_log_mask(LOG_UNIMP, "Not yet implemented: rp2040.%s: %s%s%s\n",
+> +                  component, feature, detail ? ": " : "",
+> +                  detail ? detail : "");
+> +}
+> +
+> +void rp2040_log_unimplemented_read(const char *component, unsigned size,
+> +                                   uint64_t addr, uint64_t offset,
+> +                                   uint64_t value)
+> +{
+> +    char detail[128];
+> +
+> +    snprintf(detail, sizeof(detail),
+> +             "size %u, addr 0x%08" PRIx64 ", offset 0x%04" PRIx64
+> +             " -> 0x%0*" PRIx64,
+> +             size, addr, offset, size << 1, value);
+> +    rp2040_log_nyi(component, "unimplemented read", detail);
+> +}
+> +
+> +void rp2040_log_unimplemented_write(const char *component, unsigned size,
+> +                                    uint64_t addr, uint64_t offset,
+> +                                    uint64_t value)
+> +{
+> +    char detail[128];
+> +
+> +    snprintf(detail, sizeof(detail),
+> +             "size %u, addr 0x%08" PRIx64 ", offset 0x%04" PRIx64
+> +             ", value 0x%0*" PRIx64,
+> +             size, addr, offset, size << 1, value);
+> +    rp2040_log_nyi(component, "unimplemented write", detail);
+> +}
+> diff --git a/include/hw/misc/rp2040_nyi.h b/include/hw/misc/rp2040_nyi.h
+> new file mode 100644
+> index 0000000000..c23805973b
+> --- /dev/null
+> +++ b/include/hw/misc/rp2040_nyi.h
+> @@ -0,0 +1,19 @@
+> +/*
+> + * RP2040 "not yet implemented" diagnostics
+> + *
+> + * SPDX-License-Identifier: GPL-2.0-or-later
+> + */
+> +
+> +#ifndef HW_MISC_RP2040_NYI_H
+> +#define HW_MISC_RP2040_NYI_H
+> +
+> +void rp2040_log_nyi(const char *component, const char *feature,
+> +                    const char *detail);
+> +void rp2040_log_unimplemented_read(const char *component, unsigned size,
+> +                                   uint64_t addr, uint64_t offset,
+> +                                   uint64_t value);
+> +void rp2040_log_unimplemented_write(const char *component, unsigned size,
+> +                                    uint64_t addr, uint64_t offset,
+> +                                    uint64_t value);
+> +
+> +#endif
 
 --=20
 Alex Benn=C3=A9e

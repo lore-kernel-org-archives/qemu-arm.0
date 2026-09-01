@@ -4,45 +4,45 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2B328C61DD6
-	for <qemu-arm@archiver.kernel.org>; Tue,  1 Sep 2026 07:00:16 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2ABEEC61DD6
+	for <qemu-arm@archiver.kernel.org>; Tue,  1 Sep 2026 07:00:24 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1x1ISc-0002pJ-G9; Tue, 01 Sep 2026 02:59:10 -0400
+	id 1x1ITU-0003MX-HF; Tue, 01 Sep 2026 03:00:04 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1x1ISb-0002oq-FQ
- for qemu-arm@nongnu.org; Tue, 01 Sep 2026 02:59:09 -0400
-Received: from smtpout9.mo538.mail-out.ovh.net ([51.210.91.38])
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1x1ITT-0003Lo-FT
+ for qemu-arm@nongnu.org; Tue, 01 Sep 2026 03:00:03 -0400
+Received: from smtpout5.mo536.mail-out.ovh.net ([51.210.91.14])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1x1ISZ-0001Tw-FS
- for qemu-arm@nongnu.org; Tue, 01 Sep 2026 02:59:09 -0400
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1x1ITR-0001d1-3a
+ for qemu-arm@nongnu.org; Tue, 01 Sep 2026 03:00:03 -0400
 Received: from director3.derp.mail-out.ovh.net
  (director3.derp.mail-out.ovh.net [79.137.60.223])
- by mo538.mail-out.ovh.net (Postfix) with ESMTPS id 4hYxY46G4yz6GMl;
- Tue,  1 Sep 2026 06:59:04 +0000 (UTC)
+ by mo536.mail-out.ovh.net (Postfix) with ESMTPS id 4hYxZ71kFBz87dR;
+ Tue,  1 Sep 2026 06:59:59 +0000 (UTC)
 Received: from director3.derp.mail-out.ovh.net
  (director3.derp.mail-out.ovh.net. [127.0.0.1])
  by director3.derp.mail-out.ovh.net (inspect_sender_mail_agent) with SMTP
- for <jamin_lin@aspeedtech.com>; Tue,  1 Sep 2026 06:59:04 +0000 (UTC)
-Received: from mta7.priv.ovhmail-u2.ea.mail.ovh.net (unknown [10.110.54.41])
- by director3.derp.mail-out.ovh.net (Postfix) with ESMTPS id 4hYxY45X6bz1xpm;
- Tue,  1 Sep 2026 06:59:04 +0000 (UTC)
-Received: from kaod.org (unknown [10.1.6.7])
+ for <jamin_lin@aspeedtech.com>; Tue,  1 Sep 2026 06:59:59 +0000 (UTC)
+Received: from mta11.priv.ovhmail-u2.ea.mail.ovh.net (unknown [10.110.58.197])
+ by director3.derp.mail-out.ovh.net (Postfix) with ESMTPS id
+ 4hYxZ70CB8z1xrd; Tue,  1 Sep 2026 06:59:59 +0000 (UTC)
+Received: from kaod.org (unknown [10.1.6.4])
  (Authenticated sender: clg@kaod.org)
- by mta7.priv.ovhmail-u2.ea.mail.ovh.net (Postfix) with ESMTPSA id A6789203FDD; 
- Tue,  1 Sep 2026 06:59:02 +0000 (UTC)
+ by mta11.priv.ovhmail-u2.ea.mail.ovh.net (Postfix) with ESMTPSA id
+ 9D91A2403FDA; Tue,  1 Sep 2026 06:59:56 +0000 (UTC)
 Authentication-Results: garm.ovh; auth=pass
- (GARM-103G0052def7ebf-5af8-40d8-b29c-3f0477aac35f,
+ (GARM-99G003a9514f60-3c75-43cb-9300-e752095463b6,
  60FF1D1BA71F1148B3CBA6CDBAED02576558214C) smtp.auth=clg@kaod.org
 X-OVh-ClientIp: 82.64.250.170
-Message-ID: <418366fe-0ae9-433b-b1c1-51edc84f4604@kaod.org>
-Date: Tue, 1 Sep 2026 08:59:02 +0200
+Message-ID: <e09fc3a4-17bf-4ccc-a28e-4516350fa956@kaod.org>
+Date: Tue, 1 Sep 2026 08:59:55 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 04/25] hw/sensor: tmp105: enforce the configurable
- fault queue
+Subject: Re: [PATCH v2 10/25] tests/qtest: tmp105: cover one-shot and
+ fault-queue write immunity
 To: Emmanuel Blot <emmanuel.blot@free.fr>, qemu-devel@nongnu.org
 Cc: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@mailo.com>,
  Peter Maydell <peter.maydell@linaro.org>,
@@ -55,7 +55,7 @@ Cc: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@mailo.com>,
  =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>,
  Emmanuel Blot <eblot@meta.com>
 References: <20260731-sanmiguel-bmc-locator-v2-0-1266926ba769@free.fr>
- <20260731-sanmiguel-bmc-locator-v2-4-1266926ba769@free.fr>
+ <20260731-sanmiguel-bmc-locator-v2-10-1266926ba769@free.fr>
 From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
 Content-Language: en-US, fr
 Autocrypt: addr=clg@kaod.org; keydata=
@@ -100,30 +100,30 @@ Autocrypt: addr=clg@kaod.org; keydata=
  3GlqivBNkmYsHYSlFsbxc37E1HpTEaSWsGfAHQoPn9qrDJgsgcbBVc1gkUT6hnxShKPp4Pls
  ZVMNjvPAnr5TEBgHkk54HQRhhwcYv1T2QumQizDiU6iOrUzBThaMhZO3i927SG2DwWDVzZlt
  KrCMD1aMPvb3NU8FOYRhNmIFR3fcalYr+9gDuVKe8BVz4atMOoktmt0GWTOC8P4=
-In-Reply-To: <20260731-sanmiguel-bmc-locator-v2-4-1266926ba769@free.fr>
+In-Reply-To: <20260731-sanmiguel-bmc-locator-v2-10-1266926ba769@free.fr>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-x-ovh-tracer-id: 8626645090501438509
+x-ovh-tracer-id: 8642126210817567789
 X-VR-SPAMSTATE: OK
 X-VR-SPAMSCORE: -100
-X-VR-SPAMCAUSE: dmFkZTFCz8ENcifGGc7lwMsh5Km2xuR+xdVhCLoxl+J2tovlCADjZE+WbMnanW7kgYgQe1Xb30hsAtuy6Zdh3JAhi6x2xIv0v1XCEdPl3zPVRXVt5hjCmOq/ZpuqEhKYNf8xVymhh8KyRxc6vTjsgFENdi6tszQlEq8FCwobqBFX8MEKZhFbq1M/+xzqMFrMBrJxefSUfZ2mAx/Mmj98zFs8rSYoGmSYa8hp4Qmxm+k7rl1SKe4/Mp3afxzMeOZDjd8oBqNZM63rfKRRkKDccYy/hmCmI66unOknYfrD9bhs8c9qkAUt7fGjDSuiUibfBtFU5ZtXhyuCJ/gU1dRq45DzfQKybzI1GrPSA7+PE1aqbjHxxw2wN3n2IlkfzP40VNT3J9mS7vUhjA5D3tFAKTW7dVAAemdO2lipra+/Q9eWw1lcrzsNU0eXh0qkgUvdopQTuwyEB5hO9vDxH1mHUAuop0QK7+eEwaQ8cBYgbqb1w3xp0h0UB8qk87NVMyZJajTaNkfeSXzm2hjR2pegdUTbNrfoGciregGzfaVv6nvJAY8pqHlFKmGYP42gZDgxh5Encv7RZEu3TBkrT2WrspOKKiYBdY6CFeRfvx67MCkUblUbGEgwNndZ9MB4HcNU0gugV4a0eesT8AImGBMpQaE2KDuccy333orrY40u7+4qtk31Ew
-DKIM-Signature: a=rsa-sha256; bh=etUgObnrH3QtXxODorv/g90f6/4uAkSf8ru/VQI8gyI=; 
+X-VR-SPAMCAUSE: dmFkZTFHVfaQohwO2gOZTGBWAr034ZOQ6WA+OPtkDEPPaBhfLyUCEFWOCwM0xPJVmepDWgBOm9f9+EVRnZwmjSuaDMAQo0qZQ+SdSr5jGmVP0mwMx5DNa/Q7I+0RpCOfZHfbITk44lStSjo3hEJXcTNQA8G/FBZoLs6V5QF4IZWERSF3YT/yicKdb2dnvYRBJI5aUTfsYONU3Ha6KgdW63hRrn7YVQ3pqvrmMmjTQAx7+WgaOn+DRfJeCi9XVRfC8qHBTx6KhINnk2Fi0WL1yfeR3QjSYN/AI9jrvRGcoP1mervhO81ex1B4w5s6CC7dftAVcjU0iKW3/f5fvoSf/Al6f+1bRvxWwkrfaeEikPqbflFMib1pAfBa6ntcPwH31oS+GHnHulBH0xvpl//lmQ5CMrNX98NnKayRwbo9usG9CjatF0FW+sDOGGSwFFtfvyGqNVAMUMrpLx+owaA1IFpDI2ambzdLihj5PoDq0x1os+gQMAVDkznxEe3QfBHrWDUyn3xRNffvaI2pK40UYQa2Hx+xdnp5+KEHR0i78Z8aXo82rZbBxI1etx15AW1h5vZRozlinQeaj1kJcnoJ5O6dZhXBf5RNueXD8gvIK5xZVsi5VPiiTj8KqZjUbpl9Ocp60UiOI4bsLkZRXj/1UFHrYfbG+cnzbl9EWnprVXhviJU+nA
+DKIM-Signature: a=rsa-sha256; bh=ulXqxwwi0aIjBUkeA/RzmZil93WChO4FsVpNz1akQs8=; 
  c=relaxed/relaxed; d=kaod.org; h=From; s=ovhmo393970-selector1;
- t=1788245945; v=1;
- b=DQ1+KKmiy266+hFJ9d18TmUpGTL6HZ9A8gz0lFRVWOvh72CM8qn1zHp5dkSFLcH/PR1WaGwE
- 7Wo2Ei46NJXJlTnmOEVAez9hxNYyyCyVtAegSpm0bLflH7JileuJHz2GtBSh/Du6kogteoZz5/n
- UYlOcB38FpmA/mTDSPYasS7dhCgM0qLt/1/eqrvyjaWIYP7uJd1VmbLpodhql3Svl6NKUFj+e/S
- Lw5A5WnAczdI3QZACVsFoSWYQ3A7SC3a6xQLFt4PAHZ4uMtxRsYH8/1tavnHuLX0q1m04R4kvHi
- Ox60ufkfp0agY6j0W9sKevfULFX6twHPxma+7jNDO9SEg==
-Received-SPF: pass client-ip=51.210.91.38; envelope-from=clg@kaod.org;
- helo=smtpout9.mo538.mail-out.ovh.net
+ t=1788245999; v=1;
+ b=o9LVf4yPCegSgXs1yqzsXUiw/wq25bvzA3Jpaf+EywAIGXxNDYX1JF5MfI+c51tYm2GcI6Ir
+ E5aTOdWcd45ermiXIA8khxzY/F1BnaOf7cE3lECJ7ovdGBhz4FSovsEUCo8EGyPEmnKEZD0avK7
+ jasfNQ2AyIlgiChokRiCk/VL6i8Z2jZB5U7WIFVgtmS7MtPJVLExD+WRLLRBbyrya1JvxI0cQ6N
+ DDaTrpwuuPTempxoot6YKyBnyg67po3T/UNf+jEktpaU/JFoPZL4d5y6TgLgEm5ZMbw84U9ALgM
+ v2ymUjtoFLLCyR5HvZy+h62QiuV+3PbUudCe7mpuyMuqg==
+Received-SPF: pass client-ip=51.210.91.14; envelope-from=clg@kaod.org;
+ helo=smtpout5.mo536.mail-out.ovh.net
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -140,175 +140,143 @@ Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
 On 7/31/26 12:45, Emmanuel Blot wrote:
-> The fault-queue depth selected in the configuration register was decoded
-> but never consulted, so the ALERT pin tripped on the very first
-> out-of-limit conversion regardless of the programmed depth.
-> 
-> Track the consecutive-fault count and only change the ALERT state once
-> it reaches the programmed depth; any in-range conversion clears the
-> count. The default configuration keeps the previous behaviour. The count
-> is migrated through an optional subsection so existing streams stay
-> compatible.
+> Verify that the one-shot (OS) bit triggers a conversion only in shutdown
+> mode and is ignored in continuous mode, and that
+> configuration/limit-register writes never advance the fault queue — only
+> real conversions do.
 > 
 > Signed-off-by: Emmanuel Blot <emmanuel.blot@free.fr>
 > ---
->   hw/sensor/tmp105.c | 87 ++++++++++++++++++++++++++++++++++--------------------
->   1 file changed, 55 insertions(+), 32 deletions(-)
+>   tests/qtest/tmp105-test.c | 102 ++++++++++++++++++++++++++++++++++++++++++++++
+>   1 file changed, 102 insertions(+)
 > 
-> diff --git a/hw/sensor/tmp105.c b/hw/sensor/tmp105.c
-> index f7d0c738ca..5c77f991cc 100644
-> --- a/hw/sensor/tmp105.c
-> +++ b/hw/sensor/tmp105.c
-> @@ -54,6 +54,7 @@ struct TMP105State {
->       int16_t temperature;
->       int16_t limit[2];
->       int faults;
-> +    uint8_t fault_count;
->       uint8_t alarm;
->       /*
->        * The TMP105 initially looks for a temperature rising above T_high;
-> @@ -78,43 +79,40 @@ static void tmp105_interrupt_update(TMP105State *s)
+> diff --git a/tests/qtest/tmp105-test.c b/tests/qtest/tmp105-test.c
+> index ea6803715a..e586a634d8 100644
+> --- a/tests/qtest/tmp105-test.c
+> +++ b/tests/qtest/tmp105-test.c
+> @@ -33,6 +33,8 @@
+>   #define TMP105_CONFIG_FQ_1  (0 << 3)   /* fault queue: 1 consecutive fault */
+>   #define TMP105_CONFIG_FQ_4  (2 << 3)   /* fault queue: 4 consecutive faults */
+>   #define TMP105_CONFIG_FQ(f) ((f) << 3) /* raw F1:F0 fault-queue field value */
+> +#define TMP105_CONFIG_SD    (1 << 0)   /* shutdown mode */
+> +#define TMP105_CONFIG_OS    (1 << 7)   /* one-shot conversion */
 >   
->   static void tmp105_alarm_update(TMP105State *s, bool one_shot)
+>   static int qmp_tmp105_get_temperature(const char *id)
 >   {
-> +    bool fault;
-> +
->       if (FIELD_EX8(s->config, CONFIG, SHUTDOWN_MODE) && !one_shot) {
->           return;
->       }
+> @@ -200,6 +202,102 @@ static void check_fault_queue(QI2CDevice *i2cdev, const char *id,
+>       g_assert_true(get_irq(0));
+>   }
 >   
-> -    if (FIELD_EX8(s->config, CONFIG, THERMOSTAT_MODE)) {
-> -        /*
-> -         * TM == 1 : Interrupt mode. We signal Alert when the
-> -         * temperature rises above T_high, and expect the guest to clear
-> -         * it (eg by reading a device register).
-> -         */
-> -        if (s->detect_falling) {
-> -            if (s->temperature < s->limit[0]) {
-> -                s->alarm = 1;
-> -                s->detect_falling = false;
-> -            }
-> -        } else {
-> -            if (s->temperature >= s->limit[1]) {
-> -                s->alarm = 1;
-> -                s->detect_falling = true;
-> -            }
-> -        }
-> +    /*
-> +     * A fault is a conversion that lies outside the limit currently being
-> +     * watched: above T_high while looking for the alarm to trip, below T_low
-> +     * afterwards.
-> +     */
-> +    if (s->detect_falling) {
-> +        fault = s->temperature < s->limit[0];
->       } else {
-> -        /*
-> -         * TM == 0 : Comparator mode. We signal Alert when the temperature
-> -         * rises above T_high, and stop signalling it when the temperature
-> -         * falls below T_low.
-> -         */
-> +        fault = s->temperature >= s->limit[1];
+> +/*
+> + * The one-shot (OS) bit starts a conversion only in shutdown mode. In
+> + * continuous mode it is ignored, so writing it must not advance the fault
+> + * queue; in shutdown each OS write performs one conversion that does.
+> + */
+> +static void test_one_shot(void *obj, void *data, QGuestAllocator *alloc)
+> +{
+> +    QI2CDevice *i2cdev = (QI2CDevice *)obj;
+> +    int i;
+> +
+> +    qtest_irq_intercept_out(global_qtest, TMP105_TEST_PATH);
+> +
+> +    i2c_set8(i2cdev, TMP105_REG_CONFIG, TMP105_CONFIG_POL | TMP105_CONFIG_FQ_4);
+> +    qmp_tmp105_set_temperature(TMP105_TEST_ID, 85000);
+> +    g_assert_false(get_irq(0));
+> +
+> +    for (i = 0; i < 8; i++) {
+> +        i2c_set8(i2cdev, TMP105_REG_CONFIG,
+> +                 TMP105_CONFIG_POL | TMP105_CONFIG_FQ_4 | TMP105_CONFIG_OS);
+> +        g_assert_false(get_irq(0));
 > +    }
 > +
-> +    if (!fault) {
-> +        s->fault_count = 0;
-> +    } else if (++s->fault_count >= s->faults) {
-> +        s->fault_count = 0;
->           if (s->detect_falling) {
-> -            if (s->temperature < s->limit[0]) {
-> -                s->alarm = 0;
-> -                s->detect_falling = false;
-> -            }
-> +            /*
-> +             * Temperature fell back below T_low. In comparator mode (TM == 0)
-> +             * the alarm is released; in interrupt mode (TM == 1) it is
-> +             * asserted again and the guest is expected to clear it by reading
-> +             * a register.
-> +             */
-> +            s->alarm = FIELD_EX8(s->config, CONFIG, THERMOSTAT_MODE);
-> +            s->detect_falling = false;
->           } else {
-> -            if (s->temperature >= s->limit[1]) {
-> -                s->alarm = 1;
-> -                s->detect_falling = true;
-> -            }
-> +            /* Temperature rose to or above T_high: assert the alarm. */
-> +            s->alarm = 1;
-> +            s->detect_falling = true;
->           }
->       }
->   
-> @@ -204,7 +202,12 @@ static void tmp105_write(TMP105State *s)
->           }
->           s->config = FIELD_DP8(s->buf[0], CONFIG, ONE_SHOT, 0);
->           s->faults = tmp105_faultq[FIELD_EX8(s->config, CONFIG, FAULT_QUEUE)];
-> -        tmp105_alarm_update(s, FIELD_EX8(s->buf[0], CONFIG, ONE_SHOT));
-> +        if (FIELD_EX8(s->buf[0], CONFIG, ONE_SHOT) &&
-> +            FIELD_EX8(s->config, CONFIG, SHUTDOWN_MODE)) {
-> +            tmp105_alarm_update(s, true);
-> +        } else {
-> +            tmp105_interrupt_update(s);
-> +        }
->           break;
->   
->       case TMP105_REG_T_LOW:
-> @@ -213,7 +216,7 @@ static void tmp105_write(TMP105State *s)
->               s->limit[s->pointer & 1] = (int16_t)
->                       ((((uint16_t) s->buf[0]) << 8) | (s->buf[1] & 0xf0));
->           }
-> -        tmp105_alarm_update(s, false);
-> +        tmp105_interrupt_update(s);
->           break;
->       }
->   }
-> @@ -281,6 +284,13 @@ static bool detect_falling_needed(void *opaque)
->       return s->detect_falling;
->   }
->   
-> +static bool fault_count_needed(void *opaque)
-> +{
-> +    const TMP105State *s = opaque;
-> +
-> +    return s->fault_count != 0;
+> +    i2c_set8(i2cdev, TMP105_REG_CONFIG,
+> +             TMP105_CONFIG_POL | TMP105_CONFIG_FQ_4 | TMP105_CONFIG_SD);
+> +    for (i = 0; i < 2; i++) {
+> +        i2c_set8(i2cdev, TMP105_REG_CONFIG, TMP105_CONFIG_POL |
+> +                 TMP105_CONFIG_FQ_4 | TMP105_CONFIG_SD | TMP105_CONFIG_OS);
+> +        g_assert_false(get_irq(0));
+> +    }
+> +    i2c_set8(i2cdev, TMP105_REG_CONFIG, TMP105_CONFIG_POL |
+> +             TMP105_CONFIG_FQ_4 | TMP105_CONFIG_SD | TMP105_CONFIG_OS);
+> +    g_assert_true(get_irq(0));
 > +}
 > +
->   static const VMStateDescription vmstate_tmp105_detect_falling = {
->       .name = "TMP105/detect-falling",
->       .version_id = 1,
-> @@ -292,6 +302,17 @@ static const VMStateDescription vmstate_tmp105_detect_falling = {
->       }
->   };
->   
-> +static const VMStateDescription vmstate_tmp105_fault_count = {
-> +    .name = "TMP105/fault-count",
-> +    .version_id = 1,
-> +    .minimum_version_id = 1,
-> +    .needed = fault_count_needed,
-> +    .fields = (const VMStateField[]) {
-> +        VMSTATE_UINT8(fault_count, TMP105State),
-> +        VMSTATE_END_OF_LIST()
-> +    }
-> +};
+> +/*
+> + * Configuration and limit-register writes are not conversions and must not
+> + * advance the fault queue.
+> + */
+> +static void test_fault_queue_ignores_writes(void *obj, void *data,
+> +                                            QGuestAllocator *alloc)
+> +{
+> +    QI2CDevice *i2cdev = (QI2CDevice *)obj;
+> +    int i;
 > +
->   static const VMStateDescription vmstate_tmp105 = {
->       .name = "TMP105",
->       .version_id = 0,
-> @@ -310,6 +331,7 @@ static const VMStateDescription vmstate_tmp105 = {
->       },
->       .subsections = (const VMStateDescription * const []) {
->           &vmstate_tmp105_detect_falling,
-> +        &vmstate_tmp105_fault_count,
->           NULL
->       }
->   };
-> @@ -322,6 +344,7 @@ static void tmp105_reset_hold(Object *obj, ResetType type)
->       s->pointer = 0;
->       s->config = 0;
->       s->faults = tmp105_faultq[FIELD_EX8(s->config, CONFIG, FAULT_QUEUE)];
-> +    s->fault_count = 0;
->       s->alarm = 0;
->       s->detect_falling = false;
+> +    qtest_irq_intercept_out(global_qtest, TMP105_TEST_PATH);
+> +
+> +    i2c_set8(i2cdev, TMP105_REG_CONFIG, TMP105_CONFIG_POL | TMP105_CONFIG_FQ_4);
+> +    g_assert_false(get_irq(0));
+> +
+> +    qmp_tmp105_set_temperature(TMP105_TEST_ID, 85000);
+> +    g_assert_false(get_irq(0));
+> +
+> +    for (i = 0; i < 8; i++) {
+> +        i2c_set8(i2cdev, TMP105_REG_CONFIG,
+> +                 TMP105_CONFIG_POL | TMP105_CONFIG_FQ_4);
+> +        i2c_set16(i2cdev, TMP105_REG_T_HIGH, 0x5000);
+> +        i2c_set16(i2cdev, TMP105_REG_T_LOW, 0x4b00);
+> +        g_assert_false(get_irq(0));
+> +    }
+> +
+> +    for (i = 0; i < 2; i++) {
+> +        qmp_tmp105_set_temperature(TMP105_TEST_ID, 85000);
+> +        g_assert_false(get_irq(0));
+> +    }
+> +    qmp_tmp105_set_temperature(TMP105_TEST_ID, 85000);
+> +    g_assert_true(get_irq(0));
+> +}
+> +
+> +/*
+> + * Leaving shutdown (SD 1->0) resumes continuous conversion, which must
+> + * re-evaluate the current temperature against the limits.
+> + */
+> +static void test_wake_from_shutdown(void *obj, void *data,
+> +                                    QGuestAllocator *alloc)
+> +{
+> +    QI2CDevice *i2cdev = (QI2CDevice *)obj;
+> +
+> +    qtest_irq_intercept_out(global_qtest, TMP105_TEST_PATH);
+> +
+> +    i2c_set8(i2cdev, TMP105_REG_CONFIG, TMP105_CONFIG_POL | TMP105_CONFIG_FQ_1);
+> +    g_assert_false(get_irq(0));
+> +
+> +    qmp_tmp105_set_temperature(TMP105_TEST_ID, 85000);
+> +    g_assert_true(get_irq(0));
+> +
+> +    i2c_set8(i2cdev, TMP105_REG_CONFIG,
+> +             TMP105_CONFIG_POL | TMP105_CONFIG_FQ_1 | TMP105_CONFIG_SD);
+> +    g_assert_true(get_irq(0));
+> +
+> +    qmp_tmp105_set_temperature(TMP105_TEST_ID, 70000);
+> +    g_assert_true(get_irq(0));
+> +
+> +    i2c_set8(i2cdev, TMP105_REG_CONFIG, TMP105_CONFIG_POL | TMP105_CONFIG_FQ_1);
+> +    g_assert_false(get_irq(0));
+> +}
+> +
+>   /* The TMP75 maps F1:F0 = 10b to 3 consecutive faults. */
+>   static void test_tmp75_fault_queue(void *obj, void *data,
+>                                      QGuestAllocator *alloc)
+> @@ -282,6 +380,10 @@ static void tmp105_register_nodes(void)
+>       qos_add_test("tx-rx", "tmp105", send_and_receive, NULL);
+>       qos_add_test("alert-single-fault", "tmp105", test_alert_single_fault, NULL);
+>       qos_add_test("fault-queue", "tmp105", test_fault_queue, NULL);
+> +    qos_add_test("fault-queue-ignores-writes", "tmp105",
+> +                 test_fault_queue_ignores_writes, NULL);
+> +    qos_add_test("one-shot", "tmp105", test_one_shot, NULL);
+> +    qos_add_test("wake-from-shutdown", "tmp105", test_wake_from_shutdown, NULL);
 >   
+>       /* TMP75: register-compatible, but with a 1/2/3/4 fault queue. */
+>       QOSGraphEdgeOptions tmp75_opts = {
 > 
 
 Reviewed-by: Cédric Le Goater <clg@redhat.com>

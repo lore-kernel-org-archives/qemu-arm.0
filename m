@@ -4,71 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 096FAC624D4
-	for <qemu-arm@archiver.kernel.org>; Tue,  1 Sep 2026 13:48:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9B164C61DD3
+	for <qemu-arm@archiver.kernel.org>; Tue,  1 Sep 2026 13:50:08 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1x1Oqy-0005cw-UH; Tue, 01 Sep 2026 09:48:44 -0400
+	id 1x1Os3-00068v-9j; Tue, 01 Sep 2026 09:49:51 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <smostafa@google.com>)
- id 1x1Oqn-0005an-SH
- for qemu-arm@nongnu.org; Tue, 01 Sep 2026 09:48:35 -0400
-Received: from mail-ed1-x530.google.com ([2a00:1450:4864:20::530])
+ id 1x1Orx-00067j-2B
+ for qemu-arm@nongnu.org; Tue, 01 Sep 2026 09:49:45 -0400
+Received: from mail-ed1-x533.google.com ([2a00:1450:4864:20::533])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <smostafa@google.com>)
- id 1x1Oqk-0008A1-8T
- for qemu-arm@nongnu.org; Tue, 01 Sep 2026 09:48:33 -0400
-Received: by mail-ed1-x530.google.com with SMTP id
- 4fb4d7f45d1cf-6a5f91ae397so10225a12.1
- for <qemu-arm@nongnu.org>; Tue, 01 Sep 2026 06:48:26 -0700 (PDT)
+ id 1x1Ort-0008UY-AE
+ for qemu-arm@nongnu.org; Tue, 01 Sep 2026 09:49:44 -0400
+Received: by mail-ed1-x533.google.com with SMTP id
+ 4fb4d7f45d1cf-6a5f9b036f9so2372a12.1
+ for <qemu-arm@nongnu.org>; Tue, 01 Sep 2026 06:49:39 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=google.com; s=20251104; t=1788270505; x=1788875305; darn=nongnu.org;
- h=in-reply-to:content-transfer-encoding:content-disposition
- :content-type:mime-version:references:message-id:subject:cc:to:from
- :date:from:to:cc:subject:date:message-id:reply-to:content-type;
- bh=K63IKdxpRkj+wSeMXuT09ZZ6TDwRyJQNycnmcr30AI0=;
- b=A8KuVJ0ixJMCPC2Fk3sBTt6L+n9dw/46U6hc73eh9ijm6aWwWjWYop1F/g7h5KuR2i
- 3Kgjjvd2r8U+Sv3xYi7j7zv13CFIm5nuM8B551eybPPOlBwh0hZr0AHxVShoR8BoEksx
- SMGXDVZHCtUrZTBs1hunNtb+M9AI0WnIIN0DqPj4MwNIoylPSQ0OGCvEFU8J0uZGkFNa
- C+uYiLhOJzlQapGuRJKQxA76ivgkgBrvH9LLeQTP0YLGUCXXAsyW9GPFvglrhKT0BlYi
- LNk9vomLFI1SZS80vgq4fU80kYak+F8GRXZXYLrEFhB/0v6ZUMdeYrHF4oH4tDpCwcYG
- vupQ==
+ d=google.com; s=20251104; t=1788270578; x=1788875378; darn=nongnu.org;
+ h=in-reply-to:content-disposition:content-type:mime-version
+ :references:message-id:subject:cc:to:from:date:from:to:cc:subject
+ :date:message-id:reply-to:content-type;
+ bh=CLeqHpfuEcZCU9XIOsPCyV6TIwXOnCmJMTpSD6TmMjY=;
+ b=AZRL2Mwx+b66T72gIip+NgQe0ReWrF7kFNaiT8yT9xZ6UYBvTkqZoGHAHxA0NY5/X8
+ jl/pdptE9fDW51HyFTaQi2FRgIjy8kACuWhXi7to89hupbMalQ6r1PZgXXSDBNRwTgPi
+ aXMz3jWMM4xF5hEKbNBvR+3be9L0bJylxcAgu4wxSxEOjGJW5iB6mBWFdjtq/voCYNgE
+ 65c3ImStcYqhCqXPeOMv+OxuYKJph7a5Kp1LmMgWr+HZKPzAQV7OKH1vghvvY5pNSY74
+ QOrMizeBDgiXmDbxANiPDv549i5sVOp2ppvrM8NqiglYifHFAUXzkv+RnVR+k5/nW8fH
+ XwNw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1788270505; x=1788875305;
- h=in-reply-to:content-transfer-encoding:content-disposition
- :content-type:mime-version:references:message-id:subject:cc:to:from
- :date:x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to:content-type;
- bh=K63IKdxpRkj+wSeMXuT09ZZ6TDwRyJQNycnmcr30AI0=;
- b=j5fynAFmgoV5T37rHeTlPL8ypkpprptwVDGagt0ZZ9XUewu0kxrpgCAa78ZocfygTn
- C0afC6pXrdC5p88cLvbM78VbL6vb9Gq5O6Z6X90s+uttd2thOW1NOzngnQp9PSFqK4sl
- lXMYi/PuCC8mGHYVZHdWSRbp7xk2YaUkorwtmElaigjSUIvoyio+heH042GLZ9l2Msi8
- xW73ClmFu3KMBprW8UhKKV/n8SuZg6Uli3VMX/CIsMnPElp1wUrHL3EjHR4hmLjOBEny
- 5uv4GkmUPN3pu4gMIjnA7zTAUiAojSF4WDloZc3LPimx8tz3NGD5WpVlpKcT3h7TFc4i
- 2+7Q==
+ d=1e100.net; s=20251104; t=1788270578; x=1788875378;
+ h=in-reply-to:content-disposition:content-type:mime-version
+ :references:message-id:subject:cc:to:from:date:x-gm-gg
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
+ :content-type;
+ bh=CLeqHpfuEcZCU9XIOsPCyV6TIwXOnCmJMTpSD6TmMjY=;
+ b=sUvWq32kuCzo70YGrGN55y2GxMLAHkzo9uyFpQrgrnkxmakLcvq98u8jEFOnvJnWL7
+ /VvoZMHEej0GLvAE6s8Ypz0Np2zW3M8ASGSs8pp2nGIeSfKg19Nv5J6/fmt4yknSHeJ4
+ VWlFDBSswfPjIFf9ui4pf2A7FJ+rYIlQ8w+HZ7aROxXuyWbD1ZWpbhm/JmOFyE+9D6ml
+ MiC9X90+Iu5Hg5QwCfafkJA3HhOhOs7ci6BPFitOUub+kNOfWVKCOdLKr16ry6i2Bh+W
+ TA9l85exCvJvvOPOd9JXiZLwX4fR4CHK1yrNdrP+kXw/kczxhkJtx3JojC6WZYowmQF5
+ mkcg==
 X-Forwarded-Encrypted: i=1;
- AKwUvBw+AMWNd+X+n5ZRk22OdFsT32K/Z7gNEMW3W/92RZf8swYfL1XomoQw3+icqRripIJqbUHGBnxN1A==@nongnu.org
-X-Gm-Message-State: AFuF++m+pUErpDp3Q7ZBvOkzN/4F5B3ofgUC6kEoM4QOvVOwLl7G+cuG
- NkfMe9128RWBSb96f4qwbkT9B/FG/p6civcO/aRvlEIAjkpsMkviPYKSwK7eWqDOZw==
-X-Gm-Gg: AYBFou3BlxPYtDUJcYQVDWAXh0Ja1MmRLsJf6y6YHPW7xWzv/q7ozAcKzQfCh1/MGUC
- 2uJVvx17fT5xD4eb7Xb7UnlND9rdkBN4jPfzI1TwZuna2v9d5HgZZPTAk+IoAJnCRlYwMUkGNxU
- YyLUCan76JOcdhh4AxgGuHkSndh53W4X7lYV7KC4ClDpAynan70R9D50h6te1G5JMKmEWzCytHo
- zoPvZcVhqlgjtRYbsjn++li4E6k5Wvh47jqrRo84ubI1LGCKbNikT6/M0MSjY5J7eFCI7ofz92C
- 4/aElHgov9qpNAzQkeyWHEnURptAVTqWSy+UAgIKBWFw/Zzrc8pAdXCfzZcCVLz/Lxdg70csqa2
- v8xlNUvPJlpFSkyu4hFF0OEhQA578fou+jO4uDOar/E4uZHWOASF9U3jaAw1++cex3z8UYXSzmf
- 3Cv0jDT/hBSAZKflpFk0HcbpNk10BfkngaM5iA3QgqlkpLPCwYH6MJfC9bRANqIEIxb+kITfVPT
- Tc4TdIax8ADhm+ZPugpPMwsICM8Pw==
-X-Received: by 2002:aa7:c417:0:b0:6a6:32f6:2841 with SMTP id
- 4fb4d7f45d1cf-6a66a293d1cmr52768a12.14.1788270504403; 
- Tue, 01 Sep 2026 06:48:24 -0700 (PDT)
+ AKwUvBzgevqyn6SttPNniyvtcx0ppae8tjwDroYxW3oHqMrdfsbINuSoAdNqj9pGYFNqzj99SMSHF1atEg==@nongnu.org
+X-Gm-Message-State: AFuF++ktqPdOcfK8fYX3AI3tl3MHL3DrsfjAkryIYjME7Mz/QNQll4mJ
+ YL9LpSp90yGxL92VCKpyTbxi2E5+wuxwI3/A0C1mNwXvKU6HVX8sX+b2hM3O8AHKeQ==
+X-Gm-Gg: AYBFou2hR0FERxxLn1ETNUiyuLvvrCBbrN/WBaNbJos4/CUC1qiOlDzknd9uYVtVlzt
+ uNZsw0lO/tU3Ah9EbQU4hIiESQv/03LD+ykOOXpz6l0RjWZkqGGpQxe51iPVEIUMzooRC9I0XeH
+ UuvyxBPgWRtm4ucwPoXtOI8Iz79/J4txwTMIBWT7RhJidyYPjU1rdeZPbVfQkhYTa6oBdmvEfRn
+ IJI2uQcTgczLpMwfLQeDPqHx0h/Q3JqDw7+08fF8PO2Krt32LurX7jCgOBzKCwgiNBZH5mwDwG6
+ HgebVgOVjzxkYxQGnrT07Y7QOqZxUudkVEuOmArpGboRHfq4ciW5PF9D4cOxvo5DJqx0UJ5UBVm
+ Dj6slwG+TOqRMVq8zt8j0RhQkqnzFbKdsdtSii9GUW3ic7w91YPm6TEYMkasQkRa6ERDkldCVKC
+ iKeyhsSjVADXCbRN3a1IIeUXhdHE18dPM6EAGddGCZXL0MHL3mT75m9WiC2dOcxghukzwP+2yS5
+ 69UfxXpkPh9yjs+D3PZ6JHMLPRC5CCQpDTmDHDH
+X-Received: by 2002:a05:6402:a18f:b0:69e:98c8:e958 with SMTP id
+ 4fb4d7f45d1cf-6a66d8db181mr33878a12.7.1788270577254; 
+ Tue, 01 Sep 2026 06:49:37 -0700 (PDT)
 Received: from google.com (250.192.189.35.bc.googleusercontent.com.
  [35.189.192.250]) by smtp.gmail.com with ESMTPSA id
- a640c23a62f3a-c255ee0b330sm592472866b.1.2026.09.01.06.48.23
+ a640c23a62f3a-c255f1b1443sm588313366b.41.2026.09.01.06.49.35
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 01 Sep 2026 06:48:23 -0700 (PDT)
-Date: Tue, 1 Sep 2026 13:48:19 +0000
+ Tue, 01 Sep 2026 06:49:35 -0700 (PDT)
+Date: Tue, 1 Sep 2026 13:49:31 +0000
 From: Mostafa Saleh <smostafa@google.com>
 To: Tao Tang <tangtao1634@phytium.com.cn>
 Cc: Eric Auger <eric.auger@redhat.com>,
@@ -78,17 +78,16 @@ Cc: Eric Auger <eric.auger@redhat.com>,
  Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <philmd@mailo.com>,
  Chao Liu <chao.liu@processmission.com>,
  Jim MacArthur <jim.macarthur@linaro.org>
-Subject: Re: [RFC v5 03/28] hw/arm/smmuv3: Thread SEC_SID through helper APIs
-Message-ID: <apbXozA1-F-FniKI@google.com>
+Subject: Re: [RFC v5 04/28] hw/arm/smmuv3: Track SEC_SID in configs and events
+Message-ID: <apbX6_O6T6zKvY22@google.com>
 References: <20260813161515.2788900-1-tangtao1634@phytium.com.cn>
- <20260813162410.2805113-3-tangtao1634@phytium.com.cn>
+ <20260813162410.2805113-4-tangtao1634@phytium.com.cn>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
+Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-In-Reply-To: <20260813162410.2805113-3-tangtao1634@phytium.com.cn>
-Received-SPF: pass client-ip=2a00:1450:4864:20::530;
- envelope-from=smostafa@google.com; helo=mail-ed1-x530.google.com
+In-Reply-To: <20260813162410.2805113-4-tangtao1634@phytium.com.cn>
+Received-SPF: pass client-ip=2a00:1450:4864:20::533;
+ envelope-from=smostafa@google.com; helo=mail-ed1-x533.google.com
 X-Spam_score_int: -175
 X-Spam_score: -17.6
 X-Spam_bar: -----------------
@@ -96,7 +95,7 @@ X-Spam_report: (-17.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_MED=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  ENV_AND_HDR_SPF_MATCH=-0.5, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001, USER_IN_DEF_DKIM_WL=-7.5,
- USER_IN_DEF_SPF_WL=-7.5 autolearn=ham autolearn_force=no
+ USER_IN_DEF_SPF_WL=-7.5 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -112,14 +111,14 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Fri, Aug 14, 2026 at 12:24:08AM +0800, Tao Tang wrote:
-> Extend the register and queue helper routines to accept an explicit
-> SEC_SID argument instead of hard-coding the non-secure bank.
+On Fri, Aug 14, 2026 at 12:24:09AM +0800, Tao Tang wrote:
+> Pass the SEC_SID explicitly to smmuv3_decode_config() so configuration
+> decoding can be tied to the correct register bank.
 > 
-> All existing callers are updated to pass SMMU_SEC_SID_NS, so the
-> behavior remains identical. This prepares the code for handling
-> additional security state banks in the future. So Non-secure state
-> is the only state bank supported for now.
+> Plumb the SEC_SID through tracepoints and queue helpers so diagnostics
+> and event logs always show which security interface emitted the record.
+> To support this, the SEC_SID is placed in SMMUEventInfo so the bank is
+> identified as soon as an event record is built.
 > 
 > Signed-off-by: Tao Tang <tangtao1634@phytium.com.cn>
 > Reviewed-by: Eric Auger <eric.auger@redhat.com>
@@ -130,175 +129,169 @@ Reviewed-by: Mostafa Saleh <smostafa@google.com>
 Thanks,
 Mostafa
 
-> Link: https://lore.kernel.org/qemu-devel/3097d58e-3793-4434-8beb-2e4f4c52f772@redhat.com/
 > ---
->  hw/arm/smmuv3-accel.c    |  5 +++--
->  hw/arm/smmuv3-internal.h | 21 +++++++++------------
->  hw/arm/smmuv3.c          | 15 ++++++++-------
->  3 files changed, 20 insertions(+), 21 deletions(-)
+>  hw/arm/smmuv3-accel.c    |  2 +-
+>  hw/arm/smmuv3-internal.h |  3 ++-
+>  hw/arm/smmuv3.c          | 26 +++++++++++++++-----------
+>  hw/arm/trace-events      |  2 +-
+>  include/hw/arm/smmuv3.h  |  1 +
+>  5 files changed, 20 insertions(+), 14 deletions(-)
 > 
 > diff --git a/hw/arm/smmuv3-accel.c b/hw/arm/smmuv3-accel.c
-> index 3ff3da66acd..fa079c8acea 100644
+> index fa079c8acea..2ce94786829 100644
 > --- a/hw/arm/smmuv3-accel.c
 > +++ b/hw/arm/smmuv3-accel.c
-> @@ -294,6 +294,7 @@ bool smmuv3_accel_install_ste(SMMUv3State *s, SMMUDevice *sdev, int sid,
->      SMMUS1Hwpt *s1_hwpt = NULL;
->      const char *type;
->      STE ste;
-> +    SMMUSecSID sec_sid = SMMU_SEC_SID_NS;
->  
->      if (!accel || !accel->viommu) {
->          return true;
-> @@ -323,7 +324,7 @@ bool smmuv3_accel_install_ste(SMMUv3State *s, SMMUDevice *sdev, int sid,
->       * attach/alloc fails, since the Guest–Host SID mapping stays
->       * valid as long as the device is behind the accelerated SMMUv3.
->       */
-> -    if (!smmu_enabled(s)) {
-> +    if (!smmu_enabled(s, sec_sid)) {
->          hwpt_id = smmuv3_accel_gbpa_hwpt(s, accel);
->      } else {
->          config = STE_CONFIG(&ste);
-> @@ -558,7 +559,7 @@ bool smmuv3_accel_alloc_veventq(SMMUv3State *s, Error **errp)
->          return true;
+> @@ -509,7 +509,7 @@ static void smmuv3_accel_event_read(void *opaque)
+>      if (ret > 0) {
+>          return; /* EAGAIN/EINTR */
 >      }
+> -    smmuv3_propagate_event(s, (Evt *)&buf.vevent);
+> +    smmuv3_propagate_event(s, (Evt *)&buf.vevent, SMMU_SEC_SID_NS);
+>  }
 >  
-> -    if (!smmuv3_eventq_enabled(s)) {
-> +    if (!smmuv3_eventq_enabled(s, sec_sid)) {
->          return true;
->      }
->  
+>  static void smmuv3_accel_free_veventq(SMMUv3AccelState *accel)
 > diff --git a/hw/arm/smmuv3-internal.h b/hw/arm/smmuv3-internal.h
-> index 10154ca161d..a88743ba9cd 100644
+> index a88743ba9cd..202cd533636 100644
 > --- a/hw/arm/smmuv3-internal.h
 > +++ b/hw/arm/smmuv3-internal.h
-> @@ -39,9 +39,8 @@ typedef enum SMMUTranslationClass {
->      SMMU_CLASS_IN,
->  } SMMUTranslationClass;
+> @@ -274,6 +274,7 @@ static inline const char *smmu_event_string(SMMUEventType type)
 >  
-> -static inline int smmu_enabled(SMMUv3State *s)
-> +static inline int smmu_enabled(SMMUv3State *s, SMMUSecSID sec_sid)
->  {
-> -    SMMUSecSID sec_sid = SMMU_SEC_SID_NS;
->      SMMUv3RegBank *bank = smmuv3_bank(s, sec_sid);
->      return FIELD_EX32(bank->cr[0], CR0, SMMUEN);
->  }
-> @@ -69,16 +68,16 @@ static inline uint32_t smmuv3_idreg(int regoffset)
->      return smmuv3_ids[regoffset / 4];
->  }
+>  /*  Encode an event record */
+>  typedef struct SMMUEventInfo {
+> +    SMMUSecSID sec_sid;
+>      SMMUEventType type;
+>      uint32_t sid;
+>      bool recorded;
+> @@ -365,7 +366,7 @@ typedef struct SMMUEventInfo {
+>  #define EVT_GET_SID(x)   ((x)->word[1])
 >  
-> -static inline bool smmuv3_eventq_irq_enabled(SMMUv3State *s)
-> +static inline bool smmuv3_eventq_irq_enabled(SMMUv3State *s,
-> +                                             SMMUSecSID sec_sid)
->  {
-> -    SMMUSecSID sec_sid = SMMU_SEC_SID_NS;
->      SMMUv3RegBank *bank = smmuv3_bank(s, sec_sid);
->      return FIELD_EX32(bank->irq_ctrl, IRQ_CTRL, EVENTQ_IRQEN);
->  }
+>  void smmuv3_record_event(SMMUv3State *s, SMMUEventInfo *event);
+> -void smmuv3_propagate_event(SMMUv3State *s, Evt *evt);
+> +void smmuv3_propagate_event(SMMUv3State *s, Evt *evt, SMMUSecSID sec_sid);
+>  int smmu_find_ste(SMMUv3State *s, uint32_t sid, STE *ste, SMMUEventInfo *event);
 >  
-> -static inline bool smmuv3_gerror_irq_enabled(SMMUv3State *s)
-> +static inline bool smmuv3_gerror_irq_enabled(SMMUv3State *s,
-> +                                             SMMUSecSID sec_sid)
->  {
-> -    SMMUSecSID sec_sid = SMMU_SEC_SID_NS;
->      SMMUv3RegBank *bank = smmuv3_bank(s, sec_sid);
->      return FIELD_EX32(bank->irq_ctrl, IRQ_CTRL, GERROR_IRQEN);
->  }
-> @@ -123,23 +122,21 @@ static inline void queue_cons_incr(SMMUQueue *q)
->      q->cons = deposit32(q->cons, 0, q->log2size + 1, q->cons + 1);
->  }
->  
-> -static inline bool smmuv3_cmdq_enabled(SMMUv3State *s)
-> +static inline bool smmuv3_cmdq_enabled(SMMUv3State *s, SMMUSecSID sec_sid)
->  {
-> -    SMMUSecSID sec_sid = SMMU_SEC_SID_NS;
->      SMMUv3RegBank *bank = smmuv3_bank(s, sec_sid);
->      return FIELD_EX32(bank->cr[0], CR0, CMDQEN);
->  }
->  
-> -static inline bool smmuv3_eventq_enabled(SMMUv3State *s)
-> +static inline bool smmuv3_eventq_enabled(SMMUv3State *s, SMMUSecSID sec_sid)
->  {
-> -    SMMUSecSID sec_sid = SMMU_SEC_SID_NS;
->      SMMUv3RegBank *bank = smmuv3_bank(s, sec_sid);
->      return FIELD_EX32(bank->cr[0], CR0, EVENTQEN);
->  }
->  
-> -static inline void smmu_write_cmdq_err(SMMUv3State *s, uint32_t err_type)
-> +static inline void smmu_write_cmdq_err(SMMUv3State *s, uint32_t err_type,
-> +                                       SMMUSecSID sec_sid)
->  {
-> -    SMMUSecSID sec_sid = SMMU_SEC_SID_NS;
->      SMMUv3RegBank *bank = smmuv3_bank(s, sec_sid);
->      bank->cmdq.cons = FIELD_DP32(bank->cmdq.cons, CMDQ_CONS, ERR, err_type);
->  }
+>  #define STE_SIZE 6
 > diff --git a/hw/arm/smmuv3.c b/hw/arm/smmuv3.c
-> index d3baae8a32a..51e970d710a 100644
+> index 51e970d710a..649050b9347 100644
 > --- a/hw/arm/smmuv3.c
 > +++ b/hw/arm/smmuv3.c
-> @@ -60,7 +60,7 @@ static void smmuv3_trigger_irq(SMMUv3State *s, SMMUIrq irq,
+> @@ -149,9 +149,9 @@ static MemTxResult queue_write(SMMUQueue *q, Evt *evt_in)
+>      return MEMTX_OK;
+>  }
 >  
->      switch (irq) {
->      case SMMU_IRQ_EVTQ:
-> -        pulse = smmuv3_eventq_irq_enabled(s);
-> +        pulse = smmuv3_eventq_irq_enabled(s, sec_sid);
->          break;
->      case SMMU_IRQ_PRIQ:
->          qemu_log_mask(LOG_UNIMP, "PRI not yet supported\n");
-> @@ -80,7 +80,7 @@ static void smmuv3_trigger_irq(SMMUv3State *s, SMMUIrq irq,
->          bank->gerror ^= new_gerrors;
->          trace_smmuv3_write_gerror(new_gerrors, bank->gerror);
->  
-> -        pulse = smmuv3_gerror_irq_enabled(s);
-> +        pulse = smmuv3_gerror_irq_enabled(s, sec_sid);
->          break;
->      }
->      }
-> @@ -156,7 +156,7 @@ static MemTxResult smmuv3_write_eventq(SMMUv3State *s, Evt *evt)
+> -static MemTxResult smmuv3_write_eventq(SMMUv3State *s, Evt *evt)
+> +static MemTxResult smmuv3_write_eventq(SMMUv3State *s, SMMUSecSID sec_sid,
+> +                                       Evt *evt)
+>  {
+> -    SMMUSecSID sec_sid = SMMU_SEC_SID_NS;
+>      SMMUv3RegBank *bank = smmuv3_bank(s, sec_sid);
 >      SMMUQueue *q = &bank->eventq;
 >      MemTxResult r;
+> @@ -175,14 +175,14 @@ static MemTxResult smmuv3_write_eventq(SMMUv3State *s, Evt *evt)
+>      return MEMTX_OK;
+>  }
 >  
-> -    if (!smmuv3_eventq_enabled(s)) {
-> +    if (!smmuv3_eventq_enabled(s, sec_sid)) {
->          return MEMTX_ERROR;
+> -void smmuv3_propagate_event(SMMUv3State *s, Evt *evt)
+> +void smmuv3_propagate_event(SMMUv3State *s, Evt *evt, SMMUSecSID sec_sid)
+>  {
+>      MemTxResult r;
+>  
+> -    trace_smmuv3_propagate_event(smmu_event_string(EVT_GET_TYPE(evt)),
+> +    trace_smmuv3_propagate_event(sec_sid, smmu_event_string(EVT_GET_TYPE(evt)),
+>                                   EVT_GET_SID(evt));
+>      QEMU_LOCK_GUARD(&s->mutex);
+> -    r = smmuv3_write_eventq(s, evt);
+> +    r = smmuv3_write_eventq(s, sec_sid, evt);
+>      if (r != MEMTX_OK) {
+>          smmuv3_trigger_irq(s, SMMU_IRQ_GERROR, R_GERROR_EVENTQ_ABT_ERR_MASK);
 >      }
->  
-> @@ -191,8 +191,9 @@ void smmuv3_propagate_event(SMMUv3State *s, Evt *evt)
+> @@ -191,7 +191,7 @@ void smmuv3_propagate_event(SMMUv3State *s, Evt *evt)
 >  void smmuv3_record_event(SMMUv3State *s, SMMUEventInfo *info)
 >  {
 >      Evt evt = {};
-> +    SMMUSecSID sec_sid = SMMU_SEC_SID_NS;
+> -    SMMUSecSID sec_sid = SMMU_SEC_SID_NS;
+> +    SMMUSecSID sec_sid = info->sec_sid;
 >  
-> -    if (!smmuv3_eventq_enabled(s)) {
-> +    if (!smmuv3_eventq_enabled(s, sec_sid)) {
+>      if (!smmuv3_eventq_enabled(s, sec_sid)) {
 >          return;
+> @@ -271,7 +271,7 @@ void smmuv3_record_event(SMMUv3State *s, SMMUEventInfo *info)
+>          g_assert_not_reached();
 >      }
 >  
-> @@ -1127,7 +1128,7 @@ static IOMMUTLBEntry smmuv3_translate(IOMMUMemoryRegion *mr, hwaddr addr,
+> -    smmuv3_propagate_event(s, &evt);
+> +    smmuv3_propagate_event(s, &evt, sec_sid);
+>      info->recorded = true;
+>  }
 >  
->      qemu_mutex_lock(&s->mutex);
+> @@ -886,12 +886,13 @@ bad_cd:
+>   * @cfg: output translation configuration which is populated through
+>   *       the different configuration decoding steps
+>   * @event: must be zero'ed by the caller
+> + * @sec_sid: StreamID Security state
+>   *
+>   * return < 0 in case of config decoding error (@event is filled
+>   * accordingly). Return 0 otherwise.
+>   */
+>  static int smmuv3_decode_config(IOMMUMemoryRegion *mr, SMMUTransCfg *cfg,
+> -                                SMMUEventInfo *event)
+> +                                SMMUEventInfo *event, SMMUSecSID sec_sid)
+>  {
+>      SMMUDevice *sdev = container_of(mr, SMMUDevice, iommu);
+>      uint32_t sid = smmu_get_sid(sdev);
+> @@ -958,7 +959,7 @@ static SMMUTransCfg *smmuv3_get_config(SMMUDevice *sdev, SMMUEventInfo *event)
+>                              (sdev->cfg_cache_hits + sdev->cfg_cache_misses));
+>          cfg = g_new0(SMMUTransCfg, 1);
 >  
-> -    if (!smmu_enabled(s)) {
-> +    if (!smmu_enabled(s, sec_sid)) {
->          if (FIELD_EX32(bank->gbpa, GBPA, ABORT)) {
->              status = SMMU_TRANS_ABORT;
+> -        if (!smmuv3_decode_config(&sdev->iommu, cfg, event)) {
+> +        if (!smmuv3_decode_config(&sdev->iommu, cfg, event, SMMU_SEC_SID_NS)) {
+>              g_hash_table_insert(bc->configs, sdev, cfg);
 >          } else {
-> @@ -1357,7 +1358,7 @@ static int smmuv3_cmdq_consume(SMMUv3State *s, Error **errp)
->      SMMUQueue *q = &bank->cmdq;
->      SMMUCommandType type = 0;
+>              g_free(cfg);
+> @@ -1114,7 +1115,8 @@ static IOMMUTLBEntry smmuv3_translate(IOMMUMemoryRegion *mr, hwaddr addr,
+>      SMMUv3RegBank *bank = smmuv3_bank(s, sec_sid);
+>      SMMUEventInfo event = {.type = SMMU_EVT_NONE,
+>                             .sid = sid,
+> -                           .inval_ste_allowed = false};
+> +                           .inval_ste_allowed = false,
+> +                           .sec_sid = sec_sid};
+>      SMMUTranslationStatus status;
+>      SMMUTransCfg *cfg = NULL;
+>      IOMMUTLBEntry entry = {
+> @@ -1216,7 +1218,9 @@ static void smmuv3_notify_iova(IOMMUMemoryRegion *mr,
+>                                 uint64_t num_pages, int stage)
+>  {
+>      SMMUDevice *sdev = container_of(mr, SMMUDevice, iommu);
+> -    SMMUEventInfo eventinfo = {.inval_ste_allowed = true};
+> +    SMMUSecSID sec_sid = SMMU_SEC_SID_NS;
+> +    SMMUEventInfo eventinfo = {.sec_sid = sec_sid,
+> +                               .inval_ste_allowed = true};
+>      SMMUTransCfg *cfg = smmuv3_get_config(sdev, &eventinfo);
+>      IOMMUTLBEvent event;
+>      uint8_t granule;
+> diff --git a/hw/arm/trace-events b/hw/arm/trace-events
+> index 1b16f710fed..a166b79c8ef 100644
+> --- a/hw/arm/trace-events
+> +++ b/hw/arm/trace-events
+> @@ -41,7 +41,7 @@ smmuv3_cmdq_opcode(const char *opcode) "<--- %s"
+>  smmuv3_cmdq_consume_out(uint32_t prod, uint32_t cons, uint8_t prod_wrap, uint8_t cons_wrap) "prod:%d, cons:%d, prod_wrap:%d, cons_wrap:%d "
+>  smmuv3_cmdq_consume_error(const char *cmd_name, uint8_t cmd_error) "Error on %s command execution: %d"
+>  smmuv3_write_mmio(uint64_t addr, uint64_t val, unsigned size, uint32_t r) "addr: 0x%"PRIx64" val:0x%"PRIx64" size: 0x%x(%d)"
+> -smmuv3_propagate_event(const char *type, uint32_t sid) "%s sid=0x%x"
+> +smmuv3_propagate_event(int sec_sid, const char *type, uint32_t sid) "sec_sid=%d %s sid=0x%x"
+>  smmuv3_find_ste(uint16_t sid, uint32_t features, uint16_t sid_split) "sid=0x%x features:0x%x, sid_split:0x%x"
+>  smmuv3_find_ste_2lvl(uint64_t strtab_base, uint64_t l1ptr, int l1_ste_offset, uint64_t l2ptr, int l2_ste_offset, int max_l2_ste) "strtab_base:0x%"PRIx64" l1ptr:0x%"PRIx64" l1_off:0x%x, l2ptr:0x%"PRIx64" l2_off:0x%x max_l2_ste:%d"
+>  smmuv3_get_ste(uint64_t addr) "STE addr: 0x%"PRIx64
+> diff --git a/include/hw/arm/smmuv3.h b/include/hw/arm/smmuv3.h
+> index 45033d26a1b..8cd2edc3412 100644
+> --- a/include/hw/arm/smmuv3.h
+> +++ b/include/hw/arm/smmuv3.h
+> @@ -115,6 +115,7 @@ OBJECT_DECLARE_TYPE(SMMUv3State, SMMUv3Class, ARM_SMMUV3)
 >  
-> -    if (!smmuv3_cmdq_enabled(s)) {
-> +    if (!smmuv3_cmdq_enabled(s, sec_sid)) {
->          return 0;
->      }
->      /*
-> @@ -1617,7 +1618,7 @@ static int smmuv3_cmdq_consume(SMMUv3State *s, Error **errp)
->  
->      if (cmd_error) {
->          trace_smmuv3_cmdq_consume_error(smmu_cmd_string(type), cmd_error);
-> -        smmu_write_cmdq_err(s, cmd_error);
-> +        smmu_write_cmdq_err(s, cmd_error, sec_sid);
->          smmuv3_trigger_irq(s, SMMU_IRQ_GERROR, R_GERROR_CMDQ_ERR_MASK);
->      }
+>  static inline SMMUv3RegBank *smmuv3_bank(SMMUv3State *s, SMMUSecSID sec_sid)
+>  {
+> +    g_assert(sec_sid < SMMU_SEC_SID_NUM);
+>      return &s->bank[sec_sid];
+>  }
 >  
 > -- 
 > 2.34.1

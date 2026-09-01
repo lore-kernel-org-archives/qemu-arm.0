@@ -4,78 +4,105 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 711D6C61DD3
-	for <qemu-arm@archiver.kernel.org>; Tue,  1 Sep 2026 13:24:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 656CAC624D4
+	for <qemu-arm@archiver.kernel.org>; Tue,  1 Sep 2026 13:24:39 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1x1OPa-0007pD-R3; Tue, 01 Sep 2026 09:20:26 -0400
+	id 1x1OPd-00084h-43; Tue, 01 Sep 2026 09:20:29 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1x1OPa-0007mC-2N
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1x1OPa-0007o2-IH
  for qemu-arm@nongnu.org; Tue, 01 Sep 2026 09:20:26 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1x1OPY-0007pw-52
- for qemu-arm@nongnu.org; Tue, 01 Sep 2026 09:20:25 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1788268822;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=26+D5MXwwk02WY5U6zB7de1//ugPlUVFcs7ZCwHdu5U=;
- b=b/VfdNHQuLGp9cXuY0Rrl0jGrFXR/608y75AhfDSVLTTKQ+SrVF5cHBRWQlgMd36CO+TRV
- I6gmmXbIR3hrF4eop07GyMOK1oIKilLHBOg89p3D0ECwalKdPNBCRQP4z34DBlpk2ajqjC
- qidyoO7lylcVWcdfv07btg6Vdg/KcvA=
-Received: from mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
- relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-404-MqMluuANOPWxR5y1MXAcqQ-1; Tue,
- 01 Sept 2026 09:20:19 -0400
-X-MC-Unique: MqMluuANOPWxR5y1MXAcqQ-1
-X-Mimecast-MFC-AGG-ID: MqMluuANOPWxR5y1MXAcqQ_1788268817
-Received: from mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com
- (mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.12])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
- (No client certificate requested)
- by mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 26AB61921EEE; Tue,  1 Sep 2026 13:20:17 +0000 (UTC)
-Received: from blackfin.pond.sub.org (unknown [10.44.22.5])
- by mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 528EE1955F2D; Tue,  1 Sep 2026 13:20:16 +0000 (UTC)
-Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
- id A55C321E682B; Tue, 01 Sep 2026 15:20:13 +0200 (CEST)
-From: Markus Armbruster <armbru@redhat.com>
-To: Mathieu Poirier <mathieu.poirier@linaro.org>
-Cc: berrange@redhat.com,  kchamart@redhat.com,
- pierrick.bouvier@oss.qualcomm.com,  peter.maydell@linaro.org,
- mst@redhat.com,  cohuck@redhat.com,  pbonzini@redhat.com,
- eblake@redhat.com,  lorenzo.pieralisi@linaro.org,  gshan@redhat.com,
- enju.kohei@fujitsu.com,  qemu-devel@nongnu.org,  qemu-arm@nongnu.org,
- kvm@vger.kernel.org
-Subject: Re: [RFC v3 00/24] Add Realm support to QEMU-VMM
-In-Reply-To: <20260825220101.3443954-1-mathieu.poirier@linaro.org> (Mathieu
- Poirier's message of "Tue, 25 Aug 2026 16:00:37 -0600")
-References: <20260825220101.3443954-1-mathieu.poirier@linaro.org>
-Date: Tue, 01 Sep 2026 15:20:13 +0200
-Message-ID: <87wlt55cs2.fsf@pond.sub.org>
-User-Agent: Gnus/5.13 (Gnus v5.13)
+Received: from mail-yw1-x112a.google.com ([2607:f8b0:4864:20::112a])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1x1OPY-0007qJ-TR
+ for qemu-arm@nongnu.org; Tue, 01 Sep 2026 09:20:26 -0400
+Received: by mail-yw1-x112a.google.com with SMTP id
+ 00721157ae682-8588583a7c3so10759457b3.2
+ for <qemu-arm@nongnu.org>; Tue, 01 Sep 2026 06:20:24 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1788268823; cv=none;
+ d=google.com; s=arc-20260327;
+ b=IiKfrzzZGUCvS+kEPwWPZroGZtfkxuebDcwj8y7BEF37jz1mRfuuhDFCtpouM59C/o
+ Tj0bYYkb8ZhmNGqRP9iZ6hg0rfI/nHYQ/1CWTvTbDhZRoG2QtvkvO5ZxAQnfE1ZEZvNU
+ uc+FiLKkOvzHg/EngqSy3FiA1RWgVo1ZiWG5jzxMJogW09bZdDIKlS2WlgxMAYx/EpHB
+ 7X99D5xQrWZo9uJIV9Gb9FwX1WFWWCO22l1SKEgBNdCmZEmI8JUN3zWDSgE22FLyRZQ9
+ FbSBNMUF5XC92+sbrb97TmqAn7OMkau6JLnGzjyuImHg9s7caGucggbu3SjHVtdC6Zxp
+ lzCA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
+ s=arc-20260327; 
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:dkim-signature;
+ bh=ct7+AnY8V0yf+2DAzDh9P0UCIPmmGup+l7IAwG1zyUA=;
+ fh=OHM5KsqjlKPKBwEOD3pJVrLR4rj+D81n/dhYBOuTT5w=;
+ b=ieSV5JIdwZMWnWHyuF/pQiOfzowKyZewq+Yc4TQ/lwrmTnPQlwOju3tHVsZwqysV8W
+ ilbiLGq9Phb/LRrrl/QD2kp1spg9BtR7lXy4MoTWdxjhZEdhd7qcdc01kEsgCTaVC+vs
+ cXIWhU9d5RuSsVjMdspxrJ/TrKO3IsA5hGxBTW+3iaH3bdwUdzEpYrr8ahhDvmRBpOt9
+ vmo1FG2L8ObWuzk5Ag0RLwxKBOXH3NvpzroQQAqKDeaEoIwRfb90Ofj1uDy5cnag3tv1
+ IgpEEap3VVdjc39Wz60Q4QkBvgBBn/+RKdLfQVaoiJu8WgsWCMmKnATA89dpsdOCaEi4
+ UpTg==; darn=nongnu.org
+ARC-Authentication-Results: i=1; mx.google.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1788268823; x=1788873623; darn=nongnu.org;
+ h=content-type:cc:to:subject:message-id:date:from:in-reply-to
+ :references:mime-version:from:to:cc:subject:date:message-id:reply-to
+ :content-type; bh=ct7+AnY8V0yf+2DAzDh9P0UCIPmmGup+l7IAwG1zyUA=;
+ b=g8U03ifUn2IxhhuWOyDYvoeE2bIXlpfCM0ogvjM4k9zyRY7H6AmOjcmPvTzYW1VM9s
+ EPjo0N17EsqFjzLgC2el+poJhKoYHsXyAWuvjAvguS8z5EuGdM65OrCipr9E7JS7RJvm
+ qvkpFXHXUSxEmHdpsp2HVY0c1B5TIoZ6SJKwCX99iScZ0F24IJaieCgvi/F1XBzDjc05
+ vd5QB72H3WCPnujxpypklgBF91lz/2VWbfgaG7LgV1UvG9cUHSDWHeCQVC3bW493U1lx
+ WuC5f79a0viR6jDjgBX9BztGsVTAMtGsk1c1Gdh2t0c2VpQYGfMcrtgFRwsGwgMK85ps
+ s6iQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20251104; t=1788268823; x=1788873623;
+ h=content-type:cc:to:subject:message-id:date:from:in-reply-to
+ :references:mime-version:x-gm-gg:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to:content-type;
+ bh=ct7+AnY8V0yf+2DAzDh9P0UCIPmmGup+l7IAwG1zyUA=;
+ b=B0NsAzUBssya6lxek4J7GIVuRFK3DbzOw5wqKp8aICfcp4TAVHR8ClVFxJPpYAi5P1
+ uvsJ6kcSx7nqxOOQG5ZvIUEPVvHiCq/Fgtqv6kXEpBZxsIFRmpfSPFV+rgbhwTMd3yJ+
+ F6o+b54E3fTVYo0K0GsPSv4O0P/YySEfY1f4rlYaTqJRteEeVFsMjbrWYcEzVWSfcy0k
+ +fkbIsg9+X/2rIChGj1sUquK/sDZULJh+0+KxQdHXEwmsuW37iLNg+DwwHyDuq73H+31
+ fi46/NI2K3IIc8YKMfgkqD/Ee34k82pB9aIaIVdX10uZuENNoEkmP3H/VHJOlvEOHBJ2
+ 4aVA==
+X-Forwarded-Encrypted: i=1;
+ AKwUvByHIN/enP9EZ9ZtS8/KJEN4HxkIfGhkKb/9DEP39ayMSxIyq3UT47xZML0IaoFIgL1esYdyn90e6g==@nongnu.org
+X-Gm-Message-State: AFuF++kLSN5bjVVgR/nPpiPebDNRQaUtrblAYqK9YDlyk0ZN5Tr9fwqs
+ 0LEdVtph4eFNfCKCxroNRHIcxLydgX3JgS4q7+HerQcgzNdptVE6SfZM3HeBpvQOlk45C4Vw0Yu
+ ueYADj5hQcG6CU3L8vaDjvG/gjNmxdBVe2JH8IoZH0g==
+X-Gm-Gg: AYBFou08g3/IeZJTN8M6MGlM1at+CdSlwEeDACuqMHYp/5PCujxKmHAMXa98sX6tya3
+ uHFsbhGo1cRXHLhOY72EWYgEwyLwbj2qa2x9iY/oLQFDpOVPnVyfoLYzar7JrS9MS2WFOJukM6O
+ NCc3wCC5TZ9TDWSsytrY/dAGIEFz1izvjAVlIsCE0KH8qH778V5DTg59FzehsutrMCdgLoO6hpO
+ qcE8acXzyfJiafEChthJDiqF6pn75VFBvvxK3l2gHcBwb3d1CEjSX8eEr2SOYuhQ3fSuKEnF+st
+ MF50BsrQPInSZKFinBGtLiT6dc0OaNnecBWfYtQdlQloAv9Jixm8RylemioS91l6KXvFXcKq71F
+ SeS4L6eIw0fO08CMPpBoWX5a9XndF
+X-Received: by 2002:a05:690c:4f89:b0:80d:15a3:7b1c with SMTP id
+ 00721157ae682-85d68a8ebdamr105327067b3.4.1788268823229; Tue, 01 Sep 2026
+ 06:20:23 -0700 (PDT)
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 3.0 on 10.30.177.12
-X-Mimecast-MFC-PROC-ID: SnPSRsctXxGxVwr-aIUQ4jUUZInBkTXoIF8RQfiyk2c_1788268817
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=armbru@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: 12
-X-Spam_score: 1.2
-X-Spam_bar: +
-X-Spam_report: (1.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
- RCVD_IN_SBL_CSS=3.335, SPF_HELO_PASS=-0.001,
- SPF_PASS=-0.001 autolearn=no autolearn_force=no
+References: <20260901082554.804169-1-kraxel@redhat.com>
+In-Reply-To: <20260901082554.804169-1-kraxel@redhat.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Tue, 1 Sep 2026 14:20:11 +0100
+X-Gm-Features: AcwNN1WIFltK8mA7V5QJnNGttCl8kCJEF3mi0T7-1Lb-yQkejh_hgoNIFvXtGIY
+Message-ID: <CAFEAcA_Cc8DmDDw4Ea9EW_Ph_24=YghTXWkty9RmjShxek33xw@mail.gmail.com>
+Subject: Re: [PULL 00/13] Firmware 20260901 patches
+To: Gerd Hoffmann <kraxel@redhat.com>
+Cc: qemu-devel@nongnu.org, Igor Mammedov <imammedo@redhat.com>,
+ qemu-arm@nongnu.org, 
+ Ani Sinha <anisinha@redhat.com>, "Michael S. Tsirkin" <mst@redhat.com>
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2607:f8b0:4864:20::112a;
+ envelope-from=peter.maydell@linaro.org; helo=mail-yw1-x112a.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -91,60 +118,33 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Mathieu Poirier <mathieu.poirier@linaro.org> writes:
+On Tue, 1 Sept 2026 at 09:26, Gerd Hoffmann <kraxel@redhat.com> wrote:
+>
+> The following changes since commit d2e570cc0f97b936902a5b1b86b73c0f5998b475:
+>
+>   Merge tag 'pull-ppc-for-11.2-20260828' of https://gitlab.com/harshpb/qemu into staging (2026-08-28 15:17:04 -0700)
+>
+> are available in the Git repository at:
+>
+>   https://gitlab.com/kraxel/qemu.git tags/firmware-20260901-pull-request
+>
+> for you to fetch changes up to 5ce32f7fdb786014255d4cfff749de307cdfdbfa:
+>
+>   hw/misc/vmlaunchupdate: do not clear control bits upon fw-cfg select op (2026-09-01 09:25:53 +0200)
+>
+> ----------------------------------------------------------------
+> - edk2: update to 2026-08 stable tag
+> - edk2: remove 32-bit platforms (following upstream removal)
+> - acpi: test updates for the new edk2 firmware
+> - igvm/vmlaunchupdate: fix control bit handling
+>
 
-> This patchset provides minimal functionality to start a Realm VM
-> from an Arm RME capable host using the following command line:
->
-> qemu-system-aarch64 \
->  -M confidential-guest-support=rme0,memory-backend=ram0 \
->  -object rme-guest,id=rme0,convert-in-place=on \
->  -object memory-backend-guest-memfd,id=ram0,size=1G,share=on \
->  -cpu host -M virt -enable-kvm -M gic-version=3,its=on -nodefaults ..
->
-> It is a refactoring of Jean-Philippe Brucker's initial work dating from a while
-> back.  It is compatible with Steven Price's v16 revision [1] of his work adding
-> CCA support to KVM.
->
-> This revision is based on Michael Roth's work on guest memfd in-place memory
-> conversion [2] and as such, the QEMU baseline is different from 'master'.  Other
 
-Use
 
-    Based-on: <20260528000416.8161-1-michael.roth@amd.com>
+Applied, thanks.
 
-to document your base.  This stands out to humans, and is readable by
-machines.  Next time :)
+Please update the changelog at https://wiki.qemu.org/ChangeLog/11.2
+for any user-visible changes.
 
-> than modifications to use in-place memory conversion from Lorenzo Pieralisi that
-> were integrated to patches 04, 08-11, it is identical to V2.   
->
-> It was tested on the QEMU SBSA machine.  For convenience, a repository is hosted
-> here [3],
-
-Michael's series doesn't apply on master anymore, so I fetched this
-branch.  It's based on master as of *May*.  This won't do.  Please rebase.
-
->           along with the TF-A [4] and RMM [5] for the SBSA machine (compatible
-> with Steven's v16 patchset).  The Repository for the kernel [6] is available
-> from Arm.
->
-> Instructions to compile and run the entire stack can be found here [7].
->
-> Device Assignment is not included.
->
-> Thanks,
-> Mathieu
->
-> [1]. https://lore.kernel.org/kvm/20260803134403.80630-1-steven.price@arm.com/
-> [2]. https://lore.kernel.org/kvm/20260528000416.8161-1-michael.roth@amd.com/
-> [3]. https://gitlab.com/Linaro/cca-public/qemu/-/tree/upstream-v3?ref_type=heads
-> [4]. https://gitlab.com/Linaro/cca-public/tf-a/trusted-firmware-a/-/tree/cca/v13?ref_type=heads
-> [5]. https://gitlab.com/Linaro/cca-public/rmm/-/tree/cca/v16?ref_type=heads
-> [6]. https://gitlab.arm.com/linux-arm/linux-cca/-/tree/cca-host/v16?ref_type=heads
-> [7]. https://gitlab.com/Linaro/cca-public/build-instructions
->
-> RFC v2: https://lore.kernel.org/kvm/20260728192630.240375-1-mathieu.poirier@linaro.org/
-> RFC v1: https://lists.gnu.org/archive/html/qemu-devel/2026-07/msg02307.html
-
+-- PMM
 

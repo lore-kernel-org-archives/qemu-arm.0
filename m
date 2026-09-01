@@ -4,149 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7D0D9C61DD3
-	for <qemu-arm@archiver.kernel.org>; Tue,  1 Sep 2026 21:58:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 29CD3C61DD3
+	for <qemu-arm@archiver.kernel.org>; Tue,  1 Sep 2026 22:13:20 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1x1WUp-0007h3-Cc; Tue, 01 Sep 2026 17:58:23 -0400
+	id 1x1Wj5-0002X7-Cu; Tue, 01 Sep 2026 18:13:07 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <tdave@nvidia.com>)
- id 1x1WUn-0007gN-Oe; Tue, 01 Sep 2026 17:58:21 -0400
-Received: from mail-westus3azlp170100009.outbound.protection.outlook.com
- ([2a01:111:f403:c107::9] helo=PH7PR06CU001.outbound.protection.outlook.com)
+ (Exim 4.90_1) (envelope-from <gilles.grimaud@univ-lille.fr>)
+ id 1x1Wj4-0002Wf-3V; Tue, 01 Sep 2026 18:13:06 -0400
+Received: from smtp-out-2.univ-lille.fr ([194.254.129.106])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <tdave@nvidia.com>)
- id 1x1WUm-0003Ko-0W; Tue, 01 Sep 2026 17:58:21 -0400
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=RSBUOwqijquk88e9L9kkZVHTfp3lJLnNtA/rupfNasAmMajRlog8qWbkF4C98OGuvMn12Hx67v5J2oqrgVFrKmIfLKYjAXcd+wBQ7vzTgmvF4pizAKqp7wlqtIJqirhHnjUXcu5Y8cdp8S8fPMQOisyf9PWomOJ+GkJDoDwkUirHWhafZM2WlRNce7YD8IKTtGMXT/Ud3pEtVLoOw3Vcchw/Nl+XsJW+aKq5L4ptj9OQavUj2tFjhy0PfMdK7a0eied8xbsC3VoS1RCw9SWKPipgIMrBZ/Qe7hPmLIUs8Mtzx6+BgNiacRBTpjWQ0JrgsPs4NieuFs5mzqNrKBdz4g==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector10001;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=Gyrmvcm0Cww0eakvTd1LwQl1AOl0M1Y4cQ0Ti+u6950=;
- b=VV0hO3L4UrLATeIOqN/ld2yGGo2L4JQcl3pf0sbAxrKE2NA+7LM/2CrfTB7Hw5suIJ6L0+Otpotkfz3ccGraSAB8y0CjpYSKyPhJTWavU2Bco2PytkLHvagCY6xLb9OWLjvxvja7Fd9wbAy/Cme0t2jgqA3sJD8Wj4bO2o5WDdlo/mYET4JvKkt6wU/VOjXxAOTPWDPHIVHMzipDac3lWOc6rBKOb63Iew5z83KlV1s5IkFscBQnH0O3+TXMeTWqL1lxDbfN+J2YQgJ7J3l4pK7B8dA/+LB2PcPJcXgkwbIoeJnUc/xopijyQcScZXd0W3BnYss987u3ttiJBc3pLA==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=nvidia.com; dmarc=pass action=none header.from=nvidia.com;
- dkim=pass header.d=nvidia.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Nvidia.com;
- s=selector2;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=Gyrmvcm0Cww0eakvTd1LwQl1AOl0M1Y4cQ0Ti+u6950=;
- b=coytB5BKtdwo1jnj5cPMVjZLU6b6+hKUOo9IwZahLVUgeHpmEfZJfZ01Be5S1l04EGEvPtfvGpBjyhsM0i7OXOEXDAxHXVUrG+1DbkCDCXxseEzknE/FV7XOQU9wzAvwbqXs9kCwCsEvEJV6+bG6OMAbT+gcLh8hWWHxZ1pqo/ggpbV5FPOx2cLS/jCUkpyeUqoWg3wrdU/7VGaVlSAmVxZJq2hwxxsHUYEgBbYHXcI8yehLgDVJMmsaNVKhZn2NWjLGGx+FWOmxYMnRv8/oU1XEV/kvHBOpUf4Fq9fmXF63+B3jzLivQw+gDdPTQu6lsSB285ZT3n0StWbxa9+rTg==
-Authentication-Results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=nvidia.com;
-Received: from DM4PR12MB9736.namprd12.prod.outlook.com (2603:10b6:8:225::9) by
- CYXPR12MB9277.namprd12.prod.outlook.com (2603:10b6:930:d8::19) with
- Microsoft
- SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.21.360.13; Tue, 1 Sep 2026 21:58:12 +0000
-Received: from DM4PR12MB9736.namprd12.prod.outlook.com
- ([fe80::ed33:f342:886b:dc8e]) by DM4PR12MB9736.namprd12.prod.outlook.com
- ([fe80::ed33:f342:886b:dc8e%6]) with mapi id 15.21.0360.008; Tue, 1 Sep 2026
- 21:58:12 +0000
-Message-ID: <39c5034b-7bfa-4f04-84b6-42cee42b0c96@nvidia.com>
-Date: Tue, 1 Sep 2026 16:58:09 -0500
-User-Agent: Mozilla Thunderbird
-Subject: Re: [edk2-devel] [RFC PATCH v2 0/5] hw/pci, hw/arm/virt: fixed PCI
- BAR placement
-To: Gerd Hoffmann <kraxel@redhat.com>
-Cc: Ard Biesheuvel <ardb@kernel.org>,
- "devel@edk2.groups.io" <devel@edk2.groups.io>,
- Alex Williamson <alex@shazbot.org>,
- "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
- Jason Gunthorpe <jgg@nvidia.com>,
- Shameer Kolothum Thodi <skolothumtho@nvidia.com>,
- "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
- "peter.maydell@linaro.org" <peter.maydell@linaro.org>,
- "Michael S. Tsirkin" <mst@redhat.com>,
- "marcel.apfelbaum@gmail.com" <marcel.apfelbaum@gmail.com>
-References: <20260827004024.598351-1-tdave@nvidia.com>
- <ao_fX3cYersq6TRd@sirius.home.kraxel.org>
- <20260827074733.340aeb0c@shazbot.org>
- <46b4544a-6e97-4433-b3e2-60cf43e62c7b@app.fastmail.com>
- <f2fe3c7f-4a8f-4025-ac09-777eb5cfc31c@nvidia.com>
- <apWAprXWglNIWjdp@sirius.home.kraxel.org>
-From: Tushar Dave <tdave@nvidia.com>
-Content-Language: en-US
-In-Reply-To: <apWAprXWglNIWjdp@sirius.home.kraxel.org>
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-X-ClientProxiedBy: SA0PR11CA0128.namprd11.prod.outlook.com
- (2603:10b6:806:131::13) To DM4PR12MB9736.namprd12.prod.outlook.com
- (2603:10b6:8:225::9)
-MIME-Version: 1.0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: DM4PR12MB9736:EE_|CYXPR12MB9277:EE_
-X-MS-Office365-Filtering-Correlation-Id: 489f1290-9d2a-4187-2fe6-08df08741de5
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;
- ARA:13230040|1800799024|23010399003|376014|366016|10067099003|56012099006|11063799006|3023799007|4143699003|22082099003|18002099003;
-X-Microsoft-Antispam-Message-Info: QQTFBkrIZ5wiUveHolz+adLhVC1lieOmKUamJ7PcXVEoGFJ4vCIylKEp4sBlCzdiFmkVbr8p+OPLrbq5MAeDQ7yKr5WNaCM104i/gTIbwFc2YgxbWnY2KgqF3XYBjCY/JEibVNdXPGw9+ct4/zbJ7LWtgFYIMUJUYGAU0v4H9LMvtoYBGOVag7IaUoHhMS+P7TIUg0wP13JkOuaGWxUKCEPGRwBTyDSbJkDEdtu9+GwfcN+2TQwACEMgUEltB0RkJQUHL9EA5jwvE7pjn2rPtHxWnt89+qOtUM2Fl2i9ppFIthfKbWDy5LUbch883v3Tw+32vuvzxElmHPoR1vI1F5PtaXT2cQNFAF8yGaKxmXX8QmzV6mM/UryfMcJxzubADHyIrIuVbscIYQvHZZh+7iKIUcvdQbNKkDlvt8uC8pwwupww3Vlv3KmSCYkoGf1ydXmAKNo9LuvJBdMye9tlogbU3EOa3Agf9qwo+uAhTP2C+23k1A5QczrDlzdUZoqw0kl5QN8o6HNxsv/gZoPFrUvClB8P23vdZdcBK/3cGYWZqqnwbADbGDjvw6dUAOMFvpZZXORHkuIiXjnv7jzfxUsbRngds9HM6Tro1w7A7ILIDJElQIKyXhqVZ88bzLkSvtOwODbDxAkWpF1lTQvpQbDQt3WaTodBkmACLDwMsbk=
-X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:DM4PR12MB9736.namprd12.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(13230040)(1800799024)(23010399003)(376014)(366016)(10067099003)(56012099006)(11063799006)(3023799007)(4143699003)(22082099003)(18002099003);
- DIR:OUT; SFP:1101; 
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?S2hQVWZLNmppMVRjL25xUXZocVdHNHJWNTZlKytDR3Z6b3pSRWVNOTgrQ1U4?=
- =?utf-8?B?SkswdEhvTGY2YkcybEorQTdwYmY5NFlQOTNQRlZNYVJsU1VnSjV2QkVYeXlm?=
- =?utf-8?B?Mi8wa3Z2MkFyTGlRbERCNzJJZFNPWjNqNUlGUkc4Zk9XT3VIQzBYQUJ5UlpE?=
- =?utf-8?B?RVQwRGo4TTJxMm9yeUJoU2dGbGZNV3N0QktqWWdUK1ZFUUk0KzM5MWJUeDQy?=
- =?utf-8?B?dmJzUEJHK3djZDc5aG5OSGZscXVXbHVzVGlGZno2c21CZUpCRWIrUExGZHFv?=
- =?utf-8?B?Tms3b3RtOTBmQXRXQ1lCcW4xYjh4SjBDSWtkT1FTSVBMdERxT3NnTDVqeTBv?=
- =?utf-8?B?YlpKU3RqeFRnL2pBN0Q2SGJyOHp2bno2ekVnUkdVTUdlVGx1TVoyZWVvTHQy?=
- =?utf-8?B?QS9uUExTWE1weWVwOHNRYXJHQ2grK0poVmh5TnRjVW5peGk4UzRaQndXSmpT?=
- =?utf-8?B?YlBSUnMwYWxxN3I1aFczcWp2V29KOWJRdVBwUXN6bzdFS29HRmsrd0VMT2lX?=
- =?utf-8?B?QStjZW9PRDk1aVR3ZUxZMDhmZkMyS2prZHZjN3FxQ1c1MVFqdlZpbXoxUGpX?=
- =?utf-8?B?d2w0TS9MbjZHNU45dm1wWWI2ZDlBdWVzK0lGQnF1Z3FYSkU4aTJ5OEkxTlhk?=
- =?utf-8?B?MG5lRHdXZHUvdXJ1ak5RVEF0Vnk5MVI3QlRHU1NiRnhOT2VWMDM5T0lEMGpD?=
- =?utf-8?B?eTB5c2w3MnRMMHVkUnlQOHVBZ0ZQN0NtZUl4U3A3aUN3QmkzRXZOUVNCYWtr?=
- =?utf-8?B?SWdTbWZzY1drOGxaVGhuVUJPTkhwVkR6MnZzNzlJdlR3N3lKNWgwVkpnZTgw?=
- =?utf-8?B?U28yMjRRR09ycXlqWFVKLytKL2dENWZyNk9ic2dWYmwvekFLMUpONmxiMnBW?=
- =?utf-8?B?cit0KzJZalhNdzVYalVndUxLNjlpd1dnOXMrOXQxRjdqNmNIQWo1Rm40QVEz?=
- =?utf-8?B?bFZWcXQxbFhNTktidEdYRnU0OXNNRDJwZG5DcHF1aEpIbkxURkU2TUZxZ245?=
- =?utf-8?B?OEx2ZFJmd2xFU2dENTRFUUkzc0NaWVNlWkZJQW56enFVVThHZEgvcG9sNjEx?=
- =?utf-8?B?VnY0R2t0U0MxQXJXM0Jyd0UwT1EzdnExTzdON0lCSmZIQTZET2xreGRDVUZx?=
- =?utf-8?B?M2duMjdqblB2LzRtdXRXdzdBYmFJaFNGWUg5TVhVOGtuUkpzRFQydWgxbE1o?=
- =?utf-8?B?SFZXd0pZM28rV2xRWjBEMjc2SVMzcUUvTnIvZ2d4VlRDR0lQQmJwdVFPNEdM?=
- =?utf-8?B?Q0xERFlGS0NIVkhCYW5hUTZFdDVncjBMT0ovS29PVzdhc1JiZGNiVzBHSkRY?=
- =?utf-8?B?WXB2bXo0QUhpSWgrMWc1SDBabFhVaVZhZitmaE9kNVM5dGhGdU03blNjdG5s?=
- =?utf-8?B?YTdZeGVneHgrSHZqVFI0bHYreG9wdHQ2QjJkY0IwWHlPVE1iSVBPRk1wQXhu?=
- =?utf-8?B?b2NiQjdzOU9SVnFFaGVRK1lJcitLcTlnRzdSL3pCN3A0YUp3THBYNTE3ZVM5?=
- =?utf-8?B?UzdZUC9ObzhZMXRjWlI1b0Z0aHZjb0JpemJzYUoyMXBoTDhnUFZ1SU5MMndZ?=
- =?utf-8?B?SnNqaFlQY2N6bFA2WUMwcUsvSVo3T3RKdWswYkhydngwU1U0RTc5VnpkWmNS?=
- =?utf-8?B?Q2Y1Tk9IU3o1alJiOVFqbnROTUsrOHZqcDlrUFk2WllYZzRwUjVodlZHZ243?=
- =?utf-8?B?MG41WHBUR2pRTlFSRlZCNFNWTUo0WVQvdVVqelNCSkU0dVNLOTlPeXdrU2gw?=
- =?utf-8?B?L2NPdkJ0aXpXKzFiMnd4WnpQTDdiSzZycEdwM3lTL1QyQ0dxdzdjRzB0ZmJ3?=
- =?utf-8?B?OVR3NlBNVWo4OU5QUGY1c1hITWRkZXhXOElWL0xQRmx4YnlqV3oveUF3enli?=
- =?utf-8?B?RUpWZXBVVDRKYVZ2c1FlMDVQWW45TGg3UjJEeE1aV2psTjlSNU5MaDhRTnVa?=
- =?utf-8?B?c09Pb05OVU9hcnA3NTg5cE50Ulh6QTNzeHRJaHZMcTNSL2E4emd3bWs4QlNC?=
- =?utf-8?B?bXVmSjFXei9PMHMvMVRIblU4cGVjeDFmMG0xOEJxbnY5RUN6Rmo1OVoxUUxx?=
- =?utf-8?B?TnppNGFrbjhXVE5JQVdjSGlMNHdBRHh2VndJVkJ2ZkljMDZVTFpIM1FMNGpj?=
- =?utf-8?B?T3lUTFRleEd6RDVjK3RjUlNDbVFVbHM4aVMraHkwaHJrS0JVMGdQcExGTGdz?=
- =?utf-8?B?bWVpR1BxNkRzaEF2b3hQZUZ5M09uM1ZOcEEwMG1MYmpZS3IrR3VZSFF5TlNx?=
- =?utf-8?B?OGtmTjFkQWQ3ZGo5R1BzU1lxa2owQ1ZLQmtJcVFVRXlRanhnRUNTU29nR2NZ?=
- =?utf-8?Q?D+cJ4TQriY4o+iZw1c?=
-X-OriginatorOrg: Nvidia.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 489f1290-9d2a-4187-2fe6-08df08741de5
-X-MS-Exchange-CrossTenant-AuthSource: DM4PR12MB9736.namprd12.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 01 Sep 2026 21:58:12.2082 (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 43083d15-7273-40c1-b7db-39efd9ccc17a
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: u7SJHIWbWAZOSfxQ4vX+R27M/nZvIdfmAQsGTjl6PwK4T7vhzGK/WfOhcuk3uIZH/Ictmz55Mbkkl712ouppzA==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: CYXPR12MB9277
-Received-SPF: permerror client-ip=2a01:111:f403:c107::9;
- envelope-from=tdave@nvidia.com;
- helo=PH7PR06CU001.outbound.protection.outlook.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- SPF_HELO_NONE=0.001, SPF_NONE=0.001 autolearn=ham autolearn_force=no
+ (Exim 4.90_1) (envelope-from <gilles.grimaud@univ-lille.fr>)
+ id 1x1Wj1-0005Uf-2B; Tue, 01 Sep 2026 18:13:05 -0400
+Received: from smtp02.univ-lille.fr (smtp02.univ-lille.fr [194.254.129.96])
+ by smtp-out-2.univ-lille.fr (Postfix) with ESMTPS id 4hZKqX3X9Qz81N1;
+ Wed,  2 Sep 2026 00:12:56 +0200 (CEST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=univ-lille.fr;
+ s=dkim; t=1788300776;
+ bh=RDvRKY4mMTCTTrJOVKjXXs/rBSkBpVxGsTJMG59sCDk=;
+ h=From:Subject:Date:In-Reply-To:Cc:To:References:From;
+ b=fDG1jdt3aXS9G/wdnuPwE9p1nO+t/6/f60cI+5TN/002yVcWnltcVzvzImmVWjaa5
+ ROROwCriybUs2zRo9mOEOcBFg4spKrllJAzmhuSj4YoPPqoG69JDLnk2mzSB/Ij3Ol
+ t40yWPRntTI+uiBZeSbFLHtl3NAU1v0Eid1h+BW1rqzHBPSSCycAo82mWwEB4oA4TT
+ iPUKq4K+D+kp8noitZyNNV/oYbwATy5Ph7wTaHQV9M9s49VYyy6RgN3bGCSfIK/rSg
+ wwx7XHtpJRklmY0lPC9LX0QqUjg3y3AUaerNvxDVWt7ZBTS6S3ueZhXEDwGiX5494i
+ acTZKC/u7qXGw==
+Received: from smtpclient.apple (lfbn-lil-1-243-101.w90-45.abo.wanadoo.fr
+ [90.45.87.101]) (Authenticated sender: gilles.grimaud)
+ by smtp02.univ-lille.fr (Postfix) with ESMTPSA id 4hZKqX1zC9z6tpV;
+ Wed,  2 Sep 2026 00:12:56 +0200 (CEST)
+From: gilles grimaud <gilles.grimaud@univ-lille.fr>
+Message-Id: <470BA89A-6FE4-4741-AA30-CE7C1C8E162E@univ-lille.fr>
+Content-Type: multipart/alternative;
+ boundary="Apple-Mail=_DA9B7C27-23DF-4DA8-B30A-B30807CFC484"
+Mime-Version: 1.0 (Mac OS X Mail 16.0 \(3864.600.51.1.1\))
+Subject: Re: [PATCH RFC v2 03/30] hw/misc: add RP2040 diagnostic helpers
+Date: Wed, 2 Sep 2026 00:12:46 +0200
+In-Reply-To: <87qzjcu8ni.fsf@draig.linaro.org>
+Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org,
+ Paolo Bonzini <pbonzini@redhat.com>
+To: =?utf-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>
+References: <20260829234308.33725-1-gilles.grimaud@univ-lille.fr>
+ <20260829234308.33725-4-gilles.grimaud@univ-lille.fr>
+ <87qzjcu8ni.fsf@draig.linaro.org>
+X-Mailer: Apple Mail (2.3864.600.51.1.1)
+Received-SPF: pass client-ip=194.254.129.106;
+ envelope-from=gilles.grimaud@univ-lille.fr; helo=smtp-out-2.univ-lille.fr
+X-Spam_score_int: -43
+X-Spam_score: -4.4
+X-Spam_bar: ----
+X-Spam_report: (-4.4 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, HTML_MESSAGE=0.001,
+ RCVD_IN_DNSWL_MED=-2.3, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -163,85 +75,513 @@ Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
 
+--Apple-Mail=_DA9B7C27-23DF-4DA8-B30A-B30807CFC484
+Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain;
+	charset=utf-8
 
-On 8/31/2026 8:42 AM, Gerd Hoffmann wrote:
->   Hi,
-> 
->>> Is this the reason we cannot rely on the Enhanced Allocation (EA)
->>> capability here?
->>
->> AFAICT, this was explored on RFC v1.
-> 
->> EFI_INCOMPATIBLE_PCI_DEVICE_SUPPORT_PROTOCOL was suggested as the
->> shorter path at the time, which is what this series uses.
-> 
-> Essentially we have *two* problems to solve here.  The first is how do
-> we get the fixed bar information from qemu to the firmware, and the
-> second is how we integrate that into edk2.
-> 
-> So we could have a driver which parses EA and passes along the
-> information found to PciDxe using
-> EFI_INCOMPATIBLE_PCI_DEVICE_SUPPORT_PROTOCOL.
-> 
-> Not sure how much of a win that would be compared to adding EA support
-> to PciDxe directly given that the PciDxe bridge window logic needs
-> enhancements to properly handle fixed bars (as discussed below).
+Hi Alex,
 
-Agreed, EA doesn't buy us much here; the bridge-window fix is needed
-either way.
+Thanks, I agree that the shared diagnostic layer is unnecessary.
 
-> 
->>> Agreed - if the bridge windows are not programmed correctly on the first
->>> pass, there is something in the code that needs to be fixed. I don't think
->>> papering over it like this is the right approach.
->>
->> That's a fair point. I did the window-sizing after PciBusDxe because I
->> didn't want to touch existing PciBusDxe code too much.
->>
->> As per my understanding, PciBusDxe's enumeration splits into three phases:
->>
->> Phase 1 (PciHostBridgeEnumerator) walks the whole tree and calls
->> CheckDevice() per device — by the time this phase finishes, every fixed
->> BAR address is already known and cached on the device
->> (PciBar[Bar].FixedBaseAddress).
->>
->> Phase 2 (PciHostBridgeResourceAllocator) prepares an address for every
->> resource node in the tree — both individual BARs and bridge windows
->> alike — purely from size and alignment; PCI_RESOURCE_NODE has no address
->> field at all, so this is entirely blind to whether a fixed address was
->> already required.
->>
->> Phase 3 (ProgramResource) then writes the actual PCI config-space
->> registers, and by default it just writes whatever address Phase 2
->> prepared, for both BARs and bridge windows. The one exception is
->> ProgramBar() — it specifically checks whether that particular BAR was
->> marked fixed back in Phase 1, and if so, overrides Phase 2's prepared
->> base address with the real fixed one. However, ProgramPpbApperture(),
->> which writes the bridge's own window registers, has no equivalent
->> override — it always writes whatever Phase 2 prepared, with no awareness
->> of a fixed BAR anywhere underneath it. And that needs fixing, and for
->> that I have to change the existing code.
->>
->> I think the fix would be to extend Phase 2's own sizing step
->> (CalculateResourceAperture() in PciResourceSupport.c) to check for the
->> already-known fixed address on each child and, when present, size and
->> position the window as the exact union of those addresses instead of the
->> blind size-only sum. Does that match the direction you had in mind, or
->> is there a different integration point you'd suggest?
-> 
-> Sounds about right, when propagating resource requirements up from
-> devices to bridges looking only at the size is not enough if we want
-> properly support pci bars at fixed locations.
+I will drop this patch, including its Kconfig symbol. Completely
+unimplemented MMIO regions will continue to use
+TYPE_UNIMPLEMENTED_DEVICE, while partial device models will use local
+qemu_log_mask(LOG_UNIMP, ...) calls where a diagnostic remains useful.
 
-Thanks for confirming the direction. I'll implement this and post it as
-part of the next round.
+Those diagnostics will therefore be introduced together with the device
+that owns the corresponding register or behavior.
 
-> 
-> take care,
->   Gerd
+Thanks,
+--
+Gilles Grimaud - 2XS/SISE - CRIStAL/IRCICA - CNRS/Univ. Lille =20
 
 
-Thanks.
--Tushar
 
+> Le 1 sept. 2026 =C3=A0 20:30, Alex Benn=C3=A9e =
+<alex.bennee@linaro.org> a =C3=A9crit :
+>=20
+> Gilles Grimaud <gilles.grimaud@univ-lille.fr =
+<mailto:gilles.grimaud@univ-lille.fr>> writes:
+>=20
+>> From: gilles grimaud <gilles.grimaud@univ-lille.fr =
+<mailto:gilles.grimaud@univ-lille.fr>>
+>>=20
+>> Add shared helpers for reporting unimplemented RP2040 features and =
+register accesses. Keeping the formatting in one place makes shallow =
+peripheral models explicit and gives their diagnostics a consistent =
+component, address, offset and value format.
+>>=20
+>> Add a dedicated Kconfig symbol so the helpers remain disabled until
+>> selected by the RP2040 SoC.
+>=20
+> This seems over-engineered. What is wrong with:
+>=20
+>  qemu_log_mask(LOG_UNIMP, "%s: ....", __func__, ...);
+>=20
+> In the various call sites. Most of the funcs seem to be prefixed =
+anyway.
+>=20
+> In the meantime you can instantiate TYPE_UNIMPLEMENTED_DEVICE for any
+> memory regions you have no implementation for.
+>=20
+>>=20
+>> Signed-off-by: gilles grimaud <gilles.grimaud@univ-lille.fr>
+>> ---
+>> MAINTAINERS                  |  7 ++++++
+>> hw/misc/Kconfig              |  3 +++
+>> hw/misc/meson.build          |  1 +
+>> hw/misc/rp2040_nyi.c         | 47 =
+++++++++++++++++++++++++++++++++++++
+>> include/hw/misc/rp2040_nyi.h | 19 +++++++++++++++
+>> 5 files changed, 77 insertions(+)
+>> create mode 100644 hw/misc/rp2040_nyi.c
+>> create mode 100644 include/hw/misc/rp2040_nyi.h
+>>=20
+>> diff --git a/MAINTAINERS b/MAINTAINERS
+>> index 55f6f2e3c0..db641d9c4c 100644
+>> --- a/MAINTAINERS
+>> +++ b/MAINTAINERS
+>> @@ -1035,6 +1035,13 @@ F: docs/system/arm/raspi.rst
+>> F: tests/functional/arm/test_raspi2.py
+>> F: tests/functional/aarch64/test_raspi*.py
+>>=20
+>> +Raspberry Pi Pico / RP2040
+>> +M: Gilles Grimaud <gilles.grimaud@univ-lille.fr>
+>> +L: qemu-arm@nongnu.org
+>> +S: Maintained
+>> +F: hw/*/rp2040*
+>> +F: include/hw/*/rp2040*
+>> +
+>> Real View
+>> M: Peter Maydell <peter.maydell@linaro.org>
+>> L: qemu-arm@nongnu.org
+>> diff --git a/hw/misc/Kconfig b/hw/misc/Kconfig
+>> index 46e3c03cc8..de7a0f56fa 100644
+>> --- a/hw/misc/Kconfig
+>> +++ b/hw/misc/Kconfig
+>> @@ -101,6 +101,9 @@ config FSL_IMX8MP_ANALOG
+>> config FSL_IMX8MP_CCM
+>>     bool
+>>=20
+>> +config RP2040_NYI
+>> +    bool
+>> +
+>> config STM32_RCC
+>>     bool
+>>=20
+>> diff --git a/hw/misc/meson.build b/hw/misc/meson.build
+>> index 54e07aacda..8611d59437 100644
+>> --- a/hw/misc/meson.build
+>> +++ b/hw/misc/meson.build
+>> @@ -98,6 +98,7 @@ system_ss.add(when: 'CONFIG_RASPI', if_true: files(
+>>   'bcm2835_cprman.c',
+>>   'bcm2835_powermgt.c',
+>> ))
+>> +system_ss.add(when: 'CONFIG_RP2040_NYI', if_true: =
+files('rp2040_nyi.c'))
+>> system_ss.add(when: 'CONFIG_SLAVIO', if_true: files('slavio_misc.c'))
+>> system_ss.add(when: 'CONFIG_ZYNQ', if_true: files('zynq_slcr.c'))
+>> system_ss.add(when: 'CONFIG_XLNX_ZYNQ_DDRC', if_true: =
+files('xlnx-zynq-ddrc.c'))
+>> diff --git a/hw/misc/rp2040_nyi.c b/hw/misc/rp2040_nyi.c
+>> new file mode 100644
+>> index 0000000000..7e9e4c09a1
+>> --- /dev/null
+>> +++ b/hw/misc/rp2040_nyi.c
+>> @@ -0,0 +1,47 @@
+>> +/*
+>> + * RP2040 "not yet implemented" diagnostics
+>> + *
+>> + * SPDX-License-Identifier: GPL-2.0-or-later
+>> + */
+>> +
+>> +#include "qemu/osdep.h"
+>> +#include "hw/misc/rp2040_nyi.h"
+>> +#include "qemu/log.h"
+>> +
+>> +void rp2040_log_nyi(const char *component, const char *feature,
+>> +                    const char *detail)
+>> +{
+>> +    if (g_str_has_prefix(component, "rp2040.")) {
+>> +        component +=3D strlen("rp2040.");
+>> +    }
+>> +
+>> +    qemu_log_mask(LOG_UNIMP, "Not yet implemented: rp2040.%s: =
+%s%s%s\n",
+>> +                  component, feature, detail ? ": " : "",
+>> +                  detail ? detail : "");
+>> +}
+>> +
+>> +void rp2040_log_unimplemented_read(const char *component, unsigned =
+size,
+>> +                                   uint64_t addr, uint64_t offset,
+>> +                                   uint64_t value)
+>> +{
+>> +    char detail[128];
+>> +
+>> +    snprintf(detail, sizeof(detail),
+>> +             "size %u, addr 0x%08" PRIx64 ", offset 0x%04" PRIx64
+>> +             " -> 0x%0*" PRIx64,
+>> +             size, addr, offset, size << 1, value);
+>> +    rp2040_log_nyi(component, "unimplemented read", detail);
+>> +}
+>> +
+>> +void rp2040_log_unimplemented_write(const char *component, unsigned =
+size,
+>> +                                    uint64_t addr, uint64_t offset,
+>> +                                    uint64_t value)
+>> +{
+>> +    char detail[128];
+>> +
+>> +    snprintf(detail, sizeof(detail),
+>> +             "size %u, addr 0x%08" PRIx64 ", offset 0x%04" PRIx64
+>> +             ", value 0x%0*" PRIx64,
+>> +             size, addr, offset, size << 1, value);
+>> +    rp2040_log_nyi(component, "unimplemented write", detail);
+>> +}
+>> diff --git a/include/hw/misc/rp2040_nyi.h =
+b/include/hw/misc/rp2040_nyi.h
+>> new file mode 100644
+>> index 0000000000..c23805973b
+>> --- /dev/null
+>> +++ b/include/hw/misc/rp2040_nyi.h
+>> @@ -0,0 +1,19 @@
+>> +/*
+>> + * RP2040 "not yet implemented" diagnostics
+>> + *
+>> + * SPDX-License-Identifier: GPL-2.0-or-later
+>> + */
+>> +
+>> +#ifndef HW_MISC_RP2040_NYI_H
+>> +#define HW_MISC_RP2040_NYI_H
+>> +
+>> +void rp2040_log_nyi(const char *component, const char *feature,
+>> +                    const char *detail);
+>> +void rp2040_log_unimplemented_read(const char *component, unsigned =
+size,
+>> +                                   uint64_t addr, uint64_t offset,
+>> +                                   uint64_t value);
+>> +void rp2040_log_unimplemented_write(const char *component, unsigned =
+size,
+>> +                                    uint64_t addr, uint64_t offset,
+>> +                                    uint64_t value);
+>> +
+>> +#endif
+>=20
+> --=20
+
+
+--Apple-Mail=_DA9B7C27-23DF-4DA8-B30A-B30807CFC484
+Content-Transfer-Encoding: quoted-printable
+Content-Type: text/html;
+	charset=utf-8
+
+<html aria-label=3D"message body"><head><meta http-equiv=3D"content-type" =
+content=3D"text/html; charset=3Dutf-8"></head><body =
+style=3D"overflow-wrap: break-word; -webkit-nbsp-mode: space; =
+line-break: after-white-space;"><div>Hi =
+Alex,</div><div><br></div><div>Thanks, I agree that the shared =
+diagnostic layer is unnecessary.</div><div><br></div><div>I will drop =
+this patch, including its Kconfig symbol. =
+Completely</div><div>unimplemented MMIO regions will continue to =
+use</div><div>TYPE_UNIMPLEMENTED_DEVICE, while partial device models =
+will use local</div><div>qemu_log_mask(LOG_UNIMP, ...) calls where a =
+diagnostic remains useful.</div><div><br></div><div>Those diagnostics =
+will therefore be introduced together with the device</div><div>that =
+owns the corresponding register or =
+behavior.</div><div><br></div><div>Thanks,</div><div>--</div><div><div>Gil=
+les Grimaud - 2XS/SISE - CRIStAL/IRCICA -&nbsp;CNRS/Univ. =
+Lille&nbsp;&nbsp;</div><div><br></div><br =
+class=3D"Apple-interchange-newline">
+</div>
+<div><br><blockquote type=3D"cite"><div>Le 1 sept. 2026 =C3=A0 20:30, =
+Alex Benn=C3=A9e &lt;alex.bennee@linaro.org&gt; a =C3=A9crit :</div><br =
+class=3D"Apple-interchange-newline"><div><meta charset=3D"UTF-8"><span =
+style=3D"caret-color: rgb(0, 0, 0); font-family: Helvetica; font-size: =
+12px; font-style: normal; font-variant-caps: normal; font-weight: 400; =
+letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; =
+text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; =
+-webkit-text-stroke-width: 0px; text-decoration: none; float: none; =
+display: inline !important;">Gilles Grimaud &lt;</span><a =
+href=3D"mailto:gilles.grimaud@univ-lille.fr" style=3D"font-family: =
+Helvetica; font-size: 12px; font-style: normal; font-variant-caps: =
+normal; font-weight: 400; letter-spacing: normal; orphans: 2; =
+text-align: start; text-indent: 0px; text-transform: none; white-space: =
+normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: =
+0px;">gilles.grimaud@univ-lille.fr</a><span style=3D"caret-color: rgb(0, =
+0, 0); font-family: Helvetica; font-size: 12px; font-style: normal; =
+font-variant-caps: normal; font-weight: 400; letter-spacing: normal; =
+orphans: 2; text-align: start; text-indent: 0px; text-transform: none; =
+white-space: normal; widows: 2; word-spacing: 0px; =
+-webkit-text-stroke-width: 0px; text-decoration: none; float: none; =
+display: inline !important;">&gt; writes:</span><br style=3D"caret-color: =
+rgb(0, 0, 0); font-family: Helvetica; font-size: 12px; font-style: =
+normal; font-variant-caps: normal; font-weight: 400; letter-spacing: =
+normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: =
+none; white-space: normal; widows: 2; word-spacing: 0px; =
+-webkit-text-stroke-width: 0px; text-decoration-line: none; =
+text-decoration-thickness: auto; text-decoration-style: solid;"><br =
+style=3D"caret-color: rgb(0, 0, 0); font-family: Helvetica; font-size: =
+12px; font-style: normal; font-variant-caps: normal; font-weight: 400; =
+letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; =
+text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; =
+-webkit-text-stroke-width: 0px; text-decoration-line: none; =
+text-decoration-thickness: auto; text-decoration-style: =
+solid;"><blockquote type=3D"cite" style=3D"font-family: Helvetica; =
+font-size: 12px; font-style: normal; font-variant-caps: normal; =
+font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; =
+text-indent: 0px; text-transform: none; white-space: normal; widows: 2; =
+word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-line: =
+none; text-decoration-thickness: auto; text-decoration-style: =
+solid;">From: gilles grimaud &lt;<a =
+href=3D"mailto:gilles.grimaud@univ-lille.fr">gilles.grimaud@univ-lille.fr<=
+/a>&gt;<br><br>Add shared helpers for reporting unimplemented RP2040 =
+features and register accesses. Keeping the formatting in one place =
+makes shallow peripheral models explicit and gives their diagnostics a =
+consistent component, address, offset and value format.<br><br>Add a =
+dedicated Kconfig symbol so the helpers remain disabled =
+until<br>selected by the RP2040 SoC.<br></blockquote><br =
+style=3D"caret-color: rgb(0, 0, 0); font-family: Helvetica; font-size: =
+12px; font-style: normal; font-variant-caps: normal; font-weight: 400; =
+letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; =
+text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; =
+-webkit-text-stroke-width: 0px; text-decoration-line: none; =
+text-decoration-thickness: auto; text-decoration-style: solid;"><span =
+style=3D"caret-color: rgb(0, 0, 0); font-family: Helvetica; font-size: =
+12px; font-style: normal; font-variant-caps: normal; font-weight: 400; =
+letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; =
+text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; =
+-webkit-text-stroke-width: 0px; text-decoration: none; float: none; =
+display: inline !important;">This seems over-engineered. What is wrong =
+with:</span><br style=3D"caret-color: rgb(0, 0, 0); font-family: =
+Helvetica; font-size: 12px; font-style: normal; font-variant-caps: =
+normal; font-weight: 400; letter-spacing: normal; orphans: 2; =
+text-align: start; text-indent: 0px; text-transform: none; white-space: =
+normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; =
+text-decoration-line: none; text-decoration-thickness: auto; =
+text-decoration-style: solid;"><br style=3D"caret-color: rgb(0, 0, 0); =
+font-family: Helvetica; font-size: 12px; font-style: normal; =
+font-variant-caps: normal; font-weight: 400; letter-spacing: normal; =
+orphans: 2; text-align: start; text-indent: 0px; text-transform: none; =
+white-space: normal; widows: 2; word-spacing: 0px; =
+-webkit-text-stroke-width: 0px; text-decoration-line: none; =
+text-decoration-thickness: auto; text-decoration-style: solid;"><span =
+style=3D"caret-color: rgb(0, 0, 0); font-family: Helvetica; font-size: =
+12px; font-style: normal; font-variant-caps: normal; font-weight: 400; =
+letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; =
+text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; =
+-webkit-text-stroke-width: 0px; text-decoration: none; float: none; =
+display: inline !important;">&nbsp;qemu_log_mask(LOG_UNIMP, "%s: ....", =
+__func__, ...);</span><br style=3D"caret-color: rgb(0, 0, 0); =
+font-family: Helvetica; font-size: 12px; font-style: normal; =
+font-variant-caps: normal; font-weight: 400; letter-spacing: normal; =
+orphans: 2; text-align: start; text-indent: 0px; text-transform: none; =
+white-space: normal; widows: 2; word-spacing: 0px; =
+-webkit-text-stroke-width: 0px; text-decoration-line: none; =
+text-decoration-thickness: auto; text-decoration-style: solid;"><br =
+style=3D"caret-color: rgb(0, 0, 0); font-family: Helvetica; font-size: =
+12px; font-style: normal; font-variant-caps: normal; font-weight: 400; =
+letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; =
+text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; =
+-webkit-text-stroke-width: 0px; text-decoration-line: none; =
+text-decoration-thickness: auto; text-decoration-style: solid;"><span =
+style=3D"caret-color: rgb(0, 0, 0); font-family: Helvetica; font-size: =
+12px; font-style: normal; font-variant-caps: normal; font-weight: 400; =
+letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; =
+text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; =
+-webkit-text-stroke-width: 0px; text-decoration: none; float: none; =
+display: inline !important;">In the various call sites. Most of the =
+funcs seem to be prefixed anyway.</span><br style=3D"caret-color: rgb(0, =
+0, 0); font-family: Helvetica; font-size: 12px; font-style: normal; =
+font-variant-caps: normal; font-weight: 400; letter-spacing: normal; =
+orphans: 2; text-align: start; text-indent: 0px; text-transform: none; =
+white-space: normal; widows: 2; word-spacing: 0px; =
+-webkit-text-stroke-width: 0px; text-decoration-line: none; =
+text-decoration-thickness: auto; text-decoration-style: solid;"><br =
+style=3D"caret-color: rgb(0, 0, 0); font-family: Helvetica; font-size: =
+12px; font-style: normal; font-variant-caps: normal; font-weight: 400; =
+letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; =
+text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; =
+-webkit-text-stroke-width: 0px; text-decoration-line: none; =
+text-decoration-thickness: auto; text-decoration-style: solid;"><span =
+style=3D"caret-color: rgb(0, 0, 0); font-family: Helvetica; font-size: =
+12px; font-style: normal; font-variant-caps: normal; font-weight: 400; =
+letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; =
+text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; =
+-webkit-text-stroke-width: 0px; text-decoration: none; float: none; =
+display: inline !important;">In the meantime you can instantiate =
+TYPE_UNIMPLEMENTED_DEVICE for any</span><br style=3D"caret-color: rgb(0, =
+0, 0); font-family: Helvetica; font-size: 12px; font-style: normal; =
+font-variant-caps: normal; font-weight: 400; letter-spacing: normal; =
+orphans: 2; text-align: start; text-indent: 0px; text-transform: none; =
+white-space: normal; widows: 2; word-spacing: 0px; =
+-webkit-text-stroke-width: 0px; text-decoration-line: none; =
+text-decoration-thickness: auto; text-decoration-style: solid;"><span =
+style=3D"caret-color: rgb(0, 0, 0); font-family: Helvetica; font-size: =
+12px; font-style: normal; font-variant-caps: normal; font-weight: 400; =
+letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; =
+text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; =
+-webkit-text-stroke-width: 0px; text-decoration: none; float: none; =
+display: inline !important;">memory regions you have no implementation =
+for.</span><br style=3D"caret-color: rgb(0, 0, 0); font-family: =
+Helvetica; font-size: 12px; font-style: normal; font-variant-caps: =
+normal; font-weight: 400; letter-spacing: normal; orphans: 2; =
+text-align: start; text-indent: 0px; text-transform: none; white-space: =
+normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; =
+text-decoration-line: none; text-decoration-thickness: auto; =
+text-decoration-style: solid;"><br style=3D"caret-color: rgb(0, 0, 0); =
+font-family: Helvetica; font-size: 12px; font-style: normal; =
+font-variant-caps: normal; font-weight: 400; letter-spacing: normal; =
+orphans: 2; text-align: start; text-indent: 0px; text-transform: none; =
+white-space: normal; widows: 2; word-spacing: 0px; =
+-webkit-text-stroke-width: 0px; text-decoration-line: none; =
+text-decoration-thickness: auto; text-decoration-style: =
+solid;"><blockquote type=3D"cite" style=3D"font-family: Helvetica; =
+font-size: 12px; font-style: normal; font-variant-caps: normal; =
+font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; =
+text-indent: 0px; text-transform: none; white-space: normal; widows: 2; =
+word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-line: =
+none; text-decoration-thickness: auto; text-decoration-style: =
+solid;"><br>Signed-off-by: gilles grimaud =
+&lt;gilles.grimaud@univ-lille.fr&gt;<br>---<br>MAINTAINERS =
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&n=
+bsp;&nbsp;&nbsp;&nbsp;&nbsp;| &nbsp;7 ++++++<br>hw/misc/Kconfig =
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&n=
+bsp;| &nbsp;3 +++<br>hw/misc/meson.build =
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| &nbsp;1 =
++<br>hw/misc/rp2040_nyi.c =
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| 47 =
+++++++++++++++++++++++++++++++++++++<br>include/hw/misc/rp2040_nyi.h | =
+19 +++++++++++++++<br>5 files changed, 77 insertions(+)<br>create mode =
+100644 hw/misc/rp2040_nyi.c<br>create mode 100644 =
+include/hw/misc/rp2040_nyi.h<br><br>diff --git a/MAINTAINERS =
+b/MAINTAINERS<br>index 55f6f2e3c0..db641d9c4c 100644<br>--- =
+a/MAINTAINERS<br>+++ b/MAINTAINERS<br>@@ -1035,6 +1035,13 @@ F: =
+docs/system/arm/raspi.rst<br>F: =
+tests/functional/arm/test_raspi2.py<br>F: =
+tests/functional/aarch64/test_raspi*.py<br><br>+Raspberry Pi Pico / =
+RP2040<br>+M: Gilles Grimaud &lt;gilles.grimaud@univ-lille.fr&gt;<br>+L: =
+qemu-arm@nongnu.org<br>+S: Maintained<br>+F: hw/*/rp2040*<br>+F: =
+include/hw/*/rp2040*<br>+<br>Real View<br>M: Peter Maydell =
+&lt;peter.maydell@linaro.org&gt;<br>L: qemu-arm@nongnu.org<br>diff --git =
+a/hw/misc/Kconfig b/hw/misc/Kconfig<br>index 46e3c03cc8..de7a0f56fa =
+100644<br>--- a/hw/misc/Kconfig<br>+++ b/hw/misc/Kconfig<br>@@ -101,6 =
++101,9 @@ config FSL_IMX8MP_ANALOG<br>config =
+FSL_IMX8MP_CCM<br>&nbsp;&nbsp;&nbsp;&nbsp;bool<br><br>+config =
+RP2040_NYI<br>+ &nbsp;&nbsp;&nbsp;bool<br>+<br>config =
+STM32_RCC<br>&nbsp;&nbsp;&nbsp;&nbsp;bool<br><br>diff --git =
+a/hw/misc/meson.build b/hw/misc/meson.build<br>index =
+54e07aacda..8611d59437 100644<br>--- a/hw/misc/meson.build<br>+++ =
+b/hw/misc/meson.build<br>@@ -98,6 +98,7 @@ system_ss.add(when: =
+'CONFIG_RASPI', if_true: =
+files(<br>&nbsp;&nbsp;'bcm2835_cprman.c',<br>&nbsp;&nbsp;'bcm2835_powermgt=
+.c',<br>))<br>+system_ss.add(when: 'CONFIG_RP2040_NYI', if_true: =
+files('rp2040_nyi.c'))<br>system_ss.add(when: 'CONFIG_SLAVIO', if_true: =
+files('slavio_misc.c'))<br>system_ss.add(when: 'CONFIG_ZYNQ', if_true: =
+files('zynq_slcr.c'))<br>system_ss.add(when: 'CONFIG_XLNX_ZYNQ_DDRC', =
+if_true: files('xlnx-zynq-ddrc.c'))<br>diff --git a/hw/misc/rp2040_nyi.c =
+b/hw/misc/rp2040_nyi.c<br>new file mode 100644<br>index =
+0000000000..7e9e4c09a1<br>--- /dev/null<br>+++ =
+b/hw/misc/rp2040_nyi.c<br>@@ -0,0 +1,47 @@<br>+/*<br>+ * RP2040 "not yet =
+implemented" diagnostics<br>+ *<br>+ * SPDX-License-Identifier: =
+GPL-2.0-or-later<br>+ */<br>+<br>+#include "qemu/osdep.h"<br>+#include =
+"hw/misc/rp2040_nyi.h"<br>+#include "qemu/log.h"<br>+<br>+void =
+rp2040_log_nyi(const char *component, const char *feature,<br>+ =
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&n=
+bsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;const char *detail)<br>+{<br>+ =
+&nbsp;&nbsp;&nbsp;if (g_str_has_prefix(component, "rp2040.")) {<br>+ =
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;component +=3D =
+strlen("rp2040.");<br>+ &nbsp;&nbsp;&nbsp;}<br>+<br>+ =
+&nbsp;&nbsp;&nbsp;qemu_log_mask(LOG_UNIMP, "Not yet implemented: =
+rp2040.%s: %s%s%s\n",<br>+ =
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&n=
+bsp;&nbsp;&nbsp;&nbsp;&nbsp;component, feature, detail ? ": " : "",<br>+ =
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&n=
+bsp;&nbsp;&nbsp;&nbsp;&nbsp;detail ? detail : "");<br>+}<br>+<br>+void =
+rp2040_log_unimplemented_read(const char *component, unsigned size,<br>+ =
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&n=
+bsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbs=
+p;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;uint64_t addr, =
+uint64_t offset,<br>+ =
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&n=
+bsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbs=
+p;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;uint64_t =
+value)<br>+{<br>+ &nbsp;&nbsp;&nbsp;char detail[128];<br>+<br>+ =
+&nbsp;&nbsp;&nbsp;snprintf(detail, sizeof(detail),<br>+ =
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"s=
+ize %u, addr 0x%08" PRIx64 ", offset 0x%04" PRIx64<br>+ =
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" =
+-&gt; 0x%0*" PRIx64,<br>+ =
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;si=
+ze, addr, offset, size &lt;&lt; 1, value);<br>+ =
+&nbsp;&nbsp;&nbsp;rp2040_log_nyi(component, "unimplemented read", =
+detail);<br>+}<br>+<br>+void rp2040_log_unimplemented_write(const char =
+*component, unsigned size,<br>+ =
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&n=
+bsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbs=
+p;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;uint64_t =
+addr, uint64_t offset,<br>+ =
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&n=
+bsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbs=
+p;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;uint64_t =
+value)<br>+{<br>+ &nbsp;&nbsp;&nbsp;char detail[128];<br>+<br>+ =
+&nbsp;&nbsp;&nbsp;snprintf(detail, sizeof(detail),<br>+ =
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"s=
+ize %u, addr 0x%08" PRIx64 ", offset 0x%04" PRIx64<br>+ =
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;",=
+ value 0x%0*" PRIx64,<br>+ =
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;si=
+ze, addr, offset, size &lt;&lt; 1, value);<br>+ =
+&nbsp;&nbsp;&nbsp;rp2040_log_nyi(component, "unimplemented write", =
+detail);<br>+}<br>diff --git a/include/hw/misc/rp2040_nyi.h =
+b/include/hw/misc/rp2040_nyi.h<br>new file mode 100644<br>index =
+0000000000..c23805973b<br>--- /dev/null<br>+++ =
+b/include/hw/misc/rp2040_nyi.h<br>@@ -0,0 +1,19 @@<br>+/*<br>+ * RP2040 =
+"not yet implemented" diagnostics<br>+ *<br>+ * SPDX-License-Identifier: =
+GPL-2.0-or-later<br>+ */<br>+<br>+#ifndef =
+HW_MISC_RP2040_NYI_H<br>+#define HW_MISC_RP2040_NYI_H<br>+<br>+void =
+rp2040_log_nyi(const char *component, const char *feature,<br>+ =
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&n=
+bsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;const char *detail);<br>+void =
+rp2040_log_unimplemented_read(const char *component, unsigned size,<br>+ =
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&n=
+bsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbs=
+p;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;uint64_t addr, =
+uint64_t offset,<br>+ =
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&n=
+bsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbs=
+p;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;uint64_t =
+value);<br>+void rp2040_log_unimplemented_write(const char *component, =
+unsigned size,<br>+ =
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&n=
+bsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbs=
+p;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;uint64_t =
+addr, uint64_t offset,<br>+ =
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&n=
+bsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbs=
+p;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;uint64_t =
+value);<br>+<br>+#endif<br></blockquote><br style=3D"caret-color: rgb(0, =
+0, 0); font-family: Helvetica; font-size: 12px; font-style: normal; =
+font-variant-caps: normal; font-weight: 400; letter-spacing: normal; =
+orphans: 2; text-align: start; text-indent: 0px; text-transform: none; =
+white-space: normal; widows: 2; word-spacing: 0px; =
+-webkit-text-stroke-width: 0px; text-decoration-line: none; =
+text-decoration-thickness: auto; text-decoration-style: solid;"><span =
+style=3D"caret-color: rgb(0, 0, 0); font-family: Helvetica; font-size: =
+12px; font-style: normal; font-variant-caps: normal; font-weight: 400; =
+letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; =
+text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; =
+-webkit-text-stroke-width: 0px; text-decoration: none; float: none; =
+display: inline !important;">--<span =
+class=3D"Apple-converted-space">&nbsp;</span></span><br =
+style=3D"caret-color: rgb(0, 0, 0); font-family: Helvetica; font-size: =
+12px; font-style: normal; font-variant-caps: normal; font-weight: 400; =
+letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; =
+text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; =
+-webkit-text-stroke-width: 0px; text-decoration-line: none; =
+text-decoration-thickness: auto; text-decoration-style: =
+solid;"></div></blockquote></div><br></body></html>=
+
+--Apple-Mail=_DA9B7C27-23DF-4DA8-B30A-B30807CFC484--
 

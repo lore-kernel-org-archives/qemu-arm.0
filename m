@@ -4,90 +4,89 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 55AA2C61DD3
-	for <qemu-arm@archiver.kernel.org>; Tue,  1 Sep 2026 18:35:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4ED80C61DD3
+	for <qemu-arm@archiver.kernel.org>; Tue,  1 Sep 2026 18:45:35 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1x1TKX-0008Ky-Cv; Tue, 01 Sep 2026 14:35:34 -0400
+	id 1x1TTp-0003Tu-Qj; Tue, 01 Sep 2026 14:45:09 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1x1TKU-0008KT-DH
- for qemu-arm@nongnu.org; Tue, 01 Sep 2026 14:35:30 -0400
-Received: from mail-wr1-x435.google.com ([2a00:1450:4864:20::435])
+ id 1x1TTn-0003Pn-SP
+ for qemu-arm@nongnu.org; Tue, 01 Sep 2026 14:45:07 -0400
+Received: from mail-wm1-x329.google.com ([2a00:1450:4864:20::329])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1x1TKS-0004tW-1r
- for qemu-arm@nongnu.org; Tue, 01 Sep 2026 14:35:30 -0400
-Received: by mail-wr1-x435.google.com with SMTP id
- ffacd0b85a97d-4843e397f74so148449f8f.1
- for <qemu-arm@nongnu.org>; Tue, 01 Sep 2026 11:35:27 -0700 (PDT)
+ id 1x1TTk-0007Ni-1a
+ for qemu-arm@nongnu.org; Tue, 01 Sep 2026 14:45:07 -0400
+Received: by mail-wm1-x329.google.com with SMTP id
+ 5b1f17b1804b1-49b8ce9b733so861565e9.1
+ for <qemu-arm@nongnu.org>; Tue, 01 Sep 2026 11:45:03 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1788287726; x=1788892526; darn=nongnu.org;
+ d=linaro.org; s=google; t=1788288302; x=1788893102; darn=nongnu.org;
  h=content-transfer-encoding:content-type:mime-version:message-id:date
  :user-agent:references:in-reply-to:subject:cc:to:from:from:to:cc
  :subject:date:message-id:reply-to:content-type;
- bh=4rCI6ALSqHSesKNWjBfSzIvjUYJzDYaGxkANBnpkHdg=;
- b=gBvXIH04xDQ1iS5BGAnP+0gbP+15GjiyikXJHN88NMGR0ChpAX7ZR7ImKEa3p7mkF3
- R9hvy+K9fIT9xjPTL8sk2Qc5TTqX1aRsy8C0A6q40fTMTtlUndYW8AmVbzCZFLRh14R5
- 75OgLn+h9yo5Q2Mu7TocUsQy3NuNSunLJUPqEyyePCYBAF0kZy4Ye44vAXbr6vS/mK5F
- xVYexc4uGafthATWBb4QxFn497ax2CyiSBE5peDRBVDC6coKO0wjRWV7R8pszSmBlC2o
- MBFewIJWtnCwfed6hD7I5NndZLQ4TF8Z1UbH+tTqDzlhxxXsGUNWwuNdTeprFgKYZ1Gd
- Z7mw==
+ bh=LbBrKMYE0DPTrSsX7oGLJOQZz7pDOuff4YudnSqZVz8=;
+ b=QuSb+vxVhqZ2XYvO0MrQWm7SB7EbEfV0iMRyrKqfuwqNvkjbNox2yz1jTmhn/MJHeG
+ Y0PhBL0fdkNlzNq6gAFLcUroMz0isPGCJdhULvVxXaMATmaP1kSh8nb8yLXg+JYCl3T8
+ Uh6KM1QBEVePxwPsrmUB0xQoTK9y2dfnW/mYinwfP3sbQTSFr+9gvw/dUkceSXc9PsKp
+ EmC+aEluzpASV3CvzjxbvDdZdFFbVHWAgYIhZZQTKnPYPKKD1t3wwEkqZKD5TTUjpjY8
+ xp1Tl+IYn4pRcod9Nu9J4Gk+U1P/wCUQiIEluWxZKfzocrZZc4mKHTdAQrlROJxk3xD9
+ juYg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1788287726; x=1788892526;
+ d=1e100.net; s=20251104; t=1788288302; x=1788893102;
  h=content-transfer-encoding:content-type:mime-version:message-id:date
  :user-agent:references:in-reply-to:subject:cc:to:from:x-gm-gg
  :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
  :content-type;
- bh=4rCI6ALSqHSesKNWjBfSzIvjUYJzDYaGxkANBnpkHdg=;
- b=T3wwxjPSYvXU/TzUM6YoII7dKbG+ko96DKC2DjcG0BzqkJAdoHDg7zWBDmOJsSZMpJ
- rkZNpMt6GIyWU34sEvXDGHpN5S/MpcvS6s2/FMINeVjEGfEJ4QyzfenMjjw0IVVIWtZc
- GEevWa7alzV93eTjcGUGv6QxqlE1HQwJWh5aqrOwHBzNWHrlPYF94cSzI2zbBkBx6oFm
- sVAn8aGYXHncbaWJR75uqPsvgqzd96hL3dt/BdmSwdfD19R2MYcao4Rf9gW5KWadAy84
- 8W7HUzpLR0cYzP3byQSxFXb+li0p7Dxne6wemFRb6JOBCkP6mhVxNEWfdYh6Zi0mRRvi
- 56HA==
+ bh=LbBrKMYE0DPTrSsX7oGLJOQZz7pDOuff4YudnSqZVz8=;
+ b=B9CkzLSzPHyubxm3YtCLeNOq/SDIXoYrqJZGGqoLs5djaHZ+dnFahCs4sFOEKhAP4g
+ 8YpB5OmmJHCbr4WuR9/GJ80n+akTwFIT83A/LCSph+XdBkjMVTdKJ6nMNrWyE4K4jRKG
+ 32Zwc2fVea6nK/thCXVWw+fgGPToGfX9qNFwxvZ6qqpy3X5H0O+q1XGTb08uPBIgzwyh
+ 0p9q+EavmknyR+xfi94q0n26Xtr+vqheoa/ybu4YKcqwwC9hOR5Scr2d63KBh31M+z+k
+ wPRX3KEFG6Her4cXE3N/IBq1k6R/pueUicAh+JQgAxbfmQvIFfOlafk4StJSi26ww5RT
+ e+2Q==
 X-Forwarded-Encrypted: i=1;
- AKwUvBxWEE38xSAf+u9GUdPkWbbloDRyf70EBtE+tdbzGOp2fmWd72CyTCCLDd013I5OPGEDlltKF6J3Og==@nongnu.org
-X-Gm-Message-State: AFuF++nagEJuiTeFtwb2xrTTV9c1MyOu/fbq+oea/5/dLJR//Hihzn7u
- JIojklwLzL5X3LnWSPDj4TzYHh5ZFxj8EIFmOMj79xGVDuO5Nj/oEQQaVV7ufpUe+8ZIdPhoCEW
- Pdo60Kw0=
-X-Gm-Gg: AYBFou36JtlSInZYSnUTLUIiLuN7k6Ss2HJk/Lst1nKWs1+e7JqFfUrd+VPKfIph90l
- VMLzhtoGjFG9CZzv6upUqH1tCiCjXQ2R6ZQBScNKRtF+mw/3DUXUfqRXVaFWN/Np2JEZGEeUsYy
- ABAmxWooKJpbLh+Mi0nMWKCuF8svptQ3YZeodKnkaE1VbbXpGp4iF13e3aOZE/C1bC7sEmP1Uxc
- KwKLPxUr7BHRqcKC+ga2XJmaSDaSl+u7SS2ilHwEl7GFrKa9YnC+oZVksZwcEsXz/s89oL66tze
- /vdEnh9g6OeKu/kQ1LZmBTp2/7sWenBTHtHA57seBKalHLKpUDVM9HQxC6F2fuoiIbaIEBvWEOQ
- /u7v9zXr/6n+BCS4URp7xXXR1Eyw2oayuPeUIw+TrkYKwIRPfme7gyfw1lzEui8Wzc0rL/Paqsj
- fSFHcP9VtDXVwjIyHUpxiDAkxoXui6VTBNDa24XpeTT5lE5StWlLYn97Jpk+se
-X-Received: by 2002:a05:6000:4b16:b0:481:50ae:df9a with SMTP id
- ffacd0b85a97d-484421d4083mr14246363f8f.9.1788287726201; 
- Tue, 01 Sep 2026 11:35:26 -0700 (PDT)
+ AHgh+RpXvLssSzK1OSMAYTS5N/ZSUW+ik7/t0aL6bonxE8gB015WljgJ/1gnAxCyzfYldZybRFsWAiYfJg==@nongnu.org
+X-Gm-Message-State: AFuF++l3t8o/kkIr8zl9eosjgQmcdRkykiNGQe4uOPyNofFxWXpGmyev
+ SpvGbMHPG7Bcyafh/WQM/pyDToTeVPGGVGTfFZKClnpmKsDSaigyxASjgMyqf16HnaQ=
+X-Gm-Gg: AR+sD12ztEyeCjjBePz1SPJgTqzlFrP/hdADvo+bZvpuLXxy0qcGdWlRB/rvZXBKhqG
+ C7ksrb+4f7ZI2ruXmAShPWoQdcpaaP1gcnxxGcCpZjaoYBsYuY2MpTgKBz5v0RUmy1qMuFBJY2a
+ UmSan8yLIay79VLVp9MomSVhg6CS3Jym4hrydALWan1T/b2VBp4YRxWBEHM0F8v//n315qarr4y
+ eNL0OHT6wutcRtAImw46OqH0iofCZjKw5RNpwsCOaCkqLjnfzlfeTkY71MB4e4/YUWF9Es2GL9a
+ mJ8t8CRTukhsENvSitN9VbPmmXX5+d6VkKlcgbHmgHFoDbh1S1gsy5mUsKqqAghfK0IGPTnJWOR
+ eSnTVu7vlz0nNPQJipXruQx418mG1E0vuWJkw4asvFfbQvHbyFPSLb9hhaxPMZpQ+pFXSeLRM0y
+ ufdiaSkH4LJ5goXpuhnh9GuTSU1gGCMpGb3jjQsKgBXlczZwpnnU3i55jDSAl1
+X-Received: by 2002:a05:600c:c494:b0:499:8aff:59b6 with SMTP id
+ 5b1f17b1804b1-49b91c486c3mr459652605e9.14.1788288301952; 
+ Tue, 01 Sep 2026 11:45:01 -0700 (PDT)
 Received: from draig.lan ([185.124.0.156]) by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-484492ce5e5sm661724f8f.36.2026.09.01.11.35.24
+ ffacd0b85a97d-48448e80798sm793473f8f.13.2026.09.01.11.45.00
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 01 Sep 2026 11:35:25 -0700 (PDT)
+ Tue, 01 Sep 2026 11:45:01 -0700 (PDT)
 Received: from draig (localhost [IPv6:::1])
- by draig.lan (Postfix) with ESMTP id 59C405F829;
- Tue, 01 Sep 2026 19:35:23 +0100 (BST)
+ by draig.lan (Postfix) with ESMTP id EDBD55F829;
+ Tue, 01 Sep 2026 19:44:59 +0100 (BST)
 From: =?utf-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: Gilles Grimaud <gilles.grimaud@univ-lille.fr>
-Cc: qemu-devel@nongnu.org,  qemu-arm@nongnu.org,  Peter Maydell
- <peter.maydell@linaro.org>
-Subject: Re: [PATCH RFC v2 05/30] tests/tcg/arm: add Raspberry Pi Pico smoke
- tests
-In-Reply-To: <20260829234308.33725-6-gilles.grimaud@univ-lille.fr> (Gilles
- Grimaud's message of "Sun, 30 Aug 2026 01:42:39 +0200")
+Cc: qemu-devel@nongnu.org,  qemu-arm@nongnu.org,  Paolo Bonzini
+ <pbonzini@redhat.com>,  Peter Maydell <peter.maydell@linaro.org>,  Fabiano
+ Rosas <farosas@suse.de>,  Laurent Vivier <lvivier@redhat.com>
+Subject: Re: [PATCH RFC v2 06/30] hw/misc: add RP2040 SYSINFO and SYSCFG
+In-Reply-To: <20260829234308.33725-7-gilles.grimaud@univ-lille.fr> (Gilles
+ Grimaud's message of "Sun, 30 Aug 2026 01:42:40 +0200")
 References: <20260829234308.33725-1-gilles.grimaud@univ-lille.fr>
- <20260829234308.33725-6-gilles.grimaud@univ-lille.fr>
+ <20260829234308.33725-7-gilles.grimaud@univ-lille.fr>
 User-Agent: mu4e 1.14.4-pre1; emacs 30.1
-Date: Tue, 01 Sep 2026 19:35:23 +0100
-Message-ID: <87fqzsu8es.fsf@draig.linaro.org>
+Date: Tue, 01 Sep 2026 19:44:59 +0100
+Message-ID: <87a4q0u7ys.fsf@draig.linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2a00:1450:4864:20::435;
- envelope-from=alex.bennee@linaro.org; helo=mail-wr1-x435.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::329;
+ envelope-from=alex.bennee@linaro.org; helo=mail-wm1-x329.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -114,438 +113,1029 @@ Gilles Grimaud <gilles.grimaud@univ-lille.fr> writes:
 
 > From: gilles grimaud <gilles.grimaud@univ-lille.fr>
 >
-> Build Cortex-M0+ guest programs from assembly sources to exercise the
-> minimal Pico boot path, UART0 output, and the Cortex-M0+ MPU. Keep the
-> vector table at the XIP base so these tests match the initial
-> synthetic boot stub without depending on boot2 or the later flash
-> controller model.
+> Model the RP2040 identification and system configuration registers,
+> including APB atomic aliases and documented reset and write masks.
+> Wire SYSCFG into the SoC so NMI masks reroute interrupt inputs and
+> MEMPOWERDOWN blocks access to powered-off ROM and SRAM banks.
+
+What exactly is going to be accessing ROM and SRAM while powered off?
+
+Why do all three things need to be done at the same time?
+
+> \n\nAdd focused qtests for register values, aliases, power-down behavior,=
+ and UART0 IRQ routing to NMI.
 >
 > Signed-off-by: gilles grimaud <gilles.grimaud@univ-lille.fr>
 > ---
->  MAINTAINERS                            |   1 +
->  tests/tcg/arm/Makefile.softmmu-target  |  24 ++++
-
-Just FYI there is an update coming to tests/tcg that converts the build
-to meson. The change should be relatively mechanical to make.
-
->  tests/tcg/arm/system/rp2040-boot.S     |  30 ++++
->  tests/tcg/arm/system/rp2040-minimal.ld |  40 ++++++
->  tests/tcg/arm/system/rp2040-mpu.S      | 183 +++++++++++++++++++++++++
->  tests/tcg/arm/system/rp2040-mpu.ref    |   5 +
->  tests/tcg/arm/system/rp2040-uart.S     |  53 +++++++
->  tests/tcg/arm/system/rp2040-uart.ref   |   1 +
->  8 files changed, 337 insertions(+)
->  create mode 100644 tests/tcg/arm/system/rp2040-boot.S
->  create mode 100644 tests/tcg/arm/system/rp2040-minimal.ld
->  create mode 100644 tests/tcg/arm/system/rp2040-mpu.S
->  create mode 100644 tests/tcg/arm/system/rp2040-mpu.ref
->  create mode 100644 tests/tcg/arm/system/rp2040-uart.S
->  create mode 100644 tests/tcg/arm/system/rp2040-uart.ref
+>  MAINTAINERS                              |   1 +
+>  hw/arm/Kconfig                           |   2 +
+>  hw/arm/rp2040.c                          | 129 +++++++++++-
+>  hw/misc/Kconfig                          |   6 +
+>  hw/misc/meson.build                      |   2 +
+>  hw/misc/rp2040_syscfg.c                  | 244 +++++++++++++++++++++++
+>  hw/misc/rp2040_sysinfo.c                 | 103 ++++++++++
+>  include/hw/arm/rp2040.h                  |  12 ++
+>  include/hw/misc/rp2040_syscfg.h          |  42 ++++
+>  include/hw/misc/rp2040_sysinfo.h         |  25 +++
+>  tests/qtest/meson.build                  |   1 +
+>  tests/qtest/rp2040-sysinfo-syscfg-test.c | 176 ++++++++++++++++
+>  12 files changed, 740 insertions(+), 3 deletions(-)
+>  create mode 100644 hw/misc/rp2040_syscfg.c
+>  create mode 100644 hw/misc/rp2040_sysinfo.c
+>  create mode 100644 include/hw/misc/rp2040_syscfg.h
+>  create mode 100644 include/hw/misc/rp2040_sysinfo.h
+>  create mode 100644 tests/qtest/rp2040-sysinfo-syscfg-test.c
 >
 > diff --git a/MAINTAINERS b/MAINTAINERS
-> index 8fd7385d83..b000b3287d 100644
+> index b000b3287d..fd35521947 100644
 > --- a/MAINTAINERS
 > +++ b/MAINTAINERS
 > @@ -1042,6 +1042,7 @@ S: Maintained
 >  F: hw/*/rp2040*
 >  F: include/hw/*/rp2040*
 >  F: hw/arm/raspi_pico.c
-> +F: tests/tcg/arm/system/rp2040*
+> +F: tests/qtest/rp2040*
+>  F: tests/tcg/arm/system/rp2040*
 >=20=20
 >  Real View
->  M: Peter Maydell <peter.maydell@linaro.org>
-> diff --git a/tests/tcg/arm/Makefile.softmmu-target b/tests/tcg/arm/Makefi=
-le.softmmu-target
-> index 3e8a9b4073..429416ca58 100644
-> --- a/tests/tcg/arm/Makefile.softmmu-target
-> +++ b/tests/tcg/arm/Makefile.softmmu-target
-> @@ -20,6 +20,30 @@ run-test-armv6m-undef: QEMU_OPTS=3D-semihosting-config=
- enable=3Don,target=3Dnative,cha
+> diff --git a/hw/arm/Kconfig b/hw/arm/Kconfig
+> index d93303ab80..5d55ca06fd 100644
+> --- a/hw/arm/Kconfig
+> +++ b/hw/arm/Kconfig
+> @@ -379,6 +379,8 @@ config RP2040
+>      select ARM_V7M
+>      select PL011
+>      select RP2040_NYI
+> +    select RP2040_SYSCFG
+> +    select RP2040_SYSINFO
+
+I'm not sure we are going to need Kconfig vars for every sub-system. If
+they come with the RP2040 as a piece we should only need one symbol to
+select the board, peripheral and CPU models.
+
+>      select UNIMP
 >=20=20
->  ARM_TESTS+=3Dtest-armv6m-undef
+>  config STM32F100_SOC
+> diff --git a/hw/arm/rp2040.c b/hw/arm/rp2040.c
+> index 2196bad18d..a184d527e1 100644
+> --- a/hw/arm/rp2040.c
+> +++ b/hw/arm/rp2040.c
+> @@ -13,6 +13,7 @@
+>  #include "hw/core/loader.h"
+>  #include "hw/core/qdev-clock.h"
+>  #include "hw/core/qdev-properties.h"
+> +#include "hw/core/irq.h"
+>  #include "hw/misc/unimp.h"
+>  #include "qemu/datadir.h"
+>  #include "target/arm/cpu-qom.h"
+> @@ -49,8 +50,6 @@ static const struct {
+>      hwaddr base;
+>      hwaddr size;
+>  } rp2040_unimplemented[] =3D {
+> -    { "rp2040.sysinfo",  0x40000000, 0x4000 },
+> -    { "rp2040.syscfg",   0x40004000, 0x4000 },
+>      { "rp2040.clocks",   0x40008000, 0x4000 },
+>      { "rp2040.resets",   0x4000c000, 0x4000 },
+>      { "rp2040.psm",      0x40010000, 0x4000 },
+> @@ -84,6 +83,80 @@ static const struct {
+>      { "rp2040.sio",      0xd0000000, 0x1000 },
+>  };
 >=20=20
-> +RP2040_TESTS=3Drp2040-boot rp2040-uart rp2040-mpu
+> +static MemTxResult rp2040_powered_off_read(void *opaque, hwaddr addr,
+> +                                           uint64_t *data, unsigned size,
+> +                                           MemTxAttrs attrs)
+> +{
+> +    *data =3D 0;
+> +    return MEMTX_ERROR;
+> +}
 > +
-> +$(RP2040_TESTS): %: %.S rp2040-minimal.ld
-> +	$(CC) -mcpu=3Dcortex-m0plus -mthumb -mfloat-abi=3Dsoft \
-> +		-Wl,--build-id=3Dnone -x assembler-with-cpp \
-> +		$< -o $@ -nostdlib -static \
-> +		-T $(ARM_SRC)/rp2040-minimal.ld
+> +static MemTxResult rp2040_powered_off_write(void *opaque, hwaddr addr,
+> +                                            uint64_t data, unsigned size,
+> +                                            MemTxAttrs attrs)
+> +{
+> +    return MEMTX_ERROR;
+> +}
 > +
-> +run-rp2040-boot: QEMU_OPTS=3D-M raspi-pico \
-> +	-semihosting-config enable=3Don,target=3Dnative -kernel
+> +static const MemoryRegionOps rp2040_powered_off_ops =3D {
+> +    .read_with_attrs =3D rp2040_powered_off_read,
+> +    .write_with_attrs =3D rp2040_powered_off_write,
+
+You choose to have _with_attrs access functions here but not later. Why?=20
+
+> +    .endianness =3D DEVICE_LITTLE_ENDIAN,
+> +    .valid =3D {
+> +        .min_access_size =3D 1,
+> +        .max_access_size =3D 4,
+> +    },
+> +};
 > +
-> +run-rp2040-uart run-rp2040-mpu: QEMU_OPTS=3D-M raspi-pico \
-> +	-serial chardev:output \
-> +	-semihosting-config enable=3Don,target=3Dnative -kernel
+> +static void rp2040_update_mempowerdown(RP2040State *s)
+> +{
+> +    uint32_t mempowerdown;
+> +    int i;
 > +
-> +run-rp2040-uart run-rp2040-mpu: run-rp2040-%: rp2040-%
-> +	$(call run-test, $<, \
-> +	  $(QEMU) -monitor none -display none \
-> +		  -chardev file$(COMMA)path=3D$<.out$(COMMA)id=3Doutput \
-> +		  $(QEMU_OPTS) $<)
-> +	$(call diff-out,$<,$(ARM_SRC)/$<.ref)
+> +    if (!s->mempowerdown_ready) {
+> +        return;
+> +    }
 > +
-> +ARM_TESTS+=3D$(RP2040_TESTS)
+> +    mempowerdown =3D rp2040_syscfg_get_mempowerdown(&s->syscfg);
+> +    for (i =3D 0; i < ARRAY_SIZE(s->sram_poweroff); i++) {
+> +        memory_region_set_enabled(&s->sram_poweroff[i],
+> +                                  mempowerdown & BIT(i));
+> +    }
+> +    memory_region_set_enabled(&s->rom_poweroff, mempowerdown & BIT(7));
+> +}
 > +
->  # These objects provide the basic boot code and helper functions for all=
- tests
->  CRT_OBJS=3Dboot.o
+> +static void rp2040_update_nmi(RP2040State *s)
+> +{
+> +    uint32_t nmi_mask =3D rp2040_syscfg_get_proc0_nmi_mask(&s->syscfg);
+> +    bool nmi_level =3D false;
+> +    int i;
+> +
+> +    for (i =3D 0; i < RP2040_NUM_IRQS; i++) {
+> +        bool route_to_nmi =3D nmi_mask & BIT(i);
+> +
+> +        qemu_set_irq(s->cpu_irq[i], s->irq_level[i] && !route_to_nmi);
+> +        nmi_level |=3D s->irq_level[i] && route_to_nmi;
+> +    }
+> +    qemu_set_irq(s->nmi_irq, nmi_level);
+> +}
+> +
+> +static void rp2040_syscfg_update(void *opaque)
+> +{
+> +    RP2040State *s =3D opaque;
+> +
+> +    rp2040_update_mempowerdown(s);
+> +    rp2040_update_nmi(s);
+> +}
+> +
+> +static void rp2040_set_irq(void *opaque, int irq, int level)
+> +{
+> +    RP2040State *s =3D opaque;
+> +
+> +    assert(irq >=3D 0 && irq < RP2040_NUM_IRQS);
+> +    s->irq_level[irq] =3D level;
+> +    rp2040_update_nmi(s);
+> +}
+> +
+>  static void rp2040_soc_init(Object *obj)
+>  {
+>      RP2040State *s =3D RP2040(obj);
+> @@ -104,6 +177,10 @@ static void rp2040_soc_init(Object *obj)
+>                                    "chardev");
+>      }
 >=20=20
-> diff --git a/tests/tcg/arm/system/rp2040-boot.S b/tests/tcg/arm/system/rp=
-2040-boot.S
+> +    object_initialize_child(obj, "syscfg", &s->syscfg, TYPE_RP2040_SYSCF=
+G);
+> +    object_initialize_child(obj, "sysinfo", &s->sysinfo, TYPE_RP2040_SYS=
+INFO);
+> +
+> +    s->irq =3D qemu_allocate_irqs(rp2040_set_irq, s, RP2040_NUM_IRQS);
+>      s->sysclk =3D clock_new(obj, "sysclk");
+>      clock_set_hz(s->sysclk, RP2040_SYSCLK_FRQ);
+>  }
+> @@ -117,9 +194,17 @@ static bool rp2040_init_memory(RP2040State *s, Error=
+ **errp)
+>          return false;
+>      }
+>      memory_region_add_subregion(s->board_memory, RP2040_ROM_BASE, &s->ro=
+m);
+> +    memory_region_init_io(&s->rom_poweroff, OBJECT(s),
+> +                          &rp2040_powered_off_ops, s,
+> +                          "rp2040.rom.poweroff", RP2040_ROM_SIZE);
+> +    memory_region_add_subregion_overlap(s->board_memory, RP2040_ROM_BASE,
+> +                                        &s->rom_poweroff, 1);
+> +    memory_region_set_enabled(&s->rom_poweroff, false);
+>=20=20
+>      for (i =3D 0; i < 4; i++) {
+>          g_autofree char *name =3D g_strdup_printf("rp2040.sram%d", i);
+> +        g_autofree char *poweroff_name =3D
+> +            g_strdup_printf("rp2040.sram%d.poweroff", i);
+>=20=20
+>          if (!memory_region_init_ram(&s->sram[i], OBJECT(s), name,
+>                                      RP2040_SRAM_BANK_SIZE, errp)) {
+> @@ -129,6 +214,14 @@ static bool rp2040_init_memory(RP2040State *s, Error=
+ **errp)
+>                                      RP2040_SRAM_BASE +
+>                                      i * RP2040_SRAM_BANK_SIZE,
+>                                      &s->sram[i]);
+> +        memory_region_init_io(&s->sram_poweroff[i], OBJECT(s),
+> +                              &rp2040_powered_off_ops, s, poweroff_name,
+> +                              RP2040_SRAM_BANK_SIZE);
+> +        memory_region_add_subregion_overlap(s->board_memory,
+> +                                            RP2040_SRAM_BASE +
+> +                                            i * RP2040_SRAM_BANK_SIZE,
+> +                                            &s->sram_poweroff[i], 1);
+> +        memory_region_set_enabled(&s->sram_poweroff[i], false);
+>      }
+>=20=20
+>      if (!memory_region_init_ram(&s->sram[4], OBJECT(s), "rp2040.sram4",
+> @@ -137,6 +230,12 @@ static bool rp2040_init_memory(RP2040State *s, Error=
+ **errp)
+>      }
+>      memory_region_add_subregion(s->board_memory, RP2040_SRAM4_BASE,
+>                                  &s->sram[4]);
+> +    memory_region_init_io(&s->sram_poweroff[4], OBJECT(s),
+> +                          &rp2040_powered_off_ops, s,
+> +                          "rp2040.sram4.poweroff", RP2040_SRAM_HI_SIZE);
+> +    memory_region_add_subregion_overlap(s->board_memory, RP2040_SRAM4_BA=
+SE,
+> +                                        &s->sram_poweroff[4], 1);
+> +    memory_region_set_enabled(&s->sram_poweroff[4], false);
+>=20=20
+>      if (!memory_region_init_ram(&s->sram[5], OBJECT(s), "rp2040.sram5",
+>                                  RP2040_SRAM_HI_SIZE, errp)) {
+> @@ -144,6 +243,14 @@ static bool rp2040_init_memory(RP2040State *s, Error=
+ **errp)
+>      }
+>      memory_region_add_subregion(s->board_memory, RP2040_SRAM5_BASE,
+>                                  &s->sram[5]);
+> +    memory_region_init_io(&s->sram_poweroff[5], OBJECT(s),
+> +                          &rp2040_powered_off_ops, s,
+> +                          "rp2040.sram5.poweroff", RP2040_SRAM_HI_SIZE);
+> +    memory_region_add_subregion_overlap(s->board_memory, RP2040_SRAM5_BA=
+SE,
+> +                                        &s->sram_poweroff[5], 1);
+> +    memory_region_set_enabled(&s->sram_poweroff[5], false);
+> +
+> +    s->mempowerdown_ready =3D true;
+>=20=20
+>      return true;
+>  }
+> @@ -201,6 +308,22 @@ static void rp2040_soc_realize(DeviceState *dev, Err=
+or **errp)
+>      if (!sysbus_realize(SYS_BUS_DEVICE(&s->armv7m), errp)) {
+>          return;
+>      }
+> +    for (i =3D 0; i < RP2040_NUM_IRQS; i++) {
+> +        s->cpu_irq[i] =3D qdev_get_gpio_in(DEVICE(&s->armv7m), i);
+> +    }
+> +    s->nmi_irq =3D qdev_get_gpio_in_named(DEVICE(&s->armv7m), "NMI", 0);
+> +
+> +    if (!sysbus_realize(SYS_BUS_DEVICE(&s->syscfg), errp)) {
+> +        return;
+> +    }
+> +    sysbus_mmio_map(SYS_BUS_DEVICE(&s->syscfg), 0, RP2040_SYSCFG_BASE);
+> +    rp2040_syscfg_set_update_callback(&s->syscfg, rp2040_syscfg_update, =
+s);
+> +
+> +    if (!sysbus_realize(SYS_BUS_DEVICE(&s->sysinfo), errp)) {
+> +        return;
+> +    }
+> +    sysbus_mmio_map(SYS_BUS_DEVICE(&s->sysinfo), 0, RP2040_SYSINFO_BASE);
+> +    rp2040_syscfg_update(s);
+>=20=20
+>      for (i =3D 0; i < ARRAY_SIZE(s->uart); i++) {
+>          qdev_connect_clock_in(DEVICE(&s->uart[i]), "clk", s->sysclk);
+> @@ -209,7 +332,7 @@ static void rp2040_soc_realize(DeviceState *dev, Erro=
+r **errp)
+>          }
+>          sysbus_mmio_map(SYS_BUS_DEVICE(&s->uart[i]), 0, uart_base[i]);
+>          sysbus_connect_irq(SYS_BUS_DEVICE(&s->uart[i]), 0,
+> -                           qdev_get_gpio_in(DEVICE(&s->armv7m), uart_irq=
+[i]));
+> +                           s->irq[uart_irq[i]]);
+>      }
+>  }
+>=20=20
+> diff --git a/hw/misc/Kconfig b/hw/misc/Kconfig
+> index de7a0f56fa..f6f344ab51 100644
+> --- a/hw/misc/Kconfig
+> +++ b/hw/misc/Kconfig
+> @@ -104,6 +104,12 @@ config FSL_IMX8MP_CCM
+>  config RP2040_NYI
+>      bool
+>=20=20
+> +config RP2040_SYSCFG
+> +    bool
+> +
+> +config RP2040_SYSINFO
+> +    bool
+> +
+>  config STM32_RCC
+>      bool
+>=20=20
+> diff --git a/hw/misc/meson.build b/hw/misc/meson.build
+> index 8611d59437..7be9f45c78 100644
+> --- a/hw/misc/meson.build
+> +++ b/hw/misc/meson.build
+> @@ -99,6 +99,8 @@ system_ss.add(when: 'CONFIG_RASPI', if_true: files(
+>    'bcm2835_powermgt.c',
+>  ))
+>  system_ss.add(when: 'CONFIG_RP2040_NYI', if_true: files('rp2040_nyi.c'))
+> +system_ss.add(when: 'CONFIG_RP2040_SYSCFG', if_true: files('rp2040_syscf=
+g.c'))
+> +system_ss.add(when: 'CONFIG_RP2040_SYSINFO', if_true: files('rp2040_sysi=
+nfo.c'))
+>  system_ss.add(when: 'CONFIG_SLAVIO', if_true: files('slavio_misc.c'))
+>  system_ss.add(when: 'CONFIG_ZYNQ', if_true: files('zynq_slcr.c'))
+>  system_ss.add(when: 'CONFIG_XLNX_ZYNQ_DDRC', if_true: files('xlnx-zynq-d=
+drc.c'))
+> diff --git a/hw/misc/rp2040_syscfg.c b/hw/misc/rp2040_syscfg.c
 > new file mode 100644
-> index 0000000000..0537a54d44
+> index 0000000000..69b4164ccd
 > --- /dev/null
-> +++ b/tests/tcg/arm/system/rp2040-boot.S
-> @@ -0,0 +1,30 @@
+> +++ b/hw/misc/rp2040_syscfg.c
+> @@ -0,0 +1,244 @@
 > +/*
-> + * Raspberry Pi Pico boot smoke test.
+> + * RP2040 syscfg emulation
 > + *
-> + * Copyright 2026 Gilles Grimaud
 > + * SPDX-License-Identifier: GPL-2.0-or-later
 > + */
 > +
-> +.syntax unified
-> +.cpu cortex-m0plus
-> +.thumb
+> +#include "qemu/osdep.h"
+> +#include "hw/misc/rp2040_nyi.h"
+> +#include "hw/misc/rp2040_syscfg.h"
+> +#include "migration/vmstate.h"
+> +#include "qemu/module.h"
 > +
-> +#define SRAM_END 0x20042000
-> +#define SYS_EXIT 0x18
-> +#define ADP_STOPPED_APPLICATION_EXIT 0x20026
+> +#define SYSCFG_PROC0_NMI_MASK          0x00
+> +#define SYSCFG_PROC1_NMI_MASK          0x04
+> +#define SYSCFG_PROC_CONFIG             0x08
+> +#define SYSCFG_PROC_IN_SYNC_BYPASS     0x0c
+> +#define SYSCFG_PROC_IN_SYNC_BYPASS_HI  0x10
+> +#define SYSCFG_DBGFORCE                0x14
+> +#define SYSCFG_MEMPOWERDOWN            0x18
 > +
-> +.section .vectors, "a", %progbits
-> +vector_table:
-> +    .word SRAM_END
-> +    .word reset_handler + 1
+> +#define PROC_CONFIG_RW_MASK            0xff000000
+> +#define PROC_CONFIG_RESET              0x10000000
+> +#define PROC_IN_SYNC_BYPASS_MASK       0x3fffffff
+> +#define PROC_IN_SYNC_BYPASS_HI_MASK    0x0000003f
+> +#define DBGFORCE_RW_MASK               0x000000ee
+> +#define DBGFORCE_RESET                 0x00000066
+> +#define MEMPOWERDOWN_MASK              0x000000ff
 > +
-> +.section .text, "ax", %progbits
-> +.thumb_func
-> +.global reset_handler
-> +reset_handler:
-> +    movs r0, SYS_EXIT
-> +    ldr r1, =3DADP_STOPPED_APPLICATION_EXIT
-> +    bkpt 0xab
+> +#define ATOMIC_ALIAS_MASK              0x3000
+> +#define ATOMIC_XOR                     0x1000
+> +#define ATOMIC_SET                     0x2000
+> +#define ATOMIC_CLR                     0x3000
 > +
-> +1:
-> +    b 1b
-> diff --git a/tests/tcg/arm/system/rp2040-minimal.ld b/tests/tcg/arm/syste=
-m/rp2040-minimal.ld
-> new file mode 100644
-> index 0000000000..ebfbac8cf2
-> --- /dev/null
-> +++ b/tests/tcg/arm/system/rp2040-minimal.ld
-> @@ -0,0 +1,40 @@
-> +/* SPDX-License-Identifier: GPL-2.0-or-later */
-> +
-> +ENTRY(reset_handler)
-> +
-> +MEMORY
+> +static uint32_t rp2040_syscfg_apply_alias(uint32_t old, uint32_t value,
+> +                                          hwaddr alias)
 > +{
-> +    FLASH (rx) : ORIGIN =3D 0x10000000, LENGTH =3D 2M
-> +    SRAM (rwx) : ORIGIN =3D 0x20000000, LENGTH =3D 264K
-> +}
-> +
-> +SECTIONS
-> +{
-> +    .vectors ORIGIN(FLASH) :
-> +    {
-> +        KEEP(*(.vectors))
-> +    } > FLASH
-> +
-> +    .text :
-> +    {
-> +        *(.text*)
-> +        *(.rodata*)
-> +    } > FLASH
-> +
-> +    .data :
-> +    {
-> +        *(.data*)
-> +    } > SRAM AT > FLASH
-> +
-> +    .bss (NOLOAD) :
-> +    {
-> +        *(.bss*)
-> +        *(COMMON)
-> +    } > SRAM
-> +
-> +    /DISCARD/ :
-> +    {
-> +        *(.ARM.attributes)
-> +        *(.comment)
+> +    switch (alias) {
+> +    case ATOMIC_XOR:
+> +        return old ^ value;
+> +    case ATOMIC_SET:
+> +        return old | value;
+> +    case ATOMIC_CLR:
+> +        return old & ~value;
+> +    default:
+> +        return value;
 > +    }
 > +}
-> diff --git a/tests/tcg/arm/system/rp2040-mpu.S b/tests/tcg/arm/system/rp2=
-040-mpu.S
+> +
+> +static void rp2040_syscfg_update(RP2040SysCfgState *s)
+> +{
+> +    if (s->update) {
+> +        s->update(s->update_opaque);
+> +    }
+> +}
+> +
+> +void rp2040_syscfg_set_update_callback(RP2040SysCfgState *s,
+> +                                       RP2040SysCfgUpdateFn update,
+> +                                       void *opaque)
+> +{
+> +    s->update =3D update;
+> +    s->update_opaque =3D opaque;
+> +}
+> +
+> +uint32_t rp2040_syscfg_get_proc0_nmi_mask(RP2040SysCfgState *s)
+> +{
+> +    return s->proc0_nmi_mask;
+> +}
+> +
+> +uint32_t rp2040_syscfg_get_mempowerdown(RP2040SysCfgState *s)
+> +{
+> +    return s->mempowerdown;
+> +}
+> +
+> +static uint64_t rp2040_syscfg_read(void *opaque, hwaddr addr, unsigned s=
+ize)
+> +{
+> +    RP2040SysCfgState *s =3D opaque;
+> +    hwaddr offset =3D addr & 0xfff;
+> +    uint64_t value;
+> +
+> +    switch (offset) {
+> +    case SYSCFG_PROC0_NMI_MASK:
+> +        value =3D s->proc0_nmi_mask;
+> +        break;
+> +    case SYSCFG_PROC1_NMI_MASK:
+> +        value =3D s->proc1_nmi_mask;
+> +        break;
+> +    case SYSCFG_PROC_CONFIG:
+> +        value =3D s->proc_config;
+> +        break;
+> +    case SYSCFG_PROC_IN_SYNC_BYPASS:
+> +        value =3D s->proc_in_sync_bypass;
+> +        break;
+> +    case SYSCFG_PROC_IN_SYNC_BYPASS_HI:
+> +        value =3D s->proc_in_sync_bypass_hi;
+> +        break;
+> +    case SYSCFG_DBGFORCE:
+> +        value =3D s->dbgforce;
+> +        break;
+> +    case SYSCFG_MEMPOWERDOWN:
+> +        value =3D s->mempowerdown;
+> +        break;
+> +    default:
+> +        value =3D 0;
+> +        rp2040_log_unimplemented_read("syscfg", size,
+> +                                      RP2040_SYSCFG_BASE + addr, offset,
+> +                                      value);
+> +        break;
+> +    }
+> +
+> +    return value;
+> +}
+> +
+> +static void rp2040_syscfg_write(void *opaque, hwaddr addr,
+> +                                uint64_t value64, unsigned size)
+> +{
+> +    RP2040SysCfgState *s =3D opaque;
+> +    hwaddr alias =3D addr & ATOMIC_ALIAS_MASK;
+> +    hwaddr offset =3D addr & 0xfff;
+> +    uint32_t value =3D value64;
+> +
+> +    switch (offset) {
+> +    case SYSCFG_PROC0_NMI_MASK:
+> +        s->proc0_nmi_mask =3D
+> +            rp2040_syscfg_apply_alias(s->proc0_nmi_mask, value, alias);
+> +        rp2040_syscfg_update(s);
+> +        break;
+> +    case SYSCFG_PROC1_NMI_MASK:
+> +        s->proc1_nmi_mask =3D
+> +            rp2040_syscfg_apply_alias(s->proc1_nmi_mask, value, alias);
+> +        break;
+> +    case SYSCFG_PROC_CONFIG:
+> +        s->proc_config =3D
+> +            rp2040_syscfg_apply_alias(s->proc_config, value, alias) &
+> +            PROC_CONFIG_RW_MASK;
+> +        break;
+> +    case SYSCFG_PROC_IN_SYNC_BYPASS:
+> +        s->proc_in_sync_bypass =3D
+> +            rp2040_syscfg_apply_alias(s->proc_in_sync_bypass, value, ali=
+as) &
+> +            PROC_IN_SYNC_BYPASS_MASK;
+> +        break;
+> +    case SYSCFG_PROC_IN_SYNC_BYPASS_HI:
+> +        s->proc_in_sync_bypass_hi =3D
+> +            rp2040_syscfg_apply_alias(s->proc_in_sync_bypass_hi, value,
+> +                                      alias) &
+> +            PROC_IN_SYNC_BYPASS_HI_MASK;
+> +        break;
+> +    case SYSCFG_DBGFORCE:
+> +        s->dbgforce =3D
+> +            rp2040_syscfg_apply_alias(s->dbgforce, value, alias) &
+> +            DBGFORCE_RW_MASK;
+> +        break;
+> +    case SYSCFG_MEMPOWERDOWN:
+> +        s->mempowerdown =3D
+> +            rp2040_syscfg_apply_alias(s->mempowerdown, value, alias) &
+> +            MEMPOWERDOWN_MASK;
+> +        rp2040_syscfg_update(s);
+> +        break;
+> +    default:
+> +        rp2040_log_unimplemented_write("syscfg", size,
+> +                                       RP2040_SYSCFG_BASE + addr, offset,
+> +                                       value64);
+> +        break;
+> +    }
+> +}
+> +
+> +static const MemoryRegionOps rp2040_syscfg_ops =3D {
+> +    .read =3D rp2040_syscfg_read,
+> +    .write =3D rp2040_syscfg_write,
+> +    .endianness =3D DEVICE_LITTLE_ENDIAN,
+> +    .valid =3D {
+> +        .min_access_size =3D 4,
+> +        .max_access_size =3D 4,
+> +    },
+> +};
+> +
+> +static void rp2040_syscfg_reset(DeviceState *dev)
+> +{
+> +    RP2040SysCfgState *s =3D RP2040_SYSCFG(dev);
+> +
+> +    s->proc0_nmi_mask =3D 0;
+> +    s->proc1_nmi_mask =3D 0;
+> +    s->proc_config =3D PROC_CONFIG_RESET;
+> +    s->proc_in_sync_bypass =3D 0;
+> +    s->proc_in_sync_bypass_hi =3D 0;
+> +    s->dbgforce =3D DBGFORCE_RESET;
+> +    s->mempowerdown =3D 0;
+> +    rp2040_syscfg_update(s);
+> +}
+> +
+> +static int rp2040_syscfg_post_load(void *opaque, int version_id)
+> +{
+> +    RP2040SysCfgState *s =3D opaque;
+> +
+> +    rp2040_syscfg_update(s);
+> +    return 0;
+> +}
+> +
+> +static void rp2040_syscfg_init(Object *obj)
+> +{
+> +    RP2040SysCfgState *s =3D RP2040_SYSCFG(obj);
+> +
+> +    memory_region_init_io(&s->iomem, obj, &rp2040_syscfg_ops, s,
+> +                          "rp2040.syscfg", RP2040_SYSCFG_SIZE);
+> +    sysbus_init_mmio(SYS_BUS_DEVICE(obj), &s->iomem);
+> +}
+> +
+> +static const VMStateDescription rp2040_syscfg_vmstate =3D {
+> +    .name =3D TYPE_RP2040_SYSCFG,
+> +    .version_id =3D 1,
+> +    .minimum_version_id =3D 1,
+> +    .post_load =3D rp2040_syscfg_post_load,
+> +    .fields =3D (const VMStateField[]) {
+> +        VMSTATE_UINT32(proc0_nmi_mask, RP2040SysCfgState),
+> +        VMSTATE_UINT32(proc1_nmi_mask, RP2040SysCfgState),
+> +        VMSTATE_UINT32(proc_config, RP2040SysCfgState),
+> +        VMSTATE_UINT32(proc_in_sync_bypass, RP2040SysCfgState),
+> +        VMSTATE_UINT32(proc_in_sync_bypass_hi, RP2040SysCfgState),
+> +        VMSTATE_UINT32(dbgforce, RP2040SysCfgState),
+> +        VMSTATE_UINT32(mempowerdown, RP2040SysCfgState),
+> +        VMSTATE_END_OF_LIST()
+> +    }
+> +};
+> +
+> +static void rp2040_syscfg_class_init(ObjectClass *klass, const void *dat=
+a)
+> +{
+> +    DeviceClass *dc =3D DEVICE_CLASS(klass);
+> +
+> +    device_class_set_legacy_reset(dc, rp2040_syscfg_reset);
+> +    dc->vmsd =3D &rp2040_syscfg_vmstate;
+> +}
+> +
+> +static const TypeInfo rp2040_syscfg_info =3D {
+> +    .name          =3D TYPE_RP2040_SYSCFG,
+> +    .parent        =3D TYPE_SYS_BUS_DEVICE,
+> +    .instance_size =3D sizeof(RP2040SysCfgState),
+> +    .instance_init =3D rp2040_syscfg_init,
+> +    .class_init    =3D rp2040_syscfg_class_init,
+> +};
+> +
+> +static void rp2040_syscfg_register_types(void)
+> +{
+> +    type_register_static(&rp2040_syscfg_info);
+> +}
+> +type_init(rp2040_syscfg_register_types)
+> diff --git a/hw/misc/rp2040_sysinfo.c b/hw/misc/rp2040_sysinfo.c
 > new file mode 100644
-> index 0000000000..a3aef55f5f
+> index 0000000000..15c50df6af
 > --- /dev/null
-> +++ b/tests/tcg/arm/system/rp2040-mpu.S
-> @@ -0,0 +1,183 @@
+> +++ b/hw/misc/rp2040_sysinfo.c
+> @@ -0,0 +1,103 @@
 > +/*
-> + * Raspberry Pi Pico Cortex-M0+ MPU test.
+> + * RP2040 sysinfo emulation
 > + *
-> + * Copyright 2026 Gilles Grimaud
 > + * SPDX-License-Identifier: GPL-2.0-or-later
 > + */
 > +
-> +.syntax unified
-> +.cpu cortex-m0plus
-> +.thumb
+> +#include "qemu/osdep.h"
+> +#include "hw/misc/rp2040_nyi.h"
+> +#include "hw/misc/rp2040_sysinfo.h"
+> +#include "migration/vmstate.h"
+> +#include "qemu/log.h"
+> +#include "qemu/module.h"
 > +
-> +#define SRAM_END 0x20042000
-> +#define TEST_ADDRESS 0x20001000
-> +#define TEST_VALUE 0x12345678
-> +#define UART0_DR 0x40034000
-> +#define MPU_TYPE 0xe000ed90
-> +#define MPU_CTRL 0xe000ed94
-> +#define MPU_RNR 0xe000ed98
-> +#define MPU_RBAR 0xe000ed9c
-> +#define MPU_RASR 0xe000eda0
-> +#define MPU_TYPE_DREGION_MASK 0x0000ff00
-> +#define MPU_TYPE_DREGION_SHIFT 8
-> +#define MPU_CTRL_ENABLE_PRIVDEFENA 0x05
-> +#define MPU_RASR_SRAM_FULL_ACCESS 0x03000025
-> +#define MPU_RASR_XIP_READ_ONLY 0x06000039
-> +#define MPU_RASR_TEST_PRIV_RW 0x0100000f
-> +#define SYS_EXIT 0x18
-> +#define ADP_STOPPED_APPLICATION_EXIT 0x20026
-> +#define ADP_STOPPED_RUNTIME_ERROR 0x20023
+> +#define SYSINFO_CHIP_ID        0x00
+> +#define SYSINFO_PLATFORM       0x04
+> +#define SYSINFO_GITREF_RP2040  0x40
 > +
-> +.section .vectors, "a", %progbits
-> +vector_table:
-> +    .word SRAM_END
-> +    .word reset_handler + 1
-> +    .word default_handler + 1
-> +    .word hardfault_handler + 1
+> +#define SYSINFO_PLATFORM_ASIC  BIT(1)
 > +
-> +.section .text, "ax", %progbits
-> +.thumb_func
-> +.global reset_handler
-> +reset_handler:
-> +    ldr r0, =3Dstart_message
-> +    bl puts
+> +static uint64_t rp2040_sysinfo_read(void *opaque, hwaddr addr, unsigned =
+size)
+> +{
+> +    hwaddr offset =3D addr & 0xfff;
+> +    uint64_t value;
 > +
-> +    ldr r0, =3DMPU_TYPE
-> +    ldr r0, [r0]
-> +    ldr r1, =3DMPU_TYPE_DREGION_MASK
-> +    ands r0, r1
-> +    lsrs r0, r0, MPU_TYPE_DREGION_SHIFT
-> +    cmp r0, 8
-> +    bne fail_type
+> +    switch (offset) {
+> +    case SYSINFO_CHIP_ID:
+> +    case SYSINFO_GITREF_RP2040:
+> +        value =3D 0;
+> +        break;
+> +    case SYSINFO_PLATFORM:
+> +        value =3D SYSINFO_PLATFORM_ASIC;
+> +        break;
+> +    default:
+> +        value =3D 0;
+> +        rp2040_log_unimplemented_read("sysinfo", size,
+> +                                      RP2040_SYSINFO_BASE + addr, offset,
+> +                                      value);
+> +        break;
+> +    }
 > +
-> +    ldr r0, =3Dtype_message
-> +    bl puts
+> +    return value;
+> +}
 > +
-> +    ldr r4, =3DTEST_ADDRESS
-> +    ldr r5, =3DTEST_VALUE
-> +    str r5, [r4]
-> +    ldr r0, [r4]
-> +    cmp r0, r5
-> +    bne fail_plain
+> +static void rp2040_sysinfo_write(void *opaque, hwaddr addr,
+> +                                 uint64_t value, unsigned size)
+> +{
+> +    hwaddr offset =3D addr & 0xfff;
 > +
-> +    ldr r0, =3Dplain_message
-> +    bl puts
+> +    qemu_log_mask(LOG_GUEST_ERROR, "rp2040.sysinfo: write to read-only "
+> +                  "register (size %d, addr 0x%08" HWADDR_PRIx
+> +                  ", offset 0x%04" HWADDR_PRIx
+> +                  ", value 0x%0*" PRIx64 ")\n",
+> +                  size, RP2040_SYSINFO_BASE + addr, offset, size << 1, v=
+alue);
+> +}
 > +
-> +    movs r0, 0
-> +    ldr r1, =3D0x20000000
-> +    ldr r2, =3DMPU_RASR_SRAM_FULL_ACCESS
-> +    bl configure_region
+> +static const MemoryRegionOps rp2040_sysinfo_ops =3D {
+> +    .read =3D rp2040_sysinfo_read,
+> +    .write =3D rp2040_sysinfo_write,
+> +    .endianness =3D DEVICE_LITTLE_ENDIAN,
+> +    .valid =3D {
+> +        .min_access_size =3D 4,
+> +        .max_access_size =3D 4,
+> +    },
+> +};
 > +
-> +    movs r0, 1
-> +    movs r1, 0
-> +    ldr r2, =3DMPU_RASR_XIP_READ_ONLY
-> +    bl configure_region
+> +static void rp2040_sysinfo_init(Object *obj)
+> +{
+> +    RP2040SysInfoState *s =3D RP2040_SYSINFO(obj);
 > +
-> +    movs r0, 2
-> +    ldr r1, =3DTEST_ADDRESS
-> +    ldr r2, =3DMPU_RASR_TEST_PRIV_RW
-> +    bl configure_region
+> +    memory_region_init_io(&s->iomem, obj, &rp2040_sysinfo_ops, s,
+> +                          "rp2040.sysinfo", RP2040_SYSINFO_SIZE);
+> +    sysbus_init_mmio(SYS_BUS_DEVICE(obj), &s->iomem);
+> +}
 > +
-> +    ldr r0, =3DMPU_CTRL
-> +    movs r1, MPU_CTRL_ENABLE_PRIVDEFENA
-> +    str r1, [r0]
-> +    dsb
-> +    isb
+> +static const VMStateDescription rp2040_sysinfo_vmstate =3D {
+> +    .name =3D TYPE_RP2040_SYSINFO,
+> +    .version_id =3D 1,
+> +    .minimum_version_id =3D 1,
+> +    .fields =3D (const VMStateField[]) {
+> +        VMSTATE_END_OF_LIST()
+> +    }
+> +};
 > +
-> +    ldr r0, [r4]
-> +    cmp r0, r5
-> +    bne fail_privileged
+> +static void rp2040_sysinfo_class_init(ObjectClass *klass, const void *da=
+ta)
+> +{
+> +    DeviceClass *dc =3D DEVICE_CLASS(klass);
 > +
-> +    ldr r0, =3Dprivileged_message
-> +    bl puts
+> +    dc->vmsd =3D &rp2040_sysinfo_vmstate;
+> +}
 > +
-> +    movs r0, 1
-> +    msr control, r0
-> +    isb
+> +static const TypeInfo rp2040_sysinfo_info =3D {
+> +    .name          =3D TYPE_RP2040_SYSINFO,
+> +    .parent        =3D TYPE_SYS_BUS_DEVICE,
+> +    .instance_size =3D sizeof(RP2040SysInfoState),
+> +    .instance_init =3D rp2040_sysinfo_init,
+> +    .class_init    =3D rp2040_sysinfo_class_init,
+> +};
 > +
-> +    ldr r0, [r4]
-> +    ldr r0, =3Dfail_no_fault_message
-> +    b test_failed
+> +static void rp2040_sysinfo_register_types(void)
+> +{
+> +    type_register_static(&rp2040_sysinfo_info);
+> +}
+> +type_init(rp2040_sysinfo_register_types)
+> diff --git a/include/hw/arm/rp2040.h b/include/hw/arm/rp2040.h
+> index 4e5cd06add..caa1f9127f 100644
+> --- a/include/hw/arm/rp2040.h
+> +++ b/include/hw/arm/rp2040.h
+> @@ -13,6 +13,8 @@
+>  #include "hw/char/pl011.h"
+>  #include "hw/core/clock.h"
+>  #include "hw/core/sysbus.h"
+> +#include "hw/misc/rp2040_syscfg.h"
+> +#include "hw/misc/rp2040_sysinfo.h"
+>  #include "qom/object.h"
+>=20=20
+>  #define TYPE_RP2040 "rp2040"
+> @@ -34,12 +36,22 @@ struct RP2040State {
+>=20=20
+>      ARMv7MState armv7m;
+>      PL011State uart[2];
+> +    RP2040SysCfgState syscfg;
+> +    RP2040SysInfoState sysinfo;
+>=20=20
+>      MemoryRegion *board_memory;
+>      MemoryRegion rom;
+> +    MemoryRegion rom_poweroff;
+>      MemoryRegion sram[6];
+> +    MemoryRegion sram_poweroff[6];
+>      char *bootrom_file;
+>=20=20
+> +    qemu_irq *irq;
+> +    qemu_irq cpu_irq[RP2040_NUM_IRQS];
+> +    qemu_irq nmi_irq;
+> +    bool irq_level[RP2040_NUM_IRQS];
+> +    bool mempowerdown_ready;
 > +
-> +.thumb_func
-> +configure_region:
-> +    ldr r3, =3DMPU_RNR
-> +    str r0, [r3]
-> +    ldr r3, =3DMPU_RBAR
-> +    str r1, [r3]
-> +    ldr r3, =3DMPU_RASR
-> +    str r2, [r3]
-> +    bx lr
-> +
-> +fail_type:
-> +    ldr r0, =3Dfail_type_message
-> +    b test_failed
-> +
-> +fail_plain:
-> +    ldr r0, =3Dfail_plain_message
-> +    b test_failed
-> +
-> +fail_privileged:
-> +    ldr r0, =3Dfail_privileged_message
-> +
-> +test_failed:
-> +    bl puts
-> +    movs r0, SYS_EXIT
-> +    ldr r1, =3DADP_STOPPED_RUNTIME_ERROR
-> +    bkpt 0xab
-> +
-> +1:
-> +    b 1b
-> +
-> +.thumb_func
-> +hardfault_handler:
-> +    ldr r0, =3Dok_message
-> +    bl puts
-> +    movs r0, SYS_EXIT
-> +    ldr r1, =3DADP_STOPPED_APPLICATION_EXIT
-> +    bkpt 0xab
-> +
-> +2:
-> +    b 2b
-> +
-> +.thumb_func
-> +default_handler:
-> +    ldr r0, =3Dfail_exception_message
-> +    b test_failed
-> +
-> +.thumb_func
-> +puts:
-> +    ldr r2, =3DUART0_DR
-> +
-> +3:
-> +    ldrb r1, [r0]
-> +    cmp r1, 0
-> +    beq 4f
-> +    str r1, [r2]
-> +    adds r0, 1
-> +    b 3b
-> +
-> +4:
-> +    bx lr
-> +
-> +.section .rodata, "a", %progbits
-> +start_message:
-> +    .asciz "PICO TCG MPU START\n"
-> +type_message:
-> +    .asciz "PICO TCG MPU TYPE\n"
-> +plain_message:
-> +    .asciz "PICO TCG MPU PLAIN\n"
-> +privileged_message:
-> +    .asciz "PICO TCG MPU PRIV\n"
-> +ok_message:
-> +    .asciz "PICO TCG MPU OK\n"
-> +fail_type_message:
-> +    .asciz "PICO TCG MPU FAIL: TYPE\n"
-> +fail_plain_message:
-> +    .asciz "PICO TCG MPU FAIL: PLAIN\n"
-> +fail_privileged_message:
-> +    .asciz "PICO TCG MPU FAIL: PRIV\n"
-> +fail_no_fault_message:
-> +    .asciz "PICO TCG MPU FAIL: NOFAULT\n"
-> +fail_exception_message:
-> +    .asciz "PICO TCG MPU FAIL: EXCEPTION\n"
-> diff --git a/tests/tcg/arm/system/rp2040-mpu.ref b/tests/tcg/arm/system/r=
-p2040-mpu.ref
+>      Clock *sysclk;
+>  };
+>=20=20
+> diff --git a/include/hw/misc/rp2040_syscfg.h b/include/hw/misc/rp2040_sys=
+cfg.h
 > new file mode 100644
-> index 0000000000..e55590ea16
+> index 0000000000..c31799ae7a
 > --- /dev/null
-> +++ b/tests/tcg/arm/system/rp2040-mpu.ref
-> @@ -0,0 +1,5 @@
-> +PICO TCG MPU START
-> +PICO TCG MPU TYPE
-> +PICO TCG MPU PLAIN
-> +PICO TCG MPU PRIV
-> +PICO TCG MPU OK
-> diff --git a/tests/tcg/arm/system/rp2040-uart.S b/tests/tcg/arm/system/rp=
-2040-uart.S
-> new file mode 100644
-> index 0000000000..bdb58cc7f2
-> --- /dev/null
-> +++ b/tests/tcg/arm/system/rp2040-uart.S
-> @@ -0,0 +1,53 @@
+> +++ b/include/hw/misc/rp2040_syscfg.h
+> @@ -0,0 +1,42 @@
 > +/*
-> + * Raspberry Pi Pico UART boot smoke test.
+> + * RP2040 syscfg emulation
 > + *
-> + * Copyright 2026 Gilles Grimaud
 > + * SPDX-License-Identifier: GPL-2.0-or-later
 > + */
 > +
-> +.syntax unified
-> +.cpu cortex-m0plus
-> +.thumb
+> +#ifndef HW_MISC_RP2040_SYSCFG_H
+> +#define HW_MISC_RP2040_SYSCFG_H
 > +
-> +#define SRAM_END 0x20042000
-> +#define UART0_DR 0x40034000
-> +#define SYS_EXIT 0x18
-> +#define ADP_STOPPED_APPLICATION_EXIT 0x20026
+> +#include "hw/core/sysbus.h"
+> +#include "qom/object.h"
 > +
-> +.section .vectors, "a", %progbits
-> +vector_table:
-> +    .word SRAM_END
-> +    .word reset_handler + 1
-> +    .word default_handler + 1
-> +    .word default_handler + 1
+> +#define TYPE_RP2040_SYSCFG "rp2040-syscfg"
+> +OBJECT_DECLARE_SIMPLE_TYPE(RP2040SysCfgState, RP2040_SYSCFG)
 > +
-> +.section .text, "ax", %progbits
-> +.thumb_func
-> +.global reset_handler
-> +reset_handler:
-> +    ldr r0, =3DUART0_DR
-> +    ldr r1, =3Dmessage
+> +#define RP2040_SYSCFG_BASE 0x40004000
+> +#define RP2040_SYSCFG_SIZE 0x4000
 > +
-> +1:
-> +    ldrb r2, [r1]
-> +    cmp r2, 0
-> +    beq 2f
-> +    str r2, [r0]
-> +    adds r1, 1
-> +    b 1b
+> +typedef void (*RP2040SysCfgUpdateFn)(void *opaque);
 > +
-> +2:
-> +    movs r0, SYS_EXIT
-> +    ldr r1, =3DADP_STOPPED_APPLICATION_EXIT
-> +    bkpt 0xab
+> +struct RP2040SysCfgState {
+> +    SysBusDevice parent_obj;
 > +
-> +3:
-> +    b 3b
+> +    MemoryRegion iomem;
+> +    RP2040SysCfgUpdateFn update;
+> +    void *update_opaque;
+> +    uint32_t proc0_nmi_mask;
+> +    uint32_t proc1_nmi_mask;
+> +    uint32_t proc_config;
+> +    uint32_t proc_in_sync_bypass;
+> +    uint32_t proc_in_sync_bypass_hi;
+> +    uint32_t dbgforce;
+> +    uint32_t mempowerdown;
+> +};
 > +
-> +.thumb_func
-> +default_handler:
-> +    b default_handler
+> +void rp2040_syscfg_set_update_callback(RP2040SysCfgState *s,
+> +                                       RP2040SysCfgUpdateFn update,
+> +                                       void *opaque);
+> +uint32_t rp2040_syscfg_get_proc0_nmi_mask(RP2040SysCfgState *s);
+> +uint32_t rp2040_syscfg_get_mempowerdown(RP2040SysCfgState *s);
 > +
-> +.section .rodata, "a", %progbits
-> +message:
-> +    .asciz "PICO TCG UART OK\n"
-> diff --git a/tests/tcg/arm/system/rp2040-uart.ref b/tests/tcg/arm/system/=
-rp2040-uart.ref
+> +#endif
+> diff --git a/include/hw/misc/rp2040_sysinfo.h b/include/hw/misc/rp2040_sy=
+sinfo.h
 > new file mode 100644
-> index 0000000000..1ef16e8299
+> index 0000000000..d521659488
 > --- /dev/null
-> +++ b/tests/tcg/arm/system/rp2040-uart.ref
-> @@ -0,0 +1 @@
-> +PICO TCG UART OK
+> +++ b/include/hw/misc/rp2040_sysinfo.h
+> @@ -0,0 +1,25 @@
+> +/*
+> + * RP2040 sysinfo emulation
+> + *
+> + * SPDX-License-Identifier: GPL-2.0-or-later
+> + */
+> +
+> +#ifndef HW_MISC_RP2040_SYSINFO_H
+> +#define HW_MISC_RP2040_SYSINFO_H
+> +
+> +#include "hw/core/sysbus.h"
+> +#include "qom/object.h"
+> +
+> +#define TYPE_RP2040_SYSINFO "rp2040-sysinfo"
+> +OBJECT_DECLARE_SIMPLE_TYPE(RP2040SysInfoState, RP2040_SYSINFO)
+> +
+> +#define RP2040_SYSINFO_BASE 0x40000000
+> +#define RP2040_SYSINFO_SIZE 0x4000
+> +
+> +struct RP2040SysInfoState {
+> +    SysBusDevice parent_obj;
+> +
+> +    MemoryRegion iomem;
+> +};
+> +
+> +#endif
+> diff --git a/tests/qtest/meson.build b/tests/qtest/meson.build
+> index 5555ce4eae..692d51a78a 100644
+> --- a/tests/qtest/meson.build
+> +++ b/tests/qtest/meson.build
+> @@ -255,6 +255,7 @@ qtests_arm =3D \
+>    (config_all_devices.has_key('CONFIG_TPM_TIS_I2C') ? ['tpm-tis-i2c-test=
+', 'tpm-tis-i2c-swtpm-test'] : []) + \
+>    (config_all_devices.has_key('CONFIG_VEXPRESS') ? ['test-arm-mptimer'] =
+: []) + \
+>    (config_all_devices.has_key('CONFIG_MICROBIT') ? ['microbit-test'] : [=
+]) + \
+> +  (config_all_devices.has_key('CONFIG_RASPI_PICO') ? ['rp2040-sysinfo-sy=
+scfg-test'] : []) + \
+>    (config_all_devices.has_key('CONFIG_STM32L4X5_SOC') ? qtests_stm32l4x5=
+ : []) + \
+>    (config_all_devices.has_key('CONFIG_FSI_APB2OPB_ASPEED') ? ['aspeed_fs=
+i-test'] : []) + \
+>    (config_all_devices.has_key('CONFIG_CAN_FLEXCAN') ? ['flexcan-test'] :=
+ []) + \
+> diff --git a/tests/qtest/rp2040-sysinfo-syscfg-test.c b/tests/qtest/rp204=
+0-sysinfo-syscfg-test.c
+> new file mode 100644
+> index 0000000000..18da6561bd
+> --- /dev/null
+> +++ b/tests/qtest/rp2040-sysinfo-syscfg-test.c
+> @@ -0,0 +1,176 @@
+> +/*
+> + * QTest testcase for the RP2040 sysinfo and syscfg blocks.
+> + *
+> + * SPDX-License-Identifier: GPL-2.0-or-later
+> + */
+> +
+> +#include "qemu/osdep.h"
+> +#include "libqtest.h"
+> +#include "qemu/bitops.h"
+> +
+> +#define SYSINFO_BASE                  0x40000000
+> +#define SYSINFO_CHIP_ID               0x00
+> +#define SYSINFO_PLATFORM              0x04
+> +#define SYSINFO_GITREF_RP2040         0x40
+> +#define SYSINFO_PLATFORM_ASIC         BIT(1)
+> +
+> +#define SYSCFG_BASE                   0x40004000
+> +#define SYSCFG_PROC0_NMI_MASK         0x00
+> +#define SYSCFG_PROC1_NMI_MASK         0x04
+> +#define SYSCFG_PROC_CONFIG            0x08
+> +#define SYSCFG_PROC_IN_SYNC_BYPASS    0x0c
+> +#define SYSCFG_PROC_IN_SYNC_BYPASS_HI 0x10
+> +#define SYSCFG_DBGFORCE               0x14
+> +#define SYSCFG_MEMPOWERDOWN           0x18
+> +
+> +#define SRAM0_BASE                    0x20000000
+> +#define UART0_BASE                    0x40034000
+> +#define UARTDR                        0x00
+> +#define UARTCR                        0x30
+> +#define UARTIMSC                      0x38
+> +#define UARTICR                       0x44
+> +#define UART_INT_TX                   BIT(5)
+> +#define UART0_IRQ                     20
+> +#define NVIC_ISPR                     0xe000e200
+> +#define NVIC_ICPR                     0xe000e280
+> +#define NVIC_ICSR                     0xe000ed04
+> +#define NVIC_ICSR_NMIPENDSET          BIT(31)
+> +
+> +#define PROC_CONFIG_RESET             0x10000000
+> +#define DBGFORCE_RESET                0x00000066
+> +
+> +#define ATOMIC_SET_ALIAS              0x2000
+> +#define ATOMIC_CLR_ALIAS              0x3000
+> +
+> +static QTestState *rp2040_start(void)
+> +{
+> +    return qtest_init("-machine raspi-pico");
+> +}
+> +
+> +static void test_sysinfo_read_values(void)
+> +{
+> +    QTestState *qts =3D rp2040_start();
+> +
+> +    g_assert_cmphex(qtest_readl(qts, SYSINFO_BASE + SYSINFO_CHIP_ID), =
+=3D=3D, 0);
+> +    g_assert_cmphex(qtest_readl(qts, SYSINFO_BASE + SYSINFO_PLATFORM), =
+=3D=3D,
+> +                    SYSINFO_PLATFORM_ASIC);
+> +    g_assert_cmphex(qtest_readl(qts, SYSINFO_BASE + SYSINFO_GITREF_RP204=
+0),
+> +                    =3D=3D, 0);
+> +
+> +    qtest_quit(qts);
+> +}
+> +
+> +static void test_syscfg_reset_values(void)
+> +{
+> +    QTestState *qts =3D rp2040_start();
+> +
+> +    g_assert_cmphex(qtest_readl(qts, SYSCFG_BASE + SYSCFG_PROC0_NMI_MASK=
+),
+> +                    =3D=3D, 0);
+> +    g_assert_cmphex(qtest_readl(qts, SYSCFG_BASE + SYSCFG_PROC1_NMI_MASK=
+),
+> +                    =3D=3D, 0);
+> +    g_assert_cmphex(qtest_readl(qts, SYSCFG_BASE + SYSCFG_PROC_CONFIG), =
+=3D=3D,
+> +                    PROC_CONFIG_RESET);
+> +    g_assert_cmphex(qtest_readl(qts, SYSCFG_BASE + SYSCFG_DBGFORCE), =3D=
+=3D,
+> +                    DBGFORCE_RESET);
+> +
+> +    qtest_quit(qts);
+> +}
+> +
+> +static void test_syscfg_rw_masks(void)
+> +{
+> +    QTestState *qts =3D rp2040_start();
+> +
+> +    qtest_writel(qts, SYSCFG_BASE + SYSCFG_PROC0_NMI_MASK, 0xa5a5a5a5);
+> +    qtest_writel(qts, SYSCFG_BASE + SYSCFG_PROC1_NMI_MASK, 0x5a5a5a5a);
+> +    g_assert_cmphex(qtest_readl(qts, SYSCFG_BASE + SYSCFG_PROC0_NMI_MASK=
+),
+> +                    =3D=3D, 0xa5a5a5a5);
+> +    g_assert_cmphex(qtest_readl(qts, SYSCFG_BASE + SYSCFG_PROC1_NMI_MASK=
+),
+> +                    =3D=3D, 0x5a5a5a5a);
+> +
+> +    qtest_writel(qts, SYSCFG_BASE + SYSCFG_PROC_IN_SYNC_BYPASS, 0xffffff=
+ff);
+> +    qtest_writel(qts, SYSCFG_BASE + SYSCFG_PROC_IN_SYNC_BYPASS_HI,
+> +                 0xffffffff);
+> +    qtest_writel(qts, SYSCFG_BASE + SYSCFG_MEMPOWERDOWN, 0xffffffff);
+> +    g_assert_cmphex(qtest_readl(qts,
+> +                                SYSCFG_BASE + SYSCFG_PROC_IN_SYNC_BYPASS=
+),
+> +                    =3D=3D, 0x3fffffff);
+> +    g_assert_cmphex(qtest_readl(qts,
+> +                                SYSCFG_BASE + SYSCFG_PROC_IN_SYNC_BYPASS=
+_HI),
+> +                    =3D=3D, 0x0000003f);
+> +    g_assert_cmphex(qtest_readl(qts, SYSCFG_BASE + SYSCFG_MEMPOWERDOWN),=
+ =3D=3D,
+> +                    0x000000ff);
+> +
+> +    qtest_quit(qts);
+> +}
+> +
+> +static void test_syscfg_atomic_aliases(void)
+> +{
+> +    QTestState *qts =3D rp2040_start();
+> +
+> +    qtest_writel(qts, SYSCFG_BASE + SYSCFG_PROC0_NMI_MASK, 0);
+> +    qtest_writel(qts, SYSCFG_BASE + ATOMIC_SET_ALIAS + SYSCFG_PROC0_NMI_=
+MASK,
+> +                 0x0000000f);
+> +    qtest_writel(qts, SYSCFG_BASE + ATOMIC_CLR_ALIAS + SYSCFG_PROC0_NMI_=
+MASK,
+> +                 0x00000003);
+> +    g_assert_cmphex(qtest_readl(qts, SYSCFG_BASE + SYSCFG_PROC0_NMI_MASK=
+),
+> +                    =3D=3D, 0x0000000c);
+> +
+> +    qtest_quit(qts);
+> +}
+> +
+> +static void test_syscfg_mempowerdown_blocks_sram(void)
+> +{
+> +    QTestState *qts =3D rp2040_start();
+> +
+> +    qtest_writel(qts, SRAM0_BASE, 0x11223344);
+> +    g_assert_cmphex(qtest_readl(qts, SRAM0_BASE), =3D=3D, 0x11223344);
+> +
+> +    qtest_writel(qts, SYSCFG_BASE + SYSCFG_MEMPOWERDOWN, BIT(0));
+> +    qtest_writel(qts, SRAM0_BASE, 0xaabbccdd);
+> +    qtest_writel(qts, SYSCFG_BASE + SYSCFG_MEMPOWERDOWN, 0);
+> +
+> +    g_assert_cmphex(qtest_readl(qts, SRAM0_BASE), =3D=3D, 0x11223344);
+> +
+> +    qtest_quit(qts);
+> +}
+> +
+> +static void test_syscfg_nmi_mask_routes_uart0_irq(void)
+> +{
+> +    QTestState *qts =3D rp2040_start();
+> +
+> +    qtest_writel(qts, UART0_BASE + UARTCR, BIT(0) | BIT(8));
+> +    qtest_writel(qts, UART0_BASE + UARTIMSC, UART_INT_TX);
+> +
+> +    qtest_writel(qts, UART0_BASE + UARTICR, UART_INT_TX);
+> +    qtest_writel(qts, NVIC_ICPR, BIT(UART0_IRQ));
+> +    qtest_writel(qts, UART0_BASE + UARTDR, 'a');
+> +    g_assert_cmphex(qtest_readl(qts, NVIC_ISPR) & BIT(UART0_IRQ), =3D=3D,
+> +                    BIT(UART0_IRQ));
+> +
+> +    qtest_writel(qts, UART0_BASE + UARTICR, UART_INT_TX);
+> +    qtest_writel(qts, NVIC_ICPR, BIT(UART0_IRQ));
+> +    qtest_writel(qts, SYSCFG_BASE + SYSCFG_PROC0_NMI_MASK, BIT(UART0_IRQ=
+));
+> +    qtest_writel(qts, UART0_BASE + UARTDR, 'b');
+> +    g_assert_cmphex(qtest_readl(qts, NVIC_ISPR) & BIT(UART0_IRQ), =3D=3D=
+, 0);
+> +    g_assert_cmphex(qtest_readl(qts, NVIC_ICSR) & NVIC_ICSR_NMIPENDSET, =
+=3D=3D,
+> +                    NVIC_ICSR_NMIPENDSET);
+> +
+> +    qtest_quit(qts);
+> +}
+> +
+> +int main(int argc, char **argv)
+> +{
+> +    g_test_init(&argc, &argv, NULL);
+> +
+> +    qtest_add_func("/rp2040-sysinfo/read-values", test_sysinfo_read_valu=
+es);
+> +    qtest_add_func("/rp2040-syscfg/reset-values", test_syscfg_reset_valu=
+es);
+> +    qtest_add_func("/rp2040-syscfg/rw-masks", test_syscfg_rw_masks);
+> +    qtest_add_func("/rp2040-syscfg/atomic-aliases",
+> +                   test_syscfg_atomic_aliases);
+> +    qtest_add_func("/rp2040-syscfg/mempowerdown-blocks-sram",
+> +                   test_syscfg_mempowerdown_blocks_sram);
+> +    qtest_add_func("/rp2040-syscfg/nmi-mask-routes-uart0-irq",
+> +                   test_syscfg_nmi_mask_routes_uart0_irq);
+> +
+> +    return g_test_run();
+> +}
 
 --=20
 Alex Benn=C3=A9e

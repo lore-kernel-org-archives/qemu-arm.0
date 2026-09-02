@@ -4,106 +4,96 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 02ACBC61DD6
-	for <qemu-arm@archiver.kernel.org>; Wed,  2 Sep 2026 10:23:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0B3B9C624D0
+	for <qemu-arm@archiver.kernel.org>; Wed,  2 Sep 2026 10:23:45 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1x1i7m-00025k-VI; Wed, 02 Sep 2026 06:23:23 -0400
+	id 1x1i7l-0001rO-87; Wed, 02 Sep 2026 06:23:21 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <kchiu@axiado.com>)
- id 1x1i7h-0001ix-AJ; Wed, 02 Sep 2026 06:23:18 -0400
-Received: from mail-northcentralusazlp170130007.outbound.protection.outlook.com
- ([2a01:111:f403:c105::7] helo=CH4PR04CU002.outbound.protection.outlook.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <kchiu@axiado.com>)
- id 1x1i7f-0006qQ-Ru; Wed, 02 Sep 2026 06:23:17 -0400
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=SlowhxwLlVs+8x9hxxn7p3lNi7ANDiZm5jrKL/YZ8MOl/TXQrzszrbZqP3jXOtIn1piTOeG/63pJCpDNKvgA7tGrHv6E+PJPzihWoSpZ53iI1OXTZV2vr/pWtnsUnleLQrbUzcmggP6Mp7i5e2t971BpHCCPUexvNfF8v6CUP5dkoViQrJV8Hxp8IuBQtxf8Si0psv73Ro8HIbfSEngQfqz0yT+eXV/bjyV/xT+MKt7Ims1Pb7OYxnecJKlcwAyRddv6bnNsH579asY6EDK5adZg6pgA+gQapF5QVdDI1LHgNBEuEAUjbZo7GA5UP7hogeFgf910m+X1O3BLYhFHNA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector10001;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=zKNJvJOxwEIGO/93oLmeo6VpJWW6ICm5eJ3LzPzl72s=;
- b=GdzxhojXhtqE80iHSqcfCmfxVAleoWvHaAjgPCQuiIrndXSDSraupWO7ckmLz1wsRXjUp6nyFbYnYZIgRxGRYHhzwKFIQgtWF2NWhhdjOgqwNYpShb3t5Wz20eOQy33E6CqmsWSJK9aUeYpdKIqgUuleXBO2TVrhsIDIqBjKBDp68Ykf2ndw7WkQrTHGn1gb8YF9NWATP5kywido9qaBIHc2Pbu1cTnf+LDMO4zFbJZ55l7Hf6kl82TUgM9EDlf2WCzNYbZ0VB9PDPP5AMXIkuxCShQuw3ZXw6bE9LLtf2XkpdolDQdOj16Hx39ZQDz3TI80kEnKvERJsFl+2Zx1+Q==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=fail (sender ip is
- 64.62.143.114) smtp.rcpttodomain=axiado.com smtp.mailfrom=axiado.com;
- dmarc=none action=none header.from=axiado.com; dkim=none (message not
- signed); arc=none (0)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=axiado.com;
- s=selector1;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=zKNJvJOxwEIGO/93oLmeo6VpJWW6ICm5eJ3LzPzl72s=;
- b=YB5PXrkdMHXYsye3P4wS2dG/RsI/FW0lJZIS7el5evjRraYpIpeVpZcrz1b5EOMQh98VAu8ALOMc8ZzSxAMijuviXBPF5QRFziBNTBlUSAdAVT0okQLHKE/+TJH5MNQWDn2RVHzS3OIykmzWlDu5s1IDs2NpDNhW7hseunhpok7Ug8G8vr5hNshHHFP+JWF+Dk3dr+G9fk6e05hBAwQYyW7VIFJDqdieHfGG7hhGc1NwYVJlB2Wc5JqTwz7UXa7dXw/p9OUe5wNlNRlIJsXqLnhip4GCvv/pddkalgnM9cIL0q9Q2cPNqrmg4wOhoyg+HrmnTNjVFNXPAS/xj2PSLQ==
-Received: from BN0PR04CA0087.namprd04.prod.outlook.com (2603:10b6:408:ea::32)
- by IA1PR18MB5514.namprd18.prod.outlook.com (2603:10b6:208:455::19)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.21.360.13; Wed, 2 Sep
- 2026 10:23:10 +0000
-Received: from BN6PEPF00000076.namprd03.prod.outlook.com
- (2603:10b6:408:ea:cafe::4e) by BN0PR04CA0087.outlook.office365.com
- (2603:10b6:408:ea::32) with Microsoft SMTP Server (version=TLS1_3,
- cipher=TLS_AES_256_GCM_SHA384) id 15.21.382.10 via Frontend Transport; Wed, 2
- Sep 2026 10:23:10 +0000
-X-MS-Exchange-Authentication-Results: spf=fail (sender IP is 64.62.143.114)
- smtp.mailfrom=axiado.com; dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=axiado.com;
-Received-SPF: Fail (protection.outlook.com: domain of axiado.com does not
- designate 64.62.143.114 as permitted sender) receiver=protection.outlook.com; 
- client-ip=64.62.143.114; helo=smtp.corp.axiado.com;
-Received: from smtp.corp.axiado.com (64.62.143.114) by
- BN6PEPF00000076.mail.protection.outlook.com (10.167.248.203) with Microsoft
- SMTP Server (version=TLS1_3, cipher=TLS_AES_256_GCM_SHA384) id 15.21.382.8
- via Frontend Transport; Wed, 2 Sep 2026 10:23:07 +0000
-Received: from axiado.com (unknown [10.4.1.181])
- by smtp.corp.axiado.com (Postfix) with ESMTP id 5AD344186B53;
- Wed,  2 Sep 2026 03:23:07 -0700 (PDT)
-From: Kuan-Jui Chiu <kchiu@axiado.com>
-To: philmd@oss.qualcomm.com, 163wangjack@gmail.com, qemu-devel@nongnu.org,
- peter.maydell@linaro.org, qemu-arm@nongnu.org
-Cc: Kuan-Jui Chiu <kchiu@axiado.com>
-Subject: [PATCH v5 06/13] hw/arm/ax3000: Specify SoC name in header and
- variable
-Date: Wed,  2 Sep 2026 03:23:06 -0700
-Message-Id: <20260902102306.3039303-1-kchiu@axiado.com>
-X-Mailer: git-send-email 2.34.1
+ (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
+ id 1x1i7X-0001eM-Ko
+ for qemu-arm@nongnu.org; Wed, 02 Sep 2026 06:23:12 -0400
+Received: from mail-wm1-x331.google.com ([2a00:1450:4864:20::331])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
+ id 1x1i7V-0006o2-Oq
+ for qemu-arm@nongnu.org; Wed, 02 Sep 2026 06:23:07 -0400
+Received: by mail-wm1-x331.google.com with SMTP id
+ 5b1f17b1804b1-49b8687630fso6605905e9.3
+ for <qemu-arm@nongnu.org>; Wed, 02 Sep 2026 03:23:05 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1788344583; x=1788949383; darn=nongnu.org;
+ h=content-transfer-encoding:content-type:mime-version:message-id:date
+ :user-agent:references:in-reply-to:subject:cc:to:from:from:to:cc
+ :subject:date:message-id:reply-to:content-type;
+ bh=oHhC+Dy7z0A9DvfUjOcIXs/AZONrXynxz8OTOeYjHg8=;
+ b=zsAlXIH3r0qphdJvqds3kSAMcytaL0UWFjJ0p7oywfIFPcJwgpi5u9E50A4LGXOdyO
+ FRRkeAVcd/QSfNUgwbvb9x81GMuqQ7z3xudv7YwlMCytEKBYgkQWzyz4pIEzwrtoqNI6
+ RujrOdVHjQBxO8Oa05i1oM640YzUFiMk2cmmFAViSzCTi6LLCGnvOUBifLVC95BcOlQn
+ wA2oW34NOwvFSn3N/3h6lwHN+0ZUnJ6mZ2WdMiBjcZPm1osf2d1DwGjIOiCdFsj+4g/X
+ JR3Ec7BGTyhrwOOPWWuZSiUYCoXNx5AMMO4u0Z5NjO7ozrADrv3ttx2rqNwbOieGlRNv
+ 4Ldw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20251104; t=1788344583; x=1788949383;
+ h=content-transfer-encoding:content-type:mime-version:message-id:date
+ :user-agent:references:in-reply-to:subject:cc:to:from:x-gm-gg
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
+ :content-type;
+ bh=oHhC+Dy7z0A9DvfUjOcIXs/AZONrXynxz8OTOeYjHg8=;
+ b=p8+D/PCq/YZ+A/Ogv63XPvgz35lHo5Tszo9P4zIqp4WgPHCWEL4R891JlBlucVeCnN
+ Gifw325op21DpBE0nMnzfubwV2Ei8Q3ovv10dLLBIGgdoZ7y/a4BVwLjrpRJ9j3wE2Hh
+ c4K3X1nI7wY9E3VovN0Oyh9s23bCyfQctRcehNPtSq2AMm82Os38+qGsgYuY06I0Fru4
+ WH7veHLGw5NDp5/5bvpC+ZjT7S/7i9p3nwNuRdgI46O3LlaayB/icBv8ncccawuOuJmT
+ vHCZ3lnfS2aMb6vcmbxRaUp2su58e5lQXa9K2fM3Zd+Ddq7xiY0ostziyOKK8ZMRRy1t
+ eLnQ==
+X-Forwarded-Encrypted: i=1;
+ AHgh+RrrdqEnNYnHUpm01NlQydVrTrnlarUTcIVJ/0YECfG7lpo9iZCzL8oan2yo+capykrFnVtNWy4W0A==@nongnu.org
+X-Gm-Message-State: AFuF++nB8zSSjcxvnz17vH+bQT2HNGUnCJvVB0hSxA6Gvl4tW2IhKDNR
+ IgMQMGoXMY4HU+gBYQHgnbZovQZrOXFmsajVSgYq4DOdo9zOUfcsZUqzlxnhEQ0WQ1I=
+X-Gm-Gg: AR+sD11lvM20/4GNuKR8UBM/R8LV32VqAj/rMh6dUMPEylCi0E6RHHUTZ3akJl1xmeZ
+ mbSbzpBwJN9t2WSB80NcRnAdgWutJxRXJsHuBldGSTqq7lkEBKXps1CviRAwOuRBQCAIfi/J8D4
+ 5pq3D14CI7BzewNjhFlVXn21NmqeBT2QMyNVkW1PrCpn59mI72gWd3fnBM4Hq4WO/FH/v/u+Ukc
+ iLTN3yfEKRC4lDDgWi8d20QUxcExUPgzhJlrdOrkLIlq5VJq4CAxPV2NebGG6nzVeln1pOfClBz
+ bqcgcEAkx33vHXxcu8RnhcU5JFb/mCG/MmPLXjSzLiiPSf6s6cqYhhZOXcGObqEwnClapwQq/Qp
+ OWdkjWoFlP/WYOx71sZ7TMcwJ6sqyVHQ1/sjJioSrW7xwOXiSJIXi4FfWRkxkwH+ipwNE11EnGT
+ nVG0z+6GKoeQ6p4F6EXXktg4K/PLIRsXXwE1kAvC9Zkd0OIbOwo329LJyyxz1Q
+X-Received: by 2002:a05:600c:1d11:b0:49c:c0d4:53d9 with SMTP id
+ 5b1f17b1804b1-49ce582a54amr63932265e9.14.1788344583405; 
+ Wed, 02 Sep 2026 03:23:03 -0700 (PDT)
+Received: from draig.lan ([185.124.0.156]) by smtp.gmail.com with ESMTPSA id
+ 5b1f17b1804b1-49ce46422desm56080955e9.1.2026.09.02.03.23.02
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Wed, 02 Sep 2026 03:23:02 -0700 (PDT)
+Received: from draig (localhost [IPv6:::1])
+ by draig.lan (Postfix) with ESMTP id 40F715F85F;
+ Wed, 02 Sep 2026 11:23:01 +0100 (BST)
+From: =?utf-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>
+To: Gilles Grimaud <gilles.grimaud@univ-lille.fr>
+Cc: qemu-devel@nongnu.org,  qemu-arm@nongnu.org,  Paolo Bonzini
+ <pbonzini@redhat.com>,  Peter Maydell <peter.maydell@linaro.org>,  Fabiano
+ Rosas <farosas@suse.de>,  Laurent Vivier <lvivier@redhat.com>
+Subject: Re: [PATCH RFC v2 07/30] hw/misc: add RP2040 TBMAN and voltage
+ regulator
+In-Reply-To: <20260829234308.33725-8-gilles.grimaud@univ-lille.fr> (Gilles
+ Grimaud's message of "Sun, 30 Aug 2026 01:42:41 +0200")
+References: <20260829234308.33725-1-gilles.grimaud@univ-lille.fr>
+ <20260829234308.33725-8-gilles.grimaud@univ-lille.fr>
+User-Agent: mu4e 1.14.4-pre1; emacs 30.1
+Date: Wed, 02 Sep 2026 11:23:01 +0100
+Message-ID: <87bjagrlyy.fsf@draig.linaro.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-X-EOPAttributedMessage: 0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: BN6PEPF00000076:EE_|IA1PR18MB5514:EE_
-X-MS-Office365-Filtering-Correlation-Id: a8f8cb6d-e300-4142-cca2-08df08dc2ed5
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;
- ARA:13230040|376014|23010399003|82310400026|1800799024|36860700016|18002099003|56012099006|10067099003;
-X-Microsoft-Antispam-Message-Info: CGChLmq/pEfHUtXh/7+uQeaVFawLF53pmbtl8geaAS/ldFG9LWnIa5cGEghh8GoeyOkUY83N8T0ClvCYaOqDxO+owQspe43JADPHh1cEUAQ+BXahC30GA4JmwcRghzK1ZHY8IFTZ+eOw+fXBVBr1/WzVHb++Mmc+9w1oLEuXjI6/DnVZqgYlsZd0SaAaUaIU6EMAlNpyWZasOpw3I0/YjDXVDqT+aMLpqXVqSeIbRMVBXnsficms39oA9YYrfNjOnG3JOERBtfvxKcUKJ6tojZ1yseryB/qyHNaV+4T2lBobVOWQMUI9gwTpJBToh4Erqeju7IJ9oCM+wvdjQtFzoXLPYerzV+TFHirID7BSDKvOauJ/N2CiV2HU6yuKya7If5IDWSBl9sxzQbf6LWv5MDWHKeiUM8Lzjg7nmx5BPnlZHTvtKHcwyEyoLuUEZ6WbN1jco2qOmjg2SCBlDU9edDKBLr3WBzlrsiBDWP//hzP67qMSXS6QhvggkbFDy6uBol1GrkCgOwqS3wdxM+PEnrTe28A1Canz12KtxGEToQW982+Ox/USN9LzxwYpKD0Lw0Zo4gjgiLaMQHlLR5WIxgrQC+rULCTRb1QWn3fWNBvcZbPYzno2gwFEAg3OtQXNI+Kbo06wMd2z39xEUUG20Jq5mSiIIjXXb1wyigREejif3x8ume8jefuRqIifNS7kg1NvESJja8xQnvZrfFOzqw==
-X-Forefront-Antispam-Report: CIP:64.62.143.114; CTRY:US; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:smtp.corp.axiado.com; PTR:InfoDomainNonexistent; CAT:NONE;
- SFS:(13230040)(376014)(23010399003)(82310400026)(1800799024)(36860700016)(18002099003)(56012099006)(10067099003);
- DIR:OUT; SFP:1102; 
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: 4P0GpQJtpPJKwE5gmYS5R5My0IFhVAmbs8x09kXbu/v2F2KvoUrjOXTo/gTQpfAWtFvUp8DN1+d1JkJ+8JvWPLoh66dM4AgDWH3DB6rRNrS/Jn5fenrl6elZLCrM2ZfZs4EJjXMT5MT3JmZBXS7RwnQsf8PJHidEFzMPaqkJX8FSF29iS1YAV1/gpcKQVFsqfKs0zA644C8DdyHDFq90Q6Xw1ZFhCaopctQrNo8389BuTce8Sk0xN8hUkqU+4q9QDMK93s7cGxzArFaZOF4obKwLjUolaxANHLcr4UcDCtM2/MOUsUI2r1SaO+U+k/rKBHwmZHfa9JtBacjMjnXu+TRQwnknsVii0BsAIeOAmZXoR3uvCeeXk6yxUmO4yYmleZOYdeN1ehw666OIbp48vA569AqArEASDq/wuenJEy3+4aQXTsxLBAuj18tRffAR
-X-OriginatorOrg: axiado.com
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 02 Sep 2026 10:23:07.9819 (UTC)
-X-MS-Exchange-CrossTenant-Network-Message-Id: a8f8cb6d-e300-4142-cca2-08df08dc2ed5
-X-MS-Exchange-CrossTenant-Id: ff2db17c-4338-408e-9036-2dee8e3e17d7
-X-MS-Exchange-CrossTenant-OriginalAttributedTenantConnectingIp: TenantId=ff2db17c-4338-408e-9036-2dee8e3e17d7; Ip=[64.62.143.114];
- Helo=[smtp.corp.axiado.com]
-X-MS-Exchange-CrossTenant-AuthSource: BN6PEPF00000076.namprd03.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Anonymous
-X-MS-Exchange-CrossTenant-FromEntityHeader: HybridOnPrem
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: IA1PR18MB5514
-Received-SPF: pass client-ip=2a01:111:f403:c105::7;
- envelope-from=kchiu@axiado.com;
- helo=CH4PR04CU002.outbound.protection.outlook.com
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2a00:1450:4864:20::331;
+ envelope-from=alex.bennee@linaro.org; helo=mail-wm1-x331.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_PASS=-0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -120,56 +110,116 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Signed-off-by: Kuan-Jui Chiu <kchiu@axiado.com>
-Reviewed-by: Philippe Mathieu-Daudé <philmd@oss.qualcomm.com>
----
- hw/arm/ax3000-boards.c | 2 +-
- hw/arm/ax3000-evk.c    | 2 +-
- hw/arm/ax3000-soc.c    | 4 ++--
- 3 files changed, 4 insertions(+), 4 deletions(-)
+Gilles Grimaud <gilles.grimaud@univ-lille.fr> writes:
 
-diff --git a/hw/arm/ax3000-boards.c b/hw/arm/ax3000-boards.c
-index 1b645b7f43..a499890317 100644
---- a/hw/arm/ax3000-boards.c
-+++ b/hw/arm/ax3000-boards.c
-@@ -1,5 +1,5 @@
- /*
-- * Axiado Boards
-+ * Axiado Ax3000 Boards
-  *
-  * Author: Kuan-Jui Chiu <kchiu@axiado.com>
-  *
-diff --git a/hw/arm/ax3000-evk.c b/hw/arm/ax3000-evk.c
-index f491de7521..adcad2f340 100644
---- a/hw/arm/ax3000-evk.c
-+++ b/hw/arm/ax3000-evk.c
-@@ -1,5 +1,5 @@
- /*
-- * Axiado Evaluation Kit Emulation
-+ * Axiado Ax3000 Evaluation Kit Emulation
-  *
-  * Author: Kuan-Jui Chiu <kchiu@axiado.com>
-  *
-diff --git a/hw/arm/ax3000-soc.c b/hw/arm/ax3000-soc.c
-index 7b96466860..37c938d942 100644
---- a/hw/arm/ax3000-soc.c
-+++ b/hw/arm/ax3000-soc.c
-@@ -230,7 +230,7 @@ static void ax3000_class_init(ObjectClass *oc, const void *data)
-     sc->num_cpus = AX3000_NUM_CPUS;
- }
- 
--static const TypeInfo axiado_soc_types[] = {
-+static const TypeInfo ax3000_soc_types[] = {
-     {
-         .name           = TYPE_AX3000_SOC,
-         .parent         = TYPE_SYS_BUS_DEVICE,
-@@ -241,4 +241,4 @@ static const TypeInfo axiado_soc_types[] = {
-     }
- };
- 
--DEFINE_TYPES(axiado_soc_types)
-+DEFINE_TYPES(ax3000_soc_types)
--- 
-2.34.1
+> From: gilles grimaud <gilles.grimaud@univ-lille.fr>
+>
+> Replace the TBMAN and VREG/chip-reset placeholders with the RP2040 regist=
+er models from the development tree. Expose the ASIC platform indication, d=
+ocumented reset values, write masks, regulator status, and APB atomic alias=
+es.\n\nAdd focused qtests for both blocks.
+>
+> Signed-off-by: gilles grimaud <gilles.grimaud@univ-lille.fr>
+> ---
+>  hw/arm/Kconfig                  |   2 +
+>  hw/arm/rp2040.c                 |  14 ++-
+>  hw/misc/Kconfig                 |   6 ++
+>  hw/misc/meson.build             |   2 +
+>  hw/misc/rp2040_tbman.c          |  92 +++++++++++++++++
+>  hw/misc/rp2040_vreg.c           | 178 ++++++++++++++++++++++++++++++++
+>  include/hw/arm/rp2040.h         |   4 +
+>  include/hw/misc/rp2040_tbman.h  |  25 +++++
+>  include/hw/misc/rp2040_vreg.h   |  28 +++++
+>  tests/qtest/meson.build         |   4 +-
+>  tests/qtest/rp2040-tbman-test.c |  32 ++++++
+>  tests/qtest/rp2040-vreg-test.c  |  79 ++++++++++++++
+>  12 files changed, 463 insertions(+), 3 deletions(-)
+>  create mode 100644 hw/misc/rp2040_tbman.c
+>  create mode 100644 hw/misc/rp2040_vreg.c
+>  create mode 100644 include/hw/misc/rp2040_tbman.h
+>  create mode 100644 include/hw/misc/rp2040_vreg.h
+>  create mode 100644 tests/qtest/rp2040-tbman-test.c
+>  create mode 100644 tests/qtest/rp2040-vreg-test.c
+>
+<snip>
+> new file mode 100644
+> index 0000000000..e8480fc258
+> --- /dev/null
+> +++ b/hw/misc/rp2040_vreg.c
+> @@ -0,0 +1,178 @@
+> +/*
+> + * RP2040 voltage regulator and chip reset emulation
+> + *
+> + * SPDX-License-Identifier: GPL-2.0-or-later
+> + */
+> +
+> +#include "qemu/osdep.h"
+> +#include "hw/misc/rp2040_nyi.h"
+> +#include "hw/misc/rp2040_vreg.h"
+> +#include "migration/vmstate.h"
+> +#include "qemu/module.h"
+> +
+> +#define VREG_VREG          0x00
+> +#define VREG_BOD           0x04
+> +#define VREG_CHIP_RESET    0x08
+> +
+> +#define VREG_ROK           BIT(12)
+> +#define VREG_VSEL_MASK     0x000000f0
+> +#define VREG_HIZ           BIT(1)
+> +#define VREG_EN            BIT(0)
+> +#define VREG_RW_MASK       (VREG_VSEL_MASK | VREG_HIZ | VREG_EN)
+> +#define VREG_RESET         0x000000b1
+> +
+> +#define BOD_VSEL_MASK      0x000000f0
+> +#define BOD_EN             BIT(0)
+> +#define BOD_RW_MASK        (BOD_VSEL_MASK | BOD_EN)
+> +#define BOD_RESET          0x00000091
+> +
+> +#define CHIP_RESET_RW_MASK 0x01000000
+> +
+> +#define ATOMIC_ALIAS_MASK  0x3000
+> +#define ATOMIC_XOR         0x1000
+> +#define ATOMIC_SET         0x2000
+> +#define ATOMIC_CLR         0x3000
+> +
+<snip>
+> diff --git a/tests/qtest/rp2040-vreg-test.c b/tests/qtest/rp2040-vreg-tes=
+t.c
+> new file mode 100644
+> index 0000000000..b08bb16765
+> --- /dev/null
+> +++ b/tests/qtest/rp2040-vreg-test.c
+> @@ -0,0 +1,79 @@
+> +/*
+> + * QTest testcase for the RP2040 vreg_and_chip_reset block.
+> + *
+> + * SPDX-License-Identifier: GPL-2.0-or-later
+> + */
+> +
+> +#include "qemu/osdep.h"
+> +#include "libqtest.h"
+> +#include "qemu/bitops.h"
+> +
+> +#define VREG_BASE           0x40064000
+> +#define VREG_VREG           0x00
+> +#define VREG_BOD            0x04
+> +#define VREG_CHIP_RESET     0x08
+> +
+> +#define VREG_ROK            BIT(12)
+> +#define VREG_RESET          0x000000b1
+> +#define BOD_RESET           0x00000091
+> +#define CHIP_RESET_RESCUE   BIT(24)
+> +
+> +#define ATOMIC_SET_ALIAS    0x2000
+> +#define ATOMIC_CLR_ALIAS    0x3000
 
+You don't need this duplication. qtest's can include QEMU headers.
+
+As an aside you might want to look at the hw/core/registerfields.h
+helpers which are good for defining registers and their fields and
+generate the helpers for you.
+
+--=20
+Alex Benn=C3=A9e
+Virtualisation Tech Lead @ Linaro
 

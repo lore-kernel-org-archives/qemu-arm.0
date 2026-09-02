@@ -4,146 +4,96 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B6887C624D3
-	for <qemu-arm@archiver.kernel.org>; Wed,  2 Sep 2026 15:34:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CF41BC61DD6
+	for <qemu-arm@archiver.kernel.org>; Wed,  2 Sep 2026 15:45:54 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1x1my3-0003AP-Sw; Wed, 02 Sep 2026 11:33:39 -0400
+	id 1x1n9o-0005LQ-JK; Wed, 02 Sep 2026 11:45:48 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@oss.qualcomm.com>)
- id 1x1my2-00039e-OD
- for qemu-arm@nongnu.org; Wed, 02 Sep 2026 11:33:38 -0400
-Received: from mx0a-0031df01.pphosted.com ([205.220.168.131])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@oss.qualcomm.com>)
- id 1x1mxz-0002nS-RX
- for qemu-arm@nongnu.org; Wed, 02 Sep 2026 11:33:38 -0400
-Received: from pps.filterd (m0279864.ppops.net [127.0.0.1])
- by mx0a-0031df01.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id
- 682DHVV5468427
- for <qemu-arm@nongnu.org>; Wed, 2 Sep 2026 15:33:34 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qualcomm.com; h=
- cc:content-transfer-encoding:content-type:date:from:in-reply-to
- :message-id:mime-version:references:subject:to; s=qcppdkim1; bh=
- U3Q+GQnfF5ilVqbH66h9gxYBW8Rm14Cez+KeqeNRyWU=; b=IGfivb1EULF0+oBI
- UaIlxzVx/biDfz/+cW+OD/ZkDHLhC96fPbWLU9fXv0hhjq/F6rNwqjVWFcY1gErw
- P2bVaB2biD10vxXjniKqynEt1rCsowxupUUQ8Px59tQKIgVNXw7pw0VAUkymmv/u
- n3Ua8FqULRbH/NmoEOcJorEyOqwrSprmOXoA9P9Y2DOtSNmI3Z7yirLTBl+pKSwt
- E9B8BNhICmuKKlqfAeO6PWOi4WkDBqTNC43tR2it4dEPTJrWmr5cbEdpggcxGdbC
- WF6lqk1IWbdYDZQixdxKM/1KdIOwop4aKMEjsZxD3uLpfRlxiM8QeyoFtApEgZnW
- hkRelg==
-Received: from mail-qk1-f200.google.com (mail-qk1-f200.google.com
- [209.85.222.200])
- by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 4gemja0gmm-1
- (version=TLSv1.3 cipher=TLS_AES_128_GCM_SHA256 bits=128 verify=NOT)
- for <qemu-arm@nongnu.org>; Wed, 02 Sep 2026 15:33:33 +0000 (GMT)
-Received: by mail-qk1-f200.google.com with SMTP id
- af79cd13be357-933023a5980so283040885a.3
- for <qemu-arm@nongnu.org>; Wed, 02 Sep 2026 08:33:33 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <mathieu.poirier@linaro.org>)
+ id 1x1n9n-0005L8-BE
+ for qemu-arm@nongnu.org; Wed, 02 Sep 2026 11:45:47 -0400
+Received: from mail-pl1-x635.google.com ([2607:f8b0:4864:20::635])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <mathieu.poirier@linaro.org>)
+ id 1x1n9k-00057p-Jb
+ for qemu-arm@nongnu.org; Wed, 02 Sep 2026 11:45:47 -0400
+Received: by mail-pl1-x635.google.com with SMTP id
+ d9443c01a7336-2d032846c95so15422675ad.1
+ for <qemu-arm@nongnu.org>; Wed, 02 Sep 2026 08:45:43 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=oss.qualcomm.com; s=google; t=1788363213; x=1788968013; darn=nongnu.org;
- h=content-transfer-encoding:content-type:in-reply-to:from:references
- :cc:to:content-language:subject:user-agent:mime-version:date
- :message-id:from:to:cc:subject:date:message-id:reply-to:content-type;
- bh=U3Q+GQnfF5ilVqbH66h9gxYBW8Rm14Cez+KeqeNRyWU=;
- b=G4UHRuq6crPUFtWu/PlbNwVqb8TsD43JxA91n8ZOxvIust6Wj38cCAPsZjGrRgvR98
- omjlLp8nBaV/WAWz8scPW9LL+KenTRhJt9L7x6fReYR20PJPFbMI9cp5P5ind61eEpCL
- HQuZW3lP06r09XgoKCO+tvaROjCpYDgZECnNSV0Z0NVjIkPzhMyFWNzNzpkfR5MAIVuA
- 2Kg/C0j3EzWlXtyO5YhZ10c9faQ2Usht24FdAjwnRA0Rq20l/rQBj+uj4d68RmQr2JRH
- R65T5zIMY9YzeXtR/We4HJInZSs3CrwSFSyvInq1LOIpz9JN8IOglDWwZ43bP2agVfdT
- hrDw==
+ d=linaro.org; s=google; t=1788363942; x=1788968742; darn=nongnu.org;
+ h=in-reply-to:content-disposition:content-type:mime-version
+ :references:message-id:subject:cc:to:from:date:from:to:cc:subject
+ :date:message-id:reply-to:content-type;
+ bh=TPysDsGnpI9b+EwUBvoDR+Wcd16jrG2t2FBfRR3MC1c=;
+ b=URvndoNUVO2h5AwJAKAYmwu3/wlxgsrOYqz+bGfzBSy18QQir30KiQ4HaC2wao7STv
+ mmwGDn6Q/a/cJTgBH3RiuSOHKfWeSk2Wjs+16K7fKjxuT5Ckx5jvhWdaTURtYolbsbxU
+ R2OrQUpUCIVhQk7SXvCYQC1s0D6sWbucMcBZiyEtXXZaVytvJUaMhdVtvybI4ofL66XY
+ xpVj2cmv0G0Ax8NpzksaLA7O+uniilwVSoFxLhpPuRmhJrV4B/yyx4cO8XcWMjCroH9t
+ 7RdfoMwwqPJf9LvLMpPKFEaGYaLIYEBAzrcJd20SpCA5QILPHIZ1dSw8y5Ggti+jUG+F
+ vTxQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1788363213; x=1788968013;
- h=content-transfer-encoding:content-type:in-reply-to:from:references
- :cc:to:content-language:subject:user-agent:mime-version:date
- :message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
- :message-id:reply-to:content-type;
- bh=U3Q+GQnfF5ilVqbH66h9gxYBW8Rm14Cez+KeqeNRyWU=;
- b=qMYv1F6WgtNiIXctGK1pwyb3B3fPqTK3hSMau006xhHq9LewX1m+XdXEKfPrrBVXdQ
- thY/vkuO9qOToyNPTi/JmE7pNXZEhikJ1rv1iDv7tZgbhUhknN5U1xA0QQtxNWEzQI7Q
- sMe7q3KKqsETAMmVdwGV441wUdA6QsV4WBWMDQ5IrM37Wi1hSExHLwLi5RQjKV8g5dZB
- Ek5mQP/M1tBmetxX5XyXp7eb6/HFT+4iMBkVsUq1dg3E6dNCBeSlkY4Vns09hmM36OG7
- XrucHAkBM+9DcUFBo7u06xG6o91It0QqgqfZgjWz7k7ymvB6T9Fz2SPgiaHQrsKKPfXL
- PI9Q==
+ d=1e100.net; s=20251104; t=1788363942; x=1788968742;
+ h=in-reply-to:content-disposition:content-type:mime-version
+ :references:message-id:subject:cc:to:from:date:x-gm-gg
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
+ :content-type;
+ bh=TPysDsGnpI9b+EwUBvoDR+Wcd16jrG2t2FBfRR3MC1c=;
+ b=p7nBhCf6fNuGZaHpmVmjhib9MKvh5O/4d7JlDizIa3KBItaDslCPXXvUpwRwJ7y7J8
+ lNpjy4YsTWHGuvpd9LbOnVJ7U0GNdatMXq/Io7CbbMGdBvdXxUZAlWX4gA8OhDP51kZS
+ Ut46Lx8kgfetelNkwd5f8FVuARv3ersX/zCx85Rwr2xDneESdnsvArOxajIZ2uIMwNgy
+ r9V+k4d13uFvAkyh/o6qf7b2EavV6yFN+/hjfvjFheLDoNPPkn7PP+1teMLLsL1MFzgw
+ PSeb8+Xq5Zh6UiefPpws4REnbLxeZ4kMgjCsCOC6R6xq4h/Erx9lNQRRvj58IZPplaSZ
+ SSIA==
 X-Forwarded-Encrypted: i=1;
- AHgh+RqDENgaszEL+rEdi4oXtb27ETIn4b0YIa9Adc/nODehDkZYFlsluFZT0vaPB4JFmalUBDnNKUOEhQ==@nongnu.org
-X-Gm-Message-State: AFuF++lw7WmU5VGcEFqozaRQivr2G3qJYHb1vlFzUk4kjnZtSTM0yx0u
- esi0yPr59xqtzJ7HKjX9+oA79xS7Z3F6CHWI1N0HatLqAMYjPHMYmjQur+/Id+oP8XyK7+18jni
- gVldrjxMbUFTo0a3evoVKTX2Jf2FqldCpXT3XDhl06zq2Q82j41I9yqQ=
-X-Gm-Gg: AR+sD11Ww1OF5/3UpcLHRxzMUyE+y4mWH5eW6StUMmAjFuOMFJJY1qAUUnv2xpIrq76
- AKP6o5n1syza7QXLlQgTKNqNhqBJKphED1Frsg+Mb5vRI+RB3NuFaYmCXm3YGN11UcmDeKPKYad
- MidejMfw8b4zp9m8YtxNEl+Dv9MElXPbnmkHtugOKJhzkt1ofkA0acPQrAoWaC7wRfBQKFFsbRx
- pWxH1s9UNqjSaz0UCF3A72YBHTdD4UJ1pBL6I08cQATGHBZWN+dsfBTpT0EPrw5OkZOwLA5qD4X
- 6Fwxgrf//E4RFCgzWRXt7YHyCgqDzlkz1TbbBrmrEEeW8TuPF7G21o8HEJKKperEfoNQYrRiTnp
- cVKYD+TOAXnZ9FXO/NjxKLQzjkErJvLfbGA==
-X-Received: by 2002:a05:620a:d8c:b0:92e:ef09:f8f3 with SMTP id
- af79cd13be357-93960c91ccemr715167585a.2.1788363212311; 
- Wed, 02 Sep 2026 08:33:32 -0700 (PDT)
-X-Received: by 2002:a05:620a:d8c:b0:92e:ef09:f8f3 with SMTP id
- af79cd13be357-93960c91ccemr715156885a.2.1788363211634; 
- Wed, 02 Sep 2026 08:33:31 -0700 (PDT)
-Received: from [192.168.69.200] (pmd666.hd.free.fr. [88.187.86.199])
+ AKwUvByiRm9KqhvKtFKeFwR6iK+6ejPZP9jyia7j0tGJw55wBmKT0tByEMb9ePQRJ2xnewIVfNBvjSQPvw==@nongnu.org
+X-Gm-Message-State: AFuF++nm/DjQOJaLPcjufGk1Q8V2/W7vaF4poD87dTOwKQZxz/Pk4v8c
+ sAoMT165Iv2Bi5Vf1scYj/73JtezV0Zi0dQns9xl64FpVLbbaB2yn/6Ff1qYInYvCKE=
+X-Gm-Gg: AYBFou1L/j7xXGiO6RPJAa0JuGRJmjXEm5JEiZookTp/BX8Hr9RPp9tpE47RjZHJtQa
+ 0OkgKMm92k9lYK5tJW046UMy3rnm1uMoC7Paoa8hy/YGNo8QcYmP1OBlIOFB4+q/Ds0PdMooLk3
+ ZN6WKS1qTtPhmOxNqy7bBrRkJp+TUornbbnrUhCf9pJCOMigBbwwjKQP59R+afDY1RpgiAuqNBt
+ x0R+8s2EmCblZZAUod9JVUZR38RZp8zOPU2xctjMmOa4UlYvDAdpSqHJiH/v/N989Rb9iXwBE8N
+ MMb3iXcRGc015/0ZRB5xe3DRCQJWfS3HY3QNGTssF5XL3TICSaYJsyDwKGgCATJy+NMFaKXfiZP
+ 7DPBXITU0sBhBWPeVNa6L9TgWTO/ZvRcNbmOeEp7Ju86ShUEIeo352rsZD1ZRwsGSyHMkBDT3hb
+ 6V79vq1uWlkQmXxNBHkl1sLEStzPAuE1QSdpWEl7tLZq6qYZQk3M2PSAU45GTbsHX18ytvKF4u7
+ 70=
+X-Received: by 2002:a17:902:d4ce:b0:2d8:d2bd:a111 with SMTP id
+ d9443c01a7336-2daec626dbdmr76719805ad.6.1788363942059; 
+ Wed, 02 Sep 2026 08:45:42 -0700 (PDT)
+Received: from p14s ([2604:3d09:148c:c800:fff4:86c5:8d86:9e93])
  by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-48448eeacbbsm6815023f8f.30.2026.09.02.08.33.29
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 02 Sep 2026 08:33:30 -0700 (PDT)
-Message-ID: <4df7584c-08e7-42cd-8f09-140626e99937@oss.qualcomm.com>
-Date: Wed, 2 Sep 2026 17:33:29 +0200
+ d9443c01a7336-2dadd48898fsm15694765ad.39.2026.09.02.08.45.40
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Wed, 02 Sep 2026 08:45:41 -0700 (PDT)
+Date: Wed, 2 Sep 2026 09:45:38 -0600
+From: Mathieu Poirier <mathieu.poirier@linaro.org>
+To: Markus Armbruster <armbru@redhat.com>
+Cc: berrange@redhat.com, kchamart@redhat.com,
+ pierrick.bouvier@oss.qualcomm.com, peter.maydell@linaro.org,
+ mst@redhat.com, cohuck@redhat.com, pbonzini@redhat.com,
+ eblake@redhat.com, lorenzo.pieralisi@linaro.org, gshan@redhat.com,
+ enju.kohei@fujitsu.com, qemu-devel@nongnu.org, qemu-arm@nongnu.org,
+ kvm@vger.kernel.org
+Subject: Re: [RFC v3 00/24] Add Realm support to QEMU-VMM
+Message-ID: <aphEopEnM1pEDLV4@p14s>
+References: <20260825220101.3443954-1-mathieu.poirier@linaro.org>
+ <87wlt55cs2.fsf@pond.sub.org>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v3 00/11] accel/tcg: Push BQL down into per-target
- do_interrupt handlers
-Content-Language: en-US
-To: qemu-devel@nongnu.org, Robert Foley <robert.foley@linaro.org>
-Cc: Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
- Peter Maydell <peter.maydell@linaro.org>, Paolo Bonzini
- <pbonzini@redhat.com>, qemu-ppc@nongnu.org, qemu-s390x@nongnu.org,
- Richard Henderson <richard.henderson@linaro.org>,
- Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>,
- qemu-riscv@nongnu.org, qemu-arm@nongnu.org
-References: <20260902152044.31291-1-philmd@oss.qualcomm.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@oss.qualcomm.com>
-In-Reply-To: <20260902152044.31291-1-philmd@oss.qualcomm.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-X-Proofpoint-GUID: VwvsaronBby-x7rLS1O66ifPtVLyAEVv
-X-Authority-Analysis: v=2.4 cv=FeAHAp+6 c=1 sm=1 tr=0 ts=6a9841cd cx=c_pps
- a=hnmNkyzTK/kJ09Xio7VxxA==:117 a=4s3hRJSeHn4rkQlkrse1kQ==:17
- a=IkcTkHD0fZMA:10 a=VdqzKS8jKosA:10 a=M51BFTxLslgA:10 a=s4-Qcg_JpJYA:10
- a=VkNPw1HP01LnGYTKEx00:22 a=u7WPNUs3qKkmUXheDGA7:22 a=DJpcGTmdVt4CTyJn9g5Z:22
- a=n4G2-de4B0qz_4TvShIA:9 a=3ZKOabzyN94A:10 a=QEXdDO2ut3YA:10
- a=PEH46H7Ffwr30OY-TuGO:22
-X-Proofpoint-Spam-Info: AW1haW4tMjYwOTAyMDEzNiBTYWx0ZWRfX9ZB1KAFzVJbz
- M2hQ1dcnDhTEoEeLYlQCPMhM+q4uzG51gmJNk5+bMj/0XDnszmV/hIOhEmoxXfFx8KRz7VddarX
- BcXcmI0ceQsW6z/puXFdqesQ1Q+ALOc=
-X-Proofpoint-ORIG-GUID: VwvsaronBby-x7rLS1O66ifPtVLyAEVv
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwOTAyMDEzNiBTYWx0ZWRfX8ow2msvh4GAa
- Rl6p5+8nc/QGBAjRcV+vhbUfGQPLDma3jawOQV3i3vXSEr2oIefgm4BHBh7zyfMCBjo7IfLGO7k
- Kx81AL+CMVp4VKU1EhMyeyNNbKQAJZE5c/dka7gzyF1sumBeXDaARWVzpB2rLTZKKTXTwSC2iIT
- w4xoICjNshnLNe718kNzqeZ6YlJeQnG9XFX08iS+ss/q9j81ulJPO8byluBioapP6YzfR/hF5Em
- pvhNYulKKfNxJL3ffcbfWoQ/IGePUxLNagc/hXR38NtmhFibJNpQw2UpsCic+1gDuN7UoDOecwT
- 799JpFtoTsjnvjwiPrkTie7UXNHkL547aTt2PKlXFK3iOKQUEMEfXf3kbbMD+9w1rfdrFw5kxoT
- +OJljFinwc4FRW6olVms5saBxrXr//UZ79H1bluHKjw9PEzmZlW/GzXfr4oIwANA8DhzYdNyC01
- Bp4k5qG81xotw+TWFew==
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.293,Aquarius:18.0.1176,Hydra:6.1.134,FMLib:17.12.100.49
- definitions=2026-09-02_03,2026-09-01_03,2025-10-01_01
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
- suspectscore=0 impostorscore=0 malwarescore=0 adultscore=0 lowpriorityscore=0
- priorityscore=1501 bulkscore=0 phishscore=0 clxscore=1015 spamscore=0
- classifier=typeunknown authscore=0 authtc= authcc= route=outbound adjust=0
- reason=mlx scancount=1 engine=8.22.0-2606150000 definitions=main-2609020136
-Received-SPF: pass client-ip=205.220.168.131;
- envelope-from=philmd@oss.qualcomm.com; helo=mx0a-0031df01.pphosted.com
-X-Spam_score_int: -27
-X-Spam_score: -2.8
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <87wlt55cs2.fsf@pond.sub.org>
+Received-SPF: pass client-ip=2607:f8b0:4864:20::635;
+ envelope-from=mathieu.poirier@linaro.org; helo=mail-pl1-x635.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -159,27 +109,67 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On 2/9/26 17:20, Philippe Mathieu-DaudÃ© wrote:
-> This is a respin of Robert Foley's v2 series from August 2020 [1]
-> triggered by a broader review of BQL contract in my halt-to-exec
-> transitions series by Peter [2] and Mark [3].
-
-
-> v2 Summary
-> ----------
+On Tue, Sep 01, 2026 at 03:20:13PM +0200, Markus Armbruster wrote:
+> Mathieu Poirier <mathieu.poirier@linaro.org> writes:
 > 
-> This series pushes the Big QEMU Lock (BQL) down from the core TCG
-> cpu_handle_interrupt/cpu_handle_exception paths into per-target
-> implementations. This allows each architecture to manage BQL locking
-> granularity independently, reducing contention on a known bottleneck
-> as measured by QEMU sync profiling (qsp).
+> > This patchset provides minimal functionality to start a Realm VM
+> > from an Arm RME capable host using the following command line:
+> >
+> > qemu-system-aarch64 \
+> >  -M confidential-guest-support=rme0,memory-backend=ram0 \
+> >  -object rme-guest,id=rme0,convert-in-place=on \
+> >  -object memory-backend-guest-memfd,id=ram0,size=1G,share=on \
+> >  -cpu host -M virt -enable-kvm -M gic-version=3,its=on -nodefaults ..
+> >
+> > It is a refactoring of Jean-Philippe Brucker's initial work dating from a while
+> > back.  It is compatible with Steven Price's v16 revision [1] of his work adding
+> > CCA support to KVM.
+> >
+> > This revision is based on Michael Roth's work on guest memfd in-place memory
+> > conversion [2] and as such, the QEMU baseline is different from 'master'.  Other
+> 
+> Use
+> 
+>     Based-on: <20260528000416.8161-1-michael.roth@amd.com>
+> 
+> to document your base.  This stands out to humans, and is readable by
+> machines.  Next time :)
+> 
+> > than modifications to use in-place memory conversion from Lorenzo Pieralisi that
+> > were integrated to patches 04, 08-11, it is identical to V2.   
+> >
+> > It was tested on the QEMU SBSA machine.  For convenience, a repository is hosted
+> > here [3],
+> 
+> Michael's series doesn't apply on master anymore, so I fetched this
+> branch.  It's based on master as of *May*.  This won't do.  Please rebase.
 
-(I couldn't find what/where 'QEMU sync profiling' is).
+This was clearly explained above.  The goal was to provide a patchset that can
+be used for testing. I can attempt a rebase but can't guarantee a timeline or
+success.
 
 > 
-> The BQL has long been a scaling bottleneck in QEMU, and the
-> interrupt/exception handling path is one of its heaviest users. By
-> allowing targets to acquire the BQL only when needed, we enable
-> future per-target optimizations.
-
+> >           along with the TF-A [4] and RMM [5] for the SBSA machine (compatible
+> > with Steven's v16 patchset).  The Repository for the kernel [6] is available
+> > from Arm.
+> >
+> > Instructions to compile and run the entire stack can be found here [7].
+> >
+> > Device Assignment is not included.
+> >
+> > Thanks,
+> > Mathieu
+> >
+> > [1]. https://lore.kernel.org/kvm/20260803134403.80630-1-steven.price@arm.com/
+> > [2]. https://lore.kernel.org/kvm/20260528000416.8161-1-michael.roth@amd.com/
+> > [3]. https://gitlab.com/Linaro/cca-public/qemu/-/tree/upstream-v3?ref_type=heads
+> > [4]. https://gitlab.com/Linaro/cca-public/tf-a/trusted-firmware-a/-/tree/cca/v13?ref_type=heads
+> > [5]. https://gitlab.com/Linaro/cca-public/rmm/-/tree/cca/v16?ref_type=heads
+> > [6]. https://gitlab.arm.com/linux-arm/linux-cca/-/tree/cca-host/v16?ref_type=heads
+> > [7]. https://gitlab.com/Linaro/cca-public/build-instructions
+> >
+> > RFC v2: https://lore.kernel.org/kvm/20260728192630.240375-1-mathieu.poirier@linaro.org/
+> > RFC v1: https://lists.gnu.org/archive/html/qemu-devel/2026-07/msg02307.html
+> 
+> 
 

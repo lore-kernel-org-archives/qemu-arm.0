@@ -4,61 +4,91 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B050CC61DD6
-	for <qemu-arm@archiver.kernel.org>; Wed,  2 Sep 2026 06:10:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2F47CC61DD6
+	for <qemu-arm@archiver.kernel.org>; Wed,  2 Sep 2026 06:10:57 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1x1eB7-0006cK-Tu; Wed, 02 Sep 2026 02:10:33 -0400
+	id 1x1eAv-0006an-N1; Wed, 02 Sep 2026 02:10:21 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1x1eB7-0006br-0d
- for qemu-arm@nongnu.org; Wed, 02 Sep 2026 02:10:33 -0400
-Received: from smtpout10.mo538.mail-out.ovh.net ([51.210.91.39])
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1x1eAu-0006aH-NN
+ for qemu-arm@nongnu.org; Wed, 02 Sep 2026 02:10:20 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1x1eB3-0002zY-S9
- for qemu-arm@nongnu.org; Wed, 02 Sep 2026 02:10:32 -0400
-Received: from director5.derp.mail-out.ovh.net
- (director5.derp.mail-out.ovh.net [79.137.60.225])
- by mo538.mail-out.ovh.net (Postfix) with ESMTPS id 4hZXQT3Q4Dz5vZC;
- Wed,  2 Sep 2026 06:10:25 +0000 (UTC)
-Received: from director5.derp.mail-out.ovh.net
- (director5.derp.mail-out.ovh.net. [127.0.0.1])
- by director5.derp.mail-out.ovh.net (inspect_sender_mail_agent) with SMTP
- for <jamin_lin@aspeedtech.com>; Wed,  2 Sep 2026 06:10:25 +0000 (UTC)
-Received: from mta7.priv.ovhmail-u2.ea.mail.ovh.net (unknown [10.110.43.77])
- by director5.derp.mail-out.ovh.net (Postfix) with ESMTPS id 4hZXQT2khnz6MbL;
- Wed,  2 Sep 2026 06:10:25 +0000 (UTC)
-Received: from kaod.org (unknown [10.1.6.5])
- (Authenticated sender: clg@kaod.org)
- by mta7.priv.ovhmail-u2.ea.mail.ovh.net (Postfix) with ESMTPSA id 40E56203FDB; 
- Wed,  2 Sep 2026 06:10:23 +0000 (UTC)
-Authentication-Results: garm.ovh; auth=pass
- (GARM-110S004fe92f47e-db1d-4019-99d8-f2d50423713f,
- E05C9764BA5542D7874F2BFBE20C1A6231857223) smtp.auth=clg@kaod.org
-X-OVh-ClientIp: 82.64.250.170
-Message-ID: <8b49306d-b767-4d80-a4de-bf492e646138@kaod.org>
-Date: Wed, 2 Sep 2026 08:10:22 +0200
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1x1eAs-0002yi-Ca
+ for qemu-arm@nongnu.org; Wed, 02 Sep 2026 02:10:20 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1788329416;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
+ bh=WHrVL/Cz94sEOkrFantle+w+RpwepPArA3RjPc4IfjY=;
+ b=K8aXxt5PpiKJmmalClcbSWYNQP7vZJTefaEgamP4/ipqfDx3rgyHli4BHm0Mt8Edaobz0D
+ 3oRqadFYzxQB6eESk9bADj/OIyR0R4XcmFq7rMmJcOqg8nS/cICY+p9I4UKD7WQUeGzqs9
+ /yEkuJu1PcYFVlU+Po2D9TtE4Q3tDlo=
+Received: from mail-wm1-f70.google.com (mail-wm1-f70.google.com
+ [209.85.128.70]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-205-WMqd4E06NbWw5nvwY357WA-1; Wed, 02 Sept 2026 02:10:15 -0400
+X-MC-Unique: WMqd4E06NbWw5nvwY357WA-1
+X-Mimecast-MFC-AGG-ID: WMqd4E06NbWw5nvwY357WA_1788329414
+Received: by mail-wm1-f70.google.com with SMTP id
+ 5b1f17b1804b1-49554715277so5588945e9.1
+ for <qemu-arm@nongnu.org>; Tue, 01 Sep 2026 23:10:15 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20251104; t=1788329414; x=1788934214;
+ h=content-transfer-encoding:content-type:in-reply-to:autocrypt
+ :content-language:from:references:cc:to:subject:user-agent
+ :mime-version:date:message-id:x-gm-gg:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to:content-type;
+ bh=WHrVL/Cz94sEOkrFantle+w+RpwepPArA3RjPc4IfjY=;
+ b=ZHIS8oy85jKXDbSfzwpL5n/5slQZv7dITt40JtxttzcKFVxm0Ir2IbP5Va/jU36b0e
+ X5Vs9ONVsdW7TMjXFjQkHVKES0kzoYxKpd3rhBwU+U0flfCdyAJL0TEGVpah8e09Gwif
+ pTf+8erLOIpILlmhc394CUtoGElTr9+/rsXGub787DTnZUCOjhwfEeRqG1Zqkh6n8i6Z
+ FLMfYUcouuNKmHM6u5kc2HSug5mopOA++prwUT4d2BYrPDDca4R8t6gh3aYDQHNAV0j/
+ +1SRN+ol4eIH3JumOwfeXVxp089Sjy7yjzBhg8rBkcztshWgpDBaXt60RM6clTNjHZdF
+ oM9A==
+X-Forwarded-Encrypted: i=1;
+ AHgh+RqaZ9M3Fg7LgCbWx9ltSi2WqvAZWX7hR8Yi4bcorpwM3wk7rOb+roVtXykv0F9ODdq6ygYoeuhdmA==@nongnu.org
+X-Gm-Message-State: AFuF++mU+QXRiAiKWisOQkzj/PsHF0BTnZTZKrwkTcc33QIbn4vguj6w
+ n28T807iwhYOh9LoQJyi/KzI4UCHUBfAd8ThJ1Suwje/vAthwh48SK9pKmrIeFGzT8heVhz9vvl
+ B+ywPC5dpZK+fEkKd7S/CpCvy1ks1O3xW/0NI8lnRl9viwJ1/lmO7gg==
+X-Gm-Gg: AR+sD10459+p8Ntzlgxtd+rtxYoYsUuqare1ohtkbRhmv2DtHc2HbBBjGBZMJx2VlNF
+ qqa1MzdA7H1XTWH3NpN7TiCiBwi1gR9ytHL48wf+B17JVyJxKYn7u/H2R7ZMBqIYtY/RLC9lcXA
+ CxmFOvR3hkwyGNfbuBqgZn8MkPRI+Xoz1fS1EE/NtG338lSn17j3HNFveQbrfwprwkD6IXBgI5g
+ PCdONK83hGXLmVo24epnba7aK/w9Zdp5zZI7aOKXGpmM0EYFWfxL2pD29yne3T4cKlac+1E5vhd
+ 41hUjvSV7PbJT62TWgNAL3T5RUhJEF/PM+fQReLVGZ0PUrGWDpsOmeRzBqlNOdMMDh7cUCSdHHH
+ KqNdZuOKHOlPwJxpFhbdBmMfI1P7PKjOyUvVUqlU=
+X-Received: by 2002:a05:600c:5306:b0:49c:c9ac:a4f3 with SMTP id
+ 5b1f17b1804b1-49ce5810b6amr45266045e9.1.1788329414086; 
+ Tue, 01 Sep 2026 23:10:14 -0700 (PDT)
+X-Received: by 2002:a05:600c:5306:b0:49c:c9ac:a4f3 with SMTP id
+ 5b1f17b1804b1-49ce5810b6amr45265075e9.1.1788329413570; 
+ Tue, 01 Sep 2026 23:10:13 -0700 (PDT)
+Received: from ?IPV6:2a01:e0a:280:24f0:2cd2:7ace:8238:f7f4?
+ ([2a01:e0a:280:24f0:2cd2:7ace:8238:f7f4])
+ by smtp.gmail.com with ESMTPSA id
+ 5b1f17b1804b1-49ce465161esm41522705e9.7.2026.09.01.23.10.11
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Tue, 01 Sep 2026 23:10:12 -0700 (PDT)
+Message-ID: <421acb62-dd31-4c95-800b-234c1803510e@redhat.com>
+Date: Wed, 2 Sep 2026 08:10:11 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v4 0/9] Add ECDSA akcipher support and the ASPEED SBC
- ECDSA engine for AST10x0
-To: Jamin Lin <jamin_lin@aspeedtech.com>,
- =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>,
- Peter Maydell <peter.maydell@linaro.org>,
+Subject: Re: [PATCH v5 0/4] hw/usb: Add ASPEED USB Device Controller (UDC)
+To: Jamin Lin <jamin_lin@aspeedtech.com>, Paolo Bonzini
+ <pbonzini@redhat.com>, Peter Maydell <peter.maydell@linaro.org>,
  Steven Lee <steven_lee@aspeedtech.com>, Troy Lee <leetroy@gmail.com>,
  Kane Chen <kane_chen@aspeedtech.com>,
  Andrew Jeffery <andrew@codeconstruct.com.au>, Joel Stanley <joel@jms.id.au>,
- Eric Blake <eblake@redhat.com>, Markus Armbruster <armbru@redhat.com>,
- Fabiano Rosas <farosas@suse.de>, Laurent Vivier <lvivier@redhat.com>,
- Paolo Bonzini <pbonzini@redhat.com>,
- "open list:All patches CC here" <qemu-devel@nongnu.org>,
- "open list:ASPEED BMCs" <qemu-arm@nongnu.org>
+ "open list:ARM TCG CPUs" <qemu-arm@nongnu.org>,
+ "open list:All patches CC here" <qemu-devel@nongnu.org>
 Cc: Troy Lee <troy_lee@aspeedtech.com>
-References: <20260901085238.995968-1-jamin_lin@aspeedtech.com>
-From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
-Content-Language: en-US, fr
-Autocrypt: addr=clg@kaod.org; keydata=
+References: <20260902021542.3194812-1-jamin_lin@aspeedtech.com>
+From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@redhat.com>
+Autocrypt: addr=clg@redhat.com; keydata=
  xsFNBFu8o3UBEADP+oJVJaWm5vzZa/iLgpBAuzxSmNYhURZH+guITvSySk30YWfLYGBWQgeo
  8NzNXBY3cH7JX3/a0jzmhDc0U61qFxVgrPqs1PQOjp7yRSFuDAnjtRqNvWkvlnRWLFq4+U5t
  yzYe4SFMjFb6Oc0xkQmaK2flmiJNnnxPttYwKBPd98WfXMmjwAv7QfwW+OL3VlTPADgzkcqj
@@ -68,61 +98,54 @@ Autocrypt: addr=clg@kaod.org; keydata=
  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
- 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
-In-Reply-To: <20260901085238.995968-1-jamin_lin@aspeedtech.com>
+ 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
+ uVKe8BVz4atMOoktmt0GWTOC8P4=
+In-Reply-To: <20260902021542.3194812-1-jamin_lin@aspeedtech.com>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-MFC-PROC-ID: lRUUQFryHTibNJFL_O9wDFtqgtR2upHRX0t0UDd1tdg_1788329414
+X-Mimecast-Originator: redhat.com
+Content-Language: en-US, fr
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
-x-ovh-tracer-id: 13677713544579558445
-X-VR-SPAMSTATE: OK
-X-VR-SPAMSCORE: -100
-X-VR-SPAMCAUSE: dmFkZTGyVfh0oo5tsmvl8dId4WGuM94nMRbhQElUiOrN/jbPxJaDgSfXvzOj36c9yiKcVMUNPDP/bnjKmI3jn2zUB5vaNjemuKSLH+jViGLj8Q0fW6KFqZ+IOVMAH3HESfNxYm6FZnoAonSnoTVyBo+Ih79EeL2nwnKkZAoPpzmU4L7KnL94CjKxv1czB052V9FFtZu1YOTeOo6f+rmnYXRe+2YQiUwYDxjXQZZ1mh7M70LQ7DguKGgHrUCaXgXDCoOJZEI419neoC7hR4HDV0YWor5wAkKR/w+gViT7p+NIDM7cLVBzCb5vvXrIMCvjXb71kpx3gbk2zA3Ld7Px5Hku5s6imkJBI9WTTapvgln8kJXQL6eHExDpchGPbezNok9uv8cMeWgMlusvIqQ1bJiIGa845fiiflZmPQzCcGvSg0WC1ODORhlWoj9tLemWnXfIAsMh/hTKn/jwmNu3OBUziR/WrI4N8l/c/XZppE3GnVmCMSf3ykD0JeDj70T5/jegoveRgtkGLzxnn/pwFbM0Q1IKfy6Jw007HyGDxsltSXCxx4yeStpuG5bY+jEMCbu6o1GfiiPyOlmkcP883/BFUJpFhIWquNsi9NZn8D5RpbHIAbWdAYvwKBt+YYVA65Sy4RWJW+xD43XJ2EY3g7vS+ZwHTcq6qWH2AA/MdrsWXmiFHQ
-DKIM-Signature: a=rsa-sha256; bh=qXeEYmdq+fv9GR9jc2xTGC+4M1iZskHC1ufE+rb/9/M=; 
- c=relaxed/relaxed; d=kaod.org; h=From; s=ovhmo393970-selector1;
- t=1788329426; v=1;
- b=KQsQJwQ46LIeuPIoZHIgL0hoejnXWam1D5VGqrS+WeArky7nWUvDvtcRGhc7DA7V5/cOZAVc
- 9RWxHYEjyCS2xGRpGIRkUMFlMLtozcefLGnG8czsHFnVXxawZ/GXEnZ8xDCKdZGsNf/S2nYVIHW
- +q0a/Zfor2BbGEPdZFesInEpXO/xUhRUvOWbVm7r3C7kq1HaZ7jnys6B3tqxxJ7EQbuIXHz6JwV
- io8EcQJJUPm2C9o4NzNvTvNkROWjJUsOXXTXIWArIuq8k/5Tu+0RKb3FCIlRx6IiCNEmSYlNUVW
- PThqWxqg2NQLBovmzJHuKPAs6iHSY1GNgz2ekoSNheJiA==
-Received-SPF: pass client-ip=51.210.91.39; envelope-from=clg@kaod.org;
- helo=smtpout10.mo538.mail-out.ovh.net
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=clg@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=0.001, SPF_HELO_PASS=-0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -139,76 +162,273 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On 9/1/26 10:52, Jamin Lin wrote:
-> This series depends on:
+On 9/2/26 04:15, Jamin Lin wrote:
+> This series adds a QEMU model for the ASPEED USB Device Controller (UDC),
+> driven by the Linux "aspeed_udc" gadget driver.
 > 
->   1. [v4,0/4] Add ASPEED ACRY RSA model for the AST2600
->      https://patchwork.kernel.org/project/qemu-devel/cover/20260901081531.898176-1-jamin_lin@aspeedtech.com/
+> It is the first step of a larger plan to model USB device-side support on
+> ASPEED BMC/BIC SoCs, which has three goals:
 > 
-> This series adds ECDSA to the QEMU crypto akcipher framework and models the
-> ASPEED AST10x0 secure boot controller (SBC) ECDSA engine on top of it.
+> 1. Model the ASPEED UDC (AST2600 / AST1030). The AST2600 also has USB host
+>     (EHCI) controllers, so this series targets the AST2600 UDC: its gadget can
+>     be attached to the SoC's own EHCI bus, letting the guest enumerate its own
+>     gadget and exercise the UDC end-to-end.  [this series]
 > 
-> The crypto side adds ECDSA sign/verify for prime256v1 (NIST P-256) and
-> secp384r1 (NIST P-384) in both the gcrypt and nettle backends, using the raw
-> big-endian form (public key Qx || Qy, private key scalar d, signature r || s)
-> with a pre-computed digest as input.
+> 2. AST1030 UDC. The AST1030 has no USB host controller, so testing its UDC
+>     needs a second QEMU instance. The plan is to redirect the UDC gadget out
+>     of the guest using libusbredir and attach it to another QEMU that runs a
+>     USB host (a VMM, or an AST2600 / AST2700 guest).  [on-going]
+>     
+> 3. ASPEED vHub, as a longer-term goal towards BMC KVM / Virtual Media support
+>     in QEMU.  [future]
 > 
-> Both the AST2600 and the AST1030/AST1060 have a Secure Boot Controller (SBC)
-> that supports RSA and ECDSA verification, but only the AST1030/AST1060 have an
-> ECDSA verify engine, so this series models ECDSA only. RSA verification is used
-> solely to verify the AST2600 SPL in ROM CODE, which ASPEED does not release,
-> so it is very unlikely to be used by end users.
+> This series implements goal 1 only.
+> 
+> Design
+> ------
+> The UDC is modelled as two QOM objects, because a single object cannot be
+> both a SysBusDevice and a USBDevice:
+> 
+>    - "aspeed.udc": the sysbus device (MMIO register map, IRQ and DMA engine)
+>      that the guest gadget driver programs.
+> 
+>    - "aspeed.udc-gadget": a user-creatable USB device presented on a USB host
+>      controller's bus. It links back to its controller through the "udc"
+>      property.
+> 
+> The SoC creates the controller; the gadget is added on the command line, e.g.
+> 
+>    -device aspeed.udc-gadget,udc=/machine/soc/udc
+>       
+> Test result:
+> -----------
+> The default ASPEED SDK prebuilt image does not enable the UDC driver, so
+> build a kernel with CONFIG_USB_ASPEED_UDC=y first.
+> 
+> Start QEMU with the gadget attached to the on-SoC EHCI:
+> 
+>    qemu-system-arm -machine ast2600-evb -drive file=<image>,if=mtd,format=raw \
+>        -device aspeed.udc-gadget,udc=/machine/soc/udc -nographic
+> 
+> In the guest, bring up a mass-storage gadget and verify enumeration and I/O:
+> 
+> 1. Before: only the host controllers are present
+> root@ast2600-default:~# lsusb
+> unable to initialize usb specBus 001 Device 001: ID 1d6b:0002 Linux 6.18.20-dirty-32e49fb4a22b-g32e49fb4a22b-dirty ehci_hcd EHCI Host Controller
+> Bus 002 Device 001: ID 1d6b:0001 Linux 6.18.20-dirty-32e49fb4a22b-g32e49fb4a22b-dirty uhci_hcd Generic UHCI Host Controller
+> 
+> 2. Enable the gadget
+> root@ast2600-default:~# ./usb-storage.sh
+> Using UDC: 1e6a2000.usb
+> [  598.582205] Mass Storage Function, version: 2009/09/11
+> [  598.582635] LUN: removable file: (no medium)
+> USB Mass Storage gadget is enabled.
+> Backing file: /home/root/jamin
+> root@ast2600-default:~# [  598.876395] usb 1-1: new high-speed USB device number 2 using ehci-platform
+> [  599.070035] usb 1-1: New USB device found, idVendor=1d6b, idProduct=0104, bcdDevice= 1.00
+> [  599.070821] usb 1-1: New USB device strings: Mfr=1, Product=2, SerialNumber=3
+> [  599.071448] usb 1-1: Product: ASPEED USB Storage
+> [  599.072687] usb 1-1: Manufacturer: ASPEED
+> [  599.073384] usb 1-1: SerialNumber: 1234567890
+> [  599.103625] usb-storage 1-1:1.0: USB Mass Storage device detected
+> [  599.136326] scsi host0: usb-storage 1-1:1.0
+> [  600.230921] scsi 0:0:0:0: Direct-Access     Linux    File-Stor Gadget 0618 PQ: 0 ANSI: 2
+> [  600.243758] sd 0:0:0:0: Attached scsi generic sg0 type 0
+> [  600.263452] sd 0:0:0:0: Power-on or device reset occurred
+> [  600.289381] sd 0:0:0:0: [sda] 2048 512-byte logical blocks: (1.05 MB/1.00 MiB)
+> [  600.297896] sd 0:0:0:0: [sda] Write Protect is off
+> [  600.306379] sd 0:0:0:0: [sda] Write cache: enabled, read cache: enabled, doesn't support DPO or FUA
+> [  600.424608]  sda:
+> [  600.425526] sd 0:0:0:0: [sda] Attached SCSI removable disk
+> 
+> 3. After: the gadget enumerates on the EHCI bus
+> root@ast2600-default:~# lsusb
+> unable to initialize usb specBus 001 Device 001: ID 1d6b:0002 Linux 6.18.20-dirty-32e49fb4a22b-g32e49fb4a22b-dirty ehci_hcd EHCI Host Controller
+> Bus 001 Device 002: ID 1d6b:0104 ASPEED ASPEED USB Storage
+> Bus 002 Device 001: ID 1d6b:0001 Linux 6.18.20-dirty-32e49fb4a22b-g32e49fb4a22b-dirty uhci_hcd Generic UHCI Host Controller
+> 
+> 4. Mount and verify data
+> root@ast2600-default:~# mount /dev/sda /mnt/
+> root@ast2600-default:~# sha256sum /mnt/testfile
+> 3308890a1289f6a327c014537523e8ebd0833301af3d25a7c5893dc7050d2c70  /mnt/testfile
+> root@ast2600-default:~# umount /mnt
+> 
+> 5. Stop the gadget -> clean disconnect
+> root@ast2600-default:~# ./usb-storage.sh stop
+> Stopping USB gadget...
+> [  669.866439] usb 1-1: USB disconnect, device number 2
+> Stopped.
+> root@ast2600-default:~# [  669.968156] sd 0:0:0:0: [sda] Synchronizing SCSI cache
+> [  669.969307] sd 0:0:0:0: [sda] Synchronize Cache(10) failed: Result: hostbyte=0x01 driverbyte=DRIVER_OK
+> 
+> root@ast2600-default:~# lsusb
+> unable to initialize usb specBus 001 Device 001: ID 1d6b:0002 Linux 6.18.20-dirty-32e49fb4a22b-g32e49fb4a22b-dirty ehci_hcd EHCI Host Controller
+> Bus 002 Device 001: ID 1d6b:0001 Linux 6.18.20-dirty-32e49fb4a22b-g32e49fb4a22b-dirty uhci_hcd Generic UHCI Host Controller
+> 
+> 
+> The contents of this scripts
+> ---------------------------
+> root@ast2600-default:~# cat  usb-storage.sh
+> #!/bin/sh
+> set -e
+> 
+> G=/sys/kernel/config/usb_gadget/g1
+> IMG=/home/root/jamin
+> SIZE_MB=64
+> 
+> mount_configfs()
+> {
+>      mountpoint -q /sys/kernel/config || mount -t configfs none /sys/kernel/config
+> }
+> 
+> get_udc()
+> {
+>      ls /sys/class/udc | head -n 1
+> }
+> 
+> stop_gadget()
+> {
+>      if [ ! -d "$G" ]; then
+>          return
+>      fi
+> 
+>      echo "Stopping USB gadget..."
+> 
+>      # Unbind UDC first
+>      if [ -f "$G/UDC" ]; then
+>          echo "" > "$G/UDC" 2>/dev/null || true
+>      fi
+> 
+>      # Clear backing file to release image
+>      if [ -f "$G/functions/mass_storage.0/lun.0/file" ]; then
+>          echo "" > "$G/functions/mass_storage.0/lun.0/file" 2>/dev/null || true
+>      fi
+> 
+>      # Remove function link from config
+>      rm -f "$G/configs/c.1/mass_storage.0" 2>/dev/null || true
+> 
+>      echo "Stopped."
+> }
+> 
+> start_gadget()
+> {
+>      mount_configfs
+> 
+>      UDC="$(get_udc)"
+>      if [ -z "$UDC" ]; then
+>          echo "ERROR: No UDC found in /sys/class/udc"
+>          exit 1
+>      fi
+> 
+>      stop_gadget
+> 
+>      echo "Using UDC: $UDC"
+> 
+>      modprobe libcomposite 2>/dev/null || true
+> 
+>      mkdir -p "$G"
+>      cd "$G"
+> 
+>      echo 0x1d6b > idVendor
+>      echo 0x0104 > idProduct
+>      echo 0x0200 > bcdUSB
+>      echo 0x0100 > bcdDevice
+> 
+>      mkdir -p strings/0x409
+>      echo "1234567890" > strings/0x409/serialnumber
+>      echo "ASPEED" > strings/0x409/manufacturer
+>      echo "ASPEED USB Storage" > strings/0x409/product
+> 
+>      mkdir -p configs/c.1/strings/0x409
+>      echo "Mass Storage" > configs/c.1/strings/0x409/configuration
+>      echo 120 > configs/c.1/MaxPower
+> 
+>      if [ ! -f "$IMG" ]; then
+>          echo "Creating backing image: $IMG"
+>          dd if=/dev/zero of="$IMG" bs=1M count="$SIZE_MB"
+>          mkfs.vfat "$IMG"
+>      fi
+> 
+>      mkdir -p functions/mass_storage.0
+> 
+>      # Make sure old LUN is detached before changing attributes
+>      echo "" > functions/mass_storage.0/lun.0/file 2>/dev/null || true
+> 
+>      echo 0 > functions/mass_storage.0/stall
+>      echo 0 > functions/mass_storage.0/lun.0/cdrom
+>      echo 0 > functions/mass_storage.0/lun.0/ro
+>      echo 1 > functions/mass_storage.0/lun.0/removable
+>      echo "$IMG" > functions/mass_storage.0/lun.0/file
+> 
+>      ln -sf functions/mass_storage.0 configs/c.1/mass_storage.0
+> 
+>      echo "$UDC" > UDC
+> 
+>      echo "USB Mass Storage gadget is enabled."
+>      echo "Backing file: $IMG"
+> }
+> 
+> case "$1" in
+>      start|"")
+>          start_gadget
+>          ;;
+>      stop)
+>          stop_gadget
+>          ;;
+>      restart)
+>          stop_gadget
+>          sleep 1
+>          start_gadget
+>          ;;
+>      *)
+>          echo "Usage: $0 {start|stop|restart}"
+>          exit 1
+>          ;;
+> esac
+> 
 > 
 > v1:
->   1. Add ECDSA akcipher support with gcrypt backend
->   2. Add ECDSA akcipher support with nettle backend
->   3. Add ECDSA sign/verify unit tests
->   4. Support the ECDSA verify command for AST10x0
->   5. Add ASPEED SBC ECDSA engine qtest
+>    1. Add ASPEED UDC device controller
+>    2. Add ASPEED UDC gadget USB device
 > 
 > v2:
->   1. Wrap the SEC SRAM in a container mapped at offset 0 so the device
->      addresses it by relative offset (drop the "sram-base" property)
->   2. Add a patch removing the obsolete unimplemented SBC mapping
->   3. Add Qtest to ast1060-evb machine.
->   4. Rename R_ECDSA_CMD to R_SEC_TRIGGER, since the register
->      triggers both the RSA and ECDSA engines.
-> 
+>    1. Replace dynamic memory allocation with fixed-size arrays.
+>    2. Use an OR gate to route the interrupt signals from the UDC and EHCI2.
+>    3. Split the "Add ASPEED UDC gadget USB device" patch into two patches:
+>      a. Add ASPEED UDC gadget USB device
+>        Implement EP0 control transfers.
+>      b. Add programmable endpoint DMA transfers
+>        Implement DMA transfers for programmable endpoints.
+>    4. Remove unused macros.
+>    
 > v3:
->   1. fix typo
->   2. Replace g_printerr with g_test_skip
+>    1. Remove unused macros.
+>    2. Bind the gadget to the controller via a QOM link property
+>     ("usbgadget", weak) instead of writing the back-pointer directly
 > 
 > v4:
->    1. Reorder the patches to fix a QEMU startup failure at an intermediate commit.
->    2. Add public key type validation for ECDSA verification.
->    3. Add private key type validation for ECDSA signing.
->    4. Remove sbc_unimplemented from AspeedSoCState
->    5. Update the commit messages.
+>    1. Move the "select USB" dependency to the appropriate patch.
 > 
-> Jamin Lin (9):
->    qapi/crypto: Add ECDSA algorithm and curve id
->    crypto/akcipher: Support ECDSA sign/verify with gcrypt
->    crypto/akcipher: Support ECDSA sign/verify with nettle
->    tests/crypto: Add ECDSA sign/verify tests
->    hw/arm/aspeed_ast10x0: Remove obsolete unimplemented SBC mapping
->    hw/misc/aspeed_sbc: Increase register space to 0x1000
->    hw/arm/aspeed_ast10x0: Wire SEC SRAM to the SBC model
->    hw/misc/aspeed_sbc: Support the ECDSA verify command
->    tests/qtest: Add ASPEED SBC ECDSA engine test
+> v5:
+>    1. Dynamically allocate the buffer in aspeed_udc_ep_xfer_out() to reduce stack usage.
 > 
->   qapi/crypto.json                  |  33 ++-
->   include/hw/arm/aspeed_soc.h       |   1 -
->   include/hw/misc/aspeed_sbc.h      |   6 +-
->   hw/arm/aspeed_ast10x0.c           |  14 +-
->   hw/misc/aspeed_sbc.c              | 158 +++++++++++++-
->   tests/qtest/aspeed-sbc-test.c     | 194 +++++++++++++++++
->   tests/unit/test-crypto-akcipher.c | 236 +++++++++++++++++++++
->   crypto/akcipher-gcrypt.c.inc      | 340 +++++++++++++++++++++++++++++-
->   crypto/akcipher-nettle.c.inc      | 272 ++++++++++++++++++++++++
->   hw/misc/trace-events              |   2 +
->   tests/qtest/meson.build           |   2 +
->   11 files changed, 1242 insertions(+), 16 deletions(-)
->   create mode 100644 tests/qtest/aspeed-sbc-test.c
+> Jamin Lin (4):
+>    hw/usb/aspeed-udc: Add ASPEED UDC device controller
+>    hw/usb/aspeed-udc: Add ASPEED UDC gadget USB device
+>    hw/usb/aspeed-udc: Add programmable endpoint DMA transfers
+>    hw/arm/aspeed_ast2600: Wire up the UDC
+> 
+>   include/hw/arm/aspeed_soc.h |    4 +
+>   include/hw/usb/aspeed-udc.h |   85 +++
+>   hw/arm/aspeed_ast2600.c     |   37 +-
+>   hw/usb/aspeed-udc.c         | 1058 +++++++++++++++++++++++++++++++++++
+>   hw/arm/Kconfig              |    1 +
+>   hw/usb/Kconfig              |    4 +
+>   hw/usb/meson.build          |    1 +
+>   hw/usb/trace-events         |   16 +
+>   8 files changed, 1203 insertions(+), 3 deletions(-)
+>   create mode 100644 include/hw/usb/aspeed-udc.h
+>   create mode 100644 hw/usb/aspeed-udc.c
 > 
 
 Applied to

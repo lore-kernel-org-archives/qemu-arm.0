@@ -4,95 +4,142 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CF41BC61DD6
-	for <qemu-arm@archiver.kernel.org>; Wed,  2 Sep 2026 15:45:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1E4F2C624D4
+	for <qemu-arm@archiver.kernel.org>; Wed,  2 Sep 2026 16:17:02 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1x1n9o-0005LQ-JK; Wed, 02 Sep 2026 11:45:48 -0400
+	id 1x1ndq-0007Bs-Fc; Wed, 02 Sep 2026 12:16:50 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mathieu.poirier@linaro.org>)
- id 1x1n9n-0005L8-BE
- for qemu-arm@nongnu.org; Wed, 02 Sep 2026 11:45:47 -0400
-Received: from mail-pl1-x635.google.com ([2607:f8b0:4864:20::635])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <mathieu.poirier@linaro.org>)
- id 1x1n9k-00057p-Jb
- for qemu-arm@nongnu.org; Wed, 02 Sep 2026 11:45:47 -0400
-Received: by mail-pl1-x635.google.com with SMTP id
- d9443c01a7336-2d032846c95so15422675ad.1
- for <qemu-arm@nongnu.org>; Wed, 02 Sep 2026 08:45:43 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <philmd@oss.qualcomm.com>)
+ id 1x1ndo-0007BN-SX
+ for qemu-arm@nongnu.org; Wed, 02 Sep 2026 12:16:48 -0400
+Received: from mx0b-0031df01.pphosted.com ([205.220.180.131])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <philmd@oss.qualcomm.com>)
+ id 1x1ndn-0003fI-5A
+ for qemu-arm@nongnu.org; Wed, 02 Sep 2026 12:16:48 -0400
+Received: from pps.filterd (m0279870.ppops.net [127.0.0.1])
+ by mx0a-0031df01.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id
+ 682FZN8G2067373
+ for <qemu-arm@nongnu.org>; Wed, 2 Sep 2026 16:16:45 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qualcomm.com; h=
+ cc:content-transfer-encoding:content-type:date:from:in-reply-to
+ :message-id:mime-version:references:subject:to; s=qcppdkim1; bh=
+ 5LDI2JScvormYirFbxmb7Mw8lZGcKuNc/CE0uQI5/o4=; b=K0RKmLZzMYoLtYAH
+ geXZagYegzXTMHt2xiWn8Cl58oMfzHtfPA6j5rY03bYjHS7TRd1VyZjWYSIsYR1z
+ MT3tZNCgSPgX7Bdt/bJxINqOsXeFrvTnzpVg5rkOb62vFbcG6jQuMZifUQ+2ZMIX
+ L0l0KJ08RyL8+10yGv1wQ6j9FRPHsjbDoer2b0ydJyvsU8IeUe8B2JuN1j8goMyw
+ gz/ipwOdVc8YzeK7+d1RZ7WpKp/9NLivO+z9hYSeOSiDV3AD9LHjCowOBCGgnC8Y
+ MzARZsu6W8u0OAxt8Aqn3MMfPnmWRSQnio3AGWWR5Bl+u5mv82VwBjz1JmfnC+JW
+ 3iflow==
+Received: from mail-qk1-f200.google.com (mail-qk1-f200.google.com
+ [209.85.222.200])
+ by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 4gejv8961j-1
+ (version=TLSv1.3 cipher=TLS_AES_128_GCM_SHA256 bits=128 verify=NOT)
+ for <qemu-arm@nongnu.org>; Wed, 02 Sep 2026 16:16:45 +0000 (GMT)
+Received: by mail-qk1-f200.google.com with SMTP id
+ af79cd13be357-92e62e3459fso239168085a.0
+ for <qemu-arm@nongnu.org>; Wed, 02 Sep 2026 09:16:45 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1788363942; x=1788968742; darn=nongnu.org;
- h=in-reply-to:content-disposition:content-type:mime-version
- :references:message-id:subject:cc:to:from:date:from:to:cc:subject
- :date:message-id:reply-to:content-type;
- bh=TPysDsGnpI9b+EwUBvoDR+Wcd16jrG2t2FBfRR3MC1c=;
- b=URvndoNUVO2h5AwJAKAYmwu3/wlxgsrOYqz+bGfzBSy18QQir30KiQ4HaC2wao7STv
- mmwGDn6Q/a/cJTgBH3RiuSOHKfWeSk2Wjs+16K7fKjxuT5Ckx5jvhWdaTURtYolbsbxU
- R2OrQUpUCIVhQk7SXvCYQC1s0D6sWbucMcBZiyEtXXZaVytvJUaMhdVtvybI4ofL66XY
- xpVj2cmv0G0Ax8NpzksaLA7O+uniilwVSoFxLhpPuRmhJrV4B/yyx4cO8XcWMjCroH9t
- 7RdfoMwwqPJf9LvLMpPKFEaGYaLIYEBAzrcJd20SpCA5QILPHIZ1dSw8y5Ggti+jUG+F
- vTxQ==
+ d=oss.qualcomm.com; s=google; t=1788365805; x=1788970605; darn=nongnu.org;
+ h=content-transfer-encoding:content-type:in-reply-to:from:references
+ :cc:to:content-language:subject:user-agent:mime-version:date
+ :message-id:from:to:cc:subject:date:message-id:reply-to:content-type;
+ bh=5LDI2JScvormYirFbxmb7Mw8lZGcKuNc/CE0uQI5/o4=;
+ b=cl83iouWihPvdSrz+OwfggrFGgxh3oeICm+AerxUGa3ULgDOVPdjGrPvCQ02Pja61z
+ kSQ9xK9LG/EtLEkEmsEZA23biX+HYE44wWp3c8WS3i4/U4ZQeEgMZdXMhLS19NGJWXx6
+ gj7TCNLRaBo3dRs5wYWcq6fyz51jr7orTXH90BoaCqxEKcII6oU3Ijio05FZ8dM5J70J
+ snp82kgK5cJKSkoTFVOxnKCXkgAGo1Z3YKEC0hxVBeXC2APYmHTQHmlxhoEweTWda/Ur
+ nwrLg4Z/BKJB+ZRnGxNReUlPxoM9rXgvEUzxFRPmMn//g7TvNxf+IRU5FQZxbansVxsb
+ Y5lw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1788363942; x=1788968742;
- h=in-reply-to:content-disposition:content-type:mime-version
- :references:message-id:subject:cc:to:from:date:x-gm-gg
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
- :content-type;
- bh=TPysDsGnpI9b+EwUBvoDR+Wcd16jrG2t2FBfRR3MC1c=;
- b=p7nBhCf6fNuGZaHpmVmjhib9MKvh5O/4d7JlDizIa3KBItaDslCPXXvUpwRwJ7y7J8
- lNpjy4YsTWHGuvpd9LbOnVJ7U0GNdatMXq/Io7CbbMGdBvdXxUZAlWX4gA8OhDP51kZS
- Ut46Lx8kgfetelNkwd5f8FVuARv3ersX/zCx85Rwr2xDneESdnsvArOxajIZ2uIMwNgy
- r9V+k4d13uFvAkyh/o6qf7b2EavV6yFN+/hjfvjFheLDoNPPkn7PP+1teMLLsL1MFzgw
- PSeb8+Xq5Zh6UiefPpws4REnbLxeZ4kMgjCsCOC6R6xq4h/Erx9lNQRRvj58IZPplaSZ
- SSIA==
+ d=1e100.net; s=20251104; t=1788365805; x=1788970605;
+ h=content-transfer-encoding:content-type:in-reply-to:from:references
+ :cc:to:content-language:subject:user-agent:mime-version:date
+ :message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+ :message-id:reply-to:content-type;
+ bh=5LDI2JScvormYirFbxmb7Mw8lZGcKuNc/CE0uQI5/o4=;
+ b=gfrV3wusdCCmEEEpAD9T/OI5FFxXMd3Ocrgvq/SwzdtG4DPGIUQKbvMwEopE+4us1j
+ bbriwGXbGM0yBqHNNXHI/Dm5N69jcrKcPViBpiKfnePejpwuKaX3qAyNkQr2hiOYsdgT
+ BGgDWZTaY4XfDk7Kop8Ov+Fo55B8QP3/FjRF4oIPJgLQ28hDkl4B3gfAbRVmv3fIAyF+
+ 2HZbbLCweNEnTQqAf6V5V04gSOrdUlhYyanPVMOoIZYlxfwNOwqveRCQTaT99CPzyV0s
+ k1P63S5BQ/YruF4NdUxwPppZpJBU5K5SE7mC7aa4E1htimTT5SjOzqC8YymwHd41+yvO
+ aQmQ==
 X-Forwarded-Encrypted: i=1;
- AKwUvByiRm9KqhvKtFKeFwR6iK+6ejPZP9jyia7j0tGJw55wBmKT0tByEMb9ePQRJ2xnewIVfNBvjSQPvw==@nongnu.org
-X-Gm-Message-State: AFuF++nm/DjQOJaLPcjufGk1Q8V2/W7vaF4poD87dTOwKQZxz/Pk4v8c
- sAoMT165Iv2Bi5Vf1scYj/73JtezV0Zi0dQns9xl64FpVLbbaB2yn/6Ff1qYInYvCKE=
-X-Gm-Gg: AYBFou1L/j7xXGiO6RPJAa0JuGRJmjXEm5JEiZookTp/BX8Hr9RPp9tpE47RjZHJtQa
- 0OkgKMm92k9lYK5tJW046UMy3rnm1uMoC7Paoa8hy/YGNo8QcYmP1OBlIOFB4+q/Ds0PdMooLk3
- ZN6WKS1qTtPhmOxNqy7bBrRkJp+TUornbbnrUhCf9pJCOMigBbwwjKQP59R+afDY1RpgiAuqNBt
- x0R+8s2EmCblZZAUod9JVUZR38RZp8zOPU2xctjMmOa4UlYvDAdpSqHJiH/v/N989Rb9iXwBE8N
- MMb3iXcRGc015/0ZRB5xe3DRCQJWfS3HY3QNGTssF5XL3TICSaYJsyDwKGgCATJy+NMFaKXfiZP
- 7DPBXITU0sBhBWPeVNa6L9TgWTO/ZvRcNbmOeEp7Ju86ShUEIeo352rsZD1ZRwsGSyHMkBDT3hb
- 6V79vq1uWlkQmXxNBHkl1sLEStzPAuE1QSdpWEl7tLZq6qYZQk3M2PSAU45GTbsHX18ytvKF4u7
- 70=
-X-Received: by 2002:a17:902:d4ce:b0:2d8:d2bd:a111 with SMTP id
- d9443c01a7336-2daec626dbdmr76719805ad.6.1788363942059; 
- Wed, 02 Sep 2026 08:45:42 -0700 (PDT)
-Received: from p14s ([2604:3d09:148c:c800:fff4:86c5:8d86:9e93])
+ AHgh+Rp2ta5KG7VXugLlptJAbpe2N+ZQYeo+gQDiff2sj7+CYp56eyI+4m1CSlRLRtxOUOMUMEphJPfF2Q==@nongnu.org
+X-Gm-Message-State: AFuF++l3UL9tJAYuuzqfh80zhAniqVTl3gnNGBFKMiZA22rYC51D/5rB
+ 3vJZRWOoZDYVlNR4UQ6V3FsQ+Z3ebV5nXV2c6nfQ3F/UvUAFBGJ+KcG7LgHlTLB1v6icqu4F/6X
+ XOxGTFT1PaQZw5toGmgkuQYwks4HdlxxkSwlAxl1sDeMAGLs11PN1hZE=
+X-Gm-Gg: AR+sD12bawRTJ+f3Lrfcc0lqyuJ8hbw6JSkLymjMwMg9c7t3g5laeo1uDRMYwVuqeDb
+ L/SzOUn+E/+CUaOqaXFg2c9/PDAMXKR1cFlhEGxYOD/dXzSpYpZ96Lgk8PGU5MuDNP7cioYi9bw
+ GaE4yHd+zdvCk661WtsWAvUBwEj0W84zKLTjGj/VdrFjF3E1fW8hDgmtYogAU9yla3gndKxR09J
+ yzwDoo86SB/N6YMrJTAGzTCJmqw/FWspdVEjWfzXLIUD8v41gPaRcsW7U2S5oag1Kloyp3rw4M5
+ BIyGd+1GFSb2V7OACEi8Ic+4vTxTaPiu59PAmtWbHoNJpSR3AV/zh7Pl4svw7f3sAlUJjyWx8Z9
+ kzYU3NG61Y8bNX/dME0X8aCh+/6EL3uBqhw==
+X-Received: by 2002:a05:620a:122a:b0:939:1d86:94aa with SMTP id
+ af79cd13be357-9396e56ac4dmr5791985a.39.1788365804828; 
+ Wed, 02 Sep 2026 09:16:44 -0700 (PDT)
+X-Received: by 2002:a05:620a:122a:b0:939:1d86:94aa with SMTP id
+ af79cd13be357-9396e56ac4dmr5783285a.39.1788365804307; 
+ Wed, 02 Sep 2026 09:16:44 -0700 (PDT)
+Received: from [192.168.69.200] (pmd666.hd.free.fr. [88.187.86.199])
  by smtp.gmail.com with ESMTPSA id
- d9443c01a7336-2dadd48898fsm15694765ad.39.2026.09.02.08.45.40
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 02 Sep 2026 08:45:41 -0700 (PDT)
-Date: Wed, 2 Sep 2026 09:45:38 -0600
-From: Mathieu Poirier <mathieu.poirier@linaro.org>
-To: Markus Armbruster <armbru@redhat.com>
-Cc: berrange@redhat.com, kchamart@redhat.com,
- pierrick.bouvier@oss.qualcomm.com, peter.maydell@linaro.org,
- mst@redhat.com, cohuck@redhat.com, pbonzini@redhat.com,
- eblake@redhat.com, lorenzo.pieralisi@linaro.org, gshan@redhat.com,
- enju.kohei@fujitsu.com, qemu-devel@nongnu.org, qemu-arm@nongnu.org,
- kvm@vger.kernel.org
-Subject: Re: [RFC v3 00/24] Add Realm support to QEMU-VMM
-Message-ID: <aphEopEnM1pEDLV4@p14s>
-References: <20260825220101.3443954-1-mathieu.poirier@linaro.org>
- <87wlt55cs2.fsf@pond.sub.org>
+ ffacd0b85a97d-484492cdbfbsm7369174f8f.33.2026.09.02.09.16.43
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Wed, 02 Sep 2026 09:16:43 -0700 (PDT)
+Message-ID: <717fcf10-2d29-4894-893e-259aff8fe02e@oss.qualcomm.com>
+Date: Wed, 2 Sep 2026 18:16:42 +0200
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <87wlt55cs2.fsf@pond.sub.org>
-Received-SPF: pass client-ip=2607:f8b0:4864:20::635;
- envelope-from=mathieu.poirier@linaro.org; helo=mail-pl1-x635.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH] util/cpuinfo-aarch64: Fix build with older glibc headers
+Content-Language: en-US
+To: Tao Tang <tangtao1634@phytium.com.cn>,
+ Richard Henderson <richard.henderson@linaro.org>,
+ Paolo Bonzini <pbonzini@redhat.com>
+Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org,
+ Chen Baozi <chenbaozi@phytium.com.cn>
+References: <20260826163753.459661-1-tangtao1634@phytium.com.cn>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@oss.qualcomm.com>
+In-Reply-To: <20260826163753.459661-1-tangtao1634@phytium.com.cn>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+X-Proofpoint-GUID: w6kS_OOIX22Hz6NrhxhMkXVhAAVNnRwa
+X-Authority-Analysis: v=2.4 cv=L+wtheT8 c=1 sm=1 tr=0 ts=6a984bed cx=c_pps
+ a=hnmNkyzTK/kJ09Xio7VxxA==:117 a=4s3hRJSeHn4rkQlkrse1kQ==:17
+ a=IkcTkHD0fZMA:10 a=VdqzKS8jKosA:10 a=M51BFTxLslgA:10 a=s4-Qcg_JpJYA:10
+ a=VkNPw1HP01LnGYTKEx00:22 a=u7WPNUs3qKkmUXheDGA7:22 a=gowsoOTTUOVcmtlkKump:22
+ a=fgrLqfBXAAAA:8 a=A-5aKlvlEl7envUJ730A:9 a=QEXdDO2ut3YA:10
+ a=PEH46H7Ffwr30OY-TuGO:22 a=_Ge82aPy-h_wFa7gWU4u:22
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwOTAyMDE0MyBTYWx0ZWRfX0js27HAw3XGS
+ u6/0jtWjPB0gpdY4+ORuTUd+0zdYcZWUmWxJCoKbgAagVH4OWJ6CGWzX2GcK8pk/r3AVoWmrNYn
+ 1tOwkya2mWmMenPqQM6sFYO6+wVz2atstFr0LtFYzTZPXKtlXuQv6O8v5mf1vMFhQZSpz+zbOBG
+ x4kJ/vrlv9TNJJoL0kHK96eAsOvsaw+KNKFbNN706kaug3Y7YBqw1z3n253TAYcCDrhjmaOr9pB
+ Jf2oVI4Q+WbqqwYg7QDUiy5psWMEHUUU15fEy/lUjFwZulxpNl92EjqTGiXJVaPe7NNkffXVAAD
+ KkIATOtBdwVptg/UmhvXIfCQHMEMI25pAF25nnpgWYFXMrvJxPhJeHq4I/0hzNIWrz5IELqH+Wo
+ QHGltPJ2avhjRtkXbKsA44VEZ34PsyPLyPb3ewqDkC0X6fZcDvK0tLP5zyrcuZdITNdeCqHUdj3
+ eApe1i4wbQiJShic7Sg==
+X-Proofpoint-Spam-Info: AW1haW4tMjYwOTAyMDE0MyBTYWx0ZWRfX9F8sjQKXHIX3
+ 5CaIds2naj8vYvrOdJ3rHQRax8KBU1pggqquLzo1cRxXH95JeJPbFCsHgOaFK46hzDDaUE/tmLM
+ XS5WKKjLJaSMw+ta0Wlb6lDpa+jNx9g=
+X-Proofpoint-ORIG-GUID: w6kS_OOIX22Hz6NrhxhMkXVhAAVNnRwa
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.293,Aquarius:18.0.1176,Hydra:6.1.134,FMLib:17.12.100.49
+ definitions=2026-09-02_04,2026-09-01_03,2025-10-01_01
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
+ lowpriorityscore=0 clxscore=1015 bulkscore=0 impostorscore=0 phishscore=0
+ spamscore=0 suspectscore=0 adultscore=0 priorityscore=1501 malwarescore=0
+ classifier=typeunknown authscore=0 authtc= authcc= route=outbound adjust=0
+ reason=mlx scancount=1 engine=8.22.0-2606150000 definitions=main-2609020143
+Received-SPF: pass client-ip=205.220.180.131;
+ envelope-from=philmd@oss.qualcomm.com; helo=mx0b-0031df01.pphosted.com
+X-Spam_score_int: -27
+X-Spam_score: -2.8
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ RCVD_IN_DNSWL_LOW=-0.7, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -109,67 +156,22 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Tue, Sep 01, 2026 at 03:20:13PM +0200, Markus Armbruster wrote:
-> Mathieu Poirier <mathieu.poirier@linaro.org> writes:
+On 26/8/26 18:37, Tao Tang wrote:
+> Commit 761bfe07b2c9 ("util/cpuinfo-aarch64: Detect FEAT_CSSC")
+> started using HWCAP2_CSSC unconditionally. This macro was added to
+> glibc's AArch64 bits/hwcap.h during the glibc 2.38 development cycle,
+> so AArch64 hosts with older headers fail to build.
 > 
-> > This patchset provides minimal functionality to start a Realm VM
-> > from an Arm RME capable host using the following command line:
-> >
-> > qemu-system-aarch64 \
-> >  -M confidential-guest-support=rme0,memory-backend=ram0 \
-> >  -object rme-guest,id=rme0,convert-in-place=on \
-> >  -object memory-backend-guest-memfd,id=ram0,size=1G,share=on \
-> >  -cpu host -M virt -enable-kvm -M gic-version=3,its=on -nodefaults ..
-> >
-> > It is a refactoring of Jean-Philippe Brucker's initial work dating from a while
-> > back.  It is compatible with Steven Price's v16 revision [1] of his work adding
-> > CCA support to KVM.
-> >
-> > This revision is based on Michael Roth's work on guest memfd in-place memory
-> > conversion [2] and as such, the QEMU baseline is different from 'master'.  Other
+> Follow the existing HWCAP2_BTI handling and define HWCAP2_CSSC to
+> zero when it is not provided by system headers. Such environments
+> simply do not use FEAT_CSSC host optimizations.
 > 
-> Use
+> This has been tested on an Ubuntu 22.04 aarch64 host with glibc 2.35.
 > 
->     Based-on: <20260528000416.8161-1-michael.roth@amd.com>
-> 
-> to document your base.  This stands out to humans, and is readable by
-> machines.  Next time :)
-> 
-> > than modifications to use in-place memory conversion from Lorenzo Pieralisi that
-> > were integrated to patches 04, 08-11, it is identical to V2.   
-> >
-> > It was tested on the QEMU SBSA machine.  For convenience, a repository is hosted
-> > here [3],
-> 
-> Michael's series doesn't apply on master anymore, so I fetched this
-> branch.  It's based on master as of *May*.  This won't do.  Please rebase.
-
-This was clearly explained above.  The goal was to provide a patchset that can
-be used for testing. I can attempt a rebase but can't guarantee a timeline or
-success.
-
-> 
-> >           along with the TF-A [4] and RMM [5] for the SBSA machine (compatible
-> > with Steven's v16 patchset).  The Repository for the kernel [6] is available
-> > from Arm.
-> >
-> > Instructions to compile and run the entire stack can be found here [7].
-> >
-> > Device Assignment is not included.
-> >
-> > Thanks,
-> > Mathieu
-> >
-> > [1]. https://lore.kernel.org/kvm/20260803134403.80630-1-steven.price@arm.com/
-> > [2]. https://lore.kernel.org/kvm/20260528000416.8161-1-michael.roth@amd.com/
-> > [3]. https://gitlab.com/Linaro/cca-public/qemu/-/tree/upstream-v3?ref_type=heads
-> > [4]. https://gitlab.com/Linaro/cca-public/tf-a/trusted-firmware-a/-/tree/cca/v13?ref_type=heads
-> > [5]. https://gitlab.com/Linaro/cca-public/rmm/-/tree/cca/v16?ref_type=heads
-> > [6]. https://gitlab.arm.com/linux-arm/linux-cca/-/tree/cca-host/v16?ref_type=heads
-> > [7]. https://gitlab.com/Linaro/cca-public/build-instructions
-> >
-> > RFC v2: https://lore.kernel.org/kvm/20260728192630.240375-1-mathieu.poirier@linaro.org/
-> > RFC v1: https://lists.gnu.org/archive/html/qemu-devel/2026-07/msg02307.html
-> 
-> 
+> Fixes: 761bfe07b2c9 ("util/cpuinfo-aarch64: Detect FEAT_CSSC")
+> Signed-off-by: Tao Tang <tangtao1634@phytium.com.cn>
+> ---
+>   util/cpuinfo-aarch64.c | 3 +++
+>   1 file changed, 3 insertions(+)
+Merged as 01e1455139196cc8d6bcde7d2f918348a90f7f26.
 

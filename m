@@ -4,150 +4,100 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 17050C624D3
-	for <qemu-arm@archiver.kernel.org>; Wed,  2 Sep 2026 15:23:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7D021C61DD6
+	for <qemu-arm@archiver.kernel.org>; Wed,  2 Sep 2026 15:24:38 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1x1mn0-0004Lg-Hb; Wed, 02 Sep 2026 11:22:14 -0400
+	id 1x1mpI-0001Jc-Lj; Wed, 02 Sep 2026 11:24:36 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@oss.qualcomm.com>)
- id 1x1mmy-0004GT-Rz
- for qemu-arm@nongnu.org; Wed, 02 Sep 2026 11:22:12 -0400
-Received: from mx0b-0031df01.pphosted.com ([205.220.180.131])
+ (Exim 4.90_1) (envelope-from <alex@shazbot.org>)
+ id 1x1mpG-0001JI-UL; Wed, 02 Sep 2026 11:24:34 -0400
+Received: from fout-a7-smtp.messagingengine.com ([103.168.172.150])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@oss.qualcomm.com>)
- id 1x1mmv-0000Mr-S7
- for qemu-arm@nongnu.org; Wed, 02 Sep 2026 11:22:12 -0400
-Received: from pps.filterd (m0279870.ppops.net [127.0.0.1])
- by mx0a-0031df01.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id
- 682CR2kV1647078
- for <qemu-arm@nongnu.org>; Wed, 2 Sep 2026 15:21:59 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qualcomm.com; h=
- cc:content-transfer-encoding:content-type:date:from:in-reply-to
- :message-id:mime-version:references:subject:to; s=qcppdkim1; bh=
- SjB+WsiUNVtJNvJVB5dqKRZIiGYlMTYMCAkchDEtNgc=; b=TUDPoA5uCVbKCwsC
- IMgSPhLFOiV4N7UcK99Sbemz82kwmsh8TXE8cCqZgH+8HyRImfyCMltv0+jBXjD4
- vET/gdrQ6C5KD86Wc8k/5EpuKwgSAQq4JZxDm1TFsdkdo35bv+ir/dbP24+bubJW
- FFmGJmmR5/uFHcbB6HPR6yZwVuSKyaH7Iuw/LO/m7/A0v55cymY1CeK4swIPq8uI
- 5eSRwaYLlAkrV/kicszyzvSD+8bmwF/WcsaZNbb1wuNROGfg3rRPvUxFtd/+kWbt
- g7T597L6gZ5/FbaLlr5S4HSbAy+AA7CUpRCbX+jXqQCCXvi6iZgWolbKlyp39v5u
- 1P+F4Q==
-Received: from mail-ua1-f72.google.com (mail-ua1-f72.google.com
- [209.85.222.72])
- by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 4gejv88x8c-1
- (version=TLSv1.3 cipher=TLS_AES_128_GCM_SHA256 bits=128 verify=NOT)
- for <qemu-arm@nongnu.org>; Wed, 02 Sep 2026 15:21:58 +0000 (GMT)
-Received: by mail-ua1-f72.google.com with SMTP id
- a1e0cc1a2514c-9806756ea40so862191241.1
- for <qemu-arm@nongnu.org>; Wed, 02 Sep 2026 08:21:58 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=oss.qualcomm.com; s=google; t=1788362518; x=1788967318; darn=nongnu.org;
- h=content-transfer-encoding:content-type:mime-version:references
- :in-reply-to:message-id:date:subject:cc:to:from:from:to:cc:subject
- :date:message-id:reply-to:content-type;
- bh=SjB+WsiUNVtJNvJVB5dqKRZIiGYlMTYMCAkchDEtNgc=;
- b=VrN7xDni5XM1kpAi6f9dJhUIGrlsvr6cJ/cnyxp7f056yXQHaogy6vi/nJf9urPwO2
- OIITDZByOqbo03x2ODl8OeCBPvRR8disE+L5YVZ44gAj2CG6aOIzKTOWyJd0/azfPdJx
- ePlMev5rNKKivTgIG1svHpjxk9RUc/IT/4vxvevYjSpWi3yAwe00oVW9XY0JJ3HWgur3
- GXByN3hQMxwq5o6oQBpNBDapr8bnGCkpluq3FfrnbAhIVwM9uwwMBsei50Sa7M/Jhtdy
- i0ph6+4R6vsid1e4N87PIHSAd7XBUkGdBtBpB841BdOtLgeQViu/n4ugvl+EGMKTu+7Z
- 8VZg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1788362518; x=1788967318;
- h=content-transfer-encoding:content-type:mime-version:references
- :in-reply-to:message-id:date:subject:cc:to:from:x-gm-gg
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
- :content-type;
- bh=SjB+WsiUNVtJNvJVB5dqKRZIiGYlMTYMCAkchDEtNgc=;
- b=rFS20UuZg/qEq3nXyAatefz8ychLWQjH4r60YYiST66ubf+Te3bd7hyAPWiIV5GW1V
- bX6NnNh1Fc37cgBNqEMzrRD34dSumtnT3eGeJ1gSERm1LvAAqDR3+uO+xbKNKtHaY2ef
- EbxqcmbREpStb3C+avRutGdwUpNJMuEDFL/PFSABtXMDz8s12fgRyKcxEwqH7qrN8yKS
- RGIWkW1S0ztdmt6XHQHn3/28/XyoBxW09tFFXSdO1khDJH2PEJ+00wdZV9VlDkNpP6DZ
- qPv/9Wr5e+zr2YrEfxbxHpqlxaS3cLo0pgo/naj7AyYpTxFG01zRgb5AxAbQUEUoZdeB
- ARhA==
-X-Forwarded-Encrypted: i=1;
- AKwUvBxTyQsilhNTvdhmmifzzEH+IiHCnXQ7uGJNVuhMuT85b/ky3S2yC33DomTtc5jOA1yDk8UdJzp7zg==@nongnu.org
-X-Gm-Message-State: AFuF++mnkzkxLlbKSxC6aVeafHaKEFRsdWsR/PkiUbjDn70CcPsq6Tgi
- fuCpob1PoKGSQdvfIbDa2asdAdVga6whC+Z+Mb2bjGCb4gtQ/J2ddp0qlXMHM+cAKpky9b67qn0
- qXOZOQNOqHdJzKF8Myvw2H1PGAg9IKlTpD2MARduSz+7UhyC5zirxMR4=
-X-Gm-Gg: AYBFou3nbE1X31OK0wdEGQi2eq1gXkQs55hWU2VBUvt84XoiO5snZkaVATGuTPjiBm3
- Cb3y+pPnWHB2kaTMN5kcUbhUcw3BThBZ5vBojku/a4m4TBbZ88HCq6P/n/PFhEKQ/Pob+nl9gDQ
- tFvzQlFkVzRh5f4w2gmdUUNMM6CfIo/R5zxbCqZa80FGo457/1qNVj9ouDLqCYvC53PoOnqMIeO
- ddzFbrX/2DncV+AX/yB/WEppcuJIqkUY8xdtCLvcAV/S2hlb5vrFYcZwNxYD240qTd7uEd6JeIO
- V4q3uDbZU1dcC+kkGK0FkQbr277Pu0S5iaCSQB5xjvrzOIjUAXY06QjdKFZ+04NCJP03z5kVm5l
- L7t3XxBcCuVI2znbRO+0VtGgibPoOIvdOmVvx8vfq
-X-Received: by 2002:a05:6102:4243:b0:786:e7a0:603e with SMTP id
- ada2fe7eead31-78a1f233cb6mr2343297137.7.1788362518030; 
- Wed, 02 Sep 2026 08:21:58 -0700 (PDT)
-X-Received: by 2002:a05:6102:4243:b0:786:e7a0:603e with SMTP id
- ada2fe7eead31-78a1f233cb6mr2343259137.7.1788362517484; 
- Wed, 02 Sep 2026 08:21:57 -0700 (PDT)
-Received: from localhost.localdomain (pmd666.hd.free.fr. [88.187.86.199])
- by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-49ce309e418sm97965215e9.13.2026.09.02.08.21.55
- (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Wed, 02 Sep 2026 08:21:56 -0700 (PDT)
-From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@oss.qualcomm.com>
-To: qemu-devel@nongnu.org
-Cc: Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
- Peter Maydell <peter.maydell@linaro.org>,
- Paolo Bonzini <pbonzini@redhat.com>, qemu-ppc@nongnu.org,
- qemu-s390x@nongnu.org, Richard Henderson <richard.henderson@linaro.org>,
- Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>,
- qemu-riscv@nongnu.org, qemu-arm@nongnu.org,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@oss.qualcomm.com>,
- Song Gao <17746591750@163.com>, Bibo Mao <maobibo@loongson.cn>,
- Xianglai Li <lixianglai@loongson.cn>, Laurent Vivier <laurent@vivier.eu>,
- "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
- Stafford Horne <shorne@gmail.com>
-Subject: [RFC PATCH v3 09/11] targets: Move interrupt handlers to
- do_interrupt()
-Date: Wed,  2 Sep 2026 17:20:40 +0200
-Message-ID: <20260902152044.31291-10-philmd@oss.qualcomm.com>
-X-Mailer: git-send-email 2.53.0
-In-Reply-To: <20260902152044.31291-1-philmd@oss.qualcomm.com>
-References: <20260902152044.31291-1-philmd@oss.qualcomm.com>
+ (Exim 4.90_1) (envelope-from <alex@shazbot.org>)
+ id 1x1mpE-00013a-Hp; Wed, 02 Sep 2026 11:24:34 -0400
+Received: from phl-compute-08.internal (phl-compute-08.internal [10.202.2.48])
+ by mailfout.phl.internal (Postfix) with ESMTP id E5F45EC02C9;
+ Wed,  2 Sep 2026 11:24:29 -0400 (EDT)
+Received: from phl-frontend-03 ([10.202.2.162])
+ by phl-compute-08.internal (MEProxy); Wed, 02 Sep 2026 11:24:29 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=shazbot.org; h=
+ cc:cc:content-transfer-encoding:content-type:content-type:date
+ :date:from:from:in-reply-to:in-reply-to:message-id:mime-version
+ :references:reply-to:subject:subject:to:to; s=fm3; t=1788362669;
+ x=1788449069; bh=pOF7By6Jtf5xxFwebcfc/v6z9ZMi4P133UbldY7hk4A=; b=
+ VyQFJ3c/kUad69zQpCiQnWwntgxVMy9lUnQftLq1a82WkfeM4xX5XGB5kRi24KF3
+ UnoJCpZNHoShQslWkY4mWwzxoKoiVxMbWK37OfHiZ701txDCTSlpC4etxKP0ipvI
+ 8l9iNM/0koNhLE53WcqF73SkFolqx9tEwCkrc8JE9kU1r8wN5TOzaBVGjcOibXX6
+ vYAP57Sw0MYodLQivqmbHKuWdyVLOcjZBtvtYIq47s42pVLMkMVzUXqaPDAZj50/
+ zSEA8kLoW6hRAaw/HYnO2EUqOE3e762bgK9oOQpoWH4rOcXOVyGbe9ZSlZk/Vcq+
+ T6O/oOPkfSR8lSQyFq8lYA==
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
+ messagingengine.com; h=cc:cc:content-transfer-encoding
+ :content-type:content-type:date:date:feedback-id:feedback-id
+ :from:from:in-reply-to:in-reply-to:message-id:mime-version
+ :references:reply-to:subject:subject:to:to:x-me-proxy
+ :x-me-sender:x-me-sender:x-sasl-enc; s=fm1; t=1788362669; x=
+ 1788449069; bh=pOF7By6Jtf5xxFwebcfc/v6z9ZMi4P133UbldY7hk4A=; b=m
+ VoREWqNt3VjasfaGFD65RATTENe9FzMV710gAqS3qM2wlsYf5F88igTZXRc5Sa49
+ IsnKOTk5Cs1fdwnGCqYoW2DdniE+Dx/upWQokHt8CkGlHslk8xWeUQEttOpeC/C8
+ w6cGpUPcqt0OB0SiADoYXQWIpGsKkdLe5T2Hm/xV9ch/K83sBw8KjszThiYjKe2M
+ 1RDqcFGgkp/PaZuz3GQI8Iyx2s2ICsj8yR00BAmLu3EUEeqbYg93Xm6KvPXCqaA9
+ jIGwDyJVBlFwudl1AdcDRmw1hkzdUBsIB2GsCXUSsDYiIQzBr+uU7TxXM0SDTytM
+ b8Tor75HrhTUjfqiRb1tA==
+X-ME-Sender: <xms:rT-Yat8pllA0UGtjwuuL_M9vyVLfVBSIWKfrhsuMzLS2imR_K7S1fA>
+ <xme:rT-Yap4-lPe_dRmWZGXUqv1dWUqvwd5sWlTAvnz-S6YIR64AD9hbz-fwg_u1kXkSG
+ w3WmOmw8IJsnyQ2hcwg5fmfWdSxRch6HBpk8AdFN16aFCazVXdtjZk>
+X-ME-Received: <xmr:rT-Yamlfg-G1UwPyNm5EJSpn7u4O2f_LASfEJWrWoYILbKV0p93pmLHkoMvFPQ>
+X-ME-Proxy-Cause: dmFkZTEGOhgmT7SJwQaF/o+CvFB1U/h5qurccHuuSra7TDPBLAR/vHeY5hfoTIszsEqmjJ
+ jpeSpi7ws99uNBtcAUolQbrZDf/RdFmFeO2eonFt/hTRpTV4B5Nyzi+g1cDNL4c/k20FAS
+ y0TmXu+NWdhFoS1jwNvGLEOgjrKO4YBMLNXjzwVNjIASlBOX0xb3QzkM6BMs1QW8oim4wv
+ ja1CVECkP2gTIdCKVSethjN+3QnaxWW9+vsSebdyi0/diGCTUXf8RJnGOYwAGHNLCDXjZ1
+ o4aWJGC768SRZsGkxS3y+byYTIhwBfND9mxuuF+zRKMgni4TNIKuLbRY5I1DGP4qFXJ9WI
+ QRfxPrLPC9hfDYoEhVUnxtP/XFHdibOgeQYlee2tQideSb3n8M0JOilq6aKfzwY8bLnbq4
+ Ed2P3J3SikEUw58qtFqBWnguPRsCJIL49yGU+d7Je2IUaH+axicf/5SZneR+UV0O2QTXFh
+ 3aVyUirYvFbef2931HJ2riWn8f8J/w8wqJrBarBC/WjWpIZ/XLDUJu5LpQl07xc6kSgPyc
+ dU1mVnkTMGPy51QCfulrM5L9v6DwtoywptKrSK+EbPNH+L9xGDsrcxjwMsXknMNr7oBKna
+ lzqYyvzXBKuogSNrlEXbY6+aTYtDcoWd0yFDlTZfMqGkFAk2dhlyVurMz1QA
+X-ME-Proxy: <xmx:rT-YasF77HEB-XiSjfCinNGJ17lMJSnFtXD0C9SE-r3tvwD8l2OlfA>
+ <xmx:rT-Yat9aGmT9whrNsYVSfwxT4wa1Z7RLk0nwI0yz5CMrALbSOskrrA>
+ <xmx:rT-YatndVWvVe-0SRoKWgTVFbLQbGpcO0lMYmPkAjK1YuQsWWIjNIg>
+ <xmx:rT-YaoCGt1o33EU1Z7ypZK9puvYYGg9SrccmJsXZ-Ge0bkOC8K112A>
+ <xmx:rT-YagiNg3RNEnYwbmsAHF4ktpTifyWH6ncYV9eEW5rwOjs2MgS82DkP>
+Feedback-ID: i03f14258:Fastmail
+Received: by mail.messagingengine.com (Postfix) with ESMTPA; Wed,
+ 2 Sep 2026 11:24:28 -0400 (EDT)
+Date: Wed, 2 Sep 2026 09:24:26 -0600
+From: Alex Williamson <alex@shazbot.org>
+To: Gerd Hoffmann <kraxel@redhat.com>
+Cc: Tushar Dave <tdave@nvidia.com>, qemu-devel@nongnu.org, jgg@nvidia.com,
+ skolothumtho@nvidia.com, qemu-arm@nongnu.org, peter.maydell@linaro.org,
+ mst@redhat.com, marcel.apfelbaum@gmail.com, devel@edk2.groups.io,
+ alex@shazbot.org
+Subject: Re: [RFC PATCH v2 0/5] hw/pci, hw/arm/virt: fixed PCI BAR placement
+Message-ID: <20260902092426.4906e932@shazbot.org>
+In-Reply-To: <ape0Mbd7Lt4KS-wN@sirius.home.kraxel.org>
+References: <20260827004024.598351-1-tdave@nvidia.com>
+ <ao_fX3cYersq6TRd@sirius.home.kraxel.org>
+ <20260827074733.340aeb0c@shazbot.org>
+ <apV1FXabgOVdAqQu@sirius.home.kraxel.org>
+ <b4d51232-43a0-4058-af96-5c3ca847edd8@nvidia.com>
+ <ape0Mbd7Lt4KS-wN@sirius.home.kraxel.org>
+X-Mailer: Claws Mail 4.4.0 (GTK 3.24.52; x86_64-pc-linux-gnu)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-X-Proofpoint-GUID: kl8GPdxTJ6EAs8vQpF8GL32yDit1qI0O
-X-Authority-Analysis: v=2.4 cv=L+wtheT8 c=1 sm=1 tr=0 ts=6a983f16 cx=c_pps
- a=ULNsgckmlI/WJG3HAyAuOQ==:117 a=4s3hRJSeHn4rkQlkrse1kQ==:17
- a=IkcTkHD0fZMA:10 a=VdqzKS8jKosA:10 a=M51BFTxLslgA:10 a=s4-Qcg_JpJYA:10
- a=VkNPw1HP01LnGYTKEx00:22 a=u7WPNUs3qKkmUXheDGA7:22 a=gowsoOTTUOVcmtlkKump:22
- a=EUspDBNiAAAA:8 a=-wU1GuQjd2BOtWieTlsA:9 a=3ZKOabzyN94A:10 a=QEXdDO2ut3YA:10
- a=1WsBpfsz9X-RYQiigVTh:22
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwOTAyMDEzNiBTYWx0ZWRfX38vtiVNTKnGT
- gkEs48bGAgzwcjbc2KHeKqqSCMjBoXp+FD5/v+pWWLoSPYL+7xHHgEWLYZS4CHQQVP47SZMLSwt
- qNmxJVCl4oE28pxsT2OBF7iM64M3DVE+x7IksavBDu0+XR/XRr+IPtjbVbi1bzhFuhdOQ/fI0D3
- K/ZMa9DcvHJVQhbZi3BHOHwSKgT/JFMWn9ph2XOHUuQZgKjJvmDeHWfwVq/qDoI5pFPiHZN9txY
- EgGdzxgoy+P4WYglF5ASEe8Igg5ORbjS+kujd2qdsCHUc4Von4T1CAQc/BF9nIkZXkXTzCt7pPa
- NZFKXT62FBJPyu32arto1EgNXzWBXzADUDFh5fLFLoL/HoYjNBbfeWpMKvGHJlJcnrs0NitAZLT
- FjCHDBCJQUxqiOG3s3MfClhUuJivwFEZ3BlUcRPYcsKJ5hsral3v+Rsrv+v2wHHl3wsQvU3ECRr
- 5DXAZ4+LPLs5nROxxYA==
-X-Proofpoint-Spam-Info: AW1haW4tMjYwOTAyMDEzNiBTYWx0ZWRfX2f+/b4HZ1mQ/
- gCP1adAeD1UVWR5JpW/jHgirlsPRVTFdKUI77GXCEe8N0wJrgVqSmvEHXncNtpihXNYCqwk6dGj
- 80sMMTquea4Hz0+iWfpFdP1XG6CX790=
-X-Proofpoint-ORIG-GUID: kl8GPdxTJ6EAs8vQpF8GL32yDit1qI0O
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.293,Aquarius:18.0.1176,Hydra:6.1.134,FMLib:17.12.100.49
- definitions=2026-09-02_03,2026-09-01_03,2025-10-01_01
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
- lowpriorityscore=0 clxscore=1015 bulkscore=0 impostorscore=0 phishscore=0
- spamscore=0 suspectscore=0 adultscore=0 priorityscore=1501 malwarescore=0
- classifier=typeunknown authscore=0 authtc= authcc= route=outbound adjust=0
- reason=mlx scancount=1 engine=8.22.0-2606150000 definitions=main-2609020136
-Received-SPF: pass client-ip=205.220.180.131;
- envelope-from=philmd@oss.qualcomm.com; helo=mx0b-0031df01.pphosted.com
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=103.168.172.150; envelope-from=alex@shazbot.org;
+ helo=fout-a7-smtp.messagingengine.com
 X-Spam_score_int: -27
 X-Spam_score: -2.8
 X-Spam_bar: --
 X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ RCVD_IN_DNSWL_LOW=-0.7, SPF_HELO_PASS=-0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -163,71 +113,129 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-LoongArch, M68K, MicroBlaze, and OpenRISC interrupt handlers
-don't require external BQL protection, so move them from
-do_interrupt_locked() to do_interrupt().
+On Wed, 2 Sep 2026 08:15:30 +0200
+Gerd Hoffmann <kraxel@redhat.com> wrote:
 
-Signed-off-by: Philippe Mathieu-Daudé <philmd@oss.qualcomm.com>
----
- target/loongarch/tcg/tcg_cpu.c | 2 +-
- target/m68k/cpu.c              | 2 +-
- target/microblaze/cpu.c        | 2 +-
- target/or1k/cpu.c              | 2 +-
- 4 files changed, 4 insertions(+), 4 deletions(-)
+>   Hi,
+> 
+> > > And, yes, the logic to match entries in the fw_cfg file with the correct
+> > > device using vendor and device id looks somewhat fragile to me too.
+> > > 
+> > > Existing code in qemu+firmware (for example bootorder) uses the location
+> > > in the physical device tree to identify devices, like this:
+> > > 
+> > > /pci@i0cf8/pci-bridge@3/*@0/*@0/*@0,0
+> > >  ^^^^^^^^^                             pcie root bus
+> > >            ^^^^^^^^^^^^                pcie root port @ slot 3
+> > >                         ^^^            virtio-scsi-pci @ slot 0
+> > >                             ^^^        scsi controller bus #0
+> > >                                 ^^^^^  scsi device target 0, lun 0  
 
-diff --git a/target/loongarch/tcg/tcg_cpu.c b/target/loongarch/tcg/tcg_cpu.c
-index 6455ae0c99a..4b1d44a1644 100644
---- a/target/loongarch/tcg/tcg_cpu.c
-+++ b/target/loongarch/tcg/tcg_cpu.c
-@@ -329,7 +329,7 @@ const TCGCPUOps loongarch_tcg_ops = {
-     .cpu_exec_interrupt = loongarch_cpu_exec_interrupt,
-     .cpu_exec_halt = loongarch_cpu_has_work,
-     .cpu_exec_reset = cpu_reset,
--    .do_interrupt_locked = loongarch_cpu_do_interrupt,
-+    .do_interrupt = loongarch_cpu_do_interrupt,
-     .do_transaction_failed = loongarch_cpu_do_transaction_failed,
- #endif
- };
-diff --git a/target/m68k/cpu.c b/target/m68k/cpu.c
-index 85496deff67..9b52ad5fc23 100644
---- a/target/m68k/cpu.c
-+++ b/target/m68k/cpu.c
-@@ -712,7 +712,7 @@ static const TCGCPUOps m68k_tcg_ops = {
-     .cpu_exec_interrupt = m68k_cpu_exec_interrupt,
-     .cpu_exec_halt = m68k_cpu_has_work,
-     .cpu_exec_reset = cpu_reset,
--    .do_interrupt_locked = m68k_cpu_do_interrupt,
-+    .do_interrupt = m68k_cpu_do_interrupt,
-     .do_transaction_failed = m68k_cpu_transaction_failed,
- #endif /* !CONFIG_USER_ONLY */
- };
-diff --git a/target/microblaze/cpu.c b/target/microblaze/cpu.c
-index 649bcebf703..389a5124b12 100644
---- a/target/microblaze/cpu.c
-+++ b/target/microblaze/cpu.c
-@@ -450,7 +450,7 @@ static const TCGCPUOps mb_tcg_ops = {
-     .cpu_exec_interrupt = mb_cpu_exec_interrupt,
-     .cpu_exec_halt = mb_cpu_has_work,
-     .cpu_exec_reset = cpu_reset,
--    .do_interrupt_locked = mb_cpu_do_interrupt,
-+    .do_interrupt = mb_cpu_do_interrupt,
-     .do_transaction_failed = mb_cpu_transaction_failed,
-     .do_unaligned_access = mb_cpu_do_unaligned_access,
- #endif /* !CONFIG_USER_ONLY */
-diff --git a/target/or1k/cpu.c b/target/or1k/cpu.c
-index 83dc071c180..66c00c0930c 100644
---- a/target/or1k/cpu.c
-+++ b/target/or1k/cpu.c
-@@ -268,7 +268,7 @@ static const TCGCPUOps openrisc_tcg_ops = {
-     .cpu_exec_interrupt = openrisc_cpu_exec_interrupt,
-     .cpu_exec_halt = openrisc_cpu_has_work,
-     .cpu_exec_reset = cpu_reset,
--    .do_interrupt_locked = openrisc_cpu_do_interrupt,
-+    .do_interrupt = openrisc_cpu_do_interrupt,
- #endif /* !CONFIG_USER_ONLY */
- };
+Yeah, I wish such path-based device identification where available here.
+
+> > 
+> > Good point but the problem is CheckDevice()'s own signature, which is
+> > fixed by UEFI PI spec (only passes
+> > VendorId/DeviceId/RevisionId/SubsystemVendorId/SubsystemDeviceId). Even
+> > though the path exists internally, the standard protocol interface
+> > doesn't pass it to the callback.  
+> 
+> Hmm, yes.  Seems to be designed to apply quirks to device classes, not
+> individual devices.
+> 
+> Also note that OVMF already has an incompatible pci device driver and
+> there can be only one instance, so the code must be merged into the
+> existing driver instead of adding a second.
+> 
+> > Therefore, we prepare the blob entries
+> > in the same order PciBusDxe discovers devices, so matching by VID:DID
+> > inherently works.  
+> 
+> Question is whenever we want have that edk2 limitation and the knowledge
+> about edk2 internals (pci scan order) encoded in the qemu <-> firmware
+> protocol.  I think it makes sense to (additionally) pass the complete
+> device path even if the current edk2 implementation doesn't use it, so
+> we have the option to improve things later on without having to change
+> the qemu <-> firmware protocolS for that.
+> 
+> > > I can see that allowing fixed and non-fixed bars mix is much harder to
+> > > handle.  Do we need to ask the user to manually set that though?  I'd
+> > > prefer pci devices propagating automatically to the parent bus that they
+> > > have fixed bars and additional constrains apply.  
+> > 
+> > I looked at this again, and technically nothing actually needs the flag
+> > to exist. The real reason I kept it is closer to a usability one; it's
+> > meant to be a visible signal in the launch script itself, so anyone
+> > reading or writing the qemu command line sees up front that every device
+> > under that root port is expected to have pci-bars= configured, rather
+> > than that requirement only surfacing as a runtime error if something's
+> > missing.  
+> 
+> I'm not sure how much of a usability win that actually is, if you forget
+> to set the flag you still get a runtime error.
+> 
+> In general I like things which can be done automatically actually happen
+> automatically as this simplifies things for the user in most cases.
+> 
+> > > Also: if the main use case for this is to map vfio devices with guest
+> > > physical address == host physical address, is there a need to specify
+> > > this manually at all?  Shouldn't we have a 'vfio-pci-fixed' device which
+> > > handles this automatically?  
+> > 
+> > VFIO GPA == HPA is the primary motivation, but I don't think fixed-bar
+> > should be tied to VFIO or automatically derive guest addresses from the
+> > host.  
+> 
+> Why not?  It is a great usability improvement IMHO.
+
+We thought about whether to make a vfio-pci shortcut to allow the HPA to
+be pushed to the fixed BAR address, but decided that it's also easy for
+a userspace script to to collect the physical BAR addresses and
+construct the QEMU device options, while maintaining compatibility with
+emulated devices and therefore enabling more comprehensive testing.  I
+don't think we want to be limited by the physical devices available when
+we're testing this.
+
+> > For the VFIO use case, the admin can choose to specify the host
+> > BAR addresses as the fixed-bar configuration to get GPA == HPA, but the
+> > mechanism itself doesn't assume or enforce that -- the desired guest
+> > layout isn't always just a copy of the host's, so having fixed-bar
+> > auto-derive it on its own would be incorrect in some cases, not just
+> > less general.  
+> 
+> You still can have fixed-bar-<nr>=<addr> properties to override the
+> auto-discovered address for some or all pci bars.
+
+If QEMU is willing to accept both a generic PCI mechanism to specify
+this, AND a vfio-pci shortcut, sure, we can create the shortcut.  As
+above though, it's also something the caller can construct relatively
+easily (maybe not by hand, but with a trivial script) and increases the
+test surface for QEMU.
  
--- 
-2.53.0
+> > The mechanism remains a generic way to explicitly specify
+> > PCI BAR addresses.  
+> 
+> Yes, the code which creates the fw_cfg files is generic and it makes
+> sense to have that in the core pci code, so it can be used for every pci
+> device.
+> 
+> Nevertheless I'd tend to only expose the properties for devices where an
+> actual use case exists.  Which is obviously vfio-pci(-fixed).  Also
+> pci-testdev for development / testing / CI.  I can't see much beyond
+> that though.
 
+I always imagined the properties would live on the core PCI device and
+at best vfio-pci would have a shortcut to prefill those properties
+based on physical BAR address.  pci-testdev is pretty limited and we
+can't fully test arbitrary device functionality with it.  We'd also
+lose the ability to diverge from the host programming if we need to
+debug a layout generated on another system.
+
+IMO, the artificial restriction isn't worth it, especially in the
+proposed environment where we enforce and validate fixed BAR
+configurations for an entire PCI sub-tree.  I think that already
+eliminates the most common usage failures we'd see otherwise.
+Thanks,
+
+Alex
 

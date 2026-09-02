@@ -4,82 +4,82 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 25B90C61DD6
-	for <qemu-arm@archiver.kernel.org>; Wed,  2 Sep 2026 05:51:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9EED6C61DFD
+	for <qemu-arm@archiver.kernel.org>; Wed,  2 Sep 2026 05:51:21 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1x1dsO-0003UM-Td; Wed, 02 Sep 2026 01:51:12 -0400
+	id 1x1dsD-0003Eq-SA; Wed, 02 Sep 2026 01:51:02 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1x1dsN-0003SF-Ma
- for qemu-arm@nongnu.org; Wed, 02 Sep 2026 01:51:11 -0400
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1x1dsC-0003BW-7X
+ for qemu-arm@nongnu.org; Wed, 02 Sep 2026 01:51:00 -0400
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1x1dsM-0001Ml-74
- for qemu-arm@nongnu.org; Wed, 02 Sep 2026 01:51:11 -0400
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1x1dsA-0001Lm-E9
+ for qemu-arm@nongnu.org; Wed, 02 Sep 2026 01:50:59 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1788328269;
+ s=mimecast20190719; t=1788328257;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
- bh=kcii3u8NNNZ27sC6GM1HE6/FlV/7po+Jts/QnPVEp8Y=;
- b=PyANc+LFocIylFl83IiS4DQf+BTxwCPNOciwjRcRReRJR6eEXvR9VvKJEUyYjJHhwCP+Wb
- tJQzIA8owp0HD5wKPtnwO6yLe6/cujgGz78eRXno3Blz60zPwUa9PPX+EzzT/C7YZfdL3Q
- MWISQDmjB65zCC00zNGNXwGZ8SVnkYM=
-Received: from mail-wm1-f70.google.com (mail-wm1-f70.google.com
- [209.85.128.70]) by relay.mimecast.com with ESMTP with STARTTLS
+ bh=kk2tXehgSG/d8iUkFzhXDdKyOW1F5AgE0XCmtjv96Qs=;
+ b=NtcoEVhuLgUaX7DuDX6b9/6DI22PDFA+liwSX7o8PilcSxKRXMZb8HRlximpI2CsRg30pq
+ H3QZ+Gz2RgGJ0dApGhMlEw4Z3UIXNLqd0C/OP5YN+lD1y5FusUnrXCQbwxstNJiDZeeHGZ
+ y1gEG/W02XNzYmMOUrAf4gZdsWw56iY=
+Received: from mail-wm1-f69.google.com (mail-wm1-f69.google.com
+ [209.85.128.69]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-91-AHRYYVK6M32I4ic-6yewSg-1; Wed, 02 Sept 2026 01:51:07 -0400
-X-MC-Unique: AHRYYVK6M32I4ic-6yewSg-1
-X-Mimecast-MFC-AGG-ID: AHRYYVK6M32I4ic-6yewSg_1788328267
-Received: by mail-wm1-f70.google.com with SMTP id
- 5b1f17b1804b1-49a1b4ea633so6226935e9.0
- for <qemu-arm@nongnu.org>; Tue, 01 Sep 2026 22:51:07 -0700 (PDT)
+ us-mta-375-XkQZbgeoOrqW-33xf85mLw-1; Wed, 02 Sept 2026 01:50:54 -0400
+X-MC-Unique: XkQZbgeoOrqW-33xf85mLw-1
+X-Mimecast-MFC-AGG-ID: XkQZbgeoOrqW-33xf85mLw_1788328253
+Received: by mail-wm1-f69.google.com with SMTP id
+ 5b1f17b1804b1-49cdc4080ddso3101805e9.1
+ for <qemu-arm@nongnu.org>; Tue, 01 Sep 2026 22:50:54 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1788328267; x=1788933067;
+ d=1e100.net; s=20251104; t=1788328253; x=1788933053;
  h=content-transfer-encoding:content-type:in-reply-to:autocrypt
  :content-language:references:cc:to:subject:from:user-agent
  :mime-version:date:message-id:x-gm-gg:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to:content-type;
- bh=kcii3u8NNNZ27sC6GM1HE6/FlV/7po+Jts/QnPVEp8Y=;
- b=dP1F4s3Lfl9Aod/hfLK/TvkdPkwtZ7m7L0twM0QZ8Sv57tXPznRv3o6fBVcYqnflWo
- PZF8dRzaw9XSR6zMZZ6KEtms51o16/4Ffw8vePkufdI2VEcCEQFJZzG9Is24RY1tdkSF
- M/oPutvI4BdvbcksJRoijTM3VH1pY+LEt9kgq5w4WuYfWEkILkABArkys3gVs9EgXFn+
- qFrg+VUdFCVHTZ+KTHE2DDz3bZKlm26C7/f0h/lpa0tEYb5as7FDYnvepnvR1MDDsGJU
- SE/19+3jb5HHbtfaGOw0qwFSfzf6kG9wFHA1j/wv7ShszY6XKH4ErGlvwgWJafMHil29
- xCyw==
+ bh=kk2tXehgSG/d8iUkFzhXDdKyOW1F5AgE0XCmtjv96Qs=;
+ b=B9T/UzB6y4WFN4xH5kjEOHAzcs231RzHeC6A4JemIflDd27/ABDWGAQ29TX8hdAxH8
+ 7dXjZEfwwpQQopnSM25Ux894ZMBWvV3/v5UlhSkz8xR80M3hkEllKyHhsEgVtbXZRXyo
+ WxVcjcVvJ1kdxoIhKZylEXvcTIdH8jFF4Z3YgNJo2M3axMtPzJpWkMCXV30w8bGcs20M
+ RNbqRG9vJFp93KRmiOscYQFMM0Gqad9fhTc7IXD9suqdrcIKKWva4n+/xBM7gelaWPyg
+ KTnlywXSJYYXsVgYHSUSZ9OZ0zxMB5JvYDhVAoQCkansI1P4z8NUmVwwf23BiupqnQKp
+ /jRw==
 X-Forwarded-Encrypted: i=1;
- AHgh+RqM+SsdZA5ZtVBUgsqt6pScMJTJgwgaL4OJzahbeWoY/Vi9bOGr1oSSceFjjQ+mPVa3VjRQdRd+CA==@nongnu.org
-X-Gm-Message-State: AFuF++nzo7SfLbCdMRBF1zmu95Qa+KQQkVbBLHTxIOsoorOT4ElqqdVg
- d71/s3wWV2M34cdfwbPdgNBYaO+WliIFbmdRZV2pJzz5kbMRJPerTZMIzdUNb0G67nVxL8VWkd3
- 5wdfWzh3T5ODZTf3Qk5px4iyrHeFrsKNxpR5i4h1SXjQ4iIKwXZHj5A==
-X-Gm-Gg: AR+sD106nBb77n9EzIfAqSJTTqKEsU+NOJ7HLGm78bJo27yu29OWIwgdgivoIRVUk69
- q6BCW8uuY1wPGFxcln+wdXyjsVKu6rNLtdTMF9RDZujYKZwzCDxoucb0kbVN+qxFEL39wbYas/4
- wZ2AWfxn+nhVBeNW5unLw4K3PcN3TAURKTib3jKDjp+kbq+4oOBbKJVJeW2J3/W64dr7XNkJ4wM
- UMoE5Zo/CJLV5iVMqv25a1XQ0TLjRdrIKB9BzbmKXcvaeIg9qL8qPTnx1cPXK0ksKhk3NhMR6pb
- wlGQVYCIBA+wjdIwq1OO//w5qW4Y5JDs4TujkjPDARERNBYSwJmZ2RFmINJwWBZr4FOOsU6++j3
- tfEjbJT5VnvYgDgY2Yx96Wu9TNBzYe6t2wGf30lg=
-X-Received: by 2002:a05:600c:3e0a:b0:499:a277:e8b5 with SMTP id
- 5b1f17b1804b1-49ce5810b5dmr48071375e9.3.1788328266695; 
- Tue, 01 Sep 2026 22:51:06 -0700 (PDT)
-X-Received: by 2002:a05:600c:3e0a:b0:499:a277:e8b5 with SMTP id
- 5b1f17b1804b1-49ce5810b5dmr48070895e9.3.1788328266250; 
- Tue, 01 Sep 2026 22:51:06 -0700 (PDT)
+ AHgh+Ro0N4ltGQD3Nt/9PDk6/V0Wsrw7AT9Ns9Eg8NuvcAGDrGinDsMUgGSE3QiI6A5gWIgy20cNni19AA==@nongnu.org
+X-Gm-Message-State: AFuF++lDHaChvWtIGVHO7VbDf7zhet8z1DgAUJYU0NYtnPHt2RBw5VsB
+ 3pQbNDKbL+6HFdr/w8MR9L5HDs3cgJrvOX2nICqbsfD208h0fSn1VTpLpO3ghQVoz3PHaT7JrCO
+ SvIoNgLAGY/zTI9EOXQqwL448acdUWAWFC+3lfIHAIAp7XGkbMD4lQw==
+X-Gm-Gg: AR+sD12xCR/EEb0qVe294BgLDo0LLS3hgJnENlGts8reQ/1q3gIlVdBrN7yRqcYv/61
+ TMUgg3KDFJurT8CWEAztjvXTFkjc98d+ZjCRK4MdqWC0fcYl1QC7QeekOo0RGHE7q51JQXMSiw5
+ BLEzSpogmwWa5+LOpRTi1vB4eVInq/cZyTZyM17zj0Bl0749vYk9uXAXusbaDQv2W8XQ3Ss/+HR
+ lg8oDJy3fsq0Wt8GFZB9HWnKCdvGbmH2wkZOZS5gubhx5x/VOzlx9tpWPfxJHHJtREmIF3fypg3
+ wlg1H3ilryj5q72l6F6u6JxU1jy3eZnEnbrBIpKMG+6euKTme+rovniqeT4Rm2cd3ldgGYs6/2e
+ crawnn1Y1T7ORONqOR/qX7wIsliSCGUr8j0EScN0=
+X-Received: by 2002:a05:600c:4f87:b0:499:59fd:dbfc with SMTP id
+ 5b1f17b1804b1-49ce7bb7823mr8892615e9.1.1788328253255; 
+ Tue, 01 Sep 2026 22:50:53 -0700 (PDT)
+X-Received: by 2002:a05:600c:4f87:b0:499:59fd:dbfc with SMTP id
+ 5b1f17b1804b1-49ce7bb7823mr8892265e9.1.1788328252866; 
+ Tue, 01 Sep 2026 22:50:52 -0700 (PDT)
 Received: from ?IPV6:2a01:e0a:280:24f0:2cd2:7ace:8238:f7f4?
  ([2a01:e0a:280:24f0:2cd2:7ace:8238:f7f4])
  by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-48448e81718sm4063952f8f.16.2026.09.01.22.51.04
+ 5b1f17b1804b1-49cdce44ea9sm115442565e9.14.2026.09.01.22.50.51
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 01 Sep 2026 22:51:05 -0700 (PDT)
-Message-ID: <50333c38-00f3-48de-9ec4-cf5a4da98e5a@redhat.com>
-Date: Wed, 2 Sep 2026 07:51:04 +0200
+ Tue, 01 Sep 2026 22:50:52 -0700 (PDT)
+Message-ID: <be0b34b8-21b5-4584-8ab8-1d9f09399cbc@redhat.com>
+Date: Wed, 2 Sep 2026 07:50:51 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
 From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@redhat.com>
-Subject: Re: [PATCH v2 17/25] tests/functional: give the set_machine probe VM
- the test workdir
+Subject: Re: [PATCH v2 16/25] tests/functional: aspeed: optionally check the
+ device tree model on boot
 To: Emmanuel Blot <emmanuel.blot@free.fr>, qemu-devel@nongnu.org
 Cc: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@mailo.com>,
  Peter Maydell <peter.maydell@linaro.org>,
@@ -92,7 +92,7 @@ Cc: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@mailo.com>,
  =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>,
  Emmanuel Blot <eblot@meta.com>
 References: <20260731-sanmiguel-bmc-locator-v2-0-1266926ba769@free.fr>
- <20260731-sanmiguel-bmc-locator-v2-17-1266926ba769@free.fr>
+ <20260731-sanmiguel-bmc-locator-v2-16-1266926ba769@free.fr>
 Autocrypt: addr=clg@redhat.com; keydata=
  xsFNBFu8o3UBEADP+oJVJaWm5vzZa/iLgpBAuzxSmNYhURZH+guITvSySk30YWfLYGBWQgeo
  8NzNXBY3cH7JX3/a0jzmhDc0U61qFxVgrPqs1PQOjp7yRSFuDAnjtRqNvWkvlnRWLFq4+U5t
@@ -136,9 +136,9 @@ Autocrypt: addr=clg@redhat.com; keydata=
  HQoPn9qrDJgsgcbBVc1gkUT6hnxShKPp4PlsZVMNjvPAnr5TEBgHkk54HQRhhwcYv1T2QumQ
  izDiU6iOrUzBThaMhZO3i927SG2DwWDVzZltKrCMD1aMPvb3NU8FOYRhNmIFR3fcalYr+9gD
  uVKe8BVz4atMOoktmt0GWTOC8P4=
-In-Reply-To: <20260731-sanmiguel-bmc-locator-v2-17-1266926ba769@free.fr>
+In-Reply-To: <20260731-sanmiguel-bmc-locator-v2-16-1266926ba769@free.fr>
 X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: BJRpfKKUpSENXQXIB0hgb3n3fRKjBjpYhPovi_TcBLg_1788328267
+X-Mimecast-MFC-PROC-ID: GQvhgU2khacYHq6GbHHWQnBLT7U9ilh1FvO3iQAm-wI_1788328253
 X-Mimecast-Originator: redhat.com
 Content-Language: en-US, fr
 Content-Type: text/plain; charset=UTF-8; format=flowed
@@ -168,31 +168,42 @@ Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
 On 7/31/26 12:45, Emmanuel Blot wrote:
-> set_machine() launches a throwaway QEMUMachine to query the available
-> machine types, but constructs it without base_temp_dir, so it falls back
-> to the hardcoded "/var/tmp" default instead of the writable per-test
-> workdir that the actual test VM already uses. Pass base_temp_dir=
-> self.workdir for consistency; this also fixes VM launch on hosts where
-> /var/tmp is not writable.
+> Add an optional 'dt_model' argument to do_test_arm_aspeed_openbmc().
+> When
+> provided, the helper also waits for the kernel's "Machine model: ..."
+> line,
+> letting a test confirm the booted image actually matches the expected
+> board
+> device tree rather than only the SoC revision.
 > 
 > Signed-off-by: Emmanuel Blot <emmanuel.blot@free.fr>
 > ---
->   tests/functional/qemu_test/testcase.py | 2 +-
->   1 file changed, 1 insertion(+), 1 deletion(-)
+>   tests/functional/aspeed.py | 5 ++++-
+>   1 file changed, 4 insertions(+), 1 deletion(-)
 > 
-> diff --git a/tests/functional/qemu_test/testcase.py b/tests/functional/qemu_test/testcase.py
-> index e4179d165c..ed861709e1 100644
-> --- a/tests/functional/qemu_test/testcase.py
-> +++ b/tests/functional/qemu_test/testcase.py
-> @@ -317,7 +317,7 @@ def set_machine(self, machinename):
->           cls = type(self)
+> diff --git a/tests/functional/aspeed.py b/tests/functional/aspeed.py
+> index 076da1036c..08af6b4839 100644
+> --- a/tests/functional/aspeed.py
+> +++ b/tests/functional/aspeed.py
+> @@ -8,7 +8,8 @@
+>   class AspeedTest(LinuxKernelTest):
 >   
->           if not hasattr(cls, "_machines"):
-> -            tmp_vm = QEMUMachine(self.qemu_bin)
-> +            tmp_vm = QEMUMachine(self.qemu_bin, base_temp_dir=self.workdir)
->               tmp_vm.set_machine('none')
->   
->               try:
+>       def do_test_arm_aspeed_openbmc(self, machine, image, uboot='2019.04',
+> -                                   cpu_id='0x0', soc='AST2500 rev A1'):
+> +                                   cpu_id='0x0', soc='AST2500 rev A1',
+> +                                   dt_model=None):
+>           self.set_machine(machine)
+>           self.vm.set_console()
+>           self.vm.add_args('-drive', f'file={image},if=mtd,format=raw',
+> @@ -19,6 +20,8 @@ def do_test_arm_aspeed_openbmc(self, machine, image, uboot='2019.04',
+>           self.wait_for_console_pattern('## Loading kernel from FIT Image')
+>           self.wait_for_console_pattern('Starting kernel ...')
+>           self.wait_for_console_pattern(f'Booting Linux on physical CPU {cpu_id}')
+> +        if dt_model:
+> +            self.wait_for_console_pattern(f'Machine model: {dt_model}')
+>           self.wait_for_console_pattern(f'ASPEED {soc}')
+>           self.wait_for_console_pattern('/init as init process')
+>           self.wait_for_boot_complete()
 > 
 
 Reviewed-by: Cédric Le Goater <clg@redhat.com>

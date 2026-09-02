@@ -4,81 +4,82 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B46DBC61DFD
-	for <qemu-arm@archiver.kernel.org>; Wed,  2 Sep 2026 05:51:14 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 25B90C61DD6
+	for <qemu-arm@archiver.kernel.org>; Wed,  2 Sep 2026 05:51:17 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1x1drf-0002Ig-AC; Wed, 02 Sep 2026 01:50:27 -0400
+	id 1x1dsO-0003UM-Td; Wed, 02 Sep 2026 01:51:12 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1x1dre-0002IN-26
- for qemu-arm@nongnu.org; Wed, 02 Sep 2026 01:50:26 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1x1dsN-0003SF-Ma
+ for qemu-arm@nongnu.org; Wed, 02 Sep 2026 01:51:11 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1x1drc-0001Jx-Jh
- for qemu-arm@nongnu.org; Wed, 02 Sep 2026 01:50:25 -0400
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1x1dsM-0001Ml-74
+ for qemu-arm@nongnu.org; Wed, 02 Sep 2026 01:51:11 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1788328223;
+ s=mimecast20190719; t=1788328269;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
- bh=WX+fsdVFyY7mNVSxue30xKMvfzY/BteS/Iu/6gPfflY=;
- b=gRDYm8XdJWgAnhyv672mwj+Um4OuFsknVWypXhC0hcBqtR7CvzTSI1jm7VC36Zw8j9mq+7
- 5pvtKrX9ZmrBOKA/nrj0RLhc7NheWx0jRLiHE2xQf1ck73REOHqjeq0YlRdNMWdWFiqM+I
- OOF5UvsMN8mdAi6dXmeKdhz1Tf4NzC0=
-Received: from mail-wm1-f72.google.com (mail-wm1-f72.google.com
- [209.85.128.72]) by relay.mimecast.com with ESMTP with STARTTLS
+ bh=kcii3u8NNNZ27sC6GM1HE6/FlV/7po+Jts/QnPVEp8Y=;
+ b=PyANc+LFocIylFl83IiS4DQf+BTxwCPNOciwjRcRReRJR6eEXvR9VvKJEUyYjJHhwCP+Wb
+ tJQzIA8owp0HD5wKPtnwO6yLe6/cujgGz78eRXno3Blz60zPwUa9PPX+EzzT/C7YZfdL3Q
+ MWISQDmjB65zCC00zNGNXwGZ8SVnkYM=
+Received: from mail-wm1-f70.google.com (mail-wm1-f70.google.com
+ [209.85.128.70]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-26-pizTL3IYOy6YSGFxJ3xsbg-1; Wed, 02 Sept 2026 01:50:22 -0400
-X-MC-Unique: pizTL3IYOy6YSGFxJ3xsbg-1
-X-Mimecast-MFC-AGG-ID: pizTL3IYOy6YSGFxJ3xsbg_1788328221
-Received: by mail-wm1-f72.google.com with SMTP id
- 5b1f17b1804b1-49a1b4ea633so6219855e9.0
- for <qemu-arm@nongnu.org>; Tue, 01 Sep 2026 22:50:22 -0700 (PDT)
+ us-mta-91-AHRYYVK6M32I4ic-6yewSg-1; Wed, 02 Sept 2026 01:51:07 -0400
+X-MC-Unique: AHRYYVK6M32I4ic-6yewSg-1
+X-Mimecast-MFC-AGG-ID: AHRYYVK6M32I4ic-6yewSg_1788328267
+Received: by mail-wm1-f70.google.com with SMTP id
+ 5b1f17b1804b1-49a1b4ea633so6226935e9.0
+ for <qemu-arm@nongnu.org>; Tue, 01 Sep 2026 22:51:07 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1788328221; x=1788933021;
+ d=1e100.net; s=20251104; t=1788328267; x=1788933067;
  h=content-transfer-encoding:content-type:in-reply-to:autocrypt
  :content-language:references:cc:to:subject:from:user-agent
  :mime-version:date:message-id:x-gm-gg:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to:content-type;
- bh=WX+fsdVFyY7mNVSxue30xKMvfzY/BteS/Iu/6gPfflY=;
- b=DdAI5Q5wDZa63QnI0zW80AYJe2O/bDjx2x9bXD5CIPrTYZiGhFrpmlPNWqo57P3AZq
- kmdNQXcVa24HZ9jG0px5NnwIC22RfFumG/xh6WwXDfrsVNfLosWtjdGHDftF2cLGPCQM
- DUkKPYhHMj015FQ2s266OKXODZi5L/TNWgjh+y3XA+kJZ4+UOrM+rZufUcI37jWIckWp
- QRUJqfjl/fNKQbeAyYg2nq4yHld/SQO4mbigB23j32Ftv9OPkeZI3G8EUtSKTyzB+kKD
- TNTOsNFnEexE9Wtjj+2ahSHvbSDRU9O6HK2CPnx68U4Rd91eeMZwqCrLwEBu0H3IQYpP
- gOcg==
+ bh=kcii3u8NNNZ27sC6GM1HE6/FlV/7po+Jts/QnPVEp8Y=;
+ b=dP1F4s3Lfl9Aod/hfLK/TvkdPkwtZ7m7L0twM0QZ8Sv57tXPznRv3o6fBVcYqnflWo
+ PZF8dRzaw9XSR6zMZZ6KEtms51o16/4Ffw8vePkufdI2VEcCEQFJZzG9Is24RY1tdkSF
+ M/oPutvI4BdvbcksJRoijTM3VH1pY+LEt9kgq5w4WuYfWEkILkABArkys3gVs9EgXFn+
+ qFrg+VUdFCVHTZ+KTHE2DDz3bZKlm26C7/f0h/lpa0tEYb5as7FDYnvepnvR1MDDsGJU
+ SE/19+3jb5HHbtfaGOw0qwFSfzf6kG9wFHA1j/wv7ShszY6XKH4ErGlvwgWJafMHil29
+ xCyw==
 X-Forwarded-Encrypted: i=1;
- AHgh+Rrp3SUVhnq4flTAKfajRYu5SpjIBe5toMoFTayNl7UmT1S3vEche4TGgMcJv+Qr7O+AM6pJT42Gew==@nongnu.org
-X-Gm-Message-State: AFuF++kgKY4wCGVLCr+ZJVlnlf+eCXMmeCXZAiSvrqppVR8hBhx+aI1c
- rbNwzzgoMhLR+OAtPzB+jeJZM0MRWibOoCVifn8Qp9r7IoSCmso1ZfKKP9AWQPi2KMJSPbajpP8
- famq1eBHcxxr+l40Rw7N22aeaMEWxcCZYFbKcwqXx9UGhZq/j3lOufw==
-X-Gm-Gg: AR+sD120QySPFDikUlND+YYpE9CXo1wpenlfSmeUl8ePUgpl06rD0UArufctAJdjrOz
- RdrE+IzmU/4ZrUNy9OLUes54mFs8/aWpYRKeI26gG4N7H/qzve3A+AOx0BeXBLfEDnjMHjvoszy
- 1+AWxridPJA44TRBy+Uig1JdVxaFnoK8R2NWsDZpgfwSA5unhUKDlulMhpKsliNzXXzlpmREQaf
- xvFzpD/qK3TRgimPjSB7mbVXZl3ggbvi4whkmETNH8TnLl7lExP87SAnpfJLeVbqxhorwcAs6AV
- /4r5upv2+BrCZ5LUnOfxpnIkrm7nWaNXp1qtN3ns8bIGNBl0lxxLJi74Rp7MB0X0IAg9tFB8c1N
- zmTW7ks/NDoiQHXNYTVmtDsFfZ4EhLAGUUAmD9Z0=
-X-Received: by 2002:a05:600c:1987:b0:49b:4d64:bbc4 with SMTP id
- 5b1f17b1804b1-49ce58211demr34431045e9.8.1788328221209; 
- Tue, 01 Sep 2026 22:50:21 -0700 (PDT)
-X-Received: by 2002:a05:600c:1987:b0:49b:4d64:bbc4 with SMTP id
- 5b1f17b1804b1-49ce58211demr34430565e9.8.1788328220809; 
- Tue, 01 Sep 2026 22:50:20 -0700 (PDT)
+ AHgh+RqM+SsdZA5ZtVBUgsqt6pScMJTJgwgaL4OJzahbeWoY/Vi9bOGr1oSSceFjjQ+mPVa3VjRQdRd+CA==@nongnu.org
+X-Gm-Message-State: AFuF++nzo7SfLbCdMRBF1zmu95Qa+KQQkVbBLHTxIOsoorOT4ElqqdVg
+ d71/s3wWV2M34cdfwbPdgNBYaO+WliIFbmdRZV2pJzz5kbMRJPerTZMIzdUNb0G67nVxL8VWkd3
+ 5wdfWzh3T5ODZTf3Qk5px4iyrHeFrsKNxpR5i4h1SXjQ4iIKwXZHj5A==
+X-Gm-Gg: AR+sD106nBb77n9EzIfAqSJTTqKEsU+NOJ7HLGm78bJo27yu29OWIwgdgivoIRVUk69
+ q6BCW8uuY1wPGFxcln+wdXyjsVKu6rNLtdTMF9RDZujYKZwzCDxoucb0kbVN+qxFEL39wbYas/4
+ wZ2AWfxn+nhVBeNW5unLw4K3PcN3TAURKTib3jKDjp+kbq+4oOBbKJVJeW2J3/W64dr7XNkJ4wM
+ UMoE5Zo/CJLV5iVMqv25a1XQ0TLjRdrIKB9BzbmKXcvaeIg9qL8qPTnx1cPXK0ksKhk3NhMR6pb
+ wlGQVYCIBA+wjdIwq1OO//w5qW4Y5JDs4TujkjPDARERNBYSwJmZ2RFmINJwWBZr4FOOsU6++j3
+ tfEjbJT5VnvYgDgY2Yx96Wu9TNBzYe6t2wGf30lg=
+X-Received: by 2002:a05:600c:3e0a:b0:499:a277:e8b5 with SMTP id
+ 5b1f17b1804b1-49ce5810b5dmr48071375e9.3.1788328266695; 
+ Tue, 01 Sep 2026 22:51:06 -0700 (PDT)
+X-Received: by 2002:a05:600c:3e0a:b0:499:a277:e8b5 with SMTP id
+ 5b1f17b1804b1-49ce5810b5dmr48070895e9.3.1788328266250; 
+ Tue, 01 Sep 2026 22:51:06 -0700 (PDT)
 Received: from ?IPV6:2a01:e0a:280:24f0:2cd2:7ace:8238:f7f4?
  ([2a01:e0a:280:24f0:2cd2:7ace:8238:f7f4])
  by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-49cdce4a804sm141038755e9.15.2026.09.01.22.50.19
+ ffacd0b85a97d-48448e81718sm4063952f8f.16.2026.09.01.22.51.04
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 01 Sep 2026 22:50:20 -0700 (PDT)
-Message-ID: <8456b922-05be-47d3-9a97-de61ef773ae6@redhat.com>
-Date: Wed, 2 Sep 2026 07:50:18 +0200
+ Tue, 01 Sep 2026 22:51:05 -0700 (PDT)
+Message-ID: <50333c38-00f3-48de-9ec4-cf5a4da98e5a@redhat.com>
+Date: Wed, 2 Sep 2026 07:51:04 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
 From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@redhat.com>
-Subject: Re: [PATCH v2 14/25] hw/arm: catalina: use the real TMP75 model
+Subject: Re: [PATCH v2 17/25] tests/functional: give the set_machine probe VM
+ the test workdir
 To: Emmanuel Blot <emmanuel.blot@free.fr>, qemu-devel@nongnu.org
 Cc: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@mailo.com>,
  Peter Maydell <peter.maydell@linaro.org>,
@@ -91,7 +92,7 @@ Cc: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@mailo.com>,
  =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>,
  Emmanuel Blot <eblot@meta.com>
 References: <20260731-sanmiguel-bmc-locator-v2-0-1266926ba769@free.fr>
- <20260731-sanmiguel-bmc-locator-v2-14-1266926ba769@free.fr>
+ <20260731-sanmiguel-bmc-locator-v2-17-1266926ba769@free.fr>
 Autocrypt: addr=clg@redhat.com; keydata=
  xsFNBFu8o3UBEADP+oJVJaWm5vzZa/iLgpBAuzxSmNYhURZH+guITvSySk30YWfLYGBWQgeo
  8NzNXBY3cH7JX3/a0jzmhDc0U61qFxVgrPqs1PQOjp7yRSFuDAnjtRqNvWkvlnRWLFq4+U5t
@@ -135,22 +136,22 @@ Autocrypt: addr=clg@redhat.com; keydata=
  HQoPn9qrDJgsgcbBVc1gkUT6hnxShKPp4PlsZVMNjvPAnr5TEBgHkk54HQRhhwcYv1T2QumQ
  izDiU6iOrUzBThaMhZO3i927SG2DwWDVzZltKrCMD1aMPvb3NU8FOYRhNmIFR3fcalYr+9gD
  uVKe8BVz4atMOoktmt0GWTOC8P4=
-In-Reply-To: <20260731-sanmiguel-bmc-locator-v2-14-1266926ba769@free.fr>
+In-Reply-To: <20260731-sanmiguel-bmc-locator-v2-17-1266926ba769@free.fr>
 X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: ZtIWHEeyMvScJbv2DDgY8BFEARePP2hFNN2FE__tU_0_1788328221
+X-Mimecast-MFC-PROC-ID: BJRpfKKUpSENXQXIB0hgb3n3fRKjBjpYhPovi_TcBLg_1788328267
 X-Mimecast-Originator: redhat.com
 Content-Language: en-US, fr
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=clg@redhat.com;
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=clg@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=0.001, SPF_HELO_PASS=-0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -167,33 +168,31 @@ Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
 On 7/31/26 12:45, Emmanuel Blot wrote:
-> The Catalina BMC instantiates several ti,tmp75 temperature sensors. Now
-> that hw/sensor/tmp105.h provides a proper TMP75 model, drop the local
-> TYPE_TMP75 alias (and its guard) so the board instantiates the accurate
-> device rather than a plain TMP105.
+> set_machine() launches a throwaway QEMUMachine to query the available
+> machine types, but constructs it without base_temp_dir, so it falls back
+> to the hardcoded "/var/tmp" default instead of the writable per-test
+> workdir that the actual test VM already uses. Pass base_temp_dir=
+> self.workdir for consistency; this also fixes VM launch on hosts where
+> /var/tmp is not writable.
 > 
 > Signed-off-by: Emmanuel Blot <emmanuel.blot@free.fr>
 > ---
->   hw/arm/aspeed_ast2600_catalina.c | 6 ------
->   1 file changed, 6 deletions(-)
+>   tests/functional/qemu_test/testcase.py | 2 +-
+>   1 file changed, 1 insertion(+), 1 deletion(-)
 > 
-> diff --git a/hw/arm/aspeed_ast2600_catalina.c b/hw/arm/aspeed_ast2600_catalina.c
-> index 33e75338ef..928e140b21 100644
-> --- a/hw/arm/aspeed_ast2600_catalina.c
-> +++ b/hw/arm/aspeed_ast2600_catalina.c
-> @@ -22,12 +22,6 @@
->   #define CATALINA_BMC_HW_STRAP2 0x00000800
->   #define CATALINA_BMC_RAM_SIZE ASPEED_RAM_SIZE(2 * GiB)
+> diff --git a/tests/functional/qemu_test/testcase.py b/tests/functional/qemu_test/testcase.py
+> index e4179d165c..ed861709e1 100644
+> --- a/tests/functional/qemu_test/testcase.py
+> +++ b/tests/functional/qemu_test/testcase.py
+> @@ -317,7 +317,7 @@ def set_machine(self, machinename):
+>           cls = type(self)
 >   
-> -/*
-> - * Guard the alias against the TYPE_TMP75 that hw/sensor/tmp105.h now
-> - * defines.
-> - */
-> -#undef TYPE_TMP75
-> -#define TYPE_TMP75 TYPE_TMP105
->   #define TYPE_TMP421 "tmp421"
->   #define TYPE_DS1338 "ds1338"
+>           if not hasattr(cls, "_machines"):
+> -            tmp_vm = QEMUMachine(self.qemu_bin)
+> +            tmp_vm = QEMUMachine(self.qemu_bin, base_temp_dir=self.workdir)
+>               tmp_vm.set_machine('none')
 >   
+>               try:
 > 
 
 Reviewed-by: Cédric Le Goater <clg@redhat.com>

@@ -4,168 +4,130 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id ED6F6C61DD3
-	for <qemu-arm@archiver.kernel.org>; Thu,  3 Sep 2026 10:24:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6E001C61DD3
+	for <qemu-arm@archiver.kernel.org>; Thu,  3 Sep 2026 11:26:16 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1x24cN-0007YN-QH; Thu, 03 Sep 2026 06:24:27 -0400
+	id 1x25a2-0005S7-Ld; Thu, 03 Sep 2026 07:26:06 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@oss.qualcomm.com>)
- id 1x24cN-0007Xw-5F
- for qemu-arm@nongnu.org; Thu, 03 Sep 2026 06:24:27 -0400
-Received: from mx0a-0031df01.pphosted.com ([205.220.168.131])
+ (Exim 4.90_1) (envelope-from <bin.meng@processmission.com>)
+ id 1x25a1-0005RX-CF; Thu, 03 Sep 2026 07:26:05 -0400
+Received: from mail-koreacentralazlp170130006.outbound.protection.outlook.com
+ ([2a01:111:f403:c40f::6] helo=SEYPR02CU001.outbound.protection.outlook.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@oss.qualcomm.com>)
- id 1x24cK-0002NT-PV
- for qemu-arm@nongnu.org; Thu, 03 Sep 2026 06:24:26 -0400
-Received: from pps.filterd (m0279867.ppops.net [127.0.0.1])
- by mx0a-0031df01.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id
- 683AH7LQ1328086
- for <qemu-arm@nongnu.org>; Thu, 3 Sep 2026 10:24:23 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qualcomm.com; h=
- cc:content-transfer-encoding:content-type:date:from:in-reply-to
- :message-id:mime-version:references:subject:to; s=qcppdkim1; bh=
- C2oj6vUDeztD1oA91RWuYi+1yGYj4tKSTLkWJt3YfaQ=; b=Je7OxKur0p2Qf9eK
- wINu68pkd6ndSXQHgB5lkIudjb5Qa0Qd3HJcG8Btf3xYLi5MjKMoV9ABkS7+p2S7
- W6moUGr3jWOb+wGZFkzseZrRLweJVdJO7Po3ZV5SCZd+AB2lf9ZbvmNmJSy+QJF3
- pxZE07tmHrgsnKFHhc02Mmzm476WKmqfl1SLZOrRXw6D+8MejeAnimqelyuyBdVK
- 1M/uT8UDj/cVUTHdqN2ImRdc+jCA1L3XbBtp/VDCKdbRhUNHVtGe4zhf8TmxbPB/
- EeZnOE+Qycp5JIXdXGHEx/+iCMigOYbOFxZsmsf7pdKVp5fuq0NuWMt8PqfJGWkk
- aX+E4g==
-Received: from mail-qk1-f200.google.com (mail-qk1-f200.google.com
- [209.85.222.200])
- by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 4genrnmjat-1
- (version=TLSv1.3 cipher=TLS_AES_128_GCM_SHA256 bits=128 verify=NOT)
- for <qemu-arm@nongnu.org>; Thu, 03 Sep 2026 10:24:23 +0000 (GMT)
-Received: by mail-qk1-f200.google.com with SMTP id
- af79cd13be357-92e62e3459fso389195485a.0
- for <qemu-arm@nongnu.org>; Thu, 03 Sep 2026 03:24:22 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=oss.qualcomm.com; s=google; t=1788431062; x=1789035862; darn=nongnu.org;
- h=content-transfer-encoding:content-type:in-reply-to:references:cc:to
- :from:content-language:subject:user-agent:mime-version:date
- :message-id:from:to:cc:subject:date:message-id:reply-to:content-type;
- bh=C2oj6vUDeztD1oA91RWuYi+1yGYj4tKSTLkWJt3YfaQ=;
- b=V4ZURP9sx7YIZ/3Jn3usyimUJEpKkBdo+YBbG7XHoLDcD8W2fU1JALyEXurO5vRfMz
- JDcFFhMkLq3+NZ6lkl1DbIopcpBSp4+prC7MlpuNj7UNdn/XOqkI7QBEQEWf2Bo1fCCr
- R5MMFhJzr//UqRokeqxE/5r0oeG840gTbLy2CyUWk8pfOr4GtBBxpgoRD83c2omwHIoY
- u2cJveaULPDpxE9XJgWXIc+wo4H5gjbFqoJolD99ykDAYZQXpWY0z4fMWTEKzjhR2fOo
- ucSlWWpUnUqGHVujqdCza5bcsYpwElIPz2olsMaHgojAQsRdWac2xbTkjgs7iVPl1eyI
- dxjg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1788431062; x=1789035862;
- h=content-transfer-encoding:content-type:in-reply-to:references:cc:to
- :from:content-language:subject:user-agent:mime-version:date
- :message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
- :message-id:reply-to:content-type;
- bh=C2oj6vUDeztD1oA91RWuYi+1yGYj4tKSTLkWJt3YfaQ=;
- b=EPNYSrwtZSs0vOniXGYKKxgttWto/+pU/uNLA9Z+K9jgrgb32fviFoQ8240BFAFtR0
- xoeASaPosaEwL92o1rKdFB7AeWhAWWHrlV+ATqB4W4W9CZFIxvgpwd2Ufbk2BT7ukkGo
- 8qF83fnHFg6Dx10Vwh/j3oU1o04uSf7iHrjSWOSJSvXU+ENkwpEUN1zmZuZJiSimlMgF
- UKFIcy5lAQHUA3p8RlNOp/8koNuLmcD/X8j7fssvlmaKph+hvLKqaiUQeZDK8J+cHx1R
- AarnjueT/CyjWjmZhG9w1JrkZi62qtzrYlYeQaccer9mOLuNgLbW/h3gKK8+5Xdw/VKV
- QFbw==
-X-Forwarded-Encrypted: i=1;
- AKwUvBx1Mk1mPAYjbTk+nwtjnnKekEAoG2lEJaZz3vZ9JQXfET+YS/ytTs7WRAERpVfb0x2ZrhAHFM8Rwg==@nongnu.org
-X-Gm-Message-State: AFuF++lwerzU9JCOiIVlxUgz0tI4O7PRNJDA/0kYrmIb0Ys5QqOW5qJK
- +K6dG3ui/xKY87V9QMlJ7/4YJeeNqH2rJaz5S1Z8GUK5dnsLbljZjD8kr26AJrMghcuxgTAzNl4
- QpgcXcZpsSZpgsk8MROhvtXWf6FkSRKNnL4zoVM0G1/Y5byCYfNBT8bU=
-X-Gm-Gg: AYBFou0oWelSr3Dn/D6L8RlLo6APORZHdcwqFIT5aRKWe8rg32lnOPK03jfjecqWrV3
- uo+djTxRCySTwh8JhFK7397qMAqxxVzSddePSN3kmfN2r4ln7A0ARUsWp4u1l3ZbIvMe2gZWGtn
- PUmZHRwINhXyA9Ff0bAzLfvxdnHBanodGN9yUCUB3nwzsTjh4wgZSlTrPYApCgfs6Vw5fXLgq8O
- 4V++2WZZKgqRoakv3VfMa37nFzl7rYMKv6CGr6Ogs0vJCeJA1iV3oQNG7UfDu8shfGMI2e5DcC6
- 2VIn1PeghzdTafPVRJDPm4Nq2UtvFIvseabIQv2amrLvSmSqGaFruKg6iaEzlWAKO3xDDtRbvHP
- +cg15NcHYR5jwEksLbmxlpi3j6cGngaUA9Q==
-X-Received: by 2002:a05:620a:f0d:b0:939:6dea:3749 with SMTP id
- af79cd13be357-9396dea3889mr545569985a.45.1788431062101; 
- Thu, 03 Sep 2026 03:24:22 -0700 (PDT)
-X-Received: by 2002:a05:620a:f0d:b0:939:6dea:3749 with SMTP id
- af79cd13be357-9396dea3889mr545563385a.45.1788431061607; 
- Thu, 03 Sep 2026 03:24:21 -0700 (PDT)
-Received: from [192.168.69.200] (pmd666.hd.free.fr. [88.187.86.199])
- by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-49cee5d5d12sm58603785e9.5.2026.09.03.03.24.17
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 03 Sep 2026 03:24:18 -0700 (PDT)
-Message-ID: <7babc6ed-f537-41ca-8017-3a1c2c48d691@oss.qualcomm.com>
-Date: Thu, 3 Sep 2026 12:24:16 +0200
-MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH for-11.2 v3 15/15] hw/qdev: Prevent devices from being
- realized more than once
-Content-Language: en-US
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@oss.qualcomm.com>
-To: Akihiko Odaki <odaki@rsg.ci.i.u-tokyo.ac.jp>, qemu-devel@nongnu.org
-Cc: BALATON Zoltan <balaton@eik.bme.hu>, Paolo Bonzini <pbonzini@redhat.com>, 
- =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>,
- Eduardo Habkost <eduardo@habkost.net>,
- "Maciej S. Szmigiero" <maciej.szmigiero@oracle.com>,
- "Michael S. Tsirkin" <mst@redhat.com>,
- David Hildenbrand <david@kernel.org>, Igor Mammedov <imammedo@redhat.com>,
- FangSheng Huang <FangSheng.Huang@amd.com>,
- Alistair Francis <alistair@alistair23.me>,
- "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
- Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
- Nicholas Piggin <npiggin@gmail.com>, Aditya Gupta <adityag@linux.ibm.com>,
- Glenn Miles <milesg@linux.ibm.com>,
- Harsh Prateek Bora <harshpb@linux.ibm.com>, qemu-ppc@nongnu.org,
- Alex Williamson <alex@shazbot.org>, =?UTF-8?Q?C=C3=A9dric_Le_Goater?=
- <clg@redhat.com>, Zhao Liu <zhao1.liu@intel.com>,
- Hendrik Brueckner <brueckner@linux.ibm.com>,
- Richard Henderson <richard.henderson@linaro.org>,
- Ilya Leoshkevich <iii@linux.ibm.com>,
- Cornelia Huck <cohuck@redhat.com>, Eric Farman <farman@linux.ibm.com>,
- Matthew Rosato <mjrosato@linux.ibm.com>, qemu-s390x@nongnu.org,
- Luc Michel <luc@lmichel.fr>, Fam Zheng <fam@euphon.net>,
- Eric Blake <eblake@redhat.com>, Markus Armbruster <armbru@redhat.com>
-References: <20260721-qdev-v3-0-d2e226fa002e@rsg.ci.i.u-tokyo.ac.jp>
- <20260721-qdev-v3-15-d2e226fa002e@rsg.ci.i.u-tokyo.ac.jp>
- <356ebc59-d2cb-4c47-867e-8fc693b3a593@oss.qualcomm.com>
- <a5597a0e-c18c-4649-bfd1-20d77897ff88@rsg.ci.i.u-tokyo.ac.jp>
- <8d979f89-374a-4b86-93c8-9d7dcc311ca6@oss.qualcomm.com>
- <3a1e6538-2669-4e73-9855-e4b7f33604e7@rsg.ci.i.u-tokyo.ac.jp>
- <a79f2ad8-d1ad-4536-85d1-0a01ad2f9513@oss.qualcomm.com>
-In-Reply-To: <a79f2ad8-d1ad-4536-85d1-0a01ad2f9513@oss.qualcomm.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
+ (Exim 4.90_1) (envelope-from <bin.meng@processmission.com>)
+ id 1x25Zz-0006f9-C7; Thu, 03 Sep 2026 07:26:05 -0400
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=pocKVfXaoPlFr8CeqrWrhQZ3ZFk+ho7Z4rshmI29UJ57mWsbvFEfR1iho34sLJw8jaGFTIsqkPvwlg634w9XyGKRwzg7a/1kkS83mOnLzpeW/7TrVgmL++hPprw2k7afzsdCrf6L+WOCZOfpRVnN3hlvoodTJ/hZLv89vFI7v839cBN8Bz9d98o4dMZ2kPUO5JlRS6gTBhimQU6zutPyxo2FVWWF8UNfpT3349FCWZZp0ooMJ3qPnzllPyapFJnbD/cLUGVJlBZHvw19fE6r7osy8laTiLjO9u/m+bvm39hvNWqx8WpMkAUxtzx4jEYrj6i456FwBtvIEfmNqzVQ8w==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=dGl0nFEtB4Hv2akxR3miNbaQfL1ReN+n0H8SrA2wp5I=;
+ b=baPS3qU7zDb6mBLyeYFcGiglaQ2P3uB3DQ9Y2+FLX4+i/3ZSoqrrRKsmzZYyw5GOCb3/h41H4nWWO3zlA2I2zaxhjtijaIxm4Cn7fiZtSh90ukLSE2i+5+iReX1RjfTvCy51Q5E9U36RYG82KTj94EundUnRRcp1glJMhdorIdOHJKIb5hW2sBlzCY8RwKo96KX1HdBV4MXNQPVdys4sItuGy/IOuVOFRcYwDRKd1OwPUqWCHXWjoZX+2iqEPFprYlm55kmQsWb+r1ZbKqI7Cwj2GP5RtdO2dMqh1tz5ticbhvzFwOK+8AKQrxXPyHgy35D7mK9D1KzMk//jPG3cow==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=processmission.com; dmarc=pass action=none
+ header.from=processmission.com; dkim=pass header.d=processmission.com;
+ arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=processmission.com;
+ s=selector1;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=dGl0nFEtB4Hv2akxR3miNbaQfL1ReN+n0H8SrA2wp5I=;
+ b=JGoDlpNUuz7pojagk8iB9fXZLC+bMFf+QxoVGdpsSVFbPsdcrAJSQP0H1lccoDa5Y5pKhheE26paXog1QbyNLtWOLvQR4yMRB58aen93gHlJJyR7jHCfX4Fxec5SLoxbKZotOEBgi1jXZESiRDkBSG08PL4NWGudhfb6rHQ6tnzuUabf2zBNM8WKMo1+MfPbZhcFCgrntkRfiv4wz9UYBd35KwYJYu3L2tDNg6EhprOsLiHAm1ACTs81S/Mj9Vth7TpQlDyQ/eM9pxQLcWIRohVIXeSJ2+pOKt1qnQirINvqndUv/wMAeloNYPrtbwunZw1LGn3MzB71U8MWAJjxVg==
+Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=processmission.com;
+Received: from KL1PR02MB4977.apcprd02.prod.outlook.com (2603:1096:820:71::8)
+ by TYZPR02MB6358.apcprd02.prod.outlook.com (2603:1096:400:419::9) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.21.360.13; Thu, 3 Sep
+ 2026 11:25:52 +0000
+Received: from KL1PR02MB4977.apcprd02.prod.outlook.com
+ ([fe80::9fdf:2557:8351:6c03]) by KL1PR02MB4977.apcprd02.prod.outlook.com
+ ([fe80::9fdf:2557:8351:6c03%4]) with mapi id 15.21.0382.007; Thu, 3 Sep 2026
+ 11:25:51 +0000
+From: Bin Meng <bin.meng@processmission.com>
+To: QEMU <qemu-devel@nongnu.org>
+Cc: Alistair Francis <alistair@alistair23.me>, Bin Meng <bmeng.cn@gmail.com>,
+ Fabiano Rosas <farosas@suse.de>, Hanna Reitz <hreitz@redhat.com>,
+ Kevin Wolf <kwolf@redhat.com>, Laurent Vivier <lvivier@redhat.com>,
+ Markus Armbruster <armbru@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@mailo.com>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@oss.qualcomm.com>,
+ Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>,
+ Thomas Huth <th.huth@posteo.eu>, qemu-arm@nongnu.org, qemu-block@nongnu.org
+Subject: [PATCH 00/33] hw/arm: Add Phytium E2000Q SoC and board support
+Date: Thu,  3 Sep 2026 19:24:40 +0800
+Message-ID: <20260903112532.3276678-1-bin.meng@processmission.com>
+X-Mailer: git-send-email 2.53.0
 Content-Transfer-Encoding: 8bit
-X-Proofpoint-GUID: 62sj2gSF_eOjjdu-ajEBVI_QDYIB8tCS
-X-Proofpoint-ORIG-GUID: 62sj2gSF_eOjjdu-ajEBVI_QDYIB8tCS
-X-Authority-Analysis: v=2.4 cv=YKuvDxGx c=1 sm=1 tr=0 ts=6a994ad7 cx=c_pps
- a=hnmNkyzTK/kJ09Xio7VxxA==:117 a=4s3hRJSeHn4rkQlkrse1kQ==:17
- a=IkcTkHD0fZMA:10 a=VdqzKS8jKosA:10 a=M51BFTxLslgA:10 a=s4-Qcg_JpJYA:10
- a=VkNPw1HP01LnGYTKEx00:22 a=u7WPNUs3qKkmUXheDGA7:22 a=eoimf2acIAo5FJnRuUoq:22
- a=VwQbUJbxAAAA:8 a=1bSrhWkXWGQrRwQRqCIA:9 a=3ZKOabzyN94A:10 a=QEXdDO2ut3YA:10
- a=PEH46H7Ffwr30OY-TuGO:22
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwOTAzMDA4OSBTYWx0ZWRfX7MixhUMFP3bh
- xkFlnkyL4UbATSEK55Xzynq08K2f33BPKcS/WY+1CXx4huyc135QeQhXWFF2wwCKissJT9xr8iI
- BnQnB3wahsM4iIq1Xh78qQZbtAPpzTSKkmQ741uWVgqipwd9IhT7Yy/xBDCwWJaflcUUlis6AC/
- +8o6xB+sUyv3NC5I7D+WYezv1hDKHhNvjEMHNSlpPr/5F0eD2h5hoBc6m3VSS2wf2U9Y1n1UmVw
- BnNJf/ZI1otYdIHiz1FsmUt0ydSdTOYazy3mbMTcJpWe/NuQFDKTYIYS3TKrn2uJEQe1w6Edq/K
- oJqIQyAM+/lT0tPsIUQWmrDd4XInFEamddCIC6vUlELkRDgpM4SeVBZDAeEsqFKi27BFcvW6zX0
- 6amtG/iutMNdigjg9mUwM5vWl1SEwzRYN5ji2Y/nV1AMUKiD1JydXe8ruvZ3Kyy4t0lb/zKsg50
- ABM4diQ4/z4DsQQZS7g==
-X-Proofpoint-Spam-Info: AW1haW4tMjYwOTAzMDA4OSBTYWx0ZWRfX576nc7rjGoXw
- xUp5ls3xe4XiMDPA+PsKnW0jn6K8Rj9R/Ws+JQ95CT5++CehYJjwCqRJAY8MnGLckt0lh7S50ew
- WoEdr6zFB9te/GB3Pya+O1DWyUsQ6H4=
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.293,Aquarius:18.0.1176,Hydra:6.1.134,FMLib:17.12.100.49
- definitions=2026-09-03_03,2026-09-03_01,2025-10-01_01
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
- bulkscore=0 spamscore=0 adultscore=0 impostorscore=0 malwarescore=0
- phishscore=0 clxscore=1015 priorityscore=1501 lowpriorityscore=0
- suspectscore=0 classifier=typeunknown authscore=0 authtc= authcc=
- route=outbound adjust=0 reason=mlx scancount=1 engine=8.22.0-2606150000
- definitions=main-2609030089
-Received-SPF: pass client-ip=205.220.168.131;
- envelope-from=philmd@oss.qualcomm.com; helo=mx0a-0031df01.pphosted.com
-X-Spam_score_int: -27
-X-Spam_score: -2.8
+Content-Type: text/plain
+X-ClientProxiedBy: TY4P286CA0026.JPNP286.PROD.OUTLOOK.COM
+ (2603:1096:405:2b0::11) To KL1PR02MB4977.apcprd02.prod.outlook.com
+ (2603:1096:820:71::8)
+MIME-Version: 1.0
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: KL1PR02MB4977:EE_|TYZPR02MB6358:EE_
+X-MS-Office365-Filtering-Correlation-Id: e7aea3b6-734a-4de3-423d-08df09ae1bba
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;
+ ARA:13230040|366016|23010399003|1800799024|376014|7416014|6133799003|56012099006|10067099003|18002099003|3023799007;
+X-Microsoft-Antispam-Message-Info: luBTQwvWIh7oB4hVFomEIT7sWd0cPTjMQtFWVcQVZSAmzATJxJd/j4jNM/1SM/I576k+SDoVLmUzrtctBVm+BnwOEW66s+V/2Hug2V+A8Yb60V39NXdjXzpHRAd0X9w4+MsR7YfdlmY8msB7YF5AMJ3iTmp2uurkF6YN6hJ4EHLQUNFsAKDi0qUowlYbwulHGUDZfJ27Qns3a/t/V74QJN82RDMIZFZP5SZDozYlAWWtQ8QeYfJVw5xkA7f8Gg4iIUa+DQKIIfceyGhrb89tsTmc2iKvnDy6FOklu/CaTPpNNdwYBW76NtbIzBsAPgfb+Fu4k65ehodDjROCINtAnY5scBT6ij1DkiJuRnhQ543OWfzFtQverGuRBDVs8qsro7DRGC3xAA+49Np6E3aRMC3VXvvQaOINc3YbBvYys9ZY+xJuk/H07GBt7eTDdNg/OjyC5myLQnWxiYix3EcdXuxBqG9PEGemxCtAu0PvDS5i9xdduXannsGNjc1S3fruTX/am/o3a3GaA+0X4UNzWvmGmUyp2Mg+RTAqIjKDFELSvSjjsHDjsQTQwND61iaKfPWpKMSIxI7AEyLKfO+QpDUlB65TK0+6bNrDUhtCjQeRVcPtO3fsQdPQ5+5v03dyVYk4BzbEf3TfyferF4fidzD79I+PlCFf7kQ25iNVwaY=
+X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:KL1PR02MB4977.apcprd02.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(13230040)(366016)(23010399003)(1800799024)(376014)(7416014)(6133799003)(56012099006)(10067099003)(18002099003)(3023799007);
+ DIR:OUT; SFP:1102; 
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?McUoAKLjmHf3lAgZkghwYw/ngk3C1FDtPzTrnO+47rW/Qf816X0gFzTpFy9h?=
+ =?us-ascii?Q?GdiZkyZfiyqjqrmeWO+Aaqoxw5nj51ASe7O4eVSXeOvJ2euQ9MbsSBNXNgpw?=
+ =?us-ascii?Q?4coj6PdLYKn/jGUJYU5GPKGFGTWXoo32KaAunuFfxsQefxlx+oetJG0Kkje4?=
+ =?us-ascii?Q?JhJ66io9m8E3bxfisvgNqA97bABbwfZZGRHRbi4A/S5Xs3xdDFgbOziXYnXB?=
+ =?us-ascii?Q?yOGDShrv0ALPC+6Gt155/sWTeU9gbMDsLv8rv4J6rp6wsT6qVwT6yenBgR1e?=
+ =?us-ascii?Q?BdLvLxHTvmPPc8eZKsq3nZESD2jWzwUZfYRQn18DH6IcC6zwAlvPP2ckwUbN?=
+ =?us-ascii?Q?tMY0e0y7AY3KGVh1VmZq5EE3HGiUuNdoe4jQzX7K8z1GW3k7lUMDiOPNvA81?=
+ =?us-ascii?Q?gLjC904eE+i2+j/NGb1PR18MX1VL42re12EUknOEzShQKmVJhzmrMnQ7tvv6?=
+ =?us-ascii?Q?SK/TShSPA+iH5P+iMjcili9H72Ql1jzgrNryHl5gAUl2ca5jHXjPxesZDcia?=
+ =?us-ascii?Q?WO9Zbavtw6o6JKTT/LwcB2JXJQzwYNEQ/tB4KmONjqqSPF7EJciYs9B6Dzao?=
+ =?us-ascii?Q?ayP740Afj4F148dcV4dwkzHKDqMaC3g+A+H8weVNnxrOFUtr/hwBMjVc79iN?=
+ =?us-ascii?Q?0QZKEKSP105UCTedgeLDN6HcjyDvKQD1aq7wapHoMAnhw+0amjFBhLlBxMzM?=
+ =?us-ascii?Q?gj55UtyLP0GwuuMF4Y6fgJcbhgH2VtYWwcENs1dUGneCv+VGfuag4flnOaKJ?=
+ =?us-ascii?Q?Ir2HFez1Z2a7ocn5gZUB9WFIIwTDi1t0i7tYmkESIzqC5jCnyyWVmAYl7vE4?=
+ =?us-ascii?Q?YqkQlXWf5Z1r1DBRxNUXOe7qFw75YbW1IrrHqxRKoqeAFT9LxsvRDJ+T5kwx?=
+ =?us-ascii?Q?63bhRazZWyzFQpkZoQrDHu5x9gXipS4GO+wwHRrUU2AyZnJ2vXhuBiAIbHuX?=
+ =?us-ascii?Q?1Yq3UcqfV/wM/79FPx4iyF+hz0KGzNVLAUFECDw+e76smELoibkTVaZU8sQP?=
+ =?us-ascii?Q?pmjOda3Y9a9xxj77HKGRgcxnnI8zpx5Sei7mJQJ8nlHre6AFL4TaIpNCTJ/8?=
+ =?us-ascii?Q?SrSV4waP9Duq+Q6k4PdIdO5/g2POWjzeiz+lV6empMkDqbFiVrXwhkp1MpJP?=
+ =?us-ascii?Q?DQWCnP6DCxh5NTyEpIyYKTEP+KO/4pakZRGcAd8FZPVeRa/MAasSlsIEEiZ8?=
+ =?us-ascii?Q?ntcvewEM9Ng51lfZjTD5dIGyoDdVLsFN5e8z0qn6y5j5l0q+9Sd/sCjBFqcF?=
+ =?us-ascii?Q?fL89U0ZaRNSPF0dFiCCIfUCHXRmNq/uy9UmdMa2pEuN7UtOHz0lMHXE6CRSZ?=
+ =?us-ascii?Q?hLqAJzqunaCLlJ1ACDn9NwY3qNoIo2fSvd4IdAL0AkLJT8QDVrY03bus/CWA?=
+ =?us-ascii?Q?c8kB2Jx0gZGylKckkyeBFckMyEJqocGSRjrOxrNMmDGRrmWiFZKY6Js53OKL?=
+ =?us-ascii?Q?oQs2ky31DniGd8WUKW62ldGYE/Da5wCWcB883EjOirZAkXvgVAcfWSeJoQw2?=
+ =?us-ascii?Q?eJi8jrauq1cmhaYaeNRHH31FzdWvoYmOoYy/nTP9kBKTlSMmCfkvCjakW8Tl?=
+ =?us-ascii?Q?6AG1qvrBVtnGV6mv4lJmVOTGKH61Lj5WsoaoZzs4gUowXrEKec9/QX6b0Url?=
+ =?us-ascii?Q?F5XJy3PbAQlRsB9sHSdyrCOpmgfNj6IdGgrcjFB92Pq3t50/lrluDOCp48fe?=
+ =?us-ascii?Q?dixXDrxggB/pavoSzMZrc9m42NgDCRTKSC+B76/YojpcOOp8X4IAH4dszcxS?=
+ =?us-ascii?Q?4S3RyinpQN/uYK9J6x+0PNwTPSmIuuQ=3D?=
+X-OriginatorOrg: processmission.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: e7aea3b6-734a-4de3-423d-08df09ae1bba
+X-MS-Exchange-CrossTenant-AuthSource: KL1PR02MB4977.apcprd02.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 03 Sep 2026 11:25:51.3025 (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: e0544bf7-9765-4630-ab69-0b266dc2169c
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: 6kvEVCdP1VijwKImg6K9jx6IJ5zYt8EIt1N2vYEcQ6c9swF+HpwHseYteKSWYUVQFNoEAzpF4MxUpMAPitUWyylYG1ujZNsSci6mM58xmAQ=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: TYZPR02MB6358
+Received-SPF: pass client-ip=2a01:111:f403:c40f::6;
+ envelope-from=bin.meng@processmission.com;
+ helo=SEYPR02CU001.outbound.protection.outlook.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, SPF_HELO_NONE=0.001,
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_PASS=-0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -182,215 +144,134 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Hi Akihiko,
 
-Are we still waiting for feedback from Igor?
+The Phytium E2000Q is a heterogeneous Armv8 SoC with two FTC664 cores
+and two FTC310 cores. This series adds CPU definitions and a shared
+SoC model, then uses it for two machines:
 
-On 22/7/26 14:05, Philippe Mathieu-DaudÃ© wrote:
-> On 22/7/26 13:08, Akihiko Odaki wrote:
->> On 2026/07/22 18:57, Philippe Mathieu-Daudé wrote:
->>> On 22/7/26 07:12, Akihiko Odaki wrote:
->>>> On 2026/07/22 5:11, Philippe Mathieu-Daudé wrote:
->>>>> Hi Akihiko,
->>>>>
->>>>> On 21/7/26 10:17, Akihiko Odaki wrote:
->>>>>> qdev currently permits reentrant realization of the same device. 
->>>>>> It also
->>>>>> permits another realization attempt after a device has been 
->>>>>> unrealized
->>>>>> or a previous attempt has failed. Either path can invoke
->>>>>> DeviceClass::realize() more than once. Supporting repeated 
->>>>>> realization
->>>>>> adds complexity to device implementations. It is untested and likely
->>>>>> broken.
->>>>>>
->>>>>> Replace the bool DeviceState::realized field with the enum-valued
->>>>>> DeviceState::phase field. The enum has four values:
->>>>>>
->>>>>> - initialized
->>>>>> - realizing
->>>>>> - realized
->>>>>> - retired
->>>>>
->>>>> Excellent.
->>>>>
->>>>> I have been working on something similar.
->>>>>
->>>>> I'd start the first patch only including:
->>>>>
->>>>> DEVICE_PHASE_UNREALIZED (false)
->>>>> DEVICE_PHASE_REALIZED (true)
->>>>>
->>>>> Then gradually rename DEVICE_PHASE_REALIZED -> DEVICE_PHASE_CREATED
->>>>> and add the DEVICE_PHASE_REALIZING and DEVICE_PHASE_RETIRED phases,
->>>>> so we can discuss them during the review process.
->>>>
->>>> A gradual conversion makes sense. I kept the "realized" phase as-is 
->>>> because it maps exactly to the current external behavior. This patch 
->>>> splits the internal "unrealized" state into three distinct phases, 
->>>> but the external concept of being "realized" remains unchanged. This 
->>>> allows us to avoid a tree-wide refactoring, which is also why 
->>>> qdev_is_realized() is preserved.
->>>>
->>>>>
->>>>>> Realization can start only in the initialized phase. It moves the 
->>>>>> device
->>>>>> to the realizing phase before invoking callbacks, preventing another
->>>>>> realization attempt. Successful realization moves it to the realized
->>>>>> phase; failure after realization has started moves it to the retired
->>>>>> phase. Unrealization also moves a realized device to the retired 
->>>>>> phase.
->>>>>
->>>>> So what is the difference between 'initialized' and 'retired'?
->>>>
->>>> The first statement in this paragraph differentiates 'initialized' 
->>>> from everything else: realization can start only in the initialized 
->>>> phase. A 'retired' device cannot be realized. This property avoids 
->>>> re- entrancy.
->>>
->>> But we do use unrealize -> realize again, in hotplug path.
->>>
->>> So we need to be able to move from 'retired' to 'realizing'
->>> again, thus my wonder what is the difference between 'realizing'
->>> and 'initialized'.
->>>
->>> I.e. this test should pass:
->>>
->>> static void test_qdev_realize_hotplug(void)
->>> {
->>>      Object *mt = object_new(TYPE_MY_DEV);
->>>
->>>      /* plug */
->>>      g_assert_false(qdev_realize(DEVICE(mt), NULL, NULL));
->>>
->>>      /* unplug */
->>>      qdev_unrealize(DEVICE(mt));
->>>
->>>      /* re-plug */
->>>      g_assert_false(qdev_realize(DEVICE(mt), NULL, NULL));
->>>      qdev_unrealize(DEVICE(mt));
->>>      object_unparent(mt);
->>>      object_unref(mt);
->>> }
->>>
->>> Maybe your 'retired' could be renamed as transient 'unrealizing',
->>> similar to 'realizing' phase, then we could transition to the
->>> 'unrealized' initial phase?
->>
->> I could not find an in-tree hotplug path that unrealizes and then
->> realizes the same DeviceState.
->>
->> In the normal device_del path, the unplug handler unrealizes the 
->> device, and completed unplug then unparents it. A later device_add 
->> calls qdev_new(), so it realizes a new DeviceState. Reusing an ID or 
->> slot does not reuse the object.
-> 
-> Igor, could you provide your advices here?
-> 
->> The virtio-net failover path does retain and replug the same object, 
->> but it deliberately keeps the device realized. The partial-unplug path 
->> skips the unplug handler, and replug invokes the pre_plug and plug 
->> callbacks directly instead of qdev_realize().
->>
->> More generally, I believe same-instance unrealize -> realize is 
->> unsafe. Realize callbacks may create QOM children whose lifetime is 
->> tied to the DeviceState rather than its realized state [1]. For 
->> example, memory_region_init() initializes an embedded QOM object and 
->> adds it as a child of the device. Unrealizing the device does not 
->> generally finalize that MemoryRegion, so a second realization may try 
->> to initialize the same object again.
-> 
-> I totally concur here.
-> 
->>
->> So introducing an unrealizing -> unrealized transition would require 
->> every realize/unrealize pair to restore the state of a fresh instance. 
->> That contract is not tested, and is the complexity this series is 
->> meant to remove.
->>
->> [1] https://lore.kernel.org/qemu-devel/64bc4a38-f1d2-45ff-8f4c- 
->> c941d6a41e18@rsg.ci.i.u-tokyo.ac.jp/
->>
->> Regards,
->> Akihiko Odaki
->>
->>>
->>>>
->>>>>
->>>>>> The QOM realized property is an internal lifecycle property, not for
->>>>>> end users. Replace it with the enum-valued phase property.
->>>>>>
->>>>>> Signed-off-by: Akihiko Odaki <odaki@rsg.ci.i.u-tokyo.ac.jp>
->>>>>> ---
->>>>>>   qapi/common.json          |  19 ++++++++
->>>>>>   include/hw/core/qdev.h    |  12 ++---
->>>>>>   hw/core/qdev-clock.c      |   4 +-
->>>>>>   hw/core/qdev-properties.c |   4 +-
->>>>>>   hw/core/qdev.c            |  98 +++++++++++++++++++++++++ 
->>>>>> +--------------
->>>>>>   hw/scsi/scsi-bus.c        |   4 +-
->>>>>>   qom/qom-qmp-cmds.c        |   2 +-
->>>>>>   system/qdev-monitor.c     |   5 ++-
->>>>>>   tests/unit/test-qdev.c    | 112 ++++++++++++++++++++++++++++++++ 
->>>>>> + + + + +++++++++-
->>>>>>   9 files changed, 212 insertions(+), 48 deletions(-)
->>>>>>
->>>>>> diff --git a/qapi/common.json b/qapi/common.json
->>>>>> index af7e3d618a7c..88a308cbd172 100644
->>>>>> --- a/qapi/common.json
->>>>>> +++ b/qapi/common.json
->>>>>> @@ -7,6 +7,25 @@
->>>>>>   # *****************
->>>>>>   ##
->>>>>> +##
->>>>>> +# @DevicePhase:
->>>>>> +#
->>>>>> +# An enumeration of the device phases
->>>>>> +#
->>>>>> +# @initialized: the initial phase
->>>>>> +#
->>>>>> +# @realizing: the phase during realization
->>>>>> +#
->>>>>> +# @realized: the phase after realization
->>>>>> +#
->>>>>> +# @retired: the terminal phase entered when unrealization begins or
->>>>>> +#           realization fails after starting
->>>>>> +#
->>>>>> +# Since: 11.1
->>>>>> +##
->>>>>> +{ 'enum': 'DevicePhase',
->>>>>> +  'data': [ 'initialized', 'realizing', 'realized', 'retired' ] }
->>>>>> +
->>>>>
->>>>>
->>>>>> @@ -477,10 +477,10 @@ bool qdev_unplug_blocked(DeviceState *dev, 
->>>>>> Error **errp)
->>>>>>       return false;
->>>>>>   }
->>>>>> -static bool device_get_realized(Object *obj, Error **errp)
->>>>>> +static int device_get_phase(Object *obj, Error **errp)
->>>>>
->>>>> DevicePhase
->>>>
->>>> device_get_phase() must return int to match the getter type required by
->>>> object_class_property_add_enum():
->>>>
->>>>      int (*get)(Object *, Error **)
->>>>
->>>> Using DevicePhase there would not match the callback type.
->>>
->>> Ah right.
->>>
->>>>
->>>>>
->>>>>>   {
->>>>>>       DeviceState *dev = DEVICE(obj);
->>>>>> -    return dev->realized;
->>>>>> +    return dev->phase;
->>>>>>   }
->>
->>
-> 
-> 
+  - phytium-pi, with firmware and Linux on SD0
+  - phytium-e2000-come, with firmware in QSPI NOR and Linux on an
+    AHCI1 SATA disk
+
+The machines support the vendor firmware path from the on-chip
+Phytium Boot ROM (PBR) handoff through Processor Base Firmware (PBF),
+TF-A, OP-TEE, U-Boot, and Linux. They can also directly boot SDK Linux
+kernels when supplied with matching board device trees.
+
+The PBR model does not execute undocumented ROM code. It parses the
+selected fip-all.bin, validates the PBF, TF-A FIP, and platform
+parameter records, and reconstructs the observed handoff state. The
+MHU model handles the private SCMI power-domain requests needed to
+release secondary CPUs and exposes a separate Base-protocol channel
+to Linux.
+
+The shared E2000Q machine provides GICv3/ITS, UARTs, GPEX PCIe,
+SMMUv3, four Cadence GEM controllers, two DesignWare-derived MCI
+controllers, QSPI, I2C, xHCI, AHCI, a random generator, and the
+firmware-facing DDR and control regions. Unimplemented register
+windows remain visible to firmware without claiming unsupported
+behavior.
+
+Functional tests exercise both firmware and direct Linux boot on the
+Phytium Pi with an SDK Buildroot image. Manual testing covers Phytium
+Pi SD boot, COMe QSPI-to-SATA boot, all four CPUs, and network access.
+
+Known limitations are documented. In particular, the PBR handoff is
+a behavioral model validated against the available SDK firmware
+samples.
+
+
+Bin Meng (33):
+  target/arm: Add Phytium FTC310 and FTC664 CPU models
+  hw/arm: Add basic Phytium Pi machine
+  hw/arm: phytium: Add Phytium E2000 PCIe host
+  hw/sd: Add Synopsys DesignWare MCI controller
+  hw/sd: Add Phytium E2000 MCI controller
+  hw/arm: phytium: Connect Phytium E2000 MCI controllers
+  tests/qtest: Add Synopsys DesignWare MCI coverage
+  hw/arm: phytium: Connect Phytium E2000 GEM controllers
+  hw/misc: Add Phytium E2000 DDR status
+  hw/arm: phytium: Connect the Phytium E2000 DDR status
+  hw/misc: Add Phytium E2000 MHU doorbell
+  hw/arm: phytium: Connect the Phytium E2000 MHU
+  hw/ssi: Add Phytium E2000 QSPI controller
+  hw/arm: phytium: Connect the Phytium E2000 QSPI controller
+  hw/misc: Add Phytium E2000 PBR model
+  hw/arm: phytium: Integrate the Phytium E2000 PBR
+  hw/arm: phytium: Add Phytium E2000 control region placeholders
+  hw/misc: Support Phytium E2000 SCMI CPU power control
+  hw/arm: phytium: Select the Phytium E2000 PBR boot medium
+  hw/arm: phytium: Connect the Phytium E2000 I2C controller
+  hw/arm: phytium: Add Phytium E2000 xHCI controllers
+  hw/misc: Model the Phytium E2000 random generator
+  hw/arm: phytium: Connect the Phytium E2000 random generator
+  hw/arm: phytium: Support Phytium E2000 direct Linux boot
+  hw/arm: phytium: Add Phytium E2000Q COMe machine
+  hw/block: m25p80: Add GigaDevice GD25Q128 flash
+  hw/arm: phytium: Connect the Phytium E2000Q COMe QSPI flash
+  hw/arm: phytium: Add Phytium E2000 AHCI controllers
+  hw/arm: Add Phytium E2000 Linux SCMI channel
+  hw/arm: phytium: Connect the Phytium E2000 SMMUv3
+  docs/system/arm: Document Phytium E2000 machines
+  tests/functional/aarch64: Add Phytium Pi boot tests
+  MAINTAINERS: Add Phytium E2000Q machines
+
+ MAINTAINERS                                 |   17 +
+ docs/system/arm/phytium_e2000.rst           |  412 ++++++
+ docs/system/target-arm.rst                  |    1 +
+ hw/arm/Kconfig                              |   22 +
+ hw/arm/meson.build                          |    1 +
+ hw/arm/phytium_e2000.c                      | 1181 ++++++++++++++++
+ hw/block/m25p80.c                           |    1 +
+ hw/misc/meson.build                         |    4 +
+ hw/misc/phytium_e2000_ddr.c                 |  197 +++
+ hw/misc/phytium_e2000_mhu.c                 |  818 +++++++++++
+ hw/misc/phytium_e2000_pbr.c                 | 1366 ++++++++++++++++++
+ hw/misc/phytium_e2000_rng.c                 |  182 +++
+ hw/sd/Kconfig                               |    5 +
+ hw/sd/dw_mci.c                              | 1382 +++++++++++++++++++
+ hw/sd/meson.build                           |    2 +
+ hw/sd/phytium_e2000_mci.c                   |   95 ++
+ hw/ssi/Kconfig                              |    5 +
+ hw/ssi/meson.build                          |    1 +
+ hw/ssi/phytium_qspi.c                       |  398 ++++++
+ include/hw/misc/phytium_e2000_ddr.h         |   23 +
+ include/hw/misc/phytium_e2000_mhu.h         |   34 +
+ include/hw/misc/phytium_e2000_pbr.h         |   62 +
+ include/hw/misc/phytium_e2000_rng.h         |   23 +
+ include/hw/sd/dw_mci.h                      |   74 +
+ include/hw/sd/phytium_e2000_mci.h           |   21 +
+ include/hw/ssi/phytium_qspi.h               |   23 +
+ target/arm/tcg/cpu64.c                      |   81 ++
+ tests/functional/aarch64/meson.build        |    2 +
+ tests/functional/aarch64/test_phytium_pi.py |   77 ++
+ tests/qtest/dw_mci-test.c                   |  417 ++++++
+ tests/qtest/meson.build                     |    1 +
+ 31 files changed, 6928 insertions(+)
+ create mode 100644 docs/system/arm/phytium_e2000.rst
+ create mode 100644 hw/arm/phytium_e2000.c
+ create mode 100644 hw/misc/phytium_e2000_ddr.c
+ create mode 100644 hw/misc/phytium_e2000_mhu.c
+ create mode 100644 hw/misc/phytium_e2000_pbr.c
+ create mode 100644 hw/misc/phytium_e2000_rng.c
+ create mode 100644 hw/sd/dw_mci.c
+ create mode 100644 hw/sd/phytium_e2000_mci.c
+ create mode 100644 hw/ssi/phytium_qspi.c
+ create mode 100644 include/hw/misc/phytium_e2000_ddr.h
+ create mode 100644 include/hw/misc/phytium_e2000_mhu.h
+ create mode 100644 include/hw/misc/phytium_e2000_pbr.h
+ create mode 100644 include/hw/misc/phytium_e2000_rng.h
+ create mode 100644 include/hw/sd/dw_mci.h
+ create mode 100644 include/hw/sd/phytium_e2000_mci.h
+ create mode 100644 include/hw/ssi/phytium_qspi.h
+ create mode 100644 tests/functional/aarch64/test_phytium_pi.py
+ create mode 100644 tests/qtest/dw_mci-test.c
+
+---
+base-commit: 61d82640e03f5fdbeb70c455e2b3cbff539600ec
+branch: phytium
+
+-- 
+2.53.0
 
 

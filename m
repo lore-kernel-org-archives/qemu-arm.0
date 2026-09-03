@@ -4,33 +4,33 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D13CCC624D6
-	for <qemu-arm@archiver.kernel.org>; Thu,  3 Sep 2026 14:58:52 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 387A6C624A4
+	for <qemu-arm@archiver.kernel.org>; Thu,  3 Sep 2026 16:07:57 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1x28tj-00010B-LB; Thu, 03 Sep 2026 10:58:39 -0400
+	id 1x29yP-0008Nn-Vp; Thu, 03 Sep 2026 12:07:34 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <tangtao1634@phytium.com.cn>)
- id 1x28th-0000z9-0L; Thu, 03 Sep 2026 10:58:37 -0400
+ id 1x29yL-0008Me-TZ; Thu, 03 Sep 2026 12:07:29 -0400
 Received: from zg8tmtyylji0my4xnjqumte4.icoremail.net ([162.243.164.118])
  by eggs.gnu.org with esmtp (Exim 4.90_1)
  (envelope-from <tangtao1634@phytium.com.cn>)
- id 1x28te-0003zZ-90; Thu, 03 Sep 2026 10:58:36 -0400
+ id 1x29yJ-0000Zo-L9; Thu, 03 Sep 2026 12:07:29 -0400
 Received: from prodtpl.icoremail.net (unknown [10.12.1.20])
- by hzbj-icmmx-7 (Coremail) with UTF8SMTP id AQAAfwD3_xsOi5lqMlZhBQ--.49393S2; 
- Thu, 03 Sep 2026 22:58:22 +0800 (CST)
+ by hzbj-icmmx-7 (Coremail) with UTF8SMTP id AQAAfwB3f1M5m5lqADpiBQ--.50132S2; 
+ Fri, 04 Sep 2026 00:07:21 +0800 (CST)
 Received: from [192.168.2.11] (unknown [113.246.117.39])
- by mail (Coremail) with SMTP id AQAAf8DwfXMIi5lqg6m0AA--.61257S2;
- Thu, 03 Sep 2026 22:58:20 +0800 (CST)
-Message-ID: <ba9005ea-5616-495f-b817-5d90b4ce1ca0@phytium.com.cn>
-Date: Thu, 3 Sep 2026 22:58:13 +0800
+ by mail (Coremail) with SMTP id AQAAf8DwWXUym5lqFfq0AA--.52921S2;
+ Fri, 04 Sep 2026 00:07:14 +0800 (CST)
+Message-ID: <a5cad895-37ff-4bf5-baae-cc9fdb708a02@phytium.com.cn>
+Date: Fri, 4 Sep 2026 00:07:11 +0800
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [RFC v5 28/28] [NOT-MERGE] hw/arm/smmuv3: temporarily enable SEL2
- bit and some other features
-To: eric.auger@redhat.com, Peter Maydell <peter.maydell@linaro.org>
+Subject: Re: [RFC v5 23/28] hw/pci: Add sec-sid property to PCIDevice
+To: eric.auger@redhat.com, "Michael S . Tsirkin" <mst@redhat.com>,
+ Peter Maydell <peter.maydell@linaro.org>
 Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org,
  Chen Baozi <chenbaozi@phytium.com.cn>,
  Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>,
@@ -38,19 +38,19 @@ Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org,
  Mostafa Saleh <smostafa@google.com>, Chao Liu <chao.liu@processmission.com>,
  Jim MacArthur <jim.macarthur@linaro.org>
 References: <20260813161515.2788900-1-tangtao1634@phytium.com.cn>
- <20260813162644.2810021-2-tangtao1634@phytium.com.cn>
- <a328d6e7-fa27-4279-b0da-bd68cf73e207@redhat.com>
+ <20260813162145.2800835-1-tangtao1634@phytium.com.cn>
+ <d39ce149-8479-40bc-8411-a52a635c7a0a@redhat.com>
 From: Tao Tang <tangtao1634@phytium.com.cn>
-In-Reply-To: <a328d6e7-fa27-4279-b0da-bd68cf73e207@redhat.com>
+In-Reply-To: <d39ce149-8479-40bc-8411-a52a635c7a0a@redhat.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-X-CM-TRANSID: AQAAf8DwfXMIi5lqg6m0AA--.61257S2
-X-CM-SenderInfo: pwdqw3tdrrljuu6sx5pwlxzhxfrphubq/1tbiAQAHBWqYeU0G5wAAsk
+X-CM-TRANSID: AQAAf8DwWXUym5lqFfq0AA--.52921S2
+X-CM-SenderInfo: pwdqw3tdrrljuu6sx5pwlxzhxfrphubq/1tbiAQAHBWqYeU0G5wABsl
 Authentication-Results: hzbj-icmmx-7; spf=neutral smtp.mail=tangtao163
  4@phytium.com.cn;
-X-Coremail-Antispam: 1Uk129KBjvJXoW7KFy7Jr4fJF48GFWxWw1DGFg_yoW8GFyrpF
- W7Krn0kr4xWFyagr97Jw17WFn8Aa93JrW3JrZ3Jw1UZrZ8ur1rJrWIkrsY9F1kWrZ7Gana
- gF1qvFyxJryYvrJanT9S1TB71UUUUUDqnTZGkaVYY2UrUUUUj1kv1TuYvTs0mT0YCTnIWj
+X-Coremail-Antispam: 1Uk129KBjvJXoWxZw4fAr4kuw43Kw1kGF1DGFg_yoW5Wr45pF
+ W8Ca48Ka4kJFyfCa1xXa18uryj9393t345Jry5C3W3Ca45A3sFqr92gayY9rWDXr48uF1Y
+ va4jyry8Zws8ArJanT9S1TB71UUUUUDqnTZGkaVYY2UrUUUUj1kv1TuYvTs0mT0YCTnIWj
  DUYxn0WfASr-VFAU7a7-sFnT9fnUUIcSsGvfJ3UbIYCTnIWIevJa73UjIFyTuYvj4RJUUU
  UUUUU
 Received-SPF: pass client-ip=162.243.164.118;
@@ -79,50 +79,81 @@ Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
 Hi Eric,
 
-On 2026/8/31 16:54, Eric Auger wrote:
+On 2026/8/31 14:03, Eric Auger wrote:
 > Hi Tao,
 >
-> On 8/13/26 6:26 PM, Tao Tang wrote:
->> Temporarily:
->> - enable S_IDR1.SEL2,
->> - change AIDR to 0x2 to indicate SMMUv3.2,
->> - use smaller SID size and Cmd/Evt queue size.
-> Each of those changes shall be carefully justified.
+> On 8/13/26 6:21 PM, Tao Tang wrote:
+>> Arm SMMUv3 uses a SEC_SID (StreamID Security state) to determine the
+>> security state of the programming interface that controls a transaction.
+>> The architecture explicitly states that the association between a device
+>> and its SEC_SID is a system-defined property, not something derived from
+>> the physical address space.
+>>
+>> We need a way to represent this system-defined SEC_SID for PCI devices
+>> if we want to implement SMMU's Secure state. So that SMMUv3 can select
+>> the correct register bank and configuration when handling their streams.
+>>
+>> This patch adds a new char *sec_sid field to PCIDevice, together with
+>> a "sec-sid" QOM property. The property is intended to carry the
+>> platform-defined SEC_SID for the device; for now only Non-secure and
+>> Secure security states are supported.
+> You shall add PCI maintainers in cc.
 >
-> Weren't there any assumpion in previous patches that we supported 3.2.
-> tbh I did not notice you changed it in the last patch. wrt that change
-> we would need to be careful the 3.2 does not require us to implement new
-> features besides secure stuff.
+> Is it only SMMU intended? I mean if you set this property, the PCI
+> device shall send DMA requests with secure attributes too?
 
 
-You are right.  The cover letter explains that this is a Hafnium 
-bring-up patch, but the patch itself does not explain why each override 
-is needed.
+Yes, the current consumer is Arm SMMUv3 only. The property represents 
+the system-defined SEC_SID presented to the SMMU, selecting its 
+programming interface and Stream table. It does not make the PCI 
+function issue DMA with Secure MemTxAttrs; that per-transaction 
+attribute is passed separately through attrs_to_index(). Some code pieces:
 
-These overrides are only intended to let Hafnium reach the Secure-bank 
-MMIO access test.  They do not mean that QEMU implements Secure stage 2 
-or the complete SMMUv3.2 architecture. We should even drop this patch 
-when we test DMA translation with iommu-testdev [1]
+```
+static IOMMUTLBEntry smmuv3_translate(IOMMUMemoryRegion *mr, hwaddr addr,
+                                       IOMMUAccessFlags flag, int iommu_idx)
+{
+.....
+     SMMUv3State *s = sdev->smmu;
+     SMMUSecSID sec_sid = sdev->sec_sid;
+     SMMUv3RegBank *bank = smmuv3_bank(s, sec_sid);
+.....
+     entry.target_as = smmuv3_bypass_target_as(s, sec_sid, iommu_idx);
+......
+     if (!smmu_enabled(s, sec_sid)) {
+         if (FIELD_EX32(bank->gbpa, GBPA, ABORT)) {
+             status = SMMU_TRANS_ABORT;
+         } else {
+             status = SMMU_TRANS_DISABLE;
+         }
+         goto epilogue;
+     }
+.....
+}
+```
 
-[1]: 
-https://gitlab.com/TaoTang/qemu/-/commits/integration/secure-smmu-v5-qtest
+We use the device-inherent `PCIDevice->sec_sid` to select the SMMU 
+Programming Interface. The actual per-transaction attribute, on the 
+other hand, is passed to `smmuv3_translate()` through the `int 
+iommu_idx` parameter for each transaction.
 
-I will document these individual constraints in the commit message and 
-keep this patch outside the final mergeable series.
+And Michael is already included in To: for both the cover letter and 
+this patch. I agree that this needs PCI maintainer review.
 
-Best regards,
+@Michael, Could you please help review this patch?
+
+Thanks,
 Tao
 
 
 >
-> Thanks
->
 > Eric
 >> Signed-off-by: Tao Tang <tangtao1634@phytium.com.cn>
+>> Reviewed-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
 >> ---
->>   hw/arm/smmuv3.c                | 3 ++-
->>   include/hw/arm/smmuv3-common.h | 6 +++---
->>   2 files changed, 5 insertions(+), 4 deletions(-)
+>>   hw/pci/pci.c                | 7 +++++++
+>>   include/hw/pci/pci_device.h | 3 +++
+>>   2 files changed, 10 insertions(+)
 >>
 >>
 

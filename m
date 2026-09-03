@@ -4,28 +4,28 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5F029C624A4
-	for <qemu-arm@archiver.kernel.org>; Thu,  3 Sep 2026 11:28:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A9B38C624A4
+	for <qemu-arm@archiver.kernel.org>; Thu,  3 Sep 2026 11:29:36 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1x25aF-0005Yk-DG; Thu, 03 Sep 2026 07:26:19 -0400
+	id 1x25a5-0005Sw-Ii; Thu, 03 Sep 2026 07:26:09 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <bin.meng@processmission.com>)
- id 1x25aD-0005X3-3S; Thu, 03 Sep 2026 07:26:17 -0400
+ id 1x25a4-0005Sh-42; Thu, 03 Sep 2026 07:26:08 -0400
 Received: from mail-koreacentralazlp170130006.outbound.protection.outlook.com
  ([2a01:111:f403:c40f::6] helo=SEYPR02CU001.outbound.protection.outlook.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <bin.meng@processmission.com>)
- id 1x25aB-0006gK-Aq; Thu, 03 Sep 2026 07:26:16 -0400
+ id 1x25a2-0006f9-8Q; Thu, 03 Sep 2026 07:26:07 -0400
 ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=KnByxuPTeZwoPJ201clRM8pZz6eU41Q4hJ6cMu2Mq1GEMy/L+QG2bRm0mrabL6jzOdjRtPhl0JFTKcdN/2WjY2Hoc1Mzc8O9CqkRK7ynz6l3gCZHWte2Gb8PYsgM4EcUkwSZXjefiLHcNoebRr/dak7Kh2g2cuRMxLNSJSGV5rcq+LSlBsU8qhpF1rzD1S5rsJlFQdWrzhz11TSLnzBGbeyl3Zl3u2sECo9cDUwVqA+D6Bq1jzy4uyYPHyxqxNLMqojp8QNG86L05xL7Xo8Zkezv7xFHzN28OjGrzZpzbBYg9qeJxKMbCUaAki5qmuN9iXNbAWQMc3BaGVVrFzuVMw==
+ b=j/lxyrzDfz83YbtXcHxh+QEfOet/9seugfU1JAsH4E3QH4MsYDW4pgwsJ3NlSPRVHetbjJkhR/dbmIh22c4IdagaAuEn6ScyN1aXGTKq7tem8k7GG5KjBQxAOMmB+DONVSZrrXWvNV3TvgMpsEs6BNxqv0xI8vSSCHEuDGNW7T5sOdUMKtxDiwwwrTe+qKQnSVHg6emu9IYfVb/e4zZiVQ/JAemwt9IxuxoGAOmUC1LMn92Y2CORXpCayWCDi+onja6D19B8AAbArTqscb+l+iJ3/ESZvi7/0DqHHHJK61rDUe13S3MLre8cMa29EIZqOaBl9fo1pwIeAPknJxlcNA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
  s=arcselector10001;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=mMr2MBfXZ6nzhlZEvTEEoENW6TSa2co8cwLmcENFbPo=;
- b=G0wvXhz5JZbBBpBnt1oZtUm3GHOKusXWhWA76VqQFqLtvmt6U4uCagwzLn2oDDVF4iUvmr71W7V3W87CM/U+0igzclak2P+Pvll1DaSZiQawB8SdYfNjdOURSQsoWnyd9km2Kwv8BWo2/DRevb8c36XVHHAr3Hs7TaRHEIrzWrDN2vNztwWcoMPKHxzt1OsikoOiV/gbTL8q5VT3pHFqSZVNhpnPXVryoqHTLM+eLPuhCbhmOrd24eA8WR5zWSLsQ42AhTMcw+kHHh6cl9tAaFHpkFGOgVjJNX5ic8lBJWZDSnpNZ3NLTJM1W/BGG+HrSgYLFPzvDJb0RkscVCJgQQ==
+ bh=sP5B7KduE+ohaZcnUPmMyrq/Gl9zLGQgxnH6KzabY/4=;
+ b=HvpRd4eFXWfjKjfsCcMjN5uhcNE97pXIHM/JMqSM9bVOTjdHuhw9vxicSk96raoL1ao/apgwYqXB/KFAEThNyry8T0ZsBIKj/NmMDBc7INJA5gdgz555aVMt5jsRa7wfmy/2zTIytp6bBKUDtg39dnckCR9WK30xso0Foqeok+JFecaf6yjMxROG2wZ+WJIiYJU13chypxNOqiaVGYbEcJRjtiYAKIgWE63Ho9eim39Jni4Zy31mQSTwYw2u6/bEi5KchgQQyFbUiSqmwqbh0sqZqtA6PyyaIVAoRh9JBklK3+9LY7R7SmTnx19rfU2+8r65JGrp/ucKiv46YPZ7Nw==
 ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
  smtp.mailfrom=processmission.com; dmarc=pass action=none
  header.from=processmission.com; dkim=pass header.d=processmission.com;
@@ -33,26 +33,26 @@ ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=processmission.com;
  s=selector1;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=mMr2MBfXZ6nzhlZEvTEEoENW6TSa2co8cwLmcENFbPo=;
- b=tNKR/nUzEFEdtFS59gn2uDecoGbkAVHhJ+xg90WZ0wXIYUv/ZTOOCsj912gCRQVFG539IZOlcnLve9aYHdB9z7vRA91JilP4yDqIg2r5zaFmY+1rwTN2q9YuYzplvVUTmjmPOzWleUex2Zcrb80KClsTrWXxUCpBzdW8JwTFNr53fG755f2OOFFp2lscgLLjYTtYsZd4C5rdKF1ddnRa8ctq0Bm9uKuMLhF7NPAQTcwKc7PaGq0vJIK220jxgCaI9GlEF7WzEyQKYBMyfsUX3W0rxEkwk3Hyy+qXGi3uR4rkez2KgZ81Phifwj6M3EFcT6p/dymQr6yKdGV6/gBOZA==
+ bh=sP5B7KduE+ohaZcnUPmMyrq/Gl9zLGQgxnH6KzabY/4=;
+ b=jg/WHaEaqAJUOoqDTrBwSPnfPNHEigLlcliQ36e5GZVpVPo31r78ojpbdCWzCSwOuv7fe9jvpPjmcQmtv04SbexbZYmKL+QnYPVDu2lM1VGSVjfXFx0OtxzTmVfXlkqGRs0YvuRgVv6hSBm/qQ9VktpEI+e7DEj2RpgiSlchRO7L/sNjmAlaxd1e0nFSS4pR889CqY55dVVoWD4td/02Mhf945cF5KuM4YMzxgF3NJYxJ3YNBiJMXyqEwm2NA5I6rHePYtwc8wWx0ba+zwjOfONekSfDgXR2f1QtUumn2YIjROZpdPkhMaIoWkA2R8KNyU92Ubt+tyzlgqSuUwRSkw==
 Authentication-Results: dkim=none (message not signed)
  header.d=none;dmarc=none action=none header.from=processmission.com;
 Received: from KL1PR02MB4977.apcprd02.prod.outlook.com (2603:1096:820:71::8)
  by TYZPR02MB6358.apcprd02.prod.outlook.com (2603:1096:400:419::9) with
  Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.21.360.13; Thu, 3 Sep
- 2026 11:26:03 +0000
+ 2026 11:25:53 +0000
 Received: from KL1PR02MB4977.apcprd02.prod.outlook.com
  ([fe80::9fdf:2557:8351:6c03]) by KL1PR02MB4977.apcprd02.prod.outlook.com
  ([fe80::9fdf:2557:8351:6c03%4]) with mapi id 15.21.0382.007; Thu, 3 Sep 2026
- 11:26:03 +0000
+ 11:25:53 +0000
 From: Bin Meng <bin.meng@processmission.com>
 To: QEMU <qemu-devel@nongnu.org>
-Cc: Paolo Bonzini <pbonzini@redhat.com>,
- Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org
-Subject: [PATCH 06/33] hw/arm: phytium: Connect Phytium E2000 MCI controllers
-Date: Thu,  3 Sep 2026 19:24:46 +0800
-Message-ID: <20260903112532.3276678-7-bin.meng@processmission.com>
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+	qemu-arm@nongnu.org
+Subject: [PATCH 01/33] target/arm: Add Phytium FTC310 and FTC664 CPU models
+Date: Thu,  3 Sep 2026 19:24:41 +0800
+Message-ID: <20260903112532.3276678-2-bin.meng@processmission.com>
 X-Mailer: git-send-email 2.53.0
 In-Reply-To: <20260903112532.3276678-1-bin.meng@processmission.com>
 References: <20260903112532.3276678-1-bin.meng@processmission.com>
@@ -64,56 +64,56 @@ X-ClientProxiedBy: TY4P286CA0026.JPNP286.PROD.OUTLOOK.COM
 MIME-Version: 1.0
 X-MS-PublicTrafficType: Email
 X-MS-TrafficTypeDiagnostic: KL1PR02MB4977:EE_|TYZPR02MB6358:EE_
-X-MS-Office365-Filtering-Correlation-Id: 5b4b8c3f-496a-419e-6c5c-08df09ae236e
+X-MS-Office365-Filtering-Correlation-Id: 7b465f0b-9ae4-4667-cb6a-08df09ae1d6b
 X-MS-Exchange-SenderADCheck: 1
 X-MS-Exchange-AntiSpam-Relay: 0
 X-Microsoft-Antispam: BCL:0;
- ARA:13230040|366016|23010399003|1800799024|376014|56012099006|10067099003|22082099003|18002099003;
-X-Microsoft-Antispam-Message-Info: YHjE9NJgL3+tjr0V3rHeTFuTRt3ltEwuSKi6WwIw4WmTyyZOWXclLVnEIQk/2ocjnzqIqTBntvHNfH7MzChGKhD5GmlTZFoZBAqMRZ92rUW2WIzUUpktwKHZSRZ7kk9iHRPvJt3nzXLU9L40oD6A4C1YnjB5cLcm5CkBiNoXIgaUaOkbE+PNEgi5IXt/2sAk2qS8n77qnplvYPLKpHYs48AvGJ4rPImGBYXe2iiKRtUlXpOR8WXSsO6etCOXAyImBDydT6jLFTyiMDvEsZlEKqZadP4PJ99S4xKb2bMLcy2qtInYSH022iFAcJrKjUh2A7kqJ5uUMy7Cx/Z7fsfTmOUdBG1PN17ZabRVcuFzT4SDNUDsw/au/n008/MnOIXfZIG98m378KT9f+RRRjMxNkPD8PZz3CYurOR43EIVDqEe27/7G04bRiVeMG9ZEusGB5fzV8DWinSy7p2NwdTp9+LemKkqvSQmzgb7zGZOtsead0A4iTarj7Gd8QRkH1Sj9EU49PlZI4G/aXj0aZmixiCoen9PbToT3POnoigpYfHk0lVI/TtYuakDJpv6DPlcBd719ikJxTPUxA8edpedZYiRRr9wAPBNIpmzsYfOnRcBcc/HPlU2YLWCh3CQ6Z5KeJWozIXe+yLIlMxPohkWyHELh9SsHP5n6popU8Fct/U=
+ ARA:13230040|366016|23010399003|1800799024|376014|6133799003|56012099006|10067099003|22082099003|18002099003|3023799007;
+X-Microsoft-Antispam-Message-Info: Z042oRFFNGpU4XbhzYv1pct+nbgZUnuZMAr/ndjlHyahGLDhZIlMAtXQQYBYj7f2F5Gxk00ZJz7B57A0MmN/4a4En1y3o+P9dHFOGCHSFC7+4SYYDMLRy5nv0HKCOW58P4Ox0Bc6S9Fg3lPATXmdTe717jNhKy20bxVuE7Ob6yESa+wdmTw4nyqeC++F/uYKMYorI0Ns+5sa7UvSfUpNjWzUIiIEmGm64+PisprZY7SqVL5o/+HOsW70tH1FYnYk3pwKjRvMI1LoCDspZp24ltR/eY/aviqMi4K2Ac4r7oeK5y2ElE8FMzMOVo8Jt0Gg56B09ShAI+SrM8owbhx6T0if3OfPg+L4NiLoEdKhpdNXk7Oi+Z/Es3fTNbdRi3Y6ZpRhhEFFvxAWsUd6NsopPGrgU11jBS7fI0BoYJpEJYTLNq/NiNbmGZtm9GZraxHzIlX4XgeK+24JtwsgoDoJPSpdTtXc0UJG73L5Ndku2DsGbOHIF7EV1DFhyIMzeyskTPuFLyCk320i2B71Nb4YeroTBB5V2HSkAonn7ZC4zY0aPcQQbVjGl+AWqI6EbE/xJItLHI8fneF47gGaT/8q0f0CbRbB+0A58EromZm3DufANuqkrDdY7Jtpbh1+DqjFNRHrOWkGF0GbZ0qyJ8sQBL7L20Cc1tjcSrVzfjKrcrU=
 X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
  IPV:NLI; SFV:NSPM; H:KL1PR02MB4977.apcprd02.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(13230040)(366016)(23010399003)(1800799024)(376014)(56012099006)(10067099003)(22082099003)(18002099003);
+ SFS:(13230040)(366016)(23010399003)(1800799024)(376014)(6133799003)(56012099006)(10067099003)(22082099003)(18002099003)(3023799007);
  DIR:OUT; SFP:1102; 
 X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?TTZ4KHXpOBHjKOa/0gsdktX/sxXmb4+Nc3ZrAJRA4+EY3YCYH0qH1qU2TPRY?=
- =?us-ascii?Q?Folh7RUBGUbNT2CnzLphBF9lOgD2dLWP6D+gPmwPqBuWcOsy4aP8mF0VacDq?=
- =?us-ascii?Q?yBoAlVgdTE8rpZkmXDnXwSFKOWM+STb9H8wRY+z9kmAEBKyA1h7sI+Q1c7Co?=
- =?us-ascii?Q?qbJR1oFc1nfcZ/Br6epCyUBxWvkEfb+6D5fkNkWxU98Ngw+7Mb7nXwhBF68u?=
- =?us-ascii?Q?/04kQB36iYsLbu4GLJYonPYAICBO/qz33w8bTDuvJpRRG71TBTyJHG0vkX/w?=
- =?us-ascii?Q?aCLbUoH515nugKnfftZD+ji6zewUPdyXhypAHSikXPbzsxbYL8BZjfjMv8iX?=
- =?us-ascii?Q?AxRGxJyQiHCWxrenWEkyzre2CGOE9Sz90Ty9MGMG322PfA7RPrzwj/TAP8dj?=
- =?us-ascii?Q?ZWC4E1Be41ApWIFZwimHhFA0BXTzNL7Tn7RhP+ranVahcBqbmiUW7LSOIGCK?=
- =?us-ascii?Q?T7heMlYS9ilUL3nPT+9gZfQ0vNqbltSxVIzMt0p+QhVTYhHlkxCtsVon6xE6?=
- =?us-ascii?Q?lsnY/wzdVMqFRGIn6sXKiUoTP87Kd+dAn5mkgU1fkIDgVXnTDX0eXsxIzdw2?=
- =?us-ascii?Q?kKsOfzmUnJrFqUAvMpY1uiNb4yA01r4C2YsMQTrj3dcWKht3bKqrN1UASKf5?=
- =?us-ascii?Q?Pd16qPJUHbNdDNlqvYa2dfrBHwXX6dZ471QpbX31g7zNL4vije3peltPQzcR?=
- =?us-ascii?Q?JqAaiT5OzwYcMnP3dWrvL+nPh+Y1EbNARdoa7WLUNd9jo91RCuIAH9ODm3ch?=
- =?us-ascii?Q?KMrZKxxEQsW/tLyjQLexgaJ2GcRXo//3u5bM4yRgffP3FO+dMqcSSdbtI9rI?=
- =?us-ascii?Q?jYQaPstMz8nKChuMXkhMpzFkBUi8hG0zOosocyxm9AUv+727T25g+wv+UoCH?=
- =?us-ascii?Q?d/9CkArD8FZWkqCuT0ApcNXht24dWL+5bLyWSaDR+klb98Z0bc5ucZEgYfR8?=
- =?us-ascii?Q?MIOAR3cWiLF5u5QTG099SFou7Cg4sAMtee2EVrDmXsbXR4WUx7hrtgMneuUT?=
- =?us-ascii?Q?tXSo6DjLEKqix1hrGjMrDNB67nPWJW/Y6d9zq5H2tO4NFnugmEVYr7FqmHoh?=
- =?us-ascii?Q?29NQUgii/CKJQyO/6gPpkjSWQUHKJ6hmDAe9ItHV9mdwcmZemTuQNPONINQz?=
- =?us-ascii?Q?ixeVSm2bd2ONciEesSj7xHwQH3XE/nC/co4sarSiQqCdIj1f4bQZ3OwfwCvy?=
- =?us-ascii?Q?1mMyVmiRfcyXnOye+Dusouc34JTZm5u+Q0FtS5L96WkPxB9iH5DWXy72H00t?=
- =?us-ascii?Q?GpawV9snYkxZvRWngi+nXpYJKkKoeNyuN0MebffSU+wEzRBJnu0cZYyUlhL6?=
- =?us-ascii?Q?Q61B52DibgwJsLWHQ9MNvq/SY44IdAAVqqrkERuDjqkxBKCiFuhSCj6QhM2G?=
- =?us-ascii?Q?hYGLemcjRrBeQCFAncqDeYAvx6RiviQ3tA45nqXv7ITyQ3KRSLa2ahyDTbfm?=
- =?us-ascii?Q?B6FgqW7idPVR6y5sfCLwfo+cVvZinobEJIJvF4UzUbK6IC4rOP6ZR149qlKi?=
- =?us-ascii?Q?QPNxA61l1Xax0C+OHVAUsFa5ph06qy+hSa9uBzCGDHf2EFQnLC1oAvhqgKf2?=
- =?us-ascii?Q?oqEME+DPjYvsGGJm76bebxSK9+iFH52IYmC5McYA86otSLXSz02N3Ddm5Ilu?=
- =?us-ascii?Q?YEAIZ0svhJd0bT8bw558I8MXnqHgeVyIGSPmsxDZG9S8hUfFtDi9kCaaRoYX?=
- =?us-ascii?Q?6jxKBJqLkoYmuG+h79Lm+e7OcOSs3S1Nt9bQpR6iV0zmsSIwlIN7ai87IEjF?=
- =?us-ascii?Q?+QxatPFeuNLZJPHhSA3pKvGVwRISEtw=3D?=
+X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?pjy3a5tmn7braoSedUGXZL4q51gijHmUfw2toBzPGwL5NiXdd+VFdiYmznhq?=
+ =?us-ascii?Q?dUWdLF3qmQ/a+Z/AKpTOtHBCGEmmlhw17fEh/gmFiy8Ug8+Dlf+s0/RGmO5H?=
+ =?us-ascii?Q?H/4QpR4uoXrtZBSl6xwV/AR9ZRhT7l8e341p9RnZey3atuuHmGhS9t/SDTO6?=
+ =?us-ascii?Q?MKGdIODXNZ/Y3b8rGq9BOMS1L33IOTdp/WXsTgVbGLdAzcy97TQQPycqyH1m?=
+ =?us-ascii?Q?Fta2ZFsZxYrtLpt0WVShnJWrYoj5M1E2N5IYCDZ0c3V5HYSiQLvVFXbZ2TNP?=
+ =?us-ascii?Q?6z69r0ae/f/0TwpMJ5Z2ZmnwqmCv2H1SN+/IRi4PPLeqtOsROtq7kSGXN2kp?=
+ =?us-ascii?Q?ePwSiH1dC7EIlMWKFnWZtykdQB5+lDIObTAZ3s9dlhtfsL83C0zomQEFfnri?=
+ =?us-ascii?Q?iRfbqzB+iEq5al50xASOYqLzEQr7hYHUhMrx/BJXGlyoubZoWLtlFag3oGq8?=
+ =?us-ascii?Q?x9hZZPE8GFM4DHyKlc1myN6YQNB6apBb4eEiVF9bI00ShAfa2jFMbVbwuFrJ?=
+ =?us-ascii?Q?eWcxFHJ1miJZJa9O2tXvJMABbX/OZWyw1Y9oK2NZzUM5cWQyI/yWqxPTFHQp?=
+ =?us-ascii?Q?8R7cFecnJCsRL3pc5ZBt7GMIbq0sQb1FcH6xWwL6C9sSfS+LBw+bNAiMjuXC?=
+ =?us-ascii?Q?KlCBsazm+ynkFz//SPnxU/LaYxvLISwDM4CXDggr51H41Yjmqax77tWNWJcQ?=
+ =?us-ascii?Q?oG7Is+RkeWHzMIpo4dM+H/D6ef+TpzlHM/2ixNBZQAWOgg2AteO+PnG1dHh8?=
+ =?us-ascii?Q?NrEY8yxjvj82U0KFaIfQ4S2RKxWvCerXvQQ/OPl0HQSgHH45G/1c0U31thAO?=
+ =?us-ascii?Q?hJDt0hhWuBEVaEZeznkpn3SXAR7IebYKljTu98q/3n4nPlzKEW0bCMqpVeIF?=
+ =?us-ascii?Q?sOKPjgeEVpTqz6yMJAq3K5gzE2JBD6ZuO/zC4P30Qa5GNHRMLaHiPC0phNr5?=
+ =?us-ascii?Q?xZdlwkdlOvGi9aLfVpKOpIRMLJ6Sjb9935jNGZ4r4woZ9E5ZDiZkmoEffSml?=
+ =?us-ascii?Q?pnPg0BfnGPf8RRSv4phfFYAFcu2hB7P3CnnKwWtEx57vP1MiRAfzjfDGsJL/?=
+ =?us-ascii?Q?6rTU7mtJ43+NPQnQ8HEOQ3kmi3l71KnTKmGUd7qKVlqskN98MqT6w68yeFOj?=
+ =?us-ascii?Q?0VJ+V9e8rd/G2WhKJ8gM+15wNaco7gZr7HLZ32u4oyO70BX2/ONTWIiZtZdp?=
+ =?us-ascii?Q?eHSXCtyPpJ7/GKZud3P7yOEpjrNZZ50yLr0rVCvLaIvKgkHA6GUGhMZWit2j?=
+ =?us-ascii?Q?e9YAYtQ0FQ21dwwKwSPaoH8W7KJSjFhPMbWNT5X/ORNdJIGu2PpJvzGvvSOb?=
+ =?us-ascii?Q?DNygcZ+VrrNCnrbL78vykuFQDtpPD4lTWZLx2ZgehIXzN66MJCdw7gulXOUd?=
+ =?us-ascii?Q?T3Nk98XTcTJ+10IRckFc2vwIzyz6w+sr/voV65asLIHvHiUF2jxF7ZhBVFrk?=
+ =?us-ascii?Q?BHmaejAiYTmacPfSdoN3Ksh0eeWFuvrjx8sEUWDX1TwEze7lwelMYTUDrMd7?=
+ =?us-ascii?Q?x2W9mP7dKQdNURZFFhakiCn+SHscyjZSE3R8FyXEO1maCmYs5sMhFByk+nXy?=
+ =?us-ascii?Q?3Uj9PuNJzUOOY9MkXoitPg5mb4s/GmBY7plG/TGz6Zg18nJySE9c+fnisXAo?=
+ =?us-ascii?Q?+YFQ/RCuOkH2eE2uo9R750vMHzbuo1mSZUi5dlJ7Le6D9Qj3iy3Y+mCdP2Yu?=
+ =?us-ascii?Q?FmKHMNZR49myMnR/JnhhKpKfTzINpVt3A1yOqTpWfIwj7DIieqCtkq7meTLr?=
+ =?us-ascii?Q?wzW1s45V2xMBDRe5rw1dCWb6GrbaMg8=3D?=
 X-OriginatorOrg: processmission.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 5b4b8c3f-496a-419e-6c5c-08df09ae236e
+X-MS-Exchange-CrossTenant-Network-Message-Id: 7b465f0b-9ae4-4667-cb6a-08df09ae1d6b
 X-MS-Exchange-CrossTenant-AuthSource: KL1PR02MB4977.apcprd02.prod.outlook.com
 X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 03 Sep 2026 11:26:03.4654 (UTC)
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 03 Sep 2026 11:25:53.3478 (UTC)
 X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
 X-MS-Exchange-CrossTenant-Id: e0544bf7-9765-4630-ab69-0b266dc2169c
 X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: awJHHFeeVjZkGE/RJuKpOpi5v8J1f1mR0ePrn1Ea2qzgVcSnVxh6RP/fWxAYGhuCsl/TAb/546zXiK1NZox9MIXR9t4vySmdS1hJpt3SLTI=
+X-MS-Exchange-CrossTenant-UserPrincipalName: cmOumWFf43uB0DbqESwP52qQ23OlDxsKhrmOVBsi/MRAVPKyK5j7fOpueHnJSC+uiLbPNdjc60rlE65vm5uGzVxhJ+I7LRkNgsZJnjSER8Q=
 X-MS-Exchange-Transport-CrossTenantHeadersStamped: TYZPR02MB6358
 Received-SPF: pass client-ip=2a01:111:f403:c40f::6;
  envelope-from=bin.meng@processmission.com;
@@ -139,157 +139,126 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Instantiate both E2000 MCI controllers at their low-peripheral
-addresses, route their interrupts to the GIC, and create an SD
-card on each exported bus. Map legacy IF_SD backends by controller
-index so firmware and Linux use the same board-visible media topology.
+The Phytium E2000Q combines two FTC310 cores and two FTC664 cores.
+Its EL3 firmware accesses implementation-defined system registers
+while setting up the cores. Using generic Cortex-A72 CPUs leaves
+these registers undefined and traps firmware before it can reach
+U-Boot.
 
-Keep the broad unimplemented aperture underneath the concrete
-devices and make SD the machine's default block interface.
+Add FTC310 and FTC664 CPU types using Cortex-A72 as their common
+execution base. Provide conservative RAZ/WI and NOP stubs for the
+firmware-visible E2000 controls that have no modeled behavior.
+
+Set each CPU DT compatible string, MIDR, instruction feature fields,
+AArch32 floating-point feature fields, and CTR_EL0.L1Ip field to
+values observed on an E2000Q board. The FTC310 reports a VIPT
+instruction cache, while the FTC664 reports a PIPT instruction cache.
 
 Signed-off-by: Bin Meng <bin.meng@processmission.com>
 ---
 
- hw/arm/Kconfig         |  1 +
- hw/arm/phytium_e2000.c | 65 ++++++++++++++++++++++++++++++++++++++++++
- 2 files changed, 66 insertions(+)
+ target/arm/tcg/cpu64.c | 81 ++++++++++++++++++++++++++++++++++++++++++
+ 1 file changed, 81 insertions(+)
 
-diff --git a/hw/arm/Kconfig b/hw/arm/Kconfig
-index 99a5799b22..9358a47b8a 100644
---- a/hw/arm/Kconfig
-+++ b/hw/arm/Kconfig
-@@ -136,6 +136,7 @@ config PHYTIUM_E2000
-     select PCI_EXPRESS
-     select PCI_EXPRESS_GENERIC_BRIDGE
-     select PL011
-+    select SD
-     select UNIMP
- 
- config REALVIEW
-diff --git a/hw/arm/phytium_e2000.c b/hw/arm/phytium_e2000.c
-index aac798aa07..88307184e9 100644
---- a/hw/arm/phytium_e2000.c
-+++ b/hw/arm/phytium_e2000.c
-@@ -28,6 +28,8 @@
- #include "hw/misc/unimp.h"
- #include "hw/pci/pci.h"
- #include "hw/pci-host/gpex.h"
-+#include "hw/sd/phytium_e2000_mci.h"
-+#include "hw/sd/sd.h"
- #include "qobject/qlist.h"
- #include "qom/object.h"
- #include "target/arm/cpu.h"
-@@ -40,12 +42,15 @@ OBJECT_DECLARE_SIMPLE_TYPE(PhytiumE2000State, PHYTIUM_PI)
- #define PHYTIUM_E2000_NUM_CPUS        4
- #define PHYTIUM_E2000_NUM_IRQS        256
- 
-+#define PHYTIUM_E2000_NUM_MCIS        2
- #define PHYTIUM_E2000_NUM_UARTS       7
- 
- #define PHYTIUM_E2000_GTIMER_HZ       50000000
- 
- enum {
-     PHYTIUM_E2000_LOW_PERIPH,
-+    PHYTIUM_E2000_MCI0,
-+    PHYTIUM_E2000_MCI1,
-     PHYTIUM_E2000_UART0,
-     PHYTIUM_E2000_UART1,
-     PHYTIUM_E2000_UART2,
-@@ -73,6 +78,7 @@ struct PhytiumE2000State {
-     MachineState parent;
-     struct arm_boot_info bootinfo;
-     DeviceState *gic;
-+    PhytiumE2000MciState *mci[PHYTIUM_E2000_NUM_MCIS];
-     MemoryRegion ram_low;
-     MemoryRegion ram_high;
- };
-@@ -84,6 +90,8 @@ struct PhytiumE2000State {
-  */
- static const MemMapEntry phytium_e2000_memmap[] = {
-     [PHYTIUM_E2000_LOW_PERIPH] =     { 0x28000000, 0x00100000 },
-+    [PHYTIUM_E2000_MCI0] =           { 0x28000000, 0x00001000 },
-+    [PHYTIUM_E2000_MCI1] =           { 0x28001000, 0x00001000 },
-     [PHYTIUM_E2000_UART0] =          { 0x2800c000, 0x00001000 },
-     [PHYTIUM_E2000_UART1] =          { 0x2800d000, 0x00001000 },
-     [PHYTIUM_E2000_UART2] =          { 0x2800e000, 0x00001000 },
-@@ -107,6 +115,11 @@ static const MemMapEntry phytium_e2000_memmap[] = {
-     [PHYTIUM_E2000_RAM_HIGH] =       { 0x2000000000ULL, 0x180000000ULL },
- };
- 
-+static const int phytium_e2000_mci_irqmap[] = {
-+    [0] = 72,
-+    [1] = 73,
-+};
-+
- static const int phytium_e2000_uart_irqmap[] = {
-     [0] = 83,
-     [1] = 84,
-@@ -324,6 +337,55 @@ static void phytium_e2000_create_pcie(PhytiumE2000State *s)
-     }
+diff --git a/target/arm/tcg/cpu64.c b/target/arm/tcg/cpu64.c
+index affd87a3ae..0fd2f79bbc 100644
+--- a/target/arm/tcg/cpu64.c
++++ b/target/arm/tcg/cpu64.c
+@@ -336,6 +336,85 @@ static void aarch64_a72_initfn(Object *obj)
+     define_cortex_a72_a57_a53_cp_reginfo(cpu);
  }
  
-+static BlockBackend *phytium_e2000_sd_blk(int index)
-+{
-+    DriveInfo *dinfo = drive_get(IF_SD, 0, index);
-+
-+    return dinfo ? blk_by_legacy_dinfo(dinfo) : NULL;
-+}
-+
-+static void phytium_e2000_attach_sd_card(DwMciState *mci, int index)
-+{
-+    BlockBackend *blk = phytium_e2000_sd_blk(index);
-+    BusState *bus = BUS(dw_mci_get_bus(mci));
-+    DeviceState *card;
-+
++static const ARMCPRegInfo phytium_e2000_cp_reginfo[] = {
 +    /*
-+     * Always instantiate the socket-level card object. A missing backend then
-+     * behaves as an empty slot, while if=sd,index=N gives firmware a real SD
-+     * card on the matching physical MCI controller.
++     * The E2000 EL3 firmware touches implementation-defined CPU registers
++     * during the PBF/BL1 cache and core setup. QEMU does not model these
++     * controls, so expose conservative RAZ/WI stubs for the boot firmware.
++     *
++     * PBF reads these identification and cluster controls after writing
++     * them. Returning zero preserves the reset state without claiming that
++     * QEMU implements the associated cache or coherency controls.
 +     */
-+    card = qdev_new(TYPE_SD_CARD);
-+    qdev_prop_set_drive_err(card, "drive", blk, &error_fatal);
-+    qdev_realize_and_unref(card, bus, &error_fatal);
-+}
-+
-+static void phytium_e2000_create_mci(PhytiumE2000State *s, int index)
-+{
-+    PhytiumE2000MciState *mci =
-+        PHYTIUM_E2000_MCI(qdev_new(TYPE_PHYTIUM_E2000_MCI));
-+    DeviceState *dev = DEVICE(mci);
-+    SysBusDevice *sbd = SYS_BUS_DEVICE(dev);
-+    MemoryRegion *iomem;
-+    int map_idx = PHYTIUM_E2000_MCI0 + index;
-+    g_autofree char *name = g_strdup_printf("mci%d", index);
-+
++    { .name = "E2000_CPUID_CTL1", .state = ARM_CP_STATE_AA64,
++      .opc0 = 3, .opc1 = 1, .crn = 15, .crm = 1, .opc2 = 0,
++      .access = PL1_RW, .type = ARM_CP_CONST | ARM_CP_NO_RAW,
++      .resetvalue = 0 },
++    { .name = "E2000_CLUSTER_CTL", .state = ARM_CP_STATE_AA64,
++      .opc0 = 3, .opc1 = 1, .crn = 11, .crm = 8, .opc2 = 6,
++      .access = PL1_RW, .type = ARM_CP_CONST | ARM_CP_NO_RAW,
++      .resetvalue = 0 },
 +    /*
-+     * MCI0 and MCI1 occupy the first two pages of the broad low-peripheral
-+     * placeholder. Use a higher overlap priority so real command and data
-+     * accesses reach the controller model.
++     * The remaining controls are only programmed as part of firmware setup.
++     * Accept the writes without retaining state because no modeled CPU
++     * behavior depends on their values.
 +     */
-+    s->mci[index] = mci;
-+    object_property_add_child(OBJECT(s), name, OBJECT(mci));
-+    sysbus_realize_and_unref(sbd, &error_fatal);
-+    iomem = sysbus_mmio_get_region(sbd, 0);
-+    memory_region_add_subregion_overlap(
-+        get_system_memory(), phytium_e2000_memmap[map_idx].base, iomem, 1);
-+    sysbus_connect_irq(sbd, 0,
-+        qdev_get_gpio_in(s->gic, phytium_e2000_mci_irqmap[index]));
-+    phytium_e2000_attach_sd_card(DW_MCI(mci), index);
++    { .name = "E2000_EL1_CTL", .state = ARM_CP_STATE_AA64,
++      .opc0 = 3, .opc1 = 2, .crn = 15, .crm = 15, .opc2 = 0,
++      .access = PL1_RW, .type = ARM_CP_NOP | ARM_CP_NO_RAW },
++    { .name = "E2000_EL2_CTL", .state = ARM_CP_STATE_AA64,
++      .opc0 = 3, .opc1 = 4, .crn = 15, .crm = 15, .opc2 = 0,
++      .access = PL2_RW, .type = ARM_CP_NOP | ARM_CP_NO_RAW },
++    { .name = "E2000_EL2_CTL2", .state = ARM_CP_STATE_AA64,
++      .opc0 = 3, .opc1 = 4, .crn = 15, .crm = 2, .opc2 = 4,
++      .access = PL2_RW, .type = ARM_CP_NOP | ARM_CP_NO_RAW },
++    { .name = "E2000_EL3_CTL", .state = ARM_CP_STATE_AA64,
++      .opc0 = 3, .opc1 = 6, .crn = 15, .crm = 15, .opc2 = 0,
++      .access = PL3_RW, .type = ARM_CP_NOP | ARM_CP_NO_RAW },
++};
++
++/*
++ * Use the Cortex-A72 execution model as the common E2000 TCG base, then
++ * replace the architected identity fields that differ between the two
++ * physical core types.
++ */
++static void aarch64_phytium_e2000_base_initfn(Object *obj)
++{
++    ARMCPU *cpu = ARM_CPU(obj);
++
++    aarch64_a72_initfn(obj);
++    define_arm_cp_regs(cpu, phytium_e2000_cp_reginfo);
 +}
 +
- static void phytium_e2000_create_unimplemented(void)
++static void aarch64_phytium_ftc310_initfn(Object *obj)
++{
++    ARMCPU *cpu = ARM_CPU(obj);
++    ARMISARegisters *isar = &cpu->isar;
++
++    aarch64_phytium_e2000_base_initfn(obj);
++
++    /* FTC310 cores identify with the FTC303 part number */
++    cpu->dtb_compatible = "phytium,ftc310";
++    cpu->midr = 0x700f3034;
++    SET_IDREG(isar, ID_AA64ISAR0, 0x00011100012120);
++    cpu->isar.mvfr0 = 0x10110222;
++    cpu->ctr = FIELD_DP64(cpu->ctr, CTR_EL0, L1IP, 2); /* VIPT */
++}
++
++static void aarch64_phytium_ftc664_initfn(Object *obj)
++{
++    ARMCPU *cpu = ARM_CPU(obj);
++    ARMISARegisters *isar = &cpu->isar;
++
++    aarch64_phytium_e2000_base_initfn(obj);
++
++    cpu->dtb_compatible = "phytium,ftc664";
++    cpu->midr = 0x701f6643;
++    SET_IDREG(isar, ID_AA64ISAR0, 0x00000100012120);
++    cpu->isar.mvfr0 = 0x10111222;
++    cpu->ctr = FIELD_DP64(cpu->ctr, CTR_EL0, L1IP, 3); /* PIPT */
++}
++
+ static void aarch64_a76_initfn(Object *obj)
  {
+     ARMCPU *cpu = ARM_CPU(obj);
+@@ -1533,6 +1612,8 @@ static const ARMCPUInfo aarch64_cpus[] = {
+     { .name = "cortex-a55",         .initfn = aarch64_a55_initfn },
+     { .name = "cortex-a72",         .initfn = aarch64_a72_initfn },
+     { .name = "cortex-a76",         .initfn = aarch64_a76_initfn },
++    { .name = "phytium-ftc310",     .initfn = aarch64_phytium_ftc310_initfn },
++    { .name = "phytium-ftc664",     .initfn = aarch64_phytium_ftc664_initfn },
      /*
-@@ -443,6 +505,9 @@ static void phytium_pi_init(MachineState *ms)
-     phytium_e2000_create_cpus(s);
-     phytium_e2000_create_gic(s);
- 
-+    for (i = 0; i < PHYTIUM_E2000_NUM_MCIS; i++) {
-+        phytium_e2000_create_mci(s, i);
-+    }
-     for (i = 0; i < PHYTIUM_E2000_NUM_UARTS; i++) {
-         phytium_e2000_create_uart(s, i);
-     }
+      * The Cortex-A78AE differs slightly from the plain Cortex-A78. We don't
+      * currently model the latter.
 -- 
 2.53.0
 

@@ -4,49 +4,57 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 92EBFC624D4
-	for <qemu-arm@archiver.kernel.org>; Thu,  3 Sep 2026 06:15:59 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A9BBBC624A4
+	for <qemu-arm@archiver.kernel.org>; Thu,  3 Sep 2026 07:23:15 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1x20ja-0001p8-K9; Thu, 03 Sep 2026 02:15:38 -0400
+	id 1x21mZ-0003Qu-03; Thu, 03 Sep 2026 03:22:47 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1x20jI-0001ho-Pf
- for qemu-arm@nongnu.org; Thu, 03 Sep 2026 02:15:21 -0400
-Received: from smtpout9.mo536.mail-out.ovh.net ([51.210.91.18])
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1x21mS-0003Q1-0M
+ for qemu-arm@nongnu.org; Thu, 03 Sep 2026 03:22:40 -0400
+Received: from smtpout4.mo539.mail-out.ovh.net ([51.210.91.43])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1x20jG-0000Ym-Hc
- for qemu-arm@nongnu.org; Thu, 03 Sep 2026 02:15:20 -0400
-Received: from director5.derp.mail-out.ovh.net
- (director5.derp.mail-out.ovh.net [79.137.60.225])
- by mo536.mail-out.ovh.net (Postfix) with ESMTPS id 4hb8TN4fxSz88Gf;
- Thu,  3 Sep 2026 06:15:04 +0000 (UTC)
-Received: from director5.derp.mail-out.ovh.net
- (director5.derp.mail-out.ovh.net. [127.0.0.1])
- by director5.derp.mail-out.ovh.net (inspect_sender_mail_agent) with SMTP
- for <jamin_lin@aspeedtech.com>; Thu,  3 Sep 2026 06:15:04 +0000 (UTC)
-Received: from mta7.priv.ovhmail-u2.ea.mail.ovh.net (unknown [10.110.37.96])
- by director5.derp.mail-out.ovh.net (Postfix) with ESMTPS id 4hb8TM74gMz6NNb;
- Thu,  3 Sep 2026 06:15:03 +0000 (UTC)
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1x21mP-00010a-Ph
+ for qemu-arm@nongnu.org; Thu, 03 Sep 2026 03:22:39 -0400
+Received: from director6.derp.mail-out.ovh.net
+ (director6.derp.mail-out.ovh.net [79.137.60.226])
+ by mo539.mail-out.ovh.net (Postfix) with ESMTPS id 4hb9zF3PFBz4Dp9;
+ Thu,  3 Sep 2026 07:22:32 +0000 (UTC)
+Received: from director6.derp.mail-out.ovh.net
+ (director6.derp.mail-out.ovh.net. [127.0.0.1])
+ by director6.derp.mail-out.ovh.net (inspect_sender_mail_agent) with SMTP
+ for <jamin_lin@aspeedtech.com>; Thu,  3 Sep 2026 07:22:32 +0000 (UTC)
+Received: from mta2.priv.ovhmail-u2.ea.mail.ovh.net (unknown [10.110.118.229])
+ by director6.derp.mail-out.ovh.net (Postfix) with ESMTPS id
+ 4hb9zD4ZjHz46ZG; Thu,  3 Sep 2026 07:22:32 +0000 (UTC)
 Received: from kaod.org (unknown [10.1.6.2])
  (Authenticated sender: clg@kaod.org)
- by mta7.priv.ovhmail-u2.ea.mail.ovh.net (Postfix) with ESMTPSA id 5921B203FDB; 
- Thu,  3 Sep 2026 06:15:03 +0000 (UTC)
+ by mta2.priv.ovhmail-u2.ea.mail.ovh.net (Postfix) with ESMTPSA id 4F98E941BEB; 
+ Thu,  3 Sep 2026 07:22:31 +0000 (UTC)
 Authentication-Results: garm.ovh; auth=pass
- (GARM-102R0049f0e14a0-0992-435d-94dd-35faea59d649,
+ (GARM-97G002b6e9ac08-c596-4efb-84a0-63af66bb26f1,
  D9A964E3C5AFBF6BD84231720E0C998EB3D97DAC) smtp.auth=clg@kaod.org
 X-OVh-ClientIp: 82.64.250.170
-Message-ID: <61cecc24-db2f-4146-8def-7d557a426020@kaod.org>
-Date: Thu, 3 Sep 2026 08:15:02 +0200
+Message-ID: <4fcbb217-596f-4a9a-8b2a-ca7fb1de7743@kaod.org>
+Date: Thu, 3 Sep 2026 09:22:30 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [BUG] hw/misc/aspeed_hace: out-of-bounds read in has_padding()
- (off-by-one, guest-triggerable)
-To: Christopher Boker <Chris@cveasyai.com>, qemu-devel@nongnu.org
-Cc: peter.maydell@linaro.org, qemu-arm@nongnu.org, jamin_lin@aspeedtech.com,
- steven_lee@aspeedtech.com
-References: <CAKnXys4iX-B5xKHfPi4xk=UBCyr9gJ9SZ+c8AK=0kcCMOHBSrQ@mail.gmail.com>
+Subject: Re: [PATCH v1 1/2] hw/misc/aspeed_sbc: Derive ABR state from OTP
+ config straps
+To: Kane Chen <kane_chen@aspeedtech.com>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ Steven Lee <steven_lee@aspeedtech.com>, Troy Lee <leetroy@gmail.com>,
+ Jamin Lin <jamin_lin@aspeedtech.com>,
+ Andrew Jeffery <andrew@codeconstruct.com.au>, Joel Stanley <joel@jms.id.au>,
+ "open list:ASPEED BMCs" <qemu-arm@nongnu.org>,
+ "open list:All patches CC here" <qemu-devel@nongnu.org>
+Cc: Troy Lee <troy_lee@aspeedtech.com>
+References: <20260831053658.462203-1-kane_chen@aspeedtech.com>
+ <20260831053658.462203-2-kane_chen@aspeedtech.com>
+ <f60d0cb7-5981-4dd5-b65b-4a6e9b8a30ed@kaod.org>
+ <SI6PR06MB76318928B02F6147B1DEC82DF7A82@SI6PR06MB7631.apcprd06.prod.outlook.com>
 From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
 Content-Language: en-US, fr
 Autocrypt: addr=clg@kaod.org; keydata=
@@ -91,30 +99,29 @@ Autocrypt: addr=clg@kaod.org; keydata=
  3GlqivBNkmYsHYSlFsbxc37E1HpTEaSWsGfAHQoPn9qrDJgsgcbBVc1gkUT6hnxShKPp4Pls
  ZVMNjvPAnr5TEBgHkk54HQRhhwcYv1T2QumQizDiU6iOrUzBThaMhZO3i927SG2DwWDVzZlt
  KrCMD1aMPvb3NU8FOYRhNmIFR3fcalYr+9gDuVKe8BVz4atMOoktmt0GWTOC8P4=
-In-Reply-To: <CAKnXys4iX-B5xKHfPi4xk=UBCyr9gJ9SZ+c8AK=0kcCMOHBSrQ@mail.gmail.com>
+In-Reply-To: <SI6PR06MB76318928B02F6147B1DEC82DF7A82@SI6PR06MB7631.apcprd06.prod.outlook.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
-x-ovh-tracer-id: 1182194903802883083
+x-ovh-tracer-id: 2321605612161313803
 X-VR-SPAMSTATE: OK
 X-VR-SPAMSCORE: -100
-X-VR-SPAMCAUSE: dmFkZTGaFjDSnLuDvBUbSwr0rPIWLrpZKD062bX8FXs+WY12Zce7UwIHD8pfwSMIucl5lM1Rpnfox8flgTz63pWZvBjtiC9rzcsMJoC8ZbmQGHPv636R4O4AaSKVX/C7p1rWxjX4AFIYWFQ+vArrnk4/tfEj+51ZNqPdsR1n7YMbQUjr5Vu+/IAhusI9izjCVCqVoY+xM/eYO+7QzwIfgT/iRvxqcvrE2xQgY02D6XWpF5XlJKH6/wHrpzo+q8mhy3jyTbibi+8+6DMPOYgStwAoVDGVQ9sKr+BJw9NLXJJm30ps9jcf9Gin7sYWmO6WnUkusTJXPMQhbcKvtCxbSQG9p9XFR86sJYSlorQasyZ+7g2EIz7MISyQUELjnZ0DZ3LCVYX93f7G3sI9t83v+SzBihLDuKRfXlxGLTH1lQXo+q60xiUpREogQV5ZAfgRQpCcRLfuYiyWMIkfGxp348oMSKTYQTFFFrPMZ7DLjySJlmVQTg7+lyc53MCEAN5PqeqCRuau/qKvvU2WtHX/kp4/zqc/Z2N3VFnTTh6qHIXaGZz10PKjSgv5hkewIbzMapODOEYlP2uXtN1+2qUHBs9Rjw09warMdwVrsh5VCjF+IgVVwgxchcdfCHy7cIeJEXit79hxusPm6APmXFkv/x+jpBbFLXFfCldVKim0QEivHC34Vg
-DKIM-Signature: a=rsa-sha256; bh=P6I497gp6bChAoVnoeLf4lMzloFf5/0IXywJuCEcXig=; 
+X-VR-SPAMCAUSE: dmFkZTFfluqgSc70uqitsI4yzvKoqtEdPHbiUfiQ1xvrlhFonPipcqgRHmGAg0K3qK6R6vdo3ops2zfZ/TIXOgy6SOgHkcCuZ54yHCT/xLS78p2I8fH5DP02dh+j+srHiMIUIBo9g4AyC1ax/fFu2vWmfrVgR9VftObQtBDReqPt5WOm682+nBAq3whWcS3wjhUel2qnw+XUnYPFJPFnP0LCIe9p/ENzzyLDX96ECulZL9mQ86/LvgxDrqyhJvaecWuCrd59T5gBtXCe6m8+J+ddLUxBVk3OY5ep4mAf4Jjqhmb8K7M3E7pJCUG7HV4edJ4PLYvwGXiDfzWUgHCWdIkS2vmKm0SJSrMZ1UY0gCjUrTrs++WlzNs9qEYzqQaeC3ipQS976+UiZ5Rt0gast/YQ0a3FwoKzibYAnqIE99kPaI+8s9QdCuv/wWGbo7+YEd/GjYhRkDqLyjuY1msAJ7d7oueLjM+mTqv+LNOdOzFp6hkNOWeVC+v0DXHLO8fNt6xubBWQtSWNgL9U6ECGLnkmeLbdalVmkh2heDrjfElYM28CexQ5EeBllpq0W3kmUisA1pmS1xkNagLkF/L2tzQtZ4SmbPtrjNnaUR7+xv1x+4uvAwEAj6PEgxFfadNkE7oHs6926WJgUrnaoIPoNgBp9oryDrv2+00addEgFEMkK9ypow
+DKIM-Signature: a=rsa-sha256; bh=ocAN+nzWjBjK08uE4Q77kg7YOp9W1PlvHgbbk8zYS0g=; 
  c=relaxed/relaxed; d=kaod.org; h=From; s=ovhmo393970-selector1;
- t=1788416105; v=1;
- b=rbOTKIhtPRGNUuxTVuHDVMq8+YT3dbVMbM20jfwq+R8/fPCRdlct/x4EMc9eNO7tmFmEYudU
- ToBAuMapR1uUQ9rua/VCdX23Y+32AbkAMetwo80KRapnV07pU9O//m52frBqG0rZ8rwJW4YxW9b
- M8fHlCCnPFVFk5jHG7sDpyEek+WR4adYTrwNLYGJ5H3niEe2XTJZEcdyzTC6YcsllON1Zaech97
- oO0sn7cATmDIgggohz/Rs2fDkiz2tjlvPFytFVbpsUq11hMgoaI9O4ziLxA2ljMXhsukXz2uclz
- ZkPN/MZSPXJZ5uD7rG9LcbkgpvYsRln/i4rlw7DkW4Yag==
-Received-SPF: pass client-ip=51.210.91.18; envelope-from=clg@kaod.org;
- helo=smtpout9.mo536.mail-out.ovh.net
+ t=1788420154; v=1;
+ b=WULsvMnxabQvq+vSgdn0lKe0it9WmRHUYovxSlk/t5CQWgQf5muoBgIEAWtDbIE3qJhY547F
+ Aes5/bKy2K6DmhB6M+lfTlRKasQpmhWbqabyQisVJM7iM8dYdIdr4MGRK098p1TUZcoNmabbDM7
+ IKuklijEcR7ddDy+IDKfDv9JDVXLQAD+k+3VXvkYiEXbbOTTwI7FoLOlQvwG2wfr9ouoPrW96uA
+ qaWz2dMrvvMxM4FJG1s8OTZDUB5ZgIrLHdGTX0yJ74xeoGF/BM2MdOtsqvJxemxMG6O+CX/qJ9F
+ Sisle8FUDf5Vn1u2zwx63MRU45+Tjkg/IcvpKhttU3SZA==
+Received-SPF: pass client-ip=51.210.91.43; envelope-from=clg@kaod.org;
+ helo=smtpout4.mo539.mail-out.ovh.net
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -130,14 +137,47 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-> I have not sent this as a formal git-format-patch because I did not want to add
-> a Signed-off-by line under a name I have not confirmed with you; happy to send a
-> proper patch with a correct S-o-b if you would rather have one
-Please send 2 patches:
+Hello,
 
-- a new aspeed HACE atest ast2600/hace/sha256_accum_zero_padding for
-   the ast2600-evb machine
-- fix for the oob read in has_padding()
+> However, the OTP configuration can also be programmed at runtime.
+> Therefore, reading the OTP configuration only once at realize/reset time
+> may leave the SBC STATUS register out of sync if the OTP
+> configuration is changed afterward.
+> 
+> I see two possible approaches to keep the SBC STATUS register
+> synchronized with the OTP configuration:
+> 
+> Update the SBC STATUS register at reset and whenever the relevant
+> OTP configuration is programmed. This would keep the cached STATUS
+> value synchronized with the latest OTP configuration.
+
+Caching values is always a problem. Unless performance is impacted,
+computing is better.
+
+> Derive the relevant SBC STATUS bits directly from the OTP
+> configuration whenever the STATUS register is read. This avoids
+> maintaining a cached copy of the OTP-derived state.
+
+yes something like :
+
+   static uint32_t aspeed_otp_read_cfg0(AspeedSBCState *s)
+  {
+@@ -110,6 +111,23 @@ static uint64_t aspeed_sbc_read(void *op
+      }
+  
+      switch (addr) {
++    case R_STATUS: {
++        uint32_t val = s->regs[R_STATUS];
++
++        if (aspeed_get_abr_state(s)) {
++            val |= ABR_EN;
++        } else {
++            val &= ~ABR_EN;
++        }
+
+is better IMO. The SBC status register is a reflection of the OTP
+fuse state. You could ask he HW designers for info on how the state
+is maintained.
 
 Thanks,
 

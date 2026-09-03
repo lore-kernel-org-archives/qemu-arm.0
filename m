@@ -4,28 +4,28 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EA5ADC61DD3
-	for <qemu-arm@archiver.kernel.org>; Thu,  3 Sep 2026 11:31:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B9791C624DB
+	for <qemu-arm@archiver.kernel.org>; Thu,  3 Sep 2026 11:31:40 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1x25ai-0005t0-6E; Thu, 03 Sep 2026 07:26:48 -0400
+	id 1x25ai-0005uC-Rv; Thu, 03 Sep 2026 07:26:48 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <bin.meng@processmission.com>)
- id 1x25ah-0005rT-34; Thu, 03 Sep 2026 07:26:47 -0400
-Received: from mail-koreacentralazlp170130006.outbound.protection.outlook.com
- ([2a01:111:f403:c40f::6] helo=SEYPR02CU001.outbound.protection.outlook.com)
+ id 1x25ag-0005r6-LM; Thu, 03 Sep 2026 07:26:46 -0400
+Received: from mail-japaneastazlp170120005.outbound.protection.outlook.com
+ ([2a01:111:f403:c405::5] helo=TYPPR03CU001.outbound.protection.outlook.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <bin.meng@processmission.com>)
- id 1x25af-0006f9-G3; Thu, 03 Sep 2026 07:26:46 -0400
+ id 1x25af-0006ne-3U; Thu, 03 Sep 2026 07:26:46 -0400
 ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=bLiPZvaE5drNNCWX4BSh8UFpMW45J8F8bOCL/yR/PAbrZ3yAmSslVoVIMK4TapgPGx+Oorkv4ACi801wsIIXFHjIDBuzbPcvNSK7PMQYUx5xXtUJI158G9EcGqAa2wWfcj/LB/IBpjS6g2UzOYX/8fMrIQidM7G6aCYR+ifqdwurpPZq+azB82kvSI4zFNRp5i3nn0rK1hShxLvEHuiAHDtfWJEnA30lUjkeBEr6+wXScMkK1lBvh0iEZdJxxNq5zN5hPqMlU3s+bzblOAxjnvKVRJEJ8Yn5XHUj4tR2zeiGwU2s9eVTikdb2qHD2XZtpiH5+iTfl8WvknmJG0C/Cw==
+ b=utzGos60zYWZyWgJAPaldUyO6E0fG4haP+7Zu4Vg+c6EjmGCnqKglg+Afz/XpyIiZs5M/R0SQBLnJSk6ZNhfoKXeOj7l15QAOKiR6+n7RRQmBmtdAlJ+omkpk6yLeeOJ3/YCwkgxw2CRpONx8xaNt3oZc2oWTFdSreo/j2w3DfdKX56E8QRIRUolxHs1IzAx5gDbW4pyXWfXgj3+CCXUyWPoX6wZiSzvfEIl6ImgHLPDj6Ijxjo0rk8GxmjegraD+csixpfnC5gwSDn8ths7LuWqgx9pgVwfZSaIXf6MAb2BjrYLRDpDXVjPcMyHPlrwauhE6Fl7kqpMkZJCH9yv8A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
  s=arcselector10001;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=fMZtu0XsHNr6XoDBG3mjHuOwjWp7tTI+GuK281sj0Qs=;
- b=vJ6CfeWCRWDzPqKUTdvyvPQ3vTRbUprD4AJMYYBigD/v/NK89PAEGb7HS8Eazqs+RnVbgCeTZXpC2LV9kJky0YVxFrvvhT2MBUDghllv6JMLs6nv/FX3Dj+vnzwwJRb1ZttHJLGKhEDG51W4tVKhBA3xh0EKp2G7qQRKlMvkHnDxHvZRDl2YEqFF2UvOSuP4uXP/BGQCsqIidyQ+g4aYuLvmndogBuCnONzLj04Q1VYfy+uIKa1nVS1dmYIATuHrskvJyv4lghKei6BqLGb5d7AKwf2VUhndI15vzUavUcmPvRNOugIVvqyrO3mrPIKUbC/xa0SgGm9ibwAB/VWTdQ==
+ bh=UWdoXP+CJbEJ2tqJenWq8Kf4jHPhiFZ5BwvvYAAZeJ4=;
+ b=WYYPp1L52JAR4vEP/vcgsc+UCvzIJsjV0v4gCVvjb6SiLouvLy3X7fe3WOsl3az8npSiQ15hnCyUTS5N4GlnCO/igdBezVMgzxL1UY6zfC/XkBUEllGQCmqcTgNR4w0MpZ7umqV79BmWcDP4zLNMtRZ9go8TAZZrLKep4l3FUK5RaF5qqPY1X76nWWCkDfXQWPOx6Jt6lAjsSLpcCXavvumAx0xvB7XnSgQ+7nz3fZcCXCUTs37Z06dTnIeXUIsKfsmtlNCVyVncXXElBtWw1otCvHB33VNm4Gxcc3SHnqxeQCAUB25mzzl/lAshcfKV8qNCBOUf0UgIlp4fzAyLJw==
 ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
  smtp.mailfrom=processmission.com; dmarc=pass action=none
  header.from=processmission.com; dkim=pass header.d=processmission.com;
@@ -33,26 +33,27 @@ ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=processmission.com;
  s=selector1;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=fMZtu0XsHNr6XoDBG3mjHuOwjWp7tTI+GuK281sj0Qs=;
- b=p3nhjkrNwPe1qJ/Jd7AdR/UnQztwvgXaEl+Z4oobwterw/ZH3jHB/fEZtMctv6e6rkVw9QVCVZxu0e9BcoHWmOH4NLk1ER7SA/ciz5ZNlfFsRYCk8pVWYvgqvRdnXrGaGZ9YLtrGChBLtJrtPH+/rzLAxKfo0qvIGL98smqllgZa1ux01Wktm6h0QzEIF7L0tKVmJx0B/AOeyarhWj/tEm4KKHlZLsQiNUqoslV5dOBiODbvkEiQq/wkSDBFhJlQhhNPMdMzaWjlHSIPECPt3F3KT3Y9h+Ix+NpL8qlVGuNjYG5bwpy3IEs9/uCbRmV8ewcBisLbHYhuVheivZRhHg==
+ bh=UWdoXP+CJbEJ2tqJenWq8Kf4jHPhiFZ5BwvvYAAZeJ4=;
+ b=ajk9pOoCPiCfutGfAsucG2YMXnlbhx/6yzFCFTfJXThsaCjiu9Sa5AB35fT+znOzVepoRTgP3skY7eTHYCCx71RH74XBa9dtN/8wGSRKDnT6GMwvJ2HWx1AiIDS4v4jBMKVsGY6pfYAjJ8d8+S6eUVM5B8pUVB0OrXaFHRNivVhDCiKrW7/qeXRtkO4xg+xzBKSC3T3J/kFciafG/jX8Pdre0CCoMfjKaqKb6EQmpMwuZrW+lJeuNNpaVBqDZL/HALYiP6nXVJ8WJr5jUAzP2deG14G+9IKU7k2AC8i1j8dzgDLNbxrK+SFxHrPADNa2Qc4iKkHpBMYvCz4d4kWUKg==
 Authentication-Results: dkim=none (message not signed)
  header.d=none;dmarc=none action=none header.from=processmission.com;
 Received: from KL1PR02MB4977.apcprd02.prod.outlook.com (2603:1096:820:71::8)
- by TYZPR02MB6358.apcprd02.prod.outlook.com (2603:1096:400:419::9) with
+ by OSNPR02MB8962.apcprd02.prod.outlook.com (2603:1096:604:45b::10) with
  Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.21.360.13; Thu, 3 Sep
- 2026 11:26:14 +0000
+ 2026 11:26:35 +0000
 Received: from KL1PR02MB4977.apcprd02.prod.outlook.com
  ([fe80::9fdf:2557:8351:6c03]) by KL1PR02MB4977.apcprd02.prod.outlook.com
  ([fe80::9fdf:2557:8351:6c03%4]) with mapi id 15.21.0382.007; Thu, 3 Sep 2026
- 11:26:14 +0000
+ 11:26:35 +0000
 From: Bin Meng <bin.meng@processmission.com>
 To: QEMU <qemu-devel@nongnu.org>
 Cc: Peter Maydell <peter.maydell@linaro.org>,
 	qemu-arm@nongnu.org
-Subject: [PATCH 12/33] hw/arm: phytium: Connect the Phytium E2000 MHU
-Date: Thu,  3 Sep 2026 19:24:52 +0800
-Message-ID: <20260903112532.3276678-13-bin.meng@processmission.com>
+Subject: [PATCH 23/33] hw/arm: phytium: Connect the Phytium E2000 random
+ generator
+Date: Thu,  3 Sep 2026 19:25:03 +0800
+Message-ID: <20260903112532.3276678-24-bin.meng@processmission.com>
 X-Mailer: git-send-email 2.53.0
 In-Reply-To: <20260903112532.3276678-1-bin.meng@processmission.com>
 References: <20260903112532.3276678-1-bin.meng@processmission.com>
@@ -63,66 +64,67 @@ X-ClientProxiedBy: TY4P286CA0026.JPNP286.PROD.OUTLOOK.COM
  (2603:1096:820:71::8)
 MIME-Version: 1.0
 X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: KL1PR02MB4977:EE_|TYZPR02MB6358:EE_
-X-MS-Office365-Filtering-Correlation-Id: 6040c5f1-ede0-423e-bbd4-08df09ae2a35
+X-MS-TrafficTypeDiagnostic: KL1PR02MB4977:EE_|OSNPR02MB8962:EE_
+X-MS-Office365-Filtering-Correlation-Id: 07e7a9b4-a66f-4af8-2eec-08df09ae3679
 X-MS-Exchange-SenderADCheck: 1
 X-MS-Exchange-AntiSpam-Relay: 0
 X-Microsoft-Antispam: BCL:0;
- ARA:13230040|366016|23010399003|1800799024|376014|56012099006|10067099003|22082099003|18002099003|3023799007;
-X-Microsoft-Antispam-Message-Info: 9rv0rnHTE9lDKqOWTfJ7WMfk60k9R4UnY0+fZADjaHCo8JQqYU+eCZw7TuUFXiOXdkwWUL6Qw8oqr3WKN+xA1d7Ey9mXqPjiJIKy2xcsg5xcn62sohtMw7J8rAz6Mn9VfO9APY6AgfqDttQYmKp60Hsf5sFUqfLEE9La0UHsFErBP5WDXNNs/XjQcp6i53LshRxXLr1OLLoRRqO2Ap41m5+/QfyiinZRjUPxy0uzRhexaWhrKVLs3fSIqOppuxqBCPyoXXobm5880VJRWCVoCLphRHyQOFbWnK0LCd2Pk6tn4J5QhkADZtBjrLGCsa5AokQ7spVGgs2hnYZVX7p2HhxLRO9QfqllcJcOd9jpH8duy+YMZ7q3FCLWZf/8eUrMG59/Xc6Yo5WsVxSVNcCw/BpzQvBpeimhiHS5kfGh7Gj/d43wiGL/PQ73cl3MA8PxYUfS7xBjEex9x62+klJghV6NkPZWWKp2QzHdXvJN6FkHPhkrv9aIZ47VM/WqogWSSWxW2EancSmxAFotPJkBsT41pPPJHavbotlQraTpthFnW99GDo3TurQquReCf214Q6QRSEpXZh81ahSkuaGFEPuOltjIX1oO4vhJfIcz0hQJb/lp3d3Om8B3duvN9de7xDcNF+n7CrTqaf4q3GoNy/t8kkLvxzh+l2lm8EsDuhI=
+ ARA:13230040|1800799024|376014|23010399003|366016|10067099003|6133799003|22082099003|18002099003|56012099006;
+X-Microsoft-Antispam-Message-Info: oq11CEs2ggqkF25++idE1wtd7riUQN6/4LIbsjXhr1T+LQIRQgqjd/VAqI2ZBjgq6tPBlESmp5636HPtesIrA/wCAybM9/OwjboXVrn/0ShdNSrHO8+XSp8lxVhw6IlYsSpwgI87fnSbv3T6gyGIKW+HKtLSi89AYX5ApSg/lwj8//DIMiD8jTPcvUAdfbUHhU8j7gLkWX+tSyZXnx/9ENPn5oT7Hruxy3uokJPvtbpXUqpoHt/HACxMehf5THB1AM1O2NeybPz3zFwxeWCkTfHhKffJ4BvPsJrKGgzNufNyu8kzwkpERyiz3IJ5430Nx+EB964MsntVzAD6We1rSOwixAMW+1B9xcDINj07uIlmSEJ6hbX5WMmKNVFC/Tn1iXUUlV/7X/fHZ7bSVjGZH+EQvnb/tvTt4UbuGtHcob2MurqjErjdS2MVgmfDfXa/MguFl5ISOAmLf8XYYuYIKzM5pf2N78ab2MQ69+wW0QFrR6GuilKeqXC9CpwdMv6bhIztSSH7eYxPlohz346ui4LHU7EzGwN2y4a4H7vFeMDu4fZ96/XhHTw9LTjU86DHgUPnRCMGFg3tM/dIsrz5bFD8kYp479ALpZVvXrzqbD35RYs9o6mpHKCtr2itbd21lQiBH09bPyXULte2jRhJfJBtadbWVeT5KGIlFlFMmPg=
 X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
  IPV:NLI; SFV:NSPM; H:KL1PR02MB4977.apcprd02.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(13230040)(366016)(23010399003)(1800799024)(376014)(56012099006)(10067099003)(22082099003)(18002099003)(3023799007);
+ SFS:(13230040)(1800799024)(376014)(23010399003)(366016)(10067099003)(6133799003)(22082099003)(18002099003)(56012099006);
  DIR:OUT; SFP:1102; 
 X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?YjsfOMqZNBGVrDn9bAqVQtwS4xo8tsFHp5Lxo9rPbhM3aRsnQg0vqWwuEAs8?=
- =?us-ascii?Q?Ef77lXck8+eEjZR+9JJHBIko2/UDTooEU9pEB8UTQlHg3njGGjusG82LZ/sk?=
- =?us-ascii?Q?JK0ln/EvX8M3i9W90bZSyT9LAS46qAERUtwR6bDkcYZsyrhaQOIE1Ei15VXr?=
- =?us-ascii?Q?ZTNEYZbAHt2pXfnLM6kujoFpNHbV/EzGChaFFv4AdTvxcsUnifm4WCvkRfBv?=
- =?us-ascii?Q?7nAaIzGGcx9RQ4CyIsRsCBBA1gJEIA+2YNkjnaJYADm5+lWfNK5wdb8Hql3T?=
- =?us-ascii?Q?Uq3PKLjF3J4gwFSbYUaQy9yU4OxKoiJ4Z3CjoNxsASyR09H3gzIQbelnsLgE?=
- =?us-ascii?Q?pNUSk5OEqmsdTkvxzuR1+JHWC4L68bEBKXo6h2fZslQeV9fS6d8EJVO1mU3S?=
- =?us-ascii?Q?XuKrpjfDZI09nIA0BCGduNaXbqNTuFAYqYC2rWhHtR3RAicRAMYXsCVSDGrk?=
- =?us-ascii?Q?IFSKAFHDldiU8E+5Q0gogPIt4qFiNGe0gul47J1xrYDXkiCRChlGPDvgxtMD?=
- =?us-ascii?Q?ZEqFXAYVXTUesC0awgfHq0IM7Z9Am+p5nfy3APIECdi1Huk+Jb/QZifX3UBl?=
- =?us-ascii?Q?cvWrHVPxXaJ3TQCA/QrxCxTiSh2ZZu/nP9n21ue9a0CfCzP7sDS76krf6Wwt?=
- =?us-ascii?Q?AeYM2gplkRZAduqCLeBJWS+HzkEk2EjsN+y7Ofm7BfqcJ6S5O1rT1x/Ly/U6?=
- =?us-ascii?Q?hfyNbT6bObotjWX02sTszlFoginHveATGqTQodZj6QpigJk1uXZiCfLNSYwL?=
- =?us-ascii?Q?XuJoWlJ8ZUDlXtsOJBT4rMSt8pSjT3Hi67pMl04fYwmrmoGUT/0pWFbDgCsv?=
- =?us-ascii?Q?lNFsrEpWbbD3mzBpCPHEItjr/h6P5OpF8zzgLHHpWvX7przkt6f1dG3/5pDQ?=
- =?us-ascii?Q?75w3L7jnl3MIbA58XVq3O4QwfK0xjZzzKHv7HaHV7OsOgPhssQrEHxYmyszQ?=
- =?us-ascii?Q?xDTIRdEAIRi96EnLBfi/lAENhK2rvNR4nI4X66ViFq1NZNVc9iBrQCnj9E5m?=
- =?us-ascii?Q?ABtvrjDCzOwrKVZbWd5NdUbJpTbWOEvrtrjN2i+i/z08IxpDVNkIZUrx/Qm5?=
- =?us-ascii?Q?UFK6p995Rfm289AH7a9MKpUlotEGohEHoIIy8yyYCiSXEP21KGIMCja1cB1R?=
- =?us-ascii?Q?m1xs3H0on4IFTsaPF0kMdVD4SBT/mucnBwYo6vlJJiQdTywah4dzPIsTemEx?=
- =?us-ascii?Q?PhAlY2ROCp1u/yPydukCajnTIIVMeHZztwEFDgMq34+kmgx5IaIKFQXToBSG?=
- =?us-ascii?Q?q8ql3LjoxElMucmD9j3fFp42Pj4XfPmKruVspgQUJF5+yPi1uggaFsq0e3c1?=
- =?us-ascii?Q?v5gSD49U51K64PyqCqM5uxa6ZqYHzUM5D/FOej6zTsFwcyQk09PgBWopOBmT?=
- =?us-ascii?Q?TpFrKmLlrom8cmqYx9Nn/BYClOXf49ufKHwmjbsJrPLn0g8+Xokqk0Q7VXSp?=
- =?us-ascii?Q?+vhQYfQeFW6xydEyg1g2Kwk0ADkAMFN3J2n5+bZHeyHn2UewgFGgZ4sdYQLM?=
- =?us-ascii?Q?HZs4Bwv0evNK6t8N1D+fwX07wihrEL2dP6GMYH0xEp5TMrtbR5ck+LfD5MGv?=
- =?us-ascii?Q?1Z8FE/8r3qmUCkSh2NOrbR24I9CwxQmd1y8H71yzBCoor6BmSvQp58XG1g6y?=
- =?us-ascii?Q?MYAfO0onCTJs86idLx+LeGgJ9U2kxzohgZ0p0DblZL13ns3XyQPcwlFneSO0?=
- =?us-ascii?Q?Iz0FPmeaTG4xcCStYwJeV5Yybt3eRF7d+XlN6TN+lpOBDubiWK5InCwqBq15?=
- =?us-ascii?Q?RRXl8cz+sEXuh2a3GI8XQKM5iMNFew0=3D?=
+X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?LKs4RL/Po9FUKBdwoGHN07a+B/HArp47ydRMpqHZRvq1/zIHsD9vRKXRywu2?=
+ =?us-ascii?Q?cKOlLc1jVScaqFiT6lCSKgqipxGzVhUOoETLIdIFS9NRUM3jToLEoYfFitUs?=
+ =?us-ascii?Q?544qA3W1jTVUdK9MXZ3x7WJfga4+2r0bm2LhtG1l+/BIUntrbvCJa9SJktZM?=
+ =?us-ascii?Q?lyWRsTNN7E+usFnrHK4ly4Zn5HoCVNCsQZI5wzi1BN+Iddh2HB+SZBvG/2/T?=
+ =?us-ascii?Q?gGd2ZN7sY7eK8ogsvT1XUSN/2eGtdqbWY8jpSx5Eb8uKvxq5KVOakbwcBdsf?=
+ =?us-ascii?Q?6MMIECj6pOP+7z2N6xU/YlJ8DG8pgHehxMYKpDJU122hnsEliqIVyePlEW/5?=
+ =?us-ascii?Q?oGzyawSlEPv16z2rpe/fup1dHRmYpFjrHC8HKQi7ml/iumFxa+TszAl/NnkU?=
+ =?us-ascii?Q?YpCBN0n5TgP2GTNA6et3DErMI3h0+jiGsE5GW1wN19bJntURMvgo+DQ2X3Nx?=
+ =?us-ascii?Q?lBjDj/Uh8gBtZjDq5LWr2R5Yc7Ki49MN92bFqPav3R/XebHxd6ZCoQuoeGXA?=
+ =?us-ascii?Q?S6hhk4+xDg9IUryQSRMcOIfJKAJNKvt8UQJKfUqJcDt3J6UA58oPQDxgqe4B?=
+ =?us-ascii?Q?6gVz893WHhCvFnQPTz+Cky220DgppkU+4iNFt8FAdSyQaAbL7iT45u20LVTc?=
+ =?us-ascii?Q?32lisCHH3P6Z02oVkkjRzhRNhE5De47ckQe7WSFK0Dt7yP/HfgLWTEROFweY?=
+ =?us-ascii?Q?6QxpDE3RuC1UIBw1jmNGx8ts/74BZOOevKiG+KNm/tJP1NJ+z8CRVbYptXjG?=
+ =?us-ascii?Q?v/L5t/jTmilqllkKqDiBnwwobojpLIQefuTC36HY+phYHB5iSGB3BhAvIwTf?=
+ =?us-ascii?Q?b7KKLMB6bgQ97DapQHf3SqLpryTZVJaXl5lKfFUCWsnlb9YDZZ393UmWbmEO?=
+ =?us-ascii?Q?ET3pVhqgYNHPOtXpxjRuwPrro6XjtF7CjB000brK07UQ4b0bH8Z/a1ig9LyG?=
+ =?us-ascii?Q?MZothf1zCoK0zb3+aSMUmNr3xci8sNmaBDPBJl+oQOmplNEpjDUOvVSOwXZF?=
+ =?us-ascii?Q?bXy4YW+x9gbgUZqJa5m/c16TlIZxivG1Xn4p/CDsP369tTDWqWLjQhjX3dCU?=
+ =?us-ascii?Q?4x4APmx4dqLIad1FZdoXVd3+IyUdbxM1WQVSt89uVPnbwjn19mMnaVU9fO2+?=
+ =?us-ascii?Q?nR+iYmdFnySvGm6b7xRUHYC94uxeVoFgIDql1bk1xwHWCPBtndTNEjRTrpl0?=
+ =?us-ascii?Q?Kqxn8qpFTAaRTTCl7ZOW52OvhLtO2yXujxei1KgXUTYbRfggjp6BiOKEBFCJ?=
+ =?us-ascii?Q?MNEbWN4odFMIp94vSf98quylpH+TR+le5lp7eqcbwFvmL96b4vKHkZZfZ55X?=
+ =?us-ascii?Q?FV8NG6TquuYlKkaTYkGj1Y0XRqGTlFlka6CNMDwI3ZZB2oT6+YBnZO3YT2eH?=
+ =?us-ascii?Q?zXCNWUGtvKgn/+CinciKcVnToSJfineA2rvsphHt570JFVEwT4DCvg6IKEzH?=
+ =?us-ascii?Q?ioYN7dvVmCGtQ7dyd8MekDZWHrqSyX5vnzuNLXYM63GwlGTJDXYGQqBoUHAq?=
+ =?us-ascii?Q?L8IPxIV8ku1mGI6IzdDourUbl2XceNfpvWduXsHSYiWEQcRAI3NGxcolo4aD?=
+ =?us-ascii?Q?8Kf+Bz6aRocJhoBaHDmcbvFWApa/HBrl25AbCktcTO/DkFX8aAe4vTVeCwvp?=
+ =?us-ascii?Q?dyveq3xX6pTQMX2AmrBC8E6S2lsf8MP5LqYALxdJP+Z2NN1L1iZQk92beK4e?=
+ =?us-ascii?Q?FcryO1HFnUK4+HYA74loIEfVVAFm9nEZTDMvSUjaoM+RCwm8ZbC40OQiYTzp?=
+ =?us-ascii?Q?1wMoC3AvBktRfSIClIwVTuwaLeepULo=3D?=
 X-OriginatorOrg: processmission.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 6040c5f1-ede0-423e-bbd4-08df09ae2a35
+X-MS-Exchange-CrossTenant-Network-Message-Id: 07e7a9b4-a66f-4af8-2eec-08df09ae3679
 X-MS-Exchange-CrossTenant-AuthSource: KL1PR02MB4977.apcprd02.prod.outlook.com
 X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 03 Sep 2026 11:26:14.8442 (UTC)
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 03 Sep 2026 11:26:35.4089 (UTC)
 X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
 X-MS-Exchange-CrossTenant-Id: e0544bf7-9765-4630-ab69-0b266dc2169c
 X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: 1b+InS8gvdlkQvk1LKNPdSqJYULj9TrHZgvk+hH5/CbI1z6XsHKSJ4Qvmq0y5qBMoP9fNnezpvsejhkQtL4pLqWbIiP96qn8BVDqpYZI33A=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: TYZPR02MB6358
-Received-SPF: pass client-ip=2a01:111:f403:c40f::6;
+X-MS-Exchange-CrossTenant-UserPrincipalName: P1Nzre0lunysz/InVNBkv/sd6ky6gzk0USAxglMjRCnZdHd2qZ+02yVO79aUIAc3axTidNoAnkfRaK7OABJcaDzW5nPNayK8L9UD1CJCjQk=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: OSNPR02MB8962
+Received-SPF: pass client-ip=2a01:111:f403:c405::5;
  envelope-from=bin.meng@processmission.com;
- helo=SEYPR02CU001.outbound.protection.outlook.com
+ helo=TYPPR03CU001.outbound.protection.outlook.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_PASS=-0.001,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_PASS=-0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -139,85 +141,66 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Add the E2000 SCP SRAM window used for SCMI messages and map the MHU
-doorbell into the board-control aperture.
+Instantiate the RNG in the shared E2000 machine initialization and map
+it over the placeholder.
 
 Signed-off-by: Bin Meng <bin.meng@processmission.com>
 ---
 
- hw/arm/phytium_e2000.c | 34 ++++++++++++++++++++++++++++++++++
- 1 file changed, 34 insertions(+)
+ hw/arm/phytium_e2000.c | 15 +++++++++++++++
+ 1 file changed, 15 insertions(+)
 
 diff --git a/hw/arm/phytium_e2000.c b/hw/arm/phytium_e2000.c
-index f586184e51..ff8dd3354b 100644
+index 32c2f23443..5dd91f662b 100644
 --- a/hw/arm/phytium_e2000.c
 +++ b/hw/arm/phytium_e2000.c
-@@ -26,6 +26,7 @@
- #include "hw/intc/arm_gicv3_common.h"
- #include "hw/intc/arm_gicv3_its_common.h"
+@@ -31,6 +31,7 @@
  #include "hw/misc/phytium_e2000_ddr.h"
-+#include "hw/misc/phytium_e2000_mhu.h"
+ #include "hw/misc/phytium_e2000_mhu.h"
+ #include "hw/misc/phytium_e2000_pbr.h"
++#include "hw/misc/phytium_e2000_rng.h"
  #include "hw/misc/unimp.h"
  #include "hw/net/cadence_gem.h"
  #include "hw/pci/pci.h"
-@@ -49,6 +50,9 @@ OBJECT_DECLARE_SIMPLE_TYPE(PhytiumE2000State, PHYTIUM_PI)
- #define PHYTIUM_E2000_NUM_UARTS       7
- #define PHYTIUM_E2000_NUM_GEMS        4
- 
-+#define PHYTIUM_E2000_MHU_BASE        0x32a00000
-+#define PHYTIUM_E2000_SCP_SRAM_BASE   0x32a10000
-+#define PHYTIUM_E2000_SCP_SRAM_SIZE   0x2000
- #define PHYTIUM_E2000_DDR_STATUS_BASE 0x32b33000
- 
- #define PHYTIUM_E2000_GTIMER_HZ       50000000
-@@ -90,6 +94,7 @@ struct PhytiumE2000State {
-     DeviceState *gic;
-     PhytiumE2000MciState *mci[PHYTIUM_E2000_NUM_MCIS];
-     CadenceGEMState *gem[PHYTIUM_E2000_NUM_GEMS];
-+    MemoryRegion scp_sram;
-     MemoryRegion ram_low;
-     MemoryRegion ram_high;
- };
-@@ -463,6 +468,33 @@ static void phytium_e2000_create_ddr_status(PhytiumE2000State *s)
+@@ -97,6 +98,7 @@ enum {
+     PHYTIUM_E2000_GEM1,
+     PHYTIUM_E2000_GEM2,
+     PHYTIUM_E2000_GEM3,
++    PHYTIUM_E2000_RNG_REGS,
+     PHYTIUM_E2000_PLATFORM_CTRL,
+     PHYTIUM_E2000_SECURITY_CTRL,
+     PHYTIUM_E2000_CHIP_CTRL,
+@@ -164,6 +166,7 @@ static const MemMapEntry phytium_e2000_memmap[] = {
+     [PHYTIUM_E2000_GEM1] =           { 0x3200e000, 0x00002000 },
+     [PHYTIUM_E2000_GEM2] =           { 0x32010000, 0x00002000 },
+     [PHYTIUM_E2000_GEM3] =           { 0x32012000, 0x00002000 },
++    [PHYTIUM_E2000_RNG_REGS] =       { 0x32a36000, 0x00001000 },
+     [PHYTIUM_E2000_PLATFORM_CTRL] =  { 0x32e40000, 0x00010000 },
+     [PHYTIUM_E2000_SECURITY_CTRL] =  { 0x32f00000, 0x00001000 },
+     [PHYTIUM_E2000_CHIP_CTRL] =      { 0x33000000, 0x00010000 },
+@@ -630,6 +633,17 @@ static void phytium_e2000_create_ddr_status(PhytiumE2000State *s)
      sysbus_mmio_map_overlap(sbd, 0, PHYTIUM_E2000_DDR_STATUS_BASE, 2);
  }
  
-+static void phytium_e2000_create_scp_sram(PhytiumE2000State *s)
++static void phytium_e2000_create_rng(PhytiumE2000State *s)
 +{
-+    /*
-+     * PBF exchanges SCMI messages and platform parameters through this SCP
-+     * SRAM window. Map writable RAM over the board-control placeholder before
-+     * the MHU doorbell starts completing requests in it.
-+     */
-+    memory_region_init_ram(&s->scp_sram, NULL, "phytium-e2000.scp-sram",
-+        PHYTIUM_E2000_SCP_SRAM_SIZE, &error_fatal);
-+    memory_region_add_subregion_overlap(get_system_memory(),
-+        PHYTIUM_E2000_SCP_SRAM_BASE, &s->scp_sram, 1);
-+}
-+
-+static void phytium_e2000_create_mhu(PhytiumE2000State *s)
-+{
-+    DeviceState *dev = qdev_new(TYPE_PHYTIUM_E2000_MHU);
++    DeviceState *dev = qdev_new(TYPE_PHYTIUM_E2000_RNG);
 +    SysBusDevice *sbd = SYS_BUS_DEVICE(dev);
 +
-+    /*
-+     * MHU is the notification side of the SCMI transport. The message body
-+     * remains in SCP SRAM, so this device only owns the doorbell aperture.
-+     */
-+    object_property_add_child(OBJECT(s), "mhu", OBJECT(dev));
++    object_property_add_child(OBJECT(s), "rng", OBJECT(dev));
 +    sysbus_realize_and_unref(sbd, &error_fatal);
-+    sysbus_mmio_map_overlap(sbd, 0, PHYTIUM_E2000_MHU_BASE, 2);
++    sysbus_mmio_map_overlap(sbd, 0,
++        phytium_e2000_memmap[PHYTIUM_E2000_RNG_REGS].base, 2);
 +}
 +
- static void phytium_e2000_create_unimplemented(void)
+ static void phytium_e2000_create_scp_sram(PhytiumE2000State *s)
  {
      /*
-@@ -582,6 +614,8 @@ static void phytium_pi_init(MachineState *ms)
-     phytium_e2000_create_cpus(s);
-     phytium_e2000_create_gic(s);
+@@ -842,6 +856,7 @@ static void phytium_e2000_init(MachineState *ms)
  
-+    phytium_e2000_create_scp_sram(s);
-+    phytium_e2000_create_mhu(s);
+     phytium_e2000_create_scp_sram(s);
+     phytium_e2000_create_mhu(s);
++    phytium_e2000_create_rng(s);
      phytium_e2000_create_ddr_status(s);
  
      for (i = 0; i < PHYTIUM_E2000_NUM_MCIS; i++) {

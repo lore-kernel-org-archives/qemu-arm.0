@@ -4,95 +4,96 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 81D0BC624A4
-	for <qemu-arm@archiver.kernel.org>; Thu,  3 Sep 2026 14:38:24 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 93200C624D6
+	for <qemu-arm@archiver.kernel.org>; Thu,  3 Sep 2026 14:47:18 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1x28Zw-0000og-B5; Thu, 03 Sep 2026 10:38:12 -0400
+	id 1x28i2-0002T1-PB; Thu, 03 Sep 2026 10:46:34 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1x28Zu-0000nJ-TX
- for qemu-arm@nongnu.org; Thu, 03 Sep 2026 10:38:10 -0400
-Received: from mail-ej1-x631.google.com ([2a00:1450:4864:20::631])
+ id 1x28i1-0002Sk-9B
+ for qemu-arm@nongnu.org; Thu, 03 Sep 2026 10:46:33 -0400
+Received: from mail-wm1-x32f.google.com ([2a00:1450:4864:20::32f])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1x28Zt-0001td-0R
- for qemu-arm@nongnu.org; Thu, 03 Sep 2026 10:38:10 -0400
-Received: by mail-ej1-x631.google.com with SMTP id
- a640c23a62f3a-c2531f453eeso361119066b.3
- for <qemu-arm@nongnu.org>; Thu, 03 Sep 2026 07:38:08 -0700 (PDT)
+ id 1x28hP-0004sT-BQ
+ for qemu-arm@nongnu.org; Thu, 03 Sep 2026 10:46:32 -0400
+Received: by mail-wm1-x32f.google.com with SMTP id
+ 5b1f17b1804b1-49b9320423cso25085985e9.0
+ for <qemu-arm@nongnu.org>; Thu, 03 Sep 2026 07:45:54 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1788446286; x=1789051086; darn=nongnu.org;
+ d=linaro.org; s=google; t=1788446753; x=1789051553; darn=nongnu.org;
  h=content-transfer-encoding:content-type:mime-version:message-id:date
  :user-agent:references:in-reply-to:subject:cc:to:from:from:to:cc
  :subject:date:message-id:reply-to:content-type;
- bh=b4dfJ/+buXqwCV6OULOBqSK2R5P74SiM8Tme8QzB/xg=;
- b=xdhKmKnziZsZTPBiY7W2rMZvoQ3ULwY9hKAFNc6lgsuULrgGbM2wDEnPpYQnOYbFPI
- uIAzUfmWNFZ4CGys5q1iH7zu9t3LRHaiYoJSMyJ2fqz8HPcIZxUEJgkCHiUt/xq/hleZ
- szUg5p/0tEgiLc1/SkDvmWAPNQkZTa3HNwl8QDKzAgOlgAA/2MLQcr+k2ty1qVIp7TjM
- wED/Al7FzDE85kXjcR1MJEl66reUmlIA8jv3Xm+rljAyQrq1BXE+/+qor8HAq4yR9eKZ
- PMuloclK8Qry6Daet+jF9mBQHvPiovbT8RTQn5uzjgi+XH/2yL8uYgRM59//U5Ls8VB5
- YZvw==
+ bh=z4mcTa20Q6K/eSAXdcv86SfpDZEirfKuPAnuP96c43s=;
+ b=c/AMuRyC9lQsm03yObIgK1NgVstB5KSI80+otqOtScfSpbqKYie3jEWqEyDozb1bvO
+ lCk+Xi/qGs6UYAwopT+V9xC/Pgp660rwyCrVFjiK6R0uwDvnddi+fWSyeAfgIuMmfLb1
+ jMr33pfAndLeESy+viFOmJgBPZA24Uvf5wxDFzRk4pKHWYsUZD+FfSX/VnliFc9PexFM
+ /nMtNe7NARwf5P5Vog9sraJMeITWDSUqk2a6r375TJJOwcvww8gO9CXnFZPeVvVAajJA
+ cbybtX0WmGKsRr5nuHAUsnKgncLAyolPRoAds9wnm4+X954Nmmd0jCDx1vKoMp7WGUqz
+ mrkA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1788446286; x=1789051086;
+ d=1e100.net; s=20251104; t=1788446753; x=1789051553;
  h=content-transfer-encoding:content-type:mime-version:message-id:date
  :user-agent:references:in-reply-to:subject:cc:to:from:x-gm-gg
  :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
  :content-type;
- bh=b4dfJ/+buXqwCV6OULOBqSK2R5P74SiM8Tme8QzB/xg=;
- b=BxzV0QLepLqqY5kK3y3joaEIRO0Hz/6IgvqIvdOjZelu3XGDUYXviuuWdi5RkStTCF
- UNzk6XSys5tyzVLftUW+24+BAVy+fL8pQCpw6V1pmFQGey8B9OVVRRNrBTxWzpoahPxe
- cwGLUGfR2GQzc4ByM5Q4we78tdg04ASr/qHgCph0sEDAbYogqVSUQ+e704IPqblP1kbe
- xSu9KEwie73/xr+Ab44iRjlTda2538PtwmwVUGbS6C/HrBKs/nhZngA/oLtDNwLM6oAQ
- 78gsLGHfg70tisv7ASMyvlQDtYDlucE5fVjcwQAuQFQq4yJ1IeTLzlktt0Cqfv3FLvxB
- WGUg==
+ bh=z4mcTa20Q6K/eSAXdcv86SfpDZEirfKuPAnuP96c43s=;
+ b=PHnN1yovyIQcbNMpBRacvV759HRHoUfl/ucDfA7B5qA0EEfCpSlWpq7iSVUIROL5js
+ F0LL7dFzZQGuTOw5WcZCINSy5nEnMufIAM2jihIZVCWHxexOKts1Md0/9PzZmoopvV3I
+ sQRXxvuymdoBDt9Z0gR+CX0KibbCXknhvLMwFVp3XpAhpFpqQfdhlDfQzGW1Nx3OqtOE
+ S794DHln2hkZlEydIE2/+hXoOnoArEQ0XpT/9GuSkOzPke3I060ADd/JOVidLdq1Sgrj
+ ry5QclXjecZ4sxnhPotHlS2AlTlAnJUZf/3mjPYPmt34C2ZkBTeYeLnjunt8AdG41ivw
+ t4LQ==
 X-Forwarded-Encrypted: i=1;
- AKwUvBy/tLdph26s0hodt6bmrxcxkRWORQoqeoMQGqSMf+IAzD6A0zP1/wkX/S/OhT8GYch4Lol/6dnJ2w==@nongnu.org
-X-Gm-Message-State: AFuF++k1Zwy1OPcnWSnLWikOoPqyXt1Pm+1js+Friqqe3PhGP2E2C2km
- oJH8EgpJnMyuE51dtcHWMwavlKJNAhreciyy4gNoOSR8HcSvykNZXXKJa/Tpd7cjUWY=
-X-Gm-Gg: AYBFou2Z1n5jncE2U0qAQ4XiuI9rkjei1aunKPNF0Q0gFq52AN0Nwu8871A7Ptl9WVJ
- /nrA3EpL4AgQa3FIeMg1sattRxgz/e0erTite2AI/qZssOEoe+PyuQJCIyLp/ZiIz4fagmk9XvP
- 6xwmc8xdC0CwUVEgSk684vq3eOSQPYQGhyZtVZVKljGuQJteVwcP0Va4yw5q20BAaRADwJNFg93
- d+kYt9dyuIOPjH+OEcPCT3slQyh5qIpfPaymKmH7mnby/eVDc+/hUPzK9eYHOjmRsLxGPkWt0pM
- /8p2mU9SgwkkKxC/HqceTA5FG2HIKY030qZn/LlgPs8Trg2sdf6WsxNkO2+IMYiKTld83cTcULZ
- 48xzn1i/5C7cUe9dEMXcU9CDs/WktEgCwHwiem9loWk2N2itlNqtlFPWX26vraD1EXyZhT4FV5a
- ObuMKj1BV2J489VqEiyEWTOMOxnCT3fUUKQ5tIXBrc2qEiXEgMuI8WLCy4wPTC
-X-Received: by 2002:a17:906:478a:b0:c08:417e:3696 with SMTP id
- a640c23a62f3a-c25d554d729mr805539266b.20.1788446286253; 
- Thu, 03 Sep 2026 07:38:06 -0700 (PDT)
+ AKwUvBx6E90Dz1j/xufBsViXo0YEYtAke7zvjFBG9yCFbgZpZzUtWil0Q8P0FWxX9soV5TBH+d75qDNI2g==@nongnu.org
+X-Gm-Message-State: AFuF++lstRYabegoxPHSgof308sIHcJioc2xLLoT/8hvrgfBwknC11mn
+ Q3isffVjdxiwcSqJSKZBRbtgQSLqqCjYjbbl3awLjAWuVMFCx5GucTdZQnACiPR5mqzwU04Wf8s
+ bOLF5phE=
+X-Gm-Gg: AYBFou2M5eewAXxjuS5rKvb6fdZf53jHN8t9crkSuVoOr6OfwqDEV2rLuZZtMzhC2Bt
+ QHQorV+vsr414iwGMagX38sVRUL7t7tDL+DsiS7GkboqT+4NRG/FiWVLVBt+fN73WLEsxfZimkj
+ wEtg3gXrhEma2fiRntyToMtTbEu1qrq0lqveW8wmPP4xHTmNPz0BByvGfCNd2BIAyKQX561smU0
+ 6A7dpg/chXJldBmAx5VC4iH/UtaWqk/84d3DAmVbwndMO3kzEkaBvbcELLWlJV/NedYkRALR9hd
+ L7ztU8eqzkznmIIXoqI4TmkCZOk9EJytSoPHAkvER+a7/f+lmG7ng1JGae7YUz7cQfBhIIieHSN
+ loO6YgCVdhBraapS7J2SOas+fV4rFPIkSlGC8dJn/Atkbc/C3QgYx3ZO9+9TaTGCwBIKtysLBav
+ yFXdpASmYukrgrfUQ4yIYULT6sOIfHjHPWQHUIfvmCu2UqOzKQWAVXMg4HW5La
+X-Received: by 2002:a05:600c:83c8:b0:49c:d52e:d0ea with SMTP id
+ 5b1f17b1804b1-49ce581779dmr243106045e9.4.1788446753379; 
+ Thu, 03 Sep 2026 07:45:53 -0700 (PDT)
 Received: from draig.lan ([185.124.0.156]) by smtp.gmail.com with ESMTPSA id
- a640c23a62f3a-c25f4172032sm107674766b.22.2026.09.03.07.38.05
+ 5b1f17b1804b1-49cee5f914bsm92364115e9.3.2026.09.03.07.45.51
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 03 Sep 2026 07:38:05 -0700 (PDT)
+ Thu, 03 Sep 2026 07:45:51 -0700 (PDT)
 Received: from draig (localhost [IPv6:::1])
- by draig.lan (Postfix) with ESMTP id 3FFD05F8FD;
- Thu, 03 Sep 2026 15:38:04 +0100 (BST)
+ by draig.lan (Postfix) with ESMTP id B664D5F8FD;
+ Thu, 03 Sep 2026 15:45:50 +0100 (BST)
 From: =?utf-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: Bin Meng <bin.meng@processmission.com>
 Cc: QEMU <qemu-devel@nongnu.org>,  Peter Maydell <peter.maydell@linaro.org>,
  qemu-arm@nongnu.org
-Subject: Re: [PATCH 32/33] tests/functional/aarch64: Add Phytium Pi boot tests
-In-Reply-To: <20260903112532.3276678-33-bin.meng@processmission.com> (Bin
- Meng's message of "Thu, 3 Sep 2026 19:25:12 +0800")
+Subject: Re: [PATCH 01/33] target/arm: Add Phytium FTC310 and FTC664 CPU models
+In-Reply-To: <20260903112532.3276678-2-bin.meng@processmission.com> (Bin
+ Meng's message of "Thu, 3 Sep 2026 19:24:41 +0800")
 References: <20260903112532.3276678-1-bin.meng@processmission.com>
- <20260903112532.3276678-33-bin.meng@processmission.com>
+ <20260903112532.3276678-2-bin.meng@processmission.com>
 User-Agent: mu4e 1.14.4-pre1; emacs 30.1
-Date: Thu, 03 Sep 2026 15:38:04 +0100
-Message-ID: <87y0dipfhv.fsf@draig.linaro.org>
+Date: Thu, 03 Sep 2026 15:45:50 +0100
+Message-ID: <87se3qpf4x.fsf@draig.linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2a00:1450:4864:20::631;
- envelope-from=alex.bennee@linaro.org; helo=mail-ej1-x631.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::32f;
+ envelope-from=alex.bennee@linaro.org; helo=mail-wm1-x32f.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -110,148 +111,150 @@ Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
 Bin Meng <bin.meng@processmission.com> writes:
 
-> The Phytium Pi machine supports both the board firmware flow from SD
-> and direct Linux boot. Exercise both paths with an SDK image bundle so
-> firmware handoff and kernel loading regressions are caught.
+> The Phytium E2000Q combines two FTC310 cores and two FTC664 cores.
+> Its EL3 firmware accesses implementation-defined system registers
+> while setting up the cores. Using generic Cortex-A72 CPUs leaves
+> these registers undefined and traps firmware before it can reach
+> U-Boot.
 >
-> Verify U-Boot, PBF relocation, the Linux handoff, and login for the
-> firmware path. The Linux test loads the bundled kernel, DTB, and
-> initramfs and waits for the same login prompt.
+> Add FTC310 and FTC664 CPU types using Cortex-A72 as their common
+> execution base. Provide conservative RAZ/WI and NOP stubs for the
+> firmware-visible E2000 controls that have no modeled behavior.
+>
+> Set each CPU DT compatible string, MIDR, instruction feature fields,
+> AArch32 floating-point feature fields, and CTR_EL0.L1Ip field to
+> values observed on an E2000Q board. The FTC310 reports a VIPT
+> instruction cache, while the FTC664 reports a PIPT instruction cache.
 >
 > Signed-off-by: Bin Meng <bin.meng@processmission.com>
 > ---
 >
->  tests/functional/aarch64/meson.build        |  2 +
->  tests/functional/aarch64/test_phytium_pi.py | 77 +++++++++++++++++++++
->  2 files changed, 79 insertions(+)
->  create mode 100644 tests/functional/aarch64/test_phytium_pi.py
+>  target/arm/tcg/cpu64.c | 81
+>  ++++++++++++++++++++++++++++++++++++++++++
+
+I wonder if cpu64 is the best place to model this? The alternative is to
+treat it like other SoCs (e.g. the Pi's BCM SoCs). Was the reason it
+ended up here because you needed access to aarch64_a72_initfn? Could you
+not instantiate:
+
+    soc_base->cpu_type =3D ARM_CPU_TYPE_NAME("cortex-a72");
+=20=20=20=20
+and then at realize:
+
+    object_initialize_child(OBJECT(dev), "cpu[*]", &s->cpu[n].core,
+                                soc_base->cpu_type);
+
+or does that not allow for tweaking the CP regs?
+
+
+>  1 file changed, 81 insertions(+)
 >
-> diff --git a/tests/functional/aarch64/meson.build b/tests/functional/aarc=
-h64/meson.build
-> index f0881bed16..71bf45e4ea 100644
-> --- a/tests/functional/aarch64/meson.build
-> +++ b/tests/functional/aarch64/meson.build
-> @@ -7,6 +7,7 @@ test_aarch64_timeouts =3D {
->    'device_passthrough' : 720,
->    'imx8mm_evk' : 240,
->    'imx8mp_evk' : 240,
-> +  'phytium_pi' : 600,
->    'raspi4' : 480,
->    'reverse_debug' : 180,
->    'rme_virt' : 1200,
-> @@ -39,6 +40,7 @@ tests_aarch64_system_thorough =3D [
->    'imx8mp_evk',
->    'kvm',
->    'multiprocess',
-> +  'phytium_pi',
->    'raspi3',
->    'raspi4',
->    'replay',
-> diff --git a/tests/functional/aarch64/test_phytium_pi.py b/tests/function=
-al/aarch64/test_phytium_pi.py
-> new file mode 100644
-> index 0000000000..4ae0392bdd
-> --- /dev/null
-> +++ b/tests/functional/aarch64/test_phytium_pi.py
-> @@ -0,0 +1,77 @@
-> +#!/usr/bin/env python3
-> +#
-> +# Functional tests for the Phytium Pi machine
-> +#
-> +# Copyright (c) 2026 Process Mission
-> +#
-> +# Author:
-> +#   Bin Meng <bin.meng@processmission.com>
-> +#
-> +# SPDX-License-Identifier: GPL-2.0-or-later
+> diff --git a/target/arm/tcg/cpu64.c b/target/arm/tcg/cpu64.c
+> index affd87a3ae..0fd2f79bbc 100644
+> --- a/target/arm/tcg/cpu64.c
+> +++ b/target/arm/tcg/cpu64.c
+> @@ -336,6 +336,85 @@ static void aarch64_a72_initfn(Object *obj)
+>      define_cortex_a72_a57_a53_cp_reginfo(cpu);
+>  }
+>=20=20
+> +static const ARMCPRegInfo phytium_e2000_cp_reginfo[] =3D {
+> +    /*
+> +     * The E2000 EL3 firmware touches implementation-defined CPU registe=
+rs
+> +     * during the PBF/BL1 cache and core setup. QEMU does not model these
+> +     * controls, so expose conservative RAZ/WI stubs for the boot firmwa=
+re.
+> +     *
+> +     * PBF reads these identification and cluster controls after writing
+> +     * them. Returning zero preserves the reset state without claiming t=
+hat
+> +     * QEMU implements the associated cache or coherency controls.
+> +     */
+> +    { .name =3D "E2000_CPUID_CTL1", .state =3D ARM_CP_STATE_AA64,
+> +      .opc0 =3D 3, .opc1 =3D 1, .crn =3D 15, .crm =3D 1, .opc2 =3D 0,
+> +      .access =3D PL1_RW, .type =3D ARM_CP_CONST | ARM_CP_NO_RAW,
+> +      .resetvalue =3D 0 },
+> +    { .name =3D "E2000_CLUSTER_CTL", .state =3D ARM_CP_STATE_AA64,
+> +      .opc0 =3D 3, .opc1 =3D 1, .crn =3D 11, .crm =3D 8, .opc2 =3D 6,
+> +      .access =3D PL1_RW, .type =3D ARM_CP_CONST | ARM_CP_NO_RAW,
+> +      .resetvalue =3D 0 },
+> +    /*
+> +     * The remaining controls are only programmed as part of firmware se=
+tup.
+> +     * Accept the writes without retaining state because no modeled CPU
+> +     * behavior depends on their values.
+> +     */
+> +    { .name =3D "E2000_EL1_CTL", .state =3D ARM_CP_STATE_AA64,
+> +      .opc0 =3D 3, .opc1 =3D 2, .crn =3D 15, .crm =3D 15, .opc2 =3D 0,
+> +      .access =3D PL1_RW, .type =3D ARM_CP_NOP | ARM_CP_NO_RAW },
+> +    { .name =3D "E2000_EL2_CTL", .state =3D ARM_CP_STATE_AA64,
+> +      .opc0 =3D 3, .opc1 =3D 4, .crn =3D 15, .crm =3D 15, .opc2 =3D 0,
+> +      .access =3D PL2_RW, .type =3D ARM_CP_NOP | ARM_CP_NO_RAW },
+> +    { .name =3D "E2000_EL2_CTL2", .state =3D ARM_CP_STATE_AA64,
+> +      .opc0 =3D 3, .opc1 =3D 4, .crn =3D 15, .crm =3D 2, .opc2 =3D 4,
+> +      .access =3D PL2_RW, .type =3D ARM_CP_NOP | ARM_CP_NO_RAW },
+> +    { .name =3D "E2000_EL3_CTL", .state =3D ARM_CP_STATE_AA64,
+> +      .opc0 =3D 3, .opc1 =3D 6, .crn =3D 15, .crm =3D 15, .opc2 =3D 0,
+> +      .access =3D PL3_RW, .type =3D ARM_CP_NOP | ARM_CP_NO_RAW },
+> +};
 > +
-> +from qemu_test import Asset, LinuxKernelTest
-> +from qemu_test import skipBigDataTest, skipIfMissingCommands
+> +/*
+> + * Use the Cortex-A72 execution model as the common E2000 TCG base, then
+> + * replace the architected identity fields that differ between the two
+> + * physical core types.
+> + */
+> +static void aarch64_phytium_e2000_base_initfn(Object *obj)
+> +{
+> +    ARMCPU *cpu =3D ARM_CPU(obj);
 > +
+> +    aarch64_a72_initfn(obj);
+> +    define_arm_cp_regs(cpu, phytium_e2000_cp_reginfo);
+> +}
 > +
-> +class PhytiumPiMachine(LinuxKernelTest):
+> +static void aarch64_phytium_ftc310_initfn(Object *obj)
+> +{
+> +    ARMCPU *cpu =3D ARM_CPU(obj);
+> +    ARMISARegisters *isar =3D &cpu->isar;
 > +
-> +    ASSET_BUILDROOT =3D Asset(
-> +        ('https://github.com/processmission/qemu-machine-images/releases=
-/'
-> +         'download/v1.0.0/aarch64-phytium-pi-v1.0.0.tar.zst'),
+> +    aarch64_phytium_e2000_base_initfn(obj);
 > +
-> '5219d52b862e1245b12f79ba72e9a6144f5e0cf1a50061f8fda2db0aeeb92428')
-
-Nice ;-)
-
-I've been looking into something similar to make it easy to set up
-github projects that can build and host test assets:
-
-  https://github.com/stsquad/buildroot-asset
-
-although my builds seem to take quite a bit longer that yours.
-
-I wonder if there is a way to have a common repository set up but in a
-way that the forks can just build their own images. Either that or a
-core repository which everyone just forks adds their device and merges.
-
-Anyway, test looks sane:
-
-Reviewed-by: Alex Benn=C3=A9e <alex.bennee@linaro.org>
-
+> +    /* FTC310 cores identify with the FTC303 part number */
+> +    cpu->dtb_compatible =3D "phytium,ftc310";
+> +    cpu->midr =3D 0x700f3034;
+> +    SET_IDREG(isar, ID_AA64ISAR0, 0x00011100012120);
+> +    cpu->isar.mvfr0 =3D 0x10110222;
+> +    cpu->ctr =3D FIELD_DP64(cpu->ctr, CTR_EL0, L1IP, 2); /* VIPT */
+> +}
 > +
-> +    def _prepare_images(self):
-> +        self.set_machine('phytium-pi')
+> +static void aarch64_phytium_ftc664_initfn(Object *obj)
+> +{
+> +    ARMCPU *cpu =3D ARM_CPU(obj);
+> +    ARMISARegisters *isar =3D &cpu->isar;
 > +
-> +        archive_path =3D self.uncompress(
-> +            self.ASSET_BUILDROOT,
-> +            target=3D'aarch64-phytium-pi-v1.0.0.tar',
-> +            format=3D'zstd')
-> +        self.archive_extract(archive_path, format=3D'tar')
+> +    aarch64_phytium_e2000_base_initfn(obj);
 > +
-> +        self.vm.set_console(console_index=3D1)
-> +        self.vm.add_args('-smp', '4',
-> +                         '-m', '4G',
-> +                         '-display', 'none',
-> +                         '-nic', 'none',
-> +                         '-no-reboot')
+> +    cpu->dtb_compatible =3D "phytium,ftc664";
+> +    cpu->midr =3D 0x701f6643;
+> +    SET_IDREG(isar, ID_AA64ISAR0, 0x00000100012120);
+> +    cpu->isar.mvfr0 =3D 0x10111222;
+> +    cpu->ctr =3D FIELD_DP64(cpu->ctr, CTR_EL0, L1IP, 3); /* PIPT */
+> +}
 > +
-> +    @skipIfMissingCommands('zstd')
-> +    @skipBigDataTest()
-> +    def test_firmware_boot(self):
-> +        self._prepare_images()
-> +        sdcard =3D self.scratch_file('images', 'sdcard.img')
-> +
-> +        self.vm.add_args(
-> +            '-snapshot',
-> +            '-drive', f'file=3D{sdcard},format=3Draw,if=3Dsd,index=3D0')
-> +        self.vm.launch()
-> +
-> +        self.wait_for_console_pattern('U-Boot 2022.01')
-> +        self.wait_for_console_pattern('PBF relocate done')
-> +        self.wait_for_console_pattern('Starting kernel ...')
-> +        self.wait_for_console_pattern('Phytium login:')
-> +
-> +    @skipIfMissingCommands('zstd')
-> +    @skipBigDataTest()
-> +    def test_linux_boot(self):
-> +        self._prepare_images()
-> +        kernel =3D self.scratch_file('images', 'Image.gz')
-> +        dtb =3D self.scratch_file('images', 'phytiumpi_firefly.dtb')
-> +        initrd =3D self.scratch_file('images', 'rootfs.cpio.gz')
-> +
-> +        self.vm.add_args(
-> +            '-kernel', kernel,
-> +            '-dtb', dtb,
-> +            '-initrd', initrd,
-> +            '-append', 'console=3DttyAMA1,115200 '
-> +                       'earlycon=3Dpl011,mmio32,0x2800d000 rdinit=3D/ini=
-t')
-> +        self.vm.launch()
-> +
-> +        self.wait_for_console_pattern('Booting Linux on physical CPU')
-> +        self.wait_for_console_pattern('Machine model: Phytium Pi Board')
-> +        self.wait_for_console_pattern('Phytium login:')
-> +
-> +
-> +if __name__ =3D=3D '__main__':
-> +    LinuxKernelTest.main()
+>  static void aarch64_a76_initfn(Object *obj)
+>  {
+>      ARMCPU *cpu =3D ARM_CPU(obj);
+> @@ -1533,6 +1612,8 @@ static const ARMCPUInfo aarch64_cpus[] =3D {
+>      { .name =3D "cortex-a55",         .initfn =3D aarch64_a55_initfn },
+>      { .name =3D "cortex-a72",         .initfn =3D aarch64_a72_initfn },
+>      { .name =3D "cortex-a76",         .initfn =3D aarch64_a76_initfn },
+> +    { .name =3D "phytium-ftc310",     .initfn =3D aarch64_phytium_ftc310=
+_initfn },
+> +    { .name =3D "phytium-ftc664",     .initfn =3D aarch64_phytium_ftc664=
+_initfn },
+>      /*
+>       * The Cortex-A78AE differs slightly from the plain Cortex-A78. We d=
+on't
+>       * currently model the latter.
 
 --=20
 Alex Benn=C3=A9e

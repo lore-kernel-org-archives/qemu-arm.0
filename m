@@ -4,70 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B1A5EC61DD3
-	for <qemu-arm@archiver.kernel.org>; Thu,  3 Sep 2026 19:39:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D8A2CC624DE
+	for <qemu-arm@archiver.kernel.org>; Thu,  3 Sep 2026 19:39:13 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1x2DEm-0001Ta-Re; Thu, 03 Sep 2026 15:36:40 -0400
+	id 1x2DF2-0001iy-Mq; Thu, 03 Sep 2026 15:36:56 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mathieu.poirier@linaro.org>)
- id 1x2DEl-0001SI-9b
- for qemu-arm@nongnu.org; Thu, 03 Sep 2026 15:36:39 -0400
-Received: from mail-pg1-x52b.google.com ([2607:f8b0:4864:20::52b])
+ id 1x2DF1-0001cy-2i
+ for qemu-arm@nongnu.org; Thu, 03 Sep 2026 15:36:55 -0400
+Received: from mail-pj1-x102d.google.com ([2607:f8b0:4864:20::102d])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <mathieu.poirier@linaro.org>)
- id 1x2DEj-0004E6-A5
- for qemu-arm@nongnu.org; Thu, 03 Sep 2026 15:36:39 -0400
-Received: by mail-pg1-x52b.google.com with SMTP id
- 41be03b00d2f7-cc1cb472b76so325531a12.0
- for <qemu-arm@nongnu.org>; Thu, 03 Sep 2026 12:36:36 -0700 (PDT)
+ id 1x2DEz-0004Pt-Jv
+ for qemu-arm@nongnu.org; Thu, 03 Sep 2026 15:36:54 -0400
+Received: by mail-pj1-x102d.google.com with SMTP id
+ 98e67ed59e1d1-39927410578so273312a91.1
+ for <qemu-arm@nongnu.org>; Thu, 03 Sep 2026 12:36:53 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1788464196; x=1789068996; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:from:to:cc:subject:date
- :message-id:reply-to:content-type;
- bh=HmGpSn5np7qxh7tTF9vO+IGJge7cylIvjl4owtZOfJ8=;
- b=TuSsFzMmZw8CoY4B0GVJzdwt/eZGCCnUHMz+iU+b0rsWyhituhYQ5mhRFNMm6lzY36
- tE56Yu3Wwpu0b5at4/zogiCM9G5S70RIbVf/agvAzCDCRJ5f9jqcYnUy8Rj1Qr9kscsE
- qM4VBSj4g/hZCl1WnkKWXBIEuh3qGa9Au77OvtzaHoLqW6U0jggzOKW9V9Z9FBR6YsX3
- ddA2UGs2CL3LjGkczScYc2YvlGerLjElRUvPfVY8LTYPP1LukX0ev5NgVr8V1WcnCwg9
- 6VBnRIBTMTiOwbcXBxDQ0drCXXqjsMmyPvwgFir/btqd6B00wYRrkf53U8TwmL68xCek
- ljCQ==
+ d=linaro.org; s=google; t=1788464212; x=1789069012; darn=nongnu.org;
+ h=content-transfer-encoding:content-type:mime-version:references
+ :in-reply-to:message-id:date:subject:cc:to:from:from:to:cc:subject
+ :date:message-id:reply-to:content-type;
+ bh=osGTHClTLaBLi3JCE0COpcCCRCh2Va5dTzvXjc97G4M=;
+ b=So5Pf7G+LgLVTNZwsLenRxfkN3wO0OHsQXlgvlL353yZ4/PL4ME3+3Aw/M0zeqcdbO
+ vX/JO09aMalbGTy//r0bK3u/H1rMr3T0hHZ6bzH+8Pl4HRP/Y9VhJJnP7CikRfGTiGka
+ LCCV5ImZX/0SHrkzNf2cSi2gOCmpAxoL9Gcvqr3emow+XMThDnNLlwytlYjvVMpO4AFe
+ XoSwotPmMQo8dF4YiuqYcac6DFoKPpx0RywN2yrIloxbSGgjbfcHCqxY1ANIctgiW2fE
+ Hvs8/IEea3JhvVn4KD2UZQPjvSdFTYoWIIUPYYl02+SqyNgF4IF63K2iyz8so1A1Z0k6
+ O3Lw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1788464196; x=1789068996;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
- :to:cc:subject:date:message-id:reply-to:content-type;
- bh=HmGpSn5np7qxh7tTF9vO+IGJge7cylIvjl4owtZOfJ8=;
- b=D6jtA8jVXt+wa1e+SpJUaxVVbCLTkgN+/IZMz4Ewg0qXIPN3WdhgVBOaYxekuxDL4E
- SPmm/Xp3Hzt3jfPERF08sPS5EMzCg7yhrrJaQbyXj3TR3z2F+coUkDZKz87V37GjXtBk
- hWp89VL96/ydbnW1Rtve07d43zNzlMzcZSVQ0+kMnJIIdjJBKFGMP/dvRAXcniBB0f8Z
- c4f3R4XMNT1dRQ/2a9fGjKZ9czZK8uCoKuhKzPnaPnV5k5bpBYPVaUsmPMc7MtTNgNrk
- IB3TN4bBYchyTATOIvsuLdzf6nk0cgNdWTxJX03HyDxSo21MVPbvL3DME5twClX8C7Vq
- oCJQ==
+ d=1e100.net; s=20251104; t=1788464212; x=1789069012;
+ h=content-transfer-encoding:content-type:mime-version:references
+ :in-reply-to:message-id:date:subject:cc:to:from:x-gm-gg
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
+ :content-type;
+ bh=osGTHClTLaBLi3JCE0COpcCCRCh2Va5dTzvXjc97G4M=;
+ b=WQewrWxr+nqz7oe/QLpy9OD/fTuMtqiSkQGRZ+85YDE0U+skGSN6hWeC7Ap+GT4TB6
+ atIWE7ck9ygbp6ufxuyfC0AH7+atWPPDvPtyNOIE3cSoS4zo9KRd3nDMI64a+ti5hyKa
+ GWZi0FG1r38Yx850ZEu4nV3xQ6u/K/06KcqfoHTkbYRUnkJ0vLdaBhY4vKVo5mZ3JC4j
+ /tvVVcKdQH+6S3lu3w8YIu9lTqEsyyI5ukEJrBPZow6JNadsXxyntBx/mmYEpKnyVKuT
+ 4SCFJK05j4c0G728oGgkqx/GgzvYPmHuPeayN4PsjJlzPwzt//c8tIWhlYmVCfqfN+9D
+ FHVw==
 X-Forwarded-Encrypted: i=1;
- AKwUvBzgjAG36GhZOlMjYKIXi7QsshRiRusHa/cuQFhXFXK9b2amjHAXs3B3NBt9mksGLVMjeUdEdATASg==@nongnu.org
-X-Gm-Message-State: AFuF++li8L8tgU3RGjbsGR1og5SjpQKbH7mlo16mXhG7hbypdXmvZ8+q
- Iii+GhCTTeDhmEUKQno0EDN5ka0/uL3/dAKeaBaYeueXKvZom99qq0Ze8URYJKLET8U=
-X-Gm-Gg: AYBFou2870weFxopjGt1n6bAxTohMd9D6ADjozeI/qp1P49DhAAX7yH07hoVRbIW5sj
- nPEIiOeO6IxQZzVLVSTCCgkp6Ywtiw0WRuVPlJGnK0UPWMdZWZOHXdox07PUfWqBIZpcVpz2fkQ
- w5jh/jPcmFefxAZB+2xrJ5dfFxvGPEgmabdyZPze3baft57mbkDQUna0oyBPGtTUTXr/qWoY23j
- NbRN593MrTpP6JRTAK49AcyM1sZUPBdfCV2V2Yn/Z7+4LBu7omAc7USZMY+OpiY8QleUSVTWuZa
- A1lRcKaVLysqKyYiFHZ2GcCe1euyJ8Ut6HROXxpFdnAbvHDakKgq894Gy2Qskhl2qYt3VsuFwXq
- 9beylcD7j+gxxEmQNo5VGGlDQsHoxJg0dkhuT6R+1+fIlDyWPMWhRIm0wSjw8LsqfKVwhoBGusz
- gRw+mSN9igwOrFLXjJSyp19grHJYveeMA8y7LJ1iDsEjQ7UwWtpHYesjQpjUi8t3HYHHzbetS8d
- Td6jn7/KfUTgYI=
-X-Received: by 2002:a17:90a:ec8d:b0:38e:67e1:15b with SMTP id
- 98e67ed59e1d1-39b261002f5mr1254010a91.6.1788464195615; 
- Thu, 03 Sep 2026 12:36:35 -0700 (PDT)
+ AKwUvBy60M0d4TQ6z89RzCRUc/U6vRNggW+ELH79e/z/MGz/xskeavvclJtfu0Rn5Z1RipLN0rmT7kKkLQ==@nongnu.org
+X-Gm-Message-State: AFuF++mjP3eDo6diCfLXUPCzCzZ+L75uTcsqGlqs3tlHwc8AQa0sU2J7
+ wvEacze9T2Os/7m1JX1RtGAPUMwCyItWsbl2RozEn92Lb8rIAX9vLTlvc/m6iL2rCtw=
+X-Gm-Gg: AYBFou0AdVas4g1b0BLrZAi5tyOWcN3kfDI9tHz/WrjVVN3NYyyn/0dw4b/DYvnLWzo
+ 00Ba5F9T6MQKnmwJ9V/J3ot8avyywkTA2AMA5nT2kDjZAQhAdIslL6z/o0YEzLNx7yTOrd9TNz+
+ bXcsO635i4yGRlihXIMSpu1WeRxBmwOGNhvoSm4we9ej3Hf5RrOzCdceAd9ZOiiS+RAUhIBuHX8
+ GTU/zImgbiYwbZgLDS3Vq4xONJfIjRZEr/aROu+8d/6ebE6i2DmK1n83kfb9nWFupdkiqWtN8pM
+ EX3m1Il+/+rpOZOHbwMyc0Yhyjx4uGpFjyPbmTeT2S7m/pU1lHJ3p6J478TvsZ7Rfl70cmsAdvT
+ Lzaw40bsq3atR7DDpYqLKg/v1BBJNe8TT83PDNC4m70bAqrKS9ICkqs29/+t2LI8YUSkadddiKN
+ LvVHKZgTzoRLqWzZcMiaBZyxhEcg/pItwyk1AIAcAhmXAuoR3+Yu9tOu7Mk2Ry+tP07PLEJ7n9a
+ EtqSLssdfQjZSg=
+X-Received: by 2002:a17:90a:d610:b0:399:1b08:28de with SMTP id
+ 98e67ed59e1d1-39b2613259fmr1288284a91.7.1788464212290; 
+ Thu, 03 Sep 2026 12:36:52 -0700 (PDT)
 Received: from p14s.cg.shawcable.net
  ([2604:3d09:148c:c800:40c0:ec33:6266:c275])
  by smtp.gmail.com with ESMTPSA id
- 98e67ed59e1d1-39b083e4fafsm6836951a91.1.2026.09.03.12.36.34
+ 98e67ed59e1d1-39b083e4fafsm6836951a91.1.2026.09.03.12.36.51
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 03 Sep 2026 12:36:35 -0700 (PDT)
+ Thu, 03 Sep 2026 12:36:51 -0700 (PDT)
 From: Mathieu Poirier <mathieu.poirier@linaro.org>
 To: berrange@redhat.com, kchamart@redhat.com,
  pierrick.bouvier@oss.qualcomm.com, peter.maydell@linaro.org,
@@ -76,17 +77,18 @@ To: berrange@redhat.com, kchamart@redhat.com,
  enju.kohei@fujitsu.com
 Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, kvm@vger.kernel.org,
  mathieu.poirier@linaro.org
-Subject: [RFC v4 12/24] target/arm/cpu: Set number of breakpoints and
- watchpoints in KVM
-Date: Thu,  3 Sep 2026 13:35:59 -0600
-Message-ID: <20260903193611.1058589-13-mathieu.poirier@linaro.org>
+Subject: [RFC v4 22/24] docs/interop/firmware.json: Add arm-rme firmware
+ feature
+Date: Thu,  3 Sep 2026 13:36:09 -0600
+Message-ID: <20260903193611.1058589-23-mathieu.poirier@linaro.org>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20260903193611.1058589-1-mathieu.poirier@linaro.org>
 References: <20260903193611.1058589-1-mathieu.poirier@linaro.org>
 MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::52b;
- envelope-from=mathieu.poirier@linaro.org; helo=mail-pg1-x52b.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::102d;
+ envelope-from=mathieu.poirier@linaro.org; helo=mail-pj1-x102d.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -111,222 +113,48 @@ Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
 From: Jean-Philippe Brucker <jean-philippe@linaro.org>
 
-Add "num-breakpoints" and "num-watchpoints" CPU parameters to configure
-the debug features that KVM presents to the guest. The KVM vCPU
-configuration is modified by calling SET_ONE_REG on the ID register.
+Some distributions provide packages continaing firmware to be run under
+QEMU, such as "qemu-efi-aarch64" or "edk2-aarch64". Those packages also
+contain descriptors in /usr/share/qemu/firmware/*.json listing the
+firmware features, so that environments like libvirt can figure out
+which firmware they can load.
 
-This is needed for Realm VMs, whose parameters include breakpoints and
-watchpoints, and influence the Realm Initial Measurement.
+Define an optional feature for arm64 firmware to indicate that a
+firmware supports running in a Realm. Firmware implementations need
+extra support for running in a Realm, in particular to distinguish
+shared from private guest memory.
 
 Signed-off-by: Jean-Philippe Brucker <jean-philippe@linaro.org>
+Acked-by: Markus Armbruster <armbru@redhat.com>
+Reviewed-by: Philippe Mathieu-Daudé <philmd@oss.qualcomm.com>
 Signed-off-by: Mathieu Poirier <mathieu.poirier@linaro.org>
 ---
- target/arm/arm-qmp-cmds.c |  1 +
- target/arm/cpu.h          |  4 ++
- target/arm/cpu64.c        | 81 +++++++++++++++++++++++++++++++++++++++
- target/arm/kvm.c          | 56 +++++++++++++++++++++++++++
- 4 files changed, 142 insertions(+)
+ docs/interop/firmware.json | 5 ++++-
+ 1 file changed, 4 insertions(+), 1 deletion(-)
 
-diff --git a/target/arm/arm-qmp-cmds.c b/target/arm/arm-qmp-cmds.c
-index 83ec95c290f6..9ed65eb090d7 100644
---- a/target/arm/arm-qmp-cmds.c
-+++ b/target/arm/arm-qmp-cmds.c
-@@ -76,6 +76,7 @@ static const char *cpu_model_advertised_features[] = {
-     "sve1408", "sve1536", "sve1664", "sve1792", "sve1920", "sve2048",
-     "kvm-no-adjvtime", "kvm-steal-time",
-     "pauth", "pauth-impdef", "pauth-qarma3", "pauth-qarma5",
-+    "num-breakpoints", "num-watchpoints",
-     NULL
- };
- 
-diff --git a/target/arm/cpu.h b/target/arm/cpu.h
-index 6bbc942f9a59..d256d66a3e1b 100644
---- a/target/arm/cpu.h
-+++ b/target/arm/cpu.h
-@@ -1173,6 +1173,10 @@ struct ArchCPU {
- 
-     /* Generic timer counter frequency, in Hz */
-     uint64_t gt_cntfrq_hz;
-+
-+    /* Allows to override the default configuration */
-+    uint8_t num_bps;
-+    uint8_t num_wps;
- };
- 
- typedef struct ARMCPUInfo {
-diff --git a/target/arm/cpu64.c b/target/arm/cpu64.c
-index 4e8c47253086..18adb06d78ad 100644
---- a/target/arm/cpu64.c
-+++ b/target/arm/cpu64.c
-@@ -666,6 +666,86 @@ void aarch64_add_pauth_properties(Object *obj)
-     }
- }
- 
-+#if defined(CONFIG_KVM)
-+static void arm_cpu_get_num_wps(Object *obj, Visitor *v, const char *name,
-+                                void *opaque, Error **errp)
-+{
-+    uint8_t val;
-+    ARMCPU *cpu = ARM_CPU(obj);
-+
-+    val = cpu->num_wps;
-+    if (val == 0) {
-+        val = FIELD_EX64(cpu->isar.idregs[ID_AA64DFR0_EL1_IDX],
-+                         ID_AA64DFR0, WRPS) + 1;
-+    }
-+
-+    visit_type_uint8(v, name, &val, errp);
-+}
-+
-+static void arm_cpu_set_num_wps(Object *obj, Visitor *v, const char *name,
-+                                void *opaque, Error **errp)
-+{
-+    uint8_t val;
-+    ARMCPU *cpu = ARM_CPU(obj);
-+    uint8_t max_wps = FIELD_EX64(cpu->isar.idregs[ID_AA64DFR0_EL1_IDX],
-+                                 ID_AA64DFR0, WRPS) + 1;
-+
-+    if (!visit_type_uint8(v, name, &val, errp)) {
-+        return;
-+    }
-+
-+    if (val < 2 || val > max_wps) {
-+        error_setg(errp, "invalid number of watchpoints");
-+        return;
-+   }
-+
-+    cpu->num_wps = val;
-+}
-+
-+static void arm_cpu_get_num_bps(Object *obj, Visitor *v, const char *name,
-+                                void *opaque, Error **errp)
-+{
-+    uint8_t val;
-+    ARMCPU *cpu = ARM_CPU(obj);
-+
-+    val = cpu->num_bps;
-+    if (val == 0) {
-+        val = FIELD_EX64(cpu->isar.idregs[ID_AA64DFR0_EL1_IDX],
-+                         ID_AA64DFR0, BRPS) + 1;
-+    }
-+
-+    visit_type_uint8(v, name, &val, errp);
-+}
-+
-+static void arm_cpu_set_num_bps(Object *obj, Visitor *v, const char *name,
-+                                void *opaque, Error **errp)
-+{
-+    uint8_t val;
-+    ARMCPU *cpu = ARM_CPU(obj);
-+    uint8_t max_bps = FIELD_EX64(cpu->isar.idregs[ID_AA64DFR0_EL1_IDX],
-+                                 ID_AA64DFR0, BRPS) + 1;
-+
-+    if (!visit_type_uint8(v, name, &val, errp)) {
-+        return;
-+    }
-+
-+    if (val < 2 || val > max_bps) {
-+        error_setg(errp, "invalid number of breakpoints");
-+       return;
-+    }
-+
-+    cpu->num_bps = val;
-+}
-+
-+static void aarch64_add_kvm_writable_properties(Object *obj)
-+{
-+    object_property_add(obj, "num-breakpoints", "uint8", arm_cpu_get_num_bps,
-+                        arm_cpu_set_num_bps, NULL, NULL);
-+    object_property_add(obj, "num-watchpoints", "uint8", arm_cpu_get_num_wps,
-+                        arm_cpu_set_num_wps, NULL, NULL);
-+}
-+#endif /* CONFIG_KVM */
-+
- void aarch64_cpu_lpa2_finalize(ARMCPU *cpu, Error **errp)
- {
-     uint64_t t;
-@@ -807,6 +887,7 @@ void aarch64_host_initfn(Object *obj)
-     kvm_arm_set_cpreg_mig_tolerances(cpu);
-     kvm_arm_set_cpu_features_from_host(cpu);
-     aarch64_add_sve_properties(obj);
-+    aarch64_add_kvm_writable_properties(obj);
- #elif defined(CONFIG_HVF)
-     hvf_arm_set_cpu_features_from_host(cpu);
- #elif defined(CONFIG_WHPX)
-diff --git a/target/arm/kvm.c b/target/arm/kvm.c
-index ca25b707a0a8..93686b038263 100644
---- a/target/arm/kvm.c
-+++ b/target/arm/kvm.c
-@@ -912,6 +912,56 @@ out:
-     return ret;
- }
- 
-+#define KVM_REG_ARM_ID_AA64DFR0_EL1     ARM64_SYS_REG(3, 0, 0, 5, 0)
-+
-+static void kvm_arm_configure_aa64dfr0(ARMCPU *cpu)
-+{
-+    int ret;
-+    uint64_t val, newval;
-+    CPUState *cs = CPU(cpu);
-+
-+    if (!cpu->num_bps && !cpu->num_wps) {
-+        return;
-+    }
-+
-+    newval = cpu->isar.idregs[ID_AA64DFR0_EL1_IDX];
-+    if (cpu->num_bps) {
-+        uint64_t ctx_cmps = FIELD_EX64(newval, ID_AA64DFR0, CTX_CMPS);
-+
-+        /* CTX_CMPs is never greater than BRPs */
-+        ctx_cmps = MIN(ctx_cmps, cpu->num_bps - 1);
-+        newval = FIELD_DP64(newval, ID_AA64DFR0, BRPS, cpu->num_bps - 1);
-+        newval = FIELD_DP64(newval, ID_AA64DFR0, CTX_CMPS, ctx_cmps);
-+    }
-+    if (cpu->num_wps) {
-+        newval = FIELD_DP64(newval, ID_AA64DFR0, WRPS, cpu->num_wps - 1);
-+    }
-+    ret = kvm_set_one_reg(cs, KVM_REG_ARM_ID_AA64DFR0_EL1, &newval);
-+    if (ret) {
-+        error_report("Failed to set KVM_REG_ARM_ID_AA64DFR0_EL1");
-+        return;
-+    }
-+
-+    /*
-+     * Check if the write succeeded. KVM does offer the writable mask for this
-+     * register, but this way we also check if the value we wrote was sane.
-+     */
-+    ret = kvm_get_one_reg(cs, KVM_REG_ARM_ID_AA64DFR0_EL1, &val);
-+    if (ret) {
-+        error_report("Failed to get KVM_REG_ARM_ID_AA64DFR0_EL1");
-+        return;
-+    }
-+
-+    if (val != newval) {
-+        error_report("Failed to update KVM_REG_ARM_ID_AA64DFR0_EL1");
-+    }
-+}
-+
-+static void kvm_arm_configure_vcpu_regs(ARMCPU *cpu)
-+{
-+    kvm_arm_configure_aa64dfr0(cpu);
-+}
-+
- /**
-  * kvm_arm_cpreg_level:
-  * @regidx: KVM register index
-@@ -1128,6 +1178,12 @@ void kvm_arm_reset_vcpu(ARMCPU *cpu)
-         fprintf(stderr, "kvm_arm_vcpu_init failed: %s\n", strerror(-ret));
-         abort();
-     }
-+
-+    /*
-+     * Before loading the KVM values into CPUState, update the KVM configuration
-+     */
-+    kvm_arm_configure_vcpu_regs(cpu);
-+
-     if (!write_kvmstate_to_list(cpu)) {
-         fprintf(stderr, "write_kvmstate_to_list failed\n");
-         abort();
+diff --git a/docs/interop/firmware.json b/docs/interop/firmware.json
+index 421bee0e5ed4..2850b91078d9 100644
+--- a/docs/interop/firmware.json
++++ b/docs/interop/firmware.json
+@@ -161,6 +161,9 @@
+ #     options related to this feature are documented in
+ #     "docs/system/i386/amd-memory-encryption.rst".
+ #
++# @arm-rme: The firmware supports running in a Realm, under the Arm Realm
++#     Management Extension (RME).
++#
+ # @intel-tdx: The firmware supports running under Intel Trust Domain
+ #     Extensions (TDX).
+ #
+@@ -229,7 +232,7 @@
+ { 'enum' : 'FirmwareFeature',
+   'data' : [ 'acpi-s3', 'acpi-s4',
+              'amd-sev', 'amd-sev-es', 'amd-sev-snp',
+-             'intel-tdx',
++             'arm-rme', 'intel-tdx',
+              'enrolled-keys', 'requires-smm',
+              'secure-boot', 'host-uefi-vars',
+              'verbose-dynamic', 'verbose-static' ] }
 -- 
 2.43.0
 

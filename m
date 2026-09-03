@@ -4,95 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 93200C624D6
-	for <qemu-arm@archiver.kernel.org>; Thu,  3 Sep 2026 14:47:18 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D13CCC624D6
+	for <qemu-arm@archiver.kernel.org>; Thu,  3 Sep 2026 14:58:52 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1x28i2-0002T1-PB; Thu, 03 Sep 2026 10:46:34 -0400
+	id 1x28tj-00010B-LB; Thu, 03 Sep 2026 10:58:39 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1x28i1-0002Sk-9B
- for qemu-arm@nongnu.org; Thu, 03 Sep 2026 10:46:33 -0400
-Received: from mail-wm1-x32f.google.com ([2a00:1450:4864:20::32f])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1x28hP-0004sT-BQ
- for qemu-arm@nongnu.org; Thu, 03 Sep 2026 10:46:32 -0400
-Received: by mail-wm1-x32f.google.com with SMTP id
- 5b1f17b1804b1-49b9320423cso25085985e9.0
- for <qemu-arm@nongnu.org>; Thu, 03 Sep 2026 07:45:54 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1788446753; x=1789051553; darn=nongnu.org;
- h=content-transfer-encoding:content-type:mime-version:message-id:date
- :user-agent:references:in-reply-to:subject:cc:to:from:from:to:cc
- :subject:date:message-id:reply-to:content-type;
- bh=z4mcTa20Q6K/eSAXdcv86SfpDZEirfKuPAnuP96c43s=;
- b=c/AMuRyC9lQsm03yObIgK1NgVstB5KSI80+otqOtScfSpbqKYie3jEWqEyDozb1bvO
- lCk+Xi/qGs6UYAwopT+V9xC/Pgp660rwyCrVFjiK6R0uwDvnddi+fWSyeAfgIuMmfLb1
- jMr33pfAndLeESy+viFOmJgBPZA24Uvf5wxDFzRk4pKHWYsUZD+FfSX/VnliFc9PexFM
- /nMtNe7NARwf5P5Vog9sraJMeITWDSUqk2a6r375TJJOwcvww8gO9CXnFZPeVvVAajJA
- cbybtX0WmGKsRr5nuHAUsnKgncLAyolPRoAds9wnm4+X954Nmmd0jCDx1vKoMp7WGUqz
- mrkA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1788446753; x=1789051553;
- h=content-transfer-encoding:content-type:mime-version:message-id:date
- :user-agent:references:in-reply-to:subject:cc:to:from:x-gm-gg
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
- :content-type;
- bh=z4mcTa20Q6K/eSAXdcv86SfpDZEirfKuPAnuP96c43s=;
- b=PHnN1yovyIQcbNMpBRacvV759HRHoUfl/ucDfA7B5qA0EEfCpSlWpq7iSVUIROL5js
- F0LL7dFzZQGuTOw5WcZCINSy5nEnMufIAM2jihIZVCWHxexOKts1Md0/9PzZmoopvV3I
- sQRXxvuymdoBDt9Z0gR+CX0KibbCXknhvLMwFVp3XpAhpFpqQfdhlDfQzGW1Nx3OqtOE
- S794DHln2hkZlEydIE2/+hXoOnoArEQ0XpT/9GuSkOzPke3I060ADd/JOVidLdq1Sgrj
- ry5QclXjecZ4sxnhPotHlS2AlTlAnJUZf/3mjPYPmt34C2ZkBTeYeLnjunt8AdG41ivw
- t4LQ==
-X-Forwarded-Encrypted: i=1;
- AKwUvBx6E90Dz1j/xufBsViXo0YEYtAke7zvjFBG9yCFbgZpZzUtWil0Q8P0FWxX9soV5TBH+d75qDNI2g==@nongnu.org
-X-Gm-Message-State: AFuF++lstRYabegoxPHSgof308sIHcJioc2xLLoT/8hvrgfBwknC11mn
- Q3isffVjdxiwcSqJSKZBRbtgQSLqqCjYjbbl3awLjAWuVMFCx5GucTdZQnACiPR5mqzwU04Wf8s
- bOLF5phE=
-X-Gm-Gg: AYBFou2M5eewAXxjuS5rKvb6fdZf53jHN8t9crkSuVoOr6OfwqDEV2rLuZZtMzhC2Bt
- QHQorV+vsr414iwGMagX38sVRUL7t7tDL+DsiS7GkboqT+4NRG/FiWVLVBt+fN73WLEsxfZimkj
- wEtg3gXrhEma2fiRntyToMtTbEu1qrq0lqveW8wmPP4xHTmNPz0BByvGfCNd2BIAyKQX561smU0
- 6A7dpg/chXJldBmAx5VC4iH/UtaWqk/84d3DAmVbwndMO3kzEkaBvbcELLWlJV/NedYkRALR9hd
- L7ztU8eqzkznmIIXoqI4TmkCZOk9EJytSoPHAkvER+a7/f+lmG7ng1JGae7YUz7cQfBhIIieHSN
- loO6YgCVdhBraapS7J2SOas+fV4rFPIkSlGC8dJn/Atkbc/C3QgYx3ZO9+9TaTGCwBIKtysLBav
- yFXdpASmYukrgrfUQ4yIYULT6sOIfHjHPWQHUIfvmCu2UqOzKQWAVXMg4HW5La
-X-Received: by 2002:a05:600c:83c8:b0:49c:d52e:d0ea with SMTP id
- 5b1f17b1804b1-49ce581779dmr243106045e9.4.1788446753379; 
- Thu, 03 Sep 2026 07:45:53 -0700 (PDT)
-Received: from draig.lan ([185.124.0.156]) by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-49cee5f914bsm92364115e9.3.2026.09.03.07.45.51
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 03 Sep 2026 07:45:51 -0700 (PDT)
-Received: from draig (localhost [IPv6:::1])
- by draig.lan (Postfix) with ESMTP id B664D5F8FD;
- Thu, 03 Sep 2026 15:45:50 +0100 (BST)
-From: =?utf-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>
-To: Bin Meng <bin.meng@processmission.com>
-Cc: QEMU <qemu-devel@nongnu.org>,  Peter Maydell <peter.maydell@linaro.org>,
- qemu-arm@nongnu.org
-Subject: Re: [PATCH 01/33] target/arm: Add Phytium FTC310 and FTC664 CPU models
-In-Reply-To: <20260903112532.3276678-2-bin.meng@processmission.com> (Bin
- Meng's message of "Thu, 3 Sep 2026 19:24:41 +0800")
-References: <20260903112532.3276678-1-bin.meng@processmission.com>
- <20260903112532.3276678-2-bin.meng@processmission.com>
-User-Agent: mu4e 1.14.4-pre1; emacs 30.1
-Date: Thu, 03 Sep 2026 15:45:50 +0100
-Message-ID: <87se3qpf4x.fsf@draig.linaro.org>
+ (Exim 4.90_1) (envelope-from <tangtao1634@phytium.com.cn>)
+ id 1x28th-0000z9-0L; Thu, 03 Sep 2026 10:58:37 -0400
+Received: from zg8tmtyylji0my4xnjqumte4.icoremail.net ([162.243.164.118])
+ by eggs.gnu.org with esmtp (Exim 4.90_1)
+ (envelope-from <tangtao1634@phytium.com.cn>)
+ id 1x28te-0003zZ-90; Thu, 03 Sep 2026 10:58:36 -0400
+Received: from prodtpl.icoremail.net (unknown [10.12.1.20])
+ by hzbj-icmmx-7 (Coremail) with UTF8SMTP id AQAAfwD3_xsOi5lqMlZhBQ--.49393S2; 
+ Thu, 03 Sep 2026 22:58:22 +0800 (CST)
+Received: from [192.168.2.11] (unknown [113.246.117.39])
+ by mail (Coremail) with SMTP id AQAAf8DwfXMIi5lqg6m0AA--.61257S2;
+ Thu, 03 Sep 2026 22:58:20 +0800 (CST)
+Message-ID: <ba9005ea-5616-495f-b817-5d90b4ce1ca0@phytium.com.cn>
+Date: Thu, 3 Sep 2026 22:58:13 +0800
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2a00:1450:4864:20::32f;
- envelope-from=alex.bennee@linaro.org; helo=mail-wm1-x32f.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
+User-Agent: Mozilla Thunderbird
+Subject: Re: [RFC v5 28/28] [NOT-MERGE] hw/arm/smmuv3: temporarily enable SEL2
+ bit and some other features
+To: eric.auger@redhat.com, Peter Maydell <peter.maydell@linaro.org>
+Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org,
+ Chen Baozi <chenbaozi@phytium.com.cn>,
+ Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>,
+ =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@mailo.com>,
+ Mostafa Saleh <smostafa@google.com>, Chao Liu <chao.liu@processmission.com>,
+ Jim MacArthur <jim.macarthur@linaro.org>
+References: <20260813161515.2788900-1-tangtao1634@phytium.com.cn>
+ <20260813162644.2810021-2-tangtao1634@phytium.com.cn>
+ <a328d6e7-fa27-4279-b0da-bd68cf73e207@redhat.com>
+From: Tao Tang <tangtao1634@phytium.com.cn>
+In-Reply-To: <a328d6e7-fa27-4279-b0da-bd68cf73e207@redhat.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+X-CM-TRANSID: AQAAf8DwfXMIi5lqg6m0AA--.61257S2
+X-CM-SenderInfo: pwdqw3tdrrljuu6sx5pwlxzhxfrphubq/1tbiAQAHBWqYeU0G5wAAsk
+Authentication-Results: hzbj-icmmx-7; spf=neutral smtp.mail=tangtao163
+ 4@phytium.com.cn;
+X-Coremail-Antispam: 1Uk129KBjvJXoW7KFy7Jr4fJF48GFWxWw1DGFg_yoW8GFyrpF
+ W7Krn0kr4xWFyagr97Jw17WFn8Aa93JrW3JrZ3Jw1UZrZ8ur1rJrWIkrsY9F1kWrZ7Gana
+ gF1qvFyxJryYvrJanT9S1TB71UUUUUDqnTZGkaVYY2UrUUUUj1kv1TuYvTs0mT0YCTnIWj
+ DUYxn0WfASr-VFAU7a7-sFnT9fnUUIcSsGvfJ3UbIYCTnIWIevJa73UjIFyTuYvj4RJUUU
+ UUUUU
+Received-SPF: pass client-ip=162.243.164.118;
+ envelope-from=tangtao1634@phytium.com.cn;
+ helo=zg8tmtyylji0my4xnjqumte4.icoremail.net
+X-Spam_score_int: -25
+X-Spam_score: -2.6
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+X-Spam_report: (-2.6 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_LOW=-0.7,
+ RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -109,154 +77,53 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Bin Meng <bin.meng@processmission.com> writes:
+Hi Eric,
 
-> The Phytium E2000Q combines two FTC310 cores and two FTC664 cores.
-> Its EL3 firmware accesses implementation-defined system registers
-> while setting up the cores. Using generic Cortex-A72 CPUs leaves
-> these registers undefined and traps firmware before it can reach
-> U-Boot.
+On 2026/8/31 16:54, Eric Auger wrote:
+> Hi Tao,
 >
-> Add FTC310 and FTC664 CPU types using Cortex-A72 as their common
-> execution base. Provide conservative RAZ/WI and NOP stubs for the
-> firmware-visible E2000 controls that have no modeled behavior.
+> On 8/13/26 6:26 PM, Tao Tang wrote:
+>> Temporarily:
+>> - enable S_IDR1.SEL2,
+>> - change AIDR to 0x2 to indicate SMMUv3.2,
+>> - use smaller SID size and Cmd/Evt queue size.
+> Each of those changes shall be carefully justified.
 >
-> Set each CPU DT compatible string, MIDR, instruction feature fields,
-> AArch32 floating-point feature fields, and CTR_EL0.L1Ip field to
-> values observed on an E2000Q board. The FTC310 reports a VIPT
-> instruction cache, while the FTC664 reports a PIPT instruction cache.
+> Weren't there any assumpion in previous patches that we supported 3.2.
+> tbh I did not notice you changed it in the last patch. wrt that change
+> we would need to be careful the 3.2 does not require us to implement new
+> features besides secure stuff.
+
+
+You are right.  The cover letter explains that this is a Hafnium 
+bring-up patch, but the patch itself does not explain why each override 
+is needed.
+
+These overrides are only intended to let Hafnium reach the Secure-bank 
+MMIO access test.  They do not mean that QEMU implements Secure stage 2 
+or the complete SMMUv3.2 architecture. We should even drop this patch 
+when we test DMA translation with iommu-testdev [1]
+
+[1]: 
+https://gitlab.com/TaoTang/qemu/-/commits/integration/secure-smmu-v5-qtest
+
+I will document these individual constraints in the commit message and 
+keep this patch outside the final mergeable series.
+
+Best regards,
+Tao
+
+
 >
-> Signed-off-by: Bin Meng <bin.meng@processmission.com>
-> ---
+> Thanks
 >
->  target/arm/tcg/cpu64.c | 81
->  ++++++++++++++++++++++++++++++++++++++++++
+> Eric
+>> Signed-off-by: Tao Tang <tangtao1634@phytium.com.cn>
+>> ---
+>>   hw/arm/smmuv3.c                | 3 ++-
+>>   include/hw/arm/smmuv3-common.h | 6 +++---
+>>   2 files changed, 5 insertions(+), 4 deletions(-)
+>>
+>>
 
-I wonder if cpu64 is the best place to model this? The alternative is to
-treat it like other SoCs (e.g. the Pi's BCM SoCs). Was the reason it
-ended up here because you needed access to aarch64_a72_initfn? Could you
-not instantiate:
-
-    soc_base->cpu_type =3D ARM_CPU_TYPE_NAME("cortex-a72");
-=20=20=20=20
-and then at realize:
-
-    object_initialize_child(OBJECT(dev), "cpu[*]", &s->cpu[n].core,
-                                soc_base->cpu_type);
-
-or does that not allow for tweaking the CP regs?
-
-
->  1 file changed, 81 insertions(+)
->
-> diff --git a/target/arm/tcg/cpu64.c b/target/arm/tcg/cpu64.c
-> index affd87a3ae..0fd2f79bbc 100644
-> --- a/target/arm/tcg/cpu64.c
-> +++ b/target/arm/tcg/cpu64.c
-> @@ -336,6 +336,85 @@ static void aarch64_a72_initfn(Object *obj)
->      define_cortex_a72_a57_a53_cp_reginfo(cpu);
->  }
->=20=20
-> +static const ARMCPRegInfo phytium_e2000_cp_reginfo[] =3D {
-> +    /*
-> +     * The E2000 EL3 firmware touches implementation-defined CPU registe=
-rs
-> +     * during the PBF/BL1 cache and core setup. QEMU does not model these
-> +     * controls, so expose conservative RAZ/WI stubs for the boot firmwa=
-re.
-> +     *
-> +     * PBF reads these identification and cluster controls after writing
-> +     * them. Returning zero preserves the reset state without claiming t=
-hat
-> +     * QEMU implements the associated cache or coherency controls.
-> +     */
-> +    { .name =3D "E2000_CPUID_CTL1", .state =3D ARM_CP_STATE_AA64,
-> +      .opc0 =3D 3, .opc1 =3D 1, .crn =3D 15, .crm =3D 1, .opc2 =3D 0,
-> +      .access =3D PL1_RW, .type =3D ARM_CP_CONST | ARM_CP_NO_RAW,
-> +      .resetvalue =3D 0 },
-> +    { .name =3D "E2000_CLUSTER_CTL", .state =3D ARM_CP_STATE_AA64,
-> +      .opc0 =3D 3, .opc1 =3D 1, .crn =3D 11, .crm =3D 8, .opc2 =3D 6,
-> +      .access =3D PL1_RW, .type =3D ARM_CP_CONST | ARM_CP_NO_RAW,
-> +      .resetvalue =3D 0 },
-> +    /*
-> +     * The remaining controls are only programmed as part of firmware se=
-tup.
-> +     * Accept the writes without retaining state because no modeled CPU
-> +     * behavior depends on their values.
-> +     */
-> +    { .name =3D "E2000_EL1_CTL", .state =3D ARM_CP_STATE_AA64,
-> +      .opc0 =3D 3, .opc1 =3D 2, .crn =3D 15, .crm =3D 15, .opc2 =3D 0,
-> +      .access =3D PL1_RW, .type =3D ARM_CP_NOP | ARM_CP_NO_RAW },
-> +    { .name =3D "E2000_EL2_CTL", .state =3D ARM_CP_STATE_AA64,
-> +      .opc0 =3D 3, .opc1 =3D 4, .crn =3D 15, .crm =3D 15, .opc2 =3D 0,
-> +      .access =3D PL2_RW, .type =3D ARM_CP_NOP | ARM_CP_NO_RAW },
-> +    { .name =3D "E2000_EL2_CTL2", .state =3D ARM_CP_STATE_AA64,
-> +      .opc0 =3D 3, .opc1 =3D 4, .crn =3D 15, .crm =3D 2, .opc2 =3D 4,
-> +      .access =3D PL2_RW, .type =3D ARM_CP_NOP | ARM_CP_NO_RAW },
-> +    { .name =3D "E2000_EL3_CTL", .state =3D ARM_CP_STATE_AA64,
-> +      .opc0 =3D 3, .opc1 =3D 6, .crn =3D 15, .crm =3D 15, .opc2 =3D 0,
-> +      .access =3D PL3_RW, .type =3D ARM_CP_NOP | ARM_CP_NO_RAW },
-> +};
-> +
-> +/*
-> + * Use the Cortex-A72 execution model as the common E2000 TCG base, then
-> + * replace the architected identity fields that differ between the two
-> + * physical core types.
-> + */
-> +static void aarch64_phytium_e2000_base_initfn(Object *obj)
-> +{
-> +    ARMCPU *cpu =3D ARM_CPU(obj);
-> +
-> +    aarch64_a72_initfn(obj);
-> +    define_arm_cp_regs(cpu, phytium_e2000_cp_reginfo);
-> +}
-> +
-> +static void aarch64_phytium_ftc310_initfn(Object *obj)
-> +{
-> +    ARMCPU *cpu =3D ARM_CPU(obj);
-> +    ARMISARegisters *isar =3D &cpu->isar;
-> +
-> +    aarch64_phytium_e2000_base_initfn(obj);
-> +
-> +    /* FTC310 cores identify with the FTC303 part number */
-> +    cpu->dtb_compatible =3D "phytium,ftc310";
-> +    cpu->midr =3D 0x700f3034;
-> +    SET_IDREG(isar, ID_AA64ISAR0, 0x00011100012120);
-> +    cpu->isar.mvfr0 =3D 0x10110222;
-> +    cpu->ctr =3D FIELD_DP64(cpu->ctr, CTR_EL0, L1IP, 2); /* VIPT */
-> +}
-> +
-> +static void aarch64_phytium_ftc664_initfn(Object *obj)
-> +{
-> +    ARMCPU *cpu =3D ARM_CPU(obj);
-> +    ARMISARegisters *isar =3D &cpu->isar;
-> +
-> +    aarch64_phytium_e2000_base_initfn(obj);
-> +
-> +    cpu->dtb_compatible =3D "phytium,ftc664";
-> +    cpu->midr =3D 0x701f6643;
-> +    SET_IDREG(isar, ID_AA64ISAR0, 0x00000100012120);
-> +    cpu->isar.mvfr0 =3D 0x10111222;
-> +    cpu->ctr =3D FIELD_DP64(cpu->ctr, CTR_EL0, L1IP, 3); /* PIPT */
-> +}
-> +
->  static void aarch64_a76_initfn(Object *obj)
->  {
->      ARMCPU *cpu =3D ARM_CPU(obj);
-> @@ -1533,6 +1612,8 @@ static const ARMCPUInfo aarch64_cpus[] =3D {
->      { .name =3D "cortex-a55",         .initfn =3D aarch64_a55_initfn },
->      { .name =3D "cortex-a72",         .initfn =3D aarch64_a72_initfn },
->      { .name =3D "cortex-a76",         .initfn =3D aarch64_a76_initfn },
-> +    { .name =3D "phytium-ftc310",     .initfn =3D aarch64_phytium_ftc310=
-_initfn },
-> +    { .name =3D "phytium-ftc664",     .initfn =3D aarch64_phytium_ftc664=
-_initfn },
->      /*
->       * The Cortex-A78AE differs slightly from the plain Cortex-A78. We d=
-on't
->       * currently model the latter.
-
---=20
-Alex Benn=C3=A9e
-Virtualisation Tech Lead @ Linaro
 

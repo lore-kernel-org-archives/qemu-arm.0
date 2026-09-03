@@ -4,72 +4,117 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6EF3FC61DD3
-	for <qemu-arm@archiver.kernel.org>; Thu,  3 Sep 2026 04:03:00 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 92EBFC624D4
+	for <qemu-arm@archiver.kernel.org>; Thu,  3 Sep 2026 06:15:59 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1x1yeU-0003cy-2w; Thu, 03 Sep 2026 00:02:14 -0400
+	id 1x20ja-0001p8-K9; Thu, 03 Sep 2026 02:15:38 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mohamed@unpredictable.fr>)
- id 1x1yeS-0003bN-Cx
- for qemu-arm@nongnu.org; Thu, 03 Sep 2026 00:02:12 -0400
-Received: from mr-2004d-snip6-7.eps.apple.com ([2a01:b747:3000:203::26]
- helo=outbound.mr.icloud.com)
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1x20jI-0001ho-Pf
+ for qemu-arm@nongnu.org; Thu, 03 Sep 2026 02:15:21 -0400
+Received: from smtpout9.mo536.mail-out.ovh.net ([51.210.91.18])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mohamed@unpredictable.fr>)
- id 1x1yeP-0000Ph-7c
- for qemu-arm@nongnu.org; Thu, 03 Sep 2026 00:02:12 -0400
-Received: from outbound.mr.icloud.com (unknown [127.0.0.2])
- by p00-icloudmta-asmtp-us-west-2a-100-percent-10 (Postfix) with ESMTPS id
- 8E46C18001F9; Thu, 03 Sep 2026 04:02:02 +0000 (UTC)
-X-ICL-RepId: 01a0656e-4b97-73e7-9832-1e952f1905e3
-X-ICL-Out-Info: HUtFAUMHWwJACUgBTUQeDx5WFlZNRAJCTQ1OHVwPUhxEDlYCVRcOVk1UF1sMWg5WMEwWQx9SD1sTTRlRAVJFVAIZHldQQgVCAlwcWg5DClAcXFZVHxcZUU0OWFsIWwQPH0wMUQJCBVZeVAodBFQHXQVdVlACWktCBEtFaFwFXBxAF0gdX2pLVhQEDV0dRQ5WGVoMUg9bDhwWS1heBFNWDkIJSgVdDlsBQA1IAlgARQVED0oEQAZGXx9RGV4IUytHHkkKVgleCEYRWxRWQ1EZDFBNAUMICghHA00XXjJTBF8RUBY=
-Dkim-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=unpredictable.fr;
- s=sig1; t=1788408124; x=1791000124;
- bh=x+M2JgY+E0VBkicEpenK8wSivQlKbCR6rgOkzuw3Uvs=;
- h=From:To:Subject:Date:Message-ID:Content-Type:MIME-Version:x-icloud-hme;
- b=h/6J6tbqXB5RltRUA/X6zkqlBRvuijQ5KDZL5caIVwmWzGmoBUPmPtSDOkdIIdQSlO1oKKl5Mgs0xmTPeZzXq9v2armm2PVV0UpvI5/tVzlfGVDrCLvgMa4xTRXycFMHwu/ij/sWYB99zyoTa40q2oQtx8ZyFAICzHbR2LEWDtR7d1g4X5DyuSRyMYNr7V8OFJahH4awhdH4RI0eVJ90nhKmZjrAl8UEngdQHCe5UbA2nAt7NHay6cp18dLatAMV+iwP+eTSFMvUhwATIGcwYOjzDzgXOcW0+FGlJ/Dzc+P1lKFqnO+Ip5VxTHZx9/Ub3AFL+hg+Y9p4ZHLtG3AOSA==
-mail-alias-created-date: 1752046281608
-Received: from localhost.localdomain (unknown [17.156.200.36])
- by p00-icloudmta-asmtp-us-west-2a-100-percent-10 (Postfix) with ESMTPSA id
- 5A6F0180009E; Thu, 03 Sep 2026 04:02:00 +0000 (UTC)
-From: Mohamed Mediouni <mohamed@unpredictable.fr>
-To: qemu-devel@nongnu.org
-Cc: qemu-arm@nongnu.org, Phil Dennis-Jordan <phil@philjordan.eu>,
- Alexander Graf <agraf@csgraf.de>, Roman Bolshakov <rbolshakov@ddn.com>,
- Peter Maydell <peter.maydell@linaro.org>,
- Mohamed Mediouni <mohamed@unpredictable.fr>
-Subject: [PATCH 0/3] hvf: arm: add experimental VHE (x-vhe) toggle
-Date: Thu,  3 Sep 2026 06:01:54 +0200
-Message-ID: <20260903040157.74627-1-mohamed@unpredictable.fr>
-X-Mailer: git-send-email 2.54.0
-Content-Type: text/plain; charset="utf-8"
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1x20jG-0000Ym-Hc
+ for qemu-arm@nongnu.org; Thu, 03 Sep 2026 02:15:20 -0400
+Received: from director5.derp.mail-out.ovh.net
+ (director5.derp.mail-out.ovh.net [79.137.60.225])
+ by mo536.mail-out.ovh.net (Postfix) with ESMTPS id 4hb8TN4fxSz88Gf;
+ Thu,  3 Sep 2026 06:15:04 +0000 (UTC)
+Received: from director5.derp.mail-out.ovh.net
+ (director5.derp.mail-out.ovh.net. [127.0.0.1])
+ by director5.derp.mail-out.ovh.net (inspect_sender_mail_agent) with SMTP
+ for <jamin_lin@aspeedtech.com>; Thu,  3 Sep 2026 06:15:04 +0000 (UTC)
+Received: from mta7.priv.ovhmail-u2.ea.mail.ovh.net (unknown [10.110.37.96])
+ by director5.derp.mail-out.ovh.net (Postfix) with ESMTPS id 4hb8TM74gMz6NNb;
+ Thu,  3 Sep 2026 06:15:03 +0000 (UTC)
+Received: from kaod.org (unknown [10.1.6.2])
+ (Authenticated sender: clg@kaod.org)
+ by mta7.priv.ovhmail-u2.ea.mail.ovh.net (Postfix) with ESMTPSA id 5921B203FDB; 
+ Thu,  3 Sep 2026 06:15:03 +0000 (UTC)
+Authentication-Results: garm.ovh; auth=pass
+ (GARM-102R0049f0e14a0-0992-435d-94dd-35faea59d649,
+ D9A964E3C5AFBF6BD84231720E0C998EB3D97DAC) smtp.auth=clg@kaod.org
+X-OVh-ClientIp: 82.64.250.170
+Message-ID: <61cecc24-db2f-4146-8def-7d557a426020@kaod.org>
+Date: Thu, 3 Sep 2026 08:15:02 +0200
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwOTAzMDAzMyBTYWx0ZWRfXyq1hghdkt2U4
- Pp9RIS5HUzrAn44DDmbf8mJf0qkZ4NhRcG1Y7rvUdS8x5yJHylZAldXi6Upd7hvI30E2SoCMRw3
- 8uZiNS1cWLbzDUfiz+YHaQjPSVWVPxFQzDQhdI1ppcNDZVPa556Kbg2KOE+G5tnrG6mVNe9coqg
- JD0ALdXVnkDBqY8J+rRSCO7THKL4tPW2AHmk+GTrlPRzmhji89POGSMxVbI0wZQHrVzSfx+l6xo
- bANM5sKP1TVhqbd9Ig1K94GkJ1eF4vXIcGfSzdYnyJbr97zCt6kC7K1Wm2Ga3ZGyBjaQ3+uyVop
- zNvl1fQylB5VapR2/7HOFSAdKqo367/SVSuwRKS1HQuWT9Qz0IikwrwqFbhrII=
-X-Authority-Info-Out: v=2.4 cv=G7MR0tk5 c=1 sm=1 tr=0 ts=6a98f13b
- cx=c_apl:c_pps:t_out a=9mRn2PO/+PIrVdEbaIuMPg==:117
- a=9mRn2PO/+PIrVdEbaIuMPg==:17 a=IkcTkHD0fZMA:10 a=VdqzKS8jKosA:10
- a=VkNPw1HP01LnGYTKEx00:22 a=5SVyW61FHS1u6yMifjoA:9 a=QEXdDO2ut3YA:10
-X-Proofpoint-GUID: P39ck5cuE8uclz6hxREQCzKn6P31EEkQ
-X-Proofpoint-ORIG-GUID: P39ck5cuE8uclz6hxREQCzKn6P31EEkQ
-X-JNJ: AAAAAAABTI20XTqrueSm2e6n5zhzIQvuwSe0+PoQFF5voaOJay26Syiz1ttcYtMjg3qSxE4ND0lGUYQsR5Lpt+MgiZI+7iEAP96vMJBIi3H7T7w4qMmjMMCU44rBYy3S1O0ksjb62t9CXNfC1+jNdit0Q+9mk9BBlE3iLU72gbzAr51MCbUQjM7IssX3bIJXCu8jSNNZVthExiTjGFU/gsavfqs45HuvMNZk6bvM3j5TvxgllOGLZBnJaSiwFB0rxIp5TxwJaCsL9A5nsn/kIYczp2z1aQu1IPUgMrUVZQotEkFQnp5pNqFXdCobjreRE33UDWPzJ+mFt+jYgLzgK7hH9/lylFoEIOsZ5hlHPdJmPoIe3QPf4nIijvQCaLLlYkB0VuWkNWTkA/3J0MMY3uYLRAZePnkDCAtMTmndhIssgUocEjYJvmOqSQdM8TJg17Ne3lQFezPJID/lz9jLpEsDfwMN+RfU/vSHDStdPkh0EH3UU3qzjxmWh1ScMpmGCTvVbHfo0fFWbqH34LN6df911YIe5oWdknlIWHngIg/GRPUKHuk5wKpJNjga4XG0T2dj8nI+hLjns4fBAuhm9YC+b4G43kCNtaybwwy82KTZExTlpni1v9T06+GpGGtEg2pftF8uj8MVoANS0zF8wFildpCSEAVOqxOW/HVZYUMTHbK01n4/y5m1qneDHMRVPiKjHu73e7GEfQIVCjhPRMzo7OBoEIa7Ii7pOSwCOzcHVBD98XqX77lN11ZFJ8tJ7/8d4QbN5pi4kKINvjfvnDXtuxFpdr4mmAVsVZJCOLN8WlyH0rHm0Q0shZnkLp2JLVrwwuW05zzq3xPQK7GKGNhEiTLL0vyv+D4/zwl4DRUHax4f+MSyqhLeeJ5CuJtWBOyESTRtit75hYaXQKYx5iCq539evR75CylmX6R0HglVimR++72lWK2GxL3iGyNL12F0Bv8nTYXscmwqU+Tevuj/mQ2EfUj
- J2o83WCvnK6QNmnIe6VEatXBDmE+ihcSa2yBhi+9zBtlM92OlBHqqBn73DM67LQpoGp+e+/KLZLXQ5Th1UIbQfIixU02O5bKrEwSS/M+lpkcT3XNnlbnYVUBnDDfzYy79gK1U7qbIzt+O2Gu4/2FD3IhEfQaloQuelksHEDDkAyOI9pBN/dCswhGQE1zzxHOV4X1R4hwcmUAbWzIPSlaVZ/8Wc5D3p65pHxPRZD89Shx27j4HRdKGzZ0WJ3uO9vh6astgs/kSpgEJmCr1rDWo
-Received-SPF: pass client-ip=2a01:b747:3000:203::26;
- envelope-from=mohamed@unpredictable.fr; helo=outbound.mr.icloud.com
+User-Agent: Mozilla Thunderbird
+Subject: Re: [BUG] hw/misc/aspeed_hace: out-of-bounds read in has_padding()
+ (off-by-one, guest-triggerable)
+To: Christopher Boker <Chris@cveasyai.com>, qemu-devel@nongnu.org
+Cc: peter.maydell@linaro.org, qemu-arm@nongnu.org, jamin_lin@aspeedtech.com,
+ steven_lee@aspeedtech.com
+References: <CAKnXys4iX-B5xKHfPi4xk=UBCyr9gJ9SZ+c8AK=0kcCMOHBSrQ@mail.gmail.com>
+From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
+Content-Language: en-US, fr
+Autocrypt: addr=clg@kaod.org; keydata=
+ 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
+In-Reply-To: <CAKnXys4iX-B5xKHfPi4xk=UBCyr9gJ9SZ+c8AK=0kcCMOHBSrQ@mail.gmail.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+x-ovh-tracer-id: 1182194903802883083
+X-VR-SPAMSTATE: OK
+X-VR-SPAMSCORE: -100
+X-VR-SPAMCAUSE: dmFkZTGaFjDSnLuDvBUbSwr0rPIWLrpZKD062bX8FXs+WY12Zce7UwIHD8pfwSMIucl5lM1Rpnfox8flgTz63pWZvBjtiC9rzcsMJoC8ZbmQGHPv636R4O4AaSKVX/C7p1rWxjX4AFIYWFQ+vArrnk4/tfEj+51ZNqPdsR1n7YMbQUjr5Vu+/IAhusI9izjCVCqVoY+xM/eYO+7QzwIfgT/iRvxqcvrE2xQgY02D6XWpF5XlJKH6/wHrpzo+q8mhy3jyTbibi+8+6DMPOYgStwAoVDGVQ9sKr+BJw9NLXJJm30ps9jcf9Gin7sYWmO6WnUkusTJXPMQhbcKvtCxbSQG9p9XFR86sJYSlorQasyZ+7g2EIz7MISyQUELjnZ0DZ3LCVYX93f7G3sI9t83v+SzBihLDuKRfXlxGLTH1lQXo+q60xiUpREogQV5ZAfgRQpCcRLfuYiyWMIkfGxp348oMSKTYQTFFFrPMZ7DLjySJlmVQTg7+lyc53MCEAN5PqeqCRuau/qKvvU2WtHX/kp4/zqc/Z2N3VFnTTh6qHIXaGZz10PKjSgv5hkewIbzMapODOEYlP2uXtN1+2qUHBs9Rjw09warMdwVrsh5VCjF+IgVVwgxchcdfCHy7cIeJEXit79hxusPm6APmXFkv/x+jpBbFLXFfCldVKim0QEivHC34Vg
+DKIM-Signature: a=rsa-sha256; bh=P6I497gp6bChAoVnoeLf4lMzloFf5/0IXywJuCEcXig=; 
+ c=relaxed/relaxed; d=kaod.org; h=From; s=ovhmo393970-selector1;
+ t=1788416105; v=1;
+ b=rbOTKIhtPRGNUuxTVuHDVMq8+YT3dbVMbM20jfwq+R8/fPCRdlct/x4EMc9eNO7tmFmEYudU
+ ToBAuMapR1uUQ9rua/VCdX23Y+32AbkAMetwo80KRapnV07pU9O//m52frBqG0rZ8rwJW4YxW9b
+ M8fHlCCnPFVFk5jHG7sDpyEek+WR4adYTrwNLYGJ5H3niEe2XTJZEcdyzTC6YcsllON1Zaech97
+ oO0sn7cATmDIgggohz/Rs2fDkiz2tjlvPFytFVbpsUq11hMgoaI9O4ziLxA2ljMXhsukXz2uclz
+ ZkPN/MZSPXJZ5uD7rG9LcbkgpvYsRln/i4rlw7DkW4Yag==
+Received-SPF: pass client-ip=51.210.91.18; envelope-from=clg@kaod.org;
+ helo=smtpout9.mo536.mail-out.ovh.net
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_PASS=-0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -85,22 +130,16 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-macOS 27.0 has a pre-release VHE implementation. Add support for it in QEMU.
+> I have not sent this as a formal git-format-patch because I did not want to add
+> a Signed-off-by line under a name I have not confirmed with you; happy to send a
+> proper patch with a correct S-o-b if you would rather have one
+Please send 2 patches:
 
-The first patch in the series is an independent bugfix that should be backported to QEMU 11.1 too.
+- a new aspeed HACE atest ast2600/hace/sha256_accum_zero_padding for
+   the ast2600-evb machine
+- fix for the oob read in has_padding()
 
-Mohamed Mediouni (3):
-  hvf: arm: advertise ID_AA64PFR0_EL1.GIC
-  hvf: arm: add experimental VHE toggle
-  hvf: arm: advertise EL3 support when VHE is on
+Thanks,
 
- accel/hvf/hvf-all.c      |   2 +
- include/system/hvf_int.h |   1 +
- target/arm/hvf/hvf.c     | 103 +++++++++++++++++++++++++++++++++++++++
- target/i386/hvf/hvf.c    |   4 ++
- 4 files changed, 110 insertions(+)
-
--- 
-2.54.0 (Apple Git-156)
-
+C.
 

@@ -4,72 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 02DA7C79F82
-	for <qemu-arm@archiver.kernel.org>; Fri,  4 Sep 2026 12:55:30 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 39C0DC79F88
+	for <qemu-arm@archiver.kernel.org>; Fri,  4 Sep 2026 13:04:59 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1x2TQE-0001ba-5S; Fri, 04 Sep 2026 08:53:34 -0400
+	id 1x2TaX-0006oD-8w; Fri, 04 Sep 2026 09:04:13 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1x2TQD-0001ao-5Y
- for qemu-arm@nongnu.org; Fri, 04 Sep 2026 08:53:33 -0400
-Received: from mail-wm1-x32e.google.com ([2a00:1450:4864:20::32e])
+ id 1x2Ta8-0006VG-I5
+ for qemu-arm@nongnu.org; Fri, 04 Sep 2026 09:03:50 -0400
+Received: from mail-wm1-x32d.google.com ([2a00:1450:4864:20::32d])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1x2TQB-0000ff-4z
- for qemu-arm@nongnu.org; Fri, 04 Sep 2026 08:53:32 -0400
-Received: by mail-wm1-x32e.google.com with SMTP id
- 5b1f17b1804b1-490cf322ed0so10187725e9.1
- for <qemu-arm@nongnu.org>; Fri, 04 Sep 2026 05:53:30 -0700 (PDT)
+ id 1x2TZy-00039F-2g
+ for qemu-arm@nongnu.org; Fri, 04 Sep 2026 09:03:47 -0400
+Received: by mail-wm1-x32d.google.com with SMTP id
+ 5b1f17b1804b1-495437bb891so7388515e9.1
+ for <qemu-arm@nongnu.org>; Fri, 04 Sep 2026 06:03:37 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1788526410; x=1789131210; darn=nongnu.org;
+ d=linaro.org; s=google; t=1788527016; x=1789131816; darn=nongnu.org;
  h=content-transfer-encoding:content-type:mime-version:references
  :in-reply-to:message-id:date:subject:cc:to:from:from:to:cc:subject
  :date:message-id:reply-to:content-type;
- bh=X65c4epXSG6oxrnDyVNWDxY1k67sZHLow79LP0SYYmQ=;
- b=quxGsdxvTYnPBV+DDKrJEatPBo3ZAzEqO/8Te2xTsuejtYNGnyQjzjPJfpFd2E7eNC
- U7NwvTr2a9TwGqlnGyoB2X8mCnJLDxStkLaecR48HR6kYQqT9ARFFUTuJOd/rc7VNvLZ
- 4KSCXFe09awDn5LuAYED9MnqeXXI1jDzYaTr4jGEIlg4S/DMGkNirD48P56i586H91Rt
- X7k7tCpNCsHx4FBt/V4ratIKe4MqmrJgIBH+dryXqwr+FjYPW4b82H74b0h/o9l1fiPm
- w9DhJK2ewETXgAaGC7U3lsynW1ywlHy2vUFZxP81P3FKq+FsQ/OZApRlbgb8bkmOGPxm
- rXtg==
+ bh=WucCoEbwOaJ6yFrDTrkuFcra5z9cb0XgU8deFVQYTuI=;
+ b=zMgnoR2E0dPnZusXP+l4YNTuGTbaBIIvLPSzCvoJX/dyjj8iXqfmAbaSK8vVXxYN9F
+ aufNcdJOnI9ZKUeotdAV2Fq5UEt60AGFGnep5eUlCgfbLf9WyDLyNjjaxRJHAfN2pH6Z
+ RmqclavLGKiaoi5bQ8lu5+E8AkM16HIvK4fuuy6PAKr0595Tk94v7lhg5x/eBVJ8aeHl
+ b6pq1HILIdm71J/AgIsum+njRFUFr/4ZlZcxAFbD5KP0cFhG68wJc7jhoIWuV1zZJZRW
+ iPe+ULxT61hFdW4yIULSmW9Wdw2VW6p2UJqnM9IssGthypK8inTLBP47AjHZsQtQgsM/
+ OPHA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1788526410; x=1789131210;
+ d=1e100.net; s=20251104; t=1788527016; x=1789131816;
  h=content-transfer-encoding:content-type:mime-version:references
  :in-reply-to:message-id:date:subject:cc:to:from:x-gm-gg
  :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
  :content-type;
- bh=X65c4epXSG6oxrnDyVNWDxY1k67sZHLow79LP0SYYmQ=;
- b=QQk1vuqZ7NlXDaCTXdJGkJuopxz0iCcIU483IsiWlT4XJg/4SDAYhJdFFxZAbg4isQ
- +WcK7HX9RleA9FoRiAZF047alenBHIdCaBKraacBsyPcWcAfMCYVAIA5W9+6eXLHqhyi
- zuSRqNH20K4w4IV7xpRip9ItXFD5HaP+SMiyZ9M5TCSzGfZfZIJKC/ZtC9c22Ki1WSMr
- 1Jw5x8WmKFzeOv3ysNuKabPwwRG2WK8NZnvkWHMdtrWGuLh0MJtAZR+4NojBCfHOUNZq
- kik7WmK5xIsPFO2+f7HhDa0dM2zQ1QfhiSkeC6XG3IoJv0rh2qEbUNjOD5X7juLMl/Hn
- Vwtw==
+ bh=WucCoEbwOaJ6yFrDTrkuFcra5z9cb0XgU8deFVQYTuI=;
+ b=C/KcS5M3N+HCmTRMqyZxivEI3ioW9EeQj/L2/D96TwSpRU3wO5asrSI+dWAWZg8xQL
+ Ui3NwLLFVO8KMsaQBxCDG36yqDuavoq+sjgOEwxUlUL80vnIhGtc93tOS/WZwMwHJGx8
+ 7Huys+a5jMjSV2Uasnrfjb+Gc/ce2/2TomJpeyodYR+5Ybcv6Mzxzlq8/30K3b4YTcRK
+ ljjay6JeT0o5wq6PYjap87hGCFjec5GOJ1mNEShJy2FxILkPnWgQaCRGLs5j3fekex3N
+ U6EWJdghKSLTlxfAopecjjqUIGTr7VN1fNw0hSA+DBB7cw1nv8VKMxiaFx/gLlhWl5Sx
+ ERDw==
 X-Forwarded-Encrypted: i=1;
- AKwUvBzgLFpItbF0H7l8dV5XQdP0GDuMDuu5JPADCtZ/2twVK9bnkjDe7wf8NaD9IgV32nZcmSYIdXSAyQ==@nongnu.org
-X-Gm-Message-State: AFuF++mqwNJIS9NwcMedU88bswQa+Tf4AClvplIDn/ZugR0G6H5DrZN0
- XOmCjIg0BSo8kWm4AZOv8bSwZ2cjr+9czRSDJqfkQ0SzuJu5lK9QurxsdRiYkBNXn+A=
-X-Gm-Gg: AYBFou0v9UTBPFiDYJn7A1c3tXVkEDZmtUs0STL+cioIiCgK59V3cyOFhny9ckcEzyE
- 85nztSgxp1pai5Tl6oddbyW2C6TPuO+C7zRTSaQ066jW+Lf5wfL82RIPTOxzW9hXmSAxHV+bF6k
- lg3C6fyt9fG1na94imOnXeY5PLUwMxJ6Dm0oUj6ErU2T9m3BhFIEtBgsE3BZ/40L04TpQyR4yjq
- 6uERMF3uCc6z8D7lVY5Ula6cIGhz8sHNdPlWA7RUCqfBwAPN0flVwZrS1BV63KwIfXJXcvQLVaG
- JURcoy6v5nZScnLejK22NrH3orphXbvuTrabwJUPQdfe3nBgBKcPQ6sZIi8zWGxx7g1y2veSi3S
- R6HOLs5111TFthbh0bw8eSREKTYYx5i2bHa9MvXTqlZsWv512eEFviAiWInV4QfJ7U5PbHeSscu
- TKr7qYX+QOo01RJSHFfGeDDAukusrAW6LQtZqo/JhW/R/m3Heo2HLcF3VHOaWaQkJgz3Q+gP4o0
+ AKwUvByk5rXsP+T6GLUbNqHYZEYX8NjAVqF6p0AK0xoiIp1/c2laedqMQEklKq/wSrpLlrVJFzfVyK4U7A==@nongnu.org
+X-Gm-Message-State: AFuF++k9u/SOtieJWtVeOltTDvuaYW6CBNm+afsz4KF8xDk+XMcqw/r4
+ f8XynXQrkCpd53lVLbyf6yjkGJlKTtKRLm6Q6JHAVmC3u6GNFWGX+P+nkCQcMGCPN6o=
+X-Gm-Gg: AYBFou2TsgbqMPoFT5KlqLt0k6O2bkfz0d1eiFHTrMOzyJIenqwGkfkxNbva+XmzKYO
+ G2ZTPI+WMpOtd5TDQT471TrdsBU/9VJUPjJYD+86M3FqN4uKGPs4RQw5JuPyiyE8n4Njdh6oB9c
+ bVJvJ7jlZXakr0pmedrZodvrRUK3fKXWY2yrdK6tCCXQjz8ZF2PXksEJSom7Nsw28FguJRBoVBH
+ rzg6WWKz2QTGXQq5L52OhSh7XKy0MXTSoLe+vQKWLqbS2COwFWjwVKnaoeRVjGsCHSpHTM0JqDm
+ LJG98qEOjx3EGx6hB0nFnd/eRLxrMMq0hWciyDs1umaQEi6b7rbholo1ZD9IEbDcdHLwadCZIal
+ DK7kxTiPyhVKK/TDG4jyHtuRMYprJ/m5K20V8dfkiFJt4xWPF47J9a1CecxvUyF8qEjwRhdVT7W
+ 6fb6N1zenqI9LA52ZHyBHFj2CwCW5gAXeDsGgBE1ImFkrSm+5L5ayLmpETZFpUdc/dCUKacXXi1
  g==
-X-Received: by 2002:a05:600c:6098:b0:49c:fc6c:be05 with SMTP id
- 5b1f17b1804b1-49cfc6cbfdbmr33699315e9.28.1788526409508; 
- Fri, 04 Sep 2026 05:53:29 -0700 (PDT)
+X-Received: by 2002:a05:600c:6303:b0:493:f783:c46a with SMTP id
+ 5b1f17b1804b1-49cf82cbab5mr42070715e9.6.1788527015782; 
+ Fri, 04 Sep 2026 06:03:35 -0700 (PDT)
 Received: from draig.lan ([185.124.0.156]) by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-49cfbdacc45sm42034575e9.11.2026.09.04.05.53.25
+ 5b1f17b1804b1-49cf755c22esm69452665e9.0.2026.09.04.06.03.29
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 04 Sep 2026 05:53:26 -0700 (PDT)
+ Fri, 04 Sep 2026 06:03:32 -0700 (PDT)
 Received: from draig.lan (localhost [IPv6:::1])
- by draig.lan (Postfix) with ESMTP id 29CA961971;
- Fri, 04 Sep 2026 13:46:09 +0100 (BST)
+ by draig.lan (Postfix) with ESMTP id 6FD515FFE5;
+ Fri, 04 Sep 2026 13:46:08 +0100 (BST)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>,
@@ -77,17 +77,17 @@ Cc: Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>,
  =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
  Peter Maydell <peter.maydell@linaro.org>,
  qemu-arm@nongnu.org (open list:ARM TCG CPUs)
-Subject: [PULL 048/105] tests/tcg/arm: system tests
-Date: Fri,  4 Sep 2026 13:45:02 +0100
-Message-ID: <20260904124604.2207440-49-alex.bennee@linaro.org>
+Subject: [PULL 042/105] tests/tcg/aarch64: system tests
+Date: Fri,  4 Sep 2026 13:44:56 +0100
+Message-ID: <20260904124604.2207440-43-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.47.3
 In-Reply-To: <20260904124604.2207440-1-alex.bennee@linaro.org>
 References: <20260904124604.2207440-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::32e;
- envelope-from=alex.bennee@linaro.org; helo=mail-wm1-x32e.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::32d;
+ envelope-from=alex.bennee@linaro.org; helo=mail-wm1-x32d.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -113,75 +113,101 @@ Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 From: Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>
 
 Tested-by: Aniket Sahu <asahu1x@linux.ibm.com>
+Reviewed-by: Alex Bennée <alex.bennee@linaro.org>
 Signed-off-by: Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>
-Message-ID: <20260827221506.91574-49-pierrick.bouvier@oss.qualcomm.com>
-[AJB: fix merge conflict]
+Message-ID: <20260827221506.91574-43-pierrick.bouvier@oss.qualcomm.com>
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
 
-diff --git a/tests/tcg/arm/Makefile.softmmu-target b/tests/tcg/arm/Makefile.softmmu-target
+diff --git a/tests/tcg/aarch64/Makefile.softmmu-target b/tests/tcg/aarch64/Makefile.softmmu-target
 deleted file mode 100644
-index 3e8a9b4073e..00000000000
---- a/tests/tcg/arm/Makefile.softmmu-target
+index 3f30be6c5d6..00000000000
+--- a/tests/tcg/aarch64/Makefile.softmmu-target
 +++ /dev/null
-@@ -1,80 +0,0 @@
--# -*- Mode: makefile -*-
+@@ -1,147 +0,0 @@
 -#
--# ARM SoftMMU tests - included from tests/tcg/Makefile
+-# Aarch64 system tests
 -#
 -
--ARM_SRC=$(SRC_PATH)/tests/tcg/arm/system
+-AARCH64_SRC=$(SRC_PATH)/tests/tcg/aarch64
+-AARCH64_SYSTEM_SRC=$(AARCH64_SRC)/system
 -
--# Set search path for all sources
--VPATH 		+= $(ARM_SRC)
--
--# Specific Test Rules
--
--test-armv6m-undef: test-armv6m-undef.S
--	$(CC) -mcpu=cortex-m0 -mfloat-abi=soft \
--		-Wl,--build-id=none -x assembler-with-cpp \
--		$< -o $@ -nostdlib -static \
--		-T $(ARM_SRC)/$@.ld
--
--run-test-armv6m-undef: QEMU_OPTS=-semihosting-config enable=on,target=native,chardev=output -M microbit -kernel
--
--ARM_TESTS+=test-armv6m-undef
+-VPATH+=$(AARCH64_SYSTEM_SRC)
 -
 -# These objects provide the basic boot code and helper functions for all tests
 -CRT_OBJS=boot.o
 -
--ARM_TEST_SRCS=$(wildcard $(ARM_SRC)/*.c)
--ARM_TESTS+=$(patsubst $(ARM_SRC)/%.c, %, $(ARM_TEST_SRCS))
+-AARCH64_TEST_C_SRCS=$(wildcard $(AARCH64_SYSTEM_SRC)/*.c)
+-AARCH64_TEST_S_SRCS=$(AARCH64_SYSTEM_SRC)/mte.S
 -
--CRT_PATH=$(ARM_SRC)
--LINK_SCRIPT=$(ARM_SRC)/kernel.ld
+-AARCH64_C_TESTS = $(patsubst $(AARCH64_SYSTEM_SRC)/%.c, %, $(AARCH64_TEST_C_SRCS))
+-AARCH64_S_TESTS = $(patsubst $(AARCH64_SYSTEM_SRC)/%.S, %, $(AARCH64_TEST_S_SRCS))
+-
+-AARCH64_TESTS = $(AARCH64_C_TESTS)
+-AARCH64_TESTS += $(AARCH64_S_TESTS)
+-
+-CRT_PATH=$(AARCH64_SYSTEM_SRC)
+-LINK_SCRIPT=$(AARCH64_SYSTEM_SRC)/kernel.ld
 -LDFLAGS=-Wl,-T$(LINK_SCRIPT)
--CFLAGS+=-march=armv7-a+fp -ffreestanding -nostdlib -ggdb -O0 $(MINILIB_INC)
--LDFLAGS+=-static -nostdlib $(CRT_OBJS) $(MINILIB_OBJS) -lgcc
+-TESTS+=$(AARCH64_TESTS) $(MULTIARCH_TESTS)
+-EXTRA_RUNS+=$(MULTIARCH_RUNS)
+-CFLAGS+=-nostdlib -ggdb -O0 $(MINILIB_INC)
+-LDFLAGS+=-static -nostdlib $(MINILIB_OBJS) -lgcc
+-
+-config-cc.mak: Makefile
+-	$(quiet-@)( \
+-	    $(call cc-option,-march=armv8.3-a, CROSS_CC_HAS_ARMV8_3); \
+-	    $(call cc-option,-march=armv8.5-a+memtag, CROSS_CC_HAS_ARMV8_MTE)) 3> config-cc.mak
+--include config-cc.mak
 -
 -# building head blobs
 -.PRECIOUS: $(CRT_OBJS)
 -
--%.o: $(ARM_SRC)/%.S
+-vector_log_boot.o: $(CRT_PATH)/boot.S
+-	$(CC) $(CFLAGS) $(EXTRA_CFLAGS) -DLOGGING_VECTOR_TABLE -x assembler-with-cpp -Wa,--noexecstack -c $< -o $@
+-
+-%.o: $(CRT_PATH)/%.S
 -	$(CC) $(CFLAGS) $(EXTRA_CFLAGS) -x assembler-with-cpp -Wa,--noexecstack -c $< -o $@
 -
 -# Build and link the tests
 -%: %.c $(LINK_SCRIPT) $(CRT_OBJS) $(MINILIB_OBJS)
--	$(CC) $(CFLAGS) $(EXTRA_CFLAGS) $< -o $@ $(LDFLAGS)
+-	$(CC) $(CFLAGS) $(EXTRA_CFLAGS) $< -o $@ $(LDFLAGS) boot.o
 -
--memory: CFLAGS+=-DCHECK_UNALIGNED=0
+-memory: CFLAGS+=-DCHECK_UNALIGNED=1
+-
+-memory-sve: memory.c $(LINK_SCRIPT) $(CRT_OBJS) $(MINILIB_OBJS)
+-	$(CC) $(CFLAGS) $(EXTRA_CFLAGS) $< -o $@ $(LDFLAGS) boot.o
+-
+-memory-sve: CFLAGS+=-DCHECK_UNALIGNED=1 -march=armv8.1-a+sve -O3
+-
+-gpc-test: gpc-test.c $(LINK_SCRIPT) vector_log_boot.o $(MINILIB_OBJS)
+-	$(CC) $(CFLAGS) $(EXTRA_CFLAGS) $< -o $@ $(LDFLAGS) vector_log_boot.o
+-
+-TESTS+=memory-sve gpc-test
 -
 -# Running
 -QEMU_BASE_MACHINE=-M virt -cpu max -display none
--QEMU_OPTS+=$(QEMU_BASE_MACHINE) -semihosting-config enable=on,target=native,chardev=output -kernel
+-QEMU_BASE_ARGS=-semihosting-config enable=on,target=native,chardev=output
+-QEMU_OPTS+=$(QEMU_BASE_MACHINE) $(QEMU_BASE_ARGS) -kernel
 -
 -# console test is manual only
 -QEMU_SEMIHOST=-serial none -chardev stdio,mux=on,id=stdio0 -semihosting-config enable=on,chardev=stdio0 -mon chardev=stdio0,mode=readline
--run-semiconsole: QEMU_OPTS=$(QEMU_BASE_MACHINE) $(QEMU_SEMIHOST)  -kernel
+-run-semiconsole: QEMU_OPTS=$(QEMU_BASE_MACHINE) $(QEMU_SEMIHOST) -kernel
 -run-semiconsole: semiconsole
 -	$(call skip-test, $<, "MANUAL ONLY")
 -	$(if $(V),@printf "  %-7s %s %s\n" "TO RUN" $(notdir $(QEMU)) "$(QEMU_OPTS) $<")
 -run-plugin-semiconsole-with-%: semiconsole
 -	$(call skip-test, $<, "MANUAL ONLY")
+-
+-# vtimer test needs EL2
+-QEMU_EL2_MACHINE=-machine virt,virtualization=on,gic-version=2 -cpu cortex-a57 -smp 4
+-QEMU_EL2_BASE_ARGS=-semihosting-config enable=on,target=native,chardev=output,arg="2"
+-run-vtimer: QEMU_OPTS=$(QEMU_EL2_MACHINE) $(QEMU_EL2_BASE_ARGS) -kernel
+-
+-# gpc tests need EL3 and RME
+-QEMU_EL3_MACHINE=-machine virt,virtualization=on,secure=on,gic-version=3 -cpu max,x-rme=on
+-QEMU_EL3_BASE_ARGS=-semihosting-config enable=on,target=native,chardev=output,arg="3"
+-run-gpc-test:  QEMU_OPTS=$(QEMU_EL3_MACHINE) $(QEMU_EL3_BASE_ARGS) -kernel
+-run-gpc3-test: QEMU_OPTS=$(QEMU_EL3_MACHINE) $(QEMU_EL3_BASE_ARGS) -kernel
 -
 -# Simple Record/Replay Test
 -.PHONY: memory-record
@@ -202,27 +228,68 @@ index 3e8a9b4073e..00000000000
 -
 -EXTRA_RUNS+=run-memory-replay
 -
--TESTS += $(ARM_TESTS) $(MULTIARCH_TESTS)
--EXTRA_RUNS+=$(MULTIARCH_RUNS)
-diff --git a/tests/tcg/arm/meson.build b/tests/tcg/arm/meson.build
-index 08a863699fb..1b491cea026 100644
---- a/tests/tcg/arm/meson.build
-+++ b/tests/tcg/arm/meson.build
-@@ -2,6 +2,8 @@ cc = 'arm-linux-gnueabihf-gcc'
- cc_dockerfile = 'debian-all-test-cross'
- cc_docker_host_arch = ['aarch64', 'x86_64']
+-ifneq ($(CROSS_CC_HAS_ARMV8_3),)
+-pauth-3: CFLAGS += $(CROSS_CC_HAS_ARMV8_3)
+-# This test explicitly checks the output of the pauth operation so we
+-# must force the use of the QARMA5 algorithm for it.
+-run-pauth-3: QEMU_BASE_MACHINE=-M virt -cpu max,pauth-qarma5=on -display none
+-else
+-pauth-3:
+-	$(call skip-test, "BUILD of $@", "missing compiler support")
+-run-pauth-3:
+-	$(call skip-test, "RUN of pauth-3", "not built")
+-endif
+-
+-ifneq ($(CROSS_CC_HAS_ARMV8_MTE),)
+-QEMU_MTE_ENABLED_MACHINE=-M virt,mte=on -cpu max -display none
+-QEMU_OPTS_WITH_MTE_ON = $(QEMU_MTE_ENABLED_MACHINE) $(QEMU_BASE_ARGS) -kernel
+-mte: CFLAGS+=-march=armv8.5-a+memtag
+-mte: mte.S $(LINK_SCRIPT) $(CRT_OBJS) $(MINILIB_OBJS)
+-	$(CC) $(CFLAGS) $(EXTRA_CFLAGS) $< -o $@ $(LDFLAGS) boot.o
+-
+-run-mte: QEMU_OPTS=$(QEMU_OPTS_WITH_MTE_ON)
+-run-mte: mte
+-
+-ifeq ($(GDB_SUPPORTS_MTE_IN_BAREMETAL),y)
+-run-gdbstub-mte: QEMU_OPTS=$(QEMU_OPTS_WITH_MTE_ON)
+-run-gdbstub-mte: mte
+-	$(call run-test, $@, $(GDB_SCRIPT) \
+-		--output run-gdbstub-mte.out \
+-		--gdb $(GDB) \
+-		--qemu $(QEMU) --qargs "-chardev null$(COMMA)id=output $(QEMU_OPTS)" \
+-		--bin $< --test $(AARCH64_SRC)/gdbstub/test-mte.py -- --mode=system, \
+-	gdbstub MTE support)
+-
+-EXTRA_RUNS += run-gdbstub-mte
+-else # !GDB_SUPPORTS_MTE_IN_BAREMETAL
+-run-gdbstub-mte:
+-	$(call skip-test "RUN of gdbstub-mte", "GDB does not support MTE in baremetal!")
+-endif
+-else # !CROSS_CC_HAS_ARMV8_MTE
+-mte:
+-	$(call skip-test, "BUILD of $@", "missing compiler support")
+-run-mte:
+-	$(call skip-test, "RUN of mte", "not build")
+-endif
+diff --git a/tests/tcg/aarch64/meson.build b/tests/tcg/aarch64/meson.build
+index 9ec8df169d5..28498e82cba 100644
+--- a/tests/tcg/aarch64/meson.build
++++ b/tests/tcg/aarch64/meson.build
+@@ -21,6 +21,8 @@ gdb_feat_version = {
+   'mte-baremetal': '16.0',
+ }
  
 +subdir('system')
 +
  tests = []
  
  # Multi arch tests
-diff --git a/tests/tcg/arm/system/meson.build b/tests/tcg/arm/system/meson.build
+diff --git a/tests/tcg/aarch64/system/meson.build b/tests/tcg/aarch64/system/meson.build
 new file mode 100644
-index 00000000000..4c77b9c3d62
+index 00000000000..94e16ba3300
 --- /dev/null
-+++ b/tests/tcg/arm/system/meson.build
-@@ -0,0 +1,69 @@
++++ b/tests/tcg/aarch64/system/meson.build
+@@ -0,0 +1,109 @@
 +tests = []
 +
 +minilib_dir = meson.current_source_dir() / '..' / '..' / 'minilib'
@@ -233,21 +300,19 @@ index 00000000000..4c77b9c3d62
 +          '-ffreestanding',
 +          '-Wa,--noexecstack',
 +          '-I', minilib_dir, minilib_printf, boot,
-+          '-Wl,-T', link_script,
-+          '-march=armv7-a+fp',
-+          '-lgcc']
++          '-Wl,-T', link_script]
 +qemu_base_args = ['-display', 'none',
 +                  '-semihosting-config', 'enable=on',
 +                  '-kernel']
 +qemu_def_args = ['-M', 'virt', '-cpu', 'max', qemu_base_args]
 +
-+# Multi arch tests
++# Multi arch tests - add cflags only once per src
 +multi_src = []
 +foreach t: tcg_tests['multiarch-softmmu']['tests']
 +  foreach src, setup: t
 +    new_cflags = cflags
 +    if fs.stem(src) == 'memory'
-+      new_cflags += '-DCHECK_UNALIGNED=0'
++      new_cflags += '-DCHECK_UNALIGNED=1'
 +    endif
 +    if src not in multi_src
 +      setup += {'cflags': [new_cflags]}
@@ -258,12 +323,27 @@ index 00000000000..4c77b9c3d62
 +endforeach
 +
 +tests += {
-+  'test-armv6m-undef.S': {
-+    'cflags': ['-mcpu=cortex-m0', '-mfloat-abi=soft', '-nostdlib',
-+               '-Wl,--build-id=none',
-+               '-T', files('test-armv6m-undef.ld')],
-+    'qemu_args': ['-M', 'microbit', qemu_base_args],
++  '../../multiarch/system/memory.c': {
++    'exe_name': 'memory-sve',
++    'cc_feat': 'sve',
++    'cflags': [cflags, '-DCHECK_UNALIGNED=1', '-O3'],
++    'qemu_args': qemu_def_args,
 +  },
++}
++
++tests += {
++  'asid2.c': {'cflags': cflags, 'qemu_args': qemu_def_args},
++  'feat-xs.c': {'cflags': cflags, 'qemu_args': qemu_def_args},
++  'gpc-test.c': {
++    'cflags': [cflags, '-DLOGGING_VECTOR_TABLE',
++               '-Wno-main', '-Wno-unused-but-set-variable'],
++    'qemu_args': ['-M', 'virt,secure=on,virtualization=on,gic-version=3',
++                  '-cpu', 'max,x-rme=on',
++                  '-semihosting-config', 'enable=on,arg=3',
++                  qemu_base_args],
++  },
++  'rme_gdi.c': {'cflags': cflags, 'qemu_args': qemu_def_args},
++  'semiheap.c': {'cflags': cflags, 'qemu_args': qemu_def_args},
 +  'semiconsole.c': {
 +    'cflags': cflags,
 +    'qemu_args': ['-serial', 'none', '-chardev', 'stdio,mux=on,id=stdio0',
@@ -277,17 +357,44 @@ index 00000000000..4c77b9c3d62
 +    'qemu_args': qemu_def_args,
 +    'wrapper': [prog_record_replay],
 +  },
++  'vtimer.c': {
++    'cflags': cflags,
++    'qemu_args': ['-M', 'virt,virtualization=on,gic-version=2',
++                  '-cpu', 'cortex-a57', '-smp', '4',
++                  '-semihosting-config', 'enable=on,arg=2',
++                  qemu_base_args]
++  },
 +}
 +
-+if 'qemu-system-arm' in emulators
++tests += {
++  'pauth-3.c': {
++    'cc_feat': 'v8.3',
++    'cflags': cflags,
++    'qemu_args': ['-M', 'virt', '-cpu', 'max,pauth-qarma5=on', qemu_base_args],
++  }
++}
++
++tests += {
++  'mte.S': {
++    'cc_feat': 'mte',
++    'cflags': cflags,
++    'qemu_args': ['-M', 'virt,mte=on', '-cpu', 'max', qemu_base_args],
++    'gdb_test': ['--test', files('../gdbstub/test-mte.py'), '--', '--mode=system'],
++    'gdb_feat': 'mte-baremetal',
++  }
++}
++
++if 'qemu-system-aarch64' in emulators
 +  tcg_tests += {
-+    'arm-softmmu': {
++    'aarch64-softmmu': {
 +      'cc': cc,
 +      'cc_dockerfile': cc_dockerfile,
 +      'cc_docker_host_arch': cc_docker_host_arch,
-+      'folder': 'arm/system',
-+      'gdb_arch': 'arm',
-+      'qemu': emulators['qemu-system-arm'],
++      'cc_feat_cflags': cc_feat_cflags,
++      'folder': 'aarch64/system',
++      'gdb_arch': 'aarch64',
++      'gdb_feat_version': gdb_feat_version,
++      'qemu': emulators['qemu-system-aarch64'],
 +      'tests': tests,
 +    }
 +  }

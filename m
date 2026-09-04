@@ -4,97 +4,144 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 39C0DC79F88
-	for <qemu-arm@archiver.kernel.org>; Fri,  4 Sep 2026 13:04:59 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5E50DC61DD6
+	for <qemu-arm@archiver.kernel.org>; Fri,  4 Sep 2026 13:46:25 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1x2TaX-0006oD-8w; Fri, 04 Sep 2026 09:04:13 -0400
+	id 1x2UFH-0006y3-SR; Fri, 04 Sep 2026 09:46:19 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1x2Ta8-0006VG-I5
- for qemu-arm@nongnu.org; Fri, 04 Sep 2026 09:03:50 -0400
-Received: from mail-wm1-x32d.google.com ([2a00:1450:4864:20::32d])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1x2TZy-00039F-2g
- for qemu-arm@nongnu.org; Fri, 04 Sep 2026 09:03:47 -0400
-Received: by mail-wm1-x32d.google.com with SMTP id
- 5b1f17b1804b1-495437bb891so7388515e9.1
- for <qemu-arm@nongnu.org>; Fri, 04 Sep 2026 06:03:37 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1788527016; x=1789131816; darn=nongnu.org;
- h=content-transfer-encoding:content-type:mime-version:references
- :in-reply-to:message-id:date:subject:cc:to:from:from:to:cc:subject
- :date:message-id:reply-to:content-type;
- bh=WucCoEbwOaJ6yFrDTrkuFcra5z9cb0XgU8deFVQYTuI=;
- b=zMgnoR2E0dPnZusXP+l4YNTuGTbaBIIvLPSzCvoJX/dyjj8iXqfmAbaSK8vVXxYN9F
- aufNcdJOnI9ZKUeotdAV2Fq5UEt60AGFGnep5eUlCgfbLf9WyDLyNjjaxRJHAfN2pH6Z
- RmqclavLGKiaoi5bQ8lu5+E8AkM16HIvK4fuuy6PAKr0595Tk94v7lhg5x/eBVJ8aeHl
- b6pq1HILIdm71J/AgIsum+njRFUFr/4ZlZcxAFbD5KP0cFhG68wJc7jhoIWuV1zZJZRW
- iPe+ULxT61hFdW4yIULSmW9Wdw2VW6p2UJqnM9IssGthypK8inTLBP47AjHZsQtQgsM/
- OPHA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1788527016; x=1789131816;
- h=content-transfer-encoding:content-type:mime-version:references
- :in-reply-to:message-id:date:subject:cc:to:from:x-gm-gg
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
- :content-type;
- bh=WucCoEbwOaJ6yFrDTrkuFcra5z9cb0XgU8deFVQYTuI=;
- b=C/KcS5M3N+HCmTRMqyZxivEI3ioW9EeQj/L2/D96TwSpRU3wO5asrSI+dWAWZg8xQL
- Ui3NwLLFVO8KMsaQBxCDG36yqDuavoq+sjgOEwxUlUL80vnIhGtc93tOS/WZwMwHJGx8
- 7Huys+a5jMjSV2Uasnrfjb+Gc/ce2/2TomJpeyodYR+5Ybcv6Mzxzlq8/30K3b4YTcRK
- ljjay6JeT0o5wq6PYjap87hGCFjec5GOJ1mNEShJy2FxILkPnWgQaCRGLs5j3fekex3N
- U6EWJdghKSLTlxfAopecjjqUIGTr7VN1fNw0hSA+DBB7cw1nv8VKMxiaFx/gLlhWl5Sx
- ERDw==
-X-Forwarded-Encrypted: i=1;
- AKwUvByk5rXsP+T6GLUbNqHYZEYX8NjAVqF6p0AK0xoiIp1/c2laedqMQEklKq/wSrpLlrVJFzfVyK4U7A==@nongnu.org
-X-Gm-Message-State: AFuF++k9u/SOtieJWtVeOltTDvuaYW6CBNm+afsz4KF8xDk+XMcqw/r4
- f8XynXQrkCpd53lVLbyf6yjkGJlKTtKRLm6Q6JHAVmC3u6GNFWGX+P+nkCQcMGCPN6o=
-X-Gm-Gg: AYBFou2TsgbqMPoFT5KlqLt0k6O2bkfz0d1eiFHTrMOzyJIenqwGkfkxNbva+XmzKYO
- G2ZTPI+WMpOtd5TDQT471TrdsBU/9VJUPjJYD+86M3FqN4uKGPs4RQw5JuPyiyE8n4Njdh6oB9c
- bVJvJ7jlZXakr0pmedrZodvrRUK3fKXWY2yrdK6tCCXQjz8ZF2PXksEJSom7Nsw28FguJRBoVBH
- rzg6WWKz2QTGXQq5L52OhSh7XKy0MXTSoLe+vQKWLqbS2COwFWjwVKnaoeRVjGsCHSpHTM0JqDm
- LJG98qEOjx3EGx6hB0nFnd/eRLxrMMq0hWciyDs1umaQEi6b7rbholo1ZD9IEbDcdHLwadCZIal
- DK7kxTiPyhVKK/TDG4jyHtuRMYprJ/m5K20V8dfkiFJt4xWPF47J9a1CecxvUyF8qEjwRhdVT7W
- 6fb6N1zenqI9LA52ZHyBHFj2CwCW5gAXeDsGgBE1ImFkrSm+5L5ayLmpETZFpUdc/dCUKacXXi1
- g==
-X-Received: by 2002:a05:600c:6303:b0:493:f783:c46a with SMTP id
- 5b1f17b1804b1-49cf82cbab5mr42070715e9.6.1788527015782; 
- Fri, 04 Sep 2026 06:03:35 -0700 (PDT)
-Received: from draig.lan ([185.124.0.156]) by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-49cf755c22esm69452665e9.0.2026.09.04.06.03.29
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 04 Sep 2026 06:03:32 -0700 (PDT)
-Received: from draig.lan (localhost [IPv6:::1])
- by draig.lan (Postfix) with ESMTP id 6FD515FFE5;
- Fri, 04 Sep 2026 13:46:08 +0100 (BST)
-From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
-To: qemu-devel@nongnu.org
-Cc: Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>,
- Aniket Sahu <asahu1x@linux.ibm.com>,
- =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
- Peter Maydell <peter.maydell@linaro.org>,
- qemu-arm@nongnu.org (open list:ARM TCG CPUs)
-Subject: [PULL 042/105] tests/tcg/aarch64: system tests
-Date: Fri,  4 Sep 2026 13:44:56 +0100
-Message-ID: <20260904124604.2207440-43-alex.bennee@linaro.org>
-X-Mailer: git-send-email 2.47.3
-In-Reply-To: <20260904124604.2207440-1-alex.bennee@linaro.org>
-References: <20260904124604.2207440-1-alex.bennee@linaro.org>
-MIME-Version: 1.0
+ (Exim 4.90_1) (envelope-from <tdave@nvidia.com>)
+ id 1x2UFE-0006vY-T6; Fri, 04 Sep 2026 09:46:18 -0400
+Received: from mail-southcentralusazlp170110003.outbound.protection.outlook.com
+ ([2a01:111:f403:c10d::3] helo=SN4PR0501CU005.outbound.protection.outlook.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <tdave@nvidia.com>)
+ id 1x2UFD-0004qE-5e; Fri, 04 Sep 2026 09:46:16 -0400
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=a79fN12wax3IadTz/G5/GKEw7D0c8eEs2Q7hVlCYLDPjsldOrNHWC35JLIGpnhzxvsxnVECUlpDWjZJrRfBgwEnRAHius0zEtQDP538Rt8xXe7wxKuS/mjS1fF2M5Qvbpz2SwFv+rZjyUd3AaZ47Boya1mEJ04dFBA3K6NhfyuZ5cfWz03Y93ft9CHLvXCfPh3Yv2J0VkvMcFe1jjJmPkZdPZ6uiQUoI0he2LyJeC4Rl9qgyZZoLft8PFpdLEixS+nGEc1L2TPxkPiCn2+luf4brIlqjQV/HDMwUGitTgqAG35DzTobIHTS/nGkZ5vrZcV6lCfC/2SF4nwOyDtvcZw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=obC1kYaEj5P9+tIX2Y88w78bw7B8Z2BIT/cXpkpIseI=;
+ b=iotjz5H/P5+1JWrAgdNLIq9pvCIfDwzdMm1GxrIMPrv54TDWFr5UmbghAGNosrHNahRFOeDslQFz8rwUJQnAFYb1sO0vPIoBhFvXpxmvSKgV6zhDPUP1ohy95FQ+d3W+qR51C3aTMhlMj1J7dvctIteZJJ/uvGspbt1K0WtaODcd5JA56ouSBJsXdag6VoYTcY/w6P3IFnmnRjS6WGBgGmymRe3h7YXCHRQk1vXlV0LWDN1EgpvuAOkueuiYDlYpg9J6ybAiBEmU6NOh6NIIUBDFpMEYiIsab80kqt1ZmxoKunaTL8w4kQzgzXxwXo8H6kjIbNT9upz+QFXl3hw7ng==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=nvidia.com; dmarc=pass action=none header.from=nvidia.com;
+ dkim=pass header.d=nvidia.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Nvidia.com;
+ s=selector2;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=obC1kYaEj5P9+tIX2Y88w78bw7B8Z2BIT/cXpkpIseI=;
+ b=TjuFpmMVbKxCQKlvkO1vHgo+vPYc8E00W+H/1N9qe6pEQNl3r6yQ1/PAzg2+95IokUI7eL9P2YmP0vt1VMKnHbGz6aSb11HbDcqPX2K2WVdUbkSA5Q88OnB3ofPmUyEEVNaA8VYa4wOLpIT0MSZ1va9h1N04nPuf+K+7P1nrJZOLAvemGOKzHeXuqpNm2F4W27jikHtW1aEXSxk/0W7bBkPAE2jrzFlbCRGPOfF1Ol8G/F40bVD2j0K7KF0w+U5J4EHU0emodwmj6oGG7gjbYlzJlYmoBOsu9pmZ1WtXtC3CzOoTgHbe4nEUTOwUigQ3bk8n23s/JFo4BxehTwMSVA==
+Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=nvidia.com;
+Received: from DM4PR12MB9736.namprd12.prod.outlook.com (2603:10b6:8:225::9) by
+ DM4PR12MB8560.namprd12.prod.outlook.com (2603:10b6:8:189::20) with
+ Microsoft
+ SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.21.360.13; Fri, 4 Sep 2026 13:46:07 +0000
+Received: from DM4PR12MB9736.namprd12.prod.outlook.com
+ ([fe80::ed33:f342:886b:dc8e]) by DM4PR12MB9736.namprd12.prod.outlook.com
+ ([fe80::ed33:f342:886b:dc8e%6]) with mapi id 15.21.0360.008; Fri, 4 Sep 2026
+ 13:46:06 +0000
+Message-ID: <c6ff4e0f-c986-4ae6-bb85-69dbe1cf2dfe@nvidia.com>
+Date: Fri, 4 Sep 2026 08:46:02 -0500
+User-Agent: Mozilla Thunderbird
+Subject: Re: [RFC PATCH v2 0/5] hw/pci, hw/arm/virt: fixed PCI BAR placement
+To: Gerd Hoffmann <kraxel@redhat.com>
+Cc: Alex Williamson <alex@shazbot.org>, qemu-devel@nongnu.org,
+ jgg@nvidia.com, skolothumtho@nvidia.com, qemu-arm@nongnu.org,
+ peter.maydell@linaro.org, mst@redhat.com, marcel.apfelbaum@gmail.com,
+ devel@edk2.groups.io
+References: <20260827004024.598351-1-tdave@nvidia.com>
+ <ao_fX3cYersq6TRd@sirius.home.kraxel.org>
+ <20260827074733.340aeb0c@shazbot.org>
+ <apV1FXabgOVdAqQu@sirius.home.kraxel.org>
+ <b4d51232-43a0-4058-af96-5c3ca847edd8@nvidia.com>
+ <ape0Mbd7Lt4KS-wN@sirius.home.kraxel.org>
+ <37f31842-e79a-4089-82ad-8003fd47fdb8@nvidia.com>
+ <apk_QiR3FDiMndgI@ghoffman-na.rmtde.csb>
+From: Tushar Dave <tdave@nvidia.com>
+Content-Language: en-US
+In-Reply-To: <apk_QiR3FDiMndgI@ghoffman-na.rmtde.csb>
 Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::32d;
- envelope-from=alex.bennee@linaro.org; helo=mail-wm1-x32d.google.com
+Content-Transfer-Encoding: 7bit
+X-ClientProxiedBy: BY5PR03CA0006.namprd03.prod.outlook.com
+ (2603:10b6:a03:1e0::16) To DM4PR12MB9736.namprd12.prod.outlook.com
+ (2603:10b6:8:225::9)
+MIME-Version: 1.0
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: DM4PR12MB9736:EE_|DM4PR12MB8560:EE_
+X-MS-Office365-Filtering-Correlation-Id: ae93b17f-d316-40bc-5b7b-08df0a8ade90
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;
+ ARA:13230040|376014|23010399003|366016|1800799024|4143699003|10067099003|11063799006|56012099006|22082099003|18002099003;
+X-Microsoft-Antispam-Message-Info: 5NzYQ0d3Rj5K7WzeV33sPmBkclbfkmtDvzTEt9XPQEGOLnqW4EhgQ+lg5+P6iI99j8DtFQ5bA5ruTY6yUiJmMJ4PVaoZ9igCgyQaTtF0NW9aClyB2E/1CnKD0v2ZdZE03kIfNuG5PBw8zxBiKMD8W2TCOhfPdJtViXD/tDFbPaufDz5jTv8TZau2i4agPnrEgcsCJIeGab8Y7RiiZ8xkkhRyGHByEnKtbr1NxCWmNW9P1LNPhMC9H4G0vZ1SSbYhm/YU4OBxQHgocQDGj4VQP1qpX2VBwdWotBPYvBIJte05lopCpDStBgmQmCAv9oTnnt1/jJPs4LbFxcIV6Q7qT0LDyCFahhRdRyotkW8uoDx44BwY07lYITpjzdIG2TekYLKrQ2t24cegPbVOT8OJNDwqcFQahLbe5rVdz45baoCWebsWqSyTaahwSCFrP0P3fok44omgcyCdTlaJI/AJk4fh/QWM+NTPX3X2PQIyrqSggbtwEiSaitY8ORXjywaU6yBm64tRYqBMMbW5P6hqPzIoctZ4afDLQ69t8m1gih01XCVW8D2cevXPH3vPsBnmPx1yGUTIpYeqb9SCn7xniSftmLc1oZevPh6km2oiA+8xbyHOKoAyBKikpuAIkcKSZXIydAySNG/ER2b7tIEfiUyxaGuYAMm2B6BNYBtAMZo=
+X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:DM4PR12MB9736.namprd12.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(13230040)(376014)(23010399003)(366016)(1800799024)(4143699003)(10067099003)(11063799006)(56012099006)(22082099003)(18002099003);
+ DIR:OUT; SFP:1101; 
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?d1lmRUtuMm1jRXpMakNBL3dJeUhlbVBJRnBXRG8rTWd2bFp3QmJYeE16MTNa?=
+ =?utf-8?B?dnFiemRnLzNlZlhTOEQvdnhsN0J2Qk4vdWlxUmdKZjFlVDV3elJpUTBEd1Bm?=
+ =?utf-8?B?c0JoMHNqajBsVlVQcUxvM2xJQTM3cElHQVArUkFGNnphSEpJaVVkSFFDaEl4?=
+ =?utf-8?B?YnlWcGtEZ3ZJamJkWEdYYXJUK0daRUo3ZmR4QzZLV1N5TW1lQVR6V1pQZVlF?=
+ =?utf-8?B?NlJycHFLQzNvSXlWMG1KcTA2UWozQUExeEtvZW4rNGhUc2pOY2RWT1dabWJR?=
+ =?utf-8?B?dXpPS1hlTjc4bGVVaTluN0NDb2J6ai9TNG5zTTgzUmFXMXArMWpjbjlQRzNX?=
+ =?utf-8?B?MmtCcHdqWGlWakJCTDdGQWd3ZlZkMTZKU09GcjN4STk1TVhMdHdvbmtlTmVU?=
+ =?utf-8?B?bVdTeGV6cEpiWDlhdzV5QjhKazA3Z3pibE55NWZYYUVNblZ1QkxocGk3bnY3?=
+ =?utf-8?B?aUtqSUFDRG1xMjd3RUNkTUR5QVNpODdvdEJxYzZBOXgvMXJWYjMzY0FCZmRL?=
+ =?utf-8?B?azlhSC9MVG9DUmxUdG1WbVRhT2J5VkJSYVJocmpIN3RQamYvc2txZDE3U244?=
+ =?utf-8?B?OW9jVVYwZCswWlhURmJFTSsyS0RTQXRna3VNLzB1STBaTzhoOWc2QVNCVjhX?=
+ =?utf-8?B?ZmZjSGV4OVVZSXg0d0xveGUrRUpFd2tLbzN3OVB0anhBa2l5a3FCd3BvV3NH?=
+ =?utf-8?B?WUtibUwrYlAzc1JFMXhxdUY4bFBoTENHRVpKL0k0VXg0VDdmU1M3K2Z6Y2pw?=
+ =?utf-8?B?dm1SWHI1TDAvQ1huNy80ckl3RzJEODZDN2owelI2ZERPK2tWZFltNFAyUkd2?=
+ =?utf-8?B?dVF1cVN1VkxpbUxzc3I3NE14Y3Q3OEJ2cFlzV1lwS2tKWjRmcW1qNThRbUxF?=
+ =?utf-8?B?UUJWV0VrNUJFRFFQakJzZjZybFJXd3dWNk1UTC9Ma2ptbDRVZDBDc3BQZGd5?=
+ =?utf-8?B?VzZJbEwzTDZTU0g5RnM4cGNlSmpqaEYwSEJSeWhpSllSaXJ4b2Z4OGYyUFVy?=
+ =?utf-8?B?RlBaNkViZ0RDQmZYSDZpd1lOTDM2Y0pnY2VWWWV1T2xBQXlTeUdTdEgvRUFj?=
+ =?utf-8?B?YlJURmgyVEhVREUyL2FZekxnbzE5VG1kc01UV2tzV1dtSmJOT2xmRkdLeFRh?=
+ =?utf-8?B?NEQ0ck9SSjRTVWdHaDltVVhySmtOTXpKYnpDVWhEem1QeEIvVHJhL20zY2Vp?=
+ =?utf-8?B?VytTUEE3VnNCUGQvelJRNHA2bk5tanI4R1hwUUFJT3ZoK1dXcVFTTzZ1NVBr?=
+ =?utf-8?B?RG94QUhvZTZnRzBJNUhlQmJlNTgxaXBSczIxc0lIdXYwVE9UMGJ0WnlXRkc0?=
+ =?utf-8?B?OFg4QWt4L3pDdDY4TUFlVUtGTFh3akhsT1VkaWZ3MVVhdEdIbUY3MnVTc3Fl?=
+ =?utf-8?B?Rnd2bGNCR213VEFBK0o4cmJpVHZZYWhXc0FtRDZ0UU9XUFpIZ25wR1ltOGln?=
+ =?utf-8?B?NzhuemtSQU4zaWtoUzNyUmc4a3pmRG9qNUd3M3ZpSWJLenFNbEkzeVdFSmlr?=
+ =?utf-8?B?K0Y4V3FzWWFyK0x0SWV3L0dOaVdEbXBVSkNEMVlnOTlyN0NNQnJ2NEtybjVV?=
+ =?utf-8?B?QVpNcjVZVmFERUFNdlIvVHp3ajduM1FMQ1Y0WFhQT1hvc3NkazMxanFmQzRS?=
+ =?utf-8?B?RXhkNGZtWFE2MFN6bVVGSkpiUjJvNEFRZWZhcG5TWUIrR2U3VHdtVmVOd1gy?=
+ =?utf-8?B?ZWNnM253Ky9WWXM3bm9YRFZWWENrSnMwVVpXa1ErdXM2anBWN0Q1cU9zRTQv?=
+ =?utf-8?B?eWNvWWpsWG5IcmZseTNwVURXOXY4ZXhrVDdNRWlUOWVkYXhHNVMvNXRaYjdo?=
+ =?utf-8?B?b2IwVlVsU2M2WUpSRHAyNyt6cm9LTGdSeVdFR29FeXN3dGdGTm8ySFYxTnJa?=
+ =?utf-8?B?V1dhdmdSSENMRmpyY29iY2FZR2wrTk9GWlhuZnhONzBrQWJzOFgyV2x3bTRX?=
+ =?utf-8?B?UGh1bW40VEgzZEVnUmt3TlJqYUpPUGxQMFIrcTQzMG9JV0U2Q24yMGVpeG5h?=
+ =?utf-8?B?YnBWeXpZc3IwWU5jV0FNaDVzbWl2UWlsS2hKbEwwQWo5MUZZV2hmK3NzTkpw?=
+ =?utf-8?B?Vm5GZkw2RkpKNVF3anpackROc2JaMkMxUi9xbDdzdGgwUzZwS2U0bndkVFN5?=
+ =?utf-8?B?bjM0Q0lGZFU2Qnd6ZWlCWUR1NFBiNnBUQndzb1l4S3oyanZsUFcvb2FUNjJF?=
+ =?utf-8?B?dUgrbm9qMHZmcDJZMDRZcm1wTUIvM3F0SGMvZGo1Mzl1c2dENXZrT1daQllP?=
+ =?utf-8?B?VVNYVnVBL3U2MjZaV0xaYnZUMitrbmlSVEZCMUpUbVNWRlRDZEVvbU8rYUpM?=
+ =?utf-8?Q?eqtErEVHhrGFvou3Jf?=
+X-OriginatorOrg: Nvidia.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: ae93b17f-d316-40bc-5b7b-08df0a8ade90
+X-MS-Exchange-CrossTenant-AuthSource: DM4PR12MB9736.namprd12.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 04 Sep 2026 13:46:06.7804 (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 43083d15-7273-40c1-b7db-39efd9ccc17a
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: DXSq5uoCq3oa06Ryk0bxfixQRvgNAsLLSwMLFAjeziiZpOj7PKsE8+vX1jvSBOC3K2k4Q+1kr5ofXW2qPGzICw==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: DM4PR12MB8560
+Received-SPF: permerror client-ip=2a01:111:f403:c10d::3;
+ envelope-from=tdave@nvidia.com;
+ helo=SN4PR0501CU005.outbound.protection.outlook.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ SPF_HELO_NONE=0.001, SPF_NONE=0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -110,296 +157,40 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-From: Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>
 
-Tested-by: Aniket Sahu <asahu1x@linux.ibm.com>
-Reviewed-by: Alex Bennée <alex.bennee@linaro.org>
-Signed-off-by: Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>
-Message-ID: <20260827221506.91574-43-pierrick.bouvier@oss.qualcomm.com>
-Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
 
-diff --git a/tests/tcg/aarch64/Makefile.softmmu-target b/tests/tcg/aarch64/Makefile.softmmu-target
-deleted file mode 100644
-index 3f30be6c5d6..00000000000
---- a/tests/tcg/aarch64/Makefile.softmmu-target
-+++ /dev/null
-@@ -1,147 +0,0 @@
--#
--# Aarch64 system tests
--#
--
--AARCH64_SRC=$(SRC_PATH)/tests/tcg/aarch64
--AARCH64_SYSTEM_SRC=$(AARCH64_SRC)/system
--
--VPATH+=$(AARCH64_SYSTEM_SRC)
--
--# These objects provide the basic boot code and helper functions for all tests
--CRT_OBJS=boot.o
--
--AARCH64_TEST_C_SRCS=$(wildcard $(AARCH64_SYSTEM_SRC)/*.c)
--AARCH64_TEST_S_SRCS=$(AARCH64_SYSTEM_SRC)/mte.S
--
--AARCH64_C_TESTS = $(patsubst $(AARCH64_SYSTEM_SRC)/%.c, %, $(AARCH64_TEST_C_SRCS))
--AARCH64_S_TESTS = $(patsubst $(AARCH64_SYSTEM_SRC)/%.S, %, $(AARCH64_TEST_S_SRCS))
--
--AARCH64_TESTS = $(AARCH64_C_TESTS)
--AARCH64_TESTS += $(AARCH64_S_TESTS)
--
--CRT_PATH=$(AARCH64_SYSTEM_SRC)
--LINK_SCRIPT=$(AARCH64_SYSTEM_SRC)/kernel.ld
--LDFLAGS=-Wl,-T$(LINK_SCRIPT)
--TESTS+=$(AARCH64_TESTS) $(MULTIARCH_TESTS)
--EXTRA_RUNS+=$(MULTIARCH_RUNS)
--CFLAGS+=-nostdlib -ggdb -O0 $(MINILIB_INC)
--LDFLAGS+=-static -nostdlib $(MINILIB_OBJS) -lgcc
--
--config-cc.mak: Makefile
--	$(quiet-@)( \
--	    $(call cc-option,-march=armv8.3-a, CROSS_CC_HAS_ARMV8_3); \
--	    $(call cc-option,-march=armv8.5-a+memtag, CROSS_CC_HAS_ARMV8_MTE)) 3> config-cc.mak
---include config-cc.mak
--
--# building head blobs
--.PRECIOUS: $(CRT_OBJS)
--
--vector_log_boot.o: $(CRT_PATH)/boot.S
--	$(CC) $(CFLAGS) $(EXTRA_CFLAGS) -DLOGGING_VECTOR_TABLE -x assembler-with-cpp -Wa,--noexecstack -c $< -o $@
--
--%.o: $(CRT_PATH)/%.S
--	$(CC) $(CFLAGS) $(EXTRA_CFLAGS) -x assembler-with-cpp -Wa,--noexecstack -c $< -o $@
--
--# Build and link the tests
--%: %.c $(LINK_SCRIPT) $(CRT_OBJS) $(MINILIB_OBJS)
--	$(CC) $(CFLAGS) $(EXTRA_CFLAGS) $< -o $@ $(LDFLAGS) boot.o
--
--memory: CFLAGS+=-DCHECK_UNALIGNED=1
--
--memory-sve: memory.c $(LINK_SCRIPT) $(CRT_OBJS) $(MINILIB_OBJS)
--	$(CC) $(CFLAGS) $(EXTRA_CFLAGS) $< -o $@ $(LDFLAGS) boot.o
--
--memory-sve: CFLAGS+=-DCHECK_UNALIGNED=1 -march=armv8.1-a+sve -O3
--
--gpc-test: gpc-test.c $(LINK_SCRIPT) vector_log_boot.o $(MINILIB_OBJS)
--	$(CC) $(CFLAGS) $(EXTRA_CFLAGS) $< -o $@ $(LDFLAGS) vector_log_boot.o
--
--TESTS+=memory-sve gpc-test
--
--# Running
--QEMU_BASE_MACHINE=-M virt -cpu max -display none
--QEMU_BASE_ARGS=-semihosting-config enable=on,target=native,chardev=output
--QEMU_OPTS+=$(QEMU_BASE_MACHINE) $(QEMU_BASE_ARGS) -kernel
--
--# console test is manual only
--QEMU_SEMIHOST=-serial none -chardev stdio,mux=on,id=stdio0 -semihosting-config enable=on,chardev=stdio0 -mon chardev=stdio0,mode=readline
--run-semiconsole: QEMU_OPTS=$(QEMU_BASE_MACHINE) $(QEMU_SEMIHOST) -kernel
--run-semiconsole: semiconsole
--	$(call skip-test, $<, "MANUAL ONLY")
--	$(if $(V),@printf "  %-7s %s %s\n" "TO RUN" $(notdir $(QEMU)) "$(QEMU_OPTS) $<")
--run-plugin-semiconsole-with-%: semiconsole
--	$(call skip-test, $<, "MANUAL ONLY")
--
--# vtimer test needs EL2
--QEMU_EL2_MACHINE=-machine virt,virtualization=on,gic-version=2 -cpu cortex-a57 -smp 4
--QEMU_EL2_BASE_ARGS=-semihosting-config enable=on,target=native,chardev=output,arg="2"
--run-vtimer: QEMU_OPTS=$(QEMU_EL2_MACHINE) $(QEMU_EL2_BASE_ARGS) -kernel
--
--# gpc tests need EL3 and RME
--QEMU_EL3_MACHINE=-machine virt,virtualization=on,secure=on,gic-version=3 -cpu max,x-rme=on
--QEMU_EL3_BASE_ARGS=-semihosting-config enable=on,target=native,chardev=output,arg="3"
--run-gpc-test:  QEMU_OPTS=$(QEMU_EL3_MACHINE) $(QEMU_EL3_BASE_ARGS) -kernel
--run-gpc3-test: QEMU_OPTS=$(QEMU_EL3_MACHINE) $(QEMU_EL3_BASE_ARGS) -kernel
--
--# Simple Record/Replay Test
--.PHONY: memory-record
--run-memory-record: memory-record memory
--	$(call run-test, $<, \
--	  $(QEMU) -monitor none -display none \
--		  -chardev file$(COMMA)path=$<.out$(COMMA)id=output \
--		  -icount shift=5$(COMMA)rr=record$(COMMA)rrfile=record.bin \
--		  $(QEMU_OPTS) memory)
--
--.PHONY: memory-replay
--run-memory-replay: memory-replay run-memory-record
--	$(call run-test, $<, \
--	  $(QEMU) -monitor none -display none \
--		  -chardev file$(COMMA)path=$<.out$(COMMA)id=output \
--		  -icount shift=5$(COMMA)rr=replay$(COMMA)rrfile=record.bin \
--		  $(QEMU_OPTS) memory)
--
--EXTRA_RUNS+=run-memory-replay
--
--ifneq ($(CROSS_CC_HAS_ARMV8_3),)
--pauth-3: CFLAGS += $(CROSS_CC_HAS_ARMV8_3)
--# This test explicitly checks the output of the pauth operation so we
--# must force the use of the QARMA5 algorithm for it.
--run-pauth-3: QEMU_BASE_MACHINE=-M virt -cpu max,pauth-qarma5=on -display none
--else
--pauth-3:
--	$(call skip-test, "BUILD of $@", "missing compiler support")
--run-pauth-3:
--	$(call skip-test, "RUN of pauth-3", "not built")
--endif
--
--ifneq ($(CROSS_CC_HAS_ARMV8_MTE),)
--QEMU_MTE_ENABLED_MACHINE=-M virt,mte=on -cpu max -display none
--QEMU_OPTS_WITH_MTE_ON = $(QEMU_MTE_ENABLED_MACHINE) $(QEMU_BASE_ARGS) -kernel
--mte: CFLAGS+=-march=armv8.5-a+memtag
--mte: mte.S $(LINK_SCRIPT) $(CRT_OBJS) $(MINILIB_OBJS)
--	$(CC) $(CFLAGS) $(EXTRA_CFLAGS) $< -o $@ $(LDFLAGS) boot.o
--
--run-mte: QEMU_OPTS=$(QEMU_OPTS_WITH_MTE_ON)
--run-mte: mte
--
--ifeq ($(GDB_SUPPORTS_MTE_IN_BAREMETAL),y)
--run-gdbstub-mte: QEMU_OPTS=$(QEMU_OPTS_WITH_MTE_ON)
--run-gdbstub-mte: mte
--	$(call run-test, $@, $(GDB_SCRIPT) \
--		--output run-gdbstub-mte.out \
--		--gdb $(GDB) \
--		--qemu $(QEMU) --qargs "-chardev null$(COMMA)id=output $(QEMU_OPTS)" \
--		--bin $< --test $(AARCH64_SRC)/gdbstub/test-mte.py -- --mode=system, \
--	gdbstub MTE support)
--
--EXTRA_RUNS += run-gdbstub-mte
--else # !GDB_SUPPORTS_MTE_IN_BAREMETAL
--run-gdbstub-mte:
--	$(call skip-test "RUN of gdbstub-mte", "GDB does not support MTE in baremetal!")
--endif
--else # !CROSS_CC_HAS_ARMV8_MTE
--mte:
--	$(call skip-test, "BUILD of $@", "missing compiler support")
--run-mte:
--	$(call skip-test, "RUN of mte", "not build")
--endif
-diff --git a/tests/tcg/aarch64/meson.build b/tests/tcg/aarch64/meson.build
-index 9ec8df169d5..28498e82cba 100644
---- a/tests/tcg/aarch64/meson.build
-+++ b/tests/tcg/aarch64/meson.build
-@@ -21,6 +21,8 @@ gdb_feat_version = {
-   'mte-baremetal': '16.0',
- }
- 
-+subdir('system')
-+
- tests = []
- 
- # Multi arch tests
-diff --git a/tests/tcg/aarch64/system/meson.build b/tests/tcg/aarch64/system/meson.build
-new file mode 100644
-index 00000000000..94e16ba3300
---- /dev/null
-+++ b/tests/tcg/aarch64/system/meson.build
-@@ -0,0 +1,109 @@
-+tests = []
-+
-+minilib_dir = meson.current_source_dir() / '..' / '..' / 'minilib'
-+minilib_printf = files(minilib_dir / 'printf.c')[0]
-+link_script = files('kernel.ld')[0]
-+boot = files('boot.S')[0]
-+cflags = ['-nostdlib',
-+          '-ffreestanding',
-+          '-Wa,--noexecstack',
-+          '-I', minilib_dir, minilib_printf, boot,
-+          '-Wl,-T', link_script]
-+qemu_base_args = ['-display', 'none',
-+                  '-semihosting-config', 'enable=on',
-+                  '-kernel']
-+qemu_def_args = ['-M', 'virt', '-cpu', 'max', qemu_base_args]
-+
-+# Multi arch tests - add cflags only once per src
-+multi_src = []
-+foreach t: tcg_tests['multiarch-softmmu']['tests']
-+  foreach src, setup: t
-+    new_cflags = cflags
-+    if fs.stem(src) == 'memory'
-+      new_cflags += '-DCHECK_UNALIGNED=1'
-+    endif
-+    if src not in multi_src
-+      setup += {'cflags': [new_cflags]}
-+      multi_src += src
-+    endif
-+    tests += {src: setup + {'qemu_args': qemu_def_args}}
-+  endforeach
-+endforeach
-+
-+tests += {
-+  '../../multiarch/system/memory.c': {
-+    'exe_name': 'memory-sve',
-+    'cc_feat': 'sve',
-+    'cflags': [cflags, '-DCHECK_UNALIGNED=1', '-O3'],
-+    'qemu_args': qemu_def_args,
-+  },
-+}
-+
-+tests += {
-+  'asid2.c': {'cflags': cflags, 'qemu_args': qemu_def_args},
-+  'feat-xs.c': {'cflags': cflags, 'qemu_args': qemu_def_args},
-+  'gpc-test.c': {
-+    'cflags': [cflags, '-DLOGGING_VECTOR_TABLE',
-+               '-Wno-main', '-Wno-unused-but-set-variable'],
-+    'qemu_args': ['-M', 'virt,secure=on,virtualization=on,gic-version=3',
-+                  '-cpu', 'max,x-rme=on',
-+                  '-semihosting-config', 'enable=on,arg=3',
-+                  qemu_base_args],
-+  },
-+  'rme_gdi.c': {'cflags': cflags, 'qemu_args': qemu_def_args},
-+  'semiheap.c': {'cflags': cflags, 'qemu_args': qemu_def_args},
-+  'semiconsole.c': {
-+    'cflags': cflags,
-+    'qemu_args': ['-serial', 'none', '-chardev', 'stdio,mux=on,id=stdio0',
-+                  '-semihosting-config', 'enable=on,chardev=stdio0',
-+                  '-mon', 'chardev=stdio0,mode=readline',
-+                  qemu_def_args],
-+    'wrapper': [prog_run_with_input, 'X']
-+  },
-+  '../../multiarch/system/memory.c': {
-+    'test_name': 'memory-record-replay',
-+    'qemu_args': qemu_def_args,
-+    'wrapper': [prog_record_replay],
-+  },
-+  'vtimer.c': {
-+    'cflags': cflags,
-+    'qemu_args': ['-M', 'virt,virtualization=on,gic-version=2',
-+                  '-cpu', 'cortex-a57', '-smp', '4',
-+                  '-semihosting-config', 'enable=on,arg=2',
-+                  qemu_base_args]
-+  },
-+}
-+
-+tests += {
-+  'pauth-3.c': {
-+    'cc_feat': 'v8.3',
-+    'cflags': cflags,
-+    'qemu_args': ['-M', 'virt', '-cpu', 'max,pauth-qarma5=on', qemu_base_args],
-+  }
-+}
-+
-+tests += {
-+  'mte.S': {
-+    'cc_feat': 'mte',
-+    'cflags': cflags,
-+    'qemu_args': ['-M', 'virt,mte=on', '-cpu', 'max', qemu_base_args],
-+    'gdb_test': ['--test', files('../gdbstub/test-mte.py'), '--', '--mode=system'],
-+    'gdb_feat': 'mte-baremetal',
-+  }
-+}
-+
-+if 'qemu-system-aarch64' in emulators
-+  tcg_tests += {
-+    'aarch64-softmmu': {
-+      'cc': cc,
-+      'cc_dockerfile': cc_dockerfile,
-+      'cc_docker_host_arch': cc_docker_host_arch,
-+      'cc_feat_cflags': cc_feat_cflags,
-+      'folder': 'aarch64/system',
-+      'gdb_arch': 'aarch64',
-+      'gdb_feat_version': gdb_feat_version,
-+      'qemu': emulators['qemu-system-aarch64'],
-+      'tests': tests,
-+    }
-+  }
-+endif
--- 
-2.47.3
+On 9/3/2026 4:47 AM, Gerd Hoffmann wrote:
+>   Hi,
+> 
+>>> Also note that OVMF already has an incompatible pci device driver and
+>>> there can be only one instance, so the code must be merged into the
+>>> existing driver instead of adding a second.
+>>
+>> I checked OvmfPkg/IncompatiblePciDeviceSupportDxe -- its CheckDevice()
+>> is unconditional, it returns the same 64-bit-MMIO-preference descriptor
+>> for every device regardless of VendorId/DeviceId. Merging Fixed BAR
+>> design in would make it a simple dispatch: if the device has an entry in
+>> the fw_cfg blob we export, return our descriptor; otherwise fall through
+>> to the existing behavior unchanged. Does that match what you had in
+>> mind, or is there a different integration point you'd prefer?
+> 
+> For the most part yes.
+> 
+> I'd suggest to keep the fixed-bars code in a separate source file,
+> then just add a small dispatch hook to the existing CheckDevice
+> function.  In case there is a fixed-bars entry use that instead of the
+> hardcoded template.
+> 
+> The option rom tweak for confidential VMs should be applied to the
+> fixed-bars entries too, so don't return early.
+
+Okay, thanks. I will incorporate all the changes and send the non-RFC
+patch series.
+
+Thanks.
+-Tushar
+> 
+> take care,
+>   Gerd
 
 

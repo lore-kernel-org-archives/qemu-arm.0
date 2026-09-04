@@ -4,79 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EB01CC624DB
-	for <qemu-arm@archiver.kernel.org>; Fri,  4 Sep 2026 03:10:23 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C692AC61DD6
+	for <qemu-arm@archiver.kernel.org>; Fri,  4 Sep 2026 04:38:02 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1x2KJI-0000TC-KW; Thu, 03 Sep 2026 23:09:48 -0400
+	id 1x2Lgc-0003m5-Fs; Fri, 04 Sep 2026 00:37:58 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <enju.kohei@fujitsu.com>)
- id 1x2KJH-0000Sl-4g; Thu, 03 Sep 2026 23:09:47 -0400
-Received: from esa12.hc1455-7.c3s2.iphmx.com ([139.138.37.100])
+ (Exim 4.90_1) (envelope-from <mohamed@unpredictable.fr>)
+ id 1x2Lgb-0003kT-2S
+ for qemu-arm@nongnu.org; Fri, 04 Sep 2026 00:37:57 -0400
+Received: from pv-2001d-snip6-11.eps.apple.com ([2a01:b747:3003:200::29]
+ helo=outbound.pv.icloud.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <enju.kohei@fujitsu.com>)
- id 1x2KJF-0000Y3-7E; Thu, 03 Sep 2026 23:09:46 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple;
- d=fujitsu.com; i=@fujitsu.com; q=dns/txt; s=fj2;
- t=1788491385; x=1820027385;
- h=date:from:to:cc:subject:message-id:references:
- mime-version:in-reply-to;
- bh=9Y4wgbNgAjv+eE+KIA/oCpZuJVblXsW/G+HiW1/93os=;
- b=fHCTqPvRuE6VnMWNgSvoqdhB62+Yh/J2dSy15NX8zefRwy2CL5UipVgA
- cQ+ZEAeh5ydOk4u81bDlRg6vwuZKPZbHkPcqzaHbQ8ozYJQWRXKvb4sRA
- jnj0IW1iTfz39Ie2K5oX4kY1fT6cGxxsoRzECEBlziraLGF3L3WtkCBC9
- t5Dg/BkYD9Bs1erp5XlVDxC/iqi1aaiQjSl+Pj3nBGKQfd1fhqYbGFReO
- gu+YJE+7DJunTcp678ZBEuJ6eU7OYbhsKK1crjmDRaGoQXJlmGp/ejw2C
- rsFvsdL6Bnq5p34AhNQDlhKtV5a93v4VDmGs+jKy0U402aM3IZqyElNF8 w==;
-X-CSE-ConnectionGUID: 76ui1K6FSmSpZ/aa7xKLFg==
-X-CSE-MsgGUID: 1U9U2KkvSVakedxHz0ULWQ==
-X-IronPort-AV: E=McAfee;i="6800,10657,11895"; a="231554971"
-X-IronPort-AV: E=Sophos;i="6.25,260,1779116400"; d="scan'208";a="231554971"
-Received: from gmgwnl01.global.fujitsu.com ([52.143.17.124])
- by esa12.hc1455-7.c3s2.iphmx.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 04 Sep 2026 12:09:40 +0900
-Received: from az2nlsmgm3.fujitsu.com (unknown [10.150.26.205])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
- (No client certificate requested)
- by gmgwnl01.global.fujitsu.com (Postfix) with ESMTPS id 6ACCA406110;
- Fri,  4 Sep 2026 03:09:40 +0000 (UTC)
-Received: from az2uksmom4.o.css.fujitsu.com (unknown [10.151.22.204])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
- (No client certificate requested)
- by az2nlsmgm3.fujitsu.com (Postfix) with ESMTPS id 18A301800D6B;
- Fri,  4 Sep 2026 03:09:40 +0000 (UTC)
-Received: from FCCLS0092175.localdomain (unknown [10.9.19.125])
- by az2uksmom4.o.css.fujitsu.com (Postfix) with SMTP id 1C2954045ED;
- Fri,  4 Sep 2026 03:09:33 +0000 (UTC)
-Date: Fri, 4 Sep 2026 12:09:32 +0900
-To: Mathieu Poirier <mathieu.poirier@linaro.org>
-Cc: berrange@redhat.com, kchamart@redhat.com, 
- pierrick.bouvier@oss.qualcomm.com, peter.maydell@linaro.org, mst@redhat.com,
- cohuck@redhat.com, 
- pbonzini@redhat.com, eblake@redhat.com, armbru@redhat.com, 
- lorenzo.pieralisi@linaro.org, gshan@redhat.com, qemu-devel@nongnu.org,
- qemu-arm@nongnu.org, kvm@vger.kernel.org
-Subject: Re: [RFC v4 07/24] target/arm/kvm: Create scratch Realm VM when
- requested
-Message-ID: <apo185JSe61bK3zm@FCCLS0092175.localdomain>
-References: <20260903193611.1058589-1-mathieu.poirier@linaro.org>
- <20260903193611.1058589-8-mathieu.poirier@linaro.org>
+ (Exim 4.90_1) (envelope-from <mohamed@unpredictable.fr>)
+ id 1x2LgY-0003im-JZ
+ for qemu-arm@nongnu.org; Fri, 04 Sep 2026 00:37:56 -0400
+Received: from outbound.pv.icloud.com (unknown [127.0.0.2])
+ by p00-icloudmta-asmtp-us-west-1a-100-percent-11 (Postfix) with ESMTPS id
+ B57C618000E3; Fri, 04 Sep 2026 04:37:48 +0000 (UTC)
+X-ICL-RepId: 01a06ab5-67fd-7bd0-92f9-5931be412536
+X-ICL-Out-Info: HUtFAUMHWwJACUgBTUQeDx5WFlZNRAJCTQ1OHVwPUhxEDlYCVRcOVk1UF1sMWg5WMEwWQx9SD1sTTRlRAVJFVAIZHldQQgVCAlwcWg5DClAcXFZVHxcZUU0OWFsIWwQPH0wMUQJCBVZeSQ4dBFQHXQVdVlACWktCBEtFaFwFXBxAF0gdX2pLVhQEDV0dRQ5WGVoMUg9bDhwWS1heBFNWDkIJSgVdDlsGQA1LBFkFRQtGD0kAQAVGXx9RGV4IUytHHkkKVgleCEYRWxRWQ1EZDFBNAUMICghHA00XXjJTBF8RUBY=
+Dkim-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=unpredictable.fr;
+ s=sig1; t=1788496670; x=1791088670;
+ bh=w/0h1F7lLj4GVLQTQQjPrUbmnfLN71VsnNwG2wgM5J0=;
+ h=From:To:Subject:Date:Message-ID:MIME-Version:x-icloud-hme;
+ b=Ekis5jYi9y6eE1ZUqOpTDEUWg92HpG9P5ttQJMR9pm2KY1zForpmhczhZzgElEPMBFSvYMrWJinDhV2I7OL27t9bGgh+MQyZBcRdxpx9skKEBmx2gqXJZVTYP7lb+ov5rc3MVqH/vT8IL0kbTD9dVTiMa0muzRQgPXxZpObU34jdBWys1TGO7dC9dqfIYk79wFM3D8ZOOO5E6Ne+wHLz1yuHBK9P3zrK6Caoh05DAfTOyxHbNS96RdbXBokfBGWjyQYBo53UhhacV/ZAhMz48MRF/yvwyPRb6Eqn5Ws1BgRismfCZRYm3VHtiv2TeL3k84pw1fIqvAHFA+tbxYvrSA==
+mail-alias-created-date: 1752046281608
+Received: from localhost.localdomain (unknown [17.156.192.29])
+ by p00-icloudmta-asmtp-us-west-1a-100-percent-11 (Postfix) with ESMTPSA id
+ C109B18000D0; Fri, 04 Sep 2026 04:37:46 +0000 (UTC)
+From: Mohamed Mediouni <mohamed@unpredictable.fr>
+To: qemu-devel@nongnu.org
+Cc: Phil Dennis-Jordan <phil@philjordan.eu>,
+ Roman Bolshakov <rbolshakov@ddn.com>, qemu-arm@nongnu.org,
+ Peter Maydell <peter.maydell@linaro.org>, Alexander Graf <agraf@csgraf.de>,
+ Mohamed Mediouni <mohamed@unpredictable.fr>
+Subject: [PATCH v2 1/5] hvf: arm: advertise ID_AA64PFR0_EL1.GIC
+Date: Fri,  4 Sep 2026 06:37:38 +0200
+Message-ID: <20260904043742.96613-2-mohamed@unpredictable.fr>
+X-Mailer: git-send-email 2.54.0
+In-Reply-To: <20260904043742.96613-1-mohamed@unpredictable.fr>
+References: <20260904043742.96613-1-mohamed@unpredictable.fr>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-In-Reply-To: <20260903193611.1058589-8-mathieu.poirier@linaro.org>
-Received-SPF: pass client-ip=139.138.37.100;
- envelope-from=enju.kohei@fujitsu.com; helo=esa12.hc1455-7.c3s2.iphmx.com
-X-Spam_score_int: -27
-X-Spam_score: -2.8
+Content-Transfer-Encoding: 8bit
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwOTA0MDA0MSBTYWx0ZWRfX7a8qAZJWHick
+ 5uN5v7M1Q3sC9u4c9QWgVL8GUc/xJhWDz/MMB0EAyZkDIfh5qCNOXPXRKABf6ky4E6fCTot3u0a
+ L90gdL/tgKnUWABLJocXmtjfoyodSvwoJkBJ6PNgg8AS4NN1dc+KlzENe8IBkPLygVzZfLDj4gF
+ admZqrrV46zSGQWXakwPcZO1z/+P7+xOdQXBj+huPmM/H/DQDSTGfvs3cQ1Gh1C9HPN8Zz6nWvh
+ njVdqQqSg4uZArPKFpQ0Xj3/7fuJB/eamiPfziqD0MCqkTecXseKH4rszJyyUp2docHgQHVY1gc
+ KFxbUtmLJRISkBpm0AUOVA+UARcjsJ4Ifeo+aEo346BTHizUHjCZnG5jU38nOA=
+X-Authority-Info-Out: v=2.4 cv=L98QguT8 c=1 sm=1 tr=0 ts=6a9a4b1d
+ cx=c_apl:c_pps:t_out a=aW9mcIavGNWWFvFFKOxBSA==:117
+ a=aW9mcIavGNWWFvFFKOxBSA==:17 a=VdqzKS8jKosA:10 a=VkNPw1HP01LnGYTKEx00:22
+ a=PxskMMFkHs8dM-QmR_QA:9
+X-Proofpoint-GUID: eGZUGH6g_xW4fGpbsjZKjf90SAMyRelw
+X-Proofpoint-ORIG-GUID: eGZUGH6g_xW4fGpbsjZKjf90SAMyRelw
+X-JNJ: AAAAAAABjv/OGCgs6OqNvW7UDHBPRS0UPqGu5waoN64aCgt9YPlNTDYYq+TzK7BOFXhzOnHNlSVljvOexOHH9nYzB3sug77AbZuOZzDVUE6nqyO6tIZKvAuGePORNw5wuXexbH7Sy0eWXvVu/9Pzq+dWga0PMyuDYGupMPlcwolEZKylQcwK5+AnV1odSRwRhSJIw5qek7E/+dhQipGxN+sY5ySIHR6DyV1qYldeUI8pcE36R1n21ui5PkUDiPS1DVyFtKszYMhDDDyFtfGZ4QbgUJPlLdeN2pxvSRyHYV/xZA5+cGmciWtbGzLRBwYM3fQ8BSYCixIt/BQk3EiPOFreSHOh4rH7zFe9Q8pqvr7a7/xCtuCnKbpxY9zyuiLMdL9cYSc1rsf1Al6KCfkOpGC7T+XJ2ce2HW5h2UP3Pz4293QANUDnWrGT5TFMsKbkqetHLnMG0Y3ixj/0KHglwIz/pUfQETnn5ra9i9beiVBzGRObPNIrePDLJYCH7wBHgSqUgkfyTaDOnuiEnCTuJkd6hdTQqdCFS8A/85iNGwRfqrC6YdkZ7/gUipH8n2aKQPMtSZHvK68PumIIhbmJLD+ozGDN7dU8B0NImbaizFvw5pivHE9CKTe/cjN2mo78Yf+QNGzVKs2YVlT8bc5PC7oMDfzcLDzvCSNzfQryhBMATUPsABzvZvXJUhvtNYFiGtsAjrJ75y5r8PIWcy267la6I6OmJxmDbttFyAG27MQTAinX+bsM8eMeVefM1QanP3bO14GmUIETdn1B7omkIzIhcf5842dSourNfIq6ZDTexBpiRJVsqpqLE9mequU/AGwXs43q
+Received-SPF: pass client-ip=2a01:b747:3003:200::29;
+ envelope-from=mohamed@unpredictable.fr; helo=outbound.pv.icloud.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, SPF_HELO_PASS=-0.001,
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_PASS=-0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -90,23 +82,40 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-to:  Kohei Enju <enju.kohei@fujitsu.com>
-From:  Kohei Enju via <qemu-arm@nongnu.org>
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On 09/03 13:35, Mathieu Poirier wrote:
-> From: Jean-Philippe Brucker <jean-philippe@linaro.org>
-> 
-> When a Realm is requested, create a scratch Realm VM by setting bit 8
+For the kernel-irqchip=on case, advertise ID_AA64PFR0_EL1.GIC.
 
-nit:
-KVM_VM_TYPE_ARM_REALM is no longer defined as 1 << 8, so shouldn't this
-be updated as well?
+Signed-off-by: Mohamed Mediouni <mohamed@unpredictable.fr>
+---
+ target/arm/hvf/hvf.c | 12 ++++++++++++
+ 1 file changed, 12 insertions(+)
 
-> of the argument given to the KVM_CREATE_VM ioctl().  Bit 7-0 are reserved
-> for the guest PA size.
-> 
-> Signed-off-by: Jean-Philippe Brucker <jean-philippe@linaro.org>
-> Signed-off-by: Mathieu Poirier <mathieu.poirier@linaro.org>
+diff --git a/target/arm/hvf/hvf.c b/target/arm/hvf/hvf.c
+index da3ec521fc..f881d6cc67 100644
+--- a/target/arm/hvf/hvf.c
++++ b/target/arm/hvf/hvf.c
+@@ -1229,6 +1229,18 @@ static bool hvf_arm_get_host_cpu_features(ARMHostCPUFeatures *ahcf)
+         FIELD_DP64_IDREG(&host_isar, ID_AA64PFR1, SME, 0);
+     }
+ 
++    /*
++     * On HVF, kernel-irqchip implies GICv3.
++     * The kernel-irqchip=off,gic-version=3 legacy case also supports
++     * the host CPU interface but advertising it in ID_AA64PFR0_EL1
++     * is not implemented yet.
++     */
++
++    if (hvf_irqchip_in_kernel()) {
++        /* Advertise the GIC system register interface */
++        FIELD_DP64_IDREG(&host_isar, ID_AA64PFR0, GIC, 1);
++    }
++
+     ahcf->isar = host_isar;
+ 
+     /*
+-- 
+2.54.0 (Apple Git-156)
+
 

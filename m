@@ -4,93 +4,96 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2E52FC624D3
-	for <qemu-arm@archiver.kernel.org>; Fri,  4 Sep 2026 11:41:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 36849C79F87
+	for <qemu-arm@archiver.kernel.org>; Fri,  4 Sep 2026 12:46:43 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1x2SHb-000615-GK; Fri, 04 Sep 2026 07:40:35 -0400
+	id 1x2TJN-0006Bz-AS; Fri, 04 Sep 2026 08:46:29 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
- id 1x2SHa-0005zV-Jr
- for qemu-arm@nongnu.org; Fri, 04 Sep 2026 07:40:34 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
- id 1x2SHY-0008JC-Qn
- for qemu-arm@nongnu.org; Fri, 04 Sep 2026 07:40:34 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1788522032;
- h=from:from:reply-to:reply-to:subject:subject:date:date:
- message-id:message-id:to:to:cc:cc:mime-version:mime-version:
- content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=R38LyZZ4K3QaJ25ZD439ymOxvz60UecUM1qk9A8ZK7U=;
- b=EAe+V36u+1j6e/y2kdxy+w/5TYi6sixZuO02WfDwpZhPeC3PE2LPpuGVkxtdihwaX4UVug
- arCb9GOmXJSbtzMmcIyGwNVtLomwR9+ApVLiBmCc8eYqm1oaGj0M0r2Ocmx4fKPVLRlc3v
- FmqS8+6jRh6chQEj92xt1H7T6lrM9cM=
-Received: from mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
- relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-588-SACnOwuKPjGbtx6UtIH1IA-1; Fri,
- 04 Sep 2026 07:40:26 -0400
-X-MC-Unique: SACnOwuKPjGbtx6UtIH1IA-1
-X-Mimecast-MFC-AGG-ID: SACnOwuKPjGbtx6UtIH1IA_1788522024
-Received: from mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com
- (mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.17])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
- (No client certificate requested)
- by mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 961E518C0FC3; Fri,  4 Sep 2026 11:40:24 +0000 (UTC)
-Received: from redhat.com (headnet03.pony-001.prod.iad2.dc.redhat.com
- [10.2.32.114])
- by mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id A810E1955F70; Fri,  4 Sep 2026 11:40:21 +0000 (UTC)
-Date: Fri, 4 Sep 2026 12:40:18 +0100
-From: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
-To: Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@oss.qualcomm.com>
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- Markus Armbruster <armbru@redhat.com>,
- Bernhard Beschow <shentey@gmail.com>, Bin Meng <bmeng.cn@gmail.com>,
- Pierrick Bouvier <pierrick.bouvier@linaro.org>,
- Daniel Henrique Barboza <daniel.barboza@oss.qualcomm.com>,
- Bin Meng <bin.meng@processmission.com>,
- QEMU <qemu-devel@nongnu.org>, Paolo Bonzini <pbonzini@redhat.com>,
- qemu-arm@nongnu.org, Yonggang Luo <luoyonggang@gmail.com>,
- Anton Johansson <anjo@rev.ng>
-Subject: Re: [PATCH 02/33] hw/arm: Add basic Phytium Pi machine
-Message-ID: <apquInYkhrswaxHl@redhat.com>
-References: <20260903112532.3276678-1-bin.meng@processmission.com>
- <20260903112532.3276678-3-bin.meng@processmission.com>
- <0795176d-4580-4acc-a3cf-c40f8d221661@oss.qualcomm.com>
- <CAEUhbmW4h_-az5iBsztzy8Yuu06+WMjOYcrL51sW8VEgyAaSMw@mail.gmail.com>
- <881be57e-5496-41f2-af0b-e21087fa5e54@oss.qualcomm.com>
- <apqcmqpJEEyc7wGx@redhat.com>
- <CAFEAcA-s+zsChqxYa258GOXdjniusdYeOCzGd6OiHWBQZV1Syg@mail.gmail.com>
- <apqfJ58nhZZIH8Su@redhat.com>
- <CAFEAcA_ZqLjPxo2GjW9vgvyVHw5iABphE91Dk7u+OAj3Ls3TMg@mail.gmail.com>
- <a8ced3da-7dfa-49c1-b65e-c2290e0f6ca7@oss.qualcomm.com>
+ (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
+ id 1x2TJJ-00069P-5C
+ for qemu-arm@nongnu.org; Fri, 04 Sep 2026 08:46:25 -0400
+Received: from mail-wr1-x431.google.com ([2a00:1450:4864:20::431])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
+ id 1x2TJE-0006rB-Ue
+ for qemu-arm@nongnu.org; Fri, 04 Sep 2026 08:46:24 -0400
+Received: by mail-wr1-x431.google.com with SMTP id
+ ffacd0b85a97d-4843e9c5960so976918f8f.0
+ for <qemu-arm@nongnu.org>; Fri, 04 Sep 2026 05:46:19 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1788525979; x=1789130779; darn=nongnu.org;
+ h=content-transfer-encoding:content-type:mime-version:references
+ :in-reply-to:message-id:date:subject:cc:to:from:from:to:cc:subject
+ :date:message-id:reply-to:content-type;
+ bh=g5//nCM3pmvphFdrXdMpuw8XsMrA3mZsffpPB3jrr14=;
+ b=H+4gA4W9QErtVPR1BZuVe8G4qm4gv8nDf6B0wu+dXBGQl2vaWWZ7fyBC3O7b7qqKL4
+ mMEDkRQYxBE5qYNztJxvWYXzcChNpnYeT1T62/KDTAhHLHdd4aDTzuw6UPe37911dqaO
+ tUmAajDMWrnUAlDZtevi794bS/yb6UCxt2mL5kgFKGdsfdi+Umce+aC/n2kdxxh26Bfc
+ USwAAgM9BaZC1LbKmFqHro6ns4KRmgL+h5N1xqxTcjGrV7tPtlONeEKRhdDrc/gCpYze
+ mzAi6htYTBNhhg0g6rlXKYx9Zsi5K9Dk7p2ac+I8/aIgfplSfaKA1pqCQ99SblY1Tplh
+ V8kw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20251104; t=1788525979; x=1789130779;
+ h=content-transfer-encoding:content-type:mime-version:references
+ :in-reply-to:message-id:date:subject:cc:to:from:x-gm-gg
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
+ :content-type;
+ bh=g5//nCM3pmvphFdrXdMpuw8XsMrA3mZsffpPB3jrr14=;
+ b=LEPuRSUXnqWZryOAFd2gjrV6wEiNlEIYq3gReJG0c5TQctKpc+wiyE4Y6gHR/LB5Yi
+ wYDq1rwMvbOJfN4PZRa0lvpLYSXk+RdO/MYThhsjwp7R3lrkTw7jIMZEHK/fZzSmuJi+
+ qrNIydaGbymjS4uRxXOwaw+Y6sVTeBDeIJyYgszj1ZBlQWsxf1pFNbkrD6Spzwn8wKhX
+ BhK4NE4h3hOBPp8nLI/oj2kS5h/VaZ45/Ji8+BgvT7OoOr0PCfB631PTWz5dmWJZX0VN
+ CqiquLdsq9SHPxSMlM1doPAJolaQtQQCMi6zNFhgBwJ2rr8mKEVlQcc3W3Ibjwr9KyBo
+ bGhw==
+X-Forwarded-Encrypted: i=1;
+ AKwUvBwAz5DD154bTejYhsKGTZ7eFh2RMMgVFabHeKjxkHg9XbvQctuCDjwdcFaik1Xwsn313m59iONsOQ==@nongnu.org
+X-Gm-Message-State: AFuF++muW2U2JapoWbuomJhiZAgzOlCRgCseiQwVe5j8wgKNfsvLd0Ys
+ qCqpWGCiD075dzssf6sLXugrdUPbCHpuqDhyfVXss0IXEtivIQZNNQEcpGHD0YCx4AE=
+X-Gm-Gg: AYBFou0v6O7trJ02y2Srb1yCTOTA2L9pqykTlO+t/Wtz77p9Y7H8BCRXr8HcsRf4CK8
+ QFJQSBZgaP4qd73sthO/+psLenQYEfr9MwPERHaZnIei7i69f/Tar/aLkx0xyCUOOI5vC0tdcOL
+ I7bsgLWTs2aZzuTydDU6dHBc+GhZcN1vuURbyYbvL2ZBLHr7awMPpPwY9hotLBA/And33qmZKBb
+ qImeqaczn8hEQrsbUELC8rDz1teMDbijpHT/4hE/KifTtKiQXOaFbpefgBEf+KVnEbu9XTZxZk6
+ zAOPjO5s3DWT12R70T4dPpP9PCVoYRB8Bye5cyTOqFnQDYDO9Ppngj30N1e+WSx2jL0bYw/fcTf
+ Ecylt6z8g9n663iDW1V85LtWRr2c4kP/UvHU7cVdc5mtJGtvMZP5nwPujiqj3nNBLPL83fcmM08
+ 4s5kW9GcsS6rNz+VRUE+ZfIBpO7z4dgYawG7BwepGZl2Szfg6cV6Elb4YLI2iY
+X-Received: by 2002:a05:6000:46c7:b0:485:847f:fd97 with SMTP id
+ ffacd0b85a97d-485870914ccmr6111641f8f.4.1788525978818; 
+ Fri, 04 Sep 2026 05:46:18 -0700 (PDT)
+Received: from draig.lan ([185.124.0.156]) by smtp.gmail.com with ESMTPSA id
+ ffacd0b85a97d-4858ac2b4cdsm4587385f8f.16.2026.09.04.05.46.13
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Fri, 04 Sep 2026 05:46:18 -0700 (PDT)
+Received: from draig.lan (localhost [IPv6:::1])
+ by draig.lan (Postfix) with ESMTP id 262EE618C3;
+ Fri, 04 Sep 2026 13:46:08 +0100 (BST)
+From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
+To: qemu-devel@nongnu.org
+Cc: Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>,
+ Aniket Sahu <asahu1x@linux.ibm.com>,
+ =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ qemu-arm@nongnu.org (open list:ARM TCG CPUs)
+Subject: [PULL 039/105] tests/tcg/arm/fcvt.c: use raw opcode for FPRCVT
+Date: Fri,  4 Sep 2026 13:44:53 +0100
+Message-ID: <20260904124604.2207440-40-alex.bennee@linaro.org>
+X-Mailer: git-send-email 2.47.3
+In-Reply-To: <20260904124604.2207440-1-alex.bennee@linaro.org>
+References: <20260904124604.2207440-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
-In-Reply-To: <a8ced3da-7dfa-49c1-b65e-c2290e0f6ca7@oss.qualcomm.com>
-User-Agent: Mutt/2.4.0 (2026-06-19)
-X-Scanned-By: MIMEDefang 3.0 on 10.30.177.17
-X-Mimecast-MFC-PROC-ID: FD05OC86wbw0AnfZRF3V0rBc_fESB7DL9c-LXvq9ayE_1788522024
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=berrange@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::431;
+ envelope-from=alex.bennee@linaro.org; helo=mail-wr1-x431.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -103,83 +106,44 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-To: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Fri, Sep 04, 2026 at 01:24:35PM +0200, Philippe Mathieu-Daudé wrote:
-> On 4/9/26 12:47, Peter Maydell wrote:
-> > On Fri, 4 Sept 2026 at 11:36, Daniel P. Berrangé <berrange@redhat.com> wrote:
-> > > 
-> > > On Fri, Sep 04, 2026 at 11:28:35AM +0100, Peter Maydell wrote:
-> > > > On Fri, 4 Sept 2026 at 11:25, Daniel P. Berrangé <berrange@redhat.com> wrote:
-> > > > > We need to use QAPI MachineInfo / MachineClass to report to mgmt apps
-> > > > > whether a machine is capable of using hardware acceleration or not in
-> > > > > response to "query-machines".
-> > > > > 
-> > > > > Currently if a target supports HW accel, then apps assume that all
-> > > > > machines in that target can use acceleration. This was a convenient
-> > > > > short cut assumption, but this new machine suggests we can no make
-> > > > > do with that assumption, and need to explicitly report it per-machine.
-> > > > 
-> > > > That assumption has never been true for Arm; this new machine
-> > > > type is no different to any of our existing boards in that regard.
-> > > > Support for KVM etc is only present for the 'virt' machine type and
-> > > > one or two others. Most of the rest don't work with KVM because they
-> > > > create a specific CPU type (not 'host' or 'max') and that won't work
-> > > > with KVM, or (as with sbsa-ref) because they want EL3 support and
-> > > > KVM doesn't provide that.
-> > > 
-> > > Oh, then the problem is already way worse than I realized which
-> > > really makes we think we should consider exposing whether
-> > > machines can use HW acceleration or not.
-> > 
-> > It also depends on the options to the machine, so for instance
-> > this should always work with any of the hw accelerators:
-> >   qemu-system-aarch64 -M virt -cpu host
-> > but this wants nested virt, so only works with a hw accel
-> > that supports that and a host kernel that has the KVM side support:
-> >   qemu-system-aarch64 -M virt,virtualization=on -cpu host
-> > and this wants EL3, which won't work in any hw accelerator
-> >   qemu-system-aarch64 -M virt,secure=on -cpu host
-> > 
-> > Similarly the interrupt controller choice matters, so this:
-> >   qemu-system-aarch64 -M virt,gic-version=2 -cpu host
-> > may or may not work depending on whether the host CPU has the
-> > GICv2 back-compat support; and this:
-> >   qemu-system-aarch64 -M virt,gic-version=x-5 -cpu host
-> > is currently TCG-only. (But also it's experimental so you kind
-> > of know you're off-piste here ;-))
-> > 
-> > If you try the things that won't work with -enable-kvm then they
-> > should wind up causing QEMU to exit with a hopefully more or less
-> > informative error message, but I don't think we have any mechanism
-> > for introspection of the form "if I try this particular set of
-> > QEMU options is it going to work?" short of actually trying.
-> 
-> I recall some discussion with Markus / Paolo when brainstorming
-> declarative dynamic machines, we'd need another MachinePhase
-> iterating on all selected types to instantiate and check whether
-> they can be instantiated, and returning impossible config error;
-> way before a property is evaluated on an instance at Realize time.
+From: Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>
 
-Mmm, yes, that is getting into quite alot of work for probably not
-enough benefit.
+fcvtzs d0,s31 requires fprcvt support in compiler, which is only
+available from gcc-16. Since our debian-all-test-cross container has
+gcc-aarch64-14, this test will never run in CI.
 
-> Here IMO accelerators should report whether a CPU model class
-> requested is accelerable or not (then later we can double check
-> with features updated on the model instances).
-> The machine deciding is a shortcut, not scalable and hard to maintain.
+Replace the concerned instruction with raw opcode, obtained from:
+$ echo "fcvtzs d0, s31" | llvm-mc-22 -triple=aarch64 -mattr=fprcvt --show-encoding
+fcvtzs  d0, s31 // encoding: [0xe0,0x03,0x36,0x9e]
 
-Yeah, I think you're right - the machine does look like a facade
-around the CPU for accelerator runnability. So it probably better
-fits the QMP commands for querying CPU runnability.
+Tested-by: Aniket Sahu <asahu1x@linux.ibm.com>
+Signed-off-by: Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>
+Reviewed-by: Alex Bennée <alex.bennee@linaro.org>
+Message-ID: <20260827221506.91574-40-pierrick.bouvier@oss.qualcomm.com>
+Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
 
-With regards,
-Daniel
+diff --git a/tests/tcg/arm/fcvt.c b/tests/tcg/arm/fcvt.c
+index 7c0cc4367e7..8c81ba8a1bc 100644
+--- a/tests/tcg/arm/fcvt.c
++++ b/tests/tcg/arm/fcvt.c
+@@ -173,9 +173,11 @@ static void convert_single_to_integer(void)
+         output = input;
+ #else
+ #ifdef FPRCVT
+-        asm("fcvtzs d0, %s1\r\n"
++        asm("fmov s31, %s1\n\t"
++            /* "fcvtzs d0, s31\n\t" */
++            ".byte 0xe0,0x03,0x36,0x9e\n\t"
+             "fmov %0, d0" :
+-            "=r" (output) : "w" (input));
++            "=r" (output) : "w" (input) : "s31", "d0");
+ #else
+         asm("fcvtzs %0, %s1" : "=r" (output) : "w" (input));
+ #endif
 -- 
-|: https://berrange.com       ~~        https://hachyderm.io/@berrange :|
-|: https://libvirt.org          ~~          https://entangle-photo.org :|
-|: https://pixelfed.art/berrange   ~~    https://fstop138.berrange.com :|
+2.47.3
 
 

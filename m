@@ -4,120 +4,90 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 30DB0C624DE
-	for <qemu-arm@archiver.kernel.org>; Fri,  4 Sep 2026 16:17:26 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 48713C79F82
+	for <qemu-arm@archiver.kernel.org>; Fri,  4 Sep 2026 16:25:02 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1x2WaL-0004sh-TU; Fri, 04 Sep 2026 12:16:14 -0400
+	id 1x2Wij-00089j-Hd; Fri, 04 Sep 2026 12:24:54 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <bin.meng@processmission.com>)
- id 1x2WZp-0004NJ-5x; Fri, 04 Sep 2026 12:15:44 -0400
-Received: from mail-japaneastazlp170130007.outbound.protection.outlook.com
- ([2a01:111:f403:c405::7] helo=TYDPR03CU002.outbound.protection.outlook.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <bin.meng@processmission.com>)
- id 1x2WZn-0008SI-Bt; Fri, 04 Sep 2026 12:15:40 -0400
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=y+B3RifcILy8rUbFAa6O0+SWlvrxYXdxENbaI6HEfdtgFcvHy/Y9ZPw/Oa+Bhv9lHmjjn1iXZleh+OBftlrAd4B00+snR5GDTN2xKkNiKnIkhM4nDsMiPVMHBxoFs4Pn7Cu+B2gUk0nGuFrV2lKODXRSoscvaUrYjwTOT7jCpVspu2vo6jnGBecyeg6N2fk+y6cfccXBZh+3QAujRCAKhYk6EZUQeeXAUQXhta57LwkUYj37VPFJXrkpXprVea63aaxOrqr9OC1bs9sl9tm6dnhpL0P5yzN8PMhPslgBuOm18KCIFI1GdqiYVHtDm/IEbjn7+122U+awX9yP8EyODg==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector10001;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=4EyKuJgR2CHH/Gi8MFjB795lyhkOioSWFK5i3NHhy1U=;
- b=rlZjE8nvsOTdvZ/4ZIFOfiZKR1A8kHw+PP3MH3XSOE1nweMTC4wPCk309SiViiX5BOM6llCcg5rqmDC7+VfdVwcNjqurtIftf51eHI/QCVKHe6/GarXsJQHW3Ec4kxuYdWYsQn1ZPIKlL1xT6e09YsBmM0WGcKyUMS2sHZMRvjR0f3J3Z5iEHvHRmNp9MjP6tYSGKxj5RPeXb7j8IPDfkH3LvDqxxpIJtxhvAgTOwGnxjvHVXKwbU+UbyXf+2G1MIaKJDF5qf0MSSHeTGkGBjjJ96kJ+Gy+TBW/vb+EVuf/E6HFiwIYoLtZqlncjuLo+54yDk9D/Jfw5XQu0W+PiDw==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=processmission.com; dmarc=pass action=none
- header.from=processmission.com; dkim=pass header.d=processmission.com;
- arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=processmission.com;
- s=selector1;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=4EyKuJgR2CHH/Gi8MFjB795lyhkOioSWFK5i3NHhy1U=;
- b=mgyYMciaGKQ2w4LlA5DKUpbY/h0YAmEsdHCPe0O+XbPTIqZDDnvKcrM3CqO8Esfw5hBc4vhxvkj2bQNrepUbPdeg1sb0MYY9DQe/HU0hmGE8Etk9sijf4e7NA0y+3YbJ9gOu0ZPpqaL8IDwbHQ+UeJRUH0bzL5fABzvKTD8SeX/ap2Py+TJWuzlUVYOgNEGNN2XyCr7bme+2tO75VZx6KFJs3+QzttYBLsbNGfmmliJEollhRxFfRMRsBTqsbZtROFyVsHsBBLtEZgnQJZTl4yOkwL09YtLQHqCPsut0lqxEkyrXyRY3QfVf7MA0E7tj+bpD2GaJQEK2epNLvu8JVg==
-Authentication-Results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=processmission.com;
-Received: from KL1PR02MB4977.apcprd02.prod.outlook.com (2603:1096:820:71::8)
- by KU2PPFE04A6CE19.apcprd02.prod.outlook.com (2603:1096:d18::46b) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.21.360.13; Fri, 4 Sep
- 2026 16:15:36 +0000
-Received: from KL1PR02MB4977.apcprd02.prod.outlook.com
- ([fe80::9fdf:2557:8351:6c03]) by KL1PR02MB4977.apcprd02.prod.outlook.com
- ([fe80::9fdf:2557:8351:6c03%4]) with mapi id 15.21.0382.007; Fri, 4 Sep 2026
- 16:15:36 +0000
-From: Bin Meng <bin.meng@processmission.com>
-To: QEMU <qemu-devel@nongnu.org>
-Cc: Jean-Christophe Dubois <jcd@tribudubois.net>,
- Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org
-Subject: [PATCH v2 10/10] tests/functional/arm: Add MCIMX6UL-EVK boot tests
-Date: Sat,  5 Sep 2026 00:14:33 +0800
-Message-ID: <20260904161438.3838261-11-bin.meng@processmission.com>
-X-Mailer: git-send-email 2.53.0
-In-Reply-To: <20260904161438.3838261-1-bin.meng@processmission.com>
-References: <20260904161438.3838261-1-bin.meng@processmission.com>
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-ClientProxiedBy: PAZP264CA0120.FRAP264.PROD.OUTLOOK.COM
- (2603:10a6:102:1ef::19) To KL1PR02MB4977.apcprd02.prod.outlook.com
- (2603:1096:820:71::8)
+ (Exim 4.90_1) (envelope-from <mathieu.poirier@linaro.org>)
+ id 1x2WiY-000852-5h
+ for qemu-arm@nongnu.org; Fri, 04 Sep 2026 12:24:42 -0400
+Received: from mail-pf1-x435.google.com ([2607:f8b0:4864:20::435])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <mathieu.poirier@linaro.org>)
+ id 1x2WiU-0002r4-Om
+ for qemu-arm@nongnu.org; Fri, 04 Sep 2026 12:24:41 -0400
+Received: by mail-pf1-x435.google.com with SMTP id
+ d2e1a72fcca58-84fa3b14ee1so1002413b3a.0
+ for <qemu-arm@nongnu.org>; Fri, 04 Sep 2026 09:24:38 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1788539077; x=1789143877; darn=nongnu.org;
+ h=in-reply-to:content-disposition:content-type:mime-version
+ :references:message-id:subject:cc:to:from:date:from:to:cc:subject
+ :date:message-id:reply-to:content-type;
+ bh=vUW7zAhH9a6+Eq1CxsZDjyjXnk3sjjEG4PIOkiEC1b4=;
+ b=WFktCP2TWsjtGk//JDr3vjJyVg8U5CGUQBKliyUmbSyBtDZkX+Kk4ciO7fmwLbeHt6
+ xbWP4a/AJstx5ljrW9EUYnNesm4BAU+zm4kamLIuVI/GuvhIGQnibc1fzey1tAyATKyw
+ n+PMvO9BVulJzESVWrzbhOIAFTSqvdNG5Cxu8VfyWP+/Et++9rTnafg9FNlCojq4iL17
+ ZYINNFEs+EsHalZwaHS4jbItlFEoRSmd0ZxaPBStvrnS5W6pnmtiNjWEjd3n0S/U6SPe
+ IQSPcafIN/ez8a0i5td5MyQV/DmMqviASD3tfwxv2zssE0PsISQS88L6dxlvt5gwGrG1
+ 2tZg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20251104; t=1788539077; x=1789143877;
+ h=in-reply-to:content-disposition:content-type:mime-version
+ :references:message-id:subject:cc:to:from:date:x-gm-gg
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
+ :content-type;
+ bh=vUW7zAhH9a6+Eq1CxsZDjyjXnk3sjjEG4PIOkiEC1b4=;
+ b=jvhrZ+fj9U2hC9LDnN/oTSzbrZTWXxqfmF1NQQINbbqcszcAIgz+kcXvlH2fExiUpE
+ uX/5tGprh+SUkVhPoPwOdYsBAaeiGJzxgraoFWYCUjExb7Gq068rkFtaqUdPxzl+ogWW
+ roASCZTTYE2msoKXYTPjwTYYlxehSERMbU/pMMqKu1xZcUwZuTDdOK/bl/QxPtA8PjuF
+ 1/A7g219ihPA0ruEG+R1FfKtZ3WCGT0Ill+qCSSs0/nn2Ex9pztPcods2m/oad9pNkRP
+ j67FLZDTLhn2SzGnOkZ/gOWeDesF4Bt6Vzkp33Aa8SoTzKhBvn54i3hHK/g57Jg2KZDn
+ bO9g==
+X-Forwarded-Encrypted: i=1;
+ AKwUvBy1iFK9dO89/Dp6JXgfLV+0rR/Qbs2Ry7FYLdPT5p6cp/3NYVOEf4wm3oAptsIbbeKhAFlPVV/OTA==@nongnu.org
+X-Gm-Message-State: AFuF++lGqLnYAwSqeNi/NUPs86UEe+Ra7zHIb30J0tD0r33Wx0aNb8Sv
+ XboBMrLkDzg3Wz1zSd1idawYykNLAg6PXOWCbgJcTU7Ml6itNLowVZ9P35XtbR/X7nc=
+X-Gm-Gg: AYBFou1NUSyqvfSvyRnme7kO72eLAjiSxf9YlsTP46w0vTGN7Aoveofzmy7AlDp6L7m
+ +RJWmdPxgsSYRKDyTMijWWgPoKqDt8tLnOuAGgaORH15j0m9hI/daf2INYQ9dmCl9phq8oydG3X
+ +Ed5f1HdOIkOS7S3XtkSKa84A5kJm6VLBAmsBoIAFBmIR5qICA0rMJyXjehp94adEkPWpJbgbEw
+ GzR2kdd1CP7PJK/pHX3NbVxNMleit2G+nJ0D+bx/EApvYMuJlhmeFUSgaBzkAYj7+PYiQwYjUcd
+ rZ2Fw6tIk2BzqFAw7dcCSryuevRVvrv+RowL8L+TpPG9Ps8Zkx0ZmYZqDacpFFayIbNm8F5JDQY
+ gU65Kphyevv+Gb4TiKie/ruXAZAvrji4xxfqx7AwQesW5RQrwDhBFq+8FVroWACwL9Io//SaRL2
+ FIgDqtpbZZ4W7/Y7p85FVdbLJz5u9S+0BLpawMP9MlZxMbYpxLfEjFfKJbDdn9I5cswQtvHv1Cz
+ B4=
+X-Received: by 2002:a05:6a00:3ccd:b0:847:9015:e68c with SMTP id
+ d2e1a72fcca58-8616ad5265dmr10153169b3a.17.1788539076507; 
+ Fri, 04 Sep 2026 09:24:36 -0700 (PDT)
+Received: from p14s ([2604:3d09:148c:c800:f95f:75de:b3f0:3bf5])
+ by smtp.gmail.com with ESMTPSA id
+ d2e1a72fcca58-86152045f74sm1375802b3a.10.2026.09.04.09.24.35
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Fri, 04 Sep 2026 09:24:35 -0700 (PDT)
+Date: Fri, 4 Sep 2026 10:24:33 -0600
+From: Mathieu Poirier <mathieu.poirier@linaro.org>
+To: Gavin Shan <gshan@redhat.com>
+Cc: berrange@redhat.com, kchamart@redhat.com,
+ pierrick.bouvier@oss.qualcomm.com, peter.maydell@linaro.org,
+ mst@redhat.com, cohuck@redhat.com, pbonzini@redhat.com,
+ eblake@redhat.com, armbru@redhat.com, lorenzo.pieralisi@linaro.org,
+ enju.kohei@fujitsu.com, qemu-devel@nongnu.org, qemu-arm@nongnu.org,
+ kvm@vger.kernel.org
+Subject: Re: [RFC v4 01/24] linux-headers: Add RME related definitions
+Message-ID: <aprwwdhwkaDn9xo1@p14s>
+References: <20260903193611.1058589-1-mathieu.poirier@linaro.org>
+ <20260903193611.1058589-2-mathieu.poirier@linaro.org>
+ <b06c933e-b8fd-4e03-8f50-9a9086542ccf@redhat.com>
 MIME-Version: 1.0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: KL1PR02MB4977:EE_|KU2PPFE04A6CE19:EE_
-X-MS-Office365-Filtering-Correlation-Id: 9da79183-3f41-402a-b397-08df0a9fc138
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;
- ARA:13230040|366016|376014|1800799024|23010399003|22082099003|18002099003|56012099006|3023799007|10067099003;
-X-Microsoft-Antispam-Message-Info: lY5u/MQuUuKzeCPRejDB4JFarvMdq1HPosxlWSg6ZLzPN8BHwnUX1sNcjXZEz4d5Aui0gFEOOT21stnXzhVdEOtxZ2fy7+KflRXo9iIeaQ0H7+v1RJWHImJHhX4WzjAJTF9dyCfk0JdXKYtaAKo7UTc/Tk+JoR/Ne/3R0/Ot77w4/zv9iI8xzmWIGJl7VokngCx1ZJxkj/X/kKmTeIpudTbf4T3v/RF2mWL+gpr0cPhBrD7WtUAreVdmDHXgbaNpxv0T937RaL2uo6kfiiif/78UVUry1Nm6OkmquCQXQK70UOMXoF/gjOyEq300R8/JgnpFrqewW3GDXUk/RtoXB9Z0YRDQv1L+OqP4SwetoQm0mZo/oC7jNFiignC63dt+XgNsLpTZgrpbsoc//hVUkvrqqjr749njI5QJxO1kk8DfyN0mc35HbOwEsYzpC59tSwOHl+w5MEacV1p16nSnlmYGNxQWHTONclP5WwJxot+q78/tqLTnFZZR++hVQdPaVthNACbPbVgtypOZDcik45jJnUzflnvlaA78B9Qzd6SofB5XTZ23S2ZzhrYfxoqTg6WUgUuLDj88lS4VLcBjF/Ff5OPd7jf2BsJP3YhZbolVcgz0C9BIA7aTU1Rppqjb3YcFi05Yr11vow+mg/o+bDBDoHU7/GX1QxCunMTLMCc=
-X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:KL1PR02MB4977.apcprd02.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(13230040)(366016)(376014)(1800799024)(23010399003)(22082099003)(18002099003)(56012099006)(3023799007)(10067099003);
- DIR:OUT; SFP:1102; 
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?2YGt+hLu7j/1DsiUhMCKHUNUcpZuwvK/wF1DTWp1ZsmziEeww+jtoSD3g8Yi?=
- =?us-ascii?Q?rtxDbH9dxhSEQpKyciBJwHQ0drpdEBdrXl4VBuR9NePPqVtZpj21RdvyW7Lv?=
- =?us-ascii?Q?tXfRpMmHyyKPFpKYRmOY/zRm3+BGzExRVEotHDDg9lMw8W5rf8Q+JYjtLEkM?=
- =?us-ascii?Q?jmQ4mHfZtcLcCUtyTLwnkoqD9thMlNARUFuuf7vw9JpntMW3xkyOGYndml09?=
- =?us-ascii?Q?RdqI8t+2cT16gK/YyZvrhAnIs2QVLl3/qhMG8YAJuN8xkyNBEMm6wBb8fagX?=
- =?us-ascii?Q?lqu3Wkuabo5dPsQP+j8xVFTwePlEOULEGlJFD+bBUsJarEodYnKoM2nQRdvy?=
- =?us-ascii?Q?pGDDlKWX9bn6chFfv5ZSbfF9syO+5G6HMjTKydpBIDXB7HkjdcsVpxSD/LIK?=
- =?us-ascii?Q?ksqVBwDhHm0vxPWOP7xOloVvRFy+zx7k9PIl8G/2QcewfSHaQuvoaRT/9FTh?=
- =?us-ascii?Q?Gc02Yu0BPgSFStM+d1jnZdiOuP/r1Eukqv2XxPxtVMpmaJBNo1qR+bWFWCF4?=
- =?us-ascii?Q?Dm+O67fl2HbL29/SKxE/fa8Tp9VhSzXTtv6stkhGmX9utFbuLCtQQ5NIo0DW?=
- =?us-ascii?Q?k2jAspqpiBwydQ/AaI+PpKrh9QSb2t0l1tiFWRdp/AqWaomVwDQbtHM0MnMG?=
- =?us-ascii?Q?NeagQgpKAG9Xrr5Bu0V6ymSrytAgu74VE8Em2aDcdl0rRwjcVLjtJ5Tm5oTN?=
- =?us-ascii?Q?MVAHWnau+7/W0zKUTDy65b/lEFpaVJ66phwgFnhW+fQhefooT2j1GtThhlmj?=
- =?us-ascii?Q?Q5LnImT0iZhikrnqoBHpnlCCr8VckPtTQSamCLJSvSc1K0fAOyl9Rr4bPksF?=
- =?us-ascii?Q?QIWac7K1ZZzr3m/eoEvXUKNV+5Cayadj4+nxFHMRCyxtUOXRvA+ZSIg1tN3O?=
- =?us-ascii?Q?53z/Z5uRARxyk/Kb9doh84E/k1ql24wPUuelF0rUWT+0V43ylnQ9IfKWIkso?=
- =?us-ascii?Q?t0axfX10eYjVDc8B+5s8KFLDuH+xbblwFBSJB5amjEXyp1BUcUf2MybxAX9P?=
- =?us-ascii?Q?2l9813q9iqABuKjir9d31vq4Nq8Dz0s3mazPaAesYB79DF4FUeFfyvb/PFTW?=
- =?us-ascii?Q?ALOOnPEg8AJBhIGwo7fX88Isfskfu4xOR6zch255bXixiaYcuJ4KK19ue7mQ?=
- =?us-ascii?Q?PVq1r5fE/urDUg8uXDHkkpyGYbxANHYaTPkDCkgqLap/cfzuucRNv9t3dNod?=
- =?us-ascii?Q?FDkJDygDhDPj0tjPq4hmTb9jjW9KzFXd9SzJpPeWkzlCUxMrqZ/jcnkZtouC?=
- =?us-ascii?Q?gRYvHASsJBOKle3A+2ckt/Dcm45LNxBP1Y6RcW0kizVXSAT+OOtz29xoyTu7?=
- =?us-ascii?Q?NpJAl4FPLIp74q7GPho/DBFnflGCE0G++49jfU1ZtL7ZbxF4W3k1hZmsemPj?=
- =?us-ascii?Q?UlASXE3rD+V9jVA6AypRoNmSPaJa0zQl69u46RiJAtUfwnUSpYMH/GUzEqK9?=
- =?us-ascii?Q?Pd319E2/iZqap1aKX1T7h0Qj8JyvuiLnsRM1IeOV44JDtGHa4t0t6/JW80bw?=
- =?us-ascii?Q?U3dLSe1oj2AOJ3yyA1orNbX6QYA8N1dWmGXItji1ykfisBYz51yof26B2THh?=
- =?us-ascii?Q?6XZsL+B4JO6T2fnGpnxIsZn5m+CkKLoG7CSQ2oG8d217CArev/lKJVqgK6Kc?=
- =?us-ascii?Q?RBUOX2bHNmpbYVkgpZbqVeKTkJ9gyGLqxWkggyZUw+xm8XQHMVvK8AyCPgHe?=
- =?us-ascii?Q?TE81+UikSv1oZ6sIVJ9UyNKu9sfRA6A0Ubcsxh+ltqtxiKyWOxSo3yv2cFP4?=
- =?us-ascii?Q?WoQTGgGGOFPHYrUyQb9lH346avLK8E8=3D?=
-X-OriginatorOrg: processmission.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 9da79183-3f41-402a-b397-08df0a9fc138
-X-MS-Exchange-CrossTenant-AuthSource: KL1PR02MB4977.apcprd02.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 04 Sep 2026 16:15:36.8868 (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: e0544bf7-9765-4630-ab69-0b266dc2169c
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: 26h17v2AgInmNUl7A5vJbPUposXzR8fdlJ1iD07g207IJPYJC5Dg995LisM1MxLPFyMumBz+nMQ1t6NBb+1lLC2jtFUVF1VRaPH6YhqKx7o=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: KU2PPFE04A6CE19
-Received-SPF: pass client-ip=2a01:111:f403:c405::7;
- envelope-from=bin.meng@processmission.com;
- helo=TYDPR03CU002.outbound.protection.outlook.com
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <b06c933e-b8fd-4e03-8f50-9a9086542ccf@redhat.com>
+Received-SPF: pass client-ip=2607:f8b0:4864:20::435;
+ envelope-from=mathieu.poirier@linaro.org; helo=mail-pf1-x435.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -140,134 +110,116 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-The MCIMX6UL-EVK machine supports loading U-Boot proper with the
-generic loader and booting Linux directly, but neither path has
-functional coverage.
+On Fri, Sep 04, 2026 at 04:07:49PM +1000, Gavin Shan wrote:
+> Hi Mathieu,
+> 
+> On 9/4/26 5:35 AM, Mathieu Poirier wrote:
+> > From: Jean-Philippe Brucker <jean-philippe@linaro.org>
+> > 
+> > This is a temporary patch intended for testing purposes only. It provides
+> > definitions related to supporting Realms by the QEMU-VMM.
+> > 
+> > Signed-off-by: Jean-Philippe Brucker <jean-philippe@linaro.org>
+> > Signed-off-by: Mathieu Poirier <mathieu.poirier@linaro.org>
+> > ---
+> >   linux-headers/asm-arm64/kvm.h |  9 +++++++++
+> >   linux-headers/linux/kvm.h     | 10 +++++++++-
+> >   2 files changed, 18 insertions(+), 1 deletion(-)
+> > 
+> > diff --git a/linux-headers/asm-arm64/kvm.h b/linux-headers/asm-arm64/kvm.h
+> > index 6aefe7973814..4c08631ec7d2 100644
+> > --- a/linux-headers/asm-arm64/kvm.h
+> > +++ b/linux-headers/asm-arm64/kvm.h
+> > @@ -208,6 +208,15 @@ struct kvm_arm_counter_offset {
+> >   	__u64 reserved;
+> >   };
+> > +#define KVM_ARM_RMI_POPULATE_FLAGS_MEASURE     (1 << 0)
+> > +struct kvm_arm_rmi_populate {
+> > +	__u64 base;
+> > +	__u64 size;
+> > +	__u64 source_uaddr;
+> > +	__u32 flags;
+> > +	__u32 reserved;
+> > +};
+> > +
+> >   #define KVM_ARM_TAGS_TO_GUEST		0
+> >   #define KVM_ARM_TAGS_FROM_GUEST		1
+> > diff --git a/linux-headers/linux/kvm.h b/linux-headers/linux/kvm.h
+> > index 29f81c05aca2..8b7627f11447 100644
+> > --- a/linux-headers/linux/kvm.h
+> > +++ b/linux-headers/linux/kvm.h
+> > @@ -689,14 +689,19 @@ struct kvm_enable_cap {
+> >    * address size for the VM. Bits[7-0] are reserved for the guest
+> >    * PA size shift (i.e, log2(PA_Size)). For backward compatibility,
+> >    * value 0 implies the default IPA size, 40bits.
+> > + *
+> > + * Bits[30-31] are reserved for the VM type
+> >    */
+> >   #define KVM_VM_TYPE_ARM_IPA_SIZE_MASK	0xffULL
+> >   #define KVM_VM_TYPE_ARM_IPA_SIZE(x)		\
+> >   	((x) & KVM_VM_TYPE_ARM_IPA_SIZE_MASK)
+> > +#define KVM_VM_TYPE_ARM_NORMAL		0
+> > +#define KVM_VM_TYPE_ARM_REALM		(1UL << 30)
+> >   #define KVM_VM_TYPE_ARM_PROTECTED	(1UL << 31)
+> >   #define KVM_VM_TYPE_ARM_MASK		(KVM_VM_TYPE_ARM_IPA_SIZE_MASK | \
+> > -					 KVM_VM_TYPE_ARM_PROTECTED)
+> > +					 KVM_VM_TYPE_ARM_PROTECTED | \
+> > +					 KVM_VM_TYPE_ARM_REALM)
+> >   /*
+> >    * ioctls for /dev/kvm fds:
+> > @@ -719,6 +724,8 @@ struct kvm_enable_cap {
+> >   #define KVM_GET_EMULATED_CPUID	  _IOWR(KVMIO, 0x09, struct kvm_cpuid2)
+> >   #define KVM_GET_MSR_FEATURE_INDEX_LIST    _IOWR(KVMIO, 0x0a, struct kvm_msr_list)
+> > +#define KVM_ARM_RMI_POPULATE	  _IOWR(KVMIO, 0xd7, struct kvm_arm_rmi_populate)
+> > +
+> >   /*
+> >    * Extension capability list.
+> >    */
+> > @@ -988,6 +995,7 @@ struct kvm_enable_cap {
+> >   #define KVM_CAP_S390_HPAGE_2G 249
+> >   #define KVM_CAP_PPC_COMPAT_CAPS 250
+> >   #define KVM_CAP_GUEST_MEMFD_MEMORY_ATTRIBUTES 251
+> > +#define KVM_CAP_ARM_RMI 252
+> 
+> Both KVM_CAP_GUEST_MEMFD_MEMORY_ATTRIBUTES and KVM_CAP_ARM_RMI aren't consistent to
+> the definitions in Steven Price's (v16) host series [1]. They need corrections as
+> below. Otherwise, realm VM can't be started and the following errors are raised by
+> qemu.
 
-Add a versioned Buildroot asset containing U-Boot, a Linux kernel,
-the board DTB, and a 128 MiB SD card image. Exercise both boot paths
-and verify that they reach the Buildroot login prompt.
+The changelog is clear - numbers for those defines have been bumped up to keep
+pace with the definitions in the QEMU master branch.  RFC v3 had defines that
+were similar to Steven's v16 and as such used an older QEMU baseline, but Markus
+said it wasn't appropriate.     
 
-Signed-off-by: Bin Meng <bin.meng@processmission.com>
-
----
-
-(no changes since v1)
-
- MAINTAINERS                               |  1 +
- tests/functional/arm/meson.build          |  2 +
- tests/functional/arm/test_mcimx6ul_evk.py | 69 +++++++++++++++++++++++
- 3 files changed, 72 insertions(+)
- create mode 100644 tests/functional/arm/test_mcimx6ul_evk.py
-
-diff --git a/MAINTAINERS b/MAINTAINERS
-index 9590de2509..527f41b39f 100644
---- a/MAINTAINERS
-+++ b/MAINTAINERS
-@@ -918,6 +918,7 @@ F: include/hw/arm/fsl-imx6ul.h
- F: include/hw/display/imx6ul_lcdif.h
- F: include/hw/misc/imx6ul_ccm.h
- F: docs/system/arm/mcimx6ul-evk.rst
-+F: tests/functional/arm/test_mcimx6ul_evk.py
- 
- MCIMX7D SABRE / i.MX7
- M: Peter Maydell <peter.maydell@linaro.org>
-diff --git a/tests/functional/arm/meson.build b/tests/functional/arm/meson.build
-index 61b00932db..d8b1408b13 100644
---- a/tests/functional/arm/meson.build
-+++ b/tests/functional/arm/meson.build
-@@ -20,6 +20,7 @@ test_arm_timeouts = {
-   'bpim2u' : 500,
-   'collie' : 180,
-   'cubieboard' : 360,
-+  'mcimx6ul_evk' : 240,
-   'orangepi' : 540,
-   'quanta_gsj' : 240,
-   'raspi2' : 120,
-@@ -59,6 +60,7 @@ tests_arm_system_thorough = [
-   'emcraft_sf2',
-   'integratorcp',
-   'max78000fthr',
-+  'mcimx6ul_evk',
-   'microbit',
-   'orangepi',
-   'quanta_gsj',
-diff --git a/tests/functional/arm/test_mcimx6ul_evk.py b/tests/functional/arm/test_mcimx6ul_evk.py
-new file mode 100644
-index 0000000000..0b4dcd5a94
---- /dev/null
-+++ b/tests/functional/arm/test_mcimx6ul_evk.py
-@@ -0,0 +1,69 @@
-+#!/usr/bin/env python3
-+#
-+# Functional tests for the NXP MCIMX6UL-EVK machine
-+#
-+# Copyright (c) 2026 Process Mission
-+#
-+# Author:
-+#   Bin Meng <bin.meng@processmission.com>
-+#
-+# SPDX-License-Identifier: GPL-2.0-or-later
-+
-+from qemu_test import Asset, LinuxKernelTest, skipIfMissingCommands
-+
-+
-+class MCIMX6ULEVKMachine(LinuxKernelTest):
-+
-+    ASSET_BUILDROOT = Asset(
-+        ('https://github.com/processmission/qemu-machine-images/releases/download/'
-+         'v1.0.0/arm-mcimx6ul-evk-v1.0.0.tar.zst'),
-+        'a08f2b5dae139cf73cfa601c9df9316356a07a5dc59c74d99f30ebee61c405fb')
-+
-+    def _prepare_images(self):
-+        self.set_machine('mcimx6ul-evk')
-+
-+        archive_path = self.uncompress(
-+            self.ASSET_BUILDROOT,
-+            target='arm-mcimx6ul-evk-v1.0.0.tar',
-+            format='zstd')
-+        self.archive_extract(archive_path, format='tar')
-+
-+        sdcard_path = self.scratch_file('images', 'sdcard.img')
-+        self.vm.set_console()
-+        self.vm.add_args(
-+            '-m', '512M',
-+            '-snapshot',
-+            '-drive', f'file={sdcard_path},format=raw,if=sd,index=1',
-+            '-no-reboot')
-+
-+    @skipIfMissingCommands('zstd')
-+    def test_uboot_boot(self):
-+        self._prepare_images()
-+
-+        uboot_path = self.scratch_file('images', 'u-boot.bin')
-+        self.vm.add_args(
-+            '-device', f'loader,file={uboot_path},addr=0x87800000,cpu-num=0')
-+        self.vm.launch()
-+
-+        self.wait_for_console_pattern('U-Boot 2024.07')
-+        self.wait_for_console_pattern('Starting kernel ...')
-+        self.wait_for_console_pattern('buildroot login:')
-+
-+    @skipIfMissingCommands('zstd')
-+    def test_linux_boot(self):
-+        self._prepare_images()
-+
-+        self.vm.add_args(
-+            '-kernel', self.scratch_file('images', 'zImage'),
-+            '-dtb', self.scratch_file('images',
-+                                      'imx6ul-14x14-evk.dtb'),
-+            '-append',
-+            'console=ttymxc0,115200 root=/dev/mmcblk1p2 rootwait rw')
-+        self.vm.launch()
-+
-+        self.wait_for_console_pattern('Linux version')
-+        self.wait_for_console_pattern('buildroot login:')
-+
-+
-+if __name__ == '__main__':
-+    LinuxKernelTest.main()
--- 
-2.53.0
-
+> 
+> [1] https://lore.kernel.org/kvm/20260803134403.80630-14-steven.price@arm.com/
+> 
+> root@host:~# qemu-system-aarch64 -enable-kvm                  \
+> -object rme-guest,id=rme0,convert-in-place=on                 \
+> -machine virt,gic-version=3,confidential-guest-support=rme0   \
+> -m 2G -cpu host                                               \
+> -smp maxcpus=4,cpus=4,sockets=1,clusters=1,cores=2,threads=2  \
+> -object memory-backend-guest-memfd,id=mem0,size=2G,share=on   \
+> -numa node,nodeid=0,cpus=0-3,memdev=mem0                      \
+> -serial mon:stdio -monitor none -nographic -nodefaults        \
+> -kernel /mnt/linux/arch/arm64/boot/Image                      \
+> -initrd /mnt/buildroot/output/images/rootfs.cpio.xz           \
+> -append earlycon=pl011,mmio,0x10009000000
+>     :
+> qemu-system-aarch64: VM doesn't support Realms
+> qemu-system-aarch64: failed to initialize kvm: No such device
+> 
+> 
+> -#define KVM_CAP_PPC_COMPAT_CAPS 250
+> -#define KVM_CAP_GUEST_MEMFD_MEMORY_ATTRIBUTES 251
+> -#define KVM_CAP_ARM_RMI 252
+> +#define KVM_CAP_GUEST_MEMFD_MEMORY_ATTRIBUTES 250
+> +#define KVM_CAP_ARM_RMI 251
+> 
+> >   struct kvm_irq_routing_irqchip {
+> >   	__u32 irqchip;
+> 
+> Thanks,
+> Gavin
+> 
 

@@ -4,56 +4,56 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 58C6BC79F87
-	for <qemu-arm@archiver.kernel.org>; Fri,  4 Sep 2026 20:03:19 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 20B4DC79F89
+	for <qemu-arm@archiver.kernel.org>; Fri,  4 Sep 2026 20:03:22 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1x2a7V-00062a-9i; Fri, 04 Sep 2026 16:02:41 -0400
+	id 1x2a6o-0001v2-J1; Fri, 04 Sep 2026 16:01:58 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <marcandre.lureau@redhat.com>)
- id 1x2a7Q-0005ir-82
- for qemu-arm@nongnu.org; Fri, 04 Sep 2026 16:02:36 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ id 1x2a6j-0001Fe-8v
+ for qemu-arm@nongnu.org; Fri, 04 Sep 2026 16:01:54 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <marcandre.lureau@redhat.com>)
- id 1x2a7N-0000Cg-Ac
- for qemu-arm@nongnu.org; Fri, 04 Sep 2026 16:02:35 -0400
+ id 1x2a6f-0008WJ-31
+ for qemu-arm@nongnu.org; Fri, 04 Sep 2026 16:01:52 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1788552152;
+ s=mimecast20190719; t=1788552108;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=zZa2wZhOBG8+2TMlvXOdLq9v5ancgW2V56AmVy49/Vs=;
- b=J3rVxHrQ5cUXN3DeRS5CITs03Oa9SwA1T1rj87XsWvPTsl1X39zY1P09Oe9G1YQyl+yOiv
- ggXIWCtQxYlnRujx6IxJ72mIO0c/+bXKRd2M3XgyotZMwzixAaK0+eZMdYPJjckIJee/DD
- Id7Ei4mFIwL8VLpXdb24tLYfhnIVe0k=
-Received: from mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com
+ bh=Q+7N6lQaNJ3+ymbHkk8ge+yyGgvBETdQK+dHzHp83lE=;
+ b=J7EijAHrHsMLB2KUysOMEg6YklOz6yVvYUdV1V4Yxp3aCJKh7uh/R66RZM5sbVXI6bui1K
+ fKQKDAk2UBCWApZ0qUxDxNPqg9zNwgRd81QpdwU9/ixZL8B8j7je9J/rLrwaEGNz+MpTnH
+ gUidCbPluWnWZbOkTMnPHpkjek2sJbE=
+Received: from mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com
  (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-631-KZnly8klOKyS-uFRWv1XsQ-1; Fri,
- 04 Sep 2026 16:02:31 -0400
-X-MC-Unique: KZnly8klOKyS-uFRWv1XsQ-1
-X-Mimecast-MFC-AGG-ID: KZnly8klOKyS-uFRWv1XsQ_1788552149
-Received: from mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com
- (mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.4])
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-336-QvNQvGXZMPm2e79Rcq-uew-1; Fri,
+ 04 Sep 2026 16:01:47 -0400
+X-MC-Unique: QvNQvGXZMPm2e79Rcq-uew-1
+X-Mimecast-MFC-AGG-ID: QvNQvGXZMPm2e79Rcq-uew_1788552105
+Received: from mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com
+ (mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.17])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 3A671191F5B8; Fri,  4 Sep 2026 20:02:28 +0000 (UTC)
+ by mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 93BE018D634B; Fri,  4 Sep 2026 20:01:45 +0000 (UTC)
 Received: from localhost (headnet05.pony-001.prod.iad2.dc.redhat.com
  [10.2.32.117])
- by mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id 479E730002F4; Fri,  4 Sep 2026 20:02:25 +0000 (UTC)
+ by mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
+ id 84D2D1955F05; Fri,  4 Sep 2026 20:01:43 +0000 (UTC)
 From: =?utf-8?q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>
-Date: Fri, 04 Sep 2026 23:58:52 +0400
-Subject: [PATCH v4 69/75] qdev: simplify DEFINE_PROP_ARRAY and remove
- generic array PropertyInfo
+Date: Fri, 04 Sep 2026 23:58:41 +0400
+Subject: [PATCH v4 58/75] hw/gpio/pca955x: convert pin/led property to
+ QAPI-aware enum
 MIME-Version: 1.0
-Message-Id: <20260904-qom-qapi-v4-69-a985f168e938@redhat.com>
+Message-Id: <20260904-qom-qapi-v4-58-a985f168e938@redhat.com>
 References: <20260904-qom-qapi-v4-0-a985f168e938@redhat.com>
 In-Reply-To: <20260904-qom-qapi-v4-0-a985f168e938@redhat.com>
 To: qemu-devel@nongnu.org
@@ -64,40 +64,31 @@ Cc: Markus Armbruster <armbru@redhat.com>,
  Michael Roth <michael.roth@amd.com>, 
  Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>, 
  =?utf-8?q?Philippe_Mathieu-Daud=C3=A9?= <philmd@oss.qualcomm.com>, 
- Phil Dennis-Jordan <phil@philjordan.eu>, 
- Peter Maydell <peter.maydell@linaro.org>, 
- Yoshinori Sato <yoshinori.sato@nifty.com>, Jiri Pirko <jiri@resnulli.us>, 
- Jason Wang <jasowangio@gmail.com>, "Michael S. Tsirkin" <mst@redhat.com>, 
- Alistair Francis <alistair@alistair23.me>, 
- "Edgar E. Iglesias" <edgar.iglesias@gmail.com>, 
- Palmer Dabbelt <palmer@dabbelt.com>, Weiwei Li <liwei1518@gmail.com>, 
- Daniel Henrique Barboza <daniel.barboza@oss.qualcomm.com>, 
- Liu Zhiwei <zhiwei_liu@linux.alibaba.com>, 
- Chao Liu <chao.liu@processmission.com>, Eric Auger <eric.auger@redhat.com>, 
- qemu-arm@nongnu.org, qemu-riscv@nongnu.org
-X-Developer-Signature: v=1; a=openpgp-sha256; l=18792;
+ Glenn Miles <milesg@linux.ibm.com>, qemu-ppc@nongnu.org, 
+ qemu-arm@nongnu.org
+X-Developer-Signature: v=1; a=openpgp-sha256; l=18122;
  i=marcandre.lureau@redhat.com; h=from:subject:message-id;
- bh=PyW5TRg7ZQG9TBHWp10W1XsKvOAHOQvWs33fU8g6Slo=;
- b=owEBbQKS/ZANAwAKAdro4Ql1lpzlAcsmYgBqmyLM9ISaqb9L2IDQTdF09XZyYtjYX/EvdwrSc
- XjGgg8vU6iJAjMEAAEKAB0WIQSHqb2TP4fGBtJ29i3a6OEJdZac5QUCapsizAAKCRDa6OEJdZac
- 5QeeD/4mofU6am5AoY2KIG1gi/PG0cNk1TH11/lzKGB18RJwaIcZ4jOQgEvutBjF/vcWToOyRRC
- ihZ3OpVoeCl0qmqKW67Iba8wBRp230H6l1mhguUD+sjzc92A3jOh76ulNCEBAuJxMTpDstbZtiQ
- 0ey1xK2EeKgoI/1GhA6U5X/zt0RIPRASIw8ZWZKdM48WYQ3pK4SiAcnL9Hbcoi+//dwqxCQLqdd
- ZG9064O81FE7iEiS+ah8sAWwxI8z8llHBELVxMRlmGhiFn1Ek0dXGQaJOm9ZIvwYHy8+iPubV7v
- Sn6C4IKU1KuM5N1gfgPDL/0EzM6vSny2SP6iCjVDOz8bov5mwqK05xcGaRgvukZvpWD1dT4TNQ9
- a5HXvnxTRfgop1OBx5d4KBYlnBLSc/MCBw+1nlQjru5c3uSOpW79wlnLS2CezLaO1v2Vk5ZYb2Z
- Ht2vSsdM2lqtfhXRflV8BBbFVLWWhJaiCFkrbumjfcBq8vv1+CPLtAa00n1ZLrBDX9TxZf7AVdT
- 8IPce8dFC7nkTRPNimkWYncQHhrZKo1V8lKvSmlQbB8iefuH81GH1WSjWdmNEnxJSwa6Dop9krc
- LWr7JcG6mPm+CoBPORtBR3cLDw+fJ13Mft/RtPHUcqsEusMM9QZ4nJA5+7ix2reV/3QE4NizoLo
- NOtvoS8zKb7ddSg==
+ bh=jaJ89zwuq2tH/Z6pbH2n/emoNfh0O7+7mD66hHhyAJk=;
+ b=owEBbQKS/ZANAwAKAdro4Ql1lpzlAcsmYgBqmyLLBLiY47yzf9MgHDJhfVpweB+rsjgX0rs7d
+ 7IUv5rnT/2JAjMEAAEKAB0WIQSHqb2TP4fGBtJ29i3a6OEJdZac5QUCapsiywAKCRDa6OEJdZac
+ 5QZcEACAQA1UoFJ9qJQaFFyW8lVQqIkyOwaYMB5sNJkIA3TN9lfoQ036bf4zh78Vi/jGHxR9R2c
+ i96XNr0f7Ak7WZtqQdp6N44dGICqUpK3QT/DPilXdDvQYpwJFfizr8fwHSMP1QrkiTNBH25KRgx
+ BR17phrycNgszjglLTM6oE4d2xI2I3kVpj6KYdz4SWIxsTabqyH/O9eoR/NlmqgSZlbgkaORgJ3
+ OR7QXP27ZEKcn2zPPlkY2p/Kz3dL1nsiYSFNYJYkaE4lLzNSjXZpBACDTIddNCgo+uAxNOtaYnk
+ RPCZ8HAptKhaVZJswAoE48IectJ619f6nO0ELwIH7hlPRbvujvAuR0J90Dc9jawEWTM8H682uz2
+ jto65FQqGtfYS8zRAXLTODyENSPPxGAh9DDLKEflNMfWDHroLQKkSHyUgjR82sSbTT8psiBsVTv
+ eWRReQPhYvRbm2JioKkX+utQMCb/TCT7YBUhervFhxNYs4qI2cS12xGwY7X3vJ3jT0Gx8j1Mkmh
+ 6SgsDwkdcM5vZ1MQYXKWn26Q+0x+zneZwoD+E6jlr3CVTWGu4WS6Qbx1JH1jy5TSQmzVoWFgvZA
+ cmFV7BSFrHr0d1njpX8fQDECaBoVwOQCB0S6/qKLu7+Sz0/wRTKTZ95ymAm25ZDe995nK7EB3OS
+ UrspPPTH9yPOpRw==
 X-Developer-Key: i=marcandre.lureau@redhat.com; a=openpgp;
  fpr=87A9BD933F87C606D276F62DDAE8E10975969CE5
-X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.4
-X-Mimecast-MFC-PROC-ID: 3_CfmgYbQ1fm_hBZ7QL_bdRd4gsEDs0OGs2hRGpbPRc_1788552149
+X-Scanned-By: MIMEDefang 3.0 on 10.30.177.17
+X-Mimecast-MFC-PROC-ID: LxcmdLDHVyJk58gwehGf1rccerOtheBuQHrOX6rji54_1788552105
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=170.10.129.124;
+Received-SPF: pass client-ip=170.10.133.124;
  envelope-from=marcandre.lureau@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: 12
@@ -105,8 +96,9 @@ X-Spam_score: 1.2
 X-Spam_bar: +
 X-Spam_report: (1.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=0.001, RCVD_IN_SBL_CSS=3.335,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=no autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ RCVD_IN_SBL_CSS=3.335, SPF_HELO_PASS=-0.001,
+ SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -122,390 +114,429 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Change DEFINE_PROP_ARRAY, the macro now uses _arrayprop##_list to
-resolve the typed list PropertyInfo (introduced in the previous patch)
-instead of the generic qdev_prop_array.
-
-This means the element type and size information is carried by the
-PropertyInfo itself rather than duplicated at each callsite. Since
-the typed list PropertyInfos encode element_info and element_size,
-the .arrayinfo and .arrayfieldsize fields are no longer set by the
-macro (they will be removed from the Property struct in the next patch).
-
-Remove qdev_prop_array, which is now unused.
+Replaces the runtime-parsed visitor-based QOM property accessors with
+compile-time per-pin/per-LED accessor functions using QEMU_REPEAT.
 
 Signed-off-by: Marc-André Lureau <marcandre.lureau@redhat.com>
 ---
- hw/core/qdev-properties.c         |  8 --------
- hw/display/apple-gfx-mmio.m       |  2 +-
- hw/display/apple-gfx-pci.m        |  2 +-
- hw/display/apple-gfx.h            |  1 +
- hw/display/apple-gfx.m            |  4 ++++
- hw/input/stellaris_gamepad.c      |  2 +-
- hw/intc/arm_gicv3_common.c        |  2 +-
- hw/intc/arm_gicv5_common.c        |  4 ++--
- hw/intc/rx_icu.c                  |  4 ++--
- hw/misc/arm_sysctl.c              |  4 ++--
- hw/misc/mps2-scc.c                |  2 +-
- hw/net/rocker/rocker.c            |  2 +-
- hw/net/virtio-net.c               |  2 +-
- hw/nvram/xlnx-efuse.c             |  2 +-
- hw/nvram/xlnx-versal-efuse-ctrl.c |  2 +-
- hw/riscv/riscv_hart.c             |  6 ++----
- hw/virtio/virtio-iommu-pci.c      |  2 +-
- include/hw/block/block.h          |  2 +-
- include/hw/core/qdev-properties.h | 27 ++++++++++-----------------
- tests/unit/test-qdev.c            |  2 +-
- 20 files changed, 35 insertions(+), 47 deletions(-)
+ hw/gpio/pca9552.c | 205 +++++++++++++++++++++---------------------------------
+ hw/gpio/pca9554.c | 136 ++++++++++++++----------------------
+ 2 files changed, 131 insertions(+), 210 deletions(-)
 
-diff --git a/hw/core/qdev-properties.c b/hw/core/qdev-properties.c
-index a9ca8e4a03db..b5a9eb97e7dd 100644
---- a/hw/core/qdev-properties.c
-+++ b/hw/core/qdev-properties.c
-@@ -874,14 +874,6 @@ void default_prop_array(ObjectProperty *op, const Property *prop)
-     object_property_set_default_list(op);
+diff --git a/hw/gpio/pca9552.c b/hw/gpio/pca9552.c
+index 16741c22dea3..b743a30d80ff 100644
+--- a/hw/gpio/pca9552.c
++++ b/hw/gpio/pca9552.c
+@@ -25,6 +25,7 @@
+ #include "qapi/error.h"
+ #include "qapi/qapi-types-machine.h"
+ #include "qapi/qapi-visit-machine.h"
++#include "qapi/qapi-type-infos-machine.h"
+ #include "trace.h"
+ #include "qom/object.h"
+ 
+@@ -354,33 +355,6 @@ static int pca955x_event(I2CSlave *i2c, enum i2c_event event)
+     return 0;
  }
  
--const PropertyInfo qdev_prop_array = {
--    .type = "list",
--    .get = get_prop_array,
--    .set = set_prop_array,
--    .release = release_prop_array,
--    .set_default_value = default_prop_array,
--};
+-static void pca955x_get_led(Object *obj, Visitor *v, const char *name,
+-                            void *opaque, Error **errp)
+-{
+-    PCA955xClass *k = PCA955X_GET_CLASS(obj);
+-    PCA955xState *s = PCA955X(obj);
+-    int led, rc, reg;
+-    Pca9552LedState state;
 -
- const PropertyInfo qdev_prop_uint8_list =
-     DEFINE_PROP_ARRAY_INFO(qdev_prop_uint8, uint8_t);
- const PropertyInfo qdev_prop_uint16_list =
-diff --git a/hw/display/apple-gfx-mmio.m b/hw/display/apple-gfx-mmio.m
-index 58beaadd1f10..dcd04617eb87 100644
---- a/hw/display/apple-gfx-mmio.m
-+++ b/hw/display/apple-gfx-mmio.m
-@@ -258,7 +258,7 @@ static void apple_gfx_mmio_reset(Object *obj, ResetType type)
- static const Property apple_gfx_mmio_properties[] = {
-     DEFINE_PROP_ARRAY("display-modes", AppleGFXMMIOState,
-                       common.num_display_modes, common.display_modes,
--                      qdev_prop_apple_gfx_display_mode, AppleGFXDisplayMode),
-+                      qdev_prop_apple_gfx_display_mode),
- };
+-    rc = sscanf(name, "led%2d", &led);
+-    if (rc != 1) {
+-        error_setg(errp, "%s: error reading %s", __func__, name);
+-        return;
+-    }
+-    if (led < 0 || led >= k->pin_count) {
+-        error_setg(errp, "%s: invalid led %s", __func__, name);
+-        return;
+-    }
+-    /*
+-     * Get the LSx register as the qom interface should expose the device
+-     * state, not the modeled 'input line' behaviour which would come from
+-     * reading the INPUTx reg
+-     */
+-    reg = PCA9552_LS0 + led / 4;
+-    state = (pca955x_read(s, reg) >> ((led % 4) * 2)) & 0x3;
+-    visit_type_Pca9552LedState(v, name, &state, errp);
+-}
+-
+ /*
+  * Return an LED selector register value based on an existing one, with
+  * the appropriate 2-bit state value set for the given LED number (0-3).
+@@ -391,97 +365,8 @@ static inline uint8_t pca955x_ledsel(uint8_t oldval, int led_num, int state)
+                 ((state & 0x3) << (led_num << 1));
+ }
  
- static void apple_gfx_mmio_class_init(ObjectClass *klass, const void *data)
-diff --git a/hw/display/apple-gfx-pci.m b/hw/display/apple-gfx-pci.m
-index b0694f4cb855..74f79c8b157b 100644
---- a/hw/display/apple-gfx-pci.m
-+++ b/hw/display/apple-gfx-pci.m
-@@ -118,7 +118,7 @@ static void apple_gfx_pci_reset(Object *obj, ResetType type)
- static const Property apple_gfx_pci_properties[] = {
-     DEFINE_PROP_ARRAY("display-modes", AppleGFXPCIState,
-                       common.num_display_modes, common.display_modes,
--                      qdev_prop_apple_gfx_display_mode, AppleGFXDisplayMode),
-+                      qdev_prop_apple_gfx_display_mode),
- };
+-static void pca955x_set_led(Object *obj, Visitor *v, const char *name,
+-                            void *opaque, Error **errp)
+-{
+-    PCA955xClass *k = PCA955X_GET_CLASS(obj);
+-    PCA955xState *s = PCA955X(obj);
+-    int led, rc, reg, val;
+-    Pca9552LedState state;
+-
+-    if (!visit_type_Pca9552LedState(v, name, &state, errp)) {
+-        return;
+-    }
+-    rc = sscanf(name, "led%2d", &led);
+-    if (rc != 1) {
+-        error_setg(errp, "%s: error reading %s", __func__, name);
+-        return;
+-    }
+-    if (led < 0 || led >= k->pin_count) {
+-        error_setg(errp, "%s: invalid led %s", __func__, name);
+-        return;
+-    }
+-
+-    reg = PCA9552_LS0 + led / 4;
+-    val = pca955x_read(s, reg);
+-    val = pca955x_ledsel(val, led % 4, state);
+-    pca955x_write(s, reg, val);
+-}
+-
+ static void pca955x_set_ext_state(PCA955xState *s, int pin, int level);
  
- static void apple_gfx_pci_class_init(ObjectClass *klass, const void *data)
-diff --git a/hw/display/apple-gfx.h b/hw/display/apple-gfx.h
-index 3197bd853dab..b7eef7b9b14a 100644
---- a/hw/display/apple-gfx.h
-+++ b/hw/display/apple-gfx.h
-@@ -69,6 +69,7 @@ void *apple_gfx_host_ptr_for_gpa_range(uint64_t guest_physical,
-                                        MemoryRegion **mapping_in_region);
+-static void pca955x_get_pin(Object *obj, Visitor *v, const char *name,
+-                            void *opaque, Error **errp)
+-{
+-    PCA955xClass *k = PCA955X_GET_CLASS(obj);
+-    PCA955xState *s = PCA955X(obj);
+-    int pin, rc;
+-    uint8_t input_reg;
+-    Pca9552PinState state;
+-
+-    rc = sscanf(name, "pin%2d", &pin);
+-    if (rc != 1) {
+-        error_setg(errp, "%s: error reading %s", __func__, name);
+-        return;
+-    }
+-    if (pin < 0 || pin >= k->pin_count) {
+-        error_setg(errp, "%s invalid pin %s", __func__, name);
+-        return;
+-    }
+-
+-    /*
+-     * Report the raw pin logic level; polarity inversion is a read-time
+-     * transform applied to the INPUT register, not to the pin state itself.
+-     */
+-    input_reg = PCA9535_INPUT0 + (pin / 8);
+-    state = (s->regs[input_reg] >> (pin % 8)) & 0x1;
+-    visit_type_Pca9552PinState(v, name, &state, errp);
+-}
+-
+-static void pca955x_set_pin(Object *obj, Visitor *v, const char *name,
+-                            void *opaque, Error **errp)
+-{
+-    PCA955xClass *k = PCA955X_GET_CLASS(obj);
+-    PCA955xState *s = PCA955X(obj);
+-    int pin, rc;
+-    Pca9552PinState state;
+-    uint8_t config_reg;
+-
+-    if (!visit_type_Pca9552PinState(v, name, &state, errp)) {
+-        return;
+-    }
+-    rc = sscanf(name, "pin%2d", &pin);
+-    if (rc != 1) {
+-        error_setg(errp, "%s: error reading %s", __func__, name);
+-        return;
+-    }
+-    if (pin < 0 || pin >= k->pin_count) {
+-        error_setg(errp, "%s invalid pin %s", __func__, name);
+-        return;
+-    }
+-
+-    /* Only input-configured pins can be driven by an external device. */
+-    config_reg = PCA9535_CONFIG0 + (pin / 8);
+-    if (!((s->regs[config_reg] >> (pin % 8)) & 0x1)) {
+-        qemu_log_mask(LOG_UNIMP,
+-                      "%s: pin %d is configured as output, ignoring set\n",
+-                      s->description, pin);
+-        return;
+-    }
+-
+-    pca955x_set_ext_state(s, pin, state != PCA9552_PIN_STATE_LOW);
+-}
+-
+ static const VMStateDescription pca9552_vmstate = {
+     .name = "PCA9552",
+     .version_id = 0,
+@@ -536,26 +421,92 @@ static void pca9535_reset_hold(Object *obj, ResetType type)
+     s->len = 0;
+ }
  
- extern const PropertyInfo qdev_prop_apple_gfx_display_mode;
-+extern const PropertyInfo qdev_prop_apple_gfx_display_mode_list;
- 
- #endif
- 
-diff --git a/hw/display/apple-gfx.m b/hw/display/apple-gfx.m
-index 77c420b30006..592d692d793d 100644
---- a/hw/display/apple-gfx.m
-+++ b/hw/display/apple-gfx.m
-@@ -16,6 +16,7 @@
- #include "qemu/cutils.h"
- #include "qemu/log.h"
- #include "qapi/qapi-builtin-type-infos.h"
-+#include "hw/core/qdev-prop-internal.h"
- #include "qapi/visitor.h"
- #include "qapi/error.h"
- #include "qemu/aio-wait.h"
-@@ -879,3 +880,6 @@ static void apple_gfx_set_display_mode(Object *obj, Visitor *v,
-     .get   = apple_gfx_get_display_mode,
-     .set   = apple_gfx_set_display_mode,
- };
++/*
++ * Get the LSx register as the qom interface should expose the device
++ * state, not the modeled 'input line' behaviour which would come from
++ * reading the INPUTx reg
++ */
++#define DEFINE_LED_ACCESSORS(n)                                              \
++static int prop_get_led##n(Object *obj, Error **errp)                        \
++{                                                                            \
++    PCA955xState *s = PCA955X(obj);                                          \
++    uint8_t reg = PCA9552_LS0 + (n) / 4;                                     \
++    return (pca955x_read(s, reg) >> (((n) % 4) * 2)) & 0x3;                  \
++}                                                                            \
++static void prop_set_led##n(Object *obj, int val, Error **errp)              \
++{                                                                            \
++    PCA955xState *s = PCA955X(obj);                                          \
++    uint8_t reg = PCA9552_LS0 + (n) / 4;                                     \
++    uint8_t old = pca955x_read(s, reg);                                      \
++    pca955x_write(s, reg, pca955x_ledsel(old, (n) % 4, val));                \
++}
 +
-+const PropertyInfo qdev_prop_apple_gfx_display_mode_list =
-+    DEFINE_PROP_ARRAY_INFO(qdev_prop_apple_gfx_display_mode, AppleGFXDisplayMode);
-diff --git a/hw/input/stellaris_gamepad.c b/hw/input/stellaris_gamepad.c
-index 376d91abad70..20613f649977 100644
---- a/hw/input/stellaris_gamepad.c
-+++ b/hw/input/stellaris_gamepad.c
-@@ -80,7 +80,7 @@ static void stellaris_gamepad_reset_enter(Object *obj, ResetType type)
++QEMU_REPEAT(PCA955X_PIN_COUNT_MAX, DEFINE_LED_ACCESSORS)
++
++#define LED_ENUM_PROP(n) {                                              \
++    .name = "led" #n,                                                   \
++    .default_value = -1,                                                \
++    .qapi_type = &Pca9552LedState_type_info,                            \
++    .get = prop_get_led##n,                                             \
++    .set = prop_set_led##n,                                             \
++},
++
++static const QapiEnumProp led_enum_props[] = {
++    QEMU_REPEAT(PCA955X_PIN_COUNT_MAX, LED_ENUM_PROP)
++};
++
++/*
++ * Report the raw pin logic level; polarity inversion is a read-time
++ * transform applied to the INPUT register, not to the pin state
++ * itself.
++ */
++#define DEFINE_PIN_ACCESSORS(n)                                              \
++static int prop_get_pin##n(Object *obj, Error **errp)                        \
++{                                                                            \
++    PCA955xState *s = PCA955X(obj);                                          \
++    uint8_t input_reg = PCA9535_INPUT0 + (n) / 8;                            \
++    return (s->regs[input_reg] >> ((n) % 8)) & 0x1;                          \
++}                                                                            \
++static void prop_set_pin##n(Object *obj, int val, Error **errp)              \
++{                                                                            \
++    PCA955xState *s = PCA955X(obj);                                          \
++    uint8_t config_reg = PCA9535_CONFIG0 + (n) / 8;                          \
++    /* Only input-configured pins can be driven by an external device */     \
++    if (!((s->regs[config_reg] >> ((n) % 8)) & 0x1)) {                       \
++        qemu_log_mask(LOG_UNIMP,                                             \
++                      "%s: pin %d configured as output, ignoring set\n",     \
++                      s->description, (n));                                  \
++        return;                                                              \
++    }                                                                        \
++    pca955x_set_ext_state(s, (n), val != PCA9552_PIN_STATE_LOW);             \
++}
++
++QEMU_REPEAT(PCA955X_PIN_COUNT_MAX, DEFINE_PIN_ACCESSORS)
++
++#define PIN_ENUM_PROP(n) {                                              \
++    .name = "pin" #n,                                                   \
++    .default_value = -1,                                                \
++    .qapi_type = &Pca9552PinState_type_info,                            \
++    .get = prop_get_pin##n,                                             \
++    .set = prop_set_pin##n,                                             \
++},
++
++static const QapiEnumProp pin_enum_props[] = {
++    QEMU_REPEAT(PCA955X_PIN_COUNT_MAX, PIN_ENUM_PROP)
++};
++
+ static void pca955x_initfn(Object *obj)
+ {
+     PCA955xClass *k = PCA955X_GET_CLASS(obj);
  
- static const Property stellaris_gamepad_properties[] = {
-     DEFINE_PROP_ARRAY("keycodes", StellarisGamepad, num_buttons,
--                      keycodes, qdev_prop_uint32, uint32_t),
-+                      keycodes, qdev_prop_uint32),
- };
+     assert(k->pin_count <= PCA955X_PIN_COUNT_MAX);
++    /* use array/list instead of individual QAPI enum properties */
+     for (int ix = 0; ix < k->pin_count; ix++) {
+-        char *name;
+-
+         if (k->has_led_support) {
+-            /* LED variant: expose the LED selector state as led%d. */
+-            name = g_strdup_printf("led%d", ix);
+-            object_property_add(obj, name, "Pca9552LedState",
+-                                pca955x_get_led, pca955x_set_led, NULL, NULL);
++            object_property_add_qapi_enum(obj, &led_enum_props[ix]);
+         } else {
+-            /* GPIO variant: expose the pin logic level as pin%d. */
+-            name = g_strdup_printf("pin%d", ix);
+-            object_property_add(obj, name, "Pca9552PinState",
+-                                pca955x_get_pin, pca955x_set_pin, NULL, NULL);
++            object_property_add_qapi_enum(obj, &pin_enum_props[ix]);
+         }
+-        g_free(name);
+     }
+ }
  
- static void stellaris_gamepad_class_init(ObjectClass *klass, const void *data)
-diff --git a/hw/intc/arm_gicv3_common.c b/hw/intc/arm_gicv3_common.c
-index f7ba74e6d52a..1298b6b735e9 100644
---- a/hw/intc/arm_gicv3_common.c
-+++ b/hw/intc/arm_gicv3_common.c
-@@ -615,7 +615,7 @@ static const Property arm_gicv3_common_properties[] = {
-      */
-     DEFINE_PROP_BOOL("force-8-bit-prio", GICv3State, force_8bit_prio, 0),
-     DEFINE_PROP_ARRAY("redist-region-count", GICv3State, nb_redist_regions,
--                      redist_region_count, qdev_prop_uint32, uint32_t),
-+                      redist_region_count, qdev_prop_uint32),
-     DEFINE_PROP_LINK("sysmem", GICv3State, dma, TYPE_MEMORY_REGION,
-                      MemoryRegion *),
-     DEFINE_PROP_UINT32("first-cpu-index", GICv3State, first_cpu_idx, 0),
-diff --git a/hw/intc/arm_gicv5_common.c b/hw/intc/arm_gicv5_common.c
-index b155486af65e..61c8ae493021 100644
---- a/hw/intc/arm_gicv5_common.c
-+++ b/hw/intc/arm_gicv5_common.c
-@@ -191,9 +191,9 @@ static void gicv5_common_realize(DeviceState *dev, Error **errp)
+diff --git a/hw/gpio/pca9554.c b/hw/gpio/pca9554.c
+index e4eddc829ef7..f2a5b94a36d8 100644
+--- a/hw/gpio/pca9554.c
++++ b/hw/gpio/pca9554.c
+@@ -18,7 +18,7 @@
+ #include "qapi/error.h"
+ #include "qapi/qapi-types-machine.h"
+ #include "qapi/qapi-visit-machine.h"
+-#include "qapi/visitor.h"
++#include "qapi/qapi-type-infos-machine.h"
+ #include "trace.h"
+ #include "qom/object.h"
  
- static const Property arm_gicv5_common_properties[] = {
-     DEFINE_PROP_LINK_ARRAY("cpus", GICv5Common, num_cpus,
--                           cpus, TYPE_ARM_CPU, ARMCPU *),
-+                           cpus, TYPE_ARM_CPU),
-     DEFINE_PROP_ARRAY("cpu-iaffids", GICv5Common, num_cpu_iaffids,
--                      cpu_iaffids, qdev_prop_uint32, uint32_t),
-+                      cpu_iaffids, qdev_prop_uint32),
-     DEFINE_PROP_UINT32("irsid", GICv5Common, irsid, 0),
-     DEFINE_PROP_UINT32("spi-range", GICv5Common, spi_range, 0),
-     DEFINE_PROP_UINT32("spi-base", GICv5Common, spi_base, 0),
-diff --git a/hw/intc/rx_icu.c b/hw/intc/rx_icu.c
-index 992b069ae245..125a6dcb6804 100644
---- a/hw/intc/rx_icu.c
-+++ b/hw/intc/rx_icu.c
-@@ -356,9 +356,9 @@ static const VMStateDescription vmstate_rxicu = {
+@@ -151,83 +151,60 @@ static void pca9554_set_ext_state(PCA9554State *s, int pin, int level)
+     }
+ }
  
- static const Property rxicu_properties[] = {
-     DEFINE_PROP_ARRAY("ipr-map", RXICUState, nr_irqs, map,
--                      qdev_prop_uint8, uint8_t),
-+                      qdev_prop_uint8),
-     DEFINE_PROP_ARRAY("trigger-level", RXICUState, nr_sense, init_sense,
--                      qdev_prop_uint8, uint8_t),
-+                      qdev_prop_uint8),
- };
+-static void pca9554_get_pin(Object *obj, Visitor *v, const char *name,
+-                            void *opaque, Error **errp)
+-{
+-    PCA9554State *s = PCA9554(obj);
+-    int pin, rc;
+-    Pca9554PinState state;
+-
+-    rc = sscanf(name, "pin%2d", &pin);
+-    if (rc != 1) {
+-        error_setg(errp, "%s: error reading %s", __func__, name);
+-        return;
+-    }
+-    if (pin < 0 || pin >= PCA9554_GET_CLASS(s)->pin_count) {
+-        error_setg(errp, "%s invalid pin %s", __func__, name);
+-        return;
+-    }
+-
+-    /*
+-     * Report the physical pin level. The input register is kept in sync by
+-     * pca9554_update_pin_input(): output pins mirror the OUTPUT register and
+-     * input pins reflect the externally driven (or pulled-up) level, so it
+-     * holds the wire level regardless of the configured direction.
+-     */
+-    state = (s->regs[PCA9554_INPUT] >> pin) & 0x1;
+-    visit_type_Pca9554PinState(v, name, &state, errp);
++/*
++ * Report the physical pin level. The input register is kept in sync
++ * by pca9554_update_pin_input(): output pins mirror the OUTPUT
++ * register and input pins reflect the externally driven (or
++ * pulled-up) level, so it holds the wire level regardless of the
++ * configured direction.
++ */
++#define DEFINE_PIN_ACCESSORS(n)                                              \
++static int prop_get_pin##n(Object *obj, Error **errp)                        \
++{                                                                            \
++    PCA9554State *s = PCA9554(obj);                                          \
++    return (s->regs[PCA9554_INPUT] >> (n)) & 0x1;                            \
++}                                                                            \
++static void prop_set_pin##n(Object *obj, int val, Error **errp)              \
++{                                                                            \
++    PCA9554State *s = PCA9554(obj);                                          \
++    if (s->hw_dir) {                                                         \
++        if (!((s->regs[PCA9554_CONFIG] >> (n)) & 0x1)) {                     \
++            qemu_log_mask(LOG_UNIMP,                                         \
++                          "%s: pin %d configured as output,"                 \
++                          " ignoring set\n",                                 \
++                          s->description, (n));                              \
++            return;                                                          \
++        }                                                                    \
++        pca9554_set_ext_state(s, (n), val != PCA9554_PIN_STATE_LOW);         \
++    } else {                                                                 \
++        /* Legacy behavior: force output mode and drive */                   \
++        uint8_t mask = 0x1 << (n);                                           \
++        int v = pca9554_read(s, PCA9554_OUTPUT);                             \
++        if (val == PCA9554_PIN_STATE_LOW) {                                  \
++            v &= ~mask;                                                      \
++        } else {                                                             \
++            v |= mask;                                                       \
++        }                                                                    \
++        pca9554_write(s, PCA9554_OUTPUT, v);                                 \
++        v = pca9554_read(s, PCA9554_CONFIG);                                 \
++        v &= ~mask;                                                          \
++        pca9554_write(s, PCA9554_CONFIG, v);                                 \
++    }                                                                        \
+ }
  
- static void rxicu_class_init(ObjectClass *klass, const void *data)
-diff --git a/hw/misc/arm_sysctl.c b/hw/misc/arm_sysctl.c
-index ebc95b9bb54c..1df85593a5cb 100644
---- a/hw/misc/arm_sysctl.c
-+++ b/hw/misc/arm_sysctl.c
-@@ -626,10 +626,10 @@ static const Property arm_sysctl_properties[] = {
-     DEFINE_PROP_UINT32("proc_id", arm_sysctl_state, proc_id, 0),
-     /* Daughterboard power supply voltages (as reported via SYS_CFG) */
-     DEFINE_PROP_ARRAY("db-voltage", arm_sysctl_state, db_num_vsensors,
--                      db_voltage, qdev_prop_uint32, uint32_t),
-+                      db_voltage, qdev_prop_uint32),
-     /* Daughterboard clock reset values (as reported via SYS_CFG) */
-     DEFINE_PROP_ARRAY("db-clock", arm_sysctl_state, db_num_clocks,
--                      db_clock_reset, qdev_prop_uint32, uint32_t),
-+                      db_clock_reset, qdev_prop_uint32),
- };
+-static void pca9554_set_pin(Object *obj, Visitor *v, const char *name,
+-                            void *opaque, Error **errp)
+-{
+-    PCA9554State *s = PCA9554(obj);
+-    int pin, rc, val;
+-    uint8_t mask;
+-    Pca9554PinState state;
++QEMU_REPEAT(PCA9554_PIN_COUNT, DEFINE_PIN_ACCESSORS)
  
- static void arm_sysctl_class_init(ObjectClass *klass, const void *data)
-diff --git a/hw/misc/mps2-scc.c b/hw/misc/mps2-scc.c
-index 554b504c7203..32f9e166feed 100644
---- a/hw/misc/mps2-scc.c
-+++ b/hw/misc/mps2-scc.c
-@@ -464,7 +464,7 @@ static const Property mps2_scc_properties[] = {
-      * motherboard configuration controller to suit the FPGA image.
-      */
-     DEFINE_PROP_ARRAY("oscclk", MPS2SCC, num_oscclk, oscclk_reset,
--                      qdev_prop_uint32, uint32_t),
-+                      qdev_prop_uint32),
- };
+-    if (!visit_type_Pca9554PinState(v, name, &state, errp)) {
+-        return;
+-    }
+-    rc = sscanf(name, "pin%2d", &pin);
+-    if (rc != 1) {
+-        error_setg(errp, "%s: error reading %s", __func__, name);
+-        return;
+-    }
+-    if (pin < 0 || pin >= PCA9554_GET_CLASS(s)->pin_count) {
+-        error_setg(errp, "%s invalid pin %s", __func__, name);
+-        return;
+-    }
++#define PIN_ENUM_PROP(n) {                                              \
++    .name = "pin" #n,                                                   \
++    .default_value = -1,                                                \
++    .qapi_type = &Pca9554PinState_type_info,                            \
++    .get = prop_get_pin##n,                                             \
++    .set = prop_set_pin##n,                                             \
++},
  
- static void mps2_scc_class_init(ObjectClass *klass, const void *data)
-diff --git a/hw/net/rocker/rocker.c b/hw/net/rocker/rocker.c
-index 910dce901b67..afbc32e99d94 100644
---- a/hw/net/rocker/rocker.c
-+++ b/hw/net/rocker/rocker.c
-@@ -1466,7 +1466,7 @@ static const Property rocker_properties[] = {
-     DEFINE_PROP_UINT64("switch_id", Rocker,
-                        switch_id, 0),
-     DEFINE_PROP_ARRAY("ports", Rocker, fp_ports,
--                      fp_ports_peers, qdev_prop_netdev, NICPeers),
-+                      fp_ports_peers, qdev_prop_netdev),
- };
+-    if (s->hw_dir) {
+-        /* Warn and ignore if the guest has configured this pin as output */
+-        if (!((s->regs[PCA9554_CONFIG] >> pin) & 0x1)) {
+-            qemu_log_mask(LOG_UNIMP,
+-                          "%s: pin %d is configured as output, "
+-                          "ignoring external set\n",
+-                          s->description, pin);
+-            return;
+-        }
+-        /* Drive the external input level */
+-        pca9554_set_ext_state(s, pin, state != PCA9554_PIN_STATE_LOW);
+-    } else {
+-        /* Legacy behavior: force output mode and drive */
+-        /* First, modify the output register bit */
+-        val = pca9554_read(s, PCA9554_OUTPUT);
+-        mask = 0x1 << pin;
+-        if (state == PCA9554_PIN_STATE_LOW) {
+-            val &= ~(mask);
+-        } else {
+-            val |= mask;
+-        }
+-        pca9554_write(s, PCA9554_OUTPUT, val);
+-
+-        /* Then, clear the config register bit for output mode */
+-        val = pca9554_read(s, PCA9554_CONFIG);
+-        val &= ~mask;
+-        pca9554_write(s, PCA9554_CONFIG, val);
+-    }
+-}
++static const QapiEnumProp pin_enum_props[] = {
++    QEMU_REPEAT(PCA9554_PIN_COUNT, PIN_ENUM_PROP)
++};
  
- static const VMStateDescription rocker_vmsd = {
-diff --git a/hw/net/virtio-net.c b/hw/net/virtio-net.c
-index 814b99a43d20..a4e633e54392 100644
---- a/hw/net/virtio-net.c
-+++ b/hw/net/virtio-net.c
-@@ -4260,7 +4260,7 @@ static const Property virtio_net_properties[] = {
-     DEFINE_PROP_BIT64("hash", VirtIONet, host_features,
-                     VIRTIO_NET_F_HASH_REPORT, false),
-     DEFINE_PROP_ARRAY("ebpf-rss-fds", VirtIONet, nr_ebpf_rss_fds,
--                      ebpf_rss_fds, qdev_prop_string, char*),
-+                      ebpf_rss_fds, qdev_prop_string),
-     DEFINE_PROP_BIT64("guest_rsc_ext", VirtIONet, host_features,
-                     VIRTIO_NET_F_RSC_EXT, false),
-     DEFINE_PROP_UINT32("rsc_interval", VirtIONet, rsc_timeout,
-diff --git a/hw/nvram/xlnx-efuse.c b/hw/nvram/xlnx-efuse.c
-index b1c9ee4980a0..99c16ce76f15 100644
---- a/hw/nvram/xlnx-efuse.c
-+++ b/hw/nvram/xlnx-efuse.c
-@@ -266,7 +266,7 @@ static const Property efuse_properties[] = {
-     DEFINE_PROP_UINT32("efuse-size", XlnxEFuse, efuse_size, 64 * 32),
-     DEFINE_PROP_BOOL("init-factory-tbits", XlnxEFuse, init_tbits, true),
-     DEFINE_PROP_ARRAY("read-only", XlnxEFuse, ro_bits_cnt, ro_bits,
--                      qdev_prop_uint32, uint32_t),
-+                      qdev_prop_uint32),
- };
+ static const VMStateDescription pca9554_vmstate = {
+     .name = "PCA9554",
+@@ -264,16 +241,9 @@ static void pca9554_reset(DeviceState *dev)
+ static void pca9554_initfn(Object *obj)
+ {
+     PCA9554Class *pc = PCA9554_GET_CLASS(obj);
+-    int pin;
  
- static void efuse_class_init(ObjectClass *klass, const void *data)
-diff --git a/hw/nvram/xlnx-versal-efuse-ctrl.c b/hw/nvram/xlnx-versal-efuse-ctrl.c
-index f5d5587cb657..101320b82fd9 100644
---- a/hw/nvram/xlnx-versal-efuse-ctrl.c
-+++ b/hw/nvram/xlnx-versal-efuse-ctrl.c
-@@ -740,7 +740,7 @@ static const Property efuse_ctrl_props[] = {
-                      TYPE_XLNX_EFUSE, XlnxEFuse *),
-     DEFINE_PROP_ARRAY("pg0-lock",
-                       XlnxVersalEFuseCtrl, extra_pg0_lock_n16,
--                      extra_pg0_lock_spec, qdev_prop_uint16, uint16_t),
-+                      extra_pg0_lock_spec, qdev_prop_uint16),
- };
+-    for (pin = 0; pin < pc->pin_count; pin++) {
+-        char *name;
+-
+-        name = g_strdup_printf("pin%d", pin);
+-        object_property_add(obj, name, "Pca9554PinState",
+-                            pca9554_get_pin, pca9554_set_pin,
+-                            NULL, NULL);
+-        g_free(name);
++    for (int pin = 0; pin < pc->pin_count; pin++) {
++        object_property_add_qapi_enum(obj, &pin_enum_props[pin]);
+     }
+ }
  
- static void efuse_ctrl_class_init(ObjectClass *klass, const void *data)
-diff --git a/hw/riscv/riscv_hart.c b/hw/riscv/riscv_hart.c
-index 747754be6158..a89c87c05623 100644
---- a/hw/riscv/riscv_hart.c
-+++ b/hw/riscv/riscv_hart.c
-@@ -48,11 +48,9 @@ static const Property riscv_harts_props[] = {
-      * defined by "rnmi-exception-vector".
-      */
-     DEFINE_PROP_ARRAY("rnmi-interrupt-vector", RISCVHartArrayState,
--                      num_rnmi_irqvec, rnmi_irqvec, qdev_prop_uint64,
--                      uint64_t),
-+                      num_rnmi_irqvec, rnmi_irqvec, qdev_prop_uint64),
-     DEFINE_PROP_ARRAY("rnmi-exception-vector", RISCVHartArrayState,
--                      num_rnmi_excpvec, rnmi_excpvec, qdev_prop_uint64,
--                      uint64_t),
-+                      num_rnmi_excpvec, rnmi_excpvec, qdev_prop_uint64),
- };
- 
- static void riscv_harts_cpu_reset(void *opaque)
-diff --git a/hw/virtio/virtio-iommu-pci.c b/hw/virtio/virtio-iommu-pci.c
-index 7b5ffddc1e97..1f3a07c5d119 100644
---- a/hw/virtio/virtio-iommu-pci.c
-+++ b/hw/virtio/virtio-iommu-pci.c
-@@ -38,7 +38,7 @@ static const Property virtio_iommu_pci_properties[] = {
-     DEFINE_PROP_UINT32("class", VirtIOPCIProxy, class_code, 0),
-     DEFINE_PROP_ARRAY("reserved-regions", VirtIOIOMMUPCI,
-                       vdev.nr_prop_resv_regions, vdev.prop_resv_regions,
--                      qdev_prop_reserved_region, ReservedRegion),
-+                      qdev_prop_reserved_region),
- };
- 
- static void virtio_iommu_pci_realize(VirtIOPCIProxy *vpci_dev, Error **errp)
-diff --git a/include/hw/block/block.h b/include/hw/block/block.h
-index df941df19f26..70bf03a8de73 100644
---- a/include/hw/block/block.h
-+++ b/include/hw/block/block.h
-@@ -83,7 +83,7 @@ static inline unsigned int get_physical_block_exp(BlockConf *conf)
-                             _conf.account_failed, ON_OFF_AUTO_AUTO),    \
-     DEFINE_PROP_ARRAY("stats-intervals", _state,                        \
-                      _conf.num_stats_intervals, _conf.stats_intervals,  \
--                     qdev_prop_uint32, uint32_t)
-+                     qdev_prop_uint32)
- 
- #define DEFINE_BLOCK_PROPERTIES(_state, _conf)                          \
-     DEFINE_PROP_DRIVE("drive", _state, _conf.blk),                      \
-diff --git a/include/hw/core/qdev-properties.h b/include/hw/core/qdev-properties.h
-index 0c067170079d..39f95ce7a3c6 100644
---- a/include/hw/core/qdev-properties.h
-+++ b/include/hw/core/qdev-properties.h
-@@ -76,7 +76,6 @@ extern const PropertyInfo qdev_prop_size;
- extern const PropertyInfo qdev_prop_string;
- extern const PropertyInfo qdev_prop_on_off_auto;
- extern const PropertyInfo qdev_prop_size32;
--extern const PropertyInfo qdev_prop_array;
- extern const PropertyInfo qdev_prop_uint8_list;
- extern const PropertyInfo qdev_prop_uint16_list;
- extern const PropertyInfo qdev_prop_uint32_list;
-@@ -148,15 +147,15 @@ extern const PropertyInfo qdev_prop_link_list;
-  * @_name: name of the array
-  * @_state: name of the device state structure type
-  * @_field: uint32_t field in @_state to hold the array length
-- * @_arrayfield: field in @_state (of type '@_arraytype *') which
-- *               will point to the array
-- * @_arrayprop: PropertyInfo defining what property the array elements have
-- * @_arraytype: C type of the array elements
-+ * @_arrayfield: field in @_state which will point to the array
-+ * @_arrayprop: PropertyInfo for the array elements (e.g. qdev_prop_uint32);
-+ *              a corresponding list PropertyInfo named @_arrayprop##_list
-+ *              must exist
-  *
-  * Define device properties for a variable-length array _name.  The array is
-  * represented as a list in the visitor interface.
-  *
-- * @_arraytype is required to be movable with memcpy().
-+ * The element type must be movable with memcpy().
-  *
-  * When the array property is set, the @_field member of the device
-  * struct is set to the array length, and @_arrayfield is set to point
-@@ -166,12 +165,10 @@ extern const PropertyInfo qdev_prop_link_list;
-  * @_arrayfield memory.
-  */
- #define DEFINE_PROP_ARRAY(_name, _state, _field,                        \
--                          _arrayfield, _arrayprop, _arraytype)          \
--    DEFINE_PROP(_name, _state, _field, qdev_prop_array, uint32_t,       \
-+                          _arrayfield, _arrayprop)                      \
-+    DEFINE_PROP(_name, _state, _field, _arrayprop##_list, uint32_t,     \
-                 .set_default = true,                                    \
-                 .defval.u = 0,                                          \
--                .arrayinfo = &(_arrayprop),                             \
--                .arrayfieldsize = sizeof(_arraytype),                   \
-                 .arrayoffset = offsetof(_state, _arrayfield))
- 
- #define DEFINE_PROP_LINK(_name, _state, _field, _type, _ptr_type)     \
-@@ -183,10 +180,8 @@ extern const PropertyInfo qdev_prop_link_list;
-  * @_name: name of the array
-  * @_state: name of the device state structure type
-  * @_field: uint32_t field in @_state to hold the array length
-- * @_arrayfield: field in @_state (of type '@_arraytype *') which
-- *               will point to the array
-+ * @_arrayfield: field in @_state which will point to the array
-  * @_linktype: QOM type name of the link type
-- * @_arraytype: C type of the array elements
-  *
-  * Define device properties for a variable-length array _name of links
-  * (i.e. this is the array version of DEFINE_PROP_LINK).
-@@ -195,12 +190,10 @@ extern const PropertyInfo qdev_prop_link_list;
-  * where each string is the QOM path of the object to be linked.
-  */
- #define DEFINE_PROP_LINK_ARRAY(_name, _state, _field, _arrayfield,      \
--                               _linktype, _arraytype)                   \
--    DEFINE_PROP(_name, _state, _field, qdev_prop_array, uint32_t,       \
-+                               _linktype)                               \
-+    DEFINE_PROP(_name, _state, _field, qdev_prop_link_list, uint32_t,   \
-                 .set_default = true,                                    \
-                 .defval.u = 0,                                          \
--                .arrayinfo = &qdev_prop_link,                           \
--                .arrayfieldsize = sizeof(_arraytype),                   \
-                 .arrayoffset = offsetof(_state, _arrayfield),           \
-                 .link_type = _linktype)
- 
-diff --git a/tests/unit/test-qdev.c b/tests/unit/test-qdev.c
-index 77c3eee71713..8cd004b1efab 100644
---- a/tests/unit/test-qdev.c
-+++ b/tests/unit/test-qdev.c
-@@ -23,7 +23,7 @@ static const Property my_dev_props[] = {
-     DEFINE_PROP_UINT32("u32", MyDev, prop_u32, 100),
-     DEFINE_PROP_STRING("string", MyDev, prop_string),
-     DEFINE_PROP_ARRAY("array-u32", MyDev, prop_array_u32_nb, prop_array_u32,
--                     qdev_prop_uint32, uint32_t),
-+                     qdev_prop_uint32),
- };
- 
- static void my_dev_class_init(ObjectClass *oc, const void *data)
 
 -- 
 2.55.0.543.g5ebe2ebe4ea8

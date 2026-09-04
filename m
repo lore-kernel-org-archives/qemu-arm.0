@@ -4,108 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A70DFC79F80
-	for <qemu-arm@archiver.kernel.org>; Fri,  4 Sep 2026 08:53:22 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6D925C79F80
+	for <qemu-arm@archiver.kernel.org>; Fri,  4 Sep 2026 09:34:15 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1x2PfS-0004rL-Ok; Fri, 04 Sep 2026 04:53:02 -0400
+	id 1x2QJ5-0007Le-R1; Fri, 04 Sep 2026 05:34:00 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <bmeng.cn@gmail.com>)
- id 1x2PfR-0004r3-TF
- for qemu-arm@nongnu.org; Fri, 04 Sep 2026 04:53:01 -0400
-Received: from mail-yw1-x112b.google.com ([2607:f8b0:4864:20::112b])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <bmeng.cn@gmail.com>)
- id 1x2PfQ-00077g-0P
- for qemu-arm@nongnu.org; Fri, 04 Sep 2026 04:53:01 -0400
-Received: by mail-yw1-x112b.google.com with SMTP id
- 00721157ae682-8588583a7c3so8589787b3.2
- for <qemu-arm@nongnu.org>; Fri, 04 Sep 2026 01:52:59 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1788511978; cv=none;
- d=google.com; s=arc-20260327;
- b=EBjVPCOw0HidTBxmD9fEN9YWDFC1BPJwFolIQliCnPlPPTVcV2fXTYQRj4MJyRYaJG
- Zc6nGdwuVy0xJpV6WtM+ug35WNOgslPY4oSmSsSZN4CxK5b5ebUIM4H4A/ibO/9D23vd
- KzdSblWWtf07MWXZGU21LNL+fR5orIbsPKqFi/vMFlvbEt0JV5jtK8Eqnittj2umuIdD
- R/k+ye9fralOHyekOZ/k4Cx0EPQ6ffMCuxEq+SkzJl6VW5ZlwnxRhZDNlVm2nI6KuZZi
- X11vq/GMxBvbIY0dh973Ei13iSrB5eogfoSaqdSw6r2b/+A5HrPhOamMHDoJwutDiZz5
- 0S8w==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
- s=arc-20260327; 
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:dkim-signature;
- bh=YU0H9nAuS37wxDxYALgdBEzrRf0vvgwOfz9NZINVtyk=;
- fh=QIIVGlKwrv+AvA0yUf5UdmtflrFSG6WcTOtLwFZ9uNw=;
- b=okk+W4uLQ/jzXDb+lQjfxkTV5JSd28aFHrUiNxdn69DI/rwRba0ubyXi5slZXf9xeJ
- oDLfm/iBCNuGFWutTECMhe4r2gM4689wvWQndayiMXz05NFQpoqtsyQHMtJwtJT6K2Qp
- 0X464Hwb+ArX0YtrNkKie+OksychLScdO5wXI6BIFZ22JT50MWrz/ZWngPrMQiTPZj1H
- o/sN7vuIgpPCg2AcTAlFvyDE9NLZVdCtxUKbjbFSvMJck1l04JB5hmwBcmJhleVTjXBZ
- ZH39rWKyjAPDRvx2TMTSRIGp8Rzb9tghBQWM6HSaoqsrGi/7UBmYP4FHv53zC3/U5N4B
- 5xsQ==; darn=nongnu.org
-ARC-Authentication-Results: i=1; mx.google.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20251104; t=1788511978; x=1789116778; darn=nongnu.org;
- h=content-transfer-encoding:content-type:cc:to:subject:message-id
- :date:from:in-reply-to:references:mime-version:from:to:cc:subject
- :date:message-id:reply-to:content-type;
- bh=YU0H9nAuS37wxDxYALgdBEzrRf0vvgwOfz9NZINVtyk=;
- b=DXGBOySSRSOIshN16u9V8M9F4+PHjjj5AVAXcZhrJKLNmLmdaNtXOh1Go/0SvNBinZ
- J4tXZeBjZL4p2273vPhgqra/1oL7BpBeEdVtT5ArRnG67i7SE4kROVUGBpCW0wTGHUGZ
- qJcRyGryvbo/30Y2rRTbY25oAUdsruwzp1YB+c3uBqEd4E7TSQ6BvMy82VwPqM+TjFn3
- QRBC5mcwxrkKgmB5MYAvkE+z7z6yAcJBIJd/V0HYdUYWC9l0Q39O2f/SaYeaVAqlUq1O
- axGWnwDs9GijnBebPw9UwwauiIPa0oRYcOxlVBdmDNwm0CelMxT/4WbY8v8KbBJZSqj3
- WlbA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1788511978; x=1789116778;
- h=content-transfer-encoding:content-type:cc:to:subject:message-id
- :date:from:in-reply-to:references:mime-version:x-gm-gg
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
- :content-type;
- bh=YU0H9nAuS37wxDxYALgdBEzrRf0vvgwOfz9NZINVtyk=;
- b=A2/HdwU9Hyvjl0Fa/ejRCO97KEqYtRrv25U2oNgJLAUcXjrcmS5qcX98wp7S2Gd7JH
- Snrw9+BhHc29A+e7zKH57hH32FIoPyzJgsvmzxJGPyFJxeIH9PaL7lDzcwm29HgRTyyl
- EgTMOZu1dy9oBXOBry+PC/oWVaaFihX12pXd9+K8kk8HOV8UKUu3tF9S5YspXK2qfDR/
- BCWcdYKr+iZvIlEPZ0Q9d2wahKJGlaWQ6joepihYOOG2i8zXm8gp1i7Vg8HUZkqJNVX5
- wK14lcL7xwRosXqoiyykyeJHF7+LqlyKSqaPlV5hULdKb+ruZSdqtxZgD0KF78nGuIYQ
- 24yw==
-X-Forwarded-Encrypted: i=1;
- AKwUvBxw2oLMWdXrCly8zSQMiiJVBlIrYt915eyMmegQBAx/QCUxd4W8hRnu29eD2KKtzkOpJdwQUUCHTw==@nongnu.org
-X-Gm-Message-State: AFuF++n7z2Jd5222oKi/zNfN9grC1oIJYTBw9U62zq1QzXz6vd3X2jP3
- 6Lx12EVH0UM3lTchGf91S+mx42j0Tb8G9sX3opUeybglITdkTEFztvf7ziqTyDX9WJYlHuBLCih
- 345pxfAeB/clQJQI9vu24Q9qHKmrHBdQ=
-X-Gm-Gg: AYBFou1WpFn1ay11EVn71yeLQR/zisJisd/3AbRfs9/hdk1u0uByIHaKSI6dA1y2Ns2
- wo93dCFXwksl7ySvYgNm7IEc/ghK3n9Y3qag4Th0sYCghxDl2G/flPbc6/WGgDJnQoSaJ/yU9Y0
- herbXNoFsmuKFagYCdJmEjY2D3fQfAdxHBrNskjy/L7wXPXQ2KKeHPiOBVb3bjbguRP7MoHk0qN
- iwpbVb5lJXbVP607yR5X70o/5Y37AeKwURg3chat2n1K0YySyRvUtX902Z3BDJMKc1dETSaZA9P
- zeCzmkHlbyV80/+TTprNG8A8X4tJfsLYVgXFJOeuW8ls
-X-Received: by 2002:a05:690c:c59f:b0:86a:5def:5f15 with SMTP id
- 00721157ae682-8712800debamr20165177b3.29.1788511978543; Fri, 04 Sep 2026
- 01:52:58 -0700 (PDT)
-MIME-Version: 1.0
-References: <20260903112532.3276678-1-bin.meng@processmission.com>
- <20260903112532.3276678-33-bin.meng@processmission.com>
- <87y0dipfhv.fsf@draig.linaro.org>
-In-Reply-To: <87y0dipfhv.fsf@draig.linaro.org>
-From: Bin Meng <bmeng.cn@gmail.com>
-Date: Fri, 4 Sep 2026 16:52:46 +0800
-X-Gm-Features: AcwNN1XoRcVVUYWqSma1V2tDLFiFsRbYBEm6NwNA5exZ7fNtvan5tpjt_VFEeKI
-Message-ID: <CAEUhbmXDFwhJrdh6w3f9pwG29W_6-ixxNiR3-jRo+4KuEHGO+g@mail.gmail.com>
-Subject: Re: [PATCH 32/33] tests/functional/aarch64: Add Phytium Pi boot tests
-To: =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>
-Cc: Bin Meng <bin.meng@processmission.com>, QEMU <qemu-devel@nongnu.org>, 
- Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2607:f8b0:4864:20::112b;
- envelope-from=bmeng.cn@gmail.com; helo=mail-yw1-x112b.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ (Exim 4.90_1) (envelope-from <gilles.grimaud@univ-lille.fr>)
+ id 1x2QJ2-0007Jv-Us; Fri, 04 Sep 2026 05:33:56 -0400
+Received: from smtp-out-1.univ-lille.fr ([194.254.129.82])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <gilles.grimaud@univ-lille.fr>)
+ id 1x2QJ1-0004mt-5k; Fri, 04 Sep 2026 05:33:56 -0400
+Received: from smtp02.univ-lille.fr (smtp02.univ-lille.fr [194.254.129.96])
+ by smtp-out-1.univ-lille.fr (Postfix) with ESMTPS id 4hbrrH59Q8zBqmn;
+ Fri,  4 Sep 2026 11:33:51 +0200 (CEST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=univ-lille.fr;
+ s=dkim; t=1788514431;
+ bh=bYN4JOXAn3tvyLHrvX9UH/vUKSQEqs+FSDoZ+p8AqZk=;
+ h=From:Subject:Date:In-Reply-To:Cc:To:References:From;
+ b=wN0goBdkoDYi0qTebn5/MvZ2DWjoMQmbJAJJn++cKXVAZ8j+V4n3tp5WHQvU+pBWP
+ lXwmLRf0qAZxaoEpwYXWJQmXIXk1ElQ3tclPSVWYsja9xROIzVHgh9YdaYmv15uAat
+ qfvx+fhxyp9fDsx7CJ/fJE1OLg4IabhOdQyCKVtan/B8VX0F3tb0SFznY0F90bYhCS
+ OpeR4bOJ8OWmI5ovnncnL3ruxp7sIgk0Z4YfRFiuoD4tzz6s3UZ7AkpqFDAYQmT6us
+ HzL9fSqlYT4LSo1pUB3y75uXu1OkwfjCBRwvOwFI1Ai5tHsaDnwQb/yTQJS2kFMDMD
+ jYt8fayMlS6KA==
+Received: from smtpclient.apple (unknown [134.206.232.123])
+ (Authenticated sender: gilles.grimaud)
+ by smtp02.univ-lille.fr (Postfix) with ESMTPSA id 4hbrrH3JY0z6svZ;
+ Fri,  4 Sep 2026 11:33:51 +0200 (CEST)
+From: gilles grimaud <gilles.grimaud@univ-lille.fr>
+Message-Id: <2CDD378D-60E3-4028-B325-C472B5AEFE58@univ-lille.fr>
+Content-Type: multipart/alternative;
+ boundary="Apple-Mail=_829E6C20-9F57-48AE-AE18-F1E11EC4E13A"
+Mime-Version: 1.0 (Mac OS X Mail 16.0 \(3864.600.51.1.1\))
+Subject: Re: [PATCH RFC v2 07/30] hw/misc: add RP2040 TBMAN and voltage
+ regulator
+Date: Fri, 4 Sep 2026 11:33:41 +0200
+In-Reply-To: <87bjagrlyy.fsf@draig.linaro.org>
+Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org,
+ Paolo Bonzini <pbonzini@redhat.com>,
+ Peter Maydell <peter.maydell@linaro.org>, Fabiano Rosas <farosas@suse.de>,
+ Laurent Vivier <lvivier@redhat.com>
+To: =?utf-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>
+References: <20260829234308.33725-1-gilles.grimaud@univ-lille.fr>
+ <20260829234308.33725-8-gilles.grimaud@univ-lille.fr>
+ <87bjagrlyy.fsf@draig.linaro.org>
+X-Mailer: Apple Mail (2.3864.600.51.1.1)
+Received-SPF: pass client-ip=194.254.129.82;
+ envelope-from=gilles.grimaud@univ-lille.fr; helo=smtp-out-1.univ-lille.fr
+X-Spam_score_int: -43
+X-Spam_score: -4.4
+X-Spam_bar: ----
+X-Spam_report: (-4.4 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, HTML_MESSAGE=0.001,
+ RCVD_IN_DNSWL_MED=-2.3, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -121,196 +77,192 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Hi Alex,
 
-On Thu, Sep 3, 2026 at 10:38=E2=80=AFPM Alex Benn=C3=A9e <alex.bennee@linar=
-o.org> wrote:
->
-> Bin Meng <bin.meng@processmission.com> writes:
->
-> > The Phytium Pi machine supports both the board firmware flow from SD
-> > and direct Linux boot. Exercise both paths with an SDK image bundle so
-> > firmware handoff and kernel loading regressions are caught.
-> >
-> > Verify U-Boot, PBF relocation, the Linux handoff, and login for the
-> > firmware path. The Linux test loads the bundled kernel, DTB, and
-> > initramfs and waits for the same login prompt.
-> >
-> > Signed-off-by: Bin Meng <bin.meng@processmission.com>
-> > ---
-> >
-> >  tests/functional/aarch64/meson.build        |  2 +
-> >  tests/functional/aarch64/test_phytium_pi.py | 77 +++++++++++++++++++++
-> >  2 files changed, 79 insertions(+)
-> >  create mode 100644 tests/functional/aarch64/test_phytium_pi.py
-> >
-> > diff --git a/tests/functional/aarch64/meson.build b/tests/functional/aa=
-rch64/meson.build
-> > index f0881bed16..71bf45e4ea 100644
-> > --- a/tests/functional/aarch64/meson.build
-> > +++ b/tests/functional/aarch64/meson.build
-> > @@ -7,6 +7,7 @@ test_aarch64_timeouts =3D {
-> >    'device_passthrough' : 720,
-> >    'imx8mm_evk' : 240,
-> >    'imx8mp_evk' : 240,
-> > +  'phytium_pi' : 600,
-> >    'raspi4' : 480,
-> >    'reverse_debug' : 180,
-> >    'rme_virt' : 1200,
-> > @@ -39,6 +40,7 @@ tests_aarch64_system_thorough =3D [
-> >    'imx8mp_evk',
-> >    'kvm',
-> >    'multiprocess',
-> > +  'phytium_pi',
-> >    'raspi3',
-> >    'raspi4',
-> >    'replay',
-> > diff --git a/tests/functional/aarch64/test_phytium_pi.py b/tests/functi=
-onal/aarch64/test_phytium_pi.py
-> > new file mode 100644
-> > index 0000000000..4ae0392bdd
-> > --- /dev/null
-> > +++ b/tests/functional/aarch64/test_phytium_pi.py
-> > @@ -0,0 +1,77 @@
-> > +#!/usr/bin/env python3
-> > +#
-> > +# Functional tests for the Phytium Pi machine
-> > +#
-> > +# Copyright (c) 2026 Process Mission
-> > +#
-> > +# Author:
-> > +#   Bin Meng <bin.meng@processmission.com>
-> > +#
-> > +# SPDX-License-Identifier: GPL-2.0-or-later
-> > +
-> > +from qemu_test import Asset, LinuxKernelTest
-> > +from qemu_test import skipBigDataTest, skipIfMissingCommands
-> > +
-> > +
-> > +class PhytiumPiMachine(LinuxKernelTest):
-> > +
-> > +    ASSET_BUILDROOT =3D Asset(
-> > +        ('https://github.com/processmission/qemu-machine-images/releas=
-es/'
-> > +         'download/v1.0.0/aarch64-phytium-pi-v1.0.0.tar.zst'),
-> > +
-> > '5219d52b862e1245b12f79ba72e9a6144f5e0cf1a50061f8fda2db0aeeb92428')
->
-> Nice ;-)
->
-> I've been looking into something similar to make it easy to set up
-> github projects that can build and host test assets:
->
->   https://github.com/stsquad/buildroot-asset
+--Apple-Mail=_829E6C20-9F57-48AE-AE18-F1E11EC4E13A
+Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain;
+	charset=utf-8
 
-This is actually very close to what I have been doing with
-https://github.com/processmission/qemu-machine-images. It is intended
-to be a common repository for QEMU machine test assets.
 
-Each machine has a small description under:
+> Le 2 sept. 2026 =C3=A0 12:23, Alex Benn=C3=A9e =
+<alex.bennee@linaro.org> a =C3=A9crit :
+>=20
+> Gilles Grimaud <gilles.grimaud@univ-lille.fr =
+<mailto:gilles.grimaud@univ-lille.fr>> writes:
+>=20
+>> From: gilles grimaud <gilles.grimaud@univ-lille.fr>
 
-  machine/<architecture>/<machine>/
+<snip>
 
-It selects the independently built components, required images and
-machine-specific QEMU launcher. The container builders, packaging,
-checksums, release manifest and GitHub Actions workflow are shared.
-The workflow also distinguishes between the main repository and forks.
-A fork can build selected machines and upload run-scoped Actions
-artifacts without publishing a release. It can optionally publish its
-own development prerelease, while the main repository publishes
-frozen, versioned assets.
+> You don't need this duplication. qtest's can include QEMU headers.
+>=20
+> As an aside you might want to look at the hw/core/registerfields.h
+> helpers which are good for defining registers and their fields and
+> generate the helpers for you.
 
->
-> although my builds seem to take quite a bit longer that yours.
+Agreed. For v3 I will share the TBMAN and VREG register definitions
+through their device headers and use registerfields.h.
 
-Yeah, as I only built the minimal busybox-based buildroot
-configuration, which is enough for QEMU boot testing :)
+>=20
+> --=20
+> Alex Benn=C3=A9e
+> Virtualisation Tech Lead @ Linaro
 
->
-> I wonder if there is a way to have a common repository set up but in a
-> way that the forks can just build their own images. Either that or a
-> core repository which everyone just forks adds their device and merges.
+--
+Gilles Grimaud - 2XS/SISE - CRIStAL/IRCICA - CNRS/Univ. Lille =20=
 
-So perhaps qemu-machine-images could serve as a starting point for the
-common repository you describe. I would be happy to accept machine
-definitions from other contributors and make the add-a-machine
-workflow simpler.
+--Apple-Mail=_829E6C20-9F57-48AE-AE18-F1E11EC4E13A
+Content-Transfer-Encoding: quoted-printable
+Content-Type: text/html;
+	charset=utf-8
 
-Your buildroot-asset project also has useful ideas, particularly
-including enough Buildroot configuration and source metadata to
-reproduce an image manually. It would be good to align the two efforts
-instead of growing separate repositories for each maintainer or board.
+<html aria-label=3D"message body"><head><meta http-equiv=3D"content-type" =
+content=3D"text/html; charset=3Dutf-8"></head><body =
+style=3D"overflow-wrap: break-word; -webkit-nbsp-mode: space; =
+line-break: after-white-space;"><br><div><blockquote type=3D"cite"><div>Le=
+ 2 sept. 2026 =C3=A0 12:23, Alex Benn=C3=A9e =
+&lt;alex.bennee@linaro.org&gt; a =C3=A9crit :</div><br =
+class=3D"Apple-interchange-newline"><div><meta charset=3D"UTF-8"><span =
+style=3D"caret-color: rgb(0, 0, 0); font-family: Helvetica; font-size: =
+12px; font-style: normal; font-variant-caps: normal; font-weight: 400; =
+letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; =
+text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; =
+-webkit-text-stroke-width: 0px; text-decoration: none; float: none; =
+display: inline !important;">Gilles Grimaud &lt;</span><a =
+href=3D"mailto:gilles.grimaud@univ-lille.fr" style=3D"font-family: =
+Helvetica; font-size: 12px; font-style: normal; font-variant-caps: =
+normal; font-weight: 400; letter-spacing: normal; orphans: 2; =
+text-align: start; text-indent: 0px; text-transform: none; white-space: =
+normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: =
+0px;">gilles.grimaud@univ-lille.fr</a><span style=3D"caret-color: rgb(0, =
+0, 0); font-family: Helvetica; font-size: 12px; font-style: normal; =
+font-variant-caps: normal; font-weight: 400; letter-spacing: normal; =
+orphans: 2; text-align: start; text-indent: 0px; text-transform: none; =
+white-space: normal; widows: 2; word-spacing: 0px; =
+-webkit-text-stroke-width: 0px; text-decoration: none; float: none; =
+display: inline !important;">&gt; writes:</span><br style=3D"caret-color: =
+rgb(0, 0, 0); font-family: Helvetica; font-size: 12px; font-style: =
+normal; font-variant-caps: normal; font-weight: 400; letter-spacing: =
+normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: =
+none; white-space: normal; widows: 2; word-spacing: 0px; =
+-webkit-text-stroke-width: 0px; text-decoration-line: none; =
+text-decoration-thickness: auto; text-decoration-style: solid;"><br =
+style=3D"caret-color: rgb(0, 0, 0); font-family: Helvetica; font-size: =
+12px; font-style: normal; font-variant-caps: normal; font-weight: 400; =
+letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; =
+text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; =
+-webkit-text-stroke-width: 0px; text-decoration-line: none; =
+text-decoration-thickness: auto; text-decoration-style: =
+solid;"><blockquote type=3D"cite" style=3D"font-family: Helvetica; =
+font-size: 12px; font-style: normal; font-variant-caps: normal; =
+font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; =
+text-indent: 0px; text-transform: none; white-space: normal; widows: 2; =
+word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-line: =
+none; text-decoration-thickness: auto; text-decoration-style: =
+solid;">From: gilles grimaud =
+&lt;gilles.grimaud@univ-lille.fr&gt;<br></blockquote></div></blockquote><b=
+r><div>&lt;snip&gt;</div><br><blockquote type=3D"cite"><div><span =
+style=3D"caret-color: rgb(0, 0, 0); font-family: Helvetica; font-size: =
+12px; font-style: normal; font-variant-caps: normal; font-weight: 400; =
+letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; =
+text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; =
+-webkit-text-stroke-width: 0px; text-decoration: none; float: none; =
+display: inline !important;">You don't need this duplication. qtest's =
+can include QEMU headers.</span><br style=3D"caret-color: rgb(0, 0, 0); =
+font-family: Helvetica; font-size: 12px; font-style: normal; =
+font-variant-caps: normal; font-weight: 400; letter-spacing: normal; =
+orphans: 2; text-align: start; text-indent: 0px; text-transform: none; =
+white-space: normal; widows: 2; word-spacing: 0px; =
+-webkit-text-stroke-width: 0px; text-decoration-line: none; =
+text-decoration-thickness: auto; text-decoration-style: solid;"><br =
+style=3D"caret-color: rgb(0, 0, 0); font-family: Helvetica; font-size: =
+12px; font-style: normal; font-variant-caps: normal; font-weight: 400; =
+letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; =
+text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; =
+-webkit-text-stroke-width: 0px; text-decoration-line: none; =
+text-decoration-thickness: auto; text-decoration-style: solid;"><span =
+style=3D"caret-color: rgb(0, 0, 0); font-family: Helvetica; font-size: =
+12px; font-style: normal; font-variant-caps: normal; font-weight: 400; =
+letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; =
+text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; =
+-webkit-text-stroke-width: 0px; text-decoration: none; float: none; =
+display: inline !important;">As an aside you might want to look at the =
+hw/core/registerfields.h</span><br style=3D"caret-color: rgb(0, 0, 0); =
+font-family: Helvetica; font-size: 12px; font-style: normal; =
+font-variant-caps: normal; font-weight: 400; letter-spacing: normal; =
+orphans: 2; text-align: start; text-indent: 0px; text-transform: none; =
+white-space: normal; widows: 2; word-spacing: 0px; =
+-webkit-text-stroke-width: 0px; text-decoration-line: none; =
+text-decoration-thickness: auto; text-decoration-style: solid;"><span =
+style=3D"caret-color: rgb(0, 0, 0); font-family: Helvetica; font-size: =
+12px; font-style: normal; font-variant-caps: normal; font-weight: 400; =
+letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; =
+text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; =
+-webkit-text-stroke-width: 0px; text-decoration: none; float: none; =
+display: inline !important;">helpers which are good for defining =
+registers and their fields and</span><br style=3D"caret-color: rgb(0, 0, =
+0); font-family: Helvetica; font-size: 12px; font-style: normal; =
+font-variant-caps: normal; font-weight: 400; letter-spacing: normal; =
+orphans: 2; text-align: start; text-indent: 0px; text-transform: none; =
+white-space: normal; widows: 2; word-spacing: 0px; =
+-webkit-text-stroke-width: 0px; text-decoration-line: none; =
+text-decoration-thickness: auto; text-decoration-style: solid;"><span =
+style=3D"caret-color: rgb(0, 0, 0); font-family: Helvetica; font-size: =
+12px; font-style: normal; font-variant-caps: normal; font-weight: 400; =
+letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; =
+text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; =
+-webkit-text-stroke-width: 0px; text-decoration: none; float: none; =
+display: inline !important;">generate the helpers for you.</span><br =
+style=3D"caret-color: rgb(0, 0, 0); font-family: Helvetica; font-size: =
+12px; font-style: normal; font-variant-caps: normal; font-weight: 400; =
+letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; =
+text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; =
+-webkit-text-stroke-width: 0px; text-decoration-line: none; =
+text-decoration-thickness: auto; text-decoration-style: =
+solid;"></div></blockquote><div><br></div><div>Agreed. For v3 I will =
+share the TBMAN and VREG register definitions</div><div>through their =
+device headers and use registerfields.h.</div><div><br></div><blockquote =
+type=3D"cite"><div><br style=3D"caret-color: rgb(0, 0, 0); font-family: =
+Helvetica; font-size: 12px; font-style: normal; font-variant-caps: =
+normal; font-weight: 400; letter-spacing: normal; orphans: 2; =
+text-align: start; text-indent: 0px; text-transform: none; white-space: =
+normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; =
+text-decoration-line: none; text-decoration-thickness: auto; =
+text-decoration-style: solid;"><span style=3D"caret-color: rgb(0, 0, 0); =
+font-family: Helvetica; font-size: 12px; font-style: normal; =
+font-variant-caps: normal; font-weight: 400; letter-spacing: normal; =
+orphans: 2; text-align: start; text-indent: 0px; text-transform: none; =
+white-space: normal; widows: 2; word-spacing: 0px; =
+-webkit-text-stroke-width: 0px; text-decoration: none; float: none; =
+display: inline !important;">--<span =
+class=3D"Apple-converted-space">&nbsp;</span></span><br =
+style=3D"caret-color: rgb(0, 0, 0); font-family: Helvetica; font-size: =
+12px; font-style: normal; font-variant-caps: normal; font-weight: 400; =
+letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; =
+text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; =
+-webkit-text-stroke-width: 0px; text-decoration-line: none; =
+text-decoration-thickness: auto; text-decoration-style: solid;"><span =
+style=3D"caret-color: rgb(0, 0, 0); font-family: Helvetica; font-size: =
+12px; font-style: normal; font-variant-caps: normal; font-weight: 400; =
+letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; =
+text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; =
+-webkit-text-stroke-width: 0px; text-decoration: none; float: none; =
+display: inline !important;">Alex Benn=C3=A9e</span><br =
+style=3D"caret-color: rgb(0, 0, 0); font-family: Helvetica; font-size: =
+12px; font-style: normal; font-variant-caps: normal; font-weight: 400; =
+letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; =
+text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; =
+-webkit-text-stroke-width: 0px; text-decoration-line: none; =
+text-decoration-thickness: auto; text-decoration-style: solid;"><span =
+style=3D"caret-color: rgb(0, 0, 0); font-family: Helvetica; font-size: =
+12px; font-style: normal; font-variant-caps: normal; font-weight: 400; =
+letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; =
+text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; =
+-webkit-text-stroke-width: 0px; text-decoration: none; float: none; =
+display: inline !important;">Virtualisation Tech Lead @ =
+Linaro</span></div></blockquote></div><br><div>--<br>Gilles Grimaud - =
+2XS/SISE - CRIStAL/IRCICA -&nbsp;CNRS/Univ. Lille =
+&nbsp;</div></body></html>=
 
->
-> Anyway, test looks sane:
->
-> Reviewed-by: Alex Benn=C3=A9e <alex.bennee@linaro.org>
-
-Thanks for the review!
-
->
-> > +
-> > +    def _prepare_images(self):
-> > +        self.set_machine('phytium-pi')
-> > +
-> > +        archive_path =3D self.uncompress(
-> > +            self.ASSET_BUILDROOT,
-> > +            target=3D'aarch64-phytium-pi-v1.0.0.tar',
-> > +            format=3D'zstd')
-> > +        self.archive_extract(archive_path, format=3D'tar')
-> > +
-> > +        self.vm.set_console(console_index=3D1)
-> > +        self.vm.add_args('-smp', '4',
-> > +                         '-m', '4G',
-> > +                         '-display', 'none',
-> > +                         '-nic', 'none',
-> > +                         '-no-reboot')
-> > +
-> > +    @skipIfMissingCommands('zstd')
-> > +    @skipBigDataTest()
-> > +    def test_firmware_boot(self):
-> > +        self._prepare_images()
-> > +        sdcard =3D self.scratch_file('images', 'sdcard.img')
-> > +
-> > +        self.vm.add_args(
-> > +            '-snapshot',
-> > +            '-drive', f'file=3D{sdcard},format=3Draw,if=3Dsd,index=3D0=
-')
-> > +        self.vm.launch()
-> > +
-> > +        self.wait_for_console_pattern('U-Boot 2022.01')
-> > +        self.wait_for_console_pattern('PBF relocate done')
-> > +        self.wait_for_console_pattern('Starting kernel ...')
-> > +        self.wait_for_console_pattern('Phytium login:')
-> > +
-> > +    @skipIfMissingCommands('zstd')
-> > +    @skipBigDataTest()
-> > +    def test_linux_boot(self):
-> > +        self._prepare_images()
-> > +        kernel =3D self.scratch_file('images', 'Image.gz')
-> > +        dtb =3D self.scratch_file('images', 'phytiumpi_firefly.dtb')
-> > +        initrd =3D self.scratch_file('images', 'rootfs.cpio.gz')
-> > +
-> > +        self.vm.add_args(
-> > +            '-kernel', kernel,
-> > +            '-dtb', dtb,
-> > +            '-initrd', initrd,
-> > +            '-append', 'console=3DttyAMA1,115200 '
-> > +                       'earlycon=3Dpl011,mmio32,0x2800d000 rdinit=3D/i=
-nit')
-> > +        self.vm.launch()
-> > +
-> > +        self.wait_for_console_pattern('Booting Linux on physical CPU')
-> > +        self.wait_for_console_pattern('Machine model: Phytium Pi Board=
-')
-> > +        self.wait_for_console_pattern('Phytium login:')
-> > +
-> > +
-> > +if __name__ =3D=3D '__main__':
-> > +    LinuxKernelTest.main()
->
-> --
-
-Regards,
-Bin
+--Apple-Mail=_829E6C20-9F57-48AE-AE18-F1E11EC4E13A--
 

@@ -4,56 +4,55 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2F9E0C79F85
-	for <qemu-arm@archiver.kernel.org>; Fri,  4 Sep 2026 20:03:30 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6CF0DC624D3
+	for <qemu-arm@archiver.kernel.org>; Fri,  4 Sep 2026 20:03:32 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1x2a7B-0004Vv-S0; Fri, 04 Sep 2026 16:02:21 -0400
+	id 1x2a6m-0001aT-IM; Fri, 04 Sep 2026 16:01:56 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <marcandre.lureau@redhat.com>)
- id 1x2a79-0004KX-Oa
- for qemu-arm@nongnu.org; Fri, 04 Sep 2026 16:02:19 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ id 1x2a6f-00011F-OG
+ for qemu-arm@nongnu.org; Fri, 04 Sep 2026 16:01:50 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <marcandre.lureau@redhat.com>)
- id 1x2a77-00008F-21
- for qemu-arm@nongnu.org; Fri, 04 Sep 2026 16:02:19 -0400
+ id 1x2a6d-0008Vr-Av
+ for qemu-arm@nongnu.org; Fri, 04 Sep 2026 16:01:49 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1788552136;
+ s=mimecast20190719; t=1788552106;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=uDadYbb+MvTukZ4DS18E0pLdpqsEG2v4jBcqkrYw0bM=;
- b=T4Ql7Mol8BUUMYul3AzIbQuKeZ3trrh8pLPg1/aOaTVRTd0btosLTuV4xR3uDtom9o4tkb
- SIQTjgs/o8XiiA5g8p7xCwCfh9I7uDvPQ6MxzDTBQG8YTVTjEvtNz6T4e5BGKdIZ+w0fi5
- 0+0/p9NYomrtYIqPDXKh9btcT9MN160=
-Received: from mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
+ bh=oPypAJmHalIuZO8Qh6uXAHLk6oL+F+SAlk4t9kCAeHs=;
+ b=S9CaR0nHgfEgGP+CNFg6InTk3GlSXSToOEecI8DriusVLpWktQNkB/RAJTBKN9WeNT5TCL
+ isK+A/Xjyjp44nOs94z8KtmLo6ZVBjG6/b7kSu9wDp3eMOcVsUpxnzSL3Fnk6eSJb/ha9T
+ Ass0PxwYtN/nzY22SupwFq3be/gtABQ=
+Received: from mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-416-IWU0nSy2PnWCVq_nvHCZLw-1; Fri,
- 04 Sep 2026 16:02:12 -0400
-X-MC-Unique: IWU0nSy2PnWCVq_nvHCZLw-1
-X-Mimecast-MFC-AGG-ID: IWU0nSy2PnWCVq_nvHCZLw_1788552129
-Received: from mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com
- (mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.4])
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-627-6aozs-zTPCGR6zY2a3Tb7g-1; Fri,
+ 04 Sep 2026 16:01:43 -0400
+X-MC-Unique: 6aozs-zTPCGR6zY2a3Tb7g-1
+X-Mimecast-MFC-AGG-ID: 6aozs-zTPCGR6zY2a3Tb7g_1788552102
+Received: from mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com
+ (mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.111])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 72E3218F0F0D; Fri,  4 Sep 2026 20:02:08 +0000 (UTC)
+ by mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id D9DEC19091F0; Fri,  4 Sep 2026 20:01:41 +0000 (UTC)
 Received: from localhost (headnet05.pony-001.prod.iad2.dc.redhat.com
  [10.2.32.117])
- by mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id 3B8F030002F4; Fri,  4 Sep 2026 20:02:05 +0000 (UTC)
+ by mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
+ id CD70A1800641; Fri,  4 Sep 2026 20:01:40 +0000 (UTC)
 From: =?utf-8?q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>
-Date: Fri, 04 Sep 2026 23:58:47 +0400
-Subject: [PATCH v4 64/75] hw: convert device-local PropertyInfo definitions
- to use qapi_type
+Date: Fri, 04 Sep 2026 23:58:40 +0400
+Subject: [PATCH v4 57/75] include: add QEMU_REPEAT helper macro
 MIME-Version: 1.0
-Message-Id: <20260904-qom-qapi-v4-64-a985f168e938@redhat.com>
+Message-Id: <20260904-qom-qapi-v4-57-a985f168e938@redhat.com>
 References: <20260904-qom-qapi-v4-0-a985f168e938@redhat.com>
 In-Reply-To: <20260904-qom-qapi-v4-0-a985f168e938@redhat.com>
 To: qemu-devel@nongnu.org
@@ -64,56 +63,43 @@ Cc: Markus Armbruster <armbru@redhat.com>,
  Michael Roth <michael.roth@amd.com>, 
  Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>, 
  =?utf-8?q?Philippe_Mathieu-Daud=C3=A9?= <philmd@oss.qualcomm.com>, 
- Stefano Stabellini <sstabellini@kernel.org>, 
- Anthony PERARD <anthony@xenproject.org>, 
- "Edgar E. Iglesias" <edgar.iglesias@gmail.com>, 
- Kevin Wolf <kwolf@redhat.com>, Hanna Reitz <hreitz@redhat.com>, 
- Phil Dennis-Jordan <phil@philjordan.eu>, 
- Alistair Francis <alistair@alistair23.me>, 
- Peter Maydell <peter.maydell@linaro.org>, Keith Busch <kbusch@kernel.org>, 
- Klaus Jensen <its@irrelevant.dk>, Jesper Devantier <foss@defmacro.it>, 
- "Michael S. Tsirkin" <mst@redhat.com>, Halil Pasic <pasic@linux.ibm.com>, 
- Christian Borntraeger <borntraeger@linux.ibm.com>, 
- Eric Farman <farman@linux.ibm.com>, Farhan Ali <alifm@linux.ibm.com>, 
- Matthew Rosato <mjrosato@linux.ibm.com>, Cornelia Huck <cohuck@redhat.com>, 
- Richard Henderson <richard.henderson@linaro.org>, 
- Ilya Leoshkevich <iii@linux.ibm.com>, David Hildenbrand <david@kernel.org>, 
- Alex Williamson <alex@shazbot.org>, 
- =?utf-8?q?C=C3=A9dric_Le_Goater?= <clg@redhat.com>, 
- xen-devel@lists.xenproject.org, qemu-block@nongnu.org, qemu-arm@nongnu.org, 
- qemu-s390x@nongnu.org
-X-Developer-Signature: v=1; a=openpgp-sha256; l=8761;
+ Peter Maydell <peter.maydell@linaro.org>, 
+ Elena Ufimtseva <elena.ufimtseva@oracle.com>, 
+ Jagannathan Raman <jag.raman@oracle.com>, 
+ Jonathan Cameron <jic23@kernel.org>, qemu-arm@nongnu.org, 
+ linux-cxl@vger.kernel.org
+X-Developer-Signature: v=1; a=openpgp-sha256; l=5015;
  i=marcandre.lureau@redhat.com; h=from:subject:message-id;
- bh=JMD8CHS/Ms/ZN3B00kadMDC30ZNsy393OriqSCvH/Y0=;
- b=owEBbQKS/ZANAwAKAdro4Ql1lpzlAcsmYgBqmyLLxp67EFAkaEpd3WKP4FD56N94sNeVMF5/4
- Rz0oJm8TwGJAjMEAAEKAB0WIQSHqb2TP4fGBtJ29i3a6OEJdZac5QUCapsiywAKCRDa6OEJdZac
- 5a/GEACgM37bOE7xh8937jq4gCqcIYr3R0ftgwPqG7ZfxTrH+ADF5OrXrSWlGdaYE3vZmYWeWvE
- Ay0/GEkzLQ27Tkp0uGZqarxstlBi1Qb1hJ+VGeCoo2oy3QVC/VzvHGUzXFuu+q+KcpsJy/vz+rm
- TYQNst2H8aOh69l6a5pmW6xTvfVpZ2ulbkkSicOqDf2w8/l7+32aVxr4n9Rpbi3cHyYnmprQ09i
- Dq3YOy/Sx/x3O3G35/3vZf2ueHVsN9yfAfe5iNfh4qHntyNkf/jrIvNIgvC/r5hGOSs0Btsgx9j
- 0bKDAcQL74zjzWQbkFVk4XDTaLMaw7MP88VeJ3SnPj09/EdFYfNHyTbLUYCDVSE2xYBVwLcSgm+
- g9Z2ceGQGLH6dT3w1VjsnN7l8lL1EUk00XNUYgxxjqCEH7KKWY1PuZlLXV5z18ZeE6w4odwBid+
- jtiAa9vRzoSygzMEVCDwKTc1t/n4RbZnaZrlge/VpCUQG7LCZ2LHUrPCgz2wKOmoBAmJlQ9vOsJ
- 0QZDWpWRu+TIwt8JfVw8B7j+0dlFMTQAx2kwGMUr04qkhu1KtOAi44D57OZ9zc8MA5O3tqzURsZ
- bHoHzseTmlAcB55HF+5b6+ssWCHSFf3vTO+2iF3KxzqWoeD400QHZKULWt4JFKYWWlPQ0MoCoab
- 6nmkrZqZmEuUV3A==
+ bh=EAQeZe1XEuAWHJARuU6IDW2Xx2TnIuJB2OqRLsbMlaA=;
+ b=owEBbQKS/ZANAwAKAdro4Ql1lpzlAcsmYgBqmyLLs3TFoQc+S1P2SjUmG3epX/4GVf+GJ/nCx
+ bEz2OFB3rSJAjMEAAEKAB0WIQSHqb2TP4fGBtJ29i3a6OEJdZac5QUCapsiywAKCRDa6OEJdZac
+ 5QPoD/wIH+SUgoKMu9UwFjY+P5SjH3odo7pduJLtODqpTRBA9HshfbdMjjms/WXXmESeCqOuZJp
+ VqHnRmXFFPoSdyxv2roiuAXGt95QCnNvXTsS6na8Al6RAcSjmjoS2gAq2sKyqkUizrJKEL9ivxo
+ RAeeao/r0RTYe1hgu6KC5GlKOdYsvUCq5FuEhg1FKfQxGX2tnMDwAtsDZDnBQx31GPWQjKDAWvj
+ I3bUJdS1MSf0mswUj7+ANUQhaJNjLH4DYvOW1U6f/dl4UXPpjDg8j55HGiBjEpVGXZKXJilKG/F
+ MqsxoeYcmm7longgtjntTB/7GeYItquBerqVVHfDNtoBcBN/++nWa+sN8yiNAQR88sSjLqi4Hsc
+ 5w4XO0FYnX7r7Koo85OeTDt1vEU4AkGQZrkGqBEHdZQ3LCWChOQKlFRRcTkDV3NA5LfIhrXWeDE
+ zX1R5ufU2oQDU9QgoejcSdteWr9JR5YjxEw2auq5pAZuTZ7k0o6i5LRpZyXRZkW6i2Zp5KaN8qW
+ DumpUxldYGVJeh9oWtGqsiWjBg2Fbu49f1iht0Wq0kLmLRQR0STIhN9GXZjE3jXH/t2XnInB7jp
+ +0jPJeBhIOY0ELAEWgoXjEH8xmX19sK8eOs9xCS1wGkwhJstPGLaxAzhnA8trbFAgGX6MPKF152
+ dTXf6oLZBHzSzNA==
 X-Developer-Key: i=marcandre.lureau@redhat.com; a=openpgp;
  fpr=87A9BD933F87C606D276F62DDAE8E10975969CE5
-X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.4
-X-Mimecast-MFC-PROC-ID: 2a9jx1ub7_Qpwla6U4PQ1NIN_FXhq3VK3DJnPbuqS_o_1788552129
+X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.111
+X-Mimecast-MFC-PROC-ID: mD5sEtcY0FwdpxoCtXgA3kVbLI0sCf6b1F-Izb3xpoc_1788552102
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=170.10.133.124;
+Received-SPF: pass client-ip=170.10.129.124;
  envelope-from=marcandre.lureau@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+X-Spam_score_int: 12
+X-Spam_score: 1.2
+X-Spam_bar: +
+X-Spam_report: (1.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=0.001, RCVD_IN_SBL_CSS=3.335,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -129,266 +115,140 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Mechanical conversion of PropertyInfo definitions in device-specific
-files, replacing .type string with .qapi_type pointer to the
-corresponding QAPITypeInfo. Except "display_mode" for apple-gfx, which
-is a string of a specific format.
+Introduce a macro used in following commit, and convert a few existing
+candidates. Inspired by a similar macro in Linux kernel/trace/bpf_trace.c
 
 Signed-off-by: Marc-André Lureau <marcandre.lureau@redhat.com>
 ---
- hw/block/xen-block.c       | 3 ++-
- hw/display/apple-gfx.m     | 3 ++-
- hw/misc/xlnx-versal-trng.c | 3 ++-
- hw/nvme/nguid.c            | 3 ++-
- hw/nvram/xlnx-bbram.c      | 3 ++-
- hw/nvram/xlnx-efuse.c      | 3 ++-
- hw/pci/pci.c               | 3 ++-
- hw/s390x/ccw-device.c      | 3 ++-
- hw/s390x/css.c             | 5 +++--
- hw/s390x/s390-pci-bus.c    | 3 ++-
- hw/vfio/pci-quirks.c       | 3 ++-
- 11 files changed, 23 insertions(+), 12 deletions(-)
+ hw/misc/tz-ppc.c               | 19 ++-----------------
+ hw/remote/vfio-user-obj.c      | 17 +++--------------
+ include/hw/cxl/cxl_component.h |  5 +----
+ include/qemu/osdep.h           | 33 +++++++++++++++++++++++++++++++++
+ 4 files changed, 39 insertions(+), 35 deletions(-)
 
-diff --git a/hw/block/xen-block.c b/hw/block/xen-block.c
-index 474c12fe4ac8..d9721c565c5f 100644
---- a/hw/block/xen-block.c
-+++ b/hw/block/xen-block.c
-@@ -29,6 +29,7 @@
- #include "dataplane/xen-block.h"
- #include "hw/xen/interface/io/xs_wire.h"
- #include "trace.h"
-+#include "qapi/qapi-builtin-type-infos.h"
+diff --git a/hw/misc/tz-ppc.c b/hw/misc/tz-ppc.c
+index 6f820430eed8..5f09ce164c19 100644
+--- a/hw/misc/tz-ppc.c
++++ b/hw/misc/tz-ppc.c
+@@ -303,26 +303,11 @@ static const VMStateDescription tz_ppc_vmstate = {
  
- #define XVDA_MAJOR 202
- #define XVDQ_MAJOR (1 << 20)
-@@ -663,7 +664,7 @@ invalid:
-  * https://xenbits.xen.org/docs/unstable/man/xen-vbd-interface.7.html
-  */
- static const PropertyInfo xen_block_prop_vdev = {
--    .type  = "str",
-+    .qapi_type = &str_type_info,
-     .description = "Virtual Disk specifier (d*p*/xvd*/hd*/sd*)",
-     .get = xen_block_get_vdev,
-     .set = xen_block_set_vdev,
-diff --git a/hw/display/apple-gfx.m b/hw/display/apple-gfx.m
-index be0061b9db25..77c420b30006 100644
---- a/hw/display/apple-gfx.m
-+++ b/hw/display/apple-gfx.m
-@@ -15,6 +15,7 @@
- #include "qemu/lockable.h"
- #include "qemu/cutils.h"
- #include "qemu/log.h"
-+#include "qapi/qapi-builtin-type-infos.h"
- #include "qapi/visitor.h"
- #include "qapi/error.h"
- #include "qemu/aio-wait.h"
-@@ -871,7 +872,7 @@ static void apple_gfx_set_display_mode(Object *obj, Visitor *v,
- }
+ #define DEFINE_PORT(N)                                          \
+     DEFINE_PROP_LINK("port[" #N "]", TZPPC, port[N].downstream, \
+-                     TYPE_MEMORY_REGION, MemoryRegion *)
++                     TYPE_MEMORY_REGION, MemoryRegion *),
  
- const PropertyInfo qdev_prop_apple_gfx_display_mode = {
--    .type  = "display_mode",
-+    .qapi_type = &str_type_info,
-     .description =
-         "Display mode in pixels and Hertz, as <width>x<height>@<refresh-rate> "
-         "Example: 3840x2160@60",
-diff --git a/hw/misc/xlnx-versal-trng.c b/hw/misc/xlnx-versal-trng.c
-index 0584ee089e3c..97bd3c3f8475 100644
---- a/hw/misc/xlnx-versal-trng.c
-+++ b/hw/misc/xlnx-versal-trng.c
-@@ -36,6 +36,7 @@
- #include "qapi/visitor.h"
- #include "migration/vmstate.h"
- #include "hw/core/qdev-properties.h"
-+#include "qapi/qapi-builtin-type-infos.h"
- 
- #ifndef XLNX_VERSAL_TRNG_ERR_DEBUG
- #define XLNX_VERSAL_TRNG_ERR_DEBUG 0
-@@ -662,7 +663,7 @@ static void trng_prop_fault_event_get(Object *obj, Visitor *v,
- }
- 
- static const PropertyInfo trng_prop_fault_events = {
--    .type = "uint32",
-+    .qapi_type = &uint32_type_info,
-     .description = "Set to trigger TRNG fault events",
-     .set = trng_prop_fault_event_set,
-     .get = trng_prop_fault_event_get,
-diff --git a/hw/nvme/nguid.c b/hw/nvme/nguid.c
-index 4cd6fad6ac9b..6eaf90fca88e 100644
---- a/hw/nvme/nguid.c
-+++ b/hw/nvme/nguid.c
-@@ -18,6 +18,7 @@
- #include "qapi/visitor.h"
- #include "qemu/ctype.h"
- #include "nvme.h"
-+#include "qapi/qapi-builtin-type-infos.h"
- 
- #define NGUID_SEPARATOR '-'
- 
-@@ -179,7 +180,7 @@ static void set_nguid(Object *obj, Visitor *v, const char *name, void *opaque,
- }
- 
- const PropertyInfo qdev_prop_nguid = {
--    .type  = "str",
-+    .qapi_type = &str_type_info,
-     .description =
-         "NGUID or \"" NGUID_VALUE_AUTO "\" for random value",
-     .get   = get_nguid,
-diff --git a/hw/nvram/xlnx-bbram.c b/hw/nvram/xlnx-bbram.c
-index e336874bdef4..eb032ab8b9c8 100644
---- a/hw/nvram/xlnx-bbram.c
-+++ b/hw/nvram/xlnx-bbram.c
-@@ -34,6 +34,7 @@
- #include "hw/core/qdev-properties.h"
- #include "hw/core/qdev-properties-system.h"
- #include "hw/nvram/xlnx-efuse.h"
-+#include "qapi/qapi-builtin-type-infos.h"
- 
- #ifndef XLNX_BBRAM_ERR_DEBUG
- #define XLNX_BBRAM_ERR_DEBUG 0
-@@ -486,7 +487,7 @@ static void bbram_prop_release_drive(Object *obj, const char *name,
- }
- 
- static const PropertyInfo bbram_prop_drive = {
--    .type  = "str",
-+    .qapi_type = &str_type_info,
-     .description = "Node name or ID of a block device to use as BBRAM backend",
-     .realized_set_allowed = true,
-     .get = bbram_prop_get_drive,
-diff --git a/hw/nvram/xlnx-efuse.c b/hw/nvram/xlnx-efuse.c
-index 03c9fbc0d076..b1c9ee4980a0 100644
---- a/hw/nvram/xlnx-efuse.c
-+++ b/hw/nvram/xlnx-efuse.c
-@@ -34,6 +34,7 @@
- #include "system/blockdev.h"
- #include "hw/core/qdev-properties.h"
- #include "hw/core/qdev-properties-system.h"
-+#include "qapi/qapi-builtin-type-infos.h"
- 
- #define TBIT0_OFFSET     28
- #define TBIT1_OFFSET     29
-@@ -251,7 +252,7 @@ static void efuse_prop_release_drive(Object *obj, const char *name,
- }
- 
- static const PropertyInfo efuse_prop_drive = {
--    .type  = "str",
-+    .qapi_type = &str_type_info,
-     .description = "Node name or ID of a block device to use as eFUSE backend",
-     .realized_set_allowed = true,
-     .get = efuse_prop_get_drive,
-diff --git a/hw/pci/pci.c b/hw/pci/pci.c
-index af6e1d440c37..89a36221bc43 100644
---- a/hw/pci/pci.c
-+++ b/hw/pci/pci.c
-@@ -53,6 +53,7 @@
- #include "qapi/error.h"
- #include "qemu/cutils.h"
- #include "pci-internal.h"
-+#include "qapi/qapi-builtin-type-infos.h"
- 
- #include "hw/xen/xen.h"
- #include "hw/i386/kvm/xen_evtchn.h"
-@@ -80,7 +81,7 @@ static void prop_pci_busnr_get(Object *obj, Visitor *v, const char *name,
- }
- 
- static const PropertyInfo prop_pci_busnr = {
--    .type = "uint8",
-+    .qapi_type = &uint8_type_info,
-     .get = prop_pci_busnr_get,
+ static const Property tz_ppc_properties[] = {
+     DEFINE_PROP_UINT32("NONSEC_MASK", TZPPC, nonsec_mask, 0),
+-    DEFINE_PORT(0),
+-    DEFINE_PORT(1),
+-    DEFINE_PORT(2),
+-    DEFINE_PORT(3),
+-    DEFINE_PORT(4),
+-    DEFINE_PORT(5),
+-    DEFINE_PORT(6),
+-    DEFINE_PORT(7),
+-    DEFINE_PORT(8),
+-    DEFINE_PORT(9),
+-    DEFINE_PORT(10),
+-    DEFINE_PORT(11),
+-    DEFINE_PORT(12),
+-    DEFINE_PORT(13),
+-    DEFINE_PORT(14),
+-    DEFINE_PORT(15),
++    QEMU_REPEAT(TZ_NUM_PORTS, DEFINE_PORT)
  };
  
-diff --git a/hw/s390x/ccw-device.c b/hw/s390x/ccw-device.c
-index 25c427327957..fd21a4346522 100644
---- a/hw/s390x/ccw-device.c
-+++ b/hw/s390x/ccw-device.c
-@@ -17,6 +17,7 @@
- #include "qapi/visitor.h"
- #include "qemu/ctype.h"
- #include "qapi/error.h"
-+#include "qapi/qapi-builtin-type-infos.h"
+ static void tz_ppc_class_init(ObjectClass *klass, const void *data)
+diff --git a/hw/remote/vfio-user-obj.c b/hw/remote/vfio-user-obj.c
+index 7e6819f670b5..84c3ff05cfb8 100644
+--- a/hw/remote/vfio-user-obj.c
++++ b/hw/remote/vfio-user-obj.c
+@@ -496,22 +496,11 @@ static size_t vfu_object_bar_rw(PCIDevice *pci_dev, int pci_bar,
+                                  buf, count, is_write);                        \
+     }                                                                          \
  
- static void ccw_device_refill_ids(CcwDevice *dev)
- {
-@@ -74,7 +75,7 @@ static void ccw_device_set_loadparm(Object *obj, Visitor *v,
- }
+-VFU_OBJECT_BAR_HANDLER(0)
+-VFU_OBJECT_BAR_HANDLER(1)
+-VFU_OBJECT_BAR_HANDLER(2)
+-VFU_OBJECT_BAR_HANDLER(3)
+-VFU_OBJECT_BAR_HANDLER(4)
+-VFU_OBJECT_BAR_HANDLER(5)
+-VFU_OBJECT_BAR_HANDLER(6)
++QEMU_REPEAT(PCI_NUM_REGIONS, VFU_OBJECT_BAR_HANDLER)
  
- const PropertyInfo ccw_loadparm = {
--    .type  = "str",
-+    .qapi_type = &str_type_info,
-     .description = "Up to 8 chars in set of [A-Za-z0-9. ] to select"
-             " a guest kernel",
-     .get = ccw_device_get_loadparm,
-diff --git a/hw/s390x/css.c b/hw/s390x/css.c
-index 76dbca3bb961..60cba93e7eec 100644
---- a/hw/s390x/css.c
-+++ b/hw/s390x/css.c
-@@ -24,6 +24,7 @@
- #include "hw/s390x/s390-virtio-ccw.h"
- #include "hw/s390x/s390-ccw.h"
- #include "exec/cpu-common.h"
-+#include "qapi/qapi-builtin-type-infos.h"
- 
- typedef struct CrwContainer {
-     CRW crw;
-@@ -2518,7 +2519,7 @@ out:
- }
- 
- const PropertyInfo css_devid_propinfo = {
--    .type = "str",
-+    .qapi_type = &str_type_info,
-     .description = "Identifier of an I/O device in the channel "
-                    "subsystem, example: fe.1.23ab",
-     .get = get_css_devid,
-@@ -2526,7 +2527,7 @@ const PropertyInfo css_devid_propinfo = {
++#define VFU_OBJECT_BAR_HANDLER_PTR(BAR_NO) vfu_object_bar##BAR_NO##_handler,
+ static vfu_region_access_cb_t *vfu_object_bar_handlers[PCI_NUM_REGIONS] = {
+-    &vfu_object_bar0_handler,
+-    &vfu_object_bar1_handler,
+-    &vfu_object_bar2_handler,
+-    &vfu_object_bar3_handler,
+-    &vfu_object_bar4_handler,
+-    &vfu_object_bar5_handler,
+-    &vfu_object_bar6_handler,
++    QEMU_REPEAT(PCI_NUM_REGIONS, VFU_OBJECT_BAR_HANDLER_PTR)
  };
  
- const PropertyInfo css_devid_ro_propinfo = {
--    .type = "str",
-+    .qapi_type = &str_type_info,
-     .description = "Read-only identifier of an I/O device in the channel "
-                    "subsystem, example: fe.1.23ab",
-     .get = get_css_devid,
-diff --git a/hw/s390x/s390-pci-bus.c b/hw/s390x/s390-pci-bus.c
-index eff980fdfe92..f77632810b76 100644
---- a/hw/s390x/s390-pci-bus.c
-+++ b/hw/s390x/s390-pci-bus.c
-@@ -33,6 +33,7 @@
- #include "system/runstate.h"
+ /**
+diff --git a/include/hw/cxl/cxl_component.h b/include/hw/cxl/cxl_component.h
+index ffc82202206c..fca8b7055ccd 100644
+--- a/include/hw/cxl/cxl_component.h
++++ b/include/hw/cxl/cxl_component.h
+@@ -186,10 +186,7 @@ REG32(CXL_HDM_DECODER_GLOBAL_CONTROL, CXL_HDM_REGISTERS_OFFSET + 4)
+ /* Support 4 decoders at all levels of topology */
+ #define CXL_HDM_DECODER_COUNT 4
  
- #include "trace.h"
-+#include "qapi/qapi-builtin-type-infos.h"
- 
- S390pciState *s390_get_phb(void)
- {
-@@ -1541,7 +1542,7 @@ static void s390_pci_set_fid(Object *obj, Visitor *v, const char *name,
- }
- 
- static const PropertyInfo s390_pci_fid_propinfo = {
--    .type = "uint32",
-+    .qapi_type = &uint32_type_info,
-     .description = "zpci_fid",
-     .get = s390_pci_get_fid,
-     .set = s390_pci_set_fid,
-diff --git a/hw/vfio/pci-quirks.c b/hw/vfio/pci-quirks.c
-index c5b4f9091d49..4a3fd374a211 100644
---- a/hw/vfio/pci-quirks.c
-+++ b/hw/vfio/pci-quirks.c
-@@ -26,6 +26,7 @@
- #include "pci.h"
- #include "pci-quirks.h"
- #include "trace.h"
-+#include "qapi/qapi-builtin-type-infos.h"
+-HDM_DECODER_INIT(0);
+-HDM_DECODER_INIT(1);
+-HDM_DECODER_INIT(2);
+-HDM_DECODER_INIT(3);
++QEMU_REPEAT(CXL_HDM_DECODER_COUNT, HDM_DECODER_INIT)
  
  /*
-  * List of device ids/vendor ids for which to disable
-@@ -1436,7 +1437,7 @@ static void set_nv_gpudirect_clique_id(Object *obj, Visitor *v,
- }
+  * CXL r3.1 Section 8.2.4.21: CXL Extended Security Capability Structure
+diff --git a/include/qemu/osdep.h b/include/qemu/osdep.h
+index 1ec5b42230be..a5e7ff99cb89 100644
+--- a/include/qemu/osdep.h
++++ b/include/qemu/osdep.h
+@@ -191,6 +191,39 @@ extern "C" {
  
- const PropertyInfo qdev_prop_nv_gpudirect_clique = {
--    .type = "uint8",
-+    .qapi_type = &uint8_type_info,
-     .description = "NVIDIA GPUDirect Clique ID (0 - 15)",
-     .get = get_nv_gpudirect_clique_id,
-     .set = set_nv_gpudirect_clique_id,
+ #include "qemu/typedefs.h"
+ 
++/*
++ * QEMU_REPEAT(n, m) - invoke m(0) m(1) ... m(n-1)
++ *
++ * Expands to n invocations of m, each with a literal integer argument.
++ * n must be a compile-time constant in 0..16.
++ *
++ * Example - generate 4 per-index function definitions:
++ *
++ *   #define DEFINE_GETTER(i) \
++ *   static int get_##i(void) { return values[i]; }
++ *
++ *   QEMU_REPEAT(4, DEFINE_GETTER)
++ */
++#define QEMU_REPEAT_0(m)
++#define QEMU_REPEAT_1(m)   QEMU_REPEAT_0(m)   m(0)
++#define QEMU_REPEAT_2(m)   QEMU_REPEAT_1(m)   m(1)
++#define QEMU_REPEAT_3(m)   QEMU_REPEAT_2(m)   m(2)
++#define QEMU_REPEAT_4(m)   QEMU_REPEAT_3(m)   m(3)
++#define QEMU_REPEAT_5(m)   QEMU_REPEAT_4(m)   m(4)
++#define QEMU_REPEAT_6(m)   QEMU_REPEAT_5(m)   m(5)
++#define QEMU_REPEAT_7(m)   QEMU_REPEAT_6(m)   m(6)
++#define QEMU_REPEAT_8(m)   QEMU_REPEAT_7(m)   m(7)
++#define QEMU_REPEAT_9(m)   QEMU_REPEAT_8(m)   m(8)
++#define QEMU_REPEAT_10(m)  QEMU_REPEAT_9(m)   m(9)
++#define QEMU_REPEAT_11(m)  QEMU_REPEAT_10(m)  m(10)
++#define QEMU_REPEAT_12(m)  QEMU_REPEAT_11(m)  m(11)
++#define QEMU_REPEAT_13(m)  QEMU_REPEAT_12(m)  m(12)
++#define QEMU_REPEAT_14(m)  QEMU_REPEAT_13(m)  m(13)
++#define QEMU_REPEAT_15(m)  QEMU_REPEAT_14(m)  m(14)
++#define QEMU_REPEAT_16(m)  QEMU_REPEAT_15(m)  m(15)
++#define QEMU_REPEAT_(n, m) QEMU_REPEAT_##n(m)
++#define QEMU_REPEAT(n, m)  QEMU_REPEAT_(n, m)
++
+ /**
+  * Mark a function that executes in coroutine context
+  *
 
 -- 
 2.55.0.543.g5ebe2ebe4ea8

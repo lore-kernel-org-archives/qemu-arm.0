@@ -4,87 +4,108 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0D9F0C624DE
-	for <qemu-arm@archiver.kernel.org>; Fri,  4 Sep 2026 08:23:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A70DFC79F80
+	for <qemu-arm@archiver.kernel.org>; Fri,  4 Sep 2026 08:53:22 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1x2PCL-0007CD-9V; Fri, 04 Sep 2026 04:22:57 -0400
+	id 1x2PfS-0004rL-Ok; Fri, 04 Sep 2026 04:53:02 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1x2PCK-0007Bw-Ij
- for qemu-arm@nongnu.org; Fri, 04 Sep 2026 04:22:56 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1x2PCI-0002By-MG
- for qemu-arm@nongnu.org; Fri, 04 Sep 2026 04:22:56 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1788510174;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=QTWYsmhlqK4jGGpc9fyTbn0qE377YZhdPTMPKomSSWA=;
- b=fjwqhVcO+GLQAORn0Esd4x5DEW5qP2sZLhJ2/F+oY5/XXJ7uadqHOu7kOLORCparUig/vs
- 6eg+lofQYRpYvhGzFee6+BDGtX65qcp0dJX8+3Z7QafOQEC4tGX/oc1M7np16Q7IER8XxO
- CS2frlpbXdMNMA8dxx6P4LASPlZ3m5s=
-Received: from mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
- relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-5-56fWviNXMwarlDwUfAZQJQ-1; Fri,
- 04 Sep 2026 04:22:50 -0400
-X-MC-Unique: 56fWviNXMwarlDwUfAZQJQ-1
-X-Mimecast-MFC-AGG-ID: 56fWviNXMwarlDwUfAZQJQ_1788510168
-Received: from mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com
- (mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.111])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
- (No client certificate requested)
- by mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 33153180122D; Fri,  4 Sep 2026 08:22:47 +0000 (UTC)
-Received: from blackfin.pond.sub.org (unknown [10.44.22.5])
- by mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 4867D18001D0; Fri,  4 Sep 2026 08:22:45 +0000 (UTC)
-Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
- id CD5CD21E6A04; Fri, 04 Sep 2026 10:22:42 +0200 (CEST)
-From: Markus Armbruster <armbru@redhat.com>
-To: =?utf-8?Q?C=C3=A9dric?= Le Goater <clg@kaod.org>
-Cc: Emmanuel Blot <emmanuel.blot@free.fr>,  qemu-devel@nongnu.org,  Philippe
- =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@mailo.com>,  Peter Maydell
- <peter.maydell@linaro.org>,  Steven Lee <steven_lee@aspeedtech.com>,
- Jamin Lin <jamin_lin@aspeedtech.com>,  Kane Chen
- <kane_chen@aspeedtech.com>,  Andrew Jeffery <andrew@codeconstruct.com.au>,
- Joel Stanley <joel@jms.id.au>,  qemu-arm@nongnu.org,  Fabiano Rosas
- <farosas@suse.de>,  Laurent Vivier <lvivier@redhat.com>,  Paolo Bonzini
- <pbonzini@redhat.com>,  Thomas Huth <th.huth+qemu@posteo.eu>,  Daniel P.
- =?utf-8?Q?Berrang=C3=A9?= <berrange@redhat.com>,  Emmanuel Blot
- <eblot@meta.com>
-Subject: Re: Adding /machines/labels (was Re: [PATCH v2 18/25]
- tests/functional: add a pure-Python device-locator resolver)
-In-Reply-To: <cb1b5ec3-d7ba-42fe-a8ab-da7c236b1660@kaod.org>
- (=?utf-8?Q?=22C=C3=A9dric?= Le
- Goater"'s message of "Thu, 3 Sep 2026 16:21:55 +0200")
-References: <20260731-sanmiguel-bmc-locator-v2-0-1266926ba769@free.fr>
- <20260731-sanmiguel-bmc-locator-v2-18-1266926ba769@free.fr>
- <cb1b5ec3-d7ba-42fe-a8ab-da7c236b1660@kaod.org>
-Date: Fri, 04 Sep 2026 10:22:42 +0200
-Message-ID: <87a4pxh1d9.fsf@pond.sub.org>
-User-Agent: Gnus/5.13 (Gnus v5.13)
+ (Exim 4.90_1) (envelope-from <bmeng.cn@gmail.com>)
+ id 1x2PfR-0004r3-TF
+ for qemu-arm@nongnu.org; Fri, 04 Sep 2026 04:53:01 -0400
+Received: from mail-yw1-x112b.google.com ([2607:f8b0:4864:20::112b])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <bmeng.cn@gmail.com>)
+ id 1x2PfQ-00077g-0P
+ for qemu-arm@nongnu.org; Fri, 04 Sep 2026 04:53:01 -0400
+Received: by mail-yw1-x112b.google.com with SMTP id
+ 00721157ae682-8588583a7c3so8589787b3.2
+ for <qemu-arm@nongnu.org>; Fri, 04 Sep 2026 01:52:59 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1788511978; cv=none;
+ d=google.com; s=arc-20260327;
+ b=EBjVPCOw0HidTBxmD9fEN9YWDFC1BPJwFolIQliCnPlPPTVcV2fXTYQRj4MJyRYaJG
+ Zc6nGdwuVy0xJpV6WtM+ug35WNOgslPY4oSmSsSZN4CxK5b5ebUIM4H4A/ibO/9D23vd
+ KzdSblWWtf07MWXZGU21LNL+fR5orIbsPKqFi/vMFlvbEt0JV5jtK8Eqnittj2umuIdD
+ R/k+ye9fralOHyekOZ/k4Cx0EPQ6ffMCuxEq+SkzJl6VW5ZlwnxRhZDNlVm2nI6KuZZi
+ X11vq/GMxBvbIY0dh973Ei13iSrB5eogfoSaqdSw6r2b/+A5HrPhOamMHDoJwutDiZz5
+ 0S8w==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
+ s=arc-20260327; 
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:dkim-signature;
+ bh=YU0H9nAuS37wxDxYALgdBEzrRf0vvgwOfz9NZINVtyk=;
+ fh=QIIVGlKwrv+AvA0yUf5UdmtflrFSG6WcTOtLwFZ9uNw=;
+ b=okk+W4uLQ/jzXDb+lQjfxkTV5JSd28aFHrUiNxdn69DI/rwRba0ubyXi5slZXf9xeJ
+ oDLfm/iBCNuGFWutTECMhe4r2gM4689wvWQndayiMXz05NFQpoqtsyQHMtJwtJT6K2Qp
+ 0X464Hwb+ArX0YtrNkKie+OksychLScdO5wXI6BIFZ22JT50MWrz/ZWngPrMQiTPZj1H
+ o/sN7vuIgpPCg2AcTAlFvyDE9NLZVdCtxUKbjbFSvMJck1l04JB5hmwBcmJhleVTjXBZ
+ ZH39rWKyjAPDRvx2TMTSRIGp8Rzb9tghBQWM6HSaoqsrGi/7UBmYP4FHv53zC3/U5N4B
+ 5xsQ==; darn=nongnu.org
+ARC-Authentication-Results: i=1; mx.google.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=gmail.com; s=20251104; t=1788511978; x=1789116778; darn=nongnu.org;
+ h=content-transfer-encoding:content-type:cc:to:subject:message-id
+ :date:from:in-reply-to:references:mime-version:from:to:cc:subject
+ :date:message-id:reply-to:content-type;
+ bh=YU0H9nAuS37wxDxYALgdBEzrRf0vvgwOfz9NZINVtyk=;
+ b=DXGBOySSRSOIshN16u9V8M9F4+PHjjj5AVAXcZhrJKLNmLmdaNtXOh1Go/0SvNBinZ
+ J4tXZeBjZL4p2273vPhgqra/1oL7BpBeEdVtT5ArRnG67i7SE4kROVUGBpCW0wTGHUGZ
+ qJcRyGryvbo/30Y2rRTbY25oAUdsruwzp1YB+c3uBqEd4E7TSQ6BvMy82VwPqM+TjFn3
+ QRBC5mcwxrkKgmB5MYAvkE+z7z6yAcJBIJd/V0HYdUYWC9l0Q39O2f/SaYeaVAqlUq1O
+ axGWnwDs9GijnBebPw9UwwauiIPa0oRYcOxlVBdmDNwm0CelMxT/4WbY8v8KbBJZSqj3
+ WlbA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20251104; t=1788511978; x=1789116778;
+ h=content-transfer-encoding:content-type:cc:to:subject:message-id
+ :date:from:in-reply-to:references:mime-version:x-gm-gg
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
+ :content-type;
+ bh=YU0H9nAuS37wxDxYALgdBEzrRf0vvgwOfz9NZINVtyk=;
+ b=A2/HdwU9Hyvjl0Fa/ejRCO97KEqYtRrv25U2oNgJLAUcXjrcmS5qcX98wp7S2Gd7JH
+ Snrw9+BhHc29A+e7zKH57hH32FIoPyzJgsvmzxJGPyFJxeIH9PaL7lDzcwm29HgRTyyl
+ EgTMOZu1dy9oBXOBry+PC/oWVaaFihX12pXd9+K8kk8HOV8UKUu3tF9S5YspXK2qfDR/
+ BCWcdYKr+iZvIlEPZ0Q9d2wahKJGlaWQ6joepihYOOG2i8zXm8gp1i7Vg8HUZkqJNVX5
+ wK14lcL7xwRosXqoiyykyeJHF7+LqlyKSqaPlV5hULdKb+ruZSdqtxZgD0KF78nGuIYQ
+ 24yw==
+X-Forwarded-Encrypted: i=1;
+ AKwUvBxw2oLMWdXrCly8zSQMiiJVBlIrYt915eyMmegQBAx/QCUxd4W8hRnu29eD2KKtzkOpJdwQUUCHTw==@nongnu.org
+X-Gm-Message-State: AFuF++n7z2Jd5222oKi/zNfN9grC1oIJYTBw9U62zq1QzXz6vd3X2jP3
+ 6Lx12EVH0UM3lTchGf91S+mx42j0Tb8G9sX3opUeybglITdkTEFztvf7ziqTyDX9WJYlHuBLCih
+ 345pxfAeB/clQJQI9vu24Q9qHKmrHBdQ=
+X-Gm-Gg: AYBFou1WpFn1ay11EVn71yeLQR/zisJisd/3AbRfs9/hdk1u0uByIHaKSI6dA1y2Ns2
+ wo93dCFXwksl7ySvYgNm7IEc/ghK3n9Y3qag4Th0sYCghxDl2G/flPbc6/WGgDJnQoSaJ/yU9Y0
+ herbXNoFsmuKFagYCdJmEjY2D3fQfAdxHBrNskjy/L7wXPXQ2KKeHPiOBVb3bjbguRP7MoHk0qN
+ iwpbVb5lJXbVP607yR5X70o/5Y37AeKwURg3chat2n1K0YySyRvUtX902Z3BDJMKc1dETSaZA9P
+ zeCzmkHlbyV80/+TTprNG8A8X4tJfsLYVgXFJOeuW8ls
+X-Received: by 2002:a05:690c:c59f:b0:86a:5def:5f15 with SMTP id
+ 00721157ae682-8712800debamr20165177b3.29.1788511978543; Fri, 04 Sep 2026
+ 01:52:58 -0700 (PDT)
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.111
-X-Mimecast-MFC-PROC-ID: oAIDxS1AnXqo221ay7qmgujOorGNGHi9c2DSpMLpJr4_1788510168
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8
+References: <20260903112532.3276678-1-bin.meng@processmission.com>
+ <20260903112532.3276678-33-bin.meng@processmission.com>
+ <87y0dipfhv.fsf@draig.linaro.org>
+In-Reply-To: <87y0dipfhv.fsf@draig.linaro.org>
+From: Bin Meng <bmeng.cn@gmail.com>
+Date: Fri, 4 Sep 2026 16:52:46 +0800
+X-Gm-Features: AcwNN1XoRcVVUYWqSma1V2tDLFiFsRbYBEm6NwNA5exZ7fNtvan5tpjt_VFEeKI
+Message-ID: <CAEUhbmXDFwhJrdh6w3f9pwG29W_6-ixxNiR3-jRo+4KuEHGO+g@mail.gmail.com>
+Subject: Re: [PATCH 32/33] tests/functional/aarch64: Add Phytium Pi boot tests
+To: =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>
+Cc: Bin Meng <bin.meng@processmission.com>, QEMU <qemu-devel@nongnu.org>, 
+ Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org
+Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=armbru@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::112b;
+ envelope-from=bmeng.cn@gmail.com; helo=mail-yw1-x112b.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=0.001, SPF_HELO_PASS=-0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -100,161 +121,196 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-C=C3=A9dric Le Goater <clg@kaod.org> writes:
+Hi Alex,
 
-> On 7/31/26 12:45, Emmanuel Blot wrote:
->> Add DeviceLocator, a helper that addresses a device by its position on
->> the bus -- bus, address, type or index -- rather than by a QOM path. A
->> QOM path locates a device under the object that owns it, by enumeration
->> order, and so says nothing about where the device actually sits in the
->> bus topology. From a QOM anchor DeviceLocator instead walks the bus and
->> device hierarchy, alternating bus and device hops, to reach the target.
->> It relies only on standard QOM queries over QMP, needing no custom
->> commands or changes to QEMU.
+On Thu, Sep 3, 2026 at 10:38=E2=80=AFPM Alex Benn=C3=A9e <alex.bennee@linar=
+o.org> wrote:
 >
-> Let's recap first :
+> Bin Meng <bin.meng@processmission.com> writes:
 >
-> Several recent threads have touched the same topic: QOM
-> composition-tree paths encode ownership, but developers and tests
-> regularly need to identify devices by their position in the bus
-> topology. The threads in question:
+> > The Phytium Pi machine supports both the board firmware flow from SD
+> > and direct Linux boot. Exercise both paths with an SDK image bundle so
+> > firmware handoff and kernel loading regressions are caught.
+> >
+> > Verify U-Boot, PBF relocation, the Linux handoff, and login for the
+> > firmware path. The Linux test loads the bundled kernel, DTB, and
+> > initramfs and waits for the same login prompt.
+> >
+> > Signed-off-by: Bin Meng <bin.meng@processmission.com>
+> > ---
+> >
+> >  tests/functional/aarch64/meson.build        |  2 +
+> >  tests/functional/aarch64/test_phytium_pi.py | 77 +++++++++++++++++++++
+> >  2 files changed, 79 insertions(+)
+> >  create mode 100644 tests/functional/aarch64/test_phytium_pi.py
+> >
+> > diff --git a/tests/functional/aarch64/meson.build b/tests/functional/aa=
+rch64/meson.build
+> > index f0881bed16..71bf45e4ea 100644
+> > --- a/tests/functional/aarch64/meson.build
+> > +++ b/tests/functional/aarch64/meson.build
+> > @@ -7,6 +7,7 @@ test_aarch64_timeouts =3D {
+> >    'device_passthrough' : 720,
+> >    'imx8mm_evk' : 240,
+> >    'imx8mp_evk' : 240,
+> > +  'phytium_pi' : 600,
+> >    'raspi4' : 480,
+> >    'reverse_debug' : 180,
+> >    'rme_virt' : 1200,
+> > @@ -39,6 +40,7 @@ tests_aarch64_system_thorough =3D [
+> >    'imx8mp_evk',
+> >    'kvm',
+> >    'multiprocess',
+> > +  'phytium_pi',
+> >    'raspi3',
+> >    'raspi4',
+> >    'replay',
+> > diff --git a/tests/functional/aarch64/test_phytium_pi.py b/tests/functi=
+onal/aarch64/test_phytium_pi.py
+> > new file mode 100644
+> > index 0000000000..4ae0392bdd
+> > --- /dev/null
+> > +++ b/tests/functional/aarch64/test_phytium_pi.py
+> > @@ -0,0 +1,77 @@
+> > +#!/usr/bin/env python3
+> > +#
+> > +# Functional tests for the Phytium Pi machine
+> > +#
+> > +# Copyright (c) 2026 Process Mission
+> > +#
+> > +# Author:
+> > +#   Bin Meng <bin.meng@processmission.com>
+> > +#
+> > +# SPDX-License-Identifier: GPL-2.0-or-later
+> > +
+> > +from qemu_test import Asset, LinuxKernelTest
+> > +from qemu_test import skipBigDataTest, skipIfMissingCommands
+> > +
+> > +
+> > +class PhytiumPiMachine(LinuxKernelTest):
+> > +
+> > +    ASSET_BUILDROOT =3D Asset(
+> > +        ('https://github.com/processmission/qemu-machine-images/releas=
+es/'
+> > +         'download/v1.0.0/aarch64-phytium-pi-v1.0.0.tar.zst'),
+> > +
+> > '5219d52b862e1245b12f79ba72e9a6144f5e0cf1a50061f8fda2db0aeeb92428')
 >
->   - "[PATCH v5 0/8] hw/sensor: Add new device emulation for TI ADC128D818=
-" [1]
->   - "Call to clean up QOM onboard devices lacking a parent" [2]
->   - "[PATCH RFC 001/134] qom: Introduce object_new_child()" [3]
->   - "[PATCH RFC v2 0/137] qom: Make composition-tree parenting mandatory"=
- [4]
->   - "[PATCH v2 0/25] hw/arm: Facebook SanMiguel BMC and TMP75-family sens=
-ors" [5]
+> Nice ;-)
 >
+> I've been looking into something similar to make it easy to set up
+> github projects that can build and host test assets:
 >
-> * The problem
->
-> QEMU has two device hierarchies serving different purposes:
->
->   - The QOM composition tree describes parent/child ownership.  Every
->     object has exactly one parent. Paths look like:
->     /machine/soc/i2c-controller/child-device.
->   - The bus topology describes electrical connectivity (visible
->     through "info qtree"). A device sits on a bus at an address.
+>   https://github.com/stsquad/buildroot-asset
 
-Yes.
+This is actually very close to what I have been doing with
+https://github.com/processmission/qemu-machine-images. It is intended
+to be a common repository for QEMU machine test assets.
 
-*Composition* tree means the children are *components* of their parent.
-At least that's the intended use.
+Each machine has a small description under:
 
-The qtree predates QOM and is a bit of a relic.  Its design is too
-simplistic to match electric reality: it's a *tree*, whereas real wires
-form a *graph*.
+  machine/<architecture>/<machine>/
 
-Tree is fine for ordinary devices plugging into something a hardware
-dude would recognize as a bus, say PCI or USB.
+It selects the independently built components, required images and
+machine-specific QEMU launcher. The container builders, packaging,
+checksums, release manifest and GitHub Actions workflow are shared.
+The workflow also distinguishes between the main repository and forks.
+A fork can build selected machines and upload run-scoped Actions
+artifacts without publishing a release. It can optionally publish its
+own development prerelease, while the main repository publishes
+frozen, versioned assets.
 
-Caveat: as long as they plug into exactly one such thing; "multi-master
-I2C" was mentiond as a counter-example.
-
-Many (most?) of our devices are sysbus devices.  Sysbus is not a bus,
-it's a cop out: it doesn't actually describe electrical connections
-beyond "there are some to other parts of 'the system'".
-
-And then there are funny devices like certain PCI VGA devices that plug
-into a PCI but also bypass PCI for mapping their frame buffer.
-
-I guess (the saner parts of) qtree may still provide some value.  I'm
-curious: do people use it in programs?  Management applications in
-particular.
-
-QOM provides a mechanism that is suitable for modeling electrical
-connections other than the ones to the parent: links.  These do form a
-graph.
-
-> Devices created without an explicit QOM parent fall into
-> /machine/unattached/device[N], the "orphanage", with names that depend
-> on enumeration order and are therefore unstable. Markus identified
-> 380+ such devices across all QEMU machines [2]. Even with a stable QOM
-> path, the path says nothing about where the device sits in the bus
-> topology or what purpose it serves.
-
-Yes, and that can be a problem.
-
-> * Three approaches on the table
 >
->   1. Mandatory QOM parenting (Graf [3][4] / Armbruster [2])
->      object_new_child() and per-bus creators enforce parenting at
->      creation time. Deletes the orphanage. Scope: 440 files, 137
->      patches.
->
->   2. Bus-child parenting (Blot [1], rejected)
->      i2c_slave_create_simple() would parent slaves to their bus,
->      named by hex address (e.g. /machine/i2c[0]/i2c-bus/0x6f).
->
->   3. DeviceLocator (Blot [5])
->      Pure-Python helper that resolves devices by bus-position
->      descriptors like:
->
->        /machine/soc::aspeed.i2c-ast2600[0]~i2c[9]~tmp75@0x4b
->
->      It walks the bus/device hierarchy using only qom-list/qom-get
->      over QMP, no QEMU code changes needed. 600 lines of python.
->
->
-> * /machine/labels: DT-style alias container for QOM
->
-> The idea: add a flat container /machine/labels under the machine, where
-> board code registers link<> properties pointing to devices by
-> purpose name. Like device tree /aliases (serial0  > /soc/uart@9000000).
+> although my builds seem to take quite a bit longer that yours.
 
-This general idea has been sloshing around in my head for a long time, I
-just haven't had a compelling reason to flesh it out.
+Yeah, as I only built the minimal busybox-based buildroot
+configuration, which is enough for QEMU boot testing :)
 
-> Container creation is one line in qemu_create_machine_containers().
-> QMP introspection works today: qom-get /machine/labels/rtc returns the
-> target's canonical path.
 >
-> A small helper is all that is needed:
->
->   void machine_add_label(const char *label, Object *target)
->   {
->       object_property_add_const_link(
->           machine_get_container("labels"), label, target);
->   }
->
-> Board code registers one label per well-known device:
->
->   machine_add_label("rtc", OBJECT(dev));
->   machine_add_label("tmp75-bus9-0x4b", OBJECT(sensor));
->
-> Tests resolve devices with a single QMP call instead of walking
-> the bus hierarchy.  For the common case, functional tests targeting
-> specific board devices (SanMiguel TMP75s, Catalina PCA9555s, Anacapa
-> ADC128D818s), the board author already knows which devices matter.
->
-> Thoughts?
+> I wonder if there is a way to have a common repository set up but in a
+> way that the forks can just build their own images. Either that or a
+> core repository which everyone just forks adds their device and merges.
 
-To get the most value out of /machine/labels/, we'd want
+So perhaps qemu-machine-images could serve as a starting point for the
+common repository you describe. I would be happy to accept machine
+definitions from other contributors and make the add-a-machine
+workflow simpler.
 
-* Documented naming conventions such as "/machine/label/serial0 always
-  refers to the machine's first serial device"
+Your buildroot-asset project also has useful ideas, particularly
+including enough Buildroot configuration and source metadata to
+reproduce an image manually. It would be good to align the two efforts
+instead of growing separate repositories for each maintainer or board.
 
-* Reliability, i.e. if /machine/label/ exists, then
-  /machine/label/serial0 exists unless the machine has no first serial
-  device
-
-* /machine/label/ to exist for the machines we actually care about :)
-
-> Thanks,
 >
-> C.
+> Anyway, test looks sane:
 >
-> [1] https://lore.kernel.org/qemu-devel/20260701-i2c-adc128d818-anacapa-v5=
--6-fe8292d86b38@free.fr
-> [2] https://lore.kernel.org/qemu-devel/87se5scipx.fsf@pond.sub.org
-> [3] https://lore.kernel.org/qemu-devel/20260711223707.42139-1-graf@amazon=
-.com
-> [4] https://lore.kernel.org/qemu-devel/20260718213652.37673-1-graf@amazon=
-.com
-> [5] https://lore.kernel.org/qemu-devel/20260731-sanmiguel-bmc-locator-v2-=
-0-1266926ba769@free.fr
+> Reviewed-by: Alex Benn=C3=A9e <alex.bennee@linaro.org>
 
+Thanks for the review!
+
+>
+> > +
+> > +    def _prepare_images(self):
+> > +        self.set_machine('phytium-pi')
+> > +
+> > +        archive_path =3D self.uncompress(
+> > +            self.ASSET_BUILDROOT,
+> > +            target=3D'aarch64-phytium-pi-v1.0.0.tar',
+> > +            format=3D'zstd')
+> > +        self.archive_extract(archive_path, format=3D'tar')
+> > +
+> > +        self.vm.set_console(console_index=3D1)
+> > +        self.vm.add_args('-smp', '4',
+> > +                         '-m', '4G',
+> > +                         '-display', 'none',
+> > +                         '-nic', 'none',
+> > +                         '-no-reboot')
+> > +
+> > +    @skipIfMissingCommands('zstd')
+> > +    @skipBigDataTest()
+> > +    def test_firmware_boot(self):
+> > +        self._prepare_images()
+> > +        sdcard =3D self.scratch_file('images', 'sdcard.img')
+> > +
+> > +        self.vm.add_args(
+> > +            '-snapshot',
+> > +            '-drive', f'file=3D{sdcard},format=3Draw,if=3Dsd,index=3D0=
+')
+> > +        self.vm.launch()
+> > +
+> > +        self.wait_for_console_pattern('U-Boot 2022.01')
+> > +        self.wait_for_console_pattern('PBF relocate done')
+> > +        self.wait_for_console_pattern('Starting kernel ...')
+> > +        self.wait_for_console_pattern('Phytium login:')
+> > +
+> > +    @skipIfMissingCommands('zstd')
+> > +    @skipBigDataTest()
+> > +    def test_linux_boot(self):
+> > +        self._prepare_images()
+> > +        kernel =3D self.scratch_file('images', 'Image.gz')
+> > +        dtb =3D self.scratch_file('images', 'phytiumpi_firefly.dtb')
+> > +        initrd =3D self.scratch_file('images', 'rootfs.cpio.gz')
+> > +
+> > +        self.vm.add_args(
+> > +            '-kernel', kernel,
+> > +            '-dtb', dtb,
+> > +            '-initrd', initrd,
+> > +            '-append', 'console=3DttyAMA1,115200 '
+> > +                       'earlycon=3Dpl011,mmio32,0x2800d000 rdinit=3D/i=
+nit')
+> > +        self.vm.launch()
+> > +
+> > +        self.wait_for_console_pattern('Booting Linux on physical CPU')
+> > +        self.wait_for_console_pattern('Machine model: Phytium Pi Board=
+')
+> > +        self.wait_for_console_pattern('Phytium login:')
+> > +
+> > +
+> > +if __name__ =3D=3D '__main__':
+> > +    LinuxKernelTest.main()
+>
+> --
+
+Regards,
+Bin
 

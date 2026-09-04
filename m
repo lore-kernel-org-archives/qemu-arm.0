@@ -4,65 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C692AC61DD6
-	for <qemu-arm@archiver.kernel.org>; Fri,  4 Sep 2026 04:38:02 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EA580C79F81
+	for <qemu-arm@archiver.kernel.org>; Fri,  4 Sep 2026 04:38:04 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1x2Lgc-0003m5-Fs; Fri, 04 Sep 2026 00:37:58 -0400
+	id 1x2Lgd-0003mj-QB; Fri, 04 Sep 2026 00:37:59 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mohamed@unpredictable.fr>)
- id 1x2Lgb-0003kT-2S
- for qemu-arm@nongnu.org; Fri, 04 Sep 2026 00:37:57 -0400
-Received: from pv-2001d-snip6-11.eps.apple.com ([2a01:b747:3003:200::29]
+ id 1x2Lgc-0003lz-B4
+ for qemu-arm@nongnu.org; Fri, 04 Sep 2026 00:37:58 -0400
+Received: from pv-2001c-snip6-11.eps.apple.com ([2a01:b747:3003:200::1f]
  helo=outbound.pv.icloud.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mohamed@unpredictable.fr>)
- id 1x2LgY-0003im-JZ
- for qemu-arm@nongnu.org; Fri, 04 Sep 2026 00:37:56 -0400
+ id 1x2Lga-0003jY-V9
+ for qemu-arm@nongnu.org; Fri, 04 Sep 2026 00:37:58 -0400
 Received: from outbound.pv.icloud.com (unknown [127.0.0.2])
  by p00-icloudmta-asmtp-us-west-1a-100-percent-11 (Postfix) with ESMTPS id
- B57C618000E3; Fri, 04 Sep 2026 04:37:48 +0000 (UTC)
-X-ICL-RepId: 01a06ab5-67fd-7bd0-92f9-5931be412536
-X-ICL-Out-Info: HUtFAUMHWwJACUgBTUQeDx5WFlZNRAJCTQ1OHVwPUhxEDlYCVRcOVk1UF1sMWg5WMEwWQx9SD1sTTRlRAVJFVAIZHldQQgVCAlwcWg5DClAcXFZVHxcZUU0OWFsIWwQPH0wMUQJCBVZeSQ4dBFQHXQVdVlACWktCBEtFaFwFXBxAF0gdX2pLVhQEDV0dRQ5WGVoMUg9bDhwWS1heBFNWDkIJSgVdDlsGQA1LBFkFRQtGD0kAQAVGXx9RGV4IUytHHkkKVgleCEYRWxRWQ1EZDFBNAUMICghHA00XXjJTBF8RUBY=
+ DBA551800218; Fri, 04 Sep 2026 04:37:53 +0000 (UTC)
+X-ICL-RepId: 01a06ab5-7c26-72d5-bdf7-e240933981e5
+X-ICL-Out-Info: HUtFAUMHWwJACUgBTUQeDx5WFlZNRAJCTQ1OHVwPUhxEDlYCVRcOVk1UF1sMWg5WMEwWQx9SD1sTTRlRAVJFVAIZHldQQgVCAlwcWg5DClAcXFZVHxcZUU0OWFsIWwQPH0wMUQJCBVZeSQ4dBFQHXQVdVlACWktCBEtFaFwFXBxAF0gdX2pLVhQEDV0dRQ5WGVoMUg9bDhwWS1heBFNWDkIJSgVdDlsGQA1LBFkFRQtGD0kAQAJGXx9RGV4IUytHHkkKVgleCEYRWxRWQ1EZDFBNAUMICghHA00XXjJTBF8RUBY=
 Dkim-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=unpredictable.fr;
- s=sig1; t=1788496670; x=1791088670;
- bh=w/0h1F7lLj4GVLQTQQjPrUbmnfLN71VsnNwG2wgM5J0=;
+ s=sig1; t=1788496676; x=1791088676;
+ bh=t7Pug8Dj3tOCe5mrL4jAhj3bkg6X1ILJwVdzYu0j7Hg=;
  h=From:To:Subject:Date:Message-ID:MIME-Version:x-icloud-hme;
- b=Ekis5jYi9y6eE1ZUqOpTDEUWg92HpG9P5ttQJMR9pm2KY1zForpmhczhZzgElEPMBFSvYMrWJinDhV2I7OL27t9bGgh+MQyZBcRdxpx9skKEBmx2gqXJZVTYP7lb+ov5rc3MVqH/vT8IL0kbTD9dVTiMa0muzRQgPXxZpObU34jdBWys1TGO7dC9dqfIYk79wFM3D8ZOOO5E6Ne+wHLz1yuHBK9P3zrK6Caoh05DAfTOyxHbNS96RdbXBokfBGWjyQYBo53UhhacV/ZAhMz48MRF/yvwyPRb6Eqn5Ws1BgRismfCZRYm3VHtiv2TeL3k84pw1fIqvAHFA+tbxYvrSA==
+ b=GW4azoCOP7gBa8cGKgX/Kd+doXh8UbbmeiWq8XkywXjjaFrR0xNph/4zw39svc1mStuPFcN2HEos6oDxRxoE1Qn0X9f6Ha2pa97aGWME7x8uS9Noot3cyCHnDZOW2HjPAsgJr0o+RynD9DwWgOi+4jA2+jBkbr+Qs6JtblNmCRGZeSeQZ+5minVD8TXsBN59EXu9KQtPYdJU2v6stc3xykUVYMCx1gVhQF2/JUFuCqywukcVjohJ/EfraboWPhdN9a0o6Twllz2zeqD+4QtKxBUkyhJjmGHXcUs5W0xWhmZwlPTISqEBMUs/GEDNEHiDZ0tzT2vzlRfmaYKd3A7IHA==
 mail-alias-created-date: 1752046281608
 Received: from localhost.localdomain (unknown [17.156.192.29])
  by p00-icloudmta-asmtp-us-west-1a-100-percent-11 (Postfix) with ESMTPSA id
- C109B18000D0; Fri, 04 Sep 2026 04:37:46 +0000 (UTC)
+ ED475180013D; Fri, 04 Sep 2026 04:37:51 +0000 (UTC)
 From: Mohamed Mediouni <mohamed@unpredictable.fr>
 To: qemu-devel@nongnu.org
 Cc: Phil Dennis-Jordan <phil@philjordan.eu>,
  Roman Bolshakov <rbolshakov@ddn.com>, qemu-arm@nongnu.org,
  Peter Maydell <peter.maydell@linaro.org>, Alexander Graf <agraf@csgraf.de>,
  Mohamed Mediouni <mohamed@unpredictable.fr>
-Subject: [PATCH v2 1/5] hvf: arm: advertise ID_AA64PFR0_EL1.GIC
-Date: Fri,  4 Sep 2026 06:37:38 +0200
-Message-ID: <20260904043742.96613-2-mohamed@unpredictable.fr>
+Subject: [PATCH v2 4/5] hvf: arm: expose E2H0
+Date: Fri,  4 Sep 2026 06:37:41 +0200
+Message-ID: <20260904043742.96613-5-mohamed@unpredictable.fr>
 X-Mailer: git-send-email 2.54.0
 In-Reply-To: <20260904043742.96613-1-mohamed@unpredictable.fr>
 References: <20260904043742.96613-1-mohamed@unpredictable.fr>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwOTA0MDA0MSBTYWx0ZWRfX7a8qAZJWHick
- 5uN5v7M1Q3sC9u4c9QWgVL8GUc/xJhWDz/MMB0EAyZkDIfh5qCNOXPXRKABf6ky4E6fCTot3u0a
- L90gdL/tgKnUWABLJocXmtjfoyodSvwoJkBJ6PNgg8AS4NN1dc+KlzENe8IBkPLygVzZfLDj4gF
- admZqrrV46zSGQWXakwPcZO1z/+P7+xOdQXBj+huPmM/H/DQDSTGfvs3cQ1Gh1C9HPN8Zz6nWvh
- njVdqQqSg4uZArPKFpQ0Xj3/7fuJB/eamiPfziqD0MCqkTecXseKH4rszJyyUp2docHgQHVY1gc
- KFxbUtmLJRISkBpm0AUOVA+UARcjsJ4Ifeo+aEo346BTHizUHjCZnG5jU38nOA=
-X-Authority-Info-Out: v=2.4 cv=L98QguT8 c=1 sm=1 tr=0 ts=6a9a4b1d
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwOTA0MDA0MSBTYWx0ZWRfXzkzMF2MsnsvD
+ /aALtgKzTdQ9sehhlAeWjevBJgavEqMxk0NSqqz9X65euT/+uwpw/EsfNPAIU8aHxjaS4vFzUaR
+ 0M9Z/1Z86XGY6JLdmLb8atDfCXJPfXYYIB1vqxEnxSvup0JePFg9a2xtNeZI226rLYZ1QIXeoNU
+ za8c+hHeyIReseJUvSczqdoq5OEDxWAqHxAYhH1UVmByI/l0ttQTdc88QI1V1wWgRK9Juj7vsqD
+ PshSfAiY8ZyIjpTxVJjiFJW339oWcADPSOQpGxf6GcCzp2Mj5MbwlDc/uBGtbP6dZb60HiHjk7P
+ azYOZHn1WNhWW7Fb1zymGgoBpMrVSECcGdYFF6xiq2UrEl3q1vY20tyMVt9Cog=
+X-Proofpoint-GUID: Pop-GMhWR_lDtM962gSgPqikFVYcqFrm
+X-Authority-Info-Out: v=2.4 cv=JeGxbEKV c=1 sm=1 tr=0 ts=6a9a4b22
  cx=c_apl:c_pps:t_out a=aW9mcIavGNWWFvFFKOxBSA==:117
  a=aW9mcIavGNWWFvFFKOxBSA==:17 a=VdqzKS8jKosA:10 a=VkNPw1HP01LnGYTKEx00:22
- a=PxskMMFkHs8dM-QmR_QA:9
-X-Proofpoint-GUID: eGZUGH6g_xW4fGpbsjZKjf90SAMyRelw
-X-Proofpoint-ORIG-GUID: eGZUGH6g_xW4fGpbsjZKjf90SAMyRelw
-X-JNJ: AAAAAAABjv/OGCgs6OqNvW7UDHBPRS0UPqGu5waoN64aCgt9YPlNTDYYq+TzK7BOFXhzOnHNlSVljvOexOHH9nYzB3sug77AbZuOZzDVUE6nqyO6tIZKvAuGePORNw5wuXexbH7Sy0eWXvVu/9Pzq+dWga0PMyuDYGupMPlcwolEZKylQcwK5+AnV1odSRwRhSJIw5qek7E/+dhQipGxN+sY5ySIHR6DyV1qYldeUI8pcE36R1n21ui5PkUDiPS1DVyFtKszYMhDDDyFtfGZ4QbgUJPlLdeN2pxvSRyHYV/xZA5+cGmciWtbGzLRBwYM3fQ8BSYCixIt/BQk3EiPOFreSHOh4rH7zFe9Q8pqvr7a7/xCtuCnKbpxY9zyuiLMdL9cYSc1rsf1Al6KCfkOpGC7T+XJ2ce2HW5h2UP3Pz4293QANUDnWrGT5TFMsKbkqetHLnMG0Y3ixj/0KHglwIz/pUfQETnn5ra9i9beiVBzGRObPNIrePDLJYCH7wBHgSqUgkfyTaDOnuiEnCTuJkd6hdTQqdCFS8A/85iNGwRfqrC6YdkZ7/gUipH8n2aKQPMtSZHvK68PumIIhbmJLD+ozGDN7dU8B0NImbaizFvw5pivHE9CKTe/cjN2mo78Yf+QNGzVKs2YVlT8bc5PC7oMDfzcLDzvCSNzfQryhBMATUPsABzvZvXJUhvtNYFiGtsAjrJ75y5r8PIWcy267la6I6OmJxmDbttFyAG27MQTAinX+bsM8eMeVefM1QanP3bO14GmUIETdn1B7omkIzIhcf5842dSourNfIq6ZDTexBpiRJVsqpqLE9mequU/AGwXs43q
-Received-SPF: pass client-ip=2a01:b747:3003:200::29;
+ a=QXQs0CC_ZiPkBA9Uy5oA:9
+X-Proofpoint-ORIG-GUID: Pop-GMhWR_lDtM962gSgPqikFVYcqFrm
+X-JNJ: AAAAAAABBL+oENo6sWrKbwezpabxPpgrzinJ7D6wzrgLQFxLwhxyvHDykBDPALFYebXnqidNU1H27u9V4fW1p0EUmzSKsLaSgS7DkJLP6RARk1WqWVpclWfzKVEUxXng65cukdYjlQjWaadn5Fl0yZuJLFxWvIQbdfAT/6hLMSh+PAVseH7ymYT+bewKz3u6RRiNeXsmsSDp6zEdJ9DWaPCfWmrrmnPxlEQo0qczBnqGJmjNrXT3S25hTjvXjN1AnUOaFSiGLxYOyZt5+lZsf1QpoPGaEk1rR76VCAzJbtHRDTrkNk+0GEFe8UhaaLkZroYhNTpTSbIY2br3aDV4wY4fzAlxMSH0PkhJKo8ZCdxP5FZw0RP/b+ixzgvV2XfPUyQjlhWhdlw9T0eIHzeNOjKzYJUZNhDSnE7YJeWfhCZ/HgWhrbg6/No8AkMokWXLw5s13+M5wLIrYQ8qGsPDcnMCWD+jfIfgdw4OQrYOAmwZxhXXuDegwelnOhk0fKgb4EpECmSAKzZihiRuW9AFBysHP1KNVVNpes91twGF5Kyb8OQrs1mNDym/UE+rYn+srh3w0PUtios3O5ye6dEmPWYUXKUlSin88GTO+SEukBOmeXw+FkvPRPgf8qpZI5W4metugU7fq3xz5Lnd06WMBUErdmiceePAtCLIET0WhLyDiO5CBYHYkg70NlAboiZxMp0VlnYOINUf8BAasgY3U+i0NRFfRHoHAwHgAL/7XcVjlZZOZShaWiPIsxO/K1xdITZijgm8fg==
+Received-SPF: pass client-ip=2a01:b747:3003:200::1f;
  envelope-from=mohamed@unpredictable.fr; helo=outbound.pv.icloud.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
@@ -85,36 +85,25 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-For the kernel-irqchip=on case, advertise ID_AA64PFR0_EL1.GIC.
+In the VHE mode, nVHE is not available. As such, only expose VHE.
 
 Signed-off-by: Mohamed Mediouni <mohamed@unpredictable.fr>
 ---
- target/arm/hvf/hvf.c | 12 ++++++++++++
- 1 file changed, 12 insertions(+)
+ target/arm/hvf/hvf.c | 1 +
+ 1 file changed, 1 insertion(+)
 
 diff --git a/target/arm/hvf/hvf.c b/target/arm/hvf/hvf.c
-index da3ec521fc..f881d6cc67 100644
+index c54a92c2aa..47eeaa0f30 100644
 --- a/target/arm/hvf/hvf.c
 +++ b/target/arm/hvf/hvf.c
-@@ -1229,6 +1229,18 @@ static bool hvf_arm_get_host_cpu_features(ARMHostCPUFeatures *ahcf)
+@@ -1285,6 +1285,7 @@ static bool hvf_arm_get_host_cpu_features(ARMHostCPUFeatures *ahcf)
          FIELD_DP64_IDREG(&host_isar, ID_AA64PFR1, SME, 0);
-     }
- 
-+    /*
-+     * On HVF, kernel-irqchip implies GICv3.
-+     * The kernel-irqchip=off,gic-version=3 legacy case also supports
-+     * the host CPU interface but advertising it in ID_AA64PFR0_EL1
-+     * is not implemented yet.
-+     */
-+
-+    if (hvf_irqchip_in_kernel()) {
-+        /* Advertise the GIC system register interface */
-+        FIELD_DP64_IDREG(&host_isar, ID_AA64PFR0, GIC, 1);
-+    }
-+
-     ahcf->isar = host_isar;
- 
-     /*
+         if (hvf_get_vhe()) {
+             FIELD_DP64_IDREG(&host_isar, ID_AA64MMFR1, VH, 0x1);
++            FIELD_DP64_IDREG(&host_isar, ID_AA64MMFR4, E2H0, 0xf);
+         }
+         /* Hyper-V doesn't launch if EL3 isn't advertised. */
+         FIELD_DP64_IDREG(&host_isar, ID_AA64PFR0, EL3, 0x1);
 -- 
 2.54.0 (Apple Git-156)
 

@@ -4,72 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id ED8BFC79F80
-	for <qemu-arm@archiver.kernel.org>; Fri,  4 Sep 2026 04:39:07 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D621EC61DD3
+	for <qemu-arm@archiver.kernel.org>; Fri,  4 Sep 2026 05:04:53 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1x2Lgd-0003me-By; Fri, 04 Sep 2026 00:37:59 -0400
+	id 1x2M6W-00016m-Vv; Fri, 04 Sep 2026 01:04:45 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mohamed@unpredictable.fr>)
- id 1x2Lgb-0003kw-Gq
- for qemu-arm@nongnu.org; Fri, 04 Sep 2026 00:37:57 -0400
-Received: from pv-2001c-snip6-11.eps.apple.com ([2a01:b747:3003:200::1f]
- helo=outbound.pv.icloud.com)
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1x2M6U-00015i-QT
+ for qemu-arm@nongnu.org; Fri, 04 Sep 2026 01:04:42 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mohamed@unpredictable.fr>)
- id 1x2LgZ-0003j2-9y
- for qemu-arm@nongnu.org; Fri, 04 Sep 2026 00:37:57 -0400
-Received: from outbound.pv.icloud.com (unknown [127.0.0.2])
- by p00-icloudmta-asmtp-us-west-1a-100-percent-11 (Postfix) with ESMTPS id
- 6E48A1800116; Fri, 04 Sep 2026 04:37:50 +0000 (UTC)
-X-ICL-RepId: 01a06ab5-6ea7-7931-8efe-7aa0aad4db0c
-X-ICL-Out-Info: HUtFAUMHWwJACUgBTUQeDx5WFlZNRAJCTQ1OHVwPUhxEDlYCVRcOVk1UF1sMWg5WMEwWQx9SD1sTTRlRAVJFVAIZHldQQgVCAlwcWg5DClAcXFZVHxcZUU0OWFsIWwQPH0wMUQJCBVZeSQ4dBFQHXQVdVlACWktCBEtFaFwFXBxAF0gdX2pLVhQEDV0dRQ5WGVoMUg9bDhwWS1heBFNWDkIJSgVdDlsGQA1LBFkFRQtGD0kAQARGXx9RGV4IUytHHkkKVgleCEYRWxRWQ1EZDFBNAUMICghHA00XXjJTBF8RUBY=
-Dkim-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=unpredictable.fr;
- s=sig1; t=1788496672; x=1791088672;
- bh=G0sCQVy5ZVMJ7d5IcnGa5M5Elqj0GnZy6UVJUHpnpX8=;
- h=From:To:Subject:Date:Message-ID:MIME-Version:x-icloud-hme;
- b=hfQVFS4puqranQ9AzduzN4WiOWE8iGsBADZyJNSyHVey4lEIvYuFCQkbN15+kEmaMOMh0VvcP3d8iCl1gHiKAcVfTmR6m8no0eUweJp9HCEKcJaxaB32j5ff37q/U7UKSqOdSfOZIBO0L80F5Gok+26pEq7lqUIYAyUEkGpl+SIZ6+RSLqUjtoqOT2O/GWrtBTbx/QPM2VB7PkyMbB+uTBafWVXQURWrg7EQwemU4T72DoVx3QsOVw+gnKOpffay3qTmwUzez8Tt2dvzN/4ubqQwCvAx3LR90XXfkenZaM9U39pERRMJ6ztzvc4Eqz9Jwx7fXO64pAmRE+z9HfPjDA==
-mail-alias-created-date: 1752046281608
-Received: from localhost.localdomain (unknown [17.156.192.29])
- by p00-icloudmta-asmtp-us-west-1a-100-percent-11 (Postfix) with ESMTPSA id
- 7E11118000A0; Fri, 04 Sep 2026 04:37:48 +0000 (UTC)
-From: Mohamed Mediouni <mohamed@unpredictable.fr>
-To: qemu-devel@nongnu.org
-Cc: Phil Dennis-Jordan <phil@philjordan.eu>,
- Roman Bolshakov <rbolshakov@ddn.com>, qemu-arm@nongnu.org,
- Peter Maydell <peter.maydell@linaro.org>, Alexander Graf <agraf@csgraf.de>,
- Mohamed Mediouni <mohamed@unpredictable.fr>
-Subject: [PATCH v2 2/5] hvf: arm: add experimental VHE toggle
-Date: Fri,  4 Sep 2026 06:37:39 +0200
-Message-ID: <20260904043742.96613-3-mohamed@unpredictable.fr>
-X-Mailer: git-send-email 2.54.0
-In-Reply-To: <20260904043742.96613-1-mohamed@unpredictable.fr>
-References: <20260904043742.96613-1-mohamed@unpredictable.fr>
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1x2M6T-0007DT-8i
+ for qemu-arm@nongnu.org; Fri, 04 Sep 2026 01:04:42 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1788498279;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding;
+ bh=cCdacCq6QsRmjb3l+VWOMfVzj71YyiKdxOOxp2IGfkE=;
+ b=AtCb7KXg8T3udhggYGULxua9zQZ6Zj6IDb8obTMEHMSomanMFfCj7haNCYLHu9cHT8qZOF
+ sGz7R2rJsVdRnoDPWOiISxFbsJX8QJ80D6/pWCaK8V34t1k3eDhLWjThIcb8Lq2ArGvuWh
+ xAnWTxQGdnH5m0aaxM0vIV1sH301hLg=
+Received: from mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
+ relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-694-V7KbA8veOp-_SR_mS47S5g-1; Fri,
+ 04 Sep 2026 01:04:35 -0400
+X-MC-Unique: V7KbA8veOp-_SR_mS47S5g-1
+X-Mimecast-MFC-AGG-ID: V7KbA8veOp-_SR_mS47S5g_1788498273
+Received: from mx-prod-int-10.mail-002.prod.us-west-2.aws.redhat.com
+ (mx-prod-int-10.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.95])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+ (No client certificate requested)
+ by mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id CF5BF1900A44; Fri,  4 Sep 2026 05:04:32 +0000 (UTC)
+Received: from corto.redhat.com (unknown [10.44.32.33])
+ by mx-prod-int-10.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
+ id D881A426; Fri,  4 Sep 2026 05:04:28 +0000 (UTC)
+From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>
+To: qemu-devel@nongnu.org,
+	qemu-arm@nongnu.org
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ Steven Lee <steven_lee@aspeedtech.com>, Troy Lee <leetroy@gmail.com>,
+ Jamin Lin <jamin_lin@aspeedtech.com>, kane_chen@aspeedtech.com,
+ Andrew Jeffery <andrew@codeconstruct.com.au>,
+ Joel Stanley <joel@jms.id.au>,
+ =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>
+Subject: [PATCH 0/2] hw/arm/aspeed: Add /machine/labels container
+Date: Fri,  4 Sep 2026 07:04:22 +0200
+Message-ID: <20260904050424.4049984-1-clg@redhat.com>
 MIME-Version: 1.0
+X-Scanned-By: MIMEDefang 3.6 on 10.30.177.95
+X-Mimecast-MFC-PROC-ID: dy-pyJJcoo_m9__J3GhgTwdt_eP3l3CjFjW4c17ue1s_1788498273
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwOTA0MDA0MSBTYWx0ZWRfXwOfI+WX6eDfy
- yMzQQCVTIqLchW6Ds/waB/EyHustEfwQg2cqgu/z9vDM5tIT2zF7HYbIUDsT3TKRPESxIuPx/P9
- ZptDOwaZCZsfyJ0vhxCd2XQiB+w/1XmD2d0QHgvl56aSy3GDOFx3sWW6NNwNPMAt+h9UTuzZjfK
- UCztBDXX8HTum39TJTucLQ56NEh2w09S7v5zFl9WbxKCvjcpAfX2aqyqWRQ9j3/UMh/mw277d0v
- tC/CGYvauKPEhN4GNk4/bX7+9P7Fupzx+/tBNPMQaGsJ/pgwDIMrZeJDH4l7thCitIR3ugKwlji
- dOQNd36M+7eobSSI3PJM6z0oBIYSKCLY4S/JD5HqKpyEpxx0dS2S87rPrWm+LM=
-X-Proofpoint-GUID: IaFef-evPMSch0NrjIm1t0n7ob0kczLF
-X-Proofpoint-ORIG-GUID: IaFef-evPMSch0NrjIm1t0n7ob0kczLF
-X-Authority-Info-Out: v=2.4 cv=EpHfbCcA c=1 sm=1 tr=0 ts=6a9a4b1e
- cx=c_apl:c_pps:t_out a=aW9mcIavGNWWFvFFKOxBSA==:117
- a=aW9mcIavGNWWFvFFKOxBSA==:17 a=VdqzKS8jKosA:10 a=VkNPw1HP01LnGYTKEx00:22
- a=Uy8BaTlr5CIEmbXmnWEA:9
-X-JNJ: AAAAAAABQQgngGqO7X78r1rbDi5jg/WjTgiQVtFc3DOYiY8pmjRcYyJdfH1KQTa7bB/r1CLaP08sBDXg3j2Kko7iIBmz8bSE+BdIPwTEJQ/rejocbiifLJeEbeuURQDp1dKOtAtLPrd8Ernq5xWndgk9YNMu5jgJ4jj/u1ye3JbtfLGghKBcYl2bDPKD6GsT9N0MIKg1BcwCkl06+oDPWI9J9kMV04hbeth0Ais/5OT7MrBw2Qf5H8yAJCZkJgn77S8qv6Titj1suY4ZLTt4TG3wutLFEAybpOEfRTzHZZXUn07R1a443tqoBglHMra8tph8tXdDEY/rT0HQyzT4Sk8NcnltncxcJfq/tofhfvfQQMyFvcyitr/wX2aKo5pKblLUBCl8TSWduxhxumYsk25LIWHfV3VHKud/hd+28f0X/bhy+qhBN01LXWs1KkO6d5FgVoeBN5qrRZ5lK2NvuEvm5W+T3gAcrfujipVj3eNMbUFMY+SzvYq26tfRWG6eZ2YzTdT2U9RZdl+In0NqY7buLoYKwjRJ3E+9hyIVwTwlfc2fDcp5BwMHk6fYi4LYaiMDdGQrCGD4ZtFNaQdyNn4g0K+Ok0L1yQoXFne7R1I1Gf4VW5jxhV8fGHSyXHRPFw6TqEl+6rz2+CixnjaHrvIdHpxo1m/DDcrz03GqlFUlb36hXj5icLrxp2z/NyBmZy7vmuEGgST3TDHfaSURcBG96RQEARdeJzyaUn7IOfc8tfc0aIsv6tJf+b7GcEnqo2eoydhF
-Received-SPF: pass client-ip=2a01:b747:3003:200::1f;
- envelope-from=mohamed@unpredictable.fr; helo=outbound.pv.icloud.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_PASS=-0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=clg@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: 12
+X-Spam_score: 1.2
+X-Spam_bar: +
+X-Spam_report: (1.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ RCVD_IN_SBL_CSS=3.335, SPF_HELO_PASS=-0.001,
+ SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -85,182 +87,33 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-macOS 27.0 ships with an experimental VHE enablement
-private API. Expose support for it as x-vhe.
+Hello,
 
-Signed-off-by: Mohamed Mediouni <mohamed@unpredictable.fr>
----
- accel/hvf/hvf-all.c      |  2 +
- include/system/hvf_int.h |  1 +
- target/arm/hvf/hvf.c     | 89 ++++++++++++++++++++++++++++++++++++++++
- target/i386/hvf/hvf.c    |  4 ++
- 4 files changed, 96 insertions(+)
+Patch 1 adds a DT-style /machine/labels container where board code
+registers link properties pointing to well-known devices. Tests can
+then resolve a device with a single qom-get instead of walking the bus
+hierarchy.
 
-diff --git a/accel/hvf/hvf-all.c b/accel/hvf/hvf-all.c
-index 8bd9154a50..bbff3c6867 100644
---- a/accel/hvf/hvf-all.c
-+++ b/accel/hvf/hvf-all.c
-@@ -282,6 +282,8 @@ static void hvf_accel_class_init(ObjectClass *oc, const void *data)
-         NULL, NULL);
-     object_class_property_set_description(oc, "kernel-irqchip",
-         "Configure HVF irqchip");
-+
-+    hvf_arch_accel_class_init(oc);
- }
- 
- static const TypeInfo hvf_accel_type = {
-diff --git a/include/system/hvf_int.h b/include/system/hvf_int.h
-index a01691ce17..44ae2e7c4c 100644
---- a/include/system/hvf_int.h
-+++ b/include/system/hvf_int.h
-@@ -110,5 +110,6 @@ int hvf_update_guest_debug(CPUState *cpu);
- bool hvf_arch_cpu_realize(CPUState *cpu, Error **errp);
- uint32_t hvf_arch_get_default_ipa_bit_size(void);
- uint32_t hvf_arch_get_max_ipa_bit_size(void);
-+void hvf_arch_accel_class_init(ObjectClass *oc);
- 
- #endif
-diff --git a/target/arm/hvf/hvf.c b/target/arm/hvf/hvf.c
-index f881d6cc67..b61554e108 100644
---- a/target/arm/hvf/hvf.c
-+++ b/target/arm/hvf/hvf.c
-@@ -22,6 +22,7 @@
- #include "cpu-sysregs.h"
- 
- #include <mach/mach_time.h>
-+#include <dlfcn.h>
- 
- #include "system/address-spaces.h"
- #include "system/memory.h"
-@@ -39,6 +40,7 @@
- #include "target/arm/trace.h"
- #include "trace.h"
- #include "migration/vmstate.h"
-+#include "migration/blocker.h"
- 
- #include "gdbstub/enums.h"
- 
-@@ -1132,6 +1134,60 @@ static void clamp_id_aa64mmfr0_parange_to_ipa_size(ARMISARegisters *isar)
-     SET_IDREG(isar, ID_AA64MMFR0, id_aa64mmfr0);
- }
- 
-+bool hvf_vhe;
-+
-+static void hvf_set_vhe(Object *obj, Visitor *v,
-+                                   const char *name, void *opaque,
-+                                   Error **errp)
-+{
-+    OnOffAuto mode;
-+
-+    if (!visit_type_OnOffAuto(v, name, &mode, errp)) {
-+        return;
-+    }
-+
-+    switch (mode) {
-+    case ON_OFF_AUTO_ON:
-+        if (__builtin_available(macOS 27.0, *)) {
-+            hvf_vhe = true;
-+        } else {
-+            error_report("VHE emulation not supported on this system.");
-+        }
-+        break;
-+
-+    case ON_OFF_AUTO_OFF:
-+        hvf_vhe = false;
-+        break;
-+
-+    case ON_OFF_AUTO_AUTO:
-+        /* Experimental feature as of macOS 27.0 */
-+        hvf_vhe = false;
-+        break;
-+    default:
-+        /*
-+         * The value was checked in visit_type_OnOffAuto() above. If
-+         * we get here, then something is wrong in QEMU.
-+         */
-+        abort();
-+    }
-+}
-+
-+static bool hvf_get_vhe(void)
-+{
-+    return hvf_vhe;
-+}
-+
-+void hvf_arch_accel_class_init(ObjectClass *oc)
-+{
-+    hvf_vhe = false;
-+
-+    object_class_property_add(oc, "x-vhe", "OnOffAuto",
-+        NULL, hvf_set_vhe,
-+        NULL, NULL);
-+    object_class_property_set_description(oc, "x-vhe",
-+        "Configure experimental VHE enablement");
-+}
-+
- static bool hvf_arm_get_host_cpu_features(ARMHostCPUFeatures *ahcf)
- {
-     ARMISARegisters host_isar = {};
-@@ -1227,6 +1283,9 @@ static bool hvf_arm_get_host_cpu_features(ARMHostCPUFeatures *ahcf)
-     if (hvf_nested_virt_enabled()) {
-         /* SME is not implemented with nested virt on the Apple side */
-         FIELD_DP64_IDREG(&host_isar, ID_AA64PFR1, SME, 0);
-+        if (hvf_get_vhe()) {
-+            FIELD_DP64_IDREG(&host_isar, ID_AA64MMFR1, VH, 0x1);
-+        }
-     }
- 
-     /*
-@@ -1357,6 +1416,36 @@ hv_return_t hvf_arch_vm_create(MachineState *ms, uint32_t pa_range)
-         }
-     }
- 
-+    if (hvf_get_vhe()) {
-+        Error *vhe_migration_blocker = NULL;
-+        Error* errp;
-+
-+        void* hvf = dlopen("/System/Library/Frameworks/Hypervisor.framework/Versions/A/Hypervisor", RTLD_LOCAL);
-+
-+        if (!hvf) {
-+            /* Unreachable. */
-+            error_report("Failed to dlopen() Hypervisor.framework.");
-+            goto cleanup;
-+        }
-+
-+        /* Experimental API: might change before release. */
-+        hv_return_t (*_hv_vm_config_set_vhe_enabled)(hv_vm_config_t cfg, bool vhe) = dlsym(hvf, "_hv_vm_config_set_vhe_enabled");
-+        if (!_hv_vm_config_set_vhe_enabled) {
-+            error_report("_hv_vm_config_set_vhe_enabled API not available.");
-+            goto cleanup;
-+        }
-+        _hv_vm_config_set_vhe_enabled(config, true);
-+
-+        error_setg(&vhe_migration_blocker,
-+        "Live migration disabled because VHE support is experimental");
-+        if (migrate_add_blocker(&vhe_migration_blocker, &errp)) {
-+            error_report("Failed to add migration blocker.");
-+            goto cleanup;
-+        }
-+
-+        dlclose(hvf);
-+    }
-+
-     ret = hv_vm_create(config);
-     if (hvf_irqchip_in_kernel()) {
-         if (__builtin_available(macOS 15.0, *)) {
-diff --git a/target/i386/hvf/hvf.c b/target/i386/hvf/hvf.c
-index 150598418e..5a39a82492 100644
---- a/target/i386/hvf/hvf.c
-+++ b/target/i386/hvf/hvf.c
-@@ -1068,3 +1068,7 @@ void hvf_arch_remove_all_gdbstub_hw_breakpoints(void)
- void hvf_arch_update_guest_debug(CPUState *cpu)
- {
- }
-+
-+void hvf_arch_accel_class_init(ObjectClass *oc)
-+{
-+}
+Patch 2 uses it to test the ADC128D818 on the Anacapa machine through
+the kernel hwmon interface.
+
+Thanks,
+
+C.
+
+Cédric Le Goater (1):
+  hw/arm: Add /machine/labels container for Aspeed machines
+
+Emmanuel Blot (1):
+  test/functional: anacapa: test ADC128D818
+
+ include/hw/arm/aspeed.h                     | 12 +++++
+ hw/arm/aspeed.c                             | 10 +++++
+ hw/arm/aspeed_ast2600_anacapa.c             | 11 +++--
+ tests/functional/arm/test_aspeed_anacapa.py | 50 +++++++++++++++++++++
+ 4 files changed, 79 insertions(+), 4 deletions(-)
+
 -- 
-2.54.0 (Apple Git-156)
+2.55.0
 
 

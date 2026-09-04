@@ -4,71 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 40460C624DE
-	for <qemu-arm@archiver.kernel.org>; Fri,  4 Sep 2026 12:54:36 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 02DA7C79F82
+	for <qemu-arm@archiver.kernel.org>; Fri,  4 Sep 2026 12:55:30 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1x2TQU-0001nl-1N; Fri, 04 Sep 2026 08:53:50 -0400
+	id 1x2TQE-0001ba-5S; Fri, 04 Sep 2026 08:53:34 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1x2TQR-0001lt-TH
- for qemu-arm@nongnu.org; Fri, 04 Sep 2026 08:53:47 -0400
-Received: from mail-wm1-x333.google.com ([2a00:1450:4864:20::333])
+ id 1x2TQD-0001ao-5Y
+ for qemu-arm@nongnu.org; Fri, 04 Sep 2026 08:53:33 -0400
+Received: from mail-wm1-x32e.google.com ([2a00:1450:4864:20::32e])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1x2TQO-0000lL-WB
- for qemu-arm@nongnu.org; Fri, 04 Sep 2026 08:53:47 -0400
-Received: by mail-wm1-x333.google.com with SMTP id
- 5b1f17b1804b1-49b8be0409fso6821015e9.2
- for <qemu-arm@nongnu.org>; Fri, 04 Sep 2026 05:53:44 -0700 (PDT)
+ id 1x2TQB-0000ff-4z
+ for qemu-arm@nongnu.org; Fri, 04 Sep 2026 08:53:32 -0400
+Received: by mail-wm1-x32e.google.com with SMTP id
+ 5b1f17b1804b1-490cf322ed0so10187725e9.1
+ for <qemu-arm@nongnu.org>; Fri, 04 Sep 2026 05:53:30 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1788526423; x=1789131223; darn=nongnu.org;
+ d=linaro.org; s=google; t=1788526410; x=1789131210; darn=nongnu.org;
  h=content-transfer-encoding:content-type:mime-version:references
  :in-reply-to:message-id:date:subject:cc:to:from:from:to:cc:subject
  :date:message-id:reply-to:content-type;
- bh=WBNqG4GybkncYnaDkTwXM8xIq45fyGnwWtOxupKElFs=;
- b=dOdf7tCLTZac4sB7e4ARjDE6ZYnmm2z/5pQPuj8UO4vRpnTMm9MPI2iy/EhYIPvO8t
- gTbVReZSpNOejs1bmUl8nlzoO3SWRU4ZOAgi3v3/4LNx/ZuX2pLTtnyIIy4oh/QchjCE
- qtuDxu53Epg3WZCY/eBJbc+Dmb/4FS4m1udLhd6KEp2wF9frwimyfL4eJvKe17u8IdC1
- N9i0hT++gNSdUk4Saby7s4DW/rWhwxmJQByj6i8/587AM5LSRaRBpewQVmXbhgBBkCCg
- iaMCufJTD48dh5qGf61OOQ7A7OM64vYLQl823BxVXJRmj5KYsdltRkrcY5GIXoqmPixd
- BvoQ==
+ bh=X65c4epXSG6oxrnDyVNWDxY1k67sZHLow79LP0SYYmQ=;
+ b=quxGsdxvTYnPBV+DDKrJEatPBo3ZAzEqO/8Te2xTsuejtYNGnyQjzjPJfpFd2E7eNC
+ U7NwvTr2a9TwGqlnGyoB2X8mCnJLDxStkLaecR48HR6kYQqT9ARFFUTuJOd/rc7VNvLZ
+ 4KSCXFe09awDn5LuAYED9MnqeXXI1jDzYaTr4jGEIlg4S/DMGkNirD48P56i586H91Rt
+ X7k7tCpNCsHx4FBt/V4ratIKe4MqmrJgIBH+dryXqwr+FjYPW4b82H74b0h/o9l1fiPm
+ w9DhJK2ewETXgAaGC7U3lsynW1ywlHy2vUFZxP81P3FKq+FsQ/OZApRlbgb8bkmOGPxm
+ rXtg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1788526423; x=1789131223;
+ d=1e100.net; s=20251104; t=1788526410; x=1789131210;
  h=content-transfer-encoding:content-type:mime-version:references
  :in-reply-to:message-id:date:subject:cc:to:from:x-gm-gg
  :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
  :content-type;
- bh=WBNqG4GybkncYnaDkTwXM8xIq45fyGnwWtOxupKElFs=;
- b=NV4ynSaCFIKJ6fefPj5H/q/zLjRv2/OGStM4CEXH+XKVyMHhMH6lHqmMoW0a5jm8oh
- jT6C2DpgJGcwNRorejeI746IPDdpyxlyBnWmwEF2+Pp7tURfkgPbesq8ZEIiY4pxsfP5
- stgG3YN5ArSWDJrJGMg5+vfDiPPkG8cXWvkBwakNHHXXku+L0LdZGW6WlpzytFEa1V3I
- lUF5maJsfMy55Hs4L9TGQveVQVSMaybvfbwKwuvjkEthPwUQPZtJq9IA6XpLVUx4YjLP
- AqN9caMvs0gdznjpiSWiB3rm+9yjT9e/bFG7Hha+6zwKmhRGNcmGSYajYpKrcOHPK/uX
- E9uw==
+ bh=X65c4epXSG6oxrnDyVNWDxY1k67sZHLow79LP0SYYmQ=;
+ b=QQk1vuqZ7NlXDaCTXdJGkJuopxz0iCcIU483IsiWlT4XJg/4SDAYhJdFFxZAbg4isQ
+ +WcK7HX9RleA9FoRiAZF047alenBHIdCaBKraacBsyPcWcAfMCYVAIA5W9+6eXLHqhyi
+ zuSRqNH20K4w4IV7xpRip9ItXFD5HaP+SMiyZ9M5TCSzGfZfZIJKC/ZtC9c22Ki1WSMr
+ 1Jw5x8WmKFzeOv3ysNuKabPwwRG2WK8NZnvkWHMdtrWGuLh0MJtAZR+4NojBCfHOUNZq
+ kik7WmK5xIsPFO2+f7HhDa0dM2zQ1QfhiSkeC6XG3IoJv0rh2qEbUNjOD5X7juLMl/Hn
+ Vwtw==
 X-Forwarded-Encrypted: i=1;
- AKwUvBz6b8qHwnBlQ3h4s1kDDN6M+VbWy8EkY6AmLW0G6++b99FtLK0CGBt+vSBuAzx13vLSLodjjmJfiQ==@nongnu.org
-X-Gm-Message-State: AFuF++leZy1rMNhERhy3utJEe54BStQ6exWcPYwMukYjrNgPVmsoKduo
- 0S+kRXFgOkU2GnZ01fZWgnSs1NAndHm4uDr09lCW2iTO1IyLRtQq939lQLucz+NCsUE=
-X-Gm-Gg: AYBFou0oIskwbLyKmmI76wi8iN745XgKhgI0OQo3Uu1k1Lq61t69P4fWxaJevJh05r4
- Zr8yr1FHUDCyrgogc0vrmK1ju5U0oJrD0+Btu50xX7txb7pIKWurS6ZjwFSMM1sOaq0XMLhovp3
- BBgi4D1oA4SjADRX6lYCV3n/0TTj34Ckj0lj0gEenf92aygCjN7i/YyzDXE99HOnq3JkVNI+RG9
- MsRAJXs+B4XEMRcdHV/0XCjH/1FjmMXB09GLnVUWPNN81OSlATDsYdrHmCCVi1/tm1oxeYrZhxc
- f4cBrY+bF0RuNwg4Yc5EDe0XSrWZYFuqMK+b4lwqO2n6MyXQYFSneTLP4R1gEAV+w0TGVNE95zS
- WM/keEXk7aTGz6cJje6j1I7wdPm/ArcLsg07Mb2Hny2jGVflXklkSBA8viOJGnuIFZWD9RUPgWs
- Cx4xuaNliH7KodYMpeacT9dik2PQUIkS3L+O6NMFiVwhERjuP2XoeJzi53exvJtnk0fQwQz8M=
-X-Received: by 2002:a05:600c:310d:b0:49c:dc14:d681 with SMTP id
- 5b1f17b1804b1-49cf81e5449mr61041005e9.3.1788526420223; 
- Fri, 04 Sep 2026 05:53:40 -0700 (PDT)
+ AKwUvBzgLFpItbF0H7l8dV5XQdP0GDuMDuu5JPADCtZ/2twVK9bnkjDe7wf8NaD9IgV32nZcmSYIdXSAyQ==@nongnu.org
+X-Gm-Message-State: AFuF++mqwNJIS9NwcMedU88bswQa+Tf4AClvplIDn/ZugR0G6H5DrZN0
+ XOmCjIg0BSo8kWm4AZOv8bSwZ2cjr+9czRSDJqfkQ0SzuJu5lK9QurxsdRiYkBNXn+A=
+X-Gm-Gg: AYBFou0v9UTBPFiDYJn7A1c3tXVkEDZmtUs0STL+cioIiCgK59V3cyOFhny9ckcEzyE
+ 85nztSgxp1pai5Tl6oddbyW2C6TPuO+C7zRTSaQ066jW+Lf5wfL82RIPTOxzW9hXmSAxHV+bF6k
+ lg3C6fyt9fG1na94imOnXeY5PLUwMxJ6Dm0oUj6ErU2T9m3BhFIEtBgsE3BZ/40L04TpQyR4yjq
+ 6uERMF3uCc6z8D7lVY5Ula6cIGhz8sHNdPlWA7RUCqfBwAPN0flVwZrS1BV63KwIfXJXcvQLVaG
+ JURcoy6v5nZScnLejK22NrH3orphXbvuTrabwJUPQdfe3nBgBKcPQ6sZIi8zWGxx7g1y2veSi3S
+ R6HOLs5111TFthbh0bw8eSREKTYYx5i2bHa9MvXTqlZsWv512eEFviAiWInV4QfJ7U5PbHeSscu
+ TKr7qYX+QOo01RJSHFfGeDDAukusrAW6LQtZqo/JhW/R/m3Heo2HLcF3VHOaWaQkJgz3Q+gP4o0
+ g==
+X-Received: by 2002:a05:600c:6098:b0:49c:fc6c:be05 with SMTP id
+ 5b1f17b1804b1-49cfc6cbfdbmr33699315e9.28.1788526409508; 
+ Fri, 04 Sep 2026 05:53:29 -0700 (PDT)
 Received: from draig.lan ([185.124.0.156]) by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-49cf755c22esm68796225e9.0.2026.09.04.05.53.31
+ 5b1f17b1804b1-49cfbdacc45sm42034575e9.11.2026.09.04.05.53.25
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 04 Sep 2026 05:53:36 -0700 (PDT)
+ Fri, 04 Sep 2026 05:53:26 -0700 (PDT)
 Received: from draig.lan (localhost [IPv6:::1])
- by draig.lan (Postfix) with ESMTP id 3FD30618D2;
- Fri, 04 Sep 2026 13:46:08 +0100 (BST)
+ by draig.lan (Postfix) with ESMTP id 29CA961971;
+ Fri, 04 Sep 2026 13:46:09 +0100 (BST)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>,
@@ -76,24 +77,24 @@ Cc: Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>,
  =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
  Peter Maydell <peter.maydell@linaro.org>,
  qemu-arm@nongnu.org (open list:ARM TCG CPUs)
-Subject: [PULL 040/105] tests/tcg/aarch64: user tests
-Date: Fri,  4 Sep 2026 13:44:54 +0100
-Message-ID: <20260904124604.2207440-41-alex.bennee@linaro.org>
+Subject: [PULL 048/105] tests/tcg/arm: system tests
+Date: Fri,  4 Sep 2026 13:45:02 +0100
+Message-ID: <20260904124604.2207440-49-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.47.3
 In-Reply-To: <20260904124604.2207440-1-alex.bennee@linaro.org>
 References: <20260904124604.2207440-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::333;
- envelope-from=alex.bennee@linaro.org; helo=mail-wm1-x333.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::32e;
+ envelope-from=alex.bennee@linaro.org; helo=mail-wm1-x32e.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -113,454 +114,184 @@ From: Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>
 
 Tested-by: Aniket Sahu <asahu1x@linux.ibm.com>
 Signed-off-by: Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>
-Message-ID: <20260827221506.91574-41-pierrick.bouvier@oss.qualcomm.com>
+Message-ID: <20260827221506.91574-49-pierrick.bouvier@oss.qualcomm.com>
+[AJB: fix merge conflict]
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
 
-diff --git a/tests/tcg/aarch64/Makefile.target b/tests/tcg/aarch64/Makefile.target
+diff --git a/tests/tcg/arm/Makefile.softmmu-target b/tests/tcg/arm/Makefile.softmmu-target
 deleted file mode 100644
-index 6cc81bf854f..00000000000
---- a/tests/tcg/aarch64/Makefile.target
+index 3e8a9b4073e..00000000000
+--- a/tests/tcg/arm/Makefile.softmmu-target
 +++ /dev/null
-@@ -1,211 +0,0 @@
+@@ -1,80 +0,0 @@
 -# -*- Mode: makefile -*-
 -#
--# AArch64 specific tweaks
+-# ARM SoftMMU tests - included from tests/tcg/Makefile
+-#
 -
--ARM_SRC=$(SRC_PATH)/tests/tcg/arm
+-ARM_SRC=$(SRC_PATH)/tests/tcg/arm/system
+-
+-# Set search path for all sources
 -VPATH 		+= $(ARM_SRC)
 -
--AARCH64_SRC=$(SRC_PATH)/tests/tcg/aarch64
--VPATH 		+= $(AARCH64_SRC)
+-# Specific Test Rules
 -
--# Base architecture tests
--AARCH64_TESTS=fcvt pcalign-a64 lse2-fault
--AARCH64_TESTS += test-2248 test-2150
+-test-armv6m-undef: test-armv6m-undef.S
+-	$(CC) -mcpu=cortex-m0 -mfloat-abi=soft \
+-		-Wl,--build-id=none -x assembler-with-cpp \
+-		$< -o $@ -nostdlib -static \
+-		-T $(ARM_SRC)/$@.ld
 -
--fcvt: LDFLAGS+=-lm
+-run-test-armv6m-undef: QEMU_OPTS=-semihosting-config enable=on,target=native,chardev=output -M microbit -kernel
 -
--run-fcvt: fcvt
--	$(call run-test,$<,$(QEMU) $<)
--	$(call diff-out,$<,$(AARCH64_SRC)/fcvt.ref)
+-ARM_TESTS+=test-armv6m-undef
 -
--config-cc.mak: Makefile
--	$(quiet-@)( \
--	    fnia=`$(call cc-test,-fno-integrated-as) && echo -fno-integrated-as`; \
--	    $(call cc-option,-march=armv8.1-a+sve,          CROSS_CC_HAS_SVE); \
--	    $(call cc-option,-march=armv8.1-a+sve2,         CROSS_CC_HAS_SVE2); \
--	    $(call cc-option,-march=armv8.2-a,              CROSS_CC_HAS_ARMV8_2); \
--	    $(call cc-option,-march=armv8.3-a,              CROSS_CC_HAS_ARMV8_3); \
--	    $(call cc-option,-march=armv8.5-a,              CROSS_CC_HAS_ARMV8_5); \
--	    $(call cc-option,-mbranch-protection=standard,  CROSS_CC_HAS_ARMV8_BTI); \
--	    $(call cc-option,-march=armv8.5-a+memtag,       CROSS_CC_HAS_ARMV8_MTE); \
--	    $(call cc-option,-Wa$(COMMA)-march=armv9-a+sme $$fnia, CROSS_AS_HAS_ARMV9_SME); \
--	    $(call cc-option,-march=armv9-a+fprcvt,         CROSS_CC_HAS_ARMV9_FPRCVT)) 3> config-cc.mak
---include config-cc.mak
+-# These objects provide the basic boot code and helper functions for all tests
+-CRT_OBJS=boot.o
 -
--ifneq ($(CROSS_CC_HAS_ARMV9_FPRCVT),)
--AARCH64_TESTS += fcvt-fprcvt
--fcvt-fprcvt: LDFLAGS += -lm
--fcvt-fprcvt: CFLAGS += $(CROSS_CC_HAS_ARMV9_FPRCVT) -DFPRCVT
--fcvt-fprcvt: fcvt.c
--	$(CC) $(CFLAGS) $(EXTRA_CFLAGS) $< -o $@ $(LDFLAGS)
--run-fcvt-fprcvt: fcvt-fprcvt
--	$(call run-test,$<,$(QEMU) $<)
--	$(call diff-out,$<,$(AARCH64_SRC)/fcvt.ref)
--endif
+-ARM_TEST_SRCS=$(wildcard $(ARM_SRC)/*.c)
+-ARM_TESTS+=$(patsubst $(ARM_SRC)/%.c, %, $(ARM_TEST_SRCS))
 -
--ifneq ($(CROSS_CC_HAS_ARMV8_2),)
--AARCH64_TESTS += dcpop
--dcpop: CFLAGS += $(CROSS_CC_HAS_ARMV8_2)
--endif
--ifneq ($(CROSS_CC_HAS_ARMV8_5),)
--AARCH64_TESTS += dcpodp
--dcpodp: CFLAGS += $(CROSS_CC_HAS_ARMV8_5)
--endif
+-CRT_PATH=$(ARM_SRC)
+-LINK_SCRIPT=$(ARM_SRC)/kernel.ld
+-LDFLAGS=-Wl,-T$(LINK_SCRIPT)
+-CFLAGS+=-march=armv7-a+fp -ffreestanding -nostdlib -ggdb -O0 $(MINILIB_INC)
+-LDFLAGS+=-static -nostdlib $(CRT_OBJS) $(MINILIB_OBJS) -lgcc
 -
--# Pauth Tests
--ifneq ($(CROSS_CC_HAS_ARMV8_3),)
--AARCH64_TESTS += pauth-1 pauth-2 pauth-4 pauth-5 test-2375
--pauth-%: CFLAGS += $(CROSS_CC_HAS_ARMV8_3)
--test-2375: CFLAGS += -march=armv8.3-a
--run-pauth-1: QEMU_OPTS += -cpu max
--run-pauth-2: QEMU_OPTS += -cpu max
--# Choose a cpu with FEAT_Pauth but without FEAT_FPAC for pauth-[45].
--run-pauth-4: QEMU_OPTS += -cpu neoverse-v1
--run-pauth-5: QEMU_OPTS += -cpu neoverse-v1
--endif
+-# building head blobs
+-.PRECIOUS: $(CRT_OBJS)
 -
--# BTI Tests
--# bti-1 tests the elf notes, so we require special compiler support.
--ifneq ($(CROSS_CC_HAS_ARMV8_BTI),)
--AARCH64_TESTS += bti-1 bti-3
--bti-1 bti-3: CFLAGS += -fno-stack-protector $(CROSS_CC_HAS_ARMV8_BTI)
--bti-1 bti-3: LDFLAGS += -nostdlib
--endif
--# bti-2 tests PROT_BTI, so no special compiler support required.
--AARCH64_TESTS += bti-2
+-%.o: $(ARM_SRC)/%.S
+-	$(CC) $(CFLAGS) $(EXTRA_CFLAGS) -x assembler-with-cpp -Wa,--noexecstack -c $< -o $@
 -
--# MTE Tests
--ifneq ($(CROSS_CC_HAS_ARMV8_MTE),)
--AARCH64_TESTS += mte-1 mte-2 mte-3 mte-4 mte-5 mte-6 mte-7 mte-8 mte-9 mte-10
--mte-%: CFLAGS += $(CROSS_CC_HAS_ARMV8_MTE)
--endif
--
--# SME Tests
--ifneq ($(CROSS_AS_HAS_ARMV9_SME),)
--SME_TESTS = sme-outprod1 sme-smopa-1 sme-smopa-2 sme-fmopa-1 sme-fmopa-2 sme-fmopa-3
--AARCH64_TESTS += $(SME_TESTS)
--$(SME_TESTS): CFLAGS += $(CROSS_AS_HAS_ARMV9_SME)
--endif
--
--# GCS Tests
--GCS_TESTS += gcsstr gcspushm gcsss
--AARCH64_TESTS += $(GCS_TESTS)
--$(GCS_TESTS): gcs.h
--
--# System Registers Tests
--AARCH64_TESTS += sysregs
--
--AARCH64_TESTS += test-aes
--test-aes: CFLAGS += -O -march=armv8-a+aes
--test-aes: test-aes-main.c.inc
--
--# Vector SHA1
--# Work around compiler false-positive warning, as we do for the 'sha1' test
--sha1-vector: CFLAGS=-O3 -Wno-stringop-overread
--sha1-vector: sha1.c
--	$(CC) $(CFLAGS) $(EXTRA_CFLAGS) $< -o $@ $(LDFLAGS)
--run-sha1-vector: sha1-vector run-sha1
--	$(call run-test, $<, $(QEMU) $(QEMU_OPTS) $<)
--	$(call diff-out, sha1-vector, sha1.out)
--
--TESTS += sha1-vector
--
--# Vector versions of sha512 (-O3 triggers vectorisation)
--sha512-vector: CFLAGS=-O3
--sha512-vector: sha512.c
+-# Build and link the tests
+-%: %.c $(LINK_SCRIPT) $(CRT_OBJS) $(MINILIB_OBJS)
 -	$(CC) $(CFLAGS) $(EXTRA_CFLAGS) $< -o $@ $(LDFLAGS)
 -
--TESTS += sha512-vector
+-memory: CFLAGS+=-DCHECK_UNALIGNED=0
 -
--ifneq ($(CROSS_CC_HAS_SVE),)
--# SVE ioctl test
--AARCH64_TESTS += sve-ioctls
--sve-ioctls: CFLAGS += $(CROSS_CC_HAS_SVE)
+-# Running
+-QEMU_BASE_MACHINE=-M virt -cpu max -display none
+-QEMU_OPTS+=$(QEMU_BASE_MACHINE) -semihosting-config enable=on,target=native,chardev=output -kernel
 -
--sha512-sve: CFLAGS=-O3 -march=armv8.1-a+sve
--sha512-sve: sha512.c
--	$(CC) $(CFLAGS) $(EXTRA_CFLAGS) $< -o $@ $(LDFLAGS)
+-# console test is manual only
+-QEMU_SEMIHOST=-serial none -chardev stdio,mux=on,id=stdio0 -semihosting-config enable=on,chardev=stdio0 -mon chardev=stdio0,mode=readline
+-run-semiconsole: QEMU_OPTS=$(QEMU_BASE_MACHINE) $(QEMU_SEMIHOST)  -kernel
+-run-semiconsole: semiconsole
+-	$(call skip-test, $<, "MANUAL ONLY")
+-	$(if $(V),@printf "  %-7s %s %s\n" "TO RUN" $(notdir $(QEMU)) "$(QEMU_OPTS) $<")
+-run-plugin-semiconsole-with-%: semiconsole
+-	$(call skip-test, $<, "MANUAL ONLY")
 -
--sve-str: CFLAGS=-O1 -march=armv8.1-a+sve
--sve-str: sve-str.c
--	$(CC) $(CFLAGS) $(EXTRA_CFLAGS) $< -o $@ $(LDFLAGS)
+-# Simple Record/Replay Test
+-.PHONY: memory-record
+-run-memory-record: memory-record memory
+-	$(call run-test, $<, \
+-	  $(QEMU) -monitor none -display none \
+-		  -chardev file$(COMMA)path=$<.out$(COMMA)id=output \
+-		  -icount shift=5$(COMMA)rr=record$(COMMA)rrfile=record.bin \
+-		  $(QEMU_OPTS) memory)
 -
--TESTS += sha512-sve sve-str
+-.PHONY: memory-replay
+-run-memory-replay: memory-replay run-memory-record
+-	$(call run-test, $<, \
+-	  $(QEMU) -monitor none -display none \
+-		  -chardev file$(COMMA)path=$<.out$(COMMA)id=output \
+-		  -icount shift=5$(COMMA)rr=replay$(COMMA)rrfile=record.bin \
+-		  $(QEMU_OPTS) memory)
 -
--ifneq ($(GDB),)
--GDB_SCRIPT=$(SRC_PATH)/tests/guest-debug/run-test.py
+-EXTRA_RUNS+=run-memory-replay
 -
--run-gdbstub-sysregs: sysregs
--	$(call run-test, $@, $(GDB_SCRIPT) \
--		--gdb $(GDB) \
--		--qemu $(QEMU) --qargs "$(QEMU_OPTS)" \
--		--bin $< --test $(AARCH64_SRC)/gdbstub/test-sve.py, \
--	basic gdbstub SVE support)
--
--run-gdbstub-sve-ioctls: sve-ioctls
--	$(call run-test, $@, $(GDB_SCRIPT) \
--		--gdb $(GDB) \
--		--qemu $(QEMU) --qargs "$(QEMU_OPTS)" \
--		--bin $< --test $(AARCH64_SRC)/gdbstub/test-sve-ioctl.py, \
--	basic gdbstub SVE ZLEN support)
--
--EXTRA_RUNS += run-gdbstub-sysregs run-gdbstub-sve-ioctls
--
--ifneq ($(CROSS_AS_HAS_ARMV9_SME),)
--# SME gdbstub tests
--
--run-gdbstub-sysregs-sme: sysregs
--	$(call run-test, $@, $(GDB_SCRIPT) \
--		--gdb $(GDB) \
--		--qemu $(QEMU) --qargs "$(QEMU_OPTS)" \
--		--bin $< --test $(AARCH64_SRC)/gdbstub/test-sme.py \
--		-- test_sme --gdb_basic_za_test, \
--	basic gdbstub SME support)
--
--ifeq ($(GDB_HAS_SME_TILES),y)
--run-gdbstub-sysregs-sme-tile-slice: sysregs
--	$(call run-test, $@, $(GDB_SCRIPT) \
--		--gdb $(GDB) \
--		--qemu $(QEMU) --qargs "$(QEMU_OPTS)" \
--		--bin $< --test $(AARCH64_SRC)/gdbstub/test-sme.py \
--		-- test_sme --gdb_tile_slice_test, \
--	gdbstub SME ZA tile slice support)
--else
--run-gdbstub-sysregs-sme-tile-slice: sysregs
--	$(call skip-test,"gdbstub SME ZA tile slice support", \
--	"selected gdb ($(GDB)) does not support SME ZA tile slices")
--endif
--
--run-gdbstub-sysregs-sme2: sysregs
--	$(call run-test, $@, $(GDB_SCRIPT) \
--		--gdb $(GDB) \
--		--qemu $(QEMU) --qargs "$(QEMU_OPTS)" \
--		--bin $< --test $(AARCH64_SRC)/gdbstub/test-sme2.py, \
--	gdbstub SME ZA tile slice support)
--
--EXTRA_RUNS += run-gdbstub-sysregs-sme run-gdbstub-sysregs-sme-tile-slice run-gdbstub-sysregs-sme2
--
--endif
--
--ifeq ($(GDB_HAS_MTE),y)
--run-gdbstub-mte: mte-8
--	$(call run-test, $@, $(GDB_SCRIPT) \
--		--gdb $(GDB) \
--		--qemu $(QEMU) --qargs "$(QEMU_OPTS)" \
--		--bin $< --test $(AARCH64_SRC)/gdbstub/test-mte.py \
--		-- --mode=user, \
--	gdbstub MTE support)
--
--EXTRA_RUNS += run-gdbstub-mte
--endif
--
--endif
--endif
--
--ifneq ($(CROSS_CC_HAS_SVE2),)
--SVE2_TESTS = test-826 sve-while-ptr
--$(SVE2_TESTS): CFLAGS += $(CROSS_CC_HAS_SVE2)
--AARCH64_TESTS += $(SVE2_TESTS)
--endif
--
--TESTS += $(AARCH64_TESTS)
-diff --git a/tests/tcg/aarch64/meson.build b/tests/tcg/aarch64/meson.build
+-TESTS += $(ARM_TESTS) $(MULTIARCH_TESTS)
+-EXTRA_RUNS+=$(MULTIARCH_RUNS)
+diff --git a/tests/tcg/arm/meson.build b/tests/tcg/arm/meson.build
+index 08a863699fb..1b491cea026 100644
+--- a/tests/tcg/arm/meson.build
++++ b/tests/tcg/arm/meson.build
+@@ -2,6 +2,8 @@ cc = 'arm-linux-gnueabihf-gcc'
+ cc_dockerfile = 'debian-all-test-cross'
+ cc_docker_host_arch = ['aarch64', 'x86_64']
+ 
++subdir('system')
++
+ tests = []
+ 
+ # Multi arch tests
+diff --git a/tests/tcg/arm/system/meson.build b/tests/tcg/arm/system/meson.build
 new file mode 100644
-index 00000000000..9ec8df169d5
+index 00000000000..4c77b9c3d62
 --- /dev/null
-+++ b/tests/tcg/aarch64/meson.build
-@@ -0,0 +1,208 @@
-+cc = 'aarch64-linux-gnu-gcc'
-+cc_dockerfile = 'debian-all-test-cross'
-+cc_docker_host_arch = ['aarch64', 'x86_64']
-+
-+cc_feat_cflags = {
-+  'aes': '-march=armv8-a+aes',
-+  'sve': '-march=armv8.1-a+sve',
-+  'sve2': '-march=armv8.1-a+sve2',
-+  'v8.2': '-march=armv8.2-a',
-+  'v8.3': '-march=armv8.3-a',
-+  'v8.5': '-march=armv8.5-a',
-+  'bti':  '-mbranch-protection=standard',
-+  'mte':  '-march=armv8.5-a+memtag',
-+  'sme':  '-Wa,-march=armv9-a+sme',
-+  'fprcvt': '-march=armv9-a+fprcvt',
-+}
-+
-+gdb_feat_version = {
-+  'sme-tiles': '14.1',
-+  'mte': '15.1',
-+  'mte-baremetal': '16.0',
-+}
-+
++++ b/tests/tcg/arm/system/meson.build
+@@ -0,0 +1,69 @@
 +tests = []
 +
++minilib_dir = meson.current_source_dir() / '..' / '..' / 'minilib'
++minilib_printf = files(minilib_dir / 'printf.c')[0]
++link_script = files('kernel.ld')[0]
++boot = files('boot.S')[0]
++cflags = ['-nostdlib',
++          '-ffreestanding',
++          '-Wa,--noexecstack',
++          '-I', minilib_dir, minilib_printf, boot,
++          '-Wl,-T', link_script,
++          '-march=armv7-a+fp',
++          '-lgcc']
++qemu_base_args = ['-display', 'none',
++                  '-semihosting-config', 'enable=on',
++                  '-kernel']
++qemu_def_args = ['-M', 'virt', '-cpu', 'max', qemu_base_args]
++
 +# Multi arch tests
-+tests += tcg_tests['multiarch-linux-user']['tests']
++multi_src = []
++foreach t: tcg_tests['multiarch-softmmu']['tests']
++  foreach src, setup: t
++    new_cflags = cflags
++    if fs.stem(src) == 'memory'
++      new_cflags += '-DCHECK_UNALIGNED=0'
++    endif
++    if src not in multi_src
++      setup += {'cflags': [new_cflags]}
++      multi_src += src
++    endif
++    tests += {src: setup + {'qemu_args': qemu_def_args}}
++  endforeach
++endforeach
 +
-+# Base architecture tests
 +tests += {
-+  '../arm/fcvt.c': {'cflags': '-lm', 'expected_output': 'fcvt.ref'},
-+  'pcalign-a64.c': {},
-+  'lse2-fault.c': {},
-+  'test-2248.c': {},
-+  'test-2150.c': {},
-+}
-+
-+tests += {'dcpop.c': {'cc_feat': 'v8.2'}}
-+tests += {'dcpodp.c': {'cc_feat': 'v8.5'}}
-+
-+# Pauth Tests
-+cpu_max = ['-cpu', 'max']
-+cpu_neoverse = ['-cpu', 'neoverse-v1']
-+tests += {
-+  'test-2375.c': {'cc_feat': 'v8.3'},
-+  'pauth-1.c': {'cc_feat': 'v8.3', 'qemu_args': cpu_max},
-+  'pauth-2.c': {'cc_feat': 'v8.3', 'qemu_args': cpu_max},
-+  # Choose a cpu with FEAT_Pauth but without FEAT_FPAC for pauth-[45].
-+  'pauth-4.c': {'cc_feat': 'v8.3', 'qemu_args': cpu_neoverse},
-+  'pauth-5.c': {'cc_feat': 'v8.3', 'qemu_args': cpu_neoverse},
-+}
-+
-+# BTI Tests
-+# bti-1 tests the elf notes, so we require special compiler support.
-+f = ['-fno-stack-protector', '-nostdlib']
-+tests += {
-+  'bti-1.c': {'cc_feat': 'bti', 'cflags': f},
-+  'bti-3.c': {'cc_feat': 'bti', 'cflags': f},
-+}
-+# bti-2 tests PROT_BTI, so no special compiler support required.
-+tests += {'bti-2.c': {}}
-+
-+# MTE Tests
-+tests += {
-+  'mte-1.c': {'cc_feat': 'mte'},
-+  'mte-2.c': {'cc_feat': 'mte'},
-+  'mte-3.c': {'cc_feat': 'mte'},
-+  'mte-4.c': {'cc_feat': 'mte'},
-+  'mte-5.c': {'cc_feat': 'mte'},
-+  'mte-6.c': {'cc_feat': 'mte'},
-+  'mte-7.c': {'cc_feat': 'mte'},
-+  'mte-8.c': {'cc_feat': 'mte'},
-+  'mte-9.c': {'cc_feat': 'mte'},
-+  'mte-10.c': {'cc_feat': 'mte'},
-+}
-+tests += {
-+  'mte-8.c': {
-+    'gdb_test': ['--test', files('gdbstub/test-mte.py'), '--', '--mode=user'],
-+    'gdb_feat': 'mte',
-+  }
-+}
-+
-+# SME Tests
-+tests += {
-+  'sme-outprod1.c': {'cc_feat': 'sme'},
-+  'sme-smopa-1.c': {'cc_feat': 'sme'},
-+  'sme-smopa-2.c': {'cc_feat': 'sme'},
-+  'sme-fmopa-1.c': {'cc_feat': 'sme'},
-+  'sme-fmopa-2.c': {'cc_feat': 'sme'},
-+  'sme-fmopa-3.c': {'cc_feat': 'sme'},
-+}
-+sysregs_sme = 'sysregs-sme'
-+tests += {
-+  'sysregs.c': {
-+    'exe_name': sysregs_sme,
-+    'cc_feat': 'sme',
-+    'gdb_test': ['--test', files('gdbstub/test-sme.py'), '--',
-+                 'test_sme', '--gdb_basic_za_test'],
-+  }
-+}
-+tests += {
-+  'sysregs.c': {
-+    'test_name': 'sysregs-sme-tile-slice',
-+    'exe_name': sysregs_sme,
-+    'gdb_test': ['--test', files('gdbstub/test-sme.py'), '--',
-+                 'test_sme', '--gdb_tile_slice_test'],
-+    'gdb_feat': 'sme-tiles',
-+  }
-+}
-+tests += {
-+  'sysregs.c': {
-+    'test_name': 'sysregs-sme2',
-+    'exe_name': sysregs_sme,
-+    'gdb_test': ['--test', files('gdbstub/test-sme2.py')],
-+  }
-+}
-+
-+# GCS Tests
-+tests += {
-+  'gcsstr.c': {},
-+  'gcspushm.c': {},
-+  'gcsss.c': {},
-+}
-+
-+# System Registers Tests
-+tests += {'sysregs.c': {}}
-+
-+# Crypto Tests
-+tests += {'test-aes.c': {'cc_feat': 'aes'}}
-+
-+# Vector SHA1
-+# Work around compiler false-positive warning, as we do for the 'sha1' test
-+tests += {'../multiarch/sha1.c': {
-+            'exe_name': 'sha1-vector',
-+            'cflags': ['-O3', '-Wno-stringop-overread'],
-+            'expected_output': '../multiarch/sha1.ref',
-+         }}
-+
-+# Vector versions of sha512 (-O3 triggers vectorisation)
-+tests += {'../multiarch/sha512.c': {
-+            'exe_name': 'sha512-vector',
-+            'cflags': ['-O3'],
-+         }}
-+
-+# SVE Tests
-+tests += {
-+  'sve-ioctls.c': {'cc_feat': 'sve'},
-+  '../multiarch/sha512.c': {
-+     'exe_name': 'sha512-sve',
-+     'cc_feat': 'sve',
++  'test-armv6m-undef.S': {
++    'cflags': ['-mcpu=cortex-m0', '-mfloat-abi=soft', '-nostdlib',
++               '-Wl,--build-id=none',
++               '-T', files('test-armv6m-undef.ld')],
++    'qemu_args': ['-M', 'microbit', qemu_base_args],
 +  },
-+  'sve-str.c': {'cc_feat': 'sve', 'cflags': ['-O1']},
-+}
-+tests += {
-+  'sysregs.c': {
-+    'exe_name': 'sysregs-sve',
-+    'cc_feat': 'sve',
-+    'gdb_test': ['--test', files('gdbstub/test-sve.py')],
++  'semiconsole.c': {
++    'cflags': cflags,
++    'qemu_args': ['-serial', 'none', '-chardev', 'stdio,mux=on,id=stdio0',
++                  '-semihosting-config', 'enable=on,chardev=stdio0',
++                  '-mon', 'chardev=stdio0,mode=readline',
++                  qemu_def_args],
++    'wrapper': [prog_run_with_input, 'X']
 +  },
-+  'sve-ioctls.c': {
-+    'gdb_test': ['--test', files('gdbstub/test-sve-ioctl.py')],
++  '../../multiarch/system/memory.c': {
++    'test_name': 'memory-record-replay',
++    'qemu_args': qemu_def_args,
++    'wrapper': [prog_record_replay],
 +  },
 +}
 +
-+# SVE2 Tests
-+tests += {
-+  'test-826.c': {'cc_feat': 'sve2'},
-+  'sve-while-ptr.c': {'cc_feat': 'sve2'},
-+}
-+
-+# FPRCVT test
-+tests += {
-+  '../arm/fcvt.c': {
-+    'exe_name': 'fcvt-fprcvt',
-+    'cflags': ['-DFPRCVT', '-lm'],
-+    # fprcvt is available only from gcc-16.
-+    # Use raw opcode until it's available in cross container.
-+    # 'cc_feat': 'fprcvt',
-+    'expected_output': 'fcvt.ref'},
-+}
-+
-+# Semihosting tests
-+# Add -I path for semicall.h
-+semihosting_cflags = ['-I', meson.current_source_dir()]
-+
-+tests += {
-+  '../multiarch/arm-compat-semi/semiconsole.c': {
-+    'cflags': semihosting_cflags,
-+    'wrapper': [prog_run_with_input, 'X'],
-+  },
-+  '../multiarch/arm-compat-semi/semihosting.c': {'cflags': semihosting_cflags},
-+}
-+
-+if 'qemu-aarch64' in emulators
++if 'qemu-system-arm' in emulators
 +  tcg_tests += {
-+    'aarch64-linux-user': {
++    'arm-softmmu': {
 +      'cc': cc,
 +      'cc_dockerfile': cc_dockerfile,
 +      'cc_docker_host_arch': cc_docker_host_arch,
-+      'cc_feat_cflags': cc_feat_cflags,
-+      'folder': 'aarch64',
-+      'gdb_arch': 'aarch64',
-+      'gdb_feat_version': gdb_feat_version,
-+      'qemu': emulators['qemu-aarch64'],
++      'folder': 'arm/system',
++      'gdb_arch': 'arm',
++      'qemu': emulators['qemu-system-arm'],
 +      'tests': tests,
 +    }
 +  }
 +endif
-diff --git a/tests/tcg/meson.build b/tests/tcg/meson.build
-index 16292d4d7b0..76d7dbe045b 100644
---- a/tests/tcg/meson.build
-+++ b/tests/tcg/meson.build
-@@ -135,6 +135,9 @@ foreach target: ['multiarch-linux-user', 'multiarch-softmmu']
-   tcg_tests += {target: {'tests': tests + plugin_tests}}
- endforeach
- 
-+# Now let's go through all architectures
-+subdir('aarch64')
-+
- image_targets = {}
- exe_targets = []
- # Finally, we can create all test executables and test targets
 -- 
 2.47.3
 

@@ -4,96 +4,98 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 36849C79F87
-	for <qemu-arm@archiver.kernel.org>; Fri,  4 Sep 2026 12:46:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9A3C3C61DD6
+	for <qemu-arm@archiver.kernel.org>; Fri,  4 Sep 2026 12:48:07 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1x2TJN-0006Bz-AS; Fri, 04 Sep 2026 08:46:29 -0400
+	id 1x2TJO-0006CQ-M8; Fri, 04 Sep 2026 08:46:30 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1x2TJJ-00069P-5C
- for qemu-arm@nongnu.org; Fri, 04 Sep 2026 08:46:25 -0400
-Received: from mail-wr1-x431.google.com ([2a00:1450:4864:20::431])
+ id 1x2TJK-0006Ap-HL
+ for qemu-arm@nongnu.org; Fri, 04 Sep 2026 08:46:26 -0400
+Received: from mail-wr1-x42d.google.com ([2a00:1450:4864:20::42d])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1x2TJE-0006rB-Ue
- for qemu-arm@nongnu.org; Fri, 04 Sep 2026 08:46:24 -0400
-Received: by mail-wr1-x431.google.com with SMTP id
- ffacd0b85a97d-4843e9c5960so976918f8f.0
- for <qemu-arm@nongnu.org>; Fri, 04 Sep 2026 05:46:19 -0700 (PDT)
+ id 1x2TJH-0006tK-2Q
+ for qemu-arm@nongnu.org; Fri, 04 Sep 2026 08:46:26 -0400
+Received: by mail-wr1-x42d.google.com with SMTP id
+ ffacd0b85a97d-47de0093c42so826565f8f.3
+ for <qemu-arm@nongnu.org>; Fri, 04 Sep 2026 05:46:22 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1788525979; x=1789130779; darn=nongnu.org;
+ d=linaro.org; s=google; t=1788525981; x=1789130781; darn=nongnu.org;
  h=content-transfer-encoding:content-type:mime-version:references
  :in-reply-to:message-id:date:subject:cc:to:from:from:to:cc:subject
  :date:message-id:reply-to:content-type;
- bh=g5//nCM3pmvphFdrXdMpuw8XsMrA3mZsffpPB3jrr14=;
- b=H+4gA4W9QErtVPR1BZuVe8G4qm4gv8nDf6B0wu+dXBGQl2vaWWZ7fyBC3O7b7qqKL4
- mMEDkRQYxBE5qYNztJxvWYXzcChNpnYeT1T62/KDTAhHLHdd4aDTzuw6UPe37911dqaO
- tUmAajDMWrnUAlDZtevi794bS/yb6UCxt2mL5kgFKGdsfdi+Umce+aC/n2kdxxh26Bfc
- USwAAgM9BaZC1LbKmFqHro6ns4KRmgL+h5N1xqxTcjGrV7tPtlONeEKRhdDrc/gCpYze
- mzAi6htYTBNhhg0g6rlXKYx9Zsi5K9Dk7p2ac+I8/aIgfplSfaKA1pqCQ99SblY1Tplh
- V8kw==
+ bh=Bfljn+s2Wnq05dseDvNEV2VlwDUR1SUHuwTQSSUXeOU=;
+ b=aYtDPtRCf+fziNiGccN0+e3mLlWrf9/jV9+m5vNy8rFtwGAcrevrW+DQFTpi2X/VpL
+ 5lgbYBkMenKxluHx0omE/GHo+1mMSJhJHQfI0wufiCL+Bu/pxdv3nxxAcG2lFH4b6NRj
+ tlsBs4NGETDWjxkhf2e0Zkzovr+v8pRcM/kncgTRPMd0FWV5ovr/rBDAYJMk81DH66GQ
+ uVNUh+nwqZSa74VCJIMBJNz2N8sHpRmt0iIcGw82bCUQ7RsY4B1rzZ0mmaeYFAx9IVZk
+ 6J+nKuGQBJtqJ32pnCJWi7tXCCOcIXB87cLfXA1BdDpLB6W6Rxg0tymsc/9Om7ey38Lr
+ cahQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1788525979; x=1789130779;
+ d=1e100.net; s=20251104; t=1788525981; x=1789130781;
  h=content-transfer-encoding:content-type:mime-version:references
  :in-reply-to:message-id:date:subject:cc:to:from:x-gm-gg
  :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
  :content-type;
- bh=g5//nCM3pmvphFdrXdMpuw8XsMrA3mZsffpPB3jrr14=;
- b=LEPuRSUXnqWZryOAFd2gjrV6wEiNlEIYq3gReJG0c5TQctKpc+wiyE4Y6gHR/LB5Yi
- wYDq1rwMvbOJfN4PZRa0lvpLYSXk+RdO/MYThhsjwp7R3lrkTw7jIMZEHK/fZzSmuJi+
- qrNIydaGbymjS4uRxXOwaw+Y6sVTeBDeIJyYgszj1ZBlQWsxf1pFNbkrD6Spzwn8wKhX
- BhK4NE4h3hOBPp8nLI/oj2kS5h/VaZ45/Ji8+BgvT7OoOr0PCfB631PTWz5dmWJZX0VN
- CqiquLdsq9SHPxSMlM1doPAJolaQtQQCMi6zNFhgBwJ2rr8mKEVlQcc3W3Ibjwr9KyBo
- bGhw==
+ bh=Bfljn+s2Wnq05dseDvNEV2VlwDUR1SUHuwTQSSUXeOU=;
+ b=XZjDqTuyTPDKKZ6NMU+QYLRx4Q06HTKxCMHO87AFcAaZFfXCg+vrFe0GAZQWP6ShH4
+ 9CIo8WNiJWKSL7jgBFDQMsLrjWG1oJBXudNEWqmgKFfSPGBp4sAoTcWSy0F05nZzl/sw
+ H4xVL5S3B3bK/atVQWgcotFCRspfNFmXP8vCYI7rRSCsSGNUnuQmkRs7gmoenCMyurmo
+ ewhJIFAjoxc8xCnXx2SKkHPPdpHG7TEakznlcn1qPItBtHdAe3noQ2jzl2jji9ZMrWsS
+ Fwt0Ysl65BbXJ2rIEB0Mkvy1g1z0Gr9RqP9wIoYaz5TIUpDhALCWYxKCQXZmxjKA08II
+ uwXw==
 X-Forwarded-Encrypted: i=1;
- AKwUvBwAz5DD154bTejYhsKGTZ7eFh2RMMgVFabHeKjxkHg9XbvQctuCDjwdcFaik1Xwsn313m59iONsOQ==@nongnu.org
-X-Gm-Message-State: AFuF++muW2U2JapoWbuomJhiZAgzOlCRgCseiQwVe5j8wgKNfsvLd0Ys
- qCqpWGCiD075dzssf6sLXugrdUPbCHpuqDhyfVXss0IXEtivIQZNNQEcpGHD0YCx4AE=
-X-Gm-Gg: AYBFou0v6O7trJ02y2Srb1yCTOTA2L9pqykTlO+t/Wtz77p9Y7H8BCRXr8HcsRf4CK8
- QFJQSBZgaP4qd73sthO/+psLenQYEfr9MwPERHaZnIei7i69f/Tar/aLkx0xyCUOOI5vC0tdcOL
- I7bsgLWTs2aZzuTydDU6dHBc+GhZcN1vuURbyYbvL2ZBLHr7awMPpPwY9hotLBA/And33qmZKBb
- qImeqaczn8hEQrsbUELC8rDz1teMDbijpHT/4hE/KifTtKiQXOaFbpefgBEf+KVnEbu9XTZxZk6
- zAOPjO5s3DWT12R70T4dPpP9PCVoYRB8Bye5cyTOqFnQDYDO9Ppngj30N1e+WSx2jL0bYw/fcTf
- Ecylt6z8g9n663iDW1V85LtWRr2c4kP/UvHU7cVdc5mtJGtvMZP5nwPujiqj3nNBLPL83fcmM08
- 4s5kW9GcsS6rNz+VRUE+ZfIBpO7z4dgYawG7BwepGZl2Szfg6cV6Elb4YLI2iY
-X-Received: by 2002:a05:6000:46c7:b0:485:847f:fd97 with SMTP id
- ffacd0b85a97d-485870914ccmr6111641f8f.4.1788525978818; 
- Fri, 04 Sep 2026 05:46:18 -0700 (PDT)
+ AKwUvBz11TS16lV16qW+mrxd/Jp7gJzca86XIHTk36J6Yma/pwL7fV52DCCWF6vweaa5M2ZDtjtIYHS7ew==@nongnu.org
+X-Gm-Message-State: AFuF++kg6Ur0KCVU/jhjY2X7BRJJOCyft4fLtKdyzojXx5KfSkiLm6NP
+ 1sVpYWEe1pjylshiDaQ60z2ttXw5OFcWl6uadAiHQZsX/t8Stc/oparV0tQ/67kaV1GYolYmxX3
+ rTHX5CZc=
+X-Gm-Gg: AYBFou2NtAgetH5+nSeLN8xatntLgPCRCnawgLNDImcdOlBH1/ssJX7FHGbGEK29MNZ
+ wLXYo3pp3mhNUw1IVC8GeY1t3icPhkQs4bA0u9yL9qcNeHE/HXq5eLY8edUN+/z5mvdl5YgmDaB
+ YZ+ZlbX3uNx43OslG0EqTgPeRcX++MireOvW2S/jVeNzYvbVs0dNugSwixRlj8I69OfB/3m2haU
+ /B2+4eU/A/claemgOXxc7461fSPeeWdhpHRtdDnyz1lgsM6hjcLkSDmc//6uV3r4eCG4L8E1+yk
+ eY2XA3aqC0P+jDvzqKJ+3LMpDhGcgQm54kl/4YQ34oFxuIZ4eN5CrHQH5huD2ZDkqfvex9EsvX7
+ 8nKhtyZAtAny7fMQ9v56hlHJe4c1xLW3DJhgL5Id3JLehY8p30nZoa4g9C6j2QF6DWL7dD1OUHy
+ Vp4qs6QTk8doghqQ6xB9cB9SZHD1b5hJEoDI53I1+QgVJZrjeC09qAKs7QF6jXgXbzSd0dCOs=
+X-Received: by 2002:a05:600c:6383:b0:49c:f4ff:e872 with SMTP id
+ 5b1f17b1804b1-49cf820507cmr56993755e9.5.1788525981558; 
+ Fri, 04 Sep 2026 05:46:21 -0700 (PDT)
 Received: from draig.lan ([185.124.0.156]) by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-4858ac2b4cdsm4587385f8f.16.2026.09.04.05.46.13
+ 5b1f17b1804b1-49cf7710aa5sm68090895e9.7.2026.09.04.05.46.13
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 04 Sep 2026 05:46:18 -0700 (PDT)
+ Fri, 04 Sep 2026 05:46:19 -0700 (PDT)
 Received: from draig.lan (localhost [IPv6:::1])
- by draig.lan (Postfix) with ESMTP id 262EE618C3;
+ by draig.lan (Postfix) with ESMTP id 55F8B618D5;
  Fri, 04 Sep 2026 13:46:08 +0100 (BST)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>,
- Aniket Sahu <asahu1x@linux.ibm.com>,
  =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
+ Aniket Sahu <asahu1x@linux.ibm.com>,
  Peter Maydell <peter.maydell@linaro.org>,
  qemu-arm@nongnu.org (open list:ARM TCG CPUs)
-Subject: [PULL 039/105] tests/tcg/arm/fcvt.c: use raw opcode for FPRCVT
-Date: Fri,  4 Sep 2026 13:44:53 +0100
-Message-ID: <20260904124604.2207440-40-alex.bennee@linaro.org>
+Subject: [PULL 041/105] tests/tcg/aarch64/system/gpc-test.c: remove unused
+ variables
+Date: Fri,  4 Sep 2026 13:44:55 +0100
+Message-ID: <20260904124604.2207440-42-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.47.3
 In-Reply-To: <20260904124604.2207440-1-alex.bennee@linaro.org>
 References: <20260904124604.2207440-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::431;
- envelope-from=alex.bennee@linaro.org; helo=mail-wr1-x431.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::42d;
+ envelope-from=alex.bennee@linaro.org; helo=mail-wr1-x42d.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -111,38 +113,36 @@ Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
 From: Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>
 
-fcvtzs d0,s31 requires fprcvt support in compiler, which is only
-available from gcc-16. Since our debian-all-test-cross container has
-gcc-aarch64-14, this test will never run in CI.
-
-Replace the concerned instruction with raw opcode, obtained from:
-$ echo "fcvtzs d0, s31" | llvm-mc-22 -triple=aarch64 -mattr=fprcvt --show-encoding
-fcvtzs  d0, s31 // encoding: [0xe0,0x03,0x36,0x9e]
-
+Tested-by: Alex Bennée <alex.bennee@linaro.org>
 Tested-by: Aniket Sahu <asahu1x@linux.ibm.com>
-Signed-off-by: Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>
 Reviewed-by: Alex Bennée <alex.bennee@linaro.org>
-Message-ID: <20260827221506.91574-40-pierrick.bouvier@oss.qualcomm.com>
+Signed-off-by: Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>
+Message-ID: <20260827221506.91574-42-pierrick.bouvier@oss.qualcomm.com>
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
 
-diff --git a/tests/tcg/arm/fcvt.c b/tests/tcg/arm/fcvt.c
-index 7c0cc4367e7..8c81ba8a1bc 100644
---- a/tests/tcg/arm/fcvt.c
-+++ b/tests/tcg/arm/fcvt.c
-@@ -173,9 +173,11 @@ static void convert_single_to_integer(void)
-         output = input;
- #else
- #ifdef FPRCVT
--        asm("fcvtzs d0, %s1\r\n"
-+        asm("fmov s31, %s1\n\t"
-+            /* "fcvtzs d0, s31\n\t" */
-+            ".byte 0xe0,0x03,0x36,0x9e\n\t"
-             "fmov %0, d0" :
--            "=r" (output) : "w" (input));
-+            "=r" (output) : "w" (input) : "s31", "d0");
- #else
-         asm("fcvtzs %0, %s1" : "=r" (output) : "w" (input));
- #endif
+diff --git a/tests/tcg/aarch64/system/gpc-test.c b/tests/tcg/aarch64/system/gpc-test.c
+index f26b23efafe..0ce0ffea277 100644
+--- a/tests/tcg/aarch64/system/gpc-test.c
++++ b/tests/tcg/aarch64/system/gpc-test.c
+@@ -28,7 +28,6 @@ const uint32_t gpis_per_64_bits = 16;
+ 
+ int main(uint64_t sp)
+ {
+-    uint64_t out;
+     uint64_t pfr0;
+     uint64_t gpt_base;
+     uint64_t rme_status;
+@@ -38,10 +37,6 @@ int main(uint64_t sp)
+     uint64_t gpt_table0_addr = (uint64_t) realms_gpt0;
+     uint64_t gpt_table1_addr = (uint64_t) realms_gpt1;
+ 
+-    /* Mask is FNG1, FNG0, and A2 */
+-    const uint64_t feature_mask = (1ULL << 18 | 1ULL << 17 | 1ULL << 16);
+-    const uint64_t in = feature_mask;
+-
+     get_sys_reg("CurrentEL", currentel_raw);
+     currentel = (currentel_raw >> 2) & 0x3;
+ 
 -- 
 2.47.3
 

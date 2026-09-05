@@ -4,38 +4,38 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 40315C624D6
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A978DC624D3
 	for <qemu-arm@archiver.kernel.org>; Sat,  5 Sep 2026 17:54:30 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1x2uaI-0005Ex-Lj; Sat, 05 Sep 2026 13:53:47 -0400
+	id 1x2uaN-0005J6-3Y; Sat, 05 Sep 2026 13:53:51 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mchehab+huawei@kernel.org>)
- id 1x2uaF-0005Dr-Ud; Sat, 05 Sep 2026 13:53:44 -0400
-Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
+ id 1x2uaJ-0005Ey-2B; Sat, 05 Sep 2026 13:53:47 -0400
+Received: from sea.source.kernel.org ([172.234.252.31])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mchehab+huawei@kernel.org>)
- id 1x2uaE-0008I6-0f; Sat, 05 Sep 2026 13:53:43 -0400
+ id 1x2uaG-0008Jx-Vj; Sat, 05 Sep 2026 13:53:46 -0400
 Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
- by sea.source.kernel.org (Postfix) with ESMTP id 005CF44540;
+ by sea.source.kernel.org (Postfix) with ESMTP id 0AA6C44793;
  Sat,  5 Sep 2026 17:53:33 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id A734F1F00ACF;
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id AB64B1F00ADE;
  Sat,  5 Sep 2026 17:53:32 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
  s=k20260515; t=1788630812;
- bh=iZMFXJG4YPvTIBsURsNf5N+2DcwOXXHAUugNxjcUsBk=;
+ bh=ai+qCKVGooyNyHPnec0n28qWkLpI/YR341Xh8tbfMVA=;
  h=From:To:Cc:Subject:Date:In-Reply-To:References;
- b=ow7QEv4LF3zgMu0XahMoKaqbZoX98jVoKQ1P3uRtTLw9EcurzYv097ac+iFsDCOSG
- krCt7zt4TKdoMAryIPjXL/x0N8mEFJZD3ouPjH8Vdm47EOtrfsoP2nqq6nD1w1Chl8
- +YIvV1NMEOqft6weoNljtKmFjioTxwYp1fKlLgPdxGq7THEENhIZhdn9vVj2kSkEbf
- M+SBZSvROysuzZFbLWD7Zy5ybYNotTmUCeYepQMid7fVbmppnFp7yZKErGilHvSYNQ
- tdQw++mXMmzoMZmrwO+/ERsQRg1TyW/Wkk9ol7Cq35G0twkD0MjgP5kWi34YyuwDhT
- guxz4WaHYEfBQ==
+ b=lN5bpN34Vo4ZAjzpDJ8XyoAHg0R12di3aeGoDmYSR1uNMg+dtCNlLTgUrNtd8YIPe
+ 2WpsMTS14ojzZLeS1CmZqnaLxFGZot8AVJ7M8rhYuq86EnLwzvqpx4Evudl4G+kFCC
+ YGGwz651Gc/i6DaVGvEvYbAcMyeZ6gsJEGhljnR6FTNipPl33381EoVTiGzG9KOLlf
+ fSZ6AsFs5g9Vnr6XgXEFr8aMLXLmKplW1TlnRRZsPmip+ftojTLV+RJEPE1mYhl5F4
+ 0uPC1rm7CoSY3MwjfWbXrNhFqjnXl7SUkg8tutiLmbQ9WZLROo4E2/y/flrdZRsxjg
+ kq3qyyzyfpZpA==
 Received: from mchehab by mail.kernel.org with local (Exim 4.99.5)
  (envelope-from <mchehab+huawei@kernel.org>)
- id 1x2ua2-0000000Bkrl-2xnb; Sat, 05 Sep 2026 19:53:30 +0200
+ id 1x2ua2-0000000Bkrt-3BWb; Sat, 05 Sep 2026 19:53:30 +0200
 From: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
 To: Michael S Tsirkin <mst@redhat.com>,
 	Igor Mammedov <imammedo@redhat.com>
@@ -43,18 +43,18 @@ Cc: Jonathan Cameron <Jonathan.Cameron@huawei.com>,
  Shiju Jose <shiju.jose@huawei.com>, qemu-devel@nongnu.org,
  Mauro Carvalho Chehab <mchehab+huawei@kernel.org>,
  linux-edac@vger.kernel.org, qemu-arm@nongnu.org,
- Ani Sinha <anisinha@redhat.com>
-Subject: [PATCH 2/8] tests/acpi: virt: reserve expected tables for PC GHES SCI
- support
-Date: Sat,  5 Sep 2026 19:53:22 +0200
-Message-ID: <bd387daaf58644a71258ebcff789d285da2ff8e7.1788630333.git.mchehab+huawei@kernel.org>
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@mailo.com>,
+ Ani Sinha <anisinha@redhat.com>, Aurelien Jarno <aurelien@aurel32.net>
+Subject: [PATCH 4/8] hw/i386: add GHES support at ICH9 and PIIX4 PM
+Date: Sat,  5 Sep 2026 19:53:24 +0200
+Message-ID: <b8649bce2afeef273880bac6c7a1dc4fa2d947d1.1788630333.git.mchehab+huawei@kernel.org>
 X-Mailer: git-send-email 2.55.0
 In-Reply-To: <cover.1788630333.git.mchehab+huawei@kernel.org>
 References: <cover.1788630333.git.mchehab+huawei@kernel.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2600:3c0a:e001:78e:0:1991:8:25;
+Received-SPF: pass client-ip=172.234.252.31;
  envelope-from=mchehab+huawei@kernel.org; helo=sea.source.kernel.org
 X-Spam_score_int: -20
 X-Spam_score: -2.1
@@ -77,44 +77,180 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Prepare to modify x86 firmware files, disabling DSDT and HEST table
-check until we update it to new firmware file changes.
+Enabling GHES support on x86 means that both PIIX4 and ICH9
+PM controllers need to expose ghes state.
 
+Implement that, as suggested by Igor.
+
+Suggested-by: Igor Mammedov <imammedo@redhat.com>
+Link: https://lore.kernel.org/qemu-devel/20250530164134.6c666b2e@imammedo.users.ipa.redhat.com/
 Signed-off-by: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
 ---
- tests/data/acpi/x86/pc/DSDT.ras             | 0
- tests/data/acpi/x86/pc/HEST.ras             | 0
- tests/data/acpi/x86/q35/DSDT.ras            | 0
- tests/data/acpi/x86/q35/HEST.ras            | 0
- tests/qtest/bios-tables-test-allowed-diff.h | 4 ++++
- 5 files changed, 4 insertions(+)
- create mode 100644 tests/data/acpi/x86/pc/DSDT.ras
- create mode 100644 tests/data/acpi/x86/pc/HEST.ras
- create mode 100644 tests/data/acpi/x86/q35/DSDT.ras
- create mode 100644 tests/data/acpi/x86/q35/HEST.ras
+ hw/acpi/ich9.c          | 19 +++++++++++++++++++
+ hw/acpi/piix4.c         | 25 +++++++++++++++++++++++++
+ hw/isa/lpc_ich9.c       |  6 ++++++
+ include/hw/acpi/ich9.h  |  2 ++
+ include/hw/acpi/piix4.h |  2 ++
+ 5 files changed, 54 insertions(+)
 
-diff --git a/tests/data/acpi/x86/pc/DSDT.ras b/tests/data/acpi/x86/pc/DSDT.ras
-new file mode 100644
-index 000000000000..e69de29bb2d1
-diff --git a/tests/data/acpi/x86/pc/HEST.ras b/tests/data/acpi/x86/pc/HEST.ras
-new file mode 100644
-index 000000000000..e69de29bb2d1
-diff --git a/tests/data/acpi/x86/q35/DSDT.ras b/tests/data/acpi/x86/q35/DSDT.ras
-new file mode 100644
-index 000000000000..e69de29bb2d1
-diff --git a/tests/data/acpi/x86/q35/HEST.ras b/tests/data/acpi/x86/q35/HEST.ras
-new file mode 100644
-index 000000000000..e69de29bb2d1
-diff --git a/tests/qtest/bios-tables-test-allowed-diff.h b/tests/qtest/bios-tables-test-allowed-diff.h
-index dfb8523c8bf4..b3761468accc 100644
---- a/tests/qtest/bios-tables-test-allowed-diff.h
-+++ b/tests/qtest/bios-tables-test-allowed-diff.h
-@@ -1 +1,5 @@
- /* List of comma-separated changed AML files to ignore */
-+"tests/data/acpi/x86/pc/DSDT.ras",
-+"tests/data/acpi/x86/pc/HEST.ras",
-+"tests/data/acpi/x86/q35/DSDT.ras",
-+"tests/data/acpi/x86/q35/HEST.ras",
+diff --git a/hw/acpi/ich9.c b/hw/acpi/ich9.c
+index 5e8f8a7eafa3..7e2199891431 100644
+--- a/hw/acpi/ich9.c
++++ b/hw/acpi/ich9.c
+@@ -222,6 +222,24 @@ static const VMStateDescription vmstate_pcihp_state = {
+     }
+ };
+ 
++static bool ich9_hest_needed(void *opaque)
++{
++    ICH9LPCPMRegs *pm = opaque;
++
++    return pm->ghes_state.hest_addr_le != 0;
++}
++
++static const VMStateDescription vmstate_ich9_hest = {
++    .name = "ich9_pm/hest",
++    .version_id = 1,
++    .minimum_version_id = 1,
++    .needed = ich9_hest_needed,
++    .fields = (const VMStateField[]) {
++        VMSTATE_UINT64(ghes_state.hest_addr_le, ICH9LPCPMRegs),
++        VMSTATE_END_OF_LIST()
++    }
++};
++
+ const VMStateDescription vmstate_ich9_pm = {
+     .name = "ich9_pm",
+     .version_id = 1,
+@@ -244,6 +262,7 @@ const VMStateDescription vmstate_ich9_pm = {
+         &vmstate_tco_io_state,
+         &vmstate_cpuhp_state,
+         &vmstate_pcihp_state,
++        &vmstate_ich9_hest,
+         NULL
+     }
+ };
+diff --git a/hw/acpi/piix4.c b/hw/acpi/piix4.c
+index 9b7f50c7afac..48fa833c66ef 100644
+--- a/hw/acpi/piix4.c
++++ b/hw/acpi/piix4.c
+@@ -224,6 +224,24 @@ static bool vmstate_test_migrate_acpi_index(void *opaque, int version_id)
+            !s->not_migrate_acpi_index;
+ }
+ 
++static bool piix4_hest_needed(void *opaque)
++{
++    PIIX4PMState *s = opaque;
++
++    return s->ghes_state.hest_addr_le != 0;
++}
++
++static const VMStateDescription vmstate_piix4_hest = {
++    .name = "piix4_pm/hest",
++    .version_id = 1,
++    .minimum_version_id = 1,
++    .needed = piix4_hest_needed,
++    .fields = (const VMStateField[]) {
++        VMSTATE_UINT64(ghes_state.hest_addr_le, PIIX4PMState),
++        VMSTATE_END_OF_LIST()
++    }
++};
++
+ /* qemu-kvm 1.2 uses version 3 but advertised as 2
+  * To support incoming qemu-kvm 1.2 migration, change version_id
+  * and minimum_version_id to 2 below (which breaks migration from
+@@ -259,6 +277,7 @@ static const VMStateDescription vmstate_acpi = {
+     .subsections = (const VMStateDescription * const []) {
+          &vmstate_memhp_state,
+          &vmstate_cpuhp_state,
++         &vmstate_piix4_hest,
+          NULL
+     }
+ };
+@@ -551,6 +570,11 @@ static void piix4_ospm_status(AcpiDeviceIf *adev, ACPIOSTInfoList ***list)
+     acpi_cpu_ospm_status(&s->cpuhp_state, list);
+ }
+ 
++static AcpiGhesState *piix4_get_ghes_state(AcpiDeviceIf *adev)
++{
++    return &PIIX4_PM(adev)->ghes_state;
++}
++
+ static void piix4_send_gpe(AcpiDeviceIf *adev, AcpiEventStatusBits ev)
+ {
+     PIIX4PMState *s = PIIX4_PM(adev);
+@@ -607,6 +631,7 @@ static void piix4_pm_class_init(ObjectClass *klass, const void *data)
+     hc->is_hotpluggable_bus = piix4_is_hotpluggable_bus;
+     adevc->ospm_status = piix4_ospm_status;
+     adevc->send_event = piix4_send_gpe;
++    adevc->get_ghes_state = piix4_get_ghes_state;
+ }
+ 
+ static const TypeInfo piix4_pm_info = {
+diff --git a/hw/isa/lpc_ich9.c b/hw/isa/lpc_ich9.c
+index edf9783ec8d4..00d940f16314 100644
+--- a/hw/isa/lpc_ich9.c
++++ b/hw/isa/lpc_ich9.c
+@@ -847,6 +847,11 @@ static const Property ich9_lpc_properties[] = {
+                      pm.periodic_timer_enabled, true),
+ };
+ 
++static AcpiGhesState *ich9_get_ghes_state(AcpiDeviceIf *adev)
++{
++    return &ICH9_LPC_DEVICE(adev)->pm.ghes_state;
++}
++
+ static void ich9_send_gpe(AcpiDeviceIf *adev, AcpiEventStatusBits ev)
+ {
+     ICH9LPCState *s = ICH9_LPC_DEVICE(adev);
+@@ -911,6 +916,7 @@ static void ich9_lpc_class_init(ObjectClass *klass, const void *data)
+     hc->is_hotpluggable_bus = ich9_pm_is_hotpluggable_bus;
+     adevc->ospm_status = ich9_pm_ospm_status;
+     adevc->send_event = ich9_send_gpe;
++    adevc->get_ghes_state = ich9_get_ghes_state;
+     amldevc->build_dev_aml = build_ich9_isa_aml;
+ }
+ 
+diff --git a/include/hw/acpi/ich9.h b/include/hw/acpi/ich9.h
+index 30990fcef53f..772f1a8937d7 100644
+--- a/include/hw/acpi/ich9.h
++++ b/include/hw/acpi/ich9.h
+@@ -27,6 +27,7 @@
+ #include "hw/acpi/memory_hotplug.h"
+ #include "hw/acpi/acpi_dev_interface.h"
+ #include "hw/acpi/ich9_tco.h"
++#include "hw/acpi/ghes.h"
+ #include "hw/acpi/cpu.h"
+ 
+ #define ACPI_PCIHP_ADDR_ICH9 0x0cc0
+@@ -38,6 +39,7 @@ typedef struct ICH9LPCPMRegs {
+      * PM1a_CNT_BLK = 2 in FADT so it is defined as uint16_t.
+      */
+     ACPIREGS acpi_regs;
++    AcpiGhesState ghes_state;
+ 
+     MemoryRegion io;
+     MemoryRegion io_gpe;
+diff --git a/include/hw/acpi/piix4.h b/include/hw/acpi/piix4.h
+index 863382a814ad..8732574e9c03 100644
+--- a/include/hw/acpi/piix4.h
++++ b/include/hw/acpi/piix4.h
+@@ -29,6 +29,7 @@
+ #include "hw/i2c/pm_smbus.h"
+ #include "hw/isa/apm.h"
+ #include "hw/acpi/cpu.h"
++#include "hw/acpi/ghes.h"
+ 
+ #define TYPE_PIIX4_PM "PIIX4_PM"
+ OBJECT_DECLARE_SIMPLE_TYPE(PIIX4PMState, PIIX4_PM)
+@@ -43,6 +44,7 @@ struct PIIX4PMState {
+ 
+     MemoryRegion io_gpe;
+     ACPIREGS ar;
++    AcpiGhesState ghes_state;
+ 
+     APMState apm;
+ 
 -- 
 2.55.0
 

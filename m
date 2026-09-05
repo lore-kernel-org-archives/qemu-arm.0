@@ -4,74 +4,101 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 668CFC624D6
-	for <qemu-arm@archiver.kernel.org>; Sat,  5 Sep 2026 06:40:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6DA0BC624D3
+	for <qemu-arm@archiver.kernel.org>; Sat,  5 Sep 2026 12:46:05 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1x2k4d-0005EI-Mb; Sat, 05 Sep 2026 02:40:23 -0400
+	id 1x2pmD-0003j5-QI; Sat, 05 Sep 2026 08:45:45 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mohamed@unpredictable.fr>)
- id 1x2k4c-0005Cq-CX
- for qemu-arm@nongnu.org; Sat, 05 Sep 2026 02:40:22 -0400
-Received: from ms-2002b-snip6-11.eps.apple.com ([2a01:b747:3002:204::15]
- helo=outbound.ms.icloud.com)
+ (Exim 4.90_1) (envelope-from <mark.cave-ayland@ilande.co.uk>)
+ id 1x2pmA-0003hm-0q; Sat, 05 Sep 2026 08:45:42 -0400
+Received: from mail.ilande.co.uk ([2001:41c9:1:41f::167])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mohamed@unpredictable.fr>)
- id 1x2k4Z-0007Wo-HJ
- for qemu-arm@nongnu.org; Sat, 05 Sep 2026 02:40:21 -0400
-Received: from outbound.ms.icloud.com (unknown [127.0.0.2])
- by p00-icloudmta-asmtp-us-west-3a-60-percent-7 (Postfix) with ESMTPS id
- 86F46180036D; Sat, 05 Sep 2026 06:40:16 +0000 (UTC)
-X-ICL-RepId: 01a0704b-e13b-74e2-9e3b-6a627ccbcc95
-X-ICL-Out-Info: HUtFAUMHWwJACUgATUQeDx5WFlZNRAJCTQ1OHVwPUhxEDlYCVRcOVk1UF1sMWg5WMEwWQx9SD1sTTRlRAVJFVAIZHldQQgVCAlwcWg5DClAcXFZVHxcZUU0MWFsIWwQPH0wMUQJCBVZeVAsdBFQHXQVdVlACWktCBEtFaFwFXBxAF0gdX2pLVhQEDV0dRQ5WGVoMUg9bDhwWS1heBFNWDkZ4SXVUDi12XQE7ClsaXws1eFVxWwBTHzJ7TgpUAC0BNX9PCi1CBUICXBxaDkMKUBxcVlUfCUtGCUkdDg5CGEYfVCdXAloKWx4=
-Dkim-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=unpredictable.fr;
- s=sig1; t=1788590418; x=1791182418;
- bh=wmDHaAv+1JiGYgDVdA62su6MpbNW3BrYO5ny8yRIEAU=;
- h=Content-Type:Mime-Version:Subject:From:Date:Message-Id:To:x-icloud-hme;
- b=Eu+UiK5b5J29zIBSexSkIAHO5xiUyR/3GtNCZkNW8tIoeOtrzQeB3MkEv+VXPH3TfRt+K2T/2dUdAPS+jgo9eh/YggA9mlHNs7t6vIBNGsXs2Qskia6pNxApdhb/ZX2Ixr0hO5UfvXx5iNbaCoEL8Ga2O/scihnDl9G3tPDaEzh/WFwYxxTrJuL4FzVw7nJ4P0dhJ2p8OWPURtrFGkQP8ZxNm06by0l0+2lPGHPU2mHzpAMe/XJH7aGlh4dr//TopgYmS9LsLaYAt/6P89smVizJ3lNXPYaM6+yzeULJukiSL1qSMkCRaVZNpws5y8PsF9so0yfHYadlpy2y6v4fkg==
-mail-alias-created-date: 1752046281608
-Received: from smtpclient.apple (unknown [17.156.208.39])
- by p00-icloudmta-asmtp-us-west-3a-60-percent-7 (Postfix) with ESMTPSA id
- B55EB1800124; Sat, 05 Sep 2026 06:40:14 +0000 (UTC)
-Content-Type: text/plain;
-	charset=utf-8
-Mime-Version: 1.0 (Mac OS X Mail 16.0 \(3901.100.1.1.11\))
-Subject: Re: [PATCH] target/arm/hvf: implement MDCCSR_EL0 as RAZ
-From: Mohamed Mediouni <mohamed@unpredictable.fr>
-In-Reply-To: <0AC93E1E-4050-4B69-BE26-6FCC99A0E886@unpredictable.fr>
-Date: Sat, 5 Sep 2026 08:40:02 +0200
-Cc: qemu-devel@nongnu.org, Alexander Graf <agraf@csgraf.de>,
- Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org
-Content-Transfer-Encoding: quoted-printable
-Message-Id: <6A1F99FD-8C96-49EA-B678-BB6997F3EF79@unpredictable.fr>
-References: <20260905004800.5B560C92F2@bambi.snowrabbit.org>
- <0AC93E1E-4050-4B69-BE26-6FCC99A0E886@unpredictable.fr>
-To: Showta Ishizaki <zakinko@snowrabbit.org>
-X-Mailer: Apple Mail (2.3901.100.1.1.11)
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwOTA1MDA2OCBTYWx0ZWRfX+UXelNYqTnJa
- kblkDXDHcrM6IwHlKXvpJkwqWFzya+zNK1JdP/o4oDXDn+yFX4G8RVFGf37hZAuk2SFi44Csj/o
- 6wqrXQvIAM5ln1u8xmuOSvPVZikv9Dd5Ns+2JgDaQBjef8Oeb28I919hF3+oyK1vdHWgELEosUf
- 0Yps/lZz++7uzgcUR2X2dw3m+DDDXqR9o/kinLq0N57BGMzNt/BbnIhl58MtgNdmoKmJjSgGvC+
- HO63K780YIRMl9KfZ5QBSX2D/DAyRdwXfjZgrnRLJ4y8e0IlCWnuBWsHgyYOqDWh8AdCoJiMWFl
- 6k1W9ymy1Gr1cUkbxlVtaoOV/L6Ii7aAJLhyxNEvhrkV+3f5WxZ7ldMvD1OG6U=
-X-Proofpoint-ORIG-GUID: 8Pq8oQi4bcM8pFN3Q5wtSQkJyG8T2Cax
-X-Authority-Info-Out: v=2.4 cv=D+FK6/Rj c=1 sm=1 tr=0 ts=6a9bb951
- cx=c_apl:c_pps:t_out a=kRaGL2Q7qLiahLf3O6OaIA==:117
- a=kRaGL2Q7qLiahLf3O6OaIA==:17 a=IkcTkHD0fZMA:10 a=VdqzKS8jKosA:10
- a=VkNPw1HP01LnGYTKEx00:22 a=L9C5IM_eAAAA:8 a=RGPeLiVDzh6DSidvj3oA:9
- a=0bXxn9q0MV6snEgNplNhOjQmxlI=:19 a=QEXdDO2ut3YA:10 a=d8_PwHeUR2dB5DzxAQPm:22
-X-Proofpoint-GUID: 8Pq8oQi4bcM8pFN3Q5wtSQkJyG8T2Cax
-X-JNJ: AAAAAAABU5kul7B2Oj5wp4TlNnzEHr9dLhUtCyNLaf3vAYI0KgeVZYuUzPQhGrgS7qKlP4IgGU5uDYxVr/cMFaX65cn6WbX2ActWm4cqbV5n20AMeTHo3YCVIHl/voElMymmDcgE+V9Okjf+2rZxiRbaJhidbLNh08jgnRZzNelROIpAlh+K7MPJ34UwxSXntiHMgRdg994d9y3ADkzCDdjL3aLEV4z4X6bWuG+OB6XWhNXl1WwhBmK2rbrkUdeTUBDHDOVtUawnCd53uvOn2ef4o06oqVE6KgKwUSiDa3DdmsPXm1NcCr3FwSWDZWJf8SlJuIWnPpjS6y+TEsf9p6MWbn+k1+glV9KYqHd9xNZ+P2kR32XpbzLphJKz9MoAyQ5zehBsdmU3hTNyKM29xzBbTXzWsGFkkPNaIcOlSeLri8NcZlH1UYNenhXPf03NMbCkrK+IcMvGsRY5EUxOKbmXH/mraFk/akJQCV5LitggTF84WeYcZJGUl43eJNDp76sTBI2xcPiahYOg4944H6/Ot0YFigaZlb1fu4UHY1Mf0ro+pzMJf2cjE1f7XJrzKVwnrQhj98AGl1FiP0u8TTa8ybvFL+GYRl/PB1CErg4a1RGJT9U6cC76CeT7Wp5zt7S64/Q1Axzqf7/LiN5BahNNe3H1MOC1ymvXvKPCayApuyTvQ6lI8WKsHiEb606pBOKd/LkfWczno+GtMnUCXRTl6OTmPnqrA/GrHEHlcOmj0CisRGjHz658jUPeiCsvKk/tC7INZ7OagJaxo+3nFhvjDF3YE4od2CjzSSjMx9v8MnGks6oVd4N4hwairTS2XxHyMOz0nZMKI18Y4kUjr84LMk8EuWmlEBNxIIXBa+e88GOzOM38/ensphu9Wk3zWJNHCnMCClBkj8ZWI5z63cd/tdpaVpRdfRnb9hx1YJm+Pe3SZUubdE2QNtbAIEWITYoCgkrQbkBPDxZT6zpaUayJejEI7fi
- mE4slh7CF5idqYmPH8vtdYAmIjJOScpmpOWgw1L21lqX6DbunbA6I5EH3Zcd7DimJGroZpXvZkPhRHjIaszB4Xmoz0aDjfAYCBFZm7+hU/PuBsgqIesyMGlLyzOhEE0J4va+kOjZztn6oFLVS1ORf5Z+MJhAJEwybH2P26zkv3sPXYVb2RuPpGUdI7+WXCgVsFllqNxT+FKiBnRzJQMUFwlRYQomlv8kNZR9PXih2ydKNhcuLuhvwsOOOsgCFGxu1hSZwQScnT1dyte3MkmkMuZ8zpf2V+3Ti6o7oMpwCCdfG2MYZ9ZER2eaFx2X50U2A7NSjUiXU9maUaagPoXpFY/eS37/ktsFgNk73t+/hbVaxgNuccb7RnD1BEe66w4dOni780cPrzqQ43QvKPN8/jsZJHUvP+yRNwA/x//n5HFnhbq4Sk4ETeOs6WD+c65mRInVN9yA=
-Received-SPF: pass client-ip=2a01:b747:3002:204::15;
- envelope-from=mohamed@unpredictable.fr; helo=outbound.ms.icloud.com
+ (Exim 4.90_1) (envelope-from <mark.cave-ayland@ilande.co.uk>)
+ id 1x2pm6-0007c3-33; Sat, 05 Sep 2026 08:45:40 -0400
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+ d=ilande.co.uk; s=20220518; h=Subject:Content-Transfer-Encoding:Content-Type:
+ In-Reply-To:From:References:Cc:To:MIME-Version:Date:Message-ID:Sender:
+ Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+ :Resent-To:Resent-Cc:Resent-Message-ID;
+ bh=YkjcjKmiHVI2Nkv/26u3ssl/h0M5IaTbKeJMyDsJT/0=; b=A+xoInWv7cW5y+NumXglBKtskP
+ SqV7pc+BMyEWdKkhj19wnidDTAjE9bSKOIZ8G9ei8zuNQl8sjhN3W2ifq6AbhbA8wmB9N0AwSG3pH
+ t07jSPmCFjSAP41T6Rt1Za0q1qXFk7eRGCJ1E04bHHM/GLgjwBDQkqmRrHeStHfG6bsQ31AVG01Wg
+ X7LoO3ajqXHUi8C1LOsYBB6ns5P86zcZNu5l+gonMT4ptJE8NE6r8+KjIRYGrG4mXbRXJ4fyjhyCE
+ eXOPaG1lT2qax+Bwyk7cv5UUWAUL1GwzDrG2k7Rz8wJOAsWR18uz7gEsu7coyfIiJSH7a4AbimNT1
+ 1gTxmc/gm5QXw76W6m1bjt1vt6m4RKJOs+DdQKsLdpofbJBOZN38Y24oPsBaLDl7Fdeww7pMTbXSf
+ 7M7VyVvAxHcwNh9xDbrIis39NlBY7NeyrlenLLvWfFhGj4UckfBi59H1M+efCGPfxy1bnD5+v43Sw
+ hwVn5MAE16Vu03qq/E8PEmP1/h+V+sLFVo80Vfc8InAH72+8zEMsFcokCpwLyr4x3jO9oaHCwt4Li
+ 6ltVFW5q3AJbtxqaE/bbSCP9pRKNjR+tfjrpm9zjU0PNG7daS2v878xbkwSwWPaNZ0LbX73rJer9U
+ UNC53w+KmvRP7/qZGLL7Lz+sZ5xZOGqk2CVLhxNX8=;
+Received: from [2a02:8012:2f01:0:fe49:60b9:9856:b8ef]
+ by mail.ilande.co.uk with esmtpsa (TLS1.3) tls
+ TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256 (Exim 4.94.2)
+ (envelope-from <mark.cave-ayland@ilande.co.uk>)
+ id 1x2plL-00CMJ3-VK; Sat, 05 Sep 2026 13:44:52 +0100
+Message-ID: <bdbdec6f-91a6-4c70-a818-ef2b1fbe4ad5@ilande.co.uk>
+Date: Sat, 5 Sep 2026 13:45:13 +0100
+MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+To: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>,
+ Emmanuel Blot <emmanuel.blot@free.fr>, qemu-devel@nongnu.org
+Cc: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@mailo.com>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ Steven Lee <steven_lee@aspeedtech.com>, Jamin Lin
+ <jamin_lin@aspeedtech.com>, Kane Chen <kane_chen@aspeedtech.com>,
+ Andrew Jeffery <andrew@codeconstruct.com.au>, Joel Stanley <joel@jms.id.au>,
+ qemu-arm@nongnu.org, Fabiano Rosas <farosas@suse.de>,
+ Laurent Vivier <lvivier@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
+ Thomas Huth <th.huth+qemu@posteo.eu>,
+ =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>,
+ Emmanuel Blot <eblot@meta.com>, Markus Armbruster <armbru@redhat.com>
+References: <20260731-sanmiguel-bmc-locator-v2-0-1266926ba769@free.fr>
+ <20260731-sanmiguel-bmc-locator-v2-18-1266926ba769@free.fr>
+ <cb1b5ec3-d7ba-42fe-a8ab-da7c236b1660@kaod.org>
+Content-Language: en-US
+From: Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
+Autocrypt: addr=mark.cave-ayland@ilande.co.uk; keydata=
+ xsBNBFQJuzwBCADAYvxrwUh1p/PvUlNFwKosVtVHHplgWi5p29t58QlOUkceZG0DBYSNqk93
+ 3JzBTbtd4JfFcSupo6MNNOrCzdCbCjZ64ik8ycaUOSzK2tKbeQLEXzXoaDL1Y7vuVO7nL9bG
+ E5Ru3wkhCFc7SkoypIoAUqz8EtiB6T89/D9TDEyjdXUacc53R5gu8wEWiMg5MQQuGwzbQy9n
+ PFI+mXC7AaEUqBVc2lBQVpAYXkN0EyqNNT12UfDLdxaxaFpUAE2pCa2LTyo5vn5hEW+i3VdN
+ PkmjyPvL6DdY03fvC01PyY8zaw+UI94QqjlrDisHpUH40IUPpC/NB0LwzL2aQOMkzT2NABEB
+ AAHNME1hcmsgQ2F2ZS1BeWxhbmQgPG1hcmsuY2F2ZS1heWxhbmRAaWxhbmRlLmNvLnVrPsLA
+ eAQTAQIAIgUCVAm7PAIbAwYLCQgHAwIGFQgCCQoLBBYCAwECHgECF4AACgkQW8LFb64PMh9f
+ NAgAuc3ObOEY8NbZko72AGrg2tWKdybcMVITxmcor4hb9155o/OWcA4IDbeATR6cfiDL/oxU
+ mcmtXVgPqOwtW3NYAKr5g/FrZZ3uluQ2mtNYAyTFeALy8YF7N3yhs7LOcpbFP7tEbkSzoXNG
+ z8iYMiYtKwttt40WaheWuRs0ZOLbs6yoczZBDhna3Nj0LA3GpeJKlaV03O4umjKJgACP1c/q
+ T2Pkg+FCBHHFP454+waqojHp4OCBo6HyK+8I4wJRa9Z0EFqXIu8lTDYoggeX0Xd6bWeCFHK3
+ DhD0/Xi/kegSW33unsp8oVcM4kcFxTkpBgj39dB4KwAUznhTJR0zUHf63M7ATQRUCbs8AQgA
+ y7kyevA4bpetM/EjtuqQX4U05MBhEz/2SFkX6IaGtTG2NNw5wbcAfhOIuNNBYbw6ExuaJ3um
+ 2uLseHnudmvN4VSJ5Hfbd8rhqoMmmO71szgT/ZD9MEe2KHzBdmhmhxJdp+zQNivy215j6H27
+ 14mbC2dia7ktwP1rxPIX1OOfQwPuqlkmYPuVwZP19S4EYnCELOrnJ0m56tZLn5Zj+1jZX9Co
+ YbNLMa28qsktYJ4oU4jtn6V79H+/zpERZAHmH40IRXdR3hA+Ye7iC/ZpWzT2VSDlPbGY9Yja
+ Sp7w2347L5G+LLbAfaVoejHlfy/msPeehUcuKjAdBLoEhSPYzzdvEQARAQABwsBfBBgBAgAJ
+ BQJUCbs8AhsMAAoJEFvCxW+uDzIfabYIAJXmBepHJpvCPiMNEQJNJ2ZSzSjhic84LTMWMbJ+
+ opQgr5cb8SPQyyb508fc8b4uD8ejlF/cdbbBNktp3BXsHlO5BrmcABgxSP8HYYNsX0n9kERv
+ NMToU0oiBuAaX7O/0K9+BW+3+PGMwiu5ml0cwDqljxfVN0dUBZnQ8kZpLsY+WDrIHmQWjtH+
+ Ir6VauZs5Gp25XLrL6bh/SL8aK0BX6y79m5nhfKI1/6qtzHAjtMAjqy8ChPvOqVVVqmGUzFg
+ KPsrrIoklWcYHXPyMLj9afispPVR8e0tMKvxzFBWzrWX1mzljbBlnV2n8BIwVXWNbgwpHSsj
+ imgcU9TTGC5qd9g=
+In-Reply-To: <cb1b5ec3-d7ba-42fe-a8ab-da7c236b1660@kaod.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+X-SA-Exim-Connect-IP: 2a02:8012:2f01:0:fe49:60b9:9856:b8ef
+X-SA-Exim-Mail-From: mark.cave-ayland@ilande.co.uk
+Subject: Re: Adding /machines/labels (was Re: [PATCH v2 18/25]
+ tests/functional: add a pure-Python device-locator resolver)
+X-SA-Exim-Version: 4.2.1 (built Sat, 13 Feb 2021 17:57:42 +0000)
+X-SA-Exim-Scanned: Yes (on mail.ilande.co.uk)
+Received-SPF: pass client-ip=2001:41c9:1:41f::167;
+ envelope-from=mark.cave-ayland@ilande.co.uk; helo=mail.ilande.co.uk
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_PASS=-0.001,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -88,122 +115,129 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
+On 03/09/2026 15:21, Cédric Le Goater wrote:
+
+> On 7/31/26 12:45, Emmanuel Blot wrote:
+>> Add DeviceLocator, a helper that addresses a device by its position on
+>> the bus -- bus, address, type or index -- rather than by a QOM path. A
+>> QOM path locates a device under the object that owns it, by enumeration
+>> order, and so says nothing about where the device actually sits in the
+>> bus topology. From a QOM anchor DeviceLocator instead walks the bus and
+>> device hierarchy, alternating bus and device hops, to reach the target.
+>>
+>> It relies only on standard QOM queries over QMP, needing no custom
+>> commands or changes to QEMU.
+> 
+> Let's recap first :
+> 
+> Several recent threads have touched the same topic: QOM
+> composition-tree paths encode ownership, but developers and tests
+> regularly need to identify devices by their position in the bus
+> topology. The threads in question:
+> 
+>    - "[PATCH v5 0/8] hw/sensor: Add new device emulation for TI ADC128D818" [1]
+>    - "Call to clean up QOM onboard devices lacking a parent" [2]
+>    - "[PATCH RFC 001/134] qom: Introduce object_new_child()" [3]
+>    - "[PATCH RFC v2 0/137] qom: Make composition-tree parenting mandatory" [4]
+>    - "[PATCH v2 0/25] hw/arm: Facebook SanMiguel BMC and TMP75-family sensors" [5]
+> 
+> 
+> * The problem
+> 
+> QEMU has two device hierarchies serving different purposes:
+> 
+>    - The QOM composition tree describes parent/child ownership.  Every
+>      object has exactly one parent. Paths look like:
+>      /machine/soc/i2c-controller/child-device.
+>    - The bus topology describes electrical connectivity (visible
+>      through "info qtree"). A device sits on a bus at an address.
+> 
+> Devices created without an explicit QOM parent fall into
+> /machine/unattached/device[N], the "orphanage", with names that depend
+> on enumeration order and are therefore unstable. Markus identified
+> 380+ such devices across all QEMU machines [2]. Even with a stable QOM
+> path, the path says nothing about where the device sits in the bus
+> topology or what purpose it serves.
+> 
+> 
+> * Three approaches on the table
+> 
+>    1. Mandatory QOM parenting (Graf [3][4] / Armbruster [2])
+>       object_new_child() and per-bus creators enforce parenting at
+>       creation time. Deletes the orphanage. Scope: 440 files, 137
+>       patches.
+> 
+>    2. Bus-child parenting (Blot [1], rejected)
+>       i2c_slave_create_simple() would parent slaves to their bus,
+>       named by hex address (e.g. /machine/i2c[0]/i2c-bus/0x6f).
+> 
+>    3. DeviceLocator (Blot [5])
+>       Pure-Python helper that resolves devices by bus-position
+>       descriptors like:
+> 
+>         /machine/soc::aspeed.i2c-ast2600[0]~i2c[9]~tmp75@0x4b
+> 
+>       It walks the bus/device hierarchy using only qom-list/qom-get
+>       over QMP, no QEMU code changes needed. 600 lines of python.
+> 
+> 
+> * /machine/labels: DT-style alias container for QOM
+> 
+> The idea: add a flat container /machine/labels under the machine, where
+> board code registers link<> properties pointing to devices by
+> purpose name. Like device tree /aliases (serial0  > /soc/uart@9000000).
+> 
+> Container creation is one line in qemu_create_machine_containers().
+> QMP introspection works today: qom-get /machine/labels/rtc returns the
+> target's canonical path.
+> 
+> A small helper is all that is needed:
+> 
+>    void machine_add_label(const char *label, Object *target)
+>    {
+>        object_property_add_const_link(
+>            machine_get_container("labels"), label, target);
+>    }
+> 
+> Board code registers one label per well-known device:
+> 
+>    machine_add_label("rtc", OBJECT(dev));
+>    machine_add_label("tmp75-bus9-0x4b", OBJECT(sensor));
+> 
+> Tests resolve devices with a single QMP call instead of walking
+> the bus hierarchy.  For the common case, functional tests targeting
+> specific board devices (SanMiguel TMP75s, Catalina PCA9555s, Anacapa
+> ADC128D818s), the board author already knows which devices matter.
+> 
+> Thoughts?
+> 
+> Thanks,
+> 
+> C.
+> 
+> [1] https://lore.kernel.org/qemu-devel/20260701-i2c-adc128d818-anacapa-v5-6- 
+> fe8292d86b38@free.fr
+> [2] https://lore.kernel.org/qemu-devel/87se5scipx.fsf@pond.sub.org
+> [3] https://lore.kernel.org/qemu-devel/20260711223707.42139-1-graf@amazon.com
+> [4] https://lore.kernel.org/qemu-devel/20260718213652.37673-1-graf@amazon.com
+> [5] https://lore.kernel.org/qemu-devel/20260731-sanmiguel-bmc-locator- 
+> v2-0-1266926ba769@free.fr
+
+I remember expressing a similar idea a while back in a private thread but as 
+/machine/aliases, possibly with Pierrick and Phil?
+
+The problem I was trying to solve was how to access in-built PCI buses and NIC 
+devices from the command line consistently without resorting to various hacks such as 
+having to use -nic to connect an in-built NIC to a backend: instead expose the 
+frontend as an alias that can be referenced by the backend, so the exact QOM path is 
+fixed and doesn't matter.
+
+I'd certainly be interested to see the design fleshed out in more detail to explore 
+more potential use cases.
 
 
-> On 5. Sep 2026, at 08:37, Mohamed Mediouni <mohamed@unpredictable.fr> =
-wrote:
->=20
->=20
->=20
->> On 5. Sep 2026, at 02:48, Showta Ishizaki <zakinko@snowrabbit.org> =
-wrote:
->>=20
->>=20
->> A guest that reads MDCCSR_EL0 under hvf is killed.  The register has =
-no
->> case in hvf_sysreg_read(), so it reaches the unhandled path and hvf
->> injects an undefined instruction:
->>=20
->>   trace_hvf_unhandled_sysreg_read(env->pc, reg, ...);
->>   hvf_raise_exception(cpu, EXCP_UDEF, syn_uncategorized(), 1);
->>=20
->> The TCG path does not do this.  debug_helper.c defines MDCCSR_EL0 as
->> ARM_CP_CONST with resetvalue 0, and the comment on the neighbouring =
-DCC
->> registers gives the reason:
->>=20
->>   However we implement RAZ/WI behaviour with trapping to prevent
->>   spurious SIGILLs if the guest OS does access them as the support
->>   cannot be probed for.
->>=20
->> That argument holds for hvf as much as for TCG, so do the same there.
->>=20
->> The read only reaches QEMU since 37863fff59 ("hvf: arm: enable vGIC =
-by
->> default for virt-11.1 and later").  With -M virt,kernel-irqchip=3Doff =
-the
->> trace point does not fire at all, so before that change the register =
-was
->> never trapped out.
->>=20
->> NetBSD/aarch64 hits this on every boot.  vmt(4) probes for the VMware
->> backdoor, which on arm64 is a read of MDCCSR_EL0 with a magic value =
-in
->> x7, and the injected undefined instruction is fatal in kernel mode:
->>=20
->>   [   1.0000000] cpu0 at acpi0: unknown CPU (ID =3D 0x610f0000), id =
-0x0
->>   [   1.0000000] panic: Trap: fatal Unknown Reason (Illegal =
-Instruction):
->>     pc=3Dffffc000003fa318 sp=3Dffffc000010262e0 esr=3D02000000
->>   [   1.0000000] fp ffffc000010262f0 vmt_probe() at =
-netbsd:vmt_probe+0x3c
->>   [   1.0000000] fp ffffc00001026340 vmt_match() at =
-netbsd:vmt_match+0x1c
->>=20
->> The pc in the panic is the same pc the trace point reports, and the
->> encoding it reports is MDCCSR_EL0:
->>=20
->>   hvf_unhandled_sysreg_read unhandled sysreg read at =
-pc=3D0xffffc000003fa318:
->>     0x0020c002 (op0=3D2 op1=3D3 crn=3D0 crm=3D1 op2=3D0)
->>=20
->> With this patch the same image boots to login on -M virt -accel hvf, =
-and
->> the trace point does not fire.
->>=20
->> Fixes: 37863fff59e0 ("hvf: arm: enable vGIC by default for virt-11.1 =
-and later")
->> Signed-off-by: Showta Ishizaki <zakinko@snowrabbit.org>
->=20
-> Signed-off-by: Mohamed Mediouni <mohamed@unpredictable.fr>
-*Reviewed-by
+ATB,
 
-Oops.
-
-Will submit this as part of a rollup series or it=E2=80=99ll be taken on =
-its own.
->> ---
->> target/arm/hvf/hvf.c | 10 ++++++++++
->> 1 file changed, 10 insertions(+)
->>=20
->> diff --git a/target/arm/hvf/hvf.c b/target/arm/hvf/hvf.c
->> index da3ec521fc..b00a7e1a84 100644
->> --- a/target/arm/hvf/hvf.c
->> +++ b/target/arm/hvf/hvf.c
->> @@ -234,6 +234,7 @@ void hvf_arm_init_debug(void)
->> #define SYSREG_ICC_SRE_EL1       SYSREG(3, 0, 12, 12, 5)
->>=20
->> #define SYSREG_MDSCR_EL1      SYSREG(2, 0, 0, 2, 2)
->> +#define SYSREG_MDCCSR_EL0     SYSREG(2, 3, 0, 1, 0)
->> #define SYSREG_DBGBVR0_EL1    SYSREG(2, 0, 0, 0, 4)
->> #define SYSREG_DBGBCR0_EL1    SYSREG(2, 0, 0, 0, 5)
->> #define SYSREG_DBGWVR0_EL1    SYSREG(2, 0, 0, 0, 6)
->> @@ -1756,6 +1757,15 @@ static int hvf_sysreg_read(CPUState *cpu, =
-uint32_t reg, uint64_t *val)
->>    case SYSREG_MDCCINT_EL1:
->>        assert_hvf_ok(hv_vcpu_get_sys_reg(cpu->accel->fd, =
-HV_SYS_REG_MDCCINT_EL1, val));
->>        return 0;
->> +    case SYSREG_MDCCSR_EL0:
->> +        /*
->> +         * The Debug Communications Channel is not implemented, so =
-RAZ,
->> +         * which is what the TCG path in debug_helper.c does.  A =
-guest
->> +         * cannot probe for DCC support, so injecting an undefined
->> +         * instruction here turns a legal read into a fatal trap.
->> +         */
->> +        *val =3D 0;
->> +        return 0;
->>    case SYSREG_ICC_AP0R0_EL1:
->>    case SYSREG_ICC_AP0R1_EL1:
->>    case SYSREG_ICC_AP0R2_EL1:
->> --=20
->> 2.50.1 (Apple Git-155)
->>=20
->>=20
->=20
->=20
+Mark.
 
 

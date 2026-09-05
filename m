@@ -4,99 +4,108 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 89445C79F87
-	for <qemu-arm@archiver.kernel.org>; Fri,  4 Sep 2026 20:04:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6CA6BC624D6
+	for <qemu-arm@archiver.kernel.org>; Sat,  5 Sep 2026 03:40:20 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1x2a4R-0008JX-6i; Fri, 04 Sep 2026 15:59:31 -0400
+	id 1x2hG1-0005Ly-6t; Fri, 04 Sep 2026 23:39:57 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <marcandre.lureau@redhat.com>)
- id 1x2a4Q-0008E2-0E
- for qemu-arm@nongnu.org; Fri, 04 Sep 2026 15:59:30 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <marcandre.lureau@redhat.com>)
- id 1x2a4O-0007xO-FM
- for qemu-arm@nongnu.org; Fri, 04 Sep 2026 15:59:29 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1788551967;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=3lpC35gmliS0QhA1JkmfqWaHkZxlzKVeH5o0OEMIMN4=;
- b=SdzcUjAwVxOIyXgLgEYclH9ZwVw4Jj+RWnXyLrfDog0i9u6uHG4Bq+ql0qx3A1gZnugPFL
- mHcB9RfLWloL0pivLdIrAmhYwb6XCnDcQWkbknITKXAmoy75rGd+1C5jc0WOYCpgw0bawG
- 5mdaBeeQ+fgQLs5LDUbKmm4bdZRCUm8=
-Received: from mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
- relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-383-8i0tEDf3N3qKvRcq5y3OyQ-1; Fri,
- 04 Sep 2026 15:59:26 -0400
-X-MC-Unique: 8i0tEDf3N3qKvRcq5y3OyQ-1
-X-Mimecast-MFC-AGG-ID: 8i0tEDf3N3qKvRcq5y3OyQ_1788551965
-Received: from mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com
- (mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.12])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
- (No client certificate requested)
- by mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 6EB6A1956047; Fri,  4 Sep 2026 19:59:25 +0000 (UTC)
-Received: from localhost (headnet05.pony-001.prod.iad2.dc.redhat.com
- [10.2.32.117])
- by mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id 672A91955F0D; Fri,  4 Sep 2026 19:59:24 +0000 (UTC)
-From: =?utf-8?q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>
-Date: Fri, 04 Sep 2026 23:58:04 +0400
-Subject: [PATCH v4 21/75] arm/virt: convert OnOffAuto acpi property to
- QAPI-aware registration
+ (Exim 4.90_1) (envelope-from <bmeng.cn@gmail.com>)
+ id 1x2hFy-0005LA-Vy
+ for qemu-arm@nongnu.org; Fri, 04 Sep 2026 23:39:55 -0400
+Received: from mail-yx1-xb12b.google.com ([2607:f8b0:4864:20::b12b])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <bmeng.cn@gmail.com>)
+ id 1x2hFx-0002iW-D9
+ for qemu-arm@nongnu.org; Fri, 04 Sep 2026 23:39:54 -0400
+Received: by mail-yx1-xb12b.google.com with SMTP id
+ 956f58d0204a3-66825847b2cso2487806d50.3
+ for <qemu-arm@nongnu.org>; Fri, 04 Sep 2026 20:39:52 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1788579592; cv=none;
+ d=google.com; s=arc-20260327;
+ b=ZNI8jK/MW50/NpkIC4f5LGgrxRoaaOzqXC9/wTYI8oe/JIl2f1hurHmg9YRMQFjEah
+ G3Ia5NFTtnSuGJqUyJICnrJjq9qDJPi6i6SCNf39KrkRSE1bOTQyJopTQa185OIZh7lh
+ sGFh9yCEFE1a6V5o7vIc58UK2kvttEO+aMtdsBPZxmKdsa42dbS7pcFMTRSr8aN9W2EO
+ kkYxiIv4fchWUBl+iq+TXi8pxMt3uclDoAcrFYYSdlYgn19HS5SKGrPPClafBIWrYAmc
+ p5k9ov7FUCJHbv0r3pX1MLKRTNpQ2lkOGN+Ml99fL4uDjkot2QJBQwahMbfrNu5jxfH9
+ CICQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
+ s=arc-20260327; 
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:dkim-signature;
+ bh=rzbwC/ilmvK8jnnL7I9sI0lsBoFFsh2E9mngGh+h4bw=;
+ fh=QcQJPsE3WoQFzXKxw0jJgRAOO4Hsl3O2BH0PowFaxaI=;
+ b=o210PJEAegaUi+T1+KR/GNWb96L794kAVlzUyvHJ1wjpCcT1WX+EH32fEeDcxAnTeo
+ 2uIGT9h7mWEHysSS6Bhu0IEmTWlJ/kvAGxuprX0KiVUWcOQS9z7nX5oL/nJVTizTM8qy
+ 8x88BMI+OkqE548Sqf51E3xWhEa0Ijz+04p0MVPg40F2/v5zxOZgyB9y2Hc7bg2a3WZ5
+ FvqzYMFSz3c2HszAjj47AcslNhZGmDWM0sJWDqwQ7bxiiTDe2LD8xYhaBxyz/Jms4v+B
+ hnNm5BhQ/Me8SNOaLWOvYYzJSEFTMfeJrfW5VuVSOHX+B2rWFnjdPKiqKa+evb8XBaWK
+ lEsA==; darn=nongnu.org
+ARC-Authentication-Results: i=1; mx.google.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=gmail.com; s=20251104; t=1788579592; x=1789184392; darn=nongnu.org;
+ h=content-transfer-encoding:content-type:cc:to:subject:message-id
+ :date:from:in-reply-to:references:mime-version:from:to:cc:subject
+ :date:message-id:reply-to:content-type;
+ bh=rzbwC/ilmvK8jnnL7I9sI0lsBoFFsh2E9mngGh+h4bw=;
+ b=oxx8dGPQC0dw7MuMU/DFbNDG1ResInLp/EVISYxNowoPcfX2p1eF/BCVLtN4mldxFc
+ YDQmOrL2WDgW4w3qC4r++D/BoG5gyV9z5bYI1B9CM64ogm9Tfb3UWRDxFN2OU6ojV+6P
+ 3hDwjWkTH73XG17GKRDFaXovMy88JwBtGNnfOxXrIYIk484HCvg8oZs4iEkc5mLv+EgR
+ 2gDDRyh+5Mlj4UREcpOuksC4BpnWyO6l2ZUUT8RFyXXdtDeZjxPT/TLTctaVReY9Z6W+
+ KCWT8SebdxICuK8tVjfABfgd2lexCGKz01zQw2GSVT8uewmOhLWesxqSkqh2OvQqCjvq
+ AQrg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20251104; t=1788579592; x=1789184392;
+ h=content-transfer-encoding:content-type:cc:to:subject:message-id
+ :date:from:in-reply-to:references:mime-version:x-gm-gg
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
+ :content-type;
+ bh=rzbwC/ilmvK8jnnL7I9sI0lsBoFFsh2E9mngGh+h4bw=;
+ b=RfbSRnbGyd4535qOh99KheNku/HFZvYSPXq2e86QTVM5sDibTTkdhDmfk9CLSLxblQ
+ AgprUr8eXzk0D6ADFUfUZsuZG0O1qc9IAdpX5xx5NtxgsaT7+l30zIEsOH1T/fX8L6aR
+ CkJBtVCx7qWkhYKSABtevezjmy2qxIejDML0+favoJSe1WZfKLO1KXphf/CsnCu/k4QZ
+ J5Mx6MpQ+F4plnorxpFCvgdaClD0GBMV3tJDALCfBRS9CW4dsh8mKanL0eQzYpKjeR7J
+ IvNkXIrCVksY3AjNAATNGj01sOdBWBj4bY5FeIWz+O2hXoWkngY0mJ6uFbyAiWefZjdE
+ ZCZA==
+X-Forwarded-Encrypted: i=1;
+ AKwUvBwzFZ1vQUU38w3avy1DVTk7l2XlKaXbrLPQuB7m7c1fqDil4gJNnR0UDTTzaGLwwACEVe/mUXsPyw==@nongnu.org
+X-Gm-Message-State: AFuF++lh+lZp6GO3FqmxKO4Ub2dWP0v9JAARReK1P8M0LvNJh/TDurt0
+ U6rbJO4R1XjYr6QmOb4wVjxeAOXlZ9SvhMSBbMEfrCB8Xm1h/sE7SkLN0kbfPxIt+vvfVlVwDo9
+ 03mLXoF/NTlqJNlT15LSw8akDbAYbjbo=
+X-Gm-Gg: AYBFou1wgnFKo4bwqZkTKnEzNUr3UBsnapHd+vBGHfpjd06jlcLHVjlEwE/wJXsxMFB
+ F72mkRTMu7rtKyzInLon7R0j6ZWI04EEHpVQiMpA4G5orER0l4Tk+tCP8Ln66XHbElqLrJwE3+Z
+ G/0+rvlc0kb2fmUe8NK8nOEXRb/r1x8TnACeUbVcwMeXx7dK6FpUtlCdTQXd3wbB0TKMiQAtsg8
+ fpeR9ndofYEXbBZaDnftE4fI6Pegv01gexTBvmP9d4H6CC6Y4Ydn5yKWrCOxbpHP1ScJFoVoxIN
+ 9f9cfxZYjtlIoI7+0cbwG4fvzZkLlQ6l+WBp16LmmRSZ
+X-Received: by 2002:a05:690c:a785:b0:855:f387:98c0 with SMTP id
+ 00721157ae682-87127d27776mr43840637b3.29.1788579591883; Fri, 04 Sep 2026
+ 20:39:51 -0700 (PDT)
 MIME-Version: 1.0
-Message-Id: <20260904-qom-qapi-v4-21-a985f168e938@redhat.com>
-References: <20260904-qom-qapi-v4-0-a985f168e938@redhat.com>
-In-Reply-To: <20260904-qom-qapi-v4-0-a985f168e938@redhat.com>
-To: qemu-devel@nongnu.org
-Cc: Markus Armbruster <armbru@redhat.com>, 
- Paolo Bonzini <pbonzini@redhat.com>, 
- =?utf-8?q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>, 
- =?utf-8?q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>, 
- Michael Roth <michael.roth@amd.com>, 
- Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>, 
- =?utf-8?q?Philippe_Mathieu-Daud=C3=A9?= <philmd@oss.qualcomm.com>, 
+References: <20260903112532.3276678-1-bin.meng@processmission.com>
+ <20260903112532.3276678-2-bin.meng@processmission.com>
+ <87se3qpf4x.fsf@draig.linaro.org>
+In-Reply-To: <87se3qpf4x.fsf@draig.linaro.org>
+From: Bin Meng <bmeng.cn@gmail.com>
+Date: Sat, 5 Sep 2026 11:39:40 +0800
+X-Gm-Features: AcwNN1WTEVDvs7JUX3hpWoNfiCqb5XmV5RroKj4RSGCZC9Le6xo1Dixu7v5-QZo
+Message-ID: <CAEUhbmVU6Ccwaqr8xW78+VCc1BHWcjMvpejgbNe8GxWg1fKQnQ@mail.gmail.com>
+Subject: Re: [PATCH 01/33] target/arm: Add Phytium FTC310 and FTC664 CPU models
+To: =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>
+Cc: Bin Meng <bin.meng@processmission.com>, QEMU <qemu-devel@nongnu.org>, 
  Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org
-X-Developer-Signature: v=1; a=openpgp-sha256; l=2389;
- i=marcandre.lureau@redhat.com; h=from:subject:message-id;
- bh=VEvZEB5tSbvTYsPJm20+OtQi7DOxjCPx8lu+wm1r8Ps=;
- b=owEBbQKS/ZANAwAKAdro4Ql1lpzlAcsmYgBqmyLJ/fLQRfE/vroLpHvG+0f9Rk8Szia1Mg+uW
- ZLOi25zyV+JAjMEAAEKAB0WIQSHqb2TP4fGBtJ29i3a6OEJdZac5QUCapsiyQAKCRDa6OEJdZac
- 5YbUEACRdNG2sNnnT77kOmUNszO4+GO37PX+dBHqqej/DTyrIzYP8fDRaHHwKm+qjnHcqvqzmda
- mjvh+fWtIOdhNerJTtVC7E2NSIXG3y+AECQ32jMjDoopNdEUki4VJ0IEh2D92V/l6Q3zZGkD6GN
- JVReXOOzmU7N1aV3H4+WA8+ziCauJBF7MvnLnGPoSgFmKqQCuVe3YX0RNEcIrKCXZGlT4zpUlI1
- v6aHwYRrRWsX87YO4QdImbgSU+eczpb1mcMv0EsCWvUkO+dPmsrr4mKZb1Dxr79cOrIyRTi/tg6
- +sKfv1QLYwDcVNdD+EuMN+S3ikPiaSLMCs/HXq64AAOtURFh8bp7xLDQicd3anKHEsadbJJHeeO
- j2jVXAZNiZZvPVhbs1DdXiCmW1Y+wj2AUJMZLrbEwCyY2pKBBENvauF4fy2PeQN1rh3gHycW3jI
- 7x86VBZfJqIFarR5eXENAry6tqQlvXSSnFF6sQM7B684u6fFCyezb30oZnEYMAPqjw/OVW2nIlo
- 3oYXw259aJkf7H8mJceWAdjKPna3pk07no9eKfHUeG0OyTCxv+JJf7ENDdMpxEkOkUxct6wCb8O
- oCeNZWLHpvLni667VW+brsc0enr7VaHfj2lTnReHvYcCLWb0oebQw/XFSspZj/BMZNbK7NQg1eu
- LD3FQL1hDq0f1gA==
-X-Developer-Key: i=marcandre.lureau@redhat.com; a=openpgp;
- fpr=87A9BD933F87C606D276F62DDAE8E10975969CE5
-X-Scanned-By: MIMEDefang 3.0 on 10.30.177.12
-X-Mimecast-MFC-PROC-ID: WQPSJeNErJ9xtAJ7CJwM8qEuOSdHH_Bg9SGIKUShv7c_1788551965
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=170.10.129.124;
- envelope-from=marcandre.lureau@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: 12
-X-Spam_score: 1.2
-X-Spam_bar: +
-X-Spam_report: (1.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=0.001, RCVD_IN_SBL_CSS=3.335,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=no autolearn_force=no
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2607:f8b0:4864:20::b12b;
+ envelope-from=bmeng.cn@gmail.com; helo=mail-yx1-xb12b.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -112,74 +121,64 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Convert the acpi OnOffAuto property from manual visitor-based
-callbacks to property_add_qapi_enum().
+Hi Alex,
 
-Signed-off-by: Marc-André Lureau <marcandre.lureau@redhat.com>
----
- hw/arm/virt.c | 27 ++++++++++++---------------
- 1 file changed, 12 insertions(+), 15 deletions(-)
+On Thu, Sep 3, 2026 at 10:48=E2=80=AFPM Alex Benn=C3=A9e <alex.bennee@linar=
+o.org> wrote:
+>
+> Bin Meng <bin.meng@processmission.com> writes:
+>
+> > The Phytium E2000Q combines two FTC310 cores and two FTC664 cores.
+> > Its EL3 firmware accesses implementation-defined system registers
+> > while setting up the cores. Using generic Cortex-A72 CPUs leaves
+> > these registers undefined and traps firmware before it can reach
+> > U-Boot.
+> >
+> > Add FTC310 and FTC664 CPU types using Cortex-A72 as their common
+> > execution base. Provide conservative RAZ/WI and NOP stubs for the
+> > firmware-visible E2000 controls that have no modeled behavior.
+> >
+> > Set each CPU DT compatible string, MIDR, instruction feature fields,
+> > AArch32 floating-point feature fields, and CTR_EL0.L1Ip field to
+> > values observed on an E2000Q board. The FTC310 reports a VIPT
+> > instruction cache, while the FTC664 reports a PIPT instruction cache.
+> >
+> > Signed-off-by: Bin Meng <bin.meng@processmission.com>
+> > ---
+> >
+> >  target/arm/tcg/cpu64.c | 81
+> >  ++++++++++++++++++++++++++++++++++++++++++
+>
+> I wonder if cpu64 is the best place to model this? The alternative is to
+> treat it like other SoCs (e.g. the Pi's BCM SoCs). Was the reason it
+> ended up here because you needed access to aarch64_a72_initfn? Could you
+> not instantiate:
+>
+>     soc_base->cpu_type =3D ARM_CPU_TYPE_NAME("cortex-a72");
+>
+> and then at realize:
+>
+>     object_initialize_child(OBJECT(dev), "cpu[*]", &s->cpu[n].core,
+>                                 soc_base->cpu_type);
+>
+> or does that not allow for tweaking the CP regs?
+>
 
-diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-index 0871a35e11f7..872920b6482b 100644
---- a/hw/arm/virt.c
-+++ b/hw/arm/virt.c
-@@ -73,7 +73,7 @@
- #include "whpx_arm.h"
- #include "hw/firmware/smbios.h"
- #include "qapi/visitor.h"
--#include "qapi/qapi-visit-common.h"
-+#include "qapi/qapi-type-infos-common.h"
- #include "qobject/qlist.h"
- #include "standard-headers/linux/input.h"
- #include "hw/arm/smmuv3.h"
-@@ -3567,21 +3567,16 @@ bool virt_is_acpi_enabled(const VirtMachineState *vms)
-     return true;
- }
- 
--static void virt_get_acpi(Object *obj, Visitor *v, const char *name,
--                          void *opaque, Error **errp)
-+static int virt_get_acpi(Object *obj, Error **errp)
- {
-     VirtMachineState *vms = VIRT_MACHINE(obj);
--    OnOffAuto acpi = vms->acpi;
--
--    visit_type_OnOffAuto(v, name, &acpi, errp);
-+    return vms->acpi;
- }
- 
--static void virt_set_acpi(Object *obj, Visitor *v, const char *name,
--                          void *opaque, Error **errp)
-+static void virt_set_acpi(Object *obj, int value, Error **errp)
- {
-     VirtMachineState *vms = VIRT_MACHINE(obj);
--
--    visit_type_OnOffAuto(v, name, &vms->acpi, errp);
-+    vms->acpi = value;
- }
- 
- static bool virt_get_ras(Object *obj, Error **errp)
-@@ -4208,11 +4203,13 @@ static void virt_machine_class_init(ObjectClass *oc, const void *data)
-     mc->default_ram_id = "mach-virt.ram";
-     mc->default_nic = "virtio-net-pci";
- 
--    object_class_property_add(oc, "acpi", "OnOffAuto",
--        virt_get_acpi, virt_set_acpi,
--        NULL, NULL);
--    object_class_property_set_description(oc, "acpi",
--        "Enable ACPI");
-+    object_class_property_add_qapi_enum(oc, QAPI_ENUM_PROP(
-+        .name = "acpi",
-+        .description = "Enable ACPI",
-+        .qapi_type = &OnOffAuto_type_info,
-+        .get = virt_get_acpi,
-+        .set = virt_set_acpi,
-+    ));
-     object_class_property_add_bool(oc, "secure", virt_get_secure,
-                                    virt_set_secure);
-     object_class_property_set_description(oc, "secure",
+I followed your advice and that worked like a charm. Will move the
+Phytium-specific CPU type in the SoC/machine codes in v2.
 
--- 
-2.55.0.543.g5ebe2ebe4ea8
+>
+> >  1 file changed, 81 insertions(+)
+> >
+> > diff --git a/target/arm/tcg/cpu64.c b/target/arm/tcg/cpu64.c
+> > index affd87a3ae..0fd2f79bbc 100644
+> > --- a/target/arm/tcg/cpu64.c
+> > +++ b/target/arm/tcg/cpu64.c
+> > @@ -336,6 +336,85 @@ static void aarch64_a72_initfn(Object *obj)
+> >      define_cortex_a72_a57_a53_cp_reginfo(cpu);
+> >  }
+> >
 
+Regards,
+Bin
 

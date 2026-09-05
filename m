@@ -4,45 +4,46 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6DA0BC624D3
-	for <qemu-arm@archiver.kernel.org>; Sat,  5 Sep 2026 12:46:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 44009C79F8B
+	for <qemu-arm@archiver.kernel.org>; Sat,  5 Sep 2026 15:21:24 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1x2pmD-0003j5-QI; Sat, 05 Sep 2026 08:45:45 -0400
+	id 1x2sCN-000616-F2; Sat, 05 Sep 2026 11:20:55 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mark.cave-ayland@ilande.co.uk>)
- id 1x2pmA-0003hm-0q; Sat, 05 Sep 2026 08:45:42 -0400
-Received: from mail.ilande.co.uk ([2001:41c9:1:41f::167])
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1x2sCM-00060p-68
+ for qemu-arm@nongnu.org; Sat, 05 Sep 2026 11:20:54 -0400
+Received: from smtpout4.mo536.mail-out.ovh.net ([51.210.91.13])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mark.cave-ayland@ilande.co.uk>)
- id 1x2pm6-0007c3-33; Sat, 05 Sep 2026 08:45:40 -0400
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=ilande.co.uk; s=20220518; h=Subject:Content-Transfer-Encoding:Content-Type:
- In-Reply-To:From:References:Cc:To:MIME-Version:Date:Message-ID:Sender:
- Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
- :Resent-To:Resent-Cc:Resent-Message-ID;
- bh=YkjcjKmiHVI2Nkv/26u3ssl/h0M5IaTbKeJMyDsJT/0=; b=A+xoInWv7cW5y+NumXglBKtskP
- SqV7pc+BMyEWdKkhj19wnidDTAjE9bSKOIZ8G9ei8zuNQl8sjhN3W2ifq6AbhbA8wmB9N0AwSG3pH
- t07jSPmCFjSAP41T6Rt1Za0q1qXFk7eRGCJ1E04bHHM/GLgjwBDQkqmRrHeStHfG6bsQ31AVG01Wg
- X7LoO3ajqXHUi8C1LOsYBB6ns5P86zcZNu5l+gonMT4ptJE8NE6r8+KjIRYGrG4mXbRXJ4fyjhyCE
- eXOPaG1lT2qax+Bwyk7cv5UUWAUL1GwzDrG2k7Rz8wJOAsWR18uz7gEsu7coyfIiJSH7a4AbimNT1
- 1gTxmc/gm5QXw76W6m1bjt1vt6m4RKJOs+DdQKsLdpofbJBOZN38Y24oPsBaLDl7Fdeww7pMTbXSf
- 7M7VyVvAxHcwNh9xDbrIis39NlBY7NeyrlenLLvWfFhGj4UckfBi59H1M+efCGPfxy1bnD5+v43Sw
- hwVn5MAE16Vu03qq/E8PEmP1/h+V+sLFVo80Vfc8InAH72+8zEMsFcokCpwLyr4x3jO9oaHCwt4Li
- 6ltVFW5q3AJbtxqaE/bbSCP9pRKNjR+tfjrpm9zjU0PNG7daS2v878xbkwSwWPaNZ0LbX73rJer9U
- UNC53w+KmvRP7/qZGLL7Lz+sZ5xZOGqk2CVLhxNX8=;
-Received: from [2a02:8012:2f01:0:fe49:60b9:9856:b8ef]
- by mail.ilande.co.uk with esmtpsa (TLS1.3) tls
- TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256 (Exim 4.94.2)
- (envelope-from <mark.cave-ayland@ilande.co.uk>)
- id 1x2plL-00CMJ3-VK; Sat, 05 Sep 2026 13:44:52 +0100
-Message-ID: <bdbdec6f-91a6-4c70-a818-ef2b1fbe4ad5@ilande.co.uk>
-Date: Sat, 5 Sep 2026 13:45:13 +0100
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1x2sCJ-0003VS-EM
+ for qemu-arm@nongnu.org; Sat, 05 Sep 2026 11:20:53 -0400
+Received: from director1.derp.mail-out.ovh.net
+ (director1.derp.mail-out.ovh.net [79.137.60.221])
+ by mo536.mail-out.ovh.net (Postfix) with ESMTPS id 4hccV016wFz886K;
+ Sat,  5 Sep 2026 15:20:39 +0000 (UTC)
+Received: from director1.derp.mail-out.ovh.net
+ (director1.derp.mail-out.ovh.net. [127.0.0.1])
+ by director1.derp.mail-out.ovh.net (inspect_sender_mail_agent) with SMTP
+ for <jamin_lin@aspeedtech.com>; Sat,  5 Sep 2026 15:20:39 +0000 (UTC)
+Received: from mta3.priv.ovhmail-u2.ea.mail.ovh.net (unknown [10.110.37.242])
+ by director1.derp.mail-out.ovh.net (Postfix) with ESMTPS id
+ 4hccTz3PVKz6Nmj; Sat,  5 Sep 2026 15:20:39 +0000 (UTC)
+Received: from kaod.org (unknown [10.1.6.3])
+ (Authenticated sender: clg@kaod.org)
+ by mta3.priv.ovhmail-u2.ea.mail.ovh.net (Postfix) with ESMTPSA id CEFDA12E400D;
+ Sat,  5 Sep 2026 15:20:33 +0000 (UTC)
+Authentication-Results: garm.ovh; auth=pass
+ (GARM-96R0010f0623f6-1afa-4200-b43d-6260703dee1b,
+ C5A412D0C323687AB51699137568C5B956514C2B) smtp.auth=clg@kaod.org
+X-OVh-ClientIp: 92.184.140.72
+Message-ID: <34122b5b-c6e0-4625-923c-ca7bc504ce1e@kaod.org>
+Date: Sat, 5 Sep 2026 17:20:31 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-To: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>,
+Subject: Re: Adding /machines/labels (was Re: [PATCH v2 18/25]
+ tests/functional: add a pure-Python device-locator resolver)
+To: Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
  Emmanuel Blot <emmanuel.blot@free.fr>, qemu-devel@nongnu.org
 Cc: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@mailo.com>,
  Peter Maydell <peter.maydell@linaro.org>,
@@ -57,43 +58,68 @@ Cc: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@mailo.com>,
 References: <20260731-sanmiguel-bmc-locator-v2-0-1266926ba769@free.fr>
  <20260731-sanmiguel-bmc-locator-v2-18-1266926ba769@free.fr>
  <cb1b5ec3-d7ba-42fe-a8ab-da7c236b1660@kaod.org>
-Content-Language: en-US
-From: Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
-Autocrypt: addr=mark.cave-ayland@ilande.co.uk; keydata=
- xsBNBFQJuzwBCADAYvxrwUh1p/PvUlNFwKosVtVHHplgWi5p29t58QlOUkceZG0DBYSNqk93
- 3JzBTbtd4JfFcSupo6MNNOrCzdCbCjZ64ik8ycaUOSzK2tKbeQLEXzXoaDL1Y7vuVO7nL9bG
- E5Ru3wkhCFc7SkoypIoAUqz8EtiB6T89/D9TDEyjdXUacc53R5gu8wEWiMg5MQQuGwzbQy9n
- PFI+mXC7AaEUqBVc2lBQVpAYXkN0EyqNNT12UfDLdxaxaFpUAE2pCa2LTyo5vn5hEW+i3VdN
- PkmjyPvL6DdY03fvC01PyY8zaw+UI94QqjlrDisHpUH40IUPpC/NB0LwzL2aQOMkzT2NABEB
- AAHNME1hcmsgQ2F2ZS1BeWxhbmQgPG1hcmsuY2F2ZS1heWxhbmRAaWxhbmRlLmNvLnVrPsLA
- eAQTAQIAIgUCVAm7PAIbAwYLCQgHAwIGFQgCCQoLBBYCAwECHgECF4AACgkQW8LFb64PMh9f
- NAgAuc3ObOEY8NbZko72AGrg2tWKdybcMVITxmcor4hb9155o/OWcA4IDbeATR6cfiDL/oxU
- mcmtXVgPqOwtW3NYAKr5g/FrZZ3uluQ2mtNYAyTFeALy8YF7N3yhs7LOcpbFP7tEbkSzoXNG
- z8iYMiYtKwttt40WaheWuRs0ZOLbs6yoczZBDhna3Nj0LA3GpeJKlaV03O4umjKJgACP1c/q
- T2Pkg+FCBHHFP454+waqojHp4OCBo6HyK+8I4wJRa9Z0EFqXIu8lTDYoggeX0Xd6bWeCFHK3
- DhD0/Xi/kegSW33unsp8oVcM4kcFxTkpBgj39dB4KwAUznhTJR0zUHf63M7ATQRUCbs8AQgA
- y7kyevA4bpetM/EjtuqQX4U05MBhEz/2SFkX6IaGtTG2NNw5wbcAfhOIuNNBYbw6ExuaJ3um
- 2uLseHnudmvN4VSJ5Hfbd8rhqoMmmO71szgT/ZD9MEe2KHzBdmhmhxJdp+zQNivy215j6H27
- 14mbC2dia7ktwP1rxPIX1OOfQwPuqlkmYPuVwZP19S4EYnCELOrnJ0m56tZLn5Zj+1jZX9Co
- YbNLMa28qsktYJ4oU4jtn6V79H+/zpERZAHmH40IRXdR3hA+Ye7iC/ZpWzT2VSDlPbGY9Yja
- Sp7w2347L5G+LLbAfaVoejHlfy/msPeehUcuKjAdBLoEhSPYzzdvEQARAQABwsBfBBgBAgAJ
- BQJUCbs8AhsMAAoJEFvCxW+uDzIfabYIAJXmBepHJpvCPiMNEQJNJ2ZSzSjhic84LTMWMbJ+
- opQgr5cb8SPQyyb508fc8b4uD8ejlF/cdbbBNktp3BXsHlO5BrmcABgxSP8HYYNsX0n9kERv
- NMToU0oiBuAaX7O/0K9+BW+3+PGMwiu5ml0cwDqljxfVN0dUBZnQ8kZpLsY+WDrIHmQWjtH+
- Ir6VauZs5Gp25XLrL6bh/SL8aK0BX6y79m5nhfKI1/6qtzHAjtMAjqy8ChPvOqVVVqmGUzFg
- KPsrrIoklWcYHXPyMLj9afispPVR8e0tMKvxzFBWzrWX1mzljbBlnV2n8BIwVXWNbgwpHSsj
- imgcU9TTGC5qd9g=
-In-Reply-To: <cb1b5ec3-d7ba-42fe-a8ab-da7c236b1660@kaod.org>
+ <bdbdec6f-91a6-4c70-a818-ef2b1fbe4ad5@ilande.co.uk>
+From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
+Content-Language: en-US, fr
+Autocrypt: addr=clg@kaod.org; keydata=
+ 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
+In-Reply-To: <bdbdec6f-91a6-4c70-a818-ef2b1fbe4ad5@ilande.co.uk>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-X-SA-Exim-Connect-IP: 2a02:8012:2f01:0:fe49:60b9:9856:b8ef
-X-SA-Exim-Mail-From: mark.cave-ayland@ilande.co.uk
-Subject: Re: Adding /machines/labels (was Re: [PATCH v2 18/25]
- tests/functional: add a pure-Python device-locator resolver)
-X-SA-Exim-Version: 4.2.1 (built Sat, 13 Feb 2021 17:57:42 +0000)
-X-SA-Exim-Scanned: Yes (on mail.ilande.co.uk)
-Received-SPF: pass client-ip=2001:41c9:1:41f::167;
- envelope-from=mark.cave-ayland@ilande.co.uk; helo=mail.ilande.co.uk
+Content-Transfer-Encoding: 7bit
+x-ovh-tracer-id: 3694922022858239021
+X-VR-SPAMSTATE: OK
+X-VR-SPAMSCORE: -100
+X-VR-SPAMCAUSE: dmFkZTExkUrLy+FmNXOmKmMG0E0GHqCromTFqkEW92jkqTMjg/io9x99q00wfqBvn70MySYJ82OAqPvAhxOkIummSJKmCShaT9ebTqzrvhzvUpB19TBLQTRCy2nJcPcWhiOnbkhz8rCc9wbdqUdz4D+ZkJiPrsSZbSBgr1W+c9pZ38FRyAfJEkynTMqlx2f3MbW/7y1UNtv599x+qKiQABFSCeUpK+329OO4vT9/M0JtHb98en0AoGPCma9h/1JYCZe17h160JxIb7lT7qWPXt85Yk6gxqknYo3hA3ej3p3eZ2c5FLJJT2jwoRI/VRmLjC1cLfaAU8t/AHSZfM4XUWLob50xJcDnFkZIHo50uxv4GwcG3meLbeX4vc/G6w+RxKdVvjeB+7WO78Go+rNHwhloBBeZaFy4qc0Y4ryVHX5MDy9DmWUtOy6dc4qWW9D4QqVUmg+VRdE5IVQ7AACLk/s3FYbV9OC1a4JZdUi37yRYFB2xdmJNFQI7/ATzgJqTOMLub5c4l8CnLQP3uC0VGpwb05N5is9vl7ZwRhRsduLjTOVzYGw27X3qjzNfX9tzHfmGE+aknx9IGbFT+cIJVoM4vPiXXHvVQS6gObZCZJqostocSe0SMb+u/kAKErxBTnEGZY+oVHChUujNPFpqLmEuqJsrHfdXM6yJ/U8lrOvGNXf+3w
+DKIM-Signature: a=rsa-sha256; bh=H6rv43ynrT1Gazu2B38ukvbekrxCMR7RU+AKUgILbtk=; 
+ c=relaxed/relaxed; d=kaod.org; h=From; s=ovhmo393970-selector1;
+ t=1788621641; v=1;
+ b=nacIxpLNgUozrCrQRFKVfQS7NxpwT4ugkAEW5/Wz+xQ1xwCNjVDdm8Ub/dkocZJCxDVBc4wX
+ zQEfKir8QkCaoHKh6hGk3lXxiEHMvkwR1ctOYDUG1P5j6xwg+XII224pI6t+aPze+uXyjArgC4P
+ A2KqXE2YBwmy+VJw8IJkwT6wVXjAUaL3Uky4njfD60LN8l6TalTEo9QeIuCbMQjze9zuYiX651L
+ LIyRPX/Ujbz2JCqvoyDV+kDvrq6JQ5pxTR834x1x1aCJYVTZZ+Ii8MPbZn/+C7pc6SXeLQx4CDH
+ lYF9xD2mndRL1EfF8fEsCY6Wg7CjJe/aAzz/a7tlM/Z3Q==
+Received-SPF: pass client-ip=51.210.91.13; envelope-from=clg@kaod.org;
+ helo=smtpout4.mo536.mail-out.ovh.net
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -115,129 +141,26 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On 03/09/2026 15:21, Cédric Le Goater wrote:
-
-> On 7/31/26 12:45, Emmanuel Blot wrote:
->> Add DeviceLocator, a helper that addresses a device by its position on
->> the bus -- bus, address, type or index -- rather than by a QOM path. A
->> QOM path locates a device under the object that owns it, by enumeration
->> order, and so says nothing about where the device actually sits in the
->> bus topology. From a QOM anchor DeviceLocator instead walks the bus and
->> device hierarchy, alternating bus and device hops, to reach the target.
->>
->> It relies only on standard QOM queries over QMP, needing no custom
->> commands or changes to QEMU.
-> 
-> Let's recap first :
-> 
-> Several recent threads have touched the same topic: QOM
-> composition-tree paths encode ownership, but developers and tests
-> regularly need to identify devices by their position in the bus
-> topology. The threads in question:
-> 
->    - "[PATCH v5 0/8] hw/sensor: Add new device emulation for TI ADC128D818" [1]
->    - "Call to clean up QOM onboard devices lacking a parent" [2]
->    - "[PATCH RFC 001/134] qom: Introduce object_new_child()" [3]
->    - "[PATCH RFC v2 0/137] qom: Make composition-tree parenting mandatory" [4]
->    - "[PATCH v2 0/25] hw/arm: Facebook SanMiguel BMC and TMP75-family sensors" [5]
-> 
-> 
-> * The problem
-> 
-> QEMU has two device hierarchies serving different purposes:
-> 
->    - The QOM composition tree describes parent/child ownership.  Every
->      object has exactly one parent. Paths look like:
->      /machine/soc/i2c-controller/child-device.
->    - The bus topology describes electrical connectivity (visible
->      through "info qtree"). A device sits on a bus at an address.
-> 
-> Devices created without an explicit QOM parent fall into
-> /machine/unattached/device[N], the "orphanage", with names that depend
-> on enumeration order and are therefore unstable. Markus identified
-> 380+ such devices across all QEMU machines [2]. Even with a stable QOM
-> path, the path says nothing about where the device sits in the bus
-> topology or what purpose it serves.
-> 
-> 
-> * Three approaches on the table
-> 
->    1. Mandatory QOM parenting (Graf [3][4] / Armbruster [2])
->       object_new_child() and per-bus creators enforce parenting at
->       creation time. Deletes the orphanage. Scope: 440 files, 137
->       patches.
-> 
->    2. Bus-child parenting (Blot [1], rejected)
->       i2c_slave_create_simple() would parent slaves to their bus,
->       named by hex address (e.g. /machine/i2c[0]/i2c-bus/0x6f).
-> 
->    3. DeviceLocator (Blot [5])
->       Pure-Python helper that resolves devices by bus-position
->       descriptors like:
-> 
->         /machine/soc::aspeed.i2c-ast2600[0]~i2c[9]~tmp75@0x4b
-> 
->       It walks the bus/device hierarchy using only qom-list/qom-get
->       over QMP, no QEMU code changes needed. 600 lines of python.
-> 
-> 
-> * /machine/labels: DT-style alias container for QOM
-> 
-> The idea: add a flat container /machine/labels under the machine, where
-> board code registers link<> properties pointing to devices by
-> purpose name. Like device tree /aliases (serial0  > /soc/uart@9000000).
-> 
-> Container creation is one line in qemu_create_machine_containers().
-> QMP introspection works today: qom-get /machine/labels/rtc returns the
-> target's canonical path.
-> 
-> A small helper is all that is needed:
-> 
->    void machine_add_label(const char *label, Object *target)
->    {
->        object_property_add_const_link(
->            machine_get_container("labels"), label, target);
->    }
-> 
-> Board code registers one label per well-known device:
-> 
->    machine_add_label("rtc", OBJECT(dev));
->    machine_add_label("tmp75-bus9-0x4b", OBJECT(sensor));
-> 
-> Tests resolve devices with a single QMP call instead of walking
-> the bus hierarchy.  For the common case, functional tests targeting
-> specific board devices (SanMiguel TMP75s, Catalina PCA9555s, Anacapa
-> ADC128D818s), the board author already knows which devices matter.
-> 
-> Thoughts?
-> 
-> Thanks,
-> 
-> C.
-> 
-> [1] https://lore.kernel.org/qemu-devel/20260701-i2c-adc128d818-anacapa-v5-6- 
-> fe8292d86b38@free.fr
-> [2] https://lore.kernel.org/qemu-devel/87se5scipx.fsf@pond.sub.org
-> [3] https://lore.kernel.org/qemu-devel/20260711223707.42139-1-graf@amazon.com
-> [4] https://lore.kernel.org/qemu-devel/20260718213652.37673-1-graf@amazon.com
-> [5] https://lore.kernel.org/qemu-devel/20260731-sanmiguel-bmc-locator- 
-> v2-0-1266926ba769@free.fr
-
-I remember expressing a similar idea a while back in a private thread but as 
-/machine/aliases, possibly with Pierrick and Phil?
-
-The problem I was trying to solve was how to access in-built PCI buses and NIC 
-devices from the command line consistently without resorting to various hacks such as 
-having to use -nic to connect an in-built NIC to a backend: instead expose the 
-frontend as an alias that can be referenced by the backend, so the exact QOM path is 
-fixed and doesn't matter.
-
-I'd certainly be interested to see the design fleshed out in more detail to explore 
-more potential use cases.
+Hell Mark,
 
 
-ATB,
+>> [1] https://lore.kernel.org/qemu-devel/20260701-i2c-adc128d818-anacapa-v5-6- fe8292d86b38@free.fr
+>> [2] https://lore.kernel.org/qemu-devel/87se5scipx.fsf@pond.sub.org
+>> [3] https://lore.kernel.org/qemu-devel/20260711223707.42139-1-graf@amazon.com
+>> [4] https://lore.kernel.org/qemu-devel/20260718213652.37673-1-graf@amazon.com
+>> [5] https://lore.kernel.org/qemu-devel/20260731-sanmiguel-bmc-locator- v2-0-1266926ba769@free.fr
+> 
+> I remember expressing a similar idea a while back in a private thread but as /machine/aliases, possibly with Pierrick and Phil?
+> 
+> The problem I was trying to solve was how to access in-built PCI buses and NIC devices from the command line consistently without resorting to various hacks such as having to use -nic to connect an in-built NIC to a backend: instead expose the frontend as an alias that can be referenced by the backend, so the exact QOM path is fixed and doesn't matter.
+> 
+> I'd certainly be interested to see the design fleshed out in more detail to explore more potential use cases.
 
-Mark.
+Here is a simple proposal for the aspeed machines :
 
+   https://lore.kernel.org/qemu-devel/20260904050424.4049984-1-clg@redhat.com/
+
+Thanks,
+
+C.
 

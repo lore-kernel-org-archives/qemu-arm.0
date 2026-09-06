@@ -4,51 +4,51 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C8BA6C79F99
-	for <qemu-arm@archiver.kernel.org>; Sun,  6 Sep 2026 19:45:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B9430C79F9E
+	for <qemu-arm@archiver.kernel.org>; Sun,  6 Sep 2026 19:45:42 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1x3Ini-0002WO-FK; Sun, 06 Sep 2026 15:45:14 -0400
+	id 1x3InQ-0002I5-Ib; Sun, 06 Sep 2026 15:44:56 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <gilles.grimaud@univ-lille.fr>)
- id 1x3Ing-0002VY-M0; Sun, 06 Sep 2026 15:45:12 -0400
-Received: from smtp-out-2.univ-lille.fr ([194.254.129.106])
+ id 1x3InP-0002Ha-G8; Sun, 06 Sep 2026 15:44:55 -0400
+Received: from smtp-out-1.univ-lille.fr ([194.254.129.82])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <gilles.grimaud@univ-lille.fr>)
- id 1x3Ine-0006zt-Ox; Sun, 06 Sep 2026 15:45:12 -0400
+ id 1x3InN-0006xg-Kj; Sun, 06 Sep 2026 15:44:55 -0400
 Received: from smtp01.univ-lille.fr (smtp01.univ-lille.fr [194.254.129.95])
- by smtp-out-2.univ-lille.fr (Postfix) with ESMTPS id 4hdLJ96SRNz7vmK;
- Sun,  6 Sep 2026 21:44:41 +0200 (CEST)
+ by smtp-out-1.univ-lille.fr (Postfix) with ESMTPS id 4hdLJ84XrNzBqYr;
+ Sun,  6 Sep 2026 21:44:40 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=univ-lille.fr;
- s=dkim; t=1788723881;
- bh=rq9LhWG0yBo9Ssls1Pr+s/K1bNr/V6OSuLGExjB50iw=;
+ s=dkim; t=1788723880;
+ bh=5nHljIdPrCJuvJ91IvLCz3fRWW4+wFJPa3ERcaZZBtU=;
  h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=TGbkus7updEUNSf+KiBP5U42duM0F4avbJ5Zjmq6sld9Gj4bMrDL7abSy/OokT53J
- 7LGenciYIst0+8v91H4/stwXWZK06p5IEy44pJXJBFNMB7UzOcUM7qFKD8bc+0K2lc
- ZlFdMW6QjoaNeacLcqH+Mt1cF0wtflmUCQyBD4Q4bkQmArDjp5UCILmyNGEt8Q5aKG
- NeRSs9h/HtT02UKEhMPrqhmgKROmMGFe/hpin0C42YsDAdVKXqPWOoG8UH0CL2HrVd
- YuwXaCRmTwIWPzicak/Wdo+ccQJXQS3R4wIkIr1k4w9jPKkBEwbF0v+rafVse86s7+
- oo7oHEyS8t3Iw==
+ b=uAhXIlBBAEq/sBXdd5xH7y4ilcXBTqK0SM0nBRnNOQc48zkVnekuLIqMdhp6xv0/t
+ FJ159a3FxSzTOS5Z4BuI2ruCVGAAp6dcZOCyCZ1YwSFgHZD3G6+HpNjx1e5cVa7bpd
+ N3MuhU/Ee68swP1FEoCNKUwdUJegVCdOxB20CMJ+XCJtgrMeXIU4Gkx8gl9dxMp0xB
+ 7iT4qmu7Knd6SFOy73OQh+eB/g87yaYWCtCeXrR4kHL3iWejytM/QuCNt2cTDJgttK
+ GrxoSnmWuLCKiVTzB+ip6fCOhu/LjyBL8lR7TxVP6B3PoZW1xZuIqAPelM2Z9905Pe
+ jX+Bf5ooiE8Bg==
 Received: from mac.home (lfbn-lil-1-243-101.w90-45.abo.wanadoo.fr
  [90.45.87.101]) (Authenticated sender: gilles.grimaud)
- by smtp01.univ-lille.fr (Postfix) with ESMTPSA id 4hdLJ94jP1z7wXp;
- Sun,  6 Sep 2026 21:44:41 +0200 (CEST)
+ by smtp01.univ-lille.fr (Postfix) with ESMTPSA id 4hdLJ8356fz7wXp;
+ Sun,  6 Sep 2026 21:44:40 +0200 (CEST)
 From: Gilles Grimaud <gilles.grimaud@univ-lille.fr>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org, alex.bennee@linaro.org, peter.maydell@linaro.org,
  gilles grimaud <gilles.grimaud@univ-lille.fr>
-Subject: [PATCH v3 07/36] tests/tcg/arm: add Raspberry Pi Pico smoke tests
-Date: Sun,  6 Sep 2026 21:44:06 +0200
-Message-ID: <20260906194438.93046-8-gilles.grimaud@univ-lille.fr>
+Subject: [PATCH v3 03/36] target/arm: support Cortex-M0+ MPU
+Date: Sun,  6 Sep 2026 21:44:02 +0200
+Message-ID: <20260906194438.93046-4-gilles.grimaud@univ-lille.fr>
 X-Mailer: git-send-email 2.55.0
 In-Reply-To: <20260906194438.93046-1-gilles.grimaud@univ-lille.fr>
 References: <20260906194438.93046-1-gilles.grimaud@univ-lille.fr>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=194.254.129.106;
- envelope-from=gilles.grimaud@univ-lille.fr; helo=smtp-out-2.univ-lille.fr
+Received-SPF: pass client-ip=194.254.129.82;
+ envelope-from=gilles.grimaud@univ-lille.fr; helo=smtp-out-1.univ-lille.fr
 X-Spam_score_int: -43
 X-Spam_score: -4.4
 X-Spam_bar: ----
@@ -71,217 +71,172 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Build Cortex-M0+ guest programs from assembly sources to exercise the
-minimal Pico boot path, UART0 output, and the Cortex-M0+ MPU. Keep the
-vector table at the XIP base so these tests match the initial synthetic
-boot stub without depending on boot2 or the later flash controller model.
+Cortex-M0+ implementations may provide an Armv6-M PMSA MPU with eight
+regions. QEMU uses its historical v7m/PMSAv7 naming for M-profile code
+shared by v6-M and v7-M, but currently exposes, allocates and migrates the
+existing region model only when ARM_FEATURE_V7 is set. This prevents a
+Cortex-M0+ board from enabling its optional MPU.
+
+Allow non-v8 M-profile CPUs to use the existing PMSAv7 state, migration
+state and translation path. Restrict the shared register model to the v6-M
+layout: do not expose the v7-M alias registers or TEX bits, and reject
+region sizes below the v6-M minimum of 256 bytes.
+
+The dedicated PMSAv8 path remains selected first for v8-M CPUs. Expose the
+pmsav7-dregion property and clear region state on reset.
 
 Signed-off-by: gilles grimaud <gilles.grimaud@univ-lille.fr>
 ---
- MAINTAINERS                            |  1 +
- tests/tcg/arm/system/meson.build       | 14 +++++++
- tests/tcg/arm/system/rp2040-boot.S     | 30 +++++++++++++++
- tests/tcg/arm/system/rp2040-minimal.ld | 40 +++++++++++++++++++
- tests/tcg/arm/system/rp2040-uart.S     | 53 ++++++++++++++++++++++++++
- tests/tcg/arm/system/rp2040-uart.ref   |  1 +
- 6 files changed, 139 insertions(+)
- create mode 100644 tests/tcg/arm/system/rp2040-boot.S
- create mode 100644 tests/tcg/arm/system/rp2040-minimal.ld
- create mode 100644 tests/tcg/arm/system/rp2040-uart.S
- create mode 100644 tests/tcg/arm/system/rp2040-uart.ref
+ hw/intc/armv7m_nvic.c | 27 ++++++++++++++++++++++++++-
+ target/arm/cpu.c      | 12 +++++++++---
+ target/arm/machine.c  |  3 ++-
+ target/arm/ptw.c      | 10 +++++++---
+ 4 files changed, 44 insertions(+), 8 deletions(-)
 
-diff --git a/MAINTAINERS b/MAINTAINERS
-index caee8aa0cc..a03fb0575c 100644
---- a/MAINTAINERS
-+++ b/MAINTAINERS
-@@ -1033,6 +1033,7 @@ S: Maintained
- F: hw/*/rp2040*
- F: include/hw/*/rp2040*
- F: hw/arm/raspi_pico.c
-+F: tests/tcg/arm/system/rp2040*
+diff --git a/hw/intc/armv7m_nvic.c b/hw/intc/armv7m_nvic.c
+index c1ceb7450f..a702bd0c38 100644
+--- a/hw/intc/armv7m_nvic.c
++++ b/hw/intc/armv7m_nvic.c
+@@ -1405,6 +1405,11 @@ static uint32_t nvic_readl(NVICState *s, uint32_t offset, MemTxAttrs attrs)
+             return cpu->env.pmsav8.rbar[attrs.secure][region];
+         }
  
- Real View
- M: Peter Maydell <peter.maydell@linaro.org>
-diff --git a/tests/tcg/arm/system/meson.build b/tests/tcg/arm/system/meson.build
-index e92a83a8d5..42e7614a11 100644
---- a/tests/tcg/arm/system/meson.build
-+++ b/tests/tcg/arm/system/meson.build
-@@ -15,6 +15,11 @@ qemu_base_args = ['-display', 'none',
-                   '-semihosting-config', 'enable=on',
-                   '-kernel']
- qemu_def_args = ['-M', 'virt', '-cpu', 'max', qemu_base_args]
-+rp2040_cflags = ['-mcpu=cortex-m0plus', '-mthumb', '-mfloat-abi=soft',
-+                 '-nostdlib', '-Wl,--build-id=none',
-+                 '-T', files('rp2040-minimal.ld')]
-+rp2040_qemu_args = ['-M', 'raspi-pico', '-monitor', 'none',
-+                    qemu_base_args]
++        if (offset != 0xd9c &&
++            !arm_feature(&cpu->env, ARM_FEATURE_V7)) {
++            goto bad_offset;
++        }
++
+         if (region >= cpu->pmsav7_dregion) {
+             return 0;
+         }
+@@ -1432,6 +1437,11 @@ static uint32_t nvic_readl(NVICState *s, uint32_t offset, MemTxAttrs attrs)
+             return cpu->env.pmsav8.rlar[attrs.secure][region];
+         }
  
- # Multi arch tests
- multi_src = []
-@@ -51,6 +56,15 @@ tests += {
-                '-T', files('test-armv6m-undef.ld')],
-     'qemu_args': ['-M', 'microbit', qemu_base_args],
-   },
-+  'rp2040-boot.S': {
-+    'cflags': rp2040_cflags,
-+    'qemu_args': rp2040_qemu_args,
-+  },
-+  'rp2040-uart.S': {
-+    'cflags': rp2040_cflags,
-+    'qemu_args': ['-serial', 'stdio', rp2040_qemu_args],
-+    'expected_output': 'rp2040-uart.ref',
-+  },
-   'semiconsole.c': {
-     'cflags': cflags,
-     'qemu_args': ['-serial', 'none', '-chardev', 'stdio,mux=on,id=stdio0',
-diff --git a/tests/tcg/arm/system/rp2040-boot.S b/tests/tcg/arm/system/rp2040-boot.S
-new file mode 100644
-index 0000000000..0537a54d44
---- /dev/null
-+++ b/tests/tcg/arm/system/rp2040-boot.S
-@@ -0,0 +1,30 @@
-+/*
-+ * Raspberry Pi Pico boot smoke test.
-+ *
-+ * Copyright 2026 Gilles Grimaud
-+ * SPDX-License-Identifier: GPL-2.0-or-later
-+ */
++        if (offset != 0xda0 &&
++            !arm_feature(&cpu->env, ARM_FEATURE_V7)) {
++            goto bad_offset;
++        }
 +
-+.syntax unified
-+.cpu cortex-m0plus
-+.thumb
+         if (region >= cpu->pmsav7_dregion) {
+             return 0;
+         }
+@@ -1919,6 +1929,11 @@ static void nvic_writel(NVICState *s, uint32_t offset, uint32_t value,
+             return;
+         }
+ 
++        if (offset != 0xd9c &&
++            !arm_feature(&cpu->env, ARM_FEATURE_V7)) {
++            goto bad_offset;
++        }
 +
-+#define SRAM_END 0x20042000
-+#define SYS_EXIT 0x18
-+#define ADP_STOPPED_APPLICATION_EXIT 0x20026
+         if (value & (1 << 4)) {
+             /* VALID bit means use the region number specified in this
+              * value and also update MPU_RNR.REGION with that value.
+@@ -1969,12 +1984,22 @@ static void nvic_writel(NVICState *s, uint32_t offset, uint32_t value,
+             return;
+         }
+ 
++        if (offset != 0xda0 &&
++            !arm_feature(&cpu->env, ARM_FEATURE_V7)) {
++            goto bad_offset;
++        }
 +
-+.section .vectors, "a", %progbits
-+vector_table:
-+    .word SRAM_END
-+    .word reset_handler + 1
-+
-+.section .text, "ax", %progbits
-+.thumb_func
-+.global reset_handler
-+reset_handler:
-+    movs r0, SYS_EXIT
-+    ldr r1, =ADP_STOPPED_APPLICATION_EXIT
-+    bkpt 0xab
-+
-+1:
-+    b 1b
-diff --git a/tests/tcg/arm/system/rp2040-minimal.ld b/tests/tcg/arm/system/rp2040-minimal.ld
-new file mode 100644
-index 0000000000..ebfbac8cf2
---- /dev/null
-+++ b/tests/tcg/arm/system/rp2040-minimal.ld
-@@ -0,0 +1,40 @@
-+/* SPDX-License-Identifier: GPL-2.0-or-later */
-+
-+ENTRY(reset_handler)
-+
-+MEMORY
-+{
-+    FLASH (rx) : ORIGIN = 0x10000000, LENGTH = 2M
-+    SRAM (rwx) : ORIGIN = 0x20000000, LENGTH = 264K
-+}
-+
-+SECTIONS
-+{
-+    .vectors ORIGIN(FLASH) :
-+    {
-+        KEEP(*(.vectors))
-+    } > FLASH
-+
-+    .text :
-+    {
-+        *(.text*)
-+        *(.rodata*)
-+    } > FLASH
-+
-+    .data :
-+    {
-+        *(.data*)
-+    } > SRAM AT > FLASH
-+
-+    .bss (NOLOAD) :
-+    {
-+        *(.bss*)
-+        *(COMMON)
-+    } > SRAM
-+
-+    /DISCARD/ :
-+    {
-+        *(.ARM.attributes)
-+        *(.comment)
-+    }
-+}
-diff --git a/tests/tcg/arm/system/rp2040-uart.S b/tests/tcg/arm/system/rp2040-uart.S
-new file mode 100644
-index 0000000000..bdb58cc7f2
---- /dev/null
-+++ b/tests/tcg/arm/system/rp2040-uart.S
-@@ -0,0 +1,53 @@
-+/*
-+ * Raspberry Pi Pico UART boot smoke test.
-+ *
-+ * Copyright 2026 Gilles Grimaud
-+ * SPDX-License-Identifier: GPL-2.0-or-later
-+ */
-+
-+.syntax unified
-+.cpu cortex-m0plus
-+.thumb
-+
-+#define SRAM_END 0x20042000
-+#define UART0_DR 0x40034000
-+#define SYS_EXIT 0x18
-+#define ADP_STOPPED_APPLICATION_EXIT 0x20026
-+
-+.section .vectors, "a", %progbits
-+vector_table:
-+    .word SRAM_END
-+    .word reset_handler + 1
-+    .word default_handler + 1
-+    .word default_handler + 1
-+
-+.section .text, "ax", %progbits
-+.thumb_func
-+.global reset_handler
-+reset_handler:
-+    ldr r0, =UART0_DR
-+    ldr r1, =message
-+
-+1:
-+    ldrb r2, [r1]
-+    cmp r2, 0
-+    beq 2f
-+    str r2, [r0]
-+    adds r1, 1
-+    b 1b
-+
-+2:
-+    movs r0, SYS_EXIT
-+    ldr r1, =ADP_STOPPED_APPLICATION_EXIT
-+    bkpt 0xab
-+
-+3:
-+    b 3b
-+
-+.thumb_func
-+default_handler:
-+    b default_handler
-+
-+.section .rodata, "a", %progbits
-+message:
-+    .asciz "PICO TCG UART OK\n"
-diff --git a/tests/tcg/arm/system/rp2040-uart.ref b/tests/tcg/arm/system/rp2040-uart.ref
-new file mode 100644
-index 0000000000..1ef16e8299
---- /dev/null
-+++ b/tests/tcg/arm/system/rp2040-uart.ref
-@@ -0,0 +1 @@
-+PICO TCG UART OK
+         if (region >= cpu->pmsav7_dregion) {
+             return;
+         }
+ 
+         cpu->env.pmsav7.drsr[region] = value & 0xff3f;
+-        cpu->env.pmsav7.dracr[region] = (value >> 16) & 0x173f;
++        if (arm_feature(&cpu->env, ARM_FEATURE_V7)) {
++            cpu->env.pmsav7.dracr[region] = (value >> 16) & 0x173f;
++        } else {
++            /* Armv6-M has XN, AP, S, C and B, but no TEX field. */
++            cpu->env.pmsav7.dracr[region] = (value >> 16) & 0x1707;
++        }
+         tlb_flush(CPU(cpu));
+         break;
+     }
+diff --git a/target/arm/cpu.c b/target/arm/cpu.c
+index 77aa78f00e..f58a1db843 100644
+--- a/target/arm/cpu.c
++++ b/target/arm/cpu.c
+@@ -617,7 +617,8 @@ static void arm_cpu_reset_hold(Object *obj, ResetType type)
+                            sizeof(*env->pmsav8.rlar[M_REG_S])
+                            * cpu->pmsav7_dregion);
+                 }
+-            } else if (arm_feature(env, ARM_FEATURE_V7)) {
++            } else if (arm_feature(env, ARM_FEATURE_V7) ||
++                       arm_feature(env, ARM_FEATURE_M)) {
+                 memset(env->pmsav7.drbar, 0,
+                        sizeof(*env->pmsav7.drbar) * cpu->pmsav7_dregion);
+                 memset(env->pmsav7.drsr, 0,
+@@ -1656,7 +1657,11 @@ static void arm_cpu_post_init(Object *obj)
+ #ifndef CONFIG_USER_ONLY
+     if (arm_feature(&cpu->env, ARM_FEATURE_PMSA)) {
+         qdev_property_add_static(DEVICE(obj), &arm_cpu_has_mpu_property);
+-        if (arm_feature(&cpu->env, ARM_FEATURE_V7)) {
++        /*
++         * QEMU's PMSAv7 state also models the Armv6-M MPU register layout.
++         */
++        if (arm_feature(&cpu->env, ARM_FEATURE_V7) ||
++            arm_feature(&cpu->env, ARM_FEATURE_M)) {
+             qdev_property_add_static(DEVICE(obj),
+                                      &arm_cpu_pmsav7_dregion_property);
+         }
+@@ -2332,7 +2337,8 @@ static void arm_cpu_realizefn(DeviceState *dev, Error **errp)
+     }
+ 
+     if (arm_feature(env, ARM_FEATURE_PMSA) &&
+-        arm_feature(env, ARM_FEATURE_V7)) {
++        (arm_feature(env, ARM_FEATURE_V7) ||
++         arm_feature(env, ARM_FEATURE_M))) {
+         uint32_t nr = cpu->pmsav7_dregion;
+ 
+         if (nr > 0xff) {
+diff --git a/target/arm/machine.c b/target/arm/machine.c
+index 7005f4e5d7..53a2734d25 100644
+--- a/target/arm/machine.c
++++ b/target/arm/machine.c
+@@ -584,7 +584,8 @@ static bool pmsav7_needed(void *opaque)
+     CPUARMState *env = &cpu->env;
+ 
+     return arm_feature(env, ARM_FEATURE_PMSA) &&
+-           arm_feature(env, ARM_FEATURE_V7) &&
++           (arm_feature(env, ARM_FEATURE_V7) ||
++            arm_feature(env, ARM_FEATURE_M)) &&
+            !arm_feature(env, ARM_FEATURE_V8);
+ }
+ 
+diff --git a/target/arm/ptw.c b/target/arm/ptw.c
+index a29de0385f..6cb8a8394a 100644
+--- a/target/arm/ptw.c
++++ b/target/arm/ptw.c
+@@ -2748,9 +2748,12 @@ static bool get_phys_addr_pmsav7(CPUARMState *env,
+                 continue;
+             }
+ 
+-            if (!rsize) {
++            if (!rsize ||
++                (arm_feature(env, ARM_FEATURE_M) &&
++                 !arm_feature(env, ARM_FEATURE_V7) && rsize < 7)) {
+                 qemu_log_mask(LOG_GUEST_ERROR,
+-                              "DRSR[%d]: Rsize field cannot be 0\n", n);
++                              "DRSR[%d]: invalid Rsize field 0x%x\n",
++                              n, rsize);
+                 continue;
+             }
+             rsize++;
+@@ -3901,7 +3904,8 @@ static bool get_phys_addr_nogpc(CPUARMState *env, S1Translate *ptw,
+             /* PMSAv8 */
+             ret = get_phys_addr_pmsav8(env, ptw, address, access_type,
+                                        result, fi);
+-        } else if (arm_feature(env, ARM_FEATURE_V7)) {
++        } else if (arm_feature(env, ARM_FEATURE_V7) ||
++                   arm_feature(env, ARM_FEATURE_M)) {
+             /* PMSAv7 */
+             ret = get_phys_addr_pmsav7(env, ptw, address, access_type,
+                                        result, fi);
 -- 
 2.55.0
 

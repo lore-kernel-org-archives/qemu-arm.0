@@ -4,55 +4,55 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0CF64C79F99
-	for <qemu-arm@archiver.kernel.org>; Sun,  6 Sep 2026 08:45:19 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 35DB7C79F99
+	for <qemu-arm@archiver.kernel.org>; Sun,  6 Sep 2026 08:45:32 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1x38TE-0004Q7-EB; Sun, 06 Sep 2026 04:43:24 -0400
+	id 1x38TA-0004M7-1W; Sun, 06 Sep 2026 04:43:20 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <marcandre.lureau@redhat.com>)
- id 1x38TD-0004PR-Oe
- for qemu-arm@nongnu.org; Sun, 06 Sep 2026 04:43:23 -0400
+ id 1x38T7-0004In-SL
+ for qemu-arm@nongnu.org; Sun, 06 Sep 2026 04:43:17 -0400
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <marcandre.lureau@redhat.com>)
- id 1x38TB-0008BN-T2
- for qemu-arm@nongnu.org; Sun, 06 Sep 2026 04:43:23 -0400
+ id 1x38T5-00089Y-Bx
+ for qemu-arm@nongnu.org; Sun, 06 Sep 2026 04:43:17 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1788684201;
+ s=mimecast20190719; t=1788684194;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=ZLEJavX+CYl5URxiAxOIrkjtvTfg2pt7Qx+aNxGhous=;
- b=NqmVRdCX0tuX9qKHy/E7z93CrjrseIUe60LrqBeTmdArV6QDQfQma13efzMtUI9wLl2/5V
- Ixhxc7jGJ0CyzKIcuSrOXJsQTFTGJKsNbYhwf1IKmKk8W/XZYJnHNRKihlWwpoNaXF+697
- RR9A2dmm6mRGFVqj/BBnMGN1fcOkMLA=
+ bh=zaiAZ1UlzH8o4m66l+A0geodGP8srFS466O2Wgy6VdU=;
+ b=d+ouCMqMdQvZA5nYcWyrHwGBbaj2qrW+xJtRIi7x0Js8psgHNUfdvU4lo49vcKobYzQCP2
+ 4brq3XrPAftqqeme7lx8kTlHjs8Uv+22Bj6+N+AKGu4YlHTP+7g9RcywAjDPmR8wjgZ6Ly
+ iOdR0k0KM2RTIEY36s0wJ+n8bNgfoeg=
 Received: from mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com
  (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-634-2IDeIHMyN9WFpR7xZ2RZ2Q-1; Sun,
- 06 Sep 2026 04:43:17 -0400
-X-MC-Unique: 2IDeIHMyN9WFpR7xZ2RZ2Q-1
-X-Mimecast-MFC-AGG-ID: 2IDeIHMyN9WFpR7xZ2RZ2Q_1788684195
-Received: from mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com
- (mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.93])
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-482-5SQW3TbfPIKGZ-sCkYjsBA-1; Sun,
+ 06 Sep 2026 04:43:10 -0400
+X-MC-Unique: 5SQW3TbfPIKGZ-sCkYjsBA-1
+X-Mimecast-MFC-AGG-ID: 5SQW3TbfPIKGZ-sCkYjsBA_1788684187
+Received: from mx-prod-int-10.mail-002.prod.us-west-2.aws.redhat.com
+ (mx-prod-int-10.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.95])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
  by mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 83FEE1955DCB; Sun,  6 Sep 2026 08:43:15 +0000 (UTC)
+ id 859861955DC3; Sun,  6 Sep 2026 08:43:07 +0000 (UTC)
 Received: from localhost (headnet04.pony-001.prod.iad2.dc.redhat.com
  [10.2.32.116])
- by mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id BCB191800348; Sun,  6 Sep 2026 08:43:13 +0000 (UTC)
+ by mx-prod-int-10.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
+ id 5ADEF434; Sun,  6 Sep 2026 08:43:05 +0000 (UTC)
 From: =?utf-8?q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>
-Date: Sun, 06 Sep 2026 12:42:40 +0400
-Subject: [PATCH 9/9] tests/functional: fix some tests that require HMP
+Date: Sun, 06 Sep 2026 12:42:38 +0400
+Subject: [PATCH 7/9] qtest: compile out HMP helper when !CONFIG_HMP
 MIME-Version: 1.0
-Message-Id: <20260906-nohmp-v1-9-daee96491c43@redhat.com>
+Message-Id: <20260906-nohmp-v1-7-daee96491c43@redhat.com>
 References: <20260906-nohmp-v1-0-daee96491c43@redhat.com>
 In-Reply-To: <20260906-nohmp-v1-0-daee96491c43@redhat.com>
 To: qemu-devel@nongnu.org
@@ -70,25 +70,25 @@ Cc: John Snow <jsnow@redhat.com>, "Denis V. Lunev" <den@openvz.org>,
  =?utf-8?q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>, 
  Glenn Miles <milesg@linux.ibm.com>, qemu-ppc@nongnu.org, 
  =?utf-8?q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>
-X-Developer-Signature: v=1; a=openpgp-sha256; l=1473;
+X-Developer-Signature: v=1; a=openpgp-sha256; l=1516;
  i=marcandre.lureau@redhat.com; h=from:subject:message-id;
- bh=3OofPbadkMI9D2wQEsOueK3/Wbpgib4zDKoUa7tcwDk=;
- b=owEBbQKS/ZANAwAKAdro4Ql1lpzlAcsmYgBqnSd5vJ/74g1y2az4tJkUWDTcDt51fE5IcjAQp
- jDgUKcFfuaJAjMEAAEKAB0WIQSHqb2TP4fGBtJ29i3a6OEJdZac5QUCap0neQAKCRDa6OEJdZac
- 5UAJD/4yPrXD+IwoOZaaUijKLcx1qlZmr1KX6qA66KuJERoKxrxWFbxpH38uo+kDURhX+IeLsGI
- BO1HeI7zQ/iH3I9cppFBhBYRoUDwzyKo4pAqpWAVXQur8Ee5vbtnftQfk7ektWzUdCSRhrkqKK2
- HSnZa43VJU7P63naDHnwb815t9LrxAfRtwlElQORpbBwDqEDZxkXE0L0GIy1BvCRI9/E9Cl0/Vo
- TnqDZ5A4juBwNC43ToOmMuLiVnW6tapBAGJydZ7uQuMTOPhu7nm9yMZEnUlcNwUnE2s6lWVPCXA
- Y5N0Wfrc54maJQ3twRp9oTJ6pUjiXT+9zbQoR36D87beG+yz4uDkA4nS4GqPQPacIOPqujUyzIa
- 17Z7W/Z7pj897AoJNP4amBUvOfRaFuPbLQGkXZXo5PPFe354v/9cuZwIsKJ/G5ejLXRbsfiVE0r
- HV6ZxDgmeEsKc39IgeMnDnuBybxSuc495ZOkJkMrNBu+4oT6PmDuHNhhN5f6j3cB+k+Dq6M8nhd
- PfaaR2n8DsW1KJ7Wn6nNVR+ZxWjYXXcx8hBdRrI7VORpIPwvLN8fXRaYLuvRpYIS3i9F7McUXi2
- ZQpFBaJuam78fnV8/fL+cKpurhpDuF9ZrV8IB/poRFSqinVsDfxTcu1hLjYU5vX1h6KQkmtHUJF
- Lf6KpJNjpmQIk4Q==
+ bh=bNWTQYLdYcOcYGyeGHcixqBdkQgP0HeOjs/GAUAOLsQ=;
+ b=owEBbQKS/ZANAwAKAdro4Ql1lpzlAcsmYgBqnSd5vmqdoL1kkxQP5uTdGvnOD1ugA0ADQj1pB
+ gWao51QLFmJAjMEAAEKAB0WIQSHqb2TP4fGBtJ29i3a6OEJdZac5QUCap0neQAKCRDa6OEJdZac
+ 5fXKD/94N+K8AF8JpOPS6m3xTgvS4+qD/Rndgc/pinilIh92ZMSZ+I3z/PKawWOjz1v+wh31Ark
+ 6p/R0zApr3LEmv5wDxywO6RlsBlAoqDntF4l2I0poPxxe3aqGLh2dUWKRv+8obESIEzl0xFNvkb
+ xcqIwi+RfI5c3XBaLHRzL4ke4JeQ2skH2MHa0nHCdsr7JZLrfwuK5rREvMTQsBqn5Dus5cuICoO
+ ANBSEo+2Q3+5LhyNxI1rRVQbU9fMnJz8MzNRw7GX+Nvqc836ihduh71NY6Rdlb34BzPRYMrTQVr
+ sRmbP8f4qBrm11EDp6FdeAW2gatAbuRHV5CJOfpV73qU1bjwiSj/aMPWc5Sr+fmjUld55mLEkFR
+ VuhIQW8gbq/yq1reVjbMTkFOqDf+rxNI7Im7S47maTEb7NxC9PJkE4ErJhEDt2dBDJKpDEDisCk
+ Q3h4qdXPNRQnkw6YU1F8FuODwUBpbfbWgXKy2PF44JEY4Kfsbmhzhca01HPZRbKHG2FTumh40Xq
+ gXH/Vt5WOE6wVRisAskAzfU+yzLM/LGl2nXisyxcs5fXtlcBRPc6oj0c7JoP31WaAkbJQO4GWeF
+ IzAjBdO8a2DK0fQLxlOVvbeWl4bawfKOzoEXdzx+qqLYPys+ezJHc6EfOnbVgOnAxN8MGQ9QrKi
+ 2p+STM3VPg+6wYA==
 X-Developer-Key: i=marcandre.lureau@redhat.com; a=openpgp;
  fpr=87A9BD933F87C606D276F62DDAE8E10975969CE5
-X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.93
-X-Mimecast-MFC-PROC-ID: uv5G8_yNdTUbwixvUs9Fxw2g2jq8mqsqU5GYz5EUWho_1788684195
+X-Scanned-By: MIMEDefang 3.6 on 10.30.177.95
+X-Mimecast-MFC-PROC-ID: 1LI0RJot70B6uOp8OqCo8e8sIMIEK4SdLSBhLWdy8U4_1788684187
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
@@ -118,39 +118,54 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Those tests use "info registers" command and connot be converted
-easily, for now skip them
+This should help prevent introducing HMP tests inadvertently.
 
 Signed-off-by: Marc-André Lureau <marcandre.lureau@redhat.com>
 ---
- tests/functional/m68k/test_nextcube.py | 1 +
- tests/functional/ppc/test_ppe42.py     | 1 +
- 2 files changed, 2 insertions(+)
+ tests/qtest/libqtest.c | 2 ++
+ tests/qtest/libqtest.h | 2 ++
+ 2 files changed, 4 insertions(+)
 
-diff --git a/tests/functional/m68k/test_nextcube.py b/tests/functional/m68k/test_nextcube.py
-index dc99962eb75c..b0c0b653a7d0 100755
---- a/tests/functional/m68k/test_nextcube.py
-+++ b/tests/functional/m68k/test_nextcube.py
-@@ -27,6 +27,7 @@ def check_bootrom_framebuffer(self, screenshot_path):
+diff --git a/tests/qtest/libqtest.c b/tests/qtest/libqtest.c
+index 370f79a3b6fb..05d884761540 100644
+--- a/tests/qtest/libqtest.c
++++ b/tests/qtest/libqtest.c
+@@ -1021,6 +1021,7 @@ void qtest_qmp_job_wait(QTestState *s, const char *job_id)
+     qobject_unref(response);
+ }
  
-         self.vm.add_args('-bios', rom_path)
-         self.vm.launch()
-+        self.skipTestIfNoHMP() # FIXME: QMP x-query-registers
++#ifdef CONFIG_HMP
+ char *qtest_vhmp(QTestState *s, const char *fmt, va_list ap)
+ {
+     char *cmd;
+@@ -1048,6 +1049,7 @@ char *qtest_hmp(QTestState *s, const char *fmt, ...)
+     va_end(ap);
+     return ret;
+ }
++#endif
  
-         self.log.info('VM launched, waiting for display')
-         # Wait for the FPU test to finish, then the display is available, too:
-diff --git a/tests/functional/ppc/test_ppe42.py b/tests/functional/ppc/test_ppe42.py
-index 53958a7938d1..a9c154f67328 100755
---- a/tests/functional/ppc/test_ppe42.py
-+++ b/tests/functional/ppc/test_ppe42.py
-@@ -72,6 +72,7 @@ def test_ppe42_instructions(self):
-         self.vm.add_args('-device', 'loader,addr=0xfff80040,cpu-num=0')
-         self.vm.add_args('-action', 'panic=pause')
-         self.vm.launch()
-+        self.skipTestIfNoHMP() # FIXME: QMP x-query-registers
-         self._wait_pass_fail(self.timeout)
+ void qtest_qemu_io(QTestState *s, const char *device,
+                    const char *fmt, ...)
+diff --git a/tests/qtest/libqtest.h b/tests/qtest/libqtest.h
+index f06e061d214b..20982d3fe8dd 100644
+--- a/tests/qtest/libqtest.h
++++ b/tests/qtest/libqtest.h
+@@ -409,6 +409,7 @@ QDict *qtest_qmp_event_ref(QTestState *s, const char *event);
+  */
+ void qtest_qmp_job_wait(QTestState *s, const char *job_id);
  
- if __name__ == '__main__':
++#ifdef CONFIG_HMP
+ /**
+  * qtest_hmp:
+  * @s: #QTestState instance to operate on.
+@@ -434,6 +435,7 @@ char *qtest_hmp(QTestState *s, const char *fmt, ...) G_GNUC_PRINTF(2, 3);
+  */
+ char *qtest_vhmp(QTestState *s, const char *fmt, va_list ap)
+     G_GNUC_PRINTF(2, 0);
++#endif
+ 
+ /**
+  * qtest_qemu_io:
 
 -- 
 2.55.0.543.g5ebe2ebe4ea8

@@ -4,74 +4,59 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DC242C79F8C
-	for <qemu-arm@archiver.kernel.org>; Sun,  6 Sep 2026 17:16:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 10D2EC79FA0
+	for <qemu-arm@archiver.kernel.org>; Sun,  6 Sep 2026 19:44:59 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1x3GOR-0003T9-1P; Sun, 06 Sep 2026 13:10:59 -0400
+	id 1x3InG-0002F0-St; Sun, 06 Sep 2026 15:44:47 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1x3GOP-0003SI-EL
- for qemu-arm@nongnu.org; Sun, 06 Sep 2026 13:10:57 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ (Exim 4.90_1) (envelope-from <gilles.grimaud@univ-lille.fr>)
+ id 1x3InG-0002En-3i; Sun, 06 Sep 2026 15:44:46 -0400
+Received: from smtp-out-2.univ-lille.fr ([194.254.129.106])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1x3GON-00006U-RN
- for qemu-arm@nongnu.org; Sun, 06 Sep 2026 13:10:57 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1788714655;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=akS/REZ670piyc1Cli6DUwEG2SlM1g04NPO+7yVMVmI=;
- b=F1+aqpA1lHxIkg65BTfJiVgMftqi+AkTd92Ga8KP86HG7ePj8Tx7OtUBkqxCJbqubBG6qR
- wlxxuPXRLSI9rvhyGaSAtQzvgNV8f7vm5M+QCGs8/P6W0Qz+Tqud07LaXcPNPsJHc0F34o
- nVqJnxsyzuyiecoh0oN1SB9pPFNZCEM=
-Received: from mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
- relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-111-b0zrmotmP0C5UGRuula1FQ-1; Sun,
- 06 Sep 2026 13:10:51 -0400
-X-MC-Unique: b0zrmotmP0C5UGRuula1FQ-1
-X-Mimecast-MFC-AGG-ID: b0zrmotmP0C5UGRuula1FQ_1788714650
-Received: from mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com
- (mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.12])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
- (No client certificate requested)
- by mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 878421954235; Sun,  6 Sep 2026 17:10:50 +0000 (UTC)
-Received: from yukon.redhat.com (unknown [10.44.32.24])
- by mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id 7D48D1955F0E; Sun,  6 Sep 2026 17:10:48 +0000 (UTC)
-From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>
-To: qemu-arm@nongnu.org,
-	qemu-devel@nongnu.org
-Cc: Jamin Lin <jamin_lin@aspeedtech.com>,
- =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@oss.qualcomm.com>,
- =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>
-Subject: [PULL 10/40] hw/arm/aspeed_ast2600: Wire up the ACRY model
-Date: Sun,  6 Sep 2026 19:09:51 +0200
-Message-ID: <20260906171021.26568-11-clg@redhat.com>
-In-Reply-To: <20260906171021.26568-1-clg@redhat.com>
-References: <20260906171021.26568-1-clg@redhat.com>
+ (Exim 4.90_1) (envelope-from <gilles.grimaud@univ-lille.fr>)
+ id 1x3InD-0006ws-Jt; Sun, 06 Sep 2026 15:44:45 -0400
+Received: from smtp01.univ-lille.fr (smtp01.univ-lille.fr [194.254.129.95])
+ by smtp-out-2.univ-lille.fr (Postfix) with ESMTPS id 4hdLJ81LJvz7vYM;
+ Sun,  6 Sep 2026 21:44:40 +0200 (CEST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=univ-lille.fr;
+ s=dkim; t=1788723880;
+ bh=lPUj/mdMewi2w2CJ7hyvlV3Yz76GDOslFHC8YpQ5HsM=;
+ h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
+ b=y1ur8bJRtrZau3EJk9Rh2QQwtZKxlTL8zWZFNBNBiY17E1YnOpBN2ZHZWGTfLpWY2
+ ht4IU1jg57mxUhRZFzGvdZc988llAtRhMEf3ZR6Y2/qcmgByqycMlK4yuLxhlqPUOL
+ C9FGSUUfPkZRUY4aZot54tBAkaTadEN4BTm6iypTzomDnFrcrVaGC9CjWmWZazqnF+
+ LpEz9QdUZl0U2TA9sz8bytSjmz/xrumM7Ngorg6nuUwSQ3dJ/FMegPAR3iIG2ZMVsL
+ d0lSD3YYpzPbOp97qb3EN227eoezqPwoAiBo5xz6WcOk4OFRSGx+H+Bp6AN+B5oge2
+ /xTtYcRSCFYuw==
+Received: from mac.home (lfbn-lil-1-243-101.w90-45.abo.wanadoo.fr
+ [90.45.87.101]) (Authenticated sender: gilles.grimaud)
+ by smtp01.univ-lille.fr (Postfix) with ESMTPSA id 4hdLJ76nsjz7wXp;
+ Sun,  6 Sep 2026 21:44:39 +0200 (CEST)
+From: Gilles Grimaud <gilles.grimaud@univ-lille.fr>
+To: qemu-devel@nongnu.org
+Cc: qemu-arm@nongnu.org,
+	alex.bennee@linaro.org,
+	peter.maydell@linaro.org
+Subject: [PATCH v3 01/36] target/arm: enforce Armv6-M NVIC limits
+Date: Sun,  6 Sep 2026 21:44:00 +0200
+Message-ID: <20260906194438.93046-2-gilles.grimaud@univ-lille.fr>
+X-Mailer: git-send-email 2.55.0
+In-Reply-To: <20260906194438.93046-1-gilles.grimaud@univ-lille.fr>
+References: <20260906194438.93046-1-gilles.grimaud@univ-lille.fr>
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 3.0 on 10.30.177.12
-X-Mimecast-MFC-PROC-ID: oL1X_k8JntiJV_TMqaqioHFOvRFbaXl_UYXVzXq55tE_1788714650
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=clg@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: 12
-X-Spam_score: 1.2
-X-Spam_bar: +
-X-Spam_report: (1.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.01, RCVD_IN_SBL_CSS=3.335,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=no autolearn_force=no
+Received-SPF: pass client-ip=194.254.129.106;
+ envelope-from=gilles.grimaud@univ-lille.fr; helo=smtp-out-2.univ-lille.fr
+X-Spam_score_int: -43
+X-Spam_score: -4.4
+X-Spam_bar: ----
+X-Spam_report: (-4.4 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_MED=-2.3, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -87,105 +72,133 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-From: Jamin Lin <jamin_lin@aspeedtech.com>
+Armv6-M supports no more than 32 external interrupts. Its ICTR and Active
+Bit Register locations are reserved, and Cortex-M0 implements two priority
+bits.
 
-Introduce the ASPEED_DEV_ACRY enum slot and add the ACRY model state
-to AspeedSoCState.
+Reject Armv6-M NVIC configurations with more than 32 external interrupts.
+Add a check-tcg test that verifies the reserved register behavior and
+priority masking on the microbit machine.
 
-Instantiate the new ACRY model on the AST2600 SoC using its
-real-silicon register address and IRQ:
-
-- ACRY register region 0x1e6fa000-0x1e6fafff
-- IRQ 160
-
-Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
-Reviewed-by: Cédric Le Goater <clg@kaod.org>
-Reviewed-by: Philippe Mathieu-Daudé <philmd@oss.qualcomm.com>
-Reviewed-by: Cédric Le Goater <clg@redhat.com>
-Link: https://lore.kernel.org/qemu-devel/20260901081531.898176-4-jamin_lin@aspeedtech.com
-Signed-off-by: Cédric Le Goater <clg@redhat.com>
+Signed-off-by: Gilles Grimaud <gilles.grimaud@univ-lille.fr>
 ---
- include/hw/arm/aspeed_soc.h |  3 +++
- hw/arm/aspeed_ast2600.c     | 17 +++++++++++++++++
- 2 files changed, 20 insertions(+)
+ hw/intc/armv7m_nvic.c                   |  7 +++
+ tests/tcg/arm/system/meson.build        |  6 +++
+ tests/tcg/arm/system/test-armv6m-nvic.S | 70 +++++++++++++++++++++++++
+ 3 files changed, 83 insertions(+)
+ create mode 100644 tests/tcg/arm/system/test-armv6m-nvic.S
 
-diff --git a/include/hw/arm/aspeed_soc.h b/include/hw/arm/aspeed_soc.h
-index 46e7854727c6..8d80f1670587 100644
---- a/include/hw/arm/aspeed_soc.h
-+++ b/include/hw/arm/aspeed_soc.h
-@@ -25,6 +25,7 @@
- #include "hw/i2c/aspeed_i2c.h"
- #include "hw/i3c/aspeed_i3c.h"
- #include "hw/ssi/aspeed_smc.h"
-+#include "hw/misc/aspeed_acry.h"
- #include "hw/misc/aspeed_hace.h"
- #include "hw/misc/aspeed_sbc.h"
- #include "hw/misc/aspeed_sli.h"
-@@ -82,6 +83,7 @@ struct AspeedSoCState {
-     AspeedSCUState scu;
-     AspeedSCUState scuio;
-     AspeedHACEState hace;
-+    AspeedACRYState acry;
-     AspeedXDMAState xdma;
-     AspeedADCState adc;
-     AspeedSMCState fmc;
-@@ -271,6 +273,7 @@ enum {
-     ASPEED_DEV_EMMC,
-     ASPEED_DEV_KCS,
-     ASPEED_DEV_HACE,
-+    ASPEED_DEV_ACRY,
-     ASPEED_DEV_DPMCU,
-     ASPEED_DEV_DP,
-     ASPEED_DEV_I3C,
-diff --git a/hw/arm/aspeed_ast2600.c b/hw/arm/aspeed_ast2600.c
-index f23a51c8a46f..f7c7ec7fb1d4 100644
---- a/hw/arm/aspeed_ast2600.c
-+++ b/hw/arm/aspeed_ast2600.c
-@@ -52,6 +52,7 @@ static const hwaddr aspeed_soc_ast2600_memmap[] = {
-     [ASPEED_DEV_DP]        = 0x1E6EB000,
-     [ASPEED_DEV_PCIE_PHY1] = 0x1E6ED200,
-     [ASPEED_DEV_SBC]       = 0x1E6F2000,
-+    [ASPEED_DEV_ACRY]      = 0x1E6FA000,
-     [ASPEED_DEV_EMMC_BC]   = 0x1E6f5000,
-     [ASPEED_DEV_VIDEO]     = 0x1E700000,
-     [ASPEED_DEV_SDHCI]     = 0x1E740000,
-@@ -144,6 +145,7 @@ static const int aspeed_soc_ast2600_irqmap[] = {
-     [ASPEED_DEV_FSI1]      = 100,
-     [ASPEED_DEV_FSI2]      = 101,
-     [ASPEED_DEV_I3C]       = 102,   /* 102 -> 107 */
-+    [ASPEED_DEV_ACRY]      = 160,
- };
+diff --git a/hw/intc/armv7m_nvic.c b/hw/intc/armv7m_nvic.c
+index a7651f831e..c1ceb7450f 100644
+--- a/hw/intc/armv7m_nvic.c
++++ b/hw/intc/armv7m_nvic.c
+@@ -2728,6 +2728,13 @@ static void armv7m_nvic_realize(DeviceState *dev, Error **errp)
+         return;
+     }
  
- static qemu_irq aspeed_soc_ast2600_get_irq(AspeedSoCState *s, int dev)
-@@ -269,6 +271,8 @@ static void aspeed_soc_ast2600_init(Object *obj)
-     snprintf(typename, sizeof(typename), "aspeed.hace-%s", socname);
-     object_initialize_child(obj, "hace", &s->hace, typename);
- 
-+    object_initialize_child(obj, "acry", &s->acry, TYPE_ASPEED_ACRY);
-+
-     object_initialize_child(obj, "i3c", &s->i3c, TYPE_ASPEED_I3C);
- 
-     object_initialize_child(obj, "sbc", &s->sbc, TYPE_ASPEED_AST2600_SBC);
-@@ -726,6 +730,19 @@ static void aspeed_soc_ast2600_realize(DeviceState *dev, Error **errp)
-     sysbus_connect_irq(SYS_BUS_DEVICE(&s->hace), 0,
-                        aspeed_soc_ast2600_get_irq(s, ASPEED_DEV_HACE));
- 
-+    /* ACRY */
-+    object_property_set_link(OBJECT(&s->acry), "dram", OBJECT(s->dram_mr),
-+                             &error_abort);
-+    object_property_set_link(OBJECT(&s->acry), "sram", OBJECT(&s->sram[1]),
-+                             &error_abort);
-+    if (!sysbus_realize(SYS_BUS_DEVICE(&s->acry), errp)) {
++    if (!arm_feature(&s->cpu->env, ARM_FEATURE_V7) &&
++        !arm_feature(&s->cpu->env, ARM_FEATURE_V8) &&
++        s->num_irq > 32) {
++        error_setg(errp, "Armv6-M NVIC cannot exceed 32 external IRQs");
 +        return;
 +    }
-+    aspeed_mmio_map(s->memory, SYS_BUS_DEVICE(&s->acry), 0,
-+                    sc->memmap[ASPEED_DEV_ACRY]);
-+    sysbus_connect_irq(SYS_BUS_DEVICE(&s->acry), 0,
-+                       aspeed_soc_ast2600_get_irq(s, ASPEED_DEV_ACRY));
 +
-     /* I3C */
-     if (!sysbus_realize(SYS_BUS_DEVICE(&s->i3c), errp)) {
-         return;
+     qdev_init_gpio_in(dev, set_irq_level, s->num_irq);
+ 
+     /* include space for internal exception vectors */
+diff --git a/tests/tcg/arm/system/meson.build b/tests/tcg/arm/system/meson.build
+index 4c77b9c3d6..5286997670 100644
+--- a/tests/tcg/arm/system/meson.build
++++ b/tests/tcg/arm/system/meson.build
+@@ -39,6 +39,12 @@ tests += {
+                '-T', files('test-armv6m-undef.ld')],
+     'qemu_args': ['-M', 'microbit', qemu_base_args],
+   },
++  'test-armv6m-nvic.S': {
++    'cflags': ['-mcpu=cortex-m0', '-mfloat-abi=soft', '-nostdlib',
++               '-Wl,--build-id=none',
++               '-T', files('test-armv6m-undef.ld')],
++    'qemu_args': ['-M', 'microbit', qemu_base_args],
++  },
+   'semiconsole.c': {
+     'cflags': cflags,
+     'qemu_args': ['-serial', 'none', '-chardev', 'stdio,mux=on,id=stdio0',
+diff --git a/tests/tcg/arm/system/test-armv6m-nvic.S b/tests/tcg/arm/system/test-armv6m-nvic.S
+new file mode 100644
+index 0000000000..ecb29eaa3d
+--- /dev/null
++++ b/tests/tcg/arm/system/test-armv6m-nvic.S
+@@ -0,0 +1,70 @@
++/* SPDX-License-Identifier: GPL-2.0-or-later */
++/* Test Armv6-M NVIC register behavior. */
++
++.syntax unified
++.cpu cortex-m0
++.thumb
++
++#define SRAM_BASE 0x20000000
++#define SRAM_SIZE (16 * 1024)
++
++#define NVIC_ICTR  0xe000e004
++#define NVIC_IABR0 0xe000e300
++#define NVIC_IPR0  0xe000e400
++
++#define semihosting_call bkpt 0xab
++#define SYS_EXIT 0x18
++
++vector_table:
++    .word SRAM_BASE + SRAM_SIZE
++    .word reset + 1
++    .word 0
++    .word failure + 1
++    .rept 44
++    .word 0
++    .endr
++
++.equ exc_reset_thumb, reset + 1
++.global exc_reset_thumb
++reset:
++    /* ICTR is reserved and reads as zero on Armv6-M. */
++    ldr r0, =NVIC_ICTR
++    ldr r1, [r0]
++    cmp r1, 0
++    bne failure
++
++    /* The Active Bit Register is reserved and behaves as RAZ/WI. */
++    ldr r0, =NVIC_IABR0
++    movs r1, 1
++    str r1, [r0]
++    ldr r1, [r0]
++    cmp r1, 0
++    bne failure
++
++    /* Cortex-M0 implements the two most significant priority bits. */
++    ldr r0, =NVIC_IPR0
++    movs r1, 0xff
++    strb r1, [r0]
++    ldrb r1, [r0]
++    cmp r1, 0xc0
++    bne failure
++
++success:
++    movs r0, 1
++    b exit
++
++failure:
++    movs r0, 0
++
++exit:
++    movs r1, 0
++    cmp r0, 1
++    bne 1f
++    ldr r1, ADP_Stopped_ApplicationExit
++1:
++    movs r0, SYS_EXIT
++    semihosting_call
++
++.align 2
++ADP_Stopped_ApplicationExit:
++    .word 0x20026
 -- 
 2.55.0
 

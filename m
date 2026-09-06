@@ -4,75 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A93C8C79F85
-	for <qemu-arm@archiver.kernel.org>; Sun,  6 Sep 2026 17:14:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 61337C79F85
+	for <qemu-arm@archiver.kernel.org>; Sun,  6 Sep 2026 17:14:59 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1x3GOA-0003MZ-3x; Sun, 06 Sep 2026 13:10:42 -0400
+	id 1x3GPN-0005W3-2Y; Sun, 06 Sep 2026 13:11:57 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1x3GO9-0003M3-1A
- for qemu-arm@nongnu.org; Sun, 06 Sep 2026 13:10:41 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1x3GPL-0005Dp-OQ
+ for qemu-arm@nongnu.org; Sun, 06 Sep 2026 13:11:55 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1x3GO6-0008VC-Sz
- for qemu-arm@nongnu.org; Sun, 06 Sep 2026 13:10:40 -0400
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1x3GPK-0000Mb-4F
+ for qemu-arm@nongnu.org; Sun, 06 Sep 2026 13:11:55 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1788714638;
+ s=mimecast20190719; t=1788714713;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=7PVNgscwlHiuNOAcyp2OFZJ32h79sLgK0XH/e/6ez6o=;
- b=ZzkSgaRBNv3P2iXPUp1Ydr/Ero8WlMEunV0Ru9I/pSOMCCqfmB1t+xueaEbPelnFWk9wRz
- e8Q5Ec69VEwmmd7xEBJagFMFwXacM1YepahkW2B9Yga+M/2O9i9TV+K0J81unTAD2eCnPu
- EE34nD9Kb4TtEbgZubIyhNYzwX0lbC0=
-Received: from mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com
+ bh=m2Q434UiBnVyO/40qdBy5Hf/HT2OFG9HiPqWDxG9kBc=;
+ b=B4t878CubZM+JL2/1iLd8KrMamrJkV7VM+mkPtEB/LN0xMcczns8+PS1j5YVPo/WHQf5Op
+ uJrdLmA06yhee/fvhEaSNkeBMggYZdjgiAg7Xvdk/oHb9jb+NfuXCVuY0Vio6HuMMiMUjH
+ 6HUMfiyPGiXjY0QNB4oLnUxV8a/0v58=
+Received: from mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com
  (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-621-DCKzmu8vOQabEkk--26l0A-1; Sun,
- 06 Sep 2026 13:10:36 -0400
-X-MC-Unique: DCKzmu8vOQabEkk--26l0A-1
-X-Mimecast-MFC-AGG-ID: DCKzmu8vOQabEkk--26l0A_1788714635
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-222-fzPDUctcM_uVILqSUMiDsA-1; Sun,
+ 06 Sep 2026 13:11:50 -0400
+X-MC-Unique: fzPDUctcM_uVILqSUMiDsA-1
+X-Mimecast-MFC-AGG-ID: fzPDUctcM_uVILqSUMiDsA_1788714709
 Received: from mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com
  (mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.12])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 4EC261954AEB; Sun,  6 Sep 2026 17:10:35 +0000 (UTC)
+ by mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 1D6C41955BD0; Sun,  6 Sep 2026 17:11:49 +0000 (UTC)
 Received: from yukon.redhat.com (unknown [10.44.32.24])
  by mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id 322161955F06; Sun,  6 Sep 2026 17:10:32 +0000 (UTC)
+ id 984F21955F06; Sun,  6 Sep 2026 17:11:47 +0000 (UTC)
 From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Cc: Jamin Lin <jamin_lin@aspeedtech.com>,
- Peter Maydell <peter.maydell@linaro.org>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@oss.qualcomm.com>,
+Cc: Emmanuel Blot <emmanuel.blot@free.fr>,
  =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>
-Subject: [PULL 03/40] hw/usb/hcd-ehci: Check for DMA errors in
- get_dwords()/put_dwords()
-Date: Sun,  6 Sep 2026 19:09:44 +0200
-Message-ID: <20260906171021.26568-4-clg@redhat.com>
+Subject: [PULL 40/40] tests/functional: aspeed: optionally check the device
+ tree model on boot
+Date: Sun,  6 Sep 2026 19:10:21 +0200
+Message-ID: <20260906171021.26568-41-clg@redhat.com>
 In-Reply-To: <20260906171021.26568-1-clg@redhat.com>
 References: <20260906171021.26568-1-clg@redhat.com>
 MIME-Version: 1.0
 X-Scanned-By: MIMEDefang 3.0 on 10.30.177.12
-X-Mimecast-MFC-PROC-ID: 6tiy87Ie2JdzRW6juW-8Z5Nz1KZ33AtTQamOxCuhlho_1788714635
+X-Mimecast-MFC-PROC-ID: TI8Sj7d8MMq8jgOyavs9ZgDM1oFiuF74umPybCT_Hrc_1788714709
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=clg@redhat.com;
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=clg@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: 12
 X-Spam_score: 1.2
 X-Spam_bar: +
 X-Spam_report: (1.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.01, RCVD_IN_SBL_CSS=3.335,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=no autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=-0.01, RCVD_IN_MSPIKE_WL=-0.01,
+ RCVD_IN_SBL_CSS=3.335, SPF_HELO_PASS=-0.001,
+ SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -88,99 +87,47 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-From: Jamin Lin <jamin_lin@aspeedtech.com>
+From: Emmanuel Blot <emmanuel.blot@free.fr>
 
-get_dwords() and put_dwords() return -1 when ehci->as is NULL, but that
-can no longer happen. The sysbus variants set it in instance_init
-(ehci_sysbus_init()), the PCI variant sets it in realize
-(usb_ehci_pci_realize()), and usb_ehci_pci_write_config() only switches
-between the bus master address space and address_space_memory.
+Add an optional 'dt_model' argument to do_test_arm_aspeed_openbmc().
+When
+provided, the helper also waits for the kernel's "Machine model: ..."
+line,
+letting a test confirm the booted image actually matches the expected
+board
+device tree rather than only the SoC revision.
 
-Meanwhile the results of dma_memory_read() and dma_memory_write() are
-ignored, so a failed guest memory access is silently treated as success.
-
-Drop the dead NULL test and check the MemTxResult of each access
-instead, so that the existing -1 error path reports real DMA errors:
-raise USBSTS_HSE, clear USBCMD_RUNSTOP and stop processing the
-descriptor, as the NULL path used to do. All 11 get_dwords() callers
-already check the return value.
-
-put_dwords() now returns void: none of its four callers (ehci_flush_qh(),
-ehci_state_fetchitd() and twice in ehci_state_writeback()) looks at the
-status.
-
-Suggested-by: Peter Maydell <peter.maydell@linaro.org>
-Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
-Reviewed-by: Philippe Mathieu-Daudé <philmd@oss.qualcomm.com>
-Link: https://lore.kernel.org/qemu-devel/20260817055318.3826428-2-jamin_lin@aspeedtech.com
+Signed-off-by: Emmanuel Blot <emmanuel.blot@free.fr>
+Reviewed-by: Cédric Le Goater <clg@redhat.com>
+Link: https://lore.kernel.org/qemu-devel/20260731-sanmiguel-bmc-locator-v2-16-1266926ba769@free.fr
 Signed-off-by: Cédric Le Goater <clg@redhat.com>
 ---
- hw/usb/hcd-ehci.c | 38 ++++++++++++++++----------------------
- 1 file changed, 16 insertions(+), 22 deletions(-)
+ tests/functional/aspeed.py | 5 ++++-
+ 1 file changed, 4 insertions(+), 1 deletion(-)
 
-diff --git a/hw/usb/hcd-ehci.c b/hw/usb/hcd-ehci.c
-index 451a918e9f5f..ecf98c4e199f 100644
---- a/hw/usb/hcd-ehci.c
-+++ b/hw/usb/hcd-ehci.c
-@@ -421,16 +421,14 @@ static inline int get_dwords(EHCIState *ehci, uint64_t addr,
- {
-     int i;
+diff --git a/tests/functional/aspeed.py b/tests/functional/aspeed.py
+index 076da1036cfd..08af6b4839cf 100644
+--- a/tests/functional/aspeed.py
++++ b/tests/functional/aspeed.py
+@@ -8,7 +8,8 @@
+ class AspeedTest(LinuxKernelTest):
  
--    if (!ehci->as) {
--        ehci_raise_irq(ehci, USBSTS_HSE);
--        ehci->usbcmd &= ~USBCMD_RUNSTOP;
--        trace_usb_ehci_dma_error();
--        return -1;
--    }
--
-     for (i = 0; i < num; i++, buf++, addr += sizeof(*buf)) {
--        dma_memory_read(ehci->as, addr, buf, sizeof(*buf),
--                        MEMTXATTRS_UNSPECIFIED);
-+        if (dma_memory_read(ehci->as, addr, buf, sizeof(*buf),
-+                            MEMTXATTRS_UNSPECIFIED) != MEMTX_OK) {
-+            ehci_raise_irq(ehci, USBSTS_HSE);
-+            ehci->usbcmd &= ~USBCMD_RUNSTOP;
-+            trace_usb_ehci_dma_error();
-+            return -1;
-+        }
-         *buf = le32_to_cpu(*buf);
-     }
- 
-@@ -438,25 +436,21 @@ static inline int get_dwords(EHCIState *ehci, uint64_t addr,
- }
- 
- /* Put an array of dwords in to main memory */
--static inline int put_dwords(EHCIState *ehci, uint64_t addr,
--                             uint32_t *buf, int num)
-+static inline void put_dwords(EHCIState *ehci, uint64_t addr,
-+                              uint32_t *buf, int num)
- {
-     int i;
- 
--    if (!ehci->as) {
--        ehci_raise_irq(ehci, USBSTS_HSE);
--        ehci->usbcmd &= ~USBCMD_RUNSTOP;
--        trace_usb_ehci_dma_error();
--        return -1;
--    }
--
-     for (i = 0; i < num; i++, buf++, addr += sizeof(*buf)) {
-         uint32_t tmp = cpu_to_le32(*buf);
--        dma_memory_write(ehci->as, addr, &tmp, sizeof(tmp),
--                         MEMTXATTRS_UNSPECIFIED);
-+        if (dma_memory_write(ehci->as, addr, &tmp, sizeof(tmp),
-+                             MEMTXATTRS_UNSPECIFIED) != MEMTX_OK) {
-+            ehci_raise_irq(ehci, USBSTS_HSE);
-+            ehci->usbcmd &= ~USBCMD_RUNSTOP;
-+            trace_usb_ehci_dma_error();
-+            return;
-+        }
-     }
--
--    return num;
- }
- 
- static int ehci_get_pid(EHCIqtd *qtd)
+     def do_test_arm_aspeed_openbmc(self, machine, image, uboot='2019.04',
+-                                   cpu_id='0x0', soc='AST2500 rev A1'):
++                                   cpu_id='0x0', soc='AST2500 rev A1',
++                                   dt_model=None):
+         self.set_machine(machine)
+         self.vm.set_console()
+         self.vm.add_args('-drive', f'file={image},if=mtd,format=raw',
+@@ -19,6 +20,8 @@ def do_test_arm_aspeed_openbmc(self, machine, image, uboot='2019.04',
+         self.wait_for_console_pattern('## Loading kernel from FIT Image')
+         self.wait_for_console_pattern('Starting kernel ...')
+         self.wait_for_console_pattern(f'Booting Linux on physical CPU {cpu_id}')
++        if dt_model:
++            self.wait_for_console_pattern(f'Machine model: {dt_model}')
+         self.wait_for_console_pattern(f'ASPEED {soc}')
+         self.wait_for_console_pattern('/init as init process')
+         self.wait_for_boot_complete()
 -- 
 2.55.0
 

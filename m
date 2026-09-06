@@ -4,47 +4,46 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E9274C79F9E
-	for <qemu-arm@archiver.kernel.org>; Sun,  6 Sep 2026 19:48:14 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D02A6C79F99
+	for <qemu-arm@archiver.kernel.org>; Sun,  6 Sep 2026 19:48:27 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1x3InP-0002Hl-Kr; Sun, 06 Sep 2026 15:44:55 -0400
+	id 1x3IoL-0002ww-F9; Sun, 06 Sep 2026 15:45:53 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <gilles.grimaud@univ-lille.fr>)
- id 1x3InO-0002HH-To; Sun, 06 Sep 2026 15:44:54 -0400
+ id 1x3IoK-0002uq-0q; Sun, 06 Sep 2026 15:45:52 -0400
 Received: from smtp-out-2.univ-lille.fr ([194.254.129.106])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <gilles.grimaud@univ-lille.fr>)
- id 1x3InM-0006xW-Ug; Sun, 06 Sep 2026 15:44:54 -0400
+ id 1x3IoG-0007EV-Vl; Sun, 06 Sep 2026 15:45:51 -0400
 Received: from smtp01.univ-lille.fr (smtp01.univ-lille.fr [194.254.129.95])
- by smtp-out-2.univ-lille.fr (Postfix) with ESMTPS id 4hdLJ90G1Mz7vjs;
- Sun,  6 Sep 2026 21:44:41 +0200 (CEST)
+ by smtp-out-2.univ-lille.fr (Postfix) with ESMTPS id 4hdLJD5V8Zz7ycX;
+ Sun,  6 Sep 2026 21:44:44 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=univ-lille.fr;
- s=dkim; t=1788723881;
- bh=dCCd+ACp9P2lYS6q7+kAnohBplRue+32oVYGSJCn/yI=;
+ s=dkim; t=1788723884;
+ bh=Sp7InjTQ1IG3Y/xAQmTM2MHTpJoLiNcuZuIT8AGjbCU=;
  h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=GdkQY8Els3K4hU0q0/UuJQJQF/HBCRufkIxzcFVFPN8xHp/efVzPCub19Uyzc4Lu5
- jNxdXvQAqzlAwjVgGOy5ZM72rycL2FNdj+J8TOUiR9iBdKH4hemYhXFL4qRQfRuUx7
- kyzXECiO7YPncz+9kF1C5jSOfSV+y26CiQIaygCww0QLNhKserk2O3lSvK8GY0Rv0I
- EqctmPv2SLgiBdvFhSKZxnPNbZlWWk9p9TBDwIhQgJUi8/DBuE5adLNAs4Lu+pNN9h
- Yg3jgwCGhU66hZdEL5Ipd2VJCpRLxQLdI6QGcehtQHokF/ToNcZ+pfepTF+M5vrQgn
- v6KI3w0g6EEyQ==
+ b=A1UdXRuqjC6fXotLwGK1+VmcI8a69beBVshCxx6wiVROaHBZtWfewMHfcZ6RiwS9S
+ O8qxQYEtoFdpwDieYUghZP45zMxIsFDGaPn+apQW0M6RCAg+YruBu5uv4dvl6FsYrt
+ 2/Tc3EH8d8lTYpCbv4wmxX6Od0dgp4cVeVFW0N8XvVC2WbS8+MJu1kutkZDo6TP99j
+ kNBn+n6hdeziH30j149N6oV/4f5cGmhilsZO52zlR6qAVDIAcSiDP0aPDJZYmoVQLf
+ a8x3CmxXhNt3Eo/P0b/h/MhYfZUJ9G4pH24CwAw8yup0QUdvCZQp1skURCe4iJcd4G
+ ovVWV/IhDbjBg==
 Received: from mac.home (lfbn-lil-1-243-101.w90-45.abo.wanadoo.fr
  [90.45.87.101]) (Authenticated sender: gilles.grimaud)
- by smtp01.univ-lille.fr (Postfix) with ESMTPSA id 4hdLJ84rZtz7wHs;
- Sun,  6 Sep 2026 21:44:40 +0200 (CEST)
+ by smtp01.univ-lille.fr (Postfix) with ESMTPSA id 4hdLJD3PKKz7wHs;
+ Sun,  6 Sep 2026 21:44:44 +0200 (CEST)
 From: Gilles Grimaud <gilles.grimaud@univ-lille.fr>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org, alex.bennee@linaro.org, peter.maydell@linaro.org,
  gilles grimaud <gilles.grimaud@univ-lille.fr>,
- =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
- Paolo Bonzini <pbonzini@redhat.com>, Fabiano Rosas <farosas@suse.de>,
- Laurent Vivier <lvivier@redhat.com>
-Subject: [PATCH v3 04/36] hw/char/pl011: expose DMA request outputs
-Date: Sun,  6 Sep 2026 21:44:03 +0200
-Message-ID: <20260906194438.93046-5-gilles.grimaud@univ-lille.fr>
+ Fabiano Rosas <farosas@suse.de>, Laurent Vivier <lvivier@redhat.com>,
+ Paolo Bonzini <pbonzini@redhat.com>
+Subject: [PATCH v3 15/36] hw/misc: add RP2040 reset and power state controllers
+Date: Sun,  6 Sep 2026 21:44:14 +0200
+Message-ID: <20260906194438.93046-16-gilles.grimaud@univ-lille.fr>
 X-Mailer: git-send-email 2.55.0
 In-Reply-To: <20260906194438.93046-1-gilles.grimaud@univ-lille.fr>
 References: <20260906194438.93046-1-gilles.grimaud@univ-lille.fr>
@@ -74,273 +73,593 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Expose named TX and RX DMA request GPIO outputs from the PL011 model.
-Update them when UARTDMACR or FIFO state changes so SoC DMA controllers can
-consume PL011 pacing without device-specific callbacks.
-
-Add a qtest covering TX and RX request assertion and deassertion.
+Model the RP2040 RESETS and PSM register blocks, including atomic aliases,
+watchdog selection and completion state. Expose the PSM update callback
+used by the later multicore integration and add focused qtests for
+reset-controller behavior.
 
 Signed-off-by: gilles grimaud <gilles.grimaud@univ-lille.fr>
 ---
- MAINTAINERS              |   1 +
- hw/char/pl011.c          |  32 ++++++++++--
- include/hw/char/pl011.h  |   2 +
- tests/qtest/meson.build  |   2 +
- tests/qtest/pl011-test.c | 106 +++++++++++++++++++++++++++++++++++++++
- 5 files changed, 139 insertions(+), 4 deletions(-)
- create mode 100644 tests/qtest/pl011-test.c
+ hw/arm/rp2040.c                  |  14 ++-
+ hw/misc/meson.build              |   2 +
+ hw/misc/rp2040_psm.c             | 179 +++++++++++++++++++++++++++++++
+ hw/misc/rp2040_resets.c          | 132 +++++++++++++++++++++++
+ include/hw/arm/rp2040.h          |   4 +
+ include/hw/misc/rp2040_psm.h     |  40 +++++++
+ include/hw/misc/rp2040_resets.h  |  28 +++++
+ tests/qtest/meson.build          |   1 +
+ tests/qtest/rp2040-resets-test.c |  84 +++++++++++++++
+ 9 files changed, 482 insertions(+), 2 deletions(-)
+ create mode 100644 hw/misc/rp2040_psm.c
+ create mode 100644 hw/misc/rp2040_resets.c
+ create mode 100644 include/hw/misc/rp2040_psm.h
+ create mode 100644 include/hw/misc/rp2040_resets.h
+ create mode 100644 tests/qtest/rp2040-resets-test.c
 
-diff --git a/MAINTAINERS b/MAINTAINERS
-index 7183babd6a..15c9b8bf2c 100644
---- a/MAINTAINERS
-+++ b/MAINTAINERS
-@@ -764,6 +764,7 @@ L: qemu-arm@nongnu.org
- S: Maintained
- F: hw/char/pl011.c
- F: include/hw/char/pl011.h
-+F: tests/qtest/pl011-test.c
- F: hw/display/pl110*
- F: hw/dma/pl080.c
- F: include/hw/dma/pl080.h
-diff --git a/hw/char/pl011.c b/hw/char/pl011.c
-index 5ad9e7358d..7e982e54bb 100644
---- a/hw/char/pl011.c
-+++ b/hw/char/pl011.c
-@@ -80,6 +80,11 @@ DeviceState *pl011_create(hwaddr addr, qemu_irq irq, Chardev *chr)
- #define LCR_FEN     (1 << 4)
- #define LCR_BRK     (1 << 0)
+diff --git a/hw/arm/rp2040.c b/hw/arm/rp2040.c
+index d30058c873..fa28859309 100644
+--- a/hw/arm/rp2040.c
++++ b/hw/arm/rp2040.c
+@@ -48,8 +48,6 @@ static const struct {
+     hwaddr base;
+     hwaddr size;
+ } rp2040_unimplemented[] = {
+-    { "rp2040.resets",   0x4000c000, 0x4000 },
+-    { "rp2040.psm",      0x40010000, 0x4000 },
+     { "rp2040.iobank0",  0x40014000, 0x4000 },
+     { "rp2040.ioqspi",   0x40018000, 0x4000 },
+     { "rp2040.padsbank0", 0x4001c000, 0x4000 },
+@@ -148,6 +146,8 @@ static void rp2040_soc_init(Object *obj)
+     qdev_prop_set_uint32(DEVICE(&s->pll_usb), "base", RP2040_PLL_USB_BASE);
+     qdev_prop_set_uint32(DEVICE(&s->pll_usb), "fallback-hz", 48000000);
  
-+/* DMA Control Register, UARTDMACR */
-+#define DMACR_RXDMAE    (1 << 0)
-+#define DMACR_TXDMAE    (1 << 1)
-+#define DMACR_DMAONERR  (1 << 2)
++    object_initialize_child(obj, "psm", &s->psm, TYPE_RP2040_PSM);
++    object_initialize_child(obj, "resets", &s->resets, TYPE_RP2040_RESETS);
+     object_initialize_child(obj, "syscfg", &s->syscfg, TYPE_RP2040_SYSCFG);
+     object_initialize_child(obj, "sysinfo", &s->sysinfo, TYPE_RP2040_SYSINFO);
+     object_initialize_child(obj, "rosc", &s->rosc, TYPE_RP2040_ROSC);
+@@ -264,6 +264,16 @@ static void rp2040_soc_realize(DeviceState *dev, Error **errp)
+     clock_set_source(s->sysclk, qdev_get_clock_out(DEVICE(&s->clocks),
+                                                    "clk-sys"));
+ 
++    if (!sysbus_realize(SYS_BUS_DEVICE(&s->psm), errp)) {
++        return;
++    }
++    sysbus_mmio_map(SYS_BUS_DEVICE(&s->psm), 0, RP2040_PSM_BASE);
 +
- /* Control Register, UARTCR */
- #define CR_OUT2     (1 << 13)
- #define CR_OUT1     (1 << 12)
-@@ -157,6 +162,17 @@ static inline unsigned pl011_get_fifo_depth(PL011State *s)
-     return pl011_is_fifo_enabled(s) ? PL011_FIFO_DEPTH : 1;
- }
- 
-+static void pl011_update_dreq(PL011State *s)
-+{
-+    qemu_set_irq(s->dreq_tx,
-+                 (s->cr & CR_UARTEN) &&
-+                 (s->dmacr & DMACR_TXDMAE) &&
-+                 !(s->flags & PL011_FLAG_TXFF));
-+    qemu_set_irq(s->dreq_rx,
-+                 (s->cr & CR_UARTEN) &&
-+                 (s->dmacr & DMACR_RXDMAE) && s->read_count > 0);
-+}
++    if (!sysbus_realize(SYS_BUS_DEVICE(&s->resets), errp)) {
++        return;
++    }
++    sysbus_mmio_map(SYS_BUS_DEVICE(&s->resets), 0, RP2040_RESETS_BASE);
 +
- static inline void pl011_reset_rx_fifo(PL011State *s)
- {
-     s->read_count = 0;
-@@ -190,6 +206,7 @@ static void pl011_fifo_rx_put(void *opaque, uint32_t value)
-         trace_pl011_fifo_rx_full();
-         s->flags |= PL011_FLAG_RXFF;
-     }
-+    pl011_update_dreq(s);
-     if (s->read_count == s->read_trigger) {
-         s->int_level |= INT_RX;
-         pl011_update(s);
-@@ -258,6 +275,7 @@ static void pl011_write_txdata(PL011State *s, uint8_t data)
-     pl011_loopback_tx(s, data);
-     s->int_level |= INT_TX;
-     pl011_update(s);
-+    pl011_update_dreq(s);
- }
- 
- static uint32_t pl011_read_rxdata(PL011State *s)
-@@ -280,6 +298,7 @@ static uint32_t pl011_read_rxdata(PL011State *s)
-     trace_pl011_read_fifo(s->read_count, fifo_depth);
-     s->rsr = c >> 8;
-     pl011_update(s);
-+    pl011_update_dreq(s);
-     qemu_chr_fe_accept_input(&s->chr);
-     return c;
- }
-@@ -473,6 +492,7 @@ static void pl011_write(void *opaque, hwaddr offset,
-         }
-         s->lcr = value;
-         pl011_set_read_trigger(s);
-+        pl011_update_dreq(s);
-         break;
-     case 12: /* UARTCR */
-         /* ??? Need to implement the enable bit.  */
-@@ -482,6 +502,7 @@ static void pl011_write(void *opaque, hwaddr offset,
-         }
-         s->cr = value;
-         pl011_loopback_mdmctrl(s);
-+        pl011_update_dreq(s);
-         break;
-     case 13: /* UARTIFS */
-         s->ifl = value;
-@@ -496,10 +517,8 @@ static void pl011_write(void *opaque, hwaddr offset,
-         pl011_update(s);
-         break;
-     case 18: /* UARTDMACR */
--        s->dmacr = value;
--        if (value & 3) {
--            qemu_log_mask(LOG_UNIMP, "pl011: DMA not implemented\n");
--        }
-+        s->dmacr = value & (DMACR_RXDMAE | DMACR_TXDMAE | DMACR_DMAONERR);
-+        pl011_update_dreq(s);
-         break;
-     default:
-         qemu_log_mask(LOG_GUEST_ERROR,
-@@ -607,6 +626,8 @@ static int pl011_post_load(void *opaque, int version_id)
- 
-     s->ibrd &= IBRD_MASK;
-     s->fbrd &= FBRD_MASK;
-+    s->dmacr &= DMACR_RXDMAE | DMACR_TXDMAE | DMACR_DMAONERR;
-+    pl011_update_dreq(s);
- 
-     return 0;
- }
-@@ -657,6 +678,8 @@ static void pl011_init(Object *obj)
-     for (i = 0; i < ARRAY_SIZE(s->irq); i++) {
-         sysbus_init_irq(sbd, &s->irq[i]);
-     }
-+    qdev_init_gpio_out_named(DEVICE(obj), &s->dreq_tx, "dreq-tx", 1);
-+    qdev_init_gpio_out_named(DEVICE(obj), &s->dreq_rx, "dreq-rx", 1);
- 
-     s->clk = qdev_init_clock_in(DEVICE(obj), "clk", pl011_clock_update, s,
-                                 ClockUpdate);
-@@ -708,6 +731,7 @@ static void pl011_reset(DeviceState *dev)
-     s->logged_disabled_uart = false;
-     pl011_reset_rx_fifo(s);
-     pl011_reset_tx_fifo(s);
-+    pl011_update_dreq(s);
- }
- 
- static void pl011_class_init(ObjectClass *oc, const void *data)
-diff --git a/include/hw/char/pl011.h b/include/hw/char/pl011.h
-index 5695787650..c7b5a3a2b3 100644
---- a/include/hw/char/pl011.h
-+++ b/include/hw/char/pl011.h
-@@ -49,6 +49,8 @@ struct PL011State {
-     int read_trigger;
-     CharFrontend chr;
-     qemu_irq irq[6];
-+    qemu_irq dreq_tx;
-+    qemu_irq dreq_rx;
-     Clock *clk;
-     bool migrate_clk;
-     bool logged_disabled_uart;
-diff --git a/tests/qtest/meson.build b/tests/qtest/meson.build
-index 17870e339b..bf563cdc6a 100644
---- a/tests/qtest/meson.build
-+++ b/tests/qtest/meson.build
-@@ -248,6 +248,8 @@ qtests_stm32l4x5 = \
-    'stm32l4x5_usart-test']
- 
- qtests_arm = \
-+  (config_all_devices.has_key('CONFIG_ARM_VIRT') and
-+   config_all_devices.has_key('CONFIG_PL011_C') ? ['pl011-test'] : []) + \
-   (config_all_devices.has_key('CONFIG_MPS2') ? ['sse-timer-test'] : []) + \
-   (config_all_devices.has_key('CONFIG_CMSDK_APB_DUALTIMER') ? ['cmsdk-apb-dualtimer-test'] : []) + \
-   (config_all_devices.has_key('CONFIG_CMSDK_APB_TIMER') ? ['cmsdk-apb-timer-test'] : []) + \
-diff --git a/tests/qtest/pl011-test.c b/tests/qtest/pl011-test.c
+     for (i = 0; i < RP2040_NUM_CORES; i++) {
+         g_autofree char *memory_name =
+             g_strdup_printf("rp2040.proc%d-memory", i);
+diff --git a/hw/misc/meson.build b/hw/misc/meson.build
+index f668574a64..c04e2ffe22 100644
+--- a/hw/misc/meson.build
++++ b/hw/misc/meson.build
+@@ -100,6 +100,8 @@ system_ss.add(when: 'CONFIG_RASPI', if_true: files(
+ ))
+ system_ss.add(when: 'CONFIG_RP2040', if_true: files('rp2040_clocks.c'))
+ system_ss.add(when: 'CONFIG_RP2040', if_true: files('rp2040_pll.c'))
++system_ss.add(when: 'CONFIG_RP2040', if_true: files('rp2040_psm.c'))
++system_ss.add(when: 'CONFIG_RP2040', if_true: files('rp2040_resets.c'))
+ system_ss.add(when: 'CONFIG_RP2040', if_true: files('rp2040_rosc.c'))
+ system_ss.add(when: 'CONFIG_RP2040', if_true: files('rp2040_syscfg.c'))
+ system_ss.add(when: 'CONFIG_RP2040', if_true: files('rp2040_sysinfo.c'))
+diff --git a/hw/misc/rp2040_psm.c b/hw/misc/rp2040_psm.c
 new file mode 100644
-index 0000000000..abc2dcfd97
+index 0000000000..80be4b3042
 --- /dev/null
-+++ b/tests/qtest/pl011-test.c
-@@ -0,0 +1,106 @@
++++ b/hw/misc/rp2040_psm.c
+@@ -0,0 +1,179 @@
 +/*
-+ * QTest testcase for the Arm PL011 UART DMA request outputs.
-+ *
-+ * Copyright (c) 2026 Gilles Grimaud
++ * RP2040 power-on state machine emulation
 + *
 + * SPDX-License-Identifier: GPL-2.0-or-later
 + */
 +
 +#include "qemu/osdep.h"
-+#include "qobject/qdict.h"
-+#include "qobject/qlist.h"
-+#include "libqtest.h"
++#include "hw/misc/rp2040_psm.h"
++#include "hw/misc/rp2040.h"
++#include "migration/vmstate.h"
++#include "qemu/log.h"
++#include "qemu/module.h"
 +
-+#define PL011_BASE          0x09000000
-+#define PL011_DR            0x000
-+#define PL011_CR            0x030
-+#define PL011_DMACR         0x048
++#define PSM_FRCE_ON   0x00
++#define PSM_FRCE_OFF  0x04
++#define PSM_WDSEL     0x08
++#define PSM_DONE      0x0c
 +
-+#define CR_RXE              (1 << 9)
-+#define CR_TXE              (1 << 8)
-+#define CR_LBE              (1 << 7)
-+#define CR_UARTEN           (1 << 0)
-+
-+#define DMACR_RXDMAE        (1 << 0)
-+#define DMACR_TXDMAE        (1 << 1)
-+
-+static char *find_pl011_path(QTestState *qts)
++static void rp2040_psm_update(RP2040PsmState *s)
 +{
-+    g_autoptr(QDict) response = NULL;
-+    QListEntry *entry;
-+    QList *children;
-+
-+    response = qtest_qmp(qts,
-+                         "{ 'execute': 'qom-list',"
-+                         "  'arguments': { 'path': '/machine/unattached' } }");
-+    children = qdict_get_qlist(response, "return");
-+
-+    QLIST_FOREACH_ENTRY(children, entry) {
-+        QDict *child = qobject_to(QDict, qlist_entry_obj(entry));
-+
-+        if (g_str_equal(qdict_get_str(child, "type"), "child<pl011>")) {
-+            return g_strdup_printf("/machine/unattached/%s",
-+                                   qdict_get_str(child, "name"));
-+        }
++    if (s->update) {
++        s->update(s->update_opaque);
 +    }
-+
-+    g_assert_not_reached();
 +}
 +
-+static void test_tx_dreq(void)
++void rp2040_psm_set_update_callback(RP2040PsmState *s,
++                                    RP2040PsmUpdateFn update,
++                                    void *opaque)
 +{
-+    QTestState *qts = qtest_init("-M virt");
-+    g_autofree char *path = find_pl011_path(qts);
++    s->update = update;
++    s->update_opaque = opaque;
++}
 +
-+    qtest_irq_intercept_out_named(qts, path, "dreq-tx");
-+    g_assert_false(qtest_get_irq(qts, 0));
++uint32_t rp2040_psm_get_frce_off(RP2040PsmState *s)
++{
++    return s->frce_off;
++}
 +
-+    qtest_writel(qts, PL011_BASE + PL011_CR, CR_UARTEN);
-+    qtest_writel(qts, PL011_BASE + PL011_DMACR, DMACR_TXDMAE);
-+    g_assert_true(qtest_get_irq(qts, 0));
-+    g_assert_cmphex(qtest_readl(qts, PL011_BASE + PL011_DMACR), ==,
-+                    DMACR_TXDMAE);
++static uint32_t rp2040_psm_done(RP2040PsmState *s)
++{
++    return RP2040_PSM_VALID_MASK & ~s->frce_off;
++}
 +
-+    qtest_writel(qts, PL011_BASE + PL011_CR, 0);
-+    g_assert_false(qtest_get_irq(qts, 0));
-+    qtest_writel(qts, PL011_BASE + PL011_CR, CR_UARTEN);
-+    g_assert_true(qtest_get_irq(qts, 0));
++static uint64_t rp2040_psm_read(void *opaque, hwaddr addr, unsigned size)
++{
++    RP2040PsmState *s = opaque;
++    hwaddr offset = addr & 0xfff;
++    uint64_t value;
 +
-+    qtest_writel(qts, PL011_BASE + PL011_DMACR, 0);
-+    g_assert_false(qtest_get_irq(qts, 0));
++    switch (offset) {
++    case PSM_FRCE_ON:
++        value = s->frce_on;
++        break;
++    case PSM_FRCE_OFF:
++        value = s->frce_off;
++        break;
++    case PSM_WDSEL:
++        value = s->wdsel;
++        break;
++    case PSM_DONE:
++        value = rp2040_psm_done(s);
++        break;
++    default:
++        value = 0;
++        qemu_log_mask(LOG_UNIMP,
++                      "%s: unimplemented read at offset 0x%"
++                      HWADDR_PRIx "\n", __func__, addr & 0xfff);
++        break;
++    }
++
++    return value;
++}
++
++static void rp2040_psm_write(void *opaque, hwaddr addr,
++                             uint64_t value64, unsigned size)
++{
++    RP2040PsmState *s = opaque;
++    hwaddr alias = addr & RP2040_ATOMIC_ALIAS_MASK;
++    hwaddr offset = addr & 0xfff;
++    uint32_t value = value64;
++    uint32_t old_frce_off = s->frce_off;
++
++    switch (offset) {
++    case PSM_FRCE_ON:
++        s->frce_on = rp2040_atomic_update(s->frce_on, value, alias) &
++                     RP2040_PSM_VALID_MASK;
++        break;
++    case PSM_FRCE_OFF:
++        s->frce_off = rp2040_atomic_update(s->frce_off, value, alias) &
++                      RP2040_PSM_VALID_MASK;
++        if (s->frce_off != old_frce_off) {
++            rp2040_psm_update(s);
++        }
++        break;
++    case PSM_WDSEL:
++        s->wdsel = rp2040_atomic_update(s->wdsel, value, alias) &
++                   RP2040_PSM_VALID_MASK;
++        break;
++    case PSM_DONE:
++        break;
++    default:
++        qemu_log_mask(LOG_UNIMP,
++                      "%s: unimplemented write at offset 0x%"
++                      HWADDR_PRIx "\n", __func__, addr & 0xfff);
++        break;
++    }
++}
++
++static const MemoryRegionOps rp2040_psm_ops = {
++    .read = rp2040_psm_read,
++    .write = rp2040_psm_write,
++    .endianness = DEVICE_LITTLE_ENDIAN,
++    .valid = {
++        .min_access_size = 4,
++        .max_access_size = 4,
++    },
++};
++
++static void rp2040_psm_reset(DeviceState *dev)
++{
++    RP2040PsmState *s = RP2040_PSM(dev);
++
++    s->frce_on = 0;
++    s->frce_off = 0;
++    s->wdsel = 0;
++    rp2040_psm_update(s);
++}
++
++static int rp2040_psm_post_load(void *opaque, int version_id)
++{
++    RP2040PsmState *s = opaque;
++
++    rp2040_psm_update(s);
++    return 0;
++}
++
++static void rp2040_psm_init(Object *obj)
++{
++    RP2040PsmState *s = RP2040_PSM(obj);
++
++    memory_region_init_io(&s->iomem, obj, &rp2040_psm_ops, s,
++                          "rp2040.psm", RP2040_PSM_SIZE);
++    sysbus_init_mmio(SYS_BUS_DEVICE(obj), &s->iomem);
++}
++
++static const VMStateDescription rp2040_psm_vmstate = {
++    .name = TYPE_RP2040_PSM,
++    .version_id = 1,
++    .minimum_version_id = 1,
++    .post_load = rp2040_psm_post_load,
++    .fields = (const VMStateField[]) {
++        VMSTATE_UINT32(frce_on, RP2040PsmState),
++        VMSTATE_UINT32(frce_off, RP2040PsmState),
++        VMSTATE_UINT32(wdsel, RP2040PsmState),
++        VMSTATE_END_OF_LIST()
++    }
++};
++
++static void rp2040_psm_class_init(ObjectClass *klass, const void *data)
++{
++    DeviceClass *dc = DEVICE_CLASS(klass);
++
++    device_class_set_legacy_reset(dc, rp2040_psm_reset);
++    dc->vmsd = &rp2040_psm_vmstate;
++}
++
++static const TypeInfo rp2040_psm_info = {
++    .name          = TYPE_RP2040_PSM,
++    .parent        = TYPE_SYS_BUS_DEVICE,
++    .instance_size = sizeof(RP2040PsmState),
++    .instance_init = rp2040_psm_init,
++    .class_init    = rp2040_psm_class_init,
++};
++
++static void rp2040_psm_register_types(void)
++{
++    type_register_static(&rp2040_psm_info);
++}
++type_init(rp2040_psm_register_types)
+diff --git a/hw/misc/rp2040_resets.c b/hw/misc/rp2040_resets.c
+new file mode 100644
+index 0000000000..8428732efa
+--- /dev/null
++++ b/hw/misc/rp2040_resets.c
+@@ -0,0 +1,132 @@
++/*
++ * RP2040 reset controller emulation
++ *
++ * SPDX-License-Identifier: GPL-2.0-or-later
++ */
++
++#include "qemu/osdep.h"
++#include "hw/misc/rp2040_resets.h"
++#include "hw/misc/rp2040.h"
++#include "migration/vmstate.h"
++#include "qemu/log.h"
++#include "qemu/module.h"
++
++#define RESETS_RESET       0x00
++#define RESETS_WDSEL       0x04
++#define RESETS_RESET_DONE  0x08
++
++#define RESETS_VALID_MASK  0x01ffffff
++
++static uint64_t rp2040_resets_read(void *opaque, hwaddr addr, unsigned size)
++{
++    RP2040ResetsState *s = opaque;
++    hwaddr offset = addr & 0xfff;
++    uint64_t value;
++
++    switch (offset) {
++    case RESETS_RESET:
++        value = s->reset;
++        break;
++    case RESETS_WDSEL:
++        value = s->wdsel;
++        break;
++    case RESETS_RESET_DONE:
++        value = (~s->reset) & RESETS_VALID_MASK;
++        break;
++    default:
++        value = 0;
++        qemu_log_mask(LOG_UNIMP,
++                      "%s: unimplemented read at offset 0x%"
++                      HWADDR_PRIx "\n", __func__, addr & 0xfff);
++        break;
++    }
++
++    return value;
++}
++
++static void rp2040_resets_write(void *opaque, hwaddr addr,
++                                uint64_t value64, unsigned size)
++{
++    RP2040ResetsState *s = opaque;
++    hwaddr alias = addr & RP2040_ATOMIC_ALIAS_MASK;
++    hwaddr offset = addr & 0xfff;
++    uint32_t value = value64;
++
++    switch (offset) {
++    case RESETS_RESET:
++        s->reset = rp2040_atomic_update(s->reset, value, alias) &
++                   RESETS_VALID_MASK;
++        break;
++    case RESETS_WDSEL:
++        s->wdsel = rp2040_atomic_update(s->wdsel, value, alias) &
++                   RESETS_VALID_MASK;
++        break;
++    case RESETS_RESET_DONE:
++        break;
++    default:
++        qemu_log_mask(LOG_UNIMP,
++                      "%s: unimplemented write at offset 0x%"
++                      HWADDR_PRIx "\n", __func__, addr & 0xfff);
++        break;
++    }
++}
++
++static const MemoryRegionOps rp2040_resets_ops = {
++    .read = rp2040_resets_read,
++    .write = rp2040_resets_write,
++    .endianness = DEVICE_LITTLE_ENDIAN,
++    .valid = {
++        .min_access_size = 4,
++        .max_access_size = 4,
++    },
++};
++
++static void rp2040_resets_reset(DeviceState *dev)
++{
++    RP2040ResetsState *s = RP2040_RESETS(dev);
++
++    s->reset = RESETS_VALID_MASK;
++    s->wdsel = 0;
++}
++
++static void rp2040_resets_init(Object *obj)
++{
++    RP2040ResetsState *s = RP2040_RESETS(obj);
++
++    memory_region_init_io(&s->iomem, obj, &rp2040_resets_ops, s,
++                          "rp2040.resets", RP2040_RESETS_SIZE);
++    sysbus_init_mmio(SYS_BUS_DEVICE(obj), &s->iomem);
++}
++
++static const VMStateDescription rp2040_resets_vmstate = {
++    .name = TYPE_RP2040_RESETS,
++    .version_id = 1,
++    .minimum_version_id = 1,
++    .fields = (const VMStateField[]) {
++        VMSTATE_UINT32(reset, RP2040ResetsState),
++        VMSTATE_UINT32(wdsel, RP2040ResetsState),
++        VMSTATE_END_OF_LIST()
++    }
++};
++
++static void rp2040_resets_class_init(ObjectClass *klass, const void *data)
++{
++    DeviceClass *dc = DEVICE_CLASS(klass);
++
++    device_class_set_legacy_reset(dc, rp2040_resets_reset);
++    dc->vmsd = &rp2040_resets_vmstate;
++}
++
++static const TypeInfo rp2040_resets_info = {
++    .name          = TYPE_RP2040_RESETS,
++    .parent        = TYPE_SYS_BUS_DEVICE,
++    .instance_size = sizeof(RP2040ResetsState),
++    .instance_init = rp2040_resets_init,
++    .class_init    = rp2040_resets_class_init,
++};
++
++static void rp2040_resets_register_types(void)
++{
++    type_register_static(&rp2040_resets_info);
++}
++type_init(rp2040_resets_register_types)
+diff --git a/include/hw/arm/rp2040.h b/include/hw/arm/rp2040.h
+index 2f569a07b2..1c69ce089b 100644
+--- a/include/hw/arm/rp2040.h
++++ b/include/hw/arm/rp2040.h
+@@ -15,6 +15,8 @@
+ #include "hw/core/sysbus.h"
+ #include "hw/misc/rp2040_clocks.h"
+ #include "hw/misc/rp2040_pll.h"
++#include "hw/misc/rp2040_psm.h"
++#include "hw/misc/rp2040_resets.h"
+ #include "hw/misc/rp2040_rosc.h"
+ #include "hw/misc/rp2040_sysinfo.h"
+ #include "hw/misc/rp2040_syscfg.h"
+@@ -46,6 +48,8 @@ struct RP2040State {
+     RP2040ClocksState clocks;
+     RP2040PllState pll_sys;
+     RP2040PllState pll_usb;
++    RP2040PsmState psm;
++    RP2040ResetsState resets;
+     RP2040SysCfgState syscfg;
+     RP2040SysInfoState sysinfo;
+     RP2040RoscState rosc;
+diff --git a/include/hw/misc/rp2040_psm.h b/include/hw/misc/rp2040_psm.h
+new file mode 100644
+index 0000000000..8b68fb2ed8
+--- /dev/null
++++ b/include/hw/misc/rp2040_psm.h
+@@ -0,0 +1,40 @@
++/*
++ * RP2040 power-on state machine emulation
++ *
++ * SPDX-License-Identifier: GPL-2.0-or-later
++ */
++
++#ifndef HW_MISC_RP2040_PSM_H
++#define HW_MISC_RP2040_PSM_H
++
++#include "hw/core/sysbus.h"
++#include "qom/object.h"
++
++#define TYPE_RP2040_PSM "rp2040-psm"
++OBJECT_DECLARE_SIMPLE_TYPE(RP2040PsmState, RP2040_PSM)
++
++#define RP2040_PSM_BASE       0x40010000
++#define RP2040_PSM_SIZE       0x4000
++#define RP2040_PSM_VALID_MASK 0x0001ffff
++#define RP2040_PSM_PROC1      (1u << 16)
++
++typedef void (*RP2040PsmUpdateFn)(void *opaque);
++
++struct RP2040PsmState {
++    SysBusDevice parent_obj;
++
++    MemoryRegion iomem;
++    uint32_t frce_on;
++    uint32_t frce_off;
++    uint32_t wdsel;
++
++    RP2040PsmUpdateFn update;
++    void *update_opaque;
++};
++
++void rp2040_psm_set_update_callback(RP2040PsmState *s,
++                                    RP2040PsmUpdateFn update,
++                                    void *opaque);
++uint32_t rp2040_psm_get_frce_off(RP2040PsmState *s);
++
++#endif
+diff --git a/include/hw/misc/rp2040_resets.h b/include/hw/misc/rp2040_resets.h
+new file mode 100644
+index 0000000000..ba87d8d7c1
+--- /dev/null
++++ b/include/hw/misc/rp2040_resets.h
+@@ -0,0 +1,28 @@
++/*
++ * RP2040 reset controller emulation
++ *
++ * SPDX-License-Identifier: GPL-2.0-or-later
++ */
++
++#ifndef HW_MISC_RP2040_RESETS_H
++#define HW_MISC_RP2040_RESETS_H
++
++#include "hw/core/sysbus.h"
++#include "qom/object.h"
++
++#define TYPE_RP2040_RESETS "rp2040-resets"
++OBJECT_DECLARE_SIMPLE_TYPE(RP2040ResetsState, RP2040_RESETS)
++
++#define RP2040_RESETS_BASE 0x4000c000
++#define RP2040_RESETS_SIZE 0x4000
++
++struct RP2040ResetsState {
++    SysBusDevice parent_obj;
++
++    MemoryRegion iomem;
++
++    uint32_t reset;
++    uint32_t wdsel;
++};
++
++#endif
+diff --git a/tests/qtest/meson.build b/tests/qtest/meson.build
+index d5736a6b56..23cc9f2503 100644
+--- a/tests/qtest/meson.build
++++ b/tests/qtest/meson.build
+@@ -266,6 +266,7 @@ qtests_arm = \
+    ['rp2040-syscfg-test',
+     'rp2040-sysinfo-test',
+      'rp2040-clocks-test',
++     'rp2040-resets-test',
+      'rp2040-rosc-test',
+     'rp2040-tbman-test',
+     'rp2040-vreg-test'] : []) + \
+diff --git a/tests/qtest/rp2040-resets-test.c b/tests/qtest/rp2040-resets-test.c
+new file mode 100644
+index 0000000000..5a10f9989b
+--- /dev/null
++++ b/tests/qtest/rp2040-resets-test.c
+@@ -0,0 +1,84 @@
++/*
++ * QTest testcase for the RP2040 reset controller block.
++ *
++ * SPDX-License-Identifier: GPL-2.0-or-later
++ */
++
++#include "qemu/osdep.h"
++#include "libqtest.h"
++#include "hw/misc/rp2040.h"
++
++#define RESETS_BASE        0x4000c000
++#define RESETS_RESET       0x00
++#define RESETS_WDSEL       0x04
++#define RESETS_RESET_DONE  0x08
++
++#define RESETS_VALID_MASK  0x01ffffff
++#define RESET_ADC          (1u << 0)
++#define RESET_PWM          (1u << 14)
++
++static QTestState *rp2040_start(void)
++{
++    return qtest_init("-machine raspi-pico");
++}
++
++static void test_resets_reset_values(void)
++{
++    QTestState *qts = rp2040_start();
++
++    g_assert_cmphex(qtest_readl(qts, RESETS_BASE + RESETS_RESET), ==,
++                    RESETS_VALID_MASK);
++    g_assert_cmphex(qtest_readl(qts, RESETS_BASE + RESETS_RESET_DONE), ==, 0);
++    g_assert_cmphex(qtest_readl(qts, RESETS_BASE + RESETS_WDSEL), ==, 0);
 +
 +    qtest_quit(qts);
 +}
 +
-+static void test_rx_dreq(void)
++static void test_resets_set_clear_done(void)
 +{
-+    QTestState *qts = qtest_init("-M virt");
-+    g_autofree char *path = find_pl011_path(qts);
++    QTestState *qts = rp2040_start();
++    uint32_t mask = RESET_PWM | RESET_ADC;
 +
-+    qtest_irq_intercept_out_named(qts, path, "dreq-rx");
-+    qtest_writel(qts, PL011_BASE + PL011_CR,
-+                 CR_RXE | CR_TXE | CR_LBE | CR_UARTEN);
-+    qtest_writel(qts, PL011_BASE + PL011_DMACR, DMACR_RXDMAE);
-+    g_assert_false(qtest_get_irq(qts, 0));
++    qtest_writel(qts, RESETS_BASE + RESETS_RESET + RP2040_ATOMIC_CLR, mask);
++    g_assert_cmphex(qtest_readl(qts, RESETS_BASE + RESETS_RESET) & mask,
++                    ==, 0);
++    g_assert_cmphex(qtest_readl(qts, RESETS_BASE + RESETS_RESET_DONE) & mask,
++                    ==, mask);
 +
-+    qtest_writel(qts, PL011_BASE + PL011_DR, 'x');
-+    g_assert_true(qtest_get_irq(qts, 0));
-+    qtest_writel(qts, PL011_BASE + PL011_CR, 0);
-+    g_assert_false(qtest_get_irq(qts, 0));
-+    qtest_writel(qts, PL011_BASE + PL011_CR,
-+                 CR_RXE | CR_TXE | CR_LBE | CR_UARTEN);
-+    g_assert_true(qtest_get_irq(qts, 0));
-+    g_assert_cmphex(qtest_readl(qts, PL011_BASE + PL011_DR), ==, 'x');
-+    g_assert_false(qtest_get_irq(qts, 0));
++    qtest_writel(qts, RESETS_BASE + RESETS_RESET + RP2040_ATOMIC_SET,
++                 RESET_PWM);
++    g_assert_cmphex(qtest_readl(qts, RESETS_BASE + RESETS_RESET) & RESET_PWM,
++                    ==, RESET_PWM);
++    g_assert_cmphex(qtest_readl(qts, RESETS_BASE + RESETS_RESET_DONE) &
++                    RESET_PWM, ==, 0);
++
++    qtest_writel(qts, RESETS_BASE + RESETS_RESET + RP2040_ATOMIC_CLR,
++                 RESET_PWM);
++    g_assert_cmphex(qtest_readl(qts, RESETS_BASE + RESETS_RESET_DONE) & mask,
++                    ==, mask);
++
++    qtest_quit(qts);
++}
++
++static void test_resets_wdsel(void)
++{
++    QTestState *qts = rp2040_start();
++
++    qtest_writel(qts, RESETS_BASE + RESETS_WDSEL, 0xffffffff);
++    g_assert_cmphex(qtest_readl(qts, RESETS_BASE + RESETS_WDSEL), ==,
++                    RESETS_VALID_MASK);
 +
 +    qtest_quit(qts);
 +}
@@ -348,8 +667,11 @@ index 0000000000..abc2dcfd97
 +int main(int argc, char **argv)
 +{
 +    g_test_init(&argc, &argv, NULL);
-+    qtest_add_func("/pl011/dreq/tx", test_tx_dreq);
-+    qtest_add_func("/pl011/dreq/rx", test_rx_dreq);
++
++    qtest_add_func("/rp2040-resets/reset-values", test_resets_reset_values);
++    qtest_add_func("/rp2040-resets/set-clear-done",
++                   test_resets_set_clear_done);
++    qtest_add_func("/rp2040-resets/wdsel", test_resets_wdsel);
 +
 +    return g_test_run();
 +}

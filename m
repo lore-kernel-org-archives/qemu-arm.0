@@ -4,55 +4,55 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D25CFC79F99
-	for <qemu-arm@archiver.kernel.org>; Sun,  6 Sep 2026 08:55:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B55BAC79F85
+	for <qemu-arm@archiver.kernel.org>; Sun,  6 Sep 2026 08:55:15 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1x38dv-0002Ub-EW; Sun, 06 Sep 2026 04:54:27 -0400
+	id 1x38dY-0002Cm-67; Sun, 06 Sep 2026 04:54:04 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <marcandre.lureau@redhat.com>)
- id 1x38du-0002Tp-7B
- for qemu-arm@nongnu.org; Sun, 06 Sep 2026 04:54:26 -0400
+ id 1x38dX-0002CL-76
+ for qemu-arm@nongnu.org; Sun, 06 Sep 2026 04:54:03 -0400
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <marcandre.lureau@redhat.com>)
- id 1x38dr-0000ne-OV
- for qemu-arm@nongnu.org; Sun, 06 Sep 2026 04:54:25 -0400
+ id 1x38dV-0000kF-RS
+ for qemu-arm@nongnu.org; Sun, 06 Sep 2026 04:54:02 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1788684863;
+ s=mimecast20190719; t=1788684841;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=uo1vyG+VFq3hO/+8bOAZhuY/jMoCwIibajRfx3GTxbM=;
- b=BMR4k6gya1qLBnxypPeGIE1+zvLYglA8PeRCn6K6S5p24kMGZVKo3mCmT2sLiSOCU1+i8z
- 8VfFTuNHlA9poDiTx6wSA+1cYcN91NyQIss3J0Wn0P3h7jBZzXl0t5teTN9DrMr5Bvk7uE
- QEJLZa5L+KU8TGgngb3/N+2I630KsyQ=
-Received: from mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
+ bh=4f5Z2LkVc6py1w60vXSvnjw7X6VX7rH9O/0eXx9/3+4=;
+ b=Jl97gmbN0U4Cfh0KGaXvJziYHadQ78BIM2R33NLugkB1sD0V5hfibpwGDrdQjkm+gAdsSL
+ Ztfm77cCzp6EiGRlYVRz8b/Wh34Z80p85VzsIB5p0hcXAZNLYoyknhv8dtjdlPFmmDFaC6
+ HzsA83t8Bg4mrTFb92ijpESjMNi23p4=
+Received: from mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-136-ITnTRN5iOh2hRsihoY2kcA-1; Sun,
- 06 Sep 2026 04:54:21 -0400
-X-MC-Unique: ITnTRN5iOh2hRsihoY2kcA-1
-X-Mimecast-MFC-AGG-ID: ITnTRN5iOh2hRsihoY2kcA_1788684859
-Received: from mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com
- (mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.111])
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-284-t8cS4YIfO-SKGlMhtZ-bnA-1; Sun,
+ 06 Sep 2026 04:53:57 -0400
+X-MC-Unique: t8cS4YIfO-SKGlMhtZ-bnA-1
+X-Mimecast-MFC-AGG-ID: t8cS4YIfO-SKGlMhtZ-bnA_1788684834
+Received: from mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com
+ (mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.17])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 1442E1805A20; Sun,  6 Sep 2026 08:54:19 +0000 (UTC)
+ by mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 6F0891956040; Sun,  6 Sep 2026 08:53:54 +0000 (UTC)
 Received: from localhost (headnet04.pony-001.prod.iad2.dc.redhat.com
  [10.2.32.116])
- by mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id 14ED61800767; Sun,  6 Sep 2026 08:54:16 +0000 (UTC)
+ by mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
+ id 657E81956042; Sun,  6 Sep 2026 08:53:52 +0000 (UTC)
 From: =?utf-8?q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>
-Date: Sun, 06 Sep 2026 12:53:39 +0400
-Subject: [PATCH 7/9] igvm: release found memory region on success
+Date: Sun, 06 Sep 2026 12:53:33 +0400
+Subject: [PATCH 1/9] tests: fix qemu:func-hexagon-linters
 MIME-Version: 1.0
-Message-Id: <20260906-nohmp-next-v1-7-2b21e63974f3@redhat.com>
+Message-Id: <20260906-nohmp-next-v1-1-2b21e63974f3@redhat.com>
 References: <20260906-nohmp-next-v1-0-2b21e63974f3@redhat.com>
 In-Reply-To: <20260906-nohmp-next-v1-0-2b21e63974f3@redhat.com>
 To: qemu-devel@nongnu.org
@@ -75,38 +75,39 @@ Cc: Brian Cain <brian.cain@oss.qualcomm.com>,
  Matthew Rosato <mjrosato@linux.ibm.com>, Cornelia Huck <cohuck@redhat.com>, 
  qemu-s390x@nongnu.org, 
  =?utf-8?q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>
-X-Developer-Signature: v=1; a=openpgp-sha256; l=821;
+X-Developer-Signature: v=1; a=openpgp-sha256; l=1664;
  i=marcandre.lureau@redhat.com; h=from:subject:message-id;
- bh=nyQcpX2O2JaBarZgpXAo4ALUM2REr/Vy7wrbwXQjNBc=;
- b=owEBbQKS/ZANAwAKAdro4Ql1lpzlAcsmYgBqnSoZv5Ptq2a/g08nt+tp4yi2WH6V8BkJT3mCc
- V9ZLjhaHLaJAjMEAAEKAB0WIQSHqb2TP4fGBtJ29i3a6OEJdZac5QUCap0qGQAKCRDa6OEJdZac
- 5Ve3D/915jbscrwaxltqZJ5WmWsXTcy5Mf9/x2rRx4SLVYOH2vGknFhI/LJUwQ57PhQsOyJEwHT
- XoZw8k93odPRlSSOKz1stT0XKTIlakDKeUlq7WHVaZrkXP2lvuOW+NECPDBCmCEcKdG3gCayqpW
- sSEqHOzUCxVxFZsZowfw3K9OKNavuadBschHBbvJboX4dkccgvdekP9BfbU0NXux/pQSHG24dYq
- I44BUfoUme2f+uY/JbDQCgUlx0jI+/SFa+CDNL/G6h+sgfR4fvWveCXxDZBX5R6iHJ65deOO3GP
- KJAEllWCAUuEqqZpju06SwrI5MliaILHhxRxtne3rMzhkLGZO1eNYXz8foas6MC5AYiGz6X2jBm
- PZdpVNDyiic0w8Y+HV74yBJ/Ck05Kr6fa7oyroQBCiW0SMBy9l2XfobMZ+yycrsUjVbQoIMiHx1
- k3Esi1KGHoK5MCEShoOwiHc4nHfksbLlLDX8T7KtcfKi202LTJQ9jOABanDSqcdGYkX9fGdcP1a
- MavOIn6VkJuJj6GyeUu7fe3/K5tXX8ohbZ+xRdkGsa1z1ab6Yg3/BCaDyDu1h3zDwpw7ij6fg6z
- DaEj8Z9DmqZFKaoGd2zbCSBIy3+HBpxbiJGWyQPQgQ8WjAs+JD/Qc4VK3B3huj+uAnSEAzxwtfg
- z6L/0b56FvxuSYQ==
+ bh=NLhLcoKyivTY8mRtFMa1LO0BDK310UULp9uJ4cn/vqc=;
+ b=owEBbQKS/ZANAwAKAdro4Ql1lpzlAcsmYgBqnSoYqTwrsZS++8CPlP07v7ShliTIgOUzU7/d8
+ Z7NtY8NWQqJAjMEAAEKAB0WIQSHqb2TP4fGBtJ29i3a6OEJdZac5QUCap0qGAAKCRDa6OEJdZac
+ 5dJRD/9X4KOJTJCqrnkaCQ39svDlUdvMb87z4tI70g0NBjvIjPMxSwib+yPECuKkd90483BibGV
+ AW1SPLqgTnZ1x4+JOfT7xC5IWS76D5Uu1Nrku/k2KQj9ugkVHUJDONpSc7kSswipj1KP/YGC8wU
+ 4zpjhLliwuAD6ijaEbUrYBRVEDkSe91CZJcfd1Ot320W+8W2Fj1P5bTrjzzHJ9r+PLkGGVrhQjQ
+ 37w5k8uSFMvqjaERSgEZ36NSjGB+TbDnTvztqBPrEmV03g9V8Fk/WdRNXcuI1v7AlZ/l6e/8fZZ
+ fA4WRh5QoBetzun6l2tMKNie2WK9c43ZN17zO6AcaykJ0qgkaC10g6DieLy9nei3vGAncohpdCO
+ 5FMxrvZDlNKtBp/STuq8kU3cYLWzW5YBCEmvV4rlcHLClEvOhtADKnktEm/Fh2oHSzLIIyLzBzm
+ 3lHZJC2yOISJVjc2lh0uDRbZuL5UOKzqLnWJIEwprFF3g7ZEdl4OCHswYnLpUll2wN6ZvA2zPfi
+ dsLS+ncEEV1YjWu2WETORujZklE2EKHEFrpRgjHzEIUxWM/j23GdBk64oVIkk1fkRCek6cc652M
+ pe0drBztNWEffVzNJdY2muhZ5DsEYAlb1si4zn/a7nfuiSiRolQE22QARcDzHF0CsIkZ7PM3VTP
+ hVw7NJuJn/nG7QQ==
 X-Developer-Key: i=marcandre.lureau@redhat.com; a=openpgp;
  fpr=87A9BD933F87C606D276F62DDAE8E10975969CE5
-X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.111
-X-Mimecast-MFC-PROC-ID: -hAwnPZN0VxTyg_ulDMjN4XotARqzbgs5M9zLhL_sLg_1788684859
+X-Scanned-By: MIMEDefang 3.0 on 10.30.177.17
+X-Mimecast-MFC-PROC-ID: B6FyDX-gfKBdMiGT5a9JSwpEtu9612NKG__bAt3yiVY_1788684834
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
 Received-SPF: pass client-ip=170.10.133.124;
  envelope-from=marcandre.lureau@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+X-Spam_score_int: 12
+X-Spam_score: 1.2
+X-Spam_bar: +
+X-Spam_report: (1.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ RCVD_IN_SBL_CSS=3.335, SPF_HELO_PASS=-0.001,
+ SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -122,28 +123,43 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Not only in error paths must the mrs.mr be released.
+Fix pylint W1514: unspecified-encoding
 
 Signed-off-by: Marc-André Lureau <marcandre.lureau@redhat.com>
 ---
- backends/igvm.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ tests/functional/hexagon/test_systests.py | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
 
-diff --git a/backends/igvm.c b/backends/igvm.c
-index 7b7bdc72b75b..784a56504e77 100644
---- a/backends/igvm.c
-+++ b/backends/igvm.c
-@@ -236,9 +236,9 @@ static void *qigvm_prepare_memory(QIgvm *ctx, uint64_t addr, uint64_t size,
-             return NULL;
-         }
+diff --git a/tests/functional/hexagon/test_systests.py b/tests/functional/hexagon/test_systests.py
+index f36e015f5021..4b0546e7ad30 100755
+--- a/tests/functional/hexagon/test_systests.py
++++ b/tests/functional/hexagon/test_systests.py
+@@ -65,14 +65,14 @@ def test_fopen(self):
+         import tempfile
+         # The fopen binary has a short cmdline buffer; use a short path.
+         dummy = os.path.join(tempfile.gettempdir(), "qemu_fopen_test.so")
+-        with open(dummy, "w") as f:
++        with open(dummy, "w", encoding="utf-8") as f:
+             f.write("valid\n")
+         self.run_exit_zero("fopen", "-append", dummy)
  
-+        memory_region_unref(mrs.mr);
-         gpa_region_size = int128_make64(size);
-         if (int128_lt(mrs.size, gpa_region_size)) {
--            memory_region_unref(mrs.mr);
-             error_setg(
-                 errp,
-                 "Processing of IGVM file failed: Could not prepare memory "
+     def test_ftrunc(self):
+         """ftrunc truncates _testfile_ftrunc from 6 bytes to 1 byte."""
+         ftrunc_path = self.scratch_file("_testfile_ftrunc")
+-        with open(ftrunc_path, "w") as f:
++        with open(ftrunc_path, "w", encoding="utf-8") as f:
+             f.write("valid\n")
+         # Sleep 1 s so mtime change is observable
+         time.sleep(1)
+@@ -83,7 +83,7 @@ def test_ftrunc(self):
+     def test_access(self):
+         """access checks R_OK|W_OK on _testfile_access."""
+         testfile = self.scratch_file("_testfile_access")
+-        with open(testfile, "w") as f:
++        with open(testfile, "w", encoding="utf-8") as f:
+             f.write("valid\n")
+         self.run_exit_zero("access", "-append", testfile)
+ 
 
 -- 
 2.55.0.543.g5ebe2ebe4ea8

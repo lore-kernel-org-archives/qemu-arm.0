@@ -4,73 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 87F30C79F8C
-	for <qemu-arm@archiver.kernel.org>; Sun,  6 Sep 2026 17:15:25 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E06F9C79F85
+	for <qemu-arm@archiver.kernel.org>; Sun,  6 Sep 2026 17:15:39 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1x3GP1-0003rF-PT; Sun, 06 Sep 2026 13:11:35 -0400
+	id 1x3GOq-0003hE-LX; Sun, 06 Sep 2026 13:11:24 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1x3GOs-0003hz-Fr
- for qemu-arm@nongnu.org; Sun, 06 Sep 2026 13:11:26 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1x3GOd-0003dN-AC
+ for qemu-arm@nongnu.org; Sun, 06 Sep 2026 13:11:11 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1x3GOq-0000Ce-9e
- for qemu-arm@nongnu.org; Sun, 06 Sep 2026 13:11:25 -0400
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1x3GOa-00008u-Rb
+ for qemu-arm@nongnu.org; Sun, 06 Sep 2026 13:11:10 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1788714683;
+ s=mimecast20190719; t=1788714668;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=ycMZwlp+2/s/v+yTRC1sc7we8FnPTGlF6sKzv9Myl2Y=;
- b=LOQubc1yvSDaWd+KYYw4zn0/xxZIk2fhb5t0tJ3XLjsMg/F5Zb6h1ZDKVYhfU66ETJ+arz
- +6pS0QB3CuSStg3hHWI+ayDupOfAo4x9qe0zYZvHRyIyQGqpV7V5PYclCMBlYn2qIEPdZw
- j8TJNQYyVw+5Js+DuY1nDKGDb2s9ju0=
+ bh=UNTr1qNCE6jZQzSU89dpdX4vjNmRkzzji1cy5FhKr/Y=;
+ b=ZRRn7rTTD7dAeTfbJ7DbwxRvIVdTs9lX1yE7iY4iRblRit+r9yEF990Vq/O3mjaveaFS3p
+ tkWloiUn+NJXU60Lb3wsY5R8dc8UIqyZV9FH3Hf+9Y7jnLG7ybSnDr+Oa88rlc0RIaNc2S
+ iTuSspX8MoT5LZDAX5Kc3dMKwAYxKg8=
 Received: from mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com
  (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-262-JbNeUkR0NcG3hfBNpKSQ1w-1; Sun,
- 06 Sep 2026 13:11:22 -0400
-X-MC-Unique: JbNeUkR0NcG3hfBNpKSQ1w-1
-X-Mimecast-MFC-AGG-ID: JbNeUkR0NcG3hfBNpKSQ1w_1788714681
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-253-yt53WO-JNhCYYNd5bZcuRw-1; Sun,
+ 06 Sep 2026 13:11:04 -0400
+X-MC-Unique: yt53WO-JNhCYYNd5bZcuRw-1
+X-Mimecast-MFC-AGG-ID: yt53WO-JNhCYYNd5bZcuRw_1788714663
 Received: from mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com
  (mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.12])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
  by mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 2AA7A18011F7; Sun,  6 Sep 2026 17:11:21 +0000 (UTC)
+ id 9234418001E6; Sun,  6 Sep 2026 17:11:03 +0000 (UTC)
 Received: from yukon.redhat.com (unknown [10.44.32.24])
  by mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id A847B1955F06; Sun,  6 Sep 2026 17:11:19 +0000 (UTC)
+ id EC2C01955F06; Sun,  6 Sep 2026 17:11:01 +0000 (UTC)
 From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Cc: Emmanuel Blot <emmanuel.blot@free.fr>,
+Cc: Jamin Lin <jamin_lin@aspeedtech.com>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@oss.qualcomm.com>,
  =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>
-Subject: [PULL 25/40] hw/sensor: tmp105: make device state private to the
- implementation
-Date: Sun,  6 Sep 2026 19:10:06 +0200
-Message-ID: <20260906171021.26568-26-clg@redhat.com>
+Subject: [PULL 16/40] hw/arm/aspeed_ast10x0: Remove obsolete unimplemented SBC
+ mapping
+Date: Sun,  6 Sep 2026 19:09:57 +0200
+Message-ID: <20260906171021.26568-17-clg@redhat.com>
 In-Reply-To: <20260906171021.26568-1-clg@redhat.com>
 References: <20260906171021.26568-1-clg@redhat.com>
 MIME-Version: 1.0
 X-Scanned-By: MIMEDefang 3.0 on 10.30.177.12
-X-Mimecast-MFC-PROC-ID: 6XzfWAvZWlz7P7jNob5iMQ_31lYVIBjitpgiywrLj9s_1788714681
+X-Mimecast-MFC-PROC-ID: bKesQzUZ8PfJZRuPlHTht8D9kEjNc57sfWOgI15JM90_1788714663
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=clg@redhat.com;
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=clg@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=-0.01, RCVD_IN_MSPIKE_WL=-0.01,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.01, SPF_HELO_PASS=-0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -86,139 +87,59 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-From: Emmanuel Blot <emmanuel.blot@free.fr>
+From: Jamin Lin <jamin_lin@aspeedtech.com>
 
-The TMP105State struct, its cast macro and typedef are used only within
-tmp105.c. Move them out of the public header into the source file and
-drop the now-unused includes; the header is reduced to the TYPE_TMP105
-name, with its guard renamed to the path-derived form per current QEMU
-convention.
+The AST10x0 SoC now implements the SBC device model. However, the
+old unimplemented SBC mapping was left in place.
 
-While here, normalize the source file include order to match the other
-hw/sensor devices.
+Remove the obsolete mapping now that the SBC device is implemented.
 
-Signed-off-by: Emmanuel Blot <emmanuel.blot@free.fr>
-Reviewed-by: Cédric Le Goater <clg@redhat.com>
-Link: https://lore.kernel.org/qemu-devel/20260731-sanmiguel-bmc-locator-v2-1-1266926ba769@free.fr
+Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
+Reviewed-by: Philippe Mathieu-Daudé <philmd@oss.qualcomm.com>
+Link: https://lore.kernel.org/qemu-devel/20260901085238.995968-6-jamin_lin@aspeedtech.com
 Signed-off-by: Cédric Le Goater <clg@redhat.com>
 ---
- include/hw/sensor/tmp105.h | 40 ++-------------------------------
- hw/sensor/tmp105.c         | 45 +++++++++++++++++++++++++++++++++-----
- 2 files changed, 42 insertions(+), 43 deletions(-)
+ include/hw/arm/aspeed_soc.h | 1 -
+ hw/arm/aspeed_ast10x0.c     | 7 -------
+ 2 files changed, 8 deletions(-)
 
-diff --git a/include/hw/sensor/tmp105.h b/include/hw/sensor/tmp105.h
-index 244e2989febd..daece592e9bc 100644
---- a/include/hw/sensor/tmp105.h
-+++ b/include/hw/sensor/tmp105.h
-@@ -11,45 +11,9 @@
-  * This work is licensed under the terms of the GNU GPL, version 2 or
-  * later. See the COPYING file in the top-level directory.
-  */
--#ifndef QEMU_TMP105_H
--#define QEMU_TMP105_H
--
--#include "hw/i2c/i2c.h"
--#include "hw/sensor/tmp105_regs.h"
--#include "qom/object.h"
-+#ifndef HW_SENSOR_TMP105_H
-+#define HW_SENSOR_TMP105_H
+diff --git a/include/hw/arm/aspeed_soc.h b/include/hw/arm/aspeed_soc.h
+index 8d80f1670587..cba8b7cdca58 100644
+--- a/include/hw/arm/aspeed_soc.h
++++ b/include/hw/arm/aspeed_soc.h
+@@ -92,7 +92,6 @@ struct AspeedSoCState {
+     AspeedSBCState sbc;
+     AspeedSLIState sli;
+     AspeedSLIState sliio;
+-    UnimplementedDeviceState sbc_unimplemented;
+     AspeedSDMCState sdmc;
+     AspeedPWMState pwm;
+     AspeedWDTState wdt[ASPEED_WDTS_NUM];
+diff --git a/hw/arm/aspeed_ast10x0.c b/hw/arm/aspeed_ast10x0.c
+index 93c81195b56a..5165dcce5912 100644
+--- a/hw/arm/aspeed_ast10x0.c
++++ b/hw/arm/aspeed_ast10x0.c
+@@ -163,8 +163,6 @@ static void aspeed_soc_ast10x0_init(Object *obj, const char *socname)
+     object_initialize_child(obj, "hace", &s->hace, typename);
  
- #define TYPE_TMP105 "tmp105"
--OBJECT_DECLARE_SIMPLE_TYPE(TMP105State, TMP105)
+     object_initialize_child(obj, "iomem", &s->iomem, TYPE_UNIMPLEMENTED_DEVICE);
+-    object_initialize_child(obj, "sbc-unimplemented", &s->sbc_unimplemented,
+-                            TYPE_UNIMPLEMENTED_DEVICE);
+     object_initialize_child(obj, "pwm", &s->pwm, TYPE_UNIMPLEMENTED_DEVICE);
+     object_initialize_child(obj, "espi", &s->espi, TYPE_UNIMPLEMENTED_DEVICE);
+     object_initialize_child(obj, "udc", &s->udc, TYPE_UNIMPLEMENTED_DEVICE);
+@@ -222,11 +220,6 @@ static bool aspeed_soc_ast10x0_realize(Aspeed10x0SoCState *a, Error **errp)
+                                   "aspeed.io",
+                                   sc->memmap[ASPEED_DEV_IOMEM],
+                                   ASPEED_SOC_IOMEM_SIZE);
+-    aspeed_mmio_map_unimplemented(s->memory,
+-                                  SYS_BUS_DEVICE(&s->sbc_unimplemented),
+-                                  "aspeed.sbc", sc->memmap[ASPEED_DEV_SBC],
+-                                  0x40000);
 -
--/**
-- * TMP105State:
-- * @config: Bits 5 and 6 (value 32 and 64) determine the precision of the
-- * temperature. See Table 8 in the data sheet.
-- *
-- * @see_also: http://www.ti.com/lit/gpn/tmp105
-- */
--struct TMP105State {
--    /*< private >*/
--    I2CSlave i2c;
--    /*< public >*/
--
--    uint8_t len;
--    uint8_t buf[2];
--    qemu_irq pin;
--
--    uint8_t pointer;
--    uint8_t config;
--    int16_t temperature;
--    int16_t limit[2];
--    int faults;
--    uint8_t alarm;
--    /*
--     * The TMP105 initially looks for a temperature rising above T_high;
--     * once this is detected, the condition it looks for next is the
--     * temperature falling below T_low. This flag is false when initially
--     * looking for T_high, true when looking for T_low.
--     */
--    bool detect_falling;
--};
- 
- #endif
-diff --git a/hw/sensor/tmp105.c b/hw/sensor/tmp105.c
-index c5089d74f4bf..6069c0905d91 100644
---- a/hw/sensor/tmp105.c
-+++ b/hw/sensor/tmp105.c
-@@ -19,16 +19,51 @@
-  */
- 
- #include "qemu/osdep.h"
--#include "hw/i2c/i2c.h"
--#include "hw/core/irq.h"
--#include "migration/vmstate.h"
--#include "hw/sensor/tmp105.h"
-+#include "qemu/module.h"
- #include "qapi/error.h"
- #include "qapi/visitor.h"
--#include "qemu/module.h"
-+#include "qom/object.h"
-+#include "hw/sensor/tmp105.h"
-+#include "hw/sensor/tmp105_regs.h"
-+#include "hw/core/irq.h"
- #include "hw/core/registerfields.h"
-+#include "hw/i2c/i2c.h"
-+#include "migration/vmstate.h"
- #include "trace.h"
- 
-+OBJECT_DECLARE_SIMPLE_TYPE(TMP105State, TMP105)
-+
-+/**
-+ * TMP105State:
-+ * @config: Bits 5 and 6 (value 32 and 64) determine the precision of the
-+ * temperature. See Table 8 in the data sheet.
-+ *
-+ * @see_also: http://www.ti.com/lit/gpn/tmp105
-+ */
-+struct TMP105State {
-+    /*< private >*/
-+    I2CSlave i2c;
-+    /*< public >*/
-+
-+    uint8_t len;
-+    uint8_t buf[2];
-+    qemu_irq pin;
-+
-+    uint8_t pointer;
-+    uint8_t config;
-+    int16_t temperature;
-+    int16_t limit[2];
-+    int faults;
-+    uint8_t alarm;
-+    /*
-+     * The TMP105 initially looks for a temperature rising above T_high;
-+     * once this is detected, the condition it looks for next is the
-+     * temperature falling below T_low. This flag is false when initially
-+     * looking for T_high, true when looking for T_low.
-+     */
-+    bool detect_falling;
-+};
-+
- FIELD(CONFIG, SHUTDOWN_MODE,        0, 1)
- FIELD(CONFIG, THERMOSTAT_MODE,      1, 1)
- FIELD(CONFIG, POLARITY,             2, 1)
+     /* AST10x0 CPU Core */
+     armv7m = DEVICE(&a->armv7m);
+     qdev_prop_set_uint32(armv7m, "num-irq", 256);
 -- 
 2.55.0
 

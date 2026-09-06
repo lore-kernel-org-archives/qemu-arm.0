@@ -4,72 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 55044C79FA0
-	for <qemu-arm@archiver.kernel.org>; Sun,  6 Sep 2026 17:15:07 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E7159C79F8C
+	for <qemu-arm@archiver.kernel.org>; Sun,  6 Sep 2026 17:15:09 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1x3GP6-0003xr-Kr; Sun, 06 Sep 2026 13:11:40 -0400
+	id 1x3GP7-0003yG-6y; Sun, 06 Sep 2026 13:11:41 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1x3GOm-0003fA-9N
- for qemu-arm@nongnu.org; Sun, 06 Sep 2026 13:11:21 -0400
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1x3GP3-0003u3-M2
+ for qemu-arm@nongnu.org; Sun, 06 Sep 2026 13:11:37 -0400
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1x3GOi-0000AO-Nl
- for qemu-arm@nongnu.org; Sun, 06 Sep 2026 13:11:19 -0400
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1x3GP1-0000Fy-C5
+ for qemu-arm@nongnu.org; Sun, 06 Sep 2026 13:11:37 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1788714675;
+ s=mimecast20190719; t=1788714694;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=2+OJEvp6qQtG96GnSpFsdMxDmp6CgUEf9X2LWPZDhGk=;
- b=Oe/+lptQmnYaOzfVPT0CxBHe4SbzMGWWDvIT/aqdKYMIsvwodOGzPwx5fQqGsQ+zkXPa5q
- ANr20YgMkt6c2P8u0BPmxhbZJLPCMG3NdZ9ZihdLKj2gj6E/oTdEbN+pgymn2Kahp6yI60
- yeJ6s/T9kFS9rV5oUvbcYy2PmKCNAO8=
-Received: from mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
+ bh=Zng3yvZnvGkqWtEbC93m6nc/2z4AtNb3koJD//ggOk8=;
+ b=i4bE6iZCi69PmZi48Z36NBTzo+D87DAXhKn9y7sLUfBAriTbeJaxEGrVNNt20m6jKIvxMN
+ hgLGNg/zY6Gym1wZ4HTpGzWAYeikEHG2T+skH9yWcA/w0MsApwyTcPc9DRTLw5yALdY+jg
+ mHfTNNc5tMFvJHFmJLkdFSVP4ST9ckA=
+Received: from mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-265-PXtqv-lNN_OnraOWtWk1Sg-1; Sun,
- 06 Sep 2026 13:11:11 -0400
-X-MC-Unique: PXtqv-lNN_OnraOWtWk1Sg-1
-X-Mimecast-MFC-AGG-ID: PXtqv-lNN_OnraOWtWk1Sg_1788714671
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-597-mrSHEe2tPUmhqKgPLDn9Zg-1; Sun,
+ 06 Sep 2026 13:11:33 -0400
+X-MC-Unique: mrSHEe2tPUmhqKgPLDn9Zg-1
+X-Mimecast-MFC-AGG-ID: mrSHEe2tPUmhqKgPLDn9Zg_1788714692
 Received: from mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com
  (mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.12])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id ED7AD18011F6; Sun,  6 Sep 2026 17:11:10 +0000 (UTC)
+ by mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 297481954120; Sun,  6 Sep 2026 17:11:32 +0000 (UTC)
 Received: from yukon.redhat.com (unknown [10.44.32.24])
  by mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id 8D35C1955F06; Sun,  6 Sep 2026 17:11:09 +0000 (UTC)
+ id BC8131955F06; Sun,  6 Sep 2026 17:11:30 +0000 (UTC)
 From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Cc: Jamin Lin <jamin_lin@aspeedtech.com>,
+Cc: Emmanuel Blot <emmanuel.blot@free.fr>,
  =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>
-Subject: [PULL 20/40] tests/qtest: Add ASPEED SBC ECDSA engine test
-Date: Sun,  6 Sep 2026 19:10:01 +0200
-Message-ID: <20260906171021.26568-21-clg@redhat.com>
+Subject: [PULL 31/40] hw/sensor: tmp105: add TMP75, TMP175 and LM75B variants
+Date: Sun,  6 Sep 2026 19:10:12 +0200
+Message-ID: <20260906171021.26568-32-clg@redhat.com>
 In-Reply-To: <20260906171021.26568-1-clg@redhat.com>
 References: <20260906171021.26568-1-clg@redhat.com>
 MIME-Version: 1.0
 X-Scanned-By: MIMEDefang 3.0 on 10.30.177.12
-X-Mimecast-MFC-PROC-ID: 66r-zPJIg7ebGKl-KtTDDMNNbdVJhxQnWBF68NACxMQ_1788714671
+X-Mimecast-MFC-PROC-ID: HirPT8vzinw5Fw_nJvVQ1OWhWsIHn-1cfc9YIvMypRM_1788714692
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 Received-SPF: pass client-ip=170.10.129.124; envelope-from=clg@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+X-Spam_score_int: 12
+X-Spam_score: 1.2
+X-Spam_bar: +
+X-Spam_report: (1.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.01, SPF_HELO_PASS=-0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.01, RCVD_IN_SBL_CSS=3.335,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -85,248 +85,346 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-From: Jamin Lin <jamin_lin@aspeedtech.com>
+From: Emmanuel Blot <emmanuel.blot@free.fr>
 
-Add a qtest for the ASPEED secure boot controller ECDSA engine. It stages
-the public key, signature and SHA-384 digest of a secp384r1 known-answer
-vector (from the Linux kernel crypto self-test manager,
-ecdsa_nist_p384_tv_template) into the SEC SRAM, triggers the engine's
-verify command and checks the status register: a valid signature reports
-done + pass, and a tampered signature reports done without pass.
+The TI TMP75/TMP175 and the NXP LM75B share the TMP105 register map and
+control semantics, differing only in a few details. Model them as
+variants of the TMP105, parameterised by a small per-type class
+descriptor covering the fault-queue depths, the writable config bits,
+the converter resolution, the set-point masks and the TMP75's
+alert-clear on thermostat-mode change.
 
-The test is skipped when the crypto backend does not support ECDSA, via
-qcrypto_akcipher_supports().
+The variant is class data, not migrated state, so the wire format is
+unchanged and all variants share the existing vmstate.
 
-Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
+While here, align the shared shutdown handling with the hardware:
+entering shutdown now clears the ALERT/OS output in interrupt mode,
+correcting the base TMP105 as well.
+
+Signed-off-by: Emmanuel Blot <emmanuel.blot@free.fr>
 Reviewed-by: Cédric Le Goater <clg@redhat.com>
-Link: https://lore.kernel.org/qemu-devel/20260901085238.995968-10-jamin_lin@aspeedtech.com
+Link: https://lore.kernel.org/qemu-devel/20260731-sanmiguel-bmc-locator-v2-7-1266926ba769@free.fr
 Signed-off-by: Cédric Le Goater <clg@redhat.com>
 ---
- tests/qtest/aspeed-sbc-test.c | 194 ++++++++++++++++++++++++++++++++++
- tests/qtest/meson.build       |   2 +
- 2 files changed, 196 insertions(+)
- create mode 100644 tests/qtest/aspeed-sbc-test.c
+ include/hw/sensor/tmp105.h |   6 +-
+ hw/sensor/tmp105.c         | 172 ++++++++++++++++++++++++++++++-------
+ 2 files changed, 146 insertions(+), 32 deletions(-)
 
-diff --git a/tests/qtest/aspeed-sbc-test.c b/tests/qtest/aspeed-sbc-test.c
-new file mode 100644
-index 000000000000..c445dac47a6e
---- /dev/null
-+++ b/tests/qtest/aspeed-sbc-test.c
-@@ -0,0 +1,194 @@
-+/*
-+ * QTest testcase for the ASPEED Secure Boot Controller (SBC)
+diff --git a/include/hw/sensor/tmp105.h b/include/hw/sensor/tmp105.h
+index daece592e9bc..0698aeead78c 100644
+--- a/include/hw/sensor/tmp105.h
++++ b/include/hw/sensor/tmp105.h
+@@ -1,5 +1,5 @@
+ /*
+- * Texas Instruments TMP105 Temperature Sensor
++ * Texas Instruments TMP105/TMP75/TMP175/LM75B Temperature Sensor
+  *
+  * Browse the data sheet:
+  *
+@@ -14,6 +14,10 @@
+ #ifndef HW_SENSOR_TMP105_H
+ #define HW_SENSOR_TMP105_H
+ 
++/* TMP75, TMP175 and NXP LM75B are register-compatible with TMP105. */
+ #define TYPE_TMP105 "tmp105"
++#define TYPE_TMP175 "tmp175"
++#define TYPE_TMP75  "tmp75"
++#define TYPE_LM75B  "lm75b"
+ 
+ #endif
+diff --git a/hw/sensor/tmp105.c b/hw/sensor/tmp105.c
+index fefa66171170..ece0650d703f 100644
+--- a/hw/sensor/tmp105.c
++++ b/hw/sensor/tmp105.c
+@@ -1,5 +1,5 @@
+ /*
+- * Texas Instruments TMP105 temperature sensor.
++ * Texas Instruments TMP105/TMP75/TMP175/LM75B temperature sensor.
+  *
+  * Copyright (C) 2008 Nokia Corporation
+  * Written by Andrzej Zaborowski <andrew@openedhand.com>
+@@ -16,6 +16,13 @@
+  *
+  * You should have received a copy of the GNU General Public License along
+  * with this program; if not, see <http://www.gnu.org/licenses/>.
 + *
-+ * Copyright (C) 2026 ASPEED Technology Inc.
-+ *
-+ * SPDX-License-Identifier: GPL-2.0-or-later
-+ */
-+
-+#include "qemu/osdep.h"
-+#include "libqtest.h"
-+#include "qemu/bitops.h"
-+#include "crypto/akcipher.h"
-+
-+/* SBC register block */
-+#define SBC_STATUS              0x014
-+#define  SBC_ECDSA_VERIFY_PASS  BIT(21)
-+#define  SBC_ECDSA_VERIFY_DONE  BIT(20)
-+#define SBC_SEC_TRIGGER         0x0bc
-+#define  SBC_ECDSA_CMD_TRIGGER  BIT(1)
-+
++ * Limitations:
++ * - The SMBus Alert Response Address protocol and the general-call commands
++ *   are not implemented.
++ * - The over-limit comparison uses the full 8.8 fixed-point temperature and a
++ *   ">=" boundary for every variant. The LM75B's 9-bit comparison quantisation
++ *   and strict-exceed boundary are therefore only approximated.
+  */
+ 
+ #include "qemu/osdep.h"
+@@ -31,15 +38,8 @@
+ #include "migration/vmstate.h"
+ #include "trace.h"
+ 
+-OBJECT_DECLARE_SIMPLE_TYPE(TMP105State, TMP105)
++OBJECT_DECLARE_TYPE(TMP105State, TMP105Class, TMP105)
+ 
+-/**
+- * TMP105State:
+- * @config: Bits 5 and 6 (value 32 and 64) determine the precision of the
+- * temperature. See Table 8 in the data sheet.
+- *
+- * @see_also: http://www.ti.com/lit/gpn/tmp105
+- */
+ struct TMP105State {
+     /*< private >*/
+     I2CSlave parent_obj;
+@@ -53,7 +53,7 @@ struct TMP105State {
+     uint8_t config;
+     int16_t temperature;
+     int16_t limit[2];
+-    int faults;
++    uint8_t faults;
+     uint8_t fault_count;
+     uint8_t alarm;
+     /*
+@@ -65,6 +65,27 @@ struct TMP105State {
+     bool detect_falling;
+ };
+ 
 +/*
-+ * SEC SRAM operand offsets for a secp384r1 ECDSA verify. Every operand is a
-+ * 48-byte big-endian integer.
-+ */
-+#define ECDSA_SRAM_QX   0x2080
-+#define ECDSA_SRAM_QY   0x20c0
-+#define ECDSA_SRAM_R    0x21c0
-+#define ECDSA_SRAM_S    0x2200
-+#define ECDSA_SRAM_M    0x2240
-+
-+/*
-+ * ECDSA secp384r1 / SHA-384 known-answer vector from the Linux kernel crypto
-+ * self-test manager (ecdsa_nist_p384_tv_template, sha384 entry in
-+ * crypto/testmgr.h, v6.18), decoded into raw big-endian form: public key
-+ * Qx || Qy, signature r || s and the SHA-384 message digest.
++ * Per-device-model parameters. The TMP105, TMP75, TMP175 and LM75B share the
++ * same register map and control semantics; they differ only in a handful of
++ * details captured here.
 + *
-+ *   https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/tree/crypto/testmgr.h?h=v6.18
++ * @faultq: fault-queue length table selected by Config bits
++ * @config_wmask: writable Config bits. The LM75B has no resolution (R1:R0) or
++ * one-shot (OS) bits.
++ * @fixed_res: converter resolution field pinned by the device, or -1 when it is
++ * software-selectable.
++ * @limit_lsb_mask: low-byte mask applied to the T_LOW/T_HIGH limit registers.
 + */
-+static const uint8_t ecdsa_p384_pubkey[96] = {
-+    /* Qx */
-+    0x3a, 0x2f, 0x62, 0xe7, 0x1a, 0xcf, 0x24, 0xd0,
-+    0x0b, 0x7c, 0xe0, 0xed, 0x46, 0x0a, 0x4f, 0x74,
-+    0x16, 0x43, 0xe9, 0x1a, 0x25, 0x7c, 0x55, 0xff,
-+    0xf0, 0x29, 0x68, 0x66, 0x20, 0x91, 0xf9, 0xdb,
-+    0x2b, 0xf6, 0xb3, 0x6c, 0x54, 0x01, 0xca, 0xc7,
-+    0x6a, 0x5c, 0x0d, 0xeb, 0x68, 0xd9, 0x3c, 0xf1,
-+    /* Qy */
-+    0x01, 0x74, 0x1f, 0xf9, 0x6c, 0xe5, 0x5b, 0x60,
-+    0xe9, 0x7f, 0x5d, 0xb3, 0x12, 0x80, 0x2a, 0xd8,
-+    0x67, 0x92, 0xc9, 0x0e, 0x4c, 0x4c, 0x6b, 0xa1,
-+    0xb2, 0xa8, 0x1e, 0xac, 0x1c, 0x97, 0xd9, 0x21,
-+    0x67, 0xe5, 0x1b, 0x5a, 0x52, 0x31, 0x68, 0xd6,
-+    0xee, 0xf0, 0x19, 0xb0, 0x55, 0xed, 0x89, 0x9e,
++struct TMP105Class {
++    I2CSlaveClass parent_class;
++    const uint8_t *faultq;
++    uint8_t config_wmask;
++    int8_t fixed_res;
++    uint8_t limit_lsb_mask;
++    bool tm_change_clears_alert;
 +};
 +
-+static const uint8_t ecdsa_p384_signature[96] = {
-+    /* r */
-+    0x9b, 0x28, 0x68, 0xc0, 0xa1, 0xea, 0x8c, 0x50,
-+    0xee, 0x2e, 0x62, 0x35, 0x46, 0xfa, 0x00, 0xd8,
-+    0x2d, 0x7a, 0x91, 0x5f, 0x49, 0x2d, 0x22, 0x08,
-+    0x29, 0xe6, 0xfb, 0xca, 0x8c, 0xd6, 0xb6, 0xb4,
-+    0x3b, 0x1f, 0x07, 0x8f, 0x15, 0x02, 0xfe, 0x1d,
-+    0xa2, 0xa4, 0xc8, 0xf2, 0xea, 0x9d, 0x11, 0x1f,
-+    /* s */
-+    0xfc, 0x50, 0xf6, 0x43, 0xbd, 0x50, 0x82, 0x0e,
-+    0xbf, 0xe3, 0x75, 0x24, 0x49, 0xac, 0xfb, 0xc8,
-+    0x71, 0xcd, 0x8f, 0x18, 0x99, 0xf0, 0x0f, 0x13,
-+    0x44, 0x92, 0x8c, 0x86, 0x99, 0x65, 0xb3, 0x97,
-+    0x96, 0x17, 0x04, 0xc9, 0x05, 0x77, 0xf1, 0x8e,
-+    0xab, 0x8d, 0x4e, 0xde, 0xe6, 0x6d, 0x9b, 0x66,
+ FIELD(CONFIG, SHUTDOWN_MODE,        0, 1)
+ FIELD(CONFIG, THERMOSTAT_MODE,      1, 1)
+ FIELD(CONFIG, POLARITY,             2, 1)
+@@ -152,10 +173,11 @@ static void tmp105_set_temperature(Object *obj, Visitor *v, const char *name,
+     tmp105_alarm_update(s, false);
+ }
+ 
+-static const int tmp105_faultq[4] = { 1, 2, 4, 6 };
+-
+ static void tmp105_read(TMP105State *s)
+ {
++    const TMP105Class *tc = TMP105_GET_CLASS(s);
++    int res;
++
+     s->len = 0;
+ 
+     if (FIELD_EX8(s->config, CONFIG, THERMOSTAT_MODE)) {
+@@ -165,9 +187,11 @@ static void tmp105_read(TMP105State *s)
+ 
+     switch (s->pointer & 3) {
+     case TMP105_REG_TEMPERATURE:
++        res = tc->fixed_res >= 0 ? tc->fixed_res :
++              FIELD_EX8(s->config, CONFIG, CONVERTER_RESOLUTION);
+         s->buf[s->len++] = (((uint16_t) s->temperature) >> 8);
+         s->buf[s->len++] = (((uint16_t) s->temperature) >> 0) &
+-                (0xf0 << (FIELD_EX8(~s->config, CONFIG, CONVERTER_RESOLUTION)));
++                (0xf0 << (3 - res));
+         break;
+ 
+     case TMP105_REG_CONFIG:
+@@ -190,6 +214,10 @@ static void tmp105_read(TMP105State *s)
+ 
+ static void tmp105_write(TMP105State *s)
+ {
++    const TMP105Class *tc = TMP105_GET_CLASS(s);
++    uint8_t config, one_shot;
++    bool waking;
++
+     trace_tmp105_write(s->parent_obj.address, s->pointer);
+ 
+     switch (s->pointer & 3) {
+@@ -197,14 +225,27 @@ static void tmp105_write(TMP105State *s)
+         break;
+ 
+     case TMP105_REG_CONFIG:
+-        if (FIELD_EX8(s->buf[0] & ~s->config, CONFIG, SHUTDOWN_MODE)) {
++        config = s->buf[0] & tc->config_wmask;
++        if (FIELD_EX8(config & ~s->config, CONFIG, SHUTDOWN_MODE)) {
+             trace_tmp105_write_shutdown(s->parent_obj.address);
++            if (FIELD_EX8(config, CONFIG, THERMOSTAT_MODE)) {
++                s->alarm = 0;
++            }
++        }
++        if (tc->tm_change_clears_alert &&
++            FIELD_EX8(config ^ s->config, CONFIG, THERMOSTAT_MODE)) {
++            s->alarm = 0;
++            s->fault_count = 0;
++            s->detect_falling = false;
+         }
+-        s->config = FIELD_DP8(s->buf[0], CONFIG, ONE_SHOT, 0);
+-        s->faults = tmp105_faultq[FIELD_EX8(s->config, CONFIG, FAULT_QUEUE)];
+-        if (FIELD_EX8(s->buf[0], CONFIG, ONE_SHOT) &&
+-            FIELD_EX8(s->config, CONFIG, SHUTDOWN_MODE)) {
++        waking = FIELD_EX8(s->config & ~config, CONFIG, SHUTDOWN_MODE);
++        one_shot = FIELD_EX8(config, CONFIG, ONE_SHOT);
++        s->config = FIELD_DP8(config, CONFIG, ONE_SHOT, 0);
++        s->faults = tc->faultq[FIELD_EX8(s->config, CONFIG, FAULT_QUEUE)];
++        if (one_shot && FIELD_EX8(s->config, CONFIG, SHUTDOWN_MODE)) {
+             tmp105_alarm_update(s, true);
++        } else if (waking) {
++            tmp105_alarm_update(s, false);
+         } else {
+             tmp105_interrupt_update(s);
+         }
+@@ -214,7 +255,8 @@ static void tmp105_write(TMP105State *s)
+     case TMP105_REG_T_HIGH:
+         if (s->len >= 3) {
+             s->limit[s->pointer & 1] = (int16_t)
+-                    ((((uint16_t) s->buf[0]) << 8) | (s->buf[1] & 0xf0));
++                    ((((uint16_t) s->buf[0]) << 8) |
++                     (s->buf[1] & tc->limit_lsb_mask));
+         }
+         tmp105_interrupt_update(s);
+         break;
+@@ -265,8 +307,9 @@ static int tmp105_event(I2CSlave *i2c, enum i2c_event event)
+ static int tmp105_post_load(void *opaque, int version_id)
+ {
+     TMP105State *s = opaque;
++    const TMP105Class *tc = TMP105_GET_CLASS(s);
+ 
+-    s->faults = tmp105_faultq[FIELD_EX8(s->config, CONFIG, FAULT_QUEUE)];
++    s->faults = tc->faultq[FIELD_EX8(s->config, CONFIG, FAULT_QUEUE)];
+ 
+     tmp105_interrupt_update(s);
+     return 0;
+@@ -339,11 +382,12 @@ static const VMStateDescription vmstate_tmp105 = {
+ static void tmp105_reset_hold(Object *obj, ResetType type)
+ {
+     TMP105State *s = TMP105(obj);
++    const TMP105Class *tc = TMP105_GET_CLASS(s);
+ 
+     s->temperature = 0;
+     s->pointer = 0;
+     s->config = 0;
+-    s->faults = tmp105_faultq[FIELD_EX8(s->config, CONFIG, FAULT_QUEUE)];
++    s->faults = tc->faultq[FIELD_EX8(s->config, CONFIG, FAULT_QUEUE)];
+     s->fault_count = 0;
+     s->alarm = 0;
+     s->detect_falling = false;
+@@ -371,11 +415,25 @@ static void tmp105_initfn(Object *obj)
+                                     "Temperature, in millidegrees Celsius");
+ }
+ 
++/*
++ * Fault-queue length selected by Config F1:F0. Row 0 (1/2/4/6) is used by the
++ * TMP105, TMP175 and LM75B; row 1 (1/2/3/4) by the TMP75.
++ */
++static const uint8_t tmp105_faultq[][4] = {
++    { 1, 2, 4, 6 },
++    { 1, 2, 3, 4 },
 +};
 +
-+static const uint8_t ecdsa_p384_dgst[48] = {
-+    0x8d, 0xf2, 0xc0, 0xe9, 0xa8, 0xf3, 0x8e, 0x44,
-+    0xc4, 0x8c, 0x1a, 0xa0, 0xb8, 0xd7, 0x17, 0xdf,
-+    0xf2, 0x37, 0x1b, 0xc6, 0xe3, 0xf5, 0x62, 0xcc,
-+    0x68, 0xf5, 0xd5, 0x0b, 0xbf, 0x73, 0x2b, 0xb1,
-+    0xb0, 0x4c, 0x04, 0x00, 0x31, 0xab, 0xfe, 0xc8,
-+    0xd6, 0x09, 0xc8, 0xf2, 0xea, 0xd3, 0x28, 0xff,
-+};
++/* The F1:F0 field must never index past a fault-queue table row. */
++QEMU_BUILD_BUG_ON((1 << R_CONFIG_FAULT_QUEUE_LENGTH) - 1 >=
++                  ARRAY_SIZE(tmp105_faultq[0]));
 +
-+typedef struct AspeedSBCECDSA {
-+    const char *name;
-+    QCryptoCurveID curve_id;
-+    const uint8_t *pubkey;
-+    const uint8_t *signature;
-+    const uint8_t *dgst;
-+    size_t coord_len;
-+} AspeedSBCECDSA;
+ static void tmp105_class_init(ObjectClass *klass, const void *data)
+ {
+     DeviceClass *dc = DEVICE_CLASS(klass);
+     I2CSlaveClass *k = I2C_SLAVE_CLASS(klass);
+     ResettableClass *rc = RESETTABLE_CLASS(klass);
++    TMP105Class *tc = TMP105_CLASS(klass);
+ 
+     dc->realize = tmp105_realize;
+     k->event = tmp105_event;
+@@ -383,19 +441,71 @@ static void tmp105_class_init(ObjectClass *klass, const void *data)
+     k->send = tmp105_tx;
+     rc->phases.hold = tmp105_reset_hold;
+     dc->vmsd = &vmstate_tmp105;
 +
-+static const AspeedSBCECDSA sbc_ecdsa_tests[] = {
++    tc->faultq = tmp105_faultq[0];
++    tc->config_wmask = 0xff;
++    tc->fixed_res = -1;
++    tc->limit_lsb_mask = 0xf0;
++    tc->tm_change_clears_alert = false;
+ }
+ 
+-static const TypeInfo tmp105_info = {
+-    .name          = TYPE_TMP105,
+-    .parent        = TYPE_I2C_SLAVE,
+-    .instance_size = sizeof(TMP105State),
+-    .instance_init = tmp105_initfn,
+-    .class_init    = tmp105_class_init,
+-};
++static void tmp175_class_init(ObjectClass *klass, const void *data)
++{
++    TMP105Class *tc = TMP105_CLASS(klass);
+ 
+-static void tmp105_register_types(void)
++    tc->faultq = tmp105_faultq[0];
++    tc->config_wmask = 0xff;
++    tc->fixed_res = -1;
++    tc->limit_lsb_mask = 0xf0;
++    tc->tm_change_clears_alert = false;
++}
++
++static void tmp75_class_init(ObjectClass *klass, const void *data)
+ {
+-    type_register_static(&tmp105_info);
++    TMP105Class *tc = TMP105_CLASS(klass);
++
++    tc->faultq = tmp105_faultq[1];
++    tc->config_wmask = 0xff;
++    tc->fixed_res = -1;
++    tc->limit_lsb_mask = 0xf0;
++    tc->tm_change_clears_alert = true;
+ }
+ 
+-type_init(tmp105_register_types)
++static void lm75b_class_init(ObjectClass *klass, const void *data)
++{
++    TMP105Class *tc = TMP105_CLASS(klass);
++
++    tc->faultq = tmp105_faultq[0];
++    tc->config_wmask = 0x1f;
++    tc->fixed_res = 2;
++    tc->limit_lsb_mask = 0x80;
++    tc->tm_change_clears_alert = false;
++}
++
++static const TypeInfo tmp105_types[] = {
 +    {
-+        .name = "secp384r1",
-+        .curve_id = QCRYPTO_CURVE_ID_SECP384R1,
-+        .pubkey = ecdsa_p384_pubkey,
-+        .signature = ecdsa_p384_signature,
-+        .dgst = ecdsa_p384_dgst,
-+        .coord_len = 48,
++        .name          = TYPE_TMP105,
++        .parent        = TYPE_I2C_SLAVE,
++        .instance_size = sizeof(TMP105State),
++        .class_size    = sizeof(TMP105Class),
++        .instance_init = tmp105_initfn,
++        .class_init    = tmp105_class_init,
++    },
++    {
++        .name          = TYPE_TMP175,
++        .parent        = TYPE_TMP105,
++        .class_init    = tmp175_class_init,
++    },
++    {
++        .name          = TYPE_TMP75,
++        .parent        = TYPE_TMP105,
++        .class_init    = tmp75_class_init,
++    },
++    {
++        .name          = TYPE_LM75B,
++        .parent        = TYPE_TMP105,
++        .class_init    = lm75b_class_init,
 +    },
 +};
 +
-+typedef struct AspeedSBCTest {
-+    const char *machine;
-+    uint32_t sec_addr;
-+    uint64_t sram_addr;
-+    int index;
-+} AspeedSBCTest;
-+
-+static void sbc_ecdsa_stage(QTestState *qts, const AspeedSBCTest *c,
-+                            const AspeedSBCECDSA *t)
-+{
-+    uint32_t len = t->coord_len;
-+
-+    qtest_memwrite(qts, c->sram_addr + ECDSA_SRAM_QX, t->pubkey, len);
-+    qtest_memwrite(qts, c->sram_addr + ECDSA_SRAM_QY, t->pubkey + len, len);
-+    qtest_memwrite(qts, c->sram_addr + ECDSA_SRAM_R, t->signature, len);
-+    qtest_memwrite(qts, c->sram_addr + ECDSA_SRAM_S, t->signature + len, len);
-+    qtest_memwrite(qts, c->sram_addr + ECDSA_SRAM_M, t->dgst, len);
-+}
-+
-+/*
-+ * Drive one ECDSA verify through the engine the way the firmware does:
-+ * stage the operands in the SEC SRAM, trigger the command register and read
-+ * back the done/pass bits in the status register.
-+ */
-+static void test_ecdsa_verify(const void *opaque)
-+{
-+    const AspeedSBCTest *c = opaque;
-+    const AspeedSBCECDSA *t = &sbc_ecdsa_tests[c->index];
-+    QCryptoAkCipherOptions opts = {
-+        .alg = QCRYPTO_AK_CIPHER_ALGO_ECDSA,
-+        .u.ecdsa.curve_id = t->curve_id,
-+    };
-+    QTestState *qts;
-+    uint32_t status;
-+    uint8_t bad;
-+
-+    if (!qcrypto_akcipher_supports(&opts)) {
-+        g_test_skip("ECDSA is not supported by the crypto backend");
-+        return;
-+    }
-+
-+    qts = qtest_init(c->machine);
-+
-+    /* A valid signature verifies */
-+    sbc_ecdsa_stage(qts, c, t);
-+    qtest_writel(qts, c->sec_addr + SBC_SEC_TRIGGER, SBC_ECDSA_CMD_TRIGGER);
-+    status = qtest_readl(qts, c->sec_addr + SBC_STATUS);
-+    g_assert_cmphex(status & (SBC_ECDSA_VERIFY_DONE | SBC_ECDSA_VERIFY_PASS),
-+                    ==, SBC_ECDSA_VERIFY_DONE | SBC_ECDSA_VERIFY_PASS);
-+
-+    /* A tampered signature must fail */
-+    bad = t->signature[0] ^ 0xff;
-+    qtest_memwrite(qts, c->sram_addr + ECDSA_SRAM_R, &bad, 1);
-+    qtest_writel(qts, c->sec_addr + SBC_SEC_TRIGGER, SBC_ECDSA_CMD_TRIGGER);
-+    status = qtest_readl(qts, c->sec_addr + SBC_STATUS);
-+    g_assert_cmphex(status & SBC_ECDSA_VERIFY_DONE, ==, SBC_ECDSA_VERIFY_DONE);
-+    g_assert_cmphex(status & SBC_ECDSA_VERIFY_PASS, ==, 0);
-+
-+    qtest_quit(qts);
-+}
-+
-+static void aspeed_add_sbc_ecdsa_tests(const char *prefix, const char *machine,
-+                                       uint32_t sec_addr, uint64_t sram_addr)
-+{
-+    int i;
-+
-+    for (i = 0; i < ARRAY_SIZE(sbc_ecdsa_tests); i++) {
-+        g_autofree char *path = NULL;
-+        AspeedSBCTest *t;
-+
-+        path = g_strdup_printf("%s/sbc/ecdsa/%s", prefix,
-+                               sbc_ecdsa_tests[i].name);
-+        t = g_new0(AspeedSBCTest, 1);
-+        t->machine = machine;
-+        t->sec_addr = sec_addr;
-+        t->sram_addr = sram_addr;
-+        t->index = i;
-+        qtest_add_data_func_full(path, t, test_ecdsa_verify, g_free);
-+    }
-+}
-+
-+int main(int argc, char **argv)
-+{
-+    g_test_init(&argc, &argv, NULL);
-+
-+    aspeed_add_sbc_ecdsa_tests("ast1030", "-machine ast1030-evb",
-+                               0x7e6f2000, 0x79000000);
-+
-+    aspeed_add_sbc_ecdsa_tests("ast1060", "-machine ast1060-evb",
-+                               0x7e6f2000, 0x79000000);
-+
-+    return g_test_run();
-+}
-diff --git a/tests/qtest/meson.build b/tests/qtest/meson.build
-index 6e7ffcdbd09c..c3593f753049 100644
---- a/tests/qtest/meson.build
-+++ b/tests/qtest/meson.build
-@@ -233,6 +233,7 @@ qtests_aspeed = \
-   ['aspeed-acry-test',
-    'aspeed_gpio-test',
-    'aspeed_hace-test',
-+   'aspeed-sbc-test',
-    'aspeed_scu-test',
-    'aspeed_smc-test']
- qtests_aspeed64 = \
-@@ -407,6 +408,7 @@ qtests = {
-                        crypto],
-   'aspeed_hace-test': [files('aspeed-hace-utils.c', 'aspeed_hace-test.c'),
-                        crypto],
-+  'aspeed-sbc-test': [files('aspeed-sbc-test.c'), crypto],
-   'aspeed_smc-test': files('aspeed-smc-utils.c', 'aspeed_smc-test.c'),
-   'ast2700-hace-test': [files('aspeed-hace-utils.c', 'ast2700-hace-test.c'),
-                         crypto],
++DEFINE_TYPES(tmp105_types)
 -- 
 2.55.0
 

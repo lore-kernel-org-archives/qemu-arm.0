@@ -4,61 +4,60 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3E7E3C79F8C
-	for <qemu-arm@archiver.kernel.org>; Sun,  6 Sep 2026 17:13:01 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AEA0FC79F85
+	for <qemu-arm@archiver.kernel.org>; Sun,  6 Sep 2026 17:13:02 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1x3GPD-00049G-5F; Sun, 06 Sep 2026 13:11:47 -0400
+	id 1x3GP0-0003mH-Cv; Sun, 06 Sep 2026 13:11:34 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1x3GPA-00042k-Ui
- for qemu-arm@nongnu.org; Sun, 06 Sep 2026 13:11:44 -0400
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1x3GOj-0003eX-2H
+ for qemu-arm@nongnu.org; Sun, 06 Sep 2026 13:11:18 -0400
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1x3GP9-0000IS-3u
- for qemu-arm@nongnu.org; Sun, 06 Sep 2026 13:11:44 -0400
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1x3GOf-00009x-48
+ for qemu-arm@nongnu.org; Sun, 06 Sep 2026 13:11:15 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1788714702;
+ s=mimecast20190719; t=1788714672;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=ejaNlsfuqiQ5txCozc0FdpNb+CS3CGFTF26qsu3Itv4=;
- b=MaUTgkN15x42jrNDWAHhdPgJ6H9+cR8e4rOyIo7LPUNJe703xSM0rK8L1ep8hYaimpak+K
- V/9xneF3WSsVdsBUprT9/VfFQKM3Ihzi4tIHYP0LoDAglKe0a8w/vXhnaCCNurkSFc8HVc
- AQ+erDTWnq0eIYWx5a0FgMLDcpP32w8=
+ bh=X2PrVe493EMGdSxO3v8Caq4rq9errC1KHX92iVjNUlg=;
+ b=O14Xj9mRtIMu0EYGnA9bY481HBwJQuWwlClwDduYWUqWv0t9TtJn6FsWBhnJBePPXOyGqt
+ +830By5RiseJwCM8mjFzkG0SqMnlY8D1TgkYN+8/tgURtRVw64aa5ir32TGlcaStF1Xc7q
+ XHOkuOLX2AOZTDJTaVinYSiwRcSARvc=
 Received: from mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com
  (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-589-81eNwnAjPsGxuVOdwe6uHg-1; Sun,
- 06 Sep 2026 13:11:38 -0400
-X-MC-Unique: 81eNwnAjPsGxuVOdwe6uHg-1
-X-Mimecast-MFC-AGG-ID: 81eNwnAjPsGxuVOdwe6uHg_1788714698
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-115-ps9antJ6Ppeg5EtxK8XPhw-1; Sun,
+ 06 Sep 2026 13:11:08 -0400
+X-MC-Unique: ps9antJ6Ppeg5EtxK8XPhw-1
+X-Mimecast-MFC-AGG-ID: ps9antJ6Ppeg5EtxK8XPhw_1788714667
 Received: from mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com
  (mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.12])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
  by mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id DCA551802648; Sun,  6 Sep 2026 17:11:37 +0000 (UTC)
+ id 473611801347; Sun,  6 Sep 2026 17:11:07 +0000 (UTC)
 Received: from yukon.redhat.com (unknown [10.44.32.24])
  by mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id 77F9E1955F06; Sun,  6 Sep 2026 17:11:36 +0000 (UTC)
+ id D98E31955F06; Sun,  6 Sep 2026 17:11:05 +0000 (UTC)
 From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Cc: Emmanuel Blot <emmanuel.blot@free.fr>,
+Cc: Jamin Lin <jamin_lin@aspeedtech.com>,
  =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>
-Subject: [PULL 34/40] tests/qtest: tmp105: cover one-shot and fault-queue
- write immunity
-Date: Sun,  6 Sep 2026 19:10:15 +0200
-Message-ID: <20260906171021.26568-35-clg@redhat.com>
+Subject: [PULL 18/40] hw/arm/aspeed_ast10x0: Wire SEC SRAM to the SBC model
+Date: Sun,  6 Sep 2026 19:09:59 +0200
+Message-ID: <20260906171021.26568-19-clg@redhat.com>
 In-Reply-To: <20260906171021.26568-1-clg@redhat.com>
 References: <20260906171021.26568-1-clg@redhat.com>
 MIME-Version: 1.0
 X-Scanned-By: MIMEDefang 3.0 on 10.30.177.12
-X-Mimecast-MFC-PROC-ID: 9KiCDe26OX08N5d8aE8sM3gfSLPKSewgTPGb8jNrqhY_1788714698
+X-Mimecast-MFC-PROC-ID: D8l5l1_SUDvbvUCIdF_8B-uodCncIm4vyKYTQTsOUYI_1788714667
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
@@ -70,7 +69,7 @@ X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.01, SPF_HELO_PASS=-0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -86,148 +85,112 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-From: Emmanuel Blot <emmanuel.blot@free.fr>
+From: Jamin Lin <jamin_lin@aspeedtech.com>
 
-Verify that the one-shot (OS) bit triggers a conversion only in shutdown
-mode and is ignored in continuous mode, and that
-configuration/limit-register writes never advance the fault queue — only
-real conversions do.
+Introduce the "has_ecdsa" class attribute and enable it for the AST10x0 SBC,
+as ECDSA is only supported on this platform.
 
-Signed-off-by: Emmanuel Blot <emmanuel.blot@free.fr>
+Add an "sram" link property to the SBC model and initialize a dedicated address
+space for accessing the SEC SRAM. This will be used by the ECDSA verify command
+to read the public key, signature, and digest from SRAM.
+
+Wrap the SEC SRAM in a container mapped at offset 0. This allows the ECDSA
+engine added in a later patch to access the SRAM using relative offsets without
+requiring the SBC model to know the SRAM's system address.
+
+Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
 Reviewed-by: Cédric Le Goater <clg@redhat.com>
-Link: https://lore.kernel.org/qemu-devel/20260731-sanmiguel-bmc-locator-v2-10-1266926ba769@free.fr
+Link: https://lore.kernel.org/qemu-devel/20260901085238.995968-8-jamin_lin@aspeedtech.com
 Signed-off-by: Cédric Le Goater <clg@redhat.com>
 ---
- tests/qtest/tmp105-test.c | 102 ++++++++++++++++++++++++++++++++++++++
- 1 file changed, 102 insertions(+)
+ include/hw/misc/aspeed_sbc.h |  4 ++++
+ hw/arm/aspeed_ast10x0.c      |  7 ++++++-
+ hw/misc/aspeed_sbc.c         | 11 +++++++++++
+ 3 files changed, 21 insertions(+), 1 deletion(-)
 
-diff --git a/tests/qtest/tmp105-test.c b/tests/qtest/tmp105-test.c
-index ea6803715a39..e586a634d8fb 100644
---- a/tests/qtest/tmp105-test.c
-+++ b/tests/qtest/tmp105-test.c
-@@ -33,6 +33,8 @@
- #define TMP105_CONFIG_FQ_1  (0 << 3)   /* fault queue: 1 consecutive fault */
- #define TMP105_CONFIG_FQ_4  (2 << 3)   /* fault queue: 4 consecutive faults */
- #define TMP105_CONFIG_FQ(f) ((f) << 3) /* raw F1:F0 fault-queue field value */
-+#define TMP105_CONFIG_SD    (1 << 0)   /* shutdown mode */
-+#define TMP105_CONFIG_OS    (1 << 7)   /* one-shot conversion */
+diff --git a/include/hw/misc/aspeed_sbc.h b/include/hw/misc/aspeed_sbc.h
+index eea6e2b27fbf..756c61235697 100644
+--- a/include/hw/misc/aspeed_sbc.h
++++ b/include/hw/misc/aspeed_sbc.h
+@@ -40,12 +40,16 @@ struct AspeedSBCState {
+     uint32_t regs[ASPEED_SBC_NR_REGS];
  
- static int qmp_tmp105_get_temperature(const char *id)
- {
-@@ -200,6 +202,102 @@ static void check_fault_queue(QI2CDevice *i2cdev, const char *id,
-     g_assert_true(get_irq(0));
+     AspeedOTPState otp;
++
++    MemoryRegion *sram;
++    AddressSpace sram_as;
+ };
+ 
+ struct AspeedSBCClass {
+     SysBusDeviceClass parent_class;
+ 
+     bool has_otp;
++    bool has_ecdsa;
+ };
+ 
+ #endif /* ASPEED_SBC_H */
+diff --git a/hw/arm/aspeed_ast10x0.c b/hw/arm/aspeed_ast10x0.c
+index 5165dcce5912..aeb5a4423dd3 100644
+--- a/hw/arm/aspeed_ast10x0.c
++++ b/hw/arm/aspeed_ast10x0.c
+@@ -250,8 +250,11 @@ static bool aspeed_soc_ast10x0_realize(Aspeed10x0SoCState *a, Error **errp)
+         error_propagate(errp, err);
+         return false;
+     }
++    memory_region_init(&s->sram_container[1], OBJECT(s), "sec.sram-container",
++                       sc->sram_size[1]);
++    memory_region_add_subregion(&s->sram_container[1], 0, &s->sram[1]);
+     memory_region_add_subregion(s->memory, sc->memmap[ASPEED_DEV_SRAM1],
+-                                &s->sram[1]);
++                                &s->sram_container[1]);
+ 
+     /* SCU */
+     if (!sysbus_realize(SYS_BUS_DEVICE(&s->scu), errp)) {
+@@ -350,6 +353,8 @@ static bool aspeed_soc_ast10x0_realize(Aspeed10x0SoCState *a, Error **errp)
+     }
+ 
+     /* Secure Boot Controller */
++    object_property_set_link(OBJECT(&s->sbc), "sram", OBJECT(&s->sram[1]),
++                             &error_abort);
+     if (!sysbus_realize(SYS_BUS_DEVICE(&s->sbc), errp)) {
+         return false;
+     }
+diff --git a/hw/misc/aspeed_sbc.c b/hw/misc/aspeed_sbc.c
+index 7397d9bbf066..f10f7ac578d8 100644
+--- a/hw/misc/aspeed_sbc.c
++++ b/hw/misc/aspeed_sbc.c
+@@ -306,6 +306,14 @@ static void aspeed_sbc_realize(DeviceState *dev, Error **errp)
+         }
+     }
+ 
++    if (sc->has_ecdsa) {
++        if (!s->sram) {
++            error_setg(errp, TYPE_ASPEED_SBC ": 'sram' link not set");
++            return;
++        }
++        address_space_init(&s->sram_as, s->sram, TYPE_ASPEED_SBC ".sram");
++    }
++
+     memory_region_init_io(&s->iomem, OBJECT(s), &aspeed_sbc_ops, s,
+             TYPE_ASPEED_SBC, ASPEED_SBC_NR_REGS << 2);
+ 
+@@ -325,6 +333,8 @@ static const VMStateDescription vmstate_aspeed_sbc = {
+ static const Property aspeed_sbc_properties[] = {
+     DEFINE_PROP_BOOL("emmc-abr", AspeedSBCState, emmc_abr, 0),
+     DEFINE_PROP_UINT32("signing-settings", AspeedSBCState, signing_settings, 0),
++    DEFINE_PROP_LINK("sram", AspeedSBCState, sram,
++                     TYPE_MEMORY_REGION, MemoryRegion *),
+ };
+ 
+ static void aspeed_sbc_class_init(ObjectClass *klass, const void *data)
+@@ -355,6 +365,7 @@ static void aspeed_ast10x0_sbc_class_init(ObjectClass *klass, const void *data)
+ 
+     dc->desc = "AST10X0 Secure Boot Controller";
+     sc->has_otp = true;
++    sc->has_ecdsa = true;
  }
  
-+/*
-+ * The one-shot (OS) bit starts a conversion only in shutdown mode. In
-+ * continuous mode it is ignored, so writing it must not advance the fault
-+ * queue; in shutdown each OS write performs one conversion that does.
-+ */
-+static void test_one_shot(void *obj, void *data, QGuestAllocator *alloc)
-+{
-+    QI2CDevice *i2cdev = (QI2CDevice *)obj;
-+    int i;
-+
-+    qtest_irq_intercept_out(global_qtest, TMP105_TEST_PATH);
-+
-+    i2c_set8(i2cdev, TMP105_REG_CONFIG, TMP105_CONFIG_POL | TMP105_CONFIG_FQ_4);
-+    qmp_tmp105_set_temperature(TMP105_TEST_ID, 85000);
-+    g_assert_false(get_irq(0));
-+
-+    for (i = 0; i < 8; i++) {
-+        i2c_set8(i2cdev, TMP105_REG_CONFIG,
-+                 TMP105_CONFIG_POL | TMP105_CONFIG_FQ_4 | TMP105_CONFIG_OS);
-+        g_assert_false(get_irq(0));
-+    }
-+
-+    i2c_set8(i2cdev, TMP105_REG_CONFIG,
-+             TMP105_CONFIG_POL | TMP105_CONFIG_FQ_4 | TMP105_CONFIG_SD);
-+    for (i = 0; i < 2; i++) {
-+        i2c_set8(i2cdev, TMP105_REG_CONFIG, TMP105_CONFIG_POL |
-+                 TMP105_CONFIG_FQ_4 | TMP105_CONFIG_SD | TMP105_CONFIG_OS);
-+        g_assert_false(get_irq(0));
-+    }
-+    i2c_set8(i2cdev, TMP105_REG_CONFIG, TMP105_CONFIG_POL |
-+             TMP105_CONFIG_FQ_4 | TMP105_CONFIG_SD | TMP105_CONFIG_OS);
-+    g_assert_true(get_irq(0));
-+}
-+
-+/*
-+ * Configuration and limit-register writes are not conversions and must not
-+ * advance the fault queue.
-+ */
-+static void test_fault_queue_ignores_writes(void *obj, void *data,
-+                                            QGuestAllocator *alloc)
-+{
-+    QI2CDevice *i2cdev = (QI2CDevice *)obj;
-+    int i;
-+
-+    qtest_irq_intercept_out(global_qtest, TMP105_TEST_PATH);
-+
-+    i2c_set8(i2cdev, TMP105_REG_CONFIG, TMP105_CONFIG_POL | TMP105_CONFIG_FQ_4);
-+    g_assert_false(get_irq(0));
-+
-+    qmp_tmp105_set_temperature(TMP105_TEST_ID, 85000);
-+    g_assert_false(get_irq(0));
-+
-+    for (i = 0; i < 8; i++) {
-+        i2c_set8(i2cdev, TMP105_REG_CONFIG,
-+                 TMP105_CONFIG_POL | TMP105_CONFIG_FQ_4);
-+        i2c_set16(i2cdev, TMP105_REG_T_HIGH, 0x5000);
-+        i2c_set16(i2cdev, TMP105_REG_T_LOW, 0x4b00);
-+        g_assert_false(get_irq(0));
-+    }
-+
-+    for (i = 0; i < 2; i++) {
-+        qmp_tmp105_set_temperature(TMP105_TEST_ID, 85000);
-+        g_assert_false(get_irq(0));
-+    }
-+    qmp_tmp105_set_temperature(TMP105_TEST_ID, 85000);
-+    g_assert_true(get_irq(0));
-+}
-+
-+/*
-+ * Leaving shutdown (SD 1->0) resumes continuous conversion, which must
-+ * re-evaluate the current temperature against the limits.
-+ */
-+static void test_wake_from_shutdown(void *obj, void *data,
-+                                    QGuestAllocator *alloc)
-+{
-+    QI2CDevice *i2cdev = (QI2CDevice *)obj;
-+
-+    qtest_irq_intercept_out(global_qtest, TMP105_TEST_PATH);
-+
-+    i2c_set8(i2cdev, TMP105_REG_CONFIG, TMP105_CONFIG_POL | TMP105_CONFIG_FQ_1);
-+    g_assert_false(get_irq(0));
-+
-+    qmp_tmp105_set_temperature(TMP105_TEST_ID, 85000);
-+    g_assert_true(get_irq(0));
-+
-+    i2c_set8(i2cdev, TMP105_REG_CONFIG,
-+             TMP105_CONFIG_POL | TMP105_CONFIG_FQ_1 | TMP105_CONFIG_SD);
-+    g_assert_true(get_irq(0));
-+
-+    qmp_tmp105_set_temperature(TMP105_TEST_ID, 70000);
-+    g_assert_true(get_irq(0));
-+
-+    i2c_set8(i2cdev, TMP105_REG_CONFIG, TMP105_CONFIG_POL | TMP105_CONFIG_FQ_1);
-+    g_assert_false(get_irq(0));
-+}
-+
- /* The TMP75 maps F1:F0 = 10b to 3 consecutive faults. */
- static void test_tmp75_fault_queue(void *obj, void *data,
-                                    QGuestAllocator *alloc)
-@@ -282,6 +380,10 @@ static void tmp105_register_nodes(void)
-     qos_add_test("tx-rx", "tmp105", send_and_receive, NULL);
-     qos_add_test("alert-single-fault", "tmp105", test_alert_single_fault, NULL);
-     qos_add_test("fault-queue", "tmp105", test_fault_queue, NULL);
-+    qos_add_test("fault-queue-ignores-writes", "tmp105",
-+                 test_fault_queue_ignores_writes, NULL);
-+    qos_add_test("one-shot", "tmp105", test_one_shot, NULL);
-+    qos_add_test("wake-from-shutdown", "tmp105", test_wake_from_shutdown, NULL);
- 
-     /* TMP75: register-compatible, but with a 1/2/3/4 fault queue. */
-     QOSGraphEdgeOptions tmp75_opts = {
+ static const TypeInfo aspeed_sbc_types[] = {
 -- 
 2.55.0
 

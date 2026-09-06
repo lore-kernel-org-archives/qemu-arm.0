@@ -4,104 +4,111 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 43F91C79F99
-	for <qemu-arm@archiver.kernel.org>; Sun,  6 Sep 2026 08:45:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 98C10C79F9E
+	for <qemu-arm@archiver.kernel.org>; Sun,  6 Sep 2026 08:54:23 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1x38Sr-00046V-JE; Sun, 06 Sep 2026 04:43:01 -0400
+	id 1x38dW-0002Bu-9Y; Sun, 06 Sep 2026 04:54:02 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <marcandre.lureau@redhat.com>)
- id 1x38Sp-00045A-OW
- for qemu-arm@nongnu.org; Sun, 06 Sep 2026 04:42:59 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ id 1x38dV-0002BI-2A
+ for qemu-arm@nongnu.org; Sun, 06 Sep 2026 04:54:01 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <marcandre.lureau@redhat.com>)
- id 1x38Sn-00084A-Mk
- for qemu-arm@nongnu.org; Sun, 06 Sep 2026 04:42:59 -0400
+ id 1x38dR-0000jm-RY
+ for qemu-arm@nongnu.org; Sun, 06 Sep 2026 04:54:00 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1788684177;
+ s=mimecast20190719; t=1788684837;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=N2rvNY4HfCB1s4nnNqgZ4NoEePPcvl+BRZFxlaqR058=;
- b=I6UvrsZgMPUX7pBIOaUhAdlIno7Gb6hwgDbQLWGj+7M8IEVveISZBaSITmwajwmwxBYGGU
- dJXNdIU2ujoqwA8RA7yAr8oubasdBAWld/2fIDaUIJ8CZ8hvpo4sZkhtiRfv0DjICoqAdJ
- wF1OYFxPpxYdH4oGq3ksViivryNgG5Q=
-Received: from mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
+ content-transfer-encoding:content-transfer-encoding;
+ bh=smGZ3ZAQ/JpjeSt/eEgVOx+5vtwkcPyTuz6E6D+SaqY=;
+ b=aLdSlQuDpHuxSI2u3DTJoKXzcbZ9zWU6LlGZEme2xwig70b907zRqW0TlSEs25s6eDxHX3
+ 5XuagwuHztEnOpisypZh34MmB0Aw2h2G5OunEIBJ+lheVNqXMygTLAKDTYo3ZQo/UUQU0Y
+ NEn/jBqbANByr9mlMvYMjzS2vy1p/n8=
+Received: from mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-441-cXCFcQdXPX-B-vTCcP6OSw-1; Sun,
- 06 Sep 2026 04:42:51 -0400
-X-MC-Unique: cXCFcQdXPX-B-vTCcP6OSw-1
-X-Mimecast-MFC-AGG-ID: cXCFcQdXPX-B-vTCcP6OSw_1788684169
-Received: from mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com
- (mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.17])
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-160-57Ijy12FO--QZ95M6Ymgfg-1; Sun,
+ 06 Sep 2026 04:53:52 -0400
+X-MC-Unique: 57Ijy12FO--QZ95M6Ymgfg-1
+X-Mimecast-MFC-AGG-ID: 57Ijy12FO--QZ95M6Ymgfg_1788684830
+Received: from mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com
+ (mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.93])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 0336318011EC; Sun,  6 Sep 2026 08:42:49 +0000 (UTC)
+ by mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 1291119541BD; Sun,  6 Sep 2026 08:53:50 +0000 (UTC)
 Received: from localhost (headnet04.pony-001.prod.iad2.dc.redhat.com
  [10.2.32.116])
- by mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id 9D5F11956056; Sun,  6 Sep 2026 08:42:46 +0000 (UTC)
+ by mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
+ id EBCEB180049F; Sun,  6 Sep 2026 08:53:47 +0000 (UTC)
 From: =?utf-8?q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>
-Date: Sun, 06 Sep 2026 12:42:33 +0400
-Subject: [PATCH 2/9] tests/functional: replace HMP with QMP
+Subject: [PATCH 0/9] Various ASAN & tests fixes
+Date: Sun, 06 Sep 2026 12:53:32 +0400
+Message-Id: <20260906-nohmp-next-v1-0-2b21e63974f3@redhat.com>
 MIME-Version: 1.0
-Message-Id: <20260906-nohmp-v1-2-daee96491c43@redhat.com>
-References: <20260906-nohmp-v1-0-daee96491c43@redhat.com>
-In-Reply-To: <20260906-nohmp-v1-0-daee96491c43@redhat.com>
+X-B4-Tracking: v=1; b=H4sIAAAAAAAC/yXMQQqAIBBA0avIrBNGF0VdJVqUjTlBFloRhHfPa
+ vkW/98QKTBFaMQNgU6OvPoMVQgwrvcTSR6zQaMuscZS+tUtm/R07bKq1IC6NgathhxsgSxf36z
+ tfsdjmMns7wFSegDlq7vybgAAAA==
+X-Change-ID: 20260906-nohmp-next-771b029cc0f2
 To: qemu-devel@nongnu.org
-Cc: John Snow <jsnow@redhat.com>, "Denis V. Lunev" <den@openvz.org>, 
- Fabiano Rosas <farosas@suse.de>, Laurent Vivier <lvivier@redhat.com>, 
- Paolo Bonzini <pbonzini@redhat.com>, qemu-block@nongnu.org, 
+Cc: Brian Cain <brian.cain@oss.qualcomm.com>, 
+ Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>, 
+ "Michael S. Tsirkin" <mst@redhat.com>, 
+ Stefano Garzarella <sgarzare@redhat.com>, 
+ Paolo Bonzini <pbonzini@redhat.com>, Zhao Liu <zhao1.liu@intel.com>, 
  Peter Maydell <peter.maydell@linaro.org>, 
- Thomas Huth <th.huth+qemu@posteo.eu>, 
  =?utf-8?q?Philippe_Mathieu-Daud=C3=A9?= <philmd@oss.qualcomm.com>, 
- Aurelien Jarno <aurelien@aurel32.net>, qemu-arm@nongnu.org, 
- Halil Pasic <pasic@linux.ibm.com>, 
+ qemu-arm@nongnu.org, Ani Sinha <anisinha@redhat.com>, 
+ Gerd Hoffman <kraxel@redhat.com>, Fabiano Rosas <farosas@suse.de>, 
+ Laurent Vivier <lvivier@redhat.com>, Jared Rossi <jrossi@linux.ibm.com>, 
+ Zhuoying Cai <zycai@linux.ibm.com>, 
  Christian Borntraeger <borntraeger@linux.ibm.com>, 
- Eric Farman <farman@linux.ibm.com>, Matthew Rosato <mjrosato@linux.ibm.com>, 
- Cornelia Huck <cohuck@redhat.com>, qemu-s390x@nongnu.org, 
- =?utf-8?q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>, 
- Glenn Miles <milesg@linux.ibm.com>, qemu-ppc@nongnu.org, 
+ Jason Herne <jjherne@linux.ibm.com>, 
+ Richard Henderson <richard.henderson@linaro.org>, 
+ Ilya Leoshkevich <iii@linux.ibm.com>, David Hildenbrand <david@kernel.org>, 
+ Halil Pasic <pasic@linux.ibm.com>, Eric Farman <farman@linux.ibm.com>, 
+ Matthew Rosato <mjrosato@linux.ibm.com>, Cornelia Huck <cohuck@redhat.com>, 
+ qemu-s390x@nongnu.org, 
  =?utf-8?q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>
-X-Developer-Signature: v=1; a=openpgp-sha256; l=2972;
+X-Developer-Signature: v=1; a=openpgp-sha256; l=1489;
  i=marcandre.lureau@redhat.com; h=from:subject:message-id;
- bh=Z9E2BtIcfNeU3QgCE1FrbeWBRNl/CIXdaah4L/q8HCQ=;
- b=owEBbQKS/ZANAwAKAdro4Ql1lpzlAcsmYgBqnSd5HItaQuLUuAZp0v0yNhJFPj0OLP7xgsltb
- mOnASQ8TW+JAjMEAAEKAB0WIQSHqb2TP4fGBtJ29i3a6OEJdZac5QUCap0neQAKCRDa6OEJdZac
- 5fUeD/9xln3vdFSeHglaMAN4U8ldyCbSomNhwG/XdRk3rEgagp8n13S08wblOp7tKDxvf07MWwO
- bgbO+9LwGJGHJOFT5a3w3wnVwwyuf3AeF3YeUwHCeEVDXBCFf5+OhWbiHCFjkOr7eH8vvDBAZlL
- +TwMgfqgxW7Ul9yGV1WdTRS4cpojCduPLH09OihzAq82HPdZjKK+UWgenCo50ZR8bbtjORdZTL3
- n9fV17uaHT7Hznl7uQ01mhH2Kakjye9mua804qmc1hpl8qskW3eqQ5WnwltDJQT4f3Xvi1F4Tsr
- AkGBHscUDjL0oKJXuCpnhkHg/LTxF0o+LtRZgAGFIND6yVX5kaudB1fu27qCwoeOXAou7H4O1zn
- ljyVrl7O6wM9Z40Nk2CP6u0HBc21h7LJz4ME8RB5v2g0NfPRvFCKUr8D7MXFzoZ0w5Dx29Gl1bi
- 7k6W7+O3gOSLFcXV7cgDBRm/GkLXGimKuhHtX3/pg+tPr/2AK3e+tMryUjZBrxZ+f1ejnJjsiP1
- 5g04gJKwFhrkNBFcgzH5W6ZHCu9KA7tc8S6vxYYEuQ8euEJWgPn0/EAHQyJ6M3w5ikJyGoHgC5p
- lp+wu8nfRIUanPr7LS8DHkaToP558HgSq4LCxLezYmAE6is2b74LBvNsr97NHtPwRQqFGO4XT9n
- 3q0fPaJW5C03kaw==
+ bh=VzRRCytbT5/V3Kw+tgrUBk+fVgtBuwOkncMfdO34t+E=;
+ b=owEBbQKS/ZANAwAKAdro4Ql1lpzlAcsmYgBqnSoY2RtFbqlpchb+yIRzVBq0ZoQWDi1HwadSW
+ 8y/BkpF++mJAjMEAAEKAB0WIQSHqb2TP4fGBtJ29i3a6OEJdZac5QUCap0qGAAKCRDa6OEJdZac
+ 5dDhEACMyb5Iv4d/Lf5HNIYaO2/ongMxKwU9DtoDR8He4vyx+dyyOtWq5igs0gO4t6TWVn7N3qS
+ N+kaPM0RVO9UjQU1ehjtcoc2RN3QG96B4O5gwOY9vsGH2VusYm18SR4XdpjxsM1UHqVH2nBVmNj
+ 8vfspX9jl/45PN1uxQqUV6tkhzQgUK3F3fbdGW/xtfCv+3Wj9M/xEALqV8snCW2DvL1Oj1EsEtu
+ YvPpM2/+iNsZiMgz9w5nsoSC7qPPyz7parU6znDAnyWpGu9dcI4Lq8D5FzVpAozCzsWWuzn5Kxz
+ LO7VZp2pVJGR/j2nw7Puf0OfcFIzfFDq9SB1Hs4RJT4oHa1ofx1XAr8XCbnFWyf241miV5eFTvS
+ 00dzXQY/ESQM0TeelaTaAvNMizz0b9qkMtqQyL1LjzNbSzWqb9j9NVBIcJHVrC+dosLpzeqkCAe
+ tq6VKtsawDa013M7Vec33CrLSl6GttVwggr69/sfc9qJhrAQhYN1zrZl5o6Me/mcAUYuZv6UJQQ
+ B5G9MXH+eQcT8kcChp6oXT4xIcT5/GSxS2lshLhNwCp0nXT2mIlbTIzR6/MIkRPFtUM20QgsMCJ
+ PDFuaihXaJ+LdUyu1rCu1VFO9d4+I8fmGePK1c4DB2kDFDeoVs4vS2hd/N+KLCtAFaBCLPYZIbo
+ 5DdvqxJCE4N9hBA==
 X-Developer-Key: i=marcandre.lureau@redhat.com; a=openpgp;
  fpr=87A9BD933F87C606D276F62DDAE8E10975969CE5
-X-Scanned-By: MIMEDefang 3.0 on 10.30.177.17
-X-Mimecast-MFC-PROC-ID: 5sV1Z-gnrwrMHAy3VOB1BbRmdEu7YcSZflSUCMOTens_1788684169
+X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.93
+X-Mimecast-MFC-PROC-ID: cyXQsm7HAoT25lZQRkcULGoRcc0bpdJHHWOl7eo1j0s_1788684830
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=170.10.129.124;
+Received-SPF: pass client-ip=170.10.133.124;
  envelope-from=marcandre.lureau@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+X-Spam_score_int: 12
+X-Spam_score: 1.2
+X-Spam_bar: +
+X-Spam_report: (1.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=0.001, SPF_HELO_PASS=-0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ RCVD_IN_SBL_CSS=3.335, SPF_HELO_PASS=-0.001,
+ SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -117,69 +124,40 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Replace HMP with QMP equivalent.
+Hi,
+
+Along with Fabiano
+fixes (https://patchew.org/QEMU/20260903220523.2849019-1-farosas@suse.de/)
+This clears the asan-enabled tests of reports in my build configurations.
 
 Signed-off-by: Marc-André Lureau <marcandre.lureau@redhat.com>
 ---
- tests/functional/arm/test_integratorcp.py | 7 ++-----
- tests/functional/m68k/test_nextcube.py    | 5 +----
- tests/functional/mips64el/test_malta.py   | 7 ++-----
- 3 files changed, 5 insertions(+), 14 deletions(-)
+Marc-André Lureau (9):
+      tests: fix qemu:func-hexagon-linters
+      tests/test_vhost_user_bridge: skip when running ASAN
+      hw/misc/bcm2835_powermgt: free wdog timer on finalize
+      tests/launchupdate-test: correct g_auto usage
+      tests/launchupdate-test: correctly release qs
+      tests/launchupdate-test: fix fw_cfg leak
+      igvm: release found memory region on success
+      igvm: make IgvmMemoryRegion a QOM
+      hw/s390x/ipl: fix short SCSI loadparm buffer over-read
 
-diff --git a/tests/functional/arm/test_integratorcp.py b/tests/functional/arm/test_integratorcp.py
-index 23ae919359d5..fefed26266f4 100755
---- a/tests/functional/arm/test_integratorcp.py
-+++ b/tests/functional/arm/test_integratorcp.py
-@@ -72,11 +72,8 @@ def test_framebuffer_tux_logo(self):
-         self.boot_integratorcp()
-         framebuffer_ready = 'Console: switching to colour frame buffer device'
-         wait_for_console_pattern(self, framebuffer_ready)
--        self.vm.cmd('human-monitor-command', command_line='stop')
--        res = self.vm.cmd('human-monitor-command',
--                          command_line='screendump %s' % screendump_path)
--        if 'unknown command' in res:
--            self.skipTest('screendump not available')
-+        self.vm.cmd('stop')
-+        self.vm.cmd('screendump', filename=screendump_path)
- 
-         cpu_count = 1
-         match_threshold = 0.92
-diff --git a/tests/functional/m68k/test_nextcube.py b/tests/functional/m68k/test_nextcube.py
-index d917cf5424fe..dc99962eb75c 100755
---- a/tests/functional/m68k/test_nextcube.py
-+++ b/tests/functional/m68k/test_nextcube.py
-@@ -39,10 +39,7 @@ def check_bootrom_framebuffer(self, screenshot_path):
-                 break
-             time.sleep(0.1)
- 
--        res = self.vm.cmd('human-monitor-command',
--                          command_line=f"screendump {screenshot_path}")
--        if 'unknown command' in res:
--            self.skipTest('screendump not available')
-+        self.vm.cmd('screendump', filename=screenshot_path)
- 
-     @skipIfMissingImports("PIL")
-     def test_bootrom_framebuffer_size(self):
-diff --git a/tests/functional/mips64el/test_malta.py b/tests/functional/mips64el/test_malta.py
-index 163bbaf5ca36..ba966d1bf9f4 100755
---- a/tests/functional/mips64el/test_malta.py
-+++ b/tests/functional/mips64el/test_malta.py
-@@ -154,11 +154,8 @@ def do_test_i6400_framebuffer_logo(self, cpu_cores_count):
-         self.vm.launch()
-         framebuffer_ready = 'Console: switching to colour frame buffer device'
-         self.wait_for_console_pattern(framebuffer_ready)
--        self.vm.cmd('human-monitor-command', command_line='stop')
--        res = self.vm.cmd('human-monitor-command',
--                          command_line=f'screendump {screendump_path}')
--        if 'unknown command' in res:
--            self.skipTest('screendump not available')
-+        self.vm.cmd('stop')
-+        self.vm.cmd('screendump', filename=screendump_path)
- 
-         match_threshold = 0.95
-         screendump_bgr = cv2.imread(screendump_path, cv2.IMREAD_COLOR)
+ backends/igvm.c                                   | 99 ++++++++++++++---------
+ hw/misc/bcm2835_powermgt.c                        |  8 ++
+ hw/s390x/ipl.c                                    | 10 +--
+ include/system/igvm-internal.h                    |  9 ++-
+ tests/functional/hexagon/test_systests.py         |  6 +-
+ tests/functional/x86_64/test_vhost_user_bridge.py | 13 +++
+ tests/qtest/launchupdate-test.c                   | 20 ++---
+ tests/qtest/libqos/libqos.h                       |  2 +
+ 8 files changed, 104 insertions(+), 63 deletions(-)
+---
+base-commit: ff1d2d19d7e24893e2012d879f8e73077e17b9bd
+change-id: 20260906-nohmp-next-771b029cc0f2
 
--- 
-2.55.0.543.g5ebe2ebe4ea8
+Best regards,
+--  
+Marc-André Lureau <marcandre.lureau@redhat.com>
 
 

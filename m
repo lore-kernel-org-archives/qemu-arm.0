@@ -4,55 +4,55 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id ADE20C79F85
-	for <qemu-arm@archiver.kernel.org>; Sun,  6 Sep 2026 08:44:33 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6CB1FC79F99
+	for <qemu-arm@archiver.kernel.org>; Sun,  6 Sep 2026 08:44:49 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1x38Ss-00046Z-19; Sun, 06 Sep 2026 04:43:02 -0400
+	id 1x38Sk-00042D-1h; Sun, 06 Sep 2026 04:42:54 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <marcandre.lureau@redhat.com>)
- id 1x38Sp-00045B-Th
- for qemu-arm@nongnu.org; Sun, 06 Sep 2026 04:42:59 -0400
+ id 1x38Si-000415-Cg
+ for qemu-arm@nongnu.org; Sun, 06 Sep 2026 04:42:52 -0400
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <marcandre.lureau@redhat.com>)
- id 1x38Sn-00084D-TU
- for qemu-arm@nongnu.org; Sun, 06 Sep 2026 04:42:59 -0400
+ id 1x38Sg-00082r-S9
+ for qemu-arm@nongnu.org; Sun, 06 Sep 2026 04:42:52 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1788684177;
+ s=mimecast20190719; t=1788684170;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=XEbb4dhaeD+lsM0AA0lFSd4ZvixReOMLo4xWix/U3NY=;
- b=TIDgkMgUgXqEwrvbFreOWi715ay4MhcuqYxuEDAhIR6nPE8LCpgVk2Us2dbF2/rb611u6k
- jHhqRNACzPqpNZ/b8NP07RW7XyY4Mo/UkMGsJVEBti2qj0qjDU1csNGKXlkXrjIRQP0++/
- IJbMrR8wbaA6hNaGDf2oWf4KRqS4fTQ=
-Received: from mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com
+ bh=JrJhywk8/K5k8v1E3xkVd/lzm4DImmTxfdFH6qyJ30o=;
+ b=bdbIdyXdkoNOAk9OM5TEtavZK9sGeJl6QQkdubVcqFmPB2VDANtu25Z1gfUeavyVSMSBiQ
+ TjWVdsw3WN0rqG4H+q7YVGXUWn0Qb5TXg63gobx0kn/aRO7jXJ4EW4lh/NbSELCzXWg89U
+ e3+DHnf2QtjRuL4Gs8bWjvZr+t5plF4=
+Received: from mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com
  (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-629-jyHSl4O5P2-31v0Hi24leQ-1; Sun,
- 06 Sep 2026 04:42:54 -0400
-X-MC-Unique: jyHSl4O5P2-31v0Hi24leQ-1
-X-Mimecast-MFC-AGG-ID: jyHSl4O5P2-31v0Hi24leQ_1788684172
-Received: from mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com
- (mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.17])
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-577-EaVXwDFyNzysJI4hJHp2Ew-1; Sun,
+ 06 Sep 2026 04:42:46 -0400
+X-MC-Unique: EaVXwDFyNzysJI4hJHp2Ew-1
+X-Mimecast-MFC-AGG-ID: EaVXwDFyNzysJI4hJHp2Ew_1788684164
+Received: from mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com
+ (mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.111])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 7C34219541A8; Sun,  6 Sep 2026 08:42:52 +0000 (UTC)
+ by mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 5E15219540C0; Sun,  6 Sep 2026 08:42:44 +0000 (UTC)
 Received: from localhost (headnet04.pony-001.prod.iad2.dc.redhat.com
  [10.2.32.116])
- by mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id A18B41956042; Sun,  6 Sep 2026 08:42:51 +0000 (UTC)
+ by mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
+ id 60D44180034F; Sun,  6 Sep 2026 08:42:42 +0000 (UTC)
 From: =?utf-8?q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>
-Date: Sun, 06 Sep 2026 12:42:34 +0400
-Subject: [PATCH 3/9] tests/functional/s390x: use QMP for balloon
+Date: Sun, 06 Sep 2026 12:42:32 +0400
+Subject: [PATCH 1/9] tests/ahci-test: replace HMP usage with QMP
 MIME-Version: 1.0
-Message-Id: <20260906-nohmp-v1-3-daee96491c43@redhat.com>
+Message-Id: <20260906-nohmp-v1-1-daee96491c43@redhat.com>
 References: <20260906-nohmp-v1-0-daee96491c43@redhat.com>
 In-Reply-To: <20260906-nohmp-v1-0-daee96491c43@redhat.com>
 To: qemu-devel@nongnu.org
@@ -70,25 +70,25 @@ Cc: John Snow <jsnow@redhat.com>, "Denis V. Lunev" <den@openvz.org>,
  =?utf-8?q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>, 
  Glenn Miles <milesg@linux.ibm.com>, qemu-ppc@nongnu.org, 
  =?utf-8?q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>
-X-Developer-Signature: v=1; a=openpgp-sha256; l=1310;
+X-Developer-Signature: v=1; a=openpgp-sha256; l=1362;
  i=marcandre.lureau@redhat.com; h=from:subject:message-id;
- bh=2fq7U7xC1QIIAG0QCeRA3MsEDE/4ODTTnvIrI+PgNc4=;
- b=owEBbQKS/ZANAwAKAdro4Ql1lpzlAcsmYgBqnSd5T4ZD+4sh89bIl/YejIJJatjgopQJPOJtH
- YhvLgw2iRqJAjMEAAEKAB0WIQSHqb2TP4fGBtJ29i3a6OEJdZac5QUCap0neQAKCRDa6OEJdZac
- 5ay9D/4wqIrXsMC8J/zbbtFME6inLBpGo2dYBQREb2AGrQA2W0AsUPYO4HPXLfIMjmhwxBXmnWi
- pF1Sg/UZ0Y2//u7JgM2njSiP5H5vYI0N/MCHbanImS5Tenj8ORP/1dFraFqL1oJfw0FH932cOWO
- 4+IrYbm3/zrrUHuf0suM70FNFTQ/3bIiYRqaHVFHnCyi4Jk7rszO1G4MJNBqpiYY3a6ghxFuany
- rfYMxSDdvmArg8MJgnn45FwgGzFhBsTO7YwPTIW0QsOqlzRA7CoWPhkddUfbMHMM2iYHWQ5UR6o
- SEPF1rSxD9sT6XnSmynpIra7+JKAZ96DgXPH5JIEP1xPssvhBB6EBmIRvq1bXiRpSjxGU1rOKas
- VDihOL5lm/QHowoddkbBW6EwqxSqSmFrBJQARBoBFFPd3cp+jFr7o0I/TZ48VY+NUKwSsD8s3js
- Csk168cM9T1PEkV5o9vLImZ0izATAHKFxmvc/5FJ0ZN+Tq1ePw0Cg2YqK68pH0w9KWZBDh6dluO
- x6/xKaJGPjnEJ8+Du3SigELn/Q3OegCZaPy/CxbeOyxc6yw/XaaR31O5VS6xJVyx6O2t79n8YzK
- Io+igPIpXlfIRm1O/Ni0dKjyCh9gCfZLfZ84fNAc806TUrOA56oZRnvuS5AeypTbgmAhPlY5mLh
- G5qfCplvrav0t0g==
+ bh=WbTBvG9oIgUqKrxgbCJu2F2Gsj/vybEY1oWEEdcSspk=;
+ b=owEBbQKS/ZANAwAKAdro4Ql1lpzlAcsmYgBqnSd5v8D/V3ivWlmzTn39mRmZrPNyiMB+aQylZ
+ SJm3huKaCuJAjMEAAEKAB0WIQSHqb2TP4fGBtJ29i3a6OEJdZac5QUCap0neQAKCRDa6OEJdZac
+ 5cSBD/4vCgwQ/qkJL1S+O4MwQCJESLBr4CZM/Yyx8vfhEWuTMgVLWLWxinwiPIkRc6DfcFJgFDY
+ QHTWkY6dXxfm0G/WXcYGj43bub5JvFOx3/T/tCN5rIpzvRb/fSieK4dL2dD3fbvyedKyx7gNxfb
+ kATlAgQxuE/pN2txU3Jef5DecX65LdQKfeCgqLqRkpacL2yE8paDayUmiRYnK/lhXj9CZqVd35c
+ yDBdgncQKGByMXamtiNCduyVXV7aD2V/nSMuT/YApwI7XLF8FZtwLvYEHBzwZKTMYVWYn2j2K3+
+ gGU6HSHCOwF4Tat8HvBVpMP84U3cwIshfn0U6evQScvA9qL1+mhEMIrsqwVxKySp/Kju7NRa1Iu
+ IMsrU/VT3URvLuoJSil45fTA0pFFqdDLaPswhPe0jpSB/do+jwuDVbOEbCLxhoFk0Ys0x1gbc1I
+ mW4zS/eGYmk0r6pfOsFfWvS3gCOWPFdPTCFowkdP9phzXbChbqTJ0IXhDWpSxzrowo3j6PzWBI6
+ +Br4UddCxwJev5IBAQ89lRbHiKWn4pHIRtJWWVaI0qAPOIwGRyYTa/Ks0PW/RVWAKSEeenywF/3
+ TlznvyMCHbnMs1xojbE8HVPjIOY9F9BFJEUx7X1r4AeZSuwqHbrYaMMwSn6d6vDJ2QI4PsbFjNd
+ c1ik2U7uFn/5EYw==
 X-Developer-Key: i=marcandre.lureau@redhat.com; a=openpgp;
  fpr=87A9BD933F87C606D276F62DDAE8E10975969CE5
-X-Scanned-By: MIMEDefang 3.0 on 10.30.177.17
-X-Mimecast-MFC-PROC-ID: udwls-6mIXFjkC_Ozygwoddy9dCeVQHNxMI7UBbGg6s_1788684172
+X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.111
+X-Mimecast-MFC-PROC-ID: nHzS6yTZKY1KK39byXzZqki9070Qa7xmkMnQPh4sW3g_1788684164
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
@@ -117,30 +117,36 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Unit is changed from megabytes to bytes.
+Use qemu-io command instead.
 
 Signed-off-by: Marc-André Lureau <marcandre.lureau@redhat.com>
 ---
- tests/functional/s390x/test_ccw_virtio.py | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+ tests/qtest/ahci-test.c | 5 ++---
+ 1 file changed, 2 insertions(+), 3 deletions(-)
 
-diff --git a/tests/functional/s390x/test_ccw_virtio.py b/tests/functional/s390x/test_ccw_virtio.py
-index 1d4958bbe293..f816b1e201a1 100755
---- a/tests/functional/s390x/test_ccw_virtio.py
-+++ b/tests/functional/s390x/test_ccw_virtio.py
-@@ -162,10 +162,10 @@ def test_s390x_devices(self):
-         # test the virtio-balloon device
-         exec_command_and_wait_for_pattern(self, 'head -n 1 /proc/meminfo',
-                                           'MemTotal:         115640 kB')
--        self.vm.cmd('human-monitor-command', command_line='balloon 96')
-+        self.vm.cmd('balloon', value=96 * 1024 * 1024)
-         exec_command_and_wait_for_pattern(self, 'head -n 1 /proc/meminfo',
-                                           'MemTotal:          82872 kB')
--        self.vm.cmd('human-monitor-command', command_line='balloon 128')
-+        self.vm.cmd('balloon', value=128 * 1024 * 1024)
-         exec_command_and_wait_for_pattern(self, 'head -n 1 /proc/meminfo',
-                                           'MemTotal:         115640 kB')
+diff --git a/tests/qtest/ahci-test.c b/tests/qtest/ahci-test.c
+index 3406ca884fb4..eb8d23999738 100644
+--- a/tests/qtest/ahci-test.c
++++ b/tests/qtest/ahci-test.c
+@@ -1900,8 +1900,7 @@ static void test_write_engine_stop_in_flight(void)
+     ahci_io(ahci, port, CMD_WRITE_DMA, rx, AHCI_SECTOR_SIZE, 1);
  
+     /* Suspend the backend write so the first sector stays in flight. */
+-    g_free(qtest_hmp(ahci->parent->qts,
+-                     "qemu-io drive0 \"break write_aio wr\""));
++    qtest_qemu_io(ahci->parent->qts, "drive0", "break write_aio wr");
+ 
+     cmd = ahci_command_create(CMD_WRITE_PIO);
+     ahci_command_adjust(cmd, 0, ptr, bufsize, 0);
+@@ -1911,7 +1910,7 @@ static void test_write_engine_stop_in_flight(void)
+     /* Drop the command list while the write is still outstanding. */
+     ahci_px_clr(ahci, port, AHCI_PX_CMD, AHCI_PX_CMD_ST);
+ 
+-    g_free(qtest_hmp(ahci->parent->qts, "qemu-io drive0 \"resume wr\""));
++    qtest_qemu_io(ahci->parent->qts, "drive0", "resume wr");
+ 
+     /* Round-trip through the device to confirm qemu is still alive. */
+     ahci_px_rreg(ahci, port, AHCI_PX_TFD);
 
 -- 
 2.55.0.543.g5ebe2ebe4ea8

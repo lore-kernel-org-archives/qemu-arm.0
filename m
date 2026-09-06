@@ -4,59 +4,159 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 611AFC79FA0
-	for <qemu-arm@archiver.kernel.org>; Sun,  6 Sep 2026 19:48:30 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5A274C79F99
+	for <qemu-arm@archiver.kernel.org>; Sun,  6 Sep 2026 22:31:17 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1x3IoW-0003BZ-56; Sun, 06 Sep 2026 15:46:04 -0400
+	id 1x3LNt-00089k-1H; Sun, 06 Sep 2026 18:30:46 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <gilles.grimaud@univ-lille.fr>)
- id 1x3IoU-00037P-3l; Sun, 06 Sep 2026 15:46:02 -0400
-Received: from smtp-out-2.univ-lille.fr ([194.254.129.106])
+ (Exim 4.90_1) (envelope-from <brian.cain@oss.qualcomm.com>)
+ id 1x3LNo-00089D-VZ
+ for qemu-arm@nongnu.org; Sun, 06 Sep 2026 18:30:41 -0400
+Received: from mx0a-0031df01.pphosted.com ([205.220.168.131])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <gilles.grimaud@univ-lille.fr>)
- id 1x3IoR-0007Ez-2P; Sun, 06 Sep 2026 15:46:01 -0400
-Received: from smtp01.univ-lille.fr (smtp01.univ-lille.fr [194.254.129.95])
- by smtp-out-2.univ-lille.fr (Postfix) with ESMTPS id 4hdLJF0s0fz7ydV;
- Sun,  6 Sep 2026 21:44:45 +0200 (CEST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=univ-lille.fr;
- s=dkim; t=1788723885;
- bh=BTQwzySm7AQRDQat7SztWms+nUT3RVobRpI1Sz7OcZM=;
- h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=GEd3rcs+KCeBdpLtJGMfqSfi/ocEb+iQ+LA8d1Z360OuptAsmAouTys/1LbqA58UY
- 4NWaROgGG+EHNvjoIK4xBd07Mqw1qBlugMD1dpnaPfWRUgC4pVqlPj+T5w84ILcxjC
- f09PY5EwW5Xol3OkTFeZ2sZtPP31xKh2/IyF6UJvo+Rqc5w3OTigO3ccV0wM0CmKc1
- pZGCb2hfFdiJ5hr966GJLYX47xgHHLui+5JtdR+xV5dRjJOyLqcO+fc+DfcnoqMP8s
- tOHIqUOTR5r1hrEOWXttAx/Crv7JJq7de8fNtTvj/hF3UMeRdSUKfdvCF0Bv5Dhu1l
- 4lJKVOW733RSQ==
-Received: from mac.home (lfbn-lil-1-243-101.w90-45.abo.wanadoo.fr
- [90.45.87.101]) (Authenticated sender: gilles.grimaud)
- by smtp01.univ-lille.fr (Postfix) with ESMTPSA id 4hdLJD5tKYz7tc2;
- Sun,  6 Sep 2026 21:44:44 +0200 (CEST)
-From: Gilles Grimaud <gilles.grimaud@univ-lille.fr>
-To: qemu-devel@nongnu.org
-Cc: qemu-arm@nongnu.org, alex.bennee@linaro.org, peter.maydell@linaro.org,
- gilles grimaud <gilles.grimaud@univ-lille.fr>,
- Fabiano Rosas <farosas@suse.de>, Laurent Vivier <lvivier@redhat.com>,
- Paolo Bonzini <pbonzini@redhat.com>
-Subject: [PATCH v3 16/36] hw/misc: add RP2040 watchdog
-Date: Sun,  6 Sep 2026 21:44:15 +0200
-Message-ID: <20260906194438.93046-17-gilles.grimaud@univ-lille.fr>
-X-Mailer: git-send-email 2.55.0
-In-Reply-To: <20260906194438.93046-1-gilles.grimaud@univ-lille.fr>
-References: <20260906194438.93046-1-gilles.grimaud@univ-lille.fr>
+ (Exim 4.90_1) (envelope-from <brian.cain@oss.qualcomm.com>)
+ id 1x3LNn-0003yo-8i
+ for qemu-arm@nongnu.org; Sun, 06 Sep 2026 18:30:40 -0400
+Received: from pps.filterd (m0279862.ppops.net [127.0.0.1])
+ by mx0a-0031df01.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id
+ 686L9Xf31574106
+ for <qemu-arm@nongnu.org>; Sun, 6 Sep 2026 22:30:37 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qualcomm.com; h=
+ cc:content-transfer-encoding:content-type:date:from:in-reply-to
+ :message-id:mime-version:references:subject:to; s=qcppdkim1; bh=
+ T7+hjsdjeuo9ibCgRbgDRI2C873fyIJtwqFWCrkC/5Y=; b=Qi+EPKjng2JhKFCR
+ HNTputdSo6ynYMrVdgL+Ip5EN/oBsGyAuWnHYBrApBJ0FO6jhqgKOQCoyJ0VtJdV
+ GBvFie6Y9ULODrdyzObg3ybngWnBRK+kn+0HHVa7LH4sNEbmxcYGzSFEonr6Ekav
+ 13wSimX4jCE74aRV9j6mwRHjIGQBgNxQVjfxg65Dd6VRwR3k6Y85lHPuEBkEDDqu
+ TM3UGG6mGMHEn+eaSm4+PKew3WYcqaEZCyb6tkd1E2BWRIW3HxiIfpORV8nUPaZl
+ 23xdvm8x/KiMrNB+cjCbfqGzPQ7w+B/Y69M83JW7hgYNkm6ggyUNww3RIncHKfQc
+ xyvv+Q==
+Received: from mail-qk1-f199.google.com (mail-qk1-f199.google.com
+ [209.85.222.199])
+ by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 4ggbuem9ts-1
+ (version=TLSv1.3 cipher=TLS_AES_128_GCM_SHA256 bits=128 verify=NOT)
+ for <qemu-arm@nongnu.org>; Sun, 06 Sep 2026 22:30:37 +0000 (GMT)
+Received: by mail-qk1-f199.google.com with SMTP id
+ af79cd13be357-939694871aaso480083685a.2
+ for <qemu-arm@nongnu.org>; Sun, 06 Sep 2026 15:30:37 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=oss.qualcomm.com; s=google; t=1788733836; x=1789338636; darn=nongnu.org;
+ h=content-transfer-encoding:content-type:in-reply-to:from
+ :content-language:references:cc:to:subject:user-agent:mime-version
+ :date:message-id:from:to:cc:subject:date:message-id:reply-to
+ :content-type; bh=T7+hjsdjeuo9ibCgRbgDRI2C873fyIJtwqFWCrkC/5Y=;
+ b=cgtK1tnfv2jr9JtzEYDaCJzYb0LMaQpMYkGhxUt5b648bSfRXc1zwINgJcNPg2cHsy
+ i3LWbyUkxOlkt/H0T89JKIMbHd7hC1a1UWPnkSIrqv9D7GYOGf0i3QVe/Df9EaYoIt0N
+ 0PXfsxMUVjRWnnnEDSbtR5OMbDK2dJP3ytctGCz0cDh4+fVQHiTsudswkhjR9qlQ54F7
+ JmOf/s9jYJ5a6gtS/vev8lV+gxqzAlPWGrmw2eYu5SA6pUFeEBUf2ghC3VDuiak+SSKj
+ bAd5bkmu3tDc1GwTNxOq2WqiWNzyFwxFPcbn2HeJ+8KrIM5kDANqCFRY82ebxslY2z+9
+ NE1w==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20251104; t=1788733836; x=1789338636;
+ h=content-transfer-encoding:content-type:in-reply-to:from
+ :content-language:references:cc:to:subject:user-agent:mime-version
+ :date:message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+ :message-id:reply-to:content-type;
+ bh=T7+hjsdjeuo9ibCgRbgDRI2C873fyIJtwqFWCrkC/5Y=;
+ b=B7Sw1I7/RtjfkKIoCvCiV1aamQublezqzckGXFYpuj7OmTEbhPUNRe4Goljw2q8ZG8
+ ghNEwTb1MQ2gc8s7lEy6p0NT+Rffn5ZHgkLZK8Ti8UpuM2qqqW/PEwGfKdwQ5BPrXDHh
+ 2mQBOKQZ4rYKYhp+hDCq7UaRvF7NvTCa/IXqm7Jn13wHSlDucDeIjIPgUZ3/wIgsZNkV
+ MakNcYHZo1r7PcgoRkNITiNJtnlRBqr2lRxsUiyBGxwA5hmrVllZUXQugzO4HrRjmHP/
+ AyTIxABBoCRGkOe+GfbUqwv+NveY79Ibm70n2mfwgGW25CkpookE1U2Vx2N6RNT+0t4b
+ QDLQ==
+X-Forwarded-Encrypted: i=1;
+ AKwUvBwOwp3dfrUEnfDDo2NxpVbBBuZJ4pxlb2JtReYNxvJUIctse5GwuzO5H9X4VyZvYu/MRY1/2KJnAg==@nongnu.org
+X-Gm-Message-State: AFuF++lRyQh0nJyDlF891UjsY2zu/lX8WfruJ6/Sxxm+M2/kyzHGlrJH
+ HpOMzjtGfirz+W02vxob1raTKLnanhsultpJIENBebotYenGOnKelpqoTB9lrgil0r4WCUFEBXX
+ mvExGewRQ+MTS4vDgrvHIqtENVAhwQi66MO/JYNptcjURq89WS0kTT10=
+X-Gm-Gg: AYBFou3HOxS9WTUFCblK6JhalU72jAYmQ8yWurJNaT8uQ8pUAAA+a5nw42LcjCdKyDt
+ AkH90hHGzvIFSh3Sba/HULnmpy4GH0nIU3gF8JAiKmfuSGmIOaptyu54wvXNQifyKM9a4SEDRfO
+ BEEjYwul3dbi3dGHk9l7e8BG0sCCx8NDe8+VacVC2S3lCvh9FhyuElv5pNcXfS8oZacKZgwBpqU
+ 3c4Dr/9eO3tEhValN+aYiRCR4NVJ1ycfXT64jQgNTW5kKhfgBPvQoLbN3iTU8X/Ul8g6ngYRhIC
+ vkpEgUoNfg3ZWk4GJ754NM4DujW6uF6xOLnmcSe3mMtF1hkypUdoH1OlRwUeDkhi4NsLGBDJoG1
+ CVHBZx1fYbjlpvDn2qo4mCK/cHyN241WRrTBa26RzPMYAL3ILoyYsjkYENhfKoK7wMMlOdKG5wc
+ 1PyzG+
+X-Received: by 2002:a05:620a:7087:b0:939:7f87:ff22 with SMTP id
+ af79cd13be357-9398045fd75mr2008458585a.36.1788733836433; 
+ Sun, 06 Sep 2026 15:30:36 -0700 (PDT)
+X-Received: by 2002:a05:620a:7087:b0:939:7f87:ff22 with SMTP id
+ af79cd13be357-9398045fd75mr2008452285a.36.1788733835953; 
+ Sun, 06 Sep 2026 15:30:35 -0700 (PDT)
+Received: from [192.168.1.199] (104-54-226-75.lightspeed.austtx.sbcglobal.net.
+ [104.54.226.75]) by smtp.gmail.com with ESMTPSA id
+ af79cd13be357-9397fba2c3esm734805085a.36.2026.09.06.15.30.32
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Sun, 06 Sep 2026 15:30:34 -0700 (PDT)
+Message-ID: <75b264fc-779a-4ad7-a8a3-8b5c2a1312f9@oss.qualcomm.com>
+Date: Sun, 6 Sep 2026 17:30:31 -0500
 MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 1/9] tests: fix qemu:func-hexagon-linters
+To: =?UTF-8?Q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>,
+ qemu-devel@nongnu.org
+Cc: Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>,
+ "Michael S. Tsirkin" <mst@redhat.com>,
+ Stefano Garzarella <sgarzare@redhat.com>, Paolo Bonzini
+ <pbonzini@redhat.com>, Zhao Liu <zhao1.liu@intel.com>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@oss.qualcomm.com>,
+ qemu-arm@nongnu.org, Ani Sinha <anisinha@redhat.com>,
+ Gerd Hoffman <kraxel@redhat.com>, Fabiano Rosas <farosas@suse.de>,
+ Laurent Vivier <lvivier@redhat.com>,
+ Jared Rossi <jrossi@linux.ibm.com>, Zhuoying Cai <zycai@linux.ibm.com>,
+ Christian Borntraeger <borntraeger@linux.ibm.com>,
+ Jason Herne <jjherne@linux.ibm.com>,
+ Richard Henderson <richard.henderson@linaro.org>,
+ Ilya Leoshkevich <iii@linux.ibm.com>, David Hildenbrand <david@kernel.org>,
+ Halil Pasic <pasic@linux.ibm.com>, Eric Farman <farman@linux.ibm.com>,
+ Matthew Rosato <mjrosato@linux.ibm.com>,
+ Cornelia Huck <cohuck@redhat.com>, qemu-s390x@nongnu.org
+References: <20260906-nohmp-next-v1-0-2b21e63974f3@redhat.com>
+ <20260906-nohmp-next-v1-1-2b21e63974f3@redhat.com>
+Content-Language: en-US
+From: Brian Cain <brian.cain@oss.qualcomm.com>
+In-Reply-To: <20260906-nohmp-next-v1-1-2b21e63974f3@redhat.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=194.254.129.106;
- envelope-from=gilles.grimaud@univ-lille.fr; helo=smtp-out-2.univ-lille.fr
-X-Spam_score_int: -43
-X-Spam_score: -4.4
-X-Spam_bar: ----
-X-Spam_report: (-4.4 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwOTA2MDI1MiBTYWx0ZWRfX7O4+A+lfBhM3
+ mAkw7N4R2mcZgNyqxXKS8ZtMJUrn3QRGa2jgSkUyA5Rsd1yb3zwsfTxotQentGdT2SXP0Dw84Q4
+ Q1N0gD2yKiIolRq/koLRX4cWNu0+m5p7tTiC1XNBHraLi+I7xfsXdlvLIUFwWKrwgnW0HO+RvJI
+ NdG53vUrtCGnuq5Emt7JvB7zhJyndr3OhvYwzut/2fX9wOEye+6AuhR6/GGDl5++8hZqryn7Q3k
+ s149eeitBkaH5ys+fyi8L2hJ+6k7jfzGujZquB1kvo7+VTRGyJaD0X97RstlTnEhCPVw0mePsmz
+ 1dN+wAyJPbxieJDTvhagKnlfgV6Qd8EsF/y57zvpu6bRCnef9qrkx6bQNixQR4RYMUGeKJTm9eb
+ xJQ1q3LViQIVigdleMXSCsls7DyDv3h+O80nNyN65GXC4W/HNi86L1p6dgLqZldg0Hm4MQovhFm
+ FeAcTdWGNaRhC6akbKA==
+X-Authority-Analysis: v=2.4 cv=P8AKQCAu c=1 sm=1 tr=0 ts=6a9de98d cx=c_pps
+ a=HLyN3IcIa5EE8TELMZ618Q==:117 a=x6rl1zRT+JsLSO7OGbGBKQ==:17
+ a=IkcTkHD0fZMA:10 a=VdqzKS8jKosA:10 a=s4-Qcg_JpJYA:10
+ a=VkNPw1HP01LnGYTKEx00:22 a=u7WPNUs3qKkmUXheDGA7:22 a=_K5XuSEh1TEqbUxoQ0s3:22
+ a=20KFwNOVAAAA:8 a=EUspDBNiAAAA:8 a=L-hIhnrybQUmc0PeswwA:9 a=3ZKOabzyN94A:10
+ a=QEXdDO2ut3YA:10 a=bTQJ7kPSJx9SKPbeHEYW:22
+X-Proofpoint-GUID: A5LQiNh-WVC5tVgjldd9C1C_PVijj-rC
+X-Proofpoint-ORIG-GUID: A5LQiNh-WVC5tVgjldd9C1C_PVijj-rC
+X-Proofpoint-Spam-Info: AW1haW4tMjYwOTA2MDI1MiBTYWx0ZWRfXyTNdCpG3JHuC
+ hVK0Zaqy1iqxD/Ql280jp/gRqRhNzBm3cKjLxjByLcvKKIOnI/MrdS9Bl/ITWT0DfUOp40E/57Q
+ g3yP27hz78p6pZMMwEHADLhDSG5GPY8=
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.293,Aquarius:18.0.1176,Hydra:6.1.134,FMLib:17.12.100.49
+ definitions=2026-09-06_03,2026-09-03_01,2025-10-01_01
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
+ phishscore=0 impostorscore=0 bulkscore=0 clxscore=1015 adultscore=0
+ spamscore=0 lowpriorityscore=0 suspectscore=0 priorityscore=1501
+ malwarescore=0 classifier=typeunknown authscore=0 authtc= authcc=
+ route=outbound adjust=0 reason=mlx scancount=1 engine=8.22.0-2606150000
+ definitions=main-2609060252
+Received-SPF: pass client-ip=205.220.168.131;
+ envelope-from=brian.cain@oss.qualcomm.com; helo=mx0a-0031df01.pphosted.com
+X-Spam_score_int: -27
+X-Spam_score: -2.8
+X-Spam_bar: --
+X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_MED=-2.3, SPF_HELO_NONE=0.001,
+ RCVD_IN_DNSWL_LOW=-0.7, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -73,688 +173,49 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Model the RP2040 watchdog control, load, reason, scratch and tick
-registers. Drive the counter from clk_ref with the RP2040-E1 twice-per-tick
-behavior and use QEMU's standard watchdog action for timer expiry and
-forced resets. Add qtests for reset state, sub-word scratch accesses, timer
-expiry and forced triggering.
 
-Signed-off-by: gilles grimaud <gilles.grimaud@univ-lille.fr>
----
- hw/arm/rp2040.c                    |  11 +-
- hw/misc/meson.build                |   5 +-
- hw/misc/rp2040_watchdog.c          | 349 +++++++++++++++++++++++++++++
- include/hw/arm/rp2040.h            |   2 +
- include/hw/misc/rp2040_watchdog.h  |  36 +++
- tests/qtest/meson.build            |   3 +-
- tests/qtest/rp2040-watchdog-test.c | 170 ++++++++++++++
- 7 files changed, 573 insertions(+), 3 deletions(-)
- create mode 100644 hw/misc/rp2040_watchdog.c
- create mode 100644 include/hw/misc/rp2040_watchdog.h
- create mode 100644 tests/qtest/rp2040-watchdog-test.c
+On 9/6/2026 3:53 AM, Marc-André Lureau wrote:
+> Fix pylint W1514: unspecified-encoding
+>
+> Signed-off-by: Marc-André Lureau <marcandre.lureau@redhat.com>
+> ---
 
-diff --git a/hw/arm/rp2040.c b/hw/arm/rp2040.c
-index fa28859309..140c73ae78 100644
---- a/hw/arm/rp2040.c
-+++ b/hw/arm/rp2040.c
-@@ -62,7 +62,6 @@ static const struct {
-     { "rp2040.adc",      0x4004c000, 0x4000 },
-     { "rp2040.pwm",      0x40050000, 0x4000 },
-     { "rp2040.timer",    0x40054000, 0x4000 },
--    { "rp2040.watchdog", 0x40058000, 0x4000 },
-     { "rp2040.rtc",      0x4005c000, 0x4000 },
-     { "rp2040.dma",      0x50000000, 0x1000 },
-     { "rp2040.usbctrl_dpram", 0x50100000, 0x10000 },
-@@ -153,6 +152,8 @@ static void rp2040_soc_init(Object *obj)
-     object_initialize_child(obj, "rosc", &s->rosc, TYPE_RP2040_ROSC);
-     object_initialize_child(obj, "tbman", &s->tbman, TYPE_RP2040_TBMAN);
-     object_initialize_child(obj, "vreg", &s->vreg, TYPE_RP2040_VREG);
-+    object_initialize_child(obj, "watchdog", &s->watchdog,
-+                            TYPE_RP2040_WATCHDOG);
-     object_initialize_child(obj, "xosc", &s->xosc, TYPE_RP2040_XOSC);
- 
-     s->irq = qemu_allocate_irqs(rp2040_set_irq, s, RP2040_NUM_IRQS);
-@@ -332,6 +333,14 @@ static void rp2040_soc_realize(DeviceState *dev, Error **errp)
-     }
-     sysbus_mmio_map(SYS_BUS_DEVICE(&s->vreg), 0, RP2040_VREG_BASE);
- 
-+    qdev_connect_clock_in(DEVICE(&s->watchdog), "clk-ref",
-+                          qdev_get_clock_out(DEVICE(&s->clocks), "clk-ref"));
-+    if (!sysbus_realize(SYS_BUS_DEVICE(&s->watchdog), errp)) {
-+        return;
-+    }
-+    sysbus_mmio_map(SYS_BUS_DEVICE(&s->watchdog), 0,
-+                    RP2040_WATCHDOG_BASE);
-+
-     if (!sysbus_realize(SYS_BUS_DEVICE(&s->xosc), errp)) {
-         return;
-     }
-diff --git a/hw/misc/meson.build b/hw/misc/meson.build
-index c04e2ffe22..e03f45d667 100644
---- a/hw/misc/meson.build
-+++ b/hw/misc/meson.build
-@@ -104,9 +104,12 @@ system_ss.add(when: 'CONFIG_RP2040', if_true: files('rp2040_psm.c'))
- system_ss.add(when: 'CONFIG_RP2040', if_true: files('rp2040_resets.c'))
- system_ss.add(when: 'CONFIG_RP2040', if_true: files('rp2040_rosc.c'))
- system_ss.add(when: 'CONFIG_RP2040', if_true: files('rp2040_syscfg.c'))
--system_ss.add(when: 'CONFIG_RP2040', if_true: files('rp2040_sysinfo.c'))
-+system_ss.add(when: 'CONFIG_RP2040',
-+              if_true: files('rp2040_sysinfo.c'))
- system_ss.add(when: 'CONFIG_RP2040', if_true: files('rp2040_tbman.c'))
- system_ss.add(when: 'CONFIG_RP2040', if_true: files('rp2040_vreg.c'))
-+system_ss.add(when: 'CONFIG_RP2040',
-+              if_true: files('rp2040_watchdog.c'))
- system_ss.add(when: 'CONFIG_RP2040', if_true: files('rp2040_xosc.c'))
- system_ss.add(when: 'CONFIG_SLAVIO', if_true: files('slavio_misc.c'))
- system_ss.add(when: 'CONFIG_ZYNQ', if_true: files('zynq_slcr.c'))
-diff --git a/hw/misc/rp2040_watchdog.c b/hw/misc/rp2040_watchdog.c
-new file mode 100644
-index 0000000000..b15e30a285
---- /dev/null
-+++ b/hw/misc/rp2040_watchdog.c
-@@ -0,0 +1,349 @@
-+/*
-+ * RP2040 watchdog emulation
-+ *
-+ * SPDX-License-Identifier: GPL-2.0-or-later
-+ */
-+
-+#include "qemu/osdep.h"
-+#include "hw/core/qdev-clock.h"
-+#include "hw/misc/rp2040_watchdog.h"
-+#include "hw/misc/rp2040.h"
-+#include "migration/vmstate.h"
-+#include "qapi/error.h"
-+#include "qemu/log.h"
-+#include "qemu/module.h"
-+#include "qemu/timer.h"
-+#include "system/watchdog.h"
-+
-+#define WATCHDOG_CTRL       0x00
-+#define WATCHDOG_LOAD       0x04
-+#define WATCHDOG_REASON     0x08
-+#define WATCHDOG_SCRATCH0   0x0c
-+#define WATCHDOG_SCRATCH7   0x28
-+#define WATCHDOG_TICK       0x2c
-+
-+#define WATCHDOG_CTRL_TRIGGER   BIT(31)
-+#define WATCHDOG_CTRL_ENABLE    BIT(30)
-+#define WATCHDOG_CTRL_PAUSE_DBG1 BIT(26)
-+#define WATCHDOG_CTRL_PAUSE_DBG0 BIT(25)
-+#define WATCHDOG_CTRL_PAUSE_JTAG BIT(24)
-+#define WATCHDOG_CTRL_PAUSE_MASK \
-+    (WATCHDOG_CTRL_PAUSE_DBG1 | WATCHDOG_CTRL_PAUSE_DBG0 | \
-+     WATCHDOG_CTRL_PAUSE_JTAG)
-+#define WATCHDOG_CTRL_TIME_MASK 0x00ffffff
-+#define WATCHDOG_CTRL_RW_MASK \
-+    (WATCHDOG_CTRL_ENABLE | WATCHDOG_CTRL_PAUSE_MASK)
-+
-+#define WATCHDOG_LOAD_MASK  0x00ffffff
-+#define WATCHDOG_REASON_FORCE   BIT(1)
-+#define WATCHDOG_REASON_TIMER   BIT(0)
-+
-+#define WATCHDOG_TICK_ENABLE    BIT(9)
-+#define WATCHDOG_TICK_RUNNING   BIT(10)
-+#define WATCHDOG_TICK_CYCLES_MASK 0x000001ff
-+#define WATCHDOG_TICK_RW_MASK \
-+    (WATCHDOG_TICK_ENABLE | WATCHDOG_TICK_CYCLES_MASK)
-+#define WATCHDOG_TICK_COUNT_SHIFT 11
-+
-+static uint32_t rp2040_watchdog_expand_write(uint32_t value, unsigned size)
-+{
-+    switch (size) {
-+    case 1:
-+        return value * 0x01010101u;
-+    case 2:
-+        return (value & 0xffffu) * 0x00010001u;
-+    default:
-+        return value;
-+    }
-+}
-+
-+static bool rp2040_watchdog_scratch_offset(hwaddr offset, unsigned *index)
-+{
-+    if (offset < WATCHDOG_SCRATCH0 || offset > WATCHDOG_SCRATCH7) {
-+        return false;
-+    }
-+
-+    *index = (offset - WATCHDOG_SCRATCH0) / sizeof(uint32_t);
-+    return true;
-+}
-+
-+static bool rp2040_watchdog_tick_running(RP2040WatchdogState *s)
-+{
-+    return (s->tick & WATCHDOG_TICK_ENABLE) &&
-+           (s->tick & WATCHDOG_TICK_CYCLES_MASK) &&
-+           clock_get_hz(s->clk_ref);
-+}
-+
-+static uint32_t rp2040_watchdog_tick_freq_hz(RP2040WatchdogState *s)
-+{
-+    uint64_t clk_ref_hz = clock_get_hz(s->clk_ref);
-+    uint32_t cycles = s->tick & WATCHDOG_TICK_CYCLES_MASK;
-+
-+    if (!cycles || !clk_ref_hz || !(s->tick & WATCHDOG_TICK_ENABLE)) {
-+        return 0;
-+    }
-+
-+    return MIN(UINT32_MAX, (uint32_t)(clk_ref_hz / cycles));
-+}
-+
-+static uint32_t rp2040_watchdog_tick_read(RP2040WatchdogState *s)
-+{
-+    uint32_t value = s->tick & WATCHDOG_TICK_RW_MASK;
-+
-+    if (rp2040_watchdog_tick_running(s)) {
-+        /*
-+         * The precise divider phase is not observable by current firmware
-+         * tests. Report a stable running state and a valid non-zero count.
-+         */
-+        value |= WATCHDOG_TICK_RUNNING;
-+        value |= (s->tick & WATCHDOG_TICK_CYCLES_MASK) <<
-+                 WATCHDOG_TICK_COUNT_SHIFT;
-+    }
-+
-+    return value;
-+}
-+
-+static void rp2040_watchdog_update(RP2040WatchdogState *s)
-+{
-+    uint32_t tick_hz = rp2040_watchdog_tick_freq_hz(s);
-+    uint64_t watchdog_hz = (uint64_t)tick_hz * 2;
-+
-+    ptimer_transaction_begin(s->timer);
-+    if (!tick_hz) {
-+        ptimer_stop(s->timer);
-+    } else {
-+        /*
-+         * RP2040-E1: the watchdog counter decrements twice per watchdog
-+         * tick, so a LOAD of N expires after N / 2 generated ticks.
-+         */
-+        ptimer_set_freq(s->timer, MIN(watchdog_hz, (uint64_t)UINT32_MAX));
-+        if (s->ctrl & WATCHDOG_CTRL_ENABLE) {
-+            ptimer_run(s->timer, 1);
-+        } else {
-+            ptimer_stop(s->timer);
-+        }
-+    }
-+    ptimer_transaction_commit(s->timer);
-+}
-+
-+static uint32_t rp2040_watchdog_ctrl_read(RP2040WatchdogState *s)
-+{
-+    uint32_t time = MIN(ptimer_get_count(s->timer), WATCHDOG_CTRL_TIME_MASK);
-+
-+    return (s->ctrl & WATCHDOG_CTRL_RW_MASK) | time;
-+}
-+
-+static void rp2040_watchdog_reset_request(RP2040WatchdogState *s,
-+                                          uint32_t reason,
-+                                          bool in_ptimer_transaction)
-+{
-+    s->reason = reason;
-+    s->preserve_reason_on_reset =
-+        get_watchdog_action() == WATCHDOG_ACTION_RESET;
-+    if (!in_ptimer_transaction) {
-+        ptimer_transaction_begin(s->timer);
-+    }
-+    ptimer_stop(s->timer);
-+    if (!in_ptimer_transaction) {
-+        ptimer_transaction_commit(s->timer);
-+    }
-+    watchdog_perform_action();
-+}
-+
-+static uint64_t rp2040_watchdog_read(void *opaque, hwaddr addr, unsigned size)
-+{
-+    RP2040WatchdogState *s = opaque;
-+    hwaddr offset = addr & 0xfff;
-+    hwaddr word_offset = offset & ~3ULL;
-+    unsigned scratch;
-+    uint64_t value;
-+
-+    switch (word_offset) {
-+    case WATCHDOG_CTRL:
-+        value = rp2040_watchdog_ctrl_read(s);
-+        break;
-+    case WATCHDOG_LOAD:
-+        value = 0;
-+        break;
-+    case WATCHDOG_REASON:
-+        value = s->reason;
-+        break;
-+    case WATCHDOG_TICK:
-+        value = rp2040_watchdog_tick_read(s);
-+        break;
-+    default:
-+        if (rp2040_watchdog_scratch_offset(word_offset, &scratch)) {
-+            value = s->scratch[scratch];
-+        } else {
-+            value = 0;
-+            qemu_log_mask(LOG_UNIMP,
-+                      "%s: unimplemented read at offset 0x%"
-+                      HWADDR_PRIx "\n", __func__, addr & 0xfff);
-+        }
-+        break;
-+    }
-+
-+    return extract64(value, (offset & 3) * 8, size * 8);
-+}
-+
-+static void rp2040_watchdog_write(void *opaque, hwaddr addr,
-+                                  uint64_t value64, unsigned size)
-+{
-+    RP2040WatchdogState *s = opaque;
-+    hwaddr alias = addr & RP2040_ATOMIC_ALIAS_MASK;
-+    hwaddr offset = addr & 0xfff;
-+    hwaddr word_offset = offset & ~3ULL;
-+    unsigned scratch;
-+    uint32_t value = rp2040_watchdog_expand_write(value64, size);
-+
-+    switch (word_offset) {
-+    case WATCHDOG_CTRL: {
-+        uint32_t old = rp2040_watchdog_ctrl_read(s);
-+        uint32_t newval = rp2040_atomic_update(old, value, alias);
-+
-+        s->ctrl = newval & WATCHDOG_CTRL_RW_MASK;
-+        rp2040_watchdog_update(s);
-+        if (newval & WATCHDOG_CTRL_TRIGGER) {
-+            rp2040_watchdog_reset_request(s, WATCHDOG_REASON_FORCE, false);
-+        }
-+        break;
-+    }
-+    case WATCHDOG_LOAD:
-+        s->load = rp2040_atomic_update(s->load, value, alias) &
-+                  WATCHDOG_LOAD_MASK;
-+        ptimer_transaction_begin(s->timer);
-+        ptimer_set_limit(s->timer, s->load, 1);
-+        ptimer_transaction_commit(s->timer);
-+        rp2040_watchdog_update(s);
-+        break;
-+    case WATCHDOG_REASON:
-+        break;
-+    case WATCHDOG_TICK:
-+        s->tick = rp2040_atomic_update(s->tick, value, alias) &
-+                  WATCHDOG_TICK_RW_MASK;
-+        rp2040_watchdog_update(s);
-+        break;
-+    default:
-+        if (rp2040_watchdog_scratch_offset(word_offset, &scratch)) {
-+            s->scratch[scratch] =
-+                rp2040_atomic_update(s->scratch[scratch], value,
-+                                            alias);
-+        } else {
-+            qemu_log_mask(LOG_UNIMP,
-+                      "%s: unimplemented write at offset 0x%"
-+                      HWADDR_PRIx "\n", __func__, addr & 0xfff);
-+        }
-+        break;
-+    }
-+}
-+
-+static const MemoryRegionOps rp2040_watchdog_ops = {
-+    .read = rp2040_watchdog_read,
-+    .write = rp2040_watchdog_write,
-+    .endianness = DEVICE_LITTLE_ENDIAN,
-+    .valid = {
-+        .min_access_size = 1,
-+        .max_access_size = 4,
-+        .unaligned = false,
-+    },
-+};
-+
-+static void rp2040_watchdog_reset(DeviceState *dev)
-+{
-+    RP2040WatchdogState *s = RP2040_WATCHDOG(dev);
-+
-+    if (s->preserve_reason_on_reset) {
-+        s->preserve_reason_on_reset = false;
-+    } else {
-+        s->reason = 0;
-+    }
-+    s->ctrl = WATCHDOG_CTRL_PAUSE_MASK;
-+    s->load = 0;
-+    s->tick = WATCHDOG_TICK_ENABLE;
-+
-+    ptimer_transaction_begin(s->timer);
-+    ptimer_stop(s->timer);
-+    ptimer_set_limit(s->timer, 0, 1);
-+    ptimer_transaction_commit(s->timer);
-+}
-+
-+static void rp2040_watchdog_clk_ref_update(void *opaque, ClockEvent event)
-+{
-+    rp2040_watchdog_update(opaque);
-+}
-+
-+static void rp2040_watchdog_tick(void *opaque)
-+{
-+    RP2040WatchdogState *s = RP2040_WATCHDOG(opaque);
-+
-+    rp2040_watchdog_reset_request(s, WATCHDOG_REASON_TIMER, true);
-+}
-+
-+static void rp2040_watchdog_init(Object *obj)
-+{
-+    RP2040WatchdogState *s = RP2040_WATCHDOG(obj);
-+    DeviceState *dev = DEVICE(obj);
-+
-+    s->clk_ref = qdev_init_clock_in(dev, "clk-ref",
-+                                    rp2040_watchdog_clk_ref_update, s,
-+                                    ClockUpdate);
-+    memory_region_init_io(&s->iomem, obj, &rp2040_watchdog_ops, s,
-+                          "rp2040.watchdog", RP2040_WATCHDOG_SIZE);
-+    sysbus_init_mmio(SYS_BUS_DEVICE(obj), &s->iomem);
-+}
-+
-+static void rp2040_watchdog_realize(DeviceState *dev, Error **errp)
-+{
-+    RP2040WatchdogState *s = RP2040_WATCHDOG(dev);
-+
-+    if (!clock_has_source(s->clk_ref)) {
-+        error_setg(errp, "RP2040 watchdog: clk-ref clock must be connected");
-+        return;
-+    }
-+
-+    s->timer = ptimer_init(rp2040_watchdog_tick, s,
-+                           PTIMER_POLICY_WRAP_AFTER_ONE_PERIOD |
-+                           PTIMER_POLICY_TRIGGER_ONLY_ON_DECREMENT |
-+                           PTIMER_POLICY_NO_IMMEDIATE_RELOAD |
-+                           PTIMER_POLICY_NO_COUNTER_ROUND_DOWN);
-+}
-+
-+static const VMStateDescription rp2040_watchdog_vmstate = {
-+    .name = TYPE_RP2040_WATCHDOG,
-+    .version_id = 1,
-+    .minimum_version_id = 1,
-+    .fields = (const VMStateField[]) {
-+        VMSTATE_CLOCK(clk_ref, RP2040WatchdogState),
-+        VMSTATE_PTIMER(timer, RP2040WatchdogState),
-+        VMSTATE_UINT32(ctrl, RP2040WatchdogState),
-+        VMSTATE_UINT32(load, RP2040WatchdogState),
-+        VMSTATE_UINT32(reason, RP2040WatchdogState),
-+        VMSTATE_BOOL(preserve_reason_on_reset, RP2040WatchdogState),
-+        VMSTATE_UINT32_ARRAY(scratch, RP2040WatchdogState, 8),
-+        VMSTATE_UINT32(tick, RP2040WatchdogState),
-+        VMSTATE_END_OF_LIST()
-+    }
-+};
-+
-+static void rp2040_watchdog_class_init(ObjectClass *klass, const void *data)
-+{
-+    DeviceClass *dc = DEVICE_CLASS(klass);
-+
-+    dc->realize = rp2040_watchdog_realize;
-+    device_class_set_legacy_reset(dc, rp2040_watchdog_reset);
-+    dc->vmsd = &rp2040_watchdog_vmstate;
-+}
-+
-+static const TypeInfo rp2040_watchdog_info = {
-+    .name          = TYPE_RP2040_WATCHDOG,
-+    .parent        = TYPE_SYS_BUS_DEVICE,
-+    .instance_size = sizeof(RP2040WatchdogState),
-+    .instance_init = rp2040_watchdog_init,
-+    .class_init    = rp2040_watchdog_class_init,
-+};
-+
-+static void rp2040_watchdog_register_types(void)
-+{
-+    type_register_static(&rp2040_watchdog_info);
-+}
-+type_init(rp2040_watchdog_register_types)
-diff --git a/include/hw/arm/rp2040.h b/include/hw/arm/rp2040.h
-index 1c69ce089b..c3c6419613 100644
---- a/include/hw/arm/rp2040.h
-+++ b/include/hw/arm/rp2040.h
-@@ -22,6 +22,7 @@
- #include "hw/misc/rp2040_syscfg.h"
- #include "hw/misc/rp2040_tbman.h"
- #include "hw/misc/rp2040_vreg.h"
-+#include "hw/misc/rp2040_watchdog.h"
- #include "hw/misc/rp2040_xosc.h"
- #include "qom/object.h"
- 
-@@ -55,6 +56,7 @@ struct RP2040State {
-     RP2040RoscState rosc;
-     RP2040TbmanState tbman;
-     RP2040VregState vreg;
-+    RP2040WatchdogState watchdog;
-     RP2040XoscState xosc;
- 
-     MemoryRegion *board_memory;
-diff --git a/include/hw/misc/rp2040_watchdog.h b/include/hw/misc/rp2040_watchdog.h
-new file mode 100644
-index 0000000000..9c3cb375e6
---- /dev/null
-+++ b/include/hw/misc/rp2040_watchdog.h
-@@ -0,0 +1,36 @@
-+/*
-+ * RP2040 watchdog emulation
-+ *
-+ * SPDX-License-Identifier: GPL-2.0-or-later
-+ */
-+
-+#ifndef HW_MISC_RP2040_WATCHDOG_H
-+#define HW_MISC_RP2040_WATCHDOG_H
-+
-+#include "hw/core/clock.h"
-+#include "hw/core/ptimer.h"
-+#include "hw/core/sysbus.h"
-+#include "qom/object.h"
-+
-+#define TYPE_RP2040_WATCHDOG "rp2040-watchdog"
-+OBJECT_DECLARE_SIMPLE_TYPE(RP2040WatchdogState, RP2040_WATCHDOG)
-+
-+#define RP2040_WATCHDOG_BASE 0x40058000
-+#define RP2040_WATCHDOG_SIZE 0x4000
-+
-+struct RP2040WatchdogState {
-+    SysBusDevice parent_obj;
-+
-+    MemoryRegion iomem;
-+    Clock *clk_ref;
-+    ptimer_state *timer;
-+
-+    uint32_t ctrl;
-+    uint32_t load;
-+    uint32_t reason;
-+    bool preserve_reason_on_reset;
-+    uint32_t scratch[8];
-+    uint32_t tick;
-+};
-+
-+#endif
-diff --git a/tests/qtest/meson.build b/tests/qtest/meson.build
-index 23cc9f2503..18120f17bf 100644
---- a/tests/qtest/meson.build
-+++ b/tests/qtest/meson.build
-@@ -269,7 +269,8 @@ qtests_arm = \
-      'rp2040-resets-test',
-      'rp2040-rosc-test',
-     'rp2040-tbman-test',
--    'rp2040-vreg-test'] : []) + \
-+    'rp2040-vreg-test',
-+    'rp2040-watchdog-test'] : []) + \
-   (config_all_devices.has_key('CONFIG_STM32L4X5_SOC') ? qtests_stm32l4x5 : []) + \
-   (config_all_devices.has_key('CONFIG_FSI_APB2OPB_ASPEED') ? ['aspeed_fsi-test'] : []) + \
-   (config_all_devices.has_key('CONFIG_CAN_FLEXCAN') ? ['flexcan-test'] : []) + \
-diff --git a/tests/qtest/rp2040-watchdog-test.c b/tests/qtest/rp2040-watchdog-test.c
-new file mode 100644
-index 0000000000..ef54631897
---- /dev/null
-+++ b/tests/qtest/rp2040-watchdog-test.c
-@@ -0,0 +1,170 @@
-+/*
-+ * QTest testcase for the RP2040 watchdog.
-+ *
-+ * SPDX-License-Identifier: GPL-2.0-or-later
-+ */
-+
-+#include "qemu/osdep.h"
-+#include "libqtest.h"
-+#include "qemu/bitops.h"
-+#include "qemu/timer.h"
-+#include "qobject/qdict.h"
-+
-+#define WATCHDOG_BASE       0x40058000
-+#define WATCHDOG_CTRL       0x00
-+#define WATCHDOG_LOAD       0x04
-+#define WATCHDOG_REASON     0x08
-+#define WATCHDOG_SCRATCH0   0x0c
-+#define WATCHDOG_TICK       0x2c
-+
-+#define CTRL_TRIGGER        BIT(31)
-+#define CTRL_ENABLE         BIT(30)
-+#define CTRL_PAUSE_DBG1     BIT(26)
-+#define CTRL_PAUSE_DBG0     BIT(25)
-+#define CTRL_PAUSE_JTAG     BIT(24)
-+#define CTRL_TIME_MASK      0x00ffffff
-+
-+#define REASON_FORCE        BIT(1)
-+#define REASON_TIMER        BIT(0)
-+
-+#define TICK_RUNNING        BIT(10)
-+#define TICK_ENABLE         BIT(9)
-+
-+#define NS_PER_US           1000
-+
-+static QTestState *rp2040_watchdog_start(void)
-+{
-+    return qtest_init("-machine raspi-pico -watchdog-action none");
-+}
-+
-+static void check_watchdog_event(QTestState *qts)
-+{
-+    QDict *event = qtest_qmp_eventwait_ref(qts, "WATCHDOG");
-+    QDict *data = qdict_get_qdict(event, "data");
-+
-+    g_assert_cmpstr(qdict_get_str(data, "action"), ==, "none");
-+    qobject_unref(event);
-+}
-+
-+static void test_reset_values(void)
-+{
-+    QTestState *qts = rp2040_watchdog_start();
-+
-+    g_assert_cmphex(qtest_readl(qts, WATCHDOG_BASE + WATCHDOG_CTRL), ==,
-+                    CTRL_PAUSE_DBG1 | CTRL_PAUSE_DBG0 | CTRL_PAUSE_JTAG);
-+    g_assert_cmphex(qtest_readl(qts, WATCHDOG_BASE + WATCHDOG_LOAD), ==, 0);
-+    g_assert_cmphex(qtest_readl(qts, WATCHDOG_BASE + WATCHDOG_REASON), ==, 0);
-+    g_assert_cmphex(qtest_readl(qts, WATCHDOG_BASE + WATCHDOG_TICK), ==,
-+                    TICK_ENABLE);
-+
-+    qtest_quit(qts);
-+}
-+
-+static void test_scratch_registers(void)
-+{
-+    QTestState *qts = rp2040_watchdog_start();
-+
-+    qtest_writel(qts, WATCHDOG_BASE + WATCHDOG_SCRATCH0, 0x12345678);
-+    g_assert_cmphex(qtest_readl(qts, WATCHDOG_BASE + WATCHDOG_SCRATCH0), ==,
-+                    0x12345678);
-+
-+    g_assert_cmphex(qtest_readb(qts, WATCHDOG_BASE + WATCHDOG_SCRATCH0), ==,
-+                    0x78);
-+    g_assert_cmphex(qtest_readb(qts, WATCHDOG_BASE + WATCHDOG_SCRATCH0 + 1),
-+                    ==, 0x56);
-+    g_assert_cmphex(qtest_readb(qts, WATCHDOG_BASE + WATCHDOG_SCRATCH0 + 2),
-+                    ==, 0x34);
-+    g_assert_cmphex(qtest_readb(qts, WATCHDOG_BASE + WATCHDOG_SCRATCH0 + 3),
-+                    ==, 0x12);
-+
-+    qtest_writeb(qts, WATCHDOG_BASE + WATCHDOG_SCRATCH0, 0xa5);
-+    g_assert_cmphex(qtest_readl(qts, WATCHDOG_BASE + WATCHDOG_SCRATCH0), ==,
-+                    0xa5a5a5a5);
-+
-+    qtest_writeb(qts, WATCHDOG_BASE + WATCHDOG_SCRATCH0 + 1, 0x3c);
-+    g_assert_cmphex(qtest_readl(qts, WATCHDOG_BASE + WATCHDOG_SCRATCH0), ==,
-+                    0x3c3c3c3c);
-+
-+    qtest_writew(qts, WATCHDOG_BASE + WATCHDOG_SCRATCH0, 0xf00d);
-+    g_assert_cmphex(qtest_readl(qts, WATCHDOG_BASE + WATCHDOG_SCRATCH0), ==,
-+                    0xf00df00d);
-+
-+    qtest_quit(qts);
-+}
-+
-+static void test_timer_expiry(void)
-+{
-+    QTestState *qts = rp2040_watchdog_start();
-+    uint32_t ctrl;
-+
-+    /*
-+     * The default clk_ref is 6 MHz. CYCLES=6 generates a 1 MHz watchdog
-+     * tick; RP2040-E1 makes the counter decrement twice per tick.
-+     */
-+    qtest_writel(qts, WATCHDOG_BASE + WATCHDOG_TICK, TICK_ENABLE | 6);
-+    g_assert_cmphex(qtest_readl(qts, WATCHDOG_BASE + WATCHDOG_TICK) &
-+                    (TICK_RUNNING | TICK_ENABLE), ==,
-+                    TICK_RUNNING | TICK_ENABLE);
-+
-+    qtest_writel(qts, WATCHDOG_BASE + WATCHDOG_LOAD, 20);
-+    qtest_writel(qts, WATCHDOG_BASE + WATCHDOG_CTRL, CTRL_ENABLE);
-+
-+    qtest_clock_step(qts, 5 * NS_PER_US);
-+    ctrl = qtest_readl(qts, WATCHDOG_BASE + WATCHDOG_CTRL);
-+    g_assert_cmpuint(ctrl & CTRL_TIME_MASK, <, 20);
-+    g_assert_cmpuint(ctrl & CTRL_TIME_MASK, >, 0);
-+
-+    qtest_clock_step(qts, 10 * NS_PER_US);
-+    check_watchdog_event(qts);
-+    g_assert_cmphex(qtest_readl(qts, WATCHDOG_BASE + WATCHDOG_REASON), ==,
-+                    REASON_TIMER);
-+
-+    qtest_quit(qts);
-+}
-+
-+static void test_force_trigger(void)
-+{
-+    QTestState *qts = rp2040_watchdog_start();
-+
-+    qtest_writel(qts, WATCHDOG_BASE + WATCHDOG_CTRL, CTRL_TRIGGER);
-+    check_watchdog_event(qts);
-+    g_assert_cmphex(qtest_readl(qts, WATCHDOG_BASE + WATCHDOG_REASON), ==,
-+                    REASON_FORCE);
-+
-+    qtest_system_reset(qts);
-+    g_assert_cmphex(qtest_readl(qts, WATCHDOG_BASE + WATCHDOG_REASON), ==, 0);
-+
-+    qtest_quit(qts);
-+}
-+
-+static void test_reason_survives_watchdog_reset(void)
-+{
-+    QTestState *qts = qtest_init("-machine raspi-pico "
-+                                 "-watchdog-action reset");
-+
-+    qtest_writel(qts, WATCHDOG_BASE + WATCHDOG_CTRL, CTRL_TRIGGER);
-+    qtest_qmp_eventwait(qts, "WATCHDOG");
-+    qtest_qmp_eventwait(qts, "RESET");
-+    g_assert_cmphex(qtest_readl(qts, WATCHDOG_BASE + WATCHDOG_REASON), ==,
-+                    REASON_FORCE);
-+
-+    qtest_system_reset(qts);
-+    g_assert_cmphex(qtest_readl(qts, WATCHDOG_BASE + WATCHDOG_REASON), ==, 0);
-+
-+    qtest_quit(qts);
-+}
-+
-+int main(int argc, char **argv)
-+{
-+    g_test_init(&argc, &argv, NULL);
-+
-+    qtest_add_func("/rp2040-watchdog/reset-values", test_reset_values);
-+    qtest_add_func("/rp2040-watchdog/scratch-registers",
-+                   test_scratch_registers);
-+    qtest_add_func("/rp2040-watchdog/timer-expiry", test_timer_expiry);
-+    qtest_add_func("/rp2040-watchdog/force-trigger", test_force_trigger);
-+    qtest_add_func("/rp2040-watchdog/reason-survives-watchdog-reset",
-+                   test_reason_survives_watchdog_reset);
-+
-+    return g_test_run();
-+}
--- 
-2.55.0
 
+Reviewed-by: Brian Cain <brian.cain@oss.qualcomm.com>
+
+
+>   tests/functional/hexagon/test_systests.py | 6 +++---
+>   1 file changed, 3 insertions(+), 3 deletions(-)
+>
+> diff --git a/tests/functional/hexagon/test_systests.py b/tests/functional/hexagon/test_systests.py
+> index f36e015f5021..4b0546e7ad30 100755
+> --- a/tests/functional/hexagon/test_systests.py
+> +++ b/tests/functional/hexagon/test_systests.py
+> @@ -65,14 +65,14 @@ def test_fopen(self):
+>           import tempfile
+>           # The fopen binary has a short cmdline buffer; use a short path.
+>           dummy = os.path.join(tempfile.gettempdir(), "qemu_fopen_test.so")
+> -        with open(dummy, "w") as f:
+> +        with open(dummy, "w", encoding="utf-8") as f:
+>               f.write("valid\n")
+>           self.run_exit_zero("fopen", "-append", dummy)
+>   
+>       def test_ftrunc(self):
+>           """ftrunc truncates _testfile_ftrunc from 6 bytes to 1 byte."""
+>           ftrunc_path = self.scratch_file("_testfile_ftrunc")
+> -        with open(ftrunc_path, "w") as f:
+> +        with open(ftrunc_path, "w", encoding="utf-8") as f:
+>               f.write("valid\n")
+>           # Sleep 1 s so mtime change is observable
+>           time.sleep(1)
+> @@ -83,7 +83,7 @@ def test_ftrunc(self):
+>       def test_access(self):
+>           """access checks R_OK|W_OK on _testfile_access."""
+>           testfile = self.scratch_file("_testfile_access")
+> -        with open(testfile, "w") as f:
+> +        with open(testfile, "w", encoding="utf-8") as f:
+>               f.write("valid\n")
+>           self.run_exit_zero("access", "-append", testfile)
+>   
+>
 

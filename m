@@ -4,72 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5C093C79F85
-	for <qemu-arm@archiver.kernel.org>; Sun,  6 Sep 2026 17:12:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3E7E3C79F8C
+	for <qemu-arm@archiver.kernel.org>; Sun,  6 Sep 2026 17:13:01 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1x3GPQ-0005ss-T8; Sun, 06 Sep 2026 13:12:00 -0400
+	id 1x3GPD-00049G-5F; Sun, 06 Sep 2026 13:11:47 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1x3GPP-0005nh-JE
- for qemu-arm@nongnu.org; Sun, 06 Sep 2026 13:11:59 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1x3GPA-00042k-Ui
+ for qemu-arm@nongnu.org; Sun, 06 Sep 2026 13:11:44 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1x3GPN-0000Mp-Ny
- for qemu-arm@nongnu.org; Sun, 06 Sep 2026 13:11:59 -0400
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1x3GP9-0000IS-3u
+ for qemu-arm@nongnu.org; Sun, 06 Sep 2026 13:11:44 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1788714714;
+ s=mimecast20190719; t=1788714702;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=WUxA5/qQPN5AJZY2D8e+vLynfT1bwKinpHHNt+5akDk=;
- b=QNBGo2d2Jd3xewcKTsbsUNcNGd4t3uC+sKWlOI0tYaVpmngDY4tVI3SQzJCFcrZR2XSKfv
- y0JS7vkgrgk9Tb6mOjDXqunQ45HNQoKOEEB+TT+7/Lu6AIZRTjyIyhHTvBDpa99v+cP/vh
- e52cWjG3apDNgLQsf0jtMWlE4jrJV6c=
+ bh=ejaNlsfuqiQ5txCozc0FdpNb+CS3CGFTF26qsu3Itv4=;
+ b=MaUTgkN15x42jrNDWAHhdPgJ6H9+cR8e4rOyIo7LPUNJe703xSM0rK8L1ep8hYaimpak+K
+ V/9xneF3WSsVdsBUprT9/VfFQKM3Ihzi4tIHYP0LoDAglKe0a8w/vXhnaCCNurkSFc8HVc
+ AQ+erDTWnq0eIYWx5a0FgMLDcpP32w8=
 Received: from mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com
  (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-452-l_EBx1P5PSeFg9DFpbiw9w-1; Sun,
- 06 Sep 2026 13:11:45 -0400
-X-MC-Unique: l_EBx1P5PSeFg9DFpbiw9w-1
-X-Mimecast-MFC-AGG-ID: l_EBx1P5PSeFg9DFpbiw9w_1788714701
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-589-81eNwnAjPsGxuVOdwe6uHg-1; Sun,
+ 06 Sep 2026 13:11:38 -0400
+X-MC-Unique: 81eNwnAjPsGxuVOdwe6uHg-1
+X-Mimecast-MFC-AGG-ID: 81eNwnAjPsGxuVOdwe6uHg_1788714698
 Received: from mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com
  (mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.12])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
  by mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 914F81800D9D; Sun,  6 Sep 2026 17:11:41 +0000 (UTC)
+ id DCA551802648; Sun,  6 Sep 2026 17:11:37 +0000 (UTC)
 Received: from yukon.redhat.com (unknown [10.44.32.24])
  by mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id 2E5871955F06; Sun,  6 Sep 2026 17:11:39 +0000 (UTC)
+ id 77F9E1955F06; Sun,  6 Sep 2026 17:11:36 +0000 (UTC)
 From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
 Cc: Emmanuel Blot <emmanuel.blot@free.fr>,
  =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>
-Subject: [PULL 36/40] hw/arm: sanmiguel: add Facebook SanMiguel BMC machine
-Date: Sun,  6 Sep 2026 19:10:17 +0200
-Message-ID: <20260906171021.26568-37-clg@redhat.com>
+Subject: [PULL 34/40] tests/qtest: tmp105: cover one-shot and fault-queue
+ write immunity
+Date: Sun,  6 Sep 2026 19:10:15 +0200
+Message-ID: <20260906171021.26568-35-clg@redhat.com>
 In-Reply-To: <20260906171021.26568-1-clg@redhat.com>
 References: <20260906171021.26568-1-clg@redhat.com>
 MIME-Version: 1.0
 X-Scanned-By: MIMEDefang 3.0 on 10.30.177.12
-X-Mimecast-MFC-PROC-ID: bGk-DOfJRqg4We9lMuSjdu_gB6QLFtM-TznQ_lpHYSE_1788714701
+X-Mimecast-MFC-PROC-ID: 9KiCDe26OX08N5d8aE8sM3gfSLPKSewgTPGb8jNrqhY_1788714698
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=clg@redhat.com;
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=clg@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=-0.01, RCVD_IN_MSPIKE_WL=-0.01,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.01, SPF_HELO_PASS=-0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -87,181 +88,146 @@ Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
 From: Emmanuel Blot <emmanuel.blot@free.fr>
 
-Add an AST2600-based machine for the Facebook SanMiguel BMC, derived
-from the aspeed-bmc-facebook-sanmiguel.dts device tree.
-
-The board wires up three TMP75 temperature sensors across its I2C buses,
-alongside IO expanders, FRU EEPROMs, an I2C mux and an RTC, with 2 GiB
-RAM, dual FMC flash and RGMII networking.
+Verify that the one-shot (OS) bit triggers a conversion only in shutdown
+mode and is ignored in continuous mode, and that
+configuration/limit-register writes never advance the fault queue — only
+real conversions do.
 
 Signed-off-by: Emmanuel Blot <emmanuel.blot@free.fr>
-Link: https://lore.kernel.org/qemu-devel/20260731-sanmiguel-bmc-locator-v2-12-1266926ba769@free.fr
-[ clg: - adjusted on upstream ]
+Reviewed-by: Cédric Le Goater <clg@redhat.com>
+Link: https://lore.kernel.org/qemu-devel/20260731-sanmiguel-bmc-locator-v2-10-1266926ba769@free.fr
 Signed-off-by: Cédric Le Goater <clg@redhat.com>
 ---
- hw/arm/aspeed_ast2600_sanmiguel.c | 140 ++++++++++++++++++++++++++++++
- hw/arm/meson.build                |   1 +
- 2 files changed, 141 insertions(+)
- create mode 100644 hw/arm/aspeed_ast2600_sanmiguel.c
+ tests/qtest/tmp105-test.c | 102 ++++++++++++++++++++++++++++++++++++++
+ 1 file changed, 102 insertions(+)
 
-diff --git a/hw/arm/aspeed_ast2600_sanmiguel.c b/hw/arm/aspeed_ast2600_sanmiguel.c
-new file mode 100644
-index 000000000000..ca07a0deaada
---- /dev/null
-+++ b/hw/arm/aspeed_ast2600_sanmiguel.c
-@@ -0,0 +1,140 @@
+diff --git a/tests/qtest/tmp105-test.c b/tests/qtest/tmp105-test.c
+index ea6803715a39..e586a634d8fb 100644
+--- a/tests/qtest/tmp105-test.c
++++ b/tests/qtest/tmp105-test.c
+@@ -33,6 +33,8 @@
+ #define TMP105_CONFIG_FQ_1  (0 << 3)   /* fault queue: 1 consecutive fault */
+ #define TMP105_CONFIG_FQ_4  (2 << 3)   /* fault queue: 4 consecutive faults */
+ #define TMP105_CONFIG_FQ(f) ((f) << 3) /* raw F1:F0 fault-queue field value */
++#define TMP105_CONFIG_SD    (1 << 0)   /* shutdown mode */
++#define TMP105_CONFIG_OS    (1 << 7)   /* one-shot conversion */
+ 
+ static int qmp_tmp105_get_temperature(const char *id)
+ {
+@@ -200,6 +202,102 @@ static void check_fault_queue(QI2CDevice *i2cdev, const char *id,
+     g_assert_true(get_irq(0));
+ }
+ 
 +/*
-+ * Facebook SanMiguel BMC
-+ *
-+ * Copyright (c) Meta Platforms, Inc. and affiliates.
-+ *
-+ * SPDX-License-Identifier: GPL-2.0-or-later
++ * The one-shot (OS) bit starts a conversion only in shutdown mode. In
++ * continuous mode it is ignored, so writing it must not advance the fault
++ * queue; in shutdown each OS write performs one conversion that does.
 + */
-+
-+#include "qemu/osdep.h"
-+#include "hw/arm/aspeed.h"
-+#include "hw/arm/aspeed_soc.h"
-+#include "hw/i2c/i2c_mux_pca954x.h"
-+#include "hw/gpio/pca9552.h"
-+#include "hw/gpio/pca9554.h"
-+#include "hw/nvram/eeprom_at24c.h"
-+#include "hw/sensor/tmp105.h"
-+
-+/* SanMiguel hardware values */
-+#define SANMIGUEL_BMC_HW_STRAP1 0x00002002
-+#define SANMIGUEL_BMC_HW_STRAP2 0x00000000
-+#define SANMIGUEL_BMC_RAM_SIZE ASPEED_RAM_SIZE(2 * GiB)
-+
-+#define TYPE_DS1338 "ds1338"
-+
-+static void sanmiguel_bmc_i2c_init(AspeedMachineState *bmc)
++static void test_one_shot(void *obj, void *data, QGuestAllocator *alloc)
 +{
-+    /* Reference: aspeed-bmc-facebook-sanmiguel.dts */
++    QI2CDevice *i2cdev = (QI2CDevice *)obj;
++    int i;
 +
-+    AspeedSoCState *soc = bmc->soc;
-+    I2CBus *i2c[16] = {};
++    qtest_irq_intercept_out(global_qtest, TMP105_TEST_PATH);
 +
-+    for (unsigned idx = 0; idx < ARRAY_SIZE(i2c); idx++) {
-+        i2c[idx] = aspeed_i2c_get_bus(&soc->i2c, idx);
++    i2c_set8(i2cdev, TMP105_REG_CONFIG, TMP105_CONFIG_POL | TMP105_CONFIG_FQ_4);
++    qmp_tmp105_set_temperature(TMP105_TEST_ID, 85000);
++    g_assert_false(get_irq(0));
++
++    for (i = 0; i < 8; i++) {
++        i2c_set8(i2cdev, TMP105_REG_CONFIG,
++                 TMP105_CONFIG_POL | TMP105_CONFIG_FQ_4 | TMP105_CONFIG_OS);
++        g_assert_false(get_irq(0));
 +    }
 +
-+    /* &i2c0 */
-+    /* ssif-bmc@10 — no QEMU model */
-+
-+    /* &i2c1 — empty */
-+
-+    /* &i2c2 — HPM0 */
-+    /* hpm0_ioexp_20: pca9555@20 */
-+    i2c_slave_create_simple(i2c[2], TYPE_PCA9555, 0x20);
-+    /* hpm0_ioexp_21: pca9555@21 */
-+    i2c_slave_create_simple(i2c[2], TYPE_PCA9555, 0x21);
-+
-+    /* &i2c3 — empty */
-+    /* &i2c4 — empty */
-+
-+    /* &i2c5 — SMM */
-+    /* smm_ioexp_20: pca9555@20 */
-+    i2c_slave_create_simple(i2c[5], TYPE_PCA9555, 0x20);
-+    /* smm_ioexp_21: pca9555@21 */
-+    i2c_slave_create_simple(i2c[5], TYPE_PCA9555, 0x21);
-+    /* smm_temp: lm75@48 */
-+    i2c_slave_create_simple(i2c[5], TYPE_TMP75, 0x48);
-+    /* smm_fru: eeprom@50 (24c128 = 16 KiB) */
-+    at24c_eeprom_init(i2c[5], 0x50, 16 * KiB);
-+    /* rtc@6f — nct3018y (ds1338 stand-in) */
-+    i2c_slave_create_simple(i2c[5], TYPE_DS1338, 0x6f);
-+
-+    /* &i2c6 — HMC */
-+    /* hmc_ioexp: tca6408@20 (pca9554 stand-in) */
-+    i2c_slave_create_simple(i2c[6], TYPE_PCA9554, 0x20);
-+    /* i2c-mux@70 (PCA9546) — 4 channels (imux16-19), all empty */
-+    i2c_slave_create_simple(i2c[6], TYPE_PCA9546, 0x70);
-+
-+    /* &i2c7 — HPM1 */
-+    /* hpm1_ioexp_20: pca9555@20 */
-+    i2c_slave_create_simple(i2c[7], TYPE_PCA9555, 0x20);
-+    /* hpm1_ioexp_21: pca9555@21 */
-+    i2c_slave_create_simple(i2c[7], TYPE_PCA9555, 0x21);
-+
-+    /* &i2c8 — empty */
-+
-+    /* &i2c9 — PDB */
-+    /* mp5926@10-16, lm5066i@11-17 — no QEMU model (power monitors) */
-+    /* pdb_ioexp_20: pca9555@20 */
-+    i2c_slave_create_simple(i2c[9], TYPE_PCA9555, 0x20);
-+    /* pdb_temp: lm75@4e */
-+    i2c_slave_create_simple(i2c[9], TYPE_TMP75, 0x4e);
-+    /* pdb_fru: eeprom@50 (24c128 = 16 KiB) */
-+    at24c_eeprom_init(i2c[9], 0x50, 16 * KiB);
-+
-+    /* &i2c10 — SCM */
-+    /* scm_temp: lm75@48 */
-+    i2c_slave_create_simple(i2c[10], TYPE_TMP75, 0x48);
-+    /* scm_fru: eeprom@50 (24c128 = 16 KiB) */
-+    at24c_eeprom_init(i2c[10], 0x50, 16 * KiB);
-+
-+    /* &i2c11 — Switch Config */
-+    /* sw_config: eeprom@50 (24c64 = 8 KiB) */
-+    at24c_eeprom_init(i2c[11], 0x50, 8 * KiB);
-+
-+    /* &i2c12 — empty */
-+
-+    /* &i2c13 — SMM extension */
-+    /* mctp@10 — no QEMU model */
-+    /* smm_ext_ioexp: pca9554@38 */
-+    i2c_slave_create_simple(i2c[13], TYPE_PCA9554, 0x38);
-+    /* smm_ext_fru: eeprom@55 (24c128 = 16 KiB) */
-+    at24c_eeprom_init(i2c[13], 0x55, 16 * KiB);
-+
-+    /* &i2c14 — FIO */
-+    /* fio_ioexp: pca9555@20 */
-+    i2c_slave_create_simple(i2c[14], TYPE_PCA9555, 0x20);
-+    /* fio_fru: eeprom@50 (24c64 = 8 KiB) */
-+    at24c_eeprom_init(i2c[14], 0x50, 8 * KiB);
-+
-+    /* &i2c15 — empty */
-+}
-+
-+static void aspeed_machine_sanmiguel_class_init(ObjectClass *oc,
-+                                                const void *data)
-+{
-+    MachineClass *mc = MACHINE_CLASS(oc);
-+    AspeedMachineClass *amc = ASPEED_MACHINE_CLASS(oc);
-+
-+    mc->desc       = "Facebook SanMiguel BMC (Cortex-A7)";
-+    amc->soc_name  = "ast2600-a3";
-+    amc->hw_strap1 = SANMIGUEL_BMC_HW_STRAP1;
-+    amc->hw_strap2 = SANMIGUEL_BMC_HW_STRAP2;
-+    amc->fmc_model = "mx66l1g45g";
-+    amc->spi_model = "mx66l1g45g";
-+    amc->num_cs    = 2;
-+    amc->macs_mask = ASPEED_MAC0_ON;
-+    amc->i2c_init  = sanmiguel_bmc_i2c_init;
-+    mc->default_ram_size = SANMIGUEL_BMC_RAM_SIZE;
-+    aspeed_machine_class_init_cpus_defaults(mc);
-+}
-+
-+static const TypeInfo aspeed_ast2600_sanmiguel_types[] = {
-+    {
-+        .name          = MACHINE_TYPE_NAME("sanmiguel-bmc"),
-+        .parent        = TYPE_ASPEED_MACHINE,
-+        .class_init    = aspeed_machine_sanmiguel_class_init,
++    i2c_set8(i2cdev, TMP105_REG_CONFIG,
++             TMP105_CONFIG_POL | TMP105_CONFIG_FQ_4 | TMP105_CONFIG_SD);
++    for (i = 0; i < 2; i++) {
++        i2c_set8(i2cdev, TMP105_REG_CONFIG, TMP105_CONFIG_POL |
++                 TMP105_CONFIG_FQ_4 | TMP105_CONFIG_SD | TMP105_CONFIG_OS);
++        g_assert_false(get_irq(0));
 +    }
-+};
++    i2c_set8(i2cdev, TMP105_REG_CONFIG, TMP105_CONFIG_POL |
++             TMP105_CONFIG_FQ_4 | TMP105_CONFIG_SD | TMP105_CONFIG_OS);
++    g_assert_true(get_irq(0));
++}
 +
-+DEFINE_TYPES(aspeed_ast2600_sanmiguel_types)
-diff --git a/hw/arm/meson.build b/hw/arm/meson.build
-index 78acb04c8b9f..bcc068de0403 100644
---- a/hw/arm/meson.build
-+++ b/hw/arm/meson.build
-@@ -64,6 +64,7 @@ arm_common_ss.add(when: 'CONFIG_ASPEED_SOC', if_true: files(
-   'aspeed_ast2600_fuji.c',
-   'aspeed_ast2600_gb200nvl.c',
-   'aspeed_ast2600_rainier.c',
-+  'aspeed_ast2600_sanmiguel.c',
-   'aspeed_ast10x0.c',
-   'aspeed_ast10x0_evb.c',
-   'aspeed_ast1040.c',
++/*
++ * Configuration and limit-register writes are not conversions and must not
++ * advance the fault queue.
++ */
++static void test_fault_queue_ignores_writes(void *obj, void *data,
++                                            QGuestAllocator *alloc)
++{
++    QI2CDevice *i2cdev = (QI2CDevice *)obj;
++    int i;
++
++    qtest_irq_intercept_out(global_qtest, TMP105_TEST_PATH);
++
++    i2c_set8(i2cdev, TMP105_REG_CONFIG, TMP105_CONFIG_POL | TMP105_CONFIG_FQ_4);
++    g_assert_false(get_irq(0));
++
++    qmp_tmp105_set_temperature(TMP105_TEST_ID, 85000);
++    g_assert_false(get_irq(0));
++
++    for (i = 0; i < 8; i++) {
++        i2c_set8(i2cdev, TMP105_REG_CONFIG,
++                 TMP105_CONFIG_POL | TMP105_CONFIG_FQ_4);
++        i2c_set16(i2cdev, TMP105_REG_T_HIGH, 0x5000);
++        i2c_set16(i2cdev, TMP105_REG_T_LOW, 0x4b00);
++        g_assert_false(get_irq(0));
++    }
++
++    for (i = 0; i < 2; i++) {
++        qmp_tmp105_set_temperature(TMP105_TEST_ID, 85000);
++        g_assert_false(get_irq(0));
++    }
++    qmp_tmp105_set_temperature(TMP105_TEST_ID, 85000);
++    g_assert_true(get_irq(0));
++}
++
++/*
++ * Leaving shutdown (SD 1->0) resumes continuous conversion, which must
++ * re-evaluate the current temperature against the limits.
++ */
++static void test_wake_from_shutdown(void *obj, void *data,
++                                    QGuestAllocator *alloc)
++{
++    QI2CDevice *i2cdev = (QI2CDevice *)obj;
++
++    qtest_irq_intercept_out(global_qtest, TMP105_TEST_PATH);
++
++    i2c_set8(i2cdev, TMP105_REG_CONFIG, TMP105_CONFIG_POL | TMP105_CONFIG_FQ_1);
++    g_assert_false(get_irq(0));
++
++    qmp_tmp105_set_temperature(TMP105_TEST_ID, 85000);
++    g_assert_true(get_irq(0));
++
++    i2c_set8(i2cdev, TMP105_REG_CONFIG,
++             TMP105_CONFIG_POL | TMP105_CONFIG_FQ_1 | TMP105_CONFIG_SD);
++    g_assert_true(get_irq(0));
++
++    qmp_tmp105_set_temperature(TMP105_TEST_ID, 70000);
++    g_assert_true(get_irq(0));
++
++    i2c_set8(i2cdev, TMP105_REG_CONFIG, TMP105_CONFIG_POL | TMP105_CONFIG_FQ_1);
++    g_assert_false(get_irq(0));
++}
++
+ /* The TMP75 maps F1:F0 = 10b to 3 consecutive faults. */
+ static void test_tmp75_fault_queue(void *obj, void *data,
+                                    QGuestAllocator *alloc)
+@@ -282,6 +380,10 @@ static void tmp105_register_nodes(void)
+     qos_add_test("tx-rx", "tmp105", send_and_receive, NULL);
+     qos_add_test("alert-single-fault", "tmp105", test_alert_single_fault, NULL);
+     qos_add_test("fault-queue", "tmp105", test_fault_queue, NULL);
++    qos_add_test("fault-queue-ignores-writes", "tmp105",
++                 test_fault_queue_ignores_writes, NULL);
++    qos_add_test("one-shot", "tmp105", test_one_shot, NULL);
++    qos_add_test("wake-from-shutdown", "tmp105", test_wake_from_shutdown, NULL);
+ 
+     /* TMP75: register-compatible, but with a 1/2/3/4 fault queue. */
+     QOSGraphEdgeOptions tmp75_opts = {
 -- 
 2.55.0
 

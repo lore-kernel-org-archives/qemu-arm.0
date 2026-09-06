@@ -4,65 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9D877C79F85
-	for <qemu-arm@archiver.kernel.org>; Sun,  6 Sep 2026 15:42:32 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AA037C79F8C
+	for <qemu-arm@archiver.kernel.org>; Sun,  6 Sep 2026 17:10:51 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1x3F0n-00055K-Vc; Sun, 06 Sep 2026 11:42:30 -0400
+	id 1x3GO9-0003M6-4O; Sun, 06 Sep 2026 13:10:41 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <tangtao1634@phytium.com.cn>)
- id 1x3F0n-000557-3a; Sun, 06 Sep 2026 11:42:29 -0400
-Received: from zg8tmtyylji0my4xnjqumte4.icoremail.net ([162.243.164.118])
- by eggs.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <tangtao1634@phytium.com.cn>)
- id 1x3F0l-0008Kq-Cg; Sun, 06 Sep 2026 11:42:28 -0400
-Received: from prodtpl.icoremail.net (unknown [10.12.1.20])
- by hzbj-icmmx-7 (Coremail) with UTF8SMTP id AQAAfwB3f1PgiZ1qMdagBQ--.4343S2;
- Sun, 06 Sep 2026 23:42:24 +0800 (CST)
-Received: from [192.168.2.11] (unknown [113.246.116.29])
- by mail (Coremail) with SMTP id AQAAf8DwSnPfiZ1q7fzGAA--.16612S2;
- Sun, 06 Sep 2026 23:42:23 +0800 (CST)
-Message-ID: <e3ef0d36-58dd-406a-8e46-d01d0379ddf4@phytium.com.cn>
-Date: Sun, 6 Sep 2026 23:42:22 +0800
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1x3GO7-0003Ls-NL
+ for qemu-arm@nongnu.org; Sun, 06 Sep 2026 13:10:39 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1x3GO5-0008V0-UU
+ for qemu-arm@nongnu.org; Sun, 06 Sep 2026 13:10:39 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1788714637;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=gRd3mQ/+wVlcnyYIsnKwvslWuhv7RnI3C3PxuGb35Y4=;
+ b=FeGcoH94mwH6MbTVeNfgCaUiNCesVXqFRw2FwvXtYwbelMCP6Yn9dsupD/nXQFqEvowcUt
+ tpTRXfjYWbCMtpK7XjAmnsC9w7X+jQqRTB/Lvqdn9TAmpZmhRCruzxLsy/mT0sa/UJA6vw
+ MAP8abEZoYZs0YPeXW8FzqqZa4VibEs=
+Received: from mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
+ relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-199-dEf8pn9xMWiWu_X3hgfIYA-1; Sun,
+ 06 Sep 2026 13:10:34 -0400
+X-MC-Unique: dEf8pn9xMWiWu_X3hgfIYA-1
+X-Mimecast-MFC-AGG-ID: dEf8pn9xMWiWu_X3hgfIYA_1788714633
+Received: from mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com
+ (mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.12])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+ (No client certificate requested)
+ by mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id B99351954AEB; Sun,  6 Sep 2026 17:10:32 +0000 (UTC)
+Received: from yukon.redhat.com (unknown [10.44.32.24])
+ by mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
+ id C45EC1955F0C; Sun,  6 Sep 2026 17:10:30 +0000 (UTC)
+From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>
+To: qemu-arm@nongnu.org,
+	qemu-devel@nongnu.org
+Cc: Jamin Lin <jamin_lin@aspeedtech.com>, Mikail Sadic <mikail.sadic@ibm.com>,
+ =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>
+Subject: [PULL 02/40] hw/i2c/aspeed_i2c: Latch received bytes for SMBus block
+ reads
+Date: Sun,  6 Sep 2026 19:09:43 +0200
+Message-ID: <20260906171021.26568-3-clg@redhat.com>
+In-Reply-To: <20260906171021.26568-1-clg@redhat.com>
+References: <20260906171021.26568-1-clg@redhat.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [RFC v5 11/28] hw/arm/smmu-common: Implement secure state
- handling in ptw
-To: Mostafa Saleh <smostafa@google.com>
-Cc: Eric Auger <eric.auger@redhat.com>,
- Peter Maydell <peter.maydell@linaro.org>, qemu-devel@nongnu.org,
- qemu-arm@nongnu.org, Chen Baozi <chenbaozi@phytium.com.cn>,
- Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>,
- =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@mailo.com>,
- Chao Liu <chao.liu@processmission.com>,
- Jim MacArthur <jim.macarthur@linaro.org>
-References: <20260813161515.2788900-1-tangtao1634@phytium.com.cn>
- <20260813162512.2807281-1-tangtao1634@phytium.com.cn>
- <apbctpZhmRAzRia1@google.com>
-From: Tao Tang <tangtao1634@phytium.com.cn>
-In-Reply-To: <apbctpZhmRAzRia1@google.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-X-CM-TRANSID: AQAAf8DwSnPfiZ1q7fzGAA--.16612S2
-X-CM-SenderInfo: pwdqw3tdrrljuu6sx5pwlxzhxfrphubq/1tbiAQAKBWqcbcoCZAABs4
-Authentication-Results: hzbj-icmmx-7; spf=neutral smtp.mail=tangtao163
- 4@phytium.com.cn;
-X-Coremail-Antispam: 1Uk129KBjvJXoWxCw4xAF1Utry3Xr1xKry3Arb_yoWrGFyrpa
- 97GFZIgw4ktFyIvrs2vr4UZ3W5A395Ga15GrZrGF9Yk3Z8tr18AF1jk345KFZ0gr1rGay0
- v3Wj9rZxWF4jv3DanT9S1TB71UUUUUDqnTZGkaVYY2UrUUUUj1kv1TuYvTs0mT0YCTnIWj
- DUYxn0WfASr-VFAU7a7-sFnT9fnUUIcSsGvfJ3UbIYCTnIWIevJa73UjIFyTuYvj4RJUUU
- UUUUU
-Received-SPF: pass client-ip=162.243.164.118;
- envelope-from=tangtao1634@phytium.com.cn;
- helo=zg8tmtyylji0my4xnjqumte4.icoremail.net
-X-Spam_score_int: -25
-X-Spam_score: -2.6
-X-Spam_bar: --
-X-Spam_report: (-2.6 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_LOW=-0.7,
- RCVD_IN_MSPIKE_H4=-0.01, RCVD_IN_MSPIKE_WL=-0.01, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Scanned-By: MIMEDefang 3.0 on 10.30.177.12
+X-Mimecast-MFC-PROC-ID: oWl7u2sO8jo_T4qdxcVcRckxf4FkLe9WIsD-cwzSHfM_1788714633
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=clg@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: 12
+X-Spam_score: 1.2
+X-Spam_bar: +
+X-Spam_report: (1.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.01, RCVD_IN_SBL_CSS=3.335,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -78,96 +86,164 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Hi Mostafa,
+From: Jamin Lin <jamin_lin@aspeedtech.com>
 
-On 2026/9/1 22:09, Mostafa Saleh wrote:
-> On Fri, Aug 14, 2026 at 12:25:08AM +0800, Tao Tang wrote:
->> Enhance the page table walker to correctly handle secure and non-secure
->> memory accesses. This change introduces logic to select the appropriate
->> address space and enforce architectural security policies during walks.
->>
->> The page table walker now correctly processes Secure Stage 1
->> translations. Key changes include:
->>
->> - The get_pte() function now uses the effective security state to fetch
->> page-table entries from either the Secure or Non-secure address space,
->> with explicit transaction attributes matching that address space.
->>
->> - The stage 1 walker tracks the security state, respecting the NSCFG
->> and NSTable attributes. It correctly handles the hierarchical security
->> model: if a table descriptor in a secure walk has NSTable=1, all
->> subsequent lookups for that walk are forced into the Non-secure space.
->> This is a one-way transition, as specified by the architecture.
->>
->> - The final TLB entry is tagged with the correct output address space,
->> ensuring proper memory isolation.
->>
->> Note: We do not yet support secure stage 2 translations. This patch
->> only implements Secure stage 1 page-table walks. Baseline propagation
->> of the incoming NS attribute for stage 1 bypass is handled separately
->> in this series with ATTR_PERMS_OVR == 0. Full ATTR_PERMS_OVR support
->> is left for a separate series.
->>
->> Signed-off-by: Tao Tang <tangtao1634@phytium.com.cn>
->> ---
->>   hw/arm/smmu-common.c         | 73 +++++++++++++++++++++++++++++-------
->>   hw/arm/smmuv3.c              | 19 ++++++----
->>   include/hw/arm/smmu-common.h |  7 ++--
->>   3 files changed, 74 insertions(+), 25 deletions(-)
->>
->> diff --git a/hw/arm/smmu-common.c b/hw/arm/smmu-common.c
->> index 63c36329a98..317cfafded2 100644
->> --- a/hw/arm/smmu-common.c
->> +++ b/hw/arm/smmu-common.c
->> @@ -408,13 +408,13 @@ void smmu_iotlb_inv_vmid_s1(SMMUState *s, int vmid)
->>    * @base_addr[@index]
->>    */
->>   static int get_pte(dma_addr_t baseaddr, uint32_t index, uint64_t *pte,
->> -                   SMMUPTWEventInfo *info)
->> +                   SMMUPTWEventInfo *info, AddressSpace *as, MemTxAttrs attrs)
->>   {
->>       int ret;
->>       dma_addr_t addr = baseaddr + index * sizeof(*pte);
->>   
->>       /* TODO: guarantee 64-bit single-copy atomicity */
->> -    ret = ldq_le_dma(&address_space_memory, addr, pte, MEMTXATTRS_UNSPECIFIED);
->> +    ret = ldq_le_dma(as, addr, pte, attrs);
->>   
->>       if (ret != MEMTX_OK) {
->>           info->type = SMMU_PTW_ERR_WALK_EABT;
->> @@ -488,7 +488,8 @@ SMMUTransTableInfo *select_tt(SMMUTransCfg *cfg, dma_addr_t iova)
->>   static inline int translate_table_addr_ipa(SMMUState *bs,
->>                                              dma_addr_t *table_addr,
->>                                              SMMUTransCfg *cfg,
->> -                                           SMMUPTWEventInfo *info)
->> +                                           SMMUPTWEventInfo *info,
->> +                                           SMMUSecSID sec_sid)
->>   {
->>       dma_addr_t addr = *table_addr;
->>       SMMUTLBEntry *cached_entry;
->> @@ -501,7 +502,7 @@ static inline int translate_table_addr_ipa(SMMUState *bs,
->>       asid = cfg->asid;
->>       cfg->stage = SMMU_STAGE_2;
->>       cfg->asid = -1;
->> -    cached_entry = smmu_translate(bs, cfg, addr, IOMMU_RO, info);
->> +    cached_entry = smmu_translate(bs, cfg, addr, IOMMU_RO, info, sec_sid);
-> Should we have an assertion instead as it is not possible to reach
-> this path with the secure bit?
->
-> Thanks,
-> Mostafa
+An SMBus block read takes the block length from the first byte of the
+transfer, and firmware reads that byte back from a register rather than
+from the transfer buffer. The receive paths never updated those
+registers, so block reads reported a bogus length.
 
+On AST2600 the driver reads the length from the receive byte buffer,
+I2CC_MS_TXRX_BYTE_BUF[15:8]. The datasheet documents that field as valid
+while the DMA buffer is not enabled. The byte mode receive path already
+updated it, but the pool buffer path did not, and the driver selects
+buffer mode by default.
 
-Thanks for the suggestion! Eric suggested avoiding the extra sec_sid 
-plumbing while Secure stage 2 is unsupported, so in v6 I want to remove 
-the sec_sid parameter from translate_table_addr_ipa() and explicitly 
-pass SMMU_SEC_SID_NS to smmu_translate() inside the helper. Since 
-decode_ste() already returns C_BAD_STE for Secure STEs with stage 2 
-enabled, including nested translation, could we omit this assertion for 
-now? What do you think?
+On AST2700 the driver reads the length from offset 0x84 instead.
 
-Best regards,
-Tao
+Add I2CC_BYTE_DATA_LOG at 0x84 and latch received bytes into it. The pool
+buffer, DMA-to-pool and DMA-to-DRAM paths latch their first byte, the byte
+mode path latches every byte. Each latch also updates the receive byte
+buffer unless RX_DMA_EN is set, which is the datasheet condition and does
+not depend on FUNC_CFG_DMA_EN. The byte data log only exists on AST2700
+and AST1040, so it is gated on a class flag.
 
+Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
+Tested-by: Mikail Sadic <mikail.sadic@ibm.com>
+Link: https://lore.kernel.org/qemu-devel/20260814020836.3119613-1-jamin_lin@aspeedtech.com
+Signed-off-by: Cédric Le Goater <clg@redhat.com>
+---
+ include/hw/i2c/aspeed_i2c.h |  3 +++
+ hw/i2c/aspeed_i2c.c         | 38 +++++++++++++++++++++++++++++++++++--
+ 2 files changed, 39 insertions(+), 2 deletions(-)
+
+diff --git a/include/hw/i2c/aspeed_i2c.h b/include/hw/i2c/aspeed_i2c.h
+index 05937a7a0b49..480c6418feee 100644
+--- a/include/hw/i2c/aspeed_i2c.h
++++ b/include/hw/i2c/aspeed_i2c.h
+@@ -231,6 +231,8 @@ REG32(I2CS_DMA_TX_ADDR_HI, 0x68)
+     FIELD(I2CS_DMA_TX_ADDR_HI, ADDR_HI, 0, 7)
+ REG32(I2CS_DMA_RX_ADDR_HI, 0x6c)
+     FIELD(I2CS_DMA_RX_ADDR_HI, ADDR_HI, 0, 7)
++REG32(I2CC_BYTE_DATA_LOG, 0x84)
++    FIELD(I2CC_BYTE_DATA_LOG, RX_BUF, 0, 8)
+ REG32(I2CC_VERSION_CTRL, 0x94)
+     FIELD(I2CC_VERSION_CTRL, FUNC_CFG_DMA_EN, 2, 1)
+ 
+@@ -302,6 +304,7 @@ struct AspeedI2CClass {
+     bool has_share_pool;
+     uint64_t mem_size;
+     bool has_dma64;
++    bool has_byte_data_log;
+     uint32_t dma_addr_lo_mask;
+ };
+ 
+diff --git a/hw/i2c/aspeed_i2c.c b/hw/i2c/aspeed_i2c.c
+index 68bdcd0e25a6..0bc4bb6fbe92 100644
+--- a/hw/i2c/aspeed_i2c.c
++++ b/hw/i2c/aspeed_i2c.c
+@@ -159,6 +159,7 @@ static uint64_t aspeed_i2c_bus_new_read(AspeedI2CBus *bus, hwaddr offset,
+     case A_I2CS_INTR_CTRL:
+     case A_I2CS_DMA_LEN_STS:
+     case A_I2CS_INTR_STS:
++    case A_I2CC_BYTE_DATA_LOG:
+     case A_I2CC_VERSION_CTRL:
+         value = bus->regs[offset / sizeof(*bus->regs)];
+         break;
+@@ -334,6 +335,27 @@ static int aspeed_i2c_bus_send_dma_pool(AspeedI2CBus *bus)
+     return ret;
+ }
+ 
++/*
++ * Latch a received byte where firmware reads it back from: the receive byte
++ * buffer, only valid while the DMA buffer is disabled, and the byte data log,
++ * which AST2700 uses instead. Buffer and DMA transfers latch only the first
++ * byte, read back as the SMBus block length.
++ */
++static void aspeed_i2c_bus_latch_rx_byte(AspeedI2CBus *bus, uint8_t data)
++{
++    AspeedI2CClass *aic = ASPEED_I2C_GET_CLASS(bus->controller);
++    uint32_t reg_byte_buf = aspeed_i2c_bus_byte_buf_offset(bus);
++    uint32_t reg_cmd = aspeed_i2c_bus_cmd_offset(bus);
++
++    if (aic->has_byte_data_log) {
++        ARRAY_FIELD_DP32(bus->regs, I2CC_BYTE_DATA_LOG, RX_BUF, data);
++    }
++
++    if (!SHARED_ARRAY_FIELD_EX32(bus->regs, reg_cmd, RX_DMA_EN)) {
++        SHARED_ARRAY_FIELD_DP32(bus->regs, reg_byte_buf, RX_BUF, data);
++    }
++}
++
+ static void aspeed_i2c_bus_recv_dma_pool(AspeedI2CBus *bus)
+ {
+     AspeedI2CClass *aic = ASPEED_I2C_GET_CLASS(bus->controller);
+@@ -349,6 +371,9 @@ static void aspeed_i2c_bus_recv_dma_pool(AspeedI2CBus *bus)
+         pool_base[offset + i] = i2c_recv(bus->bus);
+         trace_aspeed_i2c_bus_recv("BUFF", i + 1, bus->regs[reg_dma_len],
+                                   pool_base[offset + i]);
++        if (i == 0) {
++            aspeed_i2c_bus_latch_rx_byte(bus, pool_base[offset]);
++        }
+         bus->regs[reg_dma_len]--;
+         ARRAY_FIELD_DP32(bus->regs, I2CM_DMA_LEN_STS, RX_LEN, i + 1);
+     }
+@@ -443,6 +468,9 @@ static void aspeed_i2c_bus_recv(AspeedI2CBus *bus)
+             pool_base[i] = i2c_recv(bus->bus);
+             trace_aspeed_i2c_bus_recv("BUF", i + 1, pool_rx_count,
+                                       pool_base[i]);
++            if (i == 0) {
++                aspeed_i2c_bus_latch_rx_byte(bus, pool_base[0]);
++            }
+         }
+ 
+         /* Update RX count */
+@@ -460,7 +488,7 @@ static void aspeed_i2c_bus_recv(AspeedI2CBus *bus)
+         }
+ 
+         aspeed_i2c_set_rx_dma_dram_offset(bus);
+-        while (bus->regs[reg_dma_len]) {
++        for (i = 0; bus->regs[reg_dma_len]; i++) {
+             MemTxResult result;
+ 
+             data = i2c_recv(bus->bus);
+@@ -476,6 +504,10 @@ static void aspeed_i2c_bus_recv(AspeedI2CBus *bus)
+                 return;
+             }
+ 
++            if (i == 0) {
++                aspeed_i2c_bus_latch_rx_byte(bus, data);
++            }
++
+             bus->dma_dram_offset++;
+             bus->regs[reg_dma_len]--;
+             /* In new mode, keep track of how many bytes we RXed */
+@@ -489,7 +521,7 @@ static void aspeed_i2c_bus_recv(AspeedI2CBus *bus)
+     } else {
+         data = i2c_recv(bus->bus);
+         trace_aspeed_i2c_bus_recv("BYTE", 1, 1, bus->regs[reg_byte_buf]);
+-        SHARED_ARRAY_FIELD_DP32(bus->regs, reg_byte_buf, RX_BUF, data);
++        aspeed_i2c_bus_latch_rx_byte(bus, data);
+     }
+ }
+ 
+@@ -1758,6 +1790,7 @@ static void aspeed_1040_i2c_class_init(ObjectClass *klass, const void *data)
+     aic->has_dma = true;
+     aic->mem_size = 0x2000;
+     aic->has_dma64 = true;
++    aic->has_byte_data_log = true;
+     aic->dma_addr_lo_mask = 0x00ffffff;
+ }
+ 
+@@ -1780,6 +1813,7 @@ static void aspeed_2700_i2c_class_init(ObjectClass *klass, const void *data)
+     aic->has_dma = true;
+     aic->mem_size = 0x2000;
+     aic->has_dma64 = true;
++    aic->has_byte_data_log = true;
+     aic->dma_addr_lo_mask = 0xffffffff;
+ }
+ 
+-- 
+2.55.0
 
 

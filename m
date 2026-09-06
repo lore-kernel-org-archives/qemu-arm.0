@@ -4,55 +4,55 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9EE51C79F99
-	for <qemu-arm@archiver.kernel.org>; Sun,  6 Sep 2026 08:55:34 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 37C09C79F99
+	for <qemu-arm@archiver.kernel.org>; Sun,  6 Sep 2026 08:55:42 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1x38dc-0002E3-Dq; Sun, 06 Sep 2026 04:54:08 -0400
+	id 1x38de-0002GJ-AX; Sun, 06 Sep 2026 04:54:10 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <marcandre.lureau@redhat.com>)
- id 1x38db-0002DV-E3
- for qemu-arm@nongnu.org; Sun, 06 Sep 2026 04:54:07 -0400
+ id 1x38dd-0002FB-Jg
+ for qemu-arm@nongnu.org; Sun, 06 Sep 2026 04:54:09 -0400
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <marcandre.lureau@redhat.com>)
- id 1x38dZ-0000kj-SG
- for qemu-arm@nongnu.org; Sun, 06 Sep 2026 04:54:07 -0400
+ id 1x38dc-0000l9-3q
+ for qemu-arm@nongnu.org; Sun, 06 Sep 2026 04:54:09 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1788684845;
+ s=mimecast20190719; t=1788684847;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=TGP6x3h6YYJwclrpDRPnifXfRsYBwd4ztRbxKciLjog=;
- b=c3vKIhHCNjJLJYiF0eKIKU1tWcvFrpI8CAB9rSJ1m8SyHnWJYA+luyZKfrMtvzGFOXjs3g
- pi7MUcMHehSef5LrQirvYrWBtOZNWlbZmlpiwuQ8806jPB2oFaWgNKNfQ2VZdlTgCqODhD
- W/mczoQPlDsSxtQOaf/EQAc+vkwYr0k=
-Received: from mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com
+ bh=Vst5j4QPIcKrnpicAI/fXe4jkP6szpQ/0rL49li+K+4=;
+ b=bWSTBIfSKtoR6V1NM3+1aC1bPgSpa/eFwrQxGQXdamlbkgBYNYMKQndwk1UqTxl1e1u8yU
+ 4jrkuTW93IdRNLdv7Lu6bHMiwbYRxk+gNRDWm5NJ48hvxhYGVCvFbINUaMML6fMcuVRGj9
+ wckh1u8PF3seOjaX2BxTEYCgZ2DVXQ0=
+Received: from mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com
  (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-711-757ye2BWNxKPaMNEbZrdhg-1; Sun,
- 06 Sep 2026 04:54:00 -0400
-X-MC-Unique: 757ye2BWNxKPaMNEbZrdhg-1
-X-Mimecast-MFC-AGG-ID: 757ye2BWNxKPaMNEbZrdhg_1788684838
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-99-EPc8slb-NY20ki3Ou5gLPA-1; Sun,
+ 06 Sep 2026 04:54:04 -0400
+X-MC-Unique: EPc8slb-NY20ki3Ou5gLPA-1
+X-Mimecast-MFC-AGG-ID: EPc8slb-NY20ki3Ou5gLPA_1788684841
 Received: from mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com
  (mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.17])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 3CB1F18052FC; Sun,  6 Sep 2026 08:53:58 +0000 (UTC)
+ by mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 99583180121A; Sun,  6 Sep 2026 08:54:01 +0000 (UTC)
 Received: from localhost (headnet04.pony-001.prod.iad2.dc.redhat.com
  [10.2.32.116])
  by mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id 3EF341956042; Sun,  6 Sep 2026 08:53:56 +0000 (UTC)
+ id 919901956042; Sun,  6 Sep 2026 08:54:00 +0000 (UTC)
 From: =?utf-8?q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>
-Date: Sun, 06 Sep 2026 12:53:34 +0400
-Subject: [PATCH 2/9] tests/test_vhost_user_bridge: skip when running ASAN
+Date: Sun, 06 Sep 2026 12:53:35 +0400
+Subject: [PATCH 3/9] hw/misc/bcm2835_powermgt: free wdog timer on finalize
 MIME-Version: 1.0
-Message-Id: <20260906-nohmp-next-v1-2-2b21e63974f3@redhat.com>
+Message-Id: <20260906-nohmp-next-v1-3-2b21e63974f3@redhat.com>
 References: <20260906-nohmp-next-v1-0-2b21e63974f3@redhat.com>
 In-Reply-To: <20260906-nohmp-next-v1-0-2b21e63974f3@redhat.com>
 To: qemu-devel@nongnu.org
@@ -75,25 +75,25 @@ Cc: Brian Cain <brian.cain@oss.qualcomm.com>,
  Matthew Rosato <mjrosato@linux.ibm.com>, Cornelia Huck <cohuck@redhat.com>, 
  qemu-s390x@nongnu.org, 
  =?utf-8?q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>
-X-Developer-Signature: v=1; a=openpgp-sha256; l=1854;
+X-Developer-Signature: v=1; a=openpgp-sha256; l=1395;
  i=marcandre.lureau@redhat.com; h=from:subject:message-id;
- bh=d3v8wDpl6ZpnpLjDUpJFM+2TuIyDJb7L4WPUBwqWyqM=;
- b=owEBbQKS/ZANAwAKAdro4Ql1lpzlAcsmYgBqnSoY9/k9w5PImLk+LNUNu1WVYh96sp1l3/KU6
- UkrsdNS3xiJAjMEAAEKAB0WIQSHqb2TP4fGBtJ29i3a6OEJdZac5QUCap0qGAAKCRDa6OEJdZac
- 5cjSD/9NiuPcABUIDCCnz8FfEvP7DWl5GvKODFUcbf58XQyPSXcDzyorEcg5bBSuZtMEQgfk+0E
- jQfihJfjG2z34XFLotlvXZw2jY+35pZWlNsk423YkdEaZA5xCaZ84X1UcsaUKY4pFwGEWfWXj4i
- dLe5SGg2b/LsmpXHk6KsG9ACX1ZTiILC+byTaKWn/MGux5+P+ZNe0x5ozKf82lKnwHVWO1HeBcw
- +6GvU2peDFqv7YdEa04eBaYVELxycZOjUVHD+iHjaa3i9L2H6KxqzgygfNARfyq5zIzFDQqcHwp
- 51RpbnOig+2Cp/dtC5KohddckgCzwIhHIjka6BkSAfZ5E5wZVKAYI3OEOwe8NsVEVvWGh6aD1vZ
- xziNm/6US+LE/APpUBOtNT0sIKvdcnBnbaDYaBgFyDsIz4vjU6O3qkAWT88BvSon0UWnlaIj3Ls
- NGi4L9vsLbnjnzj+zy7TV4U+0uYICmVsnLIKMjEsLMsAIR217GCGW7mkJWEsEA1U4UT9L/e/wgc
- +PMiErYHQOm/OTIAB4AmoPfN2YzO5cuYHm8a7yBfS02NpSrB7EmiWFS7eu/0+TCXzhCSP/ZenPT
- EYJIwx2ZYNUlfusg/Rw4CM8wNrKSrFe2kUJavmgjZOPhabm1Zj+6Zt5do7fySH2kV0S4WtMKS95
- kYqH0G9J9qElkDQ==
+ bh=aiXkdc63nsKgNhTc5ZS/RmEpq+MeWtxUvxktNtqDyD0=;
+ b=owEBbQKS/ZANAwAKAdro4Ql1lpzlAcsmYgBqnSoYzhb/L70apQJE8iQq8eM39G226x6BUkqvW
+ q9VGGL9p/OJAjMEAAEKAB0WIQSHqb2TP4fGBtJ29i3a6OEJdZac5QUCap0qGAAKCRDa6OEJdZac
+ 5c1MEACOhfNx10f74ac2I+4Pv+FmWZIHK8oPoePNAWDuX0pWDVH+Jvye+5Fjb+6SngjTSlw9Mmf
+ l7/QK2Bpv5Qi01t26rdcPXO5VsieeuQH8B6KI5VXMQmqaJ0zWVneWmOVSdrrHe+5jzBF0vjs7o5
+ yFMvtVU291SZdbVO6+c17SUXTUgK/PCgc+i415uiJ0y2qNX0kRWMi7bdw8/U8IGNxAw0OT/flMg
+ 2keFetx5xR4fqIPJofijES0fnpV3Ka4cWD1TNGn4wSepx22KtmB1+nk+be0I2oB9P4vjGtTcX91
+ bOt6Qow1yDIkcUpRcRjkKXUdFrNCQm4JqhvLyXvt2+3jD8t9+ucrEZIXOAo5Ictii6LPoo7Po9K
+ lBE9se9elWCGrEZB1aKm92NK/oTH/xJoPkvNTOYXf1hw9m/0kKmds0i1coy/mpI8Ov7c3MnuJHx
+ DY+mAXZfu+bNbXtsw260xOaP6uco+azl+8XpSn9MQ6yQncNtWxCcMtyzNc7kc6Bon+2fCtZrnF8
+ Cd6kOpO+oL1vV0aZTm2JwOeDhmbzI/b6B9aWZb0U9RUlvnmr/0oYeumjl9HMn4921pwMs52b7Da
+ rNKw1OH8mKiUkxFAyEzgdqPzlqKWZ55S2jhJxK/oQI5YaF7BPAAWawIoVReRQ49egsMdDQvC8MG
+ OVLJVo8NC3t5/mg==
 X-Developer-Key: i=marcandre.lureau@redhat.com; a=openpgp;
  fpr=87A9BD933F87C606D276F62DDAE8E10975969CE5
 X-Scanned-By: MIMEDefang 3.0 on 10.30.177.17
-X-Mimecast-MFC-PROC-ID: gfgo5bAEYEbZnhuOgz4LXfze4gfaJnOy-PoatNjzrSQ_1788684838
+X-Mimecast-MFC-PROC-ID: PoUJbG5Oa956aIJn1ety2QNWu4rMX0pPyfVPRZZlh8Q_1788684841
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
@@ -122,46 +122,44 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Running vhost-user-bridge built with ASAN with stdbuf dies:
-==2431898==ASan runtime does not come first in initial library list; you
-should either link runtime to your application or manually preload it
-with LD_PRELOAD.
+The wdog_timer allocated in instance_init  is causing ASAN to report a
+leak when the object is destroyed (e.g. during qom-test and
+device-introspect-test).
 
+Add an instance_finalize handler to free it.
+
+Fixes: 21fcfb604608 ("hw/misc/bcm2835_powermgt: implement a real watchdog timer")
 Signed-off-by: Marc-André Lureau <marcandre.lureau@redhat.com>
 ---
- tests/functional/x86_64/test_vhost_user_bridge.py | 13 +++++++++++++
- 1 file changed, 13 insertions(+)
+ hw/misc/bcm2835_powermgt.c | 8 ++++++++
+ 1 file changed, 8 insertions(+)
 
-diff --git a/tests/functional/x86_64/test_vhost_user_bridge.py b/tests/functional/x86_64/test_vhost_user_bridge.py
-index c36c62542053..5fedf61c5e72 100755
---- a/tests/functional/x86_64/test_vhost_user_bridge.py
-+++ b/tests/functional/x86_64/test_vhost_user_bridge.py
-@@ -73,12 +73,25 @@ def configure_vm(self, ud_socket_path, lport, rport, hostfwd_port, tftpdir):
-             "-netdev",   "hubport,id=hub1,hubid=0,netdev=user0"
-         )
+diff --git a/hw/misc/bcm2835_powermgt.c b/hw/misc/bcm2835_powermgt.c
+index 7b01be48bb7f..1de5a55a4f5b 100644
+--- a/hw/misc/bcm2835_powermgt.c
++++ b/hw/misc/bcm2835_powermgt.c
+@@ -152,6 +152,13 @@ static void bcm2835_powermgt_init(Object *obj)
+                                  bcm2835_powermgt_expire, s);
+ }
  
-+    @staticmethod
-+    def _is_asan_linked(binary_path):
-+        try:
-+            output = subprocess.check_output(
-+                ["ldd", binary_path], stderr=subprocess.DEVNULL, text=True)
-+            return "libasan" in output
-+        except (subprocess.CalledProcessError, FileNotFoundError):
-+            return False
++static void bcm2835_powermgt_finalize(Object *obj)
++{
++    BCM2835PowerMgtState *s = BCM2835_POWERMGT(obj);
 +
-     def assemble_vubr_args(self, vubr_path, ud_socket_path, lport, rport):
-         vubr_args = []
++    timer_free(s->wdog_timer);
++}
++
+ static void bcm2835_powermgt_reset(DeviceState *dev)
+ {
+     BCM2835PowerMgtState *s = BCM2835_POWERMGT(dev);
+@@ -177,6 +184,7 @@ static const TypeInfo bcm2835_powermgt_info = {
+     .instance_size = sizeof(BCM2835PowerMgtState),
+     .class_init    = bcm2835_powermgt_class_init,
+     .instance_init = bcm2835_powermgt_init,
++    .instance_finalize = bcm2835_powermgt_finalize,
+ };
  
-         if (stdbuf_path := which("stdbuf")) is None:
-             self.log.info("Could not find stdbuf: vhost-user-bridge "
-                           "log lines may appear out of order")
-+        elif self._is_asan_linked(vubr_path):
-+            self.log.info("vhost-user-bridge is ASan-linked: skipping "
-+                          "stdbuf to avoid LD_PRELOAD conflict, "
-+                          "log lines may appear out of order")
-         else:
-             vubr_args += [stdbuf_path, "-o0", "-e0"]
- 
+ static void bcm2835_powermgt_register_types(void)
 
 -- 
 2.55.0.543.g5ebe2ebe4ea8

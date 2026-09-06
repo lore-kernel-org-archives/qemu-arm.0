@@ -4,73 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 29FDDC79F8C
-	for <qemu-arm@archiver.kernel.org>; Sun,  6 Sep 2026 17:14:55 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A93C8C79F85
+	for <qemu-arm@archiver.kernel.org>; Sun,  6 Sep 2026 17:14:56 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1x3GPK-00051z-CB; Sun, 06 Sep 2026 13:11:54 -0400
+	id 1x3GOA-0003MZ-3x; Sun, 06 Sep 2026 13:10:42 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1x3GPI-0004o7-Ll
- for qemu-arm@nongnu.org; Sun, 06 Sep 2026 13:11:52 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1x3GO9-0003M3-1A
+ for qemu-arm@nongnu.org; Sun, 06 Sep 2026 13:10:41 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1x3GPG-0000Lm-AG
- for qemu-arm@nongnu.org; Sun, 06 Sep 2026 13:11:52 -0400
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1x3GO6-0008VC-Sz
+ for qemu-arm@nongnu.org; Sun, 06 Sep 2026 13:10:40 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1788714709;
+ s=mimecast20190719; t=1788714638;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=+EyHba9AO0aIJAAangy0KYzvZcDPD4M4fdPLQozi62Q=;
- b=Nao+g4EhrPIYpfSI4YgrjqpQxUMQUQG4l4eOz49HaxAh9Et8SPugCqVO2rSjFXuk9sFQty
- WNihdilQWaYOYFDFa0HmpkMWEPdMllbVBlajvafAtcbK1fMRgbJMgKpO0L8K5SzkvtXrfi
- vJ7e/H0uoVSyXremAa7+dbXYAfS+F5c=
-Received: from mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
+ bh=7PVNgscwlHiuNOAcyp2OFZJ32h79sLgK0XH/e/6ez6o=;
+ b=ZzkSgaRBNv3P2iXPUp1Ydr/Ero8WlMEunV0Ru9I/pSOMCCqfmB1t+xueaEbPelnFWk9wRz
+ e8Q5Ec69VEwmmd7xEBJagFMFwXacM1YepahkW2B9Yga+M/2O9i9TV+K0J81unTAD2eCnPu
+ EE34nD9Kb4TtEbgZubIyhNYzwX0lbC0=
+Received: from mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-2-pctgeoFyPRC-n4gT4eZwtw-1; Sun,
- 06 Sep 2026 13:11:48 -0400
-X-MC-Unique: pctgeoFyPRC-n4gT4eZwtw-1
-X-Mimecast-MFC-AGG-ID: pctgeoFyPRC-n4gT4eZwtw_1788714707
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-621-DCKzmu8vOQabEkk--26l0A-1; Sun,
+ 06 Sep 2026 13:10:36 -0400
+X-MC-Unique: DCKzmu8vOQabEkk--26l0A-1
+X-Mimecast-MFC-AGG-ID: DCKzmu8vOQabEkk--26l0A_1788714635
 Received: from mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com
  (mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.12])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 2CE4418001E6; Sun,  6 Sep 2026 17:11:47 +0000 (UTC)
+ by mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 4EC261954AEB; Sun,  6 Sep 2026 17:10:35 +0000 (UTC)
 Received: from yukon.redhat.com (unknown [10.44.32.24])
  by mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id BE5871955F06; Sun,  6 Sep 2026 17:11:45 +0000 (UTC)
+ id 322161955F06; Sun,  6 Sep 2026 17:10:32 +0000 (UTC)
 From: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Cc: Emmanuel Blot <emmanuel.blot@free.fr>,
+Cc: Jamin Lin <jamin_lin@aspeedtech.com>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@oss.qualcomm.com>,
  =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>
-Subject: [PULL 39/40] hw/arm: fuji: use the real TMP75 and LM75B temperature
- sensors
-Date: Sun,  6 Sep 2026 19:10:20 +0200
-Message-ID: <20260906171021.26568-40-clg@redhat.com>
+Subject: [PULL 03/40] hw/usb/hcd-ehci: Check for DMA errors in
+ get_dwords()/put_dwords()
+Date: Sun,  6 Sep 2026 19:09:44 +0200
+Message-ID: <20260906171021.26568-4-clg@redhat.com>
 In-Reply-To: <20260906171021.26568-1-clg@redhat.com>
 References: <20260906171021.26568-1-clg@redhat.com>
 MIME-Version: 1.0
 X-Scanned-By: MIMEDefang 3.0 on 10.30.177.12
-X-Mimecast-MFC-PROC-ID: B4aTVM4be19IG09lGwx8mXQV0obA9pFj1tpTTbABON4_1788714707
+X-Mimecast-MFC-PROC-ID: 6tiy87Ie2JdzRW6juW-8Z5Nz1KZ33AtTQamOxCuhlho_1788714635
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=clg@redhat.com;
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=clg@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+X-Spam_score_int: 12
+X-Spam_score: 1.2
+X-Spam_bar: +
+X-Spam_report: (1.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=-0.01, RCVD_IN_MSPIKE_WL=-0.01,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.01, RCVD_IN_SBL_CSS=3.335,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -86,76 +88,99 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-From: Emmanuel Blot <emmanuel.blot@free.fr>
+From: Jamin Lin <jamin_lin@aspeedtech.com>
 
-The Fuji BMC instantiates many ti,tmp75 sensors and several NXP LM75B
-sensors; the original board code approximated both with a plain TMP105
-via local TYPE_TMP75 and TYPE_LM75 aliases (the latter mislabelling the
-LM75B parts as LM75).
+get_dwords() and put_dwords() return -1 when ehci->as is NULL, but that
+can no longer happen. The sysbus variants set it in instance_init
+(ehci_sysbus_init()), the PCI variant sets it in realize
+(usb_ehci_pci_realize()), and usb_ehci_pci_write_config() only switches
+between the bus master address space and address_space_memory.
 
-Now that hw/sensor/tmp105.h provides proper TMP75 and LM75B models, drop
-the local aliases (and their guards) and instantiate the accurate
-devices.
+Meanwhile the results of dma_memory_read() and dma_memory_write() are
+ignored, so a failed guest memory access is silently treated as success.
 
-Signed-off-by: Emmanuel Blot <emmanuel.blot@free.fr>
-Reviewed-by: Cédric Le Goater <clg@redhat.com>
-Link: https://lore.kernel.org/qemu-devel/20260731-sanmiguel-bmc-locator-v2-15-1266926ba769@free.fr
+Drop the dead NULL test and check the MemTxResult of each access
+instead, so that the existing -1 error path reports real DMA errors:
+raise USBSTS_HSE, clear USBCMD_RUNSTOP and stop processing the
+descriptor, as the NULL path used to do. All 11 get_dwords() callers
+already check the return value.
+
+put_dwords() now returns void: none of its four callers (ehci_flush_qh(),
+ehci_state_fetchitd() and twice in ehci_state_writeback()) looks at the
+status.
+
+Suggested-by: Peter Maydell <peter.maydell@linaro.org>
+Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
+Reviewed-by: Philippe Mathieu-Daudé <philmd@oss.qualcomm.com>
+Link: https://lore.kernel.org/qemu-devel/20260817055318.3826428-2-jamin_lin@aspeedtech.com
 Signed-off-by: Cédric Le Goater <clg@redhat.com>
 ---
- hw/arm/aspeed_ast2600_fuji.c | 22 +++++++---------------
- 1 file changed, 7 insertions(+), 15 deletions(-)
+ hw/usb/hcd-ehci.c | 38 ++++++++++++++++----------------------
+ 1 file changed, 16 insertions(+), 22 deletions(-)
 
-diff --git a/hw/arm/aspeed_ast2600_fuji.c b/hw/arm/aspeed_ast2600_fuji.c
-index 6318aa606b6b..dae023938793 100644
---- a/hw/arm/aspeed_ast2600_fuji.c
-+++ b/hw/arm/aspeed_ast2600_fuji.c
-@@ -14,14 +14,6 @@
- #include "hw/sensor/tmp105.h"
- #include "hw/nvram/eeprom_at24c.h"
+diff --git a/hw/usb/hcd-ehci.c b/hw/usb/hcd-ehci.c
+index 451a918e9f5f..ecf98c4e199f 100644
+--- a/hw/usb/hcd-ehci.c
++++ b/hw/usb/hcd-ehci.c
+@@ -421,16 +421,14 @@ static inline int get_dwords(EHCIState *ehci, uint64_t addr,
+ {
+     int i;
  
--/*
-- * Guard the aliases against the TYPE_TMP75 that hw/sensor/tmp105.h now defines;
-- * TYPE_LM75 is guarded too for consistency (no LM75 model exists yet).
-- */
--#undef TYPE_LM75
--#define TYPE_LM75 TYPE_TMP105
--#undef TYPE_TMP75
--#define TYPE_TMP75 TYPE_TMP105
- #define TYPE_TMP422 "tmp422"
- 
- /* Fuji hardware value */
-@@ -62,8 +54,8 @@ static void fuji_bmc_i2c_init(AspeedMachineState *bmc)
-         get_pca9548_channels(i2c[40 + i], 0x76, &i2c[80 + i * 8]);
+-    if (!ehci->as) {
+-        ehci_raise_irq(ehci, USBSTS_HSE);
+-        ehci->usbcmd &= ~USBCMD_RUNSTOP;
+-        trace_usb_ehci_dma_error();
+-        return -1;
+-    }
+-
+     for (i = 0; i < num; i++, buf++, addr += sizeof(*buf)) {
+-        dma_memory_read(ehci->as, addr, buf, sizeof(*buf),
+-                        MEMTXATTRS_UNSPECIFIED);
++        if (dma_memory_read(ehci->as, addr, buf, sizeof(*buf),
++                            MEMTXATTRS_UNSPECIFIED) != MEMTX_OK) {
++            ehci_raise_irq(ehci, USBSTS_HSE);
++            ehci->usbcmd &= ~USBCMD_RUNSTOP;
++            trace_usb_ehci_dma_error();
++            return -1;
++        }
+         *buf = le32_to_cpu(*buf);
      }
  
--    i2c_slave_create_simple(i2c[17], TYPE_LM75, 0x4c);
--    i2c_slave_create_simple(i2c[17], TYPE_LM75, 0x4d);
-+    i2c_slave_create_simple(i2c[17], TYPE_LM75B, 0x4c);
-+    i2c_slave_create_simple(i2c[17], TYPE_LM75B, 0x4d);
+@@ -438,25 +436,21 @@ static inline int get_dwords(EHCIState *ehci, uint64_t addr,
+ }
  
-     /*
-      * EEPROM 24c64 size is 64Kbits or 8 Kbytes
-@@ -73,15 +65,15 @@ static void fuji_bmc_i2c_init(AspeedMachineState *bmc)
-     at24c_eeprom_init(i2c[20], 0x50, 256);
-     at24c_eeprom_init(i2c[22], 0x52, 256);
+ /* Put an array of dwords in to main memory */
+-static inline int put_dwords(EHCIState *ehci, uint64_t addr,
+-                             uint32_t *buf, int num)
++static inline void put_dwords(EHCIState *ehci, uint64_t addr,
++                              uint32_t *buf, int num)
+ {
+     int i;
  
--    i2c_slave_create_simple(i2c[3], TYPE_LM75, 0x48);
--    i2c_slave_create_simple(i2c[3], TYPE_LM75, 0x49);
--    i2c_slave_create_simple(i2c[3], TYPE_LM75, 0x4a);
-+    i2c_slave_create_simple(i2c[3], TYPE_LM75B, 0x48);
-+    i2c_slave_create_simple(i2c[3], TYPE_LM75B, 0x49);
-+    i2c_slave_create_simple(i2c[3], TYPE_LM75B, 0x4a);
-     i2c_slave_create_simple(i2c[3], TYPE_TMP422, 0x4c);
+-    if (!ehci->as) {
+-        ehci_raise_irq(ehci, USBSTS_HSE);
+-        ehci->usbcmd &= ~USBCMD_RUNSTOP;
+-        trace_usb_ehci_dma_error();
+-        return -1;
+-    }
+-
+     for (i = 0; i < num; i++, buf++, addr += sizeof(*buf)) {
+         uint32_t tmp = cpu_to_le32(*buf);
+-        dma_memory_write(ehci->as, addr, &tmp, sizeof(tmp),
+-                         MEMTXATTRS_UNSPECIFIED);
++        if (dma_memory_write(ehci->as, addr, &tmp, sizeof(tmp),
++                             MEMTXATTRS_UNSPECIFIED) != MEMTX_OK) {
++            ehci_raise_irq(ehci, USBSTS_HSE);
++            ehci->usbcmd &= ~USBCMD_RUNSTOP;
++            trace_usb_ehci_dma_error();
++            return;
++        }
+     }
+-
+-    return num;
+ }
  
-     at24c_eeprom_init(i2c[8], 0x51, 8 * KiB);
--    i2c_slave_create_simple(i2c[8], TYPE_LM75, 0x4a);
-+    i2c_slave_create_simple(i2c[8], TYPE_LM75B, 0x4a);
- 
--    i2c_slave_create_simple(i2c[50], TYPE_LM75, 0x4c);
-+    i2c_slave_create_simple(i2c[50], TYPE_LM75B, 0x4c);
-     at24c_eeprom_init(i2c[50], 0x52, 8 * KiB);
-     i2c_slave_create_simple(i2c[51], TYPE_TMP75, 0x48);
-     i2c_slave_create_simple(i2c[52], TYPE_TMP75, 0x49);
+ static int ehci_get_pid(EHCIqtd *qtd)
 -- 
 2.55.0
 

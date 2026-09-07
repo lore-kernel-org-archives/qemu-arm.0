@@ -4,64 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 71A65C79FA7
-	for <qemu-arm@archiver.kernel.org>; Mon,  7 Sep 2026 16:43:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AC490C79FA1
+	for <qemu-arm@archiver.kernel.org>; Mon,  7 Sep 2026 16:43:40 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1x3cQh-0007Au-Ps; Mon, 07 Sep 2026 12:42:47 -0400
+	id 1x3cRF-0007Ql-9I; Mon, 07 Sep 2026 12:43:21 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <eblot.ml@gmail.com>)
- id 1x3cQf-00079y-W5
- for qemu-arm@nongnu.org; Mon, 07 Sep 2026 12:42:46 -0400
-Received: from mail-wm1-f54.google.com ([209.85.128.54])
+ id 1x3cRD-0007Pl-6x
+ for qemu-arm@nongnu.org; Mon, 07 Sep 2026 12:43:19 -0400
+Received: from mail-wr1-f47.google.com ([209.85.221.47])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <eblot.ml@gmail.com>)
- id 1x3cQd-0002lV-OD
- for qemu-arm@nongnu.org; Mon, 07 Sep 2026 12:42:45 -0400
-Received: by mail-wm1-f54.google.com with SMTP id
- 5b1f17b1804b1-49b96837ca3so29889205e9.3
- for <qemu-arm@nongnu.org>; Mon, 07 Sep 2026 09:42:43 -0700 (PDT)
+ id 1x3cRB-0002ph-OF
+ for qemu-arm@nongnu.org; Mon, 07 Sep 2026 12:43:18 -0400
+Received: by mail-wr1-f47.google.com with SMTP id
+ ffacd0b85a97d-48589798dbbso3115171f8f.3
+ for <qemu-arm@nongnu.org>; Mon, 07 Sep 2026 09:43:17 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1788799362; x=1789404162;
+ d=1e100.net; s=20251104; t=1788799396; x=1789404196;
  h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
  :content-type:mime-version:subject:date:from:x-gm-gg
  :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
  :content-type;
- bh=yXN++fw5zgOO6Nzdt5aDXW+w27r6GydROb+GJyYC31Y=;
- b=Y03uFdYdVbIpOa4i2y++bmE2L4wobe511FQ5M47zbxubbW9uS6IVxogEW91/GuPX8B
- e6VrdblnP8y8xj5eBppqWqh374rsK/TN+VQZcQpw0b2ngS9qCwr6gnoMhrF7RDkpLaXD
- acSxhZ6po8em2IiKb2CbGtjK51varSQLHQHRqdS1kLgymr7SW/TI3sIirTlLkzK8xQbN
- 3WvQZl7yJtC3OoAI6taWZZWrptKwWjhIhL+f91d+S6C8aXDeVfccQiWP/sIiQWGMBs99
- GDcSlgKalXuBwAvhYtUEWwxhw/r4ordNZE+yJUnZzo6PkvnOJIJrpgkmjaglCxSnxKH6
- 9DbA==
+ bh=ojXOoPy7qb9Ji3StIqOoikH1Y+fN6ya8UhzSWcfVEz4=;
+ b=PFD21S3lpr8VfTIVtfNGLxuvN0woVIGhsjiEWh3ycyIeJitXMDOxhRtqB4sGg/cFGA
+ /F5TOiwGwx4j9//n/QUu3kLtTlVU4vTfZ9XZSpyIRR38Y8MKoduQNSeCp3IetP1gdQwC
+ bYIMGUKGGc7J9g5cEPhN4aQj5LFgzmqVy04uVwqv5FGg8k5IRVDgvtltwbknYUKIGrss
+ SbJB7VJR/7hhL5tWiafLPSYBABCsVpEAenfs5gocemN8jYPXREk79QmSg4dmPcYfHOz/
+ gd5A1jE3b1RaKq3/QuIFEWvL748q2v6eekfDJYwj4f3tivcSE+drflXGjcwEomRR9OQ1
+ pxyA==
 X-Forwarded-Encrypted: i=1;
- AKwUvBxBe+pRgM5zrpJwwDZo5mHF1XLMnuQpUIjGC2yEjIljZdiVeZvWeDSYDP4lssgcvkFM9wW3pw6kDA==@nongnu.org
-X-Gm-Message-State: AFuF++nyXzpehvek7oJ/L9ic3P8dS3aZ86yOc/e1vGh44UdNUoFDggon
- NX3oJiE5WGaateo7Ds2V8V2kQZ8EsFqRlEyQv7uC8rTJnnb672y2Nz93
-X-Gm-Gg: AYBFou3JAtyPu9qsO82/YEWyQkGDhVdOg9nmnAnpIOoTwQFNZM4mqFxVEdPowlv0AE7
- kyDCb8Fyj7yq3/bIRuCl13560/p46PV0mlJ6ClGBAIHhbmbspdw+ewY7SwSaxKDLjbfxtrz1YL1
- S2PKrNWXaQI95xwnc/ziEy3LnWbm2yqSHYcPmidNTdymrQMSVSYN6uER02KU9yXBLaJDSYSS1u2
- NXZ2V157cyPx5Rh3gKdH+zjspFDGgo7ZE8dR0hpsudJB1deT93iHUk3UP+MKhImjSAGeleV9mEx
- OnOqVsXkc2ZqBTMiLyP7+SKoZn/dxrUfxR3lW6PI6Ng6WSa40dUt4a0vrw89uSlJwx4hWAtGZlV
- 2NoERqEd+0zaovJKZChKwJPlzR6e/+gNTg0MUoj9h0QoRhOKC/ikAXIU9pGB564uoyYEEy3jJ21
- o5zGOatM3hqjIcMegYFg1Hasi0vlcMFFgrq/iu9vkSwad6lObnkK/Ye/3WSK5SUGuQTZKQQvUr4
- gntcAXLawI/JksuH126BzIVrePjpSAVcoQcNW/ZMm7pew==
-X-Received: by 2002:a05:600c:4505:b0:49c:dca2:ac47 with SMTP id
- 5b1f17b1804b1-49cf7fe607cmr220873985e9.2.1788799362092; 
- Mon, 07 Sep 2026 09:42:42 -0700 (PDT)
+ AKwUvBwVkzJs2mSKa2FvFDh5E1PP1W0qcdYMaJ6ihhtIObAfhnywqNr2NmStIhYCAySs+pFOhil/ErAeGQ==@nongnu.org
+X-Gm-Message-State: AFuF++mDvEgvV72LjkoKSUKQ27phiQfn90iQ7t+XDLTkdidqIHN6M3fb
+ Dus6FtG7m2zrTmEk9uDPDr4cMH6xyAQ1WcCabWmhqNvteZYU+VUTNc8M
+X-Gm-Gg: AYBFou2cjDk4wixvj0x1Ef1FIMh6gLH2mtvzOcJRR0yvlT1s3UFplviApstXWDTCPn4
+ 3BtMipLhuZ0D1t7I4ZT87la7PPADrkZmQCLaffigNw9YDKdqf3sUFiG9zDTxrXPG5TPtl/+KgIT
+ rItTTa/VEpEu0Jp2i6cRKGAWXbepPYVtVg9ih2kZBPA43jBAesGYR+ZMKh9bUY2LFA/6u3wxo2N
+ WyzAz1hsbhlSTJUvP7DOUK6fXhUeoei0HMxZn7pYczEbO+BQ7F1A+iFf1juK43ukpnAbvb2e04+
+ 0deC2OUgO4Wyi0JNPyzxnDvRihJMFBE2S7jztdqf7nyiIzbwwK0i2yN0rheHMbu8uewFvJnnWkh
+ Lfr2c39Wmz890S4NbRNR0a7DURAamzyzLznOBLVy4HhCbFMMj07ZGSOUI+OB/X6EiaYlX6W0o5i
+ 21Hvkr1/ppfCZNUuBGUxoTZ4ZHG+dcqVSdmy3xD0PolhIwFOjbUOyOo3OtRjUA6Wn/XjHz7Kg7k
+ 7i01QVUkPoBezbyiLcv4mLBpQUjg1A1c2PN8yEDQdk/tQ==
+X-Received: by 2002:a05:6000:1863:b0:485:8a46:704c with SMTP id
+ ffacd0b85a97d-4858a46716bmr21823339f8f.30.1788799396182; 
+ Mon, 07 Sep 2026 09:43:16 -0700 (PDT)
 Received: from localhost (89-93-216-19.hfc.dyn.abo.bbox.fr. [89.93.216.19])
  by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-49ce58da3acsm859019835e9.0.2026.09.07.09.42.40
+ ffacd0b85a97d-4858ac2b4cdsm28550376f8f.16.2026.09.07.09.43.15
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 07 Sep 2026 09:42:41 -0700 (PDT)
-Date: Mon, 07 Sep 2026 18:41:51 +0200
-Subject: [PATCH 01/50] docs/system/arm/aspeed: add the catalina-bmc machine
+ Mon, 07 Sep 2026 09:43:15 -0700 (PDT)
+Date: Mon, 07 Sep 2026 18:41:54 +0200
+Subject: [PATCH 04/50] hw/i2c: pca954x: drop unused header inclusions
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20260907-bmc-minerva-v1-1-0d83ad610c3b@free.fr>
+Message-Id: <20260907-bmc-minerva-v1-4-0d83ad610c3b@free.fr>
 References: <20260907-bmc-minerva-v1-0-0d83ad610c3b@free.fr>
 In-Reply-To: <20260907-bmc-minerva-v1-0-0d83ad610c3b@free.fr>
 To: qemu-devel@nongnu.org
@@ -77,15 +77,15 @@ Cc: =?utf-8?q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>,
  =?utf-8?q?Philippe_Mathieu-Daud=C3=A9?= <philmd@oss.qualcomm.com>, 
  Emmanuel Blot <emmanuel.blot@free.fr>
 X-Mailer: b4 0.15.2
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1788799319; l=1992;
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1788799319; l=840;
  i=emmanuel.blot@free.fr; s=20260602; h=from:subject:message-id;
- bh=jOGxphM6i2yuU0VVdWKJiaxsh0O18wnvUcN3/3+xhQk=;
- b=Cto8ykDil9oYTgsGQA7AV/sd/46SI4OKM5pjwd/qHnmnAUrZ5/O41M3k3fD3BoRESR9x0Yiqr
- RO2VXaUU39KA/25jod8P9EPZ8LSlJktDSIebEUsVeyBbuLcZQfdWPhz
+ bh=uUIqo2cMsRAcBY+czFTMxvhiWXutmm3Zl9xFpRFXck0=;
+ b=zDu2jnqnvbVCx2F+4Yl7UpI+XoysiLJwJphorKoCApt7XdSoDeuVqvz8LYcgIUrNG58L4m+OM
+ optoI6Xt6vcBCMKQws3B6b64hdvAB9MjyaauK3l2NPxwly6BDC2SHWC
 X-Developer-Key: i=emmanuel.blot@free.fr; a=ed25519;
  pk=0qFrZ21FAAN8OfVsSoVcCFTk/NMYOWzxJz4paSAVm0g=
-Received-SPF: pass client-ip=209.85.128.54; envelope-from=eblot.ml@gmail.com;
- helo=mail-wm1-f54.google.com
+Received-SPF: pass client-ip=209.85.221.47; envelope-from=eblot.ml@gmail.com;
+ helo=mail-wr1-f47.google.com
 X-Spam_score_int: -15
 X-Spam_score: -1.6
 X-Spam_bar: -
@@ -111,40 +111,34 @@ From:  Emmanuel Blot via <qemu-arm@nongnu.org>
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-The Facebook Catalina BMC machine is supported by hw/arm but has never
-been listed in the Aspeed documentation. Add it to the AST2600 machine
-table.
-
-While at it, shorten the document title. Listing every machine name in
-the title duplicates the tables right below it, and made the title (and
-its underline) grow past 350 columns. The machine list stays available
-where it is readable, in the per-SoC tables.
+The qapi/error.h, hw/core/sysbus.h and qemu/module.h headers are
+included but not used by i2c_mux_pca954x.c. Remove them.
 
 Signed-off-by: Emmanuel Blot <emmanuel.blot@free.fr>
 ---
- docs/system/arm/aspeed.rst | 5 +++--
- 1 file changed, 3 insertions(+), 2 deletions(-)
+ hw/i2c/i2c_mux_pca954x.c | 3 ---
+ 1 file changed, 3 deletions(-)
 
-diff --git a/docs/system/arm/aspeed.rst b/docs/system/arm/aspeed.rst
-index 2d51ceeb84..933df41f96 100644
---- a/docs/system/arm/aspeed.rst
-+++ b/docs/system/arm/aspeed.rst
-@@ -1,5 +1,5 @@
--Aspeed family boards (``anacapa-bmc``, ``ast2500-evb``, ``ast2600-evb``, ``bletchley-bmc``, ``fuji-bmc``, ``gb200nvl-bmc``, ``fby35-bmc``, ``g220a-bmc``, ``palmetto-bmc``, ``quanta-q71l-bmc``, ``rainier-bmc``, ``romulus-bmc``, ``supermicrox11-bmc``, ``supermicrox11spi-bmc``, ``tiogapass-bmc``, ``witherspoon-bmc``, ``yosemitev2-bmc``)
--===============================================================================================================================================================================================================================================================================================================================================
-+Aspeed family boards
-+====================
+diff --git a/hw/i2c/i2c_mux_pca954x.c b/hw/i2c/i2c_mux_pca954x.c
+index c6034460284..c8e75da8b2e 100644
+--- a/hw/i2c/i2c_mux_pca954x.c
++++ b/hw/i2c/i2c_mux_pca954x.c
+@@ -15,15 +15,12 @@
+  */
  
- The QEMU Aspeed machines model BMCs of various OpenPOWER systems and
- Aspeed evaluation boards. They are based on different releases of the
-@@ -33,6 +33,7 @@ AST2600 SoC based machines :
- - ``fuji-bmc``             Facebook Fuji BMC
- - ``bletchley-bmc``        Facebook Bletchley BMC
- - ``fby35-bmc``            Facebook fby35 BMC
-+- ``catalina-bmc``         Facebook Catalina BMC
- - ``anacapa-bmc``          Facebook Anacapa BMC
- - ``gb200nvl-bmc``         Nvidia GB200nvl BMC
- 
+ #include "qemu/osdep.h"
+-#include "qapi/error.h"
+ #include "hw/i2c/i2c.h"
+ #include "hw/i2c/i2c_mux_pca954x.h"
+ #include "hw/i2c/smbus_slave.h"
+ #include "hw/core/qdev.h"
+ #include "hw/core/qdev-properties.h"
+-#include "hw/core/sysbus.h"
+ #include "qemu/log.h"
+-#include "qemu/module.h"
+ #include "qemu/queue.h"
+ #include "qom/object.h"
+ #include "trace.h"
 
 -- 
 2.50.1

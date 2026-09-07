@@ -4,96 +4,151 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7148AC79FA0
-	for <qemu-arm@archiver.kernel.org>; Mon,  7 Sep 2026 16:52:42 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EF94EC79F99
+	for <qemu-arm@archiver.kernel.org>; Mon,  7 Sep 2026 21:58:04 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1x3ca5-0005Uo-M8; Mon, 07 Sep 2026 12:52:29 -0400
+	id 1x3hLJ-0006fI-G1; Mon, 07 Sep 2026 17:57:33 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eblot.ml@gmail.com>)
- id 1x3cZq-00054H-Cf
- for qemu-arm@nongnu.org; Mon, 07 Sep 2026 12:52:17 -0400
-Received: from mail-wr1-f50.google.com ([209.85.221.50])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <eblot.ml@gmail.com>)
- id 1x3cZn-0004zq-PQ
- for qemu-arm@nongnu.org; Mon, 07 Sep 2026 12:52:14 -0400
-Received: by mail-wr1-f50.google.com with SMTP id
- ffacd0b85a97d-47ddf7b09e5so4273198f8f.1
- for <qemu-arm@nongnu.org>; Mon, 07 Sep 2026 09:52:11 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1788799930; x=1789404730;
- h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
- :content-type:mime-version:subject:date:from:x-gm-gg
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
- :content-type;
- bh=SvxLkYLFxBz+kmta5sRtklppBkoMZNtdkurTxLQZymc=;
- b=MXnZeU1Aaj161A56UIXfPjFAbnkNRxM6/iIerabWhBgdBEdNl2xN6Hv9iqIMCP0YNN
- po1iU1d58abk30sbAdkH7Rbu3swEeKWJjDFZUzn0VlmsbmxpH6++plzl0JKewuNUoEaU
- WvXPGFcS9eFhKcms/jiHt0GuusqRTUVrSgkP9LibxgqD4isBhk3SbFXJJE7iXGvEN7dX
- HqIo6m2UEqMQW73pjAC7HaxAa6WamZI5e0WIq2vXRwgudXphQrCzaQlwo+JWoCYuwQl3
- TuJP95ARxTCIQScxCeRs3E+kEE/zuisPAjiSvADk0cCM2ioJO1v/mAEyoIA/Bjnb/94s
- S9GA==
-X-Forwarded-Encrypted: i=1;
- AKwUvBzwi7DN9e7n+TaUMmuWyfpvU9urxYuMEDHNTk34KgzpKz+osaLA7dv0s/Dcz7TS/LE6nTiXXGkIrQ==@nongnu.org
-X-Gm-Message-State: AFuF++lXfyR1WS6teapDNzBp3QN9+aM5kE4c8B5JYRbUPakTg0G8LYgZ
- TQHayGGnueNUIKrtS1sqBl9FjgcyTOBt2rI3BWRhaSa+mXjpWkohEEaT
-X-Gm-Gg: AYBFou2cjCBTJfmILnP4NsNEcjCAgZ6wciZ51L7DaYw7T72HpPiberYlQYFY3UWGWri
- JzlcZgGPSKd7kFUxAeVq+RIVueQkoBvjaqZfLZXvJ+i3AVFsLW/PPLGAh8+3eFaXkEsYIIzJmWq
- oBKr1FXjScXS2OZCxDIi6PSq8jYgBNZLjeJF/3zSNXL3/PXCCaiK3me9CCych2BNMcdYw9jLE+i
- orGxPbU8doLWS5VVLCBEe5AKT13xHFEz9XzsmoF0EmLHlsQGqpyGoNmW2iSaNa62u0gmzQmp12H
- kFLqfbgrkv+5Iy8mhDd0xZ5FmXOcfO61+NZcwnqhnOjToW93TYlE5BAeFDfeW6RPvTViP7ODf8D
- mAic86MkJucmn5aS/eezI12jTPi2L4I/lJ6CxyZDrZpg5DOzouF4xC8hOlMAW+u1sCWWF0eOnYN
- fSTNQgkTBwDpfC63L+CMSGfL6kWr88Kan+G65YzWujYh1XKnr44QSQMFWFuxYQXsfoq5SO2DFIN
- iOblvCEaBhbDvaDjz8bs4Oz6klomkVbtoY=
-X-Received: by 2002:a05:600c:c173:b0:49c:cedc:3c36 with SMTP id
- 5b1f17b1804b1-49cf82a514cmr244391835e9.16.1788799930026; 
- Mon, 07 Sep 2026 09:52:10 -0700 (PDT)
-Received: from localhost (89-93-216-19.hfc.dyn.abo.bbox.fr. [89.93.216.19])
- by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-49cf772692dsm383936695e9.10.2026.09.07.09.52.09
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 07 Sep 2026 09:52:09 -0700 (PDT)
-Date: Mon, 07 Sep 2026 18:42:40 +0200
-Subject: [PATCH 50/50] tests/functional/arm: minerva: add BMC boot test
+ (Exim 4.90_1) (envelope-from <den@virtuozzo.com>)
+ id 1x3hLI-0006ev-Hw; Mon, 07 Sep 2026 17:57:32 -0400
+Received: from mail-norwayeastazlp170130007.outbound.protection.outlook.com
+ ([2a01:111:f403:c20f::7] helo=OSPPR02CU001.outbound.protection.outlook.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <den@virtuozzo.com>)
+ id 1x3hLG-0004D1-Bd; Mon, 07 Sep 2026 17:57:32 -0400
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=Ry2SnqvY7bb4x6/tCEx02S7I4ZODiZ43sSEzZkxxK3PWy8Ak7OarZ6Y0HTMTQTuGgHwBkoFcyKkYit2EzMg7Mm0o1RQC4GsihnPfV9w1YdSrMVHeJPzXLO4+SRYpVPZx031JRz31F7koutAxxNVYQO27wHkRQkLlMTslMlhR9MWhArlyA/6grYFj2ixOssa2e2cG4l21rQojQ2RH0F7Qky5ZI8Nkwcexx2JHKk835hE1JEBGykOL33OzmKllD7x9qJfPqkX3R6bVnJceyGaS68eF296IS2x3MbvNgGplH1DLJqmH5Nv5ELd/ARTb6tToWHtvX98p+7O7qvJVYSlZYw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=zSzccNyvDkrM43rIetwftMTFPEWg50As66SuEOXUR6U=;
+ b=nm+sfA/bf1cmu93gmEOfH+H4cF08VY9VFNjx7IY09OKd2HMf0Oxc53BM/tzLSlQi/P4ZCnwWsQPhSvtzqEokWMqJ1YV2W2l+xpNS0pd1Wp9ErOo1D8JcwCGglW6IXaFez+4sjxOkqAe2B955tb50SpLS7sYoyk4eygWWZihGmMfIoo+uwa4JDr47AL3wEdqgiTa78WAf0o+Bh/DYkFbf2SlcZebIPgIET/BO5Gui1ACePlqGGI6XzO3gHNGrXY52WyPCY2XEaDrvJRhezf4HTU5nhGXLI4DF+xHhgEQtgv8ZZ2i+r5jttUwpr/aP7jWCjdgP51AToXKxl8wzxPfYew==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=virtuozzo.com; dmarc=pass action=none
+ header.from=virtuozzo.com; dkim=pass header.d=virtuozzo.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=virtuozzo.com;
+ s=selector2;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=zSzccNyvDkrM43rIetwftMTFPEWg50As66SuEOXUR6U=;
+ b=ygSfWx12oF5h7O3PuDTYQBjioJYHzaDq3e00abUsDIpqjM5gTal0pu+iu6HEJwZUJmviD/8vV7Yfb1hBMRNAQLhaynAA12WzOqiYntOj3xN9e/HO/1Jyckly7KNURsXNTjGxbtdp1LCoga9oJHtp0TYuAwy3EsrqQKos6YnbPgOqRcxP5OeTiCfVT8s3CGUEyLoqAb8HaTPpeazUk3xkU9fnzfyKRiCWD3fHmQac+7TpPK4lcmyZxqSrS6ruavVa+e2DzGqBo304AyW+mssfvvc+2GgtjNUxty++hPxdkk+xmWiJuQxZIemhv+yOqdJ4W6nyF0IYzlz0rOqNOhLvkg==
+Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=virtuozzo.com;
+Received: from AM9PR08MB5892.eurprd08.prod.outlook.com (2603:10a6:20b:2dd::16)
+ by DBAPR08MB5733.eurprd08.prod.outlook.com (2603:10a6:10:1b3::11)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.21.406.6; Mon, 7 Sep 2026
+ 21:57:24 +0000
+Received: from AM9PR08MB5892.eurprd08.prod.outlook.com
+ ([fe80::94bb:633f:1f55:4bbd]) by AM9PR08MB5892.eurprd08.prod.outlook.com
+ ([fe80::94bb:633f:1f55:4bbd%2]) with mapi id 15.21.0406.005; Mon, 7 Sep 2026
+ 21:57:24 +0000
+Message-ID: <872dde4c-8850-4c8e-bd8f-1cebc3671044@virtuozzo.com>
+Date: Mon, 7 Sep 2026 23:57:22 +0200
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v3 1/9] tests/functional: replace HMP with QMP
+To: =?UTF-8?Q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>,
+ qemu-devel@nongnu.org
+Cc: John Snow <jsnow@redhat.com>, "Denis V. Lunev" <den@openvz.org>,
+ Fabiano Rosas <farosas@suse.de>, Laurent Vivier <lvivier@redhat.com>,
+ Paolo Bonzini <pbonzini@redhat.com>, qemu-block@nongnu.org,
+ Peter Maydell <peter.maydell@linaro.org>,
+ Thomas Huth <th.huth+qemu@posteo.eu>,
+ =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@oss.qualcomm.com>,
+ Aurelien Jarno <aurelien@aurel32.net>, qemu-arm@nongnu.org,
+ Halil Pasic <pasic@linux.ibm.com>,
+ Christian Borntraeger <borntraeger@linux.ibm.com>,
+ Eric Farman <farman@linux.ibm.com>, Matthew Rosato <mjrosato@linux.ibm.com>,
+ Cornelia Huck <cohuck@redhat.com>, qemu-s390x@nongnu.org,
+ =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>,
+ Glenn Miles <milesg@linux.ibm.com>, qemu-ppc@nongnu.org
+References: <20260907-nohmp-v3-0-c11e7d0d3d7d@redhat.com>
+ <20260907-nohmp-v3-1-c11e7d0d3d7d@redhat.com>
+Content-Language: en-US
+From: "Denis V. Lunev" <den@virtuozzo.com>
+In-Reply-To: <20260907-nohmp-v3-1-c11e7d0d3d7d@redhat.com>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+X-ClientProxiedBy: VI6PEPF00000234.AUTP296.PROD.OUTLOOK.COM
+ (2603:10a6:808:1::8f0) To AM9PR08MB5892.eurprd08.prod.outlook.com
+ (2603:10a6:20b:2dd::16)
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-Message-Id: <20260907-bmc-minerva-v1-50-0d83ad610c3b@free.fr>
-References: <20260907-bmc-minerva-v1-0-0d83ad610c3b@free.fr>
-In-Reply-To: <20260907-bmc-minerva-v1-0-0d83ad610c3b@free.fr>
-To: qemu-devel@nongnu.org
-Cc: =?utf-8?q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>, 
- Peter Maydell <peter.maydell@linaro.org>, 
- Steven Lee <steven_lee@aspeedtech.com>, Troy Lee <leetroy@gmail.com>, 
- Jamin Lin <jamin_lin@aspeedtech.com>, Kane Chen <kane_chen@aspeedtech.com>, 
- Andrew Jeffery <andrew@codeconstruct.com.au>, Joel Stanley <joel@jms.id.au>, 
- Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>, qemu-arm@nongnu.org, 
- Patrick Leis <venture@google.com>, Fabiano Rosas <farosas@suse.de>, 
- Laurent Vivier <lvivier@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>, 
- qemu-ppc@nongnu.org, qemu-riscv@nongnu.org, 
- =?utf-8?q?Philippe_Mathieu-Daud=C3=A9?= <philmd@oss.qualcomm.com>, 
- Emmanuel Blot <emmanuel.blot@free.fr>
-X-Mailer: b4 0.15.2
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1788799323; l=2482;
- i=emmanuel.blot@free.fr; s=20260602; h=from:subject:message-id;
- bh=zMnHp1SdNieEAjweeitFky57rPPnAgy18OpmLaUpJ1g=;
- b=V1QzQMxFouIxH4+6g0pVsz7I5wTEN7pR2ggQuv3Iq8sMs0tlCTfPc+Z4JyM62A5ZZPXCfz4/Y
- BQs9aZ1zMwsC5KjI+t1YSLVMlBc+KUKDXGAHdGYkT58OSPpETyxitFy
-X-Developer-Key: i=emmanuel.blot@free.fr; a=ed25519;
- pk=0qFrZ21FAAN8OfVsSoVcCFTk/NMYOWzxJz4paSAVm0g=
-Received-SPF: pass client-ip=209.85.221.50; envelope-from=eblot.ml@gmail.com;
- helo=mail-wr1-f50.google.com
-X-Spam_score_int: -15
-X-Spam_score: -1.6
-X-Spam_bar: -
-X-Spam_report: (-1.6 / 5.0 requ) BAYES_00=-1.9,
- FREEMAIL_FORGED_FROMDOMAIN=0.001, FREEMAIL_FROM=0.001,
- HEADER_FROM_DIFFERENT_DOMAINS=0.25, RCVD_IN_DNSWL_NONE=-0.0001,
- RCVD_IN_MSPIKE_H2=0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=no autolearn_force=no
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: AM9PR08MB5892:EE_|DBAPR08MB5733:EE_
+X-MS-Office365-Filtering-Correlation-Id: decc7a1f-cbeb-49a4-86a5-08df0d2affbe
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;
+ ARA:13230040|1800799024|366016|7416014|376014|23010399003|10070799003|6133799003|10067099003|4143699003|56012099006|18002099003|22082099003;
+X-Microsoft-Antispam-Message-Info: P7mTTHpK8CBaS+6/3tvURvH67Ex73HwI3bCP5XEjcTNnpB4Ui9BTL0ez8iBj0UFfdYy/HaT637OaWgmczgeoKmfdd+v/ZmKRo/HKbDfxWyP6QLq4Vbkgdlhj9Satbq/UXdkAQBISDcgNyLCzo9nGi2OxN9Q6i4m93+6t4m1OQmhz0wLIBPcZOH4RjYYP76RSsI+lkVBTlWiws3OFhgh4Jiyu+zC3yUKE/qIrq0Y/F3iqzoPlU3V3qpXGuUzTTYYnxtUdzlsxQZLQu9lGRRNnqyVIfGgC0AdyznVJCa1SuNAR96FQtESTyvzD42KpxipCFErEeudCiYWjVBNxujQRMLNRizgf651rZb4IjTB6c+2JKYFFhkKNJ6xxbX1Z9cPP2ZUT+9cN4w7ZhVM2PPfjtwQzsQn0l/f/xzdyeL0pZYL8kmXF4n4nwqMNegd+DbQn6gio5bLitUfnGP8rJGsZ8mUyxTYFU9gS2WnLrFGdZAeZV9WpFdPXmMQFAg3eDc98zm39xUe8dGxtRUv7M9lZz6Sfw8ylIMaqMqd9Gud12x52y0xUc5Qfs8naKg3aKx99enalNgpDwp2PiYy6KC8QeaWEmAgh2Eb1Y1T0jckj9mcnKVLvc5AwRlfK8ceBz4GXxCvH2wEdWFqVQbDWUQZOwA==
+X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:AM9PR08MB5892.eurprd08.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(13230040)(1800799024)(366016)(7416014)(376014)(23010399003)(10070799003)(6133799003)(10067099003)(4143699003)(56012099006)(18002099003)(22082099003);
+ DIR:OUT; SFP:1102; 
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 2
+X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?N2VQdDdvS0kxT3pzR0FXdll5MkgwdkJtbDgrR2poQmthMm14S2lFOTlwRi90?=
+ =?utf-8?B?TThPYVRWbnV5MmJJc1U5RzJyOFZ2UzFNMFpGRUVFb0RBOS9QYWc3aVFpSXV6?=
+ =?utf-8?B?eTIvVTlWMzEzNjdXdGg3bXV4dFJaYmVndTBFMjZraWlLUzdUTk5EMmt5Z052?=
+ =?utf-8?B?UklaNVB1S21FRUN4L0NoZkhTem80dW0zS2sxVnM2Nmt6cnZnSTQzdW00Zzl2?=
+ =?utf-8?B?TXpFOW8rM1N1WEcrTzVoTUdNNXJoYjBlZjJrcXBpcWFMSUtyNk5BcE9MZGpB?=
+ =?utf-8?B?YjU5UDBTaDJYMk9Ia09iWGRKZFNIdjUzNFZtTzZtVzZibnRSVDYwS2NjMXFr?=
+ =?utf-8?B?WHVsajZIZFMycXQreVZQYWt1MU1qcS9DR25FN083MmxFdHVROTFVVDFHRFNv?=
+ =?utf-8?B?cDBQZ2pGMlBjQmVCeFJsa0crakVvL2JJb3lQekNLenZMdE9BR1RiVjd5QlQ0?=
+ =?utf-8?B?cGRFNGZ0UTVMSzE2M0xMSjRGV0MyVytjQ3Y0T1hQbkQ2WkFUR3F1Z215bGNH?=
+ =?utf-8?B?QVNrQXJRNDlGV3hGVlJob3lPUmVvb1V5aEpXY3A4NTdEY09uMEFJeWQwZVE1?=
+ =?utf-8?B?d2lPTk5pT0pzREVQdlZheEY4Z0tCaGx1d2czYzkzSnFUUldpdUdsalpFT2dL?=
+ =?utf-8?B?Rk9NQmJONUhhMHNPbFN4Mktack5YRTZFR3c2NlIyU0x5YXhzbjRJd1pZYSs4?=
+ =?utf-8?B?R0hxV1ZJS21Dc1RmU2VFNXFRMERhWmtKdjRiN1N5TWRRUDlUWTZPOXVrSzlz?=
+ =?utf-8?B?aVdxUkg3SHVUQmczajFTTyt2NVBKMDk1dlpRV1BONFlmWGM2Z0dZMCs3YVAy?=
+ =?utf-8?B?RWFyOGxmaDVxWWYwT1gxd2xUU1ZtQVErVHpuRCs2OHlKVUpNVDhJN1FhV0h1?=
+ =?utf-8?B?UnQwR1Vad0xPNDhzeTIyQVhxdWs2eXRISjh1QWJnYjNvaXpVZTRNdEpMWFhu?=
+ =?utf-8?B?SzNENDJ0SlI1ZFI4cHdWSzhlTmc1OXllMm1MYlJ3ZjY5dTBPcDMwTnBWQzY3?=
+ =?utf-8?B?clpIcUMzdzVEUmpHYm9FTitPelhtVW10NTBaYVhTaG9aMTcwRTJsY2ZuRnpP?=
+ =?utf-8?B?OGlkNUJjbTR5VlRmQXVxNmU2Y2xqamZrTzNuTTEvdWg3QmR2em9LNW5mSjBX?=
+ =?utf-8?B?eTh4V3VRZjhyUS9GLzNZWGNGNysvRkdoN2c4Smk1WEhtbm1nWS9yT1g4L1ha?=
+ =?utf-8?B?R25GVUNXbjBzaWVaYUtSS1M2VGs0RFBOanpDWGpKakt5bVZWZkx0SmxBaUZx?=
+ =?utf-8?B?aWl2L25TQmZrLysxSlVhUkg0WldMbGJtL0s1NEUxRmEvK1lXR1NELzNlWjR0?=
+ =?utf-8?B?NGw1UW5Gay9TY3NzaXlQckdFS09wK1QwZWVEQkl4MXpLT081dUVkZnkxbFk5?=
+ =?utf-8?B?cFZybzQrT3NETjhLOWtIckwrRXRES2R0WWU2MFFWVDRDSHovb3UvY01nS2hK?=
+ =?utf-8?B?cWdRamRad09JY1AvWGVCWVBoS3I0RjJJSnFmUXN4dER4bDF3UGFmZVlzWlF2?=
+ =?utf-8?B?MkNtOW9zRHVOSy8ydnBnbEppV2tUR2hLQ0o1WmpnMEx5cHhvK0ZhSFozU3dZ?=
+ =?utf-8?B?QjZZSVE2aUQxaHM2bGRMWk9jMENuVlY0eWRoVnZadlJRTUNsZFE0d1dFRGxZ?=
+ =?utf-8?B?dTlCN2ZFckdCTHpveksrUXNHZ3hpYU1ycFpyVDRTZFN1bEl2SWlvaFdMeE5y?=
+ =?utf-8?B?d0E4UFdJQzh3WEZoRXNYVm51TlJqQjRIajl5TElLenc4ZEg2YlVpd2FteWVV?=
+ =?utf-8?B?N250SXovWkI1d21kcFdkWi80SVdLdDVwWWpVUDFmdGlESG8vLzVSTy9wZlJS?=
+ =?utf-8?B?Zjh6WkdPZTJqdngwYURtOFJOK3orZ3FTVnhyNkMwSExqUzkzWC9OZDRydGdp?=
+ =?utf-8?B?dnZJU3p3dWxMUTRlajBpZlRsNnRZNGdRYWNubEVJTUU3OGJzNWlJdk1tVmdY?=
+ =?utf-8?B?SFJhTytiQTFXNjRoSDczSTBvT1RTS3lVMjNjWWJNSmFGcFd0SHh1Rm9pWnFT?=
+ =?utf-8?B?dmNYV05HME9xSWNOZXZSdTBkQTBuVElLcFpsaW9DVTFBSjE1UStkaEw2UUhR?=
+ =?utf-8?B?OWUwNU9DVVhNVGhKSE1nL01kRms1dVBHL0hEVUR5aHl5Ukprc25DUFY5N3lX?=
+ =?utf-8?B?SDdTTFNaYkxQOG5mSWdSdzJwam4wMG1aaHdvVmZTa3NQY1ZtSjVwY3QxTHcz?=
+ =?utf-8?B?V1BUUGhyWSthdnpFazJqaXJ2cE9mSVUvS3FCeS8xc1BHd2hYcHkyL3FEZ016?=
+ =?utf-8?B?dW1VT0FGQUxoUGxRNytXMEVaZWd3OExJM1NRUW9pQVlCK3lVUHQ4NjJTa0cx?=
+ =?utf-8?B?ZDFBY0hQMkMzdU9IQlJwUnFXdkp4b3RJTVZFenp0dTRENzNHMkVCbklmcHVo?=
+ =?utf-8?Q?8/i/l8+EialgGg4LehKEWdB7syB+PMaHjDvDX/BapwzOo?=
+X-MS-Exchange-AntiSpam-MessageData-1: g1speeJ3Z+Sl6g==
+X-OriginatorOrg: virtuozzo.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: decc7a1f-cbeb-49a4-86a5-08df0d2affbe
+X-MS-Exchange-CrossTenant-AuthSource: AM9PR08MB5892.eurprd08.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 07 Sep 2026 21:57:24.1474 (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: 0bc7f26d-0264-416e-a6fc-8352af79c58f
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: 25dOteRN4PWWMw8XpapBz1y3frJgEkdjXNKBFqhfSrHSS0u7g2xtRyTggiy2LwtscGM3ZqqGuejSEp23RBgFJA==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: DBAPR08MB5733
+Received-SPF: pass client-ip=2a01:111:f403:c20f::7;
+ envelope-from=den@virtuozzo.com;
+ helo=OSPPR02CU001.outbound.protection.outlook.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_PASS=-0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -106,81 +161,45 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-to:  Emmanuel Blot <emmanuel.blot@free.fr>
-From:  Emmanuel Blot via <qemu-arm@nongnu.org>
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Add a functional test booting the Facebook Minerva BMC machine.
+On 9/7/26 15:13, Marc-André Lureau wrote:
+> Replace HMP with QMP equivalent.
+>
+> Signed-off-by: Marc-André Lureau <marcandre.lureau@redhat.com>
+> ---
+>  tests/functional/arm/test_integratorcp.py | 13 ++++++++-----
+>  tests/functional/m68k/test_nextcube.py    | 11 +++++++----
+>  tests/functional/mips64el/test_malta.py   | 13 ++++++++-----
+>  3 files changed, 23 insertions(+), 14 deletions(-)
+[...] eaten a bit
 
-Note: The boot image currently lives on a personal fork; a TODO in the
-test notes it should be relocated under legoater/qemu-aspeed-boot before
-upstreaming.
+> diff --git a/tests/functional/mips64el/test_malta.py b/tests/functional/mips64el/test_malta.py
+> index 163bbaf5ca36..3b6d53799616 100755
+> --- a/tests/functional/mips64el/test_malta.py
+> +++ b/tests/functional/mips64el/test_malta.py
+> @@ -11,6 +11,7 @@
+>  
+>  import os
+>  
+> +from qemu.qmp.qmp_client import ExecuteError
+>  from qemu_test import LinuxKernelTest, Asset
+>  from qemu_test import exec_command_and_wait_for_pattern
+>  from qemu_test import skipIfMissingImports, skipFlakyTest, skipUntrustedTest
+> @@ -154,11 +155,13 @@ def do_test_i6400_framebuffer_logo(self, cpu_cores_count):
+>          self.vm.launch()
+>          framebuffer_ready = 'Console: switching to colour frame buffer device'
+>          self.wait_for_console_pattern(framebuffer_ready)
+> -        self.vm.cmd('human-monitor-command', command_line='stop')
+> -        res = self.vm.cmd('human-monitor-command',
+> -                          command_line=f'screendump {screendump_path}')
+> -        if 'unknown command' in res:
+> -            self.skipTest('screendump not available')
+> +        self.vm.cmd('stop')
+> +        try:
+> +            self.vm.cmd('screeandump', filename=screendump_path)
+Typo here :-) screeandump.
 
-Signed-off-by: Emmanuel Blot <emmanuel.blot@free.fr>
----
- tests/functional/arm/meson.build            |  2 ++
- tests/functional/arm/test_aspeed_minerva.py | 30 +++++++++++++++++++++++++++++
- 2 files changed, 32 insertions(+)
-
-diff --git a/tests/functional/arm/meson.build b/tests/functional/arm/meson.build
-index 61b00932db..dd1ddf7f6f 100644
---- a/tests/functional/arm/meson.build
-+++ b/tests/functional/arm/meson.build
-@@ -16,6 +16,7 @@ test_arm_timeouts = {
-   'aspeed_bletchley' : 480,
-   'aspeed_catalina' : 480,
-   'aspeed_gb200nvl_bmc' : 480,
-+  'aspeed_minerva' : 480,
-   'aspeed_rainier' : 480,
-   'bpim2u' : 500,
-   'collie' : 180,
-@@ -51,6 +52,7 @@ tests_arm_system_thorough = [
-   'aspeed_bletchley',
-   'aspeed_catalina',
-   'aspeed_gb200nvl_bmc',
-+  'aspeed_minerva',
-   'aspeed_rainier',
-   'bpim2u',
-   'canona1100',
-diff --git a/tests/functional/arm/test_aspeed_minerva.py b/tests/functional/arm/test_aspeed_minerva.py
-new file mode 100644
-index 0000000000..925a82b139
---- /dev/null
-+++ b/tests/functional/arm/test_aspeed_minerva.py
-@@ -0,0 +1,30 @@
-+#!/usr/bin/env python3
-+#
-+# Functional test that boots the ASPEED machines
-+#
-+# Copyright (c) 2026 Meta Platforms, Inc. and affiliates.
-+#
-+# SPDX-License-Identifier: GPL-2.0-or-later
-+
-+from qemu_test import Asset
-+from aspeed import AspeedTest
-+
-+
-+class MinervaMachine(AspeedTest):
-+
-+    # TODO: the boot image currently lives on a personal fork; move it under
-+    # legoater/qemu-aspeed-boot before upstreaming.
-+    ASSET_MINERVA_FLASH = Asset(
-+        'https://github.com/eblot/qemu-aspeed-boot/raw/refs/heads/minerva-bmc/images/minerva-bmc/openbmc-20260720025047/'
-+            'obmc-phosphor-image-minerva-20260720025047.static.mtd.xz',
-+        'bd713df39d3c09846299a2377315465187a4dcd33c29d3b3d683ef13b59f36bb')
-+
-+    def test_arm_ast2600_minerva_openbmc(self):
-+        image_path = self.uncompress(self.ASSET_MINERVA_FLASH)
-+
-+        self.do_test_arm_aspeed_openbmc('minerva-bmc', image=image_path,
-+                                        uboot='2019.04', cpu_id='0xf00',
-+                                        soc='AST2600 rev A3')
-+
-+if __name__ == '__main__':
-+    AspeedTest.main()
-
--- 
-2.50.1
-
+Den
 

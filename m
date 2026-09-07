@@ -4,58 +4,57 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7C298C79F99
-	for <qemu-arm@archiver.kernel.org>; Mon,  7 Sep 2026 10:31:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 05F35C79F89
+	for <qemu-arm@archiver.kernel.org>; Mon,  7 Sep 2026 10:32:22 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1x3Wde-0004re-NO; Mon, 07 Sep 2026 06:31:48 -0400
+	id 1x3Wdp-0005Fe-BA; Mon, 07 Sep 2026 06:31:59 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <marcandre.lureau@redhat.com>)
- id 1x3Wdb-0004mY-2i
- for qemu-arm@nongnu.org; Mon, 07 Sep 2026 06:31:45 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ id 1x3Wdg-0004uC-M7
+ for qemu-arm@nongnu.org; Mon, 07 Sep 2026 06:31:48 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <marcandre.lureau@redhat.com>)
- id 1x3WdZ-0003ap-3m
- for qemu-arm@nongnu.org; Mon, 07 Sep 2026 06:31:42 -0400
+ id 1x3Wdf-0003bo-Ab
+ for qemu-arm@nongnu.org; Mon, 07 Sep 2026 06:31:48 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1788777100;
+ s=mimecast20190719; t=1788777106;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding;
- bh=EgVer5Kt/Dp7YYq7S8JGA3Yvgj7JhgveZsVZ7tESQzk=;
- b=cs54ErJYK6cNIRt2VgD4G1BpQSWo8ljrxoTBbelP+NZXz9LZNt+uAaJYGOeL3EK4RhSvFe
- pSz6nMuWTCc+W5pxSJ9H6ajlpNBTJT74IHH0xphQ62lDe8NMgYvI+iPYrHxPfc5ZDfpHBy
- y7SWT+OjyHuaUXyocRG1ghaObiBlZ/k=
-Received: from mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=Pw8oM7XvTZ8UrOcsyDmNklaQrGBxEBQh+OPjYQaTMXA=;
+ b=BGVTQPdJQa2MiP5hygG3jhpcS5aV2SGmgGvW3N867aww3iffl32HrnDmnG2flkMsNDJbxg
+ RtvToyj4G1K4QRLnUPboxBsB1LUCvB2zW2X4bZs57HBliqoP9QvfCmlJIvTMoMd866TVKz
+ PmGEgWlqxv5JQ1cUUOKjcFzObU0dY5g=
+Received: from mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-599-2SFIhjE5O9WjJvSfIuiKWw-1; Mon,
- 07 Sep 2026 06:30:34 -0400
-X-MC-Unique: 2SFIhjE5O9WjJvSfIuiKWw-1
-X-Mimecast-MFC-AGG-ID: 2SFIhjE5O9WjJvSfIuiKWw_1788777032
-Received: from mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com
- (mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.17])
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-684-uQQO6oekMqeBYKibD37WwQ-1; Mon,
+ 07 Sep 2026 06:30:37 -0400
+X-MC-Unique: uQQO6oekMqeBYKibD37WwQ-1
+X-Mimecast-MFC-AGG-ID: uQQO6oekMqeBYKibD37WwQ_1788777035
+Received: from mx-prod-int-10.mail-002.prod.us-west-2.aws.redhat.com
+ (mx-prod-int-10.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.95])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 6595D193F079; Mon,  7 Sep 2026 10:30:31 +0000 (UTC)
+ by mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 3325518009DF; Mon,  7 Sep 2026 10:30:35 +0000 (UTC)
 Received: from localhost (headnet05.pony-001.prod.iad2.dc.redhat.com
  [10.2.32.117])
- by mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id 7EEB81956042; Mon,  7 Sep 2026 10:30:29 +0000 (UTC)
+ by mx-prod-int-10.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
+ id B5531427; Mon,  7 Sep 2026 10:30:33 +0000 (UTC)
 From: =?utf-8?q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>
-Subject: [PATCH v2 00/10] Make HMP optional - follow-up
-Date: Mon, 07 Sep 2026 14:30:18 +0400
-Message-Id: <20260907-nohmp-v2-0-6d952d972c21@redhat.com>
+Date: Mon, 07 Sep 2026 14:30:19 +0400
+Subject: [PATCH v2 01/10] tests/ahci-test: replace HMP usage with QMP
 MIME-Version: 1.0
-X-B4-Tracking: v=1; b=H4sIAAAAAAAC/12NQQ7CIBQFr9L8tRhAUoMr72G6QPgVTAoNINE03
- F2oO5eTzJu3QcLoMMFl2CBicckF34AfBtBW+QcSZxoDp3ykko7EB7ushBkuZ6rPQgoDzV0jzu6
- 9d27Tj9Pr/kSd+7gb1qUc4mc/Kqx7/83CCCVGIcpRSKbF6RrRWJWPOiww1Vq/Japxfa0AAAA=
-X-Change-ID: 20260906-nohmp-1d29f0c7494d
+Message-Id: <20260907-nohmp-v2-1-6d952d972c21@redhat.com>
+References: <20260907-nohmp-v2-0-6d952d972c21@redhat.com>
+In-Reply-To: <20260907-nohmp-v2-0-6d952d972c21@redhat.com>
 To: qemu-devel@nongnu.org
 Cc: John Snow <jsnow@redhat.com>, "Denis V. Lunev" <den@openvz.org>, 
  Fabiano Rosas <farosas@suse.de>, Laurent Vivier <lvivier@redhat.com>, 
@@ -71,38 +70,38 @@ Cc: John Snow <jsnow@redhat.com>, "Denis V. Lunev" <den@openvz.org>,
  =?utf-8?q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>, 
  Glenn Miles <milesg@linux.ibm.com>, qemu-ppc@nongnu.org, 
  =?utf-8?q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>
-X-Developer-Signature: v=1; a=openpgp-sha256; l=1908;
+X-Developer-Signature: v=1; a=openpgp-sha256; l=1418;
  i=marcandre.lureau@redhat.com; h=from:subject:message-id;
- bh=h+YeDbXBfas4cXMgbVlLFi9y5SHL+BZizOeWNGGan1I=;
- b=owEBbQKS/ZANAwAKAdro4Ql1lpzlAcsmYgBqnpJCwIE0RDqwSumMpo6FIKJ49yguwrZgAkrPy
- JS6Xpq1swyJAjMEAAEKAB0WIQSHqb2TP4fGBtJ29i3a6OEJdZac5QUCap6SQgAKCRDa6OEJdZac
- 5Uk6D/9B1mPPZaxRB4LnKW9ZoBFcgf5JL7iT7FKKbChgJQdazR00Jg0fLMYy4msjpUYShUwt/C2
- xPium8/8aOTUiBNY+ncgLnzENSB1D0vE+bvtddv85bIb7Tvy7Mir1dRXjciJxfer3EN9V7RBawk
- BsxiSwyl1c9wUHuB6NBig1azM1QhEB+z0R5UkRS1WFM8HftJOPbrQDAYCUa1dQ2Av9utEh9oQ7g
- 8xwqMccGioSCiZfRADAPrMw0WZiNsFh33WHTz6pVpm5se950tKlLebch4+gNrgpcqv/Jc/AwGaM
- kFtkoxoNFiDygIm7EqVMWz9K8xfDuhz55i2P82mGzUhtroktFDYCPoxDfvS1MBECuxiPgMAI4wm
- pfTyuB5IA6tdnjF878xQ14JOhtmduKbzNMEdRex/bCtJSBf5eCJ/Q2gJ3OgJZuR7OsWTORdQCyv
- 29MgleYemw5EoDXA+ohc8sf4n5cnn8V13UYcOHk0emWE8Q5TpFMqam3ovwY5WLac+sgh7e7cgMp
- JCaMBsXycUsR793ONZYHOxm6J7T3Vw8Y/tJyzg47xKnKOer4+RhKx3XiFOrPCwVYiLE8IzEWHAC
- DPouVZXDsqmD7HhA0gLwJcUuOtngMt37U0JE9GEU7GaGyAFBmax2L/+PJbB2QihhEixT0nr4RZD
- 4M9VpAgARdBGBuA==
+ bh=tLrFlT/tcpYg1fK592+t5TVWs+WZQ4KtzWrEIWmaBQ8=;
+ b=owEBbQKS/ZANAwAKAdro4Ql1lpzlAcsmYgBqnpJCeOOGlpiWzHT6XhP38kCqcYRpei6N5aehu
+ Wk3FtoaKb+JAjMEAAEKAB0WIQSHqb2TP4fGBtJ29i3a6OEJdZac5QUCap6SQgAKCRDa6OEJdZac
+ 5T0cEACZHkKeWpCCGLtbYX3EFUiZDCPwh6YgUZsH/SFIsOX+i23i3a3cdbFZeBBl8iqn9SwyFc8
+ IqoNpOrV2HWAQf90BrflD5WPI6S5X7ZsqaJtL+QjJ5VXG9M03MxtqzDxc3mWZYJCA5i8wrLy8Pc
+ Ys8RxFfAslDz9ppnmPIBbjypeGx6/mF7dSldkmYXPRaWRBbok+vIB3ggmv4ow8FvxXUO5PYp/KE
+ caklFOSzzszfALtvQRC/ZlFR9CQti4z5maNnjhzCQe3PT343IRiAKsN2da3zNzMzHuNdlaGsl5z
+ GYnemgjxnhFfWA3eHc/fas/gtpUU6rcAXA1/S129Y3K6ZTG2AegUIP+bUf/oaw/hkdpk29vKSbw
+ GztFcj7cLOrge/o0WCk2HuIQLfveDq/Thwc8xBhNyw33aCKxkA21ADFhtfh38rV1TKudGLGFM3l
+ mUZYSzuxOYRNmK5q5gpjLgLjDWcrcpBBroQ/+gBbjmxe1Ri9wRRoWJhVPcylMvkLmhDizKOA7B9
+ hO0vZpchIAZEQ9UTnASwSN2Vh6+bpP36H2O7qaON1pUy3aFFw6bwMj3v8j5ALIeFc+Z+QUrFWU7
+ tM2ZcwrfI08ZYWHa1rPipi94C4AmSyBKWCcK94plTscrk4evgX9MMuvUHLwxF2lp8A4wYR1w5g2
+ NDO+oMtYnOD4HMg==
 X-Developer-Key: i=marcandre.lureau@redhat.com; a=openpgp;
  fpr=87A9BD933F87C606D276F62DDAE8E10975969CE5
-X-Scanned-By: MIMEDefang 3.0 on 10.30.177.17
-X-Mimecast-MFC-PROC-ID: DNDc4oRfu4P0E0pSapRtOHD51BoWsKd8hJHMx6mqXaY_1788777032
+X-Scanned-By: MIMEDefang 3.6 on 10.30.177.95
+X-Mimecast-MFC-PROC-ID: CqMAQ3YGJmgTf6kiXtNuCU5pWUFf7ejZ92fmmREkp2o_1788777035
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=170.10.129.124;
+Received-SPF: pass client-ip=170.10.133.124;
  envelope-from=marcandre.lureau@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: 12
-X-Spam_score: 1.2
-X-Spam_bar: +
-X-Spam_report: (1.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.01, RCVD_IN_SBL_CSS=3.335,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=no autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=-0.01, RCVD_IN_MSPIKE_WL=-0.01,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -118,50 +117,39 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Hi,
+Use qemu-io command instead.
 
-Fix the issues that Peter reported while merging "[GIT PULL 00/50] Make
-HMP optional".
-
+Reviewed-by: Daniel P. Berrangé <berrange@redhat.com>
 Signed-off-by: Marc-André Lureau <marcandre.lureau@redhat.com>
 ---
-Changes in v2:
-- replaced skipTestIfNoHMP() with more versatile @skipUnlessConfig()
-- rebased on staging, added r-b tags
-- Link to v1: https://lore.kernel.org/qemu-devel/20260906-nohmp-v1-0-daee96491c43@redhat.com
+ tests/qtest/ahci-test.c | 5 ++---
+ 1 file changed, 2 insertions(+), 3 deletions(-)
 
----
-Marc-André Lureau (10):
-      tests/ahci-test: replace HMP usage with QMP
-      tests/functional: add skipUnlessConfig() helper
-      tests/functional: skip if CONFIG_PIXMAN
-      tests/functional: replace HMP with QMP
-      tests/functional/s390x: use QMP for balloon
-      tests/qtest: add qtest_qmp_job_wait()
-      tests/ide-test: convert to QMP
-      tests/drive_del-test: compile out HMP-dependent tests when !CONFIG_HMP
-      qtest: compile out HMP helper when !CONFIG_HMP
-      tests/functional: fix some tests that require HMP
+diff --git a/tests/qtest/ahci-test.c b/tests/qtest/ahci-test.c
+index 3406ca884fb4..eb8d23999738 100644
+--- a/tests/qtest/ahci-test.c
++++ b/tests/qtest/ahci-test.c
+@@ -1900,8 +1900,7 @@ static void test_write_engine_stop_in_flight(void)
+     ahci_io(ahci, port, CMD_WRITE_DMA, rx, AHCI_SECTOR_SIZE, 1);
+ 
+     /* Suspend the backend write so the first sector stays in flight. */
+-    g_free(qtest_hmp(ahci->parent->qts,
+-                     "qemu-io drive0 \"break write_aio wr\""));
++    qtest_qemu_io(ahci->parent->qts, "drive0", "break write_aio wr");
+ 
+     cmd = ahci_command_create(CMD_WRITE_PIO);
+     ahci_command_adjust(cmd, 0, ptr, bufsize, 0);
+@@ -1911,7 +1910,7 @@ static void test_write_engine_stop_in_flight(void)
+     /* Drop the command list while the write is still outstanding. */
+     ahci_px_clr(ahci, port, AHCI_PX_CMD, AHCI_PX_CMD_ST);
+ 
+-    g_free(qtest_hmp(ahci->parent->qts, "qemu-io drive0 \"resume wr\""));
++    qtest_qemu_io(ahci->parent->qts, "drive0", "resume wr");
+ 
+     /* Round-trip through the device to confirm qemu is still alive. */
+     ahci_px_rreg(ahci, port, AHCI_PX_TFD);
 
- tests/functional/arm/test_integratorcp.py | 10 +++----
- tests/functional/m68k/test_nextcube.py    |  8 ++----
- tests/functional/mips64el/test_malta.py   | 11 ++++----
- tests/functional/ppc/test_ppe42.py        |  3 +-
- tests/functional/qemu_test/__init__.py    |  2 +-
- tests/functional/qemu_test/decorators.py  | 25 ++++++++++++++++
- tests/functional/s390x/test_ccw_virtio.py |  4 +--
- tests/qtest/ahci-test.c                   |  5 ++--
- tests/qtest/drive_del-test.c              | 47 +++++++++++++++----------------
- tests/qtest/ide-test.c                    | 37 ++++++++++++++++++------
- tests/qtest/libqtest.c                    | 39 +++++++++++++++++++++++++
- tests/qtest/libqtest.h                    | 13 +++++++++
- 12 files changed, 146 insertions(+), 58 deletions(-)
----
-base-commit: cacd3462963a0a4f5bab4263ce79c2aa4b32692d
-change-id: 20260906-nohmp-1d29f0c7494d
-
-Best regards,
---  
-Marc-André Lureau <marcandre.lureau@redhat.com>
+-- 
+2.55.0.543.g5ebe2ebe4ea8
 
 

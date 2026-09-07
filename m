@@ -4,57 +4,58 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 140EBC79F89
-	for <qemu-arm@archiver.kernel.org>; Mon,  7 Sep 2026 10:31:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7C298C79F99
+	for <qemu-arm@archiver.kernel.org>; Mon,  7 Sep 2026 10:31:56 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1x3Wcp-0004Hm-Tb; Mon, 07 Sep 2026 06:30:57 -0400
+	id 1x3Wde-0004re-NO; Mon, 07 Sep 2026 06:31:48 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <marcandre.lureau@redhat.com>)
- id 1x3Wch-0004Ee-Dt
- for qemu-arm@nongnu.org; Mon, 07 Sep 2026 06:30:47 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ id 1x3Wdb-0004mY-2i
+ for qemu-arm@nongnu.org; Mon, 07 Sep 2026 06:31:45 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <marcandre.lureau@redhat.com>)
- id 1x3Wcf-0003TJ-P5
- for qemu-arm@nongnu.org; Mon, 07 Sep 2026 06:30:47 -0400
+ id 1x3WdZ-0003ap-3m
+ for qemu-arm@nongnu.org; Mon, 07 Sep 2026 06:31:42 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1788777044;
+ s=mimecast20190719; t=1788777100;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=fDgNGwW+ikB04+uFpE5aVrV44YCxj/0gXscGjqip9fI=;
- b=gr4Fj4m3vKBAFJSmfhyEeTqfiIwikQMWB57N/+gavdHaT2zIwgNCv9Mjzep4QQNr+1Dd2H
- 3BrXsA+hP5PVhTlkUO0SCsBS/8uwwQBJXbWTNg1HOMoJX5KtfhFLsV/9HNdqlLbiMD43pp
- 9++43I0krtDgpHqdI5QFPzjWKe+ORwk=
-Received: from mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
+ content-transfer-encoding:content-transfer-encoding;
+ bh=EgVer5Kt/Dp7YYq7S8JGA3Yvgj7JhgveZsVZ7tESQzk=;
+ b=cs54ErJYK6cNIRt2VgD4G1BpQSWo8ljrxoTBbelP+NZXz9LZNt+uAaJYGOeL3EK4RhSvFe
+ pSz6nMuWTCc+W5pxSJ9H6ajlpNBTJT74IHH0xphQ62lDe8NMgYvI+iPYrHxPfc5ZDfpHBy
+ y7SWT+OjyHuaUXyocRG1ghaObiBlZ/k=
+Received: from mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-116-gDErs7mpM-uCs8tshjl-xw-1; Mon,
- 07 Sep 2026 06:30:40 -0400
-X-MC-Unique: gDErs7mpM-uCs8tshjl-xw-1
-X-Mimecast-MFC-AGG-ID: gDErs7mpM-uCs8tshjl-xw_1788777038
-Received: from mx-prod-int-10.mail-002.prod.us-west-2.aws.redhat.com
- (mx-prod-int-10.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.95])
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-599-2SFIhjE5O9WjJvSfIuiKWw-1; Mon,
+ 07 Sep 2026 06:30:34 -0400
+X-MC-Unique: 2SFIhjE5O9WjJvSfIuiKWw-1
+X-Mimecast-MFC-AGG-ID: 2SFIhjE5O9WjJvSfIuiKWw_1788777032
+Received: from mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com
+ (mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.17])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id BA005182F558; Mon,  7 Sep 2026 10:30:38 +0000 (UTC)
+ by mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 6595D193F079; Mon,  7 Sep 2026 10:30:31 +0000 (UTC)
 Received: from localhost (headnet05.pony-001.prod.iad2.dc.redhat.com
  [10.2.32.117])
- by mx-prod-int-10.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id E5E16427; Mon,  7 Sep 2026 10:30:37 +0000 (UTC)
+ by mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
+ id 7EEB81956042; Mon,  7 Sep 2026 10:30:29 +0000 (UTC)
 From: =?utf-8?q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>
-Date: Mon, 07 Sep 2026 14:30:20 +0400
-Subject: [PATCH v2 02/10] tests/functional: add skipUnlessConfig() helper
+Subject: [PATCH v2 00/10] Make HMP optional - follow-up
+Date: Mon, 07 Sep 2026 14:30:18 +0400
+Message-Id: <20260907-nohmp-v2-0-6d952d972c21@redhat.com>
 MIME-Version: 1.0
-Message-Id: <20260907-nohmp-v2-2-6d952d972c21@redhat.com>
-References: <20260907-nohmp-v2-0-6d952d972c21@redhat.com>
-In-Reply-To: <20260907-nohmp-v2-0-6d952d972c21@redhat.com>
+X-B4-Tracking: v=1; b=H4sIAAAAAAAC/12NQQ7CIBQFr9L8tRhAUoMr72G6QPgVTAoNINE03
+ F2oO5eTzJu3QcLoMMFl2CBicckF34AfBtBW+QcSZxoDp3ykko7EB7ushBkuZ6rPQgoDzV0jzu6
+ 9d27Tj9Pr/kSd+7gb1qUc4mc/Kqx7/83CCCVGIcpRSKbF6RrRWJWPOiww1Vq/Japxfa0AAAA=
+X-Change-ID: 20260906-nohmp-1d29f0c7494d
 To: qemu-devel@nongnu.org
 Cc: John Snow <jsnow@redhat.com>, "Denis V. Lunev" <den@openvz.org>, 
  Fabiano Rosas <farosas@suse.de>, Laurent Vivier <lvivier@redhat.com>, 
@@ -70,38 +71,38 @@ Cc: John Snow <jsnow@redhat.com>, "Denis V. Lunev" <den@openvz.org>,
  =?utf-8?q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>, 
  Glenn Miles <milesg@linux.ibm.com>, qemu-ppc@nongnu.org, 
  =?utf-8?q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>
-X-Developer-Signature: v=1; a=openpgp-sha256; l=2526;
+X-Developer-Signature: v=1; a=openpgp-sha256; l=1908;
  i=marcandre.lureau@redhat.com; h=from:subject:message-id;
- bh=Ygc3sa0XyimlEPA9EvJG3rAzBiuUKaymrtR3GvddhO4=;
- b=owEBbQKS/ZANAwAKAdro4Ql1lpzlAcsmYgBqnpJCx76BhkkEtw5IfXC8ETpcUnBBZEzAY2u1R
- uUttmuFuXuJAjMEAAEKAB0WIQSHqb2TP4fGBtJ29i3a6OEJdZac5QUCap6SQgAKCRDa6OEJdZac
- 5YAeD/40wvCHvIBNT29clCHMZfGU4ZaUGX0sqfFZoygMX0bs2K2cPegEnuhdPRcThVsGICSZ6nZ
- pMR7T4Dfl3Y51J8G3WxRwMnPftdnVzU828qGvEmPp6+I3dsPNY3xLbxDY4fo/XuGjlmLMlgnMg7
- YpWixwekpy3TYIDiCoASR66ok7k4lp55vGV+bJVDSd3xTAOP3BpXBNvN4b3N1m5xf+8d2UiIRUL
- YI1QtIRxm4FwD1TGQ+doWY/L/D/EaQk2gKouDT7oLKMj4P2qk6oyEq+SlVyYEMgYmTMf9Jx0hcW
- riEsLNFbMjiUyNXtucQCqEVsvtlc7G+2M/7yR+mcvi8WCF0zI+MmNdc1mrlVAd8UiHFzYuzJbvt
- FcN/JTO9kcf11jrANBbRX277pqFIH5ss15miBYD/r9efDEkPddUqVhbDVTN5nPosk4yXHZxw/CT
- 2FpL7iopuMLXuiYgYO777M09rcn8Lrb7oVG41rB06cCzDxWHXALGBPGOAYB1B0mVX+djhV1LTzo
- inGbZHRhrNjyAlyL4ABhXDKfAR8i6SGQYp/Zx+k8RZ1DNCvksXCs4xZ0rf77aoDGR5ajci4zA+N
- Eojbc2GsVXfaIcqTnl+KdhMrVHm8BIYzzJJKa0yeXz/mqg2Pz8PX1tF/PuCzezRX2ELmChEvzx0
- 7gnWc8V+nXi6igw==
+ bh=h+YeDbXBfas4cXMgbVlLFi9y5SHL+BZizOeWNGGan1I=;
+ b=owEBbQKS/ZANAwAKAdro4Ql1lpzlAcsmYgBqnpJCwIE0RDqwSumMpo6FIKJ49yguwrZgAkrPy
+ JS6Xpq1swyJAjMEAAEKAB0WIQSHqb2TP4fGBtJ29i3a6OEJdZac5QUCap6SQgAKCRDa6OEJdZac
+ 5Uk6D/9B1mPPZaxRB4LnKW9ZoBFcgf5JL7iT7FKKbChgJQdazR00Jg0fLMYy4msjpUYShUwt/C2
+ xPium8/8aOTUiBNY+ncgLnzENSB1D0vE+bvtddv85bIb7Tvy7Mir1dRXjciJxfer3EN9V7RBawk
+ BsxiSwyl1c9wUHuB6NBig1azM1QhEB+z0R5UkRS1WFM8HftJOPbrQDAYCUa1dQ2Av9utEh9oQ7g
+ 8xwqMccGioSCiZfRADAPrMw0WZiNsFh33WHTz6pVpm5se950tKlLebch4+gNrgpcqv/Jc/AwGaM
+ kFtkoxoNFiDygIm7EqVMWz9K8xfDuhz55i2P82mGzUhtroktFDYCPoxDfvS1MBECuxiPgMAI4wm
+ pfTyuB5IA6tdnjF878xQ14JOhtmduKbzNMEdRex/bCtJSBf5eCJ/Q2gJ3OgJZuR7OsWTORdQCyv
+ 29MgleYemw5EoDXA+ohc8sf4n5cnn8V13UYcOHk0emWE8Q5TpFMqam3ovwY5WLac+sgh7e7cgMp
+ JCaMBsXycUsR793ONZYHOxm6J7T3Vw8Y/tJyzg47xKnKOer4+RhKx3XiFOrPCwVYiLE8IzEWHAC
+ DPouVZXDsqmD7HhA0gLwJcUuOtngMt37U0JE9GEU7GaGyAFBmax2L/+PJbB2QihhEixT0nr4RZD
+ 4M9VpAgARdBGBuA==
 X-Developer-Key: i=marcandre.lureau@redhat.com; a=openpgp;
  fpr=87A9BD933F87C606D276F62DDAE8E10975969CE5
-X-Scanned-By: MIMEDefang 3.6 on 10.30.177.95
-X-Mimecast-MFC-PROC-ID: _dk2zueoAaR6dBCJ2RIC0ndIAw1YVeRvPAZN_IUPNQI_1788777038
+X-Scanned-By: MIMEDefang 3.0 on 10.30.177.17
+X-Mimecast-MFC-PROC-ID: DNDc4oRfu4P0E0pSapRtOHD51BoWsKd8hJHMx6mqXaY_1788777032
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=170.10.133.124;
+Received-SPF: pass client-ip=170.10.129.124;
  envelope-from=marcandre.lureau@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+X-Spam_score_int: 12
+X-Spam_score: 1.2
+X-Spam_bar: +
+X-Spam_report: (1.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=-0.01, RCVD_IN_MSPIKE_WL=-0.01,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.01, RCVD_IN_SBL_CSS=3.335,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -117,73 +118,50 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Read config-host.h and skip tests that rely on some CONFIG_*
-values.
+Hi,
+
+Fix the issues that Peter reported while merging "[GIT PULL 00/50] Make
+HMP optional".
 
 Signed-off-by: Marc-André Lureau <marcandre.lureau@redhat.com>
 ---
- tests/functional/qemu_test/__init__.py   |  2 +-
- tests/functional/qemu_test/decorators.py | 25 +++++++++++++++++++++++++
- 2 files changed, 26 insertions(+), 1 deletion(-)
+Changes in v2:
+- replaced skipTestIfNoHMP() with more versatile @skipUnlessConfig()
+- rebased on staging, added r-b tags
+- Link to v1: https://lore.kernel.org/qemu-devel/20260906-nohmp-v1-0-daee96491c43@redhat.com
 
-diff --git a/tests/functional/qemu_test/__init__.py b/tests/functional/qemu_test/__init__.py
-index 03e5c73d39dc..e21fa8279281 100644
---- a/tests/functional/qemu_test/__init__.py
-+++ b/tests/functional/qemu_test/__init__.py
-@@ -16,7 +16,7 @@
- from .decorators import skipIfMissingCommands, skipIfNotMachine, \
-     skipFlakyTest, skipUntrustedTest, skipBigDataTest, skipSlowTest, \
-     skipIfMissingImports, skipIfOperatingSystem, skipUnlessOperatingSystem, \
--    skipLockedMemoryTest, skipIfMissingEnv
-+    skipLockedMemoryTest, skipIfMissingEnv, skipUnlessConfig
- from .archive import archive_extract
- from .uncompress import uncompress
- from .gdb import GDB
-diff --git a/tests/functional/qemu_test/decorators.py b/tests/functional/qemu_test/decorators.py
-index aa135acc7857..7a7d30503440 100644
---- a/tests/functional/qemu_test/decorators.py
-+++ b/tests/functional/qemu_test/decorators.py
-@@ -10,6 +10,7 @@
- from unittest import skipIf, skipUnless
- 
- from .cmd import which
-+from .config import BUILD_DIR
- 
- 
- def skipIfMissingEnv(*vars_):
-@@ -162,6 +163,30 @@ def skipIfMissingImports(*args):
-     return skipUnless(has_imports, 'required import(s) "%s" not installed' %
-                                    ", ".join(args))
- 
-+def _read_config_host():
-+    config = set()
-+    with open(BUILD_DIR / "config-host.h", "r") as f:
-+        for line in f:
-+            if line.startswith("#define CONFIG_"):
-+                name = line.split()[1].removeprefix("CONFIG_")
-+                config.add(name)
-+    return config
-+
-+_CONFIG_HOST = _read_config_host()
-+
-+def skipUnlessConfig(*args):
-+    '''
-+    Decorator to skip execution of a test if the QEMU build
-+    does not have the required CONFIG_* options enabled.
-+    Example:
-+
-+      @skipUnlessConfig("PIXMAN")
-+    '''
-+    missing = [a for a in args if a not in _CONFIG_HOST]
-+    return skipUnless(len(missing) == 0,
-+                      'missing build config(s): %s' %
-+                      ', '.join('CONFIG_' + m for m in missing))
-+
- def skipLockedMemoryTest(locked_memory):
-     '''
-     Decorator to skip execution of a test if the system's
+---
+Marc-André Lureau (10):
+      tests/ahci-test: replace HMP usage with QMP
+      tests/functional: add skipUnlessConfig() helper
+      tests/functional: skip if CONFIG_PIXMAN
+      tests/functional: replace HMP with QMP
+      tests/functional/s390x: use QMP for balloon
+      tests/qtest: add qtest_qmp_job_wait()
+      tests/ide-test: convert to QMP
+      tests/drive_del-test: compile out HMP-dependent tests when !CONFIG_HMP
+      qtest: compile out HMP helper when !CONFIG_HMP
+      tests/functional: fix some tests that require HMP
 
--- 
-2.55.0.543.g5ebe2ebe4ea8
+ tests/functional/arm/test_integratorcp.py | 10 +++----
+ tests/functional/m68k/test_nextcube.py    |  8 ++----
+ tests/functional/mips64el/test_malta.py   | 11 ++++----
+ tests/functional/ppc/test_ppe42.py        |  3 +-
+ tests/functional/qemu_test/__init__.py    |  2 +-
+ tests/functional/qemu_test/decorators.py  | 25 ++++++++++++++++
+ tests/functional/s390x/test_ccw_virtio.py |  4 +--
+ tests/qtest/ahci-test.c                   |  5 ++--
+ tests/qtest/drive_del-test.c              | 47 +++++++++++++++----------------
+ tests/qtest/ide-test.c                    | 37 ++++++++++++++++++------
+ tests/qtest/libqtest.c                    | 39 +++++++++++++++++++++++++
+ tests/qtest/libqtest.h                    | 13 +++++++++
+ 12 files changed, 146 insertions(+), 58 deletions(-)
+---
+base-commit: cacd3462963a0a4f5bab4263ce79c2aa4b32692d
+change-id: 20260906-nohmp-1d29f0c7494d
+
+Best regards,
+--  
+Marc-André Lureau <marcandre.lureau@redhat.com>
 
 

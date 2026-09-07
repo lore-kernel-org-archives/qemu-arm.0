@@ -4,56 +4,55 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5A225C79F9E
-	for <qemu-arm@archiver.kernel.org>; Mon,  7 Sep 2026 13:14:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E185BC79F9E
+	for <qemu-arm@archiver.kernel.org>; Mon,  7 Sep 2026 13:15:35 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1x3ZBN-0004mi-3P; Mon, 07 Sep 2026 09:14:47 -0400
+	id 1x3ZBC-0004O5-F6; Mon, 07 Sep 2026 09:14:34 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <marcandre.lureau@redhat.com>)
- id 1x3ZBK-0004kY-7w
- for qemu-arm@nongnu.org; Mon, 07 Sep 2026 09:14:42 -0400
+ id 1x3ZB8-0004GB-3q
+ for qemu-arm@nongnu.org; Mon, 07 Sep 2026 09:14:30 -0400
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <marcandre.lureau@redhat.com>)
- id 1x3ZBI-0006ZY-E1
- for qemu-arm@nongnu.org; Mon, 07 Sep 2026 09:14:41 -0400
+ id 1x3ZB6-0006Us-EO
+ for qemu-arm@nongnu.org; Mon, 07 Sep 2026 09:14:29 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1788786879;
+ s=mimecast20190719; t=1788786867;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=cr17daom5ZIwPL1Jm52XNja1f8W6vz7SjHDPV0FRzto=;
- b=ZcLnA83DpbBhNdzcv/9braJRf9DCm1ncKGg0ZyQO69vp+QCzGe5/T520C9TBOemY/Qsuvc
- vLORmTeUQtL/xssfcaP1dXeV+xog0X/pobJ10Qi/wS+Slp0pwjy0p6LmhjtpPUwyaL4wcY
- Un1LX8vwF3PRTzhtvWzlR15QeLb5EN0=
-Received: from mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
+ bh=Pw8oM7XvTZ8UrOcsyDmNklaQrGBxEBQh+OPjYQaTMXA=;
+ b=BQYaFfRtDiDqZ3t5nYHGQ8lZ8XNT20atLzVaL8brOpi1amb3Duk9tGUsVMilHBubd97W9E
+ 2kA/Jd1xTrxHgGo7KyXsT1RRvxO+tVLAvkWnSMKE1+4rxznIiBtIcYPsolf/DwO70YVpSo
+ v6BsgBJLMbLj+6PLfNEUYjHT+jyDi+g=
+Received: from mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-163-_D3_7q06OtuGTCyig4Sddg-1; Mon,
- 07 Sep 2026 09:14:36 -0400
-X-MC-Unique: _D3_7q06OtuGTCyig4Sddg-1
-X-Mimecast-MFC-AGG-ID: _D3_7q06OtuGTCyig4Sddg_1788786874
-Received: from mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com
- (mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.17])
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-645-LYzyo8GAMNubhkpZBvJncQ-1; Mon,
+ 07 Sep 2026 09:14:24 -0400
+X-MC-Unique: LYzyo8GAMNubhkpZBvJncQ-1
+X-Mimecast-MFC-AGG-ID: LYzyo8GAMNubhkpZBvJncQ_1788786862
+Received: from mx-prod-int-10.mail-002.prod.us-west-2.aws.redhat.com
+ (mx-prod-int-10.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.95])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 2859E19540EA; Mon,  7 Sep 2026 13:14:34 +0000 (UTC)
+ by mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id A3A1118052CD; Mon,  7 Sep 2026 13:14:22 +0000 (UTC)
 Received: from localhost (headnet04.pony-001.prod.iad2.dc.redhat.com
  [10.2.32.116])
- by mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id 538F41956049; Mon,  7 Sep 2026 13:14:32 +0000 (UTC)
+ by mx-prod-int-10.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
+ id B5123423; Mon,  7 Sep 2026 13:14:21 +0000 (UTC)
 From: =?utf-8?q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>
-Date: Mon, 07 Sep 2026 17:14:02 +0400
-Subject: [PATCH v3 8/9] tests/drive_del-test: compile out HMP-dependent
- tests when !CONFIG_HMP
+Date: Mon, 07 Sep 2026 17:13:59 +0400
+Subject: [PATCH v3 5/9] tests/ahci-test: replace HMP usage with QMP
 MIME-Version: 1.0
-Message-Id: <20260907-nohmp-v3-8-c11e7d0d3d7d@redhat.com>
+Message-Id: <20260907-nohmp-v3-5-c11e7d0d3d7d@redhat.com>
 References: <20260907-nohmp-v3-0-c11e7d0d3d7d@redhat.com>
 In-Reply-To: <20260907-nohmp-v3-0-c11e7d0d3d7d@redhat.com>
 To: qemu-devel@nongnu.org
@@ -71,38 +70,38 @@ Cc: John Snow <jsnow@redhat.com>, "Denis V. Lunev" <den@openvz.org>,
  =?utf-8?q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>, 
  Glenn Miles <milesg@linux.ibm.com>, qemu-ppc@nongnu.org, 
  =?utf-8?q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>
-X-Developer-Signature: v=1; a=openpgp-sha256; l=3999;
+X-Developer-Signature: v=1; a=openpgp-sha256; l=1418;
  i=marcandre.lureau@redhat.com; h=from:subject:message-id;
- bh=nELlHO8Wk8s5vJ916Mup0ugCUbfnyL7FDxtNlquSMtI=;
- b=owEBbQKS/ZANAwAKAdro4Ql1lpzlAcsmYgBqnriY5ksk5tlMx9HxnK7ZP5j7BgAd7gphBwgJw
- 1JSb8WaMOyJAjMEAAEKAB0WIQSHqb2TP4fGBtJ29i3a6OEJdZac5QUCap64mAAKCRDa6OEJdZac
- 5eQ8D/9/nJeQ5dhyvSePSs8YQ2/dq2K4Jw599gFL81MDr6kKXKvv8yVeyqBtNL0kR5uq7MGyOx4
- Fzh4JAJsr5oZPqSgiC6A2nBdUgt7Awv9/xCCfc2H87RB7Cf4lWH8wE+NLNd8IP5yPoTfZm0qil7
- fZTowNQz43vo8QSYmJDIRDwIvX+abYTh5zFvF8JYPCzFlGTec/Q/aNwy3srWmQmqpWFW4vn8lod
- SHeTrR0C1rw4oh7HKPOOJ8obT/ASnuJAb7PqSTxvzscaMuHCG5ticwikOFClHb5KDFqI6CAmTsH
- GZCuZwhG/6TZfHpie0kpHO6WLsP8IcvIvz7gMWsttfO0ol/kXbwDCGkL0dotWz0nZD2842/QHNs
- s8cuaseITwMEbC7aC0eQ8NADxU8R7d3u/CIDiupXMGmg0azMoEBIrgaGsM+fVzvYRLbYeFdGJG7
- VjxHIi3+NUf3kaTmRHWhE51yW9g9+U4shQ+UQangR1IvzKYzrEkRaiCYhy54az3N0vZbGaY8OwK
- aKeE2AmBQq585R9sp8P2J+XOqSvRmdGnnyy87Z9hF93uIkuVtpxgxYSVnnR5wc0mOtz+AA9+Z8o
- AXeOGaBLpbgJNRlZZih31drVAiGUgCMEoSZ4sBc6MauGClvBmyrVtA1o0eJr4Fa/kHPX3E5SqFm
- frDstZYrPtwhO+g==
+ bh=tLrFlT/tcpYg1fK592+t5TVWs+WZQ4KtzWrEIWmaBQ8=;
+ b=owEBbQKS/ZANAwAKAdro4Ql1lpzlAcsmYgBqnriXc5LBDgVtbRkRFePpShWWIeLUbC2OeKKV3
+ ZhZa5PYU+uJAjMEAAEKAB0WIQSHqb2TP4fGBtJ29i3a6OEJdZac5QUCap64lwAKCRDa6OEJdZac
+ 5XcMD/9/GCmU93V7jB5BV2PvDd5SZsGfXacd27sSJFRRaVZRDRSvWYCNAofPYDmGv6qdiT9bupk
+ AjGM5M21NJ6lRZoQXbI59pzAQZhA1xVVW4oXwafLyvUPJIMkXdWyzYQMKi++Gz4r5YGXmalPk2J
+ pfTGpAVhsfxxinOoB82y7Rih9544vN6h5a8v1T9OngE/9gf4+jzEPsghyCVq5/gyHF2Ejp1BkWC
+ LslAN5zjextgdPDwNBpiM6OCNuV5F7MuzDSBZTAjoYlBiBFl7R2CA+TWuoHhuSE0t17htENuDLd
+ 2GedE2IZBhfZKaujjPzP1ju2Tk1uYA+KvE1WutipxUBsJDbRWzrc829HMHfsHq5RsrRdtPOZ3d0
+ hTVkrmGd3jpcJClOY3oqM+Zzl6WmkALRuDQ6SPprbqYrTX/M4Z/TfMk9g21ZsVXfelCKafuAuWp
+ MuREqiSqoeYPwlHCFuvltIG666noYYbBoIBosEbpxwEJ3378tWyfc9T8moFGEjtfawE9G2RXfbw
+ 8TQWMmLo3I/Dqyw9NAZePOP0MNAVpE541ZJxv4YQbGIceFucDsZOVZnYK9LRY5U8gwF7J70PM4X
+ pqGN9MnD1VJqM5qUT0oS8hanNupn7CL+J8qdYDnNUk+JWIYEiraskTZ1Yc+2v3U1CkU/prB+0Wq
+ SgRAzmyGy9tdssw==
 X-Developer-Key: i=marcandre.lureau@redhat.com; a=openpgp;
  fpr=87A9BD933F87C606D276F62DDAE8E10975969CE5
-X-Scanned-By: MIMEDefang 3.0 on 10.30.177.17
-X-Mimecast-MFC-PROC-ID: PfdaMlQIlrdE3374JWW40DmeBYamgtCwu3juUim3JOI_1788786874
+X-Scanned-By: MIMEDefang 3.6 on 10.30.177.95
+X-Mimecast-MFC-PROC-ID: 59uoeMVsVh2NzeiLYa5Uguf3o0nnJ-C7b7P9ahh1BzU_1788786862
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
 Received-SPF: pass client-ip=170.10.129.124;
  envelope-from=marcandre.lureau@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: 12
-X-Spam_score: 1.2
-X-Spam_bar: +
-X-Spam_report: (1.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=0.001, RCVD_IN_SBL_CSS=3.335,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=no autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=0.001, SPF_HELO_PASS=-0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -118,158 +117,37 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-The compiled-out functions are actually testing HMP-specific commands
-and behaviour which operate on the old "drive" concept. The QMP
-equivalent for block-driver nodes are already tested.
-
-If HMP goes away, those tests should go away too. Compile them out.
+Use qemu-io command instead.
 
 Reviewed-by: Daniel P. Berrangé <berrange@redhat.com>
 Signed-off-by: Marc-André Lureau <marcandre.lureau@redhat.com>
 ---
- tests/qtest/drive_del-test.c | 47 +++++++++++++++++++++-----------------------
- 1 file changed, 22 insertions(+), 25 deletions(-)
+ tests/qtest/ahci-test.c | 5 ++---
+ 1 file changed, 2 insertions(+), 3 deletions(-)
 
-diff --git a/tests/qtest/drive_del-test.c b/tests/qtest/drive_del-test.c
-index cc52c2d87936..cbf94d5b9f0f 100644
---- a/tests/qtest/drive_del-test.c
-+++ b/tests/qtest/drive_del-test.c
-@@ -87,6 +87,7 @@ static void blockdev_add_with_media(QTestState *qts)
-     g_assert(has_blockdev(qts));
- }
+diff --git a/tests/qtest/ahci-test.c b/tests/qtest/ahci-test.c
+index 3406ca884fb4..eb8d23999738 100644
+--- a/tests/qtest/ahci-test.c
++++ b/tests/qtest/ahci-test.c
+@@ -1900,8 +1900,7 @@ static void test_write_engine_stop_in_flight(void)
+     ahci_io(ahci, port, CMD_WRITE_DMA, rx, AHCI_SECTOR_SIZE, 1);
  
-+#ifdef CONFIG_HMP
- static void drive_add(QTestState *qts)
- {
-     char *resp = qtest_hmp(qts, "drive_add 0 if=none,id=drive0");
-@@ -117,6 +118,7 @@ static void drive_del(QTestState *qts)
-     g_assert(!has_drive(qts));
-     g_free(resp);
- }
-+#endif
+     /* Suspend the backend write so the first sector stays in flight. */
+-    g_free(qtest_hmp(ahci->parent->qts,
+-                     "qemu-io drive0 \"break write_aio wr\""));
++    qtest_qemu_io(ahci->parent->qts, "drive0", "break write_aio wr");
  
- /*
-  * qvirtio_get_dev_type:
-@@ -165,13 +167,9 @@ static void device_del(QTestState *qts, bool and_reset)
+     cmd = ahci_command_create(CMD_WRITE_PIO);
+     ahci_command_adjust(cmd, 0, ptr, bufsize, 0);
+@@ -1911,7 +1910,7 @@ static void test_write_engine_stop_in_flight(void)
+     /* Drop the command list while the write is still outstanding. */
+     ahci_px_clr(ahci, port, AHCI_PX_CMD, AHCI_PX_CMD_ST);
  
- static void test_drive_without_dev(void)
- {
-+#ifdef CONFIG_HMP
-     QTestState *qts;
+-    g_free(qtest_hmp(ahci->parent->qts, "qemu-io drive0 \"resume wr\""));
++    qtest_qemu_io(ahci->parent->qts, "drive0", "resume wr");
  
--#ifndef CONFIG_HMP
--    g_test_skip("HMP not enabled");
--    return;
--#endif
--
-     /* Start with an empty drive */
-     qts = qtest_init("-drive if=none,id=drive0 -M none");
- 
-@@ -184,19 +182,18 @@ static void test_drive_without_dev(void)
-     drive_add(qts);
- 
-     qtest_quit(qts);
-+#else
-+    g_test_skip("HMP not enabled");
-+#endif
- }
- 
- static void test_after_failed_device_add(void)
- {
-+#ifdef CONFIG_HMP
-     char driver[32];
-     QDict *response;
-     QTestState *qts;
- 
--#ifndef CONFIG_HMP
--    g_test_skip("HMP not enabled");
--    return;
--#endif
--
-     if (!has_device_builtin("virtio-blk")) {
-         g_test_skip("Device virtio-blk is not available");
-         return;
-@@ -227,17 +224,16 @@ static void test_after_failed_device_add(void)
-     drive_add(qts);
- 
-     qtest_quit(qts);
-+#else
-+    g_test_skip("HMP not enabled");
-+#endif
- }
- 
- static void test_drive_del_device_del(void)
- {
-+#ifdef CONFIG_HMP
-     QTestState *qts;
- 
--#ifndef CONFIG_HMP
--    g_test_skip("HMP not enabled");
--    return;
--#endif
--
-     if (!has_device_builtin("virtio-scsi")) {
-         g_test_skip("Device virtio-scsi is not available");
-         return;
-@@ -259,6 +255,9 @@ static void test_drive_del_device_del(void)
-     g_assert(!has_drive(qts));
- 
-     qtest_quit(qts);
-+#else
-+    g_test_skip("HMP not enabled");
-+#endif
- }
- 
- static void test_cli_device_del(void)
-@@ -416,15 +415,11 @@ static void test_device_add_and_del_q35(void)
- 
- static void test_drive_add_device_add_and_del(void)
- {
-+#ifdef CONFIG_HMP
-     QTestState *qts;
-     const char *arch = qtest_get_arch();
-     const char *machine_addition = "";
- 
--#ifndef CONFIG_HMP
--    g_test_skip("HMP not enabled");
--    return;
--#endif
--
-     if (!has_device_builtin("virtio-blk")) {
-         g_test_skip("Device virtio-blk is not available");
-         return;
-@@ -450,17 +445,16 @@ static void test_drive_add_device_add_and_del(void)
-     g_assert(!has_drive(qts));
- 
-     qtest_quit(qts);
-+#else
-+    g_test_skip("HMP not enabled");
-+#endif
- }
- 
- static void test_drive_add_device_add_and_del_q35(void)
- {
-+#ifdef CONFIG_HMP
-     QTestState *qts;
- 
--#ifndef CONFIG_HMP
--    g_test_skip("HMP not enabled");
--    return;
--#endif
--
-     if (!has_device_builtin("virtio-blk")) {
-         g_test_skip("Device virtio-blk is not available");
-         return;
-@@ -479,6 +473,9 @@ static void test_drive_add_device_add_and_del_q35(void)
-     g_assert(!has_drive(qts));
- 
-     qtest_quit(qts);
-+#else
-+    g_test_skip("HMP not enabled");
-+#endif
- }
- 
- static void test_blockdev_add_device_add_and_del(void)
+     /* Round-trip through the device to confirm qemu is still alive. */
+     ahci_px_rreg(ahci, port, AHCI_PX_TFD);
 
 -- 
 2.55.0.543.g5ebe2ebe4ea8

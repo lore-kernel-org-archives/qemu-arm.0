@@ -4,64 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6D23CC79FA0
-	for <qemu-arm@archiver.kernel.org>; Mon,  7 Sep 2026 16:44:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2D531C79FA7
+	for <qemu-arm@archiver.kernel.org>; Mon,  7 Sep 2026 16:44:36 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1x3cS2-00016o-4f; Mon, 07 Sep 2026 12:44:10 -0400
+	id 1x3cSF-0001Xc-3r; Mon, 07 Sep 2026 12:44:23 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <eblot.ml@gmail.com>)
- id 1x3cS0-00013b-UK
- for qemu-arm@nongnu.org; Mon, 07 Sep 2026 12:44:08 -0400
-Received: from mail-wr2-f12.google.com ([74.125.225.76])
+ id 1x3cSC-0001TK-UF
+ for qemu-arm@nongnu.org; Mon, 07 Sep 2026 12:44:20 -0400
+Received: from mail-wr1-f48.google.com ([209.85.221.48])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <eblot.ml@gmail.com>)
- id 1x3cRy-00033P-5A
- for qemu-arm@nongnu.org; Mon, 07 Sep 2026 12:44:08 -0400
-Received: by mail-wr2-f12.google.com with SMTP id
- ffacd0b85a97d-482f6356256so175161f8f.1
- for <qemu-arm@nongnu.org>; Mon, 07 Sep 2026 09:44:05 -0700 (PDT)
+ id 1x3cS9-00035V-Dt
+ for qemu-arm@nongnu.org; Mon, 07 Sep 2026 12:44:20 -0400
+Received: by mail-wr1-f48.google.com with SMTP id
+ ffacd0b85a97d-484392e3d33so2630364f8f.2
+ for <qemu-arm@nongnu.org>; Mon, 07 Sep 2026 09:44:17 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1788799444; x=1789404244;
+ d=1e100.net; s=20251104; t=1788799456; x=1789404256;
  h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
  :content-type:mime-version:subject:date:from:x-gm-gg
  :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
  :content-type;
- bh=+nb48/mqPn7+bPDRAaLkgFFQLPP5yyaURUgKFTQWIgU=;
- b=KyfkbBX+IidSiY0aP7HjoyvGGUN6vLVQRKVnKtuJFImPDHpp/I/UtxIaf4WbvexWO1
- nxGAyRO2GSEdVYqAhWXyDKNEcPedvip1H2GPoTk8zM8YdfPXi3dH8IMETcezBab/ivT+
- +3hHjJu4HRVKzQiRyH9PrFYgetZTKp0pH6uY1fA4W/CAQsU7XpRa7zgdHvrNP3/ogypK
- hLs6hcKHLb1mxys//tzZFgYDClPqMnBuFZQ2/y2P9EyJJaaLcha/FX4H92MAKl5zVFhg
- oph9oq6IOdj4ht99npnjYLB/T4yB0I72pnEpi+2EtUWixUXJpG/2TxDxe2na59ATL14i
- 1R3w==
+ bh=8FHzwKk8anKZlTGdAonYHGrVBnObKIm5SAMSfQi1o6k=;
+ b=iIVL2IpAYQBguSRoRYSpMjKRzpwFxBxMPsNdd6gvUgfTlK31uusavCFVXccJxO0W16
+ k/DaRYi0NdZ+lbRVt2AxmeFWmZ1qrNWrKxQN5HUPvj4It7s6fi85TVTGKn8uhcPhzW7D
+ Y/83Se7SeFtyHfi8eHE/EDSeSRHmfHm03TM67U7nKnCYzMUgNZvWN8Rtyk0SEYxUVvq7
+ UwITfBwOQk9RRJ1gbPToMBRY0AZeHGsvEnAWATDJdtYrhEn/ph+jcDs8yNhHG9xJbkfh
+ goERI6Nh6o+buM70WuJMociqGCbpzyv+dkFNWYV7H1uN+Ert9V+/wRSSUUIkpFQm+Czx
+ qOUg==
 X-Forwarded-Encrypted: i=1;
- AKwUvBxvU2YoI9FUnrUdhPLZBXnITYaFI3tIvJa+78WF7WAKJVeg77HEVa5+0h5aoQRkwJyxnHFU9ViU9A==@nongnu.org
-X-Gm-Message-State: AFuF++kS4uRprvppvR65icNTckfKNVsEFKcTH9UC0kzVfMeBeEhwN9MK
- vJJn4MAitNEWixiCLyrG0TWWAPpZHOK7JN/m6ZF/FpuV2M1X6E3qJSJ2
-X-Gm-Gg: AYBFou1EQiKNgmkpdi7JhRx58UvHKo/rdHjusKwpAEaHDob76UzrXwzowY+ctRXNESy
- 8MNasotv6HhYw/XqGBjI2tGMvD9mKwh8If8rJRA7SN6LgI09UFE7CSg9v09AuisFoeUDJ52L3mf
- 03eeD56gAYTD0p+fj+CzGMXw5aTVvHPDexkDG+jw5Htf5TaognL3Nr3Wh9xFCYY84CYInA1XG9Q
- Jy9sU/gZfv6CzfX7711cTrQF+Kpw1Tmdv7Ku4CdDf/ug6mqj/yJFfofY2Z7BlEn7Xjytnzoo9ko
- n/Y57ycTwqvqRtbzPXa0HwG/Dt4MCfzO9/LtE0s2Tw7xTdsxEt2R/NT+4Tk/8UukAcjxKSOdpAr
- j1OfYsO3F6GYt63/sk+ZcfmFOIRtLrmIJTK1nFsNloXd9tq7/bBTVFBSQ1W9GL41rfsvMiUhL65
- 8GeF2+1CbeL/GfxpPG5kjVwQyh+WHa6YrRUEOkk8XsSeBOtUXu0zwwd+zhCA3M4H8urHkfq4LCq
- CfBPzENiVvzslaOyImYuwxrMF90GgV8tEI=
-X-Received: by 2002:a05:600c:b8d:b0:49c:e37e:4389 with SMTP id
- 5b1f17b1804b1-49d1754e950mr23261705e9.4.1788799444266; 
- Mon, 07 Sep 2026 09:44:04 -0700 (PDT)
+ AKwUvBw+lQW+1MUiqr7oLPWx54CCH+gamxBTrK33g9rL8hR61NfELyx9EabP22EyI315yGXd2mLlhaWjVA==@nongnu.org
+X-Gm-Message-State: AFuF++mylpuTrZm2kTyFkHyrDVdzLqRSlvZOzunsYwxdoJUbc5qe5Xj4
+ cpEYQNxwM9oz5edTU2N5IFqtDNNf2h720qlIyIK2gVZ54/IV8bMy5i79
+X-Gm-Gg: AYBFou3WDyZDJ/N7uzPpU8j/ScxrN1iZdPVhf6xsSbtiDLFJHT4lCoGkMWTTkaQvh+m
+ IL8YukpPugxRMtKSvFnF/M+iSQpW9vXi8312gUitEAuJbwtNRLbROCF5/st+0bsocsgd7CSO8IG
+ iczzQ0J86efVDb8CxQXFDb6ltGsk5eyrCF1Xv8XPm0F91y2YoTZXUJIxE9JzOqTus3x+G/HsR8i
+ zV56LpTq5ycF8TMcSunao225PCCKFCIz2WqgrBoCouQo9sCZyCsegTJqwI+MYE2P0aX+II9d3Z+
+ ga6+6C2WFdoHiDHoMuDOeK83+Pu/48h9/txnZvZiAAFzpWMYXrCoSvoxvTcvQbyLEsLfE9z4t5v
+ 6kP/5DUXjc+LH4VelMpve2zTUcJRGqNhMIW1WKgp1FOX9IWyFEruY28q1ju0AVfz6CMUAoHA91G
+ V41+05JQmHP6k8oIZBCg6CwJptmlsUJH2+HcjaR8H8XB83SNOEM8rbtdhLHAw+oHpMt4lIz2dww
+ CzZFjHiQE1FIYRskVWe7al7TDGm7KjNOAM=
+X-Received: by 2002:a05:600d:4444:20b0:49c:fc6c:be0a with SMTP id
+ 5b1f17b1804b1-49cfc6cc001mr157672795e9.33.1788799455795; 
+ Mon, 07 Sep 2026 09:44:15 -0700 (PDT)
 Received: from localhost (89-93-216-19.hfc.dyn.abo.bbox.fr. [89.93.216.19])
  by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-49cee6024a8sm423469295e9.6.2026.09.07.09.44.02
+ ffacd0b85a97d-4858e239862sm24820268f8f.9.2026.09.07.09.44.14
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 07 Sep 2026 09:44:02 -0700 (PDT)
-Date: Mon, 07 Sep 2026 18:41:58 +0200
-Subject: [PATCH 08/50] hw/rtc: ds1338: move TYPE_DS1338 to a public header
+ Mon, 07 Sep 2026 09:44:15 -0700 (PDT)
+Date: Mon, 07 Sep 2026 18:41:59 +0200
+Subject: [PATCH 09/50] hw: ds1338: use the TYPE_DS1338 constant instead of
+ the "ds1338" string
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20260907-bmc-minerva-v1-8-0d83ad610c3b@free.fr>
+Message-Id: <20260907-bmc-minerva-v1-9-0d83ad610c3b@free.fr>
 References: <20260907-bmc-minerva-v1-0-0d83ad610c3b@free.fr>
 In-Reply-To: <20260907-bmc-minerva-v1-0-0d83ad610c3b@free.fr>
 To: qemu-devel@nongnu.org
@@ -77,15 +78,15 @@ Cc: =?utf-8?q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>,
  =?utf-8?q?Philippe_Mathieu-Daud=C3=A9?= <philmd@oss.qualcomm.com>, 
  Emmanuel Blot <emmanuel.blot@free.fr>
 X-Mailer: b4 0.15.2
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1788799319; l=1555;
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1788799320; l=11044;
  i=emmanuel.blot@free.fr; s=20260602; h=from:subject:message-id;
- bh=rDiuDaI9O+3b6OvM3HVMevuI7PTOL9dpbkK/b/AU00Y=;
- b=TJjwhDYORc6vDrt5LIRvQ49PiDCLxbk25KlMDreMqTb/SaS2ALuZeVzGwRczc7nwjNk6xjWFO
- Xs5RyVKQbsdCjmEo9KNgOnszVkOpUgnFQj3sNDNtvSUMi8Tgqx6NHgP
+ bh=nH6+IRCmLNoTSb8wnIb/AbS2T50zARIVS2dxd7pZsVU=;
+ b=VE+T6zbJGZenZpyNtmFtEHB6EwRWiYL7ogB0mbPwfzprphi+xiXev1IMIQId3zwDsozDjliby
+ a07ilUydWK/A2bxxoAa4WxGjltlGbVW6jozpbq0W+wAUMWJC5vt6j2x
 X-Developer-Key: i=emmanuel.blot@free.fr; a=ed25519;
  pk=0qFrZ21FAAN8OfVsSoVcCFTk/NMYOWzxJz4paSAVm0g=
-Received-SPF: pass client-ip=74.125.225.76; envelope-from=eblot.ml@gmail.com;
- helo=mail-wr2-f12.google.com
+Received-SPF: pass client-ip=209.85.221.48; envelope-from=eblot.ml@gmail.com;
+ helo=mail-wr1-f48.google.com
 X-Spam_score_int: -15
 X-Spam_score: -1.6
 X-Spam_bar: -
@@ -111,62 +112,283 @@ From:  Emmanuel Blot via <qemu-arm@nongnu.org>
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Move the TYPE_DS1338 type name definition from ds1338.c into a new
-include/hw/rtc/ds1338.h header so that boards instantiating the device
-no longer need to redefine the type name string locally.
+Now that TYPE_DS1338 is exposed by include/hw/rtc/ds1338.h, use it in
+the machines that instantiate the RTC by its raw type name string.
+
+No functional change.
 
 Signed-off-by: Emmanuel Blot <emmanuel.blot@free.fr>
 ---
- hw/rtc/ds1338.c         |  2 +-
- include/hw/rtc/ds1338.h | 20 ++++++++++++++++++++
- 2 files changed, 21 insertions(+), 1 deletion(-)
+ hw/arm/aspeed_ast2400_palmetto.c          | 4 +++-
+ hw/arm/aspeed_ast2400_supermicrox11.c     | 4 +++-
+ hw/arm/aspeed_ast2500_romulus.c           | 4 +++-
+ hw/arm/aspeed_ast2500_supermicro-x11spi.c | 4 +++-
+ hw/arm/aspeed_ast2500_witherspoon.c       | 4 +++-
+ hw/arm/aspeed_ast2600_bletchley.c         | 3 ++-
+ hw/arm/aspeed_ast2600_catalina.c          | 2 +-
+ hw/arm/aspeed_ast2600_sanmiguel.c         | 3 +--
+ hw/arm/realview.c                         | 3 ++-
+ hw/arm/versatilepb.c                      | 3 ++-
+ hw/ppc/e500.c                             | 3 ++-
+ hw/riscv/tt_atlantis.c                    | 3 ++-
+ 12 files changed, 27 insertions(+), 13 deletions(-)
 
-diff --git a/hw/rtc/ds1338.c b/hw/rtc/ds1338.c
-index 5f1ee2e410a..f8b3340bf0f 100644
---- a/hw/rtc/ds1338.c
-+++ b/hw/rtc/ds1338.c
-@@ -12,6 +12,7 @@
- 
- #include "qemu/osdep.h"
- #include "hw/i2c/i2c.h"
+diff --git a/hw/arm/aspeed_ast2400_palmetto.c b/hw/arm/aspeed_ast2400_palmetto.c
+index e2350e5b6c..185185f0bb 100644
+--- a/hw/arm/aspeed_ast2400_palmetto.c
++++ b/hw/arm/aspeed_ast2400_palmetto.c
+@@ -11,6 +11,7 @@
+ #include "hw/arm/aspeed.h"
+ #include "hw/arm/aspeed_soc.h"
+ #include "hw/i2c/smbus_eeprom.h"
 +#include "hw/rtc/ds1338.h"
- #include "migration/vmstate.h"
- #include "qemu/bcd.h"
- #include "qom/object.h"
-@@ -29,7 +30,6 @@
- #define HOURS_PM   0x20
- #define CTRL_OSF   0x20
+ 
+ /* Palmetto hardware value: 0x120CE416 */
+ #define PALMETTO_BMC_HW_STRAP1 (                                        \
+@@ -36,7 +37,8 @@ static void palmetto_bmc_i2c_init(AspeedMachineState *bmc)
+      * The palmetto platform expects a ds3231 RTC but a ds1338 is
+      * enough to provide basic RTC features. Alarms will be missing
+      */
+-    i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 0), "ds1338", 0x68);
++    i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 0), TYPE_DS1338,
++                            0x68);
+ 
+     smbus_eeprom_init_one(aspeed_i2c_get_bus(&soc->i2c, 0), 0x50,
+                           eeprom_buf);
+diff --git a/hw/arm/aspeed_ast2400_supermicrox11.c b/hw/arm/aspeed_ast2400_supermicrox11.c
+index c75898cc6d..051e072c5a 100644
+--- a/hw/arm/aspeed_ast2400_supermicrox11.c
++++ b/hw/arm/aspeed_ast2400_supermicrox11.c
+@@ -11,6 +11,7 @@
+ #include "hw/arm/aspeed.h"
+ #include "hw/arm/aspeed_soc.h"
+ #include "hw/i2c/smbus_eeprom.h"
++#include "hw/rtc/ds1338.h"
+ 
+ /* TODO: Find the actual hardware value */
+ #define SUPERMICROX11_BMC_HW_STRAP1 (                                   \
+@@ -36,7 +37,8 @@ static void supermicrox11_bmc_i2c_init(AspeedMachineState *bmc)
+      * The palmetto platform expects a ds3231 RTC but a ds1338 is
+      * enough to provide basic RTC features. Alarms will be missing
+      */
+-    i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 0), "ds1338", 0x68);
++    i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 0), TYPE_DS1338,
++                            0x68);
+ 
+     smbus_eeprom_init_one(aspeed_i2c_get_bus(&soc->i2c, 0), 0x50,
+                           eeprom_buf);
+diff --git a/hw/arm/aspeed_ast2500_romulus.c b/hw/arm/aspeed_ast2500_romulus.c
+index 340a74408b..87f90ed361 100644
+--- a/hw/arm/aspeed_ast2500_romulus.c
++++ b/hw/arm/aspeed_ast2500_romulus.c
+@@ -10,6 +10,7 @@
+ #include "qapi/error.h"
+ #include "hw/arm/aspeed.h"
+ #include "hw/arm/aspeed_soc.h"
++#include "hw/rtc/ds1338.h"
+ 
+ /* Romulus hardware value: 0xF10AD206 */
+ #define ROMULUS_BMC_HW_STRAP1 (                                         \
+@@ -29,7 +30,8 @@ static void romulus_bmc_i2c_init(AspeedMachineState *bmc)
+      * The romulus board expects Epson RX8900 I2C RTC but a ds1338 is
+      * good enough
+      */
+-    i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 11), "ds1338", 0x32);
++    i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 11), TYPE_DS1338,
++                            0x32);
+ }
+ 
+ static void aspeed_machine_romulus_class_init(ObjectClass *oc,
+diff --git a/hw/arm/aspeed_ast2500_supermicro-x11spi.c b/hw/arm/aspeed_ast2500_supermicro-x11spi.c
+index 5a7e49d6cc..dc0248422d 100644
+--- a/hw/arm/aspeed_ast2500_supermicro-x11spi.c
++++ b/hw/arm/aspeed_ast2500_supermicro-x11spi.c
+@@ -11,6 +11,7 @@
+ #include "hw/arm/aspeed.h"
+ #include "hw/arm/aspeed_soc.h"
+ #include "hw/i2c/smbus_eeprom.h"
++#include "hw/rtc/ds1338.h"
+ 
+ /* TODO: Find the actual hardware value */
+ #define SUPERMICRO_X11SPI_BMC_HW_STRAP1 (                               \
+@@ -32,7 +33,8 @@ static void supermicro_x11spi_bmc_i2c_init(AspeedMachineState *bmc)
+      * The palmetto platform expects a ds3231 RTC but a ds1338 is
+      * enough to provide basic RTC features. Alarms will be missing
+      */
+-    i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 0), "ds1338", 0x68);
++    i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 0), TYPE_DS1338,
++                            0x68);
+ 
+     smbus_eeprom_init_one(aspeed_i2c_get_bus(&soc->i2c, 0), 0x50,
+                           eeprom_buf);
+diff --git a/hw/arm/aspeed_ast2500_witherspoon.c b/hw/arm/aspeed_ast2500_witherspoon.c
+index 26ddb67347..c69065846c 100644
+--- a/hw/arm/aspeed_ast2500_witherspoon.c
++++ b/hw/arm/aspeed_ast2500_witherspoon.c
+@@ -14,6 +14,7 @@
+ #include "hw/sensor/tmp105.h"
+ #include "hw/i2c/smbus_eeprom.h"
+ #include "hw/gpio/pca9552.h"
++#include "hw/rtc/ds1338.h"
+ 
+ /* Witherspoon hardware value: 0xF10AD216 */
+ #define WITHERSPOON_BMC_HW_STRAP1 (                                     \
+@@ -70,7 +71,8 @@ static void witherspoon_bmc_i2c_init(AspeedMachineState *bmc)
+      * The witherspoon board expects Epson RX8900 I2C RTC but a ds1338 is
+      * good enough
+      */
+-    i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 11), "ds1338", 0x32);
++    i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 11), TYPE_DS1338,
++                            0x32);
+ 
+     smbus_eeprom_init_one(aspeed_i2c_get_bus(&soc->i2c, 11), 0x51,
+                           eeprom_buf);
+diff --git a/hw/arm/aspeed_ast2600_bletchley.c b/hw/arm/aspeed_ast2600_bletchley.c
+index 2822f6bdf5..7bd1f90555 100644
+--- a/hw/arm/aspeed_ast2600_bletchley.c
++++ b/hw/arm/aspeed_ast2600_bletchley.c
+@@ -12,6 +12,7 @@
+ #include "hw/arm/aspeed_soc.h"
+ #include "hw/gpio/pca9552.h"
+ #include "hw/nvram/eeprom_at24c.h"
++#include "hw/rtc/ds1338.h"
+ 
+ #define TYPE_TMP421 "tmp421"
+ /* Bletchley hardware value */
+@@ -44,7 +45,7 @@ static void bletchley_bmc_i2c_init(AspeedMachineState *bmc)
+     /* Bus 6 */
+     at24c_eeprom_init(i2c[6], 0x56, 65536);
+     /* Missing model: nxp,pcf85263 @ 0x51 , but ds1338 works enough */
+-    i2c_slave_create_simple(i2c[6], "ds1338", 0x51);
++    i2c_slave_create_simple(i2c[6], TYPE_DS1338, 0x51);
+ 
+ 
+     /* Bus 7 */
+diff --git a/hw/arm/aspeed_ast2600_catalina.c b/hw/arm/aspeed_ast2600_catalina.c
+index ad2953dfea..e1dc988425 100644
+--- a/hw/arm/aspeed_ast2600_catalina.c
++++ b/hw/arm/aspeed_ast2600_catalina.c
+@@ -14,6 +14,7 @@
+ #include "hw/gpio/pca9552.h"
+ #include "hw/gpio/pca9554.h"
+ #include "hw/nvram/eeprom_at24c.h"
++#include "hw/rtc/ds1338.h"
+ #include "hw/sensor/tmp105.h"
+ 
+ /* Catalina hardware value */
+@@ -22,7 +23,6 @@
+ #define CATALINA_BMC_RAM_SIZE ASPEED_RAM_SIZE(2 * GiB)
+ 
+ #define TYPE_TMP421 "tmp421"
+-#define TYPE_DS1338 "ds1338"
+ 
+ /*
+  * "BMC Storage Module" FRU data.  Generated with frugen.
+diff --git a/hw/arm/aspeed_ast2600_sanmiguel.c b/hw/arm/aspeed_ast2600_sanmiguel.c
+index 1dbbef11f2..5ab2b43e9c 100644
+--- a/hw/arm/aspeed_ast2600_sanmiguel.c
++++ b/hw/arm/aspeed_ast2600_sanmiguel.c
+@@ -13,6 +13,7 @@
+ #include "hw/gpio/pca9552.h"
+ #include "hw/gpio/pca9554.h"
+ #include "hw/nvram/eeprom_at24c.h"
++#include "hw/rtc/ds1338.h"
+ #include "hw/sensor/tmp105.h"
+ 
+ /* SanMiguel hardware values */
+@@ -20,8 +21,6 @@
+ #define SANMIGUEL_BMC_HW_STRAP2 0x00000000
+ #define SANMIGUEL_BMC_RAM_SIZE ASPEED_RAM_SIZE(2 * GiB)
  
 -#define TYPE_DS1338 "ds1338"
- OBJECT_DECLARE_SIMPLE_TYPE(DS1338State, DS1338)
+-
+ /*
+  * "Front IO" FRU data. Generated with frugen.
+  *
+diff --git a/hw/arm/realview.c b/hw/arm/realview.c
+index ceba0331b0..4cdf939511 100644
+--- a/hw/arm/realview.c
++++ b/hw/arm/realview.c
+@@ -28,6 +28,7 @@
+ #include "hw/intc/realview_gic.h"
+ #include "hw/core/irq.h"
+ #include "hw/i2c/arm_sbcon_i2c.h"
++#include "hw/rtc/ds1338.h"
+ #include "hw/sd/sd.h"
+ #include "target/arm/cpu-qom.h"
  
- struct DS1338State {
-diff --git a/include/hw/rtc/ds1338.h b/include/hw/rtc/ds1338.h
-new file mode 100644
-index 00000000000..f4cfe6a8e76
---- /dev/null
-+++ b/include/hw/rtc/ds1338.h
-@@ -0,0 +1,20 @@
-+/*
-+ * MAXIM DS1338 I2C RTC+NVRAM
-+ *
-+ * Copyright (c) 2009 CodeSourcery.
-+ * Written by Paul Brook
-+ *
-+ * This code is licensed under the GNU GPL v2.
-+ *
-+ * Contributions after 2012-01-13 are licensed under the terms of the
-+ * GNU GPL, version 2 or (at your option) any later version.
-+ *
-+ * SPDX-License-Identifier: GPL-2.0-or-later
-+ */
-+
-+#ifndef HW_RTC_DS1338_H
-+#define HW_RTC_DS1338_H
-+
-+#define TYPE_DS1338 "ds1338"
-+
-+#endif
+@@ -323,7 +324,7 @@ static void realview_init(MachineState *machine,
+ 
+     dev = sysbus_create_simple(TYPE_ARM_SBCON_I2C, 0x10002000, NULL);
+     i2c = (I2CBus *)qdev_get_child_bus(dev, "i2c");
+-    i2c_slave_create_simple(i2c, "ds1338", 0x68);
++    i2c_slave_create_simple(i2c, TYPE_DS1338, 0x68);
+ 
+     /* Memory map for RealView Emulation Baseboard:  */
+     /* 0x10000000 System registers.  */
+diff --git a/hw/arm/versatilepb.c b/hw/arm/versatilepb.c
+index f94bf96599..737cd21c27 100644
+--- a/hw/arm/versatilepb.c
++++ b/hw/arm/versatilepb.c
+@@ -18,6 +18,7 @@
+ #include "hw/pci/pci.h"
+ #include "hw/i2c/i2c.h"
+ #include "hw/i2c/arm_sbcon_i2c.h"
++#include "hw/rtc/ds1338.h"
+ #include "hw/core/irq.h"
+ #include "hw/core/boards.h"
+ #include "hw/block/flash.h"
+@@ -346,7 +347,7 @@ static void versatile_init(MachineState *machine, int board_id)
+ 
+     dev = sysbus_create_simple(TYPE_ARM_SBCON_I2C, 0x10002000, NULL);
+     i2c = (I2CBus *)qdev_get_child_bus(dev, "i2c");
+-    i2c_slave_create_simple(i2c, "ds1338", 0x68);
++    i2c_slave_create_simple(i2c, TYPE_DS1338, 0x68);
+ 
+     /* Add PL041 AACI Interface to the LM4549 codec */
+     pl041 = qdev_new("pl041");
+diff --git a/hw/ppc/e500.c b/hw/ppc/e500.c
+index 1876882a04..469cef9d2f 100644
+--- a/hw/ppc/e500.c
++++ b/hw/ppc/e500.c
+@@ -50,6 +50,7 @@
+ #include "hw/core/platform-bus.h"
+ #include "hw/net/fsl_etsec/etsec.h"
+ #include "hw/i2c/i2c.h"
++#include "hw/rtc/ds1338.h"
+ #include "hw/core/irq.h"
+ #include "hw/sd/sdhci.h"
+ #include "hw/misc/unimp.h"
+@@ -1025,7 +1026,7 @@ void ppce500_init(MachineState *machine)
+     memory_region_add_subregion(ccsr_addr_space, MPC8544_I2C_REGS_OFFSET,
+                                 sysbus_mmio_get_region(s, 0));
+     i2c = I2C_BUS(qdev_get_child_bus(dev, "i2c"));
+-    i2c_slave_create_simple(i2c, "ds1338", RTC_REGS_OFFSET);
++    i2c_slave_create_simple(i2c, TYPE_DS1338, RTC_REGS_OFFSET);
+ 
+     /* eSDHC */
+     if (pmc->has_esdhc) {
+diff --git a/hw/riscv/tt_atlantis.c b/hw/riscv/tt_atlantis.c
+index 8a219afef7..910713c6bb 100644
+--- a/hw/riscv/tt_atlantis.c
++++ b/hw/riscv/tt_atlantis.c
+@@ -27,6 +27,7 @@
+ #include "hw/char/serial-mm.h"
+ #include "hw/intc/riscv_aclint.h"
+ #include "hw/misc/unimp.h"
++#include "hw/rtc/ds1338.h"
+ 
+ #include "system/system.h"
+ #include "system/device_tree.h"
+@@ -657,7 +658,7 @@ static void tt_atlantis_machine_init(MachineState *machine)
+     qdev_realize(DEVICE(&ams->soc), NULL, &error_fatal);
+ 
+     /* I2C peripherals: qemu specific */
+-    i2c_slave_create_simple(i2c_get_bus(s, 0), "ds1338", 0x6f);
++    i2c_slave_create_simple(i2c_get_bus(s, 0), TYPE_DS1338, 0x6f);
+     i2c_slave_create_simple(i2c_get_bus(s, 4), "tmp105", 0x48);
+ 
+     /* Load or create device tree */
 
 -- 
 2.50.1

@@ -4,55 +4,55 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0B734C79F9E
-	for <qemu-arm@archiver.kernel.org>; Mon,  7 Sep 2026 13:16:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2422BC79F89
+	for <qemu-arm@archiver.kernel.org>; Mon,  7 Sep 2026 13:16:18 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1x3ZBe-00057i-SD; Mon, 07 Sep 2026 09:15:02 -0400
+	id 1x3ZB3-0004Dd-29; Mon, 07 Sep 2026 09:14:25 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <marcandre.lureau@redhat.com>)
- id 1x3ZBM-0004mV-D0
- for qemu-arm@nongnu.org; Mon, 07 Sep 2026 09:14:45 -0400
+ id 1x3ZAy-0004AH-Cb
+ for qemu-arm@nongnu.org; Mon, 07 Sep 2026 09:14:20 -0400
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <marcandre.lureau@redhat.com>)
- id 1x3ZBJ-0006ZL-Bm
- for qemu-arm@nongnu.org; Mon, 07 Sep 2026 09:14:44 -0400
+ id 1x3ZAu-0006Qw-UH
+ for qemu-arm@nongnu.org; Mon, 07 Sep 2026 09:14:20 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1788786879;
+ s=mimecast20190719; t=1788786855;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=62mvN3+6Ik4rJgbtSXh3PbCH0A6py8ADyiqg0AkiFTs=;
- b=Yxxe98J9Y35gfyWErNYJnvkbPLqjiGRloZcwYEcQPUDR0GcvM7qCGlMXJsQi5vAGnT0H5D
- J0B6drPP/FHIHOphWp2KsA4pXAjwLWZHPE2IOCBAd3Gc3/46XnPncvstBCx+lI3YYzPd4k
- X+ccNy/YazsUdYU99vGW2rgOEwaJHq4=
-Received: from mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com
+ bh=lhF+LPeY+OhWtZ9Geb9k4VAyQa5iXbXu/6wp/DbPS44=;
+ b=i4EOXIh9Ign++x5YkhMER/+DElpefaNfo5l3pDSWWk6zD/FP3bMP0ddDeltQzp7mpuZWQ8
+ YjtFPQs8DVg4h6oCIQTkRji2wrKfHFVJebWoRexf1dfTGgPqJFXeWFE/UK8nW8TXV2HzYM
+ xlsqlogoTE8okDwe7m9uStOTGiEomeQ=
+Received: from mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com
  (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-121-HSNUZ_GjOa-4QEOK_vldYA-1; Mon,
- 07 Sep 2026 09:14:31 -0400
-X-MC-Unique: HSNUZ_GjOa-4QEOK_vldYA-1
-X-Mimecast-MFC-AGG-ID: HSNUZ_GjOa-4QEOK_vldYA_1788786859
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-575-YHoJYyqqOBeamVSfpbveXQ-1; Mon,
+ 07 Sep 2026 09:14:11 -0400
+X-MC-Unique: YHoJYyqqOBeamVSfpbveXQ-1
+X-Mimecast-MFC-AGG-ID: YHoJYyqqOBeamVSfpbveXQ_1788786849
 Received: from mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com
  (mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.12])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 684421954AE0; Mon,  7 Sep 2026 13:14:19 +0000 (UTC)
+ by mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 05F871955D7D; Mon,  7 Sep 2026 13:14:09 +0000 (UTC)
 Received: from localhost (headnet04.pony-001.prod.iad2.dc.redhat.com
  [10.2.32.116])
  by mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id 9657F1955F06; Mon,  7 Sep 2026 13:14:18 +0000 (UTC)
+ id 48A001955F07; Mon,  7 Sep 2026 13:14:06 +0000 (UTC)
 From: =?utf-8?q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>
-Date: Mon, 07 Sep 2026 17:13:58 +0400
-Subject: [PATCH v3 4/9] tests/functional/s390x: use QMP for balloon
+Date: Mon, 07 Sep 2026 17:13:55 +0400
+Subject: [PATCH v3 1/9] tests/functional: replace HMP with QMP
 MIME-Version: 1.0
-Message-Id: <20260907-nohmp-v3-4-c11e7d0d3d7d@redhat.com>
+Message-Id: <20260907-nohmp-v3-1-c11e7d0d3d7d@redhat.com>
 References: <20260907-nohmp-v3-0-c11e7d0d3d7d@redhat.com>
 In-Reply-To: <20260907-nohmp-v3-0-c11e7d0d3d7d@redhat.com>
 To: qemu-devel@nongnu.org
@@ -70,25 +70,25 @@ Cc: John Snow <jsnow@redhat.com>, "Denis V. Lunev" <den@openvz.org>,
  =?utf-8?q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>, 
  Glenn Miles <milesg@linux.ibm.com>, qemu-ppc@nongnu.org, 
  =?utf-8?q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>
-X-Developer-Signature: v=1; a=openpgp-sha256; l=1417;
+X-Developer-Signature: v=1; a=openpgp-sha256; l=4336;
  i=marcandre.lureau@redhat.com; h=from:subject:message-id;
- bh=090HS6zLuSEZTINBqsIWMEfBWo0e9Nx0kELk6Jj7tAY=;
- b=owEBbQKS/ZANAwAKAdro4Ql1lpzlAcsmYgBqnriXrUSpL4DQNyuUbQOvO1FhBmFAi0kYCJrVG
- +PF2DlajRaJAjMEAAEKAB0WIQSHqb2TP4fGBtJ29i3a6OEJdZac5QUCap64lwAKCRDa6OEJdZac
- 5dbWD/9seRKQBe//1mKwGDdX3edyT6T0eCwZwt7+XMBsz7QvcQp8fGwrzWtWK3QKvhPfZTClXPI
- yqx1mZG6rlV1RaLMorbiBa7aXMDJEJP1BF6JMsPL+FEF2qxkEyLH5lrcsMUzEkqZZ9b/Jdor5GW
- k/fl8W6dFFxusZr9BVr3R9V/OUuCqMsTa72e/btmR+9Mj/ABxPtHiAJ0xvj7OgnZoU16KPek6nD
- 7k7qSdzsDb8cysgHfAvLVjth0JnHgXSIxtYwEZ31VYVrQMy6CLMEPNy7f9YZvUv2kOw5ru2GZEJ
- kA/82PwZhBSwNmWR508k1op9bxir/cJfT5lfxfyZAItLSYXv+nqQaqZ0zCHWlv+M6uVKEnFli5s
- QcFArUXENDxOYe8A9VkzNYbWnpPpJuSXa5nu4gpuo1wzt5xhaVrmWl5smgICXCEJH1qyvdCGNsy
- 6UPPEWOlsoJgJAsMLmlp4QkP8aRxrQnSM0FVJ65neeHgKec3UrQQL3JaU6hPzjzm1HXwcUtvI/s
- mNp5jPNVjuz+FnWf1qsb5eZmBd99aGiBYfvrY4PLI1S/lkcAPPd465i3FqmFVQzFBYalrWkptqL
- GMIWIRdrQAMo5x8njaxgSjpVQX7xvZEyULGxRNksDtKroaHV2vPdRXzuGE2Fei6x5FSiM+KICaN
- WYnQmj3V0qyyWaA==
+ bh=wRP0TTU7tHgaAz5ePxRNTdw8coJZsHYYMWkGMZmWUDw=;
+ b=owEBbQKS/ZANAwAKAdro4Ql1lpzlAcsmYgBqnriXqpm8t6dRjU2H+9fKTGG5Aox2fIJkJm2PB
+ +geu4U89RSJAjMEAAEKAB0WIQSHqb2TP4fGBtJ29i3a6OEJdZac5QUCap64lwAKCRDa6OEJdZac
+ 5XKUD/9naAU5Hv7O5qygDUwAEtbGyF/vOErv8EQ+Z6pDcfgcXgjmcWGVPzaDy58yJbceOTcZ3xt
+ CNeHHWOkUtJjOkGvSXRiFgJW0gWoAXKzIvehmFrlHXh4VJn8jS1zRXohdn8Od6FscgrlDr8/lnR
+ /q3vRu60xAMgZ8nN/c0tApdKbgqpe3NZSnzd4YK9Lu8esAtDPRSTIWbDe+HpgbO66VO6fEFJlgg
+ Cz0uzM+V+6z1OQfC5oTSHgRJ3j0pv02ArlHkvKvigpNeV5LGTpwuCf+vpRsdUVa7JsAJgwVSHhG
+ Vsta1zgDbi0qxdBnF1K9keza/S5emFwZv3rnocUD3tODhMf5rZVR8gGI38ZX6x1fMM0SlJsdWjz
+ J0RZ65lnTeiUQRGWwGP1UQMB5g5CCsVPT6R31uQ1QmOBXvOyUo/NDFUeezz+voS3KmLaa5c0sgP
+ 6viNGfcraVZ1+w5wAGIf/+FoSj3IQyXt+iGZB8DMhKiEojirdaIfAdpe1zJqIwnWZH2eByhpZLn
+ 2fvZ0+8fMiq0hNnVq12CLHArGeX36WCYUIgOFdXucUq4ajOAde2PYNTcgF74cIAmasDnHcSv8BP
+ 4BNw24cAs5fmZip1hSXrnOyIuN5roduMWsZxuEvWV8MrTbJThbckt2rB8gMesJRxSnRR2N9SqJ7
+ qgW7cWh1FrS20sQ==
 X-Developer-Key: i=marcandre.lureau@redhat.com; a=openpgp;
  fpr=87A9BD933F87C606D276F62DDAE8E10975969CE5
 X-Scanned-By: MIMEDefang 3.0 on 10.30.177.12
-X-Mimecast-MFC-PROC-ID: QQV-IpX7AJoRdZRdXtGGQeUMUFVi4b6Hhlgaf06VFsQ_1788786859
+X-Mimecast-MFC-PROC-ID: t_rrGuaoCcpwJe0cIaLMPx4r0J-9rvstUndle-Rjf_A_1788786849
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
@@ -117,32 +117,106 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Unit is changed from megabytes to bytes.
+Replace HMP with QMP equivalent.
 
-Reviewed-by: Thomas Huth <th.huth+qemu@posteo.eu>
-Reviewed-by: Daniel P. Berrangé <berrange@redhat.com>
 Signed-off-by: Marc-André Lureau <marcandre.lureau@redhat.com>
 ---
- tests/functional/s390x/test_ccw_virtio.py | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+ tests/functional/arm/test_integratorcp.py | 13 ++++++++-----
+ tests/functional/m68k/test_nextcube.py    | 11 +++++++----
+ tests/functional/mips64el/test_malta.py   | 13 ++++++++-----
+ 3 files changed, 23 insertions(+), 14 deletions(-)
 
-diff --git a/tests/functional/s390x/test_ccw_virtio.py b/tests/functional/s390x/test_ccw_virtio.py
-index 1d4958bbe293..f816b1e201a1 100755
---- a/tests/functional/s390x/test_ccw_virtio.py
-+++ b/tests/functional/s390x/test_ccw_virtio.py
-@@ -162,10 +162,10 @@ def test_s390x_devices(self):
-         # test the virtio-balloon device
-         exec_command_and_wait_for_pattern(self, 'head -n 1 /proc/meminfo',
-                                           'MemTotal:         115640 kB')
--        self.vm.cmd('human-monitor-command', command_line='balloon 96')
-+        self.vm.cmd('balloon', value=96 * 1024 * 1024)
-         exec_command_and_wait_for_pattern(self, 'head -n 1 /proc/meminfo',
-                                           'MemTotal:          82872 kB')
--        self.vm.cmd('human-monitor-command', command_line='balloon 128')
-+        self.vm.cmd('balloon', value=128 * 1024 * 1024)
-         exec_command_and_wait_for_pattern(self, 'head -n 1 /proc/meminfo',
-                                           'MemTotal:         115640 kB')
+diff --git a/tests/functional/arm/test_integratorcp.py b/tests/functional/arm/test_integratorcp.py
+index 23ae919359d5..b79e81393547 100755
+--- a/tests/functional/arm/test_integratorcp.py
++++ b/tests/functional/arm/test_integratorcp.py
+@@ -14,6 +14,7 @@
  
+ import logging
+ 
++from qemu.qmp.qmp_client import ExecuteError
+ from qemu_test import QemuSystemTest, Asset
+ from qemu_test import wait_for_console_pattern
+ from qemu_test import skipIfMissingImports, skipUntrustedTest
+@@ -72,11 +73,13 @@ def test_framebuffer_tux_logo(self):
+         self.boot_integratorcp()
+         framebuffer_ready = 'Console: switching to colour frame buffer device'
+         wait_for_console_pattern(self, framebuffer_ready)
+-        self.vm.cmd('human-monitor-command', command_line='stop')
+-        res = self.vm.cmd('human-monitor-command',
+-                          command_line='screendump %s' % screendump_path)
+-        if 'unknown command' in res:
+-            self.skipTest('screendump not available')
++        self.vm.cmd('stop')
++        try:
++            self.vm.cmd('screendump', filename=screendump_path)
++        except ExecuteError as e:
++            if e.error_class == 'CommandNotFound':
++                self.skipTest('screendump command not found')
++            raise
+ 
+         cpu_count = 1
+         match_threshold = 0.92
+diff --git a/tests/functional/m68k/test_nextcube.py b/tests/functional/m68k/test_nextcube.py
+index d917cf5424fe..f3d92034b127 100755
+--- a/tests/functional/m68k/test_nextcube.py
++++ b/tests/functional/m68k/test_nextcube.py
+@@ -9,6 +9,7 @@
+ 
+ import time
+ 
++from qemu.qmp.qmp_client import ExecuteError
+ from qemu_test import QemuSystemTest, Asset
+ from qemu_test import skipIfMissingImports, skipIfMissingCommands
+ from qemu_test.tesseract import tesseract_ocr
+@@ -39,10 +40,12 @@ def check_bootrom_framebuffer(self, screenshot_path):
+                 break
+             time.sleep(0.1)
+ 
+-        res = self.vm.cmd('human-monitor-command',
+-                          command_line=f"screendump {screenshot_path}")
+-        if 'unknown command' in res:
+-            self.skipTest('screendump not available')
++        try:
++            self.vm.cmd('screendump', filename=screenshot_path)
++        except ExecuteError as e:
++            if e.error_class == 'CommandNotFound':
++                self.skipTest('screendump command not found')
++            raise
+ 
+     @skipIfMissingImports("PIL")
+     def test_bootrom_framebuffer_size(self):
+diff --git a/tests/functional/mips64el/test_malta.py b/tests/functional/mips64el/test_malta.py
+index 163bbaf5ca36..3b6d53799616 100755
+--- a/tests/functional/mips64el/test_malta.py
++++ b/tests/functional/mips64el/test_malta.py
+@@ -11,6 +11,7 @@
+ 
+ import os
+ 
++from qemu.qmp.qmp_client import ExecuteError
+ from qemu_test import LinuxKernelTest, Asset
+ from qemu_test import exec_command_and_wait_for_pattern
+ from qemu_test import skipIfMissingImports, skipFlakyTest, skipUntrustedTest
+@@ -154,11 +155,13 @@ def do_test_i6400_framebuffer_logo(self, cpu_cores_count):
+         self.vm.launch()
+         framebuffer_ready = 'Console: switching to colour frame buffer device'
+         self.wait_for_console_pattern(framebuffer_ready)
+-        self.vm.cmd('human-monitor-command', command_line='stop')
+-        res = self.vm.cmd('human-monitor-command',
+-                          command_line=f'screendump {screendump_path}')
+-        if 'unknown command' in res:
+-            self.skipTest('screendump not available')
++        self.vm.cmd('stop')
++        try:
++            self.vm.cmd('screeandump', filename=screendump_path)
++        except ExecuteError as e:
++            if e.error_class == 'CommandNotFound':
++                self.skipTest('screendump command not found')
++            raise
+ 
+         match_threshold = 0.95
+         screendump_bgr = cv2.imread(screendump_path, cv2.IMREAD_COLOR)
 
 -- 
 2.55.0.543.g5ebe2ebe4ea8

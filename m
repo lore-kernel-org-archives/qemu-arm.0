@@ -4,54 +4,52 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C82A0C79F9E
-	for <qemu-arm@archiver.kernel.org>; Mon,  7 Sep 2026 10:22:33 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 71A0CC79F89
+	for <qemu-arm@archiver.kernel.org>; Mon,  7 Sep 2026 10:22:40 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1x3WUA-000836-0o; Mon, 07 Sep 2026 06:21:58 -0400
+	id 1x3WTp-0007zI-6z; Mon, 07 Sep 2026 06:21:37 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <gilles.grimaud@univ-lille.fr>)
- id 1x3WU8-00082f-Nv; Mon, 07 Sep 2026 06:21:56 -0400
-Received: from smtp-out-2.univ-lille.fr ([194.254.129.106])
+ id 1x3WTn-0007yW-LJ; Mon, 07 Sep 2026 06:21:35 -0400
+Received: from smtp-out-1.univ-lille.fr ([194.254.129.82])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <gilles.grimaud@univ-lille.fr>)
- id 1x3WU5-00026H-M0; Mon, 07 Sep 2026 06:21:56 -0400
+ id 1x3WTk-00025K-EW; Mon, 07 Sep 2026 06:21:35 -0400
 Received: from smtp01.univ-lille.fr (smtp01.univ-lille.fr [194.254.129.95])
- by smtp-out-2.univ-lille.fr (Postfix) with ESMTPS id 4hdjlt2R9rz83JF;
- Mon,  7 Sep 2026 12:21:30 +0200 (CEST)
+ by smtp-out-1.univ-lille.fr (Postfix) with ESMTPS id 4hdjls638XzBqWv;
+ Mon,  7 Sep 2026 12:21:29 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=univ-lille.fr;
- s=dkim; t=1788776490;
- bh=Y0vTjKDptsPlgAdXpFia4d+W56tEq3YShBUGE8fW7mg=;
+ s=dkim; t=1788776489;
+ bh=oIW/gYq+b+6DHHgxAI1IguyZKIjL7ohsZG1rrnecv2E=;
  h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=gT7lTiTVdC5ZnogN988gKL/kNeoX8ifNrJkFfADIbc+Fl+wjgPA717o+pJfBE0D1z
- 3yui4XhUeLxyFuzxPDPOncEK/D51nlVQFJpku7UQ/VGNS80m+IKOi64OvA4gsJfKlB
- zRyiwjqoeVYQ3fmhRCP9D13YvFFPdsHmL0dLWh7wK4qN5YMJlR2j5PrKV4Sophfe5R
- 5SnW3eopk9yTIzFvqQ/WZyphb+iEy84KIufNX5osYBVBhyyIqlOpsPN4HXa+Sw+Z9S
- RRhKANauQ++XMYd9cmG5MaUZbC08xkIeteBF3lud+mQObjrlodoBK9AkMNXfqHj7nO
- RT8HDppa6Oy/A==
+ b=InpzH3sVcy1IBRKH7LIXXRa9Ys441TUf/yvdoHtAHpPJQsmgHsu4KCeHvqPUIdesj
+ plZ9C60EeftMOUwmjScHhB1EA/PqzCfrYGk9VeD6i1dvkRLAX1H8ChvjGm3qM41IyN
+ ZpTFzlJ2jLG2Jm3vOW5jkcW0Q/UIxflpQEhLlE7xHyv+najR+xik55CPM++/FoUQAr
+ kCe+Cpe2yQanCv/ynvHG64ptBlLndPV+Dvkht/n3Kjx/HSLx4XArTP5fGyt74pojeJ
+ Bs0cc86U4HC7Of7+n8ugI/Zv0UPAVHgzcnAub44loSBjZ7s4zCel8OBUidu3LXx8FG
+ vmU6HQqbPQWOg==
 Received: from localhost.localdomain (unknown [134.206.232.123])
  (Authenticated sender: gilles.grimaud)
- by smtp01.univ-lille.fr (Postfix) with ESMTPSA id 4hdjlt0yTNz7wpK;
- Mon,  7 Sep 2026 12:21:30 +0200 (CEST)
+ by smtp01.univ-lille.fr (Postfix) with ESMTPSA id 4hdjls4wtxz7wpK;
+ Mon,  7 Sep 2026 12:21:29 +0200 (CEST)
 From: Gilles Grimaud <gilles.grimaud@univ-lille.fr>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org, alex.bennee@linaro.org, peter.maydell@linaro.org,
- Gilles Grimaud <gilles.grimaud@univ-lille.fr>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@oss.qualcomm.com>,
- Alistair Francis <alistair@alistair23.me>
-Subject: [PATCH v3 34/36] hw/arm: add optional Pico SDK exit handling
-Date: Mon,  7 Sep 2026 12:21:26 +0200
-Message-ID: <20260907102128.55676-4-gilles.grimaud@univ-lille.fr>
+ Gilles Grimaud <gilles.grimaud@univ-lille.fr>
+Subject: [PATCH v3 32/36] hw/arm: add RP2040 synthetic boot ROM service tables
+Date: Mon,  7 Sep 2026 12:21:24 +0200
+Message-ID: <20260907102128.55676-2-gilles.grimaud@univ-lille.fr>
 X-Mailer: git-send-email 2.55.0
 In-Reply-To: <20260907102128.55676-1-gilles.grimaud@univ-lille.fr>
 References: <20260906194438.93046-1-gilles.grimaud@univ-lille.fr>
  <20260907102128.55676-1-gilles.grimaud@univ-lille.fr>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=194.254.129.106;
- envelope-from=gilles.grimaud@univ-lille.fr; helo=smtp-out-2.univ-lille.fr
+Received-SPF: pass client-ip=194.254.129.82;
+ envelope-from=gilles.grimaud@univ-lille.fr; helo=smtp-out-1.univ-lille.fr
 X-Spam_score_int: -43
 X-Spam_score: -4.4
 X-Spam_bar: ----
@@ -74,499 +72,400 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Add an opt-in raspi-pico machine property that converts the Pico SDK's BKPT
-architectural BKPT-to-HardFault behavior unchanged and chain non-BKPT
-faults to the application handler.
-
-Patch the application HardFault vector through a page-sized ROM device
-overlay. This lets TCG execute the first XIP page directly instead of
-generating one-instruction translation blocks. Switch the overlay back to
-callback dispatch while flash is busy, and synchronize its contents after
-changes to the underlying flash page.
-
-Cover the default HardFault path, explicit semihosting exit, and the
-optional Pico SDK exit path with compiled check-tcg guests.
-
 Signed-off-by: gilles grimaud <gilles.grimaud@univ-lille.fr>
 ---
- hw/arm/raspi_pico.c                           |  23 +++
- hw/arm/rp2040.c                               | 164 ++++++++++++++++++
- hw/ssi/rp2040_xip.c                           |  24 +++
- include/hw/arm/rp2040.h                       |   9 +
- include/hw/ssi/rp2040_xip.h                   |  14 ++
- tests/tcg/arm/system/meson.build              |  26 +++
- tests/tcg/arm/system/rp2040-bkpt-hardfault.S  |  94 ++++++++++
- .../tcg/arm/system/rp2040-bkpt-hardfault.ref  |   2 +
- tests/tcg/arm/system/rp2040-check-exit.sh     |  14 ++
- tests/tcg/arm/system/rp2040-exit.S            |  55 ++++++
- 10 files changed, 425 insertions(+)
- create mode 100644 tests/tcg/arm/system/rp2040-bkpt-hardfault.S
- create mode 100644 tests/tcg/arm/system/rp2040-bkpt-hardfault.ref
- create mode 100755 tests/tcg/arm/system/rp2040-check-exit.sh
- create mode 100644 tests/tcg/arm/system/rp2040-exit.S
+ hw/arm/rp2040.c                               | 290 +++++++++++++++++-
+ include/hw/arm/rp2040.h                       |   3 +
+ tests/tcg/arm/system/meson.build              |   5 +
+ tests/tcg/arm/system/rp2040-bootrom-helpers.S | 235 ++++++++++++++
+ .../tcg/arm/system/rp2040-bootrom-helpers.ref |   5 +
+ 5 files changed, 534 insertions(+), 4 deletions(-)
+ create mode 100644 tests/tcg/arm/system/rp2040-bootrom-helpers.S
+ create mode 100644 tests/tcg/arm/system/rp2040-bootrom-helpers.ref
 
-diff --git a/hw/arm/raspi_pico.c b/hw/arm/raspi_pico.c
-index c99ff2660e..7ba6555130 100644
---- a/hw/arm/raspi_pico.c
-+++ b/hw/arm/raspi_pico.c
-@@ -33,6 +33,7 @@ struct RaspiPicoMachineState {
-     uint64_t rosc_random_seed;
-     bool rosc_random_seed_set;
-     bool strict_uart_pins;
-+    bool pico_sdk_exit;
- };
- 
- static char *raspi_pico_get_flash_file(Object *obj, Error **errp)
-@@ -156,6 +157,7 @@ static void raspi_pico_init(MachineState *machine)
- 
-     rp2040_xip_load_image(&s->soc.xip, machine->kernel_filename,
-                           &error_fatal);
-+    rp2040_set_pico_sdk_exit(&s->soc, s->pico_sdk_exit, &error_fatal);
-     armv7m_load_kernel(s->soc.armv7m[0].cpu, NULL,
-                        RP2040_XIP_BASE, 2 * MiB);
-     rp2040_xip_set_writable(&s->soc.xip, false);
-@@ -184,6 +186,21 @@ static void raspi_pico_set_strict_uart_pins(Object *obj, bool value,
-     s->strict_uart_pins = value;
- }
- 
-+static bool raspi_pico_get_pico_sdk_exit(Object *obj, Error **errp)
-+{
-+    RaspiPicoMachineState *s = RASPI_PICO_MACHINE(obj);
-+
-+    return s->pico_sdk_exit;
-+}
-+
-+static void raspi_pico_set_pico_sdk_exit(Object *obj, bool value,
-+                                         Error **errp)
-+{
-+    RaspiPicoMachineState *s = RASPI_PICO_MACHINE(obj);
-+
-+    s->pico_sdk_exit = value;
-+}
-+
- static void raspi_pico_machine_initfn(Object *obj)
- {
-     RaspiPicoMachineState *s = RASPI_PICO_MACHINE(obj);
-@@ -232,6 +249,12 @@ static void raspi_pico_machine_class_init(ObjectClass *oc, const void *data)
-                                           "Require the RP2040 IO_BANK0 "
-                                           "UART pinmux before UART0 or UART1 "
-                                           "reaches its host serial backend");
-+    object_class_property_add_bool(oc, "pico-sdk-exit",
-+                                   raspi_pico_get_pico_sdk_exit,
-+                                   raspi_pico_set_pico_sdk_exit);
-+    object_class_property_set_description(oc, "pico-sdk-exit",
-+                                          "Convert Pico SDK exit BKPT #0 "
-+                                          "HardFaults into QEMU exits");
- }
- 
- static const TypeInfo raspi_pico_machine_info = {
 diff --git a/hw/arm/rp2040.c b/hw/arm/rp2040.c
-index 436b3be7f2..572fff0c7d 100644
+index 1b632be0b6..a3ad360462 100644
 --- a/hw/arm/rp2040.c
 +++ b/hw/arm/rp2040.c
-@@ -20,6 +20,7 @@
- #include "qemu/datadir.h"
- #include "qemu/log.h"
- #include "system/address-spaces.h"
-+#include "system/runstate.h"
- #include "target/arm/cpu.h"
- #include "target/arm/cpu-qom.h"
- #include "trace.h"
-@@ -72,6 +73,8 @@
- #define RP2040_BOOTROM_FLOAT_STUBS_OFFSET 0x0600
- #define RP2040_BOOTROM_DOUBLE_STUBS_OFFSET 0x0b00
- #define RP2040_BOOTROM_FP_STUB_SIZE 36
-+#define RP2040_APP_HARDFAULT_VECTOR_OFFSET 0x10c
-+#define RP2040_PICO_SDK_EXIT_ORIGINAL_HANDLER_OFFSET 0x38
+@@ -44,6 +44,24 @@
  
- #define RP2040_SYNTHETIC_ROM_DBG_CMD  0x00
- #define RP2040_SYNTHETIC_ROM_DBG_ARG0 0x04
-@@ -83,6 +86,7 @@
- #define RP2040_SYNTHETIC_ROM_DBG_RESULT2 0x1c
- #define RP2040_SYNTHETIC_ROM_DBG_RESULT3 0x20
- #define RP2040_SYNTHETIC_ROM_DBG_FLASH_COUNT0 0x40
-+#define RP2040_SYNTHETIC_ROM_DBG_CMD_EXIT 0x54495845 /* "EXIT" */
+ #define RP2040_PROC1          1
  
- #define RP2040_SYNTHETIC_FP_CMD_MASK   0xffffff00
- #define RP2040_SYNTHETIC_FP_CMD_FLOAT  0x80000000
-@@ -471,6 +475,17 @@ static const uint8_t rp2040_bootrom_nyi_stub[] = {
-     0x00, 0x00, 0x00, 0x00, /* function code literal */
++#define RP2040_BOOTROM_FUNC_TABLE_PTR_OFFSET 0x14
++#define RP2040_BOOTROM_DATA_TABLE_PTR_OFFSET 0x16
++#define RP2040_BOOTROM_TABLE_LOOKUP_PTR_OFFSET 0x18
++#define RP2040_BOOTROM_LOOKUP_OFFSET 0x0100
++#define RP2040_BOOTROM_STUBS_OFFSET 0x0120
++#define RP2040_BOOTROM_FUNC_TABLE_OFFSET 0x0300
++#define RP2040_BOOTROM_DATA_TABLE_OFFSET 0x0340
++#define RP2040_BOOTROM_FLOAT_NYI_STUB_OFFSET 0x0360
++#define RP2040_BOOTROM_DOUBLE_NYI_STUB_OFFSET 0x0380
++#define RP2040_BOOTROM_FLOAT_TABLE_OFFSET 0x03c0
++#define RP2040_BOOTROM_DOUBLE_TABLE_OFFSET 0x0460
++#define RP2040_BOOTROM_FUNC_TABLE_ENTRY_SIZE 4
++#define RP2040_BOOTROM_DATA_TABLE_ENTRY_SIZE 4
++#define RP2040_BOOTROM_NYI_CODE_LITERAL_OFFSET 20
++#define RP2040_BOOTROM_ROM_VERSION_OFFSET 0x13
++#define RP2040_BOOTROM_SYNTHETIC_ROM_VERSION 2
++#define RP2040_BOOTROM_FLOAT_TABLE_WORDS 32
++
+ /*
+  * Temporary boot ROM used until a faithful RP2040 boot ROM is requested.  It
+  * uses SIO_CPUID to split core behavior: core 0 copies the 256-byte XIP
+@@ -166,6 +184,222 @@ static const struct {
+     { "rp2040.pio1",     0x50300000, 0x10000 },
  };
  
-+static const uint8_t rp2040_pico_sdk_exit_trampoline[] = {
-+    0x73, 0x46, 0x04, 0x22, 0x13, 0x42, 0x02, 0xd0,
-+    0xef, 0xf3, 0x09, 0x80, 0x01, 0xe0, 0xef, 0xf3,
-+    0x08, 0x80, 0x81, 0x69, 0x0a, 0x88, 0x05, 0x4b,
-+    0x9a, 0x42, 0x05, 0xd1, 0x01, 0x68, 0x04, 0x4a,
-+    0x51, 0x60, 0x04, 0x49, 0x11, 0x60, 0xfe, 0xe7,
-+    0x03, 0x48, 0x00, 0x47, 0x00, 0xbe, 0x00, 0x00,
-+    0x00, 0x00, 0xff, 0x5f, 0x45, 0x58, 0x49, 0x54,
-+    0x00, 0x00, 0x00, 0x00,
++typedef struct RP2040BootromFunction {
++    uint16_t code;
++    const char *name;
++    const uint8_t *impl;
++    size_t impl_size;
++} RP2040BootromFunction;
++
++typedef struct RP2040BootromData {
++    uint16_t code;
++    uint16_t offset;
++} RP2040BootromData;
++
++#define RP2040_ROM_TABLE_CODE(c1, c2) ((uint16_t)(c1) | ((uint16_t)(c2) << 8))
++
++static const uint8_t rp2040_bootrom_clz32[] = {
++    0x00, 0x21, 0x00, 0x28, 0x01, 0xd1, 0x20, 0x20,
++    0x70, 0x47, 0x00, 0x28, 0x02, 0xd4, 0x40, 0x00,
++    0x01, 0x31, 0xfa, 0xe7, 0x08, 0x46, 0x70, 0x47,
 +};
 +
- static void rp2040_store_hword(uint8_t *rom, uint32_t offset, uint16_t value)
- {
-     rom[offset] = value;
-@@ -1252,6 +1267,12 @@ static void rp2040_synthetic_rom_dbg_write(void *opaque, hwaddr addr,
-         return;
-     }
- 
-+    if (command == RP2040_SYNTHETIC_ROM_DBG_CMD_EXIT) {
-+        qemu_system_shutdown_request_with_code(SHUTDOWN_CAUSE_GUEST_SHUTDOWN,
-+                                               s->synthetic_rom_dbg_arg[0]);
-+        return;
++static const uint8_t rp2040_bootrom_ctz32[] = {
++    0x00, 0x21, 0x00, 0x28, 0x01, 0xd1, 0x20, 0x20,
++    0x70, 0x47, 0x01, 0x22, 0x10, 0x42, 0x02, 0xd1,
++    0x40, 0x08, 0x01, 0x31, 0xf9, 0xe7, 0x08, 0x46,
++    0x70, 0x47,
++};
++
++static const uint8_t rp2040_bootrom_popcount32[] = {
++    0x00, 0x21, 0x00, 0x28, 0x04, 0xd0, 0x01, 0x22,
++    0x02, 0x40, 0x89, 0x18, 0x40, 0x08, 0xf8, 0xe7,
++    0x08, 0x46, 0x70, 0x47,
++};
++
++static const uint8_t rp2040_bootrom_reverse32[] = {
++    0x00, 0x21, 0x20, 0x22, 0x49, 0x00, 0x01, 0x23,
++    0x03, 0x40, 0x19, 0x43, 0x40, 0x08, 0x01, 0x3a,
++    0xf8, 0xd1, 0x08, 0x46, 0x70, 0x47,
++};
++
++static const uint8_t rp2040_bootrom_memcpy[] = {
++    0x10, 0xb4, 0x03, 0x46, 0x00, 0x2a, 0x05, 0xd0,
++    0x0c, 0x78, 0x04, 0x70, 0x01, 0x31, 0x01, 0x30,
++    0x01, 0x3a, 0xf7, 0xe7, 0x18, 0x46, 0x10, 0xbc,
++    0x70, 0x47,
++};
++
++static const uint8_t rp2040_bootrom_memset[] = {
++    0x03, 0x46, 0x00, 0x2a, 0x03, 0xd0, 0x01, 0x70,
++    0x01, 0x30, 0x01, 0x3a, 0xf9, 0xe7, 0x18, 0x46,
++    0x70, 0x47,
++};
++
++static const uint8_t rp2040_bootrom_memcpy44[] = {
++    0x10, 0xb4, 0x03, 0x46, 0x00, 0x2a, 0x05, 0xd0,
++    0x0c, 0x68, 0x04, 0x60, 0x04, 0x31, 0x04, 0x30,
++    0x04, 0x3a, 0xf7, 0xe7, 0x18, 0x46, 0x10, 0xbc,
++    0x70, 0x47,
++};
++
++static const uint8_t rp2040_bootrom_memset4[] = {
++    0x10, 0xb4, 0x03, 0x46, 0xc9, 0xb2, 0x0c, 0x46,
++    0x24, 0x02, 0x21, 0x43, 0x0c, 0x46, 0x24, 0x04,
++    0x21, 0x43, 0x00, 0x2a, 0x03, 0xd0, 0x01, 0x60,
++    0x04, 0x30, 0x04, 0x3a, 0xf9, 0xe7, 0x18, 0x46,
++    0x10, 0xbc, 0x70, 0x47,
++};
++
++#define RP2040_BOOTROM_IMPL(_code, _name, _impl) \
++    { _code, _name, _impl, sizeof(_impl) }
++#define RP2040_BOOTROM_NYI(_code, _name) \
++    { _code, _name, NULL, 0 }
++
++static const RP2040BootromFunction rp2040_bootrom_functions[] = {
++    RP2040_BOOTROM_NYI(RP2040_ROM_TABLE_CODE('C', 'X'),
++                       "flash_enter_cmd_xip"),
++    RP2040_BOOTROM_NYI(RP2040_ROM_TABLE_CODE('E', 'X'), "flash_exit_xip"),
++    RP2040_BOOTROM_NYI(RP2040_ROM_TABLE_CODE('F', 'C'),
++                       "flash_flush_cache"),
++    RP2040_BOOTROM_NYI(RP2040_ROM_TABLE_CODE('I', 'F'),
++                       "connect_internal_flash"),
++    RP2040_BOOTROM_NYI(RP2040_ROM_TABLE_CODE('R', 'E'),
++                       "flash_range_erase"),
++    RP2040_BOOTROM_NYI(RP2040_ROM_TABLE_CODE('R', 'P'),
++                       "flash_range_program"),
++    RP2040_BOOTROM_IMPL(RP2040_ROM_TABLE_CODE('C', '4'), "memcpy44",
++                        rp2040_bootrom_memcpy44),
++    RP2040_BOOTROM_IMPL(RP2040_ROM_TABLE_CODE('L', '3'), "clz32",
++                        rp2040_bootrom_clz32),
++    RP2040_BOOTROM_IMPL(RP2040_ROM_TABLE_CODE('M', 'C'), "memcpy",
++                        rp2040_bootrom_memcpy),
++    RP2040_BOOTROM_IMPL(RP2040_ROM_TABLE_CODE('M', 'S'), "memset",
++                        rp2040_bootrom_memset),
++    RP2040_BOOTROM_IMPL(RP2040_ROM_TABLE_CODE('P', '3'), "popcount32",
++                        rp2040_bootrom_popcount32),
++    RP2040_BOOTROM_IMPL(RP2040_ROM_TABLE_CODE('R', '3'), "reverse32",
++                        rp2040_bootrom_reverse32),
++    RP2040_BOOTROM_IMPL(RP2040_ROM_TABLE_CODE('S', '4'), "memset4",
++                        rp2040_bootrom_memset4),
++    RP2040_BOOTROM_IMPL(RP2040_ROM_TABLE_CODE('T', '3'), "ctz32",
++                        rp2040_bootrom_ctz32),
++    RP2040_BOOTROM_NYI(RP2040_ROM_TABLE_CODE('U', 'B'), "reset_usb_boot"),
++};
++
++static const RP2040BootromData rp2040_bootrom_data[] = {
++    { RP2040_ROM_TABLE_CODE('S', 'F'), RP2040_BOOTROM_FLOAT_TABLE_OFFSET + 2 },
++    { RP2040_ROM_TABLE_CODE('S', 'D'), RP2040_BOOTROM_DOUBLE_TABLE_OFFSET + 2 },
++};
++
++static const uint8_t rp2040_bootrom_lookup[] = {
++    0x02, 0x88, 0x00, 0x2a, 0x05, 0xd0, 0x91, 0x42,
++    0x01, 0xd0, 0x04, 0x30, 0xf8, 0xe7, 0x40, 0x88,
++    0x70, 0x47, 0x5f, 0x22, 0x12, 0x06, 0xff, 0x23,
++    0x1b, 0x04, 0x1a, 0x43, 0x11, 0x60, 0x00, 0xbe,
++    0x00, 0x20, 0x70, 0x47,
++};
++
++static const uint8_t rp2040_bootrom_nyi_stub[] = {
++    0x04, 0x49, 0x5f, 0x20, 0x00, 0x06, 0xff, 0x22,
++    0x12, 0x04, 0x10, 0x43, 0x01, 0x60, 0x00, 0xbe,
++    0xfe, 0xe7, 0xc0, 0x46, 0x00, 0x00, 0x00, 0x00,
++};
++
++static void rp2040_store_hword(uint8_t *rom, uint32_t offset, uint16_t value)
++{
++    rom[offset] = value;
++    rom[offset + 1] = value >> 8;
++}
++
++static void rp2040_store_word(uint8_t *rom, uint32_t offset, uint32_t value)
++{
++    rom[offset] = value;
++    rom[offset + 1] = value >> 8;
++    rom[offset + 2] = value >> 16;
++    rom[offset + 3] = value >> 24;
++}
++
++static void rp2040_install_synthetic_bootrom(void)
++{
++    g_autofree uint8_t *rom = g_malloc0(RP2040_ROM_SIZE);
++    uint32_t func_base = RP2040_BOOTROM_STUBS_OFFSET;
++    uint32_t func_table = RP2040_BOOTROM_FUNC_TABLE_OFFSET;
++    uint32_t data_table = RP2040_BOOTROM_DATA_TABLE_OFFSET;
++    uint32_t float_nyi = RP2040_BOOTROM_FLOAT_NYI_STUB_OFFSET | 1;
++    uint32_t double_nyi = RP2040_BOOTROM_DOUBLE_NYI_STUB_OFFSET | 1;
++    int i;
++
++    memcpy(rom, rp2040_bootrom, sizeof(rp2040_bootrom));
++    rom[RP2040_BOOTROM_ROM_VERSION_OFFSET] =
++        RP2040_BOOTROM_SYNTHETIC_ROM_VERSION;
++    memcpy(rom + RP2040_BOOTROM_LOOKUP_OFFSET, rp2040_bootrom_lookup,
++           sizeof(rp2040_bootrom_lookup));
++    rp2040_store_hword(rom, RP2040_BOOTROM_FUNC_TABLE_PTR_OFFSET,
++                       RP2040_BOOTROM_FUNC_TABLE_OFFSET);
++    rp2040_store_hword(rom, RP2040_BOOTROM_DATA_TABLE_PTR_OFFSET,
++                       RP2040_BOOTROM_DATA_TABLE_OFFSET);
++    rp2040_store_hword(rom, RP2040_BOOTROM_TABLE_LOOKUP_PTR_OFFSET,
++                       RP2040_BOOTROM_LOOKUP_OFFSET | 1);
++
++    for (i = 0; i < ARRAY_SIZE(rp2040_bootrom_functions); i++) {
++        const RP2040BootromFunction *func = &rp2040_bootrom_functions[i];
++        uint32_t entry = func_base | 1;
++
++        if (func->impl) {
++            memcpy(rom + func_base, func->impl, func->impl_size);
++            func_base += ROUND_UP(func->impl_size, 4);
++        } else {
++            memcpy(rom + func_base, rp2040_bootrom_nyi_stub,
++                   sizeof(rp2040_bootrom_nyi_stub));
++            rp2040_store_word(rom,
++                              func_base +
++                              RP2040_BOOTROM_NYI_CODE_LITERAL_OFFSET,
++                              func->code);
++            func_base += ROUND_UP(sizeof(rp2040_bootrom_nyi_stub), 4);
++        }
++        rp2040_store_hword(rom, func_table +
++                           i * RP2040_BOOTROM_FUNC_TABLE_ENTRY_SIZE,
++                           func->code);
++        rp2040_store_hword(rom, func_table +
++                           i * RP2040_BOOTROM_FUNC_TABLE_ENTRY_SIZE + 2,
++                           entry);
 +    }
 +
-     switch (code) {
-     case RP2040_ROM_TABLE_CODE('C', 'X'):
-         rp2040_synthetic_flash_helper_hit(
-@@ -1358,6 +1379,88 @@ static const MemoryRegionOps rp2040_synthetic_rom_dbg_ops = {
++    memcpy(rom + RP2040_BOOTROM_FLOAT_NYI_STUB_OFFSET, rp2040_bootrom_nyi_stub,
++           sizeof(rp2040_bootrom_nyi_stub));
++    rp2040_store_word(rom, RP2040_BOOTROM_FLOAT_NYI_STUB_OFFSET +
++                      RP2040_BOOTROM_NYI_CODE_LITERAL_OFFSET,
++                      RP2040_ROM_TABLE_CODE('S', 'F'));
++    memcpy(rom + RP2040_BOOTROM_DOUBLE_NYI_STUB_OFFSET, rp2040_bootrom_nyi_stub,
++           sizeof(rp2040_bootrom_nyi_stub));
++    rp2040_store_word(rom, RP2040_BOOTROM_DOUBLE_NYI_STUB_OFFSET +
++                      RP2040_BOOTROM_NYI_CODE_LITERAL_OFFSET,
++                      RP2040_ROM_TABLE_CODE('S', 'D'));
++    rom[RP2040_BOOTROM_FLOAT_TABLE_OFFSET] = RP2040_BOOTROM_FLOAT_TABLE_WORDS;
++    rom[RP2040_BOOTROM_DOUBLE_TABLE_OFFSET] = RP2040_BOOTROM_FLOAT_TABLE_WORDS;
++    for (i = 0; i < RP2040_BOOTROM_FLOAT_TABLE_WORDS; i++) {
++        rp2040_store_word(rom, RP2040_BOOTROM_FLOAT_TABLE_OFFSET + 2 +
++                          i * sizeof(uint32_t), float_nyi);
++        rp2040_store_word(rom, RP2040_BOOTROM_DOUBLE_TABLE_OFFSET + 2 +
++                          i * sizeof(uint32_t), double_nyi);
++    }
++
++    for (i = 0; i < ARRAY_SIZE(rp2040_bootrom_data); i++) {
++        const RP2040BootromData *data = &rp2040_bootrom_data[i];
++
++        rp2040_store_hword(rom, data_table +
++                           i * RP2040_BOOTROM_DATA_TABLE_ENTRY_SIZE,
++                           data->code);
++        rp2040_store_hword(rom, data_table +
++                           i * RP2040_BOOTROM_DATA_TABLE_ENTRY_SIZE + 2,
++                           data->offset);
++    }
++
++    rom_add_blob_fixed("rp2040.bootrom", rom, RP2040_ROM_SIZE,
++                       RP2040_ROM_BASE);
++}
++
+ static uint64_t rp2040_usbctrl_regs_read(void *opaque, hwaddr addr,
+                                          unsigned size)
+ {
+@@ -194,8 +428,8 @@ static uint64_t rp2040_usbctrl_regs_read(void *opaque, hwaddr addr,
+         } else {
+             value = 0;
+             qemu_log_mask(LOG_UNIMP,
+-                      "%s: unimplemented read at offset 0x%"
+-                      HWADDR_PRIx "\n", __func__, addr & 0xfff);
++                          "%s: unimplemented read at offset 0x%"
++                          HWADDR_PRIx "\n", __func__, addr & 0xfff);
+         }
+         break;
+     }
+@@ -233,6 +467,48 @@ static const MemoryRegionOps rp2040_usbctrl_regs_ops = {
      },
  };
  
-+static MemTxResult rp2040_pico_sdk_exit_page_read(void *opaque, hwaddr addr,
-+                                                  uint64_t *data,
-+                                                  unsigned size,
-+                                                  MemTxAttrs attrs)
++static const char *rp2040_bootrom_function_name(uint16_t code)
 +{
-+    RP2040State *s = opaque;
-+    MemTxResult result;
-+    unsigned int i;
++    int i;
 +
-+    result = rp2040_xip_read_data(&s->xip, addr, data, size);
-+    if (result != MEMTX_OK) {
-+        return result;
-+    }
-+
-+    for (i = 0; i < size; i++) {
-+        hwaddr cur = addr + i;
-+
-+        if (cur >= RP2040_APP_HARDFAULT_VECTOR_OFFSET &&
-+            cur < RP2040_APP_HARDFAULT_VECTOR_OFFSET + sizeof(uint32_t)) {
-+            uint8_t byte = extract32(
-+                RP2040_PICO_SDK_EXIT_TRAMPOLINE_BASE | 1,
-+                (cur - RP2040_APP_HARDFAULT_VECTOR_OFFSET) * 8, 8);
-+
-+            *data = deposit64(*data, i * 8, 8, byte);
++    for (i = 0; i < ARRAY_SIZE(rp2040_bootrom_functions); i++) {
++        if (rp2040_bootrom_functions[i].code == code) {
++            return rp2040_bootrom_functions[i].name;
 +        }
 +    }
-+    return MEMTX_OK;
++    return NULL;
 +}
 +
-+static MemTxResult rp2040_pico_sdk_exit_page_write(void *opaque,
-+                                                   hwaddr addr,
-+                                                   uint64_t value,
-+                                                   unsigned size,
-+                                                   MemTxAttrs attrs)
++static void rp2040_synthetic_rom_dbg_write(void *opaque, hwaddr addr,
++                                           uint64_t value, unsigned size)
 +{
-+    return MEMTX_ERROR;
++    uint16_t code = value;
++    const char *name = rp2040_bootrom_function_name(code);
++    qemu_log_mask(LOG_UNIMP,
++                  "%s: unimplemented boot ROM function '%c%c' (%s)\n",
++                  __func__, code & 0xff, (code >> 8) & 0xff,
++                  name ? name : "unknown lookup code");
 +}
 +
-+static const MemoryRegionOps rp2040_pico_sdk_exit_page_ops = {
-+    .read_with_attrs = rp2040_pico_sdk_exit_page_read,
-+    .write_with_attrs = rp2040_pico_sdk_exit_page_write,
++static uint64_t rp2040_synthetic_rom_dbg_read(void *opaque, hwaddr addr,
++                                              unsigned size)
++{
++    qemu_log_mask(LOG_UNIMP,
++                  "%s: read from write-only synthetic register\n",
++                  __func__);
++    return 0;
++}
++
++static const MemoryRegionOps rp2040_synthetic_rom_dbg_ops = {
++    .read = rp2040_synthetic_rom_dbg_read,
++    .write = rp2040_synthetic_rom_dbg_write,
 +    .endianness = DEVICE_LITTLE_ENDIAN,
 +    .valid = {
-+        .min_access_size = 1,
++        .min_access_size = 4,
 +        .max_access_size = 4,
-+        .unaligned = true,
 +    },
 +};
-+
-+static void rp2040_pico_sdk_exit_patch_page(RP2040State *s)
-+{
-+    stl_le_p(s->pico_sdk_exit_page_storage +
-+             RP2040_APP_HARDFAULT_VECTOR_OFFSET,
-+             RP2040_PICO_SDK_EXIT_TRAMPOLINE_BASE | 1);
-+}
-+
-+static void rp2040_pico_sdk_exit_xip_busy(void *opaque, bool busy)
-+{
-+    RP2040State *s = opaque;
-+
-+    if (s->pico_sdk_exit_enabled) {
-+        memory_region_rom_device_set_romd(&s->pico_sdk_exit_page, !busy);
-+    }
-+}
-+
-+static void rp2040_pico_sdk_exit_xip_changed(void *opaque, hwaddr addr,
-+                                             hwaddr size)
-+{
-+    RP2040State *s = opaque;
-+    hwaddr length;
-+
-+    if (!s->pico_sdk_exit_enabled || addr >= 4 * KiB || !size) {
-+        return;
-+    }
-+
-+    length = MIN(size, 4 * KiB - addr);
-+    memcpy(s->pico_sdk_exit_page_storage + addr, s->xip.storage + addr,
-+           length);
-+    rp2040_pico_sdk_exit_patch_page(s);
-+    memory_region_flush_rom_device(&s->pico_sdk_exit_page, 0, 4 * KiB);
-+}
 +
  static void rp2040_update_nmi(RP2040State *s)
  {
      unsigned core;
-@@ -1630,6 +1733,15 @@ static bool rp2040_init_memory(RP2040State *s, Error **errp)
-     memory_region_add_subregion(s->board_memory,
-                                  RP2040_SYNTHETIC_ROM_DBG_BASE,
-                                  &s->synthetic_rom_dbg);
-+    if (!memory_region_init_rom(&s->pico_sdk_exit_trampoline, OBJECT(s),
-+                                "rp2040.pico-sdk-exit-trampoline",
-+                                RP2040_PICO_SDK_EXIT_TRAMPOLINE_SIZE, errp)) {
-+        return false;
-+    }
+@@ -498,6 +774,13 @@ static bool rp2040_init_memory(RP2040State *s, Error **errp)
+     memory_region_add_subregion(s->board_memory, RP2040_USBCTRL_REGS_BASE,
+                                 &s->usbctrl_regs);
+ 
++    memory_region_init_io(&s->synthetic_rom_dbg, OBJECT(s),
++                          &rp2040_synthetic_rom_dbg_ops, s,
++                          "rp2040.synthetic-rom-dbg",
++                          RP2040_SYNTHETIC_ROM_DBG_SIZE);
 +    memory_region_add_subregion(s->board_memory,
-+                                 RP2040_PICO_SDK_EXIT_TRAMPOLINE_BASE,
-+                                 &s->pico_sdk_exit_trampoline);
-+    memory_region_set_enabled(&s->pico_sdk_exit_trampoline, false);
++                                 RP2040_SYNTHETIC_ROM_DBG_BASE,
++                                 &s->synthetic_rom_dbg);
      return true;
  }
  
-@@ -1676,6 +1788,21 @@ static void rp2040_soc_realize(DeviceState *dev, Error **errp)
-     sysbus_mmio_map(SYS_BUS_DEVICE(&s->xip), 1, RP2040_XIP_CTRL_BASE);
-     sysbus_mmio_map(SYS_BUS_DEVICE(&s->xip), 2, RP2040_XIP_SSI_BASE);
-     sysbus_mmio_map(SYS_BUS_DEVICE(&s->xip), 3, RP2040_XIP_AUX_BASE);
-+    if (!memory_region_init_rom_device(&s->pico_sdk_exit_page, OBJECT(dev),
-+                                       &rp2040_pico_sdk_exit_page_ops, s,
-+                                       "rp2040.pico-sdk-exit-page", 4 * KiB,
-+                                       errp)) {
-+        return;
-+    }
-+    s->pico_sdk_exit_page_storage =
-+        memory_region_get_ram_ptr(&s->pico_sdk_exit_page);
-+    memory_region_add_subregion_overlap(
-+        s->board_memory, RP2040_XIP_BASE, &s->pico_sdk_exit_page, 1);
-+    memory_region_set_enabled(&s->pico_sdk_exit_page, false);
-+    rp2040_xip_set_busy_callback(&s->xip,
-+                                 rp2040_pico_sdk_exit_xip_busy, s);
-+    rp2040_xip_set_changed_callback(&s->xip,
-+                                    rp2040_pico_sdk_exit_xip_changed, s);
-     memory_region_add_subregion(get_system_memory(), RP2040_XIP_NOALLOC_BASE,
-                                 &s->xip.xip_noalloc);
-     memory_region_add_subregion(get_system_memory(), RP2040_XIP_NOCACHE_BASE,
-@@ -1911,6 +2038,43 @@ static void rp2040_soc_realize(DeviceState *dev, Error **errp)
-     rp2040_update_uart_pins(s);
- }
+@@ -506,8 +789,7 @@ static bool rp2040_load_bootrom(RP2040State *s, Error **errp)
+     g_autofree char *filename = NULL;
  
-+void rp2040_set_pico_sdk_exit(RP2040State *s, bool enabled, Error **errp)
-+{
-+    uint8_t *trampoline;
-+    uint32_t original_handler;
-+
-+    memory_region_set_enabled(&s->pico_sdk_exit_page, false);
-+    memory_region_set_enabled(&s->pico_sdk_exit_trampoline, false);
-+    s->pico_sdk_exit_enabled = false;
-+    if (!enabled) {
-+        return;
-+    }
-+
-+    original_handler = ldl_le_p(
-+        s->xip.storage + RP2040_APP_HARDFAULT_VECTOR_OFFSET);
-+    if (!(original_handler & 1) || original_handler == UINT32_MAX) {
-+        error_setg(errp, "pico-sdk-exit requires a valid Thumb HardFault "
-+                   "handler at 0x%08x",
-+                   RP2040_XIP_BASE + RP2040_APP_HARDFAULT_VECTOR_OFFSET);
-+        return;
-+    }
-+
-+    trampoline = memory_region_get_ram_ptr(&s->pico_sdk_exit_trampoline);
-+    memset(trampoline, 0, RP2040_PICO_SDK_EXIT_TRAMPOLINE_SIZE);
-+    memcpy(trampoline, rp2040_pico_sdk_exit_trampoline,
-+           sizeof(rp2040_pico_sdk_exit_trampoline));
-+    stl_le_p(trampoline + RP2040_PICO_SDK_EXIT_ORIGINAL_HANDLER_OFFSET,
-+             original_handler);
-+    s->pico_sdk_exit_original_handler = original_handler;
-+    memcpy(s->pico_sdk_exit_page_storage, s->xip.storage, 4 * KiB);
-+    rp2040_pico_sdk_exit_patch_page(s);
-+    memory_region_flush_rom_device(&s->pico_sdk_exit_page, 0, 4 * KiB);
-+    memory_region_rom_device_set_romd(&s->pico_sdk_exit_page, !s->xip.busy);
-+    s->pico_sdk_exit_enabled = true;
-+    memory_region_set_enabled(&s->pico_sdk_exit_trampoline, true);
-+    memory_region_set_enabled(&s->pico_sdk_exit_page, true);
-+}
-+
- static const Property rp2040_soc_properties[] = {
-     DEFINE_PROP_LINK("memory", RP2040State, board_memory, TYPE_MEMORY_REGION,
-                      MemoryRegion *),
-diff --git a/hw/ssi/rp2040_xip.c b/hw/ssi/rp2040_xip.c
-index 4312a88b6f..738629749e 100644
---- a/hw/ssi/rp2040_xip.c
-+++ b/hw/ssi/rp2040_xip.c
-@@ -306,13 +306,21 @@ static uint8_t rp2040_xip_flash_uid_byte(RP2040XipState *s, unsigned index)
+     if (!s->bootrom_file) {
+-        rom_add_blob_fixed("rp2040.bootrom", rp2040_bootrom,
+-                           sizeof(rp2040_bootrom), RP2040_ROM_BASE);
++        rp2040_install_synthetic_bootrom();
+         return true;
+     }
  
- static void rp2040_xip_set_busy(RP2040XipState *s, bool busy)
- {
-+    bool changed = s->busy != busy;
-+
-     s->busy = busy;
-     memory_region_rom_device_set_romd(&s->xip, !busy);
-+    if (changed && s->busy_cb) {
-+        s->busy_cb(s->busy_opaque, busy);
-+    }
- }
- 
- static void rp2040_xip_changed(RP2040XipState *s, hwaddr addr, hwaddr size)
- {
-     memory_region_flush_rom_device(&s->xip, addr, size);
-+    if (s->changed_cb) {
-+        s->changed_cb(s->changed_opaque, addr, size);
-+    }
- }
- 
- static void rp2040_xip_finish_busy(RP2040XipState *s)
-@@ -1060,6 +1068,22 @@ void rp2040_xip_set_writable(RP2040XipState *s, bool writable)
-     s->xip_writable = writable;
- }
- 
-+void rp2040_xip_set_busy_callback(RP2040XipState *s,
-+                                  RP2040XipBusyCallback callback,
-+                                  void *opaque)
-+{
-+    s->busy_cb = callback;
-+    s->busy_opaque = opaque;
-+}
-+
-+void rp2040_xip_set_changed_callback(RP2040XipState *s,
-+                                     RP2040XipChangedCallback callback,
-+                                     void *opaque)
-+{
-+    s->changed_cb = callback;
-+    s->changed_opaque = opaque;
-+}
-+
- void rp2040_xip_qspi_cs(RP2040XipState *s, bool high)
- {
-     if (s->qspi_cs_high == high) {
 diff --git a/include/hw/arm/rp2040.h b/include/hw/arm/rp2040.h
-index e13610d71c..498d36dd5c 100644
+index 0daa7d6ba1..17235827c4 100644
 --- a/include/hw/arm/rp2040.h
 +++ b/include/hw/arm/rp2040.h
-@@ -54,6 +54,8 @@ OBJECT_DECLARE_SIMPLE_TYPE(RP2040State, RP2040)
+@@ -52,6 +52,8 @@ OBJECT_DECLARE_SIMPLE_TYPE(RP2040State, RP2040)
+ #define RP2040_USBCTRL_DPRAM_SIZE (4 * KiB)
+ #define RP2040_USBCTRL_REGS_BASE  0x50110000
  #define RP2040_USBCTRL_REGS_SIZE  0x4000
- #define RP2040_SYNTHETIC_ROM_DBG_BASE 0x5fff0000
- #define RP2040_SYNTHETIC_ROM_DBG_SIZE 0x1000
-+#define RP2040_PICO_SDK_EXIT_TRAMPOLINE_BASE 0x00004000
-+#define RP2040_PICO_SDK_EXIT_TRAMPOLINE_SIZE 0x1000
- #define RP2040_SYNTHETIC_ROM_FLASH_HELPER_COUNT 6
++#define RP2040_SYNTHETIC_ROM_DBG_BASE 0x5fff0000
++#define RP2040_SYNTHETIC_ROM_DBG_SIZE 0x1000
  
  #define RP2040_NUM_CORES      2
-@@ -94,6 +96,9 @@ struct RP2040State {
+ #define RP2040_NUM_IRQS       32
+@@ -90,6 +92,7 @@ struct RP2040State {
+     MemoryRegion sram[6];
      MemoryRegion usbctrl_dpram;
      MemoryRegion usbctrl_regs;
-     MemoryRegion synthetic_rom_dbg;
-+    MemoryRegion pico_sdk_exit_trampoline;
-+    MemoryRegion pico_sdk_exit_page;
-+    uint8_t *pico_sdk_exit_page_storage;
++    MemoryRegion synthetic_rom_dbg;
      uint32_t usbctrl_reg[0x100 / sizeof(uint32_t)];
      char *bootrom_file;
  
-@@ -110,8 +115,12 @@ struct RP2040State {
-     uint32_t synthetic_rom_dbg_result[4];
-     uint32_t synthetic_rom_flash_helper_count[
-         RP2040_SYNTHETIC_ROM_FLASH_HELPER_COUNT];
-+    uint32_t pico_sdk_exit_original_handler;
-+    bool pico_sdk_exit_enabled;
- 
-     Clock *sysclk;
- };
- 
-+void rp2040_set_pico_sdk_exit(RP2040State *s, bool enabled, Error **errp);
-+
- #endif
-diff --git a/include/hw/ssi/rp2040_xip.h b/include/hw/ssi/rp2040_xip.h
-index f132ec1ba5..f06f90ba9b 100644
---- a/include/hw/ssi/rp2040_xip.h
-+++ b/include/hw/ssi/rp2040_xip.h
-@@ -14,6 +14,10 @@
- #define TYPE_RP2040_XIP "rp2040-xip"
- OBJECT_DECLARE_SIMPLE_TYPE(RP2040XipState, RP2040_XIP)
- 
-+typedef void (*RP2040XipBusyCallback)(void *opaque, bool busy);
-+typedef void (*RP2040XipChangedCallback)(void *opaque, hwaddr addr,
-+                                         hwaddr size);
-+
- #define RP2040_XIP_CTRL_BASE 0x14000000
- #define RP2040_XIP_SSI_BASE  0x18000000
- #define RP2040_XIP_AUX_BASE  0x50400000
-@@ -40,6 +44,10 @@ struct RP2040XipState {
-     uint64_t flash_uid;
-     uint8_t *storage;
-     bool xip_writable;
-+    RP2040XipBusyCallback busy_cb;
-+    void *busy_opaque;
-+    RP2040XipChangedCallback changed_cb;
-+    void *changed_opaque;
- 
-     uint32_t xip_ctrl;
- 
-@@ -79,6 +87,12 @@ struct RP2040XipState {
- };
- 
- void rp2040_xip_set_writable(RP2040XipState *s, bool writable);
-+void rp2040_xip_set_busy_callback(RP2040XipState *s,
-+                                  RP2040XipBusyCallback callback,
-+                                  void *opaque);
-+void rp2040_xip_set_changed_callback(RP2040XipState *s,
-+                                     RP2040XipChangedCallback callback,
-+                                     void *opaque);
- MemTxResult rp2040_xip_read_data(RP2040XipState *s, hwaddr addr,
-                                  uint64_t *data, unsigned size);
- void rp2040_xip_load_image(RP2040XipState *s, const char *filename,
 diff --git a/tests/tcg/arm/system/meson.build b/tests/tcg/arm/system/meson.build
-index b410e004d0..edb0de1b34 100644
+index a12aed74fa..9e1024cf11 100644
 --- a/tests/tcg/arm/system/meson.build
 +++ b/tests/tcg/arm/system/meson.build
-@@ -28,6 +28,7 @@ rp2040_uart1_qemu_args = ['-M', 'raspi-pico,strict-uart-pins=off',
-                           '-monitor', 'none', '-serial', 'null',
-                           '-serial', 'stdio', qemu_base_args]
- rp2040_flash_persist = find_program('rp2040-flash-persist.sh')
-+rp2040_check_exit = find_program('rp2040-check-exit.sh')
- 
- # Multi arch tests
- multi_src = []
-@@ -172,6 +173,31 @@ tests += {
-     'qemu_args': rp2040_uart_qemu_args,
-     'expected_output': 'rp2040-flash-lockout.ref',
+@@ -157,6 +157,11 @@ tests += {
+     'qemu_args': rp2040_uart1_qemu_args,
+     'expected_output': 'rp2040-dma-uart1.ref',
    },
-+  'rp2040-bkpt-hardfault.S': {
++  'rp2040-bootrom-helpers.S': {
 +    'cflags': rp2040_cflags,
 +    'qemu_args': rp2040_uart_qemu_args,
-+    'expected_output': 'rp2040-bkpt-hardfault.ref',
-+  },
-+  'rp2040-exit.S': {
-+    'exe_name': 'rp2040-semihost-exit',
-+    'test_name': 'rp2040-semihost-exit',
-+    'cflags': rp2040_cflags + ['-DEXIT_MODE=0'],
-+    'qemu_args': ['-M', 'raspi-pico', '-monitor', 'none',
-+                  '-serial', 'none', qemu_base_args],
-+    'wrapper': [rp2040_check_exit, '23'],
-+  },
-+}
-+
-+tests += {
-+  'rp2040-exit.S': {
-+    'exe_name': 'rp2040-pico-sdk-exit',
-+    'test_name': 'rp2040-pico-sdk-exit',
-+    'cflags': rp2040_cflags + ['-DEXIT_MODE=1'],
-+    'qemu_args': ['-M', 'raspi-pico,pico-sdk-exit=on',
-+                  '-monitor', 'none', '-display', 'none',
-+                  '-serial', 'none', '-kernel'],
-+    'wrapper': [rp2040_check_exit, '23'],
++    'expected_output': 'rp2040-bootrom-helpers.ref',
 +  },
    'semiconsole.c': {
      'cflags': cflags,
      'qemu_args': ['-serial', 'none', '-chardev', 'stdio,mux=on,id=stdio0',
-diff --git a/tests/tcg/arm/system/rp2040-bkpt-hardfault.S b/tests/tcg/arm/system/rp2040-bkpt-hardfault.S
+diff --git a/tests/tcg/arm/system/rp2040-bootrom-helpers.S b/tests/tcg/arm/system/rp2040-bootrom-helpers.S
 new file mode 100644
-index 0000000000..68873d6a8d
+index 0000000000..e48230a875
 --- /dev/null
-+++ b/tests/tcg/arm/system/rp2040-bkpt-hardfault.S
-@@ -0,0 +1,94 @@
++++ b/tests/tcg/arm/system/rp2040-bootrom-helpers.S
+@@ -0,0 +1,235 @@
 +/*
-+ * Raspberry Pi Pico BKPT-to-HardFault test
++ * Raspberry Pi Pico boot ROM integer and memory helper test.
++ *
++ * Copyright 2026 Gilles Grimaud
 + *
 + * SPDX-License-Identifier: GPL-2.0-or-later
 + */
@@ -577,10 +476,38 @@ index 0000000000..68873d6a8d
 +
 +#define SRAM_END               0x20042000
 +#define UART0_DR               0x40034000
-+#define HARDFAULT_EXCEPTION    3
++#define ROM_FUNC_TABLE_PTR     0x00000014
++#define ROM_TABLE_LOOKUP_PTR   0x00000018
++#define ROM_FUNC_POPCOUNT32    0x3350
++#define ROM_FUNC_CLZ32         0x334c
++#define ROM_FUNC_CTZ32         0x3354
++#define ROM_FUNC_REVERSE32     0x3352
++#define ROM_FUNC_MEMSET        0x534d
++#define ROM_FUNC_MEMCPY        0x434d
++#define ROM_FUNC_MEMSET4       0x3453
++#define ROM_FUNC_MEMCPY44      0x3443
++#define TEST_BUFFER            0x20000000
 +#define SYS_EXIT               0x18
 +#define ADP_STOPPED_APPLICATION_EXIT 0x20026
 +#define ADP_STOPPED_RUNTIME_ERROR    0x20023
++
++.macro lookup code
++    ldr r0, =\code
++    bl rom_func_lookup
++    cmp r0, 0
++    bne 0f
++    b fail_lookup
++0:
++    mov r4, r0
++.endm
++
++.macro fail_if_ne reg, expected, target
++    ldr r2, =\expected
++    cmp \reg, r2
++    beq 0f
++    b \target
++0:
++.endm
 +
 +.section .vectors, "a", %progbits
 +.global vector_table
@@ -588,7 +515,7 @@ index 0000000000..68873d6a8d
 +    .word SRAM_END
 +    .word reset_handler + 1
 +    .word default_handler + 1
-+    .word hardfault_handler + 1
++    .word default_handler + 1
 +
 +.section .text, "ax", %progbits
 +.thumb_func
@@ -596,17 +523,95 @@ index 0000000000..68873d6a8d
 +reset_handler:
 +    ldr r0, =start_message
 +    bl puts
-+    bkpt 0
 +
-+    ldr r0, =fail_return_message
-+    b test_failed
++    lookup ROM_FUNC_POPCOUNT32
++    ldr r0, =0xf0f00f0f
++    blx r4
++    fail_if_ne r0, 16, fail_bits
 +
-+.thumb_func
-+hardfault_handler:
-+    mrs r0, ipsr
-+    cmp r0, HARDFAULT_EXCEPTION
-+    bne fail_exception
++    lookup ROM_FUNC_CLZ32
++    ldr r0, =0x00f00000
++    blx r4
++    fail_if_ne r0, 8, fail_bits
 +
++    lookup ROM_FUNC_CTZ32
++    ldr r0, =0x00008000
++    blx r4
++    fail_if_ne r0, 15, fail_bits
++
++    lookup ROM_FUNC_REVERSE32
++    ldr r0, =0x80000001
++    blx r4
++    fail_if_ne r0, 0x80000001, fail_bits
++
++    ldr r0, =bits_ok_message
++    bl puts
++
++    lookup ROM_FUNC_MEMSET
++    ldr r0, =TEST_BUFFER
++    movs r1, 0x5a
++    movs r2, 4
++    blx r4
++    ldr r5, =TEST_BUFFER
++    ldrb r0, [r5]
++    fail_if_ne r0, 0x5a, fail_byte_memory
++    ldrb r0, [r5, 3]
++    fail_if_ne r0, 0x5a, fail_byte_memory
++
++    ldr r5, =TEST_BUFFER + 0x20
++    ldr r0, =0x11223344
++    str r0, [r5]
++    lookup ROM_FUNC_MEMCPY
++    ldr r0, =TEST_BUFFER + 0x10
++    ldr r1, =TEST_BUFFER + 0x20
++    movs r2, 4
++    blx r4
++    ldr r5, =TEST_BUFFER + 0x10
++    ldr r0, [r5]
++    fail_if_ne r0, 0x11223344, fail_byte_memory
++
++    ldr r0, =byte_memory_ok_message
++    bl puts
++
++    lookup ROM_FUNC_MEMSET4
++    ldr r5, =TEST_BUFFER + 0x30
++    ldr r0, =0xdeadbeef
++    str r0, [r5, 8]
++    ldr r0, =TEST_BUFFER + 0x30
++    movs r1, 0x5a
++    movs r2, 8
++    blx r4
++    ldr r5, =TEST_BUFFER + 0x30
++    ldr r0, [r5]
++    fail_if_ne r0, 0x5a5a5a5a, fail_word_memory
++    ldr r0, [r5, 4]
++    fail_if_ne r0, 0x5a5a5a5a, fail_word_memory
++    ldr r0, [r5, 8]
++    fail_if_ne r0, 0xdeadbeef, fail_word_memory
++
++    ldr r5, =TEST_BUFFER + 0x40
++    ldr r0, =0x55667788
++    str r0, [r5]
++    ldr r0, =0x99aabbcc
++    str r0, [r5, 4]
++    ldr r5, =TEST_BUFFER + 0x50
++    ldr r0, =0xdeadbeef
++    str r0, [r5, 8]
++    lookup ROM_FUNC_MEMCPY44
++    ldr r0, =TEST_BUFFER + 0x50
++    ldr r1, =TEST_BUFFER + 0x40
++    movs r2, 8
++    blx r4
++    ldr r5, =TEST_BUFFER + 0x50
++    ldr r0, [r5]
++    fail_if_ne r0, 0x55667788, fail_word_memory
++    ldr r0, [r5, 4]
++    fail_if_ne r0, 0x99aabbcc, fail_word_memory
++    ldr r0, [r5, 8]
++    fail_if_ne r0, 0xdeadbeef, fail_word_memory
++
++    ldr r0, =word_memory_ok_message
++    bl puts
 +    ldr r0, =ok_message
 +    bl puts
 +    movs r0, SYS_EXIT
@@ -616,8 +621,20 @@ index 0000000000..68873d6a8d
 +1:
 +    b 1b
 +
-+fail_exception:
-+    ldr r0, =fail_exception_message
++fail_lookup:
++    ldr r0, =fail_lookup_message
++    b test_failed
++
++fail_bits:
++    ldr r0, =fail_bits_message
++    b test_failed
++
++fail_byte_memory:
++    ldr r0, =fail_byte_memory_message
++    b test_failed
++
++fail_word_memory:
++    ldr r0, =fail_word_memory_message
 +
 +test_failed:
 +    bl puts
@@ -629,8 +646,19 @@ index 0000000000..68873d6a8d
 +    b 2b
 +
 +.thumb_func
++rom_func_lookup:
++    push {r4, lr}
++    mov r1, r0
++    ldr r0, =ROM_FUNC_TABLE_PTR
++    ldrh r0, [r0]
++    ldr r4, =ROM_TABLE_LOOKUP_PTR
++    ldrh r4, [r4]
++    blx r4
++    pop {r4, pc}
++
++.thumb_func
 +default_handler:
-+    ldr r0, =fail_vector_message
++    ldr r0, =fail_exception_message
 +    b test_failed
 +
 +.thumb_func
@@ -650,104 +678,36 @@ index 0000000000..68873d6a8d
 +
 +.section .rodata, "a", %progbits
 +start_message:
-+    .asciz "PICO TCG BKPT START\n"
++    .asciz "PICO TCG BOOTROM HELPERS START\n"
++bits_ok_message:
++    .asciz "PICO TCG BOOTROM HELPERS BITS OK\n"
++byte_memory_ok_message:
++    .asciz "PICO TCG BOOTROM HELPERS BYTE MEMORY OK\n"
++word_memory_ok_message:
++    .asciz "PICO TCG BOOTROM HELPERS WORD MEMORY OK\n"
 +ok_message:
-+    .asciz "PICO TCG BKPT HARDFAULT OK\n"
-+fail_return_message:
-+    .asciz "PICO TCG BKPT FAIL: RETURNED\n"
++    .asciz "PICO TCG BOOTROM HELPERS OK\n"
++fail_lookup_message:
++    .asciz "PICO TCG BOOTROM HELPERS FAIL: LOOKUP\n"
++fail_bits_message:
++    .asciz "PICO TCG BOOTROM HELPERS FAIL: BITS\n"
++fail_byte_memory_message:
++    .asciz "PICO TCG BOOTROM HELPERS FAIL: BYTE MEMORY\n"
++fail_word_memory_message:
++    .asciz "PICO TCG BOOTROM HELPERS FAIL: WORD MEMORY\n"
 +fail_exception_message:
-+    .asciz "PICO TCG BKPT FAIL: IPSR\n"
-+fail_vector_message:
-+    .asciz "PICO TCG BKPT FAIL: VECTOR\n"
-diff --git a/tests/tcg/arm/system/rp2040-bkpt-hardfault.ref b/tests/tcg/arm/system/rp2040-bkpt-hardfault.ref
++    .asciz "PICO TCG BOOTROM HELPERS FAIL: EXCEPTION\n"
+diff --git a/tests/tcg/arm/system/rp2040-bootrom-helpers.ref b/tests/tcg/arm/system/rp2040-bootrom-helpers.ref
 new file mode 100644
-index 0000000000..0f023cf1e7
+index 0000000000..b1b4346bf4
 --- /dev/null
-+++ b/tests/tcg/arm/system/rp2040-bkpt-hardfault.ref
-@@ -0,0 +1,2 @@
-+PICO TCG BKPT START
-+PICO TCG BKPT HARDFAULT OK
-diff --git a/tests/tcg/arm/system/rp2040-check-exit.sh b/tests/tcg/arm/system/rp2040-check-exit.sh
-new file mode 100755
-index 0000000000..0622b21219
---- /dev/null
-+++ b/tests/tcg/arm/system/rp2040-check-exit.sh
-@@ -0,0 +1,14 @@
-+#!/bin/sh
-+# SPDX-License-Identifier: GPL-2.0-or-later
-+
-+set -u
-+
-+expected=$1
-+shift
-+
-+"$@"
-+status=$?
-+if test "$status" -ne "$expected"; then
-+    echo "unexpected exit status: got $status, expected $expected" >&2
-+    exit 1
-+fi
-diff --git a/tests/tcg/arm/system/rp2040-exit.S b/tests/tcg/arm/system/rp2040-exit.S
-new file mode 100644
-index 0000000000..ad6d428bd7
---- /dev/null
-+++ b/tests/tcg/arm/system/rp2040-exit.S
-@@ -0,0 +1,55 @@
-+/*
-+ * Raspberry Pi Pico host-exit behavior tests
-+ *
-+ * SPDX-License-Identifier: GPL-2.0-or-later
-+ */
-+
-+.syntax unified
-+.cpu cortex-m0plus
-+.thumb
-+
-+#ifndef EXIT_MODE
-+#error EXIT_MODE must select semihosting or Pico SDK exit
-+#endif
-+
-+#define EXIT_MODE_SEMIHOST      0
-+#define EXIT_MODE_PICO_SDK      1
-+#define SRAM_END                0x20042000
-+#define SYS_EXIT_EXTENDED       0x20
-+#define ADP_STOPPED_APPLICATION_EXIT 0x20026
-+#define TEST_EXIT_STATUS        23
-+
-+.section .vectors, "a", %progbits
-+vector_table:
-+    .word SRAM_END
-+    .word reset_handler + 1
-+    .word hardfault_handler + 1
-+    .word hardfault_handler + 1
-+
-+.section .text, "ax", %progbits
-+.thumb_func
-+.global reset_handler
-+reset_handler:
-+#if EXIT_MODE == EXIT_MODE_SEMIHOST
-+    movs r0, SYS_EXIT_EXTENDED
-+    ldr r1, =semihost_exit_block
-+    bkpt 0xab
-+#elif EXIT_MODE == EXIT_MODE_PICO_SDK
-+    movs r0, TEST_EXIT_STATUS
-+    bkpt 0
-+#else
-+#error Unsupported EXIT_MODE
-+#endif
-+
-+1:
-+    b 1b
-+
-+.thumb_func
-+hardfault_handler:
-+    b hardfault_handler
-+
-+.section .rodata, "a", %progbits
-+.align 2
-+semihost_exit_block:
-+    .word ADP_STOPPED_APPLICATION_EXIT
-+    .word TEST_EXIT_STATUS
++++ b/tests/tcg/arm/system/rp2040-bootrom-helpers.ref
+@@ -0,0 +1,5 @@
++PICO TCG BOOTROM HELPERS START
++PICO TCG BOOTROM HELPERS BITS OK
++PICO TCG BOOTROM HELPERS BYTE MEMORY OK
++PICO TCG BOOTROM HELPERS WORD MEMORY OK
++PICO TCG BOOTROM HELPERS OK
 -- 
 2.55.0
 

@@ -4,21 +4,21 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1C240C79F99
-	for <qemu-arm@archiver.kernel.org>; Mon,  7 Sep 2026 10:38:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2D6FFC79F89
+	for <qemu-arm@archiver.kernel.org>; Mon,  7 Sep 2026 10:38:11 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1x3Wiy-0000S4-Ik; Mon, 07 Sep 2026 06:37:23 -0400
+	id 1x3Wj5-0000UO-O8; Mon, 07 Sep 2026 06:37:23 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <marcandre.lureau@redhat.com>)
- id 1x3Wip-0000PF-RN
+ id 1x3Wiq-0000PK-0j
  for qemu-arm@nongnu.org; Mon, 07 Sep 2026 06:37:09 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <marcandre.lureau@redhat.com>)
- id 1x3Wim-00048T-Po
+ id 1x3Wim-00048N-Sm
  for qemu-arm@nongnu.org; Mon, 07 Sep 2026 06:37:07 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
  s=mimecast20190719; t=1788777424;
@@ -26,33 +26,33 @@ DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=gkIrdElfeW1EwKlyXLCMJxCcIAp+LN1RtWIxRrsNopg=;
- b=NLoHiJC+JW6iQQ3wH4i1PEdP9d3bOyaFnDX3s7wWYYXQRsTckEGv+LWqFgW1B3QVG2u1gi
- DMLhrvqaVrpFv/BfoNTvjPFn29f34SH7/ZDxi2NzG5eKBvhqOtxrBHJpWx/Mpg7DYNr1m8
- YBtDgFDhCNja3/fbIqld0VFGZI+yWYc=
-Received: from mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com
+ bh=8cGBVc64aixvB++qc7RppwSp5/9PtciqMdVtjMAEwcM=;
+ b=RHodDXjO5DOkRPSTXsnjj8vlYftq6fzLlUcusaOdsJPRKWQWv9cFhmhx3w1jA/Nj46GG3U
+ 3jk/TtEHsPVpKfQGWmuZbxI3pyY1V7fn2uDo8IHZyOXclymdJPGrQo7z3jde8jPMXup8dD
+ PFm2lxWfbQDGLFoYkN6TPrkT410Uvmc=
+Received: from mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com
  (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-504-p0EESdlpNUKHuMiLJzZxVQ-1; Mon,
- 07 Sep 2026 06:30:55 -0400
-X-MC-Unique: p0EESdlpNUKHuMiLJzZxVQ-1
-X-Mimecast-MFC-AGG-ID: p0EESdlpNUKHuMiLJzZxVQ_1788777053
-Received: from mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com
- (mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.93])
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-36-ATUV2tD4Pbec_LuEi3QE9g-1; Mon,
+ 07 Sep 2026 06:30:44 -0400
+X-MC-Unique: ATUV2tD4Pbec_LuEi3QE9g-1
+X-Mimecast-MFC-AGG-ID: ATUV2tD4Pbec_LuEi3QE9g_1788777042
+Received: from mx-prod-int-10.mail-002.prod.us-west-2.aws.redhat.com
+ (mx-prod-int-10.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.95])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 4DBC11955F76; Mon,  7 Sep 2026 10:30:53 +0000 (UTC)
+ by mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 1E7B91955E96; Mon,  7 Sep 2026 10:30:42 +0000 (UTC)
 Received: from localhost (headnet05.pony-001.prod.iad2.dc.redhat.com
  [10.2.32.117])
- by mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id 692DF1800577; Mon,  7 Sep 2026 10:30:52 +0000 (UTC)
+ by mx-prod-int-10.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
+ id 14BCA5B1; Mon,  7 Sep 2026 10:30:40 +0000 (UTC)
 From: =?utf-8?q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>
-Date: Mon, 07 Sep 2026 14:30:24 +0400
-Subject: [PATCH v2 06/10] tests/qtest: add qtest_qmp_job_wait()
+Date: Mon, 07 Sep 2026 14:30:21 +0400
+Subject: [PATCH v2 03/10] tests/functional: skip if CONFIG_PIXMAN
 MIME-Version: 1.0
-Message-Id: <20260907-nohmp-v2-6-6d952d972c21@redhat.com>
+Message-Id: <20260907-nohmp-v2-3-6d952d972c21@redhat.com>
 References: <20260907-nohmp-v2-0-6d952d972c21@redhat.com>
 In-Reply-To: <20260907-nohmp-v2-0-6d952d972c21@redhat.com>
 To: qemu-devel@nongnu.org
@@ -70,29 +70,29 @@ Cc: John Snow <jsnow@redhat.com>, "Denis V. Lunev" <den@openvz.org>,
  =?utf-8?q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>, 
  Glenn Miles <milesg@linux.ibm.com>, qemu-ppc@nongnu.org, 
  =?utf-8?q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>
-X-Developer-Signature: v=1; a=openpgp-sha256; l=2759;
+X-Developer-Signature: v=1; a=openpgp-sha256; l=4623;
  i=marcandre.lureau@redhat.com; h=from:subject:message-id;
- bh=h9iGsvL7MMHY6Qm8hZ2uOnGK9+m0yedLi5VjofxU7do=;
- b=owEBbQKS/ZANAwAKAdro4Ql1lpzlAcsmYgBqnpJCqpLMceCW6kMUUAVwmJolZ84/hbM3U/W3r
- 7LuuG9km6+JAjMEAAEKAB0WIQSHqb2TP4fGBtJ29i3a6OEJdZac5QUCap6SQgAKCRDa6OEJdZac
- 5S0mEACfYKvpwnUPu+oGsWjI+Wqwltf4YMokxd9iOcpiHpHwf25+nf6/rZZKE2MdTii8lFpg0Z8
- GJGiHL4QwZ1exyrNEN0JRD9m3ZF8wjri315KbX9LPbAfIFW9SSLXb5+per/jteeoqJukPGGItCx
- hXPXiFITugQX1vbzXO1b/pZkK+MC9z3yYNBCvzYPdBRWmwm37K13DQICgeirXROa+wlIPkAkavt
- 0MfnehlZHwKWsbDO3EofXmNqmLSGXKW4BUX+MDAJloAbg/6FBAD5dbqGYJxe+Gij7K4/MOpWWG7
- 2+P683gyrJN8qIST7qY5TBofU4hG780W4mswfre6c41qpSNsvJCeYfF9zUHFgbC8ftQJ5OlDdj+
- O+b37BsWyM1BLxujQW1wJd2BWi11sg9H0FHseozQOmd2/Ai8ti25SFC2vCYsdOwMSrYmNR1GWro
- FSYF0Vyz3X6qnjU9qJ2KZzNsrYPte6cNgOCPLWhCc7tycU7nlWBTLSBuQxncNm5p3SKi+glcz+i
- 8iNH9+9/x3bHe9ilqvALFpc6/8so16EKw2L8Y0sTyZnQenGObq+TdaNtk6IElCxSElrwmAfsjNR
- dGHAmQI9m2AHXc/rBCp1wXsVNSaSBCQq/Mv5z9MJLDyOZv+pJgwdvfC/6j0SDsQFI41eb1g3GLA
- Il3B0OlMT+Dxz4A==
+ bh=63ZiKVOC1t8wXBgD9jtUermXawOaBss0w62gKXXWiNc=;
+ b=owEBbQKS/ZANAwAKAdro4Ql1lpzlAcsmYgBqnpJC41pd36Eo3JwGXpq/ryJgrIbzXUS7E+8xT
+ /JnLdQ2OWyJAjMEAAEKAB0WIQSHqb2TP4fGBtJ29i3a6OEJdZac5QUCap6SQgAKCRDa6OEJdZac
+ 5fgaD/99GUMSRBwLxJ9UjY9dWuXVYg14WU6GKNkDCb5ZgoVH55GSRXlr3triKaluNoV2WBxMtdp
+ 6nzvxgNAJfOhNJhoXsRQHMqNrXF1xqfQxOnX0zlBn44C8ud7V5tcZU18Y6Dr1d1FbcufHh3GgAr
+ TXywC+Vwt+YmBj31dQ0UnQYBIYQafiV5GfwKvTg/7ouQ7EVOugfpK2X7RFARC6jfKmRyal3cTwO
+ xjAKRxRBbGn2uioKxR08PUAIzEExSzTjYfSMcT5fQ61IlVOsIvfFPGZx8tW3yRk0muZo8lnoYUQ
+ clco+xJnHf4QNCe7E4li9fWABGHU44T9utKM1kE6NiKThLZSZKJjeNdlZT0jAI2qTQNp9VbLQ+b
+ UIQfwEsZ861uC9HQP0cJgBH8VBv9fASlNWIH1jn+A0Wb3clH1PiN1Fh78uxphxA03AJZLVsegjP
+ 3ctMBQ4GP3K90Di+tLwpBa+8w+90uFtvoyh1MD4z2JvgnXySvJuDLfSQfFAr1HF15qZFiv0OzdY
+ EZDtYR13Y7h2zBHGEr7KQxcB/SAWQcjswLZX9/XkS8u3vqKWeAgPUAqyeCgb/Vwoo6MLC+Dl9Sl
+ ublXcAyDQuM/+n5xuNQ9n7O20ZEQIjrcaUrWJ6ouoPOQnqy6J/aiGWWNRercXaawwJaofF3WumJ
+ 5ee4hnD/t2XKgJg==
 X-Developer-Key: i=marcandre.lureau@redhat.com; a=openpgp;
  fpr=87A9BD933F87C606D276F62DDAE8E10975969CE5
-X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.93
-X-Mimecast-MFC-PROC-ID: dpEpTXnq_u5obTZalnU47bhHKyx7tSuMCK8uTUwNGBA_1788777053
+X-Scanned-By: MIMEDefang 3.6 on 10.30.177.95
+X-Mimecast-MFC-PROC-ID: H1nOtI7Nbw5S_7ezqxTejYG7yGE9yllrLQv60NVsAz4_1788777042
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=170.10.129.124;
+Received-SPF: pass client-ip=170.10.133.124;
  envelope-from=marcandre.lureau@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: 12
@@ -100,8 +100,9 @@ X-Spam_score: 1.2
 X-Spam_bar: +
 X-Spam_report: (1.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.01, RCVD_IN_SBL_CSS=3.335,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=no autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=-0.01, RCVD_IN_MSPIKE_WL=-0.01,
+ RCVD_IN_SBL_CSS=3.335, SPF_HELO_PASS=-0.001,
+ SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -117,85 +118,115 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Add a helper to wait for job conclusion, used in next changes.
+PIXMAN is required for screendump.
+Replace test-time check with earlier @skipUnlessConfig check.
 
-Reviewed-by: Daniel P. Berrangé <berrange@redhat.com>
 Signed-off-by: Marc-André Lureau <marcandre.lureau@redhat.com>
 ---
- tests/qtest/libqtest.c | 37 +++++++++++++++++++++++++++++++++++++
- tests/qtest/libqtest.h | 11 +++++++++++
- 2 files changed, 48 insertions(+)
+ tests/functional/arm/test_integratorcp.py |  9 ++++-----
+ tests/functional/m68k/test_nextcube.py    |  9 ++++-----
+ tests/functional/mips64el/test_malta.py   | 10 +++++-----
+ 3 files changed, 13 insertions(+), 15 deletions(-)
 
-diff --git a/tests/qtest/libqtest.c b/tests/qtest/libqtest.c
-index 28bb72bfaecf..370f79a3b6fb 100644
---- a/tests/qtest/libqtest.c
-+++ b/tests/qtest/libqtest.c
-@@ -984,6 +984,43 @@ void qtest_qmp_eventwait(QTestState *s, const char *event)
-     qobject_unref(response);
- }
+diff --git a/tests/functional/arm/test_integratorcp.py b/tests/functional/arm/test_integratorcp.py
+index 23ae919359d5..f7551ff7cb88 100755
+--- a/tests/functional/arm/test_integratorcp.py
++++ b/tests/functional/arm/test_integratorcp.py
+@@ -16,7 +16,7 @@
  
-+void qtest_qmp_job_wait(QTestState *s, const char *job_id)
-+{
-+    QDict *response, *data, *error;
-+    QList *jobs;
-+    const QListEntry *entry;
-+
-+    for (;;) {
-+        response = qtest_qmp_eventwait_ref(s, "JOB_STATUS_CHANGE");
-+        data = qdict_get_qdict(response, "data");
-+        if (!strcmp(qdict_get_str(data, "id"), job_id) &&
-+            !strcmp(qdict_get_str(data, "status"), "concluded")) {
-+            qobject_unref(response);
-+            break;
-+        }
-+        qobject_unref(response);
-+    }
-+
-+    response = qtest_qmp(s, "{ 'execute': 'query-jobs' }");
-+    g_assert(qdict_haskey(response, "return"));
-+    jobs = qobject_to(QList, qdict_get(response, "return"));
-+    g_assert(jobs);
-+    QLIST_FOREACH_ENTRY(jobs, entry) {
-+        QDict *job = qobject_to(QDict, qlist_entry_obj(entry));
-+        if (!strcmp(qdict_get_str(job, "id"), job_id)) {
-+            g_assert_null(qdict_get_try_str(job, "error"));
-+            break;
-+        }
-+    }
-+    qobject_unref(response);
-+
-+    response = qtest_qmp(s,
-+        "{ 'execute': 'job-dismiss', 'arguments': { 'id': %s } }", job_id);
-+    error = qdict_get_qdict(response, "error");
-+    g_assert_null(error);
-+    qobject_unref(response);
-+}
-+
- char *qtest_vhmp(QTestState *s, const char *fmt, va_list ap)
- {
-     char *cmd;
-diff --git a/tests/qtest/libqtest.h b/tests/qtest/libqtest.h
-index 58491ca53ab7..f06e061d214b 100644
---- a/tests/qtest/libqtest.h
-+++ b/tests/qtest/libqtest.h
-@@ -398,6 +398,17 @@ QDict *qtest_qmp_eventwait_ref(QTestState *s, const char *event);
-  */
- QDict *qtest_qmp_event_ref(QTestState *s, const char *event);
+ from qemu_test import QemuSystemTest, Asset
+ from qemu_test import wait_for_console_pattern
+-from qemu_test import skipIfMissingImports, skipUntrustedTest
++from qemu_test import skipIfMissingImports, skipUntrustedTest, skipUnlessConfig
  
-+/**
-+ * qtest_qmp_job_wait:
-+ * @s: #QTestState instance to operate on.
-+ * @job_id: job identifier to wait for.
-+ *
-+ * Wait for a QMP job to reach "concluded" status by consuming
-+ * JOB_STATUS_CHANGE events, then dismiss the job.
-+ * Asserts that the job completed without error.
-+ */
-+void qtest_qmp_job_wait(QTestState *s, const char *job_id);
-+
- /**
-  * qtest_hmp:
-  * @s: #QTestState instance to operate on.
+ 
+ class IntegratorMachine(QemuSystemTest):
+@@ -58,6 +58,7 @@ def test_integratorcp_console(self):
+         wait_for_console_pattern(self, 'Log in as root')
+ 
+     @skipIfMissingImports("numpy", "cv2")
++    @skipUnlessConfig("PIXMAN")
+     @skipUntrustedTest()
+     def test_framebuffer_tux_logo(self):
+         """
+@@ -73,10 +74,8 @@ def test_framebuffer_tux_logo(self):
+         framebuffer_ready = 'Console: switching to colour frame buffer device'
+         wait_for_console_pattern(self, framebuffer_ready)
+         self.vm.cmd('human-monitor-command', command_line='stop')
+-        res = self.vm.cmd('human-monitor-command',
+-                          command_line='screendump %s' % screendump_path)
+-        if 'unknown command' in res:
+-            self.skipTest('screendump not available')
++        self.vm.cmd('human-monitor-command',
++                    command_line='screendump %s' % screendump_path)
+ 
+         cpu_count = 1
+         match_threshold = 0.92
+diff --git a/tests/functional/m68k/test_nextcube.py b/tests/functional/m68k/test_nextcube.py
+index d917cf5424fe..f38f294bad67 100755
+--- a/tests/functional/m68k/test_nextcube.py
++++ b/tests/functional/m68k/test_nextcube.py
+@@ -10,10 +10,11 @@
+ import time
+ 
+ from qemu_test import QemuSystemTest, Asset
+-from qemu_test import skipIfMissingImports, skipIfMissingCommands
++from qemu_test import skipIfMissingImports, skipIfMissingCommands, skipUnlessConfig
+ from qemu_test.tesseract import tesseract_ocr
+ 
+ 
++@skipUnlessConfig("PIXMAN")
+ class NextCubeMachine(QemuSystemTest):
+ 
+     timeout = 15
+@@ -39,10 +40,8 @@ def check_bootrom_framebuffer(self, screenshot_path):
+                 break
+             time.sleep(0.1)
+ 
+-        res = self.vm.cmd('human-monitor-command',
+-                          command_line=f"screendump {screenshot_path}")
+-        if 'unknown command' in res:
+-            self.skipTest('screendump not available')
++        self.vm.cmd('human-monitor-command',
++                    command_line=f"screendump {screenshot_path}")
+ 
+     @skipIfMissingImports("PIL")
+     def test_bootrom_framebuffer_size(self):
+diff --git a/tests/functional/mips64el/test_malta.py b/tests/functional/mips64el/test_malta.py
+index 163bbaf5ca36..80fe3424b234 100755
+--- a/tests/functional/mips64el/test_malta.py
++++ b/tests/functional/mips64el/test_malta.py
+@@ -13,7 +13,8 @@
+ 
+ from qemu_test import LinuxKernelTest, Asset
+ from qemu_test import exec_command_and_wait_for_pattern
+-from qemu_test import skipIfMissingImports, skipFlakyTest, skipUntrustedTest
++from qemu_test import skipIfMissingImports, skipFlakyTest, skipUntrustedTest, \
++    skipUnlessConfig
+ 
+ from mips.test_malta import mips_check_wheezy
+ 
+@@ -114,6 +115,7 @@ def test_wheezy(self):
+ 
+ 
+ @skipIfMissingImports('numpy', 'cv2')
++@skipUnlessConfig("PIXMAN")
+ class MaltaMachineFramebuffer(LinuxKernelTest):
+ 
+     timeout = 30
+@@ -155,10 +157,8 @@ def do_test_i6400_framebuffer_logo(self, cpu_cores_count):
+         framebuffer_ready = 'Console: switching to colour frame buffer device'
+         self.wait_for_console_pattern(framebuffer_ready)
+         self.vm.cmd('human-monitor-command', command_line='stop')
+-        res = self.vm.cmd('human-monitor-command',
+-                          command_line=f'screendump {screendump_path}')
+-        if 'unknown command' in res:
+-            self.skipTest('screendump not available')
++        self.vm.cmd('human-monitor-command',
++                    command_line=f'screendump {screendump_path}')
+ 
+         match_threshold = 0.95
+         screendump_bgr = cv2.imread(screendump_path, cv2.IMREAD_COLOR)
 
 -- 
 2.55.0.543.g5ebe2ebe4ea8

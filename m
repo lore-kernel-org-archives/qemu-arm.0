@@ -4,56 +4,55 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E6D14C79F9E
-	for <qemu-arm@archiver.kernel.org>; Mon,  7 Sep 2026 10:38:11 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0DBDBC79F9F
+	for <qemu-arm@archiver.kernel.org>; Mon,  7 Sep 2026 10:38:21 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1x3Wj8-0000aa-Pe; Mon, 07 Sep 2026 06:37:26 -0400
+	id 1x3Wj6-0000W3-AB; Mon, 07 Sep 2026 06:37:24 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <marcandre.lureau@redhat.com>)
- id 1x3Wiy-0000S3-BH
- for qemu-arm@nongnu.org; Mon, 07 Sep 2026 06:37:23 -0400
+ id 1x3Wir-0000PO-6t
+ for qemu-arm@nongnu.org; Mon, 07 Sep 2026 06:37:09 -0400
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <marcandre.lureau@redhat.com>)
- id 1x3Wiv-0004Bn-BY
- for qemu-arm@nongnu.org; Mon, 07 Sep 2026 06:37:15 -0400
+ id 1x3Wim-00048s-WC
+ for qemu-arm@nongnu.org; Mon, 07 Sep 2026 06:37:08 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1788777432;
+ s=mimecast20190719; t=1788777424;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=cr17daom5ZIwPL1Jm52XNja1f8W6vz7SjHDPV0FRzto=;
- b=iKyHJaEYEtu1oAI+yTLMlojCHLKAzDj6g1hTYd+iF6YKkMyk6w8ALVgcEl6+uRlCeX2r6G
- h/Q2HonbbdzqTu9U336VVUauDBLB2zj8dBDPd+3Kf3bopOyO4ftcFzd/uTXyD9V17eERB5
- nQXz+QmPbqGghbYxc0eyYpvEnOwPh3M=
+ bh=62mvN3+6Ik4rJgbtSXh3PbCH0A6py8ADyiqg0AkiFTs=;
+ b=WW4S2U5wY6IwfZipSNQOXd0imWg6YdEplTRVLrmr4BaEgMx8ERf3CnIKEkgEVvduJSgMlt
+ WSrzN1avFrf9aPbDhmQ+JuAHiz1NRe7nKY595D758Tqf+ySCZ3KciJYLwtAJzpJ5c/lTba
+ SmJdHP8nqiNUkzb+UL53jNzmr5wOJT8=
 Received: from mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com
  (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-561-4c7xqn7mN2aTKFmFmQ0KTQ-1; Mon,
- 07 Sep 2026 06:31:02 -0400
-X-MC-Unique: 4c7xqn7mN2aTKFmFmQ0KTQ-1
-X-Mimecast-MFC-AGG-ID: 4c7xqn7mN2aTKFmFmQ0KTQ_1788777060
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-370-lYQjBLE4ODuNxr-jmOAFog-1; Mon,
+ 07 Sep 2026 06:30:52 -0400
+X-MC-Unique: lYQjBLE4ODuNxr-jmOAFog-1
+X-Mimecast-MFC-AGG-ID: lYQjBLE4ODuNxr-jmOAFog_1788777049
 Received: from mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com
  (mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.4])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
  by mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 26DD2197703E; Mon,  7 Sep 2026 10:31:00 +0000 (UTC)
+ id C0E0B197702D; Mon,  7 Sep 2026 10:30:49 +0000 (UTC)
 Received: from localhost (headnet05.pony-001.prod.iad2.dc.redhat.com
  [10.2.32.117])
  by mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id 523803000223; Mon,  7 Sep 2026 10:30:58 +0000 (UTC)
+ id 92E8430001A2; Mon,  7 Sep 2026 10:30:48 +0000 (UTC)
 From: =?utf-8?q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>
-Date: Mon, 07 Sep 2026 14:30:26 +0400
-Subject: [PATCH v2 08/10] tests/drive_del-test: compile out HMP-dependent
- tests when !CONFIG_HMP
+Date: Mon, 07 Sep 2026 14:30:23 +0400
+Subject: [PATCH v2 05/10] tests/functional/s390x: use QMP for balloon
 MIME-Version: 1.0
-Message-Id: <20260907-nohmp-v2-8-6d952d972c21@redhat.com>
+Message-Id: <20260907-nohmp-v2-5-6d952d972c21@redhat.com>
 References: <20260907-nohmp-v2-0-6d952d972c21@redhat.com>
 In-Reply-To: <20260907-nohmp-v2-0-6d952d972c21@redhat.com>
 To: qemu-devel@nongnu.org
@@ -71,25 +70,25 @@ Cc: John Snow <jsnow@redhat.com>, "Denis V. Lunev" <den@openvz.org>,
  =?utf-8?q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>, 
  Glenn Miles <milesg@linux.ibm.com>, qemu-ppc@nongnu.org, 
  =?utf-8?q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>
-X-Developer-Signature: v=1; a=openpgp-sha256; l=3999;
+X-Developer-Signature: v=1; a=openpgp-sha256; l=1417;
  i=marcandre.lureau@redhat.com; h=from:subject:message-id;
- bh=nELlHO8Wk8s5vJ916Mup0ugCUbfnyL7FDxtNlquSMtI=;
- b=owEBbQKS/ZANAwAKAdro4Ql1lpzlAcsmYgBqnpJDmDcUdpf3J+Zp5LGlZt5xHWwgZq0Ag4wTG
- ZykkAAUcOKJAjMEAAEKAB0WIQSHqb2TP4fGBtJ29i3a6OEJdZac5QUCap6SQwAKCRDa6OEJdZac
- 5fHGD/934pYLV5igo2E5quOb4ZE0Liiq1O+Z9KanshnSlItckgoGDdo8ekeTP5JV8fgVRTPtUcD
- 8RGxAxO11sNMDmdQONg6ERxO4wWtOr/OTICocD7SuqT+PCI+agywKKVihtR30Oh6nsh+qlgFl2R
- tgLvTbnjuKG3tHBN5ImuEPJ/7iGmGMId0PvKK6zy74Tl92rByPDiR1im+Oqt0vJCZGGmaStFxlv
- WejIInGEMejJRYN9K2VZ2svHs4G6GOnQ16AcSlrlLcrldwmvxroAXPskEm6jBzXGaELZWF7FPsI
- Q/QDX0M2zpF2WmZ9tA25DdUztalSWlteecIZ/Ij3vn7EIj68x8uXc1IrXkZ0/UU8Ifax7P4w4DW
- KxexvrGgyOeNcPDVNuyLIhZJw2WoEtqxLhiMM98Brq/rk+yjVSFsdQZEIsunfLdcvVLvDPKIXri
- bOGSpIRXt+hz7AEKliAkZVMKKB5fRLdR7wDk4kSraOOMwcOUsE98+vV76wpj8DrDPbZvv3n0pSY
- rBMh0QQ+APf35KpMLwZtoOyKqi+mGZhB934enY8x25o5nynLke6cH19uDktGVke+TyF1jNmKLdr
- RJ1pBGteFGg8XoPR5eD3PXkbSXUk2p8eEqkwQB3hs6KdaCH1ETKnfteOy/z6yqG1Ob6LMQigpyi
- ZVk3L1tfW9XYstw==
+ bh=090HS6zLuSEZTINBqsIWMEfBWo0e9Nx0kELk6Jj7tAY=;
+ b=owEBbQKS/ZANAwAKAdro4Ql1lpzlAcsmYgBqnpJCaTAN8GtF82maIt5YiyiLrAre5xkrOZH+w
+ twYbGwLJNWJAjMEAAEKAB0WIQSHqb2TP4fGBtJ29i3a6OEJdZac5QUCap6SQgAKCRDa6OEJdZac
+ 5SHiD/9cxY1UaSPh8eCEXdooDkqiYWSJTCoO6IoTJPcovc/TV2ue+NTDQHJySi0lorbyenbsjgO
+ Mv7u1iBjNBo/SVveNBTqco7+UpuM2DogeVVdeNJg7FOiPzAHXyiIZJuBh+mPlR2iPkShs0qo9Z6
+ rDu6BalsBWH5CZBSgZmZy28JI2gPxFaczcnTvwFdAqzrPwBw2X8mZXokjjFWj2LcWKj8Rzye2cZ
+ RpfRU7D8+swJcTbMWdOREXjpUf4v10pmmEqgyJkdwaFTk80qV2enZ3IEjZUehlsE9WcDFg32e57
+ AQxYRRw/YvimR47cTA2GlF9qFcwaU9EQ7/c5wTZxECJSftFL3XRy/eEXptzw3K7krYPauI5LOIy
+ a+cOgkQ9f4DhC6zZxf7XNt7d6OahQl9ntaRFxJ1oT5a4QWHn22J4KBTlHPRPFRjv56EPz3Uq8nr
+ wcxkXuw5IMz19Qjx4vQk595mFrbk5QpMHj6bi+/+jJyG7u2Od+eF+T6FfHCxqYK8sQtaGaTRPXA
+ EX47jPay9z+FJcKi2VMLkUqUSnApcWiLBYeheo+KYFibtPMO+y2JTFZWmj+kew4DeJ6lwfphCYC
+ uxD3r0GWKef5t0BMdNVUXqF8oA+p24d8GeG6hzWLrVSxhBw2hEh2Hg6ZLMYZu7ewPZam3WnpGoK
+ Cj8nVHW3wJJR1rA==
 X-Developer-Key: i=marcandre.lureau@redhat.com; a=openpgp;
  fpr=87A9BD933F87C606D276F62DDAE8E10975969CE5
 X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.4
-X-Mimecast-MFC-PROC-ID: PcPzhppz2NpzvUvDVHsg8xWBImeD9WqvdkEVajXuS5o_1788777060
+X-Mimecast-MFC-PROC-ID: wtLedS37PjFty5nsIM9k3r4qrSJSX_nkyoRWRVdG0W8_1788777049
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
@@ -118,158 +117,32 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-The compiled-out functions are actually testing HMP-specific commands
-and behaviour which operate on the old "drive" concept. The QMP
-equivalent for block-driver nodes are already tested.
+Unit is changed from megabytes to bytes.
 
-If HMP goes away, those tests should go away too. Compile them out.
-
+Reviewed-by: Thomas Huth <th.huth+qemu@posteo.eu>
 Reviewed-by: Daniel P. Berrangé <berrange@redhat.com>
 Signed-off-by: Marc-André Lureau <marcandre.lureau@redhat.com>
 ---
- tests/qtest/drive_del-test.c | 47 +++++++++++++++++++++-----------------------
- 1 file changed, 22 insertions(+), 25 deletions(-)
+ tests/functional/s390x/test_ccw_virtio.py | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-diff --git a/tests/qtest/drive_del-test.c b/tests/qtest/drive_del-test.c
-index cc52c2d87936..cbf94d5b9f0f 100644
---- a/tests/qtest/drive_del-test.c
-+++ b/tests/qtest/drive_del-test.c
-@@ -87,6 +87,7 @@ static void blockdev_add_with_media(QTestState *qts)
-     g_assert(has_blockdev(qts));
- }
+diff --git a/tests/functional/s390x/test_ccw_virtio.py b/tests/functional/s390x/test_ccw_virtio.py
+index 1d4958bbe293..f816b1e201a1 100755
+--- a/tests/functional/s390x/test_ccw_virtio.py
++++ b/tests/functional/s390x/test_ccw_virtio.py
+@@ -162,10 +162,10 @@ def test_s390x_devices(self):
+         # test the virtio-balloon device
+         exec_command_and_wait_for_pattern(self, 'head -n 1 /proc/meminfo',
+                                           'MemTotal:         115640 kB')
+-        self.vm.cmd('human-monitor-command', command_line='balloon 96')
++        self.vm.cmd('balloon', value=96 * 1024 * 1024)
+         exec_command_and_wait_for_pattern(self, 'head -n 1 /proc/meminfo',
+                                           'MemTotal:          82872 kB')
+-        self.vm.cmd('human-monitor-command', command_line='balloon 128')
++        self.vm.cmd('balloon', value=128 * 1024 * 1024)
+         exec_command_and_wait_for_pattern(self, 'head -n 1 /proc/meminfo',
+                                           'MemTotal:         115640 kB')
  
-+#ifdef CONFIG_HMP
- static void drive_add(QTestState *qts)
- {
-     char *resp = qtest_hmp(qts, "drive_add 0 if=none,id=drive0");
-@@ -117,6 +118,7 @@ static void drive_del(QTestState *qts)
-     g_assert(!has_drive(qts));
-     g_free(resp);
- }
-+#endif
- 
- /*
-  * qvirtio_get_dev_type:
-@@ -165,13 +167,9 @@ static void device_del(QTestState *qts, bool and_reset)
- 
- static void test_drive_without_dev(void)
- {
-+#ifdef CONFIG_HMP
-     QTestState *qts;
- 
--#ifndef CONFIG_HMP
--    g_test_skip("HMP not enabled");
--    return;
--#endif
--
-     /* Start with an empty drive */
-     qts = qtest_init("-drive if=none,id=drive0 -M none");
- 
-@@ -184,19 +182,18 @@ static void test_drive_without_dev(void)
-     drive_add(qts);
- 
-     qtest_quit(qts);
-+#else
-+    g_test_skip("HMP not enabled");
-+#endif
- }
- 
- static void test_after_failed_device_add(void)
- {
-+#ifdef CONFIG_HMP
-     char driver[32];
-     QDict *response;
-     QTestState *qts;
- 
--#ifndef CONFIG_HMP
--    g_test_skip("HMP not enabled");
--    return;
--#endif
--
-     if (!has_device_builtin("virtio-blk")) {
-         g_test_skip("Device virtio-blk is not available");
-         return;
-@@ -227,17 +224,16 @@ static void test_after_failed_device_add(void)
-     drive_add(qts);
- 
-     qtest_quit(qts);
-+#else
-+    g_test_skip("HMP not enabled");
-+#endif
- }
- 
- static void test_drive_del_device_del(void)
- {
-+#ifdef CONFIG_HMP
-     QTestState *qts;
- 
--#ifndef CONFIG_HMP
--    g_test_skip("HMP not enabled");
--    return;
--#endif
--
-     if (!has_device_builtin("virtio-scsi")) {
-         g_test_skip("Device virtio-scsi is not available");
-         return;
-@@ -259,6 +255,9 @@ static void test_drive_del_device_del(void)
-     g_assert(!has_drive(qts));
- 
-     qtest_quit(qts);
-+#else
-+    g_test_skip("HMP not enabled");
-+#endif
- }
- 
- static void test_cli_device_del(void)
-@@ -416,15 +415,11 @@ static void test_device_add_and_del_q35(void)
- 
- static void test_drive_add_device_add_and_del(void)
- {
-+#ifdef CONFIG_HMP
-     QTestState *qts;
-     const char *arch = qtest_get_arch();
-     const char *machine_addition = "";
- 
--#ifndef CONFIG_HMP
--    g_test_skip("HMP not enabled");
--    return;
--#endif
--
-     if (!has_device_builtin("virtio-blk")) {
-         g_test_skip("Device virtio-blk is not available");
-         return;
-@@ -450,17 +445,16 @@ static void test_drive_add_device_add_and_del(void)
-     g_assert(!has_drive(qts));
- 
-     qtest_quit(qts);
-+#else
-+    g_test_skip("HMP not enabled");
-+#endif
- }
- 
- static void test_drive_add_device_add_and_del_q35(void)
- {
-+#ifdef CONFIG_HMP
-     QTestState *qts;
- 
--#ifndef CONFIG_HMP
--    g_test_skip("HMP not enabled");
--    return;
--#endif
--
-     if (!has_device_builtin("virtio-blk")) {
-         g_test_skip("Device virtio-blk is not available");
-         return;
-@@ -479,6 +473,9 @@ static void test_drive_add_device_add_and_del_q35(void)
-     g_assert(!has_drive(qts));
- 
-     qtest_quit(qts);
-+#else
-+    g_test_skip("HMP not enabled");
-+#endif
- }
- 
- static void test_blockdev_add_device_add_and_del(void)
 
 -- 
 2.55.0.543.g5ebe2ebe4ea8

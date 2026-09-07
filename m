@@ -4,90 +4,107 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6C2D4C79FA0
-	for <qemu-arm@archiver.kernel.org>; Mon,  7 Sep 2026 13:04:19 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 636A7C79F9E
+	for <qemu-arm@archiver.kernel.org>; Mon,  7 Sep 2026 13:14:40 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1x3Yzj-0006Co-W9; Mon, 07 Sep 2026 09:02:45 -0400
+	id 1x3ZAt-0003vK-01; Mon, 07 Sep 2026 09:14:15 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1x3YzZ-00068K-0s
- for qemu-arm@nongnu.org; Mon, 07 Sep 2026 09:02:34 -0400
-Received: from mail-wm1-x32b.google.com ([2a00:1450:4864:20::32b])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1x3YzW-000508-4O
- for qemu-arm@nongnu.org; Mon, 07 Sep 2026 09:02:32 -0400
-Received: by mail-wm1-x32b.google.com with SMTP id
- 5b1f17b1804b1-49b8e527d63so41869765e9.2
- for <qemu-arm@nongnu.org>; Mon, 07 Sep 2026 06:02:29 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1788786149; x=1789390949; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:from:to:cc:subject:date
- :message-id:reply-to:content-type;
- bh=MCXaA9JKSbsLcHED56ZOmYfMXgeBVruvAR+utYnVKl4=;
- b=ngcKfUw+uWQqSCwLD89xTCzTU4piYfIssFqvzOW/vDfLIXCN0OYtm91dv6I9TwAMlK
- dLSM0m73n5+gOFfQq+uN/SY6j3OFGnJcNXvaxfX7Q3E7ziWPw3DSjE4Vkf31sen32/Jv
- XeNE5pZ3QuJi4tRcog/X6/Cd5jB+BXuBIjVnChG74UiNrk4ZbZkT0Ju50actL7zcQegS
- galgMdK4OcPOGRU0zoBfE/c+BfRfYbQrjBW9ID+/p+EFXD/O53wHIH+RS9m9s8xeJwlR
- 0GkVJihKTaOAsWGx6VOFvEWYIV7f/7YYn4givd9vt3FW+Q1eK8oBvsngZdrKFIHzHk3V
- 2Cwg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1788786149; x=1789390949;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
- :to:cc:subject:date:message-id:reply-to:content-type;
- bh=MCXaA9JKSbsLcHED56ZOmYfMXgeBVruvAR+utYnVKl4=;
- b=fUWu8+VnEHVPO4z9Cl/vk4N6qvGU0byljstB31NMx20IXMpasmqphCEgMp/YPdtLR/
- +sYE5KSTiyRSrrI5SVIOawkzEwTOaeE9RjOJAqVXPXdw+sdaq8ELTlpKEpvbBexAxNpd
- 4ZxaO+shOAci8tgTYJ2SjmswwUE39EakVd/nswBhfpvkrV/7G01gNTSIoTkwTz4fYVwS
- 3z9T/ez95Ji9mZzOQPByL6DbQ8Kp9Z8QfsCheBVbA/PWJHINd/YM38YYZMNg+G4zpxRx
- Ymrg2Y0HWTsEFN46LpG7oyswXlpqG4MNgnnKuGeejoOePJ0zDejS5LNV+YFFXxYs29US
- FIag==
-X-Gm-Message-State: AFuF++nL/qGf7hjYYWDXvbOr/M1UedyXkp9pqYShhtd10FxR9HZ7uAV4
- AihCeJbh7YdVaJ3JJRNXpfJ6OqL13g84hvpBQ4zI2HL/85m28d26oHQeAY986RSw3zntr6Y2hSk
- QjNSESS4=
-X-Gm-Gg: AYBFou0N3qd57CdIN8MIwOLQK5HWB7wJo2zDL8CKRVfgYmwdgKpPSbEW1GeNg1HWDH6
- c+sl+iClSvT1yl2hYa+2gLwb5gbirlL0CvqGryN0kUTH3AzGHFgvGnGjaEo/LR50794tqlty+Zl
- IMrsA4fb34P+T9g3an2RTUs09ogXnb5G8AuF0us4SZ8C2UXBI1WnItHsGvUoDbNZBHz+r0x2StW
- ru58Gc5uMtwHBHOH4NmINKNA3qoQ0BwHhveibV/VJyrFo8gAa9gSy1Llgw+FSUX0xy1Yz/o5/PJ
- cZ5ZtAU1hKS2WyvRadOzLA5oJVc1Savd+ZNoNgE+Fn5YOtUY5yLoSj07pyOpnIJxtwzWw0hsCEJ
- +oflxrtKMhaXLCs9BW+BohMDWigP1eX9aRzQdXgJLIpXeTMBYxYVQvjplfy7/LHRUbytrKnPKRA
- bmHNp+REf7zqw92K0ZI/7TVaWSHH9nNPslT3XfJtdHiSPoqTrOIDHQk7BTfpkomQEiRMGb0NjNW
- P1pl6Kgn6EZYRjXruS9V9NuUKmzksRCA75q6aaqi/eeBnqNCUEg5vWVR+w9Z/oofORwMg==
-X-Received: by 2002:a05:600c:4e11:b0:49c:f2f4:eddd with SMTP id
- 5b1f17b1804b1-49cf8268795mr244661775e9.16.1788786148773; 
- Mon, 07 Sep 2026 06:02:28 -0700 (PDT)
-Received: from lanath.. (wildly.archaic.org.uk. [81.2.115.145])
- by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-49cee60bae6sm468589935e9.9.2026.09.07.06.02.27
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 07 Sep 2026 06:02:28 -0700 (PDT)
-From: Peter Maydell <peter.maydell@linaro.org>
-To: qemu-arm@nongnu.org,
-	qemu-devel@nongnu.org
-Cc: Tao Ding <dingtao0430@163.com>
-Subject: [PATCH 3/8] target/arm: Drop uses of reset_ignore for banked AArch32
- registers
-Date: Mon,  7 Sep 2026 14:02:18 +0100
-Message-ID: <20260907130223.3148989-4-peter.maydell@linaro.org>
-X-Mailer: git-send-email 2.43.0
-In-Reply-To: <20260907130223.3148989-1-peter.maydell@linaro.org>
-References: <20260907130223.3148989-1-peter.maydell@linaro.org>
+ (Exim 4.90_1) (envelope-from <marcandre.lureau@redhat.com>)
+ id 1x3ZAs-0003ud-6e
+ for qemu-arm@nongnu.org; Mon, 07 Sep 2026 09:14:14 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <marcandre.lureau@redhat.com>)
+ id 1x3ZAq-0006Ov-Bt
+ for qemu-arm@nongnu.org; Mon, 07 Sep 2026 09:14:13 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1788786851;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding;
+ bh=sSTDCwIlmfh0kRb/u3POSdgu66kdRZsNqeQvwqyrrvU=;
+ b=hHYSmUXYSLHEvrGOaYZ+6VPhnTAbsIoMsoMcFJ+QhFcvQRNwTsW+wUmDiIm7relZmsYaru
+ GzgfKQPjAES7O2lmV1sozveZ6jdqPw4Dao5C2WHUr4cVkGptvV4lHYTbIdRIv5q4FRfsQt
+ CryQIlrh032QvlBoZC95X0j/ifJgBNk=
+Received: from mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
+ relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-256-_ntjX2NLNeyJMEYJqxFIOg-1; Mon,
+ 07 Sep 2026 09:14:08 -0400
+X-MC-Unique: _ntjX2NLNeyJMEYJqxFIOg-1
+X-Mimecast-MFC-AGG-ID: _ntjX2NLNeyJMEYJqxFIOg_1788786845
+Received: from mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com
+ (mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.93])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+ (No client certificate requested)
+ by mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 05EFC19540EA; Mon,  7 Sep 2026 13:14:05 +0000 (UTC)
+Received: from localhost (headnet04.pony-001.prod.iad2.dc.redhat.com
+ [10.2.32.116])
+ by mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
+ id A8CEC1800577; Mon,  7 Sep 2026 13:14:02 +0000 (UTC)
+From: =?utf-8?q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>
+Subject: [PATCH v3 0/9] Make HMP optional - follow-up
+Date: Mon, 07 Sep 2026 17:13:54 +0400
+Message-Id: <20260907-nohmp-v3-0-c11e7d0d3d7d@redhat.com>
 MIME-Version: 1.0
+X-B4-Tracking: v=1; b=H4sIAAAAAAAC/12N0QrCIBhGX2V4naH/zGFXe4/oYum/NNgcuqQYe
+ /d0EVSXB75zvoVEDA4jOVYLCZhcdH7MUO8qom03XpE6k5kAA8kUk3T0dpgoN6B6phuhhCF5OwX
+ s3WPrnM5vjvfLDfVc5LKwLs4+PLejxMvuv5k4ZdR0iEoKxbWo24DGdvNe+4GUaIJvrflokDVp1
+ AGMakAD/9HWdX0BpT34BuQAAAA=
+X-Change-ID: 20260906-nohmp-1d29f0c7494d
+To: qemu-devel@nongnu.org
+Cc: John Snow <jsnow@redhat.com>, "Denis V. Lunev" <den@openvz.org>, 
+ Fabiano Rosas <farosas@suse.de>, Laurent Vivier <lvivier@redhat.com>, 
+ Paolo Bonzini <pbonzini@redhat.com>, qemu-block@nongnu.org, 
+ Peter Maydell <peter.maydell@linaro.org>, 
+ Thomas Huth <th.huth+qemu@posteo.eu>, 
+ =?utf-8?q?Philippe_Mathieu-Daud=C3=A9?= <philmd@oss.qualcomm.com>, 
+ Aurelien Jarno <aurelien@aurel32.net>, qemu-arm@nongnu.org, 
+ Halil Pasic <pasic@linux.ibm.com>, 
+ Christian Borntraeger <borntraeger@linux.ibm.com>, 
+ Eric Farman <farman@linux.ibm.com>, Matthew Rosato <mjrosato@linux.ibm.com>, 
+ Cornelia Huck <cohuck@redhat.com>, qemu-s390x@nongnu.org, 
+ =?utf-8?q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>, 
+ Glenn Miles <milesg@linux.ibm.com>, qemu-ppc@nongnu.org, 
+ =?utf-8?q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>
+X-Developer-Signature: v=1; a=openpgp-sha256; l=1993;
+ i=marcandre.lureau@redhat.com; h=from:subject:message-id;
+ bh=WEzYvatU2N8NMElQ7Udw9S2oIapumh9HHEFxFtBikXQ=;
+ b=owEBbQKS/ZANAwAKAdro4Ql1lpzlAcsmYgBqnriXzjGwTtQ4i8PsCNvVzwDgO7+vtTlAW6h9b
+ B+934YOguWJAjMEAAEKAB0WIQSHqb2TP4fGBtJ29i3a6OEJdZac5QUCap64lwAKCRDa6OEJdZac
+ 5fSxD/9+09UeSBRJ+Rk8n6M26GKug3j6g7TEaAQJhqzF3kn+WkSfxgahlFhHU5FI3uLdYe6Nquz
+ WcQaFoZc0bMhLXnh+paPnz/HvPJJJwXircY9xsdlp2JhcugkQMqzNK46u4oPu2Dd8vS+v9cgYvy
+ TZHh+pQ55mI3/drWMQhm6ay3a7380MZIKfyrqBO+RV2iPkXr5fciEQDfaf3HAWmCAZ2qTKUWEou
+ QFXor14t/yL/LsHNbIXmJsOOlJZt7OXZLLIVM0jkwGurLZjbAy1NnEs/BIP2JK1JRPpz4iMcmmW
+ FMG6PrsiZ9e79pvLI3bW5Fhqujx2IxI41jZetTRdswisVtmOnQIdTo4cbxB8n8A6nKTwOiSWjWu
+ fbYAftEWnWgB0nfD+zh5m1dGPswNuWh4KdqA8yrmFZ65DHuGgsnGlQhUAg1cJNNN6wIyzjR7X6E
+ 6NAiNukT8nMUmaNIMtLk+YMeVcarf1LyosBO3blBzdhZqWPahQCiW6y/YO/ByFRpRF719eO3CLj
+ lTnRkbVci/BgPEqf4K9TiSrxHRw0ySmLAnQn4ME17//ulH5i53IZbrO0KYJg742lhrGa7vcW2+5
+ dGme23I9mP2BR/aGLdxNPUKYpXmsIUUvo6vzUvpeUg4+D5WHTYs1II5aGng1nf6OQBk3+ROhgmd
+ ZQjU5l5P+JlzbZQ==
+X-Developer-Key: i=marcandre.lureau@redhat.com; a=openpgp;
+ fpr=87A9BD933F87C606D276F62DDAE8E10975969CE5
+X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.93
+X-Mimecast-MFC-PROC-ID: x3RCEtHhyVGc4c7vmBJa9YrD5FXl58yKyFLZqmsxAsg_1788786845
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::32b;
- envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x32b.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+Received-SPF: pass client-ip=170.10.133.124;
+ envelope-from=marcandre.lureau@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: 12
+X-Spam_score: 1.2
+X-Spam_bar: +
+X-Spam_report: (1.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ RCVD_IN_SBL_CSS=3.335, SPF_HELO_PASS=-0.001,
+ SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -103,82 +120,53 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Some banked AArch32 cpregs set up a resetfn of arm_cp_reset_ignore.
-This is presumably in an expectation that some other AArch64
-register will handle resetting the underlying state. However
-this isn't true for some of them:
+Hi,
 
- * TPIDRURO's S bank is in cp15.tpidruro_s and this isn't shared
-   with any AArch64 register
- * TPIDRURW's S bank similarly is in cp15.tpidrurw_s, not shared
-   with any AArch64 register
+Fix the issues that Peter reported while merging "[GIT PULL 00/50] Make
+HMP optional".
 
-Remove the use of arm_cp_reset_ignore here; this means that the state
-for the NS versions of these registers will be reset twice, but that
-is fine because it will always be to the same value (and the
-cp_reg_check_reset() code will assert if we introduce a bug where the
-AArch64 and AArch32 regs disagree about the reset value).
-
-For the MAIR0 and MAIR1 banked registers, doing nothing on reset is
-OK because they are backed by state that is always covered by the
-MAIR_EL1 and MAIR_EL3 AArch64 registers that will always be present
-if the AArch32 registers are.  But it's not consistent with how we
-handle all the other banked regs, so drop it here too.  Again, the
-cp_reg_check_reset() checks will catch any mismatches in what the
-reset value should be.
-
-The lack of reset-to-zero for the S banked versions of TPIDRURO and
-TPIDRURW is very unlikely to have had any guest visible consquences,
-because these registers are architecturally UNKNOWN at reset and so
-guest code should be initializing them itself regardless.
-
-Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+Signed-off-by: Marc-André Lureau <marcandre.lureau@redhat.com>
 ---
- target/arm/helper.c | 12 ++++--------
- 1 file changed, 4 insertions(+), 8 deletions(-)
+Changes in v3:
+- back to skipTestIfNoHMP()
+- handle QMP screendump CommandNotFound, skip test
+- Link to v2: https://lore.kernel.org/qemu-devel/20260907-nohmp-v2-0-6d952d972c21@redhat.com
 
-diff --git a/target/arm/helper.c b/target/arm/helper.c
-index 1b024adc703..f8185b201be 100644
---- a/target/arm/helper.c
-+++ b/target/arm/helper.c
-@@ -1072,14 +1072,12 @@ static const ARMCPRegInfo v7_cp_reginfo[] = {
-       .cp = 15, .opc1 = 0, .crn = 10, .crm = 2, .opc2 = 0,
-       .access = PL1_RW, .accessfn = access_tvm_trvm,
-       .bank_fieldoffsets = { offsetof(CPUARMState, cp15.mair0_s),
--                             offsetof(CPUARMState, cp15.mair0_ns) },
--      .resetfn = arm_cp_reset_ignore },
-+                             offsetof(CPUARMState, cp15.mair0_ns) }, },
-     { .name = "MAIR1", .state = ARM_CP_STATE_AA32,
-       .cp = 15, .opc1 = 0, .crn = 10, .crm = 2, .opc2 = 1,
-       .access = PL1_RW, .accessfn = access_tvm_trvm,
-       .bank_fieldoffsets = { offsetof(CPUARMState, cp15.mair1_s),
--                             offsetof(CPUARMState, cp15.mair1_ns) },
--      .resetfn = arm_cp_reset_ignore },
-+                             offsetof(CPUARMState, cp15.mair1_ns) }, },
-     { .name = "ISR_EL1", .state = ARM_CP_STATE_BOTH,
-       .opc0 = 3, .opc1 = 0, .crn = 12, .crm = 1, .opc2 = 0,
-       .fgt = FGT_ISR_EL1,
-@@ -1136,8 +1134,7 @@ static const ARMCPRegInfo v6k_cp_reginfo[] = {
-       .access = PL0_RW,
-       .fgt = FGT_TPIDR_EL0,
-       .bank_fieldoffsets = { offsetoflow32(CPUARMState, cp15.tpidrurw_s),
--                             offsetoflow32(CPUARMState, cp15.tpidrurw_ns) },
--      .resetfn = arm_cp_reset_ignore },
-+                             offsetoflow32(CPUARMState, cp15.tpidrurw_ns) }, },
-     { .name = "TPIDRRO_EL0", .state = ARM_CP_STATE_AA64,
-       .opc0 = 3, .opc1 = 3, .opc2 = 3, .crn = 13, .crm = 0,
-       .access = PL0_R | PL1_W,
-@@ -1148,8 +1145,7 @@ static const ARMCPRegInfo v6k_cp_reginfo[] = {
-       .access = PL0_R | PL1_W,
-       .fgt = FGT_TPIDRRO_EL0,
-       .bank_fieldoffsets = { offsetoflow32(CPUARMState, cp15.tpidruro_s),
--                             offsetoflow32(CPUARMState, cp15.tpidruro_ns) },
--      .resetfn = arm_cp_reset_ignore },
-+                             offsetoflow32(CPUARMState, cp15.tpidruro_ns) }, },
-     { .name = "TPIDR_EL1", .state = ARM_CP_STATE_AA64,
-       .opc0 = 3, .opc1 = 0, .opc2 = 4, .crn = 13, .crm = 0,
-       .access = PL1_RW,
--- 
-2.43.0
+Changes in v2:
+- replaced skipTestIfNoHMP() with more versatile @skipUnlessConfig()
+- rebased on staging, added r-b tags
+- Link to v1: https://lore.kernel.org/qemu-devel/20260906-nohmp-v1-0-daee96491c43@redhat.com
+
+---
+Marc-André Lureau (9):
+      tests/functional: replace HMP with QMP
+      tests/functional: add skipTestIfNoHMP() helper
+      tests/functional: skip some tests that require HMP
+      tests/functional/s390x: use QMP for balloon
+      tests/ahci-test: replace HMP usage with QMP
+      tests/qtest: add qtest_qmp_job_wait()
+      tests/ide-test: convert to QMP
+      tests/drive_del-test: compile out HMP-dependent tests when !CONFIG_HMP
+      qtest: compile out HMP helper when !CONFIG_HMP
+
+ tests/functional/arm/test_integratorcp.py | 13 +++++----
+ tests/functional/m68k/test_nextcube.py    | 12 +++++---
+ tests/functional/mips64el/test_malta.py   | 13 +++++----
+ tests/functional/ppc/test_ppe42.py        |  1 +
+ tests/functional/qemu_test/testcase.py    |  6 ++++
+ tests/functional/s390x/test_ccw_virtio.py |  4 +--
+ tests/qtest/ahci-test.c                   |  5 ++--
+ tests/qtest/drive_del-test.c              | 47 +++++++++++++++----------------
+ tests/qtest/ide-test.c                    | 37 ++++++++++++++++++------
+ tests/qtest/libqtest.c                    | 39 +++++++++++++++++++++++++
+ tests/qtest/libqtest.h                    | 13 +++++++++
+ 11 files changed, 137 insertions(+), 53 deletions(-)
+---
+base-commit: cacd3462963a0a4f5bab4263ce79c2aa4b32692d
+change-id: 20260906-nohmp-1d29f0c7494d
+
+Best regards,
+--  
+Marc-André Lureau <marcandre.lureau@redhat.com>
 
 

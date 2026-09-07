@@ -4,46 +4,46 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8DC44C79F9E
-	for <qemu-arm@archiver.kernel.org>; Mon,  7 Sep 2026 05:25:16 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B1F0BC79F89
+	for <qemu-arm@archiver.kernel.org>; Mon,  7 Sep 2026 05:25:20 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1x3Rqx-000523-UD; Mon, 07 Sep 2026 01:25:11 -0400
+	id 1x3RqT-0004sg-0t; Mon, 07 Sep 2026 01:24:41 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <gilles.grimaud@univ-lille.fr>)
- id 1x3Rqv-00050h-3n; Mon, 07 Sep 2026 01:25:09 -0400
+ id 1x3RqR-0004rz-4q; Mon, 07 Sep 2026 01:24:39 -0400
 Received: from smtp-out-1.univ-lille.fr ([194.254.129.82])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <gilles.grimaud@univ-lille.fr>)
- id 1x3Rqp-0007v8-N1; Mon, 07 Sep 2026 01:25:08 -0400
+ id 1x3RqO-0007so-KH; Mon, 07 Sep 2026 01:24:38 -0400
 Received: from smtp01.univ-lille.fr (smtp01.univ-lille.fr [194.254.129.95])
- by smtp-out-1.univ-lille.fr (Postfix) with ESMTPS id 4hdb9C1B4pzBqZP;
- Mon,  7 Sep 2026 07:24:31 +0200 (CEST)
+ by smtp-out-1.univ-lille.fr (Postfix) with ESMTPS id 4hdb980VdfzBqYt;
+ Mon,  7 Sep 2026 07:24:28 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=univ-lille.fr;
- s=dkim; t=1788758671;
- bh=MPFeHhoMI5DnDlb7I6/nhzwoUUMQmSr75I1qAOi/Pfo=;
+ s=dkim; t=1788758668;
+ bh=80YDUYN4awspHUDV8we1+tPBmUwtQoRMSid+Hb/JMQ8=;
  h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=Hw528fP5kiwtz1W0MgiM90unoxeVFPPDraDbEgrTSKolmoKucZLXRyUtX8COsXVOe
- ROCXG5GfGs0DAJImlMDgAXZuyJjazIwPl2XKO5OUROAaqA7z81JqhTojyqFPxbtawO
- OCaCsuiGbUQq4k6ibN9vOxOeHmSUKigaTafgOkEDxaG9STURiBHMKHLhmOiNDpJYjS
- HCUjoU7ynKxk0CeWT5uDmW74FK6PEyLtaq61TIa0Cuc+Qfqo5bkEKZ6Cghucdis+Mo
- vtPft2LdLxu59NNgYJhtgAdgLNhrNkCBDGv5LH45Lb8319JEryKtOX9zjpO5OUo1W3
- 3K81VFJWqhBJw==
+ b=jrxUNr481y9UD8hYbguK2zCmZ6bK+lvvA/dpI6RbJaKm1cFrIl+yeLNb55KiSO7DE
+ bLzrEQCats6EmYqxtFC5CyrpzxSqlw88fF7ebmiHTi9pMJUCjIQU0R9PprfUukkec4
+ NW9I/5nv6ftpynU3ccWPHWuHOlqi0Za/3zltMl3yeG6X7FsO6xRjnF6nX2yRGQ+7NW
+ mBgRuK8CP1aAXuYYMiANI6afkVWwr6jdWKgvqLCE6sSFPpyJZuoZ6rUAKWhydSRc5L
+ S+demcGPZbGd+ASLVeLJZwbMt3UPTP+aqYmpvqQ0qvZRPWgUrJi+TbPnuif/AvsnsY
+ Md5KiyoVnazaw==
 Received: from mac.home (lfbn-lil-1-243-101.w90-45.abo.wanadoo.fr
  [90.45.87.101]) (Authenticated sender: gilles.grimaud)
- by smtp01.univ-lille.fr (Postfix) with ESMTPSA id 4hdb9B6BgRz7xqf;
- Mon,  7 Sep 2026 07:24:30 +0200 (CEST)
+ by smtp01.univ-lille.fr (Postfix) with ESMTPSA id 4hdb975Bjpz7xqd;
+ Mon,  7 Sep 2026 07:24:27 +0200 (CEST)
 From: Gilles Grimaud <gilles.grimaud@univ-lille.fr>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org, alex.bennee@linaro.org, peter.maydell@linaro.org,
  Gilles Grimaud <gilles.grimaud@univ-lille.fr>,
- Paolo Bonzini <pbonzini@redhat.com>, Fabiano Rosas <farosas@suse.de>,
- Laurent Vivier <lvivier@redhat.com>
-Subject: [PATCH v3 27/36] hw/dma: add RP2040 DMA controller
-Date: Mon,  7 Sep 2026 07:24:15 +0200
-Message-ID: <20260907052426.24849-11-gilles.grimaud@univ-lille.fr>
+ Fabiano Rosas <farosas@suse.de>, Laurent Vivier <lvivier@redhat.com>,
+ Paolo Bonzini <pbonzini@redhat.com>
+Subject: [PATCH v3 19/36] hw/misc: add RP2040 IO_QSPI
+Date: Mon,  7 Sep 2026 07:24:07 +0200
+Message-ID: <20260907052426.24849-3-gilles.grimaud@univ-lille.fr>
 X-Mailer: git-send-email 2.55.0
 In-Reply-To: <20260907052426.24849-1-gilles.grimaud@univ-lille.fr>
 References: <20260906194438.93046-1-gilles.grimaud@univ-lille.fr>
@@ -74,920 +74,178 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Model the twelve RP2040 DMA channels, register aliases, interrupts,
-chaining, ring wrapping, aborts, sniff checksums and AHB error status. Pace
-transfers from DREQ inputs and the four virtual DMA timers.
-
-Wire the controller to the SoC memory, IRQ lines, XIP controller and both
-UARTs. Add focused qtests for XIP pacing, rings, aborts, sniffing, errors,
-timer requests and re-entrant control blocks.
-
-The model provides deterministic functional behavior rather than bus-cycle
-accurate timing.
+Model the six QSPI GPIO control pairs and the PROC0, PROC1 and dormant-wake
+interrupt registers, including atomic aliases and documented masks. Wire
+the register block into the RP2040 SoC and add focused qtests for reset,
+atomic control updates and forced interrupt status. The QSPI chip-select
+connection is deferred to the XIP controller patch.
 
 Signed-off-by: gilles grimaud <gilles.grimaud@univ-lille.fr>
 ---
- hw/arm/rp2040.c               |   37 +-
- hw/dma/Kconfig                |    2 +-
- hw/dma/meson.build            |    1 +
- hw/dma/rp2040_dma.c           | 1008 +++++++++++++++++++++++++++++++++
- include/hw/arm/rp2040.h       |    2 +
- include/hw/dma/rp2040_dma.h   |   77 +++
- tests/qtest/meson.build       |    1 +
- tests/qtest/rp2040-dma-test.c |  378 +++++++++++++
- 8 files changed, 1504 insertions(+), 2 deletions(-)
- create mode 100644 hw/dma/rp2040_dma.c
- create mode 100644 include/hw/dma/rp2040_dma.h
- create mode 100644 tests/qtest/rp2040-dma-test.c
+ hw/arm/rp2040.c                  |   8 +-
+ hw/misc/meson.build              |   1 +
+ hw/misc/rp2040_ioqspi.c          | 243 +++++++++++++++++++++++++++++++
+ include/hw/arm/rp2040.h          |   2 +
+ include/hw/misc/rp2040_ioqspi.h  |  33 +++++
+ tests/qtest/meson.build          |   1 +
+ tests/qtest/rp2040-ioqspi-test.c |  81 +++++++++++
+ 7 files changed, 368 insertions(+), 1 deletion(-)
+ create mode 100644 hw/misc/rp2040_ioqspi.c
+ create mode 100644 include/hw/misc/rp2040_ioqspi.h
+ create mode 100644 tests/qtest/rp2040-ioqspi-test.c
 
 diff --git a/hw/arm/rp2040.c b/hw/arm/rp2040.c
-index 6b3e31e551..c5a15af197 100644
+index a52738b3e2..aa1407b4dd 100644
 --- a/hw/arm/rp2040.c
 +++ b/hw/arm/rp2040.c
-@@ -24,6 +24,8 @@
- #define RP2040_UART0_IRQ  20
- #define RP2040_UART1_BASE 0x40038000
- #define RP2040_UART1_IRQ  21
-+#define RP2040_DMA_IRQ_0  11
-+#define RP2040_DMA_IRQ_1  12
- #define RP2040_IO_IRQ_BANK0 13
- #define RP2040_SIO_IRQ_PROC0 15
- #define RP2040_SIO_IRQ_PROC1 16
-@@ -148,7 +150,6 @@ static const struct {
-     { "rp2040.adc",      0x4004c000, 0x4000 },
-     { "rp2040.pwm",      0x40050000, 0x4000 },
-     { "rp2040.rtc",      0x4005c000, 0x4000 },
--    { "rp2040.dma",      0x50000000, 0x1000 },
-     { "rp2040.usbctrl_dpram", 0x50100000, 0x10000 },
-     { "rp2040.usbctrl_regs",  0x50110000, 0x10000 },
-     { "rp2040.pio0",     0x50200000, 0x10000 },
-@@ -327,6 +328,7 @@ static void rp2040_soc_init(Object *obj)
-     object_initialize_child(obj, "xip", &s->xip, TYPE_RP2040_XIP);
- 
+@@ -49,7 +49,6 @@ static const struct {
+     hwaddr base;
+     hwaddr size;
+ } rp2040_unimplemented[] = {
+-    { "rp2040.ioqspi",   0x40018000, 0x4000 },
+     { "rp2040.busctrl",  0x40030000, 0x4000 },
+     { "rp2040.uart0_aliases", 0x40035000, 0x3000 },
+     { "rp2040.uart1_aliases", 0x40039000, 0x3000 },
+@@ -132,6 +131,8 @@ static void rp2040_soc_init(Object *obj)
      object_initialize_child(obj, "clocks", &s->clocks, TYPE_RP2040_CLOCKS);
-+    object_initialize_child(obj, "dma", &s->dma, TYPE_RP2040_DMA);
      object_initialize_child(obj, "iobank0", &s->iobank0,
                              TYPE_RP2040_IOBANK0);
-     object_initialize_child(obj, "ioqspi", &s->ioqspi,
-@@ -458,6 +460,29 @@ static void rp2040_soc_realize(DeviceState *dev, Error **errp)
-                                 RP2040_XIP_NOCACHE_NOALLOC_BASE,
-                                 &s->xip.xip_nocache_noalloc);
++    object_initialize_child(obj, "ioqspi", &s->ioqspi,
++                            TYPE_RP2040_IOQSPI);
+     object_initialize_child(obj, "pads-bank0", &s->pads_bank0,
+                             TYPE_RP2040_PADS_BANK0);
+     object_initialize_child(obj, "pads-qspi", &s->pads_qspi,
+@@ -329,6 +330,11 @@ static void rp2040_soc_realize(DeviceState *dev, Error **errp)
+     sysbus_connect_irq(SYS_BUS_DEVICE(&s->iobank0), 0,
+                        s->irq[RP2040_IO_IRQ_BANK0]);
  
-+    object_property_set_link(OBJECT(&s->dma), "memory",
-+                             OBJECT(s->board_memory), &err);
-+    if (err) {
-+        error_propagate(errp, err);
++    if (!sysbus_realize(SYS_BUS_DEVICE(&s->ioqspi), errp)) {
 +        return;
 +    }
-+    if (!sysbus_realize(SYS_BUS_DEVICE(&s->dma), errp)) {
-+        return;
-+    }
-+    sysbus_mmio_map(SYS_BUS_DEVICE(&s->dma), 0, RP2040_DMA_BASE);
-+    sysbus_connect_irq(SYS_BUS_DEVICE(&s->dma), 0,
-+                       s->irq[RP2040_DMA_IRQ_0]);
-+    sysbus_connect_irq(SYS_BUS_DEVICE(&s->dma), 1,
-+                       s->irq[RP2040_DMA_IRQ_1]);
-+    qdev_connect_gpio_out_named(DEVICE(&s->xip), "dreq-rx", 0,
-+                                qdev_get_gpio_in_named(DEVICE(&s->dma),
-+                                                       "dreq",
-+                                                       RP2040_DREQ_XIP_SSIRX));
-+    qdev_connect_gpio_out_named(DEVICE(&s->xip), "dreq-stream", 0,
-+                                qdev_get_gpio_in_named(DEVICE(&s->dma),
-+                                                       "dreq",
-+                                                       RP2040_DREQ_XIP_STREAM));
++    sysbus_mmio_map(SYS_BUS_DEVICE(&s->ioqspi), 0, RP2040_IOQSPI_BASE);
 +
-     for (i = 0; i < ARRAY_SIZE(rp2040_unimplemented); i++) {
-         create_unimplemented_device(rp2040_unimplemented[i].name,
-                                     rp2040_unimplemented[i].base,
-@@ -642,6 +667,16 @@ static void rp2040_soc_realize(DeviceState *dev, Error **errp)
-                         uart_base[i] + 0x1000);
-         sysbus_connect_irq(SYS_BUS_DEVICE(&s->uart[i]), 0,
-                            s->irq[uart_irq[i]]);
-+        qdev_connect_gpio_out_named(
-+            DEVICE(&s->uart[i]), "dreq-tx", 0,
-+            qdev_get_gpio_in_named(DEVICE(&s->dma), "dreq",
-+                                   i ? RP2040_DREQ_UART1_TX :
-+                                       RP2040_DREQ_UART0_TX));
-+        qdev_connect_gpio_out_named(
-+            DEVICE(&s->uart[i]), "dreq-rx", 0,
-+            qdev_get_gpio_in_named(DEVICE(&s->dma), "dreq",
-+                                   i ? RP2040_DREQ_UART1_RX :
-+                                       RP2040_DREQ_UART0_RX));
+     if (!sysbus_realize(SYS_BUS_DEVICE(&s->rosc), errp)) {
+         return;
      }
-     rp2040_update_nmi(s);
-     rp2040_update_uart_pins(s);
-diff --git a/hw/dma/Kconfig b/hw/dma/Kconfig
-index 0a23e7d7b8..61d33bdd99 100644
---- a/hw/dma/Kconfig
-+++ b/hw/dma/Kconfig
-@@ -32,4 +32,4 @@ config XLNX_CSU_DMA
-     select REGISTER
- 
- config K230_GSDMA
--    bool
-\ No newline at end of file
-+    bool
-diff --git a/hw/dma/meson.build b/hw/dma/meson.build
-index 45db5e7357..cb0748d82f 100644
---- a/hw/dma/meson.build
-+++ b/hw/dma/meson.build
-@@ -10,6 +10,7 @@ system_ss.add(when: 'CONFIG_XLNX_ZYNQMP_ARM', if_true: files('xlnx_dpdma.c'))
- system_ss.add(when: 'CONFIG_XLNX_ZDMA', if_true: files('xlnx-zdma.c'))
- system_ss.add(when: 'CONFIG_OMAP', if_true: files('omap_dma.c', 'soc_dma.c'))
- system_ss.add(when: 'CONFIG_RASPI', if_true: files('bcm2835_dma.c'))
-+system_ss.add(when: 'CONFIG_RP2040', if_true: files('rp2040_dma.c'))
- system_ss.add(when: 'CONFIG_SIFIVE_PDMA', if_true: files('sifive_pdma.c'))
- system_ss.add(when: 'CONFIG_XLNX_CSU_DMA', if_true: files('xlnx_csu_dma.c'))
- system_ss.add(when: 'CONFIG_K230_GSDMA', if_true: files('k230_gsdma.c'))
-diff --git a/hw/dma/rp2040_dma.c b/hw/dma/rp2040_dma.c
+diff --git a/hw/misc/meson.build b/hw/misc/meson.build
+index 18a0afdc93..5534cba1a8 100644
+--- a/hw/misc/meson.build
++++ b/hw/misc/meson.build
+@@ -100,6 +100,7 @@ system_ss.add(when: 'CONFIG_RASPI', if_true: files(
+ ))
+ system_ss.add(when: 'CONFIG_RP2040', if_true: files('rp2040_clocks.c'))
+ system_ss.add(when: 'CONFIG_RP2040', if_true: files('rp2040_iobank0.c'))
++system_ss.add(when: 'CONFIG_RP2040', if_true: files('rp2040_ioqspi.c'))
+ system_ss.add(when: 'CONFIG_RP2040', if_true: files('rp2040_pads.c'))
+ system_ss.add(when: 'CONFIG_RP2040', if_true: files('rp2040_pll.c'))
+ system_ss.add(when: 'CONFIG_RP2040', if_true: files('rp2040_psm.c'))
+diff --git a/hw/misc/rp2040_ioqspi.c b/hw/misc/rp2040_ioqspi.c
 new file mode 100644
-index 0000000000..9d06fde235
+index 0000000000..f4d1a1f329
 --- /dev/null
-+++ b/hw/dma/rp2040_dma.c
-@@ -0,0 +1,1008 @@
++++ b/hw/misc/rp2040_ioqspi.c
+@@ -0,0 +1,243 @@
 +/*
-+ * RP2040 DMA emulation
++ * RP2040 QSPI IO bank emulation
 + *
 + * SPDX-License-Identifier: GPL-2.0-or-later
 + */
 +
 +#include "qemu/osdep.h"
-+#include "qapi/error.h"
-+#include "hw/core/irq.h"
-+#include "hw/core/qdev-properties.h"
-+#include "hw/dma/rp2040_dma.h"
 +#include "hw/misc/rp2040.h"
++#include "hw/misc/rp2040_ioqspi.h"
 +#include "migration/vmstate.h"
-+#include "qemu/bitops.h"
-+#include "qemu/host-utils.h"
 +#include "qemu/log.h"
-+#include "qemu/main-loop.h"
 +#include "qemu/module.h"
-+#include "qemu/timer.h"
 +
-+#define DMA_CH_SIZE              0x40
-+#define DMA_CH_READ_ADDR         0x00
-+#define DMA_CH_WRITE_ADDR        0x04
-+#define DMA_CH_TRANS_COUNT       0x08
-+#define DMA_CH_CTRL_TRIG         0x0c
-+#define DMA_CH_AL1_CTRL          0x10
-+#define DMA_CH_AL1_READ_ADDR     0x14
-+#define DMA_CH_AL1_WRITE_ADDR    0x18
-+#define DMA_CH_AL1_TRANS_COUNT   0x1c
-+#define DMA_CH_AL2_CTRL          0x20
-+#define DMA_CH_AL2_TRANS_COUNT   0x24
-+#define DMA_CH_AL2_READ_ADDR     0x28
-+#define DMA_CH_AL2_WRITE_ADDR    0x2c
-+#define DMA_CH_AL3_CTRL          0x30
-+#define DMA_CH_AL3_WRITE_ADDR    0x34
-+#define DMA_CH_AL3_TRANS_COUNT   0x38
-+#define DMA_CH_AL3_READ_ADDR     0x3c
++#define IOQSPI_INTR             0x30
++#define IOQSPI_PROC0_INTE       0x34
++#define IOQSPI_PROC0_INTF       0x38
++#define IOQSPI_PROC0_INTS       0x3c
++#define IOQSPI_PROC1_INTE       0x40
++#define IOQSPI_PROC1_INTF       0x44
++#define IOQSPI_PROC1_INTS       0x48
++#define IOQSPI_DORMANT_INTE     0x4c
++#define IOQSPI_DORMANT_INTF     0x50
++#define IOQSPI_DORMANT_INTS     0x54
 +
-+#define DMA_INTR                 0x400
-+#define DMA_INTE0                0x404
-+#define DMA_INTF0                0x408
-+#define DMA_INTS0                0x40c
-+#define DMA_INTE1                0x414
-+#define DMA_INTF1                0x418
-+#define DMA_INTS1                0x41c
-+#define DMA_TIMER0               0x420
-+#define DMA_MULTI_CHAN_TRIGGER   0x430
-+#define DMA_SNIFF_CTRL           0x434
-+#define DMA_SNIFF_DATA           0x438
-+#define DMA_FIFO_LEVELS          0x440
-+#define DMA_CHAN_ABORT           0x444
++#define IOQSPI_CTRL_RESET       0x1f
++#define IOQSPI_CTRL_RW_MASK     0x33333f
++#define IOQSPI_INTR_EDGE_MASK   0x00cccccc
++#define IOQSPI_IRQ_MASK         0x00ffffff
 +
-+#define DMA_CTRL_AHB_ERROR       BIT(31)
-+#define DMA_CTRL_READ_ERROR      BIT(30)
-+#define DMA_CTRL_WRITE_ERROR     BIT(29)
-+#define DMA_CTRL_BUSY            BIT(24)
-+#define DMA_CTRL_SNIFF_EN        BIT(23)
-+#define DMA_CTRL_BSWAP           BIT(22)
-+#define DMA_CTRL_IRQ_QUIET       BIT(21)
-+#define DMA_CTRL_TREQ_SEL_SHIFT  15
-+#define DMA_CTRL_TREQ_SEL_MASK   (0x3f << DMA_CTRL_TREQ_SEL_SHIFT)
-+#define DMA_CTRL_CHAIN_TO_SHIFT  11
-+#define DMA_CTRL_CHAIN_TO_MASK   (0xf << DMA_CTRL_CHAIN_TO_SHIFT)
-+#define DMA_CTRL_RING_SEL        BIT(10)
-+#define DMA_CTRL_RING_SIZE_SHIFT 6
-+#define DMA_CTRL_RING_SIZE_MASK  (0xf << 6)
-+#define DMA_CTRL_INCR_WRITE      BIT(5)
-+#define DMA_CTRL_INCR_READ       BIT(4)
-+#define DMA_CTRL_DATA_SIZE_SHIFT 2
-+#define DMA_CTRL_DATA_SIZE_MASK  (0x3 << DMA_CTRL_DATA_SIZE_SHIFT)
-+#define DMA_CTRL_EN              BIT(0)
-+#define DMA_CTRL_ERROR_MASK      (DMA_CTRL_AHB_ERROR | \
-+                                  DMA_CTRL_READ_ERROR | \
-+                                  DMA_CTRL_WRITE_ERROR)
-+
-+#define DMA_SNIFF_CTRL_OUT_INV   BIT(11)
-+#define DMA_SNIFF_CTRL_OUT_REV   BIT(10)
-+#define DMA_SNIFF_CTRL_BSWAP     BIT(9)
-+#define DMA_SNIFF_CTRL_CALC_SHIFT 5
-+#define DMA_SNIFF_CTRL_CALC_MASK  (0xf << DMA_SNIFF_CTRL_CALC_SHIFT)
-+#define DMA_SNIFF_CTRL_DMACH_SHIFT 1
-+#define DMA_SNIFF_CTRL_DMACH_MASK (0xf << DMA_SNIFF_CTRL_DMACH_SHIFT)
-+#define DMA_SNIFF_CTRL_EN        BIT(0)
-+#define DMA_SNIFF_CTRL_MASK      0xfff
-+
-+#define DMA_SNIFF_CALC_CRC32     0x0
-+#define DMA_SNIFF_CALC_CRC32R    0x1
-+#define DMA_SNIFF_CALC_CRC16     0x2
-+#define DMA_SNIFF_CALC_CRC16R    0x3
-+#define DMA_SNIFF_CALC_EVEN      0xe
-+#define DMA_SNIFF_CALC_SUM       0xf
-+
-+#define DMA_CTRL_WRITABLE_MASK   (DMA_CTRL_SNIFF_EN | DMA_CTRL_BSWAP | \
-+                                  DMA_CTRL_IRQ_QUIET | \
-+                                  DMA_CTRL_TREQ_SEL_MASK | \
-+                                  DMA_CTRL_CHAIN_TO_MASK | \
-+                                  DMA_CTRL_RING_SEL | \
-+                                  DMA_CTRL_RING_SIZE_MASK | \
-+                                  DMA_CTRL_INCR_WRITE | \
-+                                  DMA_CTRL_INCR_READ | \
-+                                  DMA_CTRL_DATA_SIZE_MASK | \
-+                                  BIT(1) | DMA_CTRL_EN)
-+#define DMA_CHANNEL_MASK         ((1u << RP2040_DMA_NUM_CHANNELS) - 1)
-+#define DMA_PACING_SYSCLK_HZ     125000000ULL
-+#define DMA_PACING_SYSCLK_NS     8ULL
-+
-+static uint32_t rp2040_dma_ints(RP2040DmaState *s, unsigned irq)
++static bool rp2040_ioqspi_ctrl_offset(hwaddr offset, unsigned *index)
 +{
-+    return ((s->intr & s->inte[irq]) | s->intf[irq]) & DMA_CHANNEL_MASK;
++    if (offset > 0x2c || (offset & 0x7) != 0x4) {
++        return false;
++    }
++
++    *index = offset / 8;
++    return *index < ARRAY_SIZE(((RP2040IoQspiState *)0)->ctrl);
 +}
 +
-+static void rp2040_dma_update_irq(RP2040DmaState *s)
++static bool rp2040_ioqspi_status_offset(hwaddr offset)
 +{
-+    int i;
-+
-+    for (i = 0; i < RP2040_DMA_NUM_IRQS; i++) {
-+        qemu_set_irq(s->irq[i], rp2040_dma_ints(s, i) != 0);
-+    }
++    return offset <= 0x28 && (offset & 0x7) == 0;
 +}
 +
-+static unsigned rp2040_dma_transfer_size(RP2040DmaChannel *ch)
++static uint32_t rp2040_ioqspi_ints(uint32_t intr, uint32_t inte,
++                                   uint32_t intf)
 +{
-+    switch ((ch->ctrl & DMA_CTRL_DATA_SIZE_MASK) >> DMA_CTRL_DATA_SIZE_SHIFT) {
-+    case 0:
-+        return 1;
-+    case 1:
-+        return 2;
-+    case 2:
-+        return 4;
-+    default:
-+        return 4;
-+    }
++    return (intr & inte) | intf;
 +}
 +
-+static void rp2040_dma_request_start(RP2040DmaState *s, unsigned index);
-+static void rp2040_dma_dreq(void *opaque, int n, int level);
-+static void rp2040_dma_dreq_pulse(RP2040DmaState *s, uint32_t dreq);
-+static void rp2040_dma_dreq_bh(void *opaque);
-+static bool rp2040_dma_dreq_has_busy_channel(RP2040DmaState *s, uint32_t dreq,
-+                                             unsigned except);
-+static void rp2040_dma_write_reg(RP2040DmaState *s, hwaddr addr,
-+                                 uint64_t value64, unsigned size);
-+
-+static uint32_t rp2040_dma_treq(RP2040DmaChannel *ch)
++static uint64_t rp2040_ioqspi_read(void *opaque, hwaddr addr, unsigned size)
 +{
-+    return (ch->ctrl & DMA_CTRL_TREQ_SEL_MASK) >> DMA_CTRL_TREQ_SEL_SHIFT;
-+}
-+
-+static bool rp2040_dma_treq_is_ready_sink(uint32_t treq)
-+{
-+    /*
-+     * The current XIP/SSI TX model does not have a finite TX FIFO: writes to
-+     * its data register are accepted immediately.
-+     */
-+    return treq == RP2040_DREQ_XIP_SSITX;
-+}
-+
-+static bool rp2040_dma_treq_is_connected_level(uint32_t treq)
-+{
-+    return treq == RP2040_DREQ_UART0_TX || treq == RP2040_DREQ_UART0_RX ||
-+           treq == RP2040_DREQ_UART1_TX || treq == RP2040_DREQ_UART1_RX ||
-+           treq == RP2040_DREQ_XIP_STREAM;
-+}
-+
-+static bool rp2040_dma_treq_is_timer(uint32_t treq)
-+{
-+    return treq >= RP2040_DREQ_DMA_TIMER0 &&
-+           treq <= RP2040_DREQ_DMA_TIMER3;
-+}
-+
-+static uint64_t rp2040_dma_timer_period_ns(uint32_t value)
-+{
-+    uint32_t x = value >> 16;
-+    uint32_t y = value & 0xffff;
-+    uint64_t period;
-+
-+    if (x == 0 || y == 0) {
-+        return 0;
-+    }
-+
-+    /*
-+     * The RP2040 fractional timer emits TREQs at (X/Y) * sys_clk, capped
-+     * at one TREQ per sys_clk. Use the Pico's nominal 125 MHz system clock
-+     * as the virtual pacing source.
-+     */
-+    if (x >= y) {
-+        return DMA_PACING_SYSCLK_NS;
-+    }
-+
-+    period = DIV_ROUND_UP((uint64_t)y * NANOSECONDS_PER_SECOND,
-+                          (uint64_t)x * DMA_PACING_SYSCLK_HZ);
-+    return MAX(period, 1);
-+}
-+
-+static void rp2040_dma_timer_update(RP2040DmaState *s, unsigned index)
-+{
-+    RP2040DmaPacingTimer *pt = &s->pacing_timer[index];
-+
-+    pt->period_ns = rp2040_dma_timer_period_ns(s->timer[index]);
-+    if (pt->period_ns == 0) {
-+        timer_del(pt->timer);
-+        return;
-+    }
-+
-+    timer_mod(pt->timer, qemu_clock_get_ns(QEMU_CLOCK_VIRTUAL) +
-+              pt->period_ns);
-+}
-+
-+static void rp2040_dma_timer_cb(void *opaque)
-+{
-+    RP2040DmaPacingTimer *pt = opaque;
-+    RP2040DmaState *s = pt->dma;
-+    uint32_t dreq = RP2040_DREQ_DMA_TIMER0 + pt->index;
-+
-+    if (rp2040_dma_dreq_has_busy_channel(s, dreq, RP2040_DMA_NUM_CHANNELS)) {
-+        rp2040_dma_dreq_pulse(s, dreq);
-+    }
-+    if (pt->period_ns != 0) {
-+        timer_mod(pt->timer, qemu_clock_get_ns(QEMU_CLOCK_VIRTUAL) +
-+                  pt->period_ns);
-+    }
-+}
-+
-+static uint32_t rp2040_dma_next_addr(RP2040DmaChannel *ch, uint32_t addr,
-+                                     unsigned width, bool write)
-+{
-+    uint32_t ring_size;
-+    bool ring_write;
-+    uint32_t mask;
-+
-+    if (!(ch->ctrl & (write ? DMA_CTRL_INCR_WRITE : DMA_CTRL_INCR_READ))) {
-+        return addr;
-+    }
-+
-+    ring_size = (ch->ctrl & DMA_CTRL_RING_SIZE_MASK) >>
-+                DMA_CTRL_RING_SIZE_SHIFT;
-+    ring_write = ch->ctrl & DMA_CTRL_RING_SEL;
-+    if (ring_size == 0 || ring_write != write) {
-+        return addr + width;
-+    }
-+
-+    mask = (1u << ring_size) - 1;
-+    return (addr & ~mask) | ((addr + width) & mask);
-+}
-+
-+static uint32_t rp2040_dma_sniff_word(const uint8_t *buf, unsigned width)
-+{
-+    uint32_t value = buf[0];
-+
-+    if (width >= 2) {
-+        value |= (uint32_t)buf[1] << 8;
-+    }
-+    if (width >= 4) {
-+        value |= (uint32_t)buf[2] << 16;
-+        value |= (uint32_t)buf[3] << 24;
-+    }
-+    return value;
-+}
-+
-+static void rp2040_dma_sniff_bswap(uint8_t *buf, unsigned width)
-+{
-+    if (width == 2) {
-+        uint8_t t = buf[0];
-+        buf[0] = buf[1];
-+        buf[1] = t;
-+    } else if (width == 4) {
-+        uint8_t t = buf[0];
-+        buf[0] = buf[3];
-+        buf[3] = t;
-+        t = buf[1];
-+        buf[1] = buf[2];
-+        buf[2] = t;
-+    }
-+}
-+
-+static uint32_t rp2040_dma_sniff_crc32(uint32_t crc, const uint8_t *buf,
-+                                       unsigned width, bool reverse)
-+{
-+    int i;
-+    int bit;
-+
-+    for (i = 0; i < width; i++) {
-+        uint8_t byte = reverse ? revbit8(buf[i]) : buf[i];
-+
-+        crc ^= (uint32_t)byte << 24;
-+        for (bit = 0; bit < 8; bit++) {
-+            crc = (crc & BIT(31)) ? (crc << 1) ^ 0x04c11db7 : crc << 1;
-+        }
-+    }
-+    return crc;
-+}
-+
-+static uint32_t rp2040_dma_sniff_crc16(uint32_t crc, const uint8_t *buf,
-+                                       unsigned width, bool reverse)
-+{
-+    uint16_t crc16 = crc;
-+    int i;
-+    int bit;
-+
-+    for (i = 0; i < width; i++) {
-+        uint8_t byte = reverse ? revbit8(buf[i]) : buf[i];
-+
-+        crc16 ^= (uint16_t)byte << 8;
-+        for (bit = 0; bit < 8; bit++) {
-+            crc16 = (crc16 & BIT(15)) ? (crc16 << 1) ^ 0x1021 : crc16 << 1;
-+        }
-+    }
-+    return (crc & 0xffff0000) | crc16;
-+}
-+
-+static void rp2040_dma_sniff_update(RP2040DmaState *s, unsigned index,
-+                                    const uint8_t *buf, unsigned width)
-+{
-+    RP2040DmaChannel *ch = &s->chan[index];
-+    uint8_t sniff_buf[4] = { 0 };
-+    uint32_t channel;
-+    uint32_t calc;
-+    uint32_t value;
-+
-+    if (!(s->sniff_ctrl & DMA_SNIFF_CTRL_EN) ||
-+        !(ch->ctrl & DMA_CTRL_SNIFF_EN)) {
-+        return;
-+    }
-+
-+    channel = (s->sniff_ctrl & DMA_SNIFF_CTRL_DMACH_MASK) >>
-+              DMA_SNIFF_CTRL_DMACH_SHIFT;
-+    if (channel != index) {
-+        return;
-+    }
-+
-+    memcpy(sniff_buf, buf, width);
-+    if (s->sniff_ctrl & DMA_SNIFF_CTRL_BSWAP) {
-+        rp2040_dma_sniff_bswap(sniff_buf, width);
-+    }
-+
-+    calc = (s->sniff_ctrl & DMA_SNIFF_CTRL_CALC_MASK) >>
-+           DMA_SNIFF_CTRL_CALC_SHIFT;
-+    switch (calc) {
-+    case DMA_SNIFF_CALC_CRC32:
-+        s->sniff_data = rp2040_dma_sniff_crc32(s->sniff_data, sniff_buf,
-+                                               width, false);
-+        break;
-+    case DMA_SNIFF_CALC_CRC32R:
-+        s->sniff_data = rp2040_dma_sniff_crc32(s->sniff_data, sniff_buf,
-+                                               width, true);
-+        break;
-+    case DMA_SNIFF_CALC_CRC16:
-+        s->sniff_data = rp2040_dma_sniff_crc16(s->sniff_data, sniff_buf,
-+                                               width, false);
-+        break;
-+    case DMA_SNIFF_CALC_CRC16R:
-+        s->sniff_data = rp2040_dma_sniff_crc16(s->sniff_data, sniff_buf,
-+                                               width, true);
-+        break;
-+    case DMA_SNIFF_CALC_EVEN:
-+        value = rp2040_dma_sniff_word(sniff_buf, width);
-+        s->sniff_data = (s->sniff_data ^ ctpop32(value)) & 1;
-+        break;
-+    case DMA_SNIFF_CALC_SUM:
-+        s->sniff_data += rp2040_dma_sniff_word(sniff_buf, width);
-+        break;
-+    default:
-+        break;
-+    }
-+}
-+
-+static uint32_t rp2040_dma_sniff_read_data(RP2040DmaState *s)
-+{
-+    uint32_t value = s->sniff_data;
-+
-+    if (s->sniff_ctrl & DMA_SNIFF_CTRL_OUT_REV) {
-+        value = revbit32(value);
-+    }
-+    if (s->sniff_ctrl & DMA_SNIFF_CTRL_OUT_INV) {
-+        value = ~value;
-+    }
-+    return value;
-+}
-+
-+static void rp2040_dma_finish_channel(RP2040DmaState *s, unsigned index)
-+{
-+    RP2040DmaChannel *ch = &s->chan[index];
-+    uint32_t chain_to;
-+
-+    ch->ctrl &= ~DMA_CTRL_BUSY;
-+    if (!(ch->ctrl & DMA_CTRL_IRQ_QUIET)) {
-+        s->intr |= BIT(index);
-+        rp2040_dma_update_irq(s);
-+    }
-+
-+    chain_to = (ch->ctrl & DMA_CTRL_CHAIN_TO_MASK) >> DMA_CTRL_CHAIN_TO_SHIFT;
-+    if (!(ch->ctrl & DMA_CTRL_ERROR_MASK) &&
-+        chain_to < RP2040_DMA_NUM_CHANNELS && chain_to != index) {
-+        rp2040_dma_request_start(s, chain_to);
-+    }
-+}
-+
-+static void rp2040_dma_run_beats(RP2040DmaState *s, unsigned index,
-+                                 uint32_t beats)
-+{
-+    RP2040DmaChannel *ch = &s->chan[index];
-+    uint32_t count;
-+    unsigned width;
-+
-+    if (!(ch->ctrl & DMA_CTRL_EN) || ch->trans_count == 0) {
-+        return;
-+    }
-+
-+    width = rp2040_dma_transfer_size(ch);
-+    count = MIN(ch->trans_count, beats);
-+
-+    while (count--) {
-+        uint8_t buf[4] = { 0 };
-+        MemTxResult result;
-+
-+        result = address_space_rw(&s->dma_as, ch->read_addr,
-+                                  MEMTXATTRS_UNSPECIFIED, buf, width, false);
-+        if (result != MEMTX_OK) {
-+            ch->ctrl |= DMA_CTRL_READ_ERROR | DMA_CTRL_AHB_ERROR;
-+            break;
-+        }
-+
-+        if (ch->ctrl & DMA_CTRL_BSWAP) {
-+            if (width == 2) {
-+                uint8_t t = buf[0];
-+                buf[0] = buf[1];
-+                buf[1] = t;
-+            } else if (width == 4) {
-+                uint8_t t = buf[0];
-+                buf[0] = buf[3];
-+                buf[3] = t;
-+                t = buf[1];
-+                buf[1] = buf[2];
-+                buf[2] = t;
-+            }
-+        }
-+        rp2040_dma_sniff_update(s, index, buf, width);
-+
-+        if (ch->write_addr >= RP2040_DMA_BASE &&
-+            ch->write_addr < RP2040_DMA_BASE + RP2040_DMA_SIZE) {
-+            if (width == 4) {
-+                rp2040_dma_write_reg(s, ch->write_addr - RP2040_DMA_BASE,
-+                                     ldl_le_p(buf), width);
-+                result = MEMTX_OK;
-+            } else {
-+                result = MEMTX_ERROR;
-+            }
-+        } else {
-+            result = address_space_rw(&s->dma_as, ch->write_addr,
-+                                      MEMTXATTRS_UNSPECIFIED, buf, width,
-+                                      true);
-+        }
-+        if (result != MEMTX_OK) {
-+            ch->ctrl |= DMA_CTRL_WRITE_ERROR | DMA_CTRL_AHB_ERROR;
-+            break;
-+        }
-+
-+        ch->trans_count--;
-+        ch->read_addr = rp2040_dma_next_addr(ch, ch->read_addr, width, false);
-+        ch->write_addr = rp2040_dma_next_addr(ch, ch->write_addr, width, true);
-+    }
-+
-+    if ((ch->ctrl & DMA_CTRL_ERROR_MASK) || ch->trans_count == 0) {
-+        rp2040_dma_finish_channel(s, index);
-+    }
-+}
-+
-+static void rp2040_dma_start_channel(RP2040DmaState *s, unsigned index)
-+{
-+    RP2040DmaChannel *ch = &s->chan[index];
-+    uint32_t treq;
-+
-+    if (!(ch->ctrl & DMA_CTRL_EN)) {
-+        return;
-+    }
-+
-+    if (ch->trans_count == 0 && ch->reload_count != 0) {
-+        ch->trans_count = ch->reload_count;
-+    }
-+
-+    if (ch->trans_count == 0) {
-+        if (ch->ctrl & DMA_CTRL_IRQ_QUIET) {
-+            s->intr |= BIT(index);
-+            rp2040_dma_update_irq(s);
-+        }
-+        return;
-+    }
-+
-+    ch->ctrl |= DMA_CTRL_BUSY;
-+    ch->ctrl &= ~DMA_CTRL_ERROR_MASK;
-+    ch->paced_nyi_logged = false;
-+
-+    treq = rp2040_dma_treq(ch);
-+    if (treq == RP2040_DREQ_FORCE || rp2040_dma_treq_is_ready_sink(treq)) {
-+        rp2040_dma_run_beats(s, index, UINT32_MAX);
-+    } else if ((rp2040_dma_treq_is_connected_level(treq) ||
-+                treq == RP2040_DREQ_XIP_SSIRX) && s->dreq_level[treq]) {
-+        rp2040_dma_dreq_pulse(s, treq);
-+    } else if (treq != RP2040_DREQ_XIP_SSIRX &&
-+               !rp2040_dma_treq_is_connected_level(treq) &&
-+               !rp2040_dma_treq_is_timer(treq) &&
-+               !ch->paced_nyi_logged) {
-+        qemu_log_mask(LOG_UNIMP,
-+                      "%s: DREQ source is not connected yet\n", __func__);
-+        ch->paced_nyi_logged = true;
-+    }
-+}
-+
-+static void rp2040_dma_drain_starts(RP2040DmaState *s)
-+{
-+    if (s->engine_active) {
-+        return;
-+    }
-+
-+    s->engine_active = true;
-+    while (s->pending_start) {
-+        unsigned index = ctz32(s->pending_start);
-+
-+        s->pending_start &= ~BIT(index);
-+        rp2040_dma_start_channel(s, index);
-+    }
-+    s->engine_active = false;
-+}
-+
-+static void rp2040_dma_request_start(RP2040DmaState *s, unsigned index)
-+{
-+    if (index >= RP2040_DMA_NUM_CHANNELS) {
-+        return;
-+    }
-+
-+    s->pending_start |= BIT(index);
-+    rp2040_dma_drain_starts(s);
-+}
-+
-+static void rp2040_dma_dreq_pulse(RP2040DmaState *s, uint32_t dreq)
-+{
-+    if (dreq >= RP2040_DMA_NUM_DREQS) {
-+        return;
-+    }
-+
-+    if (s->pending_dreq[dreq] != UINT32_MAX) {
-+        s->pending_dreq[dreq]++;
-+    }
-+    qemu_bh_schedule(s->dreq_bh);
-+}
-+
-+static void rp2040_dma_dreq(void *opaque, int n, int level)
-+{
-+    RP2040DmaState *s = opaque;
-+
-+    if (n < 0 || n >= RP2040_DMA_NUM_DREQS) {
-+        return;
-+    }
-+
-+    s->dreq_level[n] = level;
-+    if (level) {
-+        rp2040_dma_dreq_pulse(s, n);
-+        if (rp2040_dma_treq_is_connected_level(n)) {
-+            rp2040_dma_dreq_bh(s);
-+        }
-+    }
-+}
-+
-+static void rp2040_dma_dreq_bh(void *opaque)
-+{
-+    RP2040DmaState *s = opaque;
-+    int i;
-+    int dreq;
-+
-+    if (s->dreq_servicing) {
-+        return;
-+    }
-+
-+    s->dreq_servicing = true;
-+    for (dreq = 0; dreq < RP2040_DMA_NUM_DREQS; dreq++) {
-+        while (s->pending_dreq[dreq] > 0) {
-+            s->pending_dreq[dreq]--;
-+            for (i = 0; i < RP2040_DMA_NUM_CHANNELS; i++) {
-+                RP2040DmaChannel *ch = &s->chan[i];
-+
-+                if ((ch->ctrl & DMA_CTRL_BUSY) && rp2040_dma_treq(ch) == dreq) {
-+                    s->engine_active = true;
-+                    rp2040_dma_run_beats(s, i, 1);
-+                    s->engine_active = false;
-+                    rp2040_dma_drain_starts(s);
-+                }
-+            }
-+            if (s->dreq_level[dreq] &&
-+                rp2040_dma_dreq_has_busy_channel(s, dreq,
-+                                                 RP2040_DMA_NUM_CHANNELS)) {
-+                rp2040_dma_dreq_pulse(s, dreq);
-+            }
-+        }
-+    }
-+    s->dreq_servicing = false;
-+}
-+
-+static bool rp2040_dma_dreq_has_busy_channel(RP2040DmaState *s, uint32_t dreq,
-+                                             unsigned except)
-+{
-+    int i;
-+
-+    for (i = 0; i < RP2040_DMA_NUM_CHANNELS; i++) {
-+        RP2040DmaChannel *ch = &s->chan[i];
-+
-+        if (i != except && (ch->ctrl & DMA_CTRL_BUSY) &&
-+            rp2040_dma_treq(ch) == dreq) {
-+            return true;
-+        }
-+    }
-+    return false;
-+}
-+
-+static void rp2040_dma_abort_channel(RP2040DmaState *s, unsigned index)
-+{
-+    RP2040DmaChannel *ch = &s->chan[index];
-+    uint32_t treq = rp2040_dma_treq(ch);
-+
-+    /*
-+     * RP2040 CHAN_ABORT clears the transfer counter and leaves the channel
-+     * inactive. QEMU does not model in-flight bus-transfer latency, so the
-+     * abort status bit is clear as soon as the write completes.
-+     */
-+    ch->ctrl &= ~DMA_CTRL_BUSY;
-+    ch->trans_count = 0;
-+    if (treq < RP2040_DMA_NUM_DREQS &&
-+        !rp2040_dma_dreq_has_busy_channel(s, treq, index)) {
-+        s->pending_dreq[treq] = 0;
-+    }
-+}
-+
-+static uint32_t rp2040_dma_read_channel(RP2040DmaState *s, unsigned index,
-+                                        hwaddr offset)
-+{
-+    RP2040DmaChannel *ch = &s->chan[index];
-+
-+    switch (offset) {
-+    case DMA_CH_READ_ADDR:
-+    case DMA_CH_AL1_READ_ADDR:
-+    case DMA_CH_AL2_READ_ADDR:
-+    case DMA_CH_AL3_READ_ADDR:
-+        return ch->read_addr;
-+    case DMA_CH_WRITE_ADDR:
-+    case DMA_CH_AL1_WRITE_ADDR:
-+    case DMA_CH_AL2_WRITE_ADDR:
-+    case DMA_CH_AL3_WRITE_ADDR:
-+        return ch->write_addr;
-+    case DMA_CH_TRANS_COUNT:
-+    case DMA_CH_AL1_TRANS_COUNT:
-+    case DMA_CH_AL2_TRANS_COUNT:
-+    case DMA_CH_AL3_TRANS_COUNT:
-+        return ch->trans_count;
-+    case DMA_CH_CTRL_TRIG:
-+    case DMA_CH_AL1_CTRL:
-+    case DMA_CH_AL2_CTRL:
-+    case DMA_CH_AL3_CTRL:
-+        return ch->ctrl;
-+    default:
-+        return 0;
-+    }
-+}
-+
-+static void rp2040_dma_write_ctrl(RP2040DmaState *s, unsigned index,
-+                                  uint32_t value, bool trigger)
-+{
-+    RP2040DmaChannel *ch = &s->chan[index];
-+    uint32_t errors = ch->ctrl & DMA_CTRL_ERROR_MASK;
-+
-+    errors &= ~(value & (DMA_CTRL_READ_ERROR | DMA_CTRL_WRITE_ERROR));
-+    if (errors & (DMA_CTRL_READ_ERROR | DMA_CTRL_WRITE_ERROR)) {
-+        errors |= DMA_CTRL_AHB_ERROR;
-+    } else {
-+        errors &= ~DMA_CTRL_AHB_ERROR;
-+    }
-+    ch->ctrl = (value & DMA_CTRL_WRITABLE_MASK) | errors;
-+    if (trigger) {
-+        rp2040_dma_request_start(s, index);
-+    }
-+}
-+
-+static void rp2040_dma_write_channel(RP2040DmaState *s, unsigned index,
-+                                     hwaddr offset, uint32_t value)
-+{
-+    RP2040DmaChannel *ch = &s->chan[index];
-+
-+    switch (offset) {
-+    case DMA_CH_READ_ADDR:
-+    case DMA_CH_AL1_READ_ADDR:
-+    case DMA_CH_AL2_READ_ADDR:
-+        ch->read_addr = value;
-+        break;
-+    case DMA_CH_AL3_READ_ADDR:
-+        ch->read_addr = value;
-+        rp2040_dma_request_start(s, index);
-+        break;
-+    case DMA_CH_WRITE_ADDR:
-+    case DMA_CH_AL1_WRITE_ADDR:
-+    case DMA_CH_AL3_WRITE_ADDR:
-+        ch->write_addr = value;
-+        break;
-+    case DMA_CH_AL2_WRITE_ADDR:
-+        ch->write_addr = value;
-+        rp2040_dma_request_start(s, index);
-+        break;
-+    case DMA_CH_TRANS_COUNT:
-+    case DMA_CH_AL2_TRANS_COUNT:
-+    case DMA_CH_AL3_TRANS_COUNT:
-+        ch->trans_count = value;
-+        ch->reload_count = value;
-+        break;
-+    case DMA_CH_AL1_TRANS_COUNT:
-+        ch->trans_count = value;
-+        ch->reload_count = value;
-+        rp2040_dma_request_start(s, index);
-+        break;
-+    case DMA_CH_CTRL_TRIG:
-+        rp2040_dma_write_ctrl(s, index, value, true);
-+        break;
-+    case DMA_CH_AL1_CTRL:
-+    case DMA_CH_AL2_CTRL:
-+    case DMA_CH_AL3_CTRL:
-+        rp2040_dma_write_ctrl(s, index, value, false);
-+        break;
-+    default:
-+        break;
-+    }
-+}
-+
-+static uint64_t rp2040_dma_read(void *opaque, hwaddr addr, unsigned size)
-+{
-+    RP2040DmaState *s = opaque;
++    RP2040IoQspiState *s = opaque;
 +    hwaddr offset = addr & 0xfff;
-+    uint32_t value;
++    unsigned index;
++    uint64_t value;
 +
-+    if (offset < RP2040_DMA_NUM_CHANNELS * DMA_CH_SIZE) {
-+        value = rp2040_dma_read_channel(s, offset / DMA_CH_SIZE,
-+                                        offset % DMA_CH_SIZE);
++    if (rp2040_ioqspi_status_offset(offset)) {
++        value = 0;
++    } else if (rp2040_ioqspi_ctrl_offset(offset, &index)) {
++        value = s->ctrl[index];
 +    } else {
 +        switch (offset) {
-+        case DMA_INTR:
++        case IOQSPI_INTR:
 +            value = s->intr;
 +            break;
-+        case DMA_INTE0:
-+            value = s->inte[0];
++        case IOQSPI_PROC0_INTE:
++            value = s->proc0_inte;
 +            break;
-+        case DMA_INTF0:
-+            value = s->intf[0];
++        case IOQSPI_PROC0_INTF:
++            value = s->proc0_intf;
 +            break;
-+        case DMA_INTS0:
-+            value = rp2040_dma_ints(s, 0);
++        case IOQSPI_PROC0_INTS:
++            value = rp2040_ioqspi_ints(s->intr, s->proc0_inte,
++                                       s->proc0_intf);
 +            break;
-+        case DMA_INTE1:
-+            value = s->inte[1];
++        case IOQSPI_PROC1_INTE:
++            value = s->proc1_inte;
 +            break;
-+        case DMA_INTF1:
-+            value = s->intf[1];
++        case IOQSPI_PROC1_INTF:
++            value = s->proc1_intf;
 +            break;
-+        case DMA_INTS1:
-+            value = rp2040_dma_ints(s, 1);
++        case IOQSPI_PROC1_INTS:
++            value = rp2040_ioqspi_ints(s->intr, s->proc1_inte,
++                                       s->proc1_intf);
 +            break;
-+        case DMA_TIMER0 ... DMA_TIMER0 + 3 * sizeof(uint32_t):
-+            value = s->timer[(offset - DMA_TIMER0) / sizeof(uint32_t)];
++        case IOQSPI_DORMANT_INTE:
++            value = s->dormant_wake_inte;
 +            break;
-+        case DMA_SNIFF_CTRL:
-+            value = s->sniff_ctrl;
++        case IOQSPI_DORMANT_INTF:
++            value = s->dormant_wake_intf;
 +            break;
-+        case DMA_SNIFF_DATA:
-+            value = rp2040_dma_sniff_read_data(s);
-+            break;
-+        case DMA_FIFO_LEVELS:
-+            value = 0;
-+            break;
-+        case DMA_CHAN_ABORT:
-+            value = 0;
++        case IOQSPI_DORMANT_INTS:
++            value = rp2040_ioqspi_ints(s->intr, s->dormant_wake_inte,
++                                       s->dormant_wake_intf);
 +            break;
 +        default:
 +            value = 0;
-+            qemu_log_mask(LOG_UNIMP, "rp2040.dma: unimplemented read  "
-+                          "(size %d, addr 0x%08" HWADDR_PRIx
-+                          ", offset 0x%04" HWADDR_PRIx
-+                          ") -> 0x%0*" PRIx32 "\n",
-+                          size, RP2040_DMA_BASE + addr, offset,
-+                          size << 1, value);
++            qemu_log_mask(LOG_UNIMP,
++                      "%s: unimplemented read at offset 0x%"
++                      HWADDR_PRIx "\n", __func__, addr & 0xfff);
 +            break;
 +        }
 +    }
@@ -995,103 +253,70 @@ index 0000000000..9d06fde235
 +    return value;
 +}
 +
-+static void rp2040_dma_write_reg(RP2040DmaState *s, hwaddr addr,
-+                                 uint64_t value64, unsigned size)
++static void rp2040_ioqspi_write(void *opaque, hwaddr addr,
++                                uint64_t value64, unsigned size)
 +{
++    RP2040IoQspiState *s = opaque;
 +    hwaddr alias = addr & RP2040_ATOMIC_ALIAS_MASK;
 +    hwaddr offset = addr & 0xfff;
++    unsigned index;
 +    uint32_t value = value64;
-+    uint32_t old;
-+    int i;
 +
-+    if (offset < RP2040_DMA_NUM_CHANNELS * DMA_CH_SIZE) {
-+        rp2040_dma_write_channel(s, offset / DMA_CH_SIZE,
-+                                 offset % DMA_CH_SIZE, value);
++    if (rp2040_ioqspi_ctrl_offset(offset, &index)) {
++        s->ctrl[index] =
++            rp2040_atomic_update(s->ctrl[index], value, alias) &
++            IOQSPI_CTRL_RW_MASK;
 +    } else {
 +        switch (offset) {
-+        case DMA_INTR:
-+            s->intr &= ~(value & DMA_CHANNEL_MASK);
-+            rp2040_dma_update_irq(s);
++        case IOQSPI_INTR:
++            s->intr &= ~(value & IOQSPI_INTR_EDGE_MASK);
 +            break;
-+        case DMA_INTE0:
-+            s->inte[0] = rp2040_atomic_update(s->inte[0], value, alias) &
-+                         DMA_CHANNEL_MASK;
-+            rp2040_dma_update_irq(s);
++        case IOQSPI_PROC0_INTE:
++            s->proc0_inte =
++                rp2040_atomic_update(s->proc0_inte, value, alias) &
++                IOQSPI_IRQ_MASK;
 +            break;
-+        case DMA_INTF0:
-+            s->intf[0] = rp2040_atomic_update(s->intf[0], value, alias) &
-+                         DMA_CHANNEL_MASK;
-+            rp2040_dma_update_irq(s);
++        case IOQSPI_PROC0_INTF:
++            s->proc0_intf =
++                rp2040_atomic_update(s->proc0_intf, value, alias) &
++                IOQSPI_IRQ_MASK;
 +            break;
-+        case DMA_INTS0:
-+            s->intr &= ~(value & DMA_CHANNEL_MASK);
-+            rp2040_dma_update_irq(s);
++        case IOQSPI_PROC1_INTE:
++            s->proc1_inte =
++                rp2040_atomic_update(s->proc1_inte, value, alias) &
++                IOQSPI_IRQ_MASK;
 +            break;
-+        case DMA_INTE1:
-+            s->inte[1] = rp2040_atomic_update(s->inte[1], value, alias) &
-+                         DMA_CHANNEL_MASK;
-+            rp2040_dma_update_irq(s);
++        case IOQSPI_PROC1_INTF:
++            s->proc1_intf =
++                rp2040_atomic_update(s->proc1_intf, value, alias) &
++                IOQSPI_IRQ_MASK;
 +            break;
-+        case DMA_INTF1:
-+            s->intf[1] = rp2040_atomic_update(s->intf[1], value, alias) &
-+                         DMA_CHANNEL_MASK;
-+            rp2040_dma_update_irq(s);
++        case IOQSPI_DORMANT_INTE:
++            s->dormant_wake_inte =
++                rp2040_atomic_update(s->dormant_wake_inte, value,
++                                          alias) &
++                IOQSPI_IRQ_MASK;
 +            break;
-+        case DMA_INTS1:
-+            s->intr &= ~(value & DMA_CHANNEL_MASK);
-+            rp2040_dma_update_irq(s);
-+            break;
-+        case DMA_TIMER0 ... DMA_TIMER0 + 3 * sizeof(uint32_t):
-+            i = (offset - DMA_TIMER0) / sizeof(uint32_t);
-+            s->timer[i] = rp2040_atomic_update(s->timer[i], value, alias);
-+            rp2040_dma_timer_update(s, i);
-+            break;
-+        case DMA_MULTI_CHAN_TRIGGER:
-+            value &= DMA_CHANNEL_MASK;
-+            for (i = 0; i < RP2040_DMA_NUM_CHANNELS; i++) {
-+                if (value & BIT(i)) {
-+                    rp2040_dma_request_start(s, i);
-+                }
-+            }
-+            break;
-+        case DMA_SNIFF_CTRL:
-+            old = s->sniff_ctrl;
-+            s->sniff_ctrl = rp2040_atomic_update(old, value, alias) &
-+                            DMA_SNIFF_CTRL_MASK;
-+            break;
-+        case DMA_SNIFF_DATA:
-+            s->sniff_data = rp2040_atomic_update(s->sniff_data, value,
-+                                                   alias);
-+            break;
-+        case DMA_CHAN_ABORT:
-+            value &= DMA_CHANNEL_MASK;
-+            for (i = 0; i < RP2040_DMA_NUM_CHANNELS; i++) {
-+                if (value & BIT(i)) {
-+                    rp2040_dma_abort_channel(s, i);
-+                }
-+            }
++        case IOQSPI_DORMANT_INTF:
++            s->dormant_wake_intf =
++                rp2040_atomic_update(s->dormant_wake_intf, value,
++                                          alias) &
++                IOQSPI_IRQ_MASK;
 +            break;
 +        default:
-+            qemu_log_mask(LOG_UNIMP, "rp2040.dma: unimplemented write "
-+                          "(size %d, addr 0x%08" HWADDR_PRIx
-+                          ", offset 0x%04" HWADDR_PRIx
-+                          ", value 0x%0*" PRIx64 ")\n",
-+                          size, RP2040_DMA_BASE + addr, offset, size << 1,
-+                          value64);
++            if (!rp2040_ioqspi_status_offset(offset)) {
++                qemu_log_mask(LOG_UNIMP,
++                      "%s: unimplemented write at offset 0x%"
++                      HWADDR_PRIx "\n", __func__, addr & 0xfff);
++            }
 +            break;
 +        }
 +    }
 +}
 +
-+static void rp2040_dma_write(void *opaque, hwaddr addr, uint64_t value64,
-+                             unsigned size)
-+{
-+    rp2040_dma_write_reg(opaque, addr, value64, size);
-+}
-+
-+static const MemoryRegionOps rp2040_dma_ops = {
-+    .read = rp2040_dma_read,
-+    .write = rp2040_dma_write,
++static const MemoryRegionOps rp2040_ioqspi_ops = {
++    .read = rp2040_ioqspi_read,
++    .write = rp2040_ioqspi_write,
 +    .endianness = DEVICE_LITTLE_ENDIAN,
 +    .valid = {
 +        .min_access_size = 4,
@@ -1099,243 +324,149 @@ index 0000000000..9d06fde235
 +    },
 +};
 +
-+static void rp2040_dma_reset(DeviceState *dev)
++static void rp2040_ioqspi_reset(DeviceState *dev)
 +{
-+    RP2040DmaState *s = RP2040_DMA(dev);
++    RP2040IoQspiState *s = RP2040_IOQSPI(dev);
 +    int i;
 +
-+    for (i = 0; i < RP2040_DMA_NUM_CHANNELS; i++) {
-+        s->chan[i].read_addr = 0;
-+        s->chan[i].write_addr = 0;
-+        s->chan[i].trans_count = 0;
-+        s->chan[i].reload_count = 0;
-+        s->chan[i].ctrl = i << DMA_CTRL_CHAIN_TO_SHIFT;
-+        s->chan[i].paced_nyi_logged = false;
++    for (i = 0; i < ARRAY_SIZE(s->ctrl); i++) {
++        s->ctrl[i] = IOQSPI_CTRL_RESET;
 +    }
 +    s->intr = 0;
-+    s->inte[0] = 0;
-+    s->inte[1] = 0;
-+    s->intf[0] = 0;
-+    s->intf[1] = 0;
-+    memset(s->timer, 0, sizeof(s->timer));
-+    for (i = 0; i < RP2040_DMA_NUM_TIMERS; i++) {
-+        s->pacing_timer[i].period_ns = 0;
-+        timer_del(s->pacing_timer[i].timer);
-+    }
-+    memset(s->dreq_level, 0, sizeof(s->dreq_level));
-+    memset(s->pending_dreq, 0, sizeof(s->pending_dreq));
-+    qemu_bh_cancel(s->dreq_bh);
-+    s->engine_active = false;
-+    s->pending_start = 0;
-+    s->sniff_ctrl = 0;
-+    s->sniff_data = 0;
-+    rp2040_dma_update_irq(s);
++    s->proc0_inte = 0;
++    s->proc0_intf = 0;
++    s->proc1_inte = 0;
++    s->proc1_intf = 0;
++    s->dormant_wake_inte = 0;
++    s->dormant_wake_intf = 0;
 +}
 +
-+static void rp2040_dma_init(Object *obj)
++static void rp2040_ioqspi_init(Object *obj)
 +{
-+    RP2040DmaState *s = RP2040_DMA(obj);
-+    SysBusDevice *sbd = SYS_BUS_DEVICE(obj);
-+    int i;
++    RP2040IoQspiState *s = RP2040_IOQSPI(obj);
 +
-+    memory_region_init_io(&s->iomem, obj, &rp2040_dma_ops, s,
-+                          TYPE_RP2040_DMA, RP2040_DMA_SIZE);
-+    sysbus_init_mmio(sbd, &s->iomem);
-+    for (i = 0; i < RP2040_DMA_NUM_IRQS; i++) {
-+        sysbus_init_irq(sbd, &s->irq[i]);
-+    }
-+    s->dreq_bh = qemu_bh_new(rp2040_dma_dreq_bh, s);
-+    qdev_init_gpio_in_named(DEVICE(obj), rp2040_dma_dreq, "dreq",
-+                            RP2040_DMA_NUM_DREQS);
-+    for (i = 0; i < RP2040_DMA_NUM_TIMERS; i++) {
-+        s->pacing_timer[i].dma = s;
-+        s->pacing_timer[i].index = i;
-+        s->pacing_timer[i].timer = timer_new_ns(QEMU_CLOCK_VIRTUAL,
-+                                                rp2040_dma_timer_cb,
-+                                                &s->pacing_timer[i]);
-+    }
++    memory_region_init_io(&s->iomem, obj, &rp2040_ioqspi_ops, s,
++                          "rp2040.ioqspi", RP2040_IOQSPI_SIZE);
++    sysbus_init_mmio(SYS_BUS_DEVICE(obj), &s->iomem);
 +}
 +
-+static void rp2040_dma_finalize(Object *obj)
-+{
-+    RP2040DmaState *s = RP2040_DMA(obj);
-+    int i;
-+
-+    for (i = 0; i < RP2040_DMA_NUM_TIMERS; i++) {
-+        timer_free(s->pacing_timer[i].timer);
++static const VMStateDescription rp2040_ioqspi_vmstate = {
++    .name = TYPE_RP2040_IOQSPI,
++    .version_id = 1,
++    .minimum_version_id = 1,
++    .fields = (const VMStateField[]) {
++        VMSTATE_UINT32_ARRAY(ctrl, RP2040IoQspiState, 6),
++        VMSTATE_UINT32(intr, RP2040IoQspiState),
++        VMSTATE_UINT32(proc0_inte, RP2040IoQspiState),
++        VMSTATE_UINT32(proc0_intf, RP2040IoQspiState),
++        VMSTATE_UINT32(proc1_inte, RP2040IoQspiState),
++        VMSTATE_UINT32(proc1_intf, RP2040IoQspiState),
++        VMSTATE_UINT32(dormant_wake_inte, RP2040IoQspiState),
++        VMSTATE_UINT32(dormant_wake_intf, RP2040IoQspiState),
++        VMSTATE_END_OF_LIST()
 +    }
-+    qemu_bh_delete(s->dreq_bh);
-+}
-+
-+static void rp2040_dma_realize(DeviceState *dev, Error **errp)
-+{
-+    RP2040DmaState *s = RP2040_DMA(dev);
-+
-+    if (!s->dma_mr) {
-+        error_setg(errp, "memory property was not set");
-+        return;
-+    }
-+
-+    address_space_init(&s->dma_as, s->dma_mr, "rp2040-dma-memory");
-+}
-+
-+static const VMStateDescription rp2040_dma_vmstate = {
-+    .name = TYPE_RP2040_DMA,
-+    .unmigratable = 1,
 +};
 +
-+static const Property rp2040_dma_properties[] = {
-+    DEFINE_PROP_LINK("memory", RP2040DmaState, dma_mr, TYPE_MEMORY_REGION,
-+                     MemoryRegion *),
-+};
-+
-+static void rp2040_dma_class_init(ObjectClass *klass, const void *data)
++static void rp2040_ioqspi_class_init(ObjectClass *klass, const void *data)
 +{
 +    DeviceClass *dc = DEVICE_CLASS(klass);
 +
-+    dc->realize = rp2040_dma_realize;
-+    device_class_set_legacy_reset(dc, rp2040_dma_reset);
-+    dc->vmsd = &rp2040_dma_vmstate;
-+    device_class_set_props(dc, rp2040_dma_properties);
++    device_class_set_legacy_reset(dc, rp2040_ioqspi_reset);
++    dc->vmsd = &rp2040_ioqspi_vmstate;
 +}
 +
-+static const TypeInfo rp2040_dma_info = {
-+    .name          = TYPE_RP2040_DMA,
++static const TypeInfo rp2040_ioqspi_info = {
++    .name          = TYPE_RP2040_IOQSPI,
 +    .parent        = TYPE_SYS_BUS_DEVICE,
-+    .instance_size = sizeof(RP2040DmaState),
-+    .instance_init = rp2040_dma_init,
-+    .instance_finalize = rp2040_dma_finalize,
-+    .class_init    = rp2040_dma_class_init,
++    .instance_size = sizeof(RP2040IoQspiState),
++    .instance_init = rp2040_ioqspi_init,
++    .class_init    = rp2040_ioqspi_class_init,
 +};
 +
-+static void rp2040_dma_register_types(void)
++static void rp2040_ioqspi_register_types(void)
 +{
-+    type_register_static(&rp2040_dma_info);
++    type_register_static(&rp2040_ioqspi_info);
 +}
-+type_init(rp2040_dma_register_types)
++type_init(rp2040_ioqspi_register_types)
 diff --git a/include/hw/arm/rp2040.h b/include/hw/arm/rp2040.h
-index bb59e80e08..05a03655e9 100644
+index ae393195d3..fdfcf28f3b 100644
 --- a/include/hw/arm/rp2040.h
 +++ b/include/hw/arm/rp2040.h
-@@ -13,6 +13,7 @@
- #include "hw/char/pl011.h"
- #include "hw/core/clock.h"
+@@ -15,6 +15,7 @@
  #include "hw/core/sysbus.h"
-+#include "hw/dma/rp2040_dma.h"
  #include "hw/misc/rp2040_clocks.h"
  #include "hw/misc/rp2040_iobank0.h"
- #include "hw/misc/rp2040_ioqspi.h"
-@@ -56,6 +57,7 @@ struct RP2040State {
-     ARMv7MState armv7m[RP2040_NUM_CORES];
++#include "hw/misc/rp2040_ioqspi.h"
+ #include "hw/misc/rp2040_pads.h"
+ #include "hw/misc/rp2040_pll.h"
+ #include "hw/misc/rp2040_psm.h"
+@@ -50,6 +51,7 @@ struct RP2040State {
      PL011State uart[2];
      RP2040ClocksState clocks;
-+    RP2040DmaState dma;
      RP2040IoBank0State iobank0;
-     RP2040IoQspiState ioqspi;
++    RP2040IoQspiState ioqspi;
      RP2040PadsBank0State pads_bank0;
-diff --git a/include/hw/dma/rp2040_dma.h b/include/hw/dma/rp2040_dma.h
+     RP2040PadsQspiState pads_qspi;
+     RP2040PllState pll_sys;
+diff --git a/include/hw/misc/rp2040_ioqspi.h b/include/hw/misc/rp2040_ioqspi.h
 new file mode 100644
-index 0000000000..4b4dae4097
+index 0000000000..e671d2a1b5
 --- /dev/null
-+++ b/include/hw/dma/rp2040_dma.h
-@@ -0,0 +1,77 @@
++++ b/include/hw/misc/rp2040_ioqspi.h
+@@ -0,0 +1,33 @@
 +/*
-+ * RP2040 DMA emulation
++ * RP2040 QSPI IO bank emulation
 + *
 + * SPDX-License-Identifier: GPL-2.0-or-later
 + */
 +
-+#ifndef HW_DMA_RP2040_DMA_H
-+#define HW_DMA_RP2040_DMA_H
++#ifndef HW_MISC_RP2040_IOQSPI_H
++#define HW_MISC_RP2040_IOQSPI_H
 +
 +#include "hw/core/sysbus.h"
-+#include "system/memory.h"
 +#include "qom/object.h"
 +
-+#define TYPE_RP2040_DMA "rp2040-dma"
-+OBJECT_DECLARE_SIMPLE_TYPE(RP2040DmaState, RP2040_DMA)
++#define TYPE_RP2040_IOQSPI "rp2040-ioqspi"
++OBJECT_DECLARE_SIMPLE_TYPE(RP2040IoQspiState, RP2040_IOQSPI)
 +
-+#define RP2040_DMA_BASE 0x50000000
-+#define RP2040_DMA_SIZE 0x4000
-+#define RP2040_DMA_NUM_CHANNELS 12
-+#define RP2040_DMA_NUM_IRQS 2
-+#define RP2040_DMA_NUM_DREQS 64
-+#define RP2040_DMA_NUM_TIMERS 4
++#define RP2040_IOQSPI_BASE 0x40018000
++#define RP2040_IOQSPI_SIZE 0x4000
 +
-+#define RP2040_DREQ_UART0_TX 20
-+#define RP2040_DREQ_UART0_RX 21
-+#define RP2040_DREQ_UART1_TX 22
-+#define RP2040_DREQ_UART1_RX 23
-+#define RP2040_DREQ_XIP_STREAM 37
-+#define RP2040_DREQ_XIP_SSITX 38
-+#define RP2040_DREQ_XIP_SSIRX 39
-+#define RP2040_DREQ_DMA_TIMER0 59
-+#define RP2040_DREQ_DMA_TIMER1 60
-+#define RP2040_DREQ_DMA_TIMER2 61
-+#define RP2040_DREQ_DMA_TIMER3 62
-+#define RP2040_DREQ_FORCE 63
-+
-+typedef struct RP2040DmaChannel {
-+    uint32_t read_addr;
-+    uint32_t write_addr;
-+    uint32_t trans_count;
-+    uint32_t reload_count;
-+    uint32_t ctrl;
-+    bool paced_nyi_logged;
-+} RP2040DmaChannel;
-+
-+typedef struct RP2040DmaPacingTimer {
-+    void *dma;
-+    QEMUTimer *timer;
-+    uint64_t period_ns;
-+    unsigned index;
-+} RP2040DmaPacingTimer;
-+
-+struct RP2040DmaState {
++struct RP2040IoQspiState {
 +    SysBusDevice parent_obj;
 +
 +    MemoryRegion iomem;
-+    MemoryRegion *dma_mr;
-+    AddressSpace dma_as;
-+    qemu_irq irq[RP2040_DMA_NUM_IRQS];
-+
-+    RP2040DmaChannel chan[RP2040_DMA_NUM_CHANNELS];
++    uint32_t ctrl[6];
 +    uint32_t intr;
-+    uint32_t inte[RP2040_DMA_NUM_IRQS];
-+    uint32_t intf[RP2040_DMA_NUM_IRQS];
-+    uint32_t timer[RP2040_DMA_NUM_TIMERS];
-+    RP2040DmaPacingTimer pacing_timer[RP2040_DMA_NUM_TIMERS];
-+    uint32_t sniff_ctrl;
-+    uint32_t sniff_data;
-+    QEMUBH *dreq_bh;
-+    bool dreq_servicing;
-+    bool engine_active;
-+    uint32_t pending_start;
-+    bool dreq_level[RP2040_DMA_NUM_DREQS];
-+    uint32_t pending_dreq[RP2040_DMA_NUM_DREQS];
++    uint32_t proc0_inte;
++    uint32_t proc0_intf;
++    uint32_t proc1_inte;
++    uint32_t proc1_intf;
++    uint32_t dormant_wake_inte;
++    uint32_t dormant_wake_intf;
 +};
 +
 +#endif
 diff --git a/tests/qtest/meson.build b/tests/qtest/meson.build
-index a663809225..86e72dc4c5 100644
+index 9cf40e50ec..8009ec7f8d 100644
 --- a/tests/qtest/meson.build
 +++ b/tests/qtest/meson.build
-@@ -266,6 +266,7 @@ qtests_arm = \
-    ['rp2040-syscfg-test',
+@@ -267,6 +267,7 @@ qtests_arm = \
       'rp2040-sysinfo-test',
      'rp2040-clocks-test',
-+    'rp2040-dma-test',
      'rp2040-iobank0-test',
-     'rp2040-ioqspi-test',
++    'rp2040-ioqspi-test',
      'rp2040-pads-test',
-diff --git a/tests/qtest/rp2040-dma-test.c b/tests/qtest/rp2040-dma-test.c
+     'rp2040-resets-test',
+     'rp2040-rosc-test',
+diff --git a/tests/qtest/rp2040-ioqspi-test.c b/tests/qtest/rp2040-ioqspi-test.c
 new file mode 100644
-index 0000000000..830d591707
+index 0000000000..4f94b5f3a2
 --- /dev/null
-+++ b/tests/qtest/rp2040-dma-test.c
-@@ -0,0 +1,378 @@
++++ b/tests/qtest/rp2040-ioqspi-test.c
+@@ -0,0 +1,81 @@
 +/*
-+ * QTest testcase for the RP2040 DMA block.
++ * QTest testcase for the RP2040 QSPI IO bank block.
 + *
 + * SPDX-License-Identifier: GPL-2.0-or-later
 + */
@@ -1344,349 +475,61 @@ index 0000000000..830d591707
 +#include "libqtest.h"
 +#include "qemu/bitops.h"
 +
-+#define DMA_BASE                0x50000000
-+#define DMA_CH_READ_ADDR        0x00
-+#define DMA_CH_WRITE_ADDR       0x04
-+#define DMA_CH_TRANS_COUNT      0x08
-+#define DMA_CH_CTRL_TRIG        0x0c
-+#define DMA_CH_AL1_CTRL         0x10
-+#define DMA_CH_AL3_TRANS_COUNT  0x38
-+#define DMA_CH_AL3_READ_ADDR    0x3c
-+#define DMA_CH_SIZE             0x40
-+#define DMA_INTR                0x400
-+#define DMA_INTE0               0x404
-+#define DMA_INTS0               0x40c
-+#define DMA_TIMER0              0x420
-+#define DMA_SNIFF_CTRL          0x434
-+#define DMA_SNIFF_DATA          0x438
-+#define DMA_CHAN_ABORT          0x444
++#define IOQSPI_BASE             0x40018000
++#define IOQSPI_SCLK_STATUS      0x00
++#define IOQSPI_SCLK_CTRL        0x04
++#define IOQSPI_SD1_CTRL         0x1c
++#define IOQSPI_PROC0_INTE       0x34
++#define IOQSPI_PROC0_INTF       0x38
++#define IOQSPI_PROC0_INTS       0x3c
 +
-+#define DMA_CTRL_AHB_ERROR      BIT(31)
-+#define DMA_CTRL_READ_ERROR     BIT(30)
-+#define DMA_CTRL_WRITE_ERROR    BIT(29)
-+#define DMA_CTRL_BUSY           BIT(24)
-+#define DMA_CTRL_SNIFF_EN       BIT(23)
-+#define DMA_CTRL_IRQ_QUIET      BIT(21)
-+#define DMA_CTRL_TREQ_SEL_SHIFT 15
-+#define DMA_CTRL_CHAIN_TO_SHIFT 11
-+#define DMA_CTRL_RING_SEL       BIT(10)
-+#define DMA_CTRL_RING_SIZE_SHIFT 6
-+#define DMA_CTRL_INCR_WRITE     BIT(5)
-+#define DMA_CTRL_INCR_READ      BIT(4)
-+#define DMA_CTRL_DATA_SIZE_8    (0 << 2)
-+#define DMA_CTRL_DATA_SIZE_32   (2 << 2)
-+#define DMA_CTRL_EN             BIT(0)
-+
-+#define DMA_SNIFF_CTRL_OUT_INV  BIT(11)
-+#define DMA_SNIFF_CTRL_OUT_REV  BIT(10)
-+#define DMA_SNIFF_CTRL_CALC_SUM (0xf << 5)
-+#define DMA_SNIFF_CTRL_EN       BIT(0)
-+
-+#define DREQ_DMA_TIMER0         59
-+#define DREQ_XIP_SSIRX          39
-+#define DREQ_FORCE              63
-+
-+#define XIP_SSI_BASE            0x18000000
-+#define XIP_SSI_SSIENR          0x08
-+#define XIP_SSI_SER             0x10
-+#define XIP_SSI_DR0             0x60
-+
-+#define SRAM_BASE               0x20000000
-+#define BAD_DMA_ADDR            0x60000000
++#define IOQSPI_CTRL_RESET       0x1f
++#define IOQSPI_SD1_CTRL_SET     0x201c
++#define IOQSPI_SD1_CTRL_CLR     0x301c
 +
 +static QTestState *rp2040_start(void)
 +{
 +    return qtest_init("-machine raspi-pico");
 +}
 +
-+static void test_dma_xip_ssi_rx_dreq(void)
++static void test_ioqspi_reset_values(void)
 +{
 +    QTestState *qts = rp2040_start();
-+    uint32_t ctrl = DMA_CTRL_EN | DMA_CTRL_INCR_WRITE | DMA_CTRL_DATA_SIZE_8 |
-+                    (DREQ_XIP_SSIRX << DMA_CTRL_TREQ_SEL_SHIFT);
 +
-+    qtest_writel(qts, SRAM_BASE, 0xffffffff);
-+    qtest_writel(qts, DMA_BASE + DMA_CH_READ_ADDR, XIP_SSI_BASE + XIP_SSI_DR0);
-+    qtest_writel(qts, DMA_BASE + DMA_CH_WRITE_ADDR, SRAM_BASE);
-+    qtest_writel(qts, DMA_BASE + DMA_CH_TRANS_COUNT, 4);
-+    qtest_writel(qts, DMA_BASE + DMA_CH_CTRL_TRIG, ctrl);
-+
-+    g_assert_cmphex(qtest_readl(qts, DMA_BASE + DMA_CH_CTRL_TRIG) &
-+                    DMA_CTRL_BUSY, ==, DMA_CTRL_BUSY);
-+    g_assert_cmphex(qtest_readl(qts, DMA_BASE + DMA_CH_TRANS_COUNT), ==, 4);
-+
-+    qtest_writel(qts, XIP_SSI_BASE + XIP_SSI_SSIENR, 1);
-+    qtest_writel(qts, XIP_SSI_BASE + XIP_SSI_SER, 1);
-+    qtest_writel(qts, XIP_SSI_BASE + XIP_SSI_DR0, 0x03);
-+    qtest_writel(qts, XIP_SSI_BASE + XIP_SSI_DR0, 0x00);
-+    qtest_writel(qts, XIP_SSI_BASE + XIP_SSI_DR0, 0x00);
-+    qtest_writel(qts, XIP_SSI_BASE + XIP_SSI_DR0, 0x00);
-+
-+    g_assert_cmphex(qtest_readl(qts, DMA_BASE + DMA_CH_TRANS_COUNT), ==, 0);
-+    g_assert_cmphex(qtest_readl(qts, DMA_BASE + DMA_CH_CTRL_TRIG) &
-+                    DMA_CTRL_BUSY, ==, 0);
-+    g_assert_cmphex(qtest_readl(qts, SRAM_BASE), ==, 0);
++    g_assert_cmphex(qtest_readl(qts, IOQSPI_BASE + IOQSPI_SCLK_STATUS), ==,
++                    0);
++    g_assert_cmphex(qtest_readl(qts, IOQSPI_BASE + IOQSPI_SCLK_CTRL), ==,
++                    IOQSPI_CTRL_RESET);
++    g_assert_cmphex(qtest_readl(qts, IOQSPI_BASE + IOQSPI_SD1_CTRL), ==,
++                    IOQSPI_CTRL_RESET);
 +
 +    qtest_quit(qts);
 +}
 +
-+static void test_dma_write_ring_wrap(void)
++static void test_ioqspi_atomic_ctrl_aliases(void)
 +{
 +    QTestState *qts = rp2040_start();
-+    const uint8_t source[] = { 0x10, 0x11, 0x12, 0x13, 0x14, 0x15 };
-+    const uint8_t initial[] = { 0xaa, 0xaa, 0xaa, 0xaa };
-+    uint8_t dest[sizeof(initial)];
-+    uint32_t read_addr = SRAM_BASE + 0x80;
-+    uint32_t write_addr = SRAM_BASE + 0x100;
-+    uint32_t ctrl = DMA_CTRL_EN | DMA_CTRL_INCR_READ | DMA_CTRL_INCR_WRITE |
-+                    DMA_CTRL_RING_SEL | DMA_CTRL_DATA_SIZE_8 |
-+                    (2 << DMA_CTRL_RING_SIZE_SHIFT) |
-+                    (DREQ_FORCE << DMA_CTRL_TREQ_SEL_SHIFT);
 +
-+    qtest_memwrite(qts, read_addr, source, sizeof(source));
-+    qtest_memwrite(qts, write_addr, initial, sizeof(initial));
-+    qtest_writel(qts, DMA_BASE + DMA_CH_READ_ADDR, read_addr);
-+    qtest_writel(qts, DMA_BASE + DMA_CH_WRITE_ADDR, write_addr);
-+    qtest_writel(qts, DMA_BASE + DMA_CH_TRANS_COUNT, sizeof(source));
-+    qtest_writel(qts, DMA_BASE + DMA_CH_CTRL_TRIG, ctrl);
++    qtest_writel(qts, IOQSPI_BASE + IOQSPI_SD1_CTRL, 0);
++    qtest_writel(qts, IOQSPI_BASE + IOQSPI_SD1_CTRL_SET, BIT(17));
++    qtest_writel(qts, IOQSPI_BASE + IOQSPI_SD1_CTRL_CLR, BIT(17));
++    qtest_writel(qts, IOQSPI_BASE + IOQSPI_SD1_CTRL_SET, BIT(9));
 +
-+    qtest_memread(qts, write_addr, dest, sizeof(dest));
-+    g_assert_cmphex(dest[0], ==, 0x14);
-+    g_assert_cmphex(dest[1], ==, 0x15);
-+    g_assert_cmphex(dest[2], ==, 0x12);
-+    g_assert_cmphex(dest[3], ==, 0x13);
-+    g_assert_cmphex(qtest_readl(qts, DMA_BASE + DMA_CH_TRANS_COUNT), ==, 0);
-+    g_assert_cmphex(qtest_readl(qts, DMA_BASE + DMA_CH_READ_ADDR), ==,
-+                    read_addr + sizeof(source));
-+    g_assert_cmphex(qtest_readl(qts, DMA_BASE + DMA_CH_WRITE_ADDR), ==,
-+                    write_addr + 2);
++    g_assert_cmphex(qtest_readl(qts, IOQSPI_BASE + IOQSPI_SD1_CTRL), ==,
++                    BIT(9));
 +
 +    qtest_quit(qts);
 +}
 +
-+static void test_dma_channel_abort(void)
++static void test_ioqspi_interrupt_force_status(void)
 +{
 +    QTestState *qts = rp2040_start();
-+    uint32_t ctrl = DMA_CTRL_EN | DMA_CTRL_INCR_WRITE | DMA_CTRL_DATA_SIZE_8 |
-+                    (DREQ_XIP_SSIRX << DMA_CTRL_TREQ_SEL_SHIFT);
 +
-+    qtest_writel(qts, SRAM_BASE, 0xffffffff);
-+    qtest_writel(qts, DMA_BASE + DMA_CH_READ_ADDR, XIP_SSI_BASE + XIP_SSI_DR0);
-+    qtest_writel(qts, DMA_BASE + DMA_CH_WRITE_ADDR, SRAM_BASE);
-+    qtest_writel(qts, DMA_BASE + DMA_CH_TRANS_COUNT, 4);
-+    qtest_writel(qts, DMA_BASE + DMA_CH_CTRL_TRIG, ctrl);
++    qtest_writel(qts, IOQSPI_BASE + IOQSPI_PROC0_INTE, BIT(1));
++    qtest_writel(qts, IOQSPI_BASE + IOQSPI_PROC0_INTF, BIT(2));
 +
-+    g_assert_cmphex(qtest_readl(qts, DMA_BASE + DMA_CH_CTRL_TRIG) &
-+                    DMA_CTRL_BUSY, ==, DMA_CTRL_BUSY);
-+    g_assert_cmphex(qtest_readl(qts, DMA_BASE + DMA_CH_TRANS_COUNT), ==, 4);
-+
-+    qtest_writel(qts, DMA_BASE + DMA_CHAN_ABORT, BIT(0));
-+
-+    g_assert_cmphex(qtest_readl(qts, DMA_BASE + DMA_CHAN_ABORT), ==, 0);
-+    g_assert_cmphex(qtest_readl(qts, DMA_BASE + DMA_CH_CTRL_TRIG) &
-+                    DMA_CTRL_BUSY, ==, 0);
-+    g_assert_cmphex(qtest_readl(qts, DMA_BASE + DMA_CH_TRANS_COUNT), ==, 0);
-+
-+    qtest_writel(qts, XIP_SSI_BASE + XIP_SSI_DR0, 0x03);
-+    qtest_writel(qts, XIP_SSI_BASE + XIP_SSI_DR0, 0x00);
-+    qtest_writel(qts, XIP_SSI_BASE + XIP_SSI_DR0, 0x00);
-+    qtest_writel(qts, XIP_SSI_BASE + XIP_SSI_DR0, 0x00);
-+
-+    g_assert_cmphex(qtest_readl(qts, SRAM_BASE), ==, 0xffffffff);
-+
-+    qtest_quit(qts);
-+}
-+
-+static void test_dma_sniff_sum(void)
-+{
-+    QTestState *qts = rp2040_start();
-+    const uint8_t source[] = { 1, 2, 3, 4 };
-+    uint32_t read_addr = SRAM_BASE + 0x180;
-+    uint32_t write_addr = SRAM_BASE + 0x190;
-+    uint32_t ctrl = DMA_CTRL_EN | DMA_CTRL_INCR_READ | DMA_CTRL_INCR_WRITE |
-+                    DMA_CTRL_SNIFF_EN | DMA_CTRL_DATA_SIZE_8 |
-+                    (DREQ_FORCE << DMA_CTRL_TREQ_SEL_SHIFT);
-+
-+    qtest_memwrite(qts, read_addr, source, sizeof(source));
-+    qtest_writel(qts, DMA_BASE + DMA_SNIFF_DATA, 0x100);
-+    qtest_writel(qts, DMA_BASE + DMA_SNIFF_CTRL,
-+                 DMA_SNIFF_CTRL_EN | DMA_SNIFF_CTRL_CALC_SUM);
-+    qtest_writel(qts, DMA_BASE + DMA_CH_READ_ADDR, read_addr);
-+    qtest_writel(qts, DMA_BASE + DMA_CH_WRITE_ADDR, write_addr);
-+    qtest_writel(qts, DMA_BASE + DMA_CH_TRANS_COUNT, sizeof(source));
-+    qtest_writel(qts, DMA_BASE + DMA_CH_CTRL_TRIG, ctrl);
-+
-+    g_assert_cmphex(qtest_readl(qts, DMA_BASE + DMA_SNIFF_DATA), ==, 0x10a);
-+
-+    qtest_writel(qts, DMA_BASE + DMA_SNIFF_CTRL,
-+                 DMA_SNIFF_CTRL_EN | DMA_SNIFF_CTRL_CALC_SUM |
-+                 DMA_SNIFF_CTRL_OUT_REV);
-+    g_assert_cmphex(qtest_readl(qts, DMA_BASE + DMA_SNIFF_DATA), ==,
-+                    0x50800000);
-+
-+    qtest_writel(qts, DMA_BASE + DMA_SNIFF_CTRL,
-+                 DMA_SNIFF_CTRL_EN | DMA_SNIFF_CTRL_CALC_SUM |
-+                 DMA_SNIFF_CTRL_OUT_INV);
-+    g_assert_cmphex(qtest_readl(qts, DMA_BASE + DMA_SNIFF_DATA), ==,
-+                    0xfffffef5);
-+
-+    qtest_quit(qts);
-+}
-+
-+static void test_dma_error_status(void)
-+{
-+    QTestState *qts = rp2040_start();
-+    uint32_t ctrl = DMA_CTRL_EN | DMA_CTRL_DATA_SIZE_32 |
-+                    (DREQ_FORCE << DMA_CTRL_TREQ_SEL_SHIFT);
-+
-+    qtest_writel(qts, SRAM_BASE, 0x12345678);
-+    qtest_writel(qts, DMA_BASE + DMA_INTR, BIT(0));
-+    qtest_writel(qts, DMA_BASE + DMA_INTE0, BIT(0));
-+    qtest_writel(qts, DMA_BASE + DMA_CH_READ_ADDR, BAD_DMA_ADDR);
-+    qtest_writel(qts, DMA_BASE + DMA_CH_WRITE_ADDR, SRAM_BASE + 4);
-+    qtest_writel(qts, DMA_BASE + DMA_CH_TRANS_COUNT, 1);
-+    qtest_writel(qts, DMA_BASE + DMA_CH_CTRL_TRIG, ctrl);
-+
-+    g_assert_cmphex(qtest_readl(qts, DMA_BASE + DMA_CH_CTRL_TRIG) &
-+                    (DMA_CTRL_AHB_ERROR | DMA_CTRL_READ_ERROR |
-+                     DMA_CTRL_WRITE_ERROR | DMA_CTRL_BUSY), ==,
-+                    DMA_CTRL_AHB_ERROR | DMA_CTRL_READ_ERROR);
-+    g_assert_cmphex(qtest_readl(qts, DMA_BASE + DMA_CH_TRANS_COUNT), ==, 1);
-+    g_assert_cmphex(qtest_readl(qts, DMA_BASE + DMA_INTR), ==, BIT(0));
-+    g_assert_cmphex(qtest_readl(qts, DMA_BASE + DMA_INTS0), ==, BIT(0));
-+
-+    qtest_writel(qts, DMA_BASE + DMA_INTS0, BIT(0));
-+    g_assert_cmphex(qtest_readl(qts, DMA_BASE + DMA_INTR), ==, 0);
-+    g_assert_cmphex(qtest_readl(qts, DMA_BASE + DMA_INTS0), ==, 0);
-+
-+    qtest_writel(qts, DMA_BASE + DMA_CH_CTRL_TRIG,
-+                 DMA_CTRL_READ_ERROR | DMA_CTRL_WRITE_ERROR);
-+    g_assert_cmphex(qtest_readl(qts, DMA_BASE + DMA_CH_CTRL_TRIG) &
-+                    (DMA_CTRL_AHB_ERROR | DMA_CTRL_READ_ERROR |
-+                     DMA_CTRL_WRITE_ERROR), ==, 0);
-+
-+    qtest_writel(qts, DMA_BASE + DMA_CH_READ_ADDR, SRAM_BASE);
-+    qtest_writel(qts, DMA_BASE + DMA_CH_WRITE_ADDR, BAD_DMA_ADDR);
-+    qtest_writel(qts, DMA_BASE + DMA_CH_TRANS_COUNT, 1);
-+    qtest_writel(qts, DMA_BASE + DMA_CH_CTRL_TRIG, ctrl);
-+
-+    g_assert_cmphex(qtest_readl(qts, DMA_BASE + DMA_CH_CTRL_TRIG) &
-+                    (DMA_CTRL_AHB_ERROR | DMA_CTRL_READ_ERROR |
-+                     DMA_CTRL_WRITE_ERROR | DMA_CTRL_BUSY), ==,
-+                    DMA_CTRL_AHB_ERROR | DMA_CTRL_WRITE_ERROR);
-+    g_assert_cmphex(qtest_readl(qts, DMA_BASE + DMA_CH_TRANS_COUNT), ==, 1);
-+    g_assert_cmphex(qtest_readl(qts, DMA_BASE + DMA_INTR), ==, BIT(0));
-+    g_assert_cmphex(qtest_readl(qts, DMA_BASE + DMA_INTS0), ==, BIT(0));
-+
-+    qtest_quit(qts);
-+}
-+
-+static void test_dma_timer_dreq(void)
-+{
-+    QTestState *qts = rp2040_start();
-+    const uint8_t source[] = { 0xa1, 0xb2, 0xc3 };
-+    uint8_t dest[sizeof(source)];
-+    uint32_t read_addr = SRAM_BASE + 0x280;
-+    uint32_t write_addr = SRAM_BASE + 0x290;
-+    uint32_t ctrl = DMA_CTRL_EN | DMA_CTRL_INCR_READ | DMA_CTRL_INCR_WRITE |
-+                    DMA_CTRL_DATA_SIZE_8 |
-+                    (DREQ_DMA_TIMER0 << DMA_CTRL_TREQ_SEL_SHIFT);
-+
-+    qtest_memwrite(qts, read_addr, source, sizeof(source));
-+    memset(dest, 0, sizeof(dest));
-+    qtest_memwrite(qts, write_addr, dest, sizeof(dest));
-+    qtest_writel(qts, DMA_BASE + DMA_CH_READ_ADDR, read_addr);
-+    qtest_writel(qts, DMA_BASE + DMA_CH_WRITE_ADDR, write_addr);
-+    qtest_writel(qts, DMA_BASE + DMA_CH_TRANS_COUNT, sizeof(source));
-+    qtest_writel(qts, DMA_BASE + DMA_CH_CTRL_TRIG, ctrl);
-+
-+    g_assert_cmphex(qtest_readl(qts, DMA_BASE + DMA_CH_CTRL_TRIG) &
-+                    DMA_CTRL_BUSY, ==, DMA_CTRL_BUSY);
-+    g_assert_cmphex(qtest_readl(qts, DMA_BASE + DMA_CH_TRANS_COUNT), ==,
-+                    sizeof(source));
-+
-+    /*
-+     * X/Y = 1/1000 on a nominal 125 MHz sys_clk gives one DREQ every
-+     * 8000 ns of QEMU virtual time.
-+     */
-+    qtest_writel(qts, DMA_BASE + DMA_TIMER0, (1u << 16) | 1000u);
-+    qtest_clock_step(qts, 7999);
-+    g_assert_cmphex(qtest_readl(qts, DMA_BASE + DMA_CH_TRANS_COUNT), ==,
-+                    sizeof(source));
-+
-+    qtest_clock_step(qts, 1);
-+    g_assert_cmphex(qtest_readl(qts, DMA_BASE + DMA_CH_TRANS_COUNT), ==, 2);
-+    g_assert_cmphex(qtest_readb(qts, write_addr), ==, source[0]);
-+
-+    qtest_clock_step(qts, 8000);
-+    g_assert_cmphex(qtest_readl(qts, DMA_BASE + DMA_CH_TRANS_COUNT), ==, 1);
-+    g_assert_cmphex(qtest_readb(qts, write_addr + 1), ==, source[1]);
-+
-+    qtest_clock_step(qts, 8000);
-+    g_assert_cmphex(qtest_readl(qts, DMA_BASE + DMA_CH_TRANS_COUNT), ==, 0);
-+    g_assert_cmphex(qtest_readl(qts, DMA_BASE + DMA_CH_CTRL_TRIG) &
-+                    DMA_CTRL_BUSY, ==, 0);
-+    qtest_memread(qts, write_addr, dest, sizeof(dest));
-+    g_assert_cmpmem(dest, sizeof(dest), source, sizeof(source));
-+
-+    qtest_quit(qts);
-+}
-+
-+static void test_dma_control_blocks(void)
-+{
-+    QTestState *qts = rp2040_start();
-+    const uint8_t source[] = { 0x44, 0x4d, 0x41 };
-+    uint8_t dest[sizeof(source)];
-+    uint32_t blocks[] = {
-+        sizeof(source), SRAM_BASE + 0x380,
-+        0, 0,
-+    };
-+    uint32_t block_addr = SRAM_BASE + 0x300;
-+    uint32_t read_addr = SRAM_BASE + 0x380;
-+    uint32_t write_addr = SRAM_BASE + 0x390;
-+    uint32_t chan1 = DMA_BASE + DMA_CH_SIZE;
-+    uint32_t ctrl_chan_ctrl;
-+    uint32_t data_chan_ctrl;
-+
-+    qtest_memwrite(qts, block_addr, blocks, sizeof(blocks));
-+    qtest_memwrite(qts, read_addr, source, sizeof(source));
-+
-+    /*
-+     * Channel 0 writes two 32-bit words into channel 1's alias 3
-+     * TRANS_COUNT/READ_ADDR registers.  The second write triggers channel 1.
-+     */
-+    ctrl_chan_ctrl = DMA_CTRL_EN | DMA_CTRL_INCR_READ |
-+                     DMA_CTRL_INCR_WRITE | DMA_CTRL_RING_SEL |
-+                     DMA_CTRL_DATA_SIZE_32 |
-+                     (3 << DMA_CTRL_RING_SIZE_SHIFT) |
-+                     (DREQ_FORCE << DMA_CTRL_TREQ_SEL_SHIFT);
-+
-+    /*
-+     * Channel 1 copies the configured block and chains back to channel 0.
-+     * The final zero-length control block sets channel 1's interrupt via
-+     * IRQ_QUIET, matching the SDK control_blocks example's termination.
-+     */
-+    data_chan_ctrl = DMA_CTRL_EN | DMA_CTRL_INCR_READ |
-+                     DMA_CTRL_INCR_WRITE | DMA_CTRL_IRQ_QUIET |
-+                     (DREQ_FORCE << DMA_CTRL_TREQ_SEL_SHIFT) |
-+                     (0 << DMA_CTRL_CHAIN_TO_SHIFT);
-+
-+    qtest_writel(qts, chan1 + DMA_CH_WRITE_ADDR, write_addr);
-+    qtest_writel(qts, chan1 + DMA_CH_AL1_CTRL, data_chan_ctrl);
-+
-+    qtest_writel(qts, DMA_BASE + DMA_CH_READ_ADDR, block_addr);
-+    qtest_writel(qts, DMA_BASE + DMA_CH_WRITE_ADDR,
-+                 chan1 + DMA_CH_AL3_TRANS_COUNT);
-+    qtest_writel(qts, DMA_BASE + DMA_CH_TRANS_COUNT, 2);
-+    qtest_writel(qts, DMA_BASE + DMA_CH_CTRL_TRIG, ctrl_chan_ctrl);
-+
-+    qtest_memread(qts, write_addr, dest, sizeof(dest));
-+    g_assert_cmpmem(dest, sizeof(dest), source, sizeof(source));
-+    g_assert_cmphex(qtest_readl(qts, chan1 + DMA_CH_TRANS_COUNT), ==, 0);
-+    g_assert_cmphex(qtest_readl(qts, chan1 + DMA_CH_CTRL_TRIG) &
-+                    DMA_CTRL_BUSY, ==, 0);
-+    g_assert_cmphex(qtest_readl(qts, DMA_BASE + DMA_INTR) & BIT(1), ==,
-+                    BIT(1));
++    g_assert_cmphex(qtest_readl(qts, IOQSPI_BASE + IOQSPI_PROC0_INTS), ==,
++                    BIT(2));
 +
 +    qtest_quit(qts);
 +}
@@ -1695,20 +538,11 @@ index 0000000000..830d591707
 +{
 +    g_test_init(&argc, &argv, NULL);
 +
-+    qtest_add_func("/rp2040-dma/xip-ssi-rx-dreq",
-+                   test_dma_xip_ssi_rx_dreq);
-+    qtest_add_func("/rp2040-dma/write-ring-wrap",
-+                   test_dma_write_ring_wrap);
-+    qtest_add_func("/rp2040-dma/channel-abort",
-+                   test_dma_channel_abort);
-+    qtest_add_func("/rp2040-dma/sniff-sum",
-+                   test_dma_sniff_sum);
-+    qtest_add_func("/rp2040-dma/error-status",
-+                   test_dma_error_status);
-+    qtest_add_func("/rp2040-dma/timer-dreq",
-+                   test_dma_timer_dreq);
-+    qtest_add_func("/rp2040-dma/control-blocks",
-+                   test_dma_control_blocks);
++    qtest_add_func("/rp2040-ioqspi/reset-values", test_ioqspi_reset_values);
++    qtest_add_func("/rp2040-ioqspi/atomic-ctrl-aliases",
++                   test_ioqspi_atomic_ctrl_aliases);
++    qtest_add_func("/rp2040-ioqspi/interrupt-force-status",
++                   test_ioqspi_interrupt_force_status);
 +
 +    return g_test_run();
 +}

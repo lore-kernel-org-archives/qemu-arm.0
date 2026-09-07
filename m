@@ -4,104 +4,124 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 957D0C79F89
-	for <qemu-arm@archiver.kernel.org>; Mon,  7 Sep 2026 13:16:52 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7383AC79F9E
+	for <qemu-arm@archiver.kernel.org>; Mon,  7 Sep 2026 13:23:23 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1x3ZBI-0004fO-95; Mon, 07 Sep 2026 09:14:40 -0400
+	id 1x3ZJN-0002Lp-Ic; Mon, 07 Sep 2026 09:23:01 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <marcandre.lureau@redhat.com>)
- id 1x3ZBG-0004XM-7q
- for qemu-arm@nongnu.org; Mon, 07 Sep 2026 09:14:38 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <marcandre.lureau@redhat.com>)
- id 1x3ZBE-0006Xd-ML
- for qemu-arm@nongnu.org; Mon, 07 Sep 2026 09:14:37 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1788786876;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=aoHiToUGAMMc7R5tO/URvtcB1gdA7zvemloBOxAK2DI=;
- b=cqtDd2Vu7J0B72aMdY42wH2bam0+n60KEt/1yl6ilKn7yWq69rZPnXIVsS4QhC2zHjtVPE
- MZHdCbEfEygUwBMpiWTM0j5W1RcWRJEUNFFYgmmDP+y4bPnqbKfkUfx89hhlcWEZlrItD3
- eepqe6fMwxtQQdn781DgtTU4aZ6Z+6I=
-Received: from mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
- relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-687-ngI4UzHXPceQ6iyR-MDQOQ-1; Mon,
- 07 Sep 2026 09:14:32 -0400
-X-MC-Unique: ngI4UzHXPceQ6iyR-MDQOQ-1
-X-Mimecast-MFC-AGG-ID: ngI4UzHXPceQ6iyR-MDQOQ_1788786870
-Received: from mx-prod-int-10.mail-002.prod.us-west-2.aws.redhat.com
- (mx-prod-int-10.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.95])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
- (No client certificate requested)
- by mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id A5C3D1955F1D; Mon,  7 Sep 2026 13:14:30 +0000 (UTC)
-Received: from localhost (headnet04.pony-001.prod.iad2.dc.redhat.com
- [10.2.32.116])
- by mx-prod-int-10.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id 62C39423; Mon,  7 Sep 2026 13:14:29 +0000 (UTC)
-From: =?utf-8?q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>
-Date: Mon, 07 Sep 2026 17:14:01 +0400
-Subject: [PATCH v3 7/9] tests/ide-test: convert to QMP
+ (Exim 4.90_1) (envelope-from <marcandre.lureau@gmail.com>)
+ id 1x3ZJM-0002LG-IF
+ for qemu-arm@nongnu.org; Mon, 07 Sep 2026 09:23:00 -0400
+Received: from mail-ot1-x32b.google.com ([2607:f8b0:4864:20::32b])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <marcandre.lureau@gmail.com>)
+ id 1x3ZJK-0007d2-UQ
+ for qemu-arm@nongnu.org; Mon, 07 Sep 2026 09:23:00 -0400
+Received: by mail-ot1-x32b.google.com with SMTP id
+ 46e09a7af769-7eb6573bd52so3374641a34.3
+ for <qemu-arm@nongnu.org>; Mon, 07 Sep 2026 06:22:57 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1788787376; cv=none;
+ d=google.com; s=arc-20260327;
+ b=mE9TLiRg9ZJlCVHMXnDrqVwJXdM5MZIJ2PqDe7KnZxeB3/COvXOEZmsPqZRnoFUmA/
+ JzRT7nwdyj7J/H3jRuMb+iMsMblhAhW05Uzfro7no+HYLmMg/kru5wxMARQ7kB4L4+13
+ ingNWQZ2ZKsH6Qr5Mo6+s+jQ63IEHt5WbhuW61yqHPKc82K0SshJDer2gCldPOGIP9o5
+ NmyudxtmpBEs+h714LMxtAZA53VnW52Ju+iuhBquVEvhrK8q+Koba+ZmcomEBDSdPHIl
+ CCCsoSWxZdyIns83bFur4caUVt4vZFwf3cqkk+5owj5SDrQVDZ/QKU+OKkjXA7ogwxON
+ H5kA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
+ s=arc-20260327; 
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:dkim-signature;
+ bh=UlmXn5XFwHuu5bAKOSvrcrxBAOgoLVaDqZUm5RWuyMU=;
+ fh=LMxJ8qXKJDpgAV7Q5hUhZyFjK3vXmhMTOjOrSeLnlHA=;
+ b=HZF1yNjxKvh+jutba5dQJ0bhNOaeDYnAkELuK4Yfn+2rqZ/9Si74oDEf++vd+Low1G
+ H+L6LH2in0z66dwSD31TUK2+wDDRql29UpDwyLBIZtqMsHK/0Q3ZvoTr0ViTer7OaFdo
+ oJuWE4VO+QE/rbmCmefR1RwOj/rb5DgAlphD/0VQ5RXIWqEcvdGsHfzQ/XivX1YPHyuC
+ sS39UnYx54ZnBp8CgHgEo6vbR2oyks9u+Zxe/pj/gEMB531fhnSQ4pT+uJ8vO6qQgHv8
+ NMEpulO8ixO7uR15GrEQGRhuh3yOEeYy0MdizFZ3oRb76mZ/fJnuX1M7UKZACaGVJGJk
+ 2g4w==; darn=nongnu.org
+ARC-Authentication-Results: i=1; mx.google.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=redhat.com; s=google; t=1788787376; x=1789392176; darn=nongnu.org;
+ h=content-transfer-encoding:content-type:cc:to:subject:message-id
+ :date:from:in-reply-to:references:mime-version:from:to:cc:subject
+ :date:message-id:reply-to:content-type;
+ bh=UlmXn5XFwHuu5bAKOSvrcrxBAOgoLVaDqZUm5RWuyMU=;
+ b=HbkN4irLTsJN0Ke/lC0VWmSNMB2WfmnQMDpoD1gYChrjvJEwtgBj2TD0B/6jP+8W7A
+ ayT4fJ4DhzhXKeh0TmqwQQEU9S71279+gL8dt1ZpRPBy37oLjg6fljzqMk7sXADHy8qx
+ lx8joO6QgIN+iTGq2ptbLEmYe6c4RcfbsS24zzM/rxWWroyHmCGJOypk+FzVFlc1EtDe
+ ivUbuspy6trU7DkWx5WN0AekaitW5l06oiiycFC1t+yixtl+pPOW7QuKutZKyjfkzmgL
+ PEVIW97aktRaGp1z31cubHt73ZMx+M/oG3RLJdn+eT6GgtT+5ihfhhc7STb20Ahez6aY
+ EV2g==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20251104; t=1788787376; x=1789392176;
+ h=content-transfer-encoding:content-type:cc:to:subject:message-id
+ :date:from:in-reply-to:references:mime-version:x-gm-gg
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
+ :content-type;
+ bh=UlmXn5XFwHuu5bAKOSvrcrxBAOgoLVaDqZUm5RWuyMU=;
+ b=Ax55Pa1/AoK0Y2RGuXGPOEZ0BKtoaZveNNZm+XSiKocTUiCTphZsg7qatWMrLxHKPF
+ G0KSBS2J0auXkKImIu5WupOYnOdgDgxzJ45x3rmH1WDj3foFlhIi15ezdDxiBQUNee2E
+ 44cBYmM1EQ2lTl8te4G6hpMAwf3lanMiEO6nbWrCH3ZzypygmeDTIh2zNkjn0EXcDaoO
+ G1xSfSbAQaGps8hdzo1p01AunEx0uOZkKzq4HzHpbCqVxxG85QoFYVPNjae1++mKRBjl
+ UV/ze75alK+5lrf96cOXYZSELZDqWF1dJGl9zrORz2r4/2I/rvWA4pXZf3m6su3WuvTH
+ Bsrg==
+X-Forwarded-Encrypted: i=1;
+ AKwUvBzCcwXs1eLinX4XbLyI7RAOY4I3wGgn9x/hgTCb0Kd21BKshYm//7EPTYQ5ZmY5I1gNV8n793taZA==@nongnu.org
+X-Gm-Message-State: AFuF++llG6LA+4wHNjgiUEKwcWfJARh8EL76oNxAGqjQWlvCRN+feFsF
+ gzq6R0zh4qYEZu1VW3PqihPiuoFKNPz//fRuck90Q2h9/QBy4QGQ3o7dXxoEJmD3I7fnkxvH4nk
+ TwB5uzq7m1i5LkDd7+Jg3pw9P4/pT98U=
+X-Gm-Gg: AYBFou2PKqc9sGMikCUpWL1aoh5zSzH5j5wbWeOaX0dxUuLccwrQ4qB3EECa+Aw8o6M
+ Wo2R5R2BtXMQ7KH/k7eyffXeFMYLeH1vun0b9J1z6vrgIGrmpOrTbJnnTCSlQfUvYzCf/vi66eH
+ +nQsTEnqG1j2xzp8t0npb6mFfPk/vNL6oD3TvbOFozuabuqQe9xOoxuZXTWCierr/TO29qWHLRs
+ Vocd0k+cg+KtjmFa7I89BRRHclm039XmZJ8+5lLZvp+0W905NB60XZmJfWPk72/LYtqlUX7Jmii
+ NEtEorZSPpftCeDdl6S6JoJOI/179UYiDGdRrZxgk9Vglc7e+V+vgKYZznApxJ2pg/qVSYCMSz6
+ W
+X-Received: by 2002:a05:6820:1798:b0:6b7:46fa:16a3 with SMTP id
+ 006d021491bc7-6b746fa1addmr11834654eaf.56.1788787376091; Mon, 07 Sep 2026
+ 06:22:56 -0700 (PDT)
 MIME-Version: 1.0
-Message-Id: <20260907-nohmp-v3-7-c11e7d0d3d7d@redhat.com>
-References: <20260907-nohmp-v3-0-c11e7d0d3d7d@redhat.com>
-In-Reply-To: <20260907-nohmp-v3-0-c11e7d0d3d7d@redhat.com>
-To: qemu-devel@nongnu.org
-Cc: John Snow <jsnow@redhat.com>, "Denis V. Lunev" <den@openvz.org>, 
- Fabiano Rosas <farosas@suse.de>, Laurent Vivier <lvivier@redhat.com>, 
- Paolo Bonzini <pbonzini@redhat.com>, qemu-block@nongnu.org, 
- Peter Maydell <peter.maydell@linaro.org>, 
- Thomas Huth <th.huth+qemu@posteo.eu>, 
- =?utf-8?q?Philippe_Mathieu-Daud=C3=A9?= <philmd@oss.qualcomm.com>, 
- Aurelien Jarno <aurelien@aurel32.net>, qemu-arm@nongnu.org, 
- Halil Pasic <pasic@linux.ibm.com>, 
+References: <20260906-nohmp-next-v1-0-2b21e63974f3@redhat.com>
+ <20260906-nohmp-next-v1-2-2b21e63974f3@redhat.com>
+ <20260907075640-mutt-send-email-mst@kernel.org>
+In-Reply-To: <20260907075640-mutt-send-email-mst@kernel.org>
+From: =?UTF-8?B?TWFyYy1BbmRyw6kgTHVyZWF1?= <marcandre.lureau@redhat.com>
+Date: Mon, 7 Sep 2026 17:22:43 +0400
+X-Gm-Features: AcwNN1XnN-2oQKhD7NPPvTaTB_Rq_yBoi6aT19bR1t2Pdi1NvCovgqYOfupJBS4
+Message-ID: <CAJ+F1CJfjvYWRW1Az=1Q2vUMM+RS56-_a5ugLbepeznHm8pvxw@mail.gmail.com>
+Subject: Re: [PATCH 2/9] tests/test_vhost_user_bridge: skip when running ASAN
+To: "Michael S. Tsirkin" <mst@redhat.com>
+Cc: qemu-devel@nongnu.org, Brian Cain <brian.cain@oss.qualcomm.com>, 
+ Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>, 
+ Stefano Garzarella <sgarzare@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>, 
+ Zhao Liu <zhao1.liu@intel.com>, Peter Maydell <peter.maydell@linaro.org>, 
+ =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@oss.qualcomm.com>, 
+ qemu-arm@nongnu.org, Ani Sinha <anisinha@redhat.com>,
+ Gerd Hoffman <kraxel@redhat.com>, 
+ Fabiano Rosas <farosas@suse.de>, Laurent Vivier <lvivier@redhat.com>,
+ Jared Rossi <jrossi@linux.ibm.com>, Zhuoying Cai <zycai@linux.ibm.com>,
  Christian Borntraeger <borntraeger@linux.ibm.com>, 
+ Jason Herne <jjherne@linux.ibm.com>,
+ Richard Henderson <richard.henderson@linaro.org>, 
+ Ilya Leoshkevich <iii@linux.ibm.com>, David Hildenbrand <david@kernel.org>,
+ Halil Pasic <pasic@linux.ibm.com>, 
  Eric Farman <farman@linux.ibm.com>, Matthew Rosato <mjrosato@linux.ibm.com>, 
- Cornelia Huck <cohuck@redhat.com>, qemu-s390x@nongnu.org, 
- =?utf-8?q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>, 
- Glenn Miles <milesg@linux.ibm.com>, qemu-ppc@nongnu.org, 
- =?utf-8?q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>
-X-Developer-Signature: v=1; a=openpgp-sha256; l=2957;
- i=marcandre.lureau@redhat.com; h=from:subject:message-id;
- bh=bnu0nsKu9/3amglgx/1TloBIQkah/oVYczwxwKZZtsQ=;
- b=owEBbQKS/ZANAwAKAdro4Ql1lpzlAcsmYgBqnriY0PUf6M8fi7Yo84q5+2kn/3saU3J0Z0lc+
- QnhKk/C2sWJAjMEAAEKAB0WIQSHqb2TP4fGBtJ29i3a6OEJdZac5QUCap64mAAKCRDa6OEJdZac
- 5bLRD/oDURKyg/Z+/r3WqZ2c/V+Et9BhE9UmWNm0XgliwVW2IC4U4iBd05/dc5Jdr5IWYJxxKOb
- VGIrvAeOL6f+PmWlf4r4zk+jmExysQ4eR/okI2hsi1/m93ZkFo+Y0vs2JbkkDy8aufUNoekEVo6
- ZYQaSYP4EgIAikqpffI8jS1heWLVDQs7KB/q0sS1c4QRHRz/71DCCGS2J1g3T+ej30/9MDW0KnA
- m+EBjkPeikVEwuFfrqDgcRSyOc6SxLL6Cvls5e+Dd+0DY+ju0FW1RNHOzLxSwVRAUkk1LaTbyo4
- todxqaV10bfzMq0M/v/SyTJZCfXPrCUBuQff2kL9neiX4uyN5PTk/aTllm0heaesruzlq5U3UbX
- N+Q1WrOrA5PIZ/hJsRhvdU9SqqTGF4dFgV27AH+upGrG+P2PlGRuc+357wDA2jdmHNttCkfQlSo
- tQl+nDRa6flu+l/ykEG1+bQGlRESlERqo8CMXvSOxsm1yiJdlrNeFtSNCZBT8VDI9o54Rwpq8CT
- O9nFcCUdqZoEzloh4nWGgO9s/rfKtlWWgrvky/NtM+SMtIa9eIXB2vCU7e5Xk0q0JztEQ9nqAtB
- hDB1/MeM0HU/rWDFAm/tVhQ17rfh5CQiNf9uy5W2jdBwzwaFWJAHyHiQKoS+Vn8clPWPs5tUSZa
- 3c69NPN3yzR7PMA==
-X-Developer-Key: i=marcandre.lureau@redhat.com; a=openpgp;
- fpr=87A9BD933F87C606D276F62DDAE8E10975969CE5
-X-Scanned-By: MIMEDefang 3.6 on 10.30.177.95
-X-Mimecast-MFC-PROC-ID: wZDx7nFmRzvLIUqsxIxGApKKSe7eA6l3NQGDqUTuLqs_1788786870
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=170.10.129.124;
- envelope-from=marcandre.lureau@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: 12
-X-Spam_score: 1.2
-X-Spam_bar: +
-X-Spam_report: (1.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=0.001, RCVD_IN_SBL_CSS=3.335,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=no autolearn_force=no
+ Cornelia Huck <cohuck@redhat.com>, qemu-s390x@nongnu.org
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2607:f8b0:4864:20::32b;
+ envelope-from=marcandre.lureau@gmail.com; helo=mail-ot1-x32b.google.com
+X-Spam_score_int: -16
+X-Spam_score: -1.7
+X-Spam_bar: -
+X-Spam_report: (-1.7 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, FREEMAIL_FORGED_FROMDOMAIN=0.001,
+ FREEMAIL_FROM=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.25,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -117,86 +137,95 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-The QMP command is explicit, specify both the vmstate and devices.
-We use the helper introduced previously to wait for job completion.
+Hi
 
-Reviewed-by: Daniel P. Berrangé <berrange@redhat.com>
-Signed-off-by: Marc-André Lureau <marcandre.lureau@redhat.com>
----
- tests/qtest/ide-test.c | 37 ++++++++++++++++++++++++++++---------
- 1 file changed, 28 insertions(+), 9 deletions(-)
+On Mon, Sep 7, 2026 at 4:03=E2=80=AFPM Michael S. Tsirkin <mst@redhat.com> =
+wrote:
+>
+> does not look like this patch skips any tests?
+>
 
-diff --git a/tests/qtest/ide-test.c b/tests/qtest/ide-test.c
-index 895fec6d0806..cf109b079982 100644
---- a/tests/qtest/ide-test.c
-+++ b/tests/qtest/ide-test.c
-@@ -1345,11 +1345,34 @@ static void ide_prepare_markers(QTestState *qts, QPCIDevice *dev,
-     ide_write_marker(qts, dev, ide_bar, 63, CHS_MARKER_DEFAULT);
- }
- 
--static void ide_hmp_quiet(QTestState *qts, const char *command)
-+static void ide_snapshot_save(QTestState *qts, const char *tag,
-+                              const char *vmstate, const char *device)
- {
--    g_autofree char *out = qtest_hmp(qts, "%s", command);
-+    qtest_qmp_assert_success(qts,
-+        "{ 'execute': 'snapshot-save',"
-+        "  'arguments': {"
-+        "    'job-id': 'save0',"
-+        "    'tag': %s,"
-+        "    'vmstate': %s,"
-+        "    'devices': [%s]"
-+        "  }"
-+        "}", tag, vmstate, device);
-+    qtest_qmp_job_wait(qts, "save0");
-+}
- 
--    g_assert_cmpstr(out, ==, "");
-+static void ide_snapshot_load(QTestState *qts, const char *tag,
-+                              const char *vmstate, const char *device)
-+{
-+    qtest_qmp_assert_success(qts,
-+        "{ 'execute': 'snapshot-load',"
-+        "  'arguments': {"
-+        "    'job-id': 'load0',"
-+        "    'tag': %s,"
-+        "    'vmstate': %s,"
-+        "    'devices': [%s]"
-+        "  }"
-+        "}", tag, vmstate, device);
-+    qtest_qmp_job_wait(qts, "load0");
- }
- 
- static char *ide_migration_status(QTestState *qts)
-@@ -1455,10 +1478,6 @@ static void test_migrate_chs_snapshot(void)
-     char marker[9];
-     int fd;
- 
--#ifndef CONFIG_HMP
--    g_test_skip("HMP not enabled");
--    return;
--#endif
-     if (!have_qemu_img()) {
-         g_test_skip("QTEST_QEMU_IMG not set, snapshots need a qcow2 image");
-         return;
-@@ -1480,13 +1499,13 @@ static void test_migrate_chs_snapshot(void)
-     /* Snapshot taken while the default translation is in effect */
-     ide_read_chs_marker(qts, dev, ide_bar, 0, 1, 1, marker);
-     g_assert_cmpstr(marker, ==, CHS_MARKER_DEFAULT);
--    ide_hmp_quiet(qts, "savevm s0");
-+    ide_snapshot_save(qts, "s0", "hda", "hda");
- 
-     ide_set_translation(dev, ide_bar, 8, 32);
-     ide_read_chs_marker(qts, dev, ide_bar, 0, 1, 1, marker);
-     g_assert_cmpstr(marker, ==, CHS_MARKER_CUSTOM);
- 
--    ide_hmp_quiet(qts, "loadvm s0");
-+    ide_snapshot_load(qts, "s0", "hda", "hda");
- 
-     ide_read_chs_marker(qts, dev, ide_bar, 0, 1, 1, marker);
-     g_assert_cmpstr(marker, ==, CHS_MARKER_DEFAULT);
+true, I will update the commit title
 
--- 
-2.55.0.543.g5ebe2ebe4ea8
+> On Sun, Sep 06, 2026 at 12:53:34PM +0400, Marc-Andr=C3=A9 Lureau wrote:
+> > Running vhost-user-bridge built with ASAN with stdbuf dies:
+> > =3D=3D2431898=3D=3DASan runtime does not come first in initial library =
+list; you
+> > should either link runtime to your application or manually preload it
+> > with LD_PRELOAD.
+>
+> so it dies but why? judging by below because of stdbuf?
+>
+> pls describe the fix not just the problem.
 
+Running vhost-user-bridge built with ASAN with stdbuf dies:
+=3D=3D2431898=3D=3DASan runtime does not come first in initial library
+
+The fix skip using stdbuf when the binary is built with ASAN, since it
+seems optional anyway
+
+>
+> > Signed-off-by: Marc-Andr=C3=A9 Lureau <marcandre.lureau@redhat.com>
+> > ---
+> >  tests/functional/x86_64/test_vhost_user_bridge.py | 13 +++++++++++++
+> >  1 file changed, 13 insertions(+)
+> >
+> > diff --git a/tests/functional/x86_64/test_vhost_user_bridge.py b/tests/=
+functional/x86_64/test_vhost_user_bridge.py
+> > index c36c62542053..5fedf61c5e72 100755
+> > --- a/tests/functional/x86_64/test_vhost_user_bridge.py
+> > +++ b/tests/functional/x86_64/test_vhost_user_bridge.py
+> > @@ -73,12 +73,25 @@ def configure_vm(self, ud_socket_path, lport, rport=
+, hostfwd_port, tftpdir):
+> >              "-netdev",   "hubport,id=3Dhub1,hubid=3D0,netdev=3Duser0"
+> >          )
+> >
+> > +    @staticmethod
+> > +    def _is_asan_linked(binary_path):
+> > +        try:
+> > +            output =3D subprocess.check_output(
+> > +                ["ldd", binary_path], stderr=3Dsubprocess.DEVNULL, tex=
+t=3DTrue)
+> > +            return "libasan" in output
+>
+>
+> this is quite a hack
+
+yeah
+
+>
+> > +        except (subprocess.CalledProcessError, FileNotFoundError):
+> > +            return False
+> > +
+> >      def assemble_vubr_args(self, vubr_path, ud_socket_path, lport, rpo=
+rt):
+> >          vubr_args =3D []
+> >
+> >          if (stdbuf_path :=3D which("stdbuf")) is None:
+> >              self.log.info("Could not find stdbuf: vhost-user-bridge "
+> >                            "log lines may appear out of order")
+> > +        elif self._is_asan_linked(vubr_path):
+> > +            self.log.info("vhost-user-bridge is ASan-linked: skipping =
+"
+> > +                          "stdbuf to avoid LD_PRELOAD conflict, "
+> > +                          "log lines may appear out of order")
+> >          else:
+> >              vubr_args +=3D [stdbuf_path, "-o0", "-e0"]
+> >
+>
+>
+> maybe just avoid stdbuf completely.
+> i don't remember why we use it, but it looks like merely to
+> disable buffering for stdout?
+>
+> If so:
+>
+> setvbuf(stdout, NULL, _IONBF, 0);
+>
+> will do just that with no asan issues.
+>
+
+That requires modifying vhost-user-bridge, not sure that's what we want.
+
+thanks
 

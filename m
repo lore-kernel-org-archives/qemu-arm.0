@@ -4,92 +4,90 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D3FFFC79F89
-	for <qemu-arm@archiver.kernel.org>; Mon,  7 Sep 2026 12:20:21 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 87419C79F89
+	for <qemu-arm@archiver.kernel.org>; Mon,  7 Sep 2026 13:02:56 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1x3YK5-0004sJ-I4; Mon, 07 Sep 2026 08:19:41 -0400
+	id 1x3Yzo-0006Ds-1P; Mon, 07 Sep 2026 09:02:48 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
- id 1x3YK4-0004rQ-BL
- for qemu-arm@nongnu.org; Mon, 07 Sep 2026 08:19:40 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
- id 1x3YK0-0007Xc-7K
- for qemu-arm@nongnu.org; Mon, 07 Sep 2026 08:19:40 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1788783575;
- h=from:from:reply-to:reply-to:subject:subject:date:date:
- message-id:message-id:to:to:cc:cc:mime-version:mime-version:
- content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=ilfipd0aoXXr9zUcbM5+kwImNY82EPEKtPSPFb2m4rE=;
- b=Rup+7bw0UIQMXnUWk8ETHvCxOTzrIljAlszpnKSZ1S2dy6aPbhcOA1ln84IyXaNYh5gAQc
- i1LaXOGXMdGLrPvJ4ZDI7TUn435BtJUvpXpjkmykreRHnKlre29z3Y7kgsvVHLsmKaLJ86
- TYgFVpD/5SydScY/esjrQztR96l5xEs=
-Received: from mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
- relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-358-d97VfovpPwe44XqEDHm3cw-1; Mon,
- 07 Sep 2026 08:19:32 -0400
-X-MC-Unique: d97VfovpPwe44XqEDHm3cw-1
-X-Mimecast-MFC-AGG-ID: d97VfovpPwe44XqEDHm3cw_1788783570
-Received: from mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com
- (mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.93])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
- (No client certificate requested)
- by mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id E85131801BF7; Mon,  7 Sep 2026 12:19:29 +0000 (UTC)
-Received: from redhat.com (headnet05.pony-001.prod.iad2.dc.redhat.com
- [10.2.32.117])
- by mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 40E5318005AA; Mon,  7 Sep 2026 12:19:24 +0000 (UTC)
-Date: Mon, 7 Sep 2026 13:19:21 +0100
-From: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
-To: Thomas Huth <thuth@redhat.com>
-Cc: =?utf-8?Q?Marc-Andr=C3=A9?= Lureau <marcandre.lureau@redhat.com>,
- qemu-devel@nongnu.org, John Snow <jsnow@redhat.com>,
- "Denis V. Lunev" <den@openvz.org>, Fabiano Rosas <farosas@suse.de>,
- Laurent Vivier <lvivier@redhat.com>,
- Paolo Bonzini <pbonzini@redhat.com>, qemu-block@nongnu.org,
- Peter Maydell <peter.maydell@linaro.org>,
- Thomas Huth <th.huth+qemu@posteo.eu>,
- Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@oss.qualcomm.com>,
- Aurelien Jarno <aurelien@aurel32.net>, qemu-arm@nongnu.org,
- Halil Pasic <pasic@linux.ibm.com>,
- Christian Borntraeger <borntraeger@linux.ibm.com>,
- Eric Farman <farman@linux.ibm.com>,
- Matthew Rosato <mjrosato@linux.ibm.com>,
- Cornelia Huck <cohuck@redhat.com>, qemu-s390x@nongnu.org,
- Glenn Miles <milesg@linux.ibm.com>, qemu-ppc@nongnu.org
-Subject: Re: [PATCH v2 02/10] tests/functional: add skipUnlessConfig() helper
-Message-ID: <ap6ryb0M-16t0_6o@redhat.com>
-References: <20260907-nohmp-v2-0-6d952d972c21@redhat.com>
- <20260907-nohmp-v2-2-6d952d972c21@redhat.com>
- <3f5f77fc-05c9-4b26-8290-28b16dfd3be4@redhat.com>
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1x3Yza-00068R-DQ
+ for qemu-arm@nongnu.org; Mon, 07 Sep 2026 09:02:34 -0400
+Received: from mail-wm1-x330.google.com ([2a00:1450:4864:20::330])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1x3YzY-00050V-NR
+ for qemu-arm@nongnu.org; Mon, 07 Sep 2026 09:02:34 -0400
+Received: by mail-wm1-x330.google.com with SMTP id
+ 5b1f17b1804b1-49ccfae359fso31381405e9.3
+ for <qemu-arm@nongnu.org>; Mon, 07 Sep 2026 06:02:31 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1788786150; x=1789390950; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+ :message-id:reply-to:content-type;
+ bh=V5GTzXoa5Bc18T0mL4aBCRmcSOeg2+fjb2ceHf6mrW4=;
+ b=MYQpNvJ9Zr5LJR8o1Emc5RcmL9Qi60jb9iZqHHSSiOS1o4m2Rz4bGJyF+hhkkssj5y
+ r97zFSJ6vkuJDKm66Z59O7fyb/v3fns/I1hTGbbqdu19/GG4KSpL0OZGBkGu9ZgehOuc
+ mJbUTh7DoSuz9PhS4mlR6rxfoPZAiBsCpSRwbQMgAgNWkFLVNGEEBDTC/HqqlP954iJL
+ /34jFXZG6+Fy2zDrNhm3UHgTmczag13DdyxeRcg4L0FpsSA+1VqEjVcIlEvZga8l/YXk
+ 1iQHvuueIvgdZsbjxRxKXmkcf3eq2V3TCWZQcbVMK0Ln8H1uaoMXCSfTonV7KAGKlHxm
+ Jzvw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20251104; t=1788786150; x=1789390950;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
+ :to:cc:subject:date:message-id:reply-to:content-type;
+ bh=V5GTzXoa5Bc18T0mL4aBCRmcSOeg2+fjb2ceHf6mrW4=;
+ b=GcZLp7HvPBqwO81f6PlHM2Y5/bMpmnukPUMoojYx4KYbvEQcwcLH4gAjrTxYNBiTGA
+ 5KJbp7T0d4RV1qs4IblTgAPWWRXEaM/nEuWj5mDqjgwzewkNwc/oQt+rGKQVDhPeGQe2
+ lA7fHYRihGBfe5xvDPwQWlgDAqzkgALFEpwrFrWVHhcp5lpjPRueavL/2oIORmOU3Mkf
+ pRVpuEXNMgLZSD5SAcfOskvbssRrq813A51SaUvhHlhU1ZGQ0Fd0LB4W4PfY2PblPJ5B
+ 7BZNk7VrDYmZsjXtz4eLD1AA+qbPMzgR267hlP+9P9GiM/2Zp3Ep9ZguCbQx/E3jpyhu
+ uEEQ==
+X-Gm-Message-State: AFuF++nVrlxDstlxUlnece6waykWmwolJHOCH79n25AcSXufku2p9eey
+ xdYl0jBfBI7PCcMBiPogz7zXQY6IeUOGIoOO64nm0PYf90uDTcAzD4KXq/eE9LwEiVD1ox2t2GO
+ Dpz5e7o8=
+X-Gm-Gg: AYBFou2bsJEwv3oeDpCggVQYi288VUpy/tJwIF+A5QOLatmnY5cRPW0zoJHIB7xMBN4
+ KSAsK4TfDU0xnGrmhafKRtx6pK/b5TVbD0J/IzUz/lG1FH8ZrxBnnM5IwRqCGzewLnX4WCTb5OO
+ 1yZVkkRqb/tDh2Ivnc7WAPFp4JiBXk76n61VLvuH8jjr3+LER5/PY9L+tVlufEUV6WESRJf/YXz
+ U4LpfzIYsZ7LQOg87pSVCKW0jJEHD+xSPRnC+mj0TS7jidnhDnIcZdvoB52NJfM25WohBlUOOVY
+ 9Kkkq6Q+md95a39EtsQeFpWh1dt4CtKtrIcx+urusxo4zIDtTNf8Sryrghygzw3smohdlRrzYw8
+ 3xPZjOisEDLdL9E67GohXM4lVmMCQPaUpOSNHqvqHlo8SdVGkNiyNM9EahaT80Jj51szFoBY2eq
+ Z8exdL2zCo27fGpUMho+pugnyc9JJhzU2FOM0QEHufuf5jZrCPyCiUTG9s8JBvjPYtgf87mvdMY
+ MiC4qJX3VJfbVh05UxquMeyXZM4E0wQEGGlQnE2h+l2GVz7S2M9jj4Vk/njSjIb/LwwLA==
+X-Received: by 2002:a05:600c:6088:b0:49c:fc6c:be15 with SMTP id
+ 5b1f17b1804b1-49cfc6cc100mr200288545e9.27.1788786150108; 
+ Mon, 07 Sep 2026 06:02:30 -0700 (PDT)
+Received: from lanath.. (wildly.archaic.org.uk. [81.2.115.145])
+ by smtp.gmail.com with ESMTPSA id
+ 5b1f17b1804b1-49cee60bae6sm468589935e9.9.2026.09.07.06.02.28
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Mon, 07 Sep 2026 06:02:29 -0700 (PDT)
+From: Peter Maydell <peter.maydell@linaro.org>
+To: qemu-arm@nongnu.org,
+	qemu-devel@nongnu.org
+Cc: Tao Ding <dingtao0430@163.com>
+Subject: [PATCH 4/8] target/arm: Don't use arm_cp_reset_ignore when
+ fieldoffset is 0
+Date: Mon,  7 Sep 2026 14:02:19 +0100
+Message-ID: <20260907130223.3148989-5-peter.maydell@linaro.org>
+X-Mailer: git-send-email 2.43.0
+In-Reply-To: <20260907130223.3148989-1-peter.maydell@linaro.org>
+References: <20260907130223.3148989-1-peter.maydell@linaro.org>
 MIME-Version: 1.0
-In-Reply-To: <3f5f77fc-05c9-4b26-8290-28b16dfd3be4@redhat.com>
-User-Agent: Mutt/2.4.0 (2026-06-19)
-X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.93
-X-Mimecast-MFC-PROC-ID: NBqjZZmUd5hVG3LcyjX3MYqILI-TpaY8E9iIS5rq9V8_1788783570
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=berrange@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::330;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x330.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -102,85 +100,66 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-To: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Mon, Sep 07, 2026 at 02:02:29PM +0200, Thomas Huth wrote:
->  Hi!
-> 
-> On 07/09/2026 12.30, Marc-André Lureau wrote:
-> > Read config-host.h and skip tests that rely on some CONFIG_*
-> > values.
-> > 
-> > Signed-off-by: Marc-André Lureau <marcandre.lureau@redhat.com>
-> > ---
-> >   tests/functional/qemu_test/__init__.py   |  2 +-
-> >   tests/functional/qemu_test/decorators.py | 25 +++++++++++++++++++++++++
-> >   2 files changed, 26 insertions(+), 1 deletion(-)
-> > 
-> > diff --git a/tests/functional/qemu_test/__init__.py b/tests/functional/qemu_test/__init__.py
-> > index 03e5c73d39dc..e21fa8279281 100644
-> > --- a/tests/functional/qemu_test/__init__.py
-> > +++ b/tests/functional/qemu_test/__init__.py
-> > @@ -16,7 +16,7 @@
-> >   from .decorators import skipIfMissingCommands, skipIfNotMachine, \
-> >       skipFlakyTest, skipUntrustedTest, skipBigDataTest, skipSlowTest, \
-> >       skipIfMissingImports, skipIfOperatingSystem, skipUnlessOperatingSystem, \
-> > -    skipLockedMemoryTest, skipIfMissingEnv
-> > +    skipLockedMemoryTest, skipIfMissingEnv, skipUnlessConfig
-> >   from .archive import archive_extract
-> >   from .uncompress import uncompress
-> >   from .gdb import GDB
-> > diff --git a/tests/functional/qemu_test/decorators.py b/tests/functional/qemu_test/decorators.py
-> > index aa135acc7857..7a7d30503440 100644
-> > --- a/tests/functional/qemu_test/decorators.py
-> > +++ b/tests/functional/qemu_test/decorators.py
-> > @@ -10,6 +10,7 @@
-> >   from unittest import skipIf, skipUnless
-> >   from .cmd import which
-> > +from .config import BUILD_DIR
-> >   def skipIfMissingEnv(*vars_):
-> > @@ -162,6 +163,30 @@ def skipIfMissingImports(*args):
-> >       return skipUnless(has_imports, 'required import(s) "%s" not installed' %
-> >                                      ", ".join(args))
-> > +def _read_config_host():
-> > +    config = set()
-> > +    with open(BUILD_DIR / "config-host.h", "r") as f:
-> > +        for line in f:
-> > +            if line.startswith("#define CONFIG_"):
-> > +                name = line.split()[1].removeprefix("CONFIG_")
-> > +                config.add(name)
-> > +    return config
-> > +
-> > +_CONFIG_HOST = _read_config_host()
-> 
-> This always reads in config-host.h, also for tests that don't need the
-> decorator ... could you change it so that the file is only read (once) if a
-> test calls the skipUnlessConfig decorator?
-> 
-> Also I'm a little bit torn whether we really need a decorator for this or
-> whether we should rather fence the tests in meson.build instead (similar to
-> what we do in tests/qtest/meson.build with config_all_devices.has_key('...')
-> already). What do others think about this?
+In cp_reg_reset(), we treat an ARMCPRegInfo::fieldoffset value of 0
+as "reset is handled elsewhere".  So we don't need to explicitly set
+ri->resetfn to arm_cp_reset_ignore() when we haven't defined a
+fieldoffset in the cpreg struct.
 
-QMP provides a way to query what functionality it exposes, so
-it should be possible to query upfront when the "screenshot"
-command is exposed or not. So IMHO reading config-host.h is a
-a mistake - if it were needed, it would be a sign that QMP
-was missing something, because the functional tests should
-be thought of the same way as a mgmt application.
+Remove the setting of resetfn to arm_cp_reset_ignore in the handful
+of places where we were doing this unnecessarily.  These are all
+timer registers, and doing this brings them in to line with the other
+timer registers (e.g.  CNTPCT_EL0 has no resetfn, and now CNTPCT
+doesn't either).
 
-Personally I'd not bother trying to query the QMP schema though,
-just keep the test written the way it already works, and catch
-the QMP  error for "CommandNotFound" instead or parsing HMP
-output.
+Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+---
+ target/arm/helper.c | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
 
-With regards,
-Daniel
+diff --git a/target/arm/helper.c b/target/arm/helper.c
+index f8185b201be..9d8f09f13b4 100644
+--- a/target/arm/helper.c
++++ b/target/arm/helper.c
+@@ -2209,7 +2209,7 @@ static const ARMCPRegInfo generic_timer_cp_reginfo[] = {
+     { .name = "CNTPCT", .cp = 15, .crm = 14, .opc1 = 0,
+       .access = PL0_R, .type = ARM_CP_64BIT | ARM_CP_NO_RAW | ARM_CP_IO,
+       .accessfn = gt_pct_access,
+-      .readfn = gt_cnt_read, .resetfn = arm_cp_reset_ignore,
++      .readfn = gt_cnt_read,
+     },
+     { .name = "CNTPCT_EL0", .state = ARM_CP_STATE_AA64,
+       .opc0 = 3, .opc1 = 3, .crn = 14, .crm = 0, .opc2 = 1,
+@@ -2219,7 +2219,7 @@ static const ARMCPRegInfo generic_timer_cp_reginfo[] = {
+     { .name = "CNTVCT", .cp = 15, .crm = 14, .opc1 = 1,
+       .access = PL0_R, .type = ARM_CP_64BIT | ARM_CP_NO_RAW | ARM_CP_IO,
+       .accessfn = gt_vct_access,
+-      .readfn = gt_virt_cnt_read, .resetfn = arm_cp_reset_ignore,
++      .readfn = gt_virt_cnt_read,
+     },
+     { .name = "CNTVCT_EL0", .state = ARM_CP_STATE_AA64,
+       .opc0 = 3, .opc1 = 3, .crn = 14, .crm = 0, .opc2 = 2,
+@@ -2310,7 +2310,7 @@ static const ARMCPRegInfo gen_timer_ecv_cp_reginfo[] = {
+     { .name = "CNTVCTSS", .cp = 15, .crm = 14, .opc1 = 9,
+       .access = PL0_R, .type = ARM_CP_64BIT | ARM_CP_NO_RAW | ARM_CP_IO,
+       .accessfn = gt_vct_access,
+-      .readfn = gt_virt_cnt_read, .resetfn = arm_cp_reset_ignore,
++      .readfn = gt_virt_cnt_read,
+     },
+     { .name = "CNTVCTSS_EL0", .state = ARM_CP_STATE_AA64,
+       .opc0 = 3, .opc1 = 3, .crn = 14, .crm = 0, .opc2 = 6,
+@@ -2320,7 +2320,7 @@ static const ARMCPRegInfo gen_timer_ecv_cp_reginfo[] = {
+     { .name = "CNTPCTSS", .cp = 15, .crm = 14, .opc1 = 8,
+       .access = PL0_R, .type = ARM_CP_64BIT | ARM_CP_NO_RAW | ARM_CP_IO,
+       .accessfn = gt_pct_access,
+-      .readfn = gt_cnt_read, .resetfn = arm_cp_reset_ignore,
++      .readfn = gt_cnt_read,
+     },
+     { .name = "CNTPCTSS_EL0", .state = ARM_CP_STATE_AA64,
+       .opc0 = 3, .opc1 = 3, .crn = 14, .crm = 0, .opc2 = 5,
 -- 
-|: https://berrange.com       ~~        https://hachyderm.io/@berrange :|
-|: https://libvirt.org          ~~          https://entangle-photo.org :|
-|: https://pixelfed.art/berrange   ~~    https://fstop138.berrange.com :|
+2.43.0
 
 

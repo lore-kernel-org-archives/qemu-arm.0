@@ -4,47 +4,44 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8FB17C79F9E
-	for <qemu-arm@archiver.kernel.org>; Mon,  7 Sep 2026 05:27:42 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 90F79C79F9E
+	for <qemu-arm@archiver.kernel.org>; Mon,  7 Sep 2026 05:28:07 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1x3Rr1-0005A9-Bq; Mon, 07 Sep 2026 01:25:16 -0400
+	id 1x3Rqi-0004wh-1v; Mon, 07 Sep 2026 01:24:56 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <gilles.grimaud@univ-lille.fr>)
- id 1x3Rqz-00053d-MF; Mon, 07 Sep 2026 01:25:13 -0400
+ id 1x3Rqg-0004wG-LI; Mon, 07 Sep 2026 01:24:54 -0400
 Received: from smtp-out-1.univ-lille.fr ([194.254.129.82])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <gilles.grimaud@univ-lille.fr>)
- id 1x3Rqw-00086g-KX; Mon, 07 Sep 2026 01:25:13 -0400
+ id 1x3Rqf-0007u8-2h; Mon, 07 Sep 2026 01:24:54 -0400
 Received: from smtp01.univ-lille.fr (smtp01.univ-lille.fr [194.254.129.95])
- by smtp-out-1.univ-lille.fr (Postfix) with ESMTPS id 4hdb9C69WczBqZT;
- Mon,  7 Sep 2026 07:24:31 +0200 (CEST)
+ by smtp-out-1.univ-lille.fr (Postfix) with ESMTPS id 4hdb9964VzzBqZH;
+ Mon,  7 Sep 2026 07:24:29 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=univ-lille.fr;
- s=dkim; t=1788758671;
- bh=SUD8vSBAhzLbzjPLo3AjYCzr2wBjl/mMjPWUqg26wgM=;
+ s=dkim; t=1788758669;
+ bh=vOL17FJv2z28se4xWO4GYv7cQg5RGDjD+Q+FlL96zWA=;
  h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=VoOfjmWvpM1IaNFGiJ9CXkBjugtbb6tNxTHut50Yxd1o3ijTyk6yLh3rPBjavI+cH
- sN1bGU7xf9B3E21QnmsAtEmrn1sGR5BQMyF3sDeEcI5+GnOzGM+Dt5m6mhS6T8FRLU
- b32fGrjQHoYw1P/yhA1xZq3ggtm6Mp1oZyIzdoKLVspeEclI3OnLPttodT9lNErDBG
- OtMW44xk6w9jVfxKV8aAAPd/dGOt/9zC200NNzRa8GEryElA0G4nrRzM2O5sIiZQ5z
- ZAnkWavLmeCa3g16+c301kACY1dJJC60Po/MJBvX/Vv9/7gY1x/IpUsMy9Jc9+uqwK
- x9sujPlCCRGcA==
+ b=KvLXYuQooAzU+shRGdrAp6diTJ+6Gt4cNQy43ekfyAAb781oCYc/69vcnTTH1ETE4
+ 260iYy9y0kqLj6ZSIphDzqnJCzMp6pGCTCi/ytDcjgLRVwVuj6KUUJfnHOA2KPxmz7
+ RoytK5V72ryovARMawIWF0vN1DqxjNEiAk9cXJwfFTVXinFinFr8mL17IJRpl4x40A
+ LMfXwyi9q2oP4TlpAhe0ULMmlt4KbHWriP1YE1u3jnt6uvBLd2JVqZSpTMdSBwcrgC
+ rduMqZxzlXC/3LRiZrUGwCFsouvy+drwa+x/WD1dmpM6B60U5k7ZejSK0DkqyB9sKc
+ +8Fr2Qgj7RHNQ==
 Received: from mac.home (lfbn-lil-1-243-101.w90-45.abo.wanadoo.fr
  [90.45.87.101]) (Authenticated sender: gilles.grimaud)
- by smtp01.univ-lille.fr (Postfix) with ESMTPSA id 4hdb9C3HGgz7xqf;
- Mon,  7 Sep 2026 07:24:31 +0200 (CEST)
+ by smtp01.univ-lille.fr (Postfix) with ESMTPSA id 4hdb994LMFz7xqf;
+ Mon,  7 Sep 2026 07:24:29 +0200 (CEST)
 From: Gilles Grimaud <gilles.grimaud@univ-lille.fr>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org, alex.bennee@linaro.org, peter.maydell@linaro.org,
- Gilles Grimaud <gilles.grimaud@univ-lille.fr>,
- Alistair Francis <alistair@alistair23.me>, John Snow <jsnow@redhat.com>,
- Cleber Rosa <crosa@redhat.com>, Fabiano Rosas <farosas@suse.de>,
- Laurent Vivier <lvivier@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>
-Subject: [PATCH v3 29/36] hw/ssi: load RP2040 UF2 flash images
-Date: Mon,  7 Sep 2026 07:24:17 +0200
-Message-ID: <20260907052426.24849-13-gilles.grimaud@univ-lille.fr>
+ Gilles Grimaud <gilles.grimaud@univ-lille.fr>
+Subject: [PATCH v3 24/36] tests/tcg/arm: test RP2040 timer alarm interrupt
+Date: Mon,  7 Sep 2026 07:24:12 +0200
+Message-ID: <20260907052426.24849-8-gilles.grimaud@univ-lille.fr>
 X-Mailer: git-send-email 2.55.0
 In-Reply-To: <20260907052426.24849-1-gilles.grimaud@univ-lille.fr>
 References: <20260906194438.93046-1-gilles.grimaud@univ-lille.fr>
@@ -75,725 +72,161 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Accept RP2040-family UF2 files through the Raspberry Pi Pico -kernel path.
-Validate block framing, family IDs, payload sizes, and XIP flash bounds
-before overlaying payloads onto flash storage. Flush the ROMD mapping after
-loading so translated code observes the new image.
-
-Add a focused qtest for multi-block UF2 loading and provide a host-side
-converter for producing raw flash images from Pico UF2 files.
-
 Signed-off-by: gilles grimaud <gilles.grimaud@univ-lille.fr>
 ---
- MAINTAINERS                   |   2 +
- hw/ssi/rp2040_xip.c           | 110 ++++++++
- scripts/uf2-to-flash.py       | 462 ++++++++++++++++++++++++++++++++++
- tests/qtest/rp2040-xip-test.c |  61 +++++
- 4 files changed, 635 insertions(+)
- create mode 100755 scripts/uf2-to-flash.py
+ tests/tcg/arm/system/meson.build      |   5 ++
+ tests/tcg/arm/system/rp2040-timer.S   | 116 ++++++++++++++++++++++++++
+ tests/tcg/arm/system/rp2040-timer.ref |   2 +
+ 3 files changed, 123 insertions(+)
+ create mode 100644 tests/tcg/arm/system/rp2040-timer.S
+ create mode 100644 tests/tcg/arm/system/rp2040-timer.ref
 
-diff --git a/MAINTAINERS b/MAINTAINERS
-index a03fb0575c..05ee44de37 100644
---- a/MAINTAINERS
-+++ b/MAINTAINERS
-@@ -1033,6 +1033,8 @@ S: Maintained
- F: hw/*/rp2040*
- F: include/hw/*/rp2040*
- F: hw/arm/raspi_pico.c
-+F: scripts/uf2-to-flash.py
-+F: tests/qtest/rp2040*
- F: tests/tcg/arm/system/rp2040*
- 
- Real View
-diff --git a/hw/ssi/rp2040_xip.c b/hw/ssi/rp2040_xip.c
-index fdd48b0f91..4312a88b6f 100644
---- a/hw/ssi/rp2040_xip.c
-+++ b/hw/ssi/rp2040_xip.c
-@@ -90,6 +90,17 @@
- #define FLASH_PAGE_SIZE  256
- #define FLASH_SECTOR_SIZE 4096
- 
-+#define UF2_MAGIC_START0 0x0a324655
-+#define UF2_MAGIC_START1 0x9e5d5157
-+#define UF2_MAGIC_END    0x0ab16f30
-+#define UF2_BLOCK_SIZE   512
-+#define UF2_HEADER_SIZE  32
-+#define UF2_MAX_PAYLOAD  476
-+
-+#define UF2_FLAG_NOT_MAIN_FLASH       BIT(0)
-+#define UF2_FLAG_FAMILY_ID_PRESENT    BIT(13)
-+#define UF2_RP2040_FAMILY_ID          0xe48bff56
-+
- #define RP2040_BOOT2_SIZE 256
- #define RP2040_BOOT2_CRC_SIZE 252
- #define RP2040_BOOT2_CRC_INIT 0xffffffff
-@@ -1136,6 +1147,92 @@ static bool rp2040_xip_load_elf(RP2040XipState *s, const char *filename,
-     return true;
- }
- 
-+static bool rp2040_xip_load_uf2(RP2040XipState *s, const char *filename,
-+                                Error **errp)
-+{
-+    g_autofree gchar *contents = NULL;
-+    gsize len;
-+    unsigned blocks;
-+    unsigned i;
-+    bool copied = false;
-+
-+    if (!g_file_get_contents(filename, &contents, &len, NULL)) {
-+        error_setg(errp, "could not load flash image '%s'", filename);
-+        return true;
-+    }
-+
-+    if (len < UF2_BLOCK_SIZE ||
-+        ldl_le_p(contents) != UF2_MAGIC_START0 ||
-+        ldl_le_p(contents + 4) != UF2_MAGIC_START1) {
-+        return false;
-+    }
-+
-+    if (len % UF2_BLOCK_SIZE != 0) {
-+        error_setg(errp, "invalid UF2 image '%s': size is not a multiple "
-+                   "of %u bytes", filename, UF2_BLOCK_SIZE);
-+        return true;
-+    }
-+
-+    blocks = len / UF2_BLOCK_SIZE;
-+    for (i = 0; i < blocks; i++) {
-+        const uint8_t *block = (uint8_t *)contents + i * UF2_BLOCK_SIZE;
-+        uint32_t flags;
-+        uint32_t target;
-+        uint32_t payload_size;
-+        uint32_t family_id;
-+        uint32_t offset;
-+
-+        if (ldl_le_p(block) != UF2_MAGIC_START0 ||
-+            ldl_le_p(block + 4) != UF2_MAGIC_START1 ||
-+            ldl_le_p(block + UF2_BLOCK_SIZE - 4) != UF2_MAGIC_END) {
-+            error_setg(errp, "invalid UF2 image '%s': bad magic in block %u",
-+                       filename, i);
-+            return true;
-+        }
-+
-+        flags = ldl_le_p(block + 8);
-+        if (flags & UF2_FLAG_NOT_MAIN_FLASH) {
-+            continue;
-+        }
-+
-+        if (!(flags & UF2_FLAG_FAMILY_ID_PRESENT)) {
-+            error_setg(errp, "invalid RP2040 UF2 image '%s': block %u has "
-+                       "no family ID", filename, i);
-+            return true;
-+        }
-+
-+        family_id = ldl_le_p(block + 28);
-+        if (family_id != UF2_RP2040_FAMILY_ID) {
-+            error_setg(errp, "unsupported UF2 family ID 0x%08" PRIx32
-+                       " in '%s'", family_id, filename);
-+            return true;
-+        }
-+
-+        target = ldl_le_p(block + 12);
-+        payload_size = ldl_le_p(block + 16);
-+        if (payload_size > UF2_MAX_PAYLOAD ||
-+            target < RP2040_XIP_FLASH_BASE ||
-+            target - RP2040_XIP_FLASH_BASE > s->flash_size ||
-+            payload_size > s->flash_size -
-+                           (target - RP2040_XIP_FLASH_BASE)) {
-+            error_setg(errp, "UF2 block %u in '%s' is outside XIP flash",
-+                       i, filename);
-+            return true;
-+        }
-+
-+        offset = target - RP2040_XIP_FLASH_BASE;
-+        memcpy(s->storage + offset, block + UF2_HEADER_SIZE, payload_size);
-+        copied = true;
-+    }
-+
-+    if (!copied) {
-+        error_setg(errp, "UF2 image '%s' contains no RP2040 flash payload",
-+                   filename);
-+    }
-+
-+    return true;
-+}
-+
- void rp2040_xip_load_image(RP2040XipState *s, const char *filename,
-                            Error **errp)
- {
-@@ -1159,6 +1256,19 @@ void rp2040_xip_load_image(RP2040XipState *s, const char *filename,
-         return;
-     }
- 
-+    if (rp2040_xip_load_uf2(s, filename, &local_err)) {
-+        if (local_err) {
-+            error_propagate(errp, local_err);
-+            return;
-+        }
-+        if (!rp2040_xip_fixup_boot2(s, filename, errp)) {
-+            return;
-+        }
-+        rp2040_xip_changed(s, 0, s->flash_size);
-+        rp2040_xip_writeback(s, errp);
-+        return;
-+    }
-+
-     image_size = load_image_size(filename, s->storage, s->flash_size);
-     if (image_size < 0) {
-         error_setg(errp, "could not load flash image '%s'", filename);
-diff --git a/scripts/uf2-to-flash.py b/scripts/uf2-to-flash.py
-new file mode 100755
-index 0000000000..f1c0fcbbbb
+diff --git a/tests/tcg/arm/system/meson.build b/tests/tcg/arm/system/meson.build
+index 494f13995f..d39359419b 100644
+--- a/tests/tcg/arm/system/meson.build
++++ b/tests/tcg/arm/system/meson.build
+@@ -93,6 +93,11 @@ tests += {
+     'qemu_args': rp2040_uart_qemu_args,
+     'expected_output': 'rp2040-core1-launch.ref',
+   },
++  'rp2040-timer.S': {
++    'cflags': rp2040_cflags,
++    'qemu_args': rp2040_uart_qemu_args,
++    'expected_output': 'rp2040-timer.ref',
++  },
+   'semiconsole.c': {
+     'cflags': cflags,
+     'qemu_args': ['-serial', 'none', '-chardev', 'stdio,mux=on,id=stdio0',
+diff --git a/tests/tcg/arm/system/rp2040-timer.S b/tests/tcg/arm/system/rp2040-timer.S
+new file mode 100644
+index 0000000000..249df6433a
 --- /dev/null
-+++ b/scripts/uf2-to-flash.py
-@@ -0,0 +1,462 @@
-+#!/usr/bin/env python3
-+#
-+# SPDX-License-Identifier: GPL-2.0-or-later
-+
-+"""
-+uf2-to-flash.py
-+
-+Convert a Raspberry Pi Pico UF2 file into a raw flash image.
-+
-+This tool implements the simple and practical conversion model used for
-+QEMU-style emulation:
-+
-+    UF2 target address 0x10000000 + offset  ->  flash image offset
-+
-+The output file is not a FAT image. It is a raw representation of the
-+external QSPI flash contents after UF2 programming.
-+
-+Supported input model:
-+    - RP2040 / Pico 1 UF2 files, family ID 0xE48BFF56.
-+    - RP2350 / Pico 2 UF2 files are detected and converted linearly,
-+      but RP2350 partition remapping is not implemented.
-+
-+Usage:
-+    scripts/uf2-to-flash.py firmware.uf2 flash.img
-+    scripts/uf2-to-flash.py flash.img firmware.uf2
-+
-+If the two arguments are provided in reverse order, the .uf2 extension is
-+used to detect the input file.
-+"""
-+
-+import os
-+import sys
-+import struct
-+
-+
-+UF2_MAGIC_START0 = 0x0A324655
-+UF2_MAGIC_START1 = 0x9E5D5157
-+UF2_MAGIC_END = 0x0AB16F30
-+
-+UF2_BLOCK_SIZE = 512
-+UF2_HEADER_SIZE = 32
-+
-+FLAG_NOT_MAIN_FLASH = 0x00000001
-+FLAG_FAMILY_ID_PRESENT = 0x00002000
-+
-+RP2040_FAMILY_ID = 0xE48BFF56
-+
-+# Usual RP2350 / Pico 2 family IDs.
-+# They are detected for diagnostics. This script does not implement
-+# RP2350 partition table remapping.
-+RP2350_FAMILY_IDS = {
-+    0xE48BFF58: "rp2350-arm-secure",
-+    0xE48BFF59: "rp2350-arm-nonsecure",
-+    0xE48BFF5A: "rp2350-riscv",
-+    0xE48BFF5B: "data-or-absolute",
-+}
-+
-+XIP_BASE = 0x10000000
-+
-+# RP2040 UF2 flash window: 0x10000000 .. 0x11000000
-+PICO1_FLASH_WINDOW_SIZE = 16 * 1024 * 1024
-+
-+# RP2350 UF2 flash window: 0x10000000 .. 0x12000000
-+PICO2_FLASH_WINDOW_SIZE = 32 * 1024 * 1024
-+
-+
-+def print_help() -> None:
-+    """Print a minimal usage message."""
-+
-+    program_name = os.path.basename(sys.argv[0])
-+
-+    print("Usage:")
-+    print(f"  {program_name} firmware.uf2 flash.img")
-+    print()
-+    print("Convert a Raspberry Pi Pico UF2 file into a raw flash image.")
-+    print("Exactly one argument must have the .uf2 extension, the other")
-+    print("is used as the raw flash output file.")
-+    print()
-+    print("Examples:")
-+    print(f"  {program_name} blink.uf2 flash.img")
-+    print(f"  {program_name} flash.raw blink.uf2")
-+
-+
-+def get_extension(path: str) -> str:
-+    """Return the lowercase extension of a path."""
-+
-+    return os.path.splitext(path)[1].lower()
-+
-+
-+def detect_input_output(arguments: list[str]) -> tuple[str, str]:
-+    """
-+    Detect the UF2 input file and the raw image output file.
-+
-+    The arguments may be passed in either order, provided exactly one of them
-+    has the .uf2 extension.
-+    """
-+
-+    if len(arguments) != 2:
-+        print_help()
-+        sys.exit(2)
-+
-+    first_path, second_path = arguments
-+    first_ext = get_extension(first_path)
-+    second_ext = get_extension(second_path)
-+
-+    if first_ext == ".uf2" and second_ext != ".uf2":
-+        return first_path, second_path
-+
-+    if second_ext == ".uf2" and first_ext != ".uf2":
-+        print("Reversed arguments detected: using the .uf2 file as input.")
-+        return second_path, first_path
-+
-+    print("Error: unable to determine which file is the UF2 input.")
-+    print("Exactly one argument must have the .uf2 extension.")
-+    print()
-+    print_help()
-+    sys.exit(2)
-+
-+
-+def read_uf2_blocks(path: str):
-+    """
-+    Yield all 512-byte blocks from a UF2 file.
-+
-+    Raises ValueError if the file size is not a multiple of 512 bytes.
-+    """
-+
-+    file_size = os.path.getsize(path)
-+
-+    if file_size == 0:
-+        raise ValueError("empty file")
-+
-+    if file_size % UF2_BLOCK_SIZE != 0:
-+        raise ValueError(
-+            f"invalid UF2 file size: {file_size} bytes; "
-+            f"expected a multiple of {UF2_BLOCK_SIZE}"
-+        )
-+
-+    with open(path, "rb") as input_file:
-+        physical_block_index = 0
-+
-+        while True:
-+            block = input_file.read(UF2_BLOCK_SIZE)
-+
-+            if not block:
-+                break
-+
-+            physical_block_index += 1
-+
-+            if len(block) != UF2_BLOCK_SIZE:
-+                raise ValueError(
-+                    f"incomplete block at physical index {physical_block_index}"
-+                )
-+
-+            yield physical_block_index, block
-+
-+
-+def analyze_uf2(uf2_path: str) -> dict:
-+    """
-+    Analyze a UF2 file and extract main-flash pages.
-+
-+    Returns a dictionary containing:
-+        - pages: mapping from flash offset to payload bytes
-+        - family_ids: detected family IDs
-+        - warnings: non-fatal problems
-+        - errors: fatal format problems
-+        - min_offset / max_end_offset: occupied flash range
-+    """
-+
-+    pages: dict[int, bytes] = {}
-+    warnings: list[str] = []
-+    errors: list[str] = []
-+
-+    family_ids: set[int] = set()
-+    valid_block_count = 0
-+    non_uf2_block_count = 0
-+    ignored_not_main_flash_count = 0
-+
-+    min_offset = None
-+    max_end_offset = 0
-+
-+    announced_num_blocks = None
-+    seen_block_numbers: set[int] = set()
-+
-+    for physical_index, block in read_uf2_blocks(uf2_path):
-+        (
-+            magic_start0,
-+            magic_start1,
-+            flags,
-+            target_address,
-+            payload_size,
-+            block_number,
-+            num_blocks,
-+            family_or_file_size,
-+        ) = struct.unpack_from("<IIIIIIII", block, 0)
-+
-+        (magic_end,) = struct.unpack_from("<I", block, UF2_BLOCK_SIZE - 4)
-+
-+        if (
-+            magic_start0 != UF2_MAGIC_START0
-+            or magic_start1 != UF2_MAGIC_START1
-+            or magic_end != UF2_MAGIC_END
-+        ):
-+            non_uf2_block_count += 1
-+            errors.append(
-+                f"block {physical_index}: invalid UF2 magic values"
-+            )
-+            continue
-+
-+        valid_block_count += 1
-+
-+        if announced_num_blocks is None:
-+            announced_num_blocks = num_blocks
-+        elif num_blocks != announced_num_blocks:
-+            warnings.append(
-+                f"block {physical_index}: inconsistent numBlocks "
-+                f"({num_blocks}, expected {announced_num_blocks})"
-+            )
-+
-+        if block_number in seen_block_numbers:
-+            warnings.append(
-+                f"block {physical_index}: duplicated blockNo {block_number}"
-+            )
-+
-+        seen_block_numbers.add(block_number)
-+
-+        if flags & FLAG_NOT_MAIN_FLASH:
-+            ignored_not_main_flash_count += 1
-+            continue
-+
-+        if not (flags & FLAG_FAMILY_ID_PRESENT):
-+            errors.append(
-+                f"block {physical_index}: missing family ID; Pico boot ROM "
-+                f"expects a family ID"
-+            )
-+            continue
-+
-+        family_id = family_or_file_size
-+        family_ids.add(family_id)
-+
-+        if payload_size != 256:
-+            errors.append(
-+                f"block {physical_index}: payloadSize={payload_size}; "
-+                f"expected 256 for Pico UF2 files"
-+            )
-+            continue
-+
-+        if target_address % 256 != 0:
-+            errors.append(
-+                f"block {physical_index}: target address is not "
-+                f"256-byte aligned: 0x{target_address:08x}"
-+            )
-+            continue
-+
-+        pico2_window_end = XIP_BASE + PICO2_FLASH_WINDOW_SIZE
-+        if not (XIP_BASE <= target_address < pico2_window_end):
-+            errors.append(
-+                f"block {physical_index}: target address outside Pico "
-+                f"flash window: 0x{target_address:08x}"
-+            )
-+            continue
-+
-+        flash_offset = target_address - XIP_BASE
-+
-+        if flash_offset + payload_size > PICO2_FLASH_WINDOW_SIZE:
-+            errors.append(
-+                f"block {physical_index}: page exceeds Pico 2 flash window: "
-+                f"offset=0x{flash_offset:x}, size={payload_size}"
-+            )
-+            continue
-+
-+        if flash_offset in pages:
-+            warnings.append(
-+                f"block {physical_index}: duplicated flash page at offset "
-+                f"0x{flash_offset:x}; last occurrence wins"
-+            )
-+
-+        payload = block[UF2_HEADER_SIZE:UF2_HEADER_SIZE + payload_size]
-+        pages[flash_offset] = payload
-+
-+        if min_offset is None or flash_offset < min_offset:
-+            min_offset = flash_offset
-+
-+        if flash_offset + payload_size > max_end_offset:
-+            max_end_offset = flash_offset + payload_size
-+
-+    if valid_block_count == 0:
-+        errors.append("no valid UF2 block found")
-+
-+    if (announced_num_blocks is not None
-+            and len(seen_block_numbers) != announced_num_blocks):
-+        warnings.append(
-+            f"observed {len(seen_block_numbers)} distinct blockNo values, "
-+            f"but numBlocks announces {announced_num_blocks}"
-+        )
-+
-+    return {
-+        "pages": pages,
-+        "family_ids": family_ids,
-+        "warnings": warnings,
-+        "errors": errors,
-+        "valid_block_count": valid_block_count,
-+        "non_uf2_block_count": non_uf2_block_count,
-+        "ignored_not_main_flash_count": ignored_not_main_flash_count,
-+        "min_offset": min_offset,
-+        "max_end_offset": max_end_offset,
-+    }
-+
-+
-+def diagnose_family_ids(
-+    family_ids: set[int],
-+    warnings: list[str],
-+    errors: list[str],
-+) -> None:
-+    """
-+    Diagnose UF2 family IDs with respect to Pico 1 and Pico 2.
-+
-+    RP2040 is accepted as the strict Pico 1 case.
-+    RP2350 IDs are accepted with a warning because partition remapping is not
-+    implemented.
-+    """
-+
-+    if not family_ids:
-+        errors.append("no usable family ID found")
-+        return
-+
-+    if len(family_ids) > 1:
-+        family_list = ", ".join(
-+            f"0x{value:08x}" for value in sorted(family_ids)
-+        )
-+        warnings.append(f"multiple family IDs found: {family_list}")
-+
-+    for family_id in sorted(family_ids):
-+        if family_id == RP2040_FAMILY_ID:
-+            continue
-+
-+        if family_id in RP2350_FAMILY_IDS:
-+            warnings.append(
-+                f"family ID 0x{family_id:08x} detected "
-+                f"({RP2350_FAMILY_IDS[family_id]}): this is probably a "
-+                f"Pico 2 / RP2350 UF2 file. Linear conversion is performed, "
-+                f"but RP2350 partition remapping is not implemented."
-+            )
-+        else:
-+            warnings.append(
-+                f"unknown or non-Pico family ID: 0x{family_id:08x}"
-+            )
-+
-+    if RP2040_FAMILY_ID not in family_ids:
-+        warnings.append(
-+            "no RP2040 / Pico 1 family ID found (0xe48bff56); "
-+            "the output may not be a strict Pico 1 flash image."
-+        )
-+
-+
-+def build_flash_image(pages: dict[int, bytes], occupied_size: int) -> bytearray:
-+    """
-+    Build a raw flash image initialized with erased flash bytes, 0xff.
-+
-+    Only the occupied part is emitted:
-+        output size = highest written offset + payload size
-+    """
-+
-+    image = bytearray([0xFF] * occupied_size)
-+
-+    for flash_offset, payload in pages.items():
-+        image[flash_offset:flash_offset + len(payload)] = payload
-+
-+    return image
-+
-+
-+def human_size(byte_count: int) -> str:
-+    """Return a human-readable size string."""
-+
-+    if byte_count < 1024:
-+        return f"{byte_count} B"
-+
-+    if byte_count < 1024 * 1024:
-+        return f"{byte_count / 1024:.1f} KiB"
-+
-+    return f"{byte_count / (1024 * 1024):.2f} MiB"
-+
-+
-+def main() -> None:
-+    """Program entry point."""
-+
-+    uf2_path, image_path = detect_input_output(sys.argv[1:])
-+
-+    try:
-+        analysis = analyze_uf2(uf2_path)
-+    except OSError as error:
-+        print(f"UF2 file access error: {error}")
-+        sys.exit(1)
-+    except ValueError as error:
-+        print(f"UF2 format error: {error}")
-+        sys.exit(1)
-+
-+    pages = analysis["pages"]
-+    family_ids = analysis["family_ids"]
-+    warnings = analysis["warnings"]
-+    errors = analysis["errors"]
-+
-+    diagnose_family_ids(family_ids, warnings, errors)
-+
-+    if not pages:
-+        errors.append("no main-flash page to write")
-+
-+    if analysis["max_end_offset"] > PICO1_FLASH_WINDOW_SIZE:
-+        warnings.append(
-+            "image exceeds the Pico 1 flash window "
-+            "0x10000000..0x11000000; it is not strict Pico 1 compatible"
-+        )
-+
-+    if errors:
-+        print("Conversion refused: UF2 format problems were found.")
-+        for error in errors:
-+            print(f"ERROR: {error}")
-+        for warning in warnings:
-+            print(f"WARNING: {warning}")
-+        sys.exit(1)
-+
-+    occupied_size = analysis["max_end_offset"]
-+    image = build_flash_image(pages, occupied_size)
-+
-+    try:
-+        with open(image_path, "wb") as output_file:
-+            output_file.write(image)
-+    except OSError as error:
-+        print(f"Output image write error: {error}")
-+        sys.exit(1)
-+
-+    programmed_size = sum(len(payload) for payload in pages.values())
-+
-+    print(f"UF2 input: {uf2_path}")
-+    print(f"Raw output: {image_path}")
-+    print(f"Valid UF2 blocks: {analysis['valid_block_count']}")
-+    print("Ignored NOT_MAIN_FLASH blocks: "
-+          f"{analysis['ignored_not_main_flash_count']}")
-+    print(f"Written flash pages: {len(pages)}")
-+    print(
-+        f"Actually programmed bytes: {programmed_size} "
-+        f"({human_size(programmed_size)})"
-+    )
-+    print(
-+        f"Occupied flash size: {occupied_size} "
-+        f"({human_size(occupied_size)})"
-+    )
-+
-+    if family_ids:
-+        family_id_list = ", ".join(
-+            f"0x{value:08x}" for value in sorted(family_ids)
-+        )
-+        print(f"Family ID(s): {family_id_list}")
-+
-+    if warnings:
-+        print()
-+        print("Warnings:")
-+        for warning in warnings:
-+            print(f"- {warning}")
-+
-+
-+if __name__ == "__main__":
-+    main()
-diff --git a/tests/qtest/rp2040-xip-test.c b/tests/qtest/rp2040-xip-test.c
-index bc1b47841d..bce4e8f25d 100644
---- a/tests/qtest/rp2040-xip-test.c
-+++ b/tests/qtest/rp2040-xip-test.c
-@@ -32,6 +32,15 @@
- #define XIP_STAT_FIFO_EMPTY BIT(1)
- #define XIP_STAT_FLUSH_READY BIT(0)
- 
-+#define UF2_BLOCK_SIZE          512
-+#define UF2_PAYLOAD_OFFSET      32
-+#define UF2_PAYLOAD_SIZE        256
-+#define UF2_MAGIC_START0        0x0a324655
-+#define UF2_MAGIC_START1        0x9e5d5157
-+#define UF2_MAGIC_END           0x0ab16f30
-+#define UF2_FLAG_FAMILY_ID      0x00002000
-+#define UF2_RP2040_FAMILY_ID    0xe48bff56
-+
- static QTestState *rp2040_start(const char *machine_args)
- {
-     if (machine_args) {
-@@ -76,6 +85,57 @@ static void finish_busy(QTestState *qts)
-     ssi_deselect(qts);
- }
- 
-+static void build_uf2_block(uint8_t *block, uint32_t target, uint32_t index,
-+                            const uint8_t *payload)
-+{
-+    memset(block, 0, UF2_BLOCK_SIZE);
-+    stl_le_p(block, UF2_MAGIC_START0);
-+    stl_le_p(block + 4, UF2_MAGIC_START1);
-+    stl_le_p(block + 8, UF2_FLAG_FAMILY_ID);
-+    stl_le_p(block + 12, target);
-+    stl_le_p(block + 16, UF2_PAYLOAD_SIZE);
-+    stl_le_p(block + 20, index);
-+    stl_le_p(block + 24, 2);
-+    stl_le_p(block + 28, UF2_RP2040_FAMILY_ID);
-+    memcpy(block + UF2_PAYLOAD_OFFSET, payload, UF2_PAYLOAD_SIZE);
-+    stl_le_p(block + UF2_BLOCK_SIZE - 4, UF2_MAGIC_END);
-+}
-+
-+static void test_uf2_kernel_load(void)
-+{
-+    g_autoptr(GError) error = NULL;
-+    g_autofree char *path = NULL;
-+    uint8_t uf2[2 * UF2_BLOCK_SIZE];
-+    uint8_t boot2[UF2_PAYLOAD_SIZE];
-+    uint8_t payload[UF2_PAYLOAD_SIZE];
-+    uint8_t actual[UF2_PAYLOAD_SIZE];
-+    QTestState *qts;
-+    int fd;
-+    size_t i;
-+
-+    memset(boot2, 0x5a, sizeof(boot2));
-+    for (i = 0; i < ARRAY_SIZE(payload); i++) {
-+        payload[i] = i ^ 0xa5;
-+    }
-+    build_uf2_block(uf2, XIP_BASE, 0, boot2);
-+    build_uf2_block(uf2 + UF2_BLOCK_SIZE, XIP_BASE + 0x2000, 1, payload);
-+
-+    fd = g_file_open_tmp("qemu-rp2040-uf2-XXXXXX", &path, &error);
-+    g_assert_no_error(error);
-+    g_assert_cmpint(fd, >=, 0);
-+    close(fd);
-+    g_assert_true(g_file_set_contents(path, (const char *)uf2, sizeof(uf2),
-+                                      &error));
-+    g_assert_no_error(error);
-+
-+    qts = qtest_initf("-machine raspi-pico -kernel %s", path);
-+    qtest_memread(qts, XIP_BASE + 0x2000, actual, sizeof(actual));
-+    g_assert_cmpmem(actual, sizeof(actual), payload, sizeof(payload));
-+    qtest_quit(qts);
-+
-+    unlink(path);
-+}
-+
- static void read_flash_uid(QTestState *qts, uint8_t *uid)
- {
-     int i;
-@@ -353,6 +413,7 @@ int main(int argc, char **argv)
-                    test_flash_uid_machine_option);
-     qtest_add_func("/rp2040-xip/ssi-defers-unselected-data",
-                    test_ssi_defers_unselected_data);
-+    qtest_add_func("/rp2040-xip/uf2-kernel-load", test_uf2_kernel_load);
-     qtest_add_func("/rp2040-xip/flash-program-erase",
-                    test_flash_program_erase);
-     qtest_add_func("/rp2040-xip/flash-persistence",
++++ b/tests/tcg/arm/system/rp2040-timer.S
+@@ -0,0 +1,116 @@
++/*
++ * Raspberry Pi Pico timer alarm interrupt test.
++ *
++ * Copyright 2026 Gilles Grimaud
++ * SPDX-License-Identifier: GPL-2.0-or-later
++ */
++
++.syntax unified
++.cpu cortex-m0plus
++.thumb
++
++#define SRAM_END               0x20042000
++#define TEST_FLAG              0x20000000
++#define UART0_DR               0x40034000
++#define TIMER_BASE             0x40054000
++#define TIMER_ALARM0           0x10
++#define TIMER_RAWL             0x28
++#define TIMER_INTR             0x34
++#define TIMER_INTE             0x38
++#define NVIC_ISER              0xe000e100
++#define SYS_EXIT               0x18
++#define ADP_STOPPED_APPLICATION_EXIT 0x20026
++#define ADP_STOPPED_RUNTIME_ERROR    0x20023
++
++.section .vectors, "a", %progbits
++.global vector_table
++vector_table:
++    .word SRAM_END
++    .word reset_handler + 1
++    .word default_handler + 1
++    .word default_handler + 1
++    .rept 12
++    .word default_handler + 1
++    .endr
++    .word timer_irq + 1
++
++.section .text, "ax", %progbits
++.thumb_func
++.global reset_handler
++reset_handler:
++    ldr r0, =start_message
++    bl puts
++
++    ldr r0, =TEST_FLAG
++    movs r1, 0
++    str r1, [r0]
++
++    ldr r0, =NVIC_ISER
++    movs r1, 1
++    str r1, [r0]
++
++    ldr r4, =TIMER_BASE
++    str r1, [r4, TIMER_INTR]
++    str r1, [r4, TIMER_INTE]
++    ldr r2, [r4, TIMER_RAWL]
++    ldr r3, =1000
++    adds r2, r2, r3
++    str r2, [r4, TIMER_ALARM0]
++
++1:
++    ldr r0, =TEST_FLAG
++    ldr r1, [r0]
++    cmp r1, 0
++    beq 1b
++
++    ldr r0, =ok_message
++    bl puts
++    movs r0, SYS_EXIT
++    ldr r1, =ADP_STOPPED_APPLICATION_EXIT
++    bkpt 0xab
++
++2:
++    b 2b
++
++.thumb_func
++timer_irq:
++    ldr r0, =TIMER_BASE
++    movs r1, 1
++    str r1, [r0, TIMER_INTR]
++    ldr r0, =TEST_FLAG
++    str r1, [r0]
++    bx lr
++
++.thumb_func
++default_handler:
++    ldr r0, =fail_message
++    bl puts
++    movs r0, SYS_EXIT
++    ldr r1, =ADP_STOPPED_RUNTIME_ERROR
++    bkpt 0xab
++
++3:
++    b 3b
++
++.thumb_func
++puts:
++    ldr r2, =UART0_DR
++
++4:
++    ldrb r1, [r0]
++    cmp r1, 0
++    beq 5f
++    str r1, [r2]
++    adds r0, 1
++    b 4b
++
++5:
++    bx lr
++
++.section .rodata, "a", %progbits
++start_message:
++    .asciz "PICO TCG TIMER START\n"
++ok_message:
++    .asciz "PICO TCG TIMER OK\n"
++fail_message:
++    .asciz "PICO TCG TIMER FAIL\n"
+diff --git a/tests/tcg/arm/system/rp2040-timer.ref b/tests/tcg/arm/system/rp2040-timer.ref
+new file mode 100644
+index 0000000000..32e6e169b6
+--- /dev/null
++++ b/tests/tcg/arm/system/rp2040-timer.ref
+@@ -0,0 +1,2 @@
++PICO TCG TIMER START
++PICO TCG TIMER OK
 -- 
 2.55.0
 

@@ -4,55 +4,55 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0132CC79F99
-	for <qemu-arm@archiver.kernel.org>; Mon,  7 Sep 2026 10:31:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 140EBC79F89
+	for <qemu-arm@archiver.kernel.org>; Mon,  7 Sep 2026 10:31:43 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1x3WdP-0004Ye-NS; Mon, 07 Sep 2026 06:31:32 -0400
+	id 1x3Wcp-0004Hm-Tb; Mon, 07 Sep 2026 06:30:57 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <marcandre.lureau@redhat.com>)
- id 1x3WdC-0004Py-G5
- for qemu-arm@nongnu.org; Mon, 07 Sep 2026 06:31:18 -0400
+ id 1x3Wch-0004Ee-Dt
+ for qemu-arm@nongnu.org; Mon, 07 Sep 2026 06:30:47 -0400
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <marcandre.lureau@redhat.com>)
- id 1x3Wd7-0003XD-UQ
- for qemu-arm@nongnu.org; Mon, 07 Sep 2026 06:31:15 -0400
+ id 1x3Wcf-0003TJ-P5
+ for qemu-arm@nongnu.org; Mon, 07 Sep 2026 06:30:47 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1788777073;
+ s=mimecast20190719; t=1788777044;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=6dwcCBq9JxVWiIUYZWBjdCoyYEm1ieLlZHInZiBmG9Y=;
- b=FjlWlwQHC9JYUQzng6oGx0XZndFwskzZlyZjpIjPNkhw6ynrHQwTSYn0tph9KE7R4CXTQ+
- r2eSxgJO3G9b2UOB6OUqf5yq6Rdr0w4uKKVts8UKsMZJ61WoyDqveAxSeodydoW/a8OQsQ
- FLnRgwgH2/8UV2Rt0NSJrujCpqQPBZ8=
-Received: from mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com
+ bh=fDgNGwW+ikB04+uFpE5aVrV44YCxj/0gXscGjqip9fI=;
+ b=gr4Fj4m3vKBAFJSmfhyEeTqfiIwikQMWB57N/+gavdHaT2zIwgNCv9Mjzep4QQNr+1Dd2H
+ 3BrXsA+hP5PVhTlkUO0SCsBS/8uwwQBJXbWTNg1HOMoJX5KtfhFLsV/9HNdqlLbiMD43pp
+ 9++43I0krtDgpHqdI5QFPzjWKe+ORwk=
+Received: from mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com
  (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-682-VXMaZqTgNEavXlNPrXWaBQ-1; Mon,
- 07 Sep 2026 06:31:10 -0400
-X-MC-Unique: VXMaZqTgNEavXlNPrXWaBQ-1
-X-Mimecast-MFC-AGG-ID: VXMaZqTgNEavXlNPrXWaBQ_1788777068
-Received: from mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com
- (mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.93])
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-116-gDErs7mpM-uCs8tshjl-xw-1; Mon,
+ 07 Sep 2026 06:30:40 -0400
+X-MC-Unique: gDErs7mpM-uCs8tshjl-xw-1
+X-Mimecast-MFC-AGG-ID: gDErs7mpM-uCs8tshjl-xw_1788777038
+Received: from mx-prod-int-10.mail-002.prod.us-west-2.aws.redhat.com
+ (mx-prod-int-10.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.95])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id E5B7A1802162; Mon,  7 Sep 2026 10:31:07 +0000 (UTC)
+ by mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id BA005182F558; Mon,  7 Sep 2026 10:30:38 +0000 (UTC)
 Received: from localhost (headnet05.pony-001.prod.iad2.dc.redhat.com
  [10.2.32.117])
- by mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id 833DC1800577; Mon,  7 Sep 2026 10:31:06 +0000 (UTC)
+ by mx-prod-int-10.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
+ id E5E16427; Mon,  7 Sep 2026 10:30:37 +0000 (UTC)
 From: =?utf-8?q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>
-Date: Mon, 07 Sep 2026 14:30:28 +0400
-Subject: [PATCH v2 10/10] tests/functional: fix some tests that require HMP
+Date: Mon, 07 Sep 2026 14:30:20 +0400
+Subject: [PATCH v2 02/10] tests/functional: add skipUnlessConfig() helper
 MIME-Version: 1.0
-Message-Id: <20260907-nohmp-v2-10-6d952d972c21@redhat.com>
+Message-Id: <20260907-nohmp-v2-2-6d952d972c21@redhat.com>
 References: <20260907-nohmp-v2-0-6d952d972c21@redhat.com>
 In-Reply-To: <20260907-nohmp-v2-0-6d952d972c21@redhat.com>
 To: qemu-devel@nongnu.org
@@ -70,25 +70,25 @@ Cc: John Snow <jsnow@redhat.com>, "Denis V. Lunev" <den@openvz.org>,
  =?utf-8?q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>, 
  Glenn Miles <milesg@linux.ibm.com>, qemu-ppc@nongnu.org, 
  =?utf-8?q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>
-X-Developer-Signature: v=1; a=openpgp-sha256; l=1332;
+X-Developer-Signature: v=1; a=openpgp-sha256; l=2526;
  i=marcandre.lureau@redhat.com; h=from:subject:message-id;
- bh=vczpgToxbft+6rJhaegC1wW8anYwt9OMkpy1ZKiQlu8=;
- b=owEBbQKS/ZANAwAKAdro4Ql1lpzlAcsmYgBqnpJD9XSdF1AMNldNGFvcxlc75vCXwjxhAjpYT
- N/ztgPdvG2JAjMEAAEKAB0WIQSHqb2TP4fGBtJ29i3a6OEJdZac5QUCap6SQwAKCRDa6OEJdZac
- 5cUAD/4toRCY1ncsJpl1WT6J+rjFNK6cj5wWLmq61nWh+KNBj5G2BWXwU/9YOJVfCCb1Y6iMswc
- 1JW1J9NoMzw8NtHsTpadbLrb5pqgxdk9GWNMCecJ72LB6qbJ9yB1OYf0KEPdnm8JWDsyNsJZdmb
- hLhBjcs2QdYmaq6wMOMYZkIPQFDRwclG2SM/AbAC/jcIpIgvY7XyhMuxLaT483qqX5+MWk+JlRc
- qb3hpefOUsOppZrrHEn7RV767OBxD0XB839Aq8MStFHVdCdsgD6yeG3Wcug95Cs/Iv2VjOXODfh
- +VuVPDfiq5tNrquvw1EKtXi04FReZbWaDsyrBKBebPx+UWQrw/Y+agO+RnLq1zdrONheWQJXrh9
- DjuJA6x+DtKXXdXrCOf2Z9VOMMhGqhHrSDg+m0B7IA5zkrKz1rIBLmTFC/C9wzB7nlHQUy0rvlN
- 2Y5PjMITWoEoVgxfK2SWkN0ShRg4fFZdPjXq48rf9AANU/zyyUck0aN6fbbGfoGGlFD6Wz0PhBV
- aKv96GLS54APbMU9byeGFX4IFjgpwzFV7xFnCZXsHJ0JUwFUB4R4+GrTn6y89AZj73fZaZPo0Ax
- AU4/jVLTHplPQMGgRrePfah+SkB5uoOATqCb9k+sjJ+UqtHApKAgsJChjggZjcditZpaBuYiteD
- t6Ha1dEToCR7EXQ==
+ bh=Ygc3sa0XyimlEPA9EvJG3rAzBiuUKaymrtR3GvddhO4=;
+ b=owEBbQKS/ZANAwAKAdro4Ql1lpzlAcsmYgBqnpJCx76BhkkEtw5IfXC8ETpcUnBBZEzAY2u1R
+ uUttmuFuXuJAjMEAAEKAB0WIQSHqb2TP4fGBtJ29i3a6OEJdZac5QUCap6SQgAKCRDa6OEJdZac
+ 5YAeD/40wvCHvIBNT29clCHMZfGU4ZaUGX0sqfFZoygMX0bs2K2cPegEnuhdPRcThVsGICSZ6nZ
+ pMR7T4Dfl3Y51J8G3WxRwMnPftdnVzU828qGvEmPp6+I3dsPNY3xLbxDY4fo/XuGjlmLMlgnMg7
+ YpWixwekpy3TYIDiCoASR66ok7k4lp55vGV+bJVDSd3xTAOP3BpXBNvN4b3N1m5xf+8d2UiIRUL
+ YI1QtIRxm4FwD1TGQ+doWY/L/D/EaQk2gKouDT7oLKMj4P2qk6oyEq+SlVyYEMgYmTMf9Jx0hcW
+ riEsLNFbMjiUyNXtucQCqEVsvtlc7G+2M/7yR+mcvi8WCF0zI+MmNdc1mrlVAd8UiHFzYuzJbvt
+ FcN/JTO9kcf11jrANBbRX277pqFIH5ss15miBYD/r9efDEkPddUqVhbDVTN5nPosk4yXHZxw/CT
+ 2FpL7iopuMLXuiYgYO777M09rcn8Lrb7oVG41rB06cCzDxWHXALGBPGOAYB1B0mVX+djhV1LTzo
+ inGbZHRhrNjyAlyL4ABhXDKfAR8i6SGQYp/Zx+k8RZ1DNCvksXCs4xZ0rf77aoDGR5ajci4zA+N
+ Eojbc2GsVXfaIcqTnl+KdhMrVHm8BIYzzJJKa0yeXz/mqg2Pz8PX1tF/PuCzezRX2ELmChEvzx0
+ 7gnWc8V+nXi6igw==
 X-Developer-Key: i=marcandre.lureau@redhat.com; a=openpgp;
  fpr=87A9BD933F87C606D276F62DDAE8E10975969CE5
-X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.93
-X-Mimecast-MFC-PROC-ID: RUuH_TACy_MacfXvCut5SDR1qESYCkdM_72Zfy0rTrE_1788777068
+X-Scanned-By: MIMEDefang 3.6 on 10.30.177.95
+X-Mimecast-MFC-PROC-ID: _dk2zueoAaR6dBCJ2RIC0ndIAw1YVeRvPAZN_IUPNQI_1788777038
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
@@ -117,45 +117,71 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Those tests use "info registers" command and cannot be converted
-easily, for now skip them
+Read config-host.h and skip tests that rely on some CONFIG_*
+values.
 
-Reviewed-by: Daniel P. Berrangé <berrange@redhat.com>
 Signed-off-by: Marc-André Lureau <marcandre.lureau@redhat.com>
 ---
- tests/functional/m68k/test_nextcube.py | 2 +-
- tests/functional/ppc/test_ppe42.py     | 3 ++-
- 2 files changed, 3 insertions(+), 2 deletions(-)
+ tests/functional/qemu_test/__init__.py   |  2 +-
+ tests/functional/qemu_test/decorators.py | 25 +++++++++++++++++++++++++
+ 2 files changed, 26 insertions(+), 1 deletion(-)
 
-diff --git a/tests/functional/m68k/test_nextcube.py b/tests/functional/m68k/test_nextcube.py
-index 82e157882e0a..cd7383f282a1 100755
---- a/tests/functional/m68k/test_nextcube.py
-+++ b/tests/functional/m68k/test_nextcube.py
-@@ -14,7 +14,7 @@
- from qemu_test.tesseract import tesseract_ocr
+diff --git a/tests/functional/qemu_test/__init__.py b/tests/functional/qemu_test/__init__.py
+index 03e5c73d39dc..e21fa8279281 100644
+--- a/tests/functional/qemu_test/__init__.py
++++ b/tests/functional/qemu_test/__init__.py
+@@ -16,7 +16,7 @@
+ from .decorators import skipIfMissingCommands, skipIfNotMachine, \
+     skipFlakyTest, skipUntrustedTest, skipBigDataTest, skipSlowTest, \
+     skipIfMissingImports, skipIfOperatingSystem, skipUnlessOperatingSystem, \
+-    skipLockedMemoryTest, skipIfMissingEnv
++    skipLockedMemoryTest, skipIfMissingEnv, skipUnlessConfig
+ from .archive import archive_extract
+ from .uncompress import uncompress
+ from .gdb import GDB
+diff --git a/tests/functional/qemu_test/decorators.py b/tests/functional/qemu_test/decorators.py
+index aa135acc7857..7a7d30503440 100644
+--- a/tests/functional/qemu_test/decorators.py
++++ b/tests/functional/qemu_test/decorators.py
+@@ -10,6 +10,7 @@
+ from unittest import skipIf, skipUnless
+ 
+ from .cmd import which
++from .config import BUILD_DIR
  
  
--@skipUnlessConfig("PIXMAN")
-+@skipUnlessConfig("PIXMAN", "HMP")
- class NextCubeMachine(QemuSystemTest):
+ def skipIfMissingEnv(*vars_):
+@@ -162,6 +163,30 @@ def skipIfMissingImports(*args):
+     return skipUnless(has_imports, 'required import(s) "%s" not installed' %
+                                    ", ".join(args))
  
-     timeout = 15
-diff --git a/tests/functional/ppc/test_ppe42.py b/tests/functional/ppc/test_ppe42.py
-index 53958a7938d1..a3b8d7fa89f1 100755
---- a/tests/functional/ppc/test_ppe42.py
-+++ b/tests/functional/ppc/test_ppe42.py
-@@ -7,9 +7,10 @@
- # SPDX-License-Identifier: GPL-2.0-or-later
- 
- import asyncio
--from qemu_test import QemuSystemTest, Asset
-+from qemu_test import QemuSystemTest, Asset, skipUnlessConfig
- 
- 
-+@skipUnlessConfig("HMP")
- class Ppe42Machine(QemuSystemTest):
- 
-     timeout = 90
++def _read_config_host():
++    config = set()
++    with open(BUILD_DIR / "config-host.h", "r") as f:
++        for line in f:
++            if line.startswith("#define CONFIG_"):
++                name = line.split()[1].removeprefix("CONFIG_")
++                config.add(name)
++    return config
++
++_CONFIG_HOST = _read_config_host()
++
++def skipUnlessConfig(*args):
++    '''
++    Decorator to skip execution of a test if the QEMU build
++    does not have the required CONFIG_* options enabled.
++    Example:
++
++      @skipUnlessConfig("PIXMAN")
++    '''
++    missing = [a for a in args if a not in _CONFIG_HOST]
++    return skipUnless(len(missing) == 0,
++                      'missing build config(s): %s' %
++                      ', '.join('CONFIG_' + m for m in missing))
++
+ def skipLockedMemoryTest(locked_memory):
+     '''
+     Decorator to skip execution of a test if the system's
 
 -- 
 2.55.0.543.g5ebe2ebe4ea8

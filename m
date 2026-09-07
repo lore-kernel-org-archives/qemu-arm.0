@@ -4,65 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 71A20C79FA1
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 71A65C79FA7
 	for <qemu-arm@archiver.kernel.org>; Mon,  7 Sep 2026 16:43:35 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1x3cR3-0007Jw-MV; Mon, 07 Sep 2026 12:43:09 -0400
+	id 1x3cQh-0007Au-Ps; Mon, 07 Sep 2026 12:42:47 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <eblot.ml@gmail.com>)
- id 1x3cR2-0007J5-Be
- for qemu-arm@nongnu.org; Mon, 07 Sep 2026 12:43:08 -0400
-Received: from mail-wm1-f50.google.com ([209.85.128.50])
+ id 1x3cQf-00079y-W5
+ for qemu-arm@nongnu.org; Mon, 07 Sep 2026 12:42:46 -0400
+Received: from mail-wm1-f54.google.com ([209.85.128.54])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <eblot.ml@gmail.com>)
- id 1x3cR0-0002oK-Mj
- for qemu-arm@nongnu.org; Mon, 07 Sep 2026 12:43:08 -0400
-Received: by mail-wm1-f50.google.com with SMTP id
- 5b1f17b1804b1-49cca4ffdcfso31085615e9.0
- for <qemu-arm@nongnu.org>; Mon, 07 Sep 2026 09:43:06 -0700 (PDT)
+ id 1x3cQd-0002lV-OD
+ for qemu-arm@nongnu.org; Mon, 07 Sep 2026 12:42:45 -0400
+Received: by mail-wm1-f54.google.com with SMTP id
+ 5b1f17b1804b1-49b96837ca3so29889205e9.3
+ for <qemu-arm@nongnu.org>; Mon, 07 Sep 2026 09:42:43 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1788799385; x=1789404185;
+ d=1e100.net; s=20251104; t=1788799362; x=1789404162;
  h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
  :content-type:mime-version:subject:date:from:x-gm-gg
  :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
  :content-type;
- bh=6rZV+0Rq4PmlZn+kvmoVgaQLW2OyVLJsEpdjV2a5OvI=;
- b=AoE7BVrqwEpwxPfeYpwATvmuT1gngh8Fl+ARrtitVaC3w0wMxTs8Hol1k2j0EJzyNw
- nQu/a4vfqY1aU+wXDLILTxr9qWXe+i7qw8+U8/9iKbAZntsPATYBbIH21/SCOAUst3Cv
- YPR+aNXG8E7FHs5TVLbDaSsC3ydVmc5BqNxp64PHx7SKwrCaY1qGH16J0P58CeYY5vga
- aWCK8acveoCGEZujTmFfAI2bQhtTK9Pa5c4PdQOGJaxOC3b5n9dW6cj1E4uPh8VZKum9
- een3aaxrbNGYFbqNYjKCQlIjFwYveuxGxx59VgpyR7H2ft740EI33/3/h88o+6ZEDBU8
- ByWA==
+ bh=yXN++fw5zgOO6Nzdt5aDXW+w27r6GydROb+GJyYC31Y=;
+ b=Y03uFdYdVbIpOa4i2y++bmE2L4wobe511FQ5M47zbxubbW9uS6IVxogEW91/GuPX8B
+ e6VrdblnP8y8xj5eBppqWqh374rsK/TN+VQZcQpw0b2ngS9qCwr6gnoMhrF7RDkpLaXD
+ acSxhZ6po8em2IiKb2CbGtjK51varSQLHQHRqdS1kLgymr7SW/TI3sIirTlLkzK8xQbN
+ 3WvQZl7yJtC3OoAI6taWZZWrptKwWjhIhL+f91d+S6C8aXDeVfccQiWP/sIiQWGMBs99
+ GDcSlgKalXuBwAvhYtUEWwxhw/r4ordNZE+yJUnZzo6PkvnOJIJrpgkmjaglCxSnxKH6
+ 9DbA==
 X-Forwarded-Encrypted: i=1;
- AKwUvBxFFdv/z9S7e45xURFoF31WwJR1xo3kyeF1wmgSDW7BfwpEmoePeSSzb6076TVITHbsy8K9XDYbFw==@nongnu.org
-X-Gm-Message-State: AFuF++lJ4cMkFJqTH/oaogg21g0zm5YEFVv89AntHnoJc1HIbY/0B3cK
- fd5BHkV/PwVegGJlgFz/0j/C1SyEweog3Ydk4a7PMFkRSM4k5580YYgD
-X-Gm-Gg: AYBFou0f+0G/5loe99hdLHgGlruuY3Q6X49a8IQb3kxbsglwJSfNns1FvSSNUmzNHgq
- N8ilZzRq7gAUyqSk2h9rMjulBGW1rng8A/IrTg2QxnWZe/nC3VQ5nSS1IRTMZKShi8MozVV8UJ/
- yb7CeANk/CylYvK5Rd3TPfhtmilxTZh33gUhXdsBBsOACuL90Sv2VEYZ1uqC17bBBXbcWmVdGkd
- K3631vAr8HdmSwrDavHYw4MrlRh9mWBRaJZcMh0hjWdPbbBgvd4CnE+uwLX2qevXk1K2W1c/Jz9
- wafUIbh/tkwYGzmC1/PGSj2mIyyL90Zo7l4xnoS2xL+VDo8YscjnCQAtGPM2tKFFDTLYBCVEo9K
- FEE7dyAAOnjuBOEC0r1lr8N63EajZoOJG4vxG7X9oLm/vg/lyjKyJhPICGo530LZcOrJ444TVoD
- HRW9sMFyiHrAtPs+QvNbDrWi1PBICZLvRWV/Q9k8oCW68Cyza/2bm5x28XjF1xRZii/8CKxEbA6
- 5Yv0NGNs3vZs9Y13kQAYBTtpwSB/bBhCSQ=
-X-Received: by 2002:a05:600c:1d0d:b0:49d:99c:3bd9 with SMTP id
- 5b1f17b1804b1-49d099c3fc9mr105824635e9.33.1788799384968; 
- Mon, 07 Sep 2026 09:43:04 -0700 (PDT)
+ AKwUvBxBe+pRgM5zrpJwwDZo5mHF1XLMnuQpUIjGC2yEjIljZdiVeZvWeDSYDP4lssgcvkFM9wW3pw6kDA==@nongnu.org
+X-Gm-Message-State: AFuF++nyXzpehvek7oJ/L9ic3P8dS3aZ86yOc/e1vGh44UdNUoFDggon
+ NX3oJiE5WGaateo7Ds2V8V2kQZ8EsFqRlEyQv7uC8rTJnnb672y2Nz93
+X-Gm-Gg: AYBFou3JAtyPu9qsO82/YEWyQkGDhVdOg9nmnAnpIOoTwQFNZM4mqFxVEdPowlv0AE7
+ kyDCb8Fyj7yq3/bIRuCl13560/p46PV0mlJ6ClGBAIHhbmbspdw+ewY7SwSaxKDLjbfxtrz1YL1
+ S2PKrNWXaQI95xwnc/ziEy3LnWbm2yqSHYcPmidNTdymrQMSVSYN6uER02KU9yXBLaJDSYSS1u2
+ NXZ2V157cyPx5Rh3gKdH+zjspFDGgo7ZE8dR0hpsudJB1deT93iHUk3UP+MKhImjSAGeleV9mEx
+ OnOqVsXkc2ZqBTMiLyP7+SKoZn/dxrUfxR3lW6PI6Ng6WSa40dUt4a0vrw89uSlJwx4hWAtGZlV
+ 2NoERqEd+0zaovJKZChKwJPlzR6e/+gNTg0MUoj9h0QoRhOKC/ikAXIU9pGB564uoyYEEy3jJ21
+ o5zGOatM3hqjIcMegYFg1Hasi0vlcMFFgrq/iu9vkSwad6lObnkK/Ye/3WSK5SUGuQTZKQQvUr4
+ gntcAXLawI/JksuH126BzIVrePjpSAVcoQcNW/ZMm7pew==
+X-Received: by 2002:a05:600c:4505:b0:49c:dca2:ac47 with SMTP id
+ 5b1f17b1804b1-49cf7fe607cmr220873985e9.2.1788799362092; 
+ Mon, 07 Sep 2026 09:42:42 -0700 (PDT)
 Received: from localhost (89-93-216-19.hfc.dyn.abo.bbox.fr. [89.93.216.19])
  by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-49ce46696e8sm291092065e9.0.2026.09.07.09.43.04
+ 5b1f17b1804b1-49ce58da3acsm859019835e9.0.2026.09.07.09.42.40
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 07 Sep 2026 09:43:04 -0700 (PDT)
-Date: Mon, 07 Sep 2026 18:41:53 +0200
-Subject: [PATCH 03/50] hw/arm: sanmiguel: remove the second SPI flash
- controller
+ Mon, 07 Sep 2026 09:42:41 -0700 (PDT)
+Date: Mon, 07 Sep 2026 18:41:51 +0200
+Subject: [PATCH 01/50] docs/system/arm/aspeed: add the catalina-bmc machine
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20260907-bmc-minerva-v1-3-0d83ad610c3b@free.fr>
+Message-Id: <20260907-bmc-minerva-v1-1-0d83ad610c3b@free.fr>
 References: <20260907-bmc-minerva-v1-0-0d83ad610c3b@free.fr>
 In-Reply-To: <20260907-bmc-minerva-v1-0-0d83ad610c3b@free.fr>
 To: qemu-devel@nongnu.org
@@ -78,15 +77,15 @@ Cc: =?utf-8?q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>,
  =?utf-8?q?Philippe_Mathieu-Daud=C3=A9?= <philmd@oss.qualcomm.com>, 
  Emmanuel Blot <emmanuel.blot@free.fr>
 X-Mailer: b4 0.15.2
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1788799319; l=1273;
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1788799319; l=1992;
  i=emmanuel.blot@free.fr; s=20260602; h=from:subject:message-id;
- bh=A/n8ct+D5Xu+mMgfHstzXeaf3QPL+KzcwDlNWjocwiE=;
- b=cqM5K1I8x8srHtJZ7eQ24cJrKOwHfhjzCBExf6iCiP2xEGdxhprPiDhShDDYyx3oDp/VNGd/U
- B4JJR/ufbTqBFIsfEEdq9W8VAmtwiYqQRpn0eDgPFMyknNP6tP8k0oi
+ bh=jOGxphM6i2yuU0VVdWKJiaxsh0O18wnvUcN3/3+xhQk=;
+ b=Cto8ykDil9oYTgsGQA7AV/sd/46SI4OKM5pjwd/qHnmnAUrZ5/O41M3k3fD3BoRESR9x0Yiqr
+ RO2VXaUU39KA/25jod8P9EPZ8LSlJktDSIebEUsVeyBbuLcZQfdWPhz
 X-Developer-Key: i=emmanuel.blot@free.fr; a=ed25519;
  pk=0qFrZ21FAAN8OfVsSoVcCFTk/NMYOWzxJz4paSAVm0g=
-Received-SPF: pass client-ip=209.85.128.50; envelope-from=eblot.ml@gmail.com;
- helo=mail-wm1-f50.google.com
+Received-SPF: pass client-ip=209.85.128.54; envelope-from=eblot.ml@gmail.com;
+ helo=mail-wm1-f54.google.com
 X-Spam_score_int: -15
 X-Spam_score: -1.6
 X-Spam_bar: -
@@ -112,40 +111,40 @@ From:  Emmanuel Blot via <qemu-arm@nongnu.org>
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-The board only populates the flash device attached to the FMC
-controller; the SoC SPI controllers are left unused. Advertising a
-part there presents the guest with a flash device the hardware does
-not have.
+The Facebook Catalina BMC machine is supported by hw/arm but has never
+been listed in the Aspeed documentation. Add it to the AST2600 machine
+table.
 
-While here, add the missing year to the copyright line.
+While at it, shorten the document title. Listing every machine name in
+the title duplicates the tables right below it, and made the title (and
+its underline) grow past 350 columns. The machine list stays available
+where it is readable, in the per-SoC tables.
 
 Signed-off-by: Emmanuel Blot <emmanuel.blot@free.fr>
 ---
- hw/arm/aspeed_ast2600_sanmiguel.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+ docs/system/arm/aspeed.rst | 5 +++--
+ 1 file changed, 3 insertions(+), 2 deletions(-)
 
-diff --git a/hw/arm/aspeed_ast2600_sanmiguel.c b/hw/arm/aspeed_ast2600_sanmiguel.c
-index 599ef1701f..1dbbef11f2 100644
---- a/hw/arm/aspeed_ast2600_sanmiguel.c
-+++ b/hw/arm/aspeed_ast2600_sanmiguel.c
-@@ -1,7 +1,7 @@
- /*
-  * Facebook SanMiguel BMC
-  *
-- * Copyright (c) Meta Platforms, Inc. and affiliates.
-+ * Copyright (c) 2026 Meta Platforms, Inc. and affiliates.
-  *
-  * SPDX-License-Identifier: GPL-2.0-or-later
-  */
-@@ -384,7 +384,7 @@ static void aspeed_machine_sanmiguel_class_init(ObjectClass *oc,
-     amc->hw_strap1 = SANMIGUEL_BMC_HW_STRAP1;
-     amc->hw_strap2 = SANMIGUEL_BMC_HW_STRAP2;
-     amc->fmc_model = "mx66l1g45g";
--    amc->spi_model = "mx66l1g45g";
-+    amc->spi_model = NULL;
-     amc->num_cs    = 2;
-     amc->macs_mask = ASPEED_MAC0_ON;
-     amc->i2c_init  = sanmiguel_bmc_i2c_init;
+diff --git a/docs/system/arm/aspeed.rst b/docs/system/arm/aspeed.rst
+index 2d51ceeb84..933df41f96 100644
+--- a/docs/system/arm/aspeed.rst
++++ b/docs/system/arm/aspeed.rst
+@@ -1,5 +1,5 @@
+-Aspeed family boards (``anacapa-bmc``, ``ast2500-evb``, ``ast2600-evb``, ``bletchley-bmc``, ``fuji-bmc``, ``gb200nvl-bmc``, ``fby35-bmc``, ``g220a-bmc``, ``palmetto-bmc``, ``quanta-q71l-bmc``, ``rainier-bmc``, ``romulus-bmc``, ``supermicrox11-bmc``, ``supermicrox11spi-bmc``, ``tiogapass-bmc``, ``witherspoon-bmc``, ``yosemitev2-bmc``)
+-===============================================================================================================================================================================================================================================================================================================================================
++Aspeed family boards
++====================
+ 
+ The QEMU Aspeed machines model BMCs of various OpenPOWER systems and
+ Aspeed evaluation boards. They are based on different releases of the
+@@ -33,6 +33,7 @@ AST2600 SoC based machines :
+ - ``fuji-bmc``             Facebook Fuji BMC
+ - ``bletchley-bmc``        Facebook Bletchley BMC
+ - ``fby35-bmc``            Facebook fby35 BMC
++- ``catalina-bmc``         Facebook Catalina BMC
+ - ``anacapa-bmc``          Facebook Anacapa BMC
+ - ``gb200nvl-bmc``         Nvidia GB200nvl BMC
+ 
 
 -- 
 2.50.1

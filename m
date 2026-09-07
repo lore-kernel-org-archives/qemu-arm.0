@@ -4,83 +4,79 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 87419C79F89
-	for <qemu-arm@archiver.kernel.org>; Mon,  7 Sep 2026 13:02:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 37AC2C79F9E
+	for <qemu-arm@archiver.kernel.org>; Mon,  7 Sep 2026 13:03:35 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1x3Yzo-0006Ds-1P; Mon, 07 Sep 2026 09:02:48 -0400
+	id 1x3YzX-00067t-Co; Mon, 07 Sep 2026 09:02:32 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1x3Yza-00068R-DQ
- for qemu-arm@nongnu.org; Mon, 07 Sep 2026 09:02:34 -0400
-Received: from mail-wm1-x330.google.com ([2a00:1450:4864:20::330])
+ id 1x3YzV-00067P-HB
+ for qemu-arm@nongnu.org; Mon, 07 Sep 2026 09:02:29 -0400
+Received: from mail-wm1-x32f.google.com ([2a00:1450:4864:20::32f])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1x3YzY-00050V-NR
- for qemu-arm@nongnu.org; Mon, 07 Sep 2026 09:02:34 -0400
-Received: by mail-wm1-x330.google.com with SMTP id
- 5b1f17b1804b1-49ccfae359fso31381405e9.3
- for <qemu-arm@nongnu.org>; Mon, 07 Sep 2026 06:02:31 -0700 (PDT)
+ id 1x3YzT-0004zi-Kt
+ for qemu-arm@nongnu.org; Mon, 07 Sep 2026 09:02:29 -0400
+Received: by mail-wm1-x32f.google.com with SMTP id
+ 5b1f17b1804b1-49ccfae359fso31380715e9.3
+ for <qemu-arm@nongnu.org>; Mon, 07 Sep 2026 06:02:26 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1788786150; x=1789390950; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:from:to:cc:subject:date
- :message-id:reply-to:content-type;
- bh=V5GTzXoa5Bc18T0mL4aBCRmcSOeg2+fjb2ceHf6mrW4=;
- b=MYQpNvJ9Zr5LJR8o1Emc5RcmL9Qi60jb9iZqHHSSiOS1o4m2Rz4bGJyF+hhkkssj5y
- r97zFSJ6vkuJDKm66Z59O7fyb/v3fns/I1hTGbbqdu19/GG4KSpL0OZGBkGu9ZgehOuc
- mJbUTh7DoSuz9PhS4mlR6rxfoPZAiBsCpSRwbQMgAgNWkFLVNGEEBDTC/HqqlP954iJL
- /34jFXZG6+Fy2zDrNhm3UHgTmczag13DdyxeRcg4L0FpsSA+1VqEjVcIlEvZga8l/YXk
- 1iQHvuueIvgdZsbjxRxKXmkcf3eq2V3TCWZQcbVMK0Ln8H1uaoMXCSfTonV7KAGKlHxm
- Jzvw==
+ d=linaro.org; s=google; t=1788786145; x=1789390945; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:from:to:cc:subject:date:message-id:reply-to:content-type;
+ bh=rXw6DPR0lE4RgYwCOQwi6dKav//13vR4aZJMzDyd++E=;
+ b=dxJHPNNWRagdp721PGwkBHPsXMXv0q+1wRA7EXianD5knY0gEgc4bL79+Duji+MOZ+
+ cj1jy3U5CpvQEhVuMHMmJgRk25D7E1ggPwO41oBrkfFZWN8o4x4LGyes7gAlR2XgR2I+
+ /GT0r/YlUepVClyeUsdCFDtiOzjn7YwbUJyPEYsnBzikLkIAy5sLuTBCt667hiczKm4d
+ 4evIzbw+CpNv0MyyR8yMw1D05RC4OrayFsGkza2E/RguTvIMbC1selquy62EYji3cj+Q
+ 6sTwexnNhEpBRt256WFsgFhGKO9gQstsbDDRATpXDQpb6TiACWq1PvIcLsvvSMkMWlj8
+ SGOA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1788786150; x=1789390950;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
- :to:cc:subject:date:message-id:reply-to:content-type;
- bh=V5GTzXoa5Bc18T0mL4aBCRmcSOeg2+fjb2ceHf6mrW4=;
- b=GcZLp7HvPBqwO81f6PlHM2Y5/bMpmnukPUMoojYx4KYbvEQcwcLH4gAjrTxYNBiTGA
- 5KJbp7T0d4RV1qs4IblTgAPWWRXEaM/nEuWj5mDqjgwzewkNwc/oQt+rGKQVDhPeGQe2
- lA7fHYRihGBfe5xvDPwQWlgDAqzkgALFEpwrFrWVHhcp5lpjPRueavL/2oIORmOU3Mkf
- pRVpuEXNMgLZSD5SAcfOskvbssRrq813A51SaUvhHlhU1ZGQ0Fd0LB4W4PfY2PblPJ5B
- 7BZNk7VrDYmZsjXtz4eLD1AA+qbPMzgR267hlP+9P9GiM/2Zp3Ep9ZguCbQx/E3jpyhu
- uEEQ==
-X-Gm-Message-State: AFuF++nVrlxDstlxUlnece6waykWmwolJHOCH79n25AcSXufku2p9eey
- xdYl0jBfBI7PCcMBiPogz7zXQY6IeUOGIoOO64nm0PYf90uDTcAzD4KXq/eE9LwEiVD1ox2t2GO
- Dpz5e7o8=
-X-Gm-Gg: AYBFou2bsJEwv3oeDpCggVQYi288VUpy/tJwIF+A5QOLatmnY5cRPW0zoJHIB7xMBN4
- KSAsK4TfDU0xnGrmhafKRtx6pK/b5TVbD0J/IzUz/lG1FH8ZrxBnnM5IwRqCGzewLnX4WCTb5OO
- 1yZVkkRqb/tDh2Ivnc7WAPFp4JiBXk76n61VLvuH8jjr3+LER5/PY9L+tVlufEUV6WESRJf/YXz
- U4LpfzIYsZ7LQOg87pSVCKW0jJEHD+xSPRnC+mj0TS7jidnhDnIcZdvoB52NJfM25WohBlUOOVY
- 9Kkkq6Q+md95a39EtsQeFpWh1dt4CtKtrIcx+urusxo4zIDtTNf8Sryrghygzw3smohdlRrzYw8
- 3xPZjOisEDLdL9E67GohXM4lVmMCQPaUpOSNHqvqHlo8SdVGkNiyNM9EahaT80Jj51szFoBY2eq
- Z8exdL2zCo27fGpUMho+pugnyc9JJhzU2FOM0QEHufuf5jZrCPyCiUTG9s8JBvjPYtgf87mvdMY
- MiC4qJX3VJfbVh05UxquMeyXZM4E0wQEGGlQnE2h+l2GVz7S2M9jj4Vk/njSjIb/LwwLA==
-X-Received: by 2002:a05:600c:6088:b0:49c:fc6c:be15 with SMTP id
- 5b1f17b1804b1-49cfc6cc100mr200288545e9.27.1788786150108; 
- Mon, 07 Sep 2026 06:02:30 -0700 (PDT)
+ d=1e100.net; s=20251104; t=1788786145; x=1789390945;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+ :message-id:reply-to:content-type;
+ bh=rXw6DPR0lE4RgYwCOQwi6dKav//13vR4aZJMzDyd++E=;
+ b=BNTWbZo8lZ2nWUdnwORrmwx8LrpoQrH7JaYkUwAOQrEaZCDpeyxquugVWEY3isJWhX
+ h/gj4XDy3EMu00s5feVaTbCI6Hn/+Yks1vdBGU/yWsWTAAKUUBEWW27f2xFyPKri+JU4
+ 2XMls0eFVdjalh3zum+3eX1NoPJFcnQCDFzEj4Z8K9yNdQtQYwcN4uf/oyO3JcZcRs4b
+ 6NN6DwnlvHjuFD+Bsi4TvdVEHUdELnTznEuniILEhQ6/IAbkZUDP6N8rfrgWbn1RV2Mq
+ EBeITFhVuyqdu8z7gImRlwZR7zDEjb16D4WTLOBAr7Gtoph3KiofdTtdHVSeHC3DNxVD
+ gYNg==
+X-Gm-Message-State: AFuF++ky+SWcm3tB+lmDjlpD7cyiRRvDhyI6Ze7sWbL2zGcwVeWAFUdN
+ wt5/Rg3uq5TfajgFJUjdvV9nUtEjUATGbgSDz45NylMrNj8+2WX8vuBeox0bHkQevQpHNUAiluM
+ uGi8rues=
+X-Gm-Gg: AYBFou1t+eYWXxNO2nRkt4T29Zfnyt2cBdnx6K/HaOL2W/bdTuwQpfkGJWFE0skf0su
+ kNsPO6t6JOWl4/lowrudl3h5yka4Lhpo5918UvbxqIbayBpaOzSh3ji6luSbR+3at4HLrp8NWpn
+ hMwrLQAOMjInDUeZjpn4FojF1+bpB/KqvN9ZH/oz3X9zu1OzP3+3Xlyf1rRzhqb+EIWYYs1PcB+
+ Q7Pk5dCTlPhKZiCKRWcWPl7yfD0HeQGVyqcRF3TblFNYbiA0IF4f8YOE0ZvHfWqi1jhd3ijPUoH
+ 9lEHULG/w2IwkGlpB6zuRPFRUM2SvzlbFHH0cH3ffBqKsjkxJooUPvea1ijsTT0Moy/AkI3Wo5b
+ H/+xzZw1XHc9WlwIL7NLzG4/jHtAGTyDlOOEeZE+TEJAenXus178OvKaCgT/rQdi2zt514NlYR/
+ mtSa7A3p7UgIHc45F1wPyRyFwZJoFyrbawSBt/u8M8g8geJcX9LuPxvoAQE6qEhlLr8yzfBK8r/
+ AuVD8hJ/zIC2lUdvyqWjuUFuy06IqQUL5N3THyKNK4wP1G+jVHyrb2MEiE+WEf/e+AAhgI=
+X-Received: by 2002:a05:600c:1914:b0:499:60bf:c6f7 with SMTP id
+ 5b1f17b1804b1-49cf8269fdfmr222262875e9.13.1788786145374; 
+ Mon, 07 Sep 2026 06:02:25 -0700 (PDT)
 Received: from lanath.. (wildly.archaic.org.uk. [81.2.115.145])
  by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-49cee60bae6sm468589935e9.9.2026.09.07.06.02.28
+ 5b1f17b1804b1-49cee60bae6sm468589935e9.9.2026.09.07.06.02.24
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 07 Sep 2026 06:02:29 -0700 (PDT)
+ Mon, 07 Sep 2026 06:02:24 -0700 (PDT)
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
 Cc: Tao Ding <dingtao0430@163.com>
-Subject: [PATCH 4/8] target/arm: Don't use arm_cp_reset_ignore when
- fieldoffset is 0
-Date: Mon,  7 Sep 2026 14:02:19 +0100
-Message-ID: <20260907130223.3148989-5-peter.maydell@linaro.org>
+Subject: [PATCH 0/8] target/arm: Fix AArch32 Secure banked reg migration
+Date: Mon,  7 Sep 2026 14:02:15 +0100
+Message-ID: <20260907130223.3148989-1-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.43.0
-In-Reply-To: <20260907130223.3148989-1-peter.maydell@linaro.org>
-References: <20260907130223.3148989-1-peter.maydell@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::330;
- envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x330.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::32f;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x32f.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -103,62 +99,83 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-In cp_reg_reset(), we treat an ARMCPRegInfo::fieldoffset value of 0
-as "reset is handled elsewhere".  So we don't need to explicitly set
-ri->resetfn to arm_cp_reset_ignore() when we haven't defined a
-fieldoffset in the cpreg struct.
+This patchset fixes a very long standing bug where we didn't migrate
+the values of the Secure banked copy of an AArch32 banked coprocessor
+register (https://gitlab.com/qemu-project/qemu/-/work_items/467).
+This is something that Tao Ding sent a patch for back in July:
+https://lore.kernel.org/qemu-devel/20260717174412.88258-1-dingtao0430@163.com/
+I didn't think that patch was quite right, but digging into it I found
+a slightly wider set of problems than I expected, plus testing on
+a bunch of configs was a bit tedious, so it's taken me a while to
+get something ready to send out. Sorry for the delay...
 
-Remove the setting of resetfn to arm_cp_reset_ignore in the handful
-of places where we were doing this unnecessarily.  These are all
-timer registers, and doing this brings them in to line with the other
-timer registers (e.g.  CNTPCT_EL0 has no resetfn, and now CNTPCT
-doesn't either).
+The underlying cause of the bug is that we store registers in our
+cpreg hashtable with a key with one format (32 bit, QEMU specific),
+but store them in the (index, value) lists for migration with an
+index of a different format (64 bit, same as KVM uses).  Because KVM
+never supports EL3 its index format doesn't have a way to say "this
+is the Secure banked copy of this cpreg"; only our QEMU specific
+index does.  The conversion functions kvm_to_cpreg_id() and
+cpreg_to_kvm_id() were written to assume that the KVM index was
+always for a NonSecure register.
 
-Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
----
- target/arm/helper.c | 8 ++++----
- 1 file changed, 4 insertions(+), 4 deletions(-)
+The current code doesn't touch the CP_REG_AA32_NS_MASK bit when
+converting from the 32-bit ID format to a KVM ID, and it forces the
+NS bit to 1 when converting from a KVM ID to a cpreg.  The effect of
+this on migration is that the indexes in cpreg_indexes[] have NS = 0
+for the Secure banked registers and NS = 1 for the NS banked
+registers, but when we read and write the values into the CPUState by
+finding the register using kvm_to_cpreg_id(cpreg_indexes[i]) we
+always find the NS register, and so the S register values aren't
+actually migrated.
 
-diff --git a/target/arm/helper.c b/target/arm/helper.c
-index f8185b201be..9d8f09f13b4 100644
---- a/target/arm/helper.c
-+++ b/target/arm/helper.c
-@@ -2209,7 +2209,7 @@ static const ARMCPRegInfo generic_timer_cp_reginfo[] = {
-     { .name = "CNTPCT", .cp = 15, .crm = 14, .opc1 = 0,
-       .access = PL0_R, .type = ARM_CP_64BIT | ARM_CP_NO_RAW | ARM_CP_IO,
-       .accessfn = gt_pct_access,
--      .readfn = gt_cnt_read, .resetfn = arm_cp_reset_ignore,
-+      .readfn = gt_cnt_read,
-     },
-     { .name = "CNTPCT_EL0", .state = ARM_CP_STATE_AA64,
-       .opc0 = 3, .opc1 = 3, .crn = 14, .crm = 0, .opc2 = 1,
-@@ -2219,7 +2219,7 @@ static const ARMCPRegInfo generic_timer_cp_reginfo[] = {
-     { .name = "CNTVCT", .cp = 15, .crm = 14, .opc1 = 1,
-       .access = PL0_R, .type = ARM_CP_64BIT | ARM_CP_NO_RAW | ARM_CP_IO,
-       .accessfn = gt_vct_access,
--      .readfn = gt_virt_cnt_read, .resetfn = arm_cp_reset_ignore,
-+      .readfn = gt_virt_cnt_read,
-     },
-     { .name = "CNTVCT_EL0", .state = ARM_CP_STATE_AA64,
-       .opc0 = 3, .opc1 = 3, .crn = 14, .crm = 0, .opc2 = 2,
-@@ -2310,7 +2310,7 @@ static const ARMCPRegInfo gen_timer_ecv_cp_reginfo[] = {
-     { .name = "CNTVCTSS", .cp = 15, .crm = 14, .opc1 = 9,
-       .access = PL0_R, .type = ARM_CP_64BIT | ARM_CP_NO_RAW | ARM_CP_IO,
-       .accessfn = gt_vct_access,
--      .readfn = gt_virt_cnt_read, .resetfn = arm_cp_reset_ignore,
-+      .readfn = gt_virt_cnt_read,
-     },
-     { .name = "CNTVCTSS_EL0", .state = ARM_CP_STATE_AA64,
-       .opc0 = 3, .opc1 = 3, .crn = 14, .crm = 0, .opc2 = 6,
-@@ -2320,7 +2320,7 @@ static const ARMCPRegInfo gen_timer_ecv_cp_reginfo[] = {
-     { .name = "CNTPCTSS", .cp = 15, .crm = 14, .opc1 = 8,
-       .access = PL0_R, .type = ARM_CP_64BIT | ARM_CP_NO_RAW | ARM_CP_IO,
-       .accessfn = gt_pct_access,
--      .readfn = gt_cnt_read, .resetfn = arm_cp_reset_ignore,
-+      .readfn = gt_cnt_read,
-     },
-     { .name = "CNTPCTSS_EL0", .state = ARM_CP_STATE_AA64,
-       .opc0 = 3, .opc1 = 3, .crn = 14, .crm = 0, .opc2 = 5,
+This went unnoticed most of the time because (a) most setups don't
+enable EL3 at all (b) AArch64 is unaffected (c) most users don't use
+migration (d) the case where we direct boot a Linux kernel in NS and
+the S regs remain at their reset values happened to work by luck. 
+But it breaks migration of a guest which is running in S, such as
+Linux or u-boot on the imx boards.
+
+Patch summary:
+ * Patch 1 is the fix for this bug; I included keeping migration
+   compat from old QEMU here for the benefit of that case (d) that
+   used to work. 
+ * Patch 2 fixes a corner case for AArch32 v8 CPUs where we wouldn't
+   migrate some secure banked registers because we incorrectly
+   assumed an AArch64 regdef would do the job
+ * Patches 3 and 4 are minor tidyup
+ * Patches 5, 6, 7 fix some v7R and v8R bugs where we were exposing
+   cpregs and the ATS insns when we should not (noticed because
+   this bug caused the debug check in patch 7 to fire)
+ * patch 8 adds a debug check when QEMU is compiled in debug that
+   every cpreg that we claimed is an ARM_CP_ALIAS to something
+   else really does have some other cpreg handling the migration
+   of its CPU state struct field. It's a bit heuristic but it did
+   successfully report the missing migration handling for the
+   bug fixed in patch 1, as well as the other things which
+   patches 2-7 fix.
+
+thanks
+-- PMM
+
+Peter Maydell (8):
+  target/arm: Keep the S/NS bit in migration data
+  target/arm: Don't assume secure-banked registers are migrated by
+    64-bit regs
+  target/arm: Drop uses of reset_ignore for banked AArch32 registers
+  target/arm: Don't use arm_cp_reset_ignore when fieldoffset is 0
+  target/arm: Move ESR_EL1 definition to vmsa_pmsa_cp_reginfo
+  target/arm: Don't set ARM_FEATURE_VAPA for v7 PMSA
+  target/arm: Don't register 64-bit TTBR0, TTBR1 for PMSA
+  target/arm: Add a debug check that all sysregs are migrated
+
+ target/arm/cpregs.h  |  21 +++--
+ target/arm/cpu.c     |   6 +-
+ target/arm/cpu.h     |   6 ++
+ target/arm/helper.c  | 198 ++++++++++++++++++++++++++++++++++++-------
+ target/arm/machine.c |  80 +++++++++++++++++
+ 5 files changed, 273 insertions(+), 38 deletions(-)
+
 -- 
 2.43.0
 

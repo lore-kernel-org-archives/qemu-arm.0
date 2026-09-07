@@ -4,49 +4,50 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E768BC79FA7
-	for <qemu-arm@archiver.kernel.org>; Mon,  7 Sep 2026 10:22:18 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 80CF7C79F89
+	for <qemu-arm@archiver.kernel.org>; Mon,  7 Sep 2026 10:22:32 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1x3WTn-0007yb-Po; Mon, 07 Sep 2026 06:21:36 -0400
+	id 1x3WUJ-00084f-8u; Mon, 07 Sep 2026 06:22:07 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <gilles.grimaud@univ-lille.fr>)
- id 1x3WTm-0007yD-T1; Mon, 07 Sep 2026 06:21:34 -0400
+ id 1x3WUH-00083r-F6; Mon, 07 Sep 2026 06:22:05 -0400
 Received: from smtp-out-2.univ-lille.fr ([194.254.129.106])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <gilles.grimaud@univ-lille.fr>)
- id 1x3WTk-00025L-E3; Mon, 07 Sep 2026 06:21:34 -0400
+ id 1x3WUF-00026k-Ez; Mon, 07 Sep 2026 06:22:05 -0400
 Received: from smtp01.univ-lille.fr (smtp01.univ-lille.fr [194.254.129.95])
- by smtp-out-2.univ-lille.fr (Postfix) with ESMTPS id 4hdjls4lxSz7yDt;
- Mon,  7 Sep 2026 12:21:29 +0200 (CEST)
+ by smtp-out-2.univ-lille.fr (Postfix) with ESMTPS id 4hdjlt4BJ9z83Yc;
+ Mon,  7 Sep 2026 12:21:30 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=univ-lille.fr;
- s=dkim; t=1788776489;
- bh=xsc5YJtHGyG6ZNtVJotoqdk2qF66z40seBZSbPShq8E=;
+ s=dkim; t=1788776490;
+ bh=8jgUyOJWeE4yIYKvLmnqvK4Juj9Um97Fa/tpeKxGvuo=;
  h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=o9u4tymgxxhqG0U+X6V6/NaFEnH0TiW19O3aHnZePd5qP4Rpm7wMtiuItdD6Y8dXe
- J5ktro5SpFhWeTlAfOcMMsRU13MFCAi2kw+7IqrZZofZYRf6izSm6ZuU4eNxoa0L4y
- Ys36/U7mwVHsu7kcQL6x9yDSsPKF2NdMIR/uLrgfnIag4OmCLduuSDgK22KJXu3G1r
- 5G6elU9OyiZK4DfEpg4Jcueo61jEW9Ir96d0F+jc3EdGyyGRol5umTUEpsz+HU0HMs
- xhTPqMg2K6u3U3LE/oVcyrK4jNM21WdpHySi/59RA/LOsDck/pdY6ZKF3l6IT1g3Y8
- DRdeXUYRF1i3Q==
+ b=ymdG1kwb9GSxgGFUiSlThog6vJi4wfxIjrYmiMTmluyPEd92UE3+SWGQ7m5GcqKkY
+ PGbHV0Jt6tk275++9mcIL5soEpDSGwxvQBrXQ6Xuy9Bs25Ob2uKzgtduCw4SeZR4Hn
+ v/DSkuDMhR5vxFpS24q4p0Oz9xqlbZuTj7Ia9HxZy8xiHXPF/SrMFtWrsfKsIboSDs
+ +yU29u/UsBupUKMvtxnhK91jKetSPvzYjgovMPQjxlaLuVL92EB+FFjVKhQFmNdJZ5
+ ORfJ5evkwF4WyLuowDRlbOUKNvjeB5ZQWuTRSwPPP9shmUHpcRcZa94kOiFjB88I0r
+ kKI2ZU2SLunyw==
 Received: from localhost.localdomain (unknown [134.206.232.123])
  (Authenticated sender: gilles.grimaud)
- by smtp01.univ-lille.fr (Postfix) with ESMTPSA id 4hdjls2ztgz7tbk;
- Mon,  7 Sep 2026 12:21:29 +0200 (CEST)
+ by smtp01.univ-lille.fr (Postfix) with ESMTPSA id 4hdjlt2VTnz7wpD;
+ Mon,  7 Sep 2026 12:21:30 +0200 (CEST)
 From: Gilles Grimaud <gilles.grimaud@univ-lille.fr>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org, alex.bennee@linaro.org, peter.maydell@linaro.org,
  Gilles Grimaud <gilles.grimaud@univ-lille.fr>,
  Fabiano Rosas <farosas@suse.de>, Laurent Vivier <lvivier@redhat.com>,
  Paolo Bonzini <pbonzini@redhat.com>
-Subject: [PATCH v3 31/36] hw/arm: add shallow RP2040 USB controller
-Date: Mon,  7 Sep 2026 12:21:23 +0200
-Message-ID: <20260907102128.55676-1-gilles.grimaud@univ-lille.fr>
+Subject: [PATCH v3 35/36] hw/arm: route RP2040 banked interrupts per core
+Date: Mon,  7 Sep 2026 12:21:27 +0200
+Message-ID: <20260907102128.55676-5-gilles.grimaud@univ-lille.fr>
 X-Mailer: git-send-email 2.55.0
-In-Reply-To: <20260906194438.93046-1-gilles.grimaud@univ-lille.fr>
+In-Reply-To: <20260907102128.55676-1-gilles.grimaud@univ-lille.fr>
 References: <20260906194438.93046-1-gilles.grimaud@univ-lille.fr>
+ <20260907102128.55676-1-gilles.grimaud@univ-lille.fr>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 Received-SPF: pass client-ip=194.254.129.106;
@@ -73,272 +74,269 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Signed-off-by: gilles grimaud <gilles.grimaud@univ-lille.fr>
+IO_BANK0, IO_QSPI and SIO expose interrupt state separately for each
+processor. Preserve that distinction in the SoC instead of feeding the
+banked outputs through the shared interrupt path.
+
+Add the missing IO_QSPI outputs and exercise both processor interrupt lines
+in qtest. Keep all banked sources behind the per-core SYSCFG NMI routing.
+
+Signed-off-by: Gilles Grimaud <gilles.grimaud@univ-lille.fr>
 ---
- hw/arm/rp2040.c               | 96 ++++++++++++++++++++++++++++++++++-
- include/hw/arm/rp2040.h       |  7 +++
- tests/qtest/meson.build       |  1 +
- tests/qtest/rp2040-usb-test.c | 80 +++++++++++++++++++++++++++++
- 4 files changed, 182 insertions(+), 2 deletions(-)
- create mode 100644 tests/qtest/rp2040-usb-test.c
+ hw/arm/rp2040.c                  | 42 ++++++++++++++++++++++++++------
+ hw/misc/rp2040_ioqspi.c          | 18 ++++++++++++++
+ include/hw/arm/rp2040.h          |  3 ++-
+ include/hw/misc/rp2040_ioqspi.h  |  2 ++
+ tests/qtest/rp2040-ioqspi-test.c | 22 +++++++++++++++++
+ 5 files changed, 79 insertions(+), 8 deletions(-)
 
 diff --git a/hw/arm/rp2040.c b/hw/arm/rp2040.c
-index 37a9a6d4df..1b632be0b6 100644
+index 572fff0c7d..b093ad32f1 100644
 --- a/hw/arm/rp2040.c
 +++ b/hw/arm/rp2040.c
-@@ -14,8 +14,10 @@
- #include "hw/core/qdev-clock.h"
- #include "hw/core/qdev-properties.h"
- #include "hw/core/irq.h"
-+#include "hw/misc/rp2040.h"
- #include "hw/misc/unimp.h"
- #include "qemu/datadir.h"
-+#include "qemu/log.h"
- #include "system/address-spaces.h"
- #include "target/arm/cpu.h"
- #include "target/arm/cpu-qom.h"
-@@ -29,6 +31,17 @@
+@@ -34,6 +34,7 @@
+ #define RP2040_DMA_IRQ_0  11
+ #define RP2040_DMA_IRQ_1  12
  #define RP2040_IO_IRQ_BANK0 13
++#define RP2040_IO_IRQ_QSPI 14
  #define RP2040_SIO_IRQ_PROC0 15
  #define RP2040_SIO_IRQ_PROC1 16
-+
-+#define USBCTRL_SIE_STATUS      0x50
-+#define USBCTRL_BUFF_CPU_HANDLE 0x5c
-+#define USBCTRL_EP_ABORT_DONE   0x64
-+#define USBCTRL_INTR            0x8c
-+#define USBCTRL_INTE            0x90
-+#define USBCTRL_INTF            0x94
-+#define USBCTRL_INTS            0x98
-+
-+#define USBCTRL_SIE_STATUS_VBUS_DETECTED BIT(11)
-+
- #define RP2040_PROC1          1
  
- /*
-@@ -149,12 +162,77 @@ static const struct {
-     { "rp2040.adc",      0x4004c000, 0x4000 },
-     { "rp2040.pwm",      0x40050000, 0x4000 },
-     { "rp2040.rtc",      0x4005c000, 0x4000 },
--    { "rp2040.usbctrl_dpram", 0x50100000, 0x10000 },
--    { "rp2040.usbctrl_regs",  0x50110000, 0x10000 },
-     { "rp2040.pio0",     0x50200000, 0x10000 },
-     { "rp2040.pio1",     0x50300000, 0x10000 },
- };
+@@ -1474,8 +1475,8 @@ static void rp2040_update_nmi(RP2040State *s)
+             bool route_to_nmi = nmi_mask & BIT(irq);
  
-+static uint64_t rp2040_usbctrl_regs_read(void *opaque, hwaddr addr,
-+                                         unsigned size)
-+{
-+    RP2040State *s = opaque;
-+    hwaddr offset = addr & 0xfff;
-+    uint64_t value;
-+
-+    switch (offset) {
-+    case USBCTRL_SIE_STATUS:
-+        value = s->usbctrl_reg[offset / sizeof(uint32_t)] |
-+                USBCTRL_SIE_STATUS_VBUS_DETECTED;
-+        break;
-+    case USBCTRL_BUFF_CPU_HANDLE:
-+    case USBCTRL_EP_ABORT_DONE:
-+    case USBCTRL_INTR:
-+        value = s->usbctrl_reg[offset / sizeof(uint32_t)];
-+        break;
-+    case USBCTRL_INTS:
-+        value = (s->usbctrl_reg[USBCTRL_INTR / sizeof(uint32_t)] |
-+                 s->usbctrl_reg[USBCTRL_INTF / sizeof(uint32_t)]) &
-+                s->usbctrl_reg[USBCTRL_INTE / sizeof(uint32_t)];
-+        break;
-+    default:
-+        if (offset < sizeof(s->usbctrl_reg)) {
-+            value = s->usbctrl_reg[offset / sizeof(uint32_t)];
-+        } else {
-+            value = 0;
-+            qemu_log_mask(LOG_UNIMP,
-+                      "%s: unimplemented read at offset 0x%"
-+                      HWADDR_PRIx "\n", __func__, addr & 0xfff);
-+        }
-+        break;
-+    }
-+
-+    return value;
-+}
-+
-+static void rp2040_usbctrl_regs_write(void *opaque, hwaddr addr,
-+                                      uint64_t value64, unsigned size)
-+{
-+    RP2040State *s = opaque;
-+    hwaddr alias = addr & RP2040_ATOMIC_ALIAS_MASK;
-+    hwaddr offset = addr & 0xfff;
-+    uint32_t value = value64;
-+    uint32_t old;
-+
-+    if (offset < sizeof(s->usbctrl_reg)) {
-+        old = s->usbctrl_reg[offset / sizeof(uint32_t)];
-+        s->usbctrl_reg[offset / sizeof(uint32_t)] =
-+            rp2040_atomic_update(old, value, alias);
-+    } else {
-+        qemu_log_mask(LOG_UNIMP,
-+                      "%s: unimplemented write at offset 0x%"
-+                      HWADDR_PRIx "\n", __func__, addr & 0xfff);
-+    }
-+}
-+
-+static const MemoryRegionOps rp2040_usbctrl_regs_ops = {
-+    .read = rp2040_usbctrl_regs_read,
-+    .write = rp2040_usbctrl_regs_write,
-+    .endianness = DEVICE_LITTLE_ENDIAN,
-+    .valid = {
-+        .min_access_size = 4,
-+        .max_access_size = 4,
-+    },
-+};
-+
- static void rp2040_update_nmi(RP2040State *s)
- {
-     unsigned core;
-@@ -405,6 +483,20 @@ static bool rp2040_init_memory(RP2040State *s, Error **errp)
+             qemu_set_irq(s->cpu_irq[core][irq],
+-                         s->irq_level[irq] && !route_to_nmi);
+-            nmi_level |= s->irq_level[irq] && route_to_nmi;
++                         s->irq_level[core][irq] && !route_to_nmi);
++            nmi_level |= s->irq_level[core][irq] && route_to_nmi;
+         }
+         qemu_set_irq(s->nmi_irq[core], nmi_level);
      }
-     memory_region_add_subregion(s->board_memory, RP2040_SRAM5_BASE,
-                                 &s->sram[5]);
-+    if (!memory_region_init_ram(&s->usbctrl_dpram, OBJECT(s),
-+                                "rp2040.usbctrl_dpram",
-+                                RP2040_USBCTRL_DPRAM_SIZE, errp)) {
-+        return false;
-+    }
-+    memory_region_add_subregion(s->board_memory, RP2040_USBCTRL_DPRAM_BASE,
-+                                &s->usbctrl_dpram);
-+
-+    memory_region_init_io(&s->usbctrl_regs, OBJECT(s),
-+                          &rp2040_usbctrl_regs_ops, s,
-+                          "rp2040.usbctrl_regs",
-+                          RP2040_USBCTRL_REGS_SIZE);
-+    memory_region_add_subregion(s->board_memory, RP2040_USBCTRL_REGS_BASE,
-+                                &s->usbctrl_regs);
+@@ -1491,7 +1492,26 @@ static void rp2040_set_irq(void *opaque, int irq, int level)
+     RP2040State *s = opaque;
  
-     return true;
+     assert(irq >= 0 && irq < RP2040_NUM_IRQS);
+-    s->irq_level[irq] = level;
++    s->irq_level[0][irq] = level;
++    s->irq_level[1][irq] = level;
++    rp2040_update_nmi(s);
++}
++
++static void rp2040_set_core0_irq(void *opaque, int irq, int level)
++{
++    RP2040State *s = opaque;
++
++    assert(irq >= 0 && irq < RP2040_NUM_IRQS);
++    s->irq_level[0][irq] = level;
++    rp2040_update_nmi(s);
++}
++
++static void rp2040_set_core1_irq(void *opaque, int irq, int level)
++{
++    RP2040State *s = opaque;
++
++    assert(irq >= 0 && irq < RP2040_NUM_IRQS);
++    s->irq_level[1][irq] = level;
+     rp2040_update_nmi(s);
  }
+ 
+@@ -1671,6 +1691,10 @@ static void rp2040_soc_init(Object *obj)
+     object_initialize_child(obj, "xosc", &s->xosc, TYPE_RP2040_XOSC);
+ 
+     s->irq = qemu_allocate_irqs(rp2040_set_irq, s, RP2040_NUM_IRQS);
++    s->core_irq[0] = qemu_allocate_irqs(rp2040_set_core0_irq, s,
++                                        RP2040_NUM_IRQS);
++    s->core_irq[1] = qemu_allocate_irqs(rp2040_set_core1_irq, s,
++                                        RP2040_NUM_IRQS);
+ 
+     s->sysclk = clock_new(obj, "sysclk");
+ }
+@@ -1882,7 +1906,7 @@ static void rp2040_soc_realize(DeviceState *dev, Error **errp)
+     }
+     sysbus_mmio_map(SYS_BUS_DEVICE(&s->sio), 0, RP2040_SIO_BASE);
+     sysbus_connect_irq(SYS_BUS_DEVICE(&s->sio), 0,
+-                       s->irq[RP2040_SIO_IRQ_PROC0]);
++                       s->core_irq[0][RP2040_SIO_IRQ_PROC0]);
+ 
+     for (i = 0; i < RP2040_NUM_CORES; i++) {
+         g_autofree char *memory_name =
+@@ -1938,9 +1962,9 @@ static void rp2040_soc_realize(DeviceState *dev, Error **errp)
+     }
+     sysbus_mmio_map(SYS_BUS_DEVICE(&s->iobank0), 0, RP2040_IOBANK0_BASE);
+     sysbus_connect_irq(SYS_BUS_DEVICE(&s->iobank0), 0,
+-                       s->irq[RP2040_IO_IRQ_BANK0]);
++                       s->core_irq[0][RP2040_IO_IRQ_BANK0]);
+     sysbus_connect_irq(SYS_BUS_DEVICE(&s->iobank0), 1,
+-                       s->cpu_irq[RP2040_PROC1][RP2040_IO_IRQ_BANK0]);
++                       s->core_irq[1][RP2040_IO_IRQ_BANK0]);
+     qdev_connect_gpio_out_named(DEVICE(&s->iobank0), "uart0-pin", 0,
+                                 qdev_get_gpio_in_named(dev, "uart-pin", 0));
+     qdev_connect_gpio_out_named(DEVICE(&s->iobank0), "uart0-pin", 1,
+@@ -1950,7 +1974,7 @@ static void rp2040_soc_realize(DeviceState *dev, Error **errp)
+     qdev_connect_gpio_out_named(DEVICE(&s->iobank0), "uart1-pin", 1,
+                                 qdev_get_gpio_in_named(dev, "uart-pin", 3));
+     sysbus_connect_irq(SYS_BUS_DEVICE(&s->sio), 1,
+-                       s->cpu_irq[RP2040_PROC1][RP2040_SIO_IRQ_PROC1]);
++                       s->core_irq[1][RP2040_SIO_IRQ_PROC1]);
+ 
+     object_property_set_link(OBJECT(&s->ioqspi), "xip", OBJECT(&s->xip),
+                              &err);
+@@ -1962,6 +1986,10 @@ static void rp2040_soc_realize(DeviceState *dev, Error **errp)
+         return;
+     }
+     sysbus_mmio_map(SYS_BUS_DEVICE(&s->ioqspi), 0, RP2040_IOQSPI_BASE);
++    sysbus_connect_irq(SYS_BUS_DEVICE(&s->ioqspi), 0,
++                       s->core_irq[0][RP2040_IO_IRQ_QSPI]);
++    sysbus_connect_irq(SYS_BUS_DEVICE(&s->ioqspi), 1,
++                       s->core_irq[1][RP2040_IO_IRQ_QSPI]);
+ 
+     if (!sysbus_realize(SYS_BUS_DEVICE(&s->rosc), errp)) {
+         return;
+diff --git a/hw/misc/rp2040_ioqspi.c b/hw/misc/rp2040_ioqspi.c
+index d8fd98934c..59ff24e32b 100644
+--- a/hw/misc/rp2040_ioqspi.c
++++ b/hw/misc/rp2040_ioqspi.c
+@@ -54,6 +54,16 @@ static uint32_t rp2040_ioqspi_ints(uint32_t intr, uint32_t inte,
+     return (intr & inte) | intf;
+ }
+ 
++static void rp2040_ioqspi_update_irq(RP2040IoQspiState *s)
++{
++    qemu_set_irq(s->proc0_irq,
++                 rp2040_ioqspi_ints(s->intr, s->proc0_inte,
++                                    s->proc0_intf) != 0);
++    qemu_set_irq(s->proc1_irq,
++                 rp2040_ioqspi_ints(s->intr, s->proc1_inte,
++                                    s->proc1_intf) != 0);
++}
++
+ static void rp2040_ioqspi_update_ss(RP2040IoQspiState *s)
+ {
+     uint32_t outover;
+@@ -148,26 +158,31 @@ static void rp2040_ioqspi_write(void *opaque, hwaddr addr,
+         switch (offset) {
+         case IOQSPI_INTR:
+             s->intr &= ~(value & IOQSPI_INTR_EDGE_MASK);
++            rp2040_ioqspi_update_irq(s);
+             break;
+         case IOQSPI_PROC0_INTE:
+             s->proc0_inte =
+                 rp2040_atomic_update(s->proc0_inte, value, alias) &
+                 IOQSPI_IRQ_MASK;
++            rp2040_ioqspi_update_irq(s);
+             break;
+         case IOQSPI_PROC0_INTF:
+             s->proc0_intf =
+                 rp2040_atomic_update(s->proc0_intf, value, alias) &
+                 IOQSPI_IRQ_MASK;
++            rp2040_ioqspi_update_irq(s);
+             break;
+         case IOQSPI_PROC1_INTE:
+             s->proc1_inte =
+                 rp2040_atomic_update(s->proc1_inte, value, alias) &
+                 IOQSPI_IRQ_MASK;
++            rp2040_ioqspi_update_irq(s);
+             break;
+         case IOQSPI_PROC1_INTF:
+             s->proc1_intf =
+                 rp2040_atomic_update(s->proc1_intf, value, alias) &
+                 IOQSPI_IRQ_MASK;
++            rp2040_ioqspi_update_irq(s);
+             break;
+         case IOQSPI_DORMANT_INTE:
+             s->dormant_wake_inte =
+@@ -222,6 +237,7 @@ static void rp2040_ioqspi_reset(DeviceState *dev)
+     s->proc1_intf = 0;
+     s->dormant_wake_inte = 0;
+     s->dormant_wake_intf = 0;
++    rp2040_ioqspi_update_irq(s);
+ }
+ 
+ static void rp2040_ioqspi_init(Object *obj)
+@@ -231,6 +247,8 @@ static void rp2040_ioqspi_init(Object *obj)
+     memory_region_init_io(&s->iomem, obj, &rp2040_ioqspi_ops, s,
+                           "rp2040.ioqspi", RP2040_IOQSPI_SIZE);
+     sysbus_init_mmio(SYS_BUS_DEVICE(obj), &s->iomem);
++    sysbus_init_irq(SYS_BUS_DEVICE(obj), &s->proc0_irq);
++    sysbus_init_irq(SYS_BUS_DEVICE(obj), &s->proc1_irq);
+ }
+ 
+ static const VMStateDescription rp2040_ioqspi_vmstate = {
 diff --git a/include/hw/arm/rp2040.h b/include/hw/arm/rp2040.h
-index 974f3220b5..0daa7d6ba1 100644
+index 498d36dd5c..2d9a0abc88 100644
 --- a/include/hw/arm/rp2040.h
 +++ b/include/hw/arm/rp2040.h
-@@ -48,6 +48,10 @@ OBJECT_DECLARE_SIMPLE_TYPE(RP2040State, RP2040)
- #define RP2040_SRAM4_BASE     0x20040000
- #define RP2040_SRAM5_BASE     0x20041000
- #define RP2040_SRAM_HI_SIZE   (4 * KiB)
-+#define RP2040_USBCTRL_DPRAM_BASE 0x50100000
-+#define RP2040_USBCTRL_DPRAM_SIZE (4 * KiB)
-+#define RP2040_USBCTRL_REGS_BASE  0x50110000
-+#define RP2040_USBCTRL_REGS_SIZE  0x4000
- 
- #define RP2040_NUM_CORES      2
- #define RP2040_NUM_IRQS       32
-@@ -84,6 +88,9 @@ struct RP2040State {
-     MemoryRegion cpu_board_alias[RP2040_NUM_CORES];
-     MemoryRegion rom;
-     MemoryRegion sram[6];
-+    MemoryRegion usbctrl_dpram;
-+    MemoryRegion usbctrl_regs;
-+    uint32_t usbctrl_reg[0x100 / sizeof(uint32_t)];
+@@ -103,9 +103,10 @@ struct RP2040State {
      char *bootrom_file;
  
      qemu_irq *irq;
-diff --git a/tests/qtest/meson.build b/tests/qtest/meson.build
-index 50ef6f0c7d..4736b7da32 100644
---- a/tests/qtest/meson.build
-+++ b/tests/qtest/meson.build
-@@ -277,6 +277,7 @@ qtests_arm = \
-     'rp2040-sio-test',
-     'rp2040-tbman-test',
-     'rp2040-timer-test',
-+    'rp2040-usb-test',
-     'rp2040-uart-test',
-     'rp2040-vreg-test',
-     'rp2040-watchdog-test',
-diff --git a/tests/qtest/rp2040-usb-test.c b/tests/qtest/rp2040-usb-test.c
-new file mode 100644
-index 0000000000..e56b6f9066
---- /dev/null
-+++ b/tests/qtest/rp2040-usb-test.c
-@@ -0,0 +1,80 @@
-+/*
-+ * QTest testcase for the shallow RP2040 USB controller model.
-+ *
-+ * SPDX-License-Identifier: GPL-2.0-or-later
-+ */
++    qemu_irq *core_irq[RP2040_NUM_CORES];
+     qemu_irq cpu_irq[RP2040_NUM_CORES][RP2040_NUM_IRQS];
+     qemu_irq nmi_irq[RP2040_NUM_CORES];
+-    bool irq_level[RP2040_NUM_IRQS];
++    bool irq_level[RP2040_NUM_CORES][RP2040_NUM_IRQS];
+     bool strict_uart_pins;
+     bool uart0_tx_pin_enabled;
+     bool uart0_rx_pin_enabled;
+diff --git a/include/hw/misc/rp2040_ioqspi.h b/include/hw/misc/rp2040_ioqspi.h
+index eae63588e6..0ab8acfbf0 100644
+--- a/include/hw/misc/rp2040_ioqspi.h
++++ b/include/hw/misc/rp2040_ioqspi.h
+@@ -30,6 +30,8 @@ struct RP2040IoQspiState {
+     uint32_t proc1_intf;
+     uint32_t dormant_wake_inte;
+     uint32_t dormant_wake_intf;
++    qemu_irq proc0_irq;
++    qemu_irq proc1_irq;
+     RP2040XipState *xip;
+ };
+ 
+diff --git a/tests/qtest/rp2040-ioqspi-test.c b/tests/qtest/rp2040-ioqspi-test.c
+index 4f94b5f3a2..31dd85686f 100644
+--- a/tests/qtest/rp2040-ioqspi-test.c
++++ b/tests/qtest/rp2040-ioqspi-test.c
+@@ -15,6 +15,8 @@
+ #define IOQSPI_PROC0_INTE       0x34
+ #define IOQSPI_PROC0_INTF       0x38
+ #define IOQSPI_PROC0_INTS       0x3c
++#define IOQSPI_PROC1_INTF       0x44
++#define IOQSPI_PROC1_INTS       0x48
+ 
+ #define IOQSPI_CTRL_RESET       0x1f
+ #define IOQSPI_SD1_CTRL_SET     0x201c
+@@ -58,11 +60,31 @@ static void test_ioqspi_interrupt_force_status(void)
+ {
+     QTestState *qts = rp2040_start();
+ 
++    qtest_irq_intercept_in(qts, "/machine/soc/proc0");
++    g_assert_false(qtest_get_irq(qts, 14));
 +
-+#include "qemu/osdep.h"
-+#include "libqtest.h"
-+
-+#define USBCTRL_DPRAM_BASE       0x50100000
-+#define USBCTRL_REGS_BASE        0x50110000
-+#define USBCTRL_ALIAS_XOR        0x1000
-+#define USBCTRL_ALIAS_SET        0x2000
-+#define USBCTRL_ALIAS_CLR        0x3000
-+
-+#define USBCTRL_SIE_STATUS       0x50
-+#define USBCTRL_USB_MUXING       0x74
-+#define USBCTRL_INTR             0x8c
-+#define USBCTRL_INTE             0x90
-+#define USBCTRL_INTF             0x94
-+#define USBCTRL_INTS             0x98
-+
-+#define USBCTRL_VBUS_DETECTED    (1U << 11)
-+
-+static QTestState *rp2040_start(void)
-+{
-+    return qtest_init("-machine raspi-pico");
-+}
-+
-+static void test_usb_dpram(void)
-+{
-+    QTestState *qts = rp2040_start();
-+
-+    qtest_writel(qts, USBCTRL_DPRAM_BASE + 0x20, 0x12345678);
-+    g_assert_cmphex(qtest_readl(qts, USBCTRL_DPRAM_BASE + 0x20),
-+                    ==, 0x12345678);
+     qtest_writel(qts, IOQSPI_BASE + IOQSPI_PROC0_INTE, BIT(1));
+     qtest_writel(qts, IOQSPI_BASE + IOQSPI_PROC0_INTF, BIT(2));
+ 
+     g_assert_cmphex(qtest_readl(qts, IOQSPI_BASE + IOQSPI_PROC0_INTS), ==,
+                     BIT(2));
++    g_assert_true(qtest_get_irq(qts, 14));
++    qtest_writel(qts, IOQSPI_BASE + IOQSPI_PROC0_INTF + 0x3000, BIT(2));
++    g_assert_false(qtest_get_irq(qts, 14));
 +
 +    qtest_quit(qts);
-+}
++    qts = rp2040_start();
 +
-+static void test_usb_registers(void)
-+{
-+    QTestState *qts = rp2040_start();
++    qtest_irq_intercept_in(qts, "/machine/soc/proc1");
++    g_assert_false(qtest_get_irq(qts, 14));
 +
-+    g_assert_cmphex(qtest_readl(qts, USBCTRL_REGS_BASE +
-+                               USBCTRL_SIE_STATUS) &
-+                    USBCTRL_VBUS_DETECTED, ==, USBCTRL_VBUS_DETECTED);
++    qtest_writel(qts, IOQSPI_BASE + IOQSPI_PROC1_INTF, BIT(3));
++    g_assert_cmphex(qtest_readl(qts, IOQSPI_BASE + IOQSPI_PROC1_INTS), ==,
++                    BIT(3));
++    g_assert_true(qtest_get_irq(qts, 14));
 +
-+    qtest_writel(qts, USBCTRL_REGS_BASE + USBCTRL_USB_MUXING, 0x5);
-+    qtest_writel(qts, USBCTRL_REGS_BASE + USBCTRL_ALIAS_SET +
-+                 USBCTRL_USB_MUXING, 0x8);
-+    g_assert_cmphex(qtest_readl(qts, USBCTRL_REGS_BASE +
-+                               USBCTRL_USB_MUXING), ==, 0xd);
-+    qtest_writel(qts, USBCTRL_REGS_BASE + USBCTRL_ALIAS_XOR +
-+                 USBCTRL_USB_MUXING, 0x9);
-+    g_assert_cmphex(qtest_readl(qts, USBCTRL_REGS_BASE +
-+                               USBCTRL_USB_MUXING), ==, 0x4);
-+    qtest_writel(qts, USBCTRL_REGS_BASE + USBCTRL_ALIAS_CLR +
-+                 USBCTRL_USB_MUXING, 0x4);
-+    g_assert_cmphex(qtest_readl(qts, USBCTRL_REGS_BASE +
-+                               USBCTRL_USB_MUXING), ==, 0);
-+
-+    qtest_writel(qts, USBCTRL_REGS_BASE + USBCTRL_INTR, 0x3);
-+    qtest_writel(qts, USBCTRL_REGS_BASE + USBCTRL_INTF, 0x4);
-+    qtest_writel(qts, USBCTRL_REGS_BASE + USBCTRL_INTE, 0x6);
-+    g_assert_cmphex(qtest_readl(qts, USBCTRL_REGS_BASE + USBCTRL_INTS),
-+                    ==, 0x6);
-+
-+    qtest_quit(qts);
-+}
-+
-+int main(int argc, char **argv)
-+{
-+    g_test_init(&argc, &argv, NULL);
-+
-+    qtest_add_func("/rp2040-usb/dpram", test_usb_dpram);
-+    qtest_add_func("/rp2040-usb/registers", test_usb_registers);
-+
-+    return g_test_run();
-+}
++    qtest_writel(qts, IOQSPI_BASE + IOQSPI_PROC1_INTF + 0x3000, BIT(3));
++    g_assert_false(qtest_get_irq(qts, 14));
+ 
+     qtest_quit(qts);
+ }
 -- 
 2.55.0
 

@@ -4,92 +4,84 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A1C21C79F99
-	for <qemu-arm@archiver.kernel.org>; Tue,  8 Sep 2026 16:31:21 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CDA82C79F82
+	for <qemu-arm@archiver.kernel.org>; Tue,  8 Sep 2026 19:10:40 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1x3yig-0003FB-Ju; Tue, 08 Sep 2026 12:30:50 -0400
+	id 1x41D3-0005DN-HJ; Tue, 08 Sep 2026 15:10:21 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1x3yif-0003Eu-Uk
- for qemu-arm@nongnu.org; Tue, 08 Sep 2026 12:30:50 -0400
-Received: from mail-wm1-x333.google.com ([2a00:1450:4864:20::333])
+ id 1x41D2-0005B0-CS
+ for qemu-arm@nongnu.org; Tue, 08 Sep 2026 15:10:20 -0400
+Received: from mail-wm1-x32d.google.com ([2a00:1450:4864:20::32d])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1x3yid-0006u3-Io
- for qemu-arm@nongnu.org; Tue, 08 Sep 2026 12:30:49 -0400
-Received: by mail-wm1-x333.google.com with SMTP id
- 5b1f17b1804b1-49d0da752ffso27116975e9.3
- for <qemu-arm@nongnu.org>; Tue, 08 Sep 2026 09:30:46 -0700 (PDT)
+ id 1x41D0-0007sq-Q1
+ for qemu-arm@nongnu.org; Tue, 08 Sep 2026 15:10:20 -0400
+Received: by mail-wm1-x32d.google.com with SMTP id
+ 5b1f17b1804b1-49ccfbe062eso48594105e9.3
+ for <qemu-arm@nongnu.org>; Tue, 08 Sep 2026 12:10:18 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1788885045; x=1789489845; darn=nongnu.org;
+ d=linaro.org; s=google; t=1788894617; x=1789499417; darn=nongnu.org;
  h=content-transfer-encoding:content-type:mime-version:message-id:date
- :user-agent:references:in-reply-to:subject:cc:to:from:from:to:cc
- :subject:date:message-id:reply-to:content-type;
- bh=uKzMu/w+W5SBxdXqEuP/+VCuQVtzy93cR1Y42Tzffdk=;
- b=U43ANh85KRFKjB4dLlb4suj8EdPQNlLaPfolz4e+joL+Y1+rzy0Qpi7KFRIrIkiomS
- xjobOs5cvmGVl/bpHw6giXRypNWfn4RnR4x9OqGQuM6yWuW6UiEludnMPrxjP/D7Qnj1
- yAzqvqK2gyK1m9drBoFKdxYHeZTCSsgle4LRWBEzR4UlIRPT24+L3GenwHGcrx1n2R4J
- iq68M9AvRk2kBKawKkWTd7MQ3E6b918DP/W/m2MixWE9oNM5QjeW4CRKEah9d8XPRiYc
- vey8XMgm+X5RcR3ZsBaqsL5c6iXvdjY86vfW9534JL6E5MGQTTvqNbsw0wzfDtVQLvgX
- 35fg==
+ :subject:cc:to:from:from:to:cc:subject:date:message-id:reply-to
+ :content-type; bh=ILDFocp8XbkildFlNZGYgLM/xTHm0Yrbe5s7uDVZwlA=;
+ b=JnccAVtDYn5urMQF7Am6ItnXpm8Ij4ntLagulrhU8igknx5KOs10jbdyCIoIOSeee3
+ 34pw/ejbd6+iW6omLBaKGyCcvqSYZMTPZt1iNdKjgQpJFrOGTV0kp2rlLMRfJQdNOyTz
+ EtPZhUYK0LiLldM4zP/P6CpP/7JlqboHJW32DVLrXPyc3q+WduNfhjD8KgSybxHwRTsb
+ /nKMrvgVYU2nd/SBWT/4HU2R7Vts/Hoj+XHJkObQxuvp793gm41sDfvlnb/dBZ9N4NMj
+ gmcBo3piDMeZERHiTKMhePSL9Er7WMCDB0QizHLsD8QgMapea+iFfXeay7Ow0USrB4G5
+ v4rQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1788885045; x=1789489845;
+ d=1e100.net; s=20251104; t=1788894617; x=1789499417;
  h=content-transfer-encoding:content-type:mime-version:message-id:date
- :user-agent:references:in-reply-to:subject:cc:to:from:x-gm-gg
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
- :content-type;
- bh=uKzMu/w+W5SBxdXqEuP/+VCuQVtzy93cR1Y42Tzffdk=;
- b=h5NaGQTBZl8pzHVRmCuKrp5BqraIZwj1P/isFF1I6/XToGdisuEnDHy+GNB2mb8yyx
- j88YNNiUUHXj33TEncp5aU1LwMu+W7V4uxlLGujlVd+lVWDSmqszKJLWhPPv/pmMlARk
- rxrEbRoA7SQTfPDepuXLxve4/5lGgWAV9aaAVACEGsHQMandScFSLXy9uvk3op28vfcT
- 1g+5U2RxsmxEBscsXzCCogQHUOznHnnt8FlH8y9KF+byQtok3Bmv9hLC6GLSlO+pCt/E
- 8UPQeL3MllfIiTpZED+a/5FHkxVdldHrlQ+FO096C8T28lzYq52Wb1tKot7sWqF2chB6
- rITw==
+ :subject:cc:to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject
+ :date:message-id:reply-to:content-type;
+ bh=ILDFocp8XbkildFlNZGYgLM/xTHm0Yrbe5s7uDVZwlA=;
+ b=gLDH/qFl1WnWuLsZ3SUpDUTF9A9h8oSnCVQHVKBl9mlFnuHORDZYO6yElAbIfAHmEU
+ zF6ZRhJIR7wC2uX5EChuGVjDXSEQqb3qCWiQieB70QMulc/r85WA02cnbRA0dAo12/6B
+ It9qAw9nshJe4+Q6NAxCDYptT1WEFvUlZMSlV6yV1hA+EPMTvJ5uBKAaz0QXwEKdq9xy
+ KAk8oglFono1S7zRlOgTEbXIwNl4EaeCf3BHDr/OrOtTcdYplsgGuU6hj+0uhtkotFYw
+ 58NRmNlxM32ZdDPcLJDQSc7hgxFfb83I/Rlm0DOSnz3v7/5hVh/4H8z1CZR7Rp0kdAMs
+ hc5w==
 X-Forwarded-Encrypted: i=1;
- AKwUvBwuDXncOeBfVz3f2rkNnIfF4Tf68qEEiQ1CaAuo9UwOT85T0IlcyCY6TzI+HXsjRszlrVH5QnloFw==@nongnu.org
-X-Gm-Message-State: AFuF++nnS/pQpYTf8mjwGwoEZwAdq9mHKsNdIVTj9YkJPndajyi0HKpU
- k/8yXkbfO2AXu0qxSOWYWtZo8uVTCYTgSpmB4QxR0JXvNLdbcFeiyPThpkNXg1El+DQ=
-X-Gm-Gg: AYBFou2Hg63hmloLqnD6BNmuH33dkKzU+hkOA6knJY44d74PPwy6kta0pEfrLl7S4e8
- Q2AGUN1YNCH8LEn263LQ3YtAGq5RVarUPEc85KWNKW1YY+wdbPJYdk093nisqNNwfAP7YxQP1h2
- tjOskwz6NieUYJEY4GygIXx7iSskH6EJMNt5fhSPgFPEiXHkQN6WLQ1V6IpSPosyOzLMzU+mwUc
- Ki1u3IlgDGbb+FXUZSCY98a+1xXeJNN/pIWRH56lMA1h4xYRCYllhwlGe1xCELQR9HDM8o6HYoN
- DHz7SsdKHWagCIaj1Nzo0cr3Df1JOaUbgt3danzgcO2h1A5jwFyltb04Fqs1U6Y8nzzRyhOuXz8
- sD501VbuQtCr5SxR3oR+DI8rUhV8mWyfZhyPv+9ZjqBdYwjg1vAm38d6kASkRxsBq+Ul7kR8/Sk
- hw2tXDJ4IM3735xaomaFCfVOpPLNafwvLRQYNzRuR0OHWREuktkzyR+3Gv6pej
-X-Received: by 2002:a05:600c:81c5:b0:49d:433:c3b6 with SMTP id
- 5b1f17b1804b1-49d0443096amr204987225e9.27.1788885045448; 
- Tue, 08 Sep 2026 09:30:45 -0700 (PDT)
+ AKwUvBx4g4J2eFH9VMbrCODLBWcfokTVCA1nSU+PiHBHMTan0sb74xC0EOdom+AapmV0vJ7ALU69sIcVag==@nongnu.org
+X-Gm-Message-State: AFuF++myjgj6qGqvGhoDaGX6Qh9DeITdcit9RmxJWoMD0ZTTwUBp0pSD
+ 8PUtZkvZz7bn5Jsz420WypglM5an0YbAdyo2DsllvxF1eJMfNe4y7p0ArhEAJGTV3Ec=
+X-Gm-Gg: AYBFou3Avf8Ja41w8WOVIQUykdi0xoQETUHgz2uKqYjDo1MCC8Fr3WrXpB/n+8xkxQP
+ mq5Dq/7jorryyJm8erajz29XtJOY/cvGdTtpz/GGEHeTt81gvvq/QQkqpd/rI0EicMF8wUFhbTm
+ biGJEGVziSLvUjtfMSOOHRrRZMqW9bFZPTuBTx/j783F8O1O7qm/DZlA3F+bHfpuoioiD7WamDH
+ 7O9d+4ZSbFuBW2dj54l2fRt8kCWhUqxpuRQi0urW6PEku75AfJyZhF5n1MaYDAZLw9Ls0hvx4P3
+ 8wNOIYd2H7jZuqBo/O4z0byT4SN6yfCpd2EWSncd/Ja2lhbQzvVLtQCkjhq+b3Ck2A2ueIRU/ik
+ R08YyCsgROfewymMxZimiyPWiIwhIBs4YC6y6HBKUec+0L/j0oM6n1vyRoBTiAESKPva0muduee
+ lZEifh2xZVC6v9bxrbvRmQ/2rgQXEiEPmC/2Dmq+rFzwgFfgtJXzQEn8PJvEHHyw==
+X-Received: by 2002:a05:600c:4713:b0:49c:fa20:cc00 with SMTP id
+ 5b1f17b1804b1-49cfa20cd4dmr294834545e9.23.1788894617082; 
+ Tue, 08 Sep 2026 12:10:17 -0700 (PDT)
 Received: from draig.lan ([185.124.0.156]) by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-49cf772692dsm476245385e9.10.2026.09.08.09.30.43
+ 5b1f17b1804b1-49cee5f912esm512831255e9.4.2026.09.08.12.10.15
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 08 Sep 2026 09:30:43 -0700 (PDT)
-Received: from draig (localhost [IPv6:::1])
- by draig.lan (Postfix) with ESMTP id 96EFC5F845;
- Tue, 08 Sep 2026 17:30:42 +0100 (BST)
-From: =?utf-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>
-To: Peter Maydell <peter.maydell@linaro.org>
-Cc: qemu-devel@nongnu.org,  Samuel Tardieu <sam@rfc1149.net>,  =?utf-8?Q?M?=
- =?utf-8?Q?arc-Andr=C3=A9?=
- Lureau <marcandre.lureau@redhat.com>,  Paolo Bonzini
- <pbonzini@redhat.com>,  "open list:STM32L4x5 SoC Family"
- <qemu-arm@nongnu.org>
-Subject: Re: [PATCH] hw/char/stm32l4x5_usart: Accept character input upon
- RDR read
-In-Reply-To: <CAFEAcA_hbEUYO+0vSDZDGtyp8uo+The9q_Bkry2WwJY40EVvTQ@mail.gmail.com>
- (Peter Maydell's message of "Tue, 8 Sep 2026 16:51:11 +0100")
-References: <20260902165956.582901-1-alex.bennee@linaro.org>
- <CAFEAcA_hbEUYO+0vSDZDGtyp8uo+The9q_Bkry2WwJY40EVvTQ@mail.gmail.com>
-User-Agent: mu4e 1.14.4-pre2; emacs 30.1
-Date: Tue, 08 Sep 2026 17:30:42 +0100
-Message-ID: <87y0dbaeod.fsf@draig.linaro.org>
+ Tue, 08 Sep 2026 12:10:16 -0700 (PDT)
+Received: from draig.lan (localhost [IPv6:::1])
+ by draig.lan (Postfix) with ESMTP id A58935F845;
+ Tue, 08 Sep 2026 20:10:14 +0100 (BST)
+From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
+To: qemu-devel@nongnu.org
+Cc: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
+ Alistair Francis <alistair@alistair23.me>,
+ Peter Maydell <peter.maydell@linaro.org>, Tyrone Ting <kfting@nuvoton.com>,
+ Hao Wu <wuhaotsh@google.com>, qemu-arm@nongnu.org (open list:STM32F205)
+Subject: [PATCH] hw/adc: add default vref and defend against DIV0 for npcm7xx
+Date: Tue,  8 Sep 2026 20:10:11 +0100
+Message-ID: <20260908191011.4089504-1-alex.bennee@linaro.org>
+X-Mailer: git-send-email 2.47.3
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2a00:1450:4864:20::333;
- envelope-from=alex.bennee@linaro.org; helo=mail-wm1-x333.google.com
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::32d;
+ envelope-from=alex.bennee@linaro.org; helo=mail-wm1-x32d.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -112,32 +104,48 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Peter Maydell <peter.maydell@linaro.org> writes:
+Googling seems to imply vref is usually expected to be somewhere
+between 1.6V and 2.5V. For lack of any better idea default it to the
+internal reference voltage. While at it guard against div0 which in
+the real world is likely going to saturate the result.
 
-> On Wed, 2 Sept 2026 at 18:00, Alex Benn=C3=A9e <alex.bennee@linaro.org> w=
-rote:
->>
->> Looking through existing serial devices this seems to be a common
->> pattern so it makes sense to me this is the right fix and matches the
->> API description.
->>
->> Resolves: https://gitlab.com/qemu-project/qemu/-/issues/4389
->> Reported-by: Jan Brittenson (@bson)
->> Suggested-by: Jan Brittenson (@bson)
->> AI-used-for: fetch issue, apply proposed patch, verify build and qtests
->
-> I think the fix is fine, but given this tag I'm not sure what
-> you want me to do with this.
+Fixes: https://gitlab.com/qemu-project/qemu/-/work_items/550
+Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
+---
+ hw/adc/npcm7xx_adc.c | 10 +++++++---
+ 1 file changed, 7 insertions(+), 3 deletions(-)
 
-well in this case the AI never wrote any code, it just applied the fix
-from the issue and tested it which I think is within the current policy.
+diff --git a/hw/adc/npcm7xx_adc.c b/hw/adc/npcm7xx_adc.c
+index 3584c27c75a..54d3cfaa813 100644
+--- a/hw/adc/npcm7xx_adc.c
++++ b/hw/adc/npcm7xx_adc.c
+@@ -57,11 +57,14 @@ static uint32_t npcm7xx_adc_convert(uint32_t input, uint32_t ref)
+ {
+     uint32_t result;
+ 
+-    result = input * (NPCM7XX_ADC_MAX_RESULT + 1) / ref;
+-    if (result > NPCM7XX_ADC_MAX_RESULT) {
++    if (ref) {
++        result = input * (NPCM7XX_ADC_MAX_RESULT + 1) / ref;
++        if (result > NPCM7XX_ADC_MAX_RESULT) {
++            result = NPCM7XX_ADC_MAX_RESULT;
++        }
++    } else {
+         result = NPCM7XX_ADC_MAX_RESULT;
+     }
+-
+     return result;
+ }
+ 
+@@ -244,6 +247,7 @@ static void npcm7xx_adc_init(Object *obj)
+         object_property_add_uint32_ptr(obj, "adci[*]",
+                 &s->adci[i], OBJ_PROP_FLAG_READWRITE);
+     }
++    s->vref = NPCM7XX_ADC_DEFAULT_IREF;
+     object_property_add_uint32_ptr(obj, "vref",
+             &s->vref, OBJ_PROP_FLAG_WRITE);
+     npcm7xx_adc_calibrate(s);
+-- 
+2.47.3
 
->
->> Signed-off-by: Alex Benn=C3=A9e <alex.bennee@linaro.org>
->
-> -- PMM
-
---=20
-Alex Benn=C3=A9e
-Virtualisation Tech Lead @ Linaro
 

@@ -4,103 +4,102 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1B603C79F82
-	for <qemu-arm@archiver.kernel.org>; Tue,  8 Sep 2026 15:51:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9AF79C79F82
+	for <qemu-arm@archiver.kernel.org>; Tue,  8 Sep 2026 15:58:34 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1x3y6b-0000GC-69; Tue, 08 Sep 2026 11:51:29 -0400
+	id 1x3yD8-0003vi-DI; Tue, 08 Sep 2026 11:58:14 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1x3y6Z-0000Fm-M3
- for qemu-arm@nongnu.org; Tue, 08 Sep 2026 11:51:27 -0400
-Received: from mail-yw1-x112e.google.com ([2607:f8b0:4864:20::112e])
+ id 1x3yD7-0003v5-Kt
+ for qemu-arm@nongnu.org; Tue, 08 Sep 2026 11:58:13 -0400
+Received: from mail-yw1-x1136.google.com ([2607:f8b0:4864:20::1136])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1x3y6X-00085B-Eb
- for qemu-arm@nongnu.org; Tue, 08 Sep 2026 11:51:27 -0400
-Received: by mail-yw1-x112e.google.com with SMTP id
- 00721157ae682-855a66e5b5dso38001997b3.0
- for <qemu-arm@nongnu.org>; Tue, 08 Sep 2026 08:51:25 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1788882684; cv=none;
+ id 1x3yD5-0000qk-Au
+ for qemu-arm@nongnu.org; Tue, 08 Sep 2026 11:58:13 -0400
+Received: by mail-yw1-x1136.google.com with SMTP id
+ 00721157ae682-855c26cf490so33927137b3.0
+ for <qemu-arm@nongnu.org>; Tue, 08 Sep 2026 08:58:10 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1788883090; cv=none;
  d=google.com; s=arc-20260327;
- b=JVqjZ/JFlqoJD/S8NcqIuaJA+bkXzzivwSFJ6Di7DNtlofVvVjYOLomyqzMCBZG1QP
- 0oO0b/DQ+Og8fkl6sb53IiVSDQAdcGowWQZrqYdzAaNNaGr5uoCWoIRAfrYVZKz6ats8
- pANuoW/AH+ForWv/vkyKJJ4q0SY1AIQgtgMjkglhvkQydlYcpJ70NopjeiIRLv/rMdtD
- C3/hz6+o61TEt2YwhGeNyOUK9qrmvbcBZQnkE1+t3Lp15nlsv3uyJHLgc7BP3vY6QccY
- FM4OTJYay1Fry3nhWT51sE7SQZgZ0ezgnU44eL/5EN2aRuU5naf93HcWKcHGHNBYPRbA
- iptw==
+ b=gvE6WYB4FrAFg/qYJ0Fh5kwgofaGCPNz2iWXq1O12BVkaqdwJAssXEjKAnvKhmTN5N
+ 6B3Tg7eDhKvAoGsMxBccvoywPr0SC8W/Sy4lgi+kV8ExTn3+RdVktOvp0gsdwrhQ7EOI
+ 0SitZbEX61RZIy1nuAre/uZNFnW832lKa/OlG8qDVJKy5hB6/qHVJ4Ig9gKrwhLNEH7C
+ /cbU2eRkwxIwQzEPiEbD54K0uraQMtWtdL7eQCPFoBxbxjMQVXYwXvTjX4HoGO+/PbIL
+ c6bfbz6jBc4o+qr4r7G+NWpGhnR8CUVy7cRP26sBZH61P8Iuxp7Jg4w4/WT01IkgR9E5
+ mbAA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
  s=arc-20260327; 
  h=content-transfer-encoding:cc:to:subject:message-id:date:from
  :in-reply-to:references:mime-version:dkim-signature;
- bh=iMSUhya9L1kjCNqSNxSRyD9vraXGuJKfOwQ38jodovE=;
- fh=yz0wyUK8HRzmO4lb+/KCnat01pPLURToAQO0zskTYoI=;
- b=eYWtjPsLOF9IdfdK62mpZ3aX48684rzC0+AsYuRhPMooqTCt29nmTh4N9LrUSVOtDh
- ikGHaT6SSsRbFAycBOpcTq+uw6kXZ26/SkDO9fTimvpBZigoDKePemGGumaQMcQnwt1z
- jHZFbiVvDyV+XW3SwEAPPpseHb+BMKOThxCdUuKZqAjxnSiZYdXZwbw65C6i+JbPe3Tq
- 9MZ7Z08XFckaPcYi3o25aHfXk/qEiw529tDDlBNBA0UgzGMG4/vdcxUuQ3Rfvhm9Df/U
- c04nah+Y2u3g2vWbJb63dtHjP+pNRM17KA6bHKpEEdgcD8LEWPm7aixahmqrxZekYNiR
- PEWw==; darn=nongnu.org
+ bh=9U0azSGD0ntwc/h5lCEy4R7LeO4m6e1+YMN+Y5mfMV4=;
+ fh=cxCoLKd/iPIxt1mF3fzZfXjpdPi6KDLHns7+yRnAtIQ=;
+ b=oq1Ky3EMkXwitq5AjNtMMipJP39fMxwT1EdO8BJRTeQCuiVzP4hMY3OGKAzeHmsi30
+ y8erQSB4xsxzPbhAIgW0i9obDUi7f4XMiTvQ0O1SizOYxeXwQn9UVfT2EDyTKrDq94+1
+ tg9ybn3AjxyM8Zn9XUHmkACrbOF426aqj09gi28LtxvUvgdYmk0zhFFqeUAb6uoVDxkr
+ khuBLySawU8Za6of+fuX5iH40d/jgS6yMFL/pNkATQ+lQs6FBHnVAxnLnCLnbLSKViYO
+ Uqkk4gLkyC9aAg6AOj7Lum7FbOp6Y4RJ/aHZx7UEHQGP9HpgBjn5jhelu84r/GjWw86x
+ 5+rg==; darn=nongnu.org
 ARC-Authentication-Results: i=1; mx.google.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1788882684; x=1789487484; darn=nongnu.org;
+ d=linaro.org; s=google; t=1788883090; x=1789487890; darn=nongnu.org;
  h=content-transfer-encoding:content-type:cc:to:subject:message-id
  :date:from:in-reply-to:references:mime-version:from:to:cc:subject
  :date:message-id:reply-to:content-type;
- bh=iMSUhya9L1kjCNqSNxSRyD9vraXGuJKfOwQ38jodovE=;
- b=JUE0rfYtyzC95QBZ3xz1rSWrVVxeTCcS9ija/ClsxX1IkPZ0oiquh4hIyDNrcdW9Jl
- LUMa+ns0yha8xu9EFb2Vr05oJ/r5aiyggMpy/nsxMah70aQSTsYxGPrUyLuLI6WfBl60
- fcnMkej34to6AFVCszh4CiBgj723WGXsPI7swp/spgmFD2Jw/qKmaAD3GQzb5V9me8mP
- Wor/QomdmLq5ldK226KwUEuDLkKRq5MR94vP2NV5rlJvAaBAHhOZKdjvLrtv71lMYeHC
- SLRQeb/mfUswgobacqqWcBSUHYnTu+uglembaOXD7Y2eReWR+4e8BqirsvLKxcG29/4N
- Fc9w==
+ bh=9U0azSGD0ntwc/h5lCEy4R7LeO4m6e1+YMN+Y5mfMV4=;
+ b=a9tVTZs68dP4SBmc502pd7TqdUT7PbMjrtqydgDb6b3vtkKCrqeoYiAKFhB5TMzLyK
+ j6qN8+P3pbWramhHksu4qL4/N9eFaZHSyLFeA/v2g6d8+RquaNzcbV2IXT/tWb17fVxC
+ U676N+ZPRFaB0tKyB2T3v8ivnpaLsdXtWivm4AAbLv/+QPi9hGKUuxHScN3PgCywEefM
+ PEi+phn1n0bvgQIosWzM0yXW9iFEEDXV0+AwogK6ZIG2hSgP0bZ/LuxEZO3ZSCuk8Y+g
+ 5SyqVCnjQg0SdpBVdIJMrbaLR5hXTLLcC8WnJo7+MOyrfqLsSrjQq/LKSPqrALEpLkRn
+ 8NKw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1788882684; x=1789487484;
+ d=1e100.net; s=20251104; t=1788883090; x=1789487890;
  h=content-transfer-encoding:content-type:cc:to:subject:message-id
  :date:from:in-reply-to:references:mime-version:x-gm-gg
  :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
  :content-type;
- bh=iMSUhya9L1kjCNqSNxSRyD9vraXGuJKfOwQ38jodovE=;
- b=kNEx5Qj5DlfCqBse1MDwNJPhtgv4gBDc6rk8zo0Z1rXqZK9uoPF3H0FctoUGLVGniY
- kcYhLz3aoti0lTRI1u85V6ySgZ/6puHXxNCFALGN9YaTQBWjFvb+xgjP5TtGKabSnZdr
- Fhzc3VF0Te55cOsz13vJr6PfrcWw7rqJsK1gCEAZq6J2OyCjSiP3FIaxXBrD821WhvkX
- kSrvR/FUKtby624K5AVjc26yyAgFrO3BUCw7HmGifzv5xyilDz37cLYyNka6nsK5ZWfc
- csBryRNeutUbdLxw2B+Th9wwxzlEfWmdV3gd7YIZRLk1/7DdQsU9rAQymymVhy/7HRCK
- eOLQ==
+ bh=9U0azSGD0ntwc/h5lCEy4R7LeO4m6e1+YMN+Y5mfMV4=;
+ b=gAHuYkRWmedQCJi35ISHOClzlICPPgxj7oUapj3eH3CjefydZhFdAqt9ilKE931Nt+
+ gC+S+ezI5d7gJdAhnAMJDq4RT6JlyxVw9bF0xCKjQmBXk18ju/bDBW0cP5Z/TB9glY3X
+ 3mVLyEcufNdX8rR1fpYDk1kxKMicg0qiK3T43UkADfj9w6Us07sGLKGadrFo/M0mq3//
+ icMu2IzGl8EFNToqm3hzIxxG7AUy5139uBapYdMjilsX6RxwGNREnEmQFKy0DCAFTgl5
+ bBc/55aLV3/vcZGgsCvRhoMi4NVSl3P/mWB6JTx/4lWv97GD++uqs27S1TAQXqJD1Q/T
+ Onew==
 X-Forwarded-Encrypted: i=1;
- AKwUvBzvS6CluhRBm9uhfDhuQDsoxF120NGjsk8QwIdPI/MJ9XUS0c/QPZdYcZ/R4qQGbGb8o6btIaU5sw==@nongnu.org
-X-Gm-Message-State: AFuF++miMgoFhxqvFD1aRimaz+Fx6h2bJ9CLP/Ik63MCctE3QQY3EV85
- TnmBDYRq6ytdkOjm3mNWUVH+nZXDMT21TbE0VeuigoiqZbhwZp8phDmjR/+GrS7Y3Kd4UCVm4In
- RyYHNRIzmS4pHuHIqx1otTUiLWIKGHnIMolFdP2QC8A==
-X-Gm-Gg: AYBFou1wFqGfr6ZXWLCNi7lYjua+4WMN3Rldfj2KeWRhS01IrJnPChYmddxz9UERx5N
- CHIRx0P7nijLDOlwd05xep4QmhMSklzW0itoHtzMeTTwOZ65WFvISL5Z2jeO0Z75h95V95sMkEv
- 1eLpY2us/BPfXcLaW2OEwIK0ZgStM6f8S3qpC6z7XR6Kyx4s7zZWymLTiz6O8lnMw6ysM+IKxUs
- azHgC6uX1t63RffB8+JVSGgjszOS/3fy2gA/NBHAFCLVU0bYxHLU5Qc63PFrJc7V9FVWVS60KMP
- zLjacL0K5KtgdzvC0En8HtqpkMgPWhWVv6mwWJXj+iudVwaWZz/I4Wq0oL/lPn3pch3WvRgnUJd
- KqZVyZjsOwz/jvgbjoFVkTAekL1nVr2ssTibFvxAJ
-X-Received: by 2002:a05:690c:4a01:b0:86f:8707:1682 with SMTP id
- 00721157ae682-87125448905mr128150607b3.5.1788882683810; Tue, 08 Sep 2026
- 08:51:23 -0700 (PDT)
+ AKwUvBypY1mUP2KCWKBW062BCj5H/10orVfBT4+rFxhAXz7bui+yVLUgF3SiK/Tp4HWTZtqpbXxJUsqVcg==@nongnu.org
+X-Gm-Message-State: AFuF++ltV0DjqRtNpeEyx9fwgYfD2hx/4IlQU1o0U/IAvLwqKfB+FBK3
+ v1kDbU0LDDsCJdTzsWHdBAfu5WD3OqHXVb+8vz46w/gaaBQyN6uk4Lh9+Ao9AnlmxvX8+FPA6NE
+ Ti5VEEvOKH9wXI9ItPA+Q0U0NWi7EHCq1ljWmqugj1V4CxV8DTqVRAb4=
+X-Gm-Gg: AYBFou0Sebz5WijR1THdug+K6jnSi/6lTlTt5DM7rU0jG9YLrZio8ccsHhEWHjnEWEv
+ r7Jfmz57HIWyV0X2ESLDFx8Wyc/Gde+Lp88jDcMI6en5pwwnN6DKShSU7VtJIs25KdN+WpfOiAp
+ i1lYwSd8UTRp3XG5OObJTxdeRQEMoPBNyxIS1ikezaIsjOITpFpNuNJznRIFiqhiNs2OJrgZNMQ
+ W4E9UR6tw+L1znzSxmlBowmJkJy/pHBXT/aI8ipHOMDmDznPpyMCsjSxyoy75VH+BuSWmtko+6+
+ JOQYj+qNI4b7TytH+EVmFn0ParS7boAmg6E392QZjh3SOgU3LMVzBbUg+NIElEhlJb+jKiGGwRX
+ bw9MJ5rS8+Y7LIEuyOE4yxmQgUyLU
+X-Received: by 2002:a05:690c:7:b0:85e:688f:3c52 with SMTP id
+ 00721157ae682-871290a4c74mr101887797b3.33.1788883089642; Tue, 08 Sep 2026
+ 08:58:09 -0700 (PDT)
 MIME-Version: 1.0
-References: <20260902165956.582901-1-alex.bennee@linaro.org>
-In-Reply-To: <20260902165956.582901-1-alex.bennee@linaro.org>
+References: <20260905004800.5B560C92F2@bambi.snowrabbit.org>
+ <0AC93E1E-4050-4B69-BE26-6FCC99A0E886@unpredictable.fr>
+ <6A1F99FD-8C96-49EA-B678-BB6997F3EF79@unpredictable.fr>
+In-Reply-To: <6A1F99FD-8C96-49EA-B678-BB6997F3EF79@unpredictable.fr>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 8 Sep 2026 16:51:11 +0100
-X-Gm-Features: AcwNN1WHXR9H2SYPfeucCTOX1WEAQqGcPhoh8q_G0dXyXkstzs6RFMkj29nSq5o
-Message-ID: <CAFEAcA_hbEUYO+0vSDZDGtyp8uo+The9q_Bkry2WwJY40EVvTQ@mail.gmail.com>
-Subject: Re: [PATCH] hw/char/stm32l4x5_usart: Accept character input upon RDR
- read
-To: =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>
-Cc: qemu-devel@nongnu.org, Samuel Tardieu <sam@rfc1149.net>, 
- =?UTF-8?B?TWFyYy1BbmRyw6kgTHVyZWF1?= <marcandre.lureau@redhat.com>, 
- Paolo Bonzini <pbonzini@redhat.com>, 
- "open list:STM32L4x5 SoC Family" <qemu-arm@nongnu.org>
+Date: Tue, 8 Sep 2026 16:57:57 +0100
+X-Gm-Features: AcwNN1WF-8tk50h_gGpVoC3CoogjV9lDby3pY06bDZe1DewX8HCQfPmLMOoH2Xw
+Message-ID: <CAFEAcA9nfjLsz1iU1BPFaAgcPGDAXWh8uUHOZXNheG3U_Lyriw@mail.gmail.com>
+Subject: Re: [PATCH] target/arm/hvf: implement MDCCSR_EL0 as RAZ
+To: Mohamed Mediouni <mohamed@unpredictable.fr>
+Cc: Showta Ishizaki <zakinko@snowrabbit.org>, qemu-devel@nongnu.org, 
+ Alexander Graf <agraf@csgraf.de>, qemu-arm@nongnu.org
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2607:f8b0:4864:20::112e;
- envelope-from=peter.maydell@linaro.org; helo=mail-yw1-x112e.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::1136;
+ envelope-from=peter.maydell@linaro.org; helo=mail-yw1-x1136.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -123,22 +122,87 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Wed, 2 Sept 2026 at 18:00, Alex Benn=C3=A9e <alex.bennee@linaro.org> wro=
+On Sat, 5 Sept 2026 at 07:40, Mohamed Mediouni <mohamed@unpredictable.fr> w=
+rote:
+>
+>
+>
+> > On 5. Sep 2026, at 08:37, Mohamed Mediouni <mohamed@unpredictable.fr> w=
+rote:
+> >
+> >
+> >
+> >> On 5. Sep 2026, at 02:48, Showta Ishizaki <zakinko@snowrabbit.org> wro=
 te:
+> >>
+> >>
+> >> A guest that reads MDCCSR_EL0 under hvf is killed.  The register has n=
+o
+> >> case in hvf_sysreg_read(), so it reaches the unhandled path and hvf
+> >> injects an undefined instruction:
+> >>
+> >>   trace_hvf_unhandled_sysreg_read(env->pc, reg, ...);
+> >>   hvf_raise_exception(cpu, EXCP_UDEF, syn_uncategorized(), 1);
+> >>
+> >> The TCG path does not do this.  debug_helper.c defines MDCCSR_EL0 as
+> >> ARM_CP_CONST with resetvalue 0, and the comment on the neighbouring DC=
+C
+> >> registers gives the reason:
+> >>
+> >>   However we implement RAZ/WI behaviour with trapping to prevent
+> >>   spurious SIGILLs if the guest OS does access them as the support
+> >>   cannot be probed for.
+> >>
+> >> That argument holds for hvf as much as for TCG, so do the same there.
+> >>
+> >> The read only reaches QEMU since 37863fff59 ("hvf: arm: enable vGIC by
+> >> default for virt-11.1 and later").  With -M virt,kernel-irqchip=3Doff =
+the
+> >> trace point does not fire at all, so before that change the register w=
+as
+> >> never trapped out.
+> >>
+> >> NetBSD/aarch64 hits this on every boot.  vmt(4) probes for the VMware
+> >> backdoor, which on arm64 is a read of MDCCSR_EL0 with a magic value in
+> >> x7, and the injected undefined instruction is fatal in kernel mode:
+> >>
+> >>   [   1.0000000] cpu0 at acpi0: unknown CPU (ID =3D 0x610f0000), id 0x=
+0
+> >>   [   1.0000000] panic: Trap: fatal Unknown Reason (Illegal Instructio=
+n):
+> >>     pc=3Dffffc000003fa318 sp=3Dffffc000010262e0 esr=3D02000000
+> >>   [   1.0000000] fp ffffc000010262f0 vmt_probe() at netbsd:vmt_probe+0=
+x3c
+> >>   [   1.0000000] fp ffffc00001026340 vmt_match() at netbsd:vmt_match+0=
+x1c
+> >>
+> >> The pc in the panic is the same pc the trace point reports, and the
+> >> encoding it reports is MDCCSR_EL0:
+> >>
+> >>   hvf_unhandled_sysreg_read unhandled sysreg read at pc=3D0xffffc00000=
+3fa318:
+> >>     0x0020c002 (op0=3D2 op1=3D3 crn=3D0 crm=3D1 op2=3D0)
+> >>
+> >> With this patch the same image boots to login on -M virt -accel hvf, a=
+nd
+> >> the trace point does not fire.
+> >>
+> >> Fixes: 37863fff59e0 ("hvf: arm: enable vGIC by default for virt-11.1 a=
+nd later")
+> >> Signed-off-by: Showta Ishizaki <zakinko@snowrabbit.org>
+> >
+> > Signed-off-by: Mohamed Mediouni <mohamed@unpredictable.fr>
+> *Reviewed-by
 >
-> Looking through existing serial devices this seems to be a common
-> pattern so it makes sense to me this is the right fix and matches the
-> API description.
+> Oops.
 >
-> Resolves: https://gitlab.com/qemu-project/qemu/-/issues/4389
-> Reported-by: Jan Brittenson (@bson)
-> Suggested-by: Jan Brittenson (@bson)
-> AI-used-for: fetch issue, apply proposed patch, verify build and qtests
+> Will submit this as part of a rollup series or it=E2=80=99ll be taken on =
+its own.
+> >> ---
 
-I think the fix is fine, but given this tag I'm not sure what
-you want me to do with this.
 
-> Signed-off-by: Alex Benn=C3=A9e <alex.bennee@linaro.org>
+Applied to target-arm.next, thanks. I've added a cc:stable tag
+since we run into this with a netbsd guest.
 
 -- PMM
 

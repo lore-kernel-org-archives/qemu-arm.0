@@ -4,95 +4,95 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5890BC79F99
-	for <qemu-arm@archiver.kernel.org>; Tue,  8 Sep 2026 16:10:52 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7CA0CC79F82
+	for <qemu-arm@archiver.kernel.org>; Tue,  8 Sep 2026 16:26:07 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1x3yOd-0007NQ-Ip; Tue, 08 Sep 2026 12:10:07 -0400
+	id 1x3ydW-0002DK-An; Tue, 08 Sep 2026 12:25:30 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1x3yOc-0007Mk-Ky
- for qemu-arm@nongnu.org; Tue, 08 Sep 2026 12:10:06 -0400
-Received: from mail-yw1-x112b.google.com ([2607:f8b0:4864:20::112b])
+ id 1x3ydU-0002CD-5e
+ for qemu-arm@nongnu.org; Tue, 08 Sep 2026 12:25:28 -0400
+Received: from mail-yx2-x10.google.com ([2607:f8b0:4864:41::10])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1x3yOa-0003Ge-UJ
- for qemu-arm@nongnu.org; Tue, 08 Sep 2026 12:10:06 -0400
-Received: by mail-yw1-x112b.google.com with SMTP id
- 00721157ae682-861feb6d61bso43434167b3.2
- for <qemu-arm@nongnu.org>; Tue, 08 Sep 2026 09:10:04 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1788883803; cv=none;
+ id 1x3ydR-0005b8-FE
+ for qemu-arm@nongnu.org; Tue, 08 Sep 2026 12:25:27 -0400
+Received: by mail-yx2-x10.google.com with SMTP id
+ 00721157ae682-85d46e4cdcdso1455057b3.2
+ for <qemu-arm@nongnu.org>; Tue, 08 Sep 2026 09:25:24 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1788884724; cv=none;
  d=google.com; s=arc-20260327;
- b=YG8Gt9A+Ii0jnvAQSZ+WKaEk1vuFsCB2oMLTpyAHjhLEmICAp6MOT0Vjuloqmi2n9G
- wr1PyBGoljSThholkmnnqPIpjX5FDMoUHUNIdca3IybOew/qFCjKdewvDOWEM7p9tQ3n
- +QZWyxFHNPFcbzGoiNM0nV7glPhf8TO+BokEEw5CIweH169g3SFlbKCRsyi+ZW5vL6vg
- GKUfZ21HkC4ed19KPGroRow35OFAeU/7yzCvmTAukh4niV2sA9ZpjC4UjHG+l7gsWcle
- Uq4zp84YTj5IWP99zmOkVRNxjsKXFROnVXxRCI4xUf102wvTGGk7/b9/r6xF4kYaoV3h
- NVlQ==
+ b=OoLJc6KehG4AobWLIT0NGxmBeFf2715VTt/Y9V/cHgDPFrZQZgJMVAvm31TShmFfyO
+ O7sgkLV1W+z8kVP/CkY42blukE0ax9+YLaUkHZMHukTsUgQQHzZrXBemfc1TFKbrTUuM
+ TtMOkJy2+3QiDzqkEiPOovRVOMwSlGDiBFhmQCrN103PM7YSo7F1jWsXnOsI2EDVUEm0
+ y1QYcIt+la2KWqNcFAbudqwK+cDASbNyYAXXEqxkBNlxnG3tNN12cDIdGE3FykeU8XPa
+ KK210nENgFJfuygWVtSt6DY5ir+0Oe/jx9reaLVa8mhc05Z3PHYCKee7Fc4pPhRvg3y8
+ tCCg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
  s=arc-20260327; 
  h=content-transfer-encoding:cc:to:subject:message-id:date:from
  :in-reply-to:references:mime-version:dkim-signature;
- bh=vAEuw08maigOcy72eNyfJe9xbcSK+2Att5GuaQphA+c=;
- fh=+6fRtXDoyWzdTzHDItw41ultk4h20JFm5AMuCKcZfB8=;
- b=PvwZH7k6poifL32r9oLvc6nBzOXJq1SKqIeei8tpESeS7R1DMSgPaluwyyrpKhzkuq
- wv5yCb6J4+WLi+b5Yel+41qv1cd2JyBeSYDs8SZ9VYS+mTwPg20atV4Qcw3y2+znnKVk
- t5dJgIgLxorN6oMQVChIDPGY3VMNmVRIOBH3Js33Iv3/TRsi7DG2+nbyvv4ZxHBwKa3G
- 1UFYr8NjHL7m+lNVpN1V09bJNMZaMiS3wdMmVj7mdoAY5fxDdQ16MhjxOumH4h9NqyyQ
- hqV8xhclB4yWRWf3a4VpUMybVqgp+ypk7IKDFF8OKmEsMT7uoNmy4S4QJVvLdNjoFM77
- QzwA==; darn=nongnu.org
+ bh=my+ZFhuaujN6LDeHb7IAmbevvxBSmQi3eP+e5gOqJh4=;
+ fh=me7He5OhNU048PcbdZ8jxaJp0sHwfnhaFWGqG6IO7JA=;
+ b=KSNaypes0ybnwV8rwrtHwfsnf1KReGLqNo+zIMDdxt2qc8JLPmPOqXMAWBhsuWyfUR
+ ni1G31MmNPq8rJ1cpSNAXO79wzZptfjcdeFnYqeshX1XwNDgXNhFc4Ja8jUf9cBPlKp1
+ 3HUP31qrMFNABTYz5uALbvo08T68GHwcBviA7dQ5nXVaglcol/7svbU2UTCS5PvbZGuv
+ nwniycGnSTjB5cculxHbMC6dNADbneSKPwpBvRnqSiyfQPH0YQw4m0fZuHGz0XqxurJe
+ BQ4/zvsSKxJKErjjlsZ97QL6O0mxf42NplYvLhwP9t+u3+O6ixmjedF1RRU1V9RB//IQ
+ BQzg==; darn=nongnu.org
 ARC-Authentication-Results: i=1; mx.google.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1788883803; x=1789488603; darn=nongnu.org;
+ d=linaro.org; s=google; t=1788884724; x=1789489524; darn=nongnu.org;
  h=content-transfer-encoding:content-type:cc:to:subject:message-id
  :date:from:in-reply-to:references:mime-version:from:to:cc:subject
  :date:message-id:reply-to:content-type;
- bh=vAEuw08maigOcy72eNyfJe9xbcSK+2Att5GuaQphA+c=;
- b=T7/zERxy5oBE4iE8xlUpY3qx8zWek/4l1rk3/x8zO/qcpbNJik0Bk/wLqzxNZ6J5Fm
- vCD8E9tCg5o8UhTixHpLkfxFgFtBLqYi6kso4hcBtMzDcWBtUO7i0iVq8PS9zyUGTDaM
- QAwfbnFX2Y6rJrECTlRMwxgw/h2qb7Po7NkwBLByygyiPlPdRWOVxkhbm7rxljZbhSqm
- sRXryUh6WIaymb0hXhWRIhMpUK/fajzIhoeZAVrnIj9SoU3/UDT36391VRm2oY69QV5s
- +/1JdfcpCX+HPPQ9xSBG6acb8v6KYycOoXZrp59dGMt7P5U8TF1zjL8NgXlYz4Ulp4xs
- zbcA==
+ bh=my+ZFhuaujN6LDeHb7IAmbevvxBSmQi3eP+e5gOqJh4=;
+ b=qIdXS8LXE1biTSknkLgLe3NKGlOVD6buW4lAn5DcMDZLDQMo9EvIHP5tn30JKqp/kS
+ m/V+p8xufIxdbJVnHskLnRRE8OAlHhIFdUxRej8NJbtlBn+JE2T7pIPyURgzZGsrf+eO
+ CFzvEAw+yr+beUIhfoC3djlQW5GxgZxoL4Nl3wrzVMpJbLheZ2eBqExp1hSWtS2sprq3
+ fQLS+RjTx4nZW6HEwN6UuhjgvFJm/vFIvW4lMq8BAejjtXSQdtcCrQB/Gjkh79joWeI0
+ 8a5h4WKDrz2j+vUWhPRB7g/dAvaodkb+xlIkkw2B3ShLx90edwLiQ/8PmA3Hf0+xuYSm
+ EpLQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1788883803; x=1789488603;
+ d=1e100.net; s=20251104; t=1788884724; x=1789489524;
  h=content-transfer-encoding:content-type:cc:to:subject:message-id
  :date:from:in-reply-to:references:mime-version:x-gm-gg
  :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
  :content-type;
- bh=vAEuw08maigOcy72eNyfJe9xbcSK+2Att5GuaQphA+c=;
- b=QXbsWsdKtR+WI7xXr9I3unlZfPofz4Uay6YrDw18SGdshf8oH7370rPnImmgE0dmmV
- lN643YlhIwv2hwcAfYWcvvoevS4dOi/r/c0N+TSDTH6BBVYoYP8T720Jjd4MZBhBmMbW
- ucFipOUU8fDqCXs51PRcDBOeB80B8u2ipdE4kZ16SV9MFT8sgK7FJO075vs9NmlRW5RN
- jE4hBIOuDEkvIUEkTwLsi8mzbO5gBTc68rmtNkf8q5iehJXRn9ZQZNavXk5+itR+g/8n
- bSd58HFTA+85O3DFUjzbBJYSw2rWYVbm6pQat/xtu6Fjx/3f1JMs2yA6JoQuJpwFgrkU
- bNDQ==
+ bh=my+ZFhuaujN6LDeHb7IAmbevvxBSmQi3eP+e5gOqJh4=;
+ b=nNSFvDmMJwOrFwC+9Zz1LF42d2vRb32tdLHqw2MXqVBB2LF6MfALCFWxN5qmo0wpDJ
+ d8A0oYX6Y3LrTD93ZgPPeGzvdyk+5dj295HT+1QVJ84Itti2Ivrsf9SSQ5gPao5dacs4
+ ImEZxAN4JAnlTAtXfg3UX7+6+XwIPqPqPU9YaSBWPQmNxaLH7d+W0Fh5GVkqQDtmluxP
+ qVCnqk/RTWjCi9jndd8ANMYYepC5k0CCjq6JOcYkHNFLyDY7SKFkhcjNQE2wnijbx4M3
+ nIhXY56SCxkJPllZJuNO12xbxVRp3Or1q+WfGrcUon7GXBY/8NmilBT5pei4d2NPzzd0
+ m+Cg==
 X-Forwarded-Encrypted: i=1;
- AKwUvBwYWzlaF+wxNt2xp+RpgkHlyJUrgThRAfKdBZaPiOFnMugXlbNSJOIRblw7CDliDBgOBfUwyu+HRw==@nongnu.org
-X-Gm-Message-State: AFuF++n9jWWcl5ePmo0NJ//RdCogp1I6SQUO9U2Zb1VMelRDvNEoZ6AQ
- 1DsIU6prhdy2B/tHBtfmhNcMOMeIQZxik1q5kiVzS9vPZPXOJEdgrfj8yEmfoszMts4/MNYuqq6
- nIFfTM96BOFWMHV24DMOaKOp6Hyij2tQyaTINHCxR+w==
-X-Gm-Gg: AYBFou2Mn6EPBvjYEcmZnkhxPu7Cp8p64lSWl5RNgdXd9ImQltznbvckeAZ871MaEiV
- x9Y7EaWOGa9ZAmPyEwNMSp1bxlkdO37G9pTsBf/XB/Ef4JzcrhuqDb+1PqChKBXUAIx8XTk/oLW
- BVaTPKmuXKMwr+3kp2E0EMkPFfOQECZpPjRF3hVeJ1eONeLGsLu3Ru309+d6caAII3k92RdlM/e
- o37YLSSqAQSv2E5YsufZVFGKDGI2/xepNTrfkkn6IT8BvMYIMT15YohWZh46eBjenGSvYgpaOXb
- Tjp9GHAQqBi2P5eyP1iRZhH35q6e93Gt+fty8kZaU+JFn9kJbXaBPY6QPwjFouymV6wiXLXO1kp
- JWVMMgOsAjBGuwKpYGihXRRRCHyWc
-X-Received: by 2002:a05:690c:e1d8:20b0:87d:b776:c659 with SMTP id
- 00721157ae682-87db776c69cmr15832277b3.11.1788883803340; Tue, 08 Sep 2026
- 09:10:03 -0700 (PDT)
+ AKwUvBxr+Hpwtzn/isXnwveRaf1zGyEZQz5biaiBLa6aaM9nqnAc+69DemRAb1tBdrm8e3hs4MFWybJkBQ==@nongnu.org
+X-Gm-Message-State: AFuF++mCftl/rv9eM+XREzmCa/wIAEenoLNMksZGpOF7bZWIb+rMoL3Y
+ ijkqBsfQhv/fa1psXct9JjYWHSUJWmbcqgiUntpivlTa1oJ+g9L3NsET0aOV2Wq5Q1rt6+IJ18W
+ pymj3hu//giUY1Rwx/iHTmPcUKSbgcZY/kmRko6Ck0A==
+X-Gm-Gg: AYBFou1rnVJCJDJkk8EUxotAs9EtCNkLuvJFfhkfVyRztxK668aRKdBa7GOaika5gsc
+ 4W0UNqpaFVOGa+W3rqUC4IJQEHv53rvhhxCd6vx6qf2g1vNDPkXE0ob+p/tdVqJSWrUMWCSDLUR
+ qnXF8M7R6WjstQ4kBiZxFr/GiqX3ZyMeAVlw2L0OKQy2ofq/j7QUbSvxAkbQtL4d3tCWUYL1xLY
+ 9gZG/b7qDU+NWjnABEalRjQkaAxMPV+bazG7vZb/2UXzomit50rmt7pY72UaFuaMfA6QzmYuKDG
+ A5XPOVYGNeUZmesTCXGKPMWZMuA5QTE31yT1knCfoalcdu2I0geHLRQN4YSOD/UlYs/DBg/VI3g
+ 3B/StJZbRyeeFbsntOLBop6c1vRzk
+X-Received: by 2002:a05:690c:e152:10b0:7ff:1a93:be35 with SMTP id
+ 00721157ae682-87f27057c86mr3434427b3.16.1788884723700; Tue, 08 Sep 2026
+ 09:25:23 -0700 (PDT)
 MIME-Version: 1.0
 References: <20260902152044.31291-1-philmd@oss.qualcomm.com>
- <20260902152044.31291-2-philmd@oss.qualcomm.com>
-In-Reply-To: <20260902152044.31291-2-philmd@oss.qualcomm.com>
+ <20260902152044.31291-5-philmd@oss.qualcomm.com>
+In-Reply-To: <20260902152044.31291-5-philmd@oss.qualcomm.com>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 8 Sep 2026 17:09:51 +0100
-X-Gm-Features: AcwNN1XCnvRaYc8V1KAeF9JjDhyphbZh4b-jEOM8h43oC1OOMB17y_un4hbb4bU
-Message-ID: <CAFEAcA-w24c71SHh1Sr7JkO5RTVK7THH8GP_ixVvnWiBXWQMdg@mail.gmail.com>
-Subject: Re: [PATCH v3 01/11] target/arm: Call arm*_cpu_do_interrupt directly
- instead of via TCGCPUOps
+Date: Tue, 8 Sep 2026 17:25:12 +0100
+X-Gm-Features: AcwNN1V4XIKVs54SK6sImGEmX9ljAGTNQW2lfGrMMj2QVZXtln3ANID7z7SOkSk
+Message-ID: <CAFEAcA-9R6ov530pA5FV6=ECr9qj5HP7yz=O4YtyCDJDP3qc6Q@mail.gmail.com>
+Subject: Re: [PATCH v3 04/11] accel/tcg: Document cpu_exec_interrupt()
+ callback contract
 To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@oss.qualcomm.com>
 Cc: qemu-devel@nongnu.org, Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>, 
  Paolo Bonzini <pbonzini@redhat.com>, qemu-ppc@nongnu.org,
@@ -101,15 +101,15 @@ Cc: qemu-devel@nongnu.org, Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
  qemu-arm@nongnu.org
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2607:f8b0:4864:20::112b;
- envelope-from=peter.maydell@linaro.org; helo=mail-yw1-x112b.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:41::10;
+ envelope-from=peter.maydell@linaro.org; helo=mail-yx2-x10.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -125,58 +125,84 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Wed, 2 Sept 2026 at 16:20, Philippe Mathieu-Daud=C3=A9
+On Wed, 2 Sept 2026 at 16:21, Philippe Mathieu-Daud=C3=A9
 <philmd@oss.qualcomm.com> wrote:
 >
-> The TCGCPUOps.do_interrupt handler is a target-specific
-> callback installed for use by target-agnostic TCG core methods.
-> Target-specific code should not dispatch through this indirection;
-> call the ARM implementation directly instead.
+> Expand docstring to clarify that @interrupt_request is a bitmask,
+> the handler is called with BQL held, and document the return value
+> semantics. Fix typo in arm_cpu_exec_interrupt() documentation
+> (s/inrerrupt/interrupt).
 >
-> Reported-by: Richard Henderson <richard.henderson@linaro.org>
 > Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@oss.qualcomm.com>
 > ---
->  target/arm/cpu-irq.c     | 2 +-
->  target/arm/tcg/cpu-v7m.c | 2 +-
->  2 files changed, 2 insertions(+), 2 deletions(-)
+>  include/accel/tcg/cpu-ops.h | 15 ++++++++++++++-
+>  target/arm/internals.h      |  2 +-
+>  2 files changed, 15 insertions(+), 2 deletions(-)
 >
-> diff --git a/target/arm/cpu-irq.c b/target/arm/cpu-irq.c
-> index 883e8a176c3..e8a6520e5ca 100644
-> --- a/target/arm/cpu-irq.c
-> +++ b/target/arm/cpu-irq.c
-> @@ -270,7 +270,7 @@ bool arm_cpu_exec_interrupt(CPUState *cs, int interru=
-pt_request)
->   found:
->      cs->exception_index =3D excp_idx;
->      env->exception.target_el =3D target_el;
-> -    cs->cc->tcg_ops->do_interrupt(cs);
-> +    arm_cpu_do_interrupt(cs);
->      return true;
+> diff --git a/include/accel/tcg/cpu-ops.h b/include/accel/tcg/cpu-ops.h
+> index ded7cc700df..87850402203 100644
+> --- a/include/accel/tcg/cpu-ops.h
+> +++ b/include/accel/tcg/cpu-ops.h
+> @@ -171,8 +171,21 @@ struct TCGCPUOps {
+>  #else
+>      /** @do_interrupt: Callback for interrupt handling.  */
+>      void (*do_interrupt)(CPUState *cpu);
+> -    /** @cpu_exec_interrupt: Callback for processing interrupts in cpu_e=
+xec */
+> +
+> +    /**
+> +     * @cpu_exec_interrupt: Callback for processing target-specific inte=
+rrupts
+> +     * @cpu: cpu context
+> +     * @interrupt_request: Bitmask of pending interrupts
+> +     *
+> +     * Called from cpu_handle_interrupt() with the BQL held. Process the
+> +     * pending interrupt according to the target specific @interrupt_req=
+uest
+> +     * masking rules.
+
+I think we could clarify this a little to explain what to do with
+multiple pending interrupts. How about:
+
+Identify which, if any, of the possibly multiple pending interrupts
+specified by @interrupt_request should be taken, using the target
+architecture's rules for interrupt prioritization and masking.
+If an interrupt can validly be taken, take it (by updating the
+emulated CPU state for an interrupt entry).
+
+?
+
+(I'm trying to get across that the function sets things up
+for execution of the interrupt handler as the next thing, it
+doesn't cause the whole interrupt handler to run. But maybe
+that's obvious enough we don't need to say so.)
+
+> +     *
+> +     * Returns: %true if an interrupt was processed and the next TB shou=
+ld
+> +     * be restarted, %false to continue normal execution.
+> +     */
+>      bool (*cpu_exec_interrupt)(CPUState *cpu, int interrupt_request);
+> +
+>      /** @cpu_exec_reset: Callback for reset in cpu_exec.  */
+>      void (*cpu_exec_reset)(CPUState *cpu);
+>      /**
+> diff --git a/target/arm/internals.h b/target/arm/internals.h
+> index 1775835ad50..551a6b4a872 100644
+> --- a/target/arm/internals.h
+> +++ b/target/arm/internals.h
+> @@ -1248,7 +1248,7 @@ static inline const char *aarch32_mode_name(uint32_=
+t psr)
 >  }
->  #endif /* CONFIG_TCG */
-> diff --git a/target/arm/tcg/cpu-v7m.c b/target/arm/tcg/cpu-v7m.c
-> index 48b31d5eac8..502998dbd1c 100644
-> --- a/target/arm/tcg/cpu-v7m.c
-> +++ b/target/arm/tcg/cpu-v7m.c
-> @@ -34,7 +34,7 @@ static bool arm_v7m_cpu_exec_interrupt(CPUState *cs, in=
-t interrupt_request)
->      if (interrupt_request & CPU_INTERRUPT_HARD
->          && (armv7m_nvic_can_take_pending_exception(env->nvic))) {
->          cs->exception_index =3D EXCP_IRQ;
-> -        cs->cc->tcg_ops->do_interrupt(cs);
-> +        arm_v7m_cpu_do_interrupt(cs);
->          ret =3D true;
->      }
+>
+>  /**
+> - * arm_cpu_exec_interrupt(): Implementation of the cpu_exec_inrerrupt ho=
+ok.
+> + * arm_cpu_exec_interrupt(): Implementation of the cpu_exec_interrupt ho=
+ok.
+>   */
+>  bool arm_cpu_exec_interrupt(CPUState *cs, int interrupt_request);
+>
 
-This works because we have separate cpu_exec_interrupt
-methods for M-profile and A/R-profile, so we can drop the
-indirection. If we had anywhere where we were trying to
-do "call the appropriate do_interrupt function" from
-code that's agnostic to M vs A/R this wouldn't work, but
-happily we don't.
-
-Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
-
-thanks
 -- PMM
 

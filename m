@@ -4,124 +4,100 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4CC4AC79FAD
-	for <qemu-arm@archiver.kernel.org>; Tue,  8 Sep 2026 10:46:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id F308AC79FA1
+	for <qemu-arm@archiver.kernel.org>; Tue,  8 Sep 2026 10:47:02 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1x3tHx-0008Ad-1R; Tue, 08 Sep 2026 06:42:53 -0400
+	id 1x3tLA-0001NV-7w; Tue, 08 Sep 2026 06:46:12 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <bin.meng@processmission.com>)
- id 1x3tHu-000898-MV; Tue, 08 Sep 2026 06:42:50 -0400
-Received: from mail-koreacentralazlp170130006.outbound.protection.outlook.com
- ([2a01:111:f403:c40f::6] helo=SEYPR02CU001.outbound.protection.outlook.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <bin.meng@processmission.com>)
- id 1x3tHs-0006YC-CU; Tue, 08 Sep 2026 06:42:50 -0400
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=tTrHmAYh3TzLWIXftahqUxnPBE9n5Uq9Z6qNrU2myOlIKhM0XdM8GukmwYR9uMfHvOLmA+xuLtjVd81kt7XFs3IQt3uMmdBfn2ju6MbzUYBviNiwTDZckWY/efjshlcZOLQo83/F7qRPbSIzLi99MhrQNZNJKvDGzoOPrV9VAftbL83PiXfd2T+YPxU2DSL/ykj8CtEVshNWXB9MX5MAQb5P9s7uufwnXw814NyCl9G6fkpedJTPYgTMFk5wkcfbJE1ZL33zCnXsrJ4UJFwSmjKB0tjIeZ+wM+AegCWiu8gyb4Df0gOUM7pe6aVTMVX+peNAuu79embjcCSKogQ18g==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector10001;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=62kIHUn/9r7Nz2RxxLMPHQXrNcKUDI0LgMnmN6EIa6w=;
- b=w08j+C3YO9i0bclYNAxNMXJr+Ex/cJRZSFRC+HSRLcOnBilQ2Z3pOkWHLlqpAFOUdZWECNIWJSamgeQnbPcB7ivdzPFebG9hTnksdTpKE9+c/1Ga0PF8uN2HuiOvevKK5X5xk8zr/6LLxj8DgInX1HAhQGpQW+AhguTRo3DKuIRdCFSEvDKYWDU3hF4OW14czOwfUC7Sfx2TJ3MBR2Fj7/HM+yQ+muEL/sERtg+pa4v0qbvovCKH/TbMH3qJ5Kq9caMpXp6StfgLK5Hs2n8Ec6F92Hih5AktN8rvGNA5TVr36UJ8ZqhVIJGJrs2ZF+IqcxPWMGD6dS9QN0CKXM6acg==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=processmission.com; dmarc=pass action=none
- header.from=processmission.com; dkim=pass header.d=processmission.com;
- arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=processmission.com;
- s=selector1;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=62kIHUn/9r7Nz2RxxLMPHQXrNcKUDI0LgMnmN6EIa6w=;
- b=p7HxF65Zdp1Lxc0gKpVe3cWz01u0Z9qCpI+/equ5pEDIFNRtATyEsdq//3waqdRfiPmJjOee1gfukkpOqUW1c/TwjCYs3EOuRqHF9l+oP/PKMn4gU8+/P+0kSwh4tjTr9CqxYKoR6Cs7936yuBrF6XaLm/TQBo0GDQoBD9np1BjpeyVldCDr9r/UkmUM+xhSc/Nrzc9d8KNN4QHdsUJd+2kGOk6YyDae8cz1M+5RQr9AMh9gggu5eJx0I7mIr57s+cShwGZ/Spw2QZNbMqwcblnMVBFsuvR/nSRGdZc3DbJPPWe8aIynKrOftd9i0K+EEHqI0VQEQD6RS2Z4DrIXGQ==
-Authentication-Results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=processmission.com;
-Received: from PSAPR02MB4984.apcprd02.prod.outlook.com (2603:1096:301:78::7)
- by OSQPR02MB7928.apcprd02.prod.outlook.com (2603:1096:604:291::10) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.21.382.15; Tue, 8 Sep
- 2026 10:42:34 +0000
-Received: from PSAPR02MB4984.apcprd02.prod.outlook.com
- ([fe80::fd75:bbda:6f27:c616]) by PSAPR02MB4984.apcprd02.prod.outlook.com
- ([fe80::fd75:bbda:6f27:c616%6]) with mapi id 15.21.0382.014; Tue, 8 Sep 2026
- 10:42:34 +0000
-From: Bin Meng <bin.meng@processmission.com>
-To: QEMU <qemu-devel@nongnu.org>
-Cc: qemu-arm@nongnu.org
-Subject: [PATCH v2 10/32] hw/misc: Add Phytium E2000 MHU doorbell
-Date: Tue,  8 Sep 2026 18:41:19 +0800
-Message-ID: <20260908104159.1621764-11-bin.meng@processmission.com>
-X-Mailer: git-send-email 2.53.0
-In-Reply-To: <20260908104159.1621764-1-bin.meng@processmission.com>
-References: <20260908104159.1621764-1-bin.meng@processmission.com>
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-ClientProxiedBy: TY4P301CA0041.JPNP301.PROD.OUTLOOK.COM
- (2603:1096:405:2be::15) To PSAPR02MB4984.apcprd02.prod.outlook.com
- (2603:1096:301:78::7)
+ (Exim 4.90_1) (envelope-from <shentey@gmail.com>) id 1x3tL8-0001Kl-Qt
+ for qemu-arm@nongnu.org; Tue, 08 Sep 2026 06:46:10 -0400
+Received: from mail-ed1-x52e.google.com ([2a00:1450:4864:20::52e])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <shentey@gmail.com>) id 1x3tL6-0007AC-Hk
+ for qemu-arm@nongnu.org; Tue, 08 Sep 2026 06:46:10 -0400
+Received: by mail-ed1-x52e.google.com with SMTP id
+ 4fb4d7f45d1cf-6a668ce86abso6707995a12.2
+ for <qemu-arm@nongnu.org>; Tue, 08 Sep 2026 03:46:07 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=gmail.com; s=20251104; t=1788864366; x=1789469166; darn=nongnu.org;
+ h=content-transfer-encoding:content-type:mime-version:message-id
+ :references:in-reply-to:subject:cc:to:from:date:from:to:cc:subject
+ :date:message-id:reply-to:content-type;
+ bh=m/61nE4RZAQCSiXlvZv8ZPhxDHQ+auYzWrng+fg5aUU=;
+ b=huPEZGrW+WapsX7m13zgsWmSmOPXEIPYGTPCS6vb2JjZCf1BJy9cLjUTpfULb56MSK
+ 1cut+SExz5Qg4QWCH5yTmPYJIKLqlpzcpFgA3oYn3ROvd+675JxunPG8RYUxUOBifNGw
+ KnqtnwiMS22lwP0U5CQfWkvoJrT1uxKUaj6KyrIEsfvnayW5Q9r4RG9+XR7OwM+vfHTB
+ 1ijMECSAojK6KVDV+jcb79/cJPbJAnKfC2a931u1JT6f7W6d4dSqWhOlK5ZTAzrk0Jsu
+ /fTi8YoE1RIUeHbeKm+Uo170ZgOQ67S/l75PrMOjrwuCpz7o/3HaBHEeQNmCKZPCFRYF
+ pzaQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20251104; t=1788864366; x=1789469166;
+ h=content-transfer-encoding:content-type:mime-version:message-id
+ :references:in-reply-to:subject:cc:to:from:date:x-gm-gg
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
+ :content-type;
+ bh=m/61nE4RZAQCSiXlvZv8ZPhxDHQ+auYzWrng+fg5aUU=;
+ b=c+iXdnfLwyCP+DNGGF3ZDunvpAQ7qu1AqIvNZakbJ/LhEWP3Vm+LVP9bKpddY4ubwc
+ OXIqD6+JrJTE71GfX9lqIbRuFI9e54fkejO+feXzLrnSPd9Px6B1qacBeV4lG4UbbcNg
+ FhW90bepv+EOdxP3iGkBQe5TdVZ2AdPbgkXE9/OUkpY+GO1H2cveoegzC7mserRcJvt/
+ kAPyudAQLZHmLwNeNaJjW98B/9QOgrTthhccpEhJMDixGevJJ8zzHyqR1LZOX2GJTDvh
+ DGoiqZCZUelHAzDDPC+pM7cQzieCnvvtmbe4+hdUi79JsaFd7yymIAfBpXUk81Y3UNH0
+ TiTw==
+X-Forwarded-Encrypted: i=1;
+ AKwUvBwPeFuJPhdft3yFLHu1bo2O0UQbg9sNMm5vpqJ+wcMwe2WiZPXejXTP21VIEWudB1/R6GuXlEfBqA==@nongnu.org
+X-Gm-Message-State: AFuF++mpiUxqHF/r+F0GMn0zfnpqOAzP/aqCl8ou2xUSl0VM4bh0IC4b
+ K8Hz1aTLL9W3Uu9JjaUPyWZt1KE4+c9QplW7Nl9vuTw6Am1aMs/WCmjO
+X-Gm-Gg: AYBFou2bsh2fveF5lr009vVWwWrdetPc3gP3j9psfDNNkF3J4lDm9mYjhlmL7QCCCyR
+ 19b3P6xrXn/QzCeUoH092//ZrAcRmgFuBtXzWYCHHd9CaXL17OHcid4+CmKasCebAqGHZpkro5X
+ 16ANGSoxTOCj0RYkm9/rOcEriw8/Wgkh2aj5anpQnPlLZ4dp1d/sBGyUHokk2zKY20QpePQXCc4
+ 7uyBnnEFSNXyk8yVf+7fNHztT+t7Y4a+NEf1/7/F8V3k7IcALaKNLpZNuw0stnuj4xQsGKPn9ly
+ Ow1FPzQTyX68Q5k6LGNAJm4GLI4Hv5PXTogUx/9cM/98Szjy98vs3XmVVXB8sh2F08PqjAFvmBd
+ 7P2Yibf9Or71tH17jZhWey9U5CNLF+2+mdV95ydJVOuKUgiOJmQkYM7+BR0YrMkiq4xkQz6kSPp
+ woUigslaRD6sbTCfCVFk4uLh9LNPoMgkKlWjOcPGK0+SogoVA52orDJ/MyMxhPHMlmVQ==
+X-Received: by 2002:a05:6402:a244:10b0:6a7:f2fc:deb7 with SMTP id
+ 4fb4d7f45d1cf-6a7f2fce000mr11967045a12.14.1788864365993; 
+ Tue, 08 Sep 2026 03:46:05 -0700 (PDT)
+Received: from ehlo.thunderbird.net ([62.214.191.67])
+ by smtp.gmail.com with ESMTPSA id
+ 4fb4d7f45d1cf-6a7e68e921esm5359704a12.18.2026.09.08.03.46.05
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Tue, 08 Sep 2026 03:46:05 -0700 (PDT)
+Date: Tue, 08 Sep 2026 10:44:52 +0000
+From: Bernhard Beschow <shentey@gmail.com>
+To: Emmanuel Blot <emmanuel.blot@free.fr>,
+ Emmanuel Blot via qemu development <qemu-devel@nongnu.org>,
+ qemu-devel@nongnu.org
+CC: =?ISO-8859-1?Q?C=E9dric_Le_Goater?= <clg@kaod.org>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ Steven Lee <steven_lee@aspeedtech.com>, Troy Lee <leetroy@gmail.com>,
+ Jamin Lin <jamin_lin@aspeedtech.com>, Kane Chen <kane_chen@aspeedtech.com>,
+ Andrew Jeffery <andrew@codeconstruct.com.au>, Joel Stanley <joel@jms.id.au>,
+ Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>, qemu-arm@nongnu.org,
+ Patrick Leis <venture@google.com>, Fabiano Rosas <farosas@suse.de>,
+ Laurent Vivier <lvivier@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
+ qemu-ppc@nongnu.org, qemu-riscv@nongnu.org,
+ =?ISO-8859-1?Q?Philippe_Mathieu-Daud=E9?= <philmd@oss.qualcomm.com>
+Subject: =?US-ASCII?Q?Re=3A_=5BPATCH_09/50=5D_hw=3A_ds1338=3A_use_the_TYPE=5FD?=
+ =?US-ASCII?Q?S1338_constant_instead_of_the_=22ds1338=22_string?=
+In-Reply-To: <20260907-bmc-minerva-v1-9-0d83ad610c3b@free.fr>
+References: <20260907-bmc-minerva-v1-0-0d83ad610c3b@free.fr>
+ <20260907-bmc-minerva-v1-9-0d83ad610c3b@free.fr>
+Message-ID: <55B670A1-7B96-46AF-963F-0E105462AF6B@gmail.com>
 MIME-Version: 1.0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: PSAPR02MB4984:EE_|OSQPR02MB7928:EE_
-X-MS-Office365-Filtering-Correlation-Id: b4876f3b-b3fd-4b55-42e2-08df0d95e467
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;
- ARA:13230040|23010399003|366016|1800799024|376014|10067099003|6133799003|3023799007|18002099003|22082099003|56012099006;
-X-Microsoft-Antispam-Message-Info: 4Ic4lfgbBqZnLL7O95pSYoMmuUHM2gROYBpPEfIxBib9gombybInD0+vGkKznvlIclcH487ZpUdlKmHqUbnocYFlYbJWO/M+Zbgi7jRrcgWb02JWp+9VuA5KEwU+Zet+be7XRSF4MaqHBAEp9cK7Zf0czZ0YWEoAmBA9z0artNSsU2HG6gb7SzcdTTBuWQ8oGwBekCO1gikJEb/wtT0M5H6HxZztqJWuh5fascLHpO/w4Bw55oh2hXLT3uUq7qsi55F8qURamEe8aapk2wJd1jQ/ERpmjFH+TIGlR691IjCOyrNKe7g5xni3acmL9HK771ZmoTf1tDhEwekQNfgcwMEJx3My56EMQvMzgVrwPrr5L1GdJPbEkGck56catfJYCJY4NhE0R6Fj22t3PfF+7e4th0yxArHokhSP3Hy2vOakKFwAy1bdez5Ka5wz6+/hi9L3HDbOUjGCtpZYwPvf64bnqVLC6BQbmWLcG2eS6ZaFGRFRQZ75WJb7SVmWvN8HGxdJykV4MdABdaO+7e6GlFeWc7sB+TLgpfYR8WFOUXWszugt/9TbmmZPWILrQE9eilFnqKUZ9t2c4X4lyJ/mGL1IKV8aBCqPAhiECyYmDewkZ1UovEOZ4kjIP9x3G+4sNGgsYQYLi4cBDDv9a5V9CvO76AJH7T/j2oDrPyMcVTU=
-X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:PSAPR02MB4984.apcprd02.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(13230040)(23010399003)(366016)(1800799024)(376014)(10067099003)(6133799003)(3023799007)(18002099003)(22082099003)(56012099006);
- DIR:OUT; SFP:1102; 
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?KVID4dUkzV+ZC6RSaQgps8hsSuKgqmtIMAts9vxuCWjVjgfKACjPsVdeVM2z?=
- =?us-ascii?Q?qBZGcZnITaX8toLGrHO0U9F8nlUdNW96MrQ+uPkwuwqrTJTcM15VdeKNaCYy?=
- =?us-ascii?Q?0aFSzN/t9o0LCfn9gQXPN/GTEoMAtEQ+3etcYKde96JwYLgUli/mTUww1/xM?=
- =?us-ascii?Q?dlZ95dZSxVx0vt5Q7FaXNZ1WmNesVCR3AHfXcCCFCTdzNbYz0Qhgui91qGmi?=
- =?us-ascii?Q?t8K1uF+HUE/lCJ+kRXL6/+sIR6yrh18ApgrraE6OUbfxK6s2AkV4Y1+jMh80?=
- =?us-ascii?Q?PfpvYX6FJAhCtwC8F+SS8L5FMNlQRW2pF4jOX2c0fpoMIgiXSxk1KVflUebq?=
- =?us-ascii?Q?EYCL9eHHJ/xzDIUflWe0F3YpEtFoOW+ue9V4yKKBkCeLz73MSlBnlcpY9sEL?=
- =?us-ascii?Q?srw/VmqmD4BwaXCgw3ypjqB5XpknCKothwGCPyQYcj3JvRqqd9WBG38qg7et?=
- =?us-ascii?Q?zaEU4zJqcoc4WEo2oEFFm97SrdmF8NKy8Q5oKgxvusuhZUV4hymsfB1BtoVp?=
- =?us-ascii?Q?/ErFFc2WSiM3LQ75aPj2stVVFg8iDeQTPdswg6J8aBochkPRQNOiIZPyKEz8?=
- =?us-ascii?Q?AD+LeNKQRCUwQjXpj2vwYNHi6CfqBWimfa5jrXhMmdB5o6pH7d10VaXBvx5I?=
- =?us-ascii?Q?i8JbXcmvaTC2jswcEmnLdyf7g52Ihxhgqi4pT0KsHW/5SFW/zPYN/yaOauBA?=
- =?us-ascii?Q?cFVx+VhIeMDbGO8u+w9gz68+QoyM6KVyT0QOQ2r2Io+6LOf6xHV3HzMsA1zB?=
- =?us-ascii?Q?AbWKVJgfBFaywSvlkG5eFcB1QQpWdTqkddpzQyHyasaFtpI5Ad7frNvVv+SQ?=
- =?us-ascii?Q?oAZLYBbkpnDxi1DPHXYpjjS3peSQwYxTRC/bJr9mAJhuU8o5mwL/+4uO01Ih?=
- =?us-ascii?Q?foddu6HwhfMLdfS0kU0ooljnHE8emaUhrLRYiUYDmMXU6qJUHQgenBCftVqK?=
- =?us-ascii?Q?K2Uxofa/y3OTVKJSLUbaHTINQkZ+nyFu2459C06Gli4R1RE6FASxzmcL9WEL?=
- =?us-ascii?Q?MuheE5ZKEWExs4sOZlAYEX0+es1Lhu7jXSGPs2CJbYy2g1YNZ9A49ZUBFua/?=
- =?us-ascii?Q?aI4ywucK4/KPKCWXWUisRdX8cYm4A/xgjSKbbgmSU13c4atg+6DkqG0sq4Gm?=
- =?us-ascii?Q?rz0n5W+VLWjtYvEuc7aBAv+Io8S+Tzo4Sid4zvMRKE/a9vyOWNhS3xUVtvRx?=
- =?us-ascii?Q?FWUv1XIzTG44pJIKPpo+cSpl5U3tlCQBdtTJ7lRt1EeJLj7o3UOWO9keXi8U?=
- =?us-ascii?Q?SaYCnGRr6HZm+7+TzPOVMmT3kAb/3uxi6HgDWFtNjNGZdR0a2Dn/7sZ4N3qT?=
- =?us-ascii?Q?0ssLke+JyKFJdtUjV6UO1fuyvoiDnA5VN9/6gLMrsgjN3WDxPO+MJOz00pSI?=
- =?us-ascii?Q?4sm5f5d3EIP0IwSG9M1i5B5B1JDEPGbMYjHzZt9owx/3NnfoTDrFc9gkkEo9?=
- =?us-ascii?Q?ILeyDsqDm37e52tS6o8L0FmkKF7YHtMvm7xUxtgQQaWMCpEplV0sJguw+GBq?=
- =?us-ascii?Q?ZmtcYD9b3k586oHBcaMuNtTn2dMbbLGeYET2h44+2gmDG6L6N67DbgMTXC/h?=
- =?us-ascii?Q?p0rxmB4lHOWnE2tbn+4HHokQpWd7z+VklxAP1kJ1DYUtDbDrzkF4FdLbVW3O?=
- =?us-ascii?Q?093JlDbXfpk+LDzB2cJcj0qAsPgqy/s7K7cvTUh0KXPNP6ryR7Tj7j3QZwjE?=
- =?us-ascii?Q?C7Icd3CB4yjk0oaBXqW/BP/DsGLZP6+MYT37DT//kw3FSMrx56cVVoMqRSUQ?=
- =?us-ascii?Q?vwcyzRkDFk2w4JmV9aq/ZQEIGc1TTMU=3D?=
-X-OriginatorOrg: processmission.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: b4876f3b-b3fd-4b55-42e2-08df0d95e467
-X-MS-Exchange-CrossTenant-AuthSource: PSAPR02MB4984.apcprd02.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 08 Sep 2026 10:42:34.5366 (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: e0544bf7-9765-4630-ab69-0b266dc2169c
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: B9CJWcFDNKx4xETHJbI2jzB7fUkxtmPEdDGXR/mf+Eh7SmO1Cmb7FWhUctG2lq+HjUjEF6CgfJBj8ZevkP61MuDYbC+v0dili+12LDdju0U=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: OSQPR02MB7928
-Received-SPF: pass client-ip=2a01:111:f403:c40f::6;
- envelope-from=bin.meng@processmission.com;
- helo=SEYPR02CU001.outbound.protection.outlook.com
+Content-Type: text/plain;
+ charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2a00:1450:4864:20::52e;
+ envelope-from=shentey@gmail.com; helo=mail-ed1-x52e.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_PASS=-0.001,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -138,261 +114,325 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Add a model for the E2000 AP OS MHU channel used by vendor firmware.
-Model its status, set and clear registers and complete nonzero
-notifications by updating the shared SCMI mailbox.
 
-The device also provides the mailbox seeding helper required by
-the later PBR handoff. Board address mapping and SCP SRAM ownership
-are intentionally left to a following machine-integration commit.
 
-Signed-off-by: Bin Meng <bin.meng@processmission.com>
----
+Am 7=2E September 2026 16:41:59 UTC schrieb Emmanuel Blot via qemu develop=
+ment <qemu-devel@nongnu=2Eorg>:
+>Now that TYPE_DS1338 is exposed by include/hw/rtc/ds1338=2Eh, use it in
+>the machines that instantiate the RTC by its raw type name string=2E
+>
+>No functional change=2E
+>
+>Signed-off-by: Emmanuel Blot <emmanuel=2Eblot@free=2Efr>
+>---
+> hw/arm/aspeed_ast2400_palmetto=2Ec          | 4 +++-
+> hw/arm/aspeed_ast2400_supermicrox11=2Ec     | 4 +++-
+> hw/arm/aspeed_ast2500_romulus=2Ec           | 4 +++-
+> hw/arm/aspeed_ast2500_supermicro-x11spi=2Ec | 4 +++-
+> hw/arm/aspeed_ast2500_witherspoon=2Ec       | 4 +++-
+> hw/arm/aspeed_ast2600_bletchley=2Ec         | 3 ++-
+> hw/arm/aspeed_ast2600_catalina=2Ec          | 2 +-
+> hw/arm/aspeed_ast2600_sanmiguel=2Ec         | 3 +--
+> hw/arm/realview=2Ec                         | 3 ++-
+> hw/arm/versatilepb=2Ec                      | 3 ++-
+> hw/ppc/e500=2Ec                             | 3 ++-
+> hw/riscv/tt_atlantis=2Ec                    | 3 ++-
+> 12 files changed, 27 insertions(+), 13 deletions(-)
+>
+>diff --git a/hw/arm/aspeed_ast2400_palmetto=2Ec b/hw/arm/aspeed_ast2400_p=
+almetto=2Ec
+>index e2350e5b6c=2E=2E185185f0bb 100644
+>--- a/hw/arm/aspeed_ast2400_palmetto=2Ec
+>+++ b/hw/arm/aspeed_ast2400_palmetto=2Ec
+>@@ -11,6 +11,7 @@
+> #include "hw/arm/aspeed=2Eh"
+> #include "hw/arm/aspeed_soc=2Eh"
+> #include "hw/i2c/smbus_eeprom=2Eh"
+>+#include "hw/rtc/ds1338=2Eh"
+>=20
+> /* Palmetto hardware value: 0x120CE416 */
+> #define PALMETTO_BMC_HW_STRAP1 (                                        =
+\
+>@@ -36,7 +37,8 @@ static void palmetto_bmc_i2c_init(AspeedMachineState *b=
+mc)
+>      * The palmetto platform expects a ds3231 RTC but a ds1338 is
+>      * enough to provide basic RTC features=2E Alarms will be missing
+>      */
+>-    i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 0), "ds1338", =
+0x68);
+>+    i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 0), TYPE_DS133=
+8,
+>+                            0x68);
+>=20
+>     smbus_eeprom_init_one(aspeed_i2c_get_bus(&soc->i2c, 0), 0x50,
+>                           eeprom_buf);
+>diff --git a/hw/arm/aspeed_ast2400_supermicrox11=2Ec b/hw/arm/aspeed_ast2=
+400_supermicrox11=2Ec
+>index c75898cc6d=2E=2E051e072c5a 100644
+>--- a/hw/arm/aspeed_ast2400_supermicrox11=2Ec
+>+++ b/hw/arm/aspeed_ast2400_supermicrox11=2Ec
+>@@ -11,6 +11,7 @@
+> #include "hw/arm/aspeed=2Eh"
+> #include "hw/arm/aspeed_soc=2Eh"
+> #include "hw/i2c/smbus_eeprom=2Eh"
+>+#include "hw/rtc/ds1338=2Eh"
+>=20
+> /* TODO: Find the actual hardware value */
+> #define SUPERMICROX11_BMC_HW_STRAP1 (                                   =
+\
+>@@ -36,7 +37,8 @@ static void supermicrox11_bmc_i2c_init(AspeedMachineSta=
+te *bmc)
+>      * The palmetto platform expects a ds3231 RTC but a ds1338 is
+>      * enough to provide basic RTC features=2E Alarms will be missing
+>      */
+>-    i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 0), "ds1338", =
+0x68);
+>+    i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 0), TYPE_DS133=
+8,
+>+                            0x68);
+>=20
+>     smbus_eeprom_init_one(aspeed_i2c_get_bus(&soc->i2c, 0), 0x50,
+>                           eeprom_buf);
+>diff --git a/hw/arm/aspeed_ast2500_romulus=2Ec b/hw/arm/aspeed_ast2500_ro=
+mulus=2Ec
+>index 340a74408b=2E=2E87f90ed361 100644
+>--- a/hw/arm/aspeed_ast2500_romulus=2Ec
+>+++ b/hw/arm/aspeed_ast2500_romulus=2Ec
+>@@ -10,6 +10,7 @@
+> #include "qapi/error=2Eh"
+> #include "hw/arm/aspeed=2Eh"
+> #include "hw/arm/aspeed_soc=2Eh"
+>+#include "hw/rtc/ds1338=2Eh"
+>=20
+> /* Romulus hardware value: 0xF10AD206 */
+> #define ROMULUS_BMC_HW_STRAP1 (                                         =
+\
+>@@ -29,7 +30,8 @@ static void romulus_bmc_i2c_init(AspeedMachineState *bm=
+c)
+>      * The romulus board expects Epson RX8900 I2C RTC but a ds1338 is
+>      * good enough
+>      */
+>-    i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 11), "ds1338",=
+ 0x32);
+>+    i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 11), TYPE_DS13=
+38,
+>+                            0x32);
+> }
+>=20
+> static void aspeed_machine_romulus_class_init(ObjectClass *oc,
+>diff --git a/hw/arm/aspeed_ast2500_supermicro-x11spi=2Ec b/hw/arm/aspeed_=
+ast2500_supermicro-x11spi=2Ec
+>index 5a7e49d6cc=2E=2Edc0248422d 100644
+>--- a/hw/arm/aspeed_ast2500_supermicro-x11spi=2Ec
+>+++ b/hw/arm/aspeed_ast2500_supermicro-x11spi=2Ec
+>@@ -11,6 +11,7 @@
+> #include "hw/arm/aspeed=2Eh"
+> #include "hw/arm/aspeed_soc=2Eh"
+> #include "hw/i2c/smbus_eeprom=2Eh"
+>+#include "hw/rtc/ds1338=2Eh"
+>=20
+> /* TODO: Find the actual hardware value */
+> #define SUPERMICRO_X11SPI_BMC_HW_STRAP1 (                               =
+\
+>@@ -32,7 +33,8 @@ static void supermicro_x11spi_bmc_i2c_init(AspeedMachin=
+eState *bmc)
+>      * The palmetto platform expects a ds3231 RTC but a ds1338 is
+>      * enough to provide basic RTC features=2E Alarms will be missing
+>      */
+>-    i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 0), "ds1338", =
+0x68);
+>+    i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 0), TYPE_DS133=
+8,
+>+                            0x68);
+>=20
+>     smbus_eeprom_init_one(aspeed_i2c_get_bus(&soc->i2c, 0), 0x50,
+>                           eeprom_buf);
+>diff --git a/hw/arm/aspeed_ast2500_witherspoon=2Ec b/hw/arm/aspeed_ast250=
+0_witherspoon=2Ec
+>index 26ddb67347=2E=2Ec69065846c 100644
+>--- a/hw/arm/aspeed_ast2500_witherspoon=2Ec
+>+++ b/hw/arm/aspeed_ast2500_witherspoon=2Ec
+>@@ -14,6 +14,7 @@
+> #include "hw/sensor/tmp105=2Eh"
+> #include "hw/i2c/smbus_eeprom=2Eh"
+> #include "hw/gpio/pca9552=2Eh"
+>+#include "hw/rtc/ds1338=2Eh"
+>=20
+> /* Witherspoon hardware value: 0xF10AD216 */
+> #define WITHERSPOON_BMC_HW_STRAP1 (                                     =
+\
+>@@ -70,7 +71,8 @@ static void witherspoon_bmc_i2c_init(AspeedMachineState=
+ *bmc)
+>      * The witherspoon board expects Epson RX8900 I2C RTC but a ds1338 i=
+s
+>      * good enough
+>      */
+>-    i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 11), "ds1338",=
+ 0x32);
+>+    i2c_slave_create_simple(aspeed_i2c_get_bus(&soc->i2c, 11), TYPE_DS13=
+38,
+>+                            0x32);
+>=20
+>     smbus_eeprom_init_one(aspeed_i2c_get_bus(&soc->i2c, 11), 0x51,
+>                           eeprom_buf);
+>diff --git a/hw/arm/aspeed_ast2600_bletchley=2Ec b/hw/arm/aspeed_ast2600_=
+bletchley=2Ec
+>index 2822f6bdf5=2E=2E7bd1f90555 100644
+>--- a/hw/arm/aspeed_ast2600_bletchley=2Ec
+>+++ b/hw/arm/aspeed_ast2600_bletchley=2Ec
+>@@ -12,6 +12,7 @@
+> #include "hw/arm/aspeed_soc=2Eh"
+> #include "hw/gpio/pca9552=2Eh"
+> #include "hw/nvram/eeprom_at24c=2Eh"
+>+#include "hw/rtc/ds1338=2Eh"
+>=20
+> #define TYPE_TMP421 "tmp421"
+> /* Bletchley hardware value */
+>@@ -44,7 +45,7 @@ static void bletchley_bmc_i2c_init(AspeedMachineState *=
+bmc)
+>     /* Bus 6 */
+>     at24c_eeprom_init(i2c[6], 0x56, 65536);
+>     /* Missing model: nxp,pcf85263 @ 0x51 , but ds1338 works enough */
+>-    i2c_slave_create_simple(i2c[6], "ds1338", 0x51);
+>+    i2c_slave_create_simple(i2c[6], TYPE_DS1338, 0x51);
+>=20
+>=20
+>     /* Bus 7 */
+>diff --git a/hw/arm/aspeed_ast2600_catalina=2Ec b/hw/arm/aspeed_ast2600_c=
+atalina=2Ec
+>index ad2953dfea=2E=2Ee1dc988425 100644
+>--- a/hw/arm/aspeed_ast2600_catalina=2Ec
+>+++ b/hw/arm/aspeed_ast2600_catalina=2Ec
+>@@ -14,6 +14,7 @@
+> #include "hw/gpio/pca9552=2Eh"
+> #include "hw/gpio/pca9554=2Eh"
+> #include "hw/nvram/eeprom_at24c=2Eh"
+>+#include "hw/rtc/ds1338=2Eh"
+> #include "hw/sensor/tmp105=2Eh"
+>=20
+> /* Catalina hardware value */
+>@@ -22,7 +23,6 @@
+> #define CATALINA_BMC_RAM_SIZE ASPEED_RAM_SIZE(2 * GiB)
+>=20
+> #define TYPE_TMP421 "tmp421"
+>-#define TYPE_DS1338 "ds1338"
+>=20
+> /*
+>  * "BMC Storage Module" FRU data=2E  Generated with frugen=2E
+>diff --git a/hw/arm/aspeed_ast2600_sanmiguel=2Ec b/hw/arm/aspeed_ast2600_=
+sanmiguel=2Ec
+>index 1dbbef11f2=2E=2E5ab2b43e9c 100644
+>--- a/hw/arm/aspeed_ast2600_sanmiguel=2Ec
+>+++ b/hw/arm/aspeed_ast2600_sanmiguel=2Ec
+>@@ -13,6 +13,7 @@
+> #include "hw/gpio/pca9552=2Eh"
+> #include "hw/gpio/pca9554=2Eh"
+> #include "hw/nvram/eeprom_at24c=2Eh"
+>+#include "hw/rtc/ds1338=2Eh"
+> #include "hw/sensor/tmp105=2Eh"
+>=20
+> /* SanMiguel hardware values */
+>@@ -20,8 +21,6 @@
+> #define SANMIGUEL_BMC_HW_STRAP2 0x00000000
+> #define SANMIGUEL_BMC_RAM_SIZE ASPEED_RAM_SIZE(2 * GiB)
+>=20
+>-#define TYPE_DS1338 "ds1338"
+>-
+> /*
+>  * "Front IO" FRU data=2E Generated with frugen=2E
+>  *
+>diff --git a/hw/arm/realview=2Ec b/hw/arm/realview=2Ec
+>index ceba0331b0=2E=2E4cdf939511 100644
+>--- a/hw/arm/realview=2Ec
+>+++ b/hw/arm/realview=2Ec
+>@@ -28,6 +28,7 @@
+> #include "hw/intc/realview_gic=2Eh"
+> #include "hw/core/irq=2Eh"
+> #include "hw/i2c/arm_sbcon_i2c=2Eh"
+>+#include "hw/rtc/ds1338=2Eh"
+> #include "hw/sd/sd=2Eh"
+> #include "target/arm/cpu-qom=2Eh"
+>=20
+>@@ -323,7 +324,7 @@ static void realview_init(MachineState *machine,
+>=20
+>     dev =3D sysbus_create_simple(TYPE_ARM_SBCON_I2C, 0x10002000, NULL);
+>     i2c =3D (I2CBus *)qdev_get_child_bus(dev, "i2c");
+>-    i2c_slave_create_simple(i2c, "ds1338", 0x68);
+>+    i2c_slave_create_simple(i2c, TYPE_DS1338, 0x68);
+>=20
+>     /* Memory map for RealView Emulation Baseboard:  */
+>     /* 0x10000000 System registers=2E  */
+>diff --git a/hw/arm/versatilepb=2Ec b/hw/arm/versatilepb=2Ec
+>index f94bf96599=2E=2E737cd21c27 100644
+>--- a/hw/arm/versatilepb=2Ec
+>+++ b/hw/arm/versatilepb=2Ec
+>@@ -18,6 +18,7 @@
+> #include "hw/pci/pci=2Eh"
+> #include "hw/i2c/i2c=2Eh"
+> #include "hw/i2c/arm_sbcon_i2c=2Eh"
+>+#include "hw/rtc/ds1338=2Eh"
+> #include "hw/core/irq=2Eh"
+> #include "hw/core/boards=2Eh"
+> #include "hw/block/flash=2Eh"
+>@@ -346,7 +347,7 @@ static void versatile_init(MachineState *machine, int=
+ board_id)
+>=20
+>     dev =3D sysbus_create_simple(TYPE_ARM_SBCON_I2C, 0x10002000, NULL);
+>     i2c =3D (I2CBus *)qdev_get_child_bus(dev, "i2c");
+>-    i2c_slave_create_simple(i2c, "ds1338", 0x68);
+>+    i2c_slave_create_simple(i2c, TYPE_DS1338, 0x68);
+>=20
+>     /* Add PL041 AACI Interface to the LM4549 codec */
+>     pl041 =3D qdev_new("pl041");
+>diff --git a/hw/ppc/e500=2Ec b/hw/ppc/e500=2Ec
+>index 1876882a04=2E=2E469cef9d2f 100644
+>--- a/hw/ppc/e500=2Ec
+>+++ b/hw/ppc/e500=2Ec
+>@@ -50,6 +50,7 @@
+> #include "hw/core/platform-bus=2Eh"
+> #include "hw/net/fsl_etsec/etsec=2Eh"
+> #include "hw/i2c/i2c=2Eh"
+>+#include "hw/rtc/ds1338=2Eh"
+> #include "hw/core/irq=2Eh"
+> #include "hw/sd/sdhci=2Eh"
+> #include "hw/misc/unimp=2Eh"
+>@@ -1025,7 +1026,7 @@ void ppce500_init(MachineState *machine)
+>     memory_region_add_subregion(ccsr_addr_space, MPC8544_I2C_REGS_OFFSET=
+,
+>                                 sysbus_mmio_get_region(s, 0));
+>     i2c =3D I2C_BUS(qdev_get_child_bus(dev, "i2c"));
+>-    i2c_slave_create_simple(i2c, "ds1338", RTC_REGS_OFFSET);
+>+    i2c_slave_create_simple(i2c, TYPE_DS1338, RTC_REGS_OFFSET);
 
-(no changes since v1)
+Good idea!
 
- include/hw/misc/phytium_e2000_mhu.h |  25 ++++
- hw/misc/phytium_e2000_mhu.c         | 185 ++++++++++++++++++++++++++++
- hw/misc/meson.build                 |   1 +
- 3 files changed, 211 insertions(+)
- create mode 100644 include/hw/misc/phytium_e2000_mhu.h
- create mode 100644 hw/misc/phytium_e2000_mhu.c
+For e500:
+Acked-by: Bernhard Beschow <sgentey@gmail=2Ecom>
 
-diff --git a/include/hw/misc/phytium_e2000_mhu.h b/include/hw/misc/phytium_e2000_mhu.h
-new file mode 100644
-index 0000000000..0527d6fe8d
---- /dev/null
-+++ b/include/hw/misc/phytium_e2000_mhu.h
-@@ -0,0 +1,25 @@
-+/*
-+ * Phytium E2000 MHU/SCMI doorbell
-+ *
-+ * Copyright (c) 2026 Process Mission
-+ *
-+ * Author:
-+ *   Bin Meng <bin.meng@processmission.com>
-+ *
-+ * SPDX-License-Identifier: GPL-2.0-or-later
-+ */
-+
-+#ifndef HW_MISC_PHYTIUM_E2000_MHU_H
-+#define HW_MISC_PHYTIUM_E2000_MHU_H
-+
-+#include "hw/core/sysbus.h"
-+#include "qom/object.h"
-+
-+#define TYPE_PHYTIUM_E2000_MHU "phytium-e2000-mhu"
-+OBJECT_DECLARE_SIMPLE_TYPE(PhytiumE2000MHUState, PHYTIUM_E2000_MHU)
-+
-+#define PHYTIUM_E2000_MHU_MMIO_SIZE 0x1000
-+
-+void phytium_e2000_mhu_seed_mailbox(void);
-+
-+#endif
-diff --git a/hw/misc/phytium_e2000_mhu.c b/hw/misc/phytium_e2000_mhu.c
-new file mode 100644
-index 0000000000..4ea23af900
---- /dev/null
-+++ b/hw/misc/phytium_e2000_mhu.c
-@@ -0,0 +1,185 @@
-+/*
-+ * Phytium E2000 MHU/SCMI doorbell
-+ *
-+ * This is a boot-oriented SCMI transport proxy. It acknowledges requests in
-+ * shared SRAM so PBF can complete clock and platform setup; it is not a full
-+ * SCMI protocol server.
-+ *
-+ * Copyright (c) 2026 Process Mission
-+ *
-+ * Author:
-+ *   Bin Meng <bin.meng@processmission.com>
-+ *
-+ * SPDX-License-Identifier: GPL-2.0-or-later
-+ */
-+
-+#include "qemu/osdep.h"
-+#include "hw/misc/phytium_e2000_mhu.h"
-+
-+#include "hw/core/register.h"
-+#include "migration/vmstate.h"
-+#include "qemu/module.h"
-+#include "system/address-spaces.h"
-+
-+#define PHYTIUM_E2000_PBF_SCMI_MBOX_BASE  0x32a10400
-+#define PHYTIUM_E2000_SCMI_STATUS_OFFSET  0x04
-+#define PHYTIUM_E2000_SCMI_LEN_OFFSET     0x14
-+#define PHYTIUM_E2000_SCMI_PAYLOAD_OFFSET 0x1c
-+#define PHYTIUM_E2000_SCMI_STATUS_FREE    BIT(0)
-+
-+/*
-+ * The SDK defines AP OS status/set/clear at 0x100/0x108/0x110 within a
-+ * channel. PBF selects the channel at MHU offset 0x200, producing the global
-+ * offsets below. Writes to AP_OS_SET are the request notification.
-+ */
-+REG32(AP_OS_STAT, 0x300)
-+REG32(AP_OS_SET, 0x308)
-+REG32(AP_OS_CLR, 0x310)
-+
-+#define PHYTIUM_E2000_MHU_R_MAX \
-+    (PHYTIUM_E2000_MHU_MMIO_SIZE / sizeof(uint32_t))
-+
-+struct PhytiumE2000MHUState {
-+    SysBusDevice parent_obj;
-+
-+    uint32_t regs[PHYTIUM_E2000_MHU_R_MAX];
-+    RegisterInfo regs_info[PHYTIUM_E2000_MHU_R_MAX];
-+};
-+
-+static void phytium_e2000_mhu_complete_scmi(void)
-+{
-+    uint8_t buf[sizeof(uint32_t)];
-+    uint32_t len;
-+
-+    /*
-+     * Preserve the caller's message length, but reserve one status word for
-+     * the minimal success response returned in the payload.
-+     */
-+    address_space_read(&address_space_memory,
-+                       PHYTIUM_E2000_PBF_SCMI_MBOX_BASE +
-+                       PHYTIUM_E2000_SCMI_LEN_OFFSET,
-+                       MEMTXATTRS_UNSPECIFIED, buf, sizeof(buf));
-+    len = MAX(ldl_le_p(buf), (uint32_t)sizeof(uint32_t));
-+
-+    stl_le_p(buf, 0);
-+    address_space_write(&address_space_memory,
-+                        PHYTIUM_E2000_PBF_SCMI_MBOX_BASE +
-+                        PHYTIUM_E2000_SCMI_PAYLOAD_OFFSET,
-+                        MEMTXATTRS_UNSPECIFIED, buf, sizeof(buf));
-+    stl_le_p(buf, len);
-+    address_space_write(&address_space_memory,
-+                        PHYTIUM_E2000_PBF_SCMI_MBOX_BASE +
-+                        PHYTIUM_E2000_SCMI_LEN_OFFSET,
-+                        MEMTXATTRS_UNSPECIFIED, buf, sizeof(buf));
-+    stl_le_p(buf, PHYTIUM_E2000_SCMI_STATUS_FREE);
-+    /*
-+     * Publish the free bit last. PBF polls this field as the ownership handoff
-+     * and may consume the response immediately after observing it.
-+     */
-+    address_space_write(&address_space_memory,
-+                        PHYTIUM_E2000_PBF_SCMI_MBOX_BASE +
-+                        PHYTIUM_E2000_SCMI_STATUS_OFFSET,
-+                        MEMTXATTRS_UNSPECIFIED, buf, sizeof(buf));
-+}
-+
-+void phytium_e2000_mhu_seed_mailbox(void)
-+{
-+    /*
-+     * PBR leaves the shared channel available before releasing PBF. Seed the
-+     * same ownership and success state even before the first doorbell write.
-+     */
-+    phytium_e2000_mhu_complete_scmi();
-+}
-+
-+static void phytium_e2000_mhu_doorbell_post_write(RegisterInfo *reg,
-+                                                  uint64_t value)
-+{
-+    /*
-+     * Complete requests synchronously because no separate SCP CPU executes in
-+     * this model. Zero writes only update doorbell storage.
-+     */
-+    if (value) {
-+        phytium_e2000_mhu_complete_scmi();
-+    }
-+}
-+
-+static const RegisterAccessInfo phytium_e2000_mhu_regs_info[] = {
-+    /*
-+     * The functional transport does not model an SCP interrupt line. STAT is
-+     * therefore idle, SET completes the shared-memory transaction, and CLR
-+     * remains ordinary register storage for the firmware acknowledge path.
-+     */
-+    { .name = "AP_OS_STAT", .addr = A_AP_OS_STAT,
-+      .ro = UINT32_MAX },
-+    { .name = "AP_OS_SET", .addr = A_AP_OS_SET,
-+      .post_write = phytium_e2000_mhu_doorbell_post_write },
-+    { .name = "AP_OS_CLR", .addr = A_AP_OS_CLR },
-+};
-+
-+static const MemoryRegionOps phytium_e2000_mhu_ops = {
-+    .read = register_read_memory,
-+    .write = register_write_memory,
-+    .endianness = DEVICE_LITTLE_ENDIAN,
-+    .valid = {
-+        .min_access_size = 4,
-+        .max_access_size = 4,
-+        .unaligned = false,
-+    },
-+};
-+
-+static void phytium_e2000_mhu_reset(DeviceState *dev)
-+{
-+    PhytiumE2000MHUState *s = PHYTIUM_E2000_MHU(dev);
-+    int i;
-+
-+    for (i = 0; i < ARRAY_SIZE(phytium_e2000_mhu_regs_info); i++) {
-+        register_reset(&s->regs_info[
-+            phytium_e2000_mhu_regs_info[i].addr / sizeof(uint32_t)]);
-+    }
-+}
-+
-+static void phytium_e2000_mhu_init(Object *obj)
-+{
-+    PhytiumE2000MHUState *s = PHYTIUM_E2000_MHU(obj);
-+    RegisterInfoArray *reg_array;
-+
-+    reg_array = register_init_block32(
-+        DEVICE(obj), phytium_e2000_mhu_regs_info,
-+        ARRAY_SIZE(phytium_e2000_mhu_regs_info), s->regs_info, s->regs,
-+        &phytium_e2000_mhu_ops, false, PHYTIUM_E2000_MHU_MMIO_SIZE);
-+    sysbus_init_mmio(SYS_BUS_DEVICE(obj), &reg_array->mem);
-+}
-+
-+static const VMStateDescription phytium_e2000_mhu_vmsd = {
-+    .name = TYPE_PHYTIUM_E2000_MHU,
-+    .version_id = 1,
-+    .minimum_version_id = 1,
-+    .fields = (const VMStateField[]) {
-+        VMSTATE_UINT32_ARRAY(regs, PhytiumE2000MHUState,
-+                             PHYTIUM_E2000_MHU_R_MAX),
-+        VMSTATE_END_OF_LIST()
-+    },
-+};
-+
-+static void phytium_e2000_mhu_class_init(ObjectClass *klass, const void *data)
-+{
-+    DeviceClass *dc = DEVICE_CLASS(klass);
-+
-+    dc->vmsd = &phytium_e2000_mhu_vmsd;
-+    device_class_set_legacy_reset(dc, phytium_e2000_mhu_reset);
-+}
-+
-+static const TypeInfo phytium_e2000_mhu_info = {
-+    .name = TYPE_PHYTIUM_E2000_MHU,
-+    .parent = TYPE_SYS_BUS_DEVICE,
-+    .instance_size = sizeof(PhytiumE2000MHUState),
-+    .instance_init = phytium_e2000_mhu_init,
-+    .class_init = phytium_e2000_mhu_class_init,
-+};
-+
-+static void phytium_e2000_mhu_register_types(void)
-+{
-+    type_register_static(&phytium_e2000_mhu_info);
-+}
-+
-+type_init(phytium_e2000_mhu_register_types)
-diff --git a/hw/misc/meson.build b/hw/misc/meson.build
-index dca5f67ca9..149ec8e797 100644
---- a/hw/misc/meson.build
-+++ b/hw/misc/meson.build
-@@ -17,6 +17,7 @@ system_ss.add(when: 'CONFIG_INTEGRATOR_DEBUG', if_true: files('arm_integrator_de
- system_ss.add(when: 'CONFIG_A9SCU', if_true: files('a9scu.c'))
- system_ss.add(when: 'CONFIG_ARM11SCU', if_true: files('arm11scu.c'))
- system_ss.add(when: 'CONFIG_PHYTIUM_E2000', if_true: files('phytium_e2000_ddr.c'))
-+system_ss.add(when: 'CONFIG_PHYTIUM_E2000', if_true: files('phytium_e2000_mhu.c'))
- 
- system_ss.add(when: 'CONFIG_ARM_V7M', if_true: files('armv7m_ras.c'))
- 
--- 
-2.53.0
-
+>=20
+>     /* eSDHC */
+>     if (pmc->has_esdhc) {
+>diff --git a/hw/riscv/tt_atlantis=2Ec b/hw/riscv/tt_atlantis=2Ec
+>index 8a219afef7=2E=2E910713c6bb 100644
+>--- a/hw/riscv/tt_atlantis=2Ec
+>+++ b/hw/riscv/tt_atlantis=2Ec
+>@@ -27,6 +27,7 @@
+> #include "hw/char/serial-mm=2Eh"
+> #include "hw/intc/riscv_aclint=2Eh"
+> #include "hw/misc/unimp=2Eh"
+>+#include "hw/rtc/ds1338=2Eh"
+>=20
+> #include "system/system=2Eh"
+> #include "system/device_tree=2Eh"
+>@@ -657,7 +658,7 @@ static void tt_atlantis_machine_init(MachineState *ma=
+chine)
+>     qdev_realize(DEVICE(&ams->soc), NULL, &error_fatal);
+>=20
+>     /* I2C peripherals: qemu specific */
+>-    i2c_slave_create_simple(i2c_get_bus(s, 0), "ds1338", 0x6f);
+>+    i2c_slave_create_simple(i2c_get_bus(s, 0), TYPE_DS1338, 0x6f);
+>     i2c_slave_create_simple(i2c_get_bus(s, 4), "tmp105", 0x48);
+>=20
+>     /* Load or create device tree */
+>
 

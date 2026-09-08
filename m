@@ -4,94 +4,104 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1534BC79FA0
-	for <qemu-arm@archiver.kernel.org>; Tue,  8 Sep 2026 08:36:16 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9E7DCC79F82
+	for <qemu-arm@archiver.kernel.org>; Tue,  8 Sep 2026 09:32:12 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1x3rJ2-0007Am-1a; Tue, 08 Sep 2026 04:35:52 -0400
+	id 1x3sBF-0001YR-6E; Tue, 08 Sep 2026 05:31:53 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <marcandre.lureau@redhat.com>)
- id 1x3rJ0-0007AQ-Ge
- for qemu-arm@nongnu.org; Tue, 08 Sep 2026 04:35:50 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <marcandre.lureau@redhat.com>)
- id 1x3rIy-0007EO-SY
- for qemu-arm@nongnu.org; Tue, 08 Sep 2026 04:35:50 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1788856548;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:to:
- cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=MJ3JKz6ii3UHXbYgbY5KF1obV3J6lMcORoFh8rbcuII=;
- b=Xnfh+0F9q9G5jEihooWWfiL6cv4sUMvzCKirtVJ5Fb2RnriYWbbnWrGLxyk1nb0fLvBUmV
- Vu5SPnjeUftKSMrxHsRx7HzIsnyMSwwAYotbUCsp9Xrw36khH4T2QrTsE91ZXoMMbHNj7w
- a3IjbtTgp1eKDvdWK2eblG2YgjC639A=
-Received: from mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
- relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-589-bVz0ejSrOj6BOwzE_Z2lNg-1; Tue,
- 08 Sep 2026 04:35:45 -0400
-X-MC-Unique: bVz0ejSrOj6BOwzE_Z2lNg-1
-X-Mimecast-MFC-AGG-ID: bVz0ejSrOj6BOwzE_Z2lNg_1788856544
-Received: from mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com
- (mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.93])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
- (No client certificate requested)
- by mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 01C2919776B4; Tue,  8 Sep 2026 08:35:44 +0000 (UTC)
-Received: from localhost (headnet04.pony-001.prod.iad2.dc.redhat.com
- [10.2.32.116])
- by mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id D3CAF1800598; Tue,  8 Sep 2026 08:35:42 +0000 (UTC)
-From: =?utf-8?q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>
-Date: Tue, 08 Sep 2026 12:35:33 +0400
-Subject: [GIT PULL 01/10] tests/functional: replace HMP with QMP
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1x3sBD-0001Xd-9b
+ for qemu-arm@nongnu.org; Tue, 08 Sep 2026 05:31:51 -0400
+Received: from mail-yw1-x112b.google.com ([2607:f8b0:4864:20::112b])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1x3sBB-0007Ks-1X
+ for qemu-arm@nongnu.org; Tue, 08 Sep 2026 05:31:50 -0400
+Received: by mail-yw1-x112b.google.com with SMTP id
+ 00721157ae682-86fbd1a23ebso31148487b3.2
+ for <qemu-arm@nongnu.org>; Tue, 08 Sep 2026 02:31:46 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1788859906; cv=none;
+ d=google.com; s=arc-20260327;
+ b=o4Re/NVlmaJ+/H9jvhf+OZHXAPlc6aaHzjshPalt9emIUqHs6p/TAY7mrql7EXHQtk
+ Y4H0pXGHFzDH7MNipunpsKvb6p4RkiwqkOBUHyulXsLGNUuJ2fdWh1uzj71lN4UcmF6K
+ NdV/QIByipAnsZVsXhdni3WOJ5C9rmj5Uzn9w+EgKOVIPVyTGuMRUNizfch4Ia5wYdVg
+ SkaHCcguzqoZd/8B6oqnkhYiuNngM+smssqfKcgolxzOuNv+6/qJKp/6yGG3WOcuP1kF
+ xp/LjtK4u6XyPS0igXUNqbxCUnkLypUPnasU1YOHb2Obx7o2PgSRNLQ8jb0ebJryMiM8
+ iTug==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
+ s=arc-20260327; 
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:dkim-signature;
+ bh=7GKDo1etqBehuVleDyKR7C+x1la3ki921G0KqZ87U4U=;
+ fh=hew8UJHoJQi167HRoKHlmxAL1L5JaYghuV79FHEVPo0=;
+ b=Gp1urfRDIglwtFAOQWuOVH+89dqTgPKYB5XnRt2K2yI+tffQQvVqlyYHz2fHHwlpMk
+ iG7AsrgppBboruWLPNBJwaYaA8COQMwHBan4EEx3h4T9Ikr1nSTFcYV2/FtAqrGKWjIQ
+ 8lO1nlBKT30GobXOLeXF5B81z8utKhV1V8GIGp2342GhLSfVImLcRvsyrKVV/JlgKa2X
+ QSyn7755Sy1SeOd9IpIfmE3glduF+YMinVfnbqdv5S/hYCvkaRfCLMOMXvvCm3CJkwB/
+ loJJI9Euqsoo/h6SulXEy68yuRFXA3kmTMKqDnwywZAczN31gFFmjwr9tt9ZHSHOqTTE
+ x0SA==; darn=nongnu.org
+ARC-Authentication-Results: i=1; mx.google.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1788859906; x=1789464706; darn=nongnu.org;
+ h=content-type:cc:to:subject:message-id:date:from:in-reply-to
+ :references:mime-version:from:to:cc:subject:date:message-id:reply-to
+ :content-type; bh=7GKDo1etqBehuVleDyKR7C+x1la3ki921G0KqZ87U4U=;
+ b=LYsNDB3QfC/87aBOSLj9JYt1Y7qUqbdxWp4RfreuVCKU4zvNGRUdkuJ4iiZccaX+fg
+ Uvb+J4Mkn28ToIvX6L7p7ELx0HolTOPoMfNFopLNijBJITjQjArq9kXucpG2nHcuYE7H
+ HEugtOc6YGL+WB+MeCNqFvEzfxTB6+fPRMMK3xwiEGG/49cjdhwHYYJfOUYZMuW4RjJB
+ A6RxTC2M1KJyCDHIbgoqmGIfA+xM0INcIUbvCAe3e5pGfcodwP2ycQMkMoThkwO0Ucjo
+ ppZ5sd5bKtQunDj9J1ME86BD7TUhKuEs+MBI1NHrwjAZU/j+IZz1hAuRdmnMY70X/8/S
+ d9hA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20251104; t=1788859906; x=1789464706;
+ h=content-type:cc:to:subject:message-id:date:from:in-reply-to
+ :references:mime-version:x-gm-gg:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to:content-type;
+ bh=7GKDo1etqBehuVleDyKR7C+x1la3ki921G0KqZ87U4U=;
+ b=R7ixvz60PWFKLKOxcHkLY3DevDqLh6U5oK2ZcEvoBHGkniPbLxRq35EDZXVO6GPCtC
+ W79L49Y7EenHmcd0MgAUIQkae1z3FIxAcg6btO22ii+xkKxQ54lLqfg5JszlAJG4puja
+ 6oBDQ44rBF/phM61c65WYK2xNtz8cALIeoM7ys6REb5DyvVXm4/IzFKwEBTnHliqWQ2Q
+ D27+C92BtUZ7rjZH92KtlWOFWLdfn+rOra1fETkRThh0vTxjzETsd4ZCRZAS7kS/iSXB
+ XAj9FcjX9tjbdJ5w780+f2BFZf+Ea4JZaGKUYLm0paTf+ieVuFIcMuVWsgsd0Zl/6j32
+ 6gYQ==
+X-Forwarded-Encrypted: i=1;
+ AKwUvByknugcuoCj58vmk+ThBnx1LFZqZAzi47kYks7lO0n5i/VK3raFijkuaAJy0mlYeCkd0AmAFXYBhg==@nongnu.org
+X-Gm-Message-State: AFuF++nqSQyzUTUYZOMaTICZ0q1rKKhSRpeVMKw0PICbBTCWJoEzJ2/I
+ OI3B9sCq/ykSLn2PSPmLL8U8x+Tjtnt1ABqsAW/mpNJ7gfVrjLUdyCsP3o/mixjDTL5rrUYIXNK
+ oxrACzukNLKi5QwHDhBO8je/8n/rjjTbD0ewRvoFLng==
+X-Gm-Gg: AYBFou3lp6JCzzvwho3ZiE/tGH062PY2dlQnV4Xbdi/duuEzU3ZkJvCARy9Q92zAGJf
+ o/bLfLuEuKyfQ+zocEiYBL29P1jGdyTLobXcyaVnUKVJJBBw1jPUsrPpRag/r1jb2GP+0A3kXAl
+ Ew6BFyUUwJ58RSowGfXrWEMLAaQXWX1piWK+JMbsSwGU+Mxe/YHgAkppYursIQZ+CgW3J+q9Rk0
+ M41MRqZyDGLeoO+zo2Hfbz5/innb86h+ICOMmbSUbQPml/DbCkV7QHaIfnw9iWYa1USfNshxRHq
+ lg7kWor6VwLsqDV2qubf/Qd89d/FJiM3e+L3T1dG3cfh2Pn4UE9D5usCUeT3Gjs4Fxs3YocpRaw
+ Oi7U//304uzx3aQ0gQW9i9HduMG+t
+X-Received: by 2002:a05:690c:22c6:b0:81f:64e8:cac5 with SMTP id
+ 00721157ae682-87124c7cf59mr112994797b3.7.1788859905900; Tue, 08 Sep 2026
+ 02:31:45 -0700 (PDT)
 MIME-Version: 1.0
-Message-Id: <20260908-nohmp-v1-1-7a3d1f0f1caf@redhat.com>
-References: <20260908-nohmp-v1-0-7a3d1f0f1caf@redhat.com>
-In-Reply-To: <20260908-nohmp-v1-0-7a3d1f0f1caf@redhat.com>
-Cc: peter.maydell@linaro.org, Thomas Huth <th.huth+qemu@posteo.eu>, 
- =?utf-8?q?Philippe_Mathieu-Daud=C3=A9?= <philmd@oss.qualcomm.com>, 
- Aurelien Jarno <aurelien@aurel32.net>, qemu-arm@nongnu.org, 
- qemu-devel@nongnu.org
-X-Developer-Signature: v=1; a=openpgp-sha256; l=4380;
- i=marcandre.lureau@redhat.com; h=from:subject:message-id;
- bh=Enc5oozE2GmO4F1KrQprCafEbYY2rlyNKpoQ+I9nrjg=;
- b=owEBbQKS/ZANAwAKAdro4Ql1lpzlAcsmYgBqn8jYQiMuIqXDCM+1IouDi6PKF28zs3JvnP0Kc
- 0BEZuq2oiiJAjMEAAEKAB0WIQSHqb2TP4fGBtJ29i3a6OEJdZac5QUCap/I2AAKCRDa6OEJdZac
- 5Tv9EAC6NLaJk0nqjmLQMFHyl5yD7gX0xvZmPPRAgOD1Wup8uvyukbARMAXgJksloaW3m8coe0C
- zzMEe0DefD8J++dPkXe784YVotGqCaQemQ9CC6/klbqvorqv+JGtL1lqeApHOBDBF8/4aVham1x
- MyOMhtvD+9LME9oTsQqT5xMwOge/5f0TYWE6JuWOuAMCy6Fj5r+OGEAAn1GnY22+svXzbCCrwyS
- rVQuma/7y6QDEJmLmcXQaFE0Wla7l7cQnH+UcezFadb8beegVfb2UTn4ieW1ZUosFlsAt9FSkZw
- z2q7OmSPeCeJ6GQjYBZu1lWCT1s1SxC5F7V0vWFQJv+KFWv53f6SWL6ChTt+V1+elCi4sCcZ6ND
- jnL/jVHGPHkgZH3xblbS7e5fYjPAwBlVBxnesyf3TNPU5kAVclckfWLb5BFsJXhH+Bp8j/Zf9R+
- h5Sq4bkI1Efb8ZX4rbp9uE6gukNQSFt+dphZzhOW/fZSwSSZ0TIMWneBNGTN9KlENAVpjklsmMv
- H+iRxkgie/qUdgYmqK7mj/Jp6WnOlsSGSVV/YfIbD9esk3NRZ3QgI9lEQbaHe/bd+6Dvso8NI3Y
- x3XMRdzbxeYmoPxNOMZ3llHG4eqoStehVu4NBiucX70n714bKuMMzF4OkRj4GO8fxCZfjHYMRTM
- USY6Uhe9QwETUXA==
-X-Developer-Key: i=marcandre.lureau@redhat.com; a=openpgp;
- fpr=87A9BD933F87C606D276F62DDAE8E10975969CE5
-X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.93
-X-Mimecast-MFC-PROC-ID: Fi86S1Q9pMgLmFPRamC1qOBbQBaugi49SBsWSIxkFIQ_1788856544
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=170.10.129.124;
- envelope-from=marcandre.lureau@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: 23
-X-Spam_score: 2.3
-X-Spam_bar: ++
-X-Spam_report: (2.3 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- MISSING_HEADERS=1.021, RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=0.001,
- RCVD_IN_SBL_CSS=3.335, SPF_HELO_PASS=-0.001,
- SPF_PASS=-0.001 autolearn=no autolearn_force=no
+References: <20260906194438.93046-1-gilles.grimaud@univ-lille.fr>
+ <20260906194438.93046-4-gilles.grimaud@univ-lille.fr>
+In-Reply-To: <20260906194438.93046-4-gilles.grimaud@univ-lille.fr>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Tue, 8 Sep 2026 10:31:33 +0100
+X-Gm-Features: AcwNN1W1giourbBeIRogk9CNzzLL8nFkg8QVidsTpxr9rU5lc86AYCb_wkoRxkM
+Message-ID: <CAFEAcA_O=k4=9Y1tnmuv0_Bfn8rfAzZ1gdR3br80=obYgObuFg@mail.gmail.com>
+Subject: Re: [PATCH v3 03/36] target/arm: support Cortex-M0+ MPU
+To: Gilles Grimaud <gilles.grimaud@univ-lille.fr>
+Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, alex.bennee@linaro.org
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2607:f8b0:4864:20::112b;
+ envelope-from=peter.maydell@linaro.org; helo=mail-yw1-x112b.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -107,109 +117,234 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Replace HMP with QMP equivalent.
+On Sun, 6 Sept 2026 at 20:44, Gilles Grimaud
+<gilles.grimaud@univ-lille.fr> wrote:
+>
+> Cortex-M0+ implementations may provide an Armv6-M PMSA MPU with eight
+> regions. QEMU uses its historical v7m/PMSAv7 naming for M-profile code
+> shared by v6-M and v7-M, but currently exposes, allocates and migrates the
+> existing region model only when ARM_FEATURE_V7 is set. This prevents a
+> Cortex-M0+ board from enabling its optional MPU.
+>
+> Allow non-v8 M-profile CPUs to use the existing PMSAv7 state, migration
+> state and translation path. Restrict the shared register model to the v6-M
+> layout: do not expose the v7-M alias registers or TEX bits, and reject
+> region sizes below the v6-M minimum of 256 bytes.
+>
+> The dedicated PMSAv8 path remains selected first for v8-M CPUs. Expose the
+> pmsav7-dregion property and clear region state on reset.
 
-Reviewed-by: Thomas Huth <thuth@redhat.com>
-Signed-off-by: Marc-André Lureau <marcandre.lureau@redhat.com>
----
- tests/functional/arm/test_integratorcp.py | 13 ++++++++-----
- tests/functional/m68k/test_nextcube.py    | 11 +++++++----
- tests/functional/mips64el/test_malta.py   | 13 ++++++++-----
- 3 files changed, 23 insertions(+), 14 deletions(-)
+I think I would split this into more than one patch; all these
+things are distinct changes:
+ * don't expose RBAR and RASR alias registers when Main Extension not present
+ * TEX bits are RES0
+ * region size minimum check is wrong
+ * change if() conditions to include v6M when we are asking "is this PMSAv7?"
 
-diff --git a/tests/functional/arm/test_integratorcp.py b/tests/functional/arm/test_integratorcp.py
-index 23ae919359d5..b79e81393547 100755
---- a/tests/functional/arm/test_integratorcp.py
-+++ b/tests/functional/arm/test_integratorcp.py
-@@ -14,6 +14,7 @@
- 
- import logging
- 
-+from qemu.qmp.qmp_client import ExecuteError
- from qemu_test import QemuSystemTest, Asset
- from qemu_test import wait_for_console_pattern
- from qemu_test import skipIfMissingImports, skipUntrustedTest
-@@ -72,11 +73,13 @@ def test_framebuffer_tux_logo(self):
-         self.boot_integratorcp()
-         framebuffer_ready = 'Console: switching to colour frame buffer device'
-         wait_for_console_pattern(self, framebuffer_ready)
--        self.vm.cmd('human-monitor-command', command_line='stop')
--        res = self.vm.cmd('human-monitor-command',
--                          command_line='screendump %s' % screendump_path)
--        if 'unknown command' in res:
--            self.skipTest('screendump not available')
-+        self.vm.cmd('stop')
-+        try:
-+            self.vm.cmd('screendump', filename=screendump_path)
-+        except ExecuteError as e:
-+            if e.error_class == 'CommandNotFound':
-+                self.skipTest('screendump command not found')
-+            raise
- 
-         cpu_count = 1
-         match_threshold = 0.92
-diff --git a/tests/functional/m68k/test_nextcube.py b/tests/functional/m68k/test_nextcube.py
-index d917cf5424fe..f3d92034b127 100755
---- a/tests/functional/m68k/test_nextcube.py
-+++ b/tests/functional/m68k/test_nextcube.py
-@@ -9,6 +9,7 @@
- 
- import time
- 
-+from qemu.qmp.qmp_client import ExecuteError
- from qemu_test import QemuSystemTest, Asset
- from qemu_test import skipIfMissingImports, skipIfMissingCommands
- from qemu_test.tesseract import tesseract_ocr
-@@ -39,10 +40,12 @@ def check_bootrom_framebuffer(self, screenshot_path):
-                 break
-             time.sleep(0.1)
- 
--        res = self.vm.cmd('human-monitor-command',
--                          command_line=f"screendump {screenshot_path}")
--        if 'unknown command' in res:
--            self.skipTest('screendump not available')
-+        try:
-+            self.vm.cmd('screendump', filename=screenshot_path)
-+        except ExecuteError as e:
-+            if e.error_class == 'CommandNotFound':
-+                self.skipTest('screendump command not found')
-+            raise
- 
-     @skipIfMissingImports("PIL")
-     def test_bootrom_framebuffer_size(self):
-diff --git a/tests/functional/mips64el/test_malta.py b/tests/functional/mips64el/test_malta.py
-index 163bbaf5ca36..4544f950d96e 100755
---- a/tests/functional/mips64el/test_malta.py
-+++ b/tests/functional/mips64el/test_malta.py
-@@ -11,6 +11,7 @@
- 
- import os
- 
-+from qemu.qmp.qmp_client import ExecuteError
- from qemu_test import LinuxKernelTest, Asset
- from qemu_test import exec_command_and_wait_for_pattern
- from qemu_test import skipIfMissingImports, skipFlakyTest, skipUntrustedTest
-@@ -154,11 +155,13 @@ def do_test_i6400_framebuffer_logo(self, cpu_cores_count):
-         self.vm.launch()
-         framebuffer_ready = 'Console: switching to colour frame buffer device'
-         self.wait_for_console_pattern(framebuffer_ready)
--        self.vm.cmd('human-monitor-command', command_line='stop')
--        res = self.vm.cmd('human-monitor-command',
--                          command_line=f'screendump {screendump_path}')
--        if 'unknown command' in res:
--            self.skipTest('screendump not available')
-+        self.vm.cmd('stop')
-+        try:
-+            self.vm.cmd('screendump', filename=screendump_path)
-+        except ExecuteError as e:
-+            if e.error_class == 'CommandNotFound':
-+                self.skipTest('screendump command not found')
-+            raise
- 
-         match_threshold = 0.95
-         screendump_bgr = cv2.imread(screendump_path, cv2.IMREAD_COLOR)
 
--- 
-2.55.0.543.g5ebe2ebe4ea8
+> Signed-off-by: gilles grimaud <gilles.grimaud@univ-lille.fr>
+> ---
+>  hw/intc/armv7m_nvic.c | 27 ++++++++++++++++++++++++++-
+>  target/arm/cpu.c      | 12 +++++++++---
+>  target/arm/machine.c  |  3 ++-
+>  target/arm/ptw.c      | 10 +++++++---
+>  4 files changed, 44 insertions(+), 8 deletions(-)
+>
+> diff --git a/hw/intc/armv7m_nvic.c b/hw/intc/armv7m_nvic.c
+> index c1ceb7450f..a702bd0c38 100644
+> --- a/hw/intc/armv7m_nvic.c
+> +++ b/hw/intc/armv7m_nvic.c
+> @@ -1405,6 +1405,11 @@ static uint32_t nvic_readl(NVICState *s, uint32_t offset, MemTxAttrs attrs)
+>              return cpu->env.pmsav8.rbar[attrs.secure][region];
+>          }
+>
+> +        if (offset != 0xd9c &&
+> +            !arm_feature(&cpu->env, ARM_FEATURE_V7)) {
+> +            goto bad_offset;
+> +        }
+> +
+>          if (region >= cpu->pmsav7_dregion) {
+>              return 0;
+>          }
+> @@ -1432,6 +1437,11 @@ static uint32_t nvic_readl(NVICState *s, uint32_t offset, MemTxAttrs attrs)
+>              return cpu->env.pmsav8.rlar[attrs.secure][region];
+>          }
+>
+> +        if (offset != 0xda0 &&
+> +            !arm_feature(&cpu->env, ARM_FEATURE_V7)) {
+> +            goto bad_offset;
+> +        }
+> +
+>          if (region >= cpu->pmsav7_dregion) {
+>              return 0;
+>          }
+> @@ -1919,6 +1929,11 @@ static void nvic_writel(NVICState *s, uint32_t offset, uint32_t value,
+>              return;
+>          }
+>
+> +        if (offset != 0xd9c &&
+> +            !arm_feature(&cpu->env, ARM_FEATURE_V7)) {
+> +            goto bad_offset;
+> +        }
+> +
+>          if (value & (1 << 4)) {
+>              /* VALID bit means use the region number specified in this
+>               * value and also update MPU_RNR.REGION with that value.
+> @@ -1969,12 +1984,22 @@ static void nvic_writel(NVICState *s, uint32_t offset, uint32_t value,
+>              return;
+>          }
+>
+> +        if (offset != 0xda0 &&
+> +            !arm_feature(&cpu->env, ARM_FEATURE_V7)) {
+> +            goto bad_offset;
+> +        }
 
+These alias registers don't exist on v8M without the Main Extension
+either. We should model that by rearranging the case lines like this:
+
+    case 0xda4: /* MPU_RBAR_A1 */
+    case 0xdac: /* MPU_RBAR_A2 */
+    case 0xdb4: /* MPU_RBAR_A3 */
+        if (!arm_feature(&cpu->env, ARM_FEATURE_M_MAIN)) {
+            /* These aliases are not present for v6M or v8M without Main */
+            goto bad_offset;
+        }
+        /* fall through */
+    case 0xd9c: /* MPU_RBAR */
+    {
+        [existing code here]
+
+(similarly for the other 3 places.)
+
+
+
+> +
+>          if (region >= cpu->pmsav7_dregion) {
+>              return;
+>          }
+>
+>          cpu->env.pmsav7.drsr[region] = value & 0xff3f;
+> -        cpu->env.pmsav7.dracr[region] = (value >> 16) & 0x173f;
+> +        if (arm_feature(&cpu->env, ARM_FEATURE_V7)) {
+> +            cpu->env.pmsav7.dracr[region] = (value >> 16) & 0x173f;
+> +        } else {
+> +            /* Armv6-M has XN, AP, S, C and B, but no TEX field. */
+> +            cpu->env.pmsav7.dracr[region] = (value >> 16) & 0x1707;
+> +        }
+>          tlb_flush(CPU(cpu));
+>          break;
+>      }
+
+This part is OK.
+
+> diff --git a/target/arm/cpu.c b/target/arm/cpu.c
+> index 77aa78f00e..f58a1db843 100644
+> --- a/target/arm/cpu.c
+> +++ b/target/arm/cpu.c
+> @@ -617,7 +617,8 @@ static void arm_cpu_reset_hold(Object *obj, ResetType type)
+>                             sizeof(*env->pmsav8.rlar[M_REG_S])
+>                             * cpu->pmsav7_dregion);
+>                  }
+> -            } else if (arm_feature(env, ARM_FEATURE_V7)) {
+> +            } else if (arm_feature(env, ARM_FEATURE_V7) ||
+> +                       arm_feature(env, ARM_FEATURE_M)) {
+>                  memset(env->pmsav7.drbar, 0,
+>                         sizeof(*env->pmsav7.drbar) * cpu->pmsav7_dregion);
+>                  memset(env->pmsav7.drsr, 0,
+> @@ -1656,7 +1657,11 @@ static void arm_cpu_post_init(Object *obj)
+>  #ifndef CONFIG_USER_ONLY
+>      if (arm_feature(&cpu->env, ARM_FEATURE_PMSA)) {
+>          qdev_property_add_static(DEVICE(obj), &arm_cpu_has_mpu_property);
+> -        if (arm_feature(&cpu->env, ARM_FEATURE_V7)) {
+> +        /*
+> +         * QEMU's PMSAv7 state also models the Armv6-M MPU register layout.
+> +         */
+> +        if (arm_feature(&cpu->env, ARM_FEATURE_V7) ||
+> +            arm_feature(&cpu->env, ARM_FEATURE_M)) {
+>              qdev_property_add_static(DEVICE(obj),
+>                                       &arm_cpu_pmsav7_dregion_property);
+>          }
+> @@ -2332,7 +2337,8 @@ static void arm_cpu_realizefn(DeviceState *dev, Error **errp)
+>      }
+>
+>      if (arm_feature(env, ARM_FEATURE_PMSA) &&
+> -        arm_feature(env, ARM_FEATURE_V7)) {
+> +        (arm_feature(env, ARM_FEATURE_V7) ||
+> +         arm_feature(env, ARM_FEATURE_M))) {
+>          uint32_t nr = cpu->pmsav7_dregion;
+>
+>          if (nr > 0xff) {
+> diff --git a/target/arm/machine.c b/target/arm/machine.c
+> index 7005f4e5d7..53a2734d25 100644
+> --- a/target/arm/machine.c
+> +++ b/target/arm/machine.c
+> @@ -584,7 +584,8 @@ static bool pmsav7_needed(void *opaque)
+>      CPUARMState *env = &cpu->env;
+>
+>      return arm_feature(env, ARM_FEATURE_PMSA) &&
+> -           arm_feature(env, ARM_FEATURE_V7) &&
+> +           (arm_feature(env, ARM_FEATURE_V7) ||
+> +            arm_feature(env, ARM_FEATURE_M)) &&
+>             !arm_feature(env, ARM_FEATURE_V8);
+>  }
+>
+> diff --git a/target/arm/ptw.c b/target/arm/ptw.c
+> index a29de0385f..6cb8a8394a 100644
+> --- a/target/arm/ptw.c
+> +++ b/target/arm/ptw.c
+> @@ -2748,9 +2748,12 @@ static bool get_phys_addr_pmsav7(CPUARMState *env,
+>                  continue;
+>              }
+>
+> -            if (!rsize) {
+> +            if (!rsize ||
+> +                (arm_feature(env, ARM_FEATURE_M) &&
+> +                 !arm_feature(env, ARM_FEATURE_V7) && rsize < 7)) {
+>                  qemu_log_mask(LOG_GUEST_ERROR,
+> -                              "DRSR[%d]: Rsize field cannot be 0\n", n);
+> +                              "DRSR[%d]: invalid Rsize field 0x%x\n",
+> +                              n, rsize);
+>                  continue;
+>              }
+>              rsize++;
+
+We don't get this "minimum size check" right for v7M either,
+because that wants a SIZE field of at least 4. The zero check
+is only correct for R-profile.
+
+It's not strictly necessary to fix this bug as part of adding
+cortex-m0+ support, because we already get this wrong for other
+M-profile CPUs, and a correctly programmed guest won't run into it.
+If we want to do it, then better as a separate patch that fixes both
+v6M and v7M, something like:
+
+    /* minimum valid value for rsize varies between v7R, v6M, v7M */
+    uint32_t rsize_min = 1;
+    if (arm_feature(env, ARM_FEATURE_M) {
+        rsize_min = arm_feature(env, ARM_FEATURE_V7) ? 4 : 7;
+    }
+
+    for (n = ... )  {
+        ...
+        if (rsize < rsize_min) {
+            log and continue;
+        }
+
+
+
+> @@ -3901,7 +3904,8 @@ static bool get_phys_addr_nogpc(CPUARMState *env, S1Translate *ptw,
+>              /* PMSAv8 */
+>              ret = get_phys_addr_pmsav8(env, ptw, address, access_type,
+>                                         result, fi);
+> -        } else if (arm_feature(env, ARM_FEATURE_V7)) {
+> +        } else if (arm_feature(env, ARM_FEATURE_V7) ||
+> +                   arm_feature(env, ARM_FEATURE_M)) {
+>              /* PMSAv7 */
+>              ret = get_phys_addr_pmsav7(env, ptw, address, access_type,
+>                                         result, fi);
+
+I think these other if condition changes are all OK.
+
+thanks
+-- PMM
 

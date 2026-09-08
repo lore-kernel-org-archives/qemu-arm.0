@@ -4,102 +4,94 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9BFFDC79FA0
-	for <qemu-arm@archiver.kernel.org>; Tue,  8 Sep 2026 08:20:15 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1534BC79FA0
+	for <qemu-arm@archiver.kernel.org>; Tue,  8 Sep 2026 08:36:16 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1x3r3O-0004tQ-Qu; Tue, 08 Sep 2026 04:19:42 -0400
+	id 1x3rJ2-0007Am-1a; Tue, 08 Sep 2026 04:35:52 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <smostafa@google.com>)
- id 1x3r3M-0004sg-Ih
- for qemu-arm@nongnu.org; Tue, 08 Sep 2026 04:19:40 -0400
-Received: from mail-ed2-x10.google.com ([2a00:1450:4864:33::10])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <smostafa@google.com>)
- id 1x3r3K-0004eK-1Z
- for qemu-arm@nongnu.org; Tue, 08 Sep 2026 04:19:39 -0400
-Received: by mail-ed2-x10.google.com with SMTP id
- 4fb4d7f45d1cf-6a613a6bcd8so19675a12.0
- for <qemu-arm@nongnu.org>; Tue, 08 Sep 2026 01:19:37 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=google.com; s=20251104; t=1788855576; x=1789460376; darn=nongnu.org;
- h=in-reply-to:content-disposition:content-type:mime-version
- :references:message-id:subject:cc:to:from:date:from:to:cc:subject
- :date:message-id:reply-to:content-type;
- bh=FfiLDLIHg+/rK+sAEe09E5jqjN0Y2D6AM5jhqYqTlO4=;
- b=Tf/hvXJ/Ehb71VLfwWYD+EP707hyk6Vtsw2qDQvkozBLTh2VWzMDo8GdO8rKHCNiH3
- k5EZbyQOAXLaaRCAmmzYG4UimyHOLGKkFC2am9NalzVwKxbb0EWYzYF7QTIBjsx8SMK7
- ztoK4/zm+POKmbLVhw7J2UhOFKV3xPzSthveLU/I5qYMslFKDoMYjYf2ZycbujR+llQF
- uaNs8xPJXhjJ1eCnTYjURtkFdUkwXddd7nN5cer25+AHzPkrIGc9EzBW9HI3PLGYLUdj
- SwS/K5HEw1ZV+j6C04KbxVBQTNrYwiDMJcuoi664XT/FfVCvEYsjDyrWML4IFw791F+q
- 1V3w==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1788855576; x=1789460376;
- h=in-reply-to:content-disposition:content-type:mime-version
- :references:message-id:subject:cc:to:from:date:x-gm-gg
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
- :content-type;
- bh=FfiLDLIHg+/rK+sAEe09E5jqjN0Y2D6AM5jhqYqTlO4=;
- b=bFzh6BCfZ41lGUkf0ohyJGXFZF2ORsSlfuQp2zyu7EtqEKPDF/vzUI6KrEdznQxoag
- HgCLSP3KUnie62Qpo+7/2nPhmaUYhCMZv1YrHXtAwF3+8HtBAohc+X3Y4sHnAr/eq904
- 3vazVzRSmE+QOl+ejwpGkMD8Kg3HUD/XUZgAZhiv7LDFBFWwEexgp/YnLyN+lPMKqRn9
- QZAHqgSnlA4PUZwe/EcfKYqzoCz7SgmXeZ8bEY5GqTS8hC94HjfVDRj4eqqRKQ9brb3x
- D22jXWCOyGwViQ2W5id0s7sIA6K7ktMDI7o5tAdLj5mlvwUhOahVEpozs/2dshoQPu0k
- v/pw==
-X-Forwarded-Encrypted: i=1;
- AKwUvByCY6t2iKpmjKaO4qXSqQW5Aq5jlLnk+3SsMIG5mB7Oe2XF6wiczW0XvquugR4NvBLCcEiOF4Jm4A==@nongnu.org
-X-Gm-Message-State: AFuF++mIhx7U6vglZLim3ueDURxGEKfoumPkp0NWe95LKpzA8d9LEz65
- qBSE0aI/bjry2dShd6EUJFddnNWG/GlFSbY9J1F1pRvlFSKmRjmEn3+am08UoMNHeQ==
-X-Gm-Gg: AYBFou0VN8JXLbo8QrSMohR6TO5rsTcs2lV9Zko6xRoYIOLYgWvj33ntKrAjIF70lo2
- +tx9AxvmeNqR3Sb3d0PToxBFDvS0WxRgTvwCgAY1FKlO8cYX8Kaqmrhz8NqYeLV6r9Dd7Mm7eSX
- poo3vl5LTeUlMIft2xCQzvF1Bwg2+ehL1d7QyvFrUltfS7ggpxs+MkxVQ1IjJOUXeHIlRX83u5s
- CEeLAQSjCDtXftn3k6Wp6AheSsLQjEvC1/ADGJKoyAoDcpQkVWmtfV2fTAfCNukpiHCz5R3yodR
- ANti5MCk+w4+ThRPLqEbtaLlKdlv7dqMH1dWaIa9O4D5spfIqr6bUGmhKrNrf4zT8VVSkrJ+mDh
- xtOisYqN/xcjlXt1nFIPLuH9SWp4BE2HLh7zZDX/df3HQWpzI7fwgsSWQXum5deA0/LTsix7qys
- hU/ryH9o5AeuIjKz3UMGhhza7rKGD6uGzQeaC1baDJ++Chuz96ivoi9Q0PyGJWE6dEqv42AHQLc
- ujqycN7VOLS+UJOf/eKYv3mME8A5A==
-X-Received: by 2002:a05:6402:a54a:20b0:6a3:f7d8:3ad4 with SMTP id
- 4fb4d7f45d1cf-6a7f68b162fmr70425a12.9.1788855575888; 
- Tue, 08 Sep 2026 01:19:35 -0700 (PDT)
-Received: from google.com (250.192.189.35.bc.googleusercontent.com.
- [35.189.192.250]) by smtp.gmail.com with ESMTPSA id
- a640c23a62f3a-c260d5bd618sm601546466b.56.2026.09.08.01.19.35
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 08 Sep 2026 01:19:35 -0700 (PDT)
-Date: Tue, 8 Sep 2026 08:19:31 +0000
-From: Mostafa Saleh <smostafa@google.com>
-To: Eric Auger <eric.auger@redhat.com>
-Cc: Tao Tang <tangtao1634@phytium.com.cn>,
- Peter Maydell <peter.maydell@linaro.org>, qemu-devel@nongnu.org,
- qemu-arm@nongnu.org, Chen Baozi <chenbaozi@phytium.com.cn>,
- Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>,
- Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <philmd@mailo.com>,
- Chao Liu <chao.liu@processmission.com>,
- Jim MacArthur <jim.macarthur@linaro.org>
-Subject: Re: [RFC v5 12/28] hw/arm/smmuv3: Tag IOTLB cache keys with SEC_SID
-Message-ID: <ap_FE62YqJDBt11g@google.com>
-References: <20260813161515.2788900-1-tangtao1634@phytium.com.cn>
- <20260813162512.2807281-2-tangtao1634@phytium.com.cn>
- <apbdLhuQ7T0I9lMS@google.com>
- <2f430034-626e-40a1-89fb-266ce037bb1f@redhat.com>
- <ap7ZtWhyHgymBTNY@google.com>
- <3f6a482b-105c-4462-8fa2-df225285ce35@redhat.com>
+ (Exim 4.90_1) (envelope-from <marcandre.lureau@redhat.com>)
+ id 1x3rJ0-0007AQ-Ge
+ for qemu-arm@nongnu.org; Tue, 08 Sep 2026 04:35:50 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <marcandre.lureau@redhat.com>)
+ id 1x3rIy-0007EO-SY
+ for qemu-arm@nongnu.org; Tue, 08 Sep 2026 04:35:50 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1788856548;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:to:
+ cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=MJ3JKz6ii3UHXbYgbY5KF1obV3J6lMcORoFh8rbcuII=;
+ b=Xnfh+0F9q9G5jEihooWWfiL6cv4sUMvzCKirtVJ5Fb2RnriYWbbnWrGLxyk1nb0fLvBUmV
+ Vu5SPnjeUftKSMrxHsRx7HzIsnyMSwwAYotbUCsp9Xrw36khH4T2QrTsE91ZXoMMbHNj7w
+ a3IjbtTgp1eKDvdWK2eblG2YgjC639A=
+Received: from mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
+ relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-589-bVz0ejSrOj6BOwzE_Z2lNg-1; Tue,
+ 08 Sep 2026 04:35:45 -0400
+X-MC-Unique: bVz0ejSrOj6BOwzE_Z2lNg-1
+X-Mimecast-MFC-AGG-ID: bVz0ejSrOj6BOwzE_Z2lNg_1788856544
+Received: from mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com
+ (mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.93])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+ (No client certificate requested)
+ by mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 01C2919776B4; Tue,  8 Sep 2026 08:35:44 +0000 (UTC)
+Received: from localhost (headnet04.pony-001.prod.iad2.dc.redhat.com
+ [10.2.32.116])
+ by mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
+ id D3CAF1800598; Tue,  8 Sep 2026 08:35:42 +0000 (UTC)
+From: =?utf-8?q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>
+Date: Tue, 08 Sep 2026 12:35:33 +0400
+Subject: [GIT PULL 01/10] tests/functional: replace HMP with QMP
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <3f6a482b-105c-4462-8fa2-df225285ce35@redhat.com>
-Received-SPF: pass client-ip=2a00:1450:4864:33::10;
- envelope-from=smostafa@google.com; helo=mail-ed2-x10.google.com
-X-Spam_score_int: -175
-X-Spam_score: -17.6
-X-Spam_bar: -----------------
-X-Spam_report: (-17.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_MED=-0.001,
+Message-Id: <20260908-nohmp-v1-1-7a3d1f0f1caf@redhat.com>
+References: <20260908-nohmp-v1-0-7a3d1f0f1caf@redhat.com>
+In-Reply-To: <20260908-nohmp-v1-0-7a3d1f0f1caf@redhat.com>
+Cc: peter.maydell@linaro.org, Thomas Huth <th.huth+qemu@posteo.eu>, 
+ =?utf-8?q?Philippe_Mathieu-Daud=C3=A9?= <philmd@oss.qualcomm.com>, 
+ Aurelien Jarno <aurelien@aurel32.net>, qemu-arm@nongnu.org, 
+ qemu-devel@nongnu.org
+X-Developer-Signature: v=1; a=openpgp-sha256; l=4380;
+ i=marcandre.lureau@redhat.com; h=from:subject:message-id;
+ bh=Enc5oozE2GmO4F1KrQprCafEbYY2rlyNKpoQ+I9nrjg=;
+ b=owEBbQKS/ZANAwAKAdro4Ql1lpzlAcsmYgBqn8jYQiMuIqXDCM+1IouDi6PKF28zs3JvnP0Kc
+ 0BEZuq2oiiJAjMEAAEKAB0WIQSHqb2TP4fGBtJ29i3a6OEJdZac5QUCap/I2AAKCRDa6OEJdZac
+ 5Tv9EAC6NLaJk0nqjmLQMFHyl5yD7gX0xvZmPPRAgOD1Wup8uvyukbARMAXgJksloaW3m8coe0C
+ zzMEe0DefD8J++dPkXe784YVotGqCaQemQ9CC6/klbqvorqv+JGtL1lqeApHOBDBF8/4aVham1x
+ MyOMhtvD+9LME9oTsQqT5xMwOge/5f0TYWE6JuWOuAMCy6Fj5r+OGEAAn1GnY22+svXzbCCrwyS
+ rVQuma/7y6QDEJmLmcXQaFE0Wla7l7cQnH+UcezFadb8beegVfb2UTn4ieW1ZUosFlsAt9FSkZw
+ z2q7OmSPeCeJ6GQjYBZu1lWCT1s1SxC5F7V0vWFQJv+KFWv53f6SWL6ChTt+V1+elCi4sCcZ6ND
+ jnL/jVHGPHkgZH3xblbS7e5fYjPAwBlVBxnesyf3TNPU5kAVclckfWLb5BFsJXhH+Bp8j/Zf9R+
+ h5Sq4bkI1Efb8ZX4rbp9uE6gukNQSFt+dphZzhOW/fZSwSSZ0TIMWneBNGTN9KlENAVpjklsmMv
+ H+iRxkgie/qUdgYmqK7mj/Jp6WnOlsSGSVV/YfIbD9esk3NRZ3QgI9lEQbaHe/bd+6Dvso8NI3Y
+ x3XMRdzbxeYmoPxNOMZ3llHG4eqoStehVu4NBiucX70n714bKuMMzF4OkRj4GO8fxCZfjHYMRTM
+ USY6Uhe9QwETUXA==
+X-Developer-Key: i=marcandre.lureau@redhat.com; a=openpgp;
+ fpr=87A9BD933F87C606D276F62DDAE8E10975969CE5
+X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.93
+X-Mimecast-MFC-PROC-ID: Fi86S1Q9pMgLmFPRamC1qOBbQBaugi49SBsWSIxkFIQ_1788856544
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=170.10.129.124;
+ envelope-from=marcandre.lureau@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: 23
+X-Spam_score: 2.3
+X-Spam_bar: ++
+X-Spam_report: (2.3 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- ENV_AND_HDR_SPF_MATCH=-0.5, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001, USER_IN_DEF_DKIM_WL=-7.5,
- USER_IN_DEF_SPF_WL=-7.5 autolearn=unavailable autolearn_force=no
+ MISSING_HEADERS=1.021, RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=0.001,
+ RCVD_IN_SBL_CSS=3.335, SPF_HELO_PASS=-0.001,
+ SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -115,55 +107,109 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Mon, Sep 07, 2026 at 06:03:25PM +0200, Eric Auger wrote:
-> 
-> 
-> On 9/7/26 5:35 PM, Mostafa Saleh wrote:
-> > On Mon, Sep 07, 2026 at 04:49:58PM +0200, Eric Auger wrote:
-> >>
-> >> On 9/1/26 4:11 PM, Mostafa Saleh wrote:
-> >>> On Fri, Aug 14, 2026 at 12:25:09AM +0800, Tao Tang wrote:
-> >>>> To prevent aliasing between translations controlled through the Secure and
-> >>>> Non-secure programming interfaces, the IOTLB lookup key must incorporate
-> >>>> SEC_SID.
-> >>>>
-> >>>> This commit:
-> >>>> - expands SMMUIOTLBKey with SEC_SID field for cache key differentiation
-> >>> I still feel that it's better to have a separate IOTLB for the secure
-> >>> world, as it should never mix with the non-secure one; as I commented
-> >>> on the last version:
-> >>> https://lore.kernel.org/qemu-devel/aaGuGuevX8HFqx0x@google.com/
-> >>>
-> >>> Then all the functions can be re-used and it is just a matter
-> >>> of passing the right instance.
-> >>>
-> >>> No strong opinion though, this approach should work also, so it is up
-> >>> to Eric.
-> >> I don't have a strong opinion either. I am just curious about what the
-> >> implementation will become once we add further support for StreamWorld.
-> >> Will we be able to keep separate IOTLBs or will it make more sense to
-> >> have a unified IOTLB?
-> > Is that about the possiblity of mixing TLB entries accross different
-> > StreamWorlds, as I don't see immediately if that is possible.
-> >
-> > Or is it about growing number of IOTLB instances as we support
-> > StreamWorlds? I am not really sure about that as there are many
-> > possibilities (NS-EL1, NS-EL2, NS-EL2-E2H, Same for S, and realm)
-> >
-> > I'd imagine we have 3 instances NS, S and Realm but each one would
-> > need a STRW anyway, so maybe having a big one is not that bad.
-> Yes that was the question. Do we plan to have a multiplication of IOTLBs
-> for each streamworld value in which case it may become messy?
-> 
-> Anyway we can rework later. So I would say pick up your prefered solution.
+Replace HMP with QMP equivalent.
 
-Let's keep it as it is now then (shared IOTLB). After more thinking I
-believe that would scale better.
+Reviewed-by: Thomas Huth <thuth@redhat.com>
+Signed-off-by: Marc-André Lureau <marcandre.lureau@redhat.com>
+---
+ tests/functional/arm/test_integratorcp.py | 13 ++++++++-----
+ tests/functional/m68k/test_nextcube.py    | 11 +++++++----
+ tests/functional/mips64el/test_malta.py   | 13 ++++++++-----
+ 3 files changed, 23 insertions(+), 14 deletions(-)
 
-Thanks,
-Mostafa
+diff --git a/tests/functional/arm/test_integratorcp.py b/tests/functional/arm/test_integratorcp.py
+index 23ae919359d5..b79e81393547 100755
+--- a/tests/functional/arm/test_integratorcp.py
++++ b/tests/functional/arm/test_integratorcp.py
+@@ -14,6 +14,7 @@
+ 
+ import logging
+ 
++from qemu.qmp.qmp_client import ExecuteError
+ from qemu_test import QemuSystemTest, Asset
+ from qemu_test import wait_for_console_pattern
+ from qemu_test import skipIfMissingImports, skipUntrustedTest
+@@ -72,11 +73,13 @@ def test_framebuffer_tux_logo(self):
+         self.boot_integratorcp()
+         framebuffer_ready = 'Console: switching to colour frame buffer device'
+         wait_for_console_pattern(self, framebuffer_ready)
+-        self.vm.cmd('human-monitor-command', command_line='stop')
+-        res = self.vm.cmd('human-monitor-command',
+-                          command_line='screendump %s' % screendump_path)
+-        if 'unknown command' in res:
+-            self.skipTest('screendump not available')
++        self.vm.cmd('stop')
++        try:
++            self.vm.cmd('screendump', filename=screendump_path)
++        except ExecuteError as e:
++            if e.error_class == 'CommandNotFound':
++                self.skipTest('screendump command not found')
++            raise
+ 
+         cpu_count = 1
+         match_threshold = 0.92
+diff --git a/tests/functional/m68k/test_nextcube.py b/tests/functional/m68k/test_nextcube.py
+index d917cf5424fe..f3d92034b127 100755
+--- a/tests/functional/m68k/test_nextcube.py
++++ b/tests/functional/m68k/test_nextcube.py
+@@ -9,6 +9,7 @@
+ 
+ import time
+ 
++from qemu.qmp.qmp_client import ExecuteError
+ from qemu_test import QemuSystemTest, Asset
+ from qemu_test import skipIfMissingImports, skipIfMissingCommands
+ from qemu_test.tesseract import tesseract_ocr
+@@ -39,10 +40,12 @@ def check_bootrom_framebuffer(self, screenshot_path):
+                 break
+             time.sleep(0.1)
+ 
+-        res = self.vm.cmd('human-monitor-command',
+-                          command_line=f"screendump {screenshot_path}")
+-        if 'unknown command' in res:
+-            self.skipTest('screendump not available')
++        try:
++            self.vm.cmd('screendump', filename=screenshot_path)
++        except ExecuteError as e:
++            if e.error_class == 'CommandNotFound':
++                self.skipTest('screendump command not found')
++            raise
+ 
+     @skipIfMissingImports("PIL")
+     def test_bootrom_framebuffer_size(self):
+diff --git a/tests/functional/mips64el/test_malta.py b/tests/functional/mips64el/test_malta.py
+index 163bbaf5ca36..4544f950d96e 100755
+--- a/tests/functional/mips64el/test_malta.py
++++ b/tests/functional/mips64el/test_malta.py
+@@ -11,6 +11,7 @@
+ 
+ import os
+ 
++from qemu.qmp.qmp_client import ExecuteError
+ from qemu_test import LinuxKernelTest, Asset
+ from qemu_test import exec_command_and_wait_for_pattern
+ from qemu_test import skipIfMissingImports, skipFlakyTest, skipUntrustedTest
+@@ -154,11 +155,13 @@ def do_test_i6400_framebuffer_logo(self, cpu_cores_count):
+         self.vm.launch()
+         framebuffer_ready = 'Console: switching to colour frame buffer device'
+         self.wait_for_console_pattern(framebuffer_ready)
+-        self.vm.cmd('human-monitor-command', command_line='stop')
+-        res = self.vm.cmd('human-monitor-command',
+-                          command_line=f'screendump {screendump_path}')
+-        if 'unknown command' in res:
+-            self.skipTest('screendump not available')
++        self.vm.cmd('stop')
++        try:
++            self.vm.cmd('screendump', filename=screendump_path)
++        except ExecuteError as e:
++            if e.error_class == 'CommandNotFound':
++                self.skipTest('screendump command not found')
++            raise
+ 
+         match_threshold = 0.95
+         screendump_bgr = cv2.imread(screendump_path, cv2.IMREAD_COLOR)
 
-> 
-> Eric
-> 
+-- 
+2.55.0.543.g5ebe2ebe4ea8
+
 

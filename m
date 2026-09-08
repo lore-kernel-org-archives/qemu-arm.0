@@ -4,104 +4,104 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 35A35C79FAD
-	for <qemu-arm@archiver.kernel.org>; Tue,  8 Sep 2026 11:01:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 716ACC79F82
+	for <qemu-arm@archiver.kernel.org>; Tue,  8 Sep 2026 11:07:03 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1x3tZn-0008EC-0m; Tue, 08 Sep 2026 07:01:19 -0400
+	id 1x3tfB-0001wG-Cl; Tue, 08 Sep 2026 07:06:53 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1x3tZl-0008Ds-FP
- for qemu-arm@nongnu.org; Tue, 08 Sep 2026 07:01:17 -0400
-Received: from mail-yw1-x1136.google.com ([2607:f8b0:4864:20::1136])
+ id 1x3tfA-0001vG-4V
+ for qemu-arm@nongnu.org; Tue, 08 Sep 2026 07:06:52 -0400
+Received: from mail-yw1-x1131.google.com ([2607:f8b0:4864:20::1131])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1x3tZj-0000xE-TZ
- for qemu-arm@nongnu.org; Tue, 08 Sep 2026 07:01:17 -0400
-Received: by mail-yw1-x1136.google.com with SMTP id
- 00721157ae682-85aa9c1308dso34380547b3.3
- for <qemu-arm@nongnu.org>; Tue, 08 Sep 2026 04:01:15 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1788865274; cv=none;
+ id 1x3tf0-0002O8-Op
+ for qemu-arm@nongnu.org; Tue, 08 Sep 2026 07:06:45 -0400
+Received: by mail-yw1-x1131.google.com with SMTP id
+ 00721157ae682-861feb6d61bso39299387b3.2
+ for <qemu-arm@nongnu.org>; Tue, 08 Sep 2026 04:06:41 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1788865600; cv=none;
  d=google.com; s=arc-20260327;
- b=PJewVu79wdRfsT1lfnweDp+6NcxeBMc2n3t0+yOY10OSgSUU8oRe2dOYlpcpm/u3rs
- gol7JF/cqfT2jguscM/ITElTaexi77oslWrZxcck6/3evmZugDZtYhmiWGLDaLI8mNzM
- bFUMgv6sqVpPEIgk6xwZddLTdm8W8m4onvcdokDEtqm03wG4ENhhlNApo2k7DHSe7nIE
- 7PdEVn+7qOmuQk6bID+/yQFIQLuWGuGt+s3r5TNZMUegvW7Xhku9q4QwTYCvJV3w/wOD
- 14ShQy4IB9ZkC6JEEULR7yFetJrXuqKn5mQmGFr53DD2h3H4h+7F5jetIgY/qiq0qI0K
- Weow==
+ b=nJJRP0cJ1gxTlu9+96WXjvzOMQDpnA1ItE3jEduddR34zc8dj/RDE/KtgfzQFewXic
+ yVAgWODXCnWwOu/lYyI4MxF1Fol3WZmcRODrYFEVzkDmeVSn6Us5FdG3UcHmdfeSez+E
+ 0dzE9OpS9sJYAd/kMr+zBqnIA3bTWyaEyiK5QUFH7PBF70QJE0XkUpClNGdqFkbx4Jqj
+ xU6WNNUILRXVkFrNEFQMHX7K5Y93mQ2wp6XanDK755AN+PX9GUquty7zaaz4JNkpsa6l
+ ZMJSn1ZGk29VzP4sED/FhKFqnpw7y8ihxKLINTcCHvZPx2jMrrn41EFa8GxHxHHYmJB/
+ 18xA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
  s=arc-20260327; 
  h=cc:to:subject:message-id:date:from:in-reply-to:references
  :mime-version:dkim-signature;
- bh=rLr3Ihk3i+ySxHKRTatouXFLAoY7mX1J9syBaxT0eGQ=;
- fh=hPuyg3v8JfGsmC/hoKwbFPH/8nTh11KZeLMtOq5z6pc=;
- b=dKMxi4aOyB99wxkTDYTKhJe5rz9FTfxB/f3o+8uo5zXUXEyEm1o0ZqnVMdKbCcPs++
- k0OMdlP05yLiXd6gZQl3uCqRXUYXlYjdcy4Weal+1uQ6OxOHfU+jmNMOzMyoy4IIiD7+
- NWnQlcq3YbXew1fXNT3q9xiACSp3GP7ZCrNyTZyUkHzmFvpH6P0ZD2CT0gXYiOm6xnoe
- G3jwJvR+u7v4YnGBa+Oph8pEUFBqNtS8OOiW02QmF8he0TzzTfP6YnKD1mQYAkSshMJi
- 83tcfPGVCqqdoEeWLGS+0pqTbKXmkbwEzwoOvPFK8+IcgXnLRvoR+bKmPBTlvj+mfALS
- XF4g==; darn=nongnu.org
+ bh=oglPP+j03+Qqw7bAG7SNFcjv48UgS4g5SlwNI/8S2oo=;
+ fh=ncgq09x1f3LsIaKcga6qYqFlfvW+YDjc/hARzKhj4ew=;
+ b=LfXQ4tsm3SN3WuydweKjN8cu22gT8sQF0ZTJqihZ41vzjP4kRF6bQMBDnmfmqiMWrX
+ wtnjwe42x2F6xiKMK68v+2qAwBVeFLIfiEh9gbGQxa9uEcSkmOPwNUhCKNdfbjmRs/AA
+ y3QHqMXk/AtuSP57zbU/Pqyq+dzJynbrMRGl6mp5r6Zb4EfD07TbaKJ2vLaBGwQeFuON
+ e26OBxe7tl/aA/fY0gdaXGowQzlTQMqKbsIkc+5hyzf8b95Dn02p6n9yc1d76G0kKBT7
+ dlFC+uL72IIKfn4M8FVSw433l5/bbT1TDaH3wkWSnLzPUbVeYhRFf0Bo0JtXgjSOrvfa
+ U2ug==; darn=nongnu.org
 ARC-Authentication-Results: i=1; mx.google.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1788865274; x=1789470074; darn=nongnu.org;
+ d=linaro.org; s=google; t=1788865600; x=1789470400; darn=nongnu.org;
  h=content-type:cc:to:subject:message-id:date:from:in-reply-to
  :references:mime-version:from:to:cc:subject:date:message-id:reply-to
- :content-type; bh=rLr3Ihk3i+ySxHKRTatouXFLAoY7mX1J9syBaxT0eGQ=;
- b=i/jcba2WK6DjjCBes52vAwfI8P2k8iMCY95Td+qUFaQzoX8SAslGtzFP2LGPh3M4fQ
- H/tWJLEdkZ+YQh6rx30SUlLFhEIhwTAbr0+YBemvDGoI8NUbdZLPNSSpvxYLMl/9iinL
- BBTzgKJvMwhdj0KAy4l1SiL8e/WB9C6rrJxeWE8MM+3dinZk9fFkxF/p7sBqRPzsNwXJ
- wqw9a9nk8QEFBoOd5VT2i4fLdogI5EQ1vUjqH6EG+8jyWQrWSA/v+uKtVqO3zPHPWbRP
- bLfCotXNvX8WJAbE2mi4tIrg7KGFtmB2M33EJKL+fkuHcVcLNs7ngnWqA1oAhe7Z97dD
- sa8Q==
+ :content-type; bh=oglPP+j03+Qqw7bAG7SNFcjv48UgS4g5SlwNI/8S2oo=;
+ b=De+LzHn7Q5BiEc+VeRSwmhPzQLJMHvnj/wjbzGmmF2RdnomYsRDGvne/2y0crqm7sR
+ wjvSJZp6LGRDa9tiQ6Yqt8pVQlbicQIU6pAnK6IG21//qHzbXSwKAHMLEjoeEFpcJ0db
+ 9dG3YxHiRfFpFKA+Wf9UOcSfW5+0jM+lJPXhQHZwdGe8FNx2bQrDmilcftjZOx1CtKgC
+ YYEseqqaM60KAOg+9jQ9sZ0Gt6tig48eMbavZXS60TYl3Xq/VohZNjUeSWDZYxDHvSK7
+ U9XvnRT/Wwq+Ec7d1mFifw80IXJ3ylBJhay6x1mqKlCC0jZr2zNyUptGPonZQmU6zRtU
+ zZKw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1788865274; x=1789470074;
+ d=1e100.net; s=20251104; t=1788865600; x=1789470400;
  h=content-type:cc:to:subject:message-id:date:from:in-reply-to
  :references:mime-version:x-gm-gg:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to:content-type;
- bh=rLr3Ihk3i+ySxHKRTatouXFLAoY7mX1J9syBaxT0eGQ=;
- b=jFTypWMEFKcqjaUOgDiM0p2c/wBq7BhzoYF9OQoLtw1gC9KuflftR3ARBwglul3rIt
- CM/ldYVZAmYce9g7RHhcinAdBPio859koszla3L01MK8QaFPcrt9zULWC5esqdCFV+SF
- TK9fucQHkXNBykxFpMyEjBn/Axdm0j+uTlT2EsFdIiEX4jU1L0Rj4IqgaJ6+UyWhq48C
- HtZHiiAxbDQLlDfozHVmwIXLwD+jBm7Vud+6Z8sxt7c0/W1pEAGwf5PFMIXm3by8KMbt
- fWPbXUWCXstK5Z4e5UofdvfAo5WsrL0wf0r5z1/Zq0gg9CPHs9c5hmty4VWhcORbwVMM
- ETrg==
+ bh=oglPP+j03+Qqw7bAG7SNFcjv48UgS4g5SlwNI/8S2oo=;
+ b=fod9TKY/0Emh63hhhDqIlze0p4PiOCYBF9zTVL7uS/rjlIVvbyf2eXz4W7dII6GgBb
+ GSINip4i73GCXd2Jnta81Z19AZ0GUNBMDYCOD8JV+3sjjt9OzXtK8XmWVmW4lfR0R4g3
+ 7Xzik/udwAZbb9xHaLsCMZZIZ1EcqYCuRpvf88Xk62lNgZKfYR3iKfiLen0Yx2LRCPaT
+ W+5muXaNa/g7YY2Ylss5tgtP75a4Zi16hkvK8H2srO9nBdyOdNrTFo4UymgMluVmgq84
+ 8Ya9Q2klhFWJki5GV4CAfx66E2qloRv1RqgmtchvNZeXKyCMoJxg6TsbotVrbx9XhaA/
+ vmdA==
 X-Forwarded-Encrypted: i=1;
- AKwUvBxuXi5x2J01WuFit4WEHJI5RMT+SvaUsN+gzBJwJ/B12HyJR754b6qkHgMJTTP/ljOO3WFcy1NeRg==@nongnu.org
-X-Gm-Message-State: AFuF++lfl44QHYLoQmqDgi8zgPzKOtdeM2se4LQP56wvGNwWZnD3Ksj3
- NDxYNXrtdBTbiR+G9iR5gA5VklDHkrGpctQmuPwbDEWY6AjOV739cFdkR3j33sE/DAXKYdaR+nj
- 4tbNMz0bekMorRg1GQb9MPw+Ic87zPNO6Vcyc+4FFtQ==
-X-Gm-Gg: AYBFou0XatE6eMkJfU9gNw5qtzwUcIlzr1eDVq1MmBENikAunrSoRTi4NeEk2aUXUvP
- ncaCDT3qeEppALz6nm+tJxlWfICoNYJvEhwC5a2vSM92mzQ5C6Y1Jq6y/KfQxlpH8Ubek32ATSq
- 4uy3voVFT1EYl9XUmHMwh7d1+jEYoktnN47tULvxBFGUtS5iHix56bxGxNwZKAae6lofGy1DYo1
- yM/QlPLSgQAGMCZJoMZnQeMyPrsuVX1v/x07t3Ak+BtMOS6VLbOhDV9KM2sB5D/LXadbuVzc3Mn
- AZIz6dFLyuLUtZolFR48gLb+xZsKUxslZOdcVMzARtx40LXr+Kc8LvQctsaCYW1dV0EbUP2i9Dc
- j+UwZ+7u6qQ9GrIJsQM/8lwlyQYMchg==
-X-Received: by 2002:a05:690c:e3e8:b0:870:f53:4ff5 with SMTP id
- 00721157ae682-8712a7079e7mr113494967b3.23.1788865274290; Tue, 08 Sep 2026
- 04:01:14 -0700 (PDT)
+ AKwUvBwcYyXAWl++u+wM/aF3/dy5H9AUKVSk9WgBJghlRfmCPp6m850/4H3Zxy4eJVRXh0r8+InT5YngAg==@nongnu.org
+X-Gm-Message-State: AFuF++kXULi4hI8gLnKTTE7gLWwB4jUi2SiaPw8fnJ1dC1dmdoYdie0C
+ l1O4UVpo26x8TythELCZBUTPXb5WtSYjrqEC9DLcHd+Tb2xdCNHPBNfWeCD7LLJM6xQdLgnRM48
+ BOj8a2SitR7nlYMwN/qPXrzEw3/AORojez1r28GGmdw==
+X-Gm-Gg: AYBFou1EmYMaNnhnMmYVOg7lGq9v+oAmSz6Zo2jl13LGMb+kY1T4pIPOjdl0iunxaUX
+ onWthbWHef+nO01NhHjlW2Qx4eP1ZGWlw6FL09HSipSSgdOKq16WQyQiJnzcJ3Z3kppSA50HTDq
+ bwqJ6oAi3RV0kHxFTJo/2Fgilads2BX/+f0tb3i6W9QJbGrbB+F3U5RfU5DJdrZyGSXCu+CPt0P
+ EdpdDV0dNyX3QFB70Yz1cTmZvh8IbVeYJ8cnRa1pjgrzBT3vV5piJDtj4vQoY7G56odMecm0h+d
+ atl8mBChBuzMqRtVaDlxyvFSrLfkXlbZmgSPkstHEH2kiv/eTYz+biq77pFSJUoAQHNNZat8xce
+ 2kwLzQ53M/hG0Buwe/KOlxTb5Rv7+
+X-Received: by 2002:a05:690c:dc7:b0:841:e9e4:8ab9 with SMTP id
+ 00721157ae682-8712a709f48mr117102247b3.25.1788865600031; Tue, 08 Sep 2026
+ 04:06:40 -0700 (PDT)
 MIME-Version: 1.0
 References: <20260828222639.1432046-1-richard.henderson@linaro.org>
- <20260828222639.1432046-9-richard.henderson@linaro.org>
-In-Reply-To: <20260828222639.1432046-9-richard.henderson@linaro.org>
+ <20260828222639.1432046-11-richard.henderson@linaro.org>
+In-Reply-To: <20260828222639.1432046-11-richard.henderson@linaro.org>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 8 Sep 2026 12:01:02 +0100
-X-Gm-Features: AcwNN1WuVVW98iJzwutdyBp3r899daI2gpcjaIX-AkuLv_2hRKl02JrojsbamfM
-Message-ID: <CAFEAcA8h_8gD=7Z5y42ynmsLi0YDD5BNBHsQ8h2GobpqTydHmQ@mail.gmail.com>
-Subject: Re: [PATCH 08/13] target/arm: Clear PSTATE.UINJ when taking exceptions
+Date: Tue, 8 Sep 2026 12:06:28 +0100
+X-Gm-Features: AcwNN1WQ_vBUzqsALzlCACrEV-a9WTwIwqZNRJpdlJ5oUpBDxEtdiRLIE4dhiyo
+Message-ID: <CAFEAcA_J_y8ccp_BAtkb0n7z1wdRHqa88wgL_jAyaRmN-_sbKQ@mail.gmail.com>
+Subject: Re: [PATCH 10/13] target/arm: Read and write PSTATE.UINJ
 To: Richard Henderson <richard.henderson@linaro.org>
 Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org
 Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::1136;
- envelope-from=peter.maydell@linaro.org; helo=mail-yw1-x1136.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::1131;
+ envelope-from=peter.maydell@linaro.org; helo=mail-yw1-x1131.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -117,14 +117,11 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Fri, 28 Aug 2026 at 23:28, Richard Henderson
+On Fri, 28 Aug 2026 at 23:27, Richard Henderson
 <richard.henderson@linaro.org> wrote:
 >
-> Clear UINJ when taking an exception.
-> Clear UINJ when exception return is invalid.
->
-> In both cases, perform the clear without feature check,
-> since the bit is otherwise RES0.
+> With FEAT_UINJ, allow PSTATE.UINJ to be set from aa64 and aa32 modes.
+> Read the value back for SPSR_ELx from aa32 mode.
 >
 > Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 

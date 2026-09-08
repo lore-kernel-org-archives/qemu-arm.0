@@ -4,93 +4,127 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4B32AC79FA1
-	for <qemu-arm@archiver.kernel.org>; Tue,  8 Sep 2026 09:53:49 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 62C8CC79FA1
+	for <qemu-arm@archiver.kernel.org>; Tue,  8 Sep 2026 10:43:13 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1x3sUu-00048w-L1; Tue, 08 Sep 2026 05:52:12 -0400
+	id 1x3tI4-0008T3-0C; Tue, 08 Sep 2026 06:43:00 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <marcandre.lureau@redhat.com>)
- id 1x3sUs-00048J-1M
- for qemu-arm@nongnu.org; Tue, 08 Sep 2026 05:52:10 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ (Exim 4.90_1) (envelope-from <bin.meng@processmission.com>)
+ id 1x3tI0-0008OO-OG; Tue, 08 Sep 2026 06:42:56 -0400
+Received: from mail-koreacentralazlp170130006.outbound.protection.outlook.com
+ ([2a01:111:f403:c40f::6] helo=SEYPR02CU001.outbound.protection.outlook.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <marcandre.lureau@redhat.com>)
- id 1x3sUp-0002ac-Vw
- for qemu-arm@nongnu.org; Tue, 08 Sep 2026 05:52:09 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1788861126;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=MJ3JKz6ii3UHXbYgbY5KF1obV3J6lMcORoFh8rbcuII=;
- b=HH74pO6Qj4wuabg4ZHry/lfVjWDni8KNXVSbJWbcueV3uDfq86u96MEkH3SpGyHT73YZ9Q
- CW8m87QZehWhwy+bKMfkNnTB8AV2Z/5YhZzLFhe/Utaz+3zbDqEBx2WpI9po10vA7lTiKg
- OH/qtjG3ujNchh7X4AGZzMOTSW7Feys=
-Received: from mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
- relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-494-9gt2mv6xPFC60O0Fn2fRkA-1; Tue,
- 08 Sep 2026 05:52:03 -0400
-X-MC-Unique: 9gt2mv6xPFC60O0Fn2fRkA-1
-X-Mimecast-MFC-AGG-ID: 9gt2mv6xPFC60O0Fn2fRkA_1788861122
-Received: from mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com
- (mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.111])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
- (No client certificate requested)
- by mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id E110D183F9F7; Tue,  8 Sep 2026 09:52:01 +0000 (UTC)
-Received: from localhost (headnet04.pony-001.prod.iad2.dc.redhat.com
- [10.2.32.116])
- by mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id BACF9180034F; Tue,  8 Sep 2026 09:52:00 +0000 (UTC)
-From: =?utf-8?q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>
-Date: Tue, 08 Sep 2026 13:51:50 +0400
-Subject: [GIT PULL 01/10] tests/functional: replace HMP with QMP
-MIME-Version: 1.0
-Message-Id: <20260908-nohmp-v1-1-b19b693a5665@redhat.com>
-References: <20260908-nohmp-v1-0-b19b693a5665@redhat.com>
-In-Reply-To: <20260908-nohmp-v1-0-b19b693a5665@redhat.com>
-To: qemu-devel@nongnu.org
-Cc: peter.maydell@linaro.org, Thomas Huth <th.huth+qemu@posteo.eu>, 
- =?utf-8?q?Philippe_Mathieu-Daud=C3=A9?= <philmd@oss.qualcomm.com>, 
- Aurelien Jarno <aurelien@aurel32.net>, qemu-arm@nongnu.org
-X-Developer-Signature: v=1; a=openpgp-sha256; l=4380;
- i=marcandre.lureau@redhat.com; h=from:subject:message-id;
- bh=Enc5oozE2GmO4F1KrQprCafEbYY2rlyNKpoQ+I9nrjg=;
- b=owEBbQKS/ZANAwAKAdro4Ql1lpzlAcsmYgBqn9q65/cFkBtLvO69Yg8nu/lijA7tsQImrG2nm
- hu3KAcNq4KJAjMEAAEKAB0WIQSHqb2TP4fGBtJ29i3a6OEJdZac5QUCap/augAKCRDa6OEJdZac
- 5YpFD/9h28APPXvNBxBqTEk7jcaYZsNrrTNF2YGxpVGNBKFbw9wR4zdfUBg9JqLemmbqP7tB0Ht
- SEnlQkv1krFwEN0y84Ra3fbiE4+pFrIDE8YnB8J77Hl3ayRCOgjx8h2T6FyAIN4H0UQDHhZ+inZ
- YU/DZCPFU9wmJ1PTCx89TdK8MIILJrOD1K3mMOUArC3odwdykjSmNeCeIxftJzgRpCkxgsGgTKZ
- P0mdB6+uu8oQDHap51OHp6sDSGUUGtaiJ6Y9kKrD0ujTZiw7M2zbJI1uonZLZI1gUlESdjVeGn6
- tTzszCuWGpcdY51i1QGQ+Dio8dG9uSFVbdp5kI75Mq9BBqHg/ODFfzFaHamJYRBI7NC2fKKIvrY
- 4E/kxB3B/QVDVQRlC/8MMEFTGHITMZFCPuSZ/eWZkLA0TE0z4S82JZQ2HoStFpQsJW/pno7cVaS
- WMYkwxrxkvCI4u3SXtmO632Ww++xEyy+L8pWuF2M2lwseVRQZgMkxO5R4Y3GnM5Vg1gIsXp2uO6
- JDdoJqw1CcHb+EQYOAcyaqHM4tfyvV0mH40i1t+91sWYMi5etL5YVDkrWLod80z4KAPbFxmsLuh
- C20u29o3J+U/vqDSioezuubJ1emPhfLt5P/FcjQzIraLLLls9ERmGY49nL19ZZWvDHn7lm5Js/U
- 26tRnihjpMWV9gg==
-X-Developer-Key: i=marcandre.lureau@redhat.com; a=openpgp;
- fpr=87A9BD933F87C606D276F62DDAE8E10975969CE5
-X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.111
-X-Mimecast-MFC-PROC-ID: RAUDCieEeVewKtFy-gkg4JnZ7crHtXhedeJxW3YRMu4_1788861122
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset="utf-8"
+ (Exim 4.90_1) (envelope-from <bin.meng@processmission.com>)
+ id 1x3tHz-0006YC-30; Tue, 08 Sep 2026 06:42:56 -0400
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=T9aL4n1I70amb59Pe1yHMmg1dK10CO/HtjsnXh05ng4xdJ+AKZ0K1zrd0jKIRgZ0Plc2d0ZkIP6JRvgT9fuCLNQFfJSxX61Syb9Nr4/CxYDlnesIDwoyd8MMghZe9wmtgqyL1Giwu/7xhlTY5AhYPhPqMcNr75q8ktUlvujRPRZ7/F4VtqdgTom7Laj7JieZvEJ0i9FYN5lHkXlagy70YjFhfZXYEemjwOqPjubpqqC7+aFYXSB4ywOWhsWZQl0HPbb2stYs78Af+3VnpiGoFl9am2xDREVm0lcIIjeB2oTFv5u1Oe30Gx4DX8FEgK8zVK7uFAphqrkDIo6w2qITQQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=/4DpiQr7vO4OTgfuNjOtBinrDz7uyHT4rT7CS80PnoI=;
+ b=R0iRfXn1R1W930dFO4YdALD9bERxuJdEeT9UFUh9XNNb7NCmpH6a6drwfOdNupdyPaxo4EDb669dyWuItFeFPJbHT7wfn68us6y5DDSQh991S4wl/Mu72dhiTHD9ocCTLXXoxBusFGbtBNXw388YqLsPfOlR1uHaMOysldtIvGyk8RK7Vh9auK/rU9iowyZ87lEoVTYMhu1OHlYes+cGxJlUqTmYiTDW20+N5f6hlmUAaTATdw1BudGYIXcU4PgYD0R/9tH1YG84V28lk6Voe4uiLvN/v5kgGQVdlCTZbbf513Ocm0g0ksFR+tEnDJdEltMEzRbbkiZ043iFeMFKcQ==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=processmission.com; dmarc=pass action=none
+ header.from=processmission.com; dkim=pass header.d=processmission.com;
+ arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=processmission.com;
+ s=selector1;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=/4DpiQr7vO4OTgfuNjOtBinrDz7uyHT4rT7CS80PnoI=;
+ b=lXIpz90u+7O04VW9DmLvxJ4u6a/D/puznXomRpx8SwZdRVPg1p9kscgNS2SPaFkq7SRC7IlHjWPJ4YdnvLL4o7QgojnKttzHoo0r53b6HYh/RM8kciqNIqs7xjIZlEcZmwiNwezXP7F9UB8KtYiO9Cn0/5bulfonPTyDcWgtrY54LjR7MN00RHZosJvgfchGjIl2eyicJstlGtDp3avTrs/y0CNOQgv1ZYCweD0h9Fczmu4OehHg6QPB6/q1xjkd0takmKOS31R6w4X7zLXZ2siqALWr7irU01aYGBEMpkX9+vNOOZ/NRkD91uC9yjruqdWigyHQm+tcWagPliICtA==
+Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=processmission.com;
+Received: from PSAPR02MB4984.apcprd02.prod.outlook.com (2603:1096:301:78::7)
+ by OSQPR02MB7928.apcprd02.prod.outlook.com (2603:1096:604:291::10) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.21.382.15; Tue, 8 Sep
+ 2026 10:42:41 +0000
+Received: from PSAPR02MB4984.apcprd02.prod.outlook.com
+ ([fe80::fd75:bbda:6f27:c616]) by PSAPR02MB4984.apcprd02.prod.outlook.com
+ ([fe80::fd75:bbda:6f27:c616%6]) with mapi id 15.21.0382.014; Tue, 8 Sep 2026
+ 10:42:40 +0000
+From: Bin Meng <bin.meng@processmission.com>
+To: QEMU <qemu-devel@nongnu.org>
+Cc: Paolo Bonzini <pbonzini@redhat.com>,
+ Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org
+Subject: [PATCH v2 13/32] hw/arm: phytium: Connect the Phytium E2000 QSPI
+ controller
+Date: Tue,  8 Sep 2026 18:41:22 +0800
+Message-ID: <20260908104159.1621764-14-bin.meng@processmission.com>
+X-Mailer: git-send-email 2.53.0
+In-Reply-To: <20260908104159.1621764-1-bin.meng@processmission.com>
+References: <20260908104159.1621764-1-bin.meng@processmission.com>
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=170.10.133.124;
- envelope-from=marcandre.lureau@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
+Content-Type: text/plain
+X-ClientProxiedBy: TY4P301CA0041.JPNP301.PROD.OUTLOOK.COM
+ (2603:1096:405:2be::15) To PSAPR02MB4984.apcprd02.prod.outlook.com
+ (2603:1096:301:78::7)
+MIME-Version: 1.0
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: PSAPR02MB4984:EE_|OSQPR02MB7928:EE_
+X-MS-Office365-Filtering-Correlation-Id: 6ac4bac2-40f4-4b37-298e-08df0d95e72c
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;
+ ARA:13230040|23010399003|366016|1800799024|376014|10067099003|18002099003|22082099003|56012099006;
+X-Microsoft-Antispam-Message-Info: 9LX0besSCYQM9t6x05H2JugTaTIZznCnEgKxg2KvBCgPlzkl3JrV+EQfvZAb9aPmFgZbi4qn7MSuoaJaMS+//BxNfZSnXQ6v2yQEULXSghpQwIpRHM0lEmj/MMrHlc9DDJvuFSmC3YdTwZyCAe1yNzhRIHb5hQmfvniEEtbx9TKhH/DEwpkGrNHkzfrbduNHn+nObJs6vO4TNTQaJvwQYeGzQAjBts2GTP/S+ClIgOkmicNi0DB6nmaxuclS/ZphkmyhCHwcKmRhiiBbs8dGXGSCRCQmZn0y+WVfu/0j5KoEVGRrdP0Hy1HI+n4tNBB6zBhKs7wZgMTBSW62HNNmrWnsKRpSX/CvKw5FETsvalYZZs4e6FjnaNaMt+WpI3v1saALHhf5Ahh/Fj14WgsIAYUlXYlfxpTfD40W+fbSmqySk3riEUljY1beqEjy7TWp42rlugq7x8t+HulrYj4kUMDVoGcRHmGWj1nxPXbqP2RG3FXlumLhjFOaTqU2I3ML5Gt+JpmQTPgQIQ7h5edpHKi5Gasis+hOY7u27UUTYgpg8NJVQrodHLQmeCvX6AwfeD1OqcaRpGqW8D4k5e8UB1IUNjqoLQ/B/MssVGhGzH0tpJvDrYFulhzYZxqCXCDfJ4VAYQX2ZQi96DGnEE4CSYu6crddXBheDEq7hC8AKtE=
+X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:PSAPR02MB4984.apcprd02.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(13230040)(23010399003)(366016)(1800799024)(376014)(10067099003)(18002099003)(22082099003)(56012099006);
+ DIR:OUT; SFP:1102; 
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?roVjqRDGqt7Umd2pjv3Oc3VQ9Jg3QplfjJqsSMm/UQJB85OI7igdAdiRCi16?=
+ =?us-ascii?Q?kgYOcgIdqCZs1CEhlcc09ZJkZB+JVskkk6b9t0tGoVcuGFfUfOEOIlRNCdZo?=
+ =?us-ascii?Q?dGJB6Q9i0miVHB6WSVA8aDzK/q5kcz9i4LUkAm68YOF1trfCiwCanxvvJEdu?=
+ =?us-ascii?Q?ZSWknsFTXm1iYvIXwpfJcnoN/IYOXUocykIRbvrYnMEYJHGwxMIdJNOGPs89?=
+ =?us-ascii?Q?aKugG4uvRNMwfQtEEOPPsPqF2MvntqEaTfb/0lat1nVBqwklA39nS/AiSUN4?=
+ =?us-ascii?Q?fyscG6HRIjb8Ts7wkdcftKcN+WGJVdYFXCbWkM43jT++1VJ8EcN4iV66f0wF?=
+ =?us-ascii?Q?FlNuhYaR/ybslNsmxBcgiMoGk8gZs0rsaHeqa1zwE2jom6rUj3roxpp/+dt/?=
+ =?us-ascii?Q?dBt6O5uEwIx4jJI/Gc+NitfuVcqkm4bbpG6gfxmOYYfWYFElXI891Lj6lJwz?=
+ =?us-ascii?Q?wMDrF738QamHEyhpYRmctO8F9qYpWfmupUx73RU8mJ5OVJHd5AgiyMxhurqp?=
+ =?us-ascii?Q?4Dr84fhbgMIZvfmPos/ZP636xsAtvGWk/zxLtw2zCirbESOrhqRena5VAocj?=
+ =?us-ascii?Q?s+8p3zI6QRoLlHoA/DrQzn9XNtoaXCspeY85EggAvkP7lZ9f9TgO6g1lTXzd?=
+ =?us-ascii?Q?qoHevP9+gvI7ipEBfe0bGpW35iUHDGjWzigN2ihVirlY3pzypU882L/Tx8kN?=
+ =?us-ascii?Q?z+uMP47lYN7id5pBi8AgGvNpVj2NgGqNOB7Ig/cK4TZX8RyKO2NkK83wTyb+?=
+ =?us-ascii?Q?IRWB2sO6FZFTsMlQfrnX5JpyYa7RczP4LLH/BqgJw+3qvReYOHEOIw1X5Z7p?=
+ =?us-ascii?Q?1jlUciW63bnk9SenUY4VSuBDl2yyChWvvDZwBdZb6Cuce/eDa78vxN+mn0+d?=
+ =?us-ascii?Q?mwpQMWKDZPAawGnRzNPqK9PuF5FVgJiO4nDf2JLaRRMmp1OM8MARGw9ZsjH0?=
+ =?us-ascii?Q?qtjN3N1FLpCGg6IPHnOZVP1ftwN4Dla8ZiDbgYwI8X9Q9sx59zcon/tirX2t?=
+ =?us-ascii?Q?d522iEfXZf9SjboMcac+9iDOac6yPC+MD0R0su+ZKUZhiCAc+RVCEZjeKgzk?=
+ =?us-ascii?Q?ihMaMDjwSVP1L9CrfQmlOVmusadK002Gs/s5q2O029fGH61Z9jIHVW577+MU?=
+ =?us-ascii?Q?IQMj9awamm33OWgWzlaPjoujtHWLXsWxDdioKELQrPONWjtMgmQYESImA4Jw?=
+ =?us-ascii?Q?qAwSVb89anI/iK/dc7jfU2/His1/FdnbKxzBOvpThLCybSypTKW1nGQ90gcM?=
+ =?us-ascii?Q?AUNrZyApveChNUNHqYuGrG6t5SGSc9u6BfZfX1QZRBL3Zv5td7OmmG9sprbr?=
+ =?us-ascii?Q?/8X56vc4XaJODoM36n0d43y+nKm8NYy9IQYGjxGsz8DmLfvNtQrralhBhXn3?=
+ =?us-ascii?Q?lvb/fIbvt7rKGqdqjJj1ZzBHfiqi1B1SfalxLvreaXqSpHYXb4B6gyY2K0Vp?=
+ =?us-ascii?Q?aG58wDTdbrrcEZtE0fGoN16cWH/E3SjH13o82YY8nndpfmDuDiOrn/AnPSq6?=
+ =?us-ascii?Q?mrdJCatyzWhvhbw1MiMDHHCBg9btMxQlFwDf/G8gKZi8o6c3jInufrJRzaoI?=
+ =?us-ascii?Q?OV/xqJtEiuR5jPNEeKkObcs1OAzkqKcjjCTke37Ee6hAfo+bcAVZfE1b8n5H?=
+ =?us-ascii?Q?TiEiRLYBAsSOouO3y4wkHsk9+Fvujwa/5K5qH29wyBn4BtDC/V1x4nkCek/d?=
+ =?us-ascii?Q?GJkKY4oNVL/xEeyKAW5VtjQWnPpfyBosfzqX0IwnOHyXW71EJnKbgI+r9DAa?=
+ =?us-ascii?Q?iL/pBOc/WcpTfRiunV22mE/tPTRv4ME=3D?=
+X-OriginatorOrg: processmission.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 6ac4bac2-40f4-4b37-298e-08df0d95e72c
+X-MS-Exchange-CrossTenant-AuthSource: PSAPR02MB4984.apcprd02.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 08 Sep 2026 10:42:39.0419 (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: e0544bf7-9765-4630-ab69-0b266dc2169c
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: NjnT78mDspFysfAk149baJ9/Pp50sDnnSvhK9BdCF5E9nCDm5EaOfQVcFnp4obwGRproe3H+DQNL0bGAi593B9eR7c257+eQoBB78HPkrmw=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: OSQPR02MB7928
+Received-SPF: pass client-ip=2a01:111:f403:c40f::6;
+ envelope-from=bin.meng@processmission.com;
+ helo=SEYPR02CU001.outbound.protection.outlook.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_PASS=-0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -106,109 +140,117 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Replace HMP with QMP equivalent.
+Instantiate QSPI0 at its command and direct-map windows so accesses
+from E2000 firmware reach the controller model.
 
-Reviewed-by: Thomas Huth <thuth@redhat.com>
-Signed-off-by: Marc-André Lureau <marcandre.lureau@redhat.com>
+Signed-off-by: Bin Meng <bin.meng@processmission.com>
+
 ---
- tests/functional/arm/test_integratorcp.py | 13 ++++++++-----
- tests/functional/m68k/test_nextcube.py    | 11 +++++++----
- tests/functional/mips64el/test_malta.py   | 13 ++++++++-----
- 3 files changed, 23 insertions(+), 14 deletions(-)
 
-diff --git a/tests/functional/arm/test_integratorcp.py b/tests/functional/arm/test_integratorcp.py
-index 23ae919359d5..b79e81393547 100755
---- a/tests/functional/arm/test_integratorcp.py
-+++ b/tests/functional/arm/test_integratorcp.py
-@@ -14,6 +14,7 @@
- 
- import logging
- 
-+from qemu.qmp.qmp_client import ExecuteError
- from qemu_test import QemuSystemTest, Asset
- from qemu_test import wait_for_console_pattern
- from qemu_test import skipIfMissingImports, skipUntrustedTest
-@@ -72,11 +73,13 @@ def test_framebuffer_tux_logo(self):
-         self.boot_integratorcp()
-         framebuffer_ready = 'Console: switching to colour frame buffer device'
-         wait_for_console_pattern(self, framebuffer_ready)
--        self.vm.cmd('human-monitor-command', command_line='stop')
--        res = self.vm.cmd('human-monitor-command',
--                          command_line='screendump %s' % screendump_path)
--        if 'unknown command' in res:
--            self.skipTest('screendump not available')
-+        self.vm.cmd('stop')
-+        try:
-+            self.vm.cmd('screendump', filename=screendump_path)
-+        except ExecuteError as e:
-+            if e.error_class == 'CommandNotFound':
-+                self.skipTest('screendump command not found')
-+            raise
- 
-         cpu_count = 1
-         match_threshold = 0.92
-diff --git a/tests/functional/m68k/test_nextcube.py b/tests/functional/m68k/test_nextcube.py
-index d917cf5424fe..f3d92034b127 100755
---- a/tests/functional/m68k/test_nextcube.py
-+++ b/tests/functional/m68k/test_nextcube.py
-@@ -9,6 +9,7 @@
- 
- import time
- 
-+from qemu.qmp.qmp_client import ExecuteError
- from qemu_test import QemuSystemTest, Asset
- from qemu_test import skipIfMissingImports, skipIfMissingCommands
- from qemu_test.tesseract import tesseract_ocr
-@@ -39,10 +40,12 @@ def check_bootrom_framebuffer(self, screenshot_path):
-                 break
-             time.sleep(0.1)
- 
--        res = self.vm.cmd('human-monitor-command',
--                          command_line=f"screendump {screenshot_path}")
--        if 'unknown command' in res:
--            self.skipTest('screendump not available')
-+        try:
-+            self.vm.cmd('screendump', filename=screenshot_path)
-+        except ExecuteError as e:
-+            if e.error_class == 'CommandNotFound':
-+                self.skipTest('screendump command not found')
-+            raise
- 
-     @skipIfMissingImports("PIL")
-     def test_bootrom_framebuffer_size(self):
-diff --git a/tests/functional/mips64el/test_malta.py b/tests/functional/mips64el/test_malta.py
-index 163bbaf5ca36..4544f950d96e 100755
---- a/tests/functional/mips64el/test_malta.py
-+++ b/tests/functional/mips64el/test_malta.py
-@@ -11,6 +11,7 @@
- 
- import os
- 
-+from qemu.qmp.qmp_client import ExecuteError
- from qemu_test import LinuxKernelTest, Asset
- from qemu_test import exec_command_and_wait_for_pattern
- from qemu_test import skipIfMissingImports, skipFlakyTest, skipUntrustedTest
-@@ -154,11 +155,13 @@ def do_test_i6400_framebuffer_logo(self, cpu_cores_count):
-         self.vm.launch()
-         framebuffer_ready = 'Console: switching to colour frame buffer device'
-         self.wait_for_console_pattern(framebuffer_ready)
--        self.vm.cmd('human-monitor-command', command_line='stop')
--        res = self.vm.cmd('human-monitor-command',
--                          command_line=f'screendump {screendump_path}')
--        if 'unknown command' in res:
--            self.skipTest('screendump not available')
-+        self.vm.cmd('stop')
-+        try:
-+            self.vm.cmd('screendump', filename=screendump_path)
-+        except ExecuteError as e:
-+            if e.error_class == 'CommandNotFound':
-+                self.skipTest('screendump command not found')
-+            raise
- 
-         match_threshold = 0.95
-         screendump_bgr = cv2.imread(screendump_path, cv2.IMREAD_COLOR)
+Changes in v2:
+- Move the QSPI controller into the E2000 SoC
+- Store the QSPI child with its concrete QOM state type
 
+ include/hw/arm/phytium_e2000.h |  4 ++++
+ hw/arm/phytium_e2000.c         | 15 +++++++++++++++
+ hw/arm/Kconfig                 |  1 +
+ 3 files changed, 20 insertions(+)
+
+diff --git a/include/hw/arm/phytium_e2000.h b/include/hw/arm/phytium_e2000.h
+index 40f91256a2..92b39129ba 100644
+--- a/include/hw/arm/phytium_e2000.h
++++ b/include/hw/arm/phytium_e2000.h
+@@ -16,6 +16,7 @@
+ #include "hw/core/sysbus.h"
+ #include "hw/net/cadence_gem.h"
+ #include "hw/sd/phytium_e2000_mci.h"
++#include "hw/ssi/phytium_qspi.h"
+ #include "qemu/typedefs.h"
+ #include "target/arm/cpu.h"
+ 
+@@ -27,9 +28,11 @@ OBJECT_DECLARE_SIMPLE_TYPE(PhytiumE2000SoCState, PHYTIUM_E2000_SOC)
+ #define PHYTIUM_E2000_NUM_GEMS 4
+ 
+ enum {
++    PHYTIUM_E2000_QSPI_DIRECT,
+     PHYTIUM_E2000_LOW_PERIPH,
+     PHYTIUM_E2000_MCI0,
+     PHYTIUM_E2000_MCI1,
++    PHYTIUM_E2000_QSPI_REGS,
+     PHYTIUM_E2000_UART0,
+     PHYTIUM_E2000_UART1,
+     PHYTIUM_E2000_UART2,
+@@ -63,6 +66,7 @@ struct PhytiumE2000SoCState {
+     SysBusDevice parent_obj;
+ 
+     DeviceState *gic;
++    PhytiumE2000QSPIState *qspi;
+     PhytiumE2000MciState *mci[PHYTIUM_E2000_NUM_MCIS];
+     CadenceGEMState *gem[PHYTIUM_E2000_NUM_GEMS];
+     ARMCPU cpu[PHYTIUM_E2000_NUM_CPUS];
+diff --git a/hw/arm/phytium_e2000.c b/hw/arm/phytium_e2000.c
+index 95ebf3c87b..3e30d112f7 100644
+--- a/hw/arm/phytium_e2000.c
++++ b/hw/arm/phytium_e2000.c
+@@ -28,6 +28,7 @@
+ #include "hw/pci/pci.h"
+ #include "hw/pci-host/gpex.h"
+ #include "hw/sd/sd.h"
++#include "hw/ssi/phytium_qspi.h"
+ #include "net/net.h"
+ #include "qobject/qlist.h"
+ #include "qom/object.h"
+@@ -54,9 +55,11 @@
+  * handoff data and IACC is the fixed execution window for system firmware.
+  */
+ const MemMapEntry phytium_e2000_memmap[] = {
++    [PHYTIUM_E2000_QSPI_DIRECT] =    { 0x00000000, 0x10000000 },
+     [PHYTIUM_E2000_LOW_PERIPH] =     { 0x28000000, 0x00100000 },
+     [PHYTIUM_E2000_MCI0] =           { 0x28000000, 0x00001000 },
+     [PHYTIUM_E2000_MCI1] =           { 0x28001000, 0x00001000 },
++    [PHYTIUM_E2000_QSPI_REGS] =      { 0x28008000, 0x00001000 },
+     [PHYTIUM_E2000_UART0] =          { 0x2800c000, 0x00001000 },
+     [PHYTIUM_E2000_UART1] =          { 0x2800d000, 0x00001000 },
+     [PHYTIUM_E2000_UART2] =          { 0x2800e000, 0x00001000 },
+@@ -469,6 +472,17 @@ static void phytium_e2000_create_mci(PhytiumE2000SoCState *s, int index)
+         qdev_get_gpio_in(s->gic, phytium_e2000_mci_irqmap[index]));
+ }
+ 
++static void phytium_e2000_create_qspi(PhytiumE2000SoCState *s)
++{
++    s->qspi = PHYTIUM_E2000_QSPI(qdev_new(TYPE_PHYTIUM_E2000_QSPI));
++    object_property_add_child(OBJECT(s), "qspi", OBJECT(s->qspi));
++    sysbus_realize_and_unref(SYS_BUS_DEVICE(s->qspi), &error_fatal);
++    sysbus_mmio_map_overlap(SYS_BUS_DEVICE(s->qspi), 0,
++        phytium_e2000_memmap[PHYTIUM_E2000_QSPI_REGS].base, 2);
++    sysbus_mmio_map_overlap(SYS_BUS_DEVICE(s->qspi), 1,
++        phytium_e2000_memmap[PHYTIUM_E2000_QSPI_DIRECT].base, 2);
++}
++
+ static void phytium_e2000_create_ddr_status(PhytiumE2000SoCState *s)
+ {
+     DeviceState *dev = qdev_new(TYPE_PHYTIUM_E2000_DDR);
+@@ -631,6 +645,7 @@ static void phytium_e2000_soc_realize(DeviceState *dev, Error **errp)
+     }
+ 
+     phytium_e2000_create_unimplemented(s);
++    phytium_e2000_create_qspi(s);
+     phytium_e2000_create_cpus(s);
+     phytium_e2000_create_gic(s);
+ 
+diff --git a/hw/arm/Kconfig b/hw/arm/Kconfig
+index d9759731f0..e4111eaec2 100644
+--- a/hw/arm/Kconfig
++++ b/hw/arm/Kconfig
+@@ -136,6 +136,7 @@ config PHYTIUM_E2000
+     select DW_MCI
+     select PCI_EXPRESS
+     select PCI_EXPRESS_GENERIC_BRIDGE
++    select PHYTIUM_E2000_QSPI
+     select PL011
+     select SD
+     select UNIMP
 -- 
-2.55.0.543.g5ebe2ebe4ea8
+2.53.0
 
 

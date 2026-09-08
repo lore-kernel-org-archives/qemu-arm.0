@@ -4,28 +4,28 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 82BE9C79FA1
-	for <qemu-arm@archiver.kernel.org>; Tue,  8 Sep 2026 10:43:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9B00FC79F82
+	for <qemu-arm@archiver.kernel.org>; Tue,  8 Sep 2026 10:44:06 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1x3tHo-00085j-QM; Tue, 08 Sep 2026 06:42:44 -0400
+	id 1x3tIJ-0000T7-UI; Tue, 08 Sep 2026 06:43:15 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <bin.meng@processmission.com>)
- id 1x3tHm-00083U-FP; Tue, 08 Sep 2026 06:42:42 -0400
-Received: from mail-japaneastazlp170130007.outbound.protection.outlook.com
- ([2a01:111:f403:c405::7] helo=TYDPR03CU002.outbound.protection.outlook.com)
+ id 1x3tIG-0000Pc-Rw; Tue, 08 Sep 2026 06:43:12 -0400
+Received: from mail-japanwestazlp170120003.outbound.protection.outlook.com
+ ([2a01:111:f403:c406::3] helo=OS8PR02CU002.outbound.protection.outlook.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <bin.meng@processmission.com>)
- id 1x3tHk-0006ZW-II; Tue, 08 Sep 2026 06:42:42 -0400
+ id 1x3tIE-0006bO-Q8; Tue, 08 Sep 2026 06:43:12 -0400
 ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=MzIedOL20duh+M3kNKMDwBoIP/JpFEVym7RJxPnmWfdOkP2jfseitrNR3UDT+jqmvlCn66zhWcFu7/dleKdpzWF32xDwEQpstDSOroe6cgY3JgNNitjGUXZvrgx1PkwUTtsTlJWdVQHOzl0avnZMDYgdzNzs08MPrT83HP10YMkHFTV2S6ic2U9habrGl0hUwo1TQjA2gRNXoFWh5Jjwb25/GzWq7e63oV1S/htWh8Ahro3HDrfIEecHfiAR30YwSQxUopaUdUfN3t46OLTpkDmt6kxbKSnTXRufqJdyRzbVMglmnbAm89MU6VTA9z4SQZwz2Ku1Kl51r8Z5DcYRkg==
+ b=NMfViC78INrCZNDR0Yn7DAv0+Dnxrur04wNQ28tWyjfBIDiSdLjFfNXUdOg2iWE6hY1kG4EowJNL0uZm33KLGr7jXCiFmOcwUXiLuzR4yj4jKKMKhDRPAiLWoNsqYKJHNQhyvahnLg3a7xO4PTrbTwRKAC1aBsm8Wj+sy+yxnxwoBQA3iEs13IgIC7Sg15ha/gJ3Kc96V4ZjASGI3D40yRQl3CsxCtywR77MHSoh9r5tP9vmpG2Rh9FIQcyii39cLu46ct4ztcev/zkC/Ef2SH5bNaA/rkn+ZWYRzGqipwmutebtShVwGvZbavqM9o9E+zy9mQ0WIix+jyFpm0Vjeg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
  s=arcselector10001;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=zGqVQAGR6ZHeEoqVtAVcBnIuIoEIw8XAcGVfIaVS72c=;
- b=G1V7MUma4+oY+rGJF3CGYUq60AJvXoXsJ9X6essbxe45BQ/8Mq127yljhNscDQ/w8A7Lz8COkYajDncA7iIQXsnLELjCjTcAjsrxt0oNr9qVe6ajl4OLA7yJgMENVd59mGEW6zgo6l1h452gsUOkQcTmMhEExBfj79wb2oMtaUlsXfcrL/aPJHZhgALi2k46b/bSwgkCr33IHgrOiaHQoT87l3LRJYZFhvHrUxopOG9m5cEUwuPlK47BY1NVptTVAUuI5d7FUVyh17M3J7kT9hMUYMiiH6ybTi1R/sYvGQvLiOny+HyqPNjmcmbllT74U3BmVzBv3TeIkx2/vWICzA==
+ bh=GiqQX0TSej/Hh5Q7A7uV8LuwCWi7zDBQi85GkFNokVU=;
+ b=KZVsgbtOgAWK6xkb9tQV1lTqOl/DFD8+AURExJCnBpgjLiNcxu6GyCulFmRmg2LufN1P8mqp2W8XbeQhRjCD36ZA91XQOCjZ1GAnPAhNccne4WBfqaUyeqmHA6KaeOd5kXdXY3VbC3GdcMFHvmP/Uogqwad4XJPk87HrLrv2tV2tyNTdzpOWdTDTJ6s8/foHTgBE26XLNJ7UGRb71ipzHn4nn3pdi630z2Yl5CVJCSlomEjVYy8XgzBAHy17Jhc8QfKPtQcDluAgZ43xebH8EAHCM8coWDWcGBIbS0WSXTe3De0Dyo5PlY1lPV7WUzFPc2lD4GBwic7Lj1I1/QEa/Q==
 ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
  smtp.mailfrom=processmission.com; dmarc=pass action=none
  header.from=processmission.com; dkim=pass header.d=processmission.com;
@@ -33,26 +33,26 @@ ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=processmission.com;
  s=selector1;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=zGqVQAGR6ZHeEoqVtAVcBnIuIoEIw8XAcGVfIaVS72c=;
- b=ajWZKibhsO8EPkPl6KgGqpMdYR9/dpKLYASAZfjF6EydwHYM9amLm7JQMG9eTIBCVtrivUCGxlSSKIvkVyK0PyKdG0Ha+N2XX8Etzt9TsMqcije9ErapZ4y4ukNXh3mv6RphMUnvgawh//m+qSecgHK/sYH7nN32Sy2qmHW9i75UImlqv0EgWw8fSW4asE7MdGEcLdEtaRfkUpM8VY2ZtDCOgRqBHNE3eaVWFtq1RVznVMU8IJpY4S5/Py4wdhn09ZlUOF2ub7/lELTVHhIHz3BS3T5Miq9EVk5pi8qSKX6zn68P1JH7dOghMEOsug1udzp+DSUm/YaeIn8dTyWQdw==
+ bh=GiqQX0TSej/Hh5Q7A7uV8LuwCWi7zDBQi85GkFNokVU=;
+ b=vajM/VzvLx/O0x0wYtW9ziJ53TSM1wuTc6UtmR6Dy5FUVGyEtMhfTiKuCUYnuceWwCSz+c9Lc78tEhl03eo8Sbi71q5rsQUXoDyF4k8ZmpRxaaOMscmvLLIqb2RNo4xdOp8PhpK495eEUI8icrIzGjBaNNfrdIOPN5cWMU/g6ZW9vgJPmF4pjjqulei3VaewuaTTO9WyQnaD6ELNDCQ9wtJIHQGHcbHwTcIwpUrt1yMqjFx/Xz9ipFj1tUTraaKgSZHuoOBApz8UfqjKDMx63vFnUPKugNNDlffoPe75EXCAJBDsHO39Em6ocfSTjjpXXoVx4GW5D0u9J/fGP0PS+w==
 Authentication-Results: dkim=none (message not signed)
  header.d=none;dmarc=none action=none header.from=processmission.com;
 Received: from PSAPR02MB4984.apcprd02.prod.outlook.com (2603:1096:301:78::7)
- by OSQPR02MB7928.apcprd02.prod.outlook.com (2603:1096:604:291::10) with
+ by SEYPR02MB6579.apcprd02.prod.outlook.com (2603:1096:101:139::9) with
  Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.21.382.15; Tue, 8 Sep
- 2026 10:42:25 +0000
+ 2026 10:42:59 +0000
 Received: from PSAPR02MB4984.apcprd02.prod.outlook.com
  ([fe80::fd75:bbda:6f27:c616]) by PSAPR02MB4984.apcprd02.prod.outlook.com
  ([fe80::fd75:bbda:6f27:c616%6]) with mapi id 15.21.0382.014; Tue, 8 Sep 2026
- 10:42:25 +0000
+ 10:42:59 +0000
 From: Bin Meng <bin.meng@processmission.com>
 To: QEMU <qemu-devel@nongnu.org>
 Cc: Paolo Bonzini <pbonzini@redhat.com>,
  Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org
-Subject: [PATCH v2 04/32] hw/sd: Add Phytium E2000 MCI controller
-Date: Tue,  8 Sep 2026 18:41:13 +0800
-Message-ID: <20260908104159.1621764-5-bin.meng@processmission.com>
+Subject: [PATCH v2 27/32] hw/arm: phytium: Add Phytium E2000 AHCI controllers
+Date: Tue,  8 Sep 2026 18:41:36 +0800
+Message-ID: <20260908104159.1621764-28-bin.meng@processmission.com>
 X-Mailer: git-send-email 2.53.0
 In-Reply-To: <20260908104159.1621764-1-bin.meng@processmission.com>
 References: <20260908104159.1621764-1-bin.meng@processmission.com>
@@ -63,67 +63,66 @@ X-ClientProxiedBy: TY4P301CA0041.JPNP301.PROD.OUTLOOK.COM
  (2603:1096:301:78::7)
 MIME-Version: 1.0
 X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: PSAPR02MB4984:EE_|OSQPR02MB7928:EE_
-X-MS-Office365-Filtering-Correlation-Id: f674db14-42a0-46d0-9cd0-08df0d95ded5
+X-MS-TrafficTypeDiagnostic: PSAPR02MB4984:EE_|SEYPR02MB6579:EE_
+X-MS-Office365-Filtering-Correlation-Id: bf619a17-6fcb-480c-ceb5-08df0d95f33c
 X-MS-Exchange-SenderADCheck: 1
 X-MS-Exchange-AntiSpam-Relay: 0
 X-Microsoft-Antispam: BCL:0;
- ARA:13230040|23010399003|366016|1800799024|376014|10067099003|6133799003|18002099003|22082099003|56012099006;
-X-Microsoft-Antispam-Message-Info: ryfHxw2LBs2yCdQNSrP0UP04d5KjqvcTcOzB8SWyL40A5z8Xie+6yCloqu9zODXkB1w/4C8qtPwK2j2zJ8DHUyT+DBMfi062ih+rJHR7oiDOVxKmHbOx0kxxlnncnKqYWCrnOTx+Q/E6m1PkUOWMKRW6/Ksk8NoN6zSiNzy0bmG8IaEFwSD8NV1H48rSrsdV7H8dMwnXo3DDhjvCEoSpwFFCcmLRZGONNfbvOGLS+XG1aFOLcMfGO+r088+QdMQtRb6mCsvJCHiYaixlVQ9ZoJUg/1vMx3L8i+JzrVYIIxuiWsVKrobgunEdeZOGjfs+0psbGuBXEJUKqYt1H5IxdxsVi9iWHrOc3/anptqGJH3lV5B3aY2j95os+DZHSwiexjySbVi4nIgeDN7rHONd1NauYk2inCcC7mzT9ofUQH4atsYKueGvogbQZoHS5RrMkLPXOkyNuZIUkYb2xf+FuTaFNCxMOewbwX4Ewecfobpo1LDfyYgAAuFUv80r/+uAwuDBLCv+WwFvlB4MzGDY9u0Fk4vRcGRdG7MLfjb2hVpO//U0yVOnrmGWeBAUrh/dyWgYBaiA2FC5HTkZynH/2bw0q6LzVi8bKBgu3vnPDWp++KElJRw/zo2wu1yhLfrjV347gxVzRFt57NmOyXy1sj65SIlckPENC91EuJmq3wY=
+ ARA:13230040|1800799024|366016|376014|23010399003|6133799003|10067099003|56012099006|18002099003|22082099003;
+X-Microsoft-Antispam-Message-Info: MhO4aMmScn5q5V8dS/hwPvsEf1c483k5HKMAQ3atxmtO0+cJKasRgOhFFJF2VEiYNu4NKLf6z879UbJInTC0ikrUM3VPJWQiQmtgea/j+uf+z5eQtH3cgZ3RTZ3DXDxzS8XNFI2sMkO1kmzgMZwYYk1/QU/rUvAds7UNA2wB4DcZ2l11SfqyBhel+ywwtX3NdeS4p9fe/u4KUJA7X9TmKKQ/jVJIXUsbhC+fgWNzVL6WRK2Av+Wfd7FN/zqtcbGM4SWroQZHTTX0XTJTacZr+Vx2vMHi54jEeB9nFcQB4L0uYIUs42R3N1HECHSBI2ZwZQk9dUEAcjTfQNxlDoERayJJR8B2uET0cd/DzttaIkqDRHNkg13h2NZw/oalxLkE81aI1o2caRHjUhWAEgBt9t0/geDgEWybTgauEeBZo4X72Lq5cLlv21NBhjpvNyGfvYSC1scVwRJvPYqTqsSuM/WGIHmAv+M5sLHBUzTJqPb7YuoobiR6rnJPWkgHiYQtyZI7s5ATVDiNivB0LMu1JtuDlLWfFHOE9tpp8nB2oEl2D9F5PgEN00RNC3iqBc/BrIej5IG6y6cPdygSL6N7e4xsaJFYHyK8lrm+nGSPKMRD1wn6OFDzYC4IsqaP7GYqVcEVn4MQUg3L9f2LjkUf+91INpJaAa51sZPTSSCJb2s=
 X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
  IPV:NLI; SFV:NSPM; H:PSAPR02MB4984.apcprd02.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(13230040)(23010399003)(366016)(1800799024)(376014)(10067099003)(6133799003)(18002099003)(22082099003)(56012099006);
+ SFS:(13230040)(1800799024)(366016)(376014)(23010399003)(6133799003)(10067099003)(56012099006)(18002099003)(22082099003);
  DIR:OUT; SFP:1102; 
 X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?B1hfe4AbwekLhn/sDYWi8fR/1HpVR3eIlc5q/OUQLo2WO2shtHMl6dEfEWbD?=
- =?us-ascii?Q?rQxKvlmWKC8TwvbNn4Bt5XXmWqHM98Wp3M31GaxALLPa1nbNYfR4w/tQ/fT4?=
- =?us-ascii?Q?1JcdaBddSLGRuJwoB2X76/C0nn2UsrbcQlThwiWrmjUu3LhJ0v0WsE9tRZdk?=
- =?us-ascii?Q?PgDP6SRyi2kjUQG+Hlcpfq4vdSdd1+wg/4DZfAoiIs7HEve7NNN8C2YB/YI4?=
- =?us-ascii?Q?0WvTzPQyo/DXyySex4xYi0UNx8cnPXr8IsUDJQfsW83ykTZpmg2Lp74mUUt/?=
- =?us-ascii?Q?YRQiDmkWVZZip0+sLfDR6Mq6kv/qRAEKDw8ruPeePt3kiQBIBuD/sW6dCifT?=
- =?us-ascii?Q?25yOhnnYDkOX7MQtrPvDQpJpB1bI0J44I+Cl3z82qSm1XbW+VrSwNGtkDi3Z?=
- =?us-ascii?Q?yUmqMxktbAzINfsBIJ3QQcz8br5eNM1rHhfEMIpHqnR/bqc9r7o87VrScdP+?=
- =?us-ascii?Q?IX6lilDC1lKnW49iPtTlnhn/W7pDKSnDQ7ttJVgIUuM/llWROj9VBquCpALc?=
- =?us-ascii?Q?49GZOi7RmHKrVdrnm0oOT9jNsLYPgj/yVtO/uDep0ft8TS8YdwjrplctUBba?=
- =?us-ascii?Q?G7sa2NHFOaaNmahVzfyCTllTzFcrdD0wei/2TWkYLirN9wKXnKnZMIzgYCp3?=
- =?us-ascii?Q?z09wOI0h7l96hUkfU/Wu7gGaeR36aaLad2u/QHUVj9KqQ26L2AKIjnvipl3a?=
- =?us-ascii?Q?j1qKgfCDvvYVQsag1VaSIRzPdDXx7Y1/0fmPiQOQNuqd7tvIwRRLRQ5MSoI8?=
- =?us-ascii?Q?6qWwwomy6ph98/yPst3GxrIRN5mJBylkDEGPtiYnni+7GJ81SPbZGsApWIYm?=
- =?us-ascii?Q?Cq13czWlAHp8LgyJVixUm8FljuAbWndxMparHyt99gcBzAgfHaOKZMwYST7v?=
- =?us-ascii?Q?B7bBj2BpKTaRjd3G6kPz2Gm+Go+B8xFox0DEtOta5pMGCarrKLreYacggOxD?=
- =?us-ascii?Q?uZyK64/J0OtWEr+I7G/inQEdvE1CaeP/krzPvpWQuVuGFRFUnaXQ6/IhQFWF?=
- =?us-ascii?Q?C6ywmV5dXmN98kigSAamhRh3gjxFwduaInnj0Qwq8967yWmpVcPzJws+8c28?=
- =?us-ascii?Q?kIFbbcDv13J9HquOQ3Cg+bl6suUISsAkSAEHlsciIclBBiQlpMqsv2WSUk7R?=
- =?us-ascii?Q?2u1NUY7tJmwBqt9o0QFyECaHOGVNGQSm2qT7jHgGmmJhGIXIIXOW0UrSDcvE?=
- =?us-ascii?Q?XyC5fskL7ko6yLUzksm62oXfa74KutwnVxhJ2ePRaUPmSGMrjI9ruBPm5j8S?=
- =?us-ascii?Q?LScLBseKLlvvCwvs3Ryg0r6PmAaPLrBAGMxmTGTyG9QV7hG87TnehAA5EKK7?=
- =?us-ascii?Q?qXYy5XnMs7AAiRTj5wYfaNn7q9tSxo+fkIbhg3gmA7qRN9xFQI1KnFwp4cjk?=
- =?us-ascii?Q?KpJLTr+x+HbOjIdh7w+b3upJ08CkKZzv86I4BYKkYGs29rHdJOnMTJj5kzPr?=
- =?us-ascii?Q?G1D6f5L/oxqTyPKKb+rNlxdGcbc5YWakWvoEvUjAd4epwdSEjGh9Pzc24UVJ?=
- =?us-ascii?Q?5cwFT0oexah0Ru8ycyHClBLMF21CEeL6toVghVQ1IdC/amGWE9vP+zu7lByU?=
- =?us-ascii?Q?jGPCCQMA1IhWIo3wxXid8DEz+bH1OEfrKL1VUf2i81AjQofuI9BnfALM6fux?=
- =?us-ascii?Q?UPyyVruaO52QuVY9y+UIWeqch7ohz/GTho2Evyt47uDDERKL8+h9MFBZ797w?=
- =?us-ascii?Q?R9lLm1G3LPMVCzXKXeQhRQEQFwCqgxvDxcgABanCAAu+MVtGkLC2jgBkArcY?=
- =?us-ascii?Q?giF0CLrc37g/6nl59gZ3bHV5VCSUmOE=3D?=
+X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?9z9+fE5Wsi9HMe7lsbnDphdaRqgkOlGjwQdiWQmrKlgIdZByh3MQT6YAb0ea?=
+ =?us-ascii?Q?oF5Dv6Z26gM6tDmJ/m5DLITneaYtCzwJTUjnIpH9vcgEmwArxM6ERESAFjC9?=
+ =?us-ascii?Q?hYdMGfAJw1dcWi1dB/q/LirrubEwEvyLq/v3wmsqv6f09lobsKEATm4hMkcn?=
+ =?us-ascii?Q?WR5T0G9n/0/7RZpfxSC59nFmOgbjhWraiw+0pMl12Gr3uRaMKLm8JYGZQJ1e?=
+ =?us-ascii?Q?e7SIgUmpyjOjYtQzPangc99pbAfvCTOHR8gz7ni/0ecuUZP+9HRgeA1gUK+K?=
+ =?us-ascii?Q?gHEblv0+UkmGBny8N13lUP9yUEtuXrxwtmAkSt63X1r5KvjXtxvxQe4G8L0H?=
+ =?us-ascii?Q?2P9FGq2nr0BmpQkUIBvf1tN1C5IanuCWA1vIkFv3MBPbnYMb8n4drO1a8+fH?=
+ =?us-ascii?Q?AY/OQJtXac9zcmREQAqbmg2DTPjUMDlfWNmIBAHU04DgRpBFAY0KKy6WrIYY?=
+ =?us-ascii?Q?1BFrKe0NBEldiGWGoCq5VATAS+3IahdDSyl1zJPEuPMz1S6n8wBc+7TEHRnq?=
+ =?us-ascii?Q?A4DkejL+V2SyRNK+foW02mNrL9KjGR38s0pB2VvrIUcKR24bC79Mu/mo4agi?=
+ =?us-ascii?Q?3gfyzXFgLF+MYNkzieu7yQ1ZVWboq/tJ4mO1yLZPdmyNrfs8xYj0KYzNeax2?=
+ =?us-ascii?Q?U0hCn4854IY1gNgznWwUE5/fQWwdUhqdNpH+Su5cCy15qtbXay8ISUX6ED4N?=
+ =?us-ascii?Q?lzCDE85W02ckzQg9r0tj6Xg33GyfXiga3vi5cSO/AhEFTzJYnq5uhjzbNG+W?=
+ =?us-ascii?Q?UYUWK7v4Djn8dqoNcgr/QwJmv58hONhoZS80QOp5C1EhRS/o+SX/kk+eXH0R?=
+ =?us-ascii?Q?P20BD1iMVR9qDaEuNMe+s5UKnDRhkCGsEA+pAP9Qj+5q0/KswkNowh3GUNW6?=
+ =?us-ascii?Q?HdyNUbt9Rq+V9PZttcLWCqTxmkqo6zaKxs7RxHjAyjaHzoES1IhOyjBcJOBs?=
+ =?us-ascii?Q?qJZPySfkjaUr4SABiQOaq3o+NdPkLWR5Z98GZ4QLgj0JCgG5Tpr1QSrSmAdz?=
+ =?us-ascii?Q?4ZmEczvOSzotBvdQ29XSERiwzEaQDSn7xngNJeyxlTdCX9rqe912RzOjC5T4?=
+ =?us-ascii?Q?xeTb6bWfqf9Qb1jIFtAVVzeXIjNY6EvID48ddFHHCLNSij6jcXut1+oAA8hg?=
+ =?us-ascii?Q?TAK2JsPA7DvY8XrYX5iX3iGq7uIwD0dap1x6xn/ZX8OiMjWQ5F1Shjg7VH+T?=
+ =?us-ascii?Q?4l0DY3L7EnVcUqEw8Qw5VSdiSvD3B6HeRc1lQMHNRhaBKi2rq+JYEKwgWI9U?=
+ =?us-ascii?Q?qL9lctpQLQgCR4Rv3Vjp7Xm0qKn0Y0/WqJhRN2ga9iOQIyvhkYkapZXhxExp?=
+ =?us-ascii?Q?ND7wZ4jICTMcs8MojdRHqLfpGKp3OP3MwCrSOSOMpSxHZDon5bBsiWuOUrsN?=
+ =?us-ascii?Q?RSRrOF50M6vFFTy1HmYFRsuczsvLc6348rz/k3nhF3TFSXtrHowlrcPBzkdr?=
+ =?us-ascii?Q?IO288+HrsYGqjvnBZWnVbkYNcJkWA+JJzfKzDpUPrgKAwqTaM1mSU18EoE29?=
+ =?us-ascii?Q?Z0xZ9nmgTaJJUoTQv1Epz4ziVtm3ZQMj/tQWDH5M6aFismrDalbAy0AwCGEK?=
+ =?us-ascii?Q?rhZZJuIi9X20G1J5I9F8WkN2qlMtMyc+BPweT1k4QH3l2ja0+Y2Fuh20JA95?=
+ =?us-ascii?Q?+v4JG3W2/6eio6h0M/UjXJJjx5FlHxYoKj9RGfP7EgQMHs6R80yIUvSLq6mo?=
+ =?us-ascii?Q?1R3hgGoSI6p1YjMCnhRVIUR4ZKNWmTz4xALcPK7T/0BqWcT+3jL7K1bJPVvX?=
+ =?us-ascii?Q?5hI3YDNpxBI9TQIsJ09UmAGgtCw/34Q=3D?=
 X-OriginatorOrg: processmission.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: f674db14-42a0-46d0-9cd0-08df0d95ded5
+X-MS-Exchange-CrossTenant-Network-Message-Id: bf619a17-6fcb-480c-ceb5-08df0d95f33c
 X-MS-Exchange-CrossTenant-AuthSource: PSAPR02MB4984.apcprd02.prod.outlook.com
 X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 08 Sep 2026 10:42:25.0544 (UTC)
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 08 Sep 2026 10:42:59.3060 (UTC)
 X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
 X-MS-Exchange-CrossTenant-Id: e0544bf7-9765-4630-ab69-0b266dc2169c
 X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: ydUL9xrpWpDTwvDYHNz47Cbv8m7lCc419uzQIGc0Waqwiar/qPhqM2IEg2yhUu+41s5A3CEJAqqguD6XKrWJUpz/htbnnDFLmW5odPx+G2o=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: OSQPR02MB7928
-Received-SPF: pass client-ip=2a01:111:f403:c405::7;
+X-MS-Exchange-CrossTenant-UserPrincipalName: o+jQyvGpAQhInFBjM+JLxL8Mr2Eiqq/RsjXw7IubJr5vFj/On0mBzKAaKYIvZ+AI4cStnL6oOi6/znbzeUl7oaZY9Q384+honGJ8cvT/Vw4=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: SEYPR02MB6579
+Received-SPF: pass client-ip=2a01:111:f403:c406::3;
  envelope-from=bin.meng@processmission.com;
- helo=TYDPR03CU002.outbound.protection.outlook.com
+ helo=OS8PR02CU002.outbound.protection.outlook.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -140,176 +139,269 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Model the E2000 SD/MMC controller as a subclass of the reusable
-DesignWare MCI implementation. Supply the E2000 hardware configuration,
-FIFO depth, data window, clock-ready behavior, and vendor divider
-register while inheriting the standard command and DMA paths.
+Add the two single-port sysbus AHCI controllers integrated in the E2000
+SoC and route their interrupts to the GIC. Both boards expose the fixed
+controller blocks, but Phytium Pi does not wire either controller to a
+SATA disk and therefore rejects an IDE backend.
+
+The physical COMe board wires its boot SSD to the second controller.
+Attach its SATA backend to AHCI1 so that U-Boot and Linux observe the
+same controller order as on hardware.
 
 Signed-off-by: Bin Meng <bin.meng@processmission.com>
+
 ---
 
-(no changes since v1)
+Changes in v2:
+- Move AHCI controllers into the SoC and attach SATA in the machine
 
- include/hw/sd/phytium_e2000_mci.h | 21 +++++++
- hw/sd/phytium_e2000_mci.c         | 95 +++++++++++++++++++++++++++++++
- hw/arm/Kconfig                    |  1 +
- hw/sd/meson.build                 |  1 +
- 4 files changed, 118 insertions(+)
- create mode 100644 include/hw/sd/phytium_e2000_mci.h
- create mode 100644 hw/sd/phytium_e2000_mci.c
+ include/hw/arm/phytium_e2000.h | 15 ++++++++++---
+ hw/arm/phytium_e2000.c         | 39 ++++++++++++++++++++++++++++++++++
+ hw/arm/phytium_e2000_machine.c | 27 +++++++++++++++++++++++
+ hw/arm/Kconfig                 |  3 +++
+ 4 files changed, 81 insertions(+), 3 deletions(-)
 
-diff --git a/include/hw/sd/phytium_e2000_mci.h b/include/hw/sd/phytium_e2000_mci.h
-new file mode 100644
-index 0000000000..cc6fce06d0
---- /dev/null
-+++ b/include/hw/sd/phytium_e2000_mci.h
-@@ -0,0 +1,21 @@
-+/*
-+ * Phytium E2000 SD/MMC controller
-+ *
-+ * Copyright (c) 2026 Process Mission
-+ *
-+ * Author:
-+ *   Bin Meng <bin.meng@processmission.com>
-+ *
-+ * SPDX-License-Identifier: GPL-2.0-or-later
-+ */
-+
-+#ifndef HW_SD_PHYTIUM_E2000_MCI_H
-+#define HW_SD_PHYTIUM_E2000_MCI_H
-+
-+#include "hw/sd/dw_mci.h"
-+#include "qom/object.h"
-+
-+#define TYPE_PHYTIUM_E2000_MCI "phytium-e2000-mci"
-+OBJECT_DECLARE_SIMPLE_TYPE(PhytiumE2000MciState, PHYTIUM_E2000_MCI)
-+
-+#endif
-diff --git a/hw/sd/phytium_e2000_mci.c b/hw/sd/phytium_e2000_mci.c
-new file mode 100644
-index 0000000000..84cfc213de
---- /dev/null
-+++ b/hw/sd/phytium_e2000_mci.c
-@@ -0,0 +1,95 @@
-+/*
-+ * Phytium E2000 extension to the Synopsys DesignWare MCI
-+ *
-+ * Copyright (c) 2026 Process Mission
-+ *
-+ * Author:
-+ *   Bin Meng <bin.meng@processmission.com>
-+ *
-+ * SPDX-License-Identifier: GPL-2.0-or-later
-+ */
-+
-+#include "qemu/osdep.h"
-+#include "hw/sd/phytium_e2000_mci.h"
-+
-+#include "qemu/bitops.h"
-+#include "qemu/module.h"
-+
-+#define PHYTIUM_E2000_MCI_CCLK_RDY       0x058
-+#define PHYTIUM_E2000_MCI_CLK_DIVIDER    0x114
-+#define PHYTIUM_E2000_MCI_VERID          0x280a
-+#define PHYTIUM_E2000_MCI_HCON           (BIT(27) | BIT(7))
-+#define PHYTIUM_E2000_MCI_DATA_OFFSET    0x200
-+#define PHYTIUM_E2000_MCI_FIFO_DEPTH     512
-+
-+struct PhytiumE2000MciState {
-+    DwMciState parent_obj;
+diff --git a/include/hw/arm/phytium_e2000.h b/include/hw/arm/phytium_e2000.h
+index baf9edd261..3d45a82811 100644
+--- a/include/hw/arm/phytium_e2000.h
++++ b/include/hw/arm/phytium_e2000.h
+@@ -24,9 +24,12 @@
+ #define TYPE_PHYTIUM_E2000_SOC "phytium-e2000-soc"
+ OBJECT_DECLARE_SIMPLE_TYPE(PhytiumE2000SoCState, PHYTIUM_E2000_SOC)
+ 
+-#define PHYTIUM_E2000_NUM_CPUS 4
+-#define PHYTIUM_E2000_NUM_MCIS 2
+-#define PHYTIUM_E2000_NUM_GEMS 4
++#define PHYTIUM_E2000_NUM_CPUS        4
++#define PHYTIUM_E2000_NUM_MCIS        2
++#define PHYTIUM_E2000_NUM_GEMS        4
++#define PHYTIUM_E2000_NUM_AHCIS       2
++#define PHYTIUM_E2000_NUM_SATA_PORTS  1
++#define PHYTIUM_E2000_SATA_BOOT_AHCI  1
+ 
+ enum {
+     PHYTIUM_E2000_QSPI_DIRECT,
+@@ -53,10 +56,12 @@ enum {
+     PHYTIUM_E2000_BOARD_CTRL,
+     PHYTIUM_E2000_XHCI0,
+     PHYTIUM_E2000_XHCI1,
++    PHYTIUM_E2000_AHCI0,
+     PHYTIUM_E2000_GEM0,
+     PHYTIUM_E2000_GEM1,
+     PHYTIUM_E2000_GEM2,
+     PHYTIUM_E2000_GEM3,
++    PHYTIUM_E2000_AHCI1,
+     PHYTIUM_E2000_RNG_REGS,
+     PHYTIUM_E2000_PLATFORM_CTRL,
+     PHYTIUM_E2000_SECURITY_CTRL,
+@@ -77,6 +82,7 @@ struct PhytiumE2000SoCState {
+ 
+     DeviceState *gic;
+     PhytiumE2000QSPIState *qspi;
++    DeviceState *ahci[PHYTIUM_E2000_NUM_AHCIS];
+     PhytiumE2000PBRState *pbr;
+     PhytiumE2000MciState *mci[PHYTIUM_E2000_NUM_MCIS];
+     CadenceGEMState *gem[PHYTIUM_E2000_NUM_GEMS];
+@@ -107,5 +113,8 @@ void phytium_e2000_soc_attach_sd_card(PhytiumE2000SoCState *s,
+                                       BlockBackend *blk);
+ void phytium_e2000_soc_attach_qspi_flash(PhytiumE2000SoCState *s,
+                                          DeviceState *flash);
++void phytium_e2000_soc_attach_sata(PhytiumE2000SoCState *s,
++                                   unsigned int index,
++                                   DriveInfo **drives);
+ 
+ #endif
+diff --git a/hw/arm/phytium_e2000.c b/hw/arm/phytium_e2000.c
+index 4ded28814e..bc3491ca27 100644
+--- a/hw/arm/phytium_e2000.c
++++ b/hw/arm/phytium_e2000.c
+@@ -19,6 +19,8 @@
+ #include "hw/arm/phytium_e2000.h"
+ #include "hw/char/pl011.h"
+ #include "hw/core/qdev-properties.h"
++#include "hw/ide/ahci-sysbus.h"
++#include "hw/ide/ide-bus.h"
+ #include "hw/intc/arm_gicv3_common.h"
+ #include "hw/intc/arm_gicv3_its_common.h"
+ #include "hw/i2c/designware_i2c.h"
+@@ -85,10 +87,12 @@ const MemMapEntry phytium_e2000_memmap[] = {
+     [PHYTIUM_E2000_BOARD_CTRL] =     { 0x31800000, 0x01400000 },
+     [PHYTIUM_E2000_XHCI0] =          { 0x31a08000, 0x00018000 },
+     [PHYTIUM_E2000_XHCI1] =          { 0x31a28000, 0x00018000 },
++    [PHYTIUM_E2000_AHCI0] =          { 0x31a40000, 0x00001000 },
+     [PHYTIUM_E2000_GEM0] =           { 0x3200c000, 0x00002000 },
+     [PHYTIUM_E2000_GEM1] =           { 0x3200e000, 0x00002000 },
+     [PHYTIUM_E2000_GEM2] =           { 0x32010000, 0x00002000 },
+     [PHYTIUM_E2000_GEM3] =           { 0x32012000, 0x00002000 },
++    [PHYTIUM_E2000_AHCI1] =          { 0x32014000, 0x00001000 },
+     [PHYTIUM_E2000_RNG_REGS] =       { 0x32a36000, 0x00001000 },
+     [PHYTIUM_E2000_PLATFORM_CTRL] =  { 0x32e40000, 0x00010000 },
+     [PHYTIUM_E2000_SECURITY_CTRL] =  { 0x32f00000, 0x00001000 },
+@@ -124,6 +128,11 @@ static const int phytium_e2000_xhci_irqmap[] = {
+     [1] = 17,
+ };
+ 
++static const int phytium_e2000_ahci_irqmap[] = {
++    [0] = 42,
++    [1] = 43,
 +};
 +
-+/*
-+ * The vendor driver polls CCLK_RDY after programming its private divider.
-+ * QEMU has no controller clock tree, so completion is immediate while the
-+ * divider remains ordinary storage for firmware readback.
-+ */
-+static bool phytium_e2000_mci_read(DwMciState *s, hwaddr offset,
-+                                   uint64_t *value, unsigned size)
+ static const uint8_t phytium_e2000_gem_num_queues[] = { 8, 4, 4, 4 };
+ 
+ static const int
+@@ -409,6 +418,22 @@ static void phytium_e2000_create_gem(PhytiumE2000SoCState *s, int index)
+     }
+ }
+ 
++static void phytium_e2000_create_ahci(PhytiumE2000SoCState *s, int index)
 +{
-+    if (size != sizeof(uint32_t)) {
-+        return false;
-+    }
++    int map_idx = index ? PHYTIUM_E2000_AHCI1 : PHYTIUM_E2000_AHCI0;
++    DeviceState *dev = qdev_new(TYPE_SYSBUS_AHCI);
++    g_autofree char *name = g_strdup_printf("ahci%d", index);
 +
-+    switch (offset) {
-+    case PHYTIUM_E2000_MCI_CCLK_RDY:
-+        *value = 1;
-+        return true;
-+    case PHYTIUM_E2000_MCI_CLK_DIVIDER:
-+        *value = s->regs[offset / sizeof(uint32_t)];
-+        return true;
-+    default:
-+        return false;
-+    }
++    s->ahci[index] = dev;
++    object_property_add_child(OBJECT(s), name, OBJECT(dev));
++    qdev_prop_set_uint32(dev, "num-ports", PHYTIUM_E2000_NUM_SATA_PORTS);
++    sysbus_realize_and_unref(SYS_BUS_DEVICE(dev), &error_fatal);
++    sysbus_mmio_map(SYS_BUS_DEVICE(dev), 0,
++        phytium_e2000_memmap[map_idx].base);
++    sysbus_connect_irq(SYS_BUS_DEVICE(dev), 0,
++        qdev_get_gpio_in(s->gic, phytium_e2000_ahci_irqmap[index]));
 +}
 +
-+static bool phytium_e2000_mci_write(DwMciState *s, hwaddr offset,
-+                                    uint64_t value, unsigned size)
+ static void phytium_e2000_create_xhci(PhytiumE2000SoCState *s, int index)
+ {
+     int map_idx = PHYTIUM_E2000_XHCI0 + index;
+@@ -815,6 +840,17 @@ void phytium_e2000_soc_attach_qspi_flash(PhytiumE2000SoCState *s,
+     qdev_connect_gpio_out_named(DEVICE(s->qspi), "cs", 0, flash_cs);
+ }
+ 
++void phytium_e2000_soc_attach_sata(PhytiumE2000SoCState *s,
++                                   unsigned int index,
++                                   DriveInfo **drives)
 +{
-+    if (size != sizeof(uint32_t)) {
-+        return false;
++    SysbusAHCIState *sysahci;
++
++    g_assert(index < ARRAY_SIZE(s->ahci));
++    sysahci = SYSBUS_AHCI(s->ahci[index]);
++    ahci_ide_create_devs(&sysahci->ahci, drives);
++}
++
+ static void phytium_e2000_soc_realize(DeviceState *dev, Error **errp)
+ {
+     PhytiumE2000SoCState *s = PHYTIUM_E2000_SOC(dev);
+@@ -851,6 +887,9 @@ static void phytium_e2000_soc_realize(DeviceState *dev, Error **errp)
+     for (i = 0; i < PHYTIUM_E2000_NUM_XHCIS; i++) {
+         phytium_e2000_create_xhci(s, i);
+     }
++    for (i = 0; i < PHYTIUM_E2000_NUM_AHCIS; i++) {
++        phytium_e2000_create_ahci(s, i);
++    }
+     for (i = 0; i < PHYTIUM_E2000_NUM_GEMS; i++) {
+         phytium_e2000_create_gem(s, i);
+     }
+diff --git a/hw/arm/phytium_e2000_machine.c b/hw/arm/phytium_e2000_machine.c
+index 5ca2922e91..9c41403ba9 100644
+--- a/hw/arm/phytium_e2000_machine.c
++++ b/hw/arm/phytium_e2000_machine.c
+@@ -23,6 +23,7 @@
+ #include "hw/arm/phytium_e2000.h"
+ #include "hw/core/boards.h"
+ #include "hw/core/qdev-properties.h"
++#include "hw/ide/ide-bus.h"
+ #include "qom/object.h"
+ #include "target/arm/cpu-qom.h"
+ 
+@@ -50,6 +51,7 @@ struct PhytiumE2000MachineClass {
+     const char *direct_boot_dtb;
+     const char *pbr_boot_mode;
+     const char *qspi_flash_model;
++    bool has_sata_boot;
+ };
+ 
+ static BlockBackend *phytium_e2000_drive_blk(BlockInterfaceType type,
+@@ -84,6 +86,19 @@ static void phytium_e2000_attach_qspi_flash(
+     phytium_e2000_soc_attach_qspi_flash(&s->soc, flash);
+ }
+ 
++static void phytium_e2000_attach_sata(PhytiumE2000MachineState *s)
++{
++    DriveInfo *hd[PHYTIUM_E2000_NUM_SATA_PORTS] = {};
++
++    /*
++     * The COMe boot disk is wired to the second fixed AHCI controller. U-Boot
++     * probes both controllers and exposes the only attached disk as scsi 0.
++     */
++    ide_drive_get(hd, ARRAY_SIZE(hd));
++    phytium_e2000_soc_attach_sata(&s->soc,
++                                  PHYTIUM_E2000_SATA_BOOT_AHCI, hd);
++}
++
+ static void phytium_e2000_reject_legacy_firmware(
+     MachineState *ms, PhytiumE2000MachineClass *pemc)
+ {
+@@ -217,6 +232,12 @@ static void phytium_e2000_init(MachineState *ms)
+         exit(1);
+     }
+ 
++    if (!pemc->has_sata_boot && drive_get_by_index(IF_IDE, 0)) {
++        error_report("%s does not expose a SATA boot disk; "
++                     "use if=sd,index=0", pemc->machine_name);
++        exit(1);
 +    }
 +
-+    switch (offset) {
-+    case PHYTIUM_E2000_MCI_CCLK_RDY:
-+        return true;
-+    case PHYTIUM_E2000_MCI_CLK_DIVIDER:
-+        s->regs[offset / sizeof(uint32_t)] = value;
-+        return true;
-+    default:
-+        return false;
+     phytium_e2000_reject_legacy_firmware(ms, pemc);
+     phytium_e2000_create_ram(s);
+     if (!ms->kernel_filename &&
+@@ -239,6 +260,9 @@ static void phytium_e2000_init(MachineState *ms)
+     if (pemc->qspi_flash_model) {
+         phytium_e2000_attach_qspi_flash(s, pemc->qspi_flash_model);
+     }
++    if (pemc->has_sata_boot) {
++        phytium_e2000_attach_sata(s);
 +    }
-+}
-+
-+static void phytium_e2000_mci_class_init(ObjectClass *klass, const void *data)
-+{
-+    DwMciClass *dmc = DW_MCI_CLASS(klass);
-+
-+    dmc->verid = PHYTIUM_E2000_MCI_VERID;
-+    dmc->hcon = PHYTIUM_E2000_MCI_HCON;
-+    dmc->data_offset = PHYTIUM_E2000_MCI_DATA_OFFSET;
-+    dmc->fifo_depth = PHYTIUM_E2000_MCI_FIFO_DEPTH;
-+    dmc->vendor_read = phytium_e2000_mci_read;
-+    dmc->vendor_write = phytium_e2000_mci_write;
-+}
-+
-+static const TypeInfo phytium_e2000_mci_info = {
-+    .name = TYPE_PHYTIUM_E2000_MCI,
-+    .parent = TYPE_DW_MCI,
-+    .instance_size = sizeof(PhytiumE2000MciState),
-+    .class_init = phytium_e2000_mci_class_init,
-+};
-+
-+static void phytium_e2000_mci_register_types(void)
-+{
-+    type_register_static(&phytium_e2000_mci_info);
-+}
-+
-+type_init(phytium_e2000_mci_register_types)
+ 
+     firmware_loaded = phytium_e2000_soc_firmware_loaded(&s->soc);
+     s->bootinfo.ram_size = ms->ram_size;
+@@ -315,6 +339,7 @@ static void phytium_pi_class_init(ObjectClass *oc, const void *data)
+     pemc->machine_name = "phytium-pi";
+     pemc->direct_boot_dtb = "phytiumpi_firefly.dtb";
+     pemc->pbr_boot_mode = PHYTIUM_E2000_PBR_BOOT_MODE_SD0;
++    pemc->has_sata_boot = false;
+ }
+ 
+ static void phytium_e2000_come_class_init(ObjectClass *oc, const void *data)
+@@ -324,10 +349,12 @@ static void phytium_e2000_come_class_init(ObjectClass *oc, const void *data)
+         PHYTIUM_E2000_MACHINE_CLASS(oc);
+ 
+     mc->desc = "Phytium E2000Q COMe Development Board";
++    mc->block_default_type = IF_IDE;
+     pemc->machine_name = "phytium-e2000-come";
+     pemc->direct_boot_dtb = "e2000q-come-board.dtb";
+     pemc->pbr_boot_mode = PHYTIUM_E2000_PBR_BOOT_MODE_QSPI;
+     pemc->qspi_flash_model = "gd25q128";
++    pemc->has_sata_boot = true;
+ }
+ 
+ static const TypeInfo phytium_e2000_base_info = {
 diff --git a/hw/arm/Kconfig b/hw/arm/Kconfig
-index 7bc85f4f9f..84d0cefd81 100644
+index 988e8e0327..9b6a1f1d5b 100644
 --- a/hw/arm/Kconfig
 +++ b/hw/arm/Kconfig
-@@ -132,6 +132,7 @@ config PHYTIUM_E2000
+@@ -131,10 +131,13 @@ config PHYTIUM_E2000
+     default y
      depends on TCG && AARCH64
      imply PCI_DEVICES
++    select AHCI_SYSBUS
      select ARM_GIC
-+    select DW_MCI
+     select CADENCE
+     select DESIGNWARE_I2C
+     select DW_MCI
++    select IDE_BUS
++    select IDE_DEV
      select PCI_EXPRESS
      select PCI_EXPRESS_GENERIC_BRIDGE
-     select PL011
-diff --git a/hw/sd/meson.build b/hw/sd/meson.build
-index d7b97cdca4..5792d0c923 100644
---- a/hw/sd/meson.build
-+++ b/hw/sd/meson.build
-@@ -6,6 +6,7 @@ system_ss.add(when: 'CONFIG_SDHCI_PCI', if_true: files('sdhci-pci.c'))
- system_ss.add(when: 'CONFIG_SSI_SD', if_true: files('ssi-sd.c'))
- 
- system_ss.add(when: 'CONFIG_OMAP', if_true: files('omap_mmc.c'))
-+system_ss.add(when: 'CONFIG_PHYTIUM_E2000', if_true: files('phytium_e2000_mci.c'))
- system_ss.add(when: 'CONFIG_RASPI', if_true: files('bcm2835_sdhost.c'))
- system_ss.add(when: 'CONFIG_ASPEED_SOC', if_true: files('aspeed_sdhci.c'))
- system_ss.add(when: 'CONFIG_ALLWINNER_H3', if_true: files('allwinner-sdhost.c'))
+     select PHYTIUM_E2000_QSPI
 -- 
 2.53.0
 

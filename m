@@ -4,28 +4,28 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 62E58C79FA1
-	for <qemu-arm@archiver.kernel.org>; Tue,  8 Sep 2026 10:45:23 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 58D9DC79FA1
+	for <qemu-arm@archiver.kernel.org>; Tue,  8 Sep 2026 10:45:27 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1x3tIP-0000gC-Fp; Tue, 08 Sep 2026 06:43:21 -0400
+	id 1x3tIn-0001q9-J3; Tue, 08 Sep 2026 06:43:45 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <bin.meng@processmission.com>)
- id 1x3tIN-0000Zg-UQ; Tue, 08 Sep 2026 06:43:19 -0400
+ id 1x3tIm-0001mu-27; Tue, 08 Sep 2026 06:43:44 -0400
 Received: from mail-japanwestazlp170120003.outbound.protection.outlook.com
  ([2a01:111:f403:c406::3] helo=OS8PR02CU002.outbound.protection.outlook.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <bin.meng@processmission.com>)
- id 1x3tIM-0006bO-1g; Tue, 08 Sep 2026 06:43:19 -0400
+ id 1x3tIk-0006jE-73; Tue, 08 Sep 2026 06:43:43 -0400
 ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=Qb3rg/OcOBKTMpTthQ9lKMnTA7mmvF3IzdVXlsYokR5UPWwH+qU2bUnhLXTzgo4u3v0qC+IIbXTxcnJN2syM/q+35sM5K0shxUReRogWTjSLWJcyeCh8B93k1jiTWMtRwueFs2SNzlie6wozm+4XZUAagsNdjLQMBDF5MFGQUVH2+FqILoNVinINKYGqxXkULEAUIZ8kNky83F/FCnAmuttDiwTsCvbdnwwRUY4uNXCIEdVSZoqObbw7aSKA0WV+oUtTIKcxpG7eAG4wG0UjjWepUumQEaN9pIxaV7K9D8GgXe14eXlbw7VMBYjX+mt7ek9Uf441cxTOnsngyrFJ0w==
+ b=Dc47l0MaRD4FX5lx81qj97YhdS6OU/jilJR7WL1d8mQ0SFFCzpnhRtuCB42c9PKFz2B8k8ncZNqt6/EVEJTpnMsiwEl7G2iVHLFgLtjEdrBfAqKIf4MuRC/qYUFcBKi6ubHzNKplJpnL+ZtjhBwuA5jDfY+UtkJPJRLAq0+7+k5YB3AALc/Uw6R7oeHfXxtIkRYChFW1pyar0AcwS9x+QTe7Z9n4A9eSMaTBw9vf1QbFsKQn5dQ2Zsl4hWnaDaeDdL4TsagyoOHzGav9ryNeIMOSulLQ8ykI0mBYBQhZr1fZX5r+rbB6+Ghk4W9g++NBi1Xvz6xOKOKL+r9LBZc5qQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
  s=arcselector10001;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=XgvwueYYGFr/+qNDJc1Q7StdtAXGmXrV/pS2H2FyQf4=;
- b=WbOkQ5L5E/iDazkkn5g6p9FVWsURzhUtP1u0kja2tV5grfCBGsLRPeHg5VW680rBmiTElJCL1spWnW53aSf5vTSwbKTGe5ZlZZg5QnenM9PLP4d6PznK9V/g/YCqiqw5X9iGqC2uB8gBgPkv+hGv8n/7SFOzXZrqp2S2yB4VzuWiY++Y4qOsKqTr/pNPsGOEmP8evoWnasn+za0pQK2p01oQ0Wv0yaYsW/d/xpqjIUzdj4UIAiAooSsdiV4ckwExJzeQiGxrS0h0CS1oPxfioOprm8CWC1zc1nueD/gVGUh24lOVJOl665iQm7gk7uT9WV9D+HX/+wfohrUkt1qaiw==
+ bh=V2Mwtf6ufQ2BTKr1+tIn7JMew4bc8JQQe5f65TE+1Ik=;
+ b=UiqECZBtZ49T5H1nD3tCTxAVGW1JmKdQqeK/LoU/6fwcNYSDmzo/z2o71lvNYIexMx5OXbUoX/Mt4JW/vq7SRjqnWgwjxJ0412RTcBXplc4auDHHvbDQUfS0+OKPg+amPD45Q69Q+UEZYQxK7aldXEVdlaSEXSnNN12N8N1qRrHr8RbUjhj7jGdO4JOa5kdTRQ64nst3x718Tu+rhFgsnVKTwtibPI+FEnb7dt66a6E+d+HDbSK7DnBTClxNBQWSPL3Feaf7f60DQ0XC5q5o74DDk/Y39QEjSNaYny2JmWidmie8Pbi6K9S1d2c3O7bWVGOTlmK7snITAEXXTDEgEA==
 ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
  smtp.mailfrom=processmission.com; dmarc=pass action=none
  header.from=processmission.com; dkim=pass header.d=processmission.com;
@@ -33,87 +33,97 @@ ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=processmission.com;
  s=selector1;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=XgvwueYYGFr/+qNDJc1Q7StdtAXGmXrV/pS2H2FyQf4=;
- b=Ok88+bjrKMe0wcoKlUt/TKx9Wjmq+5xcr2EDKjslgJ+0KxPnIFY4m48lVL5rMLqSUIl54TMprKytXOwFcSBXDlMu3rgkgeJKfOy8QkyjYdyrEP2oZkyvPuJfXACofsXOblkjTgG1ybTr7YaeC3DsqJDEHLtugVNAukAuyezHqXk9pRXtH5o3hicMksMeoQmKv0nc5RO68NJQtV9ELKrCyuYNFKIEnMzfOkMfsqw4YmtPNRRsSt4tPCdnA/22y7EMJdM77wdsSsmsHJiDwzsF4JguLgtfWyqshmAlBUnFV8uogoTwrzOoUk4+DX+ukipO6B87PZskEtpGVMQ135tLIw==
+ bh=V2Mwtf6ufQ2BTKr1+tIn7JMew4bc8JQQe5f65TE+1Ik=;
+ b=bK0jevN0dwY5G8M++zpTcenpgZh0TVVdOOlp+PiwQwVe8F39vQhM3MCEj7Q1iJzWobbEzyUjNH3bOYDS1XIlXs3D+Fs+jn0ti6Ns2y3s0/HhueDUruE0jZP10vq4+x7il5mPBzTIOZq0uNZm/hQiouAhivQuNp4bhPBhzwUWTB2V6qElVSpcy1dQnxa1IbBmYt92j/nmUl4S8+kROi52qTNllCtBzj84QuIrhEmFupRQ4PE2lw2BXTcCghCXhkTSYf+Ls/kbdKOk4W/d4BHjxZ329952VND4GkspCDoIX+L9t569K68+oYt8rc17PZm8RN6xcp21kwqbb9z1WYy8GA==
 Authentication-Results: dkim=none (message not signed)
  header.d=none;dmarc=none action=none header.from=processmission.com;
 Received: from PSAPR02MB4984.apcprd02.prod.outlook.com (2603:1096:301:78::7)
  by SEYPR02MB6579.apcprd02.prod.outlook.com (2603:1096:101:139::9) with
  Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.21.382.15; Tue, 8 Sep
- 2026 10:43:02 +0000
+ 2026 10:43:34 +0000
 Received: from PSAPR02MB4984.apcprd02.prod.outlook.com
  ([fe80::fd75:bbda:6f27:c616]) by PSAPR02MB4984.apcprd02.prod.outlook.com
  ([fe80::fd75:bbda:6f27:c616%6]) with mapi id 15.21.0382.014; Tue, 8 Sep 2026
- 10:43:02 +0000
+ 10:43:34 +0000
 From: Bin Meng <bin.meng@processmission.com>
 To: QEMU <qemu-devel@nongnu.org>
-Cc: Paolo Bonzini <pbonzini@redhat.com>,
+Cc: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
  Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org
-Subject: [PATCH v2 29/32] hw/arm: phytium: Connect the Phytium E2000 SMMUv3
-Date: Tue,  8 Sep 2026 18:41:38 +0800
-Message-ID: <20260908104159.1621764-30-bin.meng@processmission.com>
+Subject: [PATCH v2 31/32] tests/functional/aarch64: Add Phytium Pi boot tests
+Date: Tue,  8 Sep 2026 18:41:40 +0800
+Message-ID: <20260908104159.1621764-32-bin.meng@processmission.com>
 X-Mailer: git-send-email 2.53.0
 In-Reply-To: <20260908104159.1621764-1-bin.meng@processmission.com>
 References: <20260908104159.1621764-1-bin.meng@processmission.com>
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
 X-ClientProxiedBy: TY4P301CA0041.JPNP301.PROD.OUTLOOK.COM
  (2603:1096:405:2be::15) To PSAPR02MB4984.apcprd02.prod.outlook.com
  (2603:1096:301:78::7)
 MIME-Version: 1.0
 X-MS-PublicTrafficType: Email
 X-MS-TrafficTypeDiagnostic: PSAPR02MB4984:EE_|SEYPR02MB6579:EE_
-X-MS-Office365-Filtering-Correlation-Id: 7bfffe73-ddfd-43b0-02f9-08df0d95f4f7
+X-MS-Office365-Filtering-Correlation-Id: 720107b9-3114-442f-e9b5-08df0d95f6c0
 X-MS-Exchange-SenderADCheck: 1
 X-MS-Exchange-AntiSpam-Relay: 0
 X-Microsoft-Antispam: BCL:0;
  ARA:13230040|1800799024|366016|376014|23010399003|3023799007|10067099003|56012099006|18002099003|22082099003;
-X-Microsoft-Antispam-Message-Info: pFaLL0uXKlh52u9ICgpLFcEotaV6wF9k/yhhpAovTM30DSb1gDG6sGPAhEDkx0ZbrtDcMeX7c22ZLiVSfqHzksJs8Eqy+u42hSTNc6Y4/GIE2p3+vK+AYbhNwGisokT9lCaudcYktmdxXbVuMkWuHU5HdeNMGnerz0AhPf9ExrT6zptCa/GnL+A1bRUEiLIwYiKxu2vN7yPPXin4R/Xa3fTj2u594YhA6KCc7clBWzxpVnqz5Bar3DtoGK/QK7CE7mRj3uAxZBCxXF5FH9u6NUjzbEkwmcB0CgbNLxPeb96yhsrR7QUoPlCu01OhN8SgnsUxP726ZRG668cxYOec1xSPBIeWok9b8Nxiul4IR1H+ALbm65yIEtZGr3nyvNtFrAHRIfRzV/q+IQHvd77bTVuBc1MbKd8E3FXWuTXIk2C4pMxNu1fUNWOkUbc2N2VPgOrlHXlcCn7UIv+KiYYiqocZzbC8X32+IVWD3KSPqQCreDRct9JHAFDBaB6L7ebuIlMqMOG39xpeAm5IMZo5kINZ10PnUDa9AUImyvRHcAjQSpfVZ/bsjU7SmYFNXPDY2X9s1VYQ9N2UU5TLj3TmHYx7E4i0tBi6IKHg6uKPQjBOc2NEYUm+cajDPG2Yx40lyJ7Gw2Z4P4TmqvynJ33WlVf+hR9/GITvzRUamaKT/io=
+X-Microsoft-Antispam-Message-Info: TOvefMDeeOBNZ+HFKMT/hA5WZFv3iI/B7uIZA8qdRAvH1d7MLbBbT2wgyr9TjQJxa9qn1gq3yX4pSyDdWtrQK/gLLjrLpkdj5ynglvGz3ZGIMUP5sxbm9IA9u01cGdR+ERxHGQ143IME07BltyynGV0Wj8lFF/+8pNN0nl0PTXM+ZKu9z3+vUnQRCpUM6bSfXIbYLRyC1IH/CRG0H8rGJMH7W9uxN20BtRcmCPfjLSVlguRfFNocuJC+KC5XiaJTwXvwwu3+ztv8BVOUTSg9+JQrCOS56IESL0f0cLpYW7ykItAhBixSXYIlYuWn96EoapwK3oWKRi5/XzMePEviYCFxe2Dt3er6+ACOiXF82f/faKHPX0EOw/w1FgXZol/EXOpY10n2pFhzryBaPT3WOUqMBNvFBG3E6Szfmr6z5dUHBQcJKHodkE9N8mFfUsrAUoJS4IRWGNVXTnwPPTnLS3HnjtnV7y3ZgRi/Oy9VmxH/vk178AB54s7PONQOCCQEo6+En3hOHFPXGlc9d6KFX7aYYyzrpQ5lHbl12qSR8pAn7amUzkiMmkonSo7g67IseYajAKpZbaV0u3py0be9VqyyNBplf9ngHvXQJbnz7ENBwBrF2z3FKnId1p5qPhkqQkjx0RA+V9C866z6MveTeFNHJQ0IwpiRusx0mxuZsFk=
 X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
  IPV:NLI; SFV:NSPM; H:PSAPR02MB4984.apcprd02.prod.outlook.com; PTR:; CAT:NONE;
  SFS:(13230040)(1800799024)(366016)(376014)(23010399003)(3023799007)(10067099003)(56012099006)(18002099003)(22082099003);
  DIR:OUT; SFP:1102; 
 X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?g1x6MlunFzx1hz+MhwVki1o7SZEqSTlKPn+S0Jc4TCpGO29sT+at8CJOXFIv?=
- =?us-ascii?Q?VKhGSN25KVXNJCPcKuEFCN97Vk40Y8UURARlfbp2HoWB83dW28TNXN32ONc5?=
- =?us-ascii?Q?rgF/WmwRtORNlgZ9oLaH0v/y2Nl/HXSxg71T53nsSIrSyYBIUSao/DRIFyim?=
- =?us-ascii?Q?Ukf9eltV8ISHH6jN45iE2FTTy4qOZd1FyMh9rFYoVZ87+XnivLKlWuIB8Wgi?=
- =?us-ascii?Q?yU/kT2cFrPRsTDmAhEHwBQPbS8BqHuuiabcck9ptok2KFYN5Dsn0dDmENt2j?=
- =?us-ascii?Q?Pg7ogRPWOTVFuGrC8IBWOo3+LLXEgqc2omJ/Hk85qHdFvBgSa8wBot8vMXCy?=
- =?us-ascii?Q?YQNgAYjdXus2Pv3gJKGvDpt4vvru1IzIBC/O8hXB7QsUvQzCOf5kc1HkoUbO?=
- =?us-ascii?Q?1ZMlVx1Zx+OpLp2XODBFb6WHzDvo/JPhqTtrDvjNjd6QUW+WbrZtoEO5Xm/e?=
- =?us-ascii?Q?h+lvPoKD31JVN4N3JX4JAvVrFFPuY1mHWEqwbIEbVe57vay3jvpXo5eWfSKw?=
- =?us-ascii?Q?+SbhSJEidWQlOQt1jEjOo5l/RfEIr+HzrUmhTc8AlQB7J43wYyb2zI9fW3zv?=
- =?us-ascii?Q?BLiPnpC4ihs+islNCKPp+4oi33Z0S+iDlG+CWGP9g2nh2EsItjATojO2fgq7?=
- =?us-ascii?Q?ayDCoe2EkwJClsdU86uZTg4pAVM4FiYoHzTO+w44jtwy3P81bffK+QD02Gat?=
- =?us-ascii?Q?W+1Ow6mU2f+iCjfp5NymB0nIrr3nWVtRV7gFmddngwIQlRRMTymXh1ieDvXC?=
- =?us-ascii?Q?60hDF4dn/3icS1NgSC+tZhYJF20lWb3Hoe6cwoY8uo2gHafnp3OCUtcnVf/Q?=
- =?us-ascii?Q?lcd64QTTfJFT2OC0RykLe2VUpdYHVjZed0JkqaOXrDzalk5lw+CzLtw80zFM?=
- =?us-ascii?Q?XFlcHz32AhWE0CO7OziJB8f6bENynHMXHqKs2nZ2UMXOR7uLH4CuqPgG4F7x?=
- =?us-ascii?Q?HZagyHYD8W6QukeONEKSREQY5swU+wKVUSlrxRngLb9Q5iKUwVT296wXmy5z?=
- =?us-ascii?Q?Ds899P4nuK2JPuA8RhGSfwI6IyKr+nlUJJ7b0ZPWFZqWMIXMf2YOY2CUNyYI?=
- =?us-ascii?Q?bPAG7snVH8VibIO+VsAFARLyEmiQYqcSL5f3Efkq1H5qmbHnnMDNFG6/UTkg?=
- =?us-ascii?Q?1wwgQvsfrZ3FcaLRN87sbt9ZDKRGn2jRQc7OzlzvNYu/9/jCS2mILF5A0S4C?=
- =?us-ascii?Q?yu7xbU0BxU1FYgdfG5ig/SDpioLFj0dYiprVCPrejhfEV8vgN19Ch4VfM/LK?=
- =?us-ascii?Q?bhJwXBwtPEYkJ4ejSAgNDYDZ6a7BRpmvXuo00Rb2ssq3MKjWHPutLD5c7JMx?=
- =?us-ascii?Q?c4Y03vYBNJ832Pi5qC4IbsVmjV91vXMMuIqjJ82adLB1Ac8Nopx41wdQwxrT?=
- =?us-ascii?Q?FmhBTv4CdlmCE5Z6Crjpo3HuPKF0dTwn/LXZTZUivfgDGbYuXjd4cfXYPy3c?=
- =?us-ascii?Q?Jmt7FgxAkAB7T6gyYi7Q1ZYc2mV/zcBnng0cfD/lJTVFjVeEnrH3m1k2pD6U?=
- =?us-ascii?Q?B06cf+4EeD3lGIVZnyAI+pOZ4Xgowsk2hB22z7le43MBy83Qo8lCT4UerBWB?=
- =?us-ascii?Q?DnufbFR8cUDvQF5KzTSXWoWS6CxxTFkab9hV+Ni4/H7tGN6wp2z4WcWaDwMB?=
- =?us-ascii?Q?ZG32r2mNiH108p2dLQYa4VNnBnIrAM5k68wWPq5l09aTX7PVMqMAs2ES5E6Q?=
- =?us-ascii?Q?Co1ldODVCcMCx5LgpnEZQfm+kgRd4dRdzUG131m6/q5VRXgWxEH1ew5JB8E6?=
- =?us-ascii?Q?IKncqN8c9HiGtkpybOxIiY/od/JdxX8=3D?=
+X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?YmNUd2J1NWpUWERuSTdqaGRUaWhIbGtrMUFzTGhNdW9raTE0ZjBXSTBpd1BN?=
+ =?utf-8?B?Znd1b2NPSlovN3lMQThCOFczdENJQmJDL2lSNm8vM2VsOFJYUnBUVEpjZkpD?=
+ =?utf-8?B?ay9uMWlvYllJRVNQdGdVWXpVVXhHRHQ5ZElSclBFVGxCMHpPanFMeUh0cDYy?=
+ =?utf-8?B?SVBQb2xtM1JCV3VmY1ZMVGhlalI4RFd2UFBBOWQ3ZTczbjVBcktrM2dGUG9i?=
+ =?utf-8?B?bDl5cCtmazlKa1FRQ2xreWhuN2xJVnl6UWQrS1VRNjFDOTRCVHFzWUt3UkN1?=
+ =?utf-8?B?ZzVvU3hBcEFPQmszZkk3TlRtQTVZd0IrRThsdy9JK2J5MUt1Nkh1THBMSWh4?=
+ =?utf-8?B?Y3BBQzE0cTQ4elBobkFhdUpXWUd6MlYrajkyQ3l3Rkl0aTY1R0RpZUtEQ0l1?=
+ =?utf-8?B?RG1RNzlPSW5UZEROdVQ5NjlCU09vSUd4WWNCQUs0V3BqYWZHU1ZGQmROVGwv?=
+ =?utf-8?B?bG9vV0czSnhvYWZ6cW1zS080R05NSXlKeTF4clF2M3hFd1ZFTlNpWngyMGZF?=
+ =?utf-8?B?VmVpWStoTmMwd3QwTDgzM2tkdjAybEtXM3k4cUp2d2JJZVJUVmY2Y2YwaU9h?=
+ =?utf-8?B?eUJIcFJuOE94RXMvWjVjWDNocGI5cGZkY0NQTlc1dk5VeUlFVTAxbVN3MDQ5?=
+ =?utf-8?B?UlNFenBNL2F2UjJlbWlXR0h3dGtVZXg5RVBXWTViQzduQ2JqSnowUVIyMkY4?=
+ =?utf-8?B?V3dTZWZ3VWphbnZsOG5OVS9ickdscmJTQmpRYXJMUGhXZ24xYlFZdHR1VXRr?=
+ =?utf-8?B?NzgzKzFhdHRKeFUyYVNFYUhPTmtuU2xXOFdjOGNjUEl1cmdmdStCMVcxVWc2?=
+ =?utf-8?B?ZHl6VkZDUzMwcTlDOHZ5cUV6WjZYYVJFUldpTkRCRkNvZ2ZrVXpUYWVTbTlm?=
+ =?utf-8?B?V2Jpdm5Ld1JyWm8zczRFVmFreWlPdy8wTzh0SlZMRW10b1JLYU9tRlJTS2ow?=
+ =?utf-8?B?azNudHpIMzVRTUZMODFFUjBNV2d0UlFJc09ZblNBNVRQaTlmeXJwbDdMUzJ4?=
+ =?utf-8?B?L29aZUVFclZDWnkxcE5XU2swaUdFcTlWWWtacFd5aXZLci9BU2lXcldlMGtR?=
+ =?utf-8?B?ZWcrazhpYWdWdmpqVUJkbU83ai9uaXV4YUsydDhZbUJac1UrTFcxRHlIMGFi?=
+ =?utf-8?B?RkNCdjdkODhZY0txU2EwQURmWitveHNIV2JOaFNXa1RVS29ITThIKzJxc1Fy?=
+ =?utf-8?B?SVR4d0R3TmczT3g2eGFwOEJodFM5SjlPYnYxOGlncVcySGRhZDF0TGg0QkxR?=
+ =?utf-8?B?bi9jcjVLOE9tTVFrZzF1U2hBUGRTM2xLbGJCUWIvcHRrMUFCb0hiSm91RlZJ?=
+ =?utf-8?B?R3hKb2YxbythdVh0SUtHVXk1MHo1SlhhWkphT1FuaytmUFpzdi9SUllkK0FG?=
+ =?utf-8?B?QjQ3QTYvdVpKZ1dPUXJHemRaNmRPeW9jMG1RV251cldleUJuM2o4ZDJSWFMv?=
+ =?utf-8?B?eTMzS0dEWTh2NlZQUjdnOUl3UHcydHBzOGxZOC9ZbVNybklZQ0pWWGF6Q1RZ?=
+ =?utf-8?B?OVViNGtqQnh4SktNOU93UGlZRDgxdmR5ak1FeEFDUFh2K2VUQVErS2g0S3c4?=
+ =?utf-8?B?cGVaN1Noa0loYldta3VmbDlqU0tNM01KZlpSS3hDckp2SlFiZkhFTlZicXJ2?=
+ =?utf-8?B?cElxWU9uWUVpUi9xMzdEbWoreG9tUzE1ZUMyL1lrWExqa2MxTFVVYVNTUjlE?=
+ =?utf-8?B?Z0FTWG1SWExSWEZLNDVUVTVBSmJEVnFFQmpKNTAzcWhHQ3FvalpIaUNCaS9z?=
+ =?utf-8?B?MHlzdEgrV2NmU3c1dXhPU1RPdFNxN01vaFZ5MGcrdVhKbWoxaHNiVlJBZ0hE?=
+ =?utf-8?B?bVNTREtMSVhWNDYxUjBUUHcrdTZRWCtoWHJlWWNKbmtiTnFLcnV5WW1hVTdQ?=
+ =?utf-8?B?Q2o1TGNXbTBoRmxJdzMvUm1pMXF0TUJuWjIwcnJBcHVQQnljV0pLeWFBNzdy?=
+ =?utf-8?B?TWVsNVBneVNXUlNMRVVacGVqWG4raUFjVlN2R0FGVnZhaGlvUTJMZDM1c1RW?=
+ =?utf-8?B?UXdCYnFEMVdBeUc4Z1pOeFdrK0FXRTFadmRPWGpzRFUreXZmc2RseExEUTFB?=
+ =?utf-8?B?MkQ5eVVwd213TS9Fbnd6N21nVy9zOTZYdUtmZmMwdExWb0dtSTVnY0ZDYUlD?=
+ =?utf-8?B?d2MzS1ZGUlBUUEp4UVd2RHEwVjNTT3N0ZlVjZTE1WnVPY0VmR2tMamppWDA0?=
+ =?utf-8?B?dDVqTCt3MWU0M2xodWJqY3IrcUxYOWpSMk8rcVpnWFYyUE1tcmRDSEF4V240?=
+ =?utf-8?B?Wm1KM0pUMCtONUdwd21TbnJNVHh1ZkVoei9nd1h6cHdleTk5ZVJaemcyZnV4?=
+ =?utf-8?B?anVuL1VxcWkvNW1iR3BXTWN2dWFRVDlxdHZxR0lITzdWU2JhdFhlemwzbHN3?=
+ =?utf-8?Q?Vmv/MLs3k3H3373I=3D?=
 X-OriginatorOrg: processmission.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 7bfffe73-ddfd-43b0-02f9-08df0d95f4f7
+X-MS-Exchange-CrossTenant-Network-Message-Id: 720107b9-3114-442f-e9b5-08df0d95f6c0
 X-MS-Exchange-CrossTenant-AuthSource: PSAPR02MB4984.apcprd02.prod.outlook.com
 X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 08 Sep 2026 10:43:02.1907 (UTC)
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 08 Sep 2026 10:43:05.1810 (UTC)
 X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
 X-MS-Exchange-CrossTenant-Id: e0544bf7-9765-4630-ab69-0b266dc2169c
 X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: mkmHwjrS8rzUBo2IzK6pBD4jM4I2UT3OSOrepyvTqviUtGJLNQ2olmkgHzOwWu2UZEMfeD/vK/w72D3qXwZLabY4hf92lzWsPr/1HAm3AHI=
+X-MS-Exchange-CrossTenant-UserPrincipalName: GMZ2Lf64G968j1HHrZj3Yz+UZqhkeBtIUGOdfMNgFtdq4YAA6JQqUPOcvHQZpw9zPRVsUuOjviXMv26pqtkC8P8+Y522yZgUeCVk3uQVcrw=
 X-MS-Exchange-Transport-CrossTenantHeadersStamped: SEYPR02MB6579
 Received-SPF: pass client-ip=2a01:111:f403:c406::3;
  envelope-from=bin.meng@processmission.com;
@@ -139,129 +149,128 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-The vendor device tree routes PCIe DMA through an Arm SMMUv3, but
-its MMIO range currently reaches an unimplemented placeholder. Linux
-therefore reports that the IOMMU has no translation support.
+The Phytium Pi machine supports both the board firmware flow from SD
+and direct Linux boot. Exercise both paths with an SDK image bundle so
+firmware handoff and kernel loading regressions are caught.
 
-Attach the generic SMMUv3 model to the GPEX root bus with the
-documented interrupt wiring and document stage-1 DMA translation
-support.
+Verify U-Boot, PBF relocation, the Linux handoff, and login for the
+firmware path. The Linux test loads the bundled kernel, DTB, and
+initramfs and waits for the same login prompt.
 
 Signed-off-by: Bin Meng <bin.meng@processmission.com>
-
+Reviewed-by: Alex Bennée <alex.bennee@linaro.org>
 ---
 
-Changes in v2:
-- Move SMMUv3 into the E2000 SoC
+(no changes since v1)
 
- hw/arm/phytium_e2000.c | 39 +++++++++++++++++++++++++++++++++++++--
- hw/arm/Kconfig         |  1 +
- 2 files changed, 38 insertions(+), 2 deletions(-)
+ tests/functional/aarch64/meson.build        |  2 +
+ tests/functional/aarch64/test_phytium_pi.py | 77 +++++++++++++++++++++
+ 2 files changed, 79 insertions(+)
+ create mode 100644 tests/functional/aarch64/test_phytium_pi.py
 
-diff --git a/hw/arm/phytium_e2000.c b/hw/arm/phytium_e2000.c
-index cb94318430..b4ccf71d0c 100644
---- a/hw/arm/phytium_e2000.c
-+++ b/hw/arm/phytium_e2000.c
-@@ -17,6 +17,7 @@
- #include "exec/hwaddr.h"
- #include "hw/arm/bsa.h"
- #include "hw/arm/phytium_e2000.h"
-+#include "hw/arm/smmuv3.h"
- #include "hw/char/pl011.h"
- #include "hw/core/qdev-properties.h"
- #include "hw/ide/ahci-sysbus.h"
-@@ -49,6 +50,7 @@
- 
- #define PHYTIUM_E2000_NUM_UARTS       7
- #define PHYTIUM_E2000_NUM_XHCIS       2
-+#define PHYTIUM_E2000_NUM_SMMU_IRQS   4
- 
- #define PHYTIUM_E2000_MHU_BASE        0x32a00000
- #define PHYTIUM_E2000_SCP_SRAM_BASE   0x32a10000
-@@ -123,6 +125,14 @@ static const int phytium_e2000_uart_irqmap[] = {
- 
- static const int phytium_e2000_i2c_irq = 106;
- 
-+/* Keep the architectural SMMUv3 output order aligned with the vendor DT */
-+static const int phytium_e2000_smmu_irqmap[] = {
-+    [SMMU_IRQ_EVTQ] = 240,
-+    [SMMU_IRQ_PRIQ] = 239,
-+    [SMMU_IRQ_CMD_SYNC] = 236,
-+    [SMMU_IRQ_GERROR] = 242,
-+};
+diff --git a/tests/functional/aarch64/meson.build b/tests/functional/aarch64/meson.build
+index f0881bed16..71bf45e4ea 100644
+--- a/tests/functional/aarch64/meson.build
++++ b/tests/functional/aarch64/meson.build
+@@ -7,6 +7,7 @@ test_aarch64_timeouts = {
+   'device_passthrough' : 720,
+   'imx8mm_evk' : 240,
+   'imx8mp_evk' : 240,
++  'phytium_pi' : 600,
+   'raspi4' : 480,
+   'reverse_debug' : 180,
+   'rme_virt' : 1200,
+@@ -39,6 +40,7 @@ tests_aarch64_system_thorough = [
+   'imx8mp_evk',
+   'kvm',
+   'multiprocess',
++  'phytium_pi',
+   'raspi3',
+   'raspi4',
+   'replay',
+diff --git a/tests/functional/aarch64/test_phytium_pi.py b/tests/functional/aarch64/test_phytium_pi.py
+new file mode 100644
+index 0000000000..4ae0392bdd
+--- /dev/null
++++ b/tests/functional/aarch64/test_phytium_pi.py
+@@ -0,0 +1,77 @@
++#!/usr/bin/env python3
++#
++# Functional tests for the Phytium Pi machine
++#
++# Copyright (c) 2026 Process Mission
++#
++# Author:
++#   Bin Meng <bin.meng@processmission.com>
++#
++# SPDX-License-Identifier: GPL-2.0-or-later
 +
- static const int phytium_e2000_xhci_irqmap[] = {
-     [0] = 16,
-     [1] = 17,
-@@ -462,7 +472,7 @@ static int phytium_e2000_pcie_map_irq(PCIDevice *pdev, int pin)
-     return pin;
- }
- 
--static void phytium_e2000_create_pcie(PhytiumE2000SoCState *s)
-+static PCIBus *phytium_e2000_create_pcie(PhytiumE2000SoCState *s)
- {
-     DeviceState *dev = qdev_new(TYPE_GPEX_HOST);
-     SysBusDevice *sbd = SYS_BUS_DEVICE(dev);
-@@ -538,6 +548,29 @@ static void phytium_e2000_create_pcie(PhytiumE2000SoCState *s)
-             qdev_get_gpio_in(s->gic, phytium_e2000_pcie_irqmap[i]));
-         gpex_set_irq_num(GPEX_HOST(dev), i, phytium_e2000_pcie_irqmap[i]);
-     }
++from qemu_test import Asset, LinuxKernelTest
++from qemu_test import skipBigDataTest, skipIfMissingCommands
 +
-+    return PCI_HOST_BRIDGE(dev)->bus;
-+}
 +
-+static void phytium_e2000_create_smmu(PhytiumE2000SoCState *s, PCIBus *bus)
-+{
-+    DeviceState *dev = qdev_new(TYPE_ARM_SMMUV3);
-+    SysBusDevice *sbd = SYS_BUS_DEVICE(dev);
-+    int i;
++class PhytiumPiMachine(LinuxKernelTest):
 +
-+    object_property_add_child(OBJECT(s), "smmu", OBJECT(dev));
-+    object_property_set_link(OBJECT(dev), "primary-bus", OBJECT(bus),
-+                             &error_abort);
-+    object_property_set_link(OBJECT(dev), "memory",
-+                             OBJECT(get_system_memory()), &error_abort);
-+    sysbus_realize_and_unref(sbd, &error_fatal);
-+    sysbus_mmio_map_overlap(sbd, 0,
-+        phytium_e2000_memmap[PHYTIUM_E2000_SYSTEM_CTRL].base, 2);
++    ASSET_BUILDROOT = Asset(
++        ('https://github.com/processmission/qemu-machine-images/releases/'
++         'download/v1.0.0/aarch64-phytium-pi-v1.0.0.tar.zst'),
++        '5219d52b862e1245b12f79ba72e9a6144f5e0cf1a50061f8fda2db0aeeb92428')
 +
-+    for (i = 0; i < PHYTIUM_E2000_NUM_SMMU_IRQS; i++) {
-+        sysbus_connect_irq(sbd, i,
-+            qdev_get_gpio_in(s->gic, phytium_e2000_smmu_irqmap[i]));
-+    }
- }
- 
- static void phytium_e2000_create_mci(PhytiumE2000SoCState *s, int index)
-@@ -858,6 +891,7 @@ void phytium_e2000_soc_attach_sata(PhytiumE2000SoCState *s,
- static void phytium_e2000_soc_realize(DeviceState *dev, Error **errp)
- {
-     PhytiumE2000SoCState *s = PHYTIUM_E2000_SOC(dev);
-+    PCIBus *pcie_bus;
-     int i;
- 
-     if (!s->num_cpus || s->num_cpus > PHYTIUM_E2000_NUM_CPUS) {
-@@ -898,7 +932,8 @@ static void phytium_e2000_soc_realize(DeviceState *dev, Error **errp)
-         phytium_e2000_create_gem(s, i);
-     }
- 
--    phytium_e2000_create_pcie(s);
-+    pcie_bus = phytium_e2000_create_pcie(s);
-+    phytium_e2000_create_smmu(s, pcie_bus);
- }
- 
- static void phytium_e2000_soc_class_init(ObjectClass *oc, const void *data)
-diff --git a/hw/arm/Kconfig b/hw/arm/Kconfig
-index 9b6a1f1d5b..f32ce34602 100644
---- a/hw/arm/Kconfig
-+++ b/hw/arm/Kconfig
-@@ -133,6 +133,7 @@ config PHYTIUM_E2000
-     imply PCI_DEVICES
-     select AHCI_SYSBUS
-     select ARM_GIC
-+    select ARM_SMMUV3
-     select CADENCE
-     select DESIGNWARE_I2C
-     select DW_MCI
++    def _prepare_images(self):
++        self.set_machine('phytium-pi')
++
++        archive_path = self.uncompress(
++            self.ASSET_BUILDROOT,
++            target='aarch64-phytium-pi-v1.0.0.tar',
++            format='zstd')
++        self.archive_extract(archive_path, format='tar')
++
++        self.vm.set_console(console_index=1)
++        self.vm.add_args('-smp', '4',
++                         '-m', '4G',
++                         '-display', 'none',
++                         '-nic', 'none',
++                         '-no-reboot')
++
++    @skipIfMissingCommands('zstd')
++    @skipBigDataTest()
++    def test_firmware_boot(self):
++        self._prepare_images()
++        sdcard = self.scratch_file('images', 'sdcard.img')
++
++        self.vm.add_args(
++            '-snapshot',
++            '-drive', f'file={sdcard},format=raw,if=sd,index=0')
++        self.vm.launch()
++
++        self.wait_for_console_pattern('U-Boot 2022.01')
++        self.wait_for_console_pattern('PBF relocate done')
++        self.wait_for_console_pattern('Starting kernel ...')
++        self.wait_for_console_pattern('Phytium login:')
++
++    @skipIfMissingCommands('zstd')
++    @skipBigDataTest()
++    def test_linux_boot(self):
++        self._prepare_images()
++        kernel = self.scratch_file('images', 'Image.gz')
++        dtb = self.scratch_file('images', 'phytiumpi_firefly.dtb')
++        initrd = self.scratch_file('images', 'rootfs.cpio.gz')
++
++        self.vm.add_args(
++            '-kernel', kernel,
++            '-dtb', dtb,
++            '-initrd', initrd,
++            '-append', 'console=ttyAMA1,115200 '
++                       'earlycon=pl011,mmio32,0x2800d000 rdinit=/init')
++        self.vm.launch()
++
++        self.wait_for_console_pattern('Booting Linux on physical CPU')
++        self.wait_for_console_pattern('Machine model: Phytium Pi Board')
++        self.wait_for_console_pattern('Phytium login:')
++
++
++if __name__ == '__main__':
++    LinuxKernelTest.main()
 -- 
 2.53.0
 

@@ -4,45 +4,45 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5BE9BC79FB6
-	for <qemu-arm@archiver.kernel.org>; Thu, 10 Sep 2026 01:45:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EC6B5C79FB6
+	for <qemu-arm@archiver.kernel.org>; Thu, 10 Sep 2026 01:45:48 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1x4Tqp-0005UW-AV; Wed, 09 Sep 2026 21:45:19 -0400
+	id 1x4Tqh-0005TK-4b; Wed, 09 Sep 2026 21:45:14 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
- id 1x4Tqg-0005QP-76; Wed, 09 Sep 2026 21:45:10 -0400
+ id 1x4Tqc-0005L4-VM; Wed, 09 Sep 2026 21:45:07 -0400
 Received: from mail-japaneastazlp170130007.outbound.protection.outlook.com
  ([2a01:111:f403:c405::7] helo=TYDPR03CU002.outbound.protection.outlook.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
- id 1x4Tqe-0004BU-Gx; Wed, 09 Sep 2026 21:45:09 -0400
+ id 1x4Tqa-0004BU-TU; Wed, 09 Sep 2026 21:45:06 -0400
 ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=pfVdiErfiTKvOPQV4MEiuVhPnnMXKOkkP0fBf9/XLubgCeZzhz6sMAIx9AbYo0UjIuEOAQr2RN22MxT3Xnqcg5PTdiejlZAoRlo2EkdDJ60avmVq1Q6UAQU9GOmDbC3FaPhFYlcNXLEylT5v/2PeGxyuO8sc2IvpEKQBnBQ4ECIeUTUis/6du3Prx/lSbmaEe11kP3P5xeg9Ks0aZVOBTtWH5UpYgAn8vS4i2WTv7dUjWSKYtg1HUCGW/ONOWpq7PyEasbUHJfh4U989EvKW32eszc4gtBJlggj41gDveVw6BzbV6rhvYVUPlZlrzBj20VeY+cu5KBG4APXWEcxFWg==
+ b=VOU88PBPoabaKc9UTjIvXsccBHeb5bdmL9U2t8zWXxHtiODVQ7hohygo/dXvoyMM6ACAKef9688RMGbAMtjMHNNulK3b3QbdezGsjFxfgfH9L9j3fSPo+a6ujBkI82RHzY5hPb0nL+XqxN15tXkiPrNyeHbvIrXaEP/Hx+YDwK6o9g/1F+Rappgapa0wFZVNJw1IDmouZYhEDwDeEW78wwteKfqdXhR3GZigNI+MuVIbLKBxAcR4PEg7ZuJfv3sXienOCc9BDJ1PkqB8/60SJuv8C8LVs8TMp1dN6eYDfyep6LkK2u93SjIi4ur5zI2P8VQ/t757boxmTVAGet93UA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
  s=arcselector10001;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=pAsaKbEcunvWuo5wSwV0RR29y2iDU96EA6RdZBfDK4I=;
- b=AgKkq6qUYrmrs30mIvGTr3LX1U7ZoX4EFhh/NqfJiABAJPTjCwrd5Wo8nJHg7xN2/EyN/HvcR6WUTKuRT123efaRlafwVawBVUV5rtSp6jolobUeoz4DOfLjHlsJaxhu8j2LmlETeb7CJiiVZpqjbuJqJesJOB2RV9iyMrbgNRTG4Ptt8fYXoJMt8B1QAAyM8TCoyT/buBuei0onf+JN55Nmx1fK+Ce45viX7jU39xxcT1lsCHlC2qwah8aeUnKk3ODuzgfJJlOm4LSCdXojpYzeM2vtou4B2Icr0uouJIdp8L9SxWZB2rggZ2g30kycYlgAR0RVC1AtLRYHdjhZcQ==
+ bh=NTdmA7LlZmTetazpST2j9g0Dux0I3RaCz80XmZlN+PE=;
+ b=hzAZRwPfvxgSl81+EaxJOfzD9PFmu2tA1xNZ8anSNPhTXPSmUVFHAbobjjCZqVTeMjXtIg2MiLXU6wd2fywfZoBnK3BAPlTflTHBBu/QexDGNRR7J1/QYkxKvJLiFp7/ieonFu6TEz/n4HKqF5TolAoQoyyb84JiVL6Btv6dwVkfVKl8Jfp4h2bP7SQrNKnrJyvTgFGwa3xywY8hSXkJHW/lTRRqsOa4M6PGcBx1BPRQVFwbQv3PwfB19JuLgdvBrsVluiPqtWGOpfWiNErjiV1r2pejmf5fgCzVKJpm/LZ1Q6grLUBYu5vUsvmGJ2I1WuAwaxmIG726UPCyy4+hgg==
 ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
  smtp.mailfrom=aspeedtech.com; dmarc=pass action=none
  header.from=aspeedtech.com; dkim=pass header.d=aspeedtech.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=aspeedtech.com;
  s=selector1;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=pAsaKbEcunvWuo5wSwV0RR29y2iDU96EA6RdZBfDK4I=;
- b=qrOJFny7YAr6uQRuju2Jo01kSIoeRLrPVuxaS+s+ax/MQpD8oWOIzmPHG0hi7togHaL58gH3vVsNc7qMPKsy8O0GIKS7nYBQyGrZ7zwdnBKUtPgseR//sRl6RAxwLaNNgIYARF0oD52VLi7gT3Uo9qQeVSo6v5X4FDBuEItgkCL515kuNfsnHHyp6hnDvxXobWjFrDbMA1LvD0mwowPypmKYGErNXlnFEAy0J+tQpvrAyqZGDJ7VH7p/nzf2wM/WD45NcVHvS9gZ3d/6FjwMrc3mUb5TSD5bCHTC2T7RusZNkBrR2TCXE28VKdd5H9tgXaejewOaG38Kpw9+jQInIA==
+ bh=NTdmA7LlZmTetazpST2j9g0Dux0I3RaCz80XmZlN+PE=;
+ b=IeOHrmaHP1Ts/MDWfhuShp468+8keLprXXWnwxDv9COIqn8oJr47p+hOYlO3YDpQ3dwU4d5oa8sm3vlo1bHE1D0OfD4hb2xDmH9nZINdylXXNsyZ8/jUu4c25UPya0kcI/mxhlbJMOvtIdmXWItbcrGzMMnJc/h+zKiQrCckYSqBAS2/AvDOSBUCuoL3fqqPIuUw+BLedMkU2R9D8d3lV8pnhIMhcqqtKHjozAUHsGcqdeMvfnArrgZIaY7k7BkoY44h8q/2uFfC9ca+vlL154EkW7VA8tsdynG0OaEytpzclL3Ei4y3WahT9jSliqNMKMj5VMuBo3EUieeZJAOwtQ==
 Received: from TYZPR06MB4980.apcprd06.prod.outlook.com (2603:1096:400:1cc::10)
  by SEYPR06MB6829.apcprd06.prod.outlook.com (2603:1096:101:1a7::5)
  with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.21.406.9; Thu, 10 Sep
- 2026 01:44:55 +0000
+ 2026 01:44:52 +0000
 Received: from TYZPR06MB4980.apcprd06.prod.outlook.com
  ([fe80::ea8a:7cb7:4822:2fb3]) by TYZPR06MB4980.apcprd06.prod.outlook.com
  ([fe80::ea8a:7cb7:4822:2fb3%6]) with mapi id 15.21.0406.007; Thu, 10 Sep 2026
- 01:44:55 +0000
+ 01:44:52 +0000
 From: Jamin Lin <jamin_lin@aspeedtech.com>
 To: =?iso-8859-1?Q?C=E9dric_Le_Goater?= <clg@kaod.org>, Peter Maydell
  <peter.maydell@linaro.org>, Steven Lee <steven_lee@aspeedtech.com>, Troy Lee
@@ -53,13 +53,12 @@ To: =?iso-8859-1?Q?C=E9dric_Le_Goater?= <clg@kaod.org>, Peter Maydell
  BMCs" <qemu-arm@nongnu.org>, "open list:All patches CC here"
  <qemu-devel@nongnu.org>
 CC: Jamin Lin <jamin_lin@aspeedtech.com>, Troy Lee <troy_lee@aspeedtech.com>
-Subject: [PATCH v2 6/6] docs/system/arm/aspeed: Document the VGA display
- controller
-Thread-Topic: [PATCH v2 6/6] docs/system/arm/aspeed: Document the VGA display
- controller
-Thread-Index: AQHdQMX64aSGzQwhjkaMwt2EbOAkVw==
-Date: Thu, 10 Sep 2026 01:44:54 +0000
-Message-ID: <20260910014447.4110781-7-jamin_lin@aspeedtech.com>
+Subject: [PATCH v2 4/6] hw/display/aspeed-vga: Add the hardware overlay cursor
+Thread-Topic: [PATCH v2 4/6] hw/display/aspeed-vga: Add the hardware overlay
+ cursor
+Thread-Index: AQHdQMX5R8iKOgx1nkaJXquCRn3SkA==
+Date: Thu, 10 Sep 2026 01:44:52 +0000
+Message-ID: <20260910014447.4110781-5-jamin_lin@aspeedtech.com>
 References: <20260910014447.4110781-1-jamin_lin@aspeedtech.com>
 In-Reply-To: <20260910014447.4110781-1-jamin_lin@aspeedtech.com>
 Accept-Language: zh-TW, en-US
@@ -70,61 +69,61 @@ authentication-results: dkim=none (message not signed)
  header.d=none;dmarc=none action=none header.from=aspeedtech.com;
 x-ms-publictraffictype: Email
 x-ms-traffictypediagnostic: TYZPR06MB4980:EE_|SEYPR06MB6829:EE_
-x-ms-office365-filtering-correlation-id: e9742dcb-cb0e-4168-4172-08df0edd1d51
+x-ms-office365-filtering-correlation-id: 4e57e965-3bde-49a3-12c6-08df0edd1bc4
 x-ms-exchange-senderadcheck: 1
 x-ms-exchange-antispam-relay: 0
 x-microsoft-antispam: BCL:0;
- ARA:13230040|376014|7416014|23010399003|366016|1800799024|38070700021|921020|10067099003|56012099006|22082099003|18002099003|3023799007;
-x-microsoft-antispam-message-info: B+j5MESJ/6/us8gWampJNYMN9wflBMAE+zS8sewzFdzqSnGej4vRYgdt4aOjtEBmIHMT6473R98froscnZ4L7x4VKevsPrrLYbvnM7mfmRUBGoECSugm1Y+k3juf2m+HzGpaGR3BJhhP+kybNQIhkK+9QqzwRUmfsEbNxdIGf339RibfNk/u2KKfZa4Z0Gy8pqCBmEKlM4S7ipimGEeDuFdg9fh7ben27gJ65RRpvUOIcqY57eDj2IIwArccIlbSlX+cb6OZSL3vICvZLwkuU3dDm8VZ7XJohazPbQp12m6Ab97ZNrwP6koT9ZHyorWN5AfzDNb+M97uEzbWHqD1sBPN64bP/jbYQqQ+druMqBj6NP/tmgoIlz0x7bq6rMVeg3K6OJgEu2wsxA7JykStIsljLKAc7z/DYlnvDnm7k7d9vQ/KOPyTpDLKgOEjnNbBWgSRH0kvZ56Bnf+8Go3DZkh4c1+9LMKMmX5QU2K+On+UMxSBQCemKMXVUj6c+54BT6nECrcVvcWfewozqhP0W9LUcVLfDgqS4wg7Mq15fQefRs+RYEq4GmYjt6/JfWOyoZk0d3f/+Kdw9/hqrL55WZOcJgWgZox21nWGHAGpSBr8eSk+jEuhqZJZvBp79F+1UYRZsVuTAfvuSnc9h7w/uJJZBgYL894pdg0OlxZ8csR3lu4UWO7MzBmkqSgWLTR1
+ ARA:13230040|376014|7416014|23010399003|366016|1800799024|38070700021|921020|10067099003|56012099006|5023799004|22082099003|18002099003;
+x-microsoft-antispam-message-info: pgH+41h17iNKe+Zq1Q8SlYpTXaoDJJpVpp/TL8kmw2STAc+BoHF3f6TglT9ibFDPxdIL6Gutn4kkA1MWaytMY7XLQ+5FSMOwP9CL01gQM3XX4mxBf0iop27aaDpTcHL5XB6WLwcmbPsOp5eWzsLkyxl0HRF9uAIyiZsDgCpV3kcwOVx699ZTdOHfQwED7o/tD6lvcyv/Rfdy5YQVLDM8fkdgh1FvaHbIVSe2ZwUsSjA2kVtcp183IWjZqYx8mVNJkuePd05CnBrE/9beetPLfRGDdG9mlWPiCT6VLT5u3sIMIxw2b2yGq7LJJFt67e1mrNEv30msSOujDODbZ1/wqo0feb/bfskl5ak68mrRpn1MScGkjkzYYDd+AaXEUXK4kFnHZ0DpRzEmWCJ16cjYGYbn+Cy1RWIPdCUQrRygxTCJDQ6rLRpt3CVN+alR6lU4mM67287++NiXZRTQnXoHjVAHJaFBcJ6xOP6bqvIBK2WSEI14FeevhfNBxD2XPZsfXDYvFayJX6bv49DMlnsHSNIeeteJf/5bR28o/Xli7liWQntV5F9EHMUPki1uyKqDEttyppZBh6XMoEd/AwBMJt/roqu8ZqeBIf8lwhbiYRGSeaTcyNoRrJ1wWOYHUMTVVowuIPN7oL44VOQE6+10MY+P2pS4zGsT/TC7qlkp2KuMpziq/RTFeJ7QV/DJUbG7HQta+wg24JmnxmmfcLccML6LiTPzsQ5KrxipSfhWWFaE0miRiimg6UyTRc75z8AL
 x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
  IPV:NLI; SFV:NSPM; H:TYZPR06MB4980.apcprd06.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(13230040)(376014)(7416014)(23010399003)(366016)(1800799024)(38070700021)(921020)(10067099003)(56012099006)(22082099003)(18002099003)(3023799007);
+ SFS:(13230040)(376014)(7416014)(23010399003)(366016)(1800799024)(38070700021)(921020)(10067099003)(56012099006)(5023799004)(22082099003)(18002099003);
  DIR:OUT; SFP:1102; 
 x-ms-exchange-antispam-messagedata-chunkcount: 1
-x-ms-exchange-antispam-messagedata-0: =?iso-8859-1?Q?CEahHDEoqooe4RLbCh0cw4wTKDWChb4jZSuk9VatTC2+JbXqMS/BP9opfH?=
- =?iso-8859-1?Q?uFJLgv8FXz9F5TnN0crS0Virn+Gk1yEqvTb2P6nsVIAu4JSCbGim2OPln+?=
- =?iso-8859-1?Q?NbfV6EYqiWctw9J8T8LHINuE3pjmBg+/f7yb4Ge7f7e5IsL4QeC4443fPK?=
- =?iso-8859-1?Q?+hgtg5pAoBaVcLq8HAOwoFOiHo62OJ+nIHknZxHiUYaX7ztD13al6DTj6g?=
- =?iso-8859-1?Q?7aszlt3s9gkPxAyznziz2JdwTmHYBMPtX7oMvxg9H2lKNXoL3N/QkKp6iC?=
- =?iso-8859-1?Q?NKFwuGcZj3JBEylhuOMoWJf1xylo1feGsxuAeOGJxf6Gvdev11vkIeX4VZ?=
- =?iso-8859-1?Q?gJLKDM6+fb0MsNDa3HN6h/e+lhUSIWpMhYpOgI2VQebTUNy6WPB7Pm0PE9?=
- =?iso-8859-1?Q?+lSZTHoAozLO2x04M441RcHEETqLqgSvhZ2e4AQOVX6HSlj/kTZyZPbWtv?=
- =?iso-8859-1?Q?IelUj0RwTztmpw27CmdHrjMFGy8BE8npopxXPdpzOpRgEwn49d6icTXOJt?=
- =?iso-8859-1?Q?dnLZN+RW7argNRTNrwUKrxDoZTIYcx5SRudMWGBU8r1ZNCCsMT0A+RzmHV?=
- =?iso-8859-1?Q?1Pxy6v8ewHL0iDdYp0EEogE+VBYzWNtrpx7n/5F7g/jtdXAyLCjkKSWvYu?=
- =?iso-8859-1?Q?E4RXyaOEVcgpdkyfBsFJD4EQxD+YrvS3+KQ9pUfJH0WdftWmXhBR3h1gj/?=
- =?iso-8859-1?Q?+59UtxI8RmXpx87HCNeUHHRCFeVpB2CyMOyhFnsdZMos49i7S4uvDl6JIg?=
- =?iso-8859-1?Q?3iTzTV9RZ4GMhvVJYQUcHS11tGMleqn55yZCaHqlX2GRJWOx+J79Ylteo2?=
- =?iso-8859-1?Q?MG4pmlDDGmlpmpu/zG17rtMC8Wrc91wD9nVd64Yb856TY/cWvU9X8k/EzZ?=
- =?iso-8859-1?Q?Q7XvDVBtH4Kmg/1PTacTnSjNSZ7Gp/yFtGWuUiCF/NWBtjHYYPqJEuosen?=
- =?iso-8859-1?Q?5dCcstmSW8n9DRhXJxvDXkBBxEgNnQPyDTfeng9aaZekiIMKz12AKHYewX?=
- =?iso-8859-1?Q?uJbz1vn01BR5FyFZFIvq4T7q337/o8p4ijDU+N+qjFuK1Zhi8w6d+CY8z3?=
- =?iso-8859-1?Q?18LorX7+v+zUPC+IlkotvI8fYh+W2tFPiHYr2VQEnpdIJofoEizrxw3Eme?=
- =?iso-8859-1?Q?eTzLsNEzenT8bGyv7PR2lCHLJdPQVP7htfoUvn4hXmw6pVBNQac0NdHwWu?=
- =?iso-8859-1?Q?uxAxvoB5o1Mt5wINXBRMYTR2v3xdf0G0jeQw5arf5JKglaQrExygjrd492?=
- =?iso-8859-1?Q?vvIHWEbB+2HjCLXcw0cTcaE08vh7aQ3oaz1Ve9bVFHEAPAMaRAaNLZwizz?=
- =?iso-8859-1?Q?ckKvKtm7rcBUSfm6TDN4CrmqAAzJ+mHeNZIKhEWKAwLn1tjAk1RNht3fEp?=
- =?iso-8859-1?Q?jwTWaiRSnEE0ZEmfJst2+XjVy65lWs54PeQ05exSAFaqTz+OPnBmZzydfa?=
- =?iso-8859-1?Q?CiKdN+k/lTldXcNJ6Nn50T0rTIAXTtt3Te6YaAF9iEbjymeo79eIlIH2/I?=
- =?iso-8859-1?Q?gSdLI1tPjojacvz7egHdFkqrZikNXndXadCi6cC0kxRrb03mxXobCXOpd2?=
- =?iso-8859-1?Q?4QUBY4eGNVvLOkdMtPqmqo3gkItfs7orwuy680GarLEThvvclGk9KvShc2?=
- =?iso-8859-1?Q?RDWi68knOyPi/nH9xEm8oGc9+fPl9VTf7fev93gU6es+xUQrl9JSUa8/p8?=
- =?iso-8859-1?Q?AaTscoQ8G+vStw41smt4vLKL9G+/vs2fGQtnxfxKiXwBK13PQtDfSJ7cvD?=
- =?iso-8859-1?Q?bH/8MnvT3HTE4V/tSLhTZwsPxx2cEY1ssvdUgnUo1NkpOJLAmNaMZOE561?=
- =?iso-8859-1?Q?L4za5zwHbg=3D=3D?=
+x-ms-exchange-antispam-messagedata-0: =?iso-8859-1?Q?FiAf6SQvNI0wgPyLqzgnecS2nNaJJiiCIB1KERz8mdA2XkfRTsVTmGpmjc?=
+ =?iso-8859-1?Q?MvH8mnPOGR4tUyHBf8YrdIGqNzekU6EcgPvSD1otwFVA16WaI7mpr3VLLq?=
+ =?iso-8859-1?Q?gIn91TBcWyJ+5xARjwUBeNR5c7aWAONJJyA48DShqS039Ey765SkoeJXBY?=
+ =?iso-8859-1?Q?ab5nDRp5OEjHP+j4CuVcd8SflK9QJbh0ES8o/lGuiMtuOCpXoaJK9TWrbT?=
+ =?iso-8859-1?Q?EiUsJ59TemU1+pKaeXwsmKriNvOy2pP44f+imwvGt3aF5Wru8FTKwtfS7o?=
+ =?iso-8859-1?Q?SYEBbBraP3ycthBMapLPMzYgUQmY1YXs2rJZHJAR1dr4IikCQ84anu7DST?=
+ =?iso-8859-1?Q?JUJ5agbKT+bP4NsRFUZJkWP40FLuUlIpV1JWXTJqAAk57s9Uwflb5zHB7d?=
+ =?iso-8859-1?Q?92C3D/uPy/XKYPTqB04mOX7jG1ODukcPY3zhyhTWUI9YSKw3bMcuqOM2bM?=
+ =?iso-8859-1?Q?49KiLR0/r4O1VTjLy6gj9GZIO3EjkNRF1Us6PTDtJS1F+zTnk0N1+l/VCj?=
+ =?iso-8859-1?Q?PwNQCoJ5C2pkKvM+i0uPYPbRho/gdeLRlHDqF9VJKVC0lBAwEmWbkEo5Ty?=
+ =?iso-8859-1?Q?X9g+/c3DE98ZZnUyESTMtLmjChi3YY9LglfxRuQxK65aDl4X/BqvKcCs1s?=
+ =?iso-8859-1?Q?HUrfqvAJua8Ssl23OF1WJ2JfAtfviv25MwDYavanMlt7ew/8d5TMGUGUFH?=
+ =?iso-8859-1?Q?cO9lCf2PNfstV1qk5R5zZBrlKyDH4t76Wi2Cek2iM2Hlmvdx49r3nAf//C?=
+ =?iso-8859-1?Q?Zud+CViu7zmc6qeociSzBTXL0dvRzWP19sw27Bs3OMlOMJvToQBJ3H5Ej/?=
+ =?iso-8859-1?Q?k2NjmG2idKo4ln2W7fXCXP4OAgFnCaQDPU8rasyqoiJ/BMsrqZvfKNbJ/R?=
+ =?iso-8859-1?Q?T4PDELrpw8BgW5a0cYMP6jRpWTpwWiAm8rIdkBtixcqeJJpBA4Y+GFMvgC?=
+ =?iso-8859-1?Q?VsnBN3CBFxy13ghFu5TYhEWqAxICyz9eK2Up3y5MgMeEBOZHnyv6dT4a36?=
+ =?iso-8859-1?Q?Ab7NcsUVJ4+9iPYLCGn6GRA/E/kExmxrUTjR2EknnPsCYGAnI46f4ySIst?=
+ =?iso-8859-1?Q?/xfjIk44NnConSfPY6PVWT+TqmlxyIqyX5zu1zqFYCd0OqU7KRwhXSUptL?=
+ =?iso-8859-1?Q?PMIGkkPCvyp01OFD9hp9VrgT02WljaWGr5ZAOUm8G4EhKZO9Jj/XzgEwS9?=
+ =?iso-8859-1?Q?TttGfniWFZHF9QSI3gZox0SiYqRZLXUuRD8tEtJnIgvUpfZ6kD2dVmYD9r?=
+ =?iso-8859-1?Q?np3oPEwUZ7m04x1dq1SuITak5Xkv9byyJZrUEeIj6ZIm/qE7H9Nv3v26pK?=
+ =?iso-8859-1?Q?sfUEvGgXw5GGZC6apAYMiVrkThZmr+3odD4+bEmO/XYGtElDjSs7rguLwa?=
+ =?iso-8859-1?Q?vX56YpYFB2BAndYRFlcfdiPH8f3A7EwIf9uBWszpmzAKe7r0h/trTPcB+D?=
+ =?iso-8859-1?Q?O9eooYX+jBHmUIu9tdE/BeaIeaUQin4+NgACStmZScHmOkIk4hvto49K40?=
+ =?iso-8859-1?Q?tEYoWp6wZIXmHOc2BxBIHlHHgSN1SRg9FqhWXQerym2kITAoiJLdCgGpuU?=
+ =?iso-8859-1?Q?uDQwib6aQ67LDZeoqfuC1wA3athpNCwf5o1I2b5FpEvi1KT+RJGoCTDRZb?=
+ =?iso-8859-1?Q?F9YSjZEtnNiAekj5O/UAZQ2lRyB06XMmGDoDa1cMTh325ee7lZSOHm8boJ?=
+ =?iso-8859-1?Q?cL11Qcsufxvj08pQaPf4ym9aLZJskxU62F6ZosKedvCanjj7nANWatl3iT?=
+ =?iso-8859-1?Q?dBRAMirkDfbFQlAdJoi8cl45aZeoYuIXLpoSRiaElmycziMqJuteCvRd6O?=
+ =?iso-8859-1?Q?PZ9dY++dOA=3D=3D?=
 Content-Type: text/plain; charset="iso-8859-1"
 Content-Transfer-Encoding: quoted-printable
 MIME-Version: 1.0
-X-Exchange-RoutingPolicyChecked: 2sTEyUJ0YwFR82pqosjj6lzoQF+pOYPEu0VtqfDhVS9xxpKYroeYfHA39mQCVsgYAl0bWhTbSOatsfidIUync6b7yApd23lHhj+7zA3AhQB3lJzZITlJ/SxaBEKvirYVilciPQsGMnDyxzIPslsv1hY4qZgkOQcGToPE7v0HAWKklPmb0Vbv7wE3KJsFean1wpcted8c7HaiscrBeQ6xS/iX81KiCdLoVDaWbLdeGzwcoRw/rIX2SeH6rYiD5ctKV8FyLZBOWq/zxY052TGd6SnSl4HYysCq4R5mW4mk9xNQFQAsZPQIdT3Cm3oHgq4Ef5qt62pCmZzIiRNIelqcQw==
+X-Exchange-RoutingPolicyChecked: tgOY3kK3lawoyVz1lRVoHjS4SjqY3agQL8pgWVz+wtofkQAHwvW0PFaz+nT1ghh+qEHmnAy02SzuQm7wpUhooQJuFOyagb7i4TvKYaCk/1s73HGIO8XVk0Opt6+fCkkZy+7GG+zVXYFDt80xollJQMITcu2JaRRkzyhujXElz2CGD8+SxE6uX3YrY8aA9l/gd+P/hVYshjoQvVfIcsCiemlcKNqeA769Bm+V4YuWvJTtlLcNvBfePZ/GN1ReZhwG42DnmwnhxjXesP/r+ex6SpATzs/TojcGEc13+utsaVBD3sZfg0rryCU/Z7XlqD3sjs3cOFPHXwFhS9jm+XCeHA==
 X-OriginatorOrg: aspeedtech.com
 X-MS-Exchange-CrossTenant-AuthAs: Internal
 X-MS-Exchange-CrossTenant-AuthSource: TYZPR06MB4980.apcprd06.prod.outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: e9742dcb-cb0e-4168-4172-08df0edd1d51
-X-MS-Exchange-CrossTenant-originalarrivaltime: 10 Sep 2026 01:44:54.8923 (UTC)
+X-MS-Exchange-CrossTenant-Network-Message-Id: 4e57e965-3bde-49a3-12c6-08df0edd1bc4
+X-MS-Exchange-CrossTenant-originalarrivaltime: 10 Sep 2026 01:44:52.5812 (UTC)
 X-MS-Exchange-CrossTenant-fromentityheader: Hosted
 X-MS-Exchange-CrossTenant-id: 43d4aa98-e35b-4575-8939-080e90d5a249
 X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: Ku6rG7Bo0H8ECBDV2PeXiOqda9nzGa6WIzeXYCTTLV1Mvu/f/IkVpzHGQBqyNCq56ah8IoKvMvK9V/vN3uOlM+og9AYunbvdNQgMu/nQvns=
+X-MS-Exchange-CrossTenant-userprincipalname: IiVdlBWUZ76yPFKxS3Ht7WvIm7t5NKOMM2lPHGfAJWEnlEnyEKR4WmiK3qx+Lb0fT0FMc0weGnmrdGYavGfuGp0oPG8FaZfmE/haycPjn+s=
 X-MS-Exchange-Transport-CrossTenantHeadersStamped: SEYPR06MB6829
 Received-SPF: pass client-ip=2a01:111:f403:c405::7;
  envelope-from=jamin_lin@aspeedtech.com;
@@ -151,85 +150,293 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-The display controller was listed as missing, which it no longer is. It=0A=
-does not belong with the rest of the machines' devices though: the host=0A=
-reaches it as a PCI VGA endpoint, so it is plugged into whichever machine=
+The display controller draws a 64x64 cursor over the picture. CRC2 to=0A=
+CRCB hold its position, the address of its bitmap in the framebuffer,=0A=
+the offsets into that bitmap and the format.=0A=
 =0A=
-stands in for the host rather than being part of the BMC machine.=0A=
+Draw it through the common code's cursor callbacks. The position cannot=0A=
+be negative, so the offsets say how many rows and columns to skip when=0A=
+the cursor runs off the top or the left of the screen.=0A=
 =0A=
-Describe it that way, with the two flavours, the property that sizes the=0A=
-framebuffer aperture, the option ROM, and how to reach the screen.=0A=
+CRCB selects the format. Both are modelled: ARGB4444, and the one the=0A=
+datasheet calls 2 bpp, which is also two bytes per pixel but carries an=0A=
+AND and an XOR mask in the top two bits instead of an alpha.=0A=
 =0A=
 Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>=0A=
 ---=0A=
- docs/system/arm/aspeed.rst | 37 +++++++++++++++++++++++++++++++++++--=0A=
- 1 file changed, 35 insertions(+), 2 deletions(-)=0A=
+ hw/display/aspeed-vga.h |   2 +=0A=
+ hw/display/aspeed-vga.c | 194 ++++++++++++++++++++++++++++++++++++++++=0A=
+ 2 files changed, 196 insertions(+)=0A=
 =0A=
-diff --git a/docs/system/arm/aspeed.rst b/docs/system/arm/aspeed.rst=0A=
-index 2d51ceeb84..0900b4202d 100644=0A=
---- a/docs/system/arm/aspeed.rst=0A=
-+++ b/docs/system/arm/aspeed.rst=0A=
-@@ -75,7 +75,6 @@ Missing devices=0A=
-  * Slave GPIO Controller=0A=
-  * Super I/O Controller=0A=
-  * PCI-Express 1 Controller=0A=
-- * Graphic Display Controller=0A=
-  * MCTP Controller=0A=
-  * Mailbox Controller=0A=
-  * Virtual UART=0A=
-@@ -319,7 +318,6 @@ Missing devices=0A=
-  * Slave GPIO Controller=0A=
-  * Super I/O Controller=0A=
-  * PCI-Express 1 Controller=0A=
-- * Graphic Display Controller=0A=
-  * MCTP Controller=0A=
-  * Mailbox Controller=0A=
-  * Virtual UART=0A=
-@@ -512,3 +510,38 @@ To boot a kernel directly from a Zephyr build tree:=0A=
+diff --git a/hw/display/aspeed-vga.h b/hw/display/aspeed-vga.h=0A=
+index 4b0315f699..55dcc57108 100644=0A=
+--- a/hw/display/aspeed-vga.h=0A=
++++ b/hw/display/aspeed-vga.h=0A=
+@@ -33,6 +33,8 @@ struct AspeedVGAState {=0A=
+     MemoryRegion ioport;=0A=
  =0A=
-   $ qemu-system-arm -M ast1030-evb -nographic \=0A=
-         -kernel zephyr.bin=0A=
-+=0A=
-+VGA display controller=0A=
-+=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=0A=
-+=0A=
-+The display controller of the Aspeed SoCs is reached by the host as a PCI=
+     uint8_t vgaer;=0A=
++    uint32_t last_cursor_y;=0A=
++    bool last_cursor_on;=0A=
+ =0A=
+     /* saved standard VGA handlers, used while the extended mode is off */=
 =0A=
-+VGA endpoint, so it is modelled as a device to be plugged into whichever=
+     int (*std_get_bpp)(VGACommonState *s);=0A=
+diff --git a/hw/display/aspeed-vga.c b/hw/display/aspeed-vga.c=0A=
+index bf74a0c8ce..e40d503910 100644=0A=
+--- a/hw/display/aspeed-vga.c=0A=
++++ b/hw/display/aspeed-vga.c=0A=
+@@ -26,6 +26,7 @@=0A=
+ #include "qemu/module.h"=0A=
+ #include "qom/object.h"=0A=
+ #include "ui/console.h"=0A=
++#include "ui/pixel_ops.h"=0A=
+ #include "trace.h"=0A=
+ #include "aspeed-vga.h"=0A=
+ #include "vga_int.h"=0A=
+@@ -69,11 +70,40 @@ REG8(AST_CR_OFFSET_HI, 0xb0)=0A=
+ REG8(AST_CR_POWER_MGMT, 0xb6)=0A=
+     FIELD(AST_CR_POWER_MGMT, VSYNC_OFF, 1, 1)=0A=
+     FIELD(AST_CR_POWER_MGMT, HSYNC_OFF, 0, 1)=0A=
++REG8(AST_CR_CURSOR_XOFF, 0xc2)=0A=
++    FIELD(AST_CR_CURSOR_XOFF, OFFSET, 0, 6)=0A=
++REG8(AST_CR_CURSOR_YOFF, 0xc3)=0A=
++    FIELD(AST_CR_CURSOR_YOFF, OFFSET, 0, 6)=0A=
++REG8(AST_CR_CURSOR_X_LO, 0xc4)=0A=
++REG8(AST_CR_CURSOR_X_HI, 0xc5)=0A=
++    FIELD(AST_CR_CURSOR_X_HI, X, 0, 5)=0A=
++REG8(AST_CR_CURSOR_Y_LO, 0xc6)=0A=
++REG8(AST_CR_CURSOR_Y_HI, 0xc7)=0A=
++    FIELD(AST_CR_CURSOR_Y_HI, Y, 0, 4)=0A=
++REG8(AST_CR_CURSOR_ADDR0, 0xc8)=0A=
++    FIELD(AST_CR_CURSOR_ADDR0, ADDR, 1, 7)=0A=
++REG8(AST_CR_CURSOR_ADDR1, 0xc9)=0A=
++REG8(AST_CR_CURSOR_ADDR2, 0xca)=0A=
++    FIELD(AST_CR_CURSOR_ADDR2, ADDR, 0, 7)=0A=
++REG8(AST_CR_CURSOR_CTRL, 0xcb)=0A=
++    FIELD(AST_CR_CURSOR_CTRL, ENABLE, 1, 1)=0A=
++    FIELD(AST_CR_CURSOR_CTRL, FORMAT_ARGB4444, 0, 1)=0A=
+ REG8(AST_CR_SOC_SCRATCH0, 0xd0)=0A=
+     FIELD(AST_CR_SOC_SCRATCH0, VRAM_INIT_BY_BMC, 7, 1)=0A=
+     FIELD(AST_CR_SOC_SCRATCH0, VRAM_INIT_READY, 6, 1)=0A=
+     FIELD(AST_CR_SOC_SCRATCH0, IKVM_WIDESCREEN, 0, 1)=0A=
+ =0A=
++/*=0A=
++ * The cursor bitmap is always 64x64 and lives in the framebuffer, two byt=
+es=0A=
++ * per pixel in both formats.=0A=
++ */=0A=
++#define ASPEED_VGA_CURSOR_SIDE  64=0A=
++#define ASPEED_VGA_CURSOR_PITCH (ASPEED_VGA_CURSOR_SIDE * 2)=0A=
++#define ASPEED_VGA_CURSOR_SIZE  (ASPEED_VGA_CURSOR_SIDE * \=0A=
++                                 ASPEED_VGA_CURSOR_PITCH)=0A=
++#define CURSOR_MONO_AND BIT(15)=0A=
++#define CURSOR_MONO_XOR BIT(14)=0A=
++=0A=
+ /*=0A=
+  * The ast driver writes a color format to CRA3 when it switches to the=0A=
+  * extended mode. Until then CRA3 is zero and the device behaves like a=0A=
+@@ -176,10 +206,14 @@ static void aspeed_vga_get_params(VGACommonState *vga=
+,=0A=
+     AspeedVGAState *s =3D container_of(vga, AspeedVGAState, vga);=0A=
+ =0A=
+     if (!aspeed_vga_ext_enabled(s)) {=0A=
++        vga->force_shadow =3D false;=0A=
+         s->std_get_params(vga, params);=0A=
+         return;=0A=
+     }=0A=
+ =0A=
++    vga->force_shadow =3D FIELD_EX8(vga->cr[R_AST_CR_CURSOR_CTRL],=0A=
++                                  AST_CR_CURSOR_CTRL, ENABLE);=0A=
++=0A=
+     /*=0A=
+      * GR05 bit 6 selects the mode 13 shift mode, which is packed pixel li=
+ke=0A=
+      * the extended modes. Without it the common code picks its planar=0A=
+@@ -208,6 +242,164 @@ static void aspeed_vga_get_params(VGACommonState *vga=
+,=0A=
+     params->hpel_split =3D false;=0A=
+ }=0A=
+ =0A=
++static bool aspeed_vga_cursor_geometry(AspeedVGAState *s, uint32_t *x,=0A=
++                                       uint32_t *y, uint32_t *xoff,=0A=
++                                       uint32_t *yoff, uint32_t *addr)=0A=
++{=0A=
++    VGACommonState *vga =3D &s->vga;=0A=
++    bool is_cursor_enable;=0A=
++=0A=
++    is_cursor_enable =3D FIELD_EX8(vga->cr[R_AST_CR_CURSOR_CTRL],=0A=
++                                 AST_CR_CURSOR_CTRL, ENABLE);=0A=
++=0A=
++    if (!aspeed_vga_ext_enabled(s) || !is_cursor_enable) {=0A=
++        return false;=0A=
++    }=0A=
++=0A=
++    *x =3D vga->cr[R_AST_CR_CURSOR_X_LO] |=0A=
++         (FIELD_EX8(vga->cr[R_AST_CR_CURSOR_X_HI], AST_CR_CURSOR_X_HI, X) =
+<< 8);=0A=
++    *y =3D vga->cr[R_AST_CR_CURSOR_Y_LO] |=0A=
++         (FIELD_EX8(vga->cr[R_AST_CR_CURSOR_Y_HI], AST_CR_CURSOR_Y_HI, Y) =
+<< 8);=0A=
++    *xoff =3D FIELD_EX8(vga->cr[R_AST_CR_CURSOR_XOFF],=0A=
++                      AST_CR_CURSOR_XOFF, OFFSET);=0A=
++    *yoff =3D FIELD_EX8(vga->cr[R_AST_CR_CURSOR_YOFF],=0A=
++                      AST_CR_CURSOR_YOFF, OFFSET);=0A=
++    /*=0A=
++     * cursor pattern address, D[10:4] in CRC8, D[18:11] in CRC9 and=0A=
++     * D[25:19] in CRCA. D[3:0] are not stored, so it is 16 byte aligned.=
 =0A=
-+machine plays that host rather than as part of the BMC machines above:=0A=
++     */=0A=
++    *addr =3D ((uint32_t)FIELD_EX8(vga->cr[R_AST_CR_CURSOR_ADDR0],=0A=
++                                 AST_CR_CURSOR_ADDR0, ADDR) << 4) |=0A=
++            ((uint32_t)vga->cr[R_AST_CR_CURSOR_ADDR1] << 11) |=0A=
++            ((uint32_t)FIELD_EX8(vga->cr[R_AST_CR_CURSOR_ADDR2],=0A=
++                                 AST_CR_CURSOR_ADDR2, ADDR) << 19);=0A=
 +=0A=
-+- ``ast2600-vga``          Aspeed AST2600 VGA=0A=
-+- ``ast2700-vga``          Aspeed AST2700 VGA=0A=
++    return *addr + ASPEED_VGA_CURSOR_SIZE <=3D vga->vram_size;=0A=
++}=0A=
 +=0A=
-+The size of the framebuffer aperture is set with ``vgamem_mb``, 32 MiB by=
++static void aspeed_vga_cursor_invalidate(VGACommonState *vga)=0A=
++{=0A=
++    AspeedVGAState *s =3D container_of(vga, AspeedVGAState, vga);=0A=
++    uint32_t addr =3D 0;=0A=
++    uint32_t xoff =3D 0;=0A=
++    uint32_t yoff =3D 0;=0A=
++    uint32_t x =3D 0;=0A=
++    uint32_t y =3D 0;=0A=
++    bool on;=0A=
++=0A=
++    on =3D aspeed_vga_cursor_geometry(s, &x, &y, &xoff, &yoff, &addr);=0A=
++=0A=
++    /*=0A=
++     * Moving the cursor dirties no VRAM, so repaint both bands here: wher=
+e=0A=
++     * it was, to erase it, and where it is now, to draw it.=0A=
++     */=0A=
++    if (s->last_cursor_on) {=0A=
++        vga_invalidate_scanlines(vga, s->last_cursor_y,=0A=
++                                 s->last_cursor_y + ASPEED_VGA_CURSOR_SIDE=
+);=0A=
++    }=0A=
++    if (on) {=0A=
++        vga_invalidate_scanlines(vga, y, y + ASPEED_VGA_CURSOR_SIDE);=0A=
++    }=0A=
++=0A=
++    s->last_cursor_on =3D on;=0A=
++    s->last_cursor_y =3D on ? y : 0;=0A=
++}=0A=
++=0A=
++/* Source-over blend of one 8 bit color channel with a 4 bit alpha */=0A=
++static uint32_t aspeed_vga_blend_channel(uint32_t under, uint32_t over,=0A=
++                                         uint32_t alpha)=0A=
++{=0A=
++    return (under * (15 - alpha) + over * alpha) / 15;=0A=
++}=0A=
++=0A=
++static void aspeed_vga_cursor_draw_line(VGACommonState *vga, uint8_t *d,=
 =0A=
-+default. The device comes up with the standard VGA BIOS; pass ``romfile``=
++                                        int scr_y)=0A=
++{=0A=
++    AspeedVGAState *s =3D container_of(vga, AspeedVGAState, vga);=0A=
++    uint32_t *dst =3D (uint32_t *)d;=0A=
++    const uint8_t *row;=0A=
++    uint32_t screen_x;=0A=
++    uint32_t under;=0A=
++    uint32_t out_r;=0A=
++    uint32_t out_g;=0A=
++    uint32_t out_b;=0A=
++    uint32_t addr;=0A=
++    uint32_t xoff;=0A=
++    uint32_t yoff;=0A=
++    uint32_t cols;=0A=
++    uint32_t col;=0A=
++    uint16_t px;=0A=
++    uint32_t x;=0A=
++    uint32_t y;=0A=
++    uint32_t a;=0A=
++    uint32_t r;=0A=
++    uint32_t g;=0A=
++    uint32_t b;=0A=
++    bool argb;=0A=
++=0A=
++    /* nothing to draw: the cursor is off or outside VRAM */=0A=
++    if (!aspeed_vga_cursor_geometry(s, &x, &y, &xoff, &yoff, &addr)) {=0A=
++        return;=0A=
++    }=0A=
++=0A=
++    /* this scan line is above or below the cursor */=0A=
++    if (scr_y < y || scr_y >=3D y + (ASPEED_VGA_CURSOR_SIDE - yoff)) {=0A=
++        return;=0A=
++    }=0A=
++=0A=
++    /* the cursor is off the right edge of the screen */=0A=
++    if (x >=3D vga->last_scr_width) {=0A=
++        return;=0A=
++    }=0A=
++=0A=
++    /* xoff hides the leftmost columns of the bitmap */=0A=
++    cols =3D ASPEED_VGA_CURSOR_SIDE - xoff;=0A=
++=0A=
++    /* the screen edge hides the rightmost columns */=0A=
++    if (x + cols > vga->last_scr_width) {=0A=
++        cols =3D vga->last_scr_width - x;=0A=
++    }=0A=
++=0A=
++    argb =3D FIELD_EX8(vga->cr[R_AST_CR_CURSOR_CTRL],=0A=
++                     AST_CR_CURSOR_CTRL, FORMAT_ARGB4444);=0A=
++=0A=
++    /* the bitmap row for this scan line, past the rows yoff hides */=0A=
++    row =3D vga->vram_ptr + addr +=0A=
++          (uint64_t)(yoff + scr_y - y) * ASPEED_VGA_CURSOR_PITCH;=0A=
++=0A=
++    for (col =3D 0; col < cols; col++) {=0A=
++        screen_x =3D x + col;=0A=
++        px =3D lduw_le_p(row + (xoff + col) * 2);=0A=
++        r =3D ((px >> 8) & 0xf) * 0x11;=0A=
++        g =3D ((px >> 4) & 0xf) * 0x11;=0A=
++        b =3D (px & 0xf) * 0x11;=0A=
++=0A=
++        if (!argb) {=0A=
++            /*=0A=
++             * AND clear draws the color. AND set leaves the pixel alone,=
 =0A=
-+to use Aspeed's own option ROM instead, which can be downloaded from=0A=
-+https://www.aspeedtech.com/support_driver/=0A=
++             * or inverts it when XOR is set.=0A=
++             */=0A=
++            if (!(px & CURSOR_MONO_AND)) {=0A=
++                dst[screen_x] =3D rgb_to_pixel32(r, g, b);=0A=
++            } else if (px & CURSOR_MONO_XOR) {=0A=
++                dst[screen_x] =3D ~dst[screen_x] & 0xffffff;=0A=
++            }=0A=
++            continue;=0A=
++        }=0A=
 +=0A=
-+To plug one into an ``aarch64`` guest standing in for the host:=0A=
++        a =3D px >> 12;=0A=
++        if (!a) {=0A=
++            continue;=0A=
++        }=0A=
 +=0A=
-+.. code-block:: bash=0A=
++        under =3D dst[screen_x];=0A=
++        out_r =3D aspeed_vga_blend_channel((under >> 16) & 0xff, r, a);=0A=
++        out_g =3D aspeed_vga_blend_channel((under >> 8) & 0xff, g, a);=0A=
++        out_b =3D aspeed_vga_blend_channel(under & 0xff, b, a);=0A=
++        dst[screen_x] =3D rgb_to_pixel32(out_r, out_g, out_b);=0A=
++    }=0A=
++}=0A=
 +=0A=
-+  $ qemu-system-aarch64 \=0A=
-+        -M virt \=0A=
-+        -cpu neoverse-n1 -smp 8 -m 4G \=0A=
-+        -bios edk2-aarch64-code.fd \=0A=
-+        -device ast2700-vga,vgamem_mb=3D32,romfile=3Duefi_arm_2700_vga.rom=
- \=0A=
-+        -drive file=3Dnoble-server-cloudimg-arm64.img,format=3Dqcow2 \=0A=
-+        -device qemu-xhci,id=3Dxhci \=0A=
-+        -device usb-kbd,bus=3Dxhci.0 \=0A=
-+        -device usb-tablet,bus=3Dxhci.0 \=0A=
-+        -display vnc=3D0.0.0.0:0=0A=
-+=0A=
-+The disk image is an Ubuntu cloud image from=0A=
-+https://cloud-images.ubuntu.com/. The output goes to the VNC backend on=0A=
-+display 0, which listens on TCP port 5900, so point a VNC viewer at that=
-=0A=
-+port to see the screen.=0A=
+ static uint8_t aspeed_vga_vgamem_size_reg(uint32_t vram_size_mb)=0A=
+ {=0A=
+     switch (vram_size_mb) {=0A=
+@@ -384,6 +576,8 @@ static void aspeed_vga_realize(PCIDevice *dev, Error **=
+errp)=0A=
+     vga->get_params =3D aspeed_vga_get_params;=0A=
+     vga->get_resolution =3D aspeed_vga_get_resolution;=0A=
+     vga->is_blanked =3D aspeed_vga_is_blanked;=0A=
++    vga->cursor_invalidate =3D aspeed_vga_cursor_invalidate;=0A=
++    vga->cursor_draw_line =3D aspeed_vga_cursor_draw_line;=0A=
+     vga->big_endian_fb =3D false;=0A=
+ =0A=
+     vga->con =3D qemu_graphic_console_create(DEVICE(dev), 0, vga->hw_ops, =
+vga);=0A=
 -- =0A=
 2.53.0=0A=
 

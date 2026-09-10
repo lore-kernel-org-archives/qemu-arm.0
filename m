@@ -4,134 +4,137 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3F75EC79FBF
-	for <qemu-arm@archiver.kernel.org>; Thu, 10 Sep 2026 01:46:52 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 63919C79FB9
+	for <qemu-arm@archiver.kernel.org>; Thu, 10 Sep 2026 03:57:36 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1x4Tqs-0005WN-2m; Wed, 09 Sep 2026 21:45:22 -0400
+	id 1x4VuX-0002C2-Gt; Wed, 09 Sep 2026 23:57:17 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
- id 1x4Tqe-0005Np-IC; Wed, 09 Sep 2026 21:45:10 -0400
-Received: from mail-koreacentralazlp170130006.outbound.protection.outlook.com
- ([2a01:111:f403:c40f::6] helo=SEYPR02CU001.outbound.protection.outlook.com)
+ (Exim 4.90_1) (envelope-from <kchiu@axiado.com>)
+ id 1x4VuV-0002Bj-Tl; Wed, 09 Sep 2026 23:57:16 -0400
+Received: from mail-centralusazlp170100005.outbound.protection.outlook.com
+ ([2a01:111:f403:c111::5] helo=DM1PR04CU001.outbound.protection.outlook.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
- id 1x4Tqc-0004BB-4l; Wed, 09 Sep 2026 21:45:08 -0400
+ (Exim 4.90_1) (envelope-from <kchiu@axiado.com>)
+ id 1x4VuT-0004zG-1H; Wed, 09 Sep 2026 23:57:15 -0400
 ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=U3kJfgEST4QSsixoSzmDrNyJWdxZ/XaaG2r/85XMJJPVTwc0xL2vjn+KXhX+FX5romOmFNcuwlKYKXdEtQb89WMRQqna08zhfUoUnR23nhgiX6aqYIHq2fizhm7JRoMOfL5/IAki6wSgTs9iwhDoEO5+Qhj1sZZiloavQzDTnDWcGnNjuUEndmBoUlz6msoGkYUsEqca/Rr0fB4SxYDnxHqJzl6RuVITaAWntFG1sntBbPMAWZRXNYnnY8X+q03YdLQomRk3jMgSci4UYQRcRI5GVuWfHdww89olayupcBl2zWsVASAoQp3K9r12jbCenxx9NYlT4Ntw0gZFvgk4BQ==
+ b=J7tf9st8KxNJaCAOGCBLNpbjpi7ctvwxPcA4ovhD/jcJLF9Cei4pmfB3Mh4XSGC3hkxgoVkLhbfWvc06NNDtlPif5d68xreS4/OLMyTG8pJXeMTk2naJW/jiP6M63SngE83ZK/H4Fu/YTuBy2S01qbfY8Oo5PsKJhdiA722WcnETk8hN5yzbpYvjeQtah83hTNQrE5E1iHYret6Y7Ru8M7NVFIXE5+lk1pzZxEwnmKdT1Wl0/eOqVi3womVu+2saip797hdW8lx48nKVKhXBOjgKuiOfZNc52NSJX/6wyV8aePTmAM6o7Hkvl0GrbupFuK7rCQfy2Uea+DExitjrRQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
  s=arcselector10001;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=uxQMHDjU0OCSzXl+QMJrGpSc8T40N3mlTQL/BLVZ9z4=;
- b=hGVwL9UD7sJ++8J9tbtrZ0PkposcgyXsO8EwfKV27H5SH0mLn6kdobbtpcyaP7P/MqzZIvvqzaP6Ib3m2tE56suI8pdXhOQ62mDKaDpDCq1sYuJCzhxeUDX0PVgYbMRMnClunIet/XF3ITfcsp6B0OxlQiozlwoJntTdYy7XqNqF7xIPEAH7oCpc2EIDlreT2wd6f/kMy7X/J6Ovo5OEi33RjuZmz9b2XJXzOTdIybI532KzsJPCfJXADgPsqi5D+f763xDnrli7MPB3nei5eQQhzXiQSgppQiaoWYgaIye7WEboZ+uNSdpyhx3+Y0mKAt47M/Rxy7L/JYNg/ZqsMw==
+ bh=PGAXAcy21gRCCSe7wmuUnJ5xQuoIYCpjRbTYor6o+tM=;
+ b=I6Nve+RsrfbGBHuzvfeoLQBHWwgCLkBheAD8wYPjqgVDgUl/5mPP+t62OoCylqJznTiW8Rs0ooH2PTw4VjYmj3XFKBBo3hb4+OpA/geHNliZtwc+PRB2AtbAx1ughGF2Q4iUWYHtLHXVtDbQHOC3w03ZCNMMDL5XhfpH4A+rSAmial3rydvY20MV4QHj4lh83lX5QDZV1pv2AxIz3Jl+zC0t6DoiPnbrHUx8LBCS3Kf/a0NRs4IHZzuEPd5smiQoujykfXIerrp29N7XEQleKQig+/gJjehhTuU7TF0Nwm9EIa6FDrnH+1w29CqES2HvoIVFWPHxgQ4t60F+SlMGoQ==
 ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=aspeedtech.com; dmarc=pass action=none
- header.from=aspeedtech.com; dkim=pass header.d=aspeedtech.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=aspeedtech.com;
+ smtp.mailfrom=axiado.com; dmarc=pass action=none header.from=axiado.com;
+ dkim=pass header.d=axiado.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=axiado.com;
  s=selector1;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=uxQMHDjU0OCSzXl+QMJrGpSc8T40N3mlTQL/BLVZ9z4=;
- b=cmSyGpoTK5oeWD7mC8dVn6IJmGldIebV2tfnRoOF9wJ8YprGVAwyUn8OQAlawfq4ipWL1ZmpvwHj+PcUwcwTk4ySKSGFWCwOEAPdYqBIudSQRlf7Jlbu/1KRPHMcPmnGfjZfcqUVoZePqMafDMnIewjNzzbqipQR1oYx6z24Or5inzFAL+0XniZ7cpxzZxslsYQR5RtJQX3QH8apmTTelxyrYZ53fTE68BFZH4/ov535HU7VTms5GC0b7NtBGXPTI+BGpiiz5UgDiUdQXZeV2RuvoEUitndvAh7NFpj0XxUBYyDEH14rOB0mUW43IjRo+iET0K2wCFQ6V8vozxGpCQ==
-Received: from TYZPR06MB4980.apcprd06.prod.outlook.com (2603:1096:400:1cc::10)
- by SEYPR06MB6829.apcprd06.prod.outlook.com (2603:1096:101:1a7::5)
+ bh=PGAXAcy21gRCCSe7wmuUnJ5xQuoIYCpjRbTYor6o+tM=;
+ b=cX45PwnetzkvW6NJanyDFqHdwOsQwbTT3qnDC+mu4F4xDaeSEZk63pfwcEC7CwgEJQTJh0ju8ZggF3Zr8czwGwmCNgu7nPAOAq6VXAukiQTSCkXMp5NBkHmzAjWxa2PaDcoWLk0Rzb27Q41334e9ks6hNrfW0Gd7MJzYoAfQ5JnZKVb9D3Lci9cwn4RfxKb1Irh9dNCv89tvNGOHH8nKOW3LBNefAN6UMkCTWfcJbB108oOk5+2QG7IkcBiJQweRxCSdNhauUYGJkY3hxRvi1vQLeKl1nV5p1yBiNNyhu7qaqC5eaWeszSii1eDClavfljnX0adsUbtz4WorVkp9lA==
+Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=axiado.com;
+Received: from SJ0PR18MB4479.namprd18.prod.outlook.com (2603:10b6:a03:37f::19)
+ by PH7PR18MB5624.namprd18.prod.outlook.com (2603:10b6:510:2e9::6)
  with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.21.406.9; Thu, 10 Sep
- 2026 01:44:54 +0000
-Received: from TYZPR06MB4980.apcprd06.prod.outlook.com
- ([fe80::ea8a:7cb7:4822:2fb3]) by TYZPR06MB4980.apcprd06.prod.outlook.com
- ([fe80::ea8a:7cb7:4822:2fb3%6]) with mapi id 15.21.0406.007; Thu, 10 Sep 2026
- 01:44:53 +0000
-From: Jamin Lin <jamin_lin@aspeedtech.com>
-To: =?iso-8859-1?Q?C=E9dric_Le_Goater?= <clg@kaod.org>, Peter Maydell
- <peter.maydell@linaro.org>, Steven Lee <steven_lee@aspeedtech.com>, Troy Lee
- <leetroy@gmail.com>, Kane Chen <kane_chen@aspeedtech.com>, Andrew Jeffery
- <andrew@codeconstruct.com.au>, Joel Stanley <joel@jms.id.au>, Pierrick
- Bouvier <pierrick.bouvier@oss.qualcomm.com>, Paolo Bonzini
- <pbonzini@redhat.com>, Gerd Hoffmann <kraxel@redhat.com>, "open list:ASPEED
- BMCs" <qemu-arm@nongnu.org>, "open list:All patches CC here"
- <qemu-devel@nongnu.org>
-CC: Jamin Lin <jamin_lin@aspeedtech.com>, Troy Lee <troy_lee@aspeedtech.com>
-Subject: [PATCH v2 5/6] hw/display/aspeed-vga: Add the 2D graphics engine
-Thread-Topic: [PATCH v2 5/6] hw/display/aspeed-vga: Add the 2D graphics engine
-Thread-Index: AQHdQMX5iKdbCG5n+E2sxDV8qjsq6A==
-Date: Thu, 10 Sep 2026 01:44:53 +0000
-Message-ID: <20260910014447.4110781-6-jamin_lin@aspeedtech.com>
-References: <20260910014447.4110781-1-jamin_lin@aspeedtech.com>
-In-Reply-To: <20260910014447.4110781-1-jamin_lin@aspeedtech.com>
-Accept-Language: zh-TW, en-US
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.21.406.7; Thu, 10 Sep
+ 2026 03:57:07 +0000
+Received: from SJ0PR18MB4479.namprd18.prod.outlook.com
+ ([fe80::eaf4:3aec:73e:d5ba]) by SJ0PR18MB4479.namprd18.prod.outlook.com
+ ([fe80::eaf4:3aec:73e:d5ba%3]) with mapi id 15.21.0406.005; Thu, 10 Sep 2026
+ 03:57:07 +0000
+Message-ID: <c01ed4e7-7ea5-416c-89f9-5b24369f18c9@axiado.com>
+Date: Thu, 10 Sep 2026 11:57:03 +0800
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v6 09/12] hw/arm: Add Axiado SoC AX3005
+To: Mark Cave-Ayland <mark.caveayland@nutanix.com>, philmd@oss.qualcomm.com,
+ 163wangjack@gmail.com, qemu-devel@nongnu.org, peter.maydell@linaro.org,
+ qemu-arm@nongnu.org
+References: <20260909105543.1478008-1-kchiu@axiado.com>
+ <20260909105543.1478008-10-kchiu@axiado.com>
+ <8411ce33-12f1-4359-8724-f92480e5e558@nutanix.com>
 Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-authentication-results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=aspeedtech.com;
-x-ms-publictraffictype: Email
-x-ms-traffictypediagnostic: TYZPR06MB4980:EE_|SEYPR06MB6829:EE_
-x-ms-office365-filtering-correlation-id: 81c85294-1843-475d-17d3-08df0edd1c6d
-x-ms-exchange-senderadcheck: 1
-x-ms-exchange-antispam-relay: 0
-x-microsoft-antispam: BCL:0;
- ARA:13230040|376014|7416014|23010399003|366016|1800799024|38070700021|921020|6133799003|10067099003|56012099006|5023799004|22082099003|18002099003;
-x-microsoft-antispam-message-info: Amgq2lQRKZOUGvymaJKqUkErp3jqXPpjyQiI9Wl/M5qMaUWwvpi/J9VL3xXA5ulEuZ5QFWuBUGV7ozq1c9JQRASiB/Cd0S5QvvCTMP1JreVYGrH0wodGnuGPCWS9aIfeTNJ5pXzYkhV6Z9OYQBuWXA2HYhA+YjqcSKsG5WmntJmIxD3uwrh0M/lkgT8xzTpLoJCgQX/ePqEsigVmCo1r3WPyI/jnHwNSVjUhayFKRK3YeWqZ+euU2tYrElDMEyxfbPIms/pICXzh7XHF8ah1BElo23IDfJNXgqg8iEMCMCNE92nqg7bdxXno42BLUM6+o4yGCo9YFELVLeVfOIQiaDI0cMAGHJdIBNBo5XxekeAj4TLzLo1Gpij3BBzYHl3CzNyaUpl1aULdGl34Y0s7IbIDLnD4ckaQwMEPvGBxV1mJ/hn2B1QYLKVfk48lZs29AldPKH2rRZNKyeR5HsnQ/OavmwvCE8hUN5Muvj3+6WuwIJmEI4mLGXbUlQAm4djg3MgY2J0nv5aVcR8MnZUNUpDdiBipmCOxTpxcbtS2utT9txV3vlfmj8KKZ+H8XTlGqwe0FIiKy8SR+mbwM8jdFme4/X1aqdhAK1JOULsU03J+phzVDoTgdC8oVKgNGB8am6FTpI4Tm7XZlyb4Pu35DeFXlscJ2RFWlr59eDZvNOOY+B0MmBzQkbJzcZeR39ICf1tftMWWMgp8Yr37CwzqepsmdiE0LIeW3ls15gwiyYM=
-x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:TYZPR06MB4980.apcprd06.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(13230040)(376014)(7416014)(23010399003)(366016)(1800799024)(38070700021)(921020)(6133799003)(10067099003)(56012099006)(5023799004)(22082099003)(18002099003);
- DIR:OUT; SFP:1102; 
-x-ms-exchange-antispam-messagedata-chunkcount: 1
-x-ms-exchange-antispam-messagedata-0: =?iso-8859-1?Q?vpNCrhUerp8kIiy0NJxju/Xopwd6tA8aLNGNwcVr0XR1CGIOGoyUcqvjF1?=
- =?iso-8859-1?Q?L1IRcQ/i6Bko4q5LPfo1FX6D9niftJ64WJsmk7pa5NtQLaRRpoqGPGJ6yO?=
- =?iso-8859-1?Q?fxuDNiSs0LxUyVJGwfcBZnObhVFbYWiOqLKTT6WS9H+WLN3otnRHQ9A24S?=
- =?iso-8859-1?Q?/j4Bv9w4TVrvZOxUGSnVRm9bA0YMOj5OW3iy+jUDZfThBR/qU5OPlp/Ccg?=
- =?iso-8859-1?Q?o/WJpIipYt+cBXHf9dDhkdtqN9a0axzx9ZJG91IGKTkofeNl+pGKNwDfHH?=
- =?iso-8859-1?Q?DorgYdjdXU8pI6EBJLL9gG4pI8FiR+d8akhdRCo49C533t1WjqyjheWePr?=
- =?iso-8859-1?Q?s4Qxk46ETx5CxYq6sY2tSHs8+WXqFGBiFUNkkW/01A2hBHwcZ2d+ReQFc3?=
- =?iso-8859-1?Q?g8WyH5RAx3MAUlFL8aydMMukRTQkSHFM5sa3BZgt17EDc01UOoP+EG89Kd?=
- =?iso-8859-1?Q?57hgOiykc4ayYbDf5wwsSPjkPWbEzWCU5KpM63yb09fpGP4xDpunw1/XID?=
- =?iso-8859-1?Q?h5RJo2gNfbQwDPrw3/Hq12Go1/xNGtByaFVsD/LLjvreFQO+2agPhikuoo?=
- =?iso-8859-1?Q?Xw4BE0/Tp5Cl854CAe5w2kHw0aNAkuwnRoZSJffjy5OG7NNv6y7uoqfSk3?=
- =?iso-8859-1?Q?1WTkUHJlTIk9FS+7Zk2UI2LOW8hVejgve48dMVCbqeEewovsRBImDUd4/i?=
- =?iso-8859-1?Q?V2Pu7/AILV3Vfa5yWoEGOa4soKUua+7qlkhk9nwfR2O4n7fXu4OTYql+G6?=
- =?iso-8859-1?Q?EgLN5nO4nypgwwbltGlPA7fMoQk8ajoc5FoQV+iVCXY2GWQfZvm9TzlMzr?=
- =?iso-8859-1?Q?3l8sNkl4lU/enGE5r2OW9sOAvm6VtaQ/53xbY2sa/i5GdEH+YiH41sC/vn?=
- =?iso-8859-1?Q?eNP+cgdFZlFx5rT1npyZw98xGoZxdQbpD/AmBgF2bKIWNmyKh+Yzx9apjf?=
- =?iso-8859-1?Q?tiMQ1/4lxwYdN4E40NYYsSGYF/LsSGL+BlksygRezMMMl6HZCN5zZr+2IT?=
- =?iso-8859-1?Q?2bbu13+PcvaL0h6QF+NjPOdHnkp/gg3vGXaGEe3dSCIwv5NE+10qjsYgrn?=
- =?iso-8859-1?Q?G0pDA/MRYfyXIHyBznanIM30LnmdVv+UPP9aIULituBfeBnQoFbAHIFllN?=
- =?iso-8859-1?Q?SJOLmgG7A/t/4fbDSMq92Ch0z7YWPW7I3Up5GufVNT7AB4a87tSdjTuLx+?=
- =?iso-8859-1?Q?r15eV2QVLnlcbd6EV73Yrq+Fhxn6O2bWSKt7nwiw89s1LlNnMu7qfzuYSd?=
- =?iso-8859-1?Q?GAIEpVOFSSVyAS2D1f8oTZhclmW+wFgsKaRQTG8qj+pgwC3Eqhk+YeBOV0?=
- =?iso-8859-1?Q?S75jo8NU4nWuGq+LS3Pj4VOJ2ayD6JzNsq+nM7uja3uQFCWVRTt/Pmcrk3?=
- =?iso-8859-1?Q?xOquPmnyHZ095IN95pjYgs9o2gkIn5cj4UaQkzNy5bI+4hjxlf08BeQYDP?=
- =?iso-8859-1?Q?129lKZb5UdNvMpgePkk+XOpLO1qDeboQwj2XAntgjaHsjQWZpNB8/tpt49?=
- =?iso-8859-1?Q?HzojYUwTyUWh8WKLJ5asd/x+QRRNRh/bI71l/Hl+6rtqzdS4Jx5ownDCT6?=
- =?iso-8859-1?Q?b8xc5BlCQ/WI6af3miGalBuISxzfsHgCNe/KdqRVKYweZHWJ7+wMTW8ob9?=
- =?iso-8859-1?Q?W5QQjhAMNwjkUBtpKaYoFgGRZDPyyZjwav/6s6Kr4mxbk+D94D3vU9R0bB?=
- =?iso-8859-1?Q?BpojtcQraSsjdNFg9Btytpwb+kH4ntKVupKGpjiIzBFnbuMpgeEPW/Sdbk?=
- =?iso-8859-1?Q?dXTPX8UUTT33RFru7GJWXqrz7NNY0HtMcLNHYUgBl9Y7oZpIWxDlbE+Drn?=
- =?iso-8859-1?Q?Vbumhrtz8w=3D=3D?=
-Content-Type: text/plain; charset="iso-8859-1"
-Content-Transfer-Encoding: quoted-printable
+From: Kuan-Jui Chiu <kchiu@axiado.com>
+In-Reply-To: <8411ce33-12f1-4359-8724-f92480e5e558@nutanix.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+X-ClientProxiedBy: TPYP295CA0009.TWNP295.PROD.OUTLOOK.COM (2603:1096:7d0:9::8)
+ To SJ0PR18MB4479.namprd18.prod.outlook.com
+ (2603:10b6:a03:37f::19)
 MIME-Version: 1.0
-X-Exchange-RoutingPolicyChecked: QBNOWFkbXNAqhhCzbyzmZNAY2tZfFWN4jBA3lMHyVTKvC1w7VkiUoLoKPKLMMfIqMckjXQPhuNhFdvuHbnSWWr7P7/qqsDPTSOTFkpkLiiKxz/cMVm4qnEIz0MI4MRLJ3VHdAX3JZYpYAZ1XdTvHRvsrHH/tsdErCwKPPZv7MbCceL6zbT407AjqZ3krpJBRzELmn/oVCmoK/6iOH/aWagKjiUvvsk88ksywgqXvAFwm12viIniOEdOu5TMWYSQliISRIikFx3owNfKJ2eyA2YNCt6Pwt8igkarqnNZav81to0MK1wUtm6VBzBLHNfmiEwDBsdDqfEFbHutHVym3Mw==
-X-OriginatorOrg: aspeedtech.com
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: SJ0PR18MB4479:EE_|PH7PR18MB5624:EE_
+X-MS-Office365-Filtering-Correlation-Id: ed93886b-06b2-4266-750b-08df0eef954b
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;
+ ARA:13230040|376014|366016|23010399003|1800799024|6133799003|3023799007|10067099003|5023799004|56012099006|4143699003|22082099003|18002099003;
+X-Microsoft-Antispam-Message-Info: m+UuJAT7wBmEANCYHGgk7szaYnxnzJqQwj8RHq9Aj9c10j1EAvdp3I1BC6vJEVEk5//15koIKaLiI7m3HEHa+MQ1usnUdDkaSAwoUv42ktxd0zb/CiuRLyjofkLry5uDih7SwQlWgCTj6tHspWYocmvYGHjHsbQgaS8hPaxEYPje9MYKvQBa0FSu4GqmQElGTs7EsdsPX603hiSrwedkUnu/kmrCXSQW9n8dxnqlgIqtz142vs2apAMzbT2E3xdFWh5NvKDXOoBrni++h8BANjl2vr9Ciw1XHhnr1w2l8WH6X4vN2Lh7X7iFjhZVTExpa2UM3Bf5fR7rjGaKf9ujdQXcWIxYxKl7AFJn0AUKuEPUvWRBowtx28kyoPtbiWjOrApgjRFF4vR0RJAa9hf4lKfIBBuE825YTXiuHOQMLPdmdjh6aCFKyvf3oBdmfclgK+WCQ+lpMiRUsziTIevAnwUz3DQxcKXVP2RkUs85NCTJtW0gyDjWe7BY/QV7vY9vpjU9mCreF4KnoITtuZDIwH9Tw0Q7xLpsKO68j/YR3z0W/0zgJEXi4mjf5pwq5TcsZ8lrqGqh5FhUTPmun97RpxoqShefEQLAMVg7DTn6QP5gTfmm2aOBaGIOrEcjBu4uA9WyH0GE23RfVaquPJAj5XvsX6bFZoWgOrI3cQmK5IM=
+X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:SJ0PR18MB4479.namprd18.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(13230040)(376014)(366016)(23010399003)(1800799024)(6133799003)(3023799007)(10067099003)(5023799004)(56012099006)(4143699003)(22082099003)(18002099003);
+ DIR:OUT; SFP:1102; 
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?ZUYxb2RiYlNDdGp4OGJoRjVxRGtvalhhdFlZZ1pES1lyb0d5QWxBMFlYMnN0?=
+ =?utf-8?B?V1JOd2MwNjN6Z1lWRmcyMDdjWlVlbE15dTVCNEVVN3hHcnF4TmtwdExsdzBX?=
+ =?utf-8?B?ZTR4ZXZ3dGh6TUNpN1kvVXdLdXQrRHNROWtSVHRwQzVLb0lzcTJialBpRDV5?=
+ =?utf-8?B?RUd5Si9rendQZnVKblRNSlFGamE3NHRSMy9NRTVQeEIybVpidVRHWDdXRXlO?=
+ =?utf-8?B?U2Q0ZGxoOUtwYlhMN0k4UjlXZmQ2WTJNSTcyTE5tZGhiZ1N5Y0pkZlpxd1hR?=
+ =?utf-8?B?QkhEQXdPLzlTWXFYbUVyQXZwc251MXV0Z1hMQ3ZpY0gwNTEvb2NZdkNnSHNw?=
+ =?utf-8?B?VisyVkV4TWhScHVDeTNnMlRVbU5KRHpKSThSZXp4MG5hNmEwSTliTTNXUGtE?=
+ =?utf-8?B?Q3hscnZiZjZ4SHRjZ0ZMWC9vbC9rU1ZOajlTd0RLVFBpdUtzd1BRZHI1b2pK?=
+ =?utf-8?B?elVkNElac3k1K2ZwUzNLTWhLQ1VpNnlSbmVkWC9SK3RxbG02Q3BveG44MWNH?=
+ =?utf-8?B?UWhZbk1TRFhMVDQzTS81Nm42aUI1aWhwczlpU3Q4UVBPT2JNWm1EVjEySUxW?=
+ =?utf-8?B?QUZMbmpPSkZYSFRTTFFWMGVVUitsalZVSUFQYXQ0Z1hpU2s0NmJOSVpZdTU1?=
+ =?utf-8?B?eElSSm1vM1phdWZHQ0w0dFRaUndvMWMzUGd1ZDFPZkt6ajFFK1ZDNGV4ZldL?=
+ =?utf-8?B?T20ydnhodS9FNEI4ME5LMEhmMUJiaXlLSlpsQ0ZJN1R6eis3YzdXV2JaRjJT?=
+ =?utf-8?B?QWhncWdHcktpL2VsYnFWWkViK29YSjQ4RjdBZU1TU3RvcVlXclFKc0xGOXlt?=
+ =?utf-8?B?OFpVVGVaN0ZWNC9OckVPNUpGWWpsdDZzRGFhMjhZc0c5NGxSaXBMQ2hFSHJO?=
+ =?utf-8?B?SVl1dVE2cU1aNEVjVzlmWWJzUkZyampzMkdDUnllQVFobHhHRjJqamM1ZHZS?=
+ =?utf-8?B?RWpoc2ZGNlBZNC9qVTFqWnF2QVQ3OStGWW9HSjNyaGFITFVmbHl2ZmpLNXY3?=
+ =?utf-8?B?ZS83eTR0WHYyUndtbXZEQ1MwUlpqUmdMN0ZsV1ZXaHBUekRacUtEbFh4UjNN?=
+ =?utf-8?B?dS9xdG1KOXVKeUJMRllMTmdqU2FUdHVXSm8wb3VWenR5bVhSamFGcngxMkNJ?=
+ =?utf-8?B?RTgrNTdqN1hycUVqbGhDc2NPYkZucVNiR2JwUGRxRzRWbTRPbjlHdzZwUnlw?=
+ =?utf-8?B?a3VEU3pvVmkxSFVvMjV6L3ZKcUlvTmZkUGhxNGpCenFmc0o0OXhUVTVqSHAw?=
+ =?utf-8?B?NlJNdFNqbTY0WVVJUm5KWlIxeWgwZk41ajZtSFdoWlQ0TmxaNWJqSC9zcGNh?=
+ =?utf-8?B?QmVVQnVubGFFeFRPVE4zZG1YdjJabFhGWTJobFM2SVpWak5Db08vN0lPbmQw?=
+ =?utf-8?B?WlhyMXJwYTk0aHByZ3BkUUd6U09BQ1hxV01LS082NGZVRENxSDhaUTBSRVkr?=
+ =?utf-8?B?bXYvVlFJSGJqeEFyVGpGYk5PUHZneGs2WWVqSkNpWWJNcXpWYlBhV0k1NGRM?=
+ =?utf-8?B?WUR3YkZGejM4bmxyVFFtcEZ0ckhUOVFPSVJsOHpZdDhQamhwK0VjUDFSZEVD?=
+ =?utf-8?B?L0doc25LRzVYZjQwS0JtWkhYNVJaMzFsQjRYcEpVNk1GWXlvZnVWaHF3Rmh4?=
+ =?utf-8?B?YVZZSVFxcmtHOXpQcUYwSHR5cmUzTDB6ZWNwUkJmVUlibkF1cnJ2NlVrWjk5?=
+ =?utf-8?B?bmhncDN6NWs1cnJYSWc2S01ZTVpWempsaVU3U0d1ODlaaFpXV2pOY0VoeXVx?=
+ =?utf-8?B?ekEvWWN6dVp2bmFSNmp1ZGlva0t0dmxEUEVyS01rRzU2NmRvOGltamk3M0oy?=
+ =?utf-8?B?dG5iK2JnNUNUeWozRHFVK2drYVpObHFRbkhRSEJQdmZZWFBaMkJkeWRsVjlw?=
+ =?utf-8?B?Qm5FUVJNZkgrZlZ6dFVsSUYzMm4vZXcrZmJNWldEdzBIZnZ2blpZUXZKTG1E?=
+ =?utf-8?B?U1Rwc2ZsajNPS2ZSQnMvUkZVbzlrcDdtbHNja1N6M2lWUEVvWUdoY09FalNa?=
+ =?utf-8?B?TE1pL0tKaXp0bDZYd2J6QnkyQXlqaFhTQk56TGpIekFiY01iYlY3eXF0aE1C?=
+ =?utf-8?B?c0ZEK3VPanFQRDZLRVRqSTZ6dlVXN0x3UU01Y0VTNjhUNG5iak93OGNGcnFi?=
+ =?utf-8?B?TS9XNWRtaEhxdW01UjBqVGpCSzUxOXRMSm9BaVB4RTVYWEJLTnlib3d6UXE5?=
+ =?utf-8?B?bjV1RTdxV1R5bXJHdkNDQjgvekNKQTZjM3VpeTlFaG15cUVpWFZsYUFoKzJy?=
+ =?utf-8?B?VmhyazUxeWVzdkx3bkFoTTNFcC84cDM5eGRSendGUi8rdTA3dDVLa200T0xG?=
+ =?utf-8?B?dGZkWVU1QldiMC9xTDBkRWlLNWVWMGZqbVc2Y0RVdjVSR1UwNkpSUT09?=
+X-OriginatorOrg: axiado.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: ed93886b-06b2-4266-750b-08df0eef954b
+X-MS-Exchange-CrossTenant-AuthSource: SJ0PR18MB4479.namprd18.prod.outlook.com
 X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-AuthSource: TYZPR06MB4980.apcprd06.prod.outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 81c85294-1843-475d-17d3-08df0edd1c6d
-X-MS-Exchange-CrossTenant-originalarrivaltime: 10 Sep 2026 01:44:53.7175 (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: 43d4aa98-e35b-4575-8939-080e90d5a249
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: CHHhuRwLWuNIqHi11BBKgEUrwpMzII/SVM/5dP/6tlAwP87vGEDkdvv4ys7sSp36H81XLp/N1xyhyM15HwhZpl+gNdxacPzsum2i9qj88sQ=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: SEYPR06MB6829
-Received-SPF: pass client-ip=2a01:111:f403:c40f::6;
- envelope-from=jamin_lin@aspeedtech.com;
- helo=SEYPR02CU001.outbound.protection.outlook.com
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 10 Sep 2026 03:57:07.7151 (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: ff2db17c-4338-408e-9036-2dee8e3e17d7
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: QUYL90uGsVGxXfSYa7+Hhw4s9NnLQffv53z0vhQmYbXlo4Dv52lVHnLc+1leYWzCKj45FgPjkAX6Rw5YsI8eog==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: PH7PR18MB5624
+Received-SPF: pass client-ip=2a01:111:f403:c111::5;
+ envelope-from=kchiu@axiado.com;
+ helo=DM1PR04CU001.outbound.protection.outlook.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_PASS=-0.001,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_PASS=-0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -148,402 +151,446 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-The display controller has a 2D engine at BAR 1 + 0x8000. It was not=0A=
-modelled, so its status register read back as all ones, which bit 31=0A=
-defines as a busy engine. ASPEED's UEFI driver waits for it and stops=0A=
-when it tries to scroll the console.=0A=
-=0A=
-Add the engine as a second subregion of BAR 1 and model the BitBLT=0A=
-command, which is the one the firmware uses. Only the source copy=0A=
-raster operation is done; other operations, clipping, patterns and the=0A=
-transparent monochrome mask are logged and nothing is drawn. A=0A=
-rectangle that does not fit in the framebuffer is rejected rather than=0A=
-half copied.=0A=
-=0A=
-The command carries a direction for each axis. When one is negative the=0A=
-coordinates are the last row or column, so an overlapping copy starts=0A=
-from that end and a scroll does not smear.=0A=
-=0A=
-The status register reads as idle after reset, a write of one clears=0A=
-that bit, and it is set again when a command finishes.=0A=
-=0A=
-Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>=0A=
----=0A=
- hw/display/aspeed-vga.h |  10 ++=0A=
- hw/display/aspeed-vga.c | 261 ++++++++++++++++++++++++++++++++++++++++=0A=
- hw/display/trace-events |   3 +=0A=
- 3 files changed, 274 insertions(+)=0A=
-=0A=
-diff --git a/hw/display/aspeed-vga.h b/hw/display/aspeed-vga.h=0A=
-index 55dcc57108..625e513115 100644=0A=
---- a/hw/display/aspeed-vga.h=0A=
-+++ b/hw/display/aspeed-vga.h=0A=
-@@ -25,13 +25,23 @@ OBJECT_DECLARE_TYPE(AspeedVGAState, AspeedVGAClass, ASP=
-EED_VGA)=0A=
- #define ASPEED_VGA_IOPORT_OFFSET    0x380=0A=
- #define ASPEED_VGA_IOPORT_SIZE      0x80=0A=
- =0A=
-+/*=0A=
-+ * 2D Graphics Engine (G2D)=0A=
-+ *=0A=
-+ * Offset 0x8000 from the BAR 1 register base=0A=
-+ */=0A=
-+#define ASPEED_VGA_G2D_OFFSET    0x8000=0A=
-+#define ASPEED_VGA_G2D_NR_REGS   (0x200 >> 2)=0A=
-+=0A=
- struct AspeedVGAState {=0A=
-     PCIDevice parent_obj;=0A=
- =0A=
-     VGACommonState vga;=0A=
-     MemoryRegion mmio;=0A=
-     MemoryRegion ioport;=0A=
-+    MemoryRegion g2d;=0A=
- =0A=
-+    uint32_t g2d_regs[ASPEED_VGA_G2D_NR_REGS];=0A=
-     uint8_t vgaer;=0A=
-     uint32_t last_cursor_y;=0A=
-     bool last_cursor_on;=0A=
-diff --git a/hw/display/aspeed-vga.c b/hw/display/aspeed-vga.c=0A=
-index e40d503910..f3ea154538 100644=0A=
---- a/hw/display/aspeed-vga.c=0A=
-+++ b/hw/display/aspeed-vga.c=0A=
-@@ -104,6 +104,259 @@ REG8(AST_CR_SOC_SCRATCH0, 0xd0)=0A=
- #define CURSOR_MONO_AND BIT(15)=0A=
- #define CURSOR_MONO_XOR BIT(14)=0A=
- =0A=
-+/*=0A=
-+ * 2D Graphics Engine (G2D)=0A=
-+ *=0A=
-+ * Offset 0x8000 from the BAR 1 register base=0A=
-+ */=0A=
-+REG32(GER_SRC_BASE, 0x00)=0A=
-+    FIELD(GER_SRC_BASE, ADDR, 3, 27)=0A=
-+REG32(GER_SRC_PITCH, 0x04)=0A=
-+    FIELD(GER_SRC_PITCH, PITCH, 19, 11)=0A=
-+REG32(GER_DST_BASE, 0x08)=0A=
-+    FIELD(GER_DST_BASE, ADDR, 3, 27)=0A=
-+REG32(GER_DST_PITCH, 0x0c)=0A=
-+    FIELD(GER_DST_PITCH, PITCH, 19, 11)=0A=
-+REG32(GER_DST_XY, 0x10)=0A=
-+    FIELD(GER_DST_XY, X, 16, 12)=0A=
-+    FIELD(GER_DST_XY, Y, 0, 12)=0A=
-+REG32(GER_SRC_XY, 0x14)=0A=
-+    FIELD(GER_SRC_XY, X, 16, 12)=0A=
-+    FIELD(GER_SRC_XY, Y, 0, 12)=0A=
-+REG32(GER_DIMENSION, 0x18)=0A=
-+    FIELD(GER_DIMENSION, WIDTH, 16, 12)=0A=
-+    FIELD(GER_DIMENSION, HEIGHT, 0, 12)=0A=
-+REG32(GER_CMD, 0x3c)=0A=
-+    FIELD(GER_CMD, NEG_X, 21, 1)=0A=
-+    FIELD(GER_CMD, NEG_Y, 20, 1)=0A=
-+    FIELD(GER_CMD, PATTERN, 16, 2)=0A=
-+    FIELD(GER_CMD, ROP, 8, 8)=0A=
-+    FIELD(GER_CMD, MONO_TRANSPARENT, 7, 1)=0A=
-+    FIELD(GER_CMD, SRC_FROM_QUEUE, 6, 1)=0A=
-+    FIELD(GER_CMD, COLOR, 4, 2)=0A=
-+    FIELD(GER_CMD, CLIP, 3, 1)=0A=
-+    FIELD(GER_CMD, TYPE, 0, 3)=0A=
-+#define GER_CMD_TYPE_BITBLT     0=0A=
-+#define GER_CMD_COLOR_TRUE      2=0A=
-+#define GER_CMD_COLOR_HIGH      1=0A=
-+#define GER_CMD_COLOR_256       0=0A=
-+/*=0A=
-+ * A ROP3 code: an 8 bit truth table for a boolean function of source,=0A=
-+ * destination and pattern. 0xcc is the one that leaves the destination=0A=
-+ * equal to the source, and is the only one modelled.=0A=
-+ */=0A=
-+#define GER_CMD_ROP_SRCCOPY     0xcc=0A=
-+REG32(GER_STATUS, 0x4c)=0A=
-+    FIELD(GER_STATUS, IDLE, 24, 1)=0A=
-+    FIELD(GER_STATUS, CMDQ_SPACE, 20, 1)=0A=
-+=0A=
-+/*=0A=
-+ * Copy a rectangle. Only the source copy raster operation is modelled,=0A=
-+ * which is all the firmware needs to scroll and clear the console.=0A=
-+ */=0A=
-+static void aspeed_g2d_bitblt(AspeedVGAState *s)=0A=
-+{=0A=
-+    uint32_t src_x =3D FIELD_EX32(s->g2d_regs[R_GER_SRC_XY], GER_SRC_XY, X=
-);=0A=
-+    uint32_t src_y =3D FIELD_EX32(s->g2d_regs[R_GER_SRC_XY], GER_SRC_XY, Y=
-);=0A=
-+    uint32_t dst_x =3D FIELD_EX32(s->g2d_regs[R_GER_DST_XY], GER_DST_XY, X=
-);=0A=
-+    uint32_t dst_y =3D FIELD_EX32(s->g2d_regs[R_GER_DST_XY], GER_DST_XY, Y=
-);=0A=
-+    uint32_t src_pitch =3D FIELD_EX32(s->g2d_regs[R_GER_SRC_PITCH],=0A=
-+                                    GER_SRC_PITCH, PITCH) * 8;=0A=
-+    uint32_t dst_pitch =3D FIELD_EX32(s->g2d_regs[R_GER_DST_PITCH],=0A=
-+                                    GER_DST_PITCH, PITCH) * 8;=0A=
-+    uint32_t src_base =3D FIELD_EX32(s->g2d_regs[R_GER_SRC_BASE],=0A=
-+                                   GER_SRC_BASE, ADDR) << 3;=0A=
-+    uint32_t dst_base =3D FIELD_EX32(s->g2d_regs[R_GER_DST_BASE],=0A=
-+                                   GER_DST_BASE, ADDR) << 3;=0A=
-+    uint32_t height =3D FIELD_EX32(s->g2d_regs[R_GER_DIMENSION],=0A=
-+                                 GER_DIMENSION, HEIGHT);=0A=
-+    uint32_t width =3D FIELD_EX32(s->g2d_regs[R_GER_DIMENSION],=0A=
-+                                GER_DIMENSION, WIDTH);=0A=
-+    uint32_t cmd =3D s->g2d_regs[R_GER_CMD];=0A=
-+    uint64_t src_offset;=0A=
-+    uint64_t dst_offset;=0A=
-+    uint32_t bytes_pp;=0A=
-+    bool right_to_left;=0A=
-+    bool bottom_up;=0A=
-+    uint32_t color;=0A=
-+    uint64_t line;=0A=
-+    uint32_t i;=0A=
-+    uint32_t y;=0A=
-+=0A=
-+    right_to_left =3D FIELD_EX32(cmd, GER_CMD, NEG_X);=0A=
-+    bottom_up =3D FIELD_EX32(cmd, GER_CMD, NEG_Y);=0A=
-+    color =3D FIELD_EX32(cmd, GER_CMD, COLOR);=0A=
-+=0A=
-+    switch (color) {=0A=
-+    case GER_CMD_COLOR_256:=0A=
-+        bytes_pp =3D 1;=0A=
-+        break;=0A=
-+    case GER_CMD_COLOR_HIGH:=0A=
-+        bytes_pp =3D 2;=0A=
-+        break;=0A=
-+    case GER_CMD_COLOR_TRUE:=0A=
-+        bytes_pp =3D 4;=0A=
-+        break;=0A=
-+    default:=0A=
-+        qemu_log_mask(LOG_GUEST_ERROR,=0A=
-+                      "%s: 2D command 0x%08x has an invalid color mode\n",=
-=0A=
-+                      __func__, cmd);=0A=
-+        return;=0A=
-+    }=0A=
-+=0A=
-+    if (FIELD_EX32(cmd, GER_CMD, ROP) !=3D GER_CMD_ROP_SRCCOPY) {=0A=
-+        qemu_log_mask(LOG_UNIMP, "%s: unimplemented raster operation 0x%02=
-x\n",=0A=
-+                      __func__, FIELD_EX32(cmd, GER_CMD, ROP));=0A=
-+        return;=0A=
-+    }=0A=
-+=0A=
-+    if (FIELD_EX32(cmd, GER_CMD, SRC_FROM_QUEUE)) {=0A=
-+        qemu_log_mask(LOG_UNIMP,=0A=
-+                      "%s: source from the command queue is not implemente=
-d\n",=0A=
-+                      __func__);=0A=
-+        return;=0A=
-+    }=0A=
-+=0A=
-+    if (FIELD_EX32(cmd, GER_CMD, CLIP)) {=0A=
-+        qemu_log_mask(LOG_UNIMP,=0A=
-+                      "%s: rectangular clipping is not implemented\n",=0A=
-+                      __func__);=0A=
-+        return;=0A=
-+    }=0A=
-+=0A=
-+    if (FIELD_EX32(cmd, GER_CMD, MONO_TRANSPARENT)) {=0A=
-+        qemu_log_mask(LOG_UNIMP,=0A=
-+                      "%s: a transparent monochrome mask is not implemente=
-d\n",=0A=
-+                      __func__);=0A=
-+        return;=0A=
-+    }=0A=
-+=0A=
-+    if (FIELD_EX32(cmd, GER_CMD, PATTERN)) {=0A=
-+        qemu_log_mask(LOG_UNIMP, "%s: unimplemented pattern source %u\n",=
-=0A=
-+                      __func__, FIELD_EX32(cmd, GER_CMD, PATTERN));=0A=
-+        return;=0A=
-+    }=0A=
-+=0A=
-+    if (!width || !height || !src_pitch || !dst_pitch) {=0A=
-+        qemu_log_mask(LOG_GUEST_ERROR,=0A=
-+                      "%s: 2D command 0x%08x has nothing to copy: "=0A=
-+                      "width %u, height %u, src pitch %u, dst pitch %u\n",=
-=0A=
-+                      __func__, cmd, width, height, src_pitch, dst_pitch);=
-=0A=
-+        return;=0A=
-+    }=0A=
-+=0A=
-+    trace_aspeed_g2d_bitblt(cmd, width, height, src_x, src_y, dst_x, dst_y=
-,=0A=
-+                            bytes_pp);=0A=
-+=0A=
-+    /*=0A=
-+     * The engine renders away from the given corner, so when a direction =
-is=0A=
-+     * negative that corner is the last row or column. Step back to the to=
-p=0A=
-+     * left one, which the rest of this function works from.=0A=
-+     */=0A=
-+    if (bottom_up) {=0A=
-+        if (src_y + 1 < height || dst_y + 1 < height) {=0A=
-+            qemu_log_mask(LOG_GUEST_ERROR,=0A=
-+                          "%s: 2D command 0x%08x runs off the top of the "=
-=0A=
-+                          "framebuffer\n", __func__, cmd);=0A=
-+            return;=0A=
-+        }=0A=
-+        src_y -=3D height - 1;=0A=
-+        dst_y -=3D height - 1;=0A=
-+    }=0A=
-+=0A=
-+    if (right_to_left) {=0A=
-+        if (src_x + 1 < width || dst_x + 1 < width) {=0A=
-+            qemu_log_mask(LOG_GUEST_ERROR,=0A=
-+                          "%s: 2D command 0x%08x runs off the left of the =
-"=0A=
-+                          "framebuffer\n", __func__, cmd);=0A=
-+            return;=0A=
-+        }=0A=
-+        src_x -=3D width - 1;=0A=
-+        dst_x -=3D width - 1;=0A=
-+    }=0A=
-+=0A=
-+    line =3D (uint64_t)width * bytes_pp;=0A=
-+=0A=
-+    src_offset =3D (uint64_t)src_base +=0A=
-+                 (uint64_t)(src_y + height - 1) * src_pitch +=0A=
-+                 (uint64_t)src_x * bytes_pp;=0A=
-+    dst_offset =3D (uint64_t)dst_base +=0A=
-+                 (uint64_t)(dst_y + height - 1) * dst_pitch +=0A=
-+                 (uint64_t)dst_x * bytes_pp;=0A=
-+=0A=
-+    if (src_offset + line > s->vga.vram_size ||=0A=
-+        dst_offset + line > s->vga.vram_size) {=0A=
-+        qemu_log_mask(LOG_GUEST_ERROR,=0A=
-+                      "%s: 2D command 0x%08x reaches past the framebuffer\=
-n",=0A=
-+                      __func__, cmd);=0A=
-+        return;=0A=
-+    }=0A=
-+=0A=
-+    for (i =3D 0; i < height; i++) {=0A=
-+        /* NEG_Y says which end to start from, so an overlap does not smea=
-r */=0A=
-+        y =3D bottom_up ? height - 1 - i : i;=0A=
-+        src_offset =3D (uint64_t)src_base +=0A=
-+                     (uint64_t)(src_y + y) * src_pitch +=0A=
-+                     (uint64_t)src_x * bytes_pp;=0A=
-+        dst_offset =3D (uint64_t)dst_base +=0A=
-+                     (uint64_t)(dst_y + y) * dst_pitch +=0A=
-+                     (uint64_t)dst_x * bytes_pp;=0A=
-+=0A=
-+        memmove(s->vga.vram_ptr + dst_offset, s->vga.vram_ptr + src_offset=
-,=0A=
-+                line);=0A=
-+        memory_region_set_dirty(&s->vga.vram, dst_offset, line);=0A=
-+    }=0A=
-+}=0A=
-+=0A=
-+static uint64_t aspeed_g2d_read(void *opaque, hwaddr addr, unsigned size)=
-=0A=
-+{=0A=
-+    AspeedVGAState *s =3D opaque;=0A=
-+    uint32_t reg =3D addr >> 2;=0A=
-+    uint32_t val =3D s->g2d_regs[reg];=0A=
-+=0A=
-+    trace_aspeed_g2d_read(reg, val);=0A=
-+    return val;=0A=
-+}=0A=
-+=0A=
-+static void aspeed_g2d_write(void *opaque, hwaddr addr, uint64_t val,=0A=
-+                             unsigned size)=0A=
-+{=0A=
-+    AspeedVGAState *s =3D opaque;=0A=
-+    uint32_t reg =3D addr >> 2;=0A=
-+=0A=
-+    trace_aspeed_g2d_write(reg, val);=0A=
-+=0A=
-+    switch (reg) {=0A=
-+    case R_GER_STATUS:=0A=
-+        s->g2d_regs[reg] &=3D ~(val & (R_GER_STATUS_IDLE_MASK |=0A=
-+                                     R_GER_STATUS_CMDQ_SPACE_MASK));=0A=
-+        break;=0A=
-+    case R_GER_CMD:=0A=
-+        s->g2d_regs[reg] =3D val;=0A=
-+        if (FIELD_EX32(val, GER_CMD, TYPE) =3D=3D GER_CMD_TYPE_BITBLT) {=
-=0A=
-+            aspeed_g2d_bitblt(s);=0A=
-+        } else {=0A=
-+            qemu_log_mask(LOG_UNIMP, "%s: unimplemented 2D command type %u=
-\n",=0A=
-+                          __func__, FIELD_EX32(val, GER_CMD, TYPE));=0A=
-+        }=0A=
-+        s->g2d_regs[R_GER_STATUS] |=3D R_GER_STATUS_IDLE_MASK;=0A=
-+        break;=0A=
-+    default:=0A=
-+        s->g2d_regs[reg] =3D val;=0A=
-+        break;=0A=
-+    }=0A=
-+}=0A=
-+=0A=
-+static const MemoryRegionOps aspeed_g2d_ops =3D {=0A=
-+    .read =3D aspeed_g2d_read,=0A=
-+    .write =3D aspeed_g2d_write,=0A=
-+    .valid.min_access_size =3D 4,=0A=
-+    .valid.max_access_size =3D 4,=0A=
-+    .impl.min_access_size =3D 4,=0A=
-+    .impl.max_access_size =3D 4,=0A=
-+    .endianness =3D DEVICE_LITTLE_ENDIAN,=0A=
-+};=0A=
-+=0A=
- /*=0A=
-  * The ast driver writes a color format to CRA3 when it switches to the=0A=
-  * extended mode. Until then CRA3 is zero and the device behaves like a=0A=
-@@ -517,6 +770,9 @@ static void aspeed_vga_reset_hold(Object *obj, ResetTyp=
-e type)=0A=
-         R_AST_CR_SOC_SCRATCH0_VRAM_INIT_BY_BMC_MASK |=0A=
-         R_AST_CR_SOC_SCRATCH0_VRAM_INIT_READY_MASK |=0A=
-         R_AST_CR_SOC_SCRATCH0_IKVM_WIDESCREEN_MASK;=0A=
-+=0A=
-+    memset(s->g2d_regs, 0, sizeof(s->g2d_regs));=0A=
-+    s->g2d_regs[R_GER_STATUS] =3D R_GER_STATUS_IDLE_MASK;=0A=
- }=0A=
- =0A=
- /*=0A=
-@@ -592,6 +848,10 @@ static void aspeed_vga_realize(PCIDevice *dev, Error *=
-*errp)=0A=
-     memory_region_add_subregion(&s->mmio, ASPEED_VGA_IOPORT_OFFSET,=0A=
-                                 &s->ioport);=0A=
- =0A=
-+    memory_region_init_io(&s->g2d, OBJECT(dev), &aspeed_g2d_ops, s,=0A=
-+                          "aspeed-vga.g2d", ASPEED_VGA_G2D_NR_REGS << 2);=
-=0A=
-+    memory_region_add_subregion(&s->mmio, ASPEED_VGA_G2D_OFFSET, &s->g2d);=
-=0A=
-+=0A=
-     pci_register_bar(dev, 0, PCI_BASE_ADDRESS_MEM_PREFETCH, &vga->vram);=
-=0A=
-     pci_register_bar(dev, 1, PCI_BASE_ADDRESS_SPACE_MEMORY, &s->mmio);=0A=
- }=0A=
-@@ -612,6 +872,7 @@ static const VMStateDescription vmstate_aspeed_vga =3D =
-{=0A=
-         VMSTATE_STRUCT(vga, AspeedVGAState, 0, vmstate_vga_common,=0A=
-                        VGACommonState),=0A=
-         VMSTATE_UINT8(vgaer, AspeedVGAState),=0A=
-+        VMSTATE_UINT32_ARRAY(g2d_regs, AspeedVGAState, ASPEED_VGA_G2D_NR_R=
-EGS),=0A=
-         VMSTATE_END_OF_LIST()=0A=
-     }=0A=
- };=0A=
-diff --git a/hw/display/trace-events b/hw/display/trace-events=0A=
-index fd4289d755..0e2adc2b80 100644=0A=
---- a/hw/display/trace-events=0A=
-+++ b/hw/display/trace-events=0A=
-@@ -141,6 +141,9 @@ vga_cirrus_bitblt_start(uint8_t blt_rop, uint8_t blt_mo=
-de, uint8_t blt_modeext,=0A=
- # aspeed-vga.c=0A=
- aspeed_vga_read_byte(uint32_t port, uint8_t val) "port 0x%03x, val 0x%02x"=
-=0A=
- aspeed_vga_write_byte(uint32_t port, uint8_t val) "port 0x%03x, val 0x%02x=
-"=0A=
-+aspeed_g2d_read(uint32_t reg, uint32_t val) "reg 0x%02x, val 0x%08x"=0A=
-+aspeed_g2d_write(uint32_t reg, uint32_t val) "reg 0x%02x, val 0x%08x"=0A=
-+aspeed_g2d_bitblt(uint32_t cmd, uint32_t w, uint32_t h, uint32_t sx, uint3=
-2_t sy, uint32_t dx, uint32_t dy, uint32_t bpp) "cmd 0x%08x, %ux%u, src %u,=
-%u dst %u,%u, %u bytes/pixel"=0A=
- =0A=
- # sii9022.c=0A=
- sii9022_read_reg(uint8_t addr, uint8_t val) "addr 0x%02x, val 0x%02x"=0A=
--- =0A=
-2.53.0=0A=
+Hi Mark
+
+Mark Cave-Ayland 於 2026/9/9 下午 07:12 寫道:
+> CAUTION: This email originated from outside of the organization. Do 
+> not click links or open attachments unless you recognize the sender 
+> and know the content is safe.
+>
+>
+> On 09/09/2026 11:55, Kuan-Jui Chiu wrote:
+>
+>> This patch adds new model for Axiado SoC AX3005 which supports
+>>      4 Cortex-A53 ARM64 CPUs
+>>      Arm Generic Interrupt Controller v3
+>>      9 Cadence UARTs
+>>      1 SDHCI controller with PHY
+>>      8 Cadence GPIOs
+>>
+>> Signed-off-by: Kuan-Jui Chiu <kchiu@axiado.com>
+>> ---
+>>   MAINTAINERS                 |   2 +
+>>   hw/arm/ax3005-soc.c         | 226 ++++++++++++++++++++++++++++++++++++
+>>   hw/arm/meson.build          |   3 +-
+>>   include/hw/arm/ax3005-soc.h | 102 ++++++++++++++++
+>>   4 files changed, 332 insertions(+), 1 deletion(-)
+>>   create mode 100644 hw/arm/ax3005-soc.c
+>>   create mode 100644 include/hw/arm/ax3005-soc.h
+>>
+>> diff --git a/MAINTAINERS b/MAINTAINERS
+>> index 7183babd6a..deddcc4eed 100644
+>> --- a/MAINTAINERS
+>> +++ b/MAINTAINERS
+>> @@ -1305,8 +1305,10 @@ M: Kuan-Jui Chiu <kchiu@axiado.com>
+>>   L: qemu-arm@nongnu.org
+>>   S: Maintained
+>>   F: hw/arm/ax3000*.c
+>> +F: hw/arm/ax3005*.c
+>>   F: hw/*/axiado*.c
+>>   F: include/hw/arm/ax3000*.h
+>> +F: include/hw/arm/ax3005*.h
+>>   F: include/hw/*/axiado*.h
+>>
+>>   AVR Machines
+>> diff --git a/hw/arm/ax3005-soc.c b/hw/arm/ax3005-soc.c
+>> new file mode 100644
+>> index 0000000000..e555b156f4
+>> --- /dev/null
+>> +++ b/hw/arm/ax3005-soc.c
+>> @@ -0,0 +1,226 @@
+>> +/*
+>> + * Axiado SoC AX3005
+>> + *
+>> + * Author: Kuan-Jui Chiu <kchiu@axiado.com>
+>> + *
+>> + * SPDX-License-Identifier: GPL-2.0-or-later
+>> + */
+>> +
+>> +#include "qemu/osdep.h"
+>> +#include "system/address-spaces.h"
+>> +#include "hw/arm/bsa.h"
+>> +#include "hw/arm/ax3005-soc.h"
+>> +#include "hw/misc/unimp.h"
+>> +#include "system/system.h"
+>> +#include "qobject/qlist.h"
+>> +#include "qom/object.h"
+>> +#include "hw/core/boards.h"
+>> +
+>> +static void ax3005_init(Object *obj)
+>> +{
+>> +    Ax3005SoCState *s = AX3005_SOC(obj);
+>> +    Ax3005SoCClass *sc = AX3005_SOC_GET_CLASS(s);
+>> +
+>> +    for (int i = 0; i < sc->num_cpus; i++) {
+>> +        g_autofree char *name = g_strdup_printf("cpu%d", i);
+>> +        object_initialize_child(obj, name, &s->cpu[i],
+>> + ARM_CPU_TYPE_NAME("cortex-a53"));
+>> +    }
+>> +
+>> +    object_initialize_child(obj, "gic", &s->gic, gicv3_class_name());
+>> +
+>> +    for (int i = 0; i < AX3005_NUM_UARTS; i++) {
+>> +        g_autofree char *name = g_strdup_printf("uart%d", i);
+>> +        object_initialize_child(obj, name, &s->uart[i], 
+>> TYPE_CADENCE_UART);
+>> +    }
+>> +
+>> +    object_initialize_child(obj, "sdhci0", &s->sdhci0, 
+>> TYPE_AXIADO_SDHCI);
+>> +
+>> +    for (int i = 0; i < AX3005_NUM_GPIOS; i++) {
+>> +        g_autofree char *name = g_strdup_printf("gpio%d", i);
+>> +        object_initialize_child(obj, name, &s->gpio[i], 
+>> TYPE_CADENCE_GPIO);
+>> +    }
+>> +}
+>> +
+>> +static void ax3005_realize(DeviceState *dev, Error **errp)
+>> +{
+>> +    Ax3005SoCState *s = AX3005_SOC(dev);
+>> +    Ax3005SoCClass *sc = AX3005_SOC_GET_CLASS(s);
+>> +    SysBusDevice *gic_sbd = SYS_BUS_DEVICE(&s->gic);
+>> +    DeviceState *gic_dev = DEVICE(&s->gic);
+>> +    QList *redist_region_count;
+>> +    SysBusDevice *sdhci0_sbd;
+>> +    DeviceState *card;
+>> +    DriveInfo *dinfo;
+>> +
+>> +    /* CPUs */
+>> +    for (int i = 0; i < sc->num_cpus; i++) {
+>> +        object_property_set_int(OBJECT(&s->cpu[i]), "cntfrq", 
+>> 1000000000,
+>> +                                &error_abort);
+>> +
+>> +        if (!qdev_realize(DEVICE(&s->cpu[i]), NULL, errp)) {
+>> +            return;
+>> +        }
+>> +    }
+>> +
+>> +    /* GIC */
+>> +    qdev_prop_set_uint32(gic_dev, "num-cpu", sc->num_cpus);
+>> +    qdev_prop_set_uint32(gic_dev, "num-irq",
+>> +                         AX3005_NUM_IRQS + GIC_INTERNAL);
+>> +
+>> +    redist_region_count = qlist_new();
+>> +    qlist_append_int(redist_region_count, sc->num_cpus);
+>> +    qdev_prop_set_array(gic_dev, "redist-region-count", 
+>> redist_region_count);
+>> +
+>> +    if (!sysbus_realize(gic_sbd, errp)) {
+>> +        return;
+>> +    }
+>> +
+>> +    sysbus_mmio_map(gic_sbd, 0, AX3005_GIC_DIST_BASE);
+>> +    sysbus_mmio_map(gic_sbd, 1, AX3005_GIC_REDIST_BASE);
+>> +
+>> +    /*
+>> +     * Mapping from the output timer irq lines from the CPU to the
+>> +     * GIC PPI inputs.
+>> +     */
+>> +    const int timer_irqs[] = {
+>> +        [GTIMER_PHYS] = ARCH_TIMER_NS_EL1_IRQ,
+>> +        [GTIMER_VIRT] = ARCH_TIMER_VIRT_IRQ,
+>> +        [GTIMER_HYP]  = ARCH_TIMER_NS_EL2_IRQ,
+>> +        [GTIMER_SEC]  = ARCH_TIMER_S_EL1_IRQ
+>> +    };
+>> +
+>> +    /*
+>> +     * Wire the outputs from each CPU's generic timer and the GICv3
+>> +     * maintenance interrupt signal to the appropriate GIC PPI 
+>> inputs, and
+>> +     * the GIC's IRQ/FIQ interrupt outputs to the CPU's inputs.
+>> +     */
+>> +    for (int i = 0; i < sc->num_cpus; i++) {
+>> +        DeviceState *cpu_dev = DEVICE(&s->cpu[i]);
+>> +        int intidbase = AX3005_NUM_IRQS + i * GIC_INTERNAL;
+>> +        qemu_irq irq;
+>> +
+>> +        for (int j = 0; j < ARRAY_SIZE(timer_irqs); j++) {
+>> +            irq = qdev_get_gpio_in(gic_dev, intidbase + timer_irqs[j]);
+>> +            qdev_connect_gpio_out(cpu_dev, j, irq);
+>> +        }
+>> +
+>> +        irq = qdev_get_gpio_in(gic_dev, intidbase + 
+>> ARCH_GIC_MAINT_IRQ);
+>> +        qdev_connect_gpio_out_named(cpu_dev, 
+>> "gicv3-maintenance-interrupt",
+>> +                                        0, irq);
+>> +
+>> +        sysbus_connect_irq(gic_sbd, i,
+>> +                           qdev_get_gpio_in(cpu_dev, ARM_CPU_IRQ));
+>> +        sysbus_connect_irq(gic_sbd, i + sc->num_cpus,
+>> +                           qdev_get_gpio_in(cpu_dev, ARM_CPU_FIQ));
+>> +        sysbus_connect_irq(gic_sbd, i + 2 * sc->num_cpus,
+>> +                           qdev_get_gpio_in(cpu_dev, ARM_CPU_VIRQ));
+>> +        sysbus_connect_irq(gic_sbd, i + 3 * sc->num_cpus,
+>> +                           qdev_get_gpio_in(cpu_dev, ARM_CPU_VFIQ));
+>> +    }
+>> +
+>> +    /* DRAM */
+>> +    memory_region_init_ram(&s->dram, OBJECT(s), "dram", 
+>> AX3005_DRAM_SIZE,
+>> +                           &error_fatal);
+>> +    memory_region_add_subregion(get_system_memory(), AX3005_DRAM_BASE,
+>> +                                &s->dram);
+>> +
+>> +    /* UARTs */
+>> +    const struct {
+>> +        hwaddr addr;
+>> +        unsigned int irq;
+>> +    } serial_table[] = {
+>> +        { AX3005_UART0_BASE, AX3005_UART0_IRQ },
+>> +        { AX3005_UART1_BASE, AX3005_UART1_IRQ },
+>> +        { AX3005_UART2_BASE, AX3005_UART2_IRQ },
+>> +        { AX3005_UART3_BASE, AX3005_UART3_IRQ },
+>> +        { AX3005_UART4_BASE, AX3005_UART4_IRQ },
+>> +        { AX3005_UART5_BASE, AX3005_UART5_IRQ },
+>> +        { AX3005_UART6_BASE, AX3005_UART6_IRQ },
+>> +        { AX3005_UART7_BASE, AX3005_UART7_IRQ },
+>> +        { AX3005_UART8_BASE, AX3005_UART8_IRQ }
+>> +    };
+>> +
+>> +    for (int i = 0; i < AX3005_NUM_UARTS; i++) {
+>> +        qdev_prop_set_chr(DEVICE(&s->uart[i]), "chardev", 
+>> serial_hd(i));
+>> +        qdev_prop_set_bit(DEVICE(&s->uart[i]), "brk-support", true);
+>> +        if (!sysbus_realize(SYS_BUS_DEVICE(&s->uart[i]), errp)) {
+>> +            return;
+>> +        }
+>> +
+>> +        sysbus_mmio_map(SYS_BUS_DEVICE(&s->uart[i]), 0, 
+>> serial_table[i].addr);
+>> +        sysbus_connect_irq(SYS_BUS_DEVICE(&s->uart[i]), 0,
+>> +                           qdev_get_gpio_in(gic_dev, 
+>> serial_table[i].irq));
+>> +    }
+>> +
+>> +    /* Timer control */
+>> +    create_unimplemented_device("ax3005.timerctrl", 
+>> AX3005_TIMER_CTRL, 32);
+>> +
+>> +    /* SDHCI */
+>> +    sdhci0_sbd = SYS_BUS_DEVICE(&s->sdhci0);
+>> +    if (!sysbus_realize(sdhci0_sbd, errp)) {
+>> +        return;
+>> +    }
+>> +
+>> +    sysbus_mmio_map(sdhci0_sbd, 0, AX3005_SDHCI0_BASE);
+>> +    sysbus_mmio_map(sdhci0_sbd, 1, AX3005_EMMC_PHY_BASE);
+>> +    sysbus_connect_irq(sdhci0_sbd, 0,
+>> +                       qdev_get_gpio_in(gic_dev, AX3005_SDHCI0_IRQ));
+>> +
+>> +    dinfo = drive_get(IF_SD, 0, 0);
+>> +    if (dinfo) {
+>> +        card = qdev_new(TYPE_SD_CARD);
+>> +        qdev_prop_set_drive_err(card, "drive",
+>> +                                blk_by_legacy_dinfo(dinfo),
+>> +                                &error_fatal);
+>> +        qdev_realize_and_unref(card, s->sdhci0.sd_bus, &error_fatal);
+>> +    }
+>> +
+>> +    /* GPIOs */
+>> +    const struct {
+>> +        hwaddr addr;
+>> +        unsigned int irq;
+>> +    } gpio_table[] = {
+>> +        { AX3005_GPIO0_BASE, AX3005_GPIO0_IRQ },
+>> +        { AX3005_GPIO1_BASE, AX3005_GPIO1_IRQ },
+>> +        { AX3005_GPIO2_BASE, AX3005_GPIO2_IRQ },
+>> +        { AX3005_GPIO3_BASE, AX3005_GPIO3_IRQ },
+>> +        { AX3005_GPIO4_BASE, AX3005_GPIO4_IRQ },
+>> +        { AX3005_GPIO5_BASE, AX3005_GPIO5_IRQ },
+>> +        { AX3005_GPIO6_BASE, AX3005_GPIO6_IRQ },
+>> +        { AX3005_GPIO7_BASE, AX3005_GPIO7_IRQ }
+>> +    };
+>> +
+>> +    for (int i = 0; i < AX3005_NUM_GPIOS; i++) {
+>> +        if (!sysbus_realize(SYS_BUS_DEVICE(&s->gpio[i]), errp)) {
+>> +            return;
+>> +        }
+>> +
+>> +        sysbus_mmio_map(SYS_BUS_DEVICE(&s->gpio[i]), 0, 
+>> gpio_table[i].addr);
+>> +        sysbus_connect_irq(SYS_BUS_DEVICE(&s->gpio[i]), 0,
+>> +                           qdev_get_gpio_in(gic_dev, 
+>> gpio_table[i].irq));
+>> +    }
+>> +}
+>> +
+>> +static void ax3005_class_init(ObjectClass *oc, const void *data)
+>> +{
+>> +    DeviceClass *dc = DEVICE_CLASS(oc);
+>> +    Ax3005SoCClass *sc = AX3005_SOC_CLASS(oc);
+>> +
+>> +    dc->desc = "Axiado SoC AX3005";
+>> +    dc->realize = ax3005_realize;
+>> +    sc->num_cpus = AX3005_NUM_CPUS;
+>> +}
+>> +
+>> +static const TypeInfo ax3005_soc_types[] = {
+>> +    {
+>> +        .name           = TYPE_AX3005_SOC,
+>> +        .parent         = TYPE_SYS_BUS_DEVICE,
+>> +        .instance_size  = sizeof(Ax3005SoCState),
+>> +        .instance_init  = ax3005_init,
+>> +        .class_size     = sizeof(Ax3005SoCClass),
+>> +        .class_init     = ax3005_class_init,
+>> +    }
+>> +};
+>> +
+>> +DEFINE_TYPES(ax3005_soc_types)
+>> diff --git a/hw/arm/meson.build b/hw/arm/meson.build
+>> index bcc068de04..b6a036c953 100644
+>> --- a/hw/arm/meson.build
+>> +++ b/hw/arm/meson.build
+>> @@ -111,7 +111,8 @@ arm_common_ss.add(when: 'CONFIG_VERSATILE', 
+>> if_true: files('versatilepb.c'))
+>>   arm_common_ss.add(when: 'CONFIG_VEXPRESS', if_true: 
+>> files('vexpress.c'))
+>>
+>>   arm_common_ss.add(when: ['CONFIG_AXIADO_SOC', 'TARGET_AARCH64'], 
+>> if_true: files(
+>> -  'ax3000-soc.c'))
+>> +  'ax3000-soc.c',
+>> +  'ax3005-soc.c'))
+>>   arm_common_ss.add(when: ['CONFIG_AXIADO_EVK', 'TARGET_AARCH64'], 
+>> if_true: files(
+>>     'ax3000-boards.c',
+>>     'ax3000-evk.c'))
+>> diff --git a/include/hw/arm/ax3005-soc.h b/include/hw/arm/ax3005-soc.h
+>> new file mode 100644
+>> index 0000000000..2a383a8084
+>> --- /dev/null
+>> +++ b/include/hw/arm/ax3005-soc.h
+>> @@ -0,0 +1,102 @@
+>> +/*
+>> + * Axiado SoC AX3005
+>> + *
+>> + * Author: Kuan-Jui Chiu <kchiu@axiado.com>
+>> + *
+>> + * SPDX-License-Identifier: GPL-2.0-or-later
+>> + */
+>> +
+>> +#ifndef AXIADO_AX3005_H
+>> +#define AXIADO_AX3005_H
+>> +
+>> +#include "cpu.h"
+>> +#include "hw/intc/arm_gicv3_common.h"
+>> +#include "hw/char/cadence_uart.h"
+>> +#include "hw/gpio/cadence_gpio.h"
+>> +#include "hw/sd/axiado_sdhci.h"
+>> +#include "hw/core/sysbus.h"
+>> +#include "qemu/units.h"
+>> +
+>> +#define TYPE_AX3005_SOC "ax3005"
+>> +OBJECT_DECLARE_TYPE(Ax3005SoCState, Ax3005SoCClass, AX3005_SOC)
+>> +
+>> +#define AX3005_DRAM_BASE        0x80000000
+>> +#define AX3005_DRAM_SIZE        (2 * GiB)
+>> +
+>> +#define AX3005_GIC_DIST_BASE    0x40400000
+>> +#define AX3005_GIC_DIST_SIZE    (64 * KiB)
+>> +#define AX3005_GIC_REDIST_BASE  0x40500000
+>> +#define AX3005_GIC_REDIST_SIZE  (768 * KiB)
+>> +
+>> +#define AX3005_UART0_BASE       0x33020000
+>> +#define AX3005_UART1_BASE       0x330A0000
+>> +#define AX3005_UART2_BASE       0x33120000
+>> +#define AX3005_UART3_BASE       0x33020800
+>> +#define AX3005_UART4_BASE       0x331A0400
+>> +#define AX3005_UART5_BASE       0x33381D00
+>> +#define AX3005_UART6_BASE       0x33381E00
+>> +#define AX3005_UART7_BASE       0x33381F00
+>> +#define AX3005_UART8_BASE       0x330C0000
+>> +
+>> +#define AX3005_SDHCI0_BASE      0x46000000
+>> +#define AX3005_EMMC_PHY_BASE    0x33301C00
+>> +
+>> +#define AX3005_GPIO0_BASE       0x33000000
+>> +#define AX3005_GPIO1_BASE       0x33080000
+>> +#define AX3005_GPIO2_BASE       0x33100000
+>> +#define AX3005_GPIO3_BASE       0x33180000
+>> +#define AX3005_GPIO4_BASE       0x33200000
+>> +#define AX3005_GPIO5_BASE       0x33280000
+>> +#define AX3005_GPIO6_BASE       0x33300000
+>> +#define AX3005_GPIO7_BASE       0x33380000
+>> +
+>> +#define AX3005_TIMER_CTRL       0x48016000
+>> +
+>> +enum Ax3005Configuration {
+>> +    AX3005_NUM_CPUS     = 4,
+>> +    AX3005_NUM_IRQS     = 224,
+>> +    AX3005_NUM_UARTS    = 9,
+>> +    AX3005_NUM_GPIOS    = 8,
+>> +};
+>> +
+>> +typedef struct Ax3005SoCState {
+>
+> The explicit typedef is not needed here since the QOM helper macros add
+> it automatically.
+
+Thanks for review, I will remove typedef in the next patch set
+
+>
+>> +    SysBusDevice        parent;
+>
+> As per our documented naming conventions at
+> file:///home/mca/src/upstream/qemu/build/docs/manual/devel/style.html#qemu-specific-idioms 
+>
+> this should be parent_obj.
+
+Got it , will be parent_obj
+
+>
+>> +    ARMCPU cpu[AX3005_NUM_CPUS];
+>> +    GICv3State          gic;
+>> +    MemoryRegion        dram;
+>> +    CadenceUARTState    uart[AX3005_NUM_UARTS];
+>> +    CadenceGPIOState    gpio[AX3005_NUM_GPIOS];
+>> +    AxiadoSDHCIState    sdhci0;
+>> +} Ax3005SoCState;
+>> +
+>> +typedef struct Ax3005SoCClass {
+>
+> No typedef required here either.
+>
+>> +    SysBusDeviceClass   parent;
+>
+> This should be parent_class.
+Got it , will be parent_class
+>
+>> +    uint32_t            num_cpus;
+>> +} Ax3005SoCClass;
+>> +
+>> +enum Ax3005Irqs {
+>> +    AX3005_UART0_IRQ    = 112,
+>> +    AX3005_UART1_IRQ    = 113,
+>> +    AX3005_UART2_IRQ    = 114,
+>> +    AX3005_UART3_IRQ    = 170,
+>> +    AX3005_UART4_IRQ    = 208,
+>> +    AX3005_UART5_IRQ    = 209,
+>> +    AX3005_UART6_IRQ    = 210,
+>> +    AX3005_UART7_IRQ    = 211,
+>> +    AX3005_UART8_IRQ    = 212,
+>> +
+>> +    AX3005_SDHCI0_IRQ   = 123,
+>> +
+>> +    AX3005_GPIO0_IRQ    = 183,
+>> +    AX3005_GPIO1_IRQ    = 184,
+>> +    AX3005_GPIO2_IRQ    = 185,
+>> +    AX3005_GPIO3_IRQ    = 186,
+>> +    AX3005_GPIO4_IRQ    = 187,
+>> +    AX3005_GPIO5_IRQ    = 188,
+>> +    AX3005_GPIO6_IRQ    = 189,
+>> +    AX3005_GPIO7_IRQ    = 190,
+>> +};
+>> +
+>> +#endif /* AXIADO_AX3005_H */
+>
+>
+>
+> ATB,
+>
+> Mark.
 

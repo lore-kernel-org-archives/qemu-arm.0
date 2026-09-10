@@ -4,71 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0F32DC88E42
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0D0AEC88E40
 	for <qemu-arm@archiver.kernel.org>; Thu, 10 Sep 2026 18:17:00 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1x4jIs-00044X-4U; Thu, 10 Sep 2026 14:15:18 -0400
+	id 1x4jIp-0003xa-EG; Thu, 10 Sep 2026 14:15:15 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1x4jIp-0003xl-Nx
- for qemu-arm@nongnu.org; Thu, 10 Sep 2026 14:15:15 -0400
-Received: from mail-wm1-x329.google.com ([2a00:1450:4864:20::329])
+ id 1x4jIm-0003ta-Oo
+ for qemu-arm@nongnu.org; Thu, 10 Sep 2026 14:15:12 -0400
+Received: from mail-wm1-x32a.google.com ([2a00:1450:4864:20::32a])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1x4jIn-00074B-07
- for qemu-arm@nongnu.org; Thu, 10 Sep 2026 14:15:15 -0400
-Received: by mail-wm1-x329.google.com with SMTP id
- 5b1f17b1804b1-49954b88fffso1350175e9.0
- for <qemu-arm@nongnu.org>; Thu, 10 Sep 2026 11:15:12 -0700 (PDT)
+ id 1x4jIl-00072v-48
+ for qemu-arm@nongnu.org; Thu, 10 Sep 2026 14:15:12 -0400
+Received: by mail-wm1-x32a.google.com with SMTP id
+ 5b1f17b1804b1-4956869750eso1293295e9.2
+ for <qemu-arm@nongnu.org>; Thu, 10 Sep 2026 11:15:10 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1789064111; x=1789668911; darn=nongnu.org;
- h=content-transfer-encoding:content-type:mime-version:references
- :in-reply-to:message-id:date:subject:cc:to:from:from:to:cc:subject
- :date:message-id:reply-to:content-type;
- bh=T5Xuw/KQ0j+V1bZw5QEINYzzMk8dJ72+D9GtgNKZY48=;
- b=bmikMRSUJ/6y+omp15H94d/+ptfYN7CIcQaVSVb/V156JovA0sobhkTDBKfgdHQdjf
- F8HGz0CyG2O3+GZGH0gCFj/iKbWzVPtfEzPnFEEjufii6Cs4BlqkrwAgg5THNdHbc7YO
- gMMxGM4Rx6K93PDESxzci/8rIaCUmQAbR+kdd8wn7bmdd0ZbpueWFRP9fwgAW0uZ5FlC
- Y6J4fbhuIplYI0ChqyBaiRLXK/5NAVV9RtWSuJS/WFm0g0+BLVeqbGN71RCsOs5QIZrx
- rRHNMdpOjlqJXZ/vk/Al9lzHiRP+rpUKbYu1y561JNUNNvRbFRUfRr7SoQrUJF9ke/TL
- xq2A==
+ d=linaro.org; s=google; t=1789064109; x=1789668909; darn=nongnu.org;
+ h=content-transfer-encoding:content-type:mime-version:message-id:date
+ :subject:cc:to:from:from:to:cc:subject:date:message-id:reply-to
+ :content-type; bh=E0D8WpUOmZ6uQghtDZOgPlvKzwogse6TvsFAvnzbc3k=;
+ b=MlAUtgPCjDjscYAwFtooISaIKSUFsoFtjNZZg6zKMAoNh927CIWCC+hWZs6pocRWz5
+ nXYnQbdpeKlkSm72QR4JfMzaEJ68Tbdyxfen7YerVfszQPax//6/+Yr3TRCRXn/jWJ/r
+ TlLVNAYwkUAUIJmUn/tEEUT6s85RSG+8Bk9h0Cal+oPiOMUz5ERyRYm8tMuVM43Xfu2B
+ 9rJH9vrQenxz30PgX/JSx4FSYEJsIXalR3GZrJpUHvYWsJegWFVm7ZYVGS9ACw+QN9WJ
+ pdcqDaM+BfG2aNpgzdTlpIDVjrR2eomu05CO9ciU60gTZnLkHpYAZzKgbUfGWniKWq/c
+ SqZw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1789064111; x=1789668911;
- h=content-transfer-encoding:content-type:mime-version:references
- :in-reply-to:message-id:date:subject:cc:to:from:x-gm-gg
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
- :content-type;
- bh=T5Xuw/KQ0j+V1bZw5QEINYzzMk8dJ72+D9GtgNKZY48=;
- b=ZJHCVByaRdtdDdDA04Nx8BrJF+JFjEIMJI/VtguJ1Opw5/iflKapZhZPF3Wuo/FSnq
- +tifxhAnkVmBAAaiEs9bGzgwr4bSpHJlzotP5+O+Zn2i0biGan2blaAs3C6He6RNA8RK
- S9KtDoARsg3SQu0gfyYvzimoc9SdAI0XWza8wAas5iqjvJORq9sYIkHXu2tvTypHoEtt
- e7x0mCBApsvgDwJB1B77zQHBu/jFOxZt9gIzF9vo+rIj268r8e6wTeMy42fPh9mMMseq
- PbqQKtAmBk7h4Pu9grJCzhzlmzv6We7RupaWxYYTlPiSBgeGAzJZoNKMQccW3lP8gq0W
- cWVg==
+ d=1e100.net; s=20251104; t=1789064109; x=1789668909;
+ h=content-transfer-encoding:content-type:mime-version:message-id:date
+ :subject:cc:to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject
+ :date:message-id:reply-to:content-type;
+ bh=E0D8WpUOmZ6uQghtDZOgPlvKzwogse6TvsFAvnzbc3k=;
+ b=oTSQ5uF/cSw4UclA7bFAzb4/hMnzrrTxTI4DB6a0y/o3il6ruAMDF/FhltNSEaxVkj
+ VZkGjpqK+Em2QcNCQ4YAdp8B3i3NDO0E/cOFro/Ox9FQQXdk9T3kf+9Dw9L9LKz0b8hn
+ F6Ge7PzI0hStgcj+wmV+hL0Aad0eyjo6/NQQvXcEyYc3QjlQD1U28BpVm+qaFx5aiE08
+ svmojbdyAFMGAIO/Dvbpg41ulwgtKkBa7eM9NJR+/tov4/NnVscRiU4+mEhMPaMO85wJ
+ Rk8FPoKXcDotyoPYWNiQJUTeMbATv8TBJim6RGpHlq/ZCDuqVih8unKgRsuGPY+dFtaf
+ AFtg==
 X-Forwarded-Encrypted: i=1;
- AKwUvBwKE8JBWd2QYVg7uwF+0HRrqRoWXxN236tUb61zrXA7VNm5QpbG/4NNx3fi+uCtdDNelPlXUb3BDQ==@nongnu.org
-X-Gm-Message-State: AFuF++muKo8xmJB26A7I9m1xEXpf7ezWC4zVKRAJW2CpbO7rJyvnJums
- gANNV0RCFvsc+ejiAeodJwgABHTP7Zlxs3gyOlC5bn+86GCW1PiXAeyCEOUwTfABwDQ=
-X-Gm-Gg: AYBFou3SAU431uptP9wBY9mNq7vxBIhTb6aMH7CBFBxm5XF+nLSOsQofI4LDHWCpNTl
- y08IVbJetFGu/wHHjpaqQ3FJ+BWXw2IRS+tnXWcW6ut8aYZ8kK2skdTDu1Uhyor/QBpLL9h/jy8
- gz/BYkzZXiwhYRSDXVb3VTyefchwdo8gpeELM3yBhSesS5bOvFcmAt06ZiePJva1LFioPUoMFJI
- GaOatfPEnug0vb4HCt0aTJoqbpjJZC8eD6BlJEtQ42f2G4FFgMKN8fm9H6nN6uW1uf60FXJLDWI
- XZopxGoJd5oAGXapZkzX2095V/xi7aQLZZsyhYGRs5zEsQNsl4DZnAztEZL5O0zN031eJWTMDVG
- Hyp83tIRJ6xlz9Vo4jlHalwrFYg7N313e4P9R7VESGW2koqronoqMq4GpD0t6VIZrMo2736VTex
- XdIw9wSzXyxKDYzakDFMaCcZcCGoIaEOrvU53bgXP2oLrCFc2IfHSXhPl2Ruyc5zf5FUT/4g0+X
- U3gSNLiJA==
-X-Received: by 2002:a05:600c:8712:b0:49c:ee36:10fc with SMTP id
- 5b1f17b1804b1-49e619acbfemr3156425e9.8.1789064111449; 
- Thu, 10 Sep 2026 11:15:11 -0700 (PDT)
+ AKwUvBzqzaDeuMeJqjQw6msPH9sbSYLJIxizqP+hCc1/ClDfmHmKOf4vepXN1Ic/OTU32Rrih2ztBkNmwg==@nongnu.org
+X-Gm-Message-State: AFuF++lcetwFE6tsY0yBML98nGqNx72K3NLzgEvl1LBg/vMGa9PGx3HV
+ 5Bzc+9gKZ4M5Yl+CJyoPDl7zAeX3o+vzZ4+KM6fiuf5YXEo/TS1rKopH74DmC7UkCOQ=
+X-Gm-Gg: AYBFou3cVETJ72RfuUV65ITrtn/XGELpySPUsV+5Qoj0JgMmgFIAeFJ4pmirpWhklSE
+ czCpNXJVgqSqKAtfJ9+6Brs6QGZtTLusX2HEASWO1xAUeDwDTJRdIBtyE42oyxUHOmmN0lbzR+F
+ 6J/+IZrdo5Z7QApXKgh1XUb3A6bX8Lx0D5RwwL1jNCm40ZSokm+NrmsDDZpJc/WafSYLHx2E52g
+ lkVIK95RVyNXyWmkvPuroinMkkgbNly3QWJUoirPlDtXYk2EAYlgQajCw26QnXRM9uBEpo/WvRJ
+ D93uSVpCTKVZwAcQe0BeSsveOc4DBfHcf/3THuBifw+jF1YRfDDVwk5m0t4NerNr6qAp8416ICi
+ AZd/Va+UnIXXXcN1yW1L18w+hqv/1nu1Y/GIhEbhhrbRUNTeJ+QEFcrVI4Ggf/WugiAFlkFM680
+ ucmgjyCNGhHQGsbezIqyeD2DLqTgyLtPqxCgfIJG1rMreiym/GKoa5bnoysIpIGdw+eEYPcC4=
+X-Received: by 2002:a05:600c:3b07:b0:49c:fa20:cbff with SMTP id
+ 5b1f17b1804b1-49e619c18a3mr3062245e9.22.1789064109542; 
+ Thu, 10 Sep 2026 11:15:09 -0700 (PDT)
 Received: from draig.lan ([185.124.0.156]) by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-486eb33fd3bsm208083f8f.19.2026.09.10.11.15.07
+ ffacd0b85a97d-486eaccaa1asm446824f8f.0.2026.09.10.11.15.06
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 10 Sep 2026 11:15:10 -0700 (PDT)
+ Thu, 10 Sep 2026 11:15:06 -0700 (PDT)
 Received: from draig.lan (localhost [IPv6:::1])
- by draig.lan (Postfix) with ESMTP id 84A0D5FCE5;
+ by draig.lan (Postfix) with ESMTP id 0C1565F834;
  Thu, 10 Sep 2026 19:15:05 +0100 (BST)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
@@ -88,24 +85,23 @@ Cc: Brad Smith <brad@comstyle.com>, Jiaxun Yang <jiaxun.yang@flygoat.com>,
  Richard Henderson <richard.henderson@linaro.org>,
  =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
  Cleber Rosa <crosa@redhat.com>
-Subject: [PATCH 5/9] tests/docker: add container registry to configure and use
-Date: Thu, 10 Sep 2026 19:15:00 +0100
-Message-ID: <20260910181504.1010916-6-alex.bennee@linaro.org>
+Subject: [PATCH 0/9] testing: various docker clean-ups post meson tcg
+ conversion
+Date: Thu, 10 Sep 2026 19:14:55 +0100
+Message-ID: <20260910181504.1010916-1-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.47.3
-In-Reply-To: <20260910181504.1010916-1-alex.bennee@linaro.org>
-References: <20260910181504.1010916-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
+Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::329;
- envelope-from=alex.bennee@linaro.org; helo=mail-wm1-x329.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::32a;
+ envelope-from=alex.bennee@linaro.org; helo=mail-wm1-x32a.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -121,114 +117,42 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Previously we had the default baked into Makefile.include but as the
-meson container logic will also benefit from it we update the configure
-machinery.
+This cleans up a few bits and pieces although doesn't totally solve
+the issue of an apparent stall while meson builds the docker image.
+However with these changes there should be no difference between the
+meson build and the equivalent "make docker-image-foo" invocation.
 
-For now we allow direct make invocations to override but for the
-normal case it is in one place now.
+We also finally get rid of the ill-advised magic caching support in
+docker.py.
 
-Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
----
- configure                     | 8 ++++++++
- meson_options.txt             | 3 +++
- tests/docker/Makefile.include | 4 +---
- tests/tcg/meson.build         | 6 ++++++
- 4 files changed, 18 insertions(+), 3 deletions(-)
+Please review.
 
-diff --git a/configure b/configure
-index aaa41fe47aa..7d6b11ddd35 100755
---- a/configure
-+++ b/configure
-@@ -172,6 +172,7 @@ fi
- # some defaults, based on the host environment
- 
- # default parameters
-+container_registry="registry.gitlab.com/qemu-project/qemu"
- cpu=""
- cross_compile="no"
- cross_prefix=""
-@@ -728,6 +729,9 @@ for opt do
-   ;;
-   --container-command=*) meson_option_add -Dcontainer_command="$optarg"
-   ;;
-+  --container-registry=*) container_registry="$optarg"
-+                          meson_option_add -Dcontainer_registry="$optarg"
-+  ;;
-   --rust-target-triple=*) rust_target_triple="$optarg"
-   ;;
-   --gdb=*) meson_option_add -Dgdb="$optarg"
-@@ -862,6 +866,7 @@ Advanced options (experts only):
-   --cpu=CPU                Build for host CPU [$cpu]
-   --disable-containers     don't use containers for cross-building
-   --container-command=CMD  which container command to use [autodetect]
-+  --container-registry=URL which container registry to cache from [$container_registry]
-   --gdb=GDB-path           gdb to use for gdbstub tests [autodetect]
-   --wasm64-32bit-address-limit Restrict wasm64 address space to 32-bit (default
-                                is to use the whole 64-bit range).
-@@ -1318,6 +1323,9 @@ echo "GENISOIMAGE=$genisoimage" >> $config_host_mak
- echo "MESON=$meson" >> $config_host_mak
- echo "NINJA=$ninja" >> $config_host_mak
- echo "EXESUF=$EXESUF" >> $config_host_mak
-+if test -n "$container_registry"; then
-+  echo "DOCKER_DEFAULT_REGISTRY=$container_registry" >> $config_host_mak
-+fi
- if test "$default_targets" = "yes"; then
-   echo "CONFIG_DEFAULT_TARGETS=y" >> $config_host_mak
- fi
-diff --git a/meson_options.txt b/meson_options.txt
-index 292625af08a..030231492e1 100644
---- a/meson_options.txt
-+++ b/meson_options.txt
-@@ -391,6 +391,9 @@ option('containers', type: 'boolean', value: true,
-        description: 'use containers to cross compile tcg tests')
- option('container_command', type: 'string',
-        description: 'command to build/run containers')
-+option('container_registry', type: 'string',
-+       value: 'registry.gitlab.com/qemu-project/qemu',
-+       description: 'container registry to cache from')
- 
- option('tcg_tests_cross_cc_aarch64', type: 'string',
-        description: 'cc for aarch64 tcg tests')
-diff --git a/tests/docker/Makefile.include b/tests/docker/Makefile.include
-index 0adddb6a5c6..74bf471f171 100644
---- a/tests/docker/Makefile.include
-+++ b/tests/docker/Makefile.include
-@@ -11,9 +11,7 @@ USER = $(if $(NOUSER),,$(shell id -un))
- UID = $(if $(NOUSER),,$(shell id -u))
- 
- DOCKER_FILES_DIR := $(SRC_PATH)/tests/docker/dockerfiles
--ifeq ($(HOST_ARCH),x86_64)
--DOCKER_DEFAULT_REGISTRY := registry.gitlab.com/qemu-project/qemu
--endif
-+DOCKER_DEFAULT_REGISTRY ?= registry.gitlab.com/qemu-project/qemu
- DOCKER_REGISTRY := $(if $(REGISTRY),$(REGISTRY),$(DOCKER_DEFAULT_REGISTRY))
- 
- CONTAINER_COMMAND ?= $(shell $(SRC_PATH)/tests/docker/docker.py probe)
-diff --git a/tests/tcg/meson.build b/tests/tcg/meson.build
-index 814f2f8cd8c..22157a47c96 100644
---- a/tests/tcg/meson.build
-+++ b/tests/tcg/meson.build
-@@ -101,6 +101,9 @@ if get_option('containers')
-   endif
- endif
- tcg_tests_summary += {'container command': container_command}
-+if get_option('container_registry') != ''
-+  tcg_tests_summary += {'container registry': get_option('container_registry')}
-+endif
- 
- # plugins come first, as we need to build the list
- test_plugins = {}
-@@ -257,6 +260,9 @@ foreach target, plan: tcg_tests
-     if cc_dockerfile not in image_targets and has_docker
-       cmd = [docker_wrapper, 'build', '-f', dockerfile, '-t', 'qemu/' + cc_dockerfile,
-              '--add-current-user']
-+      if get_option('container_registry') != ''
-+        cmd += ['--registry', get_option('container_registry')]
-+      endif
-       t = custom_target(image_name, command: cmd,
-                         build_by_default: false,
-                         output: 'no_output_' + image_name)
+Alex.
+
+Alex Bennée (8):
+  scripts/meson-buildoptions.sh: update missing options
+  tests/tcg: prefix meson built docker tags with qemu/
+  tests/tcg: use --add-current-user when building containers
+  tests/docker: add container registry to configure and use
+  tests/docker: remove used _read_qemu_dockerfile
+  tests/docker: strip remaining caching logic from docker.py
+  tests/docker: add specific command to parser
+  tests/docker: swap --quiet for --verbose
+
+Daniel P. Berrangé (1):
+  tests/tcg: improve check for working cross compilers
+
+ configure                               |   8 +
+ tests/tcg/test_cc.c                     |   6 +-
+ meson_options.txt                       |   3 +
+ scripts/coverity-scan/run-coverity-scan |   2 +-
+ scripts/meson-buildoptions.sh           | 142 ++++++++++++++++++
+ tests/docker/Makefile.include           |  14 +-
+ tests/docker/docker.py                  | 188 +++++++++---------------
+ tests/lcitool/libvirt-ci                |   2 +-
+ tests/tcg/meson.build                   |  15 +-
+ 9 files changed, 243 insertions(+), 137 deletions(-)
+
 -- 
 2.47.3
 

@@ -4,107 +4,91 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 80ECEC79F9F
-	for <qemu-arm@archiver.kernel.org>; Thu, 10 Sep 2026 19:26:11 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BC144C79F9F
+	for <qemu-arm@archiver.kernel.org>; Thu, 10 Sep 2026 19:40:59 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1x4kP7-0001x8-Ji; Thu, 10 Sep 2026 15:25:53 -0400
+	id 1x4kd8-00070a-A0; Thu, 10 Sep 2026 15:40:30 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <strahinjapjankovic@gmail.com>)
- id 1x4kOS-0001kq-EM
- for qemu-arm@nongnu.org; Thu, 10 Sep 2026 15:25:12 -0400
-Received: from mail-yx2-x10.google.com ([2607:f8b0:4864:41::10])
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1x4kc9-0006i5-1w
+ for qemu-arm@nongnu.org; Thu, 10 Sep 2026 15:39:24 -0400
+Received: from mail-pg1-x533.google.com ([2607:f8b0:4864:20::533])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <strahinjapjankovic@gmail.com>)
- id 1x4kOI-00040k-4V
- for qemu-arm@nongnu.org; Thu, 10 Sep 2026 15:25:01 -0400
-Received: by mail-yx2-x10.google.com with SMTP id
- 956f58d0204a3-66e4ab201ebso60043d50.3
- for <qemu-arm@nongnu.org>; Thu, 10 Sep 2026 12:24:38 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1789068278; cv=none;
- d=google.com; s=arc-20260327;
- b=AEKgK8x9zt76yUyimmz6HoK47NPpOcghxRVQilF6eoVRrZeBrbkFpSOWWbFiwj3mys
- vAgDna45yUw4dpJ0RMXM2ww8uYBfxXnoZePBXFhEUtG+T99nYnktQMgz1eKVHHT5yjuz
- pPAaCSpOgskL5TaC3dUcEDDNu7nHlyR2UFAvY03Irm+BoxtR+S42dMC7kXVMwZ+jvQTr
- j8oj+J33JpeRNVtCWVsXv2LLK22x4THv4O5p+7uyuE3mm20b135tn0gmbFs0lwoiy5fe
- RYdOMCdX+cZP27dXf3VCXpZEUS33t/iVbpRUL/0xjT/9SRYMcFlLoFUKOX9Bg7dbomI0
- LjCw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
- s=arc-20260327; 
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:dkim-signature;
- bh=VvJ1UBFUKvnTBhIyZla9iLs2QLT54AA6xcxxyWX5wyk=;
- fh=khoXoOHlykbTK1wdwYLrVnnwmAra6omtoYlxRQQz3AM=;
- b=LgSh60ZeEejU4qcfeg+c11N2vEkLKPV4uqK9fSAMTFWZlniCkAkZ18mKAC41vL+exl
- zxLv1uzdH+fP/RV9c1uN0f/msauAGAbhi+cV3KS3N9Mh0Q3lECSywQT9bl5mRZ9I/5e2
- oD1BrBehEHdpGVin2HFyq2vPI3DrL2dpo0GfuW43FuYUwb8VrdyvEKEn3Nh0DpGn7z0M
- RrezL3KyzaUWXZXEAZoE77GjFApU+Y0bt3vEMgjHOfW5out43SxY8B7CgeDkVog0oVU9
- bUQ+RmJ5P/dicBuVK20jYUKFUA3Jjx4saP+olC21hwaOdqao7AVheDUjqAHJtbcKRAWg
- qPFQ==; darn=nongnu.org
-ARC-Authentication-Results: i=1; mx.google.com; arc=none
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1x4kbn-00070x-C8
+ for qemu-arm@nongnu.org; Thu, 10 Sep 2026 15:39:04 -0400
+Received: by mail-pg1-x533.google.com with SMTP id
+ 41be03b00d2f7-cbedf433a99so211705a12.2
+ for <qemu-arm@nongnu.org>; Thu, 10 Sep 2026 12:37:54 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20251104; t=1789068278; x=1789673078; darn=nongnu.org;
- h=content-type:cc:to:subject:message-id:date:from:in-reply-to
- :references:mime-version:from:to:cc:subject:date:message-id:reply-to
- :content-type; bh=VvJ1UBFUKvnTBhIyZla9iLs2QLT54AA6xcxxyWX5wyk=;
- b=hjp7IvZA23DOxzgtXrNFTa99ylg06pk352rwKaucRXCxn0ervjXl8eLIBDo9ceT7w/
- B5AqQKQI4mjBrjFG+rLxqDacgqo1lnGRMgpJiBN+QVBaW5OqYlcAakGrH1MTl0TQZFGS
- MO5u0RfR/inETszYwcGx8asjwNXAKMISol/7qE+NN2yhTl/wD2nsX4lgYw+InWvic6n2
- kDPh+nYbmSfRXgf3TH+HBz7e1Ue3PoIOSZZDk7POHXnsTXz4t3dEXFBbfArCBVBgrWSV
- 2rc55ogkm8Kkc81Y9y78SuxVTy6ZIOC42A1FAWQljjLb2oZkAS1uF+Q2DdV/e7bfZ2xT
- MnpA==
+ d=linaro.org; s=google; t=1789069073; x=1789673873; darn=nongnu.org;
+ h=content-transfer-encoding:content-type:in-reply-to:content-language
+ :references:cc:to:from:subject:user-agent:mime-version:date
+ :message-id:from:to:cc:subject:date:message-id:reply-to:content-type;
+ bh=kemQVwMWo+Pmh7khYCCQ7xNNC4nVIU38bFca7y07Vik=;
+ b=L+rFK/vqzDmv4+uUQbShUEjunIO2TK+sChuhSL76injF0aCYgWmJ7HVwO1YkEDmyiA
+ 4pwgLnSZDM7byysQoL+nh1mgtRxHVEhzPGqHAiHUdbt+sCubSOtiqHn2G7zwv4gZdMzo
+ zQK1fh7BL76xu7yjz6IekSmBpNyK5Aq7+BWWHeNasVWp3a2VbAZgP//afC39z9x2kPu7
+ hE6wDNCYbBPffYIMGTbSc73+b4Zt/pWHX0sCUjU+A0sjIkeGGcQhdJlO6/fi1RV9FLDd
+ ZMYWlRZN2cL3zRKLG6Ul4gXhwGG6P7O46FMuqDbzsfM8stMBaDuOEMv21+oWbR6L0bJX
+ RibQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1789068278; x=1789673078;
- h=content-type:cc:to:subject:message-id:date:from:in-reply-to
- :references:mime-version:x-gm-gg:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to:content-type;
- bh=VvJ1UBFUKvnTBhIyZla9iLs2QLT54AA6xcxxyWX5wyk=;
- b=omq6Ks+bnat1hJ14j3jL7mbib5EVNtKvUiTv8s4zXjZPH3WVAb/2mq+/HIlejuh+Le
- 0doX7GfjufTjH6IotJcQrSqa2L7AlNdJDff+uTC/+uipuKQtfUAwk412dWLUERzJ36cB
- k2MrDYAUyPRkQHqM7Bg5XXn6D9CnVLQ9pOcvT335GanN5Px7I+RMTek9TP4Zl6e4puqW
- FSFL8GqKuyi89zhlfNKM2C60DAtvinzoa1ZFaQZc1khgcA0W5S1zQDi2Ort6Y8GcHCe0
- HqvFWVojL9S3PQVknI8h2JpnDJBTTlgbnOhRW0dHBaEq5JryciPRVyqWqHgYHw6wIq7B
- Ra7Q==
-X-Forwarded-Encrypted: i=1;
- AKwUvByosAQ5QsuiVTX8dNV5GEqVq7PjcqSDXws7XlxEFu0Qi7Q8OnlEVd1BsH/y8KeED8hpyAFPM2q3yw==@nongnu.org
-X-Gm-Message-State: AFuF++kYikUPkn0PMr/OZsvED/OFtZ98AecD4wiJ350UolhfYoJV0knM
- UR50gn4kMXeeVf0U3fuf6QlI6Ekz9JfWMJQEN6mmTAMelJn/P4w+aGlG/7XJqVPhbn06OK954HH
- /i6B8jt/x3ewzNYQLa3sGeFWZqcT7yK0=
-X-Gm-Gg: AYBFou0Lp/QUYjuxEfL4cLKAKad5nCAeXVNxlcTlxBx1I6lP+CGXUggu0dqVrQmoGEt
- EkT9hSS0gnTwzQOkijXcRjjLqRRm9Vnm8tKI4oQb53n46Z1fK7JirfZKFjVgWQuIjCW9oCEX4VH
- xzmKvJ3HUWbJq6L8oW5u/+/r8NpbsUJGYdAEHYHt1ik3z6WBVXgPWwhL0ccxKE9th27Ih46X/JW
- /mLtML3flVD7QZkmdDypMT6De5cDQUQzDOc/GDmeCd9mmUPMM52ixCqFSCT+EPa0Z0L5YDwV0zI
- mgqp1jidDm5+0+Y0vzYjp3Zpny/tAvG5qaBPBVwe6yY/s9NmTw9ab5U4
-X-Received: by 2002:a05:690e:138a:b0:66d:1849:93cb with SMTP id
- 956f58d0204a3-6712488cfa1mr434848d50.29.1789068278060; Thu, 10 Sep 2026
- 12:24:38 -0700 (PDT)
+ d=1e100.net; s=20251104; t=1789069073; x=1789673873;
+ h=content-transfer-encoding:content-type:in-reply-to:content-language
+ :references:cc:to:from:subject:user-agent:mime-version:date
+ :message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+ :message-id:reply-to:content-type;
+ bh=kemQVwMWo+Pmh7khYCCQ7xNNC4nVIU38bFca7y07Vik=;
+ b=YpqwHT4sh6OeCeHQIOvDg+CEPDO2CebJwPe3iT5e00SRiV72mrSf6/5R3GlZrczBFp
+ AEC7fwHcAure3LuG83v3tJTjbP8wsFOWcVb4zAAqwo613LwhRKR5nAWe9VPMbMt0xGfy
+ imXlb+E29kbLaPK7V97keDKByUb3zCJWu4k6smRAIphQeI0NCipBw8csTC1tftQbkn8q
+ DKvoI9N2Ieu7Z39TpnSokDxSvBaUvLyjOgfJlFL6ATzmIAvr4LXqZRlJ1I0O28uUCyU8
+ 1XdsIoI3YiBzk4Kpib8SUV925M1qkbzIghZIbrATYBU/aow/o7QYqrP8GgvkUQr75pws
+ VZxQ==
+X-Gm-Message-State: AFuF++lbWXAkfvphuvbjCJVM/LK7RZbBfC72YvO0yclNg+vp18EQ8c4j
+ e4uT88qLnGWJdaAM8NNNeC/C3PwI/P5j72gVLniOn23UnDu93f7LQ3u5FGsyKrm05y6TDZxlACa
+ cTrmfQgQ=
+X-Gm-Gg: AYBFou0nWEnDTKg3V6KU1S2PF+sucFE18fx1sinmUNqZf7iJsFuEXECZhugg4clz1Zl
+ BEKxWSjKrPMofiQxIJhblLSFyE2MWx56M6HMe9iHe3RFeGD2p96OCR2eUDTtSGbVeOHMq2P20fx
+ VmdblnbJexkXrXzvZWwnZb0+hu5RT624wJXP09FIjoTQ2rJ9jFx+mrHT33cs6P/KzKZNlgQVBFD
+ qNVhYdw7xjb1Ch6YbPPQ7MXjaRTwLLA1mI49hOe8Ts8ClxaovmanIgl4FTUmCF3V9cllaVCTSFZ
+ hg4lIACTiHmhPre+cM3eUC9hPlcKhTqPyW/tkdmaiP/g+kSC26qHrRIxXzVASKEucT0XjYMBJy8
+ eTSv3NqmsRyYhKc7ykKNNgfZUIhUEcF0xSvQNIomyH0/NVEAlBrHTpor+IfOly8r4FBKL6wYzew
+ VA8FAVOahQbytP/WTnPPfThycHQ0aF9VB8k6BDos4vUPkYQTP24LUBD7WPW45fl8Yd3QT0ffPRh
+ xuhjh4fe0oCOKN5
+X-Received: by 2002:a05:6a20:a120:b0:3d3:ae50:97c7 with SMTP id
+ adf61e73a8af0-3daed7dcbedmr574184637.20.1789069073269; 
+ Thu, 10 Sep 2026 12:37:53 -0700 (PDT)
+Received: from [10.171.0.227] ([98.155.112.169])
+ by smtp.gmail.com with ESMTPSA id
+ 5a478bee46e88-33ba4ed295esm270264eec.15.2026.09.10.12.37.51
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Thu, 10 Sep 2026 12:37:52 -0700 (PDT)
+Message-ID: <e0769c98-0190-48cf-baf1-e22d6eaf4602@linaro.org>
+Date: Thu, 10 Sep 2026 09:37:49 -1000
 MIME-Version: 1.0
-References: <20260829-allwinner-gpio-v2-0-f0ebcb07302e@gmail.com>
- <20260829-allwinner-gpio-v2-3-f0ebcb07302e@gmail.com>
- <CAFEAcA9+H-RQbpf2Fdv-C0Z5zxncBCAccYTNUBfJHzRHfVc+3Q@mail.gmail.com>
-In-Reply-To: <CAFEAcA9+H-RQbpf2Fdv-C0Z5zxncBCAccYTNUBfJHzRHfVc+3Q@mail.gmail.com>
-From: Strahinja Jankovic <strahinja.p.jankovic@gmail.com>
-Date: Thu, 10 Sep 2026 21:24:25 +0200
-X-Gm-Features: AcwNN1WYSGUjYdwY9Z8FMRmgAM-EbAsv03typ59v-YmltkHp_mCxX5JeYuSX0XQ
-Message-ID: <CABtshVT-Wux7jqX2SNnmOT=kjUTtuHHw8wFJm1dDtZO70xkJ0Q@mail.gmail.com>
-Subject: Re: [PATCH v2 3/3] tests/qtest: Allwinner GPIO tests
-To: Peter Maydell <peter.maydell@linaro.org>
-Cc: qemu-devel@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>,
- qemu-arm@nongnu.org, Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>,
- Fabiano Rosas <farosas@suse.de>, 
- Laurent Vivier <lvivier@redhat.com>, Jack wang <163wangjack@gmail.com>
-Content-Type: multipart/alternative; boundary="000000000000315a8f065b25eb07"
-Received-SPF: pass client-ip=2607:f8b0:4864:41::10;
- envelope-from=strahinjapjankovic@gmail.com; helo=mail-yx2-x10.google.com
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v2 0/6] target/arm: Implement FEAT_IDTE3
+From: Richard Henderson <richard.henderson@linaro.org>
+To: qemu-devel@nongnu.org
+Cc: qemu-arm@nongnu.org
+References: <20260806173123.333423-1-richard.henderson@linaro.org>
+Content-Language: en-US
+In-Reply-To: <20260806173123.333423-1-richard.henderson@linaro.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=2607:f8b0:4864:20::533;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pg1-x533.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- HTML_MESSAGE=0.001, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001, T_KAM_HTML_FONT_INVALID=0.01 autolearn=ham autolearn_force=no
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -120,441 +104,39 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
---000000000000315a8f065b25eb07
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Ping.  Prerequisites now merged.
 
-Hi Peter,
+r~
 
-On Tue, Sep 8, 2026 at 4:18=E2=80=AFPM Peter Maydell <peter.maydell@linaro.=
-org>
-wrote:
+On 8/6/26 07:31, Richard Henderson wrote:
+> Based-on: 20260806172709.333300-1-richard.henderson@linaro.org
+> ("[PATCH v2 0/6] target/arm: Implement FEAT_FGWTE3")
+> 
+> Changes for v2:
+>    - Rebase on the max-v9 split.
+>    - Continue to ignore HCR.TID3 in v7 for undefined ID regs.
+> 
+> r~
+> 
+> Richard Henderson (6):
+>    target/arm: Rename isar_feature_aa64_idst
+>    target/arm: Enable writes to SCR_EL3.TID{3,5}
+>    target/arm: Implement HCR_EL2.TID3 trap on undefined TID3 registers
+>    target/arm: Implement SCR_EL3.TID3
+>    target/arm: Implement SCR_EL3.TID5
+>    target/arm: Enable FEAT_IDTE3 for -cpu max
+> 
+>   target/arm/cpregs.h            |  8 ++++++++
+>   target/arm/cpu-features.h      |  7 ++++++-
+>   target/arm/cpu.h               |  2 ++
+>   target/arm/tcg/helper-defs.h   |  1 +
+>   target/arm/helper.c            | 37 ++++++++++++++++++++++++++++++----
+>   target/arm/tcg/cpu64.c         |  4 ++++
+>   target/arm/tcg/op_helper.c     | 23 ++++++++++++++++++++-
+>   target/arm/tcg/translate-a64.c | 12 +++++++++--
+>   target/arm/tcg/translate.c     | 18 +++++++++++++++++
+>   docs/system/arm/emulation.rst  |  1 +
+>   10 files changed, 105 insertions(+), 8 deletions(-)
+> 
 
-> On Sat, 29 Aug 2026 at 13:56, Strahinja Jankovic
-> <strahinja.p.jankovic@gmail.com> wrote:
-> >
-> > Add Allwinner GPIO set of qtests to validate functionality.
-> > Tests cover input and output port setting, as well as interrupt
-> > functionality.
-> >
-> > Signed-off-by: Strahinja Jankovic <strahinja.p.jankovic@gmail.com>
-> > ---
->
->
-> > +static void test_irq_pin_rising(const void *data)
-> > +{
-> > +    PortPinTestParam *param =3D (PortPinTestParam *)data;
-> > +    QTestState *s =3D qtest_init("-machine cubieboard");
-> > +    const int gpio_port =3D param->port;
-> > +    const int port_pin =3D param->pin;
-> > +    g_autofree char *in_name =3D portname_in(gpio_port);
-> > +    int irq_pin =3D irq_nr(gpio_port, port_pin);
-> > +    unsigned int irq_mask =3D 1u << irq_pin;
-> > +
-> > +    qtest_irq_intercept_in(s, "/machine/soc");
-> > +
-> > +    /* Configure as input and set pin low */
-> > +    update_cfg_reg(s, gpio_port, port_pin, AW_GPIO_CFG_IN);
-> > +    assert_cfg_regval(s, gpio_port, port_pin, AW_GPIO_CFG_IN);
-> > +    qtest_set_irq_in(
-> > +        s, "/machine/soc/gpio", in_name, port_pin, AW_GPIO_LEVEL_LOW);
->
-> Breaking the line immediately after the opening "(" looks odd;
-> generally put the first parameter there and break the line
-> after that where it makes sense.
->
-
-I will change this, had a lot of issues with the line width, so I will
-update all the places where I did a break like this.
-
-
->
-> > +
-> > +    /* Enable interrupt */
-> > +    update_int_cfg_reg(s, irq_pin, AW_GPIO_IRQ_CFG_RISING_EDGE);
-> > +    assert_int_cfg_regval(s, irq_pin, AW_GPIO_IRQ_CFG_RISING_EDGE);
-> > +    qtest_writel(s, GPIO_INT_CTL_ADDR, irq_mask);
-> > +
-> > +    /* Raise interrupt */
-> > +    qtest_set_irq_in(
-> > +        s, "/machine/soc/gpio", in_name, port_pin, AW_GPIO_LEVEL_HIGH)=
-;
-> > +    /* Check that value is written */
-> > +    assert_data_reg(s, gpio_port, port_pin, AW_GPIO_LEVEL_HIGH);
-> > +    /* Check interrupt status */
-> > +    g_assert_cmphex(qtest_readl(s, GPIO_INT_STA_ADDR), =3D=3D, irq_mas=
-k);
-> > +    g_assert_true(qtest_get_irq(s, AW_A10_IRQ_LINE));
-> > +
-> > +    /* Clear interrupt */
-> > +    qtest_writel(s, GPIO_INT_STA_ADDR, irq_mask);
-> > +
-> > +    /* Check that IRQ line is low */
-> > +    g_assert_cmphex(qtest_readl(s, GPIO_INT_STA_ADDR) & irq_mask, =3D=
-=3D,
-> 0);
-> > +    g_assert_false(qtest_get_irq(s, AW_A10_IRQ_LINE));
-> > +
-> > +    qtest_quit(s);
-> > +}
->
->
->
-> > +int main(int argc, char **argv)
-> > +{
-> > +  int r;
-> > +
-> > +  g_test_init(&argc, &argv, NULL);
-> > +
-> > +  for (int i =3D 0; i < G_N_ELEMENTS(in_out_test_parameters); i++) {
->
-> Prefer ARRAY_SIZE() over G_N_ELEMENTS().
->
-
-Ok!
-
-
->
-> > +    g_autofree char *out_name =3D g_strdup_printf(
-> > +    "/allwinner-cubieboard/gpio/set_output_pins/%s%d",
-> > +    portname(in_out_test_parameters[i].port),
-> in_out_test_parameters[i].pin);
-> > +    g_autofree char *in_name =3D g_strdup_printf(
-> > +    "/allwinner-cubieboard/gpio/set_input_pins/%s%d",
-> > +    portname(in_out_test_parameters[i].port),
-> in_out_test_parameters[i].pin);
->
-> This has turned into an unreadable lump especially given the
-> lack of indentation. I suggest factoring out the creation of the
-> test:
-
-
-> static char *add_test(const char *type, const PortPinTestParam *p,
->                       void (*testfn)(const void *))
-> {
->     g_autofree char *name =3D
->          g_strdup_printf("/allwinner-cubieboard/gpio/%s/%s%d",
->                          type, portname(p->port), p->pin);
->
->     qtest_add_data_func(name, p, testfn);
-> }
->
-> Then you in your loop you can do:
->
->     PortPinTestParam *p =3D &in_out_test_parameters[i];
->
->     add_test("set_output_pins", p, test_set_output_pins);
->     add_test("set_input_pins", p, test_set_input_pins);
->
->
-Now that you point it out, it has. I was adding line after line just to add
-all tests,
-but I forgot to take another look to prettify it.
-Thanks for the suggestion, I will use it!
-
-
->
-> > +    qtest_add_data_func(out_name, &in_out_test_parameters[i],
-> > +                        test_set_output_pins);
-> > +    qtest_add_data_func(in_name, &in_out_test_parameters[i],
-> > +                        test_set_input_pins);
-> > +  }
-> > +  qtest_add_func("/allwinner-cubieboard/gpio/reset_values",
-> > +                      test_reset_values);
-> > +  for (int i =3D 0; i < G_N_ELEMENTS(irq_test_parameters); i++) {
-> > +    g_autofree char *rising_edge_name =3D g_strdup_printf(
-> > +    "/allwinner-cubieboard/gpio/irq_pin_rising/%s%d",
-> > +    portname(irq_test_parameters[i].port), irq_test_parameters[i].pin)=
-;
-> > +    qtest_add_data_func(
-> > +            rising_edge_name, &irq_test_parameters[i],
-> test_irq_pin_rising);
-> > +    g_autofree char *falling_edge_name =3D g_strdup_printf(
-> > +    "/allwinner-cubieboard/gpio/irq_pin_falling/%s%d",
-> > +    portname(irq_test_parameters[i].port), irq_test_parameters[i].pin)=
-;
->
-> add_test() should make this loop more readable too.
->
-
-Ok!
-
-Thank you very much for your thorough review and help, I will make the
-changes and send a new version.
-
-Best regards,
-Strahinja Jankovic
-
-
-
->
-> > +    qtest_add_data_func(
-> > +            falling_edge_name, &irq_test_parameters[i],
-> test_irq_pin_falling);
-> > +    g_autofree char *high_level_name =3D g_strdup_printf(
-> > +    "/allwinner-cubieboard/gpio/irq_pin_high_level/%s%d",
-> > +    portname(irq_test_parameters[i].port), irq_test_parameters[i].pin)=
-;
-> > +    qtest_add_data_func(
-> > +            high_level_name, &irq_test_parameters[i],
-> test_irq_pin_high_level);
-> > +    g_autofree char *low_level_name =3D g_strdup_printf(
-> > +    "/allwinner-cubieboard/gpio/irq_pin_low_level/%s%d",
-> > +    portname(irq_test_parameters[i].port), irq_test_parameters[i].pin)=
-;
-> > +    qtest_add_data_func(
-> > +            low_level_name, &irq_test_parameters[i],
-> test_irq_pin_low_level);
-> > +    g_autofree char *both_edge_name =3D g_strdup_printf(
-> > +    "/allwinner-cubieboard/gpio/irq_pin_both_edge/%s%d",
-> > +    portname(irq_test_parameters[i].port), irq_test_parameters[i].pin)=
-;
-> > +    qtest_add_data_func(
-> > +            both_edge_name, &irq_test_parameters[i],
-> test_irq_pin_both_edge);
-> > +
-> > +  }
-> > +  r =3D g_test_run();
-> > +
-> > +  return r;
-> > +}
->
-> thanks
-> -- PMM
->
-
---000000000000315a8f065b25eb07
-Content-Type: text/html; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-
-<div dir=3D"ltr"><div>Hi Peter,</div><br><div class=3D"gmail_quote gmail_qu=
-ote_container"><div dir=3D"ltr" class=3D"gmail_attr">On Tue, Sep 8, 2026 at=
- 4:18=E2=80=AFPM Peter Maydell &lt;<a href=3D"mailto:peter.maydell@linaro.o=
-rg">peter.maydell@linaro.org</a>&gt; wrote:<br></div><blockquote class=3D"g=
-mail_quote" style=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204=
-,204,204);padding-left:1ex">On Sat, 29 Aug 2026 at 13:56, Strahinja Jankovi=
-c<br>
-&lt;<a href=3D"mailto:strahinja.p.jankovic@gmail.com" target=3D"_blank">str=
-ahinja.p.jankovic@gmail.com</a>&gt; wrote:<br>
-&gt;<br>
-&gt; Add Allwinner GPIO set of qtests to validate functionality.<br>
-&gt; Tests cover input and output port setting, as well as interrupt<br>
-&gt; functionality.<br>
-&gt;<br>
-&gt; Signed-off-by: Strahinja Jankovic &lt;<a href=3D"mailto:strahinja.p.ja=
-nkovic@gmail.com" target=3D"_blank">strahinja.p.jankovic@gmail.com</a>&gt;<=
-br>
-&gt; ---<br>
-<br>
-<br>
-&gt; +static void test_irq_pin_rising(const void *data)<br>
-&gt; +{<br>
-&gt; +=C2=A0 =C2=A0 PortPinTestParam *param =3D (PortPinTestParam *)data;<b=
-r>
-&gt; +=C2=A0 =C2=A0 QTestState *s =3D qtest_init(&quot;-machine cubieboard&=
-quot;);<br>
-&gt; +=C2=A0 =C2=A0 const int gpio_port =3D param-&gt;port;<br>
-&gt; +=C2=A0 =C2=A0 const int port_pin =3D param-&gt;pin;<br>
-&gt; +=C2=A0 =C2=A0 g_autofree char *in_name =3D portname_in(gpio_port);<br=
->
-&gt; +=C2=A0 =C2=A0 int irq_pin =3D irq_nr(gpio_port, port_pin);<br>
-&gt; +=C2=A0 =C2=A0 unsigned int irq_mask =3D 1u &lt;&lt; irq_pin;<br>
-&gt; +<br>
-&gt; +=C2=A0 =C2=A0 qtest_irq_intercept_in(s, &quot;/machine/soc&quot;);<br=
->
-&gt; +<br>
-&gt; +=C2=A0 =C2=A0 /* Configure as input and set pin low */<br>
-&gt; +=C2=A0 =C2=A0 update_cfg_reg(s, gpio_port, port_pin, AW_GPIO_CFG_IN);=
-<br>
-&gt; +=C2=A0 =C2=A0 assert_cfg_regval(s, gpio_port, port_pin, AW_GPIO_CFG_I=
-N);<br>
-&gt; +=C2=A0 =C2=A0 qtest_set_irq_in(<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 s, &quot;/machine/soc/gpio&quot;, in_name=
-, port_pin, AW_GPIO_LEVEL_LOW);<br>
-<br>
-Breaking the line immediately after the opening &quot;(&quot; looks odd;<br=
->
-generally put the first parameter there and break the line<br>
-after that where it makes sense.<br></blockquote><div><br></div><div>I will=
- change this, had a lot of issues with the line width, so I will update all=
- the places where I did a break like this.</div><div>=C2=A0</div><blockquot=
-e class=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8ex;border-left:1px s=
-olid rgb(204,204,204);padding-left:1ex">
-<br>
-&gt; +<br>
-&gt; +=C2=A0 =C2=A0 /* Enable interrupt */<br>
-&gt; +=C2=A0 =C2=A0 update_int_cfg_reg(s, irq_pin, AW_GPIO_IRQ_CFG_RISING_E=
-DGE);<br>
-&gt; +=C2=A0 =C2=A0 assert_int_cfg_regval(s, irq_pin, AW_GPIO_IRQ_CFG_RISIN=
-G_EDGE);<br>
-&gt; +=C2=A0 =C2=A0 qtest_writel(s, GPIO_INT_CTL_ADDR, irq_mask);<br>
-&gt; +<br>
-&gt; +=C2=A0 =C2=A0 /* Raise interrupt */<br>
-&gt; +=C2=A0 =C2=A0 qtest_set_irq_in(<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 s, &quot;/machine/soc/gpio&quot;, in_name=
-, port_pin, AW_GPIO_LEVEL_HIGH);<br>
-&gt; +=C2=A0 =C2=A0 /* Check that value is written */<br>
-&gt; +=C2=A0 =C2=A0 assert_data_reg(s, gpio_port, port_pin, AW_GPIO_LEVEL_H=
-IGH);<br>
-&gt; +=C2=A0 =C2=A0 /* Check interrupt status */<br>
-&gt; +=C2=A0 =C2=A0 g_assert_cmphex(qtest_readl(s, GPIO_INT_STA_ADDR), =3D=
-=3D, irq_mask);<br>
-&gt; +=C2=A0 =C2=A0 g_assert_true(qtest_get_irq(s, AW_A10_IRQ_LINE));<br>
-&gt; +<br>
-&gt; +=C2=A0 =C2=A0 /* Clear interrupt */<br>
-&gt; +=C2=A0 =C2=A0 qtest_writel(s, GPIO_INT_STA_ADDR, irq_mask);<br>
-&gt; +<br>
-&gt; +=C2=A0 =C2=A0 /* Check that IRQ line is low */<br>
-&gt; +=C2=A0 =C2=A0 g_assert_cmphex(qtest_readl(s, GPIO_INT_STA_ADDR) &amp;=
- irq_mask, =3D=3D, 0);<br>
-&gt; +=C2=A0 =C2=A0 g_assert_false(qtest_get_irq(s, AW_A10_IRQ_LINE));<br>
-&gt; +<br>
-&gt; +=C2=A0 =C2=A0 qtest_quit(s);<br>
-&gt; +}<br>
-<br>
-<br>
-<br>
-&gt; +int main(int argc, char **argv)<br>
-&gt; +{<br>
-&gt; +=C2=A0 int r;<br>
-&gt; +<br>
-&gt; +=C2=A0 g_test_init(&amp;argc, &amp;argv, NULL);<br>
-&gt; +<br>
-&gt; +=C2=A0 for (int i =3D 0; i &lt; G_N_ELEMENTS(in_out_test_parameters);=
- i++) {<br>
-<br>
-Prefer ARRAY_SIZE() over G_N_ELEMENTS().<br></blockquote><div><br></div><di=
-v>Ok!</div><div>=C2=A0</div><blockquote class=3D"gmail_quote" style=3D"marg=
-in:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204);padding-left:1e=
-x">
-<br>
-&gt; +=C2=A0 =C2=A0 g_autofree char *out_name =3D g_strdup_printf(<br>
-&gt; +=C2=A0 =C2=A0 &quot;/allwinner-cubieboard/gpio/set_output_pins/%s%d&q=
-uot;,<br>
-&gt; +=C2=A0 =C2=A0 portname(in_out_test_parameters[i].port), in_out_test_p=
-arameters[i].pin);<br>
-&gt; +=C2=A0 =C2=A0 g_autofree char *in_name =3D g_strdup_printf(<br>
-&gt; +=C2=A0 =C2=A0 &quot;/allwinner-cubieboard/gpio/set_input_pins/%s%d&qu=
-ot;,<br>
-&gt; +=C2=A0 =C2=A0 portname(in_out_test_parameters[i].port), in_out_test_p=
-arameters[i].pin);<br>
-<br>
-This has turned into an unreadable lump especially given the<br>
-lack of indentation. I suggest factoring out the creation of the<br>
-test:<span style=3D"background-color:transparent">=C2=A0</span></blockquote=
-><blockquote class=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8ex;border=
--left:1px solid rgb(204,204,204);padding-left:1ex">
-<br>
-static char *add_test(const char *type, const PortPinTestParam *p,<br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
-=A0 void (*testfn)(const void *))<br>
-{<br>
-=C2=A0 =C2=A0 g_autofree char *name =3D<br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0g_strdup_printf(&quot;/allwinner-cubieboa=
-rd/gpio/%s/%s%d&quot;,<br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
-=A0 =C2=A0 =C2=A0type, portname(p-&gt;port), p-&gt;pin);<br>
-<br>
-=C2=A0 =C2=A0 qtest_add_data_func(name, p, testfn);<br>
-}<br>
-<br>
-Then you in your loop you can do:<br>
-<br>
-=C2=A0 =C2=A0 PortPinTestParam *p =3D &amp;in_out_test_parameters[i];<br>
-<br>
-=C2=A0 =C2=A0 add_test(&quot;set_output_pins&quot;, p, test_set_output_pins=
-);<br>
-=C2=A0 =C2=A0 add_test(&quot;set_input_pins&quot;, p, test_set_input_pins);=
-<br>
-<br></blockquote><div><br></div><div><div>Now that you point it out, it has=
-. I was adding line after line just to add all tests,</div><div>but I forgo=
-t to take another look to prettify it.</div></div><div>Thanks for the sugge=
-stion, I will use it!</div><div>=C2=A0</div><blockquote class=3D"gmail_quot=
-e" style=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204)=
-;padding-left:1ex">
-<br>
-&gt; +=C2=A0 =C2=A0 qtest_add_data_func(out_name, &amp;in_out_test_paramete=
-rs[i],<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
- =C2=A0 =C2=A0 test_set_output_pins);<br>
-&gt; +=C2=A0 =C2=A0 qtest_add_data_func(in_name, &amp;in_out_test_parameter=
-s[i],<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
- =C2=A0 =C2=A0 test_set_input_pins);<br>
-&gt; +=C2=A0 }<br>
-&gt; +=C2=A0 qtest_add_func(&quot;/allwinner-cubieboard/gpio/reset_values&q=
-uot;,<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
- =C2=A0 test_reset_values);<br>
-&gt; +=C2=A0 for (int i =3D 0; i &lt; G_N_ELEMENTS(irq_test_parameters); i+=
-+) {<br>
-&gt; +=C2=A0 =C2=A0 g_autofree char *rising_edge_name =3D g_strdup_printf(<=
-br>
-&gt; +=C2=A0 =C2=A0 &quot;/allwinner-cubieboard/gpio/irq_pin_rising/%s%d&qu=
-ot;,<br>
-&gt; +=C2=A0 =C2=A0 portname(irq_test_parameters[i].port), irq_test_paramet=
-ers[i].pin);<br>
-&gt; +=C2=A0 =C2=A0 qtest_add_data_func(<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 rising_edge_name, &amp;irq_=
-test_parameters[i], test_irq_pin_rising);<br>
-&gt; +=C2=A0 =C2=A0 g_autofree char *falling_edge_name =3D g_strdup_printf(=
-<br>
-&gt; +=C2=A0 =C2=A0 &quot;/allwinner-cubieboard/gpio/irq_pin_falling/%s%d&q=
-uot;,<br>
-&gt; +=C2=A0 =C2=A0 portname(irq_test_parameters[i].port), irq_test_paramet=
-ers[i].pin);<br>
-<br>
-add_test() should make this loop more readable too.<br></blockquote><div><b=
-r></div><div>Ok!</div><div><br></div><div>Thank you very much for your thor=
-ough review and help, I will make the changes and send a new version.</div>=
-<div><span style=3D"background-color:transparent"><br></span></div><div><sp=
-an style=3D"background-color:transparent">Best regards,</span></div><div><s=
-pan style=3D"background-color:transparent">Strahinja Jankovic</span></div><=
-div><span style=3D"background-color:transparent"><br></span></div><div><spa=
-n style=3D"background-color:transparent">=C2=A0</span></div><blockquote cla=
-ss=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid =
-rgb(204,204,204);padding-left:1ex">
-<br>
-&gt; +=C2=A0 =C2=A0 qtest_add_data_func(<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 falling_edge_name, &amp;irq=
-_test_parameters[i], test_irq_pin_falling);<br>
-&gt; +=C2=A0 =C2=A0 g_autofree char *high_level_name =3D g_strdup_printf(<b=
-r>
-&gt; +=C2=A0 =C2=A0 &quot;/allwinner-cubieboard/gpio/irq_pin_high_level/%s%=
-d&quot;,<br>
-&gt; +=C2=A0 =C2=A0 portname(irq_test_parameters[i].port), irq_test_paramet=
-ers[i].pin);<br>
-&gt; +=C2=A0 =C2=A0 qtest_add_data_func(<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 high_level_name, &amp;irq_t=
-est_parameters[i], test_irq_pin_high_level);<br>
-&gt; +=C2=A0 =C2=A0 g_autofree char *low_level_name =3D g_strdup_printf(<br=
->
-&gt; +=C2=A0 =C2=A0 &quot;/allwinner-cubieboard/gpio/irq_pin_low_level/%s%d=
-&quot;,<br>
-&gt; +=C2=A0 =C2=A0 portname(irq_test_parameters[i].port), irq_test_paramet=
-ers[i].pin);<br>
-&gt; +=C2=A0 =C2=A0 qtest_add_data_func(<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 low_level_name, &amp;irq_te=
-st_parameters[i], test_irq_pin_low_level);<br>
-&gt; +=C2=A0 =C2=A0 g_autofree char *both_edge_name =3D g_strdup_printf(<br=
->
-&gt; +=C2=A0 =C2=A0 &quot;/allwinner-cubieboard/gpio/irq_pin_both_edge/%s%d=
-&quot;,<br>
-&gt; +=C2=A0 =C2=A0 portname(irq_test_parameters[i].port), irq_test_paramet=
-ers[i].pin);<br>
-&gt; +=C2=A0 =C2=A0 qtest_add_data_func(<br>
-&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 both_edge_name, &amp;irq_te=
-st_parameters[i], test_irq_pin_both_edge);<br>
-&gt; +<br>
-&gt; +=C2=A0 }<br>
-&gt; +=C2=A0 r =3D g_test_run();<br>
-&gt; +<br>
-&gt; +=C2=A0 return r;<br>
-&gt; +}<br>
-<br>
-thanks<br>
--- PMM<br>
-</blockquote></div></div>
-
---000000000000315a8f065b25eb07--
 

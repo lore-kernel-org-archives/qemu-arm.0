@@ -4,56 +4,55 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C70D9C88E56
-	for <qemu-arm@archiver.kernel.org>; Fri, 11 Sep 2026 12:28:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D1597C88E50
+	for <qemu-arm@archiver.kernel.org>; Fri, 11 Sep 2026 12:29:00 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1x50MZ-0007mm-C1; Fri, 11 Sep 2026 08:28:15 -0400
+	id 1x50MW-0007g7-8o; Fri, 11 Sep 2026 08:28:12 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <marcandre.lureau@redhat.com>)
- id 1x50MW-0007fx-9W
- for qemu-arm@nongnu.org; Fri, 11 Sep 2026 08:28:12 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ id 1x50MU-0007dW-97
+ for qemu-arm@nongnu.org; Fri, 11 Sep 2026 08:28:10 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <marcandre.lureau@redhat.com>)
- id 1x50MU-00077V-KN
- for qemu-arm@nongnu.org; Fri, 11 Sep 2026 08:28:11 -0400
+ id 1x50MS-00076I-Ba
+ for qemu-arm@nongnu.org; Fri, 11 Sep 2026 08:28:10 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1789129690;
+ s=mimecast20190719; t=1789129687;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=R654KBPGUvh+oIEaBe90/0D2bgbO+xK4JzNc+JEMxNw=;
- b=N8kfdXv6Lt3LJVlCJEw4GbE3w7J3oCmq6b8MNhDlZ090olDeRpMpAp3MUJNR96MUtoHtyG
- KRuO3SZUv+K2Ay951Ejrr2fr3Pk3wGTuh8Qbf4jOm/iGnuf/yMdLKSDLLmlem5BRRUFEGE
- nv56tNMcxIlU1JtbwNrMfBA+JhlgBK8=
-Received: from mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com
+ bh=fOC7Y6WekuVCrNKqrt6rXK2o/HI47jMFwaaVFHSzoKw=;
+ b=DwReLtWzmYEaMdfWWW3UVg14RZa6hPZS2X/8h9LBmLOX7gcz+br3sPgQAAMQNRy9PCqX2Y
+ MFcf9ECZ2GbzVA2V8mJ71twTApcEddhxUGXKTwO7KSN7Rch7E40V4D+fZHYpykBF05j0w4
+ VQR7967Jd8TKc5y/LGozLedgHdfKF6g=
+Received: from mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com
  (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-16-HHVhrSFWMlKQUgwcz3XV1g-1; Fri,
- 11 Sep 2026 08:28:07 -0400
-X-MC-Unique: HHVhrSFWMlKQUgwcz3XV1g-1
-X-Mimecast-MFC-AGG-ID: HHVhrSFWMlKQUgwcz3XV1g_1789129684
-Received: from mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com
- (mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.4])
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-651-zDViNNA3MnSZjCItWYvUGw-1; Fri,
+ 11 Sep 2026 08:28:04 -0400
+X-MC-Unique: zDViNNA3MnSZjCItWYvUGw-1
+X-Mimecast-MFC-AGG-ID: zDViNNA3MnSZjCItWYvUGw_1789129681
+Received: from mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com
+ (mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.93])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 2B6491800598; Fri, 11 Sep 2026 12:28:04 +0000 (UTC)
+ by mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id AEE6518011D5; Fri, 11 Sep 2026 12:28:00 +0000 (UTC)
 Received: from localhost (headnet05.pony-001.prod.iad2.dc.redhat.com
  [10.2.32.117])
- by mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id 23DC73000229; Fri, 11 Sep 2026 12:28:02 +0000 (UTC)
+ by mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
+ id B7BD91800581; Fri, 11 Sep 2026 12:27:59 +0000 (UTC)
 From: =?utf-8?q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>
-Date: Fri, 11 Sep 2026 16:27:31 +0400
-Subject: [PATCH 08/10] target/riscv: bypass smstateen check in debugger
- mode
+Date: Fri, 11 Sep 2026 16:27:30 +0400
+Subject: [PATCH 07/10] target/sparc64: expose system registers via GDB
 MIME-Version: 1.0
-Message-Id: <20260911-query-reg-v1-8-0c04f0c02cf3@redhat.com>
+Message-Id: <20260911-query-reg-v1-7-0c04f0c02cf3@redhat.com>
 References: <20260911-query-reg-v1-0-0c04f0c02cf3@redhat.com>
 In-Reply-To: <20260911-query-reg-v1-0-0c04f0c02cf3@redhat.com>
 To: qemu-devel@nongnu.org
@@ -77,29 +76,29 @@ Cc: "Dr. David Alan Gilbert" <dave@treblig.org>,
  Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>, 
  Warner Losh <imp@bsdimp.com>, Kyle Evans <kevans@freebsd.org>, 
  =?utf-8?q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>
-X-Developer-Signature: v=1; a=openpgp-sha256; l=773;
+X-Developer-Signature: v=1; a=openpgp-sha256; l=4140;
  i=marcandre.lureau@redhat.com; h=from:subject:message-id;
- bh=LMrjJTVTVpO2R0XX7vgTv//RHImMSQWNJTx8uS10AB0=;
- b=owEBbQKS/ZANAwAKAdro4Ql1lpzlAcsmYgBqo/OvQ16YWYZ57x+2HOU3K6EmSbrY109lK5myr
- 95vNB0h1MCJAjMEAAEKAB0WIQSHqb2TP4fGBtJ29i3a6OEJdZac5QUCaqPzrwAKCRDa6OEJdZac
- 5QTzD/oCsf37URwa3TSnmZOnWsq92c/+qvcBVl3Qd3wHnFHLkALTL0WNNBAYB++IYWAKtaqfXjB
- nRy4e+rOdJ4I6v9qj1jp6R26mqxr+dGeQ6wJMwQcisK5FdE0Exga7cpdi+ly9D+6fciYOGjsgrs
- ttmCSTmlvm3hy433P0CvuXt4FOYbIuD5AW4AFtpRTdoyL8eAzJvOKxPrzLV69Wqsh6ltRp/zWBc
- xOPPLrZe/Gc9HfXKOrl8bBJ64xXrR0w+bf0KdyBxCK4XmNah4TbwO+jAH+PVxL+2CIzylic/6BP
- BKxIlnwM9Lttyb/eCsCJwL7EGhhBJ0QoifkvFRHdxH985VKVmA6ezdj22A4tTi4BoASVdsXIpg4
- BgGTtE7O01PG4qlN3ZBMFnpLdA7vJVSdoXQd4ntCAMIKsEUUD6me1N18Pt+iML9OChBCOhRXkKc
- cTKxhHO32ysCBGi26TwSButCTucJwy2kMv+ATX9h5X/vteqcVuF9a1RVodkEaq1VJcPYzjIwneC
- DfGILKR8CL6IxXEENNl/BDcVYuZ5fElHVKvpgvmGwyh9UW5HRthu5BYjw2jRHdwriyaKDudsNCr
- cSe/klj/Lw9BBTe+euWPoolpDO9OJONZc/2NyJ9te+mShEmsObXeQejTmCS8nVjhULAkeoG+PBl
- 1vQjIoI2Q8a5JOA==
+ bh=8Ys6+eVwTHB6L74vHtWq0qM5qyKtpTXiP0Nl0oR9qX0=;
+ b=owEBbQKS/ZANAwAKAdro4Ql1lpzlAcsmYgBqo/OvV1cFJ9QLWjhOt9OzTWPkGVDkye8ODKKIH
+ CVgAciZvu2JAjMEAAEKAB0WIQSHqb2TP4fGBtJ29i3a6OEJdZac5QUCaqPzrwAKCRDa6OEJdZac
+ 5RJREACCFZSZlYJV9ngwTThkQliyjoF1j6SJxaxPG+HJfEW55rXUTZlq1HdlHuVgYUpiksqOczX
+ fYn3/XZ9Oqos6786ggfL7mO/aGZ4dE/D7JHQlXBwZhe8VmaB2bVno2CnlTmJejGJK+1Xw+y1sHB
+ kT6P1uUJacgUc+n+DUnNADZsIqK1e+YrogG7QxjKMUw/4F/8X7stWJ17SgUb/nJks3z1CMqBIrr
+ c//MoIBnJMnfifB1RHsxElhrbWpffsqGqyaNNvWzqB4ctkOkcNsmd4/tS4A1MM165l6L7Cjd5lu
+ ggOPSKBqvc0rM5iT/JCZpfrOjhtMA2jRllhrN2EQGr2z322Dy9cmHIaApL+fev0RDfhKr6t5ZD6
+ c1ADNNpe70keUjQbLL/bhJ39P6kxr2zL5i2ZQNApXkNjKjNx+vyMBgxUsDpDR5gPxg/Ewnzfqjn
+ a2IdckGgdkbRj2dvqT6datX2RkAajQRYT5KgKHlNmLQ/jxwWR8o7MMpjTRYztwq4yILhmX6mqTj
+ 3+G4w/KdBpc4RLvpNovACo59+Ejl0PJ7YS1sR/EXo9qjNPZTYxzbdPK7+PROtl17K19CP81zYO0
+ GqL+TOCRpGQNMAj69K8R+7LbwMOvYPyE1RF9kMb4admEbsNPS5GIqgI2EFe6fUz85c3DTCTlmGK
+ O3rhv7IdVWKbpWQ==
 X-Developer-Key: i=marcandre.lureau@redhat.com; a=openpgp;
  fpr=87A9BD933F87C606D276F62DDAE8E10975969CE5
-X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.4
-X-Mimecast-MFC-PROC-ID: FRCCrku4BTNA6XgzGzsYPAx6su_fdrx4tEkDwLXGR_g_1789129684
+X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.93
+X-Mimecast-MFC-PROC-ID: i6v-bQRAmVwHbv8CeBm3gZOYTP8kraAiKbFGUWRGvZ4_1789129681
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=170.10.133.124;
+Received-SPF: pass client-ip=170.10.129.124;
  envelope-from=marcandre.lureau@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -20
@@ -107,8 +106,8 @@ X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=0.001, SPF_HELO_PASS=-0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -124,27 +123,113 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Allow to read CSRs gated by Smstateen extension when env->debugger.
+Add a sparc64-system.xml GDB feature that exposes asi, pstate,
+cansave, canrestore, otherwin, wstate, and cleanwin as read-only
+system registers through the GDB coprocessor interface.
 
 Signed-off-by: Marc-André Lureau <marcandre.lureau@redhat.com>
 ---
- target/riscv/tcg/csr.c | 3 ++-
- 1 file changed, 2 insertions(+), 1 deletion(-)
+ configs/targets/sparc64-softmmu.mak |  2 +-
+ gdbstub/gdb-xml/sparc64-system.xml  | 22 +++++++++++++++++++++
+ target/sparc/gdbstub.c              | 38 +++++++++++++++++++++++++++++++++++++
+ 3 files changed, 61 insertions(+), 1 deletion(-)
 
-diff --git a/target/riscv/tcg/csr.c b/target/riscv/tcg/csr.c
-index bd4b6dc114bc..93a7f419f29f 100644
---- a/target/riscv/tcg/csr.c
-+++ b/target/riscv/tcg/csr.c
-@@ -53,7 +53,8 @@ RISCVException smstateen_acc_ok(CPURISCVState *env, int index, uint64_t bit)
+diff --git a/configs/targets/sparc64-softmmu.mak b/configs/targets/sparc64-softmmu.mak
+index 4e621fb8e39e..7f2789136653 100644
+--- a/configs/targets/sparc64-softmmu.mak
++++ b/configs/targets/sparc64-softmmu.mak
+@@ -1,7 +1,7 @@
+ TARGET_ARCH=sparc64
+ TARGET_BASE_ARCH=sparc
+ TARGET_BIG_ENDIAN=y
+-TARGET_XML_FILES=sparc64-cpu.xml sparc64-fpu.xml sparc64-cp0.xml
++TARGET_XML_FILES=sparc64-cpu.xml sparc64-fpu.xml sparc64-cp0.xml sparc64-system.xml
+ TARGET_LONG_BITS=64
+ TARGET_NOT_USING_LEGACY_LDST_PHYS_API=y
+ TARGET_NOT_USING_LEGACY_NATIVE_ENDIAN_API=y
+diff --git a/gdbstub/gdb-xml/sparc64-system.xml b/gdbstub/gdb-xml/sparc64-system.xml
+new file mode 100644
+index 000000000000..e00baedb467e
+--- /dev/null
++++ b/gdbstub/gdb-xml/sparc64-system.xml
+@@ -0,0 +1,22 @@
++<?xml version="1.0"?>
++<!--
++  SPDX-License-Identifier: GPL-2.0-or-later
++-->
++<!DOCTYPE feature SYSTEM "gdb-target.dtd">
++<!-- System-register values are read-only; writes are ignored. -->
++<feature name="org.qemu.gdb.sparc.system">
++  <reg name="asi" bitsize="32" type="uint32"
++       group="qemu-debug" save-restore="no"/>
++  <reg name="pstate" bitsize="32" type="uint32"
++       group="qemu-debug" save-restore="no"/>
++  <reg name="cansave" bitsize="32" type="uint32"
++       group="qemu-debug" save-restore="no"/>
++  <reg name="canrestore" bitsize="32" type="uint32"
++       group="qemu-debug" save-restore="no"/>
++  <reg name="otherwin" bitsize="32" type="uint32"
++       group="qemu-debug" save-restore="no"/>
++  <reg name="wstate" bitsize="32" type="uint32"
++       group="qemu-debug" save-restore="no"/>
++  <reg name="cleanwin" bitsize="32" type="uint32"
++       group="qemu-debug" save-restore="no"/>
++</feature>
+diff --git a/target/sparc/gdbstub.c b/target/sparc/gdbstub.c
+index 2874ce1b3501..ca23a4a94532 100644
+--- a/target/sparc/gdbstub.c
++++ b/target/sparc/gdbstub.c
+@@ -266,6 +266,39 @@ static int sparc_cp0_gdb_write_register(CPUState *cs, uint8_t *mem_buf, int n)
+ #endif
+ }
+ 
++#if defined(TARGET_SPARC64) && !defined(CONFIG_USER_ONLY)
++static int sparc64_gdb_read_system_register(CPUState *cs, GByteArray *buf,
++                                           int n)
++{
++    CPUSPARCState *env = cpu_env(cs);
++
++    switch (n) {
++    case 0:
++        return gdb_get_reg32(buf, env->asi);
++    case 1:
++        return gdb_get_reg32(buf, env->pstate);
++    case 2:
++        return gdb_get_reg32(buf, env->cansave);
++    case 3:
++        return gdb_get_reg32(buf, env->canrestore);
++    case 4:
++        return gdb_get_reg32(buf, env->otherwin);
++    case 5:
++        return gdb_get_reg32(buf, env->wstate);
++    case 6:
++        return gdb_get_reg32(buf, env->cleanwin);
++    default:
++        return 0;
++    }
++}
++
++static int sparc64_gdb_write_system_register(CPUState *cs, uint8_t *buf, int n)
++{
++    /* These registers are exposed for inspection only. Ignore writes. */
++    return 4;
++}
++#endif
++
+ void sparc_cpu_register_gdb_regs(CPUState *cs)
  {
-     bool virt = env->virt_enabled;
- 
--    if (env->priv == PRV_M || !riscv_cpu_cfg(env)->ext_smstateen) {
-+    if (env->debugger || env->priv == PRV_M ||
-+        !riscv_cpu_cfg(env)->ext_smstateen) {
-         return RISCV_EXCP_NONE;
-     }
- 
+ #if defined(TARGET_ABI32) || !defined(TARGET_SPARC64)
+@@ -282,5 +315,10 @@ void sparc_cpu_register_gdb_regs(CPUState *cs)
+     gdb_register_coprocessor(cs, sparc_cp0_gdb_read_register,
+                              sparc_cp0_gdb_write_register,
+                              gdb_find_static_feature("sparc64-cp0.xml"));
++#ifndef CONFIG_USER_ONLY
++    gdb_register_coprocessor(cs, sparc64_gdb_read_system_register,
++                             sparc64_gdb_write_system_register,
++                             gdb_find_static_feature("sparc64-system.xml"));
++#endif
+ #endif
+ }
 
 -- 
 2.55.0.543.g5ebe2ebe4ea8

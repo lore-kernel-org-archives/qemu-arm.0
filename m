@@ -4,64 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1CB8FC88E45
-	for <qemu-arm@archiver.kernel.org>; Fri, 11 Sep 2026 14:51:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5D898C88E45
+	for <qemu-arm@archiver.kernel.org>; Fri, 11 Sep 2026 14:51:52 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1x52UK-0004Ce-3N; Fri, 11 Sep 2026 10:44:24 -0400
+	id 1x52Ty-0002kZ-6y; Fri, 11 Sep 2026 10:44:02 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
- id 1x52Nq-0002t7-7a
- for qemu-arm@nongnu.org; Fri, 11 Sep 2026 10:37:43 -0400
+ id 1x52Nt-0002uS-1l
+ for qemu-arm@nongnu.org; Fri, 11 Sep 2026 10:37:50 -0400
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
- id 1x52Ni-0008EM-QM
- for qemu-arm@nongnu.org; Fri, 11 Sep 2026 10:37:40 -0400
+ id 1x52Nn-0008DS-2J
+ for qemu-arm@nongnu.org; Fri, 11 Sep 2026 10:37:44 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1789137447;
+ s=mimecast20190719; t=1789137444;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=cNbkkFHCYKpbxfWO4D+I7H8XxjKgGoTqJimeW8ycrfY=;
- b=AqK8QwINcbJgE0kkJRSEI+gCEs/mIwjfUhLcDUEevzHRURLQpyvD6gLNSb65ZJUSLdyTVo
- shh9BnKNbFQ8XoVbuhIopy52E0Y8lKitvgxw3PKaI8fnsp9Vb9zNWA7PhxgN2SUuNSV9TK
- QyTDZ8HiUIVMlK41rSPx9VE1grEx8q4=
-Received: from mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com
+ bh=wEyJiloIxtptu0W9QtcTvVPDda5vfdApyxEeJL8U5FU=;
+ b=RFbgIJPucbY9NGWgw+VQrcYPWf+W5VeVzMUGm8LznkOoHiBqlKQI5aMI92Q0Sq0ydaA7DE
+ cfMopk3zYyfKaDxti3rpQOwuRqsqsVDlnmufQzuOVWw3e5qndedMebj7FacMh6ZXqRQjpR
+ MwYNY/rjf9fqEky2c5iTZtH8JIv6MtU=
+Received: from mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com
  (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-517-snL57JxmM_i6WZC-vCI9tQ-1; Fri,
- 11 Sep 2026 10:37:26 -0400
-X-MC-Unique: snL57JxmM_i6WZC-vCI9tQ-1
-X-Mimecast-MFC-AGG-ID: snL57JxmM_i6WZC-vCI9tQ_1789137444
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-59-W42a8qfsNH2p7bdSc5eAqg-1; Fri,
+ 11 Sep 2026 10:37:19 -0400
+X-MC-Unique: W42a8qfsNH2p7bdSc5eAqg-1
+X-Mimecast-MFC-AGG-ID: W42a8qfsNH2p7bdSc5eAqg_1789137437
 Received: from mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com
  (mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.4])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 398031955DD1; Fri, 11 Sep 2026 14:37:24 +0000 (UTC)
+ by mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 9690319541AA; Fri, 11 Sep 2026 14:37:17 +0000 (UTC)
 Received: from berrange.csb (headnet05.pony-001.prod.iad2.dc.redhat.com
  [10.2.32.117])
  by mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id 69BE23000229; Fri, 11 Sep 2026 14:37:22 +0000 (UTC)
+ id C76CA3000229; Fri, 11 Sep 2026 14:37:15 +0000 (UTC)
 From: =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>
 To: qemu-devel@nongnu.org
 Cc: xen-devel@lists.xenproject.org, qemu-riscv@nongnu.org, qemu-ppc@nongnu.org,
  qemu-block@nongnu.org, qemu-s390x@nongnu.org, qemu-arm@nongnu.org,
  =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>
-Subject: [PATCH 24/28] hw/acpi: mark erst,
- vmclock and vmgenid devices as secure
-Date: Fri, 11 Sep 2026 15:36:23 +0100
-Message-ID: <20260911143627.2743803-25-berrange@redhat.com>
+Subject: [PATCH 21/28] hw/char: mark common serial / console devicess a secure
+Date: Fri, 11 Sep 2026 15:36:20 +0100
+Message-ID: <20260911143627.2743803-22-berrange@redhat.com>
 In-Reply-To: <20260911143627.2743803-1-berrange@redhat.com>
 References: <20260911143627.2743803-1-berrange@redhat.com>
 MIME-Version: 1.0
 X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.4
-X-Mimecast-MFC-PROC-ID: esFWcFbRgkaPBZsF7nAyF1P65amvoPJ4p3QTHEbZvOE_1789137444
+X-Mimecast-MFC-PROC-ID: psZf2i43-ocMAwFbXYFCVbzxZaJGTaHuJgR4mw-aIWc_1789137437
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
@@ -89,52 +88,104 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-These are all used in virtualization scenarios so must be
-declare to provide a security boundary
+These are needed as a baseline feature for many virtualization use
+cases on x86, PPC64 and s390x.
 
 Signed-off-by: Daniel P. Berrangé <berrange@redhat.com>
 ---
- hw/acpi/erst.c    | 1 +
- hw/acpi/vmclock.c | 1 +
- hw/acpi/vmgenid.c | 1 +
- 3 files changed, 3 insertions(+)
+ hw/char/debugcon.c       | 1 +
+ hw/char/sclpconsole-lm.c | 1 +
+ hw/char/sclpconsole.c    | 1 +
+ hw/char/serial-isa.c     | 1 +
+ hw/char/serial-pci.c     | 1 +
+ hw/char/serial.c         | 1 +
+ hw/char/spapr_vty.c      | 1 +
+ 7 files changed, 7 insertions(+)
 
-diff --git a/hw/acpi/erst.c b/hw/acpi/erst.c
-index b6c1942e30..44560004a5 100644
---- a/hw/acpi/erst.c
-+++ b/hw/acpi/erst.c
-@@ -1044,6 +1044,7 @@ static const TypeInfo erst_type_info = {
-     .parent        = TYPE_PCI_DEVICE,
-     .class_init    = erst_class_init,
-     .instance_size = sizeof(ERSTDeviceState),
+diff --git a/hw/char/debugcon.c b/hw/char/debugcon.c
+index a1b370b90b..f38ce7b765 100644
+--- a/hw/char/debugcon.c
++++ b/hw/char/debugcon.c
+@@ -134,6 +134,7 @@ static const TypeInfo debugcon_isa_info = {
+     .parent        = TYPE_ISA_DEVICE,
+     .instance_size = sizeof(ISADebugconState),
+     .class_init    = debugcon_isa_class_initfn,
++    .secure        = true,
+ };
+ 
+ static void debugcon_register_types(void)
+diff --git a/hw/char/sclpconsole-lm.c b/hw/char/sclpconsole-lm.c
+index f6ed282f1b..4261652735 100644
+--- a/hw/char/sclpconsole-lm.c
++++ b/hw/char/sclpconsole-lm.c
+@@ -363,6 +363,7 @@ static const TypeInfo sclp_console_info = {
+     .instance_size = sizeof(SCLPConsoleLM),
+     .class_init    = console_class_init,
+     .class_size    = sizeof(SCLPEventClass),
++    .secure        = true,
+ };
+ 
+ static void register_types(void)
+diff --git a/hw/char/sclpconsole.c b/hw/char/sclpconsole.c
+index 179d12745c..04a951089a 100644
+--- a/hw/char/sclpconsole.c
++++ b/hw/char/sclpconsole.c
+@@ -278,6 +278,7 @@ static const TypeInfo sclp_console_info = {
+     .instance_size = sizeof(SCLPConsole),
+     .class_init    = console_class_init,
+     .class_size    = sizeof(SCLPEventClass),
++    .secure        = true,
+ };
+ 
+ static void register_types(void)
+diff --git a/hw/char/serial-isa.c b/hw/char/serial-isa.c
+index eaa4e843c0..5df87590b7 100644
+--- a/hw/char/serial-isa.c
++++ b/hw/char/serial-isa.c
+@@ -147,6 +147,7 @@ static const TypeInfo serial_isa_info = {
+     .instance_size = sizeof(ISASerialState),
+     .instance_init = serial_isa_initfn,
+     .class_init    = serial_isa_class_initfn,
++    .secure        = true,
+     .interfaces = (const InterfaceInfo[]) {
+         { TYPE_ACPI_DEV_AML_IF },
+         { },
+diff --git a/hw/char/serial-pci.c b/hw/char/serial-pci.c
+index d8cacc9085..183091ea41 100644
+--- a/hw/char/serial-pci.c
++++ b/hw/char/serial-pci.c
+@@ -109,6 +109,7 @@ static const TypeInfo serial_pci_info = {
+     .instance_size = sizeof(PCISerialState),
+     .instance_init = serial_pci_init,
+     .class_init    = serial_pci_class_initfn,
 +    .secure        = true,
      .interfaces = (const InterfaceInfo[]) {
          { INTERFACE_CONVENTIONAL_PCI_DEVICE },
-         { }
-diff --git a/hw/acpi/vmclock.c b/hw/acpi/vmclock.c
-index d51cab2e20..b545354600 100644
---- a/hw/acpi/vmclock.c
-+++ b/hw/acpi/vmclock.c
-@@ -169,6 +169,7 @@ static const TypeInfo vmclock_device_info = {
-     .parent        = TYPE_DEVICE,
-     .instance_size = sizeof(VmclockState),
-     .class_init    = vmclock_device_class_init,
+         { },
+diff --git a/hw/char/serial.c b/hw/char/serial.c
+index 4339562ab0..fefd2cf9fc 100644
+--- a/hw/char/serial.c
++++ b/hw/char/serial.c
+@@ -984,6 +984,7 @@ static const TypeInfo serial_info = {
+     .parent = TYPE_DEVICE,
+     .instance_size = sizeof(SerialState),
+     .class_init = serial_class_init,
++    .secure = true,
+ };
+ 
+ static void serial_register_types(void)
+diff --git a/hw/char/spapr_vty.c b/hw/char/spapr_vty.c
+index 1dd9fb155c..96a4e58ad9 100644
+--- a/hw/char/spapr_vty.c
++++ b/hw/char/spapr_vty.c
+@@ -201,6 +201,7 @@ static const TypeInfo spapr_vty_info = {
+     .parent        = TYPE_VIO_SPAPR_DEVICE,
+     .instance_size = sizeof(SpaprVioVty),
+     .class_init    = spapr_vty_class_init,
 +    .secure        = true,
  };
  
- static void vmclock_register_types(void)
-diff --git a/hw/acpi/vmgenid.c b/hw/acpi/vmgenid.c
-index 27cc0128d1..67f815d8a1 100644
---- a/hw/acpi/vmgenid.c
-+++ b/hw/acpi/vmgenid.c
-@@ -236,6 +236,7 @@ static const TypeInfo vmgenid_device_info = {
-     .parent        = TYPE_DEVICE,
-     .instance_size = sizeof(VmGenIdState),
-     .class_init    = vmgenid_device_class_init,
-+    .secure        = true,
- };
- 
- static void vmgenid_register_types(void)
+ SpaprVioDevice *spapr_vty_get_default(SpaprVioBus *bus)
 -- 
 2.55.0
 

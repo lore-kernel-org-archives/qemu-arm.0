@@ -4,28 +4,28 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 09F10C79FA1
-	for <qemu-arm@archiver.kernel.org>; Fri, 11 Sep 2026 05:16:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3598BC88E41
+	for <qemu-arm@archiver.kernel.org>; Fri, 11 Sep 2026 05:16:55 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1x4tcy-0000Qo-FB; Fri, 11 Sep 2026 01:16:44 -0400
+	id 1x4tcy-0000Pw-7F; Fri, 11 Sep 2026 01:16:44 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <kchiu@axiado.com>)
- id 1x4tc4-000098-Gi; Fri, 11 Sep 2026 01:15:48 -0400
-Received: from mail-eastus2azlp170100001.outbound.protection.outlook.com
- ([2a01:111:f403:c110::1] helo=BN1PR04CU002.outbound.protection.outlook.com)
+ id 1x4tc0-00008E-Ky; Fri, 11 Sep 2026 01:15:46 -0400
+Received: from mail-northcentralusazlp170100001.outbound.protection.outlook.com
+ ([2a01:111:f403:c105::1] helo=CH1PR05CU001.outbound.protection.outlook.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <kchiu@axiado.com>)
- id 1x4tc1-0005kN-Uk; Fri, 11 Sep 2026 01:15:48 -0400
+ id 1x4tby-0005iU-9w; Fri, 11 Sep 2026 01:15:44 -0400
 ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=Aha9ZZ9ByEuGlrU8LhNTccUzmdLEUXrLE9JHrdbufIIGW0/wPLgG2ng48tXd/Hk/VfMEZ5tiPE9aWSZcJ6o6q9Y/H7PY2DvSRHv0OXmeO3LzJDkF1hLOf3ju2LDzJ4BjHrEsZnUGijJs3YQhtJWq+RGXWWGaHAgLlaA+eh+50jCYDxXMo7TMFA8ZJdFBZDX+l3TSmU+3BstnuGLmhRxc9zCA9B5NVYULihEmm22fW1uu6ihDg77uUf6os2x0sae6uaOoAi+LCmpw0q2Z6BJeDcWOtdtmN23rmAvETKGLIDDMnfXMkaNujIIX+GzdlLe7vIkkk3JmwItm1WQDQcZSCQ==
+ b=NSWEBDckvhm3szjX3PY3P24/lSMPJ7Jzp/XcgMMmD0vhw0hxhSOmfAygs/PjIEoHpR88Z7Cwm8V9/b/MXU+xlA3k+n4nATFpgqwzBR0STvKO+QxtucEh6ZomqoPLMwNPVEow58xdRyo/zOUOyHH7XmrnQu6Wi01kzAoZzZfhlqf1v/Cciakzp7p6NCKbzuptwPwmDYzba8KSKiyVo1TG/AYMnPyqxKOWM/N1KVzEAvlnpG2D8N4PuCkHIhKI97Z8SFn27zyLK/JYbQcksn9YFKjAFZW0UcfEMToa8QdbhMC5tO/WNUfCNczxRgJZEJQnfU5KnWmrtB/y9CRYAdg3NA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
  s=arcselector10001;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=Uwn00Yi6NUIqJXdclfvY0V/LM+QNvMVYR8FvfgJbb7A=;
- b=TnMcwVb+aBOpdLz7smY833POExB/89N4DA5lGZ5+/zvHBbDYCLe2DZk23tajyD/9IlmCSh0UomUj+HYVa5Spc/qprtllki31PGXh8Ji1G4V5CzPzS85t82CC5drjcXv2v6zLcglyFYd8bP3N6ZuNuOmQl2oTZaDQJmcNq/8r1Ktynieb0GSJLPOWCqxYxEP9LcYVjdlbSIOTMyYuuehc5eaLaB67wMdqsQdoAv7IF/X/2sk02tnXMjli5MNd9Mq0OCbCzRQnkoO1pAoAiJ/CEp5o9BtYYJI54vTA5qE2KNeYmhxAaWv6X4GEB+dU4k7ORCqSBG8UbF558KG0ry2O3Q==
+ bh=zr5hYE2MjitqgHGyHACZ4oJHYEBw/77lhlXXYK5XfZY=;
+ b=MvwxhazcX9cfIieBE1aiuXi52qXuQNypNaWQTNOV6lr6pWBK7tkhSh0IvxKbbKPw5ob6jlQN71tBp3oONfQirsy0MZxS8jfVScEDJ39g9dFwzulXeVFQCcFgoQPOcMNWD/6n44SltYnbGsT+YZoUZAiLrmZB+3MFbkP6At42tNZShV1AeIoiTWCgAT//QRKQWeQGYvSZ3w7pnYUCbj5jvUCrydUHKMoxe3P+BaoRGIMJo4M8pS1tkzX2ftThkX0r0WIMXNQS9EgyOMLT88p1wiE1GHZWwXHL/o8bfCPUk443bsW7lvynwYNJDsb8x5kFA/Wn0vq8jAS8G+Z0hEJJ7Q==
 ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=fail (sender ip is
  64.62.143.114) smtp.rcpttodomain=axiado.com smtp.mailfrom=axiado.com;
  dmarc=none action=none header.from=axiado.com; dkim=none (message not
@@ -33,16 +33,16 @@ ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=fail (sender ip is
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=axiado.com;
  s=selector1;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=Uwn00Yi6NUIqJXdclfvY0V/LM+QNvMVYR8FvfgJbb7A=;
- b=iLinSvnk9+m/5d8TntyoBgz2uWhs+o4HKwVGcS8CQivyr/5k5Ulp/EI5GJ3bM2qPDpCoGnHabHTaaOrxgFEKgSTP2HauUeuv28F24Tfd3LvI1zjTyPL4hqfUkzuyZ0wLH5HeGOY0wQd2PJmnGwkKeGYrFfCl9AXx22xswlbQqwAelq53jp8XlsO3yTgy9heAAbTizTjLS8NxNGPnNwS6TteuDDtYHY1gEAFTkGa9AgTcjw7rxisaU1YzzGG39DnDTt5xXcp0qykpzZCgTksrvDm50yRHu05mvmn+d0J0sUtGt1R9EuCwad96U4k7cvVgCZMvHfeHYyMlaZetoH4D1w==
-Received: from BN9PR03CA0633.namprd03.prod.outlook.com (2603:10b6:408:13b::8)
- by LV1PR18MB988753.namprd18.prod.outlook.com (2603:10b6:408:3f6::20)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.21.406.9; Fri, 11 Sep
- 2026 05:15:35 +0000
-Received: from BN1PEPF0001806E.namprd04.prod.outlook.com
- (2603:10b6:408:13b:cafe::8f) by BN9PR03CA0633.outlook.office365.com
- (2603:10b6:408:13b::8) with Microsoft SMTP Server (version=TLS1_3,
+ bh=zr5hYE2MjitqgHGyHACZ4oJHYEBw/77lhlXXYK5XfZY=;
+ b=p0h3TwQMW7DjOsxmJQMQcOPWPcQAXSpS+NTYJOYE+1ZALtm0pBYOfqN+fdQzeyl7ETajSnm34BTLUGqDydQl0d+ZHWIqzbMq+8wIugVyLI5xEPxBSOCHcCaU5G9uBHUuwDaYw+1IpRlnyiAi82G4fo1zokYIln5BihqxM5jAVMPcq4S3Gqp9DHyrBmvB4hDNsItN2HKtYk+Qay0Wj0oTkIO/mj7QygzFCv1UJlfL0BFjxFpzx9Pg6O+a/cKClzkwk+NB5NEVP3Dnbiuhkedh4nQVmRPaFXw8kzT6SZw7B9xeXNdE+e2K0dcsSOYY+KBH6+UpJPThwXHYaUwBbC7iog==
+Received: from PH0PR07CA0034.namprd07.prod.outlook.com (2603:10b6:510:e::9) by
+ MN0PR18MB5920.namprd18.prod.outlook.com (2603:10b6:208:4a7::5) with
+ Microsoft
+ SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.21.406.9; Fri, 11 Sep 2026 05:15:35 +0000
+Received: from SA2PEPF00003F66.namprd04.prod.outlook.com
+ (2603:10b6:510:e:cafe::7f) by PH0PR07CA0034.outlook.office365.com
+ (2603:10b6:510:e::9) with Microsoft SMTP Server (version=TLS1_3,
  cipher=TLS_AES_256_GCM_SHA384) id 15.21.406.9 via Frontend Transport; Fri, 11
  Sep 2026 05:15:35 +0000
 X-MS-Exchange-Authentication-Results: spf=fail (sender IP is 64.62.143.114)
@@ -52,20 +52,20 @@ Received-SPF: Fail (protection.outlook.com: domain of axiado.com does not
  designate 64.62.143.114 as permitted sender) receiver=protection.outlook.com; 
  client-ip=64.62.143.114; helo=smtp.corp.axiado.com;
 Received: from smtp.corp.axiado.com (64.62.143.114) by
- BN1PEPF0001806E.mail.protection.outlook.com (10.167.245.196) with Microsoft
+ SA2PEPF00003F66.mail.protection.outlook.com (10.167.248.41) with Microsoft
  SMTP Server (version=TLS1_3, cipher=TLS_AES_256_GCM_SHA384) id 15.21.406.5
- via Frontend Transport; Fri, 11 Sep 2026 05:15:35 +0000
+ via Frontend Transport; Fri, 11 Sep 2026 05:15:34 +0000
 Received: from axiado.com (unknown [10.4.1.181])
- by smtp.corp.axiado.com (Postfix) with ESMTP id 53B1C4186B53;
+ by smtp.corp.axiado.com (Postfix) with ESMTP id 62D4640BFE04;
  Thu, 10 Sep 2026 22:15:34 -0700 (PDT)
 From: Kuan-Jui Chiu <kchiu@axiado.com>
 To: mark.caveayland@nutanix.com, philmd@oss.qualcomm.com,
  163wangjack@gmail.com, peter.maydell@linaro.org, qemu-devel@nongnu.org,
  qemu-arm@nongnu.org
 Cc: Kuan-Jui Chiu <kchiu@axiado.com>
-Subject: [PATCH v7 01/13] hw/char/cadence_uart: Reduce the size of MMIO to 0x80
-Date: Thu, 10 Sep 2026 22:15:20 -0700
-Message-Id: <20260911051532.2378501-2-kchiu@axiado.com>
+Subject: [PATCH v7 02/13] hw/char/cadence_uart: Add BXRS register definition
+Date: Thu, 10 Sep 2026 22:15:21 -0700
+Message-Id: <20260911051532.2378501-3-kchiu@axiado.com>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20260911051532.2378501-1-kchiu@axiado.com>
 References: <20260911051532.2378501-1-kchiu@axiado.com>
@@ -73,33 +73,33 @@ MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-EOPAttributedMessage: 0
 X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: BN1PEPF0001806E:EE_|LV1PR18MB988753:EE_
+X-MS-TrafficTypeDiagnostic: SA2PEPF00003F66:EE_|MN0PR18MB5920:EE_
 Content-Type: text/plain
-X-MS-Office365-Filtering-Correlation-Id: 067f6af3-a2c2-4133-ebbc-08df0fc3b5ba
+X-MS-Office365-Filtering-Correlation-Id: 6e956deb-bf26-4482-7332-08df0fc3b5a7
 X-MS-Exchange-SenderADCheck: 1
 X-MS-Exchange-AntiSpam-Relay: 0
 X-Microsoft-Antispam: BCL:0;
- ARA:13230040|36860700016|23010399003|82310400026|1800799024|376014|10067099003|22082099003|56012099006|18002099003;
-X-Microsoft-Antispam-Message-Info: 3kfeyoS9RqgLu6zFUibUWoD3CA3/9mj7pYCMZ3Dcwjgnv74qA4tpUbElIBtkSPJZMIwjHWFMCRtGocND2k9Q/Sr94qm4MtpKdkod6QuG7pRj1Ekm4SDzHjGbu7cdQv//t0efPmHz5tcIOVjwUFW0tS8cScJf2LaDjvJj9Mn46kXDknfvAYSAev4auBLioBLlv97Y96LZbBTsE4kM0j3bqsbaXh6ujY0cRkkkEjjbL5o76PwNktuiJ7pgJfd/xnYQT0byVa6xsoam1VGH2JQblrXSF1QQhFtJ/3kA86ZtI1JZi+CKGOtm8KDGbgH9aLSd3oywqQOIzu4GpIS47rNzpet6oMEzy+7NeWCszvhNZU+dD0JD/VVR5e8PWxL7YSReb665v+oGRV7BPylctAiO49oChN5K9ZXSir0RlvepeKZiEmmf6v0Q0PdvEXOMrpuCXqJhddmODfgjRTjWnKgaMnKtBbWFo9+yKIbRHNtV8Lh1Gb3Iv+VOrpcH5QO9nsN7i7aVXn61EoT6KpflWoLUYZdRxD9IW/ZsL7Qe5jWtveo/fhLwunu40k8tySIccwCGwnnymN3gnsyATIHYc7IIx6FhS4NmfL8ltQo1ST5TIwoiGX/i53uWLV7t4r5EX91cM4JnkUk9vY8RgfO47yBMcuiv+dB8sv3RryttjoLhXEfxZDQtSeJdlGY2MopzOVJnml1YLYmXZMM7AMX/KMYbyw==
+ ARA:13230040|23010399003|1800799024|82310400026|36860700016|376014|6133799003|3023799007|10067099003|56012099006|18002099003|22082099003;
+X-Microsoft-Antispam-Message-Info: 88fxXlbJsmPQV53ZFhGVnH5USE58+oe8sD4t9k9OwlOK9etxa0rRwh4IA217OLS03LDZpwFHX76FF1npPnY11L5eDAMmcifWKl2Tl8CHSDQucwmZ1OnK1oJm4GCz1g28fs4rAOgDckEyCB0YORvVXTRacIjoa4bp5uWo5O1bI3OdvQF7ycUcOsWmMWq0+/juLUgKylFJMYWbgWm0EaEsiO/6eO2YwEt6kOohazL9UOekdtp4pZVWtMFjdS7oVQFepIPq1D//uLJA2EGR7tEAC+HqpOojfSv2/YDb6xrHBvjVbETQh0EFv4lmd5TObB9+kVyPI8MPosLECvGZ92+jDePoFFhwOh2WpqVFtr4O+Ye3kNjKJn0J6G4+4ytwUEJJutZl2VJuZuCTXEDBg9+dExCPRYT7bc4qFnKuS2y59RR8cdF3sN2KoJYMj+aI3k47stxz8zwb4l2SGJQ7LIwb/4bbhEUoi1FnDXbDsGRvlkkcGE1MJbmWrbgLEXOhy8xd6YaZpiDrFxxv9j2P/4gDjdBgV1p9R77iz/9osb6uVab6b6qvnFRUav6vmVQLKJ7w0IQ8qJGw12i8qmZNeOxANBy9vdz0qVL/2CZzy1d4l4mB47H8+Ys5zBo4iUSfFO/wdiCJzMQllKewgn9tKA8mFL+1qrNucaGx2/QYb4nuPvE4HbJ1wzW9/RuUzDXsCz7RMOdRgqNh81FVufSdqEe06w==
 X-Forefront-Antispam-Report: CIP:64.62.143.114; CTRY:US; LANG:en; SCL:1; SRV:;
  IPV:NLI; SFV:NSPM; H:smtp.corp.axiado.com; PTR:InfoDomainNonexistent; CAT:NONE;
- SFS:(13230040)(36860700016)(23010399003)(82310400026)(1800799024)(376014)(10067099003)(22082099003)(56012099006)(18002099003);
+ SFS:(13230040)(23010399003)(1800799024)(82310400026)(36860700016)(376014)(6133799003)(3023799007)(10067099003)(56012099006)(18002099003)(22082099003);
  DIR:OUT; SFP:1102; 
 X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: mjm2+R0E2AU08yiUEVh8kPYJinKmzWBOjf7JwDE8C5GGA6m91gec+nxZpwghbZhT9m/KQ70gE95Q45enrVD4n/07tAl0mLixqDc/MuWv7D/Hn/OHykg7qoCzEmd17FecAxAH1f7hLBJA25ywPa+M++UtFvk3EpYmBqXweJh19zPlcpVRQ0hEEFHdkymFmUa0v41wf2WgPOsoULqodJSI1x4gDSFkA6vBFDyqcNrghE7/AZ0l2Yc6EWlkM6R5vavEhf5UwLQrQlJzqnQGoCyzZMNlFgXIE3aVgY33hmOMxYij3yOt+arf89NTefkbYQqSDCnVlE0YDv5WuUyIq3rFXXTL74I7r2pcDMPGh1Nw0KwKq6fz9wf5tIfqWtbZdkSFLIb0mFLLlQEYH0iXs+a1xPXiBf8JVrfUh4e/r/0u54BA3waOrONpNaCoylik7I54
+X-MS-Exchange-AntiSpam-MessageData-0: 2CBS3OnSnzgMhxDo3QeEvddNW2NwPgY0mSZUynWe5jsEleCiXNYVqVKVMWayLC7OZiP46sjDtzCxGBxC44Dt3Qr9yh2ATf/3jShJqNU1A7zbCgdTYRuKdLTpmrNMUori3sSNiXkCBO1Chc3rWeYZZbjdCSIb34HKNE3wVhCjU57AwyVRgBdvWvbE9idx2V/pk5DuwksudRxoZbgMuqpAaevM+ViV28DAVAZu19ukunuBsqDGo3mgekcHu7b7JcRFAPwwFovGKxb1oN5yzuClBRGPIWfXU30fd5zghPBCkPzESFxY9T2ciB+8kkaCKVc9c3002Pclu30HtcmBmHEsENsCgDF+iHLoVRH0T4YW7FHH9xBJWK6UfAxae31BkPsvrVmnokxT85MYzVNHZ6sTniBQVMDeFO4xCx+/HHe7rrBceMXdWWQvHr+W5oXAHste
 X-OriginatorOrg: axiado.com
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 11 Sep 2026 05:15:35.0193 (UTC)
-X-MS-Exchange-CrossTenant-Network-Message-Id: 067f6af3-a2c2-4133-ebbc-08df0fc3b5ba
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 11 Sep 2026 05:15:34.9313 (UTC)
+X-MS-Exchange-CrossTenant-Network-Message-Id: 6e956deb-bf26-4482-7332-08df0fc3b5a7
 X-MS-Exchange-CrossTenant-Id: ff2db17c-4338-408e-9036-2dee8e3e17d7
 X-MS-Exchange-CrossTenant-OriginalAttributedTenantConnectingIp: TenantId=ff2db17c-4338-408e-9036-2dee8e3e17d7; Ip=[64.62.143.114];
  Helo=[smtp.corp.axiado.com]
-X-MS-Exchange-CrossTenant-AuthSource: BN1PEPF0001806E.namprd04.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthSource: SA2PEPF00003F66.namprd04.prod.outlook.com
 X-MS-Exchange-CrossTenant-AuthAs: Anonymous
 X-MS-Exchange-CrossTenant-FromEntityHeader: HybridOnPrem
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: LV1PR18MB988753
-Received-SPF: pass client-ip=2a01:111:f403:c110::1;
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: MN0PR18MB5920
+Received-SPF: pass client-ip=2a01:111:f403:c105::1;
  envelope-from=kchiu@axiado.com;
- helo=BN1PR04CU002.outbound.protection.outlook.com
+ helo=CH1PR05CU001.outbound.protection.outlook.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -122,29 +122,107 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-We don't need to reserve 4 KiB for MMIO since the last register implemented
-is R_TTRIG at address 0x44
-
-This patch reduces the size of MMIO to 0x80 from 0x1000
+The RXBS (RX FIFO Byte Status) register at 0x48 is only exposed to
+the guest when the brk_support property is set, so the accessible size
+should be CADENCE_UART_R_MAX_BRK in that case and CADENCE_UART_R_MAX
+otherwise.
 
 Signed-off-by: Kuan-Jui Chiu <kchiu@axiado.com>
 ---
- hw/char/cadence_uart.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ hw/char/cadence_uart.c         | 15 ++++++++++++---
+ include/hw/char/cadence_uart.h |  4 +++-
+ 2 files changed, 15 insertions(+), 4 deletions(-)
 
 diff --git a/hw/char/cadence_uart.c b/hw/char/cadence_uart.c
-index eff6a3c4d1..8e23a378c4 100644
+index 8e23a378c4..8746a96619 100644
 --- a/hw/char/cadence_uart.c
 +++ b/hw/char/cadence_uart.c
-@@ -559,7 +559,7 @@ static void cadence_uart_init(Object *obj)
-     SysBusDevice *sbd = SYS_BUS_DEVICE(obj);
-     CadenceUARTState *s = CADENCE_UART(obj);
+@@ -120,6 +120,13 @@
+ #define R_PMIN     (0x3C/4)
+ #define R_PWID     (0x40/4)
+ #define R_TTRIG    (0x44/4)
++#define R_RXBS     (0x48/4)
++
++/* Number of registers reachable by the guest, depending on brk_support */
++static inline unsigned int uart_r_max(const CadenceUARTState *s)
++{
++    return s->brk_support ? CADENCE_UART_R_MAX_BRK : CADENCE_UART_R_MAX;
++}
  
--    memory_region_init_io(&s->iomem, obj, &uart_ops, s, "uart", 0x1000);
-+    memory_region_init_io(&s->iomem, obj, &uart_ops, s, "uart", 0x80);
-     sysbus_init_mmio(sbd, &s->iomem);
-     sysbus_init_irq(sbd, &s->irq);
  
+ static void uart_update_status(CadenceUARTState *s)
+@@ -424,7 +431,7 @@ static MemTxResult uart_write(void *opaque, hwaddr offset,
+ 
+     DB_PRINT(" offset:%x data:%08x\n", (unsigned)offset, (unsigned)value);
+     offset >>= 2;
+-    if (offset >= CADENCE_UART_R_MAX) {
++    if (offset >= uart_r_max(s)) {
+         return MEMTX_DECODE_ERROR;
+     }
+     switch (offset) {
+@@ -492,7 +499,7 @@ static MemTxResult uart_read(void *opaque, hwaddr offset,
+     }
+ 
+     offset >>= 2;
+-    if (offset >= CADENCE_UART_R_MAX) {
++    if (offset >= uart_r_max(s)) {
+         return MEMTX_DECODE_ERROR;
+     }
+     if (offset == R_TX_RX) {
+@@ -523,6 +530,7 @@ static void cadence_uart_reset_init(Object *obj, ResetType type)
+     s->r[R_BRGR] = 0x0000028B;
+     s->r[R_BDIV] = 0x0000000F;
+     s->r[R_TTRIG] = 0x00000020;
++    s->r[R_RXBS] = 0;
+ }
+ 
+ static void cadence_uart_reset_hold(Object *obj, ResetType type)
+@@ -603,7 +611,7 @@ static const VMStateDescription vmstate_cadence_uart = {
+     .pre_load = cadence_uart_pre_load,
+     .post_load = cadence_uart_post_load,
+     .fields = (const VMStateField[]) {
+-        VMSTATE_UINT32_ARRAY(r, CadenceUARTState, CADENCE_UART_R_MAX),
++        VMSTATE_UINT32_ARRAY(r, CadenceUARTState, CADENCE_UART_R_MAX_BRK),
+         VMSTATE_UINT8_ARRAY(rx_fifo, CadenceUARTState,
+                             CADENCE_UART_RX_FIFO_SIZE),
+         VMSTATE_UINT8_ARRAY(tx_fifo, CadenceUARTState,
+@@ -619,6 +627,7 @@ static const VMStateDescription vmstate_cadence_uart = {
+ 
+ static const Property cadence_uart_properties[] = {
+     DEFINE_PROP_CHR("chardev", CadenceUARTState, chr),
++    DEFINE_PROP_BOOL("brk-support", CadenceUARTState, brk_support, false),
+ };
+ 
+ static void cadence_uart_class_init(ObjectClass *klass, const void *data)
+diff --git a/include/hw/char/cadence_uart.h b/include/hw/char/cadence_uart.h
+index 751a751248..1d5fc7f328 100644
+--- a/include/hw/char/cadence_uart.h
++++ b/include/hw/char/cadence_uart.h
+@@ -30,6 +30,7 @@
+ #define CADENCE_UART_TX_FIFO_SIZE           16
+ 
+ #define CADENCE_UART_R_MAX (0x48/4)
++#define CADENCE_UART_R_MAX_BRK (0x4C/4)
+ 
+ #define TYPE_CADENCE_UART "cadence_uart"
+ OBJECT_DECLARE_SIMPLE_TYPE(CadenceUARTState, CADENCE_UART)
+@@ -40,7 +41,7 @@ struct CadenceUARTState {
+ 
+     /*< public >*/
+     MemoryRegion iomem;
+-    uint32_t r[CADENCE_UART_R_MAX];
++    uint32_t r[CADENCE_UART_R_MAX_BRK];
+     uint8_t rx_fifo[CADENCE_UART_RX_FIFO_SIZE];
+     uint8_t tx_fifo[CADENCE_UART_TX_FIFO_SIZE];
+     uint32_t rx_wpos;
+@@ -51,6 +52,7 @@ struct CadenceUARTState {
+     qemu_irq irq;
+     QEMUTimer *fifo_trigger_handle;
+     Clock *refclk;
++    bool brk_support;
+ };
+ 
+ #endif
 -- 
 2.34.1
 

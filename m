@@ -4,144 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5AC28C88E58
-	for <qemu-arm@archiver.kernel.org>; Fri, 11 Sep 2026 13:51:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 59E51C88E50
+	for <qemu-arm@archiver.kernel.org>; Fri, 11 Sep 2026 14:33:35 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1x51el-0001PN-1T; Fri, 11 Sep 2026 09:51:07 -0400
+	id 1x52J2-0000nd-JD; Fri, 11 Sep 2026 10:32:44 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <skolothumtho@nvidia.com>)
- id 1x51ei-0001Ol-MR; Fri, 11 Sep 2026 09:51:04 -0400
-Received: from mail-westcentralusazlp170130007.outbound.protection.outlook.com
- ([2a01:111:f403:c112::7] helo=CY3PR05CU001.outbound.protection.outlook.com)
+ (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
+ id 1x52Id-0000e6-Vu
+ for qemu-arm@nongnu.org; Fri, 11 Sep 2026 10:32:22 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <skolothumtho@nvidia.com>)
- id 1x51ef-0006Ma-NP; Fri, 11 Sep 2026 09:51:03 -0400
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=FRnrl95Tcyb01JHt1oCdHoOESGyEABpPBAGUO1Y6mAWTH5+UeUsyUxJBUdzFynKeGY7TVlXjiBifdTz/wp8brEcAvY6yrhQPeiAAdKLBVbsmlYkTre6tdTx/i0srlF2lffHp0b5X9ccRJwGVcTXLv+GydUgx6OyKrf5l6HlZ8ncfeZP93mgUKtBRJdLcbmywgDx1VRaOlaBhINQq3vGYM2GqEVKPjbxOiXs9COBfsMZOS9Hm33QddZpAQW8P2g/pIjjfud9XgIOJeELMtFvUuCmzNH0l3Q17Y6UMMOatXqweK/iqE+Ukpl6wGDlAdbyMM+nR/G4bhLdxUcaXxy2rag==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector10001;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=NAZHZQOPC8FropIGIJAeuBMswFromnEbRXJedDRnpYQ=;
- b=HwaB5oBf+XgCVbXvp/UQm0E44I2y8MCCvkQFbFHzMSVlS2zqCU9jrAYkChpVz/xizREfFkhnFZK7hnHtRGtKpx9X6q0ERmuZ5tbGxldHQlKsajDlJdCb10Rm9ARKE+Y6VDDqmiX17A+UgOzRIBVmHUy2sS2atd2nK/Iy683wNPlFDHeb9lo8pQUWb+MT5D268mzCmf8BG+qQsadwtzqIQ5fFSmzGd+0zhu6BDiHdgfQQX5VsPnHWQ5z54/cwn+sifvsyCGeQVRpphtep9DWv1gvIYU63g37nx2ZUZfm1KH4+/mjZNn3Z9TdQb+awXZRUh6na6QoPGwg1+w2p+BHavQ==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=nvidia.com; dmarc=pass action=none header.from=nvidia.com;
- dkim=pass header.d=nvidia.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Nvidia.com;
- s=selector2;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=NAZHZQOPC8FropIGIJAeuBMswFromnEbRXJedDRnpYQ=;
- b=s7tGClts1ZlporpHFKA7MW/lyJAkxTKSl+tRXUiHWh9Vi7JAFIe8YFpiV1j3Lc8SwC8vxhF9ZgCISLI7Tu/PaHbE/hQ3wHj0hJRJIoZKIFHC3utPUNxZc/X3zxJ2P95gSQfEwXoS7v16CaiAfnh32v3JkCv1FoiNNEDb+e7SICaBg8FItdSGPRAXwpGut2L9cTi0KUgM+y78ruKIn+o3XZcPagcpkSUZfGdDG52469uU67EAUGaQjjWIsZ4/as5ZJtzxTBpC0Ag1T0xOCG8LX4OvSZNJ/kk60PKdRjyi+Nm6aKxe/o3goQXIx1DbFrpbSDFVRyIIa4w2GM2z5Uuc1Q==
-Received: from SJ0PR12MB8614.namprd12.prod.outlook.com (2603:10b6:a03:47d::17)
- by IA1PR12MB6649.namprd12.prod.outlook.com (2603:10b6:208:3a2::6)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.21.406.8; Fri, 11 Sep
- 2026 13:50:53 +0000
-Received: from SJ0PR12MB8614.namprd12.prod.outlook.com
- ([fe80::fe0a:6e6a:fe60:a43b]) by SJ0PR12MB8614.namprd12.prod.outlook.com
- ([fe80::fe0a:6e6a:fe60:a43b%5]) with mapi id 15.21.0406.005; Fri, 11 Sep 2026
- 13:50:53 +0000
-From: Shameer Kolothum Thodi <skolothumtho@nvidia.com>
-To: Eric Auger <eric.auger@redhat.com>, "eric.auger.pro@gmail.com"
- <eric.auger.pro@gmail.com>, "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
- "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>, "kvmarm@lists.linux.dev"
- <kvmarm@lists.linux.dev>, "peter.maydell@linaro.org"
- <peter.maydell@linaro.org>, "shaju.abraham@nutanix.com"
- <shaju.abraham@nutanix.com>, "khushit.shah@nutanix.com"
- <khushit.shah@nutanix.com>, "yangjinqian1@huawei.com"
- <yangjinqian1@huawei.com>, "cohuck@redhat.com" <cohuck@redhat.com>,
- "richard.henderson@linaro.org" <richard.henderson@linaro.org>,
- "sebott@redhat.com" <sebott@redhat.com>, "philmd@oss.qualcomm.com"
- <philmd@oss.qualcomm.com>
-CC: "maz@kernel.org" <maz@kernel.org>, "oliver.upton@linux.dev"
- <oliver.upton@linux.dev>, "pbonzini@redhat.com" <pbonzini@redhat.com>,
- "armbru@redhat.com" <armbru@redhat.com>, "berrange@redhat.com"
- <berrange@redhat.com>, "abologna@redhat.com" <abologna@redhat.com>,
- "jdenemar@redhat.com" <jdenemar@redhat.com>
-Subject: RE: [RFC PATCH v8 15/20] target/arm/kvm: Ignore and trace unexpected
- writable reserved fields
-Thread-Topic: [RFC PATCH v8 15/20] target/arm/kvm: Ignore and trace unexpected
- writable reserved fields
-Thread-Index: AQHdNT7Vaym+s/bSoUKaxK+U1n8cBrbJfJMA
-Date: Fri, 11 Sep 2026 13:50:53 +0000
-Message-ID: <SJ0PR12MB8614E4CF6C7C81CAE67A018DABBE2@SJ0PR12MB8614.namprd12.prod.outlook.com>
-References: <20260826093747.1670077-1-eric.auger@redhat.com>
- <20260826093747.1670077-16-eric.auger@redhat.com>
-In-Reply-To: <20260826093747.1670077-16-eric.auger@redhat.com>
-Accept-Language: en-US, en-GB
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-authentication-results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=nvidia.com;
-x-ms-publictraffictype: Email
-x-ms-traffictypediagnostic: SJ0PR12MB8614:EE_|IA1PR12MB6649:EE_
-x-ms-office365-filtering-correlation-id: 5e6e8c23-e9f1-4416-ee4a-08df100bb2a7
-x-ms-exchange-senderadcheck: 1
-x-ms-exchange-antispam-relay: 0
-x-microsoft-antispam: BCL:0;
- ARA:13230040|376014|366016|1800799024|23010399003|7416014|10067099003|4143699003|56012099006|22082099003|18002099003|11063799006|921020|38070700021;
-x-microsoft-antispam-message-info: 5kWPnlyT2Fb8eDFT0jE5oxXmRgQkM3hnJEvt3xRhrMhc0ik98DOeg+xDL6jxIhKwJ5L8HXr1Eq7j6L2ZoV8OkaDVMyZhHDQ+YpR6jrM2Si3ncAD/0g9cxrXOd3UX9RRXI9vBn3KaIyixx1LTLE35w8cLOfAsrXBcwrrF0Qn7C29QIx+kS/9zDz2rxXapxvyGXMjOpfCp+RDSkarwXxr5NB7nhx+ECcnwKjy35654Zi8Tmr81ZWHalD7+KEQTrEsjDxJ45BF+KPXo0aDT/9el23kssoznnq++l5DeLfDTyecQdLwUcgSWkqR9x1lsoo8jXNzjSMJy1aVbL3vHOfX8fpfE7BXNSQZG5GQzptrLDToTtBO6QW2vs/RWHifUYrsWst3d+VZHJpur/SWFi5xO51ofRWlgm8De1xQGDF7DoQaqZFPm9x8UbopzHH7hGctP7SmZJZvWeNO3jRsO7wD0+htNHXwJ/DU7fUaWUcSOEX9I3xTqmecn23MQoLbuMzhA3pBLgxam1Ar1CPubvAZriFLDlf2QqvBgFAncAjZ2hysNATBRB4uSYK3gQ2hHOe/N+yx6A9PgmNhlnyiVQxNixwSYUje3RpnQlqSpNG/z/rNUepNIQLOaFLnjan8PtPQOdczUBISkNZeMulBsHC77+r80a9Zs1uDeq+WfgLO/p8rFKWYDqRvqBbaaUtoHceKh5vlf/QcsNRq7mzkU564idYZNS7NWF+3r3fvSYooX6DNvmQKNwv6NAY0ZIZJ0dREz
-x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:SJ0PR12MB8614.namprd12.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(13230040)(376014)(366016)(1800799024)(23010399003)(7416014)(10067099003)(4143699003)(56012099006)(22082099003)(18002099003)(11063799006)(921020)(38070700021);
- DIR:OUT; SFP:1101; 
-x-ms-exchange-antispam-messagedata-chunkcount: 1
-x-ms-exchange-antispam-messagedata-0: =?us-ascii?Q?uTs4GHROOzTp/edjL5jKt+T6+nIqjpMxDy/ES36ZaF3SLjl83AkQS6i5Wf62?=
- =?us-ascii?Q?RFzoJZUVFeCsuDoA3DXUlnKft8gMr9ynvRSJ0hqjm3TxrnphZppaWJ85AYtz?=
- =?us-ascii?Q?njmlRCmxIQnmE0juc50p2dkou1eEP7ztf23RtlLE6xg9g5sNbLtHHeFdEnn/?=
- =?us-ascii?Q?6qH3h6U7KrY8UbXNV6SnISyJV6gpOxmRsDCGTrB0WTrfk8WVqL3yf0W8o4Do?=
- =?us-ascii?Q?3oTFrAKnr7uptKMy4hEdwfpXDN9MQyq4WNgjAVJTGJlQDUXzsG09DguQ7Yjf?=
- =?us-ascii?Q?plWSpthSokWIbEGMpDlC0H5Gi4u0qv03exBl7jOly3DnOTa+Px5/BeG4Y1DL?=
- =?us-ascii?Q?Aze/eGqOCk+9DuDbJdPSPf92vAAHGIorKPtX9nBZ/B7UpqqUsOt1vNGl/qcC?=
- =?us-ascii?Q?/wNpTYWUFCNhTvdFS3lWHTQb/wEoxcrtoGi7YV/gYx2kV3RGnfFy5KKLUSOS?=
- =?us-ascii?Q?BXfPr62cU2qrJ0elF4ZID19FVCLRrRn4cQ3uqQGoced8HlB0Ux5kPmoT6sb9?=
- =?us-ascii?Q?+bS8Xt91TeHbUsFbKwS3mmGIuNdXcLDiepeCyV0dq9H6AiItJMpImvKvQ5QY?=
- =?us-ascii?Q?B13RJXZTleZorjuyAMajHNOZaXgXwSt+Ksn85ipZSmB8pyZZAWRotscmKGFD?=
- =?us-ascii?Q?XZFJvAKBnYWWuoJcVFcnxY+3LXsu0LrXAja9wj64Vd7ddFjOe6P84o4QTaJY?=
- =?us-ascii?Q?xNjzu7s2WY2CbYJlsk1VO+J8K09Ha8HqsedFBqesRISbzdMYS9vnK0vyss3J?=
- =?us-ascii?Q?pSY1yzLcezm2jqBTx7GFSOSvkb3FRCaKWMTA6w61VbDQQXws6iwCnmOHMOFd?=
- =?us-ascii?Q?qiPD6Xzly770lk849/E+KGPdmCAiYoZrUhzDh4kTBwurR18w0hqWf1hwvVcW?=
- =?us-ascii?Q?NVH1qOyO7j6cGkJA8uZ5qx26ly3jJDSZ88PDxPE/NhccHTXPKdveGWYzfIZh?=
- =?us-ascii?Q?tzqXiiAAcxBuMJKzLu52pHU2PB1gesfHGxLvy4Rj6bDe7AXI1e7udKEr+4sw?=
- =?us-ascii?Q?guoFV38JQXxKXNhsJ9OUQmGZ8mOxDnAUvTTPuwwdbamC6yWt9bJrNU6maRyQ?=
- =?us-ascii?Q?Rbif9g5LMp2xXX29waLf57kQr1J7ridjBDo6hlAFaoYgKotjOWFWwzUzZH0L?=
- =?us-ascii?Q?9oeuIVZGRafvm/AeA/07yaoqQ8WJo2H9N0p8mqbPqHjtaPN0cpoEDsB7PxuU?=
- =?us-ascii?Q?I/oGxhnvCXOZzMwg7XEHJrcbOflD+0Ecl8BzSUsgxim/QOYh+vdkLeL7kb32?=
- =?us-ascii?Q?yUzO4pa1cMZL80wIa+cOfnYRH1hMACMuSpMze0e8sMOoeceI2Itc3AzkbqIG?=
- =?us-ascii?Q?sbybtpFtOIXVd+wCUnTKMtrJdCO2uEZXbeI1BZ9a6VOQpoQ9NF+r9e6M4QH8?=
- =?us-ascii?Q?GYCsXD5kPtQwu6oYAXxPBbArtPOw/2KTomaI0c2bvipvNB9XF1p06ur0P27D?=
- =?us-ascii?Q?gTUP5bpOLIWLeQm3Hl/yUMgzhnNtbWAagdxPcbOpRew5WvGR08gnwwYtTpL7?=
- =?us-ascii?Q?bwQ4xkAjz4q4s9mX9Owp9/uUfp/Byd8rGaA49HESyxgHVQKhH8gkSJkb92cT?=
- =?us-ascii?Q?ruONkFYEgItV/xj7TLscDAybAiZ8UEg5nBR++u7cqpsu7YI2+CWd+N0HkGZD?=
- =?us-ascii?Q?NsePOkELJDdFikS1mZtDhF3MuVILLcgTZ3kFzSccI9dZR99tCxNCRo5mZoUV?=
- =?us-ascii?Q?LSCGvTRw8DpiNs2kK7p1cGEiXUxn/jBMJU573SODlIhGEtC/ktL5ywiUlmC/?=
- =?us-ascii?Q?7nw52pjRUw=3D=3D?=
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: quoted-printable
+ (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
+ id 1x52Ia-0006kl-Ur
+ for qemu-arm@nongnu.org; Fri, 11 Sep 2026 10:32:19 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1789137136;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding;
+ bh=FgcxXaX7vV4QKY5AmHCuTifN6aisrzplu/ekuc9/1QQ=;
+ b=Cv+hhmCq/b2mKdsMQ/LrGF5m5NoL4djo/PEV0Y7YLOelt2/raV5x0qzppqE9xoVlKPMTfh
+ /9S84U05L3nPiiAkMa5ILBVVKjyDSxavZGcVgUsfM0p3uKoTdgyvtvxOzMDaRSxZRQSQKa
+ DgpqbIQpraxRxSZGdS4U/pC3B3mhuVk=
+Received: from mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
+ relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-278-kouePLKLNBuFsDVFxTXoEg-1; Fri,
+ 11 Sep 2026 10:32:10 -0400
+X-MC-Unique: kouePLKLNBuFsDVFxTXoEg-1
+X-Mimecast-MFC-AGG-ID: kouePLKLNBuFsDVFxTXoEg_1789137129
+Received: from mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com
+ (mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.93])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+ (No client certificate requested)
+ by mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 2B1131801352; Fri, 11 Sep 2026 14:32:09 +0000 (UTC)
+Received: from berrange.csb (headnet05.pony-001.prod.iad2.dc.redhat.com
+ [10.2.32.117])
+ by mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
+ id E12F718002B7; Fri, 11 Sep 2026 14:32:06 +0000 (UTC)
+From: =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>
+To: qemu-devel@nongnu.org
+Cc: qemu-s390x@nongnu.org, qemu-ppc@nongnu.org, qemu-block@nongnu.org,
+ qemu-arm@nongnu.org, xen-devel@lists.xenproject.org, qemu-riscv@nongnu.org,
+ =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>
+Subject: [PATCH 00/29] Mark user creatable devices for secure for virt use case
+Date: Fri, 11 Sep 2026 15:31:36 +0100
+Message-ID: <20260911143205.2736968-1-berrange@redhat.com>
 MIME-Version: 1.0
-X-OriginatorOrg: Nvidia.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-AuthSource: SJ0PR12MB8614.namprd12.prod.outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 5e6e8c23-e9f1-4416-ee4a-08df100bb2a7
-X-MS-Exchange-CrossTenant-originalarrivaltime: 11 Sep 2026 13:50:53.7880 (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: 43083d15-7273-40c1-b7db-39efd9ccc17a
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: +++LqLjPxUPoj2ZxDhpfyXE1cLKKJrBbgRNfpAkxyMbXj5Hap+k+I/GIPv9rcI3qVWNMaK1rSG9b3KEYIpviFQ==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: IA1PR12MB6649
-Received-SPF: permerror client-ip=2a01:111:f403:c112::7;
- envelope-from=skolothumtho@nvidia.com;
- helo=CY3PR05CU001.outbound.protection.outlook.com
-X-Spam_score_int: -10
-X-Spam_score: -1.1
-X-Spam_bar: -
-X-Spam_report: (-1.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.93
+X-Mimecast-MFC-PROC-ID: FIvMGBurxlSilHK0YT5tIAPj3W-f5rza9XF2SKCuAHY_1789137129
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=berrange@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- FORGED_SPF_HELO=1, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_PASS=-0.001,
- SPF_NONE=0.001 autolearn=no autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -157,63 +85,305 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Hi Eric,
+This (largish) series undertakes the task of marking devices
+secure, if they are intended to be used a virtualization
+use case.
 
-> -----Original Message-----
-> From: Eric Auger <eric.auger@redhat.com>
-> Sent: 26 August 2026 10:36
-> To: eric.auger.pro@gmail.com; eric.auger@redhat.com; qemu-
-> devel@nongnu.org; qemu-arm@nongnu.org; kvmarm@lists.linux.dev;
-> peter.maydell@linaro.org; shaju.abraham@nutanix.com;
-> khushit.shah@nutanix.com; yangjinqian1@huawei.com;
-> cohuck@redhat.com; richard.henderson@linaro.org; sebott@redhat.com;
-> Shameer Kolothum Thodi <skolothumtho@nvidia.com>;
-> philmd@oss.qualcomm.com
-> Cc: maz@kernel.org; oliver.upton@linux.dev; pbonzini@redhat.com;
-> armbru@redhat.com; berrange@redhat.com; abologna@redhat.com;
-> jdenemar@redhat.com
-> Subject: [RFC PATCH v8 15/20] target/arm/kvm: Ignore and trace unexpected
-> writable reserved fields
->=20
-> External email: Use caution opening links or attachments
->=20
->=20
-> KVM currently reports some bits as writable whereas they are
-> RES0 or RAZ. The code easily allows to do some sanity checking
-> for such inconsistencies. Let's add a trace event when this is
-> encountered and skip the field
->=20
-> Signed-off-by: Eric Auger <eric.auger@redhat.com>
-> ---
->  target/arm/kvm.c        | 8 ++++++++
->  target/arm/trace-events | 1 +
->  2 files changed, 9 insertions(+)
->=20
-> diff --git a/target/arm/kvm.c b/target/arm/kvm.c
-> index 2557d7b0d9..8ec9bc51cd 100644
-> --- a/target/arm/kvm.c
-> +++ b/target/arm/kvm.c
-> @@ -433,6 +433,14 @@ decode_idreg_writemap(Object *obj,
-> ARM64SysReg *reg)
->          }
->          lower =3D field->shift;
->          upper =3D field->shift + field->length - 1;
-> +
-> +        /* Sanity check the field is not a reserved field */
-> +        if (strstr(field->name, "RES0") || strstr(field->name, "RES1") |=
-|
-> +            strstr(field->name, "RAZ")) {
-> +            trace_unexpected_writable_reserved_field(reg->name, field->n=
-ame,
-> +                                                     lower, upper);
+NB, the maintainer CC list was way too huge to include every
+individual, so I've trimmed to just the mailing list CCs.
 
-This hangs QEMU on my setup, the guest never starts.
-I think, we need to advance map/i:=20
+The approach taken was iterative as follows
 
-+            map &=3D ~MAKE_64BIT_MASK(lower, field->length);
-+            i =3D ctz64(map);
+ * Machines listed in
 
-Thanks,
-Shameer
+    https://www.qemu.org/docs/master/system/security.html#virtualization-use-case
+
+ * All virtio/vhost/vfio/xen related devices
+
+ * Most PCI related devices/controllers/bridges
+
+I then used the RHEL builds of QEMU as an approximation for
+what should be considered "virtualization use case", since
+they cut out a huge pile of devices from the build. IOW,
+more or less everything that RHEL builds for x86_64, ppc64,
+aarch64, s390x gets included. Notably since RHEL does not
+yet ship riscv or loongarch, I've possibly missed some
+devices that ought to be in scope.
+
+Devices are marked secure *regardless* of their maintainer
+status, if they are relevant to virt. Notably all the USB
+stuff is included despite USB being orphaned. An exception
+is CXL which is arguably relevant to virt, but maintainers
+agreed it is too immature to include so far.
+
+IOW, the "secure" flag as set in this series mostly avoids
+saying anything about the support status of the object types.
+
+Over the long term, IMHO, the set of devices we declare as
+providing a security boundary needs to be stable. We should
+not declare a device out of scope for the virt use case simply
+because a maintainer steps aside. The device doesn't become
+instantly less secure. It does mean bug fixes may not be
+timely enough, and rely on the goodwill of other contributors
+or maintainers to step up and fix.
+
+Or to put it another way. "secure = true" does not guarantee
+that the device is secure, but it states our intent that we
+*want* it to be secure, as opposed to "secure = false" which
+indicates we just don't care either way.
+
+The intersection of (secure, orphaned) highlights to QEMU
+contributors or corporate sponsors, where they might step
+up their effort / investment.
+
+Finally this is just user creatable devices. Use of these
+devices implies use of many more non-user creatable devices.
+
+I don't have a good way to enumerate those yet, and while
+the end user doesn't care at runtime, as maintainers we
+want to be clear if all devices are in scope for CVE
+handling or not.
+
+Based-on: <20260910103628.2326622-1-berrange@redhat.com>
+
+Daniel P. Berrangé (29):
+  hw: mark secure machines for x86, s390, ppc, arm, loonarch, riscv
+  accel: mark kvm and xen accelerators as secure
+  hw: mark all virtio PCI devices as secure
+  hw: mark all virtio CCW devices as secure
+  hw: mark all vhost devices a secure
+  hw: mark all remaining virtio object types as secure
+  hw/vfio: mark all VFIO object classes as secure
+  hw/xen: mark all Xen related object types as being secure
+  hw/net: mark e1000, e1000e, IGB, rtl8139 & sPAPR VLAN as secure
+  hw/usb: mark commonly used USB devices/hosts as secure
+  hw/watchdog: mark some watchdog devices as secure
+  hw/scsi: mark spapr and vmware SCSI controllers as secure
+  hw/scsi: mark SCSI disk endpoint devices as secure
+  hw/ide: mark ICH9 and ide-hd/ide-cd as secure
+  hw: define most common PCI types as secure
+  hw/pci-host: mark common x86, ppc, arm and s390 PCI hosts as secure
+  hw/display: mark bochs, cirrus, qxl, VGA, ramfb as secure
+  hw/tpm: mark all TPM implementations as secure
+  hw/misc: mark pvpanic, vmcoreinfo as secure
+  hw/audio: mark Intel HDA devices & codecs as secure
+  hw/char: mark common serial / console devicess a secure
+  hw/mem: mark nvdimm, pc-dimm & spapr-nvdimm devices as secure
+  hw/uefi: mark the EFI vars service as secure
+  hw/acpi: mark erst, vmclock and vmgenid devices as secure
+  hw: mark KVM clock and RTC devices as secure
+  hw: device AMD, Intel and ARM IOMMUs as secure
+  hw/input: mark PS/2 and PC Keyboard devices as secure
+  hw/i386: mark vmmouse / vmport as secure
+  tests/tcg: improve check for working cross compilers
+
+ accel/accel-common.c                 | 2 ++
+ accel/accel-system.c                 | 1 +
+ accel/kvm/kvm-accel-ops.c            | 1 +
+ accel/kvm/kvm-all.c                  | 1 +
+ accel/xen/xen-all.c                  | 2 ++
+ hw/9pfs/virtio-9p-device.c           | 1 +
+ hw/acpi/erst.c                       | 1 +
+ hw/acpi/vmclock.c                    | 1 +
+ hw/acpi/vmgenid.c                    | 1 +
+ hw/arm/smmu-common.c                 | 1 +
+ hw/arm/smmuv3.c                      | 2 ++
+ hw/arm/virt.c                        | 1 +
+ hw/arm/xen-pvh.c                     | 1 +
+ hw/audio/hda-codec.c                 | 4 ++++
+ hw/audio/intel-hda.c                 | 5 +++++
+ hw/audio/virtio-snd.c                | 1 +
+ hw/block/vhost-user-blk.c            | 1 +
+ hw/block/virtio-blk.c                | 1 +
+ hw/block/xen-block.c                 | 3 +++
+ hw/char/debugcon.c                   | 1 +
+ hw/char/sclpconsole-lm.c             | 1 +
+ hw/char/sclpconsole.c                | 1 +
+ hw/char/serial-isa.c                 | 1 +
+ hw/char/serial-pci.c                 | 1 +
+ hw/char/serial.c                     | 1 +
+ hw/char/spapr_vty.c                  | 1 +
+ hw/char/virtio-console.c             | 2 ++
+ hw/char/virtio-serial-bus.c          | 3 +++
+ hw/char/xen_console.c                | 1 +
+ hw/display/bochs-display.c           | 1 +
+ hw/display/cirrus_vga.c              | 1 +
+ hw/display/qxl.c                     | 3 +++
+ hw/display/ramfb-standalone.c        | 1 +
+ hw/display/vga-mmio.c                | 1 +
+ hw/display/vga-pci.c                 | 3 +++
+ hw/display/vhost-user-gpu.c          | 1 +
+ hw/display/virtio-gpu-base.c         | 3 ++-
+ hw/display/virtio-gpu-gl.c           | 1 +
+ hw/display/virtio-gpu-pci-rutabaga.c | 1 +
+ hw/display/virtio-gpu-pci.c          | 3 ++-
+ hw/display/virtio-gpu-rutabaga.c     | 1 +
+ hw/display/virtio-gpu.c              | 1 +
+ hw/i386/amd_iommu.c                  | 4 +++-
+ hw/i386/intel_iommu.c                | 1 +
+ hw/i386/kvm/clock.c                  | 1 +
+ hw/i386/microvm.c                    | 1 +
+ hw/i386/pc_piix.c                    | 4 ++--
+ hw/i386/vmmouse.c                    | 1 +
+ hw/i386/vmport.c                     | 1 +
+ hw/i386/xen/xen-pvh.c                | 1 +
+ hw/i386/xen/xen_platform.c           | 1 +
+ hw/i386/xen/xen_pvdevice.c           | 1 +
+ hw/ide/ich.c                         | 1 +
+ hw/ide/ide-dev.c                     | 3 +++
+ hw/ide/piix.c                        | 2 ++
+ hw/input/pckbd.c                     | 3 ++-
+ hw/input/ps2.c                       | 9 ++++++---
+ hw/input/virtio-input-hid.c          | 5 +++++
+ hw/input/virtio-input-host.c         | 1 +
+ hw/input/virtio-input.c              | 1 +
+ hw/loongarch/virt.c                  | 2 ++
+ hw/mem/nvdimm.c                      | 1 +
+ hw/mem/pc-dimm.c                     | 1 +
+ hw/misc/pvpanic-isa.c                | 1 +
+ hw/misc/pvpanic-mmio.c               | 1 +
+ hw/misc/pvpanic-pci.c                | 1 +
+ hw/misc/vmcoreinfo.c                 | 1 +
+ hw/net/e1000.c                       | 1 +
+ hw/net/e1000e.c                      | 1 +
+ hw/net/igb.c                         | 1 +
+ hw/net/rtl8139.c                     | 1 +
+ hw/net/spapr_llan.c                  | 1 +
+ hw/net/virtio-net.c                  | 1 +
+ hw/net/xen_nic.c                     | 1 +
+ hw/pci-bridge/gen_pcie_root_port.c   | 1 +
+ hw/pci-bridge/i82801b11.c            | 1 +
+ hw/pci-bridge/ioh3420.c              | 1 +
+ hw/pci-bridge/pci_bridge_dev.c       | 2 ++
+ hw/pci-bridge/pci_expander_bridge.c  | 8 ++++++++
+ hw/pci-bridge/pcie_pci_bridge.c      | 1 +
+ hw/pci-bridge/pcie_root_port.c       | 1 +
+ hw/pci-bridge/xio3130_downstream.c   | 1 +
+ hw/pci-bridge/xio3130_upstream.c     | 1 +
+ hw/pci-host/gpex.c                   | 2 ++
+ hw/pci-host/i440fx.c                 | 2 ++
+ hw/pci-host/pnv_phb.c                | 2 ++
+ hw/pci-host/pnv_phb3.c               | 3 +++
+ hw/pci-host/pnv_phb3_msi.c           | 1 +
+ hw/pci-host/pnv_phb3_pbcq.c          | 1 +
+ hw/pci-host/pnv_phb4.c               | 4 +++-
+ hw/pci-host/pnv_phb4_pec.c           | 1 +
+ hw/pci-host/q35.c                    | 2 ++
+ hw/pci-host/remote.c                 | 1 +
+ hw/pci-host/xen_igd_pt.c             | 1 +
+ hw/pci/pci.c                         | 7 +++++++
+ hw/pci/pci_bridge.c                  | 1 +
+ hw/pci/pci_host.c                    | 1 +
+ hw/pci/pcie_host.c                   | 1 +
+ hw/pci/pcie_port.c                   | 1 +
+ hw/ppc/spapr.c                       | 1 +
+ hw/ppc/spapr_nvdimm.c                | 1 +
+ hw/ppc/spapr_pci.c                   | 1 +
+ hw/ppc/spapr_tpm_proxy.c             | 1 +
+ hw/riscv/virt.c                      | 1 +
+ hw/rtc/mc146818rtc.c                 | 1 +
+ hw/s390x/s390-pci-bus.c              | 4 ++++
+ hw/s390x/s390-virtio-ccw.c           | 1 +
+ hw/s390x/vhost-scsi-ccw.c            | 1 +
+ hw/s390x/vhost-user-fs-ccw.c         | 1 +
+ hw/s390x/vhost-vsock-ccw.c           | 1 +
+ hw/s390x/virtio-ccw-9p.c             | 1 +
+ hw/s390x/virtio-ccw-balloon.c        | 1 +
+ hw/s390x/virtio-ccw-blk.c            | 1 +
+ hw/s390x/virtio-ccw-crypto.c         | 1 +
+ hw/s390x/virtio-ccw-gpu.c            | 1 +
+ hw/s390x/virtio-ccw-input.c          | 5 +++++
+ hw/s390x/virtio-ccw-md.c             | 1 +
+ hw/s390x/virtio-ccw-mem.c            | 1 +
+ hw/s390x/virtio-ccw-net.c            | 1 +
+ hw/s390x/virtio-ccw-rng.c            | 1 +
+ hw/s390x/virtio-ccw-scsi.c           | 1 +
+ hw/s390x/virtio-ccw-serial.c         | 1 +
+ hw/s390x/virtio-ccw.c                | 1 +
+ hw/scsi/scsi-disk.c                  | 4 ++++
+ hw/scsi/scsi-generic.c               | 1 +
+ hw/scsi/spapr_vscsi.c                | 1 +
+ hw/scsi/vhost-scsi-common.c          | 1 +
+ hw/scsi/vhost-scsi.c                 | 1 +
+ hw/scsi/vhost-user-scsi.c            | 1 +
+ hw/scsi/virtio-scsi.c                | 2 ++
+ hw/scsi/vmw_pvscsi.c                 | 1 +
+ hw/tpm/tpm_crb.c                     | 1 +
+ hw/tpm/tpm_spapr.c                   | 1 +
+ hw/tpm/tpm_tis_i2c.c                 | 1 +
+ hw/tpm/tpm_tis_isa.c                 | 1 +
+ hw/tpm/tpm_tis_sysbus.c              | 1 +
+ hw/uefi/var-service-sysbus.c         | 2 ++
+ hw/usb/ccid-card-emulated.c          | 1 +
+ hw/usb/ccid-card-passthru.c          | 1 +
+ hw/usb/dev-hid.c                     | 4 ++++
+ hw/usb/dev-hub.c                     | 1 +
+ hw/usb/dev-smartcard-reader.c        | 3 +++
+ hw/usb/dev-storage-bot.c             | 1 +
+ hw/usb/dev-storage-classic.c         | 1 +
+ hw/usb/dev-storage.c                 | 1 +
+ hw/usb/hcd-ehci-pci.c                | 2 ++
+ hw/usb/hcd-ehci-sysbus.c             | 8 ++++++++
+ hw/usb/hcd-ohci-pci.c                | 1 +
+ hw/usb/hcd-ohci-sysbus.c             | 1 +
+ hw/usb/hcd-uhci.c                    | 2 ++
+ hw/usb/hcd-xhci-nec.c                | 1 +
+ hw/usb/hcd-xhci-pci.c                | 2 ++
+ hw/usb/hcd-xhci-sysbus.c             | 3 ++-
+ hw/usb/hcd-xhci.c                    | 1 +
+ hw/usb/host-libusb.c                 | 1 +
+ hw/usb/redirect.c                    | 1 +
+ hw/vfio-user/pci.c                   | 1 +
+ hw/vfio/ap.c                         | 1 +
+ hw/vfio/ccw.c                        | 1 +
+ hw/vfio/container.c                  | 1 +
+ hw/vfio/igd.c                        | 1 +
+ hw/vfio/iommufd.c                    | 2 ++
+ hw/vfio/pci.c                        | 3 +++
+ hw/vfio/spapr.c                      | 1 +
+ hw/virtio/vdpa-dev.c                 | 1 +
+ hw/virtio/vhost-user-base.c          | 3 ++-
+ hw/virtio/vhost-user-fs.c            | 1 +
+ hw/virtio/vhost-user-gpio.c          | 1 +
+ hw/virtio/vhost-user-i2c.c           | 1 +
+ hw/virtio/vhost-user-input.c         | 1 +
+ hw/virtio/vhost-user-rng.c           | 1 +
+ hw/virtio/vhost-user-rtc.c           | 1 +
+ hw/virtio/vhost-user-scmi.c          | 1 +
+ hw/virtio/vhost-user-snd.c           | 1 +
+ hw/virtio/vhost-user-spi.c           | 1 +
+ hw/virtio/vhost-user-test-device.c   | 1 +
+ hw/virtio/vhost-user-vsock.c         | 1 +
+ hw/virtio/vhost-vsock-common.c       | 1 +
+ hw/virtio/vhost-vsock.c              | 1 +
+ hw/virtio/virtio-balloon.c           | 1 +
+ hw/virtio/virtio-bus.c               | 1 +
+ hw/virtio/virtio-crypto.c            | 1 +
+ hw/virtio/virtio-input-pci.c         | 2 ++
+ hw/virtio/virtio-iommu.c             | 2 ++
+ hw/virtio/virtio-md-pci.c            | 1 +
+ hw/virtio/virtio-mem.c               | 1 +
+ hw/virtio/virtio-mmio.c              | 2 ++
+ hw/virtio/virtio-nsm.c               | 1 +
+ hw/virtio/virtio-pci.c               | 3 +++
+ hw/virtio/virtio-pmem.c              | 1 +
+ hw/virtio/virtio-rng.c               | 1 +
+ hw/virtio/virtio-rtc.c               | 1 +
+ hw/watchdog/sbsa_gwdt.c              | 1 +
+ hw/watchdog/spapr_watchdog.c         | 1 +
+ hw/watchdog/wdt_diag288.c            | 1 +
+ hw/watchdog/wdt_i6300esb.c           | 1 +
+ hw/watchdog/wdt_ib700.c              | 1 +
+ hw/xen/xen-bus.c                     | 3 +++
+ hw/xen/xen-legacy-backend.c          | 3 +++
+ hw/xen/xen-pvh-common.c              | 1 +
+ hw/xen/xen_pt.c                      | 1 +
+ hw/xenpv/xen_machine_pv.c            | 2 +-
+ include/hw/i386/pc.h                 | 1 +
+ tests/tcg/test_cc.c                  | 6 +++++-
+ 204 files changed, 309 insertions(+), 14 deletions(-)
+
+-- 
+2.55.0
 
 

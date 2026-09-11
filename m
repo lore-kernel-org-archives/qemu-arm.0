@@ -4,111 +4,120 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4CAFAC88E45
-	for <qemu-arm@archiver.kernel.org>; Fri, 11 Sep 2026 15:30:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D2D9CC88E50
+	for <qemu-arm@archiver.kernel.org>; Fri, 11 Sep 2026 15:30:23 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1x53Bd-00084t-DS; Fri, 11 Sep 2026 11:29:09 -0400
+	id 1x53C6-0008Ly-3J; Fri, 11 Sep 2026 11:29:39 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1x53Bb-00082e-5V
- for qemu-arm@nongnu.org; Fri, 11 Sep 2026 11:29:07 -0400
-Received: from mail-wr1-x436.google.com ([2a00:1450:4864:20::436])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1x53BZ-00078T-0s
- for qemu-arm@nongnu.org; Fri, 11 Sep 2026 11:29:06 -0400
-Received: by mail-wr1-x436.google.com with SMTP id
- ffacd0b85a97d-47ddf7b09e5so1109790f8f.1
- for <qemu-arm@nongnu.org>; Fri, 11 Sep 2026 08:29:04 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1789140543; x=1789745343; darn=nongnu.org;
- h=content-transfer-encoding:content-type:mime-version:message-id:date
- :user-agent:references:in-reply-to:subject:cc:to:from:from:to:cc
- :subject:date:message-id:reply-to:content-type;
- bh=Wktg2NIF1Fa70Y3y2YTMPvNs4JtDueHegwGtUlwhlYU=;
- b=Qy9QGXNEEiS0KPdL9mzw0oXh2fNx/ZyGfK16elitb08UczZhrSczDAzcyItYgk/o3m
- BbVclYwSK1Sv14l/qErk1Lz84/i6yfapTYvtX8r57T8WrOiEwIwSJo+VUCkaIbs6eBIC
- MWYHethVtltQhtxJ59qixl1ffnMe0HxwUH6ApqHx79Iv5z8+l/aBvQ2boA4JDu9jvMyZ
- g2ODOZKmo1mxTCN/D2TIM6OY6khQ2P2hbez4By9AyxSpglWVZHeT2ln3b5n3pEif7smI
- 1fekH0DaCbnzFJZ4n5qV4IrJgh+aZqK1Emt4K/QLmzQuCtjjkDstv0pCO99sVJGtlCTa
- hZ5g==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1789140543; x=1789745343;
- h=content-transfer-encoding:content-type:mime-version:message-id:date
- :user-agent:references:in-reply-to:subject:cc:to:from:x-gm-gg
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
- :content-type;
- bh=Wktg2NIF1Fa70Y3y2YTMPvNs4JtDueHegwGtUlwhlYU=;
- b=F7n7aIH0NExZ9rTvxXwbXpC52IWv/dxy8Fi+1hNoLrlE+WG623dbPITbdXXvSK9r6M
- 6Bj21paXfTWgRoh97fSVHw6ZyfZVq/+QBogzD6e+/IE36SclNvxCKCxgVMLye5ogAuJZ
- CFxDbCqANRR7yHwnDG2my5pTzTVtW5HsU7N4sGyaOXRqiOv5RAHoIqvUY2BkjVvpBE6Z
- MHAW8NshmQy5NpFul5WJbon+2CZeWXIvSabANSUvFovTWtPCtfvRTy+cq/xiHKw8FFSL
- isVRvncRNV13ty1YGpsBnI1PNN0Deh/fXVbGePV5N0i2HS3GjZg/HxwJpTBT0byH1fzD
- vjGg==
-X-Forwarded-Encrypted: i=1;
- AKwUvBwMNuE93AC1ySO/HfF1vOlHnw/o0x8u2dLt1QG99fPJC1lDAwUpiB11kQh+SizMRr3MpR1/+Riyuw==@nongnu.org
-X-Gm-Message-State: AFuF++kD/9Bi+pqO8CI5BDyOwC8Yc3teDMcEQB9BbVFMurUuk24TIAAr
- EZJVAfgjd77pB9oIyo2ph+RjvmwBwhsQlmx0tkFbY3+dUISAAF4LHOrEO/eb1cUtDKU=
-X-Gm-Gg: AYBFou19yjB1h6/l218EsrbwGJyymb4FneWMeLNrb+S3fYXCiorMqvl/8U+7HjpSsaq
- SFX8X1uFbHDdgdR+NtZhv9atnDf8soazP+707/K4Xz5dYlPSFZCOy1zWVyYwvBcoHfTGNB3igcM
- uCgwU6f25jnxLb8NUuA96hQ644yrbukzkW0LpdNpYyqZGq1MtWdXXTEBQLh7hlOV3QR9a+oPe8w
- 30QjVs34uAgELRqqogygpVAwNw68NtzgDbhSMvpFPdxXKKeKuI8Mo2kNNhD+6vWUuSlfms1u/hP
- oSLdU+vFaDHhhxuPgRADtOzELWlQlA5vaxqY/oK2vj0ybemq2Zi1UlprSRbiNvaED/FfcUc9em/
- V56pNuzwYKAu7VklRyvi3PDt+UO2irM2KTsI1IYIH/Jm9d56do9XXxQvC0RX/WGRNGQrEPYU0CE
- N2iPWbZlIqKcyT2aNuQmQoVBTrIEo19rs3PQ3W+hA5b/jhGEia8XrcVBhANXEZ70LdeBlDUsc=
-X-Received: by 2002:a05:600c:3104:b0:49c:eb16:9fd with SMTP id
- 5b1f17b1804b1-49e6197f6f6mr58755395e9.3.1789140542646; 
- Fri, 11 Sep 2026 08:29:02 -0700 (PDT)
-Received: from draig.lan ([185.124.0.156]) by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-49e62232cb7sm57280125e9.4.2026.09.11.08.29.01
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 11 Sep 2026 08:29:01 -0700 (PDT)
-Received: from draig (localhost [IPv6:::1])
- by draig.lan (Postfix) with ESMTP id 79ACE5F856;
- Fri, 11 Sep 2026 16:29:00 +0100 (BST)
-From: =?utf-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>
-To: =?utf-8?Q?Marc-Andr=C3=A9?= Lureau <marcandre.lureau@redhat.com>
-Cc: qemu-devel@nongnu.org,  "Dr. David Alan Gilbert" <dave@treblig.org>,
- Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@oss.qualcomm.com>,  Zhao
- Liu
- <zhao1.liu@intel.com>,  Peter Maydell <peter.maydell@linaro.org>,  Chinmay
- Rath <rathc@linux.ibm.com>,  Nicholas Piggin <npiggin@gmail.com>,  Glenn
- Miles <milesg@linux.ibm.com>,  Harsh Prateek Bora <harshpb@linux.ibm.com>,
- Palmer Dabbelt <palmer@dabbelt.com>,  Alistair Francis
- <alistair.francis@wdc.com>,  Weiwei Li <liwei1518@gmail.com>,  Daniel
- Henrique Barboza <daniel.barboza@oss.qualcomm.com>,  Liu Zhiwei
- <zhiwei_liu@linux.alibaba.com>,  Chao Liu <chao.liu@processmission.com>,
- Max Filippov <jcmvbkbc@gmail.com>,  qemu-arm@nongnu.org,
- qemu-ppc@nongnu.org,  qemu-riscv@nongnu.org,  Paolo Bonzini
- <pbonzini@redhat.com>,  Laurent Vivier <laurent@vivier.eu>,  Mark
- Cave-Ayland <mark.cave-ayland@ilande.co.uk>,  Artyom Tarasenko
- <atar4qemu@gmail.com>,  Helge Deller <deller@gmx.de>,  Pierrick Bouvier
- <pierrick.bouvier@oss.qualcomm.com>,  Warner Losh <imp@bsdimp.com>,  Kyle
- Evans <kevans@freebsd.org>
-Subject: Re: [PATCH 02/10] gdbstub: fix next register base after register gaps
-In-Reply-To: <20260911-query-reg-v1-2-0c04f0c02cf3@redhat.com>
- (=?utf-8?Q?=22Marc-Andr=C3=A9?=
- Lureau"'s message of "Fri, 11 Sep 2026 16:27:25 +0400")
-References: <20260911-query-reg-v1-0-0c04f0c02cf3@redhat.com>
- <20260911-query-reg-v1-2-0c04f0c02cf3@redhat.com>
-User-Agent: mu4e 1.14.4-pre2; emacs 30.1
-Date: Fri, 11 Sep 2026 16:29:00 +0100
-Message-ID: <87fqzf958j.fsf@draig.linaro.org>
+ (Exim 4.90_1) (envelope-from <skolothumtho@nvidia.com>)
+ id 1x53C4-0008L3-Ab; Fri, 11 Sep 2026 11:29:36 -0400
+Received: from mail-eastus2azlp170100001.outbound.protection.outlook.com
+ ([2a01:111:f403:c110::1] helo=BN1PR04CU002.outbound.protection.outlook.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <skolothumtho@nvidia.com>)
+ id 1x53C2-0007H0-IC; Fri, 11 Sep 2026 11:29:36 -0400
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=FhgIfeV6YyrHLCJQ66X2FlbKIIWSaFov8rVoyL8/bmechYA/9wuxx2/+s1lWzluDBpNkG6wbsTFX72pZk4wCmd1zGkn0QAwgyVWFRca+zXdOY1cV4SZzJ+f9KGbWYjNgqzqHAs50eQkEkLGqlHwGK+epkOqSezvtz4gZvuAwbVucV2nuK8PN1C0IaAA+8NROioDRl150NmHGb3BzfkU0yEX0YObuKzGGd3gQPi/tYttdDoitVPo6B0rouuR5A7ZL9K9nnuDPfhIL0x6nook5cil0TuAEMMwdh7xBhw3mx3E7+Y7TMtupsITVDASAZWUizx0fUqYcoq039A8wNcEHAg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=0IayHG9jvRxAIe2Wtqs0j9eJbTZ1Dx6bG1jWZGbo+iE=;
+ b=nX6i7VDlRV6FIZI4K56BTjhV1dOyATY6UKu1cTLr9oBQT9EO9XPaYKWLSrM9tIXB1d6e7Ki8DyqIWDTC7FnOtWbGd0k8dgIMdvf1vElgLld6GcHB+Qtk3uQStKKllomMaJPjj9U4yeSfhtFtZ7DBWlqIW4YMb+iIJXidM2X4rBzElT3uokH23a1uyz8KS+TccVoeGHAPHw+Qs7Kqgaz4ZyxF5yg1/BlezC4sBMBPaHM+FnPNU3IVY0Ufw/Fx+ZJzpDjqcVCKqwWKHDVOWyQJf6JlHVBGkbtF5EAGPv7i+UU+PEmSmBOe6P0rjPq0Z1SS+ddhdeJYHUuMdIEEtZgR3w==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass (sender ip is
+ 216.228.117.161) smtp.rcpttodomain=nongnu.org smtp.mailfrom=nvidia.com;
+ dmarc=pass (p=reject sp=reject pct=100) action=none header.from=nvidia.com;
+ dkim=none (message not signed); arc=none (0)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Nvidia.com;
+ s=selector2;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=0IayHG9jvRxAIe2Wtqs0j9eJbTZ1Dx6bG1jWZGbo+iE=;
+ b=n8gsMwcYCLDZ5xqbCxOi+T6t5XkBnOFOkAPdmToFrB2bRrKoq+fX/20B+wm2aV0ZY3LAn07awkz9GlYRQaytV8VnIgmUvTfl5GLQ5KFfPm5nLEKUFFLWUlDo/NyjiLPkPX7RIBBLGT4/ezZPOpLE9DVg1gU7IkTvuzqvcVsoZd1arUtiNSY0vGDYgM2yF39RzGsliOKkGtJaWqpKDpvq+3xuRjoF3Q0TWjM/KimkQZbV32iSjEUmt11hQSrXsjSOSn4TGmjgPN6qte62JfzLZKX0w8HQQyxCg5kBH7BrrAGUrBWT/fRwE3wX7Fpmgol8SCwgVyxW/tFO46nfEgHNNQ==
+Received: from SN7PR04CA0063.namprd04.prod.outlook.com (2603:10b6:806:121::8)
+ by IA0PR12MB8303.namprd12.prod.outlook.com (2603:10b6:208:3de::10)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.21.406.9; Fri, 11 Sep
+ 2026 15:29:28 +0000
+Received: from SA2PEPF00003F65.namprd04.prod.outlook.com
+ (2603:10b6:806:121:cafe::9) by SN7PR04CA0063.outlook.office365.com
+ (2603:10b6:806:121::8) with Microsoft SMTP Server (version=TLS1_3,
+ cipher=TLS_AES_256_GCM_SHA384) id 15.21.406.10 via Frontend Transport; Fri,
+ 11 Sep 2026 15:29:28 +0000
+X-MS-Exchange-Authentication-Results: spf=pass (sender IP is 216.228.117.161)
+ smtp.mailfrom=nvidia.com;
+ dkim=none (message not signed)
+ header.d=none;dmarc=pass action=none header.from=nvidia.com;
+Received-SPF: Pass (protection.outlook.com: domain of nvidia.com designates
+ 216.228.117.161 as permitted sender) receiver=protection.outlook.com;
+ client-ip=216.228.117.161; helo=mail.nvidia.com; pr=C
+Received: from mail.nvidia.com (216.228.117.161) by
+ SA2PEPF00003F65.mail.protection.outlook.com (10.167.248.40) with Microsoft
+ SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.21.406.5 via Frontend Transport; Fri, 11 Sep 2026 15:29:27 +0000
+Received: from rnnvmail201.nvidia.com (10.129.68.8) by mail.nvidia.com
+ (10.129.200.67) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.2562.46; Fri, 11 Sep
+ 2026 08:29:00 -0700
+Received: from NV-2Y5XW94.nvidia.com (10.126.230.37) by rnnvmail201.nvidia.com
+ (10.129.68.8) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.2562.46; Fri, 11 Sep
+ 2026 08:28:57 -0700
+From: Shameer Kolothum <skolothumtho@nvidia.com>
+To: <qemu-arm@nongnu.org>, <qemu-devel@nongnu.org>
+CC: <eric.auger@redhat.com>, <cohuck@redhat.com>, <sebott@redhat.com>,
+ <berrange@redhat.com>, <peter.maydell@linaro.org>,
+ <khushit.shah@nutanix.com>, <nathanc@nvidia.com>, <mochs@nvidia.com>,
+ <jan@nvidia.com>, <wangzhou1@hisilicon.com>, <maz@kernel.org>,
+ <oliver.upton@linux.dev>, <skolothumtho@nvidia.com>
+Subject: [RFC PATCH v2 5/5] hw/arm/virt: Add Target Implementation CPU support
+Date: Fri, 11 Sep 2026 16:27:54 +0100
+Message-ID: <20260911152754.706518-6-skolothumtho@nvidia.com>
+X-Mailer: git-send-email 2.43.0
+In-Reply-To: <20260911152754.706518-1-skolothumtho@nvidia.com>
+References: <20260911152754.706518-1-skolothumtho@nvidia.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2a00:1450:4864:20::436;
- envelope-from=alex.bennee@linaro.org; helo=mail-wr1-x436.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
+X-Originating-IP: [10.126.230.37]
+X-ClientProxiedBy: rnnvmail203.nvidia.com (10.129.68.9) To
+ rnnvmail201.nvidia.com (10.129.68.8)
+X-EOPAttributedMessage: 0
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: SA2PEPF00003F65:EE_|IA0PR12MB8303:EE_
+X-MS-Office365-Filtering-Correlation-Id: 4678dc77-2437-416f-9471-08df101977b1
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;
+ ARA:13230040|82310400026|1800799024|376014|23010399003|36860700016|7416014|18002099003|22082099003|3023799007|10067099003|11063799006|56012099006|6133799003;
+X-Microsoft-Antispam-Message-Info: nFPHdv3zHhXQGmo7qeHD+IkM1lMmuv0qJlh+qmHNbeHTxLDIaRSqlo2u2MssEYMId2r+04AzrT5M7IS/wIrU9awA1opEBAOvIhI4tz8izYZrPYvBgsKgRKN5U0ocw65jYIs5+9519qxCn6wXM805gJCUSqjraCkF+YXQlGxMk8dWmLBLmSMp2RHBTxL5HCnqr+8uNxW20i6Y3D7MB0UdqFM8zZAv39/G+XLNDC9mUxMfzpvQShaUTJz0X+Iq3gjRJ+NDshNirpI7B8JiLLCVqCuO3sdD9CXXU9L4bC75OPbnCZ0r3Ef1a7rOp4NVrkpXBQmxP55k3NIGzcK9jHg++aCQX2GYmaQj/CMjHHuZ4xgutI9dLdksXwY0+mAA1L6XtGre5TR440KyODh1d6xvY7gco0IzTtFdT12LUvl+HBgAPo3jJqjBwpHRy9ijQw2T8Z9McDS8LUYVmTizHkwAbs/XO5aXQkFUGtIEXfbAB/lHu3yaxwWgimRb5zcvNJDa1Y4aT7/cmgBdLhT0/bg9gOUJiUondc9SKUTg8y/hZ/pQqZS0R3vYt5mWEwrX3LHvRpUE7ynxSf3+EPhhNszTsjxJDKi5QwIVxza0ZMBOpRV3zeMo+mvxgQTdoBgcYYZx67fu7m7Oewp0MwIlL0TpsMQEWZrsp7PDT9TFjnaZV4cAyduZz9cqyMWfrEebc4M7f42LL8IK9Qa+KygLYB4qGg==
+X-Forefront-Antispam-Report: CIP:216.228.117.161; CTRY:US; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:mail.nvidia.com; PTR:dc6edge2.nvidia.com; CAT:NONE;
+ SFS:(13230040)(82310400026)(1800799024)(376014)(23010399003)(36860700016)(7416014)(18002099003)(22082099003)(3023799007)(10067099003)(11063799006)(56012099006)(6133799003);
+ DIR:OUT; SFP:1101; 
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: Msyu6foK9gex38CMCjzJEYXdBy6z2UEDzFh2RATSxHVf5CXELeFqVEOGPHFdQCih1ViYA+0tXWMlaD/doAtmzNHTG2Oogy8Be8JBqtvtJEbUX5PieaklbyqwWsWxQ/KC8JlDLBr/GrD6dumok+WJi1pcfO0ONKtTYY0v2hx29sqxjsvpoK4UHlZBMEVvcEvCAQOcDrYqoIrlnryJ2m69syiXAyPZ/An/0djfuP3WmSR7qbRYzViF1W/K00eG7r1179qZRWI1I5QclNDuDAVc8g8h8JySjqiyHyNMkZz9ZBPXKQ6zWk8Fuf6JgDqQUesW1EpapvDax3JhT9BwhKPwzxeZp7bbXrpnxJuEkyqG0skyzycDWydzgyvS0FY5Waa3Q5yZcf/og/k6MHsUaFsfESrBZQB7Hv7NVDnZazEqmKBmQFTNbnkNbKwye+CVLKlz
+X-OriginatorOrg: Nvidia.com
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 11 Sep 2026 15:29:27.6746 (UTC)
+X-MS-Exchange-CrossTenant-Network-Message-Id: 4678dc77-2437-416f-9471-08df101977b1
+X-MS-Exchange-CrossTenant-Id: 43083d15-7273-40c1-b7db-39efd9ccc17a
+X-MS-Exchange-CrossTenant-OriginalAttributedTenantConnectingIp: TenantId=43083d15-7273-40c1-b7db-39efd9ccc17a; Ip=[216.228.117.161];
+ Helo=[mail.nvidia.com]
+X-MS-Exchange-CrossTenant-AuthSource: SA2PEPF00003F65.namprd04.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Anonymous
+X-MS-Exchange-CrossTenant-FromEntityHeader: HybridOnPrem
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: IA0PR12MB8303
+Received-SPF: permerror client-ip=2a01:111:f403:c110::1;
+ envelope-from=skolothumtho@nvidia.com;
+ helo=BN1PR04CU002.outbound.protection.outlook.com
+X-Spam_score_int: -10
+X-Spam_score: -1.1
+X-Spam_bar: -
+X-Spam_report: (-1.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ FORGED_SPF_HELO=1, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_PASS=-0.001,
+ SPF_NONE=0.001, WEIRD_QUOTING=0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -124,236 +133,158 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Marc-Andr=C3=A9 Lureau <marcandre.lureau@redhat.com> writes:
+Add the impl-cpu property to virt machine. This will enable
+user to specify the target implementation CPUs as the example
+below:
 
-> Commit b3e88abb200c ("gdbstub: Consider GDBFeature::base_reg in
-> gdb_register_coprocessor()") identified that register numbers may
-> have gaps. We also need to adjust the next base_reg correctly
-> to avoid overlapping registers. Rename the field to be more
-> explicit about its usage.
->
-> Signed-off-by: Marc-Andr=C3=A9 Lureau <marcandre.lureau@redhat.com>
+...
+-M impl-cpu.0.midr=1,impl-cpu.0.revidr=1,impl-cpu.0.aidr=1,\
+impl-cpu.1.midr=2,impl-cpu.1.revidr=2,impl-cpu.1.aidr=2 \
 
-Acked-by: Alex Benn=C3=A9e <alex.bennee@linaro.org>
+Make use of helper functions to check the KVM support for target
+Impl CPUs and if supported set the user specified target CPUs.
 
-> ---
->  gdbstub/gdbstub.c      | 13 ++++++-------
->  include/hw/core/cpu.h  |  2 +-
->  target/arm/gdbstub.c   |  8 +++++---
->  target/arm/gdbstub64.c | 10 ++++++----
->  target/ppc/gdbstub.c   |  2 +-
->  target/riscv/gdbstub.c |  9 ++++++---
->  target/xtensa/cpu.c    |  2 +-
->  7 files changed, 26 insertions(+), 20 deletions(-)
->
-> diff --git a/gdbstub/gdbstub.c b/gdbstub/gdbstub.c
-> index 0a328b0dd488..0ce871d74929 100644
-> --- a/gdbstub/gdbstub.c
-> +++ b/gdbstub/gdbstub.c
-> @@ -605,13 +605,13 @@ void gdb_init_cpu(CPUState *cpu)
->          gdb_register_feature(cpu, 0,
->                               cc->gdb_read_register, cc->gdb_write_regist=
-er,
->                               feature);
-> -        cpu->gdb_num_regs =3D cpu->gdb_num_g_regs =3D feature->num_regs;
-> +        cpu->gdb_next_base_reg =3D cpu->gdb_num_g_regs =3D feature->num_=
-regs;
->      } else {
-> -        cpu->gdb_num_regs =3D cpu->gdb_num_g_regs =3D cc->gdb_num_core_r=
-egs;
-> +        cpu->gdb_next_base_reg =3D cpu->gdb_num_g_regs =3D cc->gdb_num_c=
-ore_regs;
->      }
->=20=20
->      trace_gdbxml_init_cpu(object_get_typename(OBJECT(cpu)), cpu->cpu_ind=
-ex,
-> -                          cpu->gdb_num_regs, cpu->gdb_num_g_regs,
-> +                          cpu->gdb_next_base_reg, cpu->gdb_num_g_regs,
->                            cc->gdb_num_core_regs);
->  }
->=20=20
-> @@ -621,7 +621,7 @@ void gdb_register_coprocessor(CPUState *cpu,
->  {
->      GDBRegisterState *s;
->      guint i;
-> -    int base_reg =3D cpu->gdb_num_regs;
-> +    int base_reg =3D cpu->gdb_next_base_reg;
->=20=20
->      for (i =3D 0; i < cpu->gdb_regs->len; i++) {
->          /* Check for duplicates.  */
-> @@ -639,7 +639,7 @@ void gdb_register_coprocessor(CPUState *cpu,
->      gdb_register_feature(cpu, base_reg, get_reg, set_reg, feature);
->=20=20
->      /* Add to end of list.  */
-> -    cpu->gdb_num_regs +=3D feature->num_regs;
-> +    cpu->gdb_next_base_reg =3D base_reg + feature->num_regs;
->  }
->=20=20
->  void gdb_unregister_coprocessor_all(CPUState *cpu)
-> @@ -651,7 +651,7 @@ void gdb_unregister_coprocessor_all(CPUState *cpu)
->      g_array_free(cpu->gdb_regs, true);
->=20=20
->      cpu->gdb_regs =3D NULL;
-> -    cpu->gdb_num_regs =3D 0;
-> +    cpu->gdb_next_base_reg =3D 0;
->      cpu->gdb_num_g_regs =3D 0;
->  }
->=20=20
-> @@ -2522,4 +2522,3 @@ void gdb_create_default_process(GDBState *s)
->      process->attached =3D false;
->      process->target_xml =3D NULL;
->  }
-> -
-> diff --git a/include/hw/core/cpu.h b/include/hw/core/cpu.h
-> index 328e30045ce1..02212f555c2e 100644
-> --- a/include/hw/core/cpu.h
-> +++ b/include/hw/core/cpu.h
-> @@ -521,7 +521,7 @@ struct CPUState {
->      struct CPUJumpCache *tb_jmp_cache;
->=20=20
->      GArray *gdb_regs;
-> -    int gdb_num_regs;
-> +    int gdb_next_base_reg;
->      int gdb_num_g_regs;
->      QTAILQ_ENTRY(CPUState) node;
->=20=20
-> diff --git a/target/arm/gdbstub.c b/target/arm/gdbstub.c
-> index d6e29c4cf467..e5cbe4d951ef 100644
-> --- a/target/arm/gdbstub.c
-> +++ b/target/arm/gdbstub.c
-> @@ -555,19 +555,21 @@ void arm_cpu_register_gdb_regs_for_features(ARMCPU =
-*cpu)
->          gdb_register_coprocessor(cs, mve_gdb_get_reg, mve_gdb_set_reg,
->                                   gdb_find_static_feature("arm-m-profile-=
-mve.xml"));
->      }
-> +    GDBFeature *feature =3D
-> +        arm_gen_dynamic_sysreg_feature(cs, cs->gdb_next_base_reg);
->      gdb_register_coprocessor(cs, arm_gdb_get_sysreg, arm_gdb_set_sysreg,
-> -                             arm_gen_dynamic_sysreg_feature(cs, cs->gdb_=
-num_regs));
-> +                             feature);
->=20=20
->  #ifdef CONFIG_TCG
->      if (arm_feature(env, ARM_FEATURE_M) && tcg_enabled()) {
->          gdb_register_coprocessor(cs,
->              arm_gdb_get_m_systemreg, arm_gdb_set_m_systemreg,
-> -            arm_gen_dynamic_m_systemreg_feature(cs, cs->gdb_num_regs));
-> +            arm_gen_dynamic_m_systemreg_feature(cs, cs->gdb_next_base_re=
-g));
->  #ifndef CONFIG_USER_ONLY
->          if (arm_feature(env, ARM_FEATURE_M_SECURITY)) {
->              gdb_register_coprocessor(cs,
->                  arm_gdb_get_m_secextreg, arm_gdb_set_m_secextreg,
-> -                arm_gen_dynamic_m_secextreg_feature(cs, cs->gdb_num_regs=
-));
-> +                arm_gen_dynamic_m_secextreg_feature(cs, cs->gdb_next_bas=
-e_reg));
->          }
->  #endif
->      }
-> diff --git a/target/arm/gdbstub64.c b/target/arm/gdbstub64.c
-> index 0c3e5b30bd6a..cf5b95b54641 100644
-> --- a/target/arm/gdbstub64.c
-> +++ b/target/arm/gdbstub64.c
-> @@ -885,7 +885,8 @@ void aarch64_cpu_register_gdb_regs_for_features(ARMCP=
-U *cpu)
->      CPUState *cs =3D CPU(cpu);
->      if (isar_feature_aa64_sve(&cpu->isar) ||
->          isar_feature_aa64_sme(&cpu->isar)) {
-> -        GDBFeature *feature =3D arm_gen_dynamic_svereg_feature(cs, cs->g=
-db_num_regs);
-> +        GDBFeature *feature =3D
-> +            arm_gen_dynamic_svereg_feature(cs, cs->gdb_next_base_reg);
->          gdb_register_coprocessor(cs, aarch64_gdb_get_sve_reg,
->                                   aarch64_gdb_set_sve_reg, feature);
->      } else {
-> @@ -896,7 +897,7 @@ void aarch64_cpu_register_gdb_regs_for_features(ARMCP=
-U *cpu)
->=20=20
->      if (isar_feature_aa64_sme(&cpu->isar)) {
->          GDBFeature *sme_feature =3D
-> -            arm_gen_dynamic_smereg_feature(cs, cs->gdb_num_regs);
-> +            arm_gen_dynamic_smereg_feature(cs, cs->gdb_next_base_reg);
->          gdb_register_coprocessor(cs, aarch64_gdb_get_sme_reg,
->                                   aarch64_gdb_set_sme_reg, sme_feature);
->          if (isar_feature_aa64_sme2(&cpu->isar)) {
-> @@ -927,7 +928,8 @@ void aarch64_cpu_register_gdb_regs_for_features(ARMCP=
-U *cpu)
->  #endif
->=20=20
->      /* All AArch64 CPUs have at least TPIDR */
-> +    GDBFeature *tls_feature =3D
-> +        arm_gen_dynamic_tls_feature(cs, cs->gdb_next_base_reg);
->      gdb_register_coprocessor(cs, aarch64_gdb_get_tls_reg,
-> -                             aarch64_gdb_set_tls_reg,
-> -                             arm_gen_dynamic_tls_feature(cs, cs->gdb_num=
-_regs));
-> +                             aarch64_gdb_set_tls_reg, tls_feature);
->  }
-> diff --git a/target/ppc/gdbstub.c b/target/ppc/gdbstub.c
-> index 4d622c5cad59..ec25c541c685 100644
-> --- a/target/ppc/gdbstub.c
-> +++ b/target/ppc/gdbstub.c
-> @@ -206,7 +206,7 @@ static void gdb_gen_spr_feature(CPUState *cs)
->=20=20
->      gdb_feature_builder_init(&builder, &pcc->gdb_spr,
->                               "org.qemu.power.spr", "power-spr.xml",
-> -                             cs->gdb_num_regs);
-> +                             cs->gdb_next_base_reg);
->=20=20
->      for (i =3D 0; i < ARRAY_SIZE(env->spr_cb); i++) {
->          ppc_spr_t *spr =3D &env->spr_cb[i];
-> diff --git a/target/riscv/gdbstub.c b/target/riscv/gdbstub.c
-> index 9abbf5bcdf0e..f279f4ab2461 100644
-> --- a/target/riscv/gdbstub.c
-> +++ b/target/riscv/gdbstub.c
-> @@ -348,9 +348,10 @@ void riscv_cpu_register_gdb_regs_for_features(CPUSta=
-te *cs)
->                                   gdb_find_static_feature("riscv-32bit-fp=
-u.xml"));
->      }
->      if (cpu->cfg.ext_zve32x) {
-> +        GDBFeature *feature =3D
-> +            ricsv_gen_dynamic_vector_feature(cs, cs->gdb_next_base_reg);
->          gdb_register_coprocessor(cs, riscv_gdb_get_vector,
-> -                                 riscv_gdb_set_vector,
-> -                                 ricsv_gen_dynamic_vector_feature(cs, cs=
-->gdb_num_regs));
-> +                                 riscv_gdb_set_vector, feature);
->      }
->=20=20
->  #ifdef CONFIG_TCG
-> @@ -373,8 +374,10 @@ void riscv_cpu_register_gdb_regs_for_features(CPUSta=
-te *cs)
->      }
->=20=20
->      if (cpu->cfg.ext_zicsr) {
-> +        GDBFeature *feature =3D
-> +            riscv_gen_dynamic_csr_feature(cs, cs->gdb_next_base_reg);
->          gdb_register_coprocessor(cs, riscv_gdb_get_csr, riscv_gdb_set_cs=
-r,
-> -                                 riscv_gen_dynamic_csr_feature(cs, cs->g=
-db_num_regs));
-> +                                 feature);
->      }
->  #endif
->  }
-> diff --git a/target/xtensa/cpu.c b/target/xtensa/cpu.c
-> index 7c25b9ab707a..48863a1859d4 100644
-> --- a/target/xtensa/cpu.c
-> +++ b/target/xtensa/cpu.c
-> @@ -263,7 +263,7 @@ static void xtensa_cpu_realizefn(DeviceState *dev, Er=
-ror **errp)
->          return;
->      }
->=20=20
-> -    cs->gdb_num_regs =3D xcc->config->gdb_regmap.num_regs;
-> +    cs->gdb_next_base_reg =3D xcc->config->gdb_regmap.num_regs;
->=20=20
->      qemu_init_vcpu(cs);
+Signed-off-by: Shameer Kolothum <skolothumtho@nvidia.com>
+---
+ docs/system/arm/virt.rst | 22 ++++++++++++++++++
+ include/hw/arm/virt.h    |  2 ++
+ hw/arm/virt.c            | 48 ++++++++++++++++++++++++++++++++++++++++
+ 3 files changed, 72 insertions(+)
 
---=20
-Alex Benn=C3=A9e
-Virtualisation Tech Lead @ Linaro
+diff --git a/docs/system/arm/virt.rst b/docs/system/arm/virt.rst
+index 5f6dd17978..a27a5dc8b1 100644
+--- a/docs/system/arm/virt.rst
++++ b/docs/system/arm/virt.rst
+@@ -259,6 +259,28 @@ x-oem-table-id
+   Set string (up to 8 bytes) to override the default value of field OEM Table ID
+   in ACPI table header.
+ 
++impl-cpu
++  Set the list of target implementation CPUs that the guest may run on, so
++  that the guest kernel can enable the errata workarounds required by all of
++  them. This is intended for migrating a guest between hosts whose CPUs
++  differ in their ``MIDR_EL1``, ``REVIDR_EL1`` and ``AIDR_EL1`` values.
++
++  Each entry is described by its ``midr``, ``revidr`` and ``aidr`` values,
++  and all three must be given::
++
++    -machine virt,impl-cpu.0.midr=0x481fd010,impl-cpu.0.revidr=0,\
++    impl-cpu.0.aidr=0x551,impl-cpu.1.midr=0x481fd011,\
++    impl-cpu.1.revidr=0,impl-cpu.1.aidr=0x551
++
++  The list is reported to the guest through KVM vendor hypercalls, so this is
++  only available when using KVM on a host kernel that supports them.
++
++  The list must include the CPU of the host QEMU is running on. A guest that
++  is given a target list stops consulting its own ``MIDR_EL1`` when deciding
++  which errata to enable, so omitting the running host means the guest will
++  not enable the workarounds that host requires. QEMU does not currently
++  verify this.
++
+ SMMU configuration
+ """"""""""""""""""
+ 
+diff --git a/include/hw/arm/virt.h b/include/hw/arm/virt.h
+index 22e66d1a11..1095a5d326 100644
+--- a/include/hw/arm/virt.h
++++ b/include/hw/arm/virt.h
+@@ -42,6 +42,7 @@
+ #include "hw/intc/arm_gicv3_common.h"
+ #include "qom/object.h"
+ #include "hw/core/cpu.h"
++#include "qapi/qapi-types-misc-arm.h"
+ 
+ #define NUM_GICV2M_SPIS       64
+ #define NUM_VIRTIO_TRANSPORTS 32
+@@ -211,6 +212,7 @@ struct VirtMachineState {
+     MemoryRegion *secure_sysmem;
+     bool pci_preserve_config;
+     GPtrArray *smmuv3_devices;
++    ArmTargetImplCPUList *target_cpus_list;
+ };
+ 
+ #define VIRT_ECAM_ID(high) (high ? VIRT_HIGH_PCIE_ECAM : VIRT_PCIE_ECAM)
+diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+index e7a56e37f7..dde22830f5 100644
+--- a/hw/arm/virt.c
++++ b/hw/arm/virt.c
+@@ -75,6 +75,7 @@
+ #include "hw/firmware/smbios.h"
+ #include "qapi/visitor.h"
+ #include "qapi/qapi-visit-common.h"
++#include "qapi/qapi-visit-misc-arm.h"
+ #include "qobject/qlist.h"
+ #include "standard-headers/linux/input.h"
+ #include "hw/arm/smmuv3.h"
+@@ -3027,6 +3028,20 @@ static void machvirt_init(MachineState *machine)
+         exit(1);
+     }
+ 
++    if (vms->target_cpus_list) {
++        if (!kvm_enabled()) {
++            error_report("Target Impl CPU requested, but not supported "
++                         "without KVM");
++            exit(1);
++        }
++
++        if (!kvm_arm_target_impl_cpus_supported()) {
++            error_report("Target Impl CPU requested, but not supported by KVM");
++            exit(1);
++        }
++        kvm_arm_set_target_impl_cpus(vms->target_cpus_list);
++    }
++
+     create_fdt(vms);
+ 
+     assert(possible_cpus->len == max_cpus);
+@@ -3560,6 +3575,26 @@ static void virt_set_oem_table_id(Object *obj, const char *value,
+     strncpy(vms->oem_table_id, value, 8);
+ }
+ 
++static void virt_set_target_impl_cpus(Object *obj, Visitor *v,
++                                      const char *name, void *opaque,
++                                      Error **errp)
++{
++    VirtMachineState *vms = VIRT_MACHINE(obj);
++    ArmTargetImplCPUList *list = vms->target_cpus_list;
++
++    visit_type_ArmTargetImplCPUList(v, name, &vms->target_cpus_list, errp);
++
++    qapi_free_ArmTargetImplCPUList(list);
++}
++
++static void virt_get_target_impl_cpus(Object *obj, Visitor *v,
++                                      const char *name, void *opaque,
++                                      Error **errp)
++{
++    VirtMachineState *vms = VIRT_MACHINE(obj);
++
++    visit_type_ArmTargetImplCPUList(v, name, &vms->target_cpus_list, errp);
++}
+ 
+ bool virt_is_acpi_enabled(const VirtMachineState *vms)
+ {
+@@ -4348,6 +4383,19 @@ static void virt_machine_class_init(ObjectClass *oc, const void *data)
+                                           "in ACPI table header."
+                                           "The string may be up to 8 bytes in size");
+ 
++    object_class_property_add(oc, "impl-cpu", "ArmTargetImplCPUs",
++                              virt_get_target_impl_cpus,
++                              virt_set_target_impl_cpus,
++                              NULL, NULL);
++    object_class_property_set_description(oc, "impl-cpu",
++                                          "Describe target implementation CPU in the format: "
++                                          "impl-cpu.0.midr=1,"
++                                          "impl-cpu.0.revidr=1,"
++                                          "impl-cpu.0.aidr=1,"
++                                          "impl-cpu.1.midr=2,"
++                                          "impl-cpu.1.revidr=2,"
++                                          "impl-cpu.1.aidr=2");
++
+ }
+ 
+ static void virt_instance_init(Object *obj)
+-- 
+2.43.0
+
 

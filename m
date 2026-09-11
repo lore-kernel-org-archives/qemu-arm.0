@@ -4,75 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 90FFCC88E45
-	for <qemu-arm@archiver.kernel.org>; Fri, 11 Sep 2026 14:43:36 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 139F8C88E45
+	for <qemu-arm@archiver.kernel.org>; Fri, 11 Sep 2026 14:43:54 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1x52Si-0007Jr-8v; Fri, 11 Sep 2026 10:42:44 -0400
+	id 1x52QP-0004gV-Se; Fri, 11 Sep 2026 10:40:21 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
- id 1x52NR-0002nP-F2
- for qemu-arm@nongnu.org; Fri, 11 Sep 2026 10:37:17 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ id 1x52N8-0002Mv-Qp
+ for qemu-arm@nongnu.org; Fri, 11 Sep 2026 10:37:01 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
- id 1x52NF-00081o-L0
- for qemu-arm@nongnu.org; Fri, 11 Sep 2026 10:37:17 -0400
+ id 1x52N4-0007tp-D6
+ for qemu-arm@nongnu.org; Fri, 11 Sep 2026 10:36:57 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1789137424;
+ s=mimecast20190719; t=1789137408;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=cj/OwkAk1e+UKX4NrQR8oViEsggR98ARpU/Hmyqd04o=;
- b=gFfVWYijJM0cTK04yUurARQ3xl9pYr2AkD72ENCWu/6htU3y2ypzfZdMW6epL62WrNb1L8
- iSoZ1npSKPHKDzQ5IY8IhLDjkeAJrFbOuMjEyTL6MUzPWiOAJAQnXCPevX87dkrjQs37a0
- hzuxwCriGzoLAu8UENVY5E2GCNzobL4=
-Received: from mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
+ bh=ITXs1RC82PxSIg8yFFapmKCFNMrOr2p5NsMTwGt6/Sk=;
+ b=A7ffRKhW0UhRvjHb3WQhG4vEIPY/JLfnsWiazQMnA/7ugRbT9ctPhY9aJ577yYC69dQgvu
+ dyomVhYX0RVTI4bGoXo/sKFV2Fz3ktmiP6dA6uxBC3Kn/NcGaQhcgkvfm/NC1lnqloNHg4
+ 5JItMne4wsZkHAQ5GNDDVltdBqmqSlY=
+Received: from mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-637-teOpK41IPpaV3nA4a5Tv8Q-1; Fri,
- 11 Sep 2026 10:37:01 -0400
-X-MC-Unique: teOpK41IPpaV3nA4a5Tv8Q-1
-X-Mimecast-MFC-AGG-ID: teOpK41IPpaV3nA4a5Tv8Q_1789137420
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-586-_kA9vgHhO4OI92Jt3oP7vg-1; Fri,
+ 11 Sep 2026 10:36:43 -0400
+X-MC-Unique: _kA9vgHhO4OI92Jt3oP7vg-1
+X-Mimecast-MFC-AGG-ID: _kA9vgHhO4OI92Jt3oP7vg_1789137401
 Received: from mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com
  (mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.4])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 1159919560BC; Fri, 11 Sep 2026 14:37:00 +0000 (UTC)
+ by mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id D4EE5180074A; Fri, 11 Sep 2026 14:36:41 +0000 (UTC)
 Received: from berrange.csb (headnet05.pony-001.prod.iad2.dc.redhat.com
  [10.2.32.117])
  by mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id 3599A300022B; Fri, 11 Sep 2026 14:36:58 +0000 (UTC)
+ id 052D53000229; Fri, 11 Sep 2026 14:36:39 +0000 (UTC)
 From: =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>
 To: qemu-devel@nongnu.org
 Cc: xen-devel@lists.xenproject.org, qemu-riscv@nongnu.org, qemu-ppc@nongnu.org,
  qemu-block@nongnu.org, qemu-s390x@nongnu.org, qemu-arm@nongnu.org,
  =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>
-Subject: [PATCH 13/28] hw/scsi: mark SCSI disk endpoint devices as secure
-Date: Fri, 11 Sep 2026 15:36:12 +0100
-Message-ID: <20260911143627.2743803-14-berrange@redhat.com>
+Subject: [PATCH 05/28] hw: mark all vhost devices a secure
+Date: Fri, 11 Sep 2026 15:36:04 +0100
+Message-ID: <20260911143627.2743803-6-berrange@redhat.com>
 In-Reply-To: <20260911143627.2743803-1-berrange@redhat.com>
 References: <20260911143627.2743803-1-berrange@redhat.com>
 MIME-Version: 1.0
 X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.4
-X-Mimecast-MFC-PROC-ID: LdhJp3ZpptFusc2GYcuHVG-R-RsAj4IOSe8-EDI1KRA_1789137420
+X-Mimecast-MFC-PROC-ID: p6y5Gd8daMtudAfzBRc9tuL7zL-0xS1snGYO7L9Qlfk_1789137401
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=berrange@redhat.com;
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=berrange@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: 12
-X-Spam_score: 1.2
-X-Spam_bar: +
-X-Spam_report: (1.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=0.001, RCVD_IN_SBL_CSS=3.335,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=no autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -88,63 +88,262 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-All these devices can be used together with supported SCSI controllers
-in a virtualization use case, so must be treated as secure.
+These are all intended for use in a virtualization scenario and must
+provide a security boundary.
 
 Signed-off-by: Daniel P. Berrangé <berrange@redhat.com>
 ---
- hw/scsi/scsi-disk.c    | 4 ++++
- hw/scsi/scsi-generic.c | 1 +
- 2 files changed, 5 insertions(+)
+ hw/block/vhost-user-blk.c          | 1 +
+ hw/display/vhost-user-gpu.c        | 1 +
+ hw/scsi/vhost-scsi-common.c        | 1 +
+ hw/scsi/vhost-scsi.c               | 1 +
+ hw/scsi/vhost-user-scsi.c          | 1 +
+ hw/virtio/vhost-user-base.c        | 3 ++-
+ hw/virtio/vhost-user-fs.c          | 1 +
+ hw/virtio/vhost-user-gpio.c        | 1 +
+ hw/virtio/vhost-user-i2c.c         | 1 +
+ hw/virtio/vhost-user-input.c       | 1 +
+ hw/virtio/vhost-user-rng.c         | 1 +
+ hw/virtio/vhost-user-rtc.c         | 1 +
+ hw/virtio/vhost-user-scmi.c        | 1 +
+ hw/virtio/vhost-user-snd.c         | 1 +
+ hw/virtio/vhost-user-spi.c         | 1 +
+ hw/virtio/vhost-user-test-device.c | 1 +
+ hw/virtio/vhost-user-vsock.c       | 1 +
+ hw/virtio/vhost-vsock-common.c     | 1 +
+ hw/virtio/vhost-vsock.c            | 1 +
+ 19 files changed, 20 insertions(+), 1 deletion(-)
 
-diff --git a/hw/scsi/scsi-disk.c b/hw/scsi/scsi-disk.c
-index a42f7d8e77..4474400a38 100644
---- a/hw/scsi/scsi-disk.c
-+++ b/hw/scsi/scsi-disk.c
-@@ -3218,6 +3218,7 @@ static const TypeInfo scsi_disk_base_info = {
-     .instance_size = sizeof(SCSIDiskState),
-     .class_size    = sizeof(SCSIDiskClass),
-     .abstract      = true,
+diff --git a/hw/block/vhost-user-blk.c b/hw/block/vhost-user-blk.c
+index 2e5b3ae1b1..105d77e543 100644
+--- a/hw/block/vhost-user-blk.c
++++ b/hw/block/vhost-user-blk.c
+@@ -673,6 +673,7 @@ static const TypeInfo vhost_user_blk_info = {
+     .instance_size = sizeof(VHostUserBlk),
+     .instance_init = vhost_user_blk_instance_init,
+     .class_init = vhost_user_blk_class_init,
++    .secure = true,
+ };
+ 
+ static void virtio_register_types(void)
+diff --git a/hw/display/vhost-user-gpu.c b/hw/display/vhost-user-gpu.c
+index cd684d6363..4204cac483 100644
+--- a/hw/display/vhost-user-gpu.c
++++ b/hw/display/vhost-user-gpu.c
+@@ -727,6 +727,7 @@ static const TypeInfo vhost_user_gpu_info = {
+     .instance_init = vhost_user_gpu_instance_init,
+     .instance_finalize = vhost_user_gpu_instance_finalize,
+     .class_init = vhost_user_gpu_class_init,
++    .secure = true,
+ };
+ module_obj(TYPE_VHOST_USER_GPU);
+ module_kconfig(VHOST_USER_GPU);
+diff --git a/hw/scsi/vhost-scsi-common.c b/hw/scsi/vhost-scsi-common.c
+index e19800a0bc..7b0007a30e 100644
+--- a/hw/scsi/vhost-scsi-common.c
++++ b/hw/scsi/vhost-scsi-common.c
+@@ -164,6 +164,7 @@ static const TypeInfo vhost_scsi_common_info = {
+     .parent = TYPE_VIRTIO_SCSI_COMMON,
+     .instance_size = sizeof(VHostSCSICommon),
+     .abstract = true,
++    .secure = true,
+ };
+ 
+ static void virtio_register_types(void)
+diff --git a/hw/scsi/vhost-scsi.c b/hw/scsi/vhost-scsi.c
+index 657403cad0..e1f209fabb 100644
+--- a/hw/scsi/vhost-scsi.c
++++ b/hw/scsi/vhost-scsi.c
+@@ -400,6 +400,7 @@ static const TypeInfo vhost_scsi_info = {
+     .instance_size = sizeof(VHostSCSI),
+     .class_init = vhost_scsi_class_init,
+     .instance_init = vhost_scsi_instance_init,
++    .secure = true,
+     .interfaces = (const InterfaceInfo[]) {
+         { TYPE_FW_PATH_PROVIDER },
+         { }
+diff --git a/hw/scsi/vhost-user-scsi.c b/hw/scsi/vhost-user-scsi.c
+index 5070178dc2..8906997051 100644
+--- a/hw/scsi/vhost-user-scsi.c
++++ b/hw/scsi/vhost-user-scsi.c
+@@ -425,6 +425,7 @@ static const TypeInfo vhost_user_scsi_info = {
+     .instance_size = sizeof(VHostUserSCSI),
+     .class_init = vhost_user_scsi_class_init,
+     .instance_init = vhost_user_scsi_instance_init,
++    .secure = true,
+     .interfaces = (const InterfaceInfo[]) {
+         { TYPE_FW_PATH_PROVIDER },
+         { }
+diff --git a/hw/virtio/vhost-user-base.c b/hw/virtio/vhost-user-base.c
+index 478ec68f09..682c06f26b 100644
+--- a/hw/virtio/vhost-user-base.c
++++ b/hw/virtio/vhost-user-base.c
+@@ -426,7 +426,8 @@ static const TypeInfo vub_types[] = {
+         .instance_size = sizeof(VHostUserBase),
+         .class_init = vub_class_init,
+         .class_size = sizeof(VHostUserBaseClass),
+-        .abstract = true
++        .abstract = true,
++        .secure = true,
+     }
+ };
+ 
+diff --git a/hw/virtio/vhost-user-fs.c b/hw/virtio/vhost-user-fs.c
+index 209993918a..9901f84bfb 100644
+--- a/hw/virtio/vhost-user-fs.c
++++ b/hw/virtio/vhost-user-fs.c
+@@ -448,6 +448,7 @@ static const TypeInfo vuf_info = {
+     .instance_size = sizeof(VHostUserFS),
+     .instance_init = vuf_instance_init,
+     .class_init = vuf_class_init,
++    .secure = true,
+ };
+ 
+ static void vuf_register_types(void)
+diff --git a/hw/virtio/vhost-user-gpio.c b/hw/virtio/vhost-user-gpio.c
+index d473f87077..cec21106e0 100644
+--- a/hw/virtio/vhost-user-gpio.c
++++ b/hw/virtio/vhost-user-gpio.c
+@@ -53,6 +53,7 @@ static const TypeInfo vu_gpio_info = {
+     .parent = TYPE_VHOST_USER_BASE,
+     .instance_size = sizeof(VHostUserGPIO),
+     .class_init = vu_gpio_class_init,
++    .secure = true,
+ };
+ 
+ static void vu_gpio_register_types(void)
+diff --git a/hw/virtio/vhost-user-i2c.c b/hw/virtio/vhost-user-i2c.c
+index 152b1f6740..17b0b44413 100644
+--- a/hw/virtio/vhost-user-i2c.c
++++ b/hw/virtio/vhost-user-i2c.c
+@@ -53,6 +53,7 @@ static const TypeInfo vu_i2c_info = {
+     .parent = TYPE_VHOST_USER_BASE,
+     .instance_size = sizeof(VHostUserI2C),
+     .class_init = vu_i2c_class_init,
++    .secure = true,
+ };
+ 
+ static void vu_i2c_register_types(void)
+diff --git a/hw/virtio/vhost-user-input.c b/hw/virtio/vhost-user-input.c
+index 5cfc5bbb56..a850e3770e 100644
+--- a/hw/virtio/vhost-user-input.c
++++ b/hw/virtio/vhost-user-input.c
+@@ -47,6 +47,7 @@ static const TypeInfo vhost_input_info = {
+     .parent        = TYPE_VHOST_USER_BASE,
+     .instance_size = sizeof(VHostUserInput),
+     .class_init    = vhost_input_class_init,
 +    .secure        = true,
  };
  
- #define DEFINE_SCSI_DISK_PROPERTIES()                                   \
-@@ -3338,6 +3339,7 @@ static const TypeInfo scsi_hd_info = {
-     .name          = "scsi-hd",
-     .parent        = TYPE_SCSI_DISK_BASE,
-     .class_init    = scsi_hd_class_initfn,
-+    .secure        = true,
+ static void vhost_input_register_types(void)
+diff --git a/hw/virtio/vhost-user-rng.c b/hw/virtio/vhost-user-rng.c
+index 106c8f211a..dc1286559c 100644
+--- a/hw/virtio/vhost-user-rng.c
++++ b/hw/virtio/vhost-user-rng.c
+@@ -55,6 +55,7 @@ static const TypeInfo vu_rng_info = {
+     .parent = TYPE_VHOST_USER_BASE,
+     .instance_size = sizeof(VHostUserRNG),
+     .class_init = vu_rng_class_init,
++    .secure = true,
  };
  
- static const Property scsi_cd_properties[] = {
-@@ -3381,6 +3383,7 @@ static const TypeInfo scsi_cd_info = {
-     .name          = "scsi-cd",
-     .parent        = TYPE_SCSI_DISK_BASE,
-     .class_init    = scsi_cd_class_initfn,
-+    .secure        = true,
+ static void vu_rng_register_types(void)
+diff --git a/hw/virtio/vhost-user-rtc.c b/hw/virtio/vhost-user-rtc.c
+index 88b0c70b90..2cb949590e 100644
+--- a/hw/virtio/vhost-user-rtc.c
++++ b/hw/virtio/vhost-user-rtc.c
+@@ -54,6 +54,7 @@ static const TypeInfo vu_rtc_info = {
+     .parent = TYPE_VHOST_USER_BASE,
+     .instance_size = sizeof(VHostUserRTC),
+     .class_init = vu_rtc_class_init,
++    .secure = true,
  };
  
- #ifdef __linux__
-@@ -3423,6 +3426,7 @@ static const TypeInfo scsi_block_info = {
-     .name          = "scsi-block",
-     .parent        = TYPE_SCSI_DISK_BASE,
-     .class_init    = scsi_block_class_initfn,
-+    .secure        = true,
- };
- #endif
- 
-diff --git a/hw/scsi/scsi-generic.c b/hw/scsi/scsi-generic.c
-index 8999f3b720..5588400b60 100644
---- a/hw/scsi/scsi-generic.c
-+++ b/hw/scsi/scsi-generic.c
-@@ -1225,6 +1225,7 @@ static const TypeInfo scsi_generic_info = {
-     .parent        = TYPE_SCSI_DEVICE,
-     .instance_size = sizeof(SCSIDevice),
-     .class_init    = scsi_generic_class_initfn,
-+    .secure        = true,
+ static void vu_rtc_register_types(void)
+diff --git a/hw/virtio/vhost-user-scmi.c b/hw/virtio/vhost-user-scmi.c
+index 02dc088ea9..c5f7f0afb0 100644
+--- a/hw/virtio/vhost-user-scmi.c
++++ b/hw/virtio/vhost-user-scmi.c
+@@ -310,6 +310,7 @@ static const TypeInfo vu_scmi_info = {
+     .parent = TYPE_VIRTIO_DEVICE,
+     .instance_size = sizeof(VHostUserSCMI),
+     .class_init = vu_scmi_class_init,
++    .secure = true,
  };
  
- static void scsi_generic_register_types(void)
+ static void vu_scmi_register_types(void)
+diff --git a/hw/virtio/vhost-user-snd.c b/hw/virtio/vhost-user-snd.c
+index 7129b77d9c..3695534aa2 100644
+--- a/hw/virtio/vhost-user-snd.c
++++ b/hw/virtio/vhost-user-snd.c
+@@ -72,6 +72,7 @@ static const TypeInfo vu_snd_info = {
+     .parent = TYPE_VHOST_USER_BASE,
+     .instance_size = sizeof(VHostUserSound),
+     .class_init = vu_snd_class_init,
++    .secure = true,
+ };
+ 
+ static void vu_snd_register_types(void)
+diff --git a/hw/virtio/vhost-user-spi.c b/hw/virtio/vhost-user-spi.c
+index 707f96c250..58d5fd7b46 100644
+--- a/hw/virtio/vhost-user-spi.c
++++ b/hw/virtio/vhost-user-spi.c
+@@ -55,6 +55,7 @@ static const TypeInfo vu_spi_info = {
+     .parent = TYPE_VHOST_USER_BASE,
+     .instance_size = sizeof(VHostUserSPI),
+     .class_init = vu_spi_class_init,
++    .secure = true,
+ };
+ 
+ static void vu_spi_register_types(void)
+diff --git a/hw/virtio/vhost-user-test-device.c b/hw/virtio/vhost-user-test-device.c
+index a2f963fdf6..73da8af48a 100644
+--- a/hw/virtio/vhost-user-test-device.c
++++ b/hw/virtio/vhost-user-test-device.c
+@@ -50,6 +50,7 @@ static const TypeInfo vud_info = {
+     .name = TYPE_VHOST_USER_TEST_DEVICE,
+     .parent = TYPE_VHOST_USER_BASE,
+     .class_init = vud_class_init,
++    .secure = true,
+ };
+ 
+ static void vu_register_types(void)
+diff --git a/hw/virtio/vhost-user-vsock.c b/hw/virtio/vhost-user-vsock.c
+index c2cd376e73..e10ceb95cb 100644
+--- a/hw/virtio/vhost-user-vsock.c
++++ b/hw/virtio/vhost-user-vsock.c
+@@ -175,6 +175,7 @@ static const TypeInfo vuv_info = {
+     .parent = TYPE_VHOST_VSOCK_COMMON,
+     .instance_size = sizeof(VHostUserVSock),
+     .class_init = vuv_class_init,
++    .secure = true,
+ };
+ 
+ static void vuv_register_types(void)
+diff --git a/hw/virtio/vhost-vsock-common.c b/hw/virtio/vhost-vsock-common.c
+index b79f4c9ce6..01f7dea6f5 100644
+--- a/hw/virtio/vhost-vsock-common.c
++++ b/hw/virtio/vhost-vsock-common.c
+@@ -309,6 +309,7 @@ static const TypeInfo vhost_vsock_common_info = {
+     .instance_size = sizeof(VHostVSockCommon),
+     .class_init = vhost_vsock_common_class_init,
+     .abstract = true,
++    .secure = true,
+ };
+ 
+ static void vhost_vsock_common_register_types(void)
+diff --git a/hw/virtio/vhost-vsock.c b/hw/virtio/vhost-vsock.c
+index da244eb165..66a17ee15f 100644
+--- a/hw/virtio/vhost-vsock.c
++++ b/hw/virtio/vhost-vsock.c
+@@ -225,6 +225,7 @@ static const TypeInfo vhost_vsock_info = {
+     .parent = TYPE_VHOST_VSOCK_COMMON,
+     .instance_size = sizeof(VHostVSock),
+     .class_init = vhost_vsock_class_init,
++    .secure = true,
+ };
+ 
+ static void vhost_vsock_register_types(void)
 -- 
 2.55.0
 

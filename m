@@ -4,63 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 730EAC88E45
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 16D30C88E50
 	for <qemu-arm@archiver.kernel.org>; Fri, 11 Sep 2026 14:47:21 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1x52UJ-0004Be-F3; Fri, 11 Sep 2026 10:44:23 -0400
+	id 1x52UC-0003kS-N0; Fri, 11 Sep 2026 10:44:16 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
- id 1x52O8-00032O-Qw
- for qemu-arm@nongnu.org; Fri, 11 Sep 2026 10:38:03 -0400
+ id 1x52Nl-0002sI-Fh
+ for qemu-arm@nongnu.org; Fri, 11 Sep 2026 10:37:43 -0400
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
- id 1x52O5-0008Qa-CH
- for qemu-arm@nongnu.org; Fri, 11 Sep 2026 10:38:00 -0400
+ id 1x52NO-00087P-8B
+ for qemu-arm@nongnu.org; Fri, 11 Sep 2026 10:37:30 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1789137473;
+ s=mimecast20190719; t=1789137433;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=ntaO5zXCqDIHHnqqZoaRC9y/DkKQ0xZ5Zjqm3Fkdzdk=;
- b=E9VeuG4qBzSNZkspV3B5+mlN7xHJTsNHQJm6GAxYip7L34HrzNx55KquP1f0OU1iWyPcdx
- gDjHmEfaLqSoRWrvWmxiUUeNliBtaHS6U4XrXaiasfsxJf4J5UmBIFsKbdf7NsXrGBYvT5
- S2zdXal5uYCYPfenSl1iUhWpXZQgdUY=
+ bh=v/QFXhbR7+trrsi9yjvMVLU5gLecR5pn7XwbzwTQyqg=;
+ b=VJnxGc+s/X+w2CjwZG2vKsUy58QKmoFHyd/1U5tyH8TSpQf+IYI/3VXN6IQjt83Gl86afk
+ yrSxyOpUpV0UQKyqmli6B371K6BnbCvxHrFvkTUM0hujJTIytu+vAeNcmBq+aWWy7VqVe4
+ W3aMW2cS3UToWG8WCDrI37OsgE+FMjY=
 Received: from mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com
  (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-401-yBd4u00wMKm-TAHlAmivtQ-1; Fri,
- 11 Sep 2026 10:37:49 -0400
-X-MC-Unique: yBd4u00wMKm-TAHlAmivtQ-1
-X-Mimecast-MFC-AGG-ID: yBd4u00wMKm-TAHlAmivtQ_1789137468
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-425-tMRy4ymCPxWhrf_UlInavg-1; Fri,
+ 11 Sep 2026 10:37:10 -0400
+X-MC-Unique: tMRy4ymCPxWhrf_UlInavg-1
+X-Mimecast-MFC-AGG-ID: tMRy4ymCPxWhrf_UlInavg_1789137428
 Received: from mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com
  (mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.4])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
  by mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 07F5B1944F0D; Fri, 11 Sep 2026 14:37:31 +0000 (UTC)
+ id B572E1953964; Fri, 11 Sep 2026 14:37:08 +0000 (UTC)
 Received: from berrange.csb (headnet05.pony-001.prod.iad2.dc.redhat.com
  [10.2.32.117])
  by mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id 0D1A6300022B; Fri, 11 Sep 2026 14:37:28 +0000 (UTC)
+ id EABCD300022B; Fri, 11 Sep 2026 14:37:06 +0000 (UTC)
 From: =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>
 To: qemu-devel@nongnu.org
 Cc: xen-devel@lists.xenproject.org, qemu-riscv@nongnu.org, qemu-ppc@nongnu.org,
  qemu-block@nongnu.org, qemu-s390x@nongnu.org, qemu-arm@nongnu.org,
  =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>
-Subject: [PATCH 27/28] hw/input: mark PS/2 and PC Keyboard devices as secure
-Date: Fri, 11 Sep 2026 15:36:26 +0100
-Message-ID: <20260911143627.2743803-28-berrange@redhat.com>
+Subject: [PATCH 17/28] hw/display: mark bochs, cirrus, qxl, VGA,
+ ramfb as secure
+Date: Fri, 11 Sep 2026 15:36:16 +0100
+Message-ID: <20260911143627.2743803-18-berrange@redhat.com>
 In-Reply-To: <20260911143627.2743803-1-berrange@redhat.com>
 References: <20260911143627.2743803-1-berrange@redhat.com>
 MIME-Version: 1.0
 X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.4
-X-Mimecast-MFC-PROC-ID: 3u2eW7RZNivfzusxmXalinm_ZySQtJBDo4A9qwnMM5c_1789137468
+X-Mimecast-MFC-PROC-ID: wuXOaYbANzc_wg-whZHcKH5a9UVlwTqSZBxpB6CoJkw_1789137428
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
@@ -88,63 +89,131 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-These are part of the baseline x86 featureset so required for
-virtualization use cases.
+Most of the display adapters are emulating old hardware which is not
+relevant to virtualization use cases.
+
+The exceptions that should be considered secure are Cirrus (PCI, not
+ISA), Bochs, QXL, RAMFB, VGA (PCI, MMIO, not ISA) and VMWare VGA.
+
+The Cirrus PCI decision is borderline. It has been heavily used with
+virtualization in the past, but these days VGA / RAMFB are strongly
+recommended instead. Due to its historical usage though, we should
+likely retain it in the set we aim to class as secure.
 
 Signed-off-by: Daniel P. Berrangé <berrange@redhat.com>
 ---
- hw/input/pckbd.c | 3 ++-
- hw/input/ps2.c   | 9 ++++++---
- 2 files changed, 8 insertions(+), 4 deletions(-)
+ hw/display/bochs-display.c    | 1 +
+ hw/display/cirrus_vga.c       | 1 +
+ hw/display/qxl.c              | 3 +++
+ hw/display/ramfb-standalone.c | 1 +
+ hw/display/vga-mmio.c         | 1 +
+ hw/display/vga-pci.c          | 3 +++
+ 6 files changed, 10 insertions(+)
 
-diff --git a/hw/input/pckbd.c b/hw/input/pckbd.c
-index b09c3bce93..0250252cd6 100644
---- a/hw/input/pckbd.c
-+++ b/hw/input/pckbd.c
-@@ -766,7 +766,8 @@ static const TypeInfo i8042_mmio_info = {
+diff --git a/hw/display/bochs-display.c b/hw/display/bochs-display.c
+index 64e669429c..5f3ba80f99 100644
+--- a/hw/display/bochs-display.c
++++ b/hw/display/bochs-display.c
+@@ -374,6 +374,7 @@ static const TypeInfo bochs_display_type_info = {
+     .instance_size  = sizeof(BochsDisplayState),
+     .instance_init  = bochs_display_init,
+     .class_init     = bochs_display_class_init,
++    .secure         = true,
+     .interfaces     = (const InterfaceInfo[]) {
+         { INTERFACE_PCIE_DEVICE },
+         { INTERFACE_CONVENTIONAL_PCI_DEVICE },
+diff --git a/hw/display/cirrus_vga.c b/hw/display/cirrus_vga.c
+index 0a8c74e137..8232c5c468 100644
+--- a/hw/display/cirrus_vga.c
++++ b/hw/display/cirrus_vga.c
+@@ -3013,6 +3013,7 @@ static const TypeInfo cirrus_vga_info = {
+     .parent        = TYPE_PCI_DEVICE,
+     .instance_size = sizeof(PCICirrusVGAState),
+     .class_init    = cirrus_vga_class_init,
++    .secure        = true,
+     .interfaces = (const InterfaceInfo[]) {
+         { INTERFACE_CONVENTIONAL_PCI_DEVICE },
+         { },
+diff --git a/hw/display/qxl.c b/hw/display/qxl.c
+index 384b8767b8..d673663b3a 100644
+--- a/hw/display/qxl.c
++++ b/hw/display/qxl.c
+@@ -2566,6 +2566,7 @@ static const TypeInfo qxl_pci_type_info = {
+     .parent = TYPE_PCI_DEVICE,
+     .instance_size = sizeof(PCIQXLDevice),
+     .abstract = true,
++    .secure = true,
+     .class_init = qxl_pci_class_init,
+     .interfaces = (const InterfaceInfo[]) {
+         { INTERFACE_CONVENTIONAL_PCI_DEVICE },
+@@ -2589,6 +2590,7 @@ static const TypeInfo qxl_primary_info = {
+     .name          = "qxl-vga",
+     .parent        = TYPE_PCI_QXL,
+     .class_init    = qxl_primary_class_init,
++    .secure        = true,
+ };
+ module_obj("qxl-vga");
+ module_kconfig(QXL);
+@@ -2607,6 +2609,7 @@ static const TypeInfo qxl_secondary_info = {
+     .name          = "qxl",
+     .parent        = TYPE_PCI_QXL,
+     .class_init    = qxl_secondary_class_init,
++    .secure        = true,
+ };
+ module_obj("qxl");
+ 
+diff --git a/hw/display/ramfb-standalone.c b/hw/display/ramfb-standalone.c
+index 8e8ba37514..9427009acc 100644
+--- a/hw/display/ramfb-standalone.c
++++ b/hw/display/ramfb-standalone.c
+@@ -85,6 +85,7 @@ static const TypeInfo ramfb_info = {
+     .parent        = TYPE_DYNAMIC_SYS_BUS_DEVICE,
+     .instance_size = sizeof(RAMFBStandaloneState),
+     .class_init    = ramfb_class_initfn,
++    .secure        = true,
+ };
+ 
+ static void ramfb_register_types(void)
+diff --git a/hw/display/vga-mmio.c b/hw/display/vga-mmio.c
+index 3cd64951c0..65dbbed12d 100644
+--- a/hw/display/vga-mmio.c
++++ b/hw/display/vga-mmio.c
+@@ -132,6 +132,7 @@ static const TypeInfo vga_mmio_info = {
      .parent        = TYPE_SYS_BUS_DEVICE,
-     .instance_init = i8042_mmio_init,
-     .instance_size = sizeof(MMIOKBDState),
--    .class_init    = i8042_mmio_class_init
-+    .class_init    = i8042_mmio_class_init,
+     .instance_size = sizeof(VGAMmioState),
+     .class_init    = vga_mmio_class_initfn,
 +    .secure        = true,
  };
  
- void i8042_isa_mouse_fake_event(ISAKBDState *isa)
-diff --git a/hw/input/ps2.c b/hw/input/ps2.c
-index 01af4350b3..8588f39f99 100644
---- a/hw/input/ps2.c
-+++ b/hw/input/ps2.c
-@@ -1293,7 +1293,8 @@ static const TypeInfo ps2_kbd_info = {
-     .name          = TYPE_PS2_KBD_DEVICE,
-     .parent        = TYPE_PS2_DEVICE,
-     .instance_size = sizeof(PS2KbdState),
--    .class_init    = ps2_kbd_class_init
-+    .class_init    = ps2_kbd_class_init,
+ static void vga_mmio_register_types(void)
+diff --git a/hw/display/vga-pci.c b/hw/display/vga-pci.c
+index d089847bda..bb13eee8a2 100644
+--- a/hw/display/vga-pci.c
++++ b/hw/display/vga-pci.c
+@@ -367,6 +367,7 @@ static const TypeInfo vga_pci_type_info = {
+     .parent = TYPE_PCI_DEVICE,
+     .instance_size = sizeof(PCIVGAState),
+     .abstract = true,
++    .secure = true,
+     .class_init = vga_pci_class_init,
+     .interfaces = (const InterfaceInfo[]) {
+         { INTERFACE_CONVENTIONAL_PCI_DEVICE },
+@@ -407,6 +408,7 @@ static const TypeInfo vga_info = {
+     .name          = "VGA",
+     .parent        = TYPE_PCI_VGA,
+     .class_init    = vga_class_init,
 +    .secure        = true,
  };
  
- static void ps2_mouse_class_init(ObjectClass *klass, const void *data)
-@@ -1313,7 +1314,8 @@ static const TypeInfo ps2_mouse_info = {
-     .name          = TYPE_PS2_MOUSE_DEVICE,
-     .parent        = TYPE_PS2_DEVICE,
-     .instance_size = sizeof(PS2MouseState),
--    .class_init    = ps2_mouse_class_init
-+    .class_init    = ps2_mouse_class_init,
+ static const TypeInfo secondary_info = {
+@@ -414,6 +416,7 @@ static const TypeInfo secondary_info = {
+     .parent        = TYPE_PCI_VGA,
+     .instance_init = pci_secondary_vga_init,
+     .class_init    = secondary_class_init,
 +    .secure        = true,
  };
  
- static void ps2_init(Object *obj)
-@@ -1340,7 +1342,8 @@ static const TypeInfo ps2_info = {
-     .instance_size = sizeof(PS2State),
-     .class_init    = ps2_class_init,
-     .class_size    = sizeof(PS2DeviceClass),
--    .abstract      = true
-+    .abstract      = true,
-+    .secure        = true,
- };
- 
- static void ps2_register_types(void)
+ static void vga_register_types(void)
 -- 
 2.55.0
 

@@ -4,56 +4,56 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 44A81C88E4D
-	for <qemu-arm@archiver.kernel.org>; Fri, 11 Sep 2026 16:39:04 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 26DE2C88E4D
+	for <qemu-arm@archiver.kernel.org>; Fri, 11 Sep 2026 16:41:28 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1x54H8-0001kN-9N; Fri, 11 Sep 2026 12:38:54 -0400
+	id 1x54JB-0006sg-MW; Fri, 11 Sep 2026 12:41:01 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <marcandre.lureau@redhat.com>)
- id 1x54H6-0001Zz-5E
- for qemu-arm@nongnu.org; Fri, 11 Sep 2026 12:38:52 -0400
+ id 1x54J1-0006fv-8x
+ for qemu-arm@nongnu.org; Fri, 11 Sep 2026 12:40:54 -0400
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <marcandre.lureau@redhat.com>)
- id 1x54H4-0006YF-L6
- for qemu-arm@nongnu.org; Fri, 11 Sep 2026 12:38:51 -0400
+ id 1x54Iz-0007BB-0q
+ for qemu-arm@nongnu.org; Fri, 11 Sep 2026 12:40:50 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1789144729;
+ s=mimecast20190719; t=1789144848;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=3lpC35gmliS0QhA1JkmfqWaHkZxlzKVeH5o0OEMIMN4=;
- b=YQUkmIbwQuxBr9+icPZtPuSw/EAnRS+Zo+LYojFkTfsjnEFiMLhvIoX6GBjeyG9fxjdio6
- Q6LGZav2hwTSDhEzmiGxW1wO6VG2ThgR4iLxJ2S3LXfDLou4usLV/l7etxQ9u1I0NYJYRG
- ynGAD0wukVuo5uCHUSpN33asS+Z+p+8=
-Received: from mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
+ bh=uDadYbb+MvTukZ4DS18E0pLdpqsEG2v4jBcqkrYw0bM=;
+ b=U8sgjLLgLHBPOvsOAyAozl7fe7ww2nxBlCfvGNwszauANppzG1vpDM9YepatedT8aoIIQL
+ WVtIYLBRFkBZDvSSIkK0mQ66O4U1SnbsmpQGMBczCEXB4A5WktovSYFukVYsXlaoXqCEuo
+ XIz71EwuF5rFhv2cgNp7eI8vfJjbQgM=
+Received: from mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-669-tA0paACZNHGTUu7cEE-MrQ-1; Fri,
- 11 Sep 2026 12:38:45 -0400
-X-MC-Unique: tA0paACZNHGTUu7cEE-MrQ-1
-X-Mimecast-MFC-AGG-ID: tA0paACZNHGTUu7cEE-MrQ_1789144724
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-373-DbPVIgPSPbOP9ibl1dS4OQ-1; Fri,
+ 11 Sep 2026 12:40:44 -0400
+X-MC-Unique: DbPVIgPSPbOP9ibl1dS4OQ-1
+X-Mimecast-MFC-AGG-ID: DbPVIgPSPbOP9ibl1dS4OQ_1789144841
 Received: from mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com
  (mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.12])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 858EA195E912; Fri, 11 Sep 2026 16:38:44 +0000 (UTC)
+ by mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 06CD218005A0; Fri, 11 Sep 2026 16:40:41 +0000 (UTC)
 Received: from localhost (headnet05.pony-001.prod.iad2.dc.redhat.com
  [10.2.32.117])
  by mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id 8A625195608F; Fri, 11 Sep 2026 16:38:43 +0000 (UTC)
+ id 2DECE195608F; Fri, 11 Sep 2026 16:40:38 +0000 (UTC)
 From: =?utf-8?q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>
-Date: Fri, 11 Sep 2026 20:34:55 +0400
-Subject: [PATCH v5 21/62] arm/virt: convert OnOffAuto acpi property to
- QAPI-aware registration
+Date: Fri, 11 Sep 2026 20:35:26 +0400
+Subject: [PATCH v5 52/62] hw: convert device-local PropertyInfo definitions
+ to use qapi_type
 MIME-Version: 1.0
-Message-Id: <20260911-qom-qapi-v5-21-7732a55b7760@redhat.com>
+Message-Id: <20260911-qom-qapi-v5-52-7732a55b7760@redhat.com>
 References: <20260911-qom-qapi-v5-0-7732a55b7760@redhat.com>
 In-Reply-To: <20260911-qom-qapi-v5-0-7732a55b7760@redhat.com>
 To: qemu-devel@nongnu.org
@@ -64,39 +64,56 @@ Cc: Markus Armbruster <armbru@redhat.com>,
  Michael Roth <michael.roth@amd.com>, 
  Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>, 
  =?utf-8?q?Philippe_Mathieu-Daud=C3=A9?= <philmd@oss.qualcomm.com>, 
- Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org
-X-Developer-Signature: v=1; a=openpgp-sha256; l=2389;
+ Stefano Stabellini <sstabellini@kernel.org>, 
+ Anthony PERARD <anthony@xenproject.org>, 
+ "Edgar E. Iglesias" <edgar.iglesias@gmail.com>, 
+ Kevin Wolf <kwolf@redhat.com>, Hanna Reitz <hreitz@redhat.com>, 
+ Phil Dennis-Jordan <phil@philjordan.eu>, 
+ Alistair Francis <alistair@alistair23.me>, 
+ Peter Maydell <peter.maydell@linaro.org>, Keith Busch <kbusch@kernel.org>, 
+ Klaus Jensen <its@irrelevant.dk>, Jesper Devantier <foss@defmacro.it>, 
+ "Michael S. Tsirkin" <mst@redhat.com>, Halil Pasic <pasic@linux.ibm.com>, 
+ Christian Borntraeger <borntraeger@linux.ibm.com>, 
+ Eric Farman <farman@linux.ibm.com>, Farhan Ali <alifm@linux.ibm.com>, 
+ Richard Henderson <richard.henderson@linaro.org>, 
+ Ilya Leoshkevich <iii@linux.ibm.com>, David Hildenbrand <david@kernel.org>, 
+ Matthew Rosato <mjrosato@linux.ibm.com>, Cornelia Huck <cohuck@redhat.com>, 
+ Alex Williamson <alex@shazbot.org>, 
+ =?utf-8?q?C=C3=A9dric_Le_Goater?= <clg@redhat.com>, 
+ xen-devel@lists.xenproject.org, qemu-block@nongnu.org, qemu-arm@nongnu.org, 
+ qemu-s390x@nongnu.org
+X-Developer-Signature: v=1; a=openpgp-sha256; l=8761;
  i=marcandre.lureau@redhat.com; h=from:subject:message-id;
- bh=VEvZEB5tSbvTYsPJm20+OtQi7DOxjCPx8lu+wm1r8Ps=;
- b=owEBbQKS/ZANAwAKAdro4Ql1lpzlAcsmYgBqpC24UsnAuXMKLk9QqxMhFfDZx6P7EDZ2q31rJ
- YpiU4FS9ACJAjMEAAEKAB0WIQSHqb2TP4fGBtJ29i3a6OEJdZac5QUCaqQtuAAKCRDa6OEJdZac
- 5e1mEAC0JDvHGC4iKIE2gEKffiCT+w/oGHcOeoR0nAmPMkzBVH8mrHBDsdjGYds0LqnUQahr2SP
- ZySlmdjhpr93sTz3lVi7hdaiHbcnYZGyJjxOMP8i5ztapvZj/7OJ3ralgxZZVsLY5sEYrhHftyt
- 5RI3M+wZ1sdId94jVa5jc9CSgxiATt6e0nqGt9td8sFUMPbqBDWx0RRpCGzK4J2VEXkbwVunSaQ
- 7X+Tknuw+2+FgosXSpKZQVRosmj2aZnYyIM5+EFwRWwTOSYwyinwS1CKujuphIh6Hk7YpDklPwM
- C212Up8eNyJa71YRq2MjLdGBkGVoUGcGuCenULFsr3DUkKlZmtkDzzZ5RLpB/CPOXbrk+bJTppJ
- eccS90oyOlrKB8McAzZv5NNlEABYeTbpMZwN0RvycfV55uX0nXH/1kK+oCF/nnL9sNqTfXNaYGn
- jdS5jGALkOyyJRE34cvSlnBYj5eryG6QUZaK94lJRMLK570wXKkhSY/P3w0QJslCt+sTh54gl7s
- LVYMB4+mTQ4FiCTkvJaRb1XRV21OCOvfyFv+n798VSe/N8ram3wh2TS6Fce/CRaCRjnLMFcu2aa
- 5SCXEnqMVBrqHdNwzYLjOxSE0YOeuw9wrpSC8UPH07wzwXinmny7/BsdZSVVx3c9eGRDqQYNZ2g
- OoyMHrtGLnouABw==
+ bh=JMD8CHS/Ms/ZN3B00kadMDC30ZNsy393OriqSCvH/Y0=;
+ b=owEBbQKS/ZANAwAKAdro4Ql1lpzlAcsmYgBqpC27/FrwpaBUFhbPDQM/o0pmo0Fc272pN3kVq
+ if9mhmJslKJAjMEAAEKAB0WIQSHqb2TP4fGBtJ29i3a6OEJdZac5QUCaqQtuwAKCRDa6OEJdZac
+ 5RQQD/0VJ4R8+y480kJaLTZ3cqEvpfw1lNnm/uI8n1uA2ZLFzVvlOsEpqHPLE2mR/9Oo/sJhKUg
+ s8P4TDAafsiUyYQpMlrEdjoieMqshEAXlKQkq+RO3/373up8zM8+D39GLdnPqEDFPme25Gr5y2x
+ 8c8PRoLO7vI+lrEiwpI2IyrHWT7Zb21mqnKpLQTBZrhY8Qmj+ZX/JtJpOAdDXxk1OugIQVSeBZq
+ rWHF7eYcufQtH4rtS7mHG2RuJJDd0Kjl+B7E6WmhKeGtdcpHwNTZc+Wvh37MyvdAg2XfYFJLWPP
+ B/N5ofB2dMndTh9s3f3FuHZtQ/i/8i523aDWkDPKsT910Xc5QThMses3GAalYPjif0xtlmfkmaI
+ KUl3FdjHiMA0PchYgdr6e0rZLfZdWs2anxhut6VAH5MNruVPPxvDYTg/eqnB1G5pYbCQuYzvZS2
+ 3dFLRN2YMBiz/hM17+P2uE6VCE+2U76ksfyOOTzxgxcK3xoTnTcCh831KYU2qNptNG7goifUmzX
+ wbKc3GDwzszxYqtef4uRogD37D6cxnipthwixlylbyB+Co8qw8663WPDj1r0bozbQoqxotruS1I
+ yN2/5u/1jktef5brLkbmqVqfE2cxAmrGNOYZ6R32U3ZRIusQ/YOO1qNV9iu8FQ6kfXEIOOlV3kS
+ fX2ixHNs8L+WsjA==
 X-Developer-Key: i=marcandre.lureau@redhat.com; a=openpgp;
  fpr=87A9BD933F87C606D276F62DDAE8E10975969CE5
 X-Scanned-By: MIMEDefang 3.0 on 10.30.177.12
-X-Mimecast-MFC-PROC-ID: VFCImA902FwwuaSJ77oYNL02rFWT8S51-T7P-FyS_x0_1789144724
+X-Mimecast-MFC-PROC-ID: UvVNGCRe2xUpBDDyKNmliGXurRaE6ujU1izmat4qGV0_1789144841
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
 Received-SPF: pass client-ip=170.10.129.124;
  envelope-from=marcandre.lureau@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: 12
-X-Spam_score: 1.2
-X-Spam_bar: +
-X-Spam_report: (1.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=0.001, RCVD_IN_SBL_CSS=3.335,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=no autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=0.001, SPF_HELO_PASS=-0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -112,72 +129,266 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Convert the acpi OnOffAuto property from manual visitor-based
-callbacks to property_add_qapi_enum().
+Mechanical conversion of PropertyInfo definitions in device-specific
+files, replacing .type string with .qapi_type pointer to the
+corresponding QAPITypeInfo. Except "display_mode" for apple-gfx, which
+is a string of a specific format.
 
 Signed-off-by: Marc-André Lureau <marcandre.lureau@redhat.com>
 ---
- hw/arm/virt.c | 27 ++++++++++++---------------
- 1 file changed, 12 insertions(+), 15 deletions(-)
+ hw/block/xen-block.c       | 3 ++-
+ hw/display/apple-gfx.m     | 3 ++-
+ hw/misc/xlnx-versal-trng.c | 3 ++-
+ hw/nvme/nguid.c            | 3 ++-
+ hw/nvram/xlnx-bbram.c      | 3 ++-
+ hw/nvram/xlnx-efuse.c      | 3 ++-
+ hw/pci/pci.c               | 3 ++-
+ hw/s390x/ccw-device.c      | 3 ++-
+ hw/s390x/css.c             | 5 +++--
+ hw/s390x/s390-pci-bus.c    | 3 ++-
+ hw/vfio/pci-quirks.c       | 3 ++-
+ 11 files changed, 23 insertions(+), 12 deletions(-)
 
-diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-index 0871a35e11f7..872920b6482b 100644
---- a/hw/arm/virt.c
-+++ b/hw/arm/virt.c
-@@ -73,7 +73,7 @@
- #include "whpx_arm.h"
- #include "hw/firmware/smbios.h"
+diff --git a/hw/block/xen-block.c b/hw/block/xen-block.c
+index 474c12fe4ac8..d9721c565c5f 100644
+--- a/hw/block/xen-block.c
++++ b/hw/block/xen-block.c
+@@ -29,6 +29,7 @@
+ #include "dataplane/xen-block.h"
+ #include "hw/xen/interface/io/xs_wire.h"
+ #include "trace.h"
++#include "qapi/qapi-builtin-type-infos.h"
+ 
+ #define XVDA_MAJOR 202
+ #define XVDQ_MAJOR (1 << 20)
+@@ -663,7 +664,7 @@ invalid:
+  * https://xenbits.xen.org/docs/unstable/man/xen-vbd-interface.7.html
+  */
+ static const PropertyInfo xen_block_prop_vdev = {
+-    .type  = "str",
++    .qapi_type = &str_type_info,
+     .description = "Virtual Disk specifier (d*p*/xvd*/hd*/sd*)",
+     .get = xen_block_get_vdev,
+     .set = xen_block_set_vdev,
+diff --git a/hw/display/apple-gfx.m b/hw/display/apple-gfx.m
+index be0061b9db25..77c420b30006 100644
+--- a/hw/display/apple-gfx.m
++++ b/hw/display/apple-gfx.m
+@@ -15,6 +15,7 @@
+ #include "qemu/lockable.h"
+ #include "qemu/cutils.h"
+ #include "qemu/log.h"
++#include "qapi/qapi-builtin-type-infos.h"
  #include "qapi/visitor.h"
--#include "qapi/qapi-visit-common.h"
-+#include "qapi/qapi-type-infos-common.h"
- #include "qobject/qlist.h"
- #include "standard-headers/linux/input.h"
- #include "hw/arm/smmuv3.h"
-@@ -3567,21 +3567,16 @@ bool virt_is_acpi_enabled(const VirtMachineState *vms)
-     return true;
+ #include "qapi/error.h"
+ #include "qemu/aio-wait.h"
+@@ -871,7 +872,7 @@ static void apple_gfx_set_display_mode(Object *obj, Visitor *v,
  }
  
--static void virt_get_acpi(Object *obj, Visitor *v, const char *name,
--                          void *opaque, Error **errp)
-+static int virt_get_acpi(Object *obj, Error **errp)
+ const PropertyInfo qdev_prop_apple_gfx_display_mode = {
+-    .type  = "display_mode",
++    .qapi_type = &str_type_info,
+     .description =
+         "Display mode in pixels and Hertz, as <width>x<height>@<refresh-rate> "
+         "Example: 3840x2160@60",
+diff --git a/hw/misc/xlnx-versal-trng.c b/hw/misc/xlnx-versal-trng.c
+index 0584ee089e3c..97bd3c3f8475 100644
+--- a/hw/misc/xlnx-versal-trng.c
++++ b/hw/misc/xlnx-versal-trng.c
+@@ -36,6 +36,7 @@
+ #include "qapi/visitor.h"
+ #include "migration/vmstate.h"
+ #include "hw/core/qdev-properties.h"
++#include "qapi/qapi-builtin-type-infos.h"
+ 
+ #ifndef XLNX_VERSAL_TRNG_ERR_DEBUG
+ #define XLNX_VERSAL_TRNG_ERR_DEBUG 0
+@@ -662,7 +663,7 @@ static void trng_prop_fault_event_get(Object *obj, Visitor *v,
+ }
+ 
+ static const PropertyInfo trng_prop_fault_events = {
+-    .type = "uint32",
++    .qapi_type = &uint32_type_info,
+     .description = "Set to trigger TRNG fault events",
+     .set = trng_prop_fault_event_set,
+     .get = trng_prop_fault_event_get,
+diff --git a/hw/nvme/nguid.c b/hw/nvme/nguid.c
+index 4cd6fad6ac9b..6eaf90fca88e 100644
+--- a/hw/nvme/nguid.c
++++ b/hw/nvme/nguid.c
+@@ -18,6 +18,7 @@
+ #include "qapi/visitor.h"
+ #include "qemu/ctype.h"
+ #include "nvme.h"
++#include "qapi/qapi-builtin-type-infos.h"
+ 
+ #define NGUID_SEPARATOR '-'
+ 
+@@ -179,7 +180,7 @@ static void set_nguid(Object *obj, Visitor *v, const char *name, void *opaque,
+ }
+ 
+ const PropertyInfo qdev_prop_nguid = {
+-    .type  = "str",
++    .qapi_type = &str_type_info,
+     .description =
+         "NGUID or \"" NGUID_VALUE_AUTO "\" for random value",
+     .get   = get_nguid,
+diff --git a/hw/nvram/xlnx-bbram.c b/hw/nvram/xlnx-bbram.c
+index e336874bdef4..eb032ab8b9c8 100644
+--- a/hw/nvram/xlnx-bbram.c
++++ b/hw/nvram/xlnx-bbram.c
+@@ -34,6 +34,7 @@
+ #include "hw/core/qdev-properties.h"
+ #include "hw/core/qdev-properties-system.h"
+ #include "hw/nvram/xlnx-efuse.h"
++#include "qapi/qapi-builtin-type-infos.h"
+ 
+ #ifndef XLNX_BBRAM_ERR_DEBUG
+ #define XLNX_BBRAM_ERR_DEBUG 0
+@@ -486,7 +487,7 @@ static void bbram_prop_release_drive(Object *obj, const char *name,
+ }
+ 
+ static const PropertyInfo bbram_prop_drive = {
+-    .type  = "str",
++    .qapi_type = &str_type_info,
+     .description = "Node name or ID of a block device to use as BBRAM backend",
+     .realized_set_allowed = true,
+     .get = bbram_prop_get_drive,
+diff --git a/hw/nvram/xlnx-efuse.c b/hw/nvram/xlnx-efuse.c
+index 03c9fbc0d076..b1c9ee4980a0 100644
+--- a/hw/nvram/xlnx-efuse.c
++++ b/hw/nvram/xlnx-efuse.c
+@@ -34,6 +34,7 @@
+ #include "system/blockdev.h"
+ #include "hw/core/qdev-properties.h"
+ #include "hw/core/qdev-properties-system.h"
++#include "qapi/qapi-builtin-type-infos.h"
+ 
+ #define TBIT0_OFFSET     28
+ #define TBIT1_OFFSET     29
+@@ -251,7 +252,7 @@ static void efuse_prop_release_drive(Object *obj, const char *name,
+ }
+ 
+ static const PropertyInfo efuse_prop_drive = {
+-    .type  = "str",
++    .qapi_type = &str_type_info,
+     .description = "Node name or ID of a block device to use as eFUSE backend",
+     .realized_set_allowed = true,
+     .get = efuse_prop_get_drive,
+diff --git a/hw/pci/pci.c b/hw/pci/pci.c
+index af6e1d440c37..89a36221bc43 100644
+--- a/hw/pci/pci.c
++++ b/hw/pci/pci.c
+@@ -53,6 +53,7 @@
+ #include "qapi/error.h"
+ #include "qemu/cutils.h"
+ #include "pci-internal.h"
++#include "qapi/qapi-builtin-type-infos.h"
+ 
+ #include "hw/xen/xen.h"
+ #include "hw/i386/kvm/xen_evtchn.h"
+@@ -80,7 +81,7 @@ static void prop_pci_busnr_get(Object *obj, Visitor *v, const char *name,
+ }
+ 
+ static const PropertyInfo prop_pci_busnr = {
+-    .type = "uint8",
++    .qapi_type = &uint8_type_info,
+     .get = prop_pci_busnr_get,
+ };
+ 
+diff --git a/hw/s390x/ccw-device.c b/hw/s390x/ccw-device.c
+index 25c427327957..fd21a4346522 100644
+--- a/hw/s390x/ccw-device.c
++++ b/hw/s390x/ccw-device.c
+@@ -17,6 +17,7 @@
+ #include "qapi/visitor.h"
+ #include "qemu/ctype.h"
+ #include "qapi/error.h"
++#include "qapi/qapi-builtin-type-infos.h"
+ 
+ static void ccw_device_refill_ids(CcwDevice *dev)
  {
-     VirtMachineState *vms = VIRT_MACHINE(obj);
--    OnOffAuto acpi = vms->acpi;
--
--    visit_type_OnOffAuto(v, name, &acpi, errp);
-+    return vms->acpi;
+@@ -74,7 +75,7 @@ static void ccw_device_set_loadparm(Object *obj, Visitor *v,
  }
  
--static void virt_set_acpi(Object *obj, Visitor *v, const char *name,
--                          void *opaque, Error **errp)
-+static void virt_set_acpi(Object *obj, int value, Error **errp)
+ const PropertyInfo ccw_loadparm = {
+-    .type  = "str",
++    .qapi_type = &str_type_info,
+     .description = "Up to 8 chars in set of [A-Za-z0-9. ] to select"
+             " a guest kernel",
+     .get = ccw_device_get_loadparm,
+diff --git a/hw/s390x/css.c b/hw/s390x/css.c
+index 76dbca3bb961..60cba93e7eec 100644
+--- a/hw/s390x/css.c
++++ b/hw/s390x/css.c
+@@ -24,6 +24,7 @@
+ #include "hw/s390x/s390-virtio-ccw.h"
+ #include "hw/s390x/s390-ccw.h"
+ #include "exec/cpu-common.h"
++#include "qapi/qapi-builtin-type-infos.h"
+ 
+ typedef struct CrwContainer {
+     CRW crw;
+@@ -2518,7 +2519,7 @@ out:
+ }
+ 
+ const PropertyInfo css_devid_propinfo = {
+-    .type = "str",
++    .qapi_type = &str_type_info,
+     .description = "Identifier of an I/O device in the channel "
+                    "subsystem, example: fe.1.23ab",
+     .get = get_css_devid,
+@@ -2526,7 +2527,7 @@ const PropertyInfo css_devid_propinfo = {
+ };
+ 
+ const PropertyInfo css_devid_ro_propinfo = {
+-    .type = "str",
++    .qapi_type = &str_type_info,
+     .description = "Read-only identifier of an I/O device in the channel "
+                    "subsystem, example: fe.1.23ab",
+     .get = get_css_devid,
+diff --git a/hw/s390x/s390-pci-bus.c b/hw/s390x/s390-pci-bus.c
+index eff980fdfe92..f77632810b76 100644
+--- a/hw/s390x/s390-pci-bus.c
++++ b/hw/s390x/s390-pci-bus.c
+@@ -33,6 +33,7 @@
+ #include "system/runstate.h"
+ 
+ #include "trace.h"
++#include "qapi/qapi-builtin-type-infos.h"
+ 
+ S390pciState *s390_get_phb(void)
  {
-     VirtMachineState *vms = VIRT_MACHINE(obj);
--
--    visit_type_OnOffAuto(v, name, &vms->acpi, errp);
-+    vms->acpi = value;
+@@ -1541,7 +1542,7 @@ static void s390_pci_set_fid(Object *obj, Visitor *v, const char *name,
  }
  
- static bool virt_get_ras(Object *obj, Error **errp)
-@@ -4208,11 +4203,13 @@ static void virt_machine_class_init(ObjectClass *oc, const void *data)
-     mc->default_ram_id = "mach-virt.ram";
-     mc->default_nic = "virtio-net-pci";
+ static const PropertyInfo s390_pci_fid_propinfo = {
+-    .type = "uint32",
++    .qapi_type = &uint32_type_info,
+     .description = "zpci_fid",
+     .get = s390_pci_get_fid,
+     .set = s390_pci_set_fid,
+diff --git a/hw/vfio/pci-quirks.c b/hw/vfio/pci-quirks.c
+index c5b4f9091d49..4a3fd374a211 100644
+--- a/hw/vfio/pci-quirks.c
++++ b/hw/vfio/pci-quirks.c
+@@ -26,6 +26,7 @@
+ #include "pci.h"
+ #include "pci-quirks.h"
+ #include "trace.h"
++#include "qapi/qapi-builtin-type-infos.h"
  
--    object_class_property_add(oc, "acpi", "OnOffAuto",
--        virt_get_acpi, virt_set_acpi,
--        NULL, NULL);
--    object_class_property_set_description(oc, "acpi",
--        "Enable ACPI");
-+    object_class_property_add_qapi_enum(oc, QAPI_ENUM_PROP(
-+        .name = "acpi",
-+        .description = "Enable ACPI",
-+        .qapi_type = &OnOffAuto_type_info,
-+        .get = virt_get_acpi,
-+        .set = virt_set_acpi,
-+    ));
-     object_class_property_add_bool(oc, "secure", virt_get_secure,
-                                    virt_set_secure);
-     object_class_property_set_description(oc, "secure",
+ /*
+  * List of device ids/vendor ids for which to disable
+@@ -1436,7 +1437,7 @@ static void set_nv_gpudirect_clique_id(Object *obj, Visitor *v,
+ }
+ 
+ const PropertyInfo qdev_prop_nv_gpudirect_clique = {
+-    .type = "uint8",
++    .qapi_type = &uint8_type_info,
+     .description = "NVIDIA GPUDirect Clique ID (0 - 15)",
+     .get = get_nv_gpudirect_clique_id,
+     .set = set_nv_gpudirect_clique_id,
 
 -- 
 2.55.0.543.g5ebe2ebe4ea8

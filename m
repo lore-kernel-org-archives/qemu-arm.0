@@ -4,63 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 18D8DC88E45
-	for <qemu-arm@archiver.kernel.org>; Fri, 11 Sep 2026 14:49:16 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1CB8FC88E45
+	for <qemu-arm@archiver.kernel.org>; Fri, 11 Sep 2026 14:51:37 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1x52UH-00044c-S4; Fri, 11 Sep 2026 10:44:21 -0400
+	id 1x52UK-0004Ce-3N; Fri, 11 Sep 2026 10:44:24 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
- id 1x52O5-0002zA-LK
- for qemu-arm@nongnu.org; Fri, 11 Sep 2026 10:37:58 -0400
+ id 1x52Nq-0002t7-7a
+ for qemu-arm@nongnu.org; Fri, 11 Sep 2026 10:37:43 -0400
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
- id 1x52O0-0008Oz-S1
- for qemu-arm@nongnu.org; Fri, 11 Sep 2026 10:37:54 -0400
+ id 1x52Ni-0008EM-QM
+ for qemu-arm@nongnu.org; Fri, 11 Sep 2026 10:37:40 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1789137471;
+ s=mimecast20190719; t=1789137447;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=SO3n0XnxHzcPurmZyEeQNszEXfuag/bmU5uMUoRgi50=;
- b=fUUZTeFFc3ux76F+w8wSAVtl4p7JXypLNtNSWBNvitIahIA/RpTUE2BeqgYYtRRh32SNXF
- WwYvnOJTLhMa623LGqDbJpw1Ll3aRgQOrBBKTNnlqQNSxgJeQjoZiBpG9R9DztUfS/rQAx
- utSP2dyp+/3BF4XThDiDbW47o3BLqzw=
-Received: from mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com
+ bh=cNbkkFHCYKpbxfWO4D+I7H8XxjKgGoTqJimeW8ycrfY=;
+ b=AqK8QwINcbJgE0kkJRSEI+gCEs/mIwjfUhLcDUEevzHRURLQpyvD6gLNSb65ZJUSLdyTVo
+ shh9BnKNbFQ8XoVbuhIopy52E0Y8lKitvgxw3PKaI8fnsp9Vb9zNWA7PhxgN2SUuNSV9TK
+ QyTDZ8HiUIVMlK41rSPx9VE1grEx8q4=
+Received: from mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com
  (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-401-GrM6ooB6MO2NkU78jUtD2w-1; Fri,
- 11 Sep 2026 10:37:49 -0400
-X-MC-Unique: GrM6ooB6MO2NkU78jUtD2w-1
-X-Mimecast-MFC-AGG-ID: GrM6ooB6MO2NkU78jUtD2w_1789137468
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-517-snL57JxmM_i6WZC-vCI9tQ-1; Fri,
+ 11 Sep 2026 10:37:26 -0400
+X-MC-Unique: snL57JxmM_i6WZC-vCI9tQ-1
+X-Mimecast-MFC-AGG-ID: snL57JxmM_i6WZC-vCI9tQ_1789137444
 Received: from mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com
  (mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.4])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id B06671964CF6; Fri, 11 Sep 2026 14:37:28 +0000 (UTC)
+ by mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 398031955DD1; Fri, 11 Sep 2026 14:37:24 +0000 (UTC)
 Received: from berrange.csb (headnet05.pony-001.prod.iad2.dc.redhat.com
  [10.2.32.117])
  by mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id CE51C3000229; Fri, 11 Sep 2026 14:37:26 +0000 (UTC)
+ id 69BE23000229; Fri, 11 Sep 2026 14:37:22 +0000 (UTC)
 From: =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>
 To: qemu-devel@nongnu.org
 Cc: xen-devel@lists.xenproject.org, qemu-riscv@nongnu.org, qemu-ppc@nongnu.org,
  qemu-block@nongnu.org, qemu-s390x@nongnu.org, qemu-arm@nongnu.org,
  =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>
-Subject: [PATCH 26/28] hw: device AMD, Intel and ARM IOMMUs as secure
-Date: Fri, 11 Sep 2026 15:36:25 +0100
-Message-ID: <20260911143627.2743803-27-berrange@redhat.com>
+Subject: [PATCH 24/28] hw/acpi: mark erst,
+ vmclock and vmgenid devices as secure
+Date: Fri, 11 Sep 2026 15:36:23 +0100
+Message-ID: <20260911143627.2743803-25-berrange@redhat.com>
 In-Reply-To: <20260911143627.2743803-1-berrange@redhat.com>
 References: <20260911143627.2743803-1-berrange@redhat.com>
 MIME-Version: 1.0
 X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.4
-X-Mimecast-MFC-PROC-ID: LfKShOntSH4S99AoqZFJ-CWCQTE4XY8Y0Qjp5y4fDaY_1789137468
+X-Mimecast-MFC-PROC-ID: esFWcFbRgkaPBZsF7nAyF1P65amvoPJ4p3QTHEbZvOE_1789137444
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
@@ -88,82 +89,52 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-These are needed in virtualization use cases to support PCI device
-assignment use cases so must provide a security boundary.
+These are all used in virtualization scenarios so must be
+declare to provide a security boundary
 
 Signed-off-by: Daniel P. Berrangé <berrange@redhat.com>
 ---
- hw/arm/smmu-common.c  | 1 +
- hw/arm/smmuv3.c       | 2 ++
- hw/i386/amd_iommu.c   | 4 +++-
- hw/i386/intel_iommu.c | 1 +
- 4 files changed, 7 insertions(+), 1 deletion(-)
+ hw/acpi/erst.c    | 1 +
+ hw/acpi/vmclock.c | 1 +
+ hw/acpi/vmgenid.c | 1 +
+ 3 files changed, 3 insertions(+)
 
-diff --git a/hw/arm/smmu-common.c b/hw/arm/smmu-common.c
-index 8e40ba603d..bca9a32e9f 100644
---- a/hw/arm/smmu-common.c
-+++ b/hw/arm/smmu-common.c
-@@ -1040,6 +1040,7 @@ static const TypeInfo smmu_base_info = {
-     .class_size    = sizeof(SMMUBaseClass),
-     .class_init    = smmu_base_class_init,
-     .abstract      = true,
+diff --git a/hw/acpi/erst.c b/hw/acpi/erst.c
+index b6c1942e30..44560004a5 100644
+--- a/hw/acpi/erst.c
++++ b/hw/acpi/erst.c
+@@ -1044,6 +1044,7 @@ static const TypeInfo erst_type_info = {
+     .parent        = TYPE_PCI_DEVICE,
+     .class_init    = erst_class_init,
+     .instance_size = sizeof(ERSTDeviceState),
 +    .secure        = true,
- };
- 
- static void smmu_base_register_types(void)
-diff --git a/hw/arm/smmuv3.c b/hw/arm/smmuv3.c
-index ed19536a4d..2a9721b87e 100644
---- a/hw/arm/smmuv3.c
-+++ b/hw/arm/smmuv3.c
-@@ -2272,12 +2272,14 @@ static const TypeInfo smmuv3_type_info = {
-     .instance_init = smmuv3_instance_init,
-     .class_size    = sizeof(SMMUv3Class),
-     .class_init    = smmuv3_class_init,
-+    .secure        = true,
- };
- 
- static const TypeInfo smmuv3_iommu_memory_region_info = {
-     .parent = TYPE_IOMMU_MEMORY_REGION,
-     .name = TYPE_SMMUV3_IOMMU_MEMORY_REGION,
-     .class_init = smmuv3_iommu_memory_region_class_init,
-+    .secure = true,
- };
- 
- static void smmuv3_register_types(void)
-diff --git a/hw/i386/amd_iommu.c b/hw/i386/amd_iommu.c
-index 578c27ccbe..3192609ba0 100644
---- a/hw/i386/amd_iommu.c
-+++ b/hw/i386/amd_iommu.c
-@@ -2783,7 +2783,8 @@ static const TypeInfo amdvi_sysbus = {
-     .name = TYPE_AMD_IOMMU_DEVICE,
-     .parent = TYPE_X86_IOMMU_DEVICE,
-     .instance_size = sizeof(AMDVIState),
--    .class_init = amdvi_sysbus_class_init
-+    .class_init = amdvi_sysbus_class_init,
-+    .secure = true,
- };
- 
- static void amdvi_pci_class_init(ObjectClass *klass, const void *data)
-@@ -2805,6 +2806,7 @@ static const TypeInfo amdvi_pci = {
-     .parent = TYPE_PCI_DEVICE,
-     .instance_size = sizeof(AMDVIPCIState),
-     .class_init = amdvi_pci_class_init,
-+    .secure = true,
      .interfaces = (const InterfaceInfo[]) {
          { INTERFACE_CONVENTIONAL_PCI_DEVICE },
-         { },
-diff --git a/hw/i386/intel_iommu.c b/hw/i386/intel_iommu.c
-index 82c3c3b2c3..20e44590ca 100644
---- a/hw/i386/intel_iommu.c
-+++ b/hw/i386/intel_iommu.c
-@@ -5687,6 +5687,7 @@ static const TypeInfo vtd_info = {
-     .parent        = TYPE_X86_IOMMU_DEVICE,
-     .instance_size = sizeof(IntelIOMMUState),
-     .class_init    = vtd_class_init,
+         { }
+diff --git a/hw/acpi/vmclock.c b/hw/acpi/vmclock.c
+index d51cab2e20..b545354600 100644
+--- a/hw/acpi/vmclock.c
++++ b/hw/acpi/vmclock.c
+@@ -169,6 +169,7 @@ static const TypeInfo vmclock_device_info = {
+     .parent        = TYPE_DEVICE,
+     .instance_size = sizeof(VmclockState),
+     .class_init    = vmclock_device_class_init,
 +    .secure        = true,
  };
  
- static int vtd_attrs_to_index(IOMMUMemoryRegion *iommu_mr, MemTxAttrs attrs)
+ static void vmclock_register_types(void)
+diff --git a/hw/acpi/vmgenid.c b/hw/acpi/vmgenid.c
+index 27cc0128d1..67f815d8a1 100644
+--- a/hw/acpi/vmgenid.c
++++ b/hw/acpi/vmgenid.c
+@@ -236,6 +236,7 @@ static const TypeInfo vmgenid_device_info = {
+     .parent        = TYPE_DEVICE,
+     .instance_size = sizeof(VmGenIdState),
+     .class_init    = vmgenid_device_class_init,
++    .secure        = true,
+ };
+ 
+ static void vmgenid_register_types(void)
 -- 
 2.55.0
 

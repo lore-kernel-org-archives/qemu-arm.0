@@ -4,76 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 10AE2C88E50
-	for <qemu-arm@archiver.kernel.org>; Fri, 11 Sep 2026 14:52:49 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DD40BC88E58
+	for <qemu-arm@archiver.kernel.org>; Fri, 11 Sep 2026 14:55:21 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1x52UC-0003i0-Cp; Fri, 11 Sep 2026 10:44:16 -0400
+	id 1x52V7-0005fg-5T; Fri, 11 Sep 2026 10:45:16 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
- id 1x52Ns-0002uR-Mb
- for qemu-arm@nongnu.org; Fri, 11 Sep 2026 10:37:49 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ id 1x52Nm-0002sa-5r
+ for qemu-arm@nongnu.org; Fri, 11 Sep 2026 10:37:43 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
- id 1x52Nn-0008E3-3E
- for qemu-arm@nongnu.org; Fri, 11 Sep 2026 10:37:44 -0400
+ id 1x52NV-0008BY-2Z
+ for qemu-arm@nongnu.org; Fri, 11 Sep 2026 10:37:37 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1789137446;
+ s=mimecast20190719; t=1789137440;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=qMFoXRSqJagVBm5GVPbfKFycLqDC+N9k5/iDYiZvJ88=;
- b=NBSCWxGScXx/CMSNZuENXjYBHhjZFxBEqjNgkvXLrRL+z/i4cbbv08jR03ioI8KLgF0J3P
- QeWDg7WOftE1+0BWKX/PKIBdrhXg259AucbxxSOhN5G1Vy99/PZhezkA5hXx3bSTqmjrjp
- 27NV/wy3E1plhXOUQCt+skY4kvzsllA=
-Received: from mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com
+ bh=yxYKHi5v7tz+GMZ37WJGGk/4FLpJ0TR7q5S8Sx5LFw0=;
+ b=a5QGiJmA29zF3+QH9Eyei17CDCrGRKhnf2gIcnjH5RW4m8AmnImlmx9lr2Q0ddndm1Cmsl
+ IewKgn4Ex5EKEXWjkGEfxKXxfVGOqsL1M5xf0YVTnaS+qvixmnbSLCDGaXLFVaRsj1TWjq
+ yApWawm+g/2iSZRP49Fu84xYuiLgk1k=
+Received: from mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com
  (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-232-8svhV57tPAqXhzJY7uftTA-1; Fri,
- 11 Sep 2026 10:37:23 -0400
-X-MC-Unique: 8svhV57tPAqXhzJY7uftTA-1
-X-Mimecast-MFC-AGG-ID: 8svhV57tPAqXhzJY7uftTA_1789137442
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-179-i4RerftSO0aK-nu0DOj5Rw-1; Fri,
+ 11 Sep 2026 10:37:16 -0400
+X-MC-Unique: i4RerftSO0aK-nu0DOj5Rw-1
+X-Mimecast-MFC-AGG-ID: i4RerftSO0aK-nu0DOj5Rw_1789137435
 Received: from mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com
  (mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.4])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 18A691955BFC; Fri, 11 Sep 2026 14:37:22 +0000 (UTC)
+ by mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 757F7195396B; Fri, 11 Sep 2026 14:37:15 +0000 (UTC)
 Received: from berrange.csb (headnet05.pony-001.prod.iad2.dc.redhat.com
  [10.2.32.117])
  by mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id 2E31F300022B; Fri, 11 Sep 2026 14:37:20 +0000 (UTC)
+ id 69BE13000229; Fri, 11 Sep 2026 14:37:13 +0000 (UTC)
 From: =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>
 To: qemu-devel@nongnu.org
 Cc: xen-devel@lists.xenproject.org, qemu-riscv@nongnu.org, qemu-ppc@nongnu.org,
  qemu-block@nongnu.org, qemu-s390x@nongnu.org, qemu-arm@nongnu.org,
  =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>
-Subject: [PATCH 23/28] hw/uefi: mark the EFI vars service as secure
-Date: Fri, 11 Sep 2026 15:36:22 +0100
-Message-ID: <20260911143627.2743803-24-berrange@redhat.com>
+Subject: [PATCH 20/28] hw/audio: mark Intel HDA devices & codecs as secure
+Date: Fri, 11 Sep 2026 15:36:19 +0100
+Message-ID: <20260911143627.2743803-21-berrange@redhat.com>
 In-Reply-To: <20260911143627.2743803-1-berrange@redhat.com>
 References: <20260911143627.2743803-1-berrange@redhat.com>
 MIME-Version: 1.0
 X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.4
-X-Mimecast-MFC-PROC-ID: GBZcYheHHdvP5SltXccByH62-8M_MVLcanzMYk1b-Vo_1789137442
+X-Mimecast-MFC-PROC-ID: yp33sU4dwPiLk6ie3jl4E1ep7j5SBeKq65Y30nbOYWo_1789137435
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=berrange@redhat.com;
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=berrange@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: 12
 X-Spam_score: 1.2
 X-Spam_bar: +
 X-Spam_report: (1.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
- RCVD_IN_SBL_CSS=3.335, SPF_HELO_PASS=-0.001,
- SPF_PASS=-0.001 autolearn=no autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=0.001, RCVD_IN_SBL_CSS=3.335,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -89,34 +88,94 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-This is used to persist EFI variables when NVRAM is not available
-or undesirable.
+This is traditionally the primary audio backend for x86 as
+virtio-snd is a relatively new invention.
 
 Signed-off-by: Daniel P. Berrangé <berrange@redhat.com>
 ---
- hw/uefi/var-service-sysbus.c | 2 ++
- 1 file changed, 2 insertions(+)
+ hw/audio/hda-codec.c | 4 ++++
+ hw/audio/intel-hda.c | 5 +++++
+ 2 files changed, 9 insertions(+)
 
-diff --git a/hw/uefi/var-service-sysbus.c b/hw/uefi/var-service-sysbus.c
-index 97a96cae6a..6bec14733b 100644
---- a/hw/uefi/var-service-sysbus.c
-+++ b/hw/uefi/var-service-sysbus.c
-@@ -84,6 +84,7 @@ static const TypeInfo uefi_vars_sysbus_info = {
-     .instance_size = sizeof(uefi_vars_sysbus_state),
-     .instance_init = uefi_vars_sysbus_init,
-     .class_init    = uefi_vars_sysbus_class_init,
+diff --git a/hw/audio/hda-codec.c b/hw/audio/hda-codec.c
+index 173fe56bea..05bd35700f 100644
+--- a/hw/audio/hda-codec.c
++++ b/hw/audio/hda-codec.c
+@@ -858,6 +858,7 @@ static const TypeInfo hda_audio_info = {
+     .instance_size = sizeof(HDAAudioState),
+     .class_init    = hda_audio_base_class_init,
+     .abstract      = true,
 +    .secure        = true,
  };
- module_obj(TYPE_UEFI_VARS_SYSBUS);
  
-@@ -113,6 +114,7 @@ static const TypeInfo uefi_vars_x64_info = {
-     .name          = TYPE_UEFI_VARS_X64,
-     .parent        = TYPE_UEFI_VARS_SYSBUS,
-     .class_init    = uefi_vars_x64_class_init,
+ static void hda_audio_output_class_init(ObjectClass *klass, const void *data)
+@@ -873,6 +874,7 @@ static const TypeInfo hda_audio_output_info = {
+     .name          = "hda-output",
+     .parent        = TYPE_HDA_AUDIO,
+     .class_init    = hda_audio_output_class_init,
 +    .secure        = true,
  };
- module_obj(TYPE_UEFI_VARS_X64);
  
+ static void hda_audio_duplex_class_init(ObjectClass *klass, const void *data)
+@@ -888,6 +890,7 @@ static const TypeInfo hda_audio_duplex_info = {
+     .name          = "hda-duplex",
+     .parent        = TYPE_HDA_AUDIO,
+     .class_init    = hda_audio_duplex_class_init,
++    .secure        = true,
+ };
+ 
+ static void hda_audio_micro_class_init(ObjectClass *klass, const void *data)
+@@ -903,6 +906,7 @@ static const TypeInfo hda_audio_micro_info = {
+     .name          = "hda-micro",
+     .parent        = TYPE_HDA_AUDIO,
+     .class_init    = hda_audio_micro_class_init,
++    .secure        = true,
+ };
+ 
+ static void hda_audio_register_types(void)
+diff --git a/hw/audio/intel-hda.c b/hw/audio/intel-hda.c
+index 3d361a4976..34ca1e713c 100644
+--- a/hw/audio/intel-hda.c
++++ b/hw/audio/intel-hda.c
+@@ -45,6 +45,7 @@ static const TypeInfo hda_codec_bus_info = {
+     .name = TYPE_HDA_BUS,
+     .parent = TYPE_BUS,
+     .instance_size = sizeof(HDACodecBus),
++    .secure = true,
+ };
+ 
+ void hda_codec_bus_init(DeviceState *dev, HDACodecBus *bus, size_t bus_size,
+@@ -1265,6 +1266,7 @@ static const TypeInfo intel_hda_info = {
+     .instance_size = sizeof(IntelHDAState),
+     .class_init    = intel_hda_class_init,
+     .abstract      = true,
++    .secure        = true,
+     .interfaces = (const InterfaceInfo[]) {
+         { INTERFACE_CONVENTIONAL_PCI_DEVICE },
+         { },
+@@ -1275,12 +1277,14 @@ static const TypeInfo intel_hda_info_ich6 = {
+     .name          = "intel-hda",
+     .parent        = TYPE_INTEL_HDA_GENERIC,
+     .class_init    = intel_hda_class_init_ich6,
++    .secure        = true,
+ };
+ 
+ static const TypeInfo intel_hda_info_ich9 = {
+     .name          = "ich9-intel-hda",
+     .parent        = TYPE_INTEL_HDA_GENERIC,
+     .class_init    = intel_hda_class_init_ich9,
++    .secure        = true,
+ };
+ 
+ static void hda_codec_device_class_init(ObjectClass *klass, const void *data)
+@@ -1298,6 +1302,7 @@ static const TypeInfo hda_codec_device_type_info = {
+     .parent = TYPE_DEVICE,
+     .instance_size = sizeof(HDACodecDevice),
+     .abstract = true,
++    .secure = true,
+     .class_size = sizeof(HDACodecDeviceClass),
+     .class_init = hda_codec_device_class_init,
+ };
 -- 
 2.55.0
 

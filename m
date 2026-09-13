@@ -4,86 +4,93 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C7E7DC88E53
-	for <qemu-arm@archiver.kernel.org>; Sat, 12 Sep 2026 21:38:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0935BC88E53
+	for <qemu-arm@archiver.kernel.org>; Sun, 13 Sep 2026 02:44:24 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1x5VQJ-0002Sl-Df; Sat, 12 Sep 2026 17:38:11 -0400
+	id 1x5aBT-0005FA-UI; Sat, 12 Sep 2026 22:43:11 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1x5VQH-0002SN-Gr
- for qemu-arm@nongnu.org; Sat, 12 Sep 2026 17:38:09 -0400
+ id 1x5aBQ-0004kJ-Fq
+ for qemu-arm@nongnu.org; Sat, 12 Sep 2026 22:43:08 -0400
 Received: from mail-pj2-x11.google.com ([2607:f8b0:4864:39::11])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1x5VQF-0008Vu-HK
- for qemu-arm@nongnu.org; Sat, 12 Sep 2026 17:38:09 -0400
+ id 1x5aBN-00021V-OS
+ for qemu-arm@nongnu.org; Sat, 12 Sep 2026 22:43:08 -0400
 Received: by mail-pj2-x11.google.com with SMTP id
- d9443c01a7336-2d747ed6d6eso4464405ad.2
- for <qemu-arm@nongnu.org>; Sat, 12 Sep 2026 14:38:06 -0700 (PDT)
+ 98e67ed59e1d1-396ccb652d7so566869a91.0
+ for <qemu-arm@nongnu.org>; Sat, 12 Sep 2026 19:43:05 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1789249085; x=1789853885; darn=nongnu.org;
+ d=linaro.org; s=google; t=1789267384; x=1789872184; darn=nongnu.org;
  h=content-transfer-encoding:content-type:in-reply-to:content-language
  :from:references:cc:to:subject:user-agent:mime-version:date
  :message-id:from:to:cc:subject:date:message-id:reply-to:content-type;
- bh=BK5/3qjPdA3Lt901cw54PgHqkQRHvjzMQRuWzcUrPDU=;
- b=lPjd83mtGS2rKJGYLyW5xAwtgFsZN33NvcwwEyRXOS4M/xNrtUDrPasJIz1y0fF+Wi
- 9DvPfzE8uDXM5SZGXShpG7Hao+v5+ZSgZ8umCXbYdiqD9irrlzgUYsNzCKBvibhwi9yO
- pF5evwts62HYrifZ7Mq0i4Pfmh7Ibw5zBQeUsuv7H5mdxZYOqViMDTSsvTYV1+3eI5Qh
- 1vE7I6f4XhjzneJ0tQuzSTzbJ6B5n5AqzOu2vNB3I8IkyxLIhsPWDrGhtjv4VQrkHtkC
- 90PHdM8VEulMhwj1i2Ku72QgHFBRkcdEOdI48st8PLIUEStMbBFEYOsdfZA8ATl0mL0z
- JNsA==
+ bh=L0/J4rpG81dFsTAdAA7Mb59J1+MdiBpL1WMMuIA1E08=;
+ b=UTSM74CUa4dfUfvPTD1/UkaHcPJe+A7Jc9TscdYQp+hw5hdu9XiwsL+ck2JQLiArnt
+ mpQAxl38J44OBoPAPJUutF27n26+srge8mc1KZULzUVp2rfamdfGsY+fypTFJuiKiS6V
+ Pi0en/AAZXxpo7c1XnxuZ4tnCQ1delYJqZPAIi+HXxO4SQFG+jyRjxmbGRNPvxzi0TDK
+ fGqFxMa5JR4JerA3FBGs0ZGW+/9iJGgVKkVZbkV+ygPW8f8v0Nb5NlHdS3xEThI7f3Qb
+ VmaqbPdrdneeTbj+YrAMFFOAANAx97rF0Wl7IElomtTr373JNzLVDpqyC68a3FNgOTBS
+ jYxw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1789249085; x=1789853885;
+ d=1e100.net; s=20251104; t=1789267384; x=1789872184;
  h=content-transfer-encoding:content-type:in-reply-to:content-language
  :from:references:cc:to:subject:user-agent:mime-version:date
  :message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
  :message-id:reply-to:content-type;
- bh=BK5/3qjPdA3Lt901cw54PgHqkQRHvjzMQRuWzcUrPDU=;
- b=QEf0sAzrGs0cKbOTkcSBu02PN5hqmPaFUKgWdEno8c2nq7p2I1c/eN1/a+yD6GoIx9
- BZVUvm5XB66vGQXOxlaMj911rjwKi3LPV6tl6/kgOyga5+scnWTZeNVxtD9WCSvIwW94
- z5UWyHvvHCxyT9Q5ALsEnxyRZ2BloyWA7L1pJMjr9/8yxhR1wzJDYBGPsKIAwU5VuVuj
- sYXzSLjc1KHPmFg63io1T1GzhU2bOXcg2JbEr5K6T896byjK78m4WSQLcvmczSdPgydE
- 9gDEiabWNT5E8w4ybIzKCEt3OA3Ek3RnfxG3fWafo+AS2EeUsZIQMuMiYMpJytEa8TSo
- sr2w==
+ bh=L0/J4rpG81dFsTAdAA7Mb59J1+MdiBpL1WMMuIA1E08=;
+ b=HE5K647ndMADPFNOejxfGHOI5AAAYFv8hBJpY0NdMbqqGo7ohK98lUh9zKydoe9Glo
+ w9CrtlRn5rQfDQkQIErVpVK357m+17UdfEhYCdqLU0Yu8LpYCn9Uvdr2wWinn4iM/WeN
+ tnWflvR8m+p+DJw37/hg83njCPoB7SBKma9TypdJm8Qxtld/69hOD5/OHgDCakEsuS/6
+ /AjJvrefiihob0KEOyVPdPKF6uPuCt/8OWYk+IX1RBfPZYZlgmrDo6KaUJYjSjrE8g1V
+ MyvY66hdmFrpQxzDQR8mjQqaO7hVH65UUwI9VkHRKcK3ABkl2neH+qfMRLwxIml9R2zS
+ WZrw==
 X-Forwarded-Encrypted: i=1;
- AKwUvBxsZBomFV5bHQ49ADdjQ+ERuPeS5FCgBuNFOiGfv7kSnoG0J7JABSEI86qXff82PXecte0TcZIaAg==@nongnu.org
-X-Gm-Message-State: AFuF++l10IcmC+x27d4Y2WuTr2h37C0A0FXvYJSEeKOYu8HK+sYKyx6X
- /CNW6/DZ3KysSIGYpKxhjdXEhL7tqwDOSCED6IX5PMu438PNFbr19x45XoGKqUi2JPk=
-X-Gm-Gg: AYBFou0RcR9Iy0ovX/CuFMfRvvnsUFy7x/x9NVttss2iAunQuKuxElgx8UmSsnQbuDZ
- KwDn/ZiYNtlkFLCHd0fzpd37XzD76zUCXdSWA0nBRYphkY3RNJyCCFRG52VKZV+SoXj5820QMJv
- AYzoYhORgwDDwgN1NVEVhh4UOiwcnBxDf9aiHfh8jViFozQyPepmBuvRDdpXDkrxzH/F1IGYMd1
- wVC6ZGoJ5EFnvSld+qtfq/c3z40L5+MUQg+6LXCEzWm4LcTCdR95BMczWtcHVR9CIGK+cyZq/JE
- XDXKm3fXeBd/6whWNWc7g9DUcRWL3H4SSR2RwBlUVHPjgI5uDFLZtYJ3XieHLTKJA+QwudeH/p6
- zXK3ncjRD7jezaZtNcW9SQZ+Ap1PXrHVcsKCXNyXgJxJQ2tfklsvqSXnYBFW27D1vtgYTvFiXpe
- 3VxDIqhAm9cZaMkdVbDONEwnijkWuARlVpYcOuJnPOnRdJf28UD/vvN7f0+TMdIavyM24I8UkVd
- HqM9CoIQ+F4gfHZr88GUpHTK6i1jDQ2GxmdTelhnstdV1Ip7xqSGYpQuLqC5Q==
-X-Received: by 2002:a17:902:ce0c:b0:2db:479a:5127 with SMTP id
- d9443c01a7336-2dd4bd95335mr73403345ad.19.1789249085393; 
- Sat, 12 Sep 2026 14:38:05 -0700 (PDT)
+ AKwUvBxSNrwI3to0yfIfAHI7JnkcbWfQ9FuYGnIKnHEGCjOQpquyxpY8VzRcBNjuoS0CbqWd4JbaejdlvQ==@nongnu.org
+X-Gm-Message-State: AFuF++niRgSo/U677l/ByaSbch8n8QHW2CUvuHOyd5InL8G55zZpcFo0
+ LKs5lUJpaFinMoIWR3DaNggAE+Jw428G013H1bRDQ22z9aI6TjWcJiDKOAodwDzovhM=
+X-Gm-Gg: AYBFou21pziAVyRG5cN9bYUrdB74Ano6PUZiUD6oJm9p1wt5RioBPLzubCi2yT1x7TA
+ o67iCtYp8ySQClZQSlPAZYnWvF1jiDLK/xmtssSfRbXqFM+9z08HTmks8Ir77u5AzaoLH2jcBK1
+ 8oREtx9deQDwKFkksQdwwrNnLsBRt/A2pZsYk5edJtaammt1lMJwiqQ2IAMQbgsWWp38KIoeEOw
+ hOy2inBQC7MectZ0fY2CEehJJkHBgeOXRkKXt8CHEbHI+uq8wZej8OAR2wZVlsosm6mBkJXlhO+
+ wkdhSelJeyzMZuLYQONw7uZChXti1/0E+IG0Apqq3E3Xo24sncAy6p29/VmHi8KxaGcCFGZwXGT
+ ZCM9TtMUb0ZCt8TCuHVPrpEukrTZo4B3XGtwbmIoFIickQ2bKqGay3NjH+9pieQtEwsNMm22xpc
+ JvfTbgnlWt1oBXfwpPEKXQVoXjA7PVeyK/gjQXFfjBbEAXvJmwtVEF3hfHE97aAYw1CJRnE8d4J
+ PBYDZ2bAswDBjTjrN9PQPWmtO2mHIR8TS426ueYzNYX8709fQzuZ40OH+soCg==
+X-Received: by 2002:a17:90b:2242:b0:398:9beb:5c19 with SMTP id
+ 98e67ed59e1d1-39dbc6e3f15mr9150282a91.20.1789267384256; 
+ Sat, 12 Sep 2026 19:43:04 -0700 (PDT)
 Received: from ?IPV6:2603:800c:7900:ed00:bf2d:a6f5:e308:cd27?
  ([2603:800c:7900:ed00:bf2d:a6f5:e308:cd27])
  by smtp.gmail.com with ESMTPSA id
- 5a478bee46e88-33ba4e9b359sm15602125eec.14.2026.09.12.14.38.04
+ a92af1059eb24-14365b78d59sm15332612c88.8.2026.09.12.19.43.02
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Sat, 12 Sep 2026 14:38:04 -0700 (PDT)
-Message-ID: <6f208201-faa1-4ae5-a6a4-92321c2dc508@linaro.org>
-Date: Sat, 12 Sep 2026 11:38:02 -1000
+ Sat, 12 Sep 2026 19:43:03 -0700 (PDT)
+Message-ID: <8ae886e5-5841-42e1-a4b8-dc0c103ca860@linaro.org>
+Date: Sat, 12 Sep 2026 16:43:00 -1000
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 1/8] target/arm: Keep the S/NS bit in migration data
-To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
+Subject: Re: [PATCH v3 02/11] target/s390x: Restrict interrupt handlers to
+ system mode
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@oss.qualcomm.com>,
  qemu-devel@nongnu.org
-Cc: Tao Ding <dingtao0430@163.com>
-References: <20260907130223.3148989-1-peter.maydell@linaro.org>
- <20260907130223.3148989-2-peter.maydell@linaro.org>
+Cc: Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
+ Peter Maydell <peter.maydell@linaro.org>, Paolo Bonzini
+ <pbonzini@redhat.com>, qemu-ppc@nongnu.org, qemu-s390x@nongnu.org,
+ Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>, qemu-riscv@nongnu.org,
+ qemu-arm@nongnu.org, Cornelia Huck <cohuck@redhat.com>,
+ Eric Farman <farman@linux.ibm.com>, Matthew Rosato <mjrosato@linux.ibm.com>,
+ Ilya Leoshkevich <iii@linux.ibm.com>, David Hildenbrand <david@kernel.org>
+References: <20260902152044.31291-1-philmd@oss.qualcomm.com>
+ <20260902152044.31291-3-philmd@oss.qualcomm.com>
 From: Richard Henderson <richard.henderson@linaro.org>
 Content-Language: en-US
-In-Reply-To: <20260907130223.3148989-2-peter.maydell@linaro.org>
+In-Reply-To: <20260902152044.31291-3-philmd@oss.qualcomm.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 8bit
 Received-SPF: pass client-ip=2607:f8b0:4864:39::11;
  envelope-from=richard.henderson@linaro.org; helo=mail-pj2-x11.google.com
 X-Spam_score_int: -20
@@ -91,7 +98,7 @@ X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -107,66 +114,16 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On 9/7/26 03:02, Peter Maydell wrote:
-> For Arm, the format we use on the wire for migration of sysregs
-> (cpregs on AArch32) is a set of arrays, where cpreg_indexes[] holds
-> the register IDs and cpreg_values[] holds the corresponding values.
-> The ID format we use is KVM's ID format, which is 64 bits.  This is
-> not quite the same as the 32-bit ID format QEMU uses internally for
-> things like the coprocessor register hashtable keys, and so we have
-> conversion functions kvm_to_cpreg_id() and cpreg_to_kvm_id() to swap
-> between them.
+On 9/2/26 05:20, Philippe Mathieu-Daudé wrote:
+> Move s390_cpu_do_interrupt() and s390_cpu_exec_interrupt()
+> declarations from system/user shared header to system-mode-only
+> section, removing the unused user-mode stub.
 > 
-> This conversion has never handled AArch32 Secure coprocessor
-> registers correctly: the KVM ID format has no way to indicate a
-> Secure register, because KVM VMs on AArch32 were always NonSecure.
-> The current code doesn't touch the CP_REG_AA32_NS_MASK bit when
-> converting from the 32-bit ID format to a KVM ID, and it forces the
-> NS bit to 1 when converting from a KVM ID to a cpreg.  The effect of
-> this on migration is that the indexes in cpreg_indexes[] have NS = 0
-> for the Secure banked registers and NS = 1 for the NS banked
-> registers, but when we read and write the values into the CPUState by
-> finding the register using kvm_to_cpreg_id(cpreg_indexes[i]) we
-> always find the NS register, and so the S register values aren't
-> actually migrated.
-> 
-> This went unnoticed most of the time because a typical Linux guest is
-> running only in NS and doesn't really care about the S register
-> state, but it breaks migration of a guest which is running in S, such
-> as Linux on the imx boards.
-> 
-> This would be more awkward to fix if KVM still supported AArch32
-> hosts, but luckily that was dropped some years ago, and AArch32
-> guests on an AArch64 host expose the sysregs as CP_REG_ARM64, not
-> CP_REG_ARM32.  So the only place where we use a CP_REG_ARM32 KVM
-> register ID is for TCG migrations.  We can therefore (continue to)
-> steal a bit in the KVM format for the NS bit, with the semantics
-> we've given it on the wire in the past.  We just need to let
-> kvm_to_cpreg_id() pass it through rather than forcing it to 1.
-> 
-> To retain compatibility with migration from older QEMU versions
-> without this fix, we need to add a subsection to the migration data
-> that tells the destination that it can trust the values for Secure
-> banked registers.  For incoming migrations, if we don't see this then
-> we ignore all the values for Secure banked registers, giving the same
-> behaviour as before.  This means we continue to work for migrations
-> where the Secure world exists but the guest is basically not using
-> it, such as a direct kernel boot on boards which don't set
-> arm_boot_info::secure_boot to true; this includes the cubieboard,
-> bananapi and orangepi.
-> 
-> Attempting migration from a new QEMU to an older QEMU version will
-> now fail cleanly (because the destination doesn't recognize the new
-> subsection) rather than silently corrupting the Secure banked
-> registers.
-> 
-> Resolves:https://gitlab.com/qemu-project/qemu/-/work_items/467
-> Signed-off-by: Peter Maydell<peter.maydell@linaro.org>
+> Signed-off-by: Philippe Mathieu-Daudé<philmd@oss.qualcomm.com>
 > ---
->   target/arm/cpregs.h  | 21 ++++++++----
->   target/arm/cpu.h     |  6 ++++
->   target/arm/machine.c | 80 ++++++++++++++++++++++++++++++++++++++++++++
->   3 files changed, 100 insertions(+), 7 deletions(-)
+>   target/s390x/s390x-internal.h  | 5 ++---
+>   target/s390x/tcg/excp_helper.c | 5 -----
+>   2 files changed, 2 insertions(+), 8 deletions(-)
 
 Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 

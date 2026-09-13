@@ -4,50 +4,49 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CCB74C88E5C
-	for <qemu-arm@archiver.kernel.org>; Sun, 13 Sep 2026 18:32:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8D6FDC88E5C
+	for <qemu-arm@archiver.kernel.org>; Sun, 13 Sep 2026 18:48:33 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1x5ozn-0003QO-UX; Sun, 13 Sep 2026 14:32:08 -0400
+	id 1x5pFU-0005wi-4o; Sun, 13 Sep 2026 14:48:20 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <gilles.grimaud@univ-lille.fr>)
- id 1x5ozl-0003Q2-Kr; Sun, 13 Sep 2026 14:32:05 -0400
+ id 1x5pFP-0005wP-28; Sun, 13 Sep 2026 14:48:16 -0400
 Received: from smtp-out-2.univ-lille.fr ([194.254.129.106])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <gilles.grimaud@univ-lille.fr>)
- id 1x5ozi-0005MH-P9; Sun, 13 Sep 2026 14:32:04 -0400
-Received: from smtp01.univ-lille.fr (smtp01.univ-lille.fr [194.254.129.95])
- by smtp-out-2.univ-lille.fr (Postfix) with ESMTPS id 4hjcM223NWz7vcn;
- Sun, 13 Sep 2026 20:31:58 +0200 (CEST)
+ id 1x5pFN-00080r-6U; Sun, 13 Sep 2026 14:48:14 -0400
+Received: from smtp02.univ-lille.fr (smtp02.univ-lille.fr [194.254.129.96])
+ by smtp-out-2.univ-lille.fr (Postfix) with ESMTPS id 4hjcjk2Gxvz7y0L;
+ Sun, 13 Sep 2026 20:48:10 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=univ-lille.fr;
- s=dkim; t=1789324318;
- bh=Q22PWF5bua24RDjHjF+oC45tvT+ULlUTVHBuLQdpqvo=;
+ s=dkim; t=1789325290;
+ bh=TcYZXXMb5SilzCQ1pInkeuuKZ1Kb+f6Cdp+aPMJ5rWI=;
  h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=eLxCAUPaONWtSBa81bFw3BXr9uw/4P0NdNYo9uPZ+uBeQgi4w0Ny/ws/kqiEEFeBe
- sz1pLw5ntogs9AjG4eH9xjgGA7Sc4Rcki1NMNm5arv2GahBw9XGmpg3KPBsZdSakv7
- qrbGJtBXZY9PXZ5b3GMEysUr4qD8M4ohG/xIBR3YgwKIlNayfKDDuC7k17PScLkrma
- xZ498VwyPurMerkAfA5W455H5/D09jIyBmoE3Yf8fJlLgLHys5jGtE/0kpdBnK5VFP
- jHPw/e3F+vMgYnRIzVJvSYmSDpLlDb27x9UluPaPg5elhpHVb0x/0iJ5SmJo/zUvGW
- tHitzp8VUh6wQ==
+ b=Ie/pxgX993p5gbYNKB8xwqcPnqBxhjsNUNJndK5+yehz7nQdbMtOETrOn5EssnLE5
+ qWgoYz26i5+y3oZptOyK5ZWsNh5sJCgyqBM/ISmb9L9FCLoc24uoeNfQQywoFrcTP9
+ uQCr8HesE0p2HcbCuJBPt3tZXH/R21Nbp1Gd6KAgssApN97TE1Z5bp+u0yZ5K7LzRB
+ X6lHD+zQMtDH52YQ42cuxPSv9aexTkha0ZASyfJewBQiKpwtYPhWiR2jiHr16yNYMx
+ psQjxhx6v1TaZnD/hzOMUq10BOf7T9KRbV9Q4G/Z2/Kg4G2bl8PXJtsbQqadHaAPaK
+ 3JZLjstIwRWkg==
 Received: from mac.home (lfbn-lil-1-243-101.w90-45.abo.wanadoo.fr
  [90.45.87.101]) (Authenticated sender: gilles.grimaud)
- by smtp01.univ-lille.fr (Postfix) with ESMTPSA id 4hjcM20Lfdz80CN;
- Sun, 13 Sep 2026 20:31:58 +0200 (CEST)
+ by smtp02.univ-lille.fr (Postfix) with ESMTPSA id 4hjcjk0Tkdz6tBM;
+ Sun, 13 Sep 2026 20:48:10 +0200 (CEST)
 From: Gilles Grimaud <gilles.grimaud@univ-lille.fr>
-To: peter.maydell@linaro.org
-Cc: qemu-devel@nongnu.org,
-	qemu-arm@nongnu.org,
-	alex.bennee@linaro.org
-Subject: Re: [PATCH v3 02/36] target/arm: allow Armv6-M to set CONTROL.nPRIV
-Date: Sun, 13 Sep 2026 20:31:57 +0200
-Message-ID: <20260913183157.8294-1-gilles.grimaud@univ-lille.fr>
+To: Peter Maydell <peter.maydell@linaro.org>
+Cc: Gilles Grimaud <gilles.grimaud@univ-lille.fr>, qemu-devel@nongnu.org,
+ qemu-arm@nongnu.org, Alex Bennee <alex.bennee@linaro.org>
+Subject: Re: [PATCH v3 03/36] target/arm: support Cortex-M0+ MPU
+Date: Sun, 13 Sep 2026 20:48:09 +0200
+Message-ID: <20260913184809.11542-1-gilles.grimaud@univ-lille.fr>
 X-Mailer: git-send-email 2.55.0
-In-Reply-To: <CAFEAcA8OYNNDn7tV8gzoVcKnpNc5MZZ1u0AmbbNpRfuzdoqfKg@mail.gmail.com>
+In-Reply-To: <CAFEAcA_O=k4=9Y1tnmuv0_Bfn8rfAzZ1gdR3br80=obYgObuFg@mail.gmail.com>
 References: <20260906194438.93046-1-gilles.grimaud@univ-lille.fr>
- <20260906194438.93046-3-gilles.grimaud@univ-lille.fr>
- <CAFEAcA8OYNNDn7tV8gzoVcKnpNc5MZZ1u0AmbbNpRfuzdoqfKg@mail.gmail.com>
+ <20260906194438.93046-4-gilles.grimaud@univ-lille.fr>
+ <CAFEAcA_O=k4=9Y1tnmuv0_Bfn8rfAzZ1gdR3br80=obYgObuFg@mail.gmail.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 Received-SPF: pass client-ip=194.254.129.106;
@@ -76,18 +75,21 @@ Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
 Hi Peter,
 
-Thanks, you are right. The v3 change incorrectly treated nPRIV as uniform
-across all M-profile CPUs.
+Thanks, that split makes sense.
 
-For v4 I will add a dedicated ARM_FEATURE bit for the optional
-Unprivileged/Privileged Extension. Cortex-M0 will leave it clear, while the
-Cortex-M0+ configuration used by the RP2040 will enable it. Writes to nPRIV
-will then be permitted when either the Main Extension or this new feature is
-present.
+For v4 I will replace this patch with four focused changes:
 
-I will also adjust the tests so that the microbit Cortex-M0 case verifies
-that nPRIV remains clear, while the RP2040 Cortex-M0+ case verifies the
-privilege transitions.
+* gate the RBAR and RASR alias registers on ARM_FEATURE_M_MAIN, using
+  the case layout you suggested so this also covers v8-M Baseline;
+* make the TEX bits RES0 for v6-M;
+* fix the minimum PMSAv7 region size validation for all affected
+  profiles: v7-R, v6-M and v7-M; and
+* enable the existing PMSAv7 state, property, reset, migration and
+  translation paths for non-v8 M-profile CPUs.
+
+The dedicated PMSAv8 path will remain selected first. I will retain the
+other condition changes that you confirmed are correct and add focused
+tests for the register layout and region size behavior.
 
 Thanks,
 Gilles

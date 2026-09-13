@@ -4,43 +4,42 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9CE29C88E5C
-	for <qemu-arm@archiver.kernel.org>; Sun, 13 Sep 2026 17:25:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 64BC2C88E5C
+	for <qemu-arm@archiver.kernel.org>; Sun, 13 Sep 2026 17:25:51 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1x5nwV-0003GY-Q3; Sun, 13 Sep 2026 13:24:40 -0400
+	id 1x5nwV-0003GX-H9; Sun, 13 Sep 2026 13:24:40 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mani@kernel.org>)
- id 1x5nUO-00009X-Js; Sun, 13 Sep 2026 12:55:36 -0400
-Received: from sea.source.kernel.org ([2600:3c0a:e001:78e:0:1991:8:25])
+ id 1x5nUM-00009H-2Z; Sun, 13 Sep 2026 12:55:34 -0400
+Received: from tor.source.kernel.org ([172.105.4.254])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mani@kernel.org>)
- id 1x5nU3-000585-G0; Sun, 13 Sep 2026 12:55:36 -0400
+ id 1x5nU0-0005Av-LM; Sun, 13 Sep 2026 12:55:33 -0400
 Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
- by sea.source.kernel.org (Postfix) with ESMTP id BE0B443206;
- Sun, 13 Sep 2026 16:55:05 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 81F5E1F000FF;
- Sun, 13 Sep 2026 16:55:03 +0000 (UTC)
+ by tor.source.kernel.org (Postfix) with ESMTP id 647DB60E85;
+ Sun, 13 Sep 2026 16:55:11 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 034D81F000FF;
+ Sun, 13 Sep 2026 16:55:08 +0000 (UTC)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kernel.org;
- s=k20260515; t=1789318505;
- bh=5NyVIXNG3+KNNQU0msAuaxe/FwKciiptg8/fqS8RKxg=;
+ s=k20260515; t=1789318511;
+ bh=t3eABMYx10xOCPmuL2/oN9NpnfYFZjUwGHohBGog74I=;
  h=From:Date:Subject:References:In-Reply-To:To:Cc;
- b=S/9vEqYmUNqhSm+kgQwB0Z348+0vvDKjsYFmeT9+kPVtLSdodklxY6HQLeKD49HP2
- mnkKP4/arGU8wgK997abA7TBcH0QZp4QfxqSuGI8z0y2kyrt4LUwFJ36hbqvmh2xgV
- BvVJAUhgAL/qJnlVJiT05K05MaiXbjFjNB83Ij3aCXnMSrpNn5ckZx0Ww59zVaHbmA
- 2KZhNJC8G9BBHXr6ieats975KPisoc6FAMZ8eEfdUJdrYvtONVLjx+MFTB6uPfxyxD
- yJYcVRVRvkuCP+g4C3jAmfvS39LDaBgj8ZN3lbAZ8jJqtkR8z9vewDb3rDto5/Z85z
- hhPF+mbkdeOBQ==
+ b=eizgEX5g+LzHDzxDI0ZYEurk8CmMC5Xc/oZdKCk8us7oZqvu5Lb1dlqkiIUa9gudg
+ em8avjIi6H7cNCemJR19aQoX1WEw4wS/ZDEco9Rp5l26WdJrKJnG4Hi2/W6skdNoLC
+ X9P0+Txz5q2OyKMpwNA1Ny0n++z4YVtEfPObKHUjxfNFW8Bmaqfhg8q0i6CquICgt2
+ wV/8zQEyx2/fZixGnICgKXeIT2NZ1PcOoU61m+oVx/DEyqSXOqkJPv4wX+eyGTJpQy
+ k3HK4Y3pR7EmeJuEMq4xw9qhWNhsoEExDssmTTxZogNzEnsHZH27rkcXyAgYlLb7b1
+ 6E+D76EJ42y2Q==
 From: Manivannan Sadhasivam <mani@kernel.org>
-Date: Sun, 13 Sep 2026 18:54:52 +0200
-Subject: [PATCH 2/4] hw/pci: Add PCIe Endpoint Function device
- (pcie-ep-generic)
+Date: Sun, 13 Sep 2026 18:54:54 +0200
+Subject: [PATCH 4/4] hw/arm/virt: Add PCIe Endpoint Controller support
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20260913-pcie-ep-emulation-v1-2-b8e8f74a5842@kernel.org>
+Message-Id: <20260913-pcie-ep-emulation-v1-4-b8e8f74a5842@kernel.org>
 References: <20260913-pcie-ep-emulation-v1-0-b8e8f74a5842@kernel.org>
 In-Reply-To: <20260913-pcie-ep-emulation-v1-0-b8e8f74a5842@kernel.org>
 To: qemu-devel@nongnu.org
@@ -49,19 +48,19 @@ Cc: Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>,
  Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org, 
  Manivannan Sadhasivam <manivannan.sadhasivam@oss.qualcomm.com>
 X-Mailer: b4 0.15.2
-X-Developer-Signature: v=1; a=openpgp-sha256; l=14146; i=mani@kernel.org;
- h=from:subject:message-id; bh=I53d1G4GXWlUzGEeJ8C77L2YAMKyb9xnDeAutxGDkM8=;
- b=owEBbQGS/pANAwAKAVWfEeb+kc71AcsmYgBqptVg9/1zQ3mYw1fpvNLZFnBJRT9vYzcAfTECA
- mpKAsAtz4uJATMEAAEKAB0WIQRnpUMqgUjL2KRYJ5dVnxHm/pHO9QUCaqbVYAAKCRBVnxHm/pHO
- 9YjjB/9EFe/RwFnCATGfh8MMzuPXSLz/YwKNJNFsB+5cRXSQ/gq5PO9B6rVYVZyyK8tsSMQTczg
- s0TvQuAOx9WEyG6YXwUGfOYQ8ws5RMepsUVM196WWhN2+Q5axZy2piyLN5yLDtsEEiQxOPAwB6G
- JIN1zhEu7w7+eBXleOxg9ASqYt4mhv2+hQHOcHr7Y6KSAWYWBUQ/lxaGQnzodyJQYYYdv6DMxKi
- 50gHAyUqgslZBQJo9jL8LlthSV3tbCt5biBWVp/K/cEkuyKtafpJtm4bUBw/moH4YDKkwDQOt5W
- 018bC4qUiPLSGU2rRcl/gAkte+CTP+V1dZuZ6NgWmfO8+y1S
+X-Developer-Signature: v=1; a=openpgp-sha256; l=6182; i=mani@kernel.org;
+ h=from:subject:message-id; bh=4wOqO45KFOwtM58aoP89+yBny+rNvXOMQO9Jja7LR44=;
+ b=owEBbQGS/pANAwAKAVWfEeb+kc71AcsmYgBqptVhKHyh+8Nty6VEkecocuTJaI/LzjuYreeK2
+ YuMQxx0vTiJATMEAAEKAB0WIQRnpUMqgUjL2KRYJ5dVnxHm/pHO9QUCaqbVYQAKCRBVnxHm/pHO
+ 9aclB/sFfVrcq0V4YoyqGcZTA/YSLMaPX+M7FuZLmaZHNls7FA3Iod7qhENeZzqaPWi+Uz8HTsa
+ ErgNVquWZoxwMhv67NYq21QPyvbcol+JR9YZ+PxhuD/TcIU460k0y5COCiYsKgGFJtl/G3uCoUV
+ 7fZIxbqZrmRae/DAMJ+pfPjGo8Dq0QVFQkHD8UymqjYIiKgg4lxwJeT4X8097Z7V/JbyYYV8uh2
+ nmRXH87sEfo0XhW38vQHob3mhLeMhjPuySQeqhZ5sgPrGW5n+wx0UOk2LtkshUfTyFmU66kEXil
+ tzHpxU38E2E4MF2LJ0rU3kI/oqYhRBL+nQAHW0NbvNt2HHTF
 X-Developer-Key: i=mani@kernel.org; a=openpgp;
  fpr=C668AEC3C3188E4C611465E7488550E901166008
-Received-SPF: pass client-ip=2600:3c0a:e001:78e:0:1991:8:25;
- envelope-from=mani@kernel.org; helo=sea.source.kernel.org
+Received-SPF: pass client-ip=172.105.4.254; envelope-from=mani@kernel.org;
+ helo=tor.source.kernel.org
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -86,411 +85,160 @@ Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
 From: Manivannan Sadhasivam <manivannan.sadhasivam@oss.qualcomm.com>
 
-Add the PCIe Endpoint Function device driven by the pcie-ep-ctrl
-Endpoint Controller.
+Wire the pcie-ep-ctrl controller into the ARM virt machine as a dynamic
+sysbus device on the platform bus.
 
-The device is created programmatically by the controller and hotplugged
-onto a PCIe Root Port when the Link comes up. It is not instantiable
-with -device.
+  -device pcie-ep-ctrl,target-bus=ID
 
-Its PCI identity, BAR layout and interrupt capabilities all come from
-the controller, which programs them from the register writes issued by
-the pci-ep-generic Linux EPC driver.
+The platform bus assigns the MMIO windows, so the machine emits the
+device tree node (compatible "pci-ep-generic") with the resolved
+addresses. The node is also marked dma-coherent. This allows the
+Endpoint Controller driver to allocate coherent DMA memory from system
+RAM for the Endpoint Function BARs.
 
-Each enabled BAR is a memory region alias onto guest RAM at the address
-the controller was given. This way, the Endpoint Function and the host
-share the same backing memory without any copying.
+Allow the device on the platform bus with
+machine_class_allow_dynamic_sysbus_dev(). Also register a no_fdt_node
+binding in hw/core/sysbus-fdt.c so the generic platform bus code leaves
+the node to the machine.
 
-Interrupts raised by the controller are delivered to the host through
-msi_notify(), msix_notify() or a legacy INTx toggle.
+The target-bus property names the PCIe Root Port the Endpoint Function
+is hotplugged onto when the Link comes up.
+
+A single guest kernel then drives the controller through the
+pci-ep-generic EPC driver. In the same kernel, it enumerates the
+resulting Function as a PCI host. This allows running Linux EPF drivers
+such as pci-epf-test against the matching host driver without a second
+QEMU instance.
 
 Signed-off-by: Manivannan Sadhasivam <manivannan.sadhasivam@oss.qualcomm.com>
 ---
- MAINTAINERS                      |   2 +
- hw/pci/Kconfig                   |   4 +
- hw/pci/meson.build               |   1 +
- hw/pci/pcie-ep-generic.c         | 255 +++++++++++++++++++++++++++++++++++++++
- include/hw/pci/pcie-ep-generic.h |  71 +++++++++++
- 5 files changed, 333 insertions(+)
+ hw/arm/Kconfig       |  1 +
+ hw/arm/virt.c        | 57 ++++++++++++++++++++++++++++++++++++++++++++++++++++
+ hw/core/sysbus-fdt.c |  3 +++
+ 3 files changed, 61 insertions(+)
 
-diff --git a/MAINTAINERS b/MAINTAINERS
-index e241f206bc..498569bfe1 100644
---- a/MAINTAINERS
-+++ b/MAINTAINERS
-@@ -2174,6 +2174,8 @@ PCIe Endpoint Emulation
- M: Manivannan Sadhasivam <manivannan.sadhasivam@oss.qualcomm.com>
- S: Maintained
- F: docs/system/devices/pcie-ep.rst
-+F: hw/pci/pcie-ep-generic.c
-+F: include/hw/pci/pcie-ep-generic.h
+diff --git a/hw/arm/Kconfig b/hw/arm/Kconfig
+index fb798ccbee..0c8266d403 100644
+--- a/hw/arm/Kconfig
++++ b/hw/arm/Kconfig
+@@ -36,6 +36,7 @@ config ARM_VIRT
+     select VIRTIO_MEM_SUPPORTED
+     select ACPI_CXL
+     select ACPI_HMAT
++    select PCIE_EP_CTRL
  
- ARM PCI Hotplug
- M: Gustavo Romero <gustavo.romero@linaro.org>
-diff --git a/hw/pci/Kconfig b/hw/pci/Kconfig
-index fe70902cd8..c5719ec937 100644
---- a/hw/pci/Kconfig
-+++ b/hw/pci/Kconfig
-@@ -11,6 +11,10 @@ config PCI_DEVICES
- config PCIE_DEVICES
+ config CUBIEBOARD
      bool
+diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+index b090233893..25091d2639 100644
+--- a/hw/arm/virt.c
++++ b/hw/arm/virt.c
+@@ -94,6 +94,7 @@
+ #include "hw/core/cpu.h"
+ #include "hw/cxl/cxl.h"
+ #include "hw/cxl/cxl_host.h"
++#include "hw/misc/pcie-ep-ctrl.h"
+ #include "qemu/guest-random.h"
  
-+config PCIE_EP_GENERIC
-+    bool
-+    select PCI_EXPRESS
-+
- config MSI_NONBROKEN
-     # selected by interrupt controllers that do not support MSI,
-     # or support it and have a good implementation. See commit
-diff --git a/hw/pci/meson.build b/hw/pci/meson.build
-index a6cbd89c0a..e1c1081c98 100644
---- a/hw/pci/meson.build
-+++ b/hw/pci/meson.build
-@@ -17,6 +17,7 @@ pci_ss.add(files(
- pci_ss.add(files('pcie.c', 'pcie_aer.c'))
- pci_ss.add(files('pcie_doe.c'))
- system_ss.add(when: 'CONFIG_PCI_EXPRESS', if_true: files('pcie_port.c', 'pcie_host.c'))
-+system_ss.add(when: 'CONFIG_PCIE_EP_GENERIC', if_true: files('pcie-ep-generic.c'))
- system_ss.add_all(when: 'CONFIG_PCI', if_true: pci_ss)
+ static GlobalProperty arm_virt_compat_defaults[] = {
+@@ -1569,6 +1570,57 @@ static void create_rtc(const VirtMachineState *vms)
+     g_free(nodename);
+ }
  
- stub_ss.add(files('pci-stub.c'))
-diff --git a/hw/pci/pcie-ep-generic.c b/hw/pci/pcie-ep-generic.c
-new file mode 100644
-index 0000000000..5a1929486c
---- /dev/null
-+++ b/hw/pci/pcie-ep-generic.c
-@@ -0,0 +1,255 @@
 +/*
-+ * SPDX-License-Identifier: GPL-2.0-or-later
-+ *
-+ * PCIe Endpoint Function device (pcie-ep-generic).
-+ *
-+ * Created programmatically by pcie-ep-ctrl and hotplugged onto a PCIe Root
-+ * Port when the EP driver brings the Link up. Its PCI identity, BAR layout
-+ * and interrupt capabilities come from a PCIeEPConfig handed over
-+ * before realize. Because it is realised after machine initialisation,
-+ * dev->hotplugged is true and pcie_cap_slot_plug_cb() fires the PDC interrupt
-+ * so pciehp on the RC guest enumerates it.
-+ *
-+ * Each BAR aliases normal guest RAM at the address the Endpoint Controller
-+ * programmed (the Function's dma_alloc_coherent buffer), so the RC host and
-+ * the Endpoint Function share one address space with no copying. The BAR is
-+ * a small container holding a low-priority RAM alias, which lets msix_init()
-+ * overlay its table and PBA on top for the MSI-X BAR.
++ * Emit the device tree node for a pcie-ep-ctrl instantiated on the platform
++ * bus and hand the device the absolute addresses the bus assigned to its
++ * regions. Called from the plug handler once platform_bus_link_device() has
++ * placed the MMIO regions, mirroring how the SMMUv3 device builds its own
++ * node in create_smmuv3_dev_dtb().
 + */
++static void create_pcie_ep_ctrl_dtb(VirtMachineState *vms, DeviceState *dev)
++{
++    PlatformBusDevice *pbus = PLATFORM_BUS_DEVICE(vms->platform_bus_dev);
++    SysBusDevice *sbdev = SYS_BUS_DEVICE(dev);
++    PCIeEPCtrlState *ec = PCIE_EP_CTRL(dev);
++    MachineState *ms = MACHINE(vms);
++    hwaddr pbus_base = vms->memmap[VIRT_PLATFORM_BUS].base;
++    hwaddr ctrl_base, ob_base;
++    hwaddr ctrl_size, ob_size;
++    char *nodename;
++    static const char compat[] = "pci-ep-generic";
++    static const char reg_names[] = "ctrl\0outbound";
 +
-+#include "qemu/osdep.h"
-+#include "qapi/error.h"
-+#include "qemu/log.h"
-+#include "hw/pci/pci.h"
-+#include "hw/pci/pci_device.h"
-+#include "hw/pci/pcie.h"
-+#include "hw/pci/msi.h"
-+#include "hw/pci/msix.h"
-+#include "hw/pci/pcie-ep-generic.h"
-+#include "system/address-spaces.h"
-+#include "migration/vmstate.h"
++    /* Absolute base of each region as the platform bus mapped it. */
++    ctrl_base = pbus_base + platform_bus_get_mmio_addr(pbus, sbdev, 0);
++    ob_base = pbus_base + platform_bus_get_mmio_addr(pbus, sbdev, 1);
 +
-+/* PCIe / MSI capability offsets in the Endpoint's Configuration Space. */
-+#define EP_PCIE_CAP_OFFSET  0x80
-+#define EP_MSI_CAP_OFFSET   0x60
-+
-+OBJECT_DECLARE_SIMPLE_TYPE(PCIeEPState, PCIE_EP_ENDPOINT)
-+
-+struct PCIeEPState {
-+    PCIDevice parent_obj;
-+
-+    PCIeEPConfig cfg;
++    ctrl_size = memory_region_size(sysbus_mmio_get_region(sbdev, 0));
++    ob_size = memory_region_size(sysbus_mmio_get_region(sbdev, 1));
 +
 +    /*
-+     * Each BAR is a container holding a RAM alias (and, on the MSI-X BAR, the
-+     * msix table/PBA subregions added by msix_init()).
++     * The EP guest programs outbound window addresses using these absolute CPU
++     * addresses, so the device must know where the platform bus placed the
++     * region to translate them back into window offsets.
 +     */
-+    MemoryRegion bar_mr[PCI_STD_NUM_BARS];
-+    MemoryRegion bar_alias[PCI_STD_NUM_BARS];
-+};
++    ec->ob_base = ob_base;
 +
-+void pcie_ep_endpoint_set_config(DeviceState *dev,
-+                                 const PCIeEPConfig *cfg)
-+{
-+    PCIeEPState *ep = PCIE_EP_ENDPOINT(dev);
-+
-+    ep->cfg = *cfg;
-+}
-+
-+void pcie_ep_endpoint_raise_irq(DeviceState *dev, uint32_t irq_type,
-+                                uint32_t irq_num)
-+{
-+    PCIDevice *pdev = PCI_DEVICE(dev);
-+    unsigned vector = irq_num ? irq_num - 1 : 0;
-+
-+    switch (irq_type) {
-+    case PCIE_EP_IRQ_INTX:
-+        pci_set_irq(pdev, 1);
-+        pci_set_irq(pdev, 0);
-+        break;
-+    case PCIE_EP_IRQ_MSI:
-+        if (msi_enabled(pdev)) {
-+            msi_notify(pdev, vector);
-+        }
-+        break;
-+    case PCIE_EP_IRQ_MSIX:
-+        if (msix_enabled(pdev)) {
-+            msix_notify(pdev, vector);
-+        }
-+        break;
-+    default:
-+        qemu_log_mask(LOG_GUEST_ERROR,
-+                      "pcie-ep-generic: unknown IRQ type %u\n", irq_type);
-+        break;
-+    }
-+}
-+
-+void pcie_ep_endpoint_get_msi_state(DeviceState *dev, PCIeEPMsiState *out)
-+{
-+    PCIDevice *pdev = PCI_DEVICE(dev);
-+
-+    memset(out, 0, sizeof(*out));
-+
-+    if (msi_enabled(pdev) && pdev->msi_cap) {
-+        uint16_t ctl = pci_get_word(pdev->config + pdev->msi_cap +
-+                                    PCI_MSI_FLAGS);
-+        uint8_t mme = (ctl & PCI_MSI_FLAGS_QSIZE) >> 4;
-+        MSIMessage m = msi_get_message(pdev, 0);
-+
-+        out->msi_vectors = 1u << mme;
-+        out->msi_addr_lo = (uint32_t)m.address;
-+        out->msi_addr_hi = (uint32_t)(m.address >> 32);
-+        out->msi_data = m.data;
-+    }
-+
-+    if (msix_enabled(pdev)) {
-+        out->msix_vectors = pdev->msix_entries_nr;
-+    }
-+}
-+
-+static void pcie_ep_endpoint_realize(PCIDevice *pdev, Error **errp)
-+{
-+    PCIeEPState *ep = PCIE_EP_ENDPOINT(pdev);
-+    PCIeEPConfig *cfg = &ep->cfg;
-+    int i;
-+
-+    /* Apply PCI identity from the staged Header. */
-+    pci_config_set_vendor_id(pdev->config, cfg->vendor_id);
-+    pci_config_set_device_id(pdev->config, cfg->device_id);
-+    pci_config_set_revision(pdev->config, cfg->rev_id);
-+    pci_config_set_class(pdev->config, (uint16_t)(cfg->base_class << 8) |
-+                                                   cfg->sub_class);
-+    pci_config_set_prog_interface(pdev->config, cfg->progif);
-+    pci_set_word(pdev->config + PCI_SUBSYSTEM_VENDOR_ID, cfg->subsys_vendor_id);
-+    pci_set_word(pdev->config + PCI_SUBSYSTEM_ID, cfg->subsys_id);
-+    pci_config_set_interrupt_pin(pdev->config,
-+                                 cfg->interrupt_pin ? cfg->interrupt_pin : 1);
-+
-+    if (pcie_endpoint_cap_init(pdev, EP_PCIE_CAP_OFFSET) < 0) {
-+        error_setg(errp, "pcie-ep-generic: failed to init PCIe capability");
-+        return;
-+    }
-+
-+    if (cfg->num_msi > 0) {
-+        if (msi_init(pdev, EP_MSI_CAP_OFFSET, cfg->num_msi,
-+                     true, false, errp) < 0) {
-+            goto err_pcie_cap;
-+        }
-+    }
-+
++    nodename = g_strdup_printf("/pcie-ep@%" PRIx64, ctrl_base);
++    qemu_fdt_add_subnode(ms->fdt, nodename);
++    qemu_fdt_setprop(ms->fdt, nodename, "compatible",
++                     compat, sizeof(compat));
++    qemu_fdt_setprop_sized_cells(ms->fdt, nodename, "reg",
++                                 2, ctrl_base, 2, ctrl_size,
++                                 2, ob_base, 2, ob_size);
++    qemu_fdt_setprop(ms->fdt, nodename, "reg-names",
++                     reg_names, sizeof(reg_names));
 +    /*
-+     * BARs alias guest RAM at the controller-programmed address. Use a
-+     * container with the RAM alias at low priority so msix_init() can overlay
-+     * the MSI-X table and PBA on the designated BAR.
++     * Mark the controller DMA-coherent so the EPC driver's dma_alloc_coherent
++     * returns cacheable coherent RAM for the Endpoint BAR backing buffers.
 +     */
-+    for (i = 0; i < PCI_STD_NUM_BARS; i++) {
-+        char name[32];
-+
-+        if (!cfg->bar[i].enabled || cfg->bar[i].size == 0) {
-+            continue;
-+        }
-+
-+        snprintf(name, sizeof(name), "pcie-ep-bar%d", i);
-+        memory_region_init(&ep->bar_mr[i], OBJECT(ep), name, cfg->bar[i].size);
-+
-+        snprintf(name, sizeof(name), "pcie-ep-bar%d-ram", i);
-+        memory_region_init_alias(&ep->bar_alias[i], OBJECT(ep), name,
-+                                 get_system_memory(), cfg->bar[i].phys,
-+                                 cfg->bar[i].size);
-+        memory_region_add_subregion_overlap(&ep->bar_mr[i], 0,
-+                                            &ep->bar_alias[i], -1);
-+
-+        pci_register_bar(pdev, i,
-+                         cfg->bar[i].flags & (PCI_BASE_ADDRESS_MEM_TYPE_64  |
-+                                              PCI_BASE_ADDRESS_MEM_PREFETCH |
-+                                              PCI_BASE_ADDRESS_SPACE),
-+                         &ep->bar_mr[i]);
-+    }
-+
-+    /* MSI-X Capability, table lives in the designated BAR */
-+    if (cfg->num_msix > 0 && cfg->msix_bar < PCI_STD_NUM_BARS
-+        && cfg->bar[cfg->msix_bar].enabled) {
-+        uint32_t pba_offset = cfg->msix_offset +
-+                              cfg->num_msix * PCI_MSIX_ENTRY_SIZE;
-+        if (msix_init(pdev, cfg->num_msix,
-+                      &ep->bar_mr[cfg->msix_bar], cfg->msix_bar,
-+                      cfg->msix_offset,
-+                      &ep->bar_mr[cfg->msix_bar], cfg->msix_bar,
-+                      pba_offset, 0, errp) < 0) {
-+            goto err_msi;
-+        }
-+    }
-+
-+    return;
-+
-+    /*
-+     * QEMU does not call ->exit on realize failure, so undo the capabilities
-+     * here. BAR regions are owned by this object and freed on finalise.
-+     */
-+err_msi:
-+    msi_uninit(pdev);
-+err_pcie_cap:
-+    pcie_cap_exit(pdev);
++    qemu_fdt_setprop(ms->fdt, nodename, "dma-coherent", NULL, 0);
++    g_free(nodename);
 +}
 +
-+static void pcie_ep_endpoint_exit(PCIDevice *pdev)
-+{
-+    PCIeEPState *ep = PCIE_EP_ENDPOINT(pdev);
-+    PCIeEPConfig *cfg = &ep->cfg;
+ static DeviceState *gpio_key_dev;
+ static void virt_powerdown_req(Notifier *n, void *opaque)
+ {
+@@ -3843,6 +3895,10 @@ static void virt_machine_device_plug_cb(HotplugHandler *hotplug_dev,
+         if (device_is_dynamic_sysbus(mc, dev)) {
+             platform_bus_link_device(PLATFORM_BUS_DEVICE(vms->platform_bus_dev),
+                                      SYS_BUS_DEVICE(dev));
 +
-+    if (cfg->num_msix > 0 && cfg->msix_bar < PCI_STD_NUM_BARS
-+        && cfg->bar[cfg->msix_bar].enabled) {
-+        msix_uninit(pdev,
-+                    &ep->bar_mr[cfg->msix_bar],
-+                    &ep->bar_mr[cfg->msix_bar]);
-+    }
-+    msi_uninit(pdev);
-+    pcie_cap_exit(pdev);
-+}
-+
-+/*
-+ * The Endpoint is created programmatically at runtime and mirrors live EP
-+ * state, so it is not migratable.
-+ */
-+static const VMStateDescription vmstate_pcie_ep_endpoint = {
-+    .name = "pcie-ep-generic",
-+    .unmigratable = 1,
-+};
-+
-+static void pcie_ep_endpoint_class_init(ObjectClass *oc, const void *data)
-+{
-+    DeviceClass *dc = DEVICE_CLASS(oc);
-+    PCIDeviceClass *k = PCI_DEVICE_CLASS(oc);
-+
-+    k->realize = pcie_ep_endpoint_realize;
-+    k->exit = pcie_ep_endpoint_exit;
-+    /* Placeholder identity, overwritten in realize() from staged config */
-+    k->vendor_id = PCI_VENDOR_ID_REDHAT;
-+    k->device_id = 0x0001;
-+    k->class_id = PCI_CLASS_OTHERS;
-+
-+    dc->desc = "PCIe Endpoint Function (dynamically configured)";
-+    dc->vmsd = &vmstate_pcie_ep_endpoint;
-+    /*
-+     * Created programmatically by pcie-ep-ctrl at link-up, not via -device:
-+     * its PCI identity and BAR layout are only known at runtime.
-+     */
-+    dc->user_creatable = false;
-+}
-+
-+static const TypeInfo pcie_ep_endpoint_info = {
-+    .name = TYPE_PCIE_EP_ENDPOINT,
-+    .parent = TYPE_PCI_DEVICE,
-+    .instance_size = sizeof(PCIeEPState),
-+    .class_init = pcie_ep_endpoint_class_init,
-+    .interfaces = (const InterfaceInfo[]) {
-+        { INTERFACE_PCIE_DEVICE },
-+        { }
-+    },
-+};
-+
-+static void pcie_ep_generic_register_types(void)
-+{
-+    type_register_static(&pcie_ep_endpoint_info);
-+}
-+type_init(pcie_ep_generic_register_types)
-diff --git a/include/hw/pci/pcie-ep-generic.h b/include/hw/pci/pcie-ep-generic.h
-new file mode 100644
-index 0000000000..4560852080
---- /dev/null
-+++ b/include/hw/pci/pcie-ep-generic.h
-@@ -0,0 +1,71 @@
-+/*
-+ * SPDX-License-Identifier: GPL-2.0-or-later
-+ *
-+ * PCIe Endpoint Function device definitions.
-+ */
-+
-+#ifndef HW_PCI_PCIE_EP_GENERIC_H
-+#define HW_PCI_PCIE_EP_GENERIC_H
-+
-+#include "hw/pci/pci.h"
-+#include "hw/core/qdev.h"
-+
-+#define TYPE_PCIE_EP_ENDPOINT "pcie-ep-generic"
-+
-+/*
-+ * IRQ type codes written by the EP driver to the controller's IRQ_TYPE
-+ * register. They match PCI_IRQ_INTX / _MSI / _MSIX in include/linux/pci.h.
-+ */
-+#define PCIE_EP_IRQ_INTX    1
-+#define PCIE_EP_IRQ_MSI     2
-+#define PCIE_EP_IRQ_MSIX    4
-+
-+/* Per-BAR description handed to the Endpoint at creation. */
-+typedef struct PCIeEPBarConfig {
-+    bool enabled;
-+    uint64_t phys; /* guest-RAM address the BAR aliases */
-+    uint64_t size;
-+    uint32_t flags; /* PCI_BASE_ADDRESS_* flags */
-+} PCIeEPBarConfig;
-+
-+/* Full Endpoint identity and resources, populated by pcie-ep-ctrl. */
-+typedef struct PCIeEPConfig {
-+    uint16_t vendor_id;
-+    uint16_t device_id;
-+    uint16_t subsys_vendor_id;
-+    uint16_t subsys_id;
-+    uint8_t base_class;
-+    uint8_t sub_class;
-+    uint8_t progif;
-+    uint8_t rev_id;
-+    uint8_t interrupt_pin;
-+
-+    PCIeEPBarConfig bar[PCI_STD_NUM_BARS];
-+
-+    uint8_t num_msi;
-+    uint16_t num_msix;
-+    uint8_t msix_bar;
-+    uint32_t msix_offset;
-+} PCIeEPConfig;
-+
-+/* Live MSI/MSI-X negotiation state read back from the RC. */
-+typedef struct PCIeEPMsiState {
-+    uint32_t msi_vectors;    /* 0 if MSI not enabled by the RC */
-+    uint32_t msix_vectors;   /* 0 if MSI-X not enabled by the RC */
-+    uint32_t msi_addr_lo;
-+    uint32_t msi_addr_hi;
-+    uint32_t msi_data;
-+} PCIeEPMsiState;
-+
-+/* Hand staged config to a freshly created Endpoint before realize. */
-+void pcie_ep_endpoint_set_config(DeviceState *dev,
-+                                 const PCIeEPConfig *cfg);
-+
-+/* Deliver an interrupt (type = PCIE_EP_IRQ_*) from the Function to the RC. */
-+void pcie_ep_endpoint_raise_irq(DeviceState *dev, uint32_t irq_type,
-+                                uint32_t irq_num);
-+
-+/* Read the live MSI/MSI-X negotiation state for the readback registers. */
-+void pcie_ep_endpoint_get_msi_state(DeviceState *dev, PCIeEPMsiState *out);
-+
-+#endif /* HW_PCI_PCIE_EP_GENERIC_H */
++            if (object_dynamic_cast(OBJECT(dev), TYPE_PCIE_EP_CTRL)) {
++                create_pcie_ep_ctrl_dtb(vms, dev);
++            }
+         }
+     }
+ 
+@@ -4091,6 +4147,7 @@ static void virt_machine_class_init(ObjectClass *oc, const void *data)
+ #ifdef CONFIG_TPM
+     machine_class_allow_dynamic_sysbus_dev(mc, TYPE_TPM_TIS_SYSBUS);
+ #endif
++    machine_class_allow_dynamic_sysbus_dev(mc, TYPE_PCIE_EP_CTRL);
+     mc->block_default_type = IF_VIRTIO;
+     mc->no_cdrom = 1;
+     mc->pci_allow_0_address = true;
+diff --git a/hw/core/sysbus-fdt.c b/hw/core/sysbus-fdt.c
+index 89d0c46445..60586cc9b2 100644
+--- a/hw/core/sysbus-fdt.c
++++ b/hw/core/sysbus-fdt.c
+@@ -36,6 +36,7 @@
+ #include "hw/display/ramfb.h"
+ #include "hw/uefi/var-service-api.h"
+ #include "hw/arm/fdt.h"
++#include "hw/misc/pcie-ep-ctrl.h"
+ 
+ /*
+  * internal struct that contains the information to create dynamic
+@@ -140,6 +141,8 @@ static const BindingEntry bindings[] = {
+     TYPE_BINDING(TYPE_ARM_SMMUV3, no_fdt_node),
+     TYPE_BINDING(TYPE_RAMFB_DEVICE, no_fdt_node),
+     TYPE_BINDING(TYPE_UEFI_VARS_SYSBUS, add_uefi_vars_node),
++    /* Node emitted by the arm virt machine (create_pcie_ep_ctrl_dtb) */
++    TYPE_BINDING(TYPE_PCIE_EP_CTRL, no_fdt_node),
+     TYPE_BINDING("", NULL), /* last element */
+ };
+ 
 
 -- 
 2.43.0

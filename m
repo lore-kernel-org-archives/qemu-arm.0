@@ -4,46 +4,45 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7DEA4C88E72
-	for <qemu-arm@archiver.kernel.org>; Mon, 14 Sep 2026 19:27:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6A2F1C88E6F
+	for <qemu-arm@archiver.kernel.org>; Mon, 14 Sep 2026 19:28:17 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1x6CKA-0002sx-8d; Mon, 14 Sep 2026 15:26:42 -0400
+	id 1x6CLc-0003fu-Ac; Mon, 14 Sep 2026 15:28:13 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <gilles.grimaud@univ-lille.fr>)
- id 1x6CK8-0002sV-Ew; Mon, 14 Sep 2026 15:26:40 -0400
+ id 1x6CL9-0003Pg-Lq; Mon, 14 Sep 2026 15:27:45 -0400
 Received: from smtp-out-1.univ-lille.fr ([194.254.129.82])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <gilles.grimaud@univ-lille.fr>)
- id 1x6CK6-0002rm-HV; Mon, 14 Sep 2026 15:26:40 -0400
-Received: from smtp02.univ-lille.fr (smtp02.univ-lille.fr [194.254.129.96])
- by smtp-out-1.univ-lille.fr (Postfix) with ESMTPS id 4hkFWc6YvhzBqZm;
- Mon, 14 Sep 2026 21:26:36 +0200 (CEST)
+ id 1x6CL8-0002v5-2o; Mon, 14 Sep 2026 15:27:43 -0400
+Received: from smtp01.univ-lille.fr (smtp01.univ-lille.fr [194.254.129.95])
+ by smtp-out-1.univ-lille.fr (Postfix) with ESMTPS id 4hkFXn2gHzzBqZm;
+ Mon, 14 Sep 2026 21:27:37 +0200 (CEST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=univ-lille.fr;
- s=dkim; t=1789413996;
- bh=XxwgYaAYLA/mT9oSgpWMCLwsZdkMXri0oTbI+Pp7kD8=;
+ s=dkim; t=1789414057;
+ bh=w/UqNADqql0RoxyJa098KiPcHZjY4lX1ptO9zRQpReo=;
  h=From:To:Cc:Subject:Date:In-Reply-To:References:From;
- b=OG1QoWwfFUBxNGT+JRtwnAlYWzmFwyA1TUe282FsuA4sqevDKq0sI0OnHp6HOk9ff
- 0DMih01CM5ilGe5z+IXqc2VXpgzGQXqyLjCoVMNDhOsK7DtxvgRkRdzz93CsdelCDy
- 1vh6VtCW8eiMRBybcqjGw8xjoAh+YTqmLgGGsp7YQr1NNNaSHjXwv8MQOpxHKUTxnh
- MGRLc/s6631XBSs43x+mU+lMooYARFex34gVcvQVZFvJNTGK1nzPLm0yE+4+fYMNE4
- LxpeKMmng7u/gwcYC0IL7BD0eYT1susBOJWHGEI1SCjNdoQMdOQDCN1qrVZLvIGH3s
- pxjak9mSSkZuQ==
+ b=TMtyE9AYLIsSDiLPJkHseJNDf5qkcWOScOvBYqYI7EbJaIohcjR4WX1BrZszYIp5N
+ AbkFqKl/svI3MPpPrXAD1k5fZNWzsNHbHjSGGs1n+b52/xfclNrqimxtxM0NBM0/t3
+ ap4cBqRTKuoRFM4N7mqwZ5nLMPDsjTMy4q2iiEVPvFbydzd1tf1wPseuQ63VqrJyYG
+ oE7rLoqb7X7a+wq+yqAMWVW5YphrYJaPBHZgUSY2zLG56BU4TN2piMiWIcq8tb4oJP
+ extOaGMlxvn38WNNyAnex4+lR4wn4SLhC3LLgLHcpRdq40XnDH8T+HS67TRTXIjS8t
+ LOFZf+4pRh8YA==
 Received: from mac.home (lfbn-lil-1-243-101.w90-45.abo.wanadoo.fr
  [90.45.87.101]) (Authenticated sender: gilles.grimaud)
- by smtp02.univ-lille.fr (Postfix) with ESMTPSA id 4hkFWc4vf3z6skd;
- Mon, 14 Sep 2026 21:26:36 +0200 (CEST)
+ by smtp01.univ-lille.fr (Postfix) with ESMTPSA id 4hkFXn1GY0z801c;
+ Mon, 14 Sep 2026 21:27:37 +0200 (CEST)
 From: Gilles Grimaud <gilles.grimaud@univ-lille.fr>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org,
 	peter.maydell@linaro.org,
 	alex.bennee@linaro.org
-Subject: [RFC PATCH v1 3/6] target/arm: MPU - limit regs RBAR/RASR A1-A3 to
- Main Extension
-Date: Mon, 14 Sep 2026 21:23:19 +0200
-Message-ID: <20260914192323.29250-4-gilles.grimaud@univ-lille.fr>
+Subject: [RFC PATCH v1 4/6] target/arm: MPU_RASR: mask TEX bits for Armv6-M
+Date: Mon, 14 Sep 2026 21:23:20 +0200
+Message-ID: <20260914192323.29250-5-gilles.grimaud@univ-lille.fr>
 X-Mailer: git-send-email 2.55.0
 In-Reply-To: <20260914192323.29250-1-gilles.grimaud@univ-lille.fr>
 References: <20260914192323.29250-1-gilles.grimaud@univ-lille.fr>
@@ -73,102 +72,37 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-The alias registers MPU_RBAR_A1-A3 and MPU_RASR_A1-A3 (v7M) or
-MPU_RLAR_A1-A3 (v8M) exist only when the Main Extension is implemented
-(ARM_FEATURE_M_MAIN). The current NVIC decoder groups the principal
-register and its aliases in the same case fall-through, so once the
-PMSAv7 path is enabled for v6-M (or the PMSAv8 path for v8-M Baseline)
-the aliases become incorrectly accessible.
+Keep the existing mask (0x173f) for CPUs with ARM_FEATURE_V7, and use a
+mask that excludes TEX (0x1707) for Armv6-M. PMSAv8 is handled by the
+earlier branch and is unaffected by this change.
 
-The fix reorders the case statements for the four locations (read and
-write of RBAR and RASR/RLAR) in hw/intc/armv7m_nvic.c. Alias cases are
-placed before the principal register case with a fall-through and are
-guarded by a test of ARM_FEATURE_M_MAIN. If the Main Extension is absent
-the code jumps to bad_offset, causing a read to log "NVIC: Bad read
-offset" and return zero, and a write to log "NVIC: Bad write offset" and
-be ignored. The principal MPU_RBAR and MPU_RASR/RLAR registers remain
-functional for CPUs that implement the corresponding MPU.
+After writing MPU_RASR on an Armv6-M CPU a subsequent read returns zero
+for the TEX bits; Armv7-M behaviour remains unchanged.
 
 Suggested-by: Peter Maydell <peter.maydell@linaro.org>
 Signed-off-by: Gilles Grimaud <gilles.grimaud@univ-lille.fr>
 ---
- hw/intc/armv7m_nvic.c | 30 ++++++++++++++++++++++++++----
- 1 file changed, 26 insertions(+), 4 deletions(-)
+ hw/intc/armv7m_nvic.c | 7 ++++++-
+ 1 file changed, 6 insertions(+), 1 deletion(-)
 
 diff --git a/hw/intc/armv7m_nvic.c b/hw/intc/armv7m_nvic.c
-index b1d27dfb32..51d3dba852 100644
+index 51d3dba852..4136c91f23 100644
 --- a/hw/intc/armv7m_nvic.c
 +++ b/hw/intc/armv7m_nvic.c
-@@ -1382,10 +1382,15 @@ static uint32_t nvic_readl(NVICState *s, uint32_t offset, MemTxAttrs attrs)
-         return cpu->env.v7m.mpu_ctrl[attrs.secure];
-     case 0xd98: /* MPU_RNR */
-         return cpu->env.pmsav7.rnr[attrs.secure];
--    case 0xd9c: /* MPU_RBAR */
-     case 0xda4: /* MPU_RBAR_A1 */
-     case 0xdac: /* MPU_RBAR_A2 */
-     case 0xdb4: /* MPU_RBAR_A3 */
-+        if (!arm_feature(&cpu->env, ARM_FEATURE_M_MAIN)) {
-+            /* These aliases are not present for v6M or v8M without Main */
-+            goto bad_offset;
-+        }
-+        /* fall through */
-+    case 0xd9c: /* MPU_RBAR */
-     {
-         int region = cpu->env.pmsav7.rnr[attrs.secure];
- 
-@@ -1410,10 +1415,16 @@ static uint32_t nvic_readl(NVICState *s, uint32_t offset, MemTxAttrs attrs)
+@@ -1996,7 +1996,12 @@ static void nvic_writel(NVICState *s, uint32_t offset, uint32_t value,
          }
-         return (cpu->env.pmsav7.drbar[region] & ~0x1f) | (region & 0xf);
-     }
--    case 0xda0: /* MPU_RASR (v7M), MPU_RLAR (v8M) */
-+
-     case 0xda8: /* MPU_RASR_A1 (v7M), MPU_RLAR_A1 (v8M) */
-     case 0xdb0: /* MPU_RASR_A2 (v7M), MPU_RLAR_A2 (v8M) */
-     case 0xdb8: /* MPU_RASR_A3 (v7M), MPU_RLAR_A3 (v8M) */
-+        if (!arm_feature(&cpu->env, ARM_FEATURE_M_MAIN)) {
-+            /* These aliases are not present for v6M or v8M without Main */
-+            goto bad_offset;
-+        }
-+        /* fall through */
-+    case 0xda0: /* MPU_RASR (v7M), MPU_RLAR (v8M) */
-     {
-         int region = cpu->env.pmsav7.rnr[attrs.secure];
  
-@@ -1892,10 +1903,15 @@ static void nvic_writel(NVICState *s, uint32_t offset, uint32_t value,
-             cpu->env.pmsav7.rnr[attrs.secure] = value;
-         }
-         break;
--    case 0xd9c: /* MPU_RBAR */
-     case 0xda4: /* MPU_RBAR_A1 */
-     case 0xdac: /* MPU_RBAR_A2 */
-     case 0xdb4: /* MPU_RBAR_A3 */
-+        if (!arm_feature(&cpu->env, ARM_FEATURE_M_MAIN)) {
-+            /* These aliases are not present for v6M or v8M without Main */
-+            goto bad_offset;
+         cpu->env.pmsav7.drsr[region] = value & 0xff3f;
+-        cpu->env.pmsav7.dracr[region] = (value >> 16) & 0x173f;
++        if (arm_feature(&cpu->env, ARM_FEATURE_V7)) {
++            cpu->env.pmsav7.dracr[region] = (value >> 16) & 0x173f;
++        } else {
++            /* Armv6-M has XN, AP, S, C and B, but no TEX field. */
++            cpu->env.pmsav7.dracr[region] = (value >> 16) & 0x1707;
 +        }
-+        /* fall through */
-+    case 0xd9c: /* MPU_RBAR */
-     {
-         int region;
- 
-@@ -1943,10 +1959,16 @@ static void nvic_writel(NVICState *s, uint32_t offset, uint32_t value,
          tlb_flush(CPU(cpu));
          break;
      }
--    case 0xda0: /* MPU_RASR (v7M), MPU_RLAR (v8M) */
-+
-     case 0xda8: /* MPU_RASR_A1 (v7M), MPU_RLAR_A1 (v8M) */
-     case 0xdb0: /* MPU_RASR_A2 (v7M), MPU_RLAR_A2 (v8M) */
-     case 0xdb8: /* MPU_RASR_A3 (v7M), MPU_RLAR_A3 (v8M) */
-+        if (!arm_feature(&cpu->env, ARM_FEATURE_M_MAIN)) {
-+            /* These aliases are not present for v6M or v8M without Main */
-+            goto bad_offset;
-+        }
-+        /* fall through */
-+    case 0xda0: /* MPU_RASR (v7M), MPU_RLAR (v8M) */
-     {
-         int region = cpu->env.pmsav7.rnr[attrs.secure];
- 
 -- 
 2.55.0
 

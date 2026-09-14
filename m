@@ -4,104 +4,110 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D420BC88E64
-	for <qemu-arm@archiver.kernel.org>; Mon, 14 Sep 2026 09:20:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DE497C88E64
+	for <qemu-arm@archiver.kernel.org>; Mon, 14 Sep 2026 09:24:32 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1x62r8-00021C-It; Mon, 14 Sep 2026 05:20:06 -0400
+	id 1x62vJ-0003rk-PI; Mon, 14 Sep 2026 05:24:25 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1x62r6-00020I-Ci
- for qemu-arm@nongnu.org; Mon, 14 Sep 2026 05:20:04 -0400
-Received: from mail-yx2-x11.google.com ([2607:f8b0:4864:41::11])
+ id 1x62vH-0003nJ-3e
+ for qemu-arm@nongnu.org; Mon, 14 Sep 2026 05:24:23 -0400
+Received: from mail-yx1-xb132.google.com ([2607:f8b0:4864:20::b132])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1x62r4-0006V8-Q6
- for qemu-arm@nongnu.org; Mon, 14 Sep 2026 05:20:04 -0400
-Received: by mail-yx2-x11.google.com with SMTP id
- 956f58d0204a3-66e4ab20a33so1393920d50.1
- for <qemu-arm@nongnu.org>; Mon, 14 Sep 2026 02:20:02 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1789377602; cv=none;
+ id 1x62vF-0007Fa-IS
+ for qemu-arm@nongnu.org; Mon, 14 Sep 2026 05:24:22 -0400
+Received: by mail-yx1-xb132.google.com with SMTP id
+ 956f58d0204a3-671061b015eso2899940d50.1
+ for <qemu-arm@nongnu.org>; Mon, 14 Sep 2026 02:24:21 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1789377860; cv=none;
  d=google.com; s=arc-20260327;
- b=BvF5kcpNxONdieUMa99BsDUt8a64DKLDPjZv/MMg2c8mqgiZ3be1SEBKw4xevqcQlr
- mlZQh7dNsu/Lq5WqVsI1EdrvwvO/wne3yXM66SigWWCLP8DI3Xa1rkIn25IA10zou3oB
- 5OEBgl0auCr6i2w0iAkgGU64ZxSifSNhJL7yYAiT/L7HVVdNajfFZWtFRbKtkRCAHo/g
- OTQqnNfGwBG0XeXNi62yX2QfzyekBswbGF4CFIt4BXetmmFtHm6MjLOgD0Adl5eTrVT9
- EC2EqMwDAsLovMIysLDZBTbd/FEJc/Bgg+Ins4yLW2/NnDpUu5nyy2A39VL9KrayUt6z
- 8tqQ==
+ b=BKTmamKr5yIKg4izsk3oBLfyBDHBDujf1kTg5wh+aVWGjmNhEsJo394T8eHZKoy7XN
+ AkSmR3qjmpJJTEGQrfgM8yB5opz3/Ym7Re80WY1p+wLhyqV+C2tFO8IbstJ314ZOM5Pm
+ utxiq6oZ50nNd8Wdufj+wQGgOOgYXfjplmWrx1SfAxBWd3IehZz2BCDArOf0QbbnpJe+
+ oSMuusBvAE+j1Wb62XAIN3qjCZ5/Z7zU4PzxtsN369BlhYQC1+2vXr1UcFvrMXdgrh3Q
+ ShncNDGcaDEWQng9zjEsct0cJgQ9Kl9XuS6FYbfJMdiHnsWaV8+8nOmVyhM7mQb1c4MI
+ M6fA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
  s=arc-20260327; 
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:dkim-signature;
- bh=ChMphz73oEhFFunIG6+zJrLDiaHO4nPJODvJSHKWxV8=;
- fh=X29cdk10FGASJ86MXLw+0crmbM3r+5KgaaQPkl7jP3k=;
- b=TkA/yllsPUsi3gpJu/RpY2+D86LlOwb1iCtwZtQsyCs7cSfq6V88TOAtQPdrREEAU9
- RF6MqWUyJsTcOORWgiual3jSNkbd2JTb1yBYzriBWRz91TuDhaFuTrFgk7HBd/TXhMc0
- KCrl/z+srDx+WdZQPHeaNubyzF4MVowOdLQ+ORCU2VB5R0DY3Ne4GWAEnGWL5EaKmxP2
- fNhazxbxPiuOERaPsE0kfze8vjIoZa/KTzuD+mrh1+XKKBzeer8t/Ve1ev9Urn58YPSx
- IABX/XHhmxreG2NFOIaAcdT/+34airygc0rQ5RYqLbInssNHNTriYQrlUG91cvporLD6
- Hhlw==; darn=nongnu.org
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:dkim-signature;
+ bh=S0jGCMEOwyERVB/Q6xGZYgF8vtoajFbOFCS95ew2TQw=;
+ fh=V/gCb8vUyky/WpFGadW0bE1yr/C7lEWx09f+PQxSUvQ=;
+ b=KLh73L8voJH2ykyAGN142DEbgaHpLPUuqOECKIqMCU6fqckbZTV88f2YdiRaLjavVX
+ Nbx2EqoreNNP0szRLmuE+IhMn0F4EK7LxI/58JwXXXLoY3AapY3FWjhySqBoHcpVU4Vz
+ lXiMx/OgvjBBMZ0oi2KjhmA3oSLpwFVvU/zd7KnhHrvb5QBSi4fzCwKxxOUgBUkagOAY
+ +FlyjmbqY8TYc+/colBzL11TGN8IIRkrgAiFSAcXn7kX1A4K1pkiOczbr60gf2XtLKP8
+ vwlqCqHGmwp7yhvc9m2Tc9AefVKmMzsG1X2C2f65KCtfTtlXfNbaixptCQnfnaFC62TX
+ SQwA==; darn=nongnu.org
 ARC-Authentication-Results: i=1; mx.google.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1789377602; x=1789982402; darn=nongnu.org;
- h=content-type:cc:to:subject:message-id:date:from:in-reply-to
- :references:mime-version:from:to:cc:subject:date:message-id:reply-to
- :content-type; bh=ChMphz73oEhFFunIG6+zJrLDiaHO4nPJODvJSHKWxV8=;
- b=D2V9XOSwzFOOGOZqXBF+xkKhQuvQDTFeJVKwGcEHRBjO10ZJoN0LD2BFqzAQn/NJzj
- CQ6NNJ+cHVAF6hykDZeiCweeBrAA5/MrwNgUhzMOR7z9IHuKAsejmO4KNFdd4I+MhCMb
- A3icoxlzChVoD5OzOCPIz17shf/k//QgoxKEzpmwBRYWGx8v9vk/9sjSaCZNOMr6oHJh
- LFLD0HbLR5WJ/g8SjNg/70P4xLahbPaq9oFxMs35oHxPkKuriaVb+uTqSfXHt4A65nnw
- O29dbAYUiLFP3mDqLE5RG83fFzTn3vuUGI6oheG6Kg+oSwkYrX4BZ33xuYzqgQgxwycM
- FeIg==
+ d=linaro.org; s=google; t=1789377860; x=1789982660; darn=nongnu.org;
+ h=content-transfer-encoding:content-type:cc:to:subject:message-id
+ :date:from:in-reply-to:references:mime-version:from:to:cc:subject
+ :date:message-id:reply-to:content-type;
+ bh=S0jGCMEOwyERVB/Q6xGZYgF8vtoajFbOFCS95ew2TQw=;
+ b=vRSDUgICPynlM+LcZv+fANZVsdaJVoErxpItmRDw8tEagUj4EnBTHXaMvPBCzHPDo6
+ hkfj6NBwdG0s2yU+v0bNKoanVQuJdQJNfuTu9EbEZXMx7q9dXo/VQan4ZE1sKMDQ2rve
+ jcbJvcJt5RIujcRNtRFcTCH7YA1bRL6WVdaqlynDYuFMAZrXM5+6Df7gafe9vX+eMoXT
+ lcmVMP6cBk2wHYPuVbuTLnYaZujBq3Tnz8hYw5bali2y5FAGnQ86JW4g9kLz9bW62tIa
+ kcUPxdk0PNL787f5yBU0bsXTU3qnUJZ001HbGs66HtFx+LaB2alQ/gUfYbVJCCF1iuSt
+ huVw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1789377602; x=1789982402;
- h=content-type:cc:to:subject:message-id:date:from:in-reply-to
- :references:mime-version:x-gm-gg:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to:content-type;
- bh=ChMphz73oEhFFunIG6+zJrLDiaHO4nPJODvJSHKWxV8=;
- b=lCQs7wmCthNNSY871h0Cn+tZ9IBRpLAPtjHJJ/sjJSsGLMbejjKrWmWCE8SK3lQCwl
- S/CbR1V4HzB86WrQrUYn05nEyRmLHOLuFYFWDRjmoLMpsKc2iPRSi9UMJ04tjO3DsZtl
- ZTAPHwtFHr8KWWTpT6tiIwWkS+TQxLnk9DuT3YqFhglfQYf5ukHuvNMumQBBJI65Gl18
- R9MFBXY7OI5Ii6WxbePqFlE24GA4xU6Vn/JfyScBvLB6/TGl6mcLluOs5hYae/8GYpAf
- R+Lfqa4WqhmcnulpjfSaTyorKSaho7oKvXEfvHaKyaYjqwrAiRWsoMUfZ4DyqPn/azFZ
- CLrA==
+ d=1e100.net; s=20251104; t=1789377860; x=1789982660;
+ h=content-transfer-encoding:content-type:cc:to:subject:message-id
+ :date:from:in-reply-to:references:mime-version:x-gm-gg
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
+ :content-type;
+ bh=S0jGCMEOwyERVB/Q6xGZYgF8vtoajFbOFCS95ew2TQw=;
+ b=f5vv6hDs3hvs2RlOf0RZZv3gOB7w3TpgB6TokNmdLVAmqKXIL9X2wEBCbk4bDZhmhn
+ UGfgs/j4Dx0/OHXLZ01qmPBh+9in8lMwWg9ZbO/PIA+jyZ9m+osk1DleSbS6/dhfRKVA
+ VF4sZ/rNL7xT1M1uCgjNPpon2D+134OP5ytNrnSSIWMvBJRlBhFBQuysnRzue8eJGWsz
+ 8F2gs9b+exexF2ZmPnsJuMqz+K44ZtOgZ3oEWBwOt+TgHk0vvnbJ5karzy5sY34eeXn3
+ ERwxpDk6Ikm1oYW1QkR4uXS4ripD1wKQcSnTLwlx9oaCW+aIY1XxUOrO1lOq+cjVx/90
+ CLzw==
 X-Forwarded-Encrypted: i=1;
- AKwUvBzn8wudjK7NhzmA9Rp6xScgHIkjo/S94fSGttDH9fFKH/WMTHwFevgWQZvITwAw+ZEW2cYCCscvVA==@nongnu.org
-X-Gm-Message-State: AFuF++mc9RZCVTnM7w8BhLE1T762nQKWYXzaYl2Wcg7z6DKGt2w4pPgy
- wDjdhqmDbzshCaCcPN8oQnUxTe/p7MudRvk48uMDld4+dA+Az3vR+aFTJdzi8Kmu1hi/t/bpZM+
- 9fYCmceDc4YMLr8j3UdgyQYF2tjBBW096kIAWnubYyw==
-X-Gm-Gg: AYBFou0/N2jG+Ltfwuqle7tE9RewzQ54PiUAEQXd9gV7PL1A5PEL63Nnd24qQjXD0xx
- XrfKS/K7DxueeO6nfWX7bqTcpdIJECDSGHrGA29xaslJnKuhm086z6qZmMUNwHNfSeHmDSJoHfW
- Lf8wlM20mRFZK7TNSi5SOsCHohabXTJ3eY0WlGhfFIOR9BmMG+hwxH1qf8X+49JW1QzEJoaCmNG
- ugTAajCSoWjYlzO+cW7ByuDJilRS+L+WATcyBH08dy6CeEe6ZGKeS5UAS+DBtOq8lAoyTE7D0D/
- p6R/Zoow8omHslfkoNG0onO+Bq13ZnIHLF9m8NSgcS1SROUgRhYn4jd0FS3XCJs9+6cMUVE7RH2
- pwb5YUTJQNVJu2IPEJnsRZQIc0oqRAK2f21PN8+4=
-X-Received: by 2002:a05:690e:4882:10b0:66f:c1bc:4086 with SMTP id
- 956f58d0204a3-6714e07b20bmr167358d50.73.1789377596759; Mon, 14 Sep 2026
- 02:19:56 -0700 (PDT)
+ AKwUvByhVohZmw6g01NuT8ECh4nXlZ1Qhb60gx9xNS6KuG1XXh5b1Wludm6MkU6XXBYr7cQ8dkewRs7Fuw==@nongnu.org
+X-Gm-Message-State: AFuF++mFx2JVyzaWvnrYi4GvXzoj+fZX1IfNfFrxd7fKKH1NTi27jGon
+ 0qWJYT9rcD5BzVWEXCNGuFHsKJqOk24O6L8OVNbZcY29M329Pvq454RnZpm9JAomm0g4P/OIWIZ
+ zIbOXO2t6jQFGpzBsPWzdr/dpMZ1SIn0i8iKqtSR30g==
+X-Gm-Gg: AYBFou0i5ydKeh+K+tW/jHO0+8UIHCYb49oQPOCYbHVuk+1nup2CkDmLQZ9P56qUqmS
+ sb8hUSl+DD1Lmz6wO3nq7/DoKYKtPn4Eix6wla704Gy/LKlNNV2c8fZFXB2Vr6dkBsUz0na+wRN
+ zgh8+mUqTq5Q39oZSiy0dhUYb+I+/i3m7to4HRAz+gA+HR1gFRJdMGmiRwoTDtue/Ef8Og+5MCU
+ AGKCEGQ4wxoX32n+xJZOntY1gD/tGXzO0MXicLvEw3o5Q1eEtMWzRfWkGK3O5IgnPlbXppux510
+ Jw85VQfx4lwW/tT1LI0405iSZTd/urZ1LrtJFzPMCHZh3IqEoDW3pnMD4U9uIAQKqjsRHveRzUW
+ LCEXZxubTpT8Tqx9qJYDMVdbIfZrtZI8lUvw8TFXkB6PzKxuRbN4=
+X-Received: by 2002:a05:690e:43c2:b0:671:1bdd:899 with SMTP id
+ 956f58d0204a3-6714dfca922mr163710d50.13.1789377860361; Mon, 14 Sep 2026
+ 02:24:20 -0700 (PDT)
 MIME-Version: 1.0
-References: <20260904161438.3838261-1-bin.meng@processmission.com>
- <20260904161438.3838261-2-bin.meng@processmission.com>
-In-Reply-To: <20260904161438.3838261-2-bin.meng@processmission.com>
+References: <20260902165956.582901-1-alex.bennee@linaro.org>
+In-Reply-To: <20260902165956.582901-1-alex.bennee@linaro.org>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Mon, 14 Sep 2026 10:19:44 +0100
-X-Gm-Features: AcwNN1XoQo60WGsTHuz10GYgcVA4-gqaXOKPsU1Sp-WlezIu1ocG451tdbpPBak
-Message-ID: <CAFEAcA-p=UaNk-Qddid99o7zeGS4WqmvqAugxtjtBKZwv9ie8Q@mail.gmail.com>
-Subject: Re: [PATCH v2 01/10] hw/arm: fsl-imx6ul: Add SCU compatibility window
-To: Bin Meng <bin.meng@processmission.com>
-Cc: QEMU <qemu-devel@nongnu.org>, Jean-Christophe Dubois <jcd@tribudubois.net>,
- qemu-arm@nongnu.org
+Date: Mon, 14 Sep 2026 10:24:08 +0100
+X-Gm-Features: AcwNN1ULYW3B3qu_DEXBe3GgXmkfVuKpbMMw76NrNQQMKv1auyBqB0MGiCPo2o8
+Message-ID: <CAFEAcA-FpLppmxP3bTnPhyz2b2=KQHQkTaw3LNyc482=TEV8QA@mail.gmail.com>
+Subject: Re: [PATCH] hw/char/stm32l4x5_usart: Accept character input upon RDR
+ read
+To: =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>
+Cc: qemu-devel@nongnu.org, Samuel Tardieu <sam@rfc1149.net>, 
+ =?UTF-8?B?TWFyYy1BbmRyw6kgTHVyZWF1?= <marcandre.lureau@redhat.com>, 
+ Paolo Bonzini <pbonzini@redhat.com>, 
+ "open list:STM32L4x5 SoC Family" <qemu-arm@nongnu.org>
 Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:41::11;
- envelope-from=peter.maydell@linaro.org; helo=mail-yx2-x11.google.com
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2607:f8b0:4864:20::b132;
+ envelope-from=peter.maydell@linaro.org; helo=mail-yx1-xb132.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -117,55 +123,22 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Fri, 4 Sept 2026 at 17:15, Bin Meng <bin.meng@processmission.com> wrote:
+On Wed, 2 Sept 2026 at 18:00, Alex Benn=C3=A9e <alex.bennee@linaro.org> wro=
+te:
 >
-> U-Boot's common i.MX6 CPU identification code reads the Cortex-A9
-> SCU configuration register at PERIPHBASE + 0x4 even on i.MX6UL.
-> The value is only used to distinguish Cortex-A9 i.MX6 variants.
+> Looking through existing serial devices this seems to be a common
+> pattern so it makes sense to me this is the right fix and matches the
+> API description.
 >
-> Cortex-A7 reserves this address and reading it causes data abort.
->
-> The same U-Boot abort was discussed on qemu-arm in September 2024:
-> https://lists.gnu.org/archive/html/qemu-arm/2024-09/msg00072.html
->
-> Map only the four-byte configuration-register address as an
-> unimplemented device. Its zero read result gives U-Boot the
-> single-CPU encoding after the low two bits are masked, while
-> the remainder of the reserved Cortex-A7 page stays unmapped.
->
-> Signed-off-by: Bin Meng <bin.meng@processmission.com>
-> ---
->
-> (no changes since v1)
->
->  hw/arm/fsl-imx6ul.c | 9 +++++++++
->  1 file changed, 9 insertions(+)
->
-> diff --git a/hw/arm/fsl-imx6ul.c b/hw/arm/fsl-imx6ul.c
-> index 1863558a0d..d6f662efe4 100644
-> --- a/hw/arm/fsl-imx6ul.c
-> +++ b/hw/arm/fsl-imx6ul.c
-> @@ -187,6 +187,15 @@ static void fsl_imx6ul_realize(DeviceState *dev, Error **errp)
->      sysbus_realize(SYS_BUS_DEVICE(mpcore), &error_abort);
->      sysbus_mmio_map(SYS_BUS_DEVICE(mpcore), 0, FSL_IMX6UL_A7MPCORE_ADDR);
->
-> +    /*
-> +     * U-Boot's shared i.MX6 CPU identification code reads the
-> +     * Cortex-A9 SCU configuration register on i.MX6UL. Cortex-A7
-> +     * reserves this address, so provide only the compatibility word
-> +     * needed before the console is initialized.
-> +     */
-> +    create_unimplemented_device("a7mpcore-scu-compat",
-> +                                FSL_IMX6UL_A7MPCORE_ADDR + 0x4, 4);
+> Resolves: https://gitlab.com/qemu-project/qemu/-/issues/4389
+> Reported-by: Jan Brittenson (@bson)
+> Suggested-by: Jan Brittenson (@bson)
+> AI-used-for: fetch issue, apply proposed patch, verify build and qtests
+> Signed-off-by: Alex Benn=C3=A9e <alex.bennee@linaro.org>
 
-What is actually going on here, though? Why is u-boot reading
-an address that's only here for the A9? Has this been reported
-to u-boot as a bug? What does the real hardware do?
 
-Whatever the answers are, I expect the correct fix is not going
-to be "fake up this specific 4 bytes to ignore accesses in the
-imx6 SoC model".
 
-thanks
+Applied to target-arm.next, thanks.
+
 -- PMM
 

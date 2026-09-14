@@ -4,88 +4,131 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A0FB7C88E6E
-	for <qemu-arm@archiver.kernel.org>; Mon, 14 Sep 2026 16:08:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 64ADBC88E6E
+	for <qemu-arm@archiver.kernel.org>; Mon, 14 Sep 2026 16:15:09 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1x697Q-0003r1-G6; Mon, 14 Sep 2026 12:01:20 -0400
+	id 1x69KS-0006s4-8K; Mon, 14 Sep 2026 12:14:49 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1x696d-00039b-DE
- for qemu-arm@nongnu.org; Mon, 14 Sep 2026 12:00:31 -0400
-Received: from mail-wr2-x10.google.com ([2a00:1450:4864:30::10])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1x696b-0004d9-5V
- for qemu-arm@nongnu.org; Mon, 14 Sep 2026 12:00:30 -0400
-Received: by mail-wr2-x10.google.com with SMTP id
- ffacd0b85a97d-482f633cd80so950949f8f.2
- for <qemu-arm@nongnu.org>; Mon, 14 Sep 2026 09:00:28 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1789401627; x=1790006427; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:to:from:from:to:cc:subject:date:message-id
- :reply-to:content-type;
- bh=krib+ep6Ku4rcBL3FL/xOeC0nOLV1cZ4Dzi0yim0mVw=;
- b=T7CyLvJOJ0ZJ4wP+Z9U7AdJFbxwYR6z0VFeAn0UoviXhH0MZ1Zw1enJkp/AzK3mKju
- LgFnKj5SHLNZiKosDOqCsHUBXR0muqtQLDQ2pgBb8j/tdu5VNKe759dbshIwQpWF4/FN
- blDDOwiY778DHTwcXAsni1hJP6sJVbozox6ENHWuwCm1JXDD0nqVH8GoKoD/+yGgjf6H
- Y2gMvEUa4qT2VgnQSqNydAb3qyGnN8uBRJGHHF7DHlQ9a0s0jsBSBDg06mv/PTJUuFYM
- wXoQllK70d5PU66ylMKBSZJfOC4xvpxygQKki50Km0YCUt7e2UAxY1stmjkkF3xH8hbL
- FuJQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1789401627; x=1790006427;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:to:from:x-gm-gg:x-gm-message-state:from:to
- :cc:subject:date:message-id:reply-to:content-type;
- bh=krib+ep6Ku4rcBL3FL/xOeC0nOLV1cZ4Dzi0yim0mVw=;
- b=R0OxXJl0Uz0Sb9ln4rb4i8tj4ktaxgCmlvhBXf8TR7Jiz0Rsaxf6UEMruCkICnAD4y
- FAgQHrCY6lbVabeyS8I2ASemJvEv2KgRJz07u5AchbBP7DtaY15AJZ3V8ssJga7E1aRA
- uYxIS0KDQeusp6axffFpoRjXh2fbKlJ/gzvG1r9sE3MndMJuKjablQ0pa1mClwHJ9WC3
- DHUntoszqtPsNgtIS3gmle6Ev13hc5xD9OnZ8Ai33HAKEdEssuz0ph751wYYpeR2dmKs
- ldl6CHIgHtYNw6oFKutzftkfu2PVHCgmCp6C2KZux+CPUfrpC8haZegVFgIfbHjftJRB
- /t5g==
-X-Gm-Message-State: AFuF++mN4bkzJ+5V1+3ttFI5YsndkfKF/1UkL6XKINI3FqnysLKGvm6E
- m0wsdoSJENcj7tyeke6eEV69xjjHrnC4pDtnopj/f1nCJTliDamOUO0MQCA9g4hqKtA6t9FBh+s
- NxSTBj88=
-X-Gm-Gg: AYBFou2qZ4pXqiaHvkKynbnYmZtuszM+6oDgUO9uYMTxIo43Tq2sBX07lLPnqI9ybo6
- XCUXalCb/ytZ/hVfVz7xusowtdO+OHJAWF4+Ysfq5CdC3r0wP2KgJr+mCEhRTFQaCKzbu+Aa3q4
- W5J0ljmuBaj3YZx8xRzNoB/yF5efD6M/duynB+jJV6NV+5mFEyrFHZgOntobyKd55eGdb/Tpr/T
- ydPlB2kECDUicfTMHcDye8njoPMXNJEVHf3zW0TRjTp/uydm3jXPrPNe/C6tJ8OKxEVUnIS3P1k
- Prw82ywe7Obn/Ukv8ZKbvUkThB70YtQu5AwthpedgONi/GErS12j12cQvNxenZe8Fr8OP6pV9Oy
- CTxnB33Uxevyd112mnqU6HBaAYd0yxls94S2m1PKc8UYdqztggh/d37vyBGKbPnC1coHZhM1qZ6
- sSL1k62SOtWDT4pLZNL6yqqJjFnGlO+9STpBpQw5vE56Dg5Taiv6bzPjLQGPzLaFIscsWPC6Ech
- D5/yPu6TYZPqIaNwpZLwNCdxkY+aaO3OPuLuwAsneCrw/fxY6g/Hm9YSbhecEwldg==
-X-Received: by 2002:a05:6000:25f4:b0:486:f9ea:796f with SMTP id
- ffacd0b85a97d-48702b5b1efmr4142989f8f.41.1789401627045; 
- Mon, 14 Sep 2026 09:00:27 -0700 (PDT)
-Received: from lanath.. (wildly.archaic.org.uk. [81.2.115.145])
- by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-486eb350686sm30797695f8f.27.2026.09.14.09.00.26
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 14 Sep 2026 09:00:26 -0700 (PDT)
-From: Peter Maydell <peter.maydell@linaro.org>
-To: qemu-arm@nongnu.org,
-	qemu-devel@nongnu.org
-Subject: [PATCH v2 4/9] hw/intc/arm_gicv5: Use cached IRS_IST_BASER.VALID state
-Date: Mon, 14 Sep 2026 17:00:15 +0100
-Message-ID: <20260914160020.327787-5-peter.maydell@linaro.org>
-X-Mailer: git-send-email 2.43.0
-In-Reply-To: <20260914160020.327787-1-peter.maydell@linaro.org>
-References: <20260914160020.327787-1-peter.maydell@linaro.org>
+ (Exim 4.90_1) (envelope-from <skolothumtho@nvidia.com>)
+ id 1x69KE-0006m7-3R; Mon, 14 Sep 2026 12:14:34 -0400
+Received: from mail-westusazlp170100001.outbound.protection.outlook.com
+ ([2a01:111:f403:c000::1] helo=BYAPR05CU005.outbound.protection.outlook.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <skolothumtho@nvidia.com>)
+ id 1x69KC-0007Ze-Ab; Mon, 14 Sep 2026 12:14:33 -0400
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=dZl/0GTV23cRE86XrBt2lQSsQ2LBYO6AhTqp3deDQ7d2vKqfv912qEkMUaiLi+fuh0f2lNLUawjsDTDu3RaK5Mo4mfE7c7Pd+SNL8j602g3PehVwpidfbigfTjIXzZBjMKFSxtKK4tlsc4MCmj0bu7FHg4OlMP0nDeW2iFwHBTwO/0QCWiilxJK+hZUhVVCpNtqohc7gYNMLnJfZMDm8UxnAQs7W3UnNwzyjraAEHLTiJCIEjOpfSiynvZ2idMZkK5mZ1ZsF25oiaTGJT3JtrqJvm8Kb4UcX388U2FMD0q7PGxGa/md0M7qBB7J3kpppkY1m9D7GJQV74msl7NzkRQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=Tq0pZbd8vkGbxzJYkG0nFLrNS3VnHkGLWnWqjTFW20A=;
+ b=ijE2EkNsxFwMnPUzjwHP1cUpDiGn2jUJXStBCn0wvKCTcKlkff3nQsWeKAosxgm3Xe5jzxhxbAdBVwjzxLA32hxXBB6j+/YYgWIuvfo9zVknfIiP1IE01U4M1C7q3BLDkSiBL1Y0DyH0qUxrc5KJHx9PjJrxoeIZbhp5oYdEvPh2l/c1J8wGj8Z1i5dI9OR0oi2w5kp0OCgbfCt2nxa1obj/taYCNgXyo4EuQpV8KXooZE4sGpkNxQGLfYoAOW+IizZGFJE1t8AY1nuGsuFX6ToUHRyClNuY7xiUg7QdQLQqv/quxBX6NeNItWkzQpb+skU1Jh2Cm+BuFlOjZ41U4w==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=nvidia.com; dmarc=pass action=none header.from=nvidia.com;
+ dkim=pass header.d=nvidia.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Nvidia.com;
+ s=selector2;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=Tq0pZbd8vkGbxzJYkG0nFLrNS3VnHkGLWnWqjTFW20A=;
+ b=kOwLxdmbn2DbYhYoNIkrnwZC1euI5APbaO5slTiRur1PjCZBaUnqtaHCV3jvcfxtS5nwgkmPckyCxUceeSHb/OdRG+hmEsEf0CGcSXE4prPvaXdoH+cP0Uil21N/406fUfMQzkrRKczkRkdojSEPYfIGDhg1bHni0nI5zE2BhcWRCQSlZy25BaXAsRnWsW837DWyybvlJvcUfCYGAa4tTgEIaDZGybkvdqqBCSroPZaMFJUSA27qURaaoBlU/mFGydec+P1Up1To+BTCliGuj5Aq7OAHDiaQfax3c03SOqpsQq/M0NK3RLySp/hpNd4jQFXM7a4vserr4Cbvbzjcvw==
+Received: from SJ0PR12MB8614.namprd12.prod.outlook.com (2603:10b6:a03:47d::17)
+ by DM4PR12MB6087.namprd12.prod.outlook.com (2603:10b6:8:b1::12) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.21.406.12; Mon, 14 Sep
+ 2026 16:14:25 +0000
+Received: from SJ0PR12MB8614.namprd12.prod.outlook.com
+ ([fe80::fe0a:6e6a:fe60:a43b]) by SJ0PR12MB8614.namprd12.prod.outlook.com
+ ([fe80::fe0a:6e6a:fe60:a43b%5]) with mapi id 15.21.0406.007; Mon, 14 Sep 2026
+ 16:14:24 +0000
+From: Shameer Kolothum Thodi <skolothumtho@nvidia.com>
+To: Matt Ochs <mochs@nvidia.com>, Peter Maydell <peter.maydell@linaro.org>
+CC: "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>, "qemu-arm@nongnu.org"
+ <qemu-arm@nongnu.org>, Eric Auger <eric.auger@redhat.com>, Nicolin Chen
+ <nicolinc@nvidia.com>, "qemu-stable@nongnu.org" <qemu-stable@nongnu.org>
+Subject: RE: [PATCH v2] hw/arm/tegra241-cmdqv: Keep VINTF page0 region alive
+Thread-Topic: [PATCH v2] hw/arm/tegra241-cmdqv: Keep VINTF page0 region alive
+Thread-Index: AQHdQiBk3ZjokbCO0UKsogPdczqKS7bOBUCAgAA5fwCAAAIz4A==
+Date: Mon, 14 Sep 2026 16:14:24 +0000
+Message-ID: <SJ0PR12MB8614959FB90095651F39C894ABBB2@SJ0PR12MB8614.namprd12.prod.outlook.com>
+References: <20260911190431.4085464-1-mochs@nvidia.com>
+ <CAFEAcA9ve3sdSEJ6vPts80phhfjV9BpW+Nx6cJOwH3aYQ3zafA@mail.gmail.com>
+ <97C51715-99C0-4A9F-907D-C839150D753F@nvidia.com>
+In-Reply-To: <97C51715-99C0-4A9F-907D-C839150D753F@nvidia.com>
+Accept-Language: en-US, en-GB
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+authentication-results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=nvidia.com;
+x-ms-publictraffictype: Email
+x-ms-traffictypediagnostic: SJ0PR12MB8614:EE_|DM4PR12MB6087:EE_
+x-ms-office365-filtering-correlation-id: e3633a03-de61-4256-5c61-08df127b3e4c
+x-ms-exchange-senderadcheck: 1
+x-ms-exchange-antispam-relay: 0
+x-microsoft-antispam: BCL:0;
+ ARA:13230040|23010399003|366016|376014|1800799024|38070700021|4143699003|11063799006|56012099006|6133799003|22082099003|18002099003|10067099003;
+x-microsoft-antispam-message-info: reXSK/ABaGmyxJuILbjicQmLIM/ZrsJgsoQVMjSP9y0F9T/B7PgdjlKg7kzgen0hBExiwZhdO8sYZF56/dKhdFDheI31FDw0OJDd0hnd8lKZAnTMec71D9zlzMlvOsRg+EIViExON+XNc63uBuzzI1YnWToPmlI9bVkk8Q3l1cUpOzS0pIn32gZLBn8PGZNhxSzu9IuRC13qeo2fa/tSicQMZMqQ6gswq5TWR+iqzjWnaeZsWicPzuP+IUGlY2RZB3qFyQadS3kuX2cHdTWSm9c7SOq+bJnP0Y5U+kgArc5di2sC0mMIcyhhvZKNvTuQMcrVpPivYhO0Lij9iIq7FweYyEbiS+b6C2/jHczJeAiruVwm/uAqL9goLuNx1XspWu6UBFYOkhHKZ2+GYNocQsRBDKkkykCOlCust9kUsH9suakyKWzM3cJjkzFqR/Qj3duTCILJscJY1y6cJC4NHgZ2syleOI2ike5mJkPJ9+cc2ZXMBUgb6EImhFn/bEkQubYGQ+0EY2R7jFuvBEsNBsGKICNFLX6geSM0neQpukuCTXWBmY6EYjhyUw4JYNwIRkgD4ANTqoO0yluIIrC1SdZ1h+/i64Ap/NKx7DsTbPtsWyTuKVdvUWtbujKGafM2ZjAT/tUL3SRDzKg1hgYdM/w3VSdOgYchtunBI0H2AKORyFLNlXG7ZY0rAh4IYFeG4Cpc3wupQGw+Irweq2FbbZGrqir81dAZ91rp6qFX7wY=
+x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:SJ0PR12MB8614.namprd12.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(13230040)(23010399003)(366016)(376014)(1800799024)(38070700021)(4143699003)(11063799006)(56012099006)(6133799003)(22082099003)(18002099003)(10067099003);
+ DIR:OUT; SFP:1101; 
+x-ms-exchange-antispam-messagedata-chunkcount: 1
+x-ms-exchange-antispam-messagedata-0: =?us-ascii?Q?JzziKky/wR1suqrqgxOJNCUIdgebbF4m2V+PwJri0Q5NjDU4gPCE9QcqX9Mw?=
+ =?us-ascii?Q?jJhJWunh7vOgQhzW9P3APUkCsM/hEujCANmX6JPzUBeKQtd+Qb0lnRxsyO/c?=
+ =?us-ascii?Q?RQrcSGG3IuRrG/fH9UBiBn/huYZhqdzWQLY19gQT5aO3w0N8yeHQ7c59Jcuv?=
+ =?us-ascii?Q?qb3esIT9HX2TM1P+1x2gF9KTRo2H026YDtkipkw1J1Oe2vcMhnzCvOdv45zd?=
+ =?us-ascii?Q?lS2hlkAON9d7QkcLhW09DcTrY6nMDYQ46RmtbM2DS6XFm1fMxyFWzuY7kh1D?=
+ =?us-ascii?Q?5okG43xg+Ynr1iJQ1agB++sGWdg1ccQhxkEXm9oZK2MmJhEe5/bwn8ECtQHB?=
+ =?us-ascii?Q?GOXpJQ9nQe+S+oql/Q+CqSZIdZnFM7k/fhKtdou1iaRKWYKvFTMHyu70JREr?=
+ =?us-ascii?Q?QpWvFqOKAsrm02PS/6V0XszLYuZ9GZEhJkO/wPptmRSdVpUTU4J6cgzW+tBI?=
+ =?us-ascii?Q?n7B95HHXqEdN0IFKOECVB/gALcw/gT+sYLPqvYTHfruvqtJFAhQ3/+veaj9t?=
+ =?us-ascii?Q?JPooZNwBZ06tBrFmQvl0Pddp9adTs0aJGr8bWQP8HbRC84au2SBQM9gqYu6I?=
+ =?us-ascii?Q?pYF0BBXbIBuBr23SCM4H3tTYPnzd5hCCqrMvzWaz8Ba/oUkOAkcPQJQJtVYJ?=
+ =?us-ascii?Q?ClwdV+eZN/0ygfVxnc3hkreuGgeiZdVJvaINpS4jNyfZ9U8NShs9uJ0gWkJA?=
+ =?us-ascii?Q?ge7tQnBODi1t3dZtHni0kJW94QxlqiAsx3o2ZmNquuwxJCAh8SBT+qntiijh?=
+ =?us-ascii?Q?cx4mpU5Ru9gZBPWq9sjR2jfI9QrlCD6EXYU1mg85mf2awxvLmiTfOVXcp6hV?=
+ =?us-ascii?Q?15saR1C9mEolraAD37vUiMZ4WqAjVE6xwWwviydZ47zRrOa/H+N/WTj1cdPx?=
+ =?us-ascii?Q?FyP7av8dZIQZNVMUK7+okIa4khQHnPlgYf8EZVPxdAYFEXMtiB0MkG6KZoRK?=
+ =?us-ascii?Q?3ciZ8B8mfPnjAPnTjdvMtF3TuiK0nzf0IwNHHyF3ngr+t6wUygn3JAD90kUQ?=
+ =?us-ascii?Q?WnfXq2LoA/FNNUgaZjU/on8vyXT6dPKotF8XAk8cvfTbosopXr0UzmDNnQgO?=
+ =?us-ascii?Q?2tLgjd4EajiDRx/03XW+mWbuwiVaQBgATXb0fTUM7MwknIiXFhfMrkcJsU1o?=
+ =?us-ascii?Q?PIkQRPWtDAfxrzlLWeEL5mRjNZOnt/aoUe/Hq+RAtI68+yYY0qeEbUG+2dJG?=
+ =?us-ascii?Q?2Jv6GRy9lccdzfx71YSoSTrRAkXJl38xQwh/wukHtEzrUrgEyd8JZlonZWEj?=
+ =?us-ascii?Q?JcQ3tpy/fyh7CDXIP/tRBNotJmE7siGz3NPu8uS4whIawaIbiCWwhZGhye6N?=
+ =?us-ascii?Q?4WBC81iqtiViSwkcT2oHiIcMyhkZ/1edv6pe0b1XO5eR7wh5sHiZ2vRCfurU?=
+ =?us-ascii?Q?+wwFdyGevNkzEgMFHFq0j8ca996A5raTDTXqbwSQ5s2kkv/Ei86AsooazPnZ?=
+ =?us-ascii?Q?nU8h2uN2MTjy9JgtcOgIN5SoDAu7d8ZYW3sk11upfNpBvEPiNeDRMjImefE0?=
+ =?us-ascii?Q?HBX9s6IVbPFf1Me7FhPKVfsKFicLMdrHc3grZX0H1yC1kp9BSZp4JMtdR9Ez?=
+ =?us-ascii?Q?Cdpzs96ORunHtwkpB/nNDYS+K+imm98aT/r6juxtIaLS1c09USj0D5H9KRls?=
+ =?us-ascii?Q?BuNx9lHNwzeAYPwS8oLtYvIrinGjAyWQAOYcUOBcuTCiXGMn3qjm0pmu39jp?=
+ =?us-ascii?Q?jsX5cYPnm8FtaNQzE4x4VLyses4CaMqaYPg5NAv4ZIEVJQGGUGf7Q0oPHqvV?=
+ =?us-ascii?Q?e+816m3jJg=3D=3D?=
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: quoted-printable
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:30::10;
- envelope-from=peter.maydell@linaro.org; helo=mail-wr2-x10.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-OriginatorOrg: Nvidia.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-AuthSource: SJ0PR12MB8614.namprd12.prod.outlook.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: e3633a03-de61-4256-5c61-08df127b3e4c
+X-MS-Exchange-CrossTenant-originalarrivaltime: 14 Sep 2026 16:14:24.4963 (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: 43083d15-7273-40c1-b7db-39efd9ccc17a
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: xc/AeN1RLwT9zQf3watdRm5pDyn+Sei6LBgzTEHCxYM7u4M8WsWwnVGZp0AjP78ngSUm9bLu+XfB9R33CAqgQw==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: DM4PR12MB6087
+Received-SPF: permerror client-ip=2a01:111:f403:c000::1;
+ envelope-from=skolothumtho@nvidia.com;
+ helo=BYAPR05CU005.outbound.protection.outlook.com
+X-Spam_score_int: -10
+X-Spam_score: -1.1
+X-Spam_bar: -
+X-Spam_report: (-1.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ FORGED_SPF_HELO=1, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_PASS=-0.001,
+ SPF_NONE=0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -101,49 +144,75 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-When the guest writes to IRS_IST_BASER we effectively cache the value
-of the VALID bit in the GICv5ISTConfig valid field entry.  In a few
-places we check whether the IST is valid by doing a bit extract on
-the register value; switch those to look at cfg->structure instead.
 
-Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
----
- hw/intc/arm_gicv5.c | 7 +++----
- 1 file changed, 3 insertions(+), 4 deletions(-)
 
-diff --git a/hw/intc/arm_gicv5.c b/hw/intc/arm_gicv5.c
-index e477c805b43..c6914f7310c 100644
---- a/hw/intc/arm_gicv5.c
-+++ b/hw/intc/arm_gicv5.c
-@@ -1223,8 +1223,7 @@ static void irs_map_l2_istr_write(GICv5 *s, GICv5Domain domain, uint64_t value)
-     uint64_t l1_iste;
-     MemTxResult res;
- 
--    if (!FIELD_EX64(cs->irs_ist_baser[domain], IRS_IST_BASER, VALID) ||
--        !cfg->structure) {
-+    if (!cfg->valid || !cfg->structure) {
-         /* WI if no IST set up or it is not 2-level */
-         return;
-     }
-@@ -1294,7 +1293,7 @@ static void irs_ist_baser_write(GICv5 *s, GICv5Domain domain, uint64_t value)
- {
-     GICv5Common *cs = ARM_GICV5_COMMON(s);
- 
--    if (FIELD_EX64(cs->irs_ist_baser[domain], IRS_IST_BASER, VALID)) {
-+    if (s->phys_lpi_config[domain].valid) {
-         /* If VALID is set, ADDR is RO and we can only update VALID */
-         bool valid = FIELD_EX64(value, IRS_IST_BASER, VALID);
-         if (valid) {
-@@ -1604,7 +1603,7 @@ static bool config_writel(GICv5 *s, GICv5Domain domain, hwaddr offset,
-                             deposit64(cs->irs_ist_baser[domain], 32, 32, data));
-         return true;
-     case A_IRS_IST_CFGR:
--        if (FIELD_EX64(cs->irs_ist_baser[domain], IRS_IST_BASER, VALID)) {
-+        if (s->phys_lpi_config[domain].valid) {
-             qemu_log_mask(LOG_GUEST_ERROR,
-                           "guest tried to write IRS_IST_CFGR for %s config frame "
-                           "while IST_BASER.VALID set\n", domain_name[domain]);
--- 
-2.43.0
+> -----Original Message-----
+> From: Matt Ochs <mochs@nvidia.com>
+> Sent: 14 September 2026 16:56
+> To: Peter Maydell <peter.maydell@linaro.org>
+> Cc: qemu-devel@nongnu.org; qemu-arm@nongnu.org; Eric Auger
+> <eric.auger@redhat.com>; Nicolin Chen <nicolinc@nvidia.com>; Shameer
+> Kolothum Thodi <skolothumtho@nvidia.com>; qemu-stable@nongnu.org
+> Subject: Re: [PATCH v2] hw/arm/tegra241-cmdqv: Keep VINTF page0 region
+> alive
+>=20
+>=20
+> > On Sep 14, 2026, at 07:29, Peter Maydell <peter.maydell@linaro.org>
+> wrote:
+> > On Fri, 11 Sept 2026 at 20:04, Matthew R. Ochs <mochs@nvidia.com>
+> wrote:
+> >>
+> >>
+> >>     name =3D g_strdup_printf("%s vintf-page0",
+> >>                            memory_region_name(&cmdqv->mmio_cmdqv));
+> >> -    cmdqv->mr_vintf_page0 =3D g_malloc0(sizeof(*cmdqv->mr_vintf_page0=
+));
+> >> -    memory_region_init_ram_device_ptr(cmdqv->mr_vintf_page0,
+> >> +    memory_region_init_ram_device_ptr(&cmdqv->mr_vintf_page0,
+> >>                                       memory_region_owner(&cmdqv->mmio=
+_cmdqv),
+> >>                                       name, VINTF_PAGE_SIZE,
+> >>                                       cmdqv->vintf_page0);
+> >
+> > ...but we don't actually initialize the MemoryRegion until here.
+> >
+> > I don't think you should assume that memory_region_* functions
+> > will do anything sensible on a zeroed-out lump of memory.
+>=20
+> You're right. Although the current implementation of
+> memory_region_is_mapped() only examines fields that are zero before
+> initialization, using it here relies on the internal representation of
+> an uninitialized MemoryRegion.
+>=20
+> memory_region_init_ram_device_ptr() has not yet called
+> object_initialize() on the embedded region at that point. I'll restore
+> the explicit initialization flag from v1 in v3 so that no MemoryRegion
+> API is called before the region has been initialized.
+
+Or we could avoid the check altogether by tying the MemoryRegion lifetime
+to the vintf_page0 mmap.
+
+- Move the initialization of mr_vintf_page0 to
+   tegra241_cmdqv_alloc_viommu(), just before the successful return.
+   Add it as a subregion, but disabled with memory_region_set_enabled(mr, f=
+alse).
+
+ - tegra241_cmdqv_guest_map_vintf_page0() and
+   tegra241_cmdqv_guest_unmap_vintf_page0() then become just
+   memory_region_set_enabled(&cmdqv->mr_vintf_page0, true/false).
+=20
+ - In tegra241_cmdqv_free_viommu(), remove the subregion and unparent
+   the region before the munmap.=20
+
+This way we tie the MemoryRegion lifetime to the vintf_page0
+mmap/munmap, and on VINTF0_CONFIG.ENABLE set/clear we just toggle
+memory_region_set_enabled().
+
+Thoughts?
+
+Thanks,
+Shameer
+
+
 
 

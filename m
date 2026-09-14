@@ -4,99 +4,112 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7DC75C88E64
-	for <qemu-arm@archiver.kernel.org>; Mon, 14 Sep 2026 11:26:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A3757C88E64
+	for <qemu-arm@archiver.kernel.org>; Mon, 14 Sep 2026 11:27:46 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1x64p5-0005W0-Q8; Mon, 14 Sep 2026 07:26:07 -0400
+	id 1x64q7-0006Dn-5R; Mon, 14 Sep 2026 07:27:11 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1x64p3-0005Vo-V9
- for qemu-arm@nongnu.org; Mon, 14 Sep 2026 07:26:05 -0400
+ id 1x64q5-0006DB-NZ
+ for qemu-arm@nongnu.org; Mon, 14 Sep 2026 07:27:09 -0400
 Received: from mail-yx2-x11.google.com ([2607:f8b0:4864:41::11])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1x64p2-0007qP-Al
- for qemu-arm@nongnu.org; Mon, 14 Sep 2026 07:26:05 -0400
+ id 1x64q4-0007vF-6v
+ for qemu-arm@nongnu.org; Mon, 14 Sep 2026 07:27:09 -0400
 Received: by mail-yx2-x11.google.com with SMTP id
- 956f58d0204a3-66e56a1b327so1468542d50.0
- for <qemu-arm@nongnu.org>; Mon, 14 Sep 2026 04:26:03 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1789385163; cv=none;
+ 956f58d0204a3-66e4aa8d881so1304946d50.1
+ for <qemu-arm@nongnu.org>; Mon, 14 Sep 2026 04:27:07 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1789385227; cv=none;
  d=google.com; s=arc-20260327;
- b=Qsc1mGrcgzcjwCgWhDwiWXk4UiBqx4Qnw/LlvX+zrpNHwZw3wC3aOw8CyfSvBcCcUE
- THxyaD0XPVwlDZP77j02/dzp7GRn0gyyW/iUaK6/PrleYVivZgSHb226vvlNqXvyOykd
- o/0yQpmctVyssr3+eoy30l/yOoz8RTfEx3qZxLO3kWARnvQEt1Q3JctGdS0vZbntNXy9
- PtxaMY8c0yvYFYDLuKoRp5x5cFqqvUOOH3hFiU08Lk4Yan+mbbxGGAGGyy2mIhNuJtjI
- NO2IBawlxs8medFYAXoYKvGauNzGTJLzjspkSA0LDA9QbrcBT2U/8UgsLyk91IWDoYk1
- FwFA==
+ b=e7cVZuqxWaCD2NuSlqV7ZYoteNBt0TKYgkpFR8WENfsi28e9IRKjGAHvxK7aQf/rz1
+ WW4vmAUmRL8GNFx2pJBmqGJX3J5tbwxL5ASiJIkYkW7Plxw3kpoe51gOZP7ZGnHOXsFr
+ uvxXQkYk5KpKkHvETxBUO89+YHNQP1eZL9293sKHyvglRZm0LXwSZQLA1bxsjPBXkakM
+ Yxmu7gKYoWxPHIwm63LQDVx1GKh2lrbFebqGLmS9adAxKmvQ6YUgnotpUp+Z8e8LeiXh
+ bRm5hIQg0qDdXzVfXI7gHyNjzwn2VKtKv1Q9HhawJSl2RQG8iaSdTQgRf4Xt7XDVd58s
+ /ngg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
  s=arc-20260327; 
  h=content-transfer-encoding:cc:to:subject:message-id:date:from
  :in-reply-to:references:mime-version:dkim-signature;
- bh=KGXd6U3Obv31kSVPrgdwb04PokF5l5JzigAcSViv3CY=;
- fh=SqhxPnSmFWfEpRXPR8KUHYGB1iHumOvhlEh2LS1S0C8=;
- b=l0NSWL4mVPxaEJpXhV46sVWjXjgSSE84rwv+hfAdGiqdAUdFuDmix261d3FYL3ee8N
- k1ryHOrqEyKwCSckLZhzDRRkB0mNAg8EhFpNfG/h//HFe+KmlWu+NnLhvzTC8sDbL4u1
- Tf7t94sPgW/Mc6WC4Do409a/88Z6mjT4MrvbzsW9B/4z+zy0Bi9cQVQdIMxHhnPGLxr0
- oamaGb98p/WNi3L5XXM05ycFCqVW0a2k3B1aojx1NsRq/HxpkO4V1CuIkuTlAoQmj05n
- q24+g+pqagpIL68qBwN2xqyt8Fa75ve//kudHZ+gpjkWnB0Ltm1srfXjIGvZxZAVErO4
- E07Q==; darn=nongnu.org
+ bh=QQNw9jEF4RWvV57juX1m3+edMRoIpw5ThRRrmoNT37k=;
+ fh=tvAW4xvYaAhHNDdD2tKbZsgVzM5I1s/bj5W88FquLuU=;
+ b=Bsf3byP5dhnCLufv24cNZmfTrlAJbtVi02Ix6e0VTK0p5JhPwtvIue3ZQ/NgEz2PJF
+ CiuPAMz7DyZo98swywYtGJlWUSRRVPOEd1CxIDjbzzWh4stPSd5PQn7OhFasyypJ4qpz
+ 5Y+iRhUqqvGHwquyo6GPYzch4/PRlhcDgfwPHqXWRStyHJ+5yqa7GwIk+FPYcnJXHgJH
+ g6SnFz+vPSucgRrHZWG1oM8jcIPsS7mPZxcCI4gZUZOFXZeL2nGBAMUWdiJJnScUAShz
+ DavNiTqn8Bm4H/KjwqM7ad6Q8josE2e6nqYAWM8NGDQxe5C+ZrtmWY/OQpDN3r5/LBw5
+ nVlg==; darn=nongnu.org
 ARC-Authentication-Results: i=1; mx.google.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1789385163; x=1789989963; darn=nongnu.org;
+ d=linaro.org; s=google; t=1789385227; x=1789990027; darn=nongnu.org;
  h=content-transfer-encoding:content-type:cc:to:subject:message-id
  :date:from:in-reply-to:references:mime-version:from:to:cc:subject
  :date:message-id:reply-to:content-type;
- bh=KGXd6U3Obv31kSVPrgdwb04PokF5l5JzigAcSViv3CY=;
- b=PnoTMLNxHSAiFFHchz9xqDVU2Wy4kJ7V0ruEjb6ys0VD9TKWjFBQcCn0QhlH2tz1nZ
- bTBKhiM9AW1McDDVmFiF4R2PRfQH8YnasiM3tA7PsGNNq1SLzhdVoT3tm9FveyqYJEh4
- JvWHDeOfsfNX7T21aBZnBmDM6r5fKSQ2sc980bXaxE2PfG+8mfPFmcYGKAwcxIb4znzm
- Qb38BpKvdoosakAv0GeS0nQO+yPeAEpwjGCBe9MsKHV9s2y56lp1yztiogl/J2rirToK
- wb8oSDUlc9HItd0ZBz/5zL8bSIfTqw54azuyKm9K1XrJtYH+vhWbShdvZQXTmHh5xvNE
- sbiA==
+ bh=QQNw9jEF4RWvV57juX1m3+edMRoIpw5ThRRrmoNT37k=;
+ b=wBMcH21luBJj+7BARpU9LGjGLiUDqgAbAFKpTy5zHtwhpqdGTbk5OL6ZwFlukhvtGx
+ 4yRnqdITrRjdX7M+mgSQdtJ92K3F8pEz94H5Ov6tkkxouq4OE0JDPQVg7kl5E/W0VR+b
+ 2xwLpdTpWlezBuioRrqL1Vt+I+0HSs/ebepfEAmi/54xot9ZwZBqSqWjC8h6M6veNCqO
+ HIgfTckMJcY1BJdbmSvDmBcTicfaVAOwwCo1B7/5IYCsxaKEXQXj+SsPtis4yEjpXaKv
+ ZyILdKKxM9kvgRJ2mOC8DM9nzMMZbOswvhiAJp5Oa+MjtTAxFlvFzbB3X4kenlyLD7o/
+ fqag==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1789385163; x=1789989963;
+ d=1e100.net; s=20251104; t=1789385227; x=1789990027;
  h=content-transfer-encoding:content-type:cc:to:subject:message-id
  :date:from:in-reply-to:references:mime-version:x-gm-gg
  :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
  :content-type;
- bh=KGXd6U3Obv31kSVPrgdwb04PokF5l5JzigAcSViv3CY=;
- b=TwhNE1xpKS4+yDIOo84sU3P7BA7RUpic0lMmdF+v6qpOvy2Sxv4gBtCtsJY/Ox9gWc
- ZsifCgG3qS21ECV29OhOCVL3/7l5lDM5IoItiWTRXdcJgo2GXyIDbN5uyOKFPJ52ofj6
- q206xMrDUyFmjbPP0mCy0D3ycTH1HaRK1+NTBPM78j4eunizgJUkgoVrGYzM6dmPLhuq
- 3UCOgR2khMI4RSDA9vxscRvu1Sz933zXMNdNC66+L+PdgSlDboAqtWCTr5dPa8A3TreY
- C7q90ImahnNhXTEvmxvxqGc6vd/jUULKPORvdsWyT3kbgMUzPz6n2KUBGFWWGO+FEGvy
- Ohpg==
+ bh=QQNw9jEF4RWvV57juX1m3+edMRoIpw5ThRRrmoNT37k=;
+ b=g+UOM+1pGfpQu7AvVdvU1QL8npuQnsJGvfcZJmufeQ0bw+y5lMt2eUucGqteTf2ykW
+ dIjLYkZMLXkQKaTcKH+txk4DSJ//2/lRTESwzkbJTOhHk9fvbr0t6nDfidBp2uV3DxMG
+ aawaxIcgA+b+EVTFJlNlV1beRvJdD7Gm4n837O/cW3Vabhagv/9zbPDa9v/Z//iMCtPX
+ cHwWaLO9aoaVBisUy2fpDplqJ9lPjez3ZRCJYKp36IN+TcvPxRS3zHGM7jSW6GP9C1DL
+ SfEk5kBt/iZFcqnixIH0IUI3sdXrSRK7nOCvTA8OW9Ojkz/HAAsbm+pLwLJvGQ8OCtON
+ w/+w==
 X-Forwarded-Encrypted: i=1;
- AKwUvBwS+G4mqG2eJ7dAlb9nYSWTaRfAMDTVvsSd3N8jJxrRf+zo6RRdA9LWCtZ1bMquXV21KpCuYmSf9A==@nongnu.org
-X-Gm-Message-State: AFuF++k2PqBq4w8hGiYmrebIqz7xMBx03XrC0EkP5uYG+d2G6P09+gY8
- Sydl0KyW4zWXYobYvS3eBrhJ5Hv4Vts1uGGWIBqZZnRUlS91WPurE+fYH2Emm7OIuQ0cpzOFCNf
- Tm9FZWaSIxNC95Tfe+nzFm+qZpGywSh48plhRmgiefQ==
-X-Gm-Gg: AYBFou22FcrtrMivVwV7rqtagg0SuzCAcMEfVkaIqRCe/4mHAic8fW9o1uQxJtT7ArA
- mQljt2JIVC/eOYb+meM9Di4LcHwCPY0+LSlc4Cw4xFhXQ//O8yvtLgnHc91NDXp8yUF4CRTjygh
- zod5v8xdDVytvocwk7xpn4S/pZId9/w81zR8RruVGalX1I5j9iTwWHvI/RgekPrTl7mXnjmMfM7
- HQ9B2CgNbn7XrobCR6V3EXBKdMOhSl8rF47FwEjgkV+fjZXvEz2L7EcLH4lotthNHrGgDYr3ZGw
- vVTzQi+3n+lf707/6YLd88MLNycww/GHI924UpznYPTRBqLm8ZiZKpj69NqhS5CQdOrXwf/zSEW
- iAhdNFpUpjoTDKseJc6++NUtF1rmgaHNJOUCoucM=
-X-Received: by 2002:a05:690e:1685:b0:671:158a:ef96 with SMTP id
- 956f58d0204a3-6714dfc87fbmr793275d50.11.1789385162944; Mon, 14 Sep 2026
- 04:26:02 -0700 (PDT)
+ AKwUvBwPmNbZdYxsKtgn/l2NTy94Ed66PEfrYwugkVwIF0cJCnXticQQqObxJMF4DJ65NgK0Na42pR0rUw==@nongnu.org
+X-Gm-Message-State: AFuF++m+b0bl62JC3HLo0UgYC/IeInC8Fx1LFBhYAP9QzFQQH7Fm7GOL
+ h0V6B5LZnvza0fNW+TYSLQNY/dY5sLBY8iGcZcSAc2SxOJTQAUv69CjN/LkhE6JHQTEA+01xKth
+ 2VFC+jUqK3mthi4PqkpK+ZwFyQBEz/tUaRjEBMcWZIA==
+X-Gm-Gg: AYBFou1SV5oy0M4ElccxG8IrDcXkgd9FWm1wvl/J9ZPhWsWqXtx/VwMhp3WdnyBWPve
+ HR6D84hbf9L6MqsDfUZ5DfP6HwLYbrV9ltzldxFI2BrxmX80ms/Hut+539t3zxgR4rEIArqTNI1
+ nEcTo6wDkMVpbZ8ZAKP+tkHx9Wtn7z1lgXWkL5TVLhbfud8CZHKOe/hkjcWQs/TqhdMZyTTYYCP
+ f2vgy9beryiIJeHiNH7l20zgjGDYivcf7jEiIkUVkEmUhHpHSzZe7fjzLiGncQkufBiQF8908hP
+ PEzh0BmpumhL2hQSgvSHaTdtdb/V/xR3YW9vsuZMRPzf8ZrE9ekWSWeelCuBiCR92B49UOjIdGO
+ piydxzyhYoO/XTiHvEpa7ZKbz+9hic9g2kV0Gel4=
+X-Received: by 2002:a05:690e:4419:b0:671:4b8f:e8f5 with SMTP id
+ 956f58d0204a3-6714dff9729mr275501d50.35.1789385227080; Mon, 14 Sep 2026
+ 04:27:07 -0700 (PDT)
 MIME-Version: 1.0
-References: <20260913-bcm2835-v1-1-b3719ca0df13@rsg.ci.i.u-tokyo.ac.jp>
- <CAFEAcA9aJJc_yRNYbATjA8d4ggZr_B=r5EmVNma1rzhi_ZrWLw@mail.gmail.com>
- <CAJ+F1CK3eC-t-uBDuCSd2VG=-hx9v+ev8cRf5_xh9oC=04O3Og@mail.gmail.com>
-In-Reply-To: <CAJ+F1CK3eC-t-uBDuCSd2VG=-hx9v+ev8cRf5_xh9oC=04O3Og@mail.gmail.com>
+References: <20260906-nohmp-next-v1-0-2b21e63974f3@redhat.com>
+ <20260906-nohmp-next-v1-4-2b21e63974f3@redhat.com>
+In-Reply-To: <20260906-nohmp-next-v1-4-2b21e63974f3@redhat.com>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Mon, 14 Sep 2026 12:25:51 +0100
-X-Gm-Features: AcwNN1XN6kuQlPcZ1UAkEa2egw5zkbIeTGPudMOhp3ltCnUL4_02rdB0wAySaZU
-Message-ID: <CAFEAcA8ysxWGFO9ER_HgU8P6j4uZ3gcb=eN90-1J2swYD+KdtA@mail.gmail.com>
-Subject: Re: [PATCH] hw/misc/bcm2835_powermgt: Free the watchdog timer
-To: =?UTF-8?B?TWFyYy1BbmRyw6kgTHVyZWF1?= <marcandre.lureau@gmail.com>
-Cc: Akihiko Odaki <odaki@rsg.ci.i.u-tokyo.ac.jp>, qemu-devel@nongnu.org, 
+Date: Mon, 14 Sep 2026 12:26:55 +0100
+X-Gm-Features: AcwNN1XW3MUngEO8Shspfe-7Zi7uvOVyTbxK8AJYJzUa824KrIy1alSeaQHFkxE
+Message-ID: <CAFEAcA9ZHGY2Wj_8z9Vq01Oz+Dx8xtfh6H28FsYepAM4szogYA@mail.gmail.com>
+Subject: Re: [PATCH 4/9] tests/launchupdate-test: correct g_auto usage
+To: =?UTF-8?B?TWFyYy1BbmRyw6kgTHVyZWF1?= <marcandre.lureau@redhat.com>
+Cc: qemu-devel@nongnu.org, Brian Cain <brian.cain@oss.qualcomm.com>, 
+ Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>,
+ "Michael S. Tsirkin" <mst@redhat.com>, 
+ Stefano Garzarella <sgarzare@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>, 
+ Zhao Liu <zhao1.liu@intel.com>,
  =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@oss.qualcomm.com>, 
- qemu-arm@nongnu.org, Thomas Huth <thuth@redhat.com>
+ qemu-arm@nongnu.org, Ani Sinha <anisinha@redhat.com>,
+ Gerd Hoffman <kraxel@redhat.com>, 
+ Fabiano Rosas <farosas@suse.de>, Laurent Vivier <lvivier@redhat.com>,
+ Jared Rossi <jrossi@linux.ibm.com>, Zhuoying Cai <zycai@linux.ibm.com>,
+ Christian Borntraeger <borntraeger@linux.ibm.com>, 
+ Jason Herne <jjherne@linux.ibm.com>,
+ Richard Henderson <richard.henderson@linaro.org>, 
+ Ilya Leoshkevich <iii@linux.ibm.com>, David Hildenbrand <david@kernel.org>,
+ Halil Pasic <pasic@linux.ibm.com>, 
+ Eric Farman <farman@linux.ibm.com>, Matthew Rosato <mjrosato@linux.ibm.com>, 
+ Cornelia Huck <cohuck@redhat.com>, qemu-s390x@nongnu.org
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 Received-SPF: pass client-ip=2607:f8b0:4864:41::11;
@@ -122,36 +135,46 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Mon, 14 Sept 2026 at 11:33, Marc-Andr=C3=A9 Lureau
-<marcandre.lureau@gmail.com> wrote:
+On Sun, 6 Sept 2026 at 09:54, Marc-Andr=C3=A9 Lureau
+<marcandre.lureau@redhat.com> wrote:
 >
-> Hi
+> g_free() isn't the appropriate way to release those types.
 >
-> On Mon, Sep 14, 2026 at 1:32=E2=80=AFPM Peter Maydell <peter.maydell@lina=
-ro.org> wrote:
-> >
-> > On Sun, 13 Sept 2026 at 07:44, Akihiko Odaki
-> > <odaki@rsg.ci.i.u-tokyo.ac.jp> wrote:
-> > >
-> > > It leaks with introspection.
-> > >
-> > > Fixes: 21fcfb604608 ("hw/misc/bcm2835_powermgt: implement a real watc=
-hdog timer")
-> > > Signed-off-by: Akihiko Odaki <odaki@rsg.ci.i.u-tokyo.ac.jp>
-> > > ---
-> > >  hw/misc/bcm2835_powermgt.c | 8 ++++++++
-> > >  1 file changed, 8 insertions(+)
-> >
-> > Hi; Thomas Huth sent the same patch a few days earlier:
-> > https://patchew.org/QEMU/20260910175001.76278-1-thuth@redhat.com/
-> > so I'm going to take that version.
+> Fixes: 0b70c6ce7b31 ("Add functional and unit tests for the vm-launch-upd=
+ate device")
+> Signed-off-by: Marc-Andr=C3=A9 Lureau <marcandre.lureau@redhat.com>
+> ---
+>  tests/qtest/launchupdate-test.c | 5 ++---
+>  1 file changed, 2 insertions(+), 3 deletions(-)
 >
-> And earlier!
-> https://patchew.org/QEMU/20260906-nohmp-next-v1-0-2b21e63974f3@redhat.com=
-/20260906-nohmp-next-v1-3-2b21e63974f3@redhat.com/
+> diff --git a/tests/qtest/launchupdate-test.c b/tests/qtest/launchupdate-t=
+est.c
+> index 225c843df5b9..ed007cdce29f 100644
+> --- a/tests/qtest/launchupdate-test.c
+> +++ b/tests/qtest/launchupdate-test.c
+> @@ -192,8 +192,8 @@ static guint32 match_string(char *serial_f, const cha=
+r *exp_out)
+>  {
+>      GError *error =3D NULL;
+>      g_autofree gchar *f_contents =3D NULL;
+> -    g_autofree GRegex *regex =3D NULL;
+> -    g_autofree GMatchInfo *match_info =3D NULL;
+> +    g_autoptr(GRegex) regex =3D NULL;
+> +    g_autoptr(GMatchInfo) match_info =3D NULL;
+>      gsize len;
+>      guint32 count =3D 0;
+>      gboolean ret;
+> @@ -214,7 +214,6 @@ static guint32 match_string(char *serial_f, const cha=
+r *exp_out)
+>          g_match_info_next(match_info, &error);
+>          count++;
+>      }
+> -    g_regex_unref(regex);
+>      return count;
+>  }
 
-Ah, I missed that one as it was inside a larger series. I've fished
-it out of there since yours has precedence :-)
+Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 
+thanks
 -- PMM
 

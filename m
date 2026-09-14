@@ -4,102 +4,98 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DF538C88E50
-	for <qemu-arm@archiver.kernel.org>; Mon, 14 Sep 2026 12:17:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6381AC88E66
+	for <qemu-arm@archiver.kernel.org>; Mon, 14 Sep 2026 12:31:28 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1x65cT-0000xn-B3; Mon, 14 Sep 2026 08:17:09 -0400
+	id 1x65q6-0006IW-8m; Mon, 14 Sep 2026 08:31:20 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1x65cR-0000x6-3J
- for qemu-arm@nongnu.org; Mon, 14 Sep 2026 08:17:07 -0400
-Received: from mail-yx1-xb129.google.com ([2607:f8b0:4864:20::b129])
+ id 1x65p9-0005px-QA
+ for qemu-arm@nongnu.org; Mon, 14 Sep 2026 08:30:31 -0400
+Received: from mail-yx2-x10.google.com ([2607:f8b0:4864:41::10])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1x65cP-0001IC-Er
- for qemu-arm@nongnu.org; Mon, 14 Sep 2026 08:17:06 -0400
-Received: by mail-yx1-xb129.google.com with SMTP id
- 956f58d0204a3-66c70f69d3fso2995620d50.1
- for <qemu-arm@nongnu.org>; Mon, 14 Sep 2026 05:17:04 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1789388223; cv=none;
+ id 1x65p6-0004GX-9Q
+ for qemu-arm@nongnu.org; Mon, 14 Sep 2026 08:30:15 -0400
+Received: by mail-yx2-x10.google.com with SMTP id
+ 956f58d0204a3-66e4ab20a32so1621418d50.2
+ for <qemu-arm@nongnu.org>; Mon, 14 Sep 2026 05:30:11 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1789389011; cv=none;
  d=google.com; s=arc-20260327;
- b=G4yujckTb34awPz3ScUhk0wjuW3wYvdY0OAavvnjtOG0vBi2shukAjvNCzOr+PngqJ
- XFcTkL6TuBglPBl7GiMwNSVc7hcBSZ6YczpXdBUgD7liGozHALF1doGzwttYyLYEJgaa
- M7FFNjxZB3vS/m8s1C+E2O5YMEXIjG3KPzKR9R5Q0BgaweNyZ+lVURsSsnG2Ty9A2Y8S
- EMuOkp7OE6QuCAieNd+774JOWpglxPAxXE3I6aqLZlqRKzBHNAC4YlJGaNfmDQOSvq2K
- wr1QtEzt3tVoX9z7QVWaSE9JtmMDZ1wt/nCzljd0EGRICoSREVwXxYTLVcvji/381aAf
- xtoQ==
+ b=VorvxdG0V6hYXt46GisiD3B9npZw6z4T/9XSBiupnS02qW8vvhTycT2gEkRdH9Vgq0
+ V2JyomP4WXBiTVriBGyvWOF+nBknVkyb/mV8Uou5T5bWGrh24Isqr72N8Y4P+9FikrZI
+ c3d1WgPqBdAVQFnCQb+zI/Pk3XSfa3+cjlikQWAzFRuqOf5vuITKUtewLB+TakHH8vdn
+ jWRBs71YjoaGpOdsjo0BbPghLZYx59dY58Z/f7y0KUB0ZIoYuHjhSAXC51KlvPWhpax9
+ YAS724C9hfRRuTyGHtLUlKeM7aBo301H6ipMDZrrPi62gyY5UyDSd2jGqaujNHybWq1l
+ rX1Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
  s=arc-20260327; 
  h=cc:to:subject:message-id:date:from:in-reply-to:references
  :mime-version:dkim-signature;
- bh=JcaGD9CD+W/ivWBfEUgg4X0MaxjX3d/zpeZO65l6kuk=;
- fh=GC4xIbiBiOnW0TEURhPVa3dDTMkJQZ0mQvnePplwCo4=;
- b=kXtNOusMTQy4Qs2gIT4iPT/tIQOWvae2JgiWFYdOB+ZN5eKBQPcCUq3VRpuKqRTqRi
- LfbBZzRvmG6ROVswRAoInG4ln4mzXpZ1nl5FoKPfqXgO86OhjUDkKmhwuCRPZo/BEEAx
- 2Wj1YWuyLMoubOG21GOUvZOM3RfGwMW4TE4bMbkky2sflYDx3KY0yTN2OwHEcUeankp5
- GljtML3jGcx5Nl/1ib3ejCf25AF5wT3t/BFJsGmk0T/+eiHnZ+p6T22i10X3SqhEIgVs
- 2FzZZCj3+s4bzFenI++Oxf/l7evw3LLTsFsI+0EoTCAZ1EcV78P3oR3Jw3Qqsy0SdTW7
- fUQw==; darn=nongnu.org
+ bh=xaB4jayHXGBrFcs8fKIQFqymEASlJUqyJ2gx4sFjLvY=;
+ fh=I1mjXPkFkk+vhFogkr5KtSF12s7tySe/lenAf/f64Sg=;
+ b=Q3ue2ly8+E4y6TVZrmoyi81YqSpBQgqpbQvdd9l2AyzsOcmoX93knJwqs+HLJ7LgPW
+ Kk7gSB4yaLZLKhYWkvoN4Dk2DdFxBK+AklxTSXRGUSsDT009D5trEO4rYH/V8bycloyo
+ g93vP7+A90W9YBzX1Bg1lpO9aFz+fVNW3B8JxhPJR2dPNTdwf1Got77iqm34JiqYotBp
+ J+w9iohr/gldTvgWVPAH+FcQJG41ZUDzYrb+K6IASN3KQQCTNr1ij80f+laZIDlu3yCM
+ q67as3aMLmic5B0o3OrfL4p2i7tNpmkU6nt0F9CD9g3Jx+tkNkhPErby8/TNy3NM/jR2
+ fRiA==; darn=nongnu.org
 ARC-Authentication-Results: i=1; mx.google.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1789388223; x=1789993023; darn=nongnu.org;
+ d=linaro.org; s=google; t=1789389011; x=1789993811; darn=nongnu.org;
  h=content-type:cc:to:subject:message-id:date:from:in-reply-to
  :references:mime-version:from:to:cc:subject:date:message-id:reply-to
- :content-type; bh=JcaGD9CD+W/ivWBfEUgg4X0MaxjX3d/zpeZO65l6kuk=;
- b=GxmUBswfqvopg/qpRRQ47x1a90hqeNwOZQm/uwfTeT4GAJCtTwZMgHrn6BZ+mVaxU1
- 8zz2ya5djJudD3HE3DHA5+fcB8mVAQy7AbmDTA71/KLpHICPq+DgxOI9sN323gRkYi7E
- caR43/gd43AlYVzl4dy1PFzYfO8cAoj/vzX0NCEWIwGKOrJp6XoSxif63fb6I/kdsawN
- 1K5e5AgLSV5Nz5ZBZVmH2HKWHtsg5ZTU064UWAaexcBWEoCX2RcUhyaI2bZJf2Bpe4r9
- o9TcsnFUjeY8ThBTsocbE86EECgibG6uYEYm6lnaP4o5lp+28WVUdvXSmcil3u1vcJv5
- fhLA==
+ :content-type; bh=xaB4jayHXGBrFcs8fKIQFqymEASlJUqyJ2gx4sFjLvY=;
+ b=sK6vx94oKQ+R7y+B0rDgT+NNhSSxfM7jrT3rMgGHC0bcD3QoXMxA+m9SoE0/8KNz48
+ mA4sGv511EmLAwZnN5G8OcnHMXneaA6nEnRYA+IDZ3m8pozNKJvY11qBD2sewcrJmSNz
+ oYW4F7K/7+z2DcNYEo1M8uePh74YsSV4/75KPsvG7d5oEi/tJYRYnRqWSWLwPj7hsicY
+ kcUtLEDynIQItraJArguFiX95EwCSPXzDx6CzlcVQ2f3qIkrBaZxibEPwqoMKgFcAmqu
+ 8WG2f5CjOQFvPmPQqK/23zMcWtXQTFtPMcPTACtAivuWHlWJ11DLUnPkysZJw05V4Z0P
+ b02A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1789388223; x=1789993023;
+ d=1e100.net; s=20251104; t=1789389011; x=1789993811;
  h=content-type:cc:to:subject:message-id:date:from:in-reply-to
  :references:mime-version:x-gm-gg:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to:content-type;
- bh=JcaGD9CD+W/ivWBfEUgg4X0MaxjX3d/zpeZO65l6kuk=;
- b=mukqMvuaCkvFnLMrZWaQDHvX8w2cwezL+rZg942rO2pPP7TRpTDzvwfmqcGlI2Tz0h
- AS/7c8f8YNp8r+/p/vkiiytOAsu5/pmMJJ8qD6aZjv5XA0I5k70BcvlArNyUql/g9ClL
- QFcKKPuMvFzScluUBFcuFxp6TsvtWUULSdl/AFkb4mMhQ+gCmkr7AfYLoSQvRy/5VtUt
- DTYqkxVvZD4w6SX8W07ZlKnOnD7Rk7P1yh1Y1r1E0afzfqipfY+hh4Bx8oE2dlukY1f7
- atD639w5zZluOMDZ8bv6ysnAfLaE49NwDHZn/wsj1SUnaWROQ5kkBzJsr87rjJQL2ShP
- u0bA==
+ bh=xaB4jayHXGBrFcs8fKIQFqymEASlJUqyJ2gx4sFjLvY=;
+ b=qDCGDw+wDl2++FuHzskN+6sHUdrz1JHkmOL03bWhoU7iISlN2rk3NBkwj6utxEd+RX
+ ROJWDIc7n8JlL2h4PKLwlmieRSjaaeOFMqqPM5KFSk/yLfVOakjxoB11Tb0J2LKT6ctc
+ dCelmqzFnVaSZrnextu1CXAIfMgUXHV9y072Oa2D/PA6XTw0IP6oRDrWEfVphWTKtet/
+ 8JWqdP6HP6Cw7jNVY64hhco5SPpmbtzb6uR7Y6p6Yif5PM6IHRHcyvZE+gqsl4O6u9A9
+ D43nUJSsiiWH1C26fwEBlhc5F87OvYsx7O3foc6+LqTNh+PAEzPwAEvOPuJorTkf5v3D
+ 9Vrg==
 X-Forwarded-Encrypted: i=1;
- AKwUvBx8cs8fWd1uGPzo8NxljucLeHe8vbMm4+r9dE3jRSLAOrFhHOY25qAm78fvv18IjkWlsFM4glDTYQ==@nongnu.org
-X-Gm-Message-State: AFuF++lXn5Lf//bBiijPiMg9VGqn4uLzE7qqYKWX3hLnT6uZS8mEQ0Ng
- +7zVi/g8yUmRn9ARwv2mLlY260pnvBL+C4oiK+07CBejHYDv94uuZSb86LCYS0KWZcXMXQwndIu
- oE73ygu75bJVTcjUuxAfTcs+421KQqo2ucp26NV/z0w==
-X-Gm-Gg: AYBFou27IHuSDnunIe7hMjKBO9lkcLY9UlVwjNdXKSG+ATUtZrBXqHzsMrJu4Qe4APb
- UodYDZBAOQkXhP92qgpncLSJeLppBhEuLlBnrntjdCzmuXT/TCVYnFsOZ944us5Y2g1Iqqeulfq
- xI3hOuI+dYBpEN50NK0qPYEHr70V65/SYjYFQU5wdsVdyvrGNFdS8V8VFX7sDy8ymZSJsnRtj+5
- Xccz8DxNyiqpBsCgeG44tvCmi479Vt/sGIUreDjHFx0iJKtP/ny+clPD4oy4SFwzdddJs6yeFr2
- pzrxB0S+GuVQzeBFI4Dm2CpSwqAcSm1QvN/ZfSApoKL6Szy71mkfCxeDhELiPrk5doH8rK4FpYj
- 9FwIq2/1aSmf9rubmgWbV7diFj1ZY6UKKgkEhZjY=
-X-Received: by 2002:a53:cac8:0:b0:671:1a5:c561 with SMTP id
- 956f58d0204a3-6714e1bebb6mr331988d50.99.1789388223248; Mon, 14 Sep 2026
- 05:17:03 -0700 (PDT)
+ AKwUvBw51Th27VE9/gDOQLDHijsj8hdnXedPvWK2IDv1z8apS7aY81SfPVjJJFWjVdPSzgLzvJ01fTInnA==@nongnu.org
+X-Gm-Message-State: AFuF++ktbea7MIjaltEyeZD42/v9dw8C0FlR66YovApHBOX+zE2/OZCZ
+ ORlRXgorkRanZxHqe2oiP5+1RtSyPlFTcvMRugoo9NnM2Cke0j4SwXztbYp1BE1Hx+36+Acj1CK
+ AXO74rEYvYUWK5ezI43fgLAo0jQ1cXQZugoVNPFR7Rw==
+X-Gm-Gg: AYBFou0JhXm7tPf6OHjrudsh7pfqHdVZHMRInbl8usSv4QjAT5KO/fEzuugsb1Df4/U
+ YgfhUgpN6lVnzEB5EtEMz9rTHDVyAwhJrYcSYPejv5jC5N6hk1FVx21bDr2Nquceh53bLVge9I0
+ WpX6mo3UlK3Yhsp2I/ObusRXvofjogLi4obOf8Wqz7KdSkiIY2Tub7fc8+IegljL2HXOL2b57Dr
+ BEDQ8vk6PNdECcUL+/wjE+FVOEQ9edXY29Uz9uES9aTgM8H+nrM8N/92B1PDIZulQTmBg7a63ul
+ PwWQFmOtVRDQSySyGTXs4qRcozcjqxMLYJi5f/b1CyI2w+RH3X7ZWYxlbdDYD4i7wcEYEVtAHve
+ vQcqLfVjzfPIRbr+UBhNzDNyp1E+b4aP4bP+mLDA=
+X-Received: by 2002:a05:690e:4144:b0:66f:a8e8:7140 with SMTP id
+ 956f58d0204a3-6714dfc8c48mr544563d50.5.1789389010550; Mon, 14 Sep 2026
+ 05:30:10 -0700 (PDT)
 MIME-Version: 1.0
-References: <20260909144151.26803-1-sebott@redhat.com>
- <20260909144151.26803-4-sebott@redhat.com>
-In-Reply-To: <20260909144151.26803-4-sebott@redhat.com>
+References: <20260911190431.4085464-1-mochs@nvidia.com>
+In-Reply-To: <20260911190431.4085464-1-mochs@nvidia.com>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Mon, 14 Sep 2026 13:16:50 +0100
-X-Gm-Features: AcwNN1VjWCl3r1TgFgbFV7Y0VJR1-LUKemc_Mp9GXe9OwSykgUQbU7A652Ju89g
-Message-ID: <CAFEAcA_ikXxw+J10+3mbhJxa_KoAd3PeyT+0khqVo_UPOJL2Cw@mail.gmail.com>
-Subject: Re: [PATCH v5 3/3] arm/kvm: get demuxed ID registers from kvm
-To: Sebastian Ott <sebott@redhat.com>
-Cc: Eric Auger <eauger@redhat.com>,
- Jonathan Cameron <jonathan.cameron@huawei.com>, 
- Alireza Sanaee <alireza.sanaee@huawei.com>, 
- Richard Henderson <richard.henderson@linaro.org>,
- Cornelia Huck <cohuck@redhat.com>, 
- khushit.shah@nutanix.com, qemu-arm@nongnu.org, qemu-devel@nongnu.org
+Date: Mon, 14 Sep 2026 13:29:57 +0100
+X-Gm-Features: AcwNN1WOiXE_oktjBoPZtdQqXfXYDSgHqopiisfxgXafVRax5LaVH0Swm566Biw
+Message-ID: <CAFEAcA9ve3sdSEJ6vPts80phhfjV9BpW+Nx6cJOwH3aYQ3zafA@mail.gmail.com>
+Subject: Re: [PATCH v2] hw/arm/tegra241-cmdqv: Keep VINTF page0 region alive
+To: "Matthew R. Ochs" <mochs@nvidia.com>
+Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, 
+ Eric Auger <eric.auger@redhat.com>, Nicolin Chen <nicolinc@nvidia.com>, 
+ Shameer Kolothum <skolothumtho@nvidia.com>, qemu-stable@nongnu.org
 Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::b129;
- envelope-from=peter.maydell@linaro.org; helo=mail-yx1-xb129.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:41::10;
+ envelope-from=peter.maydell@linaro.org; helo=mail-yx2-x10.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -122,86 +118,108 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Wed, 9 Sept 2026 at 15:42, Sebastian Ott <sebott@redhat.com> wrote:
+On Fri, 11 Sept 2026 at 20:04, Matthew R. Ochs <mochs@nvidia.com> wrote:
 >
-> From: Cornelia Huck <cohuck@redhat.com>
+> With CMDQV enabled, resetting a guest after it enables VINTF invokes
+> the VINTF page0 unmap path. The resulting crash is intermittent and
+> has been observed on the RCU reclaim thread as:
 >
-> We now have the infrastructure in place to handle demuxed ID registers
-> from kvm. Use it to get the values that kvm emulates for CCSIDR_EL1.
+>   reboot: Restarting system
+>   double free or corruption (!prev)
+>   ...
+>   #5 address_space_dispatch_free
+>   #6 flatview_destroy
+>   #7 call_rcu_thread
 >
-> Tested-by: Alireza Sanaee <alireza.sanaee@huawei.com>
-> Signed-off-by: Cornelia Huck <cohuck@redhat.com>
-> Signed-off-by: Sebastian Ott <sebott@redhat.com>
+> FlatViews retain raw MemoryRegion pointers and release their references
+> asynchronously through RCU. The VINTF page0 unmap path removes the
+> subregion and immediately unparents and frees it. An old FlatView can
+> then access the freed region during teardown, resulting in a
+> use-after-free and heap corruption.
+>
+> Embed the VINTF page0 MemoryRegion in Tegra241CMDQV and add it only
+> once. Use memory_region_set_enabled() as the guest enables and disables
+> VINTF. New FlatViews omit the disabled region, while old views continue
+> to reference valid storage.
+>
+> Keeping the region initialized across VINTF disable and reset is safe
+> because the vIOMMU association and its VINTF page0 mmap remain stable
+> once the guest CMDQ has been initialized. QEMU blocks hot-unplug of the
+> device that established the association, so later hot-adds reuse it
+> instead of associating the initialized guest CMDQ with a different host
+> SMMUv3. The CMDQV free_viommu path is therefore only invoked while
+> unwinding initial allocation, before guest CMDQ initialization.
+>
+> Fixes: 5965b81ce283 ("hw/arm/tegra241-cmdqv: Use mmap'd host VINTF page0 for virtual VINTF page0")
+> Reviewed-by: Shameer Kolothum <skolothumtho@nvidia.com>
+> Signed-off-by: Matthew R. Ochs <mochs@nvidia.com>
 > ---
->  target/arm/kvm.c | 31 +++++++++++++++++++++++++++++++
->  1 file changed, 31 insertions(+)
+> v2:
+> - Use memory_region_is_mapped() instead of an explicit initialization
+>   flag, as suggested by Shameer.
+> - Link to v1: https://lore.kernel.org/all/20260903184710.2052780-1-mochs@nvidia.com/
 >
-> diff --git a/target/arm/kvm.c b/target/arm/kvm.c
-> index ed99be7fd8..1230acaff0 100644
-> --- a/target/arm/kvm.c
-> +++ b/target/arm/kvm.c
-> @@ -244,6 +244,33 @@ static int get_host_cpu_reg(int fd, ARMHostCPUFeatures *ahcf,
->      return ret;
->  }
+> Reproducer:
 >
-> +
-> +/* CSSELR values supported by kvm; used to index KVM_REG_ARM_DEMUX_ID_CCSIDR */
-> +#define CSSELR_MAX 14
+> Start an Arm virt guest with one passed-through device behind an
+> accelerated SMMUv3 configured with cmdqv=on. Add an HMP monitor socket:
+>
+>   -monitor unix:/tmp/qmon.sock,server,nowait
+>
+> The failure can be made reliable without an ASan build by starting QEMU
+> with glibc freed-memory poisoning enabled:
+>
+>   GLIBC_TUNABLES=glibc.malloc.tcache_count=0 \
+>   MALLOC_PERTURB_=165 \
+>   MALLOC_CHECK_=3 \
+>   qemu-system-aarch64 <options>
+>
+> Wait until "info mtree" shows the VINTF page0 region, then reset the
+> guest through the monitor:
+>
+>   printf 'system_reset\n' | timeout 5 nc -N -U /tmp/qmon.sock
+>
+> With the unpatched binary, QEMU crashed on the first reset with SIGSEGV.
+> The core showed object_unref() called from address_space_dispatch_free()
+> with the object pointer set to 0xa5a5a5a5a5a5a5a5.
+>
+> Testing:
+>
+>   Unpatched, one CMDQV instance: SIGSEGV on first reset
+>   Patched, one CMDQV instance:   100/100 resets completed successfully
+>   Patched, four CMDQV instances: 100/100 resets completed successfully
+>
+>  hw/arm/tegra241-cmdqv.c | 21 +++++++++++----------
+>  hw/arm/tegra241-cmdqv.h |  2 +-
+>  2 files changed, 12 insertions(+), 11 deletions(-)
 
-This is a bit misleading as a constant name because that 14 limit
-is KVM-specific, and doesn't apply to the architecture or QEMU.
 
-Somewhere in here we should document why the KVM number is different
-from what QEMU has and why it doesn't matter (i.e. that neither KVM
-nor QEMU currently handle reporting separate MTE Allocation Tag caches,
-so CCSELR_EL1 bit 4 is always 0, and that a Level of 0b111 is reserved
-and so CCSELR values 14 and 15 are never valid and will always make
-CCSIDR read as zero).
-
-> +static int get_host_cpu_reg_demux(int fd, ARMHostCPUFeatures *ahcf,
-> +                                  ARMIDRegisterIdx index, int subindex)
-> +{
-> +
-> +    struct kvm_one_reg one_reg = {
-> +        .id = KVM_REG_ARM64 | KVM_REG_SIZE_U32 | KVM_REG_ARM_DEMUX,
-> +    };
-> +
-> +    switch (index) {
-> +    case CCSIDR_EL1_IDX:
-> +        if (subindex >= CSSELR_MAX) {
-> +            return -EINVAL;
-> +        }
-> +        one_reg.id |= KVM_REG_ARM_DEMUX_ID_CCSIDR | subindex;
-> +        one_reg.addr = (uintptr_t)&ahcf->isar.idregs[index + subindex];
-> +        break;
-> +    default:
-> +        return -EINVAL;
-> +    }
-> +
-> +    return ioctl(fd, KVM_GET_ONE_REG, &one_reg);
-> +}
-> +
->  static uint32_t kvm_arm_sve_get_vls(int fd)
+>  static void tegra241_cmdqv_guest_map_vintf_page0(Tegra241CMDQV *cmdqv)
 >  {
->      uint64_t vls[KVM_ARM64_SVE_VLS_WORDS];
-> @@ -454,6 +481,10 @@ static void kvm_arm_get_host_cpu_features(ARMHostCPUFeatures *ahcf)
->              /* Read the set of supported vector lengths. */
->              arm_host_cpu_features.sve_vq_supported = kvm_arm_sve_get_vls(fd);
->          }
-> +        /* Grab demuxed registers. */
-> +        for (int i = 0; i < CSSELR_MAX; i++) {
-> +            err |= get_host_cpu_reg_demux(fd, ahcf, CCSIDR_EL1_IDX, i);
-> +        }
->      }
+>      char *name;
+>
+> -    if (cmdqv->mr_vintf_page0) {
+> +    if (memory_region_is_mapped(&cmdqv->mr_vintf_page0)) {
 
-I think I would favour being a bit more explicit in code about how
-we're converting from a KVM-ism to QEMU's underlying format here:
-have this loop go from 0 to QEMU's maximum CCSELR index (currently 15),
-and then have get_host_cpu_reg_demux() handle 14 and 15 as "this ID
-register value is 0" (with suitable comment). At some later point
-if we need to handle Allocation Tag cache ID values then that code
-will expand to "read cache index values 16 and up, with suitable
-fallback to 'is zero' for older kernels".
+Here we call memory_region_mapped() on mr_vintf_page0...
+
+> +        memory_region_set_enabled(&cmdqv->mr_vintf_page0, true);
+>          return;
+>      }
+>
+>      name = g_strdup_printf("%s vintf-page0",
+>                             memory_region_name(&cmdqv->mmio_cmdqv));
+> -    cmdqv->mr_vintf_page0 = g_malloc0(sizeof(*cmdqv->mr_vintf_page0));
+> -    memory_region_init_ram_device_ptr(cmdqv->mr_vintf_page0,
+> +    memory_region_init_ram_device_ptr(&cmdqv->mr_vintf_page0,
+>                                        memory_region_owner(&cmdqv->mmio_cmdqv),
+>                                        name, VINTF_PAGE_SIZE,
+>                                        cmdqv->vintf_page0);
+
+...but we don't actually initialize the MemoryRegion until here.
+
+I don't think you should assume that memory_region_* functions
+will do anything sensible on a zeroed-out lump of memory.
 
 thanks
 -- PMM

@@ -4,95 +4,95 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id F36A1C88E6A
-	for <qemu-arm@archiver.kernel.org>; Mon, 14 Sep 2026 09:16:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D420BC88E64
+	for <qemu-arm@archiver.kernel.org>; Mon, 14 Sep 2026 09:20:37 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1x62nx-0000l9-TY; Mon, 14 Sep 2026 05:16:50 -0400
+	id 1x62r8-00021C-It; Mon, 14 Sep 2026 05:20:06 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1x62nv-0000kf-1Q
- for qemu-arm@nongnu.org; Mon, 14 Sep 2026 05:16:48 -0400
+ id 1x62r6-00020I-Ci
+ for qemu-arm@nongnu.org; Mon, 14 Sep 2026 05:20:04 -0400
 Received: from mail-yx2-x11.google.com ([2607:f8b0:4864:41::11])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1x62nt-0006AU-Jf
- for qemu-arm@nongnu.org; Mon, 14 Sep 2026 05:16:46 -0400
+ id 1x62r4-0006V8-Q6
+ for qemu-arm@nongnu.org; Mon, 14 Sep 2026 05:20:04 -0400
 Received: by mail-yx2-x11.google.com with SMTP id
- 956f58d0204a3-66e4ab20a32so1415521d50.2
- for <qemu-arm@nongnu.org>; Mon, 14 Sep 2026 02:16:44 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1789377404; cv=none;
+ 956f58d0204a3-66e4ab20a33so1393920d50.1
+ for <qemu-arm@nongnu.org>; Mon, 14 Sep 2026 02:20:02 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1789377602; cv=none;
  d=google.com; s=arc-20260327;
- b=X0L78tIbeLq+Z3KJHnMjeBdNIVmyB/oJ5FUjX8RaH2LM1t0qVhYOk8JcpW8dkX+mWs
- tVOkqi/QYYB1U9Fx6ol4xpDM1ynaoH7d2bMFkDzkbHBhebef3tJLMkt49tpEpinSsXwM
- Zps3mY8Bjanhu2ulO2jGwmSWsfF64RSku82UlSUDo7zI5i/6enRRQUEzhffnv+AeZzXP
- 7NgsDAK17c5KtkFqIam2AQFyJTTo3iWFJIwSGpHAy5DlstPTbTjPgl8Ilu6qK2gKbsJw
- EFDzd9OC+RIC6o3e+Kww/GrR2udjkvnVQTSP8tbhn2tbdkQUuyayT7oqJgqSJhqMJXP3
- ZigQ==
+ b=BvF5kcpNxONdieUMa99BsDUt8a64DKLDPjZv/MMg2c8mqgiZ3be1SEBKw4xevqcQlr
+ mlZQh7dNsu/Lq5WqVsI1EdrvwvO/wne3yXM66SigWWCLP8DI3Xa1rkIn25IA10zou3oB
+ 5OEBgl0auCr6i2w0iAkgGU64ZxSifSNhJL7yYAiT/L7HVVdNajfFZWtFRbKtkRCAHo/g
+ OTQqnNfGwBG0XeXNi62yX2QfzyekBswbGF4CFIt4BXetmmFtHm6MjLOgD0Adl5eTrVT9
+ EC2EqMwDAsLovMIysLDZBTbd/FEJc/Bgg+Ins4yLW2/NnDpUu5nyy2A39VL9KrayUt6z
+ 8tqQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
  s=arc-20260327; 
  h=cc:to:subject:message-id:date:from:in-reply-to:references
  :mime-version:dkim-signature;
- bh=cuVNCcrSOpi9sOD7sQqHogVyBc5TXxEpbbTv0EpMwhk=;
- fh=iRBR1iydTcSOyxzATQgmbspL4DwNW6FukaaSwGNW6Go=;
- b=Jx5NGegNp7WGHpdo02QX+UiWckwuPGDd53rasW7c/o0nEBtafoBCSD/V1Qx0qyJ0mL
- mEF86nG6wl4LEt+q6C2b0fotmDr4PEdDj9UjB6x4t0zM0OEjvuxncPUTAmQ3b8Lq9V/O
- W8UVqXdeJ5KSedxPLCmygr5F7iEGC0l1J4VZOdZgYjs6fXKj7agl0GoyE8NkFipGlk6f
- JRiChk2DgATbxRKtZyMr5BOuernJaOMxM6v8H9ilPLMcGN5GxFNi8NPjIa6p0x71nXsD
- 4UW4bAim7qD5zz9rPnjD+pR8hrYY/HD8Wg/5SI4KuJbKlzRtgXMHiQ/ET5aqk/REudQ9
- 4d/Q==; darn=nongnu.org
+ bh=ChMphz73oEhFFunIG6+zJrLDiaHO4nPJODvJSHKWxV8=;
+ fh=X29cdk10FGASJ86MXLw+0crmbM3r+5KgaaQPkl7jP3k=;
+ b=TkA/yllsPUsi3gpJu/RpY2+D86LlOwb1iCtwZtQsyCs7cSfq6V88TOAtQPdrREEAU9
+ RF6MqWUyJsTcOORWgiual3jSNkbd2JTb1yBYzriBWRz91TuDhaFuTrFgk7HBd/TXhMc0
+ KCrl/z+srDx+WdZQPHeaNubyzF4MVowOdLQ+ORCU2VB5R0DY3Ne4GWAEnGWL5EaKmxP2
+ fNhazxbxPiuOERaPsE0kfze8vjIoZa/KTzuD+mrh1+XKKBzeer8t/Ve1ev9Urn58YPSx
+ IABX/XHhmxreG2NFOIaAcdT/+34airygc0rQ5RYqLbInssNHNTriYQrlUG91cvporLD6
+ Hhlw==; darn=nongnu.org
 ARC-Authentication-Results: i=1; mx.google.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1789377404; x=1789982204; darn=nongnu.org;
+ d=linaro.org; s=google; t=1789377602; x=1789982402; darn=nongnu.org;
  h=content-type:cc:to:subject:message-id:date:from:in-reply-to
  :references:mime-version:from:to:cc:subject:date:message-id:reply-to
- :content-type; bh=cuVNCcrSOpi9sOD7sQqHogVyBc5TXxEpbbTv0EpMwhk=;
- b=Pax7AZYyFArV9H8SnZ+9CLzlWCHUmbdUXQVlDt/QWPPNyD5UushHlyWugTrrpLsmQ1
- GHImuJHQiCX8cCWq4LZlB1pcMhOuoqU15HJjW/jXEY18wtMfWZ6tf1FB7c4ISAVDLyIi
- y/Ldfmyrhgs53I5nJT7gEAg51Cvo/cpK6SfUwSV2BtBBfbSTFrMSPG/ftthth5oMqVlj
- 4PYUFzyOAqBbJvkvPejIQM4LImgCdSRCzIFJLMKZBDLA20Q2+Peq0TDP+QICug9weBhs
- EEoHnFYzlASQEZQykRO/smpVOXbeeTkyNwrdRMlyt3lKH6h4zYTJLNULrOcPr9bDgCGN
- eKBg==
+ :content-type; bh=ChMphz73oEhFFunIG6+zJrLDiaHO4nPJODvJSHKWxV8=;
+ b=D2V9XOSwzFOOGOZqXBF+xkKhQuvQDTFeJVKwGcEHRBjO10ZJoN0LD2BFqzAQn/NJzj
+ CQ6NNJ+cHVAF6hykDZeiCweeBrAA5/MrwNgUhzMOR7z9IHuKAsejmO4KNFdd4I+MhCMb
+ A3icoxlzChVoD5OzOCPIz17shf/k//QgoxKEzpmwBRYWGx8v9vk/9sjSaCZNOMr6oHJh
+ LFLD0HbLR5WJ/g8SjNg/70P4xLahbPaq9oFxMs35oHxPkKuriaVb+uTqSfXHt4A65nnw
+ O29dbAYUiLFP3mDqLE5RG83fFzTn3vuUGI6oheG6Kg+oSwkYrX4BZ33xuYzqgQgxwycM
+ FeIg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1789377404; x=1789982204;
+ d=1e100.net; s=20251104; t=1789377602; x=1789982402;
  h=content-type:cc:to:subject:message-id:date:from:in-reply-to
  :references:mime-version:x-gm-gg:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to:content-type;
- bh=cuVNCcrSOpi9sOD7sQqHogVyBc5TXxEpbbTv0EpMwhk=;
- b=H0EDYAkqj3ymBbkSigo0P9KufhauToGIajlwZp23NkPtaWwcRYcSAzICrI1Lt4l2+M
- fm/4Hi1gHtBOYEppMSinwrdvYbYiADZGxGPgdD0Mc/yS6cvP2FYen8bB/gSy4Xf6Ybuh
- QTMuLDdPDGxsx9TkltCtpCGD9m6TLKNIpBVDjaNKwnnaXdDuuGJZ+zX15BeJnPCJSD11
- u5XPTnXxqMOzJ/wdTdQIZ8v+55vpPpPV1HTvDRq79l3fCG28ocMvk97UxhdBSP+y+/mf
- /fskycD4ahFn+jMIEOlzgtPsQPTNmbPtpP0qa3mWLfhjoSWL8i0z33jQRYta9O5CCHxx
- RA5A==
+ bh=ChMphz73oEhFFunIG6+zJrLDiaHO4nPJODvJSHKWxV8=;
+ b=lCQs7wmCthNNSY871h0Cn+tZ9IBRpLAPtjHJJ/sjJSsGLMbejjKrWmWCE8SK3lQCwl
+ S/CbR1V4HzB86WrQrUYn05nEyRmLHOLuFYFWDRjmoLMpsKc2iPRSi9UMJ04tjO3DsZtl
+ ZTAPHwtFHr8KWWTpT6tiIwWkS+TQxLnk9DuT3YqFhglfQYf5ukHuvNMumQBBJI65Gl18
+ R9MFBXY7OI5Ii6WxbePqFlE24GA4xU6Vn/JfyScBvLB6/TGl6mcLluOs5hYae/8GYpAf
+ R+Lfqa4WqhmcnulpjfSaTyorKSaho7oKvXEfvHaKyaYjqwrAiRWsoMUfZ4DyqPn/azFZ
+ CLrA==
 X-Forwarded-Encrypted: i=1;
- AKwUvBz0/6Q3X/2VEO9E7F8X9ID2HnPFEOYbNFvbDKbEFyCl5eBcy9L58Ut0FJlqWS8wiHxkJXpmoyweWg==@nongnu.org
-X-Gm-Message-State: AFuF++m2Rc7TMqUwZ0RCytf2Dq5tAJfBIe/rMGOHftlsxTzyScK/BYU/
- 1Zk0wZeUxtx1GzCHchCqtxVrGnX86urgL5wcO3NM7jd+3Gb28bUa1uN+3fbUcQaNyiarWwk83XF
- mLtAVvrSfwbfn4PxTMZh+pRVJuV1Wk969TDUuDMiyJw==
-X-Gm-Gg: AYBFou3fUSKVjv4h3ohIhGWbgrzmNRmgX7GLiTBUE2RVY+Cn5UljRsvtKFSjmLzlRn9
- StNSWSif7AbzP+yNQgvzxyxwidQSkLeWFcFn1O4hC1FHtNcuvgZpJyu918uAtKT5/VhHZadcr9s
- 6nPsTr8rEbO3qAf/TW8xqCCFxEL7dATmHsq74r4rUPp6E3jh3Fxp/7Fxa/dRt0pT2B+gnmdpjAR
- XnhukxgRpEiGJ4JhokEXOQRYiWtcxkT/8IOmLby/TtftlfM143Q5Sf9uZCVx+CImjPH01htAEDI
- kiJ+u01i0HtxEJC7Dept4HB+xwoV/k/p1GDU3j0KpL8hm0oONt22vuo+dVObfBb/4u7lTFVGuc6
- SMGLzh1yXjCXhL64NmKy2FIEncbYJHV7n72Yf/zU=
-X-Received: by 2002:a05:690e:4553:20b0:670:fdf6:dfb6 with SMTP id
- 956f58d0204a3-6714dfdaae7mr189754d50.21.1789377404174; Mon, 14 Sep 2026
- 02:16:44 -0700 (PDT)
+ AKwUvBzn8wudjK7NhzmA9Rp6xScgHIkjo/S94fSGttDH9fFKH/WMTHwFevgWQZvITwAw+ZEW2cYCCscvVA==@nongnu.org
+X-Gm-Message-State: AFuF++mc9RZCVTnM7w8BhLE1T762nQKWYXzaYl2Wcg7z6DKGt2w4pPgy
+ wDjdhqmDbzshCaCcPN8oQnUxTe/p7MudRvk48uMDld4+dA+Az3vR+aFTJdzi8Kmu1hi/t/bpZM+
+ 9fYCmceDc4YMLr8j3UdgyQYF2tjBBW096kIAWnubYyw==
+X-Gm-Gg: AYBFou0/N2jG+Ltfwuqle7tE9RewzQ54PiUAEQXd9gV7PL1A5PEL63Nnd24qQjXD0xx
+ XrfKS/K7DxueeO6nfWX7bqTcpdIJECDSGHrGA29xaslJnKuhm086z6qZmMUNwHNfSeHmDSJoHfW
+ Lf8wlM20mRFZK7TNSi5SOsCHohabXTJ3eY0WlGhfFIOR9BmMG+hwxH1qf8X+49JW1QzEJoaCmNG
+ ugTAajCSoWjYlzO+cW7ByuDJilRS+L+WATcyBH08dy6CeEe6ZGKeS5UAS+DBtOq8lAoyTE7D0D/
+ p6R/Zoow8omHslfkoNG0onO+Bq13ZnIHLF9m8NSgcS1SROUgRhYn4jd0FS3XCJs9+6cMUVE7RH2
+ pwb5YUTJQNVJu2IPEJnsRZQIc0oqRAK2f21PN8+4=
+X-Received: by 2002:a05:690e:4882:10b0:66f:c1bc:4086 with SMTP id
+ 956f58d0204a3-6714e07b20bmr167358d50.73.1789377596759; Mon, 14 Sep 2026
+ 02:19:56 -0700 (PDT)
 MIME-Version: 1.0
-References: <20260806173123.333423-1-richard.henderson@linaro.org>
- <20260806173123.333423-4-richard.henderson@linaro.org>
-In-Reply-To: <20260806173123.333423-4-richard.henderson@linaro.org>
+References: <20260904161438.3838261-1-bin.meng@processmission.com>
+ <20260904161438.3838261-2-bin.meng@processmission.com>
+In-Reply-To: <20260904161438.3838261-2-bin.meng@processmission.com>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Mon, 14 Sep 2026 10:16:32 +0100
-X-Gm-Features: AcwNN1XiMSb6RZJn0vc6KF7TWvHzPXlsYl3L7Yoa2djgaU5fqKp5cuTo1w0l-_4
-Message-ID: <CAFEAcA-NoW=39G_m21zQO6CzH5UU3MnsKuFNjkjX-55gzXqD2g@mail.gmail.com>
-Subject: Re: [PATCH v2 3/6] target/arm: Implement HCR_EL2.TID3 trap on
- undefined TID3 registers
-To: Richard Henderson <richard.henderson@linaro.org>
-Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org
+Date: Mon, 14 Sep 2026 10:19:44 +0100
+X-Gm-Features: AcwNN1XoQo60WGsTHuz10GYgcVA4-gqaXOKPsU1Sp-WlezIu1ocG451tdbpPBak
+Message-ID: <CAFEAcA-p=UaNk-Qddid99o7zeGS4WqmvqAugxtjtBKZwv9ie8Q@mail.gmail.com>
+Subject: Re: [PATCH v2 01/10] hw/arm: fsl-imx6ul: Add SCU compatibility window
+To: Bin Meng <bin.meng@processmission.com>
+Cc: QEMU <qemu-devel@nongnu.org>, Jean-Christophe Dubois <jcd@tribudubois.net>,
+ qemu-arm@nongnu.org
 Content-Type: text/plain; charset="UTF-8"
 Received-SPF: pass client-ip=2607:f8b0:4864:41::11;
  envelope-from=peter.maydell@linaro.org; helo=mail-yx2-x11.google.com
@@ -101,7 +101,7 @@ X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -117,18 +117,54 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Thu, 6 Aug 2026 at 18:32, Richard Henderson
-<richard.henderson@linaro.org> wrote:
+On Fri, 4 Sept 2026 at 17:15, Bin Meng <bin.meng@processmission.com> wrote:
 >
-> It is IMPLEMENTATION DEFINED whether HCR_EL2.TID3 traps on registers
-> within the range which are not explicitly listed.  Previously we chose
-> not to honor the TID3 bit.
+> U-Boot's common i.MX6 CPU identification code reads the Cortex-A9
+> SCU configuration register at PERIPHBASE + 0x4 even on i.MX6UL.
+> The value is only used to distinguish Cortex-A9 i.MX6 variants.
 >
-> However, with FEAT_IDTE3 it becomes mandatory to honor SCR_EL3.TID3
-> on these registers, so we might as well honor HCR_EL2.TID3 too.
+> Cortex-A7 reserves this address and reading it causes data abort.
+>
+> The same U-Boot abort was discussed on qemu-arm in September 2024:
+> https://lists.gnu.org/archive/html/qemu-arm/2024-09/msg00072.html
+>
+> Map only the four-byte configuration-register address as an
+> unimplemented device. Its zero read result gives U-Boot the
+> single-CPU encoding after the low two bits are masked, while
+> the remainder of the reserved Cortex-A7 page stays unmapped.
+>
+> Signed-off-by: Bin Meng <bin.meng@processmission.com>
+> ---
+>
+> (no changes since v1)
+>
+>  hw/arm/fsl-imx6ul.c | 9 +++++++++
+>  1 file changed, 9 insertions(+)
+>
+> diff --git a/hw/arm/fsl-imx6ul.c b/hw/arm/fsl-imx6ul.c
+> index 1863558a0d..d6f662efe4 100644
+> --- a/hw/arm/fsl-imx6ul.c
+> +++ b/hw/arm/fsl-imx6ul.c
+> @@ -187,6 +187,15 @@ static void fsl_imx6ul_realize(DeviceState *dev, Error **errp)
+>      sysbus_realize(SYS_BUS_DEVICE(mpcore), &error_abort);
+>      sysbus_mmio_map(SYS_BUS_DEVICE(mpcore), 0, FSL_IMX6UL_A7MPCORE_ADDR);
+>
+> +    /*
+> +     * U-Boot's shared i.MX6 CPU identification code reads the
+> +     * Cortex-A9 SCU configuration register on i.MX6UL. Cortex-A7
+> +     * reserves this address, so provide only the compatibility word
+> +     * needed before the console is initialized.
+> +     */
+> +    create_unimplemented_device("a7mpcore-scu-compat",
+> +                                FSL_IMX6UL_A7MPCORE_ADDR + 0x4, 4);
 
-I thought we agreed not to change the behaviour here? Is this
-just a "forgot to update commit message" thing?
+What is actually going on here, though? Why is u-boot reading
+an address that's only here for the A9? Has this been reported
+to u-boot as a bug? What does the real hardware do?
+
+Whatever the answers are, I expect the correct fix is not going
+to be "fake up this specific 4 bytes to ignore accesses in the
+imx6 SoC model".
 
 thanks
 -- PMM

@@ -4,140 +4,157 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2A048C88E6E
-	for <qemu-arm@archiver.kernel.org>; Mon, 14 Sep 2026 15:56:11 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D2B0AC88E72
+	for <qemu-arm@archiver.kernel.org>; Mon, 14 Sep 2026 16:00:19 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1x692C-0007ZP-8E; Mon, 14 Sep 2026 11:55:56 -0400
+	id 1x6966-0002bU-Cm; Mon, 14 Sep 2026 11:59:58 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mochs@nvidia.com>)
- id 1x6929-0007Xv-Er; Mon, 14 Sep 2026 11:55:53 -0400
-Received: from mail-westus3azlp170100009.outbound.protection.outlook.com
- ([2a01:111:f403:c107::9] helo=PH7PR06CU001.outbound.protection.outlook.com)
+ (Exim 4.90_1) (envelope-from <pierrick.bouvier@oss.qualcomm.com>)
+ id 1x6964-0002Xt-5J
+ for qemu-arm@nongnu.org; Mon, 14 Sep 2026 11:59:56 -0400
+Received: from mx0b-0031df01.pphosted.com ([205.220.180.131])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mochs@nvidia.com>)
- id 1x6927-0003uM-Na; Mon, 14 Sep 2026 11:55:53 -0400
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=gPcJTiDFuhSkYtcu1zXYhTekY8IAkw3TbtZWvORhmVTai48w7si+4I5as9LlQezJMp5vYuuItTC+NpYxOK7Scn2B8tS9mix3xsHK45mnNf1ootINwtKZA2ZuY2A/Q/f/ugdRYU3MZelYork1vwys5UB+zkzdCs7/8MxzlRpmSIT5e8PT58fZIR4xP/al3vgzKHreKEgu+qTSz+VeEfErpxYOd/YJKtT/EXN+SdvggjcdvxsFSndudd97Uagdxj0dsBwLdmcBD97MME+bkA7lpkhUhAmfpGQ6LLtiYHhJ1ahJUSBkLJRY5UheaeIUv6aqE0SKD6NCKn+dddiGMEFyWA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector10001;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=PQGw5LDo5LUXL69woCz3UwnaPlFOAP/tVciMVDvs2qg=;
- b=I114rJf/puBWwlUvBAQLy2ZJVGaOcagT5EJ9RJa1JAVFCjL2netK4sLLBnK1sgFaK6pGPm40ECqqKU54KaUwCyVin3QUX/Pbotb8ba1/JybZ2u0JQkROCT5ArMek5Q+pSPftf+p0B+atm2ZQP9sPKYIEE/dd2zyc3EUcOLRLiqpMVUeh2SmDiUluLOKTcddEmjqgguZTV2wagsxDSYJvq2+eq8Nj/Eh50XSRcwnyZZhYCUlZs4/uonryLVCEb/4zBMvCnBV96OEXqUBdKSxnz7MFFGSrfnEDE/3caWE0NwTCsfOHkI3bA9q7+W/G5gGKQYrYP4C2ATy5JPsfTV5kWw==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=nvidia.com; dmarc=pass action=none header.from=nvidia.com;
- dkim=pass header.d=nvidia.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Nvidia.com;
- s=selector2;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=PQGw5LDo5LUXL69woCz3UwnaPlFOAP/tVciMVDvs2qg=;
- b=qmyP+RXYu9+/NlonI/dQsiupvvU9jiCBfSsvJAAcT5IsYCn/PNqu3mBln+Ij0mYGq9Lj3/SC4ejCYFqCLO1glmqC5XFpvRDuqS4EsLZQwaXL2/HFU/shzczjBqHo48notzsDP7R5ugGIMu2IEpHZALhfxwMwzH03EvLJJ/r36CQVonrZbNMIuukfoaxnVZztdB3nwGmYMQgXv7Ng9LujXgnVMT5cGW/vVCwxCLjAdy0VHh8mEDWKZ4LL/t3grNVfsrVkJco2tX+iYexVlQjxQ3YjFZD4iGfebMTUcGOi1oR+X5XTwU/+8Jrlk1G+y45XypruwZtC7QuuSjfGj8tCqA==
-Received: from DS0PR12MB8442.namprd12.prod.outlook.com (2603:10b6:8:125::12)
- by PH7PR12MB8827.namprd12.prod.outlook.com (2603:10b6:510:26b::12) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.21.406.7; Mon, 14 Sep
- 2026 15:55:45 +0000
-Received: from DS0PR12MB8442.namprd12.prod.outlook.com
- ([fe80::c4df:b439:571:4591]) by DS0PR12MB8442.namprd12.prod.outlook.com
- ([fe80::c4df:b439:571:4591%4]) with mapi id 15.21.0406.007; Mon, 14 Sep 2026
- 15:55:44 +0000
-From: Matt Ochs <mochs@nvidia.com>
-To: Peter Maydell <peter.maydell@linaro.org>
-CC: "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>, "qemu-arm@nongnu.org"
- <qemu-arm@nongnu.org>, Eric Auger <eric.auger@redhat.com>, Nicolin Chen
- <nicolinc@nvidia.com>, Shameer Kolothum Thodi <skolothumtho@nvidia.com>,
- "qemu-stable@nongnu.org" <qemu-stable@nongnu.org>
-Subject: Re: [PATCH v2] hw/arm/tegra241-cmdqv: Keep VINTF page0 region alive
-Thread-Topic: [PATCH v2] hw/arm/tegra241-cmdqv: Keep VINTF page0 region alive
-Thread-Index: AQHdQiBhHVfzSgld7kWe8/9gTceOF7bOBUCAgAA5cwA=
-Date: Mon, 14 Sep 2026 15:55:44 +0000
-Message-ID: <97C51715-99C0-4A9F-907D-C839150D753F@nvidia.com>
-References: <20260911190431.4085464-1-mochs@nvidia.com>
- <CAFEAcA9ve3sdSEJ6vPts80phhfjV9BpW+Nx6cJOwH3aYQ3zafA@mail.gmail.com>
-In-Reply-To: <CAFEAcA9ve3sdSEJ6vPts80phhfjV9BpW+Nx6cJOwH3aYQ3zafA@mail.gmail.com>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-authentication-results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=nvidia.com;
-x-ms-publictraffictype: Email
-x-ms-traffictypediagnostic: DS0PR12MB8442:EE_|PH7PR12MB8827:EE_
-x-ms-office365-filtering-correlation-id: 30501ffd-eefa-4aa4-c890-08df1278a2e5
-x-ms-exchange-senderadcheck: 1
-x-ms-exchange-antispam-relay: 0
-x-microsoft-antispam: BCL:0;
- ARA:13230040|1800799024|23010399003|376014|366016|38070700021|56012099006|6133799003|4143699003|10067099003|22082099003|18002099003|11063799006;
-x-microsoft-antispam-message-info: UVUM9NtuNUaW+DU0OOyLDGpjM8+DyVsNvFWD29tt+woHkeP6jxIYeg5X/vDCcGqzcKurH/G4iPxuhLETiaiOLruH5XPDo1c1bxltguu5NfVOZjdXKYwS8JcW5twfgwLwZiz82dIHA5Y4XczC3Ifr1/zEs5mnqlWCHj/eglPaKyuzjcxxTBqPCrI5PrBCS/Amnzex4vvB4tRKa+7JnBwNMcMyvWzI5/+QRQ7SYXFKVAa9ZZTNfc5TBbufLoMQ6kv5Is09gOXljnfRjDUU2di4vwmAWtyNnJkaKKVlRrs4sBpJ5EvK/wRgoS3a8GTHvEtqQznKjYAg2XxNwHoaY8zxVRlmUTp11U7CpgGax/FBm3JezoAMzuqCviGwVVKgBCR/68asiEijBsDCEoeRxSxJcSHoRf7SAfoPQ6exa3HSYSgNj/wNuvNQa8aFaeUwfdcLiDUoE8EJ+vA4tGKHheNlQn6xa3AT2SfIpajQwT+X0/C+ArW90gPUkpWObTcEZExDYYpbzOO5GbtSYnvygmfW+9eJueTxqWBky8wGuiu0ZvHOHq78M/PuuDVI8P26aaaFqLRmEWkMZjVIj5ppdVZ9cTZbDlQpuE6kLirjaY1QU15NfXGZmo5KaxJNrSJ8NkYj/JVf0HOWGan71S6rBAZ1c5bwtj+r611Kfh/wYRKMp4jV3PGRVsHDAn/rKFgc8NtfetpNSNh3vcCy5Ud7URo/A1aqTHrJhGD+Wu48jAiBtV0=
-x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:DS0PR12MB8442.namprd12.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(13230040)(1800799024)(23010399003)(376014)(366016)(38070700021)(56012099006)(6133799003)(4143699003)(10067099003)(22082099003)(18002099003)(11063799006);
- DIR:OUT; SFP:1101; 
-x-ms-exchange-antispam-messagedata-chunkcount: 1
-x-ms-exchange-antispam-messagedata-0: =?utf-8?B?UnpTWWVTYXc2czB5Ri95UVlEQjd2T01EK1p6anozamF1cittbGJLODA4NnVo?=
- =?utf-8?B?MGdnV3FScVo5VVFlcTdpazJwNlkrTk8wYkFNRmdjcEs5U0hYMVBoa25kaXlm?=
- =?utf-8?B?SGlDa29oTTRqQmNKR1hsSVRldlhQK0FiTU1LcFpjRUx5KzU0aDZqTTAyS0R4?=
- =?utf-8?B?U25lbVdRWlZFL2RLTndWZWRSUkJQbFVUSWE3Y1ZRMFM1VkNmc2NPZUVXZW4v?=
- =?utf-8?B?VytJaExhOUZ5cG05MGYzUUE0Z0xlOFcrYUdKZFV3bFFTeFdwVXNGVEZ4OExB?=
- =?utf-8?B?UFB0MzFZZWp4U2l5T2phWFBoU2UvQk1YS0lkQ1AvVjdMelFIckNOUkNneFlr?=
- =?utf-8?B?MmhGb2xYU1I5MXlWcDE1ZWVnc2dGNWt1dkgrSm1Wd1pXcVpYVVNOcUJZaGN2?=
- =?utf-8?B?d1hZdVpSR1R0aG1DTDJtM0dIR3pBVVBzeTRTVkl2enJSQXFybzNDdmZGVDl5?=
- =?utf-8?B?VVVhN01EdjlGQ0M2TFF0Y3lRUVJFWUN5Y0dEQWFvUjFoTEkxWVVOZzhXUW8y?=
- =?utf-8?B?ZURhWWFYRVpDTnFrV2hiWTh6MU9rZVE0dkkyWEVmSnNqY0ExTzhHWm4zYjl2?=
- =?utf-8?B?cnk4ODF4Q3p4d0FTemhIWS9YM0ZEYVNqaWVRR2wxdkd1ZnJrVFV6N0U3UVVR?=
- =?utf-8?B?c29LT2M4QzEyYXc1Ly9lbE56ZXVLb3ZWMHVPMzk0aXhxcjA3dlRUcjBqbkpx?=
- =?utf-8?B?cGRCSndnZWd1ODJTNGZWa1pZc3JQaE4xNDNpTCt3SUh3bUcycmgyOHZmT3pU?=
- =?utf-8?B?Zk9EN1lZMXBGZmJDQmgwU1lrUE96VkJWbTB1Z29EUGJLVjg0NWJhSjhiRTdQ?=
- =?utf-8?B?dEpicnJ3L05LTkowUE96ZlF3WHAvOGZhSWlmU2NMTnhuQ1BUSWZMdDhiZmJB?=
- =?utf-8?B?aSt0N0JTOXpPZ1Zzc24xOVdGSDlhSzJacENzNWplc1pnWGNlZ0NGQi9YV3VB?=
- =?utf-8?B?T0xyODRGUTZkbXlsbWlEb2F0aUp4Ny83enFsa1FJZ2QrYWpFdmhndGZXaVR0?=
- =?utf-8?B?L3VXWFRQTDZ1eExMQWwxeFhaRENFRzRISUt0YU9CR056d1ZWR3gwS1dzYUdv?=
- =?utf-8?B?R3V3MzhzOFpNT0gxTkRWQ2Frek05eHRPS0FCWVU4SlhSTDBIME8yK1AzTFhK?=
- =?utf-8?B?Z1ZoY01iNHBHUmNENnh2WmRxdHRqcFFiRmQ1R1ExSlYzRXNjM3RWMXdvZE00?=
- =?utf-8?B?M0x4eHpCZXNnaFQ1aU5wb0xxakFycm5TR3BzWndXbVpnVS96dUFyeHRlSm1K?=
- =?utf-8?B?M0JBRExzVGhGelU1Q1dYanZOclJiZjF4MUFpUzRjbEtSM3dMOEdXSXo5QjQv?=
- =?utf-8?B?S2VNWXdxdDJnZlpjVWFhazdZTnN4NjZtUWRreXF6TjZXM2FUSkdST09GbXpG?=
- =?utf-8?B?VWtTYmorVGUvam4xY0tHSk1RclAyUDRNSi9tRkFVTzIwYytrVVUwTVNNcVZa?=
- =?utf-8?B?RXNqOVpUc2cyZC9HMDIzc1ZRd1d6aC92OGIzV0tMd0lzR0tOb1R0QzBYamw0?=
- =?utf-8?B?MkI2cjI4NjJDbTJ3cUo5VytnR1dYL3dGN2hrY25EL20xamlGbms1aHU1elpJ?=
- =?utf-8?B?V2NsNEwvTXFjekxqbnJ2bWdVWTExUnJIaVI0TUh1dDBhRUI4SU5LcVlTSFJW?=
- =?utf-8?B?Z1UyeGJ4ZVEzK21pSmFCT1laL1Q0UklmK3IveitrZEw3cnMxOUU5Rkg4Q0d6?=
- =?utf-8?B?RjVvZE1pZ2dBWkR2ZFBZdlBsdkl6eWVMWUcrNDVPNmxYREpjZk5iUmgraWxm?=
- =?utf-8?B?RkJCNE1rNmFHQ1VDbC9pd3AreHJ5MlowTDh6TWs1SWhTTzRWaWtyTHpNSWxH?=
- =?utf-8?B?MDlBN3J0bnJvNnprczJSRTZsVWUxQ2R4bGlCd2NCL2Q3c1JUVVBTajV5ZjdW?=
- =?utf-8?B?VVc4MjN4cjE0VlZUdTRYRGN1YWtNZUVzUjltNE92RGQzaHpCbU4zSGRWZWNV?=
- =?utf-8?B?KzZOTGQyK3AveHg4V09xWEJRenk4QlBPWHdiSDJyUGpVb3RGV3NYMkQzVTY5?=
- =?utf-8?B?QXIzZkw5L0tKdnVFWklZV2xFL1dmdnBmbmJWd0tUUEtCN2xIcmZRY3A3a0Fj?=
- =?utf-8?B?N2ZLTzZYWmVJZlBxeEFVaTJqaGlEd1FjVnVZRDY3cVlzSmNGSUN5MWZIUkM3?=
- =?utf-8?B?R2k4bFhadi9COGhPby9BTm9xYUhteXhXcFpnSkRpekNQN04zWUhNVjZCZDY3?=
- =?utf-8?B?RTgxbjZwZU1FV05iMElQQmNabjRuME9CcWwvVWs1N2xZQWxJZUtKRE1DbmNM?=
- =?utf-8?B?OWxtMUxXSnNNcVFYTkQyQWZ0cTdCVzdxS1FVSDZmbHdQUEIvVTVpKzI2YjJS?=
- =?utf-8?B?eVAzKzlmdStzODVZTFVuT0tPY3FTb3lwTlFhdzlGMzhlTDBaaHY3QT09?=
-Content-Type: text/plain; charset="utf-8"
-Content-ID: <37A235EFA2489C40B5168BD49B3F02B0@namprd12.prod.outlook.com>
-Content-Transfer-Encoding: base64
+ (Exim 4.90_1) (envelope-from <pierrick.bouvier@oss.qualcomm.com>)
+ id 1x6962-0004Mq-Cx
+ for qemu-arm@nongnu.org; Mon, 14 Sep 2026 11:59:55 -0400
+Received: from pps.filterd (m0279873.ppops.net [127.0.0.1])
+ by mx0a-0031df01.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id
+ 68ED0RLk607537
+ for <qemu-arm@nongnu.org>; Mon, 14 Sep 2026 15:59:52 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qualcomm.com; h=
+ cc:content-transfer-encoding:content-type:date:from:in-reply-to
+ :message-id:mime-version:references:subject:to; s=qcppdkim1; bh=
+ OEVU+s/ANi0pfiDYyw6mCYFSEMHOGygt4XdxroZO6Qc=; b=jJfxJHZlvQMmVBWh
+ +/bo8A/a6ZG42vM4u4BLLMXNwSDGpanWtQB7B48jrHz7ioz1yH5/yi2Gm1d4oIz1
+ 6p0xq1H3L4Cbw7QcfnH6BU/bAkx/eOYEVoqgRECgl3QDV8SsIchcqml/HngA06+O
+ WhheK3Qo9mN8IcDGSYDHt+RSSG4JTCozoiCHl2um6ALgHtM+guHp6lEPqANn1LyY
+ OU6QnC/+2j3qT4IIfCXS/uyy95btPHu9tXp9QCRStEtlnE8wmYUBmk+ridkxBl9Y
+ En/FUL6Tb6nI/HYyns/a1hK5K35VkDD6P3uPxAWdiVERFhQRvsPsdrRtldHvtPoh
+ Ft/xkg==
+Received: from mail-pj1-f71.google.com (mail-pj1-f71.google.com
+ [209.85.216.71])
+ by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 4gpg2ks2xn-1
+ (version=TLSv1.3 cipher=TLS_AES_128_GCM_SHA256 bits=128 verify=NOT)
+ for <qemu-arm@nongnu.org>; Mon, 14 Sep 2026 15:59:51 +0000 (GMT)
+Received: by mail-pj1-f71.google.com with SMTP id
+ 98e67ed59e1d1-3968bb86fb7so4138355a91.2
+ for <qemu-arm@nongnu.org>; Mon, 14 Sep 2026 08:59:51 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=oss.qualcomm.com; s=google; t=1789401591; x=1790006391; darn=nongnu.org;
+ h=content-transfer-encoding:content-type:in-reply-to:content-language
+ :from:references:cc:to:subject:user-agent:mime-version:date
+ :message-id:from:to:cc:subject:date:message-id:reply-to:content-type;
+ bh=OEVU+s/ANi0pfiDYyw6mCYFSEMHOGygt4XdxroZO6Qc=;
+ b=GaQ29fuz9fdHwmELpKrybb8M8wZO+r8uElb3Q5y6YK4mFmE4wFspPuQnuSS+YSQrXC
+ /z9fk1rzsJD+ea9xGxZsqy2WjxZ2tOJYunzyRfhJVo6AyXOTXlng0T1egBjjGPVt2m1B
+ 3HMEOHXr0hZfokaSvPZ/BCrr3rWId62jYZrQZW31em7/qgGcKB0LXh7kPylqy4ITl1qY
+ NL3Jc9t4SE36BENhQv6NXr602zFveFsPb81qLCfsoGFvroNHR/YvBGhxyryj2nyG+GzD
+ zN7HOzHmWGr7V5B8yIqVvYWG+D6f/244DidfiJtMcuAWvryXcddjjKJxu0vx7QUrQLvp
+ Qs5w==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20251104; t=1789401591; x=1790006391;
+ h=content-transfer-encoding:content-type:in-reply-to:content-language
+ :from:references:cc:to:subject:user-agent:mime-version:date
+ :message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+ :message-id:reply-to:content-type;
+ bh=OEVU+s/ANi0pfiDYyw6mCYFSEMHOGygt4XdxroZO6Qc=;
+ b=BYzDZFLZuaNYlQ9aZcAViSqZheTRsBziH2ASna9KLsOVALgAmUosfi+EHB8YK2piei
+ 6o+E3kLcMIdnu0VDxDkGOMW8BpfFk7BdNiAVMP1vNqDFEShE5YCsLNH1VqHisEVc0GgB
+ 9glXHD9Trt7KZ7GkmQTo1pvmRLPgH/c+uyJEufWIh7fbCs9CdvA6oCAcf5uU912mHnlq
+ hK3XnV8Ok61Sc0XZiiqbn79NlZquL+Vr0LrCLTSVEghKGABSKb/ykNLCzZ8PCB8zTYCE
+ G726DW3Nro25DV8DeD48SYjIlrktkEOlz+lXc+tdGepvK+zO7SnA9br1It+j3VwCU3/+
+ yqRg==
+X-Forwarded-Encrypted: i=1;
+ AKwUvBxflG7/AI2x1O7lO9u9/frtenkNmm74DM29GX/9BH0Az1+qoMCAxEQMzGXde7ff8GeDptvZQx2U3A==@nongnu.org
+X-Gm-Message-State: AFuF++mnw52ztnwIYxcCdkVhZNuyTitONgwzej7m+RIGcFlNm2f0BobU
+ WyskBRHhz59C5Jc0vTEKqmp6qpA9vTcw/SZQRPWQqTMjS31B50UWsSWc1rKS+JJ32C0gmrOR1n8
+ g0EXs0qzQi859G1tump/y8VNPj3v2WXH7LKfm5dDW4mizGeYYV/L1nsA=
+X-Gm-Gg: AYBFou0jwFI098joFbpoSyDuJ2EKoWfwoq9GQekmWN9OVfX5QOSZr/U6AF26p+YtSyQ
+ v/G793dfynvdWeFmD7qu9XkWwLnpD+VgOJZqHt7VK6XH9x0HEGI7eVCKqo/g5CqyOe1lmPQwRnS
+ o5AtsHeDrRjGRV52niFnQDTClWMX0qnif9EW0JFii0rIj9jAE7xbjUdHAYBH7dAeANhzf1Ykrwm
+ RVq0w946h5fMeIfzlgyK99t8nUiL6YWF0H+clIqOps2Q/pZivlqbLLG8RausCklBit79caN3oJq
+ PpoZZiBxo7vr1AasxqJz4qBd+KU48LT6ArE11ZuI+zK2TpSJyv3j4wjkaiv+Vm7sAlb/6m340Um
+ MVhc3h6wx/rVeVPKiX9TpPRPjYWS9X+27rQR9Yaw/5GP0/kwG9AoB8Oqrjx1SE/DK3PnT
+X-Received: by 2002:a17:90b:4a47:b0:396:41d1:cbc7 with SMTP id
+ 98e67ed59e1d1-39debf89013mr6584124a91.3.1789401590937; 
+ Mon, 14 Sep 2026 08:59:50 -0700 (PDT)
+X-Received: by 2002:a17:90b:4a47:b0:396:41d1:cbc7 with SMTP id
+ 98e67ed59e1d1-39debf89013mr6584057a91.3.1789401590507; 
+ Mon, 14 Sep 2026 08:59:50 -0700 (PDT)
+Received: from [192.168.1.199] (216-71-219-44.dyn.novuscom.net.
+ [216.71.219.44]) by smtp.gmail.com with ESMTPSA id
+ a92af1059eb24-14365b78d59sm24351415c88.8.2026.09.14.08.59.48
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Mon, 14 Sep 2026 08:59:49 -0700 (PDT)
+Message-ID: <7384499a-9162-4413-b9ed-0195ef21b109@oss.qualcomm.com>
+Date: Mon, 14 Sep 2026 08:59:47 -0700
 MIME-Version: 1.0
-X-OriginatorOrg: Nvidia.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-AuthSource: DS0PR12MB8442.namprd12.prod.outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 30501ffd-eefa-4aa4-c890-08df1278a2e5
-X-MS-Exchange-CrossTenant-originalarrivaltime: 14 Sep 2026 15:55:44.8078 (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: 43083d15-7273-40c1-b7db-39efd9ccc17a
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: 8BuTgPBgDswOE/R9DyiztOhbo1CO9fDoo8ycAftF/HFZgCM2nzp5BApYiKZ76FC10fCpZlZ6XTxXzGeIw3bvGA==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: PH7PR12MB8827
-Received-SPF: permerror client-ip=2a01:111:f403:c107::9;
- envelope-from=mochs@nvidia.com;
- helo=PH7PR06CU001.outbound.protection.outlook.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 4/9] tests/tcg: use --add-current-user when building
+ containers
+To: =?UTF-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>
+Cc: qemu-devel@nongnu.org, Brad Smith <brad@comstyle.com>,
+ Jiaxun Yang <jiaxun.yang@flygoat.com>, Song Gao <gaosong@loongson.cn>,
+ Warner Losh <imp@bsdimp.com>, =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?=
+ <berrange@redhat.com>, Peter Maydell <peter.maydell@linaro.org>,
+ Cornelia Huck <cohuck@redhat.com>, Fabiano Rosas <farosas@suse.de>,
+ John Snow <jsnow@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
+ =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@mailo.com>,
+ Thomas Huth <th.huth+qemu@posteo.eu>,
+ Brian Cain <brian.cain@oss.qualcomm.com>, qemu-arm@nongnu.org,
+ =?UTF-8?Q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>,
+ Kyle Evans <kevans@freebsd.org>,
+ Richard Henderson <richard.henderson@linaro.org>,
+ Cleber Rosa <crosa@redhat.com>
+References: <20260910181504.1010916-1-alex.bennee@linaro.org>
+ <20260910181504.1010916-5-alex.bennee@linaro.org>
+ <78b4bda8-02cc-40b3-b9aa-137069a54811@oss.qualcomm.com>
+ <87wlso1ede.fsf@draig.linaro.org>
+From: Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>
+Content-Language: en-US
+In-Reply-To: <87wlso1ede.fsf@draig.linaro.org>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+X-Proofpoint-ORIG-GUID: H2gROdqC3euLVxUBFYbSIIBS0pyEX0wn
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwOTE0MDIyOSBTYWx0ZWRfXxlB+f1E6S9n4
+ gzPMTK6gvV8dDGxOCNzw4e5mhTU5aup/OtVzg72dBEd9vugzS/SfAaQvl5Gdu8isQ82porESBjm
+ PU0luP7MoRGvyEbcsgYXxFIfPdhYYoSSn76dZ8lxsbOCLc30Gc01/djsVf142OYbd/H32jbH2II
+ CfdUH0a7uZnY6odp06kWHWFIuf8cLGWtAt7bqaJ6d6Vx5+SkX6VwbXuXqshpBB2ef7LgQYbAsoA
+ R0YmKptt4NO0oFx1uDQPbozxOVnq5FiuynKt4s1Ukzo6OzseK2eANPCmeDGDYg/v9aGWPzfph0L
+ AU7hdXp/LGLUsv16WxDxuTfvcAYEDnibpU+hUf8EiL7T8MTV+X3z2ancqBB1HojFWqZIGMiND/g
+ uGnKxeQcHRrQUELLOY82pBam40YyscExmwVikvRFjTm0Sf6/bGQ2MTQ+VcCxytOmB66Ac0ai/Tj
+ 0z46PTtP8O72i3sDGiw==
+X-Proofpoint-GUID: H2gROdqC3euLVxUBFYbSIIBS0pyEX0wn
+X-Authority-Analysis: v=2.4 cv=M7TYuCws c=1 sm=1 tr=0 ts=6aa819f7 cx=c_pps
+ a=UNFcQwm+pnOIJct1K4W+Mw==:117 a=iLqgmErQAxjCjdq5jj1Aqg==:17
+ a=IkcTkHD0fZMA:10 a=VdqzKS8jKosA:10 a=s4-Qcg_JpJYA:10
+ a=VkNPw1HP01LnGYTKEx00:22 a=u7WPNUs3qKkmUXheDGA7:22 a=rJkE3RaqiGZ5pbrm-msn:22
+ a=EUspDBNiAAAA:8 a=KKAkSRfTAAAA:8 a=10l49cbnMznCkJnTuZEA:9 a=3ZKOabzyN94A:10
+ a=QEXdDO2ut3YA:10 a=uKXjsCUrEbL0IQVhDsJ9:22 a=cvBusfyB2V15izCimMoJ:22
+X-Proofpoint-Spam-Info: AW1haW4tMjYwOTE0MDIyOSBTYWx0ZWRfXxhyZOqHyRiXh
+ Npo+1XHC5HKVsRtERjQjS+VxFTeurLk5hNhQSZJ1IyUzODMBGzx4oE8b96pkQGDJQaTa9kSZPtF
+ aw3AquRlYZSlazMzc38SbsfTcySVPlA=
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.293,Aquarius:18.0.1176,Hydra:6.1.134,FMLib:17.12.100.49
+ definitions=2026-09-14_03,2026-09-14_01,2025-10-01_01
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
+ phishscore=0 clxscore=1015 bulkscore=0 impostorscore=0 suspectscore=0
+ malwarescore=0 adultscore=0 lowpriorityscore=0 spamscore=0 priorityscore=1501
+ classifier=typeunknown authscore=0 authtc= authcc= route=outbound adjust=0
+ reason=mlx scancount=1 engine=8.22.0-2609040000 definitions=main-2609140229
+Received-SPF: pass client-ip=205.220.180.131;
+ envelope-from=pierrick.bouvier@oss.qualcomm.com;
+ helo=mx0b-0031df01.pphosted.com
+X-Spam_score_int: -27
+X-Spam_score: -2.8
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- SPF_HELO_NONE=0.001, SPF_NONE=0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_LOW=-0.7, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -153,30 +170,43 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-DQo+IE9uIFNlcCAxNCwgMjAyNiwgYXQgMDc6MjksIFBldGVyIE1heWRlbGwgPHBldGVyLm1heWRl
-bGxAbGluYXJvLm9yZz4gd3JvdGU6DQo+IE9uIEZyaSwgMTEgU2VwdCAyMDI2IGF0IDIwOjA0LCBN
-YXR0aGV3IFIuIE9jaHMgPG1vY2hzQG52aWRpYS5jb20+IHdyb3RlOg0KPj4gDQo+PiANCj4+ICAg
-ICBuYW1lID0gZ19zdHJkdXBfcHJpbnRmKCIlcyB2aW50Zi1wYWdlMCIsDQo+PiAgICAgICAgICAg
-ICAgICAgICAgICAgICAgICBtZW1vcnlfcmVnaW9uX25hbWUoJmNtZHF2LT5tbWlvX2NtZHF2KSk7
-DQo+PiAtICAgIGNtZHF2LT5tcl92aW50Zl9wYWdlMCA9IGdfbWFsbG9jMChzaXplb2YoKmNtZHF2
-LT5tcl92aW50Zl9wYWdlMCkpOw0KPj4gLSAgICBtZW1vcnlfcmVnaW9uX2luaXRfcmFtX2Rldmlj
-ZV9wdHIoY21kcXYtPm1yX3ZpbnRmX3BhZ2UwLA0KPj4gKyAgICBtZW1vcnlfcmVnaW9uX2luaXRf
-cmFtX2RldmljZV9wdHIoJmNtZHF2LT5tcl92aW50Zl9wYWdlMCwNCj4+ICAgICAgICAgICAgICAg
-ICAgICAgICAgICAgICAgICAgICAgICAgbWVtb3J5X3JlZ2lvbl9vd25lcigmY21kcXYtPm1taW9f
-Y21kcXYpLA0KPj4gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBuYW1lLCBW
-SU5URl9QQUdFX1NJWkUsDQo+PiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
-IGNtZHF2LT52aW50Zl9wYWdlMCk7DQo+IA0KPiAuLi5idXQgd2UgZG9uJ3QgYWN0dWFsbHkgaW5p
-dGlhbGl6ZSB0aGUgTWVtb3J5UmVnaW9uIHVudGlsIGhlcmUuDQo+IA0KPiBJIGRvbid0IHRoaW5r
-IHlvdSBzaG91bGQgYXNzdW1lIHRoYXQgbWVtb3J5X3JlZ2lvbl8qIGZ1bmN0aW9ucw0KPiB3aWxs
-IGRvIGFueXRoaW5nIHNlbnNpYmxlIG9uIGEgemVyb2VkLW91dCBsdW1wIG9mIG1lbW9yeS4NCg0K
-WW914oCZcmUgcmlnaHQuIEFsdGhvdWdoIHRoZSBjdXJyZW50IGltcGxlbWVudGF0aW9uIG9mDQpt
-ZW1vcnlfcmVnaW9uX2lzX21hcHBlZCgpIG9ubHkgZXhhbWluZXMgZmllbGRzIHRoYXQgYXJlIHpl
-cm8gYmVmb3JlDQppbml0aWFsaXphdGlvbiwgdXNpbmcgaXQgaGVyZSByZWxpZXMgb24gdGhlIGlu
-dGVybmFsIHJlcHJlc2VudGF0aW9uIG9mDQphbiB1bmluaXRpYWxpemVkIE1lbW9yeVJlZ2lvbi4N
-Cg0KbWVtb3J5X3JlZ2lvbl9pbml0X3JhbV9kZXZpY2VfcHRyKCkgaGFzIG5vdCB5ZXQgY2FsbGVk
-DQpvYmplY3RfaW5pdGlhbGl6ZSgpIG9uIHRoZSBlbWJlZGRlZCByZWdpb24gYXQgdGhhdCBwb2lu
-dC4gSeKAmWxsIHJlc3RvcmUNCnRoZSBleHBsaWNpdCBpbml0aWFsaXphdGlvbiBmbGFnIGZyb20g
-djEgaW4gdjMgc28gdGhhdCBubyBNZW1vcnlSZWdpb24NCkFQSSBpcyBjYWxsZWQgYmVmb3JlIHRo
-ZSByZWdpb24gaGFzIGJlZW4gaW5pdGlhbGl6ZWQuDQoNClRoYW5rcyBmb3IgY2F0Y2hpbmcgdGhp
-cy4NCg0KLW1hdHQ=
+On 9/14/2026 12:27 AM, Alex Bennée wrote:
+> Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com> writes:
+> 
+>> On 9/10/26 11:14 AM, Alex Bennée wrote:
+>>> As the meson tcg build routes the container builds through docker.py
+>>> we can also clean up its hack which involved appending a RUN line to
+>>> the dockerfile. All the dockerfiles that care will work with the
+>>> --build-arg.
+>>> Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
+>>> ---
+>>>   tests/docker/docker.py | 13 ++++++-------
+>>>   tests/tcg/meson.build  |  3 ++-
+>>>   2 files changed, 8 insertions(+), 8 deletions(-)
+>>>
+>>
+>> I'm not sure why this was added in the first place.
+>> Technically, running the container with a specific uid (whether or not
+>> a user is declared for it) is enough. The only errors you can have is
+>> if some specific commands ran expect to check if user exist on the
+>> machine, like sudo for instance.
+>> For our need (cross compilation), it's not needed, as a compiler will
+>> never check who is $USER. Files written will still have the correct
+>> uid on host fs anyway.
+> 
+> That's why you do the mapping. Before I was seeing a whole bunch of the
+> test files with a random group ownership.
+>
+
+I was talking about the adduser part in the container themselves.
+Mapping users with container run -u is needed, but having a matching
+user is not strictly needed.
+
+>>
+>> Do you have more info on this?
+>>
+>> Regards,
+>> Pierrick
+> 
+
 

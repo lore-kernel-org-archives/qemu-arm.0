@@ -4,176 +4,107 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 65291C88E67
-	for <qemu-arm@archiver.kernel.org>; Mon, 14 Sep 2026 05:47:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D8C0CC88E64
+	for <qemu-arm@archiver.kernel.org>; Mon, 14 Sep 2026 07:28:28 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1x5zWd-0006Ba-13; Mon, 14 Sep 2026 01:46:43 -0400
+	id 1x616q-0007hX-Rl; Mon, 14 Sep 2026 03:28:15 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <pierrick.bouvier@oss.qualcomm.com>)
- id 1x5zWb-0006Aw-TC
- for qemu-arm@nongnu.org; Mon, 14 Sep 2026 01:46:41 -0400
-Received: from mx0b-0031df01.pphosted.com ([205.220.180.131])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <pierrick.bouvier@oss.qualcomm.com>)
- id 1x5zWZ-0005Zy-Fb
- for qemu-arm@nongnu.org; Mon, 14 Sep 2026 01:46:41 -0400
-Received: from pps.filterd (m0279869.ppops.net [127.0.0.1])
- by mx0a-0031df01.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id
- 68E5j5Li063770
- for <qemu-arm@nongnu.org>; Mon, 14 Sep 2026 05:46:38 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qualcomm.com; h=
- cc:content-transfer-encoding:content-type:date:from:in-reply-to
- :message-id:mime-version:references:subject:to; s=qcppdkim1; bh=
- ebZvzrhxaanANfMnPQ23Jxu2u39GOVLE4PtWVWJnn2M=; b=PvvyhfPQgJePUGCz
- UawVPLV8v4o8oKPS1ymz82IANulvWmMZTJLcVNttD7NoGaLo8/QHDr9+HxTS5/Jp
- DPT3FWlTW6klD6YBXpbeC5faM3Upp7Ianjk/LFYWOcH0lpMFxj1yxQ9CmA0ZRzys
- SBlFcLkBnOU05fy0ESy/iR34r1JaLVwGvbfkzsvk3d9l8WhmoWmQtbCQj/O6LpRI
- hdq9D4nnMtKj9tHn1QWWp4k2WI3RW4Q167EQzecqXJBEZev62bD3vQTsubDhjuBX
- dyWHd6dujacqmkCCbBcrgFVf/p57VaOp7OJyCayzlHNEz7lHnrNufHElheKoygYI
- WeFFfQ==
-Received: from mail-pj1-f72.google.com (mail-pj1-f72.google.com
- [209.85.216.72])
- by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 4gmy9dn8x4-1
- (version=TLSv1.3 cipher=TLS_AES_128_GCM_SHA256 bits=128 verify=NOT)
- for <qemu-arm@nongnu.org>; Mon, 14 Sep 2026 05:46:37 +0000 (GMT)
-Received: by mail-pj1-f72.google.com with SMTP id
- 98e67ed59e1d1-39af92138f9so5147088a91.0
- for <qemu-arm@nongnu.org>; Sun, 13 Sep 2026 22:46:37 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
+ id 1x616k-0007hH-T0
+ for qemu-arm@nongnu.org; Mon, 14 Sep 2026 03:28:08 -0400
+Received: from mail-wm2-x10.google.com ([2a00:1450:4864:31::10])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
+ id 1x616f-0005ur-Qh
+ for qemu-arm@nongnu.org; Mon, 14 Sep 2026 03:28:04 -0400
+Received: by mail-wm2-x10.google.com with SMTP id
+ 5b1f17b1804b1-49d1fb0cf5eso13817795e9.3
+ for <qemu-arm@nongnu.org>; Mon, 14 Sep 2026 00:28:01 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=oss.qualcomm.com; s=google; t=1789364797; x=1789969597; darn=nongnu.org;
- h=content-transfer-encoding:content-type:in-reply-to:from:references
- :cc:to:content-language:subject:user-agent:mime-version:date
- :message-id:from:to:cc:subject:date:message-id:reply-to:content-type;
- bh=ebZvzrhxaanANfMnPQ23Jxu2u39GOVLE4PtWVWJnn2M=;
- b=hwQwV25RjUJsNs288oiRUy+WEbkhW0pi54CRRk/jeG0KXA2/hV5zBAV9IEPNpkeMbs
- XrQV+kIFxQTqDWk+x++RSrcY5ekjkOjz3Ryk/tyVGKGnFxnWaHBH79R6YlKV4R9f1Teu
- oyKB2Vu7F6uc0sNBLvvSlsKKo2owXdBhLdK+NYkQcHdoQKuZVoy9otHRr47K9WeBn6kW
- JOeCtwpHFOgIehZ/b9Hg6+GO1P5sfbpvtRMW7MFiIg4TQzm75yOkhLqR+6iK6Uj7c2q4
- Ak5yj8LAGoJb/1eLJEnJM8bDCUkyhntQFcp8jz+r+YoM1vZ1HczXi71k+dcDdHQLzk1j
- 14sA==
+ d=linaro.org; s=google; t=1789370880; x=1789975680; darn=nongnu.org;
+ h=content-transfer-encoding:content-type:mime-version:message-id:date
+ :user-agent:references:in-reply-to:subject:cc:to:from:from:to:cc
+ :subject:date:message-id:reply-to:content-type;
+ bh=9Wr4UUfsftFAZNsHonDpEGv8jW7RYY1Ix8R2b/9+YfU=;
+ b=rMTCjY3gkpqEk6Lx4Ox7EKAPGwUb/Q3NBwKsdzOreOTu++4O6QLHi8N+lVLHHAB1UH
+ xiQnA2TNUROGjYaOR8PU78YiWNyH9PlttiZGrJC8T5xWnQNQiDaropXBtI7cQqxAbLI4
+ LdncIM5snoVuzFwD57ot1pu0mVDR8Rz43Ad6FQgvW2N+HJ1TtmkoCCfOUuFannAEvhwF
+ bTc/7YUGJcCHI44PrE6BJ5eiOE4tHNlWlC1NMPElpAIo3iRh8h/907yJrfT3oHFFSXJ4
+ y9olbi7xAznq/HEFNg+ORdOBbVYhK3qZsQw+LX092pt8ACMYT1BgHZHfV+5B2tdiXtU+
+ KtXA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1789364797; x=1789969597;
- h=content-transfer-encoding:content-type:in-reply-to:from:references
- :cc:to:content-language:subject:user-agent:mime-version:date
- :message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
- :message-id:reply-to:content-type;
- bh=ebZvzrhxaanANfMnPQ23Jxu2u39GOVLE4PtWVWJnn2M=;
- b=CLSDeOH2+2bCIJg9X14f8EjNKGm8laCByrhTQp/8B2rxhPnZQLaK9ZmsxBjzZA1+lU
- oMU8QqmrEyEwaw5uPQdwIAsnhpI1TCMaW9pc86l5hg2fUyJgChIVEbe0So6bPTL28C5l
- LvLtzLIBd+/XeX5rz2vIgbzmyT6LWP8M0nIHq7aRl4xlEeRyOLnTS6nkbmZHKzw4pWVC
- P9La34NuYt4BKCW4S15wjxuJzCKxScGz6LEum8X2TrP7rnvrMHVNWR/WLvaP+eXxYsyz
- RmqbdLiBaaTPcQe3afl15qpodEvgRiDfQtBz1T+FUCa+bfYdllhjX3FY6NZKcDM+sda9
- tNjA==
+ d=1e100.net; s=20251104; t=1789370880; x=1789975680;
+ h=content-transfer-encoding:content-type:mime-version:message-id:date
+ :user-agent:references:in-reply-to:subject:cc:to:from:x-gm-gg
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
+ :content-type;
+ bh=9Wr4UUfsftFAZNsHonDpEGv8jW7RYY1Ix8R2b/9+YfU=;
+ b=Im+c9+rDzcmIWY0grEux2YPXBSy8BOaCti9mG0y6zLnipH+bcx2cjKiVkKUQfD/lIL
+ xHJ6CiwIcO1cqUpAthy4dxnVRPAXs0teTHeNQyNy9qdxIIKGHciE9i205bwb0bOxpLV2
+ AeYtS4X40iB+17AxGUYF473SG2DnxcvmHTwip5tE2UbgMv8hSb9a6Zj+Hb+n5d6S8Kg/
+ yfa5sT+OhzkS1+ff+Eyog3l04RY2gumC/k9ILfddfZzRnkcOPOl6ZyTjLpfZHOmCmIiQ
+ uTsPo8TciE404nPsmN+6UW4kx284JSiqOtKM70rlO7k07tmTSkcxadqMWNHF/m8EXhXe
+ QFDQ==
 X-Forwarded-Encrypted: i=1;
- AKwUvBwKa4z8jCTZZzSzhQIxk5Db7w5QbaTwBWympnfBFoEqmP+tSN4ep73+nbyTcfnXngdYVBhV9WmS/w==@nongnu.org
-X-Gm-Message-State: AFuF++lVx9ODAzLzmYUgQ1IEVOIB1n5r58Vs2sBoXmaWPkgJC0l5q6Oe
- latG+Wg66/PRxPxJJZwimf9fbaWpQMhv9vno3l4GKK9/5i1f9n2JkemI/otd5VPRqylmMm7NvUT
- 57lZT9rusy53aYqEjemknmDoqi0vo2P5F+w00FSTyJ5ntMpvQHXFV3Sk=
-X-Gm-Gg: AYBFou3iFKy4c9x6oWFq509qPWzF0KfnR+eIE68nfm05EW4m9ADyeU2xfi2D2miwlF/
- ThOmRy+oFQLojR6wpOHJclw7TCqwZoUTfCjLwOggIF3dzVIFGm1ECajS6PESyxqszrO6IJmxs+o
- jNm4Bmz8jPang8qlYPFrC1/KPBlFJCsM/JFi5nZlLwUdaeXsQ5MjcVcoou/dSBT1+IoHVDFoLeF
- wXdQfwrxkS8wWdwpZ5uEuHqulQiBaJU7tNg7LhE0usISK9GSESZ/1/tq9Qpd9EoCNbxSwrishFB
- ETBY4kEAP32BTWu9AgaCU9aOQQxDgqVCHn3L08E8rGPbS3iDtKK/8kWS3xw4r47zVSml7BHL2A+
- R1D2O3YkUbD833mLeFqXxe7H/HzOaBwi6T0FcheFT4m9aMYwlV3REiec=
-X-Received: by 2002:a17:90a:e7c2:b0:38f:de94:bf34 with SMTP id
- 98e67ed59e1d1-39dec497e11mr1196560a91.10.1789364796684; 
- Sun, 13 Sep 2026 22:46:36 -0700 (PDT)
-X-Received: by 2002:a17:90a:e7c2:b0:38f:de94:bf34 with SMTP id
- 98e67ed59e1d1-39dec497e11mr1196485a91.10.1789364796152; 
- Sun, 13 Sep 2026 22:46:36 -0700 (PDT)
-Received: from [192.168.1.169] (216-71-219-44.dyn.novuscom.net.
- [216.71.219.44]) by smtp.gmail.com with ESMTPSA id
- 98e67ed59e1d1-39d99531b21sm18611728a91.13.2026.09.13.22.46.34
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Sun, 13 Sep 2026 22:46:35 -0700 (PDT)
-Message-ID: <514486c3-7e28-44ff-9080-88d30c388175@oss.qualcomm.com>
-Date: Sun, 13 Sep 2026 22:46:33 -0700
+ AKwUvBzpSzo5Zdz0864ds6oeMyyX9ioqRfhVO0cUDxZ7I5f8ifw3sAB1DtjKO5keqLcg7uJK2i7mX7aijA==@nongnu.org
+X-Gm-Message-State: AFuF++l82tvAtIOc0avZrs0oa0hOoHHXaCXRgV8gK01w4mdtvZWke5b8
+ +iZ2Dajvwygfsb+Lv8EcHp75im7YZFAl3ow1RUAtQIHsd39mXgkO+aLrUatANARJJ2Q=
+X-Gm-Gg: AYBFou2odzBsUpbUaNFf9+T9i/bbj08vof8PLaXD+OJl7ULTpO5eUhJTaRDthgHG7fu
+ AUYtfy5nF/bBP0xR9R/TfrJNbYLpYj/5h8THhUt3MBNLpNFTKxoXpNXDY3OIqnuWXQ76V5gOrWs
+ zGE0Ovvkj5zwpHGrxdmd5VmNjkoT43NI8RtnHd+PZeCLu6dp46y88jXViHE0jdR+aic3uwEtO7j
+ eoiDQR2YgXmfFAfsrz2dM7UiujKvdHeYGhhQXtNs/8xx/inmgPqG1WgRw5jy42jnHj4oU/Ndd89
+ +r8MQrtdUsbAg6JAQw6b07/qji00aSMDghzWwwSTBIBloifn2kVP3ANdlnP7bwh2263I69pfOdM
+ vJF1TlkuCS7Wk2+apiTqTpaLste747MvSLxlB1ScyZ5/uzTxjswFqWoWugLPSH9N8f9iZ0SQvO5
+ O/nhIiEiVUVi/4PstTY26auyy+NAQBTBmZtJPFtwuuC0zMUsgdtrp0foTD33q3RiICtF0b9By8J
+ EvKDFfgkQ==
+X-Received: by 2002:a05:600c:4e02:b0:49d:272d:74b4 with SMTP id
+ 5b1f17b1804b1-49e7a6387bcmr32632785e9.2.1789370879713; 
+ Mon, 14 Sep 2026 00:27:59 -0700 (PDT)
+Received: from draig.lan ([185.124.0.156]) by smtp.gmail.com with ESMTPSA id
+ 5b1f17b1804b1-49e7723d458sm92075965e9.0.2026.09.14.00.27.58
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Mon, 14 Sep 2026 00:27:58 -0700 (PDT)
+Received: from draig (localhost [IPv6:::1])
+ by draig.lan (Postfix) with ESMTP id 959A45F920;
+ Mon, 14 Sep 2026 08:27:57 +0100 (BST)
+From: =?utf-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>
+To: Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>
+Cc: qemu-devel@nongnu.org,  Brad Smith <brad@comstyle.com>,  Jiaxun Yang
+ <jiaxun.yang@flygoat.com>,  Song Gao <gaosong@loongson.cn>,  Warner Losh
+ <imp@bsdimp.com>,  Daniel P. =?utf-8?Q?Berrang=C3=A9?=
+ <berrange@redhat.com>,  Peter
+ Maydell <peter.maydell@linaro.org>,  Cornelia Huck <cohuck@redhat.com>,
+ Fabiano Rosas <farosas@suse.de>,  John Snow <jsnow@redhat.com>,  Paolo
+ Bonzini <pbonzini@redhat.com>,  Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?=
+ <philmd@mailo.com>, Thomas Huth <th.huth+qemu@posteo.eu>,  Brian Cain
+ <brian.cain@oss.qualcomm.com>,  qemu-arm@nongnu.org,  =?utf-8?Q?Marc-Andr?=
+ =?utf-8?Q?=C3=A9?= Lureau
+ <marcandre.lureau@redhat.com>,  Kyle Evans <kevans@freebsd.org>,  Richard
+ Henderson <richard.henderson@linaro.org>,  Cleber Rosa <crosa@redhat.com>
+Subject: Re: [PATCH 4/9] tests/tcg: use --add-current-user when building
+ containers
+In-Reply-To: <78b4bda8-02cc-40b3-b9aa-137069a54811@oss.qualcomm.com> (Pierrick
+ Bouvier's message of "Sun, 13 Sep 2026 22:15:12 -0700")
+References: <20260910181504.1010916-1-alex.bennee@linaro.org>
+ <20260910181504.1010916-5-alex.bennee@linaro.org>
+ <78b4bda8-02cc-40b3-b9aa-137069a54811@oss.qualcomm.com>
+User-Agent: mu4e 1.14.4-pre2; emacs 30.1
+Date: Mon, 14 Sep 2026 08:27:57 +0100
+Message-ID: <87wlso1ede.fsf@draig.linaro.org>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 00/12] single-binary: link ARM and RISC-V into qemu-system
-Content-Language: en-US
-To: Paolo Bonzini <pbonzini@redhat.com>
-Cc: =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>,
- Yonggang Luo <luoyonggang@gmail.com>, qemu-devel@nongnu.org,
- Xianglai Li <lixianglai@loongson.cn>,
- Alistair Francis <alistair.francis@wdc.com>,
- Chinmay Rath <rathc@linux.ibm.com>,
- Sunil V L <sunilvl@ventanamicro.com>, qemu-riscv@nongnu.org,
- Alexander Bulekov <alxndr@bu.edu>, Zhao Liu <zhao1.liu@intel.com>,
- Eric Farman <farman@linux.ibm.com>, Laurent Vivier <lvivier@redhat.com>,
- Peter Maydell <peter.maydell@linaro.org>,
- Chao Liu <chao.liu@processmission.com>,
- Liu Zhiwei <zhiwei_liu@linux.alibaba.com>,
- Palmer Dabbelt <palmer@dabbelt.com>, Song Gao <17746591750@163.com>,
- Harsh Prateek Bora <harshpb@linux.ibm.com>,
- Glenn Miles <milesg@linux.ibm.com>,
- Daniel Henrique Barboza <daniel.barboza@oss.qualcomm.com>,
- qemu-s390x@nongnu.org, Jiaxun Yang <jiaxun.yang@flygoat.com>,
- =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@mailo.com>,
- "Michael S. Tsirkin" <mst@redhat.com>, Stefan Hajnoczi
- <stefanha@redhat.com>, =?UTF-8?Q?Alex_Benn=C3=A9e?=
- <alex.bennee@linaro.org>,
- David Hildenbrand <david@kernel.org>, qemu-ppc@nongnu.org,
- qemu-arm@nongnu.org, Igor Mammedov <imammedo@redhat.com>,
- Aleksandar Rikalo <arikalo@gmail.com>,
- Nicholas Piggin <npiggin@gmail.com>, Cornelia Huck <cohuck@redhat.com>,
- Richard Henderson <richard.henderson@linaro.org>,
- Ilya Leoshkevich <iii@linux.ibm.com>, Fabiano Rosas <farosas@suse.de>,
- Aurelien Jarno <aurelien@aurel32.net>, Ani Sinha <anisinha@redhat.com>,
- Bibo Mao <maobibo@loongson.cn>,
- =?UTF-8?Q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>,
- Matthew Rosato <mjrosato@linux.ibm.com>, Weiwei Li <liwei1518@gmail.com>,
- Darren Kenny <darren.kenny@oracle.com>
-References: <20260823150731.896-1-luoyonggang@gmail.com>
- <ao7c-FiawF9sMCGj@redhat.com>
- <b2b1d77e-c3e3-4aad-87d2-f5d4834abd1a@oss.qualcomm.com>
- <apAG8JQTnQxRkfip@redhat.com>
- <9e36f8a0-5363-4ce2-accf-62ccf3602344@oss.qualcomm.com>
- <CABgObfYw8U6q1xdUXcP5XBNTpB-n9MR=DkzFXpb6nkn7g00etQ@mail.gmail.com>
- <997fad72-3d6f-4ec6-9017-290959d9848f@oss.qualcomm.com>
- <b426be77-d233-4f45-9c14-889e95141b6d@redhat.com>
-From: Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>
-In-Reply-To: <b426be77-d233-4f45-9c14-889e95141b6d@redhat.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwOTE0MDA3OSBTYWx0ZWRfXz3saeIfL3oyz
- TuM9HXB5ruH7KAe+/a4Ghup3aqSZ+P6B4kvzwUlcbw/OlzwNNfQyGBZqx3HkAjsVR6zUGK199A5
- PKlF8ONKgyGkaOQT1RVSM6Q/yPbyFlvhaT6r0fB63r6v7eF9nQuNyvUwzOWsKf4ZzHfeUUFefLn
- bKR0AV3TMsb9zrzWUfBnM6t5YVBqt0FerLvR7sBVL31W2Oa2VBLH0w/OoN/34l+9p/OeiSGrGVu
- 77GakNc3m5ujdr/yCvx3KlT45zTO0l+lRFnYegm03LPoEQDX74WCz4hl/9QtkHdtEZ82zvYVqoM
- uGrNeY6g1PAMDKsy1KgaFH5g8ZDzIxmeG1XYtejnb29gUJyZJ9OWVrMDcNRe1VaXvvQ0iYtmra/
- bIeL8mHwuwh3YD4h0lp6UCS1KUTQv6mGYxF5wmf5OUXhpXWDQTe7SlKCz7lT9ufnR+a3pdPHwDV
- l+CwdfoNTVBAWmraPzw==
-X-Proofpoint-ORIG-GUID: od020Q7vctcxNXkv2RJxtBunjlStgQAC
-X-Proofpoint-Spam-Info: AW1haW4tMjYwOTE0MDA3OSBTYWx0ZWRfX27ux5t0pHtL1
- IQaxwS7V5A7Hu80XRl+nTeu4qVpNBSxas/Y5toFvglSgGRPp08Sjxm1yvYP/Q99XiiR4VN1h7yb
- mpS9ez9y6GumqgWPQwNQarVyqbElWkQ=
-X-Authority-Analysis: v=2.4 cv=Y6htIReN c=1 sm=1 tr=0 ts=6aa78a3d cx=c_pps
- a=RP+M6JBNLl+fLTcSJhASfg==:117 a=iLqgmErQAxjCjdq5jj1Aqg==:17
- a=IkcTkHD0fZMA:10 a=VdqzKS8jKosA:10 a=s4-Qcg_JpJYA:10
- a=VkNPw1HP01LnGYTKEx00:22 a=u7WPNUs3qKkmUXheDGA7:22 a=_glEPmIy2e8OvE2BGh3C:22
- a=9QkMTC1sBftomiCVg_4A:9 a=QEXdDO2ut3YA:10 a=iS9zxrgQBfv6-_F4QbHw:22
-X-Proofpoint-GUID: od020Q7vctcxNXkv2RJxtBunjlStgQAC
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.293,Aquarius:18.0.1176,Hydra:6.1.134,FMLib:17.12.100.49
- definitions=2026-09-14_02,2026-09-13_01,2025-10-01_01
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
- malwarescore=0 lowpriorityscore=0 adultscore=0 spamscore=0 impostorscore=0
- bulkscore=0 clxscore=1015 suspectscore=0 priorityscore=1501 phishscore=0
- classifier=typeunknown authscore=0 authtc= authcc= route=outbound adjust=0
- reason=mlx scancount=1 engine=8.22.0-2609040000 definitions=main-2609140079
-Received-SPF: pass client-ip=205.220.180.131;
- envelope-from=pierrick.bouvier@oss.qualcomm.com;
- helo=mx0b-0031df01.pphosted.com
-X-Spam_score_int: -27
-X-Spam_score: -2.8
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2a00:1450:4864:31::10;
+ envelope-from=alex.bennee@linaro.org; helo=mail-wm2-x10.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, SPF_HELO_NONE=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -190,136 +121,39 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On 9/4/26 5:47 AM, Paolo Bonzini wrote:
-> On 8/27/26 21:58, Pierrick Bouvier wrote:
->> On 8/27/2026 10:48 AM, Paolo Bonzini wrote:
->>> Whoa whoa.
->>>
->>
->> I apologize to Daniel, and other people on this thread for resorting to
->> sarcasm in this situation, and personally mention Daniel in my answer.
->>
->> It stems from the fact that it's not the first time Daniel come on a
->> thread to push a view (that might be wrong) and don't listen to other's
->> people opinion, or leave the conversation when he has no more arguments
->> or discover he's wrong. I'm not the first one to discover this, and it's
->> a topic that came from multiple people I met. I invite anyone to tell me
->> publicly it's in my head, and that it is wrong.
-> 
-> Please stop.  Just stop.  "It came from multiple people" never ends well.
-> 
-> I have my own disagreements with Daniel, which is no surprise since I've
-> known him at work for over 15 years.  In fact, we probably had a couple
-> just this week, though that's fortunately above average.  We have
-> different personalities, we come from different cultural backgrounds.
-> We are still able to respect each other and I seek his opinion even if
-> (or sometimes because) I know it'll be different and make things harder
-> for me. :)
-> 
->>> Sometimes people don't reply not because they disagree, but because
->>> they trust the people involved to resolve the problem.
->>
->> We presented a plan a year ago, for which multiple people have been
->> supportive in general. Now we are close to having a single binary
->> upstream, we have Daniel coming last minute and asking to solve issues
->> we are not at yet. I feel it's not helping us, and simply blocking work.
->>
->> Daniel's main concern (correct me if I'm wrong), is that we might
->> introduce regressions by introducing a -target option, and filtering on
->> QOM types.
-> 
-> I'll briefly touch the technical part.  As it was explained, the problem
-> is really just in the use of symlinks for aarch64 and riscv64 binaries.
-> 
-> All that Daniel is *asking for* is to split the experimental part from
-> the existing one.  Did he go on a tangent on what else he'd like from
-> the experimental part?  Yes, but that's simply a justification for why
-> it's better to keep it split.
-> 
->> I have no problem with anyone deciding to refactor the QEMU command
->> line, but it's a different problem from what we are doing now.
->> We just want to provide a first version upstream mixing at least two
->> base architectures, and providing exact same behavior than existing
->> binaries.
-> 
-> Yes, and that's fine.
-> 
->>> Let me remind you of the discussion we had about -fms-bitfields and
->>> how it was resolved amicably and profitably.
->>
->> I really appreciated this exchange with you. Even if I was a newcomer,
->> you explained where you disagreed, but accepted a different answer. Then
->> we iterated to prove that existing struct layout were not impacted, and
->> we both observed it was safe to remove this option. I felt like we both
->> worked toward a goal, and not that you pushed your personal vision
->> without any technical basis.
-> 
-> I have a different memory.  While I am also satisfied with the outcome,
-> I remember that it was hard to explain why you couldn't just drop
-> -fms-bitfields, and what analysis was required before you did that.  And
-> the outcome was positive mostly (or only) because *I* did the analysis
-> that was necessary to ensure there would be no regressions with *your*
-> proposed patch.
-> 
-> What Daniel is asking is even less - he's only asking to *remove* the
-> bits that symlink qemu-system-arm and qemu-system-riscv64 into
-> qemu-system.  (Perhaps you could do that with a configure option
-> instead, btw, that's also a possibility and would make CI integration
-> easier).
->>> This project was extremely complex and some disagreements are normal,
->>> but overall I would say it has received support from the community for
->>> years. It is close to the finish line, let's not forget all the
->>> collaboration so far.
->>
->> At this point, I don't see the finish line coming anytime soon.
->> We are stuck in a situation where we now might have to design a whole
->> new command line from scratch, for a reason I ignore.
-> 
-> This is simply not true. The important part: "We don't have to do all
-> that straightaway. If we declare qemu-system 'experimental' initially we
-> can iterate on that intentionally breaking compat in releases, without
-> any impact on qemu-system-$TARGET".
-> 
-> Experimental doesn't mean unusable.
->> - let's go with original plan, and just introduce -target option and
->> call it a day for now. CLI refactoring can be initiated in parallel.
-> 
-> That's exactly what Daniel suggested.  In fact the same is true for more
-> things than just the command line:
-> 
-> - filtering can be applied (if needed at all) to qemu-system *after* the
-> binary is available in qemu.git, exactly because qemu-system is
-> experimental;
-> 
-> - if we decide later that -target is not always needed, that would also
-> be doable after the merge.
-> 
-> I hope this helps not so much solving the technical disagreement, but
-> clarifying that yes, sometimes you've got to "agree to disagree", but
-> personal attacks of any intensity are not "agreeing to disagree".
+Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com> writes:
+
+> On 9/10/26 11:14 AM, Alex Benn=C3=A9e wrote:
+>> As the meson tcg build routes the container builds through docker.py
+>> we can also clean up its hack which involved appending a RUN line to
+>> the dockerfile. All the dockerfiles that care will work with the
+>> --build-arg.
+>> Signed-off-by: Alex Benn=C3=A9e <alex.bennee@linaro.org>
+>> ---
+>>   tests/docker/docker.py | 13 ++++++-------
+>>   tests/tcg/meson.build  |  3 ++-
+>>   2 files changed, 8 insertions(+), 8 deletions(-)
+>>=20
 >
+> I'm not sure why this was added in the first place.
+> Technically, running the container with a specific uid (whether or not
+> a user is declared for it) is enough. The only errors you can have is
+> if some specific commands ran expect to check if user exist on the
+> machine, like sudo for instance.
+> For our need (cross compilation), it's not needed, as a compiler will
+> never check who is $USER. Files written will still have the correct
+> uid on host fs anyway.
 
-Thanks for the answer Paolo, I took note of all the points you mentioned.
+That's why you do the mapping. Before I was seeing a whole bunch of the
+test files with a random group ownership.
 
-Regarding the future direction, I would be happy to see an 
-"experimental" binary, without any symlink set for now. Beyond filtering 
-we can implement or not, my understanding was that people involved were 
-not in favor to see -target option.
+>
+> Do you have more info on this?
+>
+> Regards,
+> Pierrick
 
-A solution we could have is indeed to expose all machines/cpus/devices 
-(knowing it will very quickly create more problems with QOM types having 
-duplicated names - riscv64 vs aarch64), and let user pick any 
-combination. However, we still need a -target option to set the correct 
-TargetInfo internally, independently of all the rest.
-
-I'll let someone else do a proposal on the topic as I spent a lot of 
-energy on this with a specific direction (option + filtering) without 
-reaching consensus, and I'll be happy to follow any direction that will 
-be accepted by the community.
-
-> Paolo
-> 
-
-Thanks,
-Pierrick
+--=20
+Alex Benn=C3=A9e
+Virtualisation Tech Lead @ Linaro
 

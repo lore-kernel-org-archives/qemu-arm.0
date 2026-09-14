@@ -4,106 +4,88 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0954AC88E64
-	for <qemu-arm@archiver.kernel.org>; Mon, 14 Sep 2026 09:31:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9DFCDC88E64
+	for <qemu-arm@archiver.kernel.org>; Mon, 14 Sep 2026 09:34:37 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1x631a-0007KR-Mi; Mon, 14 Sep 2026 05:31:02 -0400
+	id 1x634m-0000lh-Gj; Mon, 14 Sep 2026 05:34:12 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1x631O-00076D-Ep
- for qemu-arm@nongnu.org; Mon, 14 Sep 2026 05:30:43 -0400
-Received: from mail-yx2-x10.google.com ([2607:f8b0:4864:41::10])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1x631I-0008SG-Fk
- for qemu-arm@nongnu.org; Mon, 14 Sep 2026 05:30:40 -0400
-Received: by mail-yx2-x10.google.com with SMTP id
- 956f58d0204a3-66e4ab2029eso1541080d50.1
- for <qemu-arm@nongnu.org>; Mon, 14 Sep 2026 02:30:36 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1789378235; cv=none;
- d=google.com; s=arc-20260327;
- b=c6e5gcGrFqztjDUKep1cXCw+HAjkr54VIB0uzVMo3ap1kc9GJr+Ydiz2LNr8ZMlSzj
- ODjXaoJ+GGi8bDu+Bs6yMmodP7oI/TF5UjgSiDNjfGfzBsMQN8YOzKI6STfHouyIMFoW
- ioDmQw21go3VtBv+fGwJTwEJJnB66f1OXAWlxrSBDEX5qDXEXEqUqLALrimWCFQqgMI3
- 6gyuSwrv9U1xWyvqGkiY4049hbLRsayHr+ypHwJBwEHquLQkwp2LJwhiW4TmocEYvVwq
- Wg17cCs/dem4GYdXWvgSWhHxenit/p7iWq3LxveXnX/icbbAOr3bAFhwlD69Z/ehtqlk
- 2vBA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
- s=arc-20260327; 
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:dkim-signature;
- bh=ew9no8+Y7PRBFP2f9K+xoVfYPxAG+Y+oNU3+6I6EBOA=;
- fh=eyDy/xcLLXrJIChThQZ00R+sfQtrlxA28vM2FCFIUIc=;
- b=FV2sBMhLBJFsy9b7pyk4zBzBdT4qbrSSPtygXOr7GwMovj6+6S0qOQwDME3JEzMllp
- AJqbr/UeQeAZed+PZEwIkpsa1AcMFxlzH1iP5ZoOQbjvgGf+BxTsqbiuesilctp6nhzT
- rrctcR675QO5QeUcU4pCBQCHyfJ5JkvhhMCpJ9KKSE5zdG+hSrG9vYMarxrai9TboBy3
- cke9JByRVGEPMjI7Mgqu9YuoUC8b/SI3uWKSQIr43uswpTcHh3OnD9vBwBuBv6pmimoa
- p7+A5LMHNYMU0RdwDPlU/gXUO9SEZ5IQQrtcMVNfXMwHuEryVJJB7SCfqIWh4K8f2hud
- k/0g==; darn=nongnu.org
-ARC-Authentication-Results: i=1; mx.google.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1789378235; x=1789983035; darn=nongnu.org;
- h=content-type:cc:to:subject:message-id:date:from:in-reply-to
- :references:mime-version:from:to:cc:subject:date:message-id:reply-to
- :content-type; bh=ew9no8+Y7PRBFP2f9K+xoVfYPxAG+Y+oNU3+6I6EBOA=;
- b=WMeYV9KVAYy8hX9lrTnS2tGCoq8Gkzievynjz/PyvNaX9oGEW1MutIX+TQvi0uJQAT
- NJT/mOJcnNGUaK32F32EIz7v0uucWtybofJc1Ry9qywELZOW8Z5VoUUPD7Cat5ur0+WX
- Rlup2ZWwGemHK1ShrA6ey+5Uxt18f43Nvum8TwqzLlozUGIX7jbIqMv6TKTB+nph47LW
- w77gQHCETMitr7hffVlc5eF7LxHgEC5vADJb0hMMsMrpiSz/x+1ip8yRkLANminFCS9e
- j7swmhizGzP61H3ulG8d9L50KcyBmIBNJGQtskJxOuWAbkmFR3kYfW/u17wYHxWHsq+r
- BBfw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1789378235; x=1789983035;
- h=content-type:cc:to:subject:message-id:date:from:in-reply-to
- :references:mime-version:x-gm-gg:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to:content-type;
- bh=ew9no8+Y7PRBFP2f9K+xoVfYPxAG+Y+oNU3+6I6EBOA=;
- b=Z3T6HRIngg5ZsvYjIhQxVV+QY72YX0U2Mt3y/JB+WuBfVYN2Cm+eY9occ1Ku8DuQVA
- phMRCkwRjD04ziOyT8tgogDk9LCVg5458X4bIQ2rIj2+JhoJ6JkPQgFYtoDtHpyjtVoh
- WIzNxY4QLc3ToW6VNbR44Di01tpixOhkLkE65+ffZ9UYD806GscQqdCc2SuIiyYxMkKG
- iroT9L1/E2JwYS6fNs61Fa2c91t84dIAwdP+oVQF7bMhtFXAKt1FlOwwh7db7ZpHfcGA
- /zKuf8zgO5Qv5v+BcJQ2eZp0qHDiD/KRiaxiH9x2DaeewiulPCiv6zmK6T27yvn7YtR8
- HWfQ==
-X-Forwarded-Encrypted: i=1;
- AKwUvBy2Zc3CQVbO+0doEHO5dUN8pPf0OgSNNRalmqv5l/SZE2iRXSzxRkDXRr1ukeHIihPwikAjRjo/QQ==@nongnu.org
-X-Gm-Message-State: AFuF++nxoZfmOywMAKjPvhEMaSp6gqmtYtTyBtdRZhFjZm5S/X5Ajhkm
- l1orQNC9FpGP2aoESCqMLJWr6XPWwr/TPnVbru400Qj/q2H4ueekrKEMR3IdXmxzQ8unzFQkB5I
- isxZ/USefVfuWktU/0d4b39UqXvnN5OMxpTHCeThFrA==
-X-Gm-Gg: AYBFou0gi97pN9q3bpe3fFzg2sL6bMjqdjdiN2dBnctO0izUbVKDYSquc5O9cd2brdG
- qR8vHbjQQ0AzUVvEe/e3L50wx5h1hRA8hHBaoRyhHHG6H3oBg1noZQYT6ZTPiX4Qfy2GLbXahcC
- Nb2fWJYT9iYwn3oA3jsu0pDKIXOEKN6r/hew+RaJdKEEXhg9o64x4FZgn+wZmVbCbAOxVhL64tn
- ytgak1tE2WRpwKg8ypHH32e/vU73e1LnV0en4Sv/YYsTPGPtyGWeQ3KSSRwi47MHYim+boDmNKz
- O/JUcIOCXS4Ibfz35Gw4xo1PZOzrBP4ZS2qQ4yZPAWn6/PZT2F6wcqaLwou0AMbHiOqd0R6UmKo
- i3Mt79quotsnoV2zIoLfb6La/XN6lp1UtfQJd4zU=
-X-Received: by 2002:a05:690e:ec7:b0:66f:c1bc:880c with SMTP id
- 956f58d0204a3-6714e1c88admr182974d50.101.1789378234982; Mon, 14 Sep 2026
- 02:30:34 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <odaki@rsg.ci.i.u-tokyo.ac.jp>)
+ id 1x634R-0000hd-MU; Mon, 14 Sep 2026 05:33:53 -0400
+Received: from www3579.sakura.ne.jp ([49.212.243.89])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <odaki@rsg.ci.i.u-tokyo.ac.jp>)
+ id 1x634M-0000S1-SX; Mon, 14 Sep 2026 05:33:50 -0400
+Received: from h183.csg.ci.i.u-tokyo.ac.jp (h183.csg.ci.i.u-tokyo.ac.jp
+ [133.11.54.183]) (authenticated bits=0)
+ by www3579.sakura.ne.jp (8.16.1/8.16.1) with ESMTPSA id 68E9WXEW020350
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NO);
+ Mon, 14 Sep 2026 18:32:38 +0900 (JST)
+ (envelope-from odaki@rsg.ci.i.u-tokyo.ac.jp)
+DKIM-Signature: a=rsa-sha256; bh=/Bvxk6KnPo0hgWabVbGt/xH9R1ZKFET4Zr3/tO589OM=; 
+ c=relaxed/relaxed; d=rsg.ci.i.u-tokyo.ac.jp;
+ h=From:Message-Id:To:Subject:Date;
+ s=rs20250326; t=1789378358; v=1;
+ b=ClVR0MZMbJCOXXzXdwjsc+A5CXKty+BnArkLQzVeJiBl/u6RUfjMNicLUV8QM0wz
+ UfAR+7GYG780CyJrKHyK50AbHh25aBXvo7jjxnQPPjEMfUI0G6C6LyCqx4q/C72K
+ 17jMDZH/7/kxWmQSe5d87aYoVcJW3/UFgF28m9EsdbjEP7xvYo4ocTbnObWgJGx8
+ 5GMhMIrWKfqBh5JV04PKwQq/Qk05gWNbVUHRuE/umB8/rqPsHnESUoEeb69tHyP+
+ XHM7R/OGXMduIpDscl63tOpPNGIbs6e9yaA/VIN8HY0I6WirG7TN15Yj61UABXNj
+ UEEJdT/upDWYAJHn05kGNw==
+From: Akihiko Odaki <odaki@rsg.ci.i.u-tokyo.ac.jp>
+Date: Mon, 14 Sep 2026 18:31:49 +0900
+Subject: [PATCH v4 1/4] qdev: Clarify instantiation and realization
 MIME-Version: 1.0
-References: <20260910175001.76278-1-thuth@redhat.com>
-In-Reply-To: <20260910175001.76278-1-thuth@redhat.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Mon, 14 Sep 2026 10:30:22 +0100
-X-Gm-Features: AcwNN1VlWzPMcYhngrbB8b6xtasH5I6EofU4KQjbsMaO3dyz_T-W4ZytMkEFy0k
-Message-ID: <CAFEAcA-dkLYr5GmqScLcuk+iErdKCMYrPJmEPXo7=+uV+Oe6GQ@mail.gmail.com>
-Subject: Re: [PATCH] hw/misc/bcm2835_powermgt: Free timer during finalize to
- avoid memory leak
-To: Thomas Huth <thuth@redhat.com>
-Cc: qemu-devel@nongnu.org,
- =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@oss.qualcomm.com>, 
- qemu-arm@nongnu.org
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:41::10;
- envelope-from=peter.maydell@linaro.org; helo=mail-yx2-x10.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+Message-Id: <20260914-qdev-v4-1-93f849b4865c@rsg.ci.i.u-tokyo.ac.jp>
+References: <20260914-qdev-v4-0-93f849b4865c@rsg.ci.i.u-tokyo.ac.jp>
+In-Reply-To: <20260914-qdev-v4-0-93f849b4865c@rsg.ci.i.u-tokyo.ac.jp>
+To: qemu-devel@nongnu.org
+Cc: BALATON Zoltan <balaton@eik.bme.hu>, Paolo Bonzini <pbonzini@redhat.com>, 
+ =?utf-8?q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>,
+ Eduardo Habkost <eduardo@habkost.net>,
+ "Maciej S. Szmigiero" <maciej.szmigiero@oracle.com>,
+ "Michael S. Tsirkin" <mst@redhat.com>,
+ David Hildenbrand <david@kernel.org>, Igor Mammedov <imammedo@redhat.com>,
+ FangSheng Huang <FangSheng.Huang@amd.com>,
+ Alistair Francis <alistair@alistair23.me>,
+ "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
+ Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
+ Nicholas Piggin <npiggin@gmail.com>, Aditya Gupta <adityag@linux.ibm.com>,
+ Glenn Miles <milesg@linux.ibm.com>,
+ Harsh Prateek Bora <harshpb@linux.ibm.com>, qemu-ppc@nongnu.org,
+ Alex Williamson <alex@shazbot.org>,
+ =?utf-8?q?C=C3=A9dric_Le_Goater?= <clg@redhat.com>,
+ Zhao Liu <zhao1.liu@intel.com>,
+ Hendrik Brueckner <brueckner@linux.ibm.com>,
+ Richard Henderson <richard.henderson@linaro.org>,
+ Ilya Leoshkevich <iii@linux.ibm.com>,
+ Cornelia Huck <cohuck@redhat.com>, Eric Farman <farman@linux.ibm.com>,
+ Matthew Rosato <mjrosato@linux.ibm.com>, qemu-s390x@nongnu.org,
+ Luc Michel <luc@lmichel.fr>, Fam Zheng <fam@euphon.net>,
+ Eric Blake <eblake@redhat.com>, Markus Armbruster <armbru@redhat.com>,
+ Akihiko Odaki <odaki@rsg.ci.i.u-tokyo.ac.jp>
+X-Mailer: b4 0.17-dev
+X-Developer-Signature: v=1; a=openpgp-sha256; l=5771;
+ i=odaki@rsg.ci.i.u-tokyo.ac.jp; h=from:subject:message-id;
+ bh=b0gqtLvYz6FByvP/TSQ7Ojke53C6GB4YJE92Ws3z45A=;
+ b=owGbwMvMwCWmMbc20y1CyJDxtFoSQ9by/XriIUsz/xyrYilSODyluFB8guGUz/9W7wnbw3Hrk
+ tOukCPiHaUsDGJcDLJiiiwpRbu5NaJrPxUmxLfAzGFlAhnCwMUpABOR6Gb4nxt8/U4V76Kqnfye
+ j7l3Ojo8PjG7Ke1M+oWwurNBvskpjAz/lFezine2GTr932WiMrP2dPd8zk61b5zbb0yI+XfD7KI
+ 1LwA=
+X-Developer-Key: i=odaki@rsg.ci.i.u-tokyo.ac.jp; a=openpgp;
+ fpr=AEDC03C9AF734F2EC26A7BFFA4BAEAA73536753C
+Received-SPF: pass client-ip=49.212.243.89;
+ envelope-from=odaki@rsg.ci.i.u-tokyo.ac.jp; helo=www3579.sakura.ne.jp
+X-Spam_score_int: -19
+X-Spam_score: -2.0
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-Spam_report: (-2.0 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -119,33 +101,123 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Thu, 10 Sept 2026 at 18:50, Thomas Huth <thuth@redhat.com> wrote:
->
-> When running e.g. the device-introspect-test with valgrind, there are
-> reports that the code in bcm2835_powermgt.c leaks memory like this:
->
->   48 bytes in 1 blocks are definitely lost in loss record 2,090 of 4,315
->      at 0x6B4B62B: calloc (vg_replace_malloc.c:1616)
->      by 0x7AFF6E1: g_malloc0 (in /usr/lib64/libglib-2.0.so.0.8800.3)
->      by 0x42B1E48: timer_new_full (timer.h:520)
->      by 0x42B1E48: timer_new (timer.h:543)
->      by 0x42B1E48: timer_new_ns (timer.h:563)
->      by 0x42B1E48: bcm2835_powermgt_init (bcm2835_powermgt.c:151)
->      by 0x48632E3: object_init_with_type (object.c:426)
->      by 0x48632E3: object_initialize_with_type (object.c:508)
->      by 0x48636BE: object_new_with_type (object.c:706)
->      by 0x4962FF1: qmp_device_list_properties (qom-qmp-cmds.c:206)
->      by 0x44ACB90: qdev_device_help (qdev-monitor.c:315)
->      by 0x44AE14E: hmp_device_add (qdev-monitor.c:1018)
->
-> Free the timer during finalize() to avoid this problem.
->
-> Signed-off-by: Thomas Huth <thuth@redhat.com>
-> ---
+The distinction of instantiation and realization was vague in the old
+documentation so this change clarifies it.
 
+The old documentation said:
+> The former may not fail (and must not abort or exit, since it is
+> called during device introspection already), and the latter may return
+> error information to the caller and must be re-entrant.
+> Trivial field initializations should go into #TypeInfo.instance_init.
+> Operations depending on @props static properties should go into
+> @realize.
 
+The first problem with the old documentation is that it is unclear what
+"trivial field initializations" means and why triviality makes
+initialization appropriate for #TypeInfo.instance_init. Another problem
+is that the documentation is not comprehensive enough; for example, it
+mentions @props static properties, but it does not say anything about
+the other properties.
 
-Applied to target-arm.next, thanks.
+The keys to distinguish instantiation and realization are instance
+property setting and device introspection. The fact that initial
+instance property setting happens after #TypeInfo.instance_init and
+before realization implies that operations depending on properties
+should go into @realize.
 
--- PMM
+The fact that instantiation happens during device introspection but
+realization does not implies:
+- Instance properties may be added in #TypeInfo.instance_init.
+- Instantiation must not have any side effect not contained in the
+  instance.
+- Any operations without special requirements should go into @realize so
+  that they can be skipped during device introspection.
+- Instance properties added during realization will not be configurable
+  or introspectable before realization.
+
+Note these two facts to guide appropriate instantiation and realization.
+
+We also omit mention of the realized property because it is a QOM
+interface detail, not part of the device API.
+
+The statements regarding a future prospect to propagate the realization
+state change are removed. Device realization is propagated to child
+buses, but not to the devices on those buses. The proposed recursive
+propagation to child devices has not been achieved after 13 years, has
+been questioned [1], and is not relevant with the current API usage.
+
+[1] https://lore.kernel.org/qemu-devel/878syd84s3.fsf@dusky.pond.sub.org/
+
+Signed-off-by: Akihiko Odaki <odaki@rsg.ci.i.u-tokyo.ac.jp>
+---
+ include/hw/core/qdev.h | 42 ++++++++++++++++++++----------------------
+ 1 file changed, 20 insertions(+), 22 deletions(-)
+
+diff --git a/include/hw/core/qdev.h b/include/hw/core/qdev.h
+index f054a214fc6a..b1c5f4780a90 100644
+--- a/include/hw/core/qdev.h
++++ b/include/hw/core/qdev.h
+@@ -23,27 +23,27 @@
+  * Realization
+  * -----------
+  *
+- * Devices are constructed in two stages:
++ * Devices are constructed in the following order:
+  *
+- * 1) object instantiation via object_initialize() and
+- * 2) device realization via the #DeviceState.realized property
++ * 1) #TypeInfo.instance_init
++ * 2) pre-realize property value setting
++ * 3) device realization
+  *
+- * The former may not fail (and must not abort or exit, since it is called
+- * during device introspection already), and the latter may return error
+- * information to the caller and must be re-entrant.
+- * Trivial field initializations should go into #TypeInfo.instance_init.
+- * Operations depending on @props static properties should go into @realize.
+- * After successful realization, setting static properties will fail.
++ * #TypeInfo.instance_init may not fail. #DeviceClass.realize can
++ * fail, returning error information to the caller, and must be re-entrant.
++ *
++ * #TypeInfo.instance_init should add instance properties but must not
++ * have any side effect not contained in the instance, since it happens
++ * during device introspection already. Any operations without special
++ * requirements should go into @realize so that they can be skipped
++ * during device introspection. It is possible to add properties
++ * during realization, but they will not be introspectable or
++ * configurable before realization.
+  *
+- * As an interim step, the #DeviceState.realized property can also be
+- * set with qdev_realize(). In the future, devices will propagate this
+- * state change to their children and along busses they expose. The
+- * point in time will be deferred to machine creation, so that values
+- * set in @realize will not be introspectable beforehand. Therefore
+- * devices must not create children during @realize; they should
+- * initialize them via object_initialize() in their own
+- * #TypeInfo.instance_init and forward the realization events
+- * appropriately.
++ * Child buses are automatically realized. Child devices must be manually
++ * realized (e.g. by calling qdev_realize()).
++ *
++ * After successful realization, setting static properties will fail.
+  *
+  * Any type may override the @realize and/or @unrealize callbacks but needs
+  * to call the parent type's implementation if keeping their functionality
+@@ -102,10 +102,8 @@ typedef int (*DeviceSyncConfig)(DeviceState *dev, Error **errp);
+ /**
+  * struct DeviceClass - The base class for all devices.
+  * @props: Properties accessing state fields.
+- * @realize: Callback function invoked when the #DeviceState:realized
+- * property is changed to %true.
+- * @unrealize: Callback function invoked when the #DeviceState:realized
+- * property is changed to %false.
++ * @realize: Callback function to realize the device.
++ * @unrealize: Callback function to unrealize the device.
+  * @sync_config: Callback function invoked when QMP command device-sync-config
+  * is called. Should synchronize device configuration from host to guest part
+  * and notify the guest about the change.
+
+-- 
+2.55.0
+
 

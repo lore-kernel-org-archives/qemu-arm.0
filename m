@@ -4,76 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 180E9C88E72
-	for <qemu-arm@archiver.kernel.org>; Mon, 14 Sep 2026 16:02:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 15FAFC88E72
+	for <qemu-arm@archiver.kernel.org>; Mon, 14 Sep 2026 16:02:16 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1x697b-0004BB-QL; Mon, 14 Sep 2026 12:01:31 -0400
+	id 1x697e-0004IK-9w; Mon, 14 Sep 2026 12:01:34 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1x696i-0003F2-7u
- for qemu-arm@nongnu.org; Mon, 14 Sep 2026 12:00:37 -0400
+ id 1x696j-0003FT-5t
+ for qemu-arm@nongnu.org; Mon, 14 Sep 2026 12:00:39 -0400
 Received: from mail-wr2-x10.google.com ([2a00:1450:4864:30::10])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1x696f-0004eI-LB
- for qemu-arm@nongnu.org; Mon, 14 Sep 2026 12:00:35 -0400
+ id 1x696g-0004eM-73
+ for qemu-arm@nongnu.org; Mon, 14 Sep 2026 12:00:36 -0400
 Received: by mail-wr2-x10.google.com with SMTP id
- ffacd0b85a97d-482f62ccdb1so735458f8f.1
+ ffacd0b85a97d-482f6350f91so1188359f8f.1
  for <qemu-arm@nongnu.org>; Mon, 14 Sep 2026 09:00:33 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=linaro.org; s=google; t=1789401632; x=1790006432; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:to:from:from:to:cc:subject:date:message-id
  :reply-to:content-type;
- bh=tvOn/pAIjzvCed7vyXKyUkE525/C0NZBVLFzB/DrGUI=;
- b=Wq7W+bhichAtZQhMLjmullrqYyP3wd5SW3KFAeaR8BCL6T4SHsjEKGcLa9BaKrZkcg
- Mj1FRDd+YgCAXbX4mhLAe+mIlR7y9aoBw2p22x+mA5ZXMpNQKuw96MUXsP+eX77ZqxJ4
- CAb4p8kDR5W5knHjcZuKqQxysEE98bT24ADx+ge7oGzIF3z9oemAx9Bpau6qNIDWpsCk
- bXDr3dV5J8Cb+xQqo6DgRmen95po3sStTe+R9+KKmPLxkBsej9Rhg+VNZ8v0gnTH1FO5
- AW+vdCZniQepDCBRK1acup9QQlVIE/51UlOPYazIkm+oOXjiSkBFBSZ5wQWnKHMTwKmY
- nK6A==
+ bh=kkXdxdxtkGFvjB+esa9le+MPJYdqX0voNJcK0mIKJXQ=;
+ b=Y6sflanwI2dM9X9aBUOkpEjHjEdvhmPKEu4CfBgblQ61QVa1c69ciVvhHUxUXFqErt
+ zhpzARdVTilxi0JpCuqIcSL6XqjDda/kom8Rby0BKyk7yTc5ElyMuyoee4+aT1VhObyo
+ 2+AaBOqDzEiIjFhEsgksd6EhE88fsipux3AEU0IUonFna4YKdf2pa56H+UfjhoBQ1QGL
+ qx8fVtlqp4dzygeBS9X9TFW191QpVG0wSvke6Z/AIr2ha+OxaxVwPSom5MdhYaO1rzpx
+ eJND8htcVn5PviohwrE+K9H8F9n9UG5DzxcEpnXStX0PM2RiWJO9sF2vYYUY+iCglrUe
+ WM3w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20251104; t=1789401632; x=1790006432;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:to:from:x-gm-gg:x-gm-message-state:from:to
  :cc:subject:date:message-id:reply-to:content-type;
- bh=tvOn/pAIjzvCed7vyXKyUkE525/C0NZBVLFzB/DrGUI=;
- b=V+MEz2XSp5VhJiFbio5ovnCvpdAQWOpsW+EV8fcCskIhcAuqPR81X1ONyiSDPQEbNn
- Dv3ZecLeThm38QUN+xTngL3gN7mK0QKX8HqMkuoJOATWuEp+ip0wMsRHktQNrEHerVDA
- DolMS2qa5C83qjxTCn9mAQFUbI3S6/oZn9r81rfUG6hSp9pBPpZRGMkpNpbY3jMhMgMJ
- oupVOgAuiRXVWCu8/xjj4OZVILANlWbTISjObSgku2zrx+lmk8z91ToY7qZHpR94Vw+0
- +1fPVOsyBgnKYa/SHuq58TrJNoAMhSnAJeHZGfxUmui00yCtRdXGrTiBw0A6fFQgljtR
- 30GQ==
-X-Gm-Message-State: AFuF++kczZdpoDm92/AeNvW63Ft4g/HAo4slwXKfEBGv/icxMem9SV8u
- oLdXg/vO1/KNJuEsa4SxV8pUPzw95vf2lslJ9l2/lN+MU8XOgD42qSOUiTTs/YTbRgPR1cWOzZc
- qFik7oYU=
-X-Gm-Gg: AYBFou3eAUndFh2FFDchThDo6tjG/4C89YPO/Yxc7q5hri4wIGImjbqtjETSnaNqjnO
- Yc8QRJ7LrgVA1Qx4eGKEGFwTrF4GQwdNK1OvtYO/UNaMSOq6bY3o9r5VIXeYMNj58n8r6W828hE
- Vvzx92oSuAZJVT8YJpsrnHONHOfDa69opV8cBAH1a8XbUw5pdP0drN4f00esTTHjyfTFMCCUSY1
- OgzFCc7LOSXNUG4ii9q/BmJ65d51COebrZTR/yRcZBRpuwG6j1zTfthMnIl24OkcsuPrngd/DHJ
- K5gbKtq8tbW6PZUPBYvpxU/Fj6SH0BabPSS+7wmXFQ7FbP0AB2EBt3hOZIxR6ToQ7eDBf5k3rYY
- XJBjSCKv5JabsX2kMP28/HkjGzg/YhNYv1zf+7ewhMnMSXwq3UrtmLaJVZ0z2QqJ72VyHm3iBhH
- hdU8EcTiFsD3Tk760TS5pHP7KsU6QfS/34otVo+s9llPKSn/x2lkN0krcJbiO0Fhn8JX7tbJJ/X
- 1/eqmVb/+8l8JhXboKUQ0dwuTLnpG3/tdVJ9UlBPRqCcsvUCz9y6oZLfzXHrYUHpdBgzZh8mxfN
- Tvri
-X-Received: by 2002:a5d:664f:0:b0:47f:9158:5924 with SMTP id
- ffacd0b85a97d-48705a44dc3mr62141f8f.9.1789401632218; 
- Mon, 14 Sep 2026 09:00:32 -0700 (PDT)
+ bh=kkXdxdxtkGFvjB+esa9le+MPJYdqX0voNJcK0mIKJXQ=;
+ b=YN84UWleZa5xMnNDf7dO2nhwapAQwX0UV53SRAD43ZCkKUGzRYzJCmV6jB0oA3LV5Q
+ MPPMfmBmrx9HEZA/W9MY4mOO7j49eJrvP3FJvejOHbriSmr1HTy1pYxEeeop5mWjB/Fv
+ 8rQvwdbJ9Nu+2v6ch5xzthrQcjw6vkd/yQZKU9YJp82JGoyK+G/LmsLskTHkhlOaUHnk
+ mazCP5Lq/b1M35D1M64GN5heNjEx+q99vEFT8AadJywcMdvZ0Kyhq4fbBgsxqVHnR87q
+ m6IpY2RRUBRaoMIp0xvz37Arfk1K/Ml6zAvxfC2i9OOyekfgaamhUcamH/meWlC8bIK2
+ OlCg==
+X-Gm-Message-State: AFuF++lwjnXgHaDW/MGcqDmKWjUbXCBfONqZEMvqBV2YVtPesFmwKKqV
+ WANmAGatEZWva1XfZ5Kfl2qaVug2dcmAbz46cxr2LtcaNqQNUFXfSU4OhMaH028kbqmzUAZWyeM
+ 0evy6NOA=
+X-Gm-Gg: AYBFou3KQNRL7a3tsvdHLybv4FyA1iLELBjjIDnOSOdAsf7Ld+ZzF/NvtYN8EZs6vIp
+ +eqxgg+eWbUl7p6dBqqHPMLpEqr9d7+nXsQYSNgNyaFGYQ5PFvnqSgxlHGEjem8JgV2GkOmMhJ0
+ k69oj0OWYTTAmCS4FHkCMnqgjDyKNIZkd9gI63MI01oq29lYVwa6Kq7F2nEFEJoABrvaNPwDd5B
+ 7BprutFRpvJwNU47jsQdFtc5CyzDPNnr96r5sHyKZ7YiDW06bIg/2Rvon/OIK1E9Z/h912q8kDC
+ zfMDlXc/cgS8wHrMJSCCxVpO3BDt2PJHvBo6ZtjQ27wNOrPtyrWLXWZ7lsKVdkyOU6MfLBGW+9o
+ WncGv+foLiQu5Lz0M/pXZNuUMji8gAiKnlYrag26WGPc2fyoq9KXXcsTTiuHgnumtmgB2F00HVG
+ +5wCG3bNJ0fUmj5RzgNCphErpNHzukxoNiqvC/DPRYx7lfrWQcP6OBp6OCINhHu40fRWoA6AY3E
+ Y2jJuoFW+Wi7XxHb8nbZtNOplH93Lhw1QPkxcdd0ILccgLex2DOI670RzAL+aWDcOZREx1rjgSz
+ mv5d
+X-Received: by 2002:a05:6000:4811:b0:487:210:ce1a with SMTP id
+ ffacd0b85a97d-48702a9a3f3mr3944754f8f.1.1789401628366; 
+ Mon, 14 Sep 2026 09:00:28 -0700 (PDT)
 Received: from lanath.. (wildly.archaic.org.uk. [81.2.115.145])
  by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-486eb350686sm30797695f8f.27.2026.09.14.09.00.31
+ ffacd0b85a97d-486eb350686sm30797695f8f.27.2026.09.14.09.00.27
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 14 Sep 2026 09:00:31 -0700 (PDT)
+ Mon, 14 Sep 2026 09:00:27 -0700 (PDT)
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-arm@nongnu.org,
 	qemu-devel@nongnu.org
-Subject: [PATCH v2 7/9] target/arm: Only allow GICv5 on CPUs without AArch32
- at EL1..3
-Date: Mon, 14 Sep 2026 17:00:18 +0100
-Message-ID: <20260914160020.327787-8-peter.maydell@linaro.org>
+Subject: [PATCH v2 5/9] hw/intc/arm_gicv5: Free memory in finalize
+Date: Mon, 14 Sep 2026 17:00:16 +0100
+Message-ID: <20260914160020.327787-6-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20260914160020.327787-1-peter.maydell@linaro.org>
 References: <20260914160020.327787-1-peter.maydell@linaro.org>
@@ -87,7 +86,7 @@ X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -103,105 +102,55 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-We previously allowed the GICv5 on any 64-bit CPU, with a hack where
-enabling the GICv5 silently disabled AArch32 for EL1..3.
+The GICv5 allocates memory and creates hashtables during realize and
+as part of its operation.  Free those resources in finalize.
 
-Now that we have a separate 'max-v8' and 'max-v9' where max-v9
-correctly doesn't implement AArch32 at EL1..3, we can fix the "when
-do we expose the has_gcie property" condition so that we only allow
-the GICv5 when AArch32 doesn't exist above EL0, and remove the hack
-disabling AArch32.
-
-We could instead have defined a new ARM_FEATURE_V9, but "allow the
-feature to be present on CPUs where it doesn't actively break
-anything" fits the way we've generally handled things in QEMU, and it
-avoids having a new V9 feature bit that we only use for this one
-thing and where it's not clear when we should be setting it for KVM,
-hvf, etc accelerators.
-
-In practice the only CPUs which will allow GICv5 now are max, max-v9
-and a64fx.
+Since the GICv5 is created at QEMU startup and remains in existence
+for the lifetime of the process, this isn't an in-practice leak,
+only a theoretical one.
 
 Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 ---
- target/arm/cpu-features.h |  8 ++++++++
- target/arm/cpu.c          | 37 +++++++------------------------------
- 2 files changed, 15 insertions(+), 30 deletions(-)
+ hw/intc/arm_gicv5.c        | 11 +++++++++++
+ hw/intc/arm_gicv5_common.c |  3 +++
+ 2 files changed, 14 insertions(+)
 
-diff --git a/target/arm/cpu-features.h b/target/arm/cpu-features.h
-index eecbc3b889e..c4029c0f73c 100644
---- a/target/arm/cpu-features.h
-+++ b/target/arm/cpu-features.h
-@@ -1129,6 +1129,14 @@ static inline bool isar_feature_aa64_aa32_el3(const ARMISARegisters *id)
-     return FIELD_EX64_IDREG(id, ID_AA64PFR0, EL3) >= 2;
+diff --git a/hw/intc/arm_gicv5.c b/hw/intc/arm_gicv5.c
+index c6914f7310c..6b72870439b 100644
+--- a/hw/intc/arm_gicv5.c
++++ b/hw/intc/arm_gicv5.c
+@@ -1970,6 +1970,17 @@ static void gicv5_init(Object *obj)
+ 
+ static void gicv5_finalize(Object *obj)
+ {
++    GICv5 *s = ARM_GICV5(obj);
++
++    for (int i = 0; i < NUM_GICV5_DOMAINS; i++) {
++        GHashTable *ht = s->phys_lpi_config[i].lpi_cache;
++
++        if (ht) {
++            g_hash_table_destroy(ht);
++        }
++
++        g_free(s->hppi[i]);
++    }
  }
  
-+static inline bool isar_feature_aa64_aa32_above_el0(const ARMISARegisters *id)
-+{
-+    /* True if any EL above EL0 has AArch32 support */
-+    return isar_feature_aa64_aa32_el1(id) ||
-+        isar_feature_aa64_aa32_el2(id) ||
-+        isar_feature_aa64_aa32_el3(id);
-+}
-+
- static inline bool isar_feature_aa64_ras(const ARMISARegisters *id)
+ static void gicv5_class_init(ObjectClass *oc, const void *data)
+diff --git a/hw/intc/arm_gicv5_common.c b/hw/intc/arm_gicv5_common.c
+index b155486af65..cc67246686e 100644
+--- a/hw/intc/arm_gicv5_common.c
++++ b/hw/intc/arm_gicv5_common.c
+@@ -112,6 +112,9 @@ static void gicv5_common_init(Object *obj)
+ 
+ static void gicv5_common_finalize(Object *obj)
  {
-     return FIELD_EX64_IDREG(id, ID_AA64PFR0, RAS) != 0;
-diff --git a/target/arm/cpu.c b/target/arm/cpu.c
-index 2b1b87b0ed4..bbf4e0aa465 100644
---- a/target/arm/cpu.c
-+++ b/target/arm/cpu.c
-@@ -1584,8 +1584,13 @@ static void arm_cpu_post_init(Object *obj)
-                                        &cpu->rvbar_prop,
-                                        OBJ_PROP_FLAG_READWRITE);
++    GICv5Common *cs = ARM_GICV5_COMMON(obj);
++
++    g_free(cs->spi);
+ }
  
--        /* We only allow GICv5 on a 64-bit v8 CPU */
--        if (arm_feature(&cpu->env, ARM_FEATURE_AARCH64)) {
-+        /*
-+         * We only allow GICv5 on a CPU with no AArch32 support above EL0
-+         * (which is typically a v9 CPU), because GICv5 defines no AArch32
-+         * system registers to control it.
-+         */
-+        if (arm_feature(&cpu->env, ARM_FEATURE_AARCH64) &&
-+            !cpu_isar_feature(aa64_aa32_above_el0, cpu)) {
-             qdev_property_add_static(DEVICE(obj), &arm_cpu_has_gcie_property);
-         }
-     }
-@@ -2235,34 +2240,6 @@ static void arm_cpu_realizefn(DeviceState *dev, Error **errp)
- 
-     /* Report FEAT_GCIE in our ID registers if property was set */
-     FIELD_DP64_IDREG(isar, ID_AA64PFR2, GCIE, cpu->has_gcie);
--    if (cpu_isar_feature(aa64_gcie, cpu)) {
--        if (!arm_feature(env, ARM_FEATURE_AARCH64)) {
--            /*
--             * We only create the have_gcie property for AArch64 CPUs,
--             * but the user might have tried aarch64=off with has_gcie=on.
--             */
--            error_setg(errp, "Cannot both enable has_gcie and disable aarch64");
--            return;
--        }
--
--        /*
--         * FEAT_GCIE implies Armv9, which implies no AArch32 above EL0.
--         * Usually we don't strictly insist on this kind of feature
--         * dependency, but in this case we enforce it, because the
--         * GICv5 CPU interface has no AArch32 versions of its system
--         * registers, so interrupts wouldn't work if we allowed AArch32
--         * in EL1 or above. Downgrade "AArch32 and AArch64" to "AArch64".
--         */
--        if (cpu_isar_feature(aa64_aa32_el3, cpu)) {
--            FIELD_DP64_IDREG(isar, ID_AA64PFR0, EL3, 1);
--        }
--        if (cpu_isar_feature(aa64_aa32_el2, cpu)) {
--            FIELD_DP64_IDREG(isar, ID_AA64PFR0, EL2, 1);
--        }
--        if (cpu_isar_feature(aa64_aa32_el1, cpu)) {
--            FIELD_DP64_IDREG(isar, ID_AA64PFR0, EL1, 1);
--        }
--    }
- 
-     if (cpu_isar_feature(aa64_mte, cpu)) {
-         /*
+ static void gicv5_common_realize(DeviceState *dev, Error **errp)
 -- 
 2.43.0
 

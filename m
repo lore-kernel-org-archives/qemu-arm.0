@@ -4,72 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id F405DC88E77
-	for <qemu-arm@archiver.kernel.org>; Tue, 15 Sep 2026 20:20:33 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DF40DC88E77
+	for <qemu-arm@archiver.kernel.org>; Tue, 15 Sep 2026 20:20:55 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1x6ZbQ-0007ku-BH; Tue, 15 Sep 2026 16:18:04 -0400
+	id 1x6ZbP-0007gd-By; Tue, 15 Sep 2026 16:18:03 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1x6ZZr-0006vk-7q
- for qemu-arm@nongnu.org; Tue, 15 Sep 2026 16:16:32 -0400
+ id 1x6ZZZ-0006s6-W9
+ for qemu-arm@nongnu.org; Tue, 15 Sep 2026 16:16:13 -0400
 Received: from mail-wm2-x11.google.com ([2a00:1450:4864:31::11])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1x6ZZn-0003Js-3y
- for qemu-arm@nongnu.org; Tue, 15 Sep 2026 16:16:25 -0400
+ id 1x6ZZW-0003H6-Nb
+ for qemu-arm@nongnu.org; Tue, 15 Sep 2026 16:16:09 -0400
 Received: by mail-wm2-x11.google.com with SMTP id
- 5b1f17b1804b1-49e83a388f8so1630935e9.1
- for <qemu-arm@nongnu.org>; Tue, 15 Sep 2026 13:16:12 -0700 (PDT)
+ 5b1f17b1804b1-49ccfd61ecaso1924845e9.3
+ for <qemu-arm@nongnu.org>; Tue, 15 Sep 2026 13:16:05 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1789503372; x=1790108172; darn=nongnu.org;
+ d=linaro.org; s=google; t=1789503365; x=1790108165; darn=nongnu.org;
  h=content-transfer-encoding:content-type:mime-version:references
  :in-reply-to:message-id:date:subject:cc:to:from:from:to:cc:subject
  :date:message-id:reply-to:content-type;
- bh=7O9UJOMF0J+VNfP7rnUceN1KGDlS3Etlt1DaVQnlEaY=;
- b=PGFPnfiNaO7MoZseckKBQqqwsbsr2tUXagyq+hyoCtPTQ0zPeKUOcvWXTNOFBltL3Z
- /zxAMic7DXm0jzYYqB4fuPu7r5mt/VMETu4Og/jpOF0DU39R/rA0Gz7hAYm1J/xjzZ0c
- HcyfSfki35KMhiZ118lEErviygVzH/qJO5kMCdOckPLtfdfyAbfXWWIOjZkC53PIKT+A
- 7LlI0WuAURzWqGYgZN52z0DFlW0RK9d8/WeS9u0mKLWu0bj8cImAwrhDKvR4MWMpTi2D
- pvgJ0G/tsHFuXR6htk02fZsytB+JjTfNTroBylEfv5J5ECbHin8vYpaIXFFHOUgB4Im5
- HZiA==
+ bh=zaMYvSZ2k0eHaB8BN//yVzz35zyXadmvTP++fUkW3Ps=;
+ b=EzeupwjNMzuTXORwDlhfhGr2w85IXYfIy9zoQm5SRHvSPDZacEawX6x/tdmyU9rSgQ
+ tumF9KPGmwLVdqzmllmKWlSuLDgVxil8Vh10xLfl7ydFzMDx3tuDalRUDKNeyR1iNlv0
+ 9Uqlzzr8YTezF0lP+gzWh1aR3ign0CXdUVN6G7rWNBHsThc0Bpv6ZdnL6wE2vYR3Sz65
+ IhIZLdANgELVw8VoJY8Lm15CCYdmbahtBr5YHiwjSvr/jIC3PAziL1dWbKDQPwF6rgmu
+ p5OLEkXqw86VRluPzm3sHde1HZbUpAKn6TnebvhI/KHvFlLUmb78VhEYhBliJGaaRPCA
+ Swvw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20260707; t=1789503372; x=1790108172;
+ d=1e100.net; s=20260707; t=1789503365; x=1790108165;
  h=content-transfer-encoding:content-type:mime-version:references
  :in-reply-to:message-id:date:subject:cc:to:from:x-gm-gg
  :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
  :content-type;
- bh=7O9UJOMF0J+VNfP7rnUceN1KGDlS3Etlt1DaVQnlEaY=;
- b=GJBAeeFnkIyuFBgPQNmhcDW2qkwIphIBh/XUFH3i4mJaoT9G7CgAH4HJ2q5V10e6cq
- kjVnlufQQdjejGldJ5frKTOq/HRHKhHbbys+/msqAWNWopyfhgz2w5JBp2HqCy9+wVu6
- wKQ4OXpaFwDxq0mHqKsMrVAwc9hUrMT7i3P2Z7B3U+NoNU4+fkwwtLRFjzXlK7LVAULW
- b7SajH5o97sGZWZ7tGpICFQmkvzLTDdsc43RgeJcQ0tEjNWzdpWZ2CYK+nSojjEnQT9/
- ikY+o874awGOCuFO4j0IC1CZl5C/7eNxyH8H/HHMnmMpfp4Uc+vvnMibpi9VgDnaLE85
- 5zhw==
+ bh=zaMYvSZ2k0eHaB8BN//yVzz35zyXadmvTP++fUkW3Ps=;
+ b=dHCFSZUKe4erV9dwab3UA/UKKFLEDrRoNbjnAUweok6cRe/5j8u5GE8G/pDWmqaeXC
+ TXreGJJ7oY0MSzY5E6CBB5x1Rx99FRN2l4M+di0ImU2FnWfH9MdVIAQyqfyAwj2Y0BGW
+ ogkoZLf99J5tyK/R1LQMM24N4wFuNvXR8VIs15vx1vapZZz5Ddg4JKcwTPacHLlsbzhM
+ FTOdHUNJgDTiCbngptP8KNMFIfc1RtmW25VjDRR0EZo6ovlQaB7lTcAHK6+NELY3bgOa
+ 4MtAt39sq98AHcQ/bB/b/OdZ2gwwJddf4R6EdxLsUOeFdGJml7VuqdpaSUnic0VdZKTh
+ nc4w==
 X-Forwarded-Encrypted: i=1;
- AKwUvBxFnhTTsoRG1XCy8mGVZs0h4OKZ0b57jFVGIeR+5/EC4TJNbyi8iM4QnhgGMz/SvRFzSJtfg4sL2A==@nongnu.org
-X-Gm-Message-State: AFuF++l4CqxLvXXTRpFWJMDBymokkO/cN+4LfvOJyODXBt/QJOPildCF
- e1N75op4bjhhi+S56/yUgm4wZMNRz7FflZ8judTEd5OKIxOtnBNgh6ciivxCqUmf5rU=
-X-Gm-Gg: AYBFou0pstU/MVDBH4qS+daSBUzSuuHgA9/q84tBGxjPuJS9/2Uo9/xTHQ6YU/ohvvT
- YcPuuvV2SSOMs+M2+9kMOqTrK77iYHeCNkoc9IW2jP3Nr0px8n3z9eA9j1yEVjbxaQYIf4sBGNC
- j0c09J4ZnL7yxQdTE4q6pUELiuNO5doEYbfAF8w/GC83ivMe6bRk6C/ZdvLIXimudvIwXSXrlcQ
- q1iJ7zpmcl93Fq8lP7y2Dm7TNeauSYlhXaGrsSG1q9zbi4uddzD9aU5DJhrrmh7HE6vLVy5Q3gV
- axz9E8SsPsGXE7gjPhD7KTMhGY8dwSrv2puAlmTaxSW2Yvi8OSbkhtHqx78Lzg95NZVVt/TAU7Q
- /IfueQK2UC3W6L/3/YehYYmkBKpZH3KsUtyOjTpQoBVesKdbkfQJHp+3NmPGvoxhxhR4EUPe4kR
- Ie4oJXterVtUDcalAeeB/FSZscTF10XWD85gshWizTKNtSAMoni4Ogy3wdqiLYjuPfTthhpJMj6
- vz1LCD4yQ==
-X-Received: by 2002:a05:600c:6217:b0:493:f140:c3fb with SMTP id
- 5b1f17b1804b1-49e7a656c01mr212379805e9.7.1789503371668; 
- Tue, 15 Sep 2026 13:16:11 -0700 (PDT)
+ AKwUvByy7uHPV2BR/H9Sfcku7ATaGCdoPFGTXwdgtSsktZ6o8Ghpwt/iDKbqf5cyWCMC1+EM7DFzEXRRpg==@nongnu.org
+X-Gm-Message-State: AFuF++lGzCKm3CenpnSBt1LKZpzmQpxPGiO8IEuCaKU8qcQ7d+a2sx61
+ V1YZwezMuo0fwB4nbwbuf+locUsY6JlRyBXt64g/e4+pktyTqIGEp0hzqXK+NIip7g4=
+X-Gm-Gg: AYBFou1562VPOs5ayLFXHu4aNzfLD40a+OZt+RZYbAnstDeSIg6pB+oLogJZAZ7YNxQ
+ dWdsKhWZ6L+y6BzvokeogpU/VMt/KJJTjbL8q522YUlsUBSI54Ns1L07KIXkN/v8J1QwB2/cmFw
+ 9hjlWrYPuTM51Jp12io2r0M5rany50qasEIJcF5YMh5SV5B/L/6Tmi5pGDGEKmKlsbmy4k05yKV
+ wMOTJ6PA9A/ddPPz+mrrnDLzfmhF+lY4FLT6IKxtmEorIiRqs+M9Gl/NNurUdWxhr+41SUbxtOD
+ A4hmPoyAawZMLEqauJGKPG2ND4/KIc7K9y2yvjo4p4OC9GiNw92rb5GQBmK56mjPJRCq+WtJa4p
+ s+sfKK86vMAM4McnFlRbjePEao6tNl/wAj7K8B3C93qt4VtcY3C69kMrR2MGSytpx7ODAi/+bZc
+ 8iY2leXQGRxQ+YyV8prPk4f+8BsbiZKpevSvYzLgMYjXGUVA3IWOKex4dI8jTf87ajhDC+Zkmbx
+ wfnXtqiLQ==
+X-Received: by 2002:a05:600c:4e90:b0:49e:73e7:888c with SMTP id
+ 5b1f17b1804b1-49e7a65ce45mr116957105e9.4.1789503364637; 
+ Tue, 15 Sep 2026 13:16:04 -0700 (PDT)
 Received: from draig.lan ([185.124.0.156]) by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-4870bf462cesm1405272f8f.37.2026.09.15.13.16.05
+ 5b1f17b1804b1-49e83da071asm16254455e9.8.2026.09.15.13.16.02
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 15 Sep 2026 13:16:08 -0700 (PDT)
+ Tue, 15 Sep 2026 13:16:02 -0700 (PDT)
 Received: from draig.lan (localhost [IPv6:::1])
- by draig.lan (Postfix) with ESMTP id C86BE61901;
- Tue, 15 Sep 2026 21:16:02 +0100 (BST)
+ by draig.lan (Postfix) with ESMTP id EAEF16178D;
+ Tue, 15 Sep 2026 21:16:01 +0100 (BST)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: Cornelia Huck <cohuck@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
@@ -89,10 +89,10 @@ Cc: Cornelia Huck <cohuck@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
  =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
  Ilya Leoshkevich <iii@linux.ibm.com>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@mailo.com>
-Subject: [PATCH v2 11/15] tests/docker: strip remaining caching logic from
- docker.py
-Date: Tue, 15 Sep 2026 21:15:56 +0100
-Message-ID: <20260915201601.1207839-12-alex.bennee@linaro.org>
+Subject: [PATCH v2 03/15] Revert "tests/tcg/meson.build: implement ./configure
+ containers options"
+Date: Tue, 15 Sep 2026 21:15:48 +0100
+Message-ID: <20260915201601.1207839-4-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.47.3
 In-Reply-To: <20260915201601.1207839-1-alex.bennee@linaro.org>
 References: <20260915201601.1207839-1-alex.bennee@linaro.org>
@@ -106,7 +106,7 @@ X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -122,222 +122,114 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-The caching logic was a remnant of an older time when we had multiple
-shared layers building that went into the final image. It was arguable
-that it worked back then but it is definitely not needed now so into
-the bin it goes.
+We want to keep the container configuration inside configure for the
+firmware builds.
 
-Reviewed-by: Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>
+This reverts commit 522b299ca4316d8cad57f9496ffcba87dcc20719.
+
+Suggested-by: Paolo Bonzini <pbonzini@redhat.com>
+[AJB: untangle changes since]
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
 ---
- tests/docker/docker.py | 148 ++++++++++++++---------------------------
- 1 file changed, 49 insertions(+), 99 deletions(-)
+ configure             | 11 ++++++++---
+ meson_options.txt     |  4 ----
+ tests/tcg/meson.build | 25 ++++---------------------
+ 3 files changed, 12 insertions(+), 28 deletions(-)
 
-diff --git a/tests/docker/docker.py b/tests/docker/docker.py
-index fd0cbdfe856..a2e97061240 100755
---- a/tests/docker/docker.py
-+++ b/tests/docker/docker.py
-@@ -15,7 +15,6 @@
- import sys
- import subprocess
- import json
--import hashlib
- import atexit
- import uuid
- import argparse
-@@ -27,7 +26,6 @@
- from tarfile import TarFile, TarInfo
- from io import StringIO, BytesIO
- from shutil import copy, rmtree
--from datetime import datetime, timedelta
+diff --git a/configure b/configure
+index aa98cf39584..cec6f18f857 100755
+--- a/configure
++++ b/configure
+@@ -172,6 +172,7 @@ fi
+ # some defaults, based on the host environment
  
+ # default parameters
++container_command=""
+ cpu=""
+ cross_compile="no"
+ cross_prefix=""
+@@ -259,6 +260,7 @@ ninja=""
+ python=
+ download="enabled"
+ skip_meson=no
++use_containers="yes"
+ rust="disabled"
+ rust_target_triple=""
  
- FILTERED_ENV_NAMES = ['ftp_proxy', 'http_proxy', 'https_proxy']
-@@ -35,20 +33,9 @@
+@@ -725,11 +727,11 @@ for opt do
+   ;;
+   --disable-plugins) plugins="no"
+   ;;
+-  --enable-containers) # enabled by default
++  --enable-containers) use_containers="yes"
+   ;;
+-  --disable-containers) meson_option_add -Dcontainers=false
++  --disable-containers) use_containers="no"
+   ;;
+-  --container-command=*) meson_option_add -Dcontainer_command="$optarg"
++  --container-command=*) container_command="$optarg"
+   ;;
+   --rust-target-triple=*) rust_target_triple="$optarg"
+   ;;
+@@ -1716,6 +1718,9 @@ echo all: >> $config_host_mak
  
- DEVNULL = open(os.devnull, 'wb')
+ echo "SRC_PATH=$source_path" >> $config_host_mak
+ echo "TARGET_DIRS=$target_list" >> $config_host_mak
++if test "$container_command" != ""; then
++    echo "CONTAINER_COMMAND=$container_command" >> $config_host_mak
++fi
+ echo "SUBDIRS=$subdirs" >> $config_host_mak
+ echo "PYTHON=$python" >> $config_host_mak
+ echo "MKVENV_ENSUREGROUP=$mkvenv ensuregroup $mkvenv_online_flag" >> $config_host_mak
+diff --git a/meson_options.txt b/meson_options.txt
+index 66d3689d14c..218d003a80b 100644
+--- a/meson_options.txt
++++ b/meson_options.txt
+@@ -389,7 +389,3 @@ option('rust', type: 'feature', value: 'disabled',
+        description: 'Rust support')
+ option('strict_rust_lints', type: 'boolean', value: false,
+        description: 'Enable stricter set of Rust warnings')
+-option('containers', type: 'boolean', value: true,
+-       description: 'use containers to cross compile tcg tests')
+-option('container_command', type: 'string',
+-       description: 'command to build/run containers')
+diff --git a/tests/tcg/meson.build b/tests/tcg/meson.build
+index ce208e686ff..e966774c8c2 100644
+--- a/tests/tcg/meson.build
++++ b/tests/tcg/meson.build
+@@ -79,28 +79,11 @@ if gdb.found()
+ endif
+ tcg_tests_summary += {'gdb': gdb}
  
--def _bytes_checksum(bytes):
--    """Calculate a digest string unique to the text content"""
--    return hashlib.sha1(bytes).hexdigest()
--
--def _text_checksum(text):
--    """Calculate a digest string unique to the text content"""
--    return _bytes_checksum(text.encode('utf-8'))
--
- def _read_dockerfile(path):
-     return open(path, 'rt', encoding='utf-8').read()
+-docker_supported = false
+-container_command = false
+-if get_option('containers')
+-  if get_option('container_command') != ''
+-    # make sure command is working
+-    container_command = get_option('container_command')
+-    cmd = container_command.split()
+-    run_command([cmd, 'info'], check: true)
+-    docker_supported = true
+-    docker_wrapper = [docker_wrapper, '--command',
+-                      container_command]
+-  else
+-    docker_probe = run_command(docker_wrapper, 'probe', check: false)
+-    docker_supported = docker_probe.returncode() == 0
+-    if docker_supported
+-      container_command = docker_probe.stdout().strip()
+-      docker_wrapper = [docker_wrapper, '--command',
+-                        container_command]
+-    endif
+-  endif
++docker_probe = run_command(docker_wrapper, 'probe', check: false)
++docker_supported = docker_probe.returncode() == 0
++if docker_supported
++  docker_wrapper = [docker_wrapper, '--command', docker_probe.stdout().strip()]
+ endif
+-tcg_tests_summary += {'container command': container_command}
  
--def _file_checksum(filename):
--    return _bytes_checksum(open(filename, 'rb').read())
--
- 
- def _guess_engine_command():
-     """ Guess a working engine command or raise exception if not found"""
-@@ -263,38 +250,15 @@ def inspect_tag(self, tag):
-         except subprocess.CalledProcessError:
-             return None
- 
--    def get_image_creation_time(self, info):
--        return json.loads(info)[0]["Created"]
--
--    def get_image_dockerfile_checksum(self, tag):
--        resp = self.inspect_tag(tag)
--        labels = json.loads(resp)[0]["Config"].get("Labels", {})
--        return labels.get("com.qemu.dockerfile-checksum", "")
--
--    def build_image(self, tag, docker_dir, dockerfile,
--                    quiet=True, user=False, argv=None, registry=None,
--                    extra_files_cksum=[]):
-+    def build_image(self, tag, docker_dir, dockerfile_path,
-+                    quiet=True, user=False, argv=None, registry=None):
-         if argv is None:
-             argv = []
- 
--        if not _dockerfile_verify_flat(dockerfile):
-+        if not _dockerfile_verify_flat(_read_dockerfile(dockerfile_path)):
-             return -1
- 
--        checksum = _text_checksum(dockerfile)
--
--        tmp_df = tempfile.NamedTemporaryFile(mode="w+t",
--                                             encoding='utf-8',
--                                             dir=docker_dir, suffix=".docker")
--        tmp_df.write(dockerfile)
--
--        tmp_df.write("\n")
--        tmp_df.write("LABEL com.qemu.dockerfile-checksum=%s\n" % (checksum))
--        for f, c in extra_files_cksum:
--            tmp_df.write("LABEL com.qemu.%s-checksum=%s\n" % (f, c))
--
--        tmp_df.flush()
--
--        build_args = ["build", "-t", tag, "-f", tmp_df.name]
-+        build_args = ["build", "-t", tag, "-f", dockerfile_path]
-         if self._buildkit:
-             build_args += ["--build-arg", "BUILDKIT_INLINE_CACHE=1"]
- 
-@@ -320,13 +284,6 @@ def update_image(self, tag, tarball, quiet=True):
- 
-         self._do_check(["build", "-t", tag, "-"], quiet=quiet, stdin=tarball)
- 
--    def image_matches_dockerfile(self, tag, dockerfile):
--        try:
--            checksum = self.get_image_dockerfile_checksum(tag)
--        except Exception:
--            return False
--        return checksum == _text_checksum(dockerfile)
--
-     def run(self, cmd, keep, quiet, as_user=False):
-         label = uuid.uuid4().hex
-         if not keep:
-@@ -412,61 +369,54 @@ def args(self, parser):
-                             help="Dockerfile name")
- 
-     def run(self, args, argv):
--        dockerfile = _read_dockerfile(args.dockerfile)
-         tag = args.tag
- 
-         dkr = Docker(args.command)
--        if "--no-cache" not in argv and \
--           dkr.image_matches_dockerfile(tag, dockerfile):
--            pass
--        else:
--            # Create a docker context directory for the build
--            docker_dir = tempfile.mkdtemp(prefix="docker_build")
--
--            # Validate binfmt_misc will work
--            if args.skip_binfmt:
--                qpath = args.include_executable
--            elif args.include_executable:
--                qpath, enabled = _check_binfmt_misc(args.include_executable)
--                if not enabled:
--                    return 1
--
--            # Is there a .pre file to run in the build context?
--            docker_pre = os.path.splitext(args.dockerfile)[0]+".pre"
--            if os.path.exists(docker_pre):
--                stdout = DEVNULL if args.quiet else None
--                rc = subprocess.call(os.path.realpath(docker_pre),
--                                     cwd=docker_dir, stdout=stdout)
--                if rc == 3:
--                    print("Skip")
--                    return 0
--                elif rc != 0:
--                    print("%s exited with code %d" % (docker_pre, rc))
--                    return 1
--
--            # Copy any extra files into the Docker context. These can be
--            # included by the use of the ADD directive in the Dockerfile.
--            cksum = []
--            if args.include_executable:
--                # FIXME: there is no checksum of this executable and the linked
--                # libraries, once the image built any change of this executable
--                # or any library won't trigger another build.
--                _copy_binary_with_libs(args.include_executable,
--                                       qpath, docker_dir)
--
--            for filename in args.extra_files or []:
--                _copy_with_mkdir(filename, docker_dir)
--                cksum += [(filename, _file_checksum(filename))]
--
--            argv += ["--build-arg=" + k.lower() + "=" + v
--                     for k, v in os.environ.items()
--                     if k.lower() in FILTERED_ENV_NAMES]
--            dkr.build_image(tag, docker_dir, dockerfile,
--                            quiet=args.quiet, user=args.user,
--                            argv=argv, registry=args.registry,
--                            extra_files_cksum=cksum)
--
--            rmtree(docker_dir)
-+
-+        # Create a docker context directory for the build
-+        docker_dir = tempfile.mkdtemp(prefix="docker_build")
-+
-+        # Validate binfmt_misc will work
-+        if args.skip_binfmt:
-+            qpath = args.include_executable
-+        elif args.include_executable:
-+            qpath, enabled = _check_binfmt_misc(args.include_executable)
-+            if not enabled:
-+                return 1
-+
-+        # Is there a .pre file to run in the build context?
-+        docker_pre = os.path.splitext(args.dockerfile)[0]+".pre"
-+        if os.path.exists(docker_pre):
-+            stdout = DEVNULL if args.quiet else None
-+            rc = subprocess.call(os.path.realpath(docker_pre),
-+                                 cwd=docker_dir, stdout=stdout)
-+            if rc == 3:
-+                print("Skip")
-+                return 0
-+            elif rc != 0:
-+                print("%s exited with code %d" % (docker_pre, rc))
-+                return 1
-+
-+        # Copy any extra files into the Docker context. These can be
-+        # included by the use of the ADD directive in the Dockerfile.
-+        if args.include_executable:
-+            # FIXME: there is no checksum of this executable and the linked
-+            # libraries, once the image built any change of this executable
-+            # or any library won't trigger another build.
-+            _copy_binary_with_libs(args.include_executable,
-+                                   qpath, docker_dir)
-+
-+        for filename in args.extra_files or []:
-+            _copy_with_mkdir(filename, docker_dir)
-+
-+        argv += ["--build-arg=" + k.lower() + "=" + v
-+                 for k, v in os.environ.items()
-+                 if k.lower() in FILTERED_ENV_NAMES]
-+        dkr.build_image(tag, docker_dir, args.dockerfile,
-+                        quiet=args.quiet, user=args.user,
-+                        argv=argv, registry=args.registry)
-+
-+        rmtree(docker_dir)
- 
-         return 0
- 
+ # plugins come first, as we need to build the list
+ test_plugins = {}
 -- 
 2.47.3
 

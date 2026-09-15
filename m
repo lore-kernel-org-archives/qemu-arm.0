@@ -4,67 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 343E4C88E75
-	for <qemu-arm@archiver.kernel.org>; Tue, 15 Sep 2026 16:03:18 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1B3D0C982CC
+	for <qemu-arm@archiver.kernel.org>; Tue, 15 Sep 2026 16:03:15 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1x6Vat-0007O1-L9; Tue, 15 Sep 2026 12:01:15 -0400
+	id 1x6Vbd-0008Kz-1T; Tue, 15 Sep 2026 12:02:01 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <ruslichenko.r@gmail.com>)
- id 1x6Vas-0007N4-4N
- for qemu-arm@nongnu.org; Tue, 15 Sep 2026 12:01:14 -0400
+ id 1x6VbW-0008EE-9d
+ for qemu-arm@nongnu.org; Tue, 15 Sep 2026 12:01:55 -0400
 Received: from mail-ej2-x10.google.com ([2a00:1450:4864:34::10])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <ruslichenko.r@gmail.com>)
- id 1x6Vap-0003Mi-R4
- for qemu-arm@nongnu.org; Tue, 15 Sep 2026 12:01:13 -0400
+ id 1x6VbT-0003Ts-3m
+ for qemu-arm@nongnu.org; Tue, 15 Sep 2026 12:01:52 -0400
 Received: by mail-ej2-x10.google.com with SMTP id
- a640c23a62f3a-c254f56039dso83142766b.3
- for <qemu-arm@nongnu.org>; Tue, 15 Sep 2026 09:01:11 -0700 (PDT)
+ a640c23a62f3a-c254f705536so797297766b.1
+ for <qemu-arm@nongnu.org>; Tue, 15 Sep 2026 09:01:40 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20251104; t=1789488070; x=1790092870; darn=nongnu.org;
+ d=gmail.com; s=20251104; t=1789488100; x=1790092900; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to:content-type;
- bh=9T9DqjVoclJjAXs7joIA6JzcMftC3mdXuayXnuMYjRs=;
- b=ZUxVs717xB6JkBlDA85+0nMpnUqdX6OmifuCmB+/xOB9qg3VD8pW9LdXO3webFaJtX
- N7IUAXN5qGKVA5uTiciwj4B/PP2EbKi2ArjK9I1OE/p3BP/BJusE9ONBhu3Z5xkl6nSh
- ExKLmrH6pENcsvQhyxoBXVbAEvvq7ytTX6uLADdEB+iAkuyB9+sfzzBK5bYrq9+NIOEs
- 7kFqN3GPbEQa7RWZnQsfLx2aClry6pwCHvj1umbFCZukl0o7YbDMFk2jghWvuvkA0eIP
- xU4CsXMz1sVCpJE0QnyKOT2IKk/PP8BZeoOfArML0Wr7MSGagq9D6XOlHwdbGMhqFOgI
- iLmQ==
+ bh=njMZgtKOcfOkDZU0dZIjVX7Nek8P5EbfO9WaLdMtUVA=;
+ b=WD1sk+SKEDkEqZEmnhbpkYcUak0elpfk4GXHGy5vJcPCIMNHl6qLXOe0mi/yV22fmx
+ 27p40RfkBVfx4KOKIL7THFZFvvRD0UAq92DRiZs7qI6uWfm+yw7L+kavDt2uCoPEwj4m
+ w9hfSvXlSW3rnmPPHGYz+f4D3B0p2/ma/rH0Z1SEz3pELdPv8z4blOVlbJ98B1acWz00
+ CvbHBDD5XjVVQY/d5ol0umyOh+g3npcXwFytnEfX2rU6Q2hVTT1ob34XWP7duaaMh7fl
+ 1Mx349uFyenK0B1NzMFydKLwHxoSPXTANaHE1PiafQmzk7afh5Z/4QjPZRXjDxdMCYHB
+ 8Uug==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20260707; t=1789488070; x=1790092870;
+ d=1e100.net; s=20260707; t=1789488100; x=1790092900;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
  :to:cc:subject:date:message-id:reply-to:content-type;
- bh=9T9DqjVoclJjAXs7joIA6JzcMftC3mdXuayXnuMYjRs=;
- b=PgP8YiYo4oX+nAAg6flZbFAMD+k4mU5yRNYBxorFuFjnPZKytfd4fLn3s/bD269gn7
- ZDVXRgQLrgW+/Wkn7o32pC+eqbnf9W8pPmWpWLZZ3igb/SEgLT1SVjtkSftBrigpnHHy
- urKk49OzvA2OAUK+asItjedyVSs+hOIlJgZ/Hq7XDIyulfbc49YXgx2rfQvNJoF4a9Og
- dWlA+iD4/V0uG/xuukCoFREoqel6AeVUZHpv2/sgrbuYCBl4B5aNGgs057wsWsRwxS0S
- RilJIlVvGgWdssOv0ivx3cSsvE8gv8Vyl+TU9yGxncICzwZOwuAr+KNm8iG0GmOW32V7
- hvDw==
-X-Gm-Message-State: AFuF++nbe/X42WzJA8IpXm2Yamp5Y9DSoNxX3GMPaCTUhUZ6jTcRjCdj
- NtnVtw9vWpv7HNtxFgv/UEkrB/I6tllPgm32y/ZCSA0pkw4ayIG4kNyr
-X-Gm-Gg: AYBFou30rv8II/Jmzl4iiTvaXTdR7p0RBMsgA0CYIXlwuZjevAGqNCZ0R0UFzW9CuQj
- EEtN0WVWOk2t/TP5bpaY8UVTGHr1ce+bg+y5F1E/tPPTGfP65V+x5nMUVgwRyzmCZJHYAUOXuXO
- wtbeX85la1bfrwDkykR8IEegF9ixzg2ouj7VljepyK5oKNOO/vq76TECljRwKY21pN6c0JtgkFv
- gu1uUFQBxyYV0GYIkYMAcSXb9GGgMl4rjV0SLPToscjDJqiWadxAevvSUaCGOFP4mkZhpjok9fT
- ppGdZcPDsuwvelIwABixsX9qTEL/C3t2UiI23aE86RagGJ+fNfar24fmSCjUc/R493s58M29waW
- EKhEx0TFsk1hDBYKWo/CgTtDRuqtIfRvnimVYyTTa7U6jtT5O6mbu4pinae03rl6eecq4XjEtQF
- LcWKDpT9dMXdsE2EmkCuanWbBJD+NYayQVKKo/WUsMv9QO75vKcdCW0/VVhyF4CN0PTZ/TQCaxJ
- 8niZma+GSLk1OXgMcZDpL/SIL0h/oXkKmMQuP3khmlAow==
-X-Received: by 2002:a17:907:9610:b0:c26:2da7:347f with SMTP id
- a640c23a62f3a-c29d734648dmr143017166b.0.1789488069835; 
- Tue, 15 Sep 2026 09:01:09 -0700 (PDT)
+ bh=njMZgtKOcfOkDZU0dZIjVX7Nek8P5EbfO9WaLdMtUVA=;
+ b=gwMzUx4JVEtVBwSmWQYkyXgQIAR7WJPyJIpzqiX2OJ6dIzDCpPmkl/6VB+p/LyAiTY
+ Q3/5bgF8iTFm7ZHoyse7BlARpAWDrm6raerOXKY3rtd64DMKmtyZ3ysx2eSR+g+IPcMO
+ ut+n4xkMskL7LizH1anVNX4xwckkvUyvu1qWZ3v0oE38ai491Xhlm6r0RpO5k6spxJnH
+ re3UjKa+Sx2yVVEetuQmiK3JvLsyQNLcldiMvq59iA/RmZ/agy/SWSkMTMsSyeKRisdk
+ aK2FBFrDS7ZF+nbXe505KHBQLA0AhjbG8Hp/YdIzq0sk0JIVODrGEjc5EPB+LaSm6ryV
+ uJ0A==
+X-Gm-Message-State: AFuF++nUTN9BfWJL4RxJXZV7/J0M76hG1aSGUpkLwAW3FewNH48dOWve
+ gtewztoiCwVHdZvRCwlq8JH8xr7T8WASOJixM1o8mDY4iYVu1HW9EdM3
+X-Gm-Gg: AYBFou1sY7vN1PD4OucHH3IrpEDMsaplFuOGjfxAHimxXOOzGaB+Vi0umreFDGkIcHj
+ YiVuTJeZooCmE2sx5esMAcWo8JP/sS+g2OCSHA38SZ9xPwoQ/KDnNkrhngPDKl8S1+GRmtcwnHp
+ Z0MPlnnDIo3RmT3+VJ++0pB5My78i5LdRQPem15wJvtOGxF/RcDumj0RfIjGe2jHyChZMQ2/tJx
+ mfWDuLwsZumOHkurCl1Ih40lGv9dxKixgnC1eJ5UeNvk+55KhbboAdiUmWxAMnp82wf7d4eoQda
+ 2zeN6hnfnxbY4VduWrHfd4jfO0+Mqkplpcd56U04da9H4jJS05pIc5ugXK5e69t3hezPMXpExHM
+ SL8QiGgRRqiKb7OG/X0lpsnqtLxt02ldVrwn9BkLfYKGDyx5I/ttP4pHJ3k3LFh82Z1ihQ/lbl0
+ 8sP2EIQBuLnPGjXfe/rzPN1ZT6hTFl5o/Pobas+C0/A5tfN/mdc+26mU7UhFJ32OAjalkzeAF/P
+ hUgnDI4vUSq1O5rx0UB6ARWywW7olQflfMs3NJknlgNfg==
+X-Received: by 2002:a17:907:dab:b0:c26:1648:a065 with SMTP id
+ a640c23a62f3a-c29b87267demr527431266b.32.1789488099490; 
+ Tue, 15 Sep 2026 09:01:39 -0700 (PDT)
 Received: from thinkpad-t470s.. (83-131-196-251.adsl.net.t-com.hr.
  [83.131.196.251]) by smtp.googlemail.com with ESMTPSA id
- a640c23a62f3a-c29ddd86344sm3235866b.0.2026.09.15.09.01.08
+ a640c23a62f3a-c29ddd86344sm3235866b.0.2026.09.15.09.01.37
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 15 Sep 2026 09:01:09 -0700 (PDT)
+ Tue, 15 Sep 2026 09:01:39 -0700 (PDT)
 From: Ruslan Ruslichenko <ruslichenko.r@gmail.com>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org, artem_mygaiev@epam.com, volodymyr_babchuk@epam.com,
@@ -72,9 +72,9 @@ Cc: qemu-arm@nongnu.org, artem_mygaiev@epam.com, volodymyr_babchuk@epam.com,
  edgar.iglesias@gmail.com, berrange@redhat.com, eugene@nuvacore.ai,
  Ruslan_Ruslichenko@epam.com, takahiro.nakata.wr@renesas.com,
  "Edgar E . Iglesias" <edgar.iglesias@amd.com>
-Subject: [PATCH v2 01/20] hw/core: Add Remote Port protocol packet definition
-Date: Tue, 15 Sep 2026 18:00:25 +0200
-Message-ID: <20260915160044.345788-2-ruslichenko.r@gmail.com>
+Subject: [PATCH v2 16/20] hw/core: Add Remote Port GPIO/Interrupt bridge
+Date: Tue, 15 Sep 2026 18:00:40 +0200
+Message-ID: <20260915160044.345788-17-ruslichenko.r@gmail.com>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20260915160044.345788-1-ruslichenko.r@gmail.com>
 References: <20260915160044.345788-1-ruslichenko.r@gmail.com>
@@ -106,336 +106,271 @@ Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
 From: Ruslan Ruslichenko <Ruslan_Ruslichenko@epam.com>
 
-Introduce packet definition for Remote Port protocol.
+This patch adds the `remote-port-gpio` device, which enables
+GPIO levels exchange between QEMU and the remote peer.
 
-Remote Port is a socket based inter-simulation protocol
-designed to connect QEMU to external simulator (such as
-SystemC models, RTL simulators, etc) for hardware co-
-simulation.
+It maps QEMU's `qemu_irq` lines (GPIOs) to Remote Port `RP_CMD_interrupt`
+packets, enabling the synchronization of interrupt lines and logic signals
+across the simulation.
 
-The protocol supports bidirectional communication for:
-- Connection setup, version negotiation (Hello/Cfg packets)
-- Memory and MMIO transactions (Read/Write packets)
-- Interrupts and GPIO signaling (Interrupt packets)
-- Time synchronization (Sync packets)
-
-The patch introduces header file with packet definition
-used by protocol.
-
-Preserved existing MIT license for include/hw/core/remote-port-proto.h.
+This is essential for wiring up interrupt controllers or discrete logic
+signals (reset lines, enable pins).
 
 Signed-off-by: Edgar E. Iglesias <edgar.iglesias@amd.com>
 Signed-off-by: Takahiro Nakata <takahiro.nakata.wr@renesas.com>
 Signed-off-by: Ruslan Ruslichenko <Ruslan_Ruslichenko@epam.com>
 ---
- include/hw/core/remote-port-proto.h | 299 ++++++++++++++++++++++++++++
- 1 file changed, 299 insertions(+)
- create mode 100644 include/hw/core/remote-port-proto.h
+ hw/core/remote-port-gpio.c         | 187 +++++++++++++++++++++++++++++
+ hw/core/trace-events               |   4 +
+ include/hw/core/remote-port-gpio.h |  34 ++++++
+ 3 files changed, 225 insertions(+)
+ create mode 100644 hw/core/remote-port-gpio.c
+ create mode 100644 include/hw/core/remote-port-gpio.h
 
-diff --git a/include/hw/core/remote-port-proto.h b/include/hw/core/remote-port-proto.h
+diff --git a/hw/core/remote-port-gpio.c b/hw/core/remote-port-gpio.c
 new file mode 100644
-index 0000000000..16f3752877
+index 0000000000..43a40315c5
 --- /dev/null
-+++ b/include/hw/core/remote-port-proto.h
-@@ -0,0 +1,299 @@
++++ b/hw/core/remote-port-gpio.c
+@@ -0,0 +1,187 @@
 +/*
-+ * SPDX-License-Identifier: MIT
-+ *
-+ * QEMU remote port protocol parts.
++ * SPDX-License-Identifier: GPL-2.0-or-later
 + *
 + * Copyright (c) 2013 Xilinx Inc
 + * Written by Edgar E. Iglesias <edgar.iglesias@xilinx.com>
++ * Written by Peter Crosthwaite <peter.crosthwaite@xilinx.com>
 + *
-+ * Permission is hereby granted, free of charge, to any person obtaining a copy
-+ * of this software and associated documentation files (the "Software"), to deal
-+ * in the Software without restriction, including without limitation the rights
-+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-+ * copies of the Software, and to permit persons to whom the Software is
-+ * furnished to do so, subject to the following conditions:
-+ *
-+ * The above copyright notice and this permission notice shall be included in
-+ * all copies or substantial portions of the Software.
-+ *
-+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
-+ * THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-+ * THE SOFTWARE.
++ * This code is licensed under the GNU GPL.
 + */
-+#ifndef REMOTE_PORT_PROTO_H__
-+#define REMOTE_PORT_PROTO_H__
 +
++#include "qemu/osdep.h"
++#include "hw/core/sysbus.h"
++#include "system/system.h"
++#include "system/dma.h"
++#include "qemu/log.h"
++#include "qapi/qmp/qerror.h"
++#include "qapi/error.h"
++#include "migration/vmstate.h"
++#include "hw/core/qdev-properties.h"
++#include "hw/core/irq.h"
++#include "trace.h"
++
++#include "hw/core/remote-port.h"
++#include "hw/core/remote-port-proto.h"
++#include "hw/core/remote-port-gpio.h"
++
++#define CACHE_INVALID -1
++
++static void rp_gpio_handler(void *opaque, int irq, int level)
++{
++    RemotePortGPIO *s = opaque;
++    struct rp_pkt pkt;
++    size_t len;
++    int64_t clk;
++    uint32_t id = rp_new_id(s->rp);
++    uint32_t flags = s->posted_updates ? RP_PKT_FLAGS_posted : 0;
++
++    /* If we hit the cache, return early.  */
++    if (s->cache[irq] != CACHE_INVALID && s->cache[irq] == level) {
++        return;
++    }
++    /* Update the cache and update the remote peer.  */
++    s->cache[irq] = level;
++
++    clk = rp_normalized_vmclk(s->rp);
++    len = rp_encode_interrupt_f(id, s->rp_dev, &pkt.interrupt, clk,
++                              irq, 0, level, flags);
++
++    trace_remote_port_gpio_tx_interrupt(id, flags, s->rp_dev, 0, irq, level);
++
++    if (s->peer->caps.wire_posted_updates && !s->posted_updates) {
++        rp_rsp_mutex_lock(s->rp);
++    }
++
++    rp_write(s->rp, (void *)&pkt, len);
++
++    /*
++     * If peer supports posted updates it will respect our flag and
++     * not respond.
++     */
++    if (s->peer->caps.wire_posted_updates && !s->posted_updates) {
++        RemotePortRespSlot *rsp_slot;
++        struct rp_pkt_interrupt *intr;
++
++        rsp_slot = rp_dev_wait_resp(s->rp, s->rp_dev, id);
++        assert(rsp_slot->rsp.pkt->hdr.id == id);
++
++        intr = &rsp_slot->rsp.pkt->interrupt;
++        trace_remote_port_gpio_rx_interrupt(intr->hdr.id, intr->hdr.flags,
++            intr->hdr.dev, intr->vector, intr->line, intr->val);
++
++        rp_resp_slot_done(s->rp, rsp_slot);
++        rp_rsp_mutex_unlock(s->rp);
++    }
++}
++
++static void rp_gpio_interrupt(RemotePortDevice *rpdev, struct rp_pkt *pkt)
++{
++    RemotePortGPIO *s = REMOTE_PORT_GPIO(rpdev);
++
++    trace_remote_port_gpio_rx_interrupt(pkt->hdr.id, pkt->hdr.flags,
++        pkt->hdr.dev, pkt->interrupt.vector, pkt->interrupt.line,
++        pkt->interrupt.val);
++
++    qemu_set_irq(s->gpio_out[pkt->interrupt.line], pkt->interrupt.val);
++
++    if (s->peer->caps.wire_posted_updates
++        && !(pkt->hdr.flags & RP_PKT_FLAGS_posted)) {
++        RemotePortDynPkt rsp = {0};
++        size_t len;
++
++        /* Need to reply.  */
++        rp_dpkt_alloc(&rsp, sizeof(struct rp_pkt_interrupt));
++        len = rp_encode_interrupt_f(pkt->hdr.id, pkt->hdr.dev,
++                                    &rsp.pkt->interrupt,
++                                    pkt->interrupt.timestamp,
++                                    pkt->interrupt.line,
++                                    pkt->interrupt.vector,
++                                    pkt->interrupt.val,
++                                    pkt->hdr.flags | RP_PKT_FLAGS_response);
++
++        trace_remote_port_gpio_tx_interrupt(pkt->hdr.id,
++            pkt->hdr.flags | RP_PKT_FLAGS_response, pkt->hdr.dev,
++            pkt->interrupt.vector, pkt->interrupt.line, pkt->interrupt.val);
++
++        rp_write(s->rp, (void *)rsp.pkt, len);
++    }
++}
++
++static void rp_gpio_reset(DeviceState *dev)
++{
++    RemotePortGPIO *s = REMOTE_PORT_GPIO(dev);
++
++    /* Mark as invalid.  */
++    memset(s->cache, CACHE_INVALID, s->num_gpios);
++}
++
++static void rp_gpio_realize(DeviceState *dev, Error **errp)
++{
++    RemotePortGPIO *s = REMOTE_PORT_GPIO(dev);
++    RemotePortDevice *rpd = REMOTE_PORT_DEVICE(dev);
++    unsigned int i;
++
++    rp_register_dev(s->rp, rpd, s->rp_dev);
++
++    s->peer = rp_get_peer(s->rp);
++
++    s->gpio_out = g_new0(qemu_irq, s->num_gpios);
++    qdev_init_gpio_out(dev, s->gpio_out, s->num_gpios);
++    qdev_init_gpio_in(dev, rp_gpio_handler, s->num_gpios);
++
++    for (i = 0; i < s->num_gpios; i++) {
++        sysbus_init_irq(SYS_BUS_DEVICE(s), &s->gpio_out[i]);
++    }
++}
++
++static void rp_prop_allow_set_link(const Object *obj, const char *name,
++                                   Object *val, Error **errp)
++{
++}
++
++static void rp_gpio_init(Object *obj)
++{
++    RemotePortGPIO *rpms = REMOTE_PORT_GPIO(obj);
++
++    object_property_add_link(obj, "rp-adaptor0", "remote-port",
++                             (Object **)&rpms->rp,
++                             rp_prop_allow_set_link,
++                             OBJ_PROP_LINK_STRONG);
++}
++
++static Property rp_properties[] = {
++    DEFINE_PROP_UINT32("rp-chan0", RemotePortGPIO, rp_dev, 0),
++    DEFINE_PROP_UINT32("num-gpios", RemotePortGPIO, num_gpios, 16),
++    DEFINE_PROP_UINT16("cell-offset-irq-num", RemotePortGPIO,
++                       cell_offset_irq_num, 0),
++    DEFINE_PROP_BOOL("posted-updates", RemotePortGPIO, posted_updates, true),
++};
++
++static void rp_gpio_class_init(ObjectClass *oc, const void *data)
++{
++    RemotePortDeviceClass *rpdc = REMOTE_PORT_DEVICE_CLASS(oc);
++    DeviceClass *dc = DEVICE_CLASS(oc);
++    rpdc->ops[RP_CMD_interrupt] = rp_gpio_interrupt;
++    dc->legacy_reset = rp_gpio_reset;
++    dc->realize = rp_gpio_realize;
++    device_class_set_props_n(dc, rp_properties, ARRAY_SIZE(rp_properties));
++}
++
++static const TypeInfo rp_info = {
++    .name          = TYPE_REMOTE_PORT_GPIO,
++    .parent        = TYPE_SYS_BUS_DEVICE,
++    .instance_size = sizeof(RemotePortGPIO),
++    .instance_init = rp_gpio_init,
++    .class_init    = rp_gpio_class_init,
++    .interfaces    = (InterfaceInfo[]) {
++        { TYPE_REMOTE_PORT_DEVICE },
++        { },
++    },
++};
++
++static void rp_register_types(void)
++{
++    type_register_static(&rp_info);
++}
++
++type_init(rp_register_types)
+diff --git a/hw/core/trace-events b/hw/core/trace-events
+index 475c8439ba..cbf8de6da3 100644
+--- a/hw/core/trace-events
++++ b/hw/core/trace-events
+@@ -46,3 +46,7 @@ remote_port_memory_master_rx_busaccess(const char *cmd, uint32_t id, uint32_t fl
+ # remote-port-memory-slave.c
+ remote_port_memory_slave_tx_busaccess(const char *cmd, uint32_t id, uint32_t flags, uint32_t dev, uint64_t addr, uint32_t len, uint64_t attr) "cmd=%s, id=0x%"PRIx32", flags=0x%"PRIx32", dev=0x%"PRIx32", addr=0x%"PRIx64", len=0x%"PRIx32", attr=0x%"PRIx64
+ remote_port_memory_slave_rx_busaccess(const char *cmd, uint32_t id, uint32_t flags, uint32_t dev, uint64_t addr, uint32_t len, uint64_t attr) "cmd=%s, id=0x%"PRIx32", flags=0x%"PRIx32", dev=0x%"PRIx32", addr=0x%"PRIx64", len=0x%"PRIx32", attr=0x%"PRIx64
++
++# remote-port-memory-gpio.c
++remote_port_gpio_tx_interrupt(uint32_t id, uint32_t flags, uint32_t dev, uint64_t vector, uint32_t irq, uint32_t val) "id=0x%"PRIx32", flags=0x%"PRIx32", dev=0x%"PRIx32", vector=0x%"PRIx64", irq=0x%"PRIx32", level=0x%"PRIx32
++remote_port_gpio_rx_interrupt(uint32_t id, uint32_t flags, uint32_t dev, uint64_t vector, uint32_t irq, uint32_t val) "id=0x%"PRIx32", flags=0x%"PRIx32", dev=0x%"PRIx32", vector=0x%"PRIx64", irq=0x%"PRIx32", level=0x%"PRIx32
+diff --git a/include/hw/core/remote-port-gpio.h b/include/hw/core/remote-port-gpio.h
+new file mode 100644
+index 0000000000..0079ebfc73
+--- /dev/null
++++ b/include/hw/core/remote-port-gpio.h
+@@ -0,0 +1,34 @@
 +/*
-+ * Remote-Port (RP) is an inter-simulator protocol. It assumes a reliable
-+ * point to point communcation with the remote simulation environment.
++ * SPDX-License-Identifier: GPL-2.0-or-later
 + *
-+ * Setup
-+ * In the SETUP phase a mandatory HELLO packet is exchanged with optional
-+ * CFG packets following. HELLO packets are useful to ensure that both
-+ * sides are speaking the same protocol and using compatible versions.
++ * Copyright (c) 2013 Xilinx Inc
++ * Written by Edgar E. Iglesias <edgar.iglesias@xilinx.com>
++ * Written by Peter Crosthwaite <peter.crosthwaite@xilinx.com>
 + *
-+ * CFG packets are used to negotiate configuration options. At the moment
-+ * these remain unimplemented.
-+ *
-+ * Once the session is up, communication can start through various other
-+ * commands. The list can be found further down this document.
-+ * Commands are carried over RP packets. Every RP packet contains a header
-+ * with length, flags and an ID to track potential responses.
-+ * The header is followed by a packet specific payload. You'll find the
-+ * details of the various commands packet layouts here. Some commands can
-+ * carry data/blobs in their payload.
++ * This code is licensed under the GNU GPL.
 + */
++#ifndef REMOTE_PORT_GPIO_H
++#define REMOTE_PORT_GPIO_H
 +
++#define TYPE_REMOTE_PORT_GPIO "remote-port-gpio"
++#define REMOTE_PORT_GPIO(obj) \
++        OBJECT_CHECK(RemotePortGPIO, (obj), TYPE_REMOTE_PORT_GPIO)
 +
-+#define RP_VERSION_MAJOR 4
-+#define RP_VERSION_MINOR 3
++#define MAX_GPIOS 960
 +
-+/* Could be auto generated.  */
-+enum rp_cmd {
-+    RP_CMD_nop         = 0,
-+    RP_CMD_hello       = 1,
-+    RP_CMD_cfg         = 2,
-+    RP_CMD_read        = 3,
-+    RP_CMD_write       = 4,
-+    RP_CMD_interrupt   = 5,
-+    RP_CMD_sync        = 6,
-+    RP_CMD_ats_req     = 7,
-+    RP_CMD_ats_inv     = 8,
-+    RP_CMD_max         = 8
-+};
++typedef struct RemotePortGPIO {
++    /* private */
++    SysBusDevice parent;
++    /* public */
 +
-+enum {
-+    RP_OPT_quantum = 0,
-+};
++    int8_t cache[MAX_GPIOS];
++    uint32_t num_gpios;
++    qemu_irq *gpio_out;
++    uint16_t cell_offset_irq_num;
 +
-+struct rp_cfg_state {
-+    uint64_t quantum;
-+};
-+
-+enum {
-+    RP_PKT_FLAGS_optional      = 1 << 0,
-+    RP_PKT_FLAGS_response      = 1 << 1,
-+
-+    /*
-+     * Posted hint.
-+     * When set this means that the receiver is not required to respond to
-+     * the message. Since it's just a hint, the sender must be prepared to
-+     * drop responses. Note that since flags are echoed back in responses
-+     * a response to a posted packet will be easy to identify early in the
-+     * protocol stack.
-+     */
-+    RP_PKT_FLAGS_posted        = 1 << 2,
-+};
-+
-+struct rp_pkt_hdr {
-+    uint32_t cmd;
-+    uint32_t len;
-+    uint32_t id;
-+    uint32_t flags;
-+    uint32_t dev;
-+} QEMU_PACKED;
-+
-+struct rp_pkt_cfg {
-+    struct rp_pkt_hdr hdr;
-+    uint32_t opt;
-+    uint8_t set;
-+} QEMU_PACKED;
-+
-+struct rp_version {
-+    uint16_t major;
-+    uint16_t minor;
-+} QEMU_PACKED;
-+
-+struct rp_capabilities {
-+    /* Offset from start of packet.  */
-+    uint32_t offset;
-+    uint16_t len;
-+    uint16_t reserved0;
-+} QEMU_PACKED;
-+
-+enum {
-+    CAP_BUSACCESS_EXT_BASE = 1,    /* New header layout. */
-+    CAP_BUSACCESS_EXT_BYTE_EN = 2, /* Support for Byte Enables.  */
-+
-+    /*
-+     * Originally, all interrupt/wire updates over remote-port were posted.
-+     * This turned out to be a bad idea. To fix it without breaking backwards
-+     * compatibility, we add the WIRE Posted updates capability.
-+     *
-+     * If the peer supportes this, it will respect the RP_PKT_FLAGS_posted
-+     * flag. If the peer doesn't support this capability, senders need to
-+     * be aware that the peer will not respond to wire updates regardless
-+     * of the posted header-flag.
-+     */
-+    CAP_WIRE_POSTED_UPDATES = 3,
-+
-+    CAP_ATS = 4, /* Address translation services */
-+};
-+
-+struct rp_pkt_hello {
-+    struct rp_pkt_hdr hdr;
-+    struct rp_version version;
-+    struct rp_capabilities caps;
-+} QEMU_PACKED;
-+
-+enum {
-+    /* Remote port responses. */
-+    RP_RESP_OK                  =  0x0,
-+    RP_RESP_BUS_GENERIC_ERROR   =  0x1,
-+    RP_RESP_ADDR_ERROR          =  0x2,
-+    RP_RESP_MAX                 =  0xF,
-+};
-+
-+enum {
-+    RP_BUS_ATTR_EOP        =  (1 << 0),
-+    RP_BUS_ATTR_SECURE     =  (1 << 1),
-+    RP_BUS_ATTR_EXT_BASE   =  (1 << 2),
-+    RP_BUS_ATTR_PHYS_ADDR  =  (1 << 3),
-+
-+    /*
-+     * The access targets the I/O address space.
-+     */
-+    RP_BUS_ATTR_IO_ACCESS  =  (1 << 4),
-+
-+    /*
-+     * Bits [11:8] are allocated for storing transaction response codes.
-+     * These new response codes are backward compatible as existing
-+     * implementations will not set/read these bits.
-+     * For existing implementations, these bits will be zero which is RESP_OKAY.
-+     */
-+    RP_BUS_RESP_SHIFT      =  8,
-+    RP_BUS_RESP_MASK       =  (RP_RESP_MAX << RP_BUS_RESP_SHIFT),
-+};
-+
-+struct rp_pkt_busaccess {
-+    struct rp_pkt_hdr hdr;
-+    uint64_t timestamp;
-+    uint64_t attributes;
-+    uint64_t addr;
-+
-+    /* Length in bytes.  */
-+    uint32_t len;
-+
-+    /*
-+     * Width of each beat in bytes. Set to zero for unknown (let the remote
-+     * side choose).
-+     */
-+    uint32_t width;
-+
-+    /*
-+     * Width of streaming, must be a multiple of width.
-+     * addr should repeat itself around this width. Set to same as len
-+     * for incremental (normal) accesses.  In bytes.
-+     */
-+    uint32_t stream_width;
-+
-+    /* Implementation specific source or master-id.  */
-+    uint16_t master_id;
-+} QEMU_PACKED;
-+
-+
-+/* This is the new extended busaccess packet layout.  */
-+struct rp_pkt_busaccess_ext_base {
-+    struct rp_pkt_hdr hdr;
-+    uint64_t timestamp;
-+    uint64_t attributes;
-+    uint64_t addr;
-+
-+    /* Length in bytes.  */
-+    uint32_t len;
-+
-+    /*
-+     * Width of each beat in bytes. Set to zero for unknown (let the remote
-+     * side choose).
-+     */
-+    uint32_t width;
-+
-+    /*
-+     * Width of streaming, must be a multiple of width.
-+     * addr should repeat itself around this width. Set to same as len
-+     * for incremental (normal) accesses.  In bytes.
-+     */
-+    uint32_t stream_width;
-+
-+    /* Implementation specific source or master-id.  */
-+    uint16_t master_id;
-+    /* ---- End of 4.0 base busaccess. ---- */
-+
-+    uint16_t master_id_31_16;   /* MasterID bits [31:16].  */
-+    uint32_t master_id_63_32;   /* MasterID bits [63:32].  */
-+    /*
-+     * ---------------------------------------------------
-+     * Since hdr is 5 x 32bit, we are now 64bit aligned.
-+     */
-+
-+    uint32_t data_offset;       /* Offset to data from start of pkt.  */
-+    uint32_t next_offset;       /* Offset to next extension. 0 if none.  */
-+
-+    uint32_t byte_enable_offset;
-+    uint32_t byte_enable_len;
-+
-+    /* ---- End of CAP_BUSACCESS_EXT_BASE. ---- */
-+
-+    /*
-+     * If new features are needed that may always occupy space
-+     * in the header, then add a new capability and extend the
-+     * this area with new fields.
-+     * Will help receivers find data_offset and next offset,
-+     * even those that don't know about extended fields.
-+     */
-+} QEMU_PACKED;
-+
-+struct rp_pkt_interrupt {
-+    struct rp_pkt_hdr hdr;
-+    uint64_t timestamp;
-+    uint64_t vector;
-+    uint32_t line;
-+    uint8_t val;
-+} QEMU_PACKED;
-+
-+struct rp_pkt_sync {
-+    struct rp_pkt_hdr hdr;
-+    uint64_t timestamp;
-+} QEMU_PACKED;
-+
-+enum {
-+    RP_ATS_ATTR_exec     = 1 << 0,
-+    RP_ATS_ATTR_read     = 1 << 1,
-+    RP_ATS_ATTR_write    = 1 << 2,
-+};
-+
-+enum {
-+    RP_ATS_RESULT_ok = 0,
-+    RP_ATS_RESULT_error = 1,
-+};
-+
-+struct rp_pkt_ats {
-+    struct rp_pkt_hdr hdr;
-+    uint64_t timestamp;
-+    uint64_t attributes;
-+    uint64_t addr;
-+    uint64_t len;
-+    uint32_t result;
-+    uint64_t reserved0;
-+    uint64_t reserved1;
-+    uint64_t reserved2;
-+    uint64_t reserved3;
-+} QEMU_PACKED;
-+
-+struct rp_pkt {
-+    union {
-+        struct rp_pkt_hdr hdr;
-+        struct rp_pkt_hello hello;
-+        struct rp_pkt_busaccess busaccess;
-+        struct rp_pkt_busaccess_ext_base busaccess_ext_base;
-+        struct rp_pkt_interrupt interrupt;
-+        struct rp_pkt_sync sync;
-+        struct rp_pkt_ats ats;
-+    };
-+};
-+
++    bool posted_updates;
++    uint32_t rp_dev;
++    struct RemotePort *rp;
++    struct rp_peer_state *peer;
++} RemotePortGPIO;
 +#endif
 -- 
 2.43.0

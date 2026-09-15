@@ -4,110 +4,117 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A31BFC88E75
-	for <qemu-arm@archiver.kernel.org>; Tue, 15 Sep 2026 21:16:52 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B9188C88E75
+	for <qemu-arm@archiver.kernel.org>; Wed, 16 Sep 2026 00:12:44 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1x6aWA-0002Ki-SM; Tue, 15 Sep 2026 17:16:43 -0400
+	id 1x6dGN-0006EJ-Gv; Tue, 15 Sep 2026 20:12:35 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1x6aW4-00025I-NW
- for qemu-arm@nongnu.org; Tue, 15 Sep 2026 17:16:39 -0400
-Received: from mail-wm2-x10.google.com ([2a00:1450:4864:31::10])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1x6aW2-00030H-Vn
- for qemu-arm@nongnu.org; Tue, 15 Sep 2026 17:16:36 -0400
-Received: by mail-wm2-x10.google.com with SMTP id
- 5b1f17b1804b1-49cd38e0e5dso2670275e9.2
- for <qemu-arm@nongnu.org>; Tue, 15 Sep 2026 14:16:34 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1789506993; x=1790111793; darn=nongnu.org;
- h=content-transfer-encoding:content-type:mime-version:message-id:date
- :user-agent:references:in-reply-to:subject:cc:to:from:from:to:cc
- :subject:date:message-id:reply-to:content-type;
- bh=D4s9I2l5K+Ic4DPNniVrroN+CqH1anV3868EM0I0pQQ=;
- b=sThlO+fHTYIjS6IcoWMPMvI8iSZ4KiSREBBMvJ6jcnxqKNsJtcZI7hyvUO5B1TLKbY
- 1+XNx7f8+6BybqqDNSoYnQi9oJjyqrBbUP6AUaXIVE6Yp3DB/cDZC1W1GewEpntoXFLm
- 6LKwARKixYdB4mWa+CekTN8Q2oXUHUhsxIyuBvbhm8qIHjuyxeGDe5ZZOjEfXRGJ1Inb
- 2EZtX6JBQkc+asoXhGlwKPOSDEX2nA86EMWP42BfpjiC8bb9JrqXZUJmSzqp2kSXA7oI
- dHRvny46SNvZjZPAe9OTaCbK8avO0d1oicKSrIXaFPx/SfPS9+p5sk/3dnj3aJ+0W8CH
- vXbA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20260707; t=1789506993; x=1790111793;
- h=content-transfer-encoding:content-type:mime-version:message-id:date
- :user-agent:references:in-reply-to:subject:cc:to:from:x-gm-gg
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
- :content-type;
- bh=D4s9I2l5K+Ic4DPNniVrroN+CqH1anV3868EM0I0pQQ=;
- b=aLXAiogWsUDPfbDV1LUhZGrmtYo2BHrdnNMG8UN9XLGkwIk+zoqHlm6a2BED9I6WTT
- UCfaXkYXyHrDt1S6ghVUfop8067luhR739eArZ0xZ7T7MAzo+uI+kdAFS4v0fb1V1P/s
- zD0dBeKjAcoiJvQfsqraGNXBUf4QsqKowhsFvru89Ihagh2GIQOdwPI+ygQNwzSvZpeT
- 9NdQdA9cSXtvdXc47UzUE/75K0kTYfxmtoDNst9BdB/swKQn87l8MxAjj2vYKLYAKHar
- t8porvC2Y4PVvDUU+8gso9MdLEGkxgtx84Agtf2XlDAO9VXv/WaH/lUHmMSafCep1aBu
- f+LQ==
-X-Forwarded-Encrypted: i=1;
- AKwUvBxGOpMsimAlcbqJ3Tplhs8Lzgtqq5bKTx67ZQGLTEUPe65+LnHpqD1I+gt8qkipSwOLExjrkbY1Hw==@nongnu.org
-X-Gm-Message-State: AFuF++lQipJ+TJUFnzMAQiysXnrJhsF+XoGxhYeYS4oAVo43IoAyIcqt
- +1q8UrFWJ0/UdUcWfarOYy9+d6v//LtjIlNOxahtZpl2bbY2haQrkqzaXEYEnvu+msM=
-X-Gm-Gg: AYBFou1wMRWueh2zdHehoQFynGoNx/Hkzq7oETTZJsaiGD1jNXf3948g7iyqlMU6tr1
- ZQ6p9Yw8JnxEfPoO0BrgDSK14pY64W2otrJj56eZD5hKktvUCSXM/ybSuEGUqrrwfC7Ec4Dr35h
- PmdjKrnkWt1XYDzHG8VlqKhsC7GBC70H0fg4m0OktXC/5VFrH2xmYYA6pIkzoEET5LcKPQlX4uN
- z0WzF+oUqLtei3l5/Dp3pWI7g/XpQTcPbydVaFrzmB1KW3PzIQJFySxsNuImbi2ndJtoNOsLUOr
- Z8UPHDKMNUpjDD6Fva2/JcFAB+TTmntOkG6K8vbSJkt566/u9P8/nJlvmfjUsWnRcMYAS3QTo6d
- 5g5W5VpqhXNzEd2XfK3zwBdGm7zI6Bwp3YJX9lrAKz67d62amVI3OhXBMcfrB4SBbhWak5G6HmW
- lV1ZlVvc68aI+DAFC+zz/+YT0k2oSCLr/1RlBsc+MW8YNm/h0c+8dfiP5xslbb/Vg+zlkWq0Y=
-X-Received: by 2002:a05:600c:3487:b0:49d:1cc7:5ec3 with SMTP id
- 5b1f17b1804b1-49e7a66af92mr242422225e9.9.1789506993151; 
- Tue, 15 Sep 2026 14:16:33 -0700 (PDT)
-Received: from draig.lan ([185.124.0.156]) by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-49e83aeae01sm25085425e9.6.2026.09.15.14.16.32
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 15 Sep 2026 14:16:32 -0700 (PDT)
-Received: from draig (localhost [IPv6:::1])
- by draig.lan (Postfix) with ESMTP id 45CE55F825;
- Tue, 15 Sep 2026 22:16:31 +0100 (BST)
-From: =?utf-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>
-To: Eric Farman <farman@linux.ibm.com>
-Cc: qemu-devel@nongnu.org,  Cornelia Huck <cohuck@redhat.com>,  Paolo
- Bonzini <pbonzini@redhat.com>,  Peter Maydell <peter.maydell@linaro.org>,
- Helge Deller <deller@gmx.de>,  Jiaxun Yang <jiaxun.yang@flygoat.com>,
- Song Gao <gaosong@loongson.cn>,  Thomas Huth <th.huth+qemu@posteo.eu>,
- =?utf-8?Q?Marc-Andr=C3=A9?= Lureau <marcandre.lureau@redhat.com>,  Laurent
- Vivier <laurent@vivier.eu>,  Warner Losh <imp@bsdimp.com>,  Brian Cain
- <brian.cain@oss.qualcomm.com>,  Kyle Evans <kevans@freebsd.org>,  Pierrick
- Bouvier <pierrick.bouvier@oss.qualcomm.com>,  Cleber Rosa
- <crosa@redhat.com>,  qemu-arm@nongnu.org,  Fabiano Rosas
- <farosas@suse.de>,  Richard Henderson <richard.henderson@linaro.org>,
- John Snow <jsnow@redhat.com>,  Brad Smith <brad@comstyle.com>,  Daniel P.
- =?utf-8?Q?Berrang=C3=A9?= <berrange@redhat.com>,  Ilya Leoshkevich
- <iii@linux.ibm.com>,
- Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@mailo.com>
-Subject: Re: [PATCH v2 03/15] Revert "tests/tcg/meson.build: implement
- ./configure containers options"
-In-Reply-To: <f40f80f3-ab57-4564-8e7e-47ef8f3baffb@linux.ibm.com> (Eric
- Farman's message of "Tue, 15 Sep 2026 16:45:14 -0400")
-References: <20260915201601.1207839-1-alex.bennee@linaro.org>
- <20260915201601.1207839-4-alex.bennee@linaro.org>
- <f40f80f3-ab57-4564-8e7e-47ef8f3baffb@linux.ibm.com>
-User-Agent: mu4e 1.14.4-pre3; emacs 30.1
-Date: Tue, 15 Sep 2026 22:16:31 +0100
-Message-ID: <87o6dy9pw0.fsf@draig.linaro.org>
+ (Exim 4.90_1) (envelope-from <Michael.Roth@amd.com>)
+ id 1x6bzb-0007Sy-7w; Tue, 15 Sep 2026 18:51:11 -0400
+Received: from mail-westus3azlp170120001.outbound.protection.outlook.com
+ ([2a01:111:f403:c107::1] helo=PH8PR06CU001.outbound.protection.outlook.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <Michael.Roth@amd.com>)
+ id 1x6bzY-0006cm-Ne; Tue, 15 Sep 2026 18:51:10 -0400
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=fGprbo2ZMZ2D5ZjOGhLZQKfb0WGVv6YddBU04+8vDI4jPvb2jy6QBC0FUP/bx8irnyNqwxYnjzKTrt8PR8FOS8uapH2GWryVgPJgikokAEQP3RCqEri3JV44Dm1Ph/MRaYlFUjXbLXhGOKPf5lh4tUL8M4GgOpOtfz4s1m9nk9tojySxpc2WtbAGG8axOpQwsbpzLyhBUzCE/WGSX6belaNWa4hOfZy4JCD8gDHCx7mIcc5cCqlVJume1Az/xFH3VnyDcabrKhVu21sRIk6nSY56+buBXT45LKIeaimNOwyqSQ6qPUjAEYhtzwEIYeaLLAp6RQrpc+JJUHap9QwYxA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=Lm11CS2wqJyDmOJ+joz6xwuCkmLmq9nRKkHFUcp2LPg=;
+ b=xaYHNeGXonvcPUtuxGywQOiRr8d36x8F1c4Mc7H4OWQE+UC9la5Yf5wwy2GSXPieHu2enAI9Ppp+/dvOYy88hKjLrmTkTUS5ku6dcHF2F0k2SqROw5KblfFZwp6GBEgjJeNV+jCahL+3TQ6DxOjvNgnqVn6gsI759IWNUQ1BM4mXbCWwLCtfAy9cqrfJRTVYGecPqb4NEPLtkFYLhGqz90NaQtJ8n91gA5Y8O4YIGV/WwdE9dUM6jpcSJwsLkwL0Oy8NO+toCVrJrfq26mbQmsb+9gh/Ft20LwDRXthON2sRToDdJpyFf8xHz1v3pHOOFqHAKPL6Gr/wbhKi2PmqOg==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass (sender ip is
+ 165.204.84.17) smtp.rcpttodomain=linaro.org smtp.mailfrom=amd.com; dmarc=pass
+ (p=quarantine sp=quarantine pct=100) action=none header.from=amd.com;
+ dkim=none (message not signed); arc=none (0)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=amd.com; s=selector1; 
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=Lm11CS2wqJyDmOJ+joz6xwuCkmLmq9nRKkHFUcp2LPg=;
+ b=272j9w7xmylxvcEopCIgiXlRbYuo7nN2z279J0NWb9gcCVs0lGSW87mz3Tz2NkPUjOiJTzyqiCW/wKegFjo9zbdY3Avu1iNMRWbqOPhOl0nwYKgzJG8ajMG4EyX+ZT5edcHAXBkFz6oBenxrXzq0GUQKv0hQpX/6RNdZiSIbOEU=
+Received: from BN8PR04CA0061.namprd04.prod.outlook.com (2603:10b6:408:d4::35)
+ by CYXPR12MB9386.namprd12.prod.outlook.com (2603:10b6:930:de::20)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.21.428.9; Tue, 15 Sep
+ 2026 22:51:01 +0000
+Received: from BN2PEPF000055DC.namprd21.prod.outlook.com
+ (2603:10b6:408:d4:cafe::75) by BN8PR04CA0061.outlook.office365.com
+ (2603:10b6:408:d4::35) with Microsoft SMTP Server (version=TLS1_3,
+ cipher=TLS_AES_256_GCM_SHA384) id 15.21.428.9 via Frontend Transport; Tue, 15
+ Sep 2026 22:51:01 +0000
+X-MS-Exchange-Authentication-Results: mx.microsoft.com 1; spf=pass (sender IP
+ is 165.204.84.17) smtp.mailfrom=amd.com;
+ dkim=none (message not signed)
+ header.d=none;dmarc=pass action=none header.from=amd.com;
+Received-SPF: Pass (protection.outlook.com: domain of amd.com designates
+ 165.204.84.17 as permitted sender) receiver=protection.outlook.com;
+ client-ip=165.204.84.17; helo=satlexmb07.amd.com; pr=C
+Received: from satlexmb07.amd.com (165.204.84.17) by
+ BN2PEPF000055DC.mail.protection.outlook.com (10.167.245.6) with Microsoft
+ SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.21.428.0 via Frontend Transport; Tue, 15 Sep 2026 22:51:01 +0000
+Received: from localhost (10.180.168.240) by satlexmb07.amd.com
+ (10.181.42.216) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.2562.49; Tue, 15 Sep
+ 2026 17:51:00 -0500
+Date: Tue, 15 Sep 2026 17:36:35 -0500
+From: Michael Roth <michael.roth@amd.com>
+To: Mathieu Poirier <mathieu.poirier@linaro.org>
+CC: <berrange@redhat.com>, <kchamart@redhat.com>,
+ <pierrick.bouvier@oss.qualcomm.com>, <peter.maydell@linaro.org>,
+ <mst@redhat.com>, <cohuck@redhat.com>, <pbonzini@redhat.com>,
+ <eblake@redhat.com>, <armbru@redhat.com>, <lorenzo.pieralisi@linaro.org>,
+ <gshan@redhat.com>, <enju.kohei@fujitsu.com>, <qemu-devel@nongnu.org>,
+ <qemu-arm@nongnu.org>, <kvm@vger.kernel.org>
+Subject: Re: [RFC v4 09/24] hw/core/loader: Add a ROM loader notifier
+Message-ID: <irbspcb3uts535szacwb5kxa2dsbw4i5453rgivkpfuhgjzpsj@skstiacjnlll>
+References: <20260903193611.1058589-1-mathieu.poirier@linaro.org>
+ <20260903193611.1058589-10-mathieu.poirier@linaro.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2a00:1450:4864:31::10;
- envelope-from=alex.bennee@linaro.org; helo=mail-wm2-x10.google.com
+Content-Type: text/plain; charset="us-ascii"
+Content-Disposition: inline
+In-Reply-To: <20260903193611.1058589-10-mathieu.poirier@linaro.org>
+X-Originating-IP: [10.180.168.240]
+X-ClientProxiedBy: satlexmb07.amd.com (10.181.42.216) To satlexmb07.amd.com
+ (10.181.42.216)
+X-EOPAttributedMessage: 0
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: BN2PEPF000055DC:EE_|CYXPR12MB9386:EE_
+X-MS-Office365-Filtering-Correlation-Id: d2ede0a4-f25f-4adf-525b-08df137bd09b
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;
+ ARA:13230040|7416014|376014|23010399003|1800799024|82310400026|36860700016|11063799006|4143699003|5023799004|56012099006|10067099003|22082099003|18002099003|6133799003|27256017;
+X-Microsoft-Antispam-Message-Info: ad4SdTSaj7IZRFT8nisXHqiIyujoyqd3iWcDl3pfY2od18hM8kj5hEHAlKpGa8/yGySBo/RvvhHmvQNeF0QirFNsBSH2/VUltzC63V0/S/RoZ0diASn2wZ0vD0Mg415+XGJwAVeqSCv7QPnthIQ5Hup11cdC23vkJ24wEeW1bpIdNILE3AxDCH2NE9o6KzqYvngzKFAoQIQydExizzdECIb73YHSAHQnlQA3aLlWazPnkBX8IWKor0trCrVqM8pRldNEOi2IekwV6DdoBxf34J3uOqWH8JffZEplNNlwCgJeqj0l+xezoHhMvUkthXWXNfV4Cv73+wRcZhC7lLW7nSJVeb/z3uJbKhV3EKgTdr+eb5q88nB/G4B1KhkIJwlVCw0+F/6aPVBszLhH7eYahj6aGboaefanSeI4TZ908LcbIFbGuo4oM9xu9zJ2nJ7AsVR4a+tOMD3hhfu6B8/YYbGdvHWVy/chNuvLB62SOI0n5QxxuyBX0N7owDSOfCdCS141fnacnQOXY/qIcw8Hw4NTSgWqUpjxRRnkBg0/vJ7T971eSlYwtsXM2ZWauRSHI3OWzG+zHsyBraBa6rfJ9bY6mFlxwzzNaxa9W4bD1XQu+Hatr+/H8dbvWWOu3WyYkFfKa91D/nKT0ezS+qX0Eny81wQoheCnG1PbvaaWSJGkYM65A2coXhpuG/0SoJ8u4jGBB1aWy6gDrp8AOfktNBOaEG1jBoYK/2Aj6avEpqjB1GX9viBXTLQugSYFIrU+
+X-Forefront-Antispam-Report: CIP:165.204.84.17; CTRY:US; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:satlexmb07.amd.com; PTR:InfoDomainNonexistent; CAT:NONE;
+ SFS:(13230040)(7416014)(376014)(23010399003)(1800799024)(82310400026)(36860700016)(11063799006)(4143699003)(5023799004)(56012099006)(10067099003)(22082099003)(18002099003)(6133799003)(27256017);
+ DIR:OUT; SFP:1101; 
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: OWG0bENfyKgAaksClIAyjCUtHE+OK+KDSv5PyIgIm8EPwA/tv1Vz9qRi2LTFROzJ8+Zvd3FfW59kr/dGlCQ5kKctC9dVGq+Ek6Arw2RjPXzFJGHdfNRNPkSscMNosp0tMYSub+IqS1fLBXeU9kBBWjhCsFI0By9qaLEDCB4u3ezj+2jmL51gs7P0IdvUdAEeSV6kpKooTxPGqOrPc6isbWYhZadIxlvnRilV5Bxh9TymG/h/Y3Q0RGXODrUZ9n8uBAPd4hxCVUzOYvXp1PBV/6uzxTW7n2smiYAlCPlRCIF/OyAHyspNpsYcBlPds+zsCffVgrAg9zwKqaZ8hVDCS7sECZ1z5/3SF/uy/42sA5ojrI/IpH2Ef7aJrep228tB12GfVHkF43mEGUf0CJWlkp7qGZ4bo8tVY6bqU68GcMrTkoWZO7oep+C2gEEI+3gj
+X-OriginatorOrg: amd.com
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 15 Sep 2026 22:51:01.1222 (UTC)
+X-MS-Exchange-CrossTenant-Network-Message-Id: d2ede0a4-f25f-4adf-525b-08df137bd09b
+X-MS-Exchange-CrossTenant-Id: 3dd8961f-e488-4e60-8e11-a82d994e183d
+X-MS-Exchange-CrossTenant-OriginalAttributedTenantConnectingIp: TenantId=3dd8961f-e488-4e60-8e11-a82d994e183d; Ip=[165.204.84.17];
+ Helo=[satlexmb07.amd.com]
+X-MS-Exchange-CrossTenant-AuthSource: BN2PEPF000055DC.namprd21.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Anonymous
+X-MS-Exchange-CrossTenant-FromEntityHeader: HybridOnPrem
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: CYXPR12MB9386
+Received-SPF: permerror client-ip=2a01:111:f403:c107::1;
+ envelope-from=Michael.Roth@amd.com;
+ helo=PH8PR06CU001.outbound.protection.outlook.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
+X-Mailman-Approved-At: Tue, 15 Sep 2026 20:12:34 -0400
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -122,34 +129,71 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Eric Farman <farman@linux.ibm.com> writes:
+On Thu, Sep 03, 2026 at 01:35:56PM -0600, Mathieu Poirier wrote:
+> From: Jean-Philippe Brucker <jean-philippe@linaro.org>
+> 
+> Add a function to register a notifier that is invoked when ROMs get
+> loaded into guest memory.
+> 
+> It will be used by Arm confidential guest support, in order to register
+> all blobs loaded into memory with KVM, so that their content is moved
+> into Realm state and measured into the initial VM state.
+> 
+> Signed-off-by: Jean-Philippe Brucker <jean-philippe@linaro.org>
+> Signed-off-by: Lorenzo Pieralisi <lorenzo.pieralisi@linaro.org>
+> Signed-off-by: Mathieu Poirier <mathieu.poirier@linaro.org>
+> ---
+>  hw/core/loader.c         | 15 +++++++++++++++
+>  include/hw/core/loader.h | 17 +++++++++++++++++
+>  2 files changed, 32 insertions(+)
+> 
+> diff --git a/hw/core/loader.c b/hw/core/loader.c
+> index 5cbfba0a86d2..388f10e828db 100644
+> --- a/hw/core/loader.c
+> +++ b/hw/core/loader.c
+> @@ -74,6 +74,8 @@
+>  #endif
+>  
+>  static int roms_loaded;
+> +static NotifierList rom_loader_notifier =
+> +    NOTIFIER_LIST_INITIALIZER(rom_loader_notifier);
+>  
+>  /* return the size or -1 if error */
+>  int64_t get_image_size(const char *filename, Error **errp)
+> @@ -1201,6 +1203,11 @@ MemoryRegion *rom_add_blob(const char *name, const void *blob, size_t len,
+>      return mr;
+>  }
+>  
+> +void rom_add_load_notifier(Notifier *notifier)
+> +{
+> +    notifier_list_add(&rom_loader_notifier, notifier);
+> +}
+> +
+>  /* This function is specific for elf program because we don't need to allocate
+>   * all the rom. We just allocate the first part and the rest is just zeros. This
+>   * is why romsize and datasize are different. Also, this function takes its own
+> @@ -1242,6 +1249,7 @@ ssize_t rom_add_option(const char *file, int32_t bootindex)
+>  static void rom_reset(void *unused)
+>  {
+>      Rom *rom;
+> +    RomLoaderNotifyData notify;
+>  
+>      QTAILQ_FOREACH(rom, &roms, next) {
+>          if (rom->fw_file) {
+> @@ -1290,6 +1298,13 @@ static void rom_reset(void *unused)
+>          address_space_flush_icache_range(rom->as, rom->addr, rom->datasize);
+>  
+>          trace_loader_write_rom(rom->name, rom->addr, rom->datasize, rom->isrom);
+> +
+> +        notify = (RomLoaderNotifyData) {
+> +            .addr = rom->addr,
+> +            .len = rom->datasize,
+> +            .data = rom->data,
+> +        };
+> +        notifier_list_notify(&rom_loader_notifier, &notify);
 
-> On 9/15/26 4:15 PM, Alex Benn=C3=A9e wrote:
->> We want to keep the container configuration inside configure for the
->> firmware builds.
->> This reverts commit 522b299ca4316d8cad57f9496ffcba87dcc20719.
->> Suggested-by: Paolo Bonzini <pbonzini@redhat.com>
->> [AJB: untangle changes since]
->> Signed-off-by: Alex Benn=C3=A9e <alex.bennee@linaro.org>
->> ---
->>   configure             | 11 ++++++++---
->>   meson_options.txt     |  4 ----
->>   tests/tcg/meson.build | 25 ++++---------------------
->>   3 files changed, 12 insertions(+), 28 deletions(-)
->
-> The first revert addresses my problems, but configure throws some
-> unexpected messages. Those messages don't appear to cause any
-> problems, per se, but regardless those are resolved by the time this
-> patch gets applied.
+I think it will easier to review this if it's squashed into the next patch
+where the fields are utilized.
 
-What messages did you get?
-
->
-> Thank you for the dedicated untangling!
->
-> Tested-by: Eric Farman <farman@linux.ibm.com>
-
---=20
-Alex Benn=C3=A9e
-Virtualisation Tech Lead @ Linaro
+-Mike
 

@@ -4,67 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 07064C88E7D
-	for <qemu-arm@archiver.kernel.org>; Tue, 15 Sep 2026 16:04:22 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 559DAC88E75
+	for <qemu-arm@archiver.kernel.org>; Tue, 15 Sep 2026 16:05:21 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1x6Vbm-0000BP-1W; Tue, 15 Sep 2026 12:02:10 -0400
+	id 1x6Vbj-0008R6-6Q; Tue, 15 Sep 2026 12:02:07 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <ruslichenko.r@gmail.com>)
- id 1x6Vbe-0008Nq-7I
- for qemu-arm@nongnu.org; Tue, 15 Sep 2026 12:02:04 -0400
+ id 1x6VbZ-0008Ho-Kz
+ for qemu-arm@nongnu.org; Tue, 15 Sep 2026 12:01:57 -0400
 Received: from mail-ej2-x10.google.com ([2a00:1450:4864:34::10])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <ruslichenko.r@gmail.com>)
- id 1x6Vba-0003W7-3r
- for qemu-arm@nongnu.org; Tue, 15 Sep 2026 12:02:01 -0400
+ id 1x6VbW-0003V1-Ay
+ for qemu-arm@nongnu.org; Tue, 15 Sep 2026 12:01:57 -0400
 Received: by mail-ej2-x10.google.com with SMTP id
- a640c23a62f3a-c29d50b7cf9so109476366b.2
- for <qemu-arm@nongnu.org>; Tue, 15 Sep 2026 09:01:47 -0700 (PDT)
+ a640c23a62f3a-c25ef7a3ce9so450043666b.3
+ for <qemu-arm@nongnu.org>; Tue, 15 Sep 2026 09:01:43 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20251104; t=1789488106; x=1790092906; darn=nongnu.org;
+ d=gmail.com; s=20251104; t=1789488103; x=1790092903; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to:content-type;
- bh=nNXJeaqt2s8P6UfDSK6Y1FWRU8dNfhhOhkwokU9p+w0=;
- b=mWl2IyY4qzc10WA6G4EUrTB6L/V/+5T3WTMjmUP5ZomSzJl7zv8n9RhYQLT+dOWlY1
- BvlJ/TCVZLLNy6+OIxURerM8Wqv13sbOPDRddUpzxnZ9vPgHjkyWVj/YdZ5nFwpSpohz
- G8yA/SQ/P3wX7HT/dAn1/BcY0Wuifyu/LvhVXmWMalfpzJdUhWnGTlCJN2dlJAMtMKfH
- ZJhueyasEyxLnDwa3V5OQkViAg8TvveKqTjI5PB/8CXVr9Mq5emivg+1QDumqHxx4f7O
- 6DR7tQxkvpY86tvDIc/wDkscyHFOLW5x9fPm4+btIv3qnCoIST5JCs9xI0UON4k4+JYE
- 7yTw==
+ bh=CbPrT7PLvBDymN3EeZkp0K9KuC7aLbOtM142o2glIGU=;
+ b=GOcxTr8IckRPJK5EJ2LJxvDgzFr6uZTMTILlhPWEVIKSGVAeps9fg1RXZKwy+tY++V
+ MFvenDVFZ71An7bu60CucXjLz5xklTBuadnun8zEHh4LjvTQikGCUcUsr6EQk6UqeCt6
+ uCWiCw/WjDOa7cD747nyC+ON8HaWPBkaWntFkI9vdZlzZ6pOwe0GQivXpOtojho1sEIf
+ cpVfPwsRdsXcks1hY99qSkiEGQbRydQlz2sOM2BsW99LNfJhZc0xydsT8GrupFboygMA
+ SArd5i0O/mb7QZF+ka5eTFpK27NoKSnLMltv8hJetjj1zYnl/fNtyUo8LLab6jSjseVb
+ Y7Bw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20260707; t=1789488106; x=1790092906;
+ d=1e100.net; s=20260707; t=1789488103; x=1790092903;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
  :to:cc:subject:date:message-id:reply-to:content-type;
- bh=nNXJeaqt2s8P6UfDSK6Y1FWRU8dNfhhOhkwokU9p+w0=;
- b=Nf5TyTxlIelA+wPOpqIBLQ3QDKbznXDhvuQgxMNEYQs/6gBPnqU7ws+3teV8S+xk6Y
- zfKSoHATP6JOoRR8HnfqC1XA6Cn+exi6mLAzR02FeumdY0brqg430+A0CLdHcVrMlgKm
- T/unj3l1+HoLsbtDZEbo3iLrFtwzi8RDysf94EDRjtI6PYKJg0gy4ZOSgb/5NGVStEeR
- jZMjl16CmItbdgsbLJeC6TkbWOo3/xf2HzxdbzR2OgitXg0ihCcI2xQxaunnBSrfe1dq
- V8yigpiC+hSn7HtvlyGvF2zWdX5Jss05zyk2IvaeUT1kE4WBYKE/DknWyxgmZbI6wwUR
- 8RRA==
-X-Gm-Message-State: AFuF++ldcdv0UOjRm2L1a2opokSwEEd1+1wkOnPI9qaC+78siH1scKkd
- yuYfLoQvgQGOtzdu63HSDikLHL+ZQdorH0oEKhPXeXrWfQGt1rz6htsACC0kag==
-X-Gm-Gg: AYBFou29zqqqMitXBdrI3XyU1fCgokCdYgwL17JUU0tIY8inCjViFhpdwMo2bxT8gNn
- 4OY6ap6x2I4f/oZNlihcyQEMe0C+yapMGR+es7Eq+tW76XTS+2JnlsbuULkXbJeyJWhZd8yHliw
- QmF00O8+Zs3gkf2PrlwvZZmPK5zdOLgVtdDNx2lm8bVO4D3gtofBY5rVRybbCvUisEkN2hLHaaI
- JenU7rCBYriz95DlBdPjR8W4fjNUHhscOFiKx5w9GJbDhw3bsHvnOZCnCMWW9klIy/CxsWYoiwo
- jZ46uZjxSlDANdOSuuuxkgHCbWrHaTu5vVmQR6iGw3AnfLne9QhgkEFbokfr8M2H667NsgcLZDA
- uZItvsz5YDUDhIrYP7vIVPG8fpo7K13RTnv2RrNknMBerpAlo39lwnA1Y8VaBaMBT+/UU8t/9wq
- YCIGqyIB2TqqC2UFZB/Z/bmazKSfepLnxfYEo6QEFXNBgNm+fLTgSai14refSe5kEy7+CSy6jb8
- e3awaIGqjQeEd1nAKhHnkxoSVvgqUHZWqxjeEuonyDGYw==
-X-Received: by 2002:a17:907:d8b:b0:c29:3821:ae6c with SMTP id
- a640c23a62f3a-c29d7930b3bmr139194866b.37.1789488106085; 
- Tue, 15 Sep 2026 09:01:46 -0700 (PDT)
+ bh=CbPrT7PLvBDymN3EeZkp0K9KuC7aLbOtM142o2glIGU=;
+ b=DPIYGKJ/kWtRuK/bRe7RD850u4elE+fqfymH4x/QR53E5+/yi7IMTJsPa8xKQooZv4
+ sebFaDp+M3eJtBRU2CX1Q7D/ggaRS1k3Vu+MFM/x6HSDbL39Z4NhUWF9hSeipxHJcDe1
+ kF709qAypkhPglXJntBeQYO+N3wsOJDV9Y4pd/LcNWjw1yWsrTGpbFSUzKKp7K5N368I
+ 62B2j8JfoIuWV5T21oWI4E8FT2OzJ23KDD89PozJ/Gv+wgYvlSTP3jtbNMkK+UjxZ3Ao
+ jI6v4hX97/8vRBxgVKB8qanJgnShQvnFl4u+Hem7HPzjVe/RkUrDpttYuitgOwZoK6CO
+ THlg==
+X-Gm-Message-State: AFuF++lKtVMpkaf56ER9LB+DJ6j4XzObrhNBM4NAYUEEk1z1WBi+v3xJ
+ auA3CZ6VwNtz8plXRMMQAsuO49+5moydtMpV2GoPb9H8YTbIo4YPYE7+23bo4g==
+X-Gm-Gg: AYBFou15Eq+U1N4pKTZ75fnW220dhES37UGtXr7lyOTyWMuXBb+Cr6XBbdMGPED9f64
+ 01Y62OFzBiSaxUxrTEan63MwZbmb8TU8GrI0eHB+UqRxje7A7wLsTp9X9CvFujxKjtk4X5zKZZ/
+ pkrg6is111VPeZvd7w3q/GPPbZEr4aqjZ+nZFsDkpvpfjbceDE70Mzn+RRwUPHnTjOfDKCSQKxa
+ pRil755QInXmV4TUcgW4u0E/Fg+VkG2X4lKz8QJFpAHVs5tvbfoMabUwzQBFZIyGbEZeopdLXN/
+ h8ENbdF7FlJVPCVXMUTmrV1XRMwwFi6C48vccR4w25IDU7GzgqGu/pWPavg+q3uZ7oG7kV9WJJF
+ pSZv1ApLkWldV5aytoHTjLwsgVbU3+AfvLEtysLKjBuKVURu2gew97VcwdsvG5xf6trV/AsbWQA
+ CRvg6pyLJw/GM70eblrvNF1YgfW4EaqDSTyXmN6VzHahBLQNUCaIhp/HgZf543M1NdR9VHtRm14
+ EHaanukuq7pZnk65x1Kajh05zjI8X/7iQpVicY87AmL4g==
+X-Received: by 2002:a17:906:f597:b0:c25:541:fd3a with SMTP id
+ a640c23a62f3a-c29b84d1bd1mr499723166b.7.1789488102788; 
+ Tue, 15 Sep 2026 09:01:42 -0700 (PDT)
 Received: from thinkpad-t470s.. (83-131-196-251.adsl.net.t-com.hr.
  [83.131.196.251]) by smtp.googlemail.com with ESMTPSA id
- a640c23a62f3a-c29ddd86344sm3235866b.0.2026.09.15.09.01.44
+ a640c23a62f3a-c29ddd86344sm3235866b.0.2026.09.15.09.01.41
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 15 Sep 2026 09:01:45 -0700 (PDT)
+ Tue, 15 Sep 2026 09:01:42 -0700 (PDT)
 From: Ruslan Ruslichenko <ruslichenko.r@gmail.com>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org, artem_mygaiev@epam.com, volodymyr_babchuk@epam.com,
@@ -72,9 +72,9 @@ Cc: qemu-arm@nongnu.org, artem_mygaiev@epam.com, volodymyr_babchuk@epam.com,
  edgar.iglesias@gmail.com, berrange@redhat.com, eugene@nuvacore.ai,
  Ruslan_Ruslichenko@epam.com, takahiro.nakata.wr@renesas.com,
  "Edgar E . Iglesias" <edgar.iglesias@amd.com>
-Subject: [PATCH v2 20/20] hw/core: Add FDT support to Remote Port memory master
-Date: Tue, 15 Sep 2026 18:00:44 +0200
-Message-ID: <20260915160044.345788-21-ruslichenko.r@gmail.com>
+Subject: [PATCH v2 18/20] hw/core: Add Remote Port files to build
+Date: Tue, 15 Sep 2026 18:00:42 +0200
+Message-ID: <20260915160044.345788-19-ruslichenko.r@gmail.com>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20260915160044.345788-1-ruslichenko.r@gmail.com>
 References: <20260915160044.345788-1-ruslichenko.r@gmail.com>
@@ -106,89 +106,50 @@ Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
 From: Ruslan Ruslichenko <Ruslan_Ruslichenko@epam.com>
 
-Implement the FDTGenericMMap interface for the Remote Port
-Memory Master.
-
-This enables the device to dynamically parse memory ranges
-defined in the Device Tree ('reg' property) and register
-them as system bus MMIO regions.
+Add the Remote Port subsystem source files to the build system.
+These files are compiled when CONFIG_REMOTE_PORT is enabled.
 
 Signed-off-by: Edgar E. Iglesias <edgar.iglesias@amd.com>
 Signed-off-by: Takahiro Nakata <takahiro.nakata.wr@renesas.com>
 Signed-off-by: Ruslan Ruslichenko <Ruslan_Ruslichenko@epam.com>
 ---
- hw/core/remote-port-memory-master.c | 34 +++++++++++++++++++++++++++++
- 1 file changed, 34 insertions(+)
+ hw/core/Kconfig     |  4 ++++
+ hw/core/meson.build | 10 ++++++++++
+ 2 files changed, 14 insertions(+)
 
-diff --git a/hw/core/remote-port-memory-master.c b/hw/core/remote-port-memory-master.c
-index 41ef1df518..4ef03c9599 100644
---- a/hw/core/remote-port-memory-master.c
-+++ b/hw/core/remote-port-memory-master.c
-@@ -23,6 +23,8 @@
- #include "hw/core/remote-port.h"
- #include "hw/core/remote-port-memory-master.h"
- 
-+#include "hw/core/fdt_generic_util.h"
+diff --git a/hw/core/Kconfig b/hw/core/Kconfig
+index d1bdf765ee..25f553e189 100644
+--- a/hw/core/Kconfig
++++ b/hw/core/Kconfig
+@@ -38,3 +38,7 @@ config SPLIT_IRQ
+ config EIF
+     bool
+     depends on LIBCBOR && GNUTLS
 +
- #define REMOTE_PORT_MEMORY_MASTER_PARENT_CLASS \
-     object_class_get_parent( \
-             object_class_by_name(TYPE_REMOTE_PORT_MEMORY_MASTER))
-@@ -298,6 +300,35 @@ static void rp_memory_master_init(Object *obj)
-                              OBJ_PROP_LINK_STRONG);
- }
- 
-+static bool rp_parse_reg(FDTGenericMMap *obj, FDTGenericRegPropInfo reg,
-+                         Error **errp)
-+{
-+    RemotePortMemoryMaster *s = REMOTE_PORT_MEMORY_MASTER(obj);
-+    FDTGenericMMapClass *parent_fmc =
-+        FDT_GENERIC_MMAP_CLASS(REMOTE_PORT_MEMORY_MASTER_PARENT_CLASS);
-+    int i;
++config REMOTE_PORT
++    bool
++    depends on PTIMER && XILINX_AXI
+diff --git a/hw/core/meson.build b/hw/core/meson.build
+index 8fe776d2c8..74021c5f6d 100644
+--- a/hw/core/meson.build
++++ b/hw/core/meson.build
+@@ -26,6 +26,16 @@ system_ss.add(when: 'CONFIG_SPLIT_IRQ', if_true: files('split-irq.c'))
+ system_ss.add(when: 'CONFIG_XILINX_AXI', if_true: files('stream.c'))
+ system_ss.add(when: 'CONFIG_PLATFORM_BUS', if_true: files('sysbus-fdt.c'))
+ system_ss.add(when: 'CONFIG_EIF', if_true: [files('eif.c'), zlib, libcbor, gnutls])
++system_ss.add(when: 'CONFIG_REMOTE_PORT', if_true: files(
++  'remote-port-proto.c',
++  'remote-port.c',
++  'remote-port-memory-master.c',
++  'remote-port-memory-slave.c',
++  'remote-port-gpio.c',
++  'remote-port-stream.c',
++  'remote-port-ats.c',
++))
 +
-+    /* Initialize rp_ops from template.  */
-+    s->rp_ops = g_malloc(sizeof *s->rp_ops);
-+    memcpy(s->rp_ops, &rp_ops_template, sizeof *s->rp_ops);
-+    s->rp_ops->valid.max_access_size = s->max_access_size;
-+    s->rp_ops->impl.max_access_size = s->max_access_size;
-+
-+    s->mmaps = g_new0(typeof(*s->mmaps), reg.n);
-+    for (i = 0; i < reg.n; ++i) {
-+        char *name = g_strdup_printf("rp-%d", i);
-+
-+        s->mmaps[i].offset = reg.a[i];
-+        memory_region_init_io(&s->mmaps[i].iomem, OBJECT(obj), s->rp_ops,
-+                              &s->mmaps[i], name, reg.s[i]);
-+        sysbus_init_mmio(SYS_BUS_DEVICE(obj), &s->mmaps[i].iomem);
-+        s->mmaps[i].parent = s;
-+        g_free(name);
-+    }
-+
-+    return parent_fmc ? parent_fmc->parse_reg(obj, reg, errp) : false;
-+}
-+
- static Property rp_properties[] = {
-     DEFINE_PROP_UINT32("map-num", RemotePortMemoryMaster, map_num, 0),
-     DEFINE_PROP_UINT64("map-offset", RemotePortMemoryMaster, map_offset, 0),
-@@ -310,9 +341,11 @@ static Property rp_properties[] = {
- 
- static void rp_memory_master_class_init(ObjectClass *oc, const void *data)
- {
-+    FDTGenericMMapClass *fmc = FDT_GENERIC_MMAP_CLASS(oc);
-     DeviceClass *dc = DEVICE_CLASS(oc);
-     device_class_set_props_n(dc, rp_properties, ARRAY_SIZE(rp_properties));
-     dc->realize = rp_memory_master_realize;
-+    fmc->parse_reg = rp_parse_reg;
- }
- 
- static const TypeInfo rp_info = {
-@@ -322,6 +355,7 @@ static const TypeInfo rp_info = {
-     .instance_init = rp_memory_master_init,
-     .class_init    = rp_memory_master_class_init,
-     .interfaces    = (InterfaceInfo[]) {
-+        { TYPE_FDT_GENERIC_MMAP },
-         { TYPE_REMOTE_PORT_DEVICE },
-         { },
-     },
+ system_ss.add(files(
+   'cpu-system.c',
+   'fw-path-provider.c',
 -- 
 2.43.0
 

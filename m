@@ -4,67 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B7A90C88E7F
-	for <qemu-arm@archiver.kernel.org>; Tue, 15 Sep 2026 16:02:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 343E4C88E75
+	for <qemu-arm@archiver.kernel.org>; Tue, 15 Sep 2026 16:03:18 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1x6Vb5-0007ZG-C5; Tue, 15 Sep 2026 12:01:27 -0400
+	id 1x6Vat-0007O1-L9; Tue, 15 Sep 2026 12:01:15 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <ruslichenko.r@gmail.com>)
- id 1x6Vb3-0007Y5-QW
- for qemu-arm@nongnu.org; Tue, 15 Sep 2026 12:01:25 -0400
+ id 1x6Vas-0007N4-4N
+ for qemu-arm@nongnu.org; Tue, 15 Sep 2026 12:01:14 -0400
 Received: from mail-ej2-x10.google.com ([2a00:1450:4864:34::10])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <ruslichenko.r@gmail.com>)
- id 1x6Vb0-0003OE-7Y
- for qemu-arm@nongnu.org; Tue, 15 Sep 2026 12:01:25 -0400
+ id 1x6Vap-0003Mi-R4
+ for qemu-arm@nongnu.org; Tue, 15 Sep 2026 12:01:13 -0400
 Received: by mail-ej2-x10.google.com with SMTP id
- a640c23a62f3a-c254f6c7a58so412157466b.2
- for <qemu-arm@nongnu.org>; Tue, 15 Sep 2026 09:01:21 -0700 (PDT)
+ a640c23a62f3a-c254f56039dso83142766b.3
+ for <qemu-arm@nongnu.org>; Tue, 15 Sep 2026 09:01:11 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20251104; t=1789488081; x=1790092881; darn=nongnu.org;
+ d=gmail.com; s=20251104; t=1789488070; x=1790092870; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to:content-type;
- bh=1hqn5sYLybz9LYd9ThTYkVIvKptKJIS6KFBdy+ZatTw=;
- b=f+2B82XGxkNS/UzPVWijgr8ZMf1B41qHvk/W5lvUAer4ZTnbhtNQ42Hv+D3oZnxmsW
- v1sUENaoNi2wcTM9qJAChKUoKm9eWXhvIp/A9+ezbGK7TAQ5Ju1QgB7qjZCAVooDgoo9
- T9klwKniCPeA6sx5mPEHwhvUGDV4AQx6Ka1JQou2XJqlhX3uf3FZskuCjtUb3bz+NoHQ
- vg8eiVDiwV5Ss9tL6xPTI1+8e90l0YEUp2W9YmB3k/a2sbff6Tcr3U/t3wsglXAG5TFJ
- FePaqTkK5aGq6mjzs+HitA+jhCb120TEPKQRlrhLFhux1lSv7vIOHDtWW1I/WF6ja8eP
- iRdA==
+ bh=9T9DqjVoclJjAXs7joIA6JzcMftC3mdXuayXnuMYjRs=;
+ b=ZUxVs717xB6JkBlDA85+0nMpnUqdX6OmifuCmB+/xOB9qg3VD8pW9LdXO3webFaJtX
+ N7IUAXN5qGKVA5uTiciwj4B/PP2EbKi2ArjK9I1OE/p3BP/BJusE9ONBhu3Z5xkl6nSh
+ ExKLmrH6pENcsvQhyxoBXVbAEvvq7ytTX6uLADdEB+iAkuyB9+sfzzBK5bYrq9+NIOEs
+ 7kFqN3GPbEQa7RWZnQsfLx2aClry6pwCHvj1umbFCZukl0o7YbDMFk2jghWvuvkA0eIP
+ xU4CsXMz1sVCpJE0QnyKOT2IKk/PP8BZeoOfArML0Wr7MSGagq9D6XOlHwdbGMhqFOgI
+ iLmQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20260707; t=1789488081; x=1790092881;
+ d=1e100.net; s=20260707; t=1789488070; x=1790092870;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
  :to:cc:subject:date:message-id:reply-to:content-type;
- bh=1hqn5sYLybz9LYd9ThTYkVIvKptKJIS6KFBdy+ZatTw=;
- b=Tf3c8jUh9e0T2ct7oUvEEDdHJFfwr996Xfp24aQZsqhDTb9ZTz+KjZyC1XkOtGDZpd
- WZrfpnxWHgVhYwKEFTqaYD0J4MMyf3BYKMI7Zf4mryddtFMtC4G4UJInYG3aFsXRYvhF
- e2Bvct/D+G9Zdsyi8dOOpxyKZpPhHVFb11rjC/pW6VzZ5oc4bgC0FMKqz79h2knv8V5t
- Sa+lbRiH7z8KoEIFgBSftT5Rxyuf8YmNKwxh+4ecRiJ03z2PhQ/CHAgu3haRKTYMUb8R
- bx5Krv6f1lo0g58AeSEw7udnH9xpof/PKoLT1UNnoXX9R2K6afxvMDCUIkdr6CQqMooN
- HHEg==
-X-Gm-Message-State: AFuF++lU2+AdORHQ8NARIorMG3rUBufAzooHwxqTcm+TAhf0dD6IY/p2
- 3EE3ZOeVhV2UDx8RTMw9XmNiE/EQuXlifdIJsGXHeXnf+WpresnI7QGu
-X-Gm-Gg: AYBFou0Ary/iWfxj5cuH/sTUtZeMRP4bfI6hJWPknRwna3Woqh2srFXyjsSK7jLCcNs
- Hkla8o/C9hrdJX4KTrR5PLlfMKvOuaKYkNBqo314Oq9n53pX+03qe1me+ARSCvT20xM4FtqD3+5
- SosTFxcSQeJJK3ydm/dw/Et5bRKd+G5pb5d0ujalgvaMih7lrdzI0gdk/zNLddqPawNA4/8lKx6
- /iGvYXplY9nVX8xNsZDyR8m5qrW5S2PsBovJ3nMhDLeCljj0z/x7+A9mSSXuMIm1TXj55BdNKz6
- nra8m6jPE+k+fi4ZlBhakiCyoKyjH9PrGXuReAHSC7RidIyE1tdKGKUiSw6vBY1l7R2tL3HaRIb
- fnVDLw3rv1VQwvZr1AWztfUegsmZ1Wm8YtPFEpDcOTsu2dLxY9+2RiAtDIVmPC64cgM9Jal3Isp
- /3y1zRXp/1vUA3KmM0dm8hKjz0K9ovqpMQomIv2oGzRcCI6urXhpvk0OvedPAoMC7za9dF+VQ3l
- TUHyiOU4neL7uvN+TPX0c9InmEaFCLjd5bx2Zwtfc054g==
-X-Received: by 2002:a17:907:3f1b:b0:c29:62d8:68b8 with SMTP id
- a640c23a62f3a-c29b874c4d4mr496231866b.48.1789488080807; 
- Tue, 15 Sep 2026 09:01:20 -0700 (PDT)
+ bh=9T9DqjVoclJjAXs7joIA6JzcMftC3mdXuayXnuMYjRs=;
+ b=PgP8YiYo4oX+nAAg6flZbFAMD+k4mU5yRNYBxorFuFjnPZKytfd4fLn3s/bD269gn7
+ ZDVXRgQLrgW+/Wkn7o32pC+eqbnf9W8pPmWpWLZZ3igb/SEgLT1SVjtkSftBrigpnHHy
+ urKk49OzvA2OAUK+asItjedyVSs+hOIlJgZ/Hq7XDIyulfbc49YXgx2rfQvNJoF4a9Og
+ dWlA+iD4/V0uG/xuukCoFREoqel6AeVUZHpv2/sgrbuYCBl4B5aNGgs057wsWsRwxS0S
+ RilJIlVvGgWdssOv0ivx3cSsvE8gv8Vyl+TU9yGxncICzwZOwuAr+KNm8iG0GmOW32V7
+ hvDw==
+X-Gm-Message-State: AFuF++nbe/X42WzJA8IpXm2Yamp5Y9DSoNxX3GMPaCTUhUZ6jTcRjCdj
+ NtnVtw9vWpv7HNtxFgv/UEkrB/I6tllPgm32y/ZCSA0pkw4ayIG4kNyr
+X-Gm-Gg: AYBFou30rv8II/Jmzl4iiTvaXTdR7p0RBMsgA0CYIXlwuZjevAGqNCZ0R0UFzW9CuQj
+ EEtN0WVWOk2t/TP5bpaY8UVTGHr1ce+bg+y5F1E/tPPTGfP65V+x5nMUVgwRyzmCZJHYAUOXuXO
+ wtbeX85la1bfrwDkykR8IEegF9ixzg2ouj7VljepyK5oKNOO/vq76TECljRwKY21pN6c0JtgkFv
+ gu1uUFQBxyYV0GYIkYMAcSXb9GGgMl4rjV0SLPToscjDJqiWadxAevvSUaCGOFP4mkZhpjok9fT
+ ppGdZcPDsuwvelIwABixsX9qTEL/C3t2UiI23aE86RagGJ+fNfar24fmSCjUc/R493s58M29waW
+ EKhEx0TFsk1hDBYKWo/CgTtDRuqtIfRvnimVYyTTa7U6jtT5O6mbu4pinae03rl6eecq4XjEtQF
+ LcWKDpT9dMXdsE2EmkCuanWbBJD+NYayQVKKo/WUsMv9QO75vKcdCW0/VVhyF4CN0PTZ/TQCaxJ
+ 8niZma+GSLk1OXgMcZDpL/SIL0h/oXkKmMQuP3khmlAow==
+X-Received: by 2002:a17:907:9610:b0:c26:2da7:347f with SMTP id
+ a640c23a62f3a-c29d734648dmr143017166b.0.1789488069835; 
+ Tue, 15 Sep 2026 09:01:09 -0700 (PDT)
 Received: from thinkpad-t470s.. (83-131-196-251.adsl.net.t-com.hr.
  [83.131.196.251]) by smtp.googlemail.com with ESMTPSA id
- a640c23a62f3a-c29ddd86344sm3235866b.0.2026.09.15.09.01.19
+ a640c23a62f3a-c29ddd86344sm3235866b.0.2026.09.15.09.01.08
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 15 Sep 2026 09:01:20 -0700 (PDT)
+ Tue, 15 Sep 2026 09:01:09 -0700 (PDT)
 From: Ruslan Ruslichenko <ruslichenko.r@gmail.com>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org, artem_mygaiev@epam.com, volodymyr_babchuk@epam.com,
@@ -72,10 +72,9 @@ Cc: qemu-arm@nongnu.org, artem_mygaiev@epam.com, volodymyr_babchuk@epam.com,
  edgar.iglesias@gmail.com, berrange@redhat.com, eugene@nuvacore.ai,
  Ruslan_Ruslichenko@epam.com, takahiro.nakata.wr@renesas.com,
  "Edgar E . Iglesias" <edgar.iglesias@amd.com>
-Subject: [PATCH v2 05/20] hw/core: Implement Remote Port irq,
- sync and ATS helpers
-Date: Tue, 15 Sep 2026 18:00:29 +0200
-Message-ID: <20260915160044.345788-6-ruslichenko.r@gmail.com>
+Subject: [PATCH v2 01/20] hw/core: Add Remote Port protocol packet definition
+Date: Tue, 15 Sep 2026 18:00:25 +0200
+Message-ID: <20260915160044.345788-2-ruslichenko.r@gmail.com>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20260915160044.345788-1-ruslichenko.r@gmail.com>
 References: <20260915160044.345788-1-ruslichenko.r@gmail.com>
@@ -89,7 +88,7 @@ X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -107,182 +106,337 @@ Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
 From: Ruslan Ruslichenko <Ruslan_Ruslichenko@epam.com>
 
-The patch add support for encoding and decoding of following
-commands:
+Introduce packet definition for Remote Port protocol.
 
-- RP_CMD_interrupt: propagate gpio and interrupt lines changes
-to external peers
-- RP_CMD_sync: support for synchronization between QEMU and the
-remote model
-- RP_CMD_ats_*: handling iommu transactoin request and invalidation
-accross the link.
+Remote Port is a socket based inter-simulation protocol
+designed to connect QEMU to external simulator (such as
+SystemC models, RTL simulators, etc) for hardware co-
+simulation.
+
+The protocol supports bidirectional communication for:
+- Connection setup, version negotiation (Hello/Cfg packets)
+- Memory and MMIO transactions (Read/Write packets)
+- Interrupts and GPIO signaling (Interrupt packets)
+- Time synchronization (Sync packets)
+
+The patch introduces header file with packet definition
+used by protocol.
+
+Preserved existing MIT license for include/hw/core/remote-port-proto.h.
 
 Signed-off-by: Edgar E. Iglesias <edgar.iglesias@amd.com>
 Signed-off-by: Takahiro Nakata <takahiro.nakata.wr@renesas.com>
 Signed-off-by: Ruslan Ruslichenko <Ruslan_Ruslichenko@epam.com>
 ---
- hw/core/remote-port-proto.c         | 100 ++++++++++++++++++++++++++++
- include/hw/core/remote-port-proto.h |  29 ++++++++
- 2 files changed, 129 insertions(+)
+ include/hw/core/remote-port-proto.h | 299 ++++++++++++++++++++++++++++
+ 1 file changed, 299 insertions(+)
+ create mode 100644 include/hw/core/remote-port-proto.h
 
-diff --git a/hw/core/remote-port-proto.c b/hw/core/remote-port-proto.c
-index ddaefa7e36..0c90ba8971 100644
---- a/hw/core/remote-port-proto.c
-+++ b/hw/core/remote-port-proto.c
-@@ -132,6 +132,24 @@ int rp_decode_payload(struct rp_pkt *pkt)
-         }
-         pkt->busaccess.master_id = master_id;
-         break;
-+    case RP_CMD_interrupt:
-+        pkt->interrupt.timestamp = be64_to_cpu(pkt->interrupt.timestamp);
-+        pkt->interrupt.vector = be64_to_cpu(pkt->interrupt.vector);
-+        pkt->interrupt.line = be32_to_cpu(pkt->interrupt.line);
-+        pkt->interrupt.val = pkt->interrupt.val;
-+        used += pkt->hdr.len;
-+        break;
-+    case RP_CMD_sync:
-+        pkt->sync.timestamp = be64_to_cpu(pkt->interrupt.timestamp);
-+        used += pkt->hdr.len;
-+        break;
-+    case RP_CMD_ats_req:
-+    case RP_CMD_ats_inv:
-+        pkt->ats.attributes = be64_to_cpu(pkt->ats.attributes);
-+        pkt->ats.addr = be64_to_cpu(pkt->ats.addr);
-+        pkt->ats.len = be64_to_cpu(pkt->ats.len);
-+        pkt->ats.result = be32_to_cpu(pkt->ats.result);
-+        break;
-     default:
-         break;
-     }
-@@ -295,6 +313,88 @@ size_t rp_encode_busaccess(struct rp_peer_state *peer,
-     return sizeof *pkt + ret_size;
- }
- 
-+size_t rp_encode_interrupt_f(uint32_t id, uint32_t dev,
-+                             struct rp_pkt_interrupt *pkt,
-+                             int64_t clk,
-+                             uint32_t line, uint64_t vector, uint8_t val,
-+                             uint32_t flags)
-+{
-+    rp_encode_hdr(&pkt->hdr, RP_CMD_interrupt, id, dev,
-+                  sizeof *pkt - sizeof pkt->hdr, flags);
-+    pkt->timestamp = cpu_to_be64(clk);
-+    pkt->vector = cpu_to_be64(vector);
-+    pkt->line = cpu_to_be32(line);
-+    pkt->val = val;
-+    return sizeof *pkt;
-+}
-+
-+size_t rp_encode_interrupt(uint32_t id, uint32_t dev,
-+                           struct rp_pkt_interrupt *pkt,
-+                           int64_t clk,
-+                           uint32_t line, uint64_t vector, uint8_t val)
-+{
-+    return rp_encode_interrupt_f(id, dev, pkt, clk, line, vector, val, 0);
-+}
-+
-+static size_t rp_encode_ats_common(uint32_t cmd, uint32_t id, uint32_t dev,
-+                         struct rp_pkt_ats *pkt,
-+                         int64_t clk, uint64_t attr, uint64_t addr,
-+                         uint64_t len, uint64_t result, uint32_t flags)
-+{
-+    rp_encode_hdr(&pkt->hdr, cmd, id, dev,
-+                  sizeof *pkt - sizeof pkt->hdr, flags);
-+    pkt->timestamp = cpu_to_be64(clk);
-+    pkt->attributes = cpu_to_be64(attr);
-+    pkt->addr = cpu_to_be64(addr);
-+    pkt->len = cpu_to_be64(len);
-+    pkt->result = cpu_to_be32(result);
-+    return sizeof *pkt;
-+}
-+
-+size_t rp_encode_ats_req(uint32_t id, uint32_t dev,
-+                         struct rp_pkt_ats *pkt,
-+                         int64_t clk, uint64_t attr, uint64_t addr,
-+                         uint64_t len, uint64_t result, uint32_t flags)
-+{
-+    return rp_encode_ats_common(RP_CMD_ats_req, id, dev,
-+                                pkt, clk, attr,
-+                                addr, len, result, flags);
-+}
-+
-+size_t rp_encode_ats_inv(uint32_t id, uint32_t dev,
-+                         struct rp_pkt_ats *pkt,
-+                         int64_t clk, uint64_t attr, uint64_t addr,
-+                         uint64_t len, uint64_t result, uint32_t flags)
-+{
-+    return rp_encode_ats_common(RP_CMD_ats_inv, id, dev,
-+                                pkt, clk, attr,
-+                                addr, len, result, flags);
-+}
-+
-+static size_t rp_encode_sync_common(uint32_t id, uint32_t dev,
-+                                    struct rp_pkt_sync *pkt,
-+                                    int64_t clk, uint32_t flags)
-+{
-+    rp_encode_hdr(&pkt->hdr, RP_CMD_sync, id, dev,
-+                  sizeof *pkt - sizeof pkt->hdr, flags);
-+    pkt->timestamp = cpu_to_be64(clk);
-+    return sizeof *pkt;
-+}
-+
-+size_t rp_encode_sync(uint32_t id, uint32_t dev,
-+                      struct rp_pkt_sync *pkt,
-+                      int64_t clk)
-+{
-+    return rp_encode_sync_common(id, dev, pkt, clk, 0);
-+}
-+
-+size_t rp_encode_sync_resp(uint32_t id, uint32_t dev,
-+                           struct rp_pkt_sync *pkt,
-+                           int64_t clk)
-+{
-+    return rp_encode_sync_common(id, dev, pkt, clk, RP_PKT_FLAGS_response);
-+}
-+
- void rp_process_caps(struct rp_peer_state *peer,
-                      void *caps, size_t caps_len)
- {
 diff --git a/include/hw/core/remote-port-proto.h b/include/hw/core/remote-port-proto.h
-index de67cd6501..c86f0657d2 100644
---- a/include/hw/core/remote-port-proto.h
+new file mode 100644
+index 0000000000..16f3752877
+--- /dev/null
 +++ b/include/hw/core/remote-port-proto.h
-@@ -472,6 +472,35 @@ size_t rp_encode_busaccess(struct rp_peer_state *peer,
-                            struct rp_pkt_busaccess_ext_base *pkt,
-                            struct rp_encode_busaccess_in *in);
- 
-+size_t rp_encode_interrupt_f(uint32_t id, uint32_t dev,
-+                             struct rp_pkt_interrupt *pkt,
-+                             int64_t clk,
-+                             uint32_t line, uint64_t vector, uint8_t val,
-+                             uint32_t flags);
+@@ -0,0 +1,299 @@
++/*
++ * SPDX-License-Identifier: MIT
++ *
++ * QEMU remote port protocol parts.
++ *
++ * Copyright (c) 2013 Xilinx Inc
++ * Written by Edgar E. Iglesias <edgar.iglesias@xilinx.com>
++ *
++ * Permission is hereby granted, free of charge, to any person obtaining a copy
++ * of this software and associated documentation files (the "Software"), to deal
++ * in the Software without restriction, including without limitation the rights
++ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
++ * copies of the Software, and to permit persons to whom the Software is
++ * furnished to do so, subject to the following conditions:
++ *
++ * The above copyright notice and this permission notice shall be included in
++ * all copies or substantial portions of the Software.
++ *
++ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
++ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
++ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
++ * THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
++ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
++ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
++ * THE SOFTWARE.
++ */
++#ifndef REMOTE_PORT_PROTO_H__
++#define REMOTE_PORT_PROTO_H__
 +
-+size_t rp_encode_interrupt(uint32_t id, uint32_t dev,
-+                           struct rp_pkt_interrupt *pkt,
-+                           int64_t clk,
-+                           uint32_t line, uint64_t vector, uint8_t val);
++/*
++ * Remote-Port (RP) is an inter-simulator protocol. It assumes a reliable
++ * point to point communcation with the remote simulation environment.
++ *
++ * Setup
++ * In the SETUP phase a mandatory HELLO packet is exchanged with optional
++ * CFG packets following. HELLO packets are useful to ensure that both
++ * sides are speaking the same protocol and using compatible versions.
++ *
++ * CFG packets are used to negotiate configuration options. At the moment
++ * these remain unimplemented.
++ *
++ * Once the session is up, communication can start through various other
++ * commands. The list can be found further down this document.
++ * Commands are carried over RP packets. Every RP packet contains a header
++ * with length, flags and an ID to track potential responses.
++ * The header is followed by a packet specific payload. You'll find the
++ * details of the various commands packet layouts here. Some commands can
++ * carry data/blobs in their payload.
++ */
 +
-+size_t rp_encode_sync(uint32_t id, uint32_t dev,
-+                      struct rp_pkt_sync *pkt,
-+                      int64_t clk);
 +
-+size_t rp_encode_sync_resp(uint32_t id, uint32_t dev,
-+                           struct rp_pkt_sync *pkt,
-+                           int64_t clk);
++#define RP_VERSION_MAJOR 4
++#define RP_VERSION_MINOR 3
 +
-+size_t rp_encode_ats_req(uint32_t id, uint32_t dev,
-+                         struct rp_pkt_ats *pkt,
-+                         int64_t clk, uint64_t attr, uint64_t addr,
-+                         uint64_t size, uint64_t result, uint32_t flags);
++/* Could be auto generated.  */
++enum rp_cmd {
++    RP_CMD_nop         = 0,
++    RP_CMD_hello       = 1,
++    RP_CMD_cfg         = 2,
++    RP_CMD_read        = 3,
++    RP_CMD_write       = 4,
++    RP_CMD_interrupt   = 5,
++    RP_CMD_sync        = 6,
++    RP_CMD_ats_req     = 7,
++    RP_CMD_ats_inv     = 8,
++    RP_CMD_max         = 8
++};
 +
-+size_t rp_encode_ats_inv(uint32_t id, uint32_t dev,
-+                         struct rp_pkt_ats *pkt,
-+                         int64_t clk, uint64_t attr, uint64_t addr,
-+                         uint64_t size, uint64_t result, uint32_t flags);
++enum {
++    RP_OPT_quantum = 0,
++};
 +
- void rp_process_caps(struct rp_peer_state *peer,
-                      void *caps, size_t caps_len);
- 
++struct rp_cfg_state {
++    uint64_t quantum;
++};
++
++enum {
++    RP_PKT_FLAGS_optional      = 1 << 0,
++    RP_PKT_FLAGS_response      = 1 << 1,
++
++    /*
++     * Posted hint.
++     * When set this means that the receiver is not required to respond to
++     * the message. Since it's just a hint, the sender must be prepared to
++     * drop responses. Note that since flags are echoed back in responses
++     * a response to a posted packet will be easy to identify early in the
++     * protocol stack.
++     */
++    RP_PKT_FLAGS_posted        = 1 << 2,
++};
++
++struct rp_pkt_hdr {
++    uint32_t cmd;
++    uint32_t len;
++    uint32_t id;
++    uint32_t flags;
++    uint32_t dev;
++} QEMU_PACKED;
++
++struct rp_pkt_cfg {
++    struct rp_pkt_hdr hdr;
++    uint32_t opt;
++    uint8_t set;
++} QEMU_PACKED;
++
++struct rp_version {
++    uint16_t major;
++    uint16_t minor;
++} QEMU_PACKED;
++
++struct rp_capabilities {
++    /* Offset from start of packet.  */
++    uint32_t offset;
++    uint16_t len;
++    uint16_t reserved0;
++} QEMU_PACKED;
++
++enum {
++    CAP_BUSACCESS_EXT_BASE = 1,    /* New header layout. */
++    CAP_BUSACCESS_EXT_BYTE_EN = 2, /* Support for Byte Enables.  */
++
++    /*
++     * Originally, all interrupt/wire updates over remote-port were posted.
++     * This turned out to be a bad idea. To fix it without breaking backwards
++     * compatibility, we add the WIRE Posted updates capability.
++     *
++     * If the peer supportes this, it will respect the RP_PKT_FLAGS_posted
++     * flag. If the peer doesn't support this capability, senders need to
++     * be aware that the peer will not respond to wire updates regardless
++     * of the posted header-flag.
++     */
++    CAP_WIRE_POSTED_UPDATES = 3,
++
++    CAP_ATS = 4, /* Address translation services */
++};
++
++struct rp_pkt_hello {
++    struct rp_pkt_hdr hdr;
++    struct rp_version version;
++    struct rp_capabilities caps;
++} QEMU_PACKED;
++
++enum {
++    /* Remote port responses. */
++    RP_RESP_OK                  =  0x0,
++    RP_RESP_BUS_GENERIC_ERROR   =  0x1,
++    RP_RESP_ADDR_ERROR          =  0x2,
++    RP_RESP_MAX                 =  0xF,
++};
++
++enum {
++    RP_BUS_ATTR_EOP        =  (1 << 0),
++    RP_BUS_ATTR_SECURE     =  (1 << 1),
++    RP_BUS_ATTR_EXT_BASE   =  (1 << 2),
++    RP_BUS_ATTR_PHYS_ADDR  =  (1 << 3),
++
++    /*
++     * The access targets the I/O address space.
++     */
++    RP_BUS_ATTR_IO_ACCESS  =  (1 << 4),
++
++    /*
++     * Bits [11:8] are allocated for storing transaction response codes.
++     * These new response codes are backward compatible as existing
++     * implementations will not set/read these bits.
++     * For existing implementations, these bits will be zero which is RESP_OKAY.
++     */
++    RP_BUS_RESP_SHIFT      =  8,
++    RP_BUS_RESP_MASK       =  (RP_RESP_MAX << RP_BUS_RESP_SHIFT),
++};
++
++struct rp_pkt_busaccess {
++    struct rp_pkt_hdr hdr;
++    uint64_t timestamp;
++    uint64_t attributes;
++    uint64_t addr;
++
++    /* Length in bytes.  */
++    uint32_t len;
++
++    /*
++     * Width of each beat in bytes. Set to zero for unknown (let the remote
++     * side choose).
++     */
++    uint32_t width;
++
++    /*
++     * Width of streaming, must be a multiple of width.
++     * addr should repeat itself around this width. Set to same as len
++     * for incremental (normal) accesses.  In bytes.
++     */
++    uint32_t stream_width;
++
++    /* Implementation specific source or master-id.  */
++    uint16_t master_id;
++} QEMU_PACKED;
++
++
++/* This is the new extended busaccess packet layout.  */
++struct rp_pkt_busaccess_ext_base {
++    struct rp_pkt_hdr hdr;
++    uint64_t timestamp;
++    uint64_t attributes;
++    uint64_t addr;
++
++    /* Length in bytes.  */
++    uint32_t len;
++
++    /*
++     * Width of each beat in bytes. Set to zero for unknown (let the remote
++     * side choose).
++     */
++    uint32_t width;
++
++    /*
++     * Width of streaming, must be a multiple of width.
++     * addr should repeat itself around this width. Set to same as len
++     * for incremental (normal) accesses.  In bytes.
++     */
++    uint32_t stream_width;
++
++    /* Implementation specific source or master-id.  */
++    uint16_t master_id;
++    /* ---- End of 4.0 base busaccess. ---- */
++
++    uint16_t master_id_31_16;   /* MasterID bits [31:16].  */
++    uint32_t master_id_63_32;   /* MasterID bits [63:32].  */
++    /*
++     * ---------------------------------------------------
++     * Since hdr is 5 x 32bit, we are now 64bit aligned.
++     */
++
++    uint32_t data_offset;       /* Offset to data from start of pkt.  */
++    uint32_t next_offset;       /* Offset to next extension. 0 if none.  */
++
++    uint32_t byte_enable_offset;
++    uint32_t byte_enable_len;
++
++    /* ---- End of CAP_BUSACCESS_EXT_BASE. ---- */
++
++    /*
++     * If new features are needed that may always occupy space
++     * in the header, then add a new capability and extend the
++     * this area with new fields.
++     * Will help receivers find data_offset and next offset,
++     * even those that don't know about extended fields.
++     */
++} QEMU_PACKED;
++
++struct rp_pkt_interrupt {
++    struct rp_pkt_hdr hdr;
++    uint64_t timestamp;
++    uint64_t vector;
++    uint32_t line;
++    uint8_t val;
++} QEMU_PACKED;
++
++struct rp_pkt_sync {
++    struct rp_pkt_hdr hdr;
++    uint64_t timestamp;
++} QEMU_PACKED;
++
++enum {
++    RP_ATS_ATTR_exec     = 1 << 0,
++    RP_ATS_ATTR_read     = 1 << 1,
++    RP_ATS_ATTR_write    = 1 << 2,
++};
++
++enum {
++    RP_ATS_RESULT_ok = 0,
++    RP_ATS_RESULT_error = 1,
++};
++
++struct rp_pkt_ats {
++    struct rp_pkt_hdr hdr;
++    uint64_t timestamp;
++    uint64_t attributes;
++    uint64_t addr;
++    uint64_t len;
++    uint32_t result;
++    uint64_t reserved0;
++    uint64_t reserved1;
++    uint64_t reserved2;
++    uint64_t reserved3;
++} QEMU_PACKED;
++
++struct rp_pkt {
++    union {
++        struct rp_pkt_hdr hdr;
++        struct rp_pkt_hello hello;
++        struct rp_pkt_busaccess busaccess;
++        struct rp_pkt_busaccess_ext_base busaccess_ext_base;
++        struct rp_pkt_interrupt interrupt;
++        struct rp_pkt_sync sync;
++        struct rp_pkt_ats ats;
++    };
++};
++
++#endif
 -- 
 2.43.0
 

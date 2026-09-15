@@ -4,92 +4,92 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B2FDDC88E53
-	for <qemu-arm@archiver.kernel.org>; Tue, 15 Sep 2026 13:24:23 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 03408C88E75
+	for <qemu-arm@archiver.kernel.org>; Tue, 15 Sep 2026 13:25:09 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1x6T93-0006t2-6z; Tue, 15 Sep 2026 09:24:21 -0400
+	id 1x6T9h-0007RB-5P; Tue, 15 Sep 2026 09:25:01 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1x6T8w-0006n2-BW
- for qemu-arm@nongnu.org; Tue, 15 Sep 2026 09:24:17 -0400
+ id 1x6T9Z-0007Q3-ON
+ for qemu-arm@nongnu.org; Tue, 15 Sep 2026 09:24:54 -0400
 Received: from mail-yx2-x10.google.com ([2607:f8b0:4864:41::10])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1x6T8u-0001Sk-11
- for qemu-arm@nongnu.org; Tue, 15 Sep 2026 09:24:13 -0400
+ id 1x6T9Y-0001WM-DV
+ for qemu-arm@nongnu.org; Tue, 15 Sep 2026 09:24:53 -0400
 Received: by mail-yx2-x10.google.com with SMTP id
- 956f58d0204a3-66e4aaf2ecfso2646686d50.1
- for <qemu-arm@nongnu.org>; Tue, 15 Sep 2026 06:24:10 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1789478650; cv=none;
+ 956f58d0204a3-66e4ab19127so3327586d50.1
+ for <qemu-arm@nongnu.org>; Tue, 15 Sep 2026 06:24:52 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1789478691; cv=none;
  d=google.com; s=arc-20260327;
- b=ccOVA8a6rT5eU5O5uom13oCI4u5jfr2LM1EC5VqeJh6tDe9lagGiHkJaXZmT/f45GW
- 5DFVD9n7kHuWBvdiS3hxGEBZDzXLDqIKIg1jICnsabORcgwkgx15hgN1R2hs1f4WmWRg
- Gxbpa+Bt9q6QhuLsI4dlYFzK9wNlzlRMdYv312qOnH8VPrTm2wVfMxxqBruhCJlWAvC7
- +fmVOX61jVZ/8jFwLwis6oPnkrQe4fzJTr/VJyI551qBSwYcLKXRlEMMRUSUSQSfTxCs
- 8dStckZqFR7K+aduTOQxK7LgNAjdR2YF8ghaacMZE/ke8qxSSfgLT34xcmFliefQAwBo
- mKhw==
+ b=sXViqcYD8IWxgVjY0de5dUpy35y5lnUaDFWUCWvOoRzks23c3XScw8/JhRtj5oZMnu
+ yf1LdMD94jwv7+Y+jSrPyJnfUsKKxYMgU+NJcLH7eja7vATArWu7PF+wMwRhpU1Fk8Ii
+ +VnoxF62mwntE/GbUMKxgbgcXomiWtiLMbkcqCBIzd6wHYJxqWKGt8Ukp0/rVoCyOsi1
+ CBBPiUf4iCG7RGhSHmxKh2/IvqLismnVWn50F4l6iYzn1Xa9XQmR1szyv7pAALM3tvHQ
+ GruPQbxr3ZLDwqOVcVDHHxwrjot/CofvBkPEwy91/76Fz3pahK0zEYZ3U4KK/PtQ3xBI
+ Nkjw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
  s=arc-20260327; 
  h=cc:to:subject:message-id:date:from:in-reply-to:references
  :mime-version:dkim-signature;
- bh=z+LYvIcju2WpXeok+AWw5FmBhtN3Wn+MgNOU4JqJKy0=;
- fh=GLFuKfqEv8rcyvHSS1qC5pchRuFiuuJze/WBLvBL+7o=;
- b=VLotHTQrUymiDYzHPlBB/fPJjCRV3GJL5MLg1YHSXFHbCuMR5R/2QpmlG6zzdP51YD
- WKzdoB1ANqXpQbkdS3tbIYVIRKhUWx5x3qnFNAION8Na2MoX86p6JIXWAK8TriFkfmRx
- 811S3gy1hidGMeAOXFNj447NEtk1zljt3s96eH6YQ/zUlorBw8uVRG7o9mcxxVg3Su4o
- 7pAPIS8i867lQyQwiTWxif0Is/JB8uY82SA1CfixUiDiHFHkv5iPWeJGSf1KZ64IVZrC
- SwcoKSeDLnL2oBJ2PWsKOEaYLjvbDqNyS/tMXgIbatf1URQ9GbgCiwbBaRbdnBzYAteO
- zahQ==; darn=nongnu.org
+ bh=6+uIadRXMt1YyyZJrfNME7Jp4XW/MuXCFcCG/Lhvxos=;
+ fh=w7mEhL7s8FgPzKqpVJAK8VVWqGpnKMnzi9yRG0dT5EM=;
+ b=OAnUUWS6mUxZXdBJa3e+onaJpv9Fe/3id1Ns/faRgnmlrtQrWsOAc05FJpYBCRRBX6
+ X/BQA3Qnm7yeDhuhqDhvNru9un2VPNO/X7tddA2mABqishMf1Ux02Rmd+E3ktbGFDGnN
+ mWxdYT6ch8sHpPZQScrLd1JDNvH7qyY7jzsFxvr50T3X50ZmrR5rZ15moYbduMrauP9i
+ hoKxnBcQBkbkkXr98l/HcNkj8nPgMgI0PUWd9rPpTopgi6ZJUeX1wNST1LoZ9kLReF09
+ Qs7rw+3GbWKMDEBbgZOyHwt1qKIbRtnMb73/nBi0+a0x+K4qxwRVkDds+VLd5908dIq7
+ ORfg==; darn=nongnu.org
 ARC-Authentication-Results: i=1; mx.google.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1789478650; x=1790083450; darn=nongnu.org;
+ d=linaro.org; s=google; t=1789478691; x=1790083491; darn=nongnu.org;
  h=content-type:cc:to:subject:message-id:date:from:in-reply-to
  :references:mime-version:from:to:cc:subject:date:message-id:reply-to
- :content-type; bh=z+LYvIcju2WpXeok+AWw5FmBhtN3Wn+MgNOU4JqJKy0=;
- b=zEVf/HgnOFz399Y2ZMZSGTOwOLmdFPRUnxHpMymWvX6uHaFsQkTaoQ3kfH3jE9n/l2
- cCGtHclgyFZh0fFQEPW2vsdA7pDI/rpO6UCzV2aERSlMwFtc8QBzdPS5Y3xL45Mo1p9T
- S020VKnUQWW2x1qeeTYtwEG8q9Ici29chLiXPPzDN2j8U+ko4RibiGBQhUCrpmMRdluH
- fqgsMVUl01lw4AIgBSkFTqFT26oTPXmy+f+PTuHk0Ri4AOhpMOyuX5bTzV7IlkDBk7gl
- FkxNbZVLFjYGB9P6LkIjG+UOfY1fWX4/AErYiEdZcyZroPukv7qVwMfOgcBM/e0MDpei
- vLVA==
+ :content-type; bh=6+uIadRXMt1YyyZJrfNME7Jp4XW/MuXCFcCG/Lhvxos=;
+ b=IPQcqdBPmcyaixitxdh7xpWh+BcFrPUrlXcS96oUsrlfo6GwQ6tbOhLdTLRFx9mHL3
+ XehDABcLwUPDaygeDjery5TTdzyBxtwTT2xbJENsPOFvPupaG9A6jX0gEmz7XsOWwm2q
+ EKc+NpHX/jCB1MxaXl6E4ZJnz2p5BqnBryHGca3utTBMILl5L3FJh5vLIMU3+HW8Lj/T
+ 4hmkvNO4tuwUSW1jBqm30yzdiVJproTTdN9laEZJFzT31xqCy/k0qlZ6lM7w+Ds5TutU
+ NSqb09hYch5F54U7je8kPx3v8bH5/EVImbdptgL0Z46iuRU+OrNLOvNgtK7u2hxLXxs/
+ Bbcg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20260707; t=1789478650; x=1790083450;
+ d=1e100.net; s=20260707; t=1789478691; x=1790083491;
  h=content-type:cc:to:subject:message-id:date:from:in-reply-to
  :references:mime-version:x-gm-gg:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to:content-type;
- bh=z+LYvIcju2WpXeok+AWw5FmBhtN3Wn+MgNOU4JqJKy0=;
- b=A3AYDO1r6IZiRw/KjRNEPd+Ph4pbIP0Q2nB2uUy4RV2V/9f7Kt7pSVnp/BzPLfGoxu
- KIXaPrzZ41RkOU/IHu7qZp8zYfi5kVRIsr3VUDggWddyRb2XQBt5SAi713kt3VgYNDpL
- xSTK1vZbOnD9heJBzKjjYztslpimmltBIWyLNJmbtdXQ8pX6OM+reIVyreZabwsjY/nP
- Y/upKYjeU1e21aJatjug4c9v/ldlB+50vwRPKMHtWKz+5gfoA4P3QVBfzMwktGK6in1/
- 1dDMuKZxuaLupNkES/mZS1L3QFe6jloxgPuG/SWLnjXXRllAqlhqJIZ1aRAxjH+vQAoV
- kSyQ==
+ bh=6+uIadRXMt1YyyZJrfNME7Jp4XW/MuXCFcCG/Lhvxos=;
+ b=YqZLj8ZE/lsULKWmB6vcYkxn4zzoCF2BlFtZsSwe0wwE6Oi81/qIfdxUB8yCs0jIAl
+ Eh1Lt9czN/Lo1SaXoqQEssVZeFQexIf+fmmITC5M6OySsFc/WSLlxyoyRn5LSDvbi3k3
+ 4cR6KrKLmDZUoVYN+lm5XY9rYiqSPyFFmjF/a/s/pgDL509I8gvUoy1WVlfWQn1IURxx
+ FHUcc5yzYgktrjfbBU9Yse9VcQ1o9McLdRtEFsuwUqY7luEcNLdwUJwqs0i2w4RlKqLw
+ M9WH/dpv2ZOCU6tVYTkaSTCU+/jYmkwX48QRU+HHUxKpnIy4sq/AuQTSqadYl2e2Gboy
+ AxpA==
 X-Forwarded-Encrypted: i=1;
- AKwUvBwrqmXhdBEn8n6aBicZN6Fnv4p8rnHKNXZBuEgxjkK8NDGyY+sFeTsV1qS1aGy96FDzm/x71RPh9A==@nongnu.org
-X-Gm-Message-State: AFuF++ko4w2Ch4QcYVnUst6Rr2pUCuJLhyb4sGIMJl3ctBm2OP2zQQ+T
- QhzWX9JYdquPQKox2WyyeQSd7m/imzziFo/KtCRjKJtTe/1gVfT901KbdHxEwTTyeNOGXKBp9kb
- y1gN9EL1s5FX2Vz3DRSfL5TolZwYxB0NtveyroyW2Vw==
-X-Gm-Gg: AYBFou0m21I5KThh1dXEEEpCZMPilTHwiaSjKUl7cty1RRNEDFOJnJOS9vJcV2OEK8J
- kL1Ux2aG5PcMvwURLVyf5feGGbceHBsycg0OamaadOTbLcMKbVxDMoyAlg3sWlXHie8l5JSOoxY
- HkdZvZFRs6KVEYfeJOh/NVQyYbFn+CCjAqVzSdPlViqofW6cjzdGnb9Ng88cZswtNUsetSFfydc
- nQk1gdHQ3DdtYFH6ZHmE2C4p8mxFBHy5pfjvaMPyba+gAnQ/71zJUzdFf/TIn16AqwQJSfUpMtI
- ma1t5I8SL+SXgN1bAg/Y2jIrVYhqbJ8B9hwI+mLCTySgvwlorPnqhmJGPDFVj2+cxa82C+3rhCP
- E3z+GA+FhXB14vZRBcuejT8ZI6wI3dxNWPSvDlm8P
-X-Received: by 2002:a05:690e:d8d:b0:66e:6089:b3ab with SMTP id
- 956f58d0204a3-6714e1c1506mr1875802d50.47.1789478650022; Tue, 15 Sep 2026
- 06:24:10 -0700 (PDT)
+ AKwUvBzu/uhvdN+zewVQ8qQoDVoIhMBV86i/UkTmNE1TAk3tw4jIWEYpEmlGXSCAw5jiEJRXeBruRQl+pg==@nongnu.org
+X-Gm-Message-State: AFuF++lHbBWkHsjBfZGGc4S96sN55YF8j8fjK5UcIiSTea/WfdksbdjG
+ h6FWp/5LZzR9NG0ei285rx/DTou0Pc1A+dFhkSj8n92Fcrxn4X/sy1uLhZCVPWsqIKIz5z6OZcK
+ eam8JKnRx/IkARnAYfPabJNGGtu1nj7xpLch0ylJRqJOd2O4opPNKfXI=
+X-Gm-Gg: AYBFou2UqucgcisrzMx6+uNjNG61H7HHlx56YLWUuK4cfGlEV9Tdr7aZfzQeb4MCWfR
+ qCeP58KQSYUuTzM9UtRuE4DOqUTQ9149w9s+LTo6ncJDl324nLGaDkNhda1+gXMrDXoBpxuLcKF
+ eRoCWCnjdW7Zw6UikzgeCaOsIzbo1o4t0yXNieliwfo0M56pDTh4QkNqsFENq6wWzR7OGzYs99Z
+ X2e0v9wGHrJNcG5NNObErdzwoHZNEhu+JLG80joLB2zZSDrUzB5tGgMsW8DPsKF+t009SBgEbtC
+ ECj9HMucOzgsD4WwS0b+X5YQF8T3Zu5/aX/1pODavq/2QNytvoFwzS7E46cqPybw1BWvNu5G8tx
+ 30V4I9HAZC36pLQiUTt55YJ/a6d4P9OvGlm93Ra4=
+X-Received: by 2002:a05:690e:4847:b0:671:3036:42d8 with SMTP id
+ 956f58d0204a3-6714e195eefmr2109528d50.45.1789478691139; Tue, 15 Sep 2026
+ 06:24:51 -0700 (PDT)
 MIME-Version: 1.0
 References: <20260914192323.29250-1-gilles.grimaud@univ-lille.fr>
- <20260914192323.29250-7-gilles.grimaud@univ-lille.fr>
-In-Reply-To: <20260914192323.29250-7-gilles.grimaud@univ-lille.fr>
+ <20260914192323.29250-2-gilles.grimaud@univ-lille.fr>
+In-Reply-To: <20260914192323.29250-2-gilles.grimaud@univ-lille.fr>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 15 Sep 2026 14:23:57 +0100
-X-Gm-Features: AcwNN1XZmMCEGv5Nnl5PnCWDKWB3SBOqaf67rRMjKBYTK1XNvjpMz7qO_L5hf9U
-Message-ID: <CAFEAcA_33b2zu_JEdQvyPyRS8+wikhz7aKAbFA0C8j348gMBdw@mail.gmail.com>
-Subject: Re: [RFC PATCH v1 6/6] target/arm: extend PMSAv7 support to v6-M CPUs
+Date: Tue, 15 Sep 2026 14:24:39 +0100
+X-Gm-Features: AcwNN1VZcTL8MUriRccmhp4MrsAftCIaOrq_UzFByKnLYUYJKKWYT10Jn36EyUQ
+Message-ID: <CAFEAcA9R82YEX8qcz+CK7=ypSLZFadfrx+jWqMBnGGq6NYn5_Q@mail.gmail.com>
+Subject: Re: [RFC PATCH v1 1/6] target/arm: enforce Armv6-M NVIC limits
 To: Gilles Grimaud <gilles.grimaud@univ-lille.fr>
 Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, alex.bennee@linaro.org
 Content-Type: text/plain; charset="UTF-8"
@@ -101,7 +101,7 @@ X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -117,18 +117,17 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Mon, 14 Sept 2026 at 20:29, Gilles Grimaud
+On Mon, 14 Sept 2026 at 20:24, Gilles Grimaud
 <gilles.grimaud@univ-lille.fr> wrote:
 >
-> QEMU conditions PMSAv7 storage, reset, allocation, the pmsav7-dregion property,
-> migration and address translation on ARM_FEATURE_V7, which prevents the Armv6-M
-> MPU from being used. The checks are widened to also accept ARM_FEATURE_M while
-> preserving the PMSAv8 path for v8-M CPUs (PMSAv8 is tested first and the
-> migration vmstate excludes v8-M with !ARM_FEATURE_V8). This lets a Cortex-M0+
-> declare and use its MPU regions without setting ARM_FEATURE_V7, while v8-M CPUs
-> continue to use PMSAv8 storage and migration.
+> Armv6-M supports no more than 32 external interrupts. Its ICTR and Active
+> Bit Register locations are reserved, and Cortex-M0 implements two priority
+> bits.
 >
-> Suggested-by: Peter Maydell <peter.maydell@linaro.org>
+> Reject Armv6-M NVIC configurations with more than 32 external interrupts.
+> Add a check-tcg test that verifies the reserved register behavior and
+> priority masking on the microbit machine.
+>
 > Signed-off-by: Gilles Grimaud <gilles.grimaud@univ-lille.fr>
 
 Reviewed-by: Peter Maydell <peter.maydell@linaro.org>

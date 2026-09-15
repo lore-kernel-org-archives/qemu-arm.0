@@ -4,64 +4,106 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 891A5C88E7F
-	for <qemu-arm@archiver.kernel.org>; Tue, 15 Sep 2026 15:06:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1DFA1C88E7F
+	for <qemu-arm@archiver.kernel.org>; Tue, 15 Sep 2026 15:25:31 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1x6Uiy-0007yl-Ad; Tue, 15 Sep 2026 11:05:33 -0400
+	id 1x6V1o-0006li-NK; Tue, 15 Sep 2026 11:25:01 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <tangtao1634@phytium.com.cn>)
- id 1x6Uil-0007xG-VY; Tue, 15 Sep 2026 11:05:22 -0400
-Received: from zg8tmtyylji0my4xnjqumte4.icoremail.net ([162.243.164.118])
- by eggs.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <tangtao1634@phytium.com.cn>)
- id 1x6Uid-00075Z-Vk; Tue, 15 Sep 2026 11:05:19 -0400
-Received: from prodtpl.icoremail.net (unknown [10.12.1.20])
- by hzbj-icmmx-7 (Coremail) with UTF8SMTP id AQAAfwDHy6SYXqlqr4UqAA--.58412S2; 
- Tue, 15 Sep 2026 23:04:56 +0800 (CST)
-Received: from [192.168.2.9] (unknown [113.246.118.246])
- by mail (Coremail) with SMTP id AQAAf8Dwr3SWXqlqZXbWAA--.39496S2;
- Tue, 15 Sep 2026 23:04:55 +0800 (CST)
-Message-ID: <fd1f4d1b-e676-47fb-b063-5440e29825c4@phytium.com.cn>
-Date: Tue, 15 Sep 2026 23:04:54 +0800
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1x6V1n-0006lK-QM
+ for qemu-arm@nongnu.org; Tue, 15 Sep 2026 11:24:59 -0400
+Received: from mail-yx2-x10.google.com ([2607:f8b0:4864:41::10])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1x6V1l-0004Ly-L5
+ for qemu-arm@nongnu.org; Tue, 15 Sep 2026 11:24:59 -0400
+Received: by mail-yx2-x10.google.com with SMTP id
+ 956f58d0204a3-66e4ab20f4bso3281444d50.0
+ for <qemu-arm@nongnu.org>; Tue, 15 Sep 2026 08:24:57 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1789485896; cv=none;
+ d=google.com; s=arc-20260327;
+ b=HRA43IezSL+Zl9LK76rOzYtjeAg+igtj7ePyOjLZcUgrHBD0ZeI76+QnBkFSufEs4Z
+ yUIeCv04VMswSmVkJL0L9pZXhwL/LKZ4ao3rPnJdq42H9bkECnCpEhHC7qn4gx6NpGBV
+ edoaOe+onYF05zhfDVNfpW7k7vTSG6YEb4VSfAXqAOGVwo93s+GT5O/WcYiCwl/IGP/k
+ LjAXRpQ/KAzt6pQPHFD8FTy6yD+F6MY+sRIvi6Ez7HbafgN/pMkRTQ03IC23etAcPdIx
+ 8h8OFMD964ExI/r+XghW4d3NmTO8o6w8fe3R4D/5qIJgvWn45weAUwzF4Fdctau/Ftwo
+ yq2A==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
+ s=arc-20260327; 
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:dkim-signature;
+ bh=f39LRX6t5miX88Vb9pSej9Bo7WXHts2Zw12vmv6/pc8=;
+ fh=tzIwbrEKlYjA7MKZSLx1sx0D/301ntEx8gbwFzgE/48=;
+ b=lUktTG4s8z41zEwWBw00c1ZKl7rYPkhtiNtKvkrJsI3YaH11XjB/ELvyei87Y5gMO7
+ XFzmHgs4ueG9SAjeavucK95dspc3GhJWnj5vbUtSnriEV7YPMpOhT/EDvvwG706EjTHj
+ 3RqyzR8V7Gu1AoiTu6bTUS6sIryxmMU0G/Av/Mfj4vRCPTfXsmz8f2EMjG6X0Obf/QeN
+ 6oN5e1KJshyMqCTPOCjnu84zDuuBrVurV7VSlP7Xwl7PvpzKeSaXxDg1PKpOq1/dP+s9
+ Mi1utyyZ5MUS2iw1RqOBrdzaYoeKLXZbKO2X57xSeiCcdfwWKfIpU1jX56eYuoxSaCZ2
+ SedQ==; darn=nongnu.org
+ARC-Authentication-Results: i=1; mx.google.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1789485896; x=1790090696; darn=nongnu.org;
+ h=content-type:cc:to:subject:message-id:date:from:in-reply-to
+ :references:mime-version:from:to:cc:subject:date:message-id:reply-to
+ :content-type; bh=f39LRX6t5miX88Vb9pSej9Bo7WXHts2Zw12vmv6/pc8=;
+ b=nL7SRXFf8xH054AUbqjlceI37FymKw4npt+Ek0aP80AbLKEm9QIaWmF4Alg0MKyqFS
+ mvMmJrMoWp6MHtlN6NJj1n1RtXWb+MGZZ+8LM/Gts9OvTqRL2f6ZWwuDj73GyjbcZkte
+ RptnjPudGusib95EIxASI/8anxslRrm5HAvtvq/lLGAl8CuAYI4z7fQ7gdBSx3x26M4j
+ 1jrf7FsB40hka/MxegmMoEsZBshwxXIHcVI8MFmxwarVYQsosnSG1wicmXQ4BMKnt546
+ fx7TfuEPUv9OFJIzOUlDPz84uZbCg6NPb1jDm+Te1D6JJDmfCdhew3Q+Lg2+bOuKqAHe
+ v5SA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20260707; t=1789485896; x=1790090696;
+ h=content-type:cc:to:subject:message-id:date:from:in-reply-to
+ :references:mime-version:x-gm-gg:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to:content-type;
+ bh=f39LRX6t5miX88Vb9pSej9Bo7WXHts2Zw12vmv6/pc8=;
+ b=VDk61dGPtGDkdtLJkKHjrs7VTdGowDOjwH/xYJ1iGcl85KY/qTTBj7MDLv1Gjmd4kw
+ 0ueI/061VY6QLhlF1Dycp3hSneNxXEByNyMQKXMAC7imjyZqZEiIC49lzGXgIC4S05bX
+ EqbCq7oFksRlfvrhBYGgBxbXShWlMcNOW+wOnCIuvRbJqGTr8jE/ZsvumDMYESFzDJ3U
+ hMLaPMtBqs8evhpN6Vrh1XikaIzpFU4PvZODGZGMmplA2WgaiBRArFlk3V0C0aPHlB2j
+ ZsobXspLdCESJzJZJjo7gUwMJOw0IHUXOJ/J02BxnYuPawa6sMJba9ZOC1nME1vtM/GF
+ zmGQ==
+X-Forwarded-Encrypted: i=1;
+ AKwUvBy03wYN2UJfPOFRCvF4PS0IA2vt9nDq50Z0ze9hmfmU34lswT2N35eXbtXmzaN5pEZH8WZP2APA9A==@nongnu.org
+X-Gm-Message-State: AFuF++lPj3pdc7tVyGKv4k+vUM4OzJHCBCc/3buvBco129PtGSbkYUmo
+ aCG4RyhwU7e3mDuPSGOOGIh/o2I4BKIXoyqrB/tKiaAf+4dFd3jqvYUHHi8ZGZpEC9jeMvKFzEd
+ i2NS2Bj6MjT7nILF2oNBmN+5320ll4tBYN1Io8113RA==
+X-Gm-Gg: AYBFou1ETXZz8snsIQP+fUF1ckEEUKsszO9PmRkva5UKav3Ib+M+6BohUce4ORJ61Qg
+ ObsmgVDUxBpDbawrP0Gd7DWw41DLyZvVu6xusIvGZs++vAD8syxjhlPFmFcsjXh61cDC/wzPJcE
+ juu4l+nays90bib8TgN58pgSPUO0pvX9YRjkhF1FDCNCG772HbEWMIVDewqOWDRTHsa0VpTBVuH
+ D4TNe2dSWBIGwERjmmcHIFRN+JOQug6hPzR//NjgaYJSpXIojCpwzHa/MAaxR7i8sa/LW0yucyN
+ CjluZEczf036UjoGv7mweaZAv1rtyp58csxIFut7/wGeJhsVtfrAzHJc26lAeyrCBwv8V82wX9I
+ Kkg5i1o9NBSlqq3bJvcP3UQc/
+X-Received: by 2002:a53:ac87:0:b0:66f:c8e4:f013 with SMTP id
+ 956f58d0204a3-6714e060f40mr2664831d50.50.1789485896076; Tue, 15 Sep 2026
+ 08:24:56 -0700 (PDT)
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-From: Tao Tang <tangtao1634@phytium.com.cn>
-Subject: Re: [RFC v5 16/28] hw/arm/smmuv3: Add access checks for
- GERROR_IRQ_CFG registers
-To: eric.auger@redhat.com, Peter Maydell <peter.maydell@linaro.org>,
- Mostafa Saleh <smostafa@google.com>
-Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org,
- Chen Baozi <chenbaozi@phytium.com.cn>,
- Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>,
- =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@mailo.com>,
- Chao Liu <chao.liu@processmission.com>,
- Jim MacArthur <jim.macarthur@linaro.org>
-References: <20260813161515.2788900-1-tangtao1634@phytium.com.cn>
- <20260813162558.2808607-1-tangtao1634@phytium.com.cn>
- <7b5f99bb-891f-4184-9278-207664b02fb0@redhat.com>
-In-Reply-To: <7b5f99bb-891f-4184-9278-207664b02fb0@redhat.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-X-CM-TRANSID: AQAAf8Dwr3SWXqlqZXbWAA--.39496S2
-X-CM-SenderInfo: pwdqw3tdrrljuu6sx5pwlxzhxfrphubq/1tbiAQATBWqoS0kibQAAsY
-Authentication-Results: hzbj-icmmx-7; spf=neutral smtp.mail=tangtao163
- 4@phytium.com.cn;
-X-Coremail-Antispam: 1Uk129KBjvJXoWxKr1UZF4xWrWktw4fXFykuFg_yoW7GrW8pr
- 48Gr4aqr4DtF4Iqw4Svw4jv3Z5urZ5tr13Gr13KF17Cw4DurySyryj9Fs8GayUurn5Wa1I
- qa1SgrZ3Ww45ArJanT9S1TB71UUUUUDqnTZGkaVYY2UrUUUUj1kv1TuYvTs0mT0YCTnIWj
- DUYxn0WfASr-VFAU7a7-sFnT9fnUUIcSsGvfJ3UbIYCTnIWIevJa73UjIFyTuYvj4RJUUU
- UUUUU
-Received-SPF: pass client-ip=162.243.164.118;
- envelope-from=tangtao1634@phytium.com.cn;
- helo=zg8tmtyylji0my4xnjqumte4.icoremail.net
-X-Spam_score_int: -25
-X-Spam_score: -2.6
+References: <20260913-allwinner-gpio-v3-0-a9affa474b3b@gmail.com>
+ <20260913-allwinner-gpio-v3-1-a9affa474b3b@gmail.com>
+In-Reply-To: <20260913-allwinner-gpio-v3-1-a9affa474b3b@gmail.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Tue, 15 Sep 2026 16:24:43 +0100
+X-Gm-Features: AcwNN1WP3f-o7iYou4z1A14ofObFQq9Hfo6kxvOpKfuHL4OkdG-PTuKJ64_fHFs
+Message-ID: <CAFEAcA-TOjsMHDpThkBP_Mjbt+gA23SoXabOpAUVMdoFbRGjow@mail.gmail.com>
+Subject: Re: [PATCH v3 1/3] hw/gpio: Allwinner A10 GPIO emulation
+To: Strahinja Jankovic <strahinja.p.jankovic@gmail.com>
+Cc: qemu-devel@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>,
+ qemu-arm@nongnu.org, Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>,
+ Fabiano Rosas <farosas@suse.de>, 
+ Laurent Vivier <lvivier@redhat.com>, Jack wang <163wangjack@gmail.com>
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2607:f8b0:4864:41::10;
+ envelope-from=peter.maydell@linaro.org; helo=mail-yx2-x10.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.6 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_LOW=-0.7,
- RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -78,159 +120,35 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Hi Eric, Mostafa,
-
-I'm replying to both reviews here.
-
-
-On 8/28/2026 5:47 PM, Eric Auger wrote:
-> Hi Tao,
+On Sun, 13 Sept 2026 at 19:17, Strahinja Jankovic
+<strahinja.p.jankovic@gmail.com> wrote:
 >
-> On 8/13/26 6:25 PM, Tao Tang wrote:
-> Please directly explain what is the problem we want to fix before what
-> is actually done in the patch.
+> This patch implements Allwinner A10 GPIO peripheral emulation.
 >
-> Spec says: "SMMU_GERROR_IRQ_CFG0 is Guarded by
-> SMMU_IRQ_CTRL.GERROR_IRQEN and must only be modified
-> when SMMU_IRQ_CTRL.GERROR_IRQEN == 0." This check is currently not
-> performed
+> The emulation focuses on input/output and interrupt functionality,
+> whereas the drive and pull up/down functionality is not emulated.
 >
-> In SMMUv3.2 and later, a write while SMMU_IRQ_CTRL.GERROR_IRQEN == 1 is
-> IGNORED.
-> Accesses to this register use the following encodings:
-> Accessible at offset 0x0068 from SMMUv3_PAGE_0
-> • When SMMU_IRQ_CTRL.GERROR_IRQEN == 0 and SMMU_IRQ_CTRLACK.GERROR_IRQEN
-> == 0,
-> accesses to this register are RW.
-> • Otherwise, accesses to this register are RO.
-> "
->
-> By the way you are not checking  SMMU_IRQ_CTRLACK.GERROR_IRQEN
+> Signed-off-by: Strahinja Jankovic <strahinja.p.jankovic@gmail.com>
 
-IRQ_CTRL and IRQ_CTRLACK currently read the same bank->irq_ctrl field, 
-so the existing check covers both in this synchronous model. Would you 
-prefer a separate irq_ctrlack field to represent the acknowledged state 
-explicitly?
+> +static inline void allwinner_gpio_update_all_output_lines(AWGPIOState *s)
+> +{
+> +    for (int port = 0; port < AW_GPIO_PORTS_NUM; port++) {
+> +        port_update_output_lines(s, port);
+> +    }
+> +}
 
-> Nevertheless our emulation does not support MSI, right? So why don't we
-> hardcode this behavior on SMMU_GERROR_IRQ_CFG0 access, ie.
->
-> "This register is present only when SMMU_IDR0.MSI == 1.
-> SMMU_GERROR_IRQ_CFG0 are RES 0."
->
-> That would be simpler.
+This doesn't compile on clang because this function has no callers:
 
-...
+../../hw/gpio/allwinner-gpio.c:257:20: error: unused function
+'allwinner_gpio_update_all_output_lines' [-Werror,-Wunused-function]
+  257 | static inline void
+allwinner_gpio_update_all_output_lines(AWGPIOState *s)
+      |                    ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+1 error generated.
 
->> Add helpers that separate IRQ_CFG register presence from the runtime
->> IRQ enable guard. The Non-secure and Secure GERROR_IRQ_CFG register sets
->> both use SMMU_IDR0.MSI for presence, while writability additionally
->> requires GERROR_IRQEN to be clear. IRQ_CTRL and IRQ_CTRLACK share one
->> synchronous backing field in the current model.
->>
->> Reads return RES0 when the register set is absent. Writes are ignored
->> when it is absent or GERROR_IRQEN is set. Apply the same checks to all
->> three GERROR_IRQ_CFG registers and mask reserved bits in CFG0 and CFG2.
->>
->> Fixes: fae4be38b35d ("hw/arm/smmuv3: Implement MMIO write operations")
-> above is enought I think
-...
->> Fixes: 10a83cb9887e ("hw/arm/smmuv3: Skeleton")
->> Signed-off-by: Tao Tang<tangtao1634@phytium.com.cn>
->> Reviewed-by: Pierrick Bouvier<pierrick.bouvier@linaro.org>
->> ---
->>   hw/arm/smmuv3.c | 118 +++++++++++++++++++++++++++++++++++++++++++++++-
->>   1 file changed, 116 insertions(+), 2 deletions(-)
->>
->> diff --git a/hw/arm/smmuv3.c b/hw/arm/smmuv3.c
->> index 47f0d575817..628911d3f21 100644
->> --- a/hw/arm/smmuv3.c
->> +++ b/hw/arm/smmuv3.c
->> @@ -1428,6 +1428,62 @@ smmu_cmdq_stage2_supported(SMMUv3State *s, SMMUSecSID sec_sid)
->>       return true;
->>   }
->>   
->> +/* Check whether the selected IRQ_CFG register set is present. */
-> Remove the final "."
-> Besides worth to add, check if MSI are supported. Even I would rather
-> rename the helper to reflect what is pratcically does, even if your
-> eventual interest is to know if SMMU_PRIQ_IRQ_CFGn and
-> SMMU_GERROR_IRQ_CFGn are not RES 0. By the way IRQ_CFG is always present
-> ;-)
+Should it be being called somewhere, or is it just a leftover
+from an earlier revision of the series?
 
-...
-
->> +static bool smmu_irq_cfg_present(SMMUv3State *s, SMMUSecSID sec_sid,
->> +                                 SMMUIrq irq)
->> +{
->> +    SMMUv3RegBank *bank = smmuv3_bank(s, SMMU_SEC_SID_NS);
->> +
->> +    switch (irq) {
->> +    case SMMU_IRQ_GERROR:
->> +        switch (sec_sid) {
->> +        case SMMU_SEC_SID_NS:
->> +        case SMMU_SEC_SID_S:
->> +            return FIELD_EX32(bank->idr[0], IDR0, MSI);
-
-> I am a bit confused about this, there is no configuration where this
-> is true?
->
-> Thanks,
-> Mostafa
-
-The SMMUv3 model does not advertise MSI support. In v6 I'll make the 
-Non-secure and Secure GERROR_IRQ_CFG0/1/2 registers explicitly RES0 and 
-remove the generic helpers. I'll make EVENTQ_IRQ_CFG0/1/2 RES0 in patch 
-18 as well because of unsupport MSI.
-
-I'll also explain the old MSI=0 write/readback bug first in the commit 
-message and keep only Fixes: fae4be38b35d.
-
->> +        case SMMU_SEC_SID_NUM:
->> +            g_assert_not_reached();
->> +        }
->> +        break;
->> +    case SMMU_IRQ_EVTQ:
-> why do you pass irq if everything besides
->
-> SMMU_IRQ_GERROR is unexpected?
-
-The irq argument was intended for the EVENTQ handling added in patch 18. 
-I'll remove the shared helpers as part of the RES0 simplification.
-
->
->> +    case SMMU_IRQ_PRIQ:
->> +    case SMMU_IRQ_CMD_SYNC:
->> +        g_assert_not_reached();
->> +    }
->> +
->> +    g_assert_not_reached();
->> +}
->> +
->> +/* Check whether the selected IRQ_CFG register set is writable. */
->> +static bool smmu_irq_cfg_writable(SMMUv3State *s, SMMUSecSID sec_sid,
->> +                                  SMMUIrq irq)
->> +{
->> +    SMMUv3RegBank *bank = smmuv3_bank(s, sec_sid);
->> +    uint32_t irqen;
->> +
->> +    if (!smmu_irq_cfg_present(s, sec_sid, irq)) {
->> +        return false;
->> +    }
->> +
->> +    switch (irq) {
->> +    case SMMU_IRQ_GERROR:
->> +        irqen = FIELD_EX32(bank->irq_ctrl, IRQ_CTRL, GERROR_IRQEN);
-> again the name of the helper does not reflect what it does.
-> GERROR_IRQENMeaning
-> 0b0 interrupts are disabled.
-> 0b1 Interrupts are enabled.
-
-This helper will be removed as part of the RES0 simplification.
-
-
-Best regards,
-
-Tao
-
+thanks
+-- PMM
 

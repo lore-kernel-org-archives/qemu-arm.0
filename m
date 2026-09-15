@@ -4,110 +4,108 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D88B2C88E7D
-	for <qemu-arm@archiver.kernel.org>; Tue, 15 Sep 2026 16:13:55 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D558FC88E77
+	for <qemu-arm@archiver.kernel.org>; Tue, 15 Sep 2026 17:11:52 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1x6Vme-0002FP-Gn; Tue, 15 Sep 2026 12:13:24 -0400
+	id 1x6Wgb-0001WT-PL; Tue, 15 Sep 2026 13:11:14 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1x6Vmd-0002FA-7q
- for qemu-arm@nongnu.org; Tue, 15 Sep 2026 12:13:23 -0400
-Received: from mail-yx2-x10.google.com ([2607:f8b0:4864:41::10])
+ (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
+ id 1x6WgP-0000va-Ih
+ for qemu-arm@nongnu.org; Tue, 15 Sep 2026 13:11:02 -0400
+Received: from mail-wm2-x11.google.com ([2a00:1450:4864:31::11])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1x6VmZ-0005vm-2l
- for qemu-arm@nongnu.org; Tue, 15 Sep 2026 12:13:21 -0400
-Received: by mail-yx2-x10.google.com with SMTP id
- 00721157ae682-85d45ae011aso6016727b3.0
- for <qemu-arm@nongnu.org>; Tue, 15 Sep 2026 09:13:18 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1789488798; cv=none;
- d=google.com; s=arc-20260327;
- b=lLLrgOiIkQbdtdba+LPAVpS9Y7PYBtvwcO9J5UwyACM6VzILG91dwCjPbqoAnf3EsQ
- w0htCxpQp54nhI9h3N2bvDFbbJNAV27/d6X6ARqMtEQLWZBel9jz9qkcGFwI+x1dhykF
- 9vlY3EqEF/tglK+1t3SL4Us6+LiZUODovB2ZlmtwasgGVNVU1wHMQzJcnBVHYFVP64UZ
- 8RNUTBblcvE3UpybGR/bRWcOAz6jJ/X2ve1SreMBYBLC3Sd8JZZsmqVriiOvZyT5V5Tv
- MpqDKuRK6jfXNXjH+ax3L4HaDdp8o7/4RIb4Jph/5EtnluZXzMyIRN7CBPqju5piaSZd
- 0e4g==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
- s=arc-20260327; 
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:dkim-signature;
- bh=/5ul9R2d3z6fhjgPNwSZloyBYPFwCNFybU1JshNoOog=;
- fh=pt1dwHSTdXRbiyGXfRu9nosNp+BokDuR/CX4xIF3mM8=;
- b=Xfh0MtfJiWZ2lLYwNDd1uW1HMOfzsxeFP3BiO0qa1SQmnUy69svQsqqtvs3p5v1rJK
- 3zEtU80xOheP5NGU8ayI3PepbRokjgob3U7uVAFXHx5nH3W/0mb76SEGLT6vzSNownYY
- spIuABy/NoUU/ffvEUkrTGePCpwLfG6TLI3nyDVguwz4FopWxS/fhjUV7vnhYy5f6aEu
- SydADv6RG4YhynrO0v6uoSvIBugx1fw8wFmyfirAk+3J0Nio63oOIoh3wiydc6sw+YMk
- IVwniiRQpkXXplot97rl+wQblUPLHtNrrpTZknU5MKCIr3xiPSP/61wTKG9tPRZt12Wp
- XpXw==; darn=nongnu.org
-ARC-Authentication-Results: i=1; mx.google.com; arc=none
+ (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
+ id 1x6WgN-00047O-3j
+ for qemu-arm@nongnu.org; Tue, 15 Sep 2026 13:11:01 -0400
+Received: by mail-wm2-x11.google.com with SMTP id
+ 5b1f17b1804b1-49e79a408deso217335e9.2
+ for <qemu-arm@nongnu.org>; Tue, 15 Sep 2026 10:10:58 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1789488798; x=1790093598; darn=nongnu.org;
- h=content-transfer-encoding:content-type:cc:to:subject:message-id
- :date:from:in-reply-to:references:mime-version:from:to:cc:subject
- :date:message-id:reply-to:content-type;
- bh=/5ul9R2d3z6fhjgPNwSZloyBYPFwCNFybU1JshNoOog=;
- b=nvNST2LiU+wcHyBParI3sgwD07pTlGIW4IKU+vYzLppbIbRoS3EApJsr0O1NqJ5Weh
- 2cCQNU0e5CCB4Az6oC5dY/MfGm8jn1IDudkSDNrG7q2oJZS8XnOx0a3HpPFnbINJcTI3
- 9c+YoPU0ZsgOB5v1SfES3X01poM/mhW2GNxazSspjPmU+Z1N56HK0wm3h8hYybRkoSxY
- 5MZGlsYSucVsUDoFnutEP62TosotbyczVS0NBGFVcvQLP/GlJstcw/N9Ykbn0kGK52Dn
- xMNytimuBBwgF81viozdeSRYweZGhse8/H6aGkqyuAu95CoTuAFb12BKpcY6iq1i3qy6
- E21Q==
+ d=linaro.org; s=google; t=1789492257; x=1790097057; darn=nongnu.org;
+ h=content-transfer-encoding:content-type:mime-version:message-id:date
+ :user-agent:references:in-reply-to:subject:cc:to:from:from:to:cc
+ :subject:date:message-id:reply-to:content-type;
+ bh=lNmpvSJHvnl2sdQ2jxqWK0VXNL8g4jeFZWJYNeJdo1s=;
+ b=uxar3EqBBWyq/W45DbAGhDUVB+0nLEVQvLGqEeaYuNcf3tkrRwkPITZdYqPvVG43Os
+ ukFnBk9MWTu7m1WtXS8Hwcjoj+gIADJ1mkpYG1SQBb7vW5hNIhhuZzvEgRq1glDw6S/N
+ MmGOQ51Ib/Hg0EWK2zyNJ1G3iHnXCC/bCqU0bmC/W2TwSv2tbJnVXakffUMl7PPrZ1pu
+ o31LAZ+W8U3fc69zRPYxKxBc1GiuiL9dj9icentcgSwZzG4q5vmKg/dPjozEUCJHlB91
+ r7HDBoFR0F0gEzirQ7XnxtWgTVS5gmKMcqfpJPhJ8VWy4D/AgusuzJZdzqG4oKrCRmQ8
+ 0oZw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20260707; t=1789488798; x=1790093598;
- h=content-transfer-encoding:content-type:cc:to:subject:message-id
- :date:from:in-reply-to:references:mime-version:x-gm-gg
+ d=1e100.net; s=20260707; t=1789492257; x=1790097057;
+ h=content-transfer-encoding:content-type:mime-version:message-id:date
+ :user-agent:references:in-reply-to:subject:cc:to:from:x-gm-gg
  :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
  :content-type;
- bh=/5ul9R2d3z6fhjgPNwSZloyBYPFwCNFybU1JshNoOog=;
- b=CkWJT7GNQPwsbA8eOJIKso/JY4FRrjJvqYsPU9iPE79+KCpFogLPXetpNyl5z+Lbo+
- fliXPdRVHQocqJeop2a4FvwiS6+ybxr586CHCOxk+8m08PK8CFsKHJoKAdPRmH4b4yBo
- e4P3f+nQFv33I0K7rrZ703twZrt/+AbsjDFJKue2CF+bu+LDo0MQu7YQq/d916mwcGic
- /ktlMp+o3kM194psGEgE4NOzxpV9GuqGxfE0xmut+3wfJdpyYQAi2Btn5BEs9VT/q4Xp
- e32aDoRVbU5z0+2m3fYBk9ziiomhkYBx22Xa/Jkv++dqqUY8eoSO4g0QLcSH2qSPpQ+R
- wygg==
+ bh=lNmpvSJHvnl2sdQ2jxqWK0VXNL8g4jeFZWJYNeJdo1s=;
+ b=RgDYzvcBUjePPtsLH7dJoLTj7lWtV4rcKM7fSvLRlT2qwJ/8DmnbmD099/X8trtruv
+ DelrMnRKWzt18VsOYQLsaOr0UdfQUEcw35/B7prVU7pHO24ZKWs3pQqy0JR8aCdMCbEf
+ KHtOnxW8t8eMJ6yLMkTxdh998WXVfV48oLbyFYN1IA1H7pjS7brHpdjG3SzmaD7oEzlS
+ IE0JwWE5hc5GsTkKknNILHJzh6GV4VEl1CY34/jy7jFxJxx3RSnt44MKA9D0DeZMOiTw
+ TwFCzowEAOCLmScNYbLN+zF8VnAn4bWa/TdqYWM3QD9rxRPGPTG23M2secmLTkC61iIz
+ 1CJQ==
 X-Forwarded-Encrypted: i=1;
- AKwUvBz+g/thniFzJwt3URR9/hJDELZ276nzAUEBBsd+WgguS4J6wdaHYY5QAeWciGLdC7o31JSah2oGYg==@nongnu.org
-X-Gm-Message-State: AFuF++n+nUwt8h1OA0e66s6+82wFA8cz7ZHSWLzIZrgHucV2SqaESw3Q
- ctaF6rHjXI0O2RFF0mM9CR/0scPfiW3udM5wPdtmCVBCz5IrSOrdSYZbo2aawI93uP/IZ+Muike
- PkeXddY5V45zxRvangztKHlpADiURlJcWNvyVIe3lmA==
-X-Gm-Gg: AYBFou1npQXWbcv725fys6FuT1hMaJGI+UKefm38Gp3C7KftWiYkAYZGqZMzIRGm1IJ
- H9Ma7iIXxx3AHBjxXKixy30Qg388osJmtuZWQiWwN4H5LXSNczr34FjBuKdH1qcrwD8kQvBMwxt
- 3zrf/NmvdAdQSHI0nFjIcA2++EoHkAz8M5ceozgVbpCoHYcW/UWbPWUdVaLQ9s53jipFDvaJYUG
- hown5vbR4DuAWCYvTO20XT8n5jGooCuru1gj3IbQh5KQqBAPTJovVvZPt26UyNZ34iRy1f4qgKr
- t2aGXq0di/5/TgaQ7eRPBNX0IAIMmtxwx/1fK6tPGvGOkZuVfwcIZjMhSAwr/ExUGIV0mNydyt2
- bf7njlmY+zEBxmi2H71ak80d6ZJhkgnVys+lkLxTm
-X-Received: by 2002:a05:690e:1907:b0:66e:62cb:bb6e with SMTP id
- 956f58d0204a3-6715cac005fmr850870d50.11.1789488797684; Tue, 15 Sep 2026
- 09:13:17 -0700 (PDT)
+ AKwUvBye0z/RGjgM8UYUmMBMofIrjZ0B6u2/POg1mAXmcRV9LDnMo8PDs6rhSe6JFRykyvTxLE7HEw6L/w==@nongnu.org
+X-Gm-Message-State: AFuF++kjjqUwanyKhMsNFYUXqPZSfIb/pCtPeQcwNUm1acQNbQz6LO2B
+ lGsLAKc0WZfL7dvX3t3kVWk/Qr9eWZOZKp2DooiVIHWCqSTQOFD9iFX0CO4L3DQI8aE=
+X-Gm-Gg: AYBFou1/GYi9Dl+Z0x+mSAGmYcFS3BQG64928mUfZbq8g22GA7xOMcWMHdlWzGsllcF
+ iISMd6/NFYPTcOQan1uQGOlG6P/Jzo0yYjqqf0B60rMZFC+aylTVkoH34FWCstmly4aObogKHX7
+ MR1/gyIxZ8+scqnhBcy8F8fsl+Hn8w5Mwe8aBaGUVOjdAYunuITHzGAS2y5G9oVftKUA4yLb2wh
+ pmfEP4y2OgNC5B08Df3qy7WYgOK1E6Oy7y3xXS1B1doPaXKoOqIdzM4N3dwW8FWnP5euhGqrAVw
+ PKb5K0dDvSNHIsplWnrRlYWDwTQiOjuLIjpWf4sXacxpYLnUozsNIVfQSuUVdtcODMS5ggFT+WJ
+ xRKkq9xruPzW+mgVwk1f17/KXdvxztforGJLmS08od3aMhCHbP8I0V0TpLC0xKyOaVeOzHqllsX
+ GpmOrsLQGqha07x2NMoZ1pGKXODswA3Q5Ttmc9yZIKcXfi7KgLxJies48fPWdXacP82nAM/zw=
+X-Received: by 2002:a05:600c:3ba7:b0:49c:f4e1:4c2d with SMTP id
+ 5b1f17b1804b1-49e7a68698bmr122370795e9.16.1789492257074; 
+ Tue, 15 Sep 2026 10:10:57 -0700 (PDT)
+Received: from draig.lan ([185.124.0.156]) by smtp.gmail.com with ESMTPSA id
+ 5b1f17b1804b1-49e83da9a7csm4099335e9.11.2026.09.15.10.10.56
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Tue, 15 Sep 2026 10:10:56 -0700 (PDT)
+Received: from draig (localhost [IPv6:::1])
+ by draig.lan (Postfix) with ESMTP id 2D4455F825;
+ Tue, 15 Sep 2026 18:10:55 +0100 (BST)
+From: =?utf-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>
+To: Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>
+Cc: qemu-devel@nongnu.org,  Brad Smith <brad@comstyle.com>,  Jiaxun Yang
+ <jiaxun.yang@flygoat.com>,  Song Gao <gaosong@loongson.cn>,  Warner Losh
+ <imp@bsdimp.com>,  Daniel P. =?utf-8?Q?Berrang=C3=A9?=
+ <berrange@redhat.com>,  Peter
+ Maydell <peter.maydell@linaro.org>,  Cornelia Huck <cohuck@redhat.com>,
+ Fabiano Rosas <farosas@suse.de>,  John Snow <jsnow@redhat.com>,  Paolo
+ Bonzini <pbonzini@redhat.com>,  Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?=
+ <philmd@mailo.com>, Thomas Huth <th.huth+qemu@posteo.eu>,  Brian Cain
+ <brian.cain@oss.qualcomm.com>,  qemu-arm@nongnu.org,  =?utf-8?Q?Marc-Andr?=
+ =?utf-8?Q?=C3=A9?= Lureau
+ <marcandre.lureau@redhat.com>,  Kyle Evans <kevans@freebsd.org>,  Richard
+ Henderson <richard.henderson@linaro.org>,  Cleber Rosa <crosa@redhat.com>
+Subject: Re: [PATCH 5/9] tests/docker: add container registry to configure
+ and use
+In-Reply-To: <9999cc6c-04e4-4507-beb0-5856bf614333@oss.qualcomm.com> (Pierrick
+ Bouvier's message of "Mon, 14 Sep 2026 09:18:06 -0700")
+References: <20260910181504.1010916-1-alex.bennee@linaro.org>
+ <20260910181504.1010916-6-alex.bennee@linaro.org>
+ <abacad10-b9af-4a39-93c9-14b882f60bea@oss.qualcomm.com>
+ <87qziw1ebt.fsf@draig.linaro.org>
+ <9999cc6c-04e4-4507-beb0-5856bf614333@oss.qualcomm.com>
+User-Agent: mu4e 1.14.4-pre3; emacs 30.1
+Date: Tue, 15 Sep 2026 18:10:55 +0100
+Message-ID: <87zexia19c.fsf@draig.linaro.org>
 MIME-Version: 1.0
-References: <20260904161438.3838261-1-bin.meng@processmission.com>
- <20260904161438.3838261-2-bin.meng@processmission.com>
- <CAFEAcA-p=UaNk-Qddid99o7zeGS4WqmvqAugxtjtBKZwv9ie8Q@mail.gmail.com>
- <CAEUhbmX3N2u732mUZ8wG0pdtN+vCrVf4rdX3TR+vHPeRunsGPQ@mail.gmail.com>
-In-Reply-To: <CAEUhbmX3N2u732mUZ8wG0pdtN+vCrVf4rdX3TR+vHPeRunsGPQ@mail.gmail.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 15 Sep 2026 17:13:04 +0100
-X-Gm-Features: AcwNN1WUGlOp62e_u77RKxrO6eBx6PeevZUeanHkFoo_G-SEvdJncJBh8x4Z6JQ
-Message-ID: <CAFEAcA91O71cLf9ogos_xuTx+9fn-jdUGP5u80RD6hOxAQNQOw@mail.gmail.com>
-Subject: Re: [PATCH v2 01/10] hw/arm: fsl-imx6ul: Add SCU compatibility window
-To: Bin Meng <bmeng.cn@gmail.com>
-Cc: Bin Meng <bin.meng@processmission.com>, QEMU <qemu-devel@nongnu.org>, 
- Jean-Christophe Dubois <jcd@tribudubois.net>, qemu-arm@nongnu.org
-Content-Type: text/plain; charset="UTF-8"
+Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2607:f8b0:4864:41::10;
- envelope-from=peter.maydell@linaro.org; helo=mail-yx2-x10.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:31::11;
+ envelope-from=alex.bennee@linaro.org; helo=mail-wm2-x11.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -123,47 +121,161 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Tue, 15 Sept 2026 at 16:52, Bin Meng <bmeng.cn@gmail.com> wrote:
->
-> Hi Peter,
->
-> On Mon, Sep 14, 2026 at 5:20=E2=80=AFPM Peter Maydell <peter.maydell@lina=
-ro.org> wrote:
-> >
-> > On Fri, 4 Sept 2026 at 17:15, Bin Meng <bin.meng@processmission.com> wr=
-ote:
-> > >
-> > > +    /*
-> > > +     * U-Boot's shared i.MX6 CPU identification code reads the
-> > > +     * Cortex-A9 SCU configuration register on i.MX6UL. Cortex-A7
-> > > +     * reserves this address, so provide only the compatibility word
-> > > +     * needed before the console is initialized.
-> > > +     */
-> > > +    create_unimplemented_device("a7mpcore-scu-compat",
-> > > +                                FSL_IMX6UL_A7MPCORE_ADDR + 0x4, 4);
-> >
-> > What is actually going on here, though? Why is u-boot reading
-> > an address that's only here for the A9? Has this been reported
-> > to u-boot as a bug? What does the real hardware do?
->
-> I suspect the reason is that the imx6 family contains both A9 and A7
-> based SoCs and it's a leftover when imx6ul support was introduced in
-> U-Boot. I do not see a bug report against U-Boot yet.
->
-> >
-> > Whatever the answers are, I expect the correct fix is not going
-> > to be "fake up this specific 4 bytes to ignore accesses in the
-> > imx6 SoC model".
-> >
->
-> Apparently the real hardware ignores the scu access on A7. So IMO it
-> could be accepted as a workaround for buggy software although guests
-> should not do so.
+Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com> writes:
 
-Mmm, but I don't think the fix is going to be just this 4 bytes,
-and possibly it shouldn't be in this SoC specifically.
+> On 9/14/2026 12:28 AM, Alex Benn=C3=A9e wrote:
+>> Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com> writes:
+>>=20
+>>> On 9/10/26 11:15 AM, Alex Benn=C3=A9e wrote:
+>>>> Previously we had the default baked into Makefile.include but as the
+>>>> meson container logic will also benefit from it we update the configure
+>>>> machinery.
+>>>> For now we allow direct make invocations to override but for the
+>>>> normal case it is in one place now.
+>>>> Signed-off-by: Alex Benn=C3=A9e <alex.bennee@linaro.org>
+>>>> ---
+>>>>   configure                     | 8 ++++++++
+>>>>   meson_options.txt             | 3 +++
+>>>>   tests/docker/Makefile.include | 4 +---
+>>>>   tests/tcg/meson.build         | 6 ++++++
+>>>>   4 files changed, 18 insertions(+), 3 deletions(-)
+>>>> diff --git a/configure b/configure
+>>>> index aaa41fe47aa..7d6b11ddd35 100755
+>>>> --- a/configure
+>>>> +++ b/configure
+>>>> @@ -172,6 +172,7 @@ fi
+>>>>   # some defaults, based on the host environment
+>>>>     # default parameters
+>>>> +container_registry=3D"registry.gitlab.com/qemu-project/qemu"
+>>>>   cpu=3D""
+>>>>   cross_compile=3D"no"
+>>>>   cross_prefix=3D""
+>>>> @@ -728,6 +729,9 @@ for opt do
+>>>>     ;;
+>>>>     --container-command=3D*) meson_option_add -Dcontainer_command=3D"$=
+optarg"
+>>>>     ;;
+>>>> +  --container-registry=3D*) container_registry=3D"$optarg"
+>>>> +                          meson_option_add -Dcontainer_registry=3D"$o=
+ptarg"
+>>>> +  ;;
+>>>>     --rust-target-triple=3D*) rust_target_triple=3D"$optarg"
+>>>>     ;;
+>>>>     --gdb=3D*) meson_option_add -Dgdb=3D"$optarg"
+>>>> @@ -862,6 +866,7 @@ Advanced options (experts only):
+>>>>     --cpu=3DCPU                Build for host CPU [$cpu]
+>>>>     --disable-containers     don't use containers for cross-building
+>>>>     --container-command=3DCMD  which container command to use [autodet=
+ect]
+>>>> +  --container-registry=3DURL which container registry to cache from [=
+$container_registry]
+>>>>     --gdb=3DGDB-path           gdb to use for gdbstub tests [autodetec=
+t]
+>>>>     --wasm64-32bit-address-limit Restrict wasm64 address space to 32-b=
+it (default
+>>>>                                  is to use the whole 64-bit range).
+>>>> @@ -1318,6 +1323,9 @@ echo "GENISOIMAGE=3D$genisoimage" >> $config_hos=
+t_mak
+>>>>   echo "MESON=3D$meson" >> $config_host_mak
+>>>>   echo "NINJA=3D$ninja" >> $config_host_mak
+>>>>   echo "EXESUF=3D$EXESUF" >> $config_host_mak
+>>>> +if test -n "$container_registry"; then
+>>>> +  echo "DOCKER_DEFAULT_REGISTRY=3D$container_registry" >> $config_hos=
+t_mak
+>>>> +fi
+>>>>   if test "$default_targets" =3D "yes"; then
+>>>>     echo "CONFIG_DEFAULT_TARGETS=3Dy" >> $config_host_mak
+>>>>   fi
+>>>> diff --git a/meson_options.txt b/meson_options.txt
+>>>> index 292625af08a..030231492e1 100644
+>>>> --- a/meson_options.txt
+>>>> +++ b/meson_options.txt
+>>>> @@ -391,6 +391,9 @@ option('containers', type: 'boolean', value: true,
+>>>>          description: 'use containers to cross compile tcg tests')
+>>>>   option('container_command', type: 'string',
+>>>>          description: 'command to build/run containers')
+>>>> +option('container_registry', type: 'string',
+>>>> +       value: 'registry.gitlab.com/qemu-project/qemu',
+>>>> +       description: 'container registry to cache from')
+>>>>     option('tcg_tests_cross_cc_aarch64', type: 'string',
+>>>>          description: 'cc for aarch64 tcg tests')
+>>>> diff --git a/tests/docker/Makefile.include b/tests/docker/Makefile.inc=
+lude
+>>>> index 0adddb6a5c6..74bf471f171 100644
+>>>> --- a/tests/docker/Makefile.include
+>>>> +++ b/tests/docker/Makefile.include
+>>>> @@ -11,9 +11,7 @@ USER =3D $(if $(NOUSER),,$(shell id -un))
+>>>>   UID =3D $(if $(NOUSER),,$(shell id -u))
+>>>>     DOCKER_FILES_DIR :=3D $(SRC_PATH)/tests/docker/dockerfiles
+>>>> -ifeq ($(HOST_ARCH),x86_64)
+>>>> -DOCKER_DEFAULT_REGISTRY :=3D registry.gitlab.com/qemu-project/qemu
+>>>> -endif
+>>>> +DOCKER_DEFAULT_REGISTRY ?=3D registry.gitlab.com/qemu-project/qemu
+>>>>   DOCKER_REGISTRY :=3D $(if $(REGISTRY),$(REGISTRY),$(DOCKER_DEFAULT_R=
+EGISTRY))
+>>>>
+>>>
+>>> Couldn't we read the default from config_host_mak generated by
+>>> configure instead?
+>>>
+>>>>   CONTAINER_COMMAND ?=3D $(shell $(SRC_PATH)/tests/docker/docker.py pr=
+obe)
+>>>> diff --git a/tests/tcg/meson.build b/tests/tcg/meson.build
+>>>> index 814f2f8cd8c..22157a47c96 100644
+>>>> --- a/tests/tcg/meson.build
+>>>> +++ b/tests/tcg/meson.build
+>>>> @@ -101,6 +101,9 @@ if get_option('containers')
+>>>>     endif
+>>>>   endif
+>>>>   tcg_tests_summary +=3D {'container command': container_command}
+>>>> +if get_option('container_registry') !=3D ''
+>>>> +  tcg_tests_summary +=3D {'container registry': get_option('container=
+_registry')}
+>>>> +endif
+>>>>     # plugins come first, as we need to build the list
+>>>>   test_plugins =3D {}
+>>>> @@ -257,6 +260,9 @@ foreach target, plan: tcg_tests
+>>>>       if cc_dockerfile not in image_targets and has_docker
+>>>>         cmd =3D [docker_wrapper, 'build', '-f', dockerfile, '-t', 'qem=
+u/' + cc_dockerfile,
+>>>>                '--add-current-user']
+>>>> +      if get_option('container_registry') !=3D ''
+>>>> +        cmd +=3D ['--registry', get_option('container_registry')]
+>>>> +      endif
+>>>>         t =3D custom_target(image_name, command: cmd,
+>>>>                           build_by_default: false,
+>>>>                           output: 'no_output_' + image_name)
+>>>
+>>> Do user benefit from this, or is it mostly for CI need?
+>>=20
+>> The aim is for faster image builds because the CI registry should always
+>> be up to date. Most of the time the images don't change.
+>>
+>
+> Ok. In this case, you need to add --timestamp 0 (that's enough in what I
+> tested) to original build command that generates those layers from our
+> CI, and use it here also. Else --cache-from does not work as intended
+> and you'll see have some duplication because timestamp is part of hash
+> for each layer.
+>
+> See this guide for more info:
+> https://docs.redhat.com/en/documentation/red_hat_enterprise_linux/10/html=
+/building_running_and_managing_containers/introduction-to-reproducible-cont=
+ainer-builds
 
-What does the TRM for the SoC say is at this address?
+Hmm is that a podman only option?
 
--- PMM
+>>> The effect is to use --cache-from $registry, which I'm not sure is
+>>> what we want by default, given all the "caching issues" we had
+>>> previously with dockerfiles already.
+>>> If that's for CI, maybe it could simply set with --container-command
+>>> in our CI only.
+>>>
+>>> Regards,
+>>> Pierrick
+>>=20
+
+--=20
+Alex Benn=C3=A9e
+Virtualisation Tech Lead @ Linaro
 

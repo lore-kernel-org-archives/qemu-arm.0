@@ -4,71 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CE3C3C88E7D
-	for <qemu-arm@archiver.kernel.org>; Tue, 15 Sep 2026 20:19:07 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0AB27C88E7D
+	for <qemu-arm@archiver.kernel.org>; Tue, 15 Sep 2026 20:19:43 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1x6ZbS-0007wF-FX; Tue, 15 Sep 2026 16:18:06 -0400
+	id 1x6ZbU-0008Ah-He; Tue, 15 Sep 2026 16:18:08 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1x6ZZf-0006sW-CC
+ id 1x6ZZl-0006tI-EA
  for qemu-arm@nongnu.org; Tue, 15 Sep 2026 16:16:22 -0400
-Received: from mail-wm2-x10.google.com ([2a00:1450:4864:31::10])
+Received: from mail-wr2-x10.google.com ([2a00:1450:4864:30::10])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1x6ZZb-0003Iz-Cc
- for qemu-arm@nongnu.org; Tue, 15 Sep 2026 16:16:14 -0400
-Received: by mail-wm2-x10.google.com with SMTP id
- 5b1f17b1804b1-49b912e4ad9so1178325e9.2
- for <qemu-arm@nongnu.org>; Tue, 15 Sep 2026 13:16:10 -0700 (PDT)
+ id 1x6ZZc-0003JC-4D
+ for qemu-arm@nongnu.org; Tue, 15 Sep 2026 16:16:15 -0400
+Received: by mail-wr2-x10.google.com with SMTP id
+ ffacd0b85a97d-482f633ecdeso95316f8f.2
+ for <qemu-arm@nongnu.org>; Tue, 15 Sep 2026 13:16:11 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=linaro.org; s=google; t=1789503370; x=1790108170; darn=nongnu.org;
  h=content-transfer-encoding:content-type:mime-version:references
  :in-reply-to:message-id:date:subject:cc:to:from:from:to:cc:subject
  :date:message-id:reply-to:content-type;
- bh=985RXYgmuubKbGZhm5YGlCDe8xIWjFc7WGyDS1rZ3h4=;
- b=VWEpMMhK2PIrUJfKgFNPVfZ7RKom+0iKk+vatiGQnwHLiMyS8Dndtk/kP0G3EVqqS/
- fmp8KMw53MXZM90xiDiaobtVZAkrtEcDIYLE4dyQdtf4b/hGxFJEYqgHD2n0WppZBoaQ
- m9ff+fQVr+9m0aYCNlCUDYsuD0Z57lalVZXuOJmf3Ifrr/Z9Nwo4lMvZpwj2hvVYNCtw
- ARz/csbtnbA3epiqGk761WqbvoGy7uluBsIj/u1UbWUyrm+PhgbwaKUWi6X9DnGtnNOM
- JSfAjsJAoZGrNAdlVNgcNn32//FEBG8D6eZtOFsuyU4oEWqUDOvRuf+0lcVRGLNVZSTQ
- L0mw==
+ bh=HlUNZ7JGzsbO42Hhk0mF6bv3uGqsFUKiR49vVBrXMEE=;
+ b=B0L9h0rpR+7/AQexC/N9ZgVOTca6A0wXwqeej/Owp/5MThmLCC2KBvEJAqAAcDK1xS
+ MoGMemZHwYc4/nuUpto2JBgkNY3uLky2fKERxUFGLwEvf4kMI77eToVYorpwfQnh6omT
+ g8Nhk+RlHIRaFwvuhDRuIJ8pqWFbJCMqLKJHA/nf1tHeIFcH1qhpSs4Xbi1GakVOus5R
+ y2NsqN04QfJUa0QGTCUZhUPqShyIeUUd/9aa6TjSq/cGorld7/tq5ff11spbxpacFc4x
+ atBM5uC09TSgF2Mbu26WZyxYFUhaK0rAQ00Hpk9YAUgQ0h78AqVS2vW6n8SSVVy9H3/1
+ mE5g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20260707; t=1789503370; x=1790108170;
  h=content-transfer-encoding:content-type:mime-version:references
  :in-reply-to:message-id:date:subject:cc:to:from:x-gm-gg
  :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
  :content-type;
- bh=985RXYgmuubKbGZhm5YGlCDe8xIWjFc7WGyDS1rZ3h4=;
- b=i76ljt1cNe/pxJAb5mrclr64cdE05A6KxDObDHG59LUyFPTZ6D805xmuMeJAndR2Wu
- RGZsq/8kK7eIgDBUSceinXO7iktkKqijnyCH6lCqDpYA8XLkiNUiEjx3oO3bkHKX64wj
- cyKV8LzduhvATM78ojcVUGmGcYPJH6BkPRdLD7EFjJ7q1X8vZMBHgLt83BLR2jilEmW3
- 4nY7/GzKczvCEUTj5ceSFmFVEWgmRJqlWg1tNkihgbF+qT3MlYXh15kgCJvElmJYrjT8
- rg4uzPms2uBbM+fYpm4rFc83kEmjoWVyA14/Bla0z7+19mb6TW3OOdz0pcc0kkcTZP4n
- E5Ng==
+ bh=HlUNZ7JGzsbO42Hhk0mF6bv3uGqsFUKiR49vVBrXMEE=;
+ b=B2ZBXXXoBZSCR5lqDhOGngSR7KiXBnLLCUl1RuAWhzaFHy747v1qQa0wFTBEv0+lrm
+ hSBvcFu+Mu72mebWeMdiWhn0mhJdUb+LRjxK6fBXjZzPSzRkWkVdmNJYWUPfYgDJgylo
+ 4aqiP5elD5ie43Xm/t7qRYJBRBV9Zu4IWUwLqS//+fE44I5POPrk5zgqdFBzbSnwXcku
+ LbAvEJ3wSxSHgzmlMprkjdONWfCDuSQYSEQaRos6t8NRT9bMGsEHDUi/CC7cGd+EPxBY
+ ufJZ0+WPn9amGGn2JBxVfXSzOrS6dwR/QQcmMf9TvEz+F21Ja2Ea+I/4p+Y5GU73BYod
+ PjQQ==
 X-Forwarded-Encrypted: i=1;
- AKwUvBzQGii/mOewPI0nGLhCRZQjKIO/qJdB96unttuQQoG4EhmCPpUWAPmQzyfSzSlj1glJkidA3+TSug==@nongnu.org
-X-Gm-Message-State: AFuF++md0wODXBunO6NoNBUH7p4MnY0gwoXfgNpeCPiL84pSCW6X0TPW
- jqBnwNHblNHKk94hGaU023Qe2MrqbLCTuNR1Z/Sr8KAv3j311Pf+lhc2lJvy6PoutLU=
-X-Gm-Gg: AYBFou3K/x4EEJZI9DQL0GADe6SEkmgPq5/IH7YrqtT5d3O6DpFOah17kwJV5BXiRpO
- GB351W6n+IZ/mDMp6plBNq3gjuPpV+XBbHmBxfN8s3jUum+OGGP2ltiVhk3RujjRea+Gg5cO5Qv
- B8JGyKVbkrRfouR5HzW3vykq5i86K3Bm82vjisGJ46MjII7kooVeJvBgLEc3NKKNtSoBOku7f94
- z1mtoGj0z/4riOfwwjLF8DoXn1pqqrcutMtDNE9aRKLnarMGS0CGC8S4O2crXNw5JYdjDlCkFl4
- 7uTNZGCXTk/zU3jwNqxAwjqVQwm8sBv21JqLHY2cB6Wuz6mGO48hrn9uw2UTxbgY/y8mMS8ffd4
- 1BHNrG0xceg/69XD1YXWELKM1O5djhRbz5XOvm2s0p8h6OhduqVYcajmjQSrQ3U6aifkFu3nmHB
- Udmvd7TR8HNY7uK8VcN+w26UoBsSABaZa395viqh7NKxi5C71yI6lbTeZUkFGSgOQe4AuHJa8=
-X-Received: by 2002:a05:600c:3548:b0:49e:6e7c:d895 with SMTP id
- 5b1f17b1804b1-49e822a8fccmr28817495e9.26.1789503369870; 
- Tue, 15 Sep 2026 13:16:09 -0700 (PDT)
+ AKwUvByZz45gVhDujS5pxV8jNUVbGwiQbbfCUR/4kr9Eh7RKSs3tzhn/37+Iw6PIea/kS52cPRDe3TSeGg==@nongnu.org
+X-Gm-Message-State: AFuF++kvPTZYKl8WJriLYM2bycN/EtezNQnPgyVo17yfUdcv+Ehr01JY
+ eQWBXU5pf8ULGgY5ka5H7hqJVuXh0pILe62BLXjaH5jB+mrF93p63zKJPDLtDiO6zEo=
+X-Gm-Gg: AYBFou0j557EF2G9PpsWUl4HRpgp9txF3KJC0zONEGnIbReFWEZppMmQV4aSgzh/jEq
+ LdT922mJg8DoaxXNhRNRZDmTqu2kCRFFE80vNjom26WQLauwKba/JPppsaFMdJbKyueuG208yHk
+ VvYtcgueIZXG4oRrEK5+aUEDw9io+uP91Qkkjc52mcP6Byl+9Z1LD7ENHnaXgziZkF3Hzvp22Du
+ IECDTT5OPDSDXePHQSrGt8q0Zxl8aEGKcPTog4TT3Ry35hXnMt8Qai01CGsZhsVHWMlobslSOIN
+ O4TA07pxq4X4Nu/TJhu6feubsomohBebTz5cRdMgj7UF9ysksU4TL3QycrIoaEUV5aaGYkJ3efH
+ KV+P5YZxx8dO7Q7IsqY00+3lRlocSItd7OpRNCgM0pNq24ypFNGjFpBIuQpssj6AJ4KteSfK9dh
+ 364luafuOE7pHhYAf0UWiHHonSgCt9CVUTxsfZ87aH0L+3pj/AmmZ5JZKHUdkp01Nh3cT5Ifs=
+X-Received: by 2002:a05:6000:2304:b0:487:b32:9d6f with SMTP id
+ ffacd0b85a97d-4870cf25729mr91263f8f.22.1789503370529; 
+ Tue, 15 Sep 2026 13:16:10 -0700 (PDT)
 Received: from draig.lan ([185.124.0.156]) by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-49e83da071asm16257725e9.8.2026.09.15.13.16.05
+ ffacd0b85a97d-4870bf1fad3sm1215976f8f.12.2026.09.15.13.16.06
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 15 Sep 2026 13:16:07 -0700 (PDT)
+ Tue, 15 Sep 2026 13:16:08 -0700 (PDT)
 Received: from draig.lan (localhost [IPv6:::1])
- by draig.lan (Postfix) with ESMTP id B1582618F9;
- Tue, 15 Sep 2026 21:16:02 +0100 (BST)
+ by draig.lan (Postfix) with ESMTP id 084B061926;
+ Tue, 15 Sep 2026 21:16:03 +0100 (BST)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: Cornelia Huck <cohuck@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
@@ -88,24 +88,24 @@ Cc: Cornelia Huck <cohuck@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
  =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
  Ilya Leoshkevich <iii@linux.ibm.com>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@mailo.com>
-Subject: [PATCH v2 10/15] tests/docker: remove used _read_qemu_dockerfile
-Date: Tue, 15 Sep 2026 21:15:55 +0100
-Message-ID: <20260915201601.1207839-11-alex.bennee@linaro.org>
+Subject: [PATCH v2 13/15] tests/docker: swap --quiet for --verbose
+Date: Tue, 15 Sep 2026 21:15:58 +0100
+Message-ID: <20260915201601.1207839-14-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.47.3
 In-Reply-To: <20260915201601.1207839-1-alex.bennee@linaro.org>
 References: <20260915201601.1207839-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:31::10;
- envelope-from=alex.bennee@linaro.org; helo=mail-wm2-x10.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:30::10;
+ envelope-from=alex.bennee@linaro.org; helo=mail-wr2-x10.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -121,36 +121,148 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-This is no longer needed since the functionality using it was removed.
+Running the docker build in meson spams the output so default to quiet
+and make --verbose the options. If we want to expose verbosity in
+meson we can deal with that later.
 
-Fixes: 07056db1b50 (tests/docker: remove FROM qemu/ support from docker.py)
-Reviewed-by: Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
 ---
- tests/docker/docker.py | 10 ----------
- 1 file changed, 10 deletions(-)
+ tests/docker/Makefile.include | 10 +++++-----
+ tests/docker/docker.py        | 22 ++++++++++++----------
+ tests/lcitool/libvirt-ci      |  2 +-
+ 3 files changed, 18 insertions(+), 16 deletions(-)
 
+diff --git a/tests/docker/Makefile.include b/tests/docker/Makefile.include
+index 74bf471f171..85825d74dfb 100644
+--- a/tests/docker/Makefile.include
++++ b/tests/docker/Makefile.include
+@@ -72,13 +72,13 @@ docker-binfmt-image-debian-%: $(DOCKER_FILES_DIR)/debian-bootstrap.docker
+ 			DEB_TYPE=$(DEB_TYPE) 					\
+ 			$(if $(DEB_URL),DEB_URL=$(DEB_URL),)			\
+ 			$(DOCKER_SCRIPT) build -t qemu/debian-$* -f $< 		\
+-			$(if $(DOCKER_V),,--quiet) $(if $(NOCACHE),--no-cache) 	\
++			$(if $(DOCKER_V),--verbose) $(if $(NOCACHE),--no-cache) \
+ 			$(if $(NOUSER),,--add-current-user) 			\
+ 			$(if $(EXTRA_FILES),--extra-files $(EXTRA_FILES))	\
+ 			$(if $(EXECUTABLE),--include-executable=$(EXECUTABLE)), \
+ 			"BUILD","binfmt debian-$* (debootstrapped)"),		\
+ 		$(call quiet-command,						\
+-			$(DOCKER_SCRIPT) check --quiet qemu/debian-$* $< || 	\
++			$(DOCKER_SCRIPT) check qemu/debian-$* $< || 		\
+ 			{ echo "You will need to build $(EXECUTABLE)"; exit 1;},\
+ 			"CHECK", "debian-$* exists"))
+ 
+@@ -103,17 +103,17 @@ debian-toolchain-run = \
+ 	$(if $(NOCACHE)$(NOFETCH),					\
+ 		$(call quiet-command,					\
+ 			$(DOCKER_SCRIPT) build -t qemu/$1 -f $< 	\
+-			$(if $(DOCKER_V),,--quiet) 			\
++			$(if $(DOCKER_V),--verbose) 			\
+ 			$(if $(NOCACHE),--no-cache)			\
+ 			--registry $(DOCKER_REGISTRY) --extra-files	\
+ 			$(DOCKER_FILES_DIR)/$1.d/build-toolchain.sh,	\
+ 			"BUILD", $1),				        \
+ 		$(call quiet-command,					\
+-			$(DOCKER_SCRIPT) fetch $(if $(DOCKER_V),,--quiet) \
++			$(DOCKER_SCRIPT) fetch $(if $(DOCKER_V),--verbose) \
+ 				qemu/$1 $(DOCKER_REGISTRY),		\
+ 			"FETCH", $1)					\
+ 		$(call quiet-command,					\
+-			$(DOCKER_SCRIPT) update $(if $(DOCKER_V),,--quiet) \
++			$(DOCKER_SCRIPT) update $(if $(DOCKER_V),--verbose) \
+ 				qemu/$1 				\
+ 				$(if $(NOUSER),,--add-current-user) 	\
+ 			"PREPARE", $1))
 diff --git a/tests/docker/docker.py b/tests/docker/docker.py
-index 6090a9dc957..fd0cbdfe856 100755
+index d7eb4cf6811..10cb4cbde11 100755
 --- a/tests/docker/docker.py
 +++ b/tests/docker/docker.py
-@@ -175,16 +175,6 @@ def _check_binfmt_misc(executable):
-     return interp, True
+@@ -312,8 +312,8 @@ class SubCommand(object):
+     name = None  # Subcommand name
+ 
+     def shared_args(self, parser):
+-        parser.add_argument("--quiet", action="store_true",
+-                            help="Run quietly unless an error occurred")
++        parser.add_argument("--verbose", "-v", action="store_true",
++                            help="Run verbosely (default is quiet)")
+ 
+     def args(self, parser):
+         """Setup argument parser"""
+@@ -341,7 +341,8 @@ def args(self, parser):
+                             -- to avoid confusion about its flags""")
+ 
+     def run(self, args, argv):
+-        return Docker(args.command).run(args.cmd, args.keep, quiet=args.quiet,
++        return Docker(args.command).run(args.cmd, args.keep,
++                                        quiet=not args.verbose,
+                                         as_user=args.run_as_current_user)
  
  
--def _read_qemu_dockerfile(img_name):
--    # special case for Debian linux-user images
--    if img_name.startswith("debian") and img_name.endswith("user"):
--        img_name = "debian-bootstrap"
--
--    df = os.path.join(os.path.dirname(__file__), "dockerfiles",
--                      img_name + ".docker")
--    return _read_dockerfile(df)
--
--
- def _dockerfile_verify_flat(df):
-     "Verify we do not include other qemu/ layers"
-     for l in df.splitlines():
+@@ -390,7 +391,7 @@ def run(self, args, argv):
+         # Is there a .pre file to run in the build context?
+         docker_pre = os.path.splitext(args.dockerfile)[0]+".pre"
+         if os.path.exists(docker_pre):
+-            stdout = DEVNULL if args.quiet else None
++            stdout = None if args.verbose else DEVNULL
+             rc = subprocess.call(os.path.realpath(docker_pre),
+                                  cwd=docker_dir, stdout=stdout)
+             if rc == 3:
+@@ -416,7 +417,7 @@ def run(self, args, argv):
+                  for k, v in os.environ.items()
+                  if k.lower() in FILTERED_ENV_NAMES]
+         dkr.build_image(tag, docker_dir, args.dockerfile,
+-                        quiet=args.quiet, user=args.user,
++                        quiet=not args.verbose, user=args.user,
+                         argv=argv, registry=args.registry)
+ 
+         rmtree(docker_dir)
+@@ -435,9 +436,9 @@ def args(self, parser):
+ 
+     def run(self, args, argv):
+         dkr = Docker(args.command)
+-        dkr.command(cmd="pull", quiet=args.quiet,
++        dkr.command(cmd="pull", quiet=not args.verbose,
+                     argv=["%s/%s" % (args.registry, args.tag)])
+-        dkr.command(cmd="tag", quiet=args.quiet,
++        dkr.command(cmd="tag", quiet=not args.verbose,
+                     argv=["%s/%s" % (args.registry, args.tag), args.tag])
+ 
+ 
+@@ -513,7 +514,7 @@ def run(self, args, argv):
+ 
+         # Run the build with our tarball context
+         dkr = Docker(args.command)
+-        dkr.update_image(args.tag, tmp, quiet=args.quiet)
++        dkr.update_image(args.tag, tmp, quiet=not args.verbose)
+ 
+         return 0
+ 
+@@ -532,7 +533,8 @@ class ImagesCommand(SubCommand):
+     name = "images"
+ 
+     def run(self, args, argv):
+-        return Docker(args.command).command("images", argv, args.quiet)
++        return Docker(args.command).command("images", argv,
++                                            quiet=not args.verbose)
+ 
+ 
+ class ProbeCommand(SubCommand):
+@@ -574,7 +576,7 @@ def run(self, args, argv):
+                 cmd += ["-v", "%s:%s:ro,z" % (p, p)]
+         cmd += [args.image, args.cc]
+         cmd += argv
+-        return Docker(args.command).run(cmd, False, quiet=args.quiet,
++        return Docker(args.command).run(cmd, False, quiet=not args.verbose,
+                                         as_user=True)
+ 
+ 
+diff --git a/tests/lcitool/libvirt-ci b/tests/lcitool/libvirt-ci
+index 76b5dd5b5c8..5176e136ab1 160000
+--- a/tests/lcitool/libvirt-ci
++++ b/tests/lcitool/libvirt-ci
+@@ -1 +1 @@
+-Subproject commit 76b5dd5b5c84511e2e799c2b3d6a2a9b9f6a081d
++Subproject commit 5176e136ab11e275eb9f57c3d5c80e77af6507cb
 -- 
 2.47.3
 

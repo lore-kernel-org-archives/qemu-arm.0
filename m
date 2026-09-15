@@ -4,93 +4,92 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id ECA6FC88E75
-	for <qemu-arm@archiver.kernel.org>; Tue, 15 Sep 2026 13:22:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D13DAC88E75
+	for <qemu-arm@archiver.kernel.org>; Tue, 15 Sep 2026 13:23:28 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1x6T6d-0004yl-O4; Tue, 15 Sep 2026 09:21:53 -0400
+	id 1x6T81-00063m-ER; Tue, 15 Sep 2026 09:23:17 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1x6T6Y-0004tQ-NJ
- for qemu-arm@nongnu.org; Tue, 15 Sep 2026 09:21:47 -0400
+ id 1x6T7t-00062c-Vm
+ for qemu-arm@nongnu.org; Tue, 15 Sep 2026 09:23:10 -0400
 Received: from mail-yx2-x11.google.com ([2607:f8b0:4864:41::11])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1x6T6W-0001J8-Nq
- for qemu-arm@nongnu.org; Tue, 15 Sep 2026 09:21:46 -0400
+ id 1x6T7q-0001O0-VW
+ for qemu-arm@nongnu.org; Tue, 15 Sep 2026 09:23:08 -0400
 Received: by mail-yx2-x11.google.com with SMTP id
- 956f58d0204a3-66e56a1fe3fso3051706d50.3
- for <qemu-arm@nongnu.org>; Tue, 15 Sep 2026 06:21:43 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1789478503; cv=none;
+ 956f58d0204a3-66e4ab201ebso2773823d50.3
+ for <qemu-arm@nongnu.org>; Tue, 15 Sep 2026 06:23:06 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1789478585; cv=none;
  d=google.com; s=arc-20260327;
- b=hqAzdhYbzKPdrgn2EstDvMvuq27ELv0mwVENZZg8RXJG8y2T3CC6+qNrAaeI9cteJU
- tS4CRZ3sfzDMD+VP3Nv4CeHMJRlTmM0WT1Gf19SBwtEYxg5HjL2Hkuy18yhWEL4E0Cql
- 1vKPhwtTv2NfRi/aWP4pdICass3lMn1GyyibEKuUCdRBIAXYjnp0hFRiV0juZaZviWZA
- S4CnbAbhHc+eiLciwyc0/pWdGffXKLc2wzsDSj6G3QvW6hXjQez8tfshy25W+mXfQLD0
- 12GelUF+7tSpnCco20AVHJCYK5VCnbNp4bKeTq4bptLE2lORxcYrkADioIXTQeyGQFYq
- +MVQ==
+ b=Lt3Ua8aK3kyT6yLAoNLnlP+lzYOvbN5QgFovpabJqslTz1pG7xqr1UWUAdV2bWcvvR
+ j6vFybsRYE7fNsoRbDx40+kiLB+qNcRDlkmV9GCitYt4RSLR3txI0sUNcsDkHNLrFT4C
+ fq/6kqgd2uJSfMw+3KTcc6o4zAfR8r/FrYr4apQ9M9Q7po1p0piDaR0qeYf/zwr8RCJh
+ o25431DIrQPS3U035XKb+b208dCuIvAs2qtGA1aPDW7G8PDjtBhssY5DC0aMWWndPLwW
+ zuZL6hB1AJazGH6vFSrLo2JbUQtQ3i71otEPqRidvZa9+m6SCO/976eBGfoQgzzITO5p
+ CKRg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
  s=arc-20260327; 
  h=cc:to:subject:message-id:date:from:in-reply-to:references
  :mime-version:dkim-signature;
- bh=CZrGQFhDKi3Uv76rbzUZUgqf9dFVin9iGrrCgEcQlf4=;
- fh=ysc9n4CDL/tNG5wiY3Pp5CsiJJPO1zzNHV1KoIEdrJE=;
- b=I3PqA74BjadsTz0fsETMxXP9InizU2FPpr1kcxQ2xJkJb0TGA9w4Hx/lgQfxBQc572
- IwfuexDjjhnJjFuexFugCU3HsmwoR923T1P1JI9O5kehj9POrrHUD0KU1QqHYAOnUV/0
- UeuwqwhqDY4HjgjildveLz3xrYX4MW+7v0M2j2itOhaYgAW2VU5VZ/Dp0ajla3oPqObw
- tdqe9J3i9+n83zmXCv9k1WscOHwHlfmAEevYDD4LZVTp7d5XvBSh1ka0REExIrBSzTGA
- 1hYHyqOVS3iDL1sIK9Chn0BsoXlT999zYid7ePmO11nu0/Aq1Vd93BngqVzjYomGKT12
- NLMQ==; darn=nongnu.org
+ bh=Zm7hFCcvMRATtxpOOptn5yuEGAzWjEqC9Z/T3zc2rn4=;
+ fh=TmsraWSq16WSX73t2yOB61bCyhEF3Lk2YZ+L97nDdWQ=;
+ b=cxiX82bKLbFkrKs38ej33UuVkIA3pQtlwj9xC+bO8t3GDRNg5vPfNilyul9JVZvJ9K
+ E6iNZL/cmwdDk2Ox+QflPMs+TaKTvzW3vFQQXENa4tSgpx5shjF1UGllywDovdRvrCJR
+ kW9gFe/tA678IHJ2D+p38hnzVlutqFN+2W7QGPs3p2gnPMOL3mc2oheHk1ee/SaNv1mk
+ tUqzJRgdh7j9KnC1YylvKP0rwf63k956GQQMHl7M3pUbtiHFyRPVvOz04OYhkwefLMn1
+ LPtqu1FycGoEiqno4kftR6s4UVOYhul9jYU3Fszn637vNKHxE3j6DqbOLlAgYbIwwSUt
+ lsUQ==; darn=nongnu.org
 ARC-Authentication-Results: i=1; mx.google.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1789478503; x=1790083303; darn=nongnu.org;
+ d=linaro.org; s=google; t=1789478585; x=1790083385; darn=nongnu.org;
  h=content-type:cc:to:subject:message-id:date:from:in-reply-to
  :references:mime-version:from:to:cc:subject:date:message-id:reply-to
- :content-type; bh=CZrGQFhDKi3Uv76rbzUZUgqf9dFVin9iGrrCgEcQlf4=;
- b=uIH4wLAHHnQv6GlP7kReAEgmjdPH4n/iYY7x9wXnhB3dtlAKYNMiv1dEkx5LMcKHrq
- Vg1DMc6DyN+gPfytbMaYjWwELskBwx6eURW5Fp1MLM+QhdeuQXXU3Wu/ogO/dOhWyjHS
- SPueyu/ZZScjNOnaUCjwObZwszNQ+2aoz1FJE1Jc5tTxY4rYKvQUaYTgtIx8ot9scrPa
- GQ9kih53xQ6JWMScqal75mRAmOJ9sPJQGo2tEdK7GHHBhe+nvDgvnv1278XsV4lSqVX+
- JtgsFf/zh9LpdUEdHNuEG25Kz3OAv0jQgI8G0E+M/BvOXoxQDM8di7YfbENyXGuKIePi
- zNaw==
+ :content-type; bh=Zm7hFCcvMRATtxpOOptn5yuEGAzWjEqC9Z/T3zc2rn4=;
+ b=GYFfmXGP3oHsVvyDzlSpQdlcSWMpAR8qsSmHGUafxWyB9RfDdesh0FUbR15uMQkqeT
+ Ey0Z4CYteSNy5eMJjyDnvOSQEFkrN7MIJte7Mxd/aYkxuKPgilW2eXdHvl//XXKMOS9l
+ HGL90wZowWrFiLW7st2b3Gu/vq98Natw8uo3mBQxkAavm97bR33Px6fsyEIbEg8OKgcv
+ mC8mxOBUlWF54QNcQGZq/PwxhHoTFs8c8L/h+HyU17T/vHJpPpJdJzqYM1wBlPeSYXC6
+ 26mONPMymZZhXN0izLXDw0WtL3midO1M5uQntCQtB9tjlJtMzToIUFPWebXFIXovcyI2
+ JbAQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20260707; t=1789478503; x=1790083303;
+ d=1e100.net; s=20260707; t=1789478585; x=1790083385;
  h=content-type:cc:to:subject:message-id:date:from:in-reply-to
  :references:mime-version:x-gm-gg:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to:content-type;
- bh=CZrGQFhDKi3Uv76rbzUZUgqf9dFVin9iGrrCgEcQlf4=;
- b=hjU+4dcRg0XjY9+Upe9Q/ozgKYTAcefMvwe0kQ7mln1NifcjuTHTXvgAFJJTnOEW8/
- UiLUryVBelaNPGhnySrQakfdf9yynKlrVG1/ttA+lYOcWUTMcoGgbd4A+w0Mqckq3hfn
- 9xy+gHO4JtEY9+r1jwAsZVJD8GwJ8DmlJ27OYjkCCTg5BqUwfqqIe1ZNvH3TciIO12rR
- kxThuaqtGHD0DEjHnqJ5bxbqsBCvmlHiTrOjNdXbVg25meoOUgzqesaqn7w/m3LWDWhp
- Vs7pOndR0++vUBTIJ2nHGlq+8IauA14SP1hhAdRKJle8dMrtViIHRRZGX5XSUDoqWAGe
- JDxg==
+ bh=Zm7hFCcvMRATtxpOOptn5yuEGAzWjEqC9Z/T3zc2rn4=;
+ b=ROlUnc/7wK/YDKr+kg2KAT9CfrsK8XQ6Bak4rCbxruA4+bWj4QwhCVUFt7361hyAhz
+ hqvfxji+7mBemuudouMWeI7E36pEpbDLhtSyDex0Wi2HhPm1cLrHR6qiEZ4eMYw/T7Ge
+ GEEq2u0zcFOyySYTAuKB8LjdGpGYxd54rjq3Si51q0mOpVS7mc5puxUnjxVeauCuI9Rf
+ KxeFfHamTJqvgffXbUBtAdqazbx9GkEprWsf9DzZzV79Iy+/FPan0WxpUOacKtdr/3hr
+ 75LVMaDN115SxR2cBZ2pbasYEEYExZg99YNKXA3JtJ+kaiPA9uqIsvHIZzqY0TKYRRYp
+ S3Ug==
 X-Forwarded-Encrypted: i=1;
- AKwUvBwHuJLMIhdBRgVcX3UXvv02m8fKI3sAmfHvOQPMtq41g6MwPw4kbx2BMab9vCmO7EBG+DeY+0Ikyg==@nongnu.org
-X-Gm-Message-State: AFuF++nme8mk48WDNaMjfws0Z8OBqBHBSWoOKtjabKBhlIz2GQYknvCI
- +xSFmdsUYnaeTgz/oudGU5AI1N6ot6N8VFes2U5g+0GyHx6jYYCmXg4ix+kHE5DEAqGyYBhnNwa
- xduAZxaibvsT18KetcsaqMCDk9YPsV5lhPVq3qg8imw==
-X-Gm-Gg: AYBFou2xdtvTDMPK0GDwUkdGVhporEzb9dQHZgNRY/3/GV9rdcvkoGD4/jW1AyGGn/K
- Et9wIIfeXXG6ar8T/4VyZW3AvC9vdA29/CzB6cykfSaEgRw9MtnUwbm8wP+0hoTh9JZq6Q9NhN5
- cE48dAiduhRaDLRU+/+58nfHu/z30WuapUqNo5o55wQ3le0eJl2B0kVCRTKWCjvhVDGzAVBHMle
- 1qadrNEiy0cOur+2pkS2FMJny1FufWNT0RK10C5DKrHJw4pomDIQad9jbwvMSFeNc4mLc3EXMDj
- 2FpU8rzI5zICDNnTe+qBaSLmAys/gWvJd7lsXtSOWShwhT9qSqjq/YWot4o9KOanSF6fTuWTmSB
- KZUf0iZrDTAbQzj5puQFhJsI5T1jir2N5UlJtnbO7msZPAfJOdw==
-X-Received: by 2002:a05:690e:480c:b0:671:436f:adce with SMTP id
- 956f58d0204a3-6714dff571amr1506403d50.45.1789478503014; Tue, 15 Sep 2026
- 06:21:43 -0700 (PDT)
+ AKwUvBwbiuW4Gp3oSpTOt8djHv9UVhr2h1xBCaAbzQ51c4EF1FsyZf+d8sd/U+jGiKZFl5eAhqr7umpJew==@nongnu.org
+X-Gm-Message-State: AFuF++kugFC7HIYVYE+bCeUc7PgGjolbnC81yCvKdxg/C9TMfwBRR0/g
+ k7442xNkxwqdoQ/Ecm5U0jYa0IiXpn+WXBs+fRLNEXqbVuM8KxltQ8YDlFvptsn6/j9qfSHOd76
+ hlFX6UsxeK32VvjOZQ106JA14iKmSa2bH51329ZB0zA==
+X-Gm-Gg: AYBFou3wfYcXLSZjXKyTWiOjlZtRNp9XQb7InfgLqRM172IK5gS2n6WZ0eLNmXX45Vk
+ iV4eaSd3JWMJO6JGBpUHdEZqY8SbOjbrgzNobnOsYFPtNPO0GLy9bZOl9DN7xv+XsEHHZujdIY3
+ 9lwgy6O7ahcFGk6UhzgzeKfj2hidPHf7PxlI8ZLYHFT7fnI+yDhEc6aXRestHgpY1hksmvSqOHx
+ OtjlI9TlsLxCh89/UC/h8EqTwnmLIcTM2aRKgBmr5haKRNmtv/oIN/mj3acnotsAJjaaXGTRpAW
+ PaunGOePDfR3srVPQvMeBDu73VvY1bVktt3f7u/OPN86XeLkY7nEm+Ptja17jOsj8kNgxElLeMS
+ ZwUWxMSVEJyqS81/Lm7Vy2vvnqWY5IuEc2QRereY=
+X-Received: by 2002:a05:690e:12c8:b0:66d:132a:875f with SMTP id
+ 956f58d0204a3-6714e088222mr2226628d50.47.1789478585351; Tue, 15 Sep 2026
+ 06:23:05 -0700 (PDT)
 MIME-Version: 1.0
 References: <20260914192323.29250-1-gilles.grimaud@univ-lille.fr>
- <20260914192323.29250-4-gilles.grimaud@univ-lille.fr>
-In-Reply-To: <20260914192323.29250-4-gilles.grimaud@univ-lille.fr>
+ <20260914192323.29250-6-gilles.grimaud@univ-lille.fr>
+In-Reply-To: <20260914192323.29250-6-gilles.grimaud@univ-lille.fr>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 15 Sep 2026 14:21:28 +0100
-X-Gm-Features: AcwNN1ViJ--V6in8r4K53SVhRZMltYtRv9qzUYqpz5MYNzF_Gt2VQ4jIRc85jMM
-Message-ID: <CAFEAcA9A+Vxq5rEA8DDHpEyFqiN1mdZPzLixDOXKzJhBtJcUEQ@mail.gmail.com>
-Subject: Re: [RFC PATCH v1 3/6] target/arm: MPU - limit regs RBAR/RASR A1-A3
- to Main Extension
+Date: Tue, 15 Sep 2026 14:22:53 +0100
+X-Gm-Features: AcwNN1URoW9lEtypQTmGSNjzOHiUmk1QghvUUKmXc6uqBj5pFThsbuNjPmj2HRI
+Message-ID: <CAFEAcA--HZowfkeqscvKiWEWbP8g4EvT1=4OHswG=9EZWvXaSg@mail.gmail.com>
+Subject: Re: [RFC PATCH v1 5/6] target/arm: fix MPU SIZE min for v6-M/v7-M/v7-R
 To: Gilles Grimaud <gilles.grimaud@univ-lille.fr>
 Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, alex.bennee@linaro.org
 Content-Type: text/plain; charset="UTF-8"
@@ -117,24 +116,14 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Mon, 14 Sept 2026 at 20:26, Gilles Grimaud
+On Mon, 14 Sept 2026 at 20:28, Gilles Grimaud
 <gilles.grimaud@univ-lille.fr> wrote:
 >
-> The alias registers MPU_RBAR_A1-A3 and MPU_RASR_A1-A3 (v7M) or
-> MPU_RLAR_A1-A3 (v8M) exist only when the Main Extension is implemented
-> (ARM_FEATURE_M_MAIN). The current NVIC decoder groups the principal
-> register and its aliases in the same case fall-through, so once the
-> PMSAv7 path is enabled for v6-M (or the PMSAv8 path for v8-M Baseline)
-> the aliases become incorrectly accessible.
->
-> The fix reorders the case statements for the four locations (read and
-> write of RBAR and RASR/RLAR) in hw/intc/armv7m_nvic.c. Alias cases are
-> placed before the principal register case with a fall-through and are
-> guarded by a test of ARM_FEATURE_M_MAIN. If the Main Extension is absent
-> the code jumps to bad_offset, causing a read to log "NVIC: Bad read
-> offset" and return zero, and a write to log "NVIC: Bad write offset" and
-> be ignored. The principal MPU_RBAR and MPU_RASR/RLAR registers remain
-> functional for CPUs that implement the corresponding MPU.
+> The PMSAv7 walk accepted any non-zero region size field, but Armv6-M
+> requires a minimum of 7 (256 B), Armv7-M requires 4 (32 B) and v7-R
+> retains its current minimum of 1 (4 B). Introduce rsize_min based on
+> ARM_FEATURE_M and ARM_FEATURE_V7 and reject smaller values. The PMSAv8
+> path is handled earlier and remains unchanged.
 >
 > Suggested-by: Peter Maydell <peter.maydell@linaro.org>
 > Signed-off-by: Gilles Grimaud <gilles.grimaud@univ-lille.fr>

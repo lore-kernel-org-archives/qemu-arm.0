@@ -4,107 +4,104 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0FA7AC88E75
-	for <qemu-arm@archiver.kernel.org>; Tue, 15 Sep 2026 12:34:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E9DDDC88E75
+	for <qemu-arm@archiver.kernel.org>; Tue, 15 Sep 2026 13:21:09 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1x6SMl-0002ZF-90; Tue, 15 Sep 2026 08:34:27 -0400
+	id 1x6T5b-0004YB-W2; Tue, 15 Sep 2026 09:20:48 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1x6SMj-0002Yr-R7
- for qemu-arm@nongnu.org; Tue, 15 Sep 2026 08:34:25 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1x6SMg-0007Gg-Qf
- for qemu-arm@nongnu.org; Tue, 15 Sep 2026 08:34:25 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1789475661;
- h=from:from:reply-to:reply-to:subject:subject:date:date:
- message-id:message-id:to:to:cc:cc:mime-version:mime-version:
- content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=OWJmOsrwL8Vk7iqPzOJZ0vFL5sn2e8tdYQhQYPbSGMU=;
- b=g0TGMYShFMDcZKnadTh1wy6YeBAkej6IU6xpUfs2DYrARIMljVdF5ZTQFJHftAw+5q+TJG
- 5XQ+pZAE9FPeznibP7oI4LqsG/iIuzx/Q+sT80KOTxgW/cmsGWPv+GJbeBAnxJ6sVhcGLm
- 7xaFbxmNaTZma3YM2escwlsSWU0DClU=
-Received: from mail-wm1-f71.google.com (mail-wm1-f71.google.com
- [209.85.128.71]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-682-C51pz8CvOHuaYCls5hVWsA-1; Tue, 15 Sep 2026 08:34:20 -0400
-X-MC-Unique: C51pz8CvOHuaYCls5hVWsA-1
-X-Mimecast-MFC-AGG-ID: C51pz8CvOHuaYCls5hVWsA_1789475659
-Received: by mail-wm1-f71.google.com with SMTP id
- 5b1f17b1804b1-495689bfcc8so36263575e9.1
- for <qemu-arm@nongnu.org>; Tue, 15 Sep 2026 05:34:20 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1x6T5a-0004XZ-TL
+ for qemu-arm@nongnu.org; Tue, 15 Sep 2026 09:20:46 -0400
+Received: from mail-yx2-x11.google.com ([2607:f8b0:4864:41::11])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1x6T5W-0001A9-Jt
+ for qemu-arm@nongnu.org; Tue, 15 Sep 2026 09:20:46 -0400
+Received: by mail-yx2-x11.google.com with SMTP id
+ 956f58d0204a3-66e4ab19127so3319611d50.1
+ for <qemu-arm@nongnu.org>; Tue, 15 Sep 2026 06:20:42 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1789478441; cv=none;
+ d=google.com; s=arc-20260327;
+ b=HfVm6mT6XNA50HU7coZTyia+IlVWx0nVqZhWQoHGMOJj6btnCcAg3bTGiGBxweia5p
+ hTYu6KXm8YYvJejg0aGd5C/ktkRgKIrXExVpFN46COBTcKEe7WWnW3aHm/nDfO6Di3rr
+ GIY1WXJqVaNyD+DDH9A8TFT25zsstUTKd6abdfJ4/Cm5N13F5ubF8f8TGE7dGzmBbizV
+ CV9K1Q4fhVJ4uoy5dtBry6FGIR6/h2TZ0MgTrf0KSCdY1BO0W4qVks6f/c4gNS1KTQJe
+ yD6jnjhxH9L7l3wDXN4Ynk2uSrJmxOoQeiZ6nVziO3VpSpDg1NKxVvJO+JxEcKqDPAL+
+ vAuQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
+ s=arc-20260327; 
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:dkim-signature;
+ bh=ydLYY4SqBlxXdXCaVhbLtWJhfLG4FbNsEY5dxxALhXs=;
+ fh=r8sRTcBKdsKKwWIFR0gUrIgZmJh76OpYFp/DPNYXKfQ=;
+ b=X4CqxFDxre10IGtGxN3lpDbNR68u/aouvQHcysDauvwyoAK/cjfyMggBHUA2FXPShb
+ Xhyw9Eu/eA99LNk9xk+uE2kGogZRWds9YMsJM/xW5t+WfP0pc3JLFf67K3t1fU+NP+uM
+ YMZfBQOtQz/e+woSBM3KWhmUpoUZyD2MdSuCkaS5POn4AG5n4VesGds0mOrehdkM43QH
+ 0infZgX6d6RdS0niISdGl7TvTdxjbVal2W3cKXOCxuPU125Q1XtCvaKqaxBvp5Mq2j1s
+ xb3DIL3nzqb2GV770g27dg7NCldznyeS0caCs501HR8nkHe/xJM93ytikV8+ziPzxwWP
+ Y+Jg==; darn=nongnu.org
+ARC-Authentication-Results: i=1; mx.google.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1789478441; x=1790083241; darn=nongnu.org;
+ h=content-type:cc:to:subject:message-id:date:from:in-reply-to
+ :references:mime-version:from:to:cc:subject:date:message-id:reply-to
+ :content-type; bh=ydLYY4SqBlxXdXCaVhbLtWJhfLG4FbNsEY5dxxALhXs=;
+ b=I00UdDpYgKLEATrIKcWgLYhcdSUQfdFu/eMS1Cu6r/3SNMs8Rzb8dL9TXhynPqXn/a
+ XwBB+cMsHKce0IP32yAB07x+YuLLzzAbp6dxJVGb5DdSQHMs2uwo8tVmHbYGUVO6rsb8
+ p8o6RFV0u3JzdsfPkbI5SuRJGpQttnJ6ToMmFdPkgX2wV9Z5wS+058pILyxm2fIAdmiN
+ 0c53Uazqj4ryfITeCzSTy/e7bwnO4o29oVLAjUSomcLJtv0IbJxniczjgbg7RHx58VTE
+ 2PcFQ4eSLnYVY2QWJfSeKsId6UsFLyfJ4I+ovRfEWuFYKCMmsSU91PqJWp980LCwUWRc
+ 5IyA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20260707; t=1789475659; x=1790080459;
- h=content-transfer-encoding:content-type:in-reply-to:from:references
- :cc:to:content-language:subject:reply-to:user-agent:mime-version
- :date:message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
- :message-id:reply-to:content-type;
- bh=OWJmOsrwL8Vk7iqPzOJZ0vFL5sn2e8tdYQhQYPbSGMU=;
- b=GHLmc8/rYK+g4lE1vSU0ofIMRxz/+vuKoxrPODp+BGoeW7YIXCqIT54OwfvIlcFYgL
- eX2kEdlzMGojOEUa8MtrTNMPGw0ExkAghNFIvZ+jD5IS+yoYJ7/4AfVvFLnOHtLaXwSt
- SQ+AQooPmHHLqDcdlDdOAKCbc27HifPKb+Fa33TJOYkmAFf1gZvA1g6R55TJFWdsKyam
- QW6JDYDqh3RnxniAAyN+iUHCihMYsKxRTH5Dho0BgQRCkDvDU9dSqPz4WwyXCLhTUpAO
- vK7C0f1ZKtXMNEOn86Nk2o7bt8izUCWAygLPFV4nlMTdA2Vg5m7lyy93nGCMblbMCzzp
- ejWg==
+ d=1e100.net; s=20260707; t=1789478441; x=1790083241;
+ h=content-type:cc:to:subject:message-id:date:from:in-reply-to
+ :references:mime-version:x-gm-gg:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to:content-type;
+ bh=ydLYY4SqBlxXdXCaVhbLtWJhfLG4FbNsEY5dxxALhXs=;
+ b=OkS0N0WAx/mhZAn7Vxl0rPfx2Z4zef6htMBg8O1PSfANGkLAqUv2cDN6QkjfZRh/rb
+ ueI6pZeaHgrHhplkVMk4vBJLfSYNhlD9lgUtWsDCzyiTQ4ri/GCqYkiaW2/ZR7jzNdRn
+ knqMwozi1EYKxgqw/B1zaOcRdMAd2U0VNVB0inJ4xj2NAlQkxGGIpkmD2b4nMYF/25PO
+ mwuf1CGmJ8upKVvEuzzaKj6aaMyXJDLA4i9A9l1ZSJh1Mz2MiExvNceO7LNh6VwQtoUE
+ SxIQg2CQuR65qjHDcaPSC2zwVxaRxS1A9ePEuIrJgqv1Y2xLUNWlXAUaevZD+OZVsvIg
+ d1ww==
 X-Forwarded-Encrypted: i=1;
- AKwUvBxjSCOD237C98bq9J0M9r9T+J3FE/D0z2QILS2A3Y0ZmVnwrM/gMbW2S7KTheDgrVIusG6Qrc9w1A==@nongnu.org
-X-Gm-Message-State: AFuF++klUfxoHmLTbQJP9jHCAlIo+waWTYI64wVXmbo7FV8l2AOClgrA
- BVp4n8VzSDxH5wJgxg9HFG1fhtofJMX0Zn/TkvpohjyVFqH1hcup3WFPqUKEb/SZLebz/Vr0uLI
- di+vAUZu84Zhzzr20FcTGkReRpYvwvC1l+niZG9hFQN4kZZhC8VNvlA==
-X-Gm-Gg: AYBFou1ez2OLoINgVeFpKpGOvEqJptVDXHscYpfhqNC7ckSuKNY/rYoR+4RWKBPrzf8
- joB/LPy6a9p+5FCp3Do1Plsd0KAjhNoyoUVTeh+tl/Y1EIxvegRGnkLdYxdqOlJ28VV2aRCLMdt
- DjAps4UZzQEUnBwjr4OG3HWkhOKqP217zVaQwSVevfrs/zU7HrEYkDc/XvZrDjASAJyhXkDUBXB
- KvR2srL5FkjXEYsUDKYF3dWOLEGdAcLwUTb3mdwJm+vM89GGAiVkFNlj6U22OUKU/2wQ7TSTvoU
- PdzSnsAkHVfd8ILrNpmE9EtIXeqlJnoXjzKU9lgZN3BHUqXmj2aaND71QjwxviIQpvUwdO7vBUz
- OQ+9cmZNzDJrrh3w2ginJX+Op67qCS+gHfDC2V7tLhxZACFaV
-X-Received: by 2002:a05:600c:6298:b0:49c:de80:b833 with SMTP id
- 5b1f17b1804b1-49e7a65c182mr76824395e9.2.1789475659228; 
- Tue, 15 Sep 2026 05:34:19 -0700 (PDT)
-X-Received: by 2002:a05:600c:6298:b0:49c:de80:b833 with SMTP id
- 5b1f17b1804b1-49e7a65c182mr76823965e9.2.1789475658724; 
- Tue, 15 Sep 2026 05:34:18 -0700 (PDT)
-Received: from ?IPV6:2a01:e0a:f0e:9070:527b:9dff:feef:3874?
- ([2a01:e0a:f0e:9070:527b:9dff:feef:3874])
- by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-486eb33fd3bsm35304221f8f.19.2026.09.15.05.34.17
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 15 Sep 2026 05:34:17 -0700 (PDT)
-Message-ID: <d5385eac-ae6f-4c55-8cdc-0571efac64d3@redhat.com>
-Date: Tue, 15 Sep 2026 14:34:15 +0200
+ AKwUvByzPVE//Uj+uccH54lfKB854cmZbyboLYUsrMK5YelmKIsykg/UGeJ+cYnrRKsWjhEyvr68ylLOiw==@nongnu.org
+X-Gm-Message-State: AFuF++lmjNV+wbv5TivRQ+3DcoxGuG9Q002k5h9tH2OLM7eJJw34TWop
+ KoKuUpK55BPu9PyKiEOiOjkXa2M/2xymFTJDTFeUHV1p2zH4kjapr0LfTxPG5V/AjNyK6/HWjGM
+ Hz5z7f7LTm/p17CRxLWLZS8/Y3k6dLp7IHBGCPRhy2A==
+X-Gm-Gg: AYBFou3QoBjR9i2BUxtBoYA4/WMCfiFgXiAfoOIRujiz+7RhH5ARYy2tVnXNbjonKTS
+ kJjR5EAOQDt04e478vjRRw1BDquoUjglSFqKT66pGQArLfZ3LES9oRPYylmcL0D/4mpLoWFWJhM
+ SYACLV+sS/zdDL2iKHZCejjtafcH53M9reAxgZ9n+8NFZ/gAeomLjskwdAAbl+cm9VX2T4LDmu5
+ YewQO0BkT9kNb/SDIWl3nMB8h+zZd/WJ8ALoDcZdAnrypDAtTjRvj0DFGWXAbeNajK3730SX87x
+ 7jCZ1bAn3kwD3yYaPvOlr2+2W1rLQDRZSLnRgqsIcIZFAAv2WmsoaMkIOvQt3nlXrA/7URrQH19
+ J27MIgJZ9F6jTkt5ou7V7U6ts3tvfThmxUr0qQvpgJAxr36RIez8=
+X-Received: by 2002:a05:690e:b8a:b0:671:a0c:6ea1 with SMTP id
+ 956f58d0204a3-6714dfdbde7mr2860817d50.13.1789478440855; Tue, 15 Sep 2026
+ 06:20:40 -0700 (PDT)
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [RFC PATCH 3/7] hw/arm/smmuv3: Migrate the accelerator feature set
-To: Shameer Kolothum <skolothumtho@nvidia.com>, qemu-arm@nongnu.org,
- qemu-devel@nongnu.org
-Cc: peter.maydell@linaro.org, nicolinc@nvidia.com, nathanc@nvidia.com,
- mochs@nvidia.com, jan@nvidia.com, jgg@ziepe.ca, ankita@nvidia.com,
- aniketa@nvidia.com, wangzhou1@hisilicon.com, jiangkunkun@huawei.com
-References: <20260904180513.248396-1-skolothumtho@nvidia.com>
- <20260904180513.248396-4-skolothumtho@nvidia.com>
-From: Eric Auger <eric.auger@redhat.com>
-In-Reply-To: <20260904180513.248396-4-skolothumtho@nvidia.com>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: xM6kY9PcnQ_HTG9r-l9r0R5GC44Wf09PIE8q_SJ_8ec_1789475659
-X-Mimecast-Originator: redhat.com
-Content-Language: en-US
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=170.10.133.124;
- envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
+References: <20260914192323.29250-1-gilles.grimaud@univ-lille.fr>
+ <20260914192323.29250-3-gilles.grimaud@univ-lille.fr>
+In-Reply-To: <20260914192323.29250-3-gilles.grimaud@univ-lille.fr>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Tue, 15 Sep 2026 14:20:29 +0100
+X-Gm-Features: AcwNN1Xu0hXFTKzeAF-1QQyTSUeE_2gx-XE6Aj0PBiUQXqzpvfS3DC8zJz0iiyQ
+Message-ID: <CAFEAcA_=sRZboB1GyGDxEa4vTZe5YS4GwJV9aK=6h-fONgLVkQ@mail.gmail.com>
+Subject: Re: [RFC PATCH v1 2/6] target/arm: model Cortex-M0+ privilege
+ extension
+To: Gilles Grimaud <gilles.grimaud@univ-lille.fr>
+Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, alex.bennee@linaro.org
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2607:f8b0:4864:41::11;
+ envelope-from=peter.maydell@linaro.org; helo=mail-yx2-x11.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -117,189 +114,86 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-To: eric.auger@redhat.com
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Hi Shameer,
-
-On 9/4/26 8:05 PM, Shameer Kolothum wrote:
-> Add a subsection carrying idr[0] to idr[5], needed when accel=on. pre_load
-I would explain what you try to achieve before the how.
-> saves the locally resolved values and post_load fails the migration if the
-> incoming ones differ. Accepting the source values would leave QEMU
-> advertising features the destination host cannot provide.
+On Mon, 14 Sept 2026 at 20:25, Gilles Grimaud
+<gilles.grimaud@univ-lille.fr> wrote:
 >
-> Signed-off-by: Shameer Kolothum <skolothumtho@nvidia.com>
+> The Armv6-M Unprivileged/Privileged Extension is optional. Cortex-M0 does
+> not implement it, while Cortex-M0+ may implement it. The RP2040 Cortex-M0+
+> configuration provides the extension.
+>
+> Add an ARM feature bit and a cortex-m0plus CPU type that enables it. Permit
+> privileged writes to CONTROL.nPRIV when either the Main Extension or the
+> optional privilege extension is present.
+>
+> Update the microbit Cortex-M0 test to verify that writes to nPRIV are
+> ignored.
+>
+> Signed-off-by: Gilles Grimaud <gilles.grimaud@univ-lille.fr>
 > ---
->  hw/arm/smmuv3-accel.h       |  1 +
->  include/hw/arm/smmuv3.h     |  7 ++++-
->  hw/arm/smmuv3-accel-stubs.c | 12 ++++++++
->  hw/arm/smmuv3-accel.c       | 58 +++++++++++++++++++++++++++++++++++++
->  hw/arm/smmuv3.c             |  1 +
->  5 files changed, 78 insertions(+), 1 deletion(-)
+>  target/arm/cpu.h                           |  1 +
+>  target/arm/tcg/cpu-v7m.c                   | 11 ++++
+>  target/arm/tcg/m_helper.c                  |  4 +-
+>  tests/tcg/arm/system/meson.build           |  6 ++
+>  tests/tcg/arm/system/test-armv6m-control.S | 66 ++++++++++++++++++++++
+>  5 files changed, 87 insertions(+), 1 deletion(-)
+>  create mode 100644 tests/tcg/arm/system/test-armv6m-control.S
 >
-> diff --git a/hw/arm/smmuv3-accel.h b/hw/arm/smmuv3-accel.h
-> index ea11d513cc..a91d188d61 100644
-> --- a/hw/arm/smmuv3-accel.h
-> +++ b/hw/arm/smmuv3-accel.h
-> @@ -99,6 +99,7 @@ void smmuv3_accel_idr_override(SMMUv3State *s);
->  bool smmuv3_accel_alloc_veventq(SMMUv3State *s, Error **errp);
->  int smmuv3_accel_event_read_validate(IOMMUFDVeventq *veventq, uint32_t type,
->                                       void *buf, size_t size, Error **errp);
-> +extern const VMStateDescription vmstate_smmuv3_accel;
->  void smmuv3_accel_reset(SMMUv3State *s);
->  SMMUv3AccelCmdqvType smmuv3_accel_cmdqv_type(Object *obj);
->  
-> diff --git a/include/hw/arm/smmuv3.h b/include/hw/arm/smmuv3.h
-> index d39fe8850b..9e0836b81a 100644
-> --- a/include/hw/arm/smmuv3.h
-> +++ b/include/hw/arm/smmuv3.h
-> @@ -26,6 +26,9 @@
->  
->  #define TYPE_SMMUV3_IOMMU_MEMORY_REGION "smmuv3-iommu-memory-region"
->  
-> +/* Number of IDR registers, IDR0 to IDR5 */
-> +#define SMMU_NUM_IDR 6
-> +
->  typedef struct SMMUQueue {
->       uint64_t base; /* base register */
->       uint32_t prod;
-> @@ -41,7 +44,9 @@ struct SMMUv3State {
->      uint8_t sid_size;
->      uint8_t sid_split;
->  
-> -    uint32_t idr[6];
-> +    uint32_t idr[SMMU_NUM_IDR];
-> +    /* Locally resolved IDRs, saved by pre_load for post_load to check */
-> +    uint32_t local_idr[SMMU_NUM_IDR];
->      uint32_t iidr;
->      uint32_t aidr;
->      uint32_t cr[3];
-> diff --git a/hw/arm/smmuv3-accel-stubs.c b/hw/arm/smmuv3-accel-stubs.c
-> index b8dd7e7b89..b57b5c01e7 100644
-> --- a/hw/arm/smmuv3-accel-stubs.c
-> +++ b/hw/arm/smmuv3-accel-stubs.c
-> @@ -8,6 +8,7 @@
->  #include "qapi/error.h"
->  #include "hw/arm/smmuv3.h"
->  #include "hw/arm/smmuv3-accel.h"
-> +#include "migration/vmstate.h"
->  
->  bool smmuv3_accel_init(SMMUv3State *s, Error **errp)
->  {
-> @@ -53,6 +54,17 @@ int smmuv3_accel_event_read_validate(IOMMUFDVeventq *veventq, uint32_t type,
->      return 0;
+> diff --git a/target/arm/cpu.h b/target/arm/cpu.h
+> index e3f931dba2..66606b3444 100644
+> --- a/target/arm/cpu.h
+> +++ b/target/arm/cpu.h
+> @@ -2168,6 +2168,7 @@ enum arm_features {
+>      ARM_FEATURE_VBAR, /* has cp15 VBAR */
+>      ARM_FEATURE_M_SECURITY, /* M profile Security Extension */
+>      ARM_FEATURE_M_MAIN, /* M profile Main Extension */
+> +    ARM_FEATURE_M_UNPRIV, /* M profile Unprivileged/Privileged Extension */
+>      ARM_FEATURE_V8_1M, /* M profile extras only in v8.1M and later */
+>      /*
+>       * ARM_FEATURE_BACKCOMPAT_CNTFRQ makes the CPU default cntfrq be 62.5MHz
+> diff --git a/target/arm/tcg/cpu-v7m.c b/target/arm/tcg/cpu-v7m.c
+> index 48b31d5eac..ac99c93ec3 100644
+> --- a/target/arm/tcg/cpu-v7m.c
+> +++ b/target/arm/tcg/cpu-v7m.c
+> @@ -76,6 +76,15 @@ static void cortex_m0_initfn(Object *obj)
+>      SET_IDREG(isar, ID_ISAR6, 0x00000000);
 >  }
->  
-> +static bool smmuv3_accel_vmstate_needed(void *opaque)
+>
+> +static void cortex_m0plus_initfn(Object *obj)
 > +{
-> +    return false;
+> +    ARMCPU *cpu = ARM_CPU(obj);
+> +
+> +    cortex_m0_initfn(obj);
+> +    set_feature(&cpu->env, ARM_FEATURE_M_UNPRIV);
+> +    cpu->midr = 0x410cc601;
 > +}
-> +
-> +const VMStateDescription vmstate_smmuv3_accel = {
-> +    .name = "smmuv3/accel",
-> +    .version_id = 1,
-> +    .minimum_version_id = 1,
-> +    .needed = smmuv3_accel_vmstate_needed,
-> +};
->  
->  void smmuv3_accel_reset(SMMUv3State *s)
->  {
-> diff --git a/hw/arm/smmuv3-accel.c b/hw/arm/smmuv3-accel.c
-> index 73509dbd8d..287ea91fbe 100644
-> --- a/hw/arm/smmuv3-accel.c
-> +++ b/hw/arm/smmuv3-accel.c
-> @@ -18,6 +18,7 @@
->  
->  #include "smmuv3-internal.h"
->  #include "smmuv3-accel.h"
-> +#include "migration/vmstate.h"
->  #include "system/runstate.h"
->  #include "system/system.h"
->  #include "tegra241-cmdqv.h"
-> @@ -1096,6 +1097,63 @@ bool smmuv3_accel_attach_gbpa_hwpt(SMMUv3State *s, Error **errp)
->      return all_ok;
->  }
->  
-> +static bool smmuv3_accel_vmstate_pre_load(void *opaque, Error **errp)
-> +{
-> +    SMMUv3State *s = opaque;
-> +
-> +    if (!s->s_accel) {
-> +        error_setg(errp, "Incoming stream carries SMMUv3 accelerator state "
-> +                   "but this arm-smmuv3 has accel=off");
-> +        return false;
-> +    }
-> +
-> +    /* Save the locally resolved IDRs before the stream overwrites them. */
-> +    memcpy(s->local_idr, s->idr, sizeof(s->idr));
-> +    return true;
-> +}
-> +
-> +static bool smmuv3_accel_vmstate_post_load(void *opaque, int version_id,
-> +                                           Error **errp)
-> +{
-> +    ERRP_GUARD();
-> +    SMMUv3State *s = opaque;
-> +    int i;
-> +
-> +    for (i = 0; i < ARRAY_SIZE(s->idr); i++) {
-> +        if (s->idr[i] == s->local_idr[i]) {
-> +            continue;
-> +        }
-> +        error_setg(errp, "SMMUv3 IDR%d mismatch: source 0x%08x, "
-> +                   "destination 0x%08x", i, s->idr[i],
-> +                   s->local_idr[i]);
-> +        error_append_hint(errp, "ril, ats, oas and ssidsize must resolve to "
-> +                          "the same values on source and destination.\n");
-don't you want to be more precise then and just check the corresponding
-fields?
 
+This patch should only add the feature; it shouldn't add the M0+
+CPU type as well.
 
-> +        return false;
-> +    }
-> +
-> +    return true;
-> +}
-> +
-> +static bool smmuv3_accel_vmstate_needed(void *opaque)
-> +{
-> +    SMMUv3State *s = opaque;
-> +
-> +    return s->accel;
-> +}
-> +
-> +const VMStateDescription vmstate_smmuv3_accel = {
-> +    .name = "smmuv3/accel",
-> +    .version_id = 1,
-> +    .minimum_version_id = 1,
-> +    .needed = smmuv3_accel_vmstate_needed,
-> +    .pre_load_errp = smmuv3_accel_vmstate_pre_load,
-> +    .post_load_errp = smmuv3_accel_vmstate_post_load,
-> +    .fields = (const VMStateField[]) {
-> +        VMSTATE_UINT32_ARRAY(idr, SMMUv3State, SMMU_NUM_IDR),
-> +        VMSTATE_END_OF_LIST()
-> +    }
-> +};
-> +
->  void smmuv3_accel_reset(SMMUv3State *s)
->  {
->      SMMUv3AccelState *accel = s->s_accel;
-> diff --git a/hw/arm/smmuv3.c b/hw/arm/smmuv3.c
-> index ed19536a4d..66d95e1076 100644
-> --- a/hw/arm/smmuv3.c
-> +++ b/hw/arm/smmuv3.c
-> @@ -2137,6 +2137,7 @@ static const VMStateDescription vmstate_smmuv3 = {
->      },
->      .subsections = (const VMStateDescription * const []) {
->          &vmstate_gbpa,
-> +        &vmstate_smmuv3_accel,
->          NULL
->      }
->  };
-Thanks
+> diff --git a/target/arm/tcg/m_helper.c b/target/arm/tcg/m_helper.c
+> index 33c9e7c55b..f8461a4d66 100644
+> --- a/target/arm/tcg/m_helper.c
+> +++ b/target/arm/tcg/m_helper.c
+> @@ -2775,7 +2775,9 @@ void HELPER(v7m_msr)(CPUARMState *env, uint32_t maskreg, uint32_t val)
+>                             !arm_v7m_is_handler_mode(env))) {
+>              write_v7m_control_spsel(env, (val & R_V7M_CONTROL_SPSEL_MASK) != 0);
+>          }
+> -        if (cur_el > 0 && arm_feature(env, ARM_FEATURE_M_MAIN)) {
+> +        if (cur_el > 0 &&
+> +            (arm_feature(env, ARM_FEATURE_M_MAIN) ||
+> +             arm_feature(env, ARM_FEATURE_M_UNPRIV))) {
 
-Eric
+We should make ARM_FEATURE_M_MAIN imply ARM_FEATURE_M_UNPRIV
+(in arm_cpu_propagate_feature_implications()) so here we only
+need to test ARM_FEATURE_M_MAIN.
 
+>              env->v7m.control[env->v7m.secure] &= ~R_V7M_CONTROL_NPRIV_MASK;
+>              env->v7m.control[env->v7m.secure] |= val & R_V7M_CONTROL_NPRIV_MASK;
+>          }
+
+thanks
+-- PMM
 

@@ -4,76 +4,81 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D7BE3C88E7F
-	for <qemu-arm@archiver.kernel.org>; Tue, 15 Sep 2026 16:02:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5F4CCC982C5
+	for <qemu-arm@archiver.kernel.org>; Tue, 15 Sep 2026 16:02:11 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1x6Vam-0007KS-Mv; Tue, 15 Sep 2026 12:01:08 -0400
+	id 1x6VbS-00086N-8F; Tue, 15 Sep 2026 12:01:50 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <ruslichenko.r@gmail.com>)
- id 1x6Val-0007JW-12
- for qemu-arm@nongnu.org; Tue, 15 Sep 2026 12:01:07 -0400
+ id 1x6VbP-0007rU-5N
+ for qemu-arm@nongnu.org; Tue, 15 Sep 2026 12:01:47 -0400
 Received: from mail-ej2-x10.google.com ([2a00:1450:4864:34::10])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <ruslichenko.r@gmail.com>)
- id 1x6Vai-0003Ls-S0
- for qemu-arm@nongnu.org; Tue, 15 Sep 2026 12:01:06 -0400
+ id 1x6VbK-0003RG-BZ
+ for qemu-arm@nongnu.org; Tue, 15 Sep 2026 12:01:46 -0400
 Received: by mail-ej2-x10.google.com with SMTP id
- a640c23a62f3a-c254f55efe5so526430666b.2
- for <qemu-arm@nongnu.org>; Tue, 15 Sep 2026 09:01:04 -0700 (PDT)
+ a640c23a62f3a-c254f9f7dbeso81533866b.0
+ for <qemu-arm@nongnu.org>; Tue, 15 Sep 2026 09:01:32 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20251104; t=1789488063; x=1790092863; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:from:to:cc:subject:date:message-id:reply-to:content-type;
- bh=oFPZQwKQuCjCzMZUGK+48BZ68TnFn0kAPX01KvNhndo=;
- b=rWcwnFsp3wndq84OahT+8M7h4fKyH2stKlLuyUMxS8Z5VmOTWX4VqbV3Vdy5efyWk9
- vMkj87Rc18rg7vJBGoTNQVC0R1v2e/hfQWMDgPXf14EzoY4kgM0FRKHBHDIcl/d7xlF5
- 98Tw27x4L7nXaEXIP+FwjBgEZ+Er+77jK3Io9WiyDiA+9NADfvS7YGMZ4W+/PDpFdDGZ
- rfVlhW0laZkcvNKiNKn2aNK9kSnhaQtBQJU6ISjKZa6pcMrd19uHWLEbL5MxqecmFl7O
- ayxHLbbQwj/0ZFnNp8QmFXyN3TMnyM8oAz5TbbSMpyHl0jGhztdCpTOu1JkKPPb2VFJp
- Vegg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20260707; t=1789488063; x=1790092863;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+ d=gmail.com; s=20251104; t=1789488091; x=1790092891; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to:content-type;
- bh=oFPZQwKQuCjCzMZUGK+48BZ68TnFn0kAPX01KvNhndo=;
- b=Njkkjq40st1NvrFFcE7lBT/FqyDalYR1U0jXTO3eop/BtU1HOnurJUbBVmdsV4x9T1
- ykylrClQi3pcvBagSI5mBi/Zn1cNtD46+vL6k3tscsk4YHuIREEtCsllImqN/rIiXWms
- tuFN2JiI91vsG8dbTIt8asGPe4iZ6FPhzgHMJ9NnlD/U89BtBQsdk1F9ChxXamMjg9AE
- wJk8ikFzafSaM3ImPmUGDdb8BOU+FaRoteUXcATVUeBpBWL9Oe2HgEQKD9sFOnnB9tPi
- QqIcy5dNINWqX9INCLPJ/Clsi+1w/q5rEWJR1b/pq6rJuIQjqEhEFdP7VwmxKM2LH1GT
- dzLg==
-X-Gm-Message-State: AFuF++kRitoYj+srf5AViocwAgbIah2RHmiJJynLa9H/++hodzT17fzm
- R/PhGn20j/hW8TvneGeJNqiuLqHU774PAa3q9csAzJcjYZlEIiNWrxqj
-X-Gm-Gg: AYBFou34OkYa+vqsrRWpMXAnLIWDHzhSEs8uYmzolH0CpiefejNhxCcxenJX9boCABc
- PPcuFvpptAjJ7lLvAfXc/8Bc+/s1AToGY5ZAL+C2TPa01TBoYlhHqZO9VrtoWrst6CzwdEuFQbP
- THTekk/m6ZA032KxL++ueA6Ms++7ufaaY9a3xyidJ0EvqFOctwJmGjRJZp6Tand3YaoMRJKd0YL
- 9ecMkbd2jwSp+fPWwp2Skrx2HUmWH6OObEthiZ3k+pGwludM8vXecQHWbpq9h3Uujj5GxbQzhPS
- ONyFD26QppT4Thm+633ja2d+ZoZ8zFbDz6DOU3PaUO5EJ1TfL/RrjHZmcXC22Y+ybodYIIXiEVI
- kPNP6MHSTvUquePjU61Ip/DKh0wjxPuxNCXxNmnP6IH9ELctEUcowodDmFdwfmtgOv5A/yy372Z
- eKpwfSISdauTWsKiVGXRp6i/DgEL3PYVMc5WnQNIqxi9aHxBA5QT0XbAzyOWMIFRF/oFMc7VNwk
- L7Vo50yBZWHFfA8N4SsiJTBwGpRLt8zPuTwlD0pPX5EAQ==
-X-Received: by 2002:a17:907:948d:b0:c25:2cbe:edeb with SMTP id
- a640c23a62f3a-c29b863a5e1mr562368966b.21.1789488062524; 
- Tue, 15 Sep 2026 09:01:02 -0700 (PDT)
+ bh=zwMKlS2VrjCsV9DFKblvAqWVEdyn/Vlz9Y/BIWWjlFo=;
+ b=LxlOX+FeALXWiGyEzwUywkNC5uUcrrXicasTNZHzxpUa0g+oGgid+fMortj2Fq80Wv
+ yuHl3sWY89az2ncj9YLEWlxVL7TIuUa4ZSAEqgRyuWYz6zTwlh1XwND4p9vY83YPMnh7
+ Qr/N1yOVP1OK9Pez6L0xqk6t70IQ+pFn2SADZmbWZXyGfaG333zp+UrVwSWiIlHFAsk5
+ Svzs9iEbDhks5kxJT0xAkjxX7ifME9rZpup5NQhDzLBVF169qrvbT50Xt88KRDvrEJeE
+ 4VXlr+lAGTP0wS35gzBwNkjoJ24pZgsacecTOf9eyWqrRkUBIBcLeTO7B+sjI3NfYhKg
+ 0Jzw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20260707; t=1789488091; x=1790092891;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
+ :to:cc:subject:date:message-id:reply-to:content-type;
+ bh=zwMKlS2VrjCsV9DFKblvAqWVEdyn/Vlz9Y/BIWWjlFo=;
+ b=pHmDH6RJlZpYq9dA1o95o7ilEcgmsqrcdd+6HrCJc2zPhlKrRxZtvu/V/r+YACfvcs
+ VfI6OpXE64xevIlkQGeVmi5t+iCcYLbxRljTokeqy0Zj5PP6hO1tF4e5gEQJVDd0SOrq
+ 98jXOsAOqUBp509hyRRdCP+Jt32G7weS4TTANUCl5JnSuJuAKDaVXwm7XrYPXTFL0+3i
+ Hjz+xFyJe3bMLAHCA1ELnXcpbxXSbaHC9BEvZRBRwLVVdEb+kPUfIoXRRNLc3KpE6nsV
+ w00CGDJcL79BYU21umk6EJjnzWAbU6+dKB4uMpTTNDuAZCE67i2sdvbQso6Q5FKzmt5b
+ 8QHw==
+X-Gm-Message-State: AFuF++n94zoT3Lg242d/H69ABRjfengNvnpDkkrs5CIrrSn17hNgi3sM
+ n59yDT9Lum3WGrn3Wpo3pt1HXFcvM9EuCjLm/IDLquULuEl7DS/nPbgD
+X-Gm-Gg: AYBFou3ItzDw3TDtYKcLaPHqJ2zEOVdkZZzGMKZqGBBdUky+nkttxneN/nWm7nQgUcd
+ 4FK+JMUP1umTHPbPDrztRg1y7izbs95YdwxKFHeTOVRWkC5p+3E4C/8S7mm32kvOIgpGsKyD4Ko
+ 6MqzJPWKMIfE7snbiKkw16GyCu5w9OZObzvz5OjMQqtoHSC0xWe1SLlQDgV3QfDDs/aFvXTQdc1
+ zjVrzQelnMo8m+GGXceR0JHYyecD2yJUIqUI4wZUb+DUeZ8HbD2lJSBaza1PCUr8xGFFbWo9Lkz
+ o+Z4VWVgM3FF+yvX9bR8SMo28qaJ4prTv3SacJoAWLAhnU2tp5YmMG1eqdr59B3djE3fcLpXuvR
+ TSEQx9FETr/RAuMl8CklKi3JdhrllTj8e+G9170KxLUS8YznEm1bFRAhmOdBN29DMjfl16uiERF
+ 0WMREGosVdm5Vh7x9noXHKp7OSRfkNKFO50rIzS0szD/Z3ptQKgt1lZg9hxilxz1MDa0NjY4jgR
+ ZbjP6MrO8v7rXuNu27cLyGoZj/frvZWYxFcKrD1R7EZEnc=
+X-Received: by 2002:a17:907:3e29:b0:c26:19de:9ae1 with SMTP id
+ a640c23a62f3a-c29d78ed54dmr127476566b.32.1789488090831; 
+ Tue, 15 Sep 2026 09:01:30 -0700 (PDT)
 Received: from thinkpad-t470s.. (83-131-196-251.adsl.net.t-com.hr.
  [83.131.196.251]) by smtp.googlemail.com with ESMTPSA id
- a640c23a62f3a-c29ddd86344sm3235866b.0.2026.09.15.09.01.00
+ a640c23a62f3a-c29ddd86344sm3235866b.0.2026.09.15.09.01.29
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 15 Sep 2026 09:01:01 -0700 (PDT)
+ Tue, 15 Sep 2026 09:01:30 -0700 (PDT)
 From: Ruslan Ruslichenko <ruslichenko.r@gmail.com>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org, artem_mygaiev@epam.com, volodymyr_babchuk@epam.com,
  peter.maydell@linaro.org, francisco.iglesias@amd.com,
  edgar.iglesias@gmail.com, berrange@redhat.com, eugene@nuvacore.ai,
- Ruslan_Ruslichenko@epam.com, takahiro.nakata.wr@renesas.com
-Subject: [PATCH v2 00/20] hw/core: Introduce Remote Port Co-simulation Protocol
-Date: Tue, 15 Sep 2026 18:00:24 +0200
-Message-ID: <20260915160044.345788-1-ruslichenko.r@gmail.com>
+ Ruslan_Ruslichenko@epam.com, takahiro.nakata.wr@renesas.com,
+ "Edgar E . Iglesias" <edgar.iglesias@amd.com>
+Subject: [PATCH v2 11/20] hw/core: Implement Remote Port Memory Master bus
+ transactions
+Date: Tue, 15 Sep 2026 18:00:35 +0200
+Message-ID: <20260915160044.345788-12-ruslichenko.r@gmail.com>
 X-Mailer: git-send-email 2.43.0
+In-Reply-To: <20260915160044.345788-1-ruslichenko.r@gmail.com>
+References: <20260915160044.345788-1-ruslichenko.r@gmail.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 Received-SPF: pass client-ip=2a00:1450:4864:34::10;
@@ -84,7 +89,7 @@ X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -102,176 +107,287 @@ Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
 From: Ruslan Ruslichenko <Ruslan_Ruslichenko@epam.com>
 
-This patch series introduces the Remote Port (RP) subsystem, a framework designed to connect QEMU with external simulation environments (such as SystemC models or RTL simulators).
+Implement the core access handlers for the Remote Port Memory
+Master device, which enables QEMU to initiate memory-mapped
+transaction to remote peers.
 
-Updates in v2:
+The patch adds support for:
+- Translation of QEMU memory region read/write into Remote Port
+read/write packets
+- Support for propagating of transaction attributes
+(Secure, MasterID)
+- Synchronous response waiting with optional timeout (timeout
+  configuration to be added within later patches)
+- Add trace events for monitoring TX/RX bus transactions
 
-- Removed global 'machine-path' and 'sync-quantum' cmdline options
-- Added EventNotifier for communication between IO and CPU threads, instead of pipes and sockets
-- Made chrdev_id mandatory and simplified chardev configuration
-- MemoryTransaction .access handler dropped and reworked RPMemoryTransaction to use existing .read/write_with_attrs
-- Reduced coupling with HW Device Tree by making rp devices register themselves within rp core using rp-chan property
-- Dropped debug macros and added tracepoints instead
-- Added reference to sample project using QEMU with SystemC
-- Addressed review comments from v1 patch series:
-  https://lists.gnu.org/archive/html/qemu-devel/2026-02/msg01760.html
+Signed-off-by: Edgar E. Iglesias <edgar.iglesias@amd.com>
+Signed-off-by: Takahiro Nakata <takahiro.nakata.wr@renesas.com>
+Signed-off-by: Ruslan Ruslichenko <Ruslan_Ruslichenko@epam.com>
+---
+ hw/core/remote-port-memory-master.c | 191 +++++++++++++++++++++++++++-
+ hw/core/remote-port.c               |   5 +
+ hw/core/trace-events                |   4 +
+ include/hw/core/remote-port.h       |  11 ++
+ 4 files changed, 207 insertions(+), 4 deletions(-)
 
-Origin:
-The Remote Port protocol was originally developed by Edgar E. Iglesias.
-The original source code is available in the QEMU repository at AMD: https://github.com/Xilinx/qemu.
-
-Motivation
-In modern SoC and FPGA development, specialized hardware blocks are often verified using SystemC, Verilog, or VHDL long before silicon is available. While QEMU is optimized for high-performance CPU emulation and software development, it requires hardware models to be rewritten in C, which is time-consuming and duplicates effort.
-
-The Remote Port (RP) subsystem addresses this limitation by enabling a Co-simulation environment. It allows QEMU to act as the high-performance Processing Subsystem, booting complex operating systems (e.g. Linux), while delegating specific peripheral modeling to external simulators (SystemC, RTL) via a socket connection.
-
-The Remote Port protocol provides a socket-based interface that supports:
-
-Memory Transactions: Bidirectional memory accesses (Master and Slave) allowing QEMU to access remote devices and vice versa.
-Interrupts/GPIO: Propagation of interrupt signals between QEMU and the remote peer.
-IOMMU/ATS Support: Support for Address Translation Services, allowing remote devices to operate correctly behind IOMMU.
-Time Synchronization: Keeps QEMU and the external simulator in sync by advancing time in fixed steps (quantums).
-
-Integration with SystemC Ecosystem
-
-To connect the simulation side, the open-source libsystemctlm-soc library [1] is used. It acts as a bridge, translating Remote Port protocol packets into standard SystemC/TLM-2.0 transactions [2]. This allows users to attach existing TLM-2.0 compliant models to QEMU.
-
-Architecture Overview
-
-The series is structured into the following logical components:
-
-1. Core Protocol & Infrastructure
-
-Establishes the socket connection and handshake (Hello protocol).
-Implements the packet dispatch loop and thread management.
-
-2. Memory Transaction Support
-
-RP Memory Slave: Allows the remote peer to initiate bus transactions within QEMU.
-RP Memory Master: Represents a memory region in QEMU that forwards accesses to the remote peer.
-
-3. Address Translation Services (ATS)
-
-Implements the logic to handle ATS requests from remote masters.
-Integrates with QEMU's IOMMU notifiers to manage translation caches.
-
-4. Device Tree (FDT) & Configuration
-
-Added FDT support for Remote Port Memory Master and GPIO
-
-Dependencies
-
-Patches 19-20 in series are based on the following previously submitted series:
-FDT based machine v3: https://lists.nongnu.org/archive/html/qemu-devel/2026-04/msg00415.html
-
-Instantiation of Remote Port via FDT also registers its reset handler,
-needed to start protocol thread.
-
-Validation:
-
-The Sample Project demonstrating test setup with QEMU/Remote Port and SystemC emulated PL011 UART module available by following link:
-https://github.com/renesas/SysC_Island_MIT
-
-
-Patch Summary
-The series is organized as follows:
-
-System/Global:
-
-system/physmem: Add ats_do_translate helper
-
-Remote Port Core:
-
-hw/core: Add Remote Port protocol packet definition
-hw/core: Add Remote Port header helpers
-hw/core: Add Remote Port session state and hello protocol
-hw/core: Add Remote Port object skeleton
-hw/core: Add Remote Port protocol thread and handshake
-hw/core: Implement Remote Port response handling
-hw/core: Implement Remote Port time synchronization
-hw/core: Implement Remote Port irq, sync and ATS helpers
-hw/core: Add Remote Port files to build
-
-Memory & Bus Access:
-
-hw/core: Implement Remote Port bus access helpers
-hw/core: Add Remote Port Memory Master object skeleton
-hw/core: Implement Remote Port Memory Master bus transactions
-hw/core: Add Remote Port memory slave device
-
-ATS & Streams:
-
-hw/core: Add Remote Port Stream device
-hw/core: Add Remote Port ATS device skeleton
-hw/core: Implement Remote Port ATS logic and cache management
-
-FDT & GPIO:
-
-hw/core: Add Remote Port GPIO/Interrupt bridge
-hw/core: Add FDT support to Remote Port GPIO
-hw/core: Add FDT support to Remote Port memory master
-
-Links:
-[1] libsystemctlm library: https://github.com/Xilinx/libsystemctlm-soc
-
-[2] SystemC TLM description: https://systemc.org/overview/systemc-tlm/
-
-
-Ruslan Ruslichenko (20):
-  hw/core: Add Remote Port protocol packet definition
-  hw/core: Add Remote Port header helpers
-  hw/core: Add Remote Port session state and hello protocol
-  hw/core: Implement Remote Port bus access helpers
-  hw/core: Implement Remote Port irq, sync and ATS helpers
-  hw/core: Add Remote Port object skeleton
-  hw/core: Add Remote Port protocol thread and handshake
-  hw/core: Implement Remote Port response handling
-  hw/core: Implement Remote Port time synchronization
-  hw/core: Add Remote Port Memory Master object skeleton
-  hw/core: Implement Remote Port Memory Master bus transactions
-  system/physmem: Add ats_do_translate helper
-  hw/core: Add Remote Port ATS device skeleton
-  hw/core: Implement Remote Port ATS logic and cache management
-  hw/core: Add Remote Port memory slave device
-  hw/core: Add Remote Port GPIO/Interrupt bridge
-  hw/core: Add Remote Port Stream device
-  hw/core: Add Remote Port files to build
-  hw/core: Add FDT support to Remote Port GPIO
-  hw/core: Add FDT support to Remote Port memory master
-
- hw/core/Kconfig                             |   4 +
- hw/core/meson.build                         |  10 +
- hw/core/remote-port-ats.c                   | 412 +++++++++++
- hw/core/remote-port-gpio.c                  | 210 ++++++
- hw/core/remote-port-memory-master.c         | 369 +++++++++
- hw/core/remote-port-memory-slave.c          | 242 ++++++
- hw/core/remote-port-proto.c                 | 467 ++++++++++++
- hw/core/remote-port-stream.c                | 246 ++++++
- hw/core/remote-port.c                       | 782 ++++++++++++++++++++
- hw/core/trace-events                        |  22 +
- include/hw/core/remote-port-ats.h           |  76 ++
- include/hw/core/remote-port-gpio.h          |  34 +
- include/hw/core/remote-port-memory-master.h |  81 ++
- include/hw/core/remote-port-memory-slave.h  |  35 +
- include/hw/core/remote-port-proto.h         | 541 ++++++++++++++
- include/hw/core/remote-port.h               | 164 ++++
- include/system/memory.h                     |   8 +
- system/physmem.c                            |  53 ++
- 18 files changed, 3756 insertions(+)
- create mode 100644 hw/core/remote-port-ats.c
- create mode 100644 hw/core/remote-port-gpio.c
- create mode 100644 hw/core/remote-port-memory-master.c
- create mode 100644 hw/core/remote-port-memory-slave.c
- create mode 100644 hw/core/remote-port-proto.c
- create mode 100644 hw/core/remote-port-stream.c
- create mode 100644 hw/core/remote-port.c
- create mode 100644 include/hw/core/remote-port-ats.h
- create mode 100644 include/hw/core/remote-port-gpio.h
- create mode 100644 include/hw/core/remote-port-memory-master.h
- create mode 100644 include/hw/core/remote-port-memory-slave.h
- create mode 100644 include/hw/core/remote-port-proto.h
- create mode 100644 include/hw/core/remote-port.h
-
+diff --git a/hw/core/remote-port-memory-master.c b/hw/core/remote-port-memory-master.c
+index 4b0283f9fe..41ef1df518 100644
+--- a/hw/core/remote-port-memory-master.c
++++ b/hw/core/remote-port-memory-master.c
+@@ -29,18 +29,201 @@
+ 
+ #define RP_MAX_ACCESS_SIZE 4096
+ 
++static int rp_mm_get_timeout(RPMemoryTransaction *tr)
++{
++    RemotePortMap *map = tr->opaque;
++    RemotePortMemoryMaster *s;
++
++    if (!map || !map->parent ||
++        !object_dynamic_cast(OBJECT(map->parent),
++                             TYPE_REMOTE_PORT_MEMORY_MASTER)) {
++        return 0;
++    }
++    s = REMOTE_PORT_MEMORY_MASTER(map->parent);
++    return s->rp_timeout;
++}
++
++MemTxResult rp_mm_access_with_def_attr(RemotePort *rp, uint32_t rp_dev,
++                                       struct rp_peer_state *peer,
++                                       RPMemoryTransaction *tr,
++                                       bool relative, uint64_t offset,
++                                       uint32_t def_attr)
++{
++    uint64_t addr = tr->addr;
++    RemotePortRespSlot *rsp_slot;
++    RemotePortDynPkt *rsp;
++    struct  {
++        struct rp_pkt_busaccess_ext_base pkt;
++        uint8_t reserved[RP_MAX_ACCESS_SIZE];
++    } pay;
++    uint8_t *data = rp_busaccess_tx_dataptr(peer, &pay.pkt);
++    struct rp_encode_busaccess_in in = {0};
++    int i;
++    int len;
++    int rp_timeout = rp_mm_get_timeout(tr);
++    MemTxResult ret;
++
++    if (tr->rw) {
++        /* Data up to 8 bytes is passed as values.  */
++        if (tr->size <= 8) {
++            for (i = 0; i < tr->size; i++) {
++                data[i] = tr->data.u64 >> (i * 8);
++            }
++        } else {
++            memcpy(data, tr->data.p8, tr->size);
++        }
++    }
++
++    addr += relative ? 0 : offset;
++
++    in.cmd = tr->rw ? RP_CMD_write : RP_CMD_read;
++    in.id = rp_new_id(rp);
++    in.dev = rp_dev;
++    in.clk = rp_normalized_vmclk(rp);
++    in.master_id = tr->attr.requester_id;
++    in.addr = addr;
++    in.attr = def_attr;
++    in.attr |= tr->attr.secure ? RP_BUS_ATTR_SECURE : 0;
++    in.size = tr->size;
++    in.stream_width = tr->size;
++    len = rp_encode_busaccess(peer, &pay.pkt, &in);
++    len += tr->rw ? tr->size : 0;
++
++    trace_remote_port_memory_master_tx_busaccess(rp_cmd_to_string(in.cmd),
++        in.id, in.flags, in.dev, in.addr, in.size, in.attr);
++
++    rp_rsp_mutex_lock(rp);
++    rp_write(rp, (void *) &pay, len);
++
++    if (!rp_timeout) {
++        rsp_slot = rp_dev_wait_resp(rp, in.dev, in.id);
++    } else {
++        rsp_slot = rp_dev_timed_wait_resp(rp, in.dev, in.id, rp_timeout);
++        if (rsp_slot->valid == false) {
++            /*
++             * Timeout error
++             */
++            rp_rsp_mutex_unlock(rp);
++            return MEMTX_ERROR;
++        }
++    }
++    rsp = &rsp_slot->rsp;
++
++    /* We dont support out of order answers yet.  */
++    assert(rsp->pkt->hdr.id == in.id);
++
++    switch (rp_get_busaccess_response(rsp->pkt)) {
++    case RP_RESP_OK:
++        ret = MEMTX_OK;
++        break;
++    case RP_RESP_ADDR_ERROR:
++        ret = MEMTX_DECODE_ERROR;
++        break;
++    default:
++        ret = MEMTX_ERROR;
++        break;
++    }
++
++    if (ret == MEMTX_OK && !tr->rw) {
++        data = rp_busaccess_rx_dataptr(peer, &rsp->pkt->busaccess_ext_base);
++        /* Data up to 8 bytes is return as values.  */
++        if (tr->size <= 8) {
++            for (i = 0; i < tr->size; i++) {
++                tr->data.u64 |= ((uint64_t) data[i]) << (i * 8);
++            }
++        } else {
++            memcpy(tr->data.p8, data, tr->size);
++        }
++    }
++
++    trace_remote_port_memory_master_rx_busaccess(
++        rp_cmd_to_string(rsp->pkt->hdr.cmd), rsp->pkt->hdr.id,
++        rsp->pkt->hdr.flags, rsp->pkt->hdr.dev, rsp->pkt->busaccess.addr,
++        rsp->pkt->busaccess.len, rsp->pkt->busaccess.attributes);
++
++    if (rp_timeout) {
++        for (i = 0; i < ARRAY_SIZE(rp->dev_state[rp_dev].rsp_queue); i++) {
++            if (rp->dev_state[rp_dev].rsp_queue[i].used &&
++                rp->dev_state[rp_dev].rsp_queue[i].valid) {
++                rp_resp_slot_done(rp, &rp->dev_state[rp_dev].rsp_queue[i]);
++            }
++        }
++    } else {
++        rp_resp_slot_done(rp, rsp_slot);
++    }
++    rp_rsp_mutex_unlock(rp);
++
++    /*
++     * For strongly ordered or transactions that don't allow Early Acking,
++     * we need to drain the pending RP processing queue here. This is
++     * because RP handles responses in parallel with normal requests so
++     * they may get reordered. This becomes visible for example with reads
++     * to read-to-clear registers that clear interrupts. Even though the
++     * lowering of the interrupt-wires arrives to us before the read-resp,
++     * we may handle the response before the wire update, resulting in
++     * spurious interrupts.
++     *
++     * This has some room for optimization but for now we use the big hammer
++     * and drain the entire qeueue.
++     */
++    rp_process(rp);
++
++    /* Reads are sync-points, roll the sync timer.  */
++    rp_restart_sync_timer(rp);
++    return ret;
++}
++
++MemTxResult rp_mm_access(RemotePort *rp, uint32_t rp_dev,
++                         struct rp_peer_state *peer,
++                         RPMemoryTransaction *tr,
++                         bool relative, uint64_t offset)
++{
++    return rp_mm_access_with_def_attr(rp, rp_dev, peer, tr, relative, offset,
++                                      0);
++}
++
+ static MemTxResult rp_mm_read(void *opaque, hwaddr addr, uint64_t *data,
+                                  unsigned size, MemTxAttrs attrs)
+ {
+-    /* TBD */
+-    return MEMTX_OK;
++    MemTxResult ret;
++    RemotePortMap *map = opaque;
++    RemotePortMemoryMaster *s = map->parent;
++
++    RPMemoryTransaction tr = {};
++
++    tr.opaque = map;
++    tr.rw = false;
++    tr.addr = addr;
++    tr.size = size;
++    tr.attr = attrs;
++
++    ret = rp_mm_access(s->rp, s->rp_dev, s->peer, &tr, s->relative,
++                map->offset);
++
++    if (ret == MEMTX_OK) {
++        *data = tr.data.u64;
++    }
++
++    return ret;
+ }
+ 
+ static MemTxResult rp_mm_write(void *opaque, hwaddr addr, uint64_t data,
+                                   unsigned size, MemTxAttrs attrs)
+ {
+-    /* TBD */
+-    return MEMTX_OK;
++    RemotePortMap *map = opaque;
++    RemotePortMemoryMaster *s = map->parent;
++
++    RPMemoryTransaction tr = {};
++
++    tr.opaque = map;
++    tr.rw = true;
++    tr.addr = addr;
++    tr.size = size;
++    tr.attr = attrs;
++    tr.data.u64 = data;
++
++    return rp_mm_access(s->rp, s->rp_dev, s->peer, &tr, s->relative,
++                    map->offset);
+ }
+ 
+ static const MemoryRegionOps rp_ops_template = {
+diff --git a/hw/core/remote-port.c b/hw/core/remote-port.c
+index b4c9fa1528..6a6effdd19 100644
+--- a/hw/core/remote-port.c
++++ b/hw/core/remote-port.c
+@@ -39,6 +39,11 @@ static void rp_event_read_and_process(RemotePort *s);
+ static void sync_timer_hit(void *opaque);
+ static void syncresp_timer_hit(void *opaque);
+ 
++uint32_t rp_new_id(RemotePort *s)
++{
++    return qatomic_fetch_inc(&s->current_id);
++}
++
+ void rp_rsp_mutex_lock(RemotePort *s)
+ {
+     qemu_mutex_lock(&s->rsp_mutex);
+diff --git a/hw/core/trace-events b/hw/core/trace-events
+index 631cbb9c37..dc98745178 100644
+--- a/hw/core/trace-events
++++ b/hw/core/trace-events
+@@ -38,3 +38,7 @@ rp_pt_process_pkt(const char *rp, uint32_t cmd, uint32_t id, uint32_t dev, bool
+ rp_process(const char *rp, unsigned int rpos, unsigned int wpos, uint32_t cmd, uint32_t dev) "%s: io-thread rpos=%u wpos=%u cmd=0x%"PRIx32" dev=0x%"PRIx32
+ rp_pt_rx_queue_full(const char *rp, unsigned int rpos, unsigned int wpos) "%s: rpos=%u wpos=%u"
+ rp_wait_resp(const char *rp) "'%s'"
++
++# remote-port-memory-master.c
++remote_port_memory_master_tx_busaccess(const char *cmd, uint32_t id, uint32_t flags, uint32_t dev, uint64_t addr, uint32_t len, uint64_t attr) "cmd=%s, id=0x%"PRIx32", flags=0x%"PRIx32", dev=0x%"PRIx32", addr=0x%"PRIx64", len=0x%"PRIx32", attr=0x%"PRIx64
++remote_port_memory_master_rx_busaccess(const char *cmd, uint32_t id, uint32_t flags, uint32_t dev, uint64_t addr, uint32_t len, uint64_t attr) "cmd=%s, id=0x%"PRIx32", flags=0x%"PRIx32", dev=0x%"PRIx32", addr=0x%"PRIx64", len=0x%"PRIx32", attr=0x%"PRIx64
+diff --git a/include/hw/core/remote-port.h b/include/hw/core/remote-port.h
+index cef7471a73..7e3e022a20 100644
+--- a/include/hw/core/remote-port.h
++++ b/include/hw/core/remote-port.h
+@@ -150,4 +150,15 @@ ssize_t rp_write(RemotePort *s, const void *buf, size_t count);
+ 
+ struct rp_peer_state *rp_get_peer(RemotePort *s);
+ 
++uint32_t rp_new_id(RemotePort *s);
++
++static inline void rp_resp_slot_done(RemotePort *s,
++                                     RemotePortRespSlot *rsp_slot)
++{
++    rp_dpkt_invalidate(&rsp_slot->rsp);
++    rsp_slot->id = ~0;
++    rsp_slot->used = false;
++    rsp_slot->valid = false;
++}
++
+ #endif
 -- 
 2.43.0
 

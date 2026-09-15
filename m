@@ -4,65 +4,107 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5431FC88E7F
-	for <qemu-arm@archiver.kernel.org>; Tue, 15 Sep 2026 15:41:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A220FC88E75
+	for <qemu-arm@archiver.kernel.org>; Tue, 15 Sep 2026 15:52:49 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1x6VHk-0002m5-CK; Tue, 15 Sep 2026 11:41:29 -0400
+	id 1x6VSg-00065r-I3; Tue, 15 Sep 2026 11:52:46 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <tangtao1634@phytium.com.cn>)
- id 1x6VHh-0002lP-OY; Tue, 15 Sep 2026 11:41:25 -0400
-Received: from zg8tmtyylji0my4xnjqumte4.icoremail.net ([162.243.164.118])
- by eggs.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <tangtao1634@phytium.com.cn>)
- id 1x6VHe-0007Vl-Ec; Tue, 15 Sep 2026 11:41:25 -0400
-Received: from prodtpl.icoremail.net (unknown [10.12.1.20])
- by hzbj-icmmx-6 (Coremail) with UTF8SMTP id AQAAfwAHfN0cZ6lqDWsEAA--.7924S2;
- Tue, 15 Sep 2026 23:41:16 +0800 (CST)
-Received: from [192.168.2.9] (unknown [113.246.118.246])
- by mail (Coremail) with SMTP id AQAAf8DwBXQaZ6lq9HfWAA--.37445S2;
- Tue, 15 Sep 2026 23:41:15 +0800 (CST)
-Message-ID: <7ee4a2df-d295-49a0-a8d9-51e74576ec68@phytium.com.cn>
-Date: Tue, 15 Sep 2026 23:41:14 +0800
+ (Exim 4.90_1) (envelope-from <bmeng.cn@gmail.com>)
+ id 1x6VSe-00065a-Vr
+ for qemu-arm@nongnu.org; Tue, 15 Sep 2026 11:52:45 -0400
+Received: from mail-wm2-x11.google.com ([2a00:1450:4864:31::11])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <bmeng.cn@gmail.com>)
+ id 1x6VSd-0001J0-9N
+ for qemu-arm@nongnu.org; Tue, 15 Sep 2026 11:52:44 -0400
+Received: by mail-wm2-x11.google.com with SMTP id
+ 5b1f17b1804b1-49e71cdb22bso22962965e9.2
+ for <qemu-arm@nongnu.org>; Tue, 15 Sep 2026 08:52:42 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1789487561; cv=none;
+ d=google.com; s=arc-20260327;
+ b=jifZgHSZaaJoIlKPLvsrtqXfaQBjLPXuIj5HWCENlqQCQBLuGrO2XcoOQmUXEaYs1A
+ xI4Kg2LVBYbFE4KADtx6nagvgppis1bJKzGT+9o8VkWjcWl85S2aYQVYYBtgLaIwiLtn
+ 3EDwxPIFDHzzzqP2HddYEQnl1KMg2sWsSMMLM7DpR2J6ql9/GeWQ9DTlNOtvxGTRIrBX
+ D/YhRM+JsyNyXztdAiOiWABShgrUToeEG6BJi8/30vWs6G/J8cvC2BqGc2RjwDU4Vso0
+ G0lXYo9nc5clmd5vbSI9DT58+YkqBCbPRkeirlLHFgmoH+x8U5NViWfZL4yvvU0g0w/N
+ bLmA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
+ s=arc-20260327; 
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:dkim-signature;
+ bh=1fDsvYVDTSXBksRxHit6uWvdlwUTm4KkWvIvwmlHs0M=;
+ fh=3vHExR5e3cTlQOgMu8NHPdTJfYnxteCWHujxp3ESEjs=;
+ b=m3Y7+RY3IBZI0YBSmU1u218mEE9rajHmsi4T3dXOEkgj74mN95McBAaaHVNrbOtXeM
+ Q7IvGcSA9+4ZEvhouNwzR9RkwM6m388fRqR7wUbkqeBUw7KkDd0lqabrMnjgLVzAGQY3
+ C9LS2mZoqBZ1w8M+BLdP8PGG8pGM8D7ZmpxTDAED627/T4ysTK1qnepPYnveDQ1UAPrK
+ McRMQUBN8wm+mfL7//Ibq1fFSKqJxSwMz+HHuLuG4SCYEpFkodlLwiGioCDZQiUV5FP8
+ 4zknBChC1NL+GK7jZYnqquuJ4P6tB8atkLpThmbsnqVS/98Fn+ML2+NEg3TCpOxnJqTd
+ cObA==; darn=nongnu.org
+ARC-Authentication-Results: i=1; mx.google.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=gmail.com; s=20251104; t=1789487561; x=1790092361; darn=nongnu.org;
+ h=content-transfer-encoding:content-type:cc:to:subject:message-id
+ :date:from:in-reply-to:references:mime-version:from:to:cc:subject
+ :date:message-id:reply-to:content-type;
+ bh=1fDsvYVDTSXBksRxHit6uWvdlwUTm4KkWvIvwmlHs0M=;
+ b=UDiS6iWmWJj0fcBNXDOwc9wVOoq5GQ+Z3ISYdOzSxaB5m8c1eKpN0b+SiY/ObeHoy1
+ tZA6fXg//UwchLym7lfmFQyqbiRhk7YYBnRPls/667K1/NvGFpiypY3BzvBpYVARMx2P
+ QA21sOXFKqCw93OKFAkS/0dloHbGfKcx7pMD9e96Vda9qaqxdcYGnr4L7bDx36LSafnJ
+ cpV0HWjKt8WsYrQ+pNZqukz6fz8qkDISASjcGUIo/mta5HRlyQeD+yC02U5b/3VTBC94
+ AUOcFQdDs2gtGs2vZ2+ya0qmNxAWWTDB6zl6PAqK89HF86HR2BYgCwlLE1P1calM8xMq
+ nNhQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20260707; t=1789487561; x=1790092361;
+ h=content-transfer-encoding:content-type:cc:to:subject:message-id
+ :date:from:in-reply-to:references:mime-version:x-gm-gg
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
+ :content-type;
+ bh=1fDsvYVDTSXBksRxHit6uWvdlwUTm4KkWvIvwmlHs0M=;
+ b=ze3CImms+fbjxiEMq6lkFrWklJuPHzT4GXXMer73E/ryDpKvztiXEF3vtIMHp7Ydd3
+ Kb1GocwVy+TMKQ8ll47I6Y1bwaF0uKSvAbAo28CKaxgD6PQX5uqbQeg/cpQj/KOG0LAo
+ YulIg12UqS7nsd32ZAMn+UZjdfVpKwuHF8E1UjeSQ0g/pUhZAHgnkW6PAXcyBLA6QlzT
+ fPbhlG2AUrWmR89QZBbbX2gWyC5zUoDa3u8Ivgg8+1F4EEyzVhpa8K6OLRph1UXLqFF/
+ r3zjn7u0LXmqdcR5ejWfx6Ou4+arxSSqPFV9cN+Nq1owVUp8aX/uSVn+td1dCkXnb/TZ
+ VJ0g==
+X-Forwarded-Encrypted: i=1;
+ AKwUvBwbGOJYoXgyxKNOH10erJXtsxjHzXnRJStwjwQGNG6cc2iFT47E6d7PEOIhietNbLk4g0rYU16h/A==@nongnu.org
+X-Gm-Message-State: AFuF++n6NgLDI0aKM5T+XZsbnGp4TyAYbWVYpNGxwMf2ELkd6VEbx58J
+ GGmTx/rVUf+Lqsa3EBFzOs2+Y5Aju0USyRutx9klW0sl6Nz9dh33AQddGhu/znOmtvkOnNyliX6
+ cGEwl3fSiKnHlq5K3SUWjsiWB/RxAejQ=
+X-Gm-Gg: AYBFou3Xm+qzjlUgUBfrcijUc4Hs6xwvDoxxD7A07GEIm/KtmWgRnsmjbIt2C+wCKvU
+ jeQ3uTa+5tL8NIHj95vWH2JqIzJQ+/zwJ27rau/vWN/N6dVAwMUsMhrBLhOYlJp5sotUXmOV4zt
+ P67xl5ngt/+fk4pY2CL8F4EyCvUhjx3UCWTBtCRyr0JBD9clgNsqCdjl2WBwmhPZikRTxTPSfh8
+ 4e9T2RsFYj2vDH3Z0AWo6ShWq93sA5i/cNuTNT7pX6KnxbrfEwt0KDScurOT/tnibQre6sawkWx
+ zF69nLZt6/BJpTKj5bckhMOFJz0IzLu4Ze7Qgc4u9MzJeY1Zj/kaCWk=
+X-Received: by 2002:a05:600c:3b9a:b0:49c:ffde:45ff with SMTP id
+ 5b1f17b1804b1-49e7a66b656mr98016625e9.17.1789487560659; Tue, 15 Sep 2026
+ 08:52:40 -0700 (PDT)
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [RFC v5 17/28] hw/arm/smmuv3: Add access checks for STRTAB_BASE
- and CR2 registers
-To: Mostafa Saleh <smostafa@google.com>
-Cc: Eric Auger <eric.auger@redhat.com>,
- Peter Maydell <peter.maydell@linaro.org>, qemu-devel@nongnu.org,
- qemu-arm@nongnu.org, Chen Baozi <chenbaozi@phytium.com.cn>,
- Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>,
- =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@mailo.com>,
- Chao Liu <chao.liu@processmission.com>,
- Jim MacArthur <jim.macarthur@linaro.org>
-References: <20260813161515.2788900-1-tangtao1634@phytium.com.cn>
- <20260813162558.2808607-2-tangtao1634@phytium.com.cn>
- <apbfjNgfmlRKWaqQ@google.com>
-From: Tao Tang <tangtao1634@phytium.com.cn>
-In-Reply-To: <apbfjNgfmlRKWaqQ@google.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-X-CM-TRANSID: AQAAf8DwBXQaZ6lq9HfWAA--.37445S2
-X-CM-SenderInfo: pwdqw3tdrrljuu6sx5pwlxzhxfrphubq/1tbiAQATBWqoS0kibQACsa
-Authentication-Results: hzbj-icmmx-6; spf=neutral smtp.mail=tangtao163
- 4@phytium.com.cn;
-X-Coremail-Antispam: 1Uk129KBjvJXoW3JFWDZr4xXFWrXry5CrWDXFb_yoW7Xw43pr
- WkGa1agr48tFy2g3ZxJayjyw43G3yvgF1UAry7GFyDZ34Yyr98JF4UWrW3Was7XryUAws2
- yFW2kay3urW8tFJanT9S1TB71UUUUUDqnTZGkaVYY2UrUUUUj1kv1TuYvTs0mT0YCTnIWj
- DUYxn0WfASr-VFAU7a7-sFnT9fnUUIcSsGvfJ3UbIYCTnIWIevJa73UjIFyTuYvj4RJUUU
- UUUUU
-Received-SPF: pass client-ip=162.243.164.118;
- envelope-from=tangtao1634@phytium.com.cn;
- helo=zg8tmtyylji0my4xnjqumte4.icoremail.net
-X-Spam_score_int: -25
-X-Spam_score: -2.6
+References: <20260904161438.3838261-1-bin.meng@processmission.com>
+ <20260904161438.3838261-2-bin.meng@processmission.com>
+ <CAFEAcA-p=UaNk-Qddid99o7zeGS4WqmvqAugxtjtBKZwv9ie8Q@mail.gmail.com>
+In-Reply-To: <CAFEAcA-p=UaNk-Qddid99o7zeGS4WqmvqAugxtjtBKZwv9ie8Q@mail.gmail.com>
+From: Bin Meng <bmeng.cn@gmail.com>
+Date: Tue, 15 Sep 2026 23:52:27 +0800
+X-Gm-Features: AcwNN1U6jgOO9d3b_xdMqJWyq5NWUAoCAikbNt--Rpxy9oQo_8wv40bxA3Bsup8
+Message-ID: <CAEUhbmX3N2u732mUZ8wG0pdtN+vCrVf4rdX3TR+vHPeRunsGPQ@mail.gmail.com>
+Subject: Re: [PATCH v2 01/10] hw/arm: fsl-imx6ul: Add SCU compatibility window
+To: Peter Maydell <peter.maydell@linaro.org>
+Cc: Bin Meng <bin.meng@processmission.com>, QEMU <qemu-devel@nongnu.org>, 
+ Jean-Christophe Dubois <jcd@tribudubois.net>, qemu-arm@nongnu.org
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2a00:1450:4864:31::11;
+ envelope-from=bmeng.cn@gmail.com; helo=mail-wm2-x11.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.6 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_LOW=-0.7,
- RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -78,151 +120,73 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Hi Mostafa,
+Hi Peter,
 
-On 9/1/2026 10:22 PM, Mostafa Saleh wrote:
-> On Fri, Aug 14, 2026 at 12:25:55AM +0800, Tao Tang wrote:
->> Add access control for SMMU_STRTAB_BASE and SMMU_CR2 registers to
->> ensure they can only be modified when the SMMU is disabled.
->>
->> This implements:
->> - smmuv3_smmu_disabled_stable(): Check whether the SMMU is in a stable
->>     disabled state (CR0.SMMUEN == 0 and CR0ACK.SMMUEN == 0);
->> - smmu_strtab_base_writable(): returns true only when IDR1.TABLES_PRESET==0
->>     and SMMU is completely disabled.
->>
->> Additionally, mask reserved bits on writes to SMMU_STRTAB_BASE using
->> SMMU_STRTAB_BASE_RESERVED.
->>
->> Fixes: fae4be38b35d ("hw/arm/smmuv3: Implement MMIO write operations")
->> Signed-off-by: Tao Tang <tangtao1634@phytium.com.cn>
->> Reviewed-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
->> ---
->>   hw/arm/smmuv3.c | 69 +++++++++++++++++++++++++++++++++++++++++++++++--
->>   1 file changed, 67 insertions(+), 2 deletions(-)
->>
->> diff --git a/hw/arm/smmuv3.c b/hw/arm/smmuv3.c
->> index 628911d3f21..de8ca7cda48 100644
->> --- a/hw/arm/smmuv3.c
->> +++ b/hw/arm/smmuv3.c
->> @@ -1484,6 +1484,36 @@ smmu_gerror_irq_cfg_writable(SMMUv3State *s, SMMUSecSID sec_sid)
->>       return smmu_irq_cfg_writable(s, sec_sid, SMMU_IRQ_GERROR);
->>   }
->>   
->> +static inline int smmuv3_get_cr0ack_smmuen(SMMUv3State *s, SMMUSecSID sec_sid)
->> +{
->> +    /*
->> +     * CR0, CR0ACK, S_CR0 and S_CR0ACK are bit-layout compatible, so we reuse
->> +     * the CR0 field definitions and only switch banks via sec_sid to reduce
->> +     * code duplication. Also the other bits in CR0/CR0ACK are relevant here.
->> +     */
->> +    return FIELD_EX32(s->bank[sec_sid].cr0ack, CR0, SMMUEN);
->> +}
->> +
->> +/* Check if SMMU is disabled in stable status */
->> +static inline bool smmuv3_smmu_disabled_stable(SMMUv3State *s, SMMUSecSID sec_sid)
->> +{
->> +    int cr0_smmuen = smmu_enabled(s, sec_sid);
->> +    int cr0ack_smmuen = smmuv3_get_cr0ack_smmuen(s, sec_sid);
->> +    return (cr0_smmuen == 0 && cr0ack_smmuen == 0);
->> +}
->> +
->> +/* Check if STRTAB_BASE register is writable */
->> +static bool smmu_strtab_base_writable(SMMUv3State *s, SMMUSecSID sec_sid)
->> +{
->> +    /* SMMU_IDR1.TABLES_PRESET applies to both modeled interfaces. */
->> +    if (FIELD_EX32(s->bank[SMMU_SEC_SID_NS].idr[1], IDR1, TABLES_PRESET)) {
->> +        return false;
->> +    }
->> +
-> Again, I think those are not configurable at the moment, so I'd drop
-> such checks.
+On Mon, Sep 14, 2026 at 5:20=E2=80=AFPM Peter Maydell <peter.maydell@linaro=
+.org> wrote:
 >
-I'll drop the TABLES_PRESET check.
+> On Fri, 4 Sept 2026 at 17:15, Bin Meng <bin.meng@processmission.com> wrot=
+e:
+> >
+> > U-Boot's common i.MX6 CPU identification code reads the Cortex-A9
+> > SCU configuration register at PERIPHBASE + 0x4 even on i.MX6UL.
+> > The value is only used to distinguish Cortex-A9 i.MX6 variants.
+> >
+> > Cortex-A7 reserves this address and reading it causes data abort.
+> >
+> > The same U-Boot abort was discussed on qemu-arm in September 2024:
+> > https://lists.gnu.org/archive/html/qemu-arm/2024-09/msg00072.html
+> >
+> > Map only the four-byte configuration-register address as an
+> > unimplemented device. Its zero read result gives U-Boot the
+> > single-CPU encoding after the low two bits are masked, while
+> > the remainder of the reserved Cortex-A7 page stays unmapped.
+> >
+> > Signed-off-by: Bin Meng <bin.meng@processmission.com>
+> > ---
+> >
+> > (no changes since v1)
+> >
+> >  hw/arm/fsl-imx6ul.c | 9 +++++++++
+> >  1 file changed, 9 insertions(+)
+> >
+> > diff --git a/hw/arm/fsl-imx6ul.c b/hw/arm/fsl-imx6ul.c
+> > index 1863558a0d..d6f662efe4 100644
+> > --- a/hw/arm/fsl-imx6ul.c
+> > +++ b/hw/arm/fsl-imx6ul.c
+> > @@ -187,6 +187,15 @@ static void fsl_imx6ul_realize(DeviceState *dev, E=
+rror **errp)
+> >      sysbus_realize(SYS_BUS_DEVICE(mpcore), &error_abort);
+> >      sysbus_mmio_map(SYS_BUS_DEVICE(mpcore), 0, FSL_IMX6UL_A7MPCORE_ADD=
+R);
+> >
+> > +    /*
+> > +     * U-Boot's shared i.MX6 CPU identification code reads the
+> > +     * Cortex-A9 SCU configuration register on i.MX6UL. Cortex-A7
+> > +     * reserves this address, so provide only the compatibility word
+> > +     * needed before the console is initialized.
+> > +     */
+> > +    create_unimplemented_device("a7mpcore-scu-compat",
+> > +                                FSL_IMX6UL_A7MPCORE_ADDR + 0x4, 4);
+>
+> What is actually going on here, though? Why is u-boot reading
+> an address that's only here for the A9? Has this been reported
+> to u-boot as a bug? What does the real hardware do?
 
-I added it to avoid further changes here when TABLES_PRESET support is 
-implemented, but I agree that the simpler approach is clearer for now. 
-(There are also many similar places in patchset that follow this 
-approach such as IDR0.MSI in patch16)
-
->> +    /* Check SMMUEN conditions for the specific security domain */
->> +    return smmuv3_smmu_disabled_stable(s, sec_sid);
->> +}
->> +
->>   static int smmuv3_cmdq_consume(SMMUv3State *s, Error **errp, SMMUSecSID sec_sid)
->>   {
->>       SMMUState *bs = ARM_SMMU(s);
->> @@ -1801,7 +1831,14 @@ static MemTxResult smmu_writell(SMMUv3State *s, hwaddr offset,
->>           bank->gerror_irq_cfg0 = data & SMMU_GERROR_IRQ_CFG0_RESERVED;
->>           return MEMTX_OK;
->>       case A_STRTAB_BASE:
->> -        bank->strtab_base = data;
->> +        if (!smmu_strtab_base_writable(s, reg_sec_sid)) {
->> +            qemu_log_mask(LOG_GUEST_ERROR,
->> +                          "STRTAB_BASE write ignored: register is RO\n");
->> +            return MEMTX_OK;
->> +        }
->> +
->> +        /* Clear reserved bits according to spec */
->> +        bank->strtab_base = data & SMMU_STRTAB_BASE_RESERVED;
->>           return MEMTX_OK;
->>       case A_CMDQ_BASE:
->>           bank->cmdq.base = data;
->> @@ -1852,7 +1889,15 @@ static MemTxResult smmu_writel(SMMUv3State *s, hwaddr offset,
->>           bank->cr[1] = data;
->>           break;
->>       case A_CR2:
->> -        bank->cr[2] = data;
->> +        if (smmuv3_smmu_disabled_stable(s, reg_sec_sid)) {
->> +            /* Allow write: SMMUEN is 0 in both CR0 and CR0ACK */
->> +            bank->cr[2] = data;
->> +        } else {
->> +            /* CONSTRAINED UNPREDICTABLE behavior: Ignore this write */
->> +            qemu_log_mask(LOG_GUEST_ERROR,
->> +                          "CR2 write ignored: register is read-only when "
->> +                          "CR0.SMMUEN or CR0ACK.SMMUEN is set\n");
->> +        }
->>           break;
->>       case A_IRQ_CTRL:
->>           bank->irq_ctrl = data;
->> @@ -1915,12 +1960,32 @@ static MemTxResult smmu_writel(SMMUv3State *s, hwaddr offset,
->>           }
->>           break;
->>       case A_STRTAB_BASE: /* 64b */
->> +        if (!smmu_strtab_base_writable(s, reg_sec_sid)) {
->> +            qemu_log_mask(LOG_GUEST_ERROR,
->> +                          "STRTAB_BASE write ignored: register is RO\n");
->> +            return MEMTX_OK;
->> +        }
->> +
->> +        data &= SMMU_STRTAB_BASE_RESERVED;
->>           bank->strtab_base = deposit64(bank->strtab_base, 0, 32, data);
->>           break;
->>       case A_STRTAB_BASE + 4:
->> +        if (!smmu_strtab_base_writable(s, reg_sec_sid)) {
->> +            qemu_log_mask(LOG_GUEST_ERROR,
->> +                          "STRTAB_BASE + 4 write ignored: register is RO\n");
->> +            return MEMTX_OK;
->> +        }
->> +
->> +        data &= SMMU_STRTAB_BASE_RESERVED;
-> SMMU_STRTAB_BASE_RESERVED is the mask for the whole stream table base it
-> doesn't apply to A_STRTAB_BASE + 4 offset.
-
-You're right. It should be:
-
-data &= SMMU_STRTAB_BASE_RESERVED >> 32;
-
-
-  I'll also check for similar mask misuse elsewhere.
+I suspect the reason is that the imx6 family contains both A9 and A7
+based SoCs and it's a leftover when imx6ul support was introduced in
+U-Boot. I do not see a bug report against U-Boot yet.
 
 >
-> Thanks,
-> Mostafa
+> Whatever the answers are, I expect the correct fix is not going
+> to be "fake up this specific 4 bytes to ignore accesses in the
+> imx6 SoC model".
+>
 
+Apparently the real hardware ignores the scu access on A7. So IMO it
+could be accepted as a workaround for buggy software although guests
+should not do so.
 
-Thanks,
-
-Tao
-
+Regards,
+Bin
 

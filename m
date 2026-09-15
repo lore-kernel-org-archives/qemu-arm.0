@@ -4,108 +4,107 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D558FC88E77
-	for <qemu-arm@archiver.kernel.org>; Tue, 15 Sep 2026 17:11:52 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 049FDC88E75
+	for <qemu-arm@archiver.kernel.org>; Tue, 15 Sep 2026 17:47:09 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1x6Wgb-0001WT-PL; Tue, 15 Sep 2026 13:11:14 -0400
+	id 1x6XF9-0002xc-MH; Tue, 15 Sep 2026 13:46:55 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1x6WgP-0000va-Ih
- for qemu-arm@nongnu.org; Tue, 15 Sep 2026 13:11:02 -0400
-Received: from mail-wm2-x11.google.com ([2a00:1450:4864:31::11])
+ (Exim 4.90_1) (envelope-from <strahinjapjankovic@gmail.com>)
+ id 1x6XEz-0002x2-Bi
+ for qemu-arm@nongnu.org; Tue, 15 Sep 2026 13:46:45 -0400
+Received: from mail-yx2-x10.google.com ([2607:f8b0:4864:41::10])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1x6WgN-00047O-3j
- for qemu-arm@nongnu.org; Tue, 15 Sep 2026 13:11:01 -0400
-Received: by mail-wm2-x11.google.com with SMTP id
- 5b1f17b1804b1-49e79a408deso217335e9.2
- for <qemu-arm@nongnu.org>; Tue, 15 Sep 2026 10:10:58 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <strahinjapjankovic@gmail.com>)
+ id 1x6XEx-000203-Pm
+ for qemu-arm@nongnu.org; Tue, 15 Sep 2026 13:46:45 -0400
+Received: by mail-yx2-x10.google.com with SMTP id
+ 956f58d0204a3-66e4aae3147so24113d50.1
+ for <qemu-arm@nongnu.org>; Tue, 15 Sep 2026 10:46:42 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1789494402; cv=none;
+ d=google.com; s=arc-20260327;
+ b=RqG3C3Q29jlDe/JpnM5JLBkT0z4IqwfSlqvUUVLiqAnecLnx/vgeRl/Ep2TvI7/t/H
+ B4pNKxYIQFvGBH/Y4UdknJqHVLOn7B+rppBUsJERdko2ywalh+DSM76auSMr2l9XliYR
+ YbCIOGOVMq4L699PQwKPFmyWDCq2PPNbu58Q8a8qrcMlQNYLFklEiEw0PjtitUv6mIAH
+ LauVkJpUIxqiUP0tc0z/dODB/Gdfo9RffPPCqdFLWkw/G62l+2ydBs1Wuf836L6snQu6
+ 4x968hQ2JByDue9dtWA9Z6XwTTL71o3JlWHQmcD2onOIpMpb/Y04nuytjvDGLcUCvDrB
+ Ok5A==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
+ s=arc-20260327; 
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:dkim-signature;
+ bh=JqnbvjRKaNs4t7UaOgr9WJqmBpRK5gzPC9BLZmCBw2s=;
+ fh=JuvjeklEozbvbrgE7J9UoavVap0AkTzdcFH61GTpxzE=;
+ b=rEKI9hKNytX4vrIrUF/r3XkEgkQLEy+lXtR6HxVkDT7gjUeeQiWBZLwAsWY7jFL21d
+ Vwa8jTDAB61aQHnOIgQjzw8P3su/iRHNke5GWsoVMeyiL7ZC8N3QUMAeaFscy8dxloI+
+ pBAKARlBIzsrEj/yxnPBB/ksm59XvP2xE4c0eY0zF+dVjr1s6Rgykf/P9TKmfD8GQbLV
+ 8GiJGTQw6X8UtKWquicSHt9NdOxBpBOiYqQzAjKVyh1FFzPDMBzENeVlkz8HF2CQg2S3
+ HZDEbnY+RoEx/KKXY20q7nYhWGqTvhYdN1k6SU7LcfSD2FdEiQltG6BcaWtTBLCaKqpq
+ suQg==; darn=nongnu.org
+ARC-Authentication-Results: i=1; mx.google.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1789492257; x=1790097057; darn=nongnu.org;
- h=content-transfer-encoding:content-type:mime-version:message-id:date
- :user-agent:references:in-reply-to:subject:cc:to:from:from:to:cc
- :subject:date:message-id:reply-to:content-type;
- bh=lNmpvSJHvnl2sdQ2jxqWK0VXNL8g4jeFZWJYNeJdo1s=;
- b=uxar3EqBBWyq/W45DbAGhDUVB+0nLEVQvLGqEeaYuNcf3tkrRwkPITZdYqPvVG43Os
- ukFnBk9MWTu7m1WtXS8Hwcjoj+gIADJ1mkpYG1SQBb7vW5hNIhhuZzvEgRq1glDw6S/N
- MmGOQ51Ib/Hg0EWK2zyNJ1G3iHnXCC/bCqU0bmC/W2TwSv2tbJnVXakffUMl7PPrZ1pu
- o31LAZ+W8U3fc69zRPYxKxBc1GiuiL9dj9icentcgSwZzG4q5vmKg/dPjozEUCJHlB91
- r7HDBoFR0F0gEzirQ7XnxtWgTVS5gmKMcqfpJPhJ8VWy4D/AgusuzJZdzqG4oKrCRmQ8
- 0oZw==
+ d=gmail.com; s=20251104; t=1789494402; x=1790099202; darn=nongnu.org;
+ h=content-type:cc:to:subject:message-id:date:from:in-reply-to
+ :references:mime-version:from:to:cc:subject:date:message-id:reply-to
+ :content-type; bh=JqnbvjRKaNs4t7UaOgr9WJqmBpRK5gzPC9BLZmCBw2s=;
+ b=Fz8PZML47Fs2rClhvqPmte8B3Kl67FpwWyVWyL+9gOMvcAiyFOeEznFwQdqR44BhjK
+ qDdD4Cse/69Ps+GT41bU/uraBJ4nWASTJfdA+ltG84xckPU2Sv9i43N6oMBkJG9Aveas
+ NOAqK3kAeJcfTioJTd+RwPUGtlAkVlgDfyY92UnkuxOjRxjYUzvrSvRkGVqhTedSjUKg
+ rB+OGO/tBUrrIDI2X2ZEhFbHZOK0+KvX6oDRL5O2vGp7KE8uyTKVLc+FBpSotjUH5iKm
+ aEs8UxoszBliQECQ38Q1ZUlzkIuZ3WmprbG+e8QehTGT32S/v3vtSnUutxQxT95CwjL+
+ FxUA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20260707; t=1789492257; x=1790097057;
- h=content-transfer-encoding:content-type:mime-version:message-id:date
- :user-agent:references:in-reply-to:subject:cc:to:from:x-gm-gg
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
- :content-type;
- bh=lNmpvSJHvnl2sdQ2jxqWK0VXNL8g4jeFZWJYNeJdo1s=;
- b=RgDYzvcBUjePPtsLH7dJoLTj7lWtV4rcKM7fSvLRlT2qwJ/8DmnbmD099/X8trtruv
- DelrMnRKWzt18VsOYQLsaOr0UdfQUEcw35/B7prVU7pHO24ZKWs3pQqy0JR8aCdMCbEf
- KHtOnxW8t8eMJ6yLMkTxdh998WXVfV48oLbyFYN1IA1H7pjS7brHpdjG3SzmaD7oEzlS
- IE0JwWE5hc5GsTkKknNILHJzh6GV4VEl1CY34/jy7jFxJxx3RSnt44MKA9D0DeZMOiTw
- TwFCzowEAOCLmScNYbLN+zF8VnAn4bWa/TdqYWM3QD9rxRPGPTG23M2secmLTkC61iIz
- 1CJQ==
+ d=1e100.net; s=20260707; t=1789494402; x=1790099202;
+ h=content-type:cc:to:subject:message-id:date:from:in-reply-to
+ :references:mime-version:x-gm-gg:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to:content-type;
+ bh=JqnbvjRKaNs4t7UaOgr9WJqmBpRK5gzPC9BLZmCBw2s=;
+ b=ry7uKKoGt1v3i/RMmvXlnibnKqov2zlW3Rmtx20rv+5Xq9eLmPfKdD2XFVZ1KKDN3m
+ 59Tdnj1Ff9JLj4zUfi0+VH1XvyOTO+mavlTUkuc6bCvGtmARJOr1YXOwCpIIYpKN1mJV
+ tMPjOUkVKhJJMxofY4ddGRUEq9he2mCgrf20tkqAgb5S1FF0p+FyTMYwXKf3kX0rVstA
+ Ixa6yAZ0GYzmddQv4EOcsexx7BmCJHLpu2fu4oAFw2BmyjmwMKZidtt9IHBC9HJSGli5
+ AbqgI12mO3bang8L+HOFiW3lzzxxWw0FcJSTDuIkelZxhE92qI0k3nXRsCy7LKyQxtjC
+ MkPw==
 X-Forwarded-Encrypted: i=1;
- AKwUvBye0z/RGjgM8UYUmMBMofIrjZ0B6u2/POg1mAXmcRV9LDnMo8PDs6rhSe6JFRykyvTxLE7HEw6L/w==@nongnu.org
-X-Gm-Message-State: AFuF++kjjqUwanyKhMsNFYUXqPZSfIb/pCtPeQcwNUm1acQNbQz6LO2B
- lGsLAKc0WZfL7dvX3t3kVWk/Qr9eWZOZKp2DooiVIHWCqSTQOFD9iFX0CO4L3DQI8aE=
-X-Gm-Gg: AYBFou1/GYi9Dl+Z0x+mSAGmYcFS3BQG64928mUfZbq8g22GA7xOMcWMHdlWzGsllcF
- iISMd6/NFYPTcOQan1uQGOlG6P/Jzo0yYjqqf0B60rMZFC+aylTVkoH34FWCstmly4aObogKHX7
- MR1/gyIxZ8+scqnhBcy8F8fsl+Hn8w5Mwe8aBaGUVOjdAYunuITHzGAS2y5G9oVftKUA4yLb2wh
- pmfEP4y2OgNC5B08Df3qy7WYgOK1E6Oy7y3xXS1B1doPaXKoOqIdzM4N3dwW8FWnP5euhGqrAVw
- PKb5K0dDvSNHIsplWnrRlYWDwTQiOjuLIjpWf4sXacxpYLnUozsNIVfQSuUVdtcODMS5ggFT+WJ
- xRKkq9xruPzW+mgVwk1f17/KXdvxztforGJLmS08od3aMhCHbP8I0V0TpLC0xKyOaVeOzHqllsX
- GpmOrsLQGqha07x2NMoZ1pGKXODswA3Q5Ttmc9yZIKcXfi7KgLxJies48fPWdXacP82nAM/zw=
-X-Received: by 2002:a05:600c:3ba7:b0:49c:f4e1:4c2d with SMTP id
- 5b1f17b1804b1-49e7a68698bmr122370795e9.16.1789492257074; 
- Tue, 15 Sep 2026 10:10:57 -0700 (PDT)
-Received: from draig.lan ([185.124.0.156]) by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-49e83da9a7csm4099335e9.11.2026.09.15.10.10.56
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 15 Sep 2026 10:10:56 -0700 (PDT)
-Received: from draig (localhost [IPv6:::1])
- by draig.lan (Postfix) with ESMTP id 2D4455F825;
- Tue, 15 Sep 2026 18:10:55 +0100 (BST)
-From: =?utf-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>
-To: Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>
-Cc: qemu-devel@nongnu.org,  Brad Smith <brad@comstyle.com>,  Jiaxun Yang
- <jiaxun.yang@flygoat.com>,  Song Gao <gaosong@loongson.cn>,  Warner Losh
- <imp@bsdimp.com>,  Daniel P. =?utf-8?Q?Berrang=C3=A9?=
- <berrange@redhat.com>,  Peter
- Maydell <peter.maydell@linaro.org>,  Cornelia Huck <cohuck@redhat.com>,
- Fabiano Rosas <farosas@suse.de>,  John Snow <jsnow@redhat.com>,  Paolo
- Bonzini <pbonzini@redhat.com>,  Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?=
- <philmd@mailo.com>, Thomas Huth <th.huth+qemu@posteo.eu>,  Brian Cain
- <brian.cain@oss.qualcomm.com>,  qemu-arm@nongnu.org,  =?utf-8?Q?Marc-Andr?=
- =?utf-8?Q?=C3=A9?= Lureau
- <marcandre.lureau@redhat.com>,  Kyle Evans <kevans@freebsd.org>,  Richard
- Henderson <richard.henderson@linaro.org>,  Cleber Rosa <crosa@redhat.com>
-Subject: Re: [PATCH 5/9] tests/docker: add container registry to configure
- and use
-In-Reply-To: <9999cc6c-04e4-4507-beb0-5856bf614333@oss.qualcomm.com> (Pierrick
- Bouvier's message of "Mon, 14 Sep 2026 09:18:06 -0700")
-References: <20260910181504.1010916-1-alex.bennee@linaro.org>
- <20260910181504.1010916-6-alex.bennee@linaro.org>
- <abacad10-b9af-4a39-93c9-14b882f60bea@oss.qualcomm.com>
- <87qziw1ebt.fsf@draig.linaro.org>
- <9999cc6c-04e4-4507-beb0-5856bf614333@oss.qualcomm.com>
-User-Agent: mu4e 1.14.4-pre3; emacs 30.1
-Date: Tue, 15 Sep 2026 18:10:55 +0100
-Message-ID: <87zexia19c.fsf@draig.linaro.org>
+ AKwUvByBku8B/S0Tk8UNK/rjljAXTXGzK4gB+IJRS7L1M4f4SCjCWuDapTLDHwI0Todvx8++KWniMZEhXw==@nongnu.org
+X-Gm-Message-State: AFuF++mjisf/sHza4aaI/1L+1w3h9wc8QE9aajO4XM3a5mGcZROoxX+8
+ mcuSuBHkIqi4m8kXPm3ijEMXpWIY4rcQf4zPMGb9py7YyfsIH4CTKYOIVkaeGLoOPIlCHBnIs4T
+ H/wgBszQFoH1WKqsjraZrvjeh3atC35I=
+X-Gm-Gg: AYBFou0osz3M5ZXAmX+sMoxs9yN71Q7dGHwincZUXZn/kVaGyu7BGET4az/zyogcCVy
+ 6T+yCfT+L9jFxWAvtL1hQZllk5Ub0XdT59lOD0qG9MAEafCDjDNzGqniDp7GGV23aCzQVFr6uci
+ PElto8UqHSipDzQBi1ubV2CSKLCunwfNgsp0a85jYf3QIdaGyD6iiTtFIlkQu6atvnhePjyPEMw
+ zFOE5i9zMXN66APefp+eQQjlb0X4o+a99qma7yRTNUSGa1MPzOkTLF7oAz+5XJZ/9trTTon5ql2
+ JhJKcgo8Av4G0+Djf/RuorcsedDJ0a37ctMMW+TQ65tnmGN4quw40a7a
+X-Received: by 2002:a05:690e:1246:b0:671:3bca:6afb with SMTP id
+ 956f58d0204a3-6715ee536a8mr376492d50.54.1789494401862; Tue, 15 Sep 2026
+ 10:46:41 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2a00:1450:4864:31::11;
- envelope-from=alex.bennee@linaro.org; helo=mail-wm2-x11.google.com
+References: <20260913-allwinner-gpio-v3-0-a9affa474b3b@gmail.com>
+ <20260913-allwinner-gpio-v3-1-a9affa474b3b@gmail.com>
+ <CAFEAcA-TOjsMHDpThkBP_Mjbt+gA23SoXabOpAUVMdoFbRGjow@mail.gmail.com>
+In-Reply-To: <CAFEAcA-TOjsMHDpThkBP_Mjbt+gA23SoXabOpAUVMdoFbRGjow@mail.gmail.com>
+From: Strahinja Jankovic <strahinja.p.jankovic@gmail.com>
+Date: Tue, 15 Sep 2026 19:46:30 +0200
+X-Gm-Features: AcwNN1WMEfReOA_p7LXyaSv7o0a0puUzAm3Mc1MLADl6ECMXJ13i89FmSaZzwZQ
+Message-ID: <CABtshVRxVrN7jgp6EwQAb8ss+SsS=DbQEaeqSjtOpZaFButYxg@mail.gmail.com>
+Subject: Re: [PATCH v3 1/3] hw/gpio: Allwinner A10 GPIO emulation
+To: Peter Maydell <peter.maydell@linaro.org>
+Cc: qemu-devel@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>,
+ qemu-arm@nongnu.org, Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>,
+ Fabiano Rosas <farosas@suse.de>, 
+ Laurent Vivier <lvivier@redhat.com>, Jack wang <163wangjack@gmail.com>
+Content-Type: multipart/alternative; boundary="000000000000269119065b89228a"
+Received-SPF: pass client-ip=2607:f8b0:4864:41::10;
+ envelope-from=strahinjapjankovic@gmail.com; helo=mail-yx2-x10.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ HTML_MESSAGE=0.001, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001, T_KAM_HTML_FONT_INVALID=0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -121,161 +120,119 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com> writes:
+--000000000000269119065b89228a
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 
-> On 9/14/2026 12:28 AM, Alex Benn=C3=A9e wrote:
->> Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com> writes:
->>=20
->>> On 9/10/26 11:15 AM, Alex Benn=C3=A9e wrote:
->>>> Previously we had the default baked into Makefile.include but as the
->>>> meson container logic will also benefit from it we update the configure
->>>> machinery.
->>>> For now we allow direct make invocations to override but for the
->>>> normal case it is in one place now.
->>>> Signed-off-by: Alex Benn=C3=A9e <alex.bennee@linaro.org>
->>>> ---
->>>>   configure                     | 8 ++++++++
->>>>   meson_options.txt             | 3 +++
->>>>   tests/docker/Makefile.include | 4 +---
->>>>   tests/tcg/meson.build         | 6 ++++++
->>>>   4 files changed, 18 insertions(+), 3 deletions(-)
->>>> diff --git a/configure b/configure
->>>> index aaa41fe47aa..7d6b11ddd35 100755
->>>> --- a/configure
->>>> +++ b/configure
->>>> @@ -172,6 +172,7 @@ fi
->>>>   # some defaults, based on the host environment
->>>>     # default parameters
->>>> +container_registry=3D"registry.gitlab.com/qemu-project/qemu"
->>>>   cpu=3D""
->>>>   cross_compile=3D"no"
->>>>   cross_prefix=3D""
->>>> @@ -728,6 +729,9 @@ for opt do
->>>>     ;;
->>>>     --container-command=3D*) meson_option_add -Dcontainer_command=3D"$=
-optarg"
->>>>     ;;
->>>> +  --container-registry=3D*) container_registry=3D"$optarg"
->>>> +                          meson_option_add -Dcontainer_registry=3D"$o=
-ptarg"
->>>> +  ;;
->>>>     --rust-target-triple=3D*) rust_target_triple=3D"$optarg"
->>>>     ;;
->>>>     --gdb=3D*) meson_option_add -Dgdb=3D"$optarg"
->>>> @@ -862,6 +866,7 @@ Advanced options (experts only):
->>>>     --cpu=3DCPU                Build for host CPU [$cpu]
->>>>     --disable-containers     don't use containers for cross-building
->>>>     --container-command=3DCMD  which container command to use [autodet=
-ect]
->>>> +  --container-registry=3DURL which container registry to cache from [=
-$container_registry]
->>>>     --gdb=3DGDB-path           gdb to use for gdbstub tests [autodetec=
-t]
->>>>     --wasm64-32bit-address-limit Restrict wasm64 address space to 32-b=
-it (default
->>>>                                  is to use the whole 64-bit range).
->>>> @@ -1318,6 +1323,9 @@ echo "GENISOIMAGE=3D$genisoimage" >> $config_hos=
-t_mak
->>>>   echo "MESON=3D$meson" >> $config_host_mak
->>>>   echo "NINJA=3D$ninja" >> $config_host_mak
->>>>   echo "EXESUF=3D$EXESUF" >> $config_host_mak
->>>> +if test -n "$container_registry"; then
->>>> +  echo "DOCKER_DEFAULT_REGISTRY=3D$container_registry" >> $config_hos=
-t_mak
->>>> +fi
->>>>   if test "$default_targets" =3D "yes"; then
->>>>     echo "CONFIG_DEFAULT_TARGETS=3Dy" >> $config_host_mak
->>>>   fi
->>>> diff --git a/meson_options.txt b/meson_options.txt
->>>> index 292625af08a..030231492e1 100644
->>>> --- a/meson_options.txt
->>>> +++ b/meson_options.txt
->>>> @@ -391,6 +391,9 @@ option('containers', type: 'boolean', value: true,
->>>>          description: 'use containers to cross compile tcg tests')
->>>>   option('container_command', type: 'string',
->>>>          description: 'command to build/run containers')
->>>> +option('container_registry', type: 'string',
->>>> +       value: 'registry.gitlab.com/qemu-project/qemu',
->>>> +       description: 'container registry to cache from')
->>>>     option('tcg_tests_cross_cc_aarch64', type: 'string',
->>>>          description: 'cc for aarch64 tcg tests')
->>>> diff --git a/tests/docker/Makefile.include b/tests/docker/Makefile.inc=
-lude
->>>> index 0adddb6a5c6..74bf471f171 100644
->>>> --- a/tests/docker/Makefile.include
->>>> +++ b/tests/docker/Makefile.include
->>>> @@ -11,9 +11,7 @@ USER =3D $(if $(NOUSER),,$(shell id -un))
->>>>   UID =3D $(if $(NOUSER),,$(shell id -u))
->>>>     DOCKER_FILES_DIR :=3D $(SRC_PATH)/tests/docker/dockerfiles
->>>> -ifeq ($(HOST_ARCH),x86_64)
->>>> -DOCKER_DEFAULT_REGISTRY :=3D registry.gitlab.com/qemu-project/qemu
->>>> -endif
->>>> +DOCKER_DEFAULT_REGISTRY ?=3D registry.gitlab.com/qemu-project/qemu
->>>>   DOCKER_REGISTRY :=3D $(if $(REGISTRY),$(REGISTRY),$(DOCKER_DEFAULT_R=
-EGISTRY))
->>>>
->>>
->>> Couldn't we read the default from config_host_mak generated by
->>> configure instead?
->>>
->>>>   CONTAINER_COMMAND ?=3D $(shell $(SRC_PATH)/tests/docker/docker.py pr=
-obe)
->>>> diff --git a/tests/tcg/meson.build b/tests/tcg/meson.build
->>>> index 814f2f8cd8c..22157a47c96 100644
->>>> --- a/tests/tcg/meson.build
->>>> +++ b/tests/tcg/meson.build
->>>> @@ -101,6 +101,9 @@ if get_option('containers')
->>>>     endif
->>>>   endif
->>>>   tcg_tests_summary +=3D {'container command': container_command}
->>>> +if get_option('container_registry') !=3D ''
->>>> +  tcg_tests_summary +=3D {'container registry': get_option('container=
-_registry')}
->>>> +endif
->>>>     # plugins come first, as we need to build the list
->>>>   test_plugins =3D {}
->>>> @@ -257,6 +260,9 @@ foreach target, plan: tcg_tests
->>>>       if cc_dockerfile not in image_targets and has_docker
->>>>         cmd =3D [docker_wrapper, 'build', '-f', dockerfile, '-t', 'qem=
-u/' + cc_dockerfile,
->>>>                '--add-current-user']
->>>> +      if get_option('container_registry') !=3D ''
->>>> +        cmd +=3D ['--registry', get_option('container_registry')]
->>>> +      endif
->>>>         t =3D custom_target(image_name, command: cmd,
->>>>                           build_by_default: false,
->>>>                           output: 'no_output_' + image_name)
->>>
->>> Do user benefit from this, or is it mostly for CI need?
->>=20
->> The aim is for faster image builds because the CI registry should always
->> be up to date. Most of the time the images don't change.
->>
+On Tue, Sep 15, 2026 at 5:24=E2=80=AFPM Peter Maydell <peter.maydell@linaro=
+.org>
+wrote:
+
+> On Sun, 13 Sept 2026 at 19:17, Strahinja Jankovic
+> <strahinja.p.jankovic@gmail.com> wrote:
+> >
+> > This patch implements Allwinner A10 GPIO peripheral emulation.
+> >
+> > The emulation focuses on input/output and interrupt functionality,
+> > whereas the drive and pull up/down functionality is not emulated.
+> >
+> > Signed-off-by: Strahinja Jankovic <strahinja.p.jankovic@gmail.com>
 >
-> Ok. In this case, you need to add --timestamp 0 (that's enough in what I
-> tested) to original build command that generates those layers from our
-> CI, and use it here also. Else --cache-from does not work as intended
-> and you'll see have some duplication because timestamp is part of hash
-> for each layer.
+> > +static inline void allwinner_gpio_update_all_output_lines(AWGPIOState
+> *s)
+> > +{
+> > +    for (int port =3D 0; port < AW_GPIO_PORTS_NUM; port++) {
+> > +        port_update_output_lines(s, port);
+> > +    }
+> > +}
 >
-> See this guide for more info:
-> https://docs.redhat.com/en/documentation/red_hat_enterprise_linux/10/html=
-/building_running_and_managing_containers/introduction-to-reproducible-cont=
-ainer-builds
+> This doesn't compile on clang because this function has no callers:
+>
+> ../../hw/gpio/allwinner-gpio.c:257:20: error: unused function
+> 'allwinner_gpio_update_all_output_lines' [-Werror,-Wunused-function]
+>   257 | static inline void
+> allwinner_gpio_update_all_output_lines(AWGPIOState *s)
+>       |                    ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+> 1 error generated.
+>
+> Should it be being called somewhere, or is it just a leftover
+> from an earlier revision of the series?
+>
 
-Hmm is that a podman only option?
+Correct, it was used only in the reset function, but I removed the call
+after your comment that
+the reset function should not update outbound gpio lines.
 
->>> The effect is to use --cache-from $registry, which I'm not sure is
->>> what we want by default, given all the "caching issues" we had
->>> previously with dockerfiles already.
->>> If that's for CI, maybe it could simply set with --container-command
->>> in our CI only.
->>>
->>> Regards,
->>> Pierrick
->>=20
+I will remove this function in the next revision.
 
---=20
-Alex Benn=C3=A9e
-Virtualisation Tech Lead @ Linaro
+Best regards,
+Strahinja
+
+
+>
+> thanks
+> -- PMM
+>
+
+--000000000000269119065b89228a
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr"><div dir=3D"ltr"><div dir=3D"ltr"><br></div><br><div class=
+=3D"gmail_quote"><div dir=3D"ltr" class=3D"gmail_attr">On Tue, Sep 15, 2026=
+ at 5:24=E2=80=AFPM Peter Maydell &lt;<a href=3D"mailto:peter.maydell@linar=
+o.org" target=3D"_blank">peter.maydell@linaro.org</a>&gt; wrote:<br></div><=
+blockquote class=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8ex;border-l=
+eft:1px solid rgb(204,204,204);padding-left:1ex">On Sun, 13 Sept 2026 at 19=
+:17, Strahinja Jankovic<br>
+&lt;<a href=3D"mailto:strahinja.p.jankovic@gmail.com" target=3D"_blank">str=
+ahinja.p.jankovic@gmail.com</a>&gt; wrote:<br>
+&gt;<br>
+&gt; This patch implements Allwinner A10 GPIO peripheral emulation.<br>
+&gt;<br>
+&gt; The emulation focuses on input/output and interrupt functionality,<br>
+&gt; whereas the drive and pull up/down functionality is not emulated.<br>
+&gt;<br>
+&gt; Signed-off-by: Strahinja Jankovic &lt;<a href=3D"mailto:strahinja.p.ja=
+nkovic@gmail.com" target=3D"_blank">strahinja.p.jankovic@gmail.com</a>&gt;<=
+br>
+<br>
+&gt; +static inline void allwinner_gpio_update_all_output_lines(AWGPIOState=
+ *s)<br>
+&gt; +{<br>
+&gt; +=C2=A0 =C2=A0 for (int port =3D 0; port &lt; AW_GPIO_PORTS_NUM; port+=
++) {<br>
+&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 port_update_output_lines(s, port);<br>
+&gt; +=C2=A0 =C2=A0 }<br>
+&gt; +}<br>
+<br>
+This doesn&#39;t compile on clang because this function has no callers:<br>
+<br>
+../../hw/gpio/allwinner-gpio.c:257:20: error: unused function<br>
+&#39;allwinner_gpio_update_all_output_lines&#39; [-Werror,-Wunused-function=
+]<br>
+=C2=A0 257 | static inline void<br>
+allwinner_gpio_update_all_output_lines(AWGPIOState *s)<br>
+=C2=A0 =C2=A0 =C2=A0 |=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~<br>
+1 error generated.<br>
+<br>
+Should it be being called somewhere, or is it just a leftover<br>
+from an earlier revision of the series?<br></blockquote><div><br></div><div=
+>Correct, it was used only in the reset function, but I removed the call af=
+ter your comment that=C2=A0</div><div><span style=3D"background-color:trans=
+parent">the reset function should not update outbound gpio lines.</span></d=
+iv><div><span style=3D"background-color:transparent"><br></span></div><div>=
+<span style=3D"background-color:transparent">I will remove this function in=
+ the next revision.</span></div><div><span style=3D"background-color:transp=
+arent"><br></span></div><div>Best regards,</div><div>Strahinja</div><div>=
+=C2=A0</div><blockquote class=3D"gmail_quote" style=3D"margin:0px 0px 0px 0=
+.8ex;border-left:1px solid rgb(204,204,204);padding-left:1ex">
+<br>
+thanks<br>
+-- PMM<br>
+</blockquote></div></div>
+</div>
+
+--000000000000269119065b89228a--
 

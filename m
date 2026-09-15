@@ -4,106 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5BD27C982C5
-	for <qemu-arm@archiver.kernel.org>; Tue, 15 Sep 2026 15:32:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5431FC88E7F
+	for <qemu-arm@archiver.kernel.org>; Tue, 15 Sep 2026 15:41:40 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1x6V8t-0000Pq-V2; Tue, 15 Sep 2026 11:32:20 -0400
+	id 1x6VHk-0002m5-CK; Tue, 15 Sep 2026 11:41:29 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1x6V8r-0000PW-Sv
- for qemu-arm@nongnu.org; Tue, 15 Sep 2026 11:32:18 -0400
-Received: from mail-yx2-x11.google.com ([2607:f8b0:4864:41::11])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1x6V8p-0005km-H8
- for qemu-arm@nongnu.org; Tue, 15 Sep 2026 11:32:17 -0400
-Received: by mail-yx2-x11.google.com with SMTP id
- 956f58d0204a3-66e4aac92dbso518999d50.2
- for <qemu-arm@nongnu.org>; Tue, 15 Sep 2026 08:32:14 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1789486333; cv=none;
- d=google.com; s=arc-20260327;
- b=LhLU5eee6LCsVPahC56R48Y6tWFxEyp4VcVMt3yBn4I2QJQaV8mOu3rSpPlobjlZe2
- iJ8h1aoFPNz+23l8uN9sS4/AevucwzI/yGCFaU96u7F69ZbkFvvd6Q/6xtx+rF1MV8sz
- dXGvKNV1r6m6ePTh3rW+A033Bftah32n5ag0BpaXQ4uOX6eEr2uScD5+WMkD+V+m3aSj
- 73E7sqZH3yUZcM4yOU0puHmIAGTAOsnWFhgT9lmMY3YE6aaKwTdh6FZYtxU0WDX4zzwi
- oVUmHhwi79RyhWUJtFswCGJZGBJcsOTdJUrQ34q2KrRw0hv2AJ6CJfDQ5IOsb02wd21Y
- aDzw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
- s=arc-20260327; 
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:dkim-signature;
- bh=kDfQfufnfBJUyNtSydy9xsVwpmfRYg7ynzDy9E1+p48=;
- fh=NOSum5azIrZu+WcGb0PU+bF1PpES+8TOy+xrL/WzQvw=;
- b=fFCzpsbywSWfoa7fY9d6eepKVZeS2n5IssvAoFdcx1xMDluAWydM9vRcNLAoQMnxul
- fWwkQT+3RU0XPTwfAT9QB5Vl5ElfL5+mzFO941YcqJ45DS97hHrAoTO59GfQ7QeGW5B+
- 7Bnf/dwHVkMA9nY+1BfzoI5+og7PwaSeOsvO4PxDmcDxRtM3+2J+OkIepPWaTD0EHKNy
- GzKquxoOiW18m3XokgJ06WMHO3mnvy45PSiOcL+CdSN/UaDZxILqkqdkKOk5G51nDpPi
- rRlI4rsUVJiGaez5h7YgVEQiiV4MqnOTae2cWAgtIMFZz+BYfakupGIle7WVpSdtpNnP
- kC8Q==; darn=nongnu.org
-ARC-Authentication-Results: i=1; mx.google.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1789486333; x=1790091133; darn=nongnu.org;
- h=content-type:cc:to:subject:message-id:date:from:in-reply-to
- :references:mime-version:from:to:cc:subject:date:message-id:reply-to
- :content-type; bh=kDfQfufnfBJUyNtSydy9xsVwpmfRYg7ynzDy9E1+p48=;
- b=U371fyrn3aqHSkqmJ0cRmbyP3AM9NFQhGsheFNNNZxIIT52zoTEfZCXzpNqgoIzlhq
- O8zeeDgBfbfj/3U4Kt5JYwfagc/w0Z9PPx2pdRCbnUMViyxoZtx63PqpM4Gt3L8NPxUi
- Cf8UE4CaRJnfvw11aCk5GSYR6WoqI3pZUs3qLzCNk2Dni4qZEdpig29jyhwHYzdUSDw4
- 2t1VJu43uQMofQqN3mUVSt6QV4jpdeTweiUL0LOVDLWJtqURqMkqUq8dUj7nE+996pnX
- UKkb77WY9bvmg5SCTbVL9kLeYegLTpzQ1Bz2iaKsEbgnd6HYLU2HhDoaEQ3tn/UrL0CB
- WbRg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20260707; t=1789486333; x=1790091133;
- h=content-type:cc:to:subject:message-id:date:from:in-reply-to
- :references:mime-version:x-gm-gg:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to:content-type;
- bh=kDfQfufnfBJUyNtSydy9xsVwpmfRYg7ynzDy9E1+p48=;
- b=i18m5CYjg3aTWTLvIl6wfLwAkj1+MBu9vcHbHACDaLTMl4yOJQi1Ql3PUzCzhiXvOO
- qagGPTi0HD9/jJWNV30QqwmYsboVJuPKQapXShA9os/RPg29dl8u/PwJx7bO+2Flq7Vx
- 9BcWWSYzLsHgxmHbVTBPAKd8diKLKtOrAs9AlkTHItA1Yv2P5aeGha8nIHc2R16F5UrK
- zRQb9X+M7SYPXBeRDAAUP/HywkcZGRdf+dzZ4UZS4hR06e6DtsyYgXviC17BGrSSypCJ
- mvbi/QGyE4SsKx8sK+yNVoN3OCB16h+fcfYn2TQCbeg2jxyY3ac2UE/RRiLx1RR9Xwa2
- 31DQ==
-X-Forwarded-Encrypted: i=1;
- AKwUvBx0FjZCEYFnd8n/qwrPPaifM35h4AMtryxzmNNhcs6hLc9b0RKcmiT6oqZFX00C4IpE9UZ5E9H12A==@nongnu.org
-X-Gm-Message-State: AFuF++lux3QcWZDpPp2A/4pl1Ydy1Qmh/P16P0qCp+4eT/AN6qgs/bYc
- TMntfZVOW3BZPAscIl0Tioofsl+SzRaT/RR7LFFMBS5U6dm2NbR6lOqFMrjDqcCb8xrpKIEVQgj
- MEUqpAGDJCflKZ60+SAQUycEdC9Yqts0if8P/dGRODQ==
-X-Gm-Gg: AYBFou0iz1jTXMe1ZNFFL71ISveOtMRYANkEYjV7lkR0KjdmLArdiXAqP6MYENIF8qg
- xxqMS3S6/7+VWyULLSrLE3Ch+doeVAiOUAiRt8dG1+vnANOZXWWrCDstcyzOLcUD9V3DRTt4He1
- nqmkcMNHc8iaCO/wDkpwjaUX6YdXL8XMyLeYTh3jk1oVEWszTELsYxVE+iQK+gvE3V5WE9h7o5o
- PCeLCzGrTPqBJmwOOfZGKZ/IGS5qJjzOVTLZQvALdd+320SdzZ2AZEQYefZwMMLMjVT1a+2+S9a
- LOu2CoSfHOC4H0qHPqFFjvdRknyA0twskXWb9SGSJLkqtDrlo2WTOX4gNbPWDHqtOu3UNvRZTai
- WXxTtvMq4wRpyzslNbwQE+UFbvmgdph6+4s3vJ70=
-X-Received: by 2002:a05:690e:4084:b0:667:b84f:e402 with SMTP id
- 956f58d0204a3-6715cba53f9mr561851d50.50.1789486333292; Tue, 15 Sep 2026
- 08:32:13 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <tangtao1634@phytium.com.cn>)
+ id 1x6VHh-0002lP-OY; Tue, 15 Sep 2026 11:41:25 -0400
+Received: from zg8tmtyylji0my4xnjqumte4.icoremail.net ([162.243.164.118])
+ by eggs.gnu.org with esmtp (Exim 4.90_1)
+ (envelope-from <tangtao1634@phytium.com.cn>)
+ id 1x6VHe-0007Vl-Ec; Tue, 15 Sep 2026 11:41:25 -0400
+Received: from prodtpl.icoremail.net (unknown [10.12.1.20])
+ by hzbj-icmmx-6 (Coremail) with UTF8SMTP id AQAAfwAHfN0cZ6lqDWsEAA--.7924S2;
+ Tue, 15 Sep 2026 23:41:16 +0800 (CST)
+Received: from [192.168.2.9] (unknown [113.246.118.246])
+ by mail (Coremail) with SMTP id AQAAf8DwBXQaZ6lq9HfWAA--.37445S2;
+ Tue, 15 Sep 2026 23:41:15 +0800 (CST)
+Message-ID: <7ee4a2df-d295-49a0-a8d9-51e74576ec68@phytium.com.cn>
+Date: Tue, 15 Sep 2026 23:41:14 +0800
 MIME-Version: 1.0
-References: <20260913-allwinner-gpio-v3-0-a9affa474b3b@gmail.com>
- <20260913-allwinner-gpio-v3-3-a9affa474b3b@gmail.com>
-In-Reply-To: <20260913-allwinner-gpio-v3-3-a9affa474b3b@gmail.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 15 Sep 2026 16:32:01 +0100
-X-Gm-Features: AcwNN1XK-5z_vfTfxjcU7TSFEKGqx6VwiVAAk7VJVW6c2JCjP-nmIdD-OUAPr78
-Message-ID: <CAFEAcA9SRQz2aK8=T2y=n20Xq6RcFE61aDLxOyViYNj-V72P_Q@mail.gmail.com>
-Subject: Re: [PATCH v3 3/3] tests/qtest: Allwinner GPIO tests
-To: Strahinja Jankovic <strahinja.p.jankovic@gmail.com>
-Cc: qemu-devel@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>,
- qemu-arm@nongnu.org, Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>,
- Fabiano Rosas <farosas@suse.de>, 
- Laurent Vivier <lvivier@redhat.com>, Jack wang <163wangjack@gmail.com>
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:41::11;
- envelope-from=peter.maydell@linaro.org; helo=mail-yx2-x11.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
+User-Agent: Mozilla Thunderbird
+Subject: Re: [RFC v5 17/28] hw/arm/smmuv3: Add access checks for STRTAB_BASE
+ and CR2 registers
+To: Mostafa Saleh <smostafa@google.com>
+Cc: Eric Auger <eric.auger@redhat.com>,
+ Peter Maydell <peter.maydell@linaro.org>, qemu-devel@nongnu.org,
+ qemu-arm@nongnu.org, Chen Baozi <chenbaozi@phytium.com.cn>,
+ Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>,
+ =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@mailo.com>,
+ Chao Liu <chao.liu@processmission.com>,
+ Jim MacArthur <jim.macarthur@linaro.org>
+References: <20260813161515.2788900-1-tangtao1634@phytium.com.cn>
+ <20260813162558.2808607-2-tangtao1634@phytium.com.cn>
+ <apbfjNgfmlRKWaqQ@google.com>
+From: Tao Tang <tangtao1634@phytium.com.cn>
+In-Reply-To: <apbfjNgfmlRKWaqQ@google.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+X-CM-TRANSID: AQAAf8DwBXQaZ6lq9HfWAA--.37445S2
+X-CM-SenderInfo: pwdqw3tdrrljuu6sx5pwlxzhxfrphubq/1tbiAQATBWqoS0kibQACsa
+Authentication-Results: hzbj-icmmx-6; spf=neutral smtp.mail=tangtao163
+ 4@phytium.com.cn;
+X-Coremail-Antispam: 1Uk129KBjvJXoW3JFWDZr4xXFWrXry5CrWDXFb_yoW7Xw43pr
+ WkGa1agr48tFy2g3ZxJayjyw43G3yvgF1UAry7GFyDZ34Yyr98JF4UWrW3Was7XryUAws2
+ yFW2kay3urW8tFJanT9S1TB71UUUUUDqnTZGkaVYY2UrUUUUj1kv1TuYvTs0mT0YCTnIWj
+ DUYxn0WfASr-VFAU7a7-sFnT9fnUUIcSsGvfJ3UbIYCTnIWIevJa73UjIFyTuYvj4RJUUU
+ UUUUU
+Received-SPF: pass client-ip=162.243.164.118;
+ envelope-from=tangtao1634@phytium.com.cn;
+ helo=zg8tmtyylji0my4xnjqumte4.icoremail.net
+X-Spam_score_int: -25
+X-Spam_score: -2.6
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-Spam_report: (-2.6 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_LOW=-0.7,
+ RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -119,17 +78,151 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Sun, 13 Sept 2026 at 19:18, Strahinja Jankovic
-<strahinja.p.jankovic@gmail.com> wrote:
->
-> Add Allwinner GPIO set of qtests to validate functionality.
-> Tests cover input and output port setting, as well as interrupt
-> functionality.
->
-> Signed-off-by: Strahinja Jankovic <strahinja.p.jankovic@gmail.com>
+Hi Mostafa,
 
-Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
+On 9/1/2026 10:22 PM, Mostafa Saleh wrote:
+> On Fri, Aug 14, 2026 at 12:25:55AM +0800, Tao Tang wrote:
+>> Add access control for SMMU_STRTAB_BASE and SMMU_CR2 registers to
+>> ensure they can only be modified when the SMMU is disabled.
+>>
+>> This implements:
+>> - smmuv3_smmu_disabled_stable(): Check whether the SMMU is in a stable
+>>     disabled state (CR0.SMMUEN == 0 and CR0ACK.SMMUEN == 0);
+>> - smmu_strtab_base_writable(): returns true only when IDR1.TABLES_PRESET==0
+>>     and SMMU is completely disabled.
+>>
+>> Additionally, mask reserved bits on writes to SMMU_STRTAB_BASE using
+>> SMMU_STRTAB_BASE_RESERVED.
+>>
+>> Fixes: fae4be38b35d ("hw/arm/smmuv3: Implement MMIO write operations")
+>> Signed-off-by: Tao Tang <tangtao1634@phytium.com.cn>
+>> Reviewed-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
+>> ---
+>>   hw/arm/smmuv3.c | 69 +++++++++++++++++++++++++++++++++++++++++++++++--
+>>   1 file changed, 67 insertions(+), 2 deletions(-)
+>>
+>> diff --git a/hw/arm/smmuv3.c b/hw/arm/smmuv3.c
+>> index 628911d3f21..de8ca7cda48 100644
+>> --- a/hw/arm/smmuv3.c
+>> +++ b/hw/arm/smmuv3.c
+>> @@ -1484,6 +1484,36 @@ smmu_gerror_irq_cfg_writable(SMMUv3State *s, SMMUSecSID sec_sid)
+>>       return smmu_irq_cfg_writable(s, sec_sid, SMMU_IRQ_GERROR);
+>>   }
+>>   
+>> +static inline int smmuv3_get_cr0ack_smmuen(SMMUv3State *s, SMMUSecSID sec_sid)
+>> +{
+>> +    /*
+>> +     * CR0, CR0ACK, S_CR0 and S_CR0ACK are bit-layout compatible, so we reuse
+>> +     * the CR0 field definitions and only switch banks via sec_sid to reduce
+>> +     * code duplication. Also the other bits in CR0/CR0ACK are relevant here.
+>> +     */
+>> +    return FIELD_EX32(s->bank[sec_sid].cr0ack, CR0, SMMUEN);
+>> +}
+>> +
+>> +/* Check if SMMU is disabled in stable status */
+>> +static inline bool smmuv3_smmu_disabled_stable(SMMUv3State *s, SMMUSecSID sec_sid)
+>> +{
+>> +    int cr0_smmuen = smmu_enabled(s, sec_sid);
+>> +    int cr0ack_smmuen = smmuv3_get_cr0ack_smmuen(s, sec_sid);
+>> +    return (cr0_smmuen == 0 && cr0ack_smmuen == 0);
+>> +}
+>> +
+>> +/* Check if STRTAB_BASE register is writable */
+>> +static bool smmu_strtab_base_writable(SMMUv3State *s, SMMUSecSID sec_sid)
+>> +{
+>> +    /* SMMU_IDR1.TABLES_PRESET applies to both modeled interfaces. */
+>> +    if (FIELD_EX32(s->bank[SMMU_SEC_SID_NS].idr[1], IDR1, TABLES_PRESET)) {
+>> +        return false;
+>> +    }
+>> +
+> Again, I think those are not configurable at the moment, so I'd drop
+> such checks.
+>
+I'll drop the TABLES_PRESET check.
 
-thanks
--- PMM
+I added it to avoid further changes here when TABLES_PRESET support is 
+implemented, but I agree that the simpler approach is clearer for now. 
+(There are also many similar places in patchset that follow this 
+approach such as IDR0.MSI in patch16)
+
+>> +    /* Check SMMUEN conditions for the specific security domain */
+>> +    return smmuv3_smmu_disabled_stable(s, sec_sid);
+>> +}
+>> +
+>>   static int smmuv3_cmdq_consume(SMMUv3State *s, Error **errp, SMMUSecSID sec_sid)
+>>   {
+>>       SMMUState *bs = ARM_SMMU(s);
+>> @@ -1801,7 +1831,14 @@ static MemTxResult smmu_writell(SMMUv3State *s, hwaddr offset,
+>>           bank->gerror_irq_cfg0 = data & SMMU_GERROR_IRQ_CFG0_RESERVED;
+>>           return MEMTX_OK;
+>>       case A_STRTAB_BASE:
+>> -        bank->strtab_base = data;
+>> +        if (!smmu_strtab_base_writable(s, reg_sec_sid)) {
+>> +            qemu_log_mask(LOG_GUEST_ERROR,
+>> +                          "STRTAB_BASE write ignored: register is RO\n");
+>> +            return MEMTX_OK;
+>> +        }
+>> +
+>> +        /* Clear reserved bits according to spec */
+>> +        bank->strtab_base = data & SMMU_STRTAB_BASE_RESERVED;
+>>           return MEMTX_OK;
+>>       case A_CMDQ_BASE:
+>>           bank->cmdq.base = data;
+>> @@ -1852,7 +1889,15 @@ static MemTxResult smmu_writel(SMMUv3State *s, hwaddr offset,
+>>           bank->cr[1] = data;
+>>           break;
+>>       case A_CR2:
+>> -        bank->cr[2] = data;
+>> +        if (smmuv3_smmu_disabled_stable(s, reg_sec_sid)) {
+>> +            /* Allow write: SMMUEN is 0 in both CR0 and CR0ACK */
+>> +            bank->cr[2] = data;
+>> +        } else {
+>> +            /* CONSTRAINED UNPREDICTABLE behavior: Ignore this write */
+>> +            qemu_log_mask(LOG_GUEST_ERROR,
+>> +                          "CR2 write ignored: register is read-only when "
+>> +                          "CR0.SMMUEN or CR0ACK.SMMUEN is set\n");
+>> +        }
+>>           break;
+>>       case A_IRQ_CTRL:
+>>           bank->irq_ctrl = data;
+>> @@ -1915,12 +1960,32 @@ static MemTxResult smmu_writel(SMMUv3State *s, hwaddr offset,
+>>           }
+>>           break;
+>>       case A_STRTAB_BASE: /* 64b */
+>> +        if (!smmu_strtab_base_writable(s, reg_sec_sid)) {
+>> +            qemu_log_mask(LOG_GUEST_ERROR,
+>> +                          "STRTAB_BASE write ignored: register is RO\n");
+>> +            return MEMTX_OK;
+>> +        }
+>> +
+>> +        data &= SMMU_STRTAB_BASE_RESERVED;
+>>           bank->strtab_base = deposit64(bank->strtab_base, 0, 32, data);
+>>           break;
+>>       case A_STRTAB_BASE + 4:
+>> +        if (!smmu_strtab_base_writable(s, reg_sec_sid)) {
+>> +            qemu_log_mask(LOG_GUEST_ERROR,
+>> +                          "STRTAB_BASE + 4 write ignored: register is RO\n");
+>> +            return MEMTX_OK;
+>> +        }
+>> +
+>> +        data &= SMMU_STRTAB_BASE_RESERVED;
+> SMMU_STRTAB_BASE_RESERVED is the mask for the whole stream table base it
+> doesn't apply to A_STRTAB_BASE + 4 offset.
+
+You're right. It should be:
+
+data &= SMMU_STRTAB_BASE_RESERVED >> 32;
+
+
+  I'll also check for similar mask misuse elsewhere.
+
+>
+> Thanks,
+> Mostafa
+
+
+Thanks,
+
+Tao
+
 

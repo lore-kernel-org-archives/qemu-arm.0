@@ -4,67 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 947AAC88E7F
-	for <qemu-arm@archiver.kernel.org>; Tue, 15 Sep 2026 16:05:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A90B3C88E75
+	for <qemu-arm@archiver.kernel.org>; Tue, 15 Sep 2026 16:05:49 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1x6VbI-0007km-3M; Tue, 15 Sep 2026 12:01:40 -0400
+	id 1x6VbM-0007q4-Vc; Tue, 15 Sep 2026 12:01:45 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <ruslichenko.r@gmail.com>)
- id 1x6VbG-0007jE-Ie
- for qemu-arm@nongnu.org; Tue, 15 Sep 2026 12:01:38 -0400
-Received: from mail-ej2-x10.google.com ([2a00:1450:4864:34::10])
+ id 1x6VbJ-0007lm-74
+ for qemu-arm@nongnu.org; Tue, 15 Sep 2026 12:01:41 -0400
+Received: from mail-ed2-x10.google.com ([2a00:1450:4864:33::10])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <ruslichenko.r@gmail.com>)
- id 1x6VbE-0003Q0-08
- for qemu-arm@nongnu.org; Tue, 15 Sep 2026 12:01:38 -0400
-Received: by mail-ej2-x10.google.com with SMTP id
- a640c23a62f3a-c294af0caa8so69747866b.1
- for <qemu-arm@nongnu.org>; Tue, 15 Sep 2026 09:01:25 -0700 (PDT)
+ id 1x6VbF-0003Sj-NQ
+ for qemu-arm@nongnu.org; Tue, 15 Sep 2026 12:01:40 -0400
+Received: by mail-ed2-x10.google.com with SMTP id
+ 4fb4d7f45d1cf-6a6056ac81fso855039a12.2
+ for <qemu-arm@nongnu.org>; Tue, 15 Sep 2026 09:01:37 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20251104; t=1789488084; x=1790092884; darn=nongnu.org;
+ d=gmail.com; s=20251104; t=1789488096; x=1790092896; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to:content-type;
- bh=s87rPVbRxcHD+WW42I4Y9cf1mEIYsz0a2YMHIlkLiHI=;
- b=dy/UH7RSrqITRhsgLuL03A2zLuaLg0yVOBWTKgxiz85VX2TqeDkiBvJNepWKQAFeUn
- /yvFV/0Z1q6ZzS8FGE6m0DlTZNHFi4VpIWU5ft8TB72ZcTrMNdJIrS1clBEyIc3Mh2Lj
- ZdHGngZ8YmxQbXFdhjm5ZUBK96gCP3w60m+Lu0/6oor8c0HhQ4j3QEML9YvFnnGsYv+z
- rgYMItygPS5gBpJRnQVZ1whiSIfcDs4I9ZZAigYS+UU0wSohf+PuN9TLIDHc/Oe5/6GM
- Nb2sKBIL8J3xT2LVilP0CRjByOfNxNQRd6nRWvSWQvvkoA+VlCn/vsY/UKYzYRiSXAVs
- CO3Q==
+ bh=JuywBTKM2C3b3mn1du8c5UdWRdVb6bhBO3Hc/Xe4RIM=;
+ b=LzjTj1uWJSNjcKqwxSRyL5GoZWpScHIzTSeMq0uoc/AMgTb1UOPshSnyPnd6zpva8v
+ zu3MA0lNvdZmNZgU4Aa4ijQKBzkZMOfOFKLNyGDaAPhmTVZO2VDCJVjq7vvjQt9CuBhb
+ aUnACh+hxiHFJOyZLbg0UX74Hf2hcsu6UzMf7l71NreRds6QP4ciehrG4hAoSj72GxcZ
+ WgLxmC2jqaHGTZwjiVHCOQNDlq7xYhXROLN+zebXUEkmcz8kgZK2bLwwFPXH5pQcGyuJ
+ NvC5g9j05gIpcNM8VAOdySBFBJOcgZJmXjEfdwPBzJ1WnP7bXY/J2ca2crjgxqCrUIoQ
+ SGag==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20260707; t=1789488084; x=1790092884;
+ d=1e100.net; s=20260707; t=1789488096; x=1790092896;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
  :to:cc:subject:date:message-id:reply-to:content-type;
- bh=s87rPVbRxcHD+WW42I4Y9cf1mEIYsz0a2YMHIlkLiHI=;
- b=uFSIeD8hrE8y5Djzcp71N0P1G8C1gI6uXKuZcgklrn5d3WVax5j3j6LWKwh0xvpt2I
- o3zIVfcubkieu6iwJcbyu/8HxrQKfuclDeHtiTqsig1llF/qGLJ3Y5rkYwdn+V/YTWan
- CIWou0Y5rIZi6EalqnOOSweZv0DFrDokCWTdm2LN34N629+0WMdmcEo3+HkTa/9Z8qCW
- BuyPs0Skn4HQXFRzZ0i74XNhSggWQObJKhI3sxI56c9ClE++hiUuCEFb8STMJzlWLPKl
- PMt7N0mmOTqxr2CuvLVRJx3EHgzHDRcwVpV20zCe+3h7MZPzmE8Cd3sgOUdgvTibZLBd
- VKsw==
-X-Gm-Message-State: AFuF++m+nCoeWkJXeY8tSYAkWyDrm55K2jAYtsjwi7+XF0NzlbX9LH3S
- YYHmsQycyPSeav4yQejI3yTv1lL191zH2kpsRVOFVhWBwijt8myU115O
-X-Gm-Gg: AYBFou2p0yqZRn2wd5lF6B+nKMcNoEm6o4iRPyKDx6PQYh6Pwv9Ve4hjN0P4QdGEBI3
- NHVG2Lw6iCjmAnbFNYq9jZXcL+H6z6QvampKhY5Q0BAhbOn2uC7dsAG7PPDvUbYrhNU1pZHyeWE
- simGuXHliN3ENmc+vn3TbBpQ+DJiJKj9f8y5eCyGJ39t7YH8/mSVbLbgHPij6S4sOV7nLOJ00pw
- D4z+Eo0m/S7BfM+I31HBqpAek0Cv40QSTjBK/hO6zRuRhfd5B+vgb7y91/dU/92l0W3TnBTL3k2
- TtwSXeFoxx86IfgnXRdqVTUCs/acU0Ia/pev6GYLnpqcblZCRSkNY5+pDZ3jFCNwolF8ziDTLO4
- xP6vml4smEpI/tLgZPk88Behe5Hq0LLuxt04VRcqTe/bPK2L5o1FgYpTgyUxDwjuleE39TDPnR1
- alVQa0QdyK4Ntw1eHddr9lZIevQSD3cfxJxHCH2ao8kEQgtBB1q/78z4tfnAgdRGNN6eh9spk2+
- xW1K2PMzAmR0pCwW/v4zJttzf6Cllz8KB75WizScdtDUw==
-X-Received: by 2002:a17:907:724a:b0:c15:f26a:3438 with SMTP id
- a640c23a62f3a-c29d78ec66bmr133940666b.24.1789488084070; 
- Tue, 15 Sep 2026 09:01:24 -0700 (PDT)
+ bh=JuywBTKM2C3b3mn1du8c5UdWRdVb6bhBO3Hc/Xe4RIM=;
+ b=lP67DDQerGxf5flOkL3o9k+zs9greEiHk/Hh4IaU5doJ+c/faCOXekPRWX/lVj+s13
+ UR2OBq3cqN0lNKUylGPTT5NdZUm05CP/ajWARvvrkQme1ImGG3Q81HDI1yUGUCVDEsGJ
+ iyIZJU1RTFhjGpJP8OG/ewjXMoaImLUDvNMcR/+olPsLhhS7PBdxOcEWTwQasmx79Ldo
+ xlp/NO+4gALGvhHoSap+eCk0pmnbO2+qA/x7GUhvFCcd8t6MfEFICVQMNg3bsJjq+iaX
+ doIUK3gzlnhL9PfpaMozmUgsgwJqlEsTgJV9aihQY29Gk1dHSk8jS4EVaU89v2dEPlHT
+ rsQg==
+X-Gm-Message-State: AFuF++n5YWqZ0ZDgh5OiHAm477XlmE783B/dM5fm/1g4T8V+deT2QBHZ
+ kqU4RJez8OoqaIztxiRmdmUxkxUApol91h8UKSrYugTJwwHFPrHbfo2mKjC47w==
+X-Gm-Gg: AYBFou02S4LQp6euEsEBlKHdb8gizNRFThN7RHY5LbnOMshIMkoAjGHFYifrgvPHoB1
+ Su5CqRjf4PLTfdP8hKU0u8d4kOJAOqWUT47rUicl8HOKLkVaG1o3VAmDudpH03QNTWsexaap0xw
+ pHQi70J+2JbVndfrHi/wEDSxNLTsOSrprg+X3029feGn28/8Cd56OEJB/7KAp0M9qVnoh0iMdmA
+ +RTTc+KOE5XrNVBi8IBCJmFLIA/IFab/ak7b+zFydfvbiXHgM6pwqL2e8EXwP5l0b849w9KpYNF
+ RUZMifTm2AX+bnH+lNnYpstHnU91EcWPMgYoOhkQyRUYXPrYy/Gq0YCqwxXiSduENPSrFSInv0D
+ d3c+iqJY5B+C2C29hP8qntBRjeWJEWvH1ovsXO4zgXuY/2GZ9p8W7HsjBtaPG/l6xpt/108U7fj
+ J68hz/Q4cwaitHrkn0P6UWqAzEPyJEg6GKW3Bx9INzKaXGiosRQ0MCe1M/fWRdGDgPjjD+I6W7Q
+ L06hyrK2YRQH75CvBZtZ6UWf8XKq7Z5LhQALWF5HHtpBQ==
+X-Received: by 2002:a17:907:94ca:b0:c24:47b8:ae5b with SMTP id
+ a640c23a62f3a-c29d780ce9cmr126218066b.22.1789488096170; 
+ Tue, 15 Sep 2026 09:01:36 -0700 (PDT)
 Received: from thinkpad-t470s.. (83-131-196-251.adsl.net.t-com.hr.
  [83.131.196.251]) by smtp.googlemail.com with ESMTPSA id
- a640c23a62f3a-c29ddd86344sm3235866b.0.2026.09.15.09.01.22
+ a640c23a62f3a-c29ddd86344sm3235866b.0.2026.09.15.09.01.34
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 15 Sep 2026 09:01:23 -0700 (PDT)
+ Tue, 15 Sep 2026 09:01:35 -0700 (PDT)
 From: Ruslan Ruslichenko <ruslichenko.r@gmail.com>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org, artem_mygaiev@epam.com, volodymyr_babchuk@epam.com,
@@ -72,24 +72,24 @@ Cc: qemu-arm@nongnu.org, artem_mygaiev@epam.com, volodymyr_babchuk@epam.com,
  edgar.iglesias@gmail.com, berrange@redhat.com, eugene@nuvacore.ai,
  Ruslan_Ruslichenko@epam.com, takahiro.nakata.wr@renesas.com,
  "Edgar E . Iglesias" <edgar.iglesias@amd.com>
-Subject: [PATCH v2 07/20] hw/core: Add Remote Port protocol thread and
- handshake
-Date: Tue, 15 Sep 2026 18:00:31 +0200
-Message-ID: <20260915160044.345788-8-ruslichenko.r@gmail.com>
+Subject: [PATCH v2 14/20] hw/core: Implement Remote Port ATS logic and cache
+ management
+Date: Tue, 15 Sep 2026 18:00:38 +0200
+Message-ID: <20260915160044.345788-15-ruslichenko.r@gmail.com>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20260915160044.345788-1-ruslichenko.r@gmail.com>
 References: <20260915160044.345788-1-ruslichenko.r@gmail.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:34::10;
- envelope-from=ruslichenko.r@gmail.com; helo=mail-ej2-x10.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:33::10;
+ envelope-from=ruslichenko.r@gmail.com; helo=mail-ed2-x10.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -107,450 +107,249 @@ Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
 From: Ruslan Ruslichenko <Ruslan_Ruslichenko@epam.com>
 
-Introduce main execution loop for the Remote Port protocol.
-Creates a dedicated thread to manage the communication lifecycle.
-This includes logic to read packets and manage RX queue.
+Complete the Remote Port ATS implementation by adding the translation
+and cache management logic.
 
-Patch also implements handshake logic to verify protocol
-versions and negotiate capabilities with remote peer.
+This patch implements:
+- The logic for ats_translate_address to resolve addresses via the
+  QEMU IOMMU translation mechanism.
+- A local cache management system to store IOMMU entries for remote
+  masters.
+- Integration with IOMMU notifiers to handle invalidation requests
+  and maintain coherency with the peer.
 
+Signed-off-by: Francisco Iglesias <francisco.iglesias@amd.com>
 Signed-off-by: Edgar E. Iglesias <edgar.iglesias@amd.com>
 Signed-off-by: Takahiro Nakata <takahiro.nakata.wr@renesas.com>
 Signed-off-by: Ruslan Ruslichenko <Ruslan_Ruslichenko@epam.com>
 ---
- hw/core/remote-port.c         | 307 +++++++++++++++++++++++++++++++++-
- hw/core/trace-events          |   5 +
- include/hw/core/remote-port.h |  29 ++++
- 3 files changed, 340 insertions(+), 1 deletion(-)
+ hw/core/remote-port-ats.c | 207 +++++++++++++++++++++++++++++++++++++-
+ 1 file changed, 205 insertions(+), 2 deletions(-)
 
-diff --git a/hw/core/remote-port.c b/hw/core/remote-port.c
-index 6b40dca52d..89f799493c 100644
---- a/hw/core/remote-port.c
-+++ b/hw/core/remote-port.c
-@@ -25,6 +25,7 @@
- #include "hw/core/qdev-properties.h"
- #include "hw/core/qdev-properties-system.h"
- #include "qemu/cutils.h"
-+#include "trace.h"
- 
- #include "hw/core/remote-port-proto.h"
- #include "hw/core/remote-port.h"
-@@ -32,6 +33,286 @@
- #define REMOTE_PORT_CLASS(klass)    \
-      OBJECT_CLASS_CHECK(RemotePortClass, (klass), TYPE_REMOTE_PORT)
- 
-+static void rp_event_read_and_process(RemotePort *s);
+diff --git a/hw/core/remote-port-ats.c b/hw/core/remote-port-ats.c
+index 793f9fc52d..d3c1365c3e 100644
+--- a/hw/core/remote-port-ats.c
++++ b/hw/core/remote-port-ats.c
+@@ -58,14 +58,217 @@ static IOMMUTLBEntry *rp_ats_lookup_translation(RemotePortATSCache *cache,
+                                                 hwaddr translated_addr,
+                                                 hwaddr len)
+ {
+-    /* TBD */
++    RemotePortATS *s = REMOTE_PORT_ATS(cache);
 +
-+static void rp_fatal_error(RemotePort *s, const char *reason)
-+{
-+    error_report("%s: %s", s->prefix, reason);
-+    exit(EXIT_FAILURE);
-+}
++    for (int i = 0; i < s->cache->len; i++) {
++        IOMMUTLBEntry *iotlb = g_array_index(s->cache, IOMMUTLBEntry *, i);
++        hwaddr masked_start = (translated_addr & ~iotlb->addr_mask);
++        hwaddr masked_end = ((translated_addr + len - 1) & ~iotlb->addr_mask);
 +
-+static ssize_t rp_recv(RemotePort *s, void *buf, size_t count)
-+{
-+    ssize_t r;
-+
-+    r = qemu_chr_fe_read_all(&s->chr, buf, count);
-+    if (r <= 0) {
-+        return r;
-+    }
-+    if (r != count) {
-+        error_report("%s: Bad read, expected %zd but got %zd",
-+                     s->prefix, count, r);
-+        rp_fatal_error(s, "Bad read");
-+    }
-+
-+    return r;
-+}
-+
-+ssize_t rp_write(RemotePort *s, const void *buf, size_t count)
-+{
-+    ssize_t r;
-+
-+    qemu_mutex_lock(&s->write_mutex);
-+    r = qemu_chr_fe_write_all(&s->chr, buf, count);
-+    qemu_mutex_unlock(&s->write_mutex);
-+    assert(r == count);
-+    if (r <= 0) {
-+        error_report("%s: Disconnected r=%zd buf=%p count=%zd",
-+                     s->prefix, r, buf, count);
-+        rp_fatal_error(s, "Bad write");
-+    }
-+    return r;
-+}
-+
-+static unsigned int rp_has_work(RemotePort *s)
-+{
-+    unsigned int work = s->rx_queue.wpos - s->rx_queue.rpos;
-+    return work;
-+}
-+
-+static void rp_cmd_hello(RemotePort *s, struct rp_pkt *pkt)
-+{
-+    s->peer.version = pkt->hello.version;
-+    if (pkt->hello.version.major != RP_VERSION_MAJOR) {
-+        error_report("remote-port version missmatch remote=%d.%d local=%d.%d",
-+                      pkt->hello.version.major, pkt->hello.version.minor,
-+                      RP_VERSION_MAJOR, RP_VERSION_MINOR);
-+        rp_fatal_error(s, "Bad version");
-+    }
-+
-+    if (pkt->hello.caps.len) {
-+        void *caps = (char *) pkt + pkt->hello.caps.offset;
-+
-+        rp_process_caps(&s->peer, caps, pkt->hello.caps.len);
-+    }
-+}
-+
-+static void rp_say_hello(RemotePort *s)
-+{
-+    struct rp_pkt_hello pkt;
-+    uint32_t caps[] = {
-+        CAP_BUSACCESS_EXT_BASE,
-+        CAP_BUSACCESS_EXT_BYTE_EN,
-+        CAP_WIRE_POSTED_UPDATES,
-+        CAP_ATS,
-+    };
-+    size_t len;
-+
-+    len = rp_encode_hello_caps(s->current_id++, 0, &pkt, RP_VERSION_MAJOR,
-+                               RP_VERSION_MINOR,
-+                               caps, caps, sizeof caps / sizeof caps[0]);
-+    rp_write(s, (void *) &pkt, len);
-+
-+    if (sizeof caps) {
-+        rp_write(s, caps, sizeof caps);
-+    }
-+}
-+
-+void rp_process(RemotePort *s)
-+{
-+    while (true) {
-+        struct rp_pkt *pkt;
-+        unsigned int rpos;
-+        bool actioned = false;
-+        RemotePortDevice *dev;
-+        RemotePortDeviceClass *rpdc;
-+
-+        qemu_mutex_lock(&s->rsp_mutex);
-+        if (!rp_has_work(s)) {
-+            qemu_mutex_unlock(&s->rsp_mutex);
-+            break;
++        if (masked_start == iotlb->translated_addr &&
++            masked_end == iotlb->translated_addr) {
++            return iotlb;
 +        }
-+        rpos = s->rx_queue.rpos;
++    }
 +
-+        pkt = s->rx_queue.pkt[rpos].pkt;
-+        trace_rp_process(s->prefix, s->rx_queue.rpos, s->rx_queue.wpos,
-+                         pkt->hdr.cmd, pkt->hdr.dev);
+     return NULL;
+ }
+ 
++static void rp_ats_cache_remove(RemotePortATS *s, IOMMUTLBEntry *iotlb)
++{
++    for (int i = 0; i < s->cache->len; i++) {
++        IOMMUTLBEntry *tmp = g_array_index(s->cache, IOMMUTLBEntry *, i);
++        hwaddr masked_start = (tmp->iova & ~iotlb->addr_mask);
++        hwaddr masked_end = ((tmp->iova | tmp->addr_mask) & ~iotlb->addr_mask);
 +
-+        /*
-+         * To handle recursiveness, we need to advance the index
-+         * index before processing the packet.
-+         */
-+        s->rx_queue.rpos++;
-+        s->rx_queue.rpos %= ARRAY_SIZE(s->rx_queue.pkt);
-+        qemu_mutex_unlock(&s->rsp_mutex);
++        if (masked_start == iotlb->iova || masked_end == iotlb->iova) {
++            g_array_remove_index_fast(s->cache, i);
++        }
++    }
++}
 +
-+        dev = s->devs[pkt->hdr.dev];
-+        if (dev) {
-+            rpdc = REMOTE_PORT_DEVICE_GET_CLASS(dev);
-+            if (rpdc->ops[pkt->hdr.cmd]) {
-+                rpdc->ops[pkt->hdr.cmd](dev, pkt);
-+                actioned = true;
++static void rp_ats_invalidate(RemotePortATS *s, IOMMUTLBEntry *iotlb)
++{
++    size_t pktlen = sizeof(struct rp_pkt_ats);
++    struct rp_pkt_ats pkt;
++    RemotePortRespSlot *rsp_slot;
++    RemotePortDynPkt *rsp;
++    size_t enclen;
++    int64_t clk;
++    uint32_t id;
++    hwaddr len = iotlb->addr_mask + 1;
++
++    id = rp_new_id(s->rp);
++    clk = rp_normalized_vmclk(s->rp);
++
++    enclen = rp_encode_ats_inv(id, s->rp_dev,
++                             &pkt,
++                             clk,
++                             0,
++                             iotlb->iova,
++                             len,
++                             0,
++                             0);
++    assert(enclen == pktlen);
++
++    rp_rsp_mutex_lock(s->rp);
++    rp_write(s->rp, (void *) &pkt, enclen);
++
++    rsp_slot = rp_dev_wait_resp(s->rp, s->rp_dev, id);
++    rsp = &rsp_slot->rsp;
++
++    /* We dont support out of order answers yet.  */
++    assert(rsp->pkt->hdr.id == id);
++
++    rp_resp_slot_done(s->rp, rsp_slot);
++    rp_rsp_mutex_unlock(s->rp);
++}
++
++static void rp_ats_cache_insert(RemotePortATS *s,
++                                hwaddr iova,
++                                hwaddr translated_addr,
++                                hwaddr mask,
++                                AddressSpace *target_as)
++{
++    IOMMUTLBEntry *iotlb;
++
++    /*
++     * Invalidate all current translations that collide with the new one and
++     * does not have the same target_as. This means that translated_addresses
++     * towards the same addresses but in different target address spaces are
++     * not allowed.
++     */
++    for (int i = 0; i < s->cache->len; i++) {
++        iotlb = g_array_index(s->cache, IOMMUTLBEntry *, i);
++        hwaddr masked_start = (translated_addr & ~iotlb->addr_mask);
++        hwaddr masked_end = ((translated_addr | mask) & ~iotlb->addr_mask);
++        bool spans_region = masked_start < iotlb->translated_addr &&
++                             masked_end > iotlb->translated_addr;
++
++        if (masked_start == iotlb->translated_addr ||
++            masked_end == iotlb->translated_addr || spans_region) {
++            hwaddr masked_iova_start;
++            hwaddr masked_iova_end;
++
++            /*
++             * Invalidated & remove the mapping if the address range hit in the
++             * cache but the target_as is different.
++             */
++            if (iotlb->target_as != target_as) {
++                rp_ats_invalidate(s, iotlb);
++                g_array_remove_index_fast(s->cache, i);
++                continue;
++            }
++
++            /*
++             * Remove duplicates with a smaller range length since the new
++             * mapping will span over it.
++             */
++            masked_iova_start = (iova & ~iotlb->addr_mask);
++            masked_iova_end = ((iova | mask) & ~iotlb->addr_mask);
++            spans_region = masked_iova_start < iotlb->iova &&
++                            masked_iova_end > iotlb->iova;
++
++            if (masked_iova_start == iotlb->iova ||
++                masked_iova_end == iotlb->iova || spans_region) {
++
++                if ((iotlb->addr_mask + 1) < (mask + 1)) {
++                    g_array_remove_index_fast(s->cache, i);
++                } else {
++                    /*
++                     * The new mapping is smaller or equal in size and is thus
++                     * already cached.
++                     */
++                    return;
++                }
++            }
++        }
++    }
++
++    iotlb = g_new0(IOMMUTLBEntry, 1);
++    iotlb->iova = iova;
++    iotlb->translated_addr = translated_addr;
++    iotlb->addr_mask = mask;
++    iotlb->target_as = target_as;
++    g_array_append_val(s->cache, iotlb);
++}
++
++static void rp_ats_iommu_unmap_notify(IOMMUNotifier *n, IOMMUTLBEntry *iotlb)
++{
++    ATSIOMMUNotifier *notifier = container_of(n, ATSIOMMUNotifier, n);
++    RemotePortATS *s = notifier->rp_ats;
++
++    rp_ats_invalidate(s, iotlb);
++    rp_ats_cache_remove(s, iotlb);
++}
++
+ static bool ats_translate_address(RemotePortATS *s, struct rp_pkt *pkt,
+                                   hwaddr *phys_addr, hwaddr *phys_len)
+ {
+-    /* TBD */
++    MemTxAttrs attrs = MEMTXATTRS_UNSPECIFIED;
++    IOMMUMemoryRegion *iommu_mr;
++    AddressSpace *target_as;
++    MemoryRegion *mr;
++    int prot = 0;
++
++    RCU_READ_LOCK_GUARD();
++
++    mr = ats_do_translate(&s->as, pkt->ats.addr, phys_addr, phys_len,
++                          &target_as, &prot, attrs);
++    if (!mr) {
++        return false;
++    }
++
++    iommu_mr = memory_region_get_iommu(mr);
++    if (iommu_mr) {
++        int iommu_idx = memory_region_iommu_attrs_to_index(iommu_mr, attrs);
++        ATSIOMMUNotifier *notifier;
++        int i;
++
++        for (i = 0; i < s->iommu_notifiers->len; i++) {
++            notifier = g_array_index(s->iommu_notifiers, ATSIOMMUNotifier *, i);
++            if (notifier->mr == mr && notifier->iommu_idx == iommu_idx) {
++                break;
 +            }
 +        }
 +
-+        switch (pkt->hdr.cmd) {
-+        /* TBD */
-+        default:
-+            assert(actioned);
-+        }
++        /* Register a notifier if not found.  */
++        if (i == s->iommu_notifiers->len) {
++            Error *err = NULL;
++            bool ret;
 +
-+        s->rx_queue.inuse[rpos] = false;
-+        qemu_sem_post(&s->rx_queue.sem);
-+    }
-+}
++            s->iommu_notifiers = g_array_set_size(s->iommu_notifiers, i + 1);
++            notifier = g_new0(ATSIOMMUNotifier, 1);
++            g_array_index(s->iommu_notifiers, ATSIOMMUNotifier *, i) = notifier;
 +
-+static void rp_event_read_and_process(RemotePort *s)
-+{
-+    event_notifier_test_and_clear(&s->event_notifier);
++            notifier->mr = mr;
++            notifier->iommu_idx = iommu_idx;
++            notifier->rp_ats = s;
 +
-+    rp_process(s);
-+}
++            iommu_notifier_init(&notifier->n,
++                                rp_ats_iommu_unmap_notify,
++                                IOMMU_NOTIFIER_UNMAP,
++                                0,
++                                HWADDR_MAX,
++                                iommu_idx);
 +
-+static void rp_event_read_cb(EventNotifier *n)
-+{
-+    RemotePort *s = container_of(n, RemotePort, event_notifier);
-+
-+    rp_event_read_and_process(s);
-+}
-+
-+static void rp_event_notify(RemotePort *s)
-+{
-+    event_notifier_set(&s->event_notifier);
-+}
-+
-+/* Handover a pkt to CPU or IO-thread context.  */
-+static void rp_pt_handover_pkt(RemotePort *s, RemotePortDynPkt *dpkt)
-+{
-+    bool full;
-+
-+    /*
-+     * Take the rsp lock around the wpos update, otherwise
-+     * rp_wait_resp will race with us.
-+     */
-+    qemu_mutex_lock(&s->rsp_mutex);
-+    s->rx_queue.wpos++;
-+    s->rx_queue.wpos %= ARRAY_SIZE(s->rx_queue.pkt);
-+    /*
-+     * Ensure rx_queue index update is visible to consumer
-+     * before signaling event, to prevent lost wakeup
-+     */
-+    smp_mb();
-+    rp_event_notify(s);
-+    qemu_cond_signal(&s->progress_cond);
-+    qemu_mutex_unlock(&s->rsp_mutex);
-+
-+    do {
-+        full = s->rx_queue.inuse[s->rx_queue.wpos];
-+        if (full) {
-+            trace_rp_pt_rx_queue_full(s->prefix, s->rx_queue.rpos,
-+                                      s->rx_queue.wpos);
-+            qemu_sem_timedwait(&s->rx_queue.sem, 2 * 1000);
-+        }
-+    } while (full);
-+}
-+
-+static bool rp_pt_process_pkt(RemotePort *s, RemotePortDynPkt *dpkt)
-+{
-+    struct rp_pkt *pkt = dpkt->pkt;
-+
-+    trace_rp_pt_process_pkt(s->prefix, pkt->hdr.cmd, pkt->hdr.id, pkt->hdr.dev);
-+
-+    if (pkt->hdr.dev >= ARRAY_SIZE(s->devs)) {
-+        /* FIXME: Respond with an error.  */
-+        return true;
-+    }
-+
-+    switch (pkt->hdr.cmd) {
-+    case RP_CMD_hello:
-+        rp_cmd_hello(s, pkt);
-+        break;
-+    case RP_CMD_read:
-+    case RP_CMD_write:
-+    case RP_CMD_interrupt:
-+    case RP_CMD_ats_req:
-+    case RP_CMD_ats_inv:
-+        rp_pt_handover_pkt(s, dpkt);
-+        break;
-+    default:
-+        g_assert_not_reached();
-+        break;
-+    }
-+    return false;
-+}
-+
-+static int rp_read_pkt(RemotePort *s, RemotePortDynPkt *dpkt)
-+{
-+    struct rp_pkt *pkt = dpkt->pkt;
-+    int used;
-+    int r;
-+
-+    r = rp_recv(s, pkt, sizeof pkt->hdr);
-+    if (r <= 0) {
-+        return r;
-+    }
-+    used = rp_decode_hdr((void *) &pkt->hdr);
-+    assert(used == sizeof pkt->hdr);
-+
-+    if (pkt->hdr.len) {
-+        rp_dpkt_alloc(dpkt, sizeof pkt->hdr + pkt->hdr.len);
-+        /* pkt may move due to realloc.  */
-+        pkt = dpkt->pkt;
-+        r = rp_recv(s, &pkt->hdr + 1, pkt->hdr.len);
-+        if (r <= 0) {
-+            return r;
-+        }
-+        rp_decode_payload(pkt);
-+    }
-+
-+    return used + r;
-+}
-+
-+static void *rp_protocol_thread(void *arg)
-+{
-+    RemotePort *s = REMOTE_PORT(arg);
-+    unsigned int i;
-+    int r;
-+
-+    /* Make sure we have a decent bufsize to start with.  */
-+    rp_dpkt_alloc(&s->rsp, sizeof s->rsp.pkt->busaccess + 1024);
-+    for (i = 0; i < ARRAY_SIZE(s->rx_queue.pkt); i++) {
-+        rp_dpkt_alloc(&s->rx_queue.pkt[i],
-+                      sizeof s->rx_queue.pkt[i].pkt->busaccess + 1024);
-+        s->rx_queue.inuse[i] = false;
-+    }
-+
-+    rp_say_hello(s);
-+
-+    while (1) {
-+        RemotePortDynPkt *dpkt;
-+        unsigned int wpos = s->rx_queue.wpos;
-+        bool handled;
-+
-+        dpkt = &s->rx_queue.pkt[wpos];
-+        s->rx_queue.inuse[wpos] = true;
-+
-+        r = rp_read_pkt(s, dpkt);
-+        if (r <= 0) {
-+            /* Disconnected.  */
-+            break;
-+        }
-+        handled = rp_pt_process_pkt(s, dpkt);
-+        if (handled) {
-+            s->rx_queue.inuse[wpos] = false;
++            ret = memory_region_register_iommu_notifier(mr, &notifier->n, &err);
++            if (ret) {
++                error_report_err(err);
++                exit(1);
++            }
 +        }
 +    }
 +
-+    if (!s->finalizing) {
-+        rp_fatal_error(s, "Disconnected");
++    if (!(prot & IOMMU_RO)) {
++        pkt->ats.attributes &= ~(RP_ATS_ATTR_exec | RP_ATS_ATTR_read);
 +    }
-+    return NULL;
-+}
++    if (!(prot & IOMMU_WO)) {
++        pkt->ats.attributes &= ~(RP_ATS_ATTR_write);
++    }
 +
- static void rp_reset(DeviceState *dev)
- {
-     RemotePort *s = REMOTE_PORT(dev);
-@@ -40,6 +321,9 @@ static void rp_reset(DeviceState *dev)
-         return;
-     }
- 
-+    qemu_thread_create(&s->thread, "remote-port", rp_protocol_thread, s,
-+                       QEMU_THREAD_JOINABLE);
++    rp_ats_cache_insert(s, pkt->ats.addr, *phys_addr, *phys_len - 1, target_as);
 +
-     s->reset_done = true;
+     return true;
  }
  
-@@ -48,6 +332,10 @@ static void rp_realize(DeviceState *dev, Error **errp)
-     RemotePort *s = REMOTE_PORT(dev);
-     Chardev *chr = NULL;
- 
-+    qemu_mutex_init(&s->write_mutex);
-+    qemu_mutex_init(&s->rsp_mutex);
-+    qemu_cond_init(&s->progress_cond);
-+
-     s->prefix = object_get_canonical_path(OBJECT(dev));
- 
-     if (s->chrdev_id) {
-@@ -65,7 +353,18 @@ static void rp_realize(DeviceState *dev, Error **errp)
- 
-     s->chrdev = chr;
- 
-+    if (event_notifier_init(&s->event_notifier, 0) < 0) {
-+        error_setg(errp,
-+                   "Unable to initialize event notifier for remote port");
-+        return;
-+    }
- 
-+    aio_set_event_notifier(qemu_get_aio_context(), &s->event_notifier,
-+                           rp_event_read_cb,
-+                           NULL, NULL);
-+
-+
-+    qemu_sem_init(&s->rx_queue.sem, ARRAY_SIZE(s->rx_queue.pkt) - 1);
- }
- 
- static void rp_unrealize(DeviceState *dev)
-@@ -74,11 +373,17 @@ static void rp_unrealize(DeviceState *dev)
- 
-     s->finalizing = true;
- 
-+    aio_set_event_notifier(qemu_get_aio_context(), &s->event_notifier,
-+                            NULL, NULL, NULL);
-+
-     info_report("%s: Wait for remote-port to disconnect", s->prefix);
-     qemu_chr_fe_disconnect(&s->chr);
-+    if (s->reset_done) {
-+        qemu_thread_join(&s->thread);
-+    }
-     qemu_chr_fe_deinit(&s->chr, false);
- 
--    object_unparent(OBJECT(s->chrdev));
-+    event_notifier_cleanup(&s->event_notifier);
- }
- 
- static const VMStateDescription vmstate_rp = {
-diff --git a/hw/core/trace-events b/hw/core/trace-events
-index 2cf085ac66..612d5730b9 100644
---- a/hw/core/trace-events
-+++ b/hw/core/trace-events
-@@ -32,3 +32,8 @@ clock_set_mul_div(const char *clk, uint32_t oldmul, uint32_t mul, uint32_t olddi
- 
- # cpu-common.c
- cpu_reset(int cpu_index) "%d"
-+
-+# remote-port.c
-+rp_pt_process_pkt(const char *rp, uint32_t cmd, uint32_t id, uint32_t dev) "%s: cmd=0x%"PRIx32" id=0x%"PRIx32" dev=0x%"PRIx32
-+rp_process(const char *rp, unsigned int rpos, unsigned int wpos, uint32_t cmd, uint32_t dev) "%s: io-thread rpos=%u wpos=%u cmd=0x%"PRIx32" dev=0x%"PRIx32
-+rp_pt_rx_queue_full(const char *rp, unsigned int rpos, unsigned int wpos) "%s: rpos=%u wpos=%u"
-diff --git a/include/hw/core/remote-port.h b/include/hw/core/remote-port.h
-index dde54a40d9..2d8a191bce 100644
---- a/include/hw/core/remote-port.h
-+++ b/include/hw/core/remote-port.h
-@@ -16,6 +16,7 @@
- #include "chardev/char.h"
- #include "chardev/char-fe.h"
- #include "qobject/qdict.h"
-+#include "qemu/event_notifier.h"
- 
- #define TYPE_REMOTE_PORT_DEVICE "remote-port-device"
- 
-@@ -57,11 +58,35 @@ typedef struct RemotePortDeviceClass {
- struct RemotePort {
-     DeviceState parent;
- 
-+    QemuThread thread;
-+    EventNotifier event_notifier;
-     Chardev *chrdev;
-     CharFrontend chr;
-     bool finalizing;
-+    /* To serialize writes to fd.  */
-+    QemuMutex write_mutex;
- 
-     char *chrdev_id;
-+    struct rp_peer_state peer;
-+
-+    QemuMutex rsp_mutex;
-+    QemuCond progress_cond;
-+
-+#define RX_QUEUE_SIZE 1024
-+    struct {
-+        /* This array must be sized minimum 2 and always a power of 2.  */
-+        RemotePortDynPkt pkt[RX_QUEUE_SIZE];
-+        bool inuse[RX_QUEUE_SIZE];
-+        QemuSemaphore sem;
-+        unsigned int wpos;
-+        unsigned int rpos;
-+    } rx_queue;
-+
-+    /*
-+     * rsp holds responses for the remote side.
-+     * Used by the slave.
-+     */
-+    RemotePortDynPkt rsp;
- 
-     const char *prefix;
-     const char *remote_prefix;
-@@ -73,4 +98,8 @@ struct RemotePort {
-     RemotePortDevice *devs[REMOTE_PORT_MAX_DEVS];
- };
- 
-+void rp_process(RemotePort *s);
-+
-+ssize_t rp_write(RemotePort *s, const void *buf, size_t count);
-+
- #endif
 -- 
 2.43.0
 

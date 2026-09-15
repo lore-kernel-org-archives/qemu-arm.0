@@ -4,67 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B531FC88E7D
-	for <qemu-arm@archiver.kernel.org>; Tue, 15 Sep 2026 16:02:49 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B7A90C88E7F
+	for <qemu-arm@archiver.kernel.org>; Tue, 15 Sep 2026 16:02:58 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1x6VbK-0007mp-GM; Tue, 15 Sep 2026 12:01:42 -0400
+	id 1x6Vb5-0007ZG-C5; Tue, 15 Sep 2026 12:01:27 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <ruslichenko.r@gmail.com>)
- id 1x6VbI-0007kt-9R
- for qemu-arm@nongnu.org; Tue, 15 Sep 2026 12:01:40 -0400
-Received: from mail-ed1-x535.google.com ([2a00:1450:4864:20::535])
+ id 1x6Vb3-0007Y5-QW
+ for qemu-arm@nongnu.org; Tue, 15 Sep 2026 12:01:25 -0400
+Received: from mail-ej2-x10.google.com ([2a00:1450:4864:34::10])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <ruslichenko.r@gmail.com>)
- id 1x6VbF-0003SM-7G
- for qemu-arm@nongnu.org; Tue, 15 Sep 2026 12:01:39 -0400
-Received: by mail-ed1-x535.google.com with SMTP id
- 4fb4d7f45d1cf-6a9ac6aa620so1322029a12.1
- for <qemu-arm@nongnu.org>; Tue, 15 Sep 2026 09:01:36 -0700 (PDT)
+ id 1x6Vb0-0003OE-7Y
+ for qemu-arm@nongnu.org; Tue, 15 Sep 2026 12:01:25 -0400
+Received: by mail-ej2-x10.google.com with SMTP id
+ a640c23a62f3a-c254f6c7a58so412157466b.2
+ for <qemu-arm@nongnu.org>; Tue, 15 Sep 2026 09:01:21 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20251104; t=1789488095; x=1790092895; darn=nongnu.org;
+ d=gmail.com; s=20251104; t=1789488081; x=1790092881; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to:content-type;
- bh=1UWLhGiru03iCBAYq6e7CUFMG/HcvDmu3qHp9LhwQeI=;
- b=L9pOh0L7xc7xO+qxyWFZrv7jFneDbp6dUgkhJIJmJ+ccviLNseU/6VJZ/4yJK0HpnF
- 4CsOjnDaKIqUZS3a/lJSeHD3jTDP5fd4UBptWRAv4NR2aGDE4KSXJDxkn0k+vtSm7Qyy
- sqluer3hm+LoqvC5FLvmx27IE7d6VSDr8FyvXTswh2rR7E+Lu5g4TYATE6YNFym+0y32
- Y5Yx9TlEeByd5ZhpIiEU7VQfZYQ0eW3cCN1X3btfxxhkKuZRCYWPo/Dl76n19Zub1YZB
- ffY7IDpA96cF7jq2FFP8N0ayU2qNCkM+AuHVvUD0zGa5L3nF4+rSZbmJBEhV8RxuPYaH
- Yiog==
+ bh=1hqn5sYLybz9LYd9ThTYkVIvKptKJIS6KFBdy+ZatTw=;
+ b=f+2B82XGxkNS/UzPVWijgr8ZMf1B41qHvk/W5lvUAer4ZTnbhtNQ42Hv+D3oZnxmsW
+ v1sUENaoNi2wcTM9qJAChKUoKm9eWXhvIp/A9+ezbGK7TAQ5Ju1QgB7qjZCAVooDgoo9
+ T9klwKniCPeA6sx5mPEHwhvUGDV4AQx6Ka1JQou2XJqlhX3uf3FZskuCjtUb3bz+NoHQ
+ vg8eiVDiwV5Ss9tL6xPTI1+8e90l0YEUp2W9YmB3k/a2sbff6Tcr3U/t3wsglXAG5TFJ
+ FePaqTkK5aGq6mjzs+HitA+jhCb120TEPKQRlrhLFhux1lSv7vIOHDtWW1I/WF6ja8eP
+ iRdA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20260707; t=1789488095; x=1790092895;
+ d=1e100.net; s=20260707; t=1789488081; x=1790092881;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
  :to:cc:subject:date:message-id:reply-to:content-type;
- bh=1UWLhGiru03iCBAYq6e7CUFMG/HcvDmu3qHp9LhwQeI=;
- b=D4OqWw7+J9WiuBvqQzg4MyR3/mc5/vn54+tuHsHhVw/IdwUt1utmCiGJvxaMgJGALy
- u8Ftg3c58jJjmdK2ko3O1wUbN5vKeAXvBdxPKpVfMBr1AxwivJ/vGVGdUm1r9cCogkoR
- ZUEEp43Vd0+kcxi4oDc459DqDQg1ImqHuwNmZHaxgUVAUwMarWuCkY19UXT3LSl3f/PH
- u92VI7UbJscgzTa9LufACI/DjUWLHic93J1EgsX84MfYJf5Y0qQ2n9/BvXA69XQuSgwN
- dNvk+rutuHk+VZzXsE8e8TRTtEibI2cMsWLZunzBdkrI7av3A4AF0b3qXYMpyYPMlN6H
- hjMg==
-X-Gm-Message-State: AFuF++m4K1Z+NMKE2l75z1H+JhZQUOvm1jdO7AvFUJMrcWjHBnYEEVJB
- J1691nfvGRu+tTu1Z3G4wUrCyjSR29gAJWuozQcs8CO4eRcGBLNZooxe
-X-Gm-Gg: AYBFou1tT1PulfX1tmNUisAj3gufXAuzggmF+Igfp8C5nKC2OcD05Fy4JaSg8MAqkk7
- zbQoxfyZRtJLpTP8ufPVr/dLXTD6uMYKloCruOvKp/twOhxnXU6oqOST9yi80QgdGtt/756zMYu
- CwMI+j0gTM6yvuPUTd9h+c/2VN5d/8qpaKg7ZyqaqDf0HqMhnWRKOwx6uJpoupXmsxFQbFNe8kD
- KJaF74pwf8JogIFmmGlfazBCcl5ClDQ5EpyvzBv87cluiWXNMOG0tmHhXLKh0RP3vLmxqMC9oBj
- /pCyhN+0SkQ5cu8jIoMV1z2py9XKRvrgtGeMvlII/hqjfLN88L1PDy73c1T2Ki/LV4ObYxK2OXM
- Uoq0gdD8GkySR+zcINih9OZCgxZTBUyX0IzER9mDJl/Oc6GLW3AWq9n3x8vBw2VTmNFyP6RHlZ2
- Kqvqo47KFLgqvHAks9wme2NaAcb8bVrJFzA1uuQ2kVACt/uexnNXYKkONXR+eUophtLGgJDZcuJ
- yRLts4IhDp1EzvqNoJ31xRVI70kh3DGD/lyemuOtQTtFw==
-X-Received: by 2002:a17:907:da3:b0:c25:f7dc:2d9 with SMTP id
- a640c23a62f3a-c29c8bdb1ecmr343882866b.26.1789488094518; 
- Tue, 15 Sep 2026 09:01:34 -0700 (PDT)
+ bh=1hqn5sYLybz9LYd9ThTYkVIvKptKJIS6KFBdy+ZatTw=;
+ b=Tf3c8jUh9e0T2ct7oUvEEDdHJFfwr996Xfp24aQZsqhDTb9ZTz+KjZyC1XkOtGDZpd
+ WZrfpnxWHgVhYwKEFTqaYD0J4MMyf3BYKMI7Zf4mryddtFMtC4G4UJInYG3aFsXRYvhF
+ e2Bvct/D+G9Zdsyi8dOOpxyKZpPhHVFb11rjC/pW6VzZ5oc4bgC0FMKqz79h2knv8V5t
+ Sa+lbRiH7z8KoEIFgBSftT5Rxyuf8YmNKwxh+4ecRiJ03z2PhQ/CHAgu3haRKTYMUb8R
+ bx5Krv6f1lo0g58AeSEw7udnH9xpof/PKoLT1UNnoXX9R2K6afxvMDCUIkdr6CQqMooN
+ HHEg==
+X-Gm-Message-State: AFuF++lU2+AdORHQ8NARIorMG3rUBufAzooHwxqTcm+TAhf0dD6IY/p2
+ 3EE3ZOeVhV2UDx8RTMw9XmNiE/EQuXlifdIJsGXHeXnf+WpresnI7QGu
+X-Gm-Gg: AYBFou0Ary/iWfxj5cuH/sTUtZeMRP4bfI6hJWPknRwna3Woqh2srFXyjsSK7jLCcNs
+ Hkla8o/C9hrdJX4KTrR5PLlfMKvOuaKYkNBqo314Oq9n53pX+03qe1me+ARSCvT20xM4FtqD3+5
+ SosTFxcSQeJJK3ydm/dw/Et5bRKd+G5pb5d0ujalgvaMih7lrdzI0gdk/zNLddqPawNA4/8lKx6
+ /iGvYXplY9nVX8xNsZDyR8m5qrW5S2PsBovJ3nMhDLeCljj0z/x7+A9mSSXuMIm1TXj55BdNKz6
+ nra8m6jPE+k+fi4ZlBhakiCyoKyjH9PrGXuReAHSC7RidIyE1tdKGKUiSw6vBY1l7R2tL3HaRIb
+ fnVDLw3rv1VQwvZr1AWztfUegsmZ1Wm8YtPFEpDcOTsu2dLxY9+2RiAtDIVmPC64cgM9Jal3Isp
+ /3y1zRXp/1vUA3KmM0dm8hKjz0K9ovqpMQomIv2oGzRcCI6urXhpvk0OvedPAoMC7za9dF+VQ3l
+ TUHyiOU4neL7uvN+TPX0c9InmEaFCLjd5bx2Zwtfc054g==
+X-Received: by 2002:a17:907:3f1b:b0:c29:62d8:68b8 with SMTP id
+ a640c23a62f3a-c29b874c4d4mr496231866b.48.1789488080807; 
+ Tue, 15 Sep 2026 09:01:20 -0700 (PDT)
 Received: from thinkpad-t470s.. (83-131-196-251.adsl.net.t-com.hr.
  [83.131.196.251]) by smtp.googlemail.com with ESMTPSA id
- a640c23a62f3a-c29ddd86344sm3235866b.0.2026.09.15.09.01.32
+ a640c23a62f3a-c29ddd86344sm3235866b.0.2026.09.15.09.01.19
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 15 Sep 2026 09:01:34 -0700 (PDT)
+ Tue, 15 Sep 2026 09:01:20 -0700 (PDT)
 From: Ruslan Ruslichenko <ruslichenko.r@gmail.com>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org, artem_mygaiev@epam.com, volodymyr_babchuk@epam.com,
@@ -72,16 +72,17 @@ Cc: qemu-arm@nongnu.org, artem_mygaiev@epam.com, volodymyr_babchuk@epam.com,
  edgar.iglesias@gmail.com, berrange@redhat.com, eugene@nuvacore.ai,
  Ruslan_Ruslichenko@epam.com, takahiro.nakata.wr@renesas.com,
  "Edgar E . Iglesias" <edgar.iglesias@amd.com>
-Subject: [PATCH v2 13/20] hw/core: Add Remote Port ATS device skeleton
-Date: Tue, 15 Sep 2026 18:00:37 +0200
-Message-ID: <20260915160044.345788-14-ruslichenko.r@gmail.com>
+Subject: [PATCH v2 05/20] hw/core: Implement Remote Port irq,
+ sync and ATS helpers
+Date: Tue, 15 Sep 2026 18:00:29 +0200
+Message-ID: <20260915160044.345788-6-ruslichenko.r@gmail.com>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20260915160044.345788-1-ruslichenko.r@gmail.com>
 References: <20260915160044.345788-1-ruslichenko.r@gmail.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::535;
- envelope-from=ruslichenko.r@gmail.com; helo=mail-ed1-x535.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:34::10;
+ envelope-from=ruslichenko.r@gmail.com; helo=mail-ej2-x10.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -106,323 +107,182 @@ Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
 From: Ruslan Ruslichenko <Ruslan_Ruslichenko@epam.com>
 
-Inroduce the remote-port-ats device and remote-port-ats-cache
-interface.
+The patch add support for encoding and decoding of following
+commands:
 
-This patch provides the QOM definition and basic initialization
-logic required for Address Translation Services in Remote Port
-system.
+- RP_CMD_interrupt: propagate gpio and interrupt lines changes
+to external peers
+- RP_CMD_sync: support for synchronization between QEMU and the
+remote model
+- RP_CMD_ats_*: handling iommu transactoin request and invalidation
+accross the link.
 
-Preserved existing MIT license for remote-port-ats(.c,.h).
-
-Signed-off-by: Francisco Iglesias <francisco.iglesias@amd.com>
 Signed-off-by: Edgar E. Iglesias <edgar.iglesias@amd.com>
 Signed-off-by: Takahiro Nakata <takahiro.nakata.wr@renesas.com>
 Signed-off-by: Ruslan Ruslichenko <Ruslan_Ruslichenko@epam.com>
 ---
- hw/core/remote-port-ats.c         | 209 ++++++++++++++++++++++++++++++
- include/hw/core/remote-port-ats.h |  76 +++++++++++
- 2 files changed, 285 insertions(+)
- create mode 100644 hw/core/remote-port-ats.c
- create mode 100644 include/hw/core/remote-port-ats.h
+ hw/core/remote-port-proto.c         | 100 ++++++++++++++++++++++++++++
+ include/hw/core/remote-port-proto.h |  29 ++++++++
+ 2 files changed, 129 insertions(+)
 
-diff --git a/hw/core/remote-port-ats.c b/hw/core/remote-port-ats.c
-new file mode 100644
-index 0000000000..793f9fc52d
---- /dev/null
-+++ b/hw/core/remote-port-ats.c
-@@ -0,0 +1,209 @@
-+/*
-+ * SPDX-License-Identifier: MIT
-+ *
-+ * QEMU remote port ATS
-+ *
-+ * Copyright (c) 2021 Xilinx Inc
-+ * Written by Francisco Iglesias <francisco.iglesias@xilinx.com>
-+ *
-+ * Permission is hereby granted, free of charge, to any person obtaining a copy
-+ * of this software and associated documentation files (the "Software"), to deal
-+ * in the Software without restriction, including without limitation the rights
-+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-+ * copies of the Software, and to permit persons to whom the Software is
-+ * furnished to do so, subject to the following conditions:
-+ *
-+ * The above copyright notice and this permission notice shall be included in
-+ * all copies or substantial portions of the Software.
-+ *
-+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
-+ * THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-+ * THE SOFTWARE.
-+ */
-+#include "qemu/osdep.h"
-+#include "system/system.h"
-+#include "system/dma.h"
-+#include "qemu/log.h"
-+#include "qapi/qmp/qerror.h"
-+#include "qapi/error.h"
-+#include "hw/core/sysbus.h"
-+#include "migration/vmstate.h"
-+#include "hw/core/qdev-properties.h"
-+#include "trace.h"
-+
-+#include "hw/core/remote-port-proto.h"
-+#include "hw/core/remote-port-ats.h"
-+
-+typedef struct ATSIOMMUNotifier {
-+    IOMMUNotifier n;
-+    MemoryRegion *mr;
-+    RemotePortATS *rp_ats;
-+    int iommu_idx;
-+} ATSIOMMUNotifier;
-+
-+IOMMUTLBEntry *rp_ats_cache_lookup_translation(RemotePortATSCache *cache,
-+                                               hwaddr translated_addr,
-+                                               hwaddr len)
+diff --git a/hw/core/remote-port-proto.c b/hw/core/remote-port-proto.c
+index ddaefa7e36..0c90ba8971 100644
+--- a/hw/core/remote-port-proto.c
++++ b/hw/core/remote-port-proto.c
+@@ -132,6 +132,24 @@ int rp_decode_payload(struct rp_pkt *pkt)
+         }
+         pkt->busaccess.master_id = master_id;
+         break;
++    case RP_CMD_interrupt:
++        pkt->interrupt.timestamp = be64_to_cpu(pkt->interrupt.timestamp);
++        pkt->interrupt.vector = be64_to_cpu(pkt->interrupt.vector);
++        pkt->interrupt.line = be32_to_cpu(pkt->interrupt.line);
++        pkt->interrupt.val = pkt->interrupt.val;
++        used += pkt->hdr.len;
++        break;
++    case RP_CMD_sync:
++        pkt->sync.timestamp = be64_to_cpu(pkt->interrupt.timestamp);
++        used += pkt->hdr.len;
++        break;
++    case RP_CMD_ats_req:
++    case RP_CMD_ats_inv:
++        pkt->ats.attributes = be64_to_cpu(pkt->ats.attributes);
++        pkt->ats.addr = be64_to_cpu(pkt->ats.addr);
++        pkt->ats.len = be64_to_cpu(pkt->ats.len);
++        pkt->ats.result = be32_to_cpu(pkt->ats.result);
++        break;
+     default:
+         break;
+     }
+@@ -295,6 +313,88 @@ size_t rp_encode_busaccess(struct rp_peer_state *peer,
+     return sizeof *pkt + ret_size;
+ }
+ 
++size_t rp_encode_interrupt_f(uint32_t id, uint32_t dev,
++                             struct rp_pkt_interrupt *pkt,
++                             int64_t clk,
++                             uint32_t line, uint64_t vector, uint8_t val,
++                             uint32_t flags)
 +{
-+    RemotePortATSCacheClass *c = REMOTE_PORT_ATS_CACHE_GET_CLASS(cache);
-+
-+    return c->lookup_translation(cache, translated_addr, len);
++    rp_encode_hdr(&pkt->hdr, RP_CMD_interrupt, id, dev,
++                  sizeof *pkt - sizeof pkt->hdr, flags);
++    pkt->timestamp = cpu_to_be64(clk);
++    pkt->vector = cpu_to_be64(vector);
++    pkt->line = cpu_to_be32(line);
++    pkt->val = val;
++    return sizeof *pkt;
 +}
 +
-+static IOMMUTLBEntry *rp_ats_lookup_translation(RemotePortATSCache *cache,
-+                                                hwaddr translated_addr,
-+                                                hwaddr len)
++size_t rp_encode_interrupt(uint32_t id, uint32_t dev,
++                           struct rp_pkt_interrupt *pkt,
++                           int64_t clk,
++                           uint32_t line, uint64_t vector, uint8_t val)
 +{
-+    /* TBD */
-+    return NULL;
++    return rp_encode_interrupt_f(id, dev, pkt, clk, line, vector, val, 0);
 +}
 +
-+static bool ats_translate_address(RemotePortATS *s, struct rp_pkt *pkt,
-+                                  hwaddr *phys_addr, hwaddr *phys_len)
++static size_t rp_encode_ats_common(uint32_t cmd, uint32_t id, uint32_t dev,
++                         struct rp_pkt_ats *pkt,
++                         int64_t clk, uint64_t attr, uint64_t addr,
++                         uint64_t len, uint64_t result, uint32_t flags)
 +{
-+    /* TBD */
-+    return true;
++    rp_encode_hdr(&pkt->hdr, cmd, id, dev,
++                  sizeof *pkt - sizeof pkt->hdr, flags);
++    pkt->timestamp = cpu_to_be64(clk);
++    pkt->attributes = cpu_to_be64(attr);
++    pkt->addr = cpu_to_be64(addr);
++    pkt->len = cpu_to_be64(len);
++    pkt->result = cpu_to_be32(result);
++    return sizeof *pkt;
 +}
 +
-+static void rp_ats_req(RemotePortDevice *dev, struct rp_pkt *pkt)
++size_t rp_encode_ats_req(uint32_t id, uint32_t dev,
++                         struct rp_pkt_ats *pkt,
++                         int64_t clk, uint64_t attr, uint64_t addr,
++                         uint64_t len, uint64_t result, uint32_t flags)
 +{
-+    RemotePortATS *s = REMOTE_PORT_ATS(dev);
-+    size_t pktlen = sizeof(struct rp_pkt_ats);
-+    hwaddr phys_addr = 0;
-+    hwaddr phys_len = (hwaddr)(-1);
-+    uint64_t result;
-+    size_t enclen;
-+    int64_t delay;
-+    int64_t clk;
-+
-+    assert(!(pkt->hdr.flags & RP_PKT_FLAGS_response));
-+
-+    rp_dpkt_alloc(&s->rsp, pktlen);
-+
-+    result = ats_translate_address(s, pkt, &phys_addr, &phys_len) ?
-+        RP_ATS_RESULT_ok : RP_ATS_RESULT_error;
-+
-+    /*
-+     * delay here could be set to the annotated cost of doing issuing
-+     * these accesses. QEMU doesn't support this kind of annotations
-+     * at the moment. So we just clear the delay.
-+     */
-+    delay = 0;
-+    clk = pkt->ats.timestamp + delay;
-+
-+    enclen = rp_encode_ats_req(pkt->hdr.id, pkt->hdr.dev,
-+                             &s->rsp.pkt->ats,
-+                             clk,
-+                             pkt->ats.attributes,
-+                             phys_addr,
-+                             phys_len,
-+                             result,
-+                             pkt->hdr.flags | RP_PKT_FLAGS_response);
-+    assert(enclen == pktlen);
-+
-+    rp_write(s->rp, (void *)s->rsp.pkt, enclen);
++    return rp_encode_ats_common(RP_CMD_ats_req, id, dev,
++                                pkt, clk, attr,
++                                addr, len, result, flags);
 +}
 +
-+static void rp_ats_realize(DeviceState *dev, Error **errp)
++size_t rp_encode_ats_inv(uint32_t id, uint32_t dev,
++                         struct rp_pkt_ats *pkt,
++                         int64_t clk, uint64_t attr, uint64_t addr,
++                         uint64_t len, uint64_t result, uint32_t flags)
 +{
-+    RemotePortATS *s = REMOTE_PORT_ATS(dev);
-+    RemotePortDevice *rpd = REMOTE_PORT_DEVICE(dev);
-+
-+    rp_register_dev(s->rp, rpd, s->rp_dev);
-+
-+    s->peer = rp_get_peer(s->rp);
-+    address_space_init(&s->as, s->mr ? s->mr : get_system_memory(), "ats-as");
-+
-+    s->iommu_notifiers = g_array_new(false, true, sizeof(ATSIOMMUNotifier *));
-+    s->cache = g_array_new(false, true, sizeof(IOMMUTLBEntry *));
++    return rp_encode_ats_common(RP_CMD_ats_inv, id, dev,
++                                pkt, clk, attr,
++                                addr, len, result, flags);
 +}
 +
-+static void rp_prop_allow_set_link(const Object *obj, const char *name,
-+                                   Object *val, Error **errp)
++static size_t rp_encode_sync_common(uint32_t id, uint32_t dev,
++                                    struct rp_pkt_sync *pkt,
++                                    int64_t clk, uint32_t flags)
 +{
++    rp_encode_hdr(&pkt->hdr, RP_CMD_sync, id, dev,
++                  sizeof *pkt - sizeof pkt->hdr, flags);
++    pkt->timestamp = cpu_to_be64(clk);
++    return sizeof *pkt;
 +}
 +
-+static void rp_ats_init(Object *obj)
++size_t rp_encode_sync(uint32_t id, uint32_t dev,
++                      struct rp_pkt_sync *pkt,
++                      int64_t clk)
 +{
-+    RemotePortATS *s = REMOTE_PORT_ATS(obj);
-+
-+    object_property_add_link(obj, "rp-adaptor0", "remote-port",
-+                             (Object **)&s->rp,
-+                             rp_prop_allow_set_link,
-+                             OBJ_PROP_LINK_STRONG);
-+    object_property_add_link(obj, "mr", TYPE_MEMORY_REGION,
-+                             (Object **)&s->mr,
-+                             qdev_prop_allow_set_link_before_realize,
-+                             OBJ_PROP_LINK_STRONG);
++    return rp_encode_sync_common(id, dev, pkt, clk, 0);
 +}
 +
-+static void rp_ats_unrealize(DeviceState *dev)
++size_t rp_encode_sync_resp(uint32_t id, uint32_t dev,
++                           struct rp_pkt_sync *pkt,
++                           int64_t clk)
 +{
-+    RemotePortATS *s = REMOTE_PORT_ATS(dev);
-+    ATSIOMMUNotifier *notifier;
-+    int i;
-+
-+    for (i = 0; i < s->iommu_notifiers->len; i++) {
-+        notifier = g_array_index(s->iommu_notifiers, ATSIOMMUNotifier *, i);
-+        memory_region_unregister_iommu_notifier(notifier->mr, &notifier->n);
-+        g_free(notifier);
-+    }
-+    g_array_free(s->iommu_notifiers, true);
-+
-+    address_space_destroy(&s->as);
-+
-+    for (i = 0; i < s->cache->len; i++) {
-+        IOMMUTLBEntry *tmp = g_array_index(s->cache, IOMMUTLBEntry *, i);
-+        g_free(tmp);
-+    }
-+    g_array_free(s->cache, true);
++    return rp_encode_sync_common(id, dev, pkt, clk, RP_PKT_FLAGS_response);
 +}
 +
-+static Property rp_properties[] = {
-+    DEFINE_PROP_UINT32("rp-chan0", RemotePortATS, rp_dev, 0),
-+};
+ void rp_process_caps(struct rp_peer_state *peer,
+                      void *caps, size_t caps_len)
+ {
+diff --git a/include/hw/core/remote-port-proto.h b/include/hw/core/remote-port-proto.h
+index de67cd6501..c86f0657d2 100644
+--- a/include/hw/core/remote-port-proto.h
++++ b/include/hw/core/remote-port-proto.h
+@@ -472,6 +472,35 @@ size_t rp_encode_busaccess(struct rp_peer_state *peer,
+                            struct rp_pkt_busaccess_ext_base *pkt,
+                            struct rp_encode_busaccess_in *in);
+ 
++size_t rp_encode_interrupt_f(uint32_t id, uint32_t dev,
++                             struct rp_pkt_interrupt *pkt,
++                             int64_t clk,
++                             uint32_t line, uint64_t vector, uint8_t val,
++                             uint32_t flags);
 +
-+static void rp_ats_class_init(ObjectClass *oc, const void *data)
-+{
-+    RemotePortDeviceClass *rpdc = REMOTE_PORT_DEVICE_CLASS(oc);
-+    RemotePortATSCacheClass *atscc = REMOTE_PORT_ATS_CACHE_CLASS(oc);
-+    DeviceClass *dc = DEVICE_CLASS(oc);
++size_t rp_encode_interrupt(uint32_t id, uint32_t dev,
++                           struct rp_pkt_interrupt *pkt,
++                           int64_t clk,
++                           uint32_t line, uint64_t vector, uint8_t val);
 +
-+    device_class_set_props_n(dc, rp_properties, ARRAY_SIZE(rp_properties));
++size_t rp_encode_sync(uint32_t id, uint32_t dev,
++                      struct rp_pkt_sync *pkt,
++                      int64_t clk);
 +
-+    rpdc->ops[RP_CMD_ats_req] = rp_ats_req;
-+    dc->realize = rp_ats_realize;
-+    dc->unrealize = rp_ats_unrealize;
-+    atscc->lookup_translation = rp_ats_lookup_translation;
-+}
++size_t rp_encode_sync_resp(uint32_t id, uint32_t dev,
++                           struct rp_pkt_sync *pkt,
++                           int64_t clk);
 +
-+static const TypeInfo rp_ats_info = {
-+    .name          = TYPE_REMOTE_PORT_ATS,
-+    .parent        = TYPE_DEVICE,
-+    .instance_size = sizeof(RemotePortATS),
-+    .instance_init = rp_ats_init,
-+    .class_init    = rp_ats_class_init,
-+    .interfaces    = (InterfaceInfo[]) {
-+        { TYPE_REMOTE_PORT_DEVICE },
-+        { TYPE_REMOTE_PORT_ATS_CACHE },
-+        { },
-+    },
-+};
++size_t rp_encode_ats_req(uint32_t id, uint32_t dev,
++                         struct rp_pkt_ats *pkt,
++                         int64_t clk, uint64_t attr, uint64_t addr,
++                         uint64_t size, uint64_t result, uint32_t flags);
 +
-+static const TypeInfo rp_ats_cache_info = {
-+    .name          = TYPE_REMOTE_PORT_ATS_CACHE,
-+    .parent        = TYPE_INTERFACE,
-+    .class_size = sizeof(RemotePortATSCacheClass),
-+};
++size_t rp_encode_ats_inv(uint32_t id, uint32_t dev,
++                         struct rp_pkt_ats *pkt,
++                         int64_t clk, uint64_t attr, uint64_t addr,
++                         uint64_t size, uint64_t result, uint32_t flags);
 +
-+static void rp_register_types(void)
-+{
-+    type_register_static(&rp_ats_cache_info);
-+    type_register_static(&rp_ats_info);
-+}
-+
-+type_init(rp_register_types)
-diff --git a/include/hw/core/remote-port-ats.h b/include/hw/core/remote-port-ats.h
-new file mode 100644
-index 0000000000..ffe60539ac
---- /dev/null
-+++ b/include/hw/core/remote-port-ats.h
-@@ -0,0 +1,76 @@
-+/*
-+ * SPDX-License-Identifier: MIT
-+ *
-+ * QEMU remote port ATS
-+ *
-+ * Copyright (c) 2021 Xilinx Inc
-+ * Written by Francisco Iglesias <francisco.iglesias@xilinx.com>
-+ *
-+ * Permission is hereby granted, free of charge, to any person obtaining a copy
-+ * of this software and associated documentation files (the "Software"), to deal
-+ * in the Software without restriction, including without limitation the rights
-+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-+ * copies of the Software, and to permit persons to whom the Software is
-+ * furnished to do so, subject to the following conditions:
-+ *
-+ * The above copyright notice and this permission notice shall be included in
-+ * all copies or substantial portions of the Software.
-+ *
-+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
-+ * THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-+ * THE SOFTWARE.
-+ */
-+#ifndef REMOTE_PORT_ATS_H
-+#define REMOTE_PORT_ATS_H
-+
-+#include "hw/core/remote-port.h"
-+
-+#define TYPE_REMOTE_PORT_ATS "remote-port-ats"
-+#define REMOTE_PORT_ATS(obj) \
-+        OBJECT_CHECK(RemotePortATS, (obj), TYPE_REMOTE_PORT_ATS)
-+
-+typedef struct {
-+    /* private */
-+    SysBusDevice parent;
-+
-+    /* public */
-+    struct RemotePort *rp;
-+    struct rp_peer_state *peer;
-+    MemoryRegion *mr;
-+    AddressSpace as;
-+    RemotePortDynPkt rsp;
-+    GArray *iommu_notifiers;
-+    uint32_t rp_dev;
-+    GArray *cache; /* Translation cache */
-+} RemotePortATS;
-+
-+#define TYPE_REMOTE_PORT_ATS_CACHE "remote-port-ats-cache"
-+
-+#define REMOTE_PORT_ATS_CACHE_CLASS(klass) \
-+     OBJECT_CLASS_CHECK(RemotePortATSCacheClass, (klass), \
-+                        TYPE_REMOTE_PORT_ATS_CACHE)
-+#define REMOTE_PORT_ATS_CACHE_GET_CLASS(obj) \
-+    OBJECT_GET_CLASS(RemotePortATSCacheClass, (obj), TYPE_REMOTE_PORT_ATS_CACHE)
-+#define REMOTE_PORT_ATS_CACHE(obj) \
-+     INTERFACE_CHECK(RemotePortATSCache, (obj), TYPE_REMOTE_PORT_ATS_CACHE)
-+
-+typedef struct RemotePortATSCache {
-+    Object Parent;
-+} RemotePortATSCache;
-+
-+typedef struct RemotePortATSCacheClass {
-+    InterfaceClass parent;
-+
-+    IOMMUTLBEntry *(*lookup_translation)(RemotePortATSCache *cache,
-+                                         hwaddr translated_addr,
-+                                         hwaddr len);
-+} RemotePortATSCacheClass;
-+
-+IOMMUTLBEntry *rp_ats_cache_lookup_translation(RemotePortATSCache *cache,
-+                                               hwaddr translated_addr,
-+                                               hwaddr len);
-+#endif
+ void rp_process_caps(struct rp_peer_state *peer,
+                      void *caps, size_t caps_len);
+ 
 -- 
 2.43.0
 

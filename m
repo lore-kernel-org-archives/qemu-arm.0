@@ -4,91 +4,87 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D6712C88E7F
-	for <qemu-arm@archiver.kernel.org>; Tue, 15 Sep 2026 16:02:00 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D7BE3C88E7F
+	for <qemu-arm@archiver.kernel.org>; Tue, 15 Sep 2026 16:02:05 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1x6VbS-00086F-7X; Tue, 15 Sep 2026 12:01:50 -0400
+	id 1x6Vam-0007KS-Mv; Tue, 15 Sep 2026 12:01:08 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <ruslichenko.r@gmail.com>)
- id 1x6VbP-0007re-LC
- for qemu-arm@nongnu.org; Tue, 15 Sep 2026 12:01:47 -0400
-Received: from mail-ed2-x10.google.com ([2a00:1450:4864:33::10])
+ id 1x6Val-0007JW-12
+ for qemu-arm@nongnu.org; Tue, 15 Sep 2026 12:01:07 -0400
+Received: from mail-ej2-x10.google.com ([2a00:1450:4864:34::10])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <ruslichenko.r@gmail.com>)
- id 1x6VbO-0003Vj-3U
- for qemu-arm@nongnu.org; Tue, 15 Sep 2026 12:01:47 -0400
-Received: by mail-ed2-x10.google.com with SMTP id
- 4fb4d7f45d1cf-6a605c198fdso6601704a12.2
- for <qemu-arm@nongnu.org>; Tue, 15 Sep 2026 09:01:45 -0700 (PDT)
+ id 1x6Vai-0003Ls-S0
+ for qemu-arm@nongnu.org; Tue, 15 Sep 2026 12:01:06 -0400
+Received: by mail-ej2-x10.google.com with SMTP id
+ a640c23a62f3a-c254f55efe5so526430666b.2
+ for <qemu-arm@nongnu.org>; Tue, 15 Sep 2026 09:01:04 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20251104; t=1789488105; x=1790092905; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:from:to:cc:subject:date
- :message-id:reply-to:content-type;
- bh=QeOKPFEA582PfRWcIcHhtyxEQbe8HlQaK11TI65dVMU=;
- b=knsXiCAvWlS/nlWMcFwJ0/j0xewk/IYe50ameUaBqtA8BtF9YgLYbfFtdeRp+U9dkV
- 1fybthndqhenqI9EluLzpb2raTPM657yQEM/cGWygaVSCCF/rzEKtdkHzRtDKekbAXmp
- Hb6UmHUNefpIo2BxhTfoBuvT1AWKj0Sb3nBQNzpoi09pSeaKtiRrKK/7wNst03CfCbI7
- ELKfrLd8SQBkaQ8NnG+Qi2xZUd0VQVGhbAWCicTdOA1V7zQYFfXifigOE7rPh0+ucZRc
- CppLAghN0RuEeyo1WuNPUwyx559OuFlAA46X1EUk4BlTCuAUjqRlEQ4MlI8SZokmEtCA
- ANDg==
+ d=gmail.com; s=20251104; t=1789488063; x=1790092863; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:from:to:cc:subject:date:message-id:reply-to:content-type;
+ bh=oFPZQwKQuCjCzMZUGK+48BZ68TnFn0kAPX01KvNhndo=;
+ b=rWcwnFsp3wndq84OahT+8M7h4fKyH2stKlLuyUMxS8Z5VmOTWX4VqbV3Vdy5efyWk9
+ vMkj87Rc18rg7vJBGoTNQVC0R1v2e/hfQWMDgPXf14EzoY4kgM0FRKHBHDIcl/d7xlF5
+ 98Tw27x4L7nXaEXIP+FwjBgEZ+Er+77jK3Io9WiyDiA+9NADfvS7YGMZ4W+/PDpFdDGZ
+ rfVlhW0laZkcvNKiNKn2aNK9kSnhaQtBQJU6ISjKZa6pcMrd19uHWLEbL5MxqecmFl7O
+ ayxHLbbQwj/0ZFnNp8QmFXyN3TMnyM8oAz5TbbSMpyHl0jGhztdCpTOu1JkKPPb2VFJp
+ Vegg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20260707; t=1789488105; x=1790092905;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
- :to:cc:subject:date:message-id:reply-to:content-type;
- bh=QeOKPFEA582PfRWcIcHhtyxEQbe8HlQaK11TI65dVMU=;
- b=15S/Ri3xRMlvByNK72rTpAI/4QhpenCgLkUflnSPtSLRabIi3fOvMujLRSmTCIDeGO
- yUZ3P9Go/eUauTQP61SGAOlM+kSG311wiNIsR3fm+HldsMTRv9LyTRNV1lnu/Ck67jah
- FmOHICSi13q0eAi6Y4SyeRQFpHogp4eSn1hPav/Yxrgub7a35vIToPs/t5n/I8DNd4qN
- 9m48fKl+sd2KxLUL4xThOFl9pEXjVn7HQgyfziRWX7jZD0lV1U4+hy5jy/lVVw1H6vFI
- NIrebhcx7SPsUSkOjQ+b1NyWJnqSkQye3R0iJbUnD7EQj7TVf61mNL9CeL2jxl7dqTW+
- h6vw==
-X-Gm-Message-State: AFuF++meFbLUuIVE94kVwfMf9juDu1gonah0JduGs/Lj9sDlCR3wG4RN
- LOBhSsIPZ4qeW0Fktx5GELwb8eqm5MK4stg5N5qgAcaDGD9OOKPkNAJR
-X-Gm-Gg: AYBFou1rrDcNfEBI4Tct3eohxKkkbeuIl2LtAAb3RIXSEOSTz7U4RdZGT/hSt1ujGiA
- 3jr+FasP56EHaHRUcIX91docyNs1kz967umQWb+t9aL6BG6yKh44D3IClmApW0K+bF3Nwxgeyfu
- QetOaRbwPkVyZa0Z930eYbxne3tzbLZmr1XnNLdoB1sFk70QV8F00BbMBuvQ/SkiPfzVcEQtAmv
- oOYhxu6zT0JmfbJZePocVvPPkSO/G60/La6rnj8vCHZripSuPqFEMTPOJLNfromRJTwNnhZ/X4A
- /aoCsKi8aJsikcbNFWKhDTNXS17w5yilMJvqtP8UY9gL0dJprlpWgOVmlzCj8LoyVDDQ+BgUU4g
- etFKj+k6bhCwZJJeuFMAY7a4G0pjpEHVAUieQk6JcGU6yfwCYULyoud1YaoJHE5p1aR3mWqe+Px
- 6CHFayMn4nuIg1AhjBhOrPFG9fEyW6y8NlaOreWX7ASf/Vdy+I5JIroZzUvvmlj+gGTndeisi+H
- Qd/hYN0Y5SGstF6cWtrmWNC31rAF3Jh/gbQkM2A0buHGw==
-X-Received: by 2002:a17:907:6d1f:b0:c25:5faf:b207 with SMTP id
- a640c23a62f3a-c29b84c9a48mr546735966b.3.1789488104484; 
- Tue, 15 Sep 2026 09:01:44 -0700 (PDT)
+ d=1e100.net; s=20260707; t=1789488063; x=1790092863;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+ :message-id:reply-to:content-type;
+ bh=oFPZQwKQuCjCzMZUGK+48BZ68TnFn0kAPX01KvNhndo=;
+ b=Njkkjq40st1NvrFFcE7lBT/FqyDalYR1U0jXTO3eop/BtU1HOnurJUbBVmdsV4x9T1
+ ykylrClQi3pcvBagSI5mBi/Zn1cNtD46+vL6k3tscsk4YHuIREEtCsllImqN/rIiXWms
+ tuFN2JiI91vsG8dbTIt8asGPe4iZ6FPhzgHMJ9NnlD/U89BtBQsdk1F9ChxXamMjg9AE
+ wJk8ikFzafSaM3ImPmUGDdb8BOU+FaRoteUXcATVUeBpBWL9Oe2HgEQKD9sFOnnB9tPi
+ QqIcy5dNINWqX9INCLPJ/Clsi+1w/q5rEWJR1b/pq6rJuIQjqEhEFdP7VwmxKM2LH1GT
+ dzLg==
+X-Gm-Message-State: AFuF++kRitoYj+srf5AViocwAgbIah2RHmiJJynLa9H/++hodzT17fzm
+ R/PhGn20j/hW8TvneGeJNqiuLqHU774PAa3q9csAzJcjYZlEIiNWrxqj
+X-Gm-Gg: AYBFou34OkYa+vqsrRWpMXAnLIWDHzhSEs8uYmzolH0CpiefejNhxCcxenJX9boCABc
+ PPcuFvpptAjJ7lLvAfXc/8Bc+/s1AToGY5ZAL+C2TPa01TBoYlhHqZO9VrtoWrst6CzwdEuFQbP
+ THTekk/m6ZA032KxL++ueA6Ms++7ufaaY9a3xyidJ0EvqFOctwJmGjRJZp6Tand3YaoMRJKd0YL
+ 9ecMkbd2jwSp+fPWwp2Skrx2HUmWH6OObEthiZ3k+pGwludM8vXecQHWbpq9h3Uujj5GxbQzhPS
+ ONyFD26QppT4Thm+633ja2d+ZoZ8zFbDz6DOU3PaUO5EJ1TfL/RrjHZmcXC22Y+ybodYIIXiEVI
+ kPNP6MHSTvUquePjU61Ip/DKh0wjxPuxNCXxNmnP6IH9ELctEUcowodDmFdwfmtgOv5A/yy372Z
+ eKpwfSISdauTWsKiVGXRp6i/DgEL3PYVMc5WnQNIqxi9aHxBA5QT0XbAzyOWMIFRF/oFMc7VNwk
+ L7Vo50yBZWHFfA8N4SsiJTBwGpRLt8zPuTwlD0pPX5EAQ==
+X-Received: by 2002:a17:907:948d:b0:c25:2cbe:edeb with SMTP id
+ a640c23a62f3a-c29b863a5e1mr562368966b.21.1789488062524; 
+ Tue, 15 Sep 2026 09:01:02 -0700 (PDT)
 Received: from thinkpad-t470s.. (83-131-196-251.adsl.net.t-com.hr.
  [83.131.196.251]) by smtp.googlemail.com with ESMTPSA id
- a640c23a62f3a-c29ddd86344sm3235866b.0.2026.09.15.09.01.43
+ a640c23a62f3a-c29ddd86344sm3235866b.0.2026.09.15.09.01.00
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 15 Sep 2026 09:01:43 -0700 (PDT)
+ Tue, 15 Sep 2026 09:01:01 -0700 (PDT)
 From: Ruslan Ruslichenko <ruslichenko.r@gmail.com>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org, artem_mygaiev@epam.com, volodymyr_babchuk@epam.com,
  peter.maydell@linaro.org, francisco.iglesias@amd.com,
  edgar.iglesias@gmail.com, berrange@redhat.com, eugene@nuvacore.ai,
- Ruslan_Ruslichenko@epam.com, takahiro.nakata.wr@renesas.com,
- "Edgar E . Iglesias" <edgar.iglesias@amd.com>
-Subject: [PATCH v2 19/20] hw/core: Add FDT support to Remote Port GPIO
-Date: Tue, 15 Sep 2026 18:00:43 +0200
-Message-ID: <20260915160044.345788-20-ruslichenko.r@gmail.com>
+ Ruslan_Ruslichenko@epam.com, takahiro.nakata.wr@renesas.com
+Subject: [PATCH v2 00/20] hw/core: Introduce Remote Port Co-simulation Protocol
+Date: Tue, 15 Sep 2026 18:00:24 +0200
+Message-ID: <20260915160044.345788-1-ruslichenko.r@gmail.com>
 X-Mailer: git-send-email 2.43.0
-In-Reply-To: <20260915160044.345788-1-ruslichenko.r@gmail.com>
-References: <20260915160044.345788-1-ruslichenko.r@gmail.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:33::10;
- envelope-from=ruslichenko.r@gmail.com; helo=mail-ed2-x10.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:34::10;
+ envelope-from=ruslichenko.r@gmail.com; helo=mail-ej2-x10.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -106,82 +102,176 @@ Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
 From: Ruslan Ruslichenko <Ruslan_Ruslichenko@epam.com>
 
-Implement the FDTGenericIntc interface for the Remote
-Port GPIO device.
+This patch series introduces the Remote Port (RP) subsystem, a framework designed to connect QEMU with external simulation environments (such as SystemC models or RTL simulators).
 
-This enables the device to be recognized as an interrupt
-controller when instantiated via the fdt-generic framework.
-It allows other devices defined in the Device Tree to connect
-their interrupt lines to this GPIO controller using standard
-FDT properties (e.g., 'interrupts' and 'interrupt-parent').
+Updates in v2:
 
-The implementation maps the interrupt specifier from the
-Device Tree cells to the corresponding internal GPIO input
-line based on the configured cell offset.
+- Removed global 'machine-path' and 'sync-quantum' cmdline options
+- Added EventNotifier for communication between IO and CPU threads, instead of pipes and sockets
+- Made chrdev_id mandatory and simplified chardev configuration
+- MemoryTransaction .access handler dropped and reworked RPMemoryTransaction to use existing .read/write_with_attrs
+- Reduced coupling with HW Device Tree by making rp devices register themselves within rp core using rp-chan property
+- Dropped debug macros and added tracepoints instead
+- Added reference to sample project using QEMU with SystemC
+- Addressed review comments from v1 patch series:
+  https://lists.gnu.org/archive/html/qemu-devel/2026-02/msg01760.html
 
-Signed-off-by: Edgar E. Iglesias <edgar.iglesias@amd.com>
-Signed-off-by: Takahiro Nakata <takahiro.nakata.wr@renesas.com>
-Signed-off-by: Ruslan Ruslichenko <Ruslan_Ruslichenko@epam.com>
----
- hw/core/remote-port-gpio.c | 23 +++++++++++++++++++++++
- 1 file changed, 23 insertions(+)
+Origin:
+The Remote Port protocol was originally developed by Edgar E. Iglesias.
+The original source code is available in the QEMU repository at AMD: https://github.com/Xilinx/qemu.
 
-diff --git a/hw/core/remote-port-gpio.c b/hw/core/remote-port-gpio.c
-index 43a40315c5..af7f3c6075 100644
---- a/hw/core/remote-port-gpio.c
-+++ b/hw/core/remote-port-gpio.c
-@@ -20,6 +20,8 @@
- #include "hw/core/irq.h"
- #include "trace.h"
- 
-+#include "hw/core/fdt_generic_util.h"
-+
- #include "hw/core/remote-port.h"
- #include "hw/core/remote-port-proto.h"
- #include "hw/core/remote-port-gpio.h"
-@@ -157,14 +159,34 @@ static Property rp_properties[] = {
-     DEFINE_PROP_BOOL("posted-updates", RemotePortGPIO, posted_updates, true),
- };
- 
-+static int rp_fdt_get_irq(FDTGenericIntc *obj, qemu_irq *irqs,
-+                          uint32_t *cells, int ncells, int max,
-+                          Error **errp)
-+{
-+    RemotePortGPIO *s = REMOTE_PORT_GPIO(obj);
-+
-+    if (cells[s->cell_offset_irq_num] >= s->num_gpios) {
-+        error_setg(errp, "RP-GPIO was setup for %u interrupts: index %"
-+                   PRIu32 " requested", s->num_gpios,
-+                   cells[s->cell_offset_irq_num]);
-+        return 0;
-+    }
-+
-+    (*irqs) = qdev_get_gpio_in(DEVICE(obj), cells[s->cell_offset_irq_num]);
-+    return 1;
-+};
-+
- static void rp_gpio_class_init(ObjectClass *oc, const void *data)
- {
-     RemotePortDeviceClass *rpdc = REMOTE_PORT_DEVICE_CLASS(oc);
-     DeviceClass *dc = DEVICE_CLASS(oc);
-+    FDTGenericIntcClass *fgic = FDT_GENERIC_INTC_CLASS(oc);
-+
-     rpdc->ops[RP_CMD_interrupt] = rp_gpio_interrupt;
-     dc->legacy_reset = rp_gpio_reset;
-     dc->realize = rp_gpio_realize;
-     device_class_set_props_n(dc, rp_properties, ARRAY_SIZE(rp_properties));
-+    fgic->get_irq = rp_fdt_get_irq;
- }
- 
- static const TypeInfo rp_info = {
-@@ -175,6 +197,7 @@ static const TypeInfo rp_info = {
-     .class_init    = rp_gpio_class_init,
-     .interfaces    = (InterfaceInfo[]) {
-         { TYPE_REMOTE_PORT_DEVICE },
-+        { TYPE_FDT_GENERIC_INTC },
-         { },
-     },
- };
+Motivation
+In modern SoC and FPGA development, specialized hardware blocks are often verified using SystemC, Verilog, or VHDL long before silicon is available. While QEMU is optimized for high-performance CPU emulation and software development, it requires hardware models to be rewritten in C, which is time-consuming and duplicates effort.
+
+The Remote Port (RP) subsystem addresses this limitation by enabling a Co-simulation environment. It allows QEMU to act as the high-performance Processing Subsystem, booting complex operating systems (e.g. Linux), while delegating specific peripheral modeling to external simulators (SystemC, RTL) via a socket connection.
+
+The Remote Port protocol provides a socket-based interface that supports:
+
+Memory Transactions: Bidirectional memory accesses (Master and Slave) allowing QEMU to access remote devices and vice versa.
+Interrupts/GPIO: Propagation of interrupt signals between QEMU and the remote peer.
+IOMMU/ATS Support: Support for Address Translation Services, allowing remote devices to operate correctly behind IOMMU.
+Time Synchronization: Keeps QEMU and the external simulator in sync by advancing time in fixed steps (quantums).
+
+Integration with SystemC Ecosystem
+
+To connect the simulation side, the open-source libsystemctlm-soc library [1] is used. It acts as a bridge, translating Remote Port protocol packets into standard SystemC/TLM-2.0 transactions [2]. This allows users to attach existing TLM-2.0 compliant models to QEMU.
+
+Architecture Overview
+
+The series is structured into the following logical components:
+
+1. Core Protocol & Infrastructure
+
+Establishes the socket connection and handshake (Hello protocol).
+Implements the packet dispatch loop and thread management.
+
+2. Memory Transaction Support
+
+RP Memory Slave: Allows the remote peer to initiate bus transactions within QEMU.
+RP Memory Master: Represents a memory region in QEMU that forwards accesses to the remote peer.
+
+3. Address Translation Services (ATS)
+
+Implements the logic to handle ATS requests from remote masters.
+Integrates with QEMU's IOMMU notifiers to manage translation caches.
+
+4. Device Tree (FDT) & Configuration
+
+Added FDT support for Remote Port Memory Master and GPIO
+
+Dependencies
+
+Patches 19-20 in series are based on the following previously submitted series:
+FDT based machine v3: https://lists.nongnu.org/archive/html/qemu-devel/2026-04/msg00415.html
+
+Instantiation of Remote Port via FDT also registers its reset handler,
+needed to start protocol thread.
+
+Validation:
+
+The Sample Project demonstrating test setup with QEMU/Remote Port and SystemC emulated PL011 UART module available by following link:
+https://github.com/renesas/SysC_Island_MIT
+
+
+Patch Summary
+The series is organized as follows:
+
+System/Global:
+
+system/physmem: Add ats_do_translate helper
+
+Remote Port Core:
+
+hw/core: Add Remote Port protocol packet definition
+hw/core: Add Remote Port header helpers
+hw/core: Add Remote Port session state and hello protocol
+hw/core: Add Remote Port object skeleton
+hw/core: Add Remote Port protocol thread and handshake
+hw/core: Implement Remote Port response handling
+hw/core: Implement Remote Port time synchronization
+hw/core: Implement Remote Port irq, sync and ATS helpers
+hw/core: Add Remote Port files to build
+
+Memory & Bus Access:
+
+hw/core: Implement Remote Port bus access helpers
+hw/core: Add Remote Port Memory Master object skeleton
+hw/core: Implement Remote Port Memory Master bus transactions
+hw/core: Add Remote Port memory slave device
+
+ATS & Streams:
+
+hw/core: Add Remote Port Stream device
+hw/core: Add Remote Port ATS device skeleton
+hw/core: Implement Remote Port ATS logic and cache management
+
+FDT & GPIO:
+
+hw/core: Add Remote Port GPIO/Interrupt bridge
+hw/core: Add FDT support to Remote Port GPIO
+hw/core: Add FDT support to Remote Port memory master
+
+Links:
+[1] libsystemctlm library: https://github.com/Xilinx/libsystemctlm-soc
+
+[2] SystemC TLM description: https://systemc.org/overview/systemc-tlm/
+
+
+Ruslan Ruslichenko (20):
+  hw/core: Add Remote Port protocol packet definition
+  hw/core: Add Remote Port header helpers
+  hw/core: Add Remote Port session state and hello protocol
+  hw/core: Implement Remote Port bus access helpers
+  hw/core: Implement Remote Port irq, sync and ATS helpers
+  hw/core: Add Remote Port object skeleton
+  hw/core: Add Remote Port protocol thread and handshake
+  hw/core: Implement Remote Port response handling
+  hw/core: Implement Remote Port time synchronization
+  hw/core: Add Remote Port Memory Master object skeleton
+  hw/core: Implement Remote Port Memory Master bus transactions
+  system/physmem: Add ats_do_translate helper
+  hw/core: Add Remote Port ATS device skeleton
+  hw/core: Implement Remote Port ATS logic and cache management
+  hw/core: Add Remote Port memory slave device
+  hw/core: Add Remote Port GPIO/Interrupt bridge
+  hw/core: Add Remote Port Stream device
+  hw/core: Add Remote Port files to build
+  hw/core: Add FDT support to Remote Port GPIO
+  hw/core: Add FDT support to Remote Port memory master
+
+ hw/core/Kconfig                             |   4 +
+ hw/core/meson.build                         |  10 +
+ hw/core/remote-port-ats.c                   | 412 +++++++++++
+ hw/core/remote-port-gpio.c                  | 210 ++++++
+ hw/core/remote-port-memory-master.c         | 369 +++++++++
+ hw/core/remote-port-memory-slave.c          | 242 ++++++
+ hw/core/remote-port-proto.c                 | 467 ++++++++++++
+ hw/core/remote-port-stream.c                | 246 ++++++
+ hw/core/remote-port.c                       | 782 ++++++++++++++++++++
+ hw/core/trace-events                        |  22 +
+ include/hw/core/remote-port-ats.h           |  76 ++
+ include/hw/core/remote-port-gpio.h          |  34 +
+ include/hw/core/remote-port-memory-master.h |  81 ++
+ include/hw/core/remote-port-memory-slave.h  |  35 +
+ include/hw/core/remote-port-proto.h         | 541 ++++++++++++++
+ include/hw/core/remote-port.h               | 164 ++++
+ include/system/memory.h                     |   8 +
+ system/physmem.c                            |  53 ++
+ 18 files changed, 3756 insertions(+)
+ create mode 100644 hw/core/remote-port-ats.c
+ create mode 100644 hw/core/remote-port-gpio.c
+ create mode 100644 hw/core/remote-port-memory-master.c
+ create mode 100644 hw/core/remote-port-memory-slave.c
+ create mode 100644 hw/core/remote-port-proto.c
+ create mode 100644 hw/core/remote-port-stream.c
+ create mode 100644 hw/core/remote-port.c
+ create mode 100644 include/hw/core/remote-port-ats.h
+ create mode 100644 include/hw/core/remote-port-gpio.h
+ create mode 100644 include/hw/core/remote-port-memory-master.h
+ create mode 100644 include/hw/core/remote-port-memory-slave.h
+ create mode 100644 include/hw/core/remote-port-proto.h
+ create mode 100644 include/hw/core/remote-port.h
+
 -- 
 2.43.0
 

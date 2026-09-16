@@ -4,73 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2227AC982CF
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 221FCC982CC
 	for <qemu-arm@archiver.kernel.org>; Wed, 16 Sep 2026 16:52:43 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1x6srK-0000IB-3n; Wed, 16 Sep 2026 12:51:46 -0400
+	id 1x6srK-0000Hm-0L; Wed, 16 Sep 2026 12:51:46 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <sebott@redhat.com>) id 1x6sr5-00006f-Rm
+ (Exim 4.90_1) (envelope-from <sebott@redhat.com>) id 1x6sr6-00006o-L2
  for qemu-arm@nongnu.org; Wed, 16 Sep 2026 12:51:32 -0400
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <sebott@redhat.com>) id 1x6sr4-0001dH-2i
- for qemu-arm@nongnu.org; Wed, 16 Sep 2026 12:51:31 -0400
+ (Exim 4.90_1) (envelope-from <sebott@redhat.com>) id 1x6sr3-0001dA-L2
+ for qemu-arm@nongnu.org; Wed, 16 Sep 2026 12:51:32 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1789577489;
+ s=mimecast20190719; t=1789577488;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=DceylnPw8tnbzv24tzOsmyILBNWMpDPlJWn3IRyqBt0=;
- b=Aak1nYzfEl3ynUnGHpcQ5SNJIhTchVGATUBmo0o5CocCHHqwFA29ZAeGZn/yqWiISzodwv
- B37x5IMQ2YDyN6K5xkx5XlQ6l6DBg1cv1isoRfypBjuJSkwF34KCoYXMzOhcFvIobyeEW+
- m/ipw3B/Nn9k8+ROUnD05U+UOP7zLM0=
+ bh=VTEUyEPf1vVRjMgtQAYcWTL2SZclNaskz/G4PWhvjX0=;
+ b=M7nKnd3KbDT2T1WPJ5GW9Y/8EmLyc0Nig8XsVLaQDnQzVYqohu3FBwV5Vq8nApN8Yxk6SL
+ PzWL9OAV/dLPR8TgsERqQ2kwHMI+catub+Wgp1O+g/SuBezaEWfFPTRKNQ177NCEI7RUlr
+ iV3wunzxhPD2jsQmFOSlOJ4jL8W/oU0=
 Received: from mail-wr1-f71.google.com (mail-wr1-f71.google.com
  [209.85.221.71]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-631-_z-TXStaM-CT2DTWzO7H8Q-1; Wed, 16 Sep 2026 12:51:28 -0400
-X-MC-Unique: _z-TXStaM-CT2DTWzO7H8Q-1
-X-Mimecast-MFC-AGG-ID: _z-TXStaM-CT2DTWzO7H8Q_1789577487
+ us-mta-623-ZsDmbfQwMI6uhOMaTL33Vw-1; Wed, 16 Sep 2026 12:51:27 -0400
+X-MC-Unique: ZsDmbfQwMI6uhOMaTL33Vw-1
+X-Mimecast-MFC-AGG-ID: ZsDmbfQwMI6uhOMaTL33Vw_1789577486
 Received: by mail-wr1-f71.google.com with SMTP id
- ffacd0b85a97d-4870a0f802cso1695294f8f.0
+ ffacd0b85a97d-48589603501so3428755f8f.3
  for <qemu-arm@nongnu.org>; Wed, 16 Sep 2026 09:51:27 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20260707; t=1789577487; x=1790182287;
+ d=1e100.net; s=20260707; t=1789577486; x=1790182286;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
  :to:cc:subject:date:message-id:reply-to:content-type;
- bh=DceylnPw8tnbzv24tzOsmyILBNWMpDPlJWn3IRyqBt0=;
- b=UVJt33gmTj8oWmVBuDSkh/t6+m1rYPAmSQh8cxJcaW063HQpOzZ5oydMUIJz9LCxzd
- wf+5IaQGv1fHxh9FcghjcLGpek2GeShtUdcmKq7as2ysINqXJSsYvGbjlPTASzkPS8l6
- zMFVe8BhyXww/fgtw8K0AA1NMzMK9q0i25Oa9R+fKA78DrLOqpdnB4vUIZkJnJp6+BUk
- s6ot980dtzTs7lROm2JTUEtF6COtQtavLriYdOXOPQ70NKhuIAf7jDZu434RAwWDrkMb
- Q0oVnKipqL53Np8eFqGP0vbvsEe3yDDhEtP+p0a6Epd7PrzVE7OXW21bOVL+iqAuTFVZ
- LDCg==
-X-Gm-Message-State: AFuF++n0ILPqIqHOp8lW/yopdsEEuXkg4m/1xBcCpy3ZFycY6uW2BqXI
- /S9qFJKm9ugn2Q1FVQWnfHRGKudYFnGHwfocGkwPGdROO3X80d+hGhx09wrhDWydEhAAFPJXKyV
- D0JKTvV0k6EU9R4BbVQR62RlM7HOS3KgDssF2pOLEyxEGT72k8y67fw==
-X-Gm-Gg: AYBFou0kE9jODP6QIf7x4sXB6TSBy96sfeBIeq0tK0gdja4r9KEhGj15o/NIZkoPVcL
- 1HsTVQ3YtsCsCF5MkWFCkfrv5nVUvWj86nEuddLocRwvKfLAtNA5XVCmpbpeSTMF4M2LKYijtds
- usJ7Z2gd0ET9OQcWiPT+JSfXjbSOT9zpzKl8bevJV7/8FQezSvMF1eCpzomk2zYXLNtCLe7FV4P
- 7v3DgHg5SJE2OyFXPztlYIg6XieX0GZ9GnMSpMh5xq+EDlJhcaZ3X9rli0uPWJhz3DBHDoZYltT
- 6Hv4ZFRItnAoz3eE6SxhiGcV2K6SuDje2AiJjbKsEycXICkGxqqAQdrmQytCCK3+KJs04h4J/yZ
- zI4xcgYwcqJhhkUfnJCwznN8j1EuIvBHasU3Uqdiy9mVZj5MtoKMPuNF8uT2PChyi3g==
-X-Received: by 2002:a5d:584b:0:b0:487:1004:3935 with SMTP id
- ffacd0b85a97d-48710043962mr3063699f8f.25.1789577486857; 
- Wed, 16 Sep 2026 09:51:26 -0700 (PDT)
-X-Received: by 2002:a5d:584b:0:b0:487:1004:3935 with SMTP id
- ffacd0b85a97d-48710043962mr3063676f8f.25.1789577486519; 
- Wed, 16 Sep 2026 09:51:26 -0700 (PDT)
+ bh=VTEUyEPf1vVRjMgtQAYcWTL2SZclNaskz/G4PWhvjX0=;
+ b=b/bCsIc8MOu01eo+6B7i4CEp8pqyepqXjCHUUJxODys7ADQ2SaG79pocoNvDHoekCv
+ SIgJ+oQqt3T0g9qDTqE8YaKiWhShOZE0JdPLXQB9zSqLeddXZx56kCpI/QmaxSSGFcaj
+ e7ewRD1H2wi5Ea1Qv6B6SFmYWHJsk3NvuKvgWrPiMnctJZzTN4bJfBMj69oSnbeGeb/r
+ eobEUw39r1vwLgX2gE+0+RP1nXtyzFlB/NkfgwGxd9ISi7T5yHd2kzLHKoQcEL0YT/sk
+ RAnZ964sM4AHODMpKHKcTGSjdiEYnhvoT5MyFpZJUCV/jEmoPUgLhmAL8446lAKvwHo8
+ uuMA==
+X-Gm-Message-State: AFuF++kIdCC7JSb5dc78n1ZTMTW44J+YvwXGjE74Lah8Rv3B8E5Wx3OO
+ IxOUqqXcikf4njxsSsFS3chRikA3ZKLaiGAjBFBKwkXsmPyV38NgQMhDJzSsbhx9mEIpRgaV26e
+ /WBZbQwXgA/rvgkjJc/DKwx4JbWF10quztbHDhyKTrfslR28oOTc7rA==
+X-Gm-Gg: AYBFou0WaonnJKIo6HieMlmkACbaS/6FSVNUkDhQJ3CdimNYgbooGeWBzOPTANqfXo9
+ 7dKw3da2tRGcqVG5CwbBMEdH7gQBjpPR8Z07mwXj6XrzqqB8rm6g9f0DlYI73E7ntffn+DpJkxX
+ kv4jxnXOrWVVD9vreNXniapLMoOwwJ6/8Q+4wvD+7q5LkzZcgkLXcXnUM2lmsMoqIIlEg5ZBOsr
+ q7SqH/F0QXrhAc8ySpmIF58aG7tNE9gkkf8py4FNbB+elU62C8PZzAmu1TkANu4XnzXZMoUaNw+
+ ruci4GdmLCUlWzKSMEOAZJyUyDwloxrMJ3pCWiS5GT/axD+UtSt5RMVsNZOWEM+TH719lZdDZZB
+ qSRBzOebslJuhd/L+gemoSGWHLqkKTg3/fVQBbok6nKiFfncqHACVzDY5NuYs9M80Yg==
+X-Received: by 2002:a05:6000:4b04:b0:484:3326:983b with SMTP id
+ ffacd0b85a97d-4870d26995cmr4657120f8f.26.1789577485993; 
+ Wed, 16 Sep 2026 09:51:25 -0700 (PDT)
+X-Received: by 2002:a05:6000:4b04:b0:484:3326:983b with SMTP id
+ ffacd0b85a97d-4870d26995cmr4657085f8f.26.1789577485496; 
+ Wed, 16 Sep 2026 09:51:25 -0700 (PDT)
 Received: from rh.redhat.corp
  (p200300f6af00a400b6f52cb1a2e89932.dip0.t-ipconnect.de.
  [2003:f6:af00:a400:b6f5:2cb1:a2e8:9932])
  by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-4870bf33e01sm9655089f8f.23.2026.09.16.09.51.25
+ ffacd0b85a97d-4870bf33e01sm9655089f8f.23.2026.09.16.09.51.24
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 16 Sep 2026 09:51:26 -0700 (PDT)
+ Wed, 16 Sep 2026 09:51:25 -0700 (PDT)
 From: Sebastian Ott <sebott@redhat.com>
 To: Peter Maydell <peter.maydell@linaro.org>, Eric Auger <eauger@redhat.com>,
  Jonathan Cameron <jonathan.cameron@huawei.com>,
@@ -78,16 +78,16 @@ To: Peter Maydell <peter.maydell@linaro.org>, Eric Auger <eauger@redhat.com>,
  Richard Henderson <richard.henderson@linaro.org>,
  Cornelia Huck <cohuck@redhat.com>, khushit.shah@nutanix.com
 Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org,
- Sebastian Ott <sebott@redhat.com>
-Subject: [PATCH v6 3/3] arm/kvm: get demuxed ID registers from kvm
-Date: Wed, 16 Sep 2026 18:51:17 +0200
-Message-ID: <20260916165117.39764-4-sebott@redhat.com>
+ Eric Auger <eric.auger@redhat.com>, Sebastian Ott <sebott@redhat.com>
+Subject: [PATCH v6 2/3] arm: handle CCSIDR_EL1 as a demuxed register
+Date: Wed, 16 Sep 2026 18:51:16 +0200
+Message-ID: <20260916165117.39764-3-sebott@redhat.com>
 X-Mailer: git-send-email 2.55.0
 In-Reply-To: <20260916165117.39764-1-sebott@redhat.com>
 References: <20260916165117.39764-1-sebott@redhat.com>
 MIME-Version: 1.0
 X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: KILbfXelhmwVRhhroEXdoooQs7L24QuWyyjlOmFgQxA_1789577487
+X-Mimecast-MFC-PROC-ID: vBGjsb2WSG4fn_RsaWIliYhJeOySJEjD0VWsUjTY3Vo_1789577486
 X-Mimecast-Originator: redhat.com
 Content-Transfer-Encoding: 8bit
 content-type: text/plain; charset="US-ASCII"; x-default=true
@@ -117,76 +117,414 @@ Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
 From: Cornelia Huck <cohuck@redhat.com>
 
-We now have the infrastructure in place to handle demuxed ID registers
-from kvm. Use it to get the values that kvm emulates for CCSIDR_EL1.
+Move handling of CCSIDR_EL1 over to the new *_IDREG_DEMUX
+infrastructure.
 
+Note: the existing size of 16 is kept and might be extended
+at a later time.
+
+Reviewed-by: Eric Auger <eric.auger@redhat.com>
 Tested-by: Alireza Sanaee <alireza.sanaee@huawei.com>
 Signed-off-by: Cornelia Huck <cohuck@redhat.com>
 Signed-off-by: Sebastian Ott <sebott@redhat.com>
 ---
- target/arm/kvm.c | 42 ++++++++++++++++++++++++++++++++++++++++++
- 1 file changed, 42 insertions(+)
+ target/arm/cpu.h             | 12 +++----
+ target/arm/cpu-sysregs.h.inc |  1 +
+ hw/arm/virt.c                | 19 ++++------
+ hw/intc/armv7m_nvic.c        |  2 +-
+ target/arm/cpu-max.c         |  6 ++--
+ target/arm/cpu64.c           |  6 ++--
+ target/arm/helper.c          |  2 +-
+ target/arm/tcg/cpu32.c       | 26 +++++++-------
+ target/arm/tcg/cpu64.c       | 68 ++++++++++++++++++------------------
+ 9 files changed, 69 insertions(+), 73 deletions(-)
 
-diff --git a/target/arm/kvm.c b/target/arm/kvm.c
-index ed99be7fd8..e4ef11945e 100644
---- a/target/arm/kvm.c
-+++ b/target/arm/kvm.c
-@@ -244,6 +244,44 @@ static int get_host_cpu_reg(int fd, ARMHostCPUFeatures *ahcf,
-     return ret;
+diff --git a/target/arm/cpu.h b/target/arm/cpu.h
+index 6d1bad1dfc..5c8ea5a7ed 100644
+--- a/target/arm/cpu.h
++++ b/target/arm/cpu.h
+@@ -1106,6 +1106,12 @@ struct ArchCPU {
+      * kvm_arm_get_host_cpu_features() function to correctly populate the
+      * field by reading the value from the KVM vCPU. If it is an AArch64
+      * ID register then you also must update arm_clear_aarch64_idregs().
++     *
++     * The multiplexed register CCSIDR is handled as part of idregs[] -
++     * these contain values for each cache, in the order L1DCache, L1ICache,
++     * L2DCache, L2ICache, etc. Currently only 16 indexes into CCSIDR are
++     * supported because we don't implement separate MTE Allocation Tag caches.
++     * See {G,S}ET_IDREG_DEMUX() accessors.
+      */
+     struct ARMISARegisters {
+         uint32_t mvfr0;
+@@ -1125,10 +1131,6 @@ struct ArchCPU {
+     uint64_t pmceid0;
+     uint64_t pmceid1;
+     uint64_t mp_affinity; /* MP ID without feature bits */
+-    /* The elements of this array are the CCSIDR values for each cache,
+-     * in the order L1DCache, L1ICache, L2DCache, L2ICache, etc.
+-     */
+-    uint64_t ccsidr[16];
+     uint64_t reset_cbar;
+     uint32_t reset_auxcr;
+     bool reset_hivecs;
+@@ -2142,8 +2144,6 @@ FIELD(MFAR, FPA, 12, 40)
+ FIELD(MFAR, NSE, 62, 1)
+ FIELD(MFAR, NS, 63, 1)
+ 
+-QEMU_BUILD_BUG_ON(ARRAY_SIZE(((ARMCPU *)0)->ccsidr) <= R_V7M_CSSELR_INDEX_MASK);
+-
+ /* If adding a feature bit which corresponds to a Linux ELF
+  * HWCAP bit, remember to update the feature-bit-to-hwcap
+  * mapping in linux-user/elfload.c:get_elf_hwcap().
+diff --git a/target/arm/cpu-sysregs.h.inc b/target/arm/cpu-sysregs.h.inc
+index 6e8b335b8f..d9e058a57e 100644
+--- a/target/arm/cpu-sysregs.h.inc
++++ b/target/arm/cpu-sysregs.h.inc
+@@ -39,6 +39,7 @@ DEF(MVFR2_EL1, 3, 0, 0, 3, 2)
+ DEF(ID_PFR2_EL1, 3, 0, 0, 3, 4)
+ DEF(ID_DFR1_EL1, 3, 0, 0, 3, 5)
+ DEF(ID_MMFR5_EL1, 3, 0, 0, 3, 6)
++DEF_MUX(CCSIDR_EL1, 3, 1, 0, 0, 0, 16)
+ DEF(CLIDR_EL1, 3, 1, 0, 0, 1)
+ DEF(ID_AA64ZFR0_EL1, 3, 0, 0, 4, 4)
+ DEF(CTR_EL0, 3, 3, 0, 0, 1)
+diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+index 0871a35e11..59ec51ddf3 100644
+--- a/hw/arm/virt.c
++++ b/hw/arm/virt.c
+@@ -306,24 +306,19 @@ void set_cpu_cache(CPUCoreCaches *cpu_cache, enum CacheType cache_type,
+     int bank_index = ((cache_level - 1) * 2) | is_i_cache0;
+     ARMCPU *armcpu = ARM_CPU(qemu_get_cpu(0));
+     bool ccidx = cpu_isar_feature(any_ccidx, armcpu);
++    uint64_t ccsidr = GET_IDREG_DEMUX(&armcpu->isar, CCSIDR_EL1, bank_index);
+ 
+     if (ccidx) {
+         *cpu_cache = (CPUCoreCaches){
+-            .linesize = 1 << (FIELD_EX64(armcpu->ccsidr[bank_index], CCSIDR_EL1,
+-                                         CCIDX_LINESIZE) + 4),
+-            .associativity = FIELD_EX64(armcpu->ccsidr[bank_index], CCSIDR_EL1,
+-                                        CCIDX_ASSOCIATIVITY) + 1,
+-            .sets = FIELD_EX64(armcpu->ccsidr[bank_index], CCSIDR_EL1,
+-                               CCIDX_NUMSETS) + 1,
++            .linesize = 1 << (FIELD_EX64(ccsidr, CCSIDR_EL1, CCIDX_LINESIZE) + 4),
++            .associativity = FIELD_EX64(ccsidr, CCSIDR_EL1, CCIDX_ASSOCIATIVITY) + 1,
++            .sets = FIELD_EX64(ccsidr, CCSIDR_EL1, CCIDX_NUMSETS) + 1,
+         };
+     } else {
+         *cpu_cache = (CPUCoreCaches){
+-            .linesize = 1 << (FIELD_EX64(armcpu->ccsidr[bank_index], CCSIDR_EL1,
+-                                         LINESIZE) + 4),
+-            .associativity = FIELD_EX64(armcpu->ccsidr[bank_index], CCSIDR_EL1,
+-                                        ASSOCIATIVITY) + 1,
+-            .sets =
+-                FIELD_EX64(armcpu->ccsidr[bank_index], CCSIDR_EL1, NUMSETS) + 1,
++            .linesize = 1 << (FIELD_EX64(ccsidr, CCSIDR_EL1, LINESIZE) + 4),
++            .associativity = FIELD_EX64(ccsidr, CCSIDR_EL1, ASSOCIATIVITY) + 1,
++            .sets = FIELD_EX64(ccsidr, CCSIDR_EL1, NUMSETS) + 1,
+         };
+     }
+     cpu_cache->type = cache_type;
+diff --git a/hw/intc/armv7m_nvic.c b/hw/intc/armv7m_nvic.c
+index a7651f831e..5dd867242b 100644
+--- a/hw/intc/armv7m_nvic.c
++++ b/hw/intc/armv7m_nvic.c
+@@ -1360,7 +1360,7 @@ static uint32_t nvic_readl(NVICState *s, uint32_t offset, MemTxAttrs attrs)
+     case 0xd80: /* CSSIDR */
+     {
+         int idx = cpu->env.v7m.csselr[attrs.secure] & R_V7M_CSSELR_INDEX_MASK;
+-        return cpu->ccsidr[idx];
++        return GET_IDREG_DEMUX(&cpu->isar, CCSIDR_EL1, idx);
+     }
+     case 0xd84: /* CSSELR */
+         return cpu->env.v7m.csselr[attrs.secure];
+diff --git a/target/arm/cpu-max.c b/target/arm/cpu-max.c
+index 739500a04f..2ed1cfef9b 100644
+--- a/target/arm/cpu-max.c
++++ b/target/arm/cpu-max.c
+@@ -71,11 +71,11 @@ void aarch64_aa32_a57_init(ARMCPU *cpu, bool aarch64_enabled)
+     cpu->isar.reset_pmcr_el0 = 0x41013000;
+     SET_IDREG(isar, CLIDR, 0x0a200023);
+     /* 32KB L1 dcache */
+-    cpu->ccsidr[0] = make_ccsidr(CCSIDR_FORMAT_LEGACY, 4, 64, 32 * KiB, 7);
++    SET_IDREG_DEMUX(isar, CCSIDR_EL1, 0, make_ccsidr(CCSIDR_FORMAT_LEGACY, 4, 64, 32 * KiB, 7));
+     /* 48KB L1 icache */
+-    cpu->ccsidr[1] = make_ccsidr(CCSIDR_FORMAT_LEGACY, 3, 64, 48 * KiB, 2);
++    SET_IDREG_DEMUX(isar, CCSIDR_EL1, 1, make_ccsidr(CCSIDR_FORMAT_LEGACY, 3, 64, 48 * KiB, 2));
+     /* 2048KB L2 cache */
+-    cpu->ccsidr[2] = make_ccsidr(CCSIDR_FORMAT_LEGACY, 16, 64, 2 * MiB, 7);
++    SET_IDREG_DEMUX(isar, CCSIDR_EL1, 2, make_ccsidr(CCSIDR_FORMAT_LEGACY, 16, 64, 2 * MiB, 7));
+     if (aarch64_enabled) {
+         set_dczid_bs(cpu, 4); /* 64 bytes */
+         cpu->gic_num_lrs = 4;
+diff --git a/target/arm/cpu64.c b/target/arm/cpu64.c
+index c11ab2da21..dcd0d698b3 100644
+--- a/target/arm/cpu64.c
++++ b/target/arm/cpu64.c
+@@ -749,11 +749,11 @@ static void aarch64_a53_initfn(Object *obj)
+     cpu->isar.reset_pmcr_el0 = 0x41033000;
+     SET_IDREG(isar, CLIDR, 0x0a200023);
+     /* 32KB L1 dcache */
+-    cpu->ccsidr[0] = make_ccsidr(CCSIDR_FORMAT_LEGACY, 4, 64, 32 * KiB, 7);
++    SET_IDREG_DEMUX(isar, CCSIDR_EL1, 0, make_ccsidr(CCSIDR_FORMAT_LEGACY, 4, 64, 32 * KiB, 7));
+     /* 32KB L1 icache */
+-    cpu->ccsidr[1] = make_ccsidr(CCSIDR_FORMAT_LEGACY, 1, 64, 32 * KiB, 2);
++    SET_IDREG_DEMUX(isar, CCSIDR_EL1, 1, make_ccsidr(CCSIDR_FORMAT_LEGACY, 1, 64, 32 * KiB, 2));
+     /* 1024KB L2 cache */
+-    cpu->ccsidr[2] = make_ccsidr(CCSIDR_FORMAT_LEGACY, 16, 64, 1 * MiB, 7);
++    SET_IDREG_DEMUX(isar, CCSIDR_EL1, 2, make_ccsidr(CCSIDR_FORMAT_LEGACY, 16, 64, 1 * MiB, 7));
+     set_dczid_bs(cpu, 4); /* 64 bytes */
+     cpu->gic_num_lrs = 4;
+     cpu->gic_vpribits = 5;
+diff --git a/target/arm/helper.c b/target/arm/helper.c
+index c3f607e6d6..a608df1211 100644
+--- a/target/arm/helper.c
++++ b/target/arm/helper.c
+@@ -925,7 +925,7 @@ static uint64_t ccsidr_read(CPUARMState *env, const ARMCPRegInfo *ri)
+     uint32_t index = A32_BANKED_REG_GET(env, csselr,
+                                         ri->secure & ARM_CP_SECSTATE_S);
+ 
+-    return cpu->ccsidr[index];
++    return GET_IDREG_DEMUX(&cpu->isar, CCSIDR_EL1, index);
  }
  
-+
-+/* CSSELR values supported by kvm; used to index KVM_REG_ARM_DEMUX_ID_CCSIDR */
-+#define KVM_CSSELR_MAX 14
-+/*
-+ * QEMU historically supported CSSELR values 0..15. This difference doen't matter
-+ * since CSSELR_EL1.Level == 0b111 is reserved and thus CSSELR values 14..15 will
-+ * make CCSIDR read as zero. Larger CSSELR values will only be necessary when
-+ * support for MTE Allocation Tag caches is added.
-+ */
-+#define QEMU_CSSELR_MAX 16
-+
-+static int get_host_cpu_reg_demux(int fd, ARMHostCPUFeatures *ahcf,
-+                                  ARMIDRegisterIdx index, int subindex)
-+{
-+
-+    struct kvm_one_reg one_reg = {
-+        .id = KVM_REG_ARM64 | KVM_REG_SIZE_U32 | KVM_REG_ARM_DEMUX,
-+    };
-+
-+    switch (index) {
-+    case CCSIDR_EL1_IDX:
-+        if (subindex >= QEMU_CSSELR_MAX) {
-+            return -EINVAL;
-+        } else if (subindex >= KVM_CSSELR_MAX) {
-+            /* CSSELR_EL1.Level == 0b111 is reserved. */
-+            ahcf->isar.idregs[index + subindex] = 0;
-+            return 0;
-+        }
-+        one_reg.id |= KVM_REG_ARM_DEMUX_ID_CCSIDR | subindex;
-+        one_reg.addr = (uintptr_t)&ahcf->isar.idregs[index + subindex];
-+        break;
-+    default:
-+        return -EINVAL;
-+    }
-+
-+    return ioctl(fd, KVM_GET_ONE_REG, &one_reg);
-+}
-+
- static uint32_t kvm_arm_sve_get_vls(int fd)
- {
-     uint64_t vls[KVM_ARM64_SVE_VLS_WORDS];
-@@ -454,6 +492,10 @@ static void kvm_arm_get_host_cpu_features(ARMHostCPUFeatures *ahcf)
-             /* Read the set of supported vector lengths. */
-             arm_host_cpu_features.sve_vq_supported = kvm_arm_sve_get_vls(fd);
-         }
-+        /* Grab demuxed registers. */
-+        for (int i = 0; i < QEMU_CSSELR_MAX; i++) {
-+            err |= get_host_cpu_reg_demux(fd, ahcf, CCSIDR_EL1_IDX, i);
-+        }
-     }
+ static void csselr_write(CPUARMState *env, const ARMCPRegInfo *ri,
+diff --git a/target/arm/tcg/cpu32.c b/target/arm/tcg/cpu32.c
+index f292a269bf..7db35e1955 100644
+--- a/target/arm/tcg/cpu32.c
++++ b/target/arm/tcg/cpu32.c
+@@ -277,9 +277,9 @@ static void cortex_a8_initfn(Object *obj)
+     SET_IDREG(isar, ID_ISAR4, 0x00111142);
+     cpu->isar.dbgdidr = 0x15141000;
+     SET_IDREG(isar, CLIDR, (1 << 27) | (2 << 24) | 3);
+-    cpu->ccsidr[0] = 0xe007e01a; /* 16k L1 dcache. */
+-    cpu->ccsidr[1] = 0x2007e01a; /* 16k L1 icache. */
+-    cpu->ccsidr[2] = 0xf0000000; /* No L2 icache. */
++    SET_IDREG_DEMUX(isar, CCSIDR_EL1, 0, 0xe007e01a); /* 16k L1 dcache. */
++    SET_IDREG_DEMUX(isar, CCSIDR_EL1, 1, 0x2007e01a); /* 16k L1 icache. */
++    SET_IDREG_DEMUX(isar, CCSIDR_EL1, 2, 0xf0000000); /* No L2 icache. */
+     cpu->reset_auxcr = 2;
+     cpu->isar.reset_pmcr_el0 = 0x41002000;
+     define_arm_cp_regs(cpu, cortexa8_cp_reginfo);
+@@ -355,8 +355,8 @@ static void cortex_a9_initfn(Object *obj)
+     SET_IDREG(isar, ID_ISAR4, 0x00111142);
+     cpu->isar.dbgdidr = 0x35141000;
+     SET_IDREG(isar, CLIDR, (1 << 27) | (1 << 24) | 3);
+-    cpu->ccsidr[0] = 0xe00fe019; /* 16k L1 dcache. */
+-    cpu->ccsidr[1] = 0x200fe019; /* 16k L1 icache. */
++    SET_IDREG_DEMUX(isar, CCSIDR_EL1, 0, 0xe00fe019); /* 16k L1 dcache. */
++    SET_IDREG_DEMUX(isar, CCSIDR_EL1, 1, 0x200fe019); /* 16k L1 icache. */
+     cpu->isar.reset_pmcr_el0 = 0x41093000;
+     define_arm_cp_regs(cpu, cortexa9_cp_reginfo);
+ }
+@@ -429,9 +429,9 @@ static void cortex_a7_initfn(Object *obj)
+     cpu->isar.dbgdevid = 0x01110f13;
+     cpu->isar.dbgdevid1 = 0x1;
+     SET_IDREG(isar, CLIDR, 0x0a200023);
+-    cpu->ccsidr[0] = 0x701fe00a; /* 32K L1 dcache */
+-    cpu->ccsidr[1] = 0x201fe00a; /* 32K L1 icache */
+-    cpu->ccsidr[2] = 0x711fe07a; /* 4096K L2 unified cache */
++    SET_IDREG_DEMUX(isar, CCSIDR_EL1, 0, 0x701fe00a); /* 32K L1 dcache */
++    SET_IDREG_DEMUX(isar, CCSIDR_EL1, 1, 0x201fe00a); /* 32K L1 icache */
++    SET_IDREG_DEMUX(isar, CCSIDR_EL1, 2, 0x711fe07a); /* 4096K L2 unified cache */
+     cpu->isar.reset_pmcr_el0 = 0x41072000;
+     define_arm_cp_regs(cpu, cortexa15_cp_reginfo); /* Same as A15 */
+ }
+@@ -478,9 +478,9 @@ static void cortex_a15_initfn(Object *obj)
+     cpu->isar.dbgdevid = 0x01110f13;
+     cpu->isar.dbgdevid1 = 0x0;
+     SET_IDREG(isar, CLIDR, 0x0a200023);
+-    cpu->ccsidr[0] = 0x701fe00a; /* 32K L1 dcache */
+-    cpu->ccsidr[1] = 0x201fe00a; /* 32K L1 icache */
+-    cpu->ccsidr[2] = 0x711fe07a; /* 4096K L2 unified cache */
++    SET_IDREG_DEMUX(isar, CCSIDR_EL1, 0, 0x701fe00a); /* 32K L1 dcache */
++    SET_IDREG_DEMUX(isar, CCSIDR_EL1, 1, 0x201fe00a); /* 32K L1 icache */
++    SET_IDREG_DEMUX(isar, CCSIDR_EL1, 2, 0x711fe07a); /* 4096K L2 unified cache */
+     cpu->isar.reset_pmcr_el0 = 0x410F3000;
+     define_arm_cp_regs(cpu, cortexa15_cp_reginfo);
+ }
+@@ -670,8 +670,8 @@ static void cortex_r52_initfn(Object *obj)
+     SET_IDREG(isar, ID_ISAR5, 0x00010001);
+     cpu->isar.dbgdidr = 0x77168000;
+     SET_IDREG(isar, CLIDR, (1 << 27) | (1 << 24) | 0x3);
+-    cpu->ccsidr[0] = 0x700fe01a; /* 32KB L1 dcache */
+-    cpu->ccsidr[1] = 0x201fe00a; /* 32KB L1 icache */
++    SET_IDREG_DEMUX(isar, CCSIDR_EL1, 0, 0x700fe01a); /* 32KB L1 dcache */
++    SET_IDREG_DEMUX(isar, CCSIDR_EL1, 1, 0x201fe00a); /* 32KB L1 icache */
  
-     kvm_arm_destroy_scratch_host_vcpu(fdarray);
+     cpu->pmsav7_dregion = 16;
+     cpu->pmsav8r_hdregion = 16;
+diff --git a/target/arm/tcg/cpu64.c b/target/arm/tcg/cpu64.c
+index affd87a3ae..e156baf35d 100644
+--- a/target/arm/tcg/cpu64.c
++++ b/target/arm/tcg/cpu64.c
+@@ -83,11 +83,11 @@ static void aarch64_a35_initfn(Object *obj)
+ 
+     /* From B2.29 Cache ID registers */
+     /* 32KB L1 dcache */
+-    cpu->ccsidr[0] = make_ccsidr(CCSIDR_FORMAT_LEGACY, 4, 64, 32 * KiB, 7);
++    SET_IDREG_DEMUX(isar, CCSIDR_EL1, 0, make_ccsidr(CCSIDR_FORMAT_LEGACY, 4, 64, 32 * KiB, 7));
+     /* 32KB L1 icache */
+-    cpu->ccsidr[1] = make_ccsidr(CCSIDR_FORMAT_LEGACY, 4, 64, 32 * KiB, 2);
++    SET_IDREG_DEMUX(isar, CCSIDR_EL1, 1, make_ccsidr(CCSIDR_FORMAT_LEGACY, 4, 64, 32 * KiB, 2));
+     /* 512KB L2 cache */
+-    cpu->ccsidr[2] = make_ccsidr(CCSIDR_FORMAT_LEGACY, 16, 64, 512 * KiB, 7);
++    SET_IDREG_DEMUX(isar, CCSIDR_EL1, 2, make_ccsidr(CCSIDR_FORMAT_LEGACY, 16, 64, 512 * KiB, 7));
+ 
+     /* From B3.5 VGIC Type register */
+     cpu->gic_num_lrs = 4;
+@@ -252,11 +252,11 @@ static void aarch64_a55_initfn(Object *obj)
+ 
+     /* From B2.23 CCSIDR_EL1 */
+     /* 32KB L1 dcache */
+-    cpu->ccsidr[0] = make_ccsidr(CCSIDR_FORMAT_LEGACY, 4, 64, 32 * KiB, 7);
++    SET_IDREG_DEMUX(isar, CCSIDR_EL1, 0, make_ccsidr(CCSIDR_FORMAT_LEGACY, 4, 64, 32 * KiB, 7));
+     /* 32KB L1 icache */
+-    cpu->ccsidr[1] = make_ccsidr(CCSIDR_FORMAT_LEGACY, 4, 64, 32 * KiB, 2);
++    SET_IDREG_DEMUX(isar, CCSIDR_EL1, 1, make_ccsidr(CCSIDR_FORMAT_LEGACY, 4, 64, 32 * KiB, 2));
+     /* 512KB L2 cache */
+-    cpu->ccsidr[2] = make_ccsidr(CCSIDR_FORMAT_LEGACY, 16, 64, 512 * KiB, 7);
++    SET_IDREG_DEMUX(isar, CCSIDR_EL1, 2, make_ccsidr(CCSIDR_FORMAT_LEGACY, 16, 64, 512 * KiB, 7));
+ 
+     /* From B2.96 SCTLR_EL3 */
+     cpu->reset_sctlr = 0x30c50838;
+@@ -323,11 +323,11 @@ static void aarch64_a72_initfn(Object *obj)
+     cpu->isar.reset_pmcr_el0 = 0x41023000;
+     SET_IDREG(isar, CLIDR, 0x0a200023);
+     /* 32KB L1 dcache */
+-    cpu->ccsidr[0] = make_ccsidr(CCSIDR_FORMAT_LEGACY, 4, 64, 32 * KiB, 7);
++    SET_IDREG_DEMUX(isar, CCSIDR_EL1, 0, make_ccsidr(CCSIDR_FORMAT_LEGACY, 4, 64, 32 * KiB, 7));
+     /* 48KB L1 dcache */
+-    cpu->ccsidr[1] = make_ccsidr(CCSIDR_FORMAT_LEGACY, 3, 64, 48 * KiB, 2);
++    SET_IDREG_DEMUX(isar, CCSIDR_EL1, 1, make_ccsidr(CCSIDR_FORMAT_LEGACY, 3, 64, 48 * KiB, 2));
+     /* 1MB L2 cache */
+-    cpu->ccsidr[2] = make_ccsidr(CCSIDR_FORMAT_LEGACY, 16, 64, 1 * MiB, 7);
++    SET_IDREG_DEMUX(isar, CCSIDR_EL1, 2, make_ccsidr(CCSIDR_FORMAT_LEGACY, 16, 64, 1 * MiB, 7));
+     set_dczid_bs(cpu, 4); /* 64 bytes */
+     cpu->gic_num_lrs = 4;
+     cpu->gic_vpribits = 5;
+@@ -387,11 +387,11 @@ static void aarch64_a76_initfn(Object *obj)
+ 
+     /* From B2.18 CCSIDR_EL1 */
+     /* 64KB L1 dcache */
+-    cpu->ccsidr[0] = make_ccsidr(CCSIDR_FORMAT_LEGACY, 4, 64, 64 * KiB, 7);
++    SET_IDREG_DEMUX(isar, CCSIDR_EL1, 0, make_ccsidr(CCSIDR_FORMAT_LEGACY, 4, 64, 64 * KiB, 7));
+     /* 64KB L1 icache */
+-    cpu->ccsidr[1] = make_ccsidr(CCSIDR_FORMAT_LEGACY, 4, 64, 64 * KiB, 2);
++    SET_IDREG_DEMUX(isar, CCSIDR_EL1, 1, make_ccsidr(CCSIDR_FORMAT_LEGACY, 4, 64, 64 * KiB, 2));
+     /* 512KB L2 cache */
+-    cpu->ccsidr[2] = make_ccsidr(CCSIDR_FORMAT_LEGACY, 8, 64, 512 * KiB, 7);
++    SET_IDREG_DEMUX(isar, CCSIDR_EL1, 2, make_ccsidr(CCSIDR_FORMAT_LEGACY, 8, 64, 512 * KiB, 7));
+ 
+     /* From B2.93 SCTLR_EL3 */
+     cpu->reset_sctlr = 0x30c50838;
+@@ -460,11 +460,11 @@ static void aarch64_a78ae_initfn(Object *obj)
+ 
+     /* From 3.2.33 CCSIDR_EL1 */
+     /* 64KB L1 dcache */
+-    cpu->ccsidr[0] = make_ccsidr(CCSIDR_FORMAT_LEGACY, 4, 64, 64 * KiB, 7);
++    SET_IDREG_DEMUX(isar, CCSIDR_EL1, 0, make_ccsidr(CCSIDR_FORMAT_LEGACY, 4, 64, 64 * KiB, 7));
+     /* 64KB L1 icache */
+-    cpu->ccsidr[1] = make_ccsidr(CCSIDR_FORMAT_LEGACY, 4, 64, 64 * KiB, 2);
++    SET_IDREG_DEMUX(isar, CCSIDR_EL1, 1, make_ccsidr(CCSIDR_FORMAT_LEGACY, 4, 64, 64 * KiB, 2));
+     /* 512KB L2 cache */
+-    cpu->ccsidr[2] = make_ccsidr(CCSIDR_FORMAT_LEGACY, 8, 64, 512 * KiB, 7);
++    SET_IDREG_DEMUX(isar, CCSIDR_EL1, 2, make_ccsidr(CCSIDR_FORMAT_LEGACY, 8, 64, 512 * KiB, 7));
+ 
+     /* From 3.2.118 SCTLR_EL3 */
+     cpu->reset_sctlr = 0x30c50838;
+@@ -518,11 +518,11 @@ static void aarch64_a64fx_initfn(Object *obj)
+     SET_IDREG(isar, ID_AA64ZFR0, 0x0000000000000000);
+     SET_IDREG(isar, CLIDR, 0x0000000080000023);
+     /* 64KB L1 dcache */
+-    cpu->ccsidr[0] = make_ccsidr(CCSIDR_FORMAT_LEGACY, 4, 256, 64 * KiB, 7);
++    SET_IDREG_DEMUX(isar, CCSIDR_EL1, 0, make_ccsidr(CCSIDR_FORMAT_LEGACY, 4, 256, 64 * KiB, 7));
+     /* 64KB L1 icache */
+-    cpu->ccsidr[1] = make_ccsidr(CCSIDR_FORMAT_LEGACY, 4, 256, 64 * KiB, 2);
++    SET_IDREG_DEMUX(isar, CCSIDR_EL1, 1, make_ccsidr(CCSIDR_FORMAT_LEGACY, 4, 256, 64 * KiB, 2));
+     /* 8MB L2 cache */
+-    cpu->ccsidr[2] = make_ccsidr(CCSIDR_FORMAT_LEGACY, 16, 256, 8 * MiB, 7);
++    SET_IDREG_DEMUX(isar, CCSIDR_EL1, 2, make_ccsidr(CCSIDR_FORMAT_LEGACY, 16, 256, 8 * MiB, 7));
+     set_dczid_bs(cpu, 6); /* 256 bytes */
+     cpu->gic_num_lrs = 4;
+     cpu->gic_vpribits = 5;
+@@ -711,11 +711,11 @@ static void aarch64_neoverse_n1_initfn(Object *obj)
+ 
+     /* From B2.23 CCSIDR_EL1 */
+     /* 64KB L1 dcache */
+-    cpu->ccsidr[0] = make_ccsidr(CCSIDR_FORMAT_LEGACY, 4, 64, 64 * KiB, 7);
++    SET_IDREG_DEMUX(isar, CCSIDR_EL1, 0, make_ccsidr(CCSIDR_FORMAT_LEGACY, 4, 64, 64 * KiB, 7));
+     /* 64KB L1 icache */
+-    cpu->ccsidr[1] = make_ccsidr(CCSIDR_FORMAT_LEGACY, 4, 64, 64 * KiB, 2);
++    SET_IDREG_DEMUX(isar, CCSIDR_EL1, 1, make_ccsidr(CCSIDR_FORMAT_LEGACY, 4, 64, 64 * KiB, 2));
+     /* 1MB L2 dcache */
+-    cpu->ccsidr[2] = make_ccsidr(CCSIDR_FORMAT_LEGACY, 8, 64, 1 * MiB, 7);
++    SET_IDREG_DEMUX(isar, CCSIDR_EL1, 2, make_ccsidr(CCSIDR_FORMAT_LEGACY, 8, 64, 1 * MiB, 7));
+ 
+     /* From B2.98 SCTLR_EL3 */
+     cpu->reset_sctlr = 0x30c50838;
+@@ -800,11 +800,11 @@ static void aarch64_neoverse_v1_initfn(Object *obj)
+      * L3: No L3 (this matches the CLIDR_EL1 value).
+      */
+     /* 64KB L1 dcache */
+-    cpu->ccsidr[0] = make_ccsidr(CCSIDR_FORMAT_CCIDX, 4, 64, 64 * KiB, 0);
++    SET_IDREG_DEMUX(isar, CCSIDR_EL1, 0, make_ccsidr(CCSIDR_FORMAT_CCIDX, 4, 64, 64 * KiB, 0));
+     /* 64KB L1 icache */
+-    cpu->ccsidr[1] = cpu->ccsidr[0];
++    SET_IDREG_DEMUX(isar, CCSIDR_EL1, 1, make_ccsidr(CCSIDR_FORMAT_CCIDX, 4, 64, 64 * KiB, 0));
+     /* 1MB L2 cache */
+-    cpu->ccsidr[2] = make_ccsidr(CCSIDR_FORMAT_CCIDX, 8, 64, 1 * MiB, 0);
++    SET_IDREG_DEMUX(isar, CCSIDR_EL1, 2, make_ccsidr(CCSIDR_FORMAT_CCIDX, 8, 64, 1 * MiB, 0));
+ 
+     /* From 3.2.115 SCTLR_EL3 */
+     cpu->reset_sctlr = 0x30c50838;
+@@ -1043,11 +1043,11 @@ static void aarch64_a710_initfn(Object *obj)
+      * L2: 8-way set associative 64 byte line size, total either 256K or 512K.
+      */
+     /* L1 dcache */
+-    cpu->ccsidr[0] = make_ccsidr(CCSIDR_FORMAT_CCIDX, 4, 64, 64 * KiB, 0);
++    SET_IDREG_DEMUX(isar, CCSIDR_EL1, 0, make_ccsidr(CCSIDR_FORMAT_CCIDX, 4, 64, 64 * KiB, 0));
+     /* L1 icache */
+-    cpu->ccsidr[1] = cpu->ccsidr[0];
++    SET_IDREG_DEMUX(isar, CCSIDR_EL1, 1, make_ccsidr(CCSIDR_FORMAT_CCIDX, 4, 64, 64 * KiB, 0));
+     /* L2 cache */
+-    cpu->ccsidr[2] = make_ccsidr(CCSIDR_FORMAT_CCIDX, 8, 64, 512 * KiB, 0);
++    SET_IDREG_DEMUX(isar, CCSIDR_EL1, 2, make_ccsidr(CCSIDR_FORMAT_CCIDX, 8, 64, 512 * KiB, 0));
+ 
+     /* FIXME: Not documented -- copied from neoverse-v1 */
+     cpu->reset_sctlr = 0x30c50838;
+@@ -1146,11 +1146,11 @@ static void aarch64_neoverse_n2_initfn(Object *obj)
+      * L2: 8-way set associative 64 byte line size, total either 512K or 1024K.
+      */
+     /* L1 dcache */
+-    cpu->ccsidr[0] = make_ccsidr(CCSIDR_FORMAT_CCIDX, 4, 64, 64 * KiB, 0);
++    SET_IDREG_DEMUX(isar, CCSIDR_EL1, 0, make_ccsidr(CCSIDR_FORMAT_CCIDX, 4, 64, 64 * KiB, 0));
+     /* L1 icache */
+-    cpu->ccsidr[1] = cpu->ccsidr[0];
++    SET_IDREG_DEMUX(isar, CCSIDR_EL1, 1, make_ccsidr(CCSIDR_FORMAT_CCIDX, 4, 64, 64 * KiB, 0));
+     /* L2 cache */
+-    cpu->ccsidr[2] = make_ccsidr(CCSIDR_FORMAT_CCIDX, 8, 64, 512 * KiB, 0);
++    SET_IDREG_DEMUX(isar, CCSIDR_EL1, 2, make_ccsidr(CCSIDR_FORMAT_CCIDX, 8, 64, 512 * KiB, 0));
+     /* FIXME: Not documented -- copied from neoverse-v1 */
+     cpu->reset_sctlr = 0x30c50838;
+ 
+@@ -1180,13 +1180,13 @@ void aarch64_max_v8_tcg_initfn(Object *obj)
+ 
+     SET_IDREG(isar, CLIDR, 0x8200123);
+     /* 64KB L1 dcache */
+-    cpu->ccsidr[0] = make_ccsidr(CCSIDR_FORMAT_LEGACY, 4, 64, 64 * KiB, 7);
++    SET_IDREG_DEMUX(isar, CCSIDR_EL1, 0, make_ccsidr(CCSIDR_FORMAT_LEGACY, 4, 64, 64 * KiB, 7));
+     /* 64KB L1 icache */
+-    cpu->ccsidr[1] = make_ccsidr(CCSIDR_FORMAT_LEGACY, 4, 64, 64 * KiB, 2);
++    SET_IDREG_DEMUX(isar, CCSIDR_EL1, 1, make_ccsidr(CCSIDR_FORMAT_LEGACY, 4, 64, 64 * KiB, 2));
+     /* 1MB L2 unified cache */
+-    cpu->ccsidr[2] = make_ccsidr(CCSIDR_FORMAT_LEGACY, 8, 64, 1 * MiB, 7);
++    SET_IDREG_DEMUX(isar, CCSIDR_EL1, 2, make_ccsidr(CCSIDR_FORMAT_LEGACY, 8, 64, 1 * MiB, 7));
+     /* 2MB L3 unified cache */
+-    cpu->ccsidr[4] = make_ccsidr(CCSIDR_FORMAT_LEGACY, 8, 64, 2 * MiB, 7);
++    SET_IDREG_DEMUX(isar, CCSIDR_EL1, 4, make_ccsidr(CCSIDR_FORMAT_LEGACY, 8, 64, 2 * MiB, 7));
+ 
+     /*
+      * Unset ARM_FEATURE_BACKCOMPAT_CNTFRQ, which we would otherwise default
 -- 
 2.55.0
 

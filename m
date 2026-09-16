@@ -4,50 +4,50 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B886FC982C4
-	for <qemu-arm@archiver.kernel.org>; Wed, 16 Sep 2026 14:50:00 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3DCA0C982C3
+	for <qemu-arm@archiver.kernel.org>; Wed, 16 Sep 2026 14:50:06 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1x6qwG-0007CE-QZ; Wed, 16 Sep 2026 10:48:47 -0400
+	id 1x6qwz-0000Rc-Tm; Wed, 16 Sep 2026 10:49:30 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1x6qwF-00079U-AZ
- for qemu-arm@nongnu.org; Wed, 16 Sep 2026 10:48:43 -0400
+ id 1x6qww-0000AB-GH
+ for qemu-arm@nongnu.org; Wed, 16 Sep 2026 10:49:26 -0400
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1x6qwD-0006We-Kr
- for qemu-arm@nongnu.org; Wed, 16 Sep 2026 10:48:43 -0400
+ id 1x6qwu-0006i4-5C
+ for qemu-arm@nongnu.org; Wed, 16 Sep 2026 10:49:26 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1789570120;
+ s=mimecast20190719; t=1789570163;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=ylh65uksM6s0BIsXywmqk/EXVHl0RfoLcmi93Q7NDRA=;
- b=f6mNfavzdHB0GbAreuMzto1je1VAUlldnFLukBDZYxibcU4mXhCGbdwWpgC5DW9d549BM4
- sd5xiK7NEXfCSp6Bb9xkshUJXa2//oAZMhLK/dnvY67I1v/JMhHc+MuHgxZhFbzHPDL3gw
- rUEabGKENDlrO+wHfN5mD4xgR0f6n+g=
-Received: from mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com
+ bh=WWQ74ObnHPS3TOBhreRJNBDvBCX6Z3DxEpFa6gKlbNE=;
+ b=ZwzqY4HdHAiZmLkMtD4lG9wVdocrBEH0k35WkQgX2InIGD1XJxISTgf5uknTgkd/6n7MQz
+ DDt7SxEjAXxF4kC2+SSHpZYK3zQ4fUxuddTrerScMO6v49cCdwhfCiCiAvwFeYNJ2m7KBi
+ 5YDGkQuOxUqx1QSXHzB8By/XLRyvcn8=
+Received: from mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com
  (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-589-mR0P1x32ODGusYOEJYnvJw-1; Wed,
- 16 Sep 2026 10:48:37 -0400
-X-MC-Unique: mR0P1x32ODGusYOEJYnvJw-1
-X-Mimecast-MFC-AGG-ID: mR0P1x32ODGusYOEJYnvJw_1789570115
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-251-U0_n7wM8PcGQALvfCnB5bA-1; Wed,
+ 16 Sep 2026 10:49:19 -0400
+X-MC-Unique: U0_n7wM8PcGQALvfCnB5bA-1
+X-Mimecast-MFC-AGG-ID: U0_n7wM8PcGQALvfCnB5bA_1789570157
 Received: from mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com
  (mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.17])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 54DD2184B386; Wed, 16 Sep 2026 14:48:35 +0000 (UTC)
+ by mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 17CD71802570; Wed, 16 Sep 2026 14:49:17 +0000 (UTC)
 Received: from laptop.redhat.corp (headnet04.pony-001.prod.iad2.dc.redhat.com
  [10.2.32.116])
  by mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id B2F3419560AB; Wed, 16 Sep 2026 14:48:30 +0000 (UTC)
+ id 5E94419560AB; Wed, 16 Sep 2026 14:49:12 +0000 (UTC)
 From: Eric Auger <eric.auger@redhat.com>
 To: eric.auger.pro@gmail.com, eric.auger@redhat.com, qemu-devel@nongnu.org,
  qemu-arm@nongnu.org, kvmarm@lists.linux.dev, peter.maydell@linaro.org,
@@ -57,15 +57,15 @@ To: eric.auger.pro@gmail.com, eric.auger@redhat.com, qemu-devel@nongnu.org,
 Cc: maz@kernel.org, oliver.upton@linux.dev, pbonzini@redhat.com,
  armbru@redhat.com, berrange@redhat.com, abologna@redhat.com,
  jdenemar@redhat.com
-Subject: [PATCH v9 12/26] arm/kvm: Initialize isar.idregs[] with all writable
- host ID regs
-Date: Wed, 16 Sep 2026 16:45:35 +0200
-Message-ID: <20260916144721.751810-13-eric.auger@redhat.com>
+Subject: [PATCH v9 20/26] target/arm/kvm: Ignore and trace unexpected writable
+ reserved fields
+Date: Wed, 16 Sep 2026 16:45:43 +0200
+Message-ID: <20260916144721.751810-21-eric.auger@redhat.com>
 In-Reply-To: <20260916144721.751810-1-eric.auger@redhat.com>
 References: <20260916144721.751810-1-eric.auger@redhat.com>
 MIME-Version: 1.0
 X-Scanned-By: MIMEDefang 3.0 on 10.30.177.17
-X-Mimecast-MFC-PROC-ID: UvnP4ZY1bQ2taOQtZwMjkVYJwAH8sx8ZcX5TLldaqBc_1789570115
+X-Mimecast-MFC-PROC-ID: UoFFldrwedu4rFCH8q1_4Ze0Ud15iftGV9WLU5tCrW0_1789570157
 X-Mimecast-Originator: redhat.com
 Content-Transfer-Encoding: 8bit
 content-type: text/plain; charset="US-ASCII"; x-default=true
@@ -93,126 +93,52 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-kvm_arm_get_host_cpu_features() already retrieves the values of some
-host id registers to analyze the available vcpu features.
-
-Eventually we want to be able to allow the user to change the value
-of writable ID reg fields. So we need to store the initial value of all
-writable ID regs into isar.idregs[].
-
-Introduce a new get_host_cpu_idregs() helper that populates isar.idregs[]
-and call it from kvm_arm_get_host_cpu_features.
-
-This patch has no impact on cpreg values. isar.idregs[] is only
-used as a temporary storage for register values to be updated in place
-later.  Also it does not handle the writeback of isar.idregs[] into cpreg
-value list after user update. This will be handled separately.
-
-Note the host values are retrieved from the scratch vcpu initialized with
-all the available capabilities exposed by KVM, independently on the
-final choice made by the suer.
+KVM currently reports some bits as writable whereas they are
+RES0 or RAZ. The code easily allows to do some sanity checking
+for such inconsistencies. Let's add a trace event when this is
+encountered and skip the field
 
 Signed-off-by: Eric Auger <eric.auger@redhat.com>
-Signed-off-by: Cornelia Huck <cohuck@redhat.com>
 
 ---
-v8 -> v9:
-- improve the commit msg. Only initialize in this patch and move the
-  write back to cpreg value list in a different patch.
-- Do not hack CLIDR here. The correct way to fix that temporarily is to
-  do that in the machine instead.
-
-v7 -> v8
-- fix indent and added Khushit's R-b
-
-v6 -> v7
-- remove vcpu from prototypes (Khushit)
-
-v5 -> v6
-- do not check writable_map anymore
+v8 -> v9
+- fix bug reported by Shameer (map &= ~MAKE_64BIT_MASK(lower,
+  field->length);)
 ---
- target/arm/kvm.c        | 43 ++++++++++++++++++++++++++++++++++++++++-
- target/arm/trace-events |  2 ++
- 2 files changed, 44 insertions(+), 1 deletion(-)
+ target/arm/kvm.c        | 10 ++++++++++
+ target/arm/trace-events |  1 +
+ 2 files changed, 11 insertions(+)
 
 diff --git a/target/arm/kvm.c b/target/arm/kvm.c
-index c6eac41991..958b25e550 100644
+index f52c03745e..537673177a 100644
 --- a/target/arm/kvm.c
 +++ b/target/arm/kvm.c
-@@ -43,6 +43,7 @@
- #include "hw/acpi/ghes.h"
- #include "target/arm/gtimer.h"
- #include "migration/blocker.h"
-+#include "cpu-idregs.h"
- 
- const KVMCapabilityInfo kvm_arch_required_capabilities[] = {
-     KVM_CAP_INFO(DEVICE_CTRL),
-@@ -290,7 +291,44 @@ static int kvm_feature_idx_to_idregs_idx(int kidx)
-     return get_sysreg_idx(sysreg);
- }
- 
--static void kvm_arm_get_host_cpu_features(ARMHostCPUFeatures *ahcf)
-+/*
-+ * get_host_cpu_idregs: Read all the writable ID reg host values
-+ *
-+ * Need to be called once the writable mask has been populated
-+ * Note we may want to read all the known id regs but some of them are not
-+ * writable and return an error, hence the choice of reading only those which
-+ * are writable. Those are also readable!
-+ */
-+static int get_host_cpu_idregs(int fd, ARMHostCPUFeatures *ahcf)
-+{
-+    int err = 0;
-+    int i;
+@@ -548,6 +548,16 @@ decode_idreg_writemap(Object *obj, ARM64SysReg *reg)
+         }
+         lower = field->shift;
+         upper = field->shift + field->length - 1;
 +
-+    for (i = 0; i < NUM_ID_IDX; i++) {
-+        ARM64SysReg *sysregdesc = &arm64_id_regs[i];
-+        ARMSysRegs sysreg = id_register_sysreg[i];
-+        uint64_t *reg;
-+        int ret;
-+
-+        if (!sysregdesc->writable_mask) {
++        /* Sanity check the field is not a reserved field */
++        if (strstr(field->name, "RES0") || strstr(field->name, "RES1") ||
++            strstr(field->name, "RAZ")) {
++            trace_unexpected_writable_reserved_field(reg->name, field->name,
++                                                     lower, upper);
++            map &= ~MAKE_64BIT_MASK(lower, field->length);
++            i = ctz64(map);
 +            continue;
 +        }
-+
-+        reg = &ahcf->isar.idregs[i];
-+        ret = read_sys_reg64(fd, reg, idregs_sysreg_to_kvm_reg(sysreg));
-+        trace_get_host_cpu_idregs(sysregdesc->name, *reg);
-+        if (ret) {
-+            error_report("%s error reading value of host %s register (%m)",
-+                         __func__, sysregdesc->name);
-+
-+            err = ret;
-+        }
-+    }
-+    return err;
-+}
-+
-+static void
-+kvm_arm_get_host_cpu_features(ARMHostCPUFeatures *ahcf)
- {
-     /* Identify the feature bits corresponding to the host CPU, and
-      * fill out the ARMHostCPUClass fields accordingly. To do this
-@@ -376,6 +414,9 @@ static void kvm_arm_get_host_cpu_features(ARMHostCPUFeatures *ahcf)
-         SET_IDREG(&ahcf->isar, ID_AA64PFR0, 0x00000011); /* EL1&0, AArch64 only */
-         err = 0;
-     } else {
-+        /* Make sure all writable ID reg values are initialized */
-+        err |= get_host_cpu_idregs(fd, ahcf);
-+
-         err |= get_host_cpu_reg(fd, ahcf, ID_AA64PFR1_EL1_IDX);
-         err |= get_host_cpu_reg(fd, ahcf, ID_AA64PFR2_EL1_IDX);
-         err |= get_host_cpu_reg(fd, ahcf, ID_AA64SMFR0_EL1_IDX);
+         prop_name = g_strdup_printf("SYSREG_%s_%s", reg->name, field->name);
+         trace_decode_idreg_writemap(field->name, lower, upper, prop_name);
+         object_property_add(obj, prop_name, "uint64",
 diff --git a/target/arm/trace-events b/target/arm/trace-events
-index 8502fb3265..c25d2a1191 100644
+index b4d2b45a7d..2a9cc67035 100644
 --- a/target/arm/trace-events
 +++ b/target/arm/trace-events
-@@ -13,6 +13,8 @@ arm_gt_update_irq(int timer, int irqstate) "gt_update_irq: timer %d irqstate %d"
- 
- # kvm.c
- kvm_arm_fixup_msi_route(uint64_t iova, uint64_t gpa) "MSI iova = 0x%"PRIx64" is translated into 0x%"PRIx64
-+get_host_cpu_idregs(const char *name, uint64_t value) "scratch vcpu host value for %s is 0x%"PRIx64
-+kvm_arm_writable_idregs_to_cpreg_list(const char *name, uint64_t previous, uint64_t new) "%s overwrite default 0x%"PRIx64" with 0x%"PRIx64
+@@ -20,6 +20,7 @@ get_sysreg_prop(const char *name, uint64_t value) "%s 0x%"PRIx64
+ set_sysreg_prop(const char *name, uint64_t old, uint64_t mask, uint64_t field_value, uint64_t new) "%s old reg value=0x%"PRIx64" mask=0x%"PRIx64" new field value=0x%"PRIx64" new reg value=0x%"PRIx64
+ apply_sysreg_prop(const char *reg_name, const char *field_name, uint64_t old, uint64_t current, uint64_t mask, uint64_t field_value, uint64_t new) "%s.%s old=0x%"PRIx64" current=0x%"PRIx64" mask=0x%"PRIx64" new field value=0x%"PRIx64" new=0x%"PRIx64
+ nb_sysreg_props(const char *name, int count) "%s: %d SYSREG properties"
++unexpected_writable_reserved_field(const char *reg_name, const char *field_name, int lower, int upper) "Unexpected writable reserved field: %s.%s [%d,%d], skip it ..."
  
  # cpu.c
  arm_cpu_reset(uint64_t mp_aff) "cpu %" PRIu64

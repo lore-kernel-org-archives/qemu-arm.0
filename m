@@ -4,109 +4,148 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3CE71C982CD
-	for <qemu-arm@archiver.kernel.org>; Wed, 16 Sep 2026 15:38:19 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 061B0C982C9
+	for <qemu-arm@archiver.kernel.org>; Wed, 16 Sep 2026 16:05:11 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1x6ri3-0001qA-9t; Wed, 16 Sep 2026 11:38:07 -0400
+	id 1x6s7u-0001xA-UB; Wed, 16 Sep 2026 12:04:50 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1x6ri1-0001p8-OI
- for qemu-arm@nongnu.org; Wed, 16 Sep 2026 11:38:05 -0400
-Received: from mail-wr2-x10.google.com ([2a00:1450:4864:30::10])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1x6ri0-0003OP-2D
- for qemu-arm@nongnu.org; Wed, 16 Sep 2026 11:38:05 -0400
-Received: by mail-wr2-x10.google.com with SMTP id
- ffacd0b85a97d-4843c3ee4cfso512721f8f.2
- for <qemu-arm@nongnu.org>; Wed, 16 Sep 2026 08:38:03 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1789573083; x=1790177883; darn=nongnu.org;
- h=content-transfer-encoding:content-type:mime-version:references
- :in-reply-to:message-id:date:subject:cc:to:from:from:to:cc:subject
- :date:message-id:reply-to:content-type;
- bh=5jEk54sCARbNqwEALWIYvVVIO6zgDvVb82j7zjwYhno=;
- b=bYjPk9B0VadSzPiPiGo3DOYbdzKkR9k0rviM17ygVY8ROos0Rz2+y4iCE7IV/7hjdx
- YuVFl+JEql+QmRXHAoYr0GlWCpNHyoKa6/v4bm+EJ668HkfhXpMaTaueoTWtUgKmg70b
- DRWoLeb9HoydIOU8QY/L69uRu6UU7ZJcWYJs9Ja+6VoSwiT2Ksawa2d2/pwmf/HSdNw+
- 6y9jVQYwFOof5RtO2Uqz5SxCSOCH0rkuS9lN8GU1y/ut8do8BpivuNkI4ERI+22kh5ga
- oVZUL2ZqN0APwbAL/SRirv52sAvjWCEA7OqcL3zJJxhSLa3tDQnzUuh9Y7WxLRjAhP1V
- MGaA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20260707; t=1789573083; x=1790177883;
- h=content-transfer-encoding:content-type:mime-version:references
- :in-reply-to:message-id:date:subject:cc:to:from:x-gm-gg
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
- :content-type;
- bh=5jEk54sCARbNqwEALWIYvVVIO6zgDvVb82j7zjwYhno=;
- b=QvRMCZQxjY3hPq3ENrd25PpH+a2Ra48Czp8Pm2UnkoNg//UQM817kMdIdOcP/ORQFg
- wUDyNxbMqcIv5X85/O1xzFwSWHuRsLNT74+EjQs2ApifBvLeMQXO4QoujBwXaoPfFviu
- R8uFoHyMAECyXmuVGPVpq35rJi1f9qgK7+vsH5h+tKzvQoR7/CJoSLIeGlNOsN/GYNan
- vl6ysmrjVCUh5VUt1dOiVOT0TkRcvqRa73RuuR+rS5a7bZeW0Pj0oE1BJAuE47QNFX41
- nWbqvJUY7n6rI0dLDGNDDWGdTPHaRMot5NP67gUN/f5jkbt3gT+GiQRT76e2ZLBg2UJo
- QRbQ==
-X-Forwarded-Encrypted: i=1;
- AKwUvBzV51HC8Wee9Sto1QLHIFe9PYbFgnb0JQr1DDatQzk9sqBfTGKyUP5kmtT2VsnWyq/vLU9K61L2iw==@nongnu.org
-X-Gm-Message-State: AFuF++l4k2M6enRClBZIfHw4cniKSEhqNyB9qkpAcO5WNyPSexdefBUh
- zLq+tomjCJdibdfV7LtBYB1uR6cLRcen6G+5nr89siQvNSqWEd8GV1LqDyXWAAoYAlw=
-X-Gm-Gg: AYBFou3tFo1IkUsSlytybokn8H5eMQobUKJGRVg5ksp8IA0s+Nx3iBoSgGOst8V9dfS
- JqfPAlPYfmVGmMX4foRzNNX5y3u4xKzQALVUxGiO3orvPX7QoSiUnKw7gBNzyop8HnuOYivreOg
- Wj2H1NLSvgRGKLa7o2VkbDOpR3Nbi560G/Ykl9fvoHkq5eioI+Z4woLPdXKJgST6XUEX9O5EnN1
- v40oveanTTAhMw2i1vGJrgk2+Kr1xvmDM87nqJSrrwdALIZ2gimxB4vjI7SkNCYDIyHbusVE4va
- z2A7VHka3NvgcKHNskLvguPrsosSJYrMFHSDdd/yv98avxbpH2g70/Px+Zia5qypAzTKHKDtqSL
- 4n6Lthfd+AL7XumPhs58ExTHJf+k0H0u0nYK4MHJft+UdFAJwi1K/6T8uZaGZi/Fqc+1G+Ql5p6
- uNDATZZ8DmTLlv4j7tfHYNMU36WnsqZ9+a5HdBgMHcFmJpe4q3X2rHuj6NqkzqqsN38CZ+WQQ=
-X-Received: by 2002:a5d:64e7:0:b0:485:8c16:a355 with SMTP id
- ffacd0b85a97d-4870d27897emr4244038f8f.45.1789573082519; 
- Wed, 16 Sep 2026 08:38:02 -0700 (PDT)
-Received: from draig.lan ([185.124.0.156]) by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-4870bf27a36sm7600519f8f.17.2026.09.16.08.37.56
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 16 Sep 2026 08:37:57 -0700 (PDT)
-Received: from draig.lan (localhost [IPv6:::1])
- by draig.lan (Postfix) with ESMTP id DC06961A5B;
- Wed, 16 Sep 2026 16:30:14 +0100 (BST)
-From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
-To: qemu-devel@nongnu.org
-Cc: Ilya Leoshkevich <iii@linux.ibm.com>, qemu-arm@nongnu.org,
- Cornelia Huck <cohuck@redhat.com>,
+ (Exim 4.90_1) (envelope-from <amachhiw@linux.ibm.com>)
+ id 1x6s7t-0001wU-Fi; Wed, 16 Sep 2026 12:04:49 -0400
+Received: from mx0b-001b2d01.pphosted.com ([148.163.158.5])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <amachhiw@linux.ibm.com>)
+ id 1x6s7r-0000Y7-Ll; Wed, 16 Sep 2026 12:04:49 -0400
+Received: from pps.filterd (m0353725.ppops.net [127.0.0.1])
+ by mx0a-001b2d01.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id
+ 68GG1YKu3041099; Wed, 16 Sep 2026 16:04:27 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ibm.com; h=cc
+ :content-transfer-encoding:content-type:date:from:in-reply-to
+ :message-id:mime-version:references:subject:to; s=pp1; bh=wHuQkR
+ cqAz31seByJNGJZoA6PPrxojX2LrpP4NqKFNA=; b=OxosSGT9ZE3qm3r/ylvaEx
+ 3Cf8Uet53bhkgI+iqcMJXLRN5PjOfoIGqgKzjzLE3hxxmZZSGhyU9P2t+aIUVyQ1
+ G8bl5YQScu4AfU82N3ENReFqDvdYoGVzem1wE9+r1x90eVkn7GGB6g0oWnkiS6x5
+ 2dSnos/155jxsQ5hcEivgIhN+bRGnZdrhezCQOL3mjS8gKBr4UOF5buRdp6AZXP6
+ nKGSUCbQowwYPmspZHqJHUm8/NGuo+2OUnt0HP8HyaO5A6/iYujfjZHOciwJufm4
+ fGGPALHn36vuJYZbzORikdF4Fdzv8jgPQhvKUp9f50v9WY9n4gLlo53pV7lZ5Gbw
+ ==
+Received: from ppma13.dal12v.mail.ibm.com
+ (dd.9e.1632.ip4.static.sl-reverse.com [50.22.158.221])
+ by mx0a-001b2d01.pphosted.com (PPS) with ESMTPS id 4gmw5e5aat-1
+ (version=TLSv1.3 cipher=TLS_AES_256_GCM_SHA384 bits=256 verify=NOT);
+ Wed, 16 Sep 2026 16:04:26 +0000 (GMT)
+Received: from pps.filterd (ppma13.dal12v.mail.ibm.com [127.0.0.1])
+ by ppma13.dal12v.mail.ibm.com (8.18.1.11/8.18.1.11) with ESMTP id
+ 68GFe1hF1712957; Wed, 16 Sep 2026 16:04:25 GMT
+Received: from smtprelay02.fra02v.mail.ibm.com ([9.218.2.226])
+ by ppma13.dal12v.mail.ibm.com (PPS) with ESMTPS id 4gpywey5f4-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+ Wed, 16 Sep 2026 16:04:25 +0000 (GMT)
+Received: from smtpav01.fra02v.mail.ibm.com (smtpav01.fra02v.mail.ibm.com
+ [10.20.54.100])
+ by smtprelay02.fra02v.mail.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id
+ 68GG4MmM38732158
+ (version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Wed, 16 Sep 2026 16:04:22 GMT
+Received: from smtpav01.fra02v.mail.ibm.com (unknown [127.0.0.1])
+ by IMSVA (Postfix) with ESMTP id 175BD2004B;
+ Wed, 16 Sep 2026 16:04:22 +0000 (GMT)
+Received: from smtpav01.fra02v.mail.ibm.com (unknown [127.0.0.1])
+ by IMSVA (Postfix) with ESMTP id 1AFB620043;
+ Wed, 16 Sep 2026 16:04:17 +0000 (GMT)
+Received: from fedora (unknown [9.5.7.39])
+ by smtpav01.fra02v.mail.ibm.com (Postfix) with ESMTPS;
+ Wed, 16 Sep 2026 16:04:16 +0000 (GMT)
+Date: Wed, 16 Sep 2026 21:42:02 +0530
+From: Amit Machhiwal <amachhiw@linux.ibm.com>
+To: Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>
+Cc: qemu-devel@nongnu.org, Ilya Leoshkevich <iii@linux.ibm.com>,
+ qemu-arm@nongnu.org, Cornelia Huck <cohuck@redhat.com>,
  Peter Maydell <peter.maydell@linaro.org>,
  Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@mailo.com>,
+ Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@mailo.com>,
  John Snow <jsnow@redhat.com>, David Hildenbrand <david@kernel.org>,
- Thomas Huth <th.huth+qemu@posteo.eu>, Paolo Bonzini <pbonzini@redhat.com>,
- Cleber Rosa <crosa@redhat.com>, Warner Losh <imp@bsdimp.com>,
- =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
- Song Gao <gaosong@loongson.cn>, Kyle Evans <kevans@freebsd.org>,
- Eric Farman <farman@linux.ibm.com>, Brad Smith <brad@comstyle.com>,
- Fabiano Rosas <farosas@suse.de>, Helge Deller <deller@gmx.de>,
- Laurent Vivier <laurent@vivier.eu>,
- =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
+ Thomas Huth <th.huth+qemu@posteo.eu>,
+ Paolo Bonzini <pbonzini@redhat.com>, Cleber Rosa <crosa@redhat.com>,
+ Warner Losh <imp@bsdimp.com>, Song Gao <gaosong@loongson.cn>,
+ Kyle Evans <kevans@freebsd.org>, Eric Farman <farman@linux.ibm.com>,
+ Brad Smith <brad@comstyle.com>, Fabiano Rosas <farosas@suse.de>,
+ Helge Deller <deller@gmx.de>, Laurent Vivier <laurent@vivier.eu>,
+ Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>,
  Jiaxun Yang <jiaxun.yang@flygoat.com>, qemu-s390x@nongnu.org,
  Matthew Rosato <mjrosato@linux.ibm.com>,
  Brian Cain <brian.cain@oss.qualcomm.com>,
- =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
+ =?utf-8?Q?Marc-Andr=C3=A9?= Lureau <marcandre.lureau@redhat.com>,
  Richard Henderson <richard.henderson@linaro.org>
-Subject: [PATCH v4 16/19] gitlab: update the @user id mapping file
-Date: Wed, 16 Sep 2026 16:30:09 +0100
-Message-ID: <20260916153013.2134555-17-alex.bennee@linaro.org>
-X-Mailer: git-send-email 2.47.3
-In-Reply-To: <20260916153013.2134555-1-alex.bennee@linaro.org>
+Subject: Re: [PATCH v4 16/19] gitlab: update the @user id mapping file
+Message-ID: <20260916213951.50d6cec1-2a-amachhiw@linux.ibm.com>
+Mail-Followup-To: Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>, 
+ qemu-devel@nongnu.org, Ilya Leoshkevich <iii@linux.ibm.com>,
+ qemu-arm@nongnu.org, 
+ Cornelia Huck <cohuck@redhat.com>, Peter Maydell <peter.maydell@linaro.org>, 
+ Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>,
+ Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@mailo.com>, 
+ John Snow <jsnow@redhat.com>, David Hildenbrand <david@kernel.org>, 
+ Thomas Huth <th.huth+qemu@posteo.eu>, Paolo Bonzini <pbonzini@redhat.com>, 
+ Cleber Rosa <crosa@redhat.com>, Warner Losh <imp@bsdimp.com>,
+ Song Gao <gaosong@loongson.cn>, 
+ Kyle Evans <kevans@freebsd.org>, Eric Farman <farman@linux.ibm.com>, 
+ Brad Smith <brad@comstyle.com>, Fabiano Rosas <farosas@suse.de>,
+ Helge Deller <deller@gmx.de>, 
+ Laurent Vivier <laurent@vivier.eu>,
+ Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>, 
+ Jiaxun Yang <jiaxun.yang@flygoat.com>, qemu-s390x@nongnu.org,
+ Matthew Rosato <mjrosato@linux.ibm.com>, 
+ Brian Cain <brian.cain@oss.qualcomm.com>,
+ =?utf-8?Q?Marc-Andr=C3=A9?= Lureau <marcandre.lureau@redhat.com>, 
+ Richard Henderson <richard.henderson@linaro.org>
 References: <20260916153013.2134555-1-alex.bennee@linaro.org>
+ <20260916153013.2134555-17-alex.bennee@linaro.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
+Content-Type: text/plain; charset=iso-8859-1
+Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:30::10;
- envelope-from=alex.bennee@linaro.org; helo=mail-wr2-x10.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
+In-Reply-To: <20260916153013.2134555-17-alex.bennee@linaro.org>
+X-TM-AS-GCONF: 00
+X-Proofpoint-Reinject: loops=2 maxloops=12
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwOTE2MDIxOSBTYWx0ZWRfX2olmLrDHKMfh
+ Me90o3ssNvx6iAXPOUpvX1ELQ9auKOoJMA1WX3EcipOK2iFJOGTkwYJ2woAs7oxJW2BDM8slTmE
+ vIH02lNeRLaxtBiTvT2TUBXJOG+gSRdF8PvcRuOO73xQA9ywZQ4QN6+F+s5oH+B7IVRWx7EKZLI
+ nr73XLXQ0mtjZYKRsMiPFGpvuRQngb/j1R0fG+odCDrXZLWD9NakkPSj+K6CBSLtt8LcTefZabA
+ OsnKrmJ+fJ+di6Oa4QFOqvnC0gLDGuXW07KJ6oCoAPdHRjiwUHILXNm1OOY7Pmx4q5ErVtmhmwb
+ ebt8GYGso6iEAn+VdLMtft/0l5W16SEnz+y/7YiLGqg/8TTefNMWEuMuTYju+VeLupQu+vtpy+J
+ TdJ2izEKExi/Lg1Wr2clY8KiYjDDsHFpPRtfafuINLssVTIzzQFdFBG+dOd9X1wllVaWTzy5Nt0
+ natC9pEvDaNKIkhQPIg==
+X-Authority-Analysis: v=2.4 cv=E/NYNqdl c=1 sm=1 tr=0 ts=6aaabe0b cx=c_pps
+ a=AfN7/Ok6k8XGzOShvHwTGQ==:117 a=AfN7/Ok6k8XGzOShvHwTGQ==:17
+ a=8nJEP1OIZ-IA:10 a=VdqzKS8jKosA:10 a=VkNPw1HP01LnGYTKEx00:22
+ a=RnoormkPH1_aCDwRdu11:22 a=V8glGbnc2Ofi9Qvn3v5h:22 a=20KFwNOVAAAA:8
+ a=KKAkSRfTAAAA:8 a=VnNF1IyMAAAA:8 a=FYw9-_tljx6d6srUq_IA:9 a=3ZKOabzyN94A:10
+ a=wPNLvfGTeEIA:10 a=cvBusfyB2V15izCimMoJ:22
+X-Proofpoint-ORIG-GUID: ExjTRV5ud2S6FTkkMFQQPgk7GAqAHP7E
+X-Proofpoint-Spam-Info: AW1haW4tMjYwOTE2MDIxOSBTYWx0ZWRfX5grjpXaxyx6X
+ zDL7EZm4ztcUgA8XhcDqcU9UCFATgWbI8j2K1uBo6g3/YYeh/fm2abYLQrpJOTCgT6+Ml6a4tvA
+ MZgO7kedyRipn5OPQUuQxXxZlBiFers=
+X-Proofpoint-GUID: ASCxqupTLUHFrO9QKGzswEjV5a_MehM5
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.293,Aquarius:18.0.1176,Hydra:6.1.134,FMLib:17.12.100.49
+ definitions=2026-09-16_03,2026-09-16_02,2025-10-01_01
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
+ impostorscore=0 lowpriorityscore=0 priorityscore=1501 spamscore=0
+ adultscore=0 clxscore=1011 bulkscore=0 malwarescore=0 suspectscore=0
+ phishscore=0 classifier=typeunknown authscore=0 authtc= authcc=
+ route=outbound adjust=0 reason=mlx scancount=1 engine=8.22.0-2609040000
+ definitions=main-2609160219
+Received-SPF: pass client-ip=148.163.158.5;
+ envelope-from=amachhiw@linux.ibm.com; helo=mx0b-001b2d01.pphosted.com
+X-Spam_score_int: -26
+X-Spam_score: -2.7
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+X-Spam_report: (-2.7 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, RCVD_IN_DNSWL_LOW=-0.7,
+ RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -123,84 +162,33 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-I needed to fix a POSIX-ism in the script as well.
+On 2026/09/16 04:30 PM, Alex Bennée wrote:
+> I needed to fix a POSIX-ism in the script as well.
+> 
+> Reviewed-by: Daniel P. Berrangé <berrange@redhat.com>
+> Message-ID: <20260914184534.706637-1-alex.bennee@linaro.org>
+> Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
+> ---
+>  .gitlab-map-auto          | 8 +++++---
+>  scripts/gitlab-map-update | 2 +-
+>  2 files changed, 6 insertions(+), 4 deletions(-)
+> 
+> diff --git a/.gitlab-map-auto b/.gitlab-map-auto
+> index 28ce448f1bf..3f717a15d4e 100644
+> --- a/.gitlab-map-auto
+> +++ b/.gitlab-map-auto
+> @@ -12,11 +12,12 @@ a1xndr	Alexander Bulekov
+>  adi-g15-ibm	Aditya Gupta
+>  agraf	Alexander Graf
+>  alex.williamson	Alex Williamson
+> -aliang1	Aihua Liang
+>  alistair23	Alistair Francis
+> +amachhiw	Amit Machhiwal
 
-Reviewed-by: Daniel P. BerrangÃ© <berrange@redhat.com>
-Message-ID: <20260914184534.706637-1-alex.bennee@linaro.org>
-Signed-off-by: Alex BennÃ©e <alex.bennee@linaro.org>
----
- .gitlab-map-auto          | 8 +++++---
- scripts/gitlab-map-update | 2 +-
- 2 files changed, 6 insertions(+), 4 deletions(-)
+Thanks for adding my ID, Alex!
 
-diff --git a/.gitlab-map-auto b/.gitlab-map-auto
-index 28ce448f1bf..3f717a15d4e 100644
---- a/.gitlab-map-auto
-+++ b/.gitlab-map-auto
-@@ -12,11 +12,12 @@ a1xndr	Alexander Bulekov
- adi-g15-ibm	Aditya Gupta
- agraf	Alexander Graf
- alex.williamson	Alex Williamson
--aliang1	Aihua Liang
- alistair23	Alistair Francis
-+amachhiw	Amit Machhiwal
- anisinha	Ani Sinha
- anthony-linaro	Anthony Roberts
- anthonyper	Anthony PERARD
-+aroxell	Anders Roxell
- berrange	Daniel P. BerrangÃ©
- birkelund	Klaus Jensen
- bonzini	Paolo Bonzini
-@@ -36,10 +37,10 @@ dwmw2	David Woodhouse
- eauger1	Eric Auger
- ebblake	Eric Blake
- edgar.iglesias	Edgar E. Iglesias
-+efarman	Eric Farman
- ehabkost	Eduardo Habkost
- eldondev	Eldon
- epilys	Manos Pitsidianakis
--famzheng	Fam Zheng
- farosas	Fabiano Rosas
- gautammenghani	Gautam Menghani
- gkurz	Greg Kurz
-@@ -51,7 +52,6 @@ imammedo	Igor Mammedov
- jasowang	Jason Wang
- jmacarthur	Jim MacArthur
- jsnow	John Snow
--juan.quintela	Juan Quintela
- kbastian-qemu	Bastian Koppelmann
- kmwolf	Kevin Wolf
- kostyanf14	Kostiantyn Kostiuk
-@@ -67,6 +67,7 @@ mauromatteo.cascella	Mauro Matteo Cascella
- mcayland	Mark Cave-Ayland
- mdroth	Michael Roth
- mediouni-m	M. Mediouni
-+mjrosato	Matthew Rosato
- mjt0k	Michael Tokarev
- mstredhat	MST
- npiggin	npiggin
-@@ -79,6 +80,7 @@ pipo.sk	Peter Krempa
- pkrempa	Peter Krempa (work)
- pm215	Peter Maydell
- qemu-janitor	Qemu Janitor
-+raphael.s.norwitz	Raphael Norwitz
- rathc	Chinmay Rath
- rth7680	Richard Henderson
- schoenebeck	Christian Schoenebeck
-diff --git a/scripts/gitlab-map-update b/scripts/gitlab-map-update
-index c134c226aa2..743ad11900d 100755
---- a/scripts/gitlab-map-update
-+++ b/scripts/gitlab-map-update
-@@ -33,7 +33,7 @@ glab api --paginate /projects/qemu-project%2fqemu/members | \
-     .gitlab-map-auto.tmp
- test $? != 0 && fail=1
- 
--if test $fail == 0
-+if test $fail -eq 0
- then
-   grep '^#' .gitlab-map-auto > .gitlab-map-auto.new
-   LC_ALL=C sort .gitlab-map-auto.tmp | uniq >> .gitlab-map-auto.new
--- 
-2.47.3
+Acked-by: Amit Machhiwal <amachhiw@linux.ibm.com>
 
+Thanks,
+Amit
 

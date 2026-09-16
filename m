@@ -4,72 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 69AFBC982C9
-	for <qemu-arm@archiver.kernel.org>; Wed, 16 Sep 2026 16:51:42 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2227AC982CF
+	for <qemu-arm@archiver.kernel.org>; Wed, 16 Sep 2026 16:52:43 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1x6sr7-00009P-EY; Wed, 16 Sep 2026 12:51:33 -0400
+	id 1x6srK-0000IB-3n; Wed, 16 Sep 2026 12:51:46 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <sebott@redhat.com>) id 1x6sr3-0008WM-Tf
- for qemu-arm@nongnu.org; Wed, 16 Sep 2026 12:51:30 -0400
+ (Exim 4.90_1) (envelope-from <sebott@redhat.com>) id 1x6sr5-00006f-Rm
+ for qemu-arm@nongnu.org; Wed, 16 Sep 2026 12:51:32 -0400
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <sebott@redhat.com>) id 1x6sr1-0001cd-MK
- for qemu-arm@nongnu.org; Wed, 16 Sep 2026 12:51:29 -0400
+ (Exim 4.90_1) (envelope-from <sebott@redhat.com>) id 1x6sr4-0001dH-2i
+ for qemu-arm@nongnu.org; Wed, 16 Sep 2026 12:51:31 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1789577486;
+ s=mimecast20190719; t=1789577489;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding;
- bh=AvkBO86Vxep0LTBS33hl/KqDyXBtcNpZip+c0HPjzUg=;
- b=iAR9x19t2Avlq24a5HAvnSsNwtaSheMsSLq5GmOR8CM7lgn3FkcFWAUTj4uaEm80Hcjc4k
- KNVgPHwJn4G1+kvoQrnX7k4fIfXNhsHZmTmGfHfWFhK7/JWHvzRrmm0OFyk1DvhjIznq4C
- p38m1WQrFURGI7qYNyDPETkoozmcj9Q=
-Received: from mail-wr1-f70.google.com (mail-wr1-f70.google.com
- [209.85.221.70]) by relay.mimecast.com with ESMTP with STARTTLS
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=DceylnPw8tnbzv24tzOsmyILBNWMpDPlJWn3IRyqBt0=;
+ b=Aak1nYzfEl3ynUnGHpcQ5SNJIhTchVGATUBmo0o5CocCHHqwFA29ZAeGZn/yqWiISzodwv
+ B37x5IMQ2YDyN6K5xkx5XlQ6l6DBg1cv1isoRfypBjuJSkwF34KCoYXMzOhcFvIobyeEW+
+ m/ipw3B/Nn9k8+ROUnD05U+UOP7zLM0=
+Received: from mail-wr1-f71.google.com (mail-wr1-f71.google.com
+ [209.85.221.71]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-659-ub1FyRkcOuKB2h9_zyVvkw-1; Wed, 16 Sep 2026 12:51:24 -0400
-X-MC-Unique: ub1FyRkcOuKB2h9_zyVvkw-1
-X-Mimecast-MFC-AGG-ID: ub1FyRkcOuKB2h9_zyVvkw_1789577484
-Received: by mail-wr1-f70.google.com with SMTP id
- ffacd0b85a97d-4843e59c32dso3969062f8f.3
- for <qemu-arm@nongnu.org>; Wed, 16 Sep 2026 09:51:24 -0700 (PDT)
+ us-mta-631-_z-TXStaM-CT2DTWzO7H8Q-1; Wed, 16 Sep 2026 12:51:28 -0400
+X-MC-Unique: _z-TXStaM-CT2DTWzO7H8Q-1
+X-Mimecast-MFC-AGG-ID: _z-TXStaM-CT2DTWzO7H8Q_1789577487
+Received: by mail-wr1-f71.google.com with SMTP id
+ ffacd0b85a97d-4870a0f802cso1695294f8f.0
+ for <qemu-arm@nongnu.org>; Wed, 16 Sep 2026 09:51:27 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20260707; t=1789577483; x=1790182283;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
- :message-id:reply-to:content-type;
- bh=AvkBO86Vxep0LTBS33hl/KqDyXBtcNpZip+c0HPjzUg=;
- b=aax3vLhHwLO4DcPQIhgdTiZXzfQvF5KEPSi2XkrWQ7xkLWxmYS7M3IORQDyoC0i4ad
- Fan/8lODSW+JClEiVNFfQk2BQ3k+3qWEp2twnauYfTkPs8Bw4DWgL6DX6Dc1lhVYaDbV
- PS8uQ40JRrdaowJJ/ukprvXSWXqBy+IM5AIHzTyJSRHtaFvqYJ0RykLSkuksPw9dvSIE
- YG3f3496/35nsautJNeRqCIcGdfoavdV75C3rMFBn7v8BUmsTiOktnTs43+gobwdHPk6
- EE3vwOi2mAJimKxvnXxgPbk1jW3oKjq2hRpIcai0z5CmxjoDgFAQczmv6q8VY7lQ9Hpn
- ZLaw==
-X-Gm-Message-State: AFuF++lEFbI8NKAE12B0IHVhvRp6NSujW4DYbOp/gZeFXvA93WVwTTZP
- Ibo6Tf0PIy+KPf25T+PjWDzTKe082BdHxWk2zNUdzmrch98+bBHGcTwSWq3H3vRtr8GDxFUZLIj
- E16+4bOPUl5tMc5Z81Ul1w4W3rVhIOBd1arF7hb4sscyldPTsk+opXg==
-X-Gm-Gg: AYBFou1tei1Zmc4CxCNJa7q6APCG///wMp4AvtZdtZwQZuR/ezW/iSqHKpcdwHcBuuz
- 76QEXhzo8hz8Y8bniKj7tWBSTjBQtlMKRiUcFbKM4Bja4TrAUMB4iYSlsiRyGQ9hhwqT4hKABo9
- J12/l2SaA733S0/qcGzng+bVDKG/Mvw9txSTfMEvDIwmFkZ42nWu7QIwKi9Ir6WLFo+O87rVBYI
- Sl+bUAubYjBOEJCe8L2EvnYKGAW4teNXv0CX+X3S1qHZ7bgMH1FjTh8GB8ATRHSPlh6lwZqLgLr
- JKolOX56R5IAPBC/Gqys36fM0mXz/7x17q23E8Ud7TaFYwdAybn7zbvjBg74IDSgJoGvCsGHYwE
- 4ehjm9jEzEcJD92XLn4RTF585Sga1L7Ci1+euONhqNakB6/9H3Xo6D4Eu1ucb1mn2MQ==
-X-Received: by 2002:a05:6000:29ce:b0:487:10a9:57cb with SMTP id
- ffacd0b85a97d-48710a95810mr2180261f8f.49.1789577483716; 
- Wed, 16 Sep 2026 09:51:23 -0700 (PDT)
-X-Received: by 2002:a05:6000:29ce:b0:487:10a9:57cb with SMTP id
- ffacd0b85a97d-48710a95810mr2180246f8f.49.1789577483377; 
- Wed, 16 Sep 2026 09:51:23 -0700 (PDT)
+ d=1e100.net; s=20260707; t=1789577487; x=1790182287;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
+ :to:cc:subject:date:message-id:reply-to:content-type;
+ bh=DceylnPw8tnbzv24tzOsmyILBNWMpDPlJWn3IRyqBt0=;
+ b=UVJt33gmTj8oWmVBuDSkh/t6+m1rYPAmSQh8cxJcaW063HQpOzZ5oydMUIJz9LCxzd
+ wf+5IaQGv1fHxh9FcghjcLGpek2GeShtUdcmKq7as2ysINqXJSsYvGbjlPTASzkPS8l6
+ zMFVe8BhyXww/fgtw8K0AA1NMzMK9q0i25Oa9R+fKA78DrLOqpdnB4vUIZkJnJp6+BUk
+ s6ot980dtzTs7lROm2JTUEtF6COtQtavLriYdOXOPQ70NKhuIAf7jDZu434RAwWDrkMb
+ Q0oVnKipqL53Np8eFqGP0vbvsEe3yDDhEtP+p0a6Epd7PrzVE7OXW21bOVL+iqAuTFVZ
+ LDCg==
+X-Gm-Message-State: AFuF++n0ILPqIqHOp8lW/yopdsEEuXkg4m/1xBcCpy3ZFycY6uW2BqXI
+ /S9qFJKm9ugn2Q1FVQWnfHRGKudYFnGHwfocGkwPGdROO3X80d+hGhx09wrhDWydEhAAFPJXKyV
+ D0JKTvV0k6EU9R4BbVQR62RlM7HOS3KgDssF2pOLEyxEGT72k8y67fw==
+X-Gm-Gg: AYBFou0kE9jODP6QIf7x4sXB6TSBy96sfeBIeq0tK0gdja4r9KEhGj15o/NIZkoPVcL
+ 1HsTVQ3YtsCsCF5MkWFCkfrv5nVUvWj86nEuddLocRwvKfLAtNA5XVCmpbpeSTMF4M2LKYijtds
+ usJ7Z2gd0ET9OQcWiPT+JSfXjbSOT9zpzKl8bevJV7/8FQezSvMF1eCpzomk2zYXLNtCLe7FV4P
+ 7v3DgHg5SJE2OyFXPztlYIg6XieX0GZ9GnMSpMh5xq+EDlJhcaZ3X9rli0uPWJhz3DBHDoZYltT
+ 6Hv4ZFRItnAoz3eE6SxhiGcV2K6SuDje2AiJjbKsEycXICkGxqqAQdrmQytCCK3+KJs04h4J/yZ
+ zI4xcgYwcqJhhkUfnJCwznN8j1EuIvBHasU3Uqdiy9mVZj5MtoKMPuNF8uT2PChyi3g==
+X-Received: by 2002:a5d:584b:0:b0:487:1004:3935 with SMTP id
+ ffacd0b85a97d-48710043962mr3063699f8f.25.1789577486857; 
+ Wed, 16 Sep 2026 09:51:26 -0700 (PDT)
+X-Received: by 2002:a5d:584b:0:b0:487:1004:3935 with SMTP id
+ ffacd0b85a97d-48710043962mr3063676f8f.25.1789577486519; 
+ Wed, 16 Sep 2026 09:51:26 -0700 (PDT)
 Received: from rh.redhat.corp
  (p200300f6af00a400b6f52cb1a2e89932.dip0.t-ipconnect.de.
  [2003:f6:af00:a400:b6f5:2cb1:a2e8:9932])
  by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-4870bf33e01sm9655089f8f.23.2026.09.16.09.51.22
+ ffacd0b85a97d-4870bf33e01sm9655089f8f.23.2026.09.16.09.51.25
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 16 Sep 2026 09:51:23 -0700 (PDT)
+ Wed, 16 Sep 2026 09:51:26 -0700 (PDT)
 From: Sebastian Ott <sebott@redhat.com>
 To: Peter Maydell <peter.maydell@linaro.org>, Eric Auger <eauger@redhat.com>,
  Jonathan Cameron <jonathan.cameron@huawei.com>,
@@ -78,13 +79,15 @@ To: Peter Maydell <peter.maydell@linaro.org>, Eric Auger <eauger@redhat.com>,
  Cornelia Huck <cohuck@redhat.com>, khushit.shah@nutanix.com
 Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org,
  Sebastian Ott <sebott@redhat.com>
-Subject: [PATCH v6 0/3] arm: demuxed ID registers (CCSIDR_EL1)
-Date: Wed, 16 Sep 2026 18:51:14 +0200
-Message-ID: <20260916165117.39764-1-sebott@redhat.com>
+Subject: [PATCH v6 3/3] arm/kvm: get demuxed ID registers from kvm
+Date: Wed, 16 Sep 2026 18:51:17 +0200
+Message-ID: <20260916165117.39764-4-sebott@redhat.com>
 X-Mailer: git-send-email 2.55.0
+In-Reply-To: <20260916165117.39764-1-sebott@redhat.com>
+References: <20260916165117.39764-1-sebott@redhat.com>
 MIME-Version: 1.0
 X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: dM50QQAbWIFCx9gGSoX-5MqWVvDBivfV7PZDrIr3J2g_1789577484
+X-Mimecast-MFC-PROC-ID: KILbfXelhmwVRhhroEXdoooQs7L24QuWyyjlOmFgQxA_1789577487
 X-Mimecast-Originator: redhat.com
 Content-Transfer-Encoding: 8bit
 content-type: text/plain; charset="US-ASCII"; x-default=true
@@ -112,49 +115,78 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-To support efforts to generalize handling of writable System ID Registers
-[1] this series addresses the demuxed registers that are kept outside of
-ARMISARegisters namely CSSELR_EL1.
+From: Cornelia Huck <cohuck@redhat.com>
 
-CSSELR_EL1 is moved within ARMISARegisters and accessors to retrieve
-and set the demuxed values are provided. Initial values are gathered via
-the usual KVM_GET_ONE_REG ioctl.
+We now have the infrastructure in place to handle demuxed ID registers
+from kvm. Use it to get the values that kvm emulates for CCSIDR_EL1.
 
-V5 of this series was posted here:
-https://lore.kernel.org/qemu-devel/20260909144151.26803-1-sebott@redhat.com/
+Tested-by: Alireza Sanaee <alireza.sanaee@huawei.com>
+Signed-off-by: Cornelia Huck <cohuck@redhat.com>
+Signed-off-by: Sebastian Ott <sebott@redhat.com>
+---
+ target/arm/kvm.c | 42 ++++++++++++++++++++++++++++++++++++++++++
+ 1 file changed, 42 insertions(+)
 
-[1] https://lore.kernel.org/qemu-arm/20260616132625.1732031-1-eric.auger@redhat.com/
-
-Changes V5->V6:
-* incorporated suggestions from Peter
-
-Changes V4->V5:
-* changed diffstat format
-* changed cover letter
-
-Changes V3->V4:
-* added R-B from Eric
-* incorporated suggestions from Eric
-
-
-Cornelia Huck (3):
-  arm: handle demuxed ID registers
-  arm: handle CCSIDR_EL1 as a demuxed register
-  arm/kvm: get demuxed ID registers from kvm
-
- target/arm/cpu-sysregs.h     |  9 +++++
- target/arm/cpu.h             | 28 +++++++++++----
- target/arm/cpu-sysregs.h.inc |  1 +
- hw/arm/virt.c                | 19 ++++------
- hw/intc/armv7m_nvic.c        |  2 +-
- target/arm/cpu-max.c         |  6 ++--
- target/arm/cpu64.c           | 14 ++++++--
- target/arm/helper.c          |  2 +-
- target/arm/kvm.c             | 42 ++++++++++++++++++++++
- target/arm/tcg/cpu32.c       | 26 +++++++-------
- target/arm/tcg/cpu64.c       | 68 ++++++++++++++++++------------------
- 11 files changed, 144 insertions(+), 73 deletions(-)
-
+diff --git a/target/arm/kvm.c b/target/arm/kvm.c
+index ed99be7fd8..e4ef11945e 100644
+--- a/target/arm/kvm.c
++++ b/target/arm/kvm.c
+@@ -244,6 +244,44 @@ static int get_host_cpu_reg(int fd, ARMHostCPUFeatures *ahcf,
+     return ret;
+ }
+ 
++
++/* CSSELR values supported by kvm; used to index KVM_REG_ARM_DEMUX_ID_CCSIDR */
++#define KVM_CSSELR_MAX 14
++/*
++ * QEMU historically supported CSSELR values 0..15. This difference doen't matter
++ * since CSSELR_EL1.Level == 0b111 is reserved and thus CSSELR values 14..15 will
++ * make CCSIDR read as zero. Larger CSSELR values will only be necessary when
++ * support for MTE Allocation Tag caches is added.
++ */
++#define QEMU_CSSELR_MAX 16
++
++static int get_host_cpu_reg_demux(int fd, ARMHostCPUFeatures *ahcf,
++                                  ARMIDRegisterIdx index, int subindex)
++{
++
++    struct kvm_one_reg one_reg = {
++        .id = KVM_REG_ARM64 | KVM_REG_SIZE_U32 | KVM_REG_ARM_DEMUX,
++    };
++
++    switch (index) {
++    case CCSIDR_EL1_IDX:
++        if (subindex >= QEMU_CSSELR_MAX) {
++            return -EINVAL;
++        } else if (subindex >= KVM_CSSELR_MAX) {
++            /* CSSELR_EL1.Level == 0b111 is reserved. */
++            ahcf->isar.idregs[index + subindex] = 0;
++            return 0;
++        }
++        one_reg.id |= KVM_REG_ARM_DEMUX_ID_CCSIDR | subindex;
++        one_reg.addr = (uintptr_t)&ahcf->isar.idregs[index + subindex];
++        break;
++    default:
++        return -EINVAL;
++    }
++
++    return ioctl(fd, KVM_GET_ONE_REG, &one_reg);
++}
++
+ static uint32_t kvm_arm_sve_get_vls(int fd)
+ {
+     uint64_t vls[KVM_ARM64_SVE_VLS_WORDS];
+@@ -454,6 +492,10 @@ static void kvm_arm_get_host_cpu_features(ARMHostCPUFeatures *ahcf)
+             /* Read the set of supported vector lengths. */
+             arm_host_cpu_features.sve_vq_supported = kvm_arm_sve_get_vls(fd);
+         }
++        /* Grab demuxed registers. */
++        for (int i = 0; i < QEMU_CSSELR_MAX; i++) {
++            err |= get_host_cpu_reg_demux(fd, ahcf, CCSIDR_EL1_IDX, i);
++        }
+     }
+ 
+     kvm_arm_destroy_scratch_host_vcpu(fdarray);
 -- 
 2.55.0
 

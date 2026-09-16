@@ -4,71 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D64DAC982C9
-	for <qemu-arm@archiver.kernel.org>; Wed, 16 Sep 2026 15:34:25 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E6CD0C982D0
+	for <qemu-arm@archiver.kernel.org>; Wed, 16 Sep 2026 15:38:08 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1x6rbM-0002Zu-4u; Wed, 16 Sep 2026 11:31:12 -0400
+	id 1x6ri0-0001nr-DV; Wed, 16 Sep 2026 11:38:04 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1x6rb0-0002Ih-NI
- for qemu-arm@nongnu.org; Wed, 16 Sep 2026 11:30:58 -0400
-Received: from mail-wm2-x11.google.com ([2a00:1450:4864:31::11])
+ id 1x6rhz-0001n4-Og
+ for qemu-arm@nongnu.org; Wed, 16 Sep 2026 11:38:03 -0400
+Received: from mail-wm2-x10.google.com ([2a00:1450:4864:31::10])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1x6rax-0001T1-Tq
- for qemu-arm@nongnu.org; Wed, 16 Sep 2026 11:30:50 -0400
-Received: by mail-wm2-x11.google.com with SMTP id
- 5b1f17b1804b1-49ccf3ca626so5451855e9.0
- for <qemu-arm@nongnu.org>; Wed, 16 Sep 2026 08:30:37 -0700 (PDT)
+ id 1x6rhx-0003NW-JU
+ for qemu-arm@nongnu.org; Wed, 16 Sep 2026 11:38:03 -0400
+Received: by mail-wm2-x10.google.com with SMTP id
+ 5b1f17b1804b1-49e6598dd44so6227665e9.1
+ for <qemu-arm@nongnu.org>; Wed, 16 Sep 2026 08:38:01 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1789572636; x=1790177436; darn=nongnu.org;
+ d=linaro.org; s=google; t=1789573080; x=1790177880; darn=nongnu.org;
  h=content-transfer-encoding:content-type:mime-version:references
  :in-reply-to:message-id:date:subject:cc:to:from:from:to:cc:subject
  :date:message-id:reply-to:content-type;
- bh=XDBeIItyJVXMmWM9fFuyv25JigkWsWFtvmOqP+mqtyk=;
- b=vuDojsTOtpQDKzUm9WkWqIQEaiBPMPCzWcM2RGZ1aVNypa6OX6fNIcxVv4sJy4FsPO
- V34g9VGILaRvDGxMUk78a4tHtCm4OuvZEcpmKGDHL5ShiPRoG529OV0oGsmADQ3EDyf3
- JIxJjDbGpYljsmn3KYQTu8UlWgGPwknIMbIRosZ0LesEz79/ZIYgnK5ud9gsiVqmuW6E
- X+dHZTAWpsGrtrG9gmysug3elr2XR1v3uu+em5PQssiITH1TJNPXELbj51Of6M8k0zQ9
- rPijSXFkqe3oSbulj9+hVovzJx67+ilxYzORr6GPpycpBJa3tAfWOJ0F2KL8idAa6HhL
- 3C/w==
+ bh=5ZkOZ2c5yMGDlE1TB5Cp+fPuQbHl7TzaWx2TA+LzciY=;
+ b=QopxOg/l39ZFi7Y7rJhgSoedHKBXGrruL3bIV2NawDDnj1iftzxmLDao68w2+1xErs
+ Duc2DfvQ7OJFuXc8xBpFLl5ivoup/Fbtd3M4LagFFXqmxaDZP92w4DrcbPtTFZRRY5g5
+ bm1GkUnJvqDzFT3USCRYniJ4xmqKU6v8QYIJ4S14ESz1inYAwWc7aaIQnZPuN/GGpMaX
+ eJzSJZBx5zxsD+VnYM3QEfuejlNorRXMlogEyBE0N8JPvLexNtbZcJO561oapfj1xeVp
+ EXQqe2WsGIKHkxXy68N866PDGn3KYe1L3ga90eIlE10GZKC9V31cIVJIhTyjIYV6T+DB
+ xuQg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20260707; t=1789572636; x=1790177436;
+ d=1e100.net; s=20260707; t=1789573080; x=1790177880;
  h=content-transfer-encoding:content-type:mime-version:references
  :in-reply-to:message-id:date:subject:cc:to:from:x-gm-gg
  :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
  :content-type;
- bh=XDBeIItyJVXMmWM9fFuyv25JigkWsWFtvmOqP+mqtyk=;
- b=jVI0nD/cnm/Gs4ddGsp4V9tgxHRMvo4/N2LeU88RX+sDfKTEbuhITuBq1KcgL3P54H
- Xz9qCLmBO/S35MLjAcwJV3cAdeObXpMoPKEAtJj9XckB9/BtbKrA+Kdg2n6tnGL7OYQV
- wxJ8re5IKDOEaPoxQrVAYDbXM4qSJoJl1na3Y9axKj1SHbK5c416Xdz0W1DHCt+yV7+A
- nyC/WsJytjgVNCXQMt9K2QpDLgOOS6lU8waj/h0VulWCyOdA60smRg1BC4vVd8/fnFy6
- Aek/sW0/I9fzLhfw9El0HQnRN4ClP+XHNt94h+v6PC8E73hX7a/C2aCXmgi0j95y6zkD
- ghOg==
+ bh=5ZkOZ2c5yMGDlE1TB5Cp+fPuQbHl7TzaWx2TA+LzciY=;
+ b=cznNaZYlNET8dKUt32xmgrgMPTa1m1NLF4laDCySSMheQwdIaJZU2s2SdocsVNrBY7
+ 71my5VS8feiHcgzkxe3W3PU5BzVSYJxyFBH/4Zxb7wA4KS8L9bDnHd62XsybdBHQptR2
+ WOA4rhFu1mq60Z/OfH5uDPyuBKOeYHcXtYhaHL4YtWmgj7wDqAbW1m0i7koAJeiNGA3r
+ 8xKn0s2ZHw9jHxCtzCu0SyybbT3JAqV+zjYEky57VYtWK4sFI8Uk4S46osI7bNoUe3Ha
+ xoZ3Qo8eypXfOyQlkQ3dibOH00avB3RwneEVb7mgXyveQJZ4I7EGJJ1BMgsQF20Na/02
+ 452w==
 X-Forwarded-Encrypted: i=1;
- AKwUvBywwhPoLoBTi25pzKUzq7HTlVyxXne83/1foilpbia+YVI8xDTPa0dfvCRHU7mcAs4C1DU2VDE3kQ==@nongnu.org
-X-Gm-Message-State: AFuF++lRHxBtxh+R6v07EhaMrs4kfX9XL8u0pGZD0m68at4W9EmqEH1C
- 6PjLiuBkLYKgXo3UX0cABvaXQ1Zu7T9cSad0JxPI4DkfT5r+5PbNw/XiFkQtVvymhj0=
-X-Gm-Gg: AYBFou3oKhHJZzMS6PQCiKSzdcB8IAAczyXBr52WzTmH1R8losjc5GSVNCx7417FxPb
- HQVDbrcQBdL08rHdT/d8m1injPzQzsIAhBmjvhobbo/0gjn9W8IfWkUxqDGX89GBKN2m3dt5ed0
- P+NQcMduZrHueM5NVYwRh8O7DZIITCGoUccVp6CSuqKfVf3MRQfdISZvx6n7IEFvLwzC8i18qqz
- gG/UFB8hdhroDFt86lphI2Q/0PbbalhUoOqhaCJSF+5i4Loady12lEixL5I6TUtbybVL86xly7N
- /MZEPs6f4z10Q86lzTlvSCjJbE8b3OmOeQZh1Sk0r6nSMqk4yMrKKc0IIVd00Wi/h5qmFdpFlBB
- Xk+6vJVZD+beSO0gsTEQG/GSHXIAuqWc/1iVa88VoU9+IxFpgwkDZ3EOUjgeiOhnutYXswy3RXb
- UoMK/pVpwAGfJ9x+ACB9HeKt0RQJ4YLUyRdGp9CMSCm4SL5zFl9QYLXGgVtkY0NhAnj5+CaC8=
-X-Received: by 2002:a05:600c:83c4:b0:49c:ff9f:f6b6 with SMTP id
- 5b1f17b1804b1-49eac463960mr39184175e9.6.1789572636125; 
- Wed, 16 Sep 2026 08:30:36 -0700 (PDT)
+ AKwUvBwKf+1zbixIaF8AnRkNcPNLb7JWuIDIBzCRPuGhYEPWXJ2orAVQpofCqsKpB8RdPVQ32/ncpLtczQ==@nongnu.org
+X-Gm-Message-State: AFuF++nqZ0p2XAM5c7BKOpkynOIlCA+uOi8fsFQgNESbfA9JjskPXZGd
+ WPn7yqQ224vt1LmN5QnR44vxsurofOWZAvy5iSNJ+h48nRWQASIYuPcISn9mU0tIkzw=
+X-Gm-Gg: AYBFou11d0JYUkqCzEkOJi1nLcFHUzlBGVAc1MpXamkjehhzkCN+1WTuVq6lIc46CHV
+ 9xbJHQTnm8+K99i97M8cFT2sHqVR3gCJdHjsP4wKsWQIuHteeCmdBb2BRbRTafrD3PgXDXOM/Mc
+ WmUdKlBpZ/PFkzjZanESW29Vu4PZ+tBYlXadXiQec8kQIG127mKcVf81PThGtCpDL44Ibdi+6Ka
+ fwvAFbR1RqHAK3xF6AOYWr0me0JehW/foYEF8Ih0/kyMhb8aGN9DVNnTjPaRBtSnjVxyvhWmkzn
+ JiSmMsFmIdSivSQTpQNIvzjfNVujFi+Oc5BUmQzdY9c15Thfof+B2l4rQuETbEAb/81LAv77PUD
+ BTS8iDJmLORQP6ul7+7lc/byGJ3CT4lTnvZDFhUPvnT/imub9dU0ifmnPBJe8QnkN9vdvxTzgU3
+ Uxr93gJsJpKnBvQ6GYMKDArM5ITVrP3kyKre9a7ePiQtIBXcu9Ph68RsKYZR/wIdrW7Z5EPao=
+X-Received: by 2002:a05:600c:1d25:b0:49e:7c8c:361d with SMTP id
+ 5b1f17b1804b1-49fbd1ddf87mr245265e9.22.1789573079668; 
+ Wed, 16 Sep 2026 08:37:59 -0700 (PDT)
 Received: from draig.lan ([185.124.0.156]) by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-49e847ecf52sm61569685e9.2.2026.09.16.08.30.16
+ 5b1f17b1804b1-49fbd1b0e9bsm585365e9.9.2026.09.16.08.37.56
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 16 Sep 2026 08:30:22 -0700 (PDT)
+ Wed, 16 Sep 2026 08:37:57 -0700 (PDT)
 Received: from draig.lan (localhost [IPv6:::1])
- by draig.lan (Postfix) with ESMTP id EE64861926;
- Wed, 16 Sep 2026 16:30:13 +0100 (BST)
+ by draig.lan (Postfix) with ESMTP id 156E961AE2;
+ Wed, 16 Sep 2026 16:30:15 +0100 (BST)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: Ilya Leoshkevich <iii@linux.ibm.com>, qemu-arm@nongnu.org,
@@ -90,22 +90,24 @@ Cc: Ilya Leoshkevich <iii@linux.ibm.com>, qemu-arm@nongnu.org,
  Brian Cain <brian.cain@oss.qualcomm.com>,
  =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
  Richard Henderson <richard.henderson@linaro.org>
-Subject: [PATCH v4 07/19] tests/tcg: prefix meson built docker tags with qemu/
-Date: Wed, 16 Sep 2026 16:30:00 +0100
-Message-ID: <20260916153013.2134555-8-alex.bennee@linaro.org>
+Subject: [PATCH v4 18/19] tests/tcg: add console property to docker image
+ custom target
+Date: Wed, 16 Sep 2026 16:30:11 +0100
+Message-ID: <20260916153013.2134555-19-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.47.3
 In-Reply-To: <20260916153013.2134555-1-alex.bennee@linaro.org>
 References: <20260916153013.2134555-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:31::11;
- envelope-from=alex.bennee@linaro.org; helo=mail-wm2-x11.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:31::10;
+ envelope-from=alex.bennee@linaro.org; helo=mail-wm2-x10.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_NONE=0.001,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -122,64 +124,28 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-With the meson changes we now build the images directly by calling
-docker.py. However the Makefile.include builds prefix all the images
-with qemu/:
+According to the meson docs this serialises the target in a special
+"console" pool which also disables the buffering of stdout. This helps
+avoid the appearance of a massive stall when a docker image is built.
 
-  # General rule for building docker images.
-  docker-image-%: $(DOCKER_FILES_DIR)/%.docker
-            $(call quiet-command,			\
-                  DOCKER_BUILDKIT=1 $(CONTAINER_COMMAND) build \
-                  $(if $(DOCKER_V),,--quiet)		\
-                  $(if $(NOCACHE),--no-cache,		\
-                          $(if $(DOCKER_REGISTRY),--cache-from $(DOCKER_REGISTRY)/qemu/$*)) \
-                  --build-arg BUILDKIT_INLINE_CACHE=1 	\
-                  $(if $(NOUSER),,			\
-                          --build-arg USER=$(USER)	\
-                          --build-arg UID=$(UID))		\
-                  -t qemu/$* - < $< $(if $(DOCKER_V),,> /dev/null),\
-                  "BUILD", $*)
-
-So to ensure we don't end up building every container twice make sure
-the naming conventions line up.
-
-Reviewed-by: Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>
+Suggested-by: Daniel P. Berrangé <berrange@redhat.com>
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
 ---
- tests/tcg/meson.build | 6 +++---
- 1 file changed, 3 insertions(+), 3 deletions(-)
+ tests/tcg/meson.build | 1 +
+ 1 file changed, 1 insertion(+)
 
 diff --git a/tests/tcg/meson.build b/tests/tcg/meson.build
-index 890da7b81e9..d2a837f103d 100644
+index 80205f6f98a..6c675a554cf 100644
 --- a/tests/tcg/meson.build
 +++ b/tests/tcg/meson.build
-@@ -237,7 +237,7 @@ foreach target, plan: tcg_tests
-     image_name = 'image-' + cc_dockerfile
-     has_docker = docker_host_arch_supported and docker_supported
-     if cc_dockerfile not in image_targets and has_docker
--      cmd = [docker_wrapper, 'build', '-f', dockerfile, '-t', cc_dockerfile]
-+      cmd = [docker_wrapper, 'build', '-f', dockerfile, '-t', 'qemu/' + cc_dockerfile]
+@@ -247,6 +247,7 @@ foreach target, plan: tcg_tests
+       endif
        t = custom_target(image_name, command: cmd,
                          build_by_default: false,
++                        console: true,
                          output: 'no_output_' + image_name)
-@@ -252,7 +252,7 @@ foreach target, plan: tcg_tests
-       here = meson.project_build_root()
-       cc = [docker_wrapper, 'run', '--run-as-current-user',
-             '-w', here, '-v', mount,
--            cc_dockerfile, plan['cc']]
-+            'qemu/' + cc_dockerfile, plan['cc']]
-       has_cc = true
+       image_targets += {cc_dockerfile: t}
      endif
-   endif
-@@ -261,7 +261,7 @@ foreach target, plan: tcg_tests
-   if has_cc
-     summary_cc = plan['cc']
-     if not cc_from_system
--      summary_cc += ' (from \'' + plan['cc_dockerfile'] + '\' container)'
-+      summary_cc += ' (from \'qemu/' + plan['cc_dockerfile'] + '\' container)'
-     endif
-   endif
-   tcg_tests_summary += {'cc for ' + target: summary_cc}
 -- 
 2.47.3
 

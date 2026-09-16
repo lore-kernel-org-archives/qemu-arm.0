@@ -4,50 +4,50 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E98CAC982C5
-	for <qemu-arm@archiver.kernel.org>; Wed, 16 Sep 2026 14:51:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5DE42C982C3
+	for <qemu-arm@archiver.kernel.org>; Wed, 16 Sep 2026 14:52:16 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1x6qwk-0007b3-Fr; Wed, 16 Sep 2026 10:49:14 -0400
+	id 1x6qwk-0007cQ-Ra; Wed, 16 Sep 2026 10:49:14 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1x6qwf-0007SV-Cs
- for qemu-arm@nongnu.org; Wed, 16 Sep 2026 10:49:10 -0400
+ id 1x6qwh-0007Ub-A3
+ for qemu-arm@nongnu.org; Wed, 16 Sep 2026 10:49:11 -0400
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1x6qwd-0006dZ-NY
- for qemu-arm@nongnu.org; Wed, 16 Sep 2026 10:49:09 -0400
+ id 1x6qwf-0006e7-Lj
+ for qemu-arm@nongnu.org; Wed, 16 Sep 2026 10:49:11 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1789570147;
+ s=mimecast20190719; t=1789570149;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=EiBclqfnHyEK7XPO+qxnPMI8the5N2406mXliaMHR/I=;
- b=EwizRldBuMwDT6aT3rCvV4cagJ3V2mAnBgI6BKCanugPtQfQ4as77ViZd4qb9yTxsNabZS
- su+ynuPZ6Yda6HKKLW1T0qPhepcryRXz5d9l9mkgL7CWDjvoNbxyN5yqGORGynKr6oK7Hj
- RXmCzXDuY4YZNMK5hSoJ8bplaP7KcAk=
-Received: from mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com
+ bh=gBiQ/WZ8FDSS7QTiXrmQ5xLbPQJvAU6T5QyffYoE+7o=;
+ b=gnXtBuv9i2UHlDa+V49+siXhvZto1jOWokxSsvWw02NZnXNlhMgnzJx+/zl+MtJRJgch8s
+ EEm+KYGxhQGE8z+6AjCNMfeN8qngw0a6Ub2a8hzdyLLGawmUR9q2hrXWTmKbMYm6bdSCWF
+ MarPm2qCXqHczO12mg5a1t+L2qEWMxE=
+Received: from mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com
  (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-665-uHjc4MGCNpW2kIzBVsog1g-1; Wed,
- 16 Sep 2026 10:49:02 -0400
-X-MC-Unique: uHjc4MGCNpW2kIzBVsog1g-1
-X-Mimecast-MFC-AGG-ID: uHjc4MGCNpW2kIzBVsog1g_1789570141
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-623-03htv0vrMP6M-Xey91I9eQ-1; Wed,
+ 16 Sep 2026 10:49:07 -0400
+X-MC-Unique: 03htv0vrMP6M-Xey91I9eQ-1
+X-Mimecast-MFC-AGG-ID: 03htv0vrMP6M-Xey91I9eQ_1789570146
 Received: from mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com
  (mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.17])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id E843818009D8; Wed, 16 Sep 2026 14:49:00 +0000 (UTC)
+ by mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 1F95E1800DB5; Wed, 16 Sep 2026 14:49:06 +0000 (UTC)
 Received: from laptop.redhat.corp (headnet04.pony-001.prod.iad2.dc.redhat.com
  [10.2.32.116])
  by mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id 215941956053; Wed, 16 Sep 2026 14:48:55 +0000 (UTC)
+ id 4EC36195604D; Wed, 16 Sep 2026 14:49:01 +0000 (UTC)
 From: Eric Auger <eric.auger@redhat.com>
 To: eric.auger.pro@gmail.com, eric.auger@redhat.com, qemu-devel@nongnu.org,
  qemu-arm@nongnu.org, kvmarm@lists.linux.dev, peter.maydell@linaro.org,
@@ -57,15 +57,15 @@ To: eric.auger.pro@gmail.com, eric.auger@redhat.com, qemu-devel@nongnu.org,
 Cc: maz@kernel.org, oliver.upton@linux.dev, pbonzini@redhat.com,
  armbru@redhat.com, berrange@redhat.com, abologna@redhat.com,
  jdenemar@redhat.com
-Subject: [PATCH v9 17/26] target/arm/kvm: Add consistency checking for SYSREG
- props
-Date: Wed, 16 Sep 2026 16:45:40 +0200
-Message-ID: <20260916144721.751810-18-eric.auger@redhat.com>
+Subject: [PATCH v9 18/26] target/arm/cpu: Expose writable ID reg field
+ properties on the kvm host vcpu model
+Date: Wed, 16 Sep 2026 16:45:41 +0200
+Message-ID: <20260916144721.751810-19-eric.auger@redhat.com>
 In-Reply-To: <20260916144721.751810-1-eric.auger@redhat.com>
 References: <20260916144721.751810-1-eric.auger@redhat.com>
 MIME-Version: 1.0
 X-Scanned-By: MIMEDefang 3.0 on 10.30.177.17
-X-Mimecast-MFC-PROC-ID: b70b29tsTzU3J-PHwA4CjLS0RWFjyvfa1-Z9KLjwxcw_1789570141
+X-Mimecast-MFC-PROC-ID: m05vth6aBoOmAPSOvAgIwgZsEYvTpxsLwR0xqbRdwHc_1789570146
 X-Mimecast-Originator: redhat.com
 Content-Transfer-Encoding: 8bit
 content-type: text/plain; charset="US-ASCII"; x-default=true
@@ -77,7 +77,7 @@ X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=0.001, SPF_HELO_PASS=-0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -93,144 +93,69 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Since legacy composite options (such as SVE, virtualization, ...)
-and new SYSREG props coexist, add some basic consistency checks.
+If the host supports KVM_CAP_ARM_SUPPORTED_REG_MASK_RANGES and
+KVM_ARM_GET_REG_WRITABLE_MASKS ioctl successfully retrieved the mask
+of writable fields for all ID regs, expose uint64 SYSREG properties
+for all the writable ID reg fields exposed by the host kernel which
+can be matched in target/arm/cpu-idregs.h.inc.
 
-Those checks are performed both in kvm_arch_init_vcpu() before
-applying the SYSREG props at the end of the initialization chain.
+Properties are named  SYSREG_<REG>_<FIELD> with REG and FIELD
+being those used ARCHMRS Registers.json.
 
-Some ID reg fields corresponding to legacy composite option scope
-are not writable. In that case we just check that the field has
-not become writable.
+When such properties are set, they override the default field value
+retrieved from the host and reinjected into KVM. Then the actual value
+being applied at KVM depends on the register, ie. it can be sanitized.
+In case the field value is rejected by KVM, the vpcu init fails.
+
+Anyway there is a first attempt to write back this value into KVM.
+
+Then legacy CPU options (virtualization, secure, ...) can still
+override the previous value. So low level IDREG field properties
+apply before the legacy ones.
+
+An example of invocation is:
+-cpu host,SYSREG_ID_AA64MMFR0_EL1_ECV=0x0
+which sets ECV field of ID_AA64MMFR0_EL1 to 0 (enhanced counter
+virtualization).
 
 Signed-off-by: Eric Auger <eric.auger@redhat.com>
----
- target/arm/kvm.c | 105 +++++++++++++++++++++++++++++++++++++++++++++++
- 1 file changed, 105 insertions(+)
+Signed-off-by: Cornelia Huck <cohuck@redhat.com>
+Reviewed-by: Sebastian Ott <sebott@redhat.com>
 
-diff --git a/target/arm/kvm.c b/target/arm/kvm.c
-index ddf320d0e6..f52c03745e 100644
---- a/target/arm/kvm.c
-+++ b/target/arm/kvm.c
-@@ -340,6 +340,107 @@ static ARM64SysRegField *get_field(int i, ARM64SysReg *reg)
-     return NULL;
- }
+---
+v5 -> v6:
+- do not check writable_map anymore
+
+v4 -> v5:
+- get rid of ret local variable, dynamically allocate and free writable_map
+  here
+---
+ target/arm/cpu64.c | 5 +++++
+ 1 file changed, 5 insertions(+)
+
+diff --git a/target/arm/cpu64.c b/target/arm/cpu64.c
+index 4e8c472530..e04062e848 100644
+--- a/target/arm/cpu64.c
++++ b/target/arm/cpu64.c
+@@ -37,6 +37,7 @@
+ #include "hw/core/qdev-properties.h"
+ #include "internals.h"
+ #include "cpu-features.h"
++#include "cpu-idregs.h"
  
+ /* convert between <register>_IDX and SYS_<register> */
+ #define DEF(NAME, OP0, OP1, CRN, CRM, OP2)      \
+@@ -807,6 +808,10 @@ void aarch64_host_initfn(Object *obj)
+     kvm_arm_set_cpreg_mig_tolerances(cpu);
+     kvm_arm_set_cpu_features_from_host(cpu);
+     aarch64_add_sve_properties(obj);
 +
-+/**
-+ * kvm_arm_vcpu_validate_sysreg:
-+ *
-+ * Validate a SYSREG field value is consistent with legacy composite options
-+ * Some checks are not implemented because the corresponding sysreg field
-+ * is not currently writable. In that case we make sure the field has not
-+ * become writable, which would mean the user had the capability to set the
-+ * corresponding property.
-+ *
-+ * return true if consistent. false if it is not, along with an error handle
-+ */
-+static bool kvm_arm_vcpu_validate_sysreg(ARMCPU *cpu, ARM64SysRegField *field,
-+                                         uint64_t value, Error **errp)
-+{
-+    const char *fieldname = field->name;
-+    ARM64SysReg *sysregdesc = &arm64_id_regs[field->index];
-+    const char *regname = sysregdesc->name;
-+    g_autofree char *propname = g_strdup_printf("SYSREG_%s_%s", regname, fieldname);
++    /* generate SYSREG properties according to writable masks */
++    kvm_arm_expose_idreg_properties(cpu, arm64_id_regs);
 +
-+    /* virtualization */
-+    if (!strcmp(propname, "SYSREG_ID_AA64PFR0_EL1_EL2")) {
-+        /* consistency with machine virtualization property */
-+        if (cpu->has_el2 && value == 0) {
-+            error_setg(errp,
-+                "Inconsistent -machine virtualization=on and "
-+                "%s=0", propname);
-+            return false;
-+        } else if (!cpu->has_el2 && value > 0) {
-+            error_setg(errp,
-+                "Inconsistent -machine virtualization=off and "
-+                "%s > 0", propname);
-+            return false;
-+        }
-+    /* secure */
-+    } else if (!strcmp(propname, "SYSREG_ID_AA64PFR0_EL1_EL3") && value > 0) {
-+        /* consistency with machine secure property */
-+        error_setg(errp, "%s is set but qemu is not ready to support it",
-+                   propname);
-+        return false;
-+    /* MTE */
-+    } else if (!strcmp(propname, "SYSREG_ID_AA64PFR1_EL1_MTE")) {
-+        error_setg(errp, "%s is now exposed but qemu is not ready to support it",
-+                   propname);
-+        return false;
-+    /* SVE */
-+    } else if (!strcmp(propname, "SYSREG_ID_AA64PFR0_EL1_SVE")) {
-+        error_setg(errp, "%s is now exposed but qemu is not ready to support it",
-+                   propname);
-+        return false;
-+    } else if (!strcmp(propname, "SYSREG_ID_AA64ZFR0_EL1_SVEver")) {
-+        if (cpu_isar_feature(aa64_sve, cpu) && value == 0) {
-+            error_setg(errp, "sve is set but %s is set to 0", propname);
-+            return false;
-+        } else if (!cpu_isar_feature(aa64_sve, cpu) && value > 0) {
-+            error_setg(errp, "sve is not set but %s is greater than 0",
-+                       propname);
-+            return false;
-+        }
-+    /* PAUTH */
-+    } else if (!strcmp(propname, "SYSREG_ID_AA64ISAR1_EL1_APA")) {
-+        /* PAUTH QARMA5 address authentification */
-+        error_setg(errp, "%s is now exposed but qemu is not ready to support it",
-+                   propname);
-+        return false;
-+    } else if (!strcmp(propname, "SYSREG_ID_AA64ISAR1_EL1_API")) {
-+        /* PAUTH Impl Defined address authentification */
-+        error_setg(errp, "%s is now exposed but qemu is not ready to support it",
-+                   propname);
-+        return false;
-+    } else if (!strcmp(propname, "SYSREG_ID_AA64ISAR1_EL1_GPA")) {
-+        /* QARMA5 generic code authentification */
-+        error_setg(errp, "%s is now exposed but qemu is not ready to support it",
-+                   propname);
-+        return false;
-+    } else if (!strcmp(propname, "SYSREG_ID_AA64ISAR1_EL1_GPI")) {
-+        /* QARMA5 generic code authentification */
-+        error_setg(errp, "%s is now exposed but qemu is not ready to support it",
-+                   propname);
-+        return false;
-+    /* PMU */
-+    } else if (!strcmp(propname, "SYSREG_ID_AA64DFR0_EL1_PMUVer")) {
-+        if (cpu->has_pmu && value == 0) {
-+            error_setg(errp, "%s is 0 whereas pmu is set", propname);
-+            return false;
-+        } else if (!cpu->has_pmu && value) {
-+            error_setg(errp, "%s is non null whereas pmu is unset", propname);
-+            return false;
-+        }
-+    /* aarch64 false */
-+    } else if (!arm_feature(&cpu->env, ARM_FEATURE_AARCH64)) {
-+        if ((!strcmp(propname, "SYSREG_ID_AA64PFR0_EL1_EL0") ||
-+             !strcmp(propname, "SYSREG_ID_AA64PFR0_EL1_EL1") ||
-+             !strcmp(propname, "SYSREG_ID_AA64PFR0_EL1_EL2")) && value < 2)
-+            error_setg(errp, "%s is < 2 while aarch64 is set to off",
-+                       propname);
-+            return false;
-+    }
-+    return true;
-+}
-+
- #define MAKE_IDREG_KEY(reg_idx, field_shift) \
-     (((uint64_t)(reg_idx) << 8) | ((uint64_t)(field_shift) & 0xFF))
- 
-@@ -2241,6 +2342,10 @@ static int kvm_arm_apply_sysreg_props(ARMCPU *cpu, Error **errp)
-         uint64_t oldfv;
-         int ret;
- 
-+        if (!kvm_arm_vcpu_validate_sysreg(cpu, field, value, errp)) {
-+            return -1;
-+        }
-+
-         mask = MAKE_64BIT_MASK(lower, length);
-         value = value << lower;
- 
+ #elif defined(CONFIG_HVF)
+     hvf_arm_set_cpu_features_from_host(cpu);
+ #elif defined(CONFIG_WHPX)
 -- 
 2.53.0
 

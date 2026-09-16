@@ -4,37 +4,37 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8DC56C982C7
-	for <qemu-arm@archiver.kernel.org>; Wed, 16 Sep 2026 10:02:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D8772C88E77
+	for <qemu-arm@archiver.kernel.org>; Wed, 16 Sep 2026 10:02:51 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1x6mRo-0008BR-FW; Wed, 16 Sep 2026 06:01:01 -0400
+	id 1x6mRr-0008CH-2c; Wed, 16 Sep 2026 06:01:03 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mohamed@unpredictable.fr>)
- id 1x6mRc-00086p-Rf
- for qemu-arm@nongnu.org; Wed, 16 Sep 2026 06:00:50 -0400
-Received: from qs-2003e-snip6-11.eps.apple.com ([2a01:b747:3006:204::35]
+ id 1x6mRi-00088B-G3
+ for qemu-arm@nongnu.org; Wed, 16 Sep 2026 06:00:58 -0400
+Received: from qs-2003i-snip6-7.eps.apple.com ([2a01:b747:3006:204::5a]
  helo=outbound.qs.icloud.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mohamed@unpredictable.fr>)
- id 1x6mRW-0005DU-P6
- for qemu-arm@nongnu.org; Wed, 16 Sep 2026 06:00:45 -0400
+ id 1x6mRg-0005Fg-Hj
+ for qemu-arm@nongnu.org; Wed, 16 Sep 2026 06:00:54 -0400
 Received: from outbound.qs.icloud.com (unknown [127.0.0.2])
  by p00-icloudmta-asmtp-us-east-2d-100-percent-8 (Postfix) with ESMTPS id
- 5D18218009F5; Wed, 16 Sep 2026 10:00:37 +0000 (UTC)
-X-ICL-RepId: 01a0a9a9-4287-744a-971c-1eaf631e3b42
-X-ICL-Out-Info: HUtFAUMHWwJACUgBTUQeDx5WFlZNRAJCTQ1OHVwPUhxEDlYCVRcOVk1UF1sMWg5WMEwWQx9SD1sTTRlRAVJFVAIZHldQQgVCAlwcWg5DClAcXFZVHxcZUU0ISxMFUgddTVYNRw9YHlwUFwlAQ14IXh9MHB0OWAYSAE0KDjYGWQVeCVYDQwU2EhRdRUYDRxlXFFAbRwxVB1deXwoTAF4PD0wLSAFbB1IDRghIA10FWhxHCkABWBpYHx1WEFIAUg9yBVcIQQhTAlEEWBpfCBkNQE4ZDEodUlZRBUoMXABoD10dWBFd
+ B37841800BCF; Wed, 16 Sep 2026 10:00:48 +0000 (UTC)
+X-ICL-RepId: 01a0a9a9-6f0a-7e8e-8215-5dda3f8eb3ce
+X-ICL-Out-Info: HUtFAUMHWwJACUgBTUQeDx5WFlZNRAJCTQ1OHVwPUhxEDlYCVRcOVk1UF1sMWg5WMEwWQx9SD1sTTRlRAVJFVAIZHldQQgVCAlwcWg5DClAcXFZVHxcZUU0IShMFUgddTVYNRw9YHlwUFwlAQ14IXh9MHB0OWAYSAE0KDjYGWQVeCVYDQwU2EhRdRUYDRxlXFFAbRwxVB1deXwoTAF4PD0wLSAFbB1IDRghIA10FWhxHCkABWBpaAl1UF1sMWg5WMEwWQx9SD1sTTRlRAVJFVAIHWEcURw4PE0wLRwJaNFYfVBlaAw==
 Dkim-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=unpredictable.fr;
- s=sig1; t=1789552841; x=1792144841;
- bh=5gD9T2JNnhAfwEF4HwlMjEqcrc+zMBpch1LWxK38wpE=;
- h=From:To:Subject:Date:Message-ID:MIME-Version:Content-Type:x-icloud-hme;
- b=iOjeBAnYqG6sa/nibF4RhX0zkxffKjUjMIsvhOY+n6DCvkxxNyGmymPaXaCuUzYdbbysaJsYYLpdgYZutgEH/mUQRQB1a7rIeh0NAYkaUn3L8zZMbURBpA3qjzu8dYgbAoABySZ8E7I/Z4fVZ9I59MENrgagjSxsMVXEieJbQVr9+o/kzHlrW+2p4Gbvkc21llwR/El3d2Sj7O2aTD/pcrbta9IxoRtaVOPHPHgYnGGUAbmhVVfSTX/HdpoY9b1waZI77vgn0jfpyMzTaYdD3ua7LsFEqCgS85kiHsVHQQTy7N6VpYsBl8uWfStzFUsV+IeXgcm1n0eI9nLp+1JoIg==
+ s=sig1; t=1789552851; x=1792144851;
+ bh=+9RJGRbMENE6HFIHE0Ze2Tr+1IRKcLOn/xT+W7qDSus=;
+ h=From:To:Subject:Date:Message-ID:MIME-Version:x-icloud-hme;
+ b=xWhx6sEXXAGpY24G0zaZRHquIXXL71bsXCBlwXrEnBWtMqjILC2jFP3TV8SgYVX4bv7KxtKT1AbreTs4lfwqbegCOz81xVFpWxvm0vS8D2U9FzxEnL0+IbjGBYba4jg0K3W2j+PRR1jsQGzajmPj+zWnQpz7OjbDTzCyPbQuZwPcpkV3tMORLApGDpW7MCwCj+0mpZifGS+0a+oDjpWkfHAC6OEkBKz2Ag2yjJm9RnXJiAmCnJbiFjWhUCBxOdxMItVVg64YSo6XSk5ZzXJy8aBSJov8p0ygGP+OmMHYw64E5qKaIRAPgWJ5f8dsq3XqJImnfqMlQNotVtAD8gmF5w==
 mail-alias-created-date: 1752046281608
 Received: from localhost.localdomain (unknown [17.57.155.37])
  by p00-icloudmta-asmtp-us-east-2d-100-percent-8 (Postfix) with ESMTPSA id
- D94EF18009F6; Wed, 16 Sep 2026 10:00:34 +0000 (UTC)
+ A0FA018009EA; Wed, 16 Sep 2026 10:00:46 +0000 (UTC)
 From: Mohamed Mediouni <mohamed@unpredictable.fr>
 To: qemu-devel@nongnu.org
 Cc: "Michael S. Tsirkin" <mst@redhat.com>,
@@ -44,40 +44,36 @@ Cc: "Michael S. Tsirkin" <mst@redhat.com>,
  qemu-arm@nongnu.org, Phil Dennis-Jordan <phil@philjordan.eu>,
  Akihiko Odaki <odaki@rsg.ci.i.u-tokyo.ac.jp>,
  Mohamed Mediouni <mohamed@unpredictable.fr>,
- Alexander Graf <agraf@csgraf.de>, Paolo Bonzini <pbonzini@redhat.com>,
- Lucas Amaral <lucaaamaral@gmail.com>
-Subject: [RFC PATCH v8 02/10] target/arm/emulate: add load/store register
- offset
-Date: Wed, 16 Sep 2026 12:00:10 +0200
-Message-ID: <20260916100021.73825-3-mohamed@unpredictable.fr>
+ Alexander Graf <agraf@csgraf.de>, Paolo Bonzini <pbonzini@redhat.com>
+Subject: [RFC PATCH v8 09/10] vmapple, gicv2m: add macOS compat quirk
+Date: Wed, 16 Sep 2026 12:00:17 +0200
+Message-ID: <20260916100021.73825-10-mohamed@unpredictable.fr>
 X-Mailer: git-send-email 2.54.0
 In-Reply-To: <20260916100021.73825-1-mohamed@unpredictable.fr>
 References: <20260916100021.73825-1-mohamed@unpredictable.fr>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Proofpoint-GUID: 984moXqKJIxSqw5wEwh9pePK8liwt0Aa
-X-Proofpoint-ORIG-GUID: 984moXqKJIxSqw5wEwh9pePK8liwt0Aa
-X-Authority-Info-Out: v=2.4 cv=EfPFgfmC c=1 sm=1 tr=0 ts=6aaa68c7
+X-Proofpoint-ORIG-GUID: YXLEMC356AQdTEp13BMOYdc-aHPcMoVM
+X-Proofpoint-GUID: YXLEMC356AQdTEp13BMOYdc-aHPcMoVM
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwOTE2MDEzMCBTYWx0ZWRfX5ZrpeGiF4s4Y
+ bgIBvo3DTS+mj0p+eAGC2lNj7iWgqHMSel+CbdHaNg6sv0JcLLq9MohYvaQ/XSRwsV7YlyjrVu7
+ f6ZGj1u03ID69jl9f/fiTkeU8DDALXTNa035FMUmXYCwOu+ih6e1djgNsXwQ7W/JGxutWx6oPow
+ 47GePLBJY7eFaSQ6gW8GiAYEH3XCrAMOyGDAs6PBRNsZIg5eL8QvlejhuiqGctqDrgUMbdKoC7l
+ sduDMT1cOa/vCZNU4UQpV3Snq1y2Uqh+L7GzV/TfwKdTXqr3Q4jo6AOke6p4ihY+LyCf8+1gDs9
+ r1XvyEKxY1ITaUUc+ynIqk+q8WzB8GmX+VNmfd9mwtc7m5cOzHTFSjAjWL/A38=
+X-Authority-Info-Out: v=2.4 cv=H67WAuYi c=1 sm=1 tr=0 ts=6aaa68d1
  cx=c_apl:c_pps:t_out a=bsP7O+dXZ5uKcj+dsLqiMw==:117
- a=bsP7O+dXZ5uKcj+dsLqiMw==:17 a=IkcTkHD0fZMA:10 a=VdqzKS8jKosA:10
- a=VkNPw1HP01LnGYTKEx00:22 a=pGLkceISAAAA:8 a=6j-v74XZrVUtoDfXaNsA:9
- a=3ZKOabzyN94A:10 a=QEXdDO2ut3YA:10
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwOTE2MDEzMCBTYWx0ZWRfXxudNgzkt9DV2
- jpRHOgSKWUTby3E5fLd0CDgZl7u99FwKrX+Uk195vHwrSihJrZMYINzfZMIsPzTl4nNDX4fl9bC
- 83OfaQf2vYcXymxveEu81DHjyFyANtx4ur5yTtW1Wvvap8smQxsXewDEj3T6Wa23MDD+OGwwVeJ
- Ba7S4d3F0rzVcf48OmQEmHkRKZ3UYRACUTxWjvgtNY86X328QSEd1rCV5qPeJ/ExXeDRp3FMI+h
- /cjZaEZjlWGHK3/nzFvPO7vUwdcGYkzW8WiXCVI+v+KCb8X08F8iDVO2g22Ki5fBRRTph7igtSQ
- kfB/Mu19+1mPsiDys97zXrTXV1JiwU+1/QvtVPtOIeeQsUnURF1kOEC9IO0BO8=
-X-JNJ: AAAAAAABh99Pw5na1q9WV0vOrxmCBWTghzXk1lf5TxLshNvCGlt04zpYadJuJOruNcemy9SqRDPTMgpT9b3Wp96t7PFGqeM2CFqVMd4wTe8FFBxM8TMLL4UjWpZE2NYOosZIho+WR+2oF25dNUdgNqjRatHdmvwEo0e9SJOPztjKU72PsZcuLGhyQCKxNV5KH89d4oR0rxPPykIaA8ypEZPXirmEB6l2ogtarlAgy3DbKZnHaBoexUlp2fd7l6P7YMOUnDmE2G4Id+EtdvtCGTrYMLi/aZx41TAaXG/Al+tg7xU9Zg54+Ni4qSs++f13o1EHkRC3XNBxx4IrJV5P7PNfTDNfwY0R7U11h5Zf4Pw1BFIZqckXCsIjipupaX+YcVhDp7EOdvHop/q8XJcbSkAYDd3W0JscRyXy7Ab0dzXCXRolG/abAXYgflpMno4yL3HonjSrS4OkHoBIphl0DR4vnIwHS50Kz6kwRJQ3EwJHRW6lxqIOUIriMCmQ/sUmIJu3urbxzzJVFoW08+TxL2Pl6k99hvDSkW6t4vqF4OUzXsGge0rN7xtEhmEJ55m1/BIwxVWcfnb7XXf+t08164+K1CXXp9hn8Ep+mIvQm76Bu5pfjHs+IkRjk+hBBLUvzBsTu/cE2jtmF9tsDFnz3R/Im+wLiZoJPReRWIcF3DP9xBIeR9xomLA8BZzKMxULO9s5OJvboCUzci2JjSGdNdoje19Ih+QjEkyPf9f0HB6ESlQMXQ7RXfPeDck+vZzhK3OTtxjcCni3+2lovlSUEekaD97XfogsqJaaPJMesOAue1M7G0QoWSTViecBucAKRk4oTee5OxDBjEBzMO4QyWqt
-Received-SPF: pass client-ip=2a01:b747:3006:204::35;
+ a=bsP7O+dXZ5uKcj+dsLqiMw==:17 a=VdqzKS8jKosA:10 a=VkNPw1HP01LnGYTKEx00:22
+ a=6gOpaI4mCDWYJJ-FYbkA:9
+X-JNJ: AAAAAAABYh5AWrTdkw0t0bnDBSbjQA6qAdbjmG3JRPBZiZIRn1c7lbMGOiy6TZFehoNffJKTZ4bJ8yrUSdr1tLmBgbLjY2s6e0FNsDapkQkZ/iazHr5PCr0eHflMmToXElvnOTRp913mN9yiBBtGDx5hJV/0K6aaAuzd7tLE8JvecSXgZXz8SYJBvd7cuIr7hm1OiZBaOjtiuNJHd5a7kmu8tnROorPXTodtevtHW96XR3JuswbElZe8HyLC0X7DWHHB2Bw8YP43JsHQ8xCagCX200qzFYUuJVQaP6gbrCfRU/DW0P1j51rfMxgCCK9BBsUc8NsELPWSPQxaPrK7WOx6Vq1xt6IKBoJjnp3ihTg5AiwhFb6sKP4moV/KoGHR3DHx53e0beepVfXscs0tGoXu+nh2sivu65CfZ27BwqaKpPtBEENvyjED0q6qShqe4jF0FZLEbVd2QFpV857QAfjMPkeHI5kMWcBHvMBQO3oJbMDpQSFIeq4sN+s9AYAWmpGDfiouS9uTPcofegq8R7sqx8pRZ6cr/153/bhe+7TQ98eva5B4/3fdsUHv4BeN3mZm8cPIU4IT3AXHRnw4JUREQrJg+zn77Qvw3vQEu3hmIqpS7r/UAST6fwkeKc9Eo+RFJ0yhisM+bBD8XiB7B7H/7A4K9144ZflGhSrFxe1CSTX7dMKWXAVN0vWTHtbN5/fWVGg2JLS4Jfwv1jTJctGcY8oXHJIs3cYtSqAC9Kc/Tjd299TFi4Ar9sPXhV9HsWERkGfqvyEkxDgT/mRh2cuSMfIvkdvZ9D+aYtrsh891c+Rc6vm13qY+lpvLhAiQHyHUB1m+SIGAk3pdF9X9veTjvfQ=
+Received-SPF: pass client-ip=2a01:b747:3006:204::5a;
  envelope-from=mohamed@unpredictable.fr; helo=outbound.qs.icloud.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_PASS=-0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -93,192 +89,56 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-From: Lucas Amaral <lucaaamaral@gmail.com>
+macOS expects bit 31 of MSI_TYPER to be set.
 
-Add emulation for load/store register offset addressing mode
-(DDI 0487 C3.3.9).  The offset register value is extended via
-UXTB/UXTH/UXTW/UXTX/SXTB/SXTH/SXTW/SXTX and optionally
-shifted by the element size.
-
-Instruction coverage:
-  - STR/LDR (GPR): register offset with extend, all sizes
-  - STR/LDR (SIMD/FP): register offset with extend, 8-128 bit
-  - PRFM register offset: NOP
-
-Signed-off-by: Lucas Amaral <lucaaamaral@gmail.com>
+Signed-off-by: Mohamed Mediouni <mohamed@unpredictable.fr>
 ---
- target/arm/emulate/a64-ldst.decode |  29 ++++++++
- target/arm/emulate/arm_emulate.c   | 103 +++++++++++++++++++++++++++++
- 2 files changed, 132 insertions(+)
+ hw/intc/arm_gicv2m.c | 5 +++++
+ hw/vmapple/vmapple.c | 1 +
+ 2 files changed, 6 insertions(+)
 
-diff --git a/target/arm/emulate/a64-ldst.decode b/target/arm/emulate/a64-ldst.decode
-index c887dcba7d..af6babe14a 100644
---- a/target/arm/emulate/a64-ldst.decode
-+++ b/target/arm/emulate/a64-ldst.decode
-@@ -10,6 +10,9 @@
- # 'u' flag: 0 = 9-bit signed immediate (byte offset), 1 = 12-bit unsigned (needs << sz)
- &ldst_imm       rt rn imm sz sign w p unpriv ext u
+diff --git a/hw/intc/arm_gicv2m.c b/hw/intc/arm_gicv2m.c
+index b343e17ca5..10598d8d50 100644
+--- a/hw/intc/arm_gicv2m.c
++++ b/hw/intc/arm_gicv2m.c
+@@ -57,6 +57,7 @@ struct ARMGICv2mState {
  
-+# Load/store register offset
-+&ldst           rm rn rt sign ext sz opt s
-+
- ### Format templates
+     uint32_t base_spi;
+     uint32_t num_spi;
++    uint32_t macos_compat;
+ };
  
- # Load/store immediate (9-bit signed)
-@@ -21,6 +24,9 @@
- # Load/store unsigned offset (12-bit, handler scales by << sz)
- @ldst_uimm      .. ... . .. .. imm:12 rn:5 rt:5        &ldst_imm u=1 unpriv=0 p=0 w=0
+ static void gicv2m_set_irq(void *opaque, int irq)
+@@ -81,6 +82,9 @@ static uint64_t gicv2m_read(void *opaque, hwaddr offset,
+     case V2M_MSI_TYPER:
+         val = (s->base_spi + 32) << 16;
+         val |= s->num_spi;
++        if (s->macos_compat) {
++            val |= BIT(31);
++        }
+         return val;
+     case V2M_MSI_IIDR:
+         /* We don't have any valid implementor so we leave that field as zero
+@@ -173,6 +177,7 @@ static void gicv2m_init(Object *obj)
+ static const Property gicv2m_properties[] = {
+     DEFINE_PROP_UINT32("base-spi", ARMGICv2mState, base_spi, 0),
+     DEFINE_PROP_UINT32("num-spi", ARMGICv2mState, num_spi, 64),
++    DEFINE_PROP_UINT32("x-macos-compat", ARMGICv2mState, macos_compat, 0),
+ };
  
-+# Load/store register offset
-+@ldst           .. ... . .. .. . rm:5 opt:3 s:1 .. rn:5 rt:5   &ldst
-+
- ### Load/store register — unscaled immediate (LDUR/STUR)
+ static void gicv2m_class_init(ObjectClass *klass, const void *data)
+diff --git a/hw/vmapple/vmapple.c b/hw/vmapple/vmapple.c
+index 2467c79ab3..072a49ac4f 100644
+--- a/hw/vmapple/vmapple.c
++++ b/hw/vmapple/vmapple.c
+@@ -299,6 +299,7 @@ static void create_gicv2m(VMAppleMachineState *vms)
+     dev = qdev_new("arm-gicv2m");
+     qdev_prop_set_uint32(dev, "base-spi", irq);
+     qdev_prop_set_uint32(dev, "num-spi", NUM_GICV2M_SPIS);
++    qdev_prop_set_uint32(dev, "x-macos-compat", 1);
+     sysbus_realize_and_unref(SYS_BUS_DEVICE(dev), &error_fatal);
+     sysbus_mmio_map(SYS_BUS_DEVICE(dev), 0, vms->memmap[VMAPPLE_GICV2M].base);
  
- # GPR
-@@ -122,6 +128,29 @@ STR_v_i         00 111 1 01 10 ............ ..... .....         @ldst_uimm sign=
- LDR_v_i         sz:2 111 1 01 01 ............ ..... .....       @ldst_uimm sign=0 ext=0
- LDR_v_i         00 111 1 01 11 ............ ..... .....         @ldst_uimm sign=0 ext=0 sz=4
- 
-+### Load/store register — register offset
-+
-+# GPR
-+STR             sz:2 111 0 00 00 1 ..... ... . 10 ..... .....  @ldst sign=0 ext=0
-+LDR             00 111 0 00 01 1 ..... ... . 10 ..... .....    @ldst sign=0 ext=1 sz=0
-+LDR             01 111 0 00 01 1 ..... ... . 10 ..... .....    @ldst sign=0 ext=1 sz=1
-+LDR             10 111 0 00 01 1 ..... ... . 10 ..... .....    @ldst sign=0 ext=1 sz=2
-+LDR             11 111 0 00 01 1 ..... ... . 10 ..... .....    @ldst sign=0 ext=0 sz=3
-+LDR             00 111 0 00 10 1 ..... ... . 10 ..... .....    @ldst sign=1 ext=0 sz=0
-+LDR             01 111 0 00 10 1 ..... ... . 10 ..... .....    @ldst sign=1 ext=0 sz=1
-+LDR             10 111 0 00 10 1 ..... ... . 10 ..... .....    @ldst sign=1 ext=0 sz=2
-+LDR             00 111 0 00 11 1 ..... ... . 10 ..... .....    @ldst sign=1 ext=1 sz=0
-+LDR             01 111 0 00 11 1 ..... ... . 10 ..... .....    @ldst sign=1 ext=1 sz=1
-+
-+# PRFM — register offset
-+NOP             11 111 0 00 10 1 ----- -1- - 10 ----- -----
-+
-+# SIMD/FP
-+STR_v           sz:2 111 1 00 00 1 ..... ... . 10 ..... .....  @ldst sign=0 ext=0
-+STR_v           00 111 1 00 10 1 ..... ... . 10 ..... .....    @ldst sign=0 ext=0 sz=4
-+LDR_v           sz:2 111 1 00 01 1 ..... ... . 10 ..... .....  @ldst sign=0 ext=0
-+LDR_v           00 111 1 00 11 1 ..... ... . 10 ..... .....    @ldst sign=0 ext=0 sz=4
-+
- ### System instructions — DC cache maintenance
- 
- # SYS with CRn=C7 covers all data cache operations (DC CIVAC, CVAC, etc.).
-diff --git a/target/arm/emulate/arm_emulate.c b/target/arm/emulate/arm_emulate.c
-index 02fefc30bf..bf09e2a67b 100644
---- a/target/arm/emulate/arm_emulate.c
-+++ b/target/arm/emulate/arm_emulate.c
-@@ -211,6 +211,109 @@ static bool trans_LDR_v_i(DisasContext *ctx, arg_ldst_imm *a)
-     return true;
- }
- 
-+/* Register offset extension (DDI 0487 C6.2.131) */
-+
-+static uint64_t extend_reg(uint64_t val, int option, int shift)
-+{
-+    switch (option) {
-+    case 0: /* UXTB */
-+        val = (uint8_t)val;
-+        break;
-+    case 1: /* UXTH */
-+        val = (uint16_t)val;
-+        break;
-+    case 2: /* UXTW */
-+        val = (uint32_t)val;
-+        break;
-+    case 3: /* UXTX / LSL */
-+        break;
-+    case 4: /* SXTB */
-+        val = (int64_t)(int8_t)val;
-+        break;
-+    case 5: /* SXTH */
-+        val = (int64_t)(int16_t)val;
-+        break;
-+    case 6: /* SXTW */
-+        val = (int64_t)(int32_t)val;
-+        break;
-+    case 7: /* SXTX */
-+        break;
-+    }
-+    return val << shift;
-+}
-+
-+/*
-+ * Load/store single -- register offset (GPR)
-+ * STR / LDR (DDI 0487 C3.3.9)
-+ */
-+
-+static bool trans_STR(DisasContext *ctx, arg_ldst *a)
-+{
-+    int esize = (a->sz <= 3) ? (1 << a->sz) : 16;
-+    int shift = a->s ? a->sz : 0;
-+    uint64_t rm_val = gpr_read(ctx, a->rm);
-+    uint64_t offset = extend_reg(rm_val, a->opt, shift);
-+    uint64_t va = base_read(ctx, a->rn) + offset;
-+
-+    uint64_t val = gpr_read(ctx, a->rt);
-+    mem_write(ctx, va, &val, esize);
-+    return true;
-+}
-+
-+static bool trans_LDR(DisasContext *ctx, arg_ldst *a)
-+{
-+    int esize = (a->sz <= 3) ? (1 << a->sz) : 16;
-+    int shift = a->s ? a->sz : 0;
-+    uint64_t rm_val = gpr_read(ctx, a->rm);
-+    uint64_t offset = extend_reg(rm_val, a->opt, shift);
-+    uint64_t va = base_read(ctx, a->rn) + offset;
-+    uint64_t val = 0;
-+
-+    if (mem_read(ctx, va, &val, esize) != 0) {
-+        return true;
-+    }
-+
-+    val = load_extend(val, a->sz, a->sign, a->ext);
-+    gpr_write(ctx, a->rt, val);
-+    return true;
-+}
-+
-+/*
-+ * Load/store single -- register offset (SIMD/FP)
-+ * STR_v / LDR_v (DDI 0487 C3.3.10)
-+ */
-+
-+static bool trans_STR_v(DisasContext *ctx, arg_ldst *a)
-+{
-+    int esize = (a->sz <= 3) ? (1 << a->sz) : 16;
-+    int shift = a->s ? a->sz : 0;
-+    uint64_t rm_val = gpr_read(ctx, a->rm);
-+    uint64_t offset = extend_reg(rm_val, a->opt, shift);
-+    uint64_t va = base_read(ctx, a->rn) + offset;
-+    uint8_t buf[16];
-+
-+    fpreg_read(ctx, a->rt, buf, esize);
-+    mem_write(ctx, va, buf, esize);
-+    return true;
-+}
-+
-+static bool trans_LDR_v(DisasContext *ctx, arg_ldst *a)
-+{
-+    int esize = (a->sz <= 3) ? (1 << a->sz) : 16;
-+    int shift = a->s ? a->sz : 0;
-+    uint64_t rm_val = gpr_read(ctx, a->rm);
-+    uint64_t offset = extend_reg(rm_val, a->opt, shift);
-+    uint64_t va = base_read(ctx, a->rn) + offset;
-+    uint8_t buf[16];
-+
-+    if (mem_read(ctx, va, buf, esize) != 0) {
-+        return true;
-+    }
-+
-+    fpreg_write(ctx, a->rt, buf, esize);
-+    return true;
-+}
-+
- /* PRFM, DC cache maintenance -- treated as NOP */
- static bool trans_NOP(DisasContext *ctx, arg_NOP *a)
- {
 -- 
 2.54.0 (Apple Git-157)
 

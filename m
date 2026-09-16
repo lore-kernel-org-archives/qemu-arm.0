@@ -4,50 +4,50 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5C8FBC982C3
-	for <qemu-arm@archiver.kernel.org>; Wed, 16 Sep 2026 14:48:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 22897C982C3
+	for <qemu-arm@archiver.kernel.org>; Wed, 16 Sep 2026 14:48:59 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1x6qvb-0006YY-NJ; Wed, 16 Sep 2026 10:48:03 -0400
+	id 1x6qwA-00075B-Vn; Wed, 16 Sep 2026 10:48:39 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1x6qva-0006Xv-2L
- for qemu-arm@nongnu.org; Wed, 16 Sep 2026 10:48:02 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ id 1x6qw9-0006yl-Mc
+ for qemu-arm@nongnu.org; Wed, 16 Sep 2026 10:48:37 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1x6qvY-0006Pb-JS
- for qemu-arm@nongnu.org; Wed, 16 Sep 2026 10:48:01 -0400
+ id 1x6qw8-0006Vs-57
+ for qemu-arm@nongnu.org; Wed, 16 Sep 2026 10:48:37 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1789570079;
+ s=mimecast20190719; t=1789570115;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=CYMDAiuX3NMXS8zhqozIt3cUizP2vJsejo6cSarl3BA=;
- b=cvTNHFGTg/21yfqxem5h+sWcBuDK6FrrrsB50I6yhCceT85jdZ9vckdplY4yZA2x+8pLT/
- 7l/LPDLzdzV4r0sRW06udXz835BdtbhhuHJT6Oo0SxHMirRkiSNEICFaNTgZpadhqn/GmU
- 5mQxrKYT7Mcb/0Gph4xpEyh6wsJaq0w=
-Received: from mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
+ bh=auaxCeauN5FRu8T5yqwMoXwguxD+0OITVntUuaq37ic=;
+ b=Vme/r0BH8tnDNycWQ1Oyl2zKofBPgzr7j8J3O2Qt43oHsB1mP6Wo21riPuroZC5wGCS5zS
+ rsfJNP9gv96zAnIlliLbrLT7OPishFj9hsirn6gtcnO7tWeDsIE3I4/r4L/6G6bbTjiuM4
+ icYTOmWBzvUvkIJlD4cjBimXViz46LU=
+Received: from mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-447-gQg_Eu7xMh-2uSLynwL-zQ-1; Wed,
- 16 Sep 2026 10:47:55 -0400
-X-MC-Unique: gQg_Eu7xMh-2uSLynwL-zQ-1
-X-Mimecast-MFC-AGG-ID: gQg_Eu7xMh-2uSLynwL-zQ_1789570073
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-142-uLQDbddgMZye66wB3cnBIg-1; Wed,
+ 16 Sep 2026 10:48:32 -0400
+X-MC-Unique: uLQDbddgMZye66wB3cnBIg-1
+X-Mimecast-MFC-AGG-ID: uLQDbddgMZye66wB3cnBIg_1789570110
 Received: from mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com
  (mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.17])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 82B841944DC5; Wed, 16 Sep 2026 14:47:53 +0000 (UTC)
+ by mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 572F718000A2; Wed, 16 Sep 2026 14:48:30 +0000 (UTC)
 Received: from laptop.redhat.corp (headnet04.pony-001.prod.iad2.dc.redhat.com
  [10.2.32.116])
  by mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id 6F63019560AB; Wed, 16 Sep 2026 14:47:48 +0000 (UTC)
+ id B847419560AB; Wed, 16 Sep 2026 14:48:25 +0000 (UTC)
 From: Eric Auger <eric.auger@redhat.com>
 To: eric.auger.pro@gmail.com, eric.auger@redhat.com, qemu-devel@nongnu.org,
  qemu-arm@nongnu.org, kvmarm@lists.linux.dev, peter.maydell@linaro.org,
@@ -57,27 +57,27 @@ To: eric.auger.pro@gmail.com, eric.auger@redhat.com, qemu-devel@nongnu.org,
 Cc: maz@kernel.org, oliver.upton@linux.dev, pbonzini@redhat.com,
  armbru@redhat.com, berrange@redhat.com, abologna@redhat.com,
  jdenemar@redhat.com
-Subject: [PATCH v9 04/26] arm/cpu: Add infra to handle generated ID register
- definitions
-Date: Wed, 16 Sep 2026 16:45:27 +0200
-Message-ID: <20260916144721.751810-5-eric.auger@redhat.com>
+Subject: [PATCH v9 11/26] hw/arm/virt: Make sure virt_get_caches() keeps on
+ reading CLIDR_EL1 as 0
+Date: Wed, 16 Sep 2026 16:45:34 +0200
+Message-ID: <20260916144721.751810-12-eric.auger@redhat.com>
 In-Reply-To: <20260916144721.751810-1-eric.auger@redhat.com>
 References: <20260916144721.751810-1-eric.auger@redhat.com>
 MIME-Version: 1.0
 X-Scanned-By: MIMEDefang 3.0 on 10.30.177.17
-X-Mimecast-MFC-PROC-ID: WoTZQ3YHOW18EDTA8PsiLaAgEOzVt4aqIOeU2BOAyR8_1789570073
+X-Mimecast-MFC-PROC-ID: P9m2xA5tKoGdeVLLV-TIiraxAwRC5BUlkaGXxSVNAqM_1789570110
 X-Mimecast-Originator: redhat.com
 Content-Transfer-Encoding: 8bit
 content-type: text/plain; charset="US-ASCII"; x-default=true
-Received-SPF: pass client-ip=170.10.129.124;
+Received-SPF: pass client-ip=170.10.133.124;
  envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: 12
-X-Spam_score: 1.2
-X-Spam_bar: +
-X-Spam_report: (1.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=0.001, RCVD_IN_SBL_CSS=3.335,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=no autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -93,67 +93,40 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Introduce an infrastructure to store the definition of all ID regs:
-This include their name, index and array of named fields.
+In KVM mode, virt_get_caches() currently gets a zero value for the
+CLIDR_EL1 register. This is due to the fact CLIDR is never read from
+host. This is a bug.
+
+Soon we will initialize all writable isar.idreg[] from host and this
+includes CLIDR_EL1. However we cannot directly fix the initialization,
+first because it would change the way the guest is exposed caches in
+DT/ACPI descriptions and because some host values would be rejected
+by the current QEMU code, expecially in the case host has a unified
+L1 cache which is currently not supported and triggers the following
+errod: "Unified type is not implemented at level 1" error.
+
+So this issue will be fixed separately.
 
 Signed-off-by: Eric Auger <eric.auger@redhat.com>
-Signed-off-by: Cornelia Huck <cohuck@redhat.com>
-Co-authored-by: Khushit Shah <khushit.shah@nutanix.com>
-Signed-off-by: Khushit Shah <khushit.shah@nutanix.com>
-
 ---
-v7 -> v8:
-- remove typedef struct ArmIdRegArchVal
+ hw/arm/virt.c | 4 ++++
+ 1 file changed, 4 insertions(+)
 
-v5 -> v6:
-- add ArmIdRegArchVal
----
- target/arm/cpu-idregs.h | 36 ++++++++++++++++++++++++++++++++++++
- 1 file changed, 36 insertions(+)
- create mode 100644 target/arm/cpu-idregs.h
-
-diff --git a/target/arm/cpu-idregs.h b/target/arm/cpu-idregs.h
-new file mode 100644
-index 0000000000..98c7a7518f
---- /dev/null
-+++ b/target/arm/cpu-idregs.h
-@@ -0,0 +1,36 @@
-+/*
-+ * handle ID registers and their fields
-+ *
-+ * SPDX-License-Identifier: GPL-2.0-or-later
-+ */
-+#ifndef TARGET_ARM_CPU_IDREGS_H
-+#define TARGET_ARM_CPU_IDREGS_H
+diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+index 0871a35e11..6c87ac133a 100644
+--- a/hw/arm/virt.c
++++ b/hw/arm/virt.c
+@@ -342,6 +342,10 @@ unsigned int virt_get_caches(const VirtMachineState *vms, CPUCoreCaches *caches)
+     ARMISARegisters *isar = &armcpu->isar;
+     uint32_t clidr = GET_IDREG(isar, CLIDR);
+ 
++    if (kvm_enabled()) {
++        clidr = 0;
++    }
 +
-+#include "qemu/osdep.h"
-+#include "qemu/error-report.h"
-+#include "cpu.h"
-+#include "cpu-sysregs.h"
-+
-+typedef struct ARM64SysRegField {
-+    const char *name; /* name of the field, for instance CTR_EL0_IDC */
-+    ARMIDRegisterIdx index; /* parent register, e.g. CTR_EL0_IDX */
-+    int shift; /* lsb of the field in the register */
-+    int length; /* highest bit number */
-+    uint64_t *arch_vals;
-+    uint32_t arch_vals_count;
-+} ARM64SysRegField;
-+
-+typedef struct ARM64SysReg {
-+    const char *name;   /* name of the sysreg, for instance CTR_EL0 */
-+    ARMIDRegisterIdx index; /* register index, e.g. CTR_EL0_IDX */
-+    struct ARM64SysRegField *fields;
-+    uint32_t fields_count;
-+    uint64_t writable_mask;
-+} ARM64SysReg;
-+
-+/*
-+ * List of exposed ID regs (automatically populated from AARCHMRS Registers.json)
-+ */
-+extern ARM64SysReg arm64_id_regs[NUM_ID_IDX];
-+
-+#endif
+     for (int cache_level = 1; cache_level <= CLIDR_CTYPE_MAX_CACHE_LEVEL;
+          cache_level++) {
+         uint8_t ctype =
 -- 
 2.53.0
 

@@ -4,68 +4,103 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 061B0C982C9
-	for <qemu-arm@archiver.kernel.org>; Wed, 16 Sep 2026 16:05:11 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 83D5CC982C1
+	for <qemu-arm@archiver.kernel.org>; Wed, 16 Sep 2026 16:31:10 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1x6s7u-0001xA-UB; Wed, 16 Sep 2026 12:04:50 -0400
+	id 1x6sWu-0008Sa-QE; Wed, 16 Sep 2026 12:30:41 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <amachhiw@linux.ibm.com>)
- id 1x6s7t-0001wU-Fi; Wed, 16 Sep 2026 12:04:49 -0400
-Received: from mx0b-001b2d01.pphosted.com ([148.163.158.5])
+ (Exim 4.90_1) (envelope-from <pierrick.bouvier@oss.qualcomm.com>)
+ id 1x6sWq-0008I0-OP
+ for qemu-arm@nongnu.org; Wed, 16 Sep 2026 12:30:36 -0400
+Received: from mx0a-0031df01.pphosted.com ([205.220.168.131])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <amachhiw@linux.ibm.com>)
- id 1x6s7r-0000Y7-Ll; Wed, 16 Sep 2026 12:04:49 -0400
-Received: from pps.filterd (m0353725.ppops.net [127.0.0.1])
- by mx0a-001b2d01.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id
- 68GG1YKu3041099; Wed, 16 Sep 2026 16:04:27 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ibm.com; h=cc
- :content-transfer-encoding:content-type:date:from:in-reply-to
- :message-id:mime-version:references:subject:to; s=pp1; bh=wHuQkR
- cqAz31seByJNGJZoA6PPrxojX2LrpP4NqKFNA=; b=OxosSGT9ZE3qm3r/ylvaEx
- 3Cf8Uet53bhkgI+iqcMJXLRN5PjOfoIGqgKzjzLE3hxxmZZSGhyU9P2t+aIUVyQ1
- G8bl5YQScu4AfU82N3ENReFqDvdYoGVzem1wE9+r1x90eVkn7GGB6g0oWnkiS6x5
- 2dSnos/155jxsQ5hcEivgIhN+bRGnZdrhezCQOL3mjS8gKBr4UOF5buRdp6AZXP6
- nKGSUCbQowwYPmspZHqJHUm8/NGuo+2OUnt0HP8HyaO5A6/iYujfjZHOciwJufm4
- fGGPALHn36vuJYZbzORikdF4Fdzv8jgPQhvKUp9f50v9WY9n4gLlo53pV7lZ5Gbw
- ==
-Received: from ppma13.dal12v.mail.ibm.com
- (dd.9e.1632.ip4.static.sl-reverse.com [50.22.158.221])
- by mx0a-001b2d01.pphosted.com (PPS) with ESMTPS id 4gmw5e5aat-1
- (version=TLSv1.3 cipher=TLS_AES_256_GCM_SHA384 bits=256 verify=NOT);
- Wed, 16 Sep 2026 16:04:26 +0000 (GMT)
-Received: from pps.filterd (ppma13.dal12v.mail.ibm.com [127.0.0.1])
- by ppma13.dal12v.mail.ibm.com (8.18.1.11/8.18.1.11) with ESMTP id
- 68GFe1hF1712957; Wed, 16 Sep 2026 16:04:25 GMT
-Received: from smtprelay02.fra02v.mail.ibm.com ([9.218.2.226])
- by ppma13.dal12v.mail.ibm.com (PPS) with ESMTPS id 4gpywey5f4-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Wed, 16 Sep 2026 16:04:25 +0000 (GMT)
-Received: from smtpav01.fra02v.mail.ibm.com (smtpav01.fra02v.mail.ibm.com
- [10.20.54.100])
- by smtprelay02.fra02v.mail.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id
- 68GG4MmM38732158
- (version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Wed, 16 Sep 2026 16:04:22 GMT
-Received: from smtpav01.fra02v.mail.ibm.com (unknown [127.0.0.1])
- by IMSVA (Postfix) with ESMTP id 175BD2004B;
- Wed, 16 Sep 2026 16:04:22 +0000 (GMT)
-Received: from smtpav01.fra02v.mail.ibm.com (unknown [127.0.0.1])
- by IMSVA (Postfix) with ESMTP id 1AFB620043;
- Wed, 16 Sep 2026 16:04:17 +0000 (GMT)
-Received: from fedora (unknown [9.5.7.39])
- by smtpav01.fra02v.mail.ibm.com (Postfix) with ESMTPS;
- Wed, 16 Sep 2026 16:04:16 +0000 (GMT)
-Date: Wed, 16 Sep 2026 21:42:02 +0530
-From: Amit Machhiwal <amachhiw@linux.ibm.com>
-To: Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>
-Cc: qemu-devel@nongnu.org, Ilya Leoshkevich <iii@linux.ibm.com>,
- qemu-arm@nongnu.org, Cornelia Huck <cohuck@redhat.com>,
+ (Exim 4.90_1) (envelope-from <pierrick.bouvier@oss.qualcomm.com>)
+ id 1x6sWo-0005k8-8I
+ for qemu-arm@nongnu.org; Wed, 16 Sep 2026 12:30:35 -0400
+Received: from pps.filterd (m0279863.ppops.net [127.0.0.1])
+ by mx0a-0031df01.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id
+ 68GFeJgU3233139
+ for <qemu-arm@nongnu.org>; Wed, 16 Sep 2026 16:30:32 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qualcomm.com; h=
+ cc:content-transfer-encoding:content-type:date:from:in-reply-to
+ :message-id:mime-version:references:subject:to; s=qcppdkim1; bh=
+ mEhix1JPVKJPRvLKpSWmE41G8fXUfNYvUUOIm/hpNEw=; b=WlCIHTUNFAKW6VHW
+ hEAlUIj5VTYTJqLkz13+yWG38AyDuqSrEIIZMFHITo2xUCeJApotHKioDoMWV/4S
+ aAVtn30pEtrmi15AKUNnRfOOwRvk+tICdCgZAWrJM0DqwjI9ItlgfOXFkv3hCfWH
+ tR/suyZpKYw+NEbut1gwVSrsINot7b1vCHxPEJseV+jqexM9trzwRGHrkqzTVQ+P
+ YaJP9LQCdecCd4Q1zHALCK6qKtSZ6sP3P7MzRumFHo3TrvUuc5ka252lwVYJ0wGW
+ U1QjDBjTMnd4YUAAa2LDV27hWiDYNovVUNdxWOE74AhHm00ysdxCDj6+ivRgSFu/
+ xSY/lg==
+Received: from mail-pj1-f72.google.com (mail-pj1-f72.google.com
+ [209.85.216.72])
+ by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 4gqdywca99-1
+ (version=TLSv1.3 cipher=TLS_AES_128_GCM_SHA256 bits=128 verify=NOT)
+ for <qemu-arm@nongnu.org>; Wed, 16 Sep 2026 16:30:31 +0000 (GMT)
+Received: by mail-pj1-f72.google.com with SMTP id
+ 98e67ed59e1d1-39d8646b10eso6226990a91.1
+ for <qemu-arm@nongnu.org>; Wed, 16 Sep 2026 09:30:31 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=oss.qualcomm.com; s=google; t=1789576231; x=1790181031; darn=nongnu.org;
+ h=content-transfer-encoding:content-type:in-reply-to:content-language
+ :from:references:cc:to:subject:user-agent:mime-version:date
+ :message-id:from:to:cc:subject:date:message-id:reply-to:content-type;
+ bh=mEhix1JPVKJPRvLKpSWmE41G8fXUfNYvUUOIm/hpNEw=;
+ b=MVj/Kn/+NJ8jVl7FcagCP3XmEpp77KKGtfpcgW05lRzjXcOcHTVgQe586CnC/4BdfJ
+ 84HfSYPCyWGowWdzAzSOPKbsYKqm1ngi0jszVrHiGBxicsc5oDm724ouvU0Qwv2dH2db
+ r0WWBZkaJSZqB9nnsqV+GpOxC9wQSoMi+SjAGFR2/W1SmWur7+Ci72jYtazB2+8LkRsq
+ EPquiZW9UQ5YzLPufOLCeETbEn2DmtJwpN6tIriniDIFdZQCnUZRa0KIF8IJbyTfROaJ
+ O4ewAnOeQvZoJfJB5CbudtXW4IMuCYCeopKG3ah1HfkvPFkTgm5Sf7bOVeeD8dUv5IXV
+ orgg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20260707; t=1789576231; x=1790181031;
+ h=content-transfer-encoding:content-type:in-reply-to:content-language
+ :from:references:cc:to:subject:user-agent:mime-version:date
+ :message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+ :message-id:reply-to:content-type;
+ bh=mEhix1JPVKJPRvLKpSWmE41G8fXUfNYvUUOIm/hpNEw=;
+ b=lZVHpZqctIbRa/vhEwyVu6tjTq/k/sSELTjCz8N/PGfF7Wni2wvCd5kq7iZ1Wo7VSd
+ AnHPiz5+bHWrs/6BZ5322mai8hod3TdGyL3DnPn3zT+s4Xtt/N8LK1mxTr4ncM3FM4zi
+ JL9+i0SKr+bSw2rkVLgDE3npH/SLSu9/p10nQecqR7HDUyrAw6B/DpqZMlo3Lupn/Iv2
+ +Uv/+LUrvnbDdDqeqNYfR6xtQZetybEPnTUC6FxpbYeq5eSbD4OmhIw7k5jaqsxcdyMj
+ I1iQgvGm+GrnF0J6mdtE4Wqffu2xr4EALPf6aSdLlFAje/PyXkyecqiFwLj4jQOPxXfE
+ DpKQ==
+X-Forwarded-Encrypted: i=1;
+ AKwUvBw+p55Yn2yPm58wmXCp4BYj5C2sh9SZWO/mKuXNi9no5B0279F4IQAXcRa+NzrREOQEGfSwDX/79w==@nongnu.org
+X-Gm-Message-State: AFuF++nyoYXgXYMGgaGZiwLZdheF49BVq/vgFafjsWS5aKz2nuT/DpIX
+ CulZheqaS4HFgrp6S9ORZpruv050TR4IpIzbLN4fIF3MFfXK7S7eWEge0vAPmxOvuw6Q5RF6ekj
+ oVgos1de+Gb0xshII+tK7eHTQ/Yi73AZ7X7sH8KENTwH10YZVfJV4Ptg=
+X-Gm-Gg: AYBFou0eXL6UsQ/m23qW9l/V+8RSijJzv8P8DQ9+y8XQf8YFNMmXXkvQcOOMPPfrd04
+ KcZ9C/nfUxMLeHF/vaeGBBXkzQdxlKdaB6vb1EJkNJ6bOkqItyxzSR3fwephvZE0QrCRR0oXlGA
+ 1VywYn19WYAV08bP2BPtDdU3DeE8BCGflt2TK85r1YNDo7TVM45N4tT5p9An4W+igWOovEssrFd
+ YdKyEWQPG8NpKXTBrPB/tEVHLsMwrPOdF0R1VvIULZv24qSlDRJl0ys3VndKGgzD9JsUIDEiJKe
+ qkT+BBmhdaCzk/44zou7dtQ+0m6MP+u5640jLE1OvDazp6qFeZ8MsAjD4nfZGkjxyGBgxjhfQJB
+ dPOUMO8WY6K4fYDrGpNEqtAofir0qyuqDuIj0DGa6xzVbZR2ta3RH9va8YKs92kzIEtSH
+X-Received: by 2002:a17:90b:2ec7:b0:39d:f317:44cd with SMTP id
+ 98e67ed59e1d1-39e1e4907f3mr8931905a91.14.1789576231106; 
+ Wed, 16 Sep 2026 09:30:31 -0700 (PDT)
+X-Received: by 2002:a17:90b:2ec7:b0:39d:f317:44cd with SMTP id
+ 98e67ed59e1d1-39e1e4907f3mr8931775a91.14.1789576230567; 
+ Wed, 16 Sep 2026 09:30:30 -0700 (PDT)
+Received: from [192.168.1.199] (216-71-219-44.dyn.novuscom.net.
+ [216.71.219.44]) by smtp.gmail.com with ESMTPSA id
+ 5a478bee46e88-33bf5aca3fbsm9457405eec.20.2026.09.16.09.30.28
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Wed, 16 Sep 2026 09:30:29 -0700 (PDT)
+Message-ID: <36cbf64f-e187-4d15-b710-7d4e6124ca07@oss.qualcomm.com>
+Date: Wed, 16 Sep 2026 09:30:27 -0700
+MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v4 17/19] scripts/make2mtest: add docker dependencies for
+ check-tcg-% targets
+To: =?UTF-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>,
+ qemu-devel@nongnu.org
+Cc: Ilya Leoshkevich <iii@linux.ibm.com>, qemu-arm@nongnu.org,
+ Cornelia Huck <cohuck@redhat.com>,
  Peter Maydell <peter.maydell@linaro.org>,
- Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>,
- Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@mailo.com>,
+ =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@mailo.com>,
  John Snow <jsnow@redhat.com>, David Hildenbrand <david@kernel.org>,
  Thomas Huth <th.huth+qemu@posteo.eu>,
  Paolo Bonzini <pbonzini@redhat.com>, Cleber Rosa <crosa@redhat.com>,
@@ -73,80 +108,57 @@ Cc: qemu-devel@nongnu.org, Ilya Leoshkevich <iii@linux.ibm.com>,
  Kyle Evans <kevans@freebsd.org>, Eric Farman <farman@linux.ibm.com>,
  Brad Smith <brad@comstyle.com>, Fabiano Rosas <farosas@suse.de>,
  Helge Deller <deller@gmx.de>, Laurent Vivier <laurent@vivier.eu>,
- Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>,
+ =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>,
  Jiaxun Yang <jiaxun.yang@flygoat.com>, qemu-s390x@nongnu.org,
  Matthew Rosato <mjrosato@linux.ibm.com>,
  Brian Cain <brian.cain@oss.qualcomm.com>,
- =?utf-8?Q?Marc-Andr=C3=A9?= Lureau <marcandre.lureau@redhat.com>,
- Richard Henderson <richard.henderson@linaro.org>
-Subject: Re: [PATCH v4 16/19] gitlab: update the @user id mapping file
-Message-ID: <20260916213951.50d6cec1-2a-amachhiw@linux.ibm.com>
-Mail-Followup-To: Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>, 
- qemu-devel@nongnu.org, Ilya Leoshkevich <iii@linux.ibm.com>,
- qemu-arm@nongnu.org, 
- Cornelia Huck <cohuck@redhat.com>, Peter Maydell <peter.maydell@linaro.org>, 
- Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>,
- Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@mailo.com>, 
- John Snow <jsnow@redhat.com>, David Hildenbrand <david@kernel.org>, 
- Thomas Huth <th.huth+qemu@posteo.eu>, Paolo Bonzini <pbonzini@redhat.com>, 
- Cleber Rosa <crosa@redhat.com>, Warner Losh <imp@bsdimp.com>,
- Song Gao <gaosong@loongson.cn>, 
- Kyle Evans <kevans@freebsd.org>, Eric Farman <farman@linux.ibm.com>, 
- Brad Smith <brad@comstyle.com>, Fabiano Rosas <farosas@suse.de>,
- Helge Deller <deller@gmx.de>, 
- Laurent Vivier <laurent@vivier.eu>,
- Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>, 
- Jiaxun Yang <jiaxun.yang@flygoat.com>, qemu-s390x@nongnu.org,
- Matthew Rosato <mjrosato@linux.ibm.com>, 
- Brian Cain <brian.cain@oss.qualcomm.com>,
- =?utf-8?Q?Marc-Andr=C3=A9?= Lureau <marcandre.lureau@redhat.com>, 
+ =?UTF-8?Q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>,
  Richard Henderson <richard.henderson@linaro.org>
 References: <20260916153013.2134555-1-alex.bennee@linaro.org>
- <20260916153013.2134555-17-alex.bennee@linaro.org>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=iso-8859-1
-Content-Disposition: inline
+ <20260916153013.2134555-18-alex.bennee@linaro.org>
+From: Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>
+Content-Language: en-US
+In-Reply-To: <20260916153013.2134555-18-alex.bennee@linaro.org>
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-In-Reply-To: <20260916153013.2134555-17-alex.bennee@linaro.org>
-X-TM-AS-GCONF: 00
-X-Proofpoint-Reinject: loops=2 maxloops=12
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwOTE2MDIxOSBTYWx0ZWRfX2olmLrDHKMfh
- Me90o3ssNvx6iAXPOUpvX1ELQ9auKOoJMA1WX3EcipOK2iFJOGTkwYJ2woAs7oxJW2BDM8slTmE
- vIH02lNeRLaxtBiTvT2TUBXJOG+gSRdF8PvcRuOO73xQA9ywZQ4QN6+F+s5oH+B7IVRWx7EKZLI
- nr73XLXQ0mtjZYKRsMiPFGpvuRQngb/j1R0fG+odCDrXZLWD9NakkPSj+K6CBSLtt8LcTefZabA
- OsnKrmJ+fJ+di6Oa4QFOqvnC0gLDGuXW07KJ6oCoAPdHRjiwUHILXNm1OOY7Pmx4q5ErVtmhmwb
- ebt8GYGso6iEAn+VdLMtft/0l5W16SEnz+y/7YiLGqg/8TTefNMWEuMuTYju+VeLupQu+vtpy+J
- TdJ2izEKExi/Lg1Wr2clY8KiYjDDsHFpPRtfafuINLssVTIzzQFdFBG+dOd9X1wllVaWTzy5Nt0
- natC9pEvDaNKIkhQPIg==
-X-Authority-Analysis: v=2.4 cv=E/NYNqdl c=1 sm=1 tr=0 ts=6aaabe0b cx=c_pps
- a=AfN7/Ok6k8XGzOShvHwTGQ==:117 a=AfN7/Ok6k8XGzOShvHwTGQ==:17
- a=8nJEP1OIZ-IA:10 a=VdqzKS8jKosA:10 a=VkNPw1HP01LnGYTKEx00:22
- a=RnoormkPH1_aCDwRdu11:22 a=V8glGbnc2Ofi9Qvn3v5h:22 a=20KFwNOVAAAA:8
- a=KKAkSRfTAAAA:8 a=VnNF1IyMAAAA:8 a=FYw9-_tljx6d6srUq_IA:9 a=3ZKOabzyN94A:10
- a=wPNLvfGTeEIA:10 a=cvBusfyB2V15izCimMoJ:22
-X-Proofpoint-ORIG-GUID: ExjTRV5ud2S6FTkkMFQQPgk7GAqAHP7E
-X-Proofpoint-Spam-Info: AW1haW4tMjYwOTE2MDIxOSBTYWx0ZWRfX5grjpXaxyx6X
- zDL7EZm4ztcUgA8XhcDqcU9UCFATgWbI8j2K1uBo6g3/YYeh/fm2abYLQrpJOTCgT6+Ml6a4tvA
- MZgO7kedyRipn5OPQUuQxXxZlBiFers=
-X-Proofpoint-GUID: ASCxqupTLUHFrO9QKGzswEjV5a_MehM5
+X-Proofpoint-GUID: WUuFZqyo_zus_-sbFTN7L2xGDWFYS97j
+X-Authority-Analysis: v=2.4 cv=aJ1lOr9m c=1 sm=1 tr=0 ts=6aaac427 cx=c_pps
+ a=RP+M6JBNLl+fLTcSJhASfg==:117 a=iLqgmErQAxjCjdq5jj1Aqg==:17
+ a=IkcTkHD0fZMA:10 a=VdqzKS8jKosA:10 a=s4-Qcg_JpJYA:10
+ a=VkNPw1HP01LnGYTKEx00:22 a=u7WPNUs3qKkmUXheDGA7:22 a=yOCtJkima9RkubShWh1s:22
+ a=KKAkSRfTAAAA:8 a=dlnC7Bs9CAUtgJ-sswUA:9 a=3ZKOabzyN94A:10 a=QEXdDO2ut3YA:10
+ a=iS9zxrgQBfv6-_F4QbHw:22 a=cvBusfyB2V15izCimMoJ:22
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwOTE2MDIyNSBTYWx0ZWRfX+w/AMcwsLslO
+ aHw0hVY5XezxvOlB9ab8CE27mXXsr2xTVspOP5YLUw9hE+derDLsWfynrUc0jQ+2uX9jMJdDh0O
+ KQZiwxu1gU37ydZriX3CKrBhGY/yZXwwZOwLU0GmbqX9LsgycxnLtZ4evOQbH1iUZyqzaPCpQiA
+ VpUtqPiKRc/JiExpUVfnhqdEM9yQPsKqdp/5SC4Yfuk4VBEod+v4/Rvs92GBiBVgc5VG4QJ53eH
+ FUps8BgjAhdlm22ikKbX8Kl5Ti+EVR56NYOcJmY2AlwKSn4t8ck7NWRqv2DZKtdlLwWqc/ZKkv1
+ 0YPgA6g17rzT0PKYelz8HeToDb1w8hKBYFGBl/JlkhRPpJnXCUn0vvMpvimeevwSFT7lt1yzMgW
+ IfHzFZK7c5g2DF1ocgnLhgvF/d0aolTolnwKjcJd3fwuBMT2rkHRrBUJ8LsM+LQSXyzCRp1DV9T
+ W3SkdFNf6udWDFriaGw==
+X-Proofpoint-ORIG-GUID: WUuFZqyo_zus_-sbFTN7L2xGDWFYS97j
+X-Proofpoint-Spam-Info: AW1haW4tMjYwOTE2MDIyNSBTYWx0ZWRfX/rZA2OAB5Y6E
+ Y31fHSxh6fBvVKU4OOI7CGmj9fdj6RejDUZdiqz8cyxSlpnwlI5XX02lrxAfU+wUl42r1WZVwNy
+ zsuD0RK2cWb+0o04ro+E1bpyVjTuJjE=
 X-Proofpoint-Virus-Version: vendor=baseguard
  engine=ICAP:2.0.293,Aquarius:18.0.1176,Hydra:6.1.134,FMLib:17.12.100.49
  definitions=2026-09-16_03,2026-09-16_02,2025-10-01_01
 X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
- impostorscore=0 lowpriorityscore=0 priorityscore=1501 spamscore=0
- adultscore=0 clxscore=1011 bulkscore=0 malwarescore=0 suspectscore=0
- phishscore=0 classifier=typeunknown authscore=0 authtc= authcc=
+ adultscore=0 impostorscore=0 phishscore=0 suspectscore=0 bulkscore=0
+ malwarescore=0 clxscore=1015 priorityscore=1501 spamscore=0
+ lowpriorityscore=0 classifier=typeunknown authscore=0 authtc= authcc=
  route=outbound adjust=0 reason=mlx scancount=1 engine=8.22.0-2609040000
- definitions=main-2609160219
-Received-SPF: pass client-ip=148.163.158.5;
- envelope-from=amachhiw@linux.ibm.com; helo=mx0b-001b2d01.pphosted.com
-X-Spam_score_int: -26
-X-Spam_score: -2.7
+ definitions=main-2609160225
+Received-SPF: pass client-ip=205.220.168.131;
+ envelope-from=pierrick.bouvier@oss.qualcomm.com;
+ helo=mx0a-0031df01.pphosted.com
+X-Spam_score_int: -27
+X-Spam_score: -2.8
 X-Spam_bar: --
-X-Spam_report: (-2.7 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, RCVD_IN_DNSWL_LOW=-0.7,
- RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_LOW=-0.7, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -162,33 +174,120 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On 2026/09/16 04:30 PM, Alex Bennée wrote:
-> I needed to fix a POSIX-ism in the script as well.
+On 9/16/2026 8:30 AM, Alex BennÃ©e wrote:
+> This should trigger the building of the docker image when the user
+> calls "make check-tcg" or one of the arch specific targets such as
+> "make check-tcg-m68k-linux-user".
 > 
-> Reviewed-by: Daniel P. Berrangé <berrange@redhat.com>
-> Message-ID: <20260914184534.706637-1-alex.bennee@linaro.org>
-> Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
+> We still keep the internal meson dependency so individual tests can
+> launched and the docker build verified.
+> 
+> Signed-off-by: Alex BennÃ©e <alex.bennee@linaro.org>
 > ---
->  .gitlab-map-auto          | 8 +++++---
->  scripts/gitlab-map-update | 2 +-
->  2 files changed, 6 insertions(+), 4 deletions(-)
+>  scripts/mtest2make.py | 35 +++++++++++++++++++++++++++++------
+>  1 file changed, 29 insertions(+), 6 deletions(-)
 > 
-> diff --git a/.gitlab-map-auto b/.gitlab-map-auto
-> index 28ce448f1bf..3f717a15d4e 100644
-> --- a/.gitlab-map-auto
-> +++ b/.gitlab-map-auto
-> @@ -12,11 +12,12 @@ a1xndr	Alexander Bulekov
->  adi-g15-ibm	Aditya Gupta
->  agraf	Alexander Graf
->  alex.williamson	Alex Williamson
-> -aliang1	Aihua Liang
->  alistair23	Alistair Francis
-> +amachhiw	Amit Machhiwal
+> diff --git a/scripts/mtest2make.py b/scripts/mtest2make.py
+> index 383ea68b16d..ab894d90d47 100644
+> --- a/scripts/mtest2make.py
+> +++ b/scripts/mtest2make.py
+> @@ -14,6 +14,7 @@ class Suite(object):
+>      def __init__(self):
+>          self.deps = set()
+>          self.speeds = set()
+> +        self.docker_deps = set()
+>  
+>      def names(self, base):
+>          return [f'{base}-{speed}' for speed in self.speeds]
+> @@ -40,7 +41,22 @@ def names(self, base):
+>  
+>  introspect = json.load(sys.stdin)
+>  
+> -def process_tests(test, targets, suites):
+> +targets = {t['id']: [os.path.relpath(f) for f in t['filename']]
+> +           for t in introspect['targets']}
+> +
+> +# collect the docker images uses by the tests. This is totally a hacky
+> +# heuristic that fishes the images out of the test custom commands by
+> +# looking for the qemu/image pattern.
+> +targets_docker = {}
+> +for t in introspect['targets']:
+> +    for src in t.get('target_sources', []):
+> +        for arg in src.get('compiler', []):
+> +            if arg.startswith('qemu/'):
+> +                img = arg.split('/', 1)[1]
+> +                targets_docker[t['id']] = f'docker-image-{img}'
+> +                break
+> +
+> +def process_tests(test, targets, targets_docker, suites):
+>      executable = test['cmd'][0]
+>      try:
+>          executable = os.path.relpath(executable)
+> @@ -51,6 +67,8 @@ def process_tests(test, targets, suites):
+>      deps = itertools.chain.from_iterable(deps)
+>      deps = list(deps)
+>  
+> +    docker_deps = [targets_docker[x] for x in test['depends'] if x in targets_docker]
+> +
+>      test_suites = test['suite'] or ['default']
+>      for s in test_suites:
+>          # The suite name in the introspection info is "PROJECT" or "PROJECT:SUITE"
+> @@ -59,6 +77,7 @@ def process_tests(test, targets, suites):
+>              if s == 'slow' or s == 'thorough':
+>                  continue
+>          suites[s].deps.update(deps)
+> +        suites[s].docker_deps.update(docker_deps)
+>          if s.endswith('-slow'):
+>              s = s[:-5]
+>              suites[s].speeds.add('slow')
+> @@ -81,6 +100,9 @@ def emit_prolog(suites, prefix):
+>      print(f'all-{prefix}-xml = {all_xml}')
+>      print(f'.PHONY: {prefix} do-meson-{prefix} {prefix}-report.junit.xml $(all-{prefix}-targets) $(all-{prefix}-xml)')
+>      print(f'ninja-cmd-goals += $(foreach s, $(.{prefix}.mtest-suites), $(.{prefix}-$s.deps))')
+> +    print(f'docker-cmd-goals += $(foreach s, $(.{prefix}.mtest-suites), $(.{prefix}-$s.docker-deps))')
+> +    print(f'docker-cmd-goals += $(foreach g, $(MAKECMDGOALS), $(.docker-goals.$g))')
+> +    print(f'run-ninja: $(sort $(docker-cmd-goals))')
+>      print(f'{prefix}-build: run-ninja')
+>      print(f'{prefix} $(all-{prefix}-targets): do-meson-{prefix}')
+>      print(f'do-meson-{prefix}: run-ninja; $(if $(MAKE.n),,+)$(MESON) test $(.{prefix}.mtestargs)')
+> @@ -93,6 +115,10 @@ def emit_suite(name, suite, prefix):
+>      print()
+>      print(f'.{prefix}-{tgtname}.deps = {deps}')
+>      print(f'.ninja-goals.check-build += $(.{prefix}-{tgtname}.deps)')
+> +    if suite.docker_deps:
+> +        docker_deps = ' '.join(sorted(suite.docker_deps))
+> +        print(f'.{prefix}-{tgtname}.docker-deps = {docker_deps}')
+> +        print(f'.docker-goals.check-build += $(.{prefix}-{tgtname}.docker-deps)')
+>  
+>      names = ' '.join(sorted(suite.names(name)))
+>      targets = f'{prefix}-{tgtname} {prefix}-report-{tgtname}.junit.xml'
+> @@ -105,19 +131,16 @@ def emit_suite(name, suite, prefix):
+>      print(f".{prefix}.mtest-suites += {name} $(call .speed.$(SPEED), {names})")
+>      print(f'endif')
+>  
+> -targets = {t['id']: [os.path.relpath(f) for f in t['filename']]
+> -           for t in introspect['targets']}
+> -
+>  testsuites = defaultdict(Suite)
+>  for test in introspect['tests']:
+> -    process_tests(test, targets, testsuites)
+> +    process_tests(test, targets, targets_docker, testsuites)
+>  emit_prolog(testsuites, 'check')
+>  for name, suite in testsuites.items():
+>      emit_suite(name, suite, 'check')
+>  
+>  benchsuites = defaultdict(Suite)
+>  for test in introspect['benchmarks']:
+> -    process_tests(test, targets, benchsuites)
+> +    process_tests(test, targets, targets_docker, benchsuites)
+>  emit_prolog(benchsuites, 'bench')
+>  for name, suite in benchsuites.items():
+>      emit_suite(name, suite, 'bench')
 
-Thanks for adding my ID, Alex!
+From previous answer on v3, this patch does duplicate existing
+dependencies. If we don't have a specific reason to repeat it on
+Makefile side, it should not be included in this series.
 
-Acked-by: Amit Machhiwal <amachhiw@linux.ibm.com>
-
-Thanks,
-Amit
+Regards,
+Pierrick
 

@@ -4,28 +4,28 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BC328C982C9
-	for <qemu-arm@archiver.kernel.org>; Wed, 16 Sep 2026 18:45:59 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BE893C88E7F
+	for <qemu-arm@archiver.kernel.org>; Wed, 16 Sep 2026 18:46:45 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1x6udF-0000Kw-KG; Wed, 16 Sep 2026 14:45:21 -0400
+	id 1x6udJ-0000Mt-KD; Wed, 16 Sep 2026 14:45:25 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mhonap@nvidia.com>)
- id 1x6udA-0000JY-J0; Wed, 16 Sep 2026 14:45:16 -0400
-Received: from mail-southcentralusazlp170120001.outbound.protection.outlook.com
- ([2a01:111:f403:c10d::1] helo=SN4PR2101CU001.outbound.protection.outlook.com)
+ id 1x6udI-0000Lu-B9; Wed, 16 Sep 2026 14:45:24 -0400
+Received: from mail-northcentralusazlp170100001.outbound.protection.outlook.com
+ ([2a01:111:f403:c105::1] helo=CH1PR05CU001.outbound.protection.outlook.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mhonap@nvidia.com>)
- id 1x6ud9-0003v5-0U; Wed, 16 Sep 2026 14:45:16 -0400
+ id 1x6udG-0003wR-O7; Wed, 16 Sep 2026 14:45:24 -0400
 ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=XzRQTFElohJ26qHBpEU+gv19qGrV2hI0m3dEY457wRD4Ht3UwZHmTuYorGaglgqipse08jpbxok9soVgsYWaILeHCIKvdYr+37pRa0o/W2zT7RQ/JNrcpGm591K2VRu6Cnk0ign/ORfiUjI4Qo67i7KZcgoPzXEpfyZGh33K10b6qUJrPaOOpx+9NIwVmOZqy980toPljbonO1wCWKOFNf5zO6VRF60UmyFhA8G2h44AppOq6GuQtEnn2jYrTUsQBWf4PffkuhWSJl/GgmAiN0+O4wU9do5CuwhAV/fslXDeeMMoE34JJITeS+O9G/TI5zNUkFw2dHu7nGejnnWZBw==
+ b=Uo80nOeU/azPoWHZG/6mpgweGvaCC4rS0/jhYr7st8GnlpzBrmN06Btg9RPJvzF+erPB27k+XGSTR0PUCZTyFN8h+rZTdjxY52UqBefceiqiyPVzuRQN3wt8ZcmmqLWvWuVs+2S+qLzbdJ13b2LrVvA6rOBhNsa6szg/ueL6kzdixePK3kH9xO9dEaIEki3wLHYYo5IDNwIkXJTJuiHdblL4XctfUu4XmcmOex2xhteComlpb4qmI8HRvxtX+HQZYkb+xGPojW6AWi3/R633HCMVvxOctcQMOpnFx/Rxtgez9pbBc2V9t3vz41lKEcXZwIaHl4GrZIbmiFhg3bcq5g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
  s=arcselector10001;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=RJUN3ZbVnCx2yds0AQaLWk+34CUcYl1osu4CCpkjwKI=;
- b=LeInT1dRn2oNsWSwlsLnijiIER32mjZ9/FAoHqOCuy3ulXT3jMqij5goUxLxralT9mjwtVG0jxXpW9WZwg0evvCXhKVa1R3+BDjINyB5sjB2Qas2yQtc8QLXx7IOWA3DG18V2b7VS0WuEbR4ekEBZSYQYvSiVues9WHihWcz0GE2y4j2wG21pb9tuCJsvo4P+p1bqHwQr7X3I+tupAnNoluqswyrLG06usR6NKZwaq5zvMgGzavO0ceMeTgyXEei2SIjW/AHp9A8IILERio9W7Rw4gxnmZpJQ0xeN7/fc0BOYUsHgOrCKbyXb60GKA3Rg1itRKNyypPrV4ZhdFTLOA==
+ bh=1HYIhY8xUk/GnlniUBc+xfrSYEnR9rtzijxwlV84+ls=;
+ b=R1MUO5WCjMTQGgzCy3O8hxXIAHvs8x39iGkyq8Ffwl9qPBjKZTcx4p59WE3YP+MhS6/VKAsGNVcV3oSKg8XWcabvtv7jORTbEXhWDi85lZNDCPoOXMaoxUtzGRk5lkVxhm4RjJlr1TSSZ7C+lEHdDKOAGkASd/NtZp9NlTjXIEwLL5AvmeHgkUVngLiSmO59BWioSUcOufJZNnZS6FdqPwT5Gr6aEKaFWdsUDb2dNh3OvgnzTMJHwgcYv7Q/T1aE7yIE6ZuNUUtdaPwrVNuEnrmX/TvG8AJqD2rzpLmXQmdiPjc+FQpR2IMuaBHYQxW2C3YuFWgPCMDHS1l/wAc+1g==
 ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass (sender ip is
  216.228.117.160) smtp.rcpttodomain=shazbot.org smtp.mailfrom=nvidia.com;
  dmarc=pass (p=reject sp=reject pct=100) action=none header.from=nvidia.com;
@@ -33,18 +33,18 @@ ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass (sender ip is
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Nvidia.com;
  s=selector2;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=RJUN3ZbVnCx2yds0AQaLWk+34CUcYl1osu4CCpkjwKI=;
- b=bmpERxx/YgSmj0yNePQzPI9k4TsJWVeyImK+SM9llqPa1cR8Y5o31T74z5zgklJsv3mucEWtxGz1ifBFusCTmKKeZ1QJWyRwXxGQpE56b/DRJOSp57cX2MQQT0udb8zSfdZVeXpi7rkgEpjxnZu36SrLaTkM3fGR0qh0fqzLEXmmjBr6YKX1hXHqYe/QvjE4aKVeVCW+Mi7Vk44N14G+2OhmLVLy4BTAI/ScG7+TZXOToDKAua4CYs/g3yad0EQ7wR+lNSIxbDbQBh8KP9MvBwf2UELEV62JnJIgZTp57J47QPuv5ZJ5ifgmEyd9Gvvoo+9OapodGmMw+EQEFaRitA==
-Received: from DS7PR06CA0006.namprd06.prod.outlook.com (2603:10b6:8:2a::7) by
- MN2PR12MB4046.namprd12.prod.outlook.com (2603:10b6:208:1da::23) with
+ bh=1HYIhY8xUk/GnlniUBc+xfrSYEnR9rtzijxwlV84+ls=;
+ b=sx2qOMPKofCoRnZy1/wYke2YLRzmd4ueYMGEMH3K5QTozemi0mTGIrmMBiP5n6CxGmfK2wCKN1yT4ukJgADDlQzO6XypQiQvSkG4NaY1A/dEJOw0gvHb4640+uxzcbKboTYN7SjoGhSGaJjL0Vt0XqNqsV4G8W3IkxtFlH7AUgo6Cic6FYYvsHsPO+i/05Jz6iOHsV7LgvZ/H4bujr2YdnxkzYE3EBdFhxRcj3Sia61/24/1//tclXafo5cmAWLFZUOG1Lk77zEjCSLkpEhtaRyAXeFHcfi0Jp4IvWXlzWl92op5y1/X0EAD9H1gVKRz92OMr1M5GzQntV02HkhIfQ==
+Received: from DS7PR07CA0015.namprd07.prod.outlook.com (2603:10b6:5:3af::26)
+ by CH2PR12MB4054.namprd12.prod.outlook.com (2603:10b6:610:a6::18) with
  Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.21.428.9; Wed, 16 Sep
- 2026 18:45:06 +0000
-Received: from DM2PEPF00003FC5.namprd04.prod.outlook.com
- (2603:10b6:8:2a:cafe::43) by DS7PR06CA0006.outlook.office365.com
- (2603:10b6:8:2a::7) with Microsoft SMTP Server (version=TLS1_3,
+ 2026 18:45:11 +0000
+Received: from DM2PEPF00003FC4.namprd04.prod.outlook.com
+ (2603:10b6:5:3af:cafe::76) by DS7PR07CA0015.outlook.office365.com
+ (2603:10b6:5:3af::26) with Microsoft SMTP Server (version=TLS1_3,
  cipher=TLS_AES_256_GCM_SHA384) id 15.21.428.11 via Frontend Transport; Wed,
- 16 Sep 2026 18:45:06 +0000
+ 16 Sep 2026 18:45:11 +0000
 X-MS-Exchange-Authentication-Results: spf=pass (sender IP is 216.228.117.160)
  smtp.mailfrom=nvidia.com;
  dkim=none (message not signed)
@@ -53,17 +53,17 @@ Received-SPF: Pass (protection.outlook.com: domain of nvidia.com designates
  216.228.117.160 as permitted sender) receiver=protection.outlook.com;
  client-ip=216.228.117.160; helo=mail.nvidia.com; pr=C
 Received: from mail.nvidia.com (216.228.117.160) by
- DM2PEPF00003FC5.mail.protection.outlook.com (10.167.23.23) with Microsoft
+ DM2PEPF00003FC4.mail.protection.outlook.com (10.167.23.22) with Microsoft
  SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.21.428.7 via Frontend Transport; Wed, 16 Sep 2026 18:45:05 +0000
+ 15.21.428.7 via Frontend Transport; Wed, 16 Sep 2026 18:45:10 +0000
 Received: from rnnvmail202.nvidia.com (10.129.68.7) by mail.nvidia.com
  (10.129.200.66) with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.2562.49; Wed, 16 Sep
- 2026 11:44:40 -0700
+ 2026 11:44:47 -0700
 Received: from nvidia-4028GR-scsim.nvidia.com (10.126.231.37) by
  rnnvmail202.nvidia.com (10.129.68.7) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.2562.46; Wed, 16 Sep 2026 11:44:34 -0700
+ 15.2.2562.46; Wed, 16 Sep 2026 11:44:40 -0700
 From: <mhonap@nvidia.com>
 To: <alex@shazbot.org>, <ankita@nvidia.com>, <jic23@kernel.org>,
  <dave.jiang@intel.com>, <alejandro.lucero-palau@amd.com>,
@@ -74,10 +74,9 @@ To: <alex@shazbot.org>, <ankita@nvidia.com>, <jic23@kernel.org>,
 CC: <kjaju@nvidia.com>, <vsethi@nvidia.com>, <zhiw@nvidia.com>,
  <mhonap@nvidia.com>, <qemu-devel@nongnu.org>, <qemu-arm@nongnu.org>,
  <linux-cxl@vger.kernel.org>
-Subject: [PATCH v2 01/10] linux-headers: Update vfio.h for CXL Type-2
- passthrough
-Date: Thu, 17 Sep 2026 00:14:03 +0530
-Message-ID: <20260916184412.3825713-2-mhonap@nvidia.com>
+Subject: [PATCH v2 02/10] hw/vfio/region: Add vfio_region_setup_with_ops()
+Date: Thu, 17 Sep 2026 00:14:04 +0530
+Message-ID: <20260916184412.3825713-3-mhonap@nvidia.com>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <20260916184412.3825713-1-mhonap@nvidia.com>
 References: <20260916184412.3825713-1-mhonap@nvidia.com>
@@ -89,38 +88,38 @@ X-ClientProxiedBy: rnnvmail202.nvidia.com (10.129.68.7) To
  rnnvmail202.nvidia.com (10.129.68.7)
 X-EOPAttributedMessage: 0
 X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: DM2PEPF00003FC5:EE_|MN2PR12MB4046:EE_
-X-MS-Office365-Filtering-Correlation-Id: dbe102a1-f936-4039-8b12-08df1422a034
+X-MS-TrafficTypeDiagnostic: DM2PEPF00003FC4:EE_|CH2PR12MB4054:EE_
+X-MS-Office365-Filtering-Correlation-Id: 66bcbd0d-7c26-4bf5-bef7-08df1422a32c
 X-MS-Exchange-SenderADCheck: 1
 X-MS-Exchange-AntiSpam-Relay: 0
 X-Microsoft-Antispam: BCL:0;
- ARA:13230040|23010399003|82310400026|7416014|376014|36860700016|1800799024|921020|11063799006|56012099006|10067099003|18002099003|22082099003|6133799003;
-X-Microsoft-Antispam-Message-Info: TDPQmjEAkq5C2V/EAqrfetb+oZWKZdFlvIm5ChXiCiNXxS7zLqrvJvUPP4etG0Emw/OiM81C00Oyw+rVZjBrUVoYHraFBSWbuDwHpZ1SaF29Zen3KRcMFuLHQl3rCNDI3NWWokHVaoVOfv9l7FYKYE4fwRQT3o47QvTSmRBDCOoUlY7vPcR71HuLDPVziA0IEPpmnMy5gmGrQqcUHOCzARx75JP38COGQMhyd5190ReDa5ztX6pK6SUWbo1AWfuMPjgCuK46yxfh8IyZyRNDgWQ9v/KODdHGsyS+Q7V8ayHqeFagVfbq6ewaHOwzsfubMyfOyqnjhF0s5VP+gz+ITyh3I5C06U43QdVEGndpuIDe97sqrlC6IF6ChDMIS7hWvdRbOH3CEIDuligHqnClZAsvnj1UUgTjNKHBR97BVJ1XIMsZcawg2gL/VFekkP9tt7lpDuLaV7cQnDr8gDY40CPODeccly3HAj7CWXDBAnrtEOzEL5fBk9jBhKcst0Oj8Yoc5doIpT19a2GLeaOZWVb1t+qUdmI2O2oDX1TexqJNDb92P9ZSGV5alu9a1i0JA0Sg/PkFmfV54bW64oW+cEGAY50Hb+c798A1vKHcbrgtS9UR38btQFKN2ZgJ0llUBWm8ZsQ2W4HCxL+rTDz3GKEKmYHpAwTmcvPs4QiySzXzqx3EqoEyY0RS4fJZXpNyTWTMR1dgtoQdOosCJ97lQRFXnxagdDo39u5iSbsWHMq9NCxLeH8TdNPFpNCG3rYl
+ ARA:13230040|7416014|376014|82310400026|1800799024|36860700016|23010399003|56012099006|18002099003|22082099003|921020|10067099003|11063799006;
+X-Microsoft-Antispam-Message-Info: PCiD3oMXSEeCTQvfd4TxTupQcnSmyFmktQn/RU/nj13Ebx6/l1M65jCnlksGX+t83kblmxtaIxTRlAwTuOXab9k6P8p7IzMZUZBr0wIvb+9v+txEKOZxdlI8D9sd/SjUHmsPXh4bi4J0A11Kj4ZYeFjNnqRbvHSXBbmHXbjyDIZDVfq/DoYOC2cGCFtoRNNy3aNBMtUs+txqYo9T0NulDzavrIdNw+dm8Ro19tNmtYTALH4SWR2JLL39armmvOX9Tz+sRekPFeyimKlRpYLhMrFQcowzpkJljJccNZN7/xdwyCtOMyyNmtASc7JZtrG5Fb6+2DiYTv2a2N/w+vsrJno2JjZccSZvN3ZN4BZXTUQ4Dje+2mbdWQjxXfYAucYQg4YXWSiiU2eBv9hJoI56f0HCwVwKY7buXV/6DPInK2+9qmbe2ht1DIG0ylNheJaNR5uGNyQNANuaJfN0xTA4WC4C1d6nJf9ceNjYA53u7SH6o4bET2akWTeHJABEZ0pzKa/4zFnfzFcc2wDdKGHntuHr+S9U9iSyUJznOGpnU6vQrdtuoe6QxJDpXCJks8rP/AqTXbi9Xu/WPFjTw+45kEottiWlb4tcKpdZPaAl4n0zGanR1KlC2fgl4N9MHGqWxu+m7JHQ3iJmJY+ACL3EayixtfHaoWPAPGml64hRUlnCkZZjrqTQKo/QQ3BiudnMjk/7u+7zrsv1MmuMBdC7PzomXKZK9spBeaiaHK+o8e5mol3oETyKaQWvxYAo9EVy
 X-Forefront-Antispam-Report: CIP:216.228.117.160; CTRY:US; LANG:en; SCL:1; SRV:;
  IPV:NLI; SFV:NSPM; H:mail.nvidia.com; PTR:dc6edge1.nvidia.com; CAT:NONE;
- SFS:(13230040)(23010399003)(82310400026)(7416014)(376014)(36860700016)(1800799024)(921020)(11063799006)(56012099006)(10067099003)(18002099003)(22082099003)(6133799003);
+ SFS:(13230040)(7416014)(376014)(82310400026)(1800799024)(36860700016)(23010399003)(56012099006)(18002099003)(22082099003)(921020)(10067099003)(11063799006);
  DIR:OUT; SFP:1101; 
 X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: x3RknyRqcQeM7q3zrCvoxafx1v1vxcDWSnKwfLq6wiSJlKRg73yOopnsKo+T1BY1WTppFsham2R2KVl7pjDMhkaCKQttHxEnFWZlMgJkj6nx5KZNN0gIjrKEZRPN+HG2Z+mf3HKSQMYDB0puTtxqlpsJ1AqVw4xn0w88+FUQQXvhATchVCaBR0ELa8lU39r5qSyEE2nqKjp4uWQxeEQuLsepWdU9WON7f4q4HCOg55zKP6OngUK8z6hDyx65jwOs6YuJDrhkcZiWQPzjTv8sYrEbkmafG4u9U+/U7AT/IQajBWQ58+QohVhH1QPtSKq0/h8K2PeE/K2pFj46co3XBdBcDrGVqtMEOpiuYgwRCVRx+BBiw7Zs+ASVMxJX9+szSzvyiygonqFr8b/q78prVqxhw53LdWHekRk1N8jDO16d6AuzTnalVtlMur2Gb80V
+X-MS-Exchange-AntiSpam-MessageData-0: TgKFQhfrDhcCqyA5K6J3nN0dXcxgawTTRPjNm6IAgCSqOFC4aGqQuZj3soy+QgPxPvrr1ou2Cr6COvKjNIlYrlSMDHYq7EBUrUAl0oa0Z3tTe4xkfNERjxy/E/2PDyuzgj1UL6J9WSXr+aIM5FIO7CvAIHz6MWmidSUSnIzkzGIOQpAuSUUOIiaOD9SeAVfsxH4KZyo45I5ujVi4xzK1BkqflZsDNtI4zalAthhxugudQujbmpzhGjZA0QGiSuhfEHuD+rBf9WwwZAgXuKYDkJ9fHFZ64VDo9MD21EFLMHU4wiytFW6qLeYk5CpaY0EbDZSBBN8wZ6gyV3SSyfEKSZhw5xvYx8HZngdbmgaQcK17xs4n53nRBN2O7/6plIN2V6DXbHlnuTSR0Bz+7NP1qFyQJ6vSFXoeX2fYQBtACIULcK6v/cEgqQmQcNzphz2f
 X-OriginatorOrg: Nvidia.com
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 16 Sep 2026 18:45:05.7627 (UTC)
-X-MS-Exchange-CrossTenant-Network-Message-Id: dbe102a1-f936-4039-8b12-08df1422a034
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 16 Sep 2026 18:45:10.7543 (UTC)
+X-MS-Exchange-CrossTenant-Network-Message-Id: 66bcbd0d-7c26-4bf5-bef7-08df1422a32c
 X-MS-Exchange-CrossTenant-Id: 43083d15-7273-40c1-b7db-39efd9ccc17a
 X-MS-Exchange-CrossTenant-OriginalAttributedTenantConnectingIp: TenantId=43083d15-7273-40c1-b7db-39efd9ccc17a; Ip=[216.228.117.160];
  Helo=[mail.nvidia.com]
-X-MS-Exchange-CrossTenant-AuthSource: DM2PEPF00003FC5.namprd04.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthSource: DM2PEPF00003FC4.namprd04.prod.outlook.com
 X-MS-Exchange-CrossTenant-AuthAs: Anonymous
 X-MS-Exchange-CrossTenant-FromEntityHeader: HybridOnPrem
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: MN2PR12MB4046
-Received-SPF: permerror client-ip=2a01:111:f403:c10d::1;
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: CH2PR12MB4054
+Received-SPF: permerror client-ip=2a01:111:f403:c105::1;
  envelope-from=mhonap@nvidia.com;
- helo=SN4PR2101CU001.outbound.protection.outlook.com
+ helo=CH1PR05CU001.outbound.protection.outlook.com
 X-Spam_score_int: -10
 X-Spam_score: -1.1
 X-Spam_bar: -
 X-Spam_report: (-1.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- FORGED_SPF_HELO=1, SPF_HELO_PASS=-0.001,
+ FORGED_SPF_HELO=1, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_PASS=-0.001,
  SPF_NONE=0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -139,70 +138,84 @@ Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
 From: Manish Honap <mhonap@nvidia.com>
 
-Sync the vfio.h additions from the kernel vfio-cxl series: the
-VFIO_DEVICE_FLAGS_CXL device flag, the CXL Type-2 (0x1e98) HDM memory and
-component-register sub-types under VFIO_REGION_TYPE_PCI_VENDOR_TYPE, and
-the component-register geometry capability that reports the BAR and offset
-of the trapped HDM decoder block.
+A CXL Type-2 device traps its HDM decoder block, so that region needs
+custom MemoryRegionOps rather than the pass-through default. Split the
+setup body out and let a caller supply the ops; NULL keeps the existing
+behaviour.
 
-The capability ID is provisional until the kernel series lands, at which
-point this becomes a scripted linux-headers update.
-
-AI-used-for: docs
+AI-used-for: code (prototype)
 Signed-off-by: Manish Honap <mhonap@nvidia.com>
 ---
- linux-headers/linux/vfio.h | 24 ++++++++++++++++++++++++
- 1 file changed, 24 insertions(+)
+ hw/vfio/region.c      | 27 ++++++++++++++++++++++++---
+ hw/vfio/vfio-region.h |  3 +++
+ 2 files changed, 27 insertions(+), 3 deletions(-)
 
-diff --git a/linux-headers/linux/vfio.h b/linux-headers/linux/vfio.h
-index c85dcbfe30..c12e55426d 100644
---- a/linux-headers/linux/vfio.h
-+++ b/linux-headers/linux/vfio.h
-@@ -215,6 +215,7 @@ struct vfio_device_info {
- #define VFIO_DEVICE_FLAGS_FSL_MC (1 << 6)	/* vfio-fsl-mc device */
- #define VFIO_DEVICE_FLAGS_CAPS	(1 << 7)	/* Info supports caps */
- #define VFIO_DEVICE_FLAGS_CDX	(1 << 8)	/* vfio-cdx device */
-+#define VFIO_DEVICE_FLAGS_CXL	(1 << 9)	/* vfio-cxl device */
- 	__u32	num_regions;	/* Max region index + 1 */
- 	__u32	num_irqs;	/* Max IRQ index + 1 */
- 	__u32   cap_offset;	/* Offset within info struct of first cap */
-@@ -370,6 +371,12 @@ struct vfio_region_info_cap_type {
-  */
- #define VFIO_REGION_SUBTYPE_IBM_NVLINK2_ATSD	(1)
+diff --git a/hw/vfio/region.c b/hw/vfio/region.c
+index 54ad11a6c8..21b54978b5 100644
+--- a/hw/vfio/region.c
++++ b/hw/vfio/region.c
+@@ -228,8 +228,9 @@ static int vfio_setup_region_sparse_mmaps(VFIORegion *region,
+     return 0;
+ }
  
-+/* CXL Type-2 device (0x1e98) sub-types for VFIO_REGION_TYPE_PCI_VENDOR_TYPE */
-+/* CXL.mem HDM region of a Type-2 device, mmap-able */
-+#define VFIO_REGION_SUBTYPE_CXL_MEM		(1)
-+/* CXL HDM decoder registers: read live, guest writes are absorbed */
-+#define VFIO_REGION_SUBTYPE_CXL_COMP_REGS	(2)
+-int vfio_region_setup(Object *obj, VFIODevice *vbasedev, VFIORegion *region,
+-                      int index, const char *name, Error **errp)
++static int vfio_region_do_setup(Object *obj, VFIODevice *vbasedev,
++                                VFIORegion *region, int index, const char *name,
++                                const MemoryRegionOps *ops, Error **errp)
+ {
+     struct vfio_region_info *info = NULL;
+     int ret;
+@@ -249,7 +250,7 @@ int vfio_region_setup(Object *obj, VFIODevice *vbasedev, VFIORegion *region,
+ 
+     if (region->size) {
+         region->mem = g_new0(MemoryRegion, 1);
+-        memory_region_init_io(region->mem, obj, &vfio_region_ops,
++        memory_region_init_io(region->mem, obj, ops,
+                               region, name, region->size);
+ 
+         if (!vbasedev->no_mmap &&
+@@ -273,6 +274,26 @@ int vfio_region_setup(Object *obj, VFIODevice *vbasedev, VFIORegion *region,
+     return 0;
+ }
+ 
++int vfio_region_setup(Object *obj, VFIODevice *vbasedev, VFIORegion *region,
++                      int index, const char *name, Error **errp)
++{
++    return vfio_region_do_setup(obj, vbasedev, region, index, name,
++                                &vfio_region_ops, errp);
++}
 +
- /* sub-types for VFIO_REGION_TYPE_GFX */
- #define VFIO_REGION_SUBTYPE_GFX_EDID            (1)
- 
-@@ -497,6 +504,23 @@ struct vfio_region_info_cap_nvlink2_lnkspd {
- 	__u32 __pad;
- };
- 
 +/*
-+ * Geometry of a CXL Type-2 device's HDM decoder registers, so a VMM can place
-+ * the trapped component register window where the guest expects it. The trapped
-+ * region spans the whole HDM decoder block (every decoder), not just decoder 0:
-+ * a VMM reads the decoder count and each decoder's committed base from the block
-+ * itself. Additional trapped component capabilities, such as CXL RAS, are
-+ * exposed as their own region subtypes rather than by extending this cap.
++ * Like vfio_region_setup() but traps the region through @ops instead of the
++ * default pass-through, so a caller can intercept accesses (the CXL HDM
++ * decoder block). A NULL @ops keeps the default.
 + */
-+#define VFIO_REGION_INFO_CAP_CXL_COMP_REGS	6
++int vfio_region_setup_with_ops(Object *obj, VFIODevice *vbasedev,
++                               VFIORegion *region, int index, const char *name,
++                               const MemoryRegionOps *ops, Error **errp)
++{
++    return vfio_region_do_setup(obj, vbasedev, region, index, name,
++                                ops ? ops : &vfio_region_ops, errp);
++}
 +
-+struct vfio_region_info_cap_cxl_comp_regs {
-+	struct vfio_info_cap_header header;
-+	__u32 bar;
-+	__u32 __resv;
-+	__aligned_u64 offset;
-+};
-+
- /**
-  * VFIO_DEVICE_GET_IRQ_INFO - _IOWR(VFIO_TYPE, VFIO_BASE + 9,
-  *				    struct vfio_irq_info)
+ static void vfio_subregion_unmap(VFIORegion *region, int index)
+ {
+     trace_vfio_region_unmap(memory_region_name(&region->mmaps[index].mem),
+diff --git a/hw/vfio/vfio-region.h b/hw/vfio/vfio-region.h
+index 58b236f113..8d5699013a 100644
+--- a/hw/vfio/vfio-region.h
++++ b/hw/vfio/vfio-region.h
+@@ -39,6 +39,9 @@ uint64_t vfio_region_read(void *opaque,
+                           hwaddr addr, unsigned size);
+ int vfio_region_setup(Object *obj, VFIODevice *vbasedev, VFIORegion *region,
+                       int index, const char *name, Error **errp);
++int vfio_region_setup_with_ops(Object *obj, VFIODevice *vbasedev,
++                               VFIORegion *region, int index, const char *name,
++                               const MemoryRegionOps *ops, Error **errp);
+ int vfio_region_mmap(VFIORegion *region);
+ void vfio_region_mmaps_set_enabled(VFIORegion *region, bool enabled);
+ void vfio_region_exit(VFIORegion *region);
 -- 
 2.25.1
 

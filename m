@@ -4,71 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 521B2C88E5C
-	for <qemu-arm@archiver.kernel.org>; Wed, 16 Sep 2026 08:55:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1E253C88E5C
+	for <qemu-arm@archiver.kernel.org>; Wed, 16 Sep 2026 08:55:46 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1x6lOw-0007rv-3D; Wed, 16 Sep 2026 04:53:58 -0400
+	id 1x6lOw-0007sl-R2; Wed, 16 Sep 2026 04:53:58 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1x6lOo-0007kz-Ib
- for qemu-arm@nongnu.org; Wed, 16 Sep 2026 04:53:52 -0400
+ id 1x6lOt-0007oa-0n
+ for qemu-arm@nongnu.org; Wed, 16 Sep 2026 04:53:55 -0400
 Received: from mail-wm2-x10.google.com ([2a00:1450:4864:31::10])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1x6lOk-0004yS-GW
- for qemu-arm@nongnu.org; Wed, 16 Sep 2026 04:53:49 -0400
+ id 1x6lOq-00050h-JZ
+ for qemu-arm@nongnu.org; Wed, 16 Sep 2026 04:53:54 -0400
 Received: by mail-wm2-x10.google.com with SMTP id
- 5b1f17b1804b1-49b91369d18so4495325e9.0
- for <qemu-arm@nongnu.org>; Wed, 16 Sep 2026 01:53:44 -0700 (PDT)
+ 5b1f17b1804b1-49e66390995so3790065e9.2
+ for <qemu-arm@nongnu.org>; Wed, 16 Sep 2026 01:53:52 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1789548823; x=1790153623; darn=nongnu.org;
+ d=linaro.org; s=google; t=1789548831; x=1790153631; darn=nongnu.org;
  h=content-transfer-encoding:content-type:mime-version:references
  :in-reply-to:message-id:date:subject:cc:to:from:from:to:cc:subject
  :date:message-id:reply-to:content-type;
- bh=Ry2sd1z4lQEPz/cq12Fj5YfxjJ6T7+6xlmSJ+36c4vQ=;
- b=Su3DbH+YMF9MHUtwWRK9okXHUcedxttmBQp62bz5K7iUsnARpHU038beDNhem3i/u7
- b294vzLFsNeb6Opv0VHAVMvq1rbtDxZzMJ7ikiTqrzaWvWKf70Ll8l5BfD5vpgKlsIbt
- minZyG1ox6wOMy1Z6u+nPrkA0JoDoPIKQl+08NGhs5Z64g0+PnMLqSgRO/4rp2T3lJai
- sCGGZKXFe09kwNpnlt3A6TZ6CUeSbA4U58zwEsdpYTGJOfYOaqrZi4MJuuVubUUhGiVR
- rcUx02ak3z0ZsBTf27sGSv8FxO33VXG2le1xjFOtvSSN0LjSXQTy7AjquL8+UWAAfrLL
- P3ag==
+ bh=985RXYgmuubKbGZhm5YGlCDe8xIWjFc7WGyDS1rZ3h4=;
+ b=b3Mq85InVk6BCUI9loUer04DfUaMnoq19/5LIhiiy7Dm/ns/tHn63sqVzIGMPh07DC
+ N/paqraDdWLFH7eiyyDXDBZe5VcxQZFShm5wQAYGpS/lBDHaDmWb8H5WDgPcvLAavq6/
+ XEyYNC8B0kuQCuqvqMSM+DMGJJskQKE+G+8mtO9pk2H7f5jtmOEL35WOMmcjUTv7G7yJ
+ RRojd1RC65nojzLozdyZBliMDIopEe8sqymkxIrZZm0F9ufX9DPRuOKSDBUG+Nnr+SmT
+ mnvhEovdDsiJ5n3G8pyLbbeTSo3lYcaQlFaKOtvR7t1OKOCMocJyM5LHMWBs0TsqacqM
+ +zlg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20260707; t=1789548823; x=1790153623;
+ d=1e100.net; s=20260707; t=1789548831; x=1790153631;
  h=content-transfer-encoding:content-type:mime-version:references
  :in-reply-to:message-id:date:subject:cc:to:from:x-gm-gg
  :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
  :content-type;
- bh=Ry2sd1z4lQEPz/cq12Fj5YfxjJ6T7+6xlmSJ+36c4vQ=;
- b=PjnGf7v3FQMTZn6OEsSqbQkzy3/fsQRKbFXav4Gm3kfc9uFHH3HS+CuwjzIZxYVQK0
- hv0RfXmVRrXofMPQTEx7jxTKWZo7G36sHMm6Oi9O6Jr377n3dacreLnKQ3I1hoYP0C87
- rk3GCxCHJXvdPet1u+d2Jfs4XecCbejr+9GOXjCIJ2asfUOohXCF482Uvj8pXzdk6CBE
- 967RKdYWRSjiywLf044/sto3Sx5x80H2VHdAd+fyHTNeq+85YyJJlNAO9Vy5EeSmIOgK
- bYjBH51NiRj4dxeN1JV/AtXeAGWb6EroNSU5M/r9j6vHktpn0NdqIJa+X4BVHHJ4MB+W
- LFsA==
+ bh=985RXYgmuubKbGZhm5YGlCDe8xIWjFc7WGyDS1rZ3h4=;
+ b=zr3vXW/UHjDk9Ca0WOQZtHNnd3vLG5zZyW/NiI3i1cOF0fjr0/VZMcExTux+OwgbWD
+ 3sDvqZgcO5edsgB+zespOdbuCvhpLfXojIuzbQLkH+zhOB06U9fWYpf/vnZz/OpQ3FXI
+ CisXmgQouNZeIoLcNATHjTSOmu1jhvAvSFRvmeGxBp1Ku7C3DExShVhi9dYoxqk1IYey
+ Zj8A2cCSgzwun2xTV0C0OcH1Z/yMRtuA0eUAZ28SttjmivmcNtjeGw533rKXjKSZ61vW
+ wg7PwCObyAUwAcWhqIIM0NoE1Y/G3rOhUXq4yjwHQWqSMlBNf0RjkBPKk92nqXTF1Te6
+ 5fTQ==
 X-Forwarded-Encrypted: i=1;
- AKwUvBxjOLJC8g8nR0NaFCJAZVoeY/lBe6mmBZSk9kxC3Efcn2szaMX1MJqgWdoTwW1XhVjiR3F2gQr7nA==@nongnu.org
-X-Gm-Message-State: AFuF++nSIyq5UF3CUxLQ9k4gnj71/u76ztufnHMzWR5UFQs6m3KuauyD
- hCZYYRdw9M0Z3VaTO+JWo+UGAXA++U2L3gRl5RnwV2iYsYqnCNUn7vMki4O1GPBgocY=
-X-Gm-Gg: AYBFou1S3q0/Pakeh0Chq4xzZeJgHugOXdU36vLWa7rFxL+pP6Ff4dsZKY5nJMOVaXs
- Fle3+3U9q3/UdM1DJaHVCa7mhWir5IgGsIBUl73iLWwDMkXPioKdWYg1ayZu5QoQ0A83jhPvWX0
- dFPSTxMWfgYzJztw56KaOGUmfY8fObXUu18gbmrzDOiFROXAy8UAjhCrfU9l9JX/CfISAxXncD4
- HVRxYWYi1xZkNCxQ02JV259IzLLjEOALxRmCmRr8KxkjO5ULwdKgsgmYe6SHFlUETRJdsbjdYbv
- N2o5iIhmQtOtvwT5IoIDuGeq5HJj52yVNz8dEGJ2mgPfAUkI+b1vg9ETOahitdv2xcJKYargB7+
- 2gcFWKv2zjF2Lya2KrtijuLMsDwIGJiq4SO7rbaloOfU0HvHd3SNLgvgqqMVQ+hKQFG96yD+hQI
- U2Dt+71W0iO8xlcj8lpw26wh5W+pEGfHt/z/spnBGgir4LOErSpjPaoXTbhOK8KZ7UJq4Ixgo=
-X-Received: by 2002:a05:600c:6208:b0:49e:660a:935e with SMTP id
- 5b1f17b1804b1-49eb7340978mr18023765e9.29.1789548823390; 
- Wed, 16 Sep 2026 01:53:43 -0700 (PDT)
+ AKwUvBy9yKHZ5sj7VFJr8IPMDGlhZL/zeh8CA0ML2WETa8yR3s5ACUB0mbqrTA7XHLgoIgNQvHGSNRRbhA==@nongnu.org
+X-Gm-Message-State: AFuF++mJzOBQVi1CBkw8DCQyeDJpZu/cZBe3nNMQV1nNY0KfeZiCgVMr
+ awFPGle9/vQq7Vriic+fiC1JuC/nPtaS3z2rwen2H3Rwm8aocuiqf8dr4KDRFmL/rW0=
+X-Gm-Gg: AYBFou14vDY3wkOZ7sMSJppLyvui3qzA2KbvRRMd3fMwrr/haEZeWJihJmpeY+F5952
+ ga7OCSUWuBx76+44bzKGmX1omsW7AEiT09VPHgLp4cAXBwfaRX9EfB1LxuMMhoaJEjR9WvDCzS7
+ Nnb9PCLi9U0iSxPk1WA91iEqF//MVuIkP4ylqYLPsd96TA8w0hvhJ/VwilKqHD8tJe0dotnfjr3
+ zhvdrANACt4mfhShE5vQCKRAbYBW/f/Gm5WDP1DerwkF7KokS1RTuksgHNdZ6uyD2rtUPqjKQqh
+ VqRP5igrFnWVcpkfyyZaUl786DWJIdsqSJqrOlE1sszp8zOGNEljxcElOzjHgldiDXnhU1TbcN2
+ 2Ld7D+kirmNYw/VsF0YgCarrsjiKbku96bqXdEm/AbThHQb++SrFbsOaGHnGTkYZDIOy2yUY4bZ
+ d6Ds2hfX9O9LUOV/Jcmdr3WHRcLPgsCtfw6VKgLxmySaH0lzgn630//kGgH9/Jn6HbrebzRgM=
+X-Received: by 2002:a05:600c:3ba1:b0:49c:fc6c:bdfc with SMTP id
+ 5b1f17b1804b1-49eb7322ea4mr22019875e9.19.1789548830330; 
+ Wed, 16 Sep 2026 01:53:50 -0700 (PDT)
 Received: from draig.lan ([185.124.0.156]) by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-4870bf462cesm5652880f8f.37.2026.09.16.01.53.42
+ 5b1f17b1804b1-49fbbd83e39sm3585475e9.4.2026.09.16.01.53.45
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 16 Sep 2026 01:53:42 -0700 (PDT)
+ Wed, 16 Sep 2026 01:53:45 -0700 (PDT)
 Received: from draig.lan (localhost [IPv6:::1])
- by draig.lan (Postfix) with ESMTP id B9A286178D;
- Wed, 16 Sep 2026 09:53:41 +0100 (BST)
+ by draig.lan (Postfix) with ESMTP id 8286E618F9;
+ Wed, 16 Sep 2026 09:53:42 +0100 (BST)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: John Snow <jsnow@redhat.com>,
@@ -89,10 +89,9 @@ Cc: John Snow <jsnow@redhat.com>,
  Laurent Vivier <laurent@vivier.eu>,
  =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
  Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>
-Subject: [PATCH v3 03/17] Revert "tests/tcg/meson.build: implement ./configure
- containers options"
-Date: Wed, 16 Sep 2026 09:53:26 +0100
-Message-ID: <20260916085341.1692742-4-alex.bennee@linaro.org>
+Subject: [PATCH v3 10/17] tests/docker: remove used _read_qemu_dockerfile
+Date: Wed, 16 Sep 2026 09:53:33 +0100
+Message-ID: <20260916085341.1692742-11-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.47.3
 In-Reply-To: <20260916085341.1692742-1-alex.bennee@linaro.org>
 References: <20260916085341.1692742-1-alex.bennee@linaro.org>
@@ -123,109 +122,36 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-We want to keep the container configuration inside configure for the
-firmware builds.
+This is no longer needed since the functionality using it was removed.
 
-This reverts commit 522b299ca4316d8cad57f9496ffcba87dcc20719.
-
-Tested-by: Eric Farman <farman@linux.ibm.com>
+Fixes: 07056db1b50 (tests/docker: remove FROM qemu/ support from docker.py)
 Reviewed-by: Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>
-Suggested-by: Paolo Bonzini <pbonzini@redhat.com>
-[AJB: untangle changes since]
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
 ---
- configure             | 11 +++++++----
- meson_options.txt     |  4 ----
- tests/tcg/meson.build | 25 ++++---------------------
- 3 files changed, 11 insertions(+), 29 deletions(-)
+ tests/docker/docker.py | 10 ----------
+ 1 file changed, 10 deletions(-)
 
-diff --git a/configure b/configure
-index bedde58b8cf..25d26376f12 100755
---- a/configure
-+++ b/configure
-@@ -260,7 +260,7 @@ ninja=""
- python=
- download="enabled"
- skip_meson=no
--use_containers=""
-+use_containers="yes"
- rust="disabled"
- rust_target_triple=""
+diff --git a/tests/docker/docker.py b/tests/docker/docker.py
+index 6090a9dc957..fd0cbdfe856 100755
+--- a/tests/docker/docker.py
++++ b/tests/docker/docker.py
+@@ -175,16 +175,6 @@ def _check_binfmt_misc(executable):
+     return interp, True
  
-@@ -727,11 +727,11 @@ for opt do
-   ;;
-   --disable-plugins) plugins="no"
-   ;;
--  --enable-containers) # enabled by default
-+  --enable-containers) use_containers="yes"
-   ;;
--  --disable-containers) meson_option_add -Dcontainers=false
-+  --disable-containers) use_containers="no"
-   ;;
--  --container-command=*) meson_option_add -Dcontainer_command="$optarg"
-+  --container-command=*) container_command="$optarg"
-   ;;
-   --rust-target-triple=*) rust_target_triple="$optarg"
-   ;;
-@@ -1718,6 +1718,9 @@ echo all: >> $config_host_mak
  
- echo "SRC_PATH=$source_path" >> $config_host_mak
- echo "TARGET_DIRS=$target_list" >> $config_host_mak
-+if test "$container_command" != ""; then
-+    echo "CONTAINER_COMMAND=$container_command" >> $config_host_mak
-+fi
- echo "SUBDIRS=$subdirs" >> $config_host_mak
- echo "PYTHON=$python" >> $config_host_mak
- echo "MKVENV_ENSUREGROUP=$mkvenv ensuregroup $mkvenv_online_flag" >> $config_host_mak
-diff --git a/meson_options.txt b/meson_options.txt
-index 66d3689d14c..218d003a80b 100644
---- a/meson_options.txt
-+++ b/meson_options.txt
-@@ -389,7 +389,3 @@ option('rust', type: 'feature', value: 'disabled',
-        description: 'Rust support')
- option('strict_rust_lints', type: 'boolean', value: false,
-        description: 'Enable stricter set of Rust warnings')
--option('containers', type: 'boolean', value: true,
--       description: 'use containers to cross compile tcg tests')
--option('container_command', type: 'string',
--       description: 'command to build/run containers')
-diff --git a/tests/tcg/meson.build b/tests/tcg/meson.build
-index ce208e686ff..e966774c8c2 100644
---- a/tests/tcg/meson.build
-+++ b/tests/tcg/meson.build
-@@ -79,28 +79,11 @@ if gdb.found()
- endif
- tcg_tests_summary += {'gdb': gdb}
- 
--docker_supported = false
--container_command = false
--if get_option('containers')
--  if get_option('container_command') != ''
--    # make sure command is working
--    container_command = get_option('container_command')
--    cmd = container_command.split()
--    run_command([cmd, 'info'], check: true)
--    docker_supported = true
--    docker_wrapper = [docker_wrapper, '--command',
--                      container_command]
--  else
--    docker_probe = run_command(docker_wrapper, 'probe', check: false)
--    docker_supported = docker_probe.returncode() == 0
--    if docker_supported
--      container_command = docker_probe.stdout().strip()
--      docker_wrapper = [docker_wrapper, '--command',
--                        container_command]
--    endif
--  endif
-+docker_probe = run_command(docker_wrapper, 'probe', check: false)
-+docker_supported = docker_probe.returncode() == 0
-+if docker_supported
-+  docker_wrapper = [docker_wrapper, '--command', docker_probe.stdout().strip()]
- endif
--tcg_tests_summary += {'container command': container_command}
- 
- # plugins come first, as we need to build the list
- test_plugins = {}
+-def _read_qemu_dockerfile(img_name):
+-    # special case for Debian linux-user images
+-    if img_name.startswith("debian") and img_name.endswith("user"):
+-        img_name = "debian-bootstrap"
+-
+-    df = os.path.join(os.path.dirname(__file__), "dockerfiles",
+-                      img_name + ".docker")
+-    return _read_dockerfile(df)
+-
+-
+ def _dockerfile_verify_flat(df):
+     "Verify we do not include other qemu/ layers"
+     for l in df.splitlines():
 -- 
 2.47.3
 

@@ -4,28 +4,28 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E717CC88E7F
-	for <qemu-arm@archiver.kernel.org>; Wed, 16 Sep 2026 18:47:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 92B8DC982C9
+	for <qemu-arm@archiver.kernel.org>; Wed, 16 Sep 2026 18:47:42 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1x6uew-0001TU-1N; Wed, 16 Sep 2026 14:47:06 -0400
+	id 1x6ufC-0002iV-67; Wed, 16 Sep 2026 14:47:22 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mhonap@nvidia.com>)
- id 1x6ueA-0000jp-Nu; Wed, 16 Sep 2026 14:46:31 -0400
-Received: from mail-westus2azlp170100005.outbound.protection.outlook.com
- ([2a01:111:f403:c005::5] helo=CO1PR03CU002.outbound.protection.outlook.com)
+ id 1x6uep-0001M4-US; Wed, 16 Sep 2026 14:47:02 -0400
+Received: from mail-westcentralusazlp170130007.outbound.protection.outlook.com
+ ([2a01:111:f403:c112::7] helo=CY3PR05CU001.outbound.protection.outlook.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mhonap@nvidia.com>)
- id 1x6ue6-00044S-LH; Wed, 16 Sep 2026 14:46:17 -0400
+ id 1x6ueO-000492-16; Wed, 16 Sep 2026 14:46:59 -0400
 ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=UOfhKu9nvB0McAYHqhmDEhf5bsYEAyNjXYP53JNNQiFnqC4h5YIxOD31fKEq2xhUTBlfF06kfk0v3c49EwnMnf03e7b5ja+ZX7xNyxPgYfUP+RajK51vptRD1JM2jGKpT18rz8rFP3y3XHzOaOqHGnmTALBDFUJnW2v4O2nQszpDzHDpFZj01tvxtIePWH+RramCDmdDkUyn104u2s3BG1RDFlah2bvlTON6Irfovb5Aro0Fe8WSh+7MCOtfSC3oI+nE3Y6litCU1IuQnjk/Cmdm2GpZ7f4OqDQXnXv12SSJ4EmkBj6A5YXZWL/dDH2dChJWTHUs2IlFVruIUFLJAg==
+ b=Wd377dmR7yYTURwASrR0GfzwuWZe7kPboERbdlOcvpR59kZCIF3AzdUn/3mPCPCNHS0h0OrUiIMJkjcJEANgN/JUzcxJs3/eC5Eyj6LD6SNsT6QEP0O19eGsgU/2VM9I7UUGvGq4FN5kYSefYXniVWCTgwO3j4Exoef8eGJz8eutHOtgaNtATsU7vcd+bpDFNVqoZFGoVW4kO7uxeRnAug+kErBAn9mgYExVec7IpcxzEctGKQ4Rm9y6sfoufBTSeXw2ZzHBC8cYeUqWroUIuczdNmDxoiS/uRq3A5S0HVmpRHIJP37CyzUQWueh74Cgmgov3Sh5pyXbjvXfnlXa7Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
  s=arcselector10001;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=kI6ImuoqGgl0eyt/uE4OvZjxqGI4nPXFEtMYTaz3LRE=;
- b=wvZLPSJMBdrj/ZUxMrtnJYa7gG8ioNg16Y+sEmliHr7NHuumazAKsbQHciw4SN8YvnBMusO/hHQrsVx5HLl9ILL7CI+zFupy0MUA5O/dzj6kOoC7DJVT6Y7KNF3Y0Yuty+duC1fF8+AdmDVFl8Mi9jCGCkf2DKIeTL3rmHDU5opmNO/ESLZ0ISvcmRSutbuw368gk7yAg/nywYcJBCmpyJ0ptkAM/ylM3JnFz6Jmp8H2ZvgdI4AqYbAtW6dJAmQw09ZX25RRK2vg0jZHSmZK2P7rE5hc8zhsJTX0OtHmZEtHxikEdYfPWY19hBa6Jhd2nc3KkYlUb65hhsLZp2sJYQ==
+ bh=6XQK/dG1YVFszxw5vqZ++4pFST0Mr2jhFbzgDhRoEVs=;
+ b=Xplzn7jvLaSa1RqxIRy1BBkAO22mnMYMpVBdpdGXjiih4zVj4Ci/euOK8qKN1D73qLG/rkmBSX4P7RfxkE+MSejyb/BgcI42E163lZj2Nt36dHHNgKES8Cic+UegCWlO08k6fKkI5x0K98U2VnEw6W64JjTOvdssWGvqD0mMYkP72aKDmDqNDFkeswwnjyDssXuw8CMKqMUAFlRbiG72kCkFkeRZ6wCE7C0BtQjBbALFTLTKkophTfzeaM9nm2jYwSu1jZqRN7rEgSR0zmPrc8qLnnUTfee2e0X9fNrp9hlgihj/C0/JV0sYN0oducoegt0lsxWMABlFoHltuXFDzA==
 ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass (sender ip is
  216.228.117.161) smtp.rcpttodomain=shazbot.org smtp.mailfrom=nvidia.com;
  dmarc=pass (p=reject sp=reject pct=100) action=none header.from=nvidia.com;
@@ -33,18 +33,18 @@ ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass (sender ip is
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Nvidia.com;
  s=selector2;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=kI6ImuoqGgl0eyt/uE4OvZjxqGI4nPXFEtMYTaz3LRE=;
- b=PsBfSy3vhrJzBNl+6cg6nH+loqJ4xZvP9gi9ucBmh1cF43LKo884fYpso62p9z9o23I/o1SgXVvm0t+wl8QxsaAb+H7s6tEf3V0+9JVqwGtgsn0ZO7hO/h4wGGHpCtQ0P5uP6qsrzlqF6IpB/t05V+JmB1zOS16ajUqw7BzXa9Z0HBnfosoMrYVKA88szsDP/aSQuCfsYdCPKEoqNfdoIOgPA7X3F06xmf6BrEjaxQ6xUGfk9KmZvq6JEawrugtdQ1uhmutizFyDllPH6FhFKTf3BmNA6bi2jVZhIlpyMnXb4A/Nofm9rZXAhOIzCmsdrtSBffXAl0Bgq3xXTrepuw==
-Received: from SJ0PR05CA0003.namprd05.prod.outlook.com (2603:10b6:a03:33b::8)
- by IA1PR12MB6233.namprd12.prod.outlook.com (2603:10b6:208:3e7::11)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.21.428.11; Wed, 16 Sep
- 2026 18:45:58 +0000
-Received: from SJ1PEPF00002311.namprd03.prod.outlook.com
- (2603:10b6:a03:33b:cafe::90) by SJ0PR05CA0003.outlook.office365.com
- (2603:10b6:a03:33b::8) with Microsoft SMTP Server (version=TLS1_3,
- cipher=TLS_AES_256_GCM_SHA384) id 15.21.428.8 via Frontend Transport; Wed, 16
- Sep 2026 18:45:58 +0000
+ bh=6XQK/dG1YVFszxw5vqZ++4pFST0Mr2jhFbzgDhRoEVs=;
+ b=NR8Qx6LaybEMEUcJ4ExWhaGffrXIkQ32YNZ2JJ4ElpcB6TIDhBbTqFbwRxACLRGvJIZqz7DWmNQKMFFu2qeVEllY4EadRb65PlFaqkoQP9k/l46hwIIt3ld+ll6VcsfOeAC8pYQq6Ww00GoG7jIQ1EU9wgzzVEsT94fqbLQSSA1i46aAXjduE3XqdVYFW3dBPkfa0qzfq6xwzKzorijmku5nNjhN8D7zxludv3GCwbyaGgN4NRgL9TGe34Fq9pRgeXhGoC3A+fPdFkGr8yi6QYo03llfF569h6vXS5uMj69vqbUhvoobxcCbRx/yL6g9yERNRd6JxCgSb4ynkfRsmA==
+Received: from SJ2PR07CA0020.namprd07.prod.outlook.com (2603:10b6:a03:505::19)
+ by DS7PR12MB5864.namprd12.prod.outlook.com (2603:10b6:8:7b::18) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.21.406.12; Wed, 16 Sep
+ 2026 18:46:16 +0000
+Received: from SJ1PEPF00002313.namprd03.prod.outlook.com
+ (2603:10b6:a03:505:cafe::af) by SJ2PR07CA0020.outlook.office365.com
+ (2603:10b6:a03:505::19) with Microsoft SMTP Server (version=TLS1_3,
+ cipher=TLS_AES_256_GCM_SHA384) id 15.21.428.11 via Frontend Transport; Wed,
+ 16 Sep 2026 18:46:14 +0000
 X-MS-Exchange-Authentication-Results: spf=pass (sender IP is 216.228.117.161)
  smtp.mailfrom=nvidia.com;
  dkim=none (message not signed)
@@ -53,17 +53,17 @@ Received-SPF: Pass (protection.outlook.com: domain of nvidia.com designates
  216.228.117.161 as permitted sender) receiver=protection.outlook.com;
  client-ip=216.228.117.161; helo=mail.nvidia.com; pr=C
 Received: from mail.nvidia.com (216.228.117.161) by
- SJ1PEPF00002311.mail.protection.outlook.com (10.167.242.165) with Microsoft
+ SJ1PEPF00002313.mail.protection.outlook.com (10.167.242.167) with Microsoft
  SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.21.428.7 via Frontend Transport; Wed, 16 Sep 2026 18:45:58 +0000
+ 15.21.428.7 via Frontend Transport; Wed, 16 Sep 2026 18:46:14 +0000
 Received: from rnnvmail202.nvidia.com (10.129.68.7) by mail.nvidia.com
  (10.129.200.67) with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.2562.49; Wed, 16 Sep
- 2026 11:45:29 -0700
+ 2026 11:45:43 -0700
 Received: from nvidia-4028GR-scsim.nvidia.com (10.126.231.37) by
  rnnvmail202.nvidia.com (10.129.68.7) with Microsoft SMTP Server
  (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.2562.46; Wed, 16 Sep 2026 11:45:22 -0700
+ 15.2.2562.46; Wed, 16 Sep 2026 11:45:36 -0700
 From: <mhonap@nvidia.com>
 To: <alex@shazbot.org>, <ankita@nvidia.com>, <jic23@kernel.org>,
  <dave.jiang@intel.com>, <alejandro.lucero-palau@amd.com>,
@@ -73,10 +73,11 @@ To: <alex@shazbot.org>, <ankita@nvidia.com>, <jic23@kernel.org>,
  <richard.henderson@linaro.org>, <clg@redhat.com>, <cohuck@redhat.com>
 CC: <kjaju@nvidia.com>, <vsethi@nvidia.com>, <zhiw@nvidia.com>,
  <mhonap@nvidia.com>, <qemu-devel@nongnu.org>, <qemu-arm@nongnu.org>,
- <linux-cxl@vger.kernel.org>
-Subject: [PATCH v2 08/10] docs/cxl: Document CXL Type-2 device passthrough
-Date: Thu, 17 Sep 2026 00:14:10 +0530
-Message-ID: <20260916184412.3825713-9-mhonap@nvidia.com>
+ <linux-cxl@vger.kernel.org>, Shameer Kolothum <skolothumtho@nvidia.com>
+Subject: [PATCH v2 10/10] hw/pci-host: Emit a _DSM on pxb-cxl to preserve
+ firmware PCI config
+Date: Thu, 17 Sep 2026 00:14:12 +0530
+Message-ID: <20260916184412.3825713-11-mhonap@nvidia.com>
 X-Mailer: git-send-email 2.25.1
 In-Reply-To: <20260916184412.3825713-1-mhonap@nvidia.com>
 References: <20260916184412.3825713-1-mhonap@nvidia.com>
@@ -88,38 +89,38 @@ X-ClientProxiedBy: rnnvmail202.nvidia.com (10.129.68.7) To
  rnnvmail202.nvidia.com (10.129.68.7)
 X-EOPAttributedMessage: 0
 X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: SJ1PEPF00002311:EE_|IA1PR12MB6233:EE_
-X-MS-Office365-Filtering-Correlation-Id: 5bb67a06-35ae-4693-9d17-08df1422bf5d
+X-MS-TrafficTypeDiagnostic: SJ1PEPF00002313:EE_|DS7PR12MB5864:EE_
+X-MS-Office365-Filtering-Correlation-Id: 8ab6b507-fb4e-4c11-ee45-08df1422c94d
 X-MS-Exchange-SenderADCheck: 1
 X-MS-Exchange-AntiSpam-Relay: 0
 X-Microsoft-Antispam: BCL:0;
- ARA:13230040|7416014|376014|82310400026|36860700016|1800799024|23010399003|11063799006|56012099006|3023799007|6133799003|921020|22082099003|18002099003|10067099003;
-X-Microsoft-Antispam-Message-Info: yj+BqduYrfadSOKr8+SdOGHJyYFFU0neVYnaI28L+Ye8Oyt9mV1NKbh+7wvwgOSjXDOBieuajbQY6tuL5XzOWhZwCGWBXj400Ab6PGc4qwV9fBGQo2bPNAfdoDckPxg12vZ0GIIpTdSOTlGiZWjz6nVWkUTgVb09Afm0MFi6kyL25tDzPjA7fu+BZ91kuNq9rOM+PQCwyxbQjr/RikRazQqdnY893MBh3aOIsXxrTmPC47DzXm68Tk7LVQnDv45MmUvvMOLjxuL8TK7+Go7jL0Ut4nsDif3/Dq55d7nzU1CmGIsnUJdL/xREA80kPJQ6Mr11qfe6E0jguPCOhyfMaQBO1aN9h/um3hmYNMdzHPsxBPQ1BRFu8VE40do1oU/5wM9b4orwVYcJTjS4Q2rXeOoq/2w6FB8qrZSiyl+5rjwkE6U+bygvwGrFZCX1RPltZar/6uinWVHGExU7/yUXHyFTlCtm4Tta/nWCgJhkG6eK7H1nnbVudH+RGAWJ+PvtT0tc6l/2VZMXnfx14Ye7Nu3VJFgJkpB6P7xR5slHdYwCXxETFiluXoZqw2OZ4a22aL2aOnBVe4ZuHXWt+s2ytcgZR3LvSbRzuDCQ4Q4jVZdAWIdGQjOwcpr+wEiidEb2lf4vZCXoxvEXXw15RHVF6EDG6j8AiVAh9HNjW7dhDyf8OioUe+q0RQl8229N4wIA1XmueHxF6r5fg5GSeLL4n8GlykxBLxqCuR2W9GooMIEWt8fbd+3oRSvfrfrYWRxO
+ ARA:13230040|82310400026|36860700016|1800799024|376014|7416014|23010399003|10067099003|6133799003|3023799007|18002099003|22082099003|56012099006|11063799006|921020;
+X-Microsoft-Antispam-Message-Info: x8i0bBZLxyBrv0CaABnxtuHbF7RZDmZcLp0CRq9XxDUNGinupBe52yVp6/XzA8J0iqVXWGtyQbuvCKkwcHPHCq0Eg30rra6LPcBtfvmUxuxhbuf6uHgi6I41SoQ58JCtldJUy35ELqFioaumn9P8XSN3Y4uKxZZMGKD0nB7Z6wYE/iooZlMoewYdGbbr1JCMoU5BKQicIRC2W2kWqXS3ySkO3LAYq2qtdyMrtc7chc1Ih1i+sfsTK7T4ZkBMXal41rHYzmOQEtDy4MK67/1PFL7YY1wt2APt9ryL2QzauuxHqNwXIDAjgUKanGYT0ric4INPc+iARlDDwxKn3IaX/eLxkPHcyXlNv4GaxpQMMwOe6nUnb6VA7WM9t+I8Z7yyIFA/Cow5fUPEYP8OUXXgWZpnMp+pZVvvNFAu7ARfD4tb1serZrRLJjtcyyVE8ZxKHlN1SgRJ381nA0TziGgeI7j3EtZCbkO4Xw20qqYPPe/l5Pzr0bnWQji6AlseFE6c3nRl/sjkIEppmXdQX6TZhBSLuwjS4GfN5LIQkZtSV3flOB6hMxpqexio9Umh8UOaw7QLMR76e9KjBo1pw16iQZ1jkrT7D9mNUjq6ObMzRMVxqRoMbt9rZQEy7WRnh8E+mA5K51qws/HonotrcW4tZU8ZeoU2RnvDqwvAIvoqaxSktJ59e2hxiBXukKutGwlQgjOaXlhodJDT+Y5SXMT3N8EKr5yA/bI6bfPWuTtcJTFXn/XKu0f4CClijo0tM5SU
 X-Forefront-Antispam-Report: CIP:216.228.117.161; CTRY:US; LANG:en; SCL:1; SRV:;
  IPV:NLI; SFV:NSPM; H:mail.nvidia.com; PTR:dc6edge2.nvidia.com; CAT:NONE;
- SFS:(13230040)(7416014)(376014)(82310400026)(36860700016)(1800799024)(23010399003)(11063799006)(56012099006)(3023799007)(6133799003)(921020)(22082099003)(18002099003)(10067099003);
+ SFS:(13230040)(82310400026)(36860700016)(1800799024)(376014)(7416014)(23010399003)(10067099003)(6133799003)(3023799007)(18002099003)(22082099003)(56012099006)(11063799006)(921020);
  DIR:OUT; SFP:1101; 
 X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: p/wzTbsmDy2LrTBU51J3zWd4ZpcYYKrrk4wrp9V+rB8oXVNuAKC0fvR45V9jF9CDJL290Ppt1pKGBUm1/7xRKsXjQ87oJN/Y84k4dHdVtUcdxMMCwNTHY+8Qog9S95EDwHPto206zWcViw9g54FoFhrE/VD7hs4Fp3fjta3DsxbLacL5P1LfLAkLjk5Gd0jO2QEdf06vNPVkYsuRDEwywcVBpqapVWHxLGQFPyD+iWy01ryIO0O4Nok6usIVDJEYCQlw6DOtsZfIpCN+EwH/U/h0NO6f2a+R+qo9jaenxK0BhWhUz6Z97J29EwRgwSXZH4F/MYw63wiEHMzXYSHw0PeG1bZBteoxiOM5KiS3mP+A83dRpP8SJkik0d4qjQ2f9IWfrWXYuh8S4KY6KxLrP4pNHHpDvZHmjhwfxGoO3e1jofLyzMo5C22rw6vwxwyX
+X-MS-Exchange-AntiSpam-MessageData-0: KvSnOIwhPGLI0UZrBUAt9P0yeg3i4olYEeSEotBw3Q+LLi0iKkUL1DO7o9ACUGfBLCQs/GqLR9lbJWxI4K+swVE2Hf2OtpX80szEOCShPctDKDkIDpQgXxWtxkM9XbkXpakHgOMbin9Ku5tc9yMPrBTpeK4fwHNJc0NbyFmcW0mhZOZAxFIT+FhHS5jOtpyPdy/7ixh2G28GHN0YQxsG9rnADgIVFtNhNOE3dOh/8YSK/7lcU1bDJcIZhuHBW3+rYtL+yhRHWGGpoaHWqIG5ebh+PcX1SJEcJ0yKJwIwarwuW89Bqhcq2NNZwy3/keHOC+dhBr9m03fs0goQXOBuOuFQjBM3RQW5x0zdzrlNj39bFQTOEunv/c1hd4HPYPvZm0pbS3v4nRywqf92ub59dqyjCaNHFt+KzS1BzdP2q1Dpnphc+c7fJY0qcUT6y9m+
 X-OriginatorOrg: Nvidia.com
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 16 Sep 2026 18:45:58.0557 (UTC)
-X-MS-Exchange-CrossTenant-Network-Message-Id: 5bb67a06-35ae-4693-9d17-08df1422bf5d
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 16 Sep 2026 18:46:14.7274 (UTC)
+X-MS-Exchange-CrossTenant-Network-Message-Id: 8ab6b507-fb4e-4c11-ee45-08df1422c94d
 X-MS-Exchange-CrossTenant-Id: 43083d15-7273-40c1-b7db-39efd9ccc17a
 X-MS-Exchange-CrossTenant-OriginalAttributedTenantConnectingIp: TenantId=43083d15-7273-40c1-b7db-39efd9ccc17a; Ip=[216.228.117.161];
  Helo=[mail.nvidia.com]
-X-MS-Exchange-CrossTenant-AuthSource: SJ1PEPF00002311.namprd03.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthSource: SJ1PEPF00002313.namprd03.prod.outlook.com
 X-MS-Exchange-CrossTenant-AuthAs: Anonymous
 X-MS-Exchange-CrossTenant-FromEntityHeader: HybridOnPrem
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: IA1PR12MB6233
-Received-SPF: permerror client-ip=2a01:111:f403:c005::5;
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: DS7PR12MB5864
+Received-SPF: permerror client-ip=2a01:111:f403:c112::7;
  envelope-from=mhonap@nvidia.com;
- helo=CO1PR03CU002.outbound.protection.outlook.com
+ helo=CY3PR05CU001.outbound.protection.outlook.com
 X-Spam_score_int: -10
 X-Spam_score: -1.1
 X-Spam_bar: -
 X-Spam_report: (-1.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- FORGED_SPF_HELO=1, SPF_HELO_PASS=-0.001,
+ FORGED_SPF_HELO=1, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_PASS=-0.001,
  SPF_NONE=0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -138,72 +139,250 @@ Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
 From: Manish Honap <mhonap@nvidia.com>
 
-Describe the supported single-endpoint passthrough topology, the command
-line, and the kernel dependency, and note that a guest CXL reset is
-handled by the host kernel rather than QEMU.
+A pxb-cxl host bridge had no PCI host-bridge _DSM method, so it could not
+emit function 5 (preserve firmware PCI configuration) even when the
+machine asks OSPM to keep the firmware resource assignments.
 
-AI-used-for: docs
+That preservation is required by the accelerated SMMUv3 (accel=on), which
+describes MSI 1:1 mappings through IORT RMR nodes. An RMR reserves a fixed
+IOVA range, so OSPM must not re-enumerate and reassign the PCI resources
+underneath it. virt sets pci_preserve_config for that case and expects
+every host bridge to emit the _DSM; the pxb-cxl bridge was the one that
+did not, so a CXL topology under an accelerated SMMU lost the guarantee.
+
+The BAR configuration itself is safe without this. vfio-pci marks every BAR
+dword ALL_VIRT, so a guest BAR write updates only the virtual config and
+cannot move the host resource; QEMU's trapped comp-regs region is a
+subregion of the BAR MemoryRegion and follows any guest-visible relocation,
+while the kernel's physical decoder mapping stays fixed. The CXL.mem window
+comes through CEDT/CFMWS and is likewise unaffected by PCI resource
+assignment.
+
+Wire preserve_config through GPEXConfig into the CXL host bridge OSC path
+so pxb-cxl bridges emit the _DSM function 5 when the machine preserves the
+firmware configuration. Rename build_cxl_osc_method() to
+acpi_dsdt_add_cxl_host_bridge_methods() to match the pxb-pcie analogue
+acpi_dsdt_add_host_bridge_methods(), since it now appends the _OSC and,
+under preserve_config, the _DSM. Gate the _DSM on preserve_config: x86 q35
+passes false as it does not use the accelerated SMMU, so it emits no _DSM
+and its ACPI tables stay byte for byte what they were.
+
+AI-used-for: code (prototype)
+Signed-off-by: Shameer Kolothum <skolothumtho@nvidia.com>
 Signed-off-by: Manish Honap <mhonap@nvidia.com>
 ---
- docs/system/devices/cxl.rst | 45 +++++++++++++++++++++++++++++++++++++
- 1 file changed, 45 insertions(+)
+ hw/acpi/Kconfig         |  1 +
+ hw/acpi/cxl-stub.c      |  2 +-
+ hw/acpi/cxl.c           | 12 +++++++++++-
+ hw/acpi/pci.c           | 40 +++++++++++++++++++++++++++++++++++++++
+ hw/i386/acpi-build.c    |  2 +-
+ hw/pci-host/gpex-acpi.c | 42 ++---------------------------------------
+ include/hw/acpi/cxl.h   |  2 +-
+ include/hw/acpi/pci.h   |  1 +
+ 8 files changed, 58 insertions(+), 44 deletions(-)
 
-diff --git a/docs/system/devices/cxl.rst b/docs/system/devices/cxl.rst
-index 6bee339cea..3cdd320457 100644
---- a/docs/system/devices/cxl.rst
-+++ b/docs/system/devices/cxl.rst
-@@ -423,6 +423,51 @@ Volatile Memory device::
-   -device cxl-type3,bus=root_port13,volatile-memdev=vmem0,id=cxl-vmem0 \
-   -M cxl-fmw.0.targets.0=cxl.1,cxl-fmw.0.size=4G
+diff --git a/hw/acpi/Kconfig b/hw/acpi/Kconfig
+index daabbe6cd1..9490b75c94 100644
+--- a/hw/acpi/Kconfig
++++ b/hw/acpi/Kconfig
+@@ -88,3 +88,4 @@ config ACPI_ERST
+ config ACPI_CXL
+     bool
+     depends on ACPI
++    select ACPI_PCI
+diff --git a/hw/acpi/cxl-stub.c b/hw/acpi/cxl-stub.c
+index 15bc21076b..d7c6731975 100644
+--- a/hw/acpi/cxl-stub.c
++++ b/hw/acpi/cxl-stub.c
+@@ -6,7 +6,7 @@
+ #include "hw/acpi/aml-build.h"
+ #include "hw/acpi/cxl.h"
  
-+Type 2 device passthrough
-+-------------------------
-+
-+A CXL Type 2 device (an accelerator with host-managed device memory) can be
-+assigned to a guest with vfio-pci, so the guest reaches the device memory
-+through its own CXL stack. This pairs with the kernel vfio-cxl series: the
-+host kernel fixes the device memory at a host physical range before the guest
-+sees the device, and QEMU maps that range at the guest physical address the
-+guest programs into its endpoint HDM decoder.
-+
-+The device memory reaches the guest as a CXL fixed memory window (``cxl-fmw``),
-+advertised through CEDT, exactly like a Type 3 window; there is no separate
-+device memory-map slot. Only the endpoint decoder is programmed, by the guest,
-+so the host bridge must stay in HDM passthrough mode: a single ``cxl-rp`` under
-+the ``pxb-cxl`` and no ``hdm_for_passthrough``. Switch-attached and interleaved
-+topologies are rejected.
-+
-+Example command line::
-+
-+  -machine q35,cxl=on
-+  -device pxb-cxl,bus_nr=12,bus=pcie.0,id=cxl.1
-+  -device cxl-rp,port=0,bus=cxl.1,id=rp0,chassis=0,slot=2
-+  -device vfio-pci,host=<BDF>,bus=rp0,id=cxl-ep0
-+  -M cxl-fmw.0.targets.0=cxl.1,cxl-fmw.0.size=<device-mem-size>
-+
-+The window must be a single-target ``cxl-fmw`` that targets the device's
-+``pxb-cxl`` and is at least the size of the device memory. The guest triggers a
-+CXL reset by writing the CXL Device DVSEC; the host kernel runs that sequence,
-+so QEMU has no reset handling of its own.
-+
-+On arm64, pass ``accel=on`` to the ``arm-smmuv3`` when passing a Type 2 device
-+through. The accelerated SMMUv3 describes the device MSI doorbell to the guest
-+through an IORT Reserved Memory Range (RMR) node, which reserves a fixed guest
-+IOVA, so OSPM must preserve the firmware PCI resource assignments rather than
-+re-enumerate them. QEMU requests that through PCI Firmware ``_DSM`` function 5
-+(preserve firmware PCI configuration), which on arm64 is emitted for the CXL
-+host bridge only when the machine requests preserved configuration, that is,
-+the accelerated SMMUv3 path. This ``_DSM`` is not about the CXL decoder:
-+vfio-pci keeps the host BAR fixed, and QEMU's trapped component-register block
-+is a subregion of the guest BAR MemoryRegion, so it follows any guest-visible
-+BAR relocation on its own. x86 does not use the accelerated SMMU, so it does
-+not advertise or implement preserve-configuration function 5; the CXL host
-+bridge still emits the ``_DSM`` method, but its function 0 returns an empty
-+support mask.
-+
- Deprecations
- ------------
+-void build_cxl_osc_method(Aml *dev)
++void acpi_dsdt_add_cxl_host_bridge_methods(Aml *dev, bool preserve_config)
+ {
+     g_assert_not_reached();
+ }
+diff --git a/hw/acpi/cxl.c b/hw/acpi/cxl.c
+index 77c1db6561..dc2a5fcdfe 100644
+--- a/hw/acpi/cxl.c
++++ b/hw/acpi/cxl.c
+@@ -23,6 +23,7 @@
+ #include "hw/pci/pci_host.h"
+ #include "hw/cxl/cxl.h"
+ #include "hw/cxl/cxl_host.h"
++#include "hw/acpi/pci.h"
+ #include "hw/mem/memory-device.h"
+ #include "hw/acpi/acpi.h"
+ #include "hw/acpi/aml-build.h"
+@@ -320,11 +321,20 @@ static Aml *__build_cxl_osc_method(void)
+     return method;
+ }
  
+-void build_cxl_osc_method(Aml *dev)
++void acpi_dsdt_add_cxl_host_bridge_methods(Aml *dev, bool preserve_config)
+ {
+     aml_append(dev, aml_name_decl("SUPP", aml_int(0)));
+     aml_append(dev, aml_name_decl("CTRL", aml_int(0)));
+     aml_append(dev, aml_name_decl("SUPC", aml_int(0)));
+     aml_append(dev, aml_name_decl("CTRC", aml_int(0)));
+     aml_append(dev, __build_cxl_osc_method());
++    /*
++     * Only a machine that asks OSPM to preserve the firmware PCI configuration
++     * needs the _DSM (function 5). Emitting it unconditionally would change the
++     * DSDT of machines that pass preserve_config=false (x86 q35), breaking the
++     * golden-table tests for no functional gain, so gate it on preserve_config.
++     */
++    if (preserve_config) {
++        aml_append(dev, build_pci_host_bridge_dsm_method(preserve_config));
++    }
+ }
+diff --git a/hw/acpi/pci.c b/hw/acpi/pci.c
+index c82924be86..f1feb33fc2 100644
+--- a/hw/acpi/pci.c
++++ b/hw/acpi/pci.c
+@@ -351,3 +351,43 @@ Aml *build_pci_host_bridge_osc_method(bool enable_native_pcie_hotplug)
+     aml_append(method, aml_return(aml_arg(3)));
+     return method;
+ }
++
++Aml *build_pci_host_bridge_dsm_method(bool preserve_config)
++{
++    Aml *method = aml_method("_DSM", 4, AML_NOTSERIALIZED);
++    Aml *UUID, *ifctx, *ifctx1, *buf;
++    uint8_t byte_list[1] = {0};
++
++    /*
++     * PCI Firmware Specification 3.0
++     * 4.6.1. _DSM for PCI Express Slot Information
++     * The UUID in _DSM in this context is
++     * {E5C937D0-3553-4D7A-9117-EA4D19C3434D}
++     */
++    UUID = aml_touuid("E5C937D0-3553-4D7A-9117-EA4D19C3434D");
++    ifctx = aml_if(aml_equal(aml_arg(0), UUID));
++    ifctx1 = aml_if(aml_equal(aml_arg(2), aml_int(0)));
++    if (preserve_config) {
++        /* support functions other than 0, specifically function 5 */
++        byte_list[0] = 0x21;
++    }
++    buf = aml_buffer(1, byte_list);
++    aml_append(ifctx1, aml_return(buf));
++    aml_append(ifctx, ifctx1);
++    if (preserve_config) {
++        Aml *ifctx2 = aml_if(aml_equal(aml_arg(2), aml_int(5)));
++        /*
++         * 0 - The operating system must not ignore the PCI configuration that
++         *     firmware has done at boot time.
++         */
++        aml_append(ifctx2, aml_return(aml_int(0)));
++        aml_append(ifctx, ifctx2);
++    }
++
++    aml_append(method, ifctx);
++
++    byte_list[0] = 0;
++    buf = aml_buffer(1, byte_list);
++    aml_append(method, aml_return(buf));
++    return method;
++}
+diff --git a/hw/i386/acpi-build.c b/hw/i386/acpi-build.c
+index 6d7308b4e4..c8f02ea608 100644
+--- a/hw/i386/acpi-build.c
++++ b/hw/i386/acpi-build.c
+@@ -1019,7 +1019,7 @@ build_dsdt(GArray *table_data, BIOSLinker *linker,
+                 aml_append(aml_pkg, aml_eisaid("PNP0A08"));
+                 aml_append(aml_pkg, aml_eisaid("PNP0A03"));
+                 aml_append(dev, aml_name_decl("_CID", aml_pkg));
+-                build_cxl_osc_method(dev);
++                acpi_dsdt_add_cxl_host_bridge_methods(dev, false);
+             } else if (pci_bus_is_express(bus)) {
+                 aml_append(dev, aml_name_decl("_HID", aml_eisaid("PNP0A08")));
+                 aml_append(dev, aml_name_decl("_CID", aml_eisaid("PNP0A03")));
+diff --git a/hw/pci-host/gpex-acpi.c b/hw/pci-host/gpex-acpi.c
+index d9820f9b41..014f647c7f 100644
+--- a/hw/pci-host/gpex-acpi.c
++++ b/hw/pci-host/gpex-acpi.c
+@@ -51,45 +51,6 @@ static void acpi_dsdt_add_pci_route_table(Aml *dev, uint32_t irq,
+     }
+ }
+ 
+-static Aml *build_pci_host_bridge_dsm_method(bool preserve_config)
+-{
+-    Aml *method = aml_method("_DSM", 4, AML_NOTSERIALIZED);
+-    Aml *UUID, *ifctx, *ifctx1, *buf;
+-    uint8_t byte_list[1] = {0};
+-
+-    /* PCI Firmware Specification 3.0
+-     * 4.6.1. _DSM for PCI Express Slot Information
+-     * The UUID in _DSM in this context is
+-     * {E5C937D0-3553-4D7A-9117-EA4D19C3434D}
+-     */
+-    UUID = aml_touuid("E5C937D0-3553-4D7A-9117-EA4D19C3434D");
+-    ifctx = aml_if(aml_equal(aml_arg(0), UUID));
+-    ifctx1 = aml_if(aml_equal(aml_arg(2), aml_int(0)));
+-    if (preserve_config) {
+-        /* support functions other than 0, specifically function 5 */
+-        byte_list[0] = 0x21;
+-    }
+-    buf = aml_buffer(1, byte_list);
+-    aml_append(ifctx1, aml_return(buf));
+-    aml_append(ifctx, ifctx1);
+-    if (preserve_config) {
+-        Aml *ifctx2 = aml_if(aml_equal(aml_arg(2), aml_int(5)));
+-        /*
+-         * 0 - The operating system must not ignore the PCI configuration that
+-         *     firmware has done at boot time.
+-         */
+-        aml_append(ifctx2, aml_return(aml_int(0)));
+-        aml_append(ifctx, ifctx2);
+-    }
+-
+-    aml_append(method, ifctx);
+-
+-    byte_list[0] = 0;
+-    buf = aml_buffer(1, byte_list);
+-    aml_append(method, aml_return(buf));
+-    return method;
+-}
+-
+ static void acpi_dsdt_add_host_bridge_methods(Aml *dev,
+                                               bool enable_native_pcie_hotplug,
+                                               bool preserve_config)
+@@ -164,7 +125,8 @@ void acpi_dsdt_add_gpex(Aml *scope, struct GPEXConfig *cfg)
+             aml_append(dev, aml_name_decl("_CRS", crs));
+ 
+             if (is_cxl) {
+-                build_cxl_osc_method(dev);
++                acpi_dsdt_add_cxl_host_bridge_methods(dev,
++                                                      cfg->preserve_config);
+             } else {
+                 /* pxb bridges do not have ACPI PCI Hot-plug enabled */
+                 acpi_dsdt_add_host_bridge_methods(dev, true,
+diff --git a/include/hw/acpi/cxl.h b/include/hw/acpi/cxl.h
+index 8f22c71530..6fe6c9c58d 100644
+--- a/include/hw/acpi/cxl.h
++++ b/include/hw/acpi/cxl.h
+@@ -24,7 +24,7 @@
+ void cxl_build_cedt(GArray *table_offsets, GArray *table_data,
+                     BIOSLinker *linker, const char *oem_id,
+                     const char *oem_table_id, CXLState *cxl_state);
+-void build_cxl_osc_method(Aml *dev);
++void acpi_dsdt_add_cxl_host_bridge_methods(Aml *dev, bool preserve_config);
+ void build_cxl_dsm_method(Aml *dev);
+ 
+ #endif
+diff --git a/include/hw/acpi/pci.h b/include/hw/acpi/pci.h
+index 20b672575f..c7de33f8cf 100644
+--- a/include/hw/acpi/pci.h
++++ b/include/hw/acpi/pci.h
+@@ -42,6 +42,7 @@ void build_pci_bridge_aml(AcpiDevAmlIf *adev, Aml *scope);
+ void build_srat_generic_affinity_structures(GArray *table_data);
+ 
+ Aml *build_pci_host_bridge_osc_method(bool enable_native_pcie_hotplug);
++Aml *build_pci_host_bridge_dsm_method(bool preserve_config);
+ Aml *build_pci_bridge_edsm(void);
+ 
+ #endif
 -- 
 2.25.1
 

@@ -4,50 +4,50 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 22897C982C3
-	for <qemu-arm@archiver.kernel.org>; Wed, 16 Sep 2026 14:48:59 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AFB8DC982C5
+	for <qemu-arm@archiver.kernel.org>; Wed, 16 Sep 2026 14:49:02 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1x6qwA-00075B-Vn; Wed, 16 Sep 2026 10:48:39 -0400
+	id 1x6qw8-0006w4-EJ; Wed, 16 Sep 2026 10:48:36 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1x6qw9-0006yl-Mc
- for qemu-arm@nongnu.org; Wed, 16 Sep 2026 10:48:37 -0400
+ id 1x6qw7-0006n3-9F
+ for qemu-arm@nongnu.org; Wed, 16 Sep 2026 10:48:35 -0400
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1x6qw8-0006Vs-57
- for qemu-arm@nongnu.org; Wed, 16 Sep 2026 10:48:37 -0400
+ id 1x6qw5-0006Uh-D7
+ for qemu-arm@nongnu.org; Wed, 16 Sep 2026 10:48:34 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1789570115;
+ s=mimecast20190719; t=1789570112;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=auaxCeauN5FRu8T5yqwMoXwguxD+0OITVntUuaq37ic=;
- b=Vme/r0BH8tnDNycWQ1Oyl2zKofBPgzr7j8J3O2Qt43oHsB1mP6Wo21riPuroZC5wGCS5zS
- rsfJNP9gv96zAnIlliLbrLT7OPishFj9hsirn6gtcnO7tWeDsIE3I4/r4L/6G6bbTjiuM4
- icYTOmWBzvUvkIJlD4cjBimXViz46LU=
+ bh=d7M+hAoqVV66CrNBQhd7YNBsCtAKpmI8ROODStiGn7s=;
+ b=cpYpVJAypgajzqmGQZsf/hJkJn0GwDXcEKDuAgkRYQAGJieaI1ZzN/Ze2yz1bKnYfxfjb9
+ zJLcJwRMtqv8Mb+6FG5ahrRVsizRTgTMp0bao5KK2n4Y/LIguAw2DyZe3ti9Yiegi9kp5O
+ bcFYSFwz85zPDQmB5rU1CPkmVnVI3vg=
 Received: from mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com
  (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-142-uLQDbddgMZye66wB3cnBIg-1; Wed,
- 16 Sep 2026 10:48:32 -0400
-X-MC-Unique: uLQDbddgMZye66wB3cnBIg-1
-X-Mimecast-MFC-AGG-ID: uLQDbddgMZye66wB3cnBIg_1789570110
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-664-0T5OCJZHPzK0JhzzJRu1Jw-1; Wed,
+ 16 Sep 2026 10:48:27 -0400
+X-MC-Unique: 0T5OCJZHPzK0JhzzJRu1Jw-1
+X-Mimecast-MFC-AGG-ID: 0T5OCJZHPzK0JhzzJRu1Jw_1789570105
 Received: from mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com
  (mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.17])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
  by mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 572F718000A2; Wed, 16 Sep 2026 14:48:30 +0000 (UTC)
+ id 5C8AC1801355; Wed, 16 Sep 2026 14:48:25 +0000 (UTC)
 Received: from laptop.redhat.corp (headnet04.pony-001.prod.iad2.dc.redhat.com
  [10.2.32.116])
  by mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id B847419560AB; Wed, 16 Sep 2026 14:48:25 +0000 (UTC)
+ id 3569C1956053; Wed, 16 Sep 2026 14:48:20 +0000 (UTC)
 From: Eric Auger <eric.auger@redhat.com>
 To: eric.auger.pro@gmail.com, eric.auger@redhat.com, qemu-devel@nongnu.org,
  qemu-arm@nongnu.org, kvmarm@lists.linux.dev, peter.maydell@linaro.org,
@@ -57,15 +57,14 @@ To: eric.auger.pro@gmail.com, eric.auger@redhat.com, qemu-devel@nongnu.org,
 Cc: maz@kernel.org, oliver.upton@linux.dev, pbonzini@redhat.com,
  armbru@redhat.com, berrange@redhat.com, abologna@redhat.com,
  jdenemar@redhat.com
-Subject: [PATCH v9 11/26] hw/arm/virt: Make sure virt_get_caches() keeps on
- reading CLIDR_EL1 as 0
-Date: Wed, 16 Sep 2026 16:45:34 +0200
-Message-ID: <20260916144721.751810-12-eric.auger@redhat.com>
+Subject: [PATCH v9 10/26] target/arm/kvm: Retrieve writable ID reg map
+Date: Wed, 16 Sep 2026 16:45:33 +0200
+Message-ID: <20260916144721.751810-11-eric.auger@redhat.com>
 In-Reply-To: <20260916144721.751810-1-eric.auger@redhat.com>
 References: <20260916144721.751810-1-eric.auger@redhat.com>
 MIME-Version: 1.0
 X-Scanned-By: MIMEDefang 3.0 on 10.30.177.17
-X-Mimecast-MFC-PROC-ID: P9m2xA5tKoGdeVLLV-TIiraxAwRC5BUlkaGXxSVNAqM_1789570110
+X-Mimecast-MFC-PROC-ID: dY5x7X01YFABKtdGwrx2FqHiCoPxIoub4sPP502VWsY_1789570105
 X-Mimecast-Originator: redhat.com
 Content-Transfer-Encoding: 8bit
 content-type: text/plain; charset="US-ASCII"; x-default=true
@@ -93,40 +92,125 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-In KVM mode, virt_get_caches() currently gets a zero value for the
-CLIDR_EL1 register. This is due to the fact CLIDR is never read from
-host. This is a bug.
+From: Cornelia Huck <cohuck@redhat.com>
 
-Soon we will initialize all writable isar.idreg[] from host and this
-includes CLIDR_EL1. However we cannot directly fix the initialization,
-first because it would change the way the guest is exposed caches in
-DT/ACPI descriptions and because some host values would be rejected
-by the current QEMU code, expecially in the case host has a unified
-L1 cache which is currently not supported and triggers the following
-errod: "Unified type is not implemented at level 1" error.
+Add an helper to retrieve the writable id reg bitmask.
 
-So this issue will be fixed separately.
+then retrieve the writable_map array and dispatch it in the writable_map
+fields of arm64_id_regs[] elements.
 
 Signed-off-by: Eric Auger <eric.auger@redhat.com>
----
- hw/arm/virt.c | 4 ++++
- 1 file changed, 4 insertions(+)
+Signed-off-by: Cornelia Huck <cohuck@redhat.com>
 
-diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-index 0871a35e11..6c87ac133a 100644
---- a/hw/arm/virt.c
-+++ b/hw/arm/virt.c
-@@ -342,6 +342,10 @@ unsigned int virt_get_caches(const VirtMachineState *vms, CPUCoreCaches *caches)
-     ARMISARegisters *isar = &armcpu->isar;
-     uint32_t clidr = GET_IDREG(isar, CLIDR);
+---
+
+v7 -> v8
+- added kvm_enabled()
+
+v5 -> v6
+- use arm64_id_regs[].writable_map
+- squashed 2 commits (helper + user)
+- removed stub
+---
+ target/arm/kvm.c | 61 ++++++++++++++++++++++++++++++++++++++++++++++++
+ 1 file changed, 61 insertions(+)
+
+diff --git a/target/arm/kvm.c b/target/arm/kvm.c
+index ed99be7fd8..c6eac41991 100644
+--- a/target/arm/kvm.c
++++ b/target/arm/kvm.c
+@@ -28,6 +28,7 @@
+ #include "kvm_arm.h"
+ #include "cpu.h"
+ #include "cpu-sysregs.h"
++#include "cpu-idregs.h"
+ #include "trace.h"
+ #include "internals.h"
+ #include "hw/pci/pci.h"
+@@ -51,6 +52,7 @@ const KVMCapabilityInfo kvm_arch_required_capabilities[] = {
+ static bool cap_has_mp_state;
+ static bool cap_has_inject_serror_esr;
+ static bool cap_has_inject_ext_dabt;
++static bool writable_map_dispatched;
  
-+    if (kvm_enabled()) {
-+        clidr = 0;
+ /**
+  * ARMHostCPUFeatures: information about the host CPU (identified
+@@ -273,6 +275,21 @@ static uint32_t kvm_arm_sve_get_vls(int fd)
+     return vls[0] & MAKE_64BIT_MASK(0, ARM_MAX_VQ);
+ }
+ 
++static int kvm_feature_idx_to_idregs_idx(int kidx)
++{
++    int op1, crm, op2;
++    ARMSysRegs sysreg;
++
++    op1 = kidx / 64;
++    if (op1 == 2) {
++        op1 = 3;
++    }
++    crm = (kidx % 64) / 8;
++    op2 = kidx % 8;
++    sysreg = ENCODE_ID_REG(3, op1, 0, crm, op2);
++    return get_sysreg_idx(sysreg);
++}
++
+ static void kvm_arm_get_host_cpu_features(ARMHostCPUFeatures *ahcf)
+ {
+     /* Identify the feature bits corresponding to the host CPU, and
+@@ -480,9 +497,53 @@ static void kvm_arm_get_host_cpu_features(ARMHostCPUFeatures *ahcf)
+     ahcf->features = features;
+ }
+ 
++static int kvm_arm_get_writable_id_regs(uint64_t *idregmap)
++{
++    int cap_writable_id_regs;
++    struct reg_mask_range range = {
++        .range = KVM_ARM_FEATURE_ID_RANGE,
++        .reserved = {0},
++        .addr = (uint64_t)idregmap,
++    };
++
++    cap_writable_id_regs =
++        kvm_check_extension(kvm_state, KVM_CAP_ARM_SUPPORTED_REG_MASK_RANGES);
++
++    if (!cap_writable_id_regs ||
++        !(cap_writable_id_regs & (1 << KVM_ARM_FEATURE_ID_RANGE))) {
++        return -ENOSYS;
 +    }
 +
-     for (int cache_level = 1; cache_level <= CLIDR_CTYPE_MAX_CACHE_LEVEL;
-          cache_level++) {
-         uint8_t ctype =
++    if (kvm_vm_ioctl(kvm_state, KVM_ARM_GET_REG_WRITABLE_MASKS, &range)) {
++        return -errno;
++    }
++    return 0;
++}
++
+ void kvm_arm_set_cpu_features_from_host(ARMCPU *cpu)
+ {
+     CPUARMState *env = &cpu->env;
++    uint64_t *writable_map;
++
++    writable_map = g_new(uint64_t, KVM_ARM_FEATURE_ID_RANGE_SIZE);
++
++    if (kvm_enabled() && !writable_map_dispatched &&
++        !kvm_arm_get_writable_id_regs(writable_map)) {
++        for (int i = 0; i < KVM_ARM_FEATURE_ID_RANGE_SIZE; i++) {
++            uint64_t mask = writable_map[i];
++
++            if (mask) {
++                int idx = kvm_feature_idx_to_idregs_idx(i);
++
++                if (idx < 0 || idx > ARRAY_SIZE(arm64_id_regs)) {
++                    continue;
++                }
++                arm64_id_regs[idx].writable_mask = mask;
++            }
++        }
++        writable_map_dispatched = true;
++    }
++    g_free(writable_map);
+ 
+     if (!arm_host_cpu_features.dtb_compatible) {
+         kvm_arm_get_host_cpu_features(&arm_host_cpu_features);
 -- 
 2.53.0
 

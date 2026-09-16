@@ -4,37 +4,37 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DE623C88E77
-	for <qemu-arm@archiver.kernel.org>; Wed, 16 Sep 2026 10:02:07 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 54115C88E5C
+	for <qemu-arm@archiver.kernel.org>; Wed, 16 Sep 2026 10:02:11 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1x6mRn-0008Ai-Dl; Wed, 16 Sep 2026 06:00:59 -0400
+	id 1x6mS5-0008MT-IS; Wed, 16 Sep 2026 06:01:19 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mohamed@unpredictable.fr>)
- id 1x6mRZ-00086k-1F
- for qemu-arm@nongnu.org; Wed, 16 Sep 2026 06:00:49 -0400
-Received: from qs-2004d-snip6-5.eps.apple.com ([2a01:b747:3006:206::26]
+ id 1x6mRg-00087t-GP
+ for qemu-arm@nongnu.org; Wed, 16 Sep 2026 06:00:54 -0400
+Received: from qs-2003c-snip6-6.eps.apple.com ([2a01:b747:3006:204::1d]
  helo=outbound.qs.icloud.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mohamed@unpredictable.fr>)
- id 1x6mRT-0005DF-2E
- for qemu-arm@nongnu.org; Wed, 16 Sep 2026 06:00:44 -0400
+ id 1x6mRb-0005EO-8v
+ for qemu-arm@nongnu.org; Wed, 16 Sep 2026 06:00:51 -0400
 Received: from outbound.qs.icloud.com (unknown [127.0.0.2])
  by p00-icloudmta-asmtp-us-east-2d-100-percent-8 (Postfix) with ESMTPS id
- DB3B018009F7; Wed, 16 Sep 2026 10:00:34 +0000 (UTC)
-X-ICL-RepId: 01a0a9a9-3937-7679-a047-fd3e700a25e0
-X-ICL-Out-Info: HUtFAUMHWwJACUgBTUQeDx5WFlZNRAJCTQ1OHVwPUhxEDlYCVRcOVk1UF1sMWg5WMEwWQx9SD1sTTRlRAVJFVAIZHldQQgVCAlwcWg5DClAcXFZVHxcZUU0ISxMFUgddTVYNRw9YHlwUFwlAQ14IXh9MHB0OWAYSAE0KDjYGWQVeCVYDQwU2EhRdRUYDRxlXFFAbRwxVB1deXwoTAF4PD0wLSAFbB1IDRghIA10FWhxHCkABWBpZHx1WEFIAUg9yBVcIQQhTAlEEWBpfCBkNQE4ZDEodUlZRBUoMXABoD10dWBFd
+ 3641418009FE; Wed, 16 Sep 2026 10:00:42 +0000 (UTC)
+X-ICL-RepId: 01a0a9a9-5595-7a0e-b009-edd138a9faa8
+X-ICL-Out-Info: HUtFAUMHWwJACUgBTUQeDx5WFlZNRAJCTQ1OHVwPUhxEDlYCVRcOVk1UF1sMWg5WMEwWQx9SD1sTTRlRAVJFVAIZHldQQgVCAlwcWg5DClAcXFZVHxcZUU0IShMFUgddTVYNRw9YHlwUFwlAQ14IXh9MHB0OWAYSAE0KDjYGWQVeCVYDQwU2EhRdRUYDRxlXFFAbRwxVB1deXwoTAF4PD0wLSAFbB1IDRghIA10FWhxHCkABWBpdHx1WEFIAUg9yBVcIQQhTAlEEWBpfCBkNQE4ZDEodUlZRBUoMXABoD10dWBFd
 Dkim-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=unpredictable.fr;
- s=sig1; t=1789552836; x=1792144836;
- bh=iYVACPKWHpWfFPVC6CpICnn9uOMZiXBkx8rjI67+qrA=;
- h=From:To:Subject:Date:Message-ID:MIME-Version:Content-Type:x-icloud-hme;
- b=PVtSaJMCzgNxZay9JF0P/ShpaYcn07kedhVExgI5seDfLtyUCTDWG15/RE3YCSQAY8MGCY8kgjmjCRhdtt53/jJ2P3WTgJAslmTe73RZHeDYhCuFnTVgJPWawIrLxNZ36wMxmP1QSgepejlxPnsc2j27WdnKFImV5j5Rly3A1+FcXpaXO7qmmNlnXeVXXJzuM2+n7lxeGgSxNTuRpALfUQl9B45ccBfntN1uymq+AJMGT4Lcrqp5LHSajkeEwZRsaMl1x3jN9p1KXO1GLUpUl6dKxDMO8mzIQlqjivV++PscDE2ULMKe0XarNIR9c/KrCfo7H3oQfgxd9sL6el/hDA==
+ s=sig1; t=1789552845; x=1792144845;
+ bh=X43fhFYPtF0mjqJMmFhMIodO6U95ZjocBPYULWRQocY=;
+ h=From:To:Subject:Date:Message-ID:MIME-Version:x-icloud-hme;
+ b=QRWFJb+ppjsbu/cxRq+foxEmywxyHAqZqMKo4D61ygGIqTrb75iRyjaS5YfUg6O5PPKz1mx9CVKj2Ao+Jh9OrMIvns5FxOZWLTzDdlxipldoJWta1RG7QmlvikVS8hde/iM5n86elXjmMCgR7s6xCOepIB+NYffFXoODYn7Zwov8BD49zcQsQM8JO79f6vMNE/UFixGyDVcpS91J86kxlob0bzi0JvA4wGurGtI4p0KSeLLcgRqaGY/jtq7aBubSIZIiY0iqwOJQx6QTNOFGNX6ovX9y2+EyPGsmtw9Qrbdz++EICTbWvr2Po9kr4a640U2hVHwEA1rToI93RSEsZQ==
 mail-alias-created-date: 1752046281608
 Received: from localhost.localdomain (unknown [17.57.155.37])
  by p00-icloudmta-asmtp-us-east-2d-100-percent-8 (Postfix) with ESMTPSA id
- 27D341800156; Wed, 16 Sep 2026 10:00:33 +0000 (UTC)
+ 190DC18000BF; Wed, 16 Sep 2026 10:00:40 +0000 (UTC)
 From: Mohamed Mediouni <mohamed@unpredictable.fr>
 To: qemu-devel@nongnu.org
 Cc: "Michael S. Tsirkin" <mst@redhat.com>,
@@ -44,40 +44,37 @@ Cc: "Michael S. Tsirkin" <mst@redhat.com>,
  qemu-arm@nongnu.org, Phil Dennis-Jordan <phil@philjordan.eu>,
  Akihiko Odaki <odaki@rsg.ci.i.u-tokyo.ac.jp>,
  Mohamed Mediouni <mohamed@unpredictable.fr>,
- Alexander Graf <agraf@csgraf.de>, Paolo Bonzini <pbonzini@redhat.com>,
- Lucas Amaral <lucaaamaral@gmail.com>
-Subject: [RFC PATCH v8 01/10] target/arm/emulate: add ISV=0 emulation library
- with load/store immediate
-Date: Wed, 16 Sep 2026 12:00:09 +0200
-Message-ID: <20260916100021.73825-2-mohamed@unpredictable.fr>
+ Alexander Graf <agraf@csgraf.de>, Paolo Bonzini <pbonzini@redhat.com>
+Subject: [RFC PATCH v8 05/10] vmapple: apple-gfx: make it work on the latest
+ macOS release
+Date: Wed, 16 Sep 2026 12:00:13 +0200
+Message-ID: <20260916100021.73825-6-mohamed@unpredictable.fr>
 X-Mailer: git-send-email 2.54.0
 In-Reply-To: <20260916100021.73825-1-mohamed@unpredictable.fr>
 References: <20260916100021.73825-1-mohamed@unpredictable.fr>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwOTE2MDEzMCBTYWx0ZWRfX8E/W9urafuAw
- t2be0di8dWbmG/fjr/ZQa63U8c+OUUoJMFHxXcCZEznejGNO7CcoYWPr7+i2L5oNADwtg9Di53u
- X6nNSwR+OneSemrqTpzGvyTdvcKutXqxOcNEkHYYztwM7EOuczmCbU4g5+9UXDzMolUnb7Tzqcy
- K0DQpV9cNc0qCilAJvOS/9UVKm5w20T3uOx51EsxBpej15+0c7Le1eghpeIIioD7qH56jvxi/Mz
- 0CbeZOctxFP033KTvm77jPXJCfaGVwjprNF+6giwxJOHm0nWrW/W3HGVvjVyCSELYkraG0RGSyJ
- IF7mqiSuQ7uGQyChSY27qMCIhDCaoWqFfX87qEBn/rmvN4l9I0zmVHwacdzZ/s=
-X-Proofpoint-ORIG-GUID: 9yRJFkPyltSBVSl22Q7hV03RCO_z-zz0
-X-Proofpoint-GUID: 9yRJFkPyltSBVSl22Q7hV03RCO_z-zz0
-X-Authority-Info-Out: v=2.4 cv=D8VK6/Rj c=1 sm=1 tr=0 ts=6aaa68c3
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwOTE2MDEzMCBTYWx0ZWRfX3l0axmXKeZSI
+ Dx1nv3vJ5B3OokI4gdjv2TZUshQY+flVAagHvRhHMafLhoMlSzkdOVwx+mK8FJ+pFCTubC6Su2P
+ Fl0loInVUDieW/KO0nJZd46haf7xUnP9Wnij43acigO8hpvh+YIVzPsD/OaG9KKESw1VibCIhX9
+ 112Lf7GD9Xhi7b+99oJG5jtvbyXWk7ky2Ll4yjGicIznlhvQ6yHb+ZaJGEOuaI4EmcSjC0M9hqo
+ f0Rls0VPot5SwD91IGxFLarQ2avkyA+EmrW2L74c6EjnJEJWiireQXu87NmqlAQ8aCriZH2+dk3
+ /nyuh/L+ZUP86Y6wDljVMMOl99m8XOTnnuwDjK7H3d338vYIPykQYmK/Is9hPI=
+X-Authority-Info-Out: v=2.4 cv=f51FxeyM c=1 sm=1 tr=0 ts=6aaa68cb
  cx=c_apl:c_pps:t_out a=bsP7O+dXZ5uKcj+dsLqiMw==:117
- a=bsP7O+dXZ5uKcj+dsLqiMw==:17 a=IkcTkHD0fZMA:10 a=VdqzKS8jKosA:10
- a=VkNPw1HP01LnGYTKEx00:22 a=pGLkceISAAAA:8 a=ieRqX75kiepghOHPk6kA:9
- a=3ZKOabzyN94A:10 a=QEXdDO2ut3YA:10
-X-JNJ: AAAAAAAB+/kp2nMrTXbJvtgaVa+TYWS69qzD+P7TJ2ftMX6JU2wMGBQGnf+xpsJeOZg7NQkzy3FumhT6rtrZg4g1irLwdNVOuUCAvwvkRfkp61iqUqvB3lb59m+fL++UFlASX/omFHhS3OGFd4fujEwjDl7E9JxP32EHMXgbIJllC8Jo9gDhModWxxNVit2kh8X9+Ui37C/DK9/46ECREySAvmpAipay+PxeuoGgwhFaNvALmPmvaacaWPML8RS08dpjXEqvgrTAxK7wAnzmFRNUWSfp2FMwKJXYbJZ34cP8qJHdddel5dGg/WA2DV7zUI/7TmzjvxfefiUHJAeMQLF3hrSCbNiZoUibxa7BI/griVNcOl/dppw//bDwgB9SLV5RduTrv0LpR3QfSurR0yWwfv4YMMYWzU64QjKcZQUSrHaw/TGRASsZWGP2k1VEMmvmvWbspmfC8nG1CMZederX1hfXC2UbTxRlZE9pjLFZWKc10RENgFUHjSYGX3xR+CsK7lAnPPXDfI/zyOUX5kbIUHqb8hH4qjAgZNd1Z+Xim64QsHJtVCSu/VAlb1xglq6xOJkgrg5/MwNrrZ2A4XeapjQFQGMlsYCaBCgItyS2FvR2AGrCOVmerHc3vjWma7BD7otII9y0FZ9EHDMrEt3v5aug+KxH3EYG4SOBXaTfdCd5HSlChseGQoC70fVdCBe0zHO8Nbo5VYHmgNF67j+k6Qt2x9s3udqLLyTCfwsZQQg/w8uKnNMaISE/LAGBKpPz0SilYbqnEYDyKkLvKVO6lDZLLJ+wXvaLbHx+mZlFzKbKK5UBs6gnS0nvIdIA5Y63YX52LPAJo7FLffLRKmO/45A53T17DpH0/7ChM4qOI30je/JAzi9JOMegZO+A
-Received-SPF: pass client-ip=2a01:b747:3006:206::26;
+ a=bsP7O+dXZ5uKcj+dsLqiMw==:17 a=XaNHVGzJZ3ayr3Wv:21 a=VdqzKS8jKosA:10
+ a=VkNPw1HP01LnGYTKEx00:22 a=_6z4mGRrJ5MUOnpCZZoA:9
+X-Proofpoint-GUID: 2XJXUsEPn1Kp8y9Dd8iWsHjbOmsgSWfd
+X-Proofpoint-ORIG-GUID: 2XJXUsEPn1Kp8y9Dd8iWsHjbOmsgSWfd
+X-JNJ: AAAAAAAB3BVlHVz2hRU3b06Ye63weOhbJ+o3srlVAZsbBAeSccthi9IYotdfkj5uxuZmXIWemwXKA2j17XAmeXcAv49qRRiEGhuEVTR/ZC7lHl1ce6dHskjV0wSyJztt0HAHAGyEpoSXa37Gzk7NEyDuZ0vjxhDCjYPmEk1kQXXowL2Wv9GBfy0Krk4/LhN7db2jMERGRnh1sYsJDx08JiocmvhOXEzLD99vJC/LxZxCoW1a7HRiSNqvV5pxzQtKZYHdErNsHwTQZZ8f7NnnPOR87MZ1iigsypfYj9l5MOgVPcntzAVRlVLQcAO9xSJM+xD8NSiYkKfcNMLTZwiQvT6USslYJHKTdOvOdlSqkGV30gz5u3L61LOh2q2S6B9EchRvoYAhBuJSVQwcRI+AeSzil/SPJ0nntPkxzBloPtB6LBdpCtUhsGK5uJGWILkd2n2pVBUXzIbQZiQ8anqb5eMzyHBxRl1u15l+4+8pybXuv28+n63gjpZjdy3qofrRthgxe3nk7QskQ2COSQy3ESDY0rTKD5Qodf73V18REyT243f+p+RQvhdqjnhQB6aDrK2QqII0dvaiiUzSheG0kGa4ePHGQBNa/MN1kUdbLcNQSJXj1Sv7Seziu070m/aUllkQPn2hjeHHcQ643ERSzU7UKP1OMxrhJfnVbTXwt7xtH2EObnHZk4auWNVBK/jvYdvdRiQB5RK/cz29DV1Te4zIfC4LdCGlAETO5qZLR2opozhRxc5RipVToy2tsLh2Jumzwo9jMqp1Nfbt+dLXSmXKiCIcKo2HmLnwuxrXiC6G3cYvD2awcQb9Cgll0JODuwwfu6oBiZR8PXpYY1L+1LZBtfg9kthLgz/YJucf1QrVB+NvtsE=
+Received-SPF: pass client-ip=2a01:b747:3006:204::1d;
  envelope-from=mohamed@unpredictable.fr; helo=outbound.qs.icloud.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_PASS=-0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -93,497 +90,315 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-From: Lucas Amaral <lucaaamaral@gmail.com>
+Follow changes in memory management introduced on macOS 15.4.
 
-Add a shared emulation library for AArch64 load/store instructions that
-cause ISV=0 data aborts under hardware virtualization (HVF, WHPX).
+The legacy memory management API has been removed for the IOSurface mapper on that macOS version.
 
-When the Instruction Syndrome Valid bit is clear, the hypervisor cannot
-determine the faulting instruction's target register or access size from
-the syndrome alone.  This library fetches and decodes the instruction
-using a decodetree-generated decoder, then emulates it by accessing the
-vCPU's register file (CPUARMState) and memory (cpu_memory_rw_debug)
-directly.
+Also enable process isolation for a sandboxed GPU process when on a new OS.
 
-This patch establishes the framework and adds load/store single with
-immediate addressing — the most common ISV=0 trigger.  Subsequent
-patches add register-offset, pair, exclusive, and atomic instructions.
-
-Instruction coverage:
-  - STR/LDR (GPR): unscaled, post-indexed, unprivileged, pre-indexed,
-    unsigned offset — all sizes (8/16/32/64-bit), sign/zero extension
-  - STR/LDR (SIMD/FP): same addressing modes, 8-128 bit elements
-  - PRFM: prefetch treated as NOP
-  - DC cache maintenance (SYS CRn=C7): NOP on MMIO
-
-This library uses its own a64-ldst.decode rather than sharing
-target/arm/tcg/a64.decode.  TCG's trans_* functions are a compiler:
-they emit IR ops into a translation block for later execution.  This
-library's trans_* functions are an interpreter: they execute directly
-against the vCPU register file and memory.  The decodetree-generated
-dispatcher calls trans_* by name, so both cannot coexist in the same
-translation unit.  Decode patterns are kept consistent with TCG's
-where possible.
-
-Decodetree differences from TCG:
-  - &ldst_imm adds a 'u' flag to distinguish 9-bit signed vs 12-bit
-    unsigned immediate forms.  TCG uses %uimm_scaled to pre-scale
-    the unsigned immediate at decode time; here imm:12 is extracted
-    raw and the handler scales it.
-
-Signed-off-by: Lucas Amaral <lucaaamaral@gmail.com>
+Signed-off-by: Mohamed Mediouni <mohamed@unpredictable.fr>
 ---
- target/arm/emulate/a64-ldst.decode | 129 ++++++++++++++++
- target/arm/emulate/arm_emulate.c   | 237 +++++++++++++++++++++++++++++
- target/arm/emulate/arm_emulate.h   |  30 ++++
- target/arm/emulate/meson.build     |   8 +
- target/arm/meson.build             |   1 +
- 5 files changed, 405 insertions(+)
- create mode 100644 target/arm/emulate/a64-ldst.decode
- create mode 100644 target/arm/emulate/arm_emulate.c
- create mode 100644 target/arm/emulate/arm_emulate.h
- create mode 100644 target/arm/emulate/meson.build
+ hw/display/apple-gfx-mmio.m | 58 ++++++++++++++++++------
+ hw/display/apple-gfx.h      | 16 +++++++
+ hw/display/apple-gfx.m      | 90 ++++++++++++++++++++++++++++++++-----
+ 3 files changed, 138 insertions(+), 26 deletions(-)
 
-diff --git a/target/arm/emulate/a64-ldst.decode b/target/arm/emulate/a64-ldst.decode
-new file mode 100644
-index 0000000000..c887dcba7d
---- /dev/null
-+++ b/target/arm/emulate/a64-ldst.decode
-@@ -0,0 +1,129 @@
-+# AArch64 load/store instruction patterns for ISV=0 emulation
-+#
-+# Copyright (c) 2026 Lucas Amaral <lucaaamaral@gmail.com>
-+#
-+# SPDX-License-Identifier: GPL-2.0-or-later
+diff --git a/hw/display/apple-gfx-mmio.m b/hw/display/apple-gfx-mmio.m
+index 58beaadd1f..19e2d38a1e 100644
+--- a/hw/display/apple-gfx-mmio.m
++++ b/hw/display/apple-gfx-mmio.m
+@@ -19,6 +19,7 @@
+ #include "hw/core/irq.h"
+ #include "apple-gfx.h"
+ #include "trace.h"
++#include "system/address-spaces.h"
+ 
+ #import <ParavirtualizedGraphics/ParavirtualizedGraphics.h>
+ 
+@@ -36,12 +37,19 @@ typedef bool(^IOSFCMapMemory)(uint64_t phys, uint64_t len, bool ro, void **va,
+ 
+ @interface PGDeviceDescriptor (IOSurfaceMapper)
+ @property (readwrite, nonatomic) bool usingIOSurfaceMapper;
++@property (readwrite, nonatomic) bool enableArgumentBuffers;
++@property (readwrite, nonatomic) bool enableProcessIsolation;
++@property (readwrite, nonatomic) bool enableProtectedContent;
 +
-+### Argument sets
++@property (readwrite, nonatomic, copy, nullable) PGMemoryMapDescriptor* memoryMapDescriptor;
+ @end
+ 
+ @interface PGIOSurfaceHostDeviceDescriptor : NSObject
+ -(PGIOSurfaceHostDeviceDescriptor *)init;
+ @property (readwrite, nonatomic, copy, nullable) IOSFCMapMemory mapMemory;
+ @property (readwrite, nonatomic, copy, nullable) IOSFCUnmapMemory unmapMemory;
++@property (readwrite, nonatomic, copy, nullable) PGMemoryMapDescriptor* memoryMapDescriptor;
++@property (readwrite, nonatomic) unsigned long long mmioLength;
+ @property (readwrite, nonatomic, copy, nullable) IOSFCRaiseInterrupt raiseInterrupt;
+ @end
+ 
+@@ -183,19 +191,32 @@ static bool apple_gfx_mmio_unmap_surface_memory(void *ptr)
+         [PGIOSurfaceHostDeviceDescriptor new];
+     PGIOSurfaceHostDevice *iosfc_host_dev;
+ 
+-    iosfc_desc.mapMemory =
+-        ^bool(uint64_t phys, uint64_t len, bool ro, void **va, void *e, void *f) {
+-            *va = apple_gfx_mmio_map_surface_memory(phys, len, ro);
+-
+-            trace_apple_gfx_iosfc_map_memory(phys, len, ro, va, e, f, *va);
+-
+-            return *va != NULL;
+-        };
+-
+-    iosfc_desc.unmapMemory =
+-        ^bool(void *va, void *b, void *c, void *d, void *e, void *f) {
+-            return apple_gfx_mmio_unmap_surface_memory(va);
+-        };
++    /*
++     * The legacy memory management API is no longer present
++     * for the IOSurface mapper as of macOS 15.4.
++     */
++    if (@available(macOS 15.4, *)) {
++        PGMemoryMapDescriptor *memory_map_descriptor = [PGMemoryMapDescriptor new];
++        FlatView* fv = address_space_to_flatview(&address_space_memory);
++        flatview_for_each_range(fv, apple_gfx_register_memory_cb, memory_map_descriptor);
++        /* the device model defines this as a single-page MMIO region, hence 16KB */
++        iosfc_desc.mmioLength = 0x10000;
++        iosfc_desc.memoryMapDescriptor = memory_map_descriptor;
++    } else {
++        iosfc_desc.mapMemory =
++            ^bool(uint64_t phys, uint64_t len, bool ro, void **va, void *e, void *f) {
++                *va = apple_gfx_mmio_map_surface_memory(phys, len, ro);
 +
-+# Load/store immediate (unscaled, pre/post-index, unprivileged, unsigned offset)
-+# 'u' flag: 0 = 9-bit signed immediate (byte offset), 1 = 12-bit unsigned (needs << sz)
-+&ldst_imm       rt rn imm sz sign w p unpriv ext u
++                trace_apple_gfx_iosfc_map_memory(phys, len, ro, va, e, f, *va);
 +
-+### Format templates
++                return *va != NULL;
++            };
 +
-+# Load/store immediate (9-bit signed)
-+@ldst_imm       .. ... . .. .. . imm:s9 .. rn:5 rt:5   &ldst_imm u=0 unpriv=0 p=0 w=0
-+@ldst_imm_pre   .. ... . .. .. . imm:s9 .. rn:5 rt:5   &ldst_imm u=0 unpriv=0 p=0 w=1
-+@ldst_imm_post  .. ... . .. .. . imm:s9 .. rn:5 rt:5   &ldst_imm u=0 unpriv=0 p=1 w=1
-+@ldst_imm_user  .. ... . .. .. . imm:s9 .. rn:5 rt:5   &ldst_imm u=0 unpriv=1 p=0 w=0
-+
-+# Load/store unsigned offset (12-bit, handler scales by << sz)
-+@ldst_uimm      .. ... . .. .. imm:12 rn:5 rt:5        &ldst_imm u=1 unpriv=0 p=0 w=0
-+
-+### Load/store register — unscaled immediate (LDUR/STUR)
-+
-+# GPR
-+STR_i           sz:2 111 0 00 00 0 ......... 00 ..... .....    @ldst_imm sign=0 ext=0
-+LDR_i           00 111 0 00 01 0 ......... 00 ..... .....      @ldst_imm sign=0 ext=1 sz=0
-+LDR_i           01 111 0 00 01 0 ......... 00 ..... .....      @ldst_imm sign=0 ext=1 sz=1
-+LDR_i           10 111 0 00 01 0 ......... 00 ..... .....      @ldst_imm sign=0 ext=1 sz=2
-+LDR_i           11 111 0 00 01 0 ......... 00 ..... .....      @ldst_imm sign=0 ext=0 sz=3
-+LDR_i           00 111 0 00 10 0 ......... 00 ..... .....      @ldst_imm sign=1 ext=0 sz=0
-+LDR_i           01 111 0 00 10 0 ......... 00 ..... .....      @ldst_imm sign=1 ext=0 sz=1
-+LDR_i           10 111 0 00 10 0 ......... 00 ..... .....      @ldst_imm sign=1 ext=0 sz=2
-+LDR_i           00 111 0 00 11 0 ......... 00 ..... .....      @ldst_imm sign=1 ext=1 sz=0
-+LDR_i           01 111 0 00 11 0 ......... 00 ..... .....      @ldst_imm sign=1 ext=1 sz=1
-+
-+# SIMD/FP
-+STR_v_i         sz:2 111 1 00 00 0 ......... 00 ..... .....    @ldst_imm sign=0 ext=0
-+STR_v_i         00 111 1 00 10 0 ......... 00 ..... .....      @ldst_imm sign=0 ext=0 sz=4
-+LDR_v_i         sz:2 111 1 00 01 0 ......... 00 ..... .....    @ldst_imm sign=0 ext=0
-+LDR_v_i         00 111 1 00 11 0 ......... 00 ..... .....      @ldst_imm sign=0 ext=0 sz=4
-+
-+### Load/store register — post-indexed
-+
-+# GPR
-+STR_i           sz:2 111 0 00 00 0 ......... 01 ..... .....    @ldst_imm_post sign=0 ext=0
-+LDR_i           00 111 0 00 01 0 ......... 01 ..... .....      @ldst_imm_post sign=0 ext=1 sz=0
-+LDR_i           01 111 0 00 01 0 ......... 01 ..... .....      @ldst_imm_post sign=0 ext=1 sz=1
-+LDR_i           10 111 0 00 01 0 ......... 01 ..... .....      @ldst_imm_post sign=0 ext=1 sz=2
-+LDR_i           11 111 0 00 01 0 ......... 01 ..... .....      @ldst_imm_post sign=0 ext=0 sz=3
-+LDR_i           00 111 0 00 10 0 ......... 01 ..... .....      @ldst_imm_post sign=1 ext=0 sz=0
-+LDR_i           01 111 0 00 10 0 ......... 01 ..... .....      @ldst_imm_post sign=1 ext=0 sz=1
-+LDR_i           10 111 0 00 10 0 ......... 01 ..... .....      @ldst_imm_post sign=1 ext=0 sz=2
-+LDR_i           00 111 0 00 11 0 ......... 01 ..... .....      @ldst_imm_post sign=1 ext=1 sz=0
-+LDR_i           01 111 0 00 11 0 ......... 01 ..... .....      @ldst_imm_post sign=1 ext=1 sz=1
-+
-+# SIMD/FP
-+STR_v_i         sz:2 111 1 00 00 0 ......... 01 ..... .....    @ldst_imm_post sign=0 ext=0
-+STR_v_i         00 111 1 00 10 0 ......... 01 ..... .....      @ldst_imm_post sign=0 ext=0 sz=4
-+LDR_v_i         sz:2 111 1 00 01 0 ......... 01 ..... .....    @ldst_imm_post sign=0 ext=0
-+LDR_v_i         00 111 1 00 11 0 ......... 01 ..... .....      @ldst_imm_post sign=0 ext=0 sz=4
-+
-+### Load/store register — unprivileged
-+
-+# GPR only (no SIMD/FP unprivileged forms)
-+STR_i           sz:2 111 0 00 00 0 ......... 10 ..... .....    @ldst_imm_user sign=0 ext=0
-+LDR_i           00 111 0 00 01 0 ......... 10 ..... .....      @ldst_imm_user sign=0 ext=1 sz=0
-+LDR_i           01 111 0 00 01 0 ......... 10 ..... .....      @ldst_imm_user sign=0 ext=1 sz=1
-+LDR_i           10 111 0 00 01 0 ......... 10 ..... .....      @ldst_imm_user sign=0 ext=1 sz=2
-+LDR_i           11 111 0 00 01 0 ......... 10 ..... .....      @ldst_imm_user sign=0 ext=0 sz=3
-+LDR_i           00 111 0 00 10 0 ......... 10 ..... .....      @ldst_imm_user sign=1 ext=0 sz=0
-+LDR_i           01 111 0 00 10 0 ......... 10 ..... .....      @ldst_imm_user sign=1 ext=0 sz=1
-+LDR_i           10 111 0 00 10 0 ......... 10 ..... .....      @ldst_imm_user sign=1 ext=0 sz=2
-+LDR_i           00 111 0 00 11 0 ......... 10 ..... .....      @ldst_imm_user sign=1 ext=1 sz=0
-+LDR_i           01 111 0 00 11 0 ......... 10 ..... .....      @ldst_imm_user sign=1 ext=1 sz=1
-+
-+### Load/store register — pre-indexed
-+
-+# GPR
-+STR_i           sz:2 111 0 00 00 0 ......... 11 ..... .....    @ldst_imm_pre sign=0 ext=0
-+LDR_i           00 111 0 00 01 0 ......... 11 ..... .....      @ldst_imm_pre sign=0 ext=1 sz=0
-+LDR_i           01 111 0 00 01 0 ......... 11 ..... .....      @ldst_imm_pre sign=0 ext=1 sz=1
-+LDR_i           10 111 0 00 01 0 ......... 11 ..... .....      @ldst_imm_pre sign=0 ext=1 sz=2
-+LDR_i           11 111 0 00 01 0 ......... 11 ..... .....      @ldst_imm_pre sign=0 ext=0 sz=3
-+LDR_i           00 111 0 00 10 0 ......... 11 ..... .....      @ldst_imm_pre sign=1 ext=0 sz=0
-+LDR_i           01 111 0 00 10 0 ......... 11 ..... .....      @ldst_imm_pre sign=1 ext=0 sz=1
-+LDR_i           10 111 0 00 10 0 ......... 11 ..... .....      @ldst_imm_pre sign=1 ext=0 sz=2
-+LDR_i           00 111 0 00 11 0 ......... 11 ..... .....      @ldst_imm_pre sign=1 ext=1 sz=0
-+LDR_i           01 111 0 00 11 0 ......... 11 ..... .....      @ldst_imm_pre sign=1 ext=1 sz=1
-+
-+# SIMD/FP
-+STR_v_i         sz:2 111 1 00 00 0 ......... 11 ..... .....    @ldst_imm_pre sign=0 ext=0
-+STR_v_i         00 111 1 00 10 0 ......... 11 ..... .....      @ldst_imm_pre sign=0 ext=0 sz=4
-+LDR_v_i         sz:2 111 1 00 01 0 ......... 11 ..... .....    @ldst_imm_pre sign=0 ext=0
-+LDR_v_i         00 111 1 00 11 0 ......... 11 ..... .....      @ldst_imm_pre sign=0 ext=0 sz=4
-+
-+### PRFM — unscaled immediate: prefetch is a NOP
-+
-+NOP             11 111 0 00 10 0 --------- 00 ----- -----
-+
-+### Load/store register — unsigned offset
-+
-+# GPR
-+STR_i           sz:2 111 0 01 00 ............ ..... .....       @ldst_uimm sign=0 ext=0
-+LDR_i           00 111 0 01 01 ............ ..... .....         @ldst_uimm sign=0 ext=1 sz=0
-+LDR_i           01 111 0 01 01 ............ ..... .....         @ldst_uimm sign=0 ext=1 sz=1
-+LDR_i           10 111 0 01 01 ............ ..... .....         @ldst_uimm sign=0 ext=1 sz=2
-+LDR_i           11 111 0 01 01 ............ ..... .....         @ldst_uimm sign=0 ext=0 sz=3
-+LDR_i           00 111 0 01 10 ............ ..... .....         @ldst_uimm sign=1 ext=0 sz=0
-+LDR_i           01 111 0 01 10 ............ ..... .....         @ldst_uimm sign=1 ext=0 sz=1
-+LDR_i           10 111 0 01 10 ............ ..... .....         @ldst_uimm sign=1 ext=0 sz=2
-+LDR_i           00 111 0 01 11 ............ ..... .....         @ldst_uimm sign=1 ext=1 sz=0
-+LDR_i           01 111 0 01 11 ............ ..... .....         @ldst_uimm sign=1 ext=1 sz=1
-+
-+# PRFM — unsigned offset
-+NOP             11 111 0 01 10 ------------ ----- -----
-+
-+# SIMD/FP
-+STR_v_i         sz:2 111 1 01 00 ............ ..... .....       @ldst_uimm sign=0 ext=0
-+STR_v_i         00 111 1 01 10 ............ ..... .....         @ldst_uimm sign=0 ext=0 sz=4
-+LDR_v_i         sz:2 111 1 01 01 ............ ..... .....       @ldst_uimm sign=0 ext=0
-+LDR_v_i         00 111 1 01 11 ............ ..... .....         @ldst_uimm sign=0 ext=0 sz=4
-+
-+### System instructions — DC cache maintenance
-+
-+# SYS with CRn=C7 covers all data cache operations (DC CIVAC, CVAC, etc.).
-+# On MMIO regions, cache maintenance is a harmless no-op.
-+NOP             1101 0101 0000 1 --- 0111 ---- --- -----
-diff --git a/target/arm/emulate/arm_emulate.c b/target/arm/emulate/arm_emulate.c
-new file mode 100644
-index 0000000000..02fefc30bf
---- /dev/null
-+++ b/target/arm/emulate/arm_emulate.c
-@@ -0,0 +1,237 @@
-+/*
-+ * AArch64 instruction emulation for ISV=0 data aborts
-+ *
-+ * Copyright (c) 2026 Lucas Amaral <lucaaamaral@gmail.com>
-+ *
-+ * SPDX-License-Identifier: GPL-2.0-or-later
-+ */
-+
-+#include "arm_emulate.h"
-+#include "target/arm/cpu.h"
-+#include "exec/cpu-common.h"
-+#include "exec/target_page.h"
-+
-+/* TODO: assumes LE guest data layout (sufficient for HVF/WHPX, both LE-only) */
-+
-+/* Named "DisasContext" as required by the decodetree code generator */
-+typedef struct {
-+    CPUState *cpu;
-+    CPUARMState *env;
-+    ArmEmulResult result;
-+} DisasContext;
-+
-+#include "decode-a64-ldst.c.inc"
-+
-+/* GPR data access (Rt, Rs, Rt2) -- register 31 = XZR */
-+
-+static uint64_t gpr_read(DisasContext *ctx, int reg)
-+{
-+    if (reg == 31) {
-+        return 0;  /* XZR */
++        iosfc_desc.unmapMemory =
++            ^bool(void *va, void *b, void *c, void *d, void *e, void *f) {
++                return apple_gfx_mmio_unmap_surface_memory(va);
++            };
 +    }
-+    return ctx->env->xregs[reg];
-+}
-+
-+static void gpr_write(DisasContext *ctx, int reg, uint64_t val)
-+{
-+    if (reg == 31) {
-+        return;  /* XZR -- discard */
-+    }
-+    ctx->env->xregs[reg] = val;
-+    ctx->cpu->vcpu_dirty = true;
-+}
-+
-+/* Base register access (Rn) -- register 31 = SP */
-+
-+static uint64_t base_read(DisasContext *ctx, int rn)
-+{
-+    return ctx->env->xregs[rn];
-+}
-+
-+static void base_write(DisasContext *ctx, int rn, uint64_t val)
-+{
-+    ctx->env->xregs[rn] = val;
-+    ctx->cpu->vcpu_dirty = true;
-+}
-+
-+/* SIMD/FP register access */
-+
-+static void fpreg_read(DisasContext *ctx, int reg, void *buf, int size)
-+{
-+    memcpy(buf, &ctx->env->vfp.zregs[reg], size);
-+}
-+
-+static void fpreg_write(DisasContext *ctx, int reg, const void *buf, int size)
-+{
-+    memset(&ctx->env->vfp.zregs[reg], 0, sizeof(ctx->env->vfp.zregs[reg]));
-+    memcpy(&ctx->env->vfp.zregs[reg], buf, size);
-+    ctx->cpu->vcpu_dirty = true;
-+}
-+
-+/* Memory access wrappers */
-+
-+static int mem_read(DisasContext *ctx, uint64_t va, void *buf, int size)
-+{
-+    if (((va & ~TARGET_PAGE_MASK) + size) > TARGET_PAGE_SIZE) {
-+        ctx->result = ARM_EMUL_ERR_MEM;
-+        return -1;
-+    }
-+    int ret = cpu_memory_rw_debug(ctx->cpu, va, buf, size, false);
-+    if (ret != 0) {
-+        ctx->result = ARM_EMUL_ERR_MEM;
-+    }
-+    return ret;
-+}
-+
-+static int mem_write(DisasContext *ctx, uint64_t va, const void *buf, int size)
-+{
-+    if (((va & ~TARGET_PAGE_MASK) + size) > TARGET_PAGE_SIZE) {
-+        ctx->result = ARM_EMUL_ERR_MEM;
-+        return -1;
-+    }
-+    int ret = cpu_memory_rw_debug(ctx->cpu, va, (void *)buf, size, true);
-+    if (ret != 0) {
-+        ctx->result = ARM_EMUL_ERR_MEM;
-+    }
-+    return ret;
-+}
-+
-+/* Sign/zero extension helpers */
-+
-+static uint64_t sign_extend(uint64_t val, int from_bits)
-+{
-+    int shift = 64 - from_bits;
-+    return (int64_t)(val << shift) >> shift;
-+}
-+
-+/* Apply sign/zero extension */
-+static uint64_t load_extend(uint64_t val, int sz, int sign, int ext)
-+{
-+    int data_bits = 8 << sz;
-+
-+    if (sign) {
-+        val = sign_extend(val, data_bits);
-+        if (ext) {
-+            /* Sign-extend to 32 bits (W register) */
-+            val &= 0xFFFFFFFF;
+ 
+     iosfc_desc.raiseInterrupt = ^bool(uint32_t vector) {
+         trace_apple_gfx_iosfc_raise_irq(vector);
+@@ -223,13 +244,22 @@ static void apple_gfx_mmio_realize(DeviceState *dev, Error **errp)
+         };
+ 
+         desc.usingIOSurfaceMapper = true;
+-        s->pgiosfc = apple_gfx_prepare_iosurface_host_device(s);
++        /* 
++         * Process isolation needs PGMemoryMapDescriptor instead of
++         * the legacy memory management interface present in releases
++         * older than macOS 15.4.
++         */
++        if (@available(macOS 15.4, *)) {
++            desc.enableProcessIsolation = true;
 +        }
-+    } else if (ext) {
-+        /* Zero-extend to 32 bits (W register) */
-+        val &= 0xFFFFFFFF;
-+    }
-+    return val;
-+}
-+
-+/* Load/store single -- immediate (GPR) (DDI 0487 C3.3.8 -- C3.3.13) */
-+
-+static bool trans_STR_i(DisasContext *ctx, arg_ldst_imm *a)
-+{
-+    int esize = (a->sz <= 3) ? (1 << a->sz) : 16;
-+    int64_t offset = a->u ? ((int64_t)(uint64_t)a->imm << a->sz)
-+                          : (int64_t)a->imm;
-+    uint64_t base = base_read(ctx, a->rn);
-+    uint64_t va = a->p ? base : base + offset;
-+
-+    uint64_t val = gpr_read(ctx, a->rt);
-+    if (mem_write(ctx, va, &val, esize) != 0) {
-+        return true;
-+    }
-+
-+    if (a->w) {
-+        base_write(ctx, a->rn, base + offset);
-+    }
-+    return true;
-+}
-+
-+static bool trans_LDR_i(DisasContext *ctx, arg_ldst_imm *a)
-+{
-+    int esize = (a->sz <= 3) ? (1 << a->sz) : 16;
-+    int64_t offset = a->u ? ((int64_t)(uint64_t)a->imm << a->sz)
-+                          : (int64_t)a->imm;
-+    uint64_t base = base_read(ctx, a->rn);
-+    uint64_t va = a->p ? base : base + offset;
-+    uint64_t val = 0;
-+
-+    if (mem_read(ctx, va, &val, esize) != 0) {
-+        return true;
-+    }
-+
-+    val = load_extend(val, a->sz, a->sign, a->ext);
-+    gpr_write(ctx, a->rt, val);
-+
-+    if (a->w) {
-+        base_write(ctx, a->rn, base + offset);
-+    }
-+    return true;
-+}
-+
-+/*
-+ * Load/store single -- immediate (SIMD/FP)
-+ * STR_v_i / LDR_v_i (DDI 0487 C3.3.10)
-+ */
-+
-+static bool trans_STR_v_i(DisasContext *ctx, arg_ldst_imm *a)
-+{
-+    int esize = (a->sz <= 3) ? (1 << a->sz) : 16;
-+    int64_t offset = a->u ? ((int64_t)(uint64_t)a->imm << a->sz)
-+                          : (int64_t)a->imm;
-+    uint64_t base = base_read(ctx, a->rn);
-+    uint64_t va = a->p ? base : base + offset;
-+    uint8_t buf[16];
-+
-+    fpreg_read(ctx, a->rt, buf, esize);
-+    if (mem_write(ctx, va, buf, esize) != 0) {
-+        return true;
-+    }
-+
-+    if (a->w) {
-+        base_write(ctx, a->rn, base + offset);
-+    }
-+    return true;
-+}
-+
-+static bool trans_LDR_v_i(DisasContext *ctx, arg_ldst_imm *a)
-+{
-+    int esize = (a->sz <= 3) ? (1 << a->sz) : 16;
-+    int64_t offset = a->u ? ((int64_t)(uint64_t)a->imm << a->sz)
-+                          : (int64_t)a->imm;
-+    uint64_t base = base_read(ctx, a->rn);
-+    uint64_t va = a->p ? base : base + offset;
-+    uint8_t buf[16];
-+
-+    if (mem_read(ctx, va, buf, esize) != 0) {
-+        return true;
-+    }
-+
-+    fpreg_write(ctx, a->rt, buf, esize);
-+
-+    if (a->w) {
-+        base_write(ctx, a->rn, base + offset);
-+    }
-+    return true;
-+}
-+
-+/* PRFM, DC cache maintenance -- treated as NOP */
-+static bool trans_NOP(DisasContext *ctx, arg_NOP *a)
-+{
-+    (void)ctx;
-+    (void)a;
-+    return true;
-+}
-+
-+/* Entry point */
-+
-+ArmEmulResult arm_emul_insn(CPUArchState *env, uint32_t insn)
-+{
-+    DisasContext ctx = {
-+        .cpu = env_cpu(env),
-+        .env = env,
-+        .result = ARM_EMUL_OK,
-+    };
-+
-+    if (!decode_a64_ldst(&ctx, insn)) {
-+        return ARM_EMUL_UNHANDLED;
-+    }
-+
-+    return ctx.result;
-+}
-diff --git a/target/arm/emulate/arm_emulate.h b/target/arm/emulate/arm_emulate.h
-new file mode 100644
-index 0000000000..7fe298394f
---- /dev/null
-+++ b/target/arm/emulate/arm_emulate.h
-@@ -0,0 +1,30 @@
-+/*
-+ * AArch64 instruction emulation library
-+ *
-+ * Copyright (c) 2026 Lucas Amaral <lucaaamaral@gmail.com>
-+ *
-+ * SPDX-License-Identifier: GPL-2.0-or-later
-+ */
-+
-+#ifndef ARM_EMULATE_H
-+#define ARM_EMULATE_H
-+
-+#include "qemu/osdep.h"
-+
-+/**
-+ * ArmEmulResult - return status from arm_emul_insn()
-+ */
-+typedef enum {
-+    ARM_EMUL_OK,         /* Instruction emulated successfully */
-+    ARM_EMUL_UNHANDLED,  /* Instruction not recognized by decoder */
-+    ARM_EMUL_ERR_MEM,    /* Memory access failed */
-+} ArmEmulResult;
-+
-+/**
-+ * arm_emul_insn - decode and emulate one AArch64 instruction
-+ *
-+ * Caller must synchronize CPU state and fetch @insn before calling.
-+ */
-+ArmEmulResult arm_emul_insn(CPUArchState *env, uint32_t insn);
-+
-+#endif /* ARM_EMULATE_H */
-diff --git a/target/arm/emulate/meson.build b/target/arm/emulate/meson.build
-new file mode 100644
-index 0000000000..e5455bd206
---- /dev/null
-+++ b/target/arm/emulate/meson.build
-@@ -0,0 +1,8 @@
-+# SPDX-License-Identifier: GPL-2.0-or-later
-+
-+gen_a64_ldst = decodetree.process('a64-ldst.decode',
-+    extra_args: ['--static-decode=decode_a64_ldst'])
-+
-+arm_common_system_ss.add(when: 'TARGET_AARCH64', if_true: [
-+    gen_a64_ldst, files('arm_emulate.c')
-+])
-diff --git a/target/arm/meson.build b/target/arm/meson.build
-index 0369f96b4c..1963c0ec21 100644
---- a/target/arm/meson.build
-+++ b/target/arm/meson.build
-@@ -61,6 +61,7 @@ arm_common_system_ss.add(files(
-   'ptw.c',
- ))
  
-+subdir('emulate')
- subdir('hvf')
- subdir('whpx')
+         if (!apple_gfx_common_realize(&s->common, dev, desc, errp)) {
+             [s->pgiosfc release];
+             s->pgiosfc = nil;
+         }
  
++        s->pgiosfc = apple_gfx_prepare_iosurface_host_device(s);
++
+         [desc release];
+         desc = nil;
+     }
+diff --git a/hw/display/apple-gfx.h b/hw/display/apple-gfx.h
+index 3197bd853d..384aee0c5f 100644
+--- a/hw/display/apple-gfx.h
++++ b/hw/display/apple-gfx.h
+@@ -12,6 +12,7 @@
+ #include "system/memory.h"
+ #include "hw/core/qdev-properties.h"
+ #include "ui/surface.h"
++#include "objc/NSObject.h"
+ 
+ #define TYPE_APPLE_GFX_MMIO         "apple-gfx-mmio"
+ #define TYPE_APPLE_GFX_PCI          "apple-gfx-pci"
+@@ -23,6 +24,17 @@
+ @protocol MTLTexture;
+ @protocol MTLCommandQueue;
+ 
++typedef struct PGGuestPhysicalRange_s
++{
++    uint64_t physicalAddress;
++    uint64_t physicalLength;
++    void *hostAddress;
++} PGGuestPhysicalRange_t;
++
++@interface PGMemoryMapDescriptor : NSObject
++-(void)addRange:(PGGuestPhysicalRange_t) range;
++@end
++
+ typedef QTAILQ_HEAD(, PGTask_s) PGTaskList;
+ 
+ typedef struct AppleGFXDisplayMode {
+@@ -68,6 +80,10 @@ void *apple_gfx_host_ptr_for_gpa_range(uint64_t guest_physical,
+                                        uint64_t length, bool read_only,
+                                        MemoryRegion **mapping_in_region);
+ 
++bool apple_gfx_register_memory_cb(Int128 start, Int128 len,
++                                  const MemoryRegion *mr,
++                                  hwaddr offset_in_region, void *opaque);
++
+ extern const PropertyInfo qdev_prop_apple_gfx_display_mode;
+ 
+ #endif
+diff --git a/hw/display/apple-gfx.m b/hw/display/apple-gfx.m
+index be0061b9db..4ef8f6dbf3 100644
+--- a/hw/display/apple-gfx.m
++++ b/hw/display/apple-gfx.m
+@@ -21,6 +21,7 @@
+ #include "system/address-spaces.h"
+ #include "system/dma.h"
+ #include "migration/blocker.h"
++#include "system/memory.h"
+ #include "ui/console.h"
+ #include "apple-gfx.h"
+ #include "trace.h"
+@@ -79,6 +80,7 @@ static dispatch_queue_t get_background_queue(void)
+     GPtrArray *mapped_regions;
+ };
+ 
++API_OBSOLETED("Legacy ParavirtualizedGraphics", macos(11.0, 27.0, 27.0)) 
+ static PGTask_t *apple_gfx_new_task(AppleGFXState *s, uint64_t len)
+ {
+     mach_vm_address_t task_mem;
+@@ -102,6 +104,7 @@ static dispatch_queue_t get_background_queue(void)
+     return task;
+ }
+ 
++API_OBSOLETED("Legacy ParavirtualizedGraphics", macos(11.0, 27.0, 27.0))
+ static void apple_gfx_destroy_task(AppleGFXState *s, PGTask_t *task)
+ {
+     GPtrArray *regions = task->mapped_regions;
+@@ -151,6 +154,7 @@ static void apple_gfx_destroy_task(AppleGFXState *s, PGTask_t *task)
+     return host_ptr;
+ }
+ 
++API_OBSOLETED("Legacy ParavirtualizedGraphics", macos(11.0, 27.0, 27.0))
+ static bool apple_gfx_task_map_memory(AppleGFXState *s, PGTask_t *task,
+                                       uint64_t virtual_offset,
+                                       PGPhysicalMemoryRange_t *ranges,
+@@ -207,6 +211,7 @@ static bool apple_gfx_task_map_memory(AppleGFXState *s, PGTask_t *task,
+     return success;
+ }
+ 
++API_OBSOLETED("Legacy ParavirtualizedGraphics", macos(11.0, 27.0, 27.0))
+ static void apple_gfx_task_unmap_memory(AppleGFXState *s, PGTask_t *task,
+                                         uint64_t virtual_offset, uint64_t length)
+ {
+@@ -596,6 +601,36 @@ void apple_gfx_common_init(Object *obj, AppleGFXState *s, const char* obj_name)
+     /* TODO: PVG framework supports serialising device state: integrate it! */
+ }
+ 
++@interface PGDeviceDescriptor (IOSurfaceMapper)
++@property (readwrite, nonatomic, copy, nullable) PGMemoryMapDescriptor* memoryMapDescriptor;
++@end
++
++bool apple_gfx_register_memory_cb(Int128 start, Int128 len,
++                                  const MemoryRegion *mr,
++                                  hwaddr offset_in_region, void *opaque) {
++    PGGuestPhysicalRange_t range;
++    PGMemoryMapDescriptor *memory_map_descriptor = opaque;
++    if (memory_access_is_direct(mr, true, MEMTXATTRS_UNSPECIFIED)) {
++        range.physicalAddress = start;
++        range.physicalLength = len;
++        range.hostAddress = memory_region_get_ram_ptr(mr);
++        [memory_map_descriptor addRange:range];
++    }
++    return false;
++}
++
++static void apple_gfx_register_memory(AppleGFXState *s,
++                                                     PGDeviceDescriptor *desc)
++{
++    PGMemoryMapDescriptor* memoryMapDescriptor = [PGMemoryMapDescriptor new];
++
++    FlatView* fv = address_space_to_flatview(&address_space_memory);
++    flatview_for_each_range(fv, apple_gfx_register_memory_cb, memoryMapDescriptor);
++
++    desc.memoryMapDescriptor = memoryMapDescriptor;
++}
++
++API_OBSOLETED("Legacy ParavirtualizedGraphics", macos(11.0, 27.0, 27.0))
+ static void apple_gfx_register_task_mapping_handlers(AppleGFXState *s,
+                                                      PGDeviceDescriptor *desc)
+ {
+@@ -667,16 +702,25 @@ static void new_frame_handler_bh(void *opaque)
+         BQL_LOCK_GUARD();
+         set_mode(s, sizeInPixels.x, sizeInPixels.y);
+     };
+-    disp_desc.cursorGlyphHandler = ^(NSBitmapImageRep *glyph,
+-                                     PGDisplayCoord_t hotspot) {
+-        AppleGFXSetCursorGlyphJob *job = g_malloc0(sizeof(*job));
+-        job->s = s;
+-        job->glyph = glyph;
+-        job->hotspot = hotspot;
+-        [glyph retain];
+-        aio_bh_schedule_oneshot(qemu_get_aio_context(),
+-                                set_cursor_glyph, job);
+-    };
++
++    if (@available(macOS 27.0, *)) {
++
++    } else {
++#ifndef __MAC_27_0
++        disp_desc.cursorGlyphHandler = ^(NSBitmapImageRep *glyph,
++                                         PGDisplayCoord_t hotspot) {
++            AppleGFXSetCursorGlyphJob *job = g_malloc0(sizeof(*job));
++            job->s = s;
++            job->glyph = glyph;
++            job->hotspot = hotspot;
++            [glyph retain];
++            aio_bh_schedule_oneshot(qemu_get_aio_context(),
++                                    set_cursor_glyph, job);
++        };
++#else
++        abort();
++#endif
++    }
+     disp_desc.cursorShowHandler = ^(BOOL show) {
+         trace_apple_gfx_cursor_show(show);
+         qatomic_set(&s->cursor_show, show);
+@@ -763,11 +807,33 @@ bool apple_gfx_common_realize(AppleGFXState *s, DeviceState *dev,
+ 
+     desc.device = s->mtl;
+ 
+-    apple_gfx_register_task_mapping_handlers(s, desc);
++    /* 
++     * The legacy memory management interface doesn't allow for
++     * vGPU sandboxing. As such, always use the new interface
++     * on macOS 15.4 onwards. 
++     */
++    if (@available(macOS 15.4, *)) {
++        apple_gfx_register_memory(s, desc);
++    } else {
++#ifndef __MAC_27_0
++        apple_gfx_register_task_mapping_handlers(s, desc);
++#else
++        abort();
++#endif
++    }
+ 
+     s->cursor_show = true;
+ 
+-    s->pgdev = PGNewDeviceWithDescriptor(desc);
++    if (@available(macOS 15.2, *)) {
++        s->pgdev = PGCreateDeviceWithDescriptor(desc);
++    }
++    else {
++#ifndef __MAC_27_0
++        s->pgdev = PGNewDeviceWithDescriptor(desc);
++#else
++        abort();
++#endif
++    }
+ 
+     disp_desc = apple_gfx_prepare_display_descriptor(s);
+     /*
 -- 
 2.54.0 (Apple Git-157)
 

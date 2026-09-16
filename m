@@ -4,72 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CCCB7C982C4
-	for <qemu-arm@archiver.kernel.org>; Wed, 16 Sep 2026 15:32:49 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C1183C982C4
+	for <qemu-arm@archiver.kernel.org>; Wed, 16 Sep 2026 15:32:54 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1x6rbP-0002km-2w; Wed, 16 Sep 2026 11:31:15 -0400
+	id 1x6ran-0002BN-H5; Wed, 16 Sep 2026 11:30:37 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1x6raz-0002ID-NB
- for qemu-arm@nongnu.org; Wed, 16 Sep 2026 11:30:51 -0400
+ id 1x6rac-00025H-CH
+ for qemu-arm@nongnu.org; Wed, 16 Sep 2026 11:30:26 -0400
 Received: from mail-wr2-x10.google.com ([2a00:1450:4864:30::10])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1x6rax-0001Wq-Rb
- for qemu-arm@nongnu.org; Wed, 16 Sep 2026 11:30:49 -0400
+ id 1x6raZ-0001NE-O4
+ for qemu-arm@nongnu.org; Wed, 16 Sep 2026 11:30:25 -0400
 Received: by mail-wr2-x10.google.com with SMTP id
- ffacd0b85a97d-4843c3ea1f6so514674f8f.0
- for <qemu-arm@nongnu.org>; Wed, 16 Sep 2026 08:30:47 -0700 (PDT)
+ ffacd0b85a97d-485b1d2874fso359405f8f.0
+ for <qemu-arm@nongnu.org>; Wed, 16 Sep 2026 08:30:23 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1789572646; x=1790177446; darn=nongnu.org;
+ d=linaro.org; s=google; t=1789572622; x=1790177422; darn=nongnu.org;
  h=content-transfer-encoding:content-type:mime-version:references
  :in-reply-to:message-id:date:subject:cc:to:from:from:to:cc:subject
  :date:message-id:reply-to:content-type;
- bh=dM4u0r6eILzCbZESrBWVF/DDnjUwt9qXh1+CvKMqj6s=;
- b=tqT6fIFzsTg/gDqzfEZnO0iEP9sWwluipfoqMTIzSuGovRu2o00nqr7Wrwar03SY1M
- v4nDRQKXmttnJpMeJWgM0Z33VyqUhFzP0J6yuPvtdrvX2EWaC4CzxGGA2KmoGB/m4DHI
- Wmgr6RQlVw6ihWFgT4LSqlVvLtN4C6ueK4Omi4qv0N6moulQZl7NPTKEn6GaNc0BT/TQ
- WeX3+qbEzMu6WeJg/PYsumRsfCAIbkneSFivEnU09vF6l1LiFCFEOKLXc1+QqZ0q6g6a
- fzE12+LNgIB17RT9GebXWPsvG30XOaZrcsB2+2lQRCuBUav8rck8rB6dyvixLbtP9n3g
- Hkig==
+ bh=7FptWd5Jg1/aZvBoGje7ZffIe7jR1suwzb5Czmj9/aE=;
+ b=hwZ91cCz2N9uNeiRNPrY2F6lCfoolTl7/XprI4NmDK98wVkupIS5IB3GS1NrZWSi+C
+ G0UMaYtdPtBhkLSPogTygNvohDia3wK+uZ/8AMkFWTUARNpWdOiH7TnOyM0+b6JHWj9w
+ dRBT/7cJ1ButmyN1419Wmn6wKcx5m8NG6B2DXXry8rhiy9cvYapwhFx9SpdFp4Dn3oxV
+ Vq9cpozVx6vD1WMJ/d3Tpm4WM/WRpIy0w9o1uf9HkWNsdrnCcu8iX24By/V2HpsKE0OG
+ 4gtwR/numxei1UnGwaJ0SXDSfq1njX/yrtkc+nWnmySm3FhakqNbhR6xvQtKwSzqyuRG
+ 1gDA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20260707; t=1789572646; x=1790177446;
+ d=1e100.net; s=20260707; t=1789572622; x=1790177422;
  h=content-transfer-encoding:content-type:mime-version:references
  :in-reply-to:message-id:date:subject:cc:to:from:x-gm-gg
  :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
  :content-type;
- bh=dM4u0r6eILzCbZESrBWVF/DDnjUwt9qXh1+CvKMqj6s=;
- b=D5Tk3FjjYPmg2yOD7gel8lS7cY+CW5Vh7nkiq1McN06hLuBAxXzCs0po1jeNUlnb11
- yZhOyNEviftJ/wt4yvu06OWb79B6PYIYbzXedf8kkNb+IjG2L6kW9R5LYb+4aySw/h+Z
- lumYNhCAZt/6sQXYbnJU4TRoPkB0rEYe0rrX33f1G0zTG6yKpePTNK4Sf1/fUVUlxG/L
- BZNa1oF+7Xf95AQki7YGQLYJHuHE3JWUsldoiSmJAmhg5+Gx6jy6n6nTuri2oUQdsF61
- RhT68STU+Y8zMJEoj+rINIR8ClKOCIhSm2n9I1Zim7vAXBB4BAzLR0F9U33GVeiRoNPB
- Wqhw==
+ bh=7FptWd5Jg1/aZvBoGje7ZffIe7jR1suwzb5Czmj9/aE=;
+ b=v38Is4g1ZqUB3u/ryyBh2+aOtXdZ7dzA9SOKMkDLE4xaHU5H5lhEXTPRmSnLKTnafF
+ Vmv6iW2yydOg4ECI6EkoTWYWENci9GSCjAzcKETnbErMqxmOtmF8S+Pnqy7HoNGpDqBx
+ iT+LKQDiE8bl05EXpk281CyW5Mx6mM5ZabhLrNfsFvRSS+B6BK1vI1HLTjGf+djRvTG4
+ FbvcoRGP0da9/+kOKhVqAWG9h+DEis2dxT+fUx+rKMgsSNOrXXFPfTwd5+5QOxYLM320
+ Itdnra2SejbW3C3gOshybOtpnugF2GIMub2hbqP4KMq/CS/5/j2uNycEKmlF78OmLvlZ
+ zKqg==
 X-Forwarded-Encrypted: i=1;
- AKwUvByZM0a8lPz48n55iFGmSWTu0LFrBURcwocx5gGRdGZYE9ALKP47aHOocwwwKPcBtP0fBrb+X2s9eQ==@nongnu.org
-X-Gm-Message-State: AFuF++mPDVTfXPaNyd6Z6GsXIQ0QWHLxKcL05qCUJHQ/2Cz9/U6IMa1m
- l2B+sF7Smo6WIzC5g7QBDNdxtdDls3q1Ckr+4g6WOB0Ec+hsuD7BCQMMzNljnC+GZko=
-X-Gm-Gg: AYBFou2F0foqqAxiQv1cJ4FBcVXIqfkcdrb+BsxSJeXWa/gaEnJHcZwqvKrBSNmSu5i
- mhehl/yePiTbD2xEq5HB2PJJBFpnUQ3kvT9aIwGFwSyXujtw/tIeBj1T4xbSGFvnGIqkflDGrAd
- 1Q6mdFXYSGdtdq+HCQ11VHYDsWFtX2ee4xDcVwmT6faRakdMQXsJzMKrb1AdmRWBlRw7DXn5MvX
- YpOUEUCLoOI5wNtJVzj1Q0BvX9dEPvLOy5obLjeA0AP2mFqkGT6ZUKyJljZLyyN/R3CrqAL6Du1
- eWA+xWs+i/mK7o6i7Ns1eARqZDzx7gQJiG6NTq8v7hRQ1qzgDWLXwiZH6m0FeNzENAIKLrMUaYV
- 6HktUfEGNwwHb6T90lnnKeXf+cQ6ZYk7Yb6kbpzbH3dEbXvigjJSr92M217nGwn1xejU04YG0T+
- wCKSTzy8EXpJELvxxDDtRKT2oOEMRpoplRSd/jwUQ+7fP7ZMBMFe93jM8AyoOJMwl81kyQDnSmc
- HQFZ5MxYA==
-X-Received: by 2002:a05:6000:41e6:b0:487:981:4e0d with SMTP id
- ffacd0b85a97d-4870cef12ffmr3982043f8f.19.1789572645987; 
- Wed, 16 Sep 2026 08:30:45 -0700 (PDT)
+ AKwUvBxiGk4WIW717tL2C8CKxHt8VMHlZfY3bLGZQZeOC72SIgsz7pWISOxjJuYZIqUM4fjyt+bKmNZxVQ==@nongnu.org
+X-Gm-Message-State: AFuF++nxBXyu053zuJqGMV1yFaYy101uBcAm4qVR0gkJ0nfw26Vr+ULL
+ 8JkFoiTwZ4U+0drBww0cHr3on0VEy/ye4i11CBQ1w4U+kTLjWbdoGE4tb5XF/b/d/28=
+X-Gm-Gg: AYBFou29hvIxjSGrRUfZiM06/+n2BFhb3hu326xlmWTed+ErnWGBM2yn+Xie6iUWg6s
+ KqvIQ/0iCyXr1uqKjDYx/c5XcyZn1lDsK4X3gc8ntA+YvsmCDaRJ6yBwdaG/10tLWoYE72AM58j
+ NEfuDLy7mpkl62AMsi9VWmCfE+26oA8Zoyx/qvtqH8J8zXK6zeNSd6M/SevIzsC9WRbSvucPRUB
+ V2MwOn6KD0S8wlfJq+lxkg4m2zMgl9TcNaRWLNhoBE0kWOmOjTndMINx3Np3v9vC9NCaGa5hEFR
+ zSaRrXceCUnBRJYefai70U+HCwzd6CPa5W5EwM3u40kedJ0Fbaub+n+giaddrGi02hdVuWosf1y
+ GtH2XCo1wELbMIh8FOZa0SV2/hUDBETxi88WblD/MYa9jqwHR5cvwgCU5z00lC/mGlAHrQFzElB
+ wnod8qWOiRoOpufQr8EivcFeX67R/29dAGnwvzKU8+KmT3izFY1i77zScvK2SwPG+bwGShWUo=
+X-Received: by 2002:a05:600c:3e16:b0:49e:8222:3451 with SMTP id
+ 5b1f17b1804b1-49ea20b46ebmr40693715e9.14.1789572622122; 
+ Wed, 16 Sep 2026 08:30:22 -0700 (PDT)
 Received: from draig.lan ([185.124.0.156]) by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-4870bf342a0sm7668898f8f.24.2026.09.16.08.30.25
+ 5b1f17b1804b1-49fbd0efce2sm1100205e9.6.2026.09.16.08.30.14
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 16 Sep 2026 08:30:38 -0700 (PDT)
+ Wed, 16 Sep 2026 08:30:14 -0700 (PDT)
 Received: from draig.lan (localhost [IPv6:::1])
- by draig.lan (Postfix) with ESMTP id C036161A0A;
- Wed, 16 Sep 2026 16:30:14 +0100 (BST)
+ by draig.lan (Postfix) with ESMTP id 99223618F9;
+ Wed, 16 Sep 2026 16:30:13 +0100 (BST)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: Ilya Leoshkevich <iii@linux.ibm.com>, qemu-arm@nongnu.org,
@@ -91,9 +90,9 @@ Cc: Ilya Leoshkevich <iii@linux.ibm.com>, qemu-arm@nongnu.org,
  Brian Cain <brian.cain@oss.qualcomm.com>,
  =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
  Richard Henderson <richard.henderson@linaro.org>
-Subject: [PATCH v4 15/19] tests/docker: fix brown bag typo for docker-ccache
-Date: Wed, 16 Sep 2026 16:30:08 +0100
-Message-ID: <20260916153013.2134555-16-alex.bennee@linaro.org>
+Subject: [PATCH v4 04/19] configure: correctly honour --disable-containers
+Date: Wed, 16 Sep 2026 16:29:57 +0100
+Message-ID: <20260916153013.2134555-5-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.47.3
 In-Reply-To: <20260916153013.2134555-1-alex.bennee@linaro.org>
 References: <20260916153013.2134555-1-alex.bennee@linaro.org>
@@ -108,7 +107,7 @@ X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -124,24 +123,46 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
----
- tests/docker/Makefile.include | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+From: Daniel P. Berrangé <berrange@redhat.com>
 
-diff --git a/tests/docker/Makefile.include b/tests/docker/Makefile.include
-index 85825d74dfb..fa873e09b4f 100644
---- a/tests/docker/Makefile.include
-+++ b/tests/docker/Makefile.include
-@@ -197,7 +197,7 @@ docker-help: docker
- # Where QEMU caches build artefacts
- DOCKER_QEMU_CACHE_DIR := $$HOME/.cache/qemu
- # Use a global constant ccache directory to speed up repetitive builds
--DOCKER_QEMU_CCACHE_DIR := DOCKER_QEMU_CACHE_DIR/docker-ccache
-+DOCKER_QEMU_CCACHE_DIR := $$DOCKER_QEMU_CACHE_DIR/docker-ccache
+The configure script originally only probed for 'runc' command
+in order to handle cross-compilation containers. The Makefile
+under tests/docker would then probe again when used.
+
+In order to eliminate the additional probeing, we changed
+configure in commit c4ce04cfb7460d46c0262d437a7f35bb5c5fc449
+to always probe for 'runc', so the result could be passed
+along to tests/docker make rules.
+
+That commit overlooked that the 'probe_target_compiler' func
+was relying on '$runc' == 'no' as a proxy for the state of
+the --disable-containers arg.
+
+When we started unconditionally probing, that short cut no
+longer works and we must explicitly check "$use_containers"
+too.
+
+Fixes: c4ce04cfb7460d46c0262d437a7f35bb5c5fc449
+Reported-by: Alex Bennée <alex.bennee@linaro.org>
+Reviewed-by: Alex Bennée <alex.bennee@linaro.org>
+Tested-by: Alex Bennée <alex.bennee@linaro.org>
+Signed-off-by: Daniel P. Berrangé <berrange@redhat.com>
+---
+ configure | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/configure b/configure
+index 6084a7a065e..4c7bf406b88 100755
+--- a/configure
++++ b/configure
+@@ -1401,6 +1401,7 @@ probe_target_compiler() {
+   esac
  
- # This rule if for directly running against an arbitrary docker target.
- # It is called by the expanded docker targets (e.g. make
+   for host in $container_hosts; do
++    test "$use_containers" = "yes" || continue
+     test "$container_command" != "" || continue
+     test "$host" = "$cpu" || continue
+     case $target_arch in
 -- 
 2.47.3
 

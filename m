@@ -4,102 +4,162 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 118D2C982CC
-	for <qemu-arm@archiver.kernel.org>; Wed, 16 Sep 2026 16:52:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B7F6BC982C1
+	for <qemu-arm@archiver.kernel.org>; Wed, 16 Sep 2026 16:53:37 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1x6srL-0000KZ-AB; Wed, 16 Sep 2026 12:51:47 -0400
+	id 1x6ssy-0002eb-P5; Wed, 16 Sep 2026 12:53:32 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <sebott@redhat.com>) id 1x6sr6-00007V-TX
- for qemu-arm@nongnu.org; Wed, 16 Sep 2026 12:51:32 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ (Exim 4.90_1) (envelope-from <pierrick.bouvier@oss.qualcomm.com>)
+ id 1x6sss-0002WN-6m
+ for qemu-arm@nongnu.org; Wed, 16 Sep 2026 12:53:23 -0400
+Received: from mx0b-0031df01.pphosted.com ([205.220.180.131])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <sebott@redhat.com>) id 1x6sr4-0001dR-BP
- for qemu-arm@nongnu.org; Wed, 16 Sep 2026 12:51:32 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1789577489;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=h5EMh6T5QY03HYEhSI8G91RkkP5AWwPZD4FfiZxzxWk=;
- b=SfmTm6AZor9n4PfXmjOjyqWMw+rq4kCXIeZMehjjUnGPo2GZLclsZ4skinUEfHhRySPnNj
- 52+nWuOzFEmd9v8K7smwnM43ZmXdKuu9SG+ONfUvQFhQqqU8HoRHcTJTiq9fPKIpw1jO28
- 7rC9p3LQ3FgJo8rVR7x9Mv/siqEDUFs=
-Received: from mail-wr1-f70.google.com (mail-wr1-f70.google.com
- [209.85.221.70]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-662-rsyDPBzTOhWAPTToO606yw-1; Wed, 16 Sep 2026 12:51:26 -0400
-X-MC-Unique: rsyDPBzTOhWAPTToO606yw-1
-X-Mimecast-MFC-AGG-ID: rsyDPBzTOhWAPTToO606yw_1789577485
-Received: by mail-wr1-f70.google.com with SMTP id
- ffacd0b85a97d-4870eda3782so665880f8f.0
- for <qemu-arm@nongnu.org>; Wed, 16 Sep 2026 09:51:25 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <pierrick.bouvier@oss.qualcomm.com>)
+ id 1x6ssq-00021l-0j
+ for qemu-arm@nongnu.org; Wed, 16 Sep 2026 12:53:21 -0400
+Received: from pps.filterd (m0279871.ppops.net [127.0.0.1])
+ by mx0a-0031df01.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id
+ 68GFeONF3709176
+ for <qemu-arm@nongnu.org>; Wed, 16 Sep 2026 16:53:18 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qualcomm.com; h=
+ cc:content-transfer-encoding:content-type:date:from:in-reply-to
+ :message-id:mime-version:references:subject:to; s=qcppdkim1; bh=
+ bmsg9N0IAmFISpiINErCYaMzufanm7zRhFZFD1yArM8=; b=MEtatbTH2IAF5COP
+ AoWWA0mmfJ+n1N0Y/uj/UEx53F9CJ1A1t7n0VZvsSoPxE25FWmoHyZ4RFQjKCPGw
+ ahalxt7rs9pdRf7ZiFyZOKvOIA0ojYyvqMI/wBAK8xILqjcqxb1cv94jnh1H6g5X
+ xYiVhXy+kUicdqmEVAd7oGKbJ74W18x1bq9BB/QaR495+TqFP7lnS+sbDSu9CycM
+ RfwDxWSs24V3UVO6KDkk+9VoUfrjLYe3ar5AJitoUFf0enloLJ1wvGN9vooEYu82
+ Hfq8jWd8cV7/8sUg9rRvM+awx1ZJLoTWn34Q+c7U224pLs8xZbW1FKXvXdpFoOVC
+ +TPmNw==
+Received: from mail-pj1-f69.google.com (mail-pj1-f69.google.com
+ [209.85.216.69])
+ by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 4gqfvfm09w-1
+ (version=TLSv1.3 cipher=TLS_AES_128_GCM_SHA256 bits=128 verify=NOT)
+ for <qemu-arm@nongnu.org>; Wed, 16 Sep 2026 16:53:18 +0000 (GMT)
+Received: by mail-pj1-f69.google.com with SMTP id
+ 98e67ed59e1d1-38f57e31b6eso5906643a91.1
+ for <qemu-arm@nongnu.org>; Wed, 16 Sep 2026 09:53:18 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=oss.qualcomm.com; s=google; t=1789577597; x=1790182397; darn=nongnu.org;
+ h=content-transfer-encoding:content-type:in-reply-to:content-language
+ :from:references:cc:to:subject:user-agent:mime-version:date
+ :message-id:from:to:cc:subject:date:message-id:reply-to:content-type;
+ bh=bmsg9N0IAmFISpiINErCYaMzufanm7zRhFZFD1yArM8=;
+ b=drUH41woWn+ened/xGiLgeK/7bslmE4XYyTcJSJlhOuOdBLpqBOuR5eQHJvo7BwOeS
+ VBpIaf1IJZ6PuRXbv56rvhTClPXWuoyjDk5o9h2vo4JRYLPiwrkcRJUTzv1uxcmrENm0
+ iasiIG3fsZWsCwHqueF2PbFe1RXfyIfT4JPzVbpNkIaF39fGnH54rtNzHvEe4h4SPMh4
+ Lg6QJyKvQFBGZ2AZ5yUmlSK6s3ZtPRtaDHkaWx52EwtAb/00Bomykzt5qxcxVp+x+wwP
+ dQd3y+hE6w/tWezddP+nKW6Ndxvlo/ZWTGn9GMo6gDEm0ygPWOxIjEx9jjNQlmfThxXQ
+ O/Uw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20260707; t=1789577485; x=1790182285;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
- :to:cc:subject:date:message-id:reply-to:content-type;
- bh=h5EMh6T5QY03HYEhSI8G91RkkP5AWwPZD4FfiZxzxWk=;
- b=LRB6ArcFH1/cxf0qrDzlkaMlSvi5XkbgrtPAsgg3MSxX2u/ObRNcLrxVzku3WtQ85/
- 7TF7iJO8ARDSoGFOFLyvsEZlrdmsSVH7gjNc82VOo8kv+CofyL03Vr+pySThH+YBMj1B
- 8PtDHCkhTKVnFOoNwBQmaggyrX796eUplusUfGT+WaTDdJ/AdIbMhjgvrYUDA3pLVZ0g
- JVTuGCS+wjJC7z2AmhpnNMcplBPeEQWiyH+4hGK66Rvp6aGy5pz8Md3gYU5oTtpL6O87
- tqm5Wly/fxPInhYjpHXvYH2WWCemNarNHTdaUl4Q2d/wKGMRMSZxtNvHRyNMexaV5KSL
- Hnbg==
-X-Gm-Message-State: AFuF++kqwhSROYWTJvrX5qI/hhM80uDgJtm/ugNPABO3YH+rjReM/Puj
- ytkuRSKEUbLQWzMuWkUpWq/LK1x3ule3TVx1xs2lRsNlrXPsuEvZyKXVS+SIqrabJSUJbu8/6ia
- ZRN2AYl/I1Fnj7XfAtv1+pHVOdh0uz3EiDmzVbcDCnU3Cx+Sa5PxYAw==
-X-Gm-Gg: AYBFou3HsbrEUsJ1ZRCvvy4IpBHR10Uk7RJFllW8SVj2tSPma7NTtfveAyabX7wC10r
- a+V4JQI9qzccQXZB5nF4QK7yUOggOklWoO5E7QGBtzodNX7hvgPhW07E2qcfvMiBqWxdOHXGn24
- J213utGCAjzCEH/WnYqP9ckZmRvfPZHQti7zs2FXebK7BrdIb+1FPApeV9wB1FdagUo1koLUKg0
- nA4lrUxa14j1TkGwFYFklAOIwpd4c0M6hWqd5OeJbAEXC38mG2KKfOrqN+yfaXNIDS/IihIX0JU
- wN2cfnflnQAWzrvECCtLMBP11WSdKRcN2lS67gkOzRJ6ADslep3Doylnwhp4MSgwIjvvau7A8j2
- fsuophzjMilafHYF1qZWj7TCig9+jrCL9RAArDpKhorWYMqRi69+IZbuv3v5qhDM8bw==
-X-Received: by 2002:a05:6000:250f:b0:487:8b9:66d6 with SMTP id
- ffacd0b85a97d-4870d0717e5mr4662151f8f.40.1789577484847; 
- Wed, 16 Sep 2026 09:51:24 -0700 (PDT)
-X-Received: by 2002:a05:6000:250f:b0:487:8b9:66d6 with SMTP id
- ffacd0b85a97d-4870d0717e5mr4662124f8f.40.1789577484513; 
- Wed, 16 Sep 2026 09:51:24 -0700 (PDT)
-Received: from rh.redhat.corp
- (p200300f6af00a400b6f52cb1a2e89932.dip0.t-ipconnect.de.
- [2003:f6:af00:a400:b6f5:2cb1:a2e8:9932])
- by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-4870bf33e01sm9655089f8f.23.2026.09.16.09.51.23
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 16 Sep 2026 09:51:24 -0700 (PDT)
-From: Sebastian Ott <sebott@redhat.com>
-To: Peter Maydell <peter.maydell@linaro.org>, Eric Auger <eauger@redhat.com>,
- Jonathan Cameron <jonathan.cameron@huawei.com>,
- Alireza Sanaee <alireza.sanaee@huawei.com>,
- Richard Henderson <richard.henderson@linaro.org>,
- Cornelia Huck <cohuck@redhat.com>, khushit.shah@nutanix.com
-Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org,
- Eric Auger <eric.auger@redhat.com>, Sebastian Ott <sebott@redhat.com>
-Subject: [PATCH v6 1/3] arm: handle demuxed ID registers
-Date: Wed, 16 Sep 2026 18:51:15 +0200
-Message-ID: <20260916165117.39764-2-sebott@redhat.com>
-X-Mailer: git-send-email 2.55.0
-In-Reply-To: <20260916165117.39764-1-sebott@redhat.com>
-References: <20260916165117.39764-1-sebott@redhat.com>
+ d=1e100.net; s=20260707; t=1789577597; x=1790182397;
+ h=content-transfer-encoding:content-type:in-reply-to:content-language
+ :from:references:cc:to:subject:user-agent:mime-version:date
+ :message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+ :message-id:reply-to:content-type;
+ bh=bmsg9N0IAmFISpiINErCYaMzufanm7zRhFZFD1yArM8=;
+ b=WLWFuWispnVCJWxSy6kTv32oE/jEPTkPKhiXq99gPzY2ST2UI26QQ/5Ke8P9gzgQCF
+ FHpASXk0zvuVmvfcPQWivi151Xl/1WFRLKLzxNTsJvHWAyNEHXd3PZZVumMWp5htPbuE
+ znYCF3iNyMBxHm6pE1cUFVMsI39mD5LwnRt9h6x2U/BnVT1TgmDtlKNDaYAoFRA6Pq9S
+ qJ5FSpvG8QN6c7rHZCar6LmuegH9xP2wO59i957lpX5dkQ+2MO+V4XDuf4tcMAtUQaW+
+ klEXLO4/grOONPPF2D2rUcETgDHzjirG9MYYXoII6i82+r41X6pscvsGcb5xH5oZ9RwF
+ ffng==
+X-Forwarded-Encrypted: i=1;
+ AKwUvByX1DzUX3Z0OfoJwUA+8Ut2ZZJvcU/VoTun1tnfY92VcTZi6K+mH4m8Em19QuBnokaKDHsB/NTQ9A==@nongnu.org
+X-Gm-Message-State: AFuF++nkVxr6oHEL1dwipJHFeThUiBorHPPCo6f881Ci+ilf32vIv4ZM
+ R/ySPzm/2vHpB787PVkZPVEepXyYWv7lS4+YRyPLofjJ0QMbjmgpnOgaInfHApN5Rf21o8XCplp
+ 6DmTZGktH1LeanwX+cCiklZlL84/F0SUjAn2UHgriHdIDhiRX78iAMeo=
+X-Gm-Gg: AYBFou0Zp/UEiZcuiaOg1/htZcCTxhbLeHJSerSEkrHD47GDjez/mRsm+zmtSOgmtfI
+ hkPdC3+j0seiyavYYcBLMCcdqe++XSNv9XPnln6wbcXg3R1fM5J0OPJ2BYQplaEJbOVdhQ4g8cd
+ 6wzU4eQ2XOrSEAFNnxgcLGi8fgLVPB9WTWZLj5rTmumW1MisoFP17Jht4gzXxzLeSZcyeZewJzv
+ 8+C9GFfykf0IU/Clbp5IxqzV3XeZh9YytpWvvtFICiBl613eRkaaoBco7IJC7DMmZEgFsu3nSfD
+ qUqCdFNRqIVNxKKaQUHknTV5fzi4BsSd1rNvjyuArNasHk+RR9CmRl6k6Q8LViE9MYLD8tx2uze
+ 7iBlTVh48bEHxwnA+7lHsXkQ24LzcR0yO2QotrFuWdF3ARO9FUZijJ22XwwQQayOi/Wps
+X-Received: by 2002:a17:90b:2585:b0:39d:f351:8f0c with SMTP id
+ 98e67ed59e1d1-39e1e48b580mr7335842a91.13.1789577597077; 
+ Wed, 16 Sep 2026 09:53:17 -0700 (PDT)
+X-Received: by 2002:a17:90b:2585:b0:39d:f351:8f0c with SMTP id
+ 98e67ed59e1d1-39e1e48b580mr7335762a91.13.1789577596570; 
+ Wed, 16 Sep 2026 09:53:16 -0700 (PDT)
+Received: from [192.168.1.199] (216-71-219-44.dyn.novuscom.net.
+ [216.71.219.44]) by smtp.gmail.com with ESMTPSA id
+ a92af1059eb24-14395bf6e8esm8510534c88.0.2026.09.16.09.53.14
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Wed, 16 Sep 2026 09:53:15 -0700 (PDT)
+Message-ID: <9611055f-1634-4303-92bf-b0f310888954@oss.qualcomm.com>
+Date: Wed, 16 Sep 2026 09:53:13 -0700
 MIME-Version: 1.0
-X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: MkTFXezNUEomV_IaprujVozf3id7pRwAkzpUJrDtfZU_1789577485
-X-Mimecast-Originator: redhat.com
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v4 18/19] tests/tcg: add console property to docker image
+ custom target
+To: =?UTF-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>,
+ qemu-devel@nongnu.org
+Cc: Ilya Leoshkevich <iii@linux.ibm.com>, qemu-arm@nongnu.org,
+ Cornelia Huck <cohuck@redhat.com>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@mailo.com>,
+ John Snow <jsnow@redhat.com>, David Hildenbrand <david@kernel.org>,
+ Thomas Huth <th.huth+qemu@posteo.eu>,
+ Paolo Bonzini <pbonzini@redhat.com>, Cleber Rosa <crosa@redhat.com>,
+ Warner Losh <imp@bsdimp.com>, Song Gao <gaosong@loongson.cn>,
+ Kyle Evans <kevans@freebsd.org>, Eric Farman <farman@linux.ibm.com>,
+ Brad Smith <brad@comstyle.com>, Fabiano Rosas <farosas@suse.de>,
+ Helge Deller <deller@gmx.de>, Laurent Vivier <laurent@vivier.eu>,
+ =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>,
+ Jiaxun Yang <jiaxun.yang@flygoat.com>, qemu-s390x@nongnu.org,
+ Matthew Rosato <mjrosato@linux.ibm.com>,
+ Brian Cain <brian.cain@oss.qualcomm.com>,
+ =?UTF-8?Q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>,
+ Richard Henderson <richard.henderson@linaro.org>
+References: <20260916153013.2134555-1-alex.bennee@linaro.org>
+ <20260916153013.2134555-19-alex.bennee@linaro.org>
+From: Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>
+Content-Language: en-US
+In-Reply-To: <20260916153013.2134555-19-alex.bennee@linaro.org>
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-content-type: text/plain; charset="US-ASCII"; x-default=true
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=sebott@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
+X-Authority-Analysis: v=2.4 cv=JYkpPkKV c=1 sm=1 tr=0 ts=6aaac97e cx=c_pps
+ a=vVfyC5vLCtgYJKYeQD43oA==:117 a=iLqgmErQAxjCjdq5jj1Aqg==:17
+ a=IkcTkHD0fZMA:10 a=VdqzKS8jKosA:10 a=s4-Qcg_JpJYA:10
+ a=VkNPw1HP01LnGYTKEx00:22 a=u7WPNUs3qKkmUXheDGA7:22 a=3WHJM1ZQz_JShphwDgj5:22
+ a=20KFwNOVAAAA:8 a=KKAkSRfTAAAA:8 a=EUspDBNiAAAA:8 a=xZ1q1ZhPBkdByaIqt5gA:9
+ a=3ZKOabzyN94A:10 a=QEXdDO2ut3YA:10 a=zZCYzV9kfG8A:10
+ a=rl5im9kqc5Lf4LNbBjHf:22 a=cvBusfyB2V15izCimMoJ:22
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwOTE2MDIzMCBTYWx0ZWRfXx81j0aQEbjlh
+ S+TaKtPl09Cr08Db69fHE5I6vmKUbQfXdn2wt6cKwD90bgC0FZH3QJB7OVhEwr+RWVDeNHeOrRZ
+ SPR10YQ+2IcJqdavV4pk0+h9JThEVUceEcslD9jFaCNXlZQhjAm/P2NtthKkPkCAprOIQb6SpL0
+ tr8PA4mg178jGpzDmdHq89rl1M9sGGsV5bYFMoBmVIgQrUbJE9GooU8ryAMAjs3mBvdiixODWcM
+ DHclT+rFhKsMqtKvkxhrwg6uPeXC9EFXdMMv56MsAD77TYs82kRLyOUxHh6o0KYqyvj7Xt4j6HZ
+ 1gOie2W7cMoF8CFSU+ovSuMpaa87qpYp002gUexiuaf/cpLDwZ49akLxhs+nLFGQ58N30YMyMBt
+ ES2vfFyF0VraGMM+RqrmnCFPZhbOFz8Fz8p/YkLBBRkJ+PEUV0E9PP/eVkSVFUKnmNd57T1TgDz
+ kh30rO3WOMZNDLzvLqA==
+X-Proofpoint-GUID: bD5Voya9VHTT5oz6Y8Nouikk3KyQ-ZRO
+X-Proofpoint-ORIG-GUID: bD5Voya9VHTT5oz6Y8Nouikk3KyQ-ZRO
+X-Proofpoint-Spam-Info: AW1haW4tMjYwOTE2MDIzMCBTYWx0ZWRfX224LONuO9Rvn
+ 4ah/ZedLYrSoOpsglWOK6LLOdBDFiBV7WIMaex6ac3gmCyfJtff9JSb3SaS83b1Tl0iQFmaBEco
+ gp5lNxyVDBTVsqAT8lkzjN1td6i/L0I=
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.293,Aquarius:18.0.1176,Hydra:6.1.134,FMLib:17.12.100.49
+ definitions=2026-09-16_03,2026-09-16_02,2025-10-01_01
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
+ lowpriorityscore=0 phishscore=0 impostorscore=0 priorityscore=1501
+ spamscore=0 malwarescore=0 adultscore=0 clxscore=1015 bulkscore=0
+ suspectscore=0 classifier=typeunknown authscore=0 authtc= authcc=
+ route=outbound adjust=0 reason=mlx scancount=1 engine=8.22.0-2609040000
+ definitions=main-2609160230
+Received-SPF: pass client-ip=205.220.180.131;
+ envelope-from=pierrick.bouvier@oss.qualcomm.com;
+ helo=mx0b-0031df01.pphosted.com
+X-Spam_score_int: -27
+X-Spam_score: -2.8
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_LOW=-0.7, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -115,123 +175,19 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-From: Cornelia Huck <cohuck@redhat.com>
+On 9/16/2026 8:30 AM, Alex Bennée wrote:
+> According to the meson docs this serialises the target in a special
+> "console" pool which also disables the buffering of stdout. This helps
+> avoid the appearance of a massive stall when a docker image is built.
+> 
+> Suggested-by: Daniel P. Berrangé <berrange@redhat.com>
+> Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
+> ---
+>  tests/tcg/meson.build | 1 +
+>  1 file changed, 1 insertion(+)
+> 
 
-For some registers, we do not have a single ID register, but actually
-an array of values (e.g. CCSIDR_EL1, where the actual value is
-determined by whatever CSSELR_EL1 points to.) If we want to avoid
-using a different way to handle registers like that for every
-instance, we should provide some kind of infrastructure. Therefore,
-add accessors {GET,SET}_IDREG_DEMUX that are similar to the accessors
-we already use for regular ID registers.
+Reviewed-by: Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>
 
-Tested-by: Alireza Sanaee <alireza.sanaee@huawei.com>
-Suggested-by: Richard Henderson <richard.henderson@linaro.org>
-Reviewed-by: Eric Auger <eric.auger@redhat.com>
-Signed-off-by: Cornelia Huck <cohuck@redhat.com>
-Signed-off-by: Sebastian Ott <sebott@redhat.com>
----
- target/arm/cpu-sysregs.h |  9 +++++++++
- target/arm/cpu.h         | 16 ++++++++++++++++
- target/arm/cpu64.c       |  8 ++++++++
- 3 files changed, 33 insertions(+)
-
-diff --git a/target/arm/cpu-sysregs.h b/target/arm/cpu-sysregs.h
-index 7877a3b06a..a4b9621a7e 100644
---- a/target/arm/cpu-sysregs.h
-+++ b/target/arm/cpu-sysregs.h
-@@ -20,20 +20,29 @@
- 
- #define DEF(NAME, OP0, OP1, CRN, CRM, OP2) NAME##_IDX,
- 
-+#define DEF_MUX(NAME, OP0, OP1, CRN, CRM, OP2, NUM)     \
-+    NAME##_IDX,                                         \
-+    NAME##_IDX_LAST = NAME##_IDX + NUM - 1,
-+
- typedef enum ARMIDRegisterIdx {
- #include "cpu-sysregs.h.inc"
-     NUM_ID_IDX,
- } ARMIDRegisterIdx;
- 
- #undef DEF
-+#undef DEF_MUX
- #define DEF(NAME, OP0, OP1, CRN, CRM, OP2) \
-     SYS_##NAME = ENCODE_ID_REG(OP0, OP1, CRN, CRM, OP2),
- 
-+#define DEF_MUX(NAME, OP0, OP1, CRN, CRM, OP2, NUM)     \
-+    DEF(NAME, OP0, OP1, CRN, CRM, OP2)
-+
- typedef enum ARMSysRegs {
- #include "cpu-sysregs.h.inc"
- } ARMSysRegs;
- 
- #undef DEF
-+#undef DEF_MUX
- 
- extern const uint32_t id_register_sysreg[NUM_ID_IDX];
- 
-diff --git a/target/arm/cpu.h b/target/arm/cpu.h
-index e3f931dba2..6d1bad1dfc 100644
---- a/target/arm/cpu.h
-+++ b/target/arm/cpu.h
-@@ -919,6 +919,22 @@ typedef struct {
-         i_->idregs[REG ## _EL1_IDX];                                    \
-     })
- 
-+#define SET_IDREG_DEMUX(ISAR, REG, INDEX, VALUE)                        \
-+    ({                                                                  \
-+        ARMISARegisters *i_ = (ISAR);                                   \
-+        unsigned int idx_ = REG ## _IDX + INDEX;                        \
-+        assert(idx_ <= REG ## _IDX_LAST);                               \
-+        i_->idregs[idx_] = VALUE;                                       \
-+    })
-+
-+#define GET_IDREG_DEMUX(ISAR, REG, INDEX)                               \
-+    ({                                                                  \
-+        ARMISARegisters *i_ = (ISAR);                                   \
-+        unsigned int idx_ = REG ## _IDX + INDEX;                        \
-+        assert(idx_ <= REG ## _IDX_LAST);                               \
-+        i_->idregs[idx_];                                               \
-+    })
-+
- /**
-  * ARMCPU:
-  * @env: #CPUARMState
-diff --git a/target/arm/cpu64.c b/target/arm/cpu64.c
-index 4e8c472530..c11ab2da21 100644
---- a/target/arm/cpu64.c
-+++ b/target/arm/cpu64.c
-@@ -42,14 +42,21 @@
- #define DEF(NAME, OP0, OP1, CRN, CRM, OP2)      \
-     [NAME##_IDX] = SYS_##NAME,
- 
-+#define DEF_MUX(NAME, OP0, OP1, CRN, CRM, OP2, NUM)     \
-+    DEF(NAME, OP0, OP1, CRN, CRM, OP2)
-+
- const uint32_t id_register_sysreg[NUM_ID_IDX] = {
- #include "cpu-sysregs.h.inc"
- };
- 
- #undef DEF
-+#undef DEF_MUX
- #define DEF(NAME, OP0, OP1, CRN, CRM, OP2) \
-     case SYS_##NAME: return NAME##_IDX;
- 
-+#define DEF_MUX(NAME, OP0, OP1, CRN, CRM, OP2, NUM)     \
-+    DEF(NAME, OP0, OP1, CRN, CRM, OP2)
-+
- int get_sysreg_idx(ARMSysRegs sysreg)
- {
-     switch (sysreg) {
-@@ -59,6 +66,7 @@ int get_sysreg_idx(ARMSysRegs sysreg)
- }
- 
- #undef DEF
-+#undef DEF_MUX
- 
- void aarch64_cpu_sve_finalize(ARMCPU *cpu, Error **errp)
- {
--- 
-2.55.0
 
 

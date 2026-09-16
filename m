@@ -4,71 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C1183C982C4
-	for <qemu-arm@archiver.kernel.org>; Wed, 16 Sep 2026 15:32:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7CC05C982C9
+	for <qemu-arm@archiver.kernel.org>; Wed, 16 Sep 2026 15:33:24 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1x6ran-0002BN-H5; Wed, 16 Sep 2026 11:30:37 -0400
+	id 1x6rbY-0003Ad-M5; Wed, 16 Sep 2026 11:31:24 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1x6rac-00025H-CH
- for qemu-arm@nongnu.org; Wed, 16 Sep 2026 11:30:26 -0400
-Received: from mail-wr2-x10.google.com ([2a00:1450:4864:30::10])
+ id 1x6rb6-0002Jk-OW
+ for qemu-arm@nongnu.org; Wed, 16 Sep 2026 11:30:59 -0400
+Received: from mail-wm2-x10.google.com ([2a00:1450:4864:31::10])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1x6raZ-0001NE-O4
- for qemu-arm@nongnu.org; Wed, 16 Sep 2026 11:30:25 -0400
-Received: by mail-wr2-x10.google.com with SMTP id
- ffacd0b85a97d-485b1d2874fso359405f8f.0
- for <qemu-arm@nongnu.org>; Wed, 16 Sep 2026 08:30:23 -0700 (PDT)
+ id 1x6rb4-0001VR-3C
+ for qemu-arm@nongnu.org; Wed, 16 Sep 2026 11:30:56 -0400
+Received: by mail-wm2-x10.google.com with SMTP id
+ 5b1f17b1804b1-49cd38e0e5dso12081125e9.2
+ for <qemu-arm@nongnu.org>; Wed, 16 Sep 2026 08:30:42 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1789572622; x=1790177422; darn=nongnu.org;
+ d=linaro.org; s=google; t=1789572641; x=1790177441; darn=nongnu.org;
  h=content-transfer-encoding:content-type:mime-version:references
  :in-reply-to:message-id:date:subject:cc:to:from:from:to:cc:subject
  :date:message-id:reply-to:content-type;
- bh=7FptWd5Jg1/aZvBoGje7ZffIe7jR1suwzb5Czmj9/aE=;
- b=hwZ91cCz2N9uNeiRNPrY2F6lCfoolTl7/XprI4NmDK98wVkupIS5IB3GS1NrZWSi+C
- G0UMaYtdPtBhkLSPogTygNvohDia3wK+uZ/8AMkFWTUARNpWdOiH7TnOyM0+b6JHWj9w
- dRBT/7cJ1ButmyN1419Wmn6wKcx5m8NG6B2DXXry8rhiy9cvYapwhFx9SpdFp4Dn3oxV
- Vq9cpozVx6vD1WMJ/d3Tpm4WM/WRpIy0w9o1uf9HkWNsdrnCcu8iX24By/V2HpsKE0OG
- 4gtwR/numxei1UnGwaJ0SXDSfq1njX/yrtkc+nWnmySm3FhakqNbhR6xvQtKwSzqyuRG
- 1gDA==
+ bh=s+iJgOTicDwCjhm5qp3QC56yC+WLMH8ocrsmN4EU6Dc=;
+ b=mhStqjGic78M/JY0kl2aK089cgmo6BHjBWf4U34NTdYlGJCm2JiX1SQj3AA/qGwuLZ
+ PIvyTSp2S6ar3Rzux3p6PHY0qRLbXW5w0GA8PUZGDOMp0vFyCAX/w8pXaH52YJY4hpxL
+ CDCtC/wQnKuXpVB3A7vBbouiJjxlOWzWzSFC5bFDhs4s8my6ShUIX431jE68oIMELAG3
+ vF5MvRwQZ1SVPQasMMU/biJ9+2RGiWG8W5ELvangPbOQ/CEJWZgBgSzL16XR7DvB99Jf
+ lM43ovU3htk83bnIUx0VhPvBGzyXPqVf8EZSB0ayC6AEYYGQaQoWkc5AURfyfJKJ0ZEE
+ gk8w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20260707; t=1789572622; x=1790177422;
+ d=1e100.net; s=20260707; t=1789572641; x=1790177441;
  h=content-transfer-encoding:content-type:mime-version:references
  :in-reply-to:message-id:date:subject:cc:to:from:x-gm-gg
  :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
  :content-type;
- bh=7FptWd5Jg1/aZvBoGje7ZffIe7jR1suwzb5Czmj9/aE=;
- b=v38Is4g1ZqUB3u/ryyBh2+aOtXdZ7dzA9SOKMkDLE4xaHU5H5lhEXTPRmSnLKTnafF
- Vmv6iW2yydOg4ECI6EkoTWYWENci9GSCjAzcKETnbErMqxmOtmF8S+Pnqy7HoNGpDqBx
- iT+LKQDiE8bl05EXpk281CyW5Mx6mM5ZabhLrNfsFvRSS+B6BK1vI1HLTjGf+djRvTG4
- FbvcoRGP0da9/+kOKhVqAWG9h+DEis2dxT+fUx+rKMgsSNOrXXFPfTwd5+5QOxYLM320
- Itdnra2SejbW3C3gOshybOtpnugF2GIMub2hbqP4KMq/CS/5/j2uNycEKmlF78OmLvlZ
- zKqg==
+ bh=s+iJgOTicDwCjhm5qp3QC56yC+WLMH8ocrsmN4EU6Dc=;
+ b=yuXmJQjAoSomim98mqi1kG4PhAma3xo1JccGv6xg8LSWlFqos79h2CEFHH/RAz/UqT
+ +NQ86Dp/dw7RQK03br7SB7Fk9KzAjZsXQwUHCLgn9tZI1WfTQqDrRJo/WEkicK1KWF/+
+ cB/VO3Q4Z4bbfgqWT5OHDWJr0/bb1hh4x1BxgwPcRaU2+Ikub5EJxHJ5DWMseTYVTXGZ
+ MphZ0JxaKv6n93P8Z7nKwByZki2CFNj2OhLbiSkQOZfnOhpU7qGPkTpL11snH74NED7I
+ DkB6LekwhxrzivN6x+UtmlVMXxcFQqui1zuqtbtR0S+xg0GSfaPECXdrDB3F7e/Hp4fo
+ Cp9A==
 X-Forwarded-Encrypted: i=1;
- AKwUvBxiGk4WIW717tL2C8CKxHt8VMHlZfY3bLGZQZeOC72SIgsz7pWISOxjJuYZIqUM4fjyt+bKmNZxVQ==@nongnu.org
-X-Gm-Message-State: AFuF++nxBXyu053zuJqGMV1yFaYy101uBcAm4qVR0gkJ0nfw26Vr+ULL
- 8JkFoiTwZ4U+0drBww0cHr3on0VEy/ye4i11CBQ1w4U+kTLjWbdoGE4tb5XF/b/d/28=
-X-Gm-Gg: AYBFou29hvIxjSGrRUfZiM06/+n2BFhb3hu326xlmWTed+ErnWGBM2yn+Xie6iUWg6s
- KqvIQ/0iCyXr1uqKjDYx/c5XcyZn1lDsK4X3gc8ntA+YvsmCDaRJ6yBwdaG/10tLWoYE72AM58j
- NEfuDLy7mpkl62AMsi9VWmCfE+26oA8Zoyx/qvtqH8J8zXK6zeNSd6M/SevIzsC9WRbSvucPRUB
- V2MwOn6KD0S8wlfJq+lxkg4m2zMgl9TcNaRWLNhoBE0kWOmOjTndMINx3Np3v9vC9NCaGa5hEFR
- zSaRrXceCUnBRJYefai70U+HCwzd6CPa5W5EwM3u40kedJ0Fbaub+n+giaddrGi02hdVuWosf1y
- GtH2XCo1wELbMIh8FOZa0SV2/hUDBETxi88WblD/MYa9jqwHR5cvwgCU5z00lC/mGlAHrQFzElB
- wnod8qWOiRoOpufQr8EivcFeX67R/29dAGnwvzKU8+KmT3izFY1i77zScvK2SwPG+bwGShWUo=
-X-Received: by 2002:a05:600c:3e16:b0:49e:8222:3451 with SMTP id
- 5b1f17b1804b1-49ea20b46ebmr40693715e9.14.1789572622122; 
- Wed, 16 Sep 2026 08:30:22 -0700 (PDT)
+ AKwUvBwW3EG1hEAZ68WiZCUT314egB3AQrD4G01eTIkbUObvo/7s+u2jMxU7KS39kHGj8NHJ4xOBId2WFQ==@nongnu.org
+X-Gm-Message-State: AFuF++m6i02JrQWFJWjUdPlXz92FAQmAQkFlU099k+YFwPHjajd1pS24
+ ex5at2tGK+GWlwUAG/wVU9D5Ziw8Ftv2Hwu16eWwYIYOx/utRgbgYTCsPSOeQKpqmss=
+X-Gm-Gg: AYBFou3olooRqXn8qcao7yoJKyhPoSdHuB4XWXD3IM2GYhqNtDys4tCJDre8zUmAeZR
+ ZOTsH8ZeO3sFmvIaoayWOKoLdaRW4KLfO3do2AiGVn4/zKmgQ5BqabmXJ/Ed1WbabACNSECG2JK
+ hPe398z+bkzGQYFSoEnlUa/DQRDh1D5nT6R8MlhLdutfjRljguCEtT3KSh2iDH0doHHd7Kupdxe
+ KWGuzmVKu/cEPHp5AB2BhFByDe6aG+z6WGgCBBktvJyoQfaTkUnZkpue7IKC5xX/6kUZmp5QFB9
+ gI3gKFBK5yp5biIvGVKYa+G9+XpvlLUblTFlly7/ZU/bDxVnbEyeemb2FmRyxIJnCHSiAqo1lp5
+ 5uZv666xnn3TED4I38GD/kSSCJm+KKe31qrJC4Nyl+7SLFF4GV4ZcrexiwhKERNqLDJgExTKWsN
+ 1UWzQgem9lCFTIVD6xWLwyEHHyutisWgivL3T9qKtUTrMLw3JyoYmL7L/wxTbCEawjputZBYQ=
+X-Received: by 2002:a05:600c:3e15:b0:49c:f617:7cf with SMTP id
+ 5b1f17b1804b1-49eac41066amr71528515e9.0.1789572641350; 
+ Wed, 16 Sep 2026 08:30:41 -0700 (PDT)
 Received: from draig.lan ([185.124.0.156]) by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-49fbd0efce2sm1100205e9.6.2026.09.16.08.30.14
+ 5b1f17b1804b1-49fbbd951a0sm16970965e9.4.2026.09.16.08.30.26
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 16 Sep 2026 08:30:14 -0700 (PDT)
+ Wed, 16 Sep 2026 08:30:38 -0700 (PDT)
 Received: from draig.lan (localhost [IPv6:::1])
- by draig.lan (Postfix) with ESMTP id 99223618F9;
- Wed, 16 Sep 2026 16:30:13 +0100 (BST)
+ by draig.lan (Postfix) with ESMTP id F2A6061A7B;
+ Wed, 16 Sep 2026 16:30:14 +0100 (BST)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: Ilya Leoshkevich <iii@linux.ibm.com>, qemu-arm@nongnu.org,
@@ -90,17 +90,18 @@ Cc: Ilya Leoshkevich <iii@linux.ibm.com>, qemu-arm@nongnu.org,
  Brian Cain <brian.cain@oss.qualcomm.com>,
  =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
  Richard Henderson <richard.henderson@linaro.org>
-Subject: [PATCH v4 04/19] configure: correctly honour --disable-containers
-Date: Wed, 16 Sep 2026 16:29:57 +0100
-Message-ID: <20260916153013.2134555-5-alex.bennee@linaro.org>
+Subject: [PATCH v4 17/19] scripts/make2mtest: add docker dependencies for
+ check-tcg-% targets
+Date: Wed, 16 Sep 2026 16:30:10 +0100
+Message-ID: <20260916153013.2134555-18-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.47.3
 In-Reply-To: <20260916153013.2134555-1-alex.bennee@linaro.org>
 References: <20260916153013.2134555-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:30::10;
- envelope-from=alex.bennee@linaro.org; helo=mail-wr2-x10.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:31::10;
+ envelope-from=alex.bennee@linaro.org; helo=mail-wm2-x10.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -123,46 +124,114 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-From: Daniel P. Berrangé <berrange@redhat.com>
+This should trigger the building of the docker image when the user
+calls "make check-tcg" or one of the arch specific targets such as
+"make check-tcg-m68k-linux-user".
 
-The configure script originally only probed for 'runc' command
-in order to handle cross-compilation containers. The Makefile
-under tests/docker would then probe again when used.
+We still keep the internal meson dependency so individual tests can
+launched and the docker build verified.
 
-In order to eliminate the additional probeing, we changed
-configure in commit c4ce04cfb7460d46c0262d437a7f35bb5c5fc449
-to always probe for 'runc', so the result could be passed
-along to tests/docker make rules.
-
-That commit overlooked that the 'probe_target_compiler' func
-was relying on '$runc' == 'no' as a proxy for the state of
-the --disable-containers arg.
-
-When we started unconditionally probing, that short cut no
-longer works and we must explicitly check "$use_containers"
-too.
-
-Fixes: c4ce04cfb7460d46c0262d437a7f35bb5c5fc449
-Reported-by: Alex Bennée <alex.bennee@linaro.org>
-Reviewed-by: Alex Bennée <alex.bennee@linaro.org>
-Tested-by: Alex Bennée <alex.bennee@linaro.org>
-Signed-off-by: Daniel P. Berrangé <berrange@redhat.com>
+Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
 ---
- configure | 1 +
- 1 file changed, 1 insertion(+)
+ scripts/mtest2make.py | 35 +++++++++++++++++++++++++++++------
+ 1 file changed, 29 insertions(+), 6 deletions(-)
 
-diff --git a/configure b/configure
-index 6084a7a065e..4c7bf406b88 100755
---- a/configure
-+++ b/configure
-@@ -1401,6 +1401,7 @@ probe_target_compiler() {
-   esac
+diff --git a/scripts/mtest2make.py b/scripts/mtest2make.py
+index 383ea68b16d..ab894d90d47 100644
+--- a/scripts/mtest2make.py
++++ b/scripts/mtest2make.py
+@@ -14,6 +14,7 @@ class Suite(object):
+     def __init__(self):
+         self.deps = set()
+         self.speeds = set()
++        self.docker_deps = set()
  
-   for host in $container_hosts; do
-+    test "$use_containers" = "yes" || continue
-     test "$container_command" != "" || continue
-     test "$host" = "$cpu" || continue
-     case $target_arch in
+     def names(self, base):
+         return [f'{base}-{speed}' for speed in self.speeds]
+@@ -40,7 +41,22 @@ def names(self, base):
+ 
+ introspect = json.load(sys.stdin)
+ 
+-def process_tests(test, targets, suites):
++targets = {t['id']: [os.path.relpath(f) for f in t['filename']]
++           for t in introspect['targets']}
++
++# collect the docker images uses by the tests. This is totally a hacky
++# heuristic that fishes the images out of the test custom commands by
++# looking for the qemu/image pattern.
++targets_docker = {}
++for t in introspect['targets']:
++    for src in t.get('target_sources', []):
++        for arg in src.get('compiler', []):
++            if arg.startswith('qemu/'):
++                img = arg.split('/', 1)[1]
++                targets_docker[t['id']] = f'docker-image-{img}'
++                break
++
++def process_tests(test, targets, targets_docker, suites):
+     executable = test['cmd'][0]
+     try:
+         executable = os.path.relpath(executable)
+@@ -51,6 +67,8 @@ def process_tests(test, targets, suites):
+     deps = itertools.chain.from_iterable(deps)
+     deps = list(deps)
+ 
++    docker_deps = [targets_docker[x] for x in test['depends'] if x in targets_docker]
++
+     test_suites = test['suite'] or ['default']
+     for s in test_suites:
+         # The suite name in the introspection info is "PROJECT" or "PROJECT:SUITE"
+@@ -59,6 +77,7 @@ def process_tests(test, targets, suites):
+             if s == 'slow' or s == 'thorough':
+                 continue
+         suites[s].deps.update(deps)
++        suites[s].docker_deps.update(docker_deps)
+         if s.endswith('-slow'):
+             s = s[:-5]
+             suites[s].speeds.add('slow')
+@@ -81,6 +100,9 @@ def emit_prolog(suites, prefix):
+     print(f'all-{prefix}-xml = {all_xml}')
+     print(f'.PHONY: {prefix} do-meson-{prefix} {prefix}-report.junit.xml $(all-{prefix}-targets) $(all-{prefix}-xml)')
+     print(f'ninja-cmd-goals += $(foreach s, $(.{prefix}.mtest-suites), $(.{prefix}-$s.deps))')
++    print(f'docker-cmd-goals += $(foreach s, $(.{prefix}.mtest-suites), $(.{prefix}-$s.docker-deps))')
++    print(f'docker-cmd-goals += $(foreach g, $(MAKECMDGOALS), $(.docker-goals.$g))')
++    print(f'run-ninja: $(sort $(docker-cmd-goals))')
+     print(f'{prefix}-build: run-ninja')
+     print(f'{prefix} $(all-{prefix}-targets): do-meson-{prefix}')
+     print(f'do-meson-{prefix}: run-ninja; $(if $(MAKE.n),,+)$(MESON) test $(.{prefix}.mtestargs)')
+@@ -93,6 +115,10 @@ def emit_suite(name, suite, prefix):
+     print()
+     print(f'.{prefix}-{tgtname}.deps = {deps}')
+     print(f'.ninja-goals.check-build += $(.{prefix}-{tgtname}.deps)')
++    if suite.docker_deps:
++        docker_deps = ' '.join(sorted(suite.docker_deps))
++        print(f'.{prefix}-{tgtname}.docker-deps = {docker_deps}')
++        print(f'.docker-goals.check-build += $(.{prefix}-{tgtname}.docker-deps)')
+ 
+     names = ' '.join(sorted(suite.names(name)))
+     targets = f'{prefix}-{tgtname} {prefix}-report-{tgtname}.junit.xml'
+@@ -105,19 +131,16 @@ def emit_suite(name, suite, prefix):
+     print(f".{prefix}.mtest-suites += {name} $(call .speed.$(SPEED), {names})")
+     print(f'endif')
+ 
+-targets = {t['id']: [os.path.relpath(f) for f in t['filename']]
+-           for t in introspect['targets']}
+-
+ testsuites = defaultdict(Suite)
+ for test in introspect['tests']:
+-    process_tests(test, targets, testsuites)
++    process_tests(test, targets, targets_docker, testsuites)
+ emit_prolog(testsuites, 'check')
+ for name, suite in testsuites.items():
+     emit_suite(name, suite, 'check')
+ 
+ benchsuites = defaultdict(Suite)
+ for test in introspect['benchmarks']:
+-    process_tests(test, targets, benchsuites)
++    process_tests(test, targets, targets_docker, benchsuites)
+ emit_prolog(benchsuites, 'bench')
+ for name, suite in benchsuites.items():
+     emit_suite(name, suite, 'bench')
 -- 
 2.47.3
 

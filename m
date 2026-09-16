@@ -4,71 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id F007EC88E5C
-	for <qemu-arm@archiver.kernel.org>; Wed, 16 Sep 2026 08:54:21 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C93A5C88E5C
+	for <qemu-arm@archiver.kernel.org>; Wed, 16 Sep 2026 08:55:00 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1x6lOu-0007qc-Tf; Wed, 16 Sep 2026 04:53:56 -0400
+	id 1x6lP8-00089b-HG; Wed, 16 Sep 2026 04:54:10 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1x6lOt-0007oc-0s
- for qemu-arm@nongnu.org; Wed, 16 Sep 2026 04:53:55 -0400
+ id 1x6lP6-00086K-Pl
+ for qemu-arm@nongnu.org; Wed, 16 Sep 2026 04:54:08 -0400
 Received: from mail-wr2-x10.google.com ([2a00:1450:4864:30::10])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1x6lOp-000503-9I
- for qemu-arm@nongnu.org; Wed, 16 Sep 2026 04:53:54 -0400
+ id 1x6lP5-000534-4d
+ for qemu-arm@nongnu.org; Wed, 16 Sep 2026 04:54:08 -0400
 Received: by mail-wr2-x10.google.com with SMTP id
- ffacd0b85a97d-4843c3ee4cfso275496f8f.2
- for <qemu-arm@nongnu.org>; Wed, 16 Sep 2026 01:53:50 -0700 (PDT)
+ ffacd0b85a97d-482f6350f91so334779f8f.1
+ for <qemu-arm@nongnu.org>; Wed, 16 Sep 2026 01:53:56 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1789548830; x=1790153630; darn=nongnu.org;
+ d=linaro.org; s=google; t=1789548836; x=1790153636; darn=nongnu.org;
  h=content-transfer-encoding:content-type:mime-version:references
  :in-reply-to:message-id:date:subject:cc:to:from:from:to:cc:subject
  :date:message-id:reply-to:content-type;
- bh=i2Y6PTJy6Ue37NuEEJ19/+e1vKsW2mbiw6rvAiII2Gw=;
- b=LfoUKhywP8tf1nB3p9H2UtBVB4UqnsC1sKYLRSDR2Bg4lRlvTKkqZEpW3xiM/zfOlf
- 06JNK39f7pr8qiDJnI+K2Vq1dTebAKtQGn0iqAsOOeB7pmbPbugtBMvhj9WB/Qv8Mn28
- VTQ3II+zUuvurg8B79nKdPrhcOT096GEDs77SsR2wOvHEAvHtzu+m8Q580LG3m5cbdfg
- iWlCpPMH4ftXD6fcUn/mX3VsT9dYRnSVUnQXixvQQ8IWzYZ/6ak20W+ntBTM3sf5mpOa
- ten+bm2W0M1kxLJSTghftUD+hlH36lWkHy3vPm1uUnYmZkW3BaGmmarCGvg8kZmZt7dR
- 2deQ==
+ bh=wmW/Q26iQQbJTF6ctnQiMypy9sc56eqF6OAXKZ20AB0=;
+ b=Byl3JbAQFBpfpw9kkMjGtxKu0MyyxeDJ7MpRrMOgzYREd5orbDSBlY761fSCmNfovF
+ gCCpNyXPHipTV7iVjx1E4/dCgSiXDkuNV0gibk+bM6LftALSfbiTwvt63cvlQpKMuchg
+ xHLQ6/8ByCvZ0mUkjvpL0ByUgKbz7tuLUt2JO7g0VZTrMn5n0WLQExRbtTVv5QoVvdNE
+ 5FF9/hpKeKkzbsItrjh9rq0LieQ7hkzmKWrDEVLy4/FqJqYnBg9ikncre9/9Vbf6yV7S
+ CF7nYnYyE4g1Sjq1UOgPWZkFeLKSyU8mscZEEMl/H/EFzT+hkqjLodjAU8YxupvqLuj9
+ xIbw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20260707; t=1789548830; x=1790153630;
+ d=1e100.net; s=20260707; t=1789548836; x=1790153636;
  h=content-transfer-encoding:content-type:mime-version:references
  :in-reply-to:message-id:date:subject:cc:to:from:x-gm-gg
  :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
  :content-type;
- bh=i2Y6PTJy6Ue37NuEEJ19/+e1vKsW2mbiw6rvAiII2Gw=;
- b=FhhheGcVGI45kk0B3zbETm6yyZAS5CPs+Anv+AquNX/EBHfDskTSbvRlSpvsPhYkQi
- 2bQLg2R3rSA7l/13CFUO5x5RdzS9nGNWi2jvdDNmm08HmvbNa2nIOnQfsu5s5u0pwTgJ
- h/hJzq2YEjKKZ0mLVEF4+aoLoJKHsJmOxVFRlesRImDrSULLTaTUxPYZWxOmPuKRtXmF
- N6IG1HBsMAHe9TEUf5GHoLb+L0Df8LAK+1S3XUsALA1QqAb8gP7raECeoYpEOzSUjyJ/
- jEuedt0TKFdVPvcQ6wR5IFGmkKlZNuS2bEHtwLXTDel/4VD6cQVf824BzAybjLywfCbF
- 7RNw==
+ bh=wmW/Q26iQQbJTF6ctnQiMypy9sc56eqF6OAXKZ20AB0=;
+ b=Wy95+oSCLY76n5zSZSw6f00mey6alxdLOV4YBQjBymwGG7mcRRhGhaEbimQC1NIjWS
+ +0CrWpuWLCMrsX/gnzLoFZq46p2RcEYB5MsAAhJ+4bBdItZ+0tuO03PkIt4zA+ujRIR1
+ 0fgDUPNoYQP9Dgj/7Nc2+ZpC4sW6Ja4hA1KY2N/lbiDPyO+r5X605NUgG1+fYmD36ZNF
+ 0bJYGInKZ1FXrzUsd+g8vKSHF6QrHixY6UNE9YNoHtG0pD21P8/O+zsrhFBgo7f0AaKm
+ xnODPnJfaS4W8+HOq52lF3gspO4PA5SiPa5mSWitnXpOedeTDmciZIpkTMcqupKH7MeV
+ LnJg==
 X-Forwarded-Encrypted: i=1;
- AKwUvBx66M74/yDsd0aIK+xA6jGhroF80pHdo6LuWSi6asorzH/PWCrzF2qVwfT9IjZORvfdxOQ/Gq6Hsw==@nongnu.org
-X-Gm-Message-State: AFuF++mZDGTx8jRYa+fVFVRSIzWcRLumdjd7YxHB7wnTBdXc0LNh1bt3
- j+6tIFiQAPwLgkl7sK8LbC4J5IvYPytPQK8vPgwiYl/39q6YZ/wMSbb2gbLElEDLOUk=
-X-Gm-Gg: AYBFou3ieF0aU1GGL1W805G1kpNwPSE3xOcFVk98zRyxBWAaYSQHXz1ARnhQYNeq3DF
- sGPHaUvIB1JR3hAYLLd0fOaA+v8G7ftnimF1SmZxUfVYbKM17kNpG1czVRfWjyt0vzEdhwpTbBL
- 9cP9eaSXQvqROVJ4cuIU05lZhDiEmMEO3eyPN2gf45HzOKUTqxKk2mmNqmry46lQ9gz54ULKrEs
- 73MUTL+f1EsnTs3LNuwrS7goilafM5+Z9r0icAvZQ559fKRJQSMLCk5jRhIsLvs2ZPaiKggQPlW
- qlMIyfbMw0lscyeOT85n24unJd8xf3AsmyhOEHWDcNgWwYOqKln7WjHS/RkksIF6uEjTs5rZ5gG
- 1D/IGj0fz6GT0HkooVNwWE5MLzNgxaDqp2VFBp7bK0OboV8kY5Bb55wwziz4uvng41RotVSapU1
- friU/xjG928rm3eDthfbO+gXEnM058pbsdFzf//7JWygehtJ4MZHXYgUiSkuhUYQNORn+OLUc=
-X-Received: by 2002:a05:6000:2312:b0:487:355:4619 with SMTP id
- ffacd0b85a97d-4870cf273d4mr2312749f8f.4.1789548829598; 
- Wed, 16 Sep 2026 01:53:49 -0700 (PDT)
+ AKwUvBxtLWKS2ptkm3mqsLOPktypsY5aBzrvUjWunmrV9X8Z0znS2qzGz03/LVxoADCiubStCT1hDfnmIw==@nongnu.org
+X-Gm-Message-State: AFuF++lHIbxyk2+aQJUiFvQVPrkVHYkIQcqUK1uompu01IQXgEYI02gE
+ 8QAgsbMIc7keYKSjFpbhx8jCKfqucmvIX0HR3K26IEg0EZqNr4x6gXN+wxRLZ7bckq8=
+X-Gm-Gg: AYBFou3NpIcJRGg9Lu39nRBseiR51eN6eDpu3RJEfEkVebDtdWWppwfeHxp40+6jFh3
+ 6GZEx8YgjGpo1GU/TvXgOc42VCN68Y1vvIlzS3pvzigXw4EakxU7VPSviJKKLHSxR/Ac9hkChVB
+ blwmCdMpKWujkhJzjw6+RawvKawMcHVBx8VgYe4jhU6s2SfLhfG39B1rpHZtAEb3+s1D6nqYVyc
+ Do68HSc79WrW3zLOFlXwASDlXKeJR+7NA/9bqQHJ/8BkE6CMq2U9hWamIcqtJu2qg45q0AIzqRE
+ OKfk42dWCsE5nKIm7dASIYcfghadaAO4Jw+Acx9FxpaT1nMUM4jjkqv3DpeY41vVREwX9+aJEyC
+ UH3a9jKgNiNylo8BCAD/OrvvH8dcauvxDBxBAFM8FzoSKBSTuamdrJ9gs9dU7e2x5UzuM2aAWNH
+ odrqjkYE4ktKFnKjgW25exWHzm9PmbyfsoSj9pmKJfwyUk5KI2aWGW+dQumNdqwe+CAyrV/go=
+X-Received: by 2002:a05:6000:490d:b0:486:f404:e833 with SMTP id
+ ffacd0b85a97d-4870d16d340mr1980516f8f.44.1789548835696; 
+ Wed, 16 Sep 2026 01:53:55 -0700 (PDT)
 Received: from draig.lan ([185.124.0.156]) by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-4870bf1f98csm5065257f8f.11.2026.09.16.01.53.45
+ ffacd0b85a97d-4870bf344bfsm5273051f8f.27.2026.09.16.01.53.48
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 16 Sep 2026 01:53:45 -0700 (PDT)
+ Wed, 16 Sep 2026 01:53:51 -0700 (PDT)
 Received: from draig.lan (localhost [IPv6:::1])
- by draig.lan (Postfix) with ESMTP id 66A85618D5;
- Wed, 16 Sep 2026 09:53:42 +0100 (BST)
+ by draig.lan (Postfix) with ESMTP id 44D1C61996;
+ Wed, 16 Sep 2026 09:53:43 +0100 (BST)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: John Snow <jsnow@redhat.com>,
@@ -89,10 +89,10 @@ Cc: John Snow <jsnow@redhat.com>,
  Laurent Vivier <laurent@vivier.eu>,
  =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
  Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>
-Subject: [PATCH v3 09/17] tests/docker: add container registry to configure
- and use
-Date: Wed, 16 Sep 2026 09:53:32 +0100
-Message-ID: <20260916085341.1692742-10-alex.bennee@linaro.org>
+Subject: [PATCH v3 17/17] tests/tcg: add console property to docker image
+ custom target
+Date: Wed, 16 Sep 2026 09:53:40 +0100
+Message-ID: <20260916085341.1692742-18-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.47.3
 In-Reply-To: <20260916085341.1692742-1-alex.bennee@linaro.org>
 References: <20260916085341.1692742-1-alex.bennee@linaro.org>
@@ -107,7 +107,7 @@ X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -123,133 +123,28 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Previously we had the default baked into Makefile.include but as the
-meson container logic will also benefit from it we update the configure
-machinery.
+According to the meson docs this serialises the target in a special
+"console" pool which also disables the buffering of stdout. This helps
+avoid the appearance of a massive stall when a docker image is built.
 
-For now we allow direct make invocations to override but for the
-normal case it is in one place now.
-
+Suggested-by: Daniel P. Berrangé <berrange@redhat.com>
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
-
 ---
-v2
-  - fixed conflicts from the revert.
-v3
-  - regen meson-buildoptions.sh
----
- configure                     | 8 ++++++++
- meson_options.txt             | 4 ++++
- scripts/meson-buildoptions.sh | 3 +++
- tests/docker/Makefile.include | 4 +---
- tests/tcg/meson.build         | 6 ++++++
- 5 files changed, 22 insertions(+), 3 deletions(-)
+ tests/tcg/meson.build | 1 +
+ 1 file changed, 1 insertion(+)
 
-diff --git a/configure b/configure
-index d1b4e6d3ff6..b9d64993835 100755
---- a/configure
-+++ b/configure
-@@ -173,6 +173,7 @@ fi
- 
- # default parameters
- container_command=""
-+container_registry="registry.gitlab.com/qemu-project/qemu"
- cpu=""
- cross_compile="no"
- cross_prefix=""
-@@ -733,6 +734,9 @@ for opt do
-   ;;
-   --container-command=*) container_command="$optarg"
-   ;;
-+  --container-registry=*) container_registry="$optarg"
-+                          meson_option_add -Dcontainer_registry="$optarg"
-+  ;;
-   --rust-target-triple=*) rust_target_triple="$optarg"
-   ;;
-   --gdb=*) meson_option_add -Dgdb="$optarg"
-@@ -867,6 +871,7 @@ Advanced options (experts only):
-   --cpu=CPU                Build for host CPU [$cpu]
-   --disable-containers     don't use containers for cross-building
-   --container-command=CMD  which container command to use [autodetect]
-+  --container-registry=URL which container registry to cache from [$container_registry]
-   --gdb=GDB-path           gdb to use for gdbstub tests [autodetect]
-   --wasm64-32bit-address-limit Restrict wasm64 address space to 32-bit (default
-                                is to use the whole 64-bit range).
-@@ -1729,6 +1734,9 @@ echo "GENISOIMAGE=$genisoimage" >> $config_host_mak
- echo "MESON=$meson" >> $config_host_mak
- echo "NINJA=$ninja" >> $config_host_mak
- echo "EXESUF=$EXESUF" >> $config_host_mak
-+if test -n "$container_registry"; then
-+  echo "DOCKER_DEFAULT_REGISTRY=$container_registry" >> $config_host_mak
-+fi
- if test "$default_targets" = "yes"; then
-   echo "CONFIG_DEFAULT_TARGETS=y" >> $config_host_mak
- fi
-diff --git a/meson_options.txt b/meson_options.txt
-index 218d003a80b..5a080b2360c 100644
---- a/meson_options.txt
-+++ b/meson_options.txt
-@@ -389,3 +389,7 @@ option('rust', type: 'feature', value: 'disabled',
-        description: 'Rust support')
- option('strict_rust_lints', type: 'boolean', value: false,
-        description: 'Enable stricter set of Rust warnings')
-+
-+option('container_registry', type: 'string',
-+       value: 'registry.gitlab.com/qemu-project/qemu',
-+       description: 'container registry to cache from')
-diff --git a/scripts/meson-buildoptions.sh b/scripts/meson-buildoptions.sh
-index ba3c9de216b..0cb1d48c982 100644
---- a/scripts/meson-buildoptions.sh
-+++ b/scripts/meson-buildoptions.sh
-@@ -10,6 +10,9 @@ meson_options_help() {
-   printf "%s\n" '  --block-drv-rw-whitelist=VALUE'
-   printf "%s\n" '                           set block driver read-write whitelist (by default'
-   printf "%s\n" '                           affects only QEMU, not tools like qemu-img)'
-+  printf "%s\n" '  --container-registry=VALUE'
-+  printf "%s\n" '                           container registry to cache from'
-+  printf "%s\n" '                           [registry.gitlab.com/qemu-project/qemu]'
-   printf "%s\n" '  --datadir=VALUE          Data file directory [share]'
-   printf "%s\n" '  --disable-coroutine-pool coroutine freelist (better performance)'
-   printf "%s\n" '  --disable-debug-info     Enable debug symbols and other information'
-diff --git a/tests/docker/Makefile.include b/tests/docker/Makefile.include
-index 0adddb6a5c6..74bf471f171 100644
---- a/tests/docker/Makefile.include
-+++ b/tests/docker/Makefile.include
-@@ -11,9 +11,7 @@ USER = $(if $(NOUSER),,$(shell id -un))
- UID = $(if $(NOUSER),,$(shell id -u))
- 
- DOCKER_FILES_DIR := $(SRC_PATH)/tests/docker/dockerfiles
--ifeq ($(HOST_ARCH),x86_64)
--DOCKER_DEFAULT_REGISTRY := registry.gitlab.com/qemu-project/qemu
--endif
-+DOCKER_DEFAULT_REGISTRY ?= registry.gitlab.com/qemu-project/qemu
- DOCKER_REGISTRY := $(if $(REGISTRY),$(REGISTRY),$(DOCKER_DEFAULT_REGISTRY))
- 
- CONTAINER_COMMAND ?= $(shell $(SRC_PATH)/tests/docker/docker.py probe)
 diff --git a/tests/tcg/meson.build b/tests/tcg/meson.build
-index 28a8e7a0558..fce70f8e56f 100644
+index 17974e4d15c..baa22e19336 100644
 --- a/tests/tcg/meson.build
 +++ b/tests/tcg/meson.build
-@@ -84,6 +84,9 @@ docker_supported = docker_probe.returncode() == 0
- if docker_supported
-   docker_wrapper = [docker_wrapper, '--command', docker_probe.stdout().strip()]
- endif
-+if get_option('container_registry') != ''
-+  tcg_tests_summary += {'container registry': get_option('container_registry')}
-+endif
- 
- # plugins come first, as we need to build the list
- test_plugins = {}
-@@ -219,6 +222,9 @@ foreach target, plan: tcg_tests
-     if cc_dockerfile not in image_targets and has_docker
-       cmd = [docker_wrapper, 'build', '-f', dockerfile, '-t', 'qemu/' + cc_dockerfile,
-              '--add-current-user']
-+      if get_option('container_registry') != ''
-+        cmd += ['--registry', get_option('container_registry')]
-+      endif
+@@ -227,6 +227,7 @@ foreach target, plan: tcg_tests
+       endif
        t = custom_target(image_name, command: cmd,
                          build_by_default: false,
++                        console: true,
                          output: 'no_output_' + image_name)
+       image_targets += {cc_dockerfile: t}
+     endif
 -- 
 2.47.3
 

@@ -4,107 +4,79 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DA11DC88E5C
-	for <qemu-arm@archiver.kernel.org>; Wed, 16 Sep 2026 10:53:22 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3236DC88E5C
+	for <qemu-arm@archiver.kernel.org>; Wed, 16 Sep 2026 10:57:09 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1x6nG8-0004cl-Rs; Wed, 16 Sep 2026 06:53:06 -0400
+	id 1x6nJn-000772-AM; Wed, 16 Sep 2026 06:56:48 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1x6nFP-00044A-Bv
- for qemu-arm@nongnu.org; Wed, 16 Sep 2026 06:52:22 -0400
-Received: from mail-yx2-x11.google.com ([2607:f8b0:4864:41::11])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1x6nFM-0003oD-5n
- for qemu-arm@nongnu.org; Wed, 16 Sep 2026 06:52:14 -0400
-Received: by mail-yx2-x11.google.com with SMTP id
- 956f58d0204a3-66e4ab19127so747118d50.1
- for <qemu-arm@nongnu.org>; Wed, 16 Sep 2026 03:52:10 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1789555929; cv=none;
- d=google.com; s=arc-20260327;
- b=TwPUsAk7BJ2C4+BuCoR41RX/5P5jSjeazFDJpLuL4RRB2G7YSXZsnqNdKjJIbmnCKV
- zvW6Ho1TaJUONVkmFx0EwOJe5L5IrBvwpfZ7IinU7ovwuynK+6AMadoo5nrjSmSV+fM5
- fT24yYepe2i+yZpFXAP1ykgnVQ5q2mROyaD/rzEDqI70aPHfx3In1WCRWEJ/h70E2w81
- 5A39tNJw8GMO6uMWrof1PPR3uG/K6qvKP8pc8iYZbeu1WMuW9eae6MEXnJL3Ztlp2L0F
- SUvu9r7YRn6WgrjqTcoUHNz1rcXtqrYMlAL4piyYSv9HBIcXSc0JG4v9AjR2mN3geQNp
- oYhQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
- s=arc-20260327; 
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:dkim-signature;
- bh=Ac5cJOlzb0yNjC/xOK/XtHtFbJ8zu2izgxBr5Yw3TZI=;
- fh=WpsZqvzwwpA+br5IKYkHFQjwlimBUiVk05kqQkIIiQA=;
- b=Bknben0NbKC8IT3GyxtVyW3eXJU/cLp+dPgfruEPZtNDtv3639GMIp85RdO+9V5x+R
- A92AEYNSmJjEYIdMTSmShyYJ4V3/8aB5OKJKclrVGGbMR/RYHvedOahK1oz7rNST7Nq/
- YKPH00j63fPJLMH61a6mYVrwm127AGDJ1QOy25LXF0pXnYcNSsQ/63xLq8gIvdqf0ZCQ
- 4xbdPQZZ68oOgm3p8sLeJE1R77p1cFEwt8FGkI+HMlZhTbJBUYjc5umQew06i/6ji8ma
- hEePXBNryFhzsd1jQtTLnuFw/A+D0FmkWEcm2lE93hGHolIPe6sv9PDA4aVIbxB0GxmB
- nmqQ==; darn=nongnu.org
-ARC-Authentication-Results: i=1; mx.google.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1789555929; x=1790160729; darn=nongnu.org;
- h=content-type:cc:to:subject:message-id:date:from:in-reply-to
- :references:mime-version:from:to:cc:subject:date:message-id:reply-to
- :content-type; bh=Ac5cJOlzb0yNjC/xOK/XtHtFbJ8zu2izgxBr5Yw3TZI=;
- b=xXSf2/l2jkGUEicNG257A7r1BiZDshlHlo7dXTuXqZf1rkfmFziUD0u3nJzuu2yOx5
- Ux7iOi7EyLshDUYenq3FzpmL3wJmIgGfQSdEzoNL6U49E0S9xWHYG10amBCS6xhcy8o8
- Y/OWRFkNqby2pHzRHr4YheFd/nMdGe4w/iHZNeM805Z5Mdr+C7revBWVvRqgjWyDfPje
- 9c0LrMvusjC1kKkS8tupr2Nj/219hlm17c4wqu4/wjrseATfBUmdEDUpbXD6fwu5AZKe
- hVR1IYiQh1YiqOSlVgSjkEGPJqBHLvoXR+8Xqs5qrosFHGZhrrn6TEjaos/rI7KDNeIw
- sjQw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20260707; t=1789555929; x=1790160729;
- h=content-type:cc:to:subject:message-id:date:from:in-reply-to
- :references:mime-version:x-gm-gg:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to:content-type;
- bh=Ac5cJOlzb0yNjC/xOK/XtHtFbJ8zu2izgxBr5Yw3TZI=;
- b=PPzK6NJc3c+CgJd81Ay+d0XlcAxwfpjgMIuEuBcaVzjSO+GCYEf9diWqDdP/mhdc/v
- Y8OI0r0G574FFVNgmJVo5TaRDoFEpo27m+UP7wv4UB6Xv6owWQQrn2AOgCLxgjyCgxsh
- vVijNeHvhX0SdJsGH0nMJQUEQ9WmaOv99/yo9/zvTomw0DasMXB01xNlclm8MmAygrpc
- 7jEWl9l7FxepUxr+HYH7x8+QG8sQ3PGoKwnyA0plmx6CfPE1radZC1Vuk+1XeNQaGUXX
- 8dr5Bu/AazbTMMMp+mTVxU/jw+qRMO2AOtmvaiD6EWA0qO7VGp9S/fV/K94tcBD9pfBe
- h55g==
-X-Forwarded-Encrypted: i=1;
- AKwUvBzq2XDMsBBptJOJ/3FliQ99vr3cFfbP3IfN5ScwhqqyUKts3IbY72F6aZ07PYnWOTJ1x3JyA6XihA==@nongnu.org
-X-Gm-Message-State: AFuF++mHlOvMMWE40Ps1DRnGa/unmwEIGSNDnSfFzC+LPX47Oh8VLEUi
- Rdbz/PlZ7Tk1MjD31pkxvCBbv6PMHvdITVfKpt0zryZxdMhPYvIlT2K2bKlwTghj5/Jl1vg4Ufk
- TtShJ0AP+m7DiVMP5/yfOV96+g9k+cWAY4DNZzfQwhw==
-X-Gm-Gg: AYBFou01efXWs5h07IspxRfO4WS22ujJ+suk4qLfcaozFUv78QIpBjy4l5+j/qeCvL9
- FstGcLSbf+9JWFNdmRB1c+xi1YZY/k0YENiSWHVXbfOUhIKN4+CeOmtc79rfxtPu0oQivfH+ic4
- wJ0GmxShRom55DT2tu9v9UpYFyiiPbWD6F77zOP7P5IwCASgaMLXPTp8PpQNGjc0v6n+8yIwxI5
- WStB/w9b98jykpRmFYu3Bi4/Bmbms+A17AqGO0y6gShEvLRERaXbOrwIsiK6RNEwgw22e/6L0/G
- naxwSixiP7oEifqfNC8VCY7t3u/Tl2o2q7kiMzMV4g9Xp2vrWqKJlqh4vewTd9QGdsfdoEjAwvh
- 0loOmcFwyQG//4vGfZza7k4eL6T99L/BzAl1xNJTJ
-X-Received: by 2002:a05:690e:c4e:b0:66e:56e1:fcc0 with SMTP id
- 956f58d0204a3-67163220807mr1118080d50.24.1789555929574; Wed, 16 Sep 2026
- 03:52:09 -0700 (PDT)
-MIME-Version: 1.0
+ (Exim 4.90_1) (envelope-from <mohamed@unpredictable.fr>)
+ id 1x6nJf-00076C-9P
+ for qemu-arm@nongnu.org; Wed, 16 Sep 2026 06:56:40 -0400
+Received: from qs-2003h-snip6-11.eps.apple.com ([2a01:b747:3006:204::53]
+ helo=outbound.qs.icloud.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <mohamed@unpredictable.fr>)
+ id 1x6nJc-0004Hm-2Z
+ for qemu-arm@nongnu.org; Wed, 16 Sep 2026 06:56:38 -0400
+Received: from outbound.qs.icloud.com (unknown [127.0.0.2])
+ by p00-icloudmta-asmtp-us-east-2d-60-percent-6 (Postfix) with ESMTPS id
+ 27318180011E; Wed, 16 Sep 2026 10:56:30 +0000 (UTC)
+X-ICL-RepId: 01a0a9dc-6f31-7658-a5db-28a513b0c8b2
+X-ICL-Out-Info: HUtFAUMHWwJACUgATUQeDx5WFlZNRAJCTQ1OHVwPUhxEDlYCVRcOVk1UF1sMWg5WMEwWQx9SD1sTTRlRAVJFVAIZHldQQgVCAlwcWg5DClAcXFZVHxcZUU0ISRMFUgddTVYNRw9YHlwUFwlAQ14IXh9MHB0OWAYSAE0KDjYGWQVeCVYDQwU2EhRdRUYDRxlXFFAbRwxVB1deXwoTAF4PD0wLOQRaBy4DSBRPBV9zRgYyAD4eVAMvc10KOgJcc10GNA9Bdyl3HlwASx1XBFQfUxJVHR0LRVUSBEAIVlBUHkEEVhVsCVgGUxlX
+Dkim-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=unpredictable.fr;
+ s=sig1; t=1789556194; x=1792148194;
+ bh=JUwTT68j3UcAH6MCbpfkt9vK/B55x3ooVzVinIvdoNk=;
+ h=Content-Type:Mime-Version:Subject:From:Date:Message-Id:To:x-icloud-hme;
+ b=LI/y26zHGbjPEEexWT8ZdgThxakqpMaxLUWfAY798Q1Tc1MxjTYAE4tIbec2OIC9DEth45tYH+oXY9QsmQMeEq2se3594DonNhLfP4GVQnU2B7a095sBo2rfx6uHNozw11MzdXL7+HSckptpPoDrC71BsnTmO3Q232GOOyjikfDRIY8HU4kAlZWZqlXA5K4i9torB6gX5ibo+mT+12CqBPjVa9vO7GWcstSprr5Vt0uWX9qYWJzUqEQTQ+8QFIv95fAc9/iLbVWAM9VGyx7yg5dhI6P2KOFuMVHpxoz4qnfn4E7Wk6GpqWQ94O4nSFjp11RfnXQow1Z6gmcqchTC8A==
+mail-alias-created-date: 1752046281608
+Received: from smtpclient.apple (unknown [17.57.155.37])
+ by p00-icloudmta-asmtp-us-east-2d-60-percent-6 (Postfix) with ESMTPSA id
+ CFE7C180057A; Wed, 16 Sep 2026 10:56:28 +0000 (UTC)
+Content-Type: text/plain;
+	charset=utf-8
+Mime-Version: 1.0 (Mac OS X Mail 16.0 \(3901.100.1.1.11\))
+Subject: Re: [RFC PATCH v8 09/10] vmapple, gicv2m: add macOS compat quirk
+From: Mohamed Mediouni <mohamed@unpredictable.fr>
+In-Reply-To: <CAFEAcA9eKwvOr+jQ2NLSx1mnp4aZ9pbv3RKs74La17juHK_=LQ@mail.gmail.com>
+Date: Wed, 16 Sep 2026 12:56:16 +0200
+Cc: qemu-devel@nongnu.org, "Michael S. Tsirkin" <mst@redhat.com>,
+ Roman Bolshakov <rbolshakov@ddn.com>, Peter Xu <peterx@redhat.com>,
+ =?utf-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ qemu-arm@nongnu.org, Phil Dennis-Jordan <phil@philjordan.eu>,
+ Akihiko Odaki <odaki@rsg.ci.i.u-tokyo.ac.jp>,
+ Alexander Graf <agraf@csgraf.de>, Paolo Bonzini <pbonzini@redhat.com>
+Content-Transfer-Encoding: quoted-printable
+Message-Id: <2A770E18-762D-4B9F-94DA-3B11D64D69DD@unpredictable.fr>
 References: <20260916100021.73825-1-mohamed@unpredictable.fr>
  <20260916100021.73825-10-mohamed@unpredictable.fr>
-In-Reply-To: <20260916100021.73825-10-mohamed@unpredictable.fr>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Wed, 16 Sep 2026 11:51:58 +0100
-X-Gm-Features: AcwNN1VM0oRyQF72K-rzuDp-rYS2wbAzNfeY8Ke6RRoEp4khHQXe6WQGR0qOVoY
-Message-ID: <CAFEAcA9eKwvOr+jQ2NLSx1mnp4aZ9pbv3RKs74La17juHK_=LQ@mail.gmail.com>
-Subject: Re: [RFC PATCH v8 09/10] vmapple, gicv2m: add macOS compat quirk
-To: Mohamed Mediouni <mohamed@unpredictable.fr>
-Cc: qemu-devel@nongnu.org, "Michael S. Tsirkin" <mst@redhat.com>, 
- Roman Bolshakov <rbolshakov@ddn.com>, Peter Xu <peterx@redhat.com>, 
- =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>, 
- qemu-arm@nongnu.org, Phil Dennis-Jordan <phil@philjordan.eu>, 
- Akihiko Odaki <odaki@rsg.ci.i.u-tokyo.ac.jp>, Alexander Graf <agraf@csgraf.de>,
- Paolo Bonzini <pbonzini@redhat.com>
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:41::11;
- envelope-from=peter.maydell@linaro.org; helo=mail-yx2-x11.google.com
+ <CAFEAcA9eKwvOr+jQ2NLSx1mnp4aZ9pbv3RKs74La17juHK_=LQ@mail.gmail.com>
+To: Peter Maydell <peter.maydell@linaro.org>
+X-Mailer: Apple Mail (2.3901.100.1.1.11)
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwOTE2MDE0NCBTYWx0ZWRfX4SHR75aciv5l
+ 17I5jl4ElTzeTd1Lu6KZP9jaZ6DohZbPV4a5i1+JmFINZtsTQonU1VBiQtVsLY5ew4NheOgryvk
+ lotfhXDTWeLoxyYaMkzMXdPw2Rvfzxk/0lLkOTu8UJV+etjuAOr59kXlxvy0yHB4vL/naxYYlHn
+ YlshQtwak8z1+xit6D9ID8PYCFD0QBuzZTRAYjODm+0+NllGy6cQEEuPdtPHh7TOhhucpJ8NXTX
+ nIpCiy9VBwjuj59Iam64UV019uyxC4yY/bnGNy392JW8t3OmlB/0zRc72jbJksC4xRvevcRNbDE
+ ncN56bhm62qltu/6VMp/WR8DglyExH3A43Asfk3TCT3WH98MbYd3sHyvRtGvAQ=
+X-Proofpoint-ORIG-GUID: jWlq69sEYpRu18gE83FcYWdjWTErIQ2V
+X-Authority-Info-Out: v=2.4 cv=MOBtWcZl c=1 sm=1 tr=0 ts=6aaa75e0
+ cx=c_apl:c_pps:t_out a=bsP7O+dXZ5uKcj+dsLqiMw==:117
+ a=bsP7O+dXZ5uKcj+dsLqiMw==:17 a=IkcTkHD0fZMA:10 a=VdqzKS8jKosA:10
+ a=VkNPw1HP01LnGYTKEx00:22 a=KKAkSRfTAAAA:8 a=VzozP6VNtaWpH0haZrwA:9
+ a=QEXdDO2ut3YA:10 a=cvBusfyB2V15izCimMoJ:22
+X-Proofpoint-GUID: jWlq69sEYpRu18gE83FcYWdjWTErIQ2V
+X-JNJ: AAAAAAAB0GrgMR3QXcAgm/dovGmDHW5PV5f8aNGtRr946BbGE63J1gG57qWOHa3Z0Co1EKSLtrfpQ+flLWGnXrcgip+25Q5WLjvGY9BvfjJKuakCt7DLdPJ51uDJOCTMjDoHbVBvFCfFxMex7u9hfKwsX4nfSlrnbTdrA3j4P4WBvZQ+99qqI8QgWnulZsYGs61kxNai+EeZadITPuwEYcA7XskCwf6foWhqKnu9LGOsPgQJiCI5GeKgmETqlp15AcZZsW0H9PVfoYwy7+Vmq/DMXcqaHILuUNPR0Cam7yJhcPfQ+fC7nv/i0psKTa0xE1a2Y7qNOBq5XRjXIipXc7bOesgXAmFvtfXC2M5R0Rc/BeSqdbj+owmAg7qWqEDmmMO95Yp1UXcojGRVSgtFkWTXX/BLqsNhe4gI4GgqUbu3ET+X1k2TDkZlDzdpzjK9BkWoAEkqZgZh3w24TS5nMHL0W4oAXv64DUDOO9QX6qelkAPFN8rqUHnF1/ZqSMeC9Pp0vJbqrdlfeyYAyDm0Gfhsm8CX+wzWHnLvyF+EtDx6gjA+hASLL3NqZN3cv/xiiZAMUUwNO5q6mlmoNEPWgaDbV3UTaNgHY7ALRt7zXyHsq9R4QHGNMpWl2SEq/W/szRWfNJ9IwDqbzgwxt5sRH1NCSilSjpU+G+LqnjUNrmqro6bFB+Vc2QgBILcoJ6QtNwpuSLVQkfSCB/mYwwu0L8A+4pQoVF5EXcKsTBqcEfgSOAvp8vcfdkHlYDYxIWHhi+hdeVJdHK5cVay5bsRQNhjAyUJyLZaS5gwhgmPx+QNCXhK9b6/9hzxJA2AfDjUc3EYyDZ/BrVoMLLFigDraUKmhBYlh2+i4S9fkBJS6zWQzmcwTIfGhBgVYL9mdYPe0++uil0kTYgda2qeLnNVT6uDSn3qrqrb6zC36yHGSgNpYjcrb8S8EK3QnVnNTM05OMHqYyE9mi3mCat9N9axnRKfplLb+chA
+ 97jLwtg19ES2qaMJBcPcAKJrECFgn0NWsqPzx/JAQwhtmiK1hpLIPH6YX0rx9AL28jARiWuRE7RkokDvi5COuXMaEn4VMq/j44EmIb4dYTbiRwwhz6TdqhAikGxWgkq15vENWgkmY5T9UvqCuNVY7nbgNmZD/W+tPfKEh0ErMrwNhl0WAMMAKqN72pJ46iMCtfiYGjnt0egGchFlfyMhKigOpJNpBPvgNQHssfi3forK02FNMtyeW/kwsyQ6T9X1GzDYkXcQ8vaP+TVsGpFz0DsyQkqBaFCu/Az7zC4pbZ6c9unW4wtU6s39uKj2CiCaVKXXRhh2385SW8DoXLjHXqQMuD05EsJeBmmh2KStjJZqoPWCt3Px8o1OSubcEdcbZYe/txsJmkGF0s6x5Hl1d6xrAH/b2RTQhFuY9MMSsRMlyeTs9oPAXNhdELBzbrxBwECxRBW/RSJJMeqFyIrdbaO+t+qsXRG4XBHXq6ve+fDbSIVtkbnGsLh0n14Fxkav/kEAo5X+h95XEDGdyziabeKX76axG9rLx+ETXoIMgptatAQ==
+Received-SPF: pass client-ip=2a01:b747:3006:204::53;
+ envelope-from=mohamed@unpredictable.fr; helo=outbound.qs.icloud.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_NONE=0.001,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_PASS=-0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -121,26 +93,44 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Wed, 16 Sept 2026 at 11:00, Mohamed Mediouni
-<mohamed@unpredictable.fr> wrote:
->
-> macOS expects bit 31 of MSI_TYPER to be set.
->
-> Signed-off-by: Mohamed Mediouni <mohamed@unpredictable.fr>
-> ---
 
-This is a macos bug -- the Arm Base System Architecture
-spec which defines what the GICv2M registers are is clear
-that MSI_TYPER bits [31:26] are RES0. I'm not keen on working
-around guest bugs here, especially of the "random proprietary
-guest has mysterious undocumented requirement" kind: insisting
-on bit 31 being set would presumably break on a real hardware
-GICv2M as well.
 
-If there's some documented "Apple GICv2m" variant of this
-hardware, then we could potentially model it, but I'd
-rather do that as a "here's the spec we're modelling,
-implement it" than a one-off point hack.
+> On 16. Sep 2026, at 12:51, Peter Maydell <peter.maydell@linaro.org> =
+wrote:
+>=20
+> On Wed, 16 Sept 2026 at 11:00, Mohamed Mediouni
+> <mohamed@unpredictable.fr> wrote:
+>>=20
+>> macOS expects bit 31 of MSI_TYPER to be set.
+>>=20
+>> Signed-off-by: Mohamed Mediouni <mohamed@unpredictable.fr>
+>> ---
+>=20
+> This is a macos bug -- the Arm Base System Architecture
+> spec which defines what the GICv2M registers are is clear
+> that MSI_TYPER bits [31:26] are RES0. I'm not keen on working
+> around guest bugs here, especially of the "random proprietary
+> guest has mysterious undocumented requirement" kind: insisting
+> on bit 31 being set would presumably break on a real hardware
+> GICv2M as well.
+>=20
+> If there's some documented "Apple GICv2m" variant of this
+> hardware, then we could potentially model it, but I'd
+> rather do that as a "here's the spec we're modelling,
+> implement it" than a one-off point hack.
+>=20
+> =E2=80=94 PMM
 
--- PMM
+Hi,
+
+vmapple as a whole is a reverse-engineered target without a public =
+specification of any kind=E2=80=A6
+
+other than this patch the system is happy, but without it, there=E2=80=99s=
+ a kernel panic really
+early on during boot=E2=80=A6
+
+There are no specific Apple GICv2m registers.
+
+
 

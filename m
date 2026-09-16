@@ -4,50 +4,50 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5DE42C982C3
-	for <qemu-arm@archiver.kernel.org>; Wed, 16 Sep 2026 14:52:16 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6878BC982C4
+	for <qemu-arm@archiver.kernel.org>; Wed, 16 Sep 2026 14:52:21 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1x6qwk-0007cQ-Ra; Wed, 16 Sep 2026 10:49:14 -0400
+	id 1x6qvl-0006bR-Tp; Wed, 16 Sep 2026 10:48:13 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1x6qwh-0007Ub-A3
- for qemu-arm@nongnu.org; Wed, 16 Sep 2026 10:49:11 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ id 1x6qvk-0006b7-A6
+ for qemu-arm@nongnu.org; Wed, 16 Sep 2026 10:48:12 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1x6qwf-0006e7-Lj
- for qemu-arm@nongnu.org; Wed, 16 Sep 2026 10:49:11 -0400
+ id 1x6qvi-0006RW-G9
+ for qemu-arm@nongnu.org; Wed, 16 Sep 2026 10:48:12 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1789570149;
+ s=mimecast20190719; t=1789570089;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=gBiQ/WZ8FDSS7QTiXrmQ5xLbPQJvAU6T5QyffYoE+7o=;
- b=gnXtBuv9i2UHlDa+V49+siXhvZto1jOWokxSsvWw02NZnXNlhMgnzJx+/zl+MtJRJgch8s
- EEm+KYGxhQGE8z+6AjCNMfeN8qngw0a6Ub2a8hzdyLLGawmUR9q2hrXWTmKbMYm6bdSCWF
- MarPm2qCXqHczO12mg5a1t+L2qEWMxE=
-Received: from mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
+ bh=0MgtnSaVh9ax7ryBzZLi/K7BKaomljz1Cy0WeKLK4ak=;
+ b=Zz074xV9YTiJ9uEiinAPYAt33m2f8RC3P5e1U7+ZU6CCTdzFJo8a50/SG8IlX5Dc+uwmWx
+ P7bv39eclH3nj9X3JT7jsZmURJOBtLvFeWjU+jJJwvKb6ZeLousxFVSrb4hoPYkc2eAvZy
+ 0b0Jv1Tw99tJTQHdIufKcpZ6QNMgwWg=
+Received: from mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-623-03htv0vrMP6M-Xey91I9eQ-1; Wed,
- 16 Sep 2026 10:49:07 -0400
-X-MC-Unique: 03htv0vrMP6M-Xey91I9eQ-1
-X-Mimecast-MFC-AGG-ID: 03htv0vrMP6M-Xey91I9eQ_1789570146
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-674-JL69Anq7NsirrtMzyJpK-g-1; Wed,
+ 16 Sep 2026 10:48:06 -0400
+X-MC-Unique: JL69Anq7NsirrtMzyJpK-g-1
+X-Mimecast-MFC-AGG-ID: JL69Anq7NsirrtMzyJpK-g_1789570084
 Received: from mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com
  (mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.17])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 1F95E1800DB5; Wed, 16 Sep 2026 14:49:06 +0000 (UTC)
+ by mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id EC08D19540C8; Wed, 16 Sep 2026 14:48:03 +0000 (UTC)
 Received: from laptop.redhat.corp (headnet04.pony-001.prod.iad2.dc.redhat.com
  [10.2.32.116])
  by mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id 4EC36195604D; Wed, 16 Sep 2026 14:49:01 +0000 (UTC)
+ id D02B919560AB; Wed, 16 Sep 2026 14:47:58 +0000 (UTC)
 From: Eric Auger <eric.auger@redhat.com>
 To: eric.auger.pro@gmail.com, eric.auger@redhat.com, qemu-devel@nongnu.org,
  qemu-arm@nongnu.org, kvmarm@lists.linux.dev, peter.maydell@linaro.org,
@@ -57,27 +57,28 @@ To: eric.auger.pro@gmail.com, eric.auger@redhat.com, qemu-devel@nongnu.org,
 Cc: maz@kernel.org, oliver.upton@linux.dev, pbonzini@redhat.com,
  armbru@redhat.com, berrange@redhat.com, abologna@redhat.com,
  jdenemar@redhat.com
-Subject: [PATCH v9 18/26] target/arm/cpu: Expose writable ID reg field
- properties on the kvm host vcpu model
-Date: Wed, 16 Sep 2026 16:45:41 +0200
-Message-ID: <20260916144721.751810-19-eric.auger@redhat.com>
+Subject: [PATCH v9 06/26] scripts: Introduce
+ scripts/update-aarch64-cpu-sysreg-properties.py
+Date: Wed, 16 Sep 2026 16:45:29 +0200
+Message-ID: <20260916144721.751810-7-eric.auger@redhat.com>
 In-Reply-To: <20260916144721.751810-1-eric.auger@redhat.com>
 References: <20260916144721.751810-1-eric.auger@redhat.com>
 MIME-Version: 1.0
 X-Scanned-By: MIMEDefang 3.0 on 10.30.177.17
-X-Mimecast-MFC-PROC-ID: m05vth6aBoOmAPSOvAgIwgZsEYvTpxsLwR0xqbRdwHc_1789570146
+X-Mimecast-MFC-PROC-ID: C6r5ulQczpYByCfE1pT4MRQEoR1ROROQ9TeaWiH_mLk_1789570084
 X-Mimecast-Originator: redhat.com
 Content-Transfer-Encoding: 8bit
 content-type: text/plain; charset="US-ASCII"; x-default=true
-Received-SPF: pass client-ip=170.10.129.124;
+Received-SPF: pass client-ip=170.10.133.124;
  envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+X-Spam_score_int: 12
+X-Spam_score: 1.2
+X-Spam_bar: +
+X-Spam_report: (1.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=0.001, SPF_HELO_PASS=-0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ RCVD_IN_SBL_CSS=3.335, SPF_HELO_PASS=-0.001,
+ SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -93,69 +94,201 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-If the host supports KVM_CAP_ARM_SUPPORTED_REG_MASK_RANGES and
-KVM_ARM_GET_REG_WRITABLE_MASKS ioctl successfully retrieved the mask
-of writable fields for all ID regs, expose uint64 SYSREG properties
-for all the writable ID reg fields exposed by the host kernel which
-can be matched in target/arm/cpu-idregs.h.inc.
+Introduce a script that takes as input the Registers.json file
+delivered in the AARCHMRS Features Model downloadable from the
+Arm Developer A-Profile Architecture Exploration Tools page:
+https://developer.arm.com/Architectures/A-Profile%20Architecture#Downloads
+and automates the generation of system register properties definitions.
 
-Properties are named  SYSREG_<REG>_<FIELD> with REG and FIELD
-being those used ARCHMRS Registers.json.
+generates target/arm/cpu-idregs.h.inc containing definitions for
+feature ID registers.
 
-When such properties are set, they override the default field value
-retrieved from the host and reinjected into KVM. Then the actual value
-being applied at KVM depends on the register, ie. it can be sanitized.
-In case the field value is rejected by KVM, the vpcu init fails.
-
-Anyway there is a first attempt to write back this value into KVM.
-
-Then legacy CPU options (virtualization, secure, ...) can still
-override the previous value. So low level IDREG field properties
-apply before the legacy ones.
-
-An example of invocation is:
--cpu host,SYSREG_ID_AA64MMFR0_EL1_ECV=0x0
-which sets ECV field of ID_AA64MMFR0_EL1 to 0 (enhanced counter
-virtualization).
+We only care about IDregs with opcodes satisfying:
+op0 = 3, op1 = {0,1,3}, crn = 0, crm within [0, 7], op2 within [0, 7]
 
 Signed-off-by: Eric Auger <eric.auger@redhat.com>
-Signed-off-by: Cornelia Huck <cohuck@redhat.com>
-Reviewed-by: Sebastian Ott <sebott@redhat.com>
 
 ---
-v5 -> v6:
-- do not check writable_map anymore
 
-v4 -> v5:
-- get rid of ret local variable, dynamically allocate and free writable_map
-  here
+v5 -> v6
+- add ident
 ---
- target/arm/cpu64.c | 5 +++++
- 1 file changed, 5 insertions(+)
+ .../update-aarch64-cpu-sysreg-properties.py   | 166 ++++++++++++++++++
+ 1 file changed, 166 insertions(+)
+ create mode 100644 scripts/update-aarch64-cpu-sysreg-properties.py
 
-diff --git a/target/arm/cpu64.c b/target/arm/cpu64.c
-index 4e8c472530..e04062e848 100644
---- a/target/arm/cpu64.c
-+++ b/target/arm/cpu64.c
-@@ -37,6 +37,7 @@
- #include "hw/core/qdev-properties.h"
- #include "internals.h"
- #include "cpu-features.h"
-+#include "cpu-idregs.h"
- 
- /* convert between <register>_IDX and SYS_<register> */
- #define DEF(NAME, OP0, OP1, CRN, CRM, OP2)      \
-@@ -807,6 +808,10 @@ void aarch64_host_initfn(Object *obj)
-     kvm_arm_set_cpreg_mig_tolerances(cpu);
-     kvm_arm_set_cpu_features_from_host(cpu);
-     aarch64_add_sve_properties(obj);
+diff --git a/scripts/update-aarch64-cpu-sysreg-properties.py b/scripts/update-aarch64-cpu-sysreg-properties.py
+new file mode 100644
+index 0000000000..6f5edb88d2
+--- /dev/null
++++ b/scripts/update-aarch64-cpu-sysreg-properties.py
+@@ -0,0 +1,166 @@
++#!/usr/bin/env python3
 +
-+    /* generate SYSREG properties according to writable masks */
-+    kvm_arm_expose_idreg_properties(cpu, arm64_id_regs);
++# This script takes as input the Registers.json file delivered in
++# the AARCHMRS Features Model downloadable from the Arm Developer
++# A-Profile Architecture Exploration Tools page:
++# https://developer.arm.com/Architectures/A-Profile%20Architecture#Downloads
++# and outputs target/arm/cpu-idregs.h.inc content.
++# ID regs are defined using this pattern:
++#
++# IDREG_START(REG)
++#    IDREG_FIELD(REG, FIELD, SHIFT, LENGTH)
++# ...
++# IDREG_END(REG)
++#
++# Copyright (C) 2026 Red Hat, Inc.
++#
++# Authors: Eric Auger <eric.auger@redhat.com>
++#
++# SPDX-License-Identifier: GPL-2.0-or-later
 +
- #elif defined(CONFIG_HVF)
-     hvf_arm_set_cpu_features_from_host(cpu);
- #elif defined(CONFIG_WHPX)
++
++import json
++import os
++import sys
++from aarch64_sysreg_helpers import extract_idregs_from_registers_json
++
++def collect_fields(item, bit_offset=0):
++    """
++    Recursively finds all field-like objects, handling Fields.Array,
++    Fields.ArrayField, and ConditionalField structures.
++    Applies bit_offset from containers to child fields.
++    """
++    fields = []
++    if not isinstance(item, dict):
++        return fields
++
++    _type = item.get('_type', '')
++
++    # Array types (for example CLIDR_EL1 Ctype<n>, Ttype<n>)
++    if _type == 'Fields.Array':
++        name_template = item.get('name') or item.get('label', '')
++        index_info = item.get('indexes', [{}])[0]
++        start_idx = index_info.get('start', 0)
++        count = index_info.get('width', 0)
++
++        full_range = item.get('rangeset', [{}])[0]
++        bit_start = full_range.get('start', 0) + bit_offset
++        elem_width = full_range.get('width', 0) // count if count else 0
++
++        for i in range(count):
++            idx = start_idx + i
++            # Correctly handle indexed names like Ctype1, Ctype2
++            field_name = name_template.replace('<n>', str(idx))
++            fields.append({
++                'name': field_name,
++                'rangeset': [{
++                    'start': bit_start + (i * elem_width),
++                    'width': elem_width
++                }],
++                '_type': 'Fields.Field'
++            })
++        return fields
++
++    # ConditionalFields
++    elif _type == 'Fields.ConditionalField':
++        inner_offset = bit_offset
++        if item.get('rangeset'):
++            # Parent container defines the absolute start bit
++            inner_offset = item['rangeset'][0].get('start', bit_offset)
++
++        for entry in item.get('fields', []):
++            inner = entry.get('field')
++            if inner:
++                fields.extend(collect_fields(inner, inner_offset))
++        return fields
++
++    # Normal Field Types
++    leaf_types = ['Fields.Field', 'Fields.ConstantField',
++                  'Fields.EnumeratedField', 'Fields.Bitfield']
++    if _type in leaf_types:
++        field_copy = item.copy()
++        if field_copy.get('rangeset'):
++            new_ranges = []
++            for r in field_copy['rangeset']:
++                nr = r.copy()
++                # Apply the cumulative offset to the field's start bit
++                nr['start'] = r.get('start', 0) + bit_offset
++                new_ranges.append(nr)
++            field_copy['rangeset'] = new_ranges
++        fields.append(field_copy)
++        return fields
++
++    # Traverse the hierarchy for other cases
++    for key in ['fields', 'values', 'fieldsets']:
++        for nested in item.get(key, []):
++            fields.extend(collect_fields(nested, bit_offset))
++
++    return fields
++
++
++def generate_sysreg_properties_from_registers_json(id_reg_names, raw_json_path):
++    with open(raw_json_path, 'r') as f:
++        register_data = json.load(f)
++
++    regs = {r.get('name'): r for r in register_data if r.get('_type') == 'Register'}
++
++    final_output = ""
++
++    for reg_name in id_reg_names:
++        register = regs.get(reg_name)
++        if not register:
++            continue
++
++        final_output += f"IDREG_START({reg_name})\n"
++
++        unique_fields = {}
++        for fieldset in register.get('fieldsets', []):
++            candidates = collect_fields(fieldset)
++            for val in candidates:
++                name = (val.get('name') or val.get('label', '')).strip()
++                if not name or "RESERVED" in name.upper():
++                    continue
++                for r in val.get('rangeset', []):
++                    lsb = int(r.get('start'))
++                    width = r.get('width')
++                    msb = lsb + int(width) - 1
++
++                    # Only keep the fields with the highest MSB
++                    # needed fir CCSIDR_EL1
++                    if name not in unique_fields or msb > unique_fields[name]['msb']:
++                        unique_fields[name] = {'lsb': lsb, 'msb': msb, 'width': width}
++
++        # Sort decreasing lsbs
++        sorted_fields = sorted(unique_fields.items(),
++                               key=lambda x: x[1]['lsb'], reverse=True)
++
++        for name, bits in sorted_fields:
++            line = (f"    IDREG_FIELD({reg_name}, "
++                    f"{name}, {bits['lsb']}, {bits['width']})\n")
++            final_output += line
++        final_output += f"IDREG_END({reg_name})\n"
++        final_output += "\n"
++
++    os.makedirs("target/arm", exist_ok=True)
++    with open("target/arm/cpu-idregs.h.inc", 'w') as f:
++        f.write("/* AUTOMATICALLY GENERATED, DO NOT MODIFY */\n\n")
++        f.write("/* SPDX-License-Identifier: GPL-2.0-or-later */\n\n")
++        f.write("/* IDREG_START(REG) */\n")
++        f.write("/*     IDREG_FIELD(REG, FIELD, SHIFT, LENGTH) */\n")
++        f.write("/* ... */\n")
++        f.write("/* IDREG_END(REG) */\n\n")
++        f.write(final_output)
++
++if __name__ == "__main__":
++    if len(sys.argv) < 2:
++        print("Usage: python scripts/update-aarch64-cpu-sysreg-properties.py "
++              "<path_to_registers_json>")
++    else:
++        json_path = sys.argv[1]
++
++        id_regs_dict = extract_idregs_from_registers_json(json_path)
++        sorted_names = sorted(id_regs_dict.keys())
++
++        if sorted_names:
++            generate_sysreg_properties_from_registers_json(sorted_names, json_path)
++            print("Generated target/arm/cpu-idregs.h.inc")
 -- 
 2.53.0
 

@@ -4,50 +4,50 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 48FC7C982C4
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BA02FC982C3
 	for <qemu-arm@archiver.kernel.org>; Wed, 16 Sep 2026 14:54:29 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1x6qxN-0001sO-90; Wed, 16 Sep 2026 10:49:53 -0400
+	id 1x6qxN-0001pO-2R; Wed, 16 Sep 2026 10:49:53 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1x6qxA-00015f-At
- for qemu-arm@nongnu.org; Wed, 16 Sep 2026 10:49:41 -0400
+ id 1x6qxG-0001FK-4v
+ for qemu-arm@nongnu.org; Wed, 16 Sep 2026 10:49:46 -0400
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1x6qx8-0006nS-Md
- for qemu-arm@nongnu.org; Wed, 16 Sep 2026 10:49:40 -0400
+ id 1x6qxE-0006pL-Er
+ for qemu-arm@nongnu.org; Wed, 16 Sep 2026 10:49:45 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1789570178;
+ s=mimecast20190719; t=1789570183;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=nHTQyV3fsb5dGPVizKLS+8CWG7EJNOQy7+/Wy/+0kNs=;
- b=LiwcmajBZsL/g0ca/+FZq9++QhpopzeCzQXptrUfGp1bZTnmu8kuIL1X7nv0L8fRaBlcZX
- 4Uc1EY0YF4RSX8QvfjjIT0Ab9OiUVrLWtT9hcAOPF2PVel4U/DbUZCkqFvELQgJFW0HWIR
- eihcBBGDvJt62jFLsQOLsdoFBAgSIzI=
+ bh=dBJ5GLKEsBXPj8B/DijWFLtxBgu3dGuSeoZoL9j1+VQ=;
+ b=ZE9dludXJLprUcgY+dpbg/eXWISQRDmu5/l2v9KpzSNNCXcyONHpxZk4A8ObdAeeNCHHJT
+ U0LEx82jCXuJO0UwxL37XBphW7Lb3MilgqcFfLf8K1l9Vm7cbSCKckwCIqVe6nm+sHRDgK
+ fnD0eIkb0z+N8mSbsChzAQe3tms289M=
 Received: from mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com
  (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-648-yGtr9CB3M_GUjxiL2SnAzQ-1; Wed,
- 16 Sep 2026 10:49:34 -0400
-X-MC-Unique: yGtr9CB3M_GUjxiL2SnAzQ-1
-X-Mimecast-MFC-AGG-ID: yGtr9CB3M_GUjxiL2SnAzQ_1789570172
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-112-V_-kREX8MniLi9F5W18BYw-1; Wed,
+ 16 Sep 2026 10:49:40 -0400
+X-MC-Unique: V_-kREX8MniLi9F5W18BYw-1
+X-Mimecast-MFC-AGG-ID: V_-kREX8MniLi9F5W18BYw_1789570178
 Received: from mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com
  (mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.17])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
  by mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id D0F9E1829E28; Wed, 16 Sep 2026 14:49:32 +0000 (UTC)
+ id 4FA1D18005BA; Wed, 16 Sep 2026 14:49:38 +0000 (UTC)
 Received: from laptop.redhat.corp (headnet04.pony-001.prod.iad2.dc.redhat.com
  [10.2.32.116])
  by mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id F35C219560AB; Wed, 16 Sep 2026 14:49:27 +0000 (UTC)
+ id 39E2E19560AB; Wed, 16 Sep 2026 14:49:33 +0000 (UTC)
 From: Eric Auger <eric.auger@redhat.com>
 To: eric.auger.pro@gmail.com, eric.auger@redhat.com, qemu-devel@nongnu.org,
  qemu-arm@nongnu.org, kvmarm@lists.linux.dev, peter.maydell@linaro.org,
@@ -57,15 +57,15 @@ To: eric.auger.pro@gmail.com, eric.auger@redhat.com, qemu-devel@nongnu.org,
 Cc: maz@kernel.org, oliver.upton@linux.dev, pbonzini@redhat.com,
  armbru@redhat.com, berrange@redhat.com, abologna@redhat.com,
  jdenemar@redhat.com
-Subject: [PATCH v9 23/26] target/arm/kvm: Introduce
- kvm_arm_vcpu_prepare_init_features helper
-Date: Wed, 16 Sep 2026 16:45:46 +0200
-Message-ID: <20260916144721.751810-24-eric.auger@redhat.com>
+Subject: [PATCH v9 24/26] target/arm/kvm: Introduce
+ kvm_arm_create_init_scratch_vcpu()
+Date: Wed, 16 Sep 2026 16:45:47 +0200
+Message-ID: <20260916144721.751810-25-eric.auger@redhat.com>
 In-Reply-To: <20260916144721.751810-1-eric.auger@redhat.com>
 References: <20260916144721.751810-1-eric.auger@redhat.com>
 MIME-Version: 1.0
 X-Scanned-By: MIMEDefang 3.0 on 10.30.177.17
-X-Mimecast-MFC-PROC-ID: d5siugN_g-89Iyisdd2broOxcX8Xz7QlRugEzJijih4_1789570172
+X-Mimecast-MFC-PROC-ID: iUeuluOXsPT-v0jw3gdeXJN5RNCYMJ0BUxZwND1oY7g_1789570178
 X-Mimecast-Originator: redhat.com
 Content-Transfer-Encoding: 8bit
 content-type: text/plain; charset="US-ASCII"; x-default=true
@@ -93,80 +93,83 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Factorize the code that initializes the kvm init features from the
-cpu settings in a helper. Use it kvm_arch_init_vcpu(). Soon it will
-be used by another function.
-
-The only change in the code relates to the check of kvm_state. The
-future caller won't have the VM created when calling the helper and
-for this caller it is OK ignoring PSCI version setting.
+Introduce kvm_arm_create_init_scratch_vcpu() that allows to create
+and initialize a scratch vcpu from cpu settings. We want to use
+this in arm-qmp-cmds code as well as kvm_arm_destroy_scratch_host_vcpu
+so export them.
 
 Signed-off-by: Eric Auger <eric.auger@redhat.com>
 ---
- target/arm/kvm.c | 36 ++++++++++++++++++++++--------------
- 1 file changed, 22 insertions(+), 14 deletions(-)
+ target/arm/kvm_arm.h  | 11 +++++++++++
+ target/arm/kvm-stub.c | 10 ++++++++++
+ target/arm/kvm.c      | 14 ++++++++++++++
+ 3 files changed, 35 insertions(+)
 
-diff --git a/target/arm/kvm.c b/target/arm/kvm.c
-index 43fb61bef4..a459942a73 100644
---- a/target/arm/kvm.c
-+++ b/target/arm/kvm.c
-@@ -2448,27 +2448,18 @@ static int kvm_arm_apply_sysreg_props(ARMCPU *cpu, Error **errp)
-     return 0;
- }
+diff --git a/target/arm/kvm_arm.h b/target/arm/kvm_arm.h
+index 185018e00c..4ce58d6b0e 100644
+--- a/target/arm/kvm_arm.h
++++ b/target/arm/kvm_arm.h
+@@ -118,6 +118,17 @@ struct kvm_vcpu_init;
+ bool kvm_arm_create_scratch_host_vcpu(int *fdarray,
+                                       struct kvm_vcpu_init *init, Error **errp);
  
--int kvm_arch_init_vcpu(CPUState *cs, Error **errp)
-+/* Determine init features for this CPU */
-+static void kvm_arm_vcpu_prepare_init_features(ARMCPU *cpu)
- {
--    int ret;
--    uint64_t mpidr;
--    ARMCPU *cpu = ARM_CPU(cs);
-+    CPUState *cs = CPU(cpu);
-     CPUARMState *env = &cpu->env;
--    uint64_t psciver;
- 
--    if (cpu->kvm_target == QEMU_KVM_ARM_TARGET_NONE) {
--        error_setg(errp, "KVM is not supported for this guest CPU type");
--        return -EINVAL;
--    }
--
--    qemu_add_vm_change_state_handler(kvm_arm_vm_state_change, cpu);
--
--    /* Determine init features for this CPU */
-     memset(cpu->kvm_init_features, 0, sizeof(cpu->kvm_init_features));
++/**
++ * kvm_arm_create_init_scratch_vcpu:
++ * Create and initialize a scratch vcpu inheriting the features set
++ * on the vcpu
++ *
++ * Return the vcpu fd on success or -1 on failure with a corresponding
++ * Error handle
++ */
++int kvm_arm_create_init_scratch_vcpu(ARMCPU *cpu, Error **errp);
 +
-     if (cs->start_powered_off) {
-         cpu->kvm_init_features[0] |= 1 << KVM_ARM_VCPU_POWER_OFF;
-     }
--    if (cpu->psci_version != QEMU_PSCI_VERSION_0_1 &&
-+    if (cpu->psci_version != QEMU_PSCI_VERSION_0_1 && cs->kvm_state &&
-         kvm_check_extension(cs->kvm_state, KVM_CAP_ARM_PSCI_0_2)) {
-         /*
-          * Versions >= v0.2 are backward compatible with v0.2
-@@ -2492,6 +2483,23 @@ int kvm_arch_init_vcpu(CPUState *cs, Error **errp)
-     if (cpu->has_el2 && kvm_arm_el2_supported()) {
-         cpu->kvm_init_features[0] |= 1 << KVM_ARM_VCPU_HAS_EL2;
-     }
++
+ /**
+  * kvm_arm_destroy_scratch_host_vcpu:
+  * @fdarray: array of fds as set up by kvm_arm_create_scratch_host_vcpu
+diff --git a/target/arm/kvm-stub.c b/target/arm/kvm-stub.c
+index 8e6fae0a4d..dd2e94e45f 100644
+--- a/target/arm/kvm-stub.c
++++ b/target/arm/kvm-stub.c
+@@ -126,3 +126,13 @@ bool kvm_idreg_write_scratch_vcpu(ARMCPU *cpu, int cpufd,
+ {
+     g_assert_not_reached();
+ }
++
++int kvm_arm_create_init_scratch_vcpu(ARMCPU *cpu, Error **errp)
++{
++    g_assert_not_reached();
 +}
 +
-+int kvm_arch_init_vcpu(CPUState *cs, Error **errp)
++void kvm_arm_destroy_scratch_host_vcpu(int *fdarray)
 +{
-+    int ret;
-+    uint64_t mpidr;
-+    ARMCPU *cpu = ARM_CPU(cs);
-+    uint64_t psciver;
-+
-+    if (cpu->kvm_target == QEMU_KVM_ARM_TARGET_NONE) {
-+        error_setg(errp, "KVM is not supported for this guest CPU type");
-+        return -EINVAL;
-+    }
-+
-+    qemu_add_vm_change_state_handler(kvm_arm_vm_state_change, cpu);
++    g_assert_not_reached();
++}
+diff --git a/target/arm/kvm.c b/target/arm/kvm.c
+index a459942a73..800e5f3020 100644
+--- a/target/arm/kvm.c
++++ b/target/arm/kvm.c
+@@ -2485,6 +2485,20 @@ static void kvm_arm_vcpu_prepare_init_features(ARMCPU *cpu)
+     }
+ }
+ 
++int kvm_arm_create_init_scratch_vcpu(ARMCPU *cpu, Error **errp)
++{
++    struct kvm_vcpu_init init = {.target = cpu->kvm_target, };
++    int fdarray[3];
 +
 +    kvm_arm_vcpu_prepare_init_features(cpu);
- 
-     /* Do KVM_ARM_VCPU_INIT ioctl */
-     ret = kvm_arm_vcpu_init(cpu);
++    memcpy(init.features, cpu->kvm_init_features, sizeof(init.features));
++
++    if (!kvm_arm_create_scratch_host_vcpu(fdarray, &init, errp)) {
++        return -1;
++    }
++    return fdarray[2];
++}
++
+ int kvm_arch_init_vcpu(CPUState *cs, Error **errp)
+ {
+     int ret;
 -- 
 2.53.0
 

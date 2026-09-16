@@ -4,50 +4,50 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 22E27C982C4
-	for <qemu-arm@archiver.kernel.org>; Wed, 16 Sep 2026 14:50:15 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 63685C982C3
+	for <qemu-arm@archiver.kernel.org>; Wed, 16 Sep 2026 14:51:40 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1x6qxJ-0001QM-Nn; Wed, 16 Sep 2026 10:49:49 -0400
+	id 1x6qwh-0007Ul-BW; Wed, 16 Sep 2026 10:49:11 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1x6qx5-0000zZ-HV
- for qemu-arm@nongnu.org; Wed, 16 Sep 2026 10:49:39 -0400
+ id 1x6qwZ-0007PR-LD
+ for qemu-arm@nongnu.org; Wed, 16 Sep 2026 10:49:03 -0400
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1x6qx3-0006mH-Qd
- for qemu-arm@nongnu.org; Wed, 16 Sep 2026 10:49:35 -0400
+ id 1x6qwY-0006bb-1D
+ for qemu-arm@nongnu.org; Wed, 16 Sep 2026 10:49:03 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1789570173;
+ s=mimecast20190719; t=1789570141;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=e02JHTK5vtyACAt9OjPCN3RGbXnELCnkz1SQgi2oqUc=;
- b=ImKAsdprh6YE8zLwoerS5/xy1yzX4W7HWI5sJAVbPA7wORI4v0nrMW+fw5TPzP1oMVUmsA
- xVceayI8KeyymtZ8pM/QxOP8D0IJ8C1MZ4BxGaBG9S8rwyenaMM1tYoB/JxdK1gyy80GgQ
- AN3WWAG8fEQQuNqttvAxWoiO5M31fLc=
-Received: from mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com
+ bh=el/7Ne3b49tKOZNplBEhsA61ndHX7VAWjhSTSblc2bE=;
+ b=Vq0nkDtjUA6qp4jsbHdbwId/Tue6wY0tSqZHJwjj/slNehU1AQU7sHDY8I5SfSFLJOSJGN
+ 0Gp36C9xGaexar1vidrRB0LRs7FdFGqSPWY1efimas5PtB6xFg0FOyUububmLyH6q0jSpb
+ XCqST2Bw/2AIZaANO3SCkAUxm61cXEk=
+Received: from mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com
  (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-355-pDKpRdLvO4mUUX9UnosilA-1; Wed,
- 16 Sep 2026 10:49:29 -0400
-X-MC-Unique: pDKpRdLvO4mUUX9UnosilA-1
-X-Mimecast-MFC-AGG-ID: pDKpRdLvO4mUUX9UnosilA_1789570167
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-77-OTaXgNFQOWyIUXfkyY1qvA-1; Wed,
+ 16 Sep 2026 10:48:57 -0400
+X-MC-Unique: OTaXgNFQOWyIUXfkyY1qvA-1
+X-Mimecast-MFC-AGG-ID: OTaXgNFQOWyIUXfkyY1qvA_1789570135
 Received: from mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com
  (mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.17])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 99FF2183019A; Wed, 16 Sep 2026 14:49:27 +0000 (UTC)
+ by mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id BA3341800EF6; Wed, 16 Sep 2026 14:48:55 +0000 (UTC)
 Received: from laptop.redhat.corp (headnet04.pony-001.prod.iad2.dc.redhat.com
  [10.2.32.116])
  by mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id EA73919560AB; Wed, 16 Sep 2026 14:49:22 +0000 (UTC)
+ id 3A1EF195604D; Wed, 16 Sep 2026 14:48:51 +0000 (UTC)
 From: Eric Auger <eric.auger@redhat.com>
 To: eric.auger.pro@gmail.com, eric.auger@redhat.com, qemu-devel@nongnu.org,
  qemu-arm@nongnu.org, kvmarm@lists.linux.dev, peter.maydell@linaro.org,
@@ -57,15 +57,14 @@ To: eric.auger.pro@gmail.com, eric.auger@redhat.com, qemu-devel@nongnu.org,
 Cc: maz@kernel.org, oliver.upton@linux.dev, pbonzini@redhat.com,
  armbru@redhat.com, berrange@redhat.com, abologna@redhat.com,
  jdenemar@redhat.com
-Subject: [PATCH v9 22/26] target/arm/kvm: Add an error handle to
- kvm_arm_create_scratch_host_vcpu
-Date: Wed, 16 Sep 2026 16:45:45 +0200
-Message-ID: <20260916144721.751810-23-eric.auger@redhat.com>
+Subject: [PATCH v9 16/26] target/arm/kvm: Apply SYSREG props to the final vcpu
+Date: Wed, 16 Sep 2026 16:45:39 +0200
+Message-ID: <20260916144721.751810-17-eric.auger@redhat.com>
 In-Reply-To: <20260916144721.751810-1-eric.auger@redhat.com>
 References: <20260916144721.751810-1-eric.auger@redhat.com>
 MIME-Version: 1.0
 X-Scanned-By: MIMEDefang 3.0 on 10.30.177.17
-X-Mimecast-MFC-PROC-ID: YqGppI0f0Lt_Pjt4-9vVoErUS-4rXhfn5igl_NqmCKU_1789570167
+X-Mimecast-MFC-PROC-ID: dYoDp6TlZAcYHZPpsAd5L0GXN23h11CbkmRPa_5bpos_1789570135
 X-Mimecast-Originator: redhat.com
 Content-Transfer-Encoding: 8bit
 content-type: text/plain; charset="US-ASCII"; x-default=true
@@ -77,7 +76,7 @@ X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=0.001, SPF_HELO_PASS=-0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -93,116 +92,119 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-This allows to report a precise error message if any error occurs.
+SYSREG prop settings were recorded in a hashtable but they
+are not yet injected on guest. Iterate over all set fields and
+apply the new value through KVM_SET_ONE_REG. The new field
+value overrides the current observable vcpu register value.
 
 Signed-off-by: Eric Auger <eric.auger@redhat.com>
 ---
- target/arm/kvm_arm.h |  3 ++-
- target/arm/kvm.c     | 15 ++++++++++++---
- 2 files changed, 14 insertions(+), 4 deletions(-)
+ target/arm/kvm.c        | 65 +++++++++++++++++++++++++++++++++++++++++
+ target/arm/trace-events |  1 +
+ 2 files changed, 66 insertions(+)
 
-diff --git a/target/arm/kvm_arm.h b/target/arm/kvm_arm.h
-index bace69efed..185018e00c 100644
---- a/target/arm/kvm_arm.h
-+++ b/target/arm/kvm_arm.h
-@@ -106,6 +106,7 @@ struct kvm_vcpu_init;
-  * @init: filled in with the necessary values for creating a host
-  * vcpu. If NULL is provided, will not init the vCPU (though the cpufd
-  * will still be set up).
-+ * @errp: Error handle
-  *
-  * Create a scratch vcpu in its own VM of the type preferred by the host
-  * kernel (as would be used for '-cpu host'), for purposes of probing it
-@@ -115,7 +116,7 @@ struct kvm_vcpu_init;
-  * false on failure (and fdarray and init are not valid).
-  */
- bool kvm_arm_create_scratch_host_vcpu(int *fdarray,
--                                      struct kvm_vcpu_init *init);
-+                                      struct kvm_vcpu_init *init, Error **errp);
- 
- /**
-  * kvm_arm_destroy_scratch_host_vcpu:
 diff --git a/target/arm/kvm.c b/target/arm/kvm.c
-index f7ca0e0250..43fb61bef4 100644
+index 3ec2618cc1..ddf320d0e6 100644
 --- a/target/arm/kvm.c
 +++ b/target/arm/kvm.c
-@@ -107,13 +107,14 @@ static int kvm_arm_vcpu_finalize(ARMCPU *cpu, int feature)
+@@ -343,6 +343,9 @@ static ARM64SysRegField *get_field(int i, ARM64SysReg *reg)
+ #define MAKE_IDREG_KEY(reg_idx, field_shift) \
+     (((uint64_t)(reg_idx) << 8) | ((uint64_t)(field_shift) & 0xFF))
+ 
++#define KEY_TO_REG_IDX(key)     ((uint32_t)(((uint64_t)(key)) >> 8))
++#define KEY_TO_SHIFT(key)       ((uint8_t)(((uint64_t)(key)) & 0xFF))
++
+ static void set_sysreg_prop(Object *obj, Visitor *v,
+                             const char *name, void *opaque,
+                             Error **errp)
+@@ -2215,6 +2218,63 @@ int kvm_arch_pre_create_vcpu(CPUState *cpu, Error **errp)
+     return 0;
  }
  
- bool kvm_arm_create_scratch_host_vcpu(int *fdarray,
--                                      struct kvm_vcpu_init *init)
-+                                      struct kvm_vcpu_init *init, Error **errp)
++static int kvm_arm_apply_sysreg_props(ARMCPU *cpu, Error **errp)
++{
++    uint64_t *idregs = cpu->isar.idregs;
++    gpointer key_ptr, value_ptr;
++    CPUState *cs = CPU(cpu);
++    GHashTableIter iter;
++
++    g_hash_table_iter_init(&iter, cpu->sysreg_props);
++
++    while (g_hash_table_iter_next(&iter, &key_ptr, &value_ptr)) {
++        uint64_t key = (uint64_t)key_ptr;
++        uint64_t value = (uint64_t)value_ptr;
++        uint32_t reg_idx = KEY_TO_REG_IDX(key);
++        uint8_t lower    = KEY_TO_SHIFT(key);
++        ARM64SysReg *reg = &arm64_id_regs[reg_idx];
++        struct kvm_one_reg kvm_reg;
++        uint64_t current, old, mask;
++        uint64_t kvm_idx;
++        ARM64SysRegField *field = get_field(lower, reg);
++        int length = field->length;
++        uint64_t oldfv;
++        int ret;
++
++        mask = MAKE_64BIT_MASK(lower, length);
++        value = value << lower;
++
++        old = idregs[reg_idx];
++
++        kvm_idx = idregs_sysreg_to_kvm_reg(id_register_sysreg[reg_idx]);
++        ret = read_sys_reg64(cs->kvm_fd, &current, kvm_idx);
++        if (ret) {
++            error_setg(errp, "failed to read the current value of %s",
++                       reg->name);
++            return ret;
++        }
++        oldfv = (current & mask) >> lower;
++
++        idregs[reg_idx] = current & ~mask;
++        idregs[reg_idx] |= value;
++
++        kvm_reg.id = kvm_idx;
++        kvm_reg.addr = (uintptr_t)&idregs[reg_idx];
++
++        ret = ioctl(cs->kvm_fd, KVM_SET_ONE_REG, &kvm_reg);
++        if (ret) {
++            error_setg(errp, "failed to apply new value 0x%"PRIx64" for field %s.%s "
++                       "(previous is 0x%"PRIx64"): %m", idregs[reg_idx],
++                       reg->name, field->name, oldfv);
++            return ret;
++        }
++
++        trace_apply_sysreg_prop(reg->name, field->name, old, current,
++                                mask, value, idregs[reg_idx]);
++    }
++    return 0;
++}
++
+ int kvm_arch_init_vcpu(CPUState *cs, Error **errp)
  {
-     int ret = 0, kvmfd = -1, vmfd = -1, cpufd = -1;
-     int max_vm_pa_size;
- 
-     kvmfd = qemu_open_old("/dev/kvm", O_RDWR);
-     if (kvmfd < 0) {
-+        error_setg(errp, "Failed opening /dev/kvm");
-         goto err;
+     int ret;
+@@ -2315,6 +2375,11 @@ int kvm_arch_init_vcpu(CPUState *cs, Error **errp)
      }
-     max_vm_pa_size = ioctl(kvmfd, KVM_CHECK_EXTENSION, KVM_CAP_ARM_VM_IPA_SIZE);
-@@ -124,6 +125,7 @@ bool kvm_arm_create_scratch_host_vcpu(int *fdarray,
-         vmfd = ioctl(kvmfd, KVM_CREATE_VM, max_vm_pa_size);
-     } while (vmfd == -1 && errno == EINTR);
-     if (vmfd < 0) {
-+        error_setg(errp, "Failed creating the scratch VM");
-         goto err;
-     }
+     cpu->mp_affinity = mpidr & ARM64_AFFINITY_MASK;
  
-@@ -143,6 +145,7 @@ bool kvm_arm_create_scratch_host_vcpu(int *fdarray,
++    ret = kvm_arm_apply_sysreg_props(cpu, errp);
++    if (ret) {
++        return ret;
++    }
++
+     return kvm_arm_init_cpreg_list(cpu);
+ }
  
-     cpufd = ioctl(vmfd, KVM_CREATE_VCPU, 0);
-     if (cpufd < 0) {
-+        error_setg(errp, "Failed creating the scratch VCPU");
-         goto err;
-     }
+diff --git a/target/arm/trace-events b/target/arm/trace-events
+index d72ad6b671..b4d2b45a7d 100644
+--- a/target/arm/trace-events
++++ b/target/arm/trace-events
+@@ -18,6 +18,7 @@ kvm_arm_writable_idregs_to_cpreg_list(const char *name, uint64_t previous, uint6
+ decode_idreg_writemap(const char* name, int lower, int upper, char *prop_name) "%s [%d:%d] is writable (prop %s)"
+ get_sysreg_prop(const char *name, uint64_t value) "%s 0x%"PRIx64
+ set_sysreg_prop(const char *name, uint64_t old, uint64_t mask, uint64_t field_value, uint64_t new) "%s old reg value=0x%"PRIx64" mask=0x%"PRIx64" new field value=0x%"PRIx64" new reg value=0x%"PRIx64
++apply_sysreg_prop(const char *reg_name, const char *field_name, uint64_t old, uint64_t current, uint64_t mask, uint64_t field_value, uint64_t new) "%s.%s old=0x%"PRIx64" current=0x%"PRIx64" mask=0x%"PRIx64" new field value=0x%"PRIx64" new=0x%"PRIx64
+ nb_sysreg_props(const char *name, int count) "%s: %d SYSREG properties"
  
-@@ -156,12 +159,14 @@ bool kvm_arm_create_scratch_host_vcpu(int *fdarray,
- 
-         ret = ioctl(vmfd, KVM_ARM_PREFERRED_TARGET, &preferred);
-         if (ret < 0) {
-+            error_setg(errp, "Failed getting the preferred target");
-             goto err;
-         }
-         init->target = preferred.target;
-     }
-     ret = ioctl(cpufd, KVM_ARM_VCPU_INIT, init);
-     if (ret < 0) {
-+        error_setg(errp, "Failed the init of the scratch vcpu");
-         goto err;
-     }
- 
-@@ -659,6 +664,7 @@ kvm_arm_get_host_cpu_features(ARMHostCPUFeatures *ahcf)
-     bool el2_supported;
-     bool pmu_supported = false;
-     uint64_t features = 0;
-+    Error *local_err = NULL;
-     int err;
- 
-     ahcf->target = QEMU_KVM_ARM_TARGET_NONE;
-@@ -706,7 +712,8 @@ kvm_arm_get_host_cpu_features(ARMHostCPUFeatures *ahcf)
-         features |= 1ULL << ARM_FEATURE_PMU;
-     }
- 
--    if (!kvm_arm_create_scratch_host_vcpu(fdarray, &init)) {
-+    if (!kvm_arm_create_scratch_host_vcpu(fdarray, &init, &local_err)) {
-+        error_report_err(local_err);
-         return;
-     }
- 
-@@ -3093,8 +3100,10 @@ void arm_cpu_kvm_set_irq(void *arm_cpu, int irq, int level)
- void arm_gic_cap_kvm_probe(GICCapability *v2, GICCapability *v3)
- {
-     int fdarray[3];
-+    Error *err = NULL;
- 
--    if (!kvm_arm_create_scratch_host_vcpu(fdarray, NULL)) {
-+    if (!kvm_arm_create_scratch_host_vcpu(fdarray, NULL, &err)) {
-+        error_report_err(err);
-         return;
-     }
- 
+ # cpu.c
 -- 
 2.53.0
 

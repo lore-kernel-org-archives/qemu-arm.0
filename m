@@ -4,75 +4,93 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E2905C88E77
-	for <qemu-arm@archiver.kernel.org>; Wed, 16 Sep 2026 10:03:15 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4173CC88E5C
+	for <qemu-arm@archiver.kernel.org>; Wed, 16 Sep 2026 10:04:28 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1x6mRq-0008CA-9C; Wed, 16 Sep 2026 06:01:02 -0400
+	id 1x6mV1-0003hH-3g; Wed, 16 Sep 2026 06:04:23 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mohamed@unpredictable.fr>)
- id 1x6mRi-000889-BH
- for qemu-arm@nongnu.org; Wed, 16 Sep 2026 06:00:56 -0400
-Received: from qs-2003h-snip6-1.eps.apple.com ([2a01:b747:3006:204::4a]
- helo=outbound.qs.icloud.com)
+ (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
+ id 1x6mUZ-0003aS-TZ
+ for qemu-arm@nongnu.org; Wed, 16 Sep 2026 06:04:01 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mohamed@unpredictable.fr>)
- id 1x6mRg-0005FT-2J
- for qemu-arm@nongnu.org; Wed, 16 Sep 2026 06:00:54 -0400
-Received: from outbound.qs.icloud.com (unknown [127.0.0.2])
- by p00-icloudmta-asmtp-us-east-2d-100-percent-8 (Postfix) with ESMTPS id
- 712E81800BC1; Wed, 16 Sep 2026 10:00:47 +0000 (UTC)
-X-ICL-RepId: 01a0a9a9-69e1-7621-888e-338619f70f67
-X-ICL-Out-Info: HUtFAUMHWwJACUgBTUQeDx5WFlZNRAJCTQ1OHVwPUhxEDlYCVRcOVk1UF1sMWg5WMEwWQx9SD1sTTRlRAVJFVAIZHldQQgVCAlwcWg5DClAcXFZVHxcZUU0IShMFUgddTVYNRw9YHlwUFwlAQ14IXh9MHB0OWAYSAE0KDjYGWQVeCVYDQwU2EhRdRUYDRxlXFFAbRwxVB1deXwoTAF4PD0wLSAFbB1IDRghIA10FWhxHCkABWBpSHx1WEFIAUg9yBVcIQQhTAlEEWBpfCBkNQE4ZDEodUlZRBUoMXABoD10dWBFd
-Dkim-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=unpredictable.fr;
- s=sig1; t=1789552851; x=1792144851;
- bh=FIznWV24oNw8Sya1w+azG+7Xp+DpfmhjLIwDAtI19ts=;
- h=From:To:Subject:Date:Message-ID:MIME-Version:x-icloud-hme;
- b=pj9bJkg6J1lp8yLVfHq705W2AGZwOOBh/ImLnfBc6g6/qtJn3gbr7JZwM33LUt34DQdSfXwiFQn/GAkW4rtZzojbLFenM+ywFABe+m0+ZOBJSnQEdu1a7qfU0ZJmEcB46Y/05EMOxWQtykdKEY19ZvoIEieejtnnzfUmBR5N5M8OOv97VbposJ9HImm/68O/LS1RARk2Or2YjgNscU6DU6LEBMpCSf+4KqkzLDlUkG/y1bJBL0YQs9wNHGfHUqdiw/VU95Tde/dsquXzLO2mowV/1qSULeFNWHFM7cGEkpz/Jz/eHSCurnztL/zdUomLSkLCPanCrB2BkC3NzdG6QQ==
-mail-alias-created-date: 1752046281608
-Received: from localhost.localdomain (unknown [17.57.155.37])
- by p00-icloudmta-asmtp-us-east-2d-100-percent-8 (Postfix) with ESMTPSA id
- 0752A1800172; Wed, 16 Sep 2026 10:00:44 +0000 (UTC)
-From: Mohamed Mediouni <mohamed@unpredictable.fr>
-To: qemu-devel@nongnu.org
-Cc: "Michael S. Tsirkin" <mst@redhat.com>,
- Roman Bolshakov <rbolshakov@ddn.com>,
- Peter Maydell <peter.maydell@linaro.org>, Peter Xu <peterx@redhat.com>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- qemu-arm@nongnu.org, Phil Dennis-Jordan <phil@philjordan.eu>,
- Akihiko Odaki <odaki@rsg.ci.i.u-tokyo.ac.jp>,
- Mohamed Mediouni <mohamed@unpredictable.fr>,
- Alexander Graf <agraf@csgraf.de>, Paolo Bonzini <pbonzini@redhat.com>
-Subject: [RFC PATCH v8 08/10] vmapple: add gicv2m
-Date: Wed, 16 Sep 2026 12:00:16 +0200
-Message-ID: <20260916100021.73825-9-mohamed@unpredictable.fr>
-X-Mailer: git-send-email 2.54.0
-In-Reply-To: <20260916100021.73825-1-mohamed@unpredictable.fr>
-References: <20260916100021.73825-1-mohamed@unpredictable.fr>
+ (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
+ id 1x6mUY-0005Sb-7Y
+ for qemu-arm@nongnu.org; Wed, 16 Sep 2026 06:03:51 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1789553028;
+ h=from:from:reply-to:reply-to:subject:subject:date:date:
+ message-id:message-id:to:to:cc:cc:mime-version:mime-version:
+ content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=p7kWp+CvyuO/TBfQQdi+hBwvA9y8gBjhYBHZleFIzVw=;
+ b=eTm4lsorpLw4z6MLWIoZOvakqNtQYO6T/XSAO0Z6y9xyz8VCUPZIK7kJtnECGQ/Q/sZxKd
+ LqasrgKzmPe5XwlkW2MDIGfKa0u8bf1d1QGv9b0wJ0mSo5Eo1UhXr8G4RPj6m3CnxE7el4
+ 1pE6KXrSoRtlErtdyxyKIXYeruR4qjQ=
+Received: from mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
+ relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-637-yr6wLpL9ObCHlBhNnzY4DA-1; Wed,
+ 16 Sep 2026 06:03:43 -0400
+X-MC-Unique: yr6wLpL9ObCHlBhNnzY4DA-1
+X-Mimecast-MFC-AGG-ID: yr6wLpL9ObCHlBhNnzY4DA_1789553021
+Received: from mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com
+ (mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.12])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+ (No client certificate requested)
+ by mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 2487C184B3AE; Wed, 16 Sep 2026 10:03:40 +0000 (UTC)
+Received: from redhat.com (headnet03.pony-001.prod.iad2.dc.redhat.com
+ [10.2.32.114])
+ by mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id B14551956054; Wed, 16 Sep 2026 10:03:33 +0000 (UTC)
+Date: Wed, 16 Sep 2026 11:03:30 +0100
+From: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
+To: Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>
+Cc: Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>,
+ qemu-devel@nongnu.org, John Snow <jsnow@redhat.com>,
+ Helge Deller <deller@gmx.de>, Peter Maydell <peter.maydell@linaro.org>,
+ Thomas Huth <th.huth+qemu@posteo.eu>,
+ Richard Henderson <richard.henderson@linaro.org>,
+ Brad Smith <brad@comstyle.com>, qemu-arm@nongnu.org,
+ Fabiano Rosas <farosas@suse.de>, Warner Losh <imp@bsdimp.com>,
+ Cleber Rosa <crosa@redhat.com>,
+ Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@mailo.com>,
+ Ilya Leoshkevich <iii@linux.ibm.com>, Cornelia Huck <cohuck@redhat.com>,
+ Paolo Bonzini <pbonzini@redhat.com>,
+ Brian Cain <brian.cain@oss.qualcomm.com>,
+ Song Gao <gaosong@loongson.cn>, Kyle Evans <kevans@freebsd.org>,
+ Jiaxun Yang <jiaxun.yang@flygoat.com>, Eric Farman <farman@linux.ibm.com>,
+ =?utf-8?Q?Marc-Andr=C3=A9?= Lureau <marcandre.lureau@redhat.com>,
+ Laurent Vivier <laurent@vivier.eu>
+Subject: Re: [PATCH v3 16/17] scripts/make2mtest: add docker dependencies for
+ check-tcg-% targets
+Message-ID: <aqppcizE7rzIfwCL@redhat.com>
+References: <20260916085341.1692742-1-alex.bennee@linaro.org>
+ <20260916085341.1692742-17-alex.bennee@linaro.org>
+ <b58e25cd-0b41-4060-9946-cc5675aea67c@oss.qualcomm.com>
 MIME-Version: 1.0
+In-Reply-To: <b58e25cd-0b41-4060-9946-cc5675aea67c@oss.qualcomm.com>
+User-Agent: Mutt/2.4.0 (2026-06-19)
+X-Scanned-By: MIMEDefang 3.0 on 10.30.177.12
+X-Mimecast-MFC-PROC-ID: AuJiG8LQIYBwkmdwBG4jzOcThTvW1XYYLE3Lu-p48P0_1789553021
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwOTE2MDEzMCBTYWx0ZWRfX6WetL08h+XOI
- Lc6xaFKPDqgOI8xlU+Mhk4DIh0dVzpoBU7/C7taAti4r03LyNA9QJ/ByjfLzzS2BNBqE5N7Lgky
- +YmC2hII2FDehtc4vdLosWEQWPmanxdGWD0SCKL66/YESTG+AgfdFg95tThKGfbFhuh9gwL9CyO
- SJL4RRgD/P0WKaY2AhLfVOmBnlhWvUIkuNywhapQuuUYwV9VVQE5zSGoHFpYaXemqwZ1lyOUvp/
- y7A+uLDY39uX1CxLhtGhq60TmlYsCXFTfbGHa+qHBQS2uLZhRXm8Qn3fbL2/FhiuVtnlu5o1Vhf
- tOqfOjD+jqAhkLRIJyM5A32mPtSawTCKBbpDs9vbWdljGSY5xxeeK2yK76QQRo=
-X-Proofpoint-GUID: MLoCm096RJtGOciEHYXboPMpur-tdVoT
-X-Proofpoint-ORIG-GUID: MLoCm096RJtGOciEHYXboPMpur-tdVoT
-X-Authority-Info-Out: v=2.4 cv=V8hwEOni c=1 sm=1 tr=0 ts=6aaa68d1
- cx=c_apl:c_pps:t_out a=bsP7O+dXZ5uKcj+dsLqiMw==:117
- a=bsP7O+dXZ5uKcj+dsLqiMw==:17 a=VdqzKS8jKosA:10 a=VkNPw1HP01LnGYTKEx00:22
- a=sAlVIecbGMDsLuTEZI0A:9
-X-JNJ: AAAAAAABueZG2hXuli0Tgtvg5E1kwblq65C2QVvbHsuZlud2IEP9jxqmBAwkzMQ2KEbC9UcSz0LepJaZj7tfF0YQFdVK/jbYcHlqOBuSZ7Fv7fePlS0Vv0urGdrSerC+fM6yNoUYMfXZcsRnaL9PqcMjqh3qrRzf8V4ygK0gnq/RQfvlAtxZenhgeMHmER+2hQCoENWH6c2AqCk+gC1yGcID0STUAKTsrb3Nhm12PoGbUcZYKOCMktDwjVjKQTgYrx7Q/BcsrPsVi1o11o2PNrZnRTUyhaTfcMnfQJ/UadB8VkDD9Rs0grTOnFiH0Z0gqbzl0M2zrVPSNr+fJr1ovb96gq2W7SFNJwguJDo8ae404S+spFp3hb9SOjXc7FajMO4W6MegbT+AzzWm1RujK4wqcDs6IXBs2INNCOmwyixdKGUd/ZvI0B0+Xhi7qU/LF/WGQw/m/FLZ4ZgfJGwQ13+leJfCDpi00lvVdsM93zc414U8bXvoWgCz4N/tJrdQmOGtuRJ+CBkkpxU0PFxK045m99TPBJl9Vm5X/Bgl7gximZeREahTJ0HaookEFFrirfv6CloHRGr6tbgYnw84bv9GGnHLesPlKYfKCFLJUUELd46gRMsyNCKTdpUT2rnlM9p1R+CDVEuRd6QuJbZuuQoxk5qYHKLKS/3cfCU777eQvI6br9KhjLeCg0AhzNqdh42kmbaF1Qc7hggW+FDv1kxZ6sF/27hmBqx9OJXGrUxfG0DGgoXaxMDxkIk6LPuf+kcitC6xHD05wiBQsfrU9dvuTKRxGmFdK4PdGP39oH2UR+O3HdCZlsQGfhJdDdlRoJhpe3W18ZPAKQqLX+hGJD9weYPrJzDGjA==
-Received-SPF: pass client-ip=2a01:b747:3006:204::4a;
- envelope-from=mohamed@unpredictable.fr; helo=outbound.qs.icloud.com
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=berrange@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_PASS=-0.001,
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=0.001, SPF_HELO_PASS=-0.001,
  SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -86,78 +104,54 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Reply-To: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Signed-off-by: Mohamed Mediouni <mohamed@unpredictable.fr>
----
- hw/vmapple/vmapple.c | 24 ++++++++++++++++++++++++
- 1 file changed, 24 insertions(+)
+On Wed, Sep 16, 2026 at 02:56:09AM -0700, Pierrick Bouvier wrote:
+> On 9/16/2026 1:53 AM, Alex Bennée wrote:
+> > This should trigger the building of the docker image when the user
+> > calls "make check-tcg" or one of the arch specific targets such as
+> > "make check-tcg-m68k-linux-user".
+> >
+> 
+> Maybe there is some confusion, patch 2 only reverts option
+> enable/disable-containers + --container-command for meson. It does not
+> disable container support for meson tcg tests, which is there and
+> enabled by default. Thus, container image dependencies are already
+> there, with ninja or make.
+> 
+> $ ./configure && make check-tcg-m68k-linux-user --dry-run |& grep debian
+> [246/1052] Generating tests/tcg/image-debian-all-test-cross with a
+> custom command
+> 
+> Given that dependencies are already there, what is the goal of current
+> patch?
+> 
+> > We still keep the internal meson dependency so individual tests can
+> > launched and the docker build verified.
+> >
+> 
+> As a side note, since patch 3 removes existing meson options, there will
+> be no way to disable container build and run. It might be a (new)
+> problem if some people were relying on this to avoid using
+> docker/podman, which is the current workaround for John Snow's issue for
+> instance.
+> 
+> At minimum, current series should at least keep meson implementation of
+> --disable-containers, which implies to keep this entry in
+> meson_options.txt. The rest is less important, as risk is only to skip
+> tests, which is not blocking for users.
 
-diff --git a/hw/vmapple/vmapple.c b/hw/vmapple/vmapple.c
-index 607181f517..2467c79ab3 100644
---- a/hw/vmapple/vmapple.c
-+++ b/hw/vmapple/vmapple.c
-@@ -82,6 +82,7 @@ enum {
-     VMAPPLE_MEM,
-     VMAPPLE_GIC_DIST,
-     VMAPPLE_GIC_REDIST,
-+    VMAPPLE_GICV2M,
-     VMAPPLE_UART,
-     VMAPPLE_RTC,
-     VMAPPLE_PCIE,
-@@ -103,6 +104,7 @@ static const MemMapEntry memmap[] = {
- 
-     [VMAPPLE_GIC_DIST] =           { 0x10000000, 0x00010000 },
-     [VMAPPLE_GIC_REDIST] =         { 0x10010000, 0x00400000 },
-+    [VMAPPLE_GICV2M] =             { 0x1FFF0000, 0x00010000 },
- 
-     [VMAPPLE_UART] =               { 0x20010000, 0x00010000 },
-     [VMAPPLE_RTC] =                { 0x20050000, 0x00001000 },
-@@ -128,6 +130,7 @@ static const int irqmap[] = {
-     [VMAPPLE_APV_GFX] = 0x11,
-     [VMAPPLE_AES_1] = 0x12,
-     [VMAPPLE_PCIE] = 0x20,
-+    [VMAPPLE_GICV2M] = 0x80
- };
- 
- #define GPEX_NUM_IRQS 16
-@@ -285,6 +288,26 @@ static void create_gic(VMAppleMachineState *vms, MemoryRegion *mem)
-     }
- }
- 
-+#define NUM_GICV2M_SPIS       128
-+
-+static void create_gicv2m(VMAppleMachineState *vms)
-+{
-+    int i;
-+    int irq = vms->irqmap[VMAPPLE_GICV2M];
-+    DeviceState *dev;
-+
-+    dev = qdev_new("arm-gicv2m");
-+    qdev_prop_set_uint32(dev, "base-spi", irq);
-+    qdev_prop_set_uint32(dev, "num-spi", NUM_GICV2M_SPIS);
-+    sysbus_realize_and_unref(SYS_BUS_DEVICE(dev), &error_fatal);
-+    sysbus_mmio_map(SYS_BUS_DEVICE(dev), 0, vms->memmap[VMAPPLE_GICV2M].base);
-+
-+    for (i = 0; i < NUM_GICV2M_SPIS; i++) {
-+        sysbus_connect_irq(SYS_BUS_DEVICE(dev), i,
-+                           qdev_get_gpio_in(vms->gic, irq + i));
-+    }
-+}
-+
- static void create_uart(const VMAppleMachineState *vms, int uart,
-                         MemoryRegion *mem, Chardev *chr)
- {
-@@ -495,6 +518,7 @@ static void mach_vmapple_init(MachineState *machine)
-                                 machine->ram);
- 
-     create_gic(vms, sysmem);
-+    create_gicv2m(vms);
-     create_bdif(vms, sysmem);
-     create_pvpanic(vms, sysmem);
-     create_aes(vms, sysmem);
+Yes, if we're keeping meson.build rules that rely on containers,
+then meson stll needs to honour the --disable-containers arg that
+configure is processing now.
+
+With regards,
+Daniel
 -- 
-2.54.0 (Apple Git-157)
+|: https://berrange.com       ~~        https://hachyderm.io/@berrange :|
+|: https://libvirt.org          ~~          https://entangle-photo.org :|
+|: https://pixelfed.art/berrange   ~~    https://fstop138.berrange.com :|
 
 

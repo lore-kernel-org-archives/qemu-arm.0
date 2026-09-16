@@ -4,126 +4,97 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1636CC982C9
-	for <qemu-arm@archiver.kernel.org>; Wed, 16 Sep 2026 18:57:19 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CA21BC982C1
+	for <qemu-arm@archiver.kernel.org>; Wed, 16 Sep 2026 21:40:24 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1x6uoE-0006Va-BB; Wed, 16 Sep 2026 14:56:42 -0400
+	id 1x6xMX-0004TW-TX; Wed, 16 Sep 2026 17:40:17 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <tdave@nvidia.com>)
- id 1x6uny-0006TA-Fq; Wed, 16 Sep 2026 14:56:28 -0400
-Received: from mail-northcentralusazlp170130007.outbound.protection.outlook.com
- ([2a01:111:f403:c105::7] helo=CH4PR04CU002.outbound.protection.outlook.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <tdave@nvidia.com>)
- id 1x6unw-000632-O3; Wed, 16 Sep 2026 14:56:26 -0400
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=swxvS0qc9SIxW3vaFIR9e5r3AEQcWJb1+M99YABDd7m0FV6DcMrnEUDvhcw/3GnqmaPPyOie4aw/ox4J4QGoHUi+X9dT/AzSY+pW4jBOyGasWLJuEMORYgkO+yalzMEj0Koo0IQoymWIc1D81rIGzrlYOaCytQ7ckYCSPaRH23g8okdUa210lDaeb63qUQe3PSpDsnoQldXPEafkNPT7cauhDrEBJ4zy2r3kZM64WOb9px/bp9xZeJtJqXDaQf4JgrMss0qz1rV71i+WddEPTO+gnW+BWLr9g9xLiBcd1j2d64AZwIbLjhbENmxDc5G/bMaeKhycnUwbNJfywYWGFA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector10001;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=EtZFbS/13ma2fehmVKQEA7rUZNJnAxLgR5cAUhYvH0g=;
- b=FzFN0wJG2esPo0RWKS7B2ZsaVxMoNW9F2pEI+WuXn78BQzeDVW77vb21jeBgjkA+GNCfifXsg5uH3NpMQo73bU1S/hR08m9BOPcxtOAc9vlbzXFT63GuoKt5uodqCX+KolgHBtE72O7igb2WPRb5CXLKXmm7MN41WoS8QVNi8B9VHZ6lI9i2GZ/w0t4mvJLqIuYISE5LyY90vOmb4H0kPC2mS45FaDpqWcITRtQP5simCoPk1VRb+a9wbNF7yN48mLKl1b1Q7t+xVy7aRz2UIpLCspJdms+y90cLW5mPTgupL26yFPL6eEjGmstasvewJlSvHcQ8tGhSvRXx5n3BFw==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=nvidia.com; dmarc=pass action=none header.from=nvidia.com;
- dkim=pass header.d=nvidia.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Nvidia.com;
- s=selector2;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=EtZFbS/13ma2fehmVKQEA7rUZNJnAxLgR5cAUhYvH0g=;
- b=TKMV4XuwPjNN5Pr5Tvjgp1InvuZ1WYX8nvLbLil6B/r1M2PXf9iGdQuuazclKhTQ5h8ff8i6Ptw+ZDwPoKitR/zRpfZLCIQCej1q/rU/yariJsO3PhVBd6CyWTK3Cz7uRzGmkYW2iF0zef/N7l2O7emReyIEs2pJuN4aZ7UOzJleW8OFkeuBHlwQbCWJiHN9Sq8Gt2ELZo6PIP2hyZv9bP0WmqLK8OejenYYY2jY8AgjSs+oqrYwHIFFXmH0JIyHtxIFWefn5RQ8K17hZnSFP+YrtfFSJKgA8pjtM8sGlMkmZbYtNTH6xrUpN9oY1E/2ncjYqbvyxkB9w3hPupghFg==
-Authentication-Results: dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=nvidia.com;
-Received: from IA3PR12MB923065.namprd12.prod.outlook.com
- (2603:10b6:208:627::17) by CY3PR12MB9631.namprd12.prod.outlook.com
- (2603:10b6:930:ff::6) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.21.428.9; Wed, 16 Sep
- 2026 18:56:08 +0000
-Received: from IA3PR12MB923065.namprd12.prod.outlook.com
- ([fe80::1c83:bf47:4202:50b1]) by IA3PR12MB923065.namprd12.prod.outlook.com
- ([fe80::1c83:bf47:4202:50b1%5]) with mapi id 15.21.0428.008; Wed, 16 Sep 2026
- 18:56:08 +0000
-From: Tushar Dave <tdave@nvidia.com>
-To: qemu-devel@nongnu.org
-Cc: qemu-arm@nongnu.org, peter.maydell@linaro.org, mst@redhat.com,
- marcel@redhat.com, devel@edk2.groups.io, alwilliamson@nvidia.com,
- jgg@nvidia.com, skolothumtho@nvidia.com
-Subject: [PATCH 5/5] hw/arm/virt: add highmem-mmio-base property
-Date: Wed, 16 Sep 2026 13:55:54 -0500
-Message-Id: <20260916185554.917526-6-tdave@nvidia.com>
-X-Mailer: git-send-email 2.34.1
-In-Reply-To: <20260916185554.917526-1-tdave@nvidia.com>
-References: <20260916185554.917526-1-tdave@nvidia.com>
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-ClientProxiedBy: SA0PR11CA0023.namprd11.prod.outlook.com
- (2603:10b6:806:d3::28) To IA3PR12MB923065.namprd12.prod.outlook.com
- (2603:10b6:208:627::17)
+ (Exim 4.90_1) (envelope-from <mathieu.poirier@linaro.org>)
+ id 1x6xMU-0004Od-DB
+ for qemu-arm@nongnu.org; Wed, 16 Sep 2026 17:40:14 -0400
+Received: from mail-pj2-x11.google.com ([2607:f8b0:4864:39::11])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <mathieu.poirier@linaro.org>)
+ id 1x6xMS-0008AV-Jh
+ for qemu-arm@nongnu.org; Wed, 16 Sep 2026 17:40:14 -0400
+Received: by mail-pj2-x11.google.com with SMTP id
+ 98e67ed59e1d1-396ccd4f99dso143337a91.2
+ for <qemu-arm@nongnu.org>; Wed, 16 Sep 2026 14:40:11 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1789594810; x=1790199610; darn=nongnu.org;
+ h=in-reply-to:content-disposition:content-type:mime-version
+ :references:message-id:subject:cc:to:from:date:from:to:cc:subject
+ :date:message-id:reply-to:content-type;
+ bh=MOqIR1QOnXez06E1wQXG6QO22jSC2ZUg23ltXaD7bv8=;
+ b=rKVCgXhjxsVE7o3PnxPMKZ8A002RcXtcstrW0494i+fekQUD+rixGsVp2azcbf6Hu5
+ iAyTpl1HdQzu8LFloEor5ZqI4aBPSz4TeMST0E8ICA+fl7ueHnRoPVmm1APKSJr23VGJ
+ IclfQrLD2vEGD7IkjfqjBSpnLH93rwV2KqcILhR4cHcqgdjWhFw8Ij5P5doZ49fn5ANu
+ i5DjTf1OQ9Ay4pR0vL/FdeiTm/ydHgVTOkv4+kXTop3Njl0LabB6XLQAWC+M0AslwcQa
+ EHAIHprYDVTNOHudJlhkkf0OctPLFaPz4/wA+CZtOeIG7R11xs5JPi+0LpkbGvw+knjP
+ c2Qw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20260707; t=1789594810; x=1790199610;
+ h=in-reply-to:content-disposition:content-type:mime-version
+ :references:message-id:subject:cc:to:from:date:x-gm-gg
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
+ :content-type;
+ bh=MOqIR1QOnXez06E1wQXG6QO22jSC2ZUg23ltXaD7bv8=;
+ b=L7aGfkGLkMMgbezzAySIEb7g29QABt7d4irMx163QFizIvFAQUoGQnKv+e2bVlgGEZ
+ vgYdv7lGSgc67wBTEEPHuoWDFNLzrL7+uGEYHTf8QWdbkLvwRGkuOb/dK+OeqA3weSU5
+ RduVRbuTGRtZgh7/YIJQUnf0k3V5Kr3Xl+q0Xvj0tuEt3xMPawhQgS+SM3x+0avY010B
+ t6lGCfT24mqPWqhXGhatylWiga6HRfoqruq6Ce1anqjywKepAZmBUk+ouCOdivwnCD/y
+ Fm/9iKxuw4QD3MomWR4wSiaiMNK0Tcin5faK8z/oar49CA+mz/0M3HuEwAD5XzEkI0+e
+ UTGg==
+X-Forwarded-Encrypted: i=1;
+ AKwUvBzrkjQp/RauWcQ8KB3tDzwGD7X/XWYahQdmBvHAVGWdqAHhUHPNtfbn/1uDjwwKVLecG79UnNIzwg==@nongnu.org
+X-Gm-Message-State: AFuF++m2sKEcPej2LrEsMhR9YJXp/82Ryq2zueUYNd1/j/432ypv03J1
+ qqK12Y2RBT7E8Q7P2E15t/akMeIH77/+7Vyhhq2OrFtPBGwMoMd4ZTH8LatzzpT6TIk=
+X-Gm-Gg: AYBFou3hu3TZNva9IObKjDzpwqomECnI+GpvjjcTH0j8lKy8JQF0Zy8hSuRJGckc2Zh
+ xMaIzrMYrTicve5d3/CiJZDdZqjLF/nCE+2AmKCfEE2mYP47hzw7VzEBoShKMtTofA3Qwx61n6c
+ g4wLMdnZ/+wLn9V3iC7VDZMt5mD0ZiBIwlM0vJcHz/yKFYMxWSa7Dl9BDc7DzHBACrEyL0dDkhU
+ OI7VIJaPjBf25ceS7OPnWVq785Cu8YL5Rip6/qTQH1D+Vq9r0Y3XIDz8P02pLGXNC9+m0Wp+DT8
+ G255ExW7Adhj9rY58h82Foyq6DTYPRs/ylves71FD2kfdT+tIF8wRyBg6knGxxYN/D7TSm6viwP
+ nvTV8FJT/O6I6KwuB01ib7IvSJIyskk3Jzh7Cgt92PxnRD2/zKnqJo7mJv4JX/79CoFg34j84Ji
+ KgldU8NyOaW4ZNtZZdxUoI0wbuVvkicoAxHp1Wud8eI/f808VDiAiEn18VlLEQTAaoCfeGUw6Qf
+ zQ=
+X-Received: by 2002:a17:90b:1fce:b0:39e:2faa:2e83 with SMTP id
+ 98e67ed59e1d1-39e2faa31f1mr4703559a91.10.1789594810007; 
+ Wed, 16 Sep 2026 14:40:10 -0700 (PDT)
+Received: from p14s ([2604:3d09:148c:c800:5703:e05c:9814:52a1])
+ by smtp.gmail.com with ESMTPSA id
+ 98e67ed59e1d1-39e36115cc8sm1206938a91.3.2026.09.16.14.40.08
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Wed, 16 Sep 2026 14:40:09 -0700 (PDT)
+Date: Wed, 16 Sep 2026 15:40:07 -0600
+From: Mathieu Poirier <mathieu.poirier@linaro.org>
+To: Michael Roth <michael.roth@amd.com>
+Cc: berrange@redhat.com, kchamart@redhat.com,
+ pierrick.bouvier@oss.qualcomm.com, peter.maydell@linaro.org,
+ mst@redhat.com, cohuck@redhat.com, pbonzini@redhat.com,
+ eblake@redhat.com, armbru@redhat.com, lorenzo.pieralisi@linaro.org,
+ gshan@redhat.com, enju.kohei@fujitsu.com, qemu-devel@nongnu.org,
+ qemu-arm@nongnu.org, kvm@vger.kernel.org
+Subject: Re: [RFC v4 10/24] target/arm/kvm-rme: Keep track of images loaded
+ in Realm memory
+Message-ID: <aqsMt8etnjhTgfK9@p14s>
+References: <20260903193611.1058589-1-mathieu.poirier@linaro.org>
+ <20260903193611.1058589-11-mathieu.poirier@linaro.org>
+ <e3cpd54xpkgonmn4rziolhqvdkge5ke5mhi3cx57j3cfcc7qwd@eq7btw5en54c>
 MIME-Version: 1.0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: IA3PR12MB923065:EE_|CY3PR12MB9631:EE_
-X-MS-Office365-Filtering-Correlation-Id: 530dd892-96d4-49ef-ab2c-08df14242aee
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;
- ARA:13230040|376014|366016|23010399003|1800799024|10067099003|3023799007|18002099003|22082099003|11063799006|56012099006;
-X-Microsoft-Antispam-Message-Info: f2kw+Ya7cXZ4btsUtpn3wNDVDKP2Hnl9xXYfPps8mo4wZtNePOdfOWQ45S8cAkiczCc7XUUDQJI6zkjoDYKOO+OyCrTCe8YGeeJgY6rwMqOskdORVBkIcKCcyHyREZW80w+G/kQ62Yq7wotocrTpP1tM6BdaynEr1kzvzSlJCIPRSDJI1MVXlLn2/6i3GqOTPPPDftVxVdg72NberlcJ9fqK/TrGFaUoTv84/TkIKFI2XjUKJv5Bqd2SWv03Cu/l3b7hXKIH9kk73YLn7ldgHB86qdHkUX/lUlSFaXQMUQngT4NPfW9E3Zegpysfr7/HrVK4/hrZF1WcGkGECVrAQupQ9YYRgw7RGJngt1ZHSRZmYN4N6sH1jVhgzwxEfHiIVLUfFb1H1Y7moFIDPZAM0XONtZHjaKuqLzpHUiEFjSl3BX9/txTx+ZQDdHIGof4zqjU76eZQkitv+LGA+Hc9f87m+eBCNmCz4mJm86Pm0VwEK9KuECAru2pnNOmW+2EoJxa6fi/OJbrpLU5NNPMsIIKIL/bvQ19ZPYp+VzLxTMRi7qn6n9wPH0keqezyMkuJdvUQJbts15QANgpvf6cU9RsRm7UTk2zmmbXT36c8RCRtKfzsp1EGEdy7Uud0pdy9ObwOdOm3r16Eo+dxfvDIlOqTRRqezpbr2C05Dydl9/o=
-X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:IA3PR12MB923065.namprd12.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(13230040)(376014)(366016)(23010399003)(1800799024)(10067099003)(3023799007)(18002099003)(22082099003)(11063799006)(56012099006);
- DIR:OUT; SFP:1101; 
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?kZ7HV0pXT3mdQYXxpmb6emyIbJJWDkpHuF/31gIAG3czN/Fm5az+x5j3lHiJ?=
- =?us-ascii?Q?HEnc6AgXv0XgZ4Jau1cq05MmAVfuc+CXFZXdZeslmpggrilYzVaK4YAlOtKM?=
- =?us-ascii?Q?bDjUWThef73MpuABVnoBKljNgWLEw0zDSf6Syj4KrwKkG1ZxcgfR2hDstB1I?=
- =?us-ascii?Q?hx0L4oGBE1ekbmRuhUJJXv73BOrMQVO8OCguogcmtGPpuyTlSc2OIwBpCfjV?=
- =?us-ascii?Q?Rp4XlG30zPD3Ehhejc7lfpuX0Pq/PhauMHsFYf4+FgYmnIwDSxEf0wzVDgaI?=
- =?us-ascii?Q?kXuAYWopLvhSL2jlyeGx5b4MlnsU6ZyHELF/7nGVhJUkrUFuk4bZ2vxbFjhv?=
- =?us-ascii?Q?+rshayX5adzLrEDlCfZxQwICeM1Yy9uS2K9entbWoXip/i0OdyUB7QulV6PU?=
- =?us-ascii?Q?YtIHlAYVaWpxuFcTD8W7Bmg8jvk47VzA8ceriT1G+gWafNODY5s8eh+Dg9hd?=
- =?us-ascii?Q?oUAEpYdey4DxPPMElu5tvS/AsQdudlCrsdZC+sFcNeUSMiRtj6QkLdlVL8/C?=
- =?us-ascii?Q?QDKICe29b1Ssw/UdanR13ZV1x77heyHWQ6CevsmbSifGRrKP8/ujFSR9Iwxw?=
- =?us-ascii?Q?jALoRRMIz67RQs7sPkYhDsvz9HJKDYOtiCziW+hIB2BPWP/G0DiYmLV6YV3I?=
- =?us-ascii?Q?o8esBqrhMFg6Ocj7OrnA96Spzfr9VP5x2H7uDvBwd/9CT3HieIetsZmDarR9?=
- =?us-ascii?Q?7mOsmlqE6mLEMyEndCRtl1BQacF5HeAE6GlWcz+VtNcLqckzeKdv/x8GHCxI?=
- =?us-ascii?Q?ibDjvkBnykIoC7MU8gSjyBHBBQzVyJhTwe90hx1lvuUluGdz55WIAknvFlOo?=
- =?us-ascii?Q?7Y6C6B68d8GZkfpuLm6E5a+Q9jb8ntwpwkGSPdP0nB7YcqZ+SCKnqVhkzxdK?=
- =?us-ascii?Q?nXO9u2imiHQTYXSybElnQrT68Si3aNgneiPQ6aXsvuJeyecQ6GFePviyhlTa?=
- =?us-ascii?Q?HMf8ru46AhyGBWCaXZeu40d0DnMEJnfOc3RltjbQuK3neMs260plM3khqNpH?=
- =?us-ascii?Q?jTE/d1YRw0EblRqotbDyM62jhTGGLhyh5M+KDQ1MCfLzKptn2sFRi0WYRC97?=
- =?us-ascii?Q?ZaHCKZvHx/zPGMPu+yKYsHS0IX8LPq9cl9Tvbkup12jX/zeCNeuzmFk5DY08?=
- =?us-ascii?Q?vJ82oUqWZqmPKIqY+7QjN2bv+l+aZRPMeNwXvnTqXTGAGhmafz6r+Ydru9ui?=
- =?us-ascii?Q?yaWfu2sh2MNW5nzQyJ5PDA5zv6r95awEeSbCB2X1MX2SvRCHHbKMFI/iubJU?=
- =?us-ascii?Q?RpQ0jAYuOYgmp2vfN9uQalCCOVun0PV5B+T5DlGdmgUmb/Yc0iP6HGxdA9hz?=
- =?us-ascii?Q?zUHT0ZEZNrND8urhvL/4BBos31NK92rW6sjx3W1RChRhQdis97ZeAoebXq/Q?=
- =?us-ascii?Q?qx3rTTPX7dwOtxEgrCe0jOrjqOwmwhJtFKyvUUFCIL1gcppxzNTowujCNlLe?=
- =?us-ascii?Q?kgv+mguyNJc8e1eqTZEAVpDfaSjXRKOql29s3EyDjqDvzK9rC3EhecVyVIki?=
- =?us-ascii?Q?iUC6pRDRLrI00WecMCoIc3TnwVOozx+9dgl/DxDcaDhFKRAjuV7boN7dr5Hp?=
- =?us-ascii?Q?Pv644jHu6626GiPXYI/jBJgJkglOrvmjL2T9kCZbjHJChN8OiUzNgPrggegn?=
- =?us-ascii?Q?+A2S2uBWlTxbVpHHnZzOZ6bnw214oD8zagTqFokXvhAa+kLulJwNWtcxqbVx?=
- =?us-ascii?Q?JRq3C4wtiTVPnxhOg72BBtoII4a6YLKLLzYu+1TYiw7QljCo?=
-X-OriginatorOrg: Nvidia.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 530dd892-96d4-49ef-ab2c-08df14242aee
-X-MS-Exchange-CrossTenant-AuthSource: IA3PR12MB923065.namprd12.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 16 Sep 2026 18:56:08.2110 (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 43083d15-7273-40c1-b7db-39efd9ccc17a
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: FDubafHJe+9oWxmvvEzEaNDXO/IOP1Fw0/xhzUYp290DSRb4wzEPAfhDSZxFbyE0Erumc2K9PkyAu3BOeIDc5Q==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: CY3PR12MB9631
-Received-SPF: permerror client-ip=2a01:111:f403:c105::7;
- envelope-from=tdave@nvidia.com;
- helo=CH4PR04CU002.outbound.protection.outlook.com
-X-Spam_score_int: -10
-X-Spam_score: -1.1
-X-Spam_bar: -
-X-Spam_report: (-1.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- FORGED_SPF_HELO=1, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_PASS=-0.001,
- SPF_NONE=0.001 autolearn=no autolearn_force=no
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <e3cpd54xpkgonmn4rziolhqvdkge5ke5mhi3cx57j3cfcc7qwd@eq7btw5en54c>
+Received-SPF: pass client-ip=2607:f8b0:4864:39::11;
+ envelope-from=mathieu.poirier@linaro.org; helo=mail-pj2-x11.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -139,113 +110,132 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Add a highmem-mmio-base property to override the base of the virt
-machine's high PCIe MMIO window, alongside the existing
-highmem-mmio-size:
+Hi Michael - thanks for taking the time to review this work.
 
-  -machine virt,highmem-mmio-base=<addr>,highmem-mmio-size=<size>
+On Tue, Sep 15, 2026 at 05:50:37PM -0500, Michael Roth wrote:
+> On Thu, Sep 03, 2026 at 01:35:57PM -0600, Mathieu Poirier wrote:
+> > From: Jean-Philippe Brucker <jean-philippe@linaro.org>
+> > 
+> > Add a Rom notifier to keep track of binary blobs loaded in Realm memory.
+> > That way we can deterministically calculate the Realm Initial Measurement (RIM).
+> > 
+> > Signed-off-by: Jean-Philippe Brucker <jean-philippe@linaro.org>
+> > Signed-off-by: Lorenzo Pieralisi <lorenzo.pieralisi@linaro.org>
+> > Signed-off-by: Mathieu Poirier <mathieu.poirier@linaro.org>
+> > ---
+> >  target/arm/kvm-rme.c | 52 ++++++++++++++++++++++++++++++++++++++++++++
+> >  1 file changed, 52 insertions(+)
+> > 
+> > diff --git a/target/arm/kvm-rme.c b/target/arm/kvm-rme.c
+> > index f7c2cc786e2c..9985f5daba89 100644
+> > --- a/target/arm/kvm-rme.c
+> > +++ b/target/arm/kvm-rme.c
+> > @@ -10,6 +10,7 @@
+> >  
+> >  #include "hw/core/boards.h"
+> >  #include "hw/core/cpu.h"
+> > +#include "hw/core/loader.h"
+> >  #include "kvm_arm.h"
+> >  #include "migration/blocker.h"
+> >  #include "qapi/error.h"
+> > @@ -22,8 +23,18 @@
+> >  #define TYPE_RME_GUEST "rme-guest"
+> >  OBJECT_DECLARE_SIMPLE_TYPE(RmeGuest, RME_GUEST)
+> >  
+> > +#define RME_PAGE_SIZE qemu_real_host_page_size()
+> > +
+> > +typedef struct {
+> > +    hwaddr base;
+> > +    hwaddr size;
+> > +    uint8_t *data;
+> > +} RmeRamRegion;
+> > +
+> >  struct RmeGuest {
+> >      ConfidentialGuestSupport parent_obj;
+> > +    Notifier rom_load_notifier;
+> > +    GSList *ram_regions;
+> >  };
+> >  
+> >  OBJECT_DEFINE_SIMPLE_TYPE_WITH_INTERFACES(RmeGuest, rme_guest, RME_GUEST,
+> > @@ -41,6 +52,44 @@ static void rme_vm_state_change(void *opaque, bool running, RunState state)
+> >      kvm_mark_guest_state_protected();
+> >  }
+> >  
+> > +static gint rme_compare_ram_regions(gconstpointer a, gconstpointer b)
+> > +{
+> > +    const RmeRamRegion *ra = a;
+> > +    const RmeRamRegion *rb = b;
+> > +
+> > +    g_assert(ra->base != rb->base);
+> > +    return ra->base < rb->base ? -1 : 1;
+> > +}
+> > +
+> > +static void rme_rom_load_notify(Notifier *notifier, void *data)
+> > +{
+> > +    RmeRamRegion *region;
+> > +    RomLoaderNotifyData *rom = data;
+> > +
+> > +    if (rom->addr == -1) {
+> 
+> Are these entries also added via the rom_reset() path in the previous
+> patch? If so, wouldn't it be better to filter them out there?
 
-Some PCI devices require MMIO resources to be placed within a
-specific address range that cannot be satisfied by the default
-placement. The configured base is validated to be non-zero, aligned
-to highmem-mmio-size, non-overlapping with the existing high memory
-layout, and within the configured physical address space.
+Duly noted.  I will also wrap the previous patch into this one.
 
-Signed-off-by: Tushar Dave <tdave@nvidia.com>
----
- hw/arm/virt.c | 62 ++++++++++++++++++++++++++++++++++++++++++++++++++-
- 1 file changed, 61 insertions(+), 1 deletion(-)
+> 
+> Also, if that's where these entries are added, then it looks like we
+> might call address_space_flush_icache_range() with this -1 addr before
+> adding it to the notifier list. Is that expected?
 
-diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-index c5db663858..3a554dd26c 100644
---- a/hw/arm/virt.c
-+++ b/hw/arm/virt.c
-@@ -2513,9 +2513,34 @@ static void virt_set_high_memmap(VirtMachineState *vms,
- 
-     for (i = VIRT_LOWMEMMAP_LAST; i < ARRAY_SIZE(extended_memmap); i++) {
-         region_enabled = virt_get_high_memmap_enabled(vms, i);
--        region_base = ROUND_UP(base, extended_memmap[i].size);
-         region_size = extended_memmap[i].size;
- 
-+        if (i == VIRT_HIGH_PCIE_MMIO && extended_memmap[i].base) {
-+            region_base = extended_memmap[i].base;
-+
-+            if (region_base < base) {
-+                error_report("highmem-mmio-base 0x%"PRIx64" overlaps prior "
-+                             "high memory layout (must be >= 0x%"PRIx64")",
-+                             region_base, base);
-+                exit(1);
-+            }
-+            if (region_base % region_size != 0) {
-+                error_report("highmem-mmio-base 0x%"PRIx64" must be "
-+                             "aligned to highmem-mmio-size 0x%"PRIx64,
-+                             region_base, region_size);
-+                exit(1);
-+            }
-+            if (region_base + region_size > BIT_ULL(pa_bits)) {
-+                error_report("highmem-mmio-base + highmem-mmio-size "
-+                             "[0x%"PRIx64", 0x%"PRIx64") exceeds %d-bit PA "
-+                             "space", region_base,
-+                             region_base + region_size, pa_bits);
-+                exit(1);
-+            }
-+        } else {
-+            region_base = ROUND_UP(base, region_size);
-+        }
-+
-         vms->memmap[i].base = region_base;
-         vms->memmap[i].size = region_size;
- 
-@@ -3416,6 +3441,33 @@ static void virt_set_highmem_mmio_size(Object *obj, Visitor *v,
-     extended_memmap[VIRT_HIGH_PCIE_MMIO].size = size;
- }
- 
-+static void virt_get_highmem_mmio_base(Object *obj, Visitor *v,
-+                                       const char *name, void *opaque,
-+                                       Error **errp)
-+{
-+    uint64_t base = extended_memmap[VIRT_HIGH_PCIE_MMIO].base;
-+
-+    visit_type_size(v, name, &base, errp);
-+}
-+
-+static void virt_set_highmem_mmio_base(Object *obj, Visitor *v,
-+                                       const char *name, void *opaque,
-+                                       Error **errp)
-+{
-+    uint64_t base;
-+
-+    if (!visit_type_size(v, name, &base, errp)) {
-+        return;
-+    }
-+
-+    if (base == 0) {
-+        error_setg(errp, "highmem-mmio-base cannot be 0");
-+        return;
-+    }
-+
-+    extended_memmap[VIRT_HIGH_PCIE_MMIO].base = base;
-+}
-+
- static char *virt_get_msi(Object *obj, Error **errp)
- {
-     VirtMachineState *vms = VIRT_MACHINE(obj);
-@@ -4286,6 +4338,14 @@ static void virt_machine_class_init(ObjectClass *oc, const void *data)
-                                           "Set the high memory region size "
-                                           "for PCI MMIO");
- 
-+    object_class_property_add(oc, "highmem-mmio-base", "size",
-+                                   virt_get_highmem_mmio_base,
-+                                   virt_set_highmem_mmio_base,
-+                                   NULL, NULL);
-+    object_class_property_set_description(oc, "highmem-mmio-base",
-+                                          "Set the high memory region base "
-+                                          "for PCI MMIO");
-+
-     object_class_property_add(oc, "virtio-mmio-transports", "uint8",
-                                    virt_get_virtio_transports,
-                                    virt_set_virtio_transports,
--- 
-2.34.1
+Function address_space_flush_icache_range() is indeed called with @rom->addr set
+to -1 (0xffffffffffffffff).  Since this address is not accessible, the inner
+loop of the function skips over the entire Rom area without ever calling
+flush_idcache_range().
 
+Regards,
+Mathieu
+
+> 
+> -Mike
+> 
+> > +        /*
+> > +         * These blobs (ACPI tables) are not loaded into guest RAM at reset.
+> > +         * Instead the firmware will load them via fw_cfg and measure them
+> > +         * itself.
+> > +         */
+> > +        return;
+> > +    }
+> > +
+> > +    region = g_new0(RmeRamRegion, 1);
+> > +    region->base = rom->addr;
+> > +    region->size = rom->len;
+> > +    region->data = rom->data;
+> > +
+> > +    /*
+> > +     * The Realm Initial Measurement (RIM) depends on the order in which we
+> > +     * initialize and populate the RAM regions. To help a verifier
+> > +     * independently calculate the RIM, sort regions by GPA.
+> > +     */
+> > +    rme_guest->ram_regions = g_slist_insert_sorted(rme_guest->ram_regions,
+> > +                                                   region,
+> > +                                                   rme_compare_ram_regions);
+> > +}
+> > +
+> >  static int kvm_arm_rme_init(ConfidentialGuestSupport *cgs, Error **errp)
+> >  {
+> >      KVMState *s = KVM_STATE(current_accel());
+> > @@ -58,6 +107,9 @@ static int kvm_arm_rme_init(ConfidentialGuestSupport *cgs, Error **errp)
+> >      error_setg(&rme_mig_blocker, "RME: migration is not implemented");
+> >      migrate_add_blocker(&rme_mig_blocker, &error_fatal);
+> >  
+> > +    rme_guest->rom_load_notifier.notify = rme_rom_load_notify;
+> > +    rom_add_load_notifier(&rme_guest->rom_load_notifier);
+> > +
+> >      /*
+> >       * The realm activation is done last, when the VM starts, after all images
+> >       * have been loaded and all vcpus finalized.
+> > -- 
+> > 2.43.0
+> > 
+> > 
 

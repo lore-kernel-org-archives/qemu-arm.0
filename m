@@ -4,63 +4,107 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1095EC88E5C
-	for <qemu-arm@archiver.kernel.org>; Wed, 16 Sep 2026 10:32:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DA11DC88E5C
+	for <qemu-arm@archiver.kernel.org>; Wed, 16 Sep 2026 10:53:22 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1x6mwU-0002fI-GP; Wed, 16 Sep 2026 06:32:43 -0400
+	id 1x6nG8-0004cl-Rs; Wed, 16 Sep 2026 06:53:06 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <tangtao1634@phytium.com.cn>)
- id 1x6mw5-0002dh-8i; Wed, 16 Sep 2026 06:32:19 -0400
-Received: from zg8tmtyylji0my4xnjqumte4.icoremail.net ([162.243.164.118])
- by eggs.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <tangtao1634@phytium.com.cn>)
- id 1x6mw1-00016K-UW; Wed, 16 Sep 2026 06:32:17 -0400
-Received: from prodtpl.icoremail.net (unknown [10.12.1.20])
- by hzbj-icmmx-6 (Coremail) with UTF8SMTP id AQAAfwAHXt0mcKpq6ZkGAA--.11515S2; 
- Wed, 16 Sep 2026 18:32:07 +0800 (CST)
-Received: from [10.31.91.158] (unknown [218.76.62.144])
- by mail (Coremail) with SMTP id AQAAf8Dw0HUhcKpqk73WAA--.40037S2;
- Wed, 16 Sep 2026 18:32:01 +0800 (CST)
-Message-ID: <51ba67b8-98db-42a7-aa60-5a802b78a63d@phytium.com.cn>
-Date: Wed, 16 Sep 2026 18:32:00 +0800
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1x6nFP-00044A-Bv
+ for qemu-arm@nongnu.org; Wed, 16 Sep 2026 06:52:22 -0400
+Received: from mail-yx2-x11.google.com ([2607:f8b0:4864:41::11])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1x6nFM-0003oD-5n
+ for qemu-arm@nongnu.org; Wed, 16 Sep 2026 06:52:14 -0400
+Received: by mail-yx2-x11.google.com with SMTP id
+ 956f58d0204a3-66e4ab19127so747118d50.1
+ for <qemu-arm@nongnu.org>; Wed, 16 Sep 2026 03:52:10 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1789555929; cv=none;
+ d=google.com; s=arc-20260327;
+ b=TwPUsAk7BJ2C4+BuCoR41RX/5P5jSjeazFDJpLuL4RRB2G7YSXZsnqNdKjJIbmnCKV
+ zvW6Ho1TaJUONVkmFx0EwOJe5L5IrBvwpfZ7IinU7ovwuynK+6AMadoo5nrjSmSV+fM5
+ fT24yYepe2i+yZpFXAP1ykgnVQ5q2mROyaD/rzEDqI70aPHfx3In1WCRWEJ/h70E2w81
+ 5A39tNJw8GMO6uMWrof1PPR3uG/K6qvKP8pc8iYZbeu1WMuW9eae6MEXnJL3Ztlp2L0F
+ SUvu9r7YRn6WgrjqTcoUHNz1rcXtqrYMlAL4piyYSv9HBIcXSc0JG4v9AjR2mN3geQNp
+ oYhQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
+ s=arc-20260327; 
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:dkim-signature;
+ bh=Ac5cJOlzb0yNjC/xOK/XtHtFbJ8zu2izgxBr5Yw3TZI=;
+ fh=WpsZqvzwwpA+br5IKYkHFQjwlimBUiVk05kqQkIIiQA=;
+ b=Bknben0NbKC8IT3GyxtVyW3eXJU/cLp+dPgfruEPZtNDtv3639GMIp85RdO+9V5x+R
+ A92AEYNSmJjEYIdMTSmShyYJ4V3/8aB5OKJKclrVGGbMR/RYHvedOahK1oz7rNST7Nq/
+ YKPH00j63fPJLMH61a6mYVrwm127AGDJ1QOy25LXF0pXnYcNSsQ/63xLq8gIvdqf0ZCQ
+ 4xbdPQZZ68oOgm3p8sLeJE1R77p1cFEwt8FGkI+HMlZhTbJBUYjc5umQew06i/6ji8ma
+ hEePXBNryFhzsd1jQtTLnuFw/A+D0FmkWEcm2lE93hGHolIPe6sv9PDA4aVIbxB0GxmB
+ nmqQ==; darn=nongnu.org
+ARC-Authentication-Results: i=1; mx.google.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1789555929; x=1790160729; darn=nongnu.org;
+ h=content-type:cc:to:subject:message-id:date:from:in-reply-to
+ :references:mime-version:from:to:cc:subject:date:message-id:reply-to
+ :content-type; bh=Ac5cJOlzb0yNjC/xOK/XtHtFbJ8zu2izgxBr5Yw3TZI=;
+ b=xXSf2/l2jkGUEicNG257A7r1BiZDshlHlo7dXTuXqZf1rkfmFziUD0u3nJzuu2yOx5
+ Ux7iOi7EyLshDUYenq3FzpmL3wJmIgGfQSdEzoNL6U49E0S9xWHYG10amBCS6xhcy8o8
+ Y/OWRFkNqby2pHzRHr4YheFd/nMdGe4w/iHZNeM805Z5Mdr+C7revBWVvRqgjWyDfPje
+ 9c0LrMvusjC1kKkS8tupr2Nj/219hlm17c4wqu4/wjrseATfBUmdEDUpbXD6fwu5AZKe
+ hVR1IYiQh1YiqOSlVgSjkEGPJqBHLvoXR+8Xqs5qrosFHGZhrrn6TEjaos/rI7KDNeIw
+ sjQw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20260707; t=1789555929; x=1790160729;
+ h=content-type:cc:to:subject:message-id:date:from:in-reply-to
+ :references:mime-version:x-gm-gg:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to:content-type;
+ bh=Ac5cJOlzb0yNjC/xOK/XtHtFbJ8zu2izgxBr5Yw3TZI=;
+ b=PPzK6NJc3c+CgJd81Ay+d0XlcAxwfpjgMIuEuBcaVzjSO+GCYEf9diWqDdP/mhdc/v
+ Y8OI0r0G574FFVNgmJVo5TaRDoFEpo27m+UP7wv4UB6Xv6owWQQrn2AOgCLxgjyCgxsh
+ vVijNeHvhX0SdJsGH0nMJQUEQ9WmaOv99/yo9/zvTomw0DasMXB01xNlclm8MmAygrpc
+ 7jEWl9l7FxepUxr+HYH7x8+QG8sQ3PGoKwnyA0plmx6CfPE1radZC1Vuk+1XeNQaGUXX
+ 8dr5Bu/AazbTMMMp+mTVxU/jw+qRMO2AOtmvaiD6EWA0qO7VGp9S/fV/K94tcBD9pfBe
+ h55g==
+X-Forwarded-Encrypted: i=1;
+ AKwUvBzq2XDMsBBptJOJ/3FliQ99vr3cFfbP3IfN5ScwhqqyUKts3IbY72F6aZ07PYnWOTJ1x3JyA6XihA==@nongnu.org
+X-Gm-Message-State: AFuF++mHlOvMMWE40Ps1DRnGa/unmwEIGSNDnSfFzC+LPX47Oh8VLEUi
+ Rdbz/PlZ7Tk1MjD31pkxvCBbv6PMHvdITVfKpt0zryZxdMhPYvIlT2K2bKlwTghj5/Jl1vg4Ufk
+ TtShJ0AP+m7DiVMP5/yfOV96+g9k+cWAY4DNZzfQwhw==
+X-Gm-Gg: AYBFou01efXWs5h07IspxRfO4WS22ujJ+suk4qLfcaozFUv78QIpBjy4l5+j/qeCvL9
+ FstGcLSbf+9JWFNdmRB1c+xi1YZY/k0YENiSWHVXbfOUhIKN4+CeOmtc79rfxtPu0oQivfH+ic4
+ wJ0GmxShRom55DT2tu9v9UpYFyiiPbWD6F77zOP7P5IwCASgaMLXPTp8PpQNGjc0v6n+8yIwxI5
+ WStB/w9b98jykpRmFYu3Bi4/Bmbms+A17AqGO0y6gShEvLRERaXbOrwIsiK6RNEwgw22e/6L0/G
+ naxwSixiP7oEifqfNC8VCY7t3u/Tl2o2q7kiMzMV4g9Xp2vrWqKJlqh4vewTd9QGdsfdoEjAwvh
+ 0loOmcFwyQG//4vGfZza7k4eL6T99L/BzAl1xNJTJ
+X-Received: by 2002:a05:690e:c4e:b0:66e:56e1:fcc0 with SMTP id
+ 956f58d0204a3-67163220807mr1118080d50.24.1789555929574; Wed, 16 Sep 2026
+ 03:52:09 -0700 (PDT)
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [RFC v5 18/28] hw/arm/smmuv3: Add access checks for CMDQ and
- EVENTQ registers
-To: eric.auger@redhat.com, Peter Maydell <peter.maydell@linaro.org>
-Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org,
- Chen Baozi <chenbaozi@phytium.com.cn>,
- Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>,
- =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@mailo.com>,
- Mostafa Saleh <smostafa@google.com>, Chao Liu <chao.liu@processmission.com>,
- Jim MacArthur <jim.macarthur@linaro.org>
-References: <20260813161515.2788900-1-tangtao1634@phytium.com.cn>
- <20260813162558.2808607-3-tangtao1634@phytium.com.cn>
- <72f6a745-1a31-4bc6-887f-a79c72669cfe@redhat.com>
-From: Tao Tang <tangtao1634@phytium.com.cn>
-In-Reply-To: <72f6a745-1a31-4bc6-887f-a79c72669cfe@redhat.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-X-CM-TRANSID: AQAAf8Dw0HUhcKpqk73WAA--.40037S2
-X-CM-SenderInfo: pwdqw3tdrrljuu6sx5pwlxzhxfrphubq/1tbiAQAABWqpnMkFrwAAs4
-Authentication-Results: hzbj-icmmx-6; spf=neutral smtp.mail=tangtao163
- 4@phytium.com.cn;
-X-Coremail-Antispam: 1Uk129KBjvJXoW7WFWrZF1UKr1DZr4DWr18AFb_yoW8ury7pr
- yUGws0qr4vgrWIv393tw10va1YgFWkJr17Xry3Wr98W345GryYyF15Ka95JaykWry5G34I
- qFsrtFW3C3y5AFJanT9S1TB71UUUUUDqnTZGkaVYY2UrUUUUj1kv1TuYvTs0mT0YCTnIWj
- DUYxn0WfASr-VFAU7a7-sFnT9fnUUIcSsGvfJ3UbIYCTnIWIevJa73UjIFyTuYvj4RJUUU
- UUUUU
-Received-SPF: pass client-ip=162.243.164.118;
- envelope-from=tangtao1634@phytium.com.cn;
- helo=zg8tmtyylji0my4xnjqumte4.icoremail.net
-X-Spam_score_int: -25
-X-Spam_score: -2.6
+References: <20260916100021.73825-1-mohamed@unpredictable.fr>
+ <20260916100021.73825-10-mohamed@unpredictable.fr>
+In-Reply-To: <20260916100021.73825-10-mohamed@unpredictable.fr>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Wed, 16 Sep 2026 11:51:58 +0100
+X-Gm-Features: AcwNN1VM0oRyQF72K-rzuDp-rYS2wbAzNfeY8Ke6RRoEp4khHQXe6WQGR0qOVoY
+Message-ID: <CAFEAcA9eKwvOr+jQ2NLSx1mnp4aZ9pbv3RKs74La17juHK_=LQ@mail.gmail.com>
+Subject: Re: [RFC PATCH v8 09/10] vmapple, gicv2m: add macOS compat quirk
+To: Mohamed Mediouni <mohamed@unpredictable.fr>
+Cc: qemu-devel@nongnu.org, "Michael S. Tsirkin" <mst@redhat.com>, 
+ Roman Bolshakov <rbolshakov@ddn.com>, Peter Xu <peterx@redhat.com>, 
+ =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>, 
+ qemu-arm@nongnu.org, Phil Dennis-Jordan <phil@philjordan.eu>, 
+ Akihiko Odaki <odaki@rsg.ci.i.u-tokyo.ac.jp>, Alexander Graf <agraf@csgraf.de>,
+ Paolo Bonzini <pbonzini@redhat.com>
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2607:f8b0:4864:41::11;
+ envelope-from=peter.maydell@linaro.org; helo=mail-yx2-x11.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.6 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_LOW=-0.7,
- RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -77,59 +121,26 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Hi Eric,
-
-On 2026/8/28 18:09, Eric Auger wrote:
+On Wed, 16 Sept 2026 at 11:00, Mohamed Mediouni
+<mohamed@unpredictable.fr> wrote:
 >
-> On 8/13/26 6:25 PM, Tao Tang wrote:
->> Add access control for command queue and event queue related registers
->> to ensure they can only be modified under proper conditions.
-> please explain what is wrong first
-OK.
->> For command queue (CMDQ):
->> - smmu_cmdq_disabled_stable(): checks CMDQ bit in CR0/CR0ACK
-> always assume CR0=CR0ACK?
-I'll drop the redundant CR0ACK checks.
->> - smmu_cmdq_base_writable(): checks IDR1.QUEUES_PRESET==0 and CMDQ disabled
->>
->> For event queue (EVTQ):
->> - smmu_eventq_disabled_stable(): checks EVTQ bit in CR0/CR0ACK
->> - smmu_eventq_base_writable(): checks IDR1.QUEUES_PRESET==0 and EVTQ disabled
-...
->> - smmu_irq_cfg_present(): checks SMMU_IDR0.MSI for the Non-secure
->>    EVENTQ_IRQ_CFG register set and SMMU_S_IDR0.MSI for the Secure set
-> can't you simply assume MSI is not supported?
+> macOS expects bit 31 of MSI_TYPER to be set.
+>
+> Signed-off-by: Mohamed Mediouni <mohamed@unpredictable.fr>
+> ---
 
-Sure. EVENTQ_IRQ_CFGx should be RES0 because of unsupported MSI as 
-discussed for patch #16.
+This is a macos bug -- the Arm Base System Architecture
+spec which defines what the GICv2M registers are is clear
+that MSI_TYPER bits [31:26] are RES0. I'm not keen on working
+around guest bugs here, especially of the "random proprietary
+guest has mysterious undocumented requirement" kind: insisting
+on bit 31 being set would presumably break on a real hardware
+GICv2M as well.
 
-Additionally, QUEUES_PRESET checks will be dropped following the 
-TABLES_PRESET simplification in patch #17.
+If there's some documented "Apple GICv2m" variant of this
+hardware, then we could potentially model it, but I'd
+rather do that as a "here's the spec we're modelling,
+implement it" than a one-off point hack.
 
->> - smmu_eventq_irq_cfg_writable(): additionally checks EVENTQ_IRQEN
->>
->> Absent EVENTQ_IRQ_CFG registers read as RES0. Present registers retain
->> their programmed values for readback. The helper remains keyed by
->> SEC_SID so future Realm support can select SMMU_R_IDR0.MSI.
->>
->> Additionally, mask reserved bits on writes using SMMU_QUEUE_BASE_RESERVED
->> for queue base registers and SMMU_EVENTQ_IRQ_CFG0_RESERVED for
->> EVENTQ_IRQ_CFG0.
->>
->> Fixes: fae4be38b35d ("hw/arm/smmuv3: Implement MMIO write operations")
->> Signed-off-by: Tao Tang <tangtao1634@phytium.com.cn>
->> Reviewed-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
->> ---
->>   hw/arm/smmuv3.c | 210 ++++++++++++++++++++++++++++++++++++++++++++++--
-> 210 changes lines -> Can't you split into 2a ll the more so the handling
-> is different from CMDQ and EVENTQ
-
-I'll split it into 2 patches and describe these issues first in the 
-commit messages.
-
-
-Thanks,
-
-Tao
-
+-- PMM
 

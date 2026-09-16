@@ -4,71 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 815B6C982C4
-	for <qemu-arm@archiver.kernel.org>; Wed, 16 Sep 2026 15:31:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 99519C982C3
+	for <qemu-arm@archiver.kernel.org>; Wed, 16 Sep 2026 15:31:12 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1x6rb9-0002MF-Ot; Wed, 16 Sep 2026 11:31:00 -0400
+	id 1x6rb9-0002M8-Oa; Wed, 16 Sep 2026 11:31:00 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1x6raa-00024o-Ar
- for qemu-arm@nongnu.org; Wed, 16 Sep 2026 11:30:24 -0400
-Received: from mail-wm2-x10.google.com ([2a00:1450:4864:31::10])
+ id 1x6ral-0002AL-3r
+ for qemu-arm@nongnu.org; Wed, 16 Sep 2026 11:30:35 -0400
+Received: from mail-wm1-x32b.google.com ([2a00:1450:4864:20::32b])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1x6raY-0001MT-2e
- for qemu-arm@nongnu.org; Wed, 16 Sep 2026 11:30:24 -0400
-Received: by mail-wm2-x10.google.com with SMTP id
- 5b1f17b1804b1-49e620fa473so6700305e9.1
- for <qemu-arm@nongnu.org>; Wed, 16 Sep 2026 08:30:21 -0700 (PDT)
+ id 1x6rai-0001R0-2q
+ for qemu-arm@nongnu.org; Wed, 16 Sep 2026 11:30:34 -0400
+Received: by mail-wm1-x32b.google.com with SMTP id
+ 5b1f17b1804b1-495437bb891so15207025e9.1
+ for <qemu-arm@nongnu.org>; Wed, 16 Sep 2026 08:30:30 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1789572621; x=1790177421; darn=nongnu.org;
+ d=linaro.org; s=google; t=1789572629; x=1790177429; darn=nongnu.org;
  h=content-transfer-encoding:content-type:mime-version:references
  :in-reply-to:message-id:date:subject:cc:to:from:from:to:cc:subject
  :date:message-id:reply-to:content-type;
- bh=AJwEWFJNlhZhHGtBDzm5rjgGSC2PicgfXm/bmyyHSjI=;
- b=Lwbigcn2WKYLnBFPG/QIJw1p8T6pYbD7zGZIG/eeXt558H8M05MAcw0FebYGb70S+H
- up7m1GZVeLbHGtIayzsMcU79ohdu5ho6OEs1gfGdLqq9VUseRtbExjZpGUGsQ3mCzWpu
- Bj16FYhZMrM8SfeXilSgTZjUpUhMngqhy2ic4fbfoWiRHByCuW3F/vn6hMhBSc/Yh4bg
- nhOEAkFtpacLDr50tU0mz+tKupF/RwruErpu+ybPMbFuRkllITTnDikYXj0mWc1jhr/+
- TdFOvJCWfb5TLoD7D4v7u9CDrrfy/LJvhubjfz/ZU7Za54D+desDIOxs+Rj9ACE3ivZJ
- BP4g==
+ bh=5VZ9WHBeOITZkYlGYis/Zw/ne4HgXN9leet0uUIp4tI=;
+ b=hWQxGPpk0FmhdLTdAJ18uGd6lCs3JYCe+/0k3Oq7pu423VUCwFRnqJdjUSTMIbbAhd
+ oMiEkYNepc9h70jqtnNxif5ExRX5woyApoZCCSXGJXX0bB7Yn/HsOrSWQRgmwpKFbAWE
+ j9N8PeBLJYr+NdZFGbkqFGTI9qkm79l9wfV631zTE8DCNC8qSCfEpfEWrsssfNlB+oEa
+ kwmOEWwTySGRBqMnSZktYU/ZXs3T9TvQ4v5rap/6e1/G9dyIV2n6l8NhyduqI28ijFNi
+ qQxAl0rCCMw2hAziZuBM+UGYDVhtOmloHClb9/Jps1PQpUFI3fp64kezpedJP5RHQJ4A
+ bS1Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20260707; t=1789572621; x=1790177421;
+ d=1e100.net; s=20260707; t=1789572629; x=1790177429;
  h=content-transfer-encoding:content-type:mime-version:references
  :in-reply-to:message-id:date:subject:cc:to:from:x-gm-gg
  :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
  :content-type;
- bh=AJwEWFJNlhZhHGtBDzm5rjgGSC2PicgfXm/bmyyHSjI=;
- b=u+pw6dGQK9NlMDBiWtiRgGD1erh+VYldDlMAiupNjpb5fv64F8oI2rAeRO2SPc1ATc
- x86d/j+OT+UcJ2apw4m0c5pGE2YmJxV+EajX1IVu5ouznC4PZpV9HoP2k/Jbko0dCcQ0
- F375waKihwF4AbYIMjOgDWPKJMqV6bACjwCJi0NEiP8vw1O6QqNMLL9rVbmv5Zf9KEGA
- +DcNfFQtNk1fr/f+Ezdhftu8s+hESaoYu2JeFGWViCljeV9Gpn0CA3iOLDxtw4es8d2b
- bNyqZ65+e4+64ly98K4yOx+DNtmZFwlWosCJtiZQpIuxPCoVVeQs5lea81h4axz2lY2/
- a77w==
+ bh=5VZ9WHBeOITZkYlGYis/Zw/ne4HgXN9leet0uUIp4tI=;
+ b=sp6vEFpKBGHNPgP3GbF8//b+jFuABL34WuIZoFuXG+mqpvvx8IY3M+Am9SSAkNrJ86
+ zQ6UfwaE+W1WbEW9cJFLWZYh6MmB9x9azxzHAYND2RcYEIGZvmirpov9SMDXQuLz8ago
+ VK+7issqo5ILzAwoXDDsg/XrJ7moZYontPjWRbizwvQQzaVGtEgdrtcAz4h2xj7zakUp
+ E+r6evJkwS5leXk0IaPIseaGH4h6i7EfZbR7EPKKWANtKtKGU5eON2z66gMwMcIoHm2I
+ YM4/AA0Hu0VgISrotbQWX3RKkKGYmCXpWMDMcMB5SjNLXqhXTKcpufgNcyqg8jS/PA4M
+ IeMA==
 X-Forwarded-Encrypted: i=1;
- AKwUvBx58hjMtyge52RILREr/srubxuPPi67Q/E5rj1JMhj0EHfau+mu5KWCelHCTMEl18jXFcFCphePLw==@nongnu.org
-X-Gm-Message-State: AFuF++m2DlVY0n3nALKRRF82xBfZf/AAm1pMZ1USUrF+bpm9xHuj0J1C
- XTj8Emq2gGhJ6v16HrYWwOmgLra58uL48mQt2g71y6slUFjV681ICipzysjwQIbwYkY=
-X-Gm-Gg: AYBFou3hct9ZKwNwFScXC1aG+ZZ71Lcx8/kFI7wVCI+JNOFO9U8Ah9PjVK255Oohov/
- 25NdNze9xQys5VE8hmWHE3u4feXxY5J3dZ7gRqsCOI3/neP3/TsfKrJSL3xvZBs8Skf22nhDB9s
- xWa6zZbMPPq/qthfMmana4Bzm+isu0eAhuilKiqcKd0ucXbu5CzY750h4pqoWsHWt8ZG7Ijqguz
- /8nFq9OITMl9q2zDuE05tn/hfuoTJTzwLMnHxiueyaW7o5c+PkKD12okD4ekxAfMRkNU3t8rH6l
- cTpoHtS9a7CsS4AM0Jnukwh0yfyRiRCfmJ+Be72O/iohmf1yweMUGjiIDMGw4H/YCgAuloRjtZ+
- b9amJ3MAH4VktiorTPJ81msPN1HER0e+IJgf69++viv8efTpv5zChiJDLwkVv5xMHEhv0o/btRJ
- LI+brr97Exqk7aihWE0LssqlIn86pAT+42xxKt3ZqMMYlIy1iWlO6sDpVwjOR2u+djfWJzk60=
-X-Received: by 2002:a05:600c:6085:b0:49c:dca2:ac47 with SMTP id
- 5b1f17b1804b1-49eac45c06bmr36770935e9.2.1789572620516; 
- Wed, 16 Sep 2026 08:30:20 -0700 (PDT)
+ AKwUvBwP11v4h7dsddtsO5qUBjOQzFG2Jv6SZPb98mjzhofIvUOqQOeeZAF9agvcD4VhR/1vYAMQIwacmQ==@nongnu.org
+X-Gm-Message-State: AFuF++lUw+Yl/xIFdx/hOufHjlIISDNE2UB1pcxCzBDVJapLdHK8J1f2
+ +zWdCYU07e1aNJw9yuek6OIewahSIbYtQReptkYGB8bBehh6I/HkYVktz6gXsqmU+x0=
+X-Gm-Gg: AYBFou2tISSh3KhG0dzxbwKZz3iLQ5qv8X6JGbZG/Rclg7BBZ3dzhSqK7zDyriEWWmE
+ 5QI6SZZWE6jk2WHLcijBn8bLebIZikXmtLZYJue2G2Z5VljFk0aF8nfKqjsTsTIAP3IPeAw5UsU
+ j+sXt6YZavEJLkrxuc5aFgktbVsYNVTqeiFtRayYWJXArrv6uz/Bb0KCyQGfqktrlEMofXlTYBf
+ lUIvxqn4VK2kptgFULog/0Dj6iGzby9hquTAaQV6qDZ+ML29d0yYIOOgqzN3274mz1nsgNWnA0c
+ jkAM4YRiQM9YGnl+RgEHwEfoG/YoLUnazrzPCSoa8f6V8DPE6SlID1yHFpof37sP2KIkANM532c
+ flmdexFd0NwBGo79dK4MybU4vtrScdZwTZ70v8Ijmp++PmiVRl54JBQOXkwpttaRE03aZvi08dV
+ pdzatqdrSkpYT/yl6tyS7nJd0II0bOe0MgUnKvQjsj6VLN5AJFJy+bWt4x5F+CDg7zBXjccKQ=
+X-Received: by 2002:a05:600c:e555:20b0:49d:27ee:79c9 with SMTP id
+ 5b1f17b1804b1-49fbd1c4afamr22145e9.8.1789572629187; 
+ Wed, 16 Sep 2026 08:30:29 -0700 (PDT)
 Received: from draig.lan ([185.124.0.156]) by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-49fbd0fef38sm1392095e9.9.2026.09.16.08.30.14
+ ffacd0b85a97d-4870bf37e69sm7898928f8f.29.2026.09.16.08.30.20
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 16 Sep 2026 08:30:14 -0700 (PDT)
+ Wed, 16 Sep 2026 08:30:22 -0700 (PDT)
 Received: from draig.lan (localhost [IPv6:::1])
- by draig.lan (Postfix) with ESMTP id 698AA618D2;
- Wed, 16 Sep 2026 16:30:13 +0100 (BST)
+ by draig.lan (Postfix) with ESMTP id 2DFFE61971;
+ Wed, 16 Sep 2026 16:30:14 +0100 (BST)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: Ilya Leoshkevich <iii@linux.ibm.com>, qemu-arm@nongnu.org,
@@ -90,18 +90,17 @@ Cc: Ilya Leoshkevich <iii@linux.ibm.com>, qemu-arm@nongnu.org,
  Brian Cain <brian.cain@oss.qualcomm.com>,
  =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
  Richard Henderson <richard.henderson@linaro.org>
-Subject: [PATCH v4 02/19] Revert "tests/tcg/meson.build: implement ./configure
- -cross-cc-* options"
-Date: Wed, 16 Sep 2026 16:29:55 +0100
-Message-ID: <20260916153013.2134555-3-alex.bennee@linaro.org>
+Subject: [PATCH v4 09/19] tests/tcg: don't define tests when missing compilers
+Date: Wed, 16 Sep 2026 16:30:02 +0100
+Message-ID: <20260916153013.2134555-10-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.47.3
 In-Reply-To: <20260916153013.2134555-1-alex.bennee@linaro.org>
 References: <20260916153013.2134555-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:31::10;
- envelope-from=alex.bennee@linaro.org; helo=mail-wm2-x10.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::32b;
+ envelope-from=alex.bennee@linaro.org; helo=mail-wm1-x32b.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -124,254 +123,56 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-We want to keep configuring of the cross compiler within configure so
-it can be used by the firmware.
+Skip defining the tests for an architecture if we can't build them.
+Otherwise we add a bunch of noise to the reported results. We still do
+report when we skip because the compiler doesn't have the features we
+need to build.
 
-This reverts commit 7e1d54da6faf10e1fc70f6b3d8247068b80b1597.
-Suggested-by: Paolo Bonzini <pbonzini@redhat.com>
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
-
 ---
-v3
-  - declare empty container_command/use_containers to avoid unref var
----
- configure             | 31 ++++++++-------
- meson_options.txt     | 89 -------------------------------------------
- tests/tcg/meson.build | 31 +++------------
- 3 files changed, 23 insertions(+), 128 deletions(-)
+ tests/tcg/meson.build | 14 +++++++++-----
+ 1 file changed, 9 insertions(+), 5 deletions(-)
 
-diff --git a/configure b/configure
-index 1973f023b1e..bedde58b8cf 100755
---- a/configure
-+++ b/configure
-@@ -172,6 +172,7 @@ fi
- # some defaults, based on the host environment
- 
- # default parameters
-+container_command=""
- cpu=""
- cross_compile="no"
- cross_prefix=""
-@@ -227,6 +228,19 @@ for opt do
-   ;;
-   --extra-ldflags=*) EXTRA_LDFLAGS="$EXTRA_LDFLAGS $optarg"
-   ;;
-+  --cross-cc-*[!a-zA-Z0-9_-]*=*) error_exit "Passed bad --cross-cc-FOO option"
-+  ;;
-+  --cross-cc-cflags-*) cc_arch=${opt#--cross-cc-cflags-}; cc_arch=${cc_arch%%=*}
-+                      eval "cross_cc_cflags_${cc_arch}=\$optarg"
-+  ;;
-+  --cross-cc-*) cc_arch=${opt#--cross-cc-}; cc_arch=${cc_arch%%=*}
-+                eval "cross_cc_${cc_arch}=\$optarg"
-+  ;;
-+  --cross-prefix-*[!a-zA-Z0-9_-]*=*) error_exit "Passed bad --cross-prefix-FOO option"
-+  ;;
-+  --cross-prefix-*) cc_arch=${opt#--cross-prefix-}; cc_arch=${cc_arch%%=*}
-+                    eval "cross_prefix_${cc_arch}=\$optarg"
-+  ;;
-   --without-default-features) default_feature="no"
-   ;;
-   --wasm64-32bit-address-limit) wasm64_memory64="2"
-@@ -246,6 +260,7 @@ ninja=""
- python=
- download="enabled"
- skip_meson=no
-+use_containers=""
- rust="disabled"
- rust_target_triple=""
- 
-@@ -618,19 +633,9 @@ for opt do
-   ;;
-   --extra-ldflags=*)
-   ;;
--  --cross-cc-*[!a-zA-Z0-9_-]*=*) error_exit "Passed bad --cross-cc-FOO option"
--  ;;
--  --cross-cc-cflags-*) arch=${opt#--cross-cc-cflags-}; arch=${arch%%=*}
--                       meson_option_add "-Dtcg_tests_cross_cflags_${arch}=${optarg}"
--  ;;
--  --cross-cc-*) arch=${opt#--cross-cc-}; arch=${arch%%=*}
--                meson_option_add "-Dtcg_tests_cross_cc_${arch}=${optarg}"
--  ;;
--  --cross-prefix-*[!a-zA-Z0-9_-]*=*) error_exit "Passed bad --cross-prefix-FOO option"
-+  --cross-cc-*)
-   ;;
--  # cross-prefix is just used as a syntactic sugar for -cross-cc.
--  --cross-prefix-*) arch=${opt#--cross-prefix-}; arch=${arch%%=*}
--                    meson_option_add "-Dtcg_tests_cross_cc_${arch}=${optarg}gcc"
-+  --cross-prefix-*)
-   ;;
-   --enable-docs) docs=enabled
-   ;;
-@@ -1273,7 +1278,7 @@ if test "$container_command" = ""; then
-     container_command=$($python "$source_path"/tests/docker/docker.py probe)
-     test "$container_command" = "no" && container_command=""
- fi
--if test $use_containers = "yes" && test "$container_command" != ""; then
-+if test "$use_containers" = "yes" && test "$container_command" != ""; then
-     docker_py="$python $source_path/tests/docker/docker.py --command $container_command"
- fi
- 
-diff --git a/meson_options.txt b/meson_options.txt
-index e3570a418aa..66d3689d14c 100644
---- a/meson_options.txt
-+++ b/meson_options.txt
-@@ -393,92 +393,3 @@ option('containers', type: 'boolean', value: true,
-        description: 'use containers to cross compile tcg tests')
- option('container_command', type: 'string',
-        description: 'command to build/run containers')
--
--option('tcg_tests_cross_cc_aarch64', type: 'string',
--       description: 'cc for aarch64 tcg tests')
--option('tcg_tests_cross_cflags_aarch64', type: 'string',
--       description: 'cflags for aarch64 tcg tests')
--option('tcg_tests_cross_cc_aarch64_be', type: 'string',
--       description: 'cc for aarch64_be tcg tests')
--option('tcg_tests_cross_cflags_aarch64_be', type: 'string',
--       description: 'cflags for aarch64_be tcg tests')
--option('tcg_tests_cross_cc_alpha', type: 'string',
--       description: 'cc for alpha tcg tests')
--option('tcg_tests_cross_cflags_alpha', type: 'string',
--       description: 'cflags for alpha tcg tests')
--option('tcg_tests_cross_cc_arm', type: 'string',
--       description: 'cc for arm tcg tests')
--option('tcg_tests_cross_cflags_arm', type: 'string',
--       description: 'cflags for arm tcg tests')
--option('tcg_tests_cross_cc_hexagon', type: 'string',
--       description: 'cc for hexagon tcg tests')
--option('tcg_tests_cross_cflags_hexagon', type: 'string',
--       description: 'cflags for hexagon tcg tests')
--option('tcg_tests_cross_cc_hppa', type: 'string',
--       description: 'cc for hppa tcg tests')
--option('tcg_tests_cross_cflags_hppa', type: 'string',
--       description: 'cflags for hppa tcg tests')
--option('tcg_tests_cross_cc_i386', type: 'string',
--       description: 'cc for i386 tcg tests')
--option('tcg_tests_cross_cflags_i386', type: 'string',
--       description: 'cflags for i386 tcg tests')
--option('tcg_tests_cross_cc_loongarch64', type: 'string',
--       description: 'cc for loongarch64 tcg tests')
--option('tcg_tests_cross_cflags_loongarch64', type: 'string',
--       description: 'cflags for loongarch64 tcg tests')
--option('tcg_tests_cross_cc_m68k', type: 'string',
--       description: 'cc for m68k tcg tests')
--option('tcg_tests_cross_cflags_m68k', type: 'string',
--       description: 'cflags for m68k tcg tests')
--option('tcg_tests_cross_cc_mips', type: 'string',
--       description: 'cc for mips tcg tests')
--option('tcg_tests_cross_cflags_mips', type: 'string',
--       description: 'cflags for mips tcg tests')
--option('tcg_tests_cross_cc_mips64', type: 'string',
--       description: 'cc for mips64 tcg tests')
--option('tcg_tests_cross_cflags_mips64', type: 'string',
--       description: 'cflags for mips64 tcg tests')
--option('tcg_tests_cross_cc_mips64el', type: 'string',
--       description: 'cc for mips64el tcg tests')
--option('tcg_tests_cross_cflags_mips64el', type: 'string',
--       description: 'cflags for mips64el tcg tests')
--option('tcg_tests_cross_cc_or1k', type: 'string',
--       description: 'cc for or1k tcg tests')
--option('tcg_tests_cross_cflags_or1k', type: 'string',
--       description: 'cflags for or1k tcg tests')
--option('tcg_tests_cross_cc_ppc64', type: 'string',
--       description: 'cc for ppc64 tcg tests')
--option('tcg_tests_cross_cflags_ppc64', type: 'string',
--       description: 'cflags for ppc64 tcg tests')
--option('tcg_tests_cross_cc_ppc64le', type: 'string',
--       description: 'cc for ppc64le tcg tests')
--option('tcg_tests_cross_cflags_ppc64le', type: 'string',
--       description: 'cflags for ppc64le tcg tests')
--option('tcg_tests_cross_cc_riscv64', type: 'string',
--       description: 'cc for riscv64 tcg tests')
--option('tcg_tests_cross_cflags_riscv64', type: 'string',
--       description: 'cflags for riscv64 tcg tests')
--option('tcg_tests_cross_cc_s390x', type: 'string',
--       description: 'cc for s390x tcg tests')
--option('tcg_tests_cross_cflags_s390x', type: 'string',
--       description: 'cflags for s390x tcg tests')
--option('tcg_tests_cross_cc_sh4', type: 'string',
--       description: 'cc for sh4 tcg tests')
--option('tcg_tests_cross_cflags_sh4', type: 'string',
--       description: 'cflags for sh4 tcg tests')
--option('tcg_tests_cross_cc_tricore', type: 'string',
--       description: 'cc for tricore tcg tests')
--option('tcg_tests_cross_cflags_tricore', type: 'string',
--       description: 'cflags for tricore tcg tests')
--option('tcg_tests_cross_cc_x86_64', type: 'string',
--       description: 'cc for x86_64 tcg tests')
--option('tcg_tests_cross_cflags_x86_64', type: 'string',
--       description: 'cflags for x86_64 tcg tests')
--option('tcg_tests_cross_cc_xtensa', type: 'string',
--       description: 'cc for xtensa tcg tests')
--option('tcg_tests_cross_cflags_xtensa', type: 'string',
--       description: 'cflags for xtensa tcg tests')
--option('tcg_tests_cross_cc_xtensaeb', type: 'string',
--       description: 'cc for xtensaeb tcg tests')
--option('tcg_tests_cross_cflags_xtensaeb', type: 'string',
--       description: 'cflags for xtensaeb tcg tests')
 diff --git a/tests/tcg/meson.build b/tests/tcg/meson.build
-index d41a228fb3d..ce208e686ff 100644
+index d317f0ee310..904a5a02242 100644
 --- a/tests/tcg/meson.build
 +++ b/tests/tcg/meson.build
-@@ -185,8 +185,6 @@ foreach target, plan: tcg_tests
-     continue
-   endif
- 
--  cc_arch = target.replace('-linux-user', '').replace('-softmmu', '')
--
-   # Detect duplicated executables/tests, and report an error to force user to
-   # choose how to deal with it.
-   built_tests = {}
-@@ -204,35 +202,16 @@ foreach target, plan: tcg_tests
-   endforeach
- 
-   cc = find_program(plan['cc'], required : false)
--  cc_cflags = []
--
--  check_flags = []
--  check_required = false
--  cross_cc = get_option('tcg_tests_cross_cc_' + cc_arch)
--  if cross_cc != ''
--    # we make sure cross cc exists
--    cc = find_program(cross_cc, required: true)
--    check_required = true
--  endif
--  cross_cflags = get_option('tcg_tests_cross_cflags_' + cc_arch)
--  if cross_cflags != ''
--    cc_cflags = cross_cflags.split()
--    # and that cross cc can compile programs
--    check_flags = cc_cflags
--    check_required = true
--  endif
--
-   cc_from_system = cc.found()
-   has_cc = cc.found()
-   if has_cc
-+    check_flags = ['-static']
-     if target.endswith('softmmu')
--      check_flags += ['-nostdlib', '-ffreestanding', '-r']
--    else
--      check_flags += ['-static']
-+      check_flags = ['-nostdlib', '-ffreestanding', '-r']
+@@ -264,8 +264,11 @@ foreach target, plan: tcg_tests
+     if not cc_from_system
+       summary_cc += ' (from \'qemu/' + plan['cc_dockerfile'] + '\' container)'
      endif
- 
-     cmd = run_command([cc, files('test_cc.c'), check_flags, '-o', '/dev/null'],
--                      check: check_required)
-+                      check: false)
-     has_cc = cmd.returncode() == 0
-     cc_from_system = has_cc
++    tcg_tests_summary += {'cc for ' + target: summary_cc}
++  else
++    # no compiler, skip this target
++    continue
    endif
-@@ -368,9 +347,9 @@ foreach target, plan: tcg_tests
+-  tcg_tests_summary += {'cc for ' + target: summary_cc}
+ 
+   folder = plan['folder']
+   gdb_arch = plan['gdb_arch']
+@@ -373,6 +376,9 @@ foreach target, plan: tcg_tests
+           cc_has_feat += {cc_feat: avail}
          endif
+ 
++        # While we skip defining tests for whole architectures if we
++        # don't have the compiler we do skip individual tests where
++        # the compiler is missing a feature.
+         if not cc_has_feat[cc_feat]
+           skip_test = 'compiler feature ' + cc_feat + ' not supported'
+           built_tests += {exe_name: exe_name}
+@@ -380,10 +386,8 @@ foreach target, plan: tcg_tests
+         cflags += cc_feat_cflags[cc_feat]
        endif
  
--      cflags = cc_cflags
-+      cflags = []
-       if 'cflags' in setup
--        cflags += setup['cflags']
-+        cflags = setup['cflags']
-       endif
+-      if not has_cc
+-        skip_test = 'compiler ' + plan['cc'] + ' not available'
+-        built_tests += {exe_name: exe_name}
+-      endif
++      # We should either have a compiler or have skipped the whole target
++      assert(has_cc)
  
-       if 'cc_feat' in setup
+       exe_depends = build_test_depends
+       if 'depends' in setup
 -- 
 2.47.3
 

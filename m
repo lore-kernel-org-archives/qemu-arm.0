@@ -4,37 +4,37 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 48C03C88E77
-	for <qemu-arm@archiver.kernel.org>; Wed, 16 Sep 2026 10:00:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 44381C88E5C
+	for <qemu-arm@archiver.kernel.org>; Wed, 16 Sep 2026 10:01:28 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1x6mRe-000870-NK; Wed, 16 Sep 2026 06:00:51 -0400
+	id 1x6mS4-0008KV-DC; Wed, 16 Sep 2026 06:01:17 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mohamed@unpredictable.fr>)
- id 1x6mRX-00086O-Ec
- for qemu-arm@nongnu.org; Wed, 16 Sep 2026 06:00:43 -0400
-Received: from qs-2004h-snip6-11.eps.apple.com ([2a01:b747:3006:206::53]
+ id 1x6mRg-00087p-Fn
+ for qemu-arm@nongnu.org; Wed, 16 Sep 2026 06:00:54 -0400
+Received: from qs-2003f-snip6-11.eps.apple.com ([2a01:b747:3006:204::3f]
  helo=outbound.qs.icloud.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mohamed@unpredictable.fr>)
- id 1x6mRT-0005D6-20
- for qemu-arm@nongnu.org; Wed, 16 Sep 2026 06:00:41 -0400
+ id 1x6mRc-0005Ea-Fq
+ for qemu-arm@nongnu.org; Wed, 16 Sep 2026 06:00:51 -0400
 Received: from outbound.qs.icloud.com (unknown [127.0.0.2])
  by p00-icloudmta-asmtp-us-east-2d-100-percent-8 (Postfix) with ESMTPS id
- 4336318005D5; Wed, 16 Sep 2026 10:00:33 +0000 (UTC)
-X-ICL-RepId: 01a0a9a9-326f-7fdb-9c16-0903d252e3c4
-X-ICL-Out-Info: HUtFAUMHWwJACUgATUQeDx5WFlZNRAJCTQ1OHVwPUhxEDlYCVRcOVk1UF1sMWg5WMEwWQx9SD1sTTRlRAVJFVAIZHldQQgVCAlwcWg5DClAcXFZVHxcZUU0IShMFUgddTVYNRw9YHlwUFwlAQ14IXh9MHB0OWAYSAE0KDjYGWQVeCVYDQwU2EhRdRUYDRxlXFFAbRwxVB1deXwoTAF4PD0wLSAFbB1IDRghIA10FWhxHCkABWBpaHx1WEFIAUg9yBVcIQQhTAlEEWBpfCBkNQE4ZDEodUlZRBUoMXABoD10dWBFd
+ D4E831800BC5; Wed, 16 Sep 2026 10:00:43 +0000 (UTC)
+X-ICL-RepId: 01a0a9a9-5bff-7cb3-b7cd-d334028d275d
+X-ICL-Out-Info: HUtFAUMHWwJACUgBTUQeDx5WFlZNRAJCTQ1OHVwPUhxEDlYCVRcOVk1UF1sMWg5WMEwWQx9SD1sTTRlRAVJFVAIZHldQQgVCAlwcWg5DClAcXFZVHxcZUU0IShMFUgddTVYNRw9YHlwUFwlAQ14IXh9MHB0OWAYSAE0KDjYGWQVeCVYDQwU2EhRdRUYDRxlXFFAbRwxVB1deXwoTAF4PD0wLSAFbB1IDRghIA10FWhxHCkABWBpcHx1WEFIAUg9yBVcIQQhTAlEEWBpfCBkNQE4ZDEodUlZRBUoMXABoD10dWBFd
 Dkim-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=unpredictable.fr;
- s=sig1; t=1789552834; x=1792144834;
- bh=f6hNzKyGSig9kg0DP2KxdtgaPJ5beLynypHJ2kzYXXE=;
- h=From:To:Subject:Date:Message-ID:MIME-Version:Content-Type:x-icloud-hme;
- b=w2clVZzdSu7Ym+umTT+8qNseeTll4p+ze8DRmHoxPaRQ+KdCUEt1Fytdbv2UdLMQ0IHjh3HUGcbVXt1TT4OW2FdlX1N6S1v9DfiTJTFDno7PvW5flu53UQHHE9ZCfnJ/osWI73Cfh/B+v8lgJmnm9OoK+TloBndWnbc0EgLJZOOJq3I166N22EmMLUDVmhxi/+nnNQSULI98tS6aKosTdd5cn5xSk+QNp6J70q44LS4Mq66F/brttTfDkzbPKcJ0NzJNsYeP+Q5GcnLc9cGD9+A+Y6whzAFnbjysMae/Q2CDtwiHETIHzReXymUGfixmB0hH68Q5r5s5WTph5KpERw==
+ s=sig1; t=1789552846; x=1792144846;
+ bh=KDf2DTW4By7UOzCqNMWGATcGpPtR9PyeQLUVDbCPI44=;
+ h=From:To:Subject:Date:Message-ID:MIME-Version:x-icloud-hme;
+ b=pJpQCW9VGXYCgN/eUJERmFaN24JmF0FI8OsGq2dKy6GtW8lSPSnv/AfuLleTlji1lI/v1yFPJYAjLPCit/kvxi8p7jvqxsNHb/FUYFmMQ8Saq4dpDw5m3SRI4CjiH+z9/OPsDVCEjO3F/2yXHJgtowwSB5EGdskZhDXoQYvnOx4+FiMew7JY6dNgl7NYiYI8jq8Mx7C7OOUrlTaUR+kZi2Y9TTxhOhpB6xre3EskxzAYnEHW8bcxqlrSnzil4cuPeyTSt4W2fshk632MXx90BKSTCUM78vmfl77Eq8UFYc653x23/+pAbe0d+Y0dm24t89EcCaFNS302Scux2w5zXQ==
 mail-alias-created-date: 1752046281608
 Received: from localhost.localdomain (unknown [17.57.155.37])
  by p00-icloudmta-asmtp-us-east-2d-100-percent-8 (Postfix) with ESMTPSA id
- 765D518009E2; Wed, 16 Sep 2026 10:00:31 +0000 (UTC)
+ B21F518009F4; Wed, 16 Sep 2026 10:00:41 +0000 (UTC)
 From: Mohamed Mediouni <mohamed@unpredictable.fr>
 To: qemu-devel@nongnu.org
 Cc: "Michael S. Tsirkin" <mst@redhat.com>,
@@ -45,37 +45,35 @@ Cc: "Michael S. Tsirkin" <mst@redhat.com>,
  Akihiko Odaki <odaki@rsg.ci.i.u-tokyo.ac.jp>,
  Mohamed Mediouni <mohamed@unpredictable.fr>,
  Alexander Graf <agraf@csgraf.de>, Paolo Bonzini <pbonzini@redhat.com>
-Subject: [RFC PATCH v8 00/10] vmapple: making it work on the latest macOS host
- releases
-Date: Wed, 16 Sep 2026 12:00:08 +0200
-Message-ID: <20260916100021.73825-1-mohamed@unpredictable.fr>
+Subject: [RFC PATCH v8 06/10] hw/vmapple: aes: convert MAX_LEN to a #define
+Date: Wed, 16 Sep 2026 12:00:14 +0200
+Message-ID: <20260916100021.73825-7-mohamed@unpredictable.fr>
 X-Mailer: git-send-email 2.54.0
+In-Reply-To: <20260916100021.73825-1-mohamed@unpredictable.fr>
+References: <20260916100021.73825-1-mohamed@unpredictable.fr>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwOTE2MDEzMCBTYWx0ZWRfX/oV5o176+jzA
- IJjt7GqhXPktg2Zcop1Nk4bIT5HS/VPlYb0ZzHmXpnTiZDcsvDL9jxU6rdEXp8VF3uD5r9Y9o8G
- E9kD/JHvc46MK4mQJvy2KygkPYlkU2mcmEFidKopYPMB4ZCwX61RDTaCkNjraVQ9D5b/6+yQ9LT
- lo70jKhnxoChk+8zBUttPUsNgC62u6RtSdCgM9njwn2nhd1xmJGFRmi0zcFEhYPVWEHg6jiA7KO
- GVh4CfKsxVjp1rjRE5eu+F14eijH1lpnkx5Fzlih08u7vqRyAAuwfzcEYfhCIntUkTgeMidAcsW
- WOG1+oZIgQV3ygtMHQpfETKIF78KVeJxXd2kZuI/0bEm69kuLDrO3/mW0xiEjM=
-X-Proofpoint-ORIG-GUID: QGoA-RAfta890orW3sM2IdWrB8lQRSUS
-X-Authority-Info-Out: v=2.4 cv=cMTtc1eN c=1 sm=1 tr=0 ts=6aaa68c1
+X-Authority-Info-Out: v=2.4 cv=B9G0EetM c=1 sm=1 tr=0 ts=6aaa68cd
  cx=c_apl:c_pps:t_out a=bsP7O+dXZ5uKcj+dsLqiMw==:117
- a=bsP7O+dXZ5uKcj+dsLqiMw==:17 a=PWwuWOSklEzM4Y2Y:21 a=IkcTkHD0fZMA:10
- a=VdqzKS8jKosA:10 a=VkNPw1HP01LnGYTKEx00:22 a=L2I6vFsG4SoSg74fCx4A:9
- a=QEXdDO2ut3YA:10
-X-Proofpoint-GUID: QGoA-RAfta890orW3sM2IdWrB8lQRSUS
-X-JNJ: AAAAAAABuFT2qmxBsdXCgPFmFWtZFKBJiigoraKQ+g+S3oV0aA+/O27MFT+NZW5HiL3AcKYqQC0965KKy2vJw652Pn9I4574mIT9moxeixAuKAOwpYD3lYn3kkMmdTB0eUdkyadMWopf3SUuXvx27k5ewaxWRwGhAEftoxWirPm7PH5psB49tRjvSB2zQ55AnrGaDzYRmae/9d/aVzxO/A6jiM97bzG2Z+bMxQTmHPqlAucR08JOyawvd7jm8SUkLiqry8NQ36frmXSAj9Zczc3ZKO34OvGTKBFfMVoHk4a7T9LQLgNbJcVoFffca/yu4WsezYNdJN88zidFJHZZhA2eMgrQt1FKjioAUAvts+CKOoqXjhc3UvNihOHksacuCv2+Fql9s7Fp+u0p7IUlPl1SeptQkj1Mfx/Q5oxHnoT74teiAs4M16XfLHvH2hLqj0jPS3XRK1VZRg9XcsktgBZMdyz1QcMFZP9oyEtwl0YOuIPi1LALFPjs7kZUqIq0BU2+zhNtWy4vERVouTbBEGzFC9FAj6T7ANAMM9BIdAXVKbAOtAOMFYq+WS+nrpeqe29c59Z3p8HS5fcCdKM6FecRq9JxhWYbE6Gsgo0bxd0LoK8zsF33Ff0fOoW8G0lyrn5e2Lgn5fYXZcSB4uGXq+bXgh6SbkGH+laXUJTK9obyp8XqkdAwqE6IzKr/bPOU2xuEGAAh0ZBsKG3LT+llfZZVLoC4gfT0vLIpcFsaT8hUrTpAtEOBqt9EJG7AZA3O3OUPqNPI8fR4chayO9Twi39dDPrYqUr2WMZq0a2TNqj9tK8lR/KRX7KiUncrBjc7ZH0NfS+b8sZL10WeAq/8uu39ibEBmIKb9hTNa9+Kw1IZWykA2hscmpPUQQeFkalsROuhvAYh1eBIJWwnir7mljSH8rOjcSaTA4RVaPyW2Z0ySA05XEdDIF1FsKm6jI3y3SzTbblq3bElCdXwSQO5G4UQyka9Ajq
- dGQMrqvn0xEmM5H61ao/s6hs3ItfFpsyu0UFWx2Qei33DOVFQSK1gDQk5gPoYYQkjl6dp8hJ4JV0rE0op6hJkAdgiivSaVxu+Dt3Igetv8yNxsHfEvW7DcynbLDgRMbTJQziVKLnrohovqX/R1Pz37vTQRzTFbDGUlIhveTA0BFlkntfIM6LwYhxcM4PmEaHU04xKA3+PvTLGjXYvNBbV84SSnU5uSXpyTGHV9fiwKTO+jWwJjmyv/1N8ecCBXLfeGLu02isk5DuSpeaOscm7UsLZAch7f28+JT2aSF6ZdKFQMDbD14Psn3YziFpBk3FdK2v7P34poVhgZiJkYvaYde64zYfNX/CqvMPVop/YivcxAbI=
-Received-SPF: pass client-ip=2a01:b747:3006:206::53;
+ a=bsP7O+dXZ5uKcj+dsLqiMw==:17 a=VdqzKS8jKosA:10 a=VkNPw1HP01LnGYTKEx00:22
+ a=CNpkFlK3StMqgsPjqO8A:9
+X-Proofpoint-ORIG-GUID: 4-ccaC-8I-h1vjB8vBubo6DDJYDpmUrJ
+X-Proofpoint-GUID: 4-ccaC-8I-h1vjB8vBubo6DDJYDpmUrJ
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwOTE2MDEzMCBTYWx0ZWRfX9ioFqSTqtDfM
+ 0WSwI6zRKLPBF72zIusk5eorsjwx2MHL9J1E0anxwz/haFIsyw9/mc2hrZ8f5pBDGzPbkPqy3Qu
+ XW9XvHkAwIXM7MhqbiWJAhu7PL7XyQCasyykqejxUk2olMkM/qQEguYJJC/a8FEeUthK++C6CEN
+ ObPlfprY6jWTwgTES1iHpk6XXjlh/8aCcHOtRJ/+l68p0BJH1cFOMVTnp9nZ05ZRJgMQihpPLjk
+ R7En31A15I+SFejsalMhs6/57DkFONVbx33C7rO50tvsOPk4kU0HmwV5wA810I26oUEkaoCvcKN
+ H/IAWB56ONJNgIZhZ65mRQS1FbFlbxlBKpTwDmWoq2AK050sS+lrVieX4pguVo=
+X-JNJ: AAAAAAAB0EL8hrIM4W/71g2/KqLkLr2OtMUovKIeMlWBnj7KahzoPu/iwH56r4zlBNijufbi7sFV9hHa057vQbZQ2RYe4AT9f3hSxefFk63goVpG2jBvE+htIux/s/fwKv+X/6VuAQYNkx4pBoz7StWiX43mEJct4KXMvxrV2rdXbtiwHn10l+HdHCTEdz/i/Jg9b19pIGAN8vVuSUz3380xNMDH3mwJTRZmq5SAFZMOAtgkIi+7p6GPOciAx73M59J835M4ZeNDwAM5AK4C1fgmVAzY60EEekzGD9O+e6k+7qhoYzqJ9gUDvxrxdU0PLkygIBGACvBGEZKBlLbX0MrGSR+N5VzZbpiYk9JYtW73m1j5D/7+NfOr9lTfjr4RPZK3ABGKYZs4gvOlV2WfDfZv/W2FzJBKhdVuTtk2shQawqa8KCQbgjP83JKhpgvX2pHsKDhvGjOupXroYe8pOlNCT4etp+fnv3nGVsaAgyBL7QdtdeB/wTlE072XI7VfshEbAKf1lbv+kcYSKNHiPpzvOOWPzsy17eF3qR59vYFdi6azCxNsaRELYZbVFXtNSrqBxnrSm0ms7VW6/fhx1j73U/AdTWOCGqt7WTaStfRscQt8QABGDMO5PIVik12FRQ2XuBz44Cp/Ti2H6l05/ilUVciHMEY/9HBbuHQQwPtAsAbi1yS2bSqHWNgAUkLkWDD4ujRz5zNL1EMJhUGQAHDTDlgT1bxLq044ImjtqDuxWjk3dZvhXJhow1t0eN7b06HISNI4Id3lMPLQXKUvUDXLxPgWQDtN8zRY+MJLwz2lFzDvdv3jNn6jsaLmPzPQns2jGjRozf55V6RHhB2V+IZPJ8abNJi8KQ==
+Received-SPF: pass client-ip=2a01:b747:3006:204::3f;
  envelope-from=mohamed@unpredictable.fr; helo=outbound.qs.icloud.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_PASS=-0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -91,76 +89,39 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-v8:
+Working around this compiler warning:
 
-Refreshed for new macOS 27.
+../hw/vmapple/aes.c:257:14: warning: variable length array folded to constant array as an extension [-Wgnu-folding-constant]
+  257 |     char hex[MAX_LEN * 2 + 1] = "";
+      |              ^~~~~~~~~~~~~~~
+1 warning generated.
 
-Now a standalone series.
+Signed-off-by: Mohamed Mediouni <mohamed@unpredictable.fr>
+---
+ hw/vmapple/aes.c | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
 
-Added new patch for newer macOS guests - to allow FileVault off.
-
-v7:
-
-Support for newer guest OSes.
-
-Added not mergable patch for private ISA enablement.
-
-Not grabbing a memory reference and still using flatview_for_each_range
-for this one, which works fine as live migration is disallowed anyway.
-
-v6:
-Rework the patches a bit, with making sure that there's no compiler warnings
-
-v5:
-Address review comments and rebase.
-
-v4:
-Rebase and resend without the RFC tag as I didn't get feedback.
-Drop patch 1 (version I posted was incomplete anyways). Last patch isn't worth it too tbh.
-
-v2->v3:
-Remove the Apple M4 support workaround part for now, to be part of another patchset perhaps
-Address comments
-
-v1->v2:
-Remove some lines that shouldn't have been present...
-
-Lucas Amaral (4):
-  target/arm/emulate: add ISV=0 emulation library with load/store
-    immediate
-  target/arm/emulate: add load/store register offset
-  target/arm/emulate: add load/store pair
-  target/arm/hvf, whpx: wire ISV=0 emulation for data aborts
-
-Mohamed Mediouni (6):
-  vmapple: apple-gfx: make it work on the latest macOS release
-  hw/vmapple: aes: convert MAX_LEN to a #define
-  Revert "hw/arm: Do not build VMapple machine by default"
-  vmapple: add gicv2m
-  vmapple, gicv2m: add macOS compat quirk
-  hw/vmapple: virtio-blk: allow FileVault off
-
- configs/devices/aarch64-softmmu/default.mak |   1 -
- hw/display/apple-gfx-mmio.m                 |  58 ++-
- hw/display/apple-gfx.h                      |  16 +
- hw/display/apple-gfx.m                      |  90 +++-
- hw/intc/arm_gicv2m.c                        |   5 +
- hw/vmapple/aes.c                            |   3 +-
- hw/vmapple/virtio-blk.c                     |  18 +
- hw/vmapple/vmapple.c                        |  25 ++
- target/arm/emulate/a64-ldst.decode          | 226 ++++++++++
- target/arm/emulate/arm_emulate.c            | 451 ++++++++++++++++++++
- target/arm/emulate/arm_emulate.h            |  30 ++
- target/arm/emulate/meson.build              |   8 +
- target/arm/hvf/hvf.c                        |  46 +-
- target/arm/meson.build                      |   1 +
- target/arm/whpx/whpx-all.c                  |  61 ++-
- 15 files changed, 1007 insertions(+), 32 deletions(-)
- create mode 100644 target/arm/emulate/a64-ldst.decode
- create mode 100644 target/arm/emulate/arm_emulate.c
- create mode 100644 target/arm/emulate/arm_emulate.h
- create mode 100644 target/arm/emulate/meson.build
-
+diff --git a/hw/vmapple/aes.c b/hw/vmapple/aes.c
+index 553e688adb..9d062d5a7f 100644
+--- a/hw/vmapple/aes.c
++++ b/hw/vmapple/aes.c
+@@ -253,7 +253,7 @@ static bool cmd_iv(AESState *s)
+ 
+ static void dump_data(const char *desc, const void *p, size_t len)
+ {
+-    static const size_t MAX_LEN = 0x1000;
++#define MAX_LEN  0x1000
+     char hex[MAX_LEN * 2 + 1] = "";
+ 
+     if (len > MAX_LEN) {
+@@ -262,6 +262,7 @@ static void dump_data(const char *desc, const void *p, size_t len)
+ 
+     qemu_hexdump_to_buffer(hex, sizeof(hex), p, len);
+     trace_aes_dump_data(desc, hex);
++#undef MAX_LEN
+ }
+ 
+ static bool cmd_data(AESState *s)
 -- 
 2.54.0 (Apple Git-157)
 

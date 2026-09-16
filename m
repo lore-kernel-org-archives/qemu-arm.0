@@ -4,161 +4,99 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AAB4DC982C1
-	for <qemu-arm@archiver.kernel.org>; Wed, 16 Sep 2026 16:50:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 69AFBC982C9
+	for <qemu-arm@archiver.kernel.org>; Wed, 16 Sep 2026 16:51:42 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1x6sqB-00083G-Bp; Wed, 16 Sep 2026 12:50:35 -0400
+	id 1x6sr7-00009P-EY; Wed, 16 Sep 2026 12:51:33 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <pierrick.bouvier@oss.qualcomm.com>)
- id 1x6sq9-00081I-OW
- for qemu-arm@nongnu.org; Wed, 16 Sep 2026 12:50:33 -0400
-Received: from mx0b-0031df01.pphosted.com ([205.220.180.131])
+ (Exim 4.90_1) (envelope-from <sebott@redhat.com>) id 1x6sr3-0008WM-Tf
+ for qemu-arm@nongnu.org; Wed, 16 Sep 2026 12:51:30 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <pierrick.bouvier@oss.qualcomm.com>)
- id 1x6sq7-0001UT-L5
- for qemu-arm@nongnu.org; Wed, 16 Sep 2026 12:50:33 -0400
-Received: from pps.filterd (m0279870.ppops.net [127.0.0.1])
- by mx0a-0031df01.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id
- 68GFeEnb3365367
- for <qemu-arm@nongnu.org>; Wed, 16 Sep 2026 16:50:30 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qualcomm.com; h=
- cc:content-transfer-encoding:content-type:date:from:in-reply-to
- :message-id:mime-version:references:subject:to; s=qcppdkim1; bh=
- /wJW7Lu2In1QCLq6HZ7y/m5iNKUD6ioqcnGTSR5EqIA=; b=kgr3JZigDyZGf8jk
- Ody7g7EKQbOjW+lKn8EGG0DqQ2peMIak0EQ5u1qoH9WxY8cvtgeuJYTVGsvxvSzs
- H1khNMRMerI9VWeVWXD6zOowXqjHHdPFgTrhk0MaBC9lGBI5Sfrpkt5FJ7Rr4NgE
- eaND1Btt6lIuoyQrDsTNGMhJ8IsMgbgI5gw7Z+2OIlMFpYQs4xyNnm8CToh2K5cE
- TYf8icnM/DoCNOWKswC5T7dpJrG0DEwVhln/8bxbDOABp8RDfCllvKD+6KOxkLBs
- eUXptZ3HCqblqX7cjk1AifWaRvPAF+VErDsjbcjg2I/swTTiF2ubwa0qwy1CLyPo
- RovY0w==
-Received: from mail-pj1-f72.google.com (mail-pj1-f72.google.com
- [209.85.216.72])
- by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 4gqjckujav-1
- (version=TLSv1.3 cipher=TLS_AES_128_GCM_SHA256 bits=128 verify=NOT)
- for <qemu-arm@nongnu.org>; Wed, 16 Sep 2026 16:50:30 +0000 (GMT)
-Received: by mail-pj1-f72.google.com with SMTP id
- 98e67ed59e1d1-39aee9b4cf2so10495247a91.0
- for <qemu-arm@nongnu.org>; Wed, 16 Sep 2026 09:50:30 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=oss.qualcomm.com; s=google; t=1789577429; x=1790182229; darn=nongnu.org;
- h=content-transfer-encoding:content-type:in-reply-to:content-language
- :from:references:cc:to:subject:user-agent:mime-version:date
- :message-id:from:to:cc:subject:date:message-id:reply-to:content-type;
- bh=/wJW7Lu2In1QCLq6HZ7y/m5iNKUD6ioqcnGTSR5EqIA=;
- b=Dtk3ZK5Rkx6UEEWZQ0w8CcnSv8xP6LGAMXw5XEOFt88E32FkqUwZWyasOlEL2MZfh0
- NlLfr9caQZso2+nxHbBi7KyDstDKRaSY/6QZkOgDciuls4sx2D0rS1MiQjEzHaYWMBx4
- OvF8AnjVvJ5Gl378uGDDeGmHZb2x7+6LOOZKKPeQcgpnIyCcvtWLShjMZhX6SHjboKO+
- kJSZSxhmcKh+25WijKCPHxvMPoiM7vVsXMp6AciNsloxrfXrqjzuibXx2Fr56PmxuRRK
- 1o2a7mQ2RRrM29YT9GF4rAreyWUscAjAPxQ0d4km9UiVJGtPIcWfL5PDreglpyJrDRir
- QL0w==
+ (Exim 4.90_1) (envelope-from <sebott@redhat.com>) id 1x6sr1-0001cd-MK
+ for qemu-arm@nongnu.org; Wed, 16 Sep 2026 12:51:29 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1789577486;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding;
+ bh=AvkBO86Vxep0LTBS33hl/KqDyXBtcNpZip+c0HPjzUg=;
+ b=iAR9x19t2Avlq24a5HAvnSsNwtaSheMsSLq5GmOR8CM7lgn3FkcFWAUTj4uaEm80Hcjc4k
+ KNVgPHwJn4G1+kvoQrnX7k4fIfXNhsHZmTmGfHfWFhK7/JWHvzRrmm0OFyk1DvhjIznq4C
+ p38m1WQrFURGI7qYNyDPETkoozmcj9Q=
+Received: from mail-wr1-f70.google.com (mail-wr1-f70.google.com
+ [209.85.221.70]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-659-ub1FyRkcOuKB2h9_zyVvkw-1; Wed, 16 Sep 2026 12:51:24 -0400
+X-MC-Unique: ub1FyRkcOuKB2h9_zyVvkw-1
+X-Mimecast-MFC-AGG-ID: ub1FyRkcOuKB2h9_zyVvkw_1789577484
+Received: by mail-wr1-f70.google.com with SMTP id
+ ffacd0b85a97d-4843e59c32dso3969062f8f.3
+ for <qemu-arm@nongnu.org>; Wed, 16 Sep 2026 09:51:24 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20260707; t=1789577429; x=1790182229;
- h=content-transfer-encoding:content-type:in-reply-to:content-language
- :from:references:cc:to:subject:user-agent:mime-version:date
- :message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+ d=1e100.net; s=20260707; t=1789577483; x=1790182283;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
  :message-id:reply-to:content-type;
- bh=/wJW7Lu2In1QCLq6HZ7y/m5iNKUD6ioqcnGTSR5EqIA=;
- b=EyBY93wu56INmQ5J+R7a10kBiY72eDffQ9OA6krnMDelqrvZGIrKjK4+dCm1MlykYy
- dlIKpn52MTQj3y0g383TSO7/9gqo9HP8vKKm9SeAy/4qb6VIDL8n2dD30Hy8IOrjqFkB
- hDEZZPBLmFRGEnEVl5fQ4JErek7ErywiaOFtXeZUcjy8VNZfjSU3w6Wo2uUB1rhKAqzW
- qM/RJwbyBnKmrz1W9UyE/SffjU84/k1rvDXx8KI//6/IKiSsRaE6pX6gjOwk7lk1NFdX
- fxcUw0gS8i716aHUB9iIZMd8W5s4qdDrWu3rwbYPXhJ4cCvEr6nLqYZIJWj3zFdTvff4
- frxg==
-X-Forwarded-Encrypted: i=1;
- AKwUvBwn9QU1nhP18o23DoTHbQsKzz+Muy6VUdnqhJIj9eyxXEgHMijBh90wAKe4dzYNzK7x2bYNeENFPQ==@nongnu.org
-X-Gm-Message-State: AFuF++mimKyRp3AAokjVaHS2tsieU7QnLRsDQcE8p61Sj9vbHun+HDIc
- AoRimmgE6SCI7jPm83QRU1iqxOdPxtkclfOfsM6bEY/tzE6+n0nBjsTNzYWLBWDK/h3tcyM5dJO
- wbR76tXkC7U3beCMwXOPF5/brUK0aqthZy7qQn5Ws4tEyIpDBwOl1v6o=
-X-Gm-Gg: AYBFou1aZz8Dcu5dwJx8YBWWJ3DxyOPElGHU9ex5NkKELsIA4njaCyd0GTPydfwsOwQ
- Ar/wprYnYl45Uq/u20iQ3H45scUJCPbtJR6zRVDFdGwjsu+w/6L/petCokYDDLhGJiMtHwtuKeI
- BK+qhzdIghcPTGT3I3cuNleHuNp6bSR+DX4JYrNfmKxyX3EiJTc07WLVPd0o755JRidaU3PhJUa
- r1H/iPXAs3pDUJa51mFL7Zjo41/e66r/VbAGao4wofB4pX4+2/uljOlRNbWMymaRhZmZ5FvF8LN
- gdCAHXsjJ3BLF7nPcvmEQ8ObGSl4vTntTuYo6ZtzVt31M2/HeELCkamGgGfToDgrjklycrPqTC7
- VmtlC5BpnKR/LMJ/SN5NS0C+SXhfXJMXFWCb4Z7VTvkPu133EFZ8ptaR+nGOKoE4RPXNR
-X-Received: by 2002:a17:90b:1b08:b0:39d:ee20:1e3b with SMTP id
- 98e67ed59e1d1-39e1e4cf1cbmr7401008a91.23.1789577429220; 
- Wed, 16 Sep 2026 09:50:29 -0700 (PDT)
-X-Received: by 2002:a17:90b:1b08:b0:39d:ee20:1e3b with SMTP id
- 98e67ed59e1d1-39e1e4cf1cbmr7400917a91.23.1789577428700; 
- Wed, 16 Sep 2026 09:50:28 -0700 (PDT)
-Received: from [192.168.1.199] (216-71-219-44.dyn.novuscom.net.
- [216.71.219.44]) by smtp.gmail.com with ESMTPSA id
- 5a478bee46e88-33bf5b030aesm8922499eec.26.2026.09.16.09.50.25
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 16 Sep 2026 09:50:26 -0700 (PDT)
-Message-ID: <53d81a0e-f0d4-419c-b9ce-8832bfefe0a1@oss.qualcomm.com>
-Date: Wed, 16 Sep 2026 09:50:24 -0700
+ bh=AvkBO86Vxep0LTBS33hl/KqDyXBtcNpZip+c0HPjzUg=;
+ b=aax3vLhHwLO4DcPQIhgdTiZXzfQvF5KEPSi2XkrWQ7xkLWxmYS7M3IORQDyoC0i4ad
+ Fan/8lODSW+JClEiVNFfQk2BQ3k+3qWEp2twnauYfTkPs8Bw4DWgL6DX6Dc1lhVYaDbV
+ PS8uQ40JRrdaowJJ/ukprvXSWXqBy+IM5AIHzTyJSRHtaFvqYJ0RykLSkuksPw9dvSIE
+ YG3f3496/35nsautJNeRqCIcGdfoavdV75C3rMFBn7v8BUmsTiOktnTs43+gobwdHPk6
+ EE3vwOi2mAJimKxvnXxgPbk1jW3oKjq2hRpIcai0z5CmxjoDgFAQczmv6q8VY7lQ9Hpn
+ ZLaw==
+X-Gm-Message-State: AFuF++lEFbI8NKAE12B0IHVhvRp6NSujW4DYbOp/gZeFXvA93WVwTTZP
+ Ibo6Tf0PIy+KPf25T+PjWDzTKe082BdHxWk2zNUdzmrch98+bBHGcTwSWq3H3vRtr8GDxFUZLIj
+ E16+4bOPUl5tMc5Z81Ul1w4W3rVhIOBd1arF7hb4sscyldPTsk+opXg==
+X-Gm-Gg: AYBFou1tei1Zmc4CxCNJa7q6APCG///wMp4AvtZdtZwQZuR/ezW/iSqHKpcdwHcBuuz
+ 76QEXhzo8hz8Y8bniKj7tWBSTjBQtlMKRiUcFbKM4Bja4TrAUMB4iYSlsiRyGQ9hhwqT4hKABo9
+ J12/l2SaA733S0/qcGzng+bVDKG/Mvw9txSTfMEvDIwmFkZ42nWu7QIwKi9Ir6WLFo+O87rVBYI
+ Sl+bUAubYjBOEJCe8L2EvnYKGAW4teNXv0CX+X3S1qHZ7bgMH1FjTh8GB8ATRHSPlh6lwZqLgLr
+ JKolOX56R5IAPBC/Gqys36fM0mXz/7x17q23E8Ud7TaFYwdAybn7zbvjBg74IDSgJoGvCsGHYwE
+ 4ehjm9jEzEcJD92XLn4RTF585Sga1L7Ci1+euONhqNakB6/9H3Xo6D4Eu1ucb1mn2MQ==
+X-Received: by 2002:a05:6000:29ce:b0:487:10a9:57cb with SMTP id
+ ffacd0b85a97d-48710a95810mr2180261f8f.49.1789577483716; 
+ Wed, 16 Sep 2026 09:51:23 -0700 (PDT)
+X-Received: by 2002:a05:6000:29ce:b0:487:10a9:57cb with SMTP id
+ ffacd0b85a97d-48710a95810mr2180246f8f.49.1789577483377; 
+ Wed, 16 Sep 2026 09:51:23 -0700 (PDT)
+Received: from rh.redhat.corp
+ (p200300f6af00a400b6f52cb1a2e89932.dip0.t-ipconnect.de.
+ [2003:f6:af00:a400:b6f5:2cb1:a2e8:9932])
+ by smtp.gmail.com with ESMTPSA id
+ ffacd0b85a97d-4870bf33e01sm9655089f8f.23.2026.09.16.09.51.22
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Wed, 16 Sep 2026 09:51:23 -0700 (PDT)
+From: Sebastian Ott <sebott@redhat.com>
+To: Peter Maydell <peter.maydell@linaro.org>, Eric Auger <eauger@redhat.com>,
+ Jonathan Cameron <jonathan.cameron@huawei.com>,
+ Alireza Sanaee <alireza.sanaee@huawei.com>,
+ Richard Henderson <richard.henderson@linaro.org>,
+ Cornelia Huck <cohuck@redhat.com>, khushit.shah@nutanix.com
+Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org,
+ Sebastian Ott <sebott@redhat.com>
+Subject: [PATCH v6 0/3] arm: demuxed ID registers (CCSIDR_EL1)
+Date: Wed, 16 Sep 2026 18:51:14 +0200
+Message-ID: <20260916165117.39764-1-sebott@redhat.com>
+X-Mailer: git-send-email 2.55.0
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v4 05/19] configure: re-purpose the tcg test compiler
- configs for vdso building
-To: =?UTF-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>,
- qemu-devel@nongnu.org
-Cc: Ilya Leoshkevich <iii@linux.ibm.com>, qemu-arm@nongnu.org,
- Cornelia Huck <cohuck@redhat.com>,
- Peter Maydell <peter.maydell@linaro.org>,
- =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@mailo.com>,
- John Snow <jsnow@redhat.com>, David Hildenbrand <david@kernel.org>,
- Thomas Huth <th.huth+qemu@posteo.eu>,
- Paolo Bonzini <pbonzini@redhat.com>, Cleber Rosa <crosa@redhat.com>,
- Warner Losh <imp@bsdimp.com>, Song Gao <gaosong@loongson.cn>,
- Kyle Evans <kevans@freebsd.org>, Eric Farman <farman@linux.ibm.com>,
- Brad Smith <brad@comstyle.com>, Fabiano Rosas <farosas@suse.de>,
- Helge Deller <deller@gmx.de>, Laurent Vivier <laurent@vivier.eu>,
- =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>,
- Jiaxun Yang <jiaxun.yang@flygoat.com>, qemu-s390x@nongnu.org,
- Matthew Rosato <mjrosato@linux.ibm.com>,
- Brian Cain <brian.cain@oss.qualcomm.com>,
- =?UTF-8?Q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>,
- Richard Henderson <richard.henderson@linaro.org>
-References: <20260916153013.2134555-1-alex.bennee@linaro.org>
- <20260916153013.2134555-6-alex.bennee@linaro.org>
-From: Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>
-Content-Language: en-US
-In-Reply-To: <20260916153013.2134555-6-alex.bennee@linaro.org>
-Content-Type: text/plain; charset=UTF-8
+X-Mimecast-Spam-Score: 0
+X-Mimecast-MFC-PROC-ID: dM50QQAbWIFCx9gGSoX-5MqWVvDBivfV7PZDrIr3J2g_1789577484
+X-Mimecast-Originator: redhat.com
 Content-Transfer-Encoding: 8bit
-X-Proofpoint-Spam-Info: AW1haW4tMjYwOTE2MDIzMCBTYWx0ZWRfXys0hwXiNzHyO
- 1DEJazE1b9FohSgotftgLl+KxgJJqg1RwLx19P9ka0pzRTVcOir2nBGkWcqpXisuhD1Is1MM06D
- bCauXyOAmdHoghokPINmfOmUDvSHUnk=
-X-Authority-Analysis: v=2.4 cv=PsIG/AM3 c=1 sm=1 tr=0 ts=6aaac8d6 cx=c_pps
- a=RP+M6JBNLl+fLTcSJhASfg==:117 a=iLqgmErQAxjCjdq5jj1Aqg==:17
- a=IkcTkHD0fZMA:10 a=VdqzKS8jKosA:10 a=s4-Qcg_JpJYA:10
- a=VkNPw1HP01LnGYTKEx00:22 a=u7WPNUs3qKkmUXheDGA7:22 a=gowsoOTTUOVcmtlkKump:22
- a=KKAkSRfTAAAA:8 a=EUspDBNiAAAA:8 a=0Dqc5Zc_Qx-x__DvnkYA:9 a=3ZKOabzyN94A:10
- a=QEXdDO2ut3YA:10 a=iS9zxrgQBfv6-_F4QbHw:22 a=cvBusfyB2V15izCimMoJ:22
-X-Proofpoint-ORIG-GUID: lJHOiBMGQDQZdy9n8EWeFMufn3zBaFsN
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwOTE2MDIzMCBTYWx0ZWRfX4U+Uq5mEilx8
- wfF3WKaEIQX6+qPSFNxZc2XihcJiXcGjKuV+v0E5WfmnJcaXCFatKI0wnhwZBzT/s+nQ9gFNKi9
- ZIMtRPHuWrJ0Or9pZ5eWIznUvn7Zv4pRH9YyiT6tpOCmpeuNhT1Mu78NGOnnYXG2GqP9G+2hsgo
- HcxGIgcOFm/KlgusRS4xNnyQ8vWoWL5HGEDloeW5yy58GneMnFXN4QIgK3oLnkaU51Q1XYGIvIu
- jrbUKynSfxTneGFSb8UEupdGmMMpStEjKKOfFOrYdpqhGB37+tb1yzaJO+ZF7qvI8fM+xdIcn67
- dhO+NTU2IF3C5MH/AdcPSSt/XtMu8n97VyIC3efw8HMNY1gCNYfkAKatmPn2w9kMbndhFG1PvdQ
- fzMgF/Pu/vBXzuchJTYRBCg58O2NZjs8KC2GvNS+mRR/LMY9xBDAgPWKcDx1yZAgK2kWjw0gXis
- 0g3ldnfFwnLM7FABriw==
-X-Proofpoint-GUID: lJHOiBMGQDQZdy9n8EWeFMufn3zBaFsN
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.293,Aquarius:18.0.1176,Hydra:6.1.134,FMLib:17.12.100.49
- definitions=2026-09-16_03,2026-09-16_02,2025-10-01_01
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
- impostorscore=0 lowpriorityscore=0 adultscore=0 priorityscore=1501
- phishscore=0 spamscore=0 clxscore=1015 suspectscore=0 bulkscore=0
- malwarescore=0 classifier=typeunknown authscore=0 authtc= authcc=
- route=outbound adjust=0 reason=mlx scancount=1 engine=8.22.0-2609040000
- definitions=main-2609160230
-Received-SPF: pass client-ip=205.220.180.131;
- envelope-from=pierrick.bouvier@oss.qualcomm.com;
- helo=mx0b-0031df01.pphosted.com
-X-Spam_score_int: -27
-X-Spam_score: -2.8
+content-type: text/plain; charset="US-ASCII"; x-default=true
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=sebott@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=0.001, SPF_HELO_PASS=-0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -174,31 +112,50 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On 9/16/2026 8:29 AM, Alex Bennée wrote:
-> All the tcg tests are in meson now so there is no reason to put the
-> config-target.mak files in those directories. We also don't need the
-> GDB feature tests or to emit prerequsistes.
-> 
-> The vdso re-build blob does use the compiler definitions though so
-> we can emit the details for that and tweak the vdso makefiles to point
-> at the right place. Note some of the vdso makefiles build both 32 and
-> 64 bit versions from the same compiler.
-> 
-> Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
-> ---
->  configure                            | 69 +++++++++++-----------------
->  linux-user/aarch64/Makefile.vdso     |  2 +-
->  linux-user/arm/Makefile.vdso         |  2 +-
->  linux-user/hppa/Makefile.vdso        |  2 +-
->  linux-user/i386/Makefile.vdso        |  2 +-
->  linux-user/loongarch64/Makefile.vdso |  2 +-
->  linux-user/ppc/Makefile.vdso         |  2 +-
->  linux-user/riscv/Makefile.vdso       |  2 +-
->  linux-user/s390x/Makefile.vdso       |  2 +-
->  linux-user/sh4/Makefile.vdso         |  2 +-
->  linux-user/x86_64/Makefile.vdso      |  2 +-
->  11 files changed, 36 insertions(+), 53 deletions(-)
-> 
+To support efforts to generalize handling of writable System ID Registers
+[1] this series addresses the demuxed registers that are kept outside of
+ARMISARegisters namely CSSELR_EL1.
 
-Reviewed-by: Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>
+CSSELR_EL1 is moved within ARMISARegisters and accessors to retrieve
+and set the demuxed values are provided. Initial values are gathered via
+the usual KVM_GET_ONE_REG ioctl.
+
+V5 of this series was posted here:
+https://lore.kernel.org/qemu-devel/20260909144151.26803-1-sebott@redhat.com/
+
+[1] https://lore.kernel.org/qemu-arm/20260616132625.1732031-1-eric.auger@redhat.com/
+
+Changes V5->V6:
+* incorporated suggestions from Peter
+
+Changes V4->V5:
+* changed diffstat format
+* changed cover letter
+
+Changes V3->V4:
+* added R-B from Eric
+* incorporated suggestions from Eric
+
+
+Cornelia Huck (3):
+  arm: handle demuxed ID registers
+  arm: handle CCSIDR_EL1 as a demuxed register
+  arm/kvm: get demuxed ID registers from kvm
+
+ target/arm/cpu-sysregs.h     |  9 +++++
+ target/arm/cpu.h             | 28 +++++++++++----
+ target/arm/cpu-sysregs.h.inc |  1 +
+ hw/arm/virt.c                | 19 ++++------
+ hw/intc/armv7m_nvic.c        |  2 +-
+ target/arm/cpu-max.c         |  6 ++--
+ target/arm/cpu64.c           | 14 ++++++--
+ target/arm/helper.c          |  2 +-
+ target/arm/kvm.c             | 42 ++++++++++++++++++++++
+ target/arm/tcg/cpu32.c       | 26 +++++++-------
+ target/arm/tcg/cpu64.c       | 68 ++++++++++++++++++------------------
+ 11 files changed, 144 insertions(+), 73 deletions(-)
+
+-- 
+2.55.0
+
 

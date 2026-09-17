@@ -4,72 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7B26CC88E72
-	for <qemu-arm@archiver.kernel.org>; Thu, 17 Sep 2026 16:58:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 200B5C982D2
+	for <qemu-arm@archiver.kernel.org>; Thu, 17 Sep 2026 16:58:52 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1x7FQF-0008Q6-Jn; Thu, 17 Sep 2026 12:57:19 -0400
+	id 1x7FPa-0007mh-W5; Thu, 17 Sep 2026 12:56:40 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1x7FPP-0007jW-Ry
- for qemu-arm@nongnu.org; Thu, 17 Sep 2026 12:56:29 -0400
-Received: from mail-wm2-x10.google.com ([2a00:1450:4864:31::10])
+ id 1x7FP8-0007df-9f
+ for qemu-arm@nongnu.org; Thu, 17 Sep 2026 12:56:13 -0400
+Received: from mail-wr2-x1d.google.com ([2a00:1450:4864:30::1d])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1x7FPN-0000pW-Vx
- for qemu-arm@nongnu.org; Thu, 17 Sep 2026 12:56:27 -0400
-Received: by mail-wm2-x10.google.com with SMTP id
- 5b1f17b1804b1-49d097b4939so6065335e9.0
- for <qemu-arm@nongnu.org>; Thu, 17 Sep 2026 09:56:25 -0700 (PDT)
+ id 1x7FP5-0000YY-4l
+ for qemu-arm@nongnu.org; Thu, 17 Sep 2026 12:56:10 -0400
+Received: by mail-wr2-x1d.google.com with SMTP id
+ ffacd0b85a97d-484366874b0so682360f8f.2
+ for <qemu-arm@nongnu.org>; Thu, 17 Sep 2026 09:56:06 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1789664184; x=1790268984; darn=nongnu.org;
+ d=linaro.org; s=google; t=1789664165; x=1790268965; darn=nongnu.org;
  h=content-transfer-encoding:content-type:mime-version:references
  :in-reply-to:message-id:date:subject:cc:to:from:from:to:cc:subject
  :date:message-id:reply-to:content-type;
- bh=KnL6IKhM3dX41QqD22hf7RzeQ5QC61WVqJNh+BsXAJU=;
- b=zp5P1AfWH44Iy6wm9js6reEaV7xNv6pYV6mgtGOdI0uoRWXpJPEZEAIwAqRYhU8+Ga
- Bnkzi50EzYQ/0aNjBHa0FixgRBJ3sK/rH4NxUjtKJNUz/pkbZBj+MAJ+L8frrzxty6tq
- gfv6jgkF3azVivk6DOB+i2FuX1YhFRHzxBJ4hJRGqqcSbiuFh6R5bYJE5nAlKkhLAxCn
- bshB8octaEAl4pjZ9p9yUOzDRXM3l7+PabJpCGh5O7MKEuxQuqTB5zqJuxIR5HAP1geX
- AnEgta1LUm4vCiWFm/tS3LmH2gLIA+Ml851vfgodI850DCIjX6CkxSO2qLrABnKsj+5e
- xvQg==
+ bh=eHvSqsvgio2+lbBR4DA89ZipFbEWKlpqKzWmCMVhMKg=;
+ b=URWp3z3SRje/p7DwzmnI0/Avuiog991rj+VMngIf1BDE/efkp7Nxesz8Osekrpcmw3
+ 2KnVgoQ1EewU1cGt7IBO77O6FZ9FghhgL+7Pb03mKPtaFBX4qi7e716iqyU+P8D9PrkH
+ nAwY1xLs8PjMj2W72hvzHHy9ROtL9H+bnUA47G0rM2FiP5fPbGGp2nlREPxCbO+1L21Q
+ PuxQq+oNxe/bl/gGF18KPQkkvOXvQOn3S8PiGUk5e5o6upeXZWOL1GaM4/0UKodi0nKX
+ ztyijweQJ+G0oxusEei4AyWy1ZPWy+H/dh0IxEqVD2HjJgf5JQ+OjiSFXNdTMLQQxXKP
+ OxNA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20260707; t=1789664184; x=1790268984;
+ d=1e100.net; s=20260707; t=1789664165; x=1790268965;
  h=content-transfer-encoding:content-type:mime-version:references
  :in-reply-to:message-id:date:subject:cc:to:from:x-gm-gg
  :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
  :content-type;
- bh=KnL6IKhM3dX41QqD22hf7RzeQ5QC61WVqJNh+BsXAJU=;
- b=lWg1jMh8IxQS07v9ueyDuOTSHKeo8yllAmdxrCdXJ4DKAsdnRVdaDPaRrBOuIhPjww
- 598WHVev54q9rT5DAUxjTZCFpqXFjfsCgpnXsFjlaQL44EHSNmOKJdgrKE9PUNA0Frip
- OZNdFJZmF6UvCW78F5iQsDxYaL9c3ZeNL3a5/gl2hQHezQJm6EE/NNF+uFwD66+LScHJ
- BURrGV4ysdgwd1i+YPLkC36uSNl6ZfOpmhzBKqtWWS04ufzUAnsMPrvDdva4HLv3D9EP
- Dl4119Ryi3GIuELDUKl8Lt95SYFT+5+cCiiOPh7KWpHhZ1qW0NJZGD09sHU1IOK+h1+L
- B4cg==
+ bh=eHvSqsvgio2+lbBR4DA89ZipFbEWKlpqKzWmCMVhMKg=;
+ b=jNY/R8QpFOcvEGtmX9yrS5OEXGE2bYhP3WwvshwivtrqqC5dgmUGxo3qvONmMCXTDZ
+ D9m1O4ak3qVirDUSmJLFgFftoqq9srPjL6HS68OzQ6FQYPpVd2CvER4oN4lyVkNxS+jT
+ 7fKkT04fgLJxZBdVPFaT9unkoXWS1UW8kJ4+dE8TvsRLoOP8ShbDltEGDgCp7QQVFhjS
+ 0dodvisr1T1HNAMOrJxxXuK8JY+Ebqf2s8N9xsoR5VtLXSFc5qSSXgvnNdNpqN3x0vdt
+ Rlm9t7J61HPDAO4Ez+F5ntBmMo1RsdX/2rZ1pi1jXLbpkH93cSGWxO3XKFmgfyx9yyJd
+ DMww==
 X-Forwarded-Encrypted: i=1;
- AKwUvBz6DCbV0EknHzRQTtxufQqbNpE8kb0KAoa/WS77WpFUsnkLO4Bqq5v4xzaIM8Bn9xi6ise9EcAkLQ==@nongnu.org
-X-Gm-Message-State: AFuF++mK8TFKxaFzxafVNyEvQ65q1mt+NO0P2samJ0rPXgJ6ODt0eT1l
- WWtTliQsS+gpzjbXAvFE8zb7WwtjSqpSekBywCIImu5myiyxZ+VoF/8MZdjBLZVayhE=
-X-Gm-Gg: AYBFou34nwIBG7hG0SgqSGi7yEdJ4GQLavr/tNuSJfnpdxOvFX3xK/1uG0A3rwj09zd
- hZqTOCh8IUNYno8HtiXy1tJdKrvZ0M3RIr0cnkTKLRHr9Yaa6GUhhWXvNk6on9/m7876wtKZxZ2
- 3WPK7MPHrZpMmbNlVqhjBO6tHNWhJODBIRyz5qJmO/d6pT6/uaB1+L4kC+W3ZEZHUalVMuIMl9+
- /jHHh++KrHC/Qr1MujE9om35rYIliPhpBg6Hqp0ySgZebo2ejp701o7wlgAd8x2u/U6Hcdr1+VO
- +GJJTwaf4j/HiMNeqO2DmBN/f37SHrLpaJy1QT1Tq7CvyH7SxnaDWLnxHWqko0Hl917nyeUHQ29
- cz9xZByuEKCOU02YyQmgymeZ7fpRkERyL/aougqu5U0bY4rzmBporSeDcratACIYg2vTSI0Q8lD
- UOfbdCm3J52FKpw/a1ZAUiizF7MvWAUMfebS4jXL30Y83MQCurSS8LeXw5RTiSmtlOnbSAz9EIe
- izafr6+ow==
-X-Received: by 2002:a05:600c:83c9:b0:49e:7caa:e7b2 with SMTP id
- 5b1f17b1804b1-49eb733800amr77113715e9.29.1789664184110; 
- Thu, 17 Sep 2026 09:56:24 -0700 (PDT)
+ AKwUvBxyCcQQXj+i0rf4VE8jqQp1EfvHkWHe8mH/R43IlnGrBkxgWpziOWRuJYySb0rmTTIegbKec3xXdQ==@nongnu.org
+X-Gm-Message-State: AFuF++mUV3l606uq08SOIdzXw53vxQQ4XbLn0J988eybJP2wnyoe6eOv
+ jITBYLsHRFfXIZNBxrGMQ3i7IsRsEADncgPJxqjUFEQOFeLVH9f1FoccHnsAlYzwL2o=
+X-Gm-Gg: AYBFou3xDibc/leVjeSjOkX2f3BMGHUU2nU+8b37/3u3Nej1qiU5NePN0yQ4tBwx/eR
+ sq7kaVWem28zlZRnJB+9UtzJJnFZ3CD5Hc3XPZDHWnCsGo8XzoxItqcC24VRnAOmMkNCKcnzTlT
+ eeUAmnxzltSSwc2/xuMD8sxJ/g2p7jxQ57HO53btwpmfYsoMVXf+QjNgMkw3IVitSsz7TP1uK6/
+ BRcZZqFXTM1mILIKIYq8J8D0Z1+OUyEyurmMdSA8IiGJZspvpnWs2KziNPhMDB0GWzWIsNB5xRg
+ 0WWX0dDxyQDjs8FTcdWY8Du59+ZRuKP+dACPRcg5FrPpBodYRf5QSwgi+ip963VtSfxyRgMaA6v
+ 8CclTKf9q6JyHyizmymIDbZDzxOhnqg+KvfTIDumOPrnRgGrIxRmFSWlLNZOqxGOxtqH3oN7kg+
+ oZHo9RrORlrj+dGnAesWgF00MJ7M22QlvWElWwmnNeoKMssUEo+MCBYp/WcH4WYyXW43q9pFVw
+X-Received: by 2002:a05:6000:2589:b0:487:24a:f3ba with SMTP id
+ ffacd0b85a97d-4870d072037mr19920663f8f.26.1789664165357; 
+ Thu, 17 Sep 2026 09:56:05 -0700 (PDT)
 Received: from draig.lan ([185.124.0.156]) by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-49fbd22dbf2sm82500085e9.10.2026.09.17.09.56.09
+ ffacd0b85a97d-4870bf27198sm17034163f8f.15.2026.09.17.09.56.02
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 17 Sep 2026 09:56:18 -0700 (PDT)
+ Thu, 17 Sep 2026 09:56:03 -0700 (PDT)
 Received: from draig.lan (localhost [IPv6:::1])
- by draig.lan (Postfix) with ESMTP id 7387D5FC99;
- Thu, 17 Sep 2026 17:56:03 +0100 (BST)
+ by draig.lan (Postfix) with ESMTP id 40B685F91F;
+ Thu, 17 Sep 2026 17:56:02 +0100 (BST)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: Cleber Rosa <crosa@redhat.com>, Helge Deller <deller@gmx.de>,
@@ -91,23 +90,23 @@ Cc: Cleber Rosa <crosa@redhat.com>, Helge Deller <deller@gmx.de>,
  Richard Henderson <richard.henderson@linaro.org>,
  Ilya Leoshkevich <iii@linux.ibm.com>, Laurent Vivier <laurent@vivier.eu>,
  Brad Smith <brad@comstyle.com>, Kyle Evans <kevans@freebsd.org>
-Subject: [PATCH v5 12/17] tests/docker: add specific command to parser
-Date: Thu, 17 Sep 2026 17:55:56 +0100
-Message-ID: <20260917165602.3405537-13-alex.bennee@linaro.org>
+Subject: [PATCH v5 01/17] Revert "configure: remove cross_cc and gdb detection
+ logic"
+Date: Thu, 17 Sep 2026 17:55:45 +0100
+Message-ID: <20260917165602.3405537-2-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.47.3
 In-Reply-To: <20260917165602.3405537-1-alex.bennee@linaro.org>
 References: <20260917165602.3405537-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:31::10;
- envelope-from=alex.bennee@linaro.org; helo=mail-wm2-x10.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:30::1d;
+ envelope-from=alex.bennee@linaro.org; helo=mail-wr2-x1d.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -124,63 +123,504 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-A future change will want to use additional flags which clash with
-docker/podman command lines. Currently they would get snarfed up by
-argparser. Make the pass-through commands explicit to avoid this.
+We want to restore the logic to configure as it's also used by the
+firmware builds.
+
+This reverts commit 031f935567ab8abfa4e84682ecea08915ca9656d.
 
 Tested-by: Richard Henderson <richard.henderson@linaro.org>
 Reviewed-by: Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
 ---
- scripts/coverity-scan/run-coverity-scan | 2 +-
- tests/docker/docker.py                  | 5 ++++-
- tests/tcg/meson.build                   | 2 +-
- 3 files changed, 6 insertions(+), 3 deletions(-)
+ configure | 461 ++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ 1 file changed, 461 insertions(+)
 
-diff --git a/scripts/coverity-scan/run-coverity-scan b/scripts/coverity-scan/run-coverity-scan
-index 2f9ccd5e44b..0e1361606e0 100755
---- a/scripts/coverity-scan/run-coverity-scan
-+++ b/scripts/coverity-scan/run-coverity-scan
-@@ -381,7 +381,7 @@ if [ "$DOCKER" = yes ]; then
-     # Arrange for this docker run to get access to the sources with -v.
-     # We pass through all the configuration from the outer script to the inner.
-     export COVERITY_EMAIL COVERITY_BUILD_CMD
--    tests/docker/docker.py run -it --env COVERITY_EMAIL --env COVERITY_BUILD_CMD \
-+    tests/docker/docker.py run -- -it --env COVERITY_EMAIL --env COVERITY_BUILD_CMD \
-            -v "$SECRETDIR:/work" coverity-scanner \
-            ./run-coverity-scan --version "$VERSION" \
-            --description "$DESCRIPTION" $ARGS --tokenfile /work/token \
-diff --git a/tests/docker/docker.py b/tests/docker/docker.py
-index a2e97061240..d7eb4cf6811 100755
---- a/tests/docker/docker.py
-+++ b/tests/docker/docker.py
-@@ -336,9 +336,12 @@ def args(self, parser):
-                             help="Don't remove image when command completes")
-         parser.add_argument("--run-as-current-user", action="store_true",
-                             help="Run container using the current user's uid")
-+        parser.add_argument('cmd', nargs='*',
-+                            help="""The command to run. You should precede with
-+                            -- to avoid confusion about its flags""")
+diff --git a/configure b/configure
+index aaa41fe47aa..1973f023b1e 100755
+--- a/configure
++++ b/configure
+@@ -1266,6 +1266,366 @@ EOF
+   fi
+ fi
  
-     def run(self, args, argv):
--        return Docker(args.command).run(argv, args.keep, quiet=args.quiet,
-+        return Docker(args.command).run(args.cmd, args.keep, quiet=args.quiet,
-                                         as_user=args.run_as_current_user)
++##########################################
++# functions to probe cross compilers
++
++if test "$container_command" = ""; then
++    container_command=$($python "$source_path"/tests/docker/docker.py probe)
++    test "$container_command" = "no" && container_command=""
++fi
++if test $use_containers = "yes" && test "$container_command" != ""; then
++    docker_py="$python $source_path/tests/docker/docker.py --command $container_command"
++fi
++
++# cross compilers defaults, can be overridden with --cross-cc-ARCH
++: ${cross_prefix_aarch64="aarch64-linux-gnu-"}
++: ${cross_prefix_aarch64_be="$cross_prefix_aarch64"}
++: ${cross_prefix_alpha="alpha-linux-gnu-"}
++: ${cross_prefix_arm="arm-linux-gnueabihf-"}
++: ${cross_prefix_armeb="$cross_prefix_arm"}
++: ${cross_prefix_hexagon="hexagon-unknown-linux-musl-"}
++: ${cross_prefix_loongarch64="loongarch64-unknown-linux-gnu-"}
++: ${cross_prefix_hppa="hppa-linux-gnu-"}
++: ${cross_prefix_i386="i686-linux-gnu-"}
++: ${cross_prefix_m68k="m68k-linux-gnu-"}
++: ${cross_prefix_microblaze="microblaze-linux-musl-"}
++: ${cross_prefix_mips64el="mips64el-linux-gnuabi64-"}
++: ${cross_prefix_mips64="mips64-linux-gnuabi64-"}
++: ${cross_prefix_mipsel="mipsel-linux-gnu-"}
++: ${cross_prefix_mips="mips-linux-gnu-"}
++: ${cross_prefix_ppc="powerpc-linux-gnu-"}
++: ${cross_prefix_ppc64="powerpc64-linux-gnu-"}
++: ${cross_prefix_ppc64le="$cross_prefix_ppc64"}
++: ${cross_prefix_riscv64="riscv64-linux-gnu-"}
++: ${cross_prefix_s390x="s390x-linux-gnu-"}
++: ${cross_prefix_sh4="sh4-linux-gnu-"}
++: ${cross_prefix_sparc64="sparc64-linux-gnu-"}
++: ${cross_prefix_sparc="$cross_prefix_sparc64"}
++: ${cross_prefix_tricore="tricore-"}
++: ${cross_prefix_x86_64="x86_64-linux-gnu-"}
++
++: ${cross_cc_aarch64_be="$cross_cc_aarch64"}
++: ${cross_cc_cflags_aarch64_be="-mbig-endian"}
++: ${cross_cc_armeb="$cross_cc_arm"}
++: ${cross_cc_cflags_armeb="-mbig-endian"}
++: ${cross_cc_hexagon="hexagon-unknown-linux-musl-clang"}
++: ${cross_cc_cflags_hexagon="-mv73 -O2 -static"}
++: ${cross_cc_cflags_i386="-m32"}
++: ${cross_cc_cflags_ppc="-m32 -mbig-endian"}
++: ${cross_cc_cflags_ppc64="-m64 -mbig-endian"}
++: ${cross_cc_ppc64le="$cross_cc_ppc64"}
++: ${cross_cc_cflags_ppc64le="-m64 -mlittle-endian"}
++: ${cross_cc_cflags_sparc64="-m64 -mcpu=ultrasparc"}
++: ${cross_cc_sparc="$cross_cc_sparc64"}
++: ${cross_cc_cflags_sparc="-m32 -mcpu=supersparc"}
++: ${cross_cc_cflags_x86_64="-m64 -mcx16"}
++
++compute_target_variable() {
++  eval "$2="
++  if eval test -n "\"\${cross_prefix_$1}\""; then
++    if eval has "\"\${cross_prefix_$1}\$3\""; then
++      eval "$2=\"\${cross_prefix_$1}\$3\""
++    fi
++  fi
++}
++
++have_target() {
++  for i; do
++    case " $target_list " in
++      *" $i "*) return 0;;
++      *) ;;
++    esac
++  done
++  return 1
++}
++
++# probe_target_compiler TARGET
++#
++# Look for a compiler for the given target, either native or cross.
++# Set variables target_* if a compiler is found, and container_cross_*
++# if a Docker-based cross-compiler image is known for the target.
++# Set got_cross_cc to yes/no depending on whether a non-container-based
++# compiler was found.
++#
++# If TARGET is a user-mode emulation target, also set build_static to
++# "y" if static linking is possible.
++#
++probe_target_compiler() {
++  # reset all output variables
++  got_cross_cc=no
++  container_image=
++  container_hosts=
++  container_cross_prefix=
++  container_cross_cc=
++  container_cross_ar=
++  container_cross_as=
++  container_cross_ld=
++  container_cross_nm=
++  container_cross_objcopy=
++  container_cross_ranlib=
++  container_cross_strip=
++
++  target_arch=${1%%-*}
++  case $target_arch in
++    aarch64) container_hosts="x86_64 aarch64" ;;
++    aarch64_be) container_hosts="x86_64 aarch64" ;;
++    alpha) container_hosts=x86_64 ;;
++    arm) container_hosts="x86_64 aarch64" ;;
++    hexagon) container_hosts=x86_64 ;;
++    hppa) container_hosts=x86_64 ;;
++    i386) container_hosts=x86_64 ;;
++    loongarch64) container_hosts=x86_64 ;;
++    m68k) container_hosts=x86_64 ;;
++    microblaze) container_hosts=x86_64 ;;
++    mips64el) container_hosts=x86_64 ;;
++    mips64) container_hosts=x86_64 ;;
++    mipsel) container_hosts=x86_64 ;;
++    mips) container_hosts=x86_64 ;;
++    ppc) container_hosts=x86_64 ;;
++    ppc64|ppc64le) container_hosts=x86_64 ;;
++    riscv64) container_hosts=x86_64 ;;
++    s390x) container_hosts=x86_64 ;;
++    sh4) container_hosts=x86_64 ;;
++    sparc64) container_hosts=x86_64 ;;
++    tricore) container_hosts=x86_64 ;;
++    x86_64) container_hosts="aarch64 ppc64le x86_64" ;;
++    xtensa*) container_hosts=x86_64 ;;
++  esac
++
++  for host in $container_hosts; do
++    test "$container_command" != "" || continue
++    test "$host" = "$cpu" || continue
++    case $target_arch in
++      # debian-all-test-cross architectures
++
++      aarch64_be)
++        container_image=debian-all-test-cross
++        container_cross_prefix=aarch64-linux-gnu-
++        ;;
++      alpha|hppa|m68k|mips|mipsel|riscv64|sh4|sparc64)
++        container_image=debian-all-test-cross
++        ;;
++      mips64)
++        container_image=debian-all-test-cross
++        container_cross_prefix=mips64-linux-gnuabi64-
++        ;;
++      ppc|ppc64|ppc64le)
++        container_image=debian-all-test-cross
++        container_cross_prefix=powerpc${target_arch#ppc}-linux-gnu-
++        ;;
++
++      # architectures with individual containers
++
++      aarch64)
++        # We don't have any bigendian build tools so we only use this for AArch64
++        container_image=debian-arm64-cross
++        ;;
++      arm)
++        # We don't have any bigendian build tools so we only use this for ARM
++        container_image=debian-armhf-cross
++        container_cross_prefix=arm-linux-gnueabihf-
++        ;;
++      hexagon)
++        container_cross_prefix=hexagon-unknown-linux-musl-
++        container_cross_cc=${container_cross_prefix}clang
++        ;;
++      i386)
++        container_image=debian-i686-cross
++        container_cross_prefix=i686-linux-gnu-
++        ;;
++      loongarch64)
++        container_image=debian-loongarch-cross
++        container_cross_prefix=loongarch64-unknown-linux-gnu-
++        ;;
++      microblaze)
++        container_cross_prefix=microblaze-linux-musl-
++        ;;
++      mips64el)
++        container_image=debian-all-test-cross
++        container_cross_prefix=mips64el-linux-gnuabi64-
++        ;;
++      tricore)
++        container_image=debian-tricore-cross
++        container_cross_prefix=tricore-
++        ;;
++      x86_64)
++        container_image=debian-amd64-cross
++        ;;
++      xtensa*)
++        container_image=debian-xtensa-cross
++
++        # default to the dc232b cpu
++        container_cross_prefix=/opt/2020.07/xtensa-dc232b-elf/bin/xtensa-dc232b-elf-
++        ;;
++    esac
++    # Debian and GNU architecture names usually match
++    : ${container_image:=debian-$target_arch-cross}
++    : ${container_cross_prefix:=$target_arch-linux-gnu-}
++    : ${container_cross_cc:=${container_cross_prefix}gcc}
++    : ${container_cross_ar:=${container_cross_prefix}ar}
++    : ${container_cross_as:=${container_cross_prefix}as}
++    : ${container_cross_ld:=${container_cross_prefix}ld}
++    : ${container_cross_nm:=${container_cross_prefix}nm}
++    : ${container_cross_objcopy:=${container_cross_prefix}objcopy}
++    : ${container_cross_ranlib:=${container_cross_prefix}ranlib}
++    : ${container_cross_strip:=${container_cross_prefix}strip}
++  done
++
++  try=cross
++  # For softmmu/roms also look for a bi-endian or multilib-enabled host compiler
++  if [ "${1%softmmu}" != "$1" ] || test "$target_arch" = "$cpu"; then
++      case "$target_arch:$cpu" in
++        aarch64_be:aarch64 | \
++        armeb:arm | \
++        i386:x86_64 | \
++        ppc*:ppc64 | \
++        sparc:sparc64 | \
++        "$cpu:$cpu")
++        try='native cross' ;;
++      esac
++  fi
++  eval "target_cflags=\${cross_cc_cflags_$target_arch}"
++  for thistry in $try; do
++    case $thistry in
++    native)
++      target_cc=$cc
++      target_ccas=$ccas
++      target_ar=$ar
++      target_as=$as
++      target_ld=$ld
++      target_nm=$nm
++      target_objcopy=$objcopy
++      target_ranlib=$ranlib
++      target_strip=$strip
++      ;;
++    cross)
++      target_cc=
++      if eval test -n "\"\${cross_cc_$target_arch}\""; then
++        if eval has "\"\${cross_cc_$target_arch}\""; then
++          eval "target_cc=\"\${cross_cc_$target_arch}\""
++        fi
++      else
++        compute_target_variable $target_arch target_cc gcc
++      fi
++      target_ccas=$target_cc
++      compute_target_variable $target_arch target_ar ar
++      compute_target_variable $target_arch target_as as
++      compute_target_variable $target_arch target_ld ld
++      compute_target_variable $target_arch target_nm nm
++      compute_target_variable $target_arch target_objcopy objcopy
++      compute_target_variable $target_arch target_ranlib ranlib
++      compute_target_variable $target_arch target_strip strip
++      ;;
++    esac
++
++    if test -n "$target_cc"; then
++      case $target_arch in
++        i386|x86_64)
++          if $target_cc --version | grep -qi "clang"; then
++            continue
++          fi
++          ;;
++      esac
++    elif test -n "$target_as" && test -n "$target_ld"; then
++      # Special handling for assembler only targets
++      case $target in
++        tricore-softmmu)
++          build_static=
++          got_cross_cc=yes
++          break
++          ;;
++        *)
++          continue
++          ;;
++      esac
++    else
++      continue
++    fi
++
++    write_c_skeleton
++    case $1 in
++      *-softmmu)
++        if do_compiler "$target_cc" $target_cflags -o $TMPO -c $TMPC &&
++          do_compiler "$target_cc" $target_cflags -r -nostdlib -o "${TMPDIR1}/${TMPB}2.o" "$TMPO" -lgcc; then
++          got_cross_cc=yes
++          break
++        fi
++        ;;
++      *)
++        if do_compiler "$target_cc" $target_cflags -o $TMPE $TMPC -static ; then
++          build_static=y
++          got_cross_cc=yes
++          break
++        fi
++        if do_compiler "$target_cc" $target_cflags -o $TMPE $TMPC ; then
++          build_static=
++          got_cross_cc=yes
++          break
++        fi
++        ;;
++    esac
++  done
++  if test $got_cross_cc != yes; then
++    build_static=
++    target_cc=
++    target_ccas=
++    target_ar=
++    target_as=
++    target_ld=
++    target_nm=
++    target_objcopy=
++    target_ranlib=
++    target_strip=
++  fi
++  test -n "$target_cc"
++}
++
++write_target_makefile() {
++  echo "PYTHON=$python"
++  echo "EXTRA_CFLAGS=$target_cflags"
++  if test -z "$target_cc" && test -z "$target_as"; then
++    test -z "$container_image" && error_exit "Internal error: could not find cross compiler for $1?"
++    echo "$1: docker-image-$container_image" >> Makefile.prereqs
++    if test -n "$container_cross_cc"; then
++      echo "CC=$docker_py cc --cc $container_cross_cc -i qemu/$container_image -s $source_path --"
++      echo "CCAS=$docker_py cc --cc $container_cross_cc -i qemu/$container_image -s $source_path --"
++    fi
++    echo "AR=$docker_py cc --cc $container_cross_ar -i qemu/$container_image -s $source_path --"
++    echo "AS=$docker_py cc --cc $container_cross_as -i qemu/$container_image -s $source_path --"
++    echo "LD=$docker_py cc --cc $container_cross_ld -i qemu/$container_image -s $source_path --"
++    echo "NM=$docker_py cc --cc $container_cross_nm -i qemu/$container_image -s $source_path --"
++    echo "OBJCOPY=$docker_py cc --cc $container_cross_objcopy -i qemu/$container_image -s $source_path --"
++    echo "RANLIB=$docker_py cc --cc $container_cross_ranlib -i qemu/$container_image -s $source_path --"
++    echo "STRIP=$docker_py cc --cc $container_cross_strip -i qemu/$container_image -s $source_path --"
++  else
++    if test -n "$target_cc"; then
++      echo "CC=$target_cc"
++      echo "CCAS=$target_ccas"
++    fi
++    if test -n "$target_ar"; then
++      echo "AR=$target_ar"
++    fi
++    if test -n "$target_as"; then
++      echo "AS=$target_as"
++    fi
++    if test -n "$target_ld"; then
++      echo "LD=$target_ld"
++    fi
++    if test -n "$target_nm"; then
++      echo "NM=$target_nm"
++    fi
++    if test -n "$target_objcopy"; then
++      echo "OBJCOPY=$target_objcopy"
++    fi
++    if test -n "$target_ranlib"; then
++      echo "RANLIB=$target_ranlib"
++    fi
++    if test -n "$target_strip"; then
++      echo "STRIP=$target_strip"
++    fi
++  fi
++}
++
+ #######################################
+ # cross-compiled firmware targets
  
+@@ -1299,6 +1659,48 @@ fi
  
-diff --git a/tests/tcg/meson.build b/tests/tcg/meson.build
-index 482de73ac72..053ef147df0 100644
---- a/tests/tcg/meson.build
-+++ b/tests/tcg/meson.build
-@@ -275,7 +275,7 @@ foreach target, plan: tcg_tests
-       mount = meson.project_source_root()
-       mount = mount + ':' + mount
-       here = meson.project_build_root()
--      cc = [docker_wrapper, 'run', '--run-as-current-user',
-+      cc = [docker_wrapper, 'run', '--run-as-current-user', '--',
-             '-w', here, '-v', mount,
-             'qemu/' + cc_dockerfile, plan['cc']]
-       has_cc = true
+ echo "# Automatically generated by configure - do not modify" > Makefile.prereqs
+ 
++# Mac OS X ships with a broken assembler
++if have_target i386-softmmu x86_64-softmmu && \
++        test "$host_os" != "darwin" && test "$host_os" != "sunos" && \
++        test "$host_os" != "haiku" && \
++        probe_target_compiler i386-softmmu; then
++    subdirs="$subdirs pc-bios/optionrom"
++    config_mak=pc-bios/optionrom/config.mak
++    echo "# Automatically generated by configure - do not modify" > $config_mak
++    echo "TOPSRC_DIR=$source_path" >> $config_mak
++    write_target_makefile >> $config_mak
++fi
++
++if have_target ppc-softmmu ppc64-softmmu && \
++        probe_target_compiler ppc-softmmu; then
++    subdirs="$subdirs pc-bios/vof"
++    config_mak=pc-bios/vof/config.mak
++    echo "# Automatically generated by configure - do not modify" > $config_mak
++    echo "SRC_DIR=$source_path/pc-bios/vof" >> $config_mak
++    write_target_makefile >> $config_mak
++fi
++
++# Only build s390-ccw bios if the compiler has -march=z900 or -march=z10
++# (which is the lowest architecture level that Clang supports)
++if have_target s390x-softmmu && probe_target_compiler s390x-softmmu && \
++    GIT=git "$source_path/scripts/git-submodule.sh" "$git_submodules_action" roms/SLOF >> config.log 2>&1; then
++  write_c_skeleton
++  do_compiler "$target_cc" $target_cc_cflags -march=z900 -o $TMPO -c $TMPC
++  has_z900=$?
++  if [ $has_z900 = 0 ] || do_compiler "$target_cc" $target_cc_cflags -march=z10 -msoft-float -Werror -o $TMPO -c $TMPC; then
++    if [ $has_z900 != 0 ]; then
++      echo "WARNING: Your compiler does not support the z900!"
++      echo "         The s390-ccw bios will only work with guest CPUs >= z10."
++    fi
++    subdirs="$subdirs pc-bios/s390-ccw"
++    config_mak=pc-bios/s390-ccw/config-host.mak
++    echo "# Automatically generated by configure - do not modify" > $config_mak
++    echo "SRC_PATH=$source_path/pc-bios/s390-ccw" >> $config_mak
++    echo "GIT_SUBMODULES_ACTION=$git_submodules_action" >> $config_mak
++    write_target_makefile >> $config_mak
++  fi
++fi
++
+ #######################################
+ # generate config-host.mak
+ 
+@@ -1322,6 +1724,65 @@ if test "$default_targets" = "yes"; then
+   echo "CONFIG_DEFAULT_TARGETS=y" >> $config_host_mak
+ fi
+ 
++tcg_tests_with_compilers=
++for target in $target_list; do
++  arch=${target%%-*}
++
++  case $target in
++    xtensa*-linux-user)
++      # the toolchain is not complete with headers, only build system tests
++      continue
++      ;;
++    *-softmmu)
++      test -f "$source_path/tests/tcg/$arch/Makefile.softmmu-target" || continue
++      qemu="qemu-system-$arch"
++      ;;
++    *-linux-user|*-bsd-user)
++      qemu="qemu-$arch"
++      ;;
++  esac
++
++  if probe_target_compiler $target || test -n "$container_image"; then
++      test -n "$container_image" && build_static=y
++      mkdir -p "tests/tcg/$target"
++      config_target_mak=tests/tcg/$target/config-target.mak
++      ln -sf "$source_path/tests/tcg/Makefile.target" "tests/tcg/$target/Makefile"
++      echo "# Automatically generated by configure - do not modify" > "$config_target_mak"
++      echo "TARGET_NAME=$arch" >> "$config_target_mak"
++      echo "TARGET=$target" >> "$config_target_mak"
++      write_target_makefile "build-tcg-tests-$target" >> "$config_target_mak"
++      echo "BUILD_STATIC=$build_static" >> "$config_target_mak"
++      echo "QEMU=$PWD/$qemu" >> "$config_target_mak"
++
++      # will GDB work with these binaries?
++      if test "${gdb_arches#*$arch}" != "$gdb_arches"; then
++          echo "GDB=$gdb_bin" >> $config_target_mak
++      fi
++
++      if test "${gdb_arches#*$arch}" != "$gdb_arches" && version_ge $gdb_version 14.1; then
++          echo "GDB_HAS_SME_TILES=y" >> $config_target_mak
++      else
++          echo "GDB_HAS_SME_TILES=n" >> $config_target_mak
++      fi
++
++      if test "${gdb_arches#*aarch64}" != "$gdb_arches" && version_ge $gdb_version 15.1; then
++          echo "GDB_HAS_MTE=y" >> $config_target_mak
++      fi
++
++      if test "${gdb_arches#*aarch64}" != "$gdb_arches" && version_ge $gdb_version 16.0; then
++          # GDB has to support MTE in baremetal to allow debugging MTE in QEMU system mode
++          echo "GDB_SUPPORTS_MTE_IN_BAREMETAL=y" >> $config_target_mak
++      fi
++
++      echo "run-tcg-tests-$target: $qemu\$(EXESUF)" >> Makefile.prereqs
++      tcg_tests_with_compilers="$tcg_tests_with_compilers $target"
++  fi
++done
++
++if test "$tcg" = "enabled"; then
++    echo "TCG_TESTS_WITH_COMPILERS=$tcg_tests_with_compilers" >> $config_host_mak
++fi
++
+ if test "$skip_meson" = no; then
+   cross="config-meson.cross.new"
+   meson_quote() {
 -- 
 2.47.3
 

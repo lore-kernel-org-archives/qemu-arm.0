@@ -4,71 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DE7C8C982D0
-	for <qemu-arm@archiver.kernel.org>; Thu, 17 Sep 2026 09:28:00 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4B51EC982D0
+	for <qemu-arm@archiver.kernel.org>; Thu, 17 Sep 2026 09:30:32 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1x78P3-0002mp-Mv; Thu, 17 Sep 2026 05:27:37 -0400
+	id 1x78RI-0003Kw-0r; Thu, 17 Sep 2026 05:29:56 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1x78Oy-0002kh-J8
- for qemu-arm@nongnu.org; Thu, 17 Sep 2026 05:27:32 -0400
+ id 1x78RH-0003Kg-Gd
+ for qemu-arm@nongnu.org; Thu, 17 Sep 2026 05:29:55 -0400
 Received: from mail-wm2-x11.google.com ([2a00:1450:4864:31::11])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1x78Ow-0000a1-R8
- for qemu-arm@nongnu.org; Thu, 17 Sep 2026 05:27:32 -0400
+ id 1x78RF-0000kV-38
+ for qemu-arm@nongnu.org; Thu, 17 Sep 2026 05:29:55 -0400
 Received: by mail-wm2-x11.google.com with SMTP id
- 5b1f17b1804b1-49e6c0fce17so3616745e9.1
- for <qemu-arm@nongnu.org>; Thu, 17 Sep 2026 02:27:30 -0700 (PDT)
+ 5b1f17b1804b1-49e721b5503so5697525e9.0
+ for <qemu-arm@nongnu.org>; Thu, 17 Sep 2026 02:29:52 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1789637249; x=1790242049; darn=nongnu.org;
+ d=linaro.org; s=google; t=1789637391; x=1790242191; darn=nongnu.org;
  h=content-transfer-encoding:content-type:mime-version:message-id:date
  :user-agent:references:in-reply-to:subject:cc:to:from:from:to:cc
  :subject:date:message-id:reply-to:content-type;
- bh=ROX8U4JzzzdRkmCSBVGIaoW1fUozFIaJ8HRnRqSJnA8=;
- b=B4h75R7V/Ym+m6GNotOWUDRRrDFaXEO+ufCL6d8k2Jpc+mGpKmVcOgwTH5XfEWK3CE
- 0bANGGiZlKnKMC5G8Cql5C2L7c68LmFoX/j0FlhuDuz9U/5l3wVuH/sdmH70YC29+Yfi
- hNRJ3b/+h2RKc6GqVOZeqVhABTTYioDSUjvCf2xb/jtTV9FRzzOjR/AXXNkhAPvru/64
- FysmtqpEjYfLPjHV2Oo9dyQ9H9Ic6+2tx+RedUPo5OlVOj7gEWP7WgjdZSVMTXNowy6C
- RWF2lNfq6UXSvVyWEmNwxo+fL3mTPEMInepuEly3TVKxSMl0w0JD6jh4sB3qUpnSvKn1
- OEUw==
+ bh=sEks+xmI2cYXYOrmCnHiN4R+W4iNqRXH5LMUgMCGvpY=;
+ b=skP6jQgr/jhQTyAY0EBDUwov0V8FVVFBixylQjiVAQ0mlE8gZn028TFTuvy7D8fJxs
+ 6RheBY8a600CM+vR4XJjSj3c1bT3++IrEX3dJG4oyPbuew/s7LxGrI+CaApt7Aly9Ihs
+ crb5n6QN/1NwI/WO1Pj5aVcAd75Bgu3s2NxuXZly6KnVwZ35a+ByTIwHAvhzBlJiaQpX
+ W3qlYQWiVLLpALuT+LC6u78l1Qt7AANJDvKHWrnX27zL82Z6aRfxmSmWdaWlihGkhxIh
+ qaUB/7M3RNbEY9Ee6oYON4Ie9Ofx9ZFLWWybDgCHTM/jp8yU3nXInnYF3vktsxMnK29j
+ C26Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20260707; t=1789637249; x=1790242049;
+ d=1e100.net; s=20260707; t=1789637391; x=1790242191;
  h=content-transfer-encoding:content-type:mime-version:message-id:date
  :user-agent:references:in-reply-to:subject:cc:to:from:x-gm-gg
  :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
  :content-type;
- bh=ROX8U4JzzzdRkmCSBVGIaoW1fUozFIaJ8HRnRqSJnA8=;
- b=o6OI+FsJpoTSdqPawsnLXV2K/+KHrD8IgstRYW32B4gzbcWLbDIarAqVPHm/VFzz4g
- 463CTgi8ht5T+u0f7DqcfRoER0P0tU3CeHiZqUsCSamae5UjCCpLhTmHwpqwpSK+PFLv
- L2NhGhiHDG4DwpHTSp9meX3nSDnzPcoeV2yzybdrC3hp8JUcI9ZDhSx3foLP8xC9ugs2
- +Iu4g05VnPaepmwrl4beYUgeOWacAMh4VxVT4YjBSXyby0EbOf02Qm5lNr+HcNwybw6t
- 4wpymnPqivUfUVEsN/O2L9gw9Gj0PKhtkZPtZ1GLbOmWICRbswcIrnTI4RDLbyoEMLIX
- Baqw==
+ bh=sEks+xmI2cYXYOrmCnHiN4R+W4iNqRXH5LMUgMCGvpY=;
+ b=RFfhtbcjWf0rEYfgXwG35dSoA9IkbspcdyO2VXLJu6fB/Sf3uXaYQo4aQs/kfTUUbt
+ 1M9ksoTcMADjBxCB972a3AaS2hf8Tw1G7fW/CSQW9vvBJQhEDYPYxqaSG0NvphoZW6d0
+ W5pN7CxUjYer3V38zf4MRH3fUNvI9emFgrRSRN5Z/S9sHAL4CAp4efT1jdfrhdMvJxh/
+ OIKlhx6EdI9OXnVwm7cfjV5iGc/CUdUs8kYrFOBJz4dqqk+G6+V/gE/WWBHb5cv7UJp9
+ 2erKXAiMciulcqW2ZiIpl3kl6F1M/RFk3cSgEzdBofrsk2T7D4L003wr6IUKV2485mT7
+ qbOQ==
 X-Forwarded-Encrypted: i=1;
- AKwUvBxo8vjodBM8oMN2ttSTTZvL9Iwd+TxnG6oxr+aT0A7y8x0qRuMJFL1hq4l3CMwHhDa1deDABMsRiA==@nongnu.org
-X-Gm-Message-State: AFuF++n1f6DEC4R42vjuGKtccERQjBeEzZN5/UkhGQBHqOfts6n4tPLG
- P3aAh76w4zdVz70uSULjtCdY82kilnitX1ckIwkVzloyZT5oQV6GMK7vE5LQxvEU/wc=
-X-Gm-Gg: AYBFou1NAKGbp+m8/YkOiwWqQ2VwRRm9v2PlyXzSCy96jAfZG30QWciMSiXxCPWlLWq
- D4DQjY+6U8boc1sXw5M5OPmGttoiyo0NNoYs/ON6tOLn68h028cux4JEC/IRAg+0cHY61f775M6
- e8DEca5wL/+NiDvPaj3TR+qZ1Bd20GmipAu4pG/ll+WFxdCCqQObrva80Ti+f79saxUMKkuoJYN
- +lIzD+OQ3lqJc9qvVw1NkpzziOMYI5/G/5d+GCnjyro03MQ4yddfibhowkYYmRKdOAilPSVwgJd
- fl5I/0SS0HsVprMmm+0a45ZvFl02S8j8X51fY+OZNoiSzaUlAlWVDdQlQhNY54PeR/XRsA6fLgX
- Agt0O0N/hY1lQksqUspJeZTcQb2h/FPEeYNrtMwgGSQT/qjK4I2iJa6tAHnIy5dlYvLzrRjkHkX
- ANoPE1fKPlri9KkwYuSwHSc33+5cPE2VH/fEttNus0VjViPdoiZjrSbmPgj+Jj3dbnENnfJ4s=
-X-Received: by 2002:a05:600c:4e48:b0:49c:fc6e:a3d6 with SMTP id
- 5b1f17b1804b1-49eb732d07emr77495845e9.21.1789637249217; 
- Thu, 17 Sep 2026 02:27:29 -0700 (PDT)
+ AKwUvBzc2wMYi3tigfEBhLLwA8qkuTIpGyhIk7mD/kCnHkrAMFdUy+IgPqAu5MndGtdmdyx0hTXo+Pn+Vg==@nongnu.org
+X-Gm-Message-State: AFuF++kLxiNSSR4WhCmQ5EvL6yswOV/gXUziYY4tzB2iBvoOddQuD4Ay
+ q2DK5+qqKQq864C+0okSUMNFhLVVqWJVgi2fG/oLMoslhjIGi8Va0hdN0nTxR7mQX5I=
+X-Gm-Gg: AYBFou2IwNwMW5cU5QMbY9jie01HP6ZPNrBdi5LDOKtwky2v93KVZHDsQNURz1CXQCT
+ Bn+5EdhbeAhd72NjFI6KUNNqczbwCRx4mcCRB4UEdzN/Fby0J74loOiXWEtN3VMAEUaiO/dbPcg
+ sSsjepp6BRwIVpthK8G/oYPILtmAJOLY6EAbq5RDec08VRFAuji9s1OH1OsOt7xHzze7VimcvC4
+ cjXkRN+wHEFqEPfnyWMzy1YcVERwzqibrkOlWqa1+PVDcbm8rztpEy8N9eRo2KDEnwLSl3LA6Tm
+ slKb7hi68vD/dLbTlE64orXFnY3XOLuDCQwLOBGxqrDa82AQXp+F5Tpx7todCZbtNl1HNWeXIMT
+ 5Ijsbrl2EuWk/VVfvJCuxkATBauSZ91IQgF71MhuUD7r40ajfA1J6asFVLvISsvKIDBrvpzY4JV
+ oqU9lCFWBbY/Wyxjk+PDM6idXTVCm4t8DfGulYyYi5Tylz1bDjJNLgdty3+q32fRkk+YMz/Pc=
+X-Received: by 2002:a05:600c:1f83:b0:49c:c96a:d36b with SMTP id
+ 5b1f17b1804b1-49eb7306966mr67693145e9.12.1789637391491; 
+ Thu, 17 Sep 2026 02:29:51 -0700 (PDT)
 Received: from draig.lan ([185.124.0.156]) by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-49fbd247809sm102273925e9.11.2026.09.17.02.27.28
+ 5b1f17b1804b1-49fbbd83e39sm87305895e9.4.2026.09.17.02.29.50
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 17 Sep 2026 02:27:28 -0700 (PDT)
+ Thu, 17 Sep 2026 02:29:50 -0700 (PDT)
 Received: from draig (localhost [IPv6:::1])
- by draig.lan (Postfix) with ESMTP id 669AB5F834;
- Thu, 17 Sep 2026 10:27:27 +0100 (BST)
+ by draig.lan (Postfix) with ESMTP id C48705F834;
+ Thu, 17 Sep 2026 10:29:49 +0100 (BST)
 From: =?utf-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>
 Cc: qemu-devel@nongnu.org,  Ilya Leoshkevich <iii@linux.ibm.com>,
@@ -87,17 +87,17 @@ Cc: qemu-devel@nongnu.org,  Ilya Leoshkevich <iii@linux.ibm.com>,
  qemu-s390x@nongnu.org,  Matthew Rosato <mjrosato@linux.ibm.com>,  Brian
  Cain <brian.cain@oss.qualcomm.com>,  =?utf-8?Q?Marc-Andr=C3=A9?= Lureau
  <marcandre.lureau@redhat.com>,  Richard Henderson
- <richard.henderson@linaro.org>,  Jared Rossi <jrossi@linux.ibm.com>
-Subject: Re: [PATCH v4 03/19] Revert "tests/tcg/meson.build: implement
- ./configure containers options"
-In-Reply-To: <ef0cab70-4f36-4de1-bfdb-18501d801728@oss.qualcomm.com> (Pierrick
- Bouvier's message of "Wed, 16 Sep 2026 09:33:50 -0700")
+ <richard.henderson@linaro.org>
+Subject: Re: [PATCH v4 17/19] scripts/make2mtest: add docker dependencies
+ for check-tcg-% targets
+In-Reply-To: <36cbf64f-e187-4d15-b710-7d4e6124ca07@oss.qualcomm.com> (Pierrick
+ Bouvier's message of "Wed, 16 Sep 2026 09:30:27 -0700")
 References: <20260916153013.2134555-1-alex.bennee@linaro.org>
- <20260916153013.2134555-4-alex.bennee@linaro.org>
- <ef0cab70-4f36-4de1-bfdb-18501d801728@oss.qualcomm.com>
+ <20260916153013.2134555-18-alex.bennee@linaro.org>
+ <36cbf64f-e187-4d15-b710-7d4e6124ca07@oss.qualcomm.com>
 User-Agent: mu4e 1.14.4-pre3; emacs 30.1
-Date: Thu, 17 Sep 2026 10:27:27 +0100
-Message-ID: <87eces8by8.fsf@draig.linaro.org>
+Date: Thu, 17 Sep 2026 10:29:49 +0100
+Message-ID: <878q508bua.fsf@draig.linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: quoted-printable
@@ -108,7 +108,7 @@ X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -126,117 +126,136 @@ Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
 Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com> writes:
 
-> On 9/16/2026 8:29 AM, Alex Benn=C3=A9e wrote:
->> We want to keep the container configuration inside configure for the
->> firmware builds.
+> On 9/16/2026 8:30 AM, Alex Benn=C3=A9e wrote:
+>> This should trigger the building of the docker image when the user
+>> calls "make check-tcg" or one of the arch specific targets such as
+>> "make check-tcg-m68k-linux-user".
 >>=20
->> This partially reverts commit 522b299ca4316d8cad57f9496ffcba87dcc20719
->> while keeping the plumbing to disable containers within meson.
+>> We still keep the internal meson dependency so individual tests can
+>> launched and the docker build verified.
 >>=20
->> Tested-by: Eric Farman <farman@linux.ibm.com>
->> Reviewed-by: Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>
->> Suggested-by: Paolo Bonzini <pbonzini@redhat.com>
->> [AJB: untangle changes since]
 >> Signed-off-by: Alex Benn=C3=A9e <alex.bennee@linaro.org>
->> Tested-by: Jared Rossi <jrossi@linux.ibm.com>
->>=20
 >> ---
->> v4
->>   - tweak revert to keep disable reported
->>   - update commit msg
->> ---
->>  configure             | 14 ++++++++++----
->>  meson_options.txt     |  3 +++
->>  tests/tcg/meson.build |  3 +++
->>  3 files changed, 16 insertions(+), 4 deletions(-)
+>>  scripts/mtest2make.py | 35 +++++++++++++++++++++++++++++------
+>>  1 file changed, 29 insertions(+), 6 deletions(-)
 >>=20
->> diff --git a/configure b/configure
->> index bedde58b8cf..6084a7a065e 100755
->> --- a/configure
->> +++ b/configure
->> @@ -260,7 +260,7 @@ ninja=3D""
->>  python=3D
->>  download=3D"enabled"
->>  skip_meson=3Dno
->> -use_containers=3D""
->> +use_containers=3D"yes"
->>  rust=3D"disabled"
->>  rust_target_triple=3D""
+>> diff --git a/scripts/mtest2make.py b/scripts/mtest2make.py
+>> index 383ea68b16d..ab894d90d47 100644
+>> --- a/scripts/mtest2make.py
+>> +++ b/scripts/mtest2make.py
+>> @@ -14,6 +14,7 @@ class Suite(object):
+>>      def __init__(self):
+>>          self.deps =3D set()
+>>          self.speeds =3D set()
+>> +        self.docker_deps =3D set()
 >>=20=20
->> @@ -727,11 +727,14 @@ for opt do
->>    ;;
->>    --disable-plugins) plugins=3D"no"
->>    ;;
->> -  --enable-containers) # enabled by default
->> +  --enable-containers) use_containers=3D"yes"
->> +                       meson_option_add -Dcontainers=3Dtrue
->>    ;;
->> -  --disable-containers) meson_option_add -Dcontainers=3Dfalse
->> +  --disable-containers) use_containers=3D"no"
->> +                        meson_option_add -Dcontainers=3Dfalse
->>    ;;
->> -  --container-command=3D*) meson_option_add -Dcontainer_command=3D"$opt=
-arg"
->> +  --container-command=3D*) container_command=3D"$optarg"
->> +                         meson_option_add -Dcontainer_command=3D"$optar=
-g"
->
-> Not sure if we want to keep this option (meson container_command).
-> Related if in tests/tcg/meson.build can be removed also.
-
-We want Makefile.include and meson to use the same container runtime
-surely?
-
->
->>    ;;
->>    --rust-target-triple=3D*) rust_target_triple=3D"$optarg"
->>    ;;
->> @@ -1718,6 +1721,9 @@ echo all: >> $config_host_mak
+>>      def names(self, base):
+>>          return [f'{base}-{speed}' for speed in self.speeds]
+>> @@ -40,7 +41,22 @@ def names(self, base):
 >>=20=20
->>  echo "SRC_PATH=3D$source_path" >> $config_host_mak
->>  echo "TARGET_DIRS=3D$target_list" >> $config_host_mak
->> +if test "$container_command" !=3D ""; then
->> +    echo "CONTAINER_COMMAND=3D$container_command" >> $config_host_mak
->> +fi
->>  echo "SUBDIRS=3D$subdirs" >> $config_host_mak
->>  echo "PYTHON=3D$python" >> $config_host_mak
->>  echo "MKVENV_ENSUREGROUP=3D$mkvenv ensuregroup $mkvenv_online_flag" >> =
-$config_host_mak
->> diff --git a/meson_options.txt b/meson_options.txt
->> index 66d3689d14c..daf301ed48a 100644
->> --- a/meson_options.txt
->> +++ b/meson_options.txt
->> @@ -389,6 +389,9 @@ option('rust', type: 'feature', value: 'disabled',
->>         description: 'Rust support')
->>  option('strict_rust_lints', type: 'boolean', value: false,
->>         description: 'Enable stricter set of Rust warnings')
->> +option('container_registry', type: 'string',
->> +       value: 'registry.gitlab.com/qemu-project/qemu',
->> +       description: 'container registry to cache from')
->>  option('containers', type: 'boolean', value: true,
->>         description: 'use containers to cross compile tcg tests')
->>  option('container_command', type: 'string',
->> diff --git a/tests/tcg/meson.build b/tests/tcg/meson.build
->> index ce208e686ff..890da7b81e9 100644
->> --- a/tests/tcg/meson.build
->> +++ b/tests/tcg/meson.build
->> @@ -101,6 +101,9 @@ if get_option('containers')
->>    endif
->>  endif
->>  tcg_tests_summary +=3D {'container command': container_command}
->> +if get_option('container_registry') !=3D ''
->> +  tcg_tests_summary +=3D {'container registry': get_option('container_r=
-egistry')}
->> +endif
->>=20
+>>  introspect =3D json.load(sys.stdin)
+>>=20=20
+>> -def process_tests(test, targets, suites):
+>> +targets =3D {t['id']: [os.path.relpath(f) for f in t['filename']]
+>> +           for t in introspect['targets']}
+>> +
+>> +# collect the docker images uses by the tests. This is totally a hacky
+>> +# heuristic that fishes the images out of the test custom commands by
+>> +# looking for the qemu/image pattern.
+>> +targets_docker =3D {}
+>> +for t in introspect['targets']:
+>> +    for src in t.get('target_sources', []):
+>> +        for arg in src.get('compiler', []):
+>> +            if arg.startswith('qemu/'):
+>> +                img =3D arg.split('/', 1)[1]
+>> +                targets_docker[t['id']] =3D f'docker-image-{img}'
+>> +                break
+>> +
+>> +def process_tests(test, targets, targets_docker, suites):
+>>      executable =3D test['cmd'][0]
+>>      try:
+>>          executable =3D os.path.relpath(executable)
+>> @@ -51,6 +67,8 @@ def process_tests(test, targets, suites):
+>>      deps =3D itertools.chain.from_iterable(deps)
+>>      deps =3D list(deps)
+>>=20=20
+>> +    docker_deps =3D [targets_docker[x] for x in test['depends'] if x in=
+ targets_docker]
+>> +
+>>      test_suites =3D test['suite'] or ['default']
+>>      for s in test_suites:
+>>          # The suite name in the introspection info is "PROJECT" or "PRO=
+JECT:SUITE"
+>> @@ -59,6 +77,7 @@ def process_tests(test, targets, suites):
+>>              if s =3D=3D 'slow' or s =3D=3D 'thorough':
+>>                  continue
+>>          suites[s].deps.update(deps)
+>> +        suites[s].docker_deps.update(docker_deps)
+>>          if s.endswith('-slow'):
+>>              s =3D s[:-5]
+>>              suites[s].speeds.add('slow')
+>> @@ -81,6 +100,9 @@ def emit_prolog(suites, prefix):
+>>      print(f'all-{prefix}-xml =3D {all_xml}')
+>>      print(f'.PHONY: {prefix} do-meson-{prefix} {prefix}-report.junit.xm=
+l $(all-{prefix}-targets) $(all-{prefix}-xml)')
+>>      print(f'ninja-cmd-goals +=3D $(foreach s, $(.{prefix}.mtest-suites)=
+, $(.{prefix}-$s.deps))')
+>> +    print(f'docker-cmd-goals +=3D $(foreach s, $(.{prefix}.mtest-suites=
+), $(.{prefix}-$s.docker-deps))')
+>> +    print(f'docker-cmd-goals +=3D $(foreach g, $(MAKECMDGOALS), $(.dock=
+er-goals.$g))')
+>> +    print(f'run-ninja: $(sort $(docker-cmd-goals))')
+>>      print(f'{prefix}-build: run-ninja')
+>>      print(f'{prefix} $(all-{prefix}-targets): do-meson-{prefix}')
+>>      print(f'do-meson-{prefix}: run-ninja; $(if $(MAKE.n),,+)$(MESON) te=
+st $(.{prefix}.mtestargs)')
+>> @@ -93,6 +115,10 @@ def emit_suite(name, suite, prefix):
+>>      print()
+>>      print(f'.{prefix}-{tgtname}.deps =3D {deps}')
+>>      print(f'.ninja-goals.check-build +=3D $(.{prefix}-{tgtname}.deps)')
+>> +    if suite.docker_deps:
+>> +        docker_deps =3D ' '.join(sorted(suite.docker_deps))
+>> +        print(f'.{prefix}-{tgtname}.docker-deps =3D {docker_deps}')
+>> +        print(f'.docker-goals.check-build +=3D $(.{prefix}-{tgtname}.do=
+cker-deps)')
+>>=20=20
+>>      names =3D ' '.join(sorted(suite.names(name)))
+>>      targets =3D f'{prefix}-{tgtname} {prefix}-report-{tgtname}.junit.xm=
+l'
+>> @@ -105,19 +131,16 @@ def emit_suite(name, suite, prefix):
+>>      print(f".{prefix}.mtest-suites +=3D {name} $(call .speed.$(SPEED), =
+{names})")
+>>      print(f'endif')
+>>=20=20
+>> -targets =3D {t['id']: [os.path.relpath(f) for f in t['filename']]
+>> -           for t in introspect['targets']}
+>> -
+>>  testsuites =3D defaultdict(Suite)
+>>  for test in introspect['tests']:
+>> -    process_tests(test, targets, testsuites)
+>> +    process_tests(test, targets, targets_docker, testsuites)
+>>  emit_prolog(testsuites, 'check')
+>>  for name, suite in testsuites.items():
+>>      emit_suite(name, suite, 'check')
+>>=20=20
+>>  benchsuites =3D defaultdict(Suite)
+>>  for test in introspect['benchmarks']:
+>> -    process_tests(test, targets, benchsuites)
+>> +    process_tests(test, targets, targets_docker, benchsuites)
+>>  emit_prolog(benchsuites, 'bench')
+>>  for name, suite in benchsuites.items():
+>>      emit_suite(name, suite, 'bench')
 >
-> Rebase issue?
+> From previous answer on v3, this patch does duplicate existing
+> dependencies. If we don't have a specific reason to repeat it on
+> Makefile side, it should not be included in this series.
 
-Possibly - it got messy with the reverts.
+The reason was to trigger the build outside meson where it doesn't stall
+the output. Maybe we can drop not we have the console fix.
 
 >
->>  # plugins come first, as we need to build the list
->>  test_plugins =3D {}
+> Regards,
+> Pierrick
 
 --=20
 Alex Benn=C3=A9e

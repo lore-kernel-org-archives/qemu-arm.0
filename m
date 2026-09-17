@@ -4,91 +4,90 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B09E2C982D6
-	for <qemu-arm@archiver.kernel.org>; Thu, 17 Sep 2026 16:02:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BC11EC982D6
+	for <qemu-arm@archiver.kernel.org>; Thu, 17 Sep 2026 16:04:43 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1x7EXD-00033N-15; Thu, 17 Sep 2026 12:00:27 -0400
+	id 1x7Eb7-0005Pv-6I; Thu, 17 Sep 2026 12:04:29 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1x7EX7-00032H-Ue
- for qemu-arm@nongnu.org; Thu, 17 Sep 2026 12:00:22 -0400
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1x7Eb5-0005PB-QW
+ for qemu-arm@nongnu.org; Thu, 17 Sep 2026 12:04:27 -0400
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1x7EX5-0005x8-7x
- for qemu-arm@nongnu.org; Thu, 17 Sep 2026 12:00:21 -0400
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1x7Eb3-0006Vk-WE
+ for qemu-arm@nongnu.org; Thu, 17 Sep 2026 12:04:27 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1789660818;
+ s=mimecast20190719; t=1789661065;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
- bh=u9cjMDE/xoW1DN2a3AL/1sycq5b60UAl/O+tCmODO6A=;
- b=AT0pWugEmjtDV3Y3naVRi0LgYmI/DSNgCt11oMpny2LomfgV3ok/t44QDTdnludhqe1U2a
- 0/cZ1cUIPu8MlgzJ0+wAIjGB6dgYDwPLTpfRUBcAStbPGveRRR7R1czQMs7Q5w09Kh4bP3
- MECFNjBufhgTbgKEMFbRghmlrbPnhLY=
-Received: from mail-vs1-f69.google.com (mail-vs1-f69.google.com
- [209.85.217.69]) by relay.mimecast.com with ESMTP with STARTTLS
+ bh=9mmrwX7rrp+nAEKNQR+TnszC+oD27WN8cxCUrE8893c=;
+ b=TqTJHvFndrzql1nD7J6VIL734Z2skwANS7PXT8SYwlY2iETlsOCIAiB/AttLRo3bZkdH1Q
+ hC1lw4VFf7i4zcVhEqVJw8KfiUThbUQTu6oQzNL5bBGYRRWaBcZ13D3hKrky8D3tey3Usf
+ TObHvnXROL2qr0seX4rt+lqW0tpbwKY=
+Received: from mail-wr1-f70.google.com (mail-wr1-f70.google.com
+ [209.85.221.70]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-619-_qR0tE_2MGG7MbRn6SMiXg-1; Thu, 17 Sep 2026 12:00:15 -0400
-X-MC-Unique: _qR0tE_2MGG7MbRn6SMiXg-1
-X-Mimecast-MFC-AGG-ID: _qR0tE_2MGG7MbRn6SMiXg_1789660815
-Received: by mail-vs1-f69.google.com with SMTP id
- ada2fe7eead31-7a10c3de1baso806353137.2
- for <qemu-arm@nongnu.org>; Thu, 17 Sep 2026 09:00:15 -0700 (PDT)
+ us-mta-307-xuiiJT4PMg6psbIT00fPVQ-1; Thu, 17 Sep 2026 12:04:22 -0400
+X-MC-Unique: xuiiJT4PMg6psbIT00fPVQ-1
+X-Mimecast-MFC-AGG-ID: xuiiJT4PMg6psbIT00fPVQ_1789661061
+Received: by mail-wr1-f70.google.com with SMTP id
+ ffacd0b85a97d-487038bc9b8so685210f8f.2
+ for <qemu-arm@nongnu.org>; Thu, 17 Sep 2026 09:04:22 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20260707; t=1789660815; x=1790265615;
+ d=1e100.net; s=20260707; t=1789661061; x=1790265861;
  h=content-transfer-encoding:content-type:in-reply-to:autocrypt
  :content-language:from:references:cc:to:subject:user-agent
  :mime-version:date:message-id:x-gm-gg:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to:content-type;
- bh=u9cjMDE/xoW1DN2a3AL/1sycq5b60UAl/O+tCmODO6A=;
- b=Li3SN8V5o/7dUFUEemf4SLVprBlYW10m9WSOnGeJ3GJl9Os7CMbmfYQohPB3Hd5V71
- mIpOxlYly3x610icuce6tqT23OR6+dpLnALeNGxc1WnYpeBp0h9ekoKJvtlPtaUm+nWQ
- UCtfMYxINoyPg7LRPv0EQi6V6pymYaGxewCGQ+ImJp7QMLS+hvigdPtxKv1EWw7N01ar
- vDwFJv8zu0mt7qAi5gTi2dB80HHpR4aHAg4pJp4xPNIISQo+PIxJLvOnpDR9PGMl7SCG
- aZIFBwTk9sMa6Ep2I/1iKgxiyw0wnXNWu6s/BrVsplLF5plQwfKu9zvzdqsq3ns0Eb+m
- YUfQ==
+ bh=9mmrwX7rrp+nAEKNQR+TnszC+oD27WN8cxCUrE8893c=;
+ b=OYka4lTEgEGXFlvnp5S53LerYsmvFvB0kaTKHiqG/XYlXUWkUV2UTtDaJNQG2BrOPC
+ eHe059/tUjEp3K94J69QmD2bwnNFxfYnspWPHG19bZqGcZJv525sQSxTZTccKOQQNy0V
+ DwaGxQIZ80B9gKn6jrDBuElzfTqv3moLcgcCsHrxPqmap0Gm92AaLF8A4AOCX4fMvru3
+ AMN1e30nkJ9Cgo0jcvhfox3nGVuq/yoTbMccf4tJIbocMrAROaJqyxI+3kdWnpbBClqt
+ W5s0JcfF+XM9y0Fcn30tHjSVfgyv29J87Ep9a4Pz2+sumpmkVyByoBTNPhFepGV3FqsS
+ zzTA==
 X-Forwarded-Encrypted: i=1;
- AKwUvBw3A4dU2Lg7Ffct//I65XZ4/IzE4MdZMx1VOEaRrvrqF9zmfvwJxxj4ybWk7iAlL1ByOUvhQdUuwQ==@nongnu.org
-X-Gm-Message-State: AFuF++nTEAtQA5I2ldTH80CHlhnjZ3Jo+etERaOjgzZI6i2dkPs2iVeT
- I5FLtFhq+q+xnJyNNLyj0his2rwIv3CJHU9p4S0d9o8Vxes/405Xq+upCeyNJkpHWZWbTkYmz6z
- JvBwoSrSlcBCD6AIxSchR2z02ZafBX8nz3Hn5LFkKI0Shq+Oekl1q4A==
-X-Gm-Gg: AYBFou28uA+EV0j/xN61LPs+r0YHnfRYQ6qijJHy1a7r3oor7Deexd7L/mhrcW1Wp0E
- Y6PZMNt69a6MNoDdj8gY4c056llN68Vn/QzcPfPjyXytWcCLKHDZnshv/gSirzavNwYWws3LjDp
- Lco7jofAx5tlg5ze9ttnxdKCTsxaH/3txo8BI8ib2ARnxOlMMnVvTPljZvTRwDfG0LhMyALl4BU
- ed/LMQqWd600C2XC4KAad94gcmlKGM8ij1OHcmM2pQQOvfHuC+FijREVtZOTqxpl1HU1WtTPW78
- CTfQTcS6kxbvb9MgZiUivLbiaknDFCN2n3/vLkExizCCX0yuHAL3wXJ5XUm94p+jeEYRMwJ0qMo
- 5z3GM/7QtG3TckJJB1DpE3Kvf/yP+FyfDLSsnnfqDng==
-X-Received: by 2002:a05:6102:41a4:b0:79e:b1cd:86f7 with SMTP id
- ada2fe7eead31-7a023d1966amr6221371137.1.1789660814616; 
- Thu, 17 Sep 2026 09:00:14 -0700 (PDT)
-X-Received: by 2002:a05:6102:41a4:b0:79e:b1cd:86f7 with SMTP id
- ada2fe7eead31-7a023d1966amr6221338137.1.1789660814025; 
- Thu, 17 Sep 2026 09:00:14 -0700 (PDT)
+ AKwUvBwzwnqS6L6bJM4oBKWNdQrdx4Rt5qFdymnHdKI0jN0Z82BR67VItYlUTvOBrujeyXsDrmRAp/jJBQ==@nongnu.org
+X-Gm-Message-State: AFuF++mkSdCkcca376ivSmnfYdxIWXZD19AAmG4bPkmXSh56gh7DlPWr
+ 9AKf9Uf7rTo45lRe7rpE7qgeJXwFZRELexKAnOtubw628Dgqu4XUTB5m3f5fnbEzdQjc9svgp8p
+ itM+PvPZSEuzj8nK4EKz4p5zk6a7/twxvtYz9kYcIwBmnj+ilC/1o9g==
+X-Gm-Gg: AYBFou1ovGw+KwfuBg0bB/fTbal6mpqXJQE+QYwQZ5ENgMz0rruYKSiUZepGWxnzPXE
+ K9fsLT3Ds/bdkyLW7vtt3cu+6EntckWAyC+I/osEo+Qvr2/Yqq/OsaQvoOqUDBRrF2j1Cg+vlFC
+ 5ukLsXDes29aWZ8g3T8OkSxEp0qh3Oc9T/ufVA5n5BYJjsitR2uc/xIziKraQoRuo9rmlARQRxv
+ NHOssqrl2X0x5XA2laBXoDxBydf2o+RgX4TgQzt5vO80CN3TyqOJa24oZo3MJTATwx5TPbSp5Yt
+ tcYjnlG1vwe59C+Zq2ZUuf+4kkLwAL0yF6Znq6tghZYPin0DwGKN31pwP7lil2uAp07+QPFCM2m
+ dHHhmZmXrKHW4EY6MwNIpktEiYaOmno95ZylMOmh2Fg==
+X-Received: by 2002:a5d:64ef:0:b0:487:765:46bf with SMTP id
+ ffacd0b85a97d-4870cf2080amr9058259f8f.19.1789661061273; 
+ Thu, 17 Sep 2026 09:04:21 -0700 (PDT)
+X-Received: by 2002:a5d:64ef:0:b0:487:765:46bf with SMTP id
+ ffacd0b85a97d-4870cf2080amr9058209f8f.19.1789661060786; 
+ Thu, 17 Sep 2026 09:04:20 -0700 (PDT)
 Received: from ?IPV6:2a01:e0a:1292:d530:e939:7a09:c368:e5d5?
  ([2a01:e0a:1292:d530:e939:7a09:c368:e5d5])
  by smtp.gmail.com with ESMTPSA id
- 71dfb90a1353d-5c9a53ed5ebsm3040581e0c.12.2026.09.17.09.00.10
+ ffacd0b85a97d-4870bf1fad3sm15095107f8f.12.2026.09.17.09.04.19
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 17 Sep 2026 09:00:13 -0700 (PDT)
-Message-ID: <2219b053-8321-4f51-8239-68a05bec6391@redhat.com>
-Date: Thu, 17 Sep 2026 18:00:08 +0200
+ Thu, 17 Sep 2026 09:04:20 -0700 (PDT)
+Message-ID: <ae80ab03-fbf3-4f6e-84f8-50daa6841c8b@redhat.com>
+Date: Thu, 17 Sep 2026 18:04:18 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 06/10] hw/vfio/pci: Bind a CXL device to its fixed
- memory window
+Subject: Re: [PATCH v2 03/10] hw/vfio/pci: Detect a CXL Type-2 device and read
+ its geometry
 To: mhonap@nvidia.com, alex@shazbot.org, ankita@nvidia.com, jic23@kernel.org, 
  dave.jiang@intel.com, alejandro.lucero-palau@amd.com, smadhavan@nvidia.com,
  pierrick.bouvier@oss.qualcomm.com, mst@redhat.com, imammedo@redhat.com,
  anisinha@redhat.com, pbonzini@redhat.com, eric.auger@redhat.com,
- peter.maydell@linaro.org, richard.henderson@linaro.org, cohuck@redhat.com,
- Nitesh Narayan Lal <nilal@redhat.com>
+ peter.maydell@linaro.org, richard.henderson@linaro.org, cohuck@redhat.com
 Cc: kjaju@nvidia.com, vsethi@nvidia.com, zhiw@nvidia.com,
  qemu-devel@nongnu.org, qemu-arm@nongnu.org, linux-cxl@vger.kernel.org
 References: <20260916184412.3825713-1-mhonap@nvidia.com>
- <20260916184412.3825713-7-mhonap@nvidia.com>
+ <20260916184412.3825713-4-mhonap@nvidia.com>
 From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@redhat.com>
 Autocrypt: addr=clg@redhat.com; keydata=
  xsFNBFu8o3UBEADP+oJVJaWm5vzZa/iLgpBAuzxSmNYhURZH+guITvSySk30YWfLYGBWQgeo
@@ -133,9 +132,9 @@ Autocrypt: addr=clg@redhat.com; keydata=
  HQoPn9qrDJgsgcbBVc1gkUT6hnxShKPp4PlsZVMNjvPAnr5TEBgHkk54HQRhhwcYv1T2QumQ
  izDiU6iOrUzBThaMhZO3i927SG2DwWDVzZltKrCMD1aMPvb3NU8FOYRhNmIFR3fcalYr+9gD
  uVKe8BVz4atMOoktmt0GWTOC8P4=
-In-Reply-To: <20260916184412.3825713-7-mhonap@nvidia.com>
+In-Reply-To: <20260916184412.3825713-4-mhonap@nvidia.com>
 X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: xaxuBcxp5Fe03ddZp0352b0nFmTnVFRttSPesWia3dM_1789660815
+X-Mimecast-MFC-PROC-ID: ZEhOS2RzABVBwd-a6TtlxTGjQFNDo_HWEotONwAZQkY_1789661061
 X-Mimecast-Originator: redhat.com
 Content-Language: en-US, fr
 Content-Type: text/plain; charset=UTF-8; format=flowed
@@ -167,352 +166,149 @@ Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 On 9/16/26 20:44, mhonap@nvidia.com wrote:
 > From: Manish Honap <mhonap@nvidia.com>
 > 
-> The guest programs a GPA inside a CXL fixed memory window and QEMU maps
-> the HDM memory there, so the device must sit under exactly one
-> single-target CFMWS. 
-
-CFMWS (CXL Fixed Memory Window Structure). Pity that the fields are named
-fmws_base,  fmws_size.
-
-> Reject any ambiguous, interleaved, unsized, or
-> missing window rather than guess. Match windows by target name, since the
-> resolved target pointers are only filled in by a machine-done notifier
-> that may run after this one.
+> The kernel marks a passthroughed CXL Type-2 device with a device flag and
+> exposes two regions:
+> - HDM memory (host physical)
+> - the trapped HDM decoder register block.
 > 
-> Require exactly one endpoint function below the root port: two functions
-> in the same slot would each match that single-target CFMWS and alias their
-> HDM memory at one base, so count every present function rather than one per
-> slot. The CFMWS windows are placed at machine-init-done, so a cold-plugged
-> device can only be validated from that notifier, where a bad topology is
-> fatal to startup. Validate a hotplugged device inline from realize instead,
-> reporting through errp so a bad device_add fails cleanly rather than
-> aborting the running VM, and arm the notifier only for a cold-plugged
-> device.
+> Read the flag, locate both regions by type, and take the component BAR
+> and block offset from the geometry capability. Realize only records this;
+> later patches build the guest mapping on top.
 > 
-> The endpoint's HDM size comes from the kernel region. cxl_fmws_set_memmap()
-> places the window in the guest PA map before this device is realized, so
-> the window cannot yet be sized from the device; check the configured window
-> against the device geometry instead. Reject a window too small to hold the
-> endpoint and name the size to set, and warn on an oversized window, since
-> the padding becomes guest CEDT that migration has to preserve.
-
-I am lost ... Too much stuff there.
-
-Each paragraph introduces a new topic/problem, and implementation details,
-all mixed up, without first explaining what problem is being solved:
-
-   A passed-through CXL Type-2 device needs to know where its memory
-   window lives in the guest PA space so QEMU can map the device memory
-   there.
-
-Is that it ?
-
-A maintainer reviewing this patch shouldn't need to know what a CFMWS
-is to understand the commit. CXL is still an emerging technology.
-Most VFIO and QEMU reviewers will not have CXL spec background and
-CXL-specific mechanic knowledge.
-
 > AI-used-for: code (prototype)
-
-The code still reads like a proof-of-concept "prototype". This patch
-in particular is very hard to follow. The problem isn't clearly described,
-and likely isn't fully understood yet. The series should be broken into
-smaller patches.
-
 > Signed-off-by: Manish Honap <mhonap@nvidia.com>
-> ---
->   hw/pci-bridge/pci_expander_bridge_stubs.c |   6 +
->   hw/vfio/pci.c                             | 192 ++++++++++++++++++++++
->   hw/vfio/pci.h                             |   3 +
->   3 files changed, 201 insertions(+)
-> 
-> diff --git a/hw/pci-bridge/pci_expander_bridge_stubs.c b/hw/pci-bridge/pci_expander_bridge_stubs.c
-> index b35180311f..c44ad7fab6 100644
-> --- a/hw/pci-bridge/pci_expander_bridge_stubs.c
-> +++ b/hw/pci-bridge/pci_expander_bridge_stubs.c
-> @@ -10,5 +10,11 @@
->   #include "hw/pci/pci_bus.h"
->   #include "hw/pci-bridge/pci_expander_bridge.h"
->   #include "hw/cxl/cxl.h"
-> +#include "hw/cxl/cxl_component.h"
->   
->   void pxb_cxl_hook_up_registers(CXLState *state, PCIBus *bus, Error **errp) {};
-> +
-> +bool cxl_get_hb_passthrough(PCIHostState *hb)
-> +{
-> +    return false;
-> +}
-> diff --git a/hw/vfio/pci.c b/hw/vfio/pci.c
-> index 4716266595..670e0d1da4 100644
-> --- a/hw/vfio/pci.c
-> +++ b/hw/vfio/pci.c
-> @@ -27,7 +27,12 @@
->   #include "hw/pci/msi.h"
->   #include "hw/pci/msix.h"
->   #include "hw/pci/pci_bridge.h"
-> +#include "hw/pci/pci_host.h"
-> +#include "hw/pci/pcie_port.h"
->   #include "hw/cxl/cxl.h"
-> +#include "hw/cxl/cxl_host.h"
-> +#include "hw/cxl/cxl_component.h"
-> +#include "system/system.h"
->   #include "hw/core/qdev-properties.h"
->   #include "hw/core/qdev-properties-system.h"
->   #include "hw/vfio/vfio-cpr.h"
-> @@ -3641,6 +3646,171 @@ static bool vfio_cxl_check_topology(VFIOPCIDevice *vdev, Error **errp)
->       return true;
->   }
->   
-> +/*
-> + * Count the CXL fixed memory windows that target this device's pxb-cxl and
-> + * report the matched window's base, size and target count. Match on the target
-> + * names: cxl_fmws_link_targets() resolves target_hbs[] only at machine_done,
-> + * which may run after this, so the resolved pointers can still be NULL here.
-> + */
-> +static int vfio_cxl_match_fmws(PXBCXLDev *pxb, hwaddr *base, uint64_t *size,
-> +                               int *nwindows, int *ntargets)
 
-I think this should be in the CXL subsystem. That's a *lot* of out
-parameters ...
+LGTM.
 
-> +{
-> +    GSList *list = cxl_fmws_get_all_sorted();
-> +    GSList *iter;
-> +    int matches = 0;
-> +
-> +    *nwindows = g_slist_length(list);
-> +    *base = 0;
-> +    *size = 0;
-> +    *ntargets = 0;
-> +
-> +    for (iter = list; iter; iter = iter->next) {
-> +        CXLFixedWindow *fw = CXL_FMW(iter->data);
-> +        int i;
-> +
-> +        for (i = 0; i < fw->num_targets; i++) {
-> +            bool ambiguous = false;
-> +            Object *t = object_resolve_path_type(fw->targets[i],
-> +                                                 TYPE_PXB_CXL_DEV, &ambiguous);
-> +
-> +            if (t && !ambiguous && PXB_CXL_DEV(t) == pxb) {
-> +                *base = fw->base;
-> +                *size = fw->size;
-> +                *ntargets = fw->num_targets;
-> +                matches++;
-> +                break;
-> +            }
-> +        }
-> +    }
-> +    g_slist_free(list);
-> +    return matches;
-> +}
-> +
-> +/*
-> + * Fix the bounds of the device's memory window once the topology has settled.
-> + * Exactly one single-target CFMWS, with an assigned base and room for the HDM
-> + * memory, is required; anything else is a misconfiguration the guest cannot
-> + * recover from, so reject it rather than guess a window.
-> + */
-> +static bool vfio_cxl_do_bind_fmws(VFIOPCIDevice *vdev, Error **errp)
-> +{
-
-This does too much :
-
-   topology validation
-   CFMWS window matching
-   size validation
-
-It looks like vfio_cxl_check_topology() and it should be in the CXL subsystem.
-
-> +    VFIOCXL *cxl = &vdev->cxl;
-> +    const char *name = vdev->vbasedev.name;
-> +    int nwindows = 0, ntargets = 0, matches;
-> +    hwaddr base = 0;
-> +    uint64_t size = 0, need;
-> +    PXBCXLDev *pxb;
-> +
-> +    pxb = vfio_cxl_find_pxb(vdev, errp);
-> +    if (!pxb) {
-> +        return false;
-> +    }
-> +
-> +    if (pcie_count_ds_ports(PCI_HOST_BRIDGE(pxb->cxl_host_bridge)->bus) != 1) {
-
-This won't build on all platforms.
-
-> +        error_setg(errp,
-> +                   "vfio-cxl: %s: pxb-cxl not in HDM passthrough mode "
-> +                   "(use a single cxl-rp)", name);
-> +        return false;
-> +    }
-> +
-> +    /*
-> +     * Count every present function, not one per slot, and require exactly one
-> +     * endpoint below the root port.
-> +     */> +    {
-> +        PCIBus *ep_bus = pci_get_bus(&vdev->parent_obj);
-> +        int slot, fn, nendpoints = 0;
-
-This smells like a function.
-
-> +        for (slot = 0; slot < PCI_SLOT_MAX; slot++) {
-> +            for (fn = 0; fn < PCI_FUNC_MAX; fn++) {
-> +                if (ep_bus->devices[PCI_DEVFN(slot, fn)]) {
-> +                    nendpoints++;
-> +                }
-> +            }
-> +        }
-> +        if (nendpoints != 1) {
-> +            error_setg(errp,
-> +                       "vfio-cxl: %s: %d devices below the cxl-rp; a passed "
-> +                       "through CXL endpoint must be alone below its root port",
-> +                       name, nendpoints);
-> +            return false;
-> +        }
-> +    }
-> +
-> +    matches = vfio_cxl_match_fmws(pxb, &base, &size, &nwindows, &ntargets);
-> +    if (matches == 1 && ntargets == 1) {
-> +        if (!base) {
-> +            error_setg(errp,
-> +                       "vfio-cxl: %s: matched CFMWS has no base; reduce its "
-> +                       "size or grow the guest PA space", name);
-> +            return false;
-> +        }
-> +        /*
-> +         * QEMU reads the endpoint's HDM size from the kernel region, so the
-> +         * window size is really device information, not a value to make the
-> +         * caller guess. Sizing the CFMWS from the device the way firmware does
-> +         * is not possible here: the window is placed in the guest PA map by
-> +         * cxl_fmws_set_memmap() before this device is realized, so its size is
-> +         * fixed before dpa_size is known. Until a core change can size the
-> +         * window from the device, take the device geometry as the source of
-> +         * truth: reject a window too small to hold the endpoint, and warn when
-> +         * it is larger than needed, since the padding becomes guest CEDT that
-> +         * migration has to preserve.
-> +         */
-> +        need = ROUND_UP(cxl->dpa_size, 256 * MiB);
-> +        if (size < need) {
-> +            error_setg(errp,
-> +                       "vfio-cxl: %s: CFMWS size 0x%" PRIx64 " cannot hold the "
-> +                       "endpoint; set the cxl-fmw size to 0x%" PRIx64,
-> +                       name, size, need);
-> +            return false;
-> +        }
-> +        if (size > need) {
-> +            warn_report("vfio-cxl: %s: CFMWS size 0x%" PRIx64 " exceeds the "
-> +                        "endpoint's 0x%" PRIx64 "; set the cxl-fmw size to 0x%"
-> +                        PRIx64 " to keep the guest memory map stable across "
-> +                        "migration", name, size, cxl->dpa_size, need);
-> +        }
-> +        cxl->fmws_base = base;
-> +        cxl->fmws_size = size;
-> +        return true;
-> +    }
-> +
-> +    if (matches == 1) {
-> +        error_setg(errp,
-> +                   "vfio-cxl: %s: its CFMWS interleaves %d targets; use a "
-> +                   "single-target window", name, ntargets);
-> +    } else if (matches > 1) {
-> +        error_setg(errp,
-> +                   "vfio-cxl: %s: pxb-cxl is targeted by %d CFMWS; use one",
-> +                   name, matches);
-> +    } else {
-> +        error_setg(errp,
-> +                   "vfio-cxl: %s: no CFMWS targets this device (%d present)",
-> +                   name, nwindows);
-> +    }
-> +    return false;
-> +}
-> +
-> +/*
-> + * Cold-plug path: the CFMWS windows are placed at machine init done, so the
-
-are you sure of that ? I think fw->base is already set when vfio_cxl_setup()
-runs for cold-plug.
-
-Normal vfio-pci has no hotplug-specific code, vfio_pci_realize() runs
-the same path regardless of  DEVICE(vdev)->hotplugged. The CXL case
-should be the same.
-
-> + * binding can only be validated from this notifier. The VM has not run yet, so
-> + * a configuration error is fatal to startup. A hotplugged device is validated
-> + * in realize instead (see vfio_cxl_setup), where the failure fails device_add
-> + * without taking down the running VM.
-> + */
-> +static void vfio_cxl_bind_fmws(Notifier *n, void *data)
-> +{
-> +    VFIOCXL *cxl = container_of(n, VFIOCXL, machine_done);
-> +    VFIOPCIDevice *vdev = container_of(cxl, VFIOPCIDevice, cxl);
-> +    Error *err = NULL;
-> +
-> +    if (!vfio_cxl_do_bind_fmws(vdev, &err)) {
-> +        error_report_err(err);
-> +        exit(1);
-> +    }
-> +}
-> +
->   /*
->    * Learn the CXL geometry the kernel reports: the HPA-backed HDM memory region
->    * and the trapped HDM decoder block (which BAR carries it and at what offset).
-> @@ -3717,6 +3887,22 @@ static bool vfio_cxl_setup(VFIOPCIDevice *vdev, Error **errp)
->                       "performance may be slow", vbasedev->name);
->       }
->   
-> +    if (DEVICE(vdev)->hotplugged) {
-> +        /*
-> +         * The machine is already up, so the CFMWS windows are placed and the
-> +         * binding can be validated now. Report a failure through errp so a bad
-> +         * device_add fails cleanly instead of aborting the running VM.
-> +         */
-> +        if (!vfio_cxl_do_bind_fmws(vdev, errp)) {
-> +            vfio_region_exit(&cxl->mem_region);
-> +            vfio_region_finalize(&cxl->mem_region);
-
-as said before, the tear down has 2 parts. Anyhow, I don't think we need a
-CXL-specific hotplug patch.
+Thanks,
 
 C.
 
 
-
-> +            return false;
-> +        }
-> +    } else {
-> +        cxl->machine_done.notify = vfio_cxl_bind_fmws;
-> +        qemu_add_machine_init_done_notifier(&cxl->machine_done);
-> +    }
-> +
->       cxl->enabled = true;
->   
+> ---
+>   hw/vfio/pci.c | 72 +++++++++++++++++++++++++++++++++++++++++++++++++++
+>   hw/vfio/pci.h | 15 +++++++++++
+>   2 files changed, 87 insertions(+)
+> 
+> diff --git a/hw/vfio/pci.c b/hw/vfio/pci.c
+> index 428ab2f069..2f84af5cf8 100644
+> --- a/hw/vfio/pci.c
+> +++ b/hw/vfio/pci.c
+> @@ -3570,6 +3570,64 @@ bool vfio_pci_interrupt_setup(VFIOPCIDevice *vdev, Error **errp)
 >       return true;
-> @@ -3729,6 +3915,12 @@ static void vfio_cxl_teardown(VFIOPCIDevice *vdev)
->       if (!cxl->enabled) {
->           return;
->       }
+>   }
+>   
+> +/*
+> + * Learn the CXL geometry the kernel reports: the HPA-backed HDM memory region
+> + * and the trapped HDM decoder block (which BAR carries it and at what offset).
+> + * A non-CXL device leaves cxl.enabled false and takes no CXL paths.
+> + */
+> +static bool vfio_cxl_setup(VFIOPCIDevice *vdev, Error **errp)
+> +{
+> +    VFIODevice *vbasedev = &vdev->vbasedev;
+> +    VFIOCXL *cxl = &vdev->cxl;
+> +    struct vfio_region_info *mem_info = NULL, *comp_info = NULL;
+> +    struct vfio_region_info_cap_cxl_comp_regs *cap;
+> +    struct vfio_info_cap_header *hdr;
 > +
-> +    if (cxl->machine_done.notify) {
-> +        qemu_remove_machine_init_done_notifier(&cxl->machine_done);
-> +        cxl->machine_done.notify = NULL;
+> +    if (!(vbasedev->flags & VFIO_DEVICE_FLAGS_CXL)) {
+> +        return true;
 > +    }
 > +
->       if (cxl->mem_region.mem) {
->           vfio_region_exit(&cxl->mem_region);
->           vfio_region_finalize(&cxl->mem_region);
+> +    if (vfio_device_get_region_info_type(vbasedev,
+> +                                         VFIO_REGION_TYPE_PCI_VENDOR_TYPE |
+> +                                         CXL_VENDOR_ID,
+> +                                         VFIO_REGION_SUBTYPE_CXL_MEM,
+> +                                         &mem_info)) {
+> +        error_setg(errp, "vfio-cxl: %s: CXL memory region not found",
+> +                   vbasedev->name);
+> +        return false;
+> +    }
+> +
+> +    if (vfio_device_get_region_info_type(vbasedev,
+> +                                         VFIO_REGION_TYPE_PCI_VENDOR_TYPE |
+> +                                         CXL_VENDOR_ID,
+> +                                         VFIO_REGION_SUBTYPE_CXL_COMP_REGS,
+> +                                         &comp_info)) {
+> +        error_setg(errp,
+> +                   "vfio-cxl: %s: CXL component-register region not found",
+> +                   vbasedev->name);
+> +        return false;
+> +    }
+> +
+> +    hdr = vfio_get_region_info_cap(comp_info,
+> +                                   VFIO_REGION_INFO_CAP_CXL_COMP_REGS);
+> +    if (!hdr) {
+> +        error_setg(errp,
+> +                   "vfio-cxl: %s: component-register geometry not reported",
+> +                   vbasedev->name);
+> +        return false;
+> +    }
+> +    cap = container_of(hdr, struct vfio_region_info_cap_cxl_comp_regs, header);
+> +
+> +    cxl->mem_region_index = mem_info->index;
+> +    cxl->comp_regs_region_index = comp_info->index;
+> +    cxl->dpa_size = mem_info->size;
+> +    cxl->comp_bar = cap->bar;
+> +    cxl->hdm_offset = cap->offset;
+> +    cxl->enabled = true;
+> +
+> +    return true;
+> +}
+> +
+>   static void vfio_pci_realize(PCIDevice *pdev, Error **errp)
+>   {
+>       ERRP_GUARD();
+> @@ -3700,6 +3758,20 @@ static void vfio_pci_realize(PCIDevice *pdev, Error **errp)
+>           }
+>       }
+>   
+> +    if (!vfio_cxl_setup(vdev, errp)) {
+> +        /*
+> +         * vfio_migration_realize() above installed a migration blocker in auto
+> +         * mode (generic vfio-pci exposes no migration ops). out_deregister does
+> +         * not remove it, so a rejected CXL setup would leave VM migration
+> +         * blocked until QEMU restarts. Drop it here, under the same
+> +         * failover-pair condition used to install it.
+> +         */
+> +        if (!pdev->failover_pair_id) {
+> +            vfio_migration_exit(vbasedev);
+> +        }
+> +        goto out_deregister;
+> +    }
+> +
+>       vfio_pci_register_err_notifier(vdev);
+>       vfio_pci_register_req_notifier(vdev);
+>       vfio_setup_resetfn_quirk(vdev);
 > diff --git a/hw/vfio/pci.h b/hw/vfio/pci.h
-> index 06d15e807d..22fe8d7ff7 100644
+> index c9ab949870..7fdd695704 100644
 > --- a/hw/vfio/pci.h
 > +++ b/hw/vfio/pci.h
-> @@ -135,6 +135,9 @@ typedef struct VFIOCXL {
->       uint64_t hdm_offset;             /* block offset within the component BAR */
->       uint64_t dpa_size;               /* size of the HDM memory region */
->       VFIORegion mem_region;           /* HDM memory, mapped at committed GPA */
-> +    Notifier machine_done;           /* CFMWS validated at machine_done */
-> +    hwaddr fmws_base;                /* base of the memory window */
-> +    uint64_t fmws_size;              /* size of the memory window */
->   } VFIOCXL;
+> @@ -122,10 +122,25 @@ typedef struct VFIOMSIXInfo {
 >   
+>   OBJECT_DECLARE_SIMPLE_TYPE(VFIOPCIDevice, VFIO_PCI_DEVICE)
+>   
+> +/*
+> + * State for a CXL Type-2 device. The kernel owns the host physical placement
+> + * of the device memory; QEMU only maps it at the guest physical address the
+> + * guest commits into its endpoint HDM decoder.
+> + */
+> +typedef struct VFIOCXL {
+> +    bool enabled;
+> +    uint32_t mem_region_index;       /* HPA-backed HDM memory VFIO region */
+> +    uint32_t comp_regs_region_index; /* trapped HDM decoder register block */
+> +    uint32_t comp_bar;               /* component BAR carrying that block */
+> +    uint64_t hdm_offset;             /* block offset within the component BAR */
+> +    uint64_t dpa_size;               /* size of the HDM memory region */
+> +} VFIOCXL;
+> +
 >   struct VFIOPCIDevice {
+>       PCIDevice parent_obj;
+>   
+>       VFIODevice vbasedev;
+> +    VFIOCXL cxl;
+>       VFIOINTx intx;
+>       unsigned int config_size;
+>       uint8_t *emulated_config_bits; /* QEMU emulated bits, little-endian */
 
 

@@ -4,71 +4,111 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4EDC0C982C1
-	for <qemu-arm@archiver.kernel.org>; Wed, 16 Sep 2026 22:45:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DE7C8C982D0
+	for <qemu-arm@archiver.kernel.org>; Thu, 17 Sep 2026 09:28:00 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1x6yNG-00050J-Qg; Wed, 16 Sep 2026 18:45:07 -0400
+	id 1x78P3-0002mp-Mv; Thu, 17 Sep 2026 05:27:37 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mohamed@unpredictable.fr>)
- id 1x6yNE-0004zE-Lz
- for qemu-arm@nongnu.org; Wed, 16 Sep 2026 18:45:04 -0400
-Received: from qs-2006b-snip6-6.eps.apple.com ([2a01:b747:3006:202::13]
- helo=outbound.qs.icloud.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mohamed@unpredictable.fr>)
- id 1x6yNB-0007rU-D2
- for qemu-arm@nongnu.org; Wed, 16 Sep 2026 18:45:04 -0400
-Received: from outbound.qs.icloud.com (unknown [127.0.0.2])
- by p00-icloudmta-asmtp-us-east-2d-60-percent-10 (Postfix) with ESMTPS id
- 5F9F81800D08; Wed, 16 Sep 2026 22:44:58 +0000 (UTC)
-X-ICL-RepId: 01a0ac65-0af3-7c6e-b2ec-b16d92aea6aa
-X-ICL-Out-Info: HUtFAUMHWwJACUgBTUQeDx5WFlZNRAJCTQ1OHVwPUhxEDlYCVRcOVk1UF1sMWg5WMEwWQx9SD1sTTRlRAVJFVAIZHldQQgVCAlwcWg5DClAcXFZVHxcZUU0MWFsIWwQPH0wMUQJCBVZeSAsdBFQHXQVdVlACWktCBEtFaFwFXBxAF0gdX2pLVhQEDV0dRQ5WGVoMUg9bDhwWS1heBFNWDkIJSgVdDloEQgtMB1gDRQtBAEoHQAZGXx9RGV4IUytHHkkKVgleCEYRWxRWQ1EZDFBNAUMICghHA00XXjJTBF8RUBY=
-Dkim-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=unpredictable.fr;
- s=sig1; t=1789598699; x=1792190699;
- bh=ynDkUo2CoJT9npSAJxkZxqV1KtENNiO5PtdnOdDATtw=;
- h=From:To:Subject:Date:Message-ID:MIME-Version:x-icloud-hme;
- b=ei9aYrOiiMSoJqaCrRKSTjL9CjIu7EkzQtz8IF5jerwTM1oC2zGlJeyRFe7SnuJbmqU5SWY8Y5tRAMEfZzW74xJyJ7DFd0geDVh5TmU3J+UXZJazFKf52I5SV4ZUxDWLiPsQmU1mk4/d0S4wTrVtuJ7LJ27VzV6HgYSlof1UL0xywZp7FKxrSHzPKdqLJB4gHlbbwgzrsdymYIFw9fpNdE4yy8rEvnh4wfFJGV/UGWyX4+p1pNJ1cMFM8yrqpdG7dg0yt+NbojeLtvcxbxNcpqTV0d3jeanTFTXPWJ2yl7Xn/942Xy0686thaMdQMPci2bG24SzvhSCoc/HJn74DOw==
-mail-alias-created-date: 1752046281608
-Received: from localhost.localdomain (unknown [17.57.155.37])
- by p00-icloudmta-asmtp-us-east-2d-60-percent-10 (Postfix) with ESMTPSA id
- 2018118000BF; Wed, 16 Sep 2026 22:44:57 +0000 (UTC)
-From: Mohamed Mediouni <mohamed@unpredictable.fr>
-To: qemu-devel@nongnu.org
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- Pedro Barbuda <pbarbuda@microsoft.com>,
- Mohamed Mediouni <mohamed@unpredictable.fr>, qemu-arm@nongnu.org
-Subject: [PATCH] whpx: arm64: check for physical address width after WHPX
- availability
-Date: Thu, 17 Sep 2026 00:44:54 +0200
-Message-ID: <20260916224454.91924-1-mohamed@unpredictable.fr>
-X-Mailer: git-send-email 2.54.0
+ (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
+ id 1x78Oy-0002kh-J8
+ for qemu-arm@nongnu.org; Thu, 17 Sep 2026 05:27:32 -0400
+Received: from mail-wm2-x11.google.com ([2a00:1450:4864:31::11])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
+ id 1x78Ow-0000a1-R8
+ for qemu-arm@nongnu.org; Thu, 17 Sep 2026 05:27:32 -0400
+Received: by mail-wm2-x11.google.com with SMTP id
+ 5b1f17b1804b1-49e6c0fce17so3616745e9.1
+ for <qemu-arm@nongnu.org>; Thu, 17 Sep 2026 02:27:30 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1789637249; x=1790242049; darn=nongnu.org;
+ h=content-transfer-encoding:content-type:mime-version:message-id:date
+ :user-agent:references:in-reply-to:subject:cc:to:from:from:to:cc
+ :subject:date:message-id:reply-to:content-type;
+ bh=ROX8U4JzzzdRkmCSBVGIaoW1fUozFIaJ8HRnRqSJnA8=;
+ b=B4h75R7V/Ym+m6GNotOWUDRRrDFaXEO+ufCL6d8k2Jpc+mGpKmVcOgwTH5XfEWK3CE
+ 0bANGGiZlKnKMC5G8Cql5C2L7c68LmFoX/j0FlhuDuz9U/5l3wVuH/sdmH70YC29+Yfi
+ hNRJ3b/+h2RKc6GqVOZeqVhABTTYioDSUjvCf2xb/jtTV9FRzzOjR/AXXNkhAPvru/64
+ FysmtqpEjYfLPjHV2Oo9dyQ9H9Ic6+2tx+RedUPo5OlVOj7gEWP7WgjdZSVMTXNowy6C
+ RWF2lNfq6UXSvVyWEmNwxo+fL3mTPEMInepuEly3TVKxSMl0w0JD6jh4sB3qUpnSvKn1
+ OEUw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20260707; t=1789637249; x=1790242049;
+ h=content-transfer-encoding:content-type:mime-version:message-id:date
+ :user-agent:references:in-reply-to:subject:cc:to:from:x-gm-gg
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
+ :content-type;
+ bh=ROX8U4JzzzdRkmCSBVGIaoW1fUozFIaJ8HRnRqSJnA8=;
+ b=o6OI+FsJpoTSdqPawsnLXV2K/+KHrD8IgstRYW32B4gzbcWLbDIarAqVPHm/VFzz4g
+ 463CTgi8ht5T+u0f7DqcfRoER0P0tU3CeHiZqUsCSamae5UjCCpLhTmHwpqwpSK+PFLv
+ L2NhGhiHDG4DwpHTSp9meX3nSDnzPcoeV2yzybdrC3hp8JUcI9ZDhSx3foLP8xC9ugs2
+ +Iu4g05VnPaepmwrl4beYUgeOWacAMh4VxVT4YjBSXyby0EbOf02Qm5lNr+HcNwybw6t
+ 4wpymnPqivUfUVEsN/O2L9gw9Gj0PKhtkZPtZ1GLbOmWICRbswcIrnTI4RDLbyoEMLIX
+ Baqw==
+X-Forwarded-Encrypted: i=1;
+ AKwUvBxo8vjodBM8oMN2ttSTTZvL9Iwd+TxnG6oxr+aT0A7y8x0qRuMJFL1hq4l3CMwHhDa1deDABMsRiA==@nongnu.org
+X-Gm-Message-State: AFuF++n1f6DEC4R42vjuGKtccERQjBeEzZN5/UkhGQBHqOfts6n4tPLG
+ P3aAh76w4zdVz70uSULjtCdY82kilnitX1ckIwkVzloyZT5oQV6GMK7vE5LQxvEU/wc=
+X-Gm-Gg: AYBFou1NAKGbp+m8/YkOiwWqQ2VwRRm9v2PlyXzSCy96jAfZG30QWciMSiXxCPWlLWq
+ D4DQjY+6U8boc1sXw5M5OPmGttoiyo0NNoYs/ON6tOLn68h028cux4JEC/IRAg+0cHY61f775M6
+ e8DEca5wL/+NiDvPaj3TR+qZ1Bd20GmipAu4pG/ll+WFxdCCqQObrva80Ti+f79saxUMKkuoJYN
+ +lIzD+OQ3lqJc9qvVw1NkpzziOMYI5/G/5d+GCnjyro03MQ4yddfibhowkYYmRKdOAilPSVwgJd
+ fl5I/0SS0HsVprMmm+0a45ZvFl02S8j8X51fY+OZNoiSzaUlAlWVDdQlQhNY54PeR/XRsA6fLgX
+ Agt0O0N/hY1lQksqUspJeZTcQb2h/FPEeYNrtMwgGSQT/qjK4I2iJa6tAHnIy5dlYvLzrRjkHkX
+ ANoPE1fKPlri9KkwYuSwHSc33+5cPE2VH/fEttNus0VjViPdoiZjrSbmPgj+Jj3dbnENnfJ4s=
+X-Received: by 2002:a05:600c:4e48:b0:49c:fc6e:a3d6 with SMTP id
+ 5b1f17b1804b1-49eb732d07emr77495845e9.21.1789637249217; 
+ Thu, 17 Sep 2026 02:27:29 -0700 (PDT)
+Received: from draig.lan ([185.124.0.156]) by smtp.gmail.com with ESMTPSA id
+ 5b1f17b1804b1-49fbd247809sm102273925e9.11.2026.09.17.02.27.28
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Thu, 17 Sep 2026 02:27:28 -0700 (PDT)
+Received: from draig (localhost [IPv6:::1])
+ by draig.lan (Postfix) with ESMTP id 669AB5F834;
+ Thu, 17 Sep 2026 10:27:27 +0100 (BST)
+From: =?utf-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>
+To: Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>
+Cc: qemu-devel@nongnu.org,  Ilya Leoshkevich <iii@linux.ibm.com>,
+ qemu-arm@nongnu.org,  Cornelia Huck <cohuck@redhat.com>,  Peter Maydell
+ <peter.maydell@linaro.org>,  Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?=
+ <philmd@mailo.com>,
+ John Snow <jsnow@redhat.com>,  David Hildenbrand <david@kernel.org>,
+ Thomas Huth <th.huth+qemu@posteo.eu>,  Paolo Bonzini
+ <pbonzini@redhat.com>,  Cleber Rosa <crosa@redhat.com>,  Warner Losh
+ <imp@bsdimp.com>,  Song Gao <gaosong@loongson.cn>,  Kyle Evans
+ <kevans@freebsd.org>,  Eric Farman <farman@linux.ibm.com>,  Brad Smith
+ <brad@comstyle.com>,  Fabiano Rosas <farosas@suse.de>,  Helge Deller
+ <deller@gmx.de>,  Laurent Vivier <laurent@vivier.eu>,  Daniel P.
+ =?utf-8?Q?Berrang=C3=A9?=
+ <berrange@redhat.com>,  Jiaxun Yang <jiaxun.yang@flygoat.com>,
+ qemu-s390x@nongnu.org,  Matthew Rosato <mjrosato@linux.ibm.com>,  Brian
+ Cain <brian.cain@oss.qualcomm.com>,  =?utf-8?Q?Marc-Andr=C3=A9?= Lureau
+ <marcandre.lureau@redhat.com>,  Richard Henderson
+ <richard.henderson@linaro.org>,  Jared Rossi <jrossi@linux.ibm.com>
+Subject: Re: [PATCH v4 03/19] Revert "tests/tcg/meson.build: implement
+ ./configure containers options"
+In-Reply-To: <ef0cab70-4f36-4de1-bfdb-18501d801728@oss.qualcomm.com> (Pierrick
+ Bouvier's message of "Wed, 16 Sep 2026 09:33:50 -0700")
+References: <20260916153013.2134555-1-alex.bennee@linaro.org>
+ <20260916153013.2134555-4-alex.bennee@linaro.org>
+ <ef0cab70-4f36-4de1-bfdb-18501d801728@oss.qualcomm.com>
+User-Agent: mu4e 1.14.4-pre3; emacs 30.1
+Date: Thu, 17 Sep 2026 10:27:27 +0100
+Message-ID: <87eces8by8.fsf@draig.linaro.org>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwOTE2MDMxOCBTYWx0ZWRfX99PjkpwNZuCm
- wfrPiqv4fVxt2nMelaHkg95K0hBy/E6nL2bFRmf4/FlXg4x4ugmpak8k28dbeK51D4kzcU3FAEJ
- +mH1ykTKLrm2KHQeLAF9ZgzGA/h7qYO43BnmjEP8L9d3qRF2bHiEO4BsgG98/Sjxoi634mHN56n
- Q03j67OF86aYlaC3XR+oCkmiiKegfv1CAPM6L47djeoA1hP4800q2zuCoMR9JqBv5Y9QGVfEKyj
- jONZiOaitzJ3+18Q3/OqosRjkj0NQsCpbQpw6B+idwMylKfK0GjGvdLVoKrBuYTrQNx9o/A4jsk
- BnQzauhM617SRgyBkeZw644XAAl3ChQqbzC+UI6QPlNFRnND2XX4DIpNuTqL5U=
-X-Authority-Info-Out: v=2.4 cv=TOJIilla c=1 sm=1 tr=0 ts=6aab1bea
- cx=c_apl:c_pps:t_out a=bsP7O+dXZ5uKcj+dsLqiMw==:117
- a=bsP7O+dXZ5uKcj+dsLqiMw==:17 a=VdqzKS8jKosA:10 a=VkNPw1HP01LnGYTKEx00:22
- a=nolE6rQyg8ZvnI8C870A:9
-X-Proofpoint-GUID: Xim5sTxEYZNah0DYaRkXL1G6MZbp8AZQ
-X-Proofpoint-ORIG-GUID: Xim5sTxEYZNah0DYaRkXL1G6MZbp8AZQ
-X-JNJ: AAAAAAABYLny/DmO0HogjuYOClO2yf/lIiqOhWszgRtqcaf6+BCdtZfr0Mkw9v1eVbtKmzonfNj7RMHskdZIFvqn69n2MuzPiIwWyx1iiYkeaHkITIFNAmmke9GyBGkvSYOltMV743YeZOxR3znj70Ypwwjjxs6rBFPISPSsw6ARx1NUzvo0WW7WSs0btukIrJ8lip8fG2Vk73ElbYeqepH7mpPI6nxRYsdEzMFDisb1gQ1eYw6wJdXrhNSC2myHpGxYLcY04XuWCpK3Iuk0EpcUpqIP0segM6EBl8N8UKT+a8CZP0R4E1YVTfpK/BKwm/CNP/z2P+sFoc0Tk/5r19q31wFPFXdwCwCWg8/XOxWyEIqWbBS6NwTM3gUwQnE8k2RfBXbdkEZNlxfgvlrEWF26GOMUpovjJLpyWvqFL55JKZ5eqMLUqWTUEAsD/elY/6rgD0+Y+derMisi3n6wYP2cn3xrvAD/seTdAihPi8RIHvVXE9Lb5mF1Omq2T3QuioPUjUIjh7DsuSyPilzxGaq+pkper1/2yqHyQq+vn46yrJQInvLrzWpZdss1t0NIaNBvwuO661WxY4W4ervj1UloY/VzOkvWBb6IREvPM97E6nauNAI4/nKRaROidIooR8SwT3s/MRLoZ5X8yeTz2OJJnn11SQ+Qkb+qlfeWw9FJAcm+bP+CEs8Lj54kKbjhmy+qUL3ejLvWXYgbco8Y+ZzvdHsq939I3P60zaCHNStTUaDgNC02BPqXNb2DdtDFKhTeH+smhe7PBMeLB1lWE06V/9epY7D8QeTDTDUgYq82v5c44JP3mhYAdp/2LYKSbDyLG2Fj+IERAGhWznRsThNw6c85ThAhNgWYhKkiGK/JrfWyrddh72N10rw+Wb0beJR+FJy9czZJ6L1eIIlveX5H8fPgXw1UrvE3lLbmelo/KWLZlUl2LbGD93KkrRHUFmcebXck8vWUtAz3NYK5OVWWIzkjjHh
- HcgAmg/WyhCmMEV4j0ezq7vAbnVDVsJ2me2n4D6+Yww9VmjguIAhc89v3VvHsLuSGuGs0Dboa9oKbZdJC9oaqjh9uTIpUYKNI+S3zHl3H5gvHp1qhAqloNX3eT6tXKBpTq8bpY/Ayk9SiFcPH+v+TvUF765JQDIqvH83LDhjI8sxFqyPDJDnzoKhiUmGzrblCfuS3
-Received-SPF: pass client-ip=2a01:b747:3006:202::13;
- envelope-from=mohamed@unpredictable.fr; helo=outbound.qs.icloud.com
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2a00:1450:4864:31::11;
+ envelope-from=alex.bennee@linaro.org; helo=mail-wm2-x11.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_PASS=-0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -84,49 +124,121 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-In the case where WHPX isn't supported on the platform, makes the
-intended error appear instead of failing at getting the IPA width.
+Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com> writes:
 
-Signed-off-by: Mohamed Mediouni <mohamed@unpredictable.fr>
----
- target/arm/whpx/whpx-all.c | 16 ++++++++--------
- 1 file changed, 8 insertions(+), 8 deletions(-)
+> On 9/16/2026 8:29 AM, Alex Benn=C3=A9e wrote:
+>> We want to keep the container configuration inside configure for the
+>> firmware builds.
+>>=20
+>> This partially reverts commit 522b299ca4316d8cad57f9496ffcba87dcc20719
+>> while keeping the plumbing to disable containers within meson.
+>>=20
+>> Tested-by: Eric Farman <farman@linux.ibm.com>
+>> Reviewed-by: Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>
+>> Suggested-by: Paolo Bonzini <pbonzini@redhat.com>
+>> [AJB: untangle changes since]
+>> Signed-off-by: Alex Benn=C3=A9e <alex.bennee@linaro.org>
+>> Tested-by: Jared Rossi <jrossi@linux.ibm.com>
+>>=20
+>> ---
+>> v4
+>>   - tweak revert to keep disable reported
+>>   - update commit msg
+>> ---
+>>  configure             | 14 ++++++++++----
+>>  meson_options.txt     |  3 +++
+>>  tests/tcg/meson.build |  3 +++
+>>  3 files changed, 16 insertions(+), 4 deletions(-)
+>>=20
+>> diff --git a/configure b/configure
+>> index bedde58b8cf..6084a7a065e 100755
+>> --- a/configure
+>> +++ b/configure
+>> @@ -260,7 +260,7 @@ ninja=3D""
+>>  python=3D
+>>  download=3D"enabled"
+>>  skip_meson=3Dno
+>> -use_containers=3D""
+>> +use_containers=3D"yes"
+>>  rust=3D"disabled"
+>>  rust_target_triple=3D""
+>>=20=20
+>> @@ -727,11 +727,14 @@ for opt do
+>>    ;;
+>>    --disable-plugins) plugins=3D"no"
+>>    ;;
+>> -  --enable-containers) # enabled by default
+>> +  --enable-containers) use_containers=3D"yes"
+>> +                       meson_option_add -Dcontainers=3Dtrue
+>>    ;;
+>> -  --disable-containers) meson_option_add -Dcontainers=3Dfalse
+>> +  --disable-containers) use_containers=3D"no"
+>> +                        meson_option_add -Dcontainers=3Dfalse
+>>    ;;
+>> -  --container-command=3D*) meson_option_add -Dcontainer_command=3D"$opt=
+arg"
+>> +  --container-command=3D*) container_command=3D"$optarg"
+>> +                         meson_option_add -Dcontainer_command=3D"$optar=
+g"
+>
+> Not sure if we want to keep this option (meson container_command).
+> Related if in tests/tcg/meson.build can be removed also.
 
-diff --git a/target/arm/whpx/whpx-all.c b/target/arm/whpx/whpx-all.c
-index d106400686..46f0b9524e 100644
---- a/target/arm/whpx/whpx-all.c
-+++ b/target/arm/whpx/whpx-all.c
-@@ -879,14 +879,6 @@ int whpx_accel_init(AccelState *as, MachineState *ms)
-         goto error;
-     }
- 
--    if (mc->get_physical_address_range) {
--        pa_range = mc->get_physical_address_range(ms,
--            whpx_arm_get_ipa_bit_size(), whpx_arm_get_ipa_bit_size());
--        if (pa_range < 0) {
--            return -EINVAL;
--        }
--    }
--
-     whpx->mem_quota = ms->ram_size;
- 
-     hr = whp_dispatch.WHvGetCapability(
-@@ -914,6 +906,14 @@ int whpx_accel_init(AccelState *as, MachineState *ms)
-         goto error;
-     }
- 
-+    if (mc->get_physical_address_range) {
-+        pa_range = mc->get_physical_address_range(ms,
-+            whpx_arm_get_ipa_bit_size(), whpx_arm_get_ipa_bit_size());
-+        if (pa_range < 0) {
-+            return -EINVAL;
-+        }
-+    }
-+
-     hr = whp_dispatch.WHvCreatePartition(&whpx->partition);
-     if (FAILED(hr)) {
-         error_report("WHPX: Failed to create partition, hr=%08lx", hr);
--- 
-2.54.0 (Apple Git-157)
+We want Makefile.include and meson to use the same container runtime
+surely?
 
+>
+>>    ;;
+>>    --rust-target-triple=3D*) rust_target_triple=3D"$optarg"
+>>    ;;
+>> @@ -1718,6 +1721,9 @@ echo all: >> $config_host_mak
+>>=20=20
+>>  echo "SRC_PATH=3D$source_path" >> $config_host_mak
+>>  echo "TARGET_DIRS=3D$target_list" >> $config_host_mak
+>> +if test "$container_command" !=3D ""; then
+>> +    echo "CONTAINER_COMMAND=3D$container_command" >> $config_host_mak
+>> +fi
+>>  echo "SUBDIRS=3D$subdirs" >> $config_host_mak
+>>  echo "PYTHON=3D$python" >> $config_host_mak
+>>  echo "MKVENV_ENSUREGROUP=3D$mkvenv ensuregroup $mkvenv_online_flag" >> =
+$config_host_mak
+>> diff --git a/meson_options.txt b/meson_options.txt
+>> index 66d3689d14c..daf301ed48a 100644
+>> --- a/meson_options.txt
+>> +++ b/meson_options.txt
+>> @@ -389,6 +389,9 @@ option('rust', type: 'feature', value: 'disabled',
+>>         description: 'Rust support')
+>>  option('strict_rust_lints', type: 'boolean', value: false,
+>>         description: 'Enable stricter set of Rust warnings')
+>> +option('container_registry', type: 'string',
+>> +       value: 'registry.gitlab.com/qemu-project/qemu',
+>> +       description: 'container registry to cache from')
+>>  option('containers', type: 'boolean', value: true,
+>>         description: 'use containers to cross compile tcg tests')
+>>  option('container_command', type: 'string',
+>> diff --git a/tests/tcg/meson.build b/tests/tcg/meson.build
+>> index ce208e686ff..890da7b81e9 100644
+>> --- a/tests/tcg/meson.build
+>> +++ b/tests/tcg/meson.build
+>> @@ -101,6 +101,9 @@ if get_option('containers')
+>>    endif
+>>  endif
+>>  tcg_tests_summary +=3D {'container command': container_command}
+>> +if get_option('container_registry') !=3D ''
+>> +  tcg_tests_summary +=3D {'container registry': get_option('container_r=
+egistry')}
+>> +endif
+>>=20
+>
+> Rebase issue?
+
+Possibly - it got messy with the reverts.
+
+>
+>>  # plugins come first, as we need to build the list
+>>  test_plugins =3D {}
+
+--=20
+Alex Benn=C3=A9e
+Virtualisation Tech Lead @ Linaro
 

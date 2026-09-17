@@ -4,70 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 84EC3C982D6
-	for <qemu-arm@archiver.kernel.org>; Thu, 17 Sep 2026 17:01:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B0BABC982D2
+	for <qemu-arm@archiver.kernel.org>; Thu, 17 Sep 2026 17:02:24 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1x7FPW-0007mG-Ta; Thu, 17 Sep 2026 12:56:36 -0400
+	id 1x7FPm-0007qo-OD; Thu, 17 Sep 2026 12:56:52 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1x7FPC-0007eC-0T
- for qemu-arm@nongnu.org; Thu, 17 Sep 2026 12:56:16 -0400
+ id 1x7FPH-0007gg-IL
+ for qemu-arm@nongnu.org; Thu, 17 Sep 2026 12:56:20 -0400
 Received: from mail-wm2-x11.google.com ([2a00:1450:4864:31::11])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1x7FP9-0000a4-K3
- for qemu-arm@nongnu.org; Thu, 17 Sep 2026 12:56:13 -0400
+ id 1x7FPE-0000eH-1L
+ for qemu-arm@nongnu.org; Thu, 17 Sep 2026 12:56:19 -0400
 Received: by mail-wm2-x11.google.com with SMTP id
- 5b1f17b1804b1-49e6c0fce17so6843555e9.1
- for <qemu-arm@nongnu.org>; Thu, 17 Sep 2026 09:56:11 -0700 (PDT)
+ 5b1f17b1804b1-49e6598dd44so6238825e9.1
+ for <qemu-arm@nongnu.org>; Thu, 17 Sep 2026 09:56:15 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1789664170; x=1790268970; darn=nongnu.org;
+ d=linaro.org; s=google; t=1789664174; x=1790268974; darn=nongnu.org;
  h=content-transfer-encoding:content-type:mime-version:references
  :in-reply-to:message-id:date:subject:cc:to:from:from:to:cc:subject
  :date:message-id:reply-to:content-type;
- bh=Za3IBRxsCVyA6CkYVC7ysWM1r0DTtcSs0KC0+G3mThQ=;
- b=CJxntfZrOejS/ZASLH2RrucrrhXcA2oFkbCuQgWh/YlQH8zE002/AGUJUOMswGr7Dr
- D65xfIsfAvgDVZBVT7I3z3/v065wQoTMpboZzAmbsM7f5h/JFDxKHpEwIMLwFurdTsx4
- rocO5I46K9lpZs8FQKPKlzStDWzHxWvSuKhLgqQixDtT4TCo8IsALlElRvQJSUh7wjvm
- jpdLct/TzSTF2Z38SCrW3iQMqapm2P62BJaiY0Pmeo8xjNQ6o2kAXHjYeO5lf2wKAl7F
- eLesPlcL2W6Ex0QajTYR1wK1jKB1Owuyzd2SSotFqxlDIWsuVY/aFrN+f+u/89zIEwwj
- 4gtA==
+ bh=uudWEXLbswvjJKhKbS+KuHnJ60QOojX0k9GGTZpa5Ws=;
+ b=PPZ58xf+A+gXoRhur11N5Zf6p5OwtImrCEiVXR/cy9CCHgwWsIaYDzof6Jz+Aw+VzI
+ jXetZmiVSpsBkFzX4x1W/sTRrWVwK29DZuCf5i5/djygwmWYN6oSVZ6R799C1p0z5/8l
+ XmPh6ONTsXWm4QGDI2XE+NsispwZIO2j8s+2Ea0HoHSDp9ysPzNNWv1bVFZ+KPUEctg4
+ VNlj6ExZtuZi/jBBU16Mss3+Px9T7ws6AXAybK554qHdojd/GgTSjrq8dOrb+f99s8kA
+ A7tEqbrTxmeJ2LsE0AuopRUYkUXco6QHEV3Su4pevppjPHNUqP0SKMMfwRg59KQ8hcIT
+ paHg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20260707; t=1789664170; x=1790268970;
+ d=1e100.net; s=20260707; t=1789664174; x=1790268974;
  h=content-transfer-encoding:content-type:mime-version:references
  :in-reply-to:message-id:date:subject:cc:to:from:x-gm-gg
  :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
  :content-type;
- bh=Za3IBRxsCVyA6CkYVC7ysWM1r0DTtcSs0KC0+G3mThQ=;
- b=sgCJ/CdqWK5IhFzoa1wfv8JDbhwCfdPgBdyIkRt+xMbXUcua95ZteySHPOI/YM866n
- 0B8RAb8A7XgKjUVZKiJyqev5GN0yGmej6cxoO6MslqSs7F/+LarNSh7U6cm7+Icd5x2o
- 0KNdc+lZOwu42a8ubyZhtjafYasCu5OMj3uNWG0a9TWoKNHfWVqYmvR1lMqCLWh7Tyqa
- 4dyV7ohlIjijLPVa3/tsWa1mzQxuoBfmvaJdctqwriE9ypS6fgWmbbc/RPyG+k59wmfX
- LlDgc/bl868UPDYp47zRSOADGiAgBzhQU1+dQHZQCrngsbZIklu7+0xpZoHHr17jWAgJ
- xLpA==
+ bh=uudWEXLbswvjJKhKbS+KuHnJ60QOojX0k9GGTZpa5Ws=;
+ b=RLP/D8EWo1wZ3onIKQFt1wHIGo+UY0jOKQ4svyhbKYy9fO/VS0U8nzp0iQy0XWx8CV
+ NDul5T+16hUEcImDLQNuVgi4EfWshY4xN7zvwDNY5gCH8pcbJANd3q1nOv3QBcHXsRX1
+ ZTqy30yayftfLkNUjlRdZmGOjrs99pH7GHBn3aP/bTURfDRRrtqrWpckUjedFWJaluVV
+ 2AT+K9kE5Vdw+U39YJKkJJtU0kNVkgGaPa9FZVvMr6c329SLHNjfXCRHP/87q+pQaALR
+ hyuQn1tAONNra2Kerp3e3F/08Rba9ex5rLvsS83eeaEKdbRMirk0XXmhO7aftSN+2Wcm
+ vhHg==
 X-Forwarded-Encrypted: i=1;
- AKwUvBxwCVIwOy/42qygdSFf0HNVIuCyGZSVCHzrQp4maq6OzvBpK8J3f6rA1OZlJjXZelNc74RUsjGtZQ==@nongnu.org
-X-Gm-Message-State: AFuF++mIns6hyM5lYDtp9Lb1O9Snzg4ypQcd16e+H5c/2T90KJ7m/ADC
- DUU7s5d9iwiBLPTuMWQHueHD6vXBDZcldQ66aAPg6T6sSbL8wLXvvEb0kULTzl1Eom4=
-X-Gm-Gg: AYBFou1/GrZGWVT2vOLZikKD2rhVYexGZ4dmoO8OaWXfGo1vFebQqVdIdBeTd9cU29X
- dVNxZ+4HYdABFQrwjVLhpEPC8Zav3ZER4Cu2G2+sE80dEHnGeDsBG8vHKLb5ZZIQj5FWhhAsyNm
- 87Xik7ZleSVsxDEkUJi/f0/AMjhMh2aFqisR3AP8cn3QuoQy3vfAqNQB4cWvQgslNiNIUTRvlaJ
- jys2RQ25bcvo2R9IcuR3wkr99h+fzXNxv3MIl0dpcbduj2xCE1gO8m0HNnwuvMLmdwFKFYMHQbt
- qKluRSFThQgSmU83XjJwvVVzBsmwpmYn9mEPJn9Ph726m670uULxIJ8V2KxVAsSvyt3oXMezlIo
- 9UBuM3SV1WYeX+DJv/4VKvDos/38gNiPo4J0fcKu45nvkK7SzII7wsf0n58yK1c1foN4Gjp1nLT
- gg0jxeanA3cnl7tLn2dMG56jWSIy42PeaKIT98D/SlaTWggpl7eZ4eqwPwSzK4qHKisU9zeVY=
-X-Received: by 2002:a05:600c:5486:b0:49c:fc6e:a3d2 with SMTP id
- 5b1f17b1804b1-49eb732cc30mr89424965e9.17.1789664170089; 
- Thu, 17 Sep 2026 09:56:10 -0700 (PDT)
+ AKwUvBxQJb7K19g4AN/7CJ6tGSZTYbsOvijnNPh5dSsnczOf7g/MlRTKkfGDgxCcMFJZE4eM5LhHcqrC/g==@nongnu.org
+X-Gm-Message-State: AFuF++km6HhbHV6tbt1M1EAjRaNEcPj4QHNbOSBHfzr2uYOgdTxT0R98
+ B6wtsDaVezc8egIdRZ8DKbVmOUxMqYVgIZoIFSO1z2KomaWYFGVFxyCoMyJIWgSFwaM=
+X-Gm-Gg: AYBFou0pc9QsFCqkZyD4C41QkHaUcXQMBlR062ehpVWyzgbUPnMi8ZcgoS8DcFfsJCk
+ WUcPjDBtI8uhzYFQoyutCTj4oPLXbJyBD6xFIjzwzGBbNZA8iC5H/eImky3ztQmIbbpj2qNRHUo
+ dW95VbBzqsE/6Ia5ITxsXUXbCD4BK4M9JPXp2RG8X4Or2qffcivqEcrKGhIQMFtqGeOwhBmEVjk
+ MMCzsodaSTsp3Iw5xniiwDh8gx/DVoaN1JhIcfU/tn+yqkGKP7GsBejI+gvaLV4ZvMRXLWIvfT7
+ SffcUqEwBerE+U1d9Pd3KDjT6braBSl5KEpN9IMa2pTB/piPOg71jGJytrVfdRSAGl+B+GvqYfD
+ 6huMycs/wjCDoOmZG/F70Toi86u2xPBS8KkawWQeK4///l31JPE2987GR2lqhhyOFou186gj6r1
+ iVQtC9TMnVK/8UKzlP0+D90CWdB7+NYsKkHUftIPB9zxEnLQSaKr9/c7rFyHY7S5eLDSw8BOY=
+X-Received: by 2002:a05:600c:630a:b0:49c:ffde:45ff with SMTP id
+ 5b1f17b1804b1-49eb7325340mr93241475e9.17.1789664174582; 
+ Thu, 17 Sep 2026 09:56:14 -0700 (PDT)
 Received: from draig.lan ([185.124.0.156]) by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-49fbd24774esm142172045e9.10.2026.09.17.09.56.05
+ ffacd0b85a97d-4870bf418dcsm17001622f8f.35.2026.09.17.09.56.03
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
  Thu, 17 Sep 2026 09:56:06 -0700 (PDT)
 Received: from draig.lan (localhost [IPv6:::1])
- by draig.lan (Postfix) with ESMTP id DF4775FBDB;
+ by draig.lan (Postfix) with ESMTP id 946D55FA62;
  Thu, 17 Sep 2026 17:56:02 +0100 (BST)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
@@ -90,10 +90,10 @@ Cc: Cleber Rosa <crosa@redhat.com>, Helge Deller <deller@gmx.de>,
  Richard Henderson <richard.henderson@linaro.org>,
  Ilya Leoshkevich <iii@linux.ibm.com>, Laurent Vivier <laurent@vivier.eu>,
  Brad Smith <brad@comstyle.com>, Kyle Evans <kevans@freebsd.org>
-Subject: [PATCH v5 07/17] tests/tcg: use --add-current-user when building
- containers
-Date: Thu, 17 Sep 2026 17:55:51 +0100
-Message-ID: <20260917165602.3405537-8-alex.bennee@linaro.org>
+Subject: [PATCH v5 04/17] configure: re-purpose the tcg test compiler configs
+ for vdso building
+Date: Thu, 17 Sep 2026 17:55:48 +0100
+Message-ID: <20260917165602.3405537-5-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.47.3
 In-Reply-To: <20260917165602.3405537-1-alex.bennee@linaro.org>
 References: <20260917165602.3405537-1-alex.bennee@linaro.org>
@@ -123,64 +123,228 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-As the meson tcg build routes the container builds through docker.py
-we can also clean up its hack which involved appending a RUN line to
-the dockerfile. All the dockerfiles that care will work with the
---build-arg.
+All the tcg tests are in meson now so there is no reason to put the
+config-target.mak files in those directories. We also don't need the
+GDB feature tests or to emit prerequsistes.
+
+The vdso re-build blob does use the compiler definitions though so
+we can emit the details for that and tweak the vdso makefiles to point
+at the right place. Note some of the vdso makefiles build both 32 and
+64 bit versions from the same compiler.
 
 Reviewed-by: Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>
 Tested-by: Richard Henderson <richard.henderson@linaro.org>
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
 ---
- tests/docker/docker.py | 13 ++++++-------
- tests/tcg/meson.build  |  3 ++-
- 2 files changed, 8 insertions(+), 8 deletions(-)
+ configure                            | 69 +++++++++++-----------------
+ linux-user/aarch64/Makefile.vdso     |  2 +-
+ linux-user/arm/Makefile.vdso         |  2 +-
+ linux-user/hppa/Makefile.vdso        |  2 +-
+ linux-user/i386/Makefile.vdso        |  2 +-
+ linux-user/loongarch64/Makefile.vdso |  2 +-
+ linux-user/ppc/Makefile.vdso         |  2 +-
+ linux-user/riscv/Makefile.vdso       |  2 +-
+ linux-user/s390x/Makefile.vdso       |  2 +-
+ linux-user/sh4/Makefile.vdso         |  2 +-
+ linux-user/x86_64/Makefile.vdso      |  2 +-
+ 11 files changed, 36 insertions(+), 53 deletions(-)
 
-diff --git a/tests/docker/docker.py b/tests/docker/docker.py
-index 315fa2ff848..6090a9dc957 100755
---- a/tests/docker/docker.py
-+++ b/tests/docker/docker.py
-@@ -297,13 +297,6 @@ def build_image(self, tag, docker_dir, dockerfile,
-                                              dir=docker_dir, suffix=".docker")
-         tmp_df.write(dockerfile)
+diff --git a/configure b/configure
+index 04e312a111a..667fc7ca19b 100755
+--- a/configure
++++ b/configure
+@@ -1732,65 +1732,48 @@ if test "$default_targets" = "yes"; then
+   echo "CONFIG_DEFAULT_TARGETS=y" >> $config_host_mak
+ fi
  
--        if user:
--            uid = os.getuid()
--            uname = getpass.getuser()
--            tmp_df.write("\n")
--            tmp_df.write("RUN id %s 2>/dev/null || useradd -u %d -U %s" %
--                         (uname, uid, uname))
--
-         tmp_df.write("\n")
-         tmp_df.write("LABEL com.qemu.dockerfile-checksum=%s\n" % (checksum))
-         for f, c in extra_files_cksum:
-@@ -315,6 +308,12 @@ def build_image(self, tag, docker_dir, dockerfile,
-         if self._buildkit:
-             build_args += ["--build-arg", "BUILDKIT_INLINE_CACHE=1"]
+-tcg_tests_with_compilers=
++# Export the compiler details needed for rebuilding the vdso blobs
+ for target in $target_list; do
+-  arch=${target%%-*}
  
-+        if user:
-+            uid = os.getuid()
-+            uname = getpass.getuser()
-+            build_args += ["--build-arg", "USER=%s" % uname,
-+                           "--build-arg", "UID=%s" % uid]
++  # Skip anything that is not a linux-user target
+   case $target in
++    *-linux-user)
++      ;;
++    *)
++      continue
++      ;;
++  esac
 +
-         if registry is not None:
-             pull_args = ["pull", "%s/%s" % (registry, tag)]
-             self._do(pull_args, quiet=quiet)
-diff --git a/tests/tcg/meson.build b/tests/tcg/meson.build
-index 0604c4b90b9..814f2f8cd8c 100644
---- a/tests/tcg/meson.build
-+++ b/tests/tcg/meson.build
-@@ -255,7 +255,8 @@ foreach target, plan: tcg_tests
-     image_name = 'image-' + cc_dockerfile
-     has_docker = docker_host_arch_supported and docker_supported
-     if cc_dockerfile not in image_targets and has_docker
--      cmd = [docker_wrapper, 'build', '-f', dockerfile, '-t', 'qemu/' + cc_dockerfile]
-+      cmd = [docker_wrapper, 'build', '-f', dockerfile, '-t', 'qemu/' + cc_dockerfile,
-+             '--add-current-user']
-       t = custom_target(image_name, command: cmd,
-                         build_by_default: false,
-                         output: 'no_output_' + image_name)
++  arch=${target%%-*}
++
++  case $arch in
+     xtensa*-linux-user)
+-      # the toolchain is not complete with headers, only build system tests
++      # the toolchain can only build system tests due to missing headers
++      continue
++      ;;
++    aarch64_be-linux-user)
++      # there is no BE user space
+       continue
+       ;;
+-    *-softmmu)
+-      test -f "$source_path/tests/tcg/$arch/Makefile.softmmu-target" || continue
+-      qemu="qemu-system-$arch"
++    aarch64|arm|hppa|i386|loongarch64|ppc64|riscv64|s390x|sh4|x86_64)
++      # arches which need a vdso, some 64 bit arches build both
+       ;;
+-    *-linux-user|*-bsd-user)
+-      qemu="qemu-$arch"
++    *)
++      continue
+       ;;
+   esac
+ 
+-  if probe_target_compiler $target || test -n "$container_image"; then
+-      test -n "$container_image" && build_static=y
+-      mkdir -p "tests/tcg/$target"
+-      config_target_mak=tests/tcg/$target/config-target.mak
+-      ln -sf "$source_path/tests/tcg/Makefile.target" "tests/tcg/$target/Makefile"
++  # note container_image is set by a successful call to probe_target_compiler
++  if probe_target_compiler "$target" || test -n "$container_image"; then
++      mkdir -p "linux-user/$arch"
++      config_target_mak=linux-user/$arch/config-target.mak
+       echo "# Automatically generated by configure - do not modify" > "$config_target_mak"
+       echo "TARGET_NAME=$arch" >> "$config_target_mak"
+       echo "TARGET=$target" >> "$config_target_mak"
+-      write_target_makefile "build-tcg-tests-$target" >> "$config_target_mak"
+-      echo "BUILD_STATIC=$build_static" >> "$config_target_mak"
+-      echo "QEMU=$PWD/$qemu" >> "$config_target_mak"
+-
+-      # will GDB work with these binaries?
+-      if test "${gdb_arches#*$arch}" != "$gdb_arches"; then
+-          echo "GDB=$gdb_bin" >> $config_target_mak
+-      fi
+-
+-      if test "${gdb_arches#*$arch}" != "$gdb_arches" && version_ge $gdb_version 14.1; then
+-          echo "GDB_HAS_SME_TILES=y" >> $config_target_mak
+-      else
+-          echo "GDB_HAS_SME_TILES=n" >> $config_target_mak
+-      fi
+-
+-      if test "${gdb_arches#*aarch64}" != "$gdb_arches" && version_ge $gdb_version 15.1; then
+-          echo "GDB_HAS_MTE=y" >> $config_target_mak
+-      fi
+-
+-      if test "${gdb_arches#*aarch64}" != "$gdb_arches" && version_ge $gdb_version 16.0; then
+-          # GDB has to support MTE in baremetal to allow debugging MTE in QEMU system mode
+-          echo "GDB_SUPPORTS_MTE_IN_BAREMETAL=y" >> $config_target_mak
+-      fi
+-
+-      echo "run-tcg-tests-$target: $qemu\$(EXESUF)" >> Makefile.prereqs
+-      tcg_tests_with_compilers="$tcg_tests_with_compilers $target"
++      write_target_makefile "update-linux-vdso" >> "$config_target_mak"
+   fi
+ done
+ 
+-if test "$tcg" = "enabled"; then
+-    echo "TCG_TESTS_WITH_COMPILERS=$tcg_tests_with_compilers" >> $config_host_mak
+-fi
+-
+ if test "$skip_meson" = no; then
+   cross="config-meson.cross.new"
+   meson_quote() {
+diff --git a/linux-user/aarch64/Makefile.vdso b/linux-user/aarch64/Makefile.vdso
+index c33a679c0f2..82ed2011087 100644
+--- a/linux-user/aarch64/Makefile.vdso
++++ b/linux-user/aarch64/Makefile.vdso
+@@ -1,4 +1,4 @@
+-include $(BUILD_DIR)/tests/tcg/aarch64-linux-user/config-target.mak
++include $(BUILD_DIR)/linux-user/aarch64/config-target.mak
+ 
+ SUBDIR = $(SRC_PATH)/linux-user/aarch64
+ VPATH += $(SUBDIR)
+diff --git a/linux-user/arm/Makefile.vdso b/linux-user/arm/Makefile.vdso
+index ede489e2363..16ae8d7aaae 100644
+--- a/linux-user/arm/Makefile.vdso
++++ b/linux-user/arm/Makefile.vdso
+@@ -1,4 +1,4 @@
+-include $(BUILD_DIR)/tests/tcg/arm-linux-user/config-target.mak
++include $(BUILD_DIR)/linux-user/arm/config-target.mak
+ 
+ SUBDIR = $(SRC_PATH)/linux-user/arm
+ VPATH += $(SUBDIR)
+diff --git a/linux-user/hppa/Makefile.vdso b/linux-user/hppa/Makefile.vdso
+index f4537ae7169..78642c42661 100644
+--- a/linux-user/hppa/Makefile.vdso
++++ b/linux-user/hppa/Makefile.vdso
+@@ -1,4 +1,4 @@
+-include $(BUILD_DIR)/tests/tcg/hppa-linux-user/config-target.mak
++include $(BUILD_DIR)/linux-user/hppa/config-target.mak
+ 
+ SUBDIR = $(SRC_PATH)/linux-user/hppa
+ VPATH += $(SUBDIR)
+diff --git a/linux-user/i386/Makefile.vdso b/linux-user/i386/Makefile.vdso
+index 95bc616f6d6..ca2e37fa6b6 100644
+--- a/linux-user/i386/Makefile.vdso
++++ b/linux-user/i386/Makefile.vdso
+@@ -1,4 +1,4 @@
+-include $(BUILD_DIR)/tests/tcg/i386-linux-user/config-target.mak
++include $(BUILD_DIR)/linux-user/i386/config-target.mak
+ 
+ SUBDIR = $(SRC_PATH)/linux-user/i386
+ VPATH += $(SUBDIR)
+diff --git a/linux-user/loongarch64/Makefile.vdso b/linux-user/loongarch64/Makefile.vdso
+index 1d760b1e47e..ceb61101209 100644
+--- a/linux-user/loongarch64/Makefile.vdso
++++ b/linux-user/loongarch64/Makefile.vdso
+@@ -1,4 +1,4 @@
+-include $(BUILD_DIR)/tests/tcg/loongarch64-linux-user/config-target.mak
++include $(BUILD_DIR)/linux-user/loongarch64/config-target.mak
+ 
+ SUBDIR = $(SRC_PATH)/linux-user/loongarch64
+ VPATH += $(SUBDIR)
+diff --git a/linux-user/ppc/Makefile.vdso b/linux-user/ppc/Makefile.vdso
+index e2b8facbb50..6b9be843817 100644
+--- a/linux-user/ppc/Makefile.vdso
++++ b/linux-user/ppc/Makefile.vdso
+@@ -1,4 +1,4 @@
+-include $(BUILD_DIR)/tests/tcg/ppc64-linux-user/config-target.mak
++include $(BUILD_DIR)/linux-user/ppc64/config-target.mak
+ 
+ SUBDIR = $(SRC_PATH)/linux-user/ppc
+ VPATH += $(SUBDIR)
+diff --git a/linux-user/riscv/Makefile.vdso b/linux-user/riscv/Makefile.vdso
+index 2c257dbfda5..2eefdb70cf9 100644
+--- a/linux-user/riscv/Makefile.vdso
++++ b/linux-user/riscv/Makefile.vdso
+@@ -1,4 +1,4 @@
+-include $(BUILD_DIR)/tests/tcg/riscv64-linux-user/config-target.mak
++include $(BUILD_DIR)/linux-user/riscv64/config-target.mak
+ 
+ SUBDIR = $(SRC_PATH)/linux-user/riscv
+ VPATH += $(SUBDIR)
+diff --git a/linux-user/s390x/Makefile.vdso b/linux-user/s390x/Makefile.vdso
+index e82bf9e29ff..51f7c50a2de 100644
+--- a/linux-user/s390x/Makefile.vdso
++++ b/linux-user/s390x/Makefile.vdso
+@@ -1,4 +1,4 @@
+-include $(BUILD_DIR)/tests/tcg/s390x-linux-user/config-target.mak
++include $(BUILD_DIR)/linux-user/s390x/config-target.mak
+ 
+ SUBDIR = $(SRC_PATH)/linux-user/s390x
+ VPATH += $(SUBDIR)
+diff --git a/linux-user/sh4/Makefile.vdso b/linux-user/sh4/Makefile.vdso
+index 272c5d262de..ed2cc11b825 100644
+--- a/linux-user/sh4/Makefile.vdso
++++ b/linux-user/sh4/Makefile.vdso
+@@ -1,4 +1,4 @@
+-include $(BUILD_DIR)/tests/tcg/sh4-linux-user/config-target.mak
++include $(BUILD_DIR)/linux-user/sh4/config-target.mak
+ 
+ SUBDIR = $(SRC_PATH)/linux-user/sh4
+ VPATH += $(SUBDIR)
+diff --git a/linux-user/x86_64/Makefile.vdso b/linux-user/x86_64/Makefile.vdso
+index 26552b66dba..56fe87af72b 100644
+--- a/linux-user/x86_64/Makefile.vdso
++++ b/linux-user/x86_64/Makefile.vdso
+@@ -1,4 +1,4 @@
+-include $(BUILD_DIR)/tests/tcg/x86_64-linux-user/config-target.mak
++include $(BUILD_DIR)/linux-user/x86_64/config-target.mak
+ 
+ SUBDIR = $(SRC_PATH)/linux-user/x86_64
+ VPATH += $(SUBDIR)
 -- 
 2.47.3
 

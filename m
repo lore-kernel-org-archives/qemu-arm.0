@@ -4,70 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 40D91C982D2
-	for <qemu-arm@archiver.kernel.org>; Thu, 17 Sep 2026 17:03:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5F0F2C982D2
+	for <qemu-arm@archiver.kernel.org>; Thu, 17 Sep 2026 17:03:54 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1x7FW1-0007Fa-Mu; Thu, 17 Sep 2026 13:03:20 -0400
+	id 1x7FWB-0007MZ-3V; Thu, 17 Sep 2026 13:03:27 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1x7FVs-0007D3-Bd
- for qemu-arm@nongnu.org; Thu, 17 Sep 2026 13:03:09 -0400
-Received: from mail-wr1-x430.google.com ([2a00:1450:4864:20::430])
+ id 1x7FVy-0007FV-Vx
+ for qemu-arm@nongnu.org; Thu, 17 Sep 2026 13:03:20 -0400
+Received: from mail-wm2-x10.google.com ([2a00:1450:4864:31::10])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1x7FVp-0001jn-I6
- for qemu-arm@nongnu.org; Thu, 17 Sep 2026 13:03:07 -0400
-Received: by mail-wr1-x430.google.com with SMTP id
- ffacd0b85a97d-4843e397f74so498126f8f.1
- for <qemu-arm@nongnu.org>; Thu, 17 Sep 2026 10:03:05 -0700 (PDT)
+ id 1x7FVv-0001ld-HM
+ for qemu-arm@nongnu.org; Thu, 17 Sep 2026 13:03:14 -0400
+Received: by mail-wm2-x10.google.com with SMTP id
+ 5b1f17b1804b1-49cd38e0e5dso13171465e9.2
+ for <qemu-arm@nongnu.org>; Thu, 17 Sep 2026 10:03:09 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1789664584; x=1790269384; darn=nongnu.org;
+ d=linaro.org; s=google; t=1789664589; x=1790269389; darn=nongnu.org;
  h=content-transfer-encoding:content-type:mime-version:references
  :in-reply-to:message-id:date:subject:cc:to:from:from:to:cc:subject
  :date:message-id:reply-to:content-type;
- bh=qqeexVrUP7S+bjRwHH7RDoI2I5dpPVlDr3aItml2BS4=;
- b=ECgwnMG/2UYlh/hcci4GXXTtcKqY9VEvDnFal2i7mP+98sgXzxYlzAHA3NAHUHNs4M
- hUAQeYQh/DK/1AkU5VpYM3gDNUZymoT/B2Z64RFwHRBl7YY5mkd7bP9+dcjB+Vb1dXPT
- DUH0TXWQ/qPJkIC6cX1ZqnoLca4XY7W2S7AJBgdvUbbJTWiY1YdXf2cIzUb51uUt6Ypp
- YT1cEq4pTsI4+mxggqARQAToq/pfjaYp3L1aAClflQKbMlsvX30LRN/xOvzBNfkRcRYP
- kiLxLgEocOJ1SBE2yxDWYcYk4QRh5oTw079X720FG9sAsVcPXxaMoM0l0DRCONo05x9X
- vUIQ==
+ bh=1kX6+O4tJe0pWhj+BvPQgaI0joLlV1TeCnlxudU5Yr0=;
+ b=eUeromc8MwtEv8yxfYcpFO7QOO1SjYfN+pY/0yhMRuz+aSXsRmu4+47/JXc3l4zhWw
+ PTYUU1r4bOC/Z38vm31n43oRzUqP/AIcZhlifD49WgY4uiFDo0Y1IBLmbgI8ULPOkUQG
+ LO/yiZ/B+VOEzBlekjmYVnnUr3zM5V3mhjAzmPHt5yalNlIFlncNn6r6y/uYeFza13EE
+ MzTXkWotUdNNvmGWYqSoCCt/WesekqignnR12EyxYozgWhRBVKD+tXVUsT65wdTM7sDP
+ Hq/MOog8zzQUmG7p2wrbK4ryuRI2++ykIvomjVcxEEq8JXAprKtVBsPa0GGQQdAqO+Ru
+ A9JQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20260707; t=1789664584; x=1790269384;
+ d=1e100.net; s=20260707; t=1789664589; x=1790269389;
  h=content-transfer-encoding:content-type:mime-version:references
  :in-reply-to:message-id:date:subject:cc:to:from:x-gm-gg
  :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
  :content-type;
- bh=qqeexVrUP7S+bjRwHH7RDoI2I5dpPVlDr3aItml2BS4=;
- b=MtsEvIUu0x/o1UpWnl5vASgtD/fZ5RLXwE1jn03amFxKI3ZSWCWSPBEOsJgPuyfUGO
- lwaap5+I8CgW6ssd5Ed7uajbbla+NzqJKrCDCtxG5qmZ1HGPw61ucc8aov3lLyLgL54x
- es5CTemWNffG5O05FQoXOIjdr9IWhhg+jk2jKjr/JbIYcH0m9dCEotd+D2Ohw+10OQ4H
- Wy4jgfZDhbxze5PtTjxAyQbmQhJOrCVLm2Y4IudXIMCFhZzy37EKxB8qbqO6Fse9mqKn
- B6CsLBvsOzXL6J/bz3ARW6VYj4bjh08h5204U9/XeYPuiuAU2QNSX5LQuTCRZ3ATIj7e
- lWFw==
+ bh=1kX6+O4tJe0pWhj+BvPQgaI0joLlV1TeCnlxudU5Yr0=;
+ b=R+du6E73VgrCX01sNWga1Uaj7KKrdgmR/Xah99Q7Hk6fJQMqhw0IeaS/0vrq1M3WnN
+ 5WoOTMu43N58lu/kb8INdu/yPONTze/Ka+urPS+h/HFuIve3Y2zzGWQIvGWG4VuCXyMp
+ 7qwwZsDycJlok8450Zu+GZAoG30f9V7o2EVy+t2s7jMPEuHsPDJmB1Wj5GKbs1AQH3zA
+ KzAYyQixZSrxvLQbOTMXrBwWLRrdAr+0Q8PsGG8FIVyh7EAqUtTW8um9P7e+iX2RxJ8I
+ KfVxSyP9jOoKoUe6MsmCgz9sa85xGzfnafXSrm3kuj7fa0airoVP0cwQ6WvAXsR65EZ1
+ FYHQ==
 X-Forwarded-Encrypted: i=1;
- AKwUvBz2tLtYV61PDRSqGSaBfIUqm+bRLzWIXBpL+BegZHqA9NFlYyiVwnctp64dT6Mz/QfHJsLqo9aYuw==@nongnu.org
-X-Gm-Message-State: AFuF++kw8A42+AF+LWi35T8ypVk50PuaxgQvkBxWX8xsV10axRVgQTeI
- lhWXfIzZZqJnwEaREuj5SVPDbN8ACCMH2KVxktnE9byep8Y1SqwII8XDnbYfd+BFeic=
-X-Gm-Gg: AYBFou3wW9tqVeKVMKSih6Q6jaFl/m8DIjnTXnwH7vy1udxY8xEFR9ev59PkgLBo+d4
- LnyfHkjCs9GLdV5uAtfvFnifsDXlhlMkvaFrT5PBWh9pM98m/1TzfnCNB3soruNlRpWcIVFEXGF
- 4O6FObLFEJbPkMQAEUrigX7LnP+M3v/GRwmXNAmkhoH07/jG1ywJUrAxyZs02sqiOJWPr6nrFSF
- M7q0SCgRz2SSXj75f80/ojCfLc+iOzueqefX2h+Pwi1ujkgO0HQfVaD5jD3AlN6TytJIjG3hfgJ
- nx7YTPp5AMrrs7w1ypbr9oH8G8w99pqIbNxaVRZdrCzXCmjdcPIxGArB36MGbhiWSB4AmzweuPq
- GOlbMYfi15gFUNqUpVxQQ9PuGd68T+0Ph47G68sg5foZg8N6leuk/ZckOJmq5mbBcquuWOVWhjJ
- Mnp/Tsc3SbwfQ/VxWGeOk2aE8oylSeCL3vF5tephvh+R6Y9wcD+d+PMAy7BgmIvSJrc2xZUH4=
-X-Received: by 2002:a05:6000:2992:20b0:487:64b:ea03 with SMTP id
- ffacd0b85a97d-48713c056damr4437989f8f.10.1789664583856; 
- Thu, 17 Sep 2026 10:03:03 -0700 (PDT)
+ AKwUvBzGv0SWj9KXX8O2w7D80FKxy8w4Fx92ll0bqsUINSC+F/8oYCFDjT1lk24SNAZ2xltlligVvc31Og==@nongnu.org
+X-Gm-Message-State: AFuF++nJEeSYnyDr+7QceleisNvToGzmuQvDScROh6+4i4XF7wvC1PQ2
+ NcGY/L0WZoneycoGVmlCTegtUL80p4UzOBs8iZNkw1i1rTO3sBYVa67rDU5yko9FFXM=
+X-Gm-Gg: AYBFou1b1jkGhKz6T8+m2PEdeOZkR8jvG4bTfukdt4EEEs/pMI/2o5IjFw603CHoMOH
+ FkTQJYVCFKLTLcfVtg92X3LjE7nYrvFRN2ajW6LF/+/6oIqLLgzFcgUr0Aor7ZBw8oomOLhcXYU
+ qtWmzpoXMKkClAnZBoMHXxUr7jmlB6kSfzs6+Q5CIJSQMv2IJJw4BPga+ihUyT8o1xacRreUos3
+ Hyn2QeALhR62wGgNLdYXnRCM+o42zNDeRiV/5/M2nM/qvcxylOdjRCUur0YUdqcY25kbpemcqS0
+ iwCFjkqyk7EPpLVXHka7OWVbR0+OkaP4MmBNgfehCN427EQeC6fZ9fljNJG5Ypva2/OaszeoyJ/
+ Egata7f/SSLmxOJERCU8pCzbreFRfVBRWrFIy7c9mcMyAqXqn2QNL1IeuSqk9/BCp89rrbP6kBN
+ OfORB59mm6sCcvvZ4lfKEokDy0f2DmMxFDETzy2jrUZZdMyJdsWoHwfESE2KN6EuDvysMVIdk=
+X-Received: by 2002:a05:600c:a08b:b0:49f:bd3c:bc21 with SMTP id
+ 5b1f17b1804b1-49fbd3cbcf4mr52074155e9.28.1789664588678; 
+ Thu, 17 Sep 2026 10:03:08 -0700 (PDT)
 Received: from draig.lan ([185.124.0.156]) by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-4870bf418dcsm17047776f8f.35.2026.09.17.10.03.01
+ 5b1f17b1804b1-49fc4886e11sm502475e9.3.2026.09.17.10.03.01
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 17 Sep 2026 10:03:02 -0700 (PDT)
+ Thu, 17 Sep 2026 10:03:07 -0700 (PDT)
 Received: from draig.lan (localhost [IPv6:::1])
- by draig.lan (Postfix) with ESMTP id 0001E5FEF7;
+ by draig.lan (Postfix) with ESMTP id BD2FA5FCB8;
  Thu, 17 Sep 2026 17:56:03 +0100 (BST)
 From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: qemu-devel@nongnu.org
@@ -90,17 +90,18 @@ Cc: Cleber Rosa <crosa@redhat.com>, Helge Deller <deller@gmx.de>,
  Richard Henderson <richard.henderson@linaro.org>,
  Ilya Leoshkevich <iii@linux.ibm.com>, Laurent Vivier <laurent@vivier.eu>,
  Brad Smith <brad@comstyle.com>, Kyle Evans <kevans@freebsd.org>
-Subject: [PATCH v5 17/17] gitlab: drop check-tcg from clang-system job
-Date: Thu, 17 Sep 2026 17:56:01 +0100
-Message-ID: <20260917165602.3405537-18-alex.bennee@linaro.org>
+Subject: [PATCH v5 15/17] tests/tcg: add console property to docker image
+ custom target
+Date: Thu, 17 Sep 2026 17:55:59 +0100
+Message-ID: <20260917165602.3405537-16-alex.bennee@linaro.org>
 X-Mailer: git-send-email 2.47.3
 In-Reply-To: <20260917165602.3405537-1-alex.bennee@linaro.org>
 References: <20260917165602.3405537-1-alex.bennee@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::430;
- envelope-from=alex.bennee@linaro.org; helo=mail-wr1-x430.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:31::10;
+ envelope-from=alex.bennee@linaro.org; helo=mail-wm2-x10.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -123,27 +124,30 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-We have no cross-compilers in the fedora image so don't bother trying
-to run the tests.
+According to the meson docs this serialises the target in a special
+"console" pool which also disables the buffering of stdout. This helps
+avoid the appearance of a massive stall when a docker image is built.
 
+Reviewed-by: Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>
+Tested-by: Richard Henderson <richard.henderson@linaro.org>
+Suggested-by: Daniel P. Berrangé <berrange@redhat.com>
 Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
 ---
- .gitlab-ci.d/buildtest.yml | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ tests/tcg/meson.build | 1 +
+ 1 file changed, 1 insertion(+)
 
-diff --git a/.gitlab-ci.d/buildtest.yml b/.gitlab-ci.d/buildtest.yml
-index 5f21703645b..a97cc0b20b8 100644
---- a/.gitlab-ci.d/buildtest.yml
-+++ b/.gitlab-ci.d/buildtest.yml
-@@ -441,7 +441,7 @@ clang-system:
-     CONFIGURE_ARGS: --cc=clang --cxx=clang++ --enable-ubsan
-       --extra-cflags=-fno-sanitize-recover=undefined
-     TARGETS: alpha-softmmu arm-softmmu m68k-softmmu mips64-softmmu s390x-softmmu
--    MAKE_CHECK_ARGS: check-qtest check-tcg
-+    MAKE_CHECK_ARGS: check-qtest
- 
- clang-user:
-   extends: .native_build_job_template
+diff --git a/tests/tcg/meson.build b/tests/tcg/meson.build
+index 053ef147df0..95f533b0ab5 100644
+--- a/tests/tcg/meson.build
++++ b/tests/tcg/meson.build
+@@ -265,6 +265,7 @@ foreach target, plan: tcg_tests
+       endif
+       t = custom_target(image_name, command: cmd,
+                         build_by_default: false,
++                        console: true,
+                         output: 'no_output_' + image_name)
+       image_targets += {cc_dockerfile: t}
+     endif
 -- 
 2.47.3
 

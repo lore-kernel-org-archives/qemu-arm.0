@@ -4,80 +4,81 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6391DC982CF
-	for <qemu-arm@archiver.kernel.org>; Thu, 17 Sep 2026 13:27:59 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A4367C982D1
+	for <qemu-arm@archiver.kernel.org>; Thu, 17 Sep 2026 13:56:42 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1x7C9K-00084B-Sb; Thu, 17 Sep 2026 09:27:38 -0400
+	id 1x7CbB-0005Uo-DZ; Thu, 17 Sep 2026 09:56:27 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1x7C9K-00083n-3h
- for qemu-arm@nongnu.org; Thu, 17 Sep 2026 09:27:38 -0400
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1x7Cb8-0005UQ-Ru
+ for qemu-arm@nongnu.org; Thu, 17 Sep 2026 09:56:23 -0400
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1x7C9I-0002K1-A9
- for qemu-arm@nongnu.org; Thu, 17 Sep 2026 09:27:37 -0400
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1x7Cb7-0008AS-8I
+ for qemu-arm@nongnu.org; Thu, 17 Sep 2026 09:56:22 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1789651655;
+ s=mimecast20190719; t=1789653379;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
- bh=Os4V/Nh6hpIAE4QELnwb/Aon1/X5FEXVxFR2MrZLV0c=;
- b=Rd3z23QcH+hScsqRjHlTVBVa4TW2To703cEfrhfchJOuckJXi8QgDES61Q9j/3RZ5oM8hw
- 7+HKc3fZ7ytIO2PA6aYkw5b5dYj+iAkcIXLCvn2dy9ST5iUWlbW4dhtBzr87hf7dK3jASJ
- zEg1YIrrtvtXKvTEjR4Tg6Nbpk9ZcM0=
-Received: from mail-wm1-f72.google.com (mail-wm1-f72.google.com
- [209.85.128.72]) by relay.mimecast.com with ESMTP with STARTTLS
+ bh=SeeVHLhsNNmXNhyLrRU75c16AY5Z+goC/mThK3A06qY=;
+ b=NJjL2GZhNAkrURYuP6zCd5Grp8b4sS8HKZfsAAn7MT8BzIWY8uF7T5nHbWPKUg23+uzr+m
+ TxbfUyzzPNmGPJgg1B3J9VKK//nSCPArPPn5V2t9j9tq2f/GhMALPWVYMJ8lRhunvSCi5e
+ ifoxo/pDTXZI4QnTdD4W8k65X0I9K6c=
+Received: from mail-ed1-f69.google.com (mail-ed1-f69.google.com
+ [209.85.208.69]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-39-9NxDZaO-PzK3zuxX5hSYYg-1; Thu, 17 Sep 2026 09:27:33 -0400
-X-MC-Unique: 9NxDZaO-PzK3zuxX5hSYYg-1
-X-Mimecast-MFC-AGG-ID: 9NxDZaO-PzK3zuxX5hSYYg_1789651653
-Received: by mail-wm1-f72.google.com with SMTP id
- 5b1f17b1804b1-49cf5bd2f12so9614325e9.1
- for <qemu-arm@nongnu.org>; Thu, 17 Sep 2026 06:27:33 -0700 (PDT)
+ us-mta-497-7YFUpT8fMGmNWaIJV28nlA-1; Thu, 17 Sep 2026 09:56:17 -0400
+X-MC-Unique: 7YFUpT8fMGmNWaIJV28nlA-1
+X-Mimecast-MFC-AGG-ID: 7YFUpT8fMGmNWaIJV28nlA_1789653376
+Received: by mail-ed1-f69.google.com with SMTP id
+ 4fb4d7f45d1cf-6a3e6916a5eso1285222a12.0
+ for <qemu-arm@nongnu.org>; Thu, 17 Sep 2026 06:56:17 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20260707; t=1789651653; x=1790256453;
+ d=1e100.net; s=20260707; t=1789653376; x=1790258176;
  h=content-transfer-encoding:content-type:in-reply-to:autocrypt
  :content-language:from:references:cc:to:subject:user-agent
  :mime-version:date:message-id:x-gm-gg:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to:content-type;
- bh=Os4V/Nh6hpIAE4QELnwb/Aon1/X5FEXVxFR2MrZLV0c=;
- b=KceHJuS+vVuRtMXzqFV4c9NfE+M1EiX+h/SvJm0vpLvgaZFpEYm6gatRwG8gahAC92
- vnu4N/a01+9f7rlNA3J7EX/RRDx2nFO8np7l0QgXIjdoinoCF5pVyG+IDDIfQ6YcCEJi
- 9wKyzB0kMpmDQt5TTR3hoGKLogyrRtXWr3HS8pjMT3pkZSvKVEfIDH1jILS7K4hvIMYC
- EFqcikcmXChgZyWLGh6hImtizpSlSAk4+NaYBQDKuS4+HUQgwtLdmcCA54YG71nI/NlZ
- vwCxQoOiQcluDJnETA3Iu41ixtwnhdYAY78flIUv1NiwlehE+YuClPoT/HZ7UM7mlc48
- 3QbQ==
+ bh=SeeVHLhsNNmXNhyLrRU75c16AY5Z+goC/mThK3A06qY=;
+ b=I/jbf7p5SF3qkXxPHNuOXcqrQFnuZdHry8rtAdVh9MmatPkAxes8d1Lc7Uc9K2YUF2
+ w2GetVfjsNRZIGlkpdCFZ5UgkIWHHpJJCRDSnennREbAvYz9xxcuDwlRdlaUB5+5x6uI
+ hhbCol5ep0YQF17UtKoRhVYvW8o4xsRm+JqbVqt/QHEZk0iywaZ6cO0BNnxYN4/WnClc
+ SgHeOOsmnqN2R4zMjycO/iEx+sP/guEkpzFlEGlDWvgCR/qI/L1C+EF+/KOo9osO99BA
+ QGvaNTFf/buT7eUjQdizTI7z/jhlFsHnEvdJTn2cVZXVOBNcFmUEQotGcBIaVa8fKV7r
+ QcYg==
 X-Forwarded-Encrypted: i=1;
- AKwUvBzR9DOAkyc6IZ+1i3pcVbIWymeQ1k4ymHnrWLyAXSQ4dYkq4oAOLnK8jnNGaXpZNGKz1YiqO3gF/w==@nongnu.org
-X-Gm-Message-State: AFuF++nSadNCP7o8CguykfzPI0cgh29l00X4buXx63gtqGgwrhFRPghC
- yS60EjBE9kNpFn4HNp15n03qFLhe+JLzEj5eJflOW6hruIZ8XHG6xLEZku8fWlfTgPXd024/kpw
- AV7XQZRXfJ8OWNg/dH4YPPn/qOZoWae53gBQ7Odqr+JRQkNFZcBd/hw==
-X-Gm-Gg: AYBFou3Eu1AoS/q0MVOleNCAFqyoxyJ6fmgHvJiZ5/aNO+Rl00Ku5J4Y84yVkMC5IIr
- A/OcmeFytEtH1ic8VLYxY5QKTotF0D5ZyXcDThW0HRIz4aeZgEwcmP1X4zHnxVo55s+TrMfte1b
- +QddDaLC4lAgE/SfAvgovIYrrp9Pn5yTmYiQPKlBpKkhniqRXPUEH0m01No0Sbzd97ebehUHLQS
- UvtmAwbTzky4rnGTI5MI0uED+Xvn4XJr/aicw9KTSIs0WPefudB8PXWlm/89px78kSmGU7FOrnK
- 2sothMlA2n2XARzhJ4M52NezbF0jiaGYjksCWAhX/r2uQ21Phv48Cttk9pEHAOsgxTJ6HUhquaN
- uJ3blToL+I9scuqmKKAtK/uzdw6MPhqTu2uucOMYMwg==
-X-Received: by 2002:a05:600c:8b86:b0:49c:fff9:f684 with SMTP id
- 5b1f17b1804b1-49eb7320be4mr78559855e9.21.1789651651956; 
- Thu, 17 Sep 2026 06:27:31 -0700 (PDT)
-X-Received: by 2002:a05:600c:8b86:b0:49c:fff9:f684 with SMTP id
- 5b1f17b1804b1-49eb7320be4mr78559305e9.21.1789651651438; 
- Thu, 17 Sep 2026 06:27:31 -0700 (PDT)
+ AKwUvByKjJcHGhqmJI0idVhOQCudKn5uysp4XANKa44WTyy7eeIzmXC+p99rRTTkNckNyknF04u16VukrQ==@nongnu.org
+X-Gm-Message-State: AFuF++k99R1NT5eLuuDqXS1qy3BqPWTiJgqqwH44IaJQBWFtEmAr22uF
+ nTcLd/0/sT6vEutSR0lvSHpXLCZz7Pe5b8MxkTWRBkC6mlW9PnOJwi7zjTQzb+ut+bgeBhcilh3
+ 2AqCZV+fnOWfyimRFfA3gEtkzf0kLkLeAus3xotHaRQSDJJJh/uQsZg==
+X-Gm-Gg: AYBFou0mDUlXmjp8bRZHSBCEA/gEKu+naxeFNtLy+HrZPv6JmIIObMbzYjdj+Ve6rJX
+ PLx8ptFpey8Qu8yvlZYKrASCziIyElx5t8pkuSC949slLnWtEWaIIA0optldznQ2yLuZeFVeQw+
+ kkvhXXYgBMG9l+xqdF39yY039dZDZaeGjTYRSk81dQtprZw2llNh1zsJx9dY6Wg+h/unMDkrTDL
+ RnTGvFjMw/mREyIJ34e993svxx3JWU7b+7ymbIkvey86KD1E0S9FN/5iB7gHJbAqJMS7l8DzmzB
+ 6WDe8UzgaAV4VAuCcF+UrFMGxv4uroDZkp9dXaq/VGKIdSH9lTNBMimY+bTbEHFqtu/1DXCkQcL
+ hoDWUxrZ5YJmDdBzxNJiVuIAVs8Jb/QmMLnK6IOXY1A==
+X-Received: by 2002:a05:6402:28cc:b0:6aa:1da6:3536 with SMTP id
+ 4fb4d7f45d1cf-6aa2235ac04mr4345205a12.10.1789653376128; 
+ Thu, 17 Sep 2026 06:56:16 -0700 (PDT)
+X-Received: by 2002:a05:6402:28cc:b0:6aa:1da6:3536 with SMTP id
+ 4fb4d7f45d1cf-6aa2235ac04mr4345173a12.10.1789653375597; 
+ Thu, 17 Sep 2026 06:56:15 -0700 (PDT)
 Received: from ?IPV6:2a01:e0a:1292:d530:e939:7a09:c368:e5d5?
  ([2a01:e0a:1292:d530:e939:7a09:c368:e5d5])
  by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-49fbd32c5e1sm108386465e9.5.2026.09.17.06.27.29
+ 4fb4d7f45d1cf-6aa1d2727bfsm3365323a12.20.2026.09.17.06.56.14
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 17 Sep 2026 06:27:30 -0700 (PDT)
-Message-ID: <3d799d0d-1365-4bbb-a159-c8d926f2863c@redhat.com>
-Date: Thu, 17 Sep 2026 15:27:29 +0200
+ Thu, 17 Sep 2026 06:56:15 -0700 (PDT)
+Message-ID: <0991dccb-a123-471c-8a72-e4194da6c596@redhat.com>
+Date: Thu, 17 Sep 2026 15:56:13 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 02/10] hw/vfio/region: Add vfio_region_setup_with_ops()
+Subject: Re: [PATCH v2 05/10] hw/vfio/pci: Back the CXL memory with a
+ RAM-device region
 To: mhonap@nvidia.com, alex@shazbot.org, ankita@nvidia.com, jic23@kernel.org, 
  dave.jiang@intel.com, alejandro.lucero-palau@amd.com, smadhavan@nvidia.com,
  pierrick.bouvier@oss.qualcomm.com, mst@redhat.com, imammedo@redhat.com,
@@ -86,7 +87,7 @@ To: mhonap@nvidia.com, alex@shazbot.org, ankita@nvidia.com, jic23@kernel.org,
 Cc: kjaju@nvidia.com, vsethi@nvidia.com, zhiw@nvidia.com,
  qemu-devel@nongnu.org, qemu-arm@nongnu.org, linux-cxl@vger.kernel.org
 References: <20260916184412.3825713-1-mhonap@nvidia.com>
- <20260916184412.3825713-3-mhonap@nvidia.com>
+ <20260916184412.3825713-6-mhonap@nvidia.com>
 From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@redhat.com>
 Autocrypt: addr=clg@redhat.com; keydata=
  xsFNBFu8o3UBEADP+oJVJaWm5vzZa/iLgpBAuzxSmNYhURZH+guITvSySk30YWfLYGBWQgeo
@@ -131,9 +132,9 @@ Autocrypt: addr=clg@redhat.com; keydata=
  HQoPn9qrDJgsgcbBVc1gkUT6hnxShKPp4PlsZVMNjvPAnr5TEBgHkk54HQRhhwcYv1T2QumQ
  izDiU6iOrUzBThaMhZO3i927SG2DwWDVzZltKrCMD1aMPvb3NU8FOYRhNmIFR3fcalYr+9gD
  uVKe8BVz4atMOoktmt0GWTOC8P4=
-In-Reply-To: <20260916184412.3825713-3-mhonap@nvidia.com>
+In-Reply-To: <20260916184412.3825713-6-mhonap@nvidia.com>
 X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: -cAuvEDym9jBK1HPflW5XwHLwnXhIt7hTRgw8I5lbGo_1789651653
+X-Mimecast-MFC-PROC-ID: EFdiUs9vwByPSK7v1eeI_WcLeS4JpLsX50AEDFVMwjg_1789653376
 X-Mimecast-Originator: redhat.com
 Content-Language: en-US, fr
 Content-Type: text/plain; charset=UTF-8; format=flowed
@@ -165,93 +166,105 @@ Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 On 9/16/26 20:44, mhonap@nvidia.com wrote:
 > From: Manish Honap <mhonap@nvidia.com>
 > 
-> A CXL Type-2 device traps its HDM decoder block, so that region needs
-> custom MemoryRegionOps rather than the pass-through default. Split the
-> setup body out and let a caller supply the ops; NULL keeps the existing
-> behaviour.
+> mmap the kernel's HDM memory region so its host physical pages back a
+> RAM-device MemoryRegion. It stays out of the guest address space until
+> the guest commits its decoder and QEMU learns the GPA to place it at.
 > 
 > AI-used-for: code (prototype)
 > Signed-off-by: Manish Honap <mhonap@nvidia.com>
 > ---
->   hw/vfio/region.c      | 27 ++++++++++++++++++++++++---
->   hw/vfio/vfio-region.h |  3 +++
->   2 files changed, 27 insertions(+), 3 deletions(-)
+>   hw/vfio/pci.c | 34 ++++++++++++++++++++++++++++++++++
+>   hw/vfio/pci.h |  1 +
+>   2 files changed, 35 insertions(+)
 > 
-> diff --git a/hw/vfio/region.c b/hw/vfio/region.c
-> index 54ad11a6c8..21b54978b5 100644
-> --- a/hw/vfio/region.c
-> +++ b/hw/vfio/region.c
-> @@ -228,8 +228,9 @@ static int vfio_setup_region_sparse_mmaps(VFIORegion *region,
->       return 0;
+> diff --git a/hw/vfio/pci.c b/hw/vfio/pci.c
+> index 10b13f200d..4716266595 100644
+> --- a/hw/vfio/pci.c
+> +++ b/hw/vfio/pci.c
+> @@ -3221,8 +3221,11 @@ bool vfio_pci_populate_device(VFIOPCIDevice *vdev, Error **errp)
+>       return true;
 >   }
 >   
-> -int vfio_region_setup(Object *obj, VFIODevice *vbasedev, VFIORegion *region,
-> -                      int index, const char *name, Error **errp)
-> +static int vfio_region_do_setup(Object *obj, VFIODevice *vbasedev,
-> +                                VFIORegion *region, int index, const char *name,
-> +                                const MemoryRegionOps *ops, Error **errp)
->   {
->       struct vfio_region_info *info = NULL;
->       int ret;
-> @@ -249,7 +250,7 @@ int vfio_region_setup(Object *obj, VFIODevice *vbasedev, VFIORegion *region,
->   
->       if (region->size) {
->           region->mem = g_new0(MemoryRegion, 1);
-> -        memory_region_init_io(region->mem, obj, &vfio_region_ops,
-> +        memory_region_init_io(region->mem, obj, ops,
->                                 region, name, region->size);
->   
->           if (!vbasedev->no_mmap &&
-> @@ -273,6 +274,26 @@ int vfio_region_setup(Object *obj, VFIODevice *vbasedev, VFIORegion *region,
->       return 0;
->   }
->   
-> +int vfio_region_setup(Object *obj, VFIODevice *vbasedev, VFIORegion *region,
-> +                      int index, const char *name, Error **errp)
-> +{
-> +    return vfio_region_do_setup(obj, vbasedev, region, index, name,
-> +                                &vfio_region_ops, errp);
-> +}
+> +static void vfio_cxl_teardown(VFIOPCIDevice *vdev);
 > +
-> +/*
-> + * Like vfio_region_setup() but traps the region through @ops instead of the
-> + * default pass-through, so a caller can intercept accesses (the CXL HDM
-> + * decoder block). A NULL @ops keeps the default.
-> + */
-> +int vfio_region_setup_with_ops(Object *obj, VFIODevice *vbasedev,
-> +                               VFIORegion *region, int index, const char *name,
-> +                               const MemoryRegionOps *ops, Error **errp)
-> +{
-> +    return vfio_region_do_setup(obj, vbasedev, region, index, name,
-> +                                ops ? ops : &vfio_region_ops, errp);
+>   void vfio_pci_put_device(VFIOPCIDevice *vdev)
+>   {
+> +    vfio_cxl_teardown(vdev);
+>       vfio_display_finalize(vdev);
+>       vfio_bars_finalize(vdev);
+>       vfio_cpr_pci_unregister_device(vdev);
+> @@ -3696,11 +3699,42 @@ static bool vfio_cxl_setup(VFIOPCIDevice *vdev, Error **errp)
+>           return false;
+>       }
+>   
+> +    /*
+> +     * The HDM memory is host physical. Set up the region, which installs the
+> +     * fd read/write path, and mmap it for direct guest access; it is added to
+> +     * the guest address space only once the guest commits its endpoint decoder.
+> +     */
+> +    if (vfio_region_setup(OBJECT(vdev), vbasedev, &cxl->mem_region,
+> +                          cxl->mem_region_index, "cxl-mem", errp)) {
+> +        return false;
+> +    }
+> +    if (vfio_region_mmap(&cxl->mem_region)) {
+> +        /*
+> +         * Without mmap the region falls back to the kernel's fd read/write
+> +         * path, which works but traps every access. Warn rather than fail.
+> +         */
+> +        warn_report("vfio-cxl: %s: failed to mmap the HDM memory region; "
+> +                    "performance may be slow", vbasedev->name);
+> +    }
 
-if you're calling _with_ops(), you have custom ops, that's whole point.
-Passing NULL is a caller bug, no need to have a fall back. Or assert().
+vfio_cxl_setup calls vfio_region_setup() then vfio_region_mmap()
+back-to-back when other 'normal' BARs split these calls across
+vfio_populate_device() and vfio_bar_register(). I guess it is fine
+for CXL since it is not a PCI BAR.
+
+>       cxl->enabled = true;
+>   
+>       return true;
+>   }
+>   
+> +static void vfio_cxl_teardown(VFIOPCIDevice *vdev)
+> +{
+> +    VFIOCXL *cxl = &vdev->cxl;
+> +
+> +    if (!cxl->enabled) {
+> +        return;
+> +    }
+> +    if (cxl->mem_region.mem) {
+> +        vfio_region_exit(&cxl->mem_region);
+> +        vfio_region_finalize(&cxl->mem_region);
+
+However, the tear down should be split between :
+
+1. vfio_exitfn (unrealize)
+    drops mmaps, removes subregions and removes references so the
+    MR refcount can reach zero.
+2. vfio_pci_finalize (instance_finalize)
+    frees the MemoryRegion.
 
 Thanks,
 
 C.
 
-
-
+> +    }
 > +}
 > +
->   static void vfio_subregion_unmap(VFIORegion *region, int index)
+>   static void vfio_pci_realize(PCIDevice *pdev, Error **errp)
 >   {
->       trace_vfio_region_unmap(memory_region_name(&region->mmaps[index].mem),
-> diff --git a/hw/vfio/vfio-region.h b/hw/vfio/vfio-region.h
-> index 58b236f113..8d5699013a 100644
-> --- a/hw/vfio/vfio-region.h
-> +++ b/hw/vfio/vfio-region.h
-> @@ -39,6 +39,9 @@ uint64_t vfio_region_read(void *opaque,
->                             hwaddr addr, unsigned size);
->   int vfio_region_setup(Object *obj, VFIODevice *vbasedev, VFIORegion *region,
->                         int index, const char *name, Error **errp);
-> +int vfio_region_setup_with_ops(Object *obj, VFIODevice *vbasedev,
-> +                               VFIORegion *region, int index, const char *name,
-> +                               const MemoryRegionOps *ops, Error **errp);
->   int vfio_region_mmap(VFIORegion *region);
->   void vfio_region_mmaps_set_enabled(VFIORegion *region, bool enabled);
->   void vfio_region_exit(VFIORegion *region);
+>       ERRP_GUARD();
+> diff --git a/hw/vfio/pci.h b/hw/vfio/pci.h
+> index 7fdd695704..06d15e807d 100644
+> --- a/hw/vfio/pci.h
+> +++ b/hw/vfio/pci.h
+> @@ -134,6 +134,7 @@ typedef struct VFIOCXL {
+>       uint32_t comp_bar;               /* component BAR carrying that block */
+>       uint64_t hdm_offset;             /* block offset within the component BAR */
+>       uint64_t dpa_size;               /* size of the HDM memory region */
+> +    VFIORegion mem_region;           /* HDM memory, mapped at committed GPA */
+>   } VFIOCXL;
+>   
+>   struct VFIOPCIDevice {
 
 

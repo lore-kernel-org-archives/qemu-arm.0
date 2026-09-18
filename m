@@ -4,96 +4,99 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7201BC88E75
-	for <qemu-arm@archiver.kernel.org>; Fri, 18 Sep 2026 07:46:22 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 284BDC982D9
+	for <qemu-arm@archiver.kernel.org>; Fri, 18 Sep 2026 10:12:27 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1x7TIP-0001Lh-7K; Fri, 18 Sep 2026 03:46:10 -0400
+	id 1x7VZk-0003Kj-Tc; Fri, 18 Sep 2026 06:12:12 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mrezanin@redhat.com>)
- id 1x7TIN-0001LN-1v
- for qemu-arm@nongnu.org; Fri, 18 Sep 2026 03:46:07 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mrezanin@redhat.com>)
- id 1x7TIK-0007yr-Tc
- for qemu-arm@nongnu.org; Fri, 18 Sep 2026 03:46:06 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1789717562;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=+qZv+exKqyNjMxq3hyq93Xj2Gw1BgKFVEeuRR/mK2ME=;
- b=Oevo6UjvkE4+HMslPsRznighFZloVxlym+BqkR4y+CaiwDJDoAlNLfpMGktNGgVfZYtQwo
- NWPh+4vyvpPqQINQTeUX2szx1Z9E1xuuSHjGsg/Qj1pouO5qttISb8tQdeL5zRyGv3ZOZh
- bwxXoL6Hu0I5vj4OzH7fJUqeQhERLFE=
-Received: from mail-ot1-f70.google.com (mail-ot1-f70.google.com
- [209.85.210.70]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-625-ylpka-ogOneEBst2iZB2sw-1; Fri, 18 Sep 2026 03:44:24 -0400
-X-MC-Unique: ylpka-ogOneEBst2iZB2sw-1
-X-Mimecast-MFC-AGG-ID: ylpka-ogOneEBst2iZB2sw_1789717464
-Received: by mail-ot1-f70.google.com with SMTP id
- 46e09a7af769-7f8931a803cso432693a34.0
- for <qemu-arm@nongnu.org>; Fri, 18 Sep 2026 00:44:24 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <corvin.koehne@gmail.com>)
+ id 1x7VZg-0003Hx-0k
+ for qemu-arm@nongnu.org; Fri, 18 Sep 2026 06:12:08 -0400
+Received: from mail-wm2-x11.google.com ([2a00:1450:4864:31::11])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <corvin.koehne@gmail.com>)
+ id 1x7VZc-0007ZQ-1J
+ for qemu-arm@nongnu.org; Fri, 18 Sep 2026 06:12:07 -0400
+Received: by mail-wm2-x11.google.com with SMTP id
+ 5b1f17b1804b1-49ccead2aecso2850295e9.0
+ for <qemu-arm@nongnu.org>; Fri, 18 Sep 2026 03:12:03 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=gmail.com; s=20251104; t=1789726323; x=1790331123; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+ :message-id:reply-to:content-type;
+ bh=BrTqYp3xTMdiXx5R810D5D1IIgmHDRzEewMRTo5le1s=;
+ b=Gfa/xYR8PKmYwkQ+unN/KPWaWA8Unq2LNlvyHWqDgQWULCeaclG51OjyCiGBiC9vUC
+ znvoS2WobRdNSrlrjDiB0ha52keFnIm9eKVR5V53ddcLWrcBTrSITXt9Ka46UWpU0W9t
+ 4BU0w+gFoJHJvJzCTMR4VhwoHu8jgib2EFTiXRoTqGqf5wQL8KnvDJDBbcdq82RmfQmk
+ aK82La19ZecFarFGKpy+RdKgci8qJmY8p8vG2I1L0GRORTFBlYnmtUN8B4cIjBrGkSEa
+ Z1mEgMrPnTH+jaag7rK5xrHXKBioXuUiju38E734+6XTJ29AttWYXmjMLyXCapXJwAJQ
+ FQpg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20260707; t=1789717463; x=1790322263;
- h=content-transfer-encoding:content-type:cc:to:subject:message-id
- :date:from:in-reply-to:references:mime-version:x-gm-gg
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
- :content-type;
- bh=+qZv+exKqyNjMxq3hyq93Xj2Gw1BgKFVEeuRR/mK2ME=;
- b=ROsfgkkxhUi/uhft++3ne/i/3H2GOXhdwY4EcCRLuerF9X9IB/viG9Z0d6JnqWwGOh
- H0BUhd4zKc6i3+PYZuoJeEEzVIvCvOZdOrua2G1LdMZ0fsCRAukumaxciwmYS9DA+yYk
- 2ORqgQ/1I92l1EG7R0LepEm8lBjussqf63id3ClAKTG6oVoSdfrcIrRJjRlD0aSxEBl1
- ahx5qPs1kBHyfPQ2agVGkkP6Obglzxod/a7vcgYw79sAk/o0KJWY10yehh4fhzaad+fZ
- nGgQnVr4LZGFLKBSSzbZL02BOTYSMin9MBuXXvYD7bbC0j/iwKLjZpzQzMOjUbglDTsZ
- YpFA==
+ d=1e100.net; s=20260707; t=1789726323; x=1790331123;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
+ :to:cc:subject:date:message-id:reply-to:content-type;
+ bh=BrTqYp3xTMdiXx5R810D5D1IIgmHDRzEewMRTo5le1s=;
+ b=XFRipGsxJAggpMPfTRFYijSdUolhWIuISis9ElEt8ITipHsjPgWs7riiX9KXrfW+cO
+ B9Gp7e0JZPkVQy6fZokZDSigMQBvVXgsDph1PaEgHHXYKWYS/GNDGMtWLmsX6AB8+Kip
+ DYzJmjFjLM9TP+DOj4isc+eAGBU+63VsQI/9qz9hVvuI2HPkW9JS1T5gbbzfgGig5hpr
+ 3xzCAwiRpApm4Q1PtjgvjmVLEgXGJBQMSp1YbCKBYgn9Ixj3A5lLIUnC/qhpdslAVENW
+ aQ6vSQNslllh8Va45vitkwcJjhupj90bYu8z3ujI1KJXRvC4cjbsY5lNgMnhn8nQw/UI
+ C9NA==
 X-Forwarded-Encrypted: i=1;
- AKwUvBxqiKN2ONq6Xnjm2aHlZQHaqA1syNBJCUaU0kDP0ukbVSwJPOEl0bl8pbb34h5tAPgT7bEMhV9d/Q==@nongnu.org
-X-Gm-Message-State: AFuF++mjnnpXLdlpRxfN1/ldl1tHyCRsiuLEU1G2uUgR4VdEsR5WwXYC
- WhlhR0KQalH1F8D2yihbKoP+4aA5YlgelSLLFAjKEcg+pCO71YihsVXH66VVwKamFCfWnFWZGKT
- L7ZjHAqSRqIO/81xfm9UQOs8qgugCYFyrdq7a12KeW4YV2hckQpH2uBrz8Yf06qm1ijiPTDynwv
- UHQhgiDuH75RLw7Lso+/LffivSz9Po
-X-Gm-Gg: AYBFou3VJt8P12lc1sTaMUIzgkwA1u6GjFBv2voeH8jwETRxCh4PPetGICprAzT8JGz
- RtC+hou+w0CNNEsgLjOTvfGxLxfRjfUSrzeU3OUzc1RXeh3dIOt/8SFEL9xZsBRbI/rJXqvopPn
- oU7oYkaWSX7JXu4U/+yZCVsI6QYUpVgcRHkf4ZAVBf9cD6gOmmZG1rhy85zA==
-X-Received: by 2002:a05:6820:4d06:b0:6b7:46e9:9703 with SMTP id
- 006d021491bc7-6ca9c84e82amr1604084eaf.51.1789717463548; 
- Fri, 18 Sep 2026 00:44:23 -0700 (PDT)
-X-Received: by 2002:a05:6820:4d06:b0:6b7:46e9:9703 with SMTP id
- 006d021491bc7-6ca9c84e82amr1604072eaf.51.1789717463140; Fri, 18 Sep 2026
- 00:44:23 -0700 (PDT)
+ AKwUvByzYdJUNMO/C+ZbxE24SnBLLYqr9rii49w7XTD4Y9hXd9lXK7UQQhWO9Bq/V14GV0EQfi/kwXWdIg==@nongnu.org
+X-Gm-Message-State: AFuF++llw9uk54aQbJ/THpgAVkU4JP83VwW8hi6SWM9BveKLq8mDZpoH
+ Zd5UijRKnjrt485MTncDMR1+PAwqQmQSmxBWFJzMrXBHmXWvVZs5pDLp
+X-Gm-Gg: AYBFou3zHAbnVMSJJyVlCOP3/OxaZwKFpPjaRMny02KDQtWefiObdbLyLDAFdjdpdcK
+ b33XD8XTmpbxjPbotSGbc6gNkliPlI8aFfmCN/MTFqGew4pF7VyMl8mSzNF3YSD/QnjxlPRxMHt
+ HuZF7D6RfqZt9ArO7Dsb6sCJujTBKtqxQzSMelMcBdeHhRkOYTmZUAh58RF8Kw25nOR15FjjpJD
+ fKtKyCcV56W1s1kRJYgpoKLxh0O3FyL4ZrfRIu/Kb0JEmIXDqCYedR2CTe3SbA8yfV8AtsrkRS6
+ ODfh4e59STwZ+5gjWbxbzWXOd/xxT/YG7du4ILuIiFqPFgSrYsep1wgWQPyvgY52Guy7AW5Wooe
+ SYDbhTz1qeVuMdaPzKfbqM/D9kdTpcu1D78e6kz5TahRzbNlOQUfzzqsY95t1PLIM/C3nmNS8wO
+ zLfQq2c7vhCLo2EeGBOlsNtKxTMcMYJYHfzDRSk5UQEULa0peNifJw7r24dZvdccUCQKrWowWcU
+ DuRAbHiIFeWYjBabh3d1Q==
+X-Received: by 2002:a05:600c:4505:b0:49a:a101:4157 with SMTP id
+ 5b1f17b1804b1-49fc56db92fmr24771595e9.7.1789726322609; 
+ Fri, 18 Sep 2026 03:12:02 -0700 (PDT)
+Received: from PC-DA2D10.beckhoff.com
+ ([2001:9e8:dc20:5e84:de9d:56c6:df83:7819])
+ by smtp.gmail.com with ESMTPSA id
+ 5b1f17b1804b1-49fbd225898sm153886245e9.9.2026.09.18.03.12.00
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Fri, 18 Sep 2026 03:12:02 -0700 (PDT)
+From: =?UTF-8?q?Corvin=20K=C3=B6hne?= <corvin.koehne@gmail.com>
+To: qemu-devel@nongnu.org
+Cc: Corvin Koehne <C.Koehne@beckhoff.com>, qemu-block@nongnu.org,
+ Peter Maydell <peter.maydell@linaro.org>, Hanna Reitz <hreitz@redhat.com>,
+ Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>,
+ =?UTF-8?q?Yannick=20Vo=C3=9Fen?= <y.vossen@beckhoff.com>,
+ "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
+ Yannick Vossen <Y.Vossen@beckhoff.com>, qemu-arm@nongnu.org,
+ Alistair Francis <alistair@alistair23.me>,
+ Paolo Bonzini <pbonzini@redhat.com>,
+ =?UTF-8?q?Corvin=20K=C3=B6hne?= <c.koehne@beckhoff.com>,
+ Kevin Wolf <kwolf@redhat.com>
+Subject: [PATCH v8 2/7] hw/arm/xilinx_zynq: Add flash type as machine class
+ property
+Date: Fri, 18 Sep 2026 12:11:53 +0200
+Message-ID: <20260918101158.42101-3-corvin.koehne@gmail.com>
+X-Mailer: git-send-email 2.47.3
+In-Reply-To: <20260918101158.42101-1-corvin.koehne@gmail.com>
+References: <20260918101158.42101-1-corvin.koehne@gmail.com>
 MIME-Version: 1.0
-References: <20260721122135.6288-1-philmd@oss.qualcomm.com>
- <20260721122135.6288-4-philmd@oss.qualcomm.com>
-In-Reply-To: <20260721122135.6288-4-philmd@oss.qualcomm.com>
-From: Miroslav Rezanina <mrezanin@redhat.com>
-Date: Fri, 18 Sep 2026 09:44:12 +0200
-X-Gm-Features: AcwNN1V1QzfHhOgeL-HCPscnU3IMGupzuwJKmfRaIQ1HW7parCukC29xzHF9Ids
-Message-ID: <CAKRGJ0CnGvU3Je5B3duHF-vUOZGXeMk5f0YFQbC+=vbGp++j0g@mail.gmail.com>
-Subject: Re: [PATCH 3/4] target/arm: Only compile gicv5-cpuif.c when GICv5 is
- selected
-To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@oss.qualcomm.com>
-Cc: qemu-devel@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
- qemu-arm@nongnu.org, Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: ltI_ya1dyiBXMuqopVAIHdmnnbOQL5wP3IeUtOizZ1E_1789717464
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=mrezanin@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:31::11;
+ envelope-from=corvin.koehne@gmail.com; helo=mail-wm2-x11.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -109,75 +112,118 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Hi,
+From: YannickV <Y.Vossen@beckhoff.com>
 
-looks like this patch was applied incorrectly. I do not see removal of
-gicv5-cpuif.c from unconditional adding. Is this being fixed?
+Introduce ZynqMachineClass with qspi_flash_type field to allow
+different Zynq-based machines to specify their flash device
+type. The base Zynq machine defaults to n25q128.
 
-Mirek
+Signed-off-by: YannickV <Y.Vossen@beckhoff.com>
+---
+ hw/arm/xilinx_zynq.c         | 19 ++++++++++++++-----
+ include/hw/arm/xilinx_zynq.h |  8 +++++++-
+ 2 files changed, 21 insertions(+), 6 deletions(-)
 
-On Tue, Jul 21, 2026 at 2:24=E2=80=AFPM Philippe Mathieu-Daud=C3=A9
-<philmd@oss.qualcomm.com> wrote:
->
-> Only compile gicv5-cpuif.c when ARM_GICV5 is Kconfig-selected,
-> otherwise we get when building with --without-default-devices:
->
->   Undefined symbols for architecture arm64:
->     "_gicv5_activate", referenced from:
->         _gicr_cdia_read in target_arm_tcg_gicv5-cpuif.c.o
->     "_gicv5_deactivate", referenced from:
->         _gic_cddi_write in target_arm_tcg_gicv5-cpuif.c.o
->     "_gicv5_get_hppi", referenced from:
->         _gic_hppi in target_arm_tcg_gicv5-cpuif.c.o
->     "_gicv5_request_config", referenced from:
->         _gic_cdrcfg_write in target_arm_tcg_gicv5-cpuif.c.o
->     "_gicv5_set_enabled", referenced from:
->         _gic_cddis_write in target_arm_tcg_gicv5-cpuif.c.o
->         _gic_cden_write in target_arm_tcg_gicv5-cpuif.c.o
->     "_gicv5_set_handling", referenced from:
->         _gic_cdhm_write in target_arm_tcg_gicv5-cpuif.c.o
->     "_gicv5_set_pending", referenced from:
->         _gic_cdpend_write in target_arm_tcg_gicv5-cpuif.c.o
->     "_gicv5_set_priority", referenced from:
->         _gic_cdpri_write in target_arm_tcg_gicv5-cpuif.c.o
->     "_gicv5_set_target", referenced from:
->         _gic_cdaff_write in target_arm_tcg_gicv5-cpuif.c.o
->
-> Fixes: ee0f1ce00db ("target/arm: GICv5 cpuif: Initial skeleton and GSB ba=
-rrier insns")
-> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@oss.qualcomm.com>
-> ---
->  target/arm/tcg/meson.build | 4 +++-
->  1 file changed, 3 insertions(+), 1 deletion(-)
->
-> diff --git a/target/arm/tcg/meson.build b/target/arm/tcg/meson.build
-> index 573e8b5af48..1cd98c1b857 100644
-> --- a/target/arm/tcg/meson.build
-> +++ b/target/arm/tcg/meson.build
-> @@ -83,11 +83,13 @@ arm_common_user_system_ss.add(when: 'TARGET_AARCH64',=
- if_true: files(
->  arm_common_system_ss.add(files(
->    'cpregs-at.c',
->    'cpu32-system.c',
-> -  'gicv5-cpuif.c',
->    'psci.c',
->    'tlb_helper.c',
->    'tlb-insns.c',
->  ))
-> +arm_common_system_ss.add(when: 'CONFIG_ARM_GICV5', if_true: files(
-> +  'gicv5-cpuif.c',
-> +))
->  arm_user_ss.add(files(
->    'tlb_helper.c',
->  ))
-> --
-> 2.53.0
->
->
-
-
---=20
-Miroslav =C5=98ezanina
-Virtualization Team - Maintainer
+diff --git a/hw/arm/xilinx_zynq.c b/hw/arm/xilinx_zynq.c
+index c1897ab1cf33..31d5b5e5caa5 100644
+--- a/hw/arm/xilinx_zynq.c
++++ b/hw/arm/xilinx_zynq.c
+@@ -117,7 +117,8 @@ static void gem_init(uint32_t base, qemu_irq irq)
+ }
+ 
+ static inline int zynq_init_spi_flashes(uint32_t base_addr, qemu_irq irq,
+-                                        bool is_qspi, int unit0)
++                                        bool is_qspi, int unit0,
++                                        const char *flash_type)
+ {
+     int unit = unit0;
+     DeviceState *dev;
+@@ -149,7 +150,8 @@ static inline int zynq_init_spi_flashes(uint32_t base_addr, qemu_irq irq,
+ 
+         for (j = 0; j < num_ss; ++j) {
+             DriveInfo *dinfo = drive_get(IF_MTD, 0, unit++);
+-            flash_dev = qdev_new("n25q128");
++
++            flash_dev = qdev_new(flash_type);
+             if (dinfo) {
+                 qdev_prop_set_drive_err(flash_dev, "drive",
+                                         blk_by_legacy_dinfo(dinfo),
+@@ -201,6 +203,7 @@ static void ddr_ctrl_init(uint32_t base)
+ static void zynq_init(MachineState *machine)
+ {
+     ZynqMachineState *zynq_machine = ZYNQ_MACHINE(machine);
++    ZynqMachineClass *zmc = ZYNQ_MACHINE_GET_CLASS(machine);
+     MemoryRegion *address_space_mem = get_system_memory();
+     MemoryRegion *ocm_ram = g_new(MemoryRegion, 1);
+     DeviceState *dev, *slcr;
+@@ -280,9 +283,12 @@ static void zynq_init(MachineState *machine)
+         pic[n] = qdev_get_gpio_in(dev, n);
+     }
+ 
+-    n = zynq_init_spi_flashes(0xE0006000, pic[58 - GIC_INTERNAL], false, 0);
+-    n = zynq_init_spi_flashes(0xE0007000, pic[81 - GIC_INTERNAL], false, n);
+-    n = zynq_init_spi_flashes(0xE000D000, pic[51 - GIC_INTERNAL], true, n);
++    n = zynq_init_spi_flashes(0xE0006000, pic[58 - GIC_INTERNAL], false, 0,
++                              zmc->qspi_flash_type);
++    n = zynq_init_spi_flashes(0xE0007000, pic[81 - GIC_INTERNAL], false, n,
++                              zmc->qspi_flash_type);
++    n = zynq_init_spi_flashes(0xE000D000, pic[51 - GIC_INTERNAL], true, n,
++                              zmc->qspi_flash_type);
+ 
+     sysbus_create_simple(TYPE_CHIPIDEA, 0xE0002000, pic[53 - GIC_INTERNAL]);
+     sysbus_create_simple(TYPE_CHIPIDEA, 0xE0003000, pic[76 - GIC_INTERNAL]);
+@@ -458,6 +464,7 @@ static void zynq_machine_class_init(ObjectClass *oc, const void *data)
+         NULL
+     };
+     MachineClass *mc = MACHINE_CLASS(oc);
++    ZynqMachineClass *zmc = ZYNQ_MACHINE_CLASS(oc);
+     ObjectProperty *prop;
+     mc->desc = "Xilinx Zynq 7000 Platform Baseboard for Cortex-A9";
+     mc->init = zynq_init;
+@@ -471,11 +478,13 @@ static void zynq_machine_class_init(ObjectClass *oc, const void *data)
+                                           "Supported boot modes:"
+                                           " jtag qspi sd nor");
+     object_property_set_default_str(prop, "qspi");
++    zmc->qspi_flash_type = "n25q128";
+ }
+ 
+ static const TypeInfo zynq_machine_type = {
+     .name = TYPE_ZYNQ_MACHINE,
+     .parent = TYPE_MACHINE,
++    .class_size = sizeof(ZynqMachineClass),
+     .class_init = zynq_machine_class_init,
+     .instance_size = sizeof(ZynqMachineState),
+ };
+diff --git a/include/hw/arm/xilinx_zynq.h b/include/hw/arm/xilinx_zynq.h
+index 669c516ad150..33a68cdcd15e 100644
+--- a/include/hw/arm/xilinx_zynq.h
++++ b/include/hw/arm/xilinx_zynq.h
+@@ -12,12 +12,13 @@
+ #ifndef QEMU_ARM_ZYNQ_H
+ #define QEMU_ARM_ZYNQ_H
+ 
++#include "hw/core/boards.h"
+ #include "target/arm/cpu-qom.h"
+ #include "hw/core/qdev-clock.h"
+ #include "hw/arm/boot.h"
+ 
+ #define TYPE_ZYNQ_MACHINE MACHINE_TYPE_NAME("xilinx-zynq-a9")
+-OBJECT_DECLARE_SIMPLE_TYPE(ZynqMachineState, ZYNQ_MACHINE)
++OBJECT_DECLARE_TYPE(ZynqMachineState, ZynqMachineClass, ZYNQ_MACHINE)
+ 
+ #define ZYNQ_MAX_CPUS 2
+ 
+@@ -29,4 +30,9 @@ struct ZynqMachineState {
+     struct arm_boot_info bootinfo;
+ };
+ 
++struct ZynqMachineClass {
++    MachineClass parent_class;
++    const char *qspi_flash_type;
++};
++
+ #endif /* QEMU_ARM_ZYNQ_H */
+-- 
+2.47.3
 
 

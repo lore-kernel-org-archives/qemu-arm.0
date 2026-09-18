@@ -4,69 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CFFE6C982D0
-	for <qemu-arm@archiver.kernel.org>; Fri, 18 Sep 2026 00:08:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 38FDEC982D0
+	for <qemu-arm@archiver.kernel.org>; Fri, 18 Sep 2026 00:09:10 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1x7M84-0006dV-Fz; Thu, 17 Sep 2026 20:07:00 -0400
+	id 1x7M8V-0006ne-8o; Thu, 17 Sep 2026 20:07:27 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <luoyonggang@gmail.com>)
- id 1x7M82-0006cY-Sw
- for qemu-arm@nongnu.org; Thu, 17 Sep 2026 20:06:58 -0400
-Received: from mail-pz2-x0f.google.com ([2607:f8b0:4864:3b::f])
+ id 1x7M8I-0006gJ-3J
+ for qemu-arm@nongnu.org; Thu, 17 Sep 2026 20:07:16 -0400
+Received: from mail-pj2-x10.google.com ([2607:f8b0:4864:39::10])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <luoyonggang@gmail.com>)
- id 1x7M80-0004rX-48
- for qemu-arm@nongnu.org; Thu, 17 Sep 2026 20:06:58 -0400
-Received: by mail-pz2-x0f.google.com with SMTP id
- d2e1a72fcca58-8693af0d7c4so214398b3a.3
- for <qemu-arm@nongnu.org>; Thu, 17 Sep 2026 17:06:55 -0700 (PDT)
+ id 1x7M8F-0004tw-FM
+ for qemu-arm@nongnu.org; Thu, 17 Sep 2026 20:07:13 -0400
+Received: by mail-pj2-x10.google.com with SMTP id
+ d9443c01a7336-2d8fbef5018so2258405ad.0
+ for <qemu-arm@nongnu.org>; Thu, 17 Sep 2026 17:07:11 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20251104; t=1789690014; x=1790294814; darn=nongnu.org;
+ d=gmail.com; s=20251104; t=1789690030; x=1790294830; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to:content-type;
- bh=qhnt2dJkpAm5GGzTe4QbVNjnCDc43sqrIBCwyZpio2Y=;
- b=lBWvr1Nu8rtsaBvfJryI5Cak1knOPQm+5tecJHcRtcjhsQljc7l+vcPE6hcq7ZpZSK
- j/mC16lj/cLQSp+MRy55Py96EPods82LlTAhZCVMTa3hoyV4fpIAA+1HH8HNkWptT5Lj
- eNnFxJD6YoDHrUEdNYtHkKh6210EmaV0atEUHO1//o4NKX7Wokvf4f8kaqjvN08ANlcY
- 1hn3y/+rjUgTjQiiOKce8jREtepNHEK+1dvxLgOPtxJPASKWOeqCU5IRZVVngaLa5sDE
- 0GgO2n59Cln4/LsT+LdmLdxevHIYDJDkODa0hCcWKW6ZixoAYcKBo4wvVCDYW8miD4Op
- kv9Q==
+ bh=FFu1GWUOTl4gGw9oxLcpuVAdjKyzH7fM1wcdIhlx/50=;
+ b=CbirgYWo/IaNM6BqSpiIi2al91SlJlRMMol9gJsHm7A96+QmMsQVD6V/LI537MY31G
+ BEZf3juv52688sY+tkUlc/quCJKuPZpeLTJW0k656iP9mUqq/kEfh51/34okcQjsvJmq
+ gMUreU3TQSLofCADezP8o5FHgxS1co1n+H9kTROHk0aqxIqr5gLlRqaqaNr6zqN/DJPY
+ mGy8UTGf8/dLJK7Nt/WCCw38q7+MoCCnv9qjIkAv1Xd8J3Hqmmp6240X9ckIAS8IaAj9
+ B+OCJUTVoGkbUpX6cjkIZ4XyCbbtBd6z5PH6sJykmZKsfxl0rqC818l2yOYdWm9J4jhf
+ qrvw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20260707; t=1789690014; x=1790294814;
+ d=1e100.net; s=20260707; t=1789690030; x=1790294830;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
  :to:cc:subject:date:message-id:reply-to:content-type;
- bh=qhnt2dJkpAm5GGzTe4QbVNjnCDc43sqrIBCwyZpio2Y=;
- b=kusHbL0MnqI5+B++nYuLk4WkfP/euVpEKVdTnn8WQs5sovmOOgWj3brc25iH3xUS5G
- gzU15hVyeA+rL5W/VlIWGEmOWq/PIntMEI5LIKoV8LvnZAjwtc8F/+pTSmimZaGrnULH
- MADz8+z2IydCld+TDOWI8HwMkt68d2oRybHXP2mI7T7Kd4bj7h9nn0XjKSKy8AJ2Z1zr
- rWU53MGJZBIPNDEvQoAd/yhAanaQQjCxSRq1+pFPIe2PCEcbb6YErhqUJfjwtLJaIigg
- y86vDROkZLbE5ZWPwPz0fvmT2gBK+TiRbPfE/U5LoPW/JjJ0z8sniMZSjjCTQwyV402J
- 6BiA==
+ bh=FFu1GWUOTl4gGw9oxLcpuVAdjKyzH7fM1wcdIhlx/50=;
+ b=QTPAkjuh0CS2OuuqCx2KMX+V7PKpolzjV8GBVsic71WLjEBwSG1lkR4zeZY3fkuTeX
+ 0JBsg+WfX3h48aQ+hW0YlxDs39/XFgGrLYu+aXJGQPyl690am2OPc+Jnw8pyGF0pzxAX
+ B4pQ+sSmmBw0hDmcFm5L4D8dFdmLdWTVW3j+rmvHJJB9ocakcMJpW7iaypXsbQi4nliU
+ /Rl8lmgVlRMQyTl8DLKzzPzrVGHCuCQ69pjO8ryVjmhWMTZu+Gt6JqScHC10qipJcNxU
+ KoKTm1jEfp0gvTBglaEdQFVzYsrwv3if9TG8TIG0m36E11dYOs/CBZOgy4sklLx+k/z6
+ Ayhw==
 X-Forwarded-Encrypted: i=1;
- AKwUvBwZeuoRKnV7RxbfyD3k7bIJEI3OMiiojAZ/InZZnQxR7kqvtR6EyVeyL7KAp2fyLU/33OUQVtGzSA==@nongnu.org
-X-Gm-Message-State: AFuF++ny9giHgTczxu78xxBYDPCB9Wk6AM6HUd4OZAH28cHefWnVVY3i
- 2VPYFOJc99HXWVS4n0PZcc/qFtrykSc41A6N9xvKfJH3hvbd8cRQovYbtYTA/WiQmoA=
-X-Gm-Gg: AYBFou2YeNzmVkqpV152rRthEy2I70WKohKm09ihR2fZ/NOnil6Urgqik8jSNivh7wR
- tcI0rG70V2CceQGwLQt/QEWp7k13fiW36DNq6B2yTZi3+gfaOUARF5KzWUHZfS8rPohC23cKPNe
- Ec2WS03wVYU/f2fXl1ySrDzz4s9DXEq8oSx+m7Vc+KRWArXrD/Z6inP4scmkTTdMHs1l7/4QT22
- e7vx/nHeSzW0S7ahZIuJxfu63l/KpsDVneWO3fXZnlyBh8cZPSRYkbB2p/OvQ2wru89RJy5Jp5F
- KGTgO+fLI1aquEwe0XpnpiBN9aBvEPmG+yHs2tq8kSF/teSZkusIM2A1cqdKgjDeoYC0WMREaNa
- j7pg/6Zmh5UqRvEFhPpefyJTJjLjsc9Kl/NWV6DeEIXuxYcy8tdgsabKIJ0u4v1YdJ9WWuY5W+v
- dDuXrexBX9HfHo8qy0bJCF4irpweZDcsrlnzyAvYSZtJsqzyXZdBpoVGCFMLVJ4T00v+V8ehwhn
- vryjfDlGDa3ECdm7MhgRJLEBuc4Mual
-X-Received: by 2002:a05:6a21:596:b0:3d1:deec:9265 with SMTP id
- adf61e73a8af0-3dd8c3f2321mr1152234637.6.1789690014513; 
- Thu, 17 Sep 2026 17:06:54 -0700 (PDT)
+ AKwUvBwEhibtnXa1w4lsdxux+qlMxG14hSPn2qOKmuxGhz4EVGungepYoM9iUU6k2IC2H1e7V4V4Lu1u3Q==@nongnu.org
+X-Gm-Message-State: AFuF++kypk7IP+qWYlEQzmouhZ5dXAvBaCdjU90+vio6JgjlzAzTbNxC
+ I3PueSP1pYB4+CYg1i97XuCrXAZS+HMmVHWdIRC4Z/MJlMbfWTfujAXg
+X-Gm-Gg: AYBFou0EBZxbBsxWnuW3qNY5RmWrpI//NS0BBXipGPHTnFd7sWq+CzbfAvu2PtXyZNq
+ VK/bdkr7lbdePL9HMf6pox6iFva7dgBoXEQ9FI6ElqFnL1CiwFJMKkJ+wSW8XVv4mVsXZ5Z+Fuz
+ jax/a9F9SlAhLlGWyWDCuKWjhL+aHID3S5WGbKcN1GRjQwEQSesrQSrdfDxSnytNcC9RRakBryW
+ Sj0uEx/rMuDvelnykE2yWybiGRZ8WyJa3BFBZ5BOl76micKa8yndeYfSV0rLR34U2RhFPv4Iwoa
+ s+V9LHuXUDjsZRRqsnZhK/r1Gegft5xK/nFkXFECNV4wvKHjHvYojaXoS63PedHSwWxgpD01nrM
+ 0jS4MdSz+jiqaT+PAD4T7ExWRaHI0IKtv7LKJQPpJWoTbgh6NpNqwBapjqIVKVmHjr2jLZJdUbe
+ SeyWDESygNlq97zWk1N7MNSLqdrNQHVWGlUW4AKXZ2vjyJIppmUB1BNgHvphv36sbvrWfRxsYWL
+ am4piSivLL6xUSENIzmjiSwv1eoAON9bix37uOPWls=
+X-Received: by 2002:a17:90b:224a:b0:39e:4c81:6c99 with SMTP id
+ 98e67ed59e1d1-39e54fa5deamr1509803a91.31.1789690030121; 
+ Thu, 17 Sep 2026 17:07:10 -0700 (PDT)
 Received: from WIN-BH9M8FJACR9 ([103.94.185.75])
  by smtp.googlemail.com with ESMTPSA id
- 5a478bee46e88-33bf5b1d335sm20328212eec.28.2026.09.17.17.06.49
+ 5a478bee46e88-33bf5b1d335sm20328212eec.28.2026.09.17.17.07.05
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 17 Sep 2026 17:06:53 -0700 (PDT)
+ Thu, 17 Sep 2026 17:07:09 -0700 (PDT)
 From: Yonggang Luo <luoyonggang@gmail.com>
 To: qemu-devel@nongnu.org
 Cc: Xianglai Li <lixianglai@loongson.cn>, Weiwei Li <liwei1518@gmail.com>,
@@ -85,22 +85,23 @@ Cc: Xianglai Li <lixianglai@loongson.cn>, Weiwei Li <liwei1518@gmail.com>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@oss.qualcomm.com>,
  Liu Zhiwei <zhiwei_liu@linux.alibaba.com>,
  Max Filippov <jcmvbkbc@gmail.com>
-Subject: [PATCH 1/8] machine: allow -M name to differ from QOM type
-Date: Fri, 18 Sep 2026 08:06:32 +0800
-Message-ID: <20260918000640.1001-2-luoyonggang@gmail.com>
+Subject: [PATCH 4/8] hw/or1k/virt: use unique QOM name
+Date: Fri, 18 Sep 2026 08:06:35 +0800
+Message-ID: <20260918000640.1001-5-luoyonggang@gmail.com>
 X-Mailer: git-send-email 2.52.0.windows.1
 In-Reply-To: <20260918000640.1001-1-luoyonggang@gmail.com>
 References: <20260918000640.1001-1-luoyonggang@gmail.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:3b::f;
- envelope-from=luoyonggang@gmail.com; helo=mail-pz2-x0f.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:39::10;
+ envelope-from=luoyonggang@gmail.com; helo=mail-pj2-x10.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -116,94 +117,37 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-- Add machine_class_set_name() so boards can keep a stable -M name
-  when the QOM type is uniquified. machine_class_base_init still
-  defaults the name to the QOM type without -machine.
-- Document that MachineClass::name is the -M name, not the QOM type.
-- Sort -M help by MachineClass::name so order matches the printed names
-  when QOM types are prefixed (arm-virt-11.1-machine vs virt-11.1).
+Set TYPE_VIRT_MACHINE to MACHINE_TYPE_NAME("or1k-virt") so OpenRISC
+virt no longer collides with other virt-machine types in one process.
+Keep the -M / help / migration name as virt via
+machine_class_set_name().
 
 Signed-off-by: Yonggang Luo <luoyonggang@gmail.com>
 ---
- hw/core/machine.c        |  6 ++++++
- include/hw/core/boards.h | 12 +++++++++++-
- system/vl.c              |  8 +++-----
- 3 files changed, 20 insertions(+), 6 deletions(-)
+ hw/or1k/virt.c | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
 
-diff --git a/hw/core/machine.c b/hw/core/machine.c
-index 8939ae16666..3cca243c3cb 100644
---- a/hw/core/machine.c
-+++ b/hw/core/machine.c
-@@ -1215,6 +1215,12 @@ static void machine_class_init(ObjectClass *oc, const void *data)
-         "Memory size configuration");
- }
+diff --git a/hw/or1k/virt.c b/hw/or1k/virt.c
+index 2ff5c084a2b..35884252379 100644
+--- a/hw/or1k/virt.c
++++ b/hw/or1k/virt.c
+@@ -34,7 +34,7 @@
+ #define VIRT_CPUS_MAX 4
+ #define VIRT_CLK_MHZ 20000000
  
-+void machine_class_set_name(MachineClass *mc, const char *name)
-+{
-+    g_free(mc->name);
-+    mc->name = g_strdup(name);
-+}
-+
- static void machine_class_base_init(ObjectClass *oc, const void *data)
- {
+-#define TYPE_VIRT_MACHINE MACHINE_TYPE_NAME("virt")
++#define TYPE_VIRT_MACHINE MACHINE_TYPE_NAME("or1k-virt")
+ #define VIRT_MACHINE(obj) \
+     OBJECT_CHECK(OR1KVirtState, (obj), TYPE_VIRT_MACHINE)
+ 
+@@ -548,6 +548,7 @@ static void openrisc_virt_machine_init(ObjectClass *oc, const void *data)
      MachineClass *mc = MACHINE_CLASS(oc);
-diff --git a/include/hw/core/boards.h b/include/hw/core/boards.h
-index dba465efc2c..d397ffb3c2c 100644
---- a/include/hw/core/boards.h
-+++ b/include/hw/core/boards.h
-@@ -36,6 +36,16 @@ const char *machine_default_cpu_type(const MachineState *ms);
-  * @mc: Machine class
-  */
- const char *machine_class_default_cpu_type(MachineClass *mc);
-+/**
-+ * machine_class_set_name: Set the -M name when it differs from the QOM type
-+ * @mc: Machine class
-+ * @name: Name used by -M lookup, help, and migration
-+ *
-+ * machine_class_base_init sets MachineClass::name from the QOM type with
-+ * the -machine suffix removed. Call this from board class_init when the
-+ * CLI name must stay stable after the QOM type is uniquified.
-+ */
-+void machine_class_set_name(MachineClass *mc, const char *name);
  
- void machine_add_audiodev_property(MachineClass *mc);
- void machine_run_board_init(MachineState *machine, const char *mem_path, Error **errp);
-@@ -269,7 +279,7 @@ struct MachineClass {
-     /*< public >*/
- 
-     const char *family; /* NULL iff @name identifies a standalone machtype */
--    char *name;
-+    char *name; /* -M name; default is QOM type without -machine */
-     const char *alias;
-     const char *desc;
-     const char *deprecation_reason;
-diff --git a/system/vl.c b/system/vl.c
-index 9bd7664b85c..456b3a8e10d 100644
---- a/system/vl.c
-+++ b/system/vl.c
-@@ -1538,10 +1538,9 @@ static gint machine_class_cmp(gconstpointer a, gconstpointer b, gpointer d)
-     if (mc1->family == NULL) {
-         if (mc2->family == NULL) {
-             /* Compare standalone machine types against each other; they sort
--             * in increasing order.
-+             * in increasing order by the name shown in -M help.
-              */
--            return strcmp(object_class_get_name(OBJECT_CLASS(mc1)),
--                          object_class_get_name(OBJECT_CLASS(mc2)));
-+            return strcmp(mc1->name, mc2->name);
-         }
- 
-         /* Standalone machine types sort after families. */
-@@ -1560,8 +1559,7 @@ static gint machine_class_cmp(gconstpointer a, gconstpointer b, gpointer d)
-     }
- 
-     /* Within the same family, machine types sort in decreasing order. */
--    return strcmp(object_class_get_name(OBJECT_CLASS(mc2)),
--                  object_class_get_name(OBJECT_CLASS(mc1)));
-+    return strcmp(mc2->name, mc1->name);
- }
- 
- static void machine_help_func(const QDict *qdict)
+     mc->desc = "or1k virtual machine";
++    machine_class_set_name(mc, "virt");
+     mc->init = openrisc_virt_init;
+     mc->max_cpus = VIRT_CPUS_MAX;
+     mc->is_default = false;
 -- 
 2.52.0.windows.1
 

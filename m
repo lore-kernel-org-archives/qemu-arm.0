@@ -4,69 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3CB59C982D6
-	for <qemu-arm@archiver.kernel.org>; Fri, 18 Sep 2026 00:47:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 111B2C982D2
+	for <qemu-arm@archiver.kernel.org>; Fri, 18 Sep 2026 00:47:46 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1x7Mgu-0006oT-R2; Thu, 17 Sep 2026 20:43:00 -0400
+	id 1x7Mij-0000pd-6T; Thu, 17 Sep 2026 20:44:53 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <luoyonggang@gmail.com>)
- id 1x7Mgs-0006me-KC
- for qemu-arm@nongnu.org; Thu, 17 Sep 2026 20:42:58 -0400
-Received: from mail-pz2-x0e.google.com ([2607:f8b0:4864:3b::e])
+ id 1x7MiZ-0000Dl-FH
+ for qemu-arm@nongnu.org; Thu, 17 Sep 2026 20:44:43 -0400
+Received: from mail-pj2-x10.google.com ([2607:f8b0:4864:39::10])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <luoyonggang@gmail.com>)
- id 1x7Mgp-0001Qb-Az
- for qemu-arm@nongnu.org; Thu, 17 Sep 2026 20:42:58 -0400
-Received: by mail-pz2-x0e.google.com with SMTP id
- 41be03b00d2f7-cc50bcf87b2so55266a12.1
- for <qemu-arm@nongnu.org>; Thu, 17 Sep 2026 17:42:54 -0700 (PDT)
+ id 1x7MiW-0001qO-D4
+ for qemu-arm@nongnu.org; Thu, 17 Sep 2026 20:44:43 -0400
+Received: by mail-pj2-x10.google.com with SMTP id
+ 98e67ed59e1d1-396ccc02279so169632a91.1
+ for <qemu-arm@nongnu.org>; Thu, 17 Sep 2026 17:44:39 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20251104; t=1789692174; x=1790296974; darn=nongnu.org;
+ d=gmail.com; s=20251104; t=1789692279; x=1790297079; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to:content-type;
- bh=aUaeGkon9+ggQZ5TaEe6QdPSzXHYkdUl5uC7WqY6h6I=;
- b=YfnMlKIBOzUL06uL6z+FGEO4YdWrhk9gKwGjoGuVG7aLvl9aJJLOA/54wQ+4VP67/+
- DISfS35wBp2gJwDM/3xCK9oXf8wm/r18J4sEWucb4SW7hrWGQ9p1/OTjlFJobHMTsH5k
- PpQ1RFZO81GtIz5Eu5qECx/M8iSRIGYLNwbUq7+FZYFbiScSJKxU6bbInEkBUoPcEiWm
- BNneAUlWOfWnFydNBS6M5ccU7Oo7Ba+3Wjg2uP7Wn3ktatWbozkM0jtgkgs6aeuFDdVA
- oDrNE24Wva8DgEb5QdrXsWjeBIP/UmMba70y9Eya+c8ketjs0kxYxjpUuYcMuAww6WIh
- 4AWg==
+ bh=WqsYbKwuWANAjvJHGnMo0sqUN7MJ3VlFgzOX3qOpmk0=;
+ b=JnAMSlVa566o/O5e9SHOnNguwYu0BCgAKAbGEkE/5Hc39b5bUzmldw5rt+kOYyTxs5
+ P9a+9uL42olC2uSseZH4hBkJsS2zVG6NpfYCWh5P4r/HpH04ZQcHF2Fvz2s64GbGtZvg
+ pSV9ULzgrIiqbIjy6uPVJf3dLRQw1rykLn6V1jDOqMDIOudkkUnr9C+gjOrLx3A4xgkb
+ p32wuvjPAP5iJsEb15h20Q8Mpb4BqMEuVmNSlQBfxrqBugJfZztQ2S/ETC4A6j4ouM1M
+ Sz8R6QgQ+yLGJmIhJhw7mb/6oNMN55s6bvEAaHitR5XrK4W1D2hEY6ymLkMMYttMP6SO
+ iqCA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20260707; t=1789692174; x=1790296974;
+ d=1e100.net; s=20260707; t=1789692279; x=1790297079;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
  :to:cc:subject:date:message-id:reply-to:content-type;
- bh=aUaeGkon9+ggQZ5TaEe6QdPSzXHYkdUl5uC7WqY6h6I=;
- b=2E1lA5+hxcSXYBjBHeuSv+zp49xdyKd3VyqEaHIhPcrNiqXkHeYf2hrOrOOvjXMvPO
- 3rT8JSqzUw00diivb+T94STPk1pIPvBQkoXqh0UIo/6eqgS8U5zIhVi95XTXmiLLYiE4
- BqsCh3HeRmxd6zo0Zh30SjTB05MGddLFV3bcrL47vCvk5e+OH5CIZT4Ubc9f9bp+KqCp
- mFThVW596VLPx9amaL45O6//15DzlnvsoC4tF9rsVf/IoO7Ey9Q2oq+e01WDBZCDCZq+
- AmjyJyhPcBZdQ/3W9hBA9XHznFIBsAUJ5GSQVHZQ+0qTa/E4hrViByNPlUPGIpiDodtQ
- Ux3A==
+ bh=WqsYbKwuWANAjvJHGnMo0sqUN7MJ3VlFgzOX3qOpmk0=;
+ b=MtELBS42v0Q6VAR0R/YrzguOmsGab5FUCCg1xB7aLOFPdUd1x4PA85c2C1DZlWfDdn
+ 5+gKpTrxH1dGzg4UgTNZiwlwQAHCs+D8e6ynCeU7eX2HfYaUDA9UDQW8fAyNVe7Zs70E
+ ZsqUJHvUCnZQgMLlGhf1JANhaTGqoMaherN5zmQ3pXdvGYsnq/qxmrBT9cSN9N3Y0lTl
+ TrKYC7XujQZJmGWT8JBBi0kYPhPWAxsMdGUg2kjuSJlNJ7X86fS81NdOpPx8ycRbTyAH
+ BQDfm6h+qRMPrOWL3IyH2lE1xTuaQfUFep1NKU7EuzKQFZMOBvOQELONIaPjLwGmlWsk
+ HIQA==
 X-Forwarded-Encrypted: i=1;
- AKwUvBwEoqzHZ4l24hJQvtAaTa19ENqSDR+Mlg4N/1Hl+ZlbynEwdey1F9U2XT+W8nYkT/51jkQZWaAidg==@nongnu.org
-X-Gm-Message-State: AFuF++kuTE8sCnq/q4hfTpLbPRzBTVYjpKj6fNKzxz6Xb4EKQxBwpphU
- Pf13FKiadZp8+erXYJvpNWhSXsCQrfsa1TNolSXuuqAxgDjsOlDs1pyJ
-X-Gm-Gg: AYBFou21CUts73sxLQ1OVwioh7GB56q9y9py+D2jP4N9vmgNhqxKl2poiw8WTXFz8gY
- qFBy4sUFt4rln10vFrVDNe+R1ooqou/YIVNeqyamjvrJewq2yswdJDxzbNvTtd58e6VcBAao66k
- S/62OjihP8N3wy9Zy78VDeu/f5hWG+ckR1sPdsJd2OeOi8SJF367yzl9H2e8JTrXl5QBOJfQ1n9
- QDvF5ya6TOtNq7eeHvBKk2irsYtyROYO4zyEU1XIVWF86FCxBapHz96Z5FgQl2aVpksDqH3MN3x
- ZBKqSHK8m2Mt9BGcs/kG2dj0VIBdHYDQIj1zWdGZEPQMFqCSWduw2fa6F4eT5G1DDZlt51JZqWV
- GlcYLAvNAPG6lvhZDyXZAhaZ2JgzYPWv4ni6AMUgGG14Ep39f9t00i1bmUUVz8EhXJicoRpSLxq
- Rke18iPLk9guBnkQEwTypJ3qeYIWWi18/9op5jVOXK0Wpa6pAcyYueR4JmnRLaRMpmwgs38FACf
- N0+iqZPWbak7V2pBvdc3P/kd8Aqgoft
-X-Received: by 2002:a05:6a20:7d8b:b0:3d3:b02a:61a5 with SMTP id
- adf61e73a8af0-3dd8c41a021mr1325778637.28.1789692173803; 
- Thu, 17 Sep 2026 17:42:53 -0700 (PDT)
+ AKwUvBzYxuy0INVhg/61Vmoy0+HlEb99LyYLYTriX2T41AFCz/Nx0h8VpPWZGMH4wB7HMbjwrqD6FneTng==@nongnu.org
+X-Gm-Message-State: AFuF++l3qgDyLwdEhJEA2EGWRpy40wP/C1SsI352vdByxSR4PsowQrwv
+ rr7vpInKTRJ5StfYyNP2CGMLRAil1d35TZHPYqJ/SHwrrH/VXZUQiJtY
+X-Gm-Gg: AYBFou3c3zPWwtjjfXzQi/bwJwiWuwuLVnciDJQrGIOtq7mQy206BPOsLBGvCSPOkt0
+ dAC2EghZH1/6hqFCUUWjwnnLYGgyuQV//x3ExA0/uT6jN430NwBj5qciT0qaqWPaiKfxJjH3FSM
+ SxawoopZYALEz0cItucDaKr06PQa5EOqw3s3aIZyWH/T32TNVDP/ek0SKAJUGQsrtSzEu1W9yAR
+ 89eikp+XI0Gw4m7MD20wszceL64qo0ykmt+BbtXzp9koloE1FsELq1VE+SE0nj4yhpHABKjHajn
+ TvT9sTS22+95sayeCqFAmsvo+ZoToRoYNOfb6xZE5Ra8yVa5udhlBoEc136k8T0UqA783S5q7P8
+ zNlL0DHg2WDLyWP8IxXKA46xNmfKevUE3c2Sm/fCRJppCypimqQnizNJVOptbJXrIrLhc+PNwV2
+ YJ/DykePdwqFkwtwSKIdiTzxS2DoI3Xu/a2jPWZMpw5DR9Wyi6r4kgVmzsU8o8vTj3sheNbcZvI
+ AXCksigwud9+hySBIUEeF3S8SNLRy83
+X-Received: by 2002:a17:90b:48c5:b0:39d:f247:bb3 with SMTP id
+ 98e67ed59e1d1-39e54e7c1camr1813280a91.21.1789692278875; 
+ Thu, 17 Sep 2026 17:44:38 -0700 (PDT)
 Received: from WIN-BH9M8FJACR9 ([103.94.185.75])
  by smtp.googlemail.com with ESMTPSA id
- a92af1059eb24-144cdfc3df2sm600286c88.5.2026.09.17.17.42.46
+ a92af1059eb24-144cdfc3df2sm600286c88.5.2026.09.17.17.44.31
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 17 Sep 2026 17:42:53 -0700 (PDT)
+ Thu, 17 Sep 2026 17:44:38 -0700 (PDT)
 From: Yonggang Luo <luoyonggang@gmail.com>
 To: qemu-devel@nongnu.org
 Cc: Xianglai Li <lixianglai@loongson.cn>, qemu-s390x@nongnu.org,
@@ -100,22 +100,23 @@ Cc: Xianglai Li <lixianglai@loongson.cn>, qemu-s390x@nongnu.org,
  Peter Maydell <peter.maydell@linaro.org>,
  Palmer Dabbelt <palmer@dabbelt.com>, qemu-riscv@nongnu.org,
  Song Gao <17746591750@163.com>, Matthew Rosato <mjrosato@linux.ibm.com>
-Subject: [PATCH 02/21] helper-gen: move helper_info extern into gen_helper
-Date: Fri, 18 Sep 2026 08:42:04 +0800
-Message-ID: <20260918004225.827-3-luoyonggang@gmail.com>
+Subject: [PATCH 14/21] target/s390x: convert exception to raise_excp
+Date: Fri, 18 Sep 2026 08:42:16 +0800
+Message-ID: <20260918004225.827-15-luoyonggang@gmail.com>
 X-Mailer: git-send-email 2.52.0.windows.1
 In-Reply-To: <20260918004225.827-1-luoyonggang@gmail.com>
 References: <20260918004225.827-1-luoyonggang@gmail.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:3b::e;
- envelope-from=luoyonggang@gmail.com; helo=mail-pz2-x0e.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:39::10;
+ envelope-from=luoyonggang@gmail.com; helo=mail-pj2-x10.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -131,131 +132,74 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Declare helper_info inside each gen_helper_* body so a comment on
-DEF_HELPER attaches to gen_helper_*, not helper_info_*. The extern
-still refers to the global from helper-info.c.inc. Silence
--Wnested-externs around the HELPER_H expansion only.
+Drop TCG exception and call gen_helper_raise_excp with restore 0.
+Keep data_exception. Route leftover C SVC execute through
+cpu_loop_exit_excp.
 
 Signed-off-by: Yonggang Luo <luoyonggang@gmail.com>
 ---
- include/exec/helper-gen.h.inc | 24 ++++++++++++++++--------
- 1 file changed, 16 insertions(+), 8 deletions(-)
+ target/s390x/helper.h          |  1 -
+ target/s390x/tcg/mem_helper.c  |  2 +-
+ target/s390x/tcg/misc_helper.c | 10 ----------
+ target/s390x/tcg/translate.c   |  2 +-
+ 4 files changed, 2 insertions(+), 13 deletions(-)
 
-diff --git a/include/exec/helper-gen.h.inc b/include/exec/helper-gen.h.inc
-index dabe138e205..1a4dc27d436 100644
---- a/include/exec/helper-gen.h.inc
-+++ b/include/exec/helper-gen.h.inc
-@@ -11,49 +11,49 @@
- #include "exec/helper-head.h.inc"
+diff --git a/target/s390x/helper.h b/target/s390x/helper.h
+index 6a7426fdac7..ec27ef104f2 100644
+--- a/target/s390x/helper.h
++++ b/target/s390x/helper.h
+@@ -1,4 +1,3 @@
+-DEF_HELPER_2(exception, noreturn, env, i32)
+ DEF_HELPER_2(data_exception, noreturn, env, i32)
+ DEF_HELPER_FLAGS_4(nc, TCG_CALL_NO_WG, i32, env, i32, i64, i64)
+ DEF_HELPER_FLAGS_4(oc, TCG_CALL_NO_WG, i32, env, i32, i64, i64)
+diff --git a/target/s390x/tcg/mem_helper.c b/target/s390x/tcg/mem_helper.c
+index 414e6838c87..3f754dac00f 100644
+--- a/target/s390x/tcg/mem_helper.c
++++ b/target/s390x/tcg/mem_helper.c
+@@ -2488,7 +2488,7 @@ void HELPER(ex)(CPUS390XState *env, uint32_t ilen, uint64_t r1, uint64_t addr)
+     } else if (opc == 0x0a) {
+         env->int_svc_code = extract64(insn, 48, 8);
+         env->int_svc_ilen = ilen;
+-        helper_exception(env, EXCP_SVC);
++        cpu_loop_exit_excp(env_cpu(env), EXCP_SVC, 0);
+         g_assert_not_reached();
+     }
  
- #define DEF_HELPER_FLAGS_0(name, flags, ret)                            \
--extern TCGHelperInfo glue(helper_info_, name);                          \
- static inline void glue(gen_helper_, name)(dh_retvar_decl0(ret))        \
- {                                                                       \
-+    extern TCGHelperInfo glue(helper_info_, name);                      \
-     tcg_gen_call0(glue(helper_info_,name).func,                         \
-                   &glue(helper_info_,name), dh_retvar(ret));            \
+diff --git a/target/s390x/tcg/misc_helper.c b/target/s390x/tcg/misc_helper.c
+index f1c8563af00..f5e31419268 100644
+--- a/target/s390x/tcg/misc_helper.c
++++ b/target/s390x/tcg/misc_helper.c
+@@ -56,16 +56,6 @@
+ #define HELPER_LOG(x...)
+ #endif
+ 
+-/* Raise an exception statically from a TB.  */
+-void HELPER(exception)(CPUS390XState *env, uint32_t excp)
+-{
+-    CPUState *cs = env_cpu(env);
+-
+-    HELPER_LOG("%s: exception %d\n", __func__, excp);
+-    cs->exception_index = excp;
+-    cpu_loop_exit(cs);
+-}
+-
+ /* Store CPU Timer (also used for EXTRACT CPU TIME) */
+ uint64_t HELPER(stpt)(CPUS390XState *env)
+ {
+diff --git a/target/s390x/tcg/translate.c b/target/s390x/tcg/translate.c
+index 1b6023168bb..2107ecfbdc9 100644
+--- a/target/s390x/tcg/translate.c
++++ b/target/s390x/tcg/translate.c
+@@ -400,7 +400,7 @@ static int get_mem_index(DisasContext *s)
+ 
+ static void gen_exception(int excp)
+ {
+-    gen_helper_exception(tcg_env, tcg_constant_i32(excp));
++    gen_helper_raise_excp(tcg_env, tcg_constant_i32(excp), tcg_constant_i32(0));
  }
  
- #define DEF_HELPER_FLAGS_1(name, flags, ret, t1)                        \
--extern TCGHelperInfo glue(helper_info_, name);                          \
- static inline void glue(gen_helper_, name)(dh_retvar_decl(ret)          \
-     dh_arg_decl(t1, 1))                                                 \
- {                                                                       \
-+    extern TCGHelperInfo glue(helper_info_, name);                      \
-     tcg_gen_call1(glue(helper_info_,name).func,                         \
-                   &glue(helper_info_,name), dh_retvar(ret),             \
-                   dh_arg(t1, 1));                                       \
- }
- 
- #define DEF_HELPER_FLAGS_2(name, flags, ret, t1, t2)                    \
--extern TCGHelperInfo glue(helper_info_, name);                          \
- static inline void glue(gen_helper_, name)(dh_retvar_decl(ret)          \
-     dh_arg_decl(t1, 1), dh_arg_decl(t2, 2))                             \
- {                                                                       \
-+    extern TCGHelperInfo glue(helper_info_, name);                      \
-     tcg_gen_call2(glue(helper_info_,name).func,                         \
-                   &glue(helper_info_,name), dh_retvar(ret),             \
-                   dh_arg(t1, 1), dh_arg(t2, 2));                        \
- }
- 
- #define DEF_HELPER_FLAGS_3(name, flags, ret, t1, t2, t3)                \
--extern TCGHelperInfo glue(helper_info_, name);                          \
- static inline void glue(gen_helper_, name)(dh_retvar_decl(ret)          \
-     dh_arg_decl(t1, 1), dh_arg_decl(t2, 2), dh_arg_decl(t3, 3))         \
- {                                                                       \
-+    extern TCGHelperInfo glue(helper_info_, name);                      \
-     tcg_gen_call3(glue(helper_info_,name).func,                         \
-                   &glue(helper_info_,name), dh_retvar(ret),             \
-                   dh_arg(t1, 1), dh_arg(t2, 2), dh_arg(t3, 3));         \
- }
- 
- #define DEF_HELPER_FLAGS_4(name, flags, ret, t1, t2, t3, t4)            \
--extern TCGHelperInfo glue(helper_info_, name);                          \
- static inline void glue(gen_helper_, name)(dh_retvar_decl(ret)          \
-     dh_arg_decl(t1, 1), dh_arg_decl(t2, 2),                             \
-     dh_arg_decl(t3, 3), dh_arg_decl(t4, 4))                             \
- {                                                                       \
-+    extern TCGHelperInfo glue(helper_info_, name);                      \
-     tcg_gen_call4(glue(helper_info_,name).func,                         \
-                   &glue(helper_info_,name), dh_retvar(ret),             \
-                   dh_arg(t1, 1), dh_arg(t2, 2),                         \
-@@ -61,11 +61,11 @@ static inline void glue(gen_helper_, name)(dh_retvar_decl(ret)          \
- }
- 
- #define DEF_HELPER_FLAGS_5(name, flags, ret, t1, t2, t3, t4, t5)        \
--extern TCGHelperInfo glue(helper_info_, name);                          \
- static inline void glue(gen_helper_, name)(dh_retvar_decl(ret)          \
-     dh_arg_decl(t1, 1), dh_arg_decl(t2, 2), dh_arg_decl(t3, 3),         \
-     dh_arg_decl(t4, 4), dh_arg_decl(t5, 5))                             \
- {                                                                       \
-+    extern TCGHelperInfo glue(helper_info_, name);                      \
-     tcg_gen_call5(glue(helper_info_,name).func,                         \
-                   &glue(helper_info_,name), dh_retvar(ret),             \
-                   dh_arg(t1, 1), dh_arg(t2, 2), dh_arg(t3, 3),          \
-@@ -73,11 +73,11 @@ static inline void glue(gen_helper_, name)(dh_retvar_decl(ret)          \
- }
- 
- #define DEF_HELPER_FLAGS_6(name, flags, ret, t1, t2, t3, t4, t5, t6)    \
--extern TCGHelperInfo glue(helper_info_, name);                          \
- static inline void glue(gen_helper_, name)(dh_retvar_decl(ret)          \
-     dh_arg_decl(t1, 1), dh_arg_decl(t2, 2), dh_arg_decl(t3, 3),         \
-     dh_arg_decl(t4, 4), dh_arg_decl(t5, 5), dh_arg_decl(t6, 6))         \
- {                                                                       \
-+    extern TCGHelperInfo glue(helper_info_, name);                      \
-     tcg_gen_call6(glue(helper_info_,name).func,                         \
-                   &glue(helper_info_,name), dh_retvar(ret),             \
-                   dh_arg(t1, 1), dh_arg(t2, 2), dh_arg(t3, 3),          \
-@@ -85,12 +85,12 @@ static inline void glue(gen_helper_, name)(dh_retvar_decl(ret)          \
- }
- 
- #define DEF_HELPER_FLAGS_7(name, flags, ret, t1, t2, t3, t4, t5, t6, t7)\
--extern TCGHelperInfo glue(helper_info_, name);                          \
- static inline void glue(gen_helper_, name)(dh_retvar_decl(ret)          \
-     dh_arg_decl(t1, 1), dh_arg_decl(t2, 2), dh_arg_decl(t3, 3),         \
-     dh_arg_decl(t4, 4), dh_arg_decl(t5, 5), dh_arg_decl(t6, 6),         \
-     dh_arg_decl(t7, 7))                                                 \
- {                                                                       \
-+    extern TCGHelperInfo glue(helper_info_, name);                      \
-     tcg_gen_call7(glue(helper_info_,name).func,                         \
-                   &glue(helper_info_,name), dh_retvar(ret),             \
-                   dh_arg(t1, 1), dh_arg(t2, 2), dh_arg(t3, 3),          \
-@@ -98,7 +98,15 @@ static inline void glue(gen_helper_, name)(dh_retvar_decl(ret)          \
-                   dh_arg(t7, 7));                                       \
- }
- 
-+/*
-+ * helper_info_* is declared inside gen_helper_* so a comment on
-+ * DEF_HELPER attaches to gen_helper_*, not helper_info_*. That is a
-+ * nested extern; silence -Wnested-externs for this expansion only.
-+ */
-+#pragma GCC diagnostic push
-+#pragma GCC diagnostic ignored "-Wnested-externs"
- #include HELPER_H
-+#pragma GCC diagnostic pop
- 
- #undef DEF_HELPER_FLAGS_0
- #undef DEF_HELPER_FLAGS_1
+ static void gen_program_exception(DisasContext *s, int code)
 -- 
 2.52.0.windows.1
 

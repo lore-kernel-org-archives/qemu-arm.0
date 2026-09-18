@@ -4,69 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C0EA3C982D2
-	for <qemu-arm@archiver.kernel.org>; Fri, 18 Sep 2026 00:45:32 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AF5EFC982D0
+	for <qemu-arm@archiver.kernel.org>; Fri, 18 Sep 2026 00:45:50 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1x7Mib-0000O6-TX; Thu, 17 Sep 2026 20:44:46 -0400
+	id 1x7MiT-0008LL-DW; Thu, 17 Sep 2026 20:44:37 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <luoyonggang@gmail.com>)
- id 1x7Mhz-0007ul-4H
- for qemu-arm@nongnu.org; Thu, 17 Sep 2026 20:44:09 -0400
-Received: from mail-pz2-x0e.google.com ([2607:f8b0:4864:3b::e])
+ id 1x7Mhk-0007jm-3K
+ for qemu-arm@nongnu.org; Thu, 17 Sep 2026 20:43:54 -0400
+Received: from mail-pz2-x10.google.com ([2607:f8b0:4864:3b::10])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <luoyonggang@gmail.com>)
- id 1x7Mhx-0001ke-EI
- for qemu-arm@nongnu.org; Thu, 17 Sep 2026 20:44:06 -0400
-Received: by mail-pz2-x0e.google.com with SMTP id
- 41be03b00d2f7-cc1cea50db3so55360a12.1
- for <qemu-arm@nongnu.org>; Thu, 17 Sep 2026 17:44:05 -0700 (PDT)
+ id 1x7Mhg-0001hf-GH
+ for qemu-arm@nongnu.org; Thu, 17 Sep 2026 20:43:51 -0400
+Received: by mail-pz2-x10.google.com with SMTP id
+ 41be03b00d2f7-cc433d52421so53269a12.3
+ for <qemu-arm@nongnu.org>; Thu, 17 Sep 2026 17:43:48 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20251104; t=1789692244; x=1790297044; darn=nongnu.org;
+ d=gmail.com; s=20251104; t=1789692227; x=1790297027; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to:content-type;
- bh=lulph+1uLiSsZprj2WnOvAAVxiVP07eJais76hf0yd8=;
- b=dNm/fQlj0DvQHlDCIxoqLggwufXm/0metJBY+I8/lA0Nvdt+a5eFnmloumiehIq49A
- 76ff0TkFWbfqgyzTKECacVdXduna3w1V5wpdD924kVFaNTnf+ETGS/GjwV8KQD8qKgFE
- jouB88FeW/KiGKqNgg0U0W9zAbHyJpOY0oyw76N24HWQ1f9sxDzE9ZbzOZveC14lC5/d
- HaCKxjQfZ0M63sl7jWaoQ207br5G8uiC3bHXIBqbnBE0PtEG6sCH4xmT0XyXhLpK9HcT
- yjKuLAr6P/88z+7ndHNlCbOrlTV9MYwoGBwdL+F/577LMGOMt0Q8ysGdX8bQJDeK7nLq
- j6Ww==
+ bh=Qzd0M/4qp9vwSv2bB8bs53lJcrM5huaiJqNoXcaAAE4=;
+ b=c1zwMNuxHfyrePQb1gjCcUtDb20saXrEVGssffmS6ZE87C4Hm+3kC79AyMKakp8s4R
+ 2WTNM4CY9P5bvVqNeUniFvB7loUC3PL6l0BcKjOlaehyLfiVtm+BzIvg8StscXFfTQbK
+ gh+t69GNka7DOTQMZPWok2xiHEsch1fqGt9aYV7zG2LbmTMIh/Mah8dVGXCTA8YHZBsy
+ cFzxx3gUnmo7aXzAkBWmtOmuzQLC2H6w+S8rTCXi3pCpaPrwH9YGzStmaBe2oFXoXJEj
+ tCHqd+hy7fwxxU+f+OJmJxdxKA7YWNxgkXWLDQ9gnylwBKNoXrsTuLowCS0Qe+KyyTOe
+ LrAQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20260707; t=1789692244; x=1790297044;
+ d=1e100.net; s=20260707; t=1789692227; x=1790297027;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
  :to:cc:subject:date:message-id:reply-to:content-type;
- bh=lulph+1uLiSsZprj2WnOvAAVxiVP07eJais76hf0yd8=;
- b=p2JQ/YTi8K+cK+TaFD/jg2ihRT4sX5B2SM2m68NjvUsKIwd8RZ1veXfcgf7nSdV6cf
- fV+snxKePWtrWYgl7FKWKmONahlwEOr8qin/Tbc38Uw/h8Nlmkn6mIhcbvayEhtjC5S1
- ml6J+awJVU3AnybTUwGqZ4YnWXUJ2fbsMF2jw+/wOB1igtBRz9WvruHLne7VAOGLHCm6
- 2C72Q2JAsTzvZ2GAzjRxo/HgurBHi8V+odFtI3puPKI7zdlbdR4tD53scEdDoJ2wgrNX
- aecogmwIsxWcvMwzKmu4EzNrkDjhV1kaW1h73V41DWYJGLgJemHzDBZyeEZ4qyhQdhpY
- hDjg==
+ bh=Qzd0M/4qp9vwSv2bB8bs53lJcrM5huaiJqNoXcaAAE4=;
+ b=YWbVuoa23tkKq8zMec02BeRxpIdFlm2fF3Wipk9S5r6R1kL4uw+wgVJ7FU28z5jTeX
+ O3w5vPVap0sDQ6WSteE0bCLSXunIzp3GYemLD5N5vT1C8iOJSbDWmC/qoHH0f2g1wO/M
+ k2IScxL9jxle2NQoTy3tif1ZQUSu4QoUzoIeSgdLhgWjbK3P/oITsfAr4xQkFRcz6lUO
+ lZgX422mnwC9WC89lmABoYeT7QtU1JI0kBbBwEWYuMH//R+5dgKuVpk72Gg+OPYwSOUO
+ oKyffeJGfeReIdOWwQX8KA7RnRRSb73oQdTqD9yQvDMjK4hRpmzlShlejTS9+4MT9w/N
+ tKNA==
 X-Forwarded-Encrypted: i=1;
- AKwUvBxAex3HxHJcgGC5vyec140ZUTceBnAaTXGeNmuZ73q6szFG0Sr545Rn25r8+YlY8/LC8c6qwPtB1A==@nongnu.org
-X-Gm-Message-State: AFuF++logjKMU3+WRIi9E/pisOWiMrD4kcEAeeDvobguig6G7u92S/V7
- 6KahapvmGTntX8WEBkv7HYOk7TlRwmtrzQn49OkEmHiNKMuwBZujRqoo
-X-Gm-Gg: AYBFou1R7bIAFgFh4ag+OpRKJuPaMDN+xBhM8wQkXr3NrV9YfaRGc6JxJz1GyIlqOsC
- chqPeFtEcT7UUzX7hIwd7oWix4ZF7ZIbdx+vIpBf79EdYg2kd4+iY4B8L6+uKGL0wsplu1i1UIM
- 7366Uuwfw//amFotSqGUzJSXIIFDwNeCqrVVv3PgnA9H55OSsVVzhK8gmuqjcMPUI6PPI+hbwTj
- lp3UAIcLtb/UrCFlb/zikjDvMbfpk/JTvV4KI6+FWwkabD/upD/8VLRSrrNZSrKVowp3BVSxdFk
- 8Ir7tn0TtUuCNnZmKziSFGK2AlZ591aaLOtiM5tMqzxJMN6Ket53OUzY4nGX8JdXyVWUEOjUSKI
- EnYKKky3hpWppsO2yukH2o5y2rB2KbpIXA1ZSdAkLO2GetEnb03Bs2yq8ENaLiPYcP9oq8CxYzV
- lV3uKSax5phMc5b+aJ6JnI6ndXDb8PnQetaCUF+RzQQYqBmUj5MXjSMekv615c1IyRCKMZwew1Y
- hFVYjs+upJe0cp1lQE1MOf1851yBIpj
-X-Received: by 2002:a05:6a20:3d8d:b0:3d3:ad3c:49a9 with SMTP id
- adf61e73a8af0-3dd8c516adbmr1396998637.23.1789692244095; 
- Thu, 17 Sep 2026 17:44:04 -0700 (PDT)
+ AKwUvBy/KhnsJ7F3gjLlYMH545NKQ9yoA7z4q/Za4HwmFdeqXZUl9sZRrcjQ2+973QlvB4B66dsQaptdFQ==@nongnu.org
+X-Gm-Message-State: AFuF++ky4FC7iRsiXo00675A8RwXITHFMq1aMrbkaJ/34aYjkH11xxOd
+ aCW67VsdOmHrfUfKpASfVf843eChqiv86VmTK+Ic59NGHLh1UBJQ8sJ7
+X-Gm-Gg: AYBFou1qe4669LvN8hM2jMwLyaxHyAKLucC/4vzBkfJohMCtn+H2/OQLIKtflctmTjP
+ lV3lXewUveawtYK8Ek6kdvBRZmJSnSanO6H8KSRBkMEm/GgX/aLD3zm2MoLYz7S7FqyxoEBPLLQ
+ 8A+vDvLviFuM+smVFiNjHnJn7XzHWSJcR1vEj3OkELGEzYB5He3fwh3SlINuycUkfanK8DX625B
+ /DdPPClOo+DW6RHJ7h01QmLuD1iid/m5OV7IXIKopDdffVcuL3ZT7X0eJ9lOJGDc0XrpJL6IaFz
+ 7NzSUcnVb7r4mZTkWsAFxAIsLEIsvkkXWe+onjHHFTUSX93pvU+IQENQ5Y1+BYFO7rCxtKJrFNI
+ 6gMyX26ds1SLR5xpeDde3BWY+LHBkq5oe99Pd61BnqF3u9okDj7PQhm3B3iBpmH/yZUFX/BabHr
+ 2mwh1Fupre4aBOfy5OEKthOIdIZIQiP2dTzNIj5knueJRYK9anp0hhgg7RL/mfhE6evmPW7JnH/
+ V4/gaGTylB2HylQSgVoDTMSuW9s8mOd
+X-Received: by 2002:a05:6a20:93a1:b0:3d3:adbf:7779 with SMTP id
+ adf61e73a8af0-3dd8c49ed36mr1513962637.21.1789692227024; 
+ Thu, 17 Sep 2026 17:43:47 -0700 (PDT)
 Received: from WIN-BH9M8FJACR9 ([103.94.185.75])
  by smtp.googlemail.com with ESMTPSA id
- a92af1059eb24-144cdfc3df2sm600286c88.5.2026.09.17.17.43.56
+ a92af1059eb24-144cdfc3df2sm600286c88.5.2026.09.17.17.43.39
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 17 Sep 2026 17:44:03 -0700 (PDT)
+ Thu, 17 Sep 2026 17:43:46 -0700 (PDT)
 From: Yonggang Luo <luoyonggang@gmail.com>
 To: qemu-devel@nongnu.org
 Cc: Xianglai Li <lixianglai@loongson.cn>, qemu-s390x@nongnu.org,
@@ -100,22 +100,23 @@ Cc: Xianglai Li <lixianglai@loongson.cn>, qemu-s390x@nongnu.org,
  Peter Maydell <peter.maydell@linaro.org>,
  Palmer Dabbelt <palmer@dabbelt.com>, qemu-riscv@nongnu.org,
  Song Gao <17746591750@163.com>, Matthew Rosato <mjrosato@linux.ibm.com>
-Subject: [PATCH 10/21] target/loongarch: convert raise_exception to raise_excp
-Date: Fri, 18 Sep 2026 08:42:12 +0800
-Message-ID: <20260918004225.827-11-luoyonggang@gmail.com>
+Subject: [PATCH 08/21] target/microblaze: convert raise_exception to raise_excp
+Date: Fri, 18 Sep 2026 08:42:10 +0800
+Message-ID: <20260918004225.827-9-luoyonggang@gmail.com>
 X-Mailer: git-send-email 2.52.0.windows.1
 In-Reply-To: <20260918004225.827-1-luoyonggang@gmail.com>
 References: <20260918004225.827-1-luoyonggang@gmail.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:3b::e;
- envelope-from=luoyonggang@gmail.com; helo=mail-pz2-x0e.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:3b::10;
+ envelope-from=luoyonggang@gmail.com; helo=mail-pz2-x10.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -131,75 +132,115 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Translate through gen_helper_raise_excp with restore 1 after
-storing PC. Drop TCG raise_exception. Keep C do_raise_exception
-and use cpu_loop_exit_excp.
+Translate through gen_helper_raise_excp with restore 0 after
+syncing PC. Drop TCG raise_exception. Exit HW_EXCP and MMU through
+cpu_loop_exit_excp.
 
 Signed-off-by: Yonggang Luo <luoyonggang@gmail.com>
 ---
- target/loongarch/tcg/helper.h    | 2 --
- target/loongarch/tcg/op_helper.c | 6 ------
- target/loongarch/tcg/tcg_cpu.c   | 4 +---
- target/loongarch/tcg/translate.c | 3 ++-
- 4 files changed, 3 insertions(+), 12 deletions(-)
+ target/microblaze/helper.c    |  3 +--
+ target/microblaze/helper.h    |  2 --
+ target/microblaze/op_helper.c | 22 ++++------------------
+ target/microblaze/translate.c |  3 ++-
+ 4 files changed, 7 insertions(+), 23 deletions(-)
 
-diff --git a/target/loongarch/tcg/helper.h b/target/loongarch/tcg/helper.h
-index e76c73c7755..e3a7bc9e9da 100644
---- a/target/loongarch/tcg/helper.h
-+++ b/target/loongarch/tcg/helper.h
-@@ -3,8 +3,6 @@
-  * Copyright (c) 2021 Loongson Technology Corporation Limited
-  */
+diff --git a/target/microblaze/helper.c b/target/microblaze/helper.c
+index 05a90f5ecb2..d092e916db4 100644
+--- a/target/microblaze/helper.c
++++ b/target/microblaze/helper.c
+@@ -146,8 +146,7 @@ bool mb_cpu_tlb_fill(CPUState *cs, vaddr address, int size,
+     }
  
--DEF_HELPER_2(raise_exception, noreturn, env, i32)
--
- DEF_HELPER_FLAGS_3(asrtle_d, TCG_CALL_NO_WG, void, env, tl, tl)
- DEF_HELPER_FLAGS_3(asrtgt_d, TCG_CALL_NO_WG, void, env, tl, tl)
- 
-diff --git a/target/loongarch/tcg/op_helper.c b/target/loongarch/tcg/op_helper.c
-index f41f0cb1e6e..36719617b85 100644
---- a/target/loongarch/tcg/op_helper.c
-+++ b/target/loongarch/tcg/op_helper.c
-@@ -16,12 +16,6 @@
- #include <zlib.h> /* for crc32 */
- #include "cpu-csr.h"
- 
--/* Exceptions helpers */
--void helper_raise_exception(CPULoongArchState *env, uint32_t exception)
--{
--    do_raise_exception(env, exception, GETPC());
--}
--
- /* loongarch assert op */
- void helper_asrtle_d(CPULoongArchState *env, target_ulong rj, target_ulong rk)
- {
-diff --git a/target/loongarch/tcg/tcg_cpu.c b/target/loongarch/tcg/tcg_cpu.c
-index 4b1d44a1644..56ef0d912cc 100644
---- a/target/loongarch/tcg/tcg_cpu.c
-+++ b/target/loongarch/tcg/tcg_cpu.c
-@@ -69,9 +69,7 @@ void G_NORETURN do_raise_exception(CPULoongArchState *env,
-                   __func__,
-                   exception,
-                   loongarch_exception_name(exception));
--    cs->exception_index = exception;
--
--    cpu_loop_exit_restore(cs, pc);
-+    cpu_loop_exit_excp(cs, exception, pc);
+     /* TLB miss.  */
+-    cs->exception_index = EXCP_MMU;
+-    cpu_loop_exit_restore(cs, retaddr);
++    cpu_loop_exit_excp(cs, EXCP_MMU, retaddr);
  }
  
- #ifndef CONFIG_USER_ONLY
-diff --git a/target/loongarch/tcg/translate.c b/target/loongarch/tcg/translate.c
-index 124dce62695..ddadfb84285 100644
---- a/target/loongarch/tcg/translate.c
-+++ b/target/loongarch/tcg/translate.c
-@@ -95,7 +95,8 @@ static void gen_nanbox_s(TCGv_i64 out, TCGv_i64 in)
- void generate_exception(DisasContext *ctx, int excp)
+ void mb_cpu_do_interrupt(CPUState *cs)
+diff --git a/target/microblaze/helper.h b/target/microblaze/helper.h
+index 1429c1727ef..ad9c22ed5b7 100644
+--- a/target/microblaze/helper.h
++++ b/target/microblaze/helper.h
+@@ -1,5 +1,3 @@
+-DEF_HELPER_FLAGS_2(raise_exception, TCG_CALL_NO_WG, noreturn, env, i32)
+-
+ DEF_HELPER_FLAGS_3(divs, TCG_CALL_NO_WG, i32, env, i32, i32)
+ DEF_HELPER_FLAGS_3(divu, TCG_CALL_NO_WG, i32, env, i32, i32)
+ 
+diff --git a/target/microblaze/op_helper.c b/target/microblaze/op_helper.c
+index 3da0c68da39..f3dc42d5bdd 100644
+--- a/target/microblaze/op_helper.c
++++ b/target/microblaze/op_helper.c
+@@ -62,25 +62,14 @@ uint32_t helper_get(uint32_t id, uint32_t ctrl)
+     return 0xdead0000 | id;
+ }
+ 
+-void helper_raise_exception(CPUMBState *env, uint32_t index)
+-{
+-    CPUState *cs = env_cpu(env);
+-
+-    cs->exception_index = index;
+-    cpu_loop_exit(cs);
+-}
+-
+ /* Raises ESR_EC_DIVZERO if exceptions are enabled.  */
+ static void raise_divzero(CPUMBState *env, uint32_t esr, uintptr_t unwind_pc)
  {
-     tcg_gen_movi_tl(cpu_pc, ctx->base.pc_next);
--    gen_helper_raise_exception(tcg_env, tcg_constant_i32(excp));
-+    gen_helper_raise_excp(tcg_env, tcg_constant_i32(excp),
-+                          tcg_constant_i32(1));
-     ctx->base.is_jmp = DISAS_NORETURN;
+     env->msr |= MSR_DZ;
+ 
+     if ((env->msr & MSR_EE) && env_archcpu(env)->cfg.div_zero_exception) {
+-        CPUState *cs = env_cpu(env);
+-
+         env->esr = esr;
+-        cs->exception_index = EXCP_HW_EXCP;
+-        cpu_loop_exit_restore(cs, unwind_pc);
++        cpu_loop_exit_excp(env_cpu(env), EXCP_HW_EXCP, unwind_pc);
+     }
+ }
+ 
+@@ -123,8 +112,7 @@ static void raise_fpu_exception(CPUMBState *env, uintptr_t ra)
+     CPUState *cs = env_cpu(env);
+ 
+     env->esr = ESR_EC_FPU;
+-    cs->exception_index = EXCP_HW_EXCP;
+-    cpu_loop_exit_restore(cs, ra);
++    cpu_loop_exit_excp(cs, EXCP_HW_EXCP, ra);
+ }
+ 
+ static void update_fpu_flags(CPUMBState *env, int flags, uintptr_t ra)
+@@ -390,8 +378,7 @@ void helper_stackprot(CPUMBState *env, uint32_t addr)
+ 
+         env->ear = addr;
+         env->esr = ESR_EC_STACKPROT;
+-        cs->exception_index = EXCP_HW_EXCP;
+-        cpu_loop_exit_restore(cs, GETPC());
++        cpu_loop_exit_excp(cs, EXCP_HW_EXCP, GETPC());
+     }
+ }
+ 
+@@ -444,8 +431,7 @@ static void mb_transaction_failed_internal(CPUState *cs, hwaddr physaddr,
+     if (take) {
+         env->esr = esr;
+         env->ear = addr;
+-        cs->exception_index = EXCP_HW_EXCP;
+-        cpu_loop_exit_restore(cs, retaddr);
++        cpu_loop_exit_excp(cs, EXCP_HW_EXCP, retaddr);
+     }
+ }
+ 
+diff --git a/target/microblaze/translate.c b/target/microblaze/translate.c
+index 8b219afb5dd..8893fa0d4fe 100644
+--- a/target/microblaze/translate.c
++++ b/target/microblaze/translate.c
+@@ -100,7 +100,8 @@ static void t_sync_flags(DisasContext *dc)
+ 
+ static void gen_raise_exception(DisasContext *dc, uint32_t index)
+ {
+-    gen_helper_raise_exception(tcg_env, tcg_constant_i32(index));
++    gen_helper_raise_excp(tcg_env, tcg_constant_i32(index),
++                          tcg_constant_i32(0));
+     dc->base.is_jmp = DISAS_NORETURN;
  }
  
 -- 

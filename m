@@ -4,151 +4,57 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 51061C982DA
-	for <qemu-arm@archiver.kernel.org>; Fri, 18 Sep 2026 16:09:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C641FC982D7
+	for <qemu-arm@archiver.kernel.org>; Sat, 19 Sep 2026 17:04:00 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1x7b8v-0006t2-H6; Fri, 18 Sep 2026 12:08:53 -0400
+	id 1x7yTe-0002Yk-S9; Sat, 19 Sep 2026 13:03:51 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1x7b8q-0006qq-Sz
- for qemu-arm@nongnu.org; Fri, 18 Sep 2026 12:08:50 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ (Exim 4.90_1) (envelope-from <outgoing@sr.ht>)
+ id 1x7yDv-0002fn-7R; Sat, 19 Sep 2026 12:47:36 -0400
+Received: from mail-a.sr.ht ([46.23.81.152])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1x7b8n-0006oj-4C
- for qemu-arm@nongnu.org; Fri, 18 Sep 2026 12:08:48 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1789747722;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
- bh=EO+9xEUKlC0DwXPKoG0UbzFJr/QR6Zrv4dkwCm5D2u8=;
- b=LH0kqcJMGoXX8OenZqlb8vvxeW2rnDWfxMA0qSrS4OMitxsq4d8teEcpGVNtuSteEaFhh2
- zKYQJ1a6R3eW3NgYtVbBwG6JXUqLdOx9rWv0bUEShnwUBEa5KEUXSK+NZk4GCfcNTzhhJ9
- asM68I6TQWbAkfW1fE3t+8QpSYD82tY=
-Received: from mail-wm1-f71.google.com (mail-wm1-f71.google.com
- [209.85.128.71]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-562-2xtwFsA6NyWQj4usOLNKjw-1; Fri, 18 Sep 2026 12:08:40 -0400
-X-MC-Unique: 2xtwFsA6NyWQj4usOLNKjw-1
-X-Mimecast-MFC-AGG-ID: 2xtwFsA6NyWQj4usOLNKjw_1789747719
-Received: by mail-wm1-f71.google.com with SMTP id
- 5b1f17b1804b1-49b0e6638e3so7588775e9.2
- for <qemu-arm@nongnu.org>; Fri, 18 Sep 2026 09:08:40 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20260707; t=1789747719; x=1790352519;
- h=content-transfer-encoding:content-type:in-reply-to:autocrypt
- :content-language:from:references:cc:to:subject:user-agent
- :mime-version:date:message-id:x-gm-gg:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to:content-type;
- bh=EO+9xEUKlC0DwXPKoG0UbzFJr/QR6Zrv4dkwCm5D2u8=;
- b=nQ6TxgZFS9pzlxTgYLCYwKqMVMwYiiF1iVvONStXou53sBOR5zWfKuvaifEVXwwcRz
- qdJ/5DTTHWG5YOhRH6dz3YXk7KvlLV19I2CQtBsI90szsKKJcphmdqU6Ocm3PIeO1jVc
- 6Wh0kuHDj6niDQL+sJvxeZPorL3vnuOXtVyF20oGa2hMB2so6M0i5pKsvew7oiGGuUE6
- HGS9/VlZAElojtmkPXLHXasSHPOYlm9Gfpnz3MMfJHGNlOb8Oh1PZJfoCOPlYWOhJf18
- bxP53qpiR900gbmEeJpPfZ1Bxfk8dwzXx8uI/b64ys3bNM92dFCgS37j6qGUihNWl/8R
- jEYA==
-X-Forwarded-Encrypted: i=1;
- AKwUvByzxOZmHIxf6id2O5SqIUq1d6HZb4a/ajyDCvHnp5j9OebaafRXiR6bKlno6tfZY/7XWoWN0z0q6A==@nongnu.org
-X-Gm-Message-State: AFuF++nCSIepJk+m9D6tXAiwIYGmmVEW5o95RcM/zbTVMVn89ND7ZKUB
- V/q+ElhaOCbEHW74M3rnY+AJWzLoH7/6whpuVub2q3BY4L7GLfoptTaKhN3X1oPWsaqouv9qKIT
- pq4lGCpGQUpg6UtGo1KnulP7EDtIekFdbO4yFAckv5t+dP2TA4z5mqQ==
-X-Gm-Gg: AYBFou3/210IdyenTpcnhzvLOyQZReAU3H7J+3pdAYCbUzwOWomEl42e6vk1RUl6c3P
- SnGLtDMK2bjNDeKKgLM7C3da9pNcExUzuvkq2Ea/K0OhaeIVu/YiYNc0p9sk9zzsJg5+nStuyye
- 8+goepwn3YP4w+houHlHB7sLOCPKik6r/qEeaQdbaKUVDsizuiHr/jvwiQQ18MTNkd5P4HasH9Y
- EpGfqPVLLNC6ANy30qnd2Ui3Uoh536FBGhkhra3R1ZOlO++gWLZyEJtnkLd7C0w+pNYpnXENGXa
- y7qDNPDpUpZzotlVosJk7GpfRxMysp4s1MGUa8f0vQaFrfcqaFHZPa+a/GJNakiJRxvt3HPBr+A
- gVtGcv4rzqS6qFnGkg+jQOZ9VIZ1ZpyhNUe3zgMxl9g==
-X-Received: by 2002:a05:600c:6212:b0:499:9240:9a1c with SMTP id
- 5b1f17b1804b1-49fc56f8327mr34222615e9.15.1789747719155; 
- Fri, 18 Sep 2026 09:08:39 -0700 (PDT)
-X-Received: by 2002:a05:600c:6212:b0:499:9240:9a1c with SMTP id
- 5b1f17b1804b1-49fc56f8327mr34222105e9.15.1789747718604; 
- Fri, 18 Sep 2026 09:08:38 -0700 (PDT)
-Received: from ?IPV6:2a01:e0a:1292:d530:e939:7a09:c368:e5d5?
- ([2a01:e0a:1292:d530:e939:7a09:c368:e5d5])
- by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-487203f077fsm4790418f8f.26.2026.09.18.09.08.36
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Fri, 18 Sep 2026 09:08:37 -0700 (PDT)
-Message-ID: <9795f7b3-6ac4-4693-b39c-bb61d81e3f2d@redhat.com>
-Date: Fri, 18 Sep 2026 18:08:36 +0200
+ (Exim 4.90_1) (envelope-from <outgoing@sr.ht>)
+ id 1x7yDr-0007z6-AI; Sat, 19 Sep 2026 12:47:34 -0400
+DKIM-Signature: a=rsa-sha256; bh=IfCqFNjN/Dd2uXBzGYxSYHGbyOrNnpc/hbRaIw2Ar0k=; 
+ c=simple/simple; d=git.sr.ht;
+ h=From:Date:Subject:Reply-to:In-Reply-To:To:Cc; q=dns/txt; s=20240113;
+ t=1789836443; v=1;
+ b=Ff3Ddn7q7Cyza5vUbT0EYVoa5Kl2eFloZ4yxR+PVAamYcKz7CIhY/RKnfNZyovNbCGJ8XM+3
+ 7vlxKTFQisY9xje+AK/fWZIFgthYNOCo1G0JLVdQnMYJjZiIbzphIogbTpzx6hX4crzmIbDbYu6
+ Yo145/tvt5uSF6lLNjRFUwBr7ZxmlSpb7kLfhaBLtR0UqTQIIDNSi668oLyMvVhWrctWcacN4OG
+ GOW+9CZM8Aczfsgb/3jXBhdbK20DoP+xwuauYQo5O9jhmY94cbi80eggu4bXWWjmxyFYR0MDQop
+ YHXzq41c/bn3fz3+w2bM5iCyQPhtPlflh/rf2ssN4K7xw==
+Received: from git.sr.ht (unknown [46.23.81.155])
+ by mail-a.sr.ht (Postfix) with ESMTPSA id A69FC224AA;
+ Sat, 19 Sep 2026 16:47:23 +0000 (UTC)
+From: ~jprx <jprx@git.sr.ht>
+Date: Sat, 19 Sep 2026 10:37:52 -0400
+Subject: [PATCH qemu 2/2] hw/char/exynos4210_uart: fix fifo overflow
+Message-ID: <178983644340.22135.11298603231632238119-2@git.sr.ht>
+X-Mailer: git.sr.ht
+In-Reply-To: <178983644340.22135.11298603231632238119-0@git.sr.ht>
+To: qemu-devel@nongnu.org
+Cc: Joseph Ravichandran <jravi@mit.edu>, Fabiano Rosas <farosas@suse.de>,
+ Laurent Vivier <lvivier@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ =?utf-8?q?Marc-Andr=C3=A9?= Lureau <marcandre.lureau@redhat.com>,
+ qemu-arm@nongnu.org
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 07/10] hw/vfio/pci: Map the CXL memory on the guest
- decoder commit
-To: mhonap@nvidia.com, alex@shazbot.org, ankita@nvidia.com, jic23@kernel.org, 
- dave.jiang@intel.com, alejandro.lucero-palau@amd.com, smadhavan@nvidia.com,
- pierrick.bouvier@oss.qualcomm.com, mst@redhat.com, imammedo@redhat.com,
- anisinha@redhat.com, pbonzini@redhat.com, eric.auger@redhat.com,
- peter.maydell@linaro.org, richard.henderson@linaro.org, cohuck@redhat.com
-Cc: kjaju@nvidia.com, vsethi@nvidia.com, zhiw@nvidia.com,
- qemu-devel@nongnu.org, qemu-arm@nongnu.org, linux-cxl@vger.kernel.org
-References: <20260916184412.3825713-1-mhonap@nvidia.com>
- <20260916184412.3825713-8-mhonap@nvidia.com>
-From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@redhat.com>
-Autocrypt: addr=clg@redhat.com; keydata=
- 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
- uVKe8BVz4atMOoktmt0GWTOC8P4=
-In-Reply-To: <20260916184412.3825713-8-mhonap@nvidia.com>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: 5jXY6y6j5LQhfuPOqOV754LadDkAI8aTmkBHC4TDfPE_1789747719
-X-Mimecast-Originator: redhat.com
-Content-Language: en-US, fr
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=clg@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+Received-SPF: pass client-ip=46.23.81.152; envelope-from=outgoing@sr.ht;
+ helo=mail-a.sr.ht
+X-Spam_score_int: -16
+X-Spam_score: -1.7
+X-Spam_bar: -
+X-Spam_report: (-1.7 / 5.0 requ) BAYES_00=-1.9, DKIM_INVALID=0.1,
+ DKIM_SIGNED=0.1, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
+X-Mailman-Approved-At: Sat, 19 Sep 2026 13:03:46 -0400
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -160,603 +66,312 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Reply-To: ~jprx <jravi@mit.edu>
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On 9/16/26 20:44, mhonap@nvidia.com wrote:
-> From: Manish Honap <mhonap@nvidia.com>
-> 
-> Overlay the trapped HDM decoder block over the component BAR and forward
-> its accesses to the kernel. QEMU maps the HDM memory at the base of the
-> device's CFMWS window and presents that same base back to the guest
-> through the trapped decoder read
-> 
-> Overlap the CFMWS window MemoryRegion the CXL host bridge maps at that
-> base, at a higher priority, so precedence is defined by priority rather
-> than subregion insertion order.
-> 
-> QEMU always maps at the CFMWS base, so a decoder the guest commits at any
-> other base would leave the guest's view and the mapping diverged. Track
-> the base the guest writes to the trapped block and refuse to map a commit
-> at a different base; a firmware-committed decoder the guest never
-> reprograms keeps the window base.
-> 
-> AI-used-for: code (prototype)
-> Signed-off-by: Manish Honap <mhonap@nvidia.com>
-> ---
->   hw/cxl/cxl-host-stubs.c |   5 +
->   hw/vfio/pci.c           | 386 +++++++++++++++++++++++++++++++++++++++-
->   hw/vfio/pci.h           |   8 +
->   3 files changed, 393 insertions(+), 6 deletions(-)
+From: jprx <jravi@mit.edu>
 
+The Exynos 4210 UART FIFO implementation uses a circular buffer with a
+store and retrieve pointer. When implemented this way, a circular
+buffer's capacity is 1 less than the size of the backing buffer, because
+there is no way to disambiguate the empty and full states (when the
+store pointer =3D=3D retrieve pointer).
 
-This patch introduces too many concepts at once, a reader familiar
-with VFIO can't separate the plumbing from the CXL details. This
-needs more commits.
+When exynos4210_uart_can_receive is called, it may report that the
+entire is buffer is available for receiving data, as
+fifo_empty_elements_number may incorrectly report that the FIFO capacity
+is equal to the entire buffer size (rather than 1 less than the size).
 
-So, something like
+If this happens, a full FIFO buffer's worth of data will be read into
+the circular buffer, the store pointer will wrap around back to its
+starting value, and the FIFO will reset back to the empty state. The
+next time exynos4210_uart_can_receive is called, it will report the
+entire buffer is empty instead of full, and promptly allow the data to
+be overwritten before the guest has received it.
 
-1. framework
-    Set up the comp_regs_region
-    fd pass-through (pread/pwrite), no virtualization.
-    teardown
+The consequence is that if a message is sent into the UART (eg. via a
+chardev) longer than the FIFO's buffer length, the first part of the
+message will be lost due to this overflowing behavior, and only the last
+part of the message will be received.
 
-2. Virtualization of decoder base registers
+This patch fixes this bug by refactoring the Exynos 4210 UART to make
+use of the fifo8 implementation, which is implemented via a head pointer
+and length field, and therefore has capacity equal to the buffer length
+and is immune to this behavior.
 
-3. Map/unmap of HDM memory
+The Exynos 4210 UART FIFO test now passes instead of timing out.
 
-    if fmws_base never changes, there's no reason to remove and
-    re-add the subregion. Install it once and toggle with
-    memory_region_set_enabled(). this should simplify the decoder
-    handling.
+Signed-off-by: Joseph Ravichandran <jravi@mit.edu>
 
-4. Config write hooks
-    PCI_COMMAND, CXL reset, PM transition, FLR x 2
-    each could be a separate patch I think
+---
 
-I don't think we need the machine notifier as said in the previous
-patch.
+One thing I wasn't sure about is whether we need to save rx_capacity and
+tx_capacity in the vmstate description. Since these are linked to the
+rx-size and tx-size properties respectively I wasn't sure if they need
+to be saved explicitly or not, so I didn't include them.
 
-More below,
+The only place either field gets used after the UART is realized is when
+rx_capacity is read for a call to trace_exynos_uart_rxsize, but
+otherwise the capacity info gets baked into the fifo8s after they are
+created and should be covered by the VMSTATE_FIFO8.
+---
+ hw/char/exynos4210_uart.c | 107 ++++++++++----------------------------
+ 1 file changed, 27 insertions(+), 80 deletions(-)
 
-> 
-> diff --git a/hw/cxl/cxl-host-stubs.c b/hw/cxl/cxl-host-stubs.c
-> index 9b515913ea..1067c944e2 100644
-> --- a/hw/cxl/cxl-host-stubs.c
-> +++ b/hw/cxl/cxl-host-stubs.c
-> @@ -23,3 +23,8 @@ GSList *cxl_fmws_get_all_sorted(void)
->   {
->       g_assert_not_reached();
->   }
-> +
-> +int cxl_decoder_count_dec(int enc_cnt)
-> +{
-> +    g_assert_not_reached();
-> +}
-> diff --git a/hw/vfio/pci.c b/hw/vfio/pci.c
-> index 670e0d1da4..fb3c39d4c6 100644
-> --- a/hw/vfio/pci.c
-> +++ b/hw/vfio/pci.c
-> @@ -1453,6 +1453,39 @@ uint32_t vfio_pci_read_config(PCIDevice *pdev, uint32_t addr, int len)
->       return val;
->   }
->   
-> +static void vfio_cxl_decoder_changed(VFIOPCIDevice *vdev);
-> +static void vfio_cxl_unmap_mem(VFIOPCIDevice *vdev);
-> +
-> +/*
-> + * Return true if this config write sets a Function Level Reset bit the kernel
-> + * acts on: the PCIe Device Control FLR bit or the Advanced Features FLR bit.
-> + * FLR bits are write-1-to-trigger and self-clearing, so inspect the written
-> + * value rather than the post-write config.
-> + */
-> +static bool vfio_cxl_flr_write(VFIOPCIDevice *vdev, uint32_t addr,
-> +                               uint32_t val, int len)
-> +{
-> +    PCIDevice *pdev = &vdev->parent_obj;
-> +    uint32_t off;
-> +
-> +    if (pdev->exp.exp_cap) {
-> +        /* PCI_EXP_DEVCTL_BCR_FLR (bit 15) is the high byte of Device Ctrl. */
-> +        off = pdev->exp.exp_cap + PCI_EXP_DEVCTL + 1;
-> +        if (off >= addr && off < addr + len &&
-> +            ((val >> (8 * (off - addr))) & (PCI_EXP_DEVCTL_BCR_FLR >> 8))) {
-> +            return true;
-> +        }
-> +    }
-> +    if (vdev->cxl.af_offset) {
-> +        off = vdev->cxl.af_offset + PCI_AF_CTRL;
-> +        if (off >= addr && off < addr + len &&
-> +            ((val >> (8 * (off - addr))) & PCI_AF_CTRL_FLR)) {
-> +            return true;
-> +        }
-> +    }
-> +    return false;
-> +}
-> +
->   void vfio_pci_write_config(PCIDevice *pdev,
->                              uint32_t addr, uint32_t val, int len)
->   {
-> @@ -1522,9 +1555,74 @@ void vfio_pci_write_config(PCIDevice *pdev,
->                   vfio_sub_page_bar_update_mapping(pdev, bar);
->               }
->           }
-> +
-> +        /*
-> +         * A firmware-committed CXL decoder is already committed at boot, so no
-> +         * guest control write triggers the HDM mapping. Map it once the guest
-> +         * enables memory decoding, so the region enters the guest address space
-> +         * and the IOAS while the device is live. On a clear of memory decoding,
-> +         * withdraw the overlay: the kernel revokes the HDM PTEs on the same
-> +         * write, so a retained memslot would fault a guest access during the
-> +         * disabled interval onto a zapped VMA and stop the VM; the enable path
-> +         * re-maps it.
-> +         */
-> +        if (vdev->cxl.enabled &&
-> +            range_covers_byte(addr, len, PCI_COMMAND)) {
-> +            if (pci_get_word(pdev->config + PCI_COMMAND) & PCI_COMMAND_MEMORY) {
-> +                vfio_cxl_decoder_changed(vdev);
-> +            } else {
-> +                vfio_cxl_unmap_mem(vdev);
-> +            }
-> +        }
->       } else {
->           /* Write everything to QEMU to keep emulated bits correct */
->           pci_default_write_config(pdev, addr, val, len);
-> +
-> +        /*
-> +         * A guest CXL reset is a write to the CXL Device DVSEC ctrl2 register,
-> +         * forwarded to the kernel above, which re-commits this firmware-fixed
-> +         * decoder. If the guest decommitted the decoder before the reset, which
-> +         * unmapped the HDM memory, that re-commit is not otherwise visible to
-> +         * QEMU, so rescan the decoder here to restore the mapping. Gated on
-> +         * memory decoding still being enabled, like the enable path above.
-> +         */
-> +        if (vdev->cxl.enabled && vdev->cxl.dvsec_offset &&
-> +            ranges_overlap(addr, len,
-> +                           vdev->cxl.dvsec_offset +
-> +                               offsetof(CXLDVSECDevice, ctrl2),
-> +                           sizeof_field(CXLDVSECDevice, ctrl2)) &&
-> +            (pci_get_word(pdev->config + PCI_COMMAND) & PCI_COMMAND_MEMORY)) {
-> +            vfio_cxl_decoder_changed(vdev);
-> +        }
-> +
-> +        /*
-> +         * A NoSoftRst- device the guest cycles D3hot->D0 has its physical
-> +         * decoder restored by the kernel on resume, which re-commits this
-> +         * firmware-fixed decoder just like a reset. That re-commit is not
-> +         * otherwise visible to QEMU, so on the transition back to D0 rescan
-> +         * the decoder to restore a mapping the guest dropped before it
-> +         * suspended. Gated on memory decoding, like the paths above.
-> +         */
-> +        if (vdev->cxl.enabled && pdev->pm_cap &&
-> +            range_covers_byte(addr, len, pdev->pm_cap + PCI_PM_CTRL) &&
-> +            (pci_get_word(pdev->config + pdev->pm_cap + PCI_PM_CTRL) &
-> +             PCI_PM_CTRL_STATE_MASK) == 0 &&
-> +            (pci_get_word(pdev->config + PCI_COMMAND) & PCI_COMMAND_MEMORY)) {
-> +            vfio_cxl_decoder_changed(vdev);
-> +        }
-> +
-> +        /*
-> +         * A Function Level Reset the guest triggers through the PCIe Device
-> +         * Control or Advanced Features FLR bit is forwarded to the kernel,
-> +         * which re-commits this firmware-fixed decoder just like a CXL reset.
-> +         * That re-commit is not otherwise visible to QEMU, so rescan the
-> +         * decoder to restore a mapping the guest dropped before the FLR. Gated
-> +         * on memory decoding, like the paths above.
-> +         */
-> +        if (vdev->cxl.enabled && vfio_cxl_flr_write(vdev, addr, val, len) &&
-> +            (pci_get_word(pdev->config + PCI_COMMAND) & PCI_COMMAND_MEMORY)) {
-> +            vfio_cxl_decoder_changed(vdev);
-> +        }
->       }
->   }
-
-
-That's a lot of CXL-specific code injected into vfio_pci_write_config.
-Don't do that. Please add :
-
-     if (vdev->cxl.enabled) {
-         vfio_cxl_config_written(vdev, addr, val, len);
+diff --git a/hw/char/exynos4210_uart.c b/hw/char/exynos4210_uart.c
+index 46fc4e31b8..8446d2f9b9 100644
+--- a/hw/char/exynos4210_uart.c
++++ b/hw/char/exynos4210_uart.c
+@@ -28,6 +28,7 @@
+ #include "qemu/timer.h"
+ #include "chardev/char-fe.h"
+ #include "chardev/char-serial.h"
++#include "qemu/fifo8.h"
+=20
+ #include "hw/arm/exynos4210.h"
+ #include "hw/core/irq.h"
+@@ -133,12 +134,6 @@ static const Exynos4210UartReg exynos4210_uart_regs[] =
+=3D {
+ #define UERSTAT_FRAME    0x4
+ #define UERSTAT_BREAK    0x8
+=20
+-typedef struct {
+-    uint8_t    *data;
+-    uint32_t    sp, rp; /* store and retrieve pointers */
+-    uint32_t    size;
+-} Exynos4210UartFIFO;
+-
+ #define TYPE_EXYNOS4210_UART "exynos4210.uart"
+ OBJECT_DECLARE_SIMPLE_TYPE(Exynos4210UartState, EXYNOS4210_UART)
+=20
+@@ -148,8 +143,10 @@ struct Exynos4210UartState {
+     MemoryRegion iomem;
+=20
+     uint32_t             reg[EXYNOS4210_UART_REGS_MEM_SIZE / sizeof(uint32_t=
+)];
+-    Exynos4210UartFIFO   rx;
+-    Exynos4210UartFIFO   tx;
++    Fifo8                rx;
++    Fifo8                tx;
++    uint32_t             rx_capacity;
++    uint32_t             tx_capacity;
+=20
+     QEMUTimer *fifo_timeout_timer;
+     uint64_t wordtime;        /* word time in ns */
+@@ -178,45 +175,6 @@ static const char *exynos4210_uart_regname(hwaddr  offse=
+t)
+     return NULL;
+ }
+=20
+-
+-static void fifo_store(Exynos4210UartFIFO *q, uint8_t ch)
+-{
+-    q->data[q->sp] =3D ch;
+-    q->sp =3D (q->sp + 1) % q->size;
+-}
+-
+-static uint8_t fifo_retrieve(Exynos4210UartFIFO *q)
+-{
+-    uint8_t ret =3D q->data[q->rp];
+-    q->rp =3D (q->rp + 1) % q->size;
+-    return  ret;
+-}
+-
+-static int fifo_elements_number(const Exynos4210UartFIFO *q)
+-{
+-    if (q->sp < q->rp) {
+-        return q->size - q->rp + q->sp;
+-    }
+-
+-    return q->sp - q->rp;
+-}
+-
+-static int fifo_empty_elements_number(const Exynos4210UartFIFO *q)
+-{
+-    return q->size - fifo_elements_number(q);
+-}
+-
+-static void fifo_reset(Exynos4210UartFIFO *q)
+-{
+-    g_free(q->data);
+-    q->data =3D NULL;
+-
+-    q->data =3D g_malloc0(q->size);
+-
+-    q->sp =3D 0;
+-    q->rp =3D 0;
+-}
+-
+ static uint32_t exynos4210_uart_FIFO_trigger_level(uint32_t channel,
+                                                    uint32_t reg)
+ {
+@@ -271,7 +229,7 @@ exynos4210_uart_Rx_FIFO_trigger_level(const Exynos4210Uar=
+tState *s)
+ static void exynos4210_uart_update_dmabusy(Exynos4210UartState *s)
+ {
+     bool rx_dma_enabled =3D (s->reg[I_(UCON)] & 0x03) =3D=3D 0x02;
+-    uint32_t count =3D fifo_elements_number(&s->rx);
++    uint32_t count =3D fifo8_num_used(&s->rx);
+=20
+     if (rx_dma_enabled && !count) {
+         qemu_irq_raise(s->dmairq);
+@@ -300,7 +258,7 @@ static void exynos4210_uart_update_irq(Exynos4210UartStat=
+e *s)
+          * Rx interrupt if trigger level is reached or if rx timeout
+          * interrupt is disabled and there is data in the receive buffer
+          */
+-        count =3D fifo_elements_number(&s->rx);
++        count =3D fifo8_num_used(&s->rx);
+         if ((count && !(s->reg[I_(UCON)] & 0x80)) ||
+             count >=3D exynos4210_uart_Rx_FIFO_trigger_level(s)) {
+             exynos4210_uart_update_dmabusy(s);
+@@ -416,12 +374,12 @@ static void exynos4210_uart_write(void *opaque, hwaddr =
+offset,
+     case UFCON:
+         s->reg[I_(UFCON)] =3D val;
+         if (val & UFCON_Rx_FIFO_RESET) {
+-            fifo_reset(&s->rx);
++            fifo8_reset(&s->rx);
+             s->reg[I_(UFCON)] &=3D ~UFCON_Rx_FIFO_RESET;
+             trace_exynos_uart_rx_fifo_reset(s->channel);
+         }
+         if (val & UFCON_Tx_FIFO_RESET) {
+-            fifo_reset(&s->tx);
++            fifo8_reset(&s->tx);
+             s->reg[I_(UFCON)] &=3D ~UFCON_Tx_FIFO_RESET;
+             trace_exynos_uart_tx_fifo_reset(s->channel);
+         }
+@@ -490,8 +448,8 @@ static uint64_t exynos4210_uart_read(void *opaque, hwaddr=
+ offset,
+                                exynos4210_uart_regname(offset), res);
+         return res;
+     case UFSTAT: /* Read Only */
+-        s->reg[I_(UFSTAT)] =3D fifo_elements_number(&s->rx) & 0xff;
+-        if (fifo_empty_elements_number(&s->rx) =3D=3D 0) {
++        s->reg[I_(UFSTAT)] =3D fifo8_num_used(&s->rx) & 0xff;
++        if (fifo8_num_free(&s->rx) =3D=3D 0) {
+             s->reg[I_(UFSTAT)] |=3D UFSTAT_Rx_FIFO_FULL;
+             s->reg[I_(UFSTAT)] &=3D ~0xff;
+         }
+@@ -501,10 +459,10 @@ static uint64_t exynos4210_uart_read(void *opaque, hwad=
+dr offset,
+         return s->reg[I_(UFSTAT)];
+     case URXH:
+         if (s->reg[I_(UFCON)] & UFCON_FIFO_ENABLE) {
+-            if (fifo_elements_number(&s->rx)) {
+-                res =3D fifo_retrieve(&s->rx);
++            if (fifo8_num_used(&s->rx)) {
++                res =3D fifo8_pop(&s->rx);
+                 trace_exynos_uart_rx(s->channel, res);
+-                if (!fifo_elements_number(&s->rx)) {
++                if (!fifo8_num_used(&s->rx)) {
+                     s->reg[I_(UTRSTAT)] &=3D ~UTRSTAT_Rx_BUFFER_DATA_READY;
+                 } else {
+                     s->reg[I_(UTRSTAT)] |=3D UTRSTAT_Rx_BUFFER_DATA_READY;
+@@ -555,7 +513,7 @@ static int exynos4210_uart_can_receive(void *opaque)
+     Exynos4210UartState *s =3D (Exynos4210UartState *)opaque;
+=20
+     if (s->reg[I_(UFCON)] & UFCON_FIFO_ENABLE) {
+-        return fifo_empty_elements_number(&s->rx);
++        return fifo8_num_free(&s->rx);
+     } else {
+         return !(s->reg[I_(UTRSTAT)] & UTRSTAT_Rx_BUFFER_DATA_READY);
      }
-
-I think that we should have a vfio/cxl.c subcomponent to isolate the
-CXL-specific code :
-
-   vfio_cxl_setup, or better vfio_cxl_realize
-   vfio_cxl_config_written,
-   vfio_cxl_exit,
-   vfio_cxl_finalize,
-   etc.
-
-
-
-> @@ -3811,6 +3909,239 @@ static void vfio_cxl_bind_fmws(Notifier *n, void *data)
->       }
->   }
->   
-> +/*
-> + * HDM decoder registers, relative to the trapped decoder block. The block holds
-> + * the HDM Decoder Capability register followed by one register set per decoder,
-> + * each VFIO_CXL_HDM_DECODER_STRIDE apart, indexed by decoder.
-> + */
-> +#define VFIO_CXL_HDM_CAP                  0x00
-> +#define VFIO_CXL_HDM_DECODER_STRIDE       0x20
-> +#define VFIO_CXL_HDM_DECODER_BASE_LOW(n) \
-> +    (0x10 + (n) * VFIO_CXL_HDM_DECODER_STRIDE)
-> +#define VFIO_CXL_HDM_DECODER_BASE_HIGH(n) \
-> +    (0x14 + (n) * VFIO_CXL_HDM_DECODER_STRIDE)
-> +#define VFIO_CXL_HDM_DECODER_CTRL(n) \
-> +    (0x20 + (n) * VFIO_CXL_HDM_DECODER_STRIDE)
-> +#define VFIO_CXL_HDM_CTRL_COMMITTED       (1 << 10)
-> +#define VFIO_CXL_HDM_BASE_LOW_MASK        0xf0000000U
-> +
-> +static void vfio_cxl_unmap_mem(VFIOPCIDevice *vdev)
-> +{
-> +    VFIOCXL *cxl = &vdev->cxl;
-> +
-> +    if (!cxl->dpa_mapped) {
-> +        return;
-> +    }
-> +    memory_region_del_subregion(get_system_memory(), cxl->mem_region.mem);
-> +    cxl->dpa_mapped = false;
-> +    cxl->mapped_base = 0;
-> +}
-> +
-> +/*
-> + * The HDM Decoder Capability register encodes the decoder count in its low
-> + * nibble (CXL r3.1 8.2.4.20.1, encodings 0h..Ch for 1..32). Decode it with the
-> + * shared cxl_decoder_count_dec() helper so the commit handler walks every
-> + * decoder rather than assuming decoder 0. An unreadable register or a reserved
-> + * encoding (which the helper decodes to 0) is treated as a single decoder.
-> + */
-> +static unsigned vfio_cxl_decoder_count(VFIOPCIDevice *vdev)
-> +{
-> +    off_t off = vdev->cxl.comp_regs_region.fd_offset;
-> +    uint32_t cap = 0;
-> +    int count;
-> +
-> +    if (pread(vdev->vbasedev.fd, &cap, 4, off + VFIO_CXL_HDM_CAP) != 4) {
-> +        return 1;
-> +    }
-> +    count = cxl_decoder_count_dec(le32_to_cpu(cap) & 0xf);
-> +    return count > 0 ? count : 1;
-> +}
-> +
-> +/*
-> + * The guest committed or tore down an endpoint decoder. Walk each decoder in
-> + * the trapped HDM block and (un)map the HDM memory at the CFMWS window base,
-> + * not the base the guest programmed (see vfio_cxl_comp_regs_read). This
-> + * generation commits one non-interleaved decoder, so the walk stops at the
-> + * first committed decoder.
-
-if only one decoder is supported and the code tracks the guest base
-per-device rather than per-decoder, why do the read/write handlers
-use VFIO_CXL_HDM_DECODER_BASE_LOW(0) to match all decoders ? This is
-inconsistent.
-
-I think we should record the active decoder index 'active_decoder'
-instead. If a second committed decoder is found,  decoder_changed
-should bail out.
-
-
-> + */
-> +static void vfio_cxl_decoder_changed(VFIOPCIDevice *vdev)
-> +{
-> +    VFIOCXL *cxl = &vdev->cxl;
-> +    VFIODevice *vbasedev = &vdev->vbasedev;
-> +    off_t off = cxl->comp_regs_region.fd_offset;
-> +    unsigned n, count = vfio_cxl_decoder_count(vdev);
-> +
-> +    for (n = 0; n < count; n++) {
-> +        uint32_t ctrl = 0;
-> +
-> +        if (pread(vbasedev->fd, &ctrl, 4,
-> +                  off + VFIO_CXL_HDM_DECODER_CTRL(n)) != 4) {
-> +            return;
-> +        }
-> +        if (!(le32_to_cpu(ctrl) & VFIO_CXL_HDM_CTRL_COMMITTED)) {
-> +            continue;
-> +        }
-> +
-> +        /*
-> +         * QEMU always maps at the device's CFMWS base and presents that base
-> +         * back to the guest, so a decoder the guest committed at any other base
-> +         * would leave the guest's view and the actual mapping diverged. Reject
-> +         * it rather than silently relocate. A firmware-committed decoder the
-> +         * guest never reprogrammed (guest_base_written == false) keeps the
-> +         * CFMWS base.
-> +         */
-> +        if (cxl->guest_base_written) {
-> +            hwaddr guest_base = ((hwaddr)cxl->guest_base_hi << 32) |
-> +                                cxl->guest_base_lo;
-> +
-> +            if (guest_base != cxl->fmws_base) {
-> +                warn_report("vfio-cxl: %s: guest committed decoder %u at 0x%"
-> +                            HWADDR_PRIx ", not the CFMWS base 0x%" HWADDR_PRIx
-> +                            "; not mapping", vbasedev->name, n, guest_base,
-> +                            cxl->fmws_base);
-> +                vfio_cxl_unmap_mem(vdev);
-> +                return;
-> +            }
-> +        }
-> +
-> +        if (cxl->dpa_mapped && cxl->mapped_base == cxl->fmws_base) {
-> +            return;
-> +        }
-> +        /*
-> +         * Overlap the CFMWS window MemoryRegion the CXL host bridge already
-> +         * maps at this base, at a higher priority, so precedence is defined by
-> +         * priority rather than subregion insertion order.
-> +         */
-> +        memory_region_transaction_begin();
-> +        vfio_cxl_unmap_mem(vdev);
-> +        memory_region_add_subregion_overlap(get_system_memory(),
-> +                                            cxl->fmws_base,
-> +                                            cxl->mem_region.mem, 1);
-> +        memory_region_transaction_commit();
-> +        cxl->mapped_base = cxl->fmws_base;
-> +        cxl->dpa_mapped = true;
-> +        return;
-> +    }
-> +
-> +    /* No committed decoder in the block: tear down any existing mapping. */
-> +    vfio_cxl_unmap_mem(vdev);
-> +}
-> +
-> +static uint64_t vfio_cxl_comp_regs_read(void *opaque, hwaddr addr,
-> +                                        unsigned size)
-> +{
-> +    VFIORegion *region = opaque;
-> +    VFIODevice *vbasedev = region->vbasedev;
-> +    VFIOPCIDevice *vdev =
-> +        container_of(region, VFIOPCIDevice, cxl.comp_regs_region);
-> +    VFIOCXL *cxl = &vdev->cxl;
-> +    uint32_t val = 0xffffffff;
-> +
-> +    if (pread(vbasedev->fd, &val, size, region->fd_offset + addr) != size) {
-> +        error_report("vfio-cxl: %s: HDM decoder read at 0x%" HWADDR_PRIx
-> +                     " failed", vbasedev->name, addr);
-> +    }
-> +    val = le32_to_cpu(val);
-> +
-> +    /*
-> +     * The kernel shadow holds the host physical base for a firmware-committed
-> +     * decoder. Never expose that to the guest: present the guest physical base
-> +     * QEMU maps the HDM memory at (the device's CFMWS window). Any decoder's
-> +     * base registers are virtualized; ctrl, size and the capability header pass
-> +     * through. The base registers repeat every VFIO_CXL_HDM_DECODER_STRIDE.
-> +     */
-> +    if (addr >= VFIO_CXL_HDM_DECODER_BASE_LOW(0) &&
-> +        (addr - VFIO_CXL_HDM_DECODER_BASE_LOW(0)) %
-> +                VFIO_CXL_HDM_DECODER_STRIDE == 0) {
-> +        val = (val & ~VFIO_CXL_HDM_BASE_LOW_MASK) |
-> +              ((uint32_t)cxl->fmws_base & VFIO_CXL_HDM_BASE_LOW_MASK);
-> +    } else if (addr >= VFIO_CXL_HDM_DECODER_BASE_HIGH(0) &&
-> +               (addr - VFIO_CXL_HDM_DECODER_BASE_HIGH(0)) %
-> +                       VFIO_CXL_HDM_DECODER_STRIDE == 0) {
-> +        val = (uint32_t)(cxl->fmws_base >> 32);
-> +    }
-> +
-> +    return val;
-> +}
-> +
-> +static void vfio_cxl_comp_regs_write(void *opaque, hwaddr addr, uint64_t data,
-> +                                     unsigned size)
-> +{
-> +    VFIORegion *region = opaque;
-> +    VFIODevice *vbasedev = region->vbasedev;
-> +    VFIOPCIDevice *vdev =
-> +        container_of(region, VFIOPCIDevice, cxl.comp_regs_region);
-> +    uint32_t val = cpu_to_le32((uint32_t)data);
-> +
-> +    if (pwrite(vbasedev->fd, &val, size, region->fd_offset + addr) != size) {
-> +        error_report("vfio-cxl: %s: HDM decoder write at 0x%" HWADDR_PRIx
-> +                     " failed", vbasedev->name, addr);
-> +        return;
-> +    }
-> +
-> +    /*
-> +     * Record the base the guest programs into a decoder so the commit handler
-> +     * can reject a base other than the device's CFMWS window. The base low
-> +     * register carries HPA bits [31:28]; the high register carries [63:32].
-> +     */
-> +    if (addr >= VFIO_CXL_HDM_DECODER_BASE_LOW(0) &&
-> +        (addr - VFIO_CXL_HDM_DECODER_BASE_LOW(0)) %
-> +                VFIO_CXL_HDM_DECODER_STRIDE == 0) {
-> +        vdev->cxl.guest_base_lo = (uint32_t)data & VFIO_CXL_HDM_BASE_LOW_MASK;
-> +        vdev->cxl.guest_base_written = true;
-> +    } else if (addr >= VFIO_CXL_HDM_DECODER_BASE_HIGH(0) &&
-> +               (addr - VFIO_CXL_HDM_DECODER_BASE_HIGH(0)) %
-> +                       VFIO_CXL_HDM_DECODER_STRIDE == 0) {
-> +        vdev->cxl.guest_base_hi = (uint32_t)data;
-> +        vdev->cxl.guest_base_written = true;
-> +    }
-> +
-> +    /*
-> +     * The kernel runs the lock-on-commit FSM in the write above, so the
-> +     * committed state is settled by now; a control write on any decoder can
-> +     * change the mapping.
-> +     */
-> +    if (addr >= VFIO_CXL_HDM_DECODER_CTRL(0) &&
-> +        (addr - VFIO_CXL_HDM_DECODER_CTRL(0)) %
-> +        VFIO_CXL_HDM_DECODER_STRIDE == 0) {
-> +        vfio_cxl_decoder_changed(vdev);
-> +    }
-> +}
-> +
-> +static const MemoryRegionOps vfio_cxl_comp_regs_ops = {
-> +    .read = vfio_cxl_comp_regs_read,
-> +    .write = vfio_cxl_comp_regs_write,
-> +    .endianness = DEVICE_LITTLE_ENDIAN,
-> +    .valid = { .min_access_size = 4, .max_access_size = 4 },
-> +    .impl = { .min_access_size = 4, .max_access_size = 4 },
-> +};
-> +
-> +/*
-> + * Locate the CXL Device DVSEC (CXL r3.1 8.1.3) in config space. The guest
-> + * triggers a CXL reset by writing its ctrl2 register; QEMU rescans the decoder
-> + * after that write so the HDM mapping is restored (see vfio_pci_write_config).
-> + * Returns the DVSEC config offset, or 0 if the device does not expose it.
-> + */
-> +static uint16_t vfio_cxl_find_device_dvsec(PCIDevice *pdev)
-> +{
-> +    uint16_t offset;
-> +
-> +    for (offset = PCI_CONFIG_SPACE_SIZE; offset;
-> +         offset = PCI_EXT_CAP_NEXT(pci_get_long(pdev->config + offset))) {
-> +        uint32_t hdr = pci_get_long(pdev->config + offset);
-> +
-> +        if (PCI_EXT_CAP_ID(hdr) == PCI_EXT_CAP_ID_DVSEC &&
-> +            (pci_get_long(pdev->config + offset + PCI_DVSEC_HEADER1) & 0xffff)
-> +                == CXL_VENDOR_ID &&
-> +            pci_get_word(pdev->config + offset + PCI_DVSEC_HEADER2)
-> +                == PCIE_CXL_DEVICE_DVSEC) {
-> +            return offset;
-> +        }
-> +    }
-> +
-> +    return 0;
-> +}
-
-This should be a PCIe helper :
-
-   uint16_t pcie_find_dvsec(PCIDevice *dev, uint16_t vendor_id, uint16_t dvsec_id);
-
-Thanks,
-
-C.
-
-
->   /*
->    * Learn the CXL geometry the kernel reports: the HPA-backed HDM memory region
->    * and the trapped HDM decoder block (which BAR carries it and at what offset).
-> @@ -3864,6 +4195,8 @@ static bool vfio_cxl_setup(VFIOPCIDevice *vdev, Error **errp)
->       cxl->dpa_size = mem_info->size;
->       cxl->comp_bar = cap->bar;
->       cxl->hdm_offset = cap->offset;
-> +    cxl->dvsec_offset = vfio_cxl_find_device_dvsec(&vdev->parent_obj);
-> +    cxl->af_offset = pci_find_capability(&vdev->parent_obj, PCI_CAP_ID_AF);
->   
->       if (!vfio_cxl_check_topology(vdev, errp)) {
->           return false;
-> @@ -3887,6 +4220,26 @@ static bool vfio_cxl_setup(VFIOPCIDevice *vdev, Error **errp)
->                       "performance may be slow", vbasedev->name);
->       }
->   
-> +    /*
-> +     * Trap the HDM decoder block: overlay it, priority 1, over the directly
-> +     * mapped component BAR, so guest decoder accesses reach the kernel FSM and
-> +     * the commit becomes visible to QEMU.
-> +     */
-> +    if (!vdev->bars[cxl->comp_bar].mr) {
-> +        error_setg(errp, "vfio-cxl: %s: component BAR %u is not present",
-> +                   vbasedev->name, cxl->comp_bar);
-> +        goto err;
-> +    }
-> +    if (vfio_region_setup_with_ops(OBJECT(vdev), vbasedev,
-> +                                   &cxl->comp_regs_region,
-> +                                   cxl->comp_regs_region_index, "cxl-comp-regs",
-> +                                   &vfio_cxl_comp_regs_ops, errp)) {
-> +        goto err;
-> +    }
-> +    memory_region_add_subregion_overlap(vdev->bars[cxl->comp_bar].mr,
-> +                                        cxl->hdm_offset,
-> +                                        cxl->comp_regs_region.mem, 1);
-> +
->       if (DEVICE(vdev)->hotplugged) {
->           /*
->            * The machine is already up, so the CFMWS windows are placed and the
-> @@ -3894,9 +4247,7 @@ static bool vfio_cxl_setup(VFIOPCIDevice *vdev, Error **errp)
->            * device_add fails cleanly instead of aborting the running VM.
->            */
->           if (!vfio_cxl_do_bind_fmws(vdev, errp)) {
-> -            vfio_region_exit(&cxl->mem_region);
-> -            vfio_region_finalize(&cxl->mem_region);
-> -            return false;
-> +            goto err;
->           }
->       } else {
->           cxl->machine_done.notify = vfio_cxl_bind_fmws;
-> @@ -3906,6 +4257,10 @@ static bool vfio_cxl_setup(VFIOPCIDevice *vdev, Error **errp)
->       cxl->enabled = true;
->   
->       return true;
-> +
-> +err:
-> +    vfio_cxl_teardown(vdev);
-> +    return false;
->   }
->   
->   static void vfio_cxl_teardown(VFIOPCIDevice *vdev)
-> @@ -3916,15 +4271,26 @@ static void vfio_cxl_teardown(VFIOPCIDevice *vdev)
->           return;
->       }
->   
-> -    if (cxl->machine_done.notify) {
-> -        qemu_remove_machine_init_done_notifier(&cxl->machine_done);
-> -        cxl->machine_done.notify = NULL;
-> +    if (cxl->comp_regs_region.mem) {
-> +        if (vdev->bars[cxl->comp_bar].mr) {
-> +            memory_region_del_subregion(vdev->bars[cxl->comp_bar].mr,
-> +                                        cxl->comp_regs_region.mem);
-> +        }
-> +        vfio_region_exit(&cxl->comp_regs_region);
-> +        vfio_region_finalize(&cxl->comp_regs_region);
->       }
->   
-> +    vfio_cxl_unmap_mem(vdev);
-> +
->       if (cxl->mem_region.mem) {
->           vfio_region_exit(&cxl->mem_region);
->           vfio_region_finalize(&cxl->mem_region);
->       }
-> +
-> +    if (cxl->machine_done.notify) {
-> +        qemu_remove_machine_init_done_notifier(&cxl->machine_done);
-> +        cxl->machine_done.notify = NULL;
-> +    }
->   }
->   
->   static void vfio_pci_realize(PCIDevice *pdev, Error **errp)
-> @@ -4127,6 +4493,14 @@ static void vfio_exitfn(PCIDevice *pdev)
->       vfio_pci_teardown_msi(vdev);
->       vfio_pci_disable_rp_atomics(vdev);
->       vfio_pci_bars_exit(vdev);
-> +    /*
-> +     * The committed HDM overlay is a subregion of system memory owned by this
-> +     * device, so it holds a reference that would keep the object alive past
-> +     * unrealize and block instance_finalize (where vfio_cxl_teardown otherwise
-> +     * runs). Drop it here; the call is idempotent for a device that never
-> +     * mapped or is not CXL.
-> +     */
-> +    vfio_cxl_unmap_mem(vdev);
->       vfio_migration_exit(vbasedev);
->       if (!vbasedev->mdev) {
->           pci_device_unset_iommu_device(pdev);
-> diff --git a/hw/vfio/pci.h b/hw/vfio/pci.h
-> index 22fe8d7ff7..5bfa976112 100644
-> --- a/hw/vfio/pci.h
-> +++ b/hw/vfio/pci.h
-> @@ -133,11 +133,19 @@ typedef struct VFIOCXL {
->       uint32_t comp_regs_region_index; /* trapped HDM decoder register block */
->       uint32_t comp_bar;               /* component BAR carrying that block */
->       uint64_t hdm_offset;             /* block offset within the component BAR */
-> +    uint16_t dvsec_offset;           /* CXL Device DVSEC offset, 0 if none */
-> +    uint16_t af_offset;              /* PCI Advanced Features cap, 0 if none */
->       uint64_t dpa_size;               /* size of the HDM memory region */
->       VFIORegion mem_region;           /* HDM memory, mapped at committed GPA */
->       Notifier machine_done;           /* CFMWS validated at machine_done */
->       hwaddr fmws_base;                /* base of the memory window */
->       uint64_t fmws_size;              /* size of the memory window */
-> +    VFIORegion comp_regs_region;     /* trapped HDM decoder block */
-> +    hwaddr mapped_base;              /* GPA the HDM memory is mapped at */
-> +    bool dpa_mapped;                 /* HDM memory currently in system memory */
-> +    uint32_t guest_base_lo;          /* decoder base low the guest wrote */
-> +    uint32_t guest_base_hi;          /* decoder base high the guest wrote */
-> +    bool guest_base_written;         /* the guest wrote a decoder base */
->   } VFIOCXL;
->   
->   struct VFIOPCIDevice {
-
+@@ -567,12 +525,12 @@ static void exynos4210_uart_receive(void *opaque, const=
+ uint8_t *buf, int size)
+     int i;
+=20
+     if (s->reg[I_(UFCON)] & UFCON_FIFO_ENABLE) {
+-        if (fifo_empty_elements_number(&s->rx) < size) {
+-            size =3D fifo_empty_elements_number(&s->rx);
++        if (fifo8_num_free(&s->rx) < size) {
++            size =3D fifo8_num_free(&s->rx);
+             s->reg[I_(UINTSP)] |=3D UINTSP_ERROR;
+         }
+         for (i =3D 0; i < size; i++) {
+-            fifo_store(&s->rx, buf[i]);
++            fifo8_push(&s->rx, buf[i]);
+         }
+         exynos4210_uart_rx_timeout_set(s);
+     } else {
+@@ -591,7 +549,7 @@ static void exynos4210_uart_event(void *opaque, QEMUChrEv=
+ent event)
+     if (event =3D=3D CHR_EVENT_BREAK) {
+         /* When the RxDn is held in logic 0, then a null byte is pushed into=
+ the
+          * fifo */
+-        fifo_store(&s->rx, '\0');
++        fifo8_push(&s->rx, '\0');
+         s->reg[I_(UERSTAT)] |=3D UERSTAT_BREAK;
+         exynos4210_uart_update_irq(s);
+     }
+@@ -608,10 +566,10 @@ static void exynos4210_uart_reset(DeviceState *dev)
+                 exynos4210_uart_regs[i].reset_value;
+     }
+=20
+-    fifo_reset(&s->rx);
+-    fifo_reset(&s->tx);
++    fifo8_reset(&s->rx);
++    fifo8_reset(&s->tx);
+=20
+-    trace_exynos_uart_rxsize(s->channel, s->rx.size);
++    trace_exynos_uart_rxsize(s->channel, s->rx_capacity);
+ }
+=20
+ static int exynos4210_uart_post_load(void *opaque, int version_id)
+@@ -624,26 +582,13 @@ static int exynos4210_uart_post_load(void *opaque, int =
+version_id)
+     return 0;
+ }
+=20
+-static const VMStateDescription vmstate_exynos4210_uart_fifo =3D {
+-    .name =3D "exynos4210.uart.fifo",
+-    .version_id =3D 1,
+-    .minimum_version_id =3D 1,
+-    .fields =3D (const VMStateField[]) {
+-        VMSTATE_UINT32(sp, Exynos4210UartFIFO),
+-        VMSTATE_UINT32(rp, Exynos4210UartFIFO),
+-        VMSTATE_VBUFFER_UINT32(data, Exynos4210UartFIFO, 1, NULL, size),
+-        VMSTATE_END_OF_LIST()
+-    }
+-};
+-
+ static const VMStateDescription vmstate_exynos4210_uart =3D {
+     .name =3D "exynos4210.uart",
+     .version_id =3D 1,
+     .minimum_version_id =3D 1,
+     .post_load =3D exynos4210_uart_post_load,
+     .fields =3D (const VMStateField[]) {
+-        VMSTATE_STRUCT(rx, Exynos4210UartState, 1,
+-                       vmstate_exynos4210_uart_fifo, Exynos4210UartFIFO),
++        VMSTATE_FIFO8(rx, Exynos4210UartState),
+         VMSTATE_UINT32_ARRAY(reg, Exynos4210UartState,
+                              EXYNOS4210_UART_REGS_MEM_SIZE / sizeof(uint32_t=
+)),
+         VMSTATE_END_OF_LIST()
+@@ -699,6 +644,8 @@ static void exynos4210_uart_realize(DeviceState *dev, Err=
+or **errp)
+     s->fifo_timeout_timer =3D timer_new_ns(QEMU_CLOCK_VIRTUAL,
+                                          exynos4210_uart_timeout_int, s);
+=20
++    fifo8_create(&s->rx, s->rx_capacity);
++    fifo8_create(&s->tx, s->tx_capacity);
+     qemu_chr_fe_set_handlers(&s->chr, exynos4210_uart_can_receive,
+                              exynos4210_uart_receive, exynos4210_uart_event,
+                              NULL, s, NULL, true);
+@@ -707,8 +654,8 @@ static void exynos4210_uart_realize(DeviceState *dev, Err=
+or **errp)
+ static const Property exynos4210_uart_properties[] =3D {
+     DEFINE_PROP_CHR("chardev", Exynos4210UartState, chr),
+     DEFINE_PROP_UINT32("channel", Exynos4210UartState, channel, 0),
+-    DEFINE_PROP_UINT32("rx-size", Exynos4210UartState, rx.size, 16),
+-    DEFINE_PROP_UINT32("tx-size", Exynos4210UartState, tx.size, 16),
++    DEFINE_PROP_UINT32("rx-size", Exynos4210UartState, rx_capacity, 16),
++    DEFINE_PROP_UINT32("tx-size", Exynos4210UartState, tx_capacity, 16),
+ };
+=20
+ static void exynos4210_uart_class_init(ObjectClass *klass, const void *data)
+--=20
+2.49.1
 

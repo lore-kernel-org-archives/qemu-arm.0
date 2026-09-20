@@ -4,58 +4,74 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2B95DC982D8
-	for <qemu-arm@archiver.kernel.org>; Sat, 19 Sep 2026 17:04:14 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 80198C982D0
+	for <qemu-arm@archiver.kernel.org>; Sun, 20 Sep 2026 09:14:49 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1x7yTk-0002Za-R0; Sat, 19 Sep 2026 13:03:57 -0400
+	id 1x8Dd8-0005P7-K1; Sun, 20 Sep 2026 05:14:40 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <outgoing@sr.ht>)
- id 1x7yDt-0002fO-CN; Sat, 19 Sep 2026 12:47:33 -0400
-Received: from mail-a.sr.ht ([46.23.81.152])
+ (Exim 4.90_1) (envelope-from <junjie.cao@intel.com>)
+ id 1x8Dd6-0005OO-DR; Sun, 20 Sep 2026 05:14:36 -0400
+Received: from mgamail.intel.com ([192.198.163.5])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <outgoing@sr.ht>)
- id 1x7yDr-0007zG-AF; Sat, 19 Sep 2026 12:47:32 -0400
-DKIM-Signature: a=rsa-sha256; bh=Rj9uNGEVJhRstE9JW5DAYITP9zahe6g9UYJbpThkatA=; 
- c=simple/simple; d=git.sr.ht;
- h=From:Date:Subject:Reply-to:In-Reply-To:To:Cc; q=dns/txt; s=20240113;
- t=1789836443; v=1;
- b=csGm2nFC5izikNCk6YDl9AkWaROiYSqm0IbOh/rSJogBPcaSpCt53GIQOVLQyxrDJz5bDbqk
- /UXabj/+NqmQRAMfLmu5VKtY9Grz8ICV35MebYmf3bCybW8kAXRpk7gSNjfDZ2ceSGNw0LhKkkV
- VBlhcHls8TSwpHqtqloowmecYkYtsAwal0X6LdXh/kxD24vUchIycALhnYoopDYhxcvd+AXR1nh
- VrkydAHiPjTZ0LKMirBVuQ9Wa9D29+RM3AMdaRYu28g8xHvz1xxrSpzENaeJVzKuDJQDfi9eUGW
- LFzIcM6xdMMtgcwUIOqFpcNU38FlsUX4XuBRRvMfaxnhg==
-Received: from git.sr.ht (unknown [46.23.81.155])
- by mail-a.sr.ht (Postfix) with ESMTPSA id 90F4522482;
- Sat, 19 Sep 2026 16:47:23 +0000 (UTC)
-From: ~jprx <jprx@git.sr.ht>
-Date: Sat, 19 Sep 2026 10:15:52 -0400
-Subject: [PATCH qemu 1/2] tests/qtest: add test for exynos4210 uart fifo
- overflow bug
-Message-ID: <178983644340.22135.11298603231632238119-1@git.sr.ht>
-X-Mailer: git.sr.ht
-In-Reply-To: <178983644340.22135.11298603231632238119-0@git.sr.ht>
-To: qemu-devel@nongnu.org
-Cc: Joseph Ravichandran <jravi@mit.edu>, Fabiano Rosas <farosas@suse.de>,
- Laurent Vivier <lvivier@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
- Peter Maydell <peter.maydell@linaro.org>,
- =?utf-8?q?Marc-Andr=C3=A9?= Lureau <marcandre.lureau@redhat.com>,
- qemu-arm@nongnu.org
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: quoted-printable
+ (Exim 4.90_1) (envelope-from <junjie.cao@intel.com>)
+ id 1x8Dcu-00034B-Nu; Sun, 20 Sep 2026 05:14:35 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1789895665; x=1821431665;
+ h=from:to:cc:subject:date:message-id:in-reply-to:
+ references:mime-version:content-transfer-encoding;
+ bh=v2rtAa7OnoLGt7yC9nrc7236Ndj29tw5GLmsPQj3eMw=;
+ b=bcm+Nn7bcA0PiBCT3jxjlfyGjyvL4LbJ7wf3QXIAjeyQFFyH/ZVITZY5
+ zXNjuRyn68G+pIgxnkleIFtk02cgCcfJduMRrby7e/sZQZSd4Yg5aacCc
+ edcyzMtG0K6SsOznF1TZH5DEMh5od/rw5MdxYkYkN0+T6UCOtBMKLDFco
+ NmISkWiEDgA1tfAasoI1dhXF1ie827WvWgYhxYD7qVTMskK2z2mXfNLJK
+ y2umqqoLuH9JTcptipWaCvk6qvR+YEWQyXdojF/NLOwi4Q1xoZY0j5TQQ
+ olAgwWDEESJ/wGInq4lxcdyY0ubAqQbvARhS2Wwf+/L8BnVZhmSz3ktHg g==;
+X-CSE-ConnectionGUID: cCAFZ/cIRL6GdUxeO1R5aA==
+X-CSE-MsgGUID: twKwbfhtR3afDWYJAUTtDQ==
+X-IronPort-AV: E=McAfee;i="6800,10657,11910"; a="905944"
+X-IronPort-AV: E=Sophos;i="6.27,111,1787036400"; 
+   d="scan'208";a="905944"
+Received: from fmviesa010.fm.intel.com ([10.60.135.150])
+ by fmvoesa115.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 20 Sep 2026 02:14:18 -0700
+X-CSE-ConnectionGUID: B+ViNU7pTSSOhzNDpcDBEw==
+X-CSE-MsgGUID: hekfD3bbTq+2qIGMHzRWvw==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.27,111,1787036400"; d="scan'208";a="271357721"
+Received: from junjie-desk-dev.bj.intel.com ([10.238.152.71])
+ by fmviesa010-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 20 Sep 2026 02:14:12 -0700
+From: Junjie Cao <junjie.cao@intel.com>
+To: Manish Honap <mhonap@nvidia.com>
+Cc: alex@shazbot.org, ankita@nvidia.com, jic23@kernel.org,
+ dave.jiang@intel.com, alejandro.lucero-palau@amd.com, smadhavan@nvidia.com,
+ pierrick.bouvier@oss.qualcomm.com, mst@redhat.com, imammedo@redhat.com,
+ anisinha@redhat.com, pbonzini@redhat.com, eric.auger@redhat.com,
+ peter.maydell@linaro.org, richard.henderson@linaro.org, clg@redhat.com,
+ cohuck@redhat.com, kjaju@nvidia.com, vsethi@nvidia.com, zhiw@nvidia.com,
+ qemu-devel@nongnu.org, qemu-arm@nongnu.org, linux-cxl@vger.kernel.org
+Subject: Re: [PATCH v2 07/10] hw/vfio/pci: Map the CXL memory on the guest
+ decoder commit
+Date: Sun, 20 Sep 2026 17:14:03 +0800
+Message-ID: <20260920091403.716987-1-junjie.cao@intel.com>
+X-Mailer: git-send-email 2.43.0
+In-Reply-To: <20260916184412.3825713-8-mhonap@nvidia.com>
+References: <20260916184412.3825713-8-mhonap@nvidia.com>
 MIME-Version: 1.0
-Received-SPF: pass client-ip=46.23.81.152; envelope-from=outgoing@sr.ht;
- helo=mail-a.sr.ht
-X-Spam_score_int: -16
-X-Spam_score: -1.7
-X-Spam_bar: -
-X-Spam_report: (-1.7 / 5.0 requ) BAYES_00=-1.9, DKIM_INVALID=0.1,
- DKIM_SIGNED=0.1, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=no autolearn_force=no
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=192.198.163.5; envelope-from=junjie.cao@intel.com;
+ helo=mgamail.intel.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ SPF_HELO_NONE=0.001, SPF_NONE=0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-Mailman-Approved-At: Sat, 19 Sep 2026 13:03:46 -0400
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -67,148 +83,33 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-To: ~jprx <jravi@mit.edu>
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-From: jprx <jravi@mit.edu>
+On Thu, 17 Sep 2026 00:14:09 +0530, Manish Honap wrote:
+> +     * Record the base the guest programs into a decoder so the commit handler
+> +     * can reject a base other than the device's CFMWS window. The base low
+[...]
+> +        vdev->cxl.guest_base_lo = (uint32_t)data & VFIO_CXL_HDM_BASE_LOW_MASK;
+> +        vdev->cxl.guest_base_written = true;
 
-The Exynos 4210 UART FIFO implementation will overflow if a large buffer
-is sent via a chardev. This test demonstrates the issue by sending an
-input message that is 4x the size of the UART0 FIFO length.
+This answered my v1 question for the kernel v4 FSM model.  With v5
+(20/27) the kernel gives a live read-only view and leaves any write
+virtualization to the VMM, and what QEMU shows the guest is a
+committed, locked decoder at the window base.  A locked decoder
+ignores a base write, but here it is recorded, and if it differs from
+the window base the next rescan unmaps while reads still return
+Committed at the window base.  That is the mismatch the check was
+meant to prevent.  A current Linux guest never writes a locked
+decoder, so it won't trip this.
 
-A correct implementation will return the complete message, and an
-incorrect one will timeout. This is because the FIFO overflows when
-receiving data from the chardev, skipping over the first part of the
-input message, resulting in us not reading the full message and timing
-out.
+Is the guest-written base still meant to matter in this model?  If
+not, guest_base_{lo,hi,written} can go.
 
-Signed-off-by: Joseph Ravichandran <jravi@mit.edu>
----
- tests/qtest/exynos4210_uart_fifo-test.c | 86 +++++++++++++++++++++++++
- tests/qtest/meson.build                 |  4 ++
- 2 files changed, 90 insertions(+)
- create mode 100644 tests/qtest/exynos4210_uart_fifo-test.c
+> +     * The kernel runs the lock-on-commit FSM in the write above, so the
+> +     * committed state is settled by now; a control write on any decoder can
 
-diff --git a/tests/qtest/exynos4210_uart_fifo-test.c b/tests/qtest/exynos4210=
-_uart_fifo-test.c
-new file mode 100644
-index 0000000000..54c09a6de7
---- /dev/null
-+++ b/tests/qtest/exynos4210_uart_fifo-test.c
-@@ -0,0 +1,86 @@
-+/* SPDX-License-Identifier: GPL-2.0-or-later */
-+#include "qemu/osdep.h"
-+#include "libqtest.h"
-+
-+/* defs from exynos4210.c */
-+#define UART0_BASE_ADDR     0x13800000
-+#define UART0_FIFO_SIZE     256
-+#define UFCON      0x0008 /* FIFO Control             */
-+#define UTRSTAT    0x0010 /* Tx/Rx Status             */
-+#define URXH       0x0024 /* Receive Buffer           */
-+#define UFCON_FIFO_ENABLE                    0x1
-+#define UTRSTAT_Rx_BUFFER_DATA_READY         0x1
-+
-+#define TEST_BUFFER_LEN        ((4 * UART0_FIFO_SIZE))
-+
-+static bool uart_wait_for_flag(QTestState *qts, uint32_t event_addr,
-+                               uint32_t flag)
-+{
-+    while (true) {
-+        if ((qtest_readl(qts, event_addr) & flag)) {
-+            return true;
-+        }
-+        g_usleep(1000);
-+    }
-+
-+    return false;
-+}
-+
-+static void uart_receive_string(QTestState *qts, int sock_fd, const char *in,
-+                                char *out)
-+{
-+    size_t i, in_len =3D strlen(in);
-+
-+    g_assert_true(send(sock_fd, in, in_len, 0) =3D=3D in_len);
-+    for (i =3D 0; i < in_len; i++) {
-+        g_assert_true(uart_wait_for_flag(qts,
-+            UART0_BASE_ADDR + UTRSTAT, UTRSTAT_Rx_BUFFER_DATA_READY));
-+        out[i] =3D qtest_readl(qts, UART0_BASE_ADDR + URXH);
-+    }
-+    out[i] =3D '\0';
-+}
-+
-+static void enable_uart_fifo(QTestState *qts)
-+{
-+    qtest_writel(qts, UART0_BASE_ADDR + UFCON, UFCON_FIFO_ENABLE);
-+}
-+
-+/*
-+ * If the FIFO overflows when receiving data from the chardev, early input
-+ * chunks will be lost, and this will timeout waiting to read the full
-+ * buffer. If the FIFO behaves correctly, we will receive the full buffer.
-+ */
-+static void test_recv_large_str(void)
-+{
-+    int sock_fd;
-+    char *sendbuf, *recvbuf;
-+    QTestState *qts =3D qtest_init_with_serial("-M smdkc210", &sock_fd);
-+
-+    enable_uart_fifo(qts);
-+
-+    sendbuf =3D g_new0(char, TEST_BUFFER_LEN);
-+    recvbuf =3D g_new0(char, TEST_BUFFER_LEN);
-+    memset(sendbuf, 'A', TEST_BUFFER_LEN);
-+    sendbuf[TEST_BUFFER_LEN - 1] =3D '\x00';
-+
-+    g_assert_true(0 =3D=3D strlen(recvbuf));
-+    g_assert_true(TEST_BUFFER_LEN - 1 =3D=3D strlen(sendbuf));
-+
-+    uart_receive_string(qts, sock_fd, sendbuf, recvbuf);
-+
-+    g_assert_true(TEST_BUFFER_LEN - 1 =3D=3D strlen(recvbuf));
-+    g_assert_true(strcmp(sendbuf, recvbuf) =3D=3D 0);
-+
-+    close(sock_fd);
-+
-+    qtest_quit(qts);
-+}
-+
-+int main(int argc, char **argv)
-+{
-+    g_test_init(&argc, &argv, NULL);
-+    g_test_set_nonfatal_assertions();
-+
-+    qtest_add_func("exynos4210/uart/receive_large_str", test_recv_large_str);
-+    return g_test_run();
-+}
-diff --git a/tests/qtest/meson.build b/tests/qtest/meson.build
-index 33f58b0e95..860159df44 100644
---- a/tests/qtest/meson.build
-+++ b/tests/qtest/meson.build
-@@ -249,6 +249,9 @@ qtests_stm32l4x5 =3D \
-    'stm32l4x5_gpio-test',
-    'stm32l4x5_usart-test']
-=20
-+qtests_exynos4210 =3D \
-+  ['exynos4210_uart_fifo-test']
-+
- qtests_arm =3D \
-   (config_all_devices.has_key('CONFIG_MPS2') ? ['sse-timer-test'] : []) + \
-   (config_all_devices.has_key('CONFIG_CMSDK_APB_DUALTIMER') ? ['cmsdk-apb-du=
-altimer-test'] : []) + \
-@@ -282,6 +285,7 @@ qtests_aarch64 =3D \
-    config_all_devices.has_key('CONFIG_TPM_TIS_I2C') ? ['tpm-tis-i2c-test', '=
-tpm-tis-i2c-swtpm-test'] : []) + \
-   (config_all_devices.has_key('CONFIG_ASPEED_SOC') ? qtests_aspeed64 : []) +=
- \
-   (config_all_devices.has_key('CONFIG_NPCM8XX') ? qtests_npcm8xx : []) + \
-+  (config_all_devices.has_key('CONFIG_EXYNOS4') ? qtests_exynos4210 : []) + \
-   (config_all_devices.has_key('CONFIG_IOMMU_TESTDEV') and
-    config_all_devices.has_key('CONFIG_ARM_VIRT') ?
-    ['iommu-smmuv3-test'] : []) + \
---=20
-2.49.1
+Stale now that the kernel no longer acts on the write?
 
+Junjie
 

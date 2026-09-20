@@ -4,46 +4,44 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 461F2C982DA
-	for <qemu-arm@archiver.kernel.org>; Sun, 20 Sep 2026 11:56:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 432ACC982E6
+	for <qemu-arm@archiver.kernel.org>; Sun, 20 Sep 2026 11:56:54 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1x8G8b-0006RZ-3p; Sun, 20 Sep 2026 07:55:17 -0400
+	id 1x8G8h-0006Xz-8B; Sun, 20 Sep 2026 07:55:23 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <gaurav.sharma_7@nxp.com>)
- id 1x8G8Z-0006NV-9l; Sun, 20 Sep 2026 07:55:15 -0400
+ id 1x8G8e-0006Wg-Ar; Sun, 20 Sep 2026 07:55:20 -0400
 Received: from inva020.nxp.com ([92.121.34.13])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <gaurav.sharma_7@nxp.com>)
- id 1x8G8X-0001ay-Kf; Sun, 20 Sep 2026 07:55:15 -0400
+ id 1x8G8c-0001c3-Hm; Sun, 20 Sep 2026 07:55:19 -0400
 Received: from inva020.nxp.com (localhost [127.0.0.1])
- by inva020.eu-rdc02.nxp.com (Postfix) with ESMTP id 290DC1A0021;
- Sun, 20 Sep 2026 13:55:12 +0200 (CEST)
+ by inva020.eu-rdc02.nxp.com (Postfix) with ESMTP id 0C9071A0029;
+ Sun, 20 Sep 2026 13:55:17 +0200 (CEST)
 Received: from aprdc01srsp001v.ap-rdc01.nxp.com
  (aprdc01srsp001v.ap-rdc01.nxp.com [165.114.16.16])
- by inva020.eu-rdc02.nxp.com (Postfix) with ESMTP id E6DE31A0018;
- Sun, 20 Sep 2026 13:55:11 +0200 (CEST)
+ by inva020.eu-rdc02.nxp.com (Postfix) with ESMTP id CB1831A0018;
+ Sun, 20 Sep 2026 13:55:16 +0200 (CEST)
 Received: from lsv031015.swis.in-blr01.nxp.com
  (lsv031015.swis.in-blr01.nxp.com [10.12.177.77])
- by aprdc01srsp001v.ap-rdc01.nxp.com (Postfix) with ESMTP id CB4C318000BE;
- Sun, 20 Sep 2026 19:55:09 +0800 (+08)
+ by aprdc01srsp001v.ap-rdc01.nxp.com (Postfix) with ESMTP id D95B1180006C;
+ Sun, 20 Sep 2026 19:55:14 +0800 (+08)
 From: Gaurav Sharma <gaurav.sharma_7@nxp.com>
 To: qemu-devel@nongnu.org
 Cc: qemu-arm@nongnu.org, pbonzini@redhat.com, peter.maydell@linaro.org,
  shentey@gmail.com, pierrick.bouvier@oss.qualcomm.com,
- Gaurav Sharma <gaurav.sharma_7@nxp.com>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-Subject: [PATCHv3 05/10] hw/misc: Extend i.MX8MP CCM with Cortex-M7 clock
- outputs
-Date: Sun, 20 Sep 2026 17:24:53 +0530
-Message-Id: <20260920115458.481605-6-gaurav.sharma_7@nxp.com>
+ Gaurav Sharma <gaurav.sharma_7@nxp.com>
+Subject: [PATCHv3 08/10] MAINTAINERS: Merge MCIMX8MM-EVK and MCIMX8MP-EVK
+ entries
+Date: Sun, 20 Sep 2026 17:24:56 +0530
+Message-Id: <20260920115458.481605-9-gaurav.sharma_7@nxp.com>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20260920115458.481605-1-gaurav.sharma_7@nxp.com>
 References: <20260920115458.481605-1-gaurav.sharma_7@nxp.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 X-Virus-Scanned: ClamAV using ClamSMTP
 Received-SPF: pass client-ip=92.121.34.13;
@@ -68,77 +66,52 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Add cm7_cpuclk (24 MHz) and cm7_refclk (32.768 kHz) clock outputs
-to the i.MX8MP CCM. These are required by the ARMv7M model to boot
-the Cortex-M7 core in an AMP configuration.
+Merge the separate MCIMX8MM-EVK and MCIMX8MP-EVK MAINTAINERS entries
+into a single combined entry covering both SoC families.
 
 Signed-off-by: Gaurav Sharma <gaurav.sharma_7@nxp.com>
-Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
-Reviewed-by: Bernhard Beschow <shentey@gmail.com>
 ---
- hw/misc/imx8mp_ccm.c         | 9 +++++++++
- include/hw/misc/imx8mp_ccm.h | 3 +++
- 2 files changed, 12 insertions(+)
+ MAINTAINERS | 13 ++++---------
+ 1 file changed, 4 insertions(+), 9 deletions(-)
 
-diff --git a/hw/misc/imx8mp_ccm.c b/hw/misc/imx8mp_ccm.c
-index 97d363e79d..41746e1eeb 100644
---- a/hw/misc/imx8mp_ccm.c
-+++ b/hw/misc/imx8mp_ccm.c
-@@ -12,17 +12,24 @@
- #include "qemu/log.h"
+diff --git a/MAINTAINERS b/MAINTAINERS
+index 6be9c5725b..7120784ec7 100644
+--- a/MAINTAINERS
++++ b/MAINTAINERS
+@@ -933,29 +933,24 @@ F: hw/pci-host/designware.c
+ F: include/hw/pci-host/designware.h
+ F: docs/system/arm/mcimx7d-sabre.rst
  
- #include "hw/misc/imx8mp_ccm.h"
-+#include "hw/core/qdev-clock.h"
- #include "migration/vmstate.h"
+-MCIMX8MM-EVK / iMX8MM
++MCIMX8MP-EVK / MCIMX8MM-EVK
++M: Bernhard Beschow <shentey@gmail.com>
+ M: Gaurav Sharma <gaurav.sharma_7@nxp.com>
+ L: qemu-arm@nongnu.org
+ S: Maintained
+ F: hw/arm/fsl-imx8mm.c
+ F: hw/arm/imx8mm-evk.c
+-F: include/hw/arm/fsl-imx8mm.h
+-F: docs/system/arm/imx8m.rst
+-F: tests/functional/aarch64/test_imx8mm_evk.py
+-
+-MCIMX8MP-EVK / i.MX8MP
+-M: Bernhard Beschow <shentey@gmail.com>
+-L: qemu-arm@nongnu.org
+-S: Maintained
+ F: hw/arm/imx8mp-evk.c
+ F: hw/arm/fsl-imx8mp.c
+ F: hw/misc/imx8mp_*.c
+ F: hw/pci-host/fsl_imx8m_phy.c
+ F: hw/rtc/rs5c372.c
++F: include/hw/arm/fsl-imx8mm.h
+ F: include/hw/arm/fsl-imx8mp.h
+ F: include/hw/misc/imx8mp_*.h
+ F: include/hw/pci-host/fsl_imx8m_phy.h
+ F: docs/system/arm/imx8m.rst
++F: tests/functional/aarch64/test_imx8mm_evk.py
+ F: tests/functional/aarch64/test_imx8mp_evk.py
+ F: tests/qtest/rs5c372-test.c
  
- #include "trace.h"
- 
- #define CKIH_FREQ 16000000 /* 16MHz crystal input */
- 
-+#define IMX8MP_CM7_CPUCLK_HZ 24000000ULL   /* osc_24m */
-+#define IMX8MP_CM7_REFCLK_HZ 32768ULL      /* osc_32k */
-+
- static void imx8mp_ccm_reset(DeviceState *dev)
- {
-     IMX8MPCCMState *s = IMX8MP_CCM(dev);
- 
-     memset(s->ccm, 0, sizeof(s->ccm));
-+
-+    clock_set_hz(s->cm7_cpuclk, IMX8MP_CM7_CPUCLK_HZ);
-+    clock_set_hz(s->cm7_refclk, IMX8MP_CM7_REFCLK_HZ);
- }
- 
- #define CCM_INDEX(offset)   (((offset) & ~(hwaddr)0xF) / sizeof(uint32_t))
-@@ -88,6 +95,8 @@ static void imx8mp_ccm_init(Object *obj)
-     SysBusDevice *sd = SYS_BUS_DEVICE(obj);
-     IMX8MPCCMState *s = IMX8MP_CCM(obj);
- 
-+    s->cm7_cpuclk = qdev_init_clock_out(DEVICE(obj), "cm7_cpuclk");
-+    s->cm7_refclk = qdev_init_clock_out(DEVICE(obj), "cm7_refclk");
-     memory_region_init_io(&s->iomem,
-                           obj,
-                           &imx8mp_set_clr_tog_ops,
-diff --git a/include/hw/misc/imx8mp_ccm.h b/include/hw/misc/imx8mp_ccm.h
-index 685c8582ff..c6ede6928c 100644
---- a/include/hw/misc/imx8mp_ccm.h
-+++ b/include/hw/misc/imx8mp_ccm.h
-@@ -9,6 +9,7 @@
- #ifndef IMX8MP_CCM_H
- #define IMX8MP_CCM_H
- 
-+#include "hw/core/clock.h"
- #include "hw/misc/imx_ccm.h"
- #include "qom/object.h"
- 
-@@ -25,6 +26,8 @@ struct IMX8MPCCMState {
-     MemoryRegion iomem;
- 
-     uint32_t ccm[CCM_MAX];
-+    Clock *cm7_cpuclk;
-+    Clock *cm7_refclk;
- };
- 
- #endif /* IMX8MP_CCM_H */
 -- 
 2.34.1
 

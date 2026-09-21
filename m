@@ -4,70 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 91B76C982ED
-	for <qemu-arm@archiver.kernel.org>; Mon, 21 Sep 2026 21:50:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A198EC982E6
+	for <qemu-arm@archiver.kernel.org>; Mon, 21 Sep 2026 21:50:23 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1x8lrT-00068o-4b; Mon, 21 Sep 2026 17:47:43 -0400
+	id 1x8lsH-0006mq-2S; Mon, 21 Sep 2026 17:48:33 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <shentey@gmail.com>) id 1x8lrM-00065t-Tt
- for qemu-arm@nongnu.org; Mon, 21 Sep 2026 17:47:40 -0400
+ (Exim 4.90_1) (envelope-from <shentey@gmail.com>) id 1x8ls9-0006fV-NJ
+ for qemu-arm@nongnu.org; Mon, 21 Sep 2026 17:48:25 -0400
 Received: from mail-wm2-x11.google.com ([2a00:1450:4864:31::11])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <shentey@gmail.com>) id 1x8lrK-00005j-VG
- for qemu-arm@nongnu.org; Mon, 21 Sep 2026 17:47:36 -0400
+ (Exim 4.90_1) (envelope-from <shentey@gmail.com>) id 1x8ls8-0000PE-18
+ for qemu-arm@nongnu.org; Mon, 21 Sep 2026 17:48:25 -0400
 Received: by mail-wm2-x11.google.com with SMTP id
- 5b1f17b1804b1-49b91369d18so26350395e9.0
- for <qemu-arm@nongnu.org>; Mon, 21 Sep 2026 14:47:34 -0700 (PDT)
+ 5b1f17b1804b1-49e6c0fce17so18061425e9.1
+ for <qemu-arm@nongnu.org>; Mon, 21 Sep 2026 14:48:13 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20251104; t=1790027254; x=1790632054; darn=nongnu.org;
+ d=gmail.com; s=20251104; t=1790027293; x=1790632093; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to:content-type;
- bh=Uw/DMb2Uw5NZGDQy3g8IeeuOzOBZqBeZxwGT7qc8+Yc=;
- b=QOVDy+j/b/CynJhqdJ140qGox/StOXX488UvGiHWtGxRk4gkb1gCxQTWQof9rczdiz
- Oz5NYywMF8+rB9LOISMDUXql/pPAO18hd1EZhHWi+K3uki1qwqrF6TbNAeNPJymqebX8
- /g5kdptVC3bo7ZSC26qx0Ig55H7XJjhEKXS85VohnI/phIpTFZdDN7lTCcZsXHCzC4Uu
- JMZm4MmffxZfnyjyn4b54mds0PZ1Uwbe+nf/yk0NU9PL1aqa3pcXdn6FnVIvk4PspKbG
- 1nY8jSwrTIF2hWsUt7QggWfHReXC014Ot+EX/Ta9WGtgRo5hQimAIezGaf4myLvl18Js
- +e6A==
+ bh=0CSy0xMqZIb4P6bNwkb1VnPTSf9A/yfJ/dDXW/NabSk=;
+ b=TiAJfHsnTdJYJ0B/IdNY5yG/xkty/kZBAE/6mO979PKCQaujbVl6t2zpny7dIlRQca
+ 27Mm+w8XAFe2tO9hxQRwsnUtbtaGYb3xjtjbfQZhjwkbjTXGZ/LzAuOYNu3mVXQCcBkm
+ VytsPeFYtiBbI2aRdwoezhnvKEZtkWmrhv/xGWJzKJC9zszBRMAeCOCW+1jM9AC2iAcC
+ vZuf11x5riy6zKsLgagLYtuMQY7bMneEcysafXqfy9lzr0/ykt2sr1+b/WzJ6G+r3aSh
+ 0gaRL6f87KHTWix+DWmW5M91HhhRjnCwKJU5KPsSlSHY0AAxo4Xo9I/DmSIIvu2q/1LK
+ B4gg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20260707; t=1790027254; x=1790632054;
+ d=1e100.net; s=20260707; t=1790027293; x=1790632093;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
  :to:cc:subject:date:message-id:reply-to:content-type;
- bh=Uw/DMb2Uw5NZGDQy3g8IeeuOzOBZqBeZxwGT7qc8+Yc=;
- b=bm7nZgq+MtboDvmx7P7uDq+tyFnnhl0Lk4J04Ot7Xdun1iouKTsj1+QuMGKaQmMgnK
- DVLZu/PyQsnq4duUA/UMaWNKrca8hxWx2CwbacyGtrub1y/DLgGyarNqBbiYM9lN/iM5
- 5cTx2PxLJMUPVT+eCgEFXGoB2KvRb5yFKQLIndt0cqIPEBOCLZ4vbTQoY3G4dygKKRCc
- jJO/XB2Xy2j7gALjG5o+MuKI88Zs7mRlumcoU1A07JwfeHm9A0zo2LBC2GCxflfayBQZ
- O98eFZ/njUftDfyfBtt2T/8Bqc5/BQY1YTkremVIsVC88QDEcnWp7iK5PqNo3tn6LdQY
- gJlQ==
+ bh=0CSy0xMqZIb4P6bNwkb1VnPTSf9A/yfJ/dDXW/NabSk=;
+ b=Y6gY7+QksHuULZMa6rby2IUWo3uXyT839m5Y3cf8PG+FiVA2QkIf2tzSJ19wEagdno
+ fexgKjctWZ7iRfyaOaKdBQJkeS32ex50DFGNr5sKUfkDqR5c4tT3+cOpCefYrNt6RdNT
+ 20RoLjkTT1zcWLnS38KzBNODwaiWCGg+fNhVRzbwQr0q4V5VKadh1oQGMFN5zOzP4im2
+ sX45QxXRbgr88u1nmGIyAo6+dlbSVgtsVTza3LFEpWbQyxoaTDrHRfA8Lt9ZgmMZO+8S
+ 6VNVPc4lfQJKZciR/lZ4yAncM6dHuIB/BQGN5nZ4EheFTJZJk8Zlyj7j6xSkQ/2YTpc+
+ xLkA==
 X-Forwarded-Encrypted: i=1;
- AKwUvBxsULjmr/Gn0NoB48HaOX05PTpm09SBu4yE8vxVoc+lT33iaNKQUbEAdiOLyxxgC4oQCaygaros3A==@nongnu.org
-X-Gm-Message-State: AFuF++m/9xlpgocPgGVnIi6oNXLUQ6cw9MmbQzKhOb8h0x1D2NNSLoe9
- XWHx1KUfd5sNBUGMxQ58munElszD+jcB6fgdDSgGf5IDA0UJzGBpWhm5
-X-Gm-Gg: AYBFou259q+S6+57EAZowVRhv5BBVfCuDidgDoB1kACL6mfkq4hJtQuYDGljnMYJyYc
- xluBs64iyLBi8KXjea79plJxDnbZjIErX31XiNCWzEz8d6qdQ/dW9A7Rw0vE8U3ERo3Y6kc3jgK
- xfVTYjZkhtu257heZ+bjlkMfyLKsVcj+Tlky0eRDP5IK2FHChAM4v6hhWI1H9/xlC4GU1VjhMJg
- nVc8/xSc16NizEJ17sU3KLk63+X5SBkgwQj7NGK8dmvL/8uck0WRoxNlXWJLHUo1iBfHpr+csC3
- t0b4Ia5g9yeG8TJeDpm6WDQ0SeZe8o6EIV++txiq82O5OzdUSGaOvvmaU88/LFdsOaZRehowVr0
- BHA3Uh9ziMF8GqarPNUXV9xinuUymh3JDYczzTZWv5g/lAFyVgB+P/6KuLy6hVY/C7AtjkEcDYJ
- CR02gyHkwPZdDbTveyB0+z9BA8PRr+UFaMuXNGQI90qQ0fnNAF/jhvdZpKmFC1Wvf2vXmHozE5I
- 0aoFnrIst1twEMxtN7EnEiqKN6Q7s2CZe4Zi1zV/AGx+yNdMI8KrWDFBllcBeOUq5uLu4bGAUmZ
- +ghobjakjVWZuQ==
-X-Received: by 2002:a05:600c:548d:b0:49e:816a:9bae with SMTP id
- 5b1f17b1804b1-49fc58500e5mr176131855e9.28.1790027253542; 
- Mon, 21 Sep 2026 14:47:33 -0700 (PDT)
+ AKwUvBwyxZ83/QjsKefz7qZuhGmoGph4urkfIcmJwcz17/5qtMV0zorvwUi9MqNd3Y7krtETAmEJVunwpw==@nongnu.org
+X-Gm-Message-State: AFuF++mUw1zSY2RpefnjKm8NzViT+ATF/UCzSgk3aX/jKsp07kqdD2ad
+ FzbVtpMJidYp/vdaOYZd/Cj/h3DIKVAEfbN6kpBDwmzhwaUcr8mwz4b6Pn7vRg==
+X-Gm-Gg: AYBFou0aPYRS3izn83J8tU63Wie5FVWL5KbIvQZt7ZRLCL0r1GPbpknqdkthFUsQoJl
+ q0n4TB1jgCl+6YxjdE5f8xnLSge0SqCO34FXLt/K72iCEVygzD5S9ySE0hgwF2z0pyaRO7QZxH/
+ l+lPv3QF5nHDKG7gYxEhKvCK3mSDg89rB9sdDbRymWMRKsDRfvUcP3oDLuQY6Gy9Hg+B0szVran
+ zUZtigRKsBAtMEdQ6RH6JE7ALzeQgSMCTe1xpEqGUcuIuG8SKiIqNBQ/PbfxB0BdGZfXRqycJSy
+ c24YuHvH7C0dm4u2pmMuSdWh682SxpHlDWYC7iLm3d1AU0HeNx264edZ0M7hSDZV2CPpGYHR4IA
+ OMLiKx1cSrPFkLO/55rj6TL+goZ9oLYsBNI4DUOb/p0XhlayMjvLHVydILpneQMcEN3du4tUovo
+ Vq15WCBkCvbLkdhb7WM+RqbDBiwsusM5hL+uwsYw3oRW7Kn7SXzGzeTYMKnFrkE6yw+xUW9bxcO
+ uwVGOUFJTLAK5IX96ZnL6mJylouMpZOMeWjqRTNMuRB4TAEqoRl5b+vWZrr2i/0oObyH9NbeylI
+ bu2IqX/0+1ktDQ==
+X-Received: by 2002:a05:600c:354e:b0:49c:fc6e:a3d8 with SMTP id
+ 5b1f17b1804b1-49fc584f854mr165207835e9.23.1790027292607; 
+ Mon, 21 Sep 2026 14:48:12 -0700 (PDT)
 Received: from Provence
  (dynamic-2a02-3100-1c91-bf00-0219-99ff-feb2-2458.310.pool.telefonica.de.
  [2a02:3100:1c91:bf00:219:99ff:feb2:2458])
  by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-49fda0ce29fsm4986905e9.6.2026.09.21.14.47.32
+ 5b1f17b1804b1-49fda0ce29fsm4986905e9.6.2026.09.21.14.48.11
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 21 Sep 2026 14:47:33 -0700 (PDT)
+ Mon, 21 Sep 2026 14:48:12 -0700 (PDT)
 From: Bernhard Beschow <shentey@gmail.com>
 To: qemu-devel@nongnu.org
 Cc: Phil Dennis-Jordan <phil@philjordan.eu>,
@@ -80,11 +80,9 @@ Cc: Phil Dennis-Jordan <phil@philjordan.eu>,
  Bernhard Beschow <shentey@gmail.com>,
  Jean-Christophe Dubois <jcd@tribudubois.net>,
  Gaurav Sharma <gaurav.sharma_7@nxp.com>
-Subject: [PATCH 05/42] docs,
- tests/functional: Drop redundant CLI arguments in imx8m*-evk
- invocations
-Date: Mon, 21 Sep 2026 23:46:33 +0200
-Message-ID: <20260921214710.29422-6-shentey@gmail.com>
+Subject: [PATCH 34/42] hw/arm/fsl-imx8m: Fix typo
+Date: Mon, 21 Sep 2026 23:47:02 +0200
+Message-ID: <20260921214710.29422-35-shentey@gmail.com>
 X-Mailer: git-send-email 2.55.0
 In-Reply-To: <20260921214710.29422-1-shentey@gmail.com>
 References: <20260921214710.29422-1-shentey@gmail.com>
@@ -113,60 +111,74 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Both boards provide defaults matching real hardware. No need to ask
-users to repeat these. Also, remove these redundant arguments from the
-functional tests such that the defaults get tested.
+This is IMX8MP and IMX8MM, not IMX6.
 
+Fixes: 0c105b261551 ("hw/arm/fsl-imx8mp: Add Ethernet controller")
+Fixes: 857670200c51 ("hw/arm/fsl-imx8mm: Adding support for ENET ethernet controller")
 Signed-off-by: Bernhard Beschow <shentey@gmail.com>
 ---
- docs/system/arm/imx8m.rst                   | 2 +-
- tests/functional/aarch64/test_imx8mm_evk.py | 4 +---
- tests/functional/aarch64/test_imx8mp_evk.py | 4 +---
- 3 files changed, 3 insertions(+), 7 deletions(-)
+ include/hw/arm/fsl-imx8mm.h | 4 ++--
+ include/hw/arm/fsl-imx8mp.h | 4 ++--
+ hw/arm/fsl-imx8mm.c         | 2 +-
+ hw/arm/fsl-imx8mp.c         | 2 +-
+ 4 files changed, 6 insertions(+), 6 deletions(-)
 
-diff --git a/docs/system/arm/imx8m.rst b/docs/system/arm/imx8m.rst
-index 1bcb8255be..5348757089 100644
---- a/docs/system/arm/imx8m.rst
-+++ b/docs/system/arm/imx8m.rst
-@@ -79,7 +79,7 @@ For i.MX 8M Mini EVK:
+diff --git a/include/hw/arm/fsl-imx8mm.h b/include/hw/arm/fsl-imx8mm.h
+index 60d79a6e3c..1966fa505f 100644
+--- a/include/hw/arm/fsl-imx8mm.h
++++ b/include/hw/arm/fsl-imx8mm.h
+@@ -229,8 +229,8 @@ enum FslImx8mmIrqs {
+     FSL_IMX8MM_WDOG2_IRQ    = 79,
+     FSL_IMX8MM_WDOG3_IRQ    = 10,
  
- .. code-block:: bash
+-    FSL_IMX8MM_ENET1_MAC_IRQ    = 118,
+-    FSL_IMX6_ENET1_MAC_1588_IRQ = 121,
++    FSL_IMX8MM_ENET1_MAC_IRQ      = 118,
++    FSL_IMX8MM_ENET1_MAC_1588_IRQ = 121,
  
--  $ qemu-system-aarch64 -M imx8mm-evk -smp 4 -m 2G \
-+  $ qemu-system-aarch64 -M imx8mm-evk \
-       -display none -serial null -serial stdio \
-       -kernel Image \
-       -dtb imx8mm-evk.dtb \
-diff --git a/tests/functional/aarch64/test_imx8mm_evk.py b/tests/functional/aarch64/test_imx8mm_evk.py
-index 86725991f1..73d286167c 100755
---- a/tests/functional/aarch64/test_imx8mm_evk.py
-+++ b/tests/functional/aarch64/test_imx8mm_evk.py
-@@ -52,9 +52,7 @@ def test_aarch64_imx8mm_evk_usdhc(self):
-         self.require_accelerator("tcg")
-         self.set_machine('imx8mm-evk')
-         self.vm.set_console(console_index=1)
--        self.vm.add_args('-m', '2G',
--                         '-smp', '4',
--                         '-kernel', self.kernel_path,
-+        self.vm.add_args('-kernel', self.kernel_path,
-                          '-initrd', self.initrd_path,
-                          '-dtb', self.dtb_path,
-                          '-append', 'root=/dev/mmcblk2p1',
-diff --git a/tests/functional/aarch64/test_imx8mp_evk.py b/tests/functional/aarch64/test_imx8mp_evk.py
-index 99ddcdef83..2ec421c326 100755
---- a/tests/functional/aarch64/test_imx8mp_evk.py
-+++ b/tests/functional/aarch64/test_imx8mp_evk.py
-@@ -52,9 +52,7 @@ def test_aarch64_imx8mp_evk_usdhc(self):
-         self.require_accelerator("tcg")
-         self.set_machine('imx8mp-evk')
-         self.vm.set_console(console_index=1)
--        self.vm.add_args('-m', '2G',
--                         '-smp', '4',
--                         '-kernel', self.kernel_path,
-+        self.vm.add_args('-kernel', self.kernel_path,
-                          '-initrd', self.initrd_path,
-                          '-dtb', self.dtb_path,
-                          '-append', 'root=/dev/mmcblk2p1',
+     FSL_IMX8MM_PCI_INTA_IRQ = 122,
+     FSL_IMX8MM_PCI_INTB_IRQ = 123,
+diff --git a/include/hw/arm/fsl-imx8mp.h b/include/hw/arm/fsl-imx8mp.h
+index 2be3c51af5..3acfffd30f 100644
+--- a/include/hw/arm/fsl-imx8mp.h
++++ b/include/hw/arm/fsl-imx8mp.h
+@@ -276,8 +276,8 @@ enum FslImx8mpIrqs {
+     FSL_IMX8MP_WDOG2_IRQ    = 79,
+     FSL_IMX8MP_WDOG3_IRQ    = 10,
+ 
+-    FSL_IMX8MP_ENET1_MAC_IRQ    = 118,
+-    FSL_IMX6_ENET1_MAC_1588_IRQ = 121,
++    FSL_IMX8MP_ENET1_MAC_IRQ      = 118,
++    FSL_IMX8MP_ENET1_MAC_1588_IRQ = 121,
+ 
+     FSL_IMX8MP_PCI_INTA_IRQ = 126,
+     FSL_IMX8MP_PCI_INTB_IRQ = 125,
+diff --git a/hw/arm/fsl-imx8mm.c b/hw/arm/fsl-imx8mm.c
+index 37934d2951..90c1673461 100644
+--- a/hw/arm/fsl-imx8mm.c
++++ b/hw/arm/fsl-imx8mm.c
+@@ -590,7 +590,7 @@ static void fsl_imx8mm_realize(DeviceState *dev, Error **errp)
+     sysbus_connect_irq(SYS_BUS_DEVICE(&s->enet), 0,
+                        qdev_get_gpio_in(gicdev, FSL_IMX8MM_ENET1_MAC_IRQ));
+     sysbus_connect_irq(SYS_BUS_DEVICE(&s->enet), 1,
+-                       qdev_get_gpio_in(gicdev, FSL_IMX6_ENET1_MAC_1588_IRQ));
++                       qdev_get_gpio_in(gicdev, FSL_IMX8MM_ENET1_MAC_1588_IRQ));
+ 
+     /* SNVS */
+     if (!sysbus_realize(SYS_BUS_DEVICE(&s->snvs), errp)) {
+diff --git a/hw/arm/fsl-imx8mp.c b/hw/arm/fsl-imx8mp.c
+index f855378dff..fbc094b7db 100644
+--- a/hw/arm/fsl-imx8mp.c
++++ b/hw/arm/fsl-imx8mp.c
+@@ -620,7 +620,7 @@ static void fsl_imx8mp_realize(DeviceState *dev, Error **errp)
+     sysbus_connect_irq(SYS_BUS_DEVICE(&s->enet), 0,
+                        qdev_get_gpio_in(gicdev, FSL_IMX8MP_ENET1_MAC_IRQ));
+     sysbus_connect_irq(SYS_BUS_DEVICE(&s->enet), 1,
+-                       qdev_get_gpio_in(gicdev, FSL_IMX6_ENET1_MAC_1588_IRQ));
++                       qdev_get_gpio_in(gicdev, FSL_IMX8MP_ENET1_MAC_1588_IRQ));
+ 
+     /* SNVS */
+     if (!sysbus_realize(SYS_BUS_DEVICE(&s->snvs), errp)) {
 -- 
 2.55.0
 

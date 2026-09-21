@@ -4,96 +4,96 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 93FF7C982E1
-	for <qemu-arm@archiver.kernel.org>; Mon, 21 Sep 2026 14:20:26 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D94B1C982E6
+	for <qemu-arm@archiver.kernel.org>; Mon, 21 Sep 2026 14:25:13 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1x8es3-0006jC-0S; Mon, 21 Sep 2026 10:19:51 -0400
+	id 1x8ex6-0000EH-BU; Mon, 21 Sep 2026 10:25:06 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <philmd@oss.qualcomm.com>)
- id 1x8eru-0006eK-3g
- for qemu-arm@nongnu.org; Mon, 21 Sep 2026 10:19:46 -0400
-Received: from mx0a-0031df01.pphosted.com ([205.220.168.131])
+ id 1x8ex0-0000Ca-1W
+ for qemu-arm@nongnu.org; Mon, 21 Sep 2026 10:24:59 -0400
+Received: from mx0b-0031df01.pphosted.com ([205.220.180.131])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <philmd@oss.qualcomm.com>)
- id 1x8ers-0007PG-Ed
- for qemu-arm@nongnu.org; Mon, 21 Sep 2026 10:19:41 -0400
-Received: from pps.filterd (m0279864.ppops.net [127.0.0.1])
+ id 1x8ewy-0007tS-4L
+ for qemu-arm@nongnu.org; Mon, 21 Sep 2026 10:24:57 -0400
+Received: from pps.filterd (m0279872.ppops.net [127.0.0.1])
  by mx0a-0031df01.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id
- 68LEGfHB100543
- for <qemu-arm@nongnu.org>; Mon, 21 Sep 2026 14:19:39 GMT
+ 68LEGbVh763700
+ for <qemu-arm@nongnu.org>; Mon, 21 Sep 2026 14:24:54 GMT
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qualcomm.com; h=
  cc:content-transfer-encoding:content-type:date:from:in-reply-to
  :message-id:mime-version:references:subject:to; s=qcppdkim1; bh=
- zrvcf3hnTIprfUVV8c+/dhkM4mfvL58UveViZyaTiCw=; b=NOaO4bTDaoUYJqAv
- otEfhhi0c8F9nyNJhIU4aHuJ7n7j9BaAIwsXCoaoGMNE5GvBmxcVRHY3sMf5dFlG
- On15bwF5UggwIKvz5dpeXOFlEWlyZ579R3cBZcS6rhdR1qyfmePpLHNHqLb8AU+u
- 1zahctpydvtLsU3FPVjvxB9jOsbSOSqyq8ORlIHz8S2e8Y7bl3N+RCe5oblunVzK
- zEOHQc0iod2yCMm2Z1He6U1AgxuGDX8YQA8FdNM99pTF6SQRUacZCdHasmV5qRsq
- j5eIYY1Kb/16NBUPikot2jHboWjdRrT23ZJt1I5Qs/Ro6+GGruBicJEKs/fIea/2
- CDTSfg==
-Received: from mail-vk1-f200.google.com (mail-vk1-f200.google.com
- [209.85.221.200])
- by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 4gtq79b2cp-1
+ XoPvg2yEeFXmNBFeOzRQWOTDNF1FsxrfXRp8z7hWwBI=; b=dx3wpFTgZy6/Z0Ug
+ Pmh7BF6p3n7H7luF3/okn8D4mQY/XbyuDKwHZETdV9ckGpGVm74Prz++3kdj+eAl
+ IchQN+X18O5VQ2TeMM6x6lj9DuVi6Ht3OAzloKPEFPvguEBpplQdJNCrVTBhhiEP
+ njna/nrNc54ozs96OauzihIW9Nvv+epT/vG02WBCcPZfpb0T6WzmoLihb9uw7kG3
+ 7YMjFzXbeNdCopWQm8cZEo6wLdc82wMyzFVSHf/l2Md7E/WMC7y37zcynT1f+zch
+ onR7472rc+hBBdYiatpPl5+tT4YA8NM+I8TN+Y6dN+dV4TXS9JXWMsj2azPKIhHz
+ p+5Z4w==
+Received: from mail-vk1-f198.google.com (mail-vk1-f198.google.com
+ [209.85.221.198])
+ by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 4gu0rj1hda-1
  (version=TLSv1.3 cipher=TLS_AES_128_GCM_SHA256 bits=128 verify=NOT)
- for <qemu-arm@nongnu.org>; Mon, 21 Sep 2026 14:19:36 +0000 (GMT)
-Received: by mail-vk1-f200.google.com with SMTP id
- 71dfb90a1353d-5c8337b12d0so779567e0c.0
- for <qemu-arm@nongnu.org>; Mon, 21 Sep 2026 07:19:36 -0700 (PDT)
+ for <qemu-arm@nongnu.org>; Mon, 21 Sep 2026 14:24:54 +0000 (GMT)
+Received: by mail-vk1-f198.google.com with SMTP id
+ 71dfb90a1353d-5c82c79466cso3950767e0c.2
+ for <qemu-arm@nongnu.org>; Mon, 21 Sep 2026 07:24:54 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=oss.qualcomm.com; s=google; t=1790000376; x=1790605176; darn=nongnu.org;
+ d=oss.qualcomm.com; s=google; t=1790000693; x=1790605493; darn=nongnu.org;
  h=content-transfer-encoding:content-type:in-reply-to:from
  :content-language:references:cc:to:subject:user-agent:mime-version
  :date:message-id:from:to:cc:subject:date:message-id:reply-to
- :content-type; bh=zrvcf3hnTIprfUVV8c+/dhkM4mfvL58UveViZyaTiCw=;
- b=DCcxt3UL/6MPf2g8pMG/X/lxyrP5QgaMiPS5XydMwyDY51TNtWgorQ9M1r3EJhWO8/
- MPhcF3DpJby1zPRnyIDWjDfWD1ZxdhO/ZsX8NJVonW8dXaXrO6YJriBfynqu8bUyzkUq
- hluW4OLba04wjEh9ZHoMCcamoRrG6M+TMNnAv6H923IDOGffNVj/Ipz8ye6+t+6UNmxn
- SVevGytU4wtwJK1mt0JTU6Vd/WmN4C7XB+SNpXvWpsVIZn4F7kYTLdXx/OowhancdJCZ
- oapFmMRybBHqDqBKZ9l6ZbbjQcKzKMWvvqaM1dStQYQpV9vZ/GqiSWu868Xzk2wIA9Jk
- Q7qw==
+ :content-type; bh=XoPvg2yEeFXmNBFeOzRQWOTDNF1FsxrfXRp8z7hWwBI=;
+ b=EJ3+tTfRXxyZsFrF3ZHWyGOZHYXCj/MyG5Cg9uZm1o80QyzgdIqwIDSV/b///1u0RL
+ gwTl2+C2p3SoJsZpLyfI4W8epGDAQ8p2uuZhlNQg+xcCaCHpp2++tdEvKcMTkpg5PgZ1
+ NGorfvc+Cum4U35ASuHRZyKqFXa9pj9rT9SG7ylJNoN8hq3czpQ9bDNhzgGoA09vI191
+ WpYAkfKOm/vzzIMY92pjGMVT3e3xo6QalYbdPXCj5euCMn7EznKdMWa0yFwx5QeF929P
+ CWl+tPJhMzby5JfXMO6wp3bqY+UDC+LJuqXVtS7zCTVUDzNB/ckDfW1Y1NXjo0wPzhlg
+ vVPg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20260707; t=1790000376; x=1790605176;
+ d=1e100.net; s=20260707; t=1790000693; x=1790605493;
  h=content-transfer-encoding:content-type:in-reply-to:from
  :content-language:references:cc:to:subject:user-agent:mime-version
  :date:message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
  :message-id:reply-to:content-type;
- bh=zrvcf3hnTIprfUVV8c+/dhkM4mfvL58UveViZyaTiCw=;
- b=iqAD2NqAleAVnRx9hl6qs+pSLNZK2mKLbzsqVPBDIOFxkRfjrCjZ/K89h/2aTQrtiN
- 7kmZ9u2btwzbdjCI+kGlLaaxiL4RQW1Ej42bsmc9YNo/vyYIQdjaDJQGV8yPTqU1pHp3
- dEmJUWjbGVyWh/Yvl03RwOmHOWA+SKs0LYnXyZbo+8fgObI0x57A+BPsvgb7cibvouTP
- PiRhqZAvQErfXHGW+CnO8ZjMAk4+7xpkJswnbAeKVbrDphQnxloTJilsJYTPOkdIG3P7
- gArtWU2lwiJ09EL5WUNI+y3v/kGmiXea2PAkxu8R8eAf5x3mOmmZD9WFGMxkqAuRH4nc
- ELKg==
+ bh=XoPvg2yEeFXmNBFeOzRQWOTDNF1FsxrfXRp8z7hWwBI=;
+ b=R/kDTtgp5OdRRUCJBfB3IzC/zo01qZY+QDao7s4QDKObQv0rHPEki3/YMNO75a9kgA
+ 3wjvCPAbwmKWqd7H5r5qJ/0w3qjW8c6+ayqwO02SFtlDFhQFVI/iD63hpPbMRIOdLp+e
+ UlDFGsMP5JZEs9KDzBHxWmOn35dLbyBCg4GX36lobeP/Ujq/Rvw9ngafHxgB0EzcUZ8r
+ X5gskUL/Fm2WQPs+1Y3PHA7SMDleuXicFgc1bdY7YtxlQdunTQVXGNTYvxRPP5dqPbRP
+ s9IMVOS/5TUR2zBVoKnzzo4BFBV+z+Naf9GmRKDFBdy7fq6uq/0tj5PxOqAX5AvieLcu
+ xrJQ==
 X-Forwarded-Encrypted: i=1;
- AKwUvBz1NubYkeG77RIaTUhtKjzXOgpAz6qnE5ktsyY5QY6gOTDdNKbcesJu2BXsm7SQuM8V1ruNDimQQw==@nongnu.org
-X-Gm-Message-State: AFuF++lCqziA5wWns0bICsPolH8Mgzr+GQ/WuTl/yeq0Gh152qMRXLbC
- Tj17CB8BjHkKUoaT/5Bad0pwIElNTRngJgRn/JU7sEW7zGgstiQIpjnG9UcGREWTptmS1u1Izji
- AJOrcYEQoF0jmUD2dpeDOtCxSBULcXNyc65zHROLleglZcnGUrd2o1Nw=
-X-Gm-Gg: AYBFou1X2iknsmfJMkMd57arCZFvA/+6tav7xQbaVfLxkSw4B76HVcTLBEGogA4yhzc
- 8LZB+hFbTogYZqdCpWipw9ybeze4kWK4BXKYp8Z/r+w6XpFpRighXjD2Wtn68fGU2gao5WTA8Pf
- QxGtlNU2+o6zA6K+GaHjnLKS6o4GamOMrF9uwyZFzxqT6vytrW9ef539kGhe/CNJMd8dLaegGvu
- qInlzJYJcusFRCsEpUpop9rISUwN71Kr1fCB2cc1O/zJbYsM9DUfTtYo8hAqAbPe/RVgySQZxxi
- +N29ffoqqIMRqAPaeYnNBbY4h0/oMznsYeKtcsEhnCqWmNhZ3uhQhDGsPGD4159/8DyZff6ome2
- BhDru9VDKO92BUkdkKQY=
-X-Received: by 2002:a05:6122:8c8a:b0:5c9:a60b:e5cf with SMTP id
- 71dfb90a1353d-5c9b59413bbmr4643547e0c.9.1790000375908; 
- Mon, 21 Sep 2026 07:19:35 -0700 (PDT)
-X-Received: by 2002:a05:6122:8c8a:b0:5c9:a60b:e5cf with SMTP id
- 71dfb90a1353d-5c9b59413bbmr4643501e0c.9.1790000375493; 
- Mon, 21 Sep 2026 07:19:35 -0700 (PDT)
+ AKwUvBy++GUXjO4V6jck3D+UG2B3fkNhN3y+s3ZUtL0MNkw/85jJT4VUP+Hr9c0bHipGhen34pOzy50ShA==@nongnu.org
+X-Gm-Message-State: AFuF++ngTQ/4QhGQ/vU6DRF401xdRn0a17L92iFgV7uV1XSre59Kmpya
+ L/xuRRmD4j6fPdS23rO3OVv4L/nkLVQvu2GpKSnfDlI4Qi6Pstn1WCMmWwbSXKHTlKtGsOlgySf
+ X/0P3ZV6smkKueWcZcesJT2IAemmb4M8pADbOHy5Z14J5pDtOBLi8QeI=
+X-Gm-Gg: AYBFou1Xy5IbGNQpeC263RJ6C2fUNnhO9qAKCKLs0QaZIrOi2bCwXxD55MLWUkOy+e1
+ wxfLQLbt6XRPggLZrrurtnzUw3WivylUDt2TmEQe769p7lYg8f6KQqcjdaHvWO55SiXgtDsDZNf
+ eqRL8tiv+QREe82HM+pKoIBGgpxnIf+yASK1hVblCpixZb4/QwbV4/hbLW/8wA1PKbeLiI9BouI
+ 23LygcTDm7Dgw8PNbzJ3N/+Rfecz464/TlK+sgSX8mvwyp22Wespd4sFIV5wMKfhVyPV9j/G4Ft
+ fXEnUDr8bTkcqS82I3Ijh+X6RJZ2KM1rw7kmKh5Um1ctLW/6k5wfU+V2srzBcQIdSEM1jSwOQOk
+ PILALYpeX7TQ6raGauUw=
+X-Received: by 2002:a05:6122:4896:b0:5c9:a60c:273d with SMTP id
+ 71dfb90a1353d-5c9b59eaf2bmr5873497e0c.21.1790000693548; 
+ Mon, 21 Sep 2026 07:24:53 -0700 (PDT)
+X-Received: by 2002:a05:6122:4896:b0:5c9:a60c:273d with SMTP id
+ 71dfb90a1353d-5c9b59eaf2bmr5873430e0c.21.1790000692931; 
+ Mon, 21 Sep 2026 07:24:52 -0700 (PDT)
 Received: from [192.168.0.4] ([79.127.134.47])
  by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-48724460753sm23972033f8f.10.2026.09.21.07.19.30
+ ffacd0b85a97d-48724422790sm22171483f8f.5.2026.09.21.07.24.48
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 21 Sep 2026 07:19:34 -0700 (PDT)
-Message-ID: <7162b5fe-939e-4328-932e-4adf7f640bb3@oss.qualcomm.com>
-Date: Mon, 21 Sep 2026 16:19:29 +0200
+ Mon, 21 Sep 2026 07:24:52 -0700 (PDT)
+Message-ID: <c318456e-dd21-4222-9755-f5077d3f093f@oss.qualcomm.com>
+Date: Mon, 21 Sep 2026 16:24:47 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 05/21] target/sh4: convert raises to raise_excp
+Subject: Re: [PATCH 15/21] target/xtensa: convert exception to raise_excp
 To: Yonggang Luo <luoyonggang@gmail.com>, qemu-devel@nongnu.org
 Cc: Xianglai Li <lixianglai@loongson.cn>, qemu-s390x@nongnu.org,
  David Hildenbrand <david@kernel.org>,
@@ -126,41 +126,41 @@ Cc: Xianglai Li <lixianglai@loongson.cn>, qemu-s390x@nongnu.org,
  Palmer Dabbelt <palmer@dabbelt.com>, qemu-riscv@nongnu.org,
  Song Gao <17746591750@163.com>, Matthew Rosato <mjrosato@linux.ibm.com>
 References: <20260918004225.827-1-luoyonggang@gmail.com>
- <20260918004225.827-6-luoyonggang@gmail.com>
+ <20260918004225.827-16-luoyonggang@gmail.com>
 Content-Language: en-US
 From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@oss.qualcomm.com>
-In-Reply-To: <20260918004225.827-6-luoyonggang@gmail.com>
+In-Reply-To: <20260918004225.827-16-luoyonggang@gmail.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
-X-Authority-Analysis: v=2.4 cv=aJ9lOr9m c=1 sm=1 tr=0 ts=6ab13cfb cx=c_pps
- a=wuOIiItHwq1biOnFUQQHKA==:117 a=btlkdZlGvBFwkIDmIYSHuA==:17
+X-Proofpoint-Spam-Info: AW1haW4tMjYwOTIxMDIxMCBTYWx0ZWRfXyJu2MDVNsZC1
+ f6cl1Kc0WjxfsRrKU1QBufmsNeySVwD2BMkRhNfVQaDoTWTE3oW7Qdlm0SKr85nYiZqgZZ+nWvi
+ 8ow45QRwsR0Zbjh7/NarlRyAXhp8KuE=
+X-Authority-Analysis: v=2.4 cv=AsR7T+9P c=1 sm=1 tr=0 ts=6ab13e36 cx=c_pps
+ a=1Os3MKEOqt8YzSjcPV0cFA==:117 a=btlkdZlGvBFwkIDmIYSHuA==:17
  a=IkcTkHD0fZMA:10 a=VdqzKS8jKosA:10 a=M51BFTxLslgA:10 a=s4-Qcg_JpJYA:10
- a=VkNPw1HP01LnGYTKEx00:22 a=u7WPNUs3qKkmUXheDGA7:22 a=DJpcGTmdVt4CTyJn9g5Z:22
- a=pGLkceISAAAA:8 a=L5l0t_duoJEwhSdndf8A:9 a=QEXdDO2ut3YA:10
- a=XD7yVLdPMpWraOa8Un9W:22
-X-Proofpoint-Spam-Info: AW1haW4tMjYwOTIxMDIwNyBTYWx0ZWRfX6pHggquIbc4q
- x36MoCODzqBxa7xOgfPtA1Eoh5f1y1hlq3UgdTA9os4Ae4lj2S8XtJ1wxM4HjDIs/+Ym1N+USS6
- KltyEALUkrZCuFfj+jV2vzo8nRiEbgQ=
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwOTIxMDIwNyBTYWx0ZWRfXzqZYoxXUfuqb
- 2VxTkswBZ2uL/trmPKxcdPZeGfb3NBbJeru/H3efcC3+FiQ9MwM1+8f1fslQoyE7IfDbaVGji7c
- 0BvHIo7cAt6wSraDTvPCumjc6MsVB9mKiJnCzbk/nj6R0Dn6ZbNsLuJoV7JCjnc1w3IYdZdu8wL
- q5fEQsSZty3GDCyGVtAC3JLFwTP9z7BhPCX0hFqTcfvxb5r2/JK6oEq5Ij0vTvOIqbN4BfKODas
- Hy8TcYNTebbQSR0D0uwPTa0cpk9Gx01gCgSE8txZkcdb91D76bbQFlazwZ0YAbldyboJx/YOIeI
- HOq4KZ8Up5FIjJNAX/R2cqhrImZ96PzxqhszjfIAaR6VviL5zsDBudro1rPuzjIWdAKMG9MUfmX
- LUKSwpFmEKINxzqinTftl5ehDZD8HgvwJEgWJYejwzB3e4Wc7iu7yG2C6RAfoNFkVWLvZcjn2pk
- kLD2zy91gljC5u3i7rA==
-X-Proofpoint-ORIG-GUID: Br8cdDbATIPn8j0Ni7mGsCOUI35UO8m4
-X-Proofpoint-GUID: Br8cdDbATIPn8j0Ni7mGsCOUI35UO8m4
+ a=VkNPw1HP01LnGYTKEx00:22 a=u7WPNUs3qKkmUXheDGA7:22 a=yx91gb_oNiZeI1HMLzn7:22
+ a=pGLkceISAAAA:8 a=VZLprSz9q8ouOpHkf1EA:9 a=QEXdDO2ut3YA:10
+ a=hhpmQAJR8DioWGSBphRh:22
+X-Proofpoint-GUID: 8E5oP_kG12edeUmJ4ntl5uaabbA_iYUF
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwOTIxMDIxMCBTYWx0ZWRfX1JLhHVXqvtO2
+ u4KhhXlaWA4Q/dp9IZt/1OVsyUyjguvLsy1QhSkMfFPr8TmPekGkBx8ozrH7QGVDmce7HrEob+U
+ 7y0xIHdTlqRGdx8lig5I4dLFndi715RPszcCAAcFMjelIMlz3JzvkYUEo6OnpNHKh/cFTCtxJri
+ p0f0vWJSRbp37c0jfB7W3UrED4H/8Zx7xICfQ/QxzxblNQ2ZtfmE/oIFi1URncOY8mbycmsp3Uo
+ rp9msfmydD5gy2Fd0QSEdREqEqV2wiawZvsvXVfKw4hiaMVIjCCNE9nkvriuWIOSxKoomgtzywJ
+ dfN6/TjUavnCNB9NvgV6RgHsmwmWr48WVbtewmHWAWmeAtqHIWbQn2x9+cJI32xCpO6G+07BHdY
+ jy2uo41HDdLd96BrRoUWRVKxcyJtE/+cESaZkf2x1UkNTchefT9D/NHiioyDZw4+9bXe9YacyW5
+ y/d4gjTP1U7KOC1E8Zg==
+X-Proofpoint-ORIG-GUID: 8E5oP_kG12edeUmJ4ntl5uaabbA_iYUF
 X-Proofpoint-Virus-Version: vendor=baseguard
  engine=ICAP:2.0.293,Aquarius:18.0.1176,Hydra:6.1.134,FMLib:17.12.100.49
  definitions=2026-09-21_04,2026-09-21_02,2025-10-01_01
 X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
- spamscore=0 lowpriorityscore=0 phishscore=0 clxscore=1015 bulkscore=0
- priorityscore=1501 suspectscore=0 adultscore=0 impostorscore=0 malwarescore=0
+ priorityscore=1501 spamscore=0 malwarescore=0 suspectscore=0 clxscore=1015
+ impostorscore=0 adultscore=0 lowpriorityscore=0 phishscore=0 bulkscore=0
  classifier=typeunknown authscore=0 authtc= authcc= route=outbound adjust=0
- reason=mlx scancount=1 engine=8.22.0-2609040000 definitions=main-2609210207
-Received-SPF: pass client-ip=205.220.168.131;
- envelope-from=philmd@oss.qualcomm.com; helo=mx0a-0031df01.pphosted.com
+ reason=mlx scancount=1 engine=8.22.0-2609040000 definitions=main-2609210210
+Received-SPF: pass client-ip=205.220.180.131;
+ envelope-from=philmd@oss.qualcomm.com; helo=mx0b-0031df01.pphosted.com
 X-Spam_score_int: -27
 X-Spam_score: -2.8
 X-Spam_bar: --
@@ -184,51 +184,39 @@ Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
 On 2026-09-18 2:42, Yonggang Luo wrote:
-> Name guest trap numbers SH4_EXCP_* in cpu.h. TCG loop codes such as
-> EXCP_INTERRUPT start at 0x10000. Translate illegal and FPU-disable
-> through gen_helper_raise_excp. Drop unused raise_* TCG helpers and
-> the one-line raise_exception wrapper. Keep leftover sleep, trapa,
-> and exclusive helpers. Exit unaligned and tlb_fill through
-> cpu_loop_exit_excp. Log reset, manual reset, TLB multiple, and
-> user break.
+> Store yield_needed = 0 when raising YIELD, then call
+> gen_helper_raise_excp with restore 0. Drop TCG exception. Keep
+> exception_cause helpers. C callers use xtensa_exception for the
+> old helper_exception body.
 > 
 > Signed-off-by: Yonggang Luo <luoyonggang@gmail.com>
 > ---
->   target/sh4/cpu.h       | 24 +++++++++++++
->   target/sh4/helper.c    | 82 +++++++++++++++++++++---------------------
->   target/sh4/helper.h    |  4 ---
->   target/sh4/op_helper.c | 43 +++-------------------
->   target/sh4/translate.c | 17 ++++++---
->   5 files changed, 84 insertions(+), 86 deletions(-)
+>   target/xtensa/cpu.h        |  1 +
+>   target/xtensa/exc_helper.c | 13 +++++--------
+>   target/xtensa/helper.h     |  1 -
+>   target/xtensa/translate.c  |  7 ++++++-
+>   target/xtensa/win_helper.c | 12 ++++++------
+>   5 files changed, 18 insertions(+), 16 deletions(-)
 
 
-> +/*
-> + * Guest trap numbers in cs->exception_index. TCG loop codes such as
-> + * EXCP_INTERRUPT start at 0x10000 in cpu-common.h and do not overlap these.
+> diff --git a/target/xtensa/translate.c b/target/xtensa/translate.c
+> index 175fd4b5cfc..58fbe8496aa 100644
+> --- a/target/xtensa/translate.c
+> +++ b/target/xtensa/translate.c
+> @@ -305,7 +305,12 @@ static void gen_left_shift_sar(DisasContext *dc, TCGv_i32 sa)
+>   
+>   static void gen_exception(DisasContext *dc, int excp)
+>   {
+> -    gen_helper_exception(tcg_env, tcg_constant_i32(excp));
+> +    if (excp == EXCP_YIELD) {
+> +        tcg_gen_st_i32(tcg_constant_i32(0), tcg_env,
+> +                       offsetof(CPUXtensaState, yield_needed));
 
-Again this is the definition of outer loop QEMU exceptions versus
-per-target inner loop ones. No need to mention it each time.
+This is the single call, rename as gen_yield() dropping the if
+in a preliminary patch? Otherwise patch LGTM.
 
-> + */
-> +enum {
-> +    SH4_EXCP_RESET = 0x000,
-> +    SH4_EXCP_MANUAL_RESET = 0x020,
-> +    SH4_EXCP_TLB_MISS = 0x040,
-> +    SH4_EXCP_DTLB_MISS_WRITE = 0x060,
-> +    SH4_EXCP_INITIAL_PAGE_WRITE = 0x080,
-> +    SH4_EXCP_TLB_VIOLATION = 0x0a0,
-> +    SH4_EXCP_DTLB_VIOLATION_WRITE = 0x0c0,
-> +    SH4_EXCP_ADDR_ERROR = 0x0e0,
-> +    SH4_EXCP_DATA_WRITE = 0x100,
-> +    SH4_EXCP_FPU = 0x120,
-> +    SH4_EXCP_TLB_MULTIPLE = 0x140,
-> +    SH4_EXCP_TRAPA = 0x160,
-> +    SH4_EXCP_ILLEGAL_INSTRUCTION = 0x180,
-> +    SH4_EXCP_SLOT_ILLEGAL_INSTRUCTION = 0x1a0,
-> +    SH4_EXCP_USER_BREAK = 0x1e0,
-> +    SH4_EXCP_FPU_DISABLE = 0x800,
-> +    SH4_EXCP_SLOT_FPU_DISABLE = 0x820,
-> +};
-
-LGTM as a separate patch adding definitions.
+> +    }
+> +    gen_helper_raise_excp(tcg_env, tcg_constant_i32(excp),
+> +                         tcg_constant_i32(0));
+>   }
 

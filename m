@@ -4,62 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D3F0BC982EE
-	for <qemu-arm@archiver.kernel.org>; Mon, 21 Sep 2026 12:42:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6FEBCC982EE
+	for <qemu-arm@archiver.kernel.org>; Mon, 21 Sep 2026 12:42:33 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1x8dGm-0000zn-1T; Mon, 21 Sep 2026 08:37:16 -0400
+	id 1x8dIA-0002cq-RR; Mon, 21 Sep 2026 08:38:47 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <khushit.shah@nutanix.com>)
- id 1x8dEL-00074y-TJ; Mon, 21 Sep 2026 08:34:53 -0400
-Received: from mx0a-002c1b01.pphosted.com ([148.163.151.68])
+ id 1x8dDp-0006xM-9J; Mon, 21 Sep 2026 08:34:24 -0400
+Received: from mx0b-002c1b01.pphosted.com ([148.163.155.12])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <khushit.shah@nutanix.com>)
- id 1x8dEH-0002G8-5G; Mon, 21 Sep 2026 08:34:43 -0400
-Received: from pps.filterd (m0127838.ppops.net [127.0.0.1])
- by mx0a-002c1b01.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id
- 68LAhVsQ932497; Mon, 21 Sep 2026 05:34:14 -0700
+ id 1x8dDk-0002B1-KX; Mon, 21 Sep 2026 08:34:12 -0400
+Received: from pps.filterd (m0127841.ppops.net [127.0.0.1])
+ by mx0b-002c1b01.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id
+ 68LAflUE774316; Mon, 21 Sep 2026 05:33:38 -0700
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=nutanix.com; h=
  cc:content-transfer-encoding:content-type:date:from:in-reply-to
  :message-id:mime-version:references:subject:to; s=
- proofpoint20171006; bh=YfEjphQHkNCktjX6nbNJOFYkfjYMribhezkOvwlAn
- tM=; b=X7RZELc4+hYES9rDJA1Qqbe5xuBYQ9YYnaSwQLnGqXK3jHSsySsm6SEQm
- toOm0bFLo+dxi35wiPscOj8IPWakY9tGeRFYJ0AubHt7c1c4W9RdbtFx0ZwpkzqK
- /poQOqwO6tAEuGCr4AD42rRqq2m3/Zzavt5kWJssb1P1TT0hD8fnqw/k6rvsnBlb
- 4KRum9bqTSEYJIJE9hrmOmCBLCpyhMwBhInJNv9RWe+tt5cPP56exm4IayXxIqPC
- eNVke9vSh+v6/i5k+CvaXdIpX3x3+gnrimKsI39Rwu2LPfXqicRdWbb3zePUjsQW
- CPmBpgOH8VU5tgi080QyhnQ1TfkOg==
-Received: from byapr05cu005.outbound.protection.outlook.com
- (mail-westusazon11020141.outbound.protection.outlook.com [52.101.85.141])
- by mx0a-002c1b01.pphosted.com (PPS) with ESMTPS id 4gssxwkcar-1
+ proofpoint20171006; bh=bEwf85cLdgg/8fSzwCvjaNjstIyJ4mCyPz9i6LIJD
+ Io=; b=ncPmbJDdr4tDv84UU3Taan+X+m+9F2x+wo8cXaArZZM2l0/Yoh0ovwSwY
+ qcbc/uAwKQiEJ6ox3DGrCuIRKqOMGGoWOwtQMyXQaKvnGOkaglXUYqaZS1vHojrW
+ 5ZefFhT6EUXBKykdRD+zmMfmRadJM+TOJH2FuY0a2og9Z3FimbG/zbL11mAso014
+ 7df3kUjwb8bNJ7fCxCe326y8gBZyeJsvvqZSI+ubaZpZD11knCEmRng9tH+8YH5y
+ 76tueVbJl6D2CsF62zzSg/kL2BCzGrfkwNLk/Y1Si5+hgs/AhrzZIz3cG4TLq25i
+ 5Me0js6eU8fADn1EASW7/bl+NjxJw==
+Received: from bn8pr05cu002.outbound.protection.outlook.com
+ (mail-eastus2azon11021115.outbound.protection.outlook.com [52.101.57.115])
+ by mx0b-002c1b01.pphosted.com (PPS) with ESMTPS id 4gsqx831cb-1
  (version=TLSv1.3 cipher=TLS_AES_256_GCM_SHA384 bits=256 verify=NOT);
- Mon, 21 Sep 2026 05:34:14 -0700 (PDT)
+ Mon, 21 Sep 2026 05:33:38 -0700 (PDT)
 ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=LaTs6iVaLqin9EenjRcrxw016JoqgrmJeY1iEvwVlWwFGRcf9YAtICbmmq8Mi+LT5bY2LSYy7tvQAtSJDDnyB4YWlGGkN4F5ecjglKRtVPftI0lU0bMYcbY+fmMdlNbqAAK7F7//qYwMKBkuAZzFa74LGj4bqqmUM7b91djJZYdf+/flt8/Y+Z3j1M0mKVFmFt7uT5SPR84EngeGB9wx4P2kmoz8FmQamN7zYjSrj8FT1yUbIv/xYWsrTq1YwlATtcng5fSkDHneuKzSiNqnNO6Ky0uZ6wMGri7eLH13We2QJ1LYB6NxUpXpRy/hXGTSgjif0otWCQIjFMczMeahww==
+ b=vq76R/AJAidAKlO7kpzPr2mEGq7dlkDo2KqEQoqa8HYlduMAnJlPjAiToJMrjoQc87npWPGAUH0pl6yw7Ea2WEggPU8UkVcxsytczoSrNQH6gx50n0bpdxuDXLrerKdwHJV8F7T0i2qZIjj00rheAh/vU1yWHEaDRGcVTemJq/8EqIZeRdKjWkTayOrcT1N1Bc1Kukgs25fmr6RPpldnVN9M88hceLbzKyGYiCb7n6ByWqcIYNWGnTYIP4VR1crem4MNRcsEmcwa1wQ+hG5w3gElO5Ku3PxooV19uPkhFdLomnydkqW+57Bp+D0rKQGLkjcIKJRoz14kOu68e0nWlw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
  s=arcselector10001;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=YfEjphQHkNCktjX6nbNJOFYkfjYMribhezkOvwlAntM=;
- b=jChp6Uzvmvq+xMyV7fJ5UYq8GcmZwpyt06Ch1e/oO+nV0qM4Lwbrkxk17xbkkA+3wiwXF7u09Xx2AZIX4Hb26BCV9PR9Ff5ojZSnYr0xTqSRlJBEY/KrtJvfHC/XEez/bjNKI9z0x1Ikq5cz29dbQNR7s9BlvnW04gCqOecrZH1rlUobWVF1sqWR20EWNUDRmJLg0Wt1L63/r770nYGd5qHDslAhx4pjtFt2n/hsdw11Douim1Hjqake2CepBqCqTJ0Tiyy3d/AGgULJ+5YIqFareCvQPsjTuFdsRFVKkb52NMwOhukBWud4MWs1iwvGvRt03jxKcblL/Z884jb/8w==
+ bh=bEwf85cLdgg/8fSzwCvjaNjstIyJ4mCyPz9i6LIJDIo=;
+ b=l3Y+8W/P62AMU3IjJW4Ru4WapxvGkgExwygUBkqgBZzoA/wq5KDizb29xqUrm1Uf3t8sD7I1jE9jrCH+jiJkv2wyrcak6HlFDZRty4nW8YkxunhyTmP8GsgVUmVaNCQDSepxHwufSq57woF6Af3J46ZMoZmt26Xq/XKLLxYMqIwWw6nngzuiqW1u7RvxrFtTWYNnbXSP6RqvYoKNVOqGR1xEd6p1XxTIsCtgUT+sN7804P4YYjKZ6zMujphOv4oQkpRzsevA1Hu830M9Kac64+BQQIyazo2DhBe5La8dIW9O1S+UtjStfJFGOSxT0J67qU6pS/LE53a65XiRDh1G7A==
 ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
  smtp.mailfrom=nutanix.com; dmarc=pass action=none header.from=nutanix.com;
  dkim=pass header.d=nutanix.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=nutanix.com;
  s=selector1;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=YfEjphQHkNCktjX6nbNJOFYkfjYMribhezkOvwlAntM=;
- b=GLNyUPG/mUWxW6TQ4L0G6F8JeoE2EriCjlMl9go/CQ5iL6tjr4cRsC/nL2qRGr1ZJFcgAsPZmryXd9Mmxh7PZSOppcZHMRetCDlY4lHbdDdaB1sHsFkqCNnZ8sEzzf5iY5lRPqL3MiQclxYmF+yWS3lxdEfpch/b3XXKskmxNi1NdNDMcG+BlwVyg4qpoTapIiG6EPISfzFKRypjbPIQ8ok1efngvPH/3OtEVs8dfmBiKUKakRlSh5q1VLtyoC1YmsbvRmORXW9N+dfqZLGG0Pz7zFyor7ZdooFiG8DDzL3XTAZ2aotnIrINceJQLmn2IHasuPIh12AqYRPyc4Sl/w==
+ bh=bEwf85cLdgg/8fSzwCvjaNjstIyJ4mCyPz9i6LIJDIo=;
+ b=dmlh+mcV+53fTA8BZsFiZF9b1Ph5wWftLaXHrHGSUN647o0XTCQL9/wn4K5huQYlRHEGSfo7i2W6GyLQ+AKTTOo1z4j/mXQGC6Z4PYg0LQCAffOimI41PweR2DYXrDRchBFvOzUSAnuAfeDre15VIxwgyYQSa4g712UwmMd6Pw3sOOSz17qPj59izWjQ62IvJdwTVg5snEQ+crKOA6lDk+A6NrSwJydacAzDFvVNKeyM9dLmiXLAirRTKZgKvEVbdwV3n6pOAum0aJZ8ql+2I5w/vSWjzt0zKLNbXIbkqrGGdLHGCmnUKvkiQ1Y+7TiCiqsTlS1ne6ufEtLNtRP87g==
 Received: from SA2PR02MB7564.namprd02.prod.outlook.com (2603:10b6:806:146::23)
  by SJ0PR02MB7534.namprd02.prod.outlook.com (2603:10b6:a03:320::21)
  with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.21.428.13; Mon, 21 Sep
- 2026 12:33:27 +0000
+ 2026 12:33:28 +0000
 Received: from SA2PR02MB7564.namprd02.prod.outlook.com
  ([fe80::1ea5:acb6:ebe1:e1c4]) by SA2PR02MB7564.namprd02.prod.outlook.com
  ([fe80::1ea5:acb6:ebe1:e1c4%5]) with mapi id 15.21.0428.015; Mon, 21 Sep 2026
- 12:33:27 +0000
+ 12:33:28 +0000
 From: Khushit Shah <khushit.shah@nutanix.com>
 To: qemu-devel@nongnu.org, qemu-arm@nongnu.org, kvmarm@lists.linux.dev,
  eric.auger@redhat.com
@@ -70,10 +70,10 @@ Cc: cohuck@redhat.com, peter.maydell@linaro.org, richard.henderson@linaro.org,
  philmd@linaro.org, yangjinqian1@huawei.com, shaju.abraham@nutanix.com,
  mark.caveayland@nutanix.com, khushit.shah@nutanix.com,
  ping@khushitshah.com, sandesh.patel@nutanix.com
-Subject: [RFC PATCH v4 07/25] target/arm/kvm: process ID register writeback
- per field
-Date: Mon, 21 Sep 2026 12:32:31 +0000
-Message-ID: <20260921123249.1708067-8-khushit.shah@nutanix.com>
+Subject: [RFC PATCH v4 08/25] target/arm/kvm: handle writeback for special ID
+ register fields
+Date: Mon, 21 Sep 2026 12:32:32 +0000
+Message-ID: <20260921123249.1708067-9-khushit.shah@nutanix.com>
 X-Mailer: git-send-email 2.43.7
 In-Reply-To: <20260921123249.1708067-1-khushit.shah@nutanix.com>
 References: <20260921123249.1708067-1-khushit.shah@nutanix.com>
@@ -85,84 +85,84 @@ X-ClientProxiedBy: PH1PEPF0001330D.namprd07.prod.outlook.com
 MIME-Version: 1.0
 X-MS-PublicTrafficType: Email
 X-MS-TrafficTypeDiagnostic: SA2PR02MB7564:EE_|SJ0PR02MB7534:EE_
-X-MS-Office365-Filtering-Correlation-Id: 41651d95-b4cb-4056-8317-08df17dc88fd
+X-MS-Office365-Filtering-Correlation-Id: d0b50886-48c2-4e13-d705-08df17dc897a
 x-proofpoint-crosstenant: true
 X-MS-Exchange-SenderADCheck: 1
 X-MS-Exchange-AntiSpam-Relay: 0
 X-Microsoft-Antispam: BCL:0;
  ARA:13230040|376014|23010399003|1800799024|7416014|366016|56012099006|6133799003|18002099003|22082099003|10067099003;
-X-Microsoft-Antispam-Message-Info: Yi/wV0WVJQy30718bU+CDy2Y0HwwhP1tlvXCB71XIS9pL9fgR898H2OenYJI7DKVSQ4F3vmJo3ZqJuAnh8iEglXPCXoB1SDTRifLMCSj2bQQ1lMcl2r+21K5cWUmTQZBfhzbLC+80WeVpgsCxa4y4mzJzzMXADZkSFz42rXs5yRHkld6izlSlnKqHqxhmXF+l+mFheVsQcmtM1rFjfYAhG7T1VhGVjb2LjV8MdmlpmOCdKDpExQNbJY77CvFfo+w000NA4436UO6w8BmiHM6WHOfiDBvHL6FQgmfJE0bSOwND4fAoUuT8ZWRPTKYEvZoPZfiI7hlPJhvtw8T6KNWSJYi2n4FrMKQ7VMDeQkjmqGIiE5wvHqjV9Mq//votR/TwwWWXM+LJY+4wdgRvF9BgkZ5mfOIzstwD9Lt7tgOkMzdRomuUq11D8DsaYWoaRHY2rdKBN/fUJTZRKB/qeYY5x4RU1kJlqXlNHrhRGCgijvuqPYEI32oSflTTG1yCYMBZaCyi2UR8kkdV2+wrd0ddozy+0JrfszJQvmlWop+Ymp42BxBcR5urzJmQjjJeVstc8F4J6xB1cxaiAxt9+bfEoo4Eg8hP9FByHgm2xknjKLYqbNPdt4cGyDFd3UkylSvO5NaySio6eWs1gkKaoAQ/vlym6P9iUd5FjnTeID7oZE=
+X-Microsoft-Antispam-Message-Info: gfo0x9GqntiN+E6i5j3wqNTj1Du2JbqAJvggHGLUKNMDmpy2s6e9kLXdmCjH7tOpL5hPE7Lb15lq6xjMGDXhiMFz/he442UYiniM68Bugdy29K751VCA2X11uDYYnJrbtyoyA5C9DVmovAEi1xiR0dIHPVj9vl4Nv9Lv933+n96bE6TB9woUzYdzf0vn550qOn/z3egXIhJ6Bz5rycWxcCmbHMRJwFkNT06Ra+IZY4SFQBRHJqp50Wacd2c/15j/eDIIz8AJApznmkY1S4uQat9O2d8OpUkpSfLUwDS8CQc8sgMtf/LIoRZBamhpYCb/qjDQyqjs6QE3Bj8aUliBhw7JNr9RgEwgOS4X9ZIRfnod/vgFJcMv1pfUaUeMFuZiqPQUBsOdGNvwwy3D51XlLa6m81tBU40rChQ1I7z66Qcg9DqQxPYAWYlmssB9YN6o5MVjXYb4OMnNwzUP1MSiBf/2IzM4cWPnP/+XlMl3RIQHg1h5OFXArVwnqZjMGjBh/zSbfaCmpa/naCF2nYTNV320wsYi0i7eZ+kGopuWsVH47iZcbql1XuoO50Fmb6e26DjuxysEao/8TWkWKbpHN+TlTMIzcM9PYcjYR5EWouzB3F9oqeg7YL77UXQd2PY7zzkkmQMK+FgyoMLWkXPMgmzqilxlLK9ujliXgapG0vw=
 X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
  IPV:NLI; SFV:NSPM; H:SA2PR02MB7564.namprd02.prod.outlook.com; PTR:; CAT:NONE;
  SFS:(13230040)(376014)(23010399003)(1800799024)(7416014)(366016)(56012099006)(6133799003)(18002099003)(22082099003)(10067099003);
  DIR:OUT; SFP:1102; 
 X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?mD4/xphMCCec3drJrpEf9msIILaCzNFmkksQRzJH6hZYOqRO2Q3nsWa2PSbO?=
- =?us-ascii?Q?4QMntwU4Cd00tRvzBkogTdw10qlPJi9FE8cVLhpeo1Zye+/8ES5JMaJYzbG6?=
- =?us-ascii?Q?01oS/1vjuN6G9LdMrUSE27cRmxoZLBRNFLFmRwPGZHqAqNR3U9jl38H4HrJn?=
- =?us-ascii?Q?5wDQ9YQKbvYMxBwZeB+71ZXrMK3wU2RuDzgCFdzWJmI9YLOxHC+KyhpX2FiR?=
- =?us-ascii?Q?emQ+gnmMJHBdzPqLop3Lf8xzdUQne+5Ip/9cmC0++812VaTx2IhUhS5XwJAW?=
- =?us-ascii?Q?b6LOArTL/wJO4KWZvyA95EE3Tp7MESu2EY+eiEKLo85w38l9sSSfe7kIsCUb?=
- =?us-ascii?Q?JMomg0jrjtTxDqgmLIOoPcX+ftSDGdy5vQdSq30WnF4ynwyxo6sJtAGq0p+w?=
- =?us-ascii?Q?S+22jk/e+dKgUf/4fvodNg/Ojc7eJjxTYkbR/lKja21QbfUmrguQ3P5Q5JNa?=
- =?us-ascii?Q?9M5gNHlMO41gIelzPZ5A+gobIVq96knfQMKOAdGOOePsAMfxYu/DFl6UliOv?=
- =?us-ascii?Q?BIDBbG3GZymxQWd5ugDY+KmnZ5aYeYAKS294hOGtL07wqlfhKJj7CoqHJSwt?=
- =?us-ascii?Q?I6FsMvDaJjmIVDWnv4vg3YKS7Ytn/oUgBZQoRP2Y1vQQydYBCF8LTOZfIads?=
- =?us-ascii?Q?MWsegmp5xdQ6l8FDYxfKTQT6R9qADhnfJ9utl+fUtsHrFqIFouqIxhRXzBvo?=
- =?us-ascii?Q?Pd9aZQGaFFQVw8p7Dvo+v6ZKpkYR329+IenU1mJJGg1oB9B52lmgmdOV53T3?=
- =?us-ascii?Q?8AOXm63P76B7eeUkHT5ZfkzzAFB72Jb2r3pZ3HyDNmedk2w+DkHPYtzO2wVI?=
- =?us-ascii?Q?FSruaUBCUufGI7UqpqiF99QwiHOSINpVlxovl5TCE/m0ojfC/aKnjpXnWSCu?=
- =?us-ascii?Q?CM4+L3B10H1Fgo/TH0ppelbbLIG2k9ASukDHCcwY4BntR99HFVoLqaj+eZIh?=
- =?us-ascii?Q?YEqAr7Rbjm0x/Nqqt5Dz364Iwr020sfCNfA03pen0h5mYWjpQtLK1oisNvOe?=
- =?us-ascii?Q?k/btATQSabhrQ8ip2Zd7GpdMBmkFhM+U9df0qGzZJUy+uK26O2L4b+++KQQR?=
- =?us-ascii?Q?eSy2ISq4E1UOYNVU6T0bLyVVKB6ugSkSb/etgbxUe5hCDyy0vz23QGewAc0V?=
- =?us-ascii?Q?h/Z6BXF0/MXkcE+RkRinuPhXuDv1Zc1bD66aiJtF8gK+49jHa1GSbrvKqdX0?=
- =?us-ascii?Q?bZCmZo8Mq/J5Nx0xlRYjb+dqpgfXE6ygwabbARnS33b3BBQepymlF7vUVC17?=
- =?us-ascii?Q?ewXSjOmIf1A1oqfOxB/IZevWZ/PWaNnNibenVRrj4t4ueDqaQGJCcl/8q4G0?=
- =?us-ascii?Q?Mga94n0AM+QlUsBSaq8xBtnrQwdxfZ50inErc81sElunXGN3vg01dYUzPz/l?=
- =?us-ascii?Q?l5fQwob0CJ/2d0Yw/B8kpwLkyopOhjWgMp7Oh1f/G+x8KWOQ7+QWizCjclGc?=
- =?us-ascii?Q?NrrcSFyZDgClT05e/eCSv498tJyqB3jpcujHI5MI+fEse8YQpxwOewcBxqfx?=
- =?us-ascii?Q?4Bt6xnOsfLt29aseavuHic/F8KtPpXJnwvfCIOZ/bkJ45PVXpbS1GFUZiT+S?=
- =?us-ascii?Q?ddccqI486yWCkcxiJxw5U8/MZBFzSfJsUW9jGoK9TEA4oS98Sj9jnLwC37vv?=
- =?us-ascii?Q?BMqhi9SeInTI77luYSu1+zahxeIOuUjPiu+WrM71IIMWev7Cj9/PK2jsgFnV?=
- =?us-ascii?Q?DizMcz8OhnmjIIXaW5qt1OJYGiFZvXSH+zyaR+ofzqpHVYU/l91lA/3fdHYI?=
- =?us-ascii?Q?CAV0YFc8QW0QBGVeKLhKelbxWabPYio=3D?=
-X-Exchange-RoutingPolicyChecked: P8LVcd4y0TqddbxgAbgobMidL1BTQ1KSIx2Mpqk/k32ESI1ASAkb7pJkeqFRDIJbYnOisAY3GeL+afKm6lJKRhO61gZC1vOpIvlVGOC3o+IenXY+B1NfVIv12xmnDNoWfUS+eipNFtNw6cNKdw2yS9wYQ+sBhL0rfMOTA0tG+HiGdFpJAPFWZot348CgJqd4cIVZ58aTgmKTWFJ+ROsmJjQdxqmkBoWrol+X/qIcB0UOjRFCdh5x+CJ1oRgNTb3A0H68r/pAwbRlEENtrA7tx6iaWVf/RbC04fmI+f7Of2nihfarIm784gP9nTKU+e3ZQY7nLOinqyBpPMtJV/M4xg==
+X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?oN12NpMDx3jN1+0ayOV8JuoJUoGfFeCPXOOaA02iWrEwdsHRbiWKHE561EsL?=
+ =?us-ascii?Q?CdT+gW7rDyzVL0fw0Ey1J0wntZuSMbBellNTvdLRDUJBEJ0lhfXxzTOKye0p?=
+ =?us-ascii?Q?LZ2ZNMv+zmoFeWXugDlMFth81ivCOYLQ5wSV9IizVr7ef3R78p0NBX6J/A/2?=
+ =?us-ascii?Q?oiZG/yah1L/+yT2rY186eTJlEJh2tIgkmIxIliUP/ai9Zs/x/yWWRYe4AliS?=
+ =?us-ascii?Q?IYYezyPfZVDzgUy6wMRN+avZG7QGdDZPe8cQCcoTYGN4F7xWhaHnCnnmO4nm?=
+ =?us-ascii?Q?MUAj/EQLc1ho6IYapSHWTgorbjrZZaxwRxVobMGebTkdvrcaffiHWqXj7CGD?=
+ =?us-ascii?Q?nW//zQbRsdOlGF9t88tPmMO0mKrMAK/hgfUo+lQzvqBojIXRDklt/djRWK5j?=
+ =?us-ascii?Q?+aEMJao+XUBREuJe1iDWgW92jr3N8buyd5f6o1sym7A3xCk3VgpbJN0ze++4?=
+ =?us-ascii?Q?X/GpOo4sr7w+gvDKY3eSwX8Qhm0dBzNAgo+VfJDmou3nR2pYgRrPWLr8kljz?=
+ =?us-ascii?Q?IDHER+S3lQP+nKrsbthqPLMOnzE50Ux01mQK9qVtdQbgJ5Kk92caNDWNfelQ?=
+ =?us-ascii?Q?//oadsJhu1ORHhzxGNrW91htUejI46fiKfHoLZm36/sB/tff/3XnJqnRhWf2?=
+ =?us-ascii?Q?rXhaYQbfsCKZNW079lyNozwuD/CtMnNLF84wZ9E8kDBPADn8jym6eChkUBf4?=
+ =?us-ascii?Q?3wdtUiBEAxSbDr4bZsispCTsv8fNV6x49M5U6uYCOuwGkr6JJSQMSHoKGqnQ?=
+ =?us-ascii?Q?XYtNrzwh2LOw5kSn/itw0oepuhCser+bJPe+HxOmIoVYFOmBEHMXcERH+vIa?=
+ =?us-ascii?Q?K1J0B0X+nP4kmcFWtCIdTtTiluGd5OnHDPfgV3GsI71qcvR7y3lzgR+LvYCa?=
+ =?us-ascii?Q?jU4u1ckSMdFS91mJKK+19pmcqQ9/WWMt6dbZ+yp+Jr2yqvmt2Yj/M80Mx0jO?=
+ =?us-ascii?Q?Ydria6r/lhf4SBAX/oGK1OgdvsF0wkGKPIhJPcO05kM5l2D8QFw2xxSmFkSN?=
+ =?us-ascii?Q?0VSpmOKmHKGQyFrhKe9CdgJXp2fvJYh3emKkPEJ4Q/IdzPjEUOnWq7kYYKAk?=
+ =?us-ascii?Q?/dZN2V5M0gzb5I96zPIOJUzjQIaXaaCQv0lghrGO9PgbMqUHIx45YpzKKU5F?=
+ =?us-ascii?Q?oZkxPmm6M/cBMJEZMAHLJAqq1F//ik/VR8gRixRs+k41O+SJZA7b5exmIot7?=
+ =?us-ascii?Q?16cZQLr/QXGGsIaDsisi+e2GekSn/JYVNtSsqmwk/OVM7qzGchgmMgIpBUEE?=
+ =?us-ascii?Q?B0DKjWHZQVPEM+S+MckXTiVkgh50FpHmmqwES20V/6txLZJBF+uMs1daOKrQ?=
+ =?us-ascii?Q?YDdHuKH7GAM9FJOzhMat/ErCw70+L2ckC1lIwM7npsBCL33+vTb1jU/tfM92?=
+ =?us-ascii?Q?Ikxm3UX/Rn0KLjbDT13rs/cL2eW+XMWsundckxNrDnPhfCQMRSMMOUYW280z?=
+ =?us-ascii?Q?3dDK0uY9UI8hcTbvgEUdCxN5O/iXR+DVQ6TWebN3pVvAtCO9RmzabKum++Ko?=
+ =?us-ascii?Q?ENsdEQ0+CPJkBoRMqTalbwWXVgVablTPK0itc3b2mlPS3soIECQyc5SrlbVi?=
+ =?us-ascii?Q?8KWFt/HVZghTFvV+x8UgN6gu8ADkTUxurPpwKZw77Akz0PRXa0MZw0F9967s?=
+ =?us-ascii?Q?l2ZDqoGF7Mm/LvvT45il76fSOOHwhwgwTY2EIxsUv2DThzUW0Dr8A9Zjjn/o?=
+ =?us-ascii?Q?br0yaHbTZtsy6YY9YnLgcxkcxe73mz16ypit8qGhHgyamRLMHH2ZFwmz4GcD?=
+ =?us-ascii?Q?81dNhYEdD2H2Lvq4R8g8ymw+eutZ8cc=3D?=
+X-Exchange-RoutingPolicyChecked: Fu5Jt1ZjfEBCWWr+MOg+iBTHgyWh5yVqbjg+J6eD20l1IW9BAzWtc04X5JUKF+g1rIYpudrV51lGfBdETvZoHHVHEdPRpzwq9PzmyFkOLBwKRh3OckNIp87+5j0eJgFeaBotlXluSVDlHQloJi+YldJZa0l/hjL2oJZGgIKbcqqMoJcxwdkj+SbfQ+FDmJrMfnUTtQQ5zlkWI2qS5XuQ5jdvzV2OGQqmHwIIfy14jfsgwg/ouPlCFHxez9WU6A2h9U1qjW1rF6V9vw0VrTtzLHV/FNzqK/hbpFYQcX/olDV7iyYg0sfJXrmrdLdxy0BwlrctSBkF0S+7QXTGSubrFg==
 X-OriginatorOrg: nutanix.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 41651d95-b4cb-4056-8317-08df17dc88fd
+X-MS-Exchange-CrossTenant-Network-Message-Id: d0b50886-48c2-4e13-d705-08df17dc897a
 X-MS-Exchange-CrossTenant-AuthSource: SA2PR02MB7564.namprd02.prod.outlook.com
 X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 21 Sep 2026 12:33:26.9639 (UTC)
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 21 Sep 2026 12:33:27.7840 (UTC)
 X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
 X-MS-Exchange-CrossTenant-Id: bb047546-786f-4de1-bd75-24e5b6f79043
 X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: cozRyLA7OvjiVjfD6Gcimbvf768W8Wo8pqWvhaIimSGYpbUN/H6mhMu0IOH/cb8E/8nSShGugeu2eaVALhP400Y8hnNfI62NH796S1VaGUY=
+X-MS-Exchange-CrossTenant-UserPrincipalName: rMoh8RZ2ya7HQhDGX3pC+HtCRaXGWwdFAMJStdJz/JEnTFi7Mraj/cjhOpPSFZ47ETv6Y3tGvHNj4upflbyMTRmEPbRg+djkVliPzTRB6Mc=
 X-MS-Exchange-Transport-CrossTenantHeadersStamped: SJ0PR02MB7534
-X-Proofpoint-Spam-Info: AW1haW4tMjYwOTIxMDE4MiBTYWx0ZWRfX9N0O93oDmRXT
- SYg6qdcUIEcWeeLu9blO9mKvushF3gwgiUu99BVw4zx/HCbGZ9FSyPGuCShVyBz/WDQAK6DpJ5e
- Ssz248OfQp/jpIX3By2H7nOsJdU+AU4=
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwOTIxMDE4MiBTYWx0ZWRfX6MFlMqP1eTN9
- F4Il4IWU2axWqL7RYvS1Kr5pGn6I5f8QKlpXuW/ACdL5Rv9tWQo5paP5oStuLJ2XKlmuAuAX5LB
- 9Fl6FJE/OK93SjQBmttHva1UKID5NT0LXlEDo3shoVtPaSiIcs4pUv4xRYF1/6OhMHM0cTQfWje
- l2X7ILvws8XLIPQ5yl6pYATKD6KkGSpWs6rmPeDS/sD9ph9bceYmT7Ue5hKo7ikBimjPsmR1imP
- fq27coK/mODjCKNUNTjuIw43AR2z81HK8gIzZAgbxvzUCPHC2xhZLQhPWuyjn6LfFrFB+wUYmzm
- McO/le6jVY73Izy9LEat1G26f/Chka5YJKbjdcdWb7UVAFw+iHOZp0kzG9N6jwGdDTPOyxg3nlJ
- ZwG7arxh6SmQnlMOuFM/e4U/RKOVZ5SfvtaEZ6HFEWYaC7EYlOzDj3BBQ3CP/4/eM+ZVXQ+LKk0
- DSfnDo5H0FgrlKD/1hA==
-X-Proofpoint-ORIG-GUID: OgeCy8lc17gy3FS5PTa4K0XX8qibiEa7
-X-Proofpoint-GUID: OgeCy8lc17gy3FS5PTa4K0XX8qibiEa7
-X-Authority-Analysis: v=2.4 cv=fphJ914f c=1 sm=1 tr=0 ts=6ab12446 cx=c_pps
- a=g/OBtAqTw1pRpVLcEUWRsQ==:117 a=6eWqkTHjU83fiwn7nKZWdM+Sl24=:19
+X-Authority-Analysis: v=2.4 cv=KInPn1Fo c=1 sm=1 tr=0 ts=6ab12422 cx=c_pps
+ a=jYOLmuRG9FCngycrw98U6Q==:117 a=6eWqkTHjU83fiwn7nKZWdM+Sl24=:19
  a=z/mQ4Ysz8XfWz/Q5cLBRGdckG28=:19 a=lCpzRmAYbLLaTzLvsPZ7Mbvzbb8=:19
  a=xqWC_Br6kY4A:10 a=VdqzKS8jKosA:10 a=0kUYKlekyDsA:10
- a=VkNPw1HP01LnGYTKEx00:22 a=VofLwUrZ8Iiv6rRUPXIb:22 a=1L6crL_YRTbalZ11mEUO:22
- a=64Cc0HZtAAAA:8 a=PhR9yq4GYvPAogIgPbwA:9
+ a=VkNPw1HP01LnGYTKEx00:22 a=VofLwUrZ8Iiv6rRUPXIb:22 a=jxMXjlTPpCISP5mWtjnE:22
+ a=64Cc0HZtAAAA:8 a=NWnzACZMv7LnZDDXeWAA:9
+X-Proofpoint-ORIG-GUID: rS0XlGshGD7nbYllEcKsoVHGh8jVFVPP
+X-Proofpoint-Spam-Info: AW1haW4tMjYwOTIxMDE4MiBTYWx0ZWRfX5ELvkGtiZG1x
+ nUmxoPxmTCsy6s4SM9KRh8qJHpJDmmgfOH1jSwJFB34dNAIgmhKn7h5CLJeVgeRAkvvhMXLzqdw
+ Nvu/g+mhAW+JjHcuJgjDzGMOd/DUmuU=
+X-Proofpoint-GUID: rS0XlGshGD7nbYllEcKsoVHGh8jVFVPP
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwOTIxMDE4MiBTYWx0ZWRfX9FsVAr+I2Loe
+ /wxbGULs3bxd2DIVEaUxT1XyrTVfq6pB96SQ/cAaOPAcjQySAbxUqeJtNcx/JJmw80fqsUJLKaZ
+ KxqiB0vtqY0abAofUS3kOalYanDeZnjUF+NrF5AQPVg9XxjPAslUJfq6pdHXl4GcI07OKELa0P6
+ qDXY3D39KXzRdlwqI3U0bR93GU9KXHcX5Al5/i9lDhNj0RLPJUYazCxB0I97JLNu41i/UhcTChU
+ 3IO2EezSkvOgqxF0kh9inWW+rkG9HaYDmc+3uZUWQjzzmsWOYPxcCZjNuRJPTax2izBGh9oEYAc
+ ASQ2u3+Vk5e6CNLr1/+n3RcC2W1UE4X6AOqrfzc7V47McfnctVQu/U0zXh1joGapzhK+tFVMlwh
+ nWq+n99yksdC3cTfAutz24TxSk6ew1d7yru2ygIjF0LBFXgelISYlKBO7x6iPsRWtf/JXcMATh2
+ xWBmXkSsVttPVX/GvNA==
 X-Proofpoint-Virus-Version: vendor=baseguard
  engine=ICAP:2.0.293,Aquarius:18.0.1176,Hydra:6.1.134,FMLib:17.12.100.49
  definitions=2026-09-21_04,2026-09-16_02,2025-10-01_01
 X-Proofpoint-Spam-Reason: safe
-Received-SPF: pass client-ip=148.163.151.68;
- envelope-from=khushit.shah@nutanix.com; helo=mx0a-002c1b01.pphosted.com
+Received-SPF: pass client-ip=148.163.155.12;
+ envelope-from=khushit.shah@nutanix.com; helo=mx0b-002c1b01.pphosted.com
 X-Spam_score_int: -27
 X-Spam_score: -2.8
 X-Spam_bar: --
@@ -185,195 +185,110 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Now that all ID register fields are exposed as properties, refactor
-kvm_arm_writable_idregs_to_cpreg_list() as
-kvm_arm_write_idregs_to_cpreg_list() and process each field
-individually. kvm_arm_writable_idregs_to_cpreg_list() assumed that
-only writable fields were exposed as SYSREG_ properties.
-
-Copy only fields advertised as writable by KVM instead of replacing the
-whole register. For registers absent from the KVM cpreg list, compare
-the requested value against the host value captured during probing.
-
-Return an error when a non-writable field differs from the host value,
-failing vCPU init.
+Some fields should not be written back to KVM for various reasons:
+ - ID_AA64PFR0_EL1.GIC / ID_PFR1_EL1.GIC are fabricated by KVM based on
+   the gic-version property.
+ - KVM does not allow writing 0 to ID_DFR0_EL1.CopDbg, which breaks
+   booting an AArch64-only guest on a host that also supports AArch32.
+ - ID_DFR0_EL1.PerfMon is populated by KVM even for AArch64-only guests
+   but is not writable there.
+ - MPIDR_EL1 is managed by KVM based on vCPU index.
+ - Hold off writing back CLIDR_EL1 until we properly support exposing
+   cache topology to a KVM guest.
 
 Signed-off-by: Khushit Shah <khushit.shah@nutanix.com>
 ---
- target/arm/cpu-idregs.c | 13 +++++++
+ target/arm/cpu-idregs.c |  6 ++++++
  target/arm/cpu-idregs.h |  2 ++
- target/arm/kvm.c        | 79 +++++++++++++++++++++++++++++++++--------
- target/arm/trace-events |  2 +-
- 4 files changed, 80 insertions(+), 16 deletions(-)
+ target/arm/kvm.c        | 40 +++++++++++++++++++++++++++++++++++++++-
+ 3 files changed, 47 insertions(+), 1 deletion(-)
 
 diff --git a/target/arm/cpu-idregs.c b/target/arm/cpu-idregs.c
-index 199d593153..d58b8ed063 100644
+index d58b8ed063..1f7ebfe9bb 100644
 --- a/target/arm/cpu-idregs.c
 +++ b/target/arm/cpu-idregs.c
-@@ -7,6 +7,7 @@
-  *  SPDX-License-Identifier: GPL-2.0-or-later
-  */
- #include "qemu/osdep.h"
-+#include "qemu/bitops.h"
- #include "qemu/error-report.h"
- #include "qapi/error.h"
- #include "cpu.h"
-@@ -94,3 +95,15 @@ ARM64SysReg arm64_id_regs[NUM_ID_IDX] = {
- #include "cpu-idregs.h.inc"
- };
- 
-+uint64_t arm_get_field_mask(const ARM64SysRegField *field)
-+{
-+    return MAKE_64BIT_MASK(field->shift, field->length);
-+}
+@@ -107,3 +107,9 @@ bool arm_field_is_writable(const ARM64SysRegField *field)
+     return (arm64_id_regs[field->index].writable_mask & field_mask)
+            == field_mask;
+ }
 +
-+bool arm_field_is_writable(const ARM64SysRegField *field)
++bool field_matches(const ARM64SysRegField *field, ARMIDRegisterIdx index,
++                   const char *name)
 +{
-+    uint64_t field_mask = arm_get_field_mask(field);
-+
-+    return (arm64_id_regs[field->index].writable_mask & field_mask)
-+           == field_mask;
++    return field->index == index && !strcmp(field->name, name);
 +}
 diff --git a/target/arm/cpu-idregs.h b/target/arm/cpu-idregs.h
-index 98c7a7518f..aab1a79db1 100644
+index aab1a79db1..8ef3f9350e 100644
 --- a/target/arm/cpu-idregs.h
 +++ b/target/arm/cpu-idregs.h
-@@ -33,4 +33,6 @@ typedef struct ARM64SysReg {
-  */
- extern ARM64SysReg arm64_id_regs[NUM_ID_IDX];
+@@ -35,4 +35,6 @@ extern ARM64SysReg arm64_id_regs[NUM_ID_IDX];
  
-+uint64_t arm_get_field_mask(const ARM64SysRegField *field);
-+bool arm_field_is_writable(const ARM64SysRegField *field);
+ uint64_t arm_get_field_mask(const ARM64SysRegField *field);
+ bool arm_field_is_writable(const ARM64SysRegField *field);
++bool field_matches(const ARM64SysRegField *field, ARMIDRegisterIdx index,
++                   const char *name);
  #endif
 diff --git a/target/arm/kvm.c b/target/arm/kvm.c
-index 07df6626d4..2d94b3a884 100644
+index 2d94b3a884..70d9a07580 100644
 --- a/target/arm/kvm.c
 +++ b/target/arm/kvm.c
-@@ -1006,6 +1006,16 @@ static uint64_t *kvm_arm_get_cpreg_ptr(ARMCPU *cpu, uint64_t regidx)
-     return &cpu->cpreg_values[res - cpu->cpreg_indexes];
+@@ -1317,10 +1317,40 @@ bool kvm_arm_cpu_post_load(ARMCPU *cpu)
+     return true;
  }
  
-+/* Like kvm_arm_get_cpreg_ptr, but returns NULL if the register is not found. */
-+static uint64_t *kvm_arm_find_cpreg_ptr(ARMCPU *cpu, uint64_t regidx)
++static bool arm_field_skip_writeback_always(const ARM64SysRegField *field)
 +{
-+    uint64_t *res;
-+    res = bsearch(&regidx, cpu->cpreg_indexes, cpu->cpreg_array_len,
-+                  sizeof(uint64_t), compare_u64);
-+
-+    return res ? &cpu->cpreg_values[res - cpu->cpreg_indexes] : NULL;
++    /*
++     * GIC is controlled by the gic-version property and fabricated by KVM
++     * when the vGIC device is created, so a named CPU model must not touch
++     * it. KVM also rejects writing 0 to ID_DFR0_EL1.CopDbg, which breaks
++     * booting a model that lacks AArch32 support on a host that supports
++     * it. MPIDR_EL1 is managed by KVM based on vCPU index, skip writing it
++     * back. Similarly, skip writing back CLIDR_EL1 till we properly
++     * support exposing cache for KVM guest.
++     */
++    return field_matches(field, ID_AA64PFR0_EL1_IDX, "GIC")
++        || field_matches(field, ID_PFR1_EL1_IDX, "GIC")
++        || field_matches(field, ID_DFR0_EL1_IDX, "CopDbg")
++        || field->index == MPIDR_EL1_IDX
++        || field->index == CLIDR_EL1_IDX;
 +}
 +
- /**
-  * kvm_arm_reg_syncs_via_cpreg_list:
-  * @regidx: KVM register index
-@@ -1308,31 +1318,67 @@ bool kvm_arm_cpu_post_load(ARMCPU *cpu)
- }
- 
++static bool
++arm_field_skip_writeback_if_not_writable(const ARM64SysRegField *field)
++{
++    /*
++     * KVM populates ID_DFR0_EL1.PerfMon even for AArch64-only guests but
++     * does not expose it as writable there, so skip it when it is not
++     * writable.
++     */
++    return field_matches(field, ID_DFR0_EL1_IDX, "PerfMon");
++}
++
  /*
-- * Copy writable ID regs from isar.idregs[] to cpreg_list
-- * in case their value differs from the original init cpreg value
-+ * Copy writable ID reg fields from isar.idregs[] into the KVM cpreg list,
-+ * so the subsequent write_list_to_kvmstate() pushes them to KVM.
-+ * Only writable fields are copied.
-+ * Returns -1 if any vCPU's ID reg value differs from the host value and the
-+ * field is not writable.
+  * Copy writable ID reg fields from isar.idregs[] into the KVM cpreg list,
+  * so the subsequent write_list_to_kvmstate() pushes them to KVM.
+- * Only writable fields are copied.
++ * Only writable fields are copied; fields that must not be written back
++ * (see arm_field_skip_writeback_*) are skipped.
+  * Returns -1 if any vCPU's ID reg value differs from the host value and the
+  * field is not writable.
   */
--static void kvm_arm_writable_idregs_to_cpreg_list(ARMCPU *cpu)
-+static int kvm_arm_write_idregs_to_cpreg_list(ARMCPU *cpu)
- {
-     for (int i = 0; i < NUM_ID_IDX; i++) {
-         ARM64SysReg *sysregdesc = &arm64_id_regs[i];
-         ARMSysRegs sysreg = id_register_sysreg[i];
--        uint64_t previous, new;
-+        uint64_t writable_mask = sysregdesc->writable_mask;
-+        uint64_t desired = cpu->isar.idregs[i];
-+        uint64_t previous, updated;
-         uint64_t *cpreg;
+@@ -1357,6 +1387,14 @@ static int kvm_arm_write_idregs_to_cpreg_list(ARMCPU *cpu)
+                 continue;
+             }
  
--        if (!sysregdesc->writable_mask) {
-+        cpreg = kvm_arm_find_cpreg_ptr(cpu, idregs_sysreg_to_kvm_reg(sysreg));
-+        /*
-+         * Registers such as DCZID_EL0 are not exposed through the cpreg
-+         * list and are therefore not writable. Use the host value
-+         * snapshotted at probe time as the reference to check the vCPU ID
-+         * regs have the same value.
-+         */
-+        previous = cpreg ? *cpreg : arm_host_cpu_features.isar.idregs[i];
-+
-+        if (previous == desired) {
-             continue;
-         }
- 
--        cpreg = kvm_arm_get_cpreg_ptr(cpu, idregs_sysreg_to_kvm_reg(sysreg));
--        previous = *cpreg;
--        new = cpu->isar.idregs[i];
-+        for (int j = 0; j < sysregdesc->fields_count; j++) {
-+            const ARM64SysRegField *field = &sysregdesc->fields[j];
-+            uint64_t field_mask = arm_get_field_mask(field);
-+            uint64_t prev_val = previous & field_mask;
-+            uint64_t new_val = desired & field_mask;
-+
-+            if (prev_val == new_val) {
++            if (arm_field_skip_writeback_always(field) ||
++                (!arm_field_is_writable(field) &&
++                 arm_field_skip_writeback_if_not_writable(field))) {
++                /* Never write this field back; keep KVM's value. */
++                writable_mask &= ~field_mask;
 +                continue;
 +            }
 +
-+            if (!arm_field_is_writable(field)) {
-+                error_report("%s.%s is not writable: host=0x%" PRIx64
-+                             ", requested=0x%" PRIx64,
-+                             sysregdesc->name, field->name,
-+                             prev_val >> field->shift, new_val >> field->shift);
-+                return -1;
-+            }
-+        }
-+
-+        if (!cpreg || !writable_mask) {
-+            continue;
-+        }
- 
--        if (previous != new) {
--            *cpreg = new;
--            trace_kvm_arm_writable_idregs_to_cpreg_list(sysregdesc->name,
--                                                        previous, new);
--         }
-+        updated = (previous & ~writable_mask) | (desired & writable_mask);
-+        if (updated != previous) {
-+            *cpreg = updated;
-+            trace_kvm_arm_write_idregs_to_cpreg_list(sysregdesc->name,
-+                                                        previous, updated);
-+        }
-     }
-+
-+    return 0;
- }
- 
- void kvm_arm_reset_vcpu(ARMCPU *cpu)
-@@ -2293,8 +2339,11 @@ int kvm_arch_init_vcpu(CPUState *cs)
-     if (ret) {
-         return ret;
-     }
--    /* overwrite writable ID regs with their updated property values */
--    kvm_arm_writable_idregs_to_cpreg_list(cpu);
-+    /* overwrite ID reg fields with their updated property values */
-+    ret = kvm_arm_write_idregs_to_cpreg_list(cpu);
-+    if (ret) {
-+        return ret;
-+    }
-     ret = write_list_to_kvmstate(cpu, KVM_PUT_FULL_STATE);
-     if (!ret) {
-         return -1;
-diff --git a/target/arm/trace-events b/target/arm/trace-events
-index 2bb7766f7f..7b54e34ad9 100644
---- a/target/arm/trace-events
-+++ b/target/arm/trace-events
-@@ -15,7 +15,7 @@ arm_gt_update_irq(int timer, int irqstate) "gt_update_irq: timer %d irqstate %d"
- kvm_arm_fixup_msi_route(uint64_t iova, uint64_t gpa) "MSI iova = 0x%"PRIx64" is translated into 0x%"PRIx64
- get_host_cpu_idregs(const char *name, uint64_t value) "scratch vcpu host value for %s is 0x%"PRIx64
- get_host_cpu_idreg_not_found(const char *name) "host %s register not readable from KVM"
--kvm_arm_writable_idregs_to_cpreg_list(const char *name, uint64_t previous, uint64_t new) "%s overwrite default 0x%"PRIx64" with 0x%"PRIx64
-+kvm_arm_write_idregs_to_cpreg_list(const char *name, uint64_t previous, uint64_t new) "%s overwrite default 0x%"PRIx64" with 0x%"PRIx64
- kvm_idreg_write_scratch_vcpu(const char *name, uint64_t oldfv, uint64_t newfv, uint64_t actualfv) "successful dry-run for %s old=0x%"PRIx64" new=0x%"PRIx64" actual=0x%"PRIx64
- 
- # cpu64.c
+             if (!arm_field_is_writable(field)) {
+                 error_report("%s.%s is not writable: host=0x%" PRIx64
+                              ", requested=0x%" PRIx64,
 -- 
 2.52.0
 

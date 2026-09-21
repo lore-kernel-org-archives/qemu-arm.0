@@ -4,169 +4,92 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EDE70C982EE
-	for <qemu-arm@archiver.kernel.org>; Mon, 21 Sep 2026 14:18:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 67B5FC982E1
+	for <qemu-arm@archiver.kernel.org>; Mon, 21 Sep 2026 14:20:13 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1x8eq0-00064y-QP; Mon, 21 Sep 2026 10:17:44 -0400
+	id 1x8ers-0006e2-IQ; Mon, 21 Sep 2026 10:19:46 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@oss.qualcomm.com>)
- id 1x8epx-00063H-2h
- for qemu-arm@nongnu.org; Mon, 21 Sep 2026 10:17:42 -0400
-Received: from mx0a-0031df01.pphosted.com ([205.220.168.131])
+ (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
+ id 1x8erq-0006dW-5Q
+ for qemu-arm@nongnu.org; Mon, 21 Sep 2026 10:19:38 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@oss.qualcomm.com>)
- id 1x8epp-0007IE-4Y
- for qemu-arm@nongnu.org; Mon, 21 Sep 2026 10:17:39 -0400
-Received: from pps.filterd (m0279863.ppops.net [127.0.0.1])
- by mx0a-0031df01.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id
- 68LEGP5B1553104
- for <qemu-arm@nongnu.org>; Mon, 21 Sep 2026 14:17:31 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qualcomm.com; h=
- cc:content-transfer-encoding:content-type:date:from:in-reply-to
- :message-id:mime-version:references:subject:to; s=qcppdkim1; bh=
- 3HxZbZQjLmZVXy3qEmpYHWduMFhgbsbHCjhavpDN1Ho=; b=NJgyG9xWOYoGdrSN
- qWpBLdQvAcWEgaW4IkcorI0nkVdQ4XhdXf9trBoKO1EOX1UHLMM4tve+KtR3/9/L
- maL+/Ga6QNEvu+H3q/J8Oake9di//CgYc/0ufwuiQYN22ehSYXCuuzPR9kUi9M1S
- 6naZV3MEgCeumqNrawxADuafAH33lEO3uSbtXzle8CMPUBFu5Esv/dW78+UTPYKz
- PKUT7RgJFk3bHGARnsWsrJtb6sCGse5UXyifgOSQsYulc7yMeNLBM0Lm2XbutWLA
- XPdK4wRMq0DY7DG+x6ACWi6d+QZjo5b/ZxJSqcvgACj3FigNY22GVVmKSUXu7tj7
- Hfh1Ag==
-Received: from mail-vs1-f71.google.com (mail-vs1-f71.google.com
- [209.85.217.71])
- by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 4gu3csgr7d-1
- (version=TLSv1.3 cipher=TLS_AES_128_GCM_SHA256 bits=128 verify=NOT)
- for <qemu-arm@nongnu.org>; Mon, 21 Sep 2026 14:17:30 +0000 (GMT)
-Received: by mail-vs1-f71.google.com with SMTP id
- ada2fe7eead31-7a9378b844dso135890137.1
- for <qemu-arm@nongnu.org>; Mon, 21 Sep 2026 07:17:30 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=oss.qualcomm.com; s=google; t=1790000250; x=1790605050; darn=nongnu.org;
- h=content-transfer-encoding:content-type:in-reply-to:from
- :content-language:references:cc:to:subject:user-agent:mime-version
- :date:message-id:from:to:cc:subject:date:message-id:reply-to
- :content-type; bh=3HxZbZQjLmZVXy3qEmpYHWduMFhgbsbHCjhavpDN1Ho=;
- b=RWBJ8nIWn2C9hRv/8x9ALxWEdhWcoTTOHX3qVjnTwRoYGZ8f3Lo02qgY8K936p3BzQ
- GNWcoWBwJUDGmsn1TYWwpq58je7sNYdwnbuD0tA6hzvY8/yGZFMyOIoQBE7TvZgij2ku
- NAEMZ67WmAAhRnkgUaJ96R5tr/wXsskqPpQv1tPgOzwrSjkWqaAf/plsowxnJcsFxBrr
- 4+jCZn2Rj7zdrt/ON6C/Kb5kzFNen5Lz/AbPQWSn+CQA+bwwMSRlxJHNem5wNYfr0IUw
- k0Y5qPWNVnTdzBRhPrB4mv3oTCztSULI06Zuom0609gNerAEbLKKcxZlqW8Tqh2UQoyn
- aOxQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20260707; t=1790000250; x=1790605050;
- h=content-transfer-encoding:content-type:in-reply-to:from
- :content-language:references:cc:to:subject:user-agent:mime-version
- :date:message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
- :message-id:reply-to:content-type;
- bh=3HxZbZQjLmZVXy3qEmpYHWduMFhgbsbHCjhavpDN1Ho=;
- b=rBnWX2Zvyn7nPtbQPYVhHmsVrNMkjmQkUp70GwaJwAZjXN6QsRN9mgerhV704AckER
- Yj9k5+QcLx4j45D8xxNnrWnIf6BnIi/uLPpsU0kzNqnKxfI9G2TTvFGm5pfdEs0Q7sy0
- kWv5ca4XXIgU8x1nAmP25piTAM5wSHQmVe4MS4iEfuRwklVtstRdA730fVcS8OI6DNN2
- 24hfTVi6hE7WchXq5zVQHsogcCUD0wPsi6bxACuwkYFNV9Tf+yFw/h9xPnp1DIuhnhEP
- mkEbKK5QZrqCPFsfN5AQETJZQZowfTa32WFMTryv4GbkCVWgIfM+Tob5zhALAplLoQGn
- 1sAQ==
-X-Forwarded-Encrypted: i=1;
- AKwUvByYs3zxLa4IuiOtFhQ/Jm3n+jkJUdAFf2JT5jR5ioQYHfe5FGINEYg7bDph72zJP0EM6qDZfP1uyQ==@nongnu.org
-X-Gm-Message-State: AFuF++kMuyPlMI5ntA8+JrTrR1Uzt0Q6uiNHzhbO7+kU5Ae+2ZFkr6PT
- /TG7LheYlwAJ5fqBN4qN9zqQtjeQ5M0tBPRuEk1bdJuUjJ7xrb8FSvE3IQIWfP++dHwBDe5ex1Q
- BG4hqc6SNcXDHfz57v5EkZ7e376YziSpVP6kpmzp9+cr+3ilLEHDx5qg=
-X-Gm-Gg: AYBFou3rjAAzVIhMT5UqmadKQ3DuU1kltSvEjTs3tnZrxM3znlmYUzMb2JMjUvS9H/Z
- 5TzL98colhCt0K3LM2Vasi4zDJ46C8lQ6NzIPe4azqEDGeacmWF3/SI99Ia3wVx4sAHKRT0zRSb
- wsAkEQ5BdvUAJ1GrbVESWpr0vVfZqiSkWEKwQObn4j+dlzbI43zP33x+lI98xTO7PDo66VOmfX+
- leDQ/SNcHX1WNhPcF/NeRe+jbYp0bYh11L9XE3RoEiyt2mVsxv9pLv/F+Lvs+D9GKeNuNNrDltt
- ouRt3grXKhVc8/UWO/hH9enEphFjvebzz6dqj/vhnrOleWPixe+afxuo68xECkyZIe+KkJBRCe6
- oQBTzmkmvFab/gDyFe0U=
-X-Received: by 2002:a05:6102:290b:b0:7a2:2f60:b9d1 with SMTP id
- ada2fe7eead31-7a55af2df85mr4550092137.6.1790000249605; 
- Mon, 21 Sep 2026 07:17:29 -0700 (PDT)
-X-Received: by 2002:a05:6102:290b:b0:7a2:2f60:b9d1 with SMTP id
- ada2fe7eead31-7a55af2df85mr4549973137.6.1790000248972; 
- Mon, 21 Sep 2026 07:17:28 -0700 (PDT)
-Received: from [192.168.0.4] ([79.127.134.47])
- by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-49fcd03fe55sm271152925e9.2.2026.09.21.07.17.24
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 21 Sep 2026 07:17:28 -0700 (PDT)
-Message-ID: <11f647d4-48ab-4317-a352-7e1f0cb875e7@oss.qualcomm.com>
-Date: Mon, 21 Sep 2026 16:17:23 +0200
-MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 04/21] target/rx: convert raises to raise_excp
-To: Yonggang Luo <luoyonggang@gmail.com>, qemu-devel@nongnu.org
-Cc: Xianglai Li <lixianglai@loongson.cn>, qemu-s390x@nongnu.org,
- David Hildenbrand <david@kernel.org>,
- Richard Henderson <richard.henderson@linaro.org>, qemu-ppc@nongnu.org,
- Laurent Vivier <laurent@vivier.eu>, Yoshinori Sato
- <yoshinori.sato@nifty.com>, Nicholas Piggin <npiggin@gmail.com>,
- Jiaxun Yang <jiaxun.yang@flygoat.com>,
- Stafford Horne <shorne@gmail.com>, Weiwei Li <liwei1518@gmail.com>,
- Cornelia Huck <cohuck@redhat.com>,
- Daniel Henrique Barboza <daniel.barboza@oss.qualcomm.com>,
+ (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
+ id 1x8ern-0007O7-N1
+ for qemu-arm@nongnu.org; Mon, 21 Sep 2026 10:19:37 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1790000374;
+ h=from:from:reply-to:reply-to:subject:subject:date:date:
+ message-id:message-id:to:to:cc:cc:mime-version:mime-version:
+ content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=WpneFY3lkYdMhydebwCMWa7Bm/mBweRqZ3DjbGiiETs=;
+ b=LY1c07z5drItoxLtsI7s+nwr9GjGaUUCzC8CkNQc0soYOmxrFQTGPjSeJVkNoaPd+v4DAJ
+ tasemaFD9lRpiqO5xc0mmP+NmniGXgB1B1kuB7sTJQVqQDmtcFiHqB8ghNWywYZzyT1T7m
+ 9nM63zyDosNiAEtgApBYjI4HCL3+/Hc=
+Received: from mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
+ relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-349-BrfTrANDOqG3Hz8LpxEmqA-1; Mon,
+ 21 Sep 2026 10:19:30 -0400
+X-MC-Unique: BrfTrANDOqG3Hz8LpxEmqA-1
+X-Mimecast-MFC-AGG-ID: BrfTrANDOqG3Hz8LpxEmqA_1790000368
+Received: from mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com
+ (mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.17])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+ (No client certificate requested)
+ by mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 5D908184B393; Mon, 21 Sep 2026 14:19:26 +0000 (UTC)
+Received: from redhat.com (headnet03.pony-001.prod.iad2.dc.redhat.com
+ [10.2.32.114])
+ by mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 810D319539A7; Mon, 21 Sep 2026 14:19:19 +0000 (UTC)
+Date: Mon, 21 Sep 2026 15:19:16 +0100
+From: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
+To: Yonggang Luo <luoyonggang@gmail.com>
+Cc: qemu-devel@nongnu.org, Xianglai Li <lixianglai@loongson.cn>,
+ Weiwei Li <liwei1518@gmail.com>,
  Alistair Francis <alistair.francis@wdc.com>,
- Chinmay Rath <rathc@linux.ibm.com>,
- Harsh Prateek Bora <harshpb@linux.ibm.com>,
- "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
- Liu Zhiwei <zhiwei_liu@linux.alibaba.com>,
- Aleksandar Rikalo <arikalo@gmail.com>,
- Brian Cain <brian.cain@oss.qualcomm.com>,
- Artyom Tarasenko <atar4qemu@gmail.com>,
- Max Filippov <jcmvbkbc@gmail.com>, Eric Farman <farman@linux.ibm.com>,
+ Stafford Horne <shorne@gmail.com>, qemu-riscv@nongnu.org,
+ qemu-arm@nongnu.org, Jiaxun Yang <jiaxun.yang@flygoat.com>,
+ Zhao Liu <zhao1.liu@intel.com>, Brian Cain <brian.cain@oss.qualcomm.com>,
+ Laurent Vivier <laurent@vivier.eu>,
+ Peter Maydell <peter.maydell@linaro.org>,
  Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>,
- Michael Rolnik <mrolnik@gmail.com>,
- Aurelien Jarno <aurelien@aurel32.net>, qemu-arm@nongnu.org,
+ Paolo Bonzini <pbonzini@redhat.com>, Song Gao <17746591750@163.com>,
+ Daniel Henrique Barboza <daniel.barboza@oss.qualcomm.com>,
  Bibo Mao <maobibo@loongson.cn>, Chao Liu <chao.liu@processmission.com>,
- Ilya Leoshkevich <iii@linux.ibm.com>, Helge Deller <deller@gmx.de>,
- Glenn Miles <milesg@linux.ibm.com>, Zhao Liu <zhao1.liu@intel.com>,
+ Palmer Dabbelt <palmer@dabbelt.com>,
  Philippe Mathieu-Daude <philmd@mailo.com>,
- Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
- Paolo Bonzini <pbonzini@redhat.com>, Peter Maydell
- <peter.maydell@linaro.org>,
- Palmer Dabbelt <palmer@dabbelt.com>, qemu-riscv@nongnu.org,
- Song Gao <17746591750@163.com>, Matthew Rosato <mjrosato@linux.ibm.com>
-References: <20260918004225.827-1-luoyonggang@gmail.com>
- <20260918004225.827-5-luoyonggang@gmail.com>
-Content-Language: en-US
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@oss.qualcomm.com>
-In-Reply-To: <20260918004225.827-5-luoyonggang@gmail.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-X-Proofpoint-Spam-Info: AW1haW4tMjYwOTIxMDIwNyBTYWx0ZWRfXzdY0z92vne7C
- xHcG3SQUU2ms5tuUAirAYas19S7CtZU9juNwNZJ6J3qfoWyQZM23RDVELWhi4o9Mo9sYvLJZ/nZ
- Ih6A8P7Kckgv2Q/2BdLoCE9FiOCde28=
-X-Proofpoint-GUID: HeNxVrg0uut7HCOp0KVChLGe739RBF9G
-X-Authority-Analysis: v=2.4 cv=QovLTlyd c=1 sm=1 tr=0 ts=6ab13c7a cx=c_pps
- a=P2rfLEam3zuxRRdjJWA2cw==:117 a=btlkdZlGvBFwkIDmIYSHuA==:17
- a=IkcTkHD0fZMA:10 a=VdqzKS8jKosA:10 a=M51BFTxLslgA:10 a=s4-Qcg_JpJYA:10
- a=VkNPw1HP01LnGYTKEx00:22 a=u7WPNUs3qKkmUXheDGA7:22 a=yOCtJkima9RkubShWh1s:22
- a=pGLkceISAAAA:8 a=4KMk1FrjdjcQRVtnX3AA:9 a=QEXdDO2ut3YA:10
- a=ODZdjJIeia2B_SHc_B0f:22
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwOTIxMDIwNyBTYWx0ZWRfX5n5NeKh/nk+q
- TxllMelgXiDYhUnoxUD/9VcDhDFy81g04OKn0Tj+Q84CaR2X86d0Shpc67IGZVJtwer7//IthHo
- yNkz17OD6TY5TgQGEZmCoeLdkl/i8Mo3JoofQZJp8tniJC8R2vlBOEvzA0RqGfmjIMhEXjsmf4q
- R3fGWR7TYsfFJlQ6mC+bf4L5R+KrrywAMmVY4fDwsrUDoggPGuARnDezGNhVRojdy4K1QPLC9Fw
- kyGidPah430kyBhXapJDusfGdFGVSrhMOP7j5uKWg0FZhCrNlYuUQR+7pb84XlIs4vntFZ35cVT
- dhR7cXIaic6oyqrI5o8iHqr+pMeN7cy7r2Yks7Oqrq4O5w2RIkZNShZIvZoJQSARNUQSK/3r63Z
- KO5QfZeTvcz1Io8U1G9NUz/5bJ2AOHNW2kkJW7TJ7KhvWCr/CgkWKHZe8zJXqPlu5faJ33HTR8j
- P3+lBLIsRRUkXAQRDCw==
-X-Proofpoint-ORIG-GUID: HeNxVrg0uut7HCOp0KVChLGe739RBF9G
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.293,Aquarius:18.0.1176,Hydra:6.1.134,FMLib:17.12.100.49
- definitions=2026-09-21_04,2026-09-21_02,2025-10-01_01
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
- adultscore=0 suspectscore=0 bulkscore=0 impostorscore=0 priorityscore=1501
- spamscore=0 lowpriorityscore=0 phishscore=0 malwarescore=0 clxscore=1015
- classifier=typeunknown authscore=0 authtc= authcc= route=outbound adjust=0
- reason=mlx scancount=1 engine=8.22.0-2609040000 definitions=main-2609210207
-Received-SPF: pass client-ip=205.220.168.131;
- envelope-from=philmd@oss.qualcomm.com; helo=mx0a-0031df01.pphosted.com
-X-Spam_score_int: -27
-X-Spam_score: -2.8
+ Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@oss.qualcomm.com>,
+ Liu Zhiwei <zhiwei_liu@linux.alibaba.com>,
+ Max Filippov <jcmvbkbc@gmail.com>
+Subject: Re: [PATCH 1/8] machine: allow -M name to differ from QOM type
+Message-ID: <arE85G8MqlxMQQ7B@redhat.com>
+References: <20260918000640.1001-1-luoyonggang@gmail.com>
+ <20260918000640.1001-2-luoyonggang@gmail.com>
+MIME-Version: 1.0
+In-Reply-To: <20260918000640.1001-2-luoyonggang@gmail.com>
+User-Agent: Mutt/2.4.0 (2026-06-19)
+X-Scanned-By: MIMEDefang 3.0 on 10.30.177.17
+X-Mimecast-MFC-PROC-ID: oW4NrFFmfam_uGaD_fzB6NF_jWn490uPM0euvCXfdUE_1790000368
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=berrange@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, SPF_HELO_NONE=0.001,
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=0.001, SPF_HELO_PASS=-0.001,
  SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -180,50 +103,33 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Reply-To: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On 2026-09-18 2:42, Yonggang Luo wrote:
-> Name guest trap numbers RX_EXCP_* in cpu.h. TCG loop codes such as
-> EXCP_INTERRUPT start at 0x10000. Translate privilege, illegal, BRK,
-> and INT through gen_helper_raise_excp. Prefix leftover TCG wait as
-> rx_wait, and drop unused raise_access_fault and the one-line
-> raise_exception wrapper. FPSW still exits with RX_EXCP_ACCESS.
+On Fri, Sep 18, 2026 at 08:06:32AM +0800, Yonggang Luo wrote:
+> - Add machine_class_set_name() so boards can keep a stable -M name
+>   when the QOM type is uniquified. machine_class_base_init still
+>   defaults the name to the QOM type without -machine.
+> - Document that MachineClass::name is the -M name, not the QOM type.
+> - Sort -M help by MachineClass::name so order matches the printed names
+>   when QOM types are prefixed (arm-virt-11.1-machine vs virt-11.1).
 > 
 > Signed-off-by: Yonggang Luo <luoyonggang@gmail.com>
 > ---
->   target/rx/cpu.h       | 13 ++++++++++++
->   target/rx/helper.c    | 16 +++++++--------
->   target/rx/helper.h    |  7 +------
->   target/rx/op_helper.c | 46 +++----------------------------------------
->   target/rx/translate.c | 19 ++++++++++--------
->   5 files changed, 36 insertions(+), 65 deletions(-)
-> 
-> diff --git a/target/rx/cpu.h b/target/rx/cpu.h
-> index 64ba48a7329..233615c32dc 100644
-> --- a/target/rx/cpu.h
-> +++ b/target/rx/cpu.h
-> @@ -71,6 +71,19 @@ enum {
->       NUM_REGS = 16,
->   };
->   
-> +/*
-> + * Guest trap numbers in cs->exception_index. TCG loop codes such as
-> + * EXCP_INTERRUPT start at 0x10000 in cpu-common.h and do not overlap these.
+>  hw/core/machine.c        |  6 ++++++
+>  include/hw/core/boards.h | 12 +++++++++++-
+>  system/vl.c              |  8 +++-----
+>  3 files changed, 20 insertions(+), 6 deletions(-)
 
-The "TCG loop codes such as EXCP_INTERRUPT start at 0x10000 in
-cpu-common.h and do not overlap these." comment is generic, why
-mention it here?
+Reviewed-by: Daniel P. Berrangé <berrange@redhat.com>
 
-> + */
-> +enum {
-> +    RX_EXCP_PRIVILEGE_VIOLATION = 20,
-> +    RX_EXCP_ACCESS = 21,
-> +    RX_EXCP_ILLEGAL_INSTRUCTION = 23,
-> +    RX_EXCP_FPU = 25,
-> +    RX_EXCP_NMI = 30,
-> +    RX_EXCP_INT = 0x100,
-> +};
 
-Otherwise LGTM as a separate patch.
+With regards,
+Daniel
+-- 
+|: https://berrange.com       ~~        https://hachyderm.io/@berrange :|
+|: https://libvirt.org          ~~          https://entangle-photo.org :|
+|: https://pixelfed.art/berrange   ~~    https://fstop138.berrange.com :|
+
 

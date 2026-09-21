@@ -4,70 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1FC85C982E6
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C2D1BC98300
 	for <qemu-arm@archiver.kernel.org>; Mon, 21 Sep 2026 21:52:27 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1x8ls8-0006bn-GD; Mon, 21 Sep 2026 17:48:24 -0400
+	id 1x8lsR-000753-HW; Mon, 21 Sep 2026 17:48:43 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <shentey@gmail.com>) id 1x8ls3-0006ZB-If
- for qemu-arm@nongnu.org; Mon, 21 Sep 2026 17:48:19 -0400
-Received: from mail-wm2-x11.google.com ([2a00:1450:4864:31::11])
+ (Exim 4.90_1) (envelope-from <shentey@gmail.com>) id 1x8lsH-0006nC-G3
+ for qemu-arm@nongnu.org; Mon, 21 Sep 2026 17:48:33 -0400
+Received: from mail-wm2-x10.google.com ([2a00:1450:4864:31::10])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <shentey@gmail.com>) id 1x8ls1-0000NP-Kd
- for qemu-arm@nongnu.org; Mon, 21 Sep 2026 17:48:19 -0400
-Received: by mail-wm2-x11.google.com with SMTP id
- 5b1f17b1804b1-49e6c0fce17so18061165e9.1
- for <qemu-arm@nongnu.org>; Mon, 21 Sep 2026 14:48:07 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <shentey@gmail.com>) id 1x8lsF-0000RG-K2
+ for qemu-arm@nongnu.org; Mon, 21 Sep 2026 17:48:33 -0400
+Received: by mail-wm2-x10.google.com with SMTP id
+ 5b1f17b1804b1-49e66390995so18806755e9.2
+ for <qemu-arm@nongnu.org>; Mon, 21 Sep 2026 14:48:21 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20251104; t=1790027286; x=1790632086; darn=nongnu.org;
+ d=gmail.com; s=20251104; t=1790027300; x=1790632100; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to:content-type;
- bh=udnE1Xzwr+6h2Lqa8sxAr/SfW9vQwyUI9Hnuupon7OY=;
- b=goaxOlyr8QDSeeFbNfsV04mi58pUbidNQWbHLqt2Kfa8/jCWs+rsdHHvXSIP21gcyf
- mXKiLkNlpiMFnWSEnHLDlQe7hObUpHkqPpB2x2CjWTviBfuid+Dvb+hpfEoCmKSVWu9F
- uyZpzqVyl4j9Rme+nNaoBBpSobYVn5/b/gOq4yRu3h7NDUutRKlkhpV27QuNCoRpMb6s
- rur4FF/MuiT4/Nnl3ei8F/5sc3oCyUianiLjX8g2ec5QPiIwJYc6moGKv1aldeojBxwa
- kmCTke+zKaAL6aPDVM564OH19iKmiZEj83/dJLAZCYob48QLtB8/lgvTWzqtSuDObzzR
- n2xg==
+ bh=ePB1DF2TUK9i9t5dQ26XLD0b62VXCKx3HzGc+187TiQ=;
+ b=dourfVzG4oUyoHutr6CR3AOJR4jK9s4GU+zFA5dnCy1m5sy2af6vv9rJL1QaijMqtx
+ +0nmyz5RdCUZsVv2s2XNcXsNX4zKADoXgKJS7xnF2KvPq6omUBCj8nkfBNgt4X7pOGhG
+ QItZ7Yp8PCWsFI7qEzYiCpB259MNE1pTJ4vxsyubLrbFOW0MdDLJR18wZatwY8qbnrQB
+ P2Qzg0Tu0te3zniEpn1XcrzpWyE59gmDzqo+pPegZHE6QRQTSaVw95R5s8369Dv+xpE8
+ 1ac2oSCiGz8lNgmZFPufxWsKbIEKjW3mdDT2AjwR1TTSzlomWQLPrpQFvGnL4Hpr78Hd
+ HMhA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20260707; t=1790027286; x=1790632086;
+ d=1e100.net; s=20260707; t=1790027300; x=1790632100;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
  :to:cc:subject:date:message-id:reply-to:content-type;
- bh=udnE1Xzwr+6h2Lqa8sxAr/SfW9vQwyUI9Hnuupon7OY=;
- b=hkfmIXeD0rAfrkWrkMESgANF3In1vaosp1JHq0EX4BHpWsUy040HDaa6UK+wIjo+kV
- AOxD2LWW0UTjf3T1h/7GpYagVx2uFwTqcJ52+nLZgnpTxg52kVkrUIAZpXyQDdx2dU/S
- LYJsvDiJutTeC/DsboZ/B53vxLj3pAuoCcTf272vidoqRFdrGUmKm7X7+RC2lbhnGOnv
- cSNLwG1SulNWxJet5HV9Qc1tejyvMvQa39QqJC8Nf2dc1knodDIi5efe+jzG4s3YW86a
- EO3WD9ZAIdFz2PeqCeiwMojwJKoyZ7sbsder/CV7UR2ATMILDe8trZluatVNu5y9WCfB
- AMWQ==
+ bh=ePB1DF2TUK9i9t5dQ26XLD0b62VXCKx3HzGc+187TiQ=;
+ b=0mdkYX2nGriAhI2GZ7zl8molcjI3IpJh9JJxvHGfOmdvGVqZe2Ptn+hb0uf+jqtgIC
+ e5x2/zrYGiS+82SaAF23XATnUfAhsYEJeRGhg4QGUmKrK8CPd9jbfz+pXKLSbn7C2sPG
+ 5YMRr85+IZqb/1yLGTHBVZ6GP/k3Ii+lDfiKd4YYwKXqZekgYcw2E2o7Ifp7cHoxsEM3
+ 91DOh/PdeuORLAEXzir2jBecSWJ3pq0wWQTlHAr1z0YOtAu91BiRV0xdO46fVMlJV6iL
+ +LayoSwmTj/aNWRw6toQ3aFt7sliw/+haL7GVJkzhAN5/7ovlbgVQ5U5vbzRiESt3RiD
+ t3uA==
 X-Forwarded-Encrypted: i=1;
- AKwUvBy4LXtj+Kmd4GsIl8tw9QWpXIfm4PNJEztEEtbp3hZ9gH0k47bxSqn4mFGK6iIJuYE/I5fzSA9VZw==@nongnu.org
-X-Gm-Message-State: AFuF++lCwbCB/v5D6GnYj7WL9J2V2SZbtla1a1KzvBTaUZyKZfOtSSv/
- p5oZEvAkkAuqIH2Zq2puaVaLeKvQosyaYcQuoF+IhjD7t8t+DRxtmAc2
-X-Gm-Gg: AYBFou3wep+i0QFPtSRPNPillu9dxeKqA0PuJzIomppaL0lDHdCIHm6Am6z49y8WcyW
- QmckWrO4aZ9gV/r7zYu3XRMinS7JSJPH9mkRgEyOIvrStwNK15Y8ZYeMqfhpoOCo2bk7Tn/wA3W
- PYzOhW2EZFrT9l0walQngAonIcVueKcbOS4mkeIk9Djpj8s+UaiKlOJ5ZbGA9h67c4afBLHjebg
- HA4hHqWLX82CO+xbIpRGy3HOnoieyX3n96h2YeIqrZvDcMvTSQv0REx8m5N85HTzOUGi8Mz7dTs
- yLZ3/qgGI0IyNTuLDwsnf+uPkLmNFbqHWN8htRizHYZPJ2giI3i44dATw3P6tO4KFUzfbWXOpXz
- 4n1pvweo2aEyEUCg6c229as/oADRRKWo8ty/8XrzqpNOU86oXO1zTrdX8z1qn1lQ7P2zWb57hWp
- WFDXPB8KFbeUF+f560uKliC4ywIddhcUQinQF8k3+0XIGAViYFxWk22bxXARQBQBnWceCQaWbNX
- cY5p1o7HxWqWZ3QxgTd4+4G6Q6y0uwbVUwFqN9DUOdLis+GNVEovxzFr3oPNLLUI+2bSYuXuE6k
- Prw=
-X-Received: by 2002:a05:600c:3b0f:b0:49f:cbf1:e765 with SMTP id
- 5b1f17b1804b1-49fcbf1e936mr147738725e9.0.1790027286203; 
- Mon, 21 Sep 2026 14:48:06 -0700 (PDT)
+ AKwUvBy0//FqRk4wz2w6ry0QdgQRdoB7q1tUA+JUAMKXgEmZ9GWFI5fi4sExrYd0+7INfIzc/t/uxu973A==@nongnu.org
+X-Gm-Message-State: AFuF++loADuOTr3RDx11+u7eHliaRFDe+aVgPP+RXIWcyS2XQwqt6QEK
+ 9FA76WguxXBIjXfXcPH1fRPQQRYDSz9D+xykJe8G5pZkJcPoQXuPdngX
+X-Gm-Gg: AYBFou3RhODZI6XrR2PUp/mI5SdfpGf2mpgvyb5yZw2052PERrrvHfTrfka+c92VZcC
+ AVX+EAZbTycH8mxrNji/YgQXRiC/XnL6sRtPcq21c/Zf/XkG0Zb/CM6K+fbG5VwB411azXa584V
+ yqz9yVSphxpc8ehUiKxsuTrOC7Rp8EH32KM51bX5Frfyyps9h3KJFD+S1HeTu2a52PWgshzk3j0
+ RM15MHNY2bw0X0+Uf2XFMPWf9Z1u6xC5GnDYz/nOIPxElCbNbjCsG7aHrAOAxh2dhPx+56p0zNy
+ dXt/dG3HvFa6T6NtQQHpfuMql9ZWzdi4E5W76egecUO756BbQzxRJMjauWDdcIJGN/YRZCc/03W
+ PinlMC4QV5jqMEGWVe2xfVN68DIBrmNtZ1NJXu/B+SIF40ku7MngjNpu6o22xqhwH7waEBqLPle
+ rPSAQDyiiGWMO7SgfITqcQ9Uz4AijGYraehFRXj6UJNsiuN7tllF5Mez4C22vnGK0TdLD4gbRHu
+ kEEi1F20mEA8ySv30qAct7hogeInSXRbLsnbqd42yorW9AFogAT2N+TchIWTqMb5nfVAuRH65ls
+ u0w=
+X-Received: by 2002:a05:600c:354e:b0:49b:8f18:714a with SMTP id
+ 5b1f17b1804b1-49fc57226c9mr162987355e9.12.1790027300098; 
+ Mon, 21 Sep 2026 14:48:20 -0700 (PDT)
 Received: from Provence
  (dynamic-2a02-3100-1c91-bf00-0219-99ff-feb2-2458.310.pool.telefonica.de.
  [2a02:3100:1c91:bf00:219:99ff:feb2:2458])
  by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-49fda0ce29fsm4986905e9.6.2026.09.21.14.48.04
+ 5b1f17b1804b1-49fda0ce29fsm4986905e9.6.2026.09.21.14.48.18
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 21 Sep 2026 14:48:05 -0700 (PDT)
+ Mon, 21 Sep 2026 14:48:19 -0700 (PDT)
 From: Bernhard Beschow <shentey@gmail.com>
 To: qemu-devel@nongnu.org
 Cc: Phil Dennis-Jordan <phil@philjordan.eu>,
@@ -80,22 +80,24 @@ Cc: Phil Dennis-Jordan <phil@philjordan.eu>,
  Bernhard Beschow <shentey@gmail.com>,
  Jean-Christophe Dubois <jcd@tribudubois.net>,
  Gaurav Sharma <gaurav.sharma_7@nxp.com>
-Subject: [PATCH 30/42] Kconfig: Extract config IMX_SPI from config IMX
-Date: Mon, 21 Sep 2026 23:46:58 +0200
-Message-ID: <20260921214710.29422-31-shentey@gmail.com>
+Subject: [PATCH 40/42] hw/net/imx_fec: Trace with QOM path where easily
+ possible
+Date: Mon, 21 Sep 2026 23:47:08 +0200
+Message-ID: <20260921214710.29422-41-shentey@gmail.com>
 X-Mailer: git-send-email 2.55.0
 In-Reply-To: <20260921214710.29422-1-shentey@gmail.com>
 References: <20260921214710.29422-1-shentey@gmail.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:31::11;
- envelope-from=shentey@gmail.com; helo=mail-wm2-x11.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:31::10;
+ envelope-from=shentey@gmail.com; helo=mail-wm2-x10.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -111,99 +113,175 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Over time, QEMU has grown a number of i.MX boards and the monolithic
-config IMX drags in unneeded dependencies into each SoC model. Extract
-config IMX_SPI to eventually eliminate config IMX.
+Some i.MX SoCs have multiple i.MX network IP blocks. Allow to
+distinguish them via their QOM path when tracing.
 
 Signed-off-by: Bernhard Beschow <shentey@gmail.com>
 ---
- hw/arm/Kconfig     | 5 +++++
- hw/misc/Kconfig    | 1 -
- hw/ssi/Kconfig     | 4 ++++
- hw/ssi/meson.build | 2 +-
- 4 files changed, 10 insertions(+), 2 deletions(-)
+ hw/net/imx_fec.c    | 28 +++++++++++++++-------------
+ hw/net/trace-events | 24 ++++++++++++------------
+ 2 files changed, 27 insertions(+), 25 deletions(-)
 
-diff --git a/hw/arm/Kconfig b/hw/arm/Kconfig
-index 25eee42c52..3510e4a6d4 100644
---- a/hw/arm/Kconfig
-+++ b/hw/arm/Kconfig
-@@ -521,6 +521,7 @@ config FSL_IMX6
-     select IMX_FEC
-     select IMX_GPT
-     select IMX_I2C
-+    select IMX_SPI
-     select IMX_USBPHY
-     select CAN_FLEXCAN
-     select WDT_IMX2
-@@ -603,6 +604,7 @@ config FSL_IMX7
-     select IMX_GPCV2
-     select IMX_GPT
-     select IMX_I2C
-+    select IMX_SPI
-     select WDT_IMX2
-     select PCI_EXPRESS_DESIGNWARE
-     select SDHCI
-@@ -624,6 +626,7 @@ config FSL_IMX8MP
-     select IMX_FEC
-     select IMX_GPT
-     select IMX_I2C
-+    select IMX_SPI
-     select OR_IRQ
-     select PCI_EXPRESS_DESIGNWARE
-     select PCI_EXPRESS_FSL_IMX8M_PHY
-@@ -652,6 +655,7 @@ config FSL_IMX8MM
-     select IMX_FEC
-     select IMX_GPT
-     select IMX_I2C
-+    select IMX_SPI
-     select OR_IRQ
-     select SDHCI
-     select PCI_EXPRESS_DESIGNWARE
-@@ -697,6 +701,7 @@ config FSL_IMX6UL
-     select IMX_GPCV2
-     select IMX_GPT
-     select IMX_I2C
-+    select IMX_SPI
-     select IMX_USBPHY
-     select WDT_IMX2
-     select SDHCI
-diff --git a/hw/misc/Kconfig b/hw/misc/Kconfig
-index dbdef58505..ab238767b8 100644
---- a/hw/misc/Kconfig
-+++ b/hw/misc/Kconfig
-@@ -91,7 +91,6 @@ config ECCMEMCTL
+diff --git a/hw/net/imx_fec.c b/hw/net/imx_fec.c
+index c177b7ff2b..fb8bcd52d2 100644
+--- a/hw/net/imx_fec.c
++++ b/hw/net/imx_fec.c
+@@ -248,7 +248,7 @@ static uint32_t imx_phy_read(IMXFECState *s, int reg)
+         if (s->phy_consumer && phy == s->phy_consumer->phy_num) {
+             s = s->phy_consumer;
+         } else {
+-            trace_imx_phy_read_num(phy, s->phy_num);
++            trace_imx_phy_read_num(DEVICE(s)->canonical_path, phy, s->phy_num);
+             return 0xffff;
+         }
+     }
+@@ -270,7 +270,7 @@ static void imx_phy_write(IMXFECState *s, int reg, uint32_t val)
+         if (s->phy_consumer && phy == s->phy_consumer->phy_num) {
+             s = s->phy_consumer;
+         } else {
+-            trace_imx_phy_write_num(phy, s->phy_num);
++            trace_imx_phy_write_num(DEVICE(s)->canonical_path, phy, s->phy_num);
+             return;
+         }
+     }
+@@ -364,7 +364,7 @@ static void imx_fec_do_tx(IMXFECState *s)
+         if ((bd.flags & ENET_BD_R) == 0) {
  
- config IMX
-     bool
--    select SSI
+             /* Run out of descriptors to transmit.  */
+-            trace_imx_eth_tx_bd_busy();
++            trace_imx_eth_tx_bd_busy(DEVICE(s)->canonical_path);
  
- config IMX_CCM
-     bool
-diff --git a/hw/ssi/Kconfig b/hw/ssi/Kconfig
-index 1bd56463c1..d477d20e9b 100644
---- a/hw/ssi/Kconfig
-+++ b/hw/ssi/Kconfig
-@@ -32,3 +32,7 @@ config PNV_SPI
- config ALLWINNER_A10_SPI
-     bool
-     select SSI
-+
-+config IMX_SPI
-+    bool
-+    select SSI
-diff --git a/hw/ssi/meson.build b/hw/ssi/meson.build
-index 6afb1ea200..f334e48e2f 100644
---- a/hw/ssi/meson.build
-+++ b/hw/ssi/meson.build
-@@ -9,7 +9,7 @@ system_ss.add(when: 'CONFIG_STM32F2XX_SPI', if_true: files('stm32f2xx_spi.c'))
- system_ss.add(when: 'CONFIG_XILINX_SPI', if_true: files('xilinx_spi.c'))
- system_ss.add(when: 'CONFIG_XILINX_SPIPS', if_true: files('xilinx_spips.c'))
- system_ss.add(when: 'CONFIG_XLNX_VERSAL', if_true: files('xlnx-versal-ospi.c'))
--system_ss.add(when: 'CONFIG_IMX', if_true: files('imx_spi.c'))
-+system_ss.add(when: 'CONFIG_IMX_SPI', if_true: files('imx_spi.c'))
- system_ss.add(when: 'CONFIG_IBEX', if_true: files('ibex_spi_host.c'))
- system_ss.add(when: 'CONFIG_BCM2835_SPI', if_true: files('bcm2835_spi.c'))
- system_ss.add(when: 'CONFIG_PNV_SPI', if_true: files('pnv_spi.c'))
+             break;
+         }
+@@ -446,7 +446,7 @@ static void imx_enet_do_tx(IMXFECState *s, uint32_t index)
+         if ((bd.flags & ENET_BD_R) == 0) {
+             /* Run out of descriptors to transmit.  */
+ 
+-            trace_imx_eth_tx_bd_busy();
++            trace_imx_eth_tx_bd_busy(DEVICE(s)->canonical_path);
+ 
+             break;
+         }
+@@ -521,7 +521,7 @@ static void imx_eth_enable_rx(IMXFECState *s, bool flush)
+     s->regs[ENET_RDAR] = (bd.flags & ENET_BD_E) ? ENET_RDAR_RDAR : 0;
+ 
+     if (!s->regs[ENET_RDAR]) {
+-        trace_imx_eth_rx_bd_full();
++        trace_imx_eth_rx_bd_full(DEVICE(s)->canonical_path);
+     } else if (flush) {
+         qemu_flush_queued_packets(qemu_get_queue(s->nic));
+     }
+@@ -659,7 +659,8 @@ static uint64_t imx_eth_read(void *opaque, hwaddr offset, unsigned size)
+         break;
+     }
+ 
+-    trace_imx_eth_read(index, imx_eth_reg_name(s, index), value);
++    trace_imx_eth_read(DEVICE(s)->canonical_path, index,
++                       imx_eth_reg_name(s, index), value);
+ 
+     return value;
+ }
+@@ -767,7 +768,8 @@ static void imx_eth_write(void *opaque, hwaddr offset, uint64_t value,
+     const bool single_tx_ring = !imx_eth_is_multi_tx_ring(s);
+     uint32_t index = offset >> 2;
+ 
+-    trace_imx_eth_write(index, imx_eth_reg_name(s, index), value);
++    trace_imx_eth_write(DEVICE(s)->canonical_path, index,
++                        imx_eth_reg_name(s, index), value);
+ 
+     switch (index) {
+     case ENET_EIR:
+@@ -951,7 +953,7 @@ static ssize_t imx_fec_receive(NetClientState *nc, const uint8_t *buf,
+     unsigned int buf_len;
+     size_t size = len;
+ 
+-    trace_imx_fec_receive(size);
++    trace_imx_fec_receive(DEVICE(s)->canonical_path, size);
+ 
+     if (!s->regs[ENET_RDAR]) {
+         qemu_log_mask(LOG_GUEST_ERROR, "[%s]%s: Unexpected packet\n",
+@@ -993,7 +995,7 @@ static ssize_t imx_fec_receive(NetClientState *nc, const uint8_t *buf,
+         bd.length = buf_len;
+         size -= buf_len;
+ 
+-        trace_imx_fec_receive_len(addr, bd.length);
++        trace_imx_fec_receive_len(DEVICE(s)->canonical_path, addr, bd.length);
+ 
+         /* The last 4 bytes are the CRC.  */
+         if (size < 4) {
+@@ -1013,7 +1015,7 @@ static ssize_t imx_fec_receive(NetClientState *nc, const uint8_t *buf,
+             /* Last buffer in frame.  */
+             bd.flags |= flags | ENET_BD_L;
+ 
+-            trace_imx_fec_receive_last(bd.flags);
++            trace_imx_fec_receive_last(DEVICE(s)->canonical_path, bd.flags);
+ 
+             s->regs[ENET_EIR] |= ENET_INT_RXF;
+         } else {
+@@ -1047,7 +1049,7 @@ static ssize_t imx_enet_receive(NetClientState *nc, const uint8_t *buf,
+     size_t size = len;
+     bool shift16 = s->regs[ENET_RACC] & ENET_RACC_SHIFT16;
+ 
+-    trace_imx_enet_receive(size);
++    trace_imx_enet_receive(DEVICE(s)->canonical_path, size);
+ 
+     if (!s->regs[ENET_RDAR]) {
+         qemu_log_mask(LOG_GUEST_ERROR, "[%s]%s: Unexpected packet\n",
+@@ -1093,7 +1095,7 @@ static ssize_t imx_enet_receive(NetClientState *nc, const uint8_t *buf,
+         bd.length = buf_len;
+         size -= buf_len;
+ 
+-        trace_imx_enet_receive_len(addr, bd.length);
++        trace_imx_enet_receive_len(DEVICE(s)->canonical_path, addr, bd.length);
+ 
+         /* The last 4 bytes are the CRC.  */
+         if (size < 4) {
+@@ -1131,7 +1133,7 @@ static ssize_t imx_enet_receive(NetClientState *nc, const uint8_t *buf,
+             /* Last buffer in frame.  */
+             bd.flags |= flags | ENET_BD_L;
+ 
+-            trace_imx_enet_receive_last(bd.flags);
++            trace_imx_enet_receive_last(DEVICE(s)->canonical_path, bd.flags);
+ 
+             /* Indicate that we've updated the last buffer descriptor. */
+             bd.last_buffer = ENET_BD_BDU;
+diff --git a/hw/net/trace-events b/hw/net/trace-events
+index 001a20b0e2..81af808044 100644
+--- a/hw/net/trace-events
++++ b/hw/net/trace-events
+@@ -444,20 +444,20 @@ i82596_ca_init(uint32_t scb, uint8_t mode, uint32_t base) "CA: Init - SCB=0x%08x
+ i82596_ioport_write(uint32_t addr, uint32_t val) "IO write addr=0x%08x val=0x%08x"
+ 
+ # imx_fec.c
+-imx_phy_read_num(int phy, int configured) "read request from unconfigured phy %d (configured %d)"
+-imx_phy_write_num(int phy, int configured) "write request to unconfigured phy %d (configured %d)"
++imx_phy_read_num(const char *path, int phy, int configured) "%s: read request from unconfigured phy %d (configured %d)"
++imx_phy_write_num(const char *path, int phy, int configured) "%s: write request to unconfigured phy %d (configured %d)"
+ imx_fec_read_bd(uint64_t addr, int flags, int len, int data) "tx_bd 0x%"PRIx64" flags 0x%04x len %d data 0x%08x"
+ imx_enet_read_bd(uint64_t addr, int flags, int len, int data, int options, int status) "tx_bd 0x%"PRIx64" flags 0x%04x len %d data 0x%08x option 0x%04x status 0x%04x"
+-imx_eth_tx_bd_busy(void) "tx_bd ran out of descriptors to transmit"
+-imx_eth_rx_bd_full(void) "RX buffer is full"
+-imx_eth_read(int reg, const char *reg_name, uint32_t value) "reg[%d:%s] => 0x%08"PRIx32
+-imx_eth_write(int reg, const char *reg_name, uint64_t value) "reg[%d:%s] <= 0x%08"PRIx64
+-imx_fec_receive(size_t size) "len %zu"
+-imx_fec_receive_len(uint64_t addr, int len) "rx_bd 0x%"PRIx64" length %d"
+-imx_fec_receive_last(int last) "rx frame flags 0x%04x"
+-imx_enet_receive(size_t size) "len %zu"
+-imx_enet_receive_len(uint64_t addr, int len) "rx_bd 0x%"PRIx64" length %d"
+-imx_enet_receive_last(int last) "rx frame flags 0x%04x"
++imx_eth_tx_bd_busy(const char *path) "%s: tx_bd ran out of descriptors to transmit"
++imx_eth_rx_bd_full(const char *path) "%s: RX buffer is full"
++imx_eth_read(const char *path, int reg, const char *reg_name, uint32_t value) "%s: reg[%d:%s] => 0x%08"PRIx32
++imx_eth_write(const char *path, int reg, const char *reg_name, uint64_t value) "%s: reg[%d:%s] <= 0x%08"PRIx64
++imx_fec_receive(const char *path, size_t size) "%s: len %zu"
++imx_fec_receive_len(const char *path, uint64_t addr, int len) "%s: rx_bd 0x%"PRIx64" length %d"
++imx_fec_receive_last(const char *path, int last) "%s: rx frame flags 0x%04x"
++imx_enet_receive(const char *path, size_t size) "%s: len %zu"
++imx_enet_receive_len(const char *path, uint64_t addr, int len) "%s, rx_bd 0x%"PRIx64" length %d"
++imx_enet_receive_last(const char *path, int last) "%s: rx frame flags 0x%04x"
+ 
+ # npcm7xx_emc.c
+ npcm7xx_emc_reset(int emc_num) "Resetting emc%d"
 -- 
 2.55.0
 

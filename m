@@ -4,70 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C2D1BC98300
-	for <qemu-arm@archiver.kernel.org>; Mon, 21 Sep 2026 21:52:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DF9CAC982FA
+	for <qemu-arm@archiver.kernel.org>; Mon, 21 Sep 2026 21:52:29 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1x8lsR-000753-HW; Mon, 21 Sep 2026 17:48:43 -0400
+	id 1x8lrT-00068q-BA; Mon, 21 Sep 2026 17:47:43 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <shentey@gmail.com>) id 1x8lsH-0006nC-G3
- for qemu-arm@nongnu.org; Mon, 21 Sep 2026 17:48:33 -0400
+ (Exim 4.90_1) (envelope-from <shentey@gmail.com>) id 1x8lrI-000659-BK
+ for qemu-arm@nongnu.org; Mon, 21 Sep 2026 17:47:35 -0400
 Received: from mail-wm2-x10.google.com ([2a00:1450:4864:31::10])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <shentey@gmail.com>) id 1x8lsF-0000RG-K2
- for qemu-arm@nongnu.org; Mon, 21 Sep 2026 17:48:33 -0400
+ (Exim 4.90_1) (envelope-from <shentey@gmail.com>) id 1x8lrG-0008W9-DC
+ for qemu-arm@nongnu.org; Mon, 21 Sep 2026 17:47:31 -0400
 Received: by mail-wm2-x10.google.com with SMTP id
- 5b1f17b1804b1-49e66390995so18806755e9.2
- for <qemu-arm@nongnu.org>; Mon, 21 Sep 2026 14:48:21 -0700 (PDT)
+ 5b1f17b1804b1-49ccead2aecso16949515e9.0
+ for <qemu-arm@nongnu.org>; Mon, 21 Sep 2026 14:47:30 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20251104; t=1790027300; x=1790632100; darn=nongnu.org;
+ d=gmail.com; s=20251104; t=1790027249; x=1790632049; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to:content-type;
- bh=ePB1DF2TUK9i9t5dQ26XLD0b62VXCKx3HzGc+187TiQ=;
- b=dourfVzG4oUyoHutr6CR3AOJR4jK9s4GU+zFA5dnCy1m5sy2af6vv9rJL1QaijMqtx
- +0nmyz5RdCUZsVv2s2XNcXsNX4zKADoXgKJS7xnF2KvPq6omUBCj8nkfBNgt4X7pOGhG
- QItZ7Yp8PCWsFI7qEzYiCpB259MNE1pTJ4vxsyubLrbFOW0MdDLJR18wZatwY8qbnrQB
- P2Qzg0Tu0te3zniEpn1XcrzpWyE59gmDzqo+pPegZHE6QRQTSaVw95R5s8369Dv+xpE8
- 1ac2oSCiGz8lNgmZFPufxWsKbIEKjW3mdDT2AjwR1TTSzlomWQLPrpQFvGnL4Hpr78Hd
- HMhA==
+ bh=lVnjRdLc88bwkEOj1pcHpoR2nWaQoq8yYXYeFGKmXCc=;
+ b=U0YDYoNdnGbyXq8yDzouDXsqQ7JvjGpmvD2t9QHcq/H1UoAuf2DSQXZ1Qgi58AV09V
+ i+qf/Az5PrQzHwqV8qJMtIXkWhSHJoxM1vJ1Uk4PVkpEJgaHQBJPAh9AHzqE1jwQijaO
+ uzIxZfkg0YV+BnhuHOLHEMQLgHYZJ+8VLsvuNtwAHl7WEOAq0rcfHqbJi97nSl7g1cEZ
+ 4MhlJAU9ZGEwSKLHGgf/MWjCXPkcMGgxazqVQuT1VcXX5IfcqQ5IvyH99Dth/AaGTEgZ
+ 0B4UHTP+ldPrMuSYFvkY8/HNP5nHlzGb8F5/rYosQZ4lOk1sggW/kpiSGJjOHmllKsjY
+ jELg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20260707; t=1790027300; x=1790632100;
+ d=1e100.net; s=20260707; t=1790027249; x=1790632049;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
  :to:cc:subject:date:message-id:reply-to:content-type;
- bh=ePB1DF2TUK9i9t5dQ26XLD0b62VXCKx3HzGc+187TiQ=;
- b=0mdkYX2nGriAhI2GZ7zl8molcjI3IpJh9JJxvHGfOmdvGVqZe2Ptn+hb0uf+jqtgIC
- e5x2/zrYGiS+82SaAF23XATnUfAhsYEJeRGhg4QGUmKrK8CPd9jbfz+pXKLSbn7C2sPG
- 5YMRr85+IZqb/1yLGTHBVZ6GP/k3Ii+lDfiKd4YYwKXqZekgYcw2E2o7Ifp7cHoxsEM3
- 91DOh/PdeuORLAEXzir2jBecSWJ3pq0wWQTlHAr1z0YOtAu91BiRV0xdO46fVMlJV6iL
- +LayoSwmTj/aNWRw6toQ3aFt7sliw/+haL7GVJkzhAN5/7ovlbgVQ5U5vbzRiESt3RiD
- t3uA==
+ bh=lVnjRdLc88bwkEOj1pcHpoR2nWaQoq8yYXYeFGKmXCc=;
+ b=DH+hzFAB/XO3f/sLvphN/5KOa2QOkz6lLMgX1UpPj83O+cNw2kw/dGZctSRxrTbanV
+ Wu7D2mec8xIeIJHFdGdQnHTOqs1bcggYZoD+kgTz1yCcD3mRI1KnUvzWRBp/fZbrFH4p
+ vm5qhdwoEyCTGnD68UEEfFu4WfsFXOGHrroKUfHrxWBs6Wyj89nsKwsqUlHwJZSDq80y
+ 0uZCOgRWH2FxM+WeDULXC3inkUTnbN2miJ61NH/hwUU3Jrj6HHkyXqqTsIL9BqzD8zZN
+ nTmr+JdEtcHqBK4+GVoECnm/j65Tmii8F3lXIU0wsO8LIHPn9XL8y5Qv+RqeF7Y+a7P2
+ QP0Q==
 X-Forwarded-Encrypted: i=1;
- AKwUvBy0//FqRk4wz2w6ry0QdgQRdoB7q1tUA+JUAMKXgEmZ9GWFI5fi4sExrYd0+7INfIzc/t/uxu973A==@nongnu.org
-X-Gm-Message-State: AFuF++loADuOTr3RDx11+u7eHliaRFDe+aVgPP+RXIWcyS2XQwqt6QEK
- 9FA76WguxXBIjXfXcPH1fRPQQRYDSz9D+xykJe8G5pZkJcPoQXuPdngX
-X-Gm-Gg: AYBFou3RhODZI6XrR2PUp/mI5SdfpGf2mpgvyb5yZw2052PERrrvHfTrfka+c92VZcC
- AVX+EAZbTycH8mxrNji/YgQXRiC/XnL6sRtPcq21c/Zf/XkG0Zb/CM6K+fbG5VwB411azXa584V
- yqz9yVSphxpc8ehUiKxsuTrOC7Rp8EH32KM51bX5Frfyyps9h3KJFD+S1HeTu2a52PWgshzk3j0
- RM15MHNY2bw0X0+Uf2XFMPWf9Z1u6xC5GnDYz/nOIPxElCbNbjCsG7aHrAOAxh2dhPx+56p0zNy
- dXt/dG3HvFa6T6NtQQHpfuMql9ZWzdi4E5W76egecUO756BbQzxRJMjauWDdcIJGN/YRZCc/03W
- PinlMC4QV5jqMEGWVe2xfVN68DIBrmNtZ1NJXu/B+SIF40ku7MngjNpu6o22xqhwH7waEBqLPle
- rPSAQDyiiGWMO7SgfITqcQ9Uz4AijGYraehFRXj6UJNsiuN7tllF5Mez4C22vnGK0TdLD4gbRHu
- kEEi1F20mEA8ySv30qAct7hogeInSXRbLsnbqd42yorW9AFogAT2N+TchIWTqMb5nfVAuRH65ls
- u0w=
-X-Received: by 2002:a05:600c:354e:b0:49b:8f18:714a with SMTP id
- 5b1f17b1804b1-49fc57226c9mr162987355e9.12.1790027300098; 
- Mon, 21 Sep 2026 14:48:20 -0700 (PDT)
+ AKwUvBzS8VTUtQx+p0YQ/qG7RsjZKY83dDIdgcFPBiTA850N09Wu525XrWUSE2e+Uiy4d1t+EwFFqf77VA==@nongnu.org
+X-Gm-Message-State: AFuF++nSLuZDdIR73pqlv7EIMhwKZlplhzPSvP/36R8pjYHCrAygiPJZ
+ g2wbZTDihdvTGQQIH1dgs2ObOoAe5SxBazU+3hy+H8acOaw+UMr/LCdt
+X-Gm-Gg: AYBFou1STSfPTHZbBJHvZJbhmXOfO2DRSSERlj8pokVuQNfNqhSTjZk3PPk9pEhiDFJ
+ yFYfs8ClWPIMVpS1SXrtOov8VnaUS6I97Ls0L4LBjPpHB90XEGXbTlmwREzn48OF1/iZnwcGfWh
+ frWEAKX9p1UUj26nyMTN9Tu+qC0F7K+jaOfQwcs/U7LjU9HmcvmgpCh7ZSGhUIWfkExEYJrowkj
+ W4lj4qhDcVsHvUKdCBOcbzKZbNyIcQgoL328U+5tpyDLG3bP6Ocz6h+zjKnCWqPWpVCJjaq7Yq/
+ oG9kik7grlQCIH7Fo4O4RcDfidC2INSI5rv5ZPrdxjndBwMQzc1ZQRrkVqPOxxW8HSDtmTeU839
+ c16kFssH9IrerbUdHW/d4HYo5u6vGP5ZBmybDHrLzFcqAIKkFjAkjjULa2CKSDGOLsf/cmVl+wx
+ JnASiynf8gGgKCeY9dfwHW6Uk3jo4nWwqBr1DdXNp1TIq+2AE7ErpoqaC2tFonYMfxRjMYc4iMM
+ eUSjldg9KMg7zVsPce9XldAhHft+yJtFGlQUlozirxbWnyPRTJCWeyKkvwMbV/Pdt7dUHCTVFKu
+ yFjOykgI0NghIA==
+X-Received: by 2002:a05:600c:3588:b0:49c:d26a:cf70 with SMTP id
+ 5b1f17b1804b1-49fcc3772bamr188370445e9.15.1790027248851; 
+ Mon, 21 Sep 2026 14:47:28 -0700 (PDT)
 Received: from Provence
  (dynamic-2a02-3100-1c91-bf00-0219-99ff-feb2-2458.310.pool.telefonica.de.
  [2a02:3100:1c91:bf00:219:99ff:feb2:2458])
  by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-49fda0ce29fsm4986905e9.6.2026.09.21.14.48.18
+ 5b1f17b1804b1-49fda0ce29fsm4986905e9.6.2026.09.21.14.47.27
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 21 Sep 2026 14:48:19 -0700 (PDT)
+ Mon, 21 Sep 2026 14:47:28 -0700 (PDT)
 From: Bernhard Beschow <shentey@gmail.com>
 To: qemu-devel@nongnu.org
 Cc: Phil Dennis-Jordan <phil@philjordan.eu>,
@@ -80,10 +80,9 @@ Cc: Phil Dennis-Jordan <phil@philjordan.eu>,
  Bernhard Beschow <shentey@gmail.com>,
  Jean-Christophe Dubois <jcd@tribudubois.net>,
  Gaurav Sharma <gaurav.sharma_7@nxp.com>
-Subject: [PATCH 40/42] hw/net/imx_fec: Trace with QOM path where easily
- possible
-Date: Mon, 21 Sep 2026 23:47:08 +0200
-Message-ID: <20260921214710.29422-41-shentey@gmail.com>
+Subject: [PATCH 02/42] hw/watchdog/wdt_imx2: Remove unused attributes
+Date: Mon, 21 Sep 2026 23:46:30 +0200
+Message-ID: <20260921214710.29422-3-shentey@gmail.com>
 X-Mailer: git-send-email 2.55.0
 In-Reply-To: <20260921214710.29422-1-shentey@gmail.com>
 References: <20260921214710.29422-1-shentey@gmail.com>
@@ -113,175 +112,49 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Some i.MX SoCs have multiple i.MX network IP blocks. Allow to
-distinguish them via their QOM path when tracing.
+The previous change rendered the locked attributes unused but they were kept
+for migration compatibiliy when backporting. Remove the unneeded attributes
+and break migration compatibility since QEMU does not guarantee
+compatibility for i.MX devices between feature releases.
 
 Signed-off-by: Bernhard Beschow <shentey@gmail.com>
 ---
- hw/net/imx_fec.c    | 28 +++++++++++++++-------------
- hw/net/trace-events | 24 ++++++++++++------------
- 2 files changed, 27 insertions(+), 25 deletions(-)
+ include/hw/watchdog/wdt_imx2.h | 2 --
+ hw/watchdog/wdt_imx2.c         | 3 +--
+ 2 files changed, 1 insertion(+), 4 deletions(-)
 
-diff --git a/hw/net/imx_fec.c b/hw/net/imx_fec.c
-index c177b7ff2b..fb8bcd52d2 100644
---- a/hw/net/imx_fec.c
-+++ b/hw/net/imx_fec.c
-@@ -248,7 +248,7 @@ static uint32_t imx_phy_read(IMXFECState *s, int reg)
-         if (s->phy_consumer && phy == s->phy_consumer->phy_num) {
-             s = s->phy_consumer;
-         } else {
--            trace_imx_phy_read_num(phy, s->phy_num);
-+            trace_imx_phy_read_num(DEVICE(s)->canonical_path, phy, s->phy_num);
-             return 0xffff;
-         }
-     }
-@@ -270,7 +270,7 @@ static void imx_phy_write(IMXFECState *s, int reg, uint32_t val)
-         if (s->phy_consumer && phy == s->phy_consumer->phy_num) {
-             s = s->phy_consumer;
-         } else {
--            trace_imx_phy_write_num(phy, s->phy_num);
-+            trace_imx_phy_write_num(DEVICE(s)->canonical_path, phy, s->phy_num);
-             return;
-         }
-     }
-@@ -364,7 +364,7 @@ static void imx_fec_do_tx(IMXFECState *s)
-         if ((bd.flags & ENET_BD_R) == 0) {
+diff --git a/include/hw/watchdog/wdt_imx2.h b/include/hw/watchdog/wdt_imx2.h
+index ad36b8820d..0bf2903959 100644
+--- a/include/hw/watchdog/wdt_imx2.h
++++ b/include/hw/watchdog/wdt_imx2.h
+@@ -84,8 +84,6 @@ struct IMX2WdtState {
+     uint16_t wmcr;
  
-             /* Run out of descriptors to transmit.  */
--            trace_imx_eth_tx_bd_busy();
-+            trace_imx_eth_tx_bd_busy(DEVICE(s)->canonical_path);
+     bool wcr_locked;            /* affects WDZST, WDBG, and WDW */
+-    bool wcr_wde_locked;        /* affects WDE */
+-    bool wcr_wdt_locked;        /* affects WDT (never cleared) */
+ };
  
-             break;
-         }
-@@ -446,7 +446,7 @@ static void imx_enet_do_tx(IMXFECState *s, uint32_t index)
-         if ((bd.flags & ENET_BD_R) == 0) {
-             /* Run out of descriptors to transmit.  */
+ #endif /* WDT_IMX2_H */
+diff --git a/hw/watchdog/wdt_imx2.c b/hw/watchdog/wdt_imx2.c
+index aaf4695db2..c8ea704aa3 100644
+--- a/hw/watchdog/wdt_imx2.c
++++ b/hw/watchdog/wdt_imx2.c
+@@ -220,13 +220,12 @@ static const MemoryRegionOps imx2_wdt_ops = {
  
--            trace_imx_eth_tx_bd_busy();
-+            trace_imx_eth_tx_bd_busy(DEVICE(s)->canonical_path);
- 
-             break;
-         }
-@@ -521,7 +521,7 @@ static void imx_eth_enable_rx(IMXFECState *s, bool flush)
-     s->regs[ENET_RDAR] = (bd.flags & ENET_BD_E) ? ENET_RDAR_RDAR : 0;
- 
-     if (!s->regs[ENET_RDAR]) {
--        trace_imx_eth_rx_bd_full();
-+        trace_imx_eth_rx_bd_full(DEVICE(s)->canonical_path);
-     } else if (flush) {
-         qemu_flush_queued_packets(qemu_get_queue(s->nic));
-     }
-@@ -659,7 +659,8 @@ static uint64_t imx_eth_read(void *opaque, hwaddr offset, unsigned size)
-         break;
-     }
- 
--    trace_imx_eth_read(index, imx_eth_reg_name(s, index), value);
-+    trace_imx_eth_read(DEVICE(s)->canonical_path, index,
-+                       imx_eth_reg_name(s, index), value);
- 
-     return value;
- }
-@@ -767,7 +768,8 @@ static void imx_eth_write(void *opaque, hwaddr offset, uint64_t value,
-     const bool single_tx_ring = !imx_eth_is_multi_tx_ring(s);
-     uint32_t index = offset >> 2;
- 
--    trace_imx_eth_write(index, imx_eth_reg_name(s, index), value);
-+    trace_imx_eth_write(DEVICE(s)->canonical_path, index,
-+                        imx_eth_reg_name(s, index), value);
- 
-     switch (index) {
-     case ENET_EIR:
-@@ -951,7 +953,7 @@ static ssize_t imx_fec_receive(NetClientState *nc, const uint8_t *buf,
-     unsigned int buf_len;
-     size_t size = len;
- 
--    trace_imx_fec_receive(size);
-+    trace_imx_fec_receive(DEVICE(s)->canonical_path, size);
- 
-     if (!s->regs[ENET_RDAR]) {
-         qemu_log_mask(LOG_GUEST_ERROR, "[%s]%s: Unexpected packet\n",
-@@ -993,7 +995,7 @@ static ssize_t imx_fec_receive(NetClientState *nc, const uint8_t *buf,
-         bd.length = buf_len;
-         size -= buf_len;
- 
--        trace_imx_fec_receive_len(addr, bd.length);
-+        trace_imx_fec_receive_len(DEVICE(s)->canonical_path, addr, bd.length);
- 
-         /* The last 4 bytes are the CRC.  */
-         if (size < 4) {
-@@ -1013,7 +1015,7 @@ static ssize_t imx_fec_receive(NetClientState *nc, const uint8_t *buf,
-             /* Last buffer in frame.  */
-             bd.flags |= flags | ENET_BD_L;
- 
--            trace_imx_fec_receive_last(bd.flags);
-+            trace_imx_fec_receive_last(DEVICE(s)->canonical_path, bd.flags);
- 
-             s->regs[ENET_EIR] |= ENET_INT_RXF;
-         } else {
-@@ -1047,7 +1049,7 @@ static ssize_t imx_enet_receive(NetClientState *nc, const uint8_t *buf,
-     size_t size = len;
-     bool shift16 = s->regs[ENET_RACC] & ENET_RACC_SHIFT16;
- 
--    trace_imx_enet_receive(size);
-+    trace_imx_enet_receive(DEVICE(s)->canonical_path, size);
- 
-     if (!s->regs[ENET_RDAR]) {
-         qemu_log_mask(LOG_GUEST_ERROR, "[%s]%s: Unexpected packet\n",
-@@ -1093,7 +1095,7 @@ static ssize_t imx_enet_receive(NetClientState *nc, const uint8_t *buf,
-         bd.length = buf_len;
-         size -= buf_len;
- 
--        trace_imx_enet_receive_len(addr, bd.length);
-+        trace_imx_enet_receive_len(DEVICE(s)->canonical_path, addr, bd.length);
- 
-         /* The last 4 bytes are the CRC.  */
-         if (size < 4) {
-@@ -1131,7 +1133,7 @@ static ssize_t imx_enet_receive(NetClientState *nc, const uint8_t *buf,
-             /* Last buffer in frame.  */
-             bd.flags |= flags | ENET_BD_L;
- 
--            trace_imx_enet_receive_last(bd.flags);
-+            trace_imx_enet_receive_last(DEVICE(s)->canonical_path, bd.flags);
- 
-             /* Indicate that we've updated the last buffer descriptor. */
-             bd.last_buffer = ENET_BD_BDU;
-diff --git a/hw/net/trace-events b/hw/net/trace-events
-index 001a20b0e2..81af808044 100644
---- a/hw/net/trace-events
-+++ b/hw/net/trace-events
-@@ -444,20 +444,20 @@ i82596_ca_init(uint32_t scb, uint8_t mode, uint32_t base) "CA: Init - SCB=0x%08x
- i82596_ioport_write(uint32_t addr, uint32_t val) "IO write addr=0x%08x val=0x%08x"
- 
- # imx_fec.c
--imx_phy_read_num(int phy, int configured) "read request from unconfigured phy %d (configured %d)"
--imx_phy_write_num(int phy, int configured) "write request to unconfigured phy %d (configured %d)"
-+imx_phy_read_num(const char *path, int phy, int configured) "%s: read request from unconfigured phy %d (configured %d)"
-+imx_phy_write_num(const char *path, int phy, int configured) "%s: write request to unconfigured phy %d (configured %d)"
- imx_fec_read_bd(uint64_t addr, int flags, int len, int data) "tx_bd 0x%"PRIx64" flags 0x%04x len %d data 0x%08x"
- imx_enet_read_bd(uint64_t addr, int flags, int len, int data, int options, int status) "tx_bd 0x%"PRIx64" flags 0x%04x len %d data 0x%08x option 0x%04x status 0x%04x"
--imx_eth_tx_bd_busy(void) "tx_bd ran out of descriptors to transmit"
--imx_eth_rx_bd_full(void) "RX buffer is full"
--imx_eth_read(int reg, const char *reg_name, uint32_t value) "reg[%d:%s] => 0x%08"PRIx32
--imx_eth_write(int reg, const char *reg_name, uint64_t value) "reg[%d:%s] <= 0x%08"PRIx64
--imx_fec_receive(size_t size) "len %zu"
--imx_fec_receive_len(uint64_t addr, int len) "rx_bd 0x%"PRIx64" length %d"
--imx_fec_receive_last(int last) "rx frame flags 0x%04x"
--imx_enet_receive(size_t size) "len %zu"
--imx_enet_receive_len(uint64_t addr, int len) "rx_bd 0x%"PRIx64" length %d"
--imx_enet_receive_last(int last) "rx frame flags 0x%04x"
-+imx_eth_tx_bd_busy(const char *path) "%s: tx_bd ran out of descriptors to transmit"
-+imx_eth_rx_bd_full(const char *path) "%s: RX buffer is full"
-+imx_eth_read(const char *path, int reg, const char *reg_name, uint32_t value) "%s: reg[%d:%s] => 0x%08"PRIx32
-+imx_eth_write(const char *path, int reg, const char *reg_name, uint64_t value) "%s: reg[%d:%s] <= 0x%08"PRIx64
-+imx_fec_receive(const char *path, size_t size) "%s: len %zu"
-+imx_fec_receive_len(const char *path, uint64_t addr, int len) "%s: rx_bd 0x%"PRIx64" length %d"
-+imx_fec_receive_last(const char *path, int last) "%s: rx frame flags 0x%04x"
-+imx_enet_receive(const char *path, size_t size) "%s: len %zu"
-+imx_enet_receive_len(const char *path, uint64_t addr, int len) "%s, rx_bd 0x%"PRIx64" length %d"
-+imx_enet_receive_last(const char *path, int last) "%s: rx frame flags 0x%04x"
- 
- # npcm7xx_emc.c
- npcm7xx_emc_reset(int emc_num) "Resetting emc%d"
+ static const VMStateDescription vmstate_imx2_wdt = {
+     .name = "imx2.wdt",
++    .version_id = 1,
+     .fields = (const VMStateField[]) {
+         VMSTATE_PTIMER(timer, IMX2WdtState),
+         VMSTATE_PTIMER(itimer, IMX2WdtState),
+         VMSTATE_BOOL(wicr_locked, IMX2WdtState),
+         VMSTATE_BOOL(wcr_locked, IMX2WdtState),
+-        VMSTATE_BOOL(wcr_wde_locked, IMX2WdtState),
+-        VMSTATE_BOOL(wcr_wdt_locked, IMX2WdtState),
+         VMSTATE_UINT16(wcr, IMX2WdtState),
+         VMSTATE_UINT16(wsr, IMX2WdtState),
+         VMSTATE_UINT16(wrsr, IMX2WdtState),
 -- 
 2.55.0
 

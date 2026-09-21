@@ -4,93 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6F768C982ED
-	for <qemu-arm@archiver.kernel.org>; Mon, 21 Sep 2026 12:27:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E5504C982F1
+	for <qemu-arm@archiver.kernel.org>; Mon, 21 Sep 2026 12:27:47 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1x8d7T-0003a6-9F; Mon, 21 Sep 2026 08:27:39 -0400
+	id 1x8d7U-0003aG-2g; Mon, 21 Sep 2026 08:27:42 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jwhitakera@gmail.com>)
- id 1x8WI6-0000sM-38
- for qemu-arm@nongnu.org; Mon, 21 Sep 2026 01:10:10 -0400
-Received: from mail-pz2-x1b.google.com ([2607:f8b0:4864:3b::1b])
+ (Exim 4.90_1) (envelope-from <fuad.tabba@linux.dev>)
+ id 1x8Yhv-0006b7-Sk
+ for qemu-arm@nongnu.org; Mon, 21 Sep 2026 03:44:59 -0400
+Received: from out-132.mta0.migadu.com ([2001:41d0:1004:224b::84]
+ helo=mta0.migadu.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <jwhitakera@gmail.com>)
- id 1x8WI4-0007w4-FT
- for qemu-arm@nongnu.org; Mon, 21 Sep 2026 01:10:09 -0400
-Received: by mail-pz2-x1b.google.com with SMTP id
- 41be03b00d2f7-cc5256c2a4bso1676207a12.1
- for <qemu-arm@nongnu.org>; Sun, 20 Sep 2026 22:10:07 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20251104; t=1789967407; x=1790572207; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:from:to:cc:subject:date:message-id:reply-to:content-type;
- bh=I4wjmqFESw16ZRfgVBKpX32/Ry6HBE5C3JIoH5S39pE=;
- b=sWfW+CcW7j2BJmVLnIG2pOs/LmH8YgWGqLIJSJCVC5DznbbBun3kUatlBZU/UthIur
- zvBIiyafn5zMiy6OrQajtkM85uIBalvbwN6QM7vZIZJDSrOm6v4+NUhZCNM2tD+mkTqH
- hLfnkpoxxx0jDmt7U18GMIeFLqNMQB8JUVyHzg7pRJDgQ6zEug9z16mHVfnybkbtqHu4
- ofDoZPMQoMOAeAURAX84zNMI+pj2GxK40RxzdSzsdG9m/om5KNTU0vr/2fzia5OPnzBY
- qkXgGR98xkSvM6yfFXDWTvHMFjXii+PQnXzYWuaPbmVGHKPDsfpgVApw+Gwqq/wTKKIH
- pWQQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20260707; t=1789967407; x=1790572207;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
- :message-id:reply-to:content-type;
- bh=I4wjmqFESw16ZRfgVBKpX32/Ry6HBE5C3JIoH5S39pE=;
- b=cdVX/EWFSciDgRzWWgqyMt7Ih7X/P+qbNpej0C89bjlaEffHPlfrpGOO8TW0EErYzo
- LUX97N+rCH1bxMoMfiwfxWz1Kap1pwM79MOLyeXsPvl8xI685nOYgsOySnOREimz9BgC
- pgWEqXxzvJIG2zpcwpCDMOpv0lVfCp98G89/Bt7iJwr3FsbhWzflLTFM9FUQtfI+fnVR
- Nz3KWvgdTTdSVZrMMy5V6n3W8KIRrahUODM/l44buOEpx2JxbbGskTNaUyK3ulM7hYWd
- sr8/TqRWW7ct+DVXaffk1L7zFuSrK6luVF+y9XhTVi+srW4+frmA0zqgCrlhSXKIwFnO
- vWvw==
-X-Forwarded-Encrypted: i=1;
- AKwUvBxK6atDyDuGUdKtOOX3KQPDxuN6s3ATSiK5uoXUvtONeUePsJNU2proCqrkp3G2ME60LG4rdOkD0w==@nongnu.org
-X-Gm-Message-State: AFuF++nrpbqS8o+AbJEtd8PpxW9E8m1ZVGX5MWADInJ133iXdI189L3p
- F4dtnlF28PWvsVGl26l3Y57qih9QPdqPQrcrhBFrfYjWtYsny3lB6/uX
-X-Gm-Gg: AYBFou3hjxcaPhfmEJzyF9g7IiNYnCi1agKY3Z6cmUgbX3rG9TVirH9zdEdZa03hcoy
- vgweonZIRWmvlShzlT+SIxy9FwX0LyQ/5Hkg6QIMkC2GzOtJ9Gzmp1xyyM/g5p2vlecIrzGTP/R
- ju+qTWVF3WHvG4R4UsOqZx9p4cvaUkuexH1AKczR+dIp5cywHLTWAUpqD6sUn/GZ9tBGdki78Ru
- Pf8kuAWWJwtTjuv+wdsgfEFhodII//xK3sWr+MlcYL+yEHcc5ihEPbhap1B1NAUCLRMyXGk/4Z+
- Qt5tVMK5lxQuLspDWeVlkydefnD8yO+FRILC+D8qu+jFghTZnQiNd9yqATSkTqZndVe0EsGVrY5
- jPXcWlfBeNjsnvJQ8JPmSTRvYFfL8R8Bz5FRu5SyKQfKr49V3M4pWClE4ZtKyqvvYcAKjOZpYc9
- uwSJLftvHRPct23vRXA26jHRbAvS9AAq2ovGnQKCLeelURppEjhoFnN1eptJf9xrOibx2d1cBue
- gKRxfgi+S92InDDyA==
-X-Received: by 2002:a05:6a20:6a20:b0:3d3:adbf:7777 with SMTP id
- adf61e73a8af0-3dd8c49f29dmr16052707637.19.1789967406541; 
- Sun, 20 Sep 2026 22:10:06 -0700 (PDT)
-Received: from jacob-pop23u.lan ([2600:1700:88b2:a50:a9ca:268c:17b3:ded])
- by smtp.gmail.com with ESMTPSA id
- a92af1059eb24-144d54af4d5sm16625516c88.2.2026.09.20.22.10.05
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sun, 20 Sep 2026 22:10:06 -0700 (PDT)
-From: Jacob Whitaker Abrams <jwhitakera@gmail.com>
-X-Google-Original-From: Jacob Whitaker Abrams <satur9nine@gmail.com>
-To: qemu-devel@nongnu.org
-Cc: peter.maydell@linaro.org, Jacob Whitaker Abrams <satur9nine@gmail.com>,
- Samuel Tardieu <sam@rfc1149.net>,
- =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
- Paolo Bonzini <pbonzini@redhat.com>, Fabiano Rosas <farosas@suse.de>,
- Laurent Vivier <lvivier@redhat.com>,
- qemu-arm@nongnu.org (open list:STM32L4x5 SoC Family)
-Subject: [PATCH v2] hw/char/stm32l4x5_usart.c: Support 16-bit writes
-Date: Sun, 20 Sep 2026 22:09:59 -0700
-Message-ID: <20260921050959.1876719-1-satur9nine@gmail.com>
-X-Mailer: git-send-email 2.43.0
+ (Exim 4.90_1) (envelope-from <fuad.tabba@linux.dev>)
+ id 1x8Yhu-000666-46
+ for qemu-arm@nongnu.org; Mon, 21 Sep 2026 03:44:59 -0400
+X-Envelope-To: qemu-arm@nongnu.org
+DKIM-Signature: a=rsa-sha256; bh=kPmJSsdV69w6Xb0zUY7kjI4w++wJtH7CYxl3NJK6p1g=; 
+ c=simple/simple; d=linux.dev;
+ h=from:to:subject:date:message-id:mime-version:content-type; s=key1;
+ t=1789976696; v=1; x=1790581496;
+ b=sdfsd7WY8KI4jsjUAsytMyX1TxL2z4sP4sESO88UTb/L9VxRVwb+eHad6cFVArBVwcI2W/Ot
+ O++YDIpedviAhEgQf554qc77gkeE1JHMIonA5jjwI7ESthT+MrWSUN1AjwAeuPvDCdD60gXwnGE
+ QyQNq9cmxBwauGIzxodW7LSQ=
+X-Envelope-To: qemu-arm@nongnu.org
+Received: by smtp.migadu.com with ESMTPS id 7935730cc60c79cc;
+ Mon, 21 Sep 2026 07:44:56 +0000
+X-Mizu-Trace-ID: 7935730cc60c79cc
+X-Migadu-Flow: FLOW_OUT
+From: Fuad Tabba <fuad.tabba@linux.dev>
+To: Peter Maydell <peter.maydell@linaro.org>
+Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, qemu-stable@nongnu.org,
+ =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
+ Richard Henderson <richard.henderson@linaro.org>,
+ Will Deacon <will@kernel.org>, Fuad Tabba <tabba@google.com>
+Subject: [PATCH 1/2] target/arm: Fix next timer tick when the offset puts the
+ count ahead
+Date: Mon, 21 Sep 2026 08:44:50 +0100
+Message-Id: <20260921074451.3158645-2-fuad.tabba@linux.dev>
+X-Mailer: git-send-email 2.39.5
+In-Reply-To: <20260921074451.3158645-1-fuad.tabba@linux.dev>
+References: <20260921074451.3158645-1-fuad.tabba@linux.dev>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:3b::1b;
- envelope-from=jwhitakera@gmail.com; helo=mail-pz2-x1b.google.com
+Received-SPF: pass client-ip=2001:41d0:1004:224b::84;
+ envelope-from=fuad.tabba@linux.dev; helo=mta0.migadu.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_PASS=-0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-Mailman-Approved-At: Mon, 21 Sep 2026 08:27:34 -0400
+X-Mailman-Approved-At: Mon, 21 Sep 2026 08:27:33 -0400
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -105,77 +73,102 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Official STM32CubeL4 drivers use and require support for 16-bit writes to
-UART registers for proper function despite datasheet claims.
+gt_recalc_timer() arms the timer for the ISTATUS 0->1 transition at
+count == cval + offset, treating an overflow of that sum as "beyond
+the counter's wrap" and arming at INT64_MAX. That reading is valid
+only when offset <= count. When offset > count (a CNTVOFF_EL2 or
+CNTPOFF_EL2 that puts the timer's counter ahead of the physical
+count), the sum overflows for every cval still in the future and the
+wrapped value is the correct next tick, which is what the code used
+before commit 8d37a1425b99. The timer then never fires on its own.
 
-Signed-off-by: Jacob Whitaker Abrams <satur9nine@gmail.com>
+A KVM guest whose counter is set ahead of the host's, as the
+arch_timer_edge_cases selftest does via KVM_REG_ARM_TIMER_CNT, gets
+its timer interrupt only when the vCPU is next loaded and KVM
+rewrites the timer registers, so a guest polling for the interrupt
+hangs.
+Reproduced with VHE, nVHE and pKVM hosts on QEMU 11.0.0. The test
+passes on hardware.
+
+Test count + (cval - (count - offset)) for overflow instead, so only a
+physical count past 2^64 is "never", and add a vtimer test case with
+an offset that puts the count ahead.
+
+Fixes: 8d37a1425b99 ("target/arm: Handle overflow in calculation of next timer tick")
+Cc: qemu-stable@nongnu.org
+Signed-off-by: Fuad Tabba <fuad.tabba@linux.dev>
 ---
-v2:
- - Remove all changes other than supporting 16-bit writes UART regs
+ target/arm/helper.c               |  9 +++++----
+ tests/tcg/aarch64/system/vtimer.c | 28 ++++++++++++++++++++++++++++
+ 2 files changed, 33 insertions(+), 4 deletions(-)
 
- hw/char/stm32l4x5_usart.c          |  4 ++--
- tests/qtest/stm32l4x5_usart-test.c | 22 +++++++++++++++++++++-
- 2 files changed, 23 insertions(+), 3 deletions(-)
-
-diff --git a/hw/char/stm32l4x5_usart.c b/hw/char/stm32l4x5_usart.c
-index dd1b099195..3b9883bb23 100644
---- a/hw/char/stm32l4x5_usart.c
-+++ b/hw/char/stm32l4x5_usart.c
-@@ -521,12 +521,12 @@ static const MemoryRegionOps stm32l4x5_usart_base_ops = {
-     .endianness = DEVICE_NATIVE_ENDIAN,
-     .valid = {
-         .max_access_size = 4,
--        .min_access_size = 4,
-+        .min_access_size = 2,
-         .unaligned = false
-     },
-     .impl = {
-         .max_access_size = 4,
--        .min_access_size = 4,
-+        .min_access_size = 2,
-         .unaligned = false
-     },
- };
-diff --git a/tests/qtest/stm32l4x5_usart-test.c b/tests/qtest/stm32l4x5_usart-test.c
-index a72c5a685d..3c6437e75d 100644
---- a/tests/qtest/stm32l4x5_usart-test.c
-+++ b/tests/qtest/stm32l4x5_usart-test.c
-@@ -332,6 +332,26 @@ static void test_ack(void)
-     qtest_quit(qts);
- }
+diff --git a/target/arm/helper.c b/target/arm/helper.c
+index c3f607e6d6..f89f41fe63 100644
+--- a/target/arm/helper.c
++++ b/target/arm/helper.c
+@@ -1575,11 +1575,12 @@ static void gt_recalc_timer(ARMCPU *cpu, int timeridx)
+         } else {
+             /*
+              * Next transition is when (count - offset) == cval, i.e.
+-             * when count == (cval + offset).
+-             * If that would overflow, then again we set up the next interrupt
+-             * for "as far in the future as possible" for the code below.
++             * cval - (count - offset) ticks from now. If count plus that
++             * overflows, set up "as far in the future as possible" below.
+              */
+-            if (uadd64_overflow(gt->cval, offset, &nexttick)) {
++            uint64_t remaining = gt->cval - (count - offset);
++
++            if (uadd64_overflow(count, remaining, &nexttick)) {
+                 nexttick = UINT64_MAX;
+             }
+         }
+diff --git a/tests/tcg/aarch64/system/vtimer.c b/tests/tcg/aarch64/system/vtimer.c
+index 7d725eced3..e1cfad36be 100644
+--- a/tests/tcg/aarch64/system/vtimer.c
++++ b/tests/tcg/aarch64/system/vtimer.c
+@@ -27,6 +27,7 @@
  
-+static void test_16bit_access(void)
-+{
-+    QTestState *qts = qtest_init("-M b-l475e-iot01a");
-+
-+    /* GTPR is declared uint16_t in the official STM driver. */
-+    qtest_writew(qts, USART1_BASE_ADDR + A_GTPR, 0xABCD);
-+    uint16_t gtpr16 = qtest_readw(qts, USART1_BASE_ADDR + A_GTPR);
-+    g_assert_cmpuint(gtpr16, ==, 0xABCD);
-+
-+    /* TDR is uint16_t and r/w, register is 9-bits */
-+    qtest_writew(qts, USART1_BASE_ADDR + A_TDR, 0x01CD);
-+    uint16_t tdr16 = qtest_readw(qts, USART1_BASE_ADDR + A_TDR);
-+    g_assert_cmpuint(tdr16, ==, 0x01CD);
-+
-+    /* RDR is uint16_t and read only, register is 9-bits */
-+    qtest_writew(qts, USART1_BASE_ADDR + A_RDR, 0x01FA);
-+
-+    qtest_quit(qts);
-+}
-+
- static void check_clock(QTestState *qts, const char *path, uint32_t rcc_reg,
-                         uint32_t reg_offset)
+ int main(void)
  {
-@@ -370,6 +390,6 @@ int main(int argc, char **argv)
-     qtest_add_func("stm32l4x5/usart/send_str", test_send_str);
-     qtest_add_func("stm32l4x5/usart/ack", test_ack);
-     qtest_add_func("stm32l4x5/usart/clock_enable", test_clock_enable);
-+    qtest_add_func("stm32l4x5/usart/16bit_access", test_16bit_access);
-     return g_test_run();
++    uint64_t freq, now;
+     int i;
+ 
+     ml_printf("VTimer Test\n");
+@@ -44,5 +45,32 @@ int main(void)
+         ml_printf("%d: cntv_cval_el0=%lx\n", i, read_sysreg(cntv_cval_el0));
+     }
+ 
++    /*
++     * An offset that puts the virtual count ahead of the physical one,
++     * so cval + cntvoff wraps for every future cval. The timer must
++     * still fire. ISTATUS is set by the expiry, so poll it with a bound.
++     */
++    write_sysreg(cntv_ctl_el0, 0);
++    write_sysreg(cntvoff_el2, -(1ULL << 60));
++    asm volatile("isb");
++
++    freq = read_sysreg(cntfrq_el0);
++    now = read_sysreg(cntvct_el0);
++    write_sysreg(cntv_cval_el0, now + freq / 100);
++    write_sysreg(cntv_ctl_el0, 1);
++
++    ml_printf("cntvoff_el2=%lx\n", read_sysreg(cntvoff_el2));
++    ml_printf("cntvct_el0=%lx\n", now);
++    ml_printf("cntv_cval_el0=%lx\n", read_sysreg(cntv_cval_el0));
++
++    while (!(read_sysreg(cntv_ctl_el0) & 4)) {
++        if (read_sysreg(cntvct_el0) - now > freq) {
++            ml_printf("FAIL: ISTATUS not set within 1s: cntv_ctl_el0=%lx\n",
++                      read_sysreg(cntv_ctl_el0));
++            return 1;
++        }
++    }
++    ml_printf("ISTATUS set at cntvct_el0=%lx\n", read_sysreg(cntvct_el0));
++
+     return 0;
  }
--
 -- 
-2.43.0
+2.39.5
 
 

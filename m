@@ -4,70 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A198EC982E6
-	for <qemu-arm@archiver.kernel.org>; Mon, 21 Sep 2026 21:50:23 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EA044C982FA
+	for <qemu-arm@archiver.kernel.org>; Mon, 21 Sep 2026 21:50:25 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1x8lsH-0006mq-2S; Mon, 21 Sep 2026 17:48:33 -0400
+	id 1x8ls9-0006fG-7R; Mon, 21 Sep 2026 17:48:25 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <shentey@gmail.com>) id 1x8ls9-0006fV-NJ
- for qemu-arm@nongnu.org; Mon, 21 Sep 2026 17:48:25 -0400
-Received: from mail-wm2-x11.google.com ([2a00:1450:4864:31::11])
+ (Exim 4.90_1) (envelope-from <shentey@gmail.com>) id 1x8ls5-0006aF-5J
+ for qemu-arm@nongnu.org; Mon, 21 Sep 2026 17:48:21 -0400
+Received: from mail-wr2-x0d.google.com ([2a00:1450:4864:30::d])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <shentey@gmail.com>) id 1x8ls8-0000PE-18
- for qemu-arm@nongnu.org; Mon, 21 Sep 2026 17:48:25 -0400
-Received: by mail-wm2-x11.google.com with SMTP id
- 5b1f17b1804b1-49e6c0fce17so18061425e9.1
- for <qemu-arm@nongnu.org>; Mon, 21 Sep 2026 14:48:13 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <shentey@gmail.com>) id 1x8ls3-0000QW-0g
+ for qemu-arm@nongnu.org; Mon, 21 Sep 2026 17:48:20 -0400
+Received: by mail-wr2-x0d.google.com with SMTP id
+ ffacd0b85a97d-482f6351831so1809444f8f.1
+ for <qemu-arm@nongnu.org>; Mon, 21 Sep 2026 14:48:18 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20251104; t=1790027293; x=1790632093; darn=nongnu.org;
+ d=gmail.com; s=20251104; t=1790027297; x=1790632097; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to:content-type;
- bh=0CSy0xMqZIb4P6bNwkb1VnPTSf9A/yfJ/dDXW/NabSk=;
- b=TiAJfHsnTdJYJ0B/IdNY5yG/xkty/kZBAE/6mO979PKCQaujbVl6t2zpny7dIlRQca
- 27Mm+w8XAFe2tO9hxQRwsnUtbtaGYb3xjtjbfQZhjwkbjTXGZ/LzAuOYNu3mVXQCcBkm
- VytsPeFYtiBbI2aRdwoezhnvKEZtkWmrhv/xGWJzKJC9zszBRMAeCOCW+1jM9AC2iAcC
- vZuf11x5riy6zKsLgagLYtuMQY7bMneEcysafXqfy9lzr0/ykt2sr1+b/WzJ6G+r3aSh
- 0gaRL6f87KHTWix+DWmW5M91HhhRjnCwKJU5KPsSlSHY0AAxo4Xo9I/DmSIIvu2q/1LK
- B4gg==
+ bh=o1D/HluJZPHeRPMLZsNwYm2EuOpzIFXWfzpO+SSWt4I=;
+ b=PNXoTqzXxaKgNqlii1vSxRypjp3naqMpLOaaK0XFYovzWOVC1yFmqGtrl3UQJC83zh
+ f2SRBbI/utYKpRMcLlgMdTZsGHVH2QWHf24N2ooSJgJE7EmgJEH4EDXlSR8dD7U7m2g8
+ xpI86VJWpPX+tlfK5yBkDjNLC3RbB4RaAg7Z2Ek6TPR+qtbqYtqRQHEDjCMe2UlNfuMT
+ tWexMagwxYElaJzMVCXdELpcNYUrB28+HwbsPhp+l1kXM0SpsmGoOmfwAGRXKK7N4+Xr
+ AgjrjEm7yTriKD+xLxiDOFzHlsuHFVhQCVaUx7dpgHJbQIkjUMBiCA4FPs36U8jmRZbS
+ mB8A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20260707; t=1790027293; x=1790632093;
+ d=1e100.net; s=20260707; t=1790027297; x=1790632097;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
  :to:cc:subject:date:message-id:reply-to:content-type;
- bh=0CSy0xMqZIb4P6bNwkb1VnPTSf9A/yfJ/dDXW/NabSk=;
- b=Y6gY7+QksHuULZMa6rby2IUWo3uXyT839m5Y3cf8PG+FiVA2QkIf2tzSJ19wEagdno
- fexgKjctWZ7iRfyaOaKdBQJkeS32ex50DFGNr5sKUfkDqR5c4tT3+cOpCefYrNt6RdNT
- 20RoLjkTT1zcWLnS38KzBNODwaiWCGg+fNhVRzbwQr0q4V5VKadh1oQGMFN5zOzP4im2
- sX45QxXRbgr88u1nmGIyAo6+dlbSVgtsVTza3LFEpWbQyxoaTDrHRfA8Lt9ZgmMZO+8S
- 6VNVPc4lfQJKZciR/lZ4yAncM6dHuIB/BQGN5nZ4EheFTJZJk8Zlyj7j6xSkQ/2YTpc+
- xLkA==
+ bh=o1D/HluJZPHeRPMLZsNwYm2EuOpzIFXWfzpO+SSWt4I=;
+ b=ZuVQlUh3fyVF+o6YNpXvZup1sBAd2HRTL9ecpxgMybW3RggZcZoJcm+84tuSGQTpZr
+ pQb78DYvYYUdNH2Mx3BG7YIPX41Vbi3ByAt6D8XRZNtjvKqOgSSFcMnMBkfToEaj+QA3
+ 3AAPvt5OU97OI5m2EEuNs4SNpTqDp4wyaQCoNcJI+SoPzQwqAMfiKdEkw+rSJZm3NdNr
+ FhivKFeRIxKYUWrgzeDIGO5SQnQUFYMQkqh438xA1SW5TUm54wytKtcnUp9rDjryZzQo
+ KW553CTWESH1cJsUtV7FdQSo0KyY6dMXzcENGmffsWw//n7e2ocdgDF+T8t4SzrL4nUX
+ pM/g==
 X-Forwarded-Encrypted: i=1;
- AKwUvBwyxZ83/QjsKefz7qZuhGmoGph4urkfIcmJwcz17/5qtMV0zorvwUi9MqNd3Y7krtETAmEJVunwpw==@nongnu.org
-X-Gm-Message-State: AFuF++mUw1zSY2RpefnjKm8NzViT+ATF/UCzSgk3aX/jKsp07kqdD2ad
- FzbVtpMJidYp/vdaOYZd/Cj/h3DIKVAEfbN6kpBDwmzhwaUcr8mwz4b6Pn7vRg==
-X-Gm-Gg: AYBFou0aPYRS3izn83J8tU63Wie5FVWL5KbIvQZt7ZRLCL0r1GPbpknqdkthFUsQoJl
- q0n4TB1jgCl+6YxjdE5f8xnLSge0SqCO34FXLt/K72iCEVygzD5S9ySE0hgwF2z0pyaRO7QZxH/
- l+lPv3QF5nHDKG7gYxEhKvCK3mSDg89rB9sdDbRymWMRKsDRfvUcP3oDLuQY6Gy9Hg+B0szVran
- zUZtigRKsBAtMEdQ6RH6JE7ALzeQgSMCTe1xpEqGUcuIuG8SKiIqNBQ/PbfxB0BdGZfXRqycJSy
- c24YuHvH7C0dm4u2pmMuSdWh682SxpHlDWYC7iLm3d1AU0HeNx264edZ0M7hSDZV2CPpGYHR4IA
- OMLiKx1cSrPFkLO/55rj6TL+goZ9oLYsBNI4DUOb/p0XhlayMjvLHVydILpneQMcEN3du4tUovo
- Vq15WCBkCvbLkdhb7WM+RqbDBiwsusM5hL+uwsYw3oRW7Kn7SXzGzeTYMKnFrkE6yw+xUW9bxcO
- uwVGOUFJTLAK5IX96ZnL6mJylouMpZOMeWjqRTNMuRB4TAEqoRl5b+vWZrr2i/0oObyH9NbeylI
- bu2IqX/0+1ktDQ==
-X-Received: by 2002:a05:600c:354e:b0:49c:fc6e:a3d8 with SMTP id
- 5b1f17b1804b1-49fc584f854mr165207835e9.23.1790027292607; 
- Mon, 21 Sep 2026 14:48:12 -0700 (PDT)
+ AKwUvBxGysA5eQwaKb7FCuNYPrveO1CVRzKXUIVox3TtMgz+AyJx/Sn51AWUG9yU6wXlJMMj1vxPfAZN7w==@nongnu.org
+X-Gm-Message-State: AFuF++nRSiUx0CILXIs8uiSyHOdEvsToYej4k/NZ7er80MmbFa/iRwVj
+ nqLYQuXxUVhTxJxq6rpx3KQZ/u6DTzEaJ6Z0j9mRkNkZJizt/7fYvNML
+X-Gm-Gg: AYBFou29RbmoKmrlCu9h9GSrH2CjEb/n6O66KwfXuEbQK0RJXmK9kFbvz5mrY7ULOfW
+ Ulkeirg+uxXoy41uJd+fRucn7GgJd8u4IaaAR/T/vQ7DvbNA0O7buaqwQij0nf7p4Z3/mxC48o9
+ FSf0gDJMwFouKdG6kRautZ015drHh1J4B7iE8XDSwRez0oad0ay+RYZEaRbAeNpcTD2h0NiPloA
+ oKIvnAtoLppqtD5IlHESXV9Bc+UkMcHk2j764zhRpq6UaqbfHi8RojzvgXtDKfrliRIP8MbDwt+
+ rzQ92IumF/NHJpPyZJ2uObRSAnilZ8WjEJbrgitImHn1pmYt3ytdLMKbvVCt9i5I/vre+jIdgrw
+ tas0ka5PZzOsdLa0Tg6f5kqvZPxSMtcan/YjtFPkd/oROjPte4JpcJTCR1yocl+IgHWYHtQXczD
+ uUzsFAKM3O46dPqBsnSSeE+Hklf2G64B5HC72nIMqG4EDVPuqpEreo9gBw9ec93F4keuUXvx2dT
+ WGDi2W7tZT4FWnj9qbpmVrqPardhlXzozoQ9kXq5P8DPOUyTU5peqyKVOOPXiANaQQM8D6b/It4
+ jVE=
+X-Received: by 2002:a05:600c:3b05:b0:49c:fa21:e746 with SMTP id
+ 5b1f17b1804b1-49fc57570c8mr155097395e9.28.1790027297418; 
+ Mon, 21 Sep 2026 14:48:17 -0700 (PDT)
 Received: from Provence
  (dynamic-2a02-3100-1c91-bf00-0219-99ff-feb2-2458.310.pool.telefonica.de.
  [2a02:3100:1c91:bf00:219:99ff:feb2:2458])
  by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-49fda0ce29fsm4986905e9.6.2026.09.21.14.48.11
+ 5b1f17b1804b1-49fda0ce29fsm4986905e9.6.2026.09.21.14.48.16
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 21 Sep 2026 14:48:12 -0700 (PDT)
+ Mon, 21 Sep 2026 14:48:16 -0700 (PDT)
 From: Bernhard Beschow <shentey@gmail.com>
 To: qemu-devel@nongnu.org
 Cc: Phil Dennis-Jordan <phil@philjordan.eu>,
@@ -80,16 +80,16 @@ Cc: Phil Dennis-Jordan <phil@philjordan.eu>,
  Bernhard Beschow <shentey@gmail.com>,
  Jean-Christophe Dubois <jcd@tribudubois.net>,
  Gaurav Sharma <gaurav.sharma_7@nxp.com>
-Subject: [PATCH 34/42] hw/arm/fsl-imx8m: Fix typo
-Date: Mon, 21 Sep 2026 23:47:02 +0200
-Message-ID: <20260921214710.29422-35-shentey@gmail.com>
+Subject: [PATCH 38/42] hw/misc/imx*_ccm: Avoid casting from void *
+Date: Mon, 21 Sep 2026 23:47:06 +0200
+Message-ID: <20260921214710.29422-39-shentey@gmail.com>
 X-Mailer: git-send-email 2.55.0
 In-Reply-To: <20260921214710.29422-1-shentey@gmail.com>
 References: <20260921214710.29422-1-shentey@gmail.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:31::11;
- envelope-from=shentey@gmail.com; helo=mail-wm2-x11.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:30::d;
+ envelope-from=shentey@gmail.com; helo=mail-wr2-x0d.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -111,74 +111,161 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-This is IMX8MP and IMX8MM, not IMX6.
-
-Fixes: 0c105b261551 ("hw/arm/fsl-imx8mp: Add Ethernet controller")
-Fixes: 857670200c51 ("hw/arm/fsl-imx8mm: Adding support for ENET ethernet controller")
 Signed-off-by: Bernhard Beschow <shentey@gmail.com>
 ---
- include/hw/arm/fsl-imx8mm.h | 4 ++--
- include/hw/arm/fsl-imx8mp.h | 4 ++--
- hw/arm/fsl-imx8mm.c         | 2 +-
- hw/arm/fsl-imx8mp.c         | 2 +-
- 4 files changed, 6 insertions(+), 6 deletions(-)
+ hw/misc/imx25_ccm.c  | 4 ++--
+ hw/misc/imx31_ccm.c  | 4 ++--
+ hw/misc/imx6_ccm.c   | 8 ++++----
+ hw/misc/imx6ul_ccm.c | 8 ++++----
+ hw/misc/imx7_src.c   | 4 ++--
+ 5 files changed, 14 insertions(+), 14 deletions(-)
 
-diff --git a/include/hw/arm/fsl-imx8mm.h b/include/hw/arm/fsl-imx8mm.h
-index 60d79a6e3c..1966fa505f 100644
---- a/include/hw/arm/fsl-imx8mm.h
-+++ b/include/hw/arm/fsl-imx8mm.h
-@@ -229,8 +229,8 @@ enum FslImx8mmIrqs {
-     FSL_IMX8MM_WDOG2_IRQ    = 79,
-     FSL_IMX8MM_WDOG3_IRQ    = 10,
+diff --git a/hw/misc/imx25_ccm.c b/hw/misc/imx25_ccm.c
+index a91b0be682..8fd2a329dd 100644
+--- a/hw/misc/imx25_ccm.c
++++ b/hw/misc/imx25_ccm.c
+@@ -217,7 +217,7 @@ static void imx25_ccm_reset(DeviceState *dev)
+ static uint64_t imx25_ccm_read(void *opaque, hwaddr offset, unsigned size)
+ {
+     uint32_t value = 0;
+-    IMX25CCMState *s = (IMX25CCMState *)opaque;
++    IMX25CCMState *s = opaque;
  
--    FSL_IMX8MM_ENET1_MAC_IRQ    = 118,
--    FSL_IMX6_ENET1_MAC_1588_IRQ = 121,
-+    FSL_IMX8MM_ENET1_MAC_IRQ      = 118,
-+    FSL_IMX8MM_ENET1_MAC_1588_IRQ = 121,
+     if (offset < 0x70) {
+         value = s->reg[offset >> 2];
+@@ -234,7 +234,7 @@ static uint64_t imx25_ccm_read(void *opaque, hwaddr offset, unsigned size)
+ static void imx25_ccm_write(void *opaque, hwaddr offset, uint64_t value,
+                             unsigned size)
+ {
+-    IMX25CCMState *s = (IMX25CCMState *)opaque;
++    IMX25CCMState *s = opaque;
  
-     FSL_IMX8MM_PCI_INTA_IRQ = 122,
-     FSL_IMX8MM_PCI_INTB_IRQ = 123,
-diff --git a/include/hw/arm/fsl-imx8mp.h b/include/hw/arm/fsl-imx8mp.h
-index 2be3c51af5..3acfffd30f 100644
---- a/include/hw/arm/fsl-imx8mp.h
-+++ b/include/hw/arm/fsl-imx8mp.h
-@@ -276,8 +276,8 @@ enum FslImx8mpIrqs {
-     FSL_IMX8MP_WDOG2_IRQ    = 79,
-     FSL_IMX8MP_WDOG3_IRQ    = 10,
+     trace_imx25_ccm_write(imx25_ccm_reg_name(offset >> 2), value);
  
--    FSL_IMX8MP_ENET1_MAC_IRQ    = 118,
--    FSL_IMX6_ENET1_MAC_1588_IRQ = 121,
-+    FSL_IMX8MP_ENET1_MAC_IRQ      = 118,
-+    FSL_IMX8MP_ENET1_MAC_1588_IRQ = 121,
+diff --git a/hw/misc/imx31_ccm.c b/hw/misc/imx31_ccm.c
+index 8d620711dd..3cb9f44fab 100644
+--- a/hw/misc/imx31_ccm.c
++++ b/hw/misc/imx31_ccm.c
+@@ -222,7 +222,7 @@ static void imx31_ccm_reset(DeviceState *dev)
+ static uint64_t imx31_ccm_read(void *opaque, hwaddr offset, unsigned size)
+ {
+     uint32_t value = 0;
+-    IMX31CCMState *s = (IMX31CCMState *)opaque;
++    IMX31CCMState *s = opaque;
  
-     FSL_IMX8MP_PCI_INTA_IRQ = 126,
-     FSL_IMX8MP_PCI_INTB_IRQ = 125,
-diff --git a/hw/arm/fsl-imx8mm.c b/hw/arm/fsl-imx8mm.c
-index 37934d2951..90c1673461 100644
---- a/hw/arm/fsl-imx8mm.c
-+++ b/hw/arm/fsl-imx8mm.c
-@@ -590,7 +590,7 @@ static void fsl_imx8mm_realize(DeviceState *dev, Error **errp)
-     sysbus_connect_irq(SYS_BUS_DEVICE(&s->enet), 0,
-                        qdev_get_gpio_in(gicdev, FSL_IMX8MM_ENET1_MAC_IRQ));
-     sysbus_connect_irq(SYS_BUS_DEVICE(&s->enet), 1,
--                       qdev_get_gpio_in(gicdev, FSL_IMX6_ENET1_MAC_1588_IRQ));
-+                       qdev_get_gpio_in(gicdev, FSL_IMX8MM_ENET1_MAC_1588_IRQ));
+     if ((offset >> 2) < IMX31_CCM_MAX_REG) {
+         value = s->reg[offset >> 2];
+@@ -239,7 +239,7 @@ static uint64_t imx31_ccm_read(void *opaque, hwaddr offset, unsigned size)
+ static void imx31_ccm_write(void *opaque, hwaddr offset, uint64_t value,
+                             unsigned size)
+ {
+-    IMX31CCMState *s = (IMX31CCMState *)opaque;
++    IMX31CCMState *s = opaque;
  
-     /* SNVS */
-     if (!sysbus_realize(SYS_BUS_DEVICE(&s->snvs), errp)) {
-diff --git a/hw/arm/fsl-imx8mp.c b/hw/arm/fsl-imx8mp.c
-index f855378dff..fbc094b7db 100644
---- a/hw/arm/fsl-imx8mp.c
-+++ b/hw/arm/fsl-imx8mp.c
-@@ -620,7 +620,7 @@ static void fsl_imx8mp_realize(DeviceState *dev, Error **errp)
-     sysbus_connect_irq(SYS_BUS_DEVICE(&s->enet), 0,
-                        qdev_get_gpio_in(gicdev, FSL_IMX8MP_ENET1_MAC_IRQ));
-     sysbus_connect_irq(SYS_BUS_DEVICE(&s->enet), 1,
--                       qdev_get_gpio_in(gicdev, FSL_IMX6_ENET1_MAC_1588_IRQ));
-+                       qdev_get_gpio_in(gicdev, FSL_IMX8MP_ENET1_MAC_1588_IRQ));
+     trace_imx31_ccm_write(imx31_ccm_reg_name(offset >> 2), value);
  
-     /* SNVS */
-     if (!sysbus_realize(SYS_BUS_DEVICE(&s->snvs), errp)) {
+diff --git a/hw/misc/imx6_ccm.c b/hw/misc/imx6_ccm.c
+index 45fdd0d5a8..4a40fe08ea 100644
+--- a/hw/misc/imx6_ccm.c
++++ b/hw/misc/imx6_ccm.c
+@@ -491,7 +491,7 @@ static uint64_t imx6_ccm_read(void *opaque, hwaddr offset, unsigned size)
+ {
+     uint32_t value = 0;
+     uint32_t index = offset >> 2;
+-    IMX6CCMState *s = (IMX6CCMState *)opaque;
++    IMX6CCMState *s = opaque;
+ 
+     value = s->ccm[index];
+ 
+@@ -504,7 +504,7 @@ static void imx6_ccm_write(void *opaque, hwaddr offset, uint64_t value,
+                            unsigned size)
+ {
+     uint32_t index = offset >> 2;
+-    IMX6CCMState *s = (IMX6CCMState *)opaque;
++    IMX6CCMState *s = opaque;
+ 
+     trace_imx6_ccm_write(imx6_ccm_reg_name(index), (uint32_t)value);
+ 
+@@ -519,7 +519,7 @@ static uint64_t imx6_analog_read(void *opaque, hwaddr offset, unsigned size)
+ {
+     uint32_t value;
+     uint32_t index = offset >> 2;
+-    IMX6CCMState *s = (IMX6CCMState *)opaque;
++    IMX6CCMState *s = opaque;
+ 
+     switch (index) {
+     case CCM_ANALOG_PLL_ARM_SET:
+@@ -611,7 +611,7 @@ static void imx6_analog_write(void *opaque, hwaddr offset, uint64_t value,
+                               unsigned size)
+ {
+     uint32_t index = offset >> 2;
+-    IMX6CCMState *s = (IMX6CCMState *)opaque;
++    IMX6CCMState *s = opaque;
+ 
+     trace_imx6_analog_write(imx6_analog_reg_name(index), (uint32_t)value);
+ 
+diff --git a/hw/misc/imx6ul_ccm.c b/hw/misc/imx6ul_ccm.c
+index c4f6e372fe..f12ba6ebe2 100644
+--- a/hw/misc/imx6ul_ccm.c
++++ b/hw/misc/imx6ul_ccm.c
+@@ -625,7 +625,7 @@ static uint64_t imx6ul_ccm_read(void *opaque, hwaddr offset, unsigned size)
+ {
+     uint32_t value = 0;
+     uint32_t index = offset >> 2;
+-    IMX6ULCCMState *s = (IMX6ULCCMState *)opaque;
++    IMX6ULCCMState *s = opaque;
+ 
+     assert(index < CCM_MAX);
+ 
+@@ -640,7 +640,7 @@ static void imx6ul_ccm_write(void *opaque, hwaddr offset, uint64_t value,
+                            unsigned size)
+ {
+     uint32_t index = offset >> 2;
+-    IMX6ULCCMState *s = (IMX6ULCCMState *)opaque;
++    IMX6ULCCMState *s = opaque;
+ 
+     assert(index < CCM_MAX);
+ 
+@@ -654,7 +654,7 @@ static uint64_t imx6ul_analog_read(void *opaque, hwaddr offset, unsigned size)
+ {
+     uint32_t value;
+     uint32_t index = offset >> 2;
+-    IMX6ULCCMState *s = (IMX6ULCCMState *)opaque;
++    IMX6ULCCMState *s = opaque;
+ 
+     assert(index < CCM_ANALOG_MAX);
+ 
+@@ -754,7 +754,7 @@ static void imx6ul_analog_write(void *opaque, hwaddr offset, uint64_t value,
+                               unsigned size)
+ {
+     uint32_t index = offset >> 2;
+-    IMX6ULCCMState *s = (IMX6ULCCMState *)opaque;
++    IMX6ULCCMState *s = opaque;
+ 
+     assert(index < CCM_ANALOG_MAX);
+ 
+diff --git a/hw/misc/imx7_src.c b/hw/misc/imx7_src.c
+index 77f13bd020..4a59e347c5 100644
+--- a/hw/misc/imx7_src.c
++++ b/hw/misc/imx7_src.c
+@@ -105,7 +105,7 @@ static void imx7_src_reset(DeviceState *dev)
+ static uint64_t imx7_src_read(void *opaque, hwaddr offset, unsigned size)
+ {
+     uint32_t value = 0;
+-    IMX7SRCState *s = (IMX7SRCState *)opaque;
++    IMX7SRCState *s = opaque;
+     uint32_t index = offset >> 2;
+ 
+     if (index < SRC_MAX) {
+@@ -167,7 +167,7 @@ static void imx7_defer_clear_reset_bit(uint32_t cpuid,
+ static void imx7_src_write(void *opaque, hwaddr offset, uint64_t value,
+                            unsigned size)
+ {
+-    IMX7SRCState *s = (IMX7SRCState *)opaque;
++    IMX7SRCState *s = opaque;
+     uint32_t index = offset >> 2;
+     long unsigned int change_mask;
+     uint32_t current_value = value;
 -- 
 2.55.0
 

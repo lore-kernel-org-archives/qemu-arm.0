@@ -4,144 +4,141 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6F195C982E1
-	for <qemu-arm@archiver.kernel.org>; Mon, 21 Sep 2026 11:20:55 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 21335C982F1
+	for <qemu-arm@archiver.kernel.org>; Mon, 21 Sep 2026 12:18:11 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1x8c4W-0002M8-9m; Mon, 21 Sep 2026 07:20:32 -0400
+	id 1x8cxs-0007gA-2Y; Mon, 21 Sep 2026 08:17:44 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mhonap@nvidia.com>)
- id 1x8c4T-0002JI-DP; Mon, 21 Sep 2026 07:20:29 -0400
-Received: from mail-westus3azlp170120001.outbound.protection.outlook.com
- ([2a01:111:f403:c107::1] helo=PH8PR06CU001.outbound.protection.outlook.com)
+ (Exim 4.90_1) (envelope-from <philmd@oss.qualcomm.com>)
+ id 1x8cxL-0007MK-Oj
+ for qemu-arm@nongnu.org; Mon, 21 Sep 2026 08:17:23 -0400
+Received: from mx0a-0031df01.pphosted.com ([205.220.168.131])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mhonap@nvidia.com>)
- id 1x8c4Q-0003Li-Hy; Mon, 21 Sep 2026 07:20:29 -0400
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=uT4sW031i0RUX0gZEG0okBredrSduo3/6ehhEmq1Kacdt0Lb5ke5vXodQScSIufpegTtyLYGTLbDYEzg40rY73bpM58wG8HwrZ0zhCS4vDU1Db7Inrz6vLWzdmom9x0xEGu4SdR8Hn3BD/8sfCjPMdMW+fKFB8ezkFDOZOP9ZP5mrLQ7D7RqikubMBPFe7IROwCuEh3PqHRJ8VtvBO/2h2o88a4iSim/ghwjRctx/jvipVXXEAHC4ogEJzfCcbk4Kth0QGvZ+UVMTkFtfcDT1d7UTHf7akiBatRlEGwmyDqPCTBTUt0qosOykHtGtokN8wPw9FX8ikuoZcdVqAKEdw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector10001;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=yYyLK9kUnd0Fz3OgpfI3uV+Q3zgFQTWTT9qrl+wXXrM=;
- b=wkOD68AK5jvxM+A96LhEB6/oJwuwfr91s92uUOb0Zc6jKsxtKuydGO7YdyrVGl0vjKKSuBbSlwFZ6ml6Hroh12LRqvmzoWXOLYoS5jru65iG2spbZk/kryA9iyf6KUk54tNSMabIYh3BSPbWlGEf9Uw1u0tNXK/2JMiit/0D916g3TKResveNBaxpoz2huGdEoTRbcF7SQ6kc0EUqPTDrEM3ED7CyexyTpp/drRDAR3Nsp3MJ7MY0QyefDllw+8gPmXICcL0euM4uzPGJuWOidALF2QgUUYaUrTrNZG/xeVeCXZHIvqXf+f7MSXyYCmZ2R+t/5auPZHWW0/mHU1Njg==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=nvidia.com; dmarc=pass action=none header.from=nvidia.com;
- dkim=pass header.d=nvidia.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Nvidia.com;
- s=selector2;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=yYyLK9kUnd0Fz3OgpfI3uV+Q3zgFQTWTT9qrl+wXXrM=;
- b=lyrAz/9ofVp2PHMrsrMcE9WSuJ7MjCxT4P20d/hjS1srwDlKYNU/pGwmqDiRQNbsY3gulvynW7IZ6PhXLnHlCla34eUQoMUSwxtSOfTzq7ol9BIiPhbFYXg4ltB1lj/Zd8KB3thor9eN7EgXBa7UL3+8SAkmy6sTO4Msh8pO8AmSUXa0uu6Hqpd9YdPQnnu9HHgolIpjf6Wv4VoxeJ2tdbXeU7TkziMV4iiwdx/YyYul+8f5+0S8O1KZNX5z/qUAH/IUnaGXOSXG7B0xYLpPCeKQ0WYknlfTXU0b+3FGrj6bwZFa9Fu2osku8ecISt0niRBaF8Kzp/ql/kcbWpBL5A==
-Received: from IA1PR12MB9030.namprd12.prod.outlook.com (2603:10b6:208:3f2::22)
- by SN7PR12MB6715.namprd12.prod.outlook.com (2603:10b6:806:271::19)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.21.428.14; Mon, 21 Sep
- 2026 11:20:21 +0000
-Received: from IA1PR12MB9030.namprd12.prod.outlook.com
- ([fe80::2c1d:ed27:b53a:97d2]) by IA1PR12MB9030.namprd12.prod.outlook.com
- ([fe80::2c1d:ed27:b53a:97d2%7]) with mapi id 15.21.0428.015; Mon, 21 Sep 2026
- 11:20:21 +0000
-From: Manish Honap <mhonap@nvidia.com>
-To: Junjie Cao <junjie.cao@intel.com>
-CC: "alex@shazbot.org" <alex@shazbot.org>, Ankit Agrawal <ankita@nvidia.com>, 
- "jic23@kernel.org" <jic23@kernel.org>, "dave.jiang@intel.com"
- <dave.jiang@intel.com>, "alejandro.lucero-palau@amd.com"
- <alejandro.lucero-palau@amd.com>, Srirangan Madhavan <smadhavan@nvidia.com>,
- "pierrick.bouvier@oss.qualcomm.com" <pierrick.bouvier@oss.qualcomm.com>,
- "mst@redhat.com" <mst@redhat.com>, "imammedo@redhat.com"
- <imammedo@redhat.com>, "anisinha@redhat.com" <anisinha@redhat.com>,
- "pbonzini@redhat.com" <pbonzini@redhat.com>, "eric.auger@redhat.com"
- <eric.auger@redhat.com>, "peter.maydell@linaro.org"
- <peter.maydell@linaro.org>, "richard.henderson@linaro.org"
- <richard.henderson@linaro.org>, "clg@redhat.com" <clg@redhat.com>,
- "cohuck@redhat.com" <cohuck@redhat.com>, Krishnakant Jaju <kjaju@nvidia.com>, 
- Vikram Sethi <vsethi@nvidia.com>, Zhi Wang <zhiw@nvidia.com>,
- "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>, "qemu-arm@nongnu.org"
- <qemu-arm@nongnu.org>, "linux-cxl@vger.kernel.org"
- <linux-cxl@vger.kernel.org>, Shameer Kolothum Thodi
- <skolothumtho@nvidia.com>, Manish Honap <mhonap@nvidia.com>
-Subject: RE: [PATCH v2 10/10] hw/pci-host: Emit a _DSM on pxb-cxl to preserve
- firmware PCI config
-Thread-Topic: [PATCH v2 10/10] hw/pci-host: Emit a _DSM on pxb-cxl to preserve
- firmware PCI config
-Thread-Index: AQHdRgusjCvcpjApBEmlZKJiGhQPPrbXNMmAgAG08zA=
-Date: Mon, 21 Sep 2026 11:20:20 +0000
-Message-ID: <IA1PR12MB9030CA9286783E104703456EBD842@IA1PR12MB9030.namprd12.prod.outlook.com>
-References: <20260916184412.3825713-11-mhonap@nvidia.com>
- <20260920091429.717003-1-junjie.cao@intel.com>
-In-Reply-To: <20260920091429.717003-1-junjie.cao@intel.com>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-authentication-results: mx.microsoft.com 1; dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=nvidia.com;
-x-ms-publictraffictype: Email
-x-ms-traffictypediagnostic: IA1PR12MB9030:EE_|SN7PR12MB6715:EE_
-x-ms-office365-filtering-correlation-id: 15c82fc7-8b0e-4fc0-eb2f-08df17d252d4
-x-ms-exchange-senderadcheck: 1
-x-ms-exchange-antispam-relay: 0
-x-microsoft-antispam: BCL:0;
- ARA:13230040|1800799024|366016|23010399003|7416014|376014|10067099003|11063799006|6133799003|22082099003|18002099003|56012099006|4143699003|38070700021;
-x-microsoft-antispam-message-info: tJ04Cr1qv7AFvIjij5Zhovpac92SiGQ+PROMOw26CInuW5KfAZBDpyo8b9RM0XpoHhXiucnFYPUZ1h8kUrQhsdb0bATaNJ95wDJPFbhpJmpaRo/Wv6bCu4b0yCiU98eRNZwG5/MdxvkppZGpyc11Uh8APJ5los5EjvkOyzYpJ7Y0pijCpjpl7bLEfPmNnJm21EHb7VjWb+rzDFC2UBC/DRP37ZI5X/V7qfzgLP37X9dLvdeL4wJb5h9W2UxGmAdcYNW2Ybc4y1d4YMqB1G5H/SwdEOgxHL5GtFlPHf9WqfU8EbtiVS2e8FrikmRn/GCyXhTXYBe6+d0FYAlSX40WdnnSyKXsvFaVnSSJIoqjT45Raf8w2CUvniieWSzwgPA7RvVvNQkQOyAUdzUsxHJjfs8S5pCVK0lvmgkxSEbTo03HWOfQ/wAS+syOAQwNhtAU+6jpGVzjo4soe1xDkEbZudEoRHeitHAAyL4pfVrlLx6OJaH7t+Z0XFnRCpUB3bxrC8Zq9FPxyh6l25YoSUJUtXYa8E4kiYg9H70+tC56n5XyU7DnmgNUsBS3cy2CWS510pc1xFDoW33+A555NBZ6Ve15Xqo0MxevSB0/DtA7jLkcBnouBNpJesEfL9QTOI+uIhyKPZV00ACYpyqd4r2Q9vD+vaw2SHAf6QT1aZOwPxCkSVh/E/bAV93jprgtgQ3qrXbZyR+pbnoDsezf4z1wMtUbeNE5Bi/De/5H0M5y5Rc=
-x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:IA1PR12MB9030.namprd12.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(13230040)(1800799024)(366016)(23010399003)(7416014)(376014)(10067099003)(11063799006)(6133799003)(22082099003)(18002099003)(56012099006)(4143699003)(38070700021);
- DIR:OUT; SFP:1101; 
-x-ms-exchange-antispam-messagedata-chunkcount: 1
-x-ms-exchange-antispam-messagedata-0: =?us-ascii?Q?4v0b0zEf6xenkPL9GQAanBz8bkhTn9nCDWDznmNn4HoboW5vi/9TAoLhwiGN?=
- =?us-ascii?Q?3/7x6nn4rELItcHSp5oKfGfDZJ5fNfInzlgMaKvRnOSylGjH7xEKE9Fl6o48?=
- =?us-ascii?Q?Uyc1bgFpvErBiYHhSwoIOVHyBax+KCj/RZXPWEmZ5L4Jgl+R/+oVjALpFuCK?=
- =?us-ascii?Q?jsr6EFjc82T/+3mbI5RdQ4hwJtaj4644B8RfSzvJYQZw+k0VL3yktySSfV7p?=
- =?us-ascii?Q?YT+uTTWuQrG1tWuGTh84uZzP6Qvtim7lapzmLRe4NUn7iiRmi5JTb5gFi7Cb?=
- =?us-ascii?Q?Z4XC/hrVMhvpAFEHD7gsbpcgixdQUYvdkN4IgweUjzG8jDNSs5IIcN91G6kC?=
- =?us-ascii?Q?3A22jeEDBcrVLII0f22bGp3hWDLKzXacZnMlumILGL8mJOPtRvBlaJq13hV2?=
- =?us-ascii?Q?sEo3x3A6UXa0gWQc6tH0/Ol4OboqdObNTgg0LuFwy7jYiVYEQRhssIb4jNRf?=
- =?us-ascii?Q?0ZHGE4Pncuyn9ChX66rgpq77yfFHFp95nJNjyJQXZPQ6FvwYudVF2msxdWqd?=
- =?us-ascii?Q?2ngo3gebJJU8OcnIk4wgxfPWrmNgFAIW5Kt1izosQP8A7GtQK6GBg4l4rJzC?=
- =?us-ascii?Q?BkYKIHK8gzRicgaTcpyQ2w++hHb8dhlpxFqYLfIljccyKefEn2jT5yfrYHL0?=
- =?us-ascii?Q?io5re8cgoTny+sHcSVInBETQ1tzzOfVC5obuapf+szJQTcmTr6fXjXXKTp3S?=
- =?us-ascii?Q?bIzxdb7/A1BSENQ0uIRC/EisftZxEMz8CdW2/vwmkNDgfLSWDKuCcdbN4aLH?=
- =?us-ascii?Q?VSQ1zsN5cl8yINWac9NXS0wXGRxC70x5DYUK0ZSS4Q9SJS0Aa9dnsROYwotk?=
- =?us-ascii?Q?yg8M0b0RSgs+ZdJKZvp2bKqbW76CdbXBMaCkly7enQSjnhdI3piKIXMtT0H0?=
- =?us-ascii?Q?pUUvJptypZOYBv8ECZaZBqn9kzfBmemGr0cfc5pDKMDvXVFaVXXKIYG0FRHN?=
- =?us-ascii?Q?C6ffZHCpvTLjDqxNgYuVlHV157bEdEWo8PfiAj722W+t2kzFzgwOp+ZHFpYs?=
- =?us-ascii?Q?rAwuk6RkwVF6dIdtlMV/IGhrQTmAQCIKmrM+Ikn3CldavCTRScEilyPL7S/7?=
- =?us-ascii?Q?lfXpAATbAq+p5zQ6xfbyLO13ntf+V5NX1Bkt6fU+rbZk4dHnSLYgXKqydU0l?=
- =?us-ascii?Q?BmHBub5x3g9FYaLNuJhia0jeKE0uSd3nZCUdFkrA/U5css6Hzys19otUuFsi?=
- =?us-ascii?Q?ALHDq/acaX2BqHtcsWFY3yR5UkNW6YDss8mHBtpEx0zhTri5QpSYHA0YABWd?=
- =?us-ascii?Q?J4SIkzl37YOoRWeeQfht6Q96zdwkx7rNFT69m4mY1oCC+ZUjUNFtlmecHtvy?=
- =?us-ascii?Q?GzaP3UCwL8MrIPqqjV+yxc2hVLym2huk708kyWJ5njAl2ztwC+uCVRb2IX0E?=
- =?us-ascii?Q?+n7p9pwrEyV+7x/Kd9t13nCXx/jNn6qra9C2qnSTU3PvbOTttH/0o8F9MuKZ?=
- =?us-ascii?Q?g6wStpcKCucTBLGD2QxzVvogCoiygwjgxU9TBGVhPwxjvLf7EXXdDdpx7OhE?=
- =?us-ascii?Q?eWZ9844O3dhXXow+M1DnLwdKCHf83SpQsOTcF4vq2DtoBeeZngnlSZXSwzO7?=
- =?us-ascii?Q?yvFyjzvpNzrUkscr4XuN/2rucyRJf6zI8sVZWui9eGGvxbwiCvMWsKNXRNqt?=
- =?us-ascii?Q?5GBD4C1oZKHH1Fox0cVt67cv6Z7pjZMgHfgruiqRFFbVZ7bONBbsK/+v6AEs?=
- =?us-ascii?Q?KJDQ9m9kZ0PAvecucwrGcvZe4Waw/ENxTd5W7NVtglnF8v7e?=
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: quoted-printable
+ (Exim 4.90_1) (envelope-from <philmd@oss.qualcomm.com>)
+ id 1x8cxK-0008G8-4S
+ for qemu-arm@nongnu.org; Mon, 21 Sep 2026 08:17:11 -0400
+Received: from pps.filterd (m0279865.ppops.net [127.0.0.1])
+ by mx0a-0031df01.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id
+ 68LAduBE1926537
+ for <qemu-arm@nongnu.org>; Mon, 21 Sep 2026 12:17:08 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qualcomm.com; h=
+ content-transfer-encoding:content-type:date:from:in-reply-to
+ :message-id:mime-version:references:subject:to; s=qcppdkim1; bh=
+ jHfQbq7qsagH3eNaMOGuXpDFJz+kyHORcU4Kkz+aibs=; b=CQ4oFCo7H1nWbWnH
+ bITtFz+2jSlVWBT2SfRYXFa4UiHoM0nzaviVrbnH1a5+ataxx3PdLZt4UFF8QkX7
+ DDOLGhn+Z7vGmuqqoXJ4TWYCvLI9dx0BpV1lbRdiX5K4aVbR64oQLegxkleP6VtY
+ DCwV4zMA6i8TkynB6Ka1smk6bdWcKwkdC5hQ2aGzqWRPD9oJJC4Q6DMnW9b8/vNQ
+ VXBf7d0OXcSpQ+ookiLhKjdOk9Fg7b+yEIBk95gpAOH/LZ0EGgUthnDokjSxjzx0
+ /zaKatvAttTul++Lb8wxuXvYqVui3N8p836KMJLKCoI/SJ8fV8ZJEbqy9Y96h/bN
+ uCC28Q==
+Received: from mail-ua1-f71.google.com (mail-ua1-f71.google.com
+ [209.85.222.71])
+ by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 4gtt3vaa7f-1
+ (version=TLSv1.3 cipher=TLS_AES_128_GCM_SHA256 bits=128 verify=NOT)
+ for <qemu-arm@nongnu.org>; Mon, 21 Sep 2026 12:17:08 +0000 (GMT)
+Received: by mail-ua1-f71.google.com with SMTP id
+ a1e0cc1a2514c-983310b2d52so239748241.1
+ for <qemu-arm@nongnu.org>; Mon, 21 Sep 2026 05:17:08 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=oss.qualcomm.com; s=google; t=1789993027; x=1790597827; darn=nongnu.org;
+ h=content-transfer-encoding:content-type:in-reply-to:from:references
+ :to:content-language:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to:content-type;
+ bh=jHfQbq7qsagH3eNaMOGuXpDFJz+kyHORcU4Kkz+aibs=;
+ b=dFkUQVZpIX5blE418ECrIPnFP/lJDF4omH6/Xh5idPly7SqS2fnEbJZHN7ykTKkRPf
+ 86Yn8bLd19RztQEkI3zYpcISP7e+JzvcnXINqEHv19ZUSGJuXR5QQ24UjXafAwTR4Rw6
+ Oonh8iGZrXrr4wwG1TBgPyvuh3XVjxMzAObohJzOYd5fKJqDM0KNfCZMC6vscaAK0F5o
+ DxF+UcDuQGBq8OUH08qnTjbCLJXJQ4iCFj0oXYw0VDQhynRwc9dRQOV7sk2yNvghMXYi
+ gPklZhmgXtL/51Dl0XZPmDmPhr3uOYjIiQWpxGhId5uvdEVGlgooJdw3JTvhCwc757Em
+ o42g==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20260707; t=1789993027; x=1790597827;
+ h=content-transfer-encoding:content-type:in-reply-to:from:references
+ :to:content-language:subject:user-agent:mime-version:date:message-id
+ :x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to:content-type;
+ bh=jHfQbq7qsagH3eNaMOGuXpDFJz+kyHORcU4Kkz+aibs=;
+ b=QmeT1p+4q9q/CRkfUSxGOYRj7lNiCTRIHOOev7B3c0hwSGgQ/JDUNvk780tj/jg5jd
+ BwDqSJXrDx6WLLnYoWWgGgiOhpKJmKBWdYHK6MCDDmtXWPPmhryUlAtjhihJ6QYk0ltc
+ LHzl9FMVbygo7M4RdUZyvyrEYseEJka6FveWt+Kq5TWJJAi51hfq2YGMExWI52VPMJaq
+ JQ3OsD248Au6l3+IfgfEPPp8t0Qg3FlUv9WyXluLicLzi1lJT+wchd6jH2cVDY0WGz4h
+ /qE+C+y8A5XbOw5RLDHw8PK0hIX+0s5HY4IcKYOOsvwRh6SHJ5hDLkdPxWzpMZ3bgpEJ
+ d6tQ==
+X-Forwarded-Encrypted: i=1;
+ AKwUvBxBk79osnKN0pBDN76z0q+ezUCxyqGklX2m0CNIDKPJBOSi4NpNqTy/M1B0asgn/CCKcrpJgOjXpw==@nongnu.org
+X-Gm-Message-State: AFuF++mb+x+mazyvQOE22bV8lyUNPmvDeJAbsgXXPZygdU+kjBkf4DJH
+ AT5SrlIcBRbeP1S/5AoE0jeFfkMW7XLpm0viTJ0DjkrRDiG+hvO23rI4HZQqECH32/fIxDjwoct
+ nUvO2+TQ1ikGU0SQ6pOUGjjkM5mNqIYfNrLzKaebmWDakpefDunStnQrN07UgQCc=
+X-Gm-Gg: AYBFou3gVn0O8Fl8xgUPasXwcBx4JYzG3w4jzcUzgJCcEpyfCQnnv6Cz82PhCniquuf
+ WMxjW+5IoFGPAh2OP9rCHh7uknolWoqbcKJUW0JSJMFIsmEaCm1QdduqcOwM0AswqnOyB1XTEDp
+ mrHRCaMpfXZwY1inoIXvTmiSPHs5E+hQc8vTRMyvNsJbgTV3efz9T6R0+VyobIAocu/hCAyTBDO
+ Zsrrb+sCemm0Q/AAyKkoe5EuQqB+mZFN0HfjuNj7b9GLgmCHbisybf1jwVhmnqYEznb/CwJnwpE
+ W4Wv2N00ZWbubtiI/rGBCdut8oGfvGuIkBpfSq1yVABQtrY+CnTaB/8wf65lfcSis0vCV/HWJo5
+ YH3zMRSQjtxv7lOcR2AnF5n4Wdke12HWSUA==
+X-Received: by 2002:a05:6122:d89:b0:5c8:4831:1539 with SMTP id
+ 71dfb90a1353d-5c9b58dbc15mr5052760e0c.5.1789993027461; 
+ Mon, 21 Sep 2026 05:17:07 -0700 (PDT)
+X-Received: by 2002:a05:6122:d89:b0:5c8:4831:1539 with SMTP id
+ 71dfb90a1353d-5c9b58dbc15mr5052685e0c.5.1789993026908; 
+ Mon, 21 Sep 2026 05:17:06 -0700 (PDT)
+Received: from [192.168.69.225] (pmd666.hd.free.fr. [88.187.86.199])
+ by smtp.gmail.com with ESMTPSA id
+ 2adb3069b0e04-5b8c78c1562sm1928099e87.8.2026.09.21.05.17.05
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Mon, 21 Sep 2026 05:17:06 -0700 (PDT)
+Message-ID: <8c7d88e5-44c5-4b22-8983-2dd9af9d8128@oss.qualcomm.com>
+Date: Mon, 21 Sep 2026 14:17:04 +0200
 MIME-Version: 1.0
-X-OriginatorOrg: Nvidia.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-AuthSource: IA1PR12MB9030.namprd12.prod.outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 15c82fc7-8b0e-4fc0-eb2f-08df17d252d4
-X-MS-Exchange-CrossTenant-originalarrivaltime: 21 Sep 2026 11:20:20.9624 (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: 43083d15-7273-40c1-b7db-39efd9ccc17a
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: XIDmJWqe2rJvZi0/ITpqwi6dRngCj+vynQu9zdAe6hv+0PgAdvMPC+PfmLEEr6IFGOZxvGYd3KuQ2BaVRLWDUg==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: SN7PR12MB6715
-Received-SPF: permerror client-ip=2a01:111:f403:c107::1;
- envelope-from=mhonap@nvidia.com;
- helo=PH8PR06CU001.outbound.protection.outlook.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v2 8/9] hw/intc/arm_gicv5: Pass CPU index to CPU interface
+Content-Language: en-US
+To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
+ qemu-devel@nongnu.org
+References: <20260914160020.327787-1-peter.maydell@linaro.org>
+ <20260914160020.327787-9-peter.maydell@linaro.org>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@oss.qualcomm.com>
+In-Reply-To: <20260914160020.327787-9-peter.maydell@linaro.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+X-Authority-Analysis: v=2.4 cv=Ytia1IYX c=1 sm=1 tr=0 ts=6ab12044 cx=c_pps
+ a=KB4UBwrhAZV1kjiGHFQexw==:117 a=4s3hRJSeHn4rkQlkrse1kQ==:17
+ a=IkcTkHD0fZMA:10 a=VdqzKS8jKosA:10 a=M51BFTxLslgA:10 a=s4-Qcg_JpJYA:10
+ a=VkNPw1HP01LnGYTKEx00:22 a=u7WPNUs3qKkmUXheDGA7:22 a=Um2Pa8k9VHT-vaBCBUpS:22
+ a=KKAkSRfTAAAA:8 a=EUspDBNiAAAA:8 a=LfsA7Cq2GQzuzbZ-N0YA:9 a=3ZKOabzyN94A:10
+ a=QEXdDO2ut3YA:10 a=o1xkdb1NAhiiM49bd1HK:22 a=cvBusfyB2V15izCimMoJ:22
+X-Proofpoint-ORIG-GUID: NnJIt6kAWdB8qm0xauy2w-PD6YkAPBRe
+X-Proofpoint-Spam-Info: AW1haW4tMjYwOTIxMDE3NyBTYWx0ZWRfX78872QwA58F1
+ 3nfvDrXED7dSUO56ljH/zvNRdesfB4P4Jj9qnp+lMZC0BR6X6G+0ZJwVZx9hQIRQ6a0RzVyJMgL
+ IRaecirOyU4DFEwVzA9yeANNZqJDVKA=
+X-Proofpoint-GUID: NnJIt6kAWdB8qm0xauy2w-PD6YkAPBRe
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwOTIxMDE3NyBTYWx0ZWRfX6BTu1Wt5Sysi
+ lcTAcOdzqRnR+dKjky4Pr61xomS8BPbIS+6yFKg2RO54FlktdpBjaCGc4zhFiOjhiqIzclxH69n
+ h0nq977SxunSRhDLj/plPr4G9PkgEik9NxVb6atz2hTsh+h7L9058tubA3R7M0sKsdtp55iEFES
+ 5cKqoBF7bxYtpn7lMru9cHe3EChf7wUTmtyoiyRjcZ0Df8xDNiXeAPOfRifvpSUUtb70UrHb/7M
+ ddZTkm4jppp1JVQRUyOhAMc6xVIfBG58p92m0wdEPyRveu66VL4CXk8dFBoSMxUS4SENA4OBwXE
+ RZF8JV4NySNb1kGWqPzAElMaGLykaYHFajJgO9kKdsimkF0Mr2JMKUSBuRkYL6e8WEWgaUcth6T
+ P/MnBr/lAnJaHp0xXcgC6ezt1D2IE+eFPC3wfXFGLcPLAWtViXEjMirwSWnTlnBnt0nqKH0N9lk
+ YSbAQMKrL20Qveyk3hQ==
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.293,Aquarius:18.0.1176,Hydra:6.1.134,FMLib:17.12.100.49
+ definitions=2026-09-21_04,2026-09-16_02,2025-10-01_01
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
+ adultscore=0 priorityscore=1501 lowpriorityscore=0 phishscore=0 bulkscore=0
+ clxscore=1015 impostorscore=0 malwarescore=0 spamscore=0 suspectscore=0
+ classifier=typeunknown authscore=0 authtc= authcc= route=outbound adjust=0
+ reason=mlx scancount=1 engine=8.22.0-2609040000 definitions=main-2609210177
+Received-SPF: pass client-ip=205.220.168.131;
+ envelope-from=philmd@oss.qualcomm.com; helo=mx0a-0031df01.pphosted.com
+X-Spam_score_int: -27
+X-Spam_score: -2.8
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- SPF_HELO_NONE=0.001, SPF_NONE=0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_LOW=-0.7, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -157,59 +154,39 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
+On 14/9/26 18:00, Peter Maydell wrote:
+> In a real hardware GICv5, the IRS knows which CPU is talking to it
+> because each IRS<->cpuif link is a separate 1:1 connection.  In
+> QEMU's implementation, the cpuif code calls functions like
+> gicv5_set_priority(), and currently we usually don't pass anything to
+> tell the IRS which cpuif is making the call, because mostly the IRS
+> doesn't need to care.  There are a few places where it does need to
+> know, notably in gicv5_get_hppi().  Here we have the cpuif pass its
+> IAFFID; the IRS then looks that up by doing a linear search of the
+> cpu_iaffids[] array to get the index of the CPU.
+> 
+> For virtualization, many of the stream commands which don't currently
+> need to say which cpuif is making the call will have to start doing
+> so, because changing the state of a virtual interrupt requires the
+> IRS to look up the VPE which is resident on the calling cpuif. This
+> makes the IAFFID->cpuidx lookup seem increasingly awkward.
+> 
+> Change gicv5_set_gicv5state() to pass the IRS's CPU index value for
+> the cpuif as well as the guest-visible IAFFID, and make the stream
+> functions identify the cpuif by CPU index rather than IAFFID, to
+> avoid the unnecessary IAFFID->cpuidx lookup.
+> 
+> As this is now three GICv5-related things that we are keeping in the
+> CPU state struct, we push them into a sub-struct to keep them tidy.
+> 
+> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+> ---
+>   hw/intc/arm_gicv5_common.c         |  2 +-
+>   include/hw/intc/arm_gicv5_stream.h |  6 ++++--
+>   target/arm/cpu.c                   | 10 ++++++----
+>   target/arm/cpu.h                   | 10 ++++++----
+>   target/arm/tcg/gicv5-cpuif.c       |  6 +++---
+>   5 files changed, 20 insertions(+), 14 deletions(-)
 
-
-> -----Original Message-----
-> From: Junjie Cao <junjie.cao@intel.com>
-> Sent: Sunday, September 20, 2026 2:44 PM
-> To: Manish Honap <mhonap@nvidia.com>
-> Cc: alex@shazbot.org; Ankit Agrawal <ankita@nvidia.com>; jic23@kernel.org=
-;
-> dave.jiang@intel.com; alejandro.lucero-palau@amd.com; Srirangan
-> Madhavan <smadhavan@nvidia.com>; pierrick.bouvier@oss.qualcomm.com;
-> mst@redhat.com; imammedo@redhat.com; anisinha@redhat.com;
-> pbonzini@redhat.com; eric.auger@redhat.com; peter.maydell@linaro.org;
-> richard.henderson@linaro.org; clg@redhat.com; cohuck@redhat.com;
-> Krishnakant Jaju <kjaju@nvidia.com>; Vikram Sethi <vsethi@nvidia.com>; Zh=
-i
-> Wang <zhiw@nvidia.com>; qemu-devel@nongnu.org; qemu-
-> arm@nongnu.org; linux-cxl@vger.kernel.org; Shameer Kolothum Thodi
-> <skolothumtho@nvidia.com>
-> Subject: Re: [PATCH v2 10/10] hw/pci-host: Emit a _DSM on pxb-cxl to
-> preserve firmware PCI config
->=20
-> External email: Use caution opening links or attachments
->=20
->=20
-> On Thu, 17 Sep 2026 00:14:12 +0530, Manish Honap wrote:
-> > under preserve_config, the _DSM. Gate the _DSM on preserve_config: x86
-> > q35 passes false as it does not use the accelerated SMMU, so it emits
-> > no _DSM and its ACPI tables stay byte for byte what they were.
->=20
-> Confirmed: on 28e7aad522 plus the series bios-tables-test passes on
-> x86_64 (q35/cxl and q35/acpihmat-genericx, the v1 failures, included),
-> aarch64, riscv64 and loongarch64.
->=20
-> accel=3Don is out of reach under TCG, so I forced preserve_config on virt=
- locally
-> and booted an arm64 guest (7.3-rc1 based, defconfig) with a
-> cxl-type3 behind a cxl-rp.  With this patch Linux keeps the firmware BARs=
- and
-> bridge window under the pxb-cxl; on 09/10 with the same hack it releases =
-and
-> reassigns them.  No ACPI errors either way.
->=20
-> Tested-by: Junjie Cao <junjie.cao@intel.com>
->=20
-> 08/10 still says the x86 bridge "still emits the ``_DSM`` method, but its
-> function 0 returns an empty support mask"; that was v1.
-
-Oops, I missed this line. In current v2, _DSM is gated on preserve_config, =
-so x86
-q35 emits no _DSM at all rather than an empty support mask.
-I will update this.
-
->=20
-> Junjie
-
+Reviewed-by: Philippe Mathieu-Daudé <philmd@oss.qualcomm.com>
 

@@ -4,70 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 54357C982FD
-	for <qemu-arm@archiver.kernel.org>; Mon, 21 Sep 2026 21:52:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 33E86C982FE
+	for <qemu-arm@archiver.kernel.org>; Mon, 21 Sep 2026 21:52:41 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1x8lrn-0006M5-Oe; Mon, 21 Sep 2026 17:48:03 -0400
+	id 1x8lsV-0007FZ-7o; Mon, 21 Sep 2026 17:48:47 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <shentey@gmail.com>) id 1x8lrk-0006H2-Ip
- for qemu-arm@nongnu.org; Mon, 21 Sep 2026 17:48:00 -0400
-Received: from mail-wm2-x11.google.com ([2a00:1450:4864:31::11])
+ (Exim 4.90_1) (envelope-from <shentey@gmail.com>) id 1x8lsJ-0006ug-HZ
+ for qemu-arm@nongnu.org; Mon, 21 Sep 2026 17:48:35 -0400
+Received: from mail-wm2-x10.google.com ([2a00:1450:4864:31::10])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <shentey@gmail.com>) id 1x8lri-0000IF-Tr
- for qemu-arm@nongnu.org; Mon, 21 Sep 2026 17:48:00 -0400
-Received: by mail-wm2-x11.google.com with SMTP id
- 5b1f17b1804b1-49e8185e037so19942945e9.3
- for <qemu-arm@nongnu.org>; Mon, 21 Sep 2026 14:47:48 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <shentey@gmail.com>) id 1x8lsH-0000Rt-Kc
+ for qemu-arm@nongnu.org; Mon, 21 Sep 2026 17:48:35 -0400
+Received: by mail-wm2-x10.google.com with SMTP id
+ 5b1f17b1804b1-49ccf3ca626so17606365e9.0
+ for <qemu-arm@nongnu.org>; Mon, 21 Sep 2026 14:48:23 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20251104; t=1790027267; x=1790632067; darn=nongnu.org;
+ d=gmail.com; s=20251104; t=1790027302; x=1790632102; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to:content-type;
- bh=UFJ7eXXZ5d7gsZxGK4KrSHs3EAiG0Yw71ndUgxHtfBE=;
- b=flatGhUrd6lEgx9RjQX429TfHQs1XhWsyuOEiNq+H9MRsNnkDMvIzQKlk8qQIRmCO+
- XycgM/1h/fwSLKLaMU6g3NZUkkSCkhik+8p8XbiNMvqYQ5rhtjFEfhMatOd55CdEWnBI
- XXFNVymw+FW6cA+IJSU6Lqi26Tp0dBplzjBBNGWmalYSpscEltjViEGMGJFF9jVWG0iP
- Yizl2b4OZ0hfBOj+oX6Zx9CX40jvanllQzt+JfQSUg2Bzk43STewzdvLiq8bcrrbeldk
- dLhCF+KCO8bLJuWJaebUwLCHAk+t+7/N+g1s5wF1y+rJ+u4AeqbrEJowj5L/c044jTla
- yISw==
+ bh=GAXbRVqUmx1rSnFIBT9IwC9WlpBeKbkq+IT0XKOhuBI=;
+ b=l3y6WhOQeyjzyTIh+4gmGB5PVx+MWIvlQJrc+02XEKIP4kbhkmIyTTPeEliTQA9d5m
+ dl6amp17zMmiNxh/rdd0ButG/ZQtw4sHBM5L57DD2CGxLKN2iae+C1gsHN2GU4eNAWa5
+ 8IXn8c5urYSHsCXHV3FyDXegFO5548XEP2vpJu4DfZK6XmlN4NGqPVjSZhvIl+kkCg1N
+ xVddJNDwBS4peCMV0QAEIjQvKGPAgLHqhmKbsikky7JkG8Sxu8RInilwZhMl9stJyZAZ
+ u7PQiWmjaFpTpPYF7KDh9MBGhxfDFOGX/hTnA4Ca/9X4TUfgZGAWBhZ4jbaSPstemgAG
+ 2XVA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20260707; t=1790027267; x=1790632067;
+ d=1e100.net; s=20260707; t=1790027302; x=1790632102;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
  :to:cc:subject:date:message-id:reply-to:content-type;
- bh=UFJ7eXXZ5d7gsZxGK4KrSHs3EAiG0Yw71ndUgxHtfBE=;
- b=sN4WPfl/s+J6OYCNXgkX5LCn+th/CWfKwzblq7TRe/gtstZJWguFQKV7xaxzx5qhtm
- 6n/GDDX1GhFG6O+ilsqjjXoiPbTH2a1uTOScdCh3kTAEKLpuquoRJAgYzkYuM2IXP9g7
- gTJqHZKdKLq/juCuLtvH0oZ1bs4b0G7rGKr6QIj0FfCsLfPb8JbDLezUeajZPftXEqKn
- LPRuZITJSwCUzXZWVKu9EEQwrK6JlB724k8vZwMtsVwvdMb3d/EqYdiWNJDHxzEXnU0z
- 2q/Y9OOD02cEnM1qMStZ7u5EbCl8pNQZiCtqBD6/DJCB8EHaX7SzZiLM5r/nmxH4gR5U
- VIQQ==
+ bh=GAXbRVqUmx1rSnFIBT9IwC9WlpBeKbkq+IT0XKOhuBI=;
+ b=1YQIfJYBMUiX9Js1LiMjqIRhZYxo+TBF4asDccXwjZzvIbNCsJ21V2hDmbcmRNPdJB
+ GsUEuusLdcMekXGG60u1G6YvgzmATolDiGa3U+5JfzgWeMHkK4VT+PUTyA4QHjyz3Ctg
+ zzFu+R6Vf0CpvTyBVzGBUNsBWk7jNZlsUvy4KG/56sZXH+2oN8cRfA9NFVeDdT0hzjWE
+ LeAxAD746V5SUa8NMNfmOe6HndEIrMzTOEvY1dbgWD+5RXXaEFB5LvU8HoPqde5BQ4mL
+ NgEhSFc+lZn3wwj+sU4R5whyX47lgp8uMtlxz4kQ0XsLIzD4nWfm8bcnU20st8o6UVZZ
+ 7oYw==
 X-Forwarded-Encrypted: i=1;
- AKwUvBzd4lNEKnGfdz1UKouZv5x2wlS6qI8wq2uqytthDoB1hKnuNj+FJOfn0g5k8uwdyVJuK9LpJTru2Q==@nongnu.org
-X-Gm-Message-State: AFuF++kgtXqHdJYtnHX/OtrU6j50Occ3Qx+udHWlrFpjLcHMAsv0a4xE
- uK97quKGNJzz6DTWGyfmV+kWri+aLtvT5jNAPTDeevNhhdqlBU00TPVa
-X-Gm-Gg: AYBFou0h6K5tPKYvUjb/nw7SW73OkVlLkHLmBE4dFmofwN1/WEwtTj78v+lp0V1q02G
- IbaxpqpOqb052OkMHGFdQ2qpfzadvm72lUgDVngj7e/02xMvY9q3OMmYcgCupGYxXAsIOeVB7TC
- AZH+wxTwa54y4t+X/iQh1Q6gzAsKCYnLvqqefHPdFvwxKn2Q9rIaBhJfUBBq6uMb3TujIhPTvNS
- W2KuxsxJ6DdbrRYuZgayLEOQw9i6DrTgEOJkd0WBbISxpAoYC88fNLHD/+Vw3rxpnyqaMex93ZY
- 45sGy2LW3OjOq/DswhaRQhjW7/BxKe2evdWILvAf1gCEYaepfxPvJBhvMN7T3OLEcI38Ne+aRSe
- nCHGSI3tnFcX/Qy1o+ilQ52fSN2wBL2QnH4ibSrUe77HqjVBzKS9M4Jju+n4JLpQPZoSHm9+cKC
- Q0LoUXOh2c8zJeUNP491s6kB6sfNpaoUOkdqr2ZtM2/jn7QaSlgW8U1GBXF3XF91Z+uIpC9KQm2
- c3cSrVzWRbS5TgmzoHRoFpV1QnoDbGaMjS+FN4CHArfUelTgb1eR5Co/w4CzBCa207sKyCjNbPw
- +ww=
-X-Received: by 2002:a05:600d:4449:10b0:49f:cc2a:f73a with SMTP id
- 5b1f17b1804b1-49fcc2af743mr100432065e9.25.1790027267517; 
- Mon, 21 Sep 2026 14:47:47 -0700 (PDT)
+ AKwUvByB39HG2jYaK/Dkr/OX3GmI39aAi2M9alhq73VG18DGo92m/qKuULRZYjGRT/UXQpNTCy42rQss6w==@nongnu.org
+X-Gm-Message-State: AFuF++micQ2bjbWwQAhRBCmt6NfWVWS1aZstVLhjT7ALaGDkC0Fp+gCk
+ yJcfVcT40pTpiSUbucI+VjVCQPIsMc9j6kIa6HzXP+5kkYvkL8I/2cnq
+X-Gm-Gg: AYBFou1v3D9bcFKCc4GWCItO8p5dAP+rDjCkBTZPEj8mWaklCFeqHDmx5QrM7dz2Kip
+ O3SzTYEjC5LxxvNThCtcm0ZvABSsGPBasI8q1CFTQhCFHhT65G0OPJZhhK6tc0Z0YiCmcEnVnjQ
+ u7Mk9U8Dw2FMU2QEjFfkhcGylBnRkxnH66JTUeb+lm0sZUzum8HN20dT4ZB6lIfFoR1skqdyRIv
+ aLoAOn2PuPd88WJ3bNjYIBz9gw8TPrCnn8Ds42Rg6JzI5hPuQebBtyEmbD0T7hsuyoqGQ1HUEYR
+ X1MThCr6qWyIALyaXfGUK5BA9KqJrhoZBuJAxRc9tLA6uMeSdwTcrKLwOl9tk49AEKyC2OIgO6N
+ TG6s8lS637jyXbakHL8ttzfdL9IfxScnFf8S9OpFAYUb04dnd3erkK0pjVEpPFrBzynvWdocMwp
+ VYjPeGh4cs2nUBU3c9eysL5dG7flcuAFSyIVKhZOCNZuIUrQXYRnzYl3p86WJGKthPu74dhUzK/
+ 6//8h+wHMRE3hdJIkxXa0y1UHWcOWd1tQeWcnikIsnGZZl368wm3zQDa8w7fBPzfqz3urCZjTtl
+ pbg6
+X-Received: by 2002:a05:600c:5492:b0:49d:39:90ba with SMTP id
+ 5b1f17b1804b1-49fc5669330mr170297105e9.3.1790027302198; 
+ Mon, 21 Sep 2026 14:48:22 -0700 (PDT)
 Received: from Provence
  (dynamic-2a02-3100-1c91-bf00-0219-99ff-feb2-2458.310.pool.telefonica.de.
  [2a02:3100:1c91:bf00:219:99ff:feb2:2458])
  by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-49fda0ce29fsm4986905e9.6.2026.09.21.14.47.46
+ 5b1f17b1804b1-49fda0ce29fsm4986905e9.6.2026.09.21.14.48.21
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 21 Sep 2026 14:47:46 -0700 (PDT)
+ Mon, 21 Sep 2026 14:48:21 -0700 (PDT)
 From: Bernhard Beschow <shentey@gmail.com>
 To: qemu-devel@nongnu.org
 Cc: Phil Dennis-Jordan <phil@philjordan.eu>,
@@ -80,22 +80,23 @@ Cc: Phil Dennis-Jordan <phil@philjordan.eu>,
  Bernhard Beschow <shentey@gmail.com>,
  Jean-Christophe Dubois <jcd@tribudubois.net>,
  Gaurav Sharma <gaurav.sharma_7@nxp.com>
-Subject: [PATCH 15/42] hw/arm/fsl-imx7: Derive from TYPE_SYS_BUS_DEVICE
-Date: Mon, 21 Sep 2026 23:46:43 +0200
-Message-ID: <20260921214710.29422-16-shentey@gmail.com>
+Subject: [PATCH 42/42] hw/watchdog/wdt_imx2: Trace with QOM path
+Date: Mon, 21 Sep 2026 23:47:10 +0200
+Message-ID: <20260921214710.29422-43-shentey@gmail.com>
 X-Mailer: git-send-email 2.55.0
 In-Reply-To: <20260921214710.29422-1-shentey@gmail.com>
 References: <20260921214710.29422-1-shentey@gmail.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:31::11;
- envelope-from=shentey@gmail.com; helo=mail-wm2-x11.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:31::10;
+ envelope-from=shentey@gmail.com; helo=mail-wm2-x10.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -111,74 +112,74 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Deriving from TYPE_SYS_BUS_DEVICE fixes the SoC object to be reset upon
-machine reset.
+SoCs such as the i.MX8M Plus have several of these watchdog devices.
+Allow to distinguish the instances when tracing.
 
 Signed-off-by: Bernhard Beschow <shentey@gmail.com>
 ---
- include/hw/arm/fsl-imx7.h | 5 ++---
- hw/arm/fsl-imx7.c         | 5 +----
- hw/arm/mcimx7d-sabre.c    | 2 +-
- 3 files changed, 4 insertions(+), 8 deletions(-)
+ hw/watchdog/wdt_imx2.c   | 8 ++++----
+ hw/watchdog/trace-events | 8 ++++----
+ 2 files changed, 8 insertions(+), 8 deletions(-)
 
-diff --git a/include/hw/arm/fsl-imx7.h b/include/hw/arm/fsl-imx7.h
-index a573e0dd4f..945d8c5ad7 100644
---- a/include/hw/arm/fsl-imx7.h
-+++ b/include/hw/arm/fsl-imx7.h
-@@ -37,6 +37,7 @@
- #include "hw/pci-host/designware.h"
- #include "hw/usb/chipidea.h"
- #include "hw/core/or-irq.h"
-+#include "hw/core/sysbus.h"
- #include "target/arm/cpu.h"
- #include "qom/object.h"
- #include "qemu/units.h"
-@@ -64,10 +65,8 @@ enum FslIMX7Configuration {
- };
+diff --git a/hw/watchdog/wdt_imx2.c b/hw/watchdog/wdt_imx2.c
+index c8ea704aa3..f5ba69ca7e 100644
+--- a/hw/watchdog/wdt_imx2.c
++++ b/hw/watchdog/wdt_imx2.c
+@@ -23,7 +23,7 @@ static void imx2_wdt_interrupt(void *opaque)
+ {
+     IMX2WdtState *s = IMX2_WDT(opaque);
  
- struct FslIMX7State {
--    /*< private >*/
--    DeviceState    parent_obj;
-+    SysBusDevice   parent_obj;
+-    trace_imx2_wdt_interrupt();
++    trace_imx2_wdt_interrupt(DEVICE(s)->canonical_path);
  
--    /*< public >*/
-     ARMCPU             cpu[FSL_IMX7_NUM_CPUS];
-     A15MPPrivState     a7mpcore;
-     IMXGPTState        gpt[FSL_IMX7_NUM_GPTS];
-diff --git a/hw/arm/fsl-imx7.c b/hw/arm/fsl-imx7.c
-index 2defa498d3..fc5d0efe06 100644
---- a/hw/arm/fsl-imx7.c
-+++ b/hw/arm/fsl-imx7.c
-@@ -753,15 +753,12 @@ static void fsl_imx7_class_init(ObjectClass *oc, const void *data)
+     s->wicr |= IMX2_WDT_WICR_WTIS;
+     qemu_set_irq(s->irq, 1);
+@@ -33,7 +33,7 @@ static void imx2_wdt_expired(void *opaque)
+ {
+     IMX2WdtState *s = IMX2_WDT(opaque);
  
-     device_class_set_props(dc, fsl_imx7_properties);
-     dc->realize = fsl_imx7_realize;
--
--    /* Reason: Uses serial_hds and nd_table in realize() directly */
--    dc->user_creatable = false;
-     dc->desc = "i.MX7 SOC";
+-    trace_imx2_wdt_expired();
++    trace_imx2_wdt_expired(DEVICE(s)->canonical_path);
+ 
+     s->wrsr = IMX2_WDT_WRSR_TOUT;
+ 
+@@ -90,7 +90,7 @@ static uint64_t imx2_wdt_read(void *opaque, hwaddr addr, unsigned int size)
+         break;
+     }
+ 
+-    trace_imx2_wdt_read(addr, value);
++    trace_imx2_wdt_read(DEVICE(s)->canonical_path, addr, value);
+ 
+     return value;
  }
+@@ -149,7 +149,7 @@ static void imx2_wdt_write(void *opaque, hwaddr addr,
+ {
+     IMX2WdtState *s = IMX2_WDT(opaque);
  
- static const TypeInfo fsl_imx7_type_info = {
-     .name = TYPE_FSL_IMX7,
--    .parent = TYPE_DEVICE,
-+    .parent = TYPE_SYS_BUS_DEVICE,
-     .instance_size = sizeof(FslIMX7State),
-     .instance_init = fsl_imx7_init,
-     .class_init = fsl_imx7_class_init,
-diff --git a/hw/arm/mcimx7d-sabre.c b/hw/arm/mcimx7d-sabre.c
-index 8905bf0016..c0fefbf3b9 100644
---- a/hw/arm/mcimx7d-sabre.c
-+++ b/hw/arm/mcimx7d-sabre.c
-@@ -52,7 +52,7 @@ static void mcimx7d_sabre_init(MachineState *machine)
-     object_property_add_child(OBJECT(machine), "soc", OBJECT(s));
-     object_property_set_bool(OBJECT(s), "fec2-phy-connected", false,
-                              &error_fatal);
--    qdev_realize(DEVICE(s), NULL, &error_fatal);
-+    sysbus_realize_and_unref(SYS_BUS_DEVICE(s), &error_fatal);
+-    trace_imx2_wdt_write(addr, value);
++    trace_imx2_wdt_write(DEVICE(s)->canonical_path, addr, value);
  
-     memory_region_add_subregion(get_system_memory(), FSL_IMX7_MMDC_ADDR,
-                                 machine->ram);
+     switch (addr) {
+     case IMX2_WDT_WCR:
+diff --git a/hw/watchdog/trace-events b/hw/watchdog/trace-events
+index b388f7b250..5963943d5d 100644
+--- a/hw/watchdog/trace-events
++++ b/hw/watchdog/trace-events
+@@ -18,10 +18,10 @@ aspeed_wdt_read(uint64_t addr, uint32_t size) "@0x%" PRIx64 " size=%d"
+ aspeed_wdt_write(uint64_t addr, uint32_t size, uint64_t data) "@0x%" PRIx64 " size=%d value=0x%"PRIx64
+ 
+ # wdt_imx2.c
+-imx2_wdt_read(uint32_t addr, uint16_t data) "[0x%" PRIx32 "] -> 0x%" PRIx16
+-imx2_wdt_write(uint32_t addr, uint16_t data) "[0x%" PRIx32 "] <- 0x%" PRIx16
+-imx2_wdt_interrupt(void) ""
+-imx2_wdt_expired(void) ""
++imx2_wdt_read(const char *qom_path, uint32_t addr, uint16_t data) "%s: [0x%" PRIx32 "] -> 0x%" PRIx16
++imx2_wdt_write(const char *qom_path, uint32_t addr, uint16_t data) "%s: [0x%" PRIx32 "] <- 0x%" PRIx16
++imx2_wdt_interrupt(const char *qom_path) "%s"
++imx2_wdt_expired(const char *qom_path) "%s"
+ 
+ # spapr_watchdog.c
+ spapr_watchdog_start(uint64_t flags, uint64_t num, uint64_t timeout) "Flags 0x%" PRIx64 " num=%" PRId64 " %" PRIu64 "ms"
 -- 
 2.55.0
 

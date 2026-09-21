@@ -4,70 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 760A3C982FA
-	for <qemu-arm@archiver.kernel.org>; Mon, 21 Sep 2026 21:52:16 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 82402C982FA
+	for <qemu-arm@archiver.kernel.org>; Mon, 21 Sep 2026 21:52:25 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1x8lrX-0006Cw-OR; Mon, 21 Sep 2026 17:47:47 -0400
+	id 1x8lrX-0006Ca-D0; Mon, 21 Sep 2026 17:47:47 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <shentey@gmail.com>) id 1x8lrJ-00065F-7X
- for qemu-arm@nongnu.org; Mon, 21 Sep 2026 17:47:35 -0400
+ (Exim 4.90_1) (envelope-from <shentey@gmail.com>) id 1x8lrL-00065p-J5
+ for qemu-arm@nongnu.org; Mon, 21 Sep 2026 17:47:40 -0400
 Received: from mail-wm2-x10.google.com ([2a00:1450:4864:31::10])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <shentey@gmail.com>) id 1x8lrH-0008WU-JK
- for qemu-arm@nongnu.org; Mon, 21 Sep 2026 17:47:32 -0400
+ (Exim 4.90_1) (envelope-from <shentey@gmail.com>) id 1x8lrK-00005L-2A
+ for qemu-arm@nongnu.org; Mon, 21 Sep 2026 17:47:35 -0400
 Received: by mail-wm2-x10.google.com with SMTP id
- 5b1f17b1804b1-49e620fa473so20875835e9.1
- for <qemu-arm@nongnu.org>; Mon, 21 Sep 2026 14:47:31 -0700 (PDT)
+ 5b1f17b1804b1-49b965f447cso29546585e9.3
+ for <qemu-arm@nongnu.org>; Mon, 21 Sep 2026 14:47:33 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20251104; t=1790027250; x=1790632050; darn=nongnu.org;
+ d=gmail.com; s=20251104; t=1790027252; x=1790632052; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to:content-type;
- bh=iO9iNINTzD2LX9sUzLOVLlEHC5CtR3JI1XqzgFFVw9o=;
- b=mw4xXXC3cTxTjAGozYlotrJuNloxpUfdW5GS+I7j1vslDFh3Jwmr+/J4/5l1vud/71
- oVOcsK6uOucw1cA7AtqrxO2pWDIlo2TQVZBlcCdU/KeyCCeko2zkxnvt9oXVGwdvOGNn
- qOhVtOXTWdB+8htc1h730M9ZjUgDs6K8NkYf4VHzsrPTEeOzog9pPNKfmIQRdP1YYbSE
- Q6dmm+8oY5whJeIEE7SnUm3JuxNHgXSqMAQb5D5ZiOIv12Wb3AhEMSwEf12xR6fs6Ak+
- o3sK9+1bZFBpAD2R2XNw8tc+1HVC4ukxMyRaEI3iztIcpe9Khewd4tC+tkntNVWzwZZz
- qemQ==
+ bh=soONDTbI+WRsqyuEHUC9+h7GsBIKaNJo3PQ06bbqgp8=;
+ b=nHEvOdB07TeeFwE14Vw1tLGSAEim4jAPSFskYVXoQWfTm5rcc+ZsxrY8uA+TQ3BAgQ
+ qDYRzAhkWl3fwqNGcBQXXqOR/mhEuUkFqeWWvJDeposOVj5zkbr4Pls9Uli0nRy2sbRQ
+ OxogC1hf8+sdMqAaHmwkViSfeld39PGa2XqjihOEoPtD7vef9b38xlKGthuCByunHBXA
+ i9jHUkHk4H7C0YE4JX6qKP+bbTh6+LHq3YU7A0Li+ze5pJvgg6FOVl1iDmKUZQxf2gLM
+ G0MhDv9820VVnbJXvpy6YStM9biK3Ez6fhmPVIwpumt8ZpIWK0jDTYhmiI9pnL7TNRUD
+ G4vA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20260707; t=1790027250; x=1790632050;
+ d=1e100.net; s=20260707; t=1790027252; x=1790632052;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
  :to:cc:subject:date:message-id:reply-to:content-type;
- bh=iO9iNINTzD2LX9sUzLOVLlEHC5CtR3JI1XqzgFFVw9o=;
- b=paRMgFG0oObHP7b0TgVxZeuFlBLIrYpH0mkKui0NdRXKVtpHa0BTu89kA4c8Rfv36Q
- QBQbvcNs4GIm73GWFCT4Zxre5VpT4KJ5WQi7tcfgG1P7FyQHuCjCET8Lbs49xia6D0l9
- JQKGg77SixF9VgwXngt/p1zUHi75HgR2ewPBBwbuWlfffMuT2KvR1WN/ndEwUMKWEmVA
- 6MTo0KEV9bDMqqvfsum7djk0bdFwGfIhbfYanF+QixDPa4mZJGpex7///eZON5Z8Yv/i
- IEV4suY3jF3Li/OG322+OirJHdRodrkG34xg7jcmc9jKyVticbcWVd9TdlZd7Subsiw5
- GevQ==
+ bh=soONDTbI+WRsqyuEHUC9+h7GsBIKaNJo3PQ06bbqgp8=;
+ b=muUo5oU44NMO5pIwlutPzRQFfcLZwi4Uu3w7fEOI6NNqmMJKbo/CjYP+uGBb9BSga5
+ vqAJcQyjw0dvsjLEMK5zX7ocRTCTWwWDqEqz6BuT6UGDAhncAhnYa4Ka6btUUvqUz8xf
+ /IOFfQ4e8rUlp/dEbSQVBWI2wFCmmFf9ULVDP+oxJgO0F7vdwMlcA+ETnp9zrwf1Hpdk
+ Yc2NXLNp5QMdN36pLjtN12abj75ubko3kRkJebjLSL05clMYANqa1gyUaaj57Q2yHT2b
+ OYjk4JU+GfCeBr81w1HTOuwBdYEHUFMG8HOz5090AsmUsl2yVtUJ7xRpiRq5DMOU+80Y
+ 8bTA==
 X-Forwarded-Encrypted: i=1;
- AKwUvBxB+FAzOsD9WSr0QZ02KdFreheMlobzwj0naiQWnfdYDKCqmlE4U1wcrTMSLbeVtJMZjZy1UOxvzw==@nongnu.org
-X-Gm-Message-State: AFuF++mQ2bbaD101pKCFz1j24mvyY+tBoTmcJtrWhewwQ6KPmnJp3lYq
- Qn9eZiA/ne9T7XDdIDn0yhfv990uKprphjnx1K0HvKj9hqZHeSzjTr9Z
-X-Gm-Gg: AYBFou16ECxIUd/AfPTHkbFXFf1hEgcNYy07InhL9pr6OF7ejhudIdlJXrCpxoPUGL3
- TfdUyFCuBTswQ6zf3XgQIRflHXJ3vAKK0tl03bhjaY9Nty24uxtw7/2VKJruzpr5AgsL+LlEvs+
- lGOsCuEylBblNuITmKJ1kBr7ADtp2pUcon2EbZzRNrxh2tQkD47z/t31gUMLlxc9UiZLbYxITRM
- 0E6msPtmo93J6ePJO6e0mLxSD0K1kkB47dD9NstZ2MQ+J6v0bC3hRWax29W+LjEG8QnlvXxQZHQ
- itNFkaHXVFjbMRuIOMSlxtIRoK7kh3chuuWZqVXxscK4bRw8lAll+5zt64Nb0e/t1FzDGFLq+DU
- 4aoFbE2qGAJFUhzaoIGGU5wThvWSy4fF3YO4FS7N4rqj4S+NcD6TNfKu2o3rlTzKGpqm7vWPFAa
- 53Nw1QmQKDc8a5h9zxzUwsAaV8KDuGqxDD9uu24NOJD86d0LwiBF5ws10Cyn0Q8eV2FwRi1wJG/
- 5txxfLfbd+Vd9PN7Qlt+ke7GvWxKHKyeWaYyk4AuT+N4L3ds8gWylLE8mr9tsECLKosQDT2+jNd
- BYM=
-X-Received: by 2002:a05:600c:4e42:b0:49c:fea3:8633 with SMTP id
- 5b1f17b1804b1-49fc5750a8amr168804465e9.24.1790027250229; 
- Mon, 21 Sep 2026 14:47:30 -0700 (PDT)
+ AKwUvBx9HpdnJmQRzxdffa3ICWOllNxmOmMjm95yoora4Kvov7eNDvcNCvrjk1NxVaj1/kJ2am3RgXyo/A==@nongnu.org
+X-Gm-Message-State: AFuF++n5qixApJLWnmxOADn6OlxyMSdioPHLYIyXPAm1shmQfBs1YdTv
+ kXdH2iLQe33jqK3FyYwNyzxRte/vqz6AyDTiYMKJgunOepKmQlmOo8+O
+X-Gm-Gg: AYBFou0L5MBkXLM6HAZgngbKq/J8myItM6UznLDpyRZzDHv3A6WTyuEs50oNyIYxhzt
+ ZBmCSv0KxkDiEUQplZ0v8PutwYZU0/l+6f7XO5YmEmS0nYd5wrw/6lrUk7qf9yFkBl50JSTJnKP
+ V+3gfTiDjRkNZi7AVHKHfn/7r2oY5c+OH8TVFw31MA3tjN9HBv0c7DMa4klPVdP8N7WLxkw23DZ
+ 6/VCSARaogYzxLgxcKna3uwdy+C/TBSmmdeKEy7nxEBUa8o34tjNVlmuzKTEgChi89B4tSsGnr2
+ k0rGgy+d1UqpIxOJO2Tv13bYJMolua17zYomdzlKpqjit9BiLLGcugSxxTjbQ42dcGV0WswW/ir
+ xxB2yEo63FhGz4MNTv9NV+dA117Z50vfEuosiWyeaMuGT7R+jC9cbv6hkEL6ONSfkp+s3I67A/A
+ CAcSFcFbE92ZpCjcD+tblOuYNoHer5+L1u8fsWWa/mk7bOa5huOsLQd/U3tW5Ri6dDY1jAp1Qkn
+ +jtJwMCJsEQgDy1SPg8RkgRA/3fbVVLXq9femmTURH3UhQAtRzzVsp0OSGaCENF9I+AZ975H6U9
+ BSx5
+X-Received: by 2002:a05:600c:5492:b0:49d:39:90ba with SMTP id
+ 5b1f17b1804b1-49fc5669330mr170281785e9.3.1790027252430; 
+ Mon, 21 Sep 2026 14:47:32 -0700 (PDT)
 Received: from Provence
  (dynamic-2a02-3100-1c91-bf00-0219-99ff-feb2-2458.310.pool.telefonica.de.
  [2a02:3100:1c91:bf00:219:99ff:feb2:2458])
  by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-49fda0ce29fsm4986905e9.6.2026.09.21.14.47.29
+ 5b1f17b1804b1-49fda0ce29fsm4986905e9.6.2026.09.21.14.47.30
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 21 Sep 2026 14:47:29 -0700 (PDT)
+ Mon, 21 Sep 2026 14:47:31 -0700 (PDT)
 From: Bernhard Beschow <shentey@gmail.com>
 To: qemu-devel@nongnu.org
 Cc: Phil Dennis-Jordan <phil@philjordan.eu>,
@@ -80,9 +80,9 @@ Cc: Phil Dennis-Jordan <phil@philjordan.eu>,
  Bernhard Beschow <shentey@gmail.com>,
  Jean-Christophe Dubois <jcd@tribudubois.net>,
  Gaurav Sharma <gaurav.sharma_7@nxp.com>
-Subject: [PATCH 03/42] hw/arm/imx8mm-evk: Fix reference count of SoC object
-Date: Mon, 21 Sep 2026 23:46:31 +0200
-Message-ID: <20260921214710.29422-4-shentey@gmail.com>
+Subject: [PATCH 04/42] hw/arm/mcimx7d-sabre: Ignore memory transaction failures
+Date: Mon, 21 Sep 2026 23:46:32 +0200
+Message-ID: <20260921214710.29422-5-shentey@gmail.com>
 X-Mailer: git-send-email 2.55.0
 In-Reply-To: <20260921214710.29422-1-shentey@gmail.com>
 References: <20260921214710.29422-1-shentey@gmail.com>
@@ -112,34 +112,29 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Using sysbus_realize_and_unref() requires object_new() rather than
-object_new_with_props(), otherwise the initial reference count is
-subtracted twice, i.e. ends up being one too low.
+When using mcimx7d-sabre with newer Linux versions such as 7.0, the
+machine fails to boot. This happens due to memory transaction failures
+since the address space is not fully covered with unimp devices. Fix
+booting by ignoring memory transaction failures in the machine.
 
-Fixes: 7bcd1f30bc83 ("hw/arm: Add the i.MX 8MM EVK(Evaluation Kit)
-board")
 cc: qemu-stable
-Reported-by: Peter Maydell <peter.maydell@linaro.org>
 Signed-off-by: Bernhard Beschow <shentey@gmail.com>
 ---
- hw/arm/imx8mm-evk.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+ hw/arm/mcimx7d-sabre.c | 1 +
+ 1 file changed, 1 insertion(+)
 
-diff --git a/hw/arm/imx8mm-evk.c b/hw/arm/imx8mm-evk.c
-index c3215b11cb..6de0d9c4a2 100644
---- a/hw/arm/imx8mm-evk.c
-+++ b/hw/arm/imx8mm-evk.c
-@@ -83,8 +83,8 @@ static void imx8mm_evk_init(MachineState *machine)
-     ims->bootinfo.psci_conduit = QEMU_PSCI_CONDUIT_SMC;
-     ims->bootinfo.modify_dtb = imx8mm_evk_modify_dtb;
+diff --git a/hw/arm/mcimx7d-sabre.c b/hw/arm/mcimx7d-sabre.c
+index 65fdb19c06..8d223fca6c 100644
+--- a/hw/arm/mcimx7d-sabre.c
++++ b/hw/arm/mcimx7d-sabre.c
+@@ -83,6 +83,7 @@ static void mcimx7d_sabre_machine_init(MachineClass *mc)
+     mc->max_cpus = FSL_IMX7_NUM_CPUS;
+     mc->default_ram_id = "mcimx7d-sabre.ram";
+     mc->auto_create_sdcard = true;
++    mc->ignore_memory_transaction_failures = true;
+ }
  
--    s = FSL_IMX8MM(object_new_with_props(TYPE_FSL_IMX8MM, OBJECT(machine),
--                                         "soc", &error_fatal, NULL));
-+    s = FSL_IMX8MM(object_new(TYPE_FSL_IMX8MM));
-+    object_property_add_child(OBJECT(machine), "soc", OBJECT(s));
-     object_property_set_uint(OBJECT(s), "fec1-phy-num", 1, &error_fatal);
-     sysbus_realize_and_unref(SYS_BUS_DEVICE(s), &error_fatal);
- 
+ DEFINE_MACHINE_EXTENDED("mcimx7d-sabre", MACHINE, Mcimx7dSabreMachineState,
 -- 
 2.55.0
 

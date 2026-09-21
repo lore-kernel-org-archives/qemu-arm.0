@@ -4,70 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AAEA5C982ED
-	for <qemu-arm@archiver.kernel.org>; Mon, 21 Sep 2026 21:49:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3DC80C982E6
+	for <qemu-arm@archiver.kernel.org>; Mon, 21 Sep 2026 21:49:09 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1x8lra-0006Ez-JO; Mon, 21 Sep 2026 17:47:50 -0400
+	id 1x8lsJ-0006vR-IX; Mon, 21 Sep 2026 17:48:36 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <shentey@gmail.com>) id 1x8lrW-0006C1-Vu
- for qemu-arm@nongnu.org; Mon, 21 Sep 2026 17:47:47 -0400
+ (Exim 4.90_1) (envelope-from <shentey@gmail.com>) id 1x8lsD-0006kG-3A
+ for qemu-arm@nongnu.org; Mon, 21 Sep 2026 17:48:29 -0400
 Received: from mail-wm2-x11.google.com ([2a00:1450:4864:31::11])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <shentey@gmail.com>) id 1x8lrV-0000Fm-86
- for qemu-arm@nongnu.org; Mon, 21 Sep 2026 17:47:46 -0400
+ (Exim 4.90_1) (envelope-from <shentey@gmail.com>) id 1x8lsB-0000QH-Gc
+ for qemu-arm@nongnu.org; Mon, 21 Sep 2026 17:48:28 -0400
 Received: by mail-wm2-x11.google.com with SMTP id
- 5b1f17b1804b1-49e6c0fce17so18060195e9.1
- for <qemu-arm@nongnu.org>; Mon, 21 Sep 2026 14:47:44 -0700 (PDT)
+ 5b1f17b1804b1-49b965f447cso29549195e9.3
+ for <qemu-arm@nongnu.org>; Mon, 21 Sep 2026 14:48:17 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20251104; t=1790027264; x=1790632064; darn=nongnu.org;
+ d=gmail.com; s=20251104; t=1790027296; x=1790632096; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to:content-type;
- bh=aCOuDUQQDEf2I7oG2JwN9ej8+crUFjuKJauRWBAbjB8=;
- b=P695PZYQin9nmgA9KGtqxtbcPveiSHTKb7GaNqNG7+/SU8XkiqXt6ZLq8j+OR/cd46
- GdwjEXYwrlB+GB7iRidEilYzzLbl3uOXPYkqMZKgP0quvNDxom4bmOfm7TtFvAE4DAC1
- UJNj2FBPSm+1xjU800v/KpB6QVhK16lG4AEYN0xVyIWRzBH1B9h1QIKoraTRGoYCijOW
- bYOJOzuuc2FSnJtdyoF7j8qV+60SMYwLHQMNZjQXMojY3zJ2IZywomXkl8oyFo09iAZG
- g5uvvxYayZZYuGOCaFsoiZm/3MO4H9x0RK1kJOIsKZcJK7XVMozzqaLdPE3r3H/g54nH
- zjWg==
+ bh=CUS9A8hWbDyBG/5uxhxg2kV3QDj5nSuCczg8XGeFQDM=;
+ b=Za5SgfYVOwXW04FJED9hpEgQChGIxEF0C0fzgzrmh5XDFB6NNJHHjdXKgYlJVEDPTl
+ oOYbyRdU8Wnbxx8wiQ9wDghy4M92fa9QblRvIvlaFHNVl5sesdb63R2HjwzTnE6VYpnb
+ nlu3R3TVTtbRS+JdmPhHFj9xsjf4uEaXPJ8W12QNAFmeXEyecuPCTpvnd6jwzvJoY6LE
+ tNlV0S5HrnCzzOZbAZIBfGfGtHjmiYIT+AKQAQ2Ft6UrGi9VIhqHTdGcicYi4nQhxb/y
+ xhwd0wmWmYW0kRASKsfxfIme/+rGR4PN1uFCTmjw5+Z9nbQMtDMkEU2MZQOuc3h08qlR
+ OeCQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20260707; t=1790027264; x=1790632064;
+ d=1e100.net; s=20260707; t=1790027296; x=1790632096;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
  :to:cc:subject:date:message-id:reply-to:content-type;
- bh=aCOuDUQQDEf2I7oG2JwN9ej8+crUFjuKJauRWBAbjB8=;
- b=j8iepzITGa8tSemC86gXyNVYEYp763t8OcKhyEEGW9Ya6UoaaTbMcG8A4O1TWFvFb3
- mUP/vuqgnQ5/faNOcv6FYPFV0GV78w3pUDaDfdnhcpcmJBB05zD0u/hCy4jRdwhZZea5
- u4n4JBbZr916U3hLBNbuYZtkkcuzKUMiArc+KgXfCwQrZGIq+MzRuy80bbQp5BwqlTrX
- yRxkcb057PBADiVosCT5m5yDqsJTfoZ9FCDd8m44yA5MYlsB8iRsvDxlq07NnoRtzvzN
- oBOWxlFEggSdqtBuYAvFXLFpUSfXKDCg6ykfQrTzN8rolyxuGBltq8ihQAWwdJsrkDEV
- 84Hg==
+ bh=CUS9A8hWbDyBG/5uxhxg2kV3QDj5nSuCczg8XGeFQDM=;
+ b=Em7hWF51Bs5LfRKa3gueGnVn0lYbzfq8OD4o8ISkb+VjnDKr31219IkzNFMsooCWFk
+ d5XG6xHitZ16GfA64Fvj8rYqGobtGZhnixAls4HA8Rl65LaYD9hk+SGmicf2M7MYK+31
+ 8QBd8m/2CMPCqJoFbiCJ8csyAGAu98RmM+lj6+pd4w/Pi2Kak+hNCl0AYIKUtbFABRoa
+ msx4yfIoN5DwRNGD0lm49t8+kB+yl9CobMlf3jwYgaN6BmqVYPVs0HzMLRik7ssNuEOv
+ XDljW6Ch1y0A3nEDbbNCkOmWMKRoA0ud1eMqAODBwUnXSIMvkRem2w2XMF3RPcXeLLGg
+ 7Txg==
 X-Forwarded-Encrypted: i=1;
- AKwUvBzuPZwDl6S1wKW1j+nm/MX5fRW7mxrlmP42Q5PjbrWJNZO6GEz3Jg96HNG5yrbNkZm0bJJIF+yKdQ==@nongnu.org
-X-Gm-Message-State: AFuF++nYmMERCKa6lmxC5BXLu+uW+WZqcLcUhRdNq4vO1yKnc1fY+J4I
- 98moNYUfNmdJLUJZ1Tmorkx76EUAXQ9rEHsmmOiwUyiRU8cHiz31zrij
-X-Gm-Gg: AYBFou1IBZUD/MEvLDujhRF2E3M+uFTpntmpdQzGl4FxtqdYuMR3BGOimUciQZqLOcT
- NpLVjDpNvo51v05Ohe8DVvFJ3n89T3Xv0COCg+PfhXxCWE8YKjTnd+GUhqA/Bn0SNyo/QEZ5k7m
- 0oZarf5S53AY96MyKA/FLXDIfv4IEHIY0cO2vB/bHpHpnXKhqXlle6n+1OvfeNi21+Iy85Sm1KX
- mJSzTVijKSoNiHbIVuKX3x0Np7TjXRsSizkzoaOlmPnw/9Z03CEf6LArXPMA9jKaDhSXAOFkF5p
- ZoqbVsdpxyfvJsFVK4JLUoAk5Pf2oJ6WrYa0yu2urgMIMwwIFjxRMheWK0EfzAZu5RZvpPSSdtx
- ilJf7g27W3Kidyj8xzFYSGAkCOI/5yUnxmNGs4/kDHerzbb4eSbrrV2e5rhBW4pkyY2zwxPNrKq
- eMqLurMvXCaCNrDmAaG4dT3KF+xOPtA6oEdriMdPI/XfQbhMmrjafT68JBAo+aeogIppDwuZ8Jq
- 0ATRJ/vaIla90nWlepA4MLCamk0ps77zmuDGKS3/6Tarv76Zvgr5JnzczXWSywuaaeStd/rWOEb
- 6Talzm639OGvXg==
-X-Received: by 2002:a05:600c:4e0a:b0:49d:29ab:540b with SMTP id
- 5b1f17b1804b1-49fc5723f3cmr175548485e9.15.1790027263806; 
- Mon, 21 Sep 2026 14:47:43 -0700 (PDT)
+ AKwUvBy9oAJ6cwI9Stsw3FXYoZt4YteDdBOYn10NcMzrSPz48xDUMGnR+iSmb5g3v0cm9DnG9DgYc8qJuQ==@nongnu.org
+X-Gm-Message-State: AFuF++mjlv67b8/Iawd2E4zOSoXaKksreF3owDM2AF2B4hcmflyzb7k3
+ gl71PK/uqlrV+0EMoWQHhSx6Wj5SzvD/2qm2mqm6UjX+o1udD0uVqzyL
+X-Gm-Gg: AYBFou2avohFOxu1TENEMKQQfhdZXq9NVA1RT8HFaPlOjyFiGXLRO4f6yIAieY7CZCT
+ gsNN2Xtsk/ya3w0CBU4fXybO2Z+znwzMdQsbTxucxMnhpdgMnixsZ8pn8YNB6LelqelyQzjgS7t
+ A34b4g3VwTqYspWa0l0OjKiz7pGINyxskwe41IaVmdRsOb/Taft6cNe/epkRZP7E9QuaYOkqIO3
+ u1ubuj2RhiGHV01BPtKXzq7tU5t32mRkk6FcR6J7zArzudfEz+4qBj8qbR+1GwF4K+Bit3541TF
+ oi8BNdToXlg4uK2wBk4cxgtrrhI5ix7Tmu2t4fZy+3OSBP6RDUat+V1YQFN8/LzGp8KhNQsSKxL
+ r3Vol5mHx0POxQUgBKy0sGmAyAnKDHEC+hUuKMbreq7K/ykGgXxULOu9bzvgzn7bhF1uTxpNnrO
+ EbNEVVu+I45ODS4KCq3OMU1D8TbCdpI5FpdccYvtOJNuOUflzRb7e2GGYl5HBJJqDbcQp1cLX8d
+ +ZyWgAviNmZlwbue1kjJrj3DgQiMyDI5hSakZeL8WV9taSSRdUMD8yH3L7Ewd4vsqQJToapQ9bd
+ xI8=
+X-Received: by 2002:a05:600c:4f8c:b0:49f:c18a:61c8 with SMTP id
+ 5b1f17b1804b1-49fc573f858mr171411175e9.29.1790027296094; 
+ Mon, 21 Sep 2026 14:48:16 -0700 (PDT)
 Received: from Provence
  (dynamic-2a02-3100-1c91-bf00-0219-99ff-feb2-2458.310.pool.telefonica.de.
  [2a02:3100:1c91:bf00:219:99ff:feb2:2458])
  by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-49fda0ce29fsm4986905e9.6.2026.09.21.14.47.42
+ 5b1f17b1804b1-49fda0ce29fsm4986905e9.6.2026.09.21.14.48.14
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 21 Sep 2026 14:47:42 -0700 (PDT)
+ Mon, 21 Sep 2026 14:48:15 -0700 (PDT)
 From: Bernhard Beschow <shentey@gmail.com>
 To: qemu-devel@nongnu.org
 Cc: Phil Dennis-Jordan <phil@philjordan.eu>,
@@ -80,9 +80,9 @@ Cc: Phil Dennis-Jordan <phil@philjordan.eu>,
  Bernhard Beschow <shentey@gmail.com>,
  Jean-Christophe Dubois <jcd@tribudubois.net>,
  Gaurav Sharma <gaurav.sharma_7@nxp.com>
-Subject: [PATCH 12/42] hw/arm/fsl-imx31: Derive from TYPE_SYS_BUS_DEVICE
-Date: Mon, 21 Sep 2026 23:46:40 +0200
-Message-ID: <20260921214710.29422-13-shentey@gmail.com>
+Subject: [PATCH 37/42] hw/intc/imx_avic: Avoid casting from void *
+Date: Mon, 21 Sep 2026 23:47:05 +0200
+Message-ID: <20260921214710.29422-38-shentey@gmail.com>
 X-Mailer: git-send-email 2.55.0
 In-Reply-To: <20260921214710.29422-1-shentey@gmail.com>
 References: <20260921214710.29422-1-shentey@gmail.com>
@@ -95,7 +95,7 @@ X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -111,75 +111,42 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Deriving from TYPE_SYS_BUS_DEVICE fixes the SoC object to be reset upon
-machine reset.
-
 Signed-off-by: Bernhard Beschow <shentey@gmail.com>
 ---
- include/hw/arm/fsl-imx31.h | 5 ++---
- hw/arm/fsl-imx31.c         | 7 +------
- hw/arm/kzm.c               | 2 +-
- 3 files changed, 4 insertions(+), 10 deletions(-)
+ hw/intc/imx_avic.c | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
 
-diff --git a/include/hw/arm/fsl-imx31.h b/include/hw/arm/fsl-imx31.h
-index 41232a2237..ea916de15a 100644
---- a/include/hw/arm/fsl-imx31.h
-+++ b/include/hw/arm/fsl-imx31.h
-@@ -25,6 +25,7 @@
- #include "hw/i2c/imx_i2c.h"
- #include "hw/gpio/imx_gpio.h"
- #include "hw/watchdog/wdt_imx2.h"
-+#include "hw/core/sysbus.h"
- #include "system/memory.h"
- #include "target/arm/cpu.h"
- #include "qom/object.h"
-@@ -38,10 +39,8 @@ OBJECT_DECLARE_SIMPLE_TYPE(FslIMX31State, FSL_IMX31)
- #define FSL_IMX31_NUM_GPIOS 3
+diff --git a/hw/intc/imx_avic.c b/hw/intc/imx_avic.c
+index a3d71aba8e..d05c71fb39 100644
+--- a/hw/intc/imx_avic.c
++++ b/hw/intc/imx_avic.c
+@@ -89,7 +89,7 @@ static void imx_avic_update(IMXAVICState *s)
  
- struct FslIMX31State {
--    /*< private >*/
--    DeviceState parent_obj;
-+    SysBusDevice parent_obj;
+ static void imx_avic_set_irq(void *opaque, int irq, int level)
+ {
+-    IMXAVICState *s = (IMXAVICState *)opaque;
++    IMXAVICState *s = opaque;
  
--    /*< public >*/
-     ARMCPU         cpu;
-     IMXAVICState   avic;
-     IMX31CCMState  ccm;
-diff --git a/hw/arm/fsl-imx31.c b/hw/arm/fsl-imx31.c
-index 190f863355..dd929c1085 100644
---- a/hw/arm/fsl-imx31.c
-+++ b/hw/arm/fsl-imx31.c
-@@ -224,16 +224,11 @@ static void fsl_imx31_class_init(ObjectClass *oc, const void *data)
+     if (level) {
+         DPRINTF("Raising IRQ %d, prio %d\n",
+@@ -108,7 +108,7 @@ static void imx_avic_set_irq(void *opaque, int irq, int level)
+ static uint64_t imx_avic_read(void *opaque,
+                              hwaddr offset, unsigned size)
+ {
+-    IMXAVICState *s = (IMXAVICState *)opaque;
++    IMXAVICState *s = opaque;
  
-     dc->realize = fsl_imx31_realize;
-     dc->desc = "i.MX31 SOC";
--    /*
--     * Reason: uses serial_hds in realize and the kzm board does not
--     * support multiple CPUs
--     */
--    dc->user_creatable = false;
- }
+     DPRINTF("read(offset = 0x%" HWADDR_PRIx ")\n", offset);
  
- static const TypeInfo fsl_imx31_type_info = {
-     .name = TYPE_FSL_IMX31,
--    .parent = TYPE_DEVICE,
-+    .parent = TYPE_SYS_BUS_DEVICE,
-     .instance_size = sizeof(FslIMX31State),
-     .instance_init = fsl_imx31_init,
-     .class_init = fsl_imx31_class_init,
-diff --git a/hw/arm/kzm.c b/hw/arm/kzm.c
-index 387bf54ced..1e139c2c1f 100644
---- a/hw/arm/kzm.c
-+++ b/hw/arm/kzm.c
-@@ -69,7 +69,7 @@ static void kzm_init(MachineState *machine)
+@@ -217,7 +217,7 @@ static uint64_t imx_avic_read(void *opaque,
+ static void imx_avic_write(void *opaque, hwaddr offset,
+                           uint64_t val, unsigned size)
+ {
+-    IMXAVICState *s = (IMXAVICState *)opaque;
++    IMXAVICState *s = opaque;
  
-     object_initialize_child(OBJECT(machine), "soc", &s->soc, TYPE_FSL_IMX31);
- 
--    qdev_realize(DEVICE(&s->soc), NULL, &error_fatal);
-+    sysbus_realize_and_unref(SYS_BUS_DEVICE(&s->soc), &error_fatal);
- 
-     /* Check the amount of memory is compatible with the SOC */
-     if (machine->ram_size > (FSL_IMX31_SDRAM0_SIZE + FSL_IMX31_SDRAM1_SIZE)) {
+     /* Vector Registers not yet supported */
+     if (offset >= 0x100 && offset <= 0x2fc) {
 -- 
 2.55.0
 

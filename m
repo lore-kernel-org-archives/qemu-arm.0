@@ -4,70 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id F1671C982ED
-	for <qemu-arm@archiver.kernel.org>; Mon, 21 Sep 2026 21:51:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 48551C982FB
+	for <qemu-arm@archiver.kernel.org>; Mon, 21 Sep 2026 21:51:59 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1x8lrz-0006Wy-Mr; Mon, 21 Sep 2026 17:48:15 -0400
+	id 1x8lrs-0006Rf-1q; Mon, 21 Sep 2026 17:48:08 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <shentey@gmail.com>) id 1x8lru-0006UU-US
- for qemu-arm@nongnu.org; Mon, 21 Sep 2026 17:48:11 -0400
+ (Exim 4.90_1) (envelope-from <shentey@gmail.com>) id 1x8lrn-0006Lp-Iq
+ for qemu-arm@nongnu.org; Mon, 21 Sep 2026 17:48:03 -0400
 Received: from mail-wm2-x11.google.com ([2a00:1450:4864:31::11])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <shentey@gmail.com>) id 1x8lrt-0000KR-7Q
- for qemu-arm@nongnu.org; Mon, 21 Sep 2026 17:48:10 -0400
+ (Exim 4.90_1) (envelope-from <shentey@gmail.com>) id 1x8lrl-0000Ig-GU
+ for qemu-arm@nongnu.org; Mon, 21 Sep 2026 17:48:03 -0400
 Received: by mail-wm2-x11.google.com with SMTP id
- 5b1f17b1804b1-49b965f447cso29548125e9.3
- for <qemu-arm@nongnu.org>; Mon, 21 Sep 2026 14:47:58 -0700 (PDT)
+ 5b1f17b1804b1-49e7d2bb404so11489925e9.1
+ for <qemu-arm@nongnu.org>; Mon, 21 Sep 2026 14:47:51 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20251104; t=1790027278; x=1790632078; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:from:to:cc:subject:date
- :message-id:reply-to:content-type;
- bh=dlt/Zrvpm5DPolffO7GvY/8CD2eqY4PDiJZPEyKeDWU=;
- b=Z8K6XPM1qiPVX9oEzDhH4i4+bF6fmg25LQMVm29YfV0ssMZS4fokQgzOT0jrYd+2CY
- Iu1aZwbE0KsbcilbeHL6r7xt6wTWa5jcJNgNQhX2cNzPZcyKiq5iMRHPy8nGlOCqeskN
- EZEgHuCxvjawCBnwbIyXgAeDqNOm+7+g/NAKAyP+JpQKM5hEeX9345iFul/JTMEUvuye
- LeytF19PHMuad2U0Cw3wBil03DRUjGN5NurWlY9IVrDvt5Wp9wIBmdz2u3frjdfnXIiz
- uR3RZ+35NLwcXJMTMIt8WnlpBixYoekwjYRLdphvAaafe/x85omOl5Iw4h1fifsjAixX
- lorQ==
+ d=gmail.com; s=20251104; t=1790027270; x=1790632070; darn=nongnu.org;
+ h=content-transfer-encoding:content-type:mime-version:references
+ :in-reply-to:message-id:date:subject:cc:to:from:from:to:cc:subject
+ :date:message-id:reply-to:content-type;
+ bh=ljR86Ogn1pTIjM5VRsg2z81z+XkuaXzg3tx6lmKPiqc=;
+ b=NgHXcPsj6wLTQZbjBXTHGyjQXvGL3XEoZlyGZ04nZKwWA2w1slNC6uo0KanfVHJOBG
+ eNg0B0rkMhZ8MV/POl9b+4ZBr5xq3atCZLKg1MkhQv0qws1NO8/5pTioK6FcuisxTnJf
+ 4uhisnRTEY6R12+RwlnAJCp4sCgr85mSGE1ZWRkO4PhkjFL0hmrd3shr5yA0qNrzSDST
+ yzMhvK26cnNiOmUcNCpqScvA4QjDOfI9rNMXLddvk5WGf4XoagSAs0sP49Mqq8vJ4OrJ
+ fr4yghYmx4q6HGM7pTaviyCM2u+LoN0LzkmZkvGaJL8++LVXkG5fdf0hjqXCZwCmCAkc
+ XndA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20260707; t=1790027278; x=1790632078;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
- :to:cc:subject:date:message-id:reply-to:content-type;
- bh=dlt/Zrvpm5DPolffO7GvY/8CD2eqY4PDiJZPEyKeDWU=;
- b=DS/fIo1+HmfpWQJYC6RqvI7HH5Q6oGLaHVtVaC1QPI6PHYiNVTZJbzFzNFgQpqjCFK
- r/d45mOdaSKHvzQRv+g5gbiPXYHkL00I7Wnt78MxEgJM5RF2jVIaPZIPJrHrrtYpXAF1
- e5rk8KuMcBkL0D8WLQx03cejCqru5PzfTEKi/2mojFtHGHy3lxv7EFRTptfPiTUvOD28
- xIvrG+X86w4d3u+Us9W/JEiFSHXOMynG5rj/MVLYHwvfNlxhPHRh7DZMdGnWyINdRrFy
- o36SfQFxJvymkfuHPbZ2RybKc6bvwTnd42d9e8v92yfIzCVeSlVzwSlVzE8S7MChQ8Oy
- D0iA==
+ d=1e100.net; s=20260707; t=1790027270; x=1790632070;
+ h=content-transfer-encoding:content-type:mime-version:references
+ :in-reply-to:message-id:date:subject:cc:to:from:x-gm-gg
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
+ :content-type;
+ bh=ljR86Ogn1pTIjM5VRsg2z81z+XkuaXzg3tx6lmKPiqc=;
+ b=QpKu5fdBGh6YhbZLtni+msvFWtxI8jrUQqjGsIbl4MFVFYpHQa4rvxJ1LMOdBlNFwN
+ 32UmWlF/HtCi5f3F/BhEgG9raDeIrxWo6EIekjCknxvs+zItsqA/0eL79s2di0zLsDjU
+ mdxhen+VC7zlYdGfOFwiHiCK2CLqaUPLoi+rz3hqwFOdUjzcQQJGbGCNC5DCt5VKOTS1
+ HQEKizkU4nGbEeqLtQUNsQLeLJHa1rsN55M8QDwxlkMXZYyi6Cr2F+D5VAwOtSOJGx59
+ CPq0/hJercDDs1/TzssUo4T3p9lHzh2wKTmwHBcYUOHaNnLjlCuBvoBvGu5flnsD+H31
+ Gb6Q==
 X-Forwarded-Encrypted: i=1;
- AKwUvBxk6WF28lL9lblBtlQ1SwOD4L7t5uuJYl9b00oY87Z+kJ9FM8L1FFby6DaFzBrLHabzG3TWp4+oyw==@nongnu.org
-X-Gm-Message-State: AFuF++n8fk72ymhOfBcYp2etdYNZKJSQ4bHeZ6Sh9jFeULIxuIkVc8mm
- msZg3OVNn/6oyt0c3vmVZpKeYv06+vtB+UyvSFFpr0NYrI5q7anWU4SG
-X-Gm-Gg: AYBFou3cDa5iLbjVj14efX76fBg/SDEn9s0Mq2GTZk6/G9r9skC931P8UAKPpCwrxZl
- qRFmsybWmimg9Tm6fYTDQnDnPdUA0ZBPS8r6BPWh6w3KbHEujyUHXpB20r1rb0QJj499Btc4ZUP
- ptOFtRgCg6I2Pw3/NZeiki1raCUpnUQOUu1+dSz5ht/Q6t3wT+pv63HRNxtC4Unxcv2JNTLI+VX
- Encd7JgKWF59Gyxg7FzeQ10cQ8oGuYHkFQ02IDNLNUUfSDdpcM1GrevFUuvzpE9ADx8rXtvUVXx
- NtXA8Yve/+ofgU7K1cu5wQdUJ/jKsZGaVA7I5cqFvMeiBMDbwP+KgVDBDYMSar+qmfIFQsT6xaK
- dXQVFsIZNmSV95p+Rhme4pYWow4Quax5oTKdWjbHnUKN8d2Of1xjw4o0p8v3bOLVmLMlTPtIgck
- 6GcqXMQ0l8spMzbCElPtdtpDWoqROC1H6SfHTwG4mrRP92EWLHQIF9DJT5vv4aot9qQIUmM4xsN
- N4xVhUu8OkvfYeAhn10SS6VipwBaC3zT8wyeE8VXa419YKCZ4fJzXDJIo6NRRlKruiMXwEHUNVq
- DDE=
-X-Received: by 2002:a05:600c:6819:b0:49c:fa20:cbfc with SMTP id
- 5b1f17b1804b1-49fc5728f8fmr177595715e9.19.1790027277782; 
- Mon, 21 Sep 2026 14:47:57 -0700 (PDT)
+ AKwUvBzK83LibB3XYJSrSVVfVYOmPQu94isvQ851guKgm1MoEmVkV8ZLsbE+MSx5L61kY/zHl4fnJVQHlg==@nongnu.org
+X-Gm-Message-State: AFuF++nKmwsxkP40GNJzJML90qegcB1uDpOnfM074ERaGYFVvZNGwZwb
+ wJJ53NayAw7jwZklJXoxYGquL2nrNTJVXjENYiCvQHEF/OHdLh2jwMKS
+X-Gm-Gg: AYBFou2uf9ugY2nQel1APXI4riVjauw4ba+hC9JNA4f880cMAQ2XgQSRHTAJWtZhbIO
+ nnbotE0JNoYyYVqleE5Fp1zAyO5acO7OXDOdrAUUJz8Zsx+fRa24q7Crok4bxxZJKG/1UJ0v65C
+ 6MWBPAF2sP8+RPTuCg0IzsX/FlC4e7R6F+/2t9yX+FdkaOSQqG5I7DXQI/0WsjdTs22eVu4eP5E
+ Zx2P7ifvTGqV8rO8IA7s9oiECBOLW4Sf5yg34wY+7QVD3prXfXNrFv2m2/JFYG6GJOw7Y1ERAS+
+ 0rQkTgs6rRc5ZZ0mU7hMvfDtIX4vvzMcYooJMuKLP01kzVuQ5dpBREUWBOqFpyDksfKv5KW9SNo
+ ATBNlHzgeFqFT8qfQfPf86aydUg3KOXg/IRwOEFInHdZ3yV+aucyWLYwiSFVgsV9nPJN64sgAJY
+ SwhfCzy6Sud0LaodekN9QGk0PsfVP2NMKyKDowTy/UAxrNhEj9qYoB8tYewQKruERqHXebQ4xpo
+ +j6YklVAKaa0AP5dUNm/sPu7Qz+ch4bPRnplLz1uhDAWg2xtMd8pNQ+fs08vD7VSFpu7AQxslHI
+ vug=
+X-Received: by 2002:a05:600c:620f:b0:49e:8222:3451 with SMTP id
+ 5b1f17b1804b1-49fd8a6cdb7mr12212775e9.14.1790027270048; 
+ Mon, 21 Sep 2026 14:47:50 -0700 (PDT)
 Received: from Provence
  (dynamic-2a02-3100-1c91-bf00-0219-99ff-feb2-2458.310.pool.telefonica.de.
  [2a02:3100:1c91:bf00:219:99ff:feb2:2458])
  by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-49fda0ce29fsm4986905e9.6.2026.09.21.14.47.55
+ 5b1f17b1804b1-49fda0ce29fsm4986905e9.6.2026.09.21.14.47.48
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 21 Sep 2026 14:47:57 -0700 (PDT)
+ Mon, 21 Sep 2026 14:47:49 -0700 (PDT)
 From: Bernhard Beschow <shentey@gmail.com>
 To: qemu-devel@nongnu.org
 Cc: Phil Dennis-Jordan <phil@philjordan.eu>,
@@ -79,14 +80,17 @@ Cc: Phil Dennis-Jordan <phil@philjordan.eu>,
  =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
  Bernhard Beschow <shentey@gmail.com>,
  Jean-Christophe Dubois <jcd@tribudubois.net>,
- Gaurav Sharma <gaurav.sharma_7@nxp.com>
-Subject: [PATCH 23/42] Kconfig: Extract config FSL_IMX7_GPR from config IMX
-Date: Mon, 21 Sep 2026 23:46:51 +0200
-Message-ID: <20260921214710.29422-24-shentey@gmail.com>
+ Gaurav Sharma <gaurav.sharma_7@nxp.com>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@oss.qualcomm.com>
+Subject: [PATCH 17/42] hw/timer/imx_epit: Wire clock control module via link
+ property
+Date: Mon, 21 Sep 2026 23:46:45 +0200
+Message-ID: <20260921214710.29422-18-shentey@gmail.com>
 X-Mailer: git-send-email 2.55.0
 In-Reply-To: <20260921214710.29422-1-shentey@gmail.com>
 References: <20260921214710.29422-1-shentey@gmail.com>
 MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 Received-SPF: pass client-ip=2a00:1450:4864:31::11;
  envelope-from=shentey@gmail.com; helo=mail-wm2-x11.google.com
@@ -95,7 +99,7 @@ X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -111,63 +115,124 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Over time, QEMU has grown a number of i.MX boards and the monolithic
-config IMX drags in unneeded dependencies into each SoC model. Extract
-config FSL_IMX7_GPR to eventually eliminate config IMX.
+When wiring struct IMXEPITState to the clock control module, it is
+currently necessary to reach into its private data. Moreover, when
+forgetting to wire the clock control module, QEMU will crash after the
+guest has already started. Fix both by letting struct IMXEPITState
+expose a link property which is checked at realize time.
 
+Inspired-by: Philippe Mathieu-Daudé <philmd@oss.qualcomm.com>
 Signed-off-by: Bernhard Beschow <shentey@gmail.com>
 ---
- hw/arm/Kconfig      | 1 +
- hw/misc/Kconfig     | 3 +++
- hw/misc/meson.build | 2 +-
- 3 files changed, 5 insertions(+), 1 deletion(-)
+ hw/arm/fsl-imx25.c  |  3 ++-
+ hw/arm/fsl-imx31.c  |  3 ++-
+ hw/arm/fsl-imx6.c   |  3 ++-
+ hw/arm/fsl-imx6ul.c |  3 ++-
+ hw/timer/imx_epit.c | 14 ++++++++++++++
+ 5 files changed, 22 insertions(+), 4 deletions(-)
 
-diff --git a/hw/arm/Kconfig b/hw/arm/Kconfig
-index 1436c05c98..d3dda015c4 100644
---- a/hw/arm/Kconfig
-+++ b/hw/arm/Kconfig
-@@ -578,6 +578,7 @@ config FSL_IMX7
-     imply TEST_DEVICES
-     imply I2C_DEVICES
-     select A15MPCORE
-+    select FSL_IMX7_GPR
-     select PCI
-     select IMX
-     select IMX_FEC
-diff --git a/hw/misc/Kconfig b/hw/misc/Kconfig
-index 3f17d29053..cf9ea68219 100644
---- a/hw/misc/Kconfig
-+++ b/hw/misc/Kconfig
-@@ -97,6 +97,9 @@ config IMX
- config IMX_RNG
-     bool
+diff --git a/hw/arm/fsl-imx25.c b/hw/arm/fsl-imx25.c
+index 0840c2d86a..a8745d5d1a 100644
+--- a/hw/arm/fsl-imx25.c
++++ b/hw/arm/fsl-imx25.c
+@@ -160,7 +160,8 @@ static void fsl_imx25_realize(DeviceState *dev, Error **errp)
+             { FSL_IMX25_EPIT2_ADDR, FSL_IMX25_EPIT2_IRQ }
+         };
  
-+config FSL_IMX7_GPR
-+    bool
+-        s->epit[i].ccm = IMX_CCM(&s->ccm);
++        object_property_set_link(OBJECT(&s->epit[i]), "clock-control-module",
++                                 OBJECT(&s->ccm), &error_abort);
+ 
+         if (!sysbus_realize(SYS_BUS_DEVICE(&s->epit[i]), errp)) {
+             return;
+diff --git a/hw/arm/fsl-imx31.c b/hw/arm/fsl-imx31.c
+index b440ad6e28..79e2f7f795 100644
+--- a/hw/arm/fsl-imx31.c
++++ b/hw/arm/fsl-imx31.c
+@@ -126,7 +126,8 @@ static void fsl_imx31_realize(DeviceState *dev, Error **errp)
+             { FSL_IMX31_EPIT2_ADDR, FSL_IMX31_EPIT2_IRQ },
+         };
+ 
+-        s->epit[i].ccm = IMX_CCM(&s->ccm);
++        object_property_set_link(OBJECT(&s->epit[i]), "clock-control-module",
++                                 OBJECT(&s->ccm), &error_abort);
+ 
+         if (!sysbus_realize(SYS_BUS_DEVICE(&s->epit[i]), errp)) {
+             return;
+diff --git a/hw/arm/fsl-imx6.c b/hw/arm/fsl-imx6.c
+index 22deb72496..5bb828fbb6 100644
+--- a/hw/arm/fsl-imx6.c
++++ b/hw/arm/fsl-imx6.c
+@@ -225,7 +225,8 @@ static void fsl_imx6_realize(DeviceState *dev, Error **errp)
+             { FSL_IMX6_EPIT2_ADDR, FSL_IMX6_EPIT2_IRQ },
+         };
+ 
+-        s->epit[i].ccm = IMX_CCM(&s->ccm);
++        object_property_set_link(OBJECT(&s->epit[i]), "clock-control-module",
++                                 OBJECT(&s->ccm), &error_abort);
+ 
+         if (!sysbus_realize(SYS_BUS_DEVICE(&s->epit[i]), errp)) {
+             return;
+diff --git a/hw/arm/fsl-imx6ul.c b/hw/arm/fsl-imx6ul.c
+index 2786889bda..f72121e23d 100644
+--- a/hw/arm/fsl-imx6ul.c
++++ b/hw/arm/fsl-imx6ul.c
+@@ -270,7 +270,8 @@ static void fsl_imx6ul_realize(DeviceState *dev, Error **errp)
+             FSL_IMX6UL_EPIT2_IRQ,
+         };
+ 
+-        s->epit[i].ccm = IMX_CCM(&s->ccm);
++        object_property_set_link(OBJECT(&s->epit[i]), "clock-control-module",
++                                 OBJECT(&s->ccm), &error_abort);
+         sysbus_realize(SYS_BUS_DEVICE(&s->epit[i]), &error_abort);
+ 
+         sysbus_mmio_map(SYS_BUS_DEVICE(&s->epit[i]), 0,
+diff --git a/hw/timer/imx_epit.c b/hw/timer/imx_epit.c
+index 374ec7d324..e1050b51d8 100644
+--- a/hw/timer/imx_epit.c
++++ b/hw/timer/imx_epit.c
+@@ -17,7 +17,9 @@
+ #include "hw/timer/imx_epit.h"
+ #include "migration/vmstate.h"
+ #include "hw/core/irq.h"
++#include "hw/core/qdev-properties.h"
+ #include "hw/misc/imx_ccm.h"
++#include "qapi/error.h"
+ #include "qemu/module.h"
+ #include "qemu/log.h"
+ #include "trace.h"
+@@ -386,6 +388,12 @@ static void imx_epit_realize(DeviceState *dev, Error **errp)
+     IMXEPITState *s = IMX_EPIT(dev);
+     SysBusDevice *sbd = SYS_BUS_DEVICE(dev);
+ 
++    if (!s->ccm) {
++        error_setg(errp, "%s 'clock-control-module' link property not set",
++                   dev->canonical_path);
++        return;
++    }
 +
- config FSL_IMX8MP_ANALOG
-     bool
+     sysbus_init_irq(sbd, &s->irq);
+     memory_region_init_io(&s->iomem, OBJECT(s), &imx_epit_ops, s, TYPE_IMX_EPIT,
+                           0x00001000);
+@@ -412,12 +420,18 @@ static void imx_epit_dev_reset(DeviceState *dev)
+     imx_epit_reset(s, true);
+ }
  
-diff --git a/hw/misc/meson.build b/hw/misc/meson.build
-index 61e128ab7a..c31c173e5a 100644
---- a/hw/misc/meson.build
-+++ b/hw/misc/meson.build
-@@ -60,6 +60,7 @@ system_ss.add(when: 'CONFIG_AXP2XX_PMU', if_true: files('axp2xx.c'))
- system_ss.add(when: 'CONFIG_REALVIEW', if_true: files('arm_sysctl.c'))
- system_ss.add(when: 'CONFIG_ECCMEMCTL', if_true: files('eccmemctl.c'))
- system_ss.add(when: 'CONFIG_EXYNOS4', if_true: files('exynos4210_pmu.c', 'exynos4210_clk.c', 'exynos4210_rng.c'))
-+system_ss.add(when: 'CONFIG_FSL_IMX7_GPR', if_true: files('imx7_gpr.c'))
- system_ss.add(when: 'CONFIG_FSL_IMX8MP_ANALOG', if_true: files('imx8mp_analog.c'))
- system_ss.add(when: 'CONFIG_FSL_IMX8MP_CCM', if_true: files('imx8mp_ccm.c'))
- system_ss.add(when: 'CONFIG_IMX_RNG', if_true: files('imx_rngc.c'))
-@@ -71,7 +72,6 @@ system_ss.add(when: 'CONFIG_IMX', if_true: files(
-   'imx6ul_ccm.c',
-   'imx7_ccm.c',
-   'imx7_src.c',
--  'imx7_gpr.c',
-   'imx7_snvs.c',
-   'imx_ccm.c',
- ))
++static const Property imx_timer_epit_properties[] = {
++    DEFINE_PROP_LINK("clock-control-module", IMXEPITState, ccm, TYPE_IMX_CCM,
++                     IMXCCMState *),
++};
++
+ static void imx_epit_class_init(ObjectClass *klass, const void *data)
+ {
+     DeviceClass *dc  = DEVICE_CLASS(klass);
+ 
+     dc->realize = imx_epit_realize;
+     device_class_set_legacy_reset(dc, imx_epit_dev_reset);
++    device_class_set_props(dc, imx_timer_epit_properties);
+     dc->vmsd = &vmstate_imx_timer_epit;
+     dc->desc = "i.MX periodic timer";
+ }
 -- 
 2.55.0
 

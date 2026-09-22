@@ -4,91 +4,101 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 49577C982F1
-	for <qemu-arm@archiver.kernel.org>; Tue, 22 Sep 2026 06:12:33 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B7765C982FA
+	for <qemu-arm@archiver.kernel.org>; Tue, 22 Sep 2026 07:17:31 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1x8tjV-000579-6Q; Tue, 22 Sep 2026 02:12:01 -0400
+	id 1x8uko-0007CL-Sa; Tue, 22 Sep 2026 03:17:26 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <shentey@gmail.com>) id 1x8tjT-00056n-UD
- for qemu-arm@nongnu.org; Tue, 22 Sep 2026 02:12:00 -0400
-Received: from mail-wm2-x11.google.com ([2a00:1450:4864:31::11])
+ (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
+ id 1x8ukj-0007B4-6w
+ for qemu-arm@nongnu.org; Tue, 22 Sep 2026 03:17:21 -0400
+Received: from mail-wm2-x10.google.com ([2a00:1450:4864:31::10])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <shentey@gmail.com>) id 1x8tjR-00043h-P3
- for qemu-arm@nongnu.org; Tue, 22 Sep 2026 02:11:59 -0400
-Received: by mail-wm2-x11.google.com with SMTP id
- 5b1f17b1804b1-49b912d3920so25358555e9.1
- for <qemu-arm@nongnu.org>; Mon, 21 Sep 2026 23:11:57 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
+ id 1x8ukh-0000wp-FC
+ for qemu-arm@nongnu.org; Tue, 22 Sep 2026 03:17:20 -0400
+Received: by mail-wm2-x10.google.com with SMTP id
+ 5b1f17b1804b1-49cd38e0e5dso53815225e9.2
+ for <qemu-arm@nongnu.org>; Tue, 22 Sep 2026 00:17:18 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20251104; t=1790057516; x=1790662316; darn=nongnu.org;
- h=content-transfer-encoding:content-type:mime-version:message-id
- :references:in-reply-to:subject:cc:to:from:date:from:to:cc:subject
- :date:message-id:reply-to:content-type;
- bh=T+/yHe4yCOHiAnN13rJkhxmkDVw/fNDm23Jsp3UdS7k=;
- b=VukUiC9A+38PeOHscYgcKA0xIaX3uVDJCA/8Q290wcvWXeGn8pxkJIQAmvMOBr0dU8
- ZefbtoB4TCpABeCvBUcIbC+0JxUJaEra6RZMONKIrlA+FWAXIKnK7mnnhWeRkhU3QCNC
- PL2JTjLIndRz9z/ZskT90RMySe7v/C726mQuptmsD0OV48959f/Qk14mbwl80ZMdmIuX
- KhrhNKTvHYWimbyOhMTHd0FbOwU7X1D8dVCcpZmNJcC0gKLdOYnfPYFvzyoRcKERbS98
- nXZJuej2Y/2w9DDziQywagTMlN+qhT3eYHfY2PUMgTBgQl4xuMuqi9icPRL2UxkLf0Wq
- 4P9Q==
+ d=linaro.org; s=google; t=1790061438; x=1790666238; darn=nongnu.org;
+ h=content-transfer-encoding:content-type:mime-version:message-id:date
+ :user-agent:references:in-reply-to:subject:cc:to:from:from:to:cc
+ :subject:date:message-id:reply-to:content-type;
+ bh=LtpFaprIJbE5lud7P9rdRXmKqWACPbXQVY1+W2J+5eA=;
+ b=oB49GdzN3c3xDeAbd0jqYwODW4LDX3j1DuDq9eXVSv3lFWWqs/33wet/QCkubnSUn1
+ 6TZfCX26leV4G5O6aSTLnWlGzNg3HY07etNELrVoVZ5n7y2iyz4qx1vY/CDDea+/7uj+
+ 9+Ru/LlM5RMqEkLUN0bDs4zslBE5H4ao6qnwo7rEQbqsZ59gjiNqCkaMJT7rLckEEeQ3
+ rUK6Zp2mX9Pzws3+j+qzMioc8aiD+YIxzpMNDHCfXaSkrAjAnM8Y2Ty1CUEFe4t8NTXE
+ 5BbqN/mCCrxswyfc5ujkFORFhncxzTnXjfrhWZ4jPBR089dN2sdzNEMcrDZnnUuf0CZ8
+ j5kw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20260707; t=1790057516; x=1790662316;
- h=content-transfer-encoding:content-type:mime-version:message-id
- :references:in-reply-to:subject:cc:to:from:date:x-gm-gg
+ d=1e100.net; s=20260707; t=1790061438; x=1790666238;
+ h=content-transfer-encoding:content-type:mime-version:message-id:date
+ :user-agent:references:in-reply-to:subject:cc:to:from:x-gm-gg
  :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
  :content-type;
- bh=T+/yHe4yCOHiAnN13rJkhxmkDVw/fNDm23Jsp3UdS7k=;
- b=zu2rTNbmpgce7OkBHfJM7A7k6Or0qtPqblDuHJmzRyL0ZiHKFoKP/2VabQp326flby
- 0zcjLantjtZzMapTWR96uZ9XkOWg9saZBi6Y75VVqlpnrD0aHVsOKDhzjvPSvspcH/ry
- Zv2Q41Bg/j3/JP9M69+WRHDF+QhioFzIJXb+6NV+n4PQVMS+JCGbMScKhG4e+UKxXIMC
- ZDjx8uogM5/4URqX5Prv7pOLlJiauAuDJpsagIvQEImZs9ZHbkDEBHK8J11Zvv91cFGT
- mVLnFef8XjW2LQHUnMA3AqNcw/RUREGAnPl+aXAdj2BnpKXLonjJmhjRgxb/B9snsCVf
- Ka0g==
-X-Gm-Message-State: AFuF++kcHFZ4aCZb2qTVRbaK3jXC77JOQwLrD9Re+J9dVw76ytx2zksA
- XmeSRNfWA+wtDXeTsveZkMYcQfFxPtXGQ6RJcn5VR1UnJC3SM0xWCAn9
-X-Gm-Gg: AYBFou37L3M9JhObFDA3tkTQL2ZtPrNjyMA8465Qe4Ch9J58XIzbLD+AyrX1tzu5uHr
- x37dALWMyMrGciksSw1ILRVdx8LRBQdeZQzha49EM2TyIPzCKdCjEdqzeAezMUYmIZKMr9xavA+
- msdPOZXZm9M7OZKP/1lashZD6RboypBC0OjILkK/f85cAo4QhJzlExgNljYwZOyZjachyBrVwrM
- 3fxsnbOUQu0BcNxP++XQy3kAl1MeqFgnBsx4FQAhNT/yvUbrVrv5qZ2mCEIQBdVWFB2k0bUHeFX
- DVVTWNHcjh7dbfFkOOwJ8CZPpxbHL8geVL1GTExkY4KyBgx4qNJqKj4XJ9Kl4gzYYM6JrMqiTl1
- qbhL+Gdo9aSMaiYZxJkESC1FA/xfmU/OleSYzYT9oRK9B4wqG9uIwBJxHkb7h3RR1nvxwO9Z6WO
- 1d9bbNa6aN7y6dnS6WDjExlD8EyDLwZ76wFdKTZ0ddxXbOeIpYov5kPiY2s3ZMcbOh0r0PKmULz
- JD7tPSGiY4neTnp9TqKTKQfClrnlKFirnNa+vywjrZXLzm+QFuovpYQq8B8dAGpEQFDIcGW9iti
- lZJDAtw7FjRorUYW0eQ=
-X-Received: by 2002:a05:600d:8496:10b0:49d:17d4:d6ad with SMTP id
- 5b1f17b1804b1-49fc57414b7mr115432445e9.23.1790057515984; 
- Mon, 21 Sep 2026 23:11:55 -0700 (PDT)
-Received: from ehlo.thunderbird.net
- (dynamic-2a02-3100-1c91-bf00-d99b-d42d-2461-dbe0.310.pool.telefonica.de.
- [2a02:3100:1c91:bf00:d99b:d42d:2461:dbe0])
- by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-49fdad53c7dsm22378045e9.12.2026.09.21.23.11.55
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 21 Sep 2026 23:11:55 -0700 (PDT)
-Date: Tue, 22 Sep 2026 06:11:55 +0000
-From: Bernhard Beschow <shentey@gmail.com>
-To: Gaurav Sharma <gaurav.sharma_7@nxp.com>, qemu-devel@nongnu.org
-CC: qemu-arm@nongnu.org, pbonzini@redhat.com, peter.maydell@linaro.org,
- pierrick.bouvier@oss.qualcomm.com
-Subject: =?US-ASCII?Q?Re=3A_=5BPATCHv3_00/10=5D_hw/arm=3A_Adding_Cortex-M7_Asy?=
- =?US-ASCII?Q?mmetric_Multiprocessing_boot_support_for_i=2EMX8MP?=
-In-Reply-To: <20260920115458.481605-1-gaurav.sharma_7@nxp.com>
-References: <20260920115458.481605-1-gaurav.sharma_7@nxp.com>
-Message-ID: <DC17DA54-3C43-4955-A38F-6FADFAA2EFF5@gmail.com>
+ bh=LtpFaprIJbE5lud7P9rdRXmKqWACPbXQVY1+W2J+5eA=;
+ b=TQffLUnngnrZhTf1Y+10sBDdtZkacR42J6IJL9h9GrD/F64QybmQ3u1ktuuJfMwk4b
+ kwWwg13+j6Fola0yg9oXs/JYvXWjqVQyowYcJrYt4ITmEdLSXGrsab2z9po/WJxx0avQ
+ vIFYdWwjArIhDP3q/42NNuetVPlBDY1V8VD8WHDX2UpVfzOcdSke6ezds+vrICg+4ppW
+ u5wayHgAjzVXchf6Cug8a7JRoO9Iw2VZcBeNIYek5GmWkgpG2ewlBPkbeZLuqYbyJDys
+ e5fDSa6bWFhT0PMe+Im/B+IpC04gdWKuHeGTkf78fmer3NspwLTda3gBPwYtYzEYtFzF
+ AF5g==
+X-Forwarded-Encrypted: i=1;
+ AKwUvBz3a1UxWIOfSPClmSRrwH6BoUQoRAAxqcF/+qK6whwnSA/prbNS/7MUXtv/fVTeyH7B9dS/tKOXuw==@nongnu.org
+X-Gm-Message-State: AFuF++ksZW7AxcuoV0siFjGaY8xj9tW9YpWBBswrBZRKt4rQj47I4mX2
+ 1UNrtt51xrm8zK+ewrF9f8IdYZCidrIpfAxUIYY4wPXFMM+738tOIAO8wfXec6IWj+0=
+X-Gm-Gg: AYBFou0qDgB5l261coqWJUebC2c62nfTGZGUZ737pOxqxkkXJqzAgRyb+hH5yrhkjIO
+ kZZFDPfzYSEauimLHr5m2dgTCPr3/tJzKGTQPrIsLgv3am1yd5NxeJTKqA9gTDuwmAfGNIZvdjX
+ TJMU9CdyKUREQ20ORcoE7nMFJkZ4kIR3p1+2hX7P0SCn2fvU4xGUwzofGNVWjlJ4r0X9Bz6EHDO
+ eo+QbkFBR89JybLOhdrykof9syT/t36eosd5wU9U7TT7BPPkXl2XOX5UiGkHG7zo8Jr1RNG9D8e
+ dDtEjy0GqGx6MpWn4QklKyHG0Oo5TlplCql3E/cAVverT8PW/tIBnYQfmZkPkAbJlGRymIS8FwD
+ mVfCJxX6lCKpaBkrmJlQrUm6YFmDwDEebOCwomGSWhAYYwZdLmw6lsXvzCB6taDbjz4tP8p5iWh
+ s4/ip0qjfNc5oWp5i8I6/iokqXgH9O1cfluEAANiCCjF43nOMwDpWHMIqBfvgqQcXEMj+umg==
+X-Received: by 2002:a05:600c:3b29:b0:49d:2450:68ac with SMTP id
+ 5b1f17b1804b1-49fc566e6e0mr181145125e9.5.1790061437562; 
+ Tue, 22 Sep 2026 00:17:17 -0700 (PDT)
+Received: from draig.lan ([185.124.0.156]) by smtp.gmail.com with ESMTPSA id
+ ffacd0b85a97d-48862774882sm2812191f8f.13.2026.09.22.00.17.16
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Tue, 22 Sep 2026 00:17:16 -0700 (PDT)
+Received: from draig (localhost [IPv6:::1])
+ by draig.lan (Postfix) with ESMTP id 9A3C35F8F3;
+ Tue, 22 Sep 2026 08:17:15 +0100 (BST)
+From: =?utf-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>
+To: Joel Stanley <joel@jms.id.au>
+Cc: Alistair Francis <alistair.francis@wdc.com>,  Daniel Henrique Barboza
+ <daniel.barboza@oss.qualcomm.com>,  Paolo Bonzini <pbonzini@redhat.com>,
+ Peter Maydell <peter.maydell@linaro.org>,  Weiwei Li
+ <liwei1518@gmail.com>,  Liu Zhiwei <zhiwei_liu@linux.alibaba.com>,  Chao
+ Liu <chao.liu@processmission.com>,  Nicholas Piggin <npiggin@gmail.com>,
+ Anirudh Srinivasan <asrinivasan@oss.tenstorrent.com>,  Michael Ellerman
+ <mpe@kernel.org>,  Portia Stephens <portias@oss.tenstorrent.com>,
+ qemu-riscv@nongnu.org,  qemu-devel@nongnu.org,  qemu-arm@nongnu.org
+Subject: Re: [PATCH 08/12] tests/tcg/aarch64: Don't leak memory-sve CFLAGS
+In-Reply-To: <20260827050953.67184-9-joel@jms.id.au> (Joel Stanley's message
+ of "Thu, 27 Aug 2026 14:39:47 +0930")
+References: <20260827050953.67184-1-joel@jms.id.au>
+ <20260827050953.67184-9-joel@jms.id.au>
+User-Agent: mu4e 1.14.4-pre4; emacs 30.1
+Date: Tue, 22 Sep 2026 08:17:15 +0100
+Message-ID: <8733v121s4.fsf@draig.linaro.org>
 MIME-Version: 1.0
-Content-Type: text/plain;
- charset=utf-8
+Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2a00:1450:4864:31::11;
- envelope-from=shentey@gmail.com; helo=mail-wm2-x11.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:31::10;
+ envelope-from=alex.bennee@linaro.org; helo=mail-wm2-x10.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -104,118 +114,46 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
+Joel Stanley <joel@jms.id.au> writes:
 
-
-Am 20=2E September 2026 11:54:48 UTC schrieb Gaurav Sharma <gaurav=2Esharm=
-a_7@nxp=2Ecom>:
-
-Hi Gaurav,
-
->Changes in v1:
+> The CFLAGS are added to prerequisites, so if memory-sve causes a build
+> of printf.o and boot.o, they will be compiled with -march=3Darmv8.1-a+sve
+> -O3, and the executables that link printf.o and boot.o after that will
+> also get SVE instructions.
 >
->This series adds Asymmetric Multiprocessing (AMP) boot support for
->the Cortex-M7 core on the i=2EMX8MP SoC=2E The M7 firmware can be loaded
->and started from Linux running on the Cortex-A53 cores via the
->remoteproc framework=2E
+> https://www.gnu.org/software/make/manual/html_node/Suppressing-Inheritanc=
+e.html
 >
->The series introduces the following peripheral models needed for AMP:
->  - GPC (General Power Controller)
->  - GPR (General Purpose Registers)
->  - SRC (System Reset Controller) authored by Bernhard Beschow <shentey@g=
-mail=2Ecom>
->  - MU (Messaging Unit)
->  - Extends the CCM with M7 clock outputs and wires into the i=2EMX8MP So=
-C
->  - Enable Cortex-M7 boot in i=2EMX8MP EVK functional test
+> By marking the rule 'private' printf.o and boot.o won't be built with
+> SVE, which avoids SVE for other binaries, and is okay for the memory-sve
+> case.
 >
->Changes in v2:
+> Signed-off-by: Joel Stanley <joel@jms.id.au>
+> ---
+>  tests/tcg/aarch64/Makefile.softmmu-target | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
 >
->- Removed the usage of device_class_set_legacy_reset in imx8mp gpc,gpr,mu=
- and
->  src=2E
->- Removed the usage of 'smp' , 'maxcpus' and 'enable-cm7' to make the
->  invocation simpler=2E
->- Cleaned up imx8mp_src by removing redundant/unused code=2E
->- Updated Maintainers and improved the imx8mp documentation
->
->Changes in v3:
->
->- Added a new patch for smp removal from test_imx8mp_evk=2Epy=2E
->- Added a new patch to introduce IRQ splitting for i=2EMX8MP AMP interrup=
-t
->  routing=2E
->- Added a new patch to rename FSL_IMX8MP_NUM_CPUS to FSL_IMX8MP_NUM_A53,
->  since M7 is being introduced now=2E
->- In GPR, parent_phases moved from global variable to class struct
->- M7 reset handling moved from the machine to SRC device model=2E
->- Added ITCM and DTCM memory regions to support zephyr firmware loading=
-=2E=20
->
->Signed-off-by: Gaurav Sharma <gaurav=2Esharma_7@nxp=2Ecom>
->
->Bernhard Beschow (1):
->  hw/misc: Add SRC (System Reset Controller) to i=2EMX8MP
+> diff --git a/tests/tcg/aarch64/Makefile.softmmu-target b/tests/tcg/aarch6=
+4/Makefile.softmmu-target
+> index 3f30be6c5d63..196a2afa50ee 100644
+> --- a/tests/tcg/aarch64/Makefile.softmmu-target
+> +++ b/tests/tcg/aarch64/Makefile.softmmu-target
+> @@ -51,7 +51,7 @@ memory: CFLAGS+=3D-DCHECK_UNALIGNED=3D1
+>  memory-sve: memory.c $(LINK_SCRIPT) $(CRT_OBJS) $(MINILIB_OBJS)
+>  	$(CC) $(CFLAGS) $(EXTRA_CFLAGS) $< -o $@ $(LDFLAGS) boot.o
+>=20=20
+> -memory-sve: CFLAGS+=3D-DCHECK_UNALIGNED=3D1 -march=3Darmv8.1-a+sve -O3
+> +memory-sve: private CFLAGS+=3D-DCHECK_UNALIGNED=3D1 -march=3Darmv8.1-a+s=
+ve
+> -O3
 
-I think you can claim ownership of the SRC since I think only non-copyrigh=
-table changes are left from the original commit=2E
+Good catch. You will need to port this to meson now it is merged though.
 
->
->Gaurav Sharma (9):
->  hw/misc: Add i=2EMX8MP GPC (General Power Controller) IP
->  hw/misc: Add GPR (General Purpose Register) IP to iMX8MP
->  hw/misc: Add MU (Messaging Unit) IP to i=2EMX8MP device model
->  hw/misc: Extend i=2EMX8MP CCM with Cortex-M7 clock outputs
+>=20=20
+>  gpc-test: gpc-test.c $(LINK_SCRIPT) vector_log_boot.o $(MINILIB_OBJS)
+>  	$(CC) $(CFLAGS) $(EXTRA_CFLAGS) $< -o $@ $(LDFLAGS) vector_log_boot.o
 
->  hw/arm: Enable Cortex-M7 AMP boot on i=2EMX8MP
-
-This should be the last patch of the series=2E The paches below are refact=
-orings and should rather be the first patches in the series=2E Right now th=
-ey depend on changes in this series which prevents them from being cherry-p=
-icked for early merge=2E
-
-Generally, touching the same code twice in a series is discuraged and shou=
-ld only be done with good reasons=2E In favor of a clean history QEMU is no=
-t interested in the detours during development and instead we pretend as if=
- we knew the shortest path towards a goal in the first place=2E Makes sense=
-?
-
-Best regards,
-Bernhard
-
-
->  hw/arm: Rename FSL_IMX8MP_NUM_CPUS to FSL_IMX8MP_NUM_A53
->  MAINTAINERS: Merge MCIMX8MM-EVK and MCIMX8MP-EVK entries
->  hw/arm: Add IRQ splitter for i=2EMX8MP AMP interrupt routing
->  tests/functional: Fix i=2EMX8MP EVK SMP configuration
->
-> MAINTAINERS                                 |  13 +-
-> docs/system/arm/imx8m=2Erst                   | 188 ++++++++-
-> hw/arm/Kconfig                              |   4 +
-> hw/arm/fsl-imx8mp=2Ec                         | 227 +++++++++--
-> hw/arm/imx8mp-evk=2Ec                         |   5 +-
-> hw/misc/Kconfig                             |  12 +
-> hw/misc/imx8mp_ccm=2Ec                        |   9 +
-> hw/misc/imx8mp_gpc=2Ec                        | 146 +++++++
-> hw/misc/imx8mp_gpr=2Ec                        | 155 ++++++++
-> hw/misc/imx8mp_mu=2Ec                         | 328 ++++++++++++++++
-> hw/misc/imx8mp_src=2Ec                        | 411 ++++++++++++++++++++
-> hw/misc/meson=2Ebuild                         |   4 +
-> hw/misc/trace-events                        |   5 +
-> include/hw/arm/fsl-imx8mp=2Eh                 |  33 +-
-> include/hw/misc/imx8mp_ccm=2Eh                |   3 +
-> include/hw/misc/imx8mp_gpc=2Eh                |  34 ++
-> include/hw/misc/imx8mp_gpr=2Eh                |  62 +++
-> include/hw/misc/imx8mp_mu=2Eh                 |  53 +++
-> include/hw/misc/imx8mp_src=2Eh                |  52 +++
-> tests/functional/aarch64/test_imx8mp_evk=2Epy |   1 -
-> 20 files changed, 1696 insertions(+), 49 deletions(-)
-> create mode 100644 hw/misc/imx8mp_gpc=2Ec
-> create mode 100644 hw/misc/imx8mp_gpr=2Ec
-> create mode 100644 hw/misc/imx8mp_mu=2Ec
-> create mode 100644 hw/misc/imx8mp_src=2Ec
-> create mode 100644 include/hw/misc/imx8mp_gpc=2Eh
-> create mode 100644 include/hw/misc/imx8mp_gpr=2Eh
-> create mode 100644 include/hw/misc/imx8mp_mu=2Eh
-> create mode 100644 include/hw/misc/imx8mp_src=2Eh
->
+--=20
+Alex Benn=C3=A9e
+Virtualisation Tech Lead @ Linaro
 

@@ -4,91 +4,91 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 44497C982FA
-	for <qemu-arm@archiver.kernel.org>; Tue, 22 Sep 2026 16:53:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E9037C98302
+	for <qemu-arm@archiver.kernel.org>; Tue, 22 Sep 2026 16:53:55 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1x93kY-0008Jf-NY; Tue, 22 Sep 2026 12:53:48 -0400
+	id 1x93ke-00005J-Md; Tue, 22 Sep 2026 12:53:52 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <philmd@oss.qualcomm.com>)
- id 1x93iD-0004fm-HK
- for qemu-arm@nongnu.org; Tue, 22 Sep 2026 12:51:24 -0400
+ id 1x93iO-0004no-TO
+ for qemu-arm@nongnu.org; Tue, 22 Sep 2026 12:51:34 -0400
 Received: from mx0b-0031df01.pphosted.com ([205.220.180.131])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <philmd@oss.qualcomm.com>)
- id 1x93iC-0002aB-59
- for qemu-arm@nongnu.org; Tue, 22 Sep 2026 12:51:21 -0400
-Received: from pps.filterd (m0279873.ppops.net [127.0.0.1])
+ id 1x93iK-0002b5-3R
+ for qemu-arm@nongnu.org; Tue, 22 Sep 2026 12:51:31 -0400
+Received: from pps.filterd (m0279871.ppops.net [127.0.0.1])
  by mx0a-0031df01.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id
- 68MEjJYj449502
- for <qemu-arm@nongnu.org>; Tue, 22 Sep 2026 16:51:09 GMT
+ 68MEjWDl1058379
+ for <qemu-arm@nongnu.org>; Tue, 22 Sep 2026 16:51:17 GMT
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qualcomm.com; h=
  cc:content-transfer-encoding:content-type:date:from:in-reply-to
  :message-id:mime-version:references:subject:to; s=qcppdkim1; bh=
- Kn2lfIEpf8rwL5b2StWxveggcsoepXeRi8I92ntqRYw=; b=ntQO7OpN5obckipM
- SwrW3NUbCKG3DtEsJvI8P5y/TNew6szA7yXeCEGWnfqdwyYQVepBRpc3SG1N3V0D
- 7juoMfaSqOXMJCENGvqM1sl7eW3DO66Xb1trldVFCHQ90gkBZWA2JudEZ5X3o/bE
- YUNiraDnVCA/xGrLErUvUuuPH8ebvBO8WVr6bUX8vnmIC/6et+T66NxRHJmDDtgd
- Cy8tzoWpaRdc5dac9cdN/nK5eq4l0wpCv0VExGTjrhVmjoWhahC+DWxFN7VZ8AD9
- esAfCYyy40RIdfqT+Ixel8TYOlvnvZs7Y6XErD6TH39mZ7KUHiaNBRbuD1Jvr7oW
- i+rP6Q==
+ hm+viw0kO/6+GIq5N6+3g95/cZ18/ZvzfYFL5HOoiV8=; b=pmjp73RLHs4N46YD
+ DABVL8jXgZlWJkJBaDQoIx10MiDgMy9GaWUnOJxKruDqQTmpdVSNkSFe7FwFpYlV
+ kbUNBNgY2qetV6WAondB2lhsRP27GuhUocQxKXBNcu6xsl/BLYI4gMsEJXxm2f4q
+ MBPcaVzUxkMzCYmd3Rm2hHh0k25oxiiOD99O3dJW+g5+tLRO1SPrv8OJuhe47xKP
+ K6TPJHS1rwrgrA7VkwZ/rJepO+EgBfJE3z8EVOl6WaYCeWHdHQNMFtvfZn2eLI1u
+ JEBcW2PT7uReihR9cSC8lxYCZuhzlNT8O3gylnUMY/K7zDTdMrA4kTdbLBRPVQji
+ fn/t/A==
 Received: from mail-vs1-f71.google.com (mail-vs1-f71.google.com
  [209.85.217.71])
- by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 4gunjytfnv-1
+ by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 4guha5ugyf-1
  (version=TLSv1.3 cipher=TLS_AES_128_GCM_SHA256 bits=128 verify=NOT)
- for <qemu-arm@nongnu.org>; Tue, 22 Sep 2026 16:51:09 +0000 (GMT)
+ for <qemu-arm@nongnu.org>; Tue, 22 Sep 2026 16:51:17 +0000 (GMT)
 Received: by mail-vs1-f71.google.com with SMTP id
- ada2fe7eead31-78faf713ab2so7720137.0
- for <qemu-arm@nongnu.org>; Tue, 22 Sep 2026 09:51:08 -0700 (PDT)
+ ada2fe7eead31-78a5a291af3so7057137.0
+ for <qemu-arm@nongnu.org>; Tue, 22 Sep 2026 09:51:17 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=oss.qualcomm.com; s=google; t=1790095868; x=1790700668; darn=nongnu.org;
+ d=oss.qualcomm.com; s=google; t=1790095876; x=1790700676; darn=nongnu.org;
  h=content-transfer-encoding:content-type:mime-version:references
  :in-reply-to:message-id:date:subject:cc:to:from:from:to:cc:subject
  :date:message-id:reply-to:content-type;
- bh=Kn2lfIEpf8rwL5b2StWxveggcsoepXeRi8I92ntqRYw=;
- b=ARkebPogy8ByiKeMkcge3T1tneHqTNcJSp59P3Z/YXxg73aTg9b/MsT59tx/qC68o+
- yI/DrThiSb1ybyhpcjrQmswgKHxIVBgpBu8coVMQK9FhM1+wdayK57RMA5qgCo70TL0J
- qiblwLhKFWthjYzQO4BVF7yucmT6f/s/TmZFcSijm56HNKVumFy9Ox+h8nADBR5heEEP
- PEuXCZsRzM4YK81pidIm3oIcxfx3lcY1kk9M/tSulnWaEt7OgLzz5VsEx/lGnWzBMkHV
- DknRRxMaCthbu1fYuMk0B3le5nzahYMT70/HQb9jZ1dE9k1QCVtEgd6z0hulKBv8sgFi
- kILQ==
+ bh=hm+viw0kO/6+GIq5N6+3g95/cZ18/ZvzfYFL5HOoiV8=;
+ b=B9GmB5gLzjWN4E1Vdy2BG6Od+9kLRHnfQyeTFsTY9tX250bcTo7r2UNwFjFKiOZjNZ
+ dG5Uv352xGFhytinq6k2w8zQodwGxM8lMewLyRN0fiZzrWkaXUcR5npMgMq4UeR8RvOX
+ mTeaGL+PAdQt9OOo/elokw2JXN/HweLSBIjec9ZZV8ZVrtvj/JmZKX0wxSdp59u5x5wg
+ 3m1+ZBTGAfRY+Wsqp32P8o25cuH3W3pxsai3xJcAryPZaLx5wTwH2soiwzpKLPGSTYVQ
+ 1XOfcepQkilUiP0d/JsgLoRyJtcyGuBiqTp/nfpT/+OF4vBmxgJP+Jl+K8+24JMt6hbO
+ qn8g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20260707; t=1790095868; x=1790700668;
+ d=1e100.net; s=20260707; t=1790095876; x=1790700676;
  h=content-transfer-encoding:content-type:mime-version:references
  :in-reply-to:message-id:date:subject:cc:to:from:x-gm-gg
  :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
  :content-type;
- bh=Kn2lfIEpf8rwL5b2StWxveggcsoepXeRi8I92ntqRYw=;
- b=C7vHvPXlUQ5nbC0T9fpKqUmMXvogzn7SiDfu8Hb6qrzkxlqfK7hDaX+k4yNGUxoOSt
- YosNkUZa/mdMRGjbvbI/qzIuksuLz4eBjtjlVXT8D3raWXlBzuyr1uSLlRAnCT+cTubG
- lMFKRNU6YuO2HB+btE9Z4rTRq1esI7xco3O5CnQ5ExQpyTHw/rhulTw9L6cc/kkjEoAU
- /94huFBuhS6zYqLwQAAQGxNzKkEiRxAQN1xAE/H9sSVcc/tEynEIyN1Kwl9MOyFy1cgV
- Vwz/iPrMxyD1HlEBo1V2GYvk+DYzzQTBGZM+o1/YuLlefUa5cgaM0dIHpGlwu8URYDwo
- aNdA==
+ bh=hm+viw0kO/6+GIq5N6+3g95/cZ18/ZvzfYFL5HOoiV8=;
+ b=C+HsJ+aejQsDq6ud+XdYYp3PQRioju9g/G2GGHYouOURv1FG3zJuky7i+qI9/UMAne
+ SmhzTpdOIAVMKbmzFyhSGLUp4GXhcI+Z8rR/rdNGW077pf5NoUfx0ilK1lElCE6SYynA
+ nB8j96mgLKgGjKUwDCYJlgBH9XYjPcHyD96VTHY+ktL3Ybilv3pMDf0VLCju8Va/Y9Z7
+ YVLyGW+hcUxCNRfqZGfHZqQLXUB8Y2343opuJr7BWoJIJXm9qYYiIAy1GxH8pWiU+o7d
+ DudaGz2VpBzCY78WRnhEMxxxLvW5VIzW5cQrXbGkgRY988DhUhM0lmzkc5yToJScFSM3
+ dpbw==
 X-Forwarded-Encrypted: i=1;
- AKwUvBxb1Q+AJ2MDEEhUHiN+8Zh59zHUTZ1Q+2WTJFul/St9EZxOY2ADe2EIPIPMhx7R4Mbr7YnykMfdOw==@nongnu.org
-X-Gm-Message-State: AFuF++kLIuVgEMyXVx8EuapOH2+TgLIestc6b/OGw6nUXL28WeYHDETT
- Ko8u0t1YkMcri4E3NvPSsbOoXDCsX26gzmHserJt3ZGKqwV+dRFxIoHcEBZSlZ8jgMVhoQomtce
- SQmrauGOcnS89jUWKJQlvHRsXdfR/Cvib55pdUS0J4NanPruaxs0TRqU=
-X-Gm-Gg: AYBFou1iCTWlKXfuSobobjbWT5PZwzz0ducv9gouytes/aHS+6uRkMjod9xNpAbO6NX
- qSco1IUU0Vtjs7Xm3XC6fTQXy3nBDsN0Kqug0PgVCPf+SdIobg0fPt5UJqjjRpTaslQy4galuif
- y8Aq690z1uY+74EDxkGHjzyKDWPImdkgoK6UYwwFvT5DCuvMEAEHwiEvDjDoSTjtT56SJQ8cM28
- Mp2mFtCeeAFj27pQWJdVxwqI1OV7KkM8/ytWv7oC0Hg768k8UUmGqYDQETeJZOlT21KlVQvghz5
- Wmb1W6fi3bGq3mJgL6nHEFFyWUNYBah5LMVQZfeMH8qTql3xFNN4unoB/n4O9dmUknB4K4MYobM
- Z3t7PbKT/xh7M4kvamIqHcpAz0+O9DmLVs1H3rlgW
-X-Received: by 2002:a05:6102:8482:20b0:7a7:a382:6bd7 with SMTP id
- ada2fe7eead31-7a7a3828422mr5081697137.27.1790095868442; 
- Tue, 22 Sep 2026 09:51:08 -0700 (PDT)
-X-Received: by 2002:a05:6102:8482:20b0:7a7:a382:6bd7 with SMTP id
- ada2fe7eead31-7a7a3828422mr5081642137.27.1790095867901; 
- Tue, 22 Sep 2026 09:51:07 -0700 (PDT)
+ AKwUvByKg7OONHshnHsjz4vLibNSKhF5shhLzExIeZXdKcfp35qalHkAiI1/Od9YCrvFsUB6bjcAxhAutw==@nongnu.org
+X-Gm-Message-State: AFuF++kpOG83zSvexqQ5x7c3lRUw59sPUciZeISdyi/jzJ3xATaBzQR2
+ +6Uf1Ww4ekFJxz3yxu9AaA7epNZzF43yCugNvpxlbr0IvaU4967pgaCscfUXpRuZOgz2czkvHOQ
+ lmYhSiWSDqhbbxCdSXQvKyAD5i/p3QKm0wSm6eBtAtYTrMD/OIg4rAg8=
+X-Gm-Gg: AYBFou3zxNpR85xtLAi3HiO4dBe0lCqaJHYQ9zOW7mS7aHy51KK7HZinEscOr6OqVDQ
+ 7PuJlLw+8KC1FoCtUFRcweTw8ktb41SjAXVvb4QZVFwL9hDweAIRu2QlSEArG6aKKHP2otGr074
+ 48ko/TpE8ytcSWfwZR4YhmHJMcVxIfO5SJCLMYGQJRcb5l6mnmVunp4YoHwWeE7JTO0lPSrGZdf
+ 5UmO/bm7P3MD6MmUZjaPbqZfAmEbjdNiyDWNnmJ7UPag6FxDNYiFCTNwBxiLB5142mXWXCF4X+4
+ bD71fZEaTX4aKicZ1dAM2hDb8EPu6/sme2z8zmIW3tRfPjefg2ZNcarESwgO2e8S8VH/IRm+/wr
+ ZEMFbmvhPxCoLUZJYcEV504jtfuK/g1vf4gkVFYgq
+X-Received: by 2002:a05:6102:160b:b0:7a1:f7d2:e81e with SMTP id
+ ada2fe7eead31-7a55d28bea2mr9336730137.23.1790095876475; 
+ Tue, 22 Sep 2026 09:51:16 -0700 (PDT)
+X-Received: by 2002:a05:6102:160b:b0:7a1:f7d2:e81e with SMTP id
+ ada2fe7eead31-7a55d28bea2mr9336670137.23.1790095875959; 
+ Tue, 22 Sep 2026 09:51:15 -0700 (PDT)
 Received: from localhost.localdomain (pmd666.hd.free.fr. [88.187.86.199])
  by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-49fde1c159esm3813515e9.4.2026.09.22.09.51.06
+ 5b1f17b1804b1-49fdab0c240sm44523165e9.4.2026.09.22.09.51.13
  (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Tue, 22 Sep 2026 09:51:07 -0700 (PDT)
+ Tue, 22 Sep 2026 09:51:15 -0700 (PDT)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@oss.qualcomm.com>
 To: qemu-devel@nongnu.org
 Cc: qemu-riscv@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
@@ -96,41 +96,40 @@ Cc: qemu-riscv@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
  qemu-s390x@nongnu.org, Richard Henderson <richard.henderson@linaro.org>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@oss.qualcomm.com>,
  qemu-arm@nongnu.org
-Subject: [PATCH v2 12/17] target/arm: Split leaving-halt handling from
- arm_cpu_exec_halt()
-Date: Tue, 22 Sep 2026 18:49:30 +0200
-Message-ID: <20260922164936.15189-13-philmd@oss.qualcomm.com>
+Subject: [PATCH v2 13/17] target/arm: Convert cpu_exec_halt() to leaving_halt()
+Date: Tue, 22 Sep 2026 18:49:31 +0200
+Message-ID: <20260922164936.15189-14-philmd@oss.qualcomm.com>
 X-Mailer: git-send-email 2.53.0
 In-Reply-To: <20260922164936.15189-1-philmd@oss.qualcomm.com>
 References: <20260922164936.15189-1-philmd@oss.qualcomm.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Proofpoint-GUID: gbMXXMknuTy8UF_vPhHxCMY6TVFIRHpu
-X-Authority-Analysis: v=2.4 cv=KqHYSmWN c=1 sm=1 tr=0 ts=6ab2b1fd cx=c_pps
+X-Proofpoint-GUID: 561nA8Psv2FpP16v0FDKxkkN24e-R1YX
+X-Proofpoint-Spam-Info: AW1haW4tMjYwOTIyMDI0NiBTYWx0ZWRfXyX93lMY7As9c
+ 9HZN2dfP42Xq1kQM8B2G07Si5fGvxFJFM342kZkDaMZNXlGi14ZdjoAJA/Ld38AaMZkhrvlzp0V
+ ggnOENfxZ8JUSgEnI0ggUdNg5UR9rk4=
+X-Authority-Analysis: v=2.4 cv=U+4Hnuru c=1 sm=1 tr=0 ts=6ab2b205 cx=c_pps
  a=P2rfLEam3zuxRRdjJWA2cw==:117 a=4s3hRJSeHn4rkQlkrse1kQ==:17
  a=IkcTkHD0fZMA:10 a=VdqzKS8jKosA:10 a=M51BFTxLslgA:10 a=s4-Qcg_JpJYA:10
- a=VkNPw1HP01LnGYTKEx00:22 a=u7WPNUs3qKkmUXheDGA7:22 a=rJkE3RaqiGZ5pbrm-msn:22
- a=EUspDBNiAAAA:8 a=KKAkSRfTAAAA:8 a=snbnvTbt-5-dSQZ-83gA:9 a=3ZKOabzyN94A:10
+ a=VkNPw1HP01LnGYTKEx00:22 a=u7WPNUs3qKkmUXheDGA7:22 a=3WHJM1ZQz_JShphwDgj5:22
+ a=EUspDBNiAAAA:8 a=KKAkSRfTAAAA:8 a=AtaPWBxvZOLBLR1XvpsA:9 a=3ZKOabzyN94A:10
  a=QEXdDO2ut3YA:10 a=ODZdjJIeia2B_SHc_B0f:22 a=cvBusfyB2V15izCimMoJ:22
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwOTIyMDI0NiBTYWx0ZWRfX8dH4bgeOTn13
- gRwFfJE8XIvljQulpcsoGI3Q+clr/V3oFwunbYYmc4zxNFw2RFABBEUsR8cEjMYJzT+owCm14B+
- 9vvA0rxqcekC9vwCC5rn/Snn1cCTGwHQyrhKYSo/GH9fxDG8iiUd604R6LHTRDrPIPMJvk/1u4J
- VyEBfRrU6BWdNKraQcXfDy667MO4lLovPs+nChr/wiJPer4V+z8Y4blQQnCIvG4qnKRtAH73uH9
- OG0fiUS99FjEbedQsAZx6znb18+UA5yPmPS+Y/jGANb86+siQypeJ0NX47NSLg5v5qQ2eXyooLy
- gRkT+VE/5tS9cmtTCf/0GDkxHwHnrgvAK9vmwUdEnCCMekhcNCcqrJIQe3ak4c7wBkxB4HXMHAZ
- p2fWXk/etoA4RojOajLVHSiUa5SwopcrQfJLeXgQ5pxU+SmxvqeULWchTntkQKo+9iUbFrCxoUA
- z5omgiTxK8beuishgog==
-X-Proofpoint-ORIG-GUID: gbMXXMknuTy8UF_vPhHxCMY6TVFIRHpu
-X-Proofpoint-Spam-Info: AW1haW4tMjYwOTIyMDI0NiBTYWx0ZWRfX2AUnLJy/+qQ6
- EwbNvsbBcugIbhEMURmZy1wBpTFea6T6Wjt4kJg9jXhL4nNXrRHXltUetVYPyhh1vljIaHbeYEQ
- HmDpUrTDh1Tb6jCgVJ2+LJ242NmOBxM=
+X-Proofpoint-ORIG-GUID: 561nA8Psv2FpP16v0FDKxkkN24e-R1YX
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwOTIyMDI0NiBTYWx0ZWRfX7tTwFEbj5Mo1
+ BTh+YeEh7W0B6SBsYCjCCTa606wMSjhe8xxTICBzKB+N3EDMf+ERQn0WJS40srlrBQecEVdOy/t
+ K04ky6gbOuv1R/+Lq063gVHD0cxqo2RPppwjUmACJSTvqPlmOSXvx2E0ZjX+JNkNW3+IztHkvJV
+ 6qp2+5ECTX+VMj0VKTrbrpl1lXKmoQ20Y4rVwi5J6plVpzPuiWvb0pxgo4EzxCuCXrAkDdNYM7T
+ BNrBKQkhXq/Oj8Zd6M6/yEpyRYAX5W7j8q+2rSjnYc0Kb19Oro86n1QFRTxZAPC1m0nMd5C2Cgr
+ 1QIefy4GEruVaqbRaZw2H7nwI3nJ5aqtmSv8dbfYu9b/biljYEt8cVKER87hY1gBnuyhjL/Y1IY
+ Gx1pLYOVWEZMKQtMR6oLncvepf/qimWvwXjnqP7e6rzARXUlwJSWsb33UrbgVyW1kEZZVuPQ1x7
+ ejZQHtTfp3Q5WjGAhFQ==
 X-Proofpoint-Virus-Version: vendor=baseguard
  engine=ICAP:2.0.293,Aquarius:18.0.1176,Hydra:6.1.134,FMLib:17.12.100.49
  definitions=2026-09-22_02,2026-09-21_02,2025-10-01_01
 X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
- impostorscore=0 spamscore=0 bulkscore=0 priorityscore=1501 phishscore=0
- malwarescore=0 suspectscore=0 clxscore=1015 adultscore=0 lowpriorityscore=0
+ clxscore=1015 impostorscore=0 adultscore=0 phishscore=0 lowpriorityscore=0
+ priorityscore=1501 suspectscore=0 bulkscore=0 spamscore=0 malwarescore=0
  classifier=typeunknown authscore=0 authtc= authcc= route=outbound adjust=0
  reason=mlx scancount=1 engine=8.22.0-2609040000 definitions=main-2609220246
 Received-SPF: pass client-ip=205.220.180.131;
@@ -157,53 +156,77 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Move WFxT timer cleanup and halt-reason reset into
-arm_cpu_leaving_halt(). Keep arm_cpu_exec_halt()
-focused on deciding whether the CPU can leave the
-halted state.
+arm_cpu_exec_halt() now merely checks cpu_has_work() and
+conditionally call arm_cpu_leaving_halt(), which is now
+the generic flow in cpu_has_work_after_processing_async_events().
+
+Register the leaving_halt handler to use the generic
+target-agnostic flow and remove the arm_cpu_exec_halt() wrapper.
 
 Signed-off-by: Philippe Mathieu-Daudé <philmd@oss.qualcomm.com>
 Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- target/arm/cpu.c | 20 +++++++++++++-------
- 1 file changed, 13 insertions(+), 7 deletions(-)
+ target/arm/internals.h   |  3 ---
+ target/arm/cpu.c         | 12 +-----------
+ target/arm/tcg/cpu-v7m.c |  1 -
+ 3 files changed, 1 insertion(+), 15 deletions(-)
 
+diff --git a/target/arm/internals.h b/target/arm/internals.h
+index 1efda543270..cfe932d0e5d 100644
+--- a/target/arm/internals.h
++++ b/target/arm/internals.h
+@@ -431,9 +431,6 @@ void arm_restore_state_to_opc(CPUState *cs,
+ #ifdef CONFIG_TCG
+ TCGTBCPUState arm_get_tb_cpu_state(CPUState *cs);
+ void arm_cpu_synchronize_from_tb(CPUState *cs, const TranslationBlock *tb);
+-
+-/* Our implementation of TCGCPUOps::cpu_exec_halt */
+-bool arm_cpu_exec_halt(CPUState *cs);
+ int arm_cpu_mmu_index(CPUState *cs, bool ifetch);
+ #endif /* CONFIG_TCG */
+ 
 diff --git a/target/arm/cpu.c b/target/arm/cpu.c
-index ccc6630026c..4863e7cd450 100644
+index 4863e7cd450..9c5b76d0c03 100644
 --- a/target/arm/cpu.c
 +++ b/target/arm/cpu.c
-@@ -872,18 +872,24 @@ static bool arm_cpu_internal_is_big_endian(CPUState *cs)
+@@ -883,16 +883,6 @@ static void arm_cpu_leaving_halt(CPUState *cs)
+     /* clear the halt reason */
+     cpu->env.halt_reason = NOT_HALTED;
  }
+-
+-bool arm_cpu_exec_halt(CPUState *cs)
+-{
+-    bool leave_halt = cpu_has_work(cs);
+-
+-    if (leave_halt) {
+-        arm_cpu_leaving_halt(cs);
+-    }
+-    return leave_halt;
+-}
+ #endif
  
- #ifdef CONFIG_TCG
-+static void arm_cpu_leaving_halt(CPUState *cs)
-+{
-+    ARMCPU *cpu = ARM_CPU(cs);
-+
-+    /* We're about to come out of WFI/WFE: disable the WFxT timer */
-+    if (cpu->wfxt_timer) {
-+        timer_del(cpu->wfxt_timer);
-+    }
-+    /* clear the halt reason */
-+    cpu->env.halt_reason = NOT_HALTED;
-+}
-+
- bool arm_cpu_exec_halt(CPUState *cs)
- {
-     bool leave_halt = cpu_has_work(cs);
- 
-     if (leave_halt) {
--        /* We're about to come out of WFI/WFE: disable the WFxT timer */
--        ARMCPU *cpu = ARM_CPU(cs);
--        if (cpu->wfxt_timer) {
--            timer_del(cpu->wfxt_timer);
--        }
--        /* clear the halt reason */
--        cpu->env.halt_reason = NOT_HALTED;
-+        arm_cpu_leaving_halt(cs);
-     }
-     return leave_halt;
- }
+ /*
+@@ -2617,7 +2607,7 @@ static const TCGCPUOps arm_tcg_ops = {
+     .tlb_fill_align = arm_cpu_tlb_fill_align,
+     .pointer_wrap = aprofile_pointer_wrap,
+     .cpu_exec_interrupt = arm_cpu_exec_interrupt,
+-    .cpu_exec_halt = arm_cpu_exec_halt,
++    .leaving_halt = arm_cpu_leaving_halt,
+     .cpu_exec_reset = cpu_reset,
+     .do_interrupt = arm_cpu_do_interrupt,
+     .do_transaction_failed = arm_cpu_do_transaction_failed,
+diff --git a/target/arm/tcg/cpu-v7m.c b/target/arm/tcg/cpu-v7m.c
+index 48b31d5eac8..1093c6cbf63 100644
+--- a/target/arm/tcg/cpu-v7m.c
++++ b/target/arm/tcg/cpu-v7m.c
+@@ -302,7 +302,6 @@ static const TCGCPUOps arm_v7m_tcg_ops = {
+     .tlb_fill_align = arm_cpu_tlb_fill_align,
+     .pointer_wrap = cpu_pointer_wrap_uint32,
+     .cpu_exec_interrupt = arm_v7m_cpu_exec_interrupt,
+-    .cpu_exec_halt = arm_cpu_exec_halt,
+     .cpu_exec_reset = cpu_reset,
+     .do_interrupt = arm_v7m_cpu_do_interrupt,
+     .do_transaction_failed = arm_cpu_do_transaction_failed,
 -- 
 2.53.0
 

@@ -4,90 +4,89 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A10C4C982FA
-	for <qemu-arm@archiver.kernel.org>; Tue, 22 Sep 2026 18:47:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AFA56C982FA
+	for <qemu-arm@archiver.kernel.org>; Tue, 22 Sep 2026 18:48:36 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1x95X1-0007W8-FZ; Tue, 22 Sep 2026 14:47:55 -0400
+	id 1x95Wq-0007PL-8k; Tue, 22 Sep 2026 14:47:44 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1x95Ws-0007St-8F
- for qemu-arm@nongnu.org; Tue, 22 Sep 2026 14:47:49 -0400
-Received: from mail-pj2-x0f.google.com ([2607:f8b0:4864:39::f])
+ id 1x95WA-0007IO-Ui
+ for qemu-arm@nongnu.org; Tue, 22 Sep 2026 14:47:08 -0400
+Received: from mail-pj2-x11.google.com ([2607:f8b0:4864:39::11])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1x95Wp-0006xC-TQ
- for qemu-arm@nongnu.org; Tue, 22 Sep 2026 14:47:45 -0400
-Received: by mail-pj2-x0f.google.com with SMTP id
- 98e67ed59e1d1-39b910bdf2eso128235a91.2
- for <qemu-arm@nongnu.org>; Tue, 22 Sep 2026 11:47:43 -0700 (PDT)
+ id 1x95W6-0006ur-VZ
+ for qemu-arm@nongnu.org; Tue, 22 Sep 2026 14:47:01 -0400
+Received: by mail-pj2-x11.google.com with SMTP id
+ 98e67ed59e1d1-39e03468a5fso176124a91.0
+ for <qemu-arm@nongnu.org>; Tue, 22 Sep 2026 11:46:58 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1790102862; x=1790707662; darn=nongnu.org;
+ d=linaro.org; s=google; t=1790102817; x=1790707617; darn=nongnu.org;
  h=content-transfer-encoding:content-type:in-reply-to:content-language
  :from:references:cc:to:subject:user-agent:mime-version:date
  :message-id:from:to:cc:subject:date:message-id:reply-to:content-type;
- bh=78JNZklME0O/1rA8EQgIG2udVfDdlIk7cp3F/kt0sSs=;
- b=aNjJz81pOi+C6dNGvsZy5fO9a6d2T8jYVoWDgSSeeJ6MsfDO8pOcJbcUCQIxj3duRY
- /o0aqaxl4hjRTXF2izHH5lhoS1XU7+mWqTp3ENFNo3SnTpEsbmwqL8ubob346mzYHnKT
- QndyWI1eiSNLkmLa1RAHgWJyxpR4TgGMdfWrrHtRvAPgSWtMtDpbBGi6tCMWtF4VqiJE
- qgN9bZugfVf9/hhI6C/nsqR5ZG+8E0KWx1wLrd4f0gJukZedxpLERULMUHcacc6/OskH
- bzSdTWathhY5vvu2/NcxR+nq6MvI3bqmOmoQgDV4ge2t4dZLstIcuIyhAkdKe3V493CB
- SPoQ==
+ bh=ZPr2IhXOs52SApaCaIdBa32t3L64syR+CdMKnh1S4Wk=;
+ b=ztu5amWLnzFpR8t+CyJD+hIppt9xqx2e5uI1viM2kxG54Xl5u+efNle+02HLcha9Z3
+ 9T6uQgoNO4biRz6dqciM5Avu20B2DUhYUmiiOP/mWCgJrp1GaBFvZoAj+0YwDE6Uvob6
+ +2JtsrRoWoWhE796O3REhZMeirERb2gWwnSP+nQhpsEq6DgWNYh9ygqJInbR5pxi9S/4
+ lauOl8S9Ien4hX+1ypv1SXS/iulgdyzCGucJC9t7o0HHIythCTpLH8RdpszDVHnURuhT
+ cf6mVo4q/WHBBtreF2NKjLko215GNnSg9BqhhAz3dV6zGkTLx9nylrJr0u/FyUxNUMg4
+ fP/g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20260707; t=1790102862; x=1790707662;
+ d=1e100.net; s=20260707; t=1790102817; x=1790707617;
  h=content-transfer-encoding:content-type:in-reply-to:content-language
  :from:references:cc:to:subject:user-agent:mime-version:date
  :message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
  :message-id:reply-to:content-type;
- bh=78JNZklME0O/1rA8EQgIG2udVfDdlIk7cp3F/kt0sSs=;
- b=arj0HsehbTxX1ZkvU81+EI//GROEHL6mrfXB4X9Jj7PUpRHyEP/SCl0r9JB6x4LsDy
- M8yk+8AcMO7TDyZUgBfgmHprWMhKxB2A3x8tMB2KynLfO6NfngvWaFK9QAdgKewhm7aE
- HIRekM2r8y05KZpDmm7c9aUCQG84Amho0nuRwGgjSlgaQ+5aIqCRZZfJ64NUFLtEehd5
- hKRvPkcVczg97oUFiN37VbrIDsxzPcYqmOl67PaWlCRGUrM4x2etLdMLe+A1SuqffNF2
- kd4RB5Wv26VWSomRRtdJR6hkwKyT+jiM5JRhALexIfW9pS5WQXhIEy0t0g5Zo6NNxxO6
- b9WA==
+ bh=ZPr2IhXOs52SApaCaIdBa32t3L64syR+CdMKnh1S4Wk=;
+ b=2FPc+wOgvVEiYPnfFKORviI8FYh/MspVUgcgqJJm9XF5pmR/oW0YVrJle/AxES2jXc
+ I+5jbkaSRFyk2b3iREYsX3QJQsFoP1QFnBc8jCFCnn5Fwsws+i/sqF5Ex2RFR+rD5Peq
+ S0Q0/Vr9utGzM1tjGBPP5kv6BV936MuOae0ISFmd6PvgU0v7NWvfctAni1RAIfZC84NL
+ xVPWukezJjgzEfevaCed/Ue19wIsu0yUDVoRMtutKA+xdMf3aj6G5OZseQtECkf6eP/5
+ 7m6snk4c8FN0Zy9JIKhme3hrdWnLuMSftrEGc4ZvUokprj/DkE3ofm+Lw78PxTcjRAD8
+ XGng==
 X-Forwarded-Encrypted: i=1;
- AKwUvBzqytZptK5kf1ThJDLtVp6ZOIrqIOyCqE+MiHOyOANB1KsKuBH3S1PB/6GL7GiVCxIYyjWNCzW9Xw==@nongnu.org
-X-Gm-Message-State: AFuF++lAZwlaNycrjfXRR4sCieUd2lJNKCwNPkN6BKXPEtz1smf/qrC+
- NTm3YsgCcuIKpzOuOgCZeQxWN/5Gaf1LpXnZ1STQKhtZyq7paZpA8X6B769X1DAwVhY=
-X-Gm-Gg: AYBFou2o3LmHZ3vz2dBmoBi6QQqGgNq1qyBlBkHIUDZKkUp5ffrXSdshoBsHRcVUNoL
- NR6wpTN5Wd2SKvFpS/10QNUb5QK6b91jC0YO8luX3p6m2wjzIoXhFCl8Jx6JFmld7KWjwLsnx4M
- eu8LZBqqBXhs1/GDQAI5kZrCOULDyKF6b2F2RqLFUVFrwkd15n6X+2O5OarMKIk2ItotTc42c1O
- 3NKzArgmOxRfzMBhWMga2T/FDuZXiD8Tnu7AlhUy6HOP+mqE7lQt/KqO6aKqeZUYCIPOKEa1+4N
- Jgbz0Si/BiBWZabmkTurr9++b7X0r2mG4Uw8FQqTEP8tnqh97NtHhc0duGM2d134KLjs2g4mzkK
- Dr36J9yvLLtPl11Y1Luklq+8oJYemAwLfThQJSInLf1X4fqSYBMMNCrmdNm2giH1Yr504nd3AxT
- aM4tVg7y8dLgNc9WAVrbn+ul82UB+Xg9OjKb+CNJkZyKy1zhcWRk4GGF+uzaycKmadTvnYS8Hmt
- 1st2o/1KVncxHCYEhmpxOWa+WtcbE4xF62lNTEn
-X-Received: by 2002:a17:90b:50ce:b0:39d:ecb6:8d40 with SMTP id
- 98e67ed59e1d1-3a07e4e41e3mr272243a91.4.1790102861933; 
- Tue, 22 Sep 2026 11:47:41 -0700 (PDT)
+ AKwUvByM95mHCgT43R8ejchLGIBoa66tpkd5sAVHGryulSgs/Sn9/+jXrIRcUqVmKgkdOoJHbqwcQXj7nw==@nongnu.org
+X-Gm-Message-State: AFuF++lPeCFYo4np9hoM57NUB3JQk6AWXG1Q+9kn4EAGoUE1oHr9Ntmj
+ fPxqWpuHxSTE+0hBv69PwgI96E0o/iaUfLf8VHDAqG9BUCj1/cvuIZGa1fZvUqH9Ymo=
+X-Gm-Gg: AYBFou1tYHA3G6rKpY0d1rXmTRAebnjvhYHFFKkFUf0lglWyUVLI4cGSjfQEXf7KiB7
+ h1mPydQC26rDRlvKa2Jo5fD9sUOzYjRIfPwMc3trO/emE5PFB1cIEaxFAIlppfaIUQMlRu5MSi2
+ zOhFmA7AJUVCDi/j9HUYUgBpWbm6+T8nTbiiiA28ESl/kJxAynT64IvFWmrt3uMgwMqfJvKVlD0
+ NmYwpuyM/QVNBWnEVaXqnaoox5OSe+DCMqY51bJJdVEpyDozvyZkPkploNVO0CwZRrW4C8O70Nw
+ g4Xhf19LXK7n1Gmun6tepIkyVJ4IUcG99y834/iO8bbNsMlpceCxjDYaJdlvMvi5SMpZMtCTCsG
+ pGKU2ojRqWSifg/VbZtE0lc5pIvBc/TuMeQ/riAmr6fBrg6RDqVs2hiRZ/bXkCcVdNCR8YJ2fXs
+ 3Zq8krMs7XuGFWymRpMIlu2tyjO0+ZL0qRoYhb9p3P3G3G5qGyF1xwj8ytk4plui8XB22kjXw4W
+ QvGqMgbA2UPkDBwyUj/OomYIcQrMDDTHkLaHx9O3w==
+X-Received: by 2002:a17:90b:2b43:b0:39e:4717:7cd9 with SMTP id
+ 98e67ed59e1d1-3a07e313fcdmr311361a91.0.1790102817074; 
+ Tue, 22 Sep 2026 11:46:57 -0700 (PDT)
 Received: from [192.168.0.4] (174-21-68-150.tukw.qwest.net. [174.21.68.150])
  by smtp.gmail.com with ESMTPSA id
- 98e67ed59e1d1-3a07dc2923fsm694264a91.11.2026.09.22.11.47.41
+ 98e67ed59e1d1-3a07dc2b2fdsm691515a91.12.2026.09.22.11.46.56
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 22 Sep 2026 11:47:41 -0700 (PDT)
-Message-ID: <a067cab4-0e09-47e4-bdd0-b3b09d78cde7@linaro.org>
-Date: Tue, 22 Sep 2026 11:47:40 -0700
+ Tue, 22 Sep 2026 11:46:56 -0700 (PDT)
+Message-ID: <74d4fc9e-66ff-44ca-b4b3-7dcaa350cfd0@linaro.org>
+Date: Tue, 22 Sep 2026 11:46:55 -0700
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 09/17] target/arm: Read halt state atomically in
- arm_cpu_has_work()
+Subject: Re: [PATCH v2 08/17] target/arm: Access PSCI state atomically
 To: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@oss.qualcomm.com>,
  qemu-devel@nongnu.org
 Cc: qemu-riscv@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
  qemu-ppc@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>,
  qemu-s390x@nongnu.org, qemu-arm@nongnu.org
 References: <20260922164936.15189-1-philmd@oss.qualcomm.com>
- <20260922164936.15189-10-philmd@oss.qualcomm.com>
+ <20260922164936.15189-9-philmd@oss.qualcomm.com>
 From: Richard Henderson <richard.henderson@linaro.org>
 Content-Language: en-US
-In-Reply-To: <20260922164936.15189-10-philmd@oss.qualcomm.com>
+In-Reply-To: <20260922164936.15189-9-philmd@oss.qualcomm.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:39::f;
- envelope-from=richard.henderson@linaro.org; helo=mail-pj2-x0f.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:39::11;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pj2-x11.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -110,14 +109,15 @@ Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
 On 9/22/26 09:49, Philippe Mathieu-Daudé wrote:
-> arm_cpu_has_work() runs without the BQL held. Use atomic reads for
-> halt_reason and event_register to safely inspect state updated by other
-> CPU contexts.
+> Use qatomic_set() when updating ARMCPU::power_state and
+> CPUARMState::halt_reason. Read ARMCPU::power_state atomically in
+> arm_cpu_has_work(), which can run without the BQL held.
 > 
 > Signed-off-by: Philippe Mathieu-Daudé<philmd@oss.qualcomm.com>
 > ---
->   target/arm/cpu.c | 5 +++--
->   1 file changed, 3 insertions(+), 2 deletions(-)
+>   target/arm/arm-powerctl.c | 5 +++--
+>   target/arm/cpu.c          | 2 +-
+>   2 files changed, 4 insertions(+), 3 deletions(-)
 
 Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 

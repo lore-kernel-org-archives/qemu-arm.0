@@ -4,54 +4,144 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 73E48C982F1
-	for <qemu-arm@archiver.kernel.org>; Tue, 22 Sep 2026 12:21:01 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 64F6FC98302
+	for <qemu-arm@archiver.kernel.org>; Tue, 22 Sep 2026 16:50:43 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1x8zUQ-0007Hn-EJ; Tue, 22 Sep 2026 08:20:52 -0400
+	id 1x93hN-00047E-Pt; Tue, 22 Sep 2026 12:50:30 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <austin1288@proton.me>)
- id 1x8qLq-0007bR-Vh
- for qemu-arm@nongnu.org; Mon, 21 Sep 2026 22:35:23 -0400
-Received: from mail-4319.protonmail.ch ([185.70.43.19])
+ (Exim 4.90_1) (envelope-from <philmd@oss.qualcomm.com>)
+ id 1x93hM-00046o-JR
+ for qemu-arm@nongnu.org; Tue, 22 Sep 2026 12:50:28 -0400
+Received: from mx0a-0031df01.pphosted.com ([205.220.168.131])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <austin1288@proton.me>)
- id 1x8qLn-0007yU-10
- for qemu-arm@nongnu.org; Mon, 21 Sep 2026 22:35:22 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=proton.me;
- s=bvsjz5swl5b6neoe26uqjsxcre.protonmail; t=1790044508; x=1790303708;
- bh=aJ3gJed+yEvJLs0yDIcgJlOI11sWQmpDXYjnaXh3Ezw=;
- h=Date:To:From:Subject:Message-ID:Feedback-ID:From:To:Cc:Date:
- Subject:Reply-To:Feedback-ID:Message-ID:BIMI-Selector;
- b=P+w2a16ydCy29U+BcgxuO39t4rxgIw4tGvMecRX5AcfgV98pOxuuPWhNr9edKzPeg
- c1qG80pHLMg8C3b/zdc+4BQUAnZhWz5k4BXdxCCwrMT1fEAqUX03VF6yV04heQFHhe
- 2eZh/7VwxguWZsajgUZCZvhiAY0uWvkGmrg5sKFmDVT+oBa+w+j6i1EWuz4dcCgJqe
- lpux9LcYpKfLSgF12h7vBocdfiKKMKICpNaSqWx0uRy/jAnz0d3ULZ5pZ348045KWt
- iONwjL2B92e0VnyFbiCE+uTAgbd2nD/72eX8Sx1DKrF3G2xFt0llahsoPI8kw+In5p
- hetJTSX8mPxCg==
-Date: Tue, 22 Sep 2026 02:35:03 +0000
-To: "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>
-From: austin1288 <austin1288@proton.me>
-Subject: hostmem resource conflict
-Message-ID: <fvI1NdP874TeiN4tqvE_L4jO-8UupzGZaK8Ku5TuOcedZfFTr4NXv-QnAGDyaN1msbGbUrt7qHYuUeFdjOOEGm5E4lvdcG83wE2GFyaAVgY=@proton.me>
-Feedback-ID: 223452890:user:proton
-X-Pm-Message-ID: 9a7b2305576119bc983699602925697a13e35edd
+ (Exim 4.90_1) (envelope-from <philmd@oss.qualcomm.com>)
+ id 1x93hK-0002Td-WE
+ for qemu-arm@nongnu.org; Tue, 22 Sep 2026 12:50:28 -0400
+Received: from pps.filterd (m0279862.ppops.net [127.0.0.1])
+ by mx0a-0031df01.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id
+ 68MEjBr24109945
+ for <qemu-arm@nongnu.org>; Tue, 22 Sep 2026 16:50:25 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qualcomm.com; h=
+ cc:content-transfer-encoding:content-type:date:from:in-reply-to
+ :message-id:mime-version:references:subject:to; s=qcppdkim1; bh=
+ 72N0GXBzAI2IR3Q2JwAh1iUuA/4cXofbC72GnfMvljs=; b=A17rl21NYJSn4WOW
+ Nuos9WqMytoQDEEkCz99z/UoWrqnmlcv6qghWNoISwzkVbm4A/Sqc4n3l7Qr5mTr
+ 5LrDoP56uBy4LOn5qTTpp+bXlghoX+LiRAAgsZeXAYcGInUCzJSITlBpK2naLenW
+ HCol5uEdJHsvbFp+b6WVwp/bFlDb6hkQMJPJrnkYU+pRSelOI5+u98LYepMvcjFZ
+ yCyOcjpHQ3s4cWBptS1Z2+YjkR96FmpAQbUunluYoDVUiM06dk+zrehWtZL7e1sv
+ CX70lDkhfgEtxeFKvvn45aVhKG+Ii+s3EYMOgrbnWTYPIjH9OB7AQr4k/tcxPz4U
+ qEmFew==
+Received: from mail-ua1-f69.google.com (mail-ua1-f69.google.com
+ [209.85.222.69])
+ by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 4gurnt9m52-1
+ (version=TLSv1.3 cipher=TLS_AES_128_GCM_SHA256 bits=128 verify=NOT)
+ for <qemu-arm@nongnu.org>; Tue, 22 Sep 2026 16:50:25 +0000 (GMT)
+Received: by mail-ua1-f69.google.com with SMTP id
+ a1e0cc1a2514c-97cb8d1b032so17987241.0
+ for <qemu-arm@nongnu.org>; Tue, 22 Sep 2026 09:50:25 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=oss.qualcomm.com; s=google; t=1790095824; x=1790700624; darn=nongnu.org;
+ h=content-transfer-encoding:content-type:mime-version:references
+ :in-reply-to:message-id:date:subject:cc:to:from:from:to:cc:subject
+ :date:message-id:reply-to:content-type;
+ bh=72N0GXBzAI2IR3Q2JwAh1iUuA/4cXofbC72GnfMvljs=;
+ b=Uap2q/C2u5ixRnDLlkf7q1AqGG2ImrOrlo8km8GLhYxP9GyCH9YjgmgSuCPKZrZcbm
+ mlK8E5FrlA8eaSQbvwaxVU1njAXUpGkgEF4Fog1XP6xUdvn47GmBWvYD5I36B/k6OW74
+ 6n8XjUwHpt7BxNXZGJ+iSa5rIk98QdYjOOIPnWxWY+vSBh27H15wqNyD7mVoQwzJq1ZG
+ 8IZsBCX0NTba8mt5ZV1NtnvEhzpEKR65dbkR5Ks6zK4et1/gMKBrGWJLPHEPpBZkwyEz
+ fuGr3qZcK+ez4Lz9d/iSHcVX13igfFaekiO3SWg8iaY/kQDDQYbPLUdJpa6WlVO5WvwU
+ fGtQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20260707; t=1790095824; x=1790700624;
+ h=content-transfer-encoding:content-type:mime-version:references
+ :in-reply-to:message-id:date:subject:cc:to:from:x-gm-gg
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
+ :content-type;
+ bh=72N0GXBzAI2IR3Q2JwAh1iUuA/4cXofbC72GnfMvljs=;
+ b=z+b/JJ6/2gcAJLSF+5QEUVMZ3esfB9GGjDk5vTbgA3fVp2We3pgGd5jC0zdVsBsvWv
+ 8huinXQPgPSYfLssi+IEc1P1bmNwIZtsRqk0enUZQKLrzgZILvoZtKRkyYl7rzAwxHxH
+ ZxZqvmheu5+zTyc4aj1RSk/1HPpuiWSRov3TC9Tx0rJ6N41NKSAtGFpuD5oBqYa3B6Rm
+ IjNRZ+OE9oF6BqsesfuZFGn7eXsmYufzS6dz6THq6NWIobmmOkj9ihQ/GFTLwbSWUOuj
+ WXv4zniFKv4Vi/ozPJyNClterIdGpLeWfdaV+KUOwdcVci6S5vArOsoa3veM+flARIYc
+ hItg==
+X-Forwarded-Encrypted: i=1;
+ AKwUvBxB/5MxfriWASwFYf0j/2CL7acM+nktfcwaJYrcMxaqrmLJhgNCWseRFOltaDnqaHW+/BFyzMLQMg==@nongnu.org
+X-Gm-Message-State: AFuF++mP+FPrxivbGki/pklrfRpe9Lzq575dIcU4PDtBltRDI0csBgSV
+ QqsrUd3wykpDpZB/JZqzyWJ6VFj8ko7oT60ki0A/3LXs7787hn+K7RLTnnDPhyQ7e5LuSS4TKqN
+ 2bMGRZyknFyXGWFCpEO+Zs9m7cg5sT2xK1HG2sG16XNJhwYfMKuoKVRc=
+X-Gm-Gg: AYBFou0PzXAn6f/MoIYWBB+gkPmZVnD9r/SERsz/SkRJfSAWSXqvIzvKwaBNKIIV91/
+ m9l8m2bBOkuQolb+crC75iWghWr3wwJxOyu6wvfPYlTfij0dQgXBa9iBujeTXchjSzb3oQ2G0fX
+ Mr6TSVoGkqTS4cevE05CN1zfs/I72xgEc77y6ug6EeVmTGzN3WR9IaEV4PFYsiMjvV8HrPip4KE
+ fzcrSymlufBCXJf+XNMtIyp7GRJASwdrRteRKjnsBFvJgtFe2IXAGVuQFufBDwovCNMrFYGQOaV
+ CxjLdj4re+iab8Uzc5u1azmj70ymf8AdM9N9CcVksXKVio4L0ADGaiIghZZ4lwSSfBuYCXRW569
+ 5HTCP2SF+EfzZ8FJyPAUePhdfIsXMU2o3dwR9bY6r
+X-Received: by 2002:a05:6122:1312:b0:5c9:a60b:e5d5 with SMTP id
+ 71dfb90a1353d-5c9f1655c76mr124697e0c.15.1790095824515; 
+ Tue, 22 Sep 2026 09:50:24 -0700 (PDT)
+X-Received: by 2002:a05:6122:1312:b0:5c9:a60b:e5d5 with SMTP id
+ 71dfb90a1353d-5c9f1655c76mr124660e0c.15.1790095824066; 
+ Tue, 22 Sep 2026 09:50:24 -0700 (PDT)
+Received: from localhost.localdomain (pmd666.hd.free.fr. [88.187.86.199])
+ by smtp.gmail.com with ESMTPSA id
+ ffacd0b85a97d-488626d29dasm6729910f8f.0.2026.09.22.09.50.22
+ (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
+ Tue, 22 Sep 2026 09:50:23 -0700 (PDT)
+From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@oss.qualcomm.com>
+To: qemu-devel@nongnu.org
+Cc: qemu-riscv@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
+ qemu-ppc@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>,
+ qemu-s390x@nongnu.org, Richard Henderson <richard.henderson@linaro.org>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@oss.qualcomm.com>,
+ qemu-arm@nongnu.org
+Subject: [PATCH v2 06/17] target/arm: Un-inline arm_set_cpu_power_state()
+Date: Tue, 22 Sep 2026 18:49:24 +0200
+Message-ID: <20260922164936.15189-7-philmd@oss.qualcomm.com>
+X-Mailer: git-send-email 2.53.0
+In-Reply-To: <20260922164936.15189-1-philmd@oss.qualcomm.com>
+References: <20260922164936.15189-1-philmd@oss.qualcomm.com>
 MIME-Version: 1.0
-Content-Type: multipart/alternative;
- boundary="b1=_uXEe1VXEf5JofejARatmtN4ApU5wl9Szdysnlwy74E"
-Received-SPF: pass client-ip=185.70.43.19; envelope-from=austin1288@proton.me;
- helo=mail-4319.protonmail.ch
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+X-Proofpoint-ORIG-GUID: MMLMoKEKrWraloHrWf9e1XqgZfYQGjNX
+X-Authority-Analysis: v=2.4 cv=eauo7LEH c=1 sm=1 tr=0 ts=6ab2b1d1 cx=c_pps
+ a=UbhLPJ621ZpgOD2l3yZY1w==:117 a=4s3hRJSeHn4rkQlkrse1kQ==:17
+ a=IkcTkHD0fZMA:10 a=VdqzKS8jKosA:10 a=M51BFTxLslgA:10 a=s4-Qcg_JpJYA:10
+ a=VkNPw1HP01LnGYTKEx00:22 a=u7WPNUs3qKkmUXheDGA7:22 a=_K5XuSEh1TEqbUxoQ0s3:22
+ a=EUspDBNiAAAA:8 a=or-B4SToQ6AIma83kDAA:9 a=3ZKOabzyN94A:10 a=QEXdDO2ut3YA:10
+ a=TOPH6uDL9cOC6tEoww4z:22
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwOTIyMDI0NiBTYWx0ZWRfX5eKPOAlPQUmp
+ cQT6cI2YTR4HpFYqFiAXNoMho5gzgdUJzVrCMPMJdTXxTLZxhDnLJvZWsLFSsGvYRY4RgCk35GB
+ YQbyBYn9OFqtap9CDB7MtVkMC4u5R1bBLygXqnpjL66+6h9dEAq85J5Zl9i9Z0lIRkCmP7bvH9Q
+ vItwpXlD7nk/G+1g4IUSpzwZUMD/+aVLqy5Yl6BuR50LPmRqTrrlD1AiUIk+LM8zSUYm5nyE2US
+ EsJTj0u0G/YVwF6PSpScP/S6pQEFTlP/gCHX1ZGfPdEGVV52pm2ItLlwpJLIEOsZL3G3fbd/K2V
+ KFAd084xom6QWrbjKA8crTUDrCQj0n9xpZaaoShCvvi1GOFmxbyyLSM+/Imn2GVtc/h132QrvjC
+ 1oEo/D9JLWGrAQD0Y9Ziw6W6udrLCEJFZoN1SBsj3ps/MPAOqQiKiP9cDSogQNs/aSodlTlJNJa
+ 5EZ5Lp//zofv0C21qKw==
+X-Proofpoint-Spam-Info: AW1haW4tMjYwOTIyMDI0NiBTYWx0ZWRfXwNvRhPo99nkq
+ qrFrEx6II+yvBOdGE24XjlDq7Paj88G6EZSjhzEbInbTB5dbY1b4MsiSMzKrKnGqPPfXFeqm9+m
+ mkMrRxqw5TCx/SQE/OpP4+wA5LBkN5E=
+X-Proofpoint-GUID: MMLMoKEKrWraloHrWf9e1XqgZfYQGjNX
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.293,Aquarius:18.0.1176,Hydra:6.1.134,FMLib:17.12.100.49
+ definitions=2026-09-22_02,2026-09-21_02,2025-10-01_01
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
+ suspectscore=0 phishscore=0 lowpriorityscore=0 impostorscore=0 clxscore=1015
+ spamscore=0 malwarescore=0 bulkscore=0 adultscore=0 priorityscore=1501
+ classifier=typeunknown authscore=0 authtc= authcc= route=outbound adjust=0
+ reason=mlx scancount=1 engine=8.22.0-2609040000 definitions=main-2609220246
+Received-SPF: pass client-ip=205.220.168.131;
+ envelope-from=philmd@oss.qualcomm.com; helo=mx0a-0031df01.pphosted.com
 X-Spam_score_int: -27
 X-Spam_score: -2.8
 X-Spam_bar: --
 X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, HTML_MESSAGE=0.001,
- RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_LOW=-0.7, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-Mailman-Approved-At: Tue, 22 Sep 2026 08:20:49 -0400
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -66,135 +156,76 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
---b1=_uXEe1VXEf5JofejARatmtN4ApU5wl9Szdysnlwy74E
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: base64
+Move arm_set_cpu_power_state() from the header to arm-powerctl.c,
+keeping the power-state helper with the other power-control code.
+Restrict the call in arm_cpu_reset_hold() to system emulation.
 
-V2hlbiBJIGluY3JlYXNlIGhvc3RtZW0gdG8gYSBudW1iZXIgPj01MTJNIEkgZ2V0IHRoZSBiZWxv
-dyBlcnJvciBiZWZvcmUgZ2V0dGluZyBkcm9wcGVkIHRvIGEgdWVmaSBzaGVsbC4KYGBgCgpVRUZJ
-IGZpcm13YXJlICh2ZXJzaW9uIGVkazItc3RhYmxlMjAyNDA4LXByZWJ1aWx0LnFlbXUub3JnIGJ1
-aWx0IGF0IDE2OjI4OjUwIG9uIFNlcCAxMiAyMDI0KQpFcnJvcjogSW1hZ2UgYXQgMDAxQkZENjYw
-MDAgc3RhcnQgZmFpbGVkOiBOb3QgRm91bmQKRXJyb3I6IEltYWdlIGF0IDAwMUJGQzhFMDAwIHN0
-YXJ0IGZhaWxlZDogVW5zdXBwb3J0ZWQKRXJyb3I6IEltYWdlIGF0IDAwMUJGQzEzMDAwIHN0YXJ0
-IGZhaWxlZDogTm90IEZvdW5kCkVycm9yOiBJbWFnZSBhdCAwMDFCRkE3RjAwMCBzdGFydCBmYWls
-ZWQ6IEFib3J0ZWQKVHBtMlN1Ym1pdENvbW1hbmQgLSBUY2cyIC0gTm90IEZvdW5kClRwbTJHZXRD
-YXBhYmlsaXR5UGNycyBmYWlsIQpUcG0yU3VibWl0Q29tbWFuZCAtIFRjZzIgLSBOb3QgRm91bmQK
-T3V0IE9mIFJlc291cmNlIQpDYWxsIFBjaUhvc3RCcmlkZ2VSZXNvdXJjZUNvbmZsaWN0KCkuClBj
-aUhvc3RCcmlkZ2U6IFJlc291cmNlIGNvbmZsaWN0IGhhcHBlbnMhClJvb3RCcmlkZ2VbMF06CiBJ
-L086IExlbmd0aC9BbGlnbm1lbnQgPSAweDEwMDAgLyAweEZGRgogTWVtOiBMZW5ndGgvQWxpZ25t
-ZW50ID0gMHgyMDEwMDAwMCAvIDB4MUZGRkZGRkYKICAgICBHcmFudWxhcml0eS9TcGVjaWZpY0Zs
-YWcgPSAzMiAvIDAwCiBNZW06IExlbmd0aC9BbGlnbm1lbnQgPSAweDAgLyAweDAKICAgICBHcmFu
-dWxhcml0eS9TcGVjaWZpY0ZsYWcgPSAzMiAvIDA2IChQcmVmZXRjaGFibGUpCiBNZW06IExlbmd0
-aC9BbGlnbm1lbnQgPSAweDAgLyAweDAKICAgICBHcmFudWxhcml0eS9TcGVjaWZpY0ZsYWcgPSA2
-NCAvIDAwCiBNZW06IExlbmd0aC9BbGlnbm1lbnQgPSAweDAgLyAweDAKICAgICBHcmFudWxhcml0
-eS9TcGVjaWZpY0ZsYWcgPSA2NCAvIDA2IChQcmVmZXRjaGFibGUpCiBCdXM6IExlbmd0aC9BbGln
-bm1lbnQgPSAweDEgLyAweDAKQ29ubmVjdDogUGNpUm9vdCgweDApOiBOb3QgRm91bmQKM2gzaEJk
-c0R4ZTogbG9hZGluZyBCb290MDAwMSAiRUZJIEludGVybmFsIFNoZWxsIiBmcm9tIEZ2KDY0MDc0
-QUZFLTM0MEEtNEJFNi05NEJBLTkxQjVCNEQwRjcxRSkvRnZGaWxlKDdDMDRBNTgzLTlFM0UtNEYx
-Qy1BRDY1LUUwNTI2OEQwQjREMSkKQmRzRHhlOiBzdGFydGluZyBCb290MDAwMSAiRUZJIEludGVy
-bmFsIFNoZWxsIiBmcm9tIEZ2KDY0MDc0QUZFLTM0MEEtNEJFNi05NEJBLTkxQjVCNEQwRjcxRSkv
-RnZGaWxlKDdDMDRBNTgzLTlFM0UtNEYxQy1BRDY1LUUwNTI2OEQwQjREMSkKVUVGSSBJbnRlcmFj
-dGl2ZSBTaGVsbCB2Mi4yCkVESyBJSQpVRUZJIHYyLjcwIChFREsgSUksIDB4MDAwMTAwMDApCgpg
-YGAKV29ya2luZyBjb21tYW5kIGxpbmU6CmBgYAotZHJpdmUgZm9ybWF0PXJhdyxmaWxlPXVidW50
-dS5yYXcsc25hcHNob3Q9b24KLWRpc3BsYXkgc2RsCi1zZXJpYWwgc3RkaW8KLWFjY2VsIGt2bQot
-Y3B1IGhvc3QKLWRldmljZSB2aXJ0aW8tZ3B1LXBjaSxob3N0bWVtPTI1Nk0KLW1hY2hpbmUgdmly
-dAotYmlvcyAvdXNyL3NoYXJlL3FlbXUvZWRrMi1hYXJjaDY0LWNvZGUuZmQKYGBgCkZhaWxpbmcg
-Y29tbWFuZCBsaW5lOgpgYGAKLWRyaXZlIGZvcm1hdD1yYXcsZmlsZT11YnVudHUucmF3LHNuYXBz
-aG90PW9uCi1kaXNwbGF5IHNkbAotc2VyaWFsIHN0ZGlvCi1hY2NlbCBrdm0KLWNwdSBob3N0Ci1k
-ZXZpY2UgdmlydGlvLWdwdS1wY2ksaG9zdG1lbT01MTJNCi1tYWNoaW5lIHZpcnQKLWJpb3MgL3Vz
-ci9zaGFyZS9xZW11L2VkazItYWFyY2g2NC1jb2RlLmZkYGBgCkkgcmVwcm9kdWNlZCB0aGlzIGlz
-c3VlIG9uIHFlbXUtMTEuMS4xIHdpdGggYm90aCB0aGUgcGlubmVkIGVkazIgdmVyc2lvbiAoMjAy
-NDA4KSBhcyB3ZWxsIGFzIHRoZSBsYXRlc3QgdXBzdHJlYW0gdGFnICgyMDI2MDgpLg==
+Signed-off-by: Philippe Mathieu-Daudé <philmd@oss.qualcomm.com>
+---
+ target/arm/internals.h    | 8 +-------
+ target/arm/arm-powerctl.c | 7 +++++++
+ target/arm/cpu.c          | 4 ++--
+ 3 files changed, 10 insertions(+), 9 deletions(-)
 
---b1=_uXEe1VXEf5JofejARatmtN4ApU5wl9Szdysnlwy74E
-Content-Type: text/html; charset=utf-8
-Content-Transfer-Encoding: base64
-
-PGRpdiBzdHlsZT0iZm9udC1mYW1pbHk6IEFyaWFsLCBzYW5zLXNlcmlmOyBmb250LXNpemU6IDE0
-cHg7IGNvbG9yOiByZ2IoMCwgMCwgMCk7IGJhY2tncm91bmQtY29sb3I6IHJnYigyNTUsIDI1NSwg
-MjU1KTsiPldoZW4gSSBpbmNyZWFzZSBob3N0bWVtIHRvIGEgbnVtYmVyICZndDs9NTEyTSBJIGdl
-dCB0aGUgYmVsb3cgZXJyb3IgYmVmb3JlIGdldHRpbmcgZHJvcHBlZCB0byBhIHVlZmkgc2hlbGwu
-PC9kaXY+PGRpdiBzdHlsZT0iZm9udC1mYW1pbHk6IEFyaWFsLCBzYW5zLXNlcmlmOyBmb250LXNp
-emU6IDE0cHg7IGNvbG9yOiByZ2IoMCwgMCwgMCk7IGJhY2tncm91bmQtY29sb3I6IHJnYigyNTUs
-IDI1NSwgMjU1KTsiPmBgYDwvZGl2PjxkaXYgc3R5bGU9ImZvbnQtZmFtaWx5OiBBcmlhbCwgc2Fu
-cy1zZXJpZjsgZm9udC1zaXplOiAxNHB4OyBjb2xvcjogcmdiKDAsIDAsIDApOyBiYWNrZ3JvdW5k
-LWNvbG9yOiByZ2IoMjU1LCAyNTUsIDI1NSk7Ij48cHJlPlVFRkkgZmlybXdhcmUgKHZlcnNpb24g
-ZWRrMi1zdGFibGUyMDI0MDgtcHJlYnVpbHQucWVtdS5vcmcgYnVpbHQgYXQgMTY6Mjg6NTAgb24g
-U2VwIDEyIDIwMjQpDQpFcnJvcjogSW1hZ2UgYXQgMDAxQkZENjYwMDAgc3RhcnQgZmFpbGVkOiBO
-b3QgRm91bmQNCkVycm9yOiBJbWFnZSBhdCAwMDFCRkM4RTAwMCBzdGFydCBmYWlsZWQ6IFVuc3Vw
-cG9ydGVkDQpFcnJvcjogSW1hZ2UgYXQgMDAxQkZDMTMwMDAgc3RhcnQgZmFpbGVkOiBOb3QgRm91
-bmQNCkVycm9yOiBJbWFnZSBhdCAwMDFCRkE3RjAwMCBzdGFydCBmYWlsZWQ6IEFib3J0ZWQNClRw
-bTJTdWJtaXRDb21tYW5kIC0gVGNnMiAtIE5vdCBGb3VuZA0KVHBtMkdldENhcGFiaWxpdHlQY3Jz
-IGZhaWwhDQpUcG0yU3VibWl0Q29tbWFuZCAtIFRjZzIgLSBOb3QgRm91bmQNCk91dCBPZiBSZXNv
-dXJjZSENCkNhbGwgUGNpSG9zdEJyaWRnZVJlc291cmNlQ29uZmxpY3QoKS4NClBjaUhvc3RCcmlk
-Z2U6IFJlc291cmNlIGNvbmZsaWN0IGhhcHBlbnMhDQpSb290QnJpZGdlWzBdOg0KJm5ic3A7SS9P
-OiBMZW5ndGgvQWxpZ25tZW50ID0gMHgxMDAwIC8gMHhGRkYNCiZuYnNwO01lbTogTGVuZ3RoL0Fs
-aWdubWVudCA9IDB4MjAxMDAwMDAgLyAweDFGRkZGRkZGDQombmJzcDsgJm5ic3A7ICZuYnNwO0dy
-YW51bGFyaXR5L1NwZWNpZmljRmxhZyA9IDMyIC8gMDANCiZuYnNwO01lbTogTGVuZ3RoL0FsaWdu
-bWVudCA9IDB4MCAvIDB4MA0KJm5ic3A7ICZuYnNwOyAmbmJzcDtHcmFudWxhcml0eS9TcGVjaWZp
-Y0ZsYWcgPSAzMiAvIDA2IChQcmVmZXRjaGFibGUpDQombmJzcDtNZW06IExlbmd0aC9BbGlnbm1l
-bnQgPSAweDAgLyAweDANCiZuYnNwOyAmbmJzcDsgJm5ic3A7R3JhbnVsYXJpdHkvU3BlY2lmaWNG
-bGFnID0gNjQgLyAwMA0KJm5ic3A7TWVtOiBMZW5ndGgvQWxpZ25tZW50ID0gMHgwIC8gMHgwDQom
-bmJzcDsgJm5ic3A7ICZuYnNwO0dyYW51bGFyaXR5L1NwZWNpZmljRmxhZyA9IDY0IC8gMDYgKFBy
-ZWZldGNoYWJsZSkNCiZuYnNwO0J1czogTGVuZ3RoL0FsaWdubWVudCA9IDB4MSAvIDB4MA0KQ29u
-bmVjdDogUGNpUm9vdCgweDApOiBOb3QgRm91bmQNCjNoM2hCZHNEeGU6IGxvYWRpbmcgQm9vdDAw
-MDEgIkVGSSBJbnRlcm5hbCBTaGVsbCIgZnJvbSBGdig2NDA3NEFGRS0zNDBBLTRCRTYtOTRCQS05
-MUI1QjREMEY3MUUpL0Z2RmlsZSg3QzA0QTU4My05RTNFLTRGMUMtQUQ2NS1FMDUyNjhEMEI0RDEp
-DQpCZHNEeGU6IHN0YXJ0aW5nIEJvb3QwMDAxICJFRkkgSW50ZXJuYWwgU2hlbGwiIGZyb20gRnYo
-NjQwNzRBRkUtMzQwQS00QkU2LTk0QkEtOTFCNUI0RDBGNzFFKS9GdkZpbGUoN0MwNEE1ODMtOUUz
-RS00RjFDLUFENjUtRTA1MjY4RDBCNEQxKQ0KVUVGSSBJbnRlcmFjdGl2ZSBTaGVsbCB2Mi4yDQpF
-REsgSUkNClVFRkkgdjIuNzAgKEVESyBJSSwgMHgwMDAxMDAwMCkNCjwvcHJlPmBgYDwvZGl2Pjxk
-aXYgc3R5bGU9ImZvbnQtZmFtaWx5OiBBcmlhbCwgc2Fucy1zZXJpZjsgZm9udC1zaXplOiAxNHB4
-OyBjb2xvcjogcmdiKDAsIDAsIDApOyBiYWNrZ3JvdW5kLWNvbG9yOiByZ2IoMjU1LCAyNTUsIDI1
-NSk7Ij5Xb3JraW5nIGNvbW1hbmQgbGluZTo8L2Rpdj48ZGl2IHN0eWxlPSJmb250LWZhbWlseTog
-QXJpYWwsIHNhbnMtc2VyaWY7IGZvbnQtc2l6ZTogMTRweDsgY29sb3I6IHJnYigwLCAwLCAwKTsg
-YmFja2dyb3VuZC1jb2xvcjogcmdiKDI1NSwgMjU1LCAyNTUpOyI+YGBgPC9kaXY+PGRpdiBzdHls
-ZT0iZm9udC1mYW1pbHk6IEFyaWFsLCBzYW5zLXNlcmlmOyBmb250LXNpemU6IDE0cHg7IGNvbG9y
-OiByZ2IoMCwgMCwgMCk7IGJhY2tncm91bmQtY29sb3I6IHJnYigyNTUsIDI1NSwgMjU1KTsiPi1k
-cml2ZSBmb3JtYXQ9cmF3LGZpbGU9dWJ1bnR1LnJhdyxzbmFwc2hvdD1vbjwvZGl2PjxkaXYgc3R5
-bGU9ImZvbnQtZmFtaWx5OiBBcmlhbCwgc2Fucy1zZXJpZjsgZm9udC1zaXplOiAxNHB4OyBjb2xv
-cjogcmdiKDAsIDAsIDApOyBiYWNrZ3JvdW5kLWNvbG9yOiByZ2IoMjU1LCAyNTUsIDI1NSk7Ij4t
-ZGlzcGxheSBzZGw8L2Rpdj48ZGl2IHN0eWxlPSJmb250LWZhbWlseTogQXJpYWwsIHNhbnMtc2Vy
-aWY7IGZvbnQtc2l6ZTogMTRweDsgY29sb3I6IHJnYigwLCAwLCAwKTsgYmFja2dyb3VuZC1jb2xv
-cjogcmdiKDI1NSwgMjU1LCAyNTUpOyI+LXNlcmlhbCBzdGRpbzwvZGl2PjxkaXYgc3R5bGU9ImZv
-bnQtZmFtaWx5OiBBcmlhbCwgc2Fucy1zZXJpZjsgZm9udC1zaXplOiAxNHB4OyBjb2xvcjogcmdi
-KDAsIDAsIDApOyBiYWNrZ3JvdW5kLWNvbG9yOiByZ2IoMjU1LCAyNTUsIDI1NSk7Ij4tYWNjZWwg
-a3ZtPC9kaXY+PGRpdiBzdHlsZT0iZm9udC1mYW1pbHk6IEFyaWFsLCBzYW5zLXNlcmlmOyBmb250
-LXNpemU6IDE0cHg7IGNvbG9yOiByZ2IoMCwgMCwgMCk7IGJhY2tncm91bmQtY29sb3I6IHJnYigy
-NTUsIDI1NSwgMjU1KTsiPi1jcHUgaG9zdDwvZGl2PjxkaXYgc3R5bGU9ImZvbnQtZmFtaWx5OiBB
-cmlhbCwgc2Fucy1zZXJpZjsgZm9udC1zaXplOiAxNHB4OyBjb2xvcjogcmdiKDAsIDAsIDApOyBi
-YWNrZ3JvdW5kLWNvbG9yOiByZ2IoMjU1LCAyNTUsIDI1NSk7Ij4tZGV2aWNlIHZpcnRpby1ncHUt
-cGNpLGhvc3RtZW09MjU2TTwvZGl2PjxkaXYgc3R5bGU9ImZvbnQtZmFtaWx5OiBBcmlhbCwgc2Fu
-cy1zZXJpZjsgZm9udC1zaXplOiAxNHB4OyBjb2xvcjogcmdiKDAsIDAsIDApOyBiYWNrZ3JvdW5k
-LWNvbG9yOiByZ2IoMjU1LCAyNTUsIDI1NSk7Ij4tbWFjaGluZSB2aXJ0PC9kaXY+PGRpdiBzdHls
-ZT0iZm9udC1mYW1pbHk6IEFyaWFsLCBzYW5zLXNlcmlmOyBmb250LXNpemU6IDE0cHg7IGNvbG9y
-OiByZ2IoMCwgMCwgMCk7IGJhY2tncm91bmQtY29sb3I6IHJnYigyNTUsIDI1NSwgMjU1KTsiPi1i
-aW9zIC91c3Ivc2hhcmUvcWVtdS9lZGsyLWFhcmNoNjQtY29kZS5mZDwvZGl2PjxkaXYgc3R5bGU9
-ImZvbnQtZmFtaWx5OiBBcmlhbCwgc2Fucy1zZXJpZjsgZm9udC1zaXplOiAxNHB4OyBjb2xvcjog
-cmdiKDAsIDAsIDApOyBiYWNrZ3JvdW5kLWNvbG9yOiByZ2IoMjU1LCAyNTUsIDI1NSk7Ij5gYGA8
-L2Rpdj48ZGl2IHN0eWxlPSJmb250LWZhbWlseTogQXJpYWwsIHNhbnMtc2VyaWY7IGZvbnQtc2l6
-ZTogMTRweDsgY29sb3I6IHJnYigwLCAwLCAwKTsgYmFja2dyb3VuZC1jb2xvcjogcmdiKDI1NSwg
-MjU1LCAyNTUpOyI+RmFpbGluZyBjb21tYW5kIGxpbmU6PGJyPjxzcGFuIHN0eWxlPSJiYWNrZ3Jv
-dW5kLWNvbG9yOiByZ2IoMjU1LCAyNTUsIDI1NSk7Ij5gYGA8L3NwYW4+PGRpdiBzdHlsZT0iYmFj
-a2dyb3VuZC1jb2xvcjogcmdiKDI1NSwgMjU1LCAyNTUpOyI+LWRyaXZlIGZvcm1hdD1yYXcsZmls
-ZT11YnVudHUucmF3LHNuYXBzaG90PW9uPC9kaXY+PGRpdiBzdHlsZT0iYmFja2dyb3VuZC1jb2xv
-cjogcmdiKDI1NSwgMjU1LCAyNTUpOyI+LWRpc3BsYXkgc2RsPC9kaXY+PGRpdiBzdHlsZT0iYmFj
-a2dyb3VuZC1jb2xvcjogcmdiKDI1NSwgMjU1LCAyNTUpOyI+LXNlcmlhbCBzdGRpbzwvZGl2Pjxk
-aXYgc3R5bGU9ImJhY2tncm91bmQtY29sb3I6IHJnYigyNTUsIDI1NSwgMjU1KTsiPi1hY2NlbCBr
-dm08L2Rpdj48ZGl2IHN0eWxlPSJiYWNrZ3JvdW5kLWNvbG9yOiByZ2IoMjU1LCAyNTUsIDI1NSk7
-Ij4tY3B1IGhvc3Q8L2Rpdj48ZGl2IHN0eWxlPSJiYWNrZ3JvdW5kLWNvbG9yOiByZ2IoMjU1LCAy
-NTUsIDI1NSk7Ij4tZGV2aWNlIHZpcnRpby1ncHUtcGNpLGhvc3RtZW09NTEyTTwvZGl2PjxkaXYg
-c3R5bGU9ImJhY2tncm91bmQtY29sb3I6IHJnYigyNTUsIDI1NSwgMjU1KTsiPi1tYWNoaW5lIHZp
-cnQ8L2Rpdj48ZGl2IHN0eWxlPSJiYWNrZ3JvdW5kLWNvbG9yOiByZ2IoMjU1LCAyNTUsIDI1NSk7
-Ij4tYmlvcyAvdXNyL3NoYXJlL3FlbXUvZWRrMi1hYXJjaDY0LWNvZGUuZmQ8L2Rpdj48c3BhbiBz
-dHlsZT0iYmFja2dyb3VuZC1jb2xvcjogcmdiKDI1NSwgMjU1LCAyNTUpOyI+YGBgPC9zcGFuPjwv
-ZGl2PjxkaXYgc3R5bGU9ImZvbnQtZmFtaWx5OiBBcmlhbCwgc2Fucy1zZXJpZjsgZm9udC1zaXpl
-OiAxNHB4OyBjb2xvcjogcmdiKDAsIDAsIDApOyBiYWNrZ3JvdW5kLWNvbG9yOiByZ2IoMjU1LCAy
-NTUsIDI1NSk7Ij5JIHJlcHJvZHVjZWQgdGhpcyBpc3N1ZSBvbiBxZW11LTExLjEuMSB3aXRoIGJv
-dGggdGhlIHBpbm5lZCBlZGsyIHZlcnNpb24gKDIwMjQwOCkgYXMgd2VsbCBhcyB0aGUgbGF0ZXN0
-IHVwc3RyZWFtIHRhZyAoMjAyNjA4KS48L2Rpdj4=
-
-
---b1=_uXEe1VXEf5JofejARatmtN4ApU5wl9Szdysnlwy74E--
+diff --git a/target/arm/internals.h b/target/arm/internals.h
+index 1775835ad50..1efda543270 100644
+--- a/target/arm/internals.h
++++ b/target/arm/internals.h
+@@ -2082,12 +2082,6 @@ bool arm_cpu_match_cpreg_mig_tolerance(ARMCPU *cpu, uint64_t kvmidx,
+ /**
+  * arm_set_cpu_power_state() - set power state synced with halt_reason
+  */
+-static inline void arm_set_cpu_power_state(ARMCPU *cpu, ARMPSCIState state)
+-{
+-    CPUARMState *env = &cpu->env;
+-
+-    cpu->power_state = state;
+-    env->halt_reason = state == PSCI_OFF ? HALT_PSCI : NOT_HALTED;
+-}
++void arm_set_cpu_power_state(ARMCPU *cpu, ARMPSCIState state);
+ 
+ #endif
+diff --git a/target/arm/arm-powerctl.c b/target/arm/arm-powerctl.c
+index a06be5cc997..213e7ae056c 100644
+--- a/target/arm/arm-powerctl.c
++++ b/target/arm/arm-powerctl.c
+@@ -45,6 +45,13 @@ struct CpuOnInfo {
+     bool target_aa64;
+ };
+ 
++void arm_set_cpu_power_state(ARMCPU *cpu, ARMPSCIState state)
++{
++    CPUARMState *env = &cpu->env;
++
++    cpu->power_state = state;
++    env->halt_reason = state == PSCI_OFF ? HALT_PSCI : NOT_HALTED;
++}
+ 
+ static void arm_set_cpu_on_async_work(CPUState *target_cpu_state,
+                                       run_on_cpu_data data)
+diff --git a/target/arm/cpu.c b/target/arm/cpu.c
+index f58a1db843a..76aa47ac503 100644
+--- a/target/arm/cpu.c
++++ b/target/arm/cpu.c
+@@ -351,8 +351,6 @@ static void arm_cpu_reset_hold(Object *obj, ResetType type)
+     env->vfp.xregs[ARM_VFP_MVFR1] = cpu->isar.mvfr1;
+     env->vfp.xregs[ARM_VFP_MVFR2] = cpu->isar.mvfr2;
+ 
+-    arm_set_cpu_power_state(cpu, cs->start_powered_off ? PSCI_OFF : PSCI_ON);
+-
+     if (arm_feature(env, ARM_FEATURE_AARCH64)) {
+         /* 64 bit CPUs always start in 64 bit mode */
+         env->aarch64 = true;
+@@ -671,6 +669,8 @@ static void arm_cpu_reset_hold(Object *obj, ResetType type)
+     arm_set_ah_fp_behaviours(&env->vfp.fp_status[FPST_AH_F16]);
+ 
+ #ifndef CONFIG_USER_ONLY
++    arm_set_cpu_power_state(cpu, cs->start_powered_off ? PSCI_OFF : PSCI_ON);
++
+     if (kvm_enabled()) {
+         kvm_arm_reset_vcpu(cpu);
+     }
+-- 
+2.53.0
 
 

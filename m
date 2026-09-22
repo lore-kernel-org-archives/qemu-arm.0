@@ -4,45 +4,45 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 91A7EC982FF
-	for <qemu-arm@archiver.kernel.org>; Tue, 22 Sep 2026 09:03:25 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 06676C982FF
+	for <qemu-arm@archiver.kernel.org>; Tue, 22 Sep 2026 09:03:47 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1x8wOU-0007cF-23; Tue, 22 Sep 2026 05:02:30 -0400
+	id 1x8wOM-0007XT-6I; Tue, 22 Sep 2026 05:02:22 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
- id 1x8wOS-0007bL-Kh; Tue, 22 Sep 2026 05:02:28 -0400
-Received: from mail-japanwestazlp170120003.outbound.protection.outlook.com
- ([2a01:111:f403:c406::3] helo=OS8PR02CU002.outbound.protection.outlook.com)
+ id 1x8wOK-0007Wm-D0; Tue, 22 Sep 2026 05:02:20 -0400
+Received: from mail-koreacentralazlp170130006.outbound.protection.outlook.com
+ ([2a01:111:f403:c40f::6] helo=SEYPR02CU001.outbound.protection.outlook.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
- id 1x8wOR-0002C2-12; Tue, 22 Sep 2026 05:02:28 -0400
+ id 1x8wOI-0002Bc-6j; Tue, 22 Sep 2026 05:02:20 -0400
 ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=Z0SGlgF1L9wWWa0FjdEZhTS93gwtiNyZN5V8d0m2IiqcfyTcrQacHIeutsWh/oj1FWzkNxSTjht+gbTBAnzJ54bCDgddXBg1pIuKFlX2mMFCfljtE0TiSLezZG6EBxevO/vIwXV3N91kEHmoAuOjfm+zrPNS/vSiwReiy2cGhXtPTGtomBP9oXlKLh8ZJ8QUZnKQPlAH+fV5ruAF6hhgxkqMPZHOIRvm59xHNMjmXggUt7E9qUXQX6L0+nQEBDtHSQJJ1i1628A+DitSxAuJDBXGsTlUatrKt+KMLlfK/AdwFEiJ7jiIiRtt/8eRPxuYQQ7WIgp2F5ua4k4Wgam9wg==
+ b=kXke7QcWE7R0kpGfuI0vXyz7wFGLTn+uZiO5L10X3ju0DRU/KzuCFAsVQnNZQwpSCVY126z1zBMFSvC5SDfAO0WdB8f0XHILql60r8WGooYNCU5rYCr7nFzDH6eI8IaBQnejjbFfmEY8Veqcyv41huWzN8oHgSINx/qGQlAjSZ4I/tSZFxBBBHnveMYJL9K9RVbywk7M8W5dErCyfNHD5O2dhDBoqXVbqIJa36D/XhdQRpxfiJVZjO/pOf5Tlsi/NAlADwpAiXxQvYK1912OotKrXDte+JJ/mDN7H3lpj5845kMlzmxp8DN3wfSy3jJ8IyRR9ZOLvkUzZlhDAfJvuw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
  s=arcselector10001;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=DMjKkC8fGMB55jrAlnFw4sa58GyIrAShACGkbRmHSPM=;
- b=IzdWiAtBU2d7/LLdTa5f76R4aLnhklwwioBjvoERh0pwMou0kWD3c35rzBOHRHSldQCEUHt2+KFYCjwg4V0lE937g2MsUGk1STfjMagRskYvSIWLsJdbfo0TvtXFpLmnvwU6k3wJJJ7WMXVBXOVRcefg1K5MLFdf78ew/fZqKN9a90ia/Yyn3fXUDpl6CNgsXfdVbVy8naCudhfvUVAIcSBc1stKlNVHFwDAz2sK6l7XKt69gaQCogNK8DPOtPP24e/udy25CqtKLsFvmbzeL8g2berSkkBDWAbVYiPXpDjhStS5+sVRRO9Jfsg6g8hSH6X+EAUkDCLYrVwZi4i/9A==
+ bh=WsajMUETsE3Ty9K3/qnG5jZcPTKzpskahWJBp50byN8=;
+ b=XvJKdi4ACCbP0o+Wpx2Gj1SqiBGDEI7ped3RHkLr0zxLakj7HW6nwnZSQivRPTDDwDSpFBexM93jvTnNn6broCIrN4TfnL0VZcZTd/DqMXlD36zR+0WsWo8//NFOdQ61eYo/V5Mh+QMxArAWFLkBCalwwCxd61T+YhZzDUEWGhZJ4Rh9YBn51Kvd5rDiSPf+MWUhvlpjL366OUOAhecIOqv+RWW8a1NzJd5HR7Bhn/dIiaNzhVn+M4z0znZpxsiIcMNbwUeUl1S9GoIdrZAwRGbSIfswy7dY94UAXLiydPjUaubSGLoIkI5WW0oawykdkQJuUdoxaTgvAUApPsUWQQ==
 ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
  smtp.mailfrom=aspeedtech.com; dmarc=pass action=none
  header.from=aspeedtech.com; dkim=pass header.d=aspeedtech.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=aspeedtech.com;
  s=selector1;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=DMjKkC8fGMB55jrAlnFw4sa58GyIrAShACGkbRmHSPM=;
- b=YOfurx9cpZ8TvjTS0uBbI3Q30JJ7Gml4RdH9DatpdnMx8JMY9AT/BkEKONtLn3ZvPc5ka+9AO0N/cCLIqg0+xhGygvlYvZ8Ilz+A01Dmt7jMH5otUSOP6tcaGn3/ku6EF19hzXVG8mkG21/WFK42YER4oVWelbJ7RIJhry94RS9ymkcvry7FNKY5obrjfWu871XtJDS0cNKpPGFrqV6OSKdyJQO+EEN8n1vGhL09ugKZPrkbzHQtferh1CKsw3Z4XcQhLDskX0RFvy/SsLIJ2OjpnmF5FDrwKY9nQGmKiHshYpSlFtUG7yFpFAN+D49Rm4Gc7849lYy8z7lZoXoDRw==
+ bh=WsajMUETsE3Ty9K3/qnG5jZcPTKzpskahWJBp50byN8=;
+ b=WCMjAubvDB86ixyQX4xQs2QPkS9Ciz/EwLnMCaa/k8C2iPdM5V/SRHBzm8LROCGxLkSXGRFULL6T/2bQMzT8/AKTU94eC0gd74vIBdvdnAW1OStbyfBtQur/z/BQkNEniAI/G5CV95zntcLTQlFQDPQoEmEHwY+waq85LoejwnM8T6ftExxLGuX0K6j+VWq0E1qBwRDNwv8ZMe5FXUAYmw7zPP0x2ylgJCGzF+Ww4ZG3b5eWQbvABoHPQyJh5S4qJvfbL304pSFRUlXzxNb0IBZ1ThUuNdkh2DEpHWsnfCD/4CE2u+ijvdn7k3LaVPLCLAAY14wQrPPmKj6rZOKxnw==
 Received: from SEZPR06MB7362.apcprd06.prod.outlook.com (2603:1096:101:253::10)
- by TY1PPFFE5B965AC.apcprd06.prod.outlook.com (2603:1096:408::933)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.21.428.16; Tue, 22 Sep
- 2026 09:02:15 +0000
+ by SI2PR06MB5090.apcprd06.prod.outlook.com (2603:1096:4:1a9::13) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.21.428.15; Tue, 22 Sep
+ 2026 09:02:01 +0000
 Received: from SEZPR06MB7362.apcprd06.prod.outlook.com
  ([fe80::cd2d:35d2:a702:1de6]) by SEZPR06MB7362.apcprd06.prod.outlook.com
  ([fe80::cd2d:35d2:a702:1de6%4]) with mapi id 15.21.0428.015; Tue, 22 Sep 2026
- 09:02:15 +0000
+ 09:02:01 +0000
 From: Jamin Lin <jamin_lin@aspeedtech.com>
 To: =?iso-8859-1?Q?C=E9dric_Le_Goater?= <clg@kaod.org>, Peter Maydell
  <peter.maydell@linaro.org>, Steven Lee <steven_lee@aspeedtech.com>, Troy Lee
@@ -51,13 +51,12 @@ To: =?iso-8859-1?Q?C=E9dric_Le_Goater?= <clg@kaod.org>, Peter Maydell
  list:ASPEED BMCs" <qemu-arm@nongnu.org>, "open list:All patches CC here"
  <qemu-devel@nongnu.org>
 CC: Jamin Lin <jamin_lin@aspeedtech.com>, Troy Lee <troy_lee@aspeedtech.com>
-Subject: [PATCH v1 16/19] hw/usb/aspeed-udc: Use the endpoint max packet size
- for OUT transfers
-Thread-Topic: [PATCH v1 16/19] hw/usb/aspeed-udc: Use the endpoint max packet
- size for OUT transfers
-Thread-Index: AQHdSnEQl2OWQ2eYMEiQGsuC3sIa3w==
-Date: Tue, 22 Sep 2026 09:02:15 +0000
-Message-ID: <20260922090154.1792077-17-jamin_lin@aspeedtech.com>
+Subject: [PATCH v1 04/19] hw/usb/redirect-server: Announce the exported device
+Thread-Topic: [PATCH v1 04/19] hw/usb/redirect-server: Announce the exported
+ device
+Thread-Index: AQHdSnEHJTbLGrJuPEOvL7OV8PWYlQ==
+Date: Tue, 22 Sep 2026 09:02:00 +0000
+Message-ID: <20260922090154.1792077-5-jamin_lin@aspeedtech.com>
 References: <20260922090154.1792077-1-jamin_lin@aspeedtech.com>
 In-Reply-To: <20260922090154.1792077-1-jamin_lin@aspeedtech.com>
 Accept-Language: zh-TW, en-US
@@ -67,71 +66,71 @@ X-MS-TNEF-Correlator:
 authentication-results: dkim=none (message not signed)
  header.d=none;dmarc=none action=none header.from=aspeedtech.com;
 x-ms-publictraffictype: Email
-x-ms-traffictypediagnostic: SEZPR06MB7362:EE_|TY1PPFFE5B965AC:EE_
-x-ms-office365-filtering-correlation-id: 813b1637-64ac-42ef-6d09-08df188832a3
+x-ms-traffictypediagnostic: SEZPR06MB7362:EE_|SI2PR06MB5090:EE_
+x-ms-office365-filtering-correlation-id: ce60c032-d0e6-4ac6-47bb-08df18882a0e
 x-ms-exchange-senderadcheck: 1
 x-ms-exchange-antispam-relay: 0
 x-microsoft-antispam: BCL:0;
- ARA:13230040|376014|23010399003|366016|1800799024|22082099003|18002099003|38070700021|56012099006|10067099003;
-x-microsoft-antispam-message-info: n+TheskpFSXdSbH3wJtyjxlDV4nSfco+zaKvnIicsKHo8q5EMcgk+wdtT9ulK/PXnKHymD4RoWiNNqT0PlMYtkvVkYIMTyKvgK4RaZLriuUOd3fbpOZ0br8FuR+rxlO2nOJsApkpCRSo2+rm69TYiXQ6w5iFMxCya6QqL14oftJW+Q1YfR19n4NqYI19euy507yESV/6wIIeA2de6vSl4i7eHyWD+lAm2xHgmCPN4c3YhsViHkroul5qeTz+6rzyv5fLeT1T2cD3cZm7GdxMZGOHoAUshXBcRzMVrejZZ0VOthWemqkjxB3umZni33mULjxBUFVTX4Vqc4xK2QjFfFoUnOumPcseNptpged0KG7cASOaPPVqyfbKXWqJVoq/bDBjrq2eq9XkmzqozBs6czCJIL6GO0qekyETd0c/2zwcFBBfey6CApSJJJevrgqFsIgvvV1kvL7H8JxZyLV9EQ7UOAOfeprOh85/X4yCSFgYFb1dvfw4ju45wkF0SJI2hHtyA/CkCND1djfzqHX8+qfYmiD0XR+NrcQYoWjc44Wq2aeG6fPodLR8AqtQ7aTZ6r8t3NBXTCKG0rvr9MobD3rXKEVaYCswqY/Gx9VJz0UZV01X4Kue+fxIHYeYC3LYKHj8fEllzLgyJna8dPsN2dBO6nRHkju+pbvWy6b1Ys8oByOKHYgX+MCNClNGY1eaVtPTMR/52eRhaLI2gUES7uvlyiRhmqGN/sltkYNT5Yo=
+ ARA:13230040|23010399003|1800799024|376014|366016|38070700021|5023799004|6133799003|3023799007|56012099006|10067099003|18002099003|22082099003;
+x-microsoft-antispam-message-info: BDflsnK+ULl/XdavDCEIO6RRx5YieunW88pbAmtWF8hpUvKWJeSyZ4JdSSmIqt6HcNZkXS8KgA9NbLb40Vly/jH5xkYOsVt6sb8x8oXxP4vifC5oRf4Lpxc0vqQ81INX7f17QYQ6L89V4hIDbuFkUjQME13eRQFihOEJgim0M0G0V7DnqulXAewx6Mjyw4q1+TQwVohB21r9nVeq36ZQnhR8jWDt2tV9E3a6hGHRC8bnUvXPqV9qnWRJLpZeVdhn/SJGt7konUB5S94Cx3d84m1EZG6WgheB1MPD0bwFsfgqOJe15ZW/hfjTSEogcuicIrb6wLA10EQx47NriR8GV468YlO/catP9lloWZKFUtbdAZuJ1pxwR7zW3V6FGhywmwQA+KslsZxbwNqAXvXnhHaaOgKccMjQvZfVoYEG9E0tGMcY0Ml2tJtkCk5FFxygkDV+R2rPEzN/1x33Qb5zHBCVMZm0qyx9vDTPXu31tIhASiD5dWIXIkNQitYr1rVFQ5r6L9JV3mbA5UxlpWYJEwDVaVi7HAfQBc2+Gdb4F2QnG0c7IdGqAgUaI3PJZVOpPw01IkvQderek/42wMwT9YWRilnrZSqdr/KUfXRZzivdBvSa3CR2NaxZLTr62SF8qOF0NOvoehas7hkJvqUHpkAkoXgPpMv0LEbpiofm9v3DAwrRvShpVOqDv19gWZ3wDg8QASrk9K7Sd0EiI7gBLEkpSHg+0Hd276mqVbXJFj0=
 x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
  IPV:NLI; SFV:NSPM; H:SEZPR06MB7362.apcprd06.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(13230040)(376014)(23010399003)(366016)(1800799024)(22082099003)(18002099003)(38070700021)(56012099006)(10067099003);
+ SFS:(13230040)(23010399003)(1800799024)(376014)(366016)(38070700021)(5023799004)(6133799003)(3023799007)(56012099006)(10067099003)(18002099003)(22082099003);
  DIR:OUT; SFP:1102; 
 x-ms-exchange-antispam-messagedata-chunkcount: 1
-x-ms-exchange-antispam-messagedata-0: =?iso-8859-1?Q?U1zF6aYgTy+W6cW2AYnEFxLrdKou79pD0qNAIaCtwxaPpZ9kbZgv2HPg8b?=
- =?iso-8859-1?Q?wB2t1gFHcV40tuIXzj0gCUqrqKsP1peOQO+R0qyX/sdYDVBRYQel8eTpqx?=
- =?iso-8859-1?Q?3AcFXha/q/iPdEjg8AW/zIHr8qmLY9+J4dZ7VkSSY6e+70WDLc/Zfq1AmW?=
- =?iso-8859-1?Q?J5r/eHdfJc8d9QIvjKydfPZEfFSbgAOSdNN1xawe3g2UQhCuJQykZi+QaD?=
- =?iso-8859-1?Q?lKztaofGrwTWGWz9REBtMv/Siz16wHnErfA8HIGjJwZTf5AvPGZkixGvMi?=
- =?iso-8859-1?Q?sdQnXIwd+TpuH12C8mxZDi0i0PN462tei6fq0hV9n7MJuD62qMv7B8qE8j?=
- =?iso-8859-1?Q?+hyirLVg3Zt9nTFXOH9xp5WjTQi6RytX8Vt0V0SQlu1fS/F3AlxM4tamhO?=
- =?iso-8859-1?Q?41DWQmr/L/YD8r+Yg1xPMVMt/ZKioH1S2CDmvu6aTzL0Mytyv54S0Ldvnn?=
- =?iso-8859-1?Q?O7sGoxihFC2vHg1tsBs1vzHFzDP42rOpT6S2ik8np7WR+mxzYMoWMgfRMO?=
- =?iso-8859-1?Q?m4mMfeuXIn0dM9hD0JsnEN3OIWXJUAoe6pCEegh4qW7w97OO5D0SKtZVFF?=
- =?iso-8859-1?Q?TAxJGT+jjegd95P/dqcXHHSJQ9F7mG0XGjxoNeCevyE/tEf3gE5DdR7lwW?=
- =?iso-8859-1?Q?AlDaEH90h8WvShHd4QulQ4ssgi4zE7KwUfwq8HKro5x33U7DU6CDv5+7jr?=
- =?iso-8859-1?Q?hzftgGHLczc5L7ZCK7sc5LD1t88oOEdv6WBZWSxX33+swWy2vZM3ol0yoB?=
- =?iso-8859-1?Q?RmXoN7eEfsY6EYvZcDRkvXohEwyG4ZPzZ7ir5xttmtj+8fHhd5vBQxAkCl?=
- =?iso-8859-1?Q?dNVVw4WFVbOvPsOD3TLNw34h2o3C9VqFWHKtSAN5sylV34rJEsoQa9WeK/?=
- =?iso-8859-1?Q?T3kS2Mh0KiRhAvAZZKVpTaYAiUe9RHwy2BNjTtMhvB2muASytYO+ENmgM2?=
- =?iso-8859-1?Q?c4m0Cq9voilb4asm1nvvX7Ll4Lln9qYniUXTfBOGv0Gbnn8iaAkHAFg7er?=
- =?iso-8859-1?Q?tmE+U1Lw9Ok6EK77d6Yqqv3CbnK5U2NAMdPxNLFI7C4y9xgZ340sQuLwi0?=
- =?iso-8859-1?Q?wMcbZze1BUH35NHx+UjAaoNbg2shBB0NhSoefK60oIQxsj0fMn3A/msRXY?=
- =?iso-8859-1?Q?X+tbEsVL2AojAVYcOvmF9vVujsgpYH+V8qTtnWj9z4RPfakTsWM/xvPH+C?=
- =?iso-8859-1?Q?HH6lhoAO2J28+J9TPHZcqmr/sS0VxLF8v8lEJxohTWgQq8kQgDWd8iLZ/T?=
- =?iso-8859-1?Q?oRnJueB5FXxlnswewzEv8hPN2XS4U79zPKZi/Bga1wKg4CQCVn+MvAv3O6?=
- =?iso-8859-1?Q?RqbtAsKl6EqHCzjIgGq9xa7zlfn0ht5Bl2TcFstN9TsXgp+9RV9e+XAU1j?=
- =?iso-8859-1?Q?6YWqU7oZ1/W6QS8AOGTjYo9id92EmtFeYxcI3WJvZI3gCw2DIwoXsKRgk1?=
- =?iso-8859-1?Q?KWnEYiYVj3MCXSkVygmJR63bcZQpY007rgQRwiAxcG1QFl7mK3GNMlmwuw?=
- =?iso-8859-1?Q?AJWJStzUAFyx9HqcWTwNn2rdRDJ1tfV3Z1SFqsZwpkfOIu5QTSIHHdwqz/?=
- =?iso-8859-1?Q?oUnU/G9dxmNTw7vYIAst/R/pOj3WLowOMx+p0wyqfDIoBWZeqKjyE+VEmq?=
- =?iso-8859-1?Q?sFW0oDIbonsnRzYOd7D53dJiczgOKIEDTf2WC3/hCz4ZFTvg+L1FfCCJtX?=
- =?iso-8859-1?Q?nSdLeLFoxGtJoSoMrWyzzwDAWCyOgdC3hp5BfH4LG6XCpe/s0jVO6stWtn?=
- =?iso-8859-1?Q?DOtWBgtViW0s3GMx6Qi8qUI/q83cNHi9Kp1zbEIyUK+skEf+T+/uIJ95ZD?=
- =?iso-8859-1?Q?j33Hb3aMig=3D=3D?=
+x-ms-exchange-antispam-messagedata-0: =?iso-8859-1?Q?2w14x/Jm8TYamSbpQCzE6/gzx2JYIMPp39m86N7fPUD4Y1Rf5jhLgMFlpm?=
+ =?iso-8859-1?Q?+IIlfwv5l1q1HGpDSz1tkVq0WkH2omBFpSCtmzC1wbtPIt9PuExhanm3Wu?=
+ =?iso-8859-1?Q?D/PbqgEuJlp7/o1jVQhY0oaAB3pcG0IAP5dpGth1Er4kZ8MDzNZVLo/mKe?=
+ =?iso-8859-1?Q?8BYF1rTqbuhEgxUGMDgTsT4/84ws/VnXv1uaUl/gAUfaUydnU3x+oJ30wv?=
+ =?iso-8859-1?Q?88brB6R4yn0OrSILFMTFN/nl8CVLXtNk1elg9kJ9b2F3Sy0zGDtTLdreUh?=
+ =?iso-8859-1?Q?TL2RMu22cNgP3T25yFsM8Zj5mtB1/tYH8Jp8pULGHdnTbPaRMu4F5EQm6n?=
+ =?iso-8859-1?Q?5At/qGNqPBdNW16hfbjUOp7+aB71X0Gr19qSdsCSrjn+tjVVgJ+OeG849U?=
+ =?iso-8859-1?Q?ysJo+BwoMPQ1I54CiZhYhVIaXz/dS93FBhxoF92YpcDX5o+12jpbU80joC?=
+ =?iso-8859-1?Q?vDCARtTmkTgTdNiizt5E0TMEGh4SmpryaEhszgwZiNcH8AMzXt5DhwR2sR?=
+ =?iso-8859-1?Q?5av+3xKbjg1QGURPhCubrU+E/mjPo2jmJ/Ff/wvr6S35EsZkKSUZAni9Je?=
+ =?iso-8859-1?Q?z8eAZfPCeaJL+ZExQgfzeGa/ObToNmVKGV6ea/43UeU+CS89vFrgufY+6W?=
+ =?iso-8859-1?Q?9CLezSGr4K5dzwLv2tmMs/d5ItAIsPLPOItrKbHXli6tpW6RDP9FsXaWmI?=
+ =?iso-8859-1?Q?73pvgaBMDi6BxYxfCCde9crQ2BqdkkeyUcqcQk4IBSU/VEkuPixb56wc61?=
+ =?iso-8859-1?Q?nSqpWPGazzvkR47rNQUOgoMTfz43N8xB1JNgHzmsfjJkmwODbBfZhtOyr8?=
+ =?iso-8859-1?Q?pIEWNwp8MlwSh4VLPoX9Mxf2wZonKRoQievE3GldvjSTF+23lpar/Gb0ai?=
+ =?iso-8859-1?Q?+JQWgZesB/j9JHcM0XfsRwh+03eiJfUcnLENwJA1l7R6A4Jt3JFXMpJk8S?=
+ =?iso-8859-1?Q?lHFRwlFXMclxFl0rBVAM98Wqwmxxx7qYe0oVFrG4NLSyq6DCE2AWtIJf87?=
+ =?iso-8859-1?Q?nUSAcUX1D70YSZrzdnezhn2YG+iaXEtbldX+YF0+Mhdofm2MhCxPThjEXF?=
+ =?iso-8859-1?Q?ipVvkoetJaoM/Zz0FMz97dq/Ezk71OWzbREYcCZiMKzrdKySJiusyxH9n9?=
+ =?iso-8859-1?Q?n9N6T9RcEBwEnP9QNUdhRTBXGQ2jeDETxjT3nqnS429i1eKMjIP8wLkQJ8?=
+ =?iso-8859-1?Q?9/niqCr5/WkVrvccFUI6XQmLoZWD9t9bygLtkbuLNO9aGODGIVUMyfIzMm?=
+ =?iso-8859-1?Q?W5SjPxJ0nqJpoE0V80jNELsbyXwobL8P8I9JxK5yB4i84Mqe4B6tBpEdKk?=
+ =?iso-8859-1?Q?NWxOKHxw7U+2yjAlI897d5hbe8gsj0SrJYrzGlLYpFWBseYUrYq61GVtaf?=
+ =?iso-8859-1?Q?GT6ORV1Nv5DU42ZaE28EJfA5uAVIJ4pL1xPuai0pRjc+vOew/puWBl8Hg8?=
+ =?iso-8859-1?Q?T0RXsPf7GQsls83kwrUYJvuI8FFD9jkSZlX3PnNvm3WOn/ztoHTUN4Z8ms?=
+ =?iso-8859-1?Q?NkImWGuYyFIufFfMdbX0g8QGY7cyEae6F9JTORsJlIv9/rRery+Tv+g0Fj?=
+ =?iso-8859-1?Q?oBU8BOsPr94sgBf/C8VfOCDlCThxaTN+R/AhhjlDES87lurb5xCs7J7jgg?=
+ =?iso-8859-1?Q?TE/1/A1piifBaw4+I28/xQY6qxs6lqgRFR05nW3uIsgKNKGlojmDTsGogo?=
+ =?iso-8859-1?Q?p0KBSPYss8XDo5nZn2gKTbyjCGH1mZWbBDPV57zk3R7c5nJidDBPKYLlzA?=
+ =?iso-8859-1?Q?RWnokYbJxR6YdPFnqJTJn6VUuCfuFdYQtpvpTDlEtsSpryZXPGs4pmRJ8H?=
+ =?iso-8859-1?Q?JutQ0dT8HA=3D=3D?=
 Content-Type: text/plain; charset="iso-8859-1"
 Content-Transfer-Encoding: quoted-printable
 MIME-Version: 1.0
-X-Exchange-RoutingPolicyChecked: cadtItPIJx0v2vwrB0ueSdhwf5acPAWVc1YPRJ7Sfmv1o8TqwOJbKXlRpOt3fbzlgU5ILksXfV3pmpJXQgvWjZLNS+a0ot9LBZJNWg0nGz0Yf/7XATpmuNxX6Ua1rqnm/E/LJNfNWkJzglDJFCaFWFK+0mVlRPX983zbiw48N8ZYZy0A9xEWxjSG+NHVnpxTU+6DSwwXlvI6sfIR60/ZO1SnwnoiRngRm3yor+booU0Efq3Xai8/A1wtPRpAvOWc9qh+tf0EdyLzHdPy0BgkaMwWTWpDXmT2M4ZNYaELTQLlAnYBsIoS+76LPiVYcsBKj/QQ4+Qg7R6rgdzEQ4s6eg==
+X-Exchange-RoutingPolicyChecked: dkAV2BK08TqTR7M/P3CX4Rn5ktxBNhmsbo02Y44V3Eufwfpk7AET3HiG4dF++4TuBzZHds0QUGyU4CO7BeodIVJUZ5RHrRZf1FPGkPSXpRrsPzb4IL+ljs5rQYW6Qm+G9GCYyxOgjWdwtcxl6jWkiA6KrO1+4tHdOfQ6p6GqmNtLDiWA5k4Ajr8ORLK4hMzg0skdERvPrclj6yoP24ku2gq6I1kSXhBdGirjoSExHBeNeAH8xJoTliOK5zaLe/K93g4MznOXlpyg8MGv1q0okM7zDINHOpN7ZVPi+cRbnBJWeNk6wEv+AgEN1MUVq50o1pmtY7dAzyAEjVM3enVXhA==
 X-OriginatorOrg: aspeedtech.com
 X-MS-Exchange-CrossTenant-AuthAs: Internal
 X-MS-Exchange-CrossTenant-AuthSource: SEZPR06MB7362.apcprd06.prod.outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 813b1637-64ac-42ef-6d09-08df188832a3
-X-MS-Exchange-CrossTenant-originalarrivaltime: 22 Sep 2026 09:02:15.3948 (UTC)
+X-MS-Exchange-CrossTenant-Network-Message-Id: ce60c032-d0e6-4ac6-47bb-08df18882a0e
+X-MS-Exchange-CrossTenant-originalarrivaltime: 22 Sep 2026 09:02:00.5793 (UTC)
 X-MS-Exchange-CrossTenant-fromentityheader: Hosted
 X-MS-Exchange-CrossTenant-id: 43d4aa98-e35b-4575-8939-080e90d5a249
 X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: FdMBt0FDotKgQOMtyQVLzPvYRx+YulrBcpINLnUdzAtG+2BY4ZH4VD0I1oegJZBsgpHzcoQPJKGeLR6cvI8ed4p4TgXbHFMbslA8cCxBDlk=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: TY1PPFFE5B965AC
-Received-SPF: pass client-ip=2a01:111:f403:c406::3;
+X-MS-Exchange-CrossTenant-userprincipalname: E1VeS5sDh4ZEXPprQL41CjaXCEPUciaO/clYjE8rOp/fo9ESRRe2UTjeYaNDHQbbLF/vf7SSqdzrFjfOxj1fhM7dPPAcsqiignQzl0FCTQo=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: SI2PR06MB5090
+Received-SPF: pass client-ip=2a01:111:f403:c40f::6;
  envelope-from=jamin_lin@aspeedtech.com;
- helo=OS8PR02CU002.outbound.protection.outlook.com
+ helo=SEYPR02CU001.outbound.protection.outlook.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_NONE=0.001,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_PASS=-0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -148,127 +147,316 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-In single mode EP_DMA_STS.PKT_SIZE on an OUT endpoint is where the=0A=
-controller reports the length it received. It is not a buffer size. The=0A=
-model took the copy length from it, so a zero in that field meant no=0A=
-data was copied at all.=0A=
+Send device_connect when a device is attached and the host has greeted=0A=
+us, device_disconnect when it goes away, and handle the bus reset the=0A=
+host sends before enumerating.=0A=
 =0A=
-One maximum packet is the most that can arrive, so copy at most=0A=
-EP_CONFIG.MAX_PKT bytes per call instead. That field cannot hold 1024,=0A=
-so a value of 0 there means 1024 bytes. The IN path decoded that by=0A=
-hand; move it into one helper and use it from both paths.=0A=
+Wait a short time before sending device_connect. Firmware often toggles=0A=
+the USB pull-up a few times while it starts its controller. If the host=0A=
+starts to enumerate while the device is off, we cannot answer its first=0A=
+request, and it only retries after a control timeout of several seconds.=0A=
 =0A=
-Take the packet size from the combined packet when there is one, as the=0A=
-IN paths do. A combined packet holds more than p->iov says, so reading=0A=
-p->iov.size cut the transfer short.=0A=
+device_connect carries no identity. The peer asks the device itself with=0A=
+GET_DESCRIPTOR as soon as it enumerates, so anything we put there would=0A=
+be made up. The speed is real: it comes from the device on our port.=0A=
 =0A=
 Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>=0A=
 ---=0A=
- hw/usb/aspeed-udc.c | 32 ++++++++++++++++++--------------=0A=
- 1 file changed, 18 insertions(+), 14 deletions(-)=0A=
+ include/hw/usb/redirect-server.h |   2 +=0A=
+ hw/usb/redirect-server.c         | 166 ++++++++++++++++++++++++++++++-=0A=
+ hw/usb/trace-events              |   7 ++=0A=
+ 3 files changed, 174 insertions(+), 1 deletion(-)=0A=
 =0A=
-diff --git a/hw/usb/aspeed-udc.c b/hw/usb/aspeed-udc.c=0A=
-index dcced1b8fb..09f5913aef 100644=0A=
---- a/hw/usb/aspeed-udc.c=0A=
-+++ b/hw/usb/aspeed-udc.c=0A=
-@@ -416,6 +416,13 @@ static const MemoryRegionOps aspeed_udc_setup_ops =3D =
-{=0A=
-     },=0A=
+diff --git a/include/hw/usb/redirect-server.h b/include/hw/usb/redirect-ser=
+ver.h=0A=
+index 2af881bda9..a3d5084424 100644=0A=
+--- a/include/hw/usb/redirect-server.h=0A=
++++ b/include/hw/usb/redirect-server.h=0A=
+@@ -31,12 +31,14 @@ struct USBRedirServer {=0A=
+ =0A=
+     /* usbredir over the chardev */=0A=
+     struct usbredirparser *parser;=0A=
++    QEMUTimer *announce_timer;=0A=
+     QEMUBH *chardev_close_bh;=0A=
+     const uint8_t *read_buf;=0A=
+     int read_buf_size;=0A=
+     bool in_write;=0A=
+     guint watch;=0A=
+     bool host_connected;=0A=
++    bool device_announced;=0A=
  };=0A=
  =0A=
-+static uint32_t aspeed_udc_ep_get_max_packet(AspeedUDCEP *e)=0A=
-+{=0A=
-+    uint32_t mps =3D FIELD_EX32(e->regs[R_EP_CONFIG], EP_CONFIG, MAX_PKT);=
-=0A=
+ #endif /* HW_USB_REDIRECT_SERVER_H */=0A=
+diff --git a/hw/usb/redirect-server.c b/hw/usb/redirect-server.c=0A=
+index c36b5c16c4..824cd274b8 100644=0A=
+--- a/hw/usb/redirect-server.c=0A=
++++ b/hw/usb/redirect-server.c=0A=
+@@ -56,6 +56,8 @@=0A=
+ #include "qemu/main-loop.h"=0A=
+ #include "qemu/module.h"=0A=
+ #include "migration/vmstate.h"=0A=
++#include "qemu/timer.h"=0A=
++#include "qemu/cutils.h"=0A=
+ #include "hw/usb/redirect-server.h"=0A=
+ #include "hw/core/qdev-properties.h"=0A=
+ #include "hw/core/qdev-properties-system.h"=0A=
+@@ -63,10 +65,115 @@=0A=
+ =0A=
+ #define USBREDIR_SERVER_VERSION "qemu " TYPE_USB_REDIR_SERVER " " QEMU_VER=
+SION=0A=
+ =0A=
++/* Wait this long after attach before we announce the device. */=0A=
++#define USBREDIR_SERVER_ANNOUNCE_DEBOUNCE_MS 10=0A=
 +=0A=
-+    return mps ? mps : ASPEED_UDC_EP_MAXPKT;=0A=
++/*=0A=
++ * The device is whatever USBDevice the user plugged into our port with=0A=
++ * "-device <device>,bus=3D<id>.0". NULL until then.=0A=
++ */=0A=
++static USBDevice *usbredir_server_device(USBRedirServer *s)=0A=
++{=0A=
++    return s->port.dev;=0A=
++}=0A=
++=0A=
++/*=0A=
++ * Device announcement=0A=
++ */=0A=
++=0A=
++static uint8_t usbredir_server_speed(USBDevice *device)=0A=
++{=0A=
++    switch (device->speed) {=0A=
++    case USB_SPEED_LOW:=0A=
++        return usb_redir_speed_low;=0A=
++    case USB_SPEED_FULL:=0A=
++        return usb_redir_speed_full;=0A=
++    default:=0A=
++        return usb_redir_speed_high;=0A=
++    }=0A=
++}=0A=
++=0A=
++static void usbredir_server_announce_device(USBRedirServer *s)=0A=
++{=0A=
++    USBDevice *device =3D usbredir_server_device(s);=0A=
++    struct usb_redir_interface_info_header iface_info =3D {=0A=
++        .interface_count =3D 0,=0A=
++    };=0A=
++    struct usb_redir_device_connect_header conn =3D {=0A=
++        .speed =3D usbredir_server_speed(device),=0A=
++    };=0A=
++=0A=
++    if (s->device_announced) {=0A=
++        return;=0A=
++    }=0A=
++    s->device_announced =3D true;=0A=
++=0A=
++    /* Put the device in DEFAULT state. The host may not reset the bus. */=
+=0A=
++    device->addr =3D 0;=0A=
++    device->state =3D USB_STATE_DEFAULT;=0A=
++=0A=
++    /* Send this before device_connect. The peer needs it to accept us. */=
+=0A=
++    usbredirparser_send_interface_info(s->parser, &iface_info);=0A=
++    usbredirparser_do_write(s->parser);=0A=
++=0A=
++    trace_usbredir_server_announce(conn.speed);=0A=
++    usbredirparser_send_device_connect(s->parser, &conn);=0A=
++    usbredirparser_do_write(s->parser);=0A=
 +}=0A=
 +=0A=
  /*=0A=
-  * Copy len bytes from guest memory at addr into the IN packet, going thro=
-ugh=0A=
-  * a bounce buffer one buf-full at a time. Returns false on DMA failure.=
-=0A=
-@@ -464,10 +471,10 @@ static AspeedUDCXferResult aspeed_udc_ep_xfer_in_desc=
-(AspeedUDCState *s,=0A=
- {=0A=
-     QEMUIOVector *pktiov =3D p->combined ? &p->combined->iov : &p->iov;=0A=
-     AspeedUDCEP *e =3D &s->ep[ep];=0A=
--    uint32_t mps =3D FIELD_EX32(e->regs[R_EP_CONFIG], EP_CONFIG, MAX_PKT);=
-=0A=
-     uint32_t wptr =3D FIELD_EX32(e->regs[R_EP_DMA_STS], EP_DMA_STS, WPTR);=
-=0A=
-     uint32_t rptr =3D FIELD_EX32(e->regs[R_EP_DMA_STS], EP_DMA_STS, RPTR);=
-=0A=
-     uint32_t desc_base =3D e->regs[R_EP_DMA_BUFF];=0A=
-+    uint32_t mps =3D aspeed_udc_ep_get_max_packet(e);=0A=
-     uint32_t desc_addr;=0A=
-     uint32_t remaining;=0A=
-     uint32_t desc_ctrl;=0A=
-@@ -480,11 +487,6 @@ static AspeedUDCXferResult aspeed_udc_ep_xfer_in_desc(=
-AspeedUDCState *s,=0A=
-     bool done =3D false;=0A=
-     bool ack =3D false;=0A=
- =0A=
--    if (mps =3D=3D 0) {=0A=
--        /* a MAX_PKT field of 0 means the maximum packet size */=0A=
--        mps =3D ASPEED_UDC_EP_MAXPKT;=0A=
--    }=0A=
--=0A=
-     trace_aspeed_udc_ep_data_in(ep, rptr, wptr, pktiov->size);=0A=
- =0A=
-     /* walk the queued descriptors, filling the packet */=0A=
-@@ -624,19 +626,21 @@ static AspeedUDCXferResult aspeed_udc_ep_xfer_in_sing=
-le(AspeedUDCState *s,=0A=
-  * OUT transfer: receive data from the host by copying its OUT packet into=
- the=0A=
-  * buffer the guest gadget driver set up.=0A=
-  *=0A=
-- * A host packet can be bigger than one buffer, so we copy at most PKT_SIZ=
-E=0A=
-- * bytes per call, continuing from where the last call stopped=0A=
-- * (p->actual_length). The caller keeps the packet parked until it is full=
-y=0A=
-- * copied.=0A=
-+ * In single mode PKT_SIZE is where the controller reports the length it=
-=0A=
-+ * received, so it is not a buffer size. One maximum packet is the most th=
-at=0A=
-+ * can arrive, so copy at most that much per call, continuing from where t=
-he=0A=
-+ * last call stopped (p->actual_length). The caller keeps the packet parke=
-d=0A=
-+ * until it is fully copied.=0A=
+  * USB port ops=0A=
   */=0A=
- static AspeedUDCXferResult aspeed_udc_ep_xfer_out_single(AspeedUDCState *s=
-,=0A=
-                                                          int ep, USBPacket=
- *p)=0A=
+ =0A=
++static void usbredir_server_schedule_announce(USBRedirServer *s)=0A=
++{=0A=
++    USBDevice *device =3D usbredir_server_device(s);=0A=
++=0A=
++    if (!s->host_connected || s->device_announced || !device ||=0A=
++        !device->attached) {=0A=
++        return;=0A=
++    }=0A=
++=0A=
++    timer_mod(s->announce_timer,=0A=
++              qemu_clock_get_ms(QEMU_CLOCK_VIRTUAL) +=0A=
++              USBREDIR_SERVER_ANNOUNCE_DEBOUNCE_MS);=0A=
++}=0A=
++=0A=
++static void usbredir_server_do_announce(void *opaque)=0A=
++{=0A=
++    USBRedirServer *s =3D opaque;=0A=
++    USBDevice *device =3D usbredir_server_device(s);=0A=
++=0A=
++    /* Only announce if the device is still attached and the host is here.=
+ */=0A=
++    if (s->host_connected && s->parser && device && device->attached) {=0A=
++        usbredir_server_announce_device(s);=0A=
++    }=0A=
++}=0A=
++=0A=
++static void usbredir_server_port_attach(USBPort *port)=0A=
++{=0A=
++    USBRedirServer *s =3D port->opaque;=0A=
++=0A=
++    trace_usbredir_server_attach();=0A=
++    usbredir_server_schedule_announce(s);=0A=
++}=0A=
++=0A=
++static void usbredir_server_port_detach(USBPort *port)=0A=
++{=0A=
++    USBRedirServer *s =3D port->opaque;=0A=
++=0A=
++    trace_usbredir_server_detach(s->device_announced);=0A=
++=0A=
++    timer_del(s->announce_timer);=0A=
++=0A=
++    if (s->host_connected && s->parser && s->device_announced) {=0A=
++        trace_usbredir_server_disconnect();=0A=
++        usbredirparser_send_device_disconnect(s->parser);=0A=
++        usbredirparser_do_write(s->parser);=0A=
++    }=0A=
++    s->device_announced =3D false;=0A=
++}=0A=
++=0A=
+ static void usbredir_server_port_child_detach(USBPort *port, USBDevice *ch=
+ild)=0A=
  {=0A=
-+    QEMUIOVector *pktiov =3D p->combined ? &p->combined->iov : &p->iov;=0A=
-     AspeedUDCEP *e =3D &s->ep[ep];=0A=
--    uint32_t chunk =3D FIELD_EX32(e->regs[R_EP_DMA_STS], EP_DMA_STS, PKT_S=
-IZE);=0A=
--    uint32_t remaining =3D p->iov.size - (uint32_t)p->actual_length;=0A=
-+    uint32_t remaining =3D pktiov->size > (uint32_t)p->actual_length ?=0A=
-+                         pktiov->size - (uint32_t)p->actual_length : 0;=0A=
-+    uint32_t len =3D MIN(remaining, aspeed_udc_ep_get_max_packet(e));=0A=
-     uint32_t data_buf_addr =3D e->regs[R_EP_DMA_BUFF];=0A=
--    uint32_t len =3D MIN(remaining, chunk);=0A=
-     g_autofree uint8_t *buf =3D g_malloc(len);=0A=
+     /* We only export the device on our own port. Nothing to do. */=0A=
+@@ -78,6 +185,8 @@ static void usbredir_server_port_wakeup(USBPort *port)=
+=0A=
+ }=0A=
  =0A=
-     if (data_buf_addr && len) {=0A=
-@@ -659,7 +663,7 @@ static AspeedUDCXferResult aspeed_udc_ep_xfer_out_singl=
-e(AspeedUDCState *s,=0A=
-                                         PROC_STS, EP_DMA_CTRL_STS_RX_IDLE)=
-;=0A=
-     aspeed_udc_raise_ep_ack(s, ep);=0A=
+ static USBPortOps usbredir_server_port_ops =3D {=0A=
++    .attach =3D usbredir_server_port_attach,=0A=
++    .detach =3D usbredir_server_port_detach,=0A=
+     .child_detach =3D usbredir_server_port_child_detach,=0A=
+     .wakeup =3D usbredir_server_port_wakeup,=0A=
+ };=0A=
+@@ -181,13 +290,53 @@ static int usbredir_server_write(void *priv, uint8_t =
+*data, int count)=0A=
+     return ret;=0A=
+ }=0A=
  =0A=
--    if ((uint32_t)p->actual_length >=3D p->iov.size) {=0A=
-+    if ((uint32_t)p->actual_length >=3D pktiov->size) {=0A=
-         return ASPEED_UDC_XFER_DONE;=0A=
-     }=0A=
+-/* The remote host greets us once the socket is up. */=0A=
++/*=0A=
++ * usbredirparser message callbacks=0A=
++ */=0A=
++=0A=
+ static void usbredir_server_hello(void *priv,=0A=
+                                   struct usb_redir_hello_header *hello)=0A=
+ {=0A=
+     USBRedirServer *s =3D priv;=0A=
++    char version[sizeof(hello->version) + 1];=0A=
++=0A=
++    pstrcpy(version, sizeof(version), hello->version);=0A=
++    trace_usbredir_server_hello(version);=0A=
  =0A=
+     s->host_connected =3D true;=0A=
++    usbredir_server_schedule_announce(s);=0A=
++}=0A=
++=0A=
++static void usbredir_server_reset(void *priv)=0A=
++{=0A=
++    USBRedirServer *s =3D priv;=0A=
++    USBDevice *device =3D usbredir_server_device(s);=0A=
++=0A=
++    trace_usbredir_server_bus_reset(device && device->attached);=0A=
++    usb_device_reset(device);=0A=
++}=0A=
++=0A=
++static void usbredir_server_filter_reject(void *priv)=0A=
++{=0A=
++    trace_usbredir_server_filter_reject();=0A=
++}=0A=
++=0A=
++static void usbredir_server_filter_filter(void *priv,=0A=
++    struct usbredirfilter_rule *rules, int rules_count)=0A=
++{=0A=
++    /* We accept any host. The callback owns the rules, so free them. */=
+=0A=
++    free(rules);=0A=
++}=0A=
++=0A=
++static void usbredir_server_device_disconnect_ack(void *priv)=0A=
++{=0A=
++    /* The host saw our device_disconnect. Nothing to do. */=0A=
++}=0A=
++=0A=
++static void usbredir_server_interface_info(void *priv,=0A=
++    struct usb_redir_interface_info_header *hdr)=0A=
++{=0A=
++    /* The host should not send this to a device. Nothing to do. */=0A=
+ }=0A=
+ =0A=
+ /*=0A=
+@@ -211,6 +360,14 @@ static void usbredir_server_create_parser(USBRedirServ=
+er *s)=0A=
+ =0A=
+     /* Callbacks for messages the remote host sends to us */=0A=
+     s->parser->hello_func =3D usbredir_server_hello;=0A=
++    s->parser->reset_func =3D usbredir_server_reset;=0A=
++=0A=
++    /* The parser calls these directly, so they must not be NULL. */=0A=
++    s->parser->filter_reject_func =3D usbredir_server_filter_reject;=0A=
++    s->parser->filter_filter_func =3D usbredir_server_filter_filter;=0A=
++    s->parser->device_disconnect_ack_func =3D=0A=
++        usbredir_server_device_disconnect_ack;=0A=
++    s->parser->interface_info_func =3D usbredir_server_interface_info;=0A=
+ =0A=
+     /* Capabilities: 64-bit IDs, connect_device_version, ep_info sizes */=
+=0A=
+     usbredirparser_caps_set_cap(caps, usb_redir_cap_connect_device_version=
+);=0A=
+@@ -238,7 +395,10 @@ static void usbredir_server_create_parser(USBRedirServ=
+er *s)=0A=
+ static void usbredir_server_destroy_parser(USBRedirServer *s)=0A=
+ {=0A=
+     s->host_connected =3D false;=0A=
++    s->device_announced =3D false;=0A=
+ =0A=
++    /* The announce timer may still be pending. */=0A=
++    timer_del(s->announce_timer);=0A=
+     g_clear_handle_id(&s->watch, g_source_remove);=0A=
+ =0A=
+     if (s->parser) {=0A=
+@@ -336,6 +496,8 @@ static void usbredir_server_realize(DeviceState *dev, E=
+rror **errp)=0A=
+                       USB_SPEED_MASK_LOW | USB_SPEED_MASK_FULL |=0A=
+                       USB_SPEED_MASK_HIGH);=0A=
+ =0A=
++    s->announce_timer =3D timer_new_ms(QEMU_CLOCK_VIRTUAL,=0A=
++                                     usbredir_server_do_announce, s);=0A=
+     s->chardev_close_bh =3D qemu_bh_new_guarded(usbredir_server_chardev_cl=
+ose_bh,=0A=
+                                               s, &dev->mem_reentrancy_guar=
+d);=0A=
+ =0A=
+@@ -353,6 +515,8 @@ static void usbredir_server_unrealize(DeviceState *dev)=
+=0A=
+     qemu_chr_fe_deinit(&s->cs, true);=0A=
+     usbredir_server_destroy_parser(s);=0A=
+ =0A=
++    timer_free(s->announce_timer);=0A=
++=0A=
+     if (s->chardev_close_bh) {=0A=
+         qemu_bh_delete(s->chardev_close_bh);=0A=
+         s->chardev_close_bh =3D NULL;=0A=
+diff --git a/hw/usb/trace-events b/hw/usb/trace-events=0A=
+index d141661673..2cc6a244b9 100644=0A=
+--- a/hw/usb/trace-events=0A=
++++ b/hw/usb/trace-events=0A=
+@@ -399,3 +399,10 @@ usbredir_server_chardev_open(void) "chardev opened"=0A=
+ usbredir_server_chardev_close(void) "chardev closed"=0A=
+ usbredir_server_write_recursion(void) "recursive write, leaving it queued"=
+=0A=
+ usbredir_server_log(const char *msg) "%s"=0A=
++usbredir_server_hello(const char *version) "peer is %s"=0A=
++usbredir_server_attach(void) "device attached"=0A=
++usbredir_server_detach(bool announced) "device detached, was announced %d"=
+=0A=
++usbredir_server_announce(uint8_t speed) "device_connect speed %u"=0A=
++usbredir_server_disconnect(void) "device_disconnect sent"=0A=
++usbredir_server_bus_reset(bool attached) "bus reset, attached %d"=0A=
++usbredir_server_filter_reject(void) "host rejected our device"=0A=
 -- =0A=
 2.53.0=0A=
 

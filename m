@@ -4,69 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 96012C982FA
-	for <qemu-arm@archiver.kernel.org>; Wed, 23 Sep 2026 13:22:53 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 87AA7C9830C
+	for <qemu-arm@archiver.kernel.org>; Wed, 23 Sep 2026 13:23:08 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1x9MvH-0003ZP-Sx; Wed, 23 Sep 2026 09:22:08 -0400
+	id 1x9Mw8-0004bX-TZ; Wed, 23 Sep 2026 09:23:01 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <luoyonggang@gmail.com>)
- id 1x9Mrv-0000SW-Ft
- for qemu-arm@nongnu.org; Wed, 23 Sep 2026 09:18:41 -0400
-Received: from mail-dl2-x0f.google.com ([2607:f8b0:4864:38::f])
+ id 1x9MsE-0000eX-89
+ for qemu-arm@nongnu.org; Wed, 23 Sep 2026 09:19:14 -0400
+Received: from mail-dy2-x10.google.com ([2607:f8b0:4864:36::10])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <luoyonggang@gmail.com>)
- id 1x9Mrr-0006wj-DJ
- for qemu-arm@nongnu.org; Wed, 23 Sep 2026 09:18:39 -0400
-Received: by mail-dl2-x0f.google.com with SMTP id
- a92af1059eb24-144f7915355so585575c88.3
- for <qemu-arm@nongnu.org>; Wed, 23 Sep 2026 06:18:33 -0700 (PDT)
+ id 1x9Ms9-0006zc-9H
+ for qemu-arm@nongnu.org; Wed, 23 Sep 2026 09:18:58 -0400
+Received: by mail-dy2-x10.google.com with SMTP id
+ 5a478bee46e88-328664ef783so542092eec.0
+ for <qemu-arm@nongnu.org>; Wed, 23 Sep 2026 06:18:52 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20251104; t=1790169513; x=1790774313; darn=nongnu.org;
+ d=gmail.com; s=20251104; t=1790169531; x=1790774331; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to:content-type;
- bh=2ign1E0+b6xltdUS4MWB1vKIjsNRvcSjRc2WeM4/+WU=;
- b=YFxiT4P31YINvX+dYvT4FL2Hm6FMC8vrQNbm1XHURpoLBpaAYGyOCsD7Ciw+SHheaU
- nWW4rvOImkIL0AROGKIgqrZqDYSh7sjF17PqO8jCM5R3PypnMY+nA5OmocgOcD0gKkBo
- Pv3KFd3IAglvhhROuxd3dvP7xPztlm2cMlc5JSZuY6aPx4YQ0+kLWCu3Nqr13MnMwLZ3
- voPpum/UFJbM0nAoN963Gr8hRVTE5zz7Oy/0QLHcwuCKIbEBElqNDioQnnIc2Edmqeh/
- 293SRXnyeeQld43gut+npL9Zbg3dNN88jW4y+74FSyj7qJba33Gv69jwNR+Z/SzTmMc3
- MoyQ==
+ bh=LmGgEVLgs7KsvhNFrBIpJWDBtYOselCCUrcKIvn6Xxs=;
+ b=RqIgBshW6LLKYsU47OyUpxhlBUam1cW2338P+p60M3jEehwArOs1v75eLhpV3Xeagd
+ WzvUnTDYyzXR2W+kDJwcduXYfuylG1OJxOY81zCcNVLuSwwBg86th6c+J9fDglr5x66l
+ oU6GWWlrzFIG5S+HUnZ/BsddkmAgqAjrKq3NEwYaxLDSCN26eKeBlY0gFQ3BIVofnC01
+ UmDYZYmcDpuQOIPix/EhM8MMXyZgQMfUGvCSU5nA5V00TElfvxJT6Blfzy2T8QJ6YPIb
+ bVjCiWbPricIZ8VCfCOFzVzy4ALUw4O6s6PzNpUkDCPuJ8GNBPy65NIinCAm0/0+3+TD
+ PtqQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20260707; t=1790169513; x=1790774313;
+ d=1e100.net; s=20260707; t=1790169531; x=1790774331;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
  :to:cc:subject:date:message-id:reply-to:content-type;
- bh=2ign1E0+b6xltdUS4MWB1vKIjsNRvcSjRc2WeM4/+WU=;
- b=V+Xjch+Pm9HlJvpxH6z6uOo4jmy9ss8BXngtyXm+qZkwd6zyIpeuh3dB2QeEVbCh3h
- 6901pZc5WaISZMLbZvyJEHVNI/K1yJMtqRYQZ8U2CdGmzQiWCGMdLKo5ZevdyhCFt+v5
- W6GMIN0W/utAwxcqXV5wDOXzhXoq6rXswn+6SqORxA7dNGlAQtHHuxUaELJwia5iCCkj
- 4a07Odubp4c01Gj1TIs5E+DoDBA/OUJnn9pyVEmjVEgqlHol6nI2A9kNABcsGsQuadn0
- D9vPEyN7XxzYV0qlFfJAON5RoaxhbuAm397n+L4LYnzz94j8eUMPhi9o0t3dBwTBbSNI
- JRvg==
+ bh=LmGgEVLgs7KsvhNFrBIpJWDBtYOselCCUrcKIvn6Xxs=;
+ b=a3JwATAkJL0t24NJIBq6X7YR1ZQ9UlilD10uh3YWJyOZyiBa4LDGRItpArX5x7nkFD
+ ljKtilRg3ATZFfx1jMJlh5PdXl4ZKYVdjs02dl1Qrv00SFEvCkNS30VtJqhVFqmdyOJa
+ zmllBM5Ho/HpwMtCam0dvF2FN5bNQ+JLw6iJwjhIquYpqF2zxiejDPHA6x3YEO5LlpCI
+ 3hDNlxV8MO6zGtLJ5yB2d/BG9BL6AX2lU0o0sRVD90eEriZoduUfnAoRBoY5shIk3uZ0
+ Mlim0v0KnzC4mW86EwrIQuDlcKL3GCRnJ4qCrAlEcGx0bbAIJ7iSvRbzFWRGDO9Ehu4c
+ awfA==
 X-Forwarded-Encrypted: i=1;
- AKwUvBx5JsbBjkp3IeA/4svWlqVNmLr/LSub7vybG3WWr9pZAvP4TPeArsakzHjBTDF0QtHl9AqCoxsWuw==@nongnu.org
-X-Gm-Message-State: AFuF++nankeeVNc7Ni4IRR+Nv6q3r90YtFRnOr0l5mS/OwwWX7cvJgXl
- 6D1eAdH1efSBY5hMAVkxbotnoDEENrTpBSwRbue/lfXsEQ0OMetp5SuZ
-X-Gm-Gg: AYBFou0BgaydDv+uHGOvR+wnOed8Odp/us543srVmJtvMXHjj/86BLTmHJ3tNUCGgWl
- gZPWJANWh8vDcgYI8gwoVVcclkMfd9X+C+Sa5FxLTmjFkusDgpvVoPfF7mXLmWZf+MmeH0Hkxza
- PrTbhHlwzoChgEkKsFY3gS26vIR8nU2fhxaPqj8XXAFJK8ziwKmoMGeEHj/ZyhN2THgNLzYYIaX
- Z3ulH0DT74kr8t0RPKZoVkaJOgG/x2Juvq0cv0iQWLWRqIwafvxzhB8dqhTKfGFO5QMKu+fo9/Y
- MNsXspaZrmuUTNUuexYw/DBR03PcvQjQuoBbzHasGd76ymLKzvMxh3QhJ4My45Wry7pbmUn6/IG
- jN48ZnE7t6WWY2gUh8ZjTaxtYV/e+hSPLSmLnXDIxruUXY0HQuYjVUw+sP9oDixNdhUytN323Wc
- jQ26ZkanUHUVg2OU3T0HW3U055iSI/OHeOXDExpm3+qyrTs+Z0INr372RTMsf6B9ibpQNVWHWCG
- eq+N7MhJHkk4zWkqTVejv8ykvWg9ow=
-X-Received: by 2002:a05:7300:6b19:b0:322:8541:48cc with SMTP id
- 5a478bee46e88-33e8c53c7afmr2557843eec.15.1790169511320; 
- Wed, 23 Sep 2026 06:18:31 -0700 (PDT)
+ AKwUvBy6AjQ/ACAYQfkB+V4znUhDH0VoXQXPab+bZOW6fKVRK5Jqm5eDZfSwpFAwtpNAZGH8zZDZQhAjVQ==@nongnu.org
+X-Gm-Message-State: AFuF++mPY4gasyTpZg+vQcHVvDLsuUcNu9xsfs90wADHjZkFn97/kUKe
+ 8KFVdZK81/i82s6E2frRGiqpBH1WN+XtqAPdPRlGwGQYscYag4kCLDmm
+X-Gm-Gg: AYBFou3nqFRBQlrXAZOAopoprdpsXW28B8UF8kIFFP6HjB4oXChwWuvNWgZ/n+6h847
+ Ugwx5ob0TO6udUVl0bVRg3LjFIz0tPjP7wh7yw+x0mosjZYa4z3xJyPtKybZV/Tz6ZTPDOHbfd6
+ zRT8xjCtFSHu4v9ce173mfFGNGFfMlvZMtOg+Q6zyqiK3fnrBikgU+AKdxDD5ld4kytqsFth8QX
+ HlLi/EVMqEByH0hRt7V1bANj07OE/5MSrhsQtBvZukhoAfaN3TaGfqZ7TD1lssMqhdjY7LK5Qme
+ hsx9JPTeefre3Dmdointeg0BZ/qcopmsWkrJCr04VqpwtJG5alqjSJWWvD+Mu4qxF2bUPOmFyHC
+ Ilpqz5fOIWXLOMiN5jGF535rhAREjpwfWzwHLw1ClCTN/9+lkAJ2qLPXRdI0zog1436qjkZQtXs
+ x5muDWLW9+V6W0TV1JnJMd4GHnlOOo8H/oVvlYA+ly7qPkQNOWJ8bGzgXRIRi6pJ2oitCmIQwbr
+ kgdE/kX4GTX47hNbivZFbtUvSWjSTU=
+X-Received: by 2002:a05:7300:dd05:b0:33b:eea2:cbfe with SMTP id
+ 5a478bee46e88-33e8dec5b02mr2369589eec.32.1790169531303; 
+ Wed, 23 Sep 2026 06:18:51 -0700 (PDT)
 Received: from WIN-BH9M8FJACR9 ([103.94.185.75])
  by smtp.googlemail.com with ESMTPSA id
- 5a478bee46e88-33e97236754sm5553695eec.29.2026.09.23.06.18.22
+ 5a478bee46e88-33e97236754sm5553695eec.29.2026.09.23.06.18.43
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 23 Sep 2026 06:18:29 -0700 (PDT)
+ Wed, 23 Sep 2026 06:18:49 -0700 (PDT)
 From: Yonggang Luo <luoyonggang@gmail.com>
 To: qemu-devel@nongnu.org
 Cc: Cornelia Huck <cohuck@redhat.com>, xen-devel@lists.xenproject.org,
@@ -97,17 +97,16 @@ Cc: Cornelia Huck <cohuck@redhat.com>, xen-devel@lists.xenproject.org,
  Markus Armbruster <armbru@redhat.com>, Weiwei Li <liwei1518@gmail.com>,
  Song Gao <17746591750@163.com>, qemu-arm@nongnu.org, qemu-s390x@nongnu.org,
  Brian Cain <brian.cain@oss.qualcomm.com>
-Subject: [PATCH v3 010/114] tests/qtest: prepare machine-list-test for
- combined qemu-system
-Date: Wed, 23 Sep 2026 21:14:44 +0800
-Message-ID: <20260923131635.1894-11-luoyonggang@gmail.com>
+Subject: [PATCH v3 012/114] target-info: add TargetKconfig
+Date: Wed, 23 Sep 2026 21:14:46 +0800
+Message-ID: <20260923131635.1894-13-luoyonggang@gmail.com>
 X-Mailer: git-send-email 2.52.0.windows.1
 In-Reply-To: <20260923131635.1894-1-luoyonggang@gmail.com>
 References: <20260923131635.1894-1-luoyonggang@gmail.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:38::f;
- envelope-from=luoyonggang@gmail.com; helo=mail-dl2-x0f.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:36::10;
+ envelope-from=luoyonggang@gmail.com; helo=mail-dy2-x10.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -129,1016 +128,393 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Each built qemu-system target checks its query-target arch and
-query-machines names, including the none machine and omitting the
-abstract pegasos parent. xen, vmapple, nitro, and x-remote appear
-only when that host build has them. The lists in
-machine-list-test.inc.h are shared for a later combined
-qemu-system test.
+Add a packed TargetKconfig of device and accel CONFIG_* bits,
+generated from the Kconfig tree, and attach it to TargetInfo.
+target_kconfig() returns the current bits, and
+target_has_kconfig_<name>() tests them. Initialize
+target_info_stub.kconfig from CONFIG_DEVICES.
 
 Signed-off-by: Yonggang Luo <luoyonggang@gmail.com>
 ---
- tests/qtest/machine-list-test.c     |  94 +++
- tests/qtest/machine-list-test.inc.h | 876 ++++++++++++++++++++++++++++
- tests/qtest/meson.build             |   1 +
- 3 files changed, 971 insertions(+)
- create mode 100644 tests/qtest/machine-list-test.c
- create mode 100644 tests/qtest/machine-list-test.inc.h
+ include/qemu/target-info-def.h       |   2 +
+ include/qemu/target-kconfig-has.h    |   7 ++
+ include/qemu/target-kconfig.h        |  34 ++++++
+ meson.build                          |  14 +++
+ scripts/gen-target-kconfig.py        | 162 +++++++++++++++++++++++++++
+ target-info-def.c                    |   6 +
+ target-kconfig.c                     |  20 ++++
+ tests/unit/meson.build               |   1 +
+ tests/unit/test-target-kconfig-has.c |  22 ++++
+ 9 files changed, 268 insertions(+)
+ create mode 100644 include/qemu/target-kconfig-has.h
+ create mode 100644 include/qemu/target-kconfig.h
+ create mode 100644 scripts/gen-target-kconfig.py
+ create mode 100644 target-kconfig.c
+ create mode 100644 tests/unit/test-target-kconfig-has.c
 
-diff --git a/tests/qtest/machine-list-test.c b/tests/qtest/machine-list-test.c
+diff --git a/include/qemu/target-info-def.h b/include/qemu/target-info-def.h
+index 25dc7c508d3..615596ed468 100644
+--- a/include/qemu/target-info-def.h
++++ b/include/qemu/target-info-def.h
+@@ -13,6 +13,7 @@
+ #include "qapi/qapi-types-machine.h"
+ #include "qemu/queue.h"
+ #include "qemu/target-info.h"
++#include "qemu/target-kconfig.h"
+ 
+ struct TargetInfo {
+     /* runtime equivalent of TARGET_NAME definition */
+@@ -32,6 +33,7 @@ struct TargetInfo {
+     unsigned page_bits_init;
+     /* runtime equivalent of TARGET_PAGE_BITS_VARY definition */
+     bool page_bits_vary;
++    TargetKconfig kconfig;
+ };
+ 
+ typedef struct TargetInfoNode TargetInfoNode;
+diff --git a/include/qemu/target-kconfig-has.h b/include/qemu/target-kconfig-has.h
 new file mode 100644
-index 00000000000..35fb365197d
+index 00000000000..6616f75845a
 --- /dev/null
-+++ b/tests/qtest/machine-list-test.c
-@@ -0,0 +1,94 @@
++++ b/include/qemu/target-kconfig-has.h
+@@ -0,0 +1,7 @@
 +/*
-+ * Per-target machine list tests.
++ * QEMU target_has_kconfig_* helpers
++ *
++ * SPDX-License-Identifier: GPL-2.0-or-later
++ */
++
++#include "target-kconfig-has-gen.h"
+diff --git a/include/qemu/target-kconfig.h b/include/qemu/target-kconfig.h
+new file mode 100644
+index 00000000000..21b2ba576ec
+--- /dev/null
++++ b/include/qemu/target-kconfig.h
+@@ -0,0 +1,34 @@
++/*
++ * QEMU target kconfig API
++ *
++ *  Copyright (c) Yonggang Luo
++ *
++ * SPDX-License-Identifier: GPL-2.0-or-later
++ */
++
++#ifndef QEMU_TARGET_KCONFIG_H
++#define QEMU_TARGET_KCONFIG_H
++
++#include "qemu/compiler.h"
++
++/**
++ * struct TargetKconfig:
++ *
++ * Compile-time device and accel CONFIG_* bits. Not Kconfig.host
++ * or target/Kconfig. Target identity is TargetInfo, not these
++ * bits. Not kvm_enabled() etc. Fields and
++ * target_has_kconfig_<name>() are generated by
++ * scripts/gen-target-kconfig.py.
++ */
++typedef struct TargetKconfig {
++#include "target-kconfig-fields.h"
++} QEMU_PACKED TargetKconfig;
++
++/**
++ * target_kconfig:
++ *
++ * Returns: The current TargetKconfig (target_info()->kconfig).
++ */
++const TargetKconfig *target_kconfig(void);
++
++#endif
+diff --git a/meson.build b/meson.build
+index 776d38c5afd..8a017faaa74 100644
+--- a/meson.build
++++ b/meson.build
+@@ -3445,6 +3445,19 @@ genh += custom_target('config-poison.h',
+                       capture: true,
+                       command: [find_program('scripts/make-config-poison.sh'),
+                                 target_configs_h])
++genh += custom_target('target-kconfig',
++                      output: ['target-kconfig-fields.h',
++                               'target-kconfig-init.h',
++                               'target-kconfig-has-gen.h',
++                               'target-kconfig-has.c.inc'],
++                      depfile: 'target-kconfig.d',
++                      command: [python, files('scripts/gen-target-kconfig.py'),
++                                '--kconfig', meson.current_source_dir() / 'Kconfig',
++                                '--depfile', '@DEPFILE@',
++                                '--fields', '@OUTPUT0@',
++                                '--init', '@OUTPUT1@',
++                                '--has', '@OUTPUT2@',
++                                '--has-c', '@OUTPUT3@'])
+ 
+ if fdt_required.length() > 0
+   error('fdt disabled but required by targets ' + ', '.join(fdt_required))
+@@ -3779,6 +3792,7 @@ endif
+ 
+ qom_ss.add(files(
+   'target-info.c',
++  'target-kconfig.c',
+ ))
+ qom_ss = qom_ss.apply({})
+ libqom = static_library('qom', qom_ss.sources() + genh,
+diff --git a/scripts/gen-target-kconfig.py b/scripts/gen-target-kconfig.py
+new file mode 100644
+index 00000000000..afeffc75ca0
+--- /dev/null
++++ b/scripts/gen-target-kconfig.py
+@@ -0,0 +1,162 @@
++#!/usr/bin/env python3
++# SPDX-License-Identifier: GPL-2.0-or-later
++"""Generate TargetKconfig CONFIG_* field, initializer, and has headers.
++
++The field list is every `config FOO` from the QEMU Kconfig tree,
++parsed with scripts/minikconf.py (including accel/Kconfig: KVM,
++XEN, HVF, TCG, ...). Host proxies in Kconfig.host and the
++target/Kconfig tree (arch tokens and TARGET_BIG_ENDIAN) are
++omitted. Target identity is TargetInfo, not TargetKconfig.
++
++Each field also gets target_has_kconfig_<name>(const TargetInfo *).
++"""
++
++import argparse
++import os
++import sys
++
++sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
++from minikconf import KconfigData, KconfigParser
++
++
++def field_name(config: str) -> str:
++    return config[len("CONFIG_"):].lower()
++
++
++def collect_from_kconfig(root: str) -> tuple[set[str], list[str]]:
++    data = KconfigData()
++    with open(root, "rt", encoding="utf-8") as fp:
++        KconfigParser.parse(fp, data)
++    names = {"CONFIG_" + name for name in data.defined_vars}
++    return names, list(data.previously_included)
++
++
++def collect_kconfig_names(path: str) -> set[str]:
++    data = KconfigData()
++    with open(path, "rt", encoding="utf-8") as fp:
++        KconfigParser.parse(fp, data)
++    return {"CONFIG_" + name for name in data.defined_vars}
++
++
++def collect_host_kconfig_names(kconfig_root: str) -> set[str]:
++    host = os.path.join(os.path.dirname(os.path.abspath(kconfig_root)),
++                        "Kconfig.host")
++    return collect_kconfig_names(host)
++
++
++def collect_target_kconfig_names(kconfig_root: str) -> set[str]:
++    target = os.path.join(os.path.dirname(os.path.abspath(kconfig_root)),
++                          "target", "Kconfig")
++    return collect_kconfig_names(target)
++
++
++def write_fields(path: str, configs: list[str]) -> None:
++    lines = [
++        "/* Generated by scripts/gen-target-kconfig.py. Do not edit. */",
++        "",
++    ]
++    for name in configs:
++        lines.append(f"    uint32_t {field_name(name)} : 1;")
++    lines.append("")
++    with open(path, "w", encoding="utf-8", newline="\n") as fh:
++        fh.write("\n".join(lines))
++
++
++def write_init(path: str, configs: list[str]) -> None:
++    lines = [
++        "/* Generated by scripts/gen-target-kconfig.py. Do not edit. */",
++        "",
++    ]
++    for name in configs:
++        field = field_name(name)
++        lines.append(f"#if defined({name})")
++        lines.append(f"    .{field} = true,")
++        lines.append("#endif")
++    lines.append("")
++    with open(path, "w", encoding="utf-8", newline="\n") as fh:
++        fh.write("\n".join(lines))
++
++
++def has_fn(config: str) -> str:
++    return "target_has_kconfig_" + field_name(config)
++
++
++def write_has_h(path: str, configs: list[str]) -> None:
++    lines = [
++        "/* Generated by scripts/gen-target-kconfig.py. Do not edit. */",
++        "",
++        "#ifndef TARGET_KCONFIG_HAS_GEN_H",
++        "#define TARGET_KCONFIG_HAS_GEN_H",
++        "",
++        "#include <stdbool.h>",
++        "",
++        "typedef struct TargetInfo TargetInfo;",
++        "",
++    ]
++    for name in configs:
++        lines.append(f"bool {has_fn(name)}(const TargetInfo *ti);")
++    lines.append("")
++    lines.append("#endif")
++    lines.append("")
++    with open(path, "w", encoding="utf-8", newline="\n") as fh:
++        fh.write("\n".join(lines))
++
++
++def write_has_c(path: str, configs: list[str]) -> None:
++    lines = [
++        "/* Generated by scripts/gen-target-kconfig.py. Do not edit. */",
++        "",
++    ]
++    for name in configs:
++        fn = has_fn(name)
++        field = field_name(name)
++        lines.append(f"bool {fn}(const TargetInfo *ti)")
++        lines.append("{")
++        lines.append(f"    return ti->kconfig.{field};")
++        lines.append("}")
++        lines.append("")
++    with open(path, "w", encoding="utf-8", newline="\n") as fh:
++        fh.write("\n".join(lines))
++
++
++def write_depfile(path: str, outputs: list[str], deps: list[str]) -> None:
++    lines = [" ".join(outputs) + ":" ]
++    for dep in deps:
++        lines.append(f"  {dep} \\")
++    if len(lines) > 1:
++        lines[-1] = lines[-1][:-2]
++    lines.append("")
++    with open(path, "w", encoding="utf-8", newline="\n") as fh:
++        fh.write("\n".join(lines))
++
++
++def main(argv: list[str]) -> int:
++    parser = argparse.ArgumentParser(
++        description="Generate TargetKconfig CONFIG_* include headers"
++    )
++    parser.add_argument("--fields", required=True, help="output fields header")
++    parser.add_argument("--init", required=True, help="output initializer header")
++    parser.add_argument("--has", required=True, help="output has-function header")
++    parser.add_argument("--has-c", required=True, help="output has-function bodies")
++    parser.add_argument("--kconfig", required=True, help="root Kconfig")
++    parser.add_argument("--depfile", help="ninja depfile of walked Kconfig files")
++    args = parser.parse_args(argv)
++
++    names, kconfig_files = collect_from_kconfig(args.kconfig)
++    names -= collect_host_kconfig_names(args.kconfig)
++    names -= collect_target_kconfig_names(args.kconfig)
++    configs = sorted(names)
++
++    write_fields(args.fields, configs)
++    write_init(args.init, configs)
++    write_has_h(args.has, configs)
++    write_has_c(args.has_c, configs)
++    if args.depfile:
++        write_depfile(args.depfile,
++                      [args.fields, args.init, args.has, args.has_c],
++                      kconfig_files)
++    return 0
++
++
++if __name__ == "__main__":
++    sys.exit(main(sys.argv[1:]))
+diff --git a/target-info-def.c b/target-info-def.c
+index 954298b56d0..44d153cefbc 100644
+--- a/target-info-def.c
++++ b/target-info-def.c
+@@ -7,6 +7,9 @@
+  */
+ 
+ #include "qemu/osdep.h"
++#ifdef CONFIG_DEVICES
++#include CONFIG_DEVICES
++#endif
+ #include "qemu/target-info.h"
+ #include "qemu/target-info-def.h"
+ #include "cpu-qom.h"
+@@ -33,6 +36,9 @@ static const TargetInfo target_info_stub = {
+     .page_bits_vary = false,
+     .page_bits_init = TARGET_PAGE_BITS,
+ #endif
++    .kconfig = {
++#include "target-kconfig-init.h"
++    },
+ };
+ 
+ target_info_init(target_info_stub)
+diff --git a/target-kconfig.c b/target-kconfig.c
+new file mode 100644
+index 00000000000..078c0d8e7f3
+--- /dev/null
++++ b/target-kconfig.c
+@@ -0,0 +1,20 @@
++/*
++ * QEMU target kconfig helpers
++ *
++ *  Copyright (c) Yonggang Luo
 + *
 + * SPDX-License-Identifier: GPL-2.0-or-later
 + */
 +
 +#include "qemu/osdep.h"
++#include "qemu/target-info.h"
++#include "qemu/target-info-def.h"
++#include "qemu/target-kconfig.h"
++#include "qemu/target-kconfig-has.h"
 +
-+#include "libqtest.h"
-+#include "qobject/qdict.h"
-+#include "qobject/qlist.h"
-+#include "qobject/qstring.h"
-+
-+/* query-target "arch" is SysEmuTarget, not always TARGET_NAME. */
-+static const char *query_arch_for_target(const char *target_info)
++const TargetKconfig *target_kconfig(void)
 +{
-+    static const struct {
-+        const char *target_name;
-+        const char *arch;
-+    } map[] = {
-+        { "armeb", "arm" },
-+        { "microblazeel", "microblaze" },
-+        { "mips64el", "mips64" },
-+        { "mipsel", "mips" },
-+        { "ppc64le", "ppc64" },
-+        { "sh4eb", "sh4" },
-+        { "xtensaeb", "xtensa" },
-+    };
-+    size_t i;
-+
-+    for (i = 0; i < G_N_ELEMENTS(map); i++) {
-+        if (!strcmp(target_info, map[i].target_name)) {
-+            return map[i].arch;
-+        }
-+    }
-+    return target_info;
++    return &target_info()->kconfig;
 +}
 +
-+#include "machine-list-test.inc.h"
++#include "target-kconfig-has.c.inc"
+diff --git a/tests/unit/meson.build b/tests/unit/meson.build
+index dc980a35955..c806dbc4ffa 100644
+--- a/tests/unit/meson.build
++++ b/tests/unit/meson.build
+@@ -47,6 +47,7 @@ tests = {
+     objects: target_info_def_objects.values(),
+     compile_args: ['-DTARGET_INFO_DEF_COUNT=@0@'.format(
+       target_info_def_objects.values().length())])],
++  'test-target-kconfig-has': [qom],
+   'test-qemu-opts': [],
+   'test-keyval': [testqapi],
+   'test-logging': [],
+diff --git a/tests/unit/test-target-kconfig-has.c b/tests/unit/test-target-kconfig-has.c
+new file mode 100644
+index 00000000000..289ed89b854
+--- /dev/null
++++ b/tests/unit/test-target-kconfig-has.c
+@@ -0,0 +1,22 @@
++/*
++ * target-kconfig-has.h include path test
++ *
++ * SPDX-License-Identifier: GPL-2.0-or-later
++ */
 +
-+static QList *query_machine_names(QTestState *qts)
++#include "qemu/osdep.h"
++#include "qemu/target-kconfig-has.h"
++
++static void test_include(void)
 +{
-+    QDict *resp;
-+    QList *machines;
-+    QList *names;
-+    const QListEntry *e;
++    bool (*fn)(const TargetInfo *ti) = target_has_kconfig_tcg;
 +
-+    resp = qtest_qmp(qts, "{'execute': 'query-machines'}");
-+    g_assert(qdict_haskey(resp, "return"));
-+    machines = qdict_get_qlist(resp, "return");
-+    g_assert_nonnull(machines);
-+    names = qlist_new();
-+    for (e = qlist_first(machines); e; e = qlist_next(e)) {
-+        QDict *m = qobject_to(QDict, qlist_entry_obj(e));
-+        const char *name;
-+
-+        g_assert_nonnull(m);
-+        name = qdict_get_str(m, "name");
-+        qlist_append_str(names, name);
-+    }
-+    qobject_unref(resp);
-+    return names;
-+}
-+
-+static void test_historic_machine_list(void)
-+{
-+    const char *target = qtest_get_arch();
-+    const struct ShippedTarget *t = lookup_shipped_target(target);
-+    QTestState *qts;
-+    QDict *resp;
-+    QDict *ret;
-+    g_autoptr(QList) names = NULL;
-+
-+    qts = qtest_init("-nodefaults -M none");
-+    read_accel_flags(qts);
-+    resp = qtest_qmp(qts, "{'execute': 'query-target'}");
-+    g_assert(qdict_haskey(resp, "return"));
-+    ret = qdict_get_qdict(resp, "return");
-+    g_assert_cmpstr(qdict_get_str(ret, "arch"), ==,
-+                    query_arch_for_target(target));
-+    qobject_unref(resp);
-+    names = query_machine_names(qts);
-+    if (t) {
-+        assert_name_list(names, t->name, t->machines, t->n_machines);
-+    }
-+    qtest_quit(qts);
++    g_assert_nonnull(fn);
 +}
 +
 +int main(int argc, char **argv)
 +{
 +    g_test_init(&argc, &argv, NULL);
-+    qtest_add_func("machine-list", test_historic_machine_list);
++    g_test_add_func("/target-kconfig-has/include", test_include);
 +    return g_test_run();
 +}
-diff --git a/tests/qtest/machine-list-test.inc.h b/tests/qtest/machine-list-test.inc.h
-new file mode 100644
-index 00000000000..e6e6f3ea7cd
---- /dev/null
-+++ b/tests/qtest/machine-list-test.inc.h
-@@ -0,0 +1,876 @@
-+/* SPDX-License-Identifier: GPL-2.0-or-later */
-+
-+/* Normal machine lists for every softmmu target. */
-+/* Xen, vmapple, nitro, and x-remote stay in special_machine_map. */
-+
-+static const char * const aarch64_machines[] = {
-+    "amd-versal-virt",
-+    "amd-versal2-virt",
-+    "anacapa-bmc",
-+    "ast1030-evb",
-+    "ast1040-evb",
-+    "ast1060-evb",
-+    "ast2500-evb",
-+    "ast2600-evb",
-+    "ast2700a1-evb",
-+    "ast2700a2-evb",
-+    "ast2700fc",
-+    "axiado-scm3003",
-+    "b-l475e-iot01a",
-+    "bletchley-bmc",
-+    "bpim2u",
-+    "canon-a1100",
-+    "catalina-bmc",
-+    "collie",
-+    "cubieboard",
-+    "emcraft-sf2",
-+    "fby35-bmc",
-+    "fuji-bmc",
-+    "g220a-bmc",
-+    "gb200nvl-bmc",
-+    "imx25-pdk",
-+    "imx8mm-evk",
-+    "imx8mp-evk",
-+    "integratorcp",
-+    "kudo-bmc",
-+    "kzm",
-+    "lm3s6965evb",
-+    "lm3s811evb",
-+    "max78000fthr",
-+    "mcimx6ul-evk",
-+    "mcimx7d-sabre",
-+    "microbit",
-+    "mori-bmc",
-+    "mps2-an385",
-+    "mps2-an386",
-+    "mps2-an500",
-+    "mps2-an505",
-+    "mps2-an511",
-+    "mps2-an521",
-+    "mps3-an524",
-+    "mps3-an536",
-+    "mps3-an547",
-+    "mps3-an555",
-+    "musca-a",
-+    "musca-b1",
-+    "netduino2",
-+    "netduinoplus2",
-+    "none",
-+    "npcm750-evb",
-+    "npcm845-evb",
-+    "nuri",
-+    "olimex-stm32-h405",
-+    "orangepi-pc",
-+    "palmetto-bmc",
-+    "quanta-gbs-bmc",
-+    "quanta-gsj",
-+    "quanta-q71l-bmc",
-+    "rainier-bmc",
-+    "raspi0",
-+    "raspi1ap",
-+    "raspi2b",
-+    "raspi3ap",
-+    "raspi3b",
-+    "raspi4b",
-+    "realview-eb",
-+    "realview-eb-mpcore",
-+    "realview-pb-a8",
-+    "realview-pbx-a9",
-+    "romulus-bmc",
-+    "sabrelite",
-+    "sanmiguel-bmc",
-+    "sbsa-ref",
-+    "smdkc210",
-+    "stm32vldiscovery",
-+    "supermicro-x11spi-bmc",
-+    "supermicrox11-bmc",
-+    "sx1",
-+    "sx1-v1",
-+    "tiogapass-bmc",
-+    "versatileab",
-+    "versatilepb",
-+    "vexpress-a15",
-+    "vexpress-a9",
-+    "virt-10.0",
-+    "virt-10.1",
-+    "virt-10.2",
-+    "virt-11.0",
-+    "virt-11.1",
-+    "virt-11.2",
-+    "virt-6.0",
-+    "virt-6.1",
-+    "virt-6.2",
-+    "virt-7.0",
-+    "virt-7.1",
-+    "virt-7.2",
-+    "virt-8.0",
-+    "virt-8.1",
-+    "virt-8.2",
-+    "virt-9.0",
-+    "virt-9.1",
-+    "virt-9.2",
-+    "witherspoon-bmc",
-+    "xilinx-zynq-a9",
-+    "xlnx-zcu102",
-+    "yosemitev2-bmc",
-+};
-+
-+static const char * const alpha_machines[] = {
-+    "clipper",
-+    "none",
-+};
-+
-+static const char * const arm_machines[] = {
-+    "anacapa-bmc",
-+    "ast1030-evb",
-+    "ast1040-evb",
-+    "ast1060-evb",
-+    "ast2500-evb",
-+    "ast2600-evb",
-+    "b-l475e-iot01a",
-+    "bletchley-bmc",
-+    "bpim2u",
-+    "canon-a1100",
-+    "catalina-bmc",
-+    "collie",
-+    "cubieboard",
-+    "emcraft-sf2",
-+    "fby35-bmc",
-+    "fuji-bmc",
-+    "g220a-bmc",
-+    "gb200nvl-bmc",
-+    "imx25-pdk",
-+    "integratorcp",
-+    "kudo-bmc",
-+    "kzm",
-+    "lm3s6965evb",
-+    "lm3s811evb",
-+    "max78000fthr",
-+    "mcimx6ul-evk",
-+    "mcimx7d-sabre",
-+    "microbit",
-+    "mori-bmc",
-+    "mps2-an385",
-+    "mps2-an386",
-+    "mps2-an500",
-+    "mps2-an505",
-+    "mps2-an511",
-+    "mps2-an521",
-+    "mps3-an524",
-+    "mps3-an536",
-+    "mps3-an547",
-+    "mps3-an555",
-+    "musca-a",
-+    "musca-b1",
-+    "netduino2",
-+    "netduinoplus2",
-+    "none",
-+    "npcm750-evb",
-+    "nuri",
-+    "olimex-stm32-h405",
-+    "orangepi-pc",
-+    "palmetto-bmc",
-+    "quanta-gbs-bmc",
-+    "quanta-gsj",
-+    "quanta-q71l-bmc",
-+    "rainier-bmc",
-+    "raspi0",
-+    "raspi1ap",
-+    "raspi2b",
-+    "realview-eb",
-+    "realview-eb-mpcore",
-+    "realview-pb-a8",
-+    "realview-pbx-a9",
-+    "romulus-bmc",
-+    "sabrelite",
-+    "sanmiguel-bmc",
-+    "smdkc210",
-+    "stm32vldiscovery",
-+    "supermicro-x11spi-bmc",
-+    "supermicrox11-bmc",
-+    "sx1",
-+    "sx1-v1",
-+    "tiogapass-bmc",
-+    "versatileab",
-+    "versatilepb",
-+    "vexpress-a15",
-+    "vexpress-a9",
-+    "virt-10.0",
-+    "virt-10.1",
-+    "virt-10.2",
-+    "virt-11.0",
-+    "virt-11.1",
-+    "virt-11.2",
-+    "virt-6.0",
-+    "virt-6.1",
-+    "virt-6.2",
-+    "virt-7.0",
-+    "virt-7.1",
-+    "virt-7.2",
-+    "virt-8.0",
-+    "virt-8.1",
-+    "virt-8.2",
-+    "virt-9.0",
-+    "virt-9.1",
-+    "virt-9.2",
-+    "witherspoon-bmc",
-+    "xilinx-zynq-a9",
-+    "yosemitev2-bmc",
-+};
-+
-+static const char * const avr_machines[] = {
-+    "arduino-duemilanove",
-+    "arduino-mega",
-+    "arduino-mega-2560-v3",
-+    "arduino-uno",
-+    "none",
-+};
-+
-+static const char * const hexagon_machines[] = {
-+    "V66G_1024",
-+    "V68N_1024",
-+    "V81DGB_1",
-+    "V81QA_1",
-+    "none",
-+    "virt",
-+};
-+
-+static const char * const hppa_machines[] = {
-+    "715",
-+    "A400",
-+    "B160L",
-+    "C3700",
-+    "none",
-+};
-+
-+static const char * const i386_machines[] = {
-+    "isapc",
-+    "microvm",
-+    "none",
-+    "pc-i440fx-10.0",
-+    "pc-i440fx-10.1",
-+    "pc-i440fx-10.2",
-+    "pc-i440fx-11.0",
-+    "pc-i440fx-11.1",
-+    "pc-i440fx-11.2",
-+    "pc-i440fx-6.0",
-+    "pc-i440fx-6.1",
-+    "pc-i440fx-6.2",
-+    "pc-i440fx-7.0",
-+    "pc-i440fx-7.1",
-+    "pc-i440fx-7.2",
-+    "pc-i440fx-8.0",
-+    "pc-i440fx-8.1",
-+    "pc-i440fx-8.2",
-+    "pc-i440fx-9.0",
-+    "pc-i440fx-9.1",
-+    "pc-i440fx-9.2",
-+    "pc-q35-10.0",
-+    "pc-q35-10.1",
-+    "pc-q35-10.2",
-+    "pc-q35-11.0",
-+    "pc-q35-11.1",
-+    "pc-q35-11.2",
-+    "pc-q35-6.0",
-+    "pc-q35-6.1",
-+    "pc-q35-6.2",
-+    "pc-q35-7.0",
-+    "pc-q35-7.1",
-+    "pc-q35-7.2",
-+    "pc-q35-8.0",
-+    "pc-q35-8.1",
-+    "pc-q35-8.2",
-+    "pc-q35-9.0",
-+    "pc-q35-9.1",
-+    "pc-q35-9.2",
-+};
-+
-+static const char * const loongarch64_machines[] = {
-+    "none",
-+    "virt-11.1",
-+    "virt-11.2",
-+};
-+
-+static const char * const m68k_machines[] = {
-+    "an5206",
-+    "mcf5208evb",
-+    "next-cube",
-+    "none",
-+    "q800",
-+    "virt-10.0",
-+    "virt-10.1",
-+    "virt-10.2",
-+    "virt-11.0",
-+    "virt-11.1",
-+    "virt-11.2",
-+    "virt-6.0",
-+    "virt-6.1",
-+    "virt-6.2",
-+    "virt-7.0",
-+    "virt-7.1",
-+    "virt-7.2",
-+    "virt-8.0",
-+    "virt-8.1",
-+    "virt-8.2",
-+    "virt-9.0",
-+    "virt-9.1",
-+    "virt-9.2",
-+};
-+
-+static const char * const microblaze_machines[] = {
-+    "none",
-+    "petalogix-ml605",
-+    "petalogix-s3adsp1800",
-+    "xlnx-zynqmp-pmu",
-+};
-+
-+static const char * const mips_machines[] = {
-+    "malta",
-+    "none",
-+};
-+
-+static const char * const mips64_machines[] = {
-+    "magnum",
-+    "malta",
-+    "none",
-+    "pica61",
-+};
-+
-+static const char * const mips64el_machines[] = {
-+    "boston",
-+    "fuloong2e",
-+    "loongson3-virt",
-+    "magnum",
-+    "malta",
-+    "none",
-+    "pica61",
-+};
-+
-+static const char * const mipsel_machines[] = {
-+    "malta",
-+    "none",
-+};
-+
-+static const char * const or1k_machines[] = {
-+    "none",
-+    "or1k-sim",
-+    "virt",
-+};
-+
-+static const char * const ppc_machines[] = {
-+    "40p",
-+    "amigaone",
-+    "bamboo",
-+    "g3beige",
-+    "mac99",
-+    "mpc8544ds",
-+    "none",
-+    "pegasos1",
-+    "pegasos2",
-+    "ppce500",
-+    "ppe42_machine",
-+    "sam460ex",
-+    "virtex-ml507",
-+};
-+
-+static const char * const ppc64_machines[] = {
-+    "40p",
-+    "amigaone",
-+    "bamboo",
-+    "g3beige",
-+    "mac99",
-+    "mpc8544ds",
-+    "none",
-+    "pegasos1",
-+    "pegasos2",
-+    "powernv10",
-+    "powernv10-rainier",
-+    "powernv11",
-+    "powernv8",
-+    "powernv9",
-+    "ppce500",
-+    "ppe42_machine",
-+    "pseries-10.0",
-+    "pseries-10.1",
-+    "pseries-10.2",
-+    "pseries-11.0",
-+    "pseries-11.1",
-+    "pseries-11.2",
-+    "pseries-6.0",
-+    "pseries-6.1",
-+    "pseries-6.2",
-+    "pseries-7.0",
-+    "pseries-7.1",
-+    "pseries-7.2",
-+    "pseries-8.0",
-+    "pseries-8.1",
-+    "pseries-8.2",
-+    "pseries-9.0",
-+    "pseries-9.1",
-+    "pseries-9.2",
-+    "sam460ex",
-+    "virtex-ml507",
-+};
-+
-+static const char * const riscv32_machines[] = {
-+    "amd-microblaze-v-generic",
-+    "none",
-+    "opentitan",
-+    "sifive_e",
-+    "sifive_u",
-+    "spike",
-+    "virt",
-+};
-+
-+static const char * const riscv64_machines[] = {
-+    "amd-microblaze-v-generic",
-+    "boston-aia",
-+    "k230",
-+    "microchip-icicle-kit",
-+    "none",
-+    "shakti_c",
-+    "sifive_e",
-+    "sifive_u",
-+    "spike",
-+    "tt-atlantis",
-+    "virt",
-+    "xiangshan-kunminghu",
-+};
-+
-+static const char * const rx_machines[] = {
-+    "gdbsim-r5f562n7",
-+    "gdbsim-r5f562n8",
-+    "none",
-+};
-+
-+static const char * const s390x_machines[] = {
-+    "none",
-+    "s390-ccw-virtio-10.0",
-+    "s390-ccw-virtio-10.1",
-+    "s390-ccw-virtio-10.2",
-+    "s390-ccw-virtio-11.0",
-+    "s390-ccw-virtio-11.1",
-+    "s390-ccw-virtio-11.2",
-+    "s390-ccw-virtio-6.0",
-+    "s390-ccw-virtio-6.1",
-+    "s390-ccw-virtio-6.2",
-+    "s390-ccw-virtio-7.0",
-+    "s390-ccw-virtio-7.1",
-+    "s390-ccw-virtio-7.2",
-+    "s390-ccw-virtio-8.0",
-+    "s390-ccw-virtio-8.1",
-+    "s390-ccw-virtio-8.2",
-+    "s390-ccw-virtio-9.0",
-+    "s390-ccw-virtio-9.1",
-+    "s390-ccw-virtio-9.2",
-+};
-+
-+static const char * const sh4_machines[] = {
-+    "none",
-+    "r2d",
-+};
-+
-+static const char * const sh4eb_machines[] = {
-+    "none",
-+    "r2d",
-+};
-+
-+static const char * const sparc_machines[] = {
-+    "LX",
-+    "SPARCClassic",
-+    "SPARCbook",
-+    "SS-10",
-+    "SS-20",
-+    "SS-4",
-+    "SS-5",
-+    "SS-600MP",
-+    "Voyager",
-+    "leon3_generic",
-+    "none",
-+};
-+
-+static const char * const sparc64_machines[] = {
-+    "niagara",
-+    "none",
-+    "sun4u",
-+    "sun4v",
-+};
-+
-+static const char * const tricore_machines[] = {
-+    "KIT_AURIX_TC277_TRB",
-+    "none",
-+    "tricore_testboard",
-+};
-+
-+static const char * const x86_64_machines[] = {
-+    "isapc",
-+    "microvm",
-+    "none",
-+    "pc-i440fx-10.0",
-+    "pc-i440fx-10.1",
-+    "pc-i440fx-10.2",
-+    "pc-i440fx-11.0",
-+    "pc-i440fx-11.1",
-+    "pc-i440fx-11.2",
-+    "pc-i440fx-6.0",
-+    "pc-i440fx-6.1",
-+    "pc-i440fx-6.2",
-+    "pc-i440fx-7.0",
-+    "pc-i440fx-7.1",
-+    "pc-i440fx-7.2",
-+    "pc-i440fx-8.0",
-+    "pc-i440fx-8.1",
-+    "pc-i440fx-8.2",
-+    "pc-i440fx-9.0",
-+    "pc-i440fx-9.1",
-+    "pc-i440fx-9.2",
-+    "pc-q35-10.0",
-+    "pc-q35-10.1",
-+    "pc-q35-10.2",
-+    "pc-q35-11.0",
-+    "pc-q35-11.1",
-+    "pc-q35-11.2",
-+    "pc-q35-6.0",
-+    "pc-q35-6.1",
-+    "pc-q35-6.2",
-+    "pc-q35-7.0",
-+    "pc-q35-7.1",
-+    "pc-q35-7.2",
-+    "pc-q35-8.0",
-+    "pc-q35-8.1",
-+    "pc-q35-8.2",
-+    "pc-q35-9.0",
-+    "pc-q35-9.1",
-+    "pc-q35-9.2",
-+};
-+
-+static const char * const xtensa_machines[] = {
-+    "kc705",
-+    "kc705-nommu",
-+    "lx200",
-+    "lx200-nommu",
-+    "lx60",
-+    "lx60-nommu",
-+    "ml605",
-+    "ml605-nommu",
-+    "none",
-+    "sim",
-+    "virt",
-+};
-+
-+static const char * const xtensaeb_machines[] = {
-+    "kc705",
-+    "kc705-nommu",
-+    "lx200",
-+    "lx200-nommu",
-+    "lx60",
-+    "lx60-nommu",
-+    "ml605",
-+    "ml605-nommu",
-+    "none",
-+    "sim",
-+    "virt",
-+};
-+
-+static const struct ShippedTarget {
-+    const char *name;
-+    const char *arch;
-+    const char *endianness;
-+    const char * const *machines;
-+    size_t n_machines;
-+} shipped_targets[] = {
-+    { "aarch64", "aarch64", "little",
-+      aarch64_machines, G_N_ELEMENTS(aarch64_machines) },
-+    { "alpha", "alpha", "little",
-+      alpha_machines, G_N_ELEMENTS(alpha_machines) },
-+    { "arm", "arm", "little",
-+      arm_machines, G_N_ELEMENTS(arm_machines) },
-+    { "avr", "avr", "little",
-+      avr_machines, G_N_ELEMENTS(avr_machines) },
-+    { "hexagon", "hexagon", "little",
-+      hexagon_machines, G_N_ELEMENTS(hexagon_machines) },
-+    { "hppa", "hppa", "big",
-+      hppa_machines, G_N_ELEMENTS(hppa_machines) },
-+    { "i386", "i386", "little",
-+      i386_machines, G_N_ELEMENTS(i386_machines) },
-+    { "loongarch64", "loongarch64", "little",
-+      loongarch64_machines, G_N_ELEMENTS(loongarch64_machines) },
-+    { "m68k", "m68k", "big",
-+      m68k_machines, G_N_ELEMENTS(m68k_machines) },
-+    { "microblaze", "microblaze", "big",
-+      microblaze_machines, G_N_ELEMENTS(microblaze_machines) },
-+    { "mips", "mips", "big",
-+      mips_machines, G_N_ELEMENTS(mips_machines) },
-+    { "mips64", "mips64", "big",
-+      mips64_machines, G_N_ELEMENTS(mips64_machines) },
-+    { "mips64el", "mips64", "little",
-+      mips64el_machines, G_N_ELEMENTS(mips64el_machines) },
-+    { "mipsel", "mips", "little",
-+      mipsel_machines, G_N_ELEMENTS(mipsel_machines) },
-+    { "or1k", "or1k", "big",
-+      or1k_machines, G_N_ELEMENTS(or1k_machines) },
-+    { "ppc", "ppc", "big",
-+      ppc_machines, G_N_ELEMENTS(ppc_machines) },
-+    { "ppc64", "ppc64", "big",
-+      ppc64_machines, G_N_ELEMENTS(ppc64_machines) },
-+    { "riscv32", "riscv32", "little",
-+      riscv32_machines, G_N_ELEMENTS(riscv32_machines) },
-+    { "riscv64", "riscv64", "little",
-+      riscv64_machines, G_N_ELEMENTS(riscv64_machines) },
-+    { "rx", "rx", "little",
-+      rx_machines, G_N_ELEMENTS(rx_machines) },
-+    { "s390x", "s390x", "big",
-+      s390x_machines, G_N_ELEMENTS(s390x_machines) },
-+    { "sh4", "sh4", "little",
-+      sh4_machines, G_N_ELEMENTS(sh4_machines) },
-+    { "sh4eb", "sh4", "big",
-+      sh4eb_machines, G_N_ELEMENTS(sh4eb_machines) },
-+    { "sparc", "sparc", "big",
-+      sparc_machines, G_N_ELEMENTS(sparc_machines) },
-+    { "sparc64", "sparc64", "big",
-+      sparc64_machines, G_N_ELEMENTS(sparc64_machines) },
-+    { "tricore", "tricore", "little",
-+      tricore_machines, G_N_ELEMENTS(tricore_machines) },
-+    { "x86_64", "x86_64", "little",
-+      x86_64_machines, G_N_ELEMENTS(x86_64_machines) },
-+    { "xtensa", "xtensa", "little",
-+      xtensa_machines, G_N_ELEMENTS(xtensa_machines) },
-+    { "xtensaeb", "xtensa", "big",
-+      xtensaeb_machines, G_N_ELEMENTS(xtensaeb_machines) },
-+};
-+
-+/*
-+ * Machines omitted from the normal lists. Merged in when @accel is
-+ * present (NULL means no accel check) and the host matches (NULL
-+ * host_os or host_cpu means any). xenfv is an alias of xenfv-4.2.
-+ * aarch64 HVF (vmapple) is built only on an aarch64 Darwin host.
-+ * nitro is Linux-only, on x86_64-softmmu for an x86_64 host and
-+ * aarch64-softmmu for an aarch64 host. x-remote follows KVM on Linux
-+ * when host_cpu is the host that builds KVM for that target.
-+ */
-+static const char * const xen_pc_machines[] = {
-+    "xenpv",
-+    "xenpvh",
-+    "xenfv-4.2",
-+};
-+
-+static const char * const xen_aarch64_machines[] = {
-+    "xenpvh",
-+};
-+
-+static const char * const hvf_aarch64_machines[] = {
-+    "vmapple",
-+};
-+
-+static const char * const nitro_machines[] = {
-+    "nitro",
-+};
-+
-+static const char * const x_remote_machines[] = {
-+    "x-remote",
-+};
-+
-+static const struct SpecialMachineMap {
-+    const char *target;
-+    const char *accel;
-+    const char *host_os;
-+    const char *host_cpu;
-+    const char * const *machines;
-+    size_t n_machines;
-+} special_machine_map[] = {
-+    { "i386", "xen", NULL, "x86_64",
-+      xen_pc_machines, G_N_ELEMENTS(xen_pc_machines) },
-+    { "i386", "xen", NULL, "aarch64",
-+      xen_pc_machines, G_N_ELEMENTS(xen_pc_machines) },
-+    { "x86_64", "xen", NULL, "x86_64",
-+      xen_pc_machines, G_N_ELEMENTS(xen_pc_machines) },
-+    { "x86_64", "xen", NULL, "aarch64",
-+      xen_pc_machines, G_N_ELEMENTS(xen_pc_machines) },
-+    { "aarch64", "xen", NULL, "aarch64",
-+      xen_aarch64_machines, G_N_ELEMENTS(xen_aarch64_machines) },
-+    { "aarch64", "hvf", "darwin", "aarch64",
-+      hvf_aarch64_machines, G_N_ELEMENTS(hvf_aarch64_machines) },
-+    { "x86_64", NULL, "linux", "x86_64",
-+      nitro_machines, G_N_ELEMENTS(nitro_machines) },
-+    { "aarch64", NULL, "linux", "aarch64",
-+      nitro_machines, G_N_ELEMENTS(nitro_machines) },
-+    { "i386", "kvm", "linux", "x86_64",
-+      x_remote_machines, G_N_ELEMENTS(x_remote_machines) },
-+    { "x86_64", "kvm", "linux", "x86_64",
-+      x_remote_machines, G_N_ELEMENTS(x_remote_machines) },
-+    { "aarch64", "kvm", "linux", "aarch64",
-+      x_remote_machines, G_N_ELEMENTS(x_remote_machines) },
-+    { "ppc", "kvm", "linux", "ppc64",
-+      x_remote_machines, G_N_ELEMENTS(x_remote_machines) },
-+    { "ppc64", "kvm", "linux", "ppc64",
-+      x_remote_machines, G_N_ELEMENTS(x_remote_machines) },
-+    { "s390x", "kvm", "linux", "s390x",
-+      x_remote_machines, G_N_ELEMENTS(x_remote_machines) },
-+    { "riscv64", "kvm", "linux", "riscv64",
-+      x_remote_machines, G_N_ELEMENTS(x_remote_machines) },
-+    { "loongarch64", "kvm", "linux", "loongarch64",
-+      x_remote_machines, G_N_ELEMENTS(x_remote_machines) },
-+};
-+
-+static const struct ShippedTarget *lookup_shipped_target(const char *name)
-+{
-+    size_t i;
-+
-+    for (i = 0; i < G_N_ELEMENTS(shipped_targets); i++) {
-+        if (!strcmp(shipped_targets[i].name, name)) {
-+            return &shipped_targets[i];
-+        }
-+    }
-+    return NULL;
-+}
-+
-+static bool have_xen;
-+static bool have_hvf;
-+static bool have_kvm;
-+
-+static const char *host_cpu(void)
-+{
-+#if defined(__aarch64__) || defined(_M_ARM64)
-+    return "aarch64";
-+#elif defined(__x86_64__) || defined(_M_X64)
-+    return "x86_64";
-+#elif defined(__powerpc64__)
-+    return "ppc64";
-+#elif defined(__s390x__)
-+    return "s390x";
-+#elif defined(__riscv) && __riscv_xlen == 64
-+    return "riscv64";
-+#elif defined(__loongarch64)
-+    return "loongarch64";
-+#else
-+    return "other";
-+#endif
-+}
-+
-+static bool host_os_matches(const char *host_os)
-+{
-+    if (!host_os) {
-+        return true;
-+    }
-+#if defined(CONFIG_LINUX)
-+    return !strcmp(host_os, "linux");
-+#elif defined(CONFIG_DARWIN)
-+    return !strcmp(host_os, "darwin");
-+#else
-+    return false;
-+#endif
-+}
-+
-+static bool accel_present(const char *accel)
-+{
-+    if (!accel) {
-+        return true;
-+    }
-+    if (!strcmp(accel, "xen")) {
-+        return have_xen;
-+    }
-+    if (!strcmp(accel, "hvf")) {
-+        return have_hvf;
-+    }
-+    if (!strcmp(accel, "kvm")) {
-+        return have_kvm;
-+    }
-+    return false;
-+}
-+
-+static bool host_cpu_matches(const char *want)
-+{
-+    if (!want) {
-+        return true;
-+    }
-+    return !strcmp(want, host_cpu());
-+}
-+
-+static bool special_applies(const struct SpecialMachineMap *s,
-+                            const char *target)
-+{
-+    return !strcmp(s->target, target) &&
-+           accel_present(s->accel) &&
-+           host_os_matches(s->host_os) &&
-+           host_cpu_matches(s->host_cpu);
-+}
-+
-+static void assert_name_list(QList *names, const char *target,
-+                             const char * const *expect, size_t n_expect)
-+{
-+    GHashTable *got = g_hash_table_new(g_str_hash, g_str_equal);
-+    GHashTable *want = g_hash_table_new(g_str_hash, g_str_equal);
-+    const QListEntry *e;
-+    GHashTableIter iter;
-+    gpointer key;
-+    size_t i;
-+
-+    g_assert_nonnull(names);
-+    for (e = qlist_first(names); e; e = qlist_next(e)) {
-+        QString *qs = qobject_to(QString, qlist_entry_obj(e));
-+
-+        g_assert_nonnull(qs);
-+        g_hash_table_add(got, (gpointer)qstring_get_str(qs));
-+    }
-+    for (i = 0; i < n_expect; i++) {
-+        g_hash_table_add(want, (gpointer)expect[i]);
-+    }
-+    for (i = 0; i < G_N_ELEMENTS(special_machine_map); i++) {
-+        const struct SpecialMachineMap *s = &special_machine_map[i];
-+        size_t j;
-+
-+        if (!special_applies(s, target)) {
-+            continue;
-+        }
-+        for (j = 0; j < s->n_machines; j++) {
-+            g_hash_table_add(want, (gpointer)s->machines[j]);
-+        }
-+    }
-+    g_hash_table_iter_init(&iter, got);
-+    while (g_hash_table_iter_next(&iter, &key, NULL)) {
-+        if (!g_hash_table_contains(want, key)) {
-+            g_printerr("unexpected machine: %s\n", (const char *)key);
-+        }
-+    }
-+    g_hash_table_iter_init(&iter, want);
-+    while (g_hash_table_iter_next(&iter, &key, NULL)) {
-+        if (!g_hash_table_contains(got, key)) {
-+            g_printerr("missing machine: %s\n", (const char *)key);
-+        }
-+    }
-+    g_assert_cmpuint(g_hash_table_size(got), ==, g_hash_table_size(want));
-+    g_hash_table_unref(got);
-+    g_hash_table_unref(want);
-+}
-+
-+static void read_accel_flags(QTestState *qts)
-+{
-+    QDict *resp;
-+    QDict *ret;
-+    QList *present;
-+    const QListEntry *e;
-+
-+    have_xen = false;
-+    have_hvf = false;
-+    have_kvm = false;
-+    resp = qtest_qmp(qts, "{'execute': 'query-accelerators'}");
-+    g_assert(qdict_haskey(resp, "return"));
-+    ret = qdict_get_qdict(resp, "return");
-+    present = qdict_get_qlist(ret, "present");
-+    g_assert_nonnull(present);
-+    for (e = qlist_first(present); e; e = qlist_next(e)) {
-+        QString *qs = qobject_to(QString, qlist_entry_obj(e));
-+        const char *name;
-+
-+        g_assert_nonnull(qs);
-+        name = qstring_get_str(qs);
-+        if (!strcmp(name, "xen")) {
-+            have_xen = true;
-+        } else if (!strcmp(name, "hvf")) {
-+            have_hvf = true;
-+        } else if (!strcmp(name, "kvm")) {
-+            have_kvm = true;
-+        }
-+    }
-+    qobject_unref(resp);
-+}
-diff --git a/tests/qtest/meson.build b/tests/qtest/meson.build
-index 33f58b0e95c..8c53bb2e30e 100644
---- a/tests/qtest/meson.build
-+++ b/tests/qtest/meson.build
-@@ -23,6 +23,7 @@ qtests_generic = [
-   'cdrom-test',
-   'device-introspect-test',
-   'machine-none-test',
-+  'machine-list-test',
-   'qmp-test',
-   'qmp-cmd-test',
-   'qom-test',
 -- 
 2.52.0.windows.1
 

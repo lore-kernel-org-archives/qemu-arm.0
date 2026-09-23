@@ -4,52 +4,52 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 891DCC98307
-	for <qemu-arm@archiver.kernel.org>; Wed, 23 Sep 2026 11:00:22 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 19AC4C98307
+	for <qemu-arm@archiver.kernel.org>; Wed, 23 Sep 2026 11:00:36 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1x9Kfh-0004c6-GF; Wed, 23 Sep 2026 06:57:53 -0400
+	id 1x9Kfh-0004bn-2D; Wed, 23 Sep 2026 06:57:53 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <marcandre.lureau@redhat.com>)
- id 1x9KfM-0004WM-MD
- for qemu-arm@nongnu.org; Wed, 23 Sep 2026 06:57:34 -0400
+ id 1x9KfM-0004WQ-Ug
+ for qemu-arm@nongnu.org; Wed, 23 Sep 2026 06:57:36 -0400
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <marcandre.lureau@redhat.com>)
- id 1x9KfH-0002MY-DQ
+ id 1x9KfH-0002Ms-EH
  for qemu-arm@nongnu.org; Wed, 23 Sep 2026 06:57:30 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1790161036;
+ s=mimecast20190719; t=1790161039;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=awb8gzsoKozsaUBkPHiV+I1vnke3jrFNdxglqdWV2ps=;
- b=IIy+Jy0SNSnYr4il7STKuw3E6nJZHHc8s7XWWjE6nl1f5cIIfa2GD7M/OxWmxnZz9EYWhw
- BMogn+gFMk14Q+rK7T3Tc1MCMNpHP9sWDhum8EulJ53e0c8yyPWF9pcS7pTrUuAKf2WrHc
- iZiFDcxlAFQAY7YDEasDtabyxB0urLw=
-Received: from mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
+ bh=HHUjMfAp7Vt+VQeII9fRYcKtGzZ8TVh4zPfDFi2sJCY=;
+ b=Jtuf/h4clvuIKP68fHwmnW/Ie8lMsHZHAmlKR6UPhH3EkOMaX2Vw64HAhW+O3NOrruN9XW
+ tml2hwBiYZSY3+GmbJRC8y+zmwplZwvETGWNL2sK3T0SiV30EgqA8g/sYxsozc4lgRrAg5
+ AxXqEeBpKOkkf1LqMuF7zXrvyoAB0cI=
+Received: from mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-663-qfhecfNPOmmuPEhJq-8FUQ-1; Wed,
- 23 Sep 2026 06:57:11 -0400
-X-MC-Unique: qfhecfNPOmmuPEhJq-8FUQ-1
-X-Mimecast-MFC-AGG-ID: qfhecfNPOmmuPEhJq-8FUQ_1790161028
-Received: from mx-prod-int-10.mail-002.prod.us-west-2.aws.redhat.com
- (mx-prod-int-10.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.95])
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-191-hXHzcdYNNQeKyXazoNewAQ-1; Wed,
+ 23 Sep 2026 06:57:15 -0400
+X-MC-Unique: hXHzcdYNNQeKyXazoNewAQ-1
+X-Mimecast-MFC-AGG-ID: hXHzcdYNNQeKyXazoNewAQ_1790161032
+Received: from mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com
+ (mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.111])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id CEDB91800679; Wed, 23 Sep 2026 10:57:07 +0000 (UTC)
+ by mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 423AE1945102; Wed, 23 Sep 2026 10:57:12 +0000 (UTC)
 Received: from localhost (headnet03.pony-001.prod.iad2.dc.redhat.com
  [10.2.32.114])
- by mx-prod-int-10.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id 7232541D; Wed, 23 Sep 2026 10:57:05 +0000 (UTC)
+ by mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
+ id 98BE11800261; Wed, 23 Sep 2026 10:57:10 +0000 (UTC)
 MIME-Version: 1.0
-Subject: Re: [PATCH v2 4/9] hw/or1k/virt: use unique QOM name
+Subject: Re: [PATCH v2 5/9] hw/hexagon/virt: use unique QOM name
 From: marcandre.lureau@redhat.com
 To: Yonggang Luo <luoyonggang@gmail.com>
 Cc: qemu-devel@nongnu.org, 
@@ -71,43 +71,43 @@ Cc: qemu-devel@nongnu.org,
  Philippe Mathieu-Daude <philmd@mailo.com>, 
  =?utf-8?q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>, 
  Paolo Bonzini <pbonzini@redhat.com>, Eric Blake <eblake@redhat.com>
-In-Reply-To: <20260922215533.641-5-luoyonggang@gmail.com>
+In-Reply-To: <20260922215533.641-6-luoyonggang@gmail.com>
 References: <20260922215533.641-1-luoyonggang@gmail.com>
- <20260922215533.641-5-luoyonggang@gmail.com>
+ <20260922215533.641-6-luoyonggang@gmail.com>
 Date: Wed, 23 Sep 2026 14:56:45 +0400
-Message-Id: <179016100541.1396491.9366744648871696579.b4-review@b4>
-X-Developer-Signature: v=1; a=openpgp-sha256; l=1310;
+Message-Id: <179016100544.1396491.7027342796637781071.b4-review@b4>
+X-Developer-Signature: v=1; a=openpgp-sha256; l=437;
  i=marcandre.lureau@redhat.com; h=from:subject:message-id;
- bh=9lxijABkX9bvnNpqWEZufqqiiubFv8a2BkLdLcSZCbA=;
- b=owEBbQKS/ZANAwAKAdro4Ql1lpzlAcsmYgBqs7BxKgzEYItZ4zhyZhVrQCQtzK3l856egDiRl
- +sjPt8w5FuJAjMEAAEKAB0WIQSHqb2TP4fGBtJ29i3a6OEJdZac5QUCarOwcQAKCRDa6OEJdZac
- 5X8QD/9zcGXuxjaw4bvl6C+4FSAeKogBcjsAjaT/dd5qZYjjBIzDbEiUqFb/LtfUsUasCFQAWIo
- eDQvOqcMcihnXkzRPEJ9DHEtpWU1mGzKNV7kTJj/R2ggHjAtBaZqu4O1GNUm64dUJJB9nB08Wd9
- O5m/S5OJTm9SVrKMwh882pkQ3Qfnj4UNgtFwM5mCU68Lc7g2EpJO8gmUC3c/YjQHagoXOzw/zWO
- ve7I7063SOkL/Za6yTQI4ZW4K/NKhG9Z0DkC6N+7oMUED3iNFYiCmRgN/5kuXdHa6jg1ZDSfwuJ
- hAoqKvVgMgjbVVWkwoDD3RdyPc8kqyyEN2S3/dLgFn7AYSgfvYSTXgV6d74Y/vBM/6hsUXkN/o/
- HBVjIKdhZtlXfNnG6o9cbDQ+aA8MFMeeEeuhGYODEOqmaZive8DP4oZ8z5grMC6zzewmGOl6keK
- u53LpXcMMg+uOsQk7u+SrGOUmw7OnZpBL65EQpO1GwdWTYdIJGNn7/9/cqZTlLg+gq6TfnsIecO
- wV5WQwNlBTeQ6J9UlO3ZZrZSsNeZgNin6pbZ9ZOUGhHT/rrjzcPcj2VBnurqHi66196YxpiF/JT
- uAzxUrfmxmYZHYMuuKTKuLOQggRGgGHhFMIi/EodfB5yOkf4h/OQNxfiMw8/cIt6OggNDm/T2e7
- IhV/FmXsctzt9WA==
+ bh=5T6ENy54y80K/pB9kfZYq0bbSZ9F/4mwbmxTC1ebs6Q=;
+ b=owEBbQKS/ZANAwAKAdro4Ql1lpzlAcsmYgBqs7BxR40rtIXfreG2etUCo0KGQuX2phUBPpRn8
+ HenVVVgOimJAjMEAAEKAB0WIQSHqb2TP4fGBtJ29i3a6OEJdZac5QUCarOwcQAKCRDa6OEJdZac
+ 5VSbD/9MAMK78cgK2KNHc0L6wURlxc0qh6FsnWV9/kNIc2yiL5HLbWdbsTDaWijsWsn2CiB41g4
+ D8lIZEARBlvjFuXxPgm+k+tIMApcvQpmV3+PV/eQhs6xXIbFb9MKCtvLEgBmnuzIXZuq8Tf55ZB
+ 1KTBAJv01zzMil93Lvh3JakWrHDd7rliDJIcmWSFHEkVkA+LtTlC5QB/lETum97zrUicVGxE5Df
+ hIX7pUcqciP+GwLCIUFLf9Ekm9avJ6ovVOcrCXR5WoxdAy70+PztHBQih1qsHTXqoOOfJ5qRInZ
+ LDVghYARtFKpYb7XIEabBMFAJi6axvfYNOsYa+/xf0oPioJolInN3AA1YkbA6AAzLEd3ESG8Qsh
+ mpZxigd+qRNvY2bRvajx3u3dUba/sZS6V1xo3XOfMRFlG/QxE+lwTdZ9Yia592J61TKYPpXWpk9
+ 8Q7AGBixKE+GFlAJ6y+Kau2TEorQ2hBJ0XOrAtecGdXYhUHi+eQnZEsPE2F/tTBOD87BSObVszk
+ KgHOYzaZciwc2teCZQk2tS2+IjP3HCk34Yvaxm6ePZAs/Y0IIl1ErlsHpeRwEDG88kc5aw12wLB
+ 5BM4KzWNY7WvGAj/3qc6vyMvS4TtEC2PhDpN0wQGAisMlaTHbOAX14Elp6DWpCit/KtdXUZw6xr
+ CJZ0X7q12LkLjhA==
 X-Developer-Key: i=marcandre.lureau@redhat.com; a=openpgp;
  fpr=87A9BD933F87C606D276F62DDAE8E10975969CE5
-X-Scanned-By: MIMEDefang 3.6 on 10.30.177.95
-X-Mimecast-MFC-PROC-ID: jFLzHP5_i2Vic0VOb1ZuPd0pbRn0YmIrQtV2TM5IiSk_1790161028
+X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.111
+X-Mimecast-MFC-PROC-ID: 2PvS6AV5dS_TaUYbK2TaMkzf05KR4zVQ8rlq81FgwyI_1790161032
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
 Received-SPF: pass client-ip=170.10.129.124;
  envelope-from=marcandre.lureau@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+X-Spam_score_int: 12
+X-Spam_score: 1.2
+X-Spam_bar: +
+X-Spam_report: (1.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=0.001, SPF_HELO_PASS=-0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=0.001, RCVD_IN_SBL_CSS=3.335,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -123,38 +123,11 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-> Set TYPE_VIRT_MACHINE to MACHINE_TYPE_NAME("or1k-virt") so OpenRISC
-> virt no longer collides with other virt-machine types in one process.
-> Keep the -M / help / migration name as virt via
+On Wed, 23 Sep 2026 05:55:28 +0800, Yonggang Luo <luoyonggang@gmail.com> wrote:
+> Set TYPE_HEXAGON_VIRT_MACHINE to MACHINE_TYPE_NAME("hexagon-virt") so
+> Hexagon virt no longer collides with other virt-machine types in one
+> process. Keep the -M / help / migration name as virt via
 > machine_class_set_name().
-> 
-> Signed-off-by: Yonggang Luo <luoyonggang@gmail.com>
-> Message-ID: <20260922215533.641-5-luoyonggang@gmail.com>
->
-> diff --git a/hw/or1k/virt.c b/hw/or1k/virt.c
-> index 2ff5c084a2b7..35884252379c 100644
-> --- a/hw/or1k/virt.c
-> +++ b/hw/or1k/virt.c
-> @@ -34,7 +34,7 @@
->  #define VIRT_CPUS_MAX 4
->  #define VIRT_CLK_MHZ 20000000
->  
-> -#define TYPE_VIRT_MACHINE MACHINE_TYPE_NAME("virt")
-> +#define TYPE_VIRT_MACHINE MACHINE_TYPE_NAME("or1k-virt")
->  #define VIRT_MACHINE(obj) \
->      OBJECT_CHECK(OR1KVirtState, (obj), TYPE_VIRT_MACHINE)
-
-While at it, rename it to TYPE_OR1K_VIRT_MACHINE?
-
->  
-> @@ -548,6 +548,7 @@ static void openrisc_virt_machine_init(ObjectClass *oc, const void *data)
->      MachineClass *mc = MACHINE_CLASS(oc);
->  
->      mc->desc = "or1k virtual machine";
-> +    machine_class_set_name(mc, "virt");
->      mc->init = openrisc_virt_init;
->      mc->max_cpus = VIRT_CPUS_MAX;
->      mc->is_default = false;
 
 Reviewed-by: Marc-André Lureau <marcandre.lureau@redhat.com>
 

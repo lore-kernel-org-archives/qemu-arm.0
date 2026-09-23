@@ -4,52 +4,52 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8C1EFC982FA
-	for <qemu-arm@archiver.kernel.org>; Wed, 23 Sep 2026 10:59:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 979C4C982FA
+	for <qemu-arm@archiver.kernel.org>; Wed, 23 Sep 2026 10:59:31 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1x9Kfk-0004fT-Ea; Wed, 23 Sep 2026 06:57:56 -0400
+	id 1x9Kfg-0004bR-56; Wed, 23 Sep 2026 06:57:52 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <marcandre.lureau@redhat.com>)
- id 1x9KfU-0004Xo-LI
+ id 1x9KfU-0004Xn-L2
  for qemu-arm@nongnu.org; Wed, 23 Sep 2026 06:57:43 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <marcandre.lureau@redhat.com>)
- id 1x9KfM-0002PU-Km
- for qemu-arm@nongnu.org; Wed, 23 Sep 2026 06:57:39 -0400
+ id 1x9KfM-0002PH-BD
+ for qemu-arm@nongnu.org; Wed, 23 Sep 2026 06:57:38 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1790161049;
+ s=mimecast20190719; t=1790161048;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=Y1VmcaLsdlgnaUyJrp56bmy0bY+jIdsz60+5xIf2N9w=;
- b=Ed9GHGZm9BXdq7ti6HSKauJZJrnMhBUzu09zuVZZmgeq0nGAPoK4nQkks2jcDK7Wu0UcMu
- BItft3tBONBcPlf7F/QbYDd2eXm9oh+MIlqrTi8+1Box1pg1Elxsril5+Hsq2GJLqug1Nc
- nJWK+xU/jG9stFMQU2SDQkuQXqOS4sc=
-Received: from mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
+ bh=K7sxbCLPYjCGc+vT8TBpOiTfp6JTc9Z0uSN7ivbU46c=;
+ b=Wl9GCDuoZvYRyEbnRnKBTyb0C62YH57zWO038cR/UUVlfQNggpBkrOTvP55h2iBobF3wec
+ vo22Rn7CoGUrFC37RlPydgJ7LwsRWLnaFbRePk6Cn7uxSXgDA/kXgj9LuqkfLv6GKy28iH
+ 1DSOgAafOAaXWMPRg/Y3Bm5Mea8vatw=
+Received: from mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-148--Sd7wt1DPyaT2__7WPDWRQ-1; Wed,
- 23 Sep 2026 06:57:25 -0400
-X-MC-Unique: -Sd7wt1DPyaT2__7WPDWRQ-1
-X-Mimecast-MFC-AGG-ID: -Sd7wt1DPyaT2__7WPDWRQ_1790161043
-Received: from mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com
- (mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.17])
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-393-2C63sN-BNUG8mW2WBwSVCQ-1; Wed,
+ 23 Sep 2026 06:57:22 -0400
+X-MC-Unique: 2C63sN-BNUG8mW2WBwSVCQ-1
+X-Mimecast-MFC-AGG-ID: 2C63sN-BNUG8mW2WBwSVCQ_1790161039
+Received: from mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com
+ (mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.4])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 15F3418052D7; Wed, 23 Sep 2026 10:57:23 +0000 (UTC)
+ by mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 97AC0195DBB1; Wed, 23 Sep 2026 10:57:19 +0000 (UTC)
 Received: from localhost (headnet03.pony-001.prod.iad2.dc.redhat.com
  [10.2.32.114])
- by mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id EC9A019539A7; Wed, 23 Sep 2026 10:57:21 +0000 (UTC)
+ by mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
+ id 6E9AE300106E; Wed, 23 Sep 2026 10:57:18 +0000 (UTC)
 MIME-Version: 1.0
-Subject: Re: [PATCH v2 8/9] hw/xtensa/virt: use unique QOM name
+Subject: Re: [PATCH v2 7/9] hw/m68k/virt: use unique QOM name
 From: marcandre.lureau@redhat.com
 To: Yonggang Luo <luoyonggang@gmail.com>
 Cc: qemu-devel@nongnu.org, 
@@ -71,43 +71,43 @@ Cc: qemu-devel@nongnu.org,
  Philippe Mathieu-Daude <philmd@mailo.com>, 
  =?utf-8?q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>, 
  Paolo Bonzini <pbonzini@redhat.com>, Eric Blake <eblake@redhat.com>
-In-Reply-To: <20260922215533.641-9-luoyonggang@gmail.com>
+In-Reply-To: <20260922215533.641-8-luoyonggang@gmail.com>
 References: <20260922215533.641-1-luoyonggang@gmail.com>
- <20260922215533.641-9-luoyonggang@gmail.com>
+ <20260922215533.641-8-luoyonggang@gmail.com>
 Date: Wed, 23 Sep 2026 14:56:45 +0400
-Message-Id: <179016100550.1396491.10048097173237745806.b4-review@b4>
-X-Developer-Signature: v=1; a=openpgp-sha256; l=400;
+Message-Id: <179016100547.1396491.3279653117271344611.b4-review@b4>
+X-Developer-Signature: v=1; a=openpgp-sha256; l=421;
  i=marcandre.lureau@redhat.com; h=from:subject:message-id;
- bh=vVurxjZu3cXtFIOwzYNKlnTqrCJjBXbdKjftyE8+kDI=;
- b=owEBbQKS/ZANAwAKAdro4Ql1lpzlAcsmYgBqs7BxANigBvzlQqXbXn/MAsV1TGQnGLrKJuPz0
- wh0m3dfip2JAjMEAAEKAB0WIQSHqb2TP4fGBtJ29i3a6OEJdZac5QUCarOwcQAKCRDa6OEJdZac
- 5SV7EACKuuGPpdVjoepNck5DFDjOKelMgCJ7Uyw5eCP0wy4N+1wVOD4sSVGWu/bsZetscR13Ziw
- 3LIOm3SBM8/nhV/PDLZy/VesOE9kycMaIG7ZugWdAaexyYJFvSu9P9pecpBPeRMzVFJSWLtKqPG
- IctC40FoY+CIdtvJnPjJh2agjQSX/KakRlgTyAhyTDKT+j/dTC3PiK7L54oEikdBuWVCMVaMhCj
- uQPB+ozAfumd2Llfcgui49AuwpqIR8BWR3JxbzLFhMSPk3UkvOIT74zpuHg+lV9odNYAAtsqSmi
- x2iBXnrDXDipG5WVN3GDa4FczaHb095vPzzV2+3OhDDHkZqoTn/AGm81dm33dYjaUB7VawFXrll
- 1k7OlounoJrhVhnqzWiKesKkczV+bRlebO7G3IRdpAdPB6J+N0je38u7+IjiiU2CPeZExQJbRhL
- Il6sOEBEJIFzW1/z1UR5G+uLvW3GOtOrpLlOVvYmoqOq9bif6VjVUeENMvTq2aGU1sGKV08a9T/
- ZVhW+aQcqNzFHkaHW6eAVqQseqDNjE3INzwLMDg5ZH95nVq7yzrEzHNsQn4MSg+PBHa7s6B0TFM
- I0Hz8TFeY7RbIqoKyMzy+OFVksLc3+6tPTuBgknTClUDpGG0/mHeRrlubQrZ2K5iC/kTkd9PBd2
- 5fOe0XN8tsSg1HA==
+ bh=7ireRDcN/WoctDlcufuabiOnZSde9lm6lXDMY7uUTxo=;
+ b=owEBbQKS/ZANAwAKAdro4Ql1lpzlAcsmYgBqs7BxeCPTncp/ahsNrabb54cvxUeyKgf/v59rs
+ 0YE3MgeRaSJAjMEAAEKAB0WIQSHqb2TP4fGBtJ29i3a6OEJdZac5QUCarOwcQAKCRDa6OEJdZac
+ 5d1AEACZE9CRq6c2O5EP1mfQN2qxd2OSKSWeEFevCeqrgVkzT8J+qmrYgpxooeefSuZjSEx9Gk0
+ 9TYQJQRW8n4dC5uET0M2PAmWwWHD4ZoqifIeydQtJ9ue8jUE45T1VwEAG4KvB0SUkNml2x96A2Y
+ cLg8OZ8l6wtPB++CoQCSYkoQLsAZcYNOmyy1guo/RPJB9Wp7hGn7f8NAplHxsjUi6dusj7lqhFS
+ hrSS9/7/EWofF4wP/LLEstUqSVn/XrxYeJGjlmTB3DQraDzf8yNBmEKiUXqgHiO7iM1WK++cRNP
+ XcMd3VP72kaRLGduOuWRX0SOMhNPny/VfIpMgw1cExVUvClFH/W3dlz09kmGtJDk/ZWB5kySIrv
+ sekigB+p+A9DInn4mmkbkSXNSD5nmZnVzE/8ou5q0CoJqWTZRT6/ul4vx45nBhLqhHQj09XcscS
+ ZqP7Afqpzbios6ifxdpVFMkKQlDofenHQhbqUWNPMec1Lq7VmTCeHxG+l2i7saqpUj2A7f9AV5H
+ 4TL0VX6uA1hh0ZPNWdkMq4ne7nhsGUa3QwWcUz8QMBVET/VHUGkn8rQ58bLD+8F14fbc8HFkVLo
+ V/Kr/D8IkPYtgVK2XdG1XUDMGAJt96UWRv/CQvRCXzdNoTXH8m0yKeC41j83Avnl6y/brjYlcnM
+ OoQmS7ml/juUvqw==
 X-Developer-Key: i=marcandre.lureau@redhat.com; a=openpgp;
  fpr=87A9BD933F87C606D276F62DDAE8E10975969CE5
-X-Scanned-By: MIMEDefang 3.0 on 10.30.177.17
-X-Mimecast-MFC-PROC-ID: t4OWMz0A1480Ywr9ue3-_rNUfHsLgI2Ro_Z8kDnXXd0_1790161043
+X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.4
+X-Mimecast-MFC-PROC-ID: sMu9Ykx5RE3ZeJF77asQie5UOGfis94tnYogX2WlqDk_1790161039
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=170.10.133.124;
+Received-SPF: pass client-ip=170.10.129.124;
  envelope-from=marcandre.lureau@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+X-Spam_score_int: 12
+X-Spam_score: 1.2
+X-Spam_bar: +
+X-Spam_report: (1.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=0.001, RCVD_IN_SBL_CSS=3.335,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -123,10 +123,11 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Wed, 23 Sep 2026 05:55:31 +0800, Yonggang Luo <luoyonggang@gmail.com> wrote:
-> Register the board as xtensa-virt so Xtensa virt no longer collides
-> with other virt-machine types in one process. Keep the -M / help /
-> migration name as virt via machine_class_set_name().
+On Wed, 23 Sep 2026 05:55:30 +0800, Yonggang Luo <luoyonggang@gmail.com> wrote:
+> Set the parent and versioned QOM types to m68k-virt so M68K virt no
+> longer collides with other virt-machine types in one process. Keep
+> the -M / help / migration name as virt-* via
+> machine_class_set_name().
 
 Reviewed-by: Marc-André Lureau <marcandre.lureau@redhat.com>
 

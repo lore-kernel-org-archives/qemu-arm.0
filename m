@@ -4,86 +4,83 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8C92BC9830B
-	for <qemu-arm@archiver.kernel.org>; Wed, 23 Sep 2026 21:10:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0AA08C9830B
+	for <qemu-arm@archiver.kernel.org>; Wed, 23 Sep 2026 21:10:19 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1x9UED-0004Dz-10; Wed, 23 Sep 2026 17:10:09 -0400
+	id 1x9UEE-0004FF-9H; Wed, 23 Sep 2026 17:10:10 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <marcelomanzo@gmail.com>)
- id 1x9UDs-000480-TB
- for qemu-arm@nongnu.org; Wed, 23 Sep 2026 17:09:50 -0400
-Received: from mail-ua2-x0e.google.com ([2a00:1450:4864:39::e])
+ id 1x9UE4-0004Bo-Dw
+ for qemu-arm@nongnu.org; Wed, 23 Sep 2026 17:10:06 -0400
+Received: from mail-ua2-x0f.google.com ([2a00:1450:4864:39::f])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <marcelomanzo@gmail.com>)
- id 1x9UDq-0008QH-Ra
- for qemu-arm@nongnu.org; Wed, 23 Sep 2026 17:09:48 -0400
-Received: by mail-ua2-x0e.google.com with SMTP id
- a1e0cc1a2514c-980b6159d30so419182241.0
- for <qemu-arm@nongnu.org>; Wed, 23 Sep 2026 14:09:46 -0700 (PDT)
+ id 1x9UE2-0008R0-RM
+ for qemu-arm@nongnu.org; Wed, 23 Sep 2026 17:09:59 -0400
+Received: by mail-ua2-x0f.google.com with SMTP id
+ a1e0cc1a2514c-9852048ab71so407504241.3
+ for <qemu-arm@nongnu.org>; Wed, 23 Sep 2026 14:09:57 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20251104; t=1790197785; x=1790802585; darn=nongnu.org;
+ d=gmail.com; s=20251104; t=1790197797; x=1790802597; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to:content-type;
- bh=0HK/pzye7cm5UNEMVr3LbdqBrxj/0smXUGHcXB1oZ6w=;
- b=IQ5sS9fIbeno4UXAw+O9XzRRexgg1DurA/UtRCHM3/Hif0Crhv3jIQGZlEyCMDHhKO
- KJq+3KNgDuVVWeNqiv91qORtqjrqQeuPowXqfejSONsWfIuZ5DxN7+bHv+5QwVufNxeQ
- oSNnjSRyogW/1u9X54JQTFkhPP2iMNy9OD5YmGwJcKwqWINHXZ/Zy2Di/Wb2pZ8zWA77
- VQc9uJ4yGF78jxaLDprtnGLi4sXRnfbcgLYSsBk/nWv84GEhuoB7LZZqqkGyPBV33HsU
- qRJ71A5wBK9yynT0FshnoZRqH+tEdJ8s+QZ58UaXVokDmijAajYGkpG39XAnegv7aufB
- A4TA==
+ bh=2jZ5E27TAd+15Z/w22xWfUZE4mFmL95RTG8LK5diRaw=;
+ b=aONXwwplHA6/QyPAB/cOD1KgeRGIL+iRAqzS+5WJcYSaRzxcznTcK0grahcdt/lKt0
+ siPJAy45WNbDvx6gMoVJqziKlohKENyxOYkpON/OrAEzHxnNbDd30BK0NUqJNSFcoDJa
+ 1fKnU14t362AycgCCdgMZ1DqK9cV2kSQPX+nW5Q080WoXVh4eBz0TUxfSyD1FTmmpO4L
+ eqqr4bWfWw2nqDWlf04VurcrhIQtKTXMAKZZUQDZ1aTya3onsZ1YU15ap1q1+tsHy/AP
+ h54YL0i4wRqAtEwDlTq9V6NUKnIAKC9xiJVHqhx0gPOBdtKQ3XFDnGIIaPSC2dPUFiAo
+ O8nw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20260707; t=1790197785; x=1790802585;
+ d=1e100.net; s=20260707; t=1790197797; x=1790802597;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
  :to:cc:subject:date:message-id:reply-to:content-type;
- bh=0HK/pzye7cm5UNEMVr3LbdqBrxj/0smXUGHcXB1oZ6w=;
- b=WS77oLX1Ja5yhRVVlkdywmX6xIe6CtqILjZOKu6FOX0vZsGUzSSA6tZ1CXShCYrQMe
- Uyq9aCctajdDc+EE0lrJpQ6K5VS6kieAopWDYAW/zUxiaveNbnUAtRQAZoGTzpXRlFOk
- YkJVEzey9sXcv3gMmwePfyxvlZBIA52tjxJ3JobGXHdMmfweTtwrR1tNsp3gBuzOngc3
- JBN7dlK9RLNa8MXi1n1/NQ79TDwqmXkofvDyGWqGUu7dfKKODU6+F2oayu1OzI83SD/X
- JkGL9GT/pIzQJ1dvAMtK2EJMCUcamRoBiKraiC+ka5FCBwASsN+Q5IarJC77JcV47Ft4
- p0DQ==
+ bh=2jZ5E27TAd+15Z/w22xWfUZE4mFmL95RTG8LK5diRaw=;
+ b=DCE/gjRFm6g4kuwBohZ1T4/BtCcPTQ6nQFz6cPmNiqsKs2qj1KgSwtEk4z61ksbubT
+ iNCnBKgaoYm0mPJJPzZhaKbNejRG6uytA62qRjc1l2xwBV/axNcCg61sAyZ7rK4UJ5q7
+ psw5V1yswklLeW1LlnEgU+ee1We159J5QuEwL+glzWtDNXDD6RjIEH3QHMt1JF/5dM74
+ o9YxXk49Sb+2LC5yNA8SBH6C/UK+4aqCdsZ3HJ1FsfFCjdhKWBdkFckKWq3DbKbLp5S5
+ CTqvyyo0SMK+LD6SwyYk5dvUlsu10IwYSFlNohmBhNjFCFWhlYJpM3Afd74q9m8pDJaF
+ xZxA==
 X-Forwarded-Encrypted: i=1;
- AKwUvBw5iQqggLSbwnv5xZM+aRz9XMlRjqk3jru1j4mh+kYmHkyUXY0Khk0PQ8ZUw+3s2sLK0TwF011RNg==@nongnu.org
-X-Gm-Message-State: AFuF++kU6/nQ+NQLH0CGXR96NfkqeR6AU1TB9PNpiz/89e3WQwAazoCd
- nO7mjJuGLIQhLC1BPc3BCRx0TIHezkOLCeaMWs8HECIgF6uHKRlw/bcI
-X-Gm-Gg: AYBFou1IFHbrQqkNXdDD3MRLyJf+IvuNawPAsSn6l7ep/JfyZSlQLoE+lccees//z1S
- mcgWUWbd4icq3VroiMr4w9ZV23YH1UvJBzHsM56zvEe3xmneVRyDa0TVJ9UI4qOqdWFXY01imk9
- zu4H/KFqdn5Gt3DldVdzJcOm7lY7eaAcezjqJMiCWDaagnq8DO+RPZNPucaDyWtGFlizMNl+5kv
- x3djfBztumQ4zoY2kl/1JkE9Nc3UNbxAA6caeAEHs+n3X/Ctw4TPDZKvH610hxmuyZJ7JrhFRgr
- TOcQZMjZWCXEsORUX27nJuYWxYhDs9PbfvcK6b06nxfazVWEB/gJlmxmPdDoXkPkcC9pVqQ2D5D
- I8IrzQl6XK3p6uZhPZbryvcww7IEJRk5fB7oOmEPB5ErDWjJCmz6TSgu2n0oEHBc8/+jJi8Q5xW
- qxDIymLl/9Aq/YOvorWpIDnygm+z6bHqZkpEZTR2ELxPMmotIhJkGifOpsMGKsIgWuTA1ev3huP
- FO5Zr+PYJBYhmG20XtLLfIX8TdJG5sErxaDx3Q=
-X-Received: by 2002:a05:6102:358d:b0:7a1:f7d2:e830 with SMTP id
- ada2fe7eead31-7af1bf7e167mr429808137.16.1790197785116; 
- Wed, 23 Sep 2026 14:09:45 -0700 (PDT)
+ AKwUvBx9bo58dbwM5Q/oTelKBraW4J+08CxwXTkryJ9H1w24MZfxxJbpgCPR5ZZS1MQ8urOIFVRhhjfQfA==@nongnu.org
+X-Gm-Message-State: AFuF++k9gYFPt8UF94Wb0ha6wK2R2Z4xy/+d57trKhqfYZ5P/g3aunm0
+ ulr0AdXttFbFE3DDQEhyn1ozA0TNrGJBUczAdeo5NotjwhhIdc+Vvm57OhHlApFtwLU=
+X-Gm-Gg: AYBFou27BPgXA3wEM7FmJlKq+tnkkPkDC0gZ+Fb6pBjOeVxSNKW7NYzNAE+Pzgy7SCv
+ Yry9EEQxSrU/QOMHSfwmhZliFMOS6FW6KpWJ8+hWZFaVs8ti8gJsHh25g2oHAkcBuFDOR9w3JUd
+ lBZzg9wb6zK1rOYriIW05DN4sTTC6QFxcSZ9v+8Px/OrJFpYn4S1w9GFogk7/pWVCyk6A99yjR5
+ wmxylkhDuxLD3XQ5XLDUOKBiOkVS94666+ByOPxhQy+rc3cwYqDgAK3sRusRmZEBsJODk6YYR3l
+ oSkNnF9FJewefGwwuDEvR/WNTD9z+cu7pYTykQgAz8jOvaRdB/xiCrCAIswCT+vhonuUIpbRpA/
+ mcgiBkt3OHuuRMbO0PedB29swe66T1p0DGjLyqmMGJHigTIT75PZCW0jqvv7SoQ5UeUSbVcvBc2
+ ovivQa8FaFYp5/N/go/NnHZ9Be10UBMR0jGK3j5cG7hsRaZGzuHZq9a2T2OrihWfRNn0RViCEzx
+ cJR16AgA23hJj8phT/KfA8e5+qSzNKTmSVVTcA=
+X-Received: by 2002:a05:6102:38ce:b0:7a3:3d26:5c67 with SMTP id
+ ada2fe7eead31-7af1e4f2ddamr406952137.24.1790197797329; 
+ Wed, 23 Sep 2026 14:09:57 -0700 (PDT)
 Received: from localhost.localdomain ([2606:6d00:159:2900:8d8d:5fed:813e:d8db])
  by smtp.gmail.com with ESMTPSA id
- 71dfb90a1353d-5c9f04c05b3sm4859413e0c.6.2026.09.23.14.09.44
+ ada2fe7eead31-7af25964441sm455715137.10.2026.09.23.14.09.56
  (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Wed, 23 Sep 2026 14:09:44 -0700 (PDT)
+ Wed, 23 Sep 2026 14:09:56 -0700 (PDT)
 From: Marcelo Manzo <marcelomanzo@gmail.com>
 To: qemu-devel@nongnu.org,
 	qemu-arm@nongnu.org
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@oss.qualcomm.com>,
- Jason Wang <jasowangio@gmail.com>
-Subject: Re: [PATCH v2 00/19] hw/arm/raspi4b: working PCIe and GENET (real
- networking)
-Date: Wed, 23 Sep 2026 17:09:43 -0400
-Message-ID: <20260923210943.52812-1-marcelomanzo@gmail.com>
+Cc: Peter Maydell <peter.maydell@linaro.org>
+Subject: Re: [PATCH 0/5] hw/arm/raspi4b: RNG200 and thermal sensor
+Date: Wed, 23 Sep 2026 17:09:55 -0400
+Message-ID: <20260923210956.52940-1-marcelomanzo@gmail.com>
 X-Mailer: git-send-email 2.55.0
-In-Reply-To: <20260811143557.7862-1-marcelomanzo@gmail.com>
-References: <20260811143557.7862-1-marcelomanzo@gmail.com>
+In-Reply-To: <20260725012635.4925-1-marcelomanzo@gmail.com>
+References: <20260725012635.4925-1-marcelomanzo@gmail.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:39::e;
- envelope-from=marcelomanzo@gmail.com; helo=mail-ua2-x0e.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:39::f;
+ envelope-from=marcelomanzo@gmail.com; helo=mail-ua2-x0f.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -105,19 +102,11 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Hi Peter, Philippe, Jason,
+Hi Peter,
 
-Gentle ping on this series -- it's been about six weeks since v2 with
-no review yet. As a reminder, this folds the two follow-up bugfixes
-(PCI enumeration, GENET per-ring DMA status) directly into the
-patches that introduce the affected code, per Peter's review of the
-earlier standalone series.
-
-Still green as of today: checkpatch clean, builds standalone from a
-clean worktree, and the full functional test suite passes.
-
-No rush if it's just queue depth -- just didn't want it to fall off
-the radar. Happy to rebase if anything's gone stale in the meantime.
+Gentle ping on this one too -- it's been about eight weeks with no
+review yet. Happy to rebase/resend if anything's gone stale in the
+meantime, just let me know.
 
 thanks,
 Marcelo

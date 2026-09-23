@@ -4,69 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 350C2C9830B
-	for <qemu-arm@archiver.kernel.org>; Wed, 23 Sep 2026 13:24:11 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 50291C9830C
+	for <qemu-arm@archiver.kernel.org>; Wed, 23 Sep 2026 13:24:16 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1x9MwI-0005bU-SE; Wed, 23 Sep 2026 09:23:11 -0400
+	id 1x9MxF-0007DM-Ph; Wed, 23 Sep 2026 09:24:10 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <luoyonggang@gmail.com>)
- id 1x9Msb-0000lv-UX
- for qemu-arm@nongnu.org; Wed, 23 Sep 2026 09:19:27 -0400
-Received: from mail-dy2-x10.google.com ([2607:f8b0:4864:36::10])
+ id 1x9Msx-00010z-Ux
+ for qemu-arm@nongnu.org; Wed, 23 Sep 2026 09:19:45 -0400
+Received: from mail-dy2-x0f.google.com ([2607:f8b0:4864:36::f])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <luoyonggang@gmail.com>)
- id 1x9MsY-00072u-IZ
- for qemu-arm@nongnu.org; Wed, 23 Sep 2026 09:19:21 -0400
-Received: by mail-dy2-x10.google.com with SMTP id
- 5a478bee46e88-33b9e805130so669459eec.1
- for <qemu-arm@nongnu.org>; Wed, 23 Sep 2026 06:19:18 -0700 (PDT)
+ id 1x9Mst-00075n-PB
+ for qemu-arm@nongnu.org; Wed, 23 Sep 2026 09:19:43 -0400
+Received: by mail-dy2-x0f.google.com with SMTP id
+ 5a478bee46e88-33c11ef641aso1110981eec.1
+ for <qemu-arm@nongnu.org>; Wed, 23 Sep 2026 06:19:38 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20251104; t=1790169557; x=1790774357; darn=nongnu.org;
+ d=gmail.com; s=20251104; t=1790169578; x=1790774378; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to:content-type;
- bh=ZoknbnXiPKVvZXfcQ8PLlr7Gz40KHcVsCzqNeg5MeQU=;
- b=ETxkjmHR0BtnXT523JVTxQPtPabSHlZ6FvVVbjOtzqN1ysvl4U7szvt5Sd9SvX5YbK
- s3GA4uk6nXh4uOtH8bvlJlt0tUvYq8bA+sXHRsJvLQq3FnfCrRMtF2iJf4Ht/aP90BBh
- UhwXWAeLYlvNZQTBiWQbSPIUtp637Wj7Nn6M0ufKHH1+c5Q/DhaptAliM4clKmy9GPcZ
- Ir5oNUObSFGTJflqE0LJjAiaDjNRincsD3oqOAabiW2GBs2ISPzVYHVl1kYPr9v/mOdN
- Sm84gvy8h15hmpbikf7ltYXQgUk05nHESkRAonDQ1pIFeGvfwrdcBxjH9565OtTI386c
- +vDw==
+ bh=XCBFYSF9Q0sqUJeK2F1X4ZcpeRW05ELn0GxDHlBCHlc=;
+ b=IBM8417DKQrBTYbwPgGeSdTjNk2cOenj8tNLbw+vjTgdrQZSkqGef6e3IbjXIcHyBD
+ X1GzuCiHnwBqTV9CR1t92PzPBmJzgJB8m7JFsF2rQKhTVqjdKY6Rw1q6gdMVnXUnHtGr
+ G5Q8SLgAfz0axb1nIwzRP0WftkUJJYtSL1z2JkXmNS3yxLB4pWCWGtYu8P+8NipymnN7
+ 4+prPsCSuL5mKZoNOXTeBBLGKtRJItMSQEWcb2EZZpnh5nFau4nJucXhroR46rMJUnX4
+ MfLZKJhemzoedX9JKil+EEX6onhbW0e1KwjJmkaSB+LTCLR9fUdjHsCEah9pnjEFsICC
+ te+Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20260707; t=1790169557; x=1790774357;
+ d=1e100.net; s=20260707; t=1790169578; x=1790774378;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
  :to:cc:subject:date:message-id:reply-to:content-type;
- bh=ZoknbnXiPKVvZXfcQ8PLlr7Gz40KHcVsCzqNeg5MeQU=;
- b=IJFIVFu/b3UiK8Pbk/H0uwtTFZGXJJCYqMJ1KyflfNiVo8Z1VIcuoIDnoaC+7h91hM
- 2+sxS3JbKq6TiN0J+kQy7XFBJw6jZV3jZaNxIDo3fjjejT1hqg5e4v0aDRwq9F+XVLoH
- eRixzCmJrlu7M2Ve7GfB2gPY7DoGHjO13fLLnBZXIjnWqUTCUrI+k3mBIArQChqif4/K
- gAyW/MztuhBcaAJcttzfT4Q+qmvxzHNynIl17uUFcGc6dRilTVyedDoV83tclYeic+pm
- NydgfFxEcLPTovZH87uZXdv3HJEO0ZkUMMRThl4gOdcJMOKD1gTtDbXaEI4vtNYl38uu
- dQFg==
+ bh=XCBFYSF9Q0sqUJeK2F1X4ZcpeRW05ELn0GxDHlBCHlc=;
+ b=svc+le0NPQRk/yBtryWHe/OspQOuBGyKhuOgJBWtv7gc0lWepDplxBhMfKGN8Cpecb
+ kFp/uQIykb064KZSSqo5NotUcn5yqGDS9n6RZcxaiK+ZRoPQZA+8Pf7juVLBO3aXoECW
+ LuMUF/FfxNaKb4abdAOqBVULF184H745LI+fEMG9zERmpEikcmuDaw0mYU3yX4HJJg50
+ tHtqgM0oXXex27vkxXcVohLiNLmNTlhLhu+csdeWoVBg6aM19kxkYQ2QCDOHlWPY9Eby
+ EdE+kkHR6IRfocG6Rsror5fZSmHZmN+z678lWbPEzVVra/nvX6/nErcCdDz7ISs70DlH
+ Hn0w==
 X-Forwarded-Encrypted: i=1;
- AKwUvBySltWpQr8/rqrNDpfXbGukcGKqt3ezXwP4ZVdR6JkBGuSIV/lwYqahOzvfGbaVQGCUCmudnToGCg==@nongnu.org
-X-Gm-Message-State: AFuF++mLgjnDq35Mu4AOBIbQyNDU9FO/TEs7o8xb9iZxQs35C3dgZPBo
- FtTEBiHT1D/h6Eju1WQdGvnhCTkgjK3wztHWpVVp8ZswOGA2hc5alWRL
-X-Gm-Gg: AYBFou3gnjsXVpdY80sm2xFN13jU/PheiIfUjSWDM6iEriDWGkVArZWpxyKJHfoorXz
- q/yAsncVciRqun0Z+1MCFhAYWySa+AzCtnmECNMnsCoSYJOs2TjHQYU9+TfGjRtBEQjZi9gThID
- 8HNM82hxStWzt+ejXmLtbEJTl3/A+sVsQVuiLZvBikfIfn513mPFgGtjXJxNhA82q/zPY1Eg+Th
- 5pKPPU/qbjhLlFzL8NK1piQdAmjjMvww6AZ8EDLuAQ31PG/YC8qMlhFNYC2FfDT843DVWtEUeNZ
- FqfMA1vRo5acGb64gjagQTdKzWeqjm2PDNwdNI+DqLLUXP01mhlCZ4Sn3UOUOo3a7LvioaP3/5t
- G9gkBFMWK2gQUwoSsMrHjLpaImDKjwvStOudgcM8QJAzbJS0N4fj1waFTWUzFF9SBe/JHw2pgI+
- vDnclXOIw4JzmpTGve/roJRUg6UwPL3eiP/L4bPhSe9en4EHZhWRLak4hIFtSpu8QFsjNdDn9xt
- vRFUac84POxjDoRhi+qXQ4rBA9hiLr6yIIKP1gNzQ==
-X-Received: by 2002:a05:7300:dd05:b0:33b:eea2:cbfe with SMTP id
- 5a478bee46e88-33e8dec5b02mr2370454eec.32.1790169556543; 
- Wed, 23 Sep 2026 06:19:16 -0700 (PDT)
+ AKwUvByUFd4wLt4n+psfSwP7OreiOvTXuZaUwEI+akMnjPlWx/T+8wlOJaKA1HUA1H6723ArJ2GAe55qyw==@nongnu.org
+X-Gm-Message-State: AFuF++n3QopaPCNjjuz5wAo2XfUOrCSOBGJLSN3YpBjT3JhSvPDgAc8v
+ CIAKm/o14UyWZaFolvwWBezgjJkfwlygB0Giq8Uqnx35wm8I0iE6PyRs
+X-Gm-Gg: AYBFou2JayujTESGPCLfK4Y4VUPCwZT883c9hGSVV1Y8ZDhONl46XOsZ/28hyyPsIZH
+ FvH6jrbvieheFEUqxuQQTqbH/hY1tysffYKOAEXzaDVsYZS9fpd0GlLBIoyQUzsozxOLWlEeIFj
+ 2IAifCl26ySyGN6uBjMEpSMAFfAy/9V3i5K2kuHVDZuOWC8BMwfAfFxkrN03yBeirZC8bFZRENJ
+ xa4Fcz5Qx4CK45xLtfiGmobjNtoI0CoABKM4MBmuZx1C2vDYhfrZw5Xv+lDU9QZPu4nrukbPVJb
+ W0hecFsmVabDLO/DU5CxryPnsY2guaOvdwzgDR8dhoRAfYHcN5qfWqErSI4/8E5+YOP3QVIED0C
+ WTMmZLCkbrAr7sblSi7G35M0H16/0eZ0aUOdac3bj+3nisOhccTqoTy7LcMGO6QkbyTQu1l/V5G
+ bSPJTefz7MG+o/cD2mF89oJwemNWWp5FeCq0Xn64GqsJq0oMSIUvEUrs/92YwCnI50BDlrYgxx4
+ aatWYIOjy8H4mwPg5Y0amEWuk4+aC4q7lyMD7cIew==
+X-Received: by 2002:a05:693c:41c1:10b0:33e:84c3:a05b with SMTP id
+ 5a478bee46e88-33e8ddc79bcmr2415216eec.30.1790169577497; 
+ Wed, 23 Sep 2026 06:19:37 -0700 (PDT)
 Received: from WIN-BH9M8FJACR9 ([103.94.185.75])
  by smtp.googlemail.com with ESMTPSA id
- 5a478bee46e88-33e97236754sm5553695eec.29.2026.09.23.06.19.00
+ 5a478bee46e88-33e97236754sm5553695eec.29.2026.09.23.06.19.26
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 23 Sep 2026 06:19:07 -0700 (PDT)
+ Wed, 23 Sep 2026 06:19:33 -0700 (PDT)
 From: Yonggang Luo <luoyonggang@gmail.com>
 To: qemu-devel@nongnu.org
 Cc: Cornelia Huck <cohuck@redhat.com>, xen-devel@lists.xenproject.org,
@@ -97,16 +97,17 @@ Cc: Cornelia Huck <cohuck@redhat.com>, xen-devel@lists.xenproject.org,
  Markus Armbruster <armbru@redhat.com>, Weiwei Li <liwei1518@gmail.com>,
  Song Gao <17746591750@163.com>, qemu-arm@nongnu.org, qemu-s390x@nongnu.org,
  Brian Cain <brian.cain@oss.qualcomm.com>
-Subject: [PATCH v3 014/114] target-info: add i386 and x86_64 helpers
-Date: Wed, 23 Sep 2026 21:14:48 +0800
-Message-ID: <20260923131635.1894-15-luoyonggang@gmail.com>
+Subject: [PATCH v3 016/114] module: use static ModuleEntry and per-type DSO
+ lists
+Date: Wed, 23 Sep 2026 21:14:50 +0800
+Message-ID: <20260923131635.1894-17-luoyonggang@gmail.com>
 X-Mailer: git-send-email 2.52.0.windows.1
 In-Reply-To: <20260923131635.1894-1-luoyonggang@gmail.com>
 References: <20260923131635.1894-1-luoyonggang@gmail.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:36::10;
- envelope-from=luoyonggang@gmail.com; helo=mail-dy2-x10.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:36::f;
+ envelope-from=luoyonggang@gmail.com; helo=mail-dy2-x0f.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -128,117 +129,320 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-This is added for latter use with is_available.
+register_module_init malloc'd a ModuleEntry and a late DSO ran
+from one shared list. Store each module_init in a static
+ModuleEntry and keep a dso_list per init type. Concatenate a late
+DSO onto the builtin list when that type is not done yet,
+otherwise run it immediately.
 
 Signed-off-by: Yonggang Luo <luoyonggang@gmail.com>
 ---
- include/qemu/target-info.h | 45 ++++++++++++++++++++++++++++++++++++++
- target-info.c              | 36 ++++++++++++++++++++++++++++++
- 2 files changed, 81 insertions(+)
+ include/qemu/module.h   |  22 ++++++--
+ include/qemu/queue.h    |  10 ++++
+ rust/util/src/module.rs |  16 ++++--
+ util/module.c           | 109 ++++++++++++++++++++++------------------
+ 4 files changed, 98 insertions(+), 59 deletions(-)
 
-diff --git a/include/qemu/target-info.h b/include/qemu/target-info.h
-index 89656da1ca4..440da63e6cf 100644
---- a/include/qemu/target-info.h
-+++ b/include/qemu/target-info.h
-@@ -98,6 +98,51 @@ bool target_is_aarch64(const TargetInfo *ti);
-  */
- bool target_aarch64(void);
+diff --git a/include/qemu/module.h b/include/qemu/module.h
+index 9885ac9afb3..34e05c75348 100644
+--- a/include/qemu/module.h
++++ b/include/qemu/module.h
+@@ -14,6 +14,7 @@
+ #ifndef QEMU_MODULE_H
+ #define QEMU_MODULE_H
  
-+/**
-+ * target_is_base_i386:
-+ * @ti: TargetInfo to inspect
-+ *
-+ * Returns whether @ti is i386 or x86_64.
-+ */
-+bool target_is_base_i386(const TargetInfo *ti);
-+
-+/**
-+ * target_base_i386:
-+ *
-+ * Returns whether the target architecture is i386 or x86_64.
-+ */
-+bool target_base_i386(void);
-+
-+/**
-+ * target_is_i386:
-+ * @ti: TargetInfo to inspect
-+ *
-+ * Returns whether @ti is i386 (32-bit, not x86_64).
-+ */
-+bool target_is_i386(const TargetInfo *ti);
-+
-+/**
-+ * target_i386:
-+ *
-+ * Returns whether the target architecture is i386 (32-bit, not x86_64).
-+ */
-+bool target_i386(void);
-+
-+/**
-+ * target_is_x86_64:
-+ * @ti: TargetInfo to inspect
-+ *
-+ * Returns whether @ti is x86_64.
-+ */
-+bool target_is_x86_64(const TargetInfo *ti);
-+
-+/**
-+ * target_x86_64:
-+ *
-+ * Returns whether the target architecture is x86_64.
-+ */
-+bool target_x86_64(void);
-+
- /**
-  * target_is_base_ppc:
-  * @ti: TargetInfo to inspect
-diff --git a/target-info.c b/target-info.c
-index 6d57cad5d33..36f75ece36f 100644
---- a/target-info.c
-+++ b/target-info.c
-@@ -132,6 +132,42 @@ bool target_aarch64(void)
-     return target_is_aarch64(target_info());
++#include "qemu/queue.h"
+ 
+ #define DSO_STAMP_FUN         glue(qemu_stamp, CONFIG_STAMP)
+ #define DSO_STAMP_FUN_STR     stringify(DSO_STAMP_FUN)
+@@ -26,16 +27,22 @@ void DSO_STAMP_FUN(void);
+ void qemu_module_dummy(void);
+ 
+ #define module_init(function, type)                                         \
++static ModuleEntry glue(qemu_module_entry_, function) = {                   \
++    .init = function,                                                       \
++};                                                                          \
+ static void __attribute__((constructor)) do_qemu_init_ ## function(void)    \
+ {                                                                           \
+-    register_dso_module_init(function, type);                               \
++    register_dso_module_init(&glue(qemu_module_entry_, function), type);    \
  }
+ #else
+ /* This should not be used directly.  Use block_init etc. instead.  */
+ #define module_init(function, type)                                         \
++static ModuleEntry glue(qemu_module_entry_, function) = {                   \
++    .init = function,                                                       \
++};                                                                          \
+ static void __attribute__((constructor)) do_qemu_init_ ## function(void)    \
+ {                                                                           \
+-    register_module_init(function, type);                                   \
++    register_module_init(&glue(qemu_module_entry_, function), type);        \
+ }
+ #endif
  
-+bool target_is_base_i386(const TargetInfo *ti)
+@@ -51,6 +58,13 @@ typedef enum {
+     MODULE_INIT_MAX
+ } module_init_type;
+ 
++typedef void (ModuleInitFn)(void);
++
++typedef struct ModuleEntry {
++    ModuleInitFn *init;
++    QTAILQ_ENTRY(ModuleEntry) node;
++} ModuleEntry;
++
+ #define block_init(function) module_init(function, MODULE_INIT_BLOCK)
+ #define opts_init(function) module_init(function, MODULE_INIT_OPTS)
+ #define type_init(function) module_init(function, MODULE_INIT_QOM)
+@@ -64,8 +78,8 @@ typedef enum {
+ #define block_module_load(lib, errp) module_load("block-", lib, errp)
+ #define ui_module_load(lib, errp) module_load("ui-", lib, errp)
+ 
+-void register_module_init(void (*fn)(void), module_init_type type);
+-void register_dso_module_init(void (*fn)(void), module_init_type type);
++void register_module_init(ModuleEntry *e, module_init_type type);
++void register_dso_module_init(ModuleEntry *e, module_init_type type);
+ 
+ void module_call_init(module_init_type type);
+ 
+diff --git a/include/qemu/queue.h b/include/qemu/queue.h
+index e029e7bf669..06ebe8b1dfc 100644
+--- a/include/qemu/queue.h
++++ b/include/qemu/queue.h
+@@ -470,6 +470,16 @@ union {                                                                 \
+         (left)->field.tqe_circ.tql_prev->tql_next = (right)->field.tqe_next; \
+     } while (/*CONSTCOND*/0)
+ 
++#define QTAILQ_CONCAT(head1, head2, field) do {                         \
++        if (!QTAILQ_EMPTY(head2)) {                                     \
++            (head1)->tqh_circ.tql_prev->tql_next = (head2)->tqh_first;  \
++            (head2)->tqh_first->field.tqe_circ.tql_prev =               \
++                (head1)->tqh_circ.tql_prev;                             \
++            (head1)->tqh_circ.tql_prev = (head2)->tqh_circ.tql_prev;    \
++            QTAILQ_INIT(head2);                                         \
++        }                                                               \
++} while (/*CONSTCOND*/0)
++
+ #define QTAILQ_FOREACH(var, head, field)                                \
+         for ((var) = ((head)->tqh_first);                               \
+                 (var);                                                  \
+diff --git a/rust/util/src/module.rs b/rust/util/src/module.rs
+index 06c45fc142b..45d8b67d6dc 100644
+--- a/rust/util/src/module.rs
++++ b/rust/util/src/module.rs
+@@ -8,6 +8,16 @@
+ macro_rules! module_init {
+     ($type:ident => $body:block) => {
+         const _: () = {
++            extern "C" fn init_fn() {
++                $body
++            }
++
++            static mut ENTRY: $crate::bindings::ModuleEntry =
++                $crate::bindings::ModuleEntry {
++                    init: Some(init_fn),
++                    ..unsafe { ::core::mem::zeroed() }
++                };
++
+             #[used]
+             #[cfg_attr(
+                 not(any(target_vendor = "apple", target_os = "windows")),
+@@ -16,14 +26,10 @@ macro_rules! module_init {
+             #[cfg_attr(target_vendor = "apple", link_section = "__DATA,__mod_init_func")]
+             #[cfg_attr(target_os = "windows", link_section = ".CRT$XCU")]
+             pub static LOAD_MODULE: extern "C" fn() = {
+-                extern "C" fn init_fn() {
+-                    $body
+-                }
+-
+                 extern "C" fn ctor_fn() {
+                     unsafe {
+                         $crate::bindings::register_module_init(
+-                            Some(init_fn),
++                            ::core::ptr::addr_of_mut!(ENTRY),
+                             $crate::bindings::module_init_type::$type,
+                         );
+                     }
+diff --git a/util/module.c b/util/module.c
+index 8f8e6994f11..6c5980542f6 100644
+--- a/util/module.c
++++ b/util/module.c
+@@ -27,19 +27,26 @@
+ #endif
+ #include "trace.h"
+ 
+-typedef struct ModuleEntry
++typedef QTAILQ_HEAD(, ModuleEntry) ModuleEntryList;
++
++typedef struct ModuleInit
+ {
+-    void (*init)(void);
+-    QTAILQ_ENTRY(ModuleEntry) node;
+     module_init_type type;
+-} ModuleEntry;
++    ModuleEntryList list;
++    ModuleEntryList dso_list;
++    bool done;
++} ModuleInit;
+ 
+-typedef QTAILQ_HEAD(, ModuleEntry) ModuleTypeList;
++static ModuleInit module_inits[MODULE_INIT_MAX];
+ 
+-static ModuleTypeList init_type_list[MODULE_INIT_MAX];
+-static bool modules_init_done[MODULE_INIT_MAX];
++static void empty_dso_lists(void)
 +{
-+    switch (ti->target_arch) {
-+    case SYS_EMU_TARGET_I386:
-+    case SYS_EMU_TARGET_X86_64:
-+        return true;
-+    default:
-+        return false;
++    int i;
+ 
+-static ModuleTypeList dso_init_list;
++    for (i = 0; i < MODULE_INIT_MAX; i++) {
++        QTAILQ_INIT(&module_inits[i].dso_list);
 +    }
 +}
-+
-+bool target_base_i386(void)
-+{
-+    return target_is_base_i386(target_info());
-+}
-+
-+bool target_is_i386(const TargetInfo *ti)
-+{
-+    return ti->target_arch == SYS_EMU_TARGET_I386;
-+}
-+
-+bool target_i386(void)
-+{
-+    return target_is_i386(target_info());
-+}
-+
-+bool target_is_x86_64(const TargetInfo *ti)
-+{
-+    return ti->target_arch == SYS_EMU_TARGET_X86_64;
-+}
-+
-+bool target_x86_64(void)
-+{
-+    return target_is_x86_64(target_info());
-+}
-+
- bool target_is_base_ppc(const TargetInfo *ti)
+ 
+ static void init_lists(void)
  {
-     switch (ti->target_arch) {
+@@ -51,65 +58,56 @@ static void init_lists(void)
+     }
+ 
+     for (i = 0; i < MODULE_INIT_MAX; i++) {
+-        QTAILQ_INIT(&init_type_list[i]);
++        module_inits[i].type = i;
++        QTAILQ_INIT(&module_inits[i].list);
+     }
+-
+-    QTAILQ_INIT(&dso_init_list);
++    empty_dso_lists();
+ 
+     inited = 1;
+ }
+ 
+-
+-static ModuleTypeList *find_type(module_init_type type)
++static ModuleInit *find_type(module_init_type type)
+ {
+     init_lists();
+ 
+-    return &init_type_list[type];
++    return &module_inits[type];
+ }
+ 
+-void register_module_init(void (*fn)(void), module_init_type type)
++static void module_init_add(ModuleEntryList *list, ModuleEntry *e)
+ {
+-    ModuleEntry *e;
+-    ModuleTypeList *l;
+-
+-    e = g_malloc0(sizeof(*e));
+-    e->init = fn;
+-    e->type = type;
++    QTAILQ_INSERT_TAIL(list, e, node);
++}
+ 
+-    l = find_type(type);
++void register_module_init(ModuleEntry *e, module_init_type type)
++{
++    module_init_add(&find_type(type)->list, e);
++}
+ 
+-    QTAILQ_INSERT_TAIL(l, e, node);
++void register_dso_module_init(ModuleEntry *e, module_init_type type)
++{
++    module_init_add(&find_type(type)->dso_list, e);
+ }
+ 
+-void register_dso_module_init(void (*fn)(void), module_init_type type)
++static void module_init_run(ModuleInit *m, ModuleEntryList *list)
+ {
+     ModuleEntry *e;
+ 
+-    init_lists();
+-
+-    e = g_malloc0(sizeof(*e));
+-    e->init = fn;
+-    e->type = type;
+-
+-    QTAILQ_INSERT_TAIL(&dso_init_list, e, node);
++    (void)m;
++    QTAILQ_FOREACH(e, list, node) {
++        e->init();
++    }
+ }
+ 
+ void module_call_init(module_init_type type)
+ {
+-    ModuleTypeList *l;
+-    ModuleEntry *e;
++    ModuleInit *m = find_type(type);
+ 
+-    if (modules_init_done[type]) {
++    if (m->done) {
+         return;
+     }
+ 
+-    l = find_type(type);
+-
+-    QTAILQ_FOREACH(e, l, node) {
+-        e->init();
+-    }
+-
+-    modules_init_done[type] = true;
++    module_init_run(m, &m->list);
++    m->done = true;
+ }
+ 
+ #ifdef CONFIG_MODULES
+@@ -159,10 +157,13 @@ static bool module_load_dso(const char *fname, bool export_symbols,
+ {
+     GModule *g_module;
+     void (*sym)(void);
+-    ModuleEntry *e, *next;
++    int i;
+     int flags;
+ 
+-    assert(QTAILQ_EMPTY(&dso_init_list));
++    init_lists();
++    for (i = 0; i < MODULE_INIT_MAX; i++) {
++        assert(QTAILQ_EMPTY(&module_inits[i].dso_list));
++    }
+ 
+     flags = 0;
+     if (!export_symbols) {
+@@ -183,19 +184,27 @@ static bool module_load_dso(const char *fname, bool export_symbols,
+             error_append_hint(errp,
+                 "Only modules from the same build can be loaded.\n");
+         }
++        empty_dso_lists();
+         g_module_close(g_module);
+         return false;
+     }
+ 
+-    QTAILQ_FOREACH(e, &dso_init_list, node) {
+-        e->init();
+-        register_module_init(e->init, e->type);
++    for (i = 0; i < MODULE_INIT_MAX; i++) {
++        ModuleInit *m = &module_inits[i];
++
++        if (QTAILQ_EMPTY(&m->dso_list)) {
++            continue;
++        }
++
++        if (!m->done) {
++            QTAILQ_CONCAT(&m->list, &m->dso_list, node);
++            continue;
++        }
++
++        module_init_run(m, &m->dso_list);
+     }
+     trace_module_load_module(fname);
+-    QTAILQ_FOREACH_SAFE(e, &dso_init_list, node, next) {
+-        QTAILQ_REMOVE(&dso_init_list, e, node);
+-        g_free(e);
+-    }
++    empty_dso_lists();
+     return true;
+ }
+ 
 -- 
 2.52.0.windows.1
 

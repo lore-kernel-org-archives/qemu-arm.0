@@ -4,69 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 632E2C9830D
-	for <qemu-arm@archiver.kernel.org>; Wed, 23 Sep 2026 13:21:19 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 40E02C982FA
+	for <qemu-arm@archiver.kernel.org>; Wed, 23 Sep 2026 13:21:51 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1x9MuB-0002Bp-BR; Wed, 23 Sep 2026 09:21:01 -0400
+	id 1x9MtY-0001wL-9c; Wed, 23 Sep 2026 09:20:20 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <luoyonggang@gmail.com>)
- id 1x9Mri-0000Oy-FF
- for qemu-arm@nongnu.org; Wed, 23 Sep 2026 09:18:37 -0400
-Received: from mail-dl2-x0f.google.com ([2607:f8b0:4864:38::f])
+ id 1x9MrI-0000BH-Jn
+ for qemu-arm@nongnu.org; Wed, 23 Sep 2026 09:18:10 -0400
+Received: from mail-dl2-x10.google.com ([2607:f8b0:4864:38::10])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <luoyonggang@gmail.com>)
- id 1x9Mrf-0006v1-VH
- for qemu-arm@nongnu.org; Wed, 23 Sep 2026 09:18:25 -0400
-Received: by mail-dl2-x0f.google.com with SMTP id
- a92af1059eb24-142dd04edb5so1431121c88.2
- for <qemu-arm@nongnu.org>; Wed, 23 Sep 2026 06:18:23 -0700 (PDT)
+ id 1x9MrF-0006sC-PM
+ for qemu-arm@nongnu.org; Wed, 23 Sep 2026 09:18:00 -0400
+Received: by mail-dl2-x10.google.com with SMTP id
+ a92af1059eb24-142dce6e237so674464c88.3
+ for <qemu-arm@nongnu.org>; Wed, 23 Sep 2026 06:17:57 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20251104; t=1790169502; x=1790774302; darn=nongnu.org;
+ d=gmail.com; s=20251104; t=1790169476; x=1790774276; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to:content-type;
- bh=yqkLIHs8nht5THiWcj2P453LN93rHp/TnF9wI3rp1V4=;
- b=ommQnWUpcJDJiR6l56NFITObmh5aqsyWTpAQWWfZNH27p6HUD8qgpznivXTzyx9lqk
- EFbc4tLbMLO38106wDCoL6vOal81n1W6H2FVtoqPClYWDBapKYF0a+/mwyPMmGMISrPw
- 3eDvVe+MI2qd6Wo93eeaEWOhEBzvL5txi/CBUIQlrPb0NTERCvO0qOLoDugfUypundg2
- 0sWYqXPpK3Kym9EH3JH1O3Dy3CszziYo3SUb9c6b/viUKwu5AMo1/6RNDEkqCULYGifr
- zoJyezPxpk374r54k7v30s2MOZBqJwuEaBGeotlaVs4jY9vmsdLlvz+uwiCTVUAEToqi
- 1btA==
+ bh=sKNecRa3tzG6HeYVTRQDuQ00e5AIYSJOroCNurGi9rk=;
+ b=Nh7UGweVMK4Q24qKEB+jlxH3ioXSR1cYoSdkEXvHlOrQHWk1FiblvCh0f78Wz8DeVm
+ VqsnEShxca/46/lm96kt4KR9Y84yGp6UjOBCJBn3Ik37pbXdCLG3uwsW1b+z1S6iA/Zq
+ QACQTSxotYf8cVeVYwmtN5RtrxbpHfLf7ra9dh4n/YcUzOnsJF2Lw6vvnvSFr8BO7Jda
+ eRukweiPKT20gAWQM1Pp4fLbKFQbq1TgTP1pqG8Va5x2jP8MiClsgYkX5EZSen6DNE/o
+ dGeTr6nm+kaJhNJpODhFkEs5wuKfSuIetJXvjpnxA6tjuSpVwQP+vAGtY+WWmAsCNHBX
+ m4dg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20260707; t=1790169502; x=1790774302;
+ d=1e100.net; s=20260707; t=1790169476; x=1790774276;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
  :to:cc:subject:date:message-id:reply-to:content-type;
- bh=yqkLIHs8nht5THiWcj2P453LN93rHp/TnF9wI3rp1V4=;
- b=I5aFdfpbiYJkNkBiSxiZDcMqOkgp9tKpuLYat5xJbUNyw3EEoJPxzU/JL8cTRFCpB7
- Gyj7edXFj8kaeehZW6Cffnh9ZU9jBLUv8uggbXXrK5KKWL1bXO4k+RAW6Kzgly++FIBP
- 3AYZhSQnZwkYsRVjdmAi1pCXZrD+V57tg1BeSUSAAxzT8f5YbhsJ6qcQDhZ0XaZUAwBF
- t4nYZ+23AnGPL2wcInhVV5gHb7r34o3eLiHO3lKC12OVicC8/ZSOvb5tclS1gfs0TJgc
- GxfQK7iACPU930YUuUoxqrI/BIWXZgwzxYkDY8N2HzzVlrO5zk1uGpucTJBl2MB+siwo
- rwKA==
+ bh=sKNecRa3tzG6HeYVTRQDuQ00e5AIYSJOroCNurGi9rk=;
+ b=M4VM65KtcB02VwBvsuevxzL2PuGY5hcpmXGQ1kAR2czmAHCkkhrjr/AmAPbCEjXpXs
+ JEo+tLJjHKalQG4bP8BJ9WEAswtYeGyPaj++e5J0ev8CBULIfq7tETB4wGYYGHCgJuo1
+ 9q9uOLBD/2jnzicVSpDFUJTpSlaW51c6Z3p1Jppl7/HB3vJ6ELWz987uqbgeTlCTQE/3
+ mhisnTpLKAmVjdDYtjEfSVKOSz6bN8qiXw2ZyQKb+YyIqq0xeJV46OpO0QgooDLl9WFr
+ K9h222m2gbGhLZW+Y6/16TCojdyI+VVN+z6jG4iDeK4b0/ThphwrQzX3DLOJOqepGRMm
+ w68w==
 X-Forwarded-Encrypted: i=1;
- AKwUvBzfDX+y0fVGb3uHhwyEnsrY9i6L3ptcIkunQCXTsR93hnBv+Gc3CmOMgt7E2i/dSE3CF1OqEn7msQ==@nongnu.org
-X-Gm-Message-State: AFuF++nlzNjOkrkTGIjzvoC4/CTd7CGza+E/NDPikq7klR1Vu7/xlRxs
- Qh2BL1ZW3tQuajwnaM0Eq+ZDS4FjsQ+jk+iW4q/wTwuh6iCFaSKYtqnQ
-X-Gm-Gg: AYBFou0CANf19ZJ6WUWraO0j/gN247qWjiH5ABOm7ugnjf6IcWLuB/2rUG2EOqPpCFl
- VHFTxNhzZG5iS4EBKO6eE74g0rb/M79xBuV6sCY779Yz1wWb5XTkaab4VqtyVBfc/lUIALG6yzo
- qEX3QDTHK0XmkvbzrPhsH7HWJ3zNBbpmtg2Jxx25GO2vST2gJvg0k+Jyc15r/3LdxRHxWoFq17H
- BrOC/UNwrSTa3KlWRU/Cq44jQnM11GqU/SF8oqxOVDj6h1HfIZ/93PIDpCtJTeh/DzsuDuZDhRZ
- SkF5ZmN8JcKL4YehK9eDHl0sEF3DwwafAYHa4ldbVmL8GXWndvw0Zss0WdGxNTZfxISmjMokS4h
- Mz+P42H41t4D5YeMgxQPmv2axVuRHR/Bk6N3mLedwWk+Pl6qZy5ticZcBU4Wl7wLTp6NeH7fwcD
- 4poCVYfUNj4NzdYuCtexwZek/n1KAcGfcSnAbMmuqaE+GYnQU8zX72NxouaLsYkh6pKACly+iUH
- 1XvfaqVXdVEQPWzmKbQRmP/HbYbzEn1U+pxHbVS2w==
-X-Received: by 2002:a05:7022:fa9:b0:143:2719:a501 with SMTP id
- a92af1059eb24-144f9173969mr4195539c88.40.1790169493859; 
- Wed, 23 Sep 2026 06:18:13 -0700 (PDT)
+ AKwUvByB6ujGfhm9KHWzsDnSfWnxy1t1vCfAbOgtBBP0/51KENK743I7TYFS8fsW17D2vOLOzUcXowyHIg==@nongnu.org
+X-Gm-Message-State: AFuF++mNGBPSYWU3HuEF/fUNWdNgtDqP3rB4hu/hjHdLWBWKsgZE3z3h
+ qpaBNv25/H73MX94Lo9MMm+tSGqIwRSCmfAsiMjozb1/eS3YN8yHC90o
+X-Gm-Gg: AYBFou31cIt0lcwVZJHbnbedIXZsEDUcHnTRTQC6C4SFoTT6vgc10KAMh6wB8X3RCEF
+ lBvD3Eg9f6g71b9O1aX4sF/XZtNj3XuCo8mbF93kdH+ZLGwg7Y05ilXY9fmAdEbpqMexx+7+BLo
+ zlZl3E78xyby/b/ZEKjsKq8NBikwF0F4J85nnFRUgZsapdLp4KfH9WPHzk5GrCfLzntHdIoL7aJ
+ MCQ38j+EM1W6REWS6lmT1Fx4/cpWRaZzfawViMNoI/LplY9aGRuJ2NekO4dVV23S+i2jl3K6/0A
+ S2NE9nVI17hmTta/omghdXoAf2s8DSJX6H/H2/5/to9ntwRXmJb1QDaBZevek03MO2KJXNBAzK9
+ MiCRQX9c1p7F0gEeDk0xzFxJf70cZCdpgW/wFviejY5yCyjH/fvuLon9Q/kMiKsx/VQGg9lQjXS
+ QawB8zGtQ2rSXtOllzOxHxt/WRqZ7QjMZZ0z5DOkplgOnCxr1PzZb5cx+1s+sDtpj4tXzxIEpv9
+ M9SQKhIkIWgnb5eK8qV6EcH3597aHA=
+X-Received: by 2002:a05:7301:db0c:b0:33b:96b8:3818 with SMTP id
+ 5a478bee46e88-33e8ddbe14cmr1954620eec.32.1790169475447; 
+ Wed, 23 Sep 2026 06:17:55 -0700 (PDT)
 Received: from WIN-BH9M8FJACR9 ([103.94.185.75])
  by smtp.googlemail.com with ESMTPSA id
- 5a478bee46e88-33e97236754sm5553695eec.29.2026.09.23.06.18.05
+ 5a478bee46e88-33e97236754sm5553695eec.29.2026.09.23.06.17.45
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 23 Sep 2026 06:18:12 -0700 (PDT)
+ Wed, 23 Sep 2026 06:17:52 -0700 (PDT)
 From: Yonggang Luo <luoyonggang@gmail.com>
 To: qemu-devel@nongnu.org
 Cc: Cornelia Huck <cohuck@redhat.com>, xen-devel@lists.xenproject.org,
@@ -97,16 +97,16 @@ Cc: Cornelia Huck <cohuck@redhat.com>, xen-devel@lists.xenproject.org,
  Markus Armbruster <armbru@redhat.com>, Weiwei Li <liwei1518@gmail.com>,
  Song Gao <17746591750@163.com>, qemu-arm@nongnu.org, qemu-s390x@nongnu.org,
  Brian Cain <brian.cain@oss.qualcomm.com>
-Subject: [PATCH v3 009/114] tests/unit: add test-target-info
-Date: Wed, 23 Sep 2026 21:14:43 +0800
-Message-ID: <20260923131635.1894-10-luoyonggang@gmail.com>
+Subject: [PATCH v3 007/114] vl: parse early options before target-info init
+Date: Wed, 23 Sep 2026 21:14:41 +0800
+Message-ID: <20260923131635.1894-8-luoyonggang@gmail.com>
 X-Mailer: git-send-email 2.52.0.windows.1
 In-Reply-To: <20260923131635.1894-1-luoyonggang@gmail.com>
 References: <20260923131635.1894-1-luoyonggang@gmail.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:38::f;
- envelope-from=luoyonggang@gmail.com; helo=mail-dl2-x0f.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:38::10;
+ envelope-from=luoyonggang@gmail.com; helo=mail-dl2-x10.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -128,109 +128,52 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Collect each target-info-def.c object in target_info_def_objects,
-keyed by target dir. Link every value so constructors fill the
-list. Assert target_info() is not NULL and target_info_list() has
-one entry per linked object.
+Move the first argv pass ahead of MODULE_INIT_TARGET_INFO so later
+target-info selection can use command-line options before QOM init.
 
 Signed-off-by: Yonggang Luo <luoyonggang@gmail.com>
 ---
- meson.build                   |  6 +++++-
- tests/unit/meson.build        |  4 ++++
- tests/unit/test-target-info.c | 38 +++++++++++++++++++++++++++++++++++
- 3 files changed, 47 insertions(+), 1 deletion(-)
- create mode 100644 tests/unit/test-target-info.c
+ system/vl.c | 20 ++++++++++----------
+ 1 file changed, 10 insertions(+), 10 deletions(-)
 
-diff --git a/meson.build b/meson.build
-index 9a6a80fd0c8..776d38c5afd 100644
---- a/meson.build
-+++ b/meson.build
-@@ -4260,6 +4260,8 @@ endif
+diff --git a/system/vl.c b/system/vl.c
+index 0d52c5d0a46..dc883de8274 100644
+--- a/system/vl.c
++++ b/system/vl.c
+@@ -2910,16 +2910,6 @@ void qemu_init(int argc, char **argv)
+     error_init(argv[0]);
+     qemu_init_exec_dir(argv[0]);
  
- traceable = []
- emulators = {}
-+target_info_def = files('target-info-def.c')
-+target_info_def_objects = {}
- foreach target : target_dirs
-   config_target = config_target_mak[target]
-   target_name = config_target['TARGET_NAME']
-@@ -4331,7 +4333,7 @@ foreach target : target_dirs
-     endif
-   endif
+-    os_setup_limits();
+-
+-    module_call_init(MODULE_INIT_TARGET_INFO);
+-    target_info_qom_set_target();
+-
+-    module_init_info(qemu_modinfo);
+-    module_allow_arch(target_name());
+-
+-    qemu_init_subsystems();
+-
+     /* first pass of option parsing */
+     optind = 1;
+     while (optind < argc) {
+@@ -2938,6 +2928,16 @@ void qemu_init(int argc, char **argv)
+         }
+     }
  
--  arch_srcs += files('target-info-def.c')
-+  arch_srcs += target_info_def
- 
-   if target_base_arch in target_arch
-     t = target_arch[target_base_arch].apply(config_target, strict: false)
-@@ -4409,6 +4411,8 @@ foreach target : target_dirs
-                  c_args: c_args,
-                  build_by_default: false)
- 
-+  target_info_def_objects += {target: lib.extract_objects(target_info_def)}
++    os_setup_limits();
 +
-   if target.endswith('-softmmu')
-     execs = [{
-       'name': 'qemu-system-' + target_name,
-diff --git a/tests/unit/meson.build b/tests/unit/meson.build
-index e47bc7225ab..dc980a35955 100644
---- a/tests/unit/meson.build
-+++ b/tests/unit/meson.build
-@@ -43,6 +43,10 @@ tests = {
-   'test-qgraph': ['../qtest/libqos/qgraph.c'],
-   'check-qom-interface': [qom],
-   'check-qom-proplist': [qom],
-+  'test-target-info': [qom, declare_dependency(
-+    objects: target_info_def_objects.values(),
-+    compile_args: ['-DTARGET_INFO_DEF_COUNT=@0@'.format(
-+      target_info_def_objects.values().length())])],
-   'test-qemu-opts': [],
-   'test-keyval': [testqapi],
-   'test-logging': [],
-diff --git a/tests/unit/test-target-info.c b/tests/unit/test-target-info.c
-new file mode 100644
-index 00000000000..e6de9b259e8
---- /dev/null
-+++ b/tests/unit/test-target-info.c
-@@ -0,0 +1,38 @@
-+/*
-+ * TargetInfo unit tests
-+ *
-+ * SPDX-License-Identifier: GPL-2.0-or-later
-+ */
++    module_call_init(MODULE_INIT_TARGET_INFO);
++    target_info_qom_set_target();
 +
-+#include "qemu/osdep.h"
-+#include "qemu/target-info.h"
-+#include "qemu/target-info-def.h"
++    module_init_info(qemu_modinfo);
++    module_allow_arch(target_name());
 +
-+static int target_info_list_count(void)
-+{
-+    TargetInfoNode *node;
-+    int n = 0;
++    qemu_init_subsystems();
 +
-+    QLIST_FOREACH(node, target_info_list(), next) {
-+        n++;
-+    }
-+    return n;
-+}
-+
-+static void test_target_info_not_null(void)
-+{
-+    g_assert_nonnull(target_info());
-+}
-+
-+static void test_target_info_list_count(void)
-+{
-+    g_assert_cmpint(target_info_list_count(), ==, TARGET_INFO_DEF_COUNT);
-+}
-+
-+int main(int argc, char **argv)
-+{
-+    g_test_init(&argc, &argv, NULL);
-+    g_test_add_func("/target-info/not-null", test_target_info_not_null);
-+    g_test_add_func("/target-info/list-count", test_target_info_list_count);
-+    return g_test_run();
-+}
+     machine_opts_dict = qdict_new();
+     if (userconfig) {
+         qemu_read_default_config_file(&error_fatal);
 -- 
 2.52.0.windows.1
 

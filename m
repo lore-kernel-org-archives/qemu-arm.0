@@ -4,69 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 49028C9830C
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 632E2C9830D
 	for <qemu-arm@archiver.kernel.org>; Wed, 23 Sep 2026 13:21:19 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1x9MtY-0001vi-2Z; Wed, 23 Sep 2026 09:20:20 -0400
+	id 1x9MuB-0002Bp-BR; Wed, 23 Sep 2026 09:21:01 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <luoyonggang@gmail.com>)
- id 1x9MrC-00009Y-Ta
- for qemu-arm@nongnu.org; Wed, 23 Sep 2026 09:18:02 -0400
-Received: from mail-dy2-x0f.google.com ([2607:f8b0:4864:36::f])
+ id 1x9Mri-0000Oy-FF
+ for qemu-arm@nongnu.org; Wed, 23 Sep 2026 09:18:37 -0400
+Received: from mail-dl2-x0f.google.com ([2607:f8b0:4864:38::f])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <luoyonggang@gmail.com>)
- id 1x9Mr8-0006pd-Su
- for qemu-arm@nongnu.org; Wed, 23 Sep 2026 09:17:54 -0400
-Received: by mail-dy2-x0f.google.com with SMTP id
- 5a478bee46e88-33e46a15703so619625eec.0
- for <qemu-arm@nongnu.org>; Wed, 23 Sep 2026 06:17:45 -0700 (PDT)
+ id 1x9Mrf-0006v1-VH
+ for qemu-arm@nongnu.org; Wed, 23 Sep 2026 09:18:25 -0400
+Received: by mail-dl2-x0f.google.com with SMTP id
+ a92af1059eb24-142dd04edb5so1431121c88.2
+ for <qemu-arm@nongnu.org>; Wed, 23 Sep 2026 06:18:23 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20251104; t=1790169465; x=1790774265; darn=nongnu.org;
+ d=gmail.com; s=20251104; t=1790169502; x=1790774302; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to:content-type;
- bh=VyGOeMM6N9WmW/Btrmx0VVv+jU00kmaZZ+J9OFmIWlc=;
- b=LV7OtYWRiNVOYlPfqVBK/+vv95RO+/04Pk6IokeqHkkO7WX+umH42XHB8/31nd9wfQ
- Tac7Egu6E228kWQd9SS4AP86dTYw0Vc3mkh7ZmM12wQvDm07H8DflBwG4h9+AqkVCjJL
- YFYa34CVWDokDn3Zz0M68qBtfgpirHxy4lh9DXyL09hnbquJJZFPYvsNgAEEAFDrHIb1
- jjS/dnNHpgwbVLsswbaCQwrxuEuRieHNqHBWyq1EIIGKL6O7ksc2INgHvhq4qlK9U6yn
- nKalxWqm102ep7rKE0VZJFpGgmjNfD6EUwiM+70P646+s/JKVRqMAGTKwWMBvVK4NyBU
- DjLg==
+ bh=yqkLIHs8nht5THiWcj2P453LN93rHp/TnF9wI3rp1V4=;
+ b=ommQnWUpcJDJiR6l56NFITObmh5aqsyWTpAQWWfZNH27p6HUD8qgpznivXTzyx9lqk
+ EFbc4tLbMLO38106wDCoL6vOal81n1W6H2FVtoqPClYWDBapKYF0a+/mwyPMmGMISrPw
+ 3eDvVe+MI2qd6Wo93eeaEWOhEBzvL5txi/CBUIQlrPb0NTERCvO0qOLoDugfUypundg2
+ 0sWYqXPpK3Kym9EH3JH1O3Dy3CszziYo3SUb9c6b/viUKwu5AMo1/6RNDEkqCULYGifr
+ zoJyezPxpk374r54k7v30s2MOZBqJwuEaBGeotlaVs4jY9vmsdLlvz+uwiCTVUAEToqi
+ 1btA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20260707; t=1790169465; x=1790774265;
+ d=1e100.net; s=20260707; t=1790169502; x=1790774302;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
  :to:cc:subject:date:message-id:reply-to:content-type;
- bh=VyGOeMM6N9WmW/Btrmx0VVv+jU00kmaZZ+J9OFmIWlc=;
- b=MLHmAawFa+CuVgKKX4WxnccGNEwOsSCFfQfGygYNvfpz1cj33sbP3FmwXTcTOvrY5H
- ddBBm4ophXGvU3X8jg7MiNBC08ms2fGU4fYiayIuegB+ocK3SuMEiWmPN7bclhyIyC/5
- zXFzM0ZI2CXU0ucC/YUSeF1aPsmdQko+p/0zdG6DqFtg9d/fh1nP3oflxF6/FE7D0k8F
- qb1I7TtSFYQ0gtyxNDutmVAoW+hAF5pnA0yr3kr+5nBn6eZ7MD3Rc/UiCpJalGFp24lL
- cZ0qfvTgGsGjAZUnKiRxq4XYwWuhgjp9uEMOb5OWOqunPbD8TgjCBll3uzIwSsyPUQFO
- e1Jg==
+ bh=yqkLIHs8nht5THiWcj2P453LN93rHp/TnF9wI3rp1V4=;
+ b=I5aFdfpbiYJkNkBiSxiZDcMqOkgp9tKpuLYat5xJbUNyw3EEoJPxzU/JL8cTRFCpB7
+ Gyj7edXFj8kaeehZW6Cffnh9ZU9jBLUv8uggbXXrK5KKWL1bXO4k+RAW6Kzgly++FIBP
+ 3AYZhSQnZwkYsRVjdmAi1pCXZrD+V57tg1BeSUSAAxzT8f5YbhsJ6qcQDhZ0XaZUAwBF
+ t4nYZ+23AnGPL2wcInhVV5gHb7r34o3eLiHO3lKC12OVicC8/ZSOvb5tclS1gfs0TJgc
+ GxfQK7iACPU930YUuUoxqrI/BIWXZgwzxYkDY8N2HzzVlrO5zk1uGpucTJBl2MB+siwo
+ rwKA==
 X-Forwarded-Encrypted: i=1;
- AKwUvBw3BWEjw8k1rL8DJ9AdUYAIQmiDyFp6VXyuvY5hW49limc5MIuWZRVrrZDQE6xQwKItYarsA7uktA==@nongnu.org
-X-Gm-Message-State: AFuF++kgiGWAb0Li9OXVx2u5JBdvoCYeHA42Wl3iHnrifKDKlXVhZ3gT
- D1sOuZnazYacedlrRp7ThuC2yOFK1/Ign0wu79AUKRkoUhtCASjZv+Br
-X-Gm-Gg: AYBFou14sHfvqMsZxkiPPgYk4kjhClm1hoHiT2HAW5nqI9QMTjXgsB96H9HnRCcv/WT
- xeFsojhBCalZ2NMFjOXqF1X2fZY6EmlmFyCUgsRbaYSjsfpTFUcGy/XK4ei7h2oeTeiAOOVLlaT
- Q6tS27/Jnq1jZ8OsBjaIO2kd178BbYRBd32PiSgcClijyAPhE/lqKLuWlz6Lh3ebFVnZBDx3iH0
- O2oR3/5+LcpakL7xDyaOl0iNHAQiSy8XzkVwit/QWCo+heLtAN0JfS/p3vmjGrd41K8iGDqdcqw
- 9afK/IJJ0xFGqaAGZW9sPEA7nuXMug+rpfJkgW3J0JuoRnANbwzACv2YOFL3OWyB4mSOT8gS3sy
- GenQwS2H1XG7opCfcZdAMVlagzzMTl5aPH6GiY4ZxjpfYGVj8c5H3oYTYbJzZqUf8yfE7z4e4Jb
- n4zRBx1nfDMbBTIzkfg81fQuKFQP1iMgX2mtD0X2kx9/I3Z6/N+o0L160gOj17/IaaLCRh4uraG
- mnVtIU+ByEguKj6IMOTl5AoeSeuzxQ=
-X-Received: by 2002:a05:693c:6394:20b0:339:8343:a1a with SMTP id
- 5a478bee46e88-33e8e1b7329mr2469431eec.41.1790169464712; 
- Wed, 23 Sep 2026 06:17:44 -0700 (PDT)
+ AKwUvBzfDX+y0fVGb3uHhwyEnsrY9i6L3ptcIkunQCXTsR93hnBv+Gc3CmOMgt7E2i/dSE3CF1OqEn7msQ==@nongnu.org
+X-Gm-Message-State: AFuF++nlzNjOkrkTGIjzvoC4/CTd7CGza+E/NDPikq7klR1Vu7/xlRxs
+ Qh2BL1ZW3tQuajwnaM0Eq+ZDS4FjsQ+jk+iW4q/wTwuh6iCFaSKYtqnQ
+X-Gm-Gg: AYBFou0CANf19ZJ6WUWraO0j/gN247qWjiH5ABOm7ugnjf6IcWLuB/2rUG2EOqPpCFl
+ VHFTxNhzZG5iS4EBKO6eE74g0rb/M79xBuV6sCY779Yz1wWb5XTkaab4VqtyVBfc/lUIALG6yzo
+ qEX3QDTHK0XmkvbzrPhsH7HWJ3zNBbpmtg2Jxx25GO2vST2gJvg0k+Jyc15r/3LdxRHxWoFq17H
+ BrOC/UNwrSTa3KlWRU/Cq44jQnM11GqU/SF8oqxOVDj6h1HfIZ/93PIDpCtJTeh/DzsuDuZDhRZ
+ SkF5ZmN8JcKL4YehK9eDHl0sEF3DwwafAYHa4ldbVmL8GXWndvw0Zss0WdGxNTZfxISmjMokS4h
+ Mz+P42H41t4D5YeMgxQPmv2axVuRHR/Bk6N3mLedwWk+Pl6qZy5ticZcBU4Wl7wLTp6NeH7fwcD
+ 4poCVYfUNj4NzdYuCtexwZek/n1KAcGfcSnAbMmuqaE+GYnQU8zX72NxouaLsYkh6pKACly+iUH
+ 1XvfaqVXdVEQPWzmKbQRmP/HbYbzEn1U+pxHbVS2w==
+X-Received: by 2002:a05:7022:fa9:b0:143:2719:a501 with SMTP id
+ a92af1059eb24-144f9173969mr4195539c88.40.1790169493859; 
+ Wed, 23 Sep 2026 06:18:13 -0700 (PDT)
 Received: from WIN-BH9M8FJACR9 ([103.94.185.75])
  by smtp.googlemail.com with ESMTPSA id
- 5a478bee46e88-33e97236754sm5553695eec.29.2026.09.23.06.17.36
+ 5a478bee46e88-33e97236754sm5553695eec.29.2026.09.23.06.18.05
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 23 Sep 2026 06:17:42 -0700 (PDT)
+ Wed, 23 Sep 2026 06:18:12 -0700 (PDT)
 From: Yonggang Luo <luoyonggang@gmail.com>
 To: qemu-devel@nongnu.org
 Cc: Cornelia Huck <cohuck@redhat.com>, xen-devel@lists.xenproject.org,
@@ -97,16 +97,16 @@ Cc: Cornelia Huck <cohuck@redhat.com>, xen-devel@lists.xenproject.org,
  Markus Armbruster <armbru@redhat.com>, Weiwei Li <liwei1518@gmail.com>,
  Song Gao <17746591750@163.com>, qemu-arm@nongnu.org, qemu-s390x@nongnu.org,
  Brian Cain <brian.cain@oss.qualcomm.com>
-Subject: [PATCH v3 006/114] target: remove CPU_RESOLVING_TYPE
-Date: Wed, 23 Sep 2026 21:14:40 +0800
-Message-ID: <20260923131635.1894-7-luoyonggang@gmail.com>
+Subject: [PATCH v3 009/114] tests/unit: add test-target-info
+Date: Wed, 23 Sep 2026 21:14:43 +0800
+Message-ID: <20260923131635.1894-10-luoyonggang@gmail.com>
 X-Mailer: git-send-email 2.52.0.windows.1
 In-Reply-To: <20260923131635.1894-1-luoyonggang@gmail.com>
 References: <20260923131635.1894-1-luoyonggang@gmail.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:36::f;
- envelope-from=luoyonggang@gmail.com; helo=mail-dy2-x0f.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:38::f;
+ envelope-from=luoyonggang@gmail.com; helo=mail-dl2-x0f.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -128,278 +128,109 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-cpu_type is TYPE_${TARGET_BASE_ARCH}_CPU, so the per-target
-CPU_RESOLVING_TYPE macros are unused. Drop them from every
-target cpu.h.
+Collect each target-info-def.c object in target_info_def_objects,
+keyed by target dir. Link every value so constructors fill the
+list. Assert target_info() is not NULL and target_info_list() has
+one entry per linked object.
 
 Signed-off-by: Yonggang Luo <luoyonggang@gmail.com>
 ---
- target/alpha/cpu.h      | 2 --
- target/arm/cpu.h        | 2 --
- target/avr/cpu.h        | 2 --
- target/hexagon/cpu.h    | 1 -
- target/hppa/cpu.h       | 2 --
- target/i386/cpu.h       | 2 --
- target/loongarch/cpu.h  | 2 --
- target/m68k/cpu.h       | 2 --
- target/microblaze/cpu.h | 2 --
- target/mips/cpu.h       | 2 --
- target/or1k/cpu.h       | 2 --
- target/ppc/cpu.h        | 2 --
- target/riscv/cpu.h      | 2 --
- target/rx/cpu.h         | 2 --
- target/s390x/cpu.h      | 3 ---
- target/sh4/cpu.h        | 2 --
- target/sparc/cpu.h      | 2 --
- target/tricore/cpu.h    | 2 --
- target/xtensa/cpu.h     | 2 --
- 19 files changed, 38 deletions(-)
+ meson.build                   |  6 +++++-
+ tests/unit/meson.build        |  4 ++++
+ tests/unit/test-target-info.c | 38 +++++++++++++++++++++++++++++++++++
+ 3 files changed, 47 insertions(+), 1 deletion(-)
+ create mode 100644 tests/unit/test-target-info.c
 
-diff --git a/target/alpha/cpu.h b/target/alpha/cpu.h
-index 378bd96d941..a6ffe7eec29 100644
---- a/target/alpha/cpu.h
-+++ b/target/alpha/cpu.h
-@@ -433,8 +433,6 @@ void alpha_translate_init(void);
- void alpha_translate_code(CPUState *cs, TranslationBlock *tb,
-                           int *max_insns, vaddr pc, void *host_pc);
+diff --git a/meson.build b/meson.build
+index 9a6a80fd0c8..776d38c5afd 100644
+--- a/meson.build
++++ b/meson.build
+@@ -4260,6 +4260,8 @@ endif
  
--#define CPU_RESOLVING_TYPE TYPE_ALPHA_CPU
--
- G_NORETURN void dynamic_excp(CPUAlphaState *, uintptr_t, int, int);
- G_NORETURN void arith_excp(CPUAlphaState *, uintptr_t, int, uint64_t);
+ traceable = []
+ emulators = {}
++target_info_def = files('target-info-def.c')
++target_info_def_objects = {}
+ foreach target : target_dirs
+   config_target = config_target_mak[target]
+   target_name = config_target['TARGET_NAME']
+@@ -4331,7 +4333,7 @@ foreach target : target_dirs
+     endif
+   endif
  
-diff --git a/target/arm/cpu.h b/target/arm/cpu.h
-index e3f931dba26..359d86e2c37 100644
---- a/target/arm/cpu.h
-+++ b/target/arm/cpu.h
-@@ -2395,8 +2395,6 @@ bool write_cpustate_to_list(ARMCPU *cpu, bool kvm_sync);
- #define ARM_CPUID_TI915T      0x54029152
- #define ARM_CPUID_TI925T      0x54029252
+-  arch_srcs += files('target-info-def.c')
++  arch_srcs += target_info_def
  
--#define CPU_RESOLVING_TYPE TYPE_ARM_CPU
--
- #define TYPE_ARM_HOST_CPU "host-" TYPE_ARM_CPU
+   if target_base_arch in target_arch
+     t = target_arch[target_base_arch].apply(config_target, strict: false)
+@@ -4409,6 +4411,8 @@ foreach target : target_dirs
+                  c_args: c_args,
+                  build_by_default: false)
  
- /* Indexes used when registering address spaces with cpu_address_space_init */
-diff --git a/target/avr/cpu.h b/target/avr/cpu.h
-index 1e4e839bd83..747655543d4 100644
---- a/target/avr/cpu.h
-+++ b/target/avr/cpu.h
-@@ -30,8 +30,6 @@
- #error "AVR 8-bit does not support user mode"
- #endif
- 
--#define CPU_RESOLVING_TYPE TYPE_AVR_CPU
--
- /*
-  * AVR has two memory spaces, data & code.
-  * e.g. both have 0 address
-diff --git a/target/hexagon/cpu.h b/target/hexagon/cpu.h
-index e79d8000304..54b0d69a827 100644
---- a/target/hexagon/cpu.h
-+++ b/target/hexagon/cpu.h
-@@ -52,7 +52,6 @@ typedef struct HexagonGlobalRegState HexagonGlobalRegState;
- #define MAX_TLB_ENTRIES 1024
- #define THREADS_MAX 16
- 
--#define CPU_RESOLVING_TYPE TYPE_HEXAGON_CPU
- #ifndef CONFIG_USER_ONLY
- #define CPU_INTERRUPT_SWI      CPU_INTERRUPT_TGT_INT_0
- #define CPU_INTERRUPT_K0_UNLOCK CPU_INTERRUPT_TGT_INT_1
-diff --git a/target/hppa/cpu.h b/target/hppa/cpu.h
-index f453444d7f9..35b6b8af82a 100644
---- a/target/hppa/cpu.h
-+++ b/target/hppa/cpu.h
-@@ -339,8 +339,6 @@ void hppa_translate_init(void);
- void hppa_translate_code(CPUState *cs, TranslationBlock *tb,
-                          int *max_insns, vaddr pc, void *host_pc);
- 
--#define CPU_RESOLVING_TYPE TYPE_HPPA_CPU
--
- static inline vaddr hppa_form_gva_mask(uint64_t gva_offset_mask,
-                                        uint64_t spc, target_ulong off)
- {
-diff --git a/target/i386/cpu.h b/target/i386/cpu.h
-index 786957fadd0..eba184035d4 100644
---- a/target/i386/cpu.h
-+++ b/target/i386/cpu.h
-@@ -2813,8 +2813,6 @@ void cpu_x86_update_dr7(CPUX86State *env, uint32_t new_dr7);
- /* hw/pc.c */
- uint64_t cpu_get_tsc(CPUX86State *env);
- 
--#define CPU_RESOLVING_TYPE TYPE_X86_CPU
--
- #ifdef TARGET_X86_64
- #define TARGET_DEFAULT_CPU_TYPE X86_CPU_TYPE_NAME("qemu64")
- #else
-diff --git a/target/loongarch/cpu.h b/target/loongarch/cpu.h
-index c592f698853..5d79ea836bf 100644
---- a/target/loongarch/cpu.h
-+++ b/target/loongarch/cpu.h
-@@ -553,6 +553,4 @@ static inline void set_pc(CPULoongArchState *env, uint64_t value)
- #define HW_FLAGS_VA32       0x20
- #define HW_FLAGS_EUEN_ASXE  0x40
- 
--#define CPU_RESOLVING_TYPE TYPE_LOONGARCH_CPU
--
- #endif /* LOONGARCH_CPU_H */
-diff --git a/target/m68k/cpu.h b/target/m68k/cpu.h
-index 7cf3791108c..b3962910ad1 100644
---- a/target/m68k/cpu.h
-+++ b/target/m68k/cpu.h
-@@ -579,8 +579,6 @@ enum {
-     ACCESS_DATA  = 0x20, /* Data load/store access        */
- };
- 
--#define CPU_RESOLVING_TYPE TYPE_M68K_CPU
--
- /* MMU modes definitions */
- #define MMU_KERNEL_IDX 0
- #define MMU_USER_IDX 1
-diff --git a/target/microblaze/cpu.h b/target/microblaze/cpu.h
-index b9602f72b94..00ceaf1acf7 100644
---- a/target/microblaze/cpu.h
-+++ b/target/microblaze/cpu.h
-@@ -401,8 +401,6 @@ void mb_tcg_init(void);
- void mb_translate_code(CPUState *cs, TranslationBlock *tb,
-                        int *max_insns, vaddr pc, void *host_pc);
- 
--#define CPU_RESOLVING_TYPE TYPE_MICROBLAZE_CPU
--
- /* MMU modes definitions */
- #define MMU_NOMMU_IDX   0
- #define MMU_KERNEL_IDX  1
-diff --git a/target/mips/cpu.h b/target/mips/cpu.h
-index 32549791a18..0d2846eaf58 100644
---- a/target/mips/cpu.h
-+++ b/target/mips/cpu.h
-@@ -1359,8 +1359,6 @@ enum {
-  */
- #define CPU_INTERRUPT_WAKE CPU_INTERRUPT_TGT_INT_0
- 
--#define CPU_RESOLVING_TYPE TYPE_MIPS_CPU
--
- bool cpu_type_supports_cps_smp(const char *cpu_type);
- bool cpu_supports_isa(const CPUMIPSState *env, uint64_t isa_mask);
- bool cpu_type_supports_isa(const char *cpu_type, uint64_t isa);
-diff --git a/target/or1k/cpu.h b/target/or1k/cpu.h
-index fc4387ce7ae..34586755baf 100644
---- a/target/or1k/cpu.h
-+++ b/target/or1k/cpu.h
-@@ -320,8 +320,6 @@ void cpu_openrisc_count_start(OpenRISCCPU *cpu);
- void cpu_openrisc_count_stop(OpenRISCCPU *cpu);
- #endif
- 
--#define CPU_RESOLVING_TYPE TYPE_OPENRISC_CPU
--
- #define TB_FLAGS_SM    SR_SM
- #define TB_FLAGS_DME   SR_DME
- #define TB_FLAGS_IME   SR_IME
-diff --git a/target/ppc/cpu.h b/target/ppc/cpu.h
-index 217b4f334e5..c11d64677df 100644
---- a/target/ppc/cpu.h
-+++ b/target/ppc/cpu.h
-@@ -29,8 +29,6 @@
- #include "qom/object.h"
- #include "hw/core/registerfields.h"
- 
--#define CPU_RESOLVING_TYPE TYPE_POWERPC_CPU
--
- #define TARGET_PAGE_BITS_64K 16
- #define TARGET_PAGE_BITS_16M 24
- 
-diff --git a/target/riscv/cpu.h b/target/riscv/cpu.h
-index a97f30793b9..034d7e96c49 100644
---- a/target/riscv/cpu.h
-+++ b/target/riscv/cpu.h
-@@ -36,8 +36,6 @@
- 
- typedef struct CPUArchState CPURISCVState;
- 
--#define CPU_RESOLVING_TYPE TYPE_RISCV_CPU
--
- /*
-  * b0: Whether a instruction always raise a store AMO or not.
-  */
-diff --git a/target/rx/cpu.h b/target/rx/cpu.h
-index 233615c32dc..49188c36c57 100644
---- a/target/rx/cpu.h
-+++ b/target/rx/cpu.h
-@@ -144,8 +144,6 @@ struct RXCPUClass {
-     ResettablePhases parent_phases;
- };
- 
--#define CPU_RESOLVING_TYPE TYPE_RX_CPU
--
- const char *rx_crname(uint8_t cr);
- void rx_cpu_do_interrupt(CPUState *cpu);
- bool rx_cpu_exec_interrupt(CPUState *cpu, int int_req);
-diff --git a/target/s390x/cpu.h b/target/s390x/cpu.h
-index 998bbb0d7ff..c77b297a26a 100644
---- a/target/s390x/cpu.h
-+++ b/target/s390x/cpu.h
-@@ -860,9 +860,6 @@ static inline uint8_t s390_cpu_get_state(const S390CPU *cpu)
- }
- 
- 
--/* helper.c */
--#define CPU_RESOLVING_TYPE TYPE_S390_CPU
--
- /* interrupt.c */
- #define RA_IGNORED                  0
- void s390_program_interrupt(CPUS390XState *env, uint32_t code, uintptr_t ra);
-diff --git a/target/sh4/cpu.h b/target/sh4/cpu.h
-index d440aa6dbe7..eaf67fe8e6a 100644
---- a/target/sh4/cpu.h
-+++ b/target/sh4/cpu.h
-@@ -304,8 +304,6 @@ int cpu_sh4_is_cached(CPUSH4State *env, uint32_t addr);
- 
- void cpu_load_tlb(CPUSH4State * env);
- 
--#define CPU_RESOLVING_TYPE TYPE_SUPERH_CPU
--
- /* MMU modes definitions */
- #define MMU_USER_IDX 1
- 
-diff --git a/target/sparc/cpu.h b/target/sparc/cpu.h
-index 31a16c2af03..fd409e74948 100644
---- a/target/sparc/cpu.h
-+++ b/target/sparc/cpu.h
-@@ -663,8 +663,6 @@ hwaddr cpu_get_phys_page_nofault(CPUSPARCState *env, target_ulong addr,
- #endif
- #endif
- 
--#define CPU_RESOLVING_TYPE TYPE_SPARC_CPU
--
- /* MMU modes definitions */
- #if defined (TARGET_SPARC64)
- #define MMU_USER_IDX   0
-diff --git a/target/tricore/cpu.h b/target/tricore/cpu.h
-index 12e497d2a7a..346b0e1f3f3 100644
---- a/target/tricore/cpu.h
-+++ b/target/tricore/cpu.h
-@@ -257,8 +257,6 @@ void tricore_tcg_init(void);
- void tricore_translate_code(CPUState *cs, TranslationBlock *tb,
-                             int *max_insns, vaddr pc, void *host_pc);
- 
--#define CPU_RESOLVING_TYPE TYPE_TRICORE_CPU
--
- /* helpers.c */
- bool tricore_cpu_tlb_fill(CPUState *cs, vaddr address, int size,
-                           MMUAccessType access_type, int mmu_idx,
-diff --git a/target/xtensa/cpu.h b/target/xtensa/cpu.h
-index 0b2cb5a250d..ee8d9c10b16 100644
---- a/target/xtensa/cpu.h
-+++ b/target/xtensa/cpu.h
-@@ -603,8 +603,6 @@ G_NORETURN void xtensa_cpu_do_unaligned_access(CPUState *cpu, vaddr addr,
-                                                uintptr_t retaddr);
- G_NORETURN void xtensa_exception(CPUXtensaState *env, uint32_t excp);
- 
--#define CPU_RESOLVING_TYPE TYPE_XTENSA_CPU
--
- #if TARGET_BIG_ENDIAN
- #define XTENSA_DEFAULT_CPU_MODEL "fsf"
- #define XTENSA_DEFAULT_CPU_NOMMU_MODEL "fsf"
++  target_info_def_objects += {target: lib.extract_objects(target_info_def)}
++
+   if target.endswith('-softmmu')
+     execs = [{
+       'name': 'qemu-system-' + target_name,
+diff --git a/tests/unit/meson.build b/tests/unit/meson.build
+index e47bc7225ab..dc980a35955 100644
+--- a/tests/unit/meson.build
++++ b/tests/unit/meson.build
+@@ -43,6 +43,10 @@ tests = {
+   'test-qgraph': ['../qtest/libqos/qgraph.c'],
+   'check-qom-interface': [qom],
+   'check-qom-proplist': [qom],
++  'test-target-info': [qom, declare_dependency(
++    objects: target_info_def_objects.values(),
++    compile_args: ['-DTARGET_INFO_DEF_COUNT=@0@'.format(
++      target_info_def_objects.values().length())])],
+   'test-qemu-opts': [],
+   'test-keyval': [testqapi],
+   'test-logging': [],
+diff --git a/tests/unit/test-target-info.c b/tests/unit/test-target-info.c
+new file mode 100644
+index 00000000000..e6de9b259e8
+--- /dev/null
++++ b/tests/unit/test-target-info.c
+@@ -0,0 +1,38 @@
++/*
++ * TargetInfo unit tests
++ *
++ * SPDX-License-Identifier: GPL-2.0-or-later
++ */
++
++#include "qemu/osdep.h"
++#include "qemu/target-info.h"
++#include "qemu/target-info-def.h"
++
++static int target_info_list_count(void)
++{
++    TargetInfoNode *node;
++    int n = 0;
++
++    QLIST_FOREACH(node, target_info_list(), next) {
++        n++;
++    }
++    return n;
++}
++
++static void test_target_info_not_null(void)
++{
++    g_assert_nonnull(target_info());
++}
++
++static void test_target_info_list_count(void)
++{
++    g_assert_cmpint(target_info_list_count(), ==, TARGET_INFO_DEF_COUNT);
++}
++
++int main(int argc, char **argv)
++{
++    g_test_init(&argc, &argv, NULL);
++    g_test_add_func("/target-info/not-null", test_target_info_not_null);
++    g_test_add_func("/target-info/list-count", test_target_info_list_count);
++    return g_test_run();
++}
 -- 
 2.52.0.windows.1
 

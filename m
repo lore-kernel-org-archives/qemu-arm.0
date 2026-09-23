@@ -4,69 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 50209C98310
-	for <qemu-arm@archiver.kernel.org>; Wed, 23 Sep 2026 13:24:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E45FEC9830B
+	for <qemu-arm@archiver.kernel.org>; Wed, 23 Sep 2026 13:25:14 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1x9Mxo-0000no-2E; Wed, 23 Sep 2026 09:24:44 -0400
+	id 1x9Mxy-0001ou-Ox; Wed, 23 Sep 2026 09:24:54 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <luoyonggang@gmail.com>)
- id 1x9MtV-0001ko-Fm
- for qemu-arm@nongnu.org; Wed, 23 Sep 2026 09:20:17 -0400
-Received: from mail-dy2-x0f.google.com ([2607:f8b0:4864:36::f])
+ id 1x9Mu9-00028u-G1
+ for qemu-arm@nongnu.org; Wed, 23 Sep 2026 09:21:01 -0400
+Received: from mail-dl2-x11.google.com ([2607:f8b0:4864:38::11])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <luoyonggang@gmail.com>)
- id 1x9MtP-0007AR-1m
- for qemu-arm@nongnu.org; Wed, 23 Sep 2026 09:20:17 -0400
-Received: by mail-dy2-x0f.google.com with SMTP id
- 5a478bee46e88-33bfb26865fso750973eec.2
- for <qemu-arm@nongnu.org>; Wed, 23 Sep 2026 06:20:10 -0700 (PDT)
+ id 1x9Mu6-0007Rf-Ho
+ for qemu-arm@nongnu.org; Wed, 23 Sep 2026 09:20:57 -0400
+Received: by mail-dl2-x11.google.com with SMTP id
+ a92af1059eb24-142dd046b85so492434c88.3
+ for <qemu-arm@nongnu.org>; Wed, 23 Sep 2026 06:20:53 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20251104; t=1790169609; x=1790774409; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:from:to:cc:subject:date
- :message-id:reply-to:content-type;
- bh=R0NEODEUKGZurnafAxCJE2mvY+onJpkfc8axTrsuyg4=;
- b=N4PgMxnHCgixIYJ1dOhVrAeLsx8E4uF1+xPqxwkY/8p5VhxuBqCjOqEhIzKseDSep6
- gaSzfu0ecTfbzVILJD4ZnfD+5vJBd7/wQDmfFrG5nKrlqB6+cuBtRWTvdvxM0sgCsOiM
- 6eSMnz3chuHJAH0seal+HhqONwinWbZSVDn280OnLVXWQoIDgQIsRvFVc0W1RjU8wNFH
- royAG8Cvwks901A6hQoLjfVLn0C1K0Vs3/eLmEkJFdL9DT61YldOYHx5YWp9evQN0L8F
- bv/GEEomE/YMTzX2EPOqUVZUIaIFtyp6DLvwLy+eh1IG9OFJWt90j9Yv5rbagSMmECOh
- Ye5Q==
+ d=gmail.com; s=20251104; t=1790169652; x=1790774452; darn=nongnu.org;
+ h=content-transfer-encoding:content-type:mime-version:references
+ :in-reply-to:message-id:date:subject:cc:to:from:from:to:cc:subject
+ :date:message-id:reply-to:content-type;
+ bh=eK1WJJTOKN3JQC4zjqi0U64pp0hPplv7AhkYIkHOF98=;
+ b=bQUWmPETdp8Y4na2U/SqSL8T7Anrvojw5CgCa1ao7w7XP/7OTqm+UEL37XrPL95LHV
+ i7vjCAsRkKR6ap8dPQcAQDjzl6Q0LtxA8aWI77PKsPEsrBwQJrz3daq5AnP+dmEU1pN0
+ IkBjQjwpPcal6wgUer+RPb+g4r2RDDcqeZfgv3H4a8kbk0+Nd+TIL6a0JW99C8Mw6VZ1
+ U6yFoOlLHrWnrFVq+ShIsU0uvRaMANDavm370BTr3EpnXv24KTOMdRDcqah27z/M416X
+ Xd53q6fFGqN24sJKEQBLzeuL+wgtqzZR13b3y+J2sY1Ur6rzegZwCTDdCxi8/6e3FUxF
+ Aq5Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20260707; t=1790169609; x=1790774409;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
- :to:cc:subject:date:message-id:reply-to:content-type;
- bh=R0NEODEUKGZurnafAxCJE2mvY+onJpkfc8axTrsuyg4=;
- b=xlf5jcwK7m326qP+d04w+2mc0EZ17Z9dVNOAu69Zt5hE4alaN+jyHRqV9SxU3Z+FHr
- 5XCNd6VNtsdgAOIEQb7kyk+zqEvJna/uTBM/YjK636ochVrfQZ/EtjQVZX5OCXL6OeIM
- z0Kl1m+Kcb3kQIcoEwioiEk078Smm6/PHJ43q4FjlNhxMHBYVCw7mWKTviDNfkfhqhOr
- ZgI/nw5zsRXYJ0JV0palslfFpdPbFqIvZwcymOd4lYxGcRZdHlTMzUGiT84ASDHJ0BWp
- smHtakPMMy9PHYCfJ3RZ4dW7VFnt8TQnzuJSj0MreLfP2v9aYmHpRIAiZoMH3SQi+ebN
- /gAA==
+ d=1e100.net; s=20260707; t=1790169652; x=1790774452;
+ h=content-transfer-encoding:content-type:mime-version:references
+ :in-reply-to:message-id:date:subject:cc:to:from:x-gm-gg
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
+ :content-type;
+ bh=eK1WJJTOKN3JQC4zjqi0U64pp0hPplv7AhkYIkHOF98=;
+ b=UXnqPH/X/0r7ijzUMTEcx2fWnWhN5bvl80SK24A5GkDHSQiqFL+0qCc08Nn15cF1Jm
+ Lt0TgbG5V91K+fBm6/wIzk3wBvXJPSuP/z6cdPE4iZNum8A+8IVGRZKnLTN1g1ze+N7L
+ dwXIKXfgzqYLZKwMayP/G+/LFEuj+X0ezV/eJm/dVwzKNuMY/N0KGEUVQm+y2YeUwHrl
+ JjeO6Mpn025nEjVpo+scXffd/WZ0Pk4lNKIXk6NvKod8pGQkaEzSvRQpAn63gSX/6Wqk
+ SIuFkCYTXVUau6DoBIVR5bx67Cba+Wu9ifDku6CD2q2yfxBlZpeniB2U+uK2w7CYA21a
+ r+zQ==
 X-Forwarded-Encrypted: i=1;
- AKwUvBxGkNJBzx8yOWy09XSJyS3SnPtyHFqSp0si0jLlTkKIMmdfH1tZxWSK1nfS8f6fswKjxmZQA10i2w==@nongnu.org
-X-Gm-Message-State: AFuF++mZyGyRzC/ZKgmX6yK48b31XLNHYXk9W4Ssc34YbZ3kaDCBNSAX
- dTZmvnSkMnuCV/sOayFvAagfFZyKVNaj8+D1bvQLV6jDUEHRWBevBBSc
-X-Gm-Gg: AYBFou3U0VSMb7PWI50KUGTcSxTSYnESTFDjfdhKBNcQJvvaB3FxHBXEgV1HqVtFmzY
- mnYobx3UZH2wbDrsvMxQr20SD4TjO9khYj29YGIj4/02nz7ahGZurccWTlrYIETbbG1oxvW5vao
- 8P2xhd5jA14MK4QN7J6GNuEKCdQsTfbAc2UgWW58NLh4XWORTa6irh5ZXfWUgCNuqyitU2Madz4
- OaDpJ2k4nmqb9jt+wNqhj+zRWUgEd75etdH/xNWPmIqIXCsMiUEgFrV5AbE1MrqwyHVIujig53Y
- IYbZXkoJ8ApXcNxclnLyggweDq4/y0AepkJf99CV2MH8Rd/GWZ0ed8EUHyDux4hFkvtYbXRPAFQ
- TXXJjekQjXZXGxkYb2JrfBrV1LgEih+zneNrosPPIzWaFhSeSH3dudRj3ztopt4EobrMzUGZB0O
- y3Mlj7OmWZYsvM0YrjUaag/lCA/OgJdGOZEl/Yt5VyWpjAfT0GwBRArOYwUygs6l7MdnO+hFAQ1
- 2XZ/frXNVvRfitgiWCclmJnnPTAoBE=
-X-Received: by 2002:a05:693c:60cd:b0:33b:e306:2e27 with SMTP id
- 5a478bee46e88-33ea3eb055bmr2839410eec.5.1790169609054; 
- Wed, 23 Sep 2026 06:20:09 -0700 (PDT)
+ AKwUvBxdPYVSoucSEB9GbZxqhEAQkf9vMbp4PKl8xwr8ZRrvNyRfPwfzr6WapXDmJaH8/CC/K1o3cqKh1Q==@nongnu.org
+X-Gm-Message-State: AFuF++mSXp8/QGJUG+/nnZPxXZGIxb5JjF5YA/p8knPlp3cHp6oJjbjA
+ XatmfReZJLs2Krkkg661T9YkwlL+rsi+t5HW6DHpQVaHMu0mzTDazf8V
+X-Gm-Gg: AYBFou3AJDiA8cF3AuxeiKzcphVq9wFcLAmGw/nYumNs/rQ0TqrxgcAmbDxAUJdOGTJ
+ xOeX2pE89P/QKK1oYNoTOVrHZWiI/g0ys7IVR2Dmcc8oNC4eBPsTbjyoWvabSkSFzEdnuQzy077
+ 94uKuS2aYtiSZO2Q70WE8a1EXpyejRJM+9FQUr7Zwb9IKyKktKTpRi40BMTC+QLGIlA1WgQ4Qwp
+ B53dTOvt89JyGhyyRAWaIdWv/G00IQK5IQ34hlY0c4K5zNcEebjaYv7Ssc1j4W6h+t3EerFviz3
+ PIeA/m+bjBprBSO+383wgXr4wYdiPruUq1zi98Tl+GT6lyLdsUO3qWuIDlJWJUgrHjOsr1ZPmUE
+ VNPm6tusgjxxx4iOfRIp10xxaLWX3OchI36UhBicmqG+P/mVMpAyeJ0r12bFsPOcesQdjLAHmsf
+ r6shuBwupm3EaWNLAXON7ksxOYQIqFzUbB+w1incPxRyHEcwl4CNg+A6p7NF2AI7J3gKbyu2ves
+ wBY93r61zCSgQ3O9raXzqGlaftWkuKXTnowVcuKvg==
+X-Received: by 2002:a05:701b:42d3:10b0:143:5c2a:e488 with SMTP id
+ a92af1059eb24-144f8fc7b95mr2889651c88.0.1790169652322; 
+ Wed, 23 Sep 2026 06:20:52 -0700 (PDT)
 Received: from WIN-BH9M8FJACR9 ([103.94.185.75])
  by smtp.googlemail.com with ESMTPSA id
- 5a478bee46e88-33e97236754sm5553695eec.29.2026.09.23.06.19.59
+ 5a478bee46e88-33e97236754sm5553695eec.29.2026.09.23.06.20.42
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 23 Sep 2026 06:20:06 -0700 (PDT)
+ Wed, 23 Sep 2026 06:20:50 -0700 (PDT)
 From: Yonggang Luo <luoyonggang@gmail.com>
 To: qemu-devel@nongnu.org
 Cc: Cornelia Huck <cohuck@redhat.com>, xen-devel@lists.xenproject.org,
@@ -97,17 +98,18 @@ Cc: Cornelia Huck <cohuck@redhat.com>, xen-devel@lists.xenproject.org,
  Markus Armbruster <armbru@redhat.com>, Weiwei Li <liwei1518@gmail.com>,
  Song Gao <17746591750@163.com>, qemu-arm@nongnu.org, qemu-s390x@nongnu.org,
  Brian Cain <brian.cain@oss.qualcomm.com>
-Subject: [PATCH v3 019/114] qom: inherit is_available and filter after
- MODULE_INIT_QOM
-Date: Wed, 23 Sep 2026 21:14:53 +0800
-Message-ID: <20260923131635.1894-20-luoyonggang@gmail.com>
+Subject: [PATCH v3 023/114] hw/loongarch/virt: prefix ACPI helper with
+ loongarch_virt_
+Date: Wed, 23 Sep 2026 21:14:57 +0800
+Message-ID: <20260923131635.1894-24-luoyonggang@gmail.com>
 X-Mailer: git-send-email 2.52.0.windows.1
 In-Reply-To: <20260923131635.1894-1-luoyonggang@gmail.com>
 References: <20260923131635.1894-1-luoyonggang@gmail.com>
 MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:36::f;
- envelope-from=luoyonggang@gmail.com; helo=mail-dy2-x0f.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:38::11;
+ envelope-from=luoyonggang@gmail.com; helo=mail-dl2-x11.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -129,284 +131,78 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Parents are not all registered at type_register time, so a type
-cannot inherit is_available then.
-
-After MODULE_INIT_QOM, and after a late DSO, inherit the callback
-from the parent, drop types that fail target_info(), and report a
-missing parent. Skip that filter for MODULE_INIT_PHASE_DSO_BEFORE.
-The inherit walk colors each type once, so it is O(N) in the number
-of types. TYPE_INTERFACE and TYPE_OBJECT use target_is_any().
-type_register_static aborts if it runs outside the QOM before/after
-hooks.
+- virt_acpi_setup is the same C symbol used by ARM and RISC-V virt.
+  Rename it now so a later combined binary does not need meson -D
+  prefixes for LoongArch.
+- Rename the file-local virt_is_acpi_enabled to
+  loongarch_virt_is_acpi_enabled to match.
 
 Signed-off-by: Yonggang Luo <luoyonggang@gmail.com>
+Reviewed-by: Philippe Mathieu-Daudé <philmd@oss.qualcomm.com>
+Reviewed-by: Song Gao <gaosong@loongson.cn>
 ---
- include/qemu/target-info.h |   9 +++
- qom/object.c               | 134 +++++++++++++++++++++++++++++++++++--
- target-info.c              |   6 ++
- 3 files changed, 145 insertions(+), 4 deletions(-)
+ hw/loongarch/virt-acpi-build.c | 6 +++---
+ hw/loongarch/virt.c            | 2 +-
+ include/hw/loongarch/virt.h    | 2 +-
+ 3 files changed, 5 insertions(+), 5 deletions(-)
 
-diff --git a/include/qemu/target-info.h b/include/qemu/target-info.h
-index 440da63e6cf..790fc74e9d3 100644
---- a/include/qemu/target-info.h
-+++ b/include/qemu/target-info.h
-@@ -53,6 +53,15 @@ const char *target_cpu_type(void);
-  */
- bool target_big_endian(void);
- 
-+/**
-+ * target_is_any:
-+ * @ti: TargetInfo to inspect
-+ *
-+ * Returns true for every TargetInfo. Usable as TypeInfo.is_available
-+ * for types that are not target-scoped (TYPE_OBJECT).
-+ */
-+bool target_is_any(const TargetInfo *ti);
-+
- /**
-  * target_is_base_arm:
-  * @ti: TargetInfo to inspect
-diff --git a/qom/object.c b/qom/object.c
-index a3e75927e82..d0f9242ac99 100644
---- a/qom/object.c
-+++ b/qom/object.c
-@@ -14,6 +14,7 @@
- #include "qapi/error.h"
- #include "qom/compat-properties.h"
- #include "qom/object.h"
-+#include "qemu/module.h"
- #include "qom/object_interfaces.h"
- #include "qemu/target-info-qapi.h"
- #include "qemu/cutils.h"
-@@ -40,6 +41,7 @@
- #include "qobject/qnum.h"
- #include "qobject/qstring.h"
- #include "qemu/error-report.h"
-+#include "qemu/queue.h"
- 
- #define MAX_INTERFACES 32
- 
-@@ -81,11 +83,16 @@ struct TypeImpl
- 
-     int num_interfaces;
-     InterfaceImpl interfaces[MAX_INTERFACES];
-+
-+    QTAILQ_ENTRY(TypeImpl) register_node;
+diff --git a/hw/loongarch/virt-acpi-build.c b/hw/loongarch/virt-acpi-build.c
+index 600ef60fc58..b9df9b3a127 100644
+--- a/hw/loongarch/virt-acpi-build.c
++++ b/hw/loongarch/virt-acpi-build.c
+@@ -674,7 +674,7 @@ static const VMStateDescription vmstate_acpi_build = {
+     },
  };
  
- static Type type_interface;
- 
- static GHashTable *type_table;
-+static QTAILQ_HEAD(, TypeImpl) type_register_list =
-+    QTAILQ_HEAD_INITIALIZER(type_register_list);
-+static bool type_qom_registering;
- 
- static bool enumerating_types;
- 
-@@ -95,6 +102,21 @@ static void type_table_add(TypeImpl *ti)
-     g_hash_table_insert(type_table, (void *)ti->name, ti);
+-static bool virt_is_acpi_enabled(LoongArchVirtMachineState *lvms)
++static bool loongarch_virt_is_acpi_enabled(LoongArchVirtMachineState *lvms)
+ {
+     if (lvms->acpi == ON_OFF_AUTO_OFF) {
+         return false;
+@@ -682,7 +682,7 @@ static bool virt_is_acpi_enabled(LoongArchVirtMachineState *lvms)
+     return true;
  }
  
-+static void type_table_remove(TypeImpl *ti)
-+{
-+    int i;
-+
-+    assert(!enumerating_types);
-+    g_hash_table_remove(type_table, (void *)ti->name);
-+    QTAILQ_REMOVE(&type_register_list, ti, register_node);
-+    g_free((char *)ti->name);
-+    g_free((char *)ti->parent);
-+    for (i = 0; i < ti->num_interfaces; i++) {
-+        g_free((char *)ti->interfaces[i].typename);
-+    }
-+    g_free(ti);
-+}
-+
- static TypeImpl *type_table_lookup(const char *name)
+-void virt_acpi_setup(LoongArchVirtMachineState *lvms)
++void loongarch_virt_acpi_setup(LoongArchVirtMachineState *lvms)
  {
-     return g_hash_table_lookup(type_table, name);
-@@ -171,18 +193,20 @@ static TypeImpl *type_register_internal(const TypeInfo *info)
-         abort();
+     AcpiBuildTables tables;
+     AcpiBuildState *build_state;
+@@ -692,7 +692,7 @@ void virt_acpi_setup(LoongArchVirtMachineState *lvms)
+         return;
      }
  
--    if (info->is_available && !info->is_available(target_info())) {
--        return NULL;
--    }
--
-     ti = type_new(info);
- 
-     type_table_add(ti);
-+    QTAILQ_INSERT_TAIL(&type_register_list, ti, register_node);
-     return ti;
+-    if (!virt_is_acpi_enabled(lvms)) {
++    if (!loongarch_virt_is_acpi_enabled(lvms)) {
+         ACPI_BUILD_DPRINTF("ACPI disabled. Bailing out.\n");
+         return;
+     }
+diff --git a/hw/loongarch/virt.c b/hw/loongarch/virt.c
+index 2b003443eb0..18923500fc2 100644
+--- a/hw/loongarch/virt.c
++++ b/hw/loongarch/virt.c
+@@ -242,7 +242,7 @@ static void virt_done(Notifier *notifier, void *data)
+     LoongArchVirtMachineState *lvms = container_of(notifier,
+                                       LoongArchVirtMachineState, machine_done);
+     virt_build_smbios(lvms);
+-    virt_acpi_setup(lvms);
++    loongarch_virt_acpi_setup(lvms);
+     virt_fdt_setup(lvms);
  }
  
- TypeImpl *type_register_static(const TypeInfo *info)
- {
-+    if (!type_qom_registering) {
-+        fprintf(stderr, "Registering '%s' outside QOM before/after\n",
-+                info->name);
-+        abort();
-+    }
-     assert(info->parent);
-     return type_register_internal(info);
- }
-@@ -316,6 +340,8 @@ static void type_initialize_interface(TypeImpl *ti, TypeImpl *interface_type,
+diff --git a/include/hw/loongarch/virt.h b/include/hw/loongarch/virt.h
+index 09529de48bd..4316a414f44 100644
+--- a/include/hw/loongarch/virt.h
++++ b/include/hw/loongarch/virt.h
+@@ -132,7 +132,7 @@ struct LoongArchVirtMachineState {
  
-     iface_impl = type_new(&info);
-     iface_impl->parent_type = parent_type;
-+    g_assert(interface_type->is_available);
-+    iface_impl->is_available = interface_type->is_available;
-     type_initialize(iface_impl);
-     g_free((char *)info.name);
+ #define TYPE_LOONGARCH_VIRT_MACHINE  MACHINE_TYPE_NAME("loongarch-virt")
+ OBJECT_DECLARE_SIMPLE_TYPE(LoongArchVirtMachineState, LOONGARCH_VIRT_MACHINE)
+-void virt_acpi_setup(LoongArchVirtMachineState *lvms);
++void loongarch_virt_acpi_setup(LoongArchVirtMachineState *lvms);
+ void virt_fdt_setup(LoongArchVirtMachineState *lvms);
  
-@@ -1159,6 +1185,7 @@ bool object_class_is_secure(ObjectClass *klass)
- 
- TypeIsAvailable *object_class_get_is_available(ObjectClass *klass)
- {
-+    g_assert(klass->type->is_available);
-     return klass->type->is_available;
- }
- 
-@@ -3297,12 +3324,109 @@ static void object_class_init(ObjectClass *klass, const void *data)
-                                   NULL);
- }
- 
-+static bool type_qom_before(ModuleInitPhase phase, Error **errp)
-+{
-+    (void)errp;
-+    (void)phase;
-+
-+    type_qom_registering = true;
-+    return true;
-+}
-+
-+enum TypeVisitColor {
-+    TYPE_VISIT_GRAY = 1,
-+    TYPE_VISIT_BLACK,
-+};
-+
-+static bool type_update_is_available(TypeImpl *type, GHashTable *visit,
-+                                     Error **errp)
-+{
-+    TypeImpl *parent;
-+    gpointer color;
-+
-+    color = g_hash_table_lookup(visit, type);
-+    if (color == GINT_TO_POINTER(TYPE_VISIT_BLACK)) {
-+        return true;
-+    }
-+    if (color == GINT_TO_POINTER(TYPE_VISIT_GRAY)) {
-+        error_setg(errp, "Type '%s' has a cyclic parent chain",
-+                   type->name);
-+        return false;
-+    }
-+
-+    g_hash_table_insert(visit, type, GINT_TO_POINTER(TYPE_VISIT_GRAY));
-+
-+    parent = type_get_parent(type);
-+    if (!parent) {
-+        if (strcmp(type->name, TYPE_OBJECT) != 0 &&
-+            strcmp(type->name, TYPE_INTERFACE) != 0) {
-+            error_setg(errp,
-+                       "Type '%s' does not inherit from %s or %s",
-+                       type->name, TYPE_OBJECT, TYPE_INTERFACE);
-+            return false;
-+        }
-+    } else {
-+        if (!type_update_is_available(parent, visit, errp)) {
-+            return false;
-+        }
-+        if (!type->is_available) {
-+            type->is_available = parent->is_available;
-+        }
-+    }
-+
-+    g_hash_table_insert(visit, type, GINT_TO_POINTER(TYPE_VISIT_BLACK));
-+    return true;
-+}
-+
-+static bool type_qom_after(ModuleInitPhase phase, Error **errp)
-+{
-+    TypeImpl *type, *next;
-+    GHashTable *visit;
-+    Error *local_err = NULL;
-+
-+    type_qom_registering = false;
-+    if (phase == MODULE_INIT_PHASE_DSO_BEFORE) {
-+        return true;
-+    }
-+
-+    visit = g_hash_table_new(NULL, NULL);
-+    QTAILQ_FOREACH(type, &type_register_list, register_node) {
-+        if (!type_update_is_available(type, visit, &local_err)) {
-+            break;
-+        }
-+    }
-+    g_hash_table_destroy(visit);
-+
-+    if (local_err) {
-+        error_propagate(errp, local_err);
-+        return false;
-+    }
-+
-+    QTAILQ_FOREACH_SAFE(type, &type_register_list, register_node, next) {
-+        g_assert(type->is_available);
-+        if (!type->is_available(target_info())) {
-+            type_table_remove(type);
-+        }
-+    }
-+
-+    QTAILQ_FOREACH(type, &type_register_list, register_node) {
-+        if (type->parent && !type_table_lookup(type->parent)) {
-+            error_setg(errp, "Type '%s' is missing its parent '%s'",
-+                       type->name, type->parent);
-+            return false;
-+        }
-+    }
-+
-+    return true;
-+}
-+
- static void __attribute__((constructor)) register_types(void)
- {
-     static const TypeInfo interface_info = {
-         .name = TYPE_INTERFACE,
-         .class_size = sizeof(InterfaceClass),
-         .abstract = true,
-+        .is_available = target_is_any,
-     };
- 
-     static const TypeInfo object_info = {
-@@ -3310,9 +3434,11 @@ static void __attribute__((constructor)) register_types(void)
-         .instance_size = sizeof(Object),
-         .class_init = object_class_init,
-         .abstract = true,
-+        .is_available = target_is_any,
-     };
- 
-     type_table = g_hash_table_new(g_str_hash, g_str_equal);
-     type_interface = type_register_internal(&interface_info);
-     type_register_internal(&object_info);
-+    register_module_hooks(MODULE_INIT_QOM, type_qom_before, type_qom_after);
- }
-diff --git a/target-info.c b/target-info.c
-index 36f75ece36f..a9ab4b465d3 100644
---- a/target-info.c
-+++ b/target-info.c
-@@ -96,6 +96,12 @@ bool target_big_endian(void)
-     return target_endian_mode() == ENDIAN_MODE_BIG;
- }
- 
-+bool target_is_any(const TargetInfo *ti)
-+{
-+    (void)ti;
-+    return true;
-+}
-+
- bool target_is_base_arm(const TargetInfo *ti)
- {
-     switch (ti->target_arch) {
+ static inline bool virt_has_dmsi(LoongArchVirtMachineState *lvms)
 -- 
 2.52.0.windows.1
 

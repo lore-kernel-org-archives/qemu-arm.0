@@ -4,112 +4,89 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5B17FC98304
-	for <qemu-arm@archiver.kernel.org>; Wed, 23 Sep 2026 16:38:02 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 635FEC9830B
+	for <qemu-arm@archiver.kernel.org>; Wed, 23 Sep 2026 16:43:36 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1x9PyR-0003a7-Mu; Wed, 23 Sep 2026 12:37:35 -0400
+	id 1x9Q3z-00059D-2M; Wed, 23 Sep 2026 12:43:19 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1x9PyP-0003Z9-LK
- for qemu-arm@nongnu.org; Wed, 23 Sep 2026 12:37:33 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1x9PyN-0005lf-8t
- for qemu-arm@nongnu.org; Wed, 23 Sep 2026 12:37:33 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1790181450;
- h=from:from:reply-to:reply-to:subject:subject:date:date:
- message-id:message-id:to:to:cc:cc:mime-version:mime-version:
- content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=NQPxre5nfjVyJIkyz9ju4nrdHW/OB8SsTX3UAIiJ8qc=;
- b=P0myLSEJyijGOYP445+nK+Ae5A9yvyVkUbmv0hpYi5ri0qMFVCFb9omIlMFC3CdXcbEiBY
- mimmKHEC8dMGVJL1uzVouEGUTH6cUY3OD+sBHbUVTub/wwptLHcJHSBh4rwMM40K5aH/OO
- HAfULFrEEJBhRt3fF4Ddb3rBm1ix9TE=
-Received: from mail-wm1-f69.google.com (mail-wm1-f69.google.com
- [209.85.128.69]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-336-j14NUiQ1MKOZWwdOBwGyVA-1; Wed, 23 Sep 2026 12:37:28 -0400
-X-MC-Unique: j14NUiQ1MKOZWwdOBwGyVA-1
-X-Mimecast-MFC-AGG-ID: j14NUiQ1MKOZWwdOBwGyVA_1790181447
-Received: by mail-wm1-f69.google.com with SMTP id
- 5b1f17b1804b1-49e65bee41aso460955e9.0
- for <qemu-arm@nongnu.org>; Wed, 23 Sep 2026 09:37:28 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <eblot.ml@gmail.com>)
+ id 1x9Q3x-00058s-El
+ for qemu-arm@nongnu.org; Wed, 23 Sep 2026 12:43:17 -0400
+Received: from mail-wr2-f12.google.com ([74.125.225.76])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <eblot.ml@gmail.com>)
+ id 1x9Q3v-0006I8-FV
+ for qemu-arm@nongnu.org; Wed, 23 Sep 2026 12:43:17 -0400
+Received: by mail-wr2-f12.google.com with SMTP id
+ ffacd0b85a97d-4834977ae75so880374f8f.3
+ for <qemu-arm@nongnu.org>; Wed, 23 Sep 2026 09:43:14 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20260707; t=1790181447; x=1790786247;
- h=content-transfer-encoding:content-type:in-reply-to:from:references
- :cc:to:content-language:subject:reply-to:user-agent:mime-version
- :date:message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
- :message-id:reply-to:content-type;
- bh=NQPxre5nfjVyJIkyz9ju4nrdHW/OB8SsTX3UAIiJ8qc=;
- b=u2Ax52jaJ62kd+UbCCihqvVDxrb66aqLVAIAWOfRx1HdDY/gZNivB/1MXSZ35T6jz5
- 9XGTTfeX6K67lgobWsrqn1dNX4n0Kp44iG38qOlihtAKs77pSrGbZrx3R6C/I8jZRBwB
- 0wRoIHOHsgC0qk2dE4+A2XaK+1wuZtxmUksB7uTRL2+qmxDBKR/e2bZiufQdlk+FGwkh
- kEGKj5Fzwou8Id4Q0R2KBtATbTwHqU6AAJD1H5jxfXBfbRydnjWLF27kzXW86iLfSmS8
- Crh7UZl/zJCrTP9B9P/ra6ZK/WRnIWX+SRcGr/W7bTFjhIVk5mzkdMRPbhgZUNhpVTUt
- 5diQ==
+ d=1e100.net; s=20260707; t=1790181793; x=1790786593;
+ h=content-transfer-encoding:content-type:mime-version:references
+ :in-reply-to:message-id:date:subject:cc:to:from:x-gm-gg
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
+ :content-type;
+ bh=CQN1fxDMHtBagFvdwic+Hu7ic+a2HzvXXJ4JbNgcRHg=;
+ b=IY4mR302HlMF8Ei3luqPeE1/E46+WHkby14vyoYmYKD+Rsutjbj0la0WveZlaTX4BX
+ t4FE/cqKs841KfP3spDsIGUKiQNJtNlW3IKPzubaLGReQXEkM6MFv2GHl5uS5WL8ovq0
+ vbb9lAhkhCwSDfN9h9pKdyXQpbSzYnbItGdGz4tGVuksouudk+A/B2NA65Y1SVMof9Qj
+ G4DJweqxXIpEE6RZKsD+drwVmFR+813+/vwqgQY7wgf7q5aVy+rCbJuPRoxLLOqm6NOE
+ c477WqUtZIib/9bqu1odntY8Wr4x9LJu6AjASKzf+toYS2HWSri5WE4hkUv/oS2mffhP
+ sO+A==
 X-Forwarded-Encrypted: i=1;
- AKwUvByet0gU3WmUjn3dbcwMoHp3oGEZC/ZopICa3FJFAZVEW+GaMVUbk3gd5Limn9WgsURCCtL62D+idw==@nongnu.org
-X-Gm-Message-State: AFuF++lwqpeU4M6kESLAUIj1eQV2xxRT7Ry3bb1ZVpCmvS2w+cJ9f2DT
- DgffkjEUXFLyFlW5FO1Ij/udxZxSo8qcUwil4v7MU9qNiUY4zGYQDwoFDAKl3ZMeiJwLc6q2FQv
- c7m1gPiJLNimd+y5U6Yf/ItrJrx+db7L7dNyfpmZaIGJy0u1W99Hf4g==
-X-Gm-Gg: AYBFou2d5Ait5N68mH+aUQEWv5lNGdoYQdPOmMIM1lnzTqerfJ82M10dh0ZnHhYN2Sm
- Xpwyydm3WyqEFRI1+qUqJuqMk1E5FAgFC9LdbralFQIj58AoDsYuWyYbFJcAQYgKnhUidOX6yvc
- jxg3dRzQbETEkB0s7+rK45ZU0ytRd8TH4qvtISlu9QM+SBVcDhy4AuY5CSKxyj2aVMDnJwCg4rJ
- XUYYUQqDKtmnYFmiAeqtM0FjAOYP4i7CbljwX75iMoQYun0AkUF3Klx9Noy4PGv6YIYjAnfUkxr
- XUAASVRBD7U2U3gz7D2ZlTNRNd32kTbUZQ4NdAyUeotPak8vjNgJpIgdYS4SfGPhNF0McVUSLkl
- CIVfNsWqxWaGsYaBHp82vVEKH4/cU/Mih1B2qY9JLxgkYWHk5
-X-Received: by 2002:a05:600c:1910:b0:49f:c5aa:9ef4 with SMTP id
- 5b1f17b1804b1-49fde374f6cmr52414225e9.8.1790181447133; 
- Wed, 23 Sep 2026 09:37:27 -0700 (PDT)
-X-Received: by 2002:a05:600c:1910:b0:49f:c5aa:9ef4 with SMTP id
- 5b1f17b1804b1-49fde374f6cmr52413865e9.8.1790181446641; 
- Wed, 23 Sep 2026 09:37:26 -0700 (PDT)
-Received: from ?IPV6:2a01:e0a:f0e:9070:527b:9dff:feef:3874?
- ([2a01:e0a:f0e:9070:527b:9dff:feef:3874])
+ AKwUvByQ1M2A42UCTTE2AHADl7ypnUGd81zSRnwRHXTCRpScmKZ3OTdUarIVkWosh5/oPYUDDkGchuO/Aw==@nongnu.org
+X-Gm-Message-State: AFuF++nCMjdrh15goLj/UtedTIKLVwBi6QhuNP8RhKcIQjrMVHPzkmxX
+ 6u/QDaSc/F08i2G4NLfJA8vbr6Uh4Elrd8p9TRhHijqd2zGgpW0se8a3
+X-Gm-Gg: AYBFou0m4Qmmo4ezqlPTu4Y71T+rEzpcOl3Ra0salwCKFXnWPf5lJT/1P+DLjpGTZk0
+ RRLu40sTM18zuV/qIBeWAmmeAlWeqlU6dEo8kS4ukiJO3Z6cKei6oqPNi5xUIRlNFHvVTD0x3cW
+ w8LLPm6n0KbOqruIbfGvGRLXOkWZxkDIRT24hV1AfDlPybx8EGajAOiE0aHtxc5hDXipAD2B77S
+ 52iStp8751x++6sDDuopIrDgez4fHysGhFZ2uRSKVU6IwK1fzbDCnzliwTCRdh5cPnv7TCZPr9B
+ 7Huqfj5ldMMv+oTp+ksC7dUkhAAcbwMv9F9bBDpsmShif4Lk7Ev2TWwuIs6uCQTh28plJFErdP2
+ Z/4TZyLHhkiKCgTHDmc6ObIr2/Ge8dXHA6fYiDY1bU0GPfqhr4Vq0jqS8/fwJXeTcr+lVvOz7W/
+ cjBZ/wfNCxiHlW/FUtwzcXtTSv7V2F0KQBJtif21Vfa5Cy2vwFyMYfrvODz+9qsxSruXlKLAmVT
+ wbkxcFyAKtwnmwc2uiWEwNAWplHdkZSZ92jzZUSZQAhKFEB1yQHSP4q
+X-Received: by 2002:a05:6000:240f:b0:484:3310:710c with SMTP id
+ ffacd0b85a97d-48867069554mr5850299f8f.24.1790181793406; 
+ Wed, 23 Sep 2026 09:43:13 -0700 (PDT)
+Received: from localhost (89-93-216-19.hfc.dyn.abo.bbox.fr. [89.93.216.19])
  by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-49fde18093csm101614415e9.3.2026.09.23.09.37.25
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 23 Sep 2026 09:37:26 -0700 (PDT)
-Message-ID: <3cd4f5c9-dc40-47ae-b008-c5dc2c60e0ec@redhat.com>
-Date: Wed, 23 Sep 2026 18:37:24 +0200
+ ffacd0b85a97d-488682676c7sm7717576f8f.3.2026.09.23.09.43.12
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Wed, 23 Sep 2026 09:43:12 -0700 (PDT)
+To: qemu-devel@nongnu.org
+Cc: =?utf-8?q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>, 
+ Peter Maydell <peter.maydell@linaro.org>, 
+ Steven Lee <steven_lee@aspeedtech.com>, Troy Lee <leetroy@gmail.com>, 
+ Jamin Lin <jamin_lin@aspeedtech.com>, Kane Chen <kane_chen@aspeedtech.com>, 
+ Andrew Jeffery <andrew@codeconstruct.com.au>, Joel Stanley <joel@jms.id.au>, 
+ Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>, qemu-arm@nongnu.org, 
+ Patrick Leis <venture@google.com>, Fabiano Rosas <farosas@suse.de>, 
+ Laurent Vivier <lvivier@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>, 
+ qemu-ppc@nongnu.org, qemu-riscv@nongnu.org, 
+ =?utf-8?q?Philippe_Mathieu-Daud=C3=A9?= <philmd@oss.qualcomm.com>, 
+ Emmanuel Blot <emmanuel.blot@free.fr>
+Subject: [PING] Re: [PATCH 00/50] Aspeed: I2C device models and the Minerva
+ BMC machine
+Date: Wed, 23 Sep 2026 18:39:39 +0200
+Message-Id: <20260923-bmc-minerva-v1-ping@free.fr>
+In-Reply-To: <20260907-bmc-minerva-v1-0-0d83ad610c3b@free.fr>
+References: <20260907-bmc-minerva-v1-0-0d83ad610c3b@free.fr>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [RFC PATCH v4 02/25] target/arm: expose all non-res ID reg fields
- as properties
-To: Khushit Shah <khushit.shah@nutanix.com>, qemu-devel@nongnu.org,
- qemu-arm@nongnu.org, kvmarm@lists.linux.dev
-Cc: cohuck@redhat.com, peter.maydell@linaro.org,
- richard.henderson@linaro.org, maz@kernel.org, oliver.upton@linux.dev,
- berrange@redhat.com, abologna@redhat.com, jdenemar@redhat.com,
- gshan@redhat.com, skolothumtho@nvidia.com, sebott@redhat.com,
- armbru@redhat.com, philmd@linaro.org, yangjinqian1@huawei.com,
- shaju.abraham@nutanix.com, mark.caveayland@nutanix.com,
- ping@khushitshah.com, sandesh.patel@nutanix.com
-References: <20260921123249.1708067-1-khushit.shah@nutanix.com>
- <20260921123249.1708067-3-khushit.shah@nutanix.com>
-From: Eric Auger <eric.auger@redhat.com>
-In-Reply-To: <20260921123249.1708067-3-khushit.shah@nutanix.com>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: ugYNDMY0fObn0xPx_HCcaAQwwvoFMCJ551KAIrUuGQA_1790181447
-X-Mimecast-Originator: redhat.com
-Content-Language: en-US
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=170.10.133.124;
- envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=74.125.225.76; envelope-from=eblot.ml@gmail.com;
+ helo=mail-wr2-f12.google.com
+X-Spam_score_int: -15
+X-Spam_score: -1.6
+X-Spam_bar: -
+X-Spam_report: (-1.6 / 5.0 requ) BAYES_00=-1.9,
+ FREEMAIL_FORGED_FROMDOMAIN=0.001, FREEMAIL_FROM=0.001,
+ HEADER_FROM_DIFFERENT_DOMAINS=0.25, RCVD_IN_DNSWL_NONE=-0.0001,
+ RCVD_IN_MSPIKE_H2=0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -122,244 +99,171 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-To: eric.auger@redhat.com
+Reply-to:  Emmanuel Blot <emmanuel.blot@free.fr>
+From:  Emmanuel Blot via <qemu-arm@nongnu.org>
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
+Hi,
+
+Gentle ping on this series.
+
+The I2C device models stand on their own and can be reviewed — or
+picked — independently of the Minerva board:
+
+  04-07  pca954x: PCA9545 model, migrated mux state, qtest
+  08-21  ds1338: cleanups, class-parameterised register map,
+         clock-halt bit, persist-on-reset, qtest coverage
+  22-31  DS1339 variant and its qtest coverage
+  32-39  ina230 model and its qtest coverage
+  40-47  ina238 model and its qtest coverage
+
+The board work is only the last three patches, and 01-03 are the two
+missing doc entries plus a sanmiguel flash-controller fix.
+
+Happy to respin the device models as their own series if that makes
+review easier.
+
+Thanks,
+Emmanuel
 
 
-On 9/21/26 2:32 PM, Khushit Shah wrote:
-> Upcoming named CPU model layer will require exposing all the ID register
-> fields as properties.
+On 7 Sep 2026, at 18:41, Emmanuel Blot wrote:
+
+> Add the minerva-bmc machine and the I2C device models it needs.
 >
-> Furthermore, this exposes the host values of all ID register fields
-> to the management stack, which can use them to infer migration
-> compatibility constraints between different hosts.
+> Based on legoater/aspeed-next, at:
+>   1c05d7e94d ("tests/functional: aspeed: optionally check the device
+>   tree model on boot")
 >
-> Signed-off-by: Khushit Shah <khushit.shah@nutanix.com>
+> New models:
+>
+>   INA230   TI 36V current-shunt and power monitor
+>   INA238   TI 85V current-shunt, power and temperature monitor
+>   DS1339   RTC, a DS1338 variant
+>   PCA9545  4-channel I2C mux with per-channel interrupt inputs
+>
+> The INA devices derive current and power from the shunt voltage and
+> their calibration registers. ALERT output is supported. Measurements
+> come in through QOM properties; however, conversion delay is not
+> modelled.
+>
+> Introduce a device class to manage different variants of the DS1338
+> register map, such as the DS1339. Improve the DS1338 implementation
+> with a Resettable reset, support for the clock-halt bit, and a
+> "persist-on-reset" property keeping the registers across a reset.
+>
+> The minerva-bmc machine is derived from the platform device tree and
+> instantiates every device that is supported in QEMU. FRU EEPROMs are
+> sanitised images taken from real hardware.
+>
+> New qtests for the DS1339, INA230, INA238 and PCA9545, plus DS1338
+> cases for the register map, and a functional test booting OpenBMC on
+> minerva-bmc.
+>
+> The docs now mention the previously missing catalina-bmc and
+> sanmiguel-bmc machines, and the title has been simplified.
+>
+> One thing worth a second opinion: the PCA954x muxes now have a
+> VMStateDescription, which changes the migration stream for the
+> existing PCA9546 and PCA9548. The DS1338 vmstate also goes from
+> version 2 to 3, but older streams still load fine.
+>
+> Signed-off-by: Emmanuel Blot <emmanuel.blot@free.fr>
 > ---
->  docs/system/arm/cpu-features.rst | 34 +++++++--------
->  target/arm/cpu64.c               |  2 +-
->  target/arm/kvm.c                 | 71 +++++++-------------------------
->  target/arm/trace-events          |  2 -
->  4 files changed, 31 insertions(+), 78 deletions(-)
+> Emmanuel Blot (50):
+>       docs/system/arm/aspeed: add the catalina-bmc machine
+>       docs/system/arm/aspeed: add the sanmiguel-bmc machine
+>       hw/arm: sanmiguel: remove the second SPI flash controller
+>       hw/i2c: pca954x: drop unused header inclusions
+>       hw/i2c: pca954x: add PCA9545 4-channel mux model
+>       hw/i2c: pca954x: migrate mux state
+>       tests/qtest: pca9545: add mux test
+>       hw/rtc: ds1338: move TYPE_DS1338 to a public header
+>       hw: ds1338: use the TYPE_DS1338 constant instead of the "ds1338" string
+>       hw/rtc: ds1338: implement Resettable reset
+>       hw/rtc: ds1338: prefix the file-local helpers with ds1338_
+>       hw/rtc: ds1338: parameterise the register map via a device class
+>       hw/rtc: ds1338: program the clock from the time registers
+>       hw/rtc: ds1338: implement the DS1338 clock-halt bit
+>       hw/rtc: ds1338: refresh the user registers on a read rollover only
+>       hw/rtc: ds1338: add a persist-on-reset property
+>       tests/qtest: ds1338: cover the DS1338-specific register map
+>       tests/qtest: ds1338: cover the power-on register defaults
+>       tests/qtest: ds1338: cover the clock-halt bit
+>       tests/qtest: ds1338: cover persist-on-reset
+>       tests/qtest: ds1338: cover the reserved bits of the time registers
+>       hw/rtc: ds1338: add DS1339 variant
+>       tests/qtest: ds1339: add RTC test
+>       tests/qtest: ds1339: cover power-on defaults and reserved-bit masking
+>       tests/qtest: ds1339: cover oscillator stop/restart and time programming
+>       tests/qtest: ds1339: cover the Century bit
+>       tests/qtest: ds1339: cover the end-of-month rollover
+>       tests/qtest: ds1339: cover the 12-hour format
+>       tests/qtest: ds1339: cover the day-of-week counter
+>       tests/qtest: ds1339: cover persist-on-reset
+>       tests/qtest: ds1339: cover the migration round trip
+>       hw/sensor: ina230: add current/voltage/power monitor
+>       tests/qtest: ina230: add current/voltage/power monitor test
+>       tests/qtest: ina230: cover voltage injection and power derivation
+>       tests/qtest: ina230: cover the ALERT limit functions and CVRF
+>       tests/qtest: ina230: cover the injection-property limits
+>       tests/qtest: ina230: cover operating modes and triggered conversions
+>       tests/qtest: ina230: cover ALERT latch persistence
+>       tests/qtest: ina230: cover a cleared calibration per channel
+>       hw/sensor: ina238: add current/voltage/power monitor
+>       tests/qtest: ina238: add current/voltage/power monitor test
+>       tests/qtest: ina238: cover voltage/temperature injection and derivation
+>       tests/qtest: ina238: cover the ALERT path and conversion-ready flag
+>       tests/qtest: ina238: cover the injection-property limits
+>       tests/qtest: ina238: cover the operating modes
+>       tests/qtest: ina238: cover conversion-ready and alert-latch semantics
+>       tests/qtest: ina238: cover a cleared calibration per channel
+>       hw/arm: minerva: add Facebook BMC machine
+>       hw/arm: minerva: populate EEPROM data
+>       tests/functional/arm: minerva: add BMC boot test
 >
-> diff --git a/docs/system/arm/cpu-features.rst b/docs/system/arm/cpu-features.rst
-> index 3a07a87bc3..62bb2bd999 100644
-> --- a/docs/system/arm/cpu-features.rst
-> +++ b/docs/system/arm/cpu-features.rst
-> @@ -34,17 +34,15 @@ running guests in AArch32.
->  CPU features that are inherently specific to KVM are
->  prefixed with "kvm-" and are described in "KVM VCPU Features".
->  
-> -2. Additionally, the ``host`` CPU model on KVM allows to configure optional
-> -CPU features via the corresponding ID registers. The host kernel allows
-> -to write a subset of ID register fields. The host model exposes
-Rewording/corrections not related to the actual functional change in
-this patch should be suggested on the prerequisite series and applied
-there instead.
-
-Besides after our discussions I understand you need to expose all ID reg
-named fields for *named* vcpu models. This allows to relax the value
-required by this named vcpu model to the host one. but to me this shall
-only apply to derived named cpu models and not to the base host model.
-Iif you expose non writable props on the host model, this latter won't
-be able to apply any other value than the current one anyway. So it just
-brings noise for the end user.
-> -properties for each writable ID register field. Those options are named
-> -SYSREG_<IDREG>_<FIELD>. IDREG and FIELD names are those used in the
-> -ARM Architecture Reference Manual. Their availability depend on the host
-> -capability to let the userspace write those fields. Values set with those
-> -properties override the initial values retrieved from the host. They are
-> -written back to KVM and the eventual value applied by KVM depends on whether
-> -the value is sanitized or not by the host kernel. Then those field values
-> -are likely to be overriden again by legacy CPU options which apply at the end.
-> +2. Additionally, the ``host`` CPU model on KVM allows configuring optional
-> +CPU features through the corresponding ID registers. The host model exposes
-> +properties for every non-reserved ID register field known to QEMU. Those
-> +properties are named SYSREG_<IDREG>_<FIELD>. IDREG and FIELD names are those
-> +used in the Arm Architecture Reference Manual. Values set with those
-> +properties override the initial values retrieved from the host. Whether a
-> +value that differs from the host value can be applied depends on KVM support
-> +and any field-specific handling in QEMU. Legacy CPU options applied later may
-> +override those field values.
->  
->  CPU Feature Probing
->  ===================
-> @@ -534,12 +532,10 @@ Note that this is currently only supported under KVM, and with the
->  Querying available ID register fields
->  -------------------------------------
->  
-> -QEMU will create properties for all ID register fields that are
-> -reported as being writable by the kernel, and that are known to the
-> -QEMU instance. Therefore, the same QEMU binary may expose different
-> -properties when run under a different kernel.
-> +QEMU creates properties for all non-reserved ID register fields known to
-> +the QEMU instance.
->  
-> -To find out all available writable ID register fields, use the
-> +To find out all available ID register fields, use the
->  ``query-cpu-model-expansion`` QMP command::
->  
->    (QEMU) query-cpu-model-expansion type=full model={"name":"host"}
-> @@ -554,8 +550,10 @@ To find out all available writable ID register fields, use the
->     "SYSREG_ID_AA64ISAR0_EL1_DP": 1, (...)
->     }}}}
->  
-> -If a certain field in an ID register does not show up in this list, it
-> -is not writable with the specific host kernel.
-> +The presence of a property does not imply that every value is supported.
-> +Non-writable fields must retain their host value, while writable fields are
-> +limited to the values supported by KVM. A configuration requesting an
-> +unsupported value is rejected.
->  
->  A note on compatibility
->  -----------------------
-> diff --git a/target/arm/cpu64.c b/target/arm/cpu64.c
-> index e04062e848..3d522bf20d 100644
-> --- a/target/arm/cpu64.c
-> +++ b/target/arm/cpu64.c
-> @@ -809,7 +809,7 @@ void aarch64_host_initfn(Object *obj)
->      kvm_arm_set_cpu_features_from_host(cpu);
->      aarch64_add_sve_properties(obj);
->  
-> -    /* generate SYSREG properties according to writable masks */
-> +    /* generate SYSREG properties */
->      kvm_arm_expose_idreg_properties(cpu, arm64_id_regs);
-To me exposing non writable fields shall only happen for derived named
-models.
->  
->  #elif defined(CONFIG_HVF)
-> diff --git a/target/arm/kvm.c b/target/arm/kvm.c
-> index 8a823d0324..2f6c090e43 100644
-> --- a/target/arm/kvm.c
-> +++ b/target/arm/kvm.c
-> @@ -365,19 +365,6 @@ static int get_host_cpu_idregs(int fd, ARMHostCPUFeatures *ahcf)
->      return err;
->  }
->  
-> -static ARM64SysRegField *get_field(int i, ARM64SysReg *reg)
-> -{
-> -    for (int f = 0; f < reg->fields_count; f++) {
-> -        struct ARM64SysRegField *field = &reg->fields[f];
-> -        int upper = field->shift + field->length - 1;
-> -
-> -        if (i >= field->shift && i <= upper) {
-> -            return field;
-> -        }
-> -    }
-> -    return NULL;
-> -}
-> -
->  bool kvm_idreg_write_scratch_vcpu(int cpufd, Visitor *v, const char *name,
->                                    void *opaque, Error **errp)
->  {
-> @@ -493,69 +480,39 @@ static void get_sysreg_prop(Object *obj, Visitor *v,
->      trace_get_sysreg_prop(name, value);
->  }
->  
-> -/*
-> - * decode_idreg_writemap: Generate props for writable fields
-> - *
-> - * @obj: CPU object
-> - * @reg: description of the sysreg
-> - */
-> -static int
-> -decode_idreg_writemap(Object *obj, ARM64SysReg *reg)
-> +static void
-> +add_idreg_field_properties(Object *obj, ARM64SysReg *reg)
->  {
-> -    uint64_t map = reg->writable_mask;
-> -    int i = ctz64(map);
->      int nb_sysreg_props = 0;
->  
-> -    while (map) {
-> -        ARM64SysRegField *field = get_field(i, reg);
-Same here. If changes are not related to the functional change, the
-right way to converge is to comment on the prerequisite series.
-As I understand those changes are unrelated and can easily be retrofitted
-
-> -        int lower, upper;
-> -        char *prop_name;
-> -        uint64_t field_mask;
-> -
-> -        if (!field) {
-> -            warn_report("%s bit %d of %s is writable but no named field "
-> -                        "in target/arm/cpu-idregs.h.inc",
-> -                        __func__, i, reg->name);
-> -            map =  map & ~BIT_ULL(i);
-> -            i = ctz64(map);
-> -            continue;
-> -        }
-> -        lower = field->shift;
-> -        upper = field->shift + field->length - 1;
-> -
-> -        /* Sanity check the field is not a reserved field */
-> -        if (strstr(field->name, "RES0") || strstr(field->name, "RES1") ||
-> -            strstr(field->name, "RAZ")) {
-> -            trace_unexpected_writable_reserved_field(reg->name, field->name,
-> -                                                     lower, upper);
-> +    for (int i = 0; i < reg->fields_count; i++) {
-> +        ARM64SysRegField *field = &reg->fields[i];
-> +
-> +        /* skip reserved fields */
-> +        if (g_str_equal(field->name, "RES0") ||
-> +            g_str_equal(field->name, "RES1") ||
-> +            g_str_equal(field->name, "RAZ")) {
->              continue;
->          }
-> -        prop_name = g_strdup_printf("SYSREG_%s_%s", reg->name, field->name);
-> -        trace_decode_idreg_writemap(field->name, lower, upper, prop_name);
-> +
-> +        char *prop_name = g_strdup_printf("SYSREG_%s_%s", reg->name,
-> +                                          field->name);
->          object_property_add(obj, prop_name, "uint64",
->                              get_sysreg_prop, set_sysreg_prop, NULL, field);
->          g_free(prop_name);
->          nb_sysreg_props++;
-> -
-> -        field_mask = MAKE_64BIT_MASK(lower, field->length);
-> -        map = map & ~field_mask;
-> -        i = ctz64(map);
->      }
-> +
->      trace_nb_sysreg_props(reg->name, nb_sysreg_props);
-> -    return 0;
->  }
->  
-> -/* analyze the writable mask and generate properties for writable fields */
->  void kvm_arm_expose_idreg_properties(ARMCPU *cpu, ARM64SysReg *regs)
->  {
->      Object *obj = OBJECT(cpu);
->  
->      for (int i = 0; i < NUM_ID_IDX; i++) {
->          ARM64SysReg *sysregdesc = &regs[i];
-> -
-> -        if (sysregdesc->writable_mask) {
-> -            decode_idreg_writemap(obj, sysregdesc);
-> -        }
-> +        add_idreg_field_properties(obj, sysregdesc);
->      }
->  }
->  
-> diff --git a/target/arm/trace-events b/target/arm/trace-events
-> index 71a2f5770c..7696a8ed40 100644
-> --- a/target/arm/trace-events
-> +++ b/target/arm/trace-events
-> @@ -15,11 +15,9 @@ arm_gt_update_irq(int timer, int irqstate) "gt_update_irq: timer %d irqstate %d"
->  kvm_arm_fixup_msi_route(uint64_t iova, uint64_t gpa) "MSI iova = 0x%"PRIx64" is translated into 0x%"PRIx64
->  get_host_cpu_idregs(const char *name, uint64_t value) "scratch vcpu host value for %s is 0x%"PRIx64
->  kvm_arm_writable_idregs_to_cpreg_list(const char *name, uint64_t previous, uint64_t new) "%s overwrite default 0x%"PRIx64" with 0x%"PRIx64
-> -decode_idreg_writemap(const char* name, int lower, int upper, char *prop_name) "%s [%d:%d] is writable (prop %s)"
->  get_sysreg_prop(const char *name, uint64_t value) "%s 0x%"PRIx64
->  set_sysreg_prop(const char *name, uint64_t old, uint64_t mask, uint64_t field_value, uint64_t new) "%s old reg value=0x%"PRIx64" mask=0x%"PRIx64" new field value=0x%"PRIx64" new reg value=0x%"PRIx64
->  nb_sysreg_props(const char *name, int count) "%s: %d SYSREG properties"
-> -unexpected_writable_reserved_field(const char *reg_name, const char *field_name, int lower, int upper) "Unexpected writable reserved field: %s.%s [%d,%d], skip it ..."
-why those removals
->  kvm_idreg_write_scratch_vcpu(const char *name, uint64_t oldfv, uint64_t newfv, uint64_t actualfv) "successful dry-run for %s old=0x%"PRIx64" new=0x%"PRIx64" actual=0x%"PRIx64
->  
->  # cpu.c
-
-Eric
-
+>  docs/system/arm/aspeed.rst                  |   7 +-
+>  hw/arm/Kconfig                              |   2 +
+>  hw/arm/aspeed_ast2400_palmetto.c            |   4 +-
+>  hw/arm/aspeed_ast2400_supermicrox11.c       |   4 +-
+>  hw/arm/aspeed_ast2500_romulus.c             |   4 +-
+>  hw/arm/aspeed_ast2500_supermicro-x11spi.c   |   4 +-
+>  hw/arm/aspeed_ast2500_witherspoon.c         |   4 +-
+>  hw/arm/aspeed_ast2600_bletchley.c           |   3 +-
+>  hw/arm/aspeed_ast2600_catalina.c            |   2 +-
+>  hw/arm/aspeed_ast2600_minerva.c             | 856 ++++++++++++++++++++++++++++
+>  hw/arm/aspeed_ast2600_sanmiguel.c           |   7 +-
+>  hw/arm/meson.build                          |   1 +
+>  hw/arm/realview.c                           |   3 +-
+>  hw/arm/versatilepb.c                        |   3 +-
+>  hw/i2c/i2c_mux_pca954x.c                    |  98 +++-
+>  hw/ppc/e500.c                               |   3 +-
+>  hw/riscv/tt_atlantis.c                      |   3 +-
+>  hw/rtc/ds1338.c                             | 427 +++++++++++---
+>  hw/sensor/Kconfig                           |   8 +
+>  hw/sensor/ina230.c                          | 597 +++++++++++++++++++
+>  hw/sensor/ina238.c                          | 802 ++++++++++++++++++++++++++
+>  hw/sensor/meson.build                       |   2 +
+>  hw/sensor/trace-events                      |  14 +
+>  include/hw/i2c/i2c_mux_pca954x.h            |   1 +
+>  include/hw/rtc/ds1338.h                     |  21 +
+>  include/hw/sensor/ina230.h                  |  14 +
+>  include/hw/sensor/ina238.h                  |  14 +
+>  tests/functional/arm/meson.build            |   2 +
+>  tests/functional/arm/test_aspeed_minerva.py |  30 +
+>  tests/qtest/ds1338-test.c                   | 191 ++++++-
+>  tests/qtest/ds1339-test.c                   | 581 +++++++++++++++++++
+>  tests/qtest/ina230-test.c                   | 602 +++++++++++++++++++
+>  tests/qtest/ina238-test.c                   | 806 ++++++++++++++++++++++++++
+>  tests/qtest/meson.build                     |   4 +
+>  tests/qtest/pca9545-test.c                  | 116 ++++
+>  35 files changed, 5125 insertions(+), 115 deletions(-)
+> ---
+> base-commit: 1c05d7e94da04129ea16147074fe73158fb85ff9
+> change-id: 20260907-bmc-minerva-cd13a718c90b
+>
+> Best regards,
+> --
+> Emmanuel Blot <emmanuel.blot@free.fr>
 

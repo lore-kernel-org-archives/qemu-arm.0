@@ -4,93 +4,94 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 66EA0C9830B
-	for <qemu-arm@archiver.kernel.org>; Wed, 23 Sep 2026 20:55:16 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4FDADC98304
+	for <qemu-arm@archiver.kernel.org>; Wed, 23 Sep 2026 20:56:04 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1x9Tzb-00019V-D7; Wed, 23 Sep 2026 16:55:03 -0400
+	id 1x9U0K-0001bc-Tr; Wed, 23 Sep 2026 16:55:49 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1x9Tza-000198-Jm
- for qemu-arm@nongnu.org; Wed, 23 Sep 2026 16:55:02 -0400
-Received: from mail-pz2-x15.google.com ([2607:f8b0:4864:3b::15])
+ id 1x9U0C-0001Yo-Cc
+ for qemu-arm@nongnu.org; Wed, 23 Sep 2026 16:55:41 -0400
+Received: from mail-pj2-x10.google.com ([2607:f8b0:4864:39::10])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1x9TzY-0006zN-13
- for qemu-arm@nongnu.org; Wed, 23 Sep 2026 16:55:02 -0400
-Received: by mail-pz2-x15.google.com with SMTP id
- 41be03b00d2f7-cc4c3304784so774178a12.3
- for <qemu-arm@nongnu.org>; Wed, 23 Sep 2026 13:54:59 -0700 (PDT)
+ id 1x9U0A-0007B2-23
+ for qemu-arm@nongnu.org; Wed, 23 Sep 2026 16:55:39 -0400
+Received: by mail-pj2-x10.google.com with SMTP id
+ 98e67ed59e1d1-396ccb652d7so1024818a91.0
+ for <qemu-arm@nongnu.org>; Wed, 23 Sep 2026 13:55:37 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1790196898; x=1790801698; darn=nongnu.org;
+ d=linaro.org; s=google; t=1790196937; x=1790801737; darn=nongnu.org;
  h=content-transfer-encoding:content-type:in-reply-to:content-language
  :from:references:cc:to:subject:user-agent:mime-version:date
  :message-id:from:to:cc:subject:date:message-id:reply-to:content-type;
- bh=A2tONaDbtQL8PQbtIrLcxJSOEl2pUo5nWlMZcQy3bTs=;
- b=x8IjF2xnqBt6i7Ux2P0T1U73/rihdpIXMuyTGXe7RZJyH4NKLhFKo365qsc/Gix97Z
- V8zYELj/M7qxSCdLQJ+YQZgExUtxwDKFnN5n7muLOzn1Uo0I+jXu/4WClYN5jhnK63ag
- aNTJSasQ0vVYFlZWx+k5JbLrApoeqdrrgi5wGG/yUWXIhzfgKuZA4510AkcJfExnEos5
- dmSnk0a77ZmE22+rO0PE8r3GF0M74h5+CRS5iD6YeAfPtV3Nh4x9mjG3/BnsS3MUca3d
- SzoHSQyZ1V5MWNBJuY0I7DFHO66YZRqj8V7DDSM0iFKk0wuQ3vcTCqs+SjILhP5yJUWq
- ylhw==
+ bh=wM0kPJYKtXdJoPtEM/sjyDev4gFkAOekaDOCSGsoMXc=;
+ b=zQR3EGnAzhsj/nW8Ie0egi+Pehf5WwexJlYWKO9nWnMUMSgJj1WqT2pIYjpIG7JCdZ
+ EEiqroeHITFnSJQOw9o/Z+CCnvzxvBe3WteDW+nR1pZ15J1uL79aNGdh+r3g7cKAR3E4
+ xIdbO00MWEYqaxx5876PSokgc3IR5AZpvNAgGgyi61NuA9jgUhaokRJ/ocinqu3tJ+Wv
+ hHAB7H++sTKv7Xvp/ofzhSROfPfXNeDJwTA0H+OgkovZuNSaWW7ZY+i6wo7/O5sAqjY4
+ dlqAS14KZhHYjeToGmz2plg/ftQ7L4haEs0s5OzNr1mQmNvoGnCiF5suElsdqFPUQRYC
+ HJdg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20260707; t=1790196898; x=1790801698;
+ d=1e100.net; s=20260707; t=1790196937; x=1790801737;
  h=content-transfer-encoding:content-type:in-reply-to:content-language
  :from:references:cc:to:subject:user-agent:mime-version:date
  :message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
  :message-id:reply-to:content-type;
- bh=A2tONaDbtQL8PQbtIrLcxJSOEl2pUo5nWlMZcQy3bTs=;
- b=wZn3zwwYpmc1HjH/HfzXS2IAHaEqS4M0xYyUHYq4+aUfgVuFbjsXIAOo1isrrtIt7h
- tBYoQgfP+hJdLL5mzfXZMqCmDrZBmppwxs9L5B6ITbvTJdrafCSGHZG4hXZtwveO5mBU
- tL4TwM8BRndbzRU23N75VV9SETZpE1T6xc1oXYY63dUpuUWDMHcCa6U5Km9R4KDMTRv6
- 3Ze0sDeAFJiSPL2aHDlaaW0LSJmoLYvgY4bThIRbR+goFcXLRi2zI/4TqlgXWgRpUKzN
- YS0AL9pVlNRv0Dm/5qgYD7yLzpoVtw/zThgJMjFaFhPB9U3YtcHr6p/C8amojN0eEwhI
- jskQ==
+ bh=wM0kPJYKtXdJoPtEM/sjyDev4gFkAOekaDOCSGsoMXc=;
+ b=tvVA4Zuc5OAPQFa8xztsTAJxjyY5Agzt+nya+BHbF/zjZK660hQ6WZnxfQT1aN/JOY
+ 07UN9JFYuRTfYjS/X8CRZ78Y/9+VzPgsxb2qQUhb2MzNP3G1N3GK5VHrwXCmcba3xqIx
+ CaVJdBGBgHoF70eK1sMHIMNf15qIB5tKZtFiIwytIUvbMFbOzcvvZSmHi2/XAnuQ2p6u
+ zzVyT2GHhJowUEUUzjLjbJnmBHby3eCQcOtERlE/Y+rpXh+q4FD9cW0un8ZcZ9VsjfbS
+ byZ+JIYiD32uwEeH70GArtQiuW7f/HLbgaG2yHeWv1jGcw0nJOBoLGa7h+OIu44WPVNv
+ 9+Ag==
 X-Forwarded-Encrypted: i=1;
- AKwUvBywzoyVai1cl4FFH99p+QuIBCYchHtie3eNGp+xcPAlrNtWdgfW5F+yqMvxl9gj2MNiNg2CLnjhhA==@nongnu.org
-X-Gm-Message-State: AFuF++lNd71yvNadAZwtPxV+cuVgkXxmrhjHmKlYnhDpuWOn9CD7Topi
- j0139fSIBx7OaZLi5t6BgSyFTc+qVUkU+AupGYGQMRaHaTiqVWykul+KYY3xz/qBAyjeqCR4qF6
- MWqX8
-X-Gm-Gg: AYBFou0WkMQJh4+He6mnxamNrnH0d4fXQJ0toFcLEMhbT84OzFyA56KG2Mb6cp4MMD3
- saaD+A2qlxKTyIvDjbTN/ETHrFcPN2O7aPnVeND5oUsMq4j/7Ai9nQhLbT3qA7eeN3Q/W2J6V5b
- OKDHJZySLY1hFYqIRr+fjuhNkLIgM9TrXsHhfU66b2TVK4+PoS7RDtfzKBf/XBnf21PPIRH4TrK
- DWkMBhIYTQWL70bQdWI4RMmztcOSmXHQ6spQITLeXtIUIFp/pwVHcMlFrpm1kMavqGXM3HyeAZE
- g8qZEllXC8F1e0DagTiFLcPeh5PKY/k/hVtwfXcC9PKHCBBsYpcVgKG26TYzN38n7ybiLf2izvv
- Q21dSDpLBMSg+RZ8lNubZlBpiVsv2qe05UhEUvPUvJdgXEwgGx93WNOaVld4dGzpUfuc4QM8Fg0
- 4Qlh+i/NaRi85YHlUBIQulZAG3t7cXeMrYiPVXupAAWVBQxfnpt0UzmHLjn9u0911jw3EwqWpx1
- UFdTBv0j4WkaigGEL+IIJoyCWmJa5G0M17cDjTlszWX7pM442U=
-X-Received: by 2002:a05:6a20:394c:b0:3dd:85a8:4c57 with SMTP id
- adf61e73a8af0-3de0e73a234mr308434637.30.1790196898443; 
- Wed, 23 Sep 2026 13:54:58 -0700 (PDT)
+ AKwUvBwg2iUrZMBsxPCqZMECownH3eAlAIRebLE9X8mXP6pJ9SNkn8yswB1iB/GlIyK451AmDVRUq45sIQ==@nongnu.org
+X-Gm-Message-State: AFuF++nXtFVRj4VFSuDsZy21rHzYjOem2HdPG2ZEAg2ZbhXy1sol97eh
+ gClg2NExlLmo7u/LoFJWgxBCDHOMseyN/JxD79uvYWKS9frUOeduBwTwZM2m4SS0WTY=
+X-Gm-Gg: AYBFou1EC2nflK+uD26PMrxgbeZdPFjUPztVNF/KlZbgNXpwfPksRWF6cEX/vCmXuxV
+ AhRDP0/KYuuIF+j3b7p1wdE8Hj+i6HjUcVNrD29Q7MtfOgUTX9GlLKxAH2NRtLLNx0p4gvt9Pdu
+ e9UTybju120At6yfewam4dXECbyKnsc1ZGazv+a8w9QhZQ+Qitc81X/2N4HmYYsJ00rYaQ4A837
+ 69Al/gNWmQegc6u5tRBrmJUORC8KWG5oW3vNk7ecLAKruF7KBQh5CZFiv4bhLwP9nJGq1Z5OKgs
+ 6il4dDp47m9Ewtwov63rQ8pd0HT6vbSy2xqjuJzZwmsP23UWCW73xEYVtPy/Szhu6yc3IXywLe+
+ eOv9OYuSiApges3QJLL7JF5yJ5h4qoUflpFy8iVTmy4DrdyhhAQWm6weIduFTWPdgLl8SJWxp7A
+ 5wiLH/43yVBjLqSW2xOI+K5aDTlP3ffpQnEYfZlBVxOTEkBo+DyJaPa6x/yXo3hW04+ZoW48c3l
+ YiGbLgCJPep5oNnqkzjY6UH00/g4CoM9JSBlDA6fsJ5JIRUMD4=
+X-Received: by 2002:a17:90b:4d09:b0:39f:d323:c988 with SMTP id
+ 98e67ed59e1d1-3a098dff5e3mr214678a91.48.1790196936458; 
+ Wed, 23 Sep 2026 13:55:36 -0700 (PDT)
 Received: from [192.168.0.4] (174-21-68-150.tukw.qwest.net. [174.21.68.150])
  by smtp.gmail.com with ESMTPSA id
- 41be03b00d2f7-cc75f3ba829sm1630494a12.11.2026.09.23.13.54.57
+ 41be03b00d2f7-cc75f2228a2sm1630634a12.4.2026.09.23.13.55.35
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 23 Sep 2026 13:54:58 -0700 (PDT)
-Message-ID: <5807b5b6-2860-4675-9f0b-5790f3bfd37b@linaro.org>
-Date: Wed, 23 Sep 2026 13:54:56 -0700
+ Wed, 23 Sep 2026 13:55:36 -0700 (PDT)
+Message-ID: <84dbe3af-4ebf-40aa-b760-8294d8cfe686@linaro.org>
+Date: Wed, 23 Sep 2026 13:55:34 -0700
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 6/8] target/arm: Don't set ARM_FEATURE_VAPA for v7 PMSA
+Subject: Re: [PATCH 7/8] target/arm: Don't register 64-bit TTBR0, TTBR1 for
+ PMSA
 To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
  qemu-devel@nongnu.org
 Cc: Tao Ding <dingtao0430@163.com>
 References: <20260907130223.3148989-1-peter.maydell@linaro.org>
- <20260907130223.3148989-7-peter.maydell@linaro.org>
+ <20260907130223.3148989-8-peter.maydell@linaro.org>
 From: Richard Henderson <richard.henderson@linaro.org>
 Content-Language: en-US
-In-Reply-To: <20260907130223.3148989-7-peter.maydell@linaro.org>
+In-Reply-To: <20260907130223.3148989-8-peter.maydell@linaro.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2607:f8b0:4864:3b::15;
- envelope-from=richard.henderson@linaro.org; helo=mail-pz2-x15.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:39::10;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pj2-x10.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_NONE=0.001,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -108,31 +109,27 @@ Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
 On 9/7/26 06:02, Peter Maydell wrote:
-> The features VAPA (which gets you the ATS instructions and the PAR
-> register) and LPAE (which gets you a 64-bit PAR and the long-format
-> page table descriptors).  were originally defined in v7 as being
-> A-profile only.  For v8, the ATS insns and PAR are added to
-> R-profile; although there are no page table descriptors to be long or
-> short, the v8R PAR format is always long-descriptor style, so it
-> makes more sense to set ARM_FEATURE_LPAE than not (and matches how we
-> already return true from regime_using_lpae_format() for v8R PMSA).
+> We register the 64-bit versions of TTBR0 and TTBR1 in
+> lpae_cp_reginfo[], marking them as ARM_CP_ALIAS because the AArch64
+> definitions in vmsa_cp_reginfo[] will handle their migration.
 > 
-> Our "feature X implies feature Y" code was only taking account of
-> A-profile; adjust it so that for PMSA:
->   * V8 implies V7VE, LPAE, V7, and VAPA (no change from currently)
->   * V7 does not imply VAPA (new)
+> However, this means that we are also defining these registers as
+> present in the Cortex-R52, which is a v8R PMSA CPU.  v8R does define
+> AMAIR0, AMAIR1 and the PAR, but does not have TTBR0 or TTBR1.
 > 
-> (v8R wants V7VE because this implies things like the existence of
-> ERET and the PMOVSSET insns.)
+> Split the TTBR0 and TTBR1 definitions into a new lpae_vmsa_cp_reginfo
+> which we only register when we have both LPAE and VMSA.
 > 
-> This will stop us incorrectly exposing the PAR and ATS insns for v7R
-> CPUs (and it will be a migration break on those CPUs, which is fine
-> as none of them are usable with versioned machine types).
+> This is a migration break for Cortex-R52 CPUs (which we don't use in
+> any versioned machine type).
 > 
 > Signed-off-by: Peter Maydell<peter.maydell@linaro.org>
 > ---
->   target/arm/cpu.c | 6 +++++-
->   1 file changed, 5 insertions(+), 1 deletion(-)
+> Detected because we ended up with the CP_ALIAS TTBR[01] registered
+> but not the TTBR[01]_EL1 cpregs that handled the migration.
+> ---
+>   target/arm/helper.c | 6 ++++++
+>   1 file changed, 6 insertions(+)
 
 Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 

@@ -4,120 +4,193 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6F85CC98308
-	for <qemu-arm@archiver.kernel.org>; Wed, 23 Sep 2026 05:57:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D0FE9C982EA
+	for <qemu-arm@archiver.kernel.org>; Wed, 23 Sep 2026 07:09:46 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1x9Fyp-0002Rt-GQ; Wed, 23 Sep 2026 01:57:19 -0400
+	id 1x9H6l-0000hz-Rt; Wed, 23 Sep 2026 03:09:41 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <luoyonggang@gmail.com>)
- id 1x9Fyl-0002RN-QS
- for qemu-arm@nongnu.org; Wed, 23 Sep 2026 01:57:16 -0400
-Received: from mail-ed2-x10.google.com ([2a00:1450:4864:33::10])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <luoyonggang@gmail.com>)
- id 1x9Fyi-0007Xb-P1
- for qemu-arm@nongnu.org; Wed, 23 Sep 2026 01:57:15 -0400
-Received: by mail-ed2-x10.google.com with SMTP id
- 4fb4d7f45d1cf-6a9a2b95b72so879963a12.2
- for <qemu-arm@nongnu.org>; Tue, 22 Sep 2026 22:57:12 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1790143031; cv=none;
- d=google.com; s=arc-20260327;
- b=JiTYS5LcTrvr0B0isx5zTPPD+YQr2i2MALsTlb1HI0qZag6RA0saVGGiCYgs8FZ7AU
- 7/xMT/wolfPJGKR6oYn6cMBgM0WhJcyTh5NUNcb6FmqfsJNzWdzRNVWnKTA1rz1HGt9P
- JUPMUTaEB3bBYvYnleXki5vLPaG+9FTlLytLIrI8GJJruVvt46M2+gQ6oWDrNLn3/UeB
- UOSrQBrQkP2W2z5v/7Lw9m1/ZK9kUdX2+YW9mAr77pr0c1jLMXu6ZYhsBXfH97nkPKjK
- odp5HWwLDfCEHIVH+oyhWw3E0LJYUdlPytulF3QHX5OCFvTla33VFEKNsjzl9JIcIliN
- hdLw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
- s=arc-20260327; 
- h=cc:to:subject:message-id:date:from:reply-to:in-reply-to:references
- :mime-version:dkim-signature;
- bh=P6Kl0f1VUK2svuDgbEWk+b/FJveOKRfnruyud2X7jk8=;
- fh=ZTiviDCrxwEMmyNTtKdDCkW1rZlTmxRM8Hke/uhRsqg=;
- b=fKAI2jMIQo6Vr84Cvac9eE9OQfaS/LUiu+39ZF3mFwc/VXRWRZ1kxjji+V0AAp3U1c
- qonxskF6VmLt1ajOMOAQ2tJqB6WmCxcbf2sKT3SRif4WD4qru35ayLe44Tf90pNy+M19
- W3y2v7cg3IPVLGDwxVqBlYA7O4inyF+zzR5lL7yWjulh1VepF5zNMHsAN54mb8oBpp5E
- sia2s6DOiwVTfYLO7rVgzmu3NWS00elHIi1EHjnm/K6sp7aRU1XEhAwE7mdXnbfhFfYQ
- wDlFmWK5cLUV9UFCDKlucrpR8qkwGE+KXVPobcg1HqCd9hvi0XneJkTr1x6AnFZdKcH9
- 7YTw==; darn=nongnu.org
-ARC-Authentication-Results: i=1; mx.google.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20251104; t=1790143031; x=1790747831; darn=nongnu.org;
- h=content-type:cc:to:subject:message-id:date:from:reply-to
- :in-reply-to:references:mime-version:from:to:cc:subject:date
- :message-id:reply-to:content-type;
- bh=P6Kl0f1VUK2svuDgbEWk+b/FJveOKRfnruyud2X7jk8=;
- b=dm1QJlqT69X/lkxNuADtGPkKAjwnz9sXbJllZSar0YrzVBCeIksjaZmGHrYgaTgP81
- aN68loSxq/W0OozUsMLYwSagmEn+ODepH5kYdUR6hAYZtxCv+9gtnmQfqZVo6Rw8WA6P
- BfCHGTqFLvlA3K1vlhrixxqzoWXeErz/uKmftNo7bi2ztwqiZ/dGVvw1EQ7fW4VE+CxB
- IBX8WpcxD5HtIT9dPw7kHyj6JxZoWzNQMymvYJuPrg4qLMBQEHKTPp2VVUgvZpAMWFku
- MoI/YhrDPq0iA4c09mPCZEBKyQ6P2Vg2AQ4qos6KJHvtC0+IhPU8ubQDoHAV9jJd5ADs
- 3Z4w==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20260707; t=1790143031; x=1790747831;
- h=content-type:cc:to:subject:message-id:date:from:reply-to
- :in-reply-to:references:mime-version:x-gm-gg:x-gm-message-state:from
- :to:cc:subject:date:message-id:reply-to:content-type;
- bh=P6Kl0f1VUK2svuDgbEWk+b/FJveOKRfnruyud2X7jk8=;
- b=AjGVV9cEMO3emoaL2GH2baD3MBGUUzgRJ2M0dBpVI2CbGwnMQ+GStq+fgKvb3Pw3vC
- FUm1dUvA/HgxlVJelengD50Eyw5TCSt3J+ywRWt5F671LpZ4VwJl3UJRqMuaTv2Np/5B
- QykLv8vxzuA99Jpn14MTy2GsRieaLRxjfUX8U5j36np58wIYChcZ5Sw/kgDkZuiG+CJ2
- xkFvEwdgwqTe2/PUhMJJraXf0Wa+Q056R+ywQfWosT4nAP5qBl1J5J20GgfIf9jSnewz
- s4iebSZ3wBiMazRY2LvUWCTfeYdfE19V7sJQKwTSZs3bJdFUrmWKZUXgJEZIy409fQXH
- SEjQ==
-X-Forwarded-Encrypted: i=1;
- AKwUvBxeKDvXB2aN1rWbOYZVBy4uDbK4Wc8ApK3vyz9HcVUdPlLi2T1557PCz/MvVK26pKmkfHE4PoZznQ==@nongnu.org
-X-Gm-Message-State: AFuF++nD8xjrE8gYHzB20Am7Xoldoirnf7aVbJupnALSlA0VoQIFa0r2
- HS5/yhiyoVz8GubOv8bdjImr8/AXPuW93Lm+lW8Hpu9RE0Z3SJ5ndRzhFwMdLWj9SQoR3s+GTMQ
- 9R3/1KjIzrEK276c+VUCqeHUhjX+Xfi0=
-X-Gm-Gg: AYBFou3qWkBp7JAQHpVpWS8DUmXi+fzUiySHHwuZh/CSdW7cTrmwJQXq/gpYCizTiYj
- G9OgsGyNxfA2DTbjn/BZ4CEd953TNDht7g1oe2H3dhd+b0sajA2gmMFHiDmGTaGXnjOv0SoMBfu
- APzwn9AL6DSyZ1UUw9qIQpC71WaAIvEu1cdSLX/xRyvnG+2xnMc/h6OyA0BQUp+v7KOhQIBwWfk
- RiJ90xtCIwb1LqYrue5BFKqbexmjbdFkrec/nfQi3cZ2ib1zhyHC5ejhV0FjoN/0IUCkes0Rlix
- NmLk77j0D+jtjTEv5XRbYBGrc6rGM4kspHjv6zjSrxLvs85gdKdbz3I=
-X-Received: by 2002:a05:6402:3508:b0:6a9:cb55:c594 with SMTP id
- 4fb4d7f45d1cf-6aab3b7fc01mr1222699a12.37.1790143030851; Tue, 22 Sep 2026
- 22:57:10 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <khushit.shah@nutanix.com>)
+ id 1x9H6Q-0000g0-QS; Wed, 23 Sep 2026 03:09:17 -0400
+Received: from mx0b-002c1b01.pphosted.com ([148.163.155.12])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <khushit.shah@nutanix.com>)
+ id 1x9H6N-0005dM-Mj; Wed, 23 Sep 2026 03:09:14 -0400
+Received: from pps.filterd (m0127843.ppops.net [127.0.0.1])
+ by mx0b-002c1b01.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id
+ 68N76lrJ2430242; Wed, 23 Sep 2026 00:08:30 -0700
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=nutanix.com; h=
+ cc:content-id:content-transfer-encoding:content-type:date:from
+ :in-reply-to:message-id:mime-version:references:subject:to; s=
+ proofpoint20171006; bh=X1mdMrdkTeBjzx9RZen9yxMBddEK8dRKcdP9wkLyr
+ Vo=; b=A2W+YHF9nBPCDpk1VmjW6PyDNwLIYXHc4/JoVdMlW3dnVcyhlXbjkezC7
+ FbxsVWhtIoVNmCYw5KW4VQrKw/hcCQC/kKElIE5SNej+TAz05ndwqSZPHcWl1j43
+ tA1gwOt2jFyPDYEfVN5mFUGvvvzoBZZVSfvhQD8tmSGIQZwu2uiXq1DzPiivXoDn
+ wJo9ZrNsVp+SKOYUVr041JsF5l1MRuSUwc/en0qI7unKmr7hk9ms8pPUni9fmxRB
+ br7+KxXu+rIZghVuE421TXFXCrLucabWmusf9WFguqc/K0r/21EaKZ4A55+lMhXB
+ lrnFzsyUtdI8kqcftQuNv0Q8sjy4g==
+Received: from ph7pr06cu001.outbound.protection.outlook.com
+ (mail-westus3azon11020106.outbound.protection.outlook.com [52.101.201.106])
+ by mx0b-002c1b01.pphosted.com (PPS) with ESMTPS id 4gv3268thp-1
+ (version=TLSv1.3 cipher=TLS_AES_256_GCM_SHA384 bits=256 verify=NOT);
+ Wed, 23 Sep 2026 00:08:29 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=Doj6ygaTJX/LtYYQzB0nA7x1JKW//4B5ERInJY6/N8/gf6SiO/GBLXY9irUVP7Sv9nD3rp52XC8YoHZRCvFrSMicKRDNZcngS/fveMWhXOJcbqcR1yyiYXWwyLZTbNmhmfu97tY3KPmuOY4KJox07nNT/W4WJvrkcP1gPsVoxikg00Dobv0zOG7Unoi5JruafQ/1qE4yFD+gI3fIDdBMg6GGl+AAFzpTVY0ZTC2fSTqFshjd5HCvxkXpBUxF5bTKi7Yt+JAUY1NnZ7EAUzLieyaRxly2221PwV5uETTd5XZjRN3TBbhhjWJ0lttQc2FpRNKSrhxqrYrz+GzqcUrcLw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=X1mdMrdkTeBjzx9RZen9yxMBddEK8dRKcdP9wkLyrVo=;
+ b=OvcdHQcdG7MvU51beizoQDkKmEiU+1HRjvPfX/yroP58ug30pB8/1MgH1w1tHqIRKNtwJFltOYEEurNKlWz/ofUbyIh1/5W59ds6c9LGgn3x5YTco7jGtcuHkGLyKPK9AaQXCvA8PV5TanmEuB18h5MdLhSHsO1jcplPQOSk0O/z9fl2xOkfYwuI1FtdBDDFjxDVeuF3jvyHegQrt+7PfSqCcCODodDLpHTdgyIn/eERnAId+pMXDsVj6RqXYReedKIuRNzLBVzQn6wLs1rhsIBZnf0QmBQA1yZNsLziWBFjHiBAlSDpJoPf0Wx3yFdG5TwmHetAFYr1kySD7+C14w==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=nutanix.com; dmarc=pass action=none header.from=nutanix.com;
+ dkim=pass header.d=nutanix.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=nutanix.com;
+ s=selector1;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=X1mdMrdkTeBjzx9RZen9yxMBddEK8dRKcdP9wkLyrVo=;
+ b=EvndJq3MTTrRw1nldclNRTiMZoDvtid7GJjmWlRFeTO4jcB0iArqaUAnQGjPtKtiRrSMP0umNWV5OKTnAKEpY2X+cdsQ3+RHd6tg7jL9Kmt5ZaWHzE8MK9mvGP1P/Nm+43COgUhjB0zDsCjDRPUfFSw1Z03m4o1yBGV0Gmy7zxd32qLWZ5MIUglLZIsVVIR44BGb9e6QE+vHm0bi6H1x4nj1OSO1XhrfTRXxDwH8KP312gROFkk2hqz/Kji3/XQB/U4Gu3D2Sq8DKCLd82maurNwqUaE6TVBREQOaiKDEPTTdc1dGMiARKxpLXzT4EUkcW69YJNvHcKxby9qkLFArg==
+Received: from SA2PR02MB7564.namprd02.prod.outlook.com (2603:10b6:806:146::23)
+ by CO6PR02MB7668.namprd02.prod.outlook.com (2603:10b6:303:aa::19)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.21.451.14; Wed, 23 Sep
+ 2026 07:08:27 +0000
+Received: from SA2PR02MB7564.namprd02.prod.outlook.com
+ ([fe80::1ea5:acb6:ebe1:e1c4]) by SA2PR02MB7564.namprd02.prod.outlook.com
+ ([fe80::1ea5:acb6:ebe1:e1c4%5]) with mapi id 15.21.0451.014; Wed, 23 Sep 2026
+ 07:08:26 +0000
+From: Khushit Shah <khushit.shah@nutanix.com>
+To: Eric Auger <eric.auger@redhat.com>
+CC: "eric.auger.pro@gmail.com" <eric.auger.pro@gmail.com>,
+ "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>, "qemu-arm@nongnu.org"
+ <qemu-arm@nongnu.org>, "kvmarm@lists.linux.dev" <kvmarm@lists.linux.dev>,
+ "peter.maydell@linaro.org" <peter.maydell@linaro.org>, Shaju Abraham
+ <shaju.abraham@nutanix.com>, "yangjinqian1@huawei.com"
+ <yangjinqian1@huawei.com>, "cohuck@redhat.com" <cohuck@redhat.com>,
+ "richard.henderson@linaro.org" <richard.henderson@linaro.org>,
+ "sebott@redhat.com" <sebott@redhat.com>, "skolothumtho@nvidia.com"
+ <skolothumtho@nvidia.com>, "philmd@oss.qualcomm.com"
+ <philmd@oss.qualcomm.com>, "maz@kernel.org" <maz@kernel.org>,
+ "oliver.upton@linux.dev" <oliver.upton@linux.dev>, "pbonzini@redhat.com"
+ <pbonzini@redhat.com>, "armbru@redhat.com" <armbru@redhat.com>,
+ "berrange@redhat.com" <berrange@redhat.com>, "abologna@redhat.com"
+ <abologna@redhat.com>, "jdenemar@redhat.com" <jdenemar@redhat.com>
+Subject: Re: [PATCH v9 01/26] scripts: introduce
+ scripts/update-aarch64-cpu-sysregs-header.py
+Thread-Topic: [PATCH v9 01/26] scripts: introduce
+ scripts/update-aarch64-cpu-sysregs-header.py
+Thread-Index: AQHdSypU2sSFWDFW9EyBBG0FzBQTOA==
+Date: Wed, 23 Sep 2026 07:08:26 +0000
+Message-ID: <2A2EDB1C-E551-445A-A5CD-AE0786D21D60@nutanix.com>
+References: <20260916144721.751810-1-eric.auger@redhat.com>
+ <20260916144721.751810-2-eric.auger@redhat.com>
+In-Reply-To: <20260916144721.751810-2-eric.auger@redhat.com>
+Accept-Language: en-GB, en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+x-ms-publictraffictype: Email
+x-ms-traffictypediagnostic: SA2PR02MB7564:EE_|CO6PR02MB7668:EE_
+x-ms-office365-filtering-correlation-id: e639d7df-d6aa-4c68-8103-08df194176d4
+x-proofpoint-crosstenant: true
+x-ms-exchange-senderadcheck: 1
+x-ms-exchange-antispam-relay: 0
+x-microsoft-antispam: BCL:0;
+ ARA:13230040|23010399003|1800799024|376014|7416014|366016|13003099007|4143699003|10067099003|6133799003|5023799004|56012099006|38070700021|18002099003|22082099003|3023799007;
+x-microsoft-antispam-message-info: kk0X3E9N6wGvpPfuib+yJGNs5jP0XazoJmBroHBdmXeSJ59T75rxoAr8yZByYbCss4sDbQkEl6m4hD4cQsRg+P4BoIt69y6QkOowEram8hI4AIIBYHIvW0PL7siqM28E7b4AlK74sZm6KsEWYk0F53vqwBPoZ7CraFLfXSuJ4XyR6qmYQy/lFQbsgE93M9P9XvntUr8ZFWZ2+2jVYkiBmBUO7AkL7gHwx1+DKzjWeXK5vXgUg+uyW+R16KQPzEZ4IbXFheWq05XwtbQvb+xc+pvVQag4/4uOSb6gF1zLIbaSNeEvCniFgSJUrAaeBr3zFX4PKbUDL/29vi3VTzEa3Q46LQ74/DRnJfdDxY6r4U082cPbSANQMZZ8Z1W9iQmaQ2PAUdT6FM+N6Qb5cfSizGQNllfYucyNOfx4rfgCttGX1jAW3gZDjtyHulIR7/tOgnW7c7evomPsMcKCFWGEnYP9x/cHD31K2qRocKMjOVEyEtSniH8v6b4awBp5N8jpQ5XWiYB6fkU7IE5FskcPHWw1kryVxS1U0tndcUTFkbtYLEbVEgU64kMlNE7b8ZaMI6hNg+ruw89FTMztVKFyyVYIGRHiOo6I0RqZTlkPZcizsEzWylH6osOjgHKI/bp2z8BfmTKK2mFcAo9aP06+W6gxA8dycCW5uQmkk5L6biE=
+x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:SA2PR02MB7564.namprd02.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(13230040)(23010399003)(1800799024)(376014)(7416014)(366016)(13003099007)(4143699003)(10067099003)(6133799003)(5023799004)(56012099006)(38070700021)(18002099003)(22082099003)(3023799007);
+ DIR:OUT; SFP:1102; 
+x-ms-exchange-antispam-messagedata-chunkcount: 1
+x-ms-exchange-antispam-messagedata-0: =?utf-8?B?cUI5Q0ZxMzNwWG93TlE0cmZRelg1VlRoMmxRbUhQanV5SUFUZDU1OHg2K0dM?=
+ =?utf-8?B?U0R1RzFOU0ZaRDFjOXZQQXFBK1ZMMnFod3Z5QTZLMXZtdzZxOXlDbFBMY1ll?=
+ =?utf-8?B?NmdNVVdxTStyQmJaaWxIaXBINDVxT2NlM1VMMEY5ODlEekpaaWxEYUJlaDdH?=
+ =?utf-8?B?Wm1yc1RBY0dzVUcrTE5CcmxpdE9ZRCtZZytrS1hrWGM2bUpxZTltZnU2bjhB?=
+ =?utf-8?B?amxiQUZkaEQ2TUp2bHYwcEZLRWJyT0RGSGlOSGNmczZxSHM3VDVkVHUrNGJr?=
+ =?utf-8?B?Z3MxWnEvSHdrSkFJZkIzL2xoY3RiSGRrcFBRZUFYa3EzRCt0TzlMK2dUYjds?=
+ =?utf-8?B?R2QwSDhXZVczSlpQNHdxMk5KRkU3Z3FNY3R0Z0ZXbHNPdWlDMUNWb0FEbjRO?=
+ =?utf-8?B?aHpRc0NOTURYdTIrcWhSLzlHcDFtdkY0NjBqV1ZpREhEV0Jvc2UwcGRtbGNH?=
+ =?utf-8?B?OXZWbTk1YU1uYVNCbDBmU1paalh2b2tBSm9KN3hoRXpmM3J0V3NmR0hwSkNm?=
+ =?utf-8?B?S3BUdDR5Tk0zMHBNWXF3Z0ZBUUZFQXc1b2JESmM5L3IrL3RkV3RSTzlVajJj?=
+ =?utf-8?B?Unl2N2drYlB1QzVKUlZRSFp2ejVrVk1Nb081dUI3ZG1GTTBWK05JSmkxeFhv?=
+ =?utf-8?B?eUd2d2p4amErVE5pZERoWHBaVCtzQXIvQnFPc0k0eFpjL3luSEFSQWtRK3M4?=
+ =?utf-8?B?bHdXeWxaTDVNU25FS3hNZFBraE8rNjZqREJuRjB4K0o0ck5QYXdXUnE0L2o2?=
+ =?utf-8?B?U2ZzYXdEcHBEVS9oTVUyTkIrWHFsdlgxQmxCUllHUFQ5a0NWZlRKaFVZajh5?=
+ =?utf-8?B?MDRmSEt3NHh6VFl3K3Z3eksyOXIwcUpaYURxbllxbkNJUUZpbGZyMW5YWmUz?=
+ =?utf-8?B?U2lrOEFjOW9zME5RUnBJU0ZtT2drOXdRV1hYZTF0aUFkMGZtb0hhZVZtSjRG?=
+ =?utf-8?B?dTlEVDlweFhuN1JqbUQ4RDl6TFc2eVhxRWJpN0g3b2orS2M2am13Nmt6NFdN?=
+ =?utf-8?B?dEF1TzRYc3FMcU9EcUxxRVdHZmtISVZLVUNRQXE5V3ZHUHR6cVNxU1RRZ3Iw?=
+ =?utf-8?B?VnhXY2t4OVJzRDRZT25kY2hLd3AzZlVEUTJKSGJsMEFpOUU0d09JeUdqZFFt?=
+ =?utf-8?B?U1dvT3NNTkJTN3V4RFJFd05zazBRODlkams5VVppOFNUbjJpRmFsakJrM1VO?=
+ =?utf-8?B?WHJUdXFlQnR5V2IrR2JzU0orekR0N0hXejIzNisyQlZBUjlvd3hLTWJ4RDBY?=
+ =?utf-8?B?ZE05WStXdDhjR3k4NnZJeHBObHZwU25PaEtabnc2K1Fia05RTldsV3FZcGVj?=
+ =?utf-8?B?dlZHU3J5V3g4UlBQNERuUVFWanF2UjgrZGVoUG9aSitacTEraG5PNVc0TDh5?=
+ =?utf-8?B?TXlrd24xZmxlenlnanp4bHR4TFNvUFpuMnlWTXM2TXlSYlFrc1g2SFZ4OE9L?=
+ =?utf-8?B?eFJWQXhkc0VCM2p6RC8zdDh4blgzZm8xc0FqYXlrQzhBM1pzZS9DeVQ5V2sr?=
+ =?utf-8?B?VXhmMjFDZSswcFdmcWROVytrU0hEdkNqWEpoZ3h5Qk93UjFPVWhUcXM2RzRB?=
+ =?utf-8?B?V0R3S1hrLzZRMWFTZUE1TEFMYlUvdHRYajl5Y3grZEVGcVFSWEZHa2JoSGRq?=
+ =?utf-8?B?L253ajR5UHpKSVA1RE4rcVFmZzhZY1ZUWHlia25KT3lmUnN3c0dMNEFoZE8z?=
+ =?utf-8?B?cEdOdDRIUTFmUjlDUy9ydmJ6S1h5ZEpFQUVORWMrV1ZxQmFvaTBqOFJ3VDQ5?=
+ =?utf-8?B?VFRZS3ZUWmZVbWlrcHpGM0psVllkcElpZGJGanVtYVZ1ZFA2NU8zYUpNTzlh?=
+ =?utf-8?B?Nk1wTFFvLzlWSlNhR3JmZlJvdXdIRjRQWU9jdnA4U3JaMGhUdDU0NGYyMnJw?=
+ =?utf-8?B?Q2VsWjh5QjJSdTJIZFlhaXdrV2ZnSmRWeXRrSjIyTnU0ekx4V0htamtsdzRG?=
+ =?utf-8?B?WXR5UTg0V0VJZHJzWnFFL0g5b3JFWFRmSWlHb2M4Z29SQ0hhOUtEVzFSSmFy?=
+ =?utf-8?B?Y012N1FVTTI5UlJrUk1WRFpiQ3ZaME9DcTZKYzUxT3g3SlVJS2hpUDgwVU0w?=
+ =?utf-8?B?Kysxb1lHS0FKazBqcnViNHpqMHM4elJXL2FjU1lsdjMvQmM3b1pTcmcwYURX?=
+ =?utf-8?B?MFdEZzlVZEdYNzdNL2ZhVHdDR2tIdlJOaTBmSDAraEFsSlk3VFl0dGNENGg2?=
+ =?utf-8?B?b0JIMmpRaXBuSS9wckJFelVHb1N3eGlheS9oTlVmRXlnL1hUREZCZFBmRHJC?=
+ =?utf-8?B?ekRaTGU2ZnRvcnowT2EyUU5JTWo0UUF5SjZMSTVGZzhQOFIxbjhpdEdkY3RE?=
+ =?utf-8?B?dGZIeSt0cmlNN1ZUeFdGUnZBSlJEU2NkV21qTnBjQzZod0lJV2hreVJua1F6?=
+ =?utf-8?Q?JLyUGP2iA/pFPkFo=3D?=
+Content-Type: text/plain; charset="utf-8"
+Content-ID: <A5182FD14EE7944585833D4FB4F256B6@namprd02.prod.outlook.com>
+Content-Transfer-Encoding: base64
 MIME-Version: 1.0
-References: <20260922215533.641-1-luoyonggang@gmail.com>
- <20260922215533.641-2-luoyonggang@gmail.com>
- <5e3818d6-c2c8-4450-a5dd-8ac8ce1d6cdd@oss.qualcomm.com>
-In-Reply-To: <5e3818d6-c2c8-4450-a5dd-8ac8ce1d6cdd@oss.qualcomm.com>
-From: Yonggang Luo <luoyonggang@gmail.com>
-Date: Wed, 23 Sep 2026 13:56:57 +0800
-X-Gm-Features: AcwNN1X4-hX5qNXbZdXK_AEGqMd-iBYuFYFlUBxCX90w7ygF_5eKx5RSbcjhcIw
-Message-ID: <CAE2XoE-HztrQY2=0tsjO82OpXcKkubQBVo4FGvgwHRUQcyFj9A@mail.gmail.com>
-Subject: Re: [PATCH v2 1/9] machine: allow -M name to differ from QOM type
-To: Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>
-Cc: qemu-devel@nongnu.org,
- =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@oss.qualcomm.com>, 
- Bibo Mao <maobibo@loongson.cn>, Xianglai Li <lixianglai@loongson.cn>, 
- Laurent Vivier <laurent@vivier.eu>, Palmer Dabbelt <palmer@dabbelt.com>, 
- Chao Liu <chao.liu@processmission.com>, qemu-arm@nongnu.org, 
- Alistair Francis <alistair.francis@wdc.com>,
- Laurent Vivier <lvivier@redhat.com>, Weiwei Li <liwei1518@gmail.com>, 
- Daniel Henrique Barboza <daniel.barboza@oss.qualcomm.com>,
- Zhao Liu <zhao1.liu@intel.com>, 
- Peter Maydell <peter.maydell@linaro.org>, Fabiano Rosas <farosas@suse.de>, 
- Song Gao <17746591750@163.com>, Markus Armbruster <armbru@redhat.com>, 
- Liu Zhiwei <zhiwei_liu@linux.alibaba.com>, qemu-riscv@nongnu.org, 
- Stafford Horne <shorne@gmail.com>, Brian Cain <brian.cain@oss.qualcomm.com>, 
- Jiaxun Yang <jiaxun.yang@flygoat.com>, Max Filippov <jcmvbkbc@gmail.com>, 
- Philippe Mathieu-Daude <philmd@mailo.com>,
- =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>, 
- Paolo Bonzini <pbonzini@redhat.com>, Eric Blake <eblake@redhat.com>
-Content-Type: multipart/alternative; boundary="000000000000737f72065c2027c1"
-Received-SPF: pass client-ip=2a00:1450:4864:33::10;
- envelope-from=luoyonggang@gmail.com; helo=mail-ed2-x10.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
+X-Exchange-RoutingPolicyChecked: V6+7m2p2o/4pi0VqSg7CNJ7uvndnpWoumX1OUd/mDy5goVj8b1CvJKlpe3IzXAv1d6u95KBsUiFVRsw9lIngIP32RQvdQxyMy+MLTyWMGlqWunESMUTextavFHnLRIcLRbeMncoQhsKR0qCHbIWuDy4go8c2twYf/x6IIaar6+QwkjBekNPcCaRjwXGF5Kp0AK9dZMT0UvfxhBYTrnFguvtQVKCqGmmFyY+82wl/sb1IPyT6dgVfrVkuLBeaXDZhJkOW1O/X5kdEIksGFhhwHYcag6Zs4z1nhp/oXUTiY4og2dTEjDN5/UIFRa2vkslNxilM9w4tkSM0MGW6Q0jcSA==
+X-OriginatorOrg: nutanix.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-AuthSource: SA2PR02MB7564.namprd02.prod.outlook.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: e639d7df-d6aa-4c68-8103-08df194176d4
+X-MS-Exchange-CrossTenant-originalarrivaltime: 23 Sep 2026 07:08:26.7005 (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: bb047546-786f-4de1-bd75-24e5b6f79043
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: ieGqrJxQ7Y1/B+Q+KwdCPldnZNlwsUaibUDuE8IzIJ7Aj67Kfgt7bhksvdPaDYuT8uule+n5tSt7bw3WxFiZKY6Ncs+nMqSMWePfo8kd9jM=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: CO6PR02MB7668
+X-Authority-Analysis: v=2.4 cv=XNKl2ghE c=1 sm=1 tr=0 ts=6ab37aed cx=c_pps
+ a=n7+I1n2axbuEV6g01BBGrA==:117 a=z/mQ4Ysz8XfWz/Q5cLBRGdckG28=:19
+ a=lCpzRmAYbLLaTzLvsPZ7Mbvzbb8=:19 a=xqWC_Br6kY4A:10 a=IkcTkHD0fZMA:10
+ a=VdqzKS8jKosA:10 a=0kUYKlekyDsA:10 a=VkNPw1HP01LnGYTKEx00:22
+ a=VofLwUrZ8Iiv6rRUPXIb:22 a=dEe9Ve2bX-KnNSUMM2s9:22 a=7CQSdrXTAAAA:8
+ a=20KFwNOVAAAA:8 a=kA8ebBLf8YxRsWkrSHoA:9 a=QEXdDO2ut3YA:10
+ a=a-qgeE7W1pNrGK8U0ZQC:22
+X-Proofpoint-GUID: Y7QC8xjBuvmWKERDX5Jwao2jA1bAy32y
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwOTIzMDAyNyBTYWx0ZWRfX2DkytuRXdfYM
+ 2TWx+Oh4iiFDVvudlFcuWwnV7a+8T7jEaeAWYPjgW4DkOAhAnXnRuTA12dMt8spLr/QfkMbxhXv
+ K9Fhtu1LpDhSprQ303NqYks+IBCZkxzwKN84KdDbaiqAag2d7pq7tYaf8HnKDYODFY75ISvrsLG
+ JJY8wWayn1Cbpxp07VAyzIZlYB8+PO4eYF94d9fMbIjWXuJI3yy/PeO6l7RNVHyRWoDdTFpZreh
+ eC8LZyaXO3q0GJRFlwZHnxT3xcsgQT+0hZnsZhY1h2vOf+LfwG1jVEhBTdvgZgmzepWWbqb+l0P
+ 0IsqBSCyvUcZTbvlg4l+qnBq9bSBmaEkYszrER3RzVwU/K7uSaayMXAPyZt3CIWlzvKq5YgLBmC
+ Ao1KQkxw6ZOD1Mnh4ZPlyx+5HjYZ9QEwGnV3k+U3y5eac52a6oTkbXSvcUFNnTZD7mU43Dmve7l
+ kpJv1K6oy2+JdyYJSqg==
+X-Proofpoint-ORIG-GUID: Y7QC8xjBuvmWKERDX5Jwao2jA1bAy32y
+X-Proofpoint-Spam-Info: AW1haW4tMjYwOTIzMDAyNyBTYWx0ZWRfX37CSmOHO/OdZ
+ YJScG9vqTcsAF9z3ks9OzuKevW2AIDHLCaWoWtY+TccJrMehW9f81lcypIQEuPcdi7bWU6b1CSl
+ PM3MGrfaaepiNvm7GRYAyMRiekICsik=
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.293,Aquarius:18.0.1176,Hydra:6.1.134,FMLib:17.12.100.49
+ definitions=2026-09-23_03,2026-09-21_02,2025-10-01_01
+X-Proofpoint-Spam-Reason: safe
+Received-SPF: pass client-ip=148.163.155.12;
+ envelope-from=khushit.shah@nutanix.com; helo=mx0b-002c1b01.pphosted.com
+X-Spam_score_int: -27
+X-Spam_score: -2.8
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- HTML_MESSAGE=0.001, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_LOW=-0.7, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -131,294 +204,147 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-To: luoyonggang@gmail.com
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
---000000000000737f72065c2027c1
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-
-On Wed, Sep 23, 2026 at 1:01=E2=80=AFPM Pierrick Bouvier <
-pierrick.bouvier@oss.qualcomm.com> wrote:
->
-> this indeed allows QOM types to coexist in same binary.
-> In such binary, how are we now supposed to differentiate two virt
-> machines from -M <name>, given they both have same alias name?
->
-> Regards,
-> Pierrick
-
-
-# Machine option demos
-
-Intended design for combined `qemu-system`. Implement to match these
-rows. Last `-M` / `-machine` / `-readconfig` wins. `qemu.conf` is
-applied first.
-
-`arch:name` binds `arch` and picks `name`. `arch:` binds `arch`.
-`x86_64:` and `i386:` then run that target's default machine.
-`aarch64:` and `riscv64:` have no default and exit with
-`No machine specified, and there is no default`. A later bare
-`name` keeps the last prefix. Help / `?` after `arch:` lists that
-target; it does not leave the target at `none`.
-
-Single-target rows are historic `qemu-system-<arch>` and stay as they
-are.
-
-## Bind and run
-
-| Command | Shows |
-|---------|-------|
-| `qemu-system -M aarch64:virt` | Bind `aarch64`, run `virt`. |
-| `qemu-system -M x86_64:q35` | Bind `x86_64`, run `q35`. |
-| `qemu-system -M riscv64:virt` | Bind `riscv64`, run `virt`. |
-| `qemu-system -M type=3Daarch64:virt` | Same as `-M aarch64:virt`. |
-| `qemu-system -machine aarch64:virt` | Same as `-M`. |
-| `qemu-system-aarch64 -M virt` | Historic. No `arch:` bind. |
-| `qemu-system-x86_64` | Single-target default (`pc` / `q35`). |
-
-## Default machine (`arch:`)
-
-| Command | Shows |
-|---------|-------|
-| `qemu-system -M x86_64:` | Bind `x86_64`, run that target's default. |
-| `qemu-system -M i386:` | Bind `i386`, run that target's default. |
-| `qemu-system -M aarch64:` | Bind `aarch64`, then `No machine specified,
-and there is no default`. |
-| `qemu-system -M riscv64:` | Bind `riscv64`, then the same error. |
-| `qemu-system -M none:` | Target `none`, empty `none` machine. |
-
-## List
-
-| Command | Shows |
-|---------|-------|
-| `qemu-system -M help` | Grouped list. `none:` first, then each target. |
-| `qemu-system -M ?` | Same as `-M help`. |
-| `qemu-system -M aarch64:help` | Flat list for `aarch64` only. |
-| `qemu-system -M aarch64:?` | Same as `-M aarch64:help`. |
-| `qemu-system -M riscv64:help` | Flat list for `riscv64` only. |
-| `qemu-system -M none:help` | `none` and `empty machine`. No other target
-group. |
-| `qemu-system-aarch64 -M help` | Flat list for that target only. |
-
-## Empty machine
-
-| Command | Shows |
-|---------|-------|
-| `qemu-system` | Target `none`, empty `none` machine. |
-| `qemu-system -M none` | Empty `none` machine. |
-| `qemu-system -M none:none` | Same. |
-| `qemu-system -M aarch64:none` | Target `aarch64`, empty `none` machine. |
-| `qemu-system -M aarch64:virt -M none` | Empty `none` machine. Target
-stays `aarch64`. |
-
-## Properties
-
-| Command | Shows |
-|---------|-------|
-| `qemu-system -M aarch64:virt,help` | Bind `aarch64`, dump `virt`
-properties. |
-| `qemu-system -M aarch64:,help` | `No machine specified, and there is no
-default`. |
-| `qemu-system -M virt,help` | `machine type "virt" needs an arch: prefix`.
-|
-| `qemu-system -M none,help` | Dump empty `none` machine properties. |
-| `qemu-system-aarch64 -M virt,help` | Historic property dump for `virt`. |
-
-## Last `-M` wins
-
-| Command | Shows |
-|---------|-------|
-| `qemu-system -M aarch64:virt -M x86_64:q35` | Target `x86_64`, machine
-`q35`. |
-| `qemu-system -M aarch64:virt -M virt` | Last name is `virt`. Keep prefix
-`aarch64`, run `virt`. |
-| `qemu-system -M virt -M aarch64:virt` | Target `aarch64`, machine `virt`.
-|
-| `qemu-system -M aarch64: -M virt` | Bind `aarch64`, then bare `virt` runs
-`virt`. |
-| `qemu-system -M aarch64:virt -M riscv64:` | Bind `riscv64`, then `No
-machine specified, and there is no default`. |
-| `qemu-system -M aarch64:virt -M riscv64:virt` | Target `riscv64`, machine
-`virt`. |
-| `qemu-system -M help -M aarch64:virt` | Help is not last; run
-`aarch64:virt`. |
-| `qemu-system -M aarch64:virt -M help` | Keep prefix `aarch64`. List has
-`virt`, not `q35`. |
-
-## `-readconfig`
-
-A `[machine] type =3D "..."` file is another machine option. The last
-of `-M`, `-machine`, and `-readconfig` wins.
-
-| Command | Shows |
-|---------|-------|
-| `-readconfig` with `type =3D "aarch64:virt"` | Bind `aarch64`, run `virt`=
-. |
-| that file, then `-M none` | Machine `none`. Target stays `aarch64`. |
-| `-readconfig` with `type =3D "none:"` | Target `none`, empty `none`
-machine. |
-| `-M aarch64:virt`, then `-readconfig` `type =3D "riscv64:virt"` | Target
-`riscv64`, machine `virt`. |
-
-## Wrong target or machine
-
-| Command | Shows |
-|---------|-------|
-| `qemu-system -M virt` | `machine type "virt" needs an arch: prefix` |
-| `qemu-system -M riscv64` | Same. Bare `riscv64` is a machine name, not a
-target. |
-| `qemu-system -M aarch64` | Same. Bare `aarch64` is a machine name, not a
-target. |
-| `qemu-system -M aarch64:q35` | Target `aarch64`, then `unsupported
-machine type: "aarch64:q35"` |
-| `qemu-system -M arm:sbsa-ref` | Target `arm`, then unsupported
-(`sbsa-ref` is `aarch64` only). |
-| `qemu-system -M aarch64:no-such` | Target `aarch64`, then `unsupported
-machine type: "aarch64:no-such"` |
-| `qemu-system -M no-such:virt` | `target 'no-such' is not available` |
-| `qemu-system -M AARCH64:virt` | `target 'AARCH64' is not available`
-(names are lowercase). |
-| `qemu-system -M none:virt` | `machine type "none:virt" is not available
-for target none` |
-
-## Odd strings
-
-| Command | Shows |
-|---------|-------|
-| `qemu-system -M :virt` | Not a prefix. Same as bare `virt`: needs
-`arch:`. |
-| `qemu-system -M :` | Not a prefix. Unsupported machine `:` / needs
-`arch:`. |
-| `qemu-system -M aarch64:virt:extra` | First colon only. Name is
-`virt:extra`. Unsupported machine. |
-| `qemu-system-x86_64 -M aarch64:virt` | Prefix `aarch64` !=3D `x86_64`. No=
-t
-available for this target. |
-| `qemu-system-aarch64 -M aarch64:virt` | Prefix matches. Run `virt`. |
-
-## Intended grouped `-M help` (no target)
-
-| Group | Contents |
-|-------|----------|
-| `none:` | only `none` |
-| `i386:` and `x86_64:` | pc / q35 / isapc / microvm / xen / nitro |
-| `arm:` and `aarch64:` | `virt-*` and 32-bit ARM boards |
-| `aarch64:` only | sbsa-ref, versal, zcu102, imx8, npcm845, raspi3/4,
-ast2700 |
-| `riscv32:` and `riscv64:` | RISC-V boards |
-| `microblaze:` | petalogix and xlnx-zynqmp-pmu |
-
-
---
-         =E6=AD=A4=E8=87=B4
-=E7=A4=BC
-=E7=BD=97=E5=8B=87=E5=88=9A
-Yours
-    sincerely,
-Yonggang Luo
-
---000000000000737f72065c2027c1
-Content-Type: text/html; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-
-<div dir=3D"ltr"><br><br>On Wed, Sep 23, 2026 at 1:01=E2=80=AFPM Pierrick B=
-ouvier &lt;<a href=3D"mailto:pierrick.bouvier@oss.qualcomm.com">pierrick.bo=
-uvier@oss.qualcomm.com</a>&gt; wrote:<br>&gt;<br>&gt; this indeed allows QO=
-M types to coexist in same binary.<br>&gt; In such binary, how are we now s=
-upposed to differentiate two virt<br>&gt; machines from -M &lt;name&gt;, gi=
-ven they both have same alias name?<br>&gt;<br>&gt; Regards,<br>&gt; Pierri=
-ck<br><br><br># Machine option demos<br><br>Intended design for combined `q=
-emu-system`. Implement to match these<br>rows. Last `-M` / `-machine` / `-r=
-eadconfig` wins. `qemu.conf` is<br>applied first.<br><br>`arch:name` binds =
-`arch` and picks `name`. `arch:` binds `arch`.<br>`x86_64:` and `i386:` the=
-n run that target&#39;s default machine.<br>`aarch64:` and `riscv64:` have =
-no default and exit with<br>`No machine specified, and there is no default`=
-. A later bare<br>`name` keeps the last prefix. Help / `?` after `arch:` li=
-sts that<br>target; it does not leave the target at `none`.<br><br>Single-t=
-arget rows are historic `qemu-system-&lt;arch&gt;` and stay as they<br>are.=
-<br><br>## Bind and run<br><br>| Command | Shows |<br>|---------|-------|<b=
-r>| `qemu-system -M aarch64:virt` | Bind `aarch64`, run `virt`. |<br>| `qem=
-u-system -M x86_64:q35` | Bind `x86_64`, run `q35`. |<br>| `qemu-system -M =
-riscv64:virt` | Bind `riscv64`, run `virt`. |<br>| `qemu-system -M type=3Da=
-arch64:virt` | Same as `-M aarch64:virt`. |<br>| `qemu-system -machine aarc=
-h64:virt` | Same as `-M`. |<br>| `qemu-system-aarch64 -M virt` | Historic. =
-No `arch:` bind. |<br>| `qemu-system-x86_64` | Single-target default (`pc` =
-/ `q35`). |<br><br>## Default machine (`arch:`)<br><br>| Command | Shows |<=
-br>|---------|-------|<br>| `qemu-system -M x86_64:` | Bind `x86_64`, run t=
-hat target&#39;s default. |<br>| `qemu-system -M i386:` | Bind `i386`, run =
-that target&#39;s default. |<br>| `qemu-system -M aarch64:` | Bind `aarch64=
-`, then `No machine specified, and there is no default`. |<br>| `qemu-syste=
-m -M riscv64:` | Bind `riscv64`, then the same error. |<br>| `qemu-system -=
-M none:` | Target `none`, empty `none` machine. |<br><br>## List<br><br>| C=
-ommand | Shows |<br>|---------|-------|<br>| `qemu-system -M help` | Groupe=
-d list. `none:` first, then each target. |<br>| `qemu-system -M ?` | Same a=
-s `-M help`. |<br>| `qemu-system -M aarch64:help` | Flat list for `aarch64`=
- only. |<br>| `qemu-system -M aarch64:?` | Same as `-M aarch64:help`. |<br>=
-| `qemu-system -M riscv64:help` | Flat list for `riscv64` only. |<br>| `qem=
-u-system -M none:help` | `none` and `empty machine`. No other target group.=
- |<br>| `qemu-system-aarch64 -M help` | Flat list for that target only. |<b=
-r><br>## Empty machine<br><br>| Command | Shows |<br>|---------|-------|<br=
->| `qemu-system` | Target `none`, empty `none` machine. |<br>| `qemu-system=
- -M none` | Empty `none` machine. |<br>| `qemu-system -M none:none` | Same.=
- |<br>| `qemu-system -M aarch64:none` | Target `aarch64`, empty `none` mach=
-ine. |<br>| `qemu-system -M aarch64:virt -M none` | Empty `none` machine. T=
-arget stays `aarch64`. |<br><br>## Properties<br><br>| Command | Shows |<br=
->|---------|-------|<br>| `qemu-system -M aarch64:virt,help` | Bind `aarch6=
-4`, dump `virt` properties. |<br>| `qemu-system -M aarch64:,help` | `No mac=
-hine specified, and there is no default`. |<br>| `qemu-system -M virt,help`=
- | `machine type &quot;virt&quot; needs an arch: prefix`. |<br>| `qemu-syst=
-em -M none,help` | Dump empty `none` machine properties. |<br>| `qemu-syste=
-m-aarch64 -M virt,help` | Historic property dump for `virt`. |<br><br>## La=
-st `-M` wins<br><br>| Command | Shows |<br>|---------|-------|<br>| `qemu-s=
-ystem -M aarch64:virt -M x86_64:q35` | Target `x86_64`, machine `q35`. |<br=
->| `qemu-system -M aarch64:virt -M virt` | Last name is `virt`. Keep prefix=
- `aarch64`, run `virt`. |<br>| `qemu-system -M virt -M aarch64:virt` | Targ=
-et `aarch64`, machine `virt`. |<br>| `qemu-system -M aarch64: -M virt` | Bi=
-nd `aarch64`, then bare `virt` runs `virt`. |<br>| `qemu-system -M aarch64:=
-virt -M riscv64:` | Bind `riscv64`, then `No machine specified, and there i=
-s no default`. |<br>| `qemu-system -M aarch64:virt -M riscv64:virt` | Targe=
-t `riscv64`, machine `virt`. |<br>| `qemu-system -M help -M aarch64:virt` |=
- Help is not last; run `aarch64:virt`. |<br>| `qemu-system -M aarch64:virt =
--M help` | Keep prefix `aarch64`. List has `virt`, not `q35`. |<br><br>## `=
--readconfig`<br><br>A `[machine] type =3D &quot;...&quot;` file is another =
-machine option. The last<br>of `-M`, `-machine`, and `-readconfig` wins.<br=
-><br>| Command | Shows |<br>|---------|-------|<br>| `-readconfig` with `ty=
-pe =3D &quot;aarch64:virt&quot;` | Bind `aarch64`, run `virt`. |<br>| that =
-file, then `-M none` | Machine `none`. Target stays `aarch64`. |<br>| `-rea=
-dconfig` with `type =3D &quot;none:&quot;` | Target `none`, empty `none` ma=
-chine. |<br>| `-M aarch64:virt`, then `-readconfig` `type =3D &quot;riscv64=
-:virt&quot;` | Target `riscv64`, machine `virt`. |<br><br>## Wrong target o=
-r machine<br><br>| Command | Shows |<br>|---------|-------|<br>| `qemu-syst=
-em -M virt` | `machine type &quot;virt&quot; needs an arch: prefix` |<br>| =
-`qemu-system -M riscv64` | Same. Bare `riscv64` is a machine name, not a ta=
-rget. |<br>| `qemu-system -M aarch64` | Same. Bare `aarch64` is a machine n=
-ame, not a target. |<br>| `qemu-system -M aarch64:q35` | Target `aarch64`, =
-then `unsupported machine type: &quot;aarch64:q35&quot;` |<br>| `qemu-syste=
-m -M arm:sbsa-ref` | Target `arm`, then unsupported (`sbsa-ref` is `aarch64=
-` only). |<br>| `qemu-system -M aarch64:no-such` | Target `aarch64`, then `=
-unsupported machine type: &quot;aarch64:no-such&quot;` |<br>| `qemu-system =
--M no-such:virt` | `target &#39;no-such&#39; is not available` |<br>| `qemu=
--system -M AARCH64:virt` | `target &#39;AARCH64&#39; is not available` (nam=
-es are lowercase). |<br>| `qemu-system -M none:virt` | `machine type &quot;=
-none:virt&quot; is not available for target none` |<br><br>## Odd strings<b=
-r><br>| Command | Shows |<br>|---------|-------|<br>| `qemu-system -M :virt=
-` | Not a prefix. Same as bare `virt`: needs `arch:`. |<br>| `qemu-system -=
-M :` | Not a prefix. Unsupported machine `:` / needs `arch:`. |<br>| `qemu-=
-system -M aarch64:virt:extra` | First colon only. Name is `virt:extra`. Uns=
-upported machine. |<br>| `qemu-system-x86_64 -M aarch64:virt` | Prefix `aar=
-ch64` !=3D `x86_64`. Not available for this target. |<br>| `qemu-system-aar=
-ch64 -M aarch64:virt` | Prefix matches. Run `virt`. |<br><br>## Intended gr=
-ouped `-M help` (no target)<br><br>| Group | Contents |<br>|-------|-------=
----|<br>| `none:` | only `none` |<br>| `i386:` and `x86_64:` | pc / q35 / i=
-sapc / microvm / xen / nitro |<br>| `arm:` and `aarch64:` | `virt-*` and 32=
--bit ARM boards |<br>| `aarch64:` only | sbsa-ref, versal, zcu102, imx8, np=
-cm845, raspi3/4, ast2700 |<br>| `riscv32:` and `riscv64:` | RISC-V boards |=
-<br>| `microblaze:` | petalogix and xlnx-zynqmp-pmu |<br><br><br>--<br>=C2=
-=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=E6=AD=A4=E8=87=B4<br>=E7=A4=BC<br>=E7=BD=97=
-=E5=8B=87=E5=88=9A<br>Yours<br>=C2=A0 =C2=A0 sincerely,<br>Yonggang Luo</di=
-v>
-
---000000000000737f72065c2027c1--
+DQoNCj4gT24gMTYgU2VwIDIwMjYsIGF0IDg6MTXigK9QTSwgRXJpYyBBdWdlciA8ZXJpYy5hdWdl
+ckByZWRoYXQuY29tPiB3cm90ZToNCj4gDQo+ICEtLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0t
+LS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tfA0KPiAgQ0FVVElPTjogRXh0
+ZXJuYWwgRW1haWwNCj4gDQo+IHwtLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0t
+LS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tIQ0KPiANCj4gSW50cm9kdWNlIGEgc2NyaXB0
+IHRoYXQgdGFrZXMgYXMgaW5wdXQgdGhlIFJlZ2lzdGVycy5qc29uIGZpbGUNCj4gZGVsaXZlcmVk
+IGluIHRoZSBBQVJDSE1SUyBGZWF0dXJlcyBNb2RlbCBkb3dubG9hZGFibGUgZnJvbSB0aGUNCj4g
+QXJtIERldmVsb3BlciBBLVByb2ZpbGUgQXJjaGl0ZWN0dXJlIEV4cGxvcmF0aW9uIFRvb2xzIHBh
+Z2U6DQo+IGh0dHBzOi8vdXJsZGVmZW5zZS5wcm9vZnBvaW50LmNvbS92Mi91cmw/dT1odHRwcy0z
+QV9fZGV2ZWxvcGVyLmFybS5jb21fQXJjaGl0ZWN0dXJlc19BLTJEUHJvZmlsZS0yNTIwQXJjaGl0
+ZWN0dXJlLTIzRG93bmxvYWRzJmQ9RHdJREFnJmM9czg4M0dwVUNPQ2hLT0hpb2NZdEdjZyZyPVBH
+V015aWduQTBOaURtVGx5UDd2T1RIb3pCd3NfVk44NnlyVm1TTWtCcDAmbT1TQWFEU3Fxd21JQzFu
+YnJoLTI4a21zNktpRllLdlc4SF9DSU9LV2dXanVjdUFuMzdqNDlnbk5Obk1JcG9QX2JLJnM9c3hP
+SUQtMkZuaGNRNTZsMW1taktiWHRYcGNFUms0b09YWWlGMy02ZmVuayZlPSANCj4gYW5kIG91dHB1
+dHMgdGhlIGxpc3Qgb2YgSUQgcmVncyBpbiB0YXJnZXQvYXJtL2NwdS1zeXNyZWdzLmguaW5jDQo+
+IHVuZGVyIHRoZSBmb3JtIG9mIERFRig8bmFtZT4sIDxvcDA+LCA8b3AxPiwgPGNybj4sIDxjcm0+
+LCA8b3AyPikuDQo+IA0KPiBXZSBvbmx5IGNhcmUgYWJvdXQgSURyZWdzIHdpdGggb3Bjb2RlcyBz
+YXRpc2Z5aW5nOg0KPiBvcDAgPSAzLCBvcDEgPSB7MCwxLDN9LCBjcm4gPSAwLCBjcm0gd2l0aGlu
+IFswLCA3XSwgb3AyIHdpdGhpbiBbMCwgN10NCj4gDQo+IFNpZ25lZC1vZmYtYnk6IEVyaWMgQXVn
+ZXIgPGVyaWMuYXVnZXJAcmVkaGF0LmNvbT4NCj4gW0NIOiBub3RlIGNvcnJlY3Qgb3AxIHJhbmdl
+LCBkb24ndCBza2lwIENDU0lEUl0NCj4gU2lnbmVkLW9mZi1ieTogQ29ybmVsaWEgSHVjayA8Y29o
+dWNrQHJlZGhhdC5jb20+DQo+IE1lc3NhZ2UtSUQ6IDwyMDI1MTIwODE2Mzc1MS42MTExODYtMi1l
+cmljLmF1Z2VyQHJlZGhhdC5jb20+DQpOaXQ6IHVuaW50ZW5kZWQ/DQpBbHNvLCBub3cgQ29ybmVs
+aWHigJlzIGNvbW1lbnQgZG9lcyBub3QgYXBwbHnigKYgKHdlIGFyZSBhY3RpdmVseSBza2lwcGlu
+ZyBDQ1NJRFIpDQoNCj4gLS0tDQo+IHNjcmlwdHMvdXBkYXRlLWFhcmNoNjQtY3B1LXN5c3JlZ3Mt
+aGVhZGVyLnB5IHwgMTQ2ICsrKysrKysrKysrKysrKysrKysNCj4gMSBmaWxlIGNoYW5nZWQsIDE0
+NiBpbnNlcnRpb25zKCspDQo+IGNyZWF0ZSBtb2RlIDEwMDc1NSBzY3JpcHRzL3VwZGF0ZS1hYXJj
+aDY0LWNwdS1zeXNyZWdzLWhlYWRlci5weQ0KPiANCj4gZGlmZiAtLWdpdCBhL3NjcmlwdHMvdXBk
+YXRlLWFhcmNoNjQtY3B1LXN5c3JlZ3MtaGVhZGVyLnB5IGIvc2NyaXB0cy91cGRhdGUtYWFyY2g2
+NC1jcHUtc3lzcmVncy1oZWFkZXIucHkNCj4gbmV3IGZpbGUgbW9kZSAxMDA3NTUNCj4gaW5kZXgg
+MDAwMDAwMDAwMC4uZWYxNDcxYTE5Nw0KPiAtLS0gL2Rldi9udWxsDQo+ICsrKyBiL3NjcmlwdHMv
+dXBkYXRlLWFhcmNoNjQtY3B1LXN5c3JlZ3MtaGVhZGVyLnB5DQo+IEBAIC0wLDAgKzEsMTQ2IEBA
+DQo+ICsjIS91c3IvYmluL2VudiBweXRob24zDQo+ICsNCj4gKyMgVGhpcyBzY3JpcHQgdGFrZXMg
+YXMgaW5wdXQgdGhlIFJlZ2lzdGVycy5qc29uIGZpbGUgZGVsaXZlcmVkIGluDQo+ICsjIHRoZSBB
+QVJDSE1SUyBGZWF0dXJlcyBNb2RlbCBkb3dubG9hZGFibGUgZnJvbSB0aGUgQXJtIERldmVsb3Bl
+cg0KPiArIyBBLVByb2ZpbGUgQXJjaGl0ZWN0dXJlIEV4cGxvcmF0aW9uIFRvb2xzIHBhZ2U6DQo+
+ICsjIGh0dHBzOi8vdXJsZGVmZW5zZS5wcm9vZnBvaW50LmNvbS92Mi91cmw/dT1odHRwcy0zQV9f
+ZGV2ZWxvcGVyLmFybS5jb21fQXJjaGl0ZWN0dXJlc19BLTJEUHJvZmlsZS0yNTIwQXJjaGl0ZWN0
+dXJlLTIzRG93bmxvYWRzJmQ9RHdJREFnJmM9czg4M0dwVUNPQ2hLT0hpb2NZdEdjZyZyPVBHV015
+aWduQTBOaURtVGx5UDd2T1RIb3pCd3NfVk44NnlyVm1TTWtCcDAmbT1TQWFEU3Fxd21JQzFuYnJo
+LTI4a21zNktpRllLdlc4SF9DSU9LV2dXanVjdUFuMzdqNDlnbk5Obk1JcG9QX2JLJnM9c3hPSUQt
+MkZuaGNRNTZsMW1taktiWHRYcGNFUms0b09YWWlGMy02ZmVuayZlPSANCj4gKyMgYW5kIG91dHB1
+dHMgdGhlIGxpc3Qgb2YgSUQgcmVncyBpbiB0YXJnZXQvYXJtL2NwdS1zeXNyZWdzLmguaW5jDQo+
+ICsjIHVuZGVyIHRoZSBmb3JtIG9mIERFRig8bmFtZT4sIDxvcDA+LCA8b3AxPiwgPGNybj4sIDxj
+cm0+LCA8b3AyPikNCj4gKyMNCj4gKyMgQ29weXJpZ2h0IChDKSAyMDI2IFJlZCBIYXQsIEluYy4N
+Cj4gKyMNCj4gKyMgQXV0aG9yczogRXJpYyBBdWdlciA8ZXJpYy5hdWdlckByZWRoYXQuY29tPg0K
+PiArIw0KPiArIyBTUERYLUxpY2Vuc2UtSWRlbnRpZmllcjogR1BMLTIuMC1vci1sYXRlcg0KPiAr
+DQo+ICsNCj4gK2ltcG9ydCBqc29uDQo+ICtpbXBvcnQgb3MNCj4gK2ltcG9ydCBzeXMNCj4gKw0K
+PiArZGVmIGlzX2RlbXV4X3JlZ2lzdGVyKHIpOg0KPiArICAgIG5hbWUgPSByLmdldCgnbmFtZScs
+ICcnKQ0KPiArDQo+ICsgICAgaWYgbmFtZS5zdGFydHN3aXRoKCJDQ1NJRFIiKToNCj4gKyAgICAg
+ICAgcmV0dXJuIFRydWUNCj4gKw0KPiArICAgIHJldHVybiBGYWxzZQ0KPiArDQo+ICsjIFNvbWUg
+cmVncyBoYXZlIG9wIGNvZGUgdmFsdWVzIGxpa2UgMDAweCwgMDAxeC4gQW55d2F5IHdlIGRvbid0
+IG5lZWQNCj4gKyMgdGhlbS4gQmVzaWRlcyBzb21lIHJlZ3MgYXJlIHVuZGVzaXJlZCBpbiB0aGUg
+Z2VuZXJhdGVkIGZpbGUgc3VjaCBhcw0KPiArIyBWTVBJRFJfRUwyIGFuZCBWUElEUl9FTDIgd2hp
+Y2ggYXJlIG91dHNpZGUgb2YgdGhlIElEcmVnIHNjb3BlIHdlDQo+ICsjIGFyZSBpbnRlcmVzdGVk
+IGluIGFuZCBhcmUgdHJpY2t5IHRvIGRlY29kZSBhcyB0aGVpciBzeXN0ZW0gYWNjZXNzb3INCj4g
+KyMgcmVmZXIgdG8gTVBJRFJfRUwxL01JRFJfRUwxIHJlc3BlY3RpdmVseQ0KPiArDQo+ICtza2lw
+bGlzdCA9IFsnQUxMSU5UJywgJ1BNJywgJ1MxXycsICdTM18nLCAnU1ZDUicsIFwNCj4gKyAgICAg
+ICAgICAgICdWTVBJRFJfRUwyJywgJ1ZQSURSX0VMMiddDQo+ICsNCj4gKyMgcmV0dXJucyB0aGUg
+aW50IHZhbHVlIG9mIGEgZ2l2ZW4gQG9wY29kZSBmb3IgYSByZWcgQGVuY29kaW5nDQo+ICtkZWYg
+Z2V0X29wY29kZShlbmNvZGluZywgb3Bjb2RlKToNCj4gKyAgICBmdmFsdWUgPSBlbmNvZGluZy5n
+ZXQob3Bjb2RlKQ0KPiArICAgIGlmIGZ2YWx1ZToNCj4gKyAgICAgICAgdmFsdWUgPSBmdmFsdWUu
+Z2V0KCd2YWx1ZScpDQo+ICsgICAgICAgIGlmIGlzaW5zdGFuY2UodmFsdWUsIHN0cik6DQo+ICsg
+ICAgICAgICAgICB2YWx1ZSA9IHZhbHVlLnN0cmlwKCInIikNCj4gKyAgICAgICAgICAgIHZhbHVl
+ID0gaW50KHZhbHVlLCAyKQ0KPiArICAgICAgICAgICAgcmV0dXJuIHZhbHVlDQo+ICsgICAgcmV0
+dXJuIC0xDQo+ICsNCj4gK2RlZiBleHRyYWN0X2lkcmVnc19mcm9tX3JlZ2lzdGVyc19qc29uKGZp
+bGVuYW1lKToNCj4gKyAgICAiIiINCj4gKyAgICBMb2FkIGEgUmVnaXN0ZXJzLmpzb24gZmlsZSBh
+bmQgZXh0cmFjdCBhbGwgSUQgcmVnaXN0ZXJzLCBkZWNvZGUgdGhlaXINCj4gKyAgICBvcGNvZGUg
+YW5kIGR1bXAgdGhlIGluZm9ybWF0aW9uIGluIHRhcmdldC9hcm0vY3B1LXN5c3JlZ3MuaC5pbmMN
+Cj4gKw0KPiArICAgIEFyZ3M6DQo+ICsgICAgICAgIGZpbGVuYW1lIChzdHIpOiBUaGUgcGF0aCB0
+byB0aGUgUmVnaXN0ZXJzLmpzb24NCj4gKyAgICByZXR1cm5zOg0KPiArICAgICAgICBpZHJlZ3M6
+IGxpc3Qgb2YgSUQgcmVncyBhbmQgdGhlaXIgZW5jb2RpbmcNCj4gKyAgICAiIiINCj4gKyAgICBp
+ZiBub3Qgb3MucGF0aC5leGlzdHMoZmlsZW5hbWUpOg0KPiArICAgICAgICBwcmludChmIkVycm9y
+OiB7ZmlsZW5hbWV9IGNvdWxkIG5vdCBiZSBmb3VuZCEiKQ0KPiArICAgICAgICByZXR1cm4ge30N
+Cj4gKw0KPiArICAgIHRyeToNCj4gKyAgICAgICAgd2l0aCBvcGVuKGZpbGVuYW1lLCAncicpIGFz
+IGY6DQo+ICsgICAgICAgICAgICByZWdpc3Rlcl9kYXRhID0ganNvbi5sb2FkKGYpDQo+ICsNCj4g
+KyAgICBleGNlcHQganNvbi5KU09ORGVjb2RlRXJyb3I6DQo+ICsgICAgICAgIHByaW50KGYiQ291
+bGQgbm90IGRlY29kZSBqc29uIGZyb20gJ3tmaWxlbmFtZX0nISIpDQo+ICsgICAgICAgIHJldHVy
+biB7fQ0KPiArICAgIGV4Y2VwdCBFeGNlcHRpb24gYXMgZToNCj4gKyAgICAgICAgcHJpbnQoZiJV
+bmV4cGVjdGVkIGVycm9yIHdoaWxlIHJlYWRpbmcge2ZpbGVuYW1lfToge2V9IikNCj4gKyAgICAg
+ICAgcmV0dXJuIHt9DQo+ICsNCj4gKyAgICByZWdpc3RlcnMgPSBbDQo+ICsgICAgICAgIHIgZm9y
+IHIgaW4gcmVnaXN0ZXJfZGF0YQ0KPiArICAgICAgICBpZiBpc2luc3RhbmNlKHIsIGRpY3QpDQo+
+ICsgICAgICAgIGFuZCByLmdldCgnX3R5cGUnKSA9PSAnUmVnaXN0ZXInDQo+ICsgICAgICAgIGFu
+ZCBub3QgaXNfZGVtdXhfcmVnaXN0ZXIocikNCj4gKyAgICBdDQo+ICsNCj4gKyAgICBpZHJlZ3Mg
+PSB7fQ0KPiArDQo+ICsgICAgZm9yIHJlZ2lzdGVyIGluIHJlZ2lzdGVyczoNCj4gKyAgICAgICAg
+cmVnX25hbWUgPSByZWdpc3Rlci5nZXQoJ25hbWUnKQ0KPiArDQo+ICsgICAgICAgIGlzX3NraXBw
+ZWQgPSBhbnkodGVybSBpbiAocmVnX25hbWUgb3IgIiIpLnVwcGVyKCkgZm9yIHRlcm0gaW4gc2tp
+cGxpc3QpDQo+ICsNCj4gKyAgICAgICAgaWYgcmVnX25hbWUgYW5kIG5vdCBpc19za2lwcGVkOg0K
+PiArICAgICAgICAgICAgYWNjZXNzb3JzID0gcmVnaXN0ZXIuZ2V0KCdhY2Nlc3NvcnMnLCBbXSkN
+Cj4gKw0KPiArICAgICAgICAgICAgZm9yIGFjY2Vzc29yIGluIGFjY2Vzc29yczoNCj4gKyAgICAg
+ICAgICAgICAgICB0eXBlID0gYWNjZXNzb3IuZ2V0KCdfdHlwZScpDQo+ICsgICAgICAgICAgICAg
+ICAgaWYgdHlwZSBpbiBbJ0FjY2Vzc29ycy5TeXN0ZW1BY2Nlc3NvciddOg0KPiArICAgICAgICAg
+ICAgICAgICAgICBlbmNvZGluZ19saXN0ID0gYWNjZXNzb3IuZ2V0KCdlbmNvZGluZycpDQo+ICsN
+Cj4gKyAgICAgICAgICAgICAgICAgICAgaWYgaXNpbnN0YW5jZShlbmNvZGluZ19saXN0LCBsaXN0
+KSBhbmQgZW5jb2RpbmdfbGlzdCBhbmQgXA0KPiArICAgICAgICAgICAgICAgICAgICAgICBpc2lu
+c3RhbmNlKGVuY29kaW5nX2xpc3RbMF0sIGRpY3QpOg0KPiArICAgICAgICAgICAgICAgICAgICAg
+ICAgZW5jb2Rpbmdfd3JhcHBlciA9IGVuY29kaW5nX2xpc3RbMF0NCj4gKyAgICAgICAgICAgICAg
+ICAgICAgICAgIGVuY29kaW5nX3NvdXJjZSA9IGVuY29kaW5nX3dyYXBwZXIuZ2V0KCdlbmNvZGlu
+Z3MnLCBcDQo+ICsgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAg
+ICAgICAgICAgICAgICAgICBlbmNvZGluZ193cmFwcGVyKQ0KPiArDQo+ICsgICAgICAgICAgICAg
+ICAgICAgICAgICBpZiBpc2luc3RhbmNlKGVuY29kaW5nX3NvdXJjZSwgZGljdCk6DQo+ICsgICAg
+ICAgICAgICAgICAgICAgICAgICAgICAgICAgIG9wMCA9IGdldF9vcGNvZGUoZW5jb2Rpbmdfc291
+cmNlLCAnb3AwJykNCj4gKyAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgb3AxID0gZ2V0
+X29wY29kZShlbmNvZGluZ19zb3VyY2UsICdvcDEnKQ0KPiArICAgICAgICAgICAgICAgICAgICAg
+ICAgICAgICAgICBvcDIgPSBnZXRfb3Bjb2RlKGVuY29kaW5nX3NvdXJjZSwgJ29wMicpDQo+ICsg
+ICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIGNybiA9IGdldF9vcGNvZGUoZW5jb2Rpbmdf
+c291cmNlLCAnQ1JuJykNCj4gKyAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgY3JtID0g
+Z2V0X29wY29kZShlbmNvZGluZ19zb3VyY2UsICdDUm0nKQ0KPiArICAgICAgICAgICAgICAgICAg
+ICAgICAgICAgICAgICBlbmNvZGluZ19zdHI9ZiJ7b3AwfSB7b3AxfSB7Y3JufSB7Y3JtfSB7b3Ay
+fSINCj4gKw0KPiArICAgICAgICAgICAgICAgICMgSUQgcmVncyBhcmUgYXNzdW1lZCB3aXRoaW4g
+dGhpcyBzY29wZQ0KPiArICAgICAgICAgICAgICAgIGlmIG9wMCA9PSAzIGFuZCAob3AxID09IDAg
+b3Igb3AxID09IDEgb3Igb3AxID09IDMpIGFuZCBcDQo+ICsgICAgICAgICAgICAgICAgICAgY3Ju
+ID09IDAgYW5kIChjcm0gPj0gMCBhbmQgY3JtIDw9IDcpIGFuZCAob3AyID49IDAgYW5kIG9wMiA8
+PSA3KToNCj4gKyAgICAgICAgICAgICAgICAgICAgaWRyZWdzW3JlZ19uYW1lXSA9IGVuY29kaW5n
+X3N0cg0KPiArDQo+ICsgICAgcmV0dXJuIGlkcmVncw0KPiArDQo+ICtpZiBfX25hbWVfXyA9PSAi
+X19tYWluX18iOg0KPiArICAgICMgU2luZ2xlIGFyZyBleHBlY3RlZDogdGhlIHBhdGggdG8gdGhl
+IFJlZ2lzdGVycy5qc29uIGZpbGUNCj4gKyAgICBpZiBsZW4oc3lzLmFyZ3YpIDwgMjoNCj4gKyAg
+ICAgICAgcHJpbnQoIlVzYWdlOiBweXRob24gc2NyaXB0cy91cGRhdGUtYWFyY2g2NC1jcHUtc3lz
+cmVncy1oZWFkZXIucHkgIg0KPiArICAgICAgICAgICAgICAiPHBhdGhfdG9fcmVnaXN0ZXJzX2pz
+b24+IikNCj4gKyAgICAgICAgc3lzLmV4aXQoMSkNCj4gKyAgICBlbHNlOg0KPiArICAgICAgICBq
+c29uX2ZpbGVfcGF0aCA9IHN5cy5hcmd2WzFdDQo+ICsNCj4gKyAgICBleHRyYWN0ZWRfcmVnaXN0
+ZXJzID0gZXh0cmFjdF9pZHJlZ3NfZnJvbV9yZWdpc3RlcnNfanNvbihqc29uX2ZpbGVfcGF0aCkN
+Cj4gKw0KPiArICAgIGlmIGV4dHJhY3RlZF9yZWdpc3RlcnM6DQo+ICsgICAgICAgIG91dHB1dF9s
+aXN0ID0gZXh0cmFjdGVkX3JlZ2lzdGVycy5pdGVtcygpDQo+ICsNCj4gKyAgICAgICAgIyBTb3J0
+IGJ5IHJlZ2lzdGVyIG5hbWUNCj4gKyAgICAgICAgc29ydGVkX291dHB1dCA9IHNvcnRlZChvdXRw
+dXRfbGlzdCwga2V5PWxhbWJkYSBpdGVtOiBpdGVtWzBdKQ0KPiArDQo+ICsgICAgICAgICMgZm9y
+bWF0IGxpbmVzIGFzIERFRig8bmFtZT4sIDxvcDA+LCA8b3AxPiwgPGNybj4sIDxjcm0+LCA8b3Ay
+PikNCj4gKyAgICAgICAgZmluYWxfb3V0cHV0ID0gIiINCj4gKyAgICAgICAgZm9yIHJlZ19uYW1l
+LCBlbmNvZGluZyBpbiBzb3J0ZWRfb3V0cHV0Og0KPiArICAgICAgICAgICAgcmVmb3JtYXR0ZWRf
+ZW5jb2RpbmcgPSBlbmNvZGluZy5yZXBsYWNlKCIgIiwgIiwgIikNCj4gKyAgICAgICAgICAgIGZp
+bmFsX291dHB1dCArPSBmIkRFRih7cmVnX25hbWV9LCB7cmVmb3JtYXR0ZWRfZW5jb2Rpbmd9KVxu
+Ig0KPiArDQo+ICsgICAgICAgIHdpdGggb3BlbigidGFyZ2V0L2FybS9jcHUtc3lzcmVncy5oLmlu
+YyIsICd3JykgYXMgZjoNCj4gKyAgICAgICAgICAgIGYud3JpdGUoIi8qIFNQRFgtTGljZW5zZS1J
+ZGVudGlmaWVyOiBHUEwtMi4wLW9yLWxhdGVyICovXG5cbiIpDQo+ICsgICAgICAgICAgICBmLndy
+aXRlKCIvKiBUaGlzIGZpbGUgaXMgYXV0b2dlbmVyYXRlZCBieSAiKQ0KPiArICAgICAgICAgICAg
+Zi53cml0ZSgic2NyaXB0cy91cGRhdGUtYWFyY2g2NC1jcHUtc3lzcmVncy1oZWFkZXIucHkgKi9c
+biIpDQo+ICsgICAgICAgICAgICBmLndyaXRlKCIvKiBERUYoPG5hbWU+LCA8b3AwPiwgPG9wMT4s
+IDxjcm4+LCA8Y3JtPiwgPG9wMj4pICovXG5cbiIpDQo+ICsgICAgICAgICAgICBmLndyaXRlKGZp
+bmFsX291dHB1dCkNCj4gKyAgICAgICAgcHJpbnQoInVwZGF0ZWQgdGFyZ2V0L2FybS9jcHUtc3lz
+cmVncy5oLmluYyIpDQo+IC0tIA0KPiAyLjUzLjANCj4gDQoNCg==
 

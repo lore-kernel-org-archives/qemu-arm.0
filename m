@@ -4,69 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 864BEC9830E
-	for <qemu-arm@archiver.kernel.org>; Wed, 23 Sep 2026 13:28:24 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5E359C9830C
+	for <qemu-arm@archiver.kernel.org>; Wed, 23 Sep 2026 13:29:12 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1x9Mzz-0003tZ-8C; Wed, 23 Sep 2026 09:26:59 -0400
+	id 1x9N00-00043Z-Nw; Wed, 23 Sep 2026 09:27:01 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <luoyonggang@gmail.com>)
- id 1x9Mw3-0004VO-Sw
- for qemu-arm@nongnu.org; Wed, 23 Sep 2026 09:23:00 -0400
-Received: from mail-dy2-x10.google.com ([2607:f8b0:4864:36::10])
+ id 1x9MwT-0005uQ-4y
+ for qemu-arm@nongnu.org; Wed, 23 Sep 2026 09:23:23 -0400
+Received: from mail-dy2-x0f.google.com ([2607:f8b0:4864:36::f])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <luoyonggang@gmail.com>)
- id 1x9Mw0-0007mS-6h
- for qemu-arm@nongnu.org; Wed, 23 Sep 2026 09:22:55 -0400
-Received: by mail-dy2-x10.google.com with SMTP id
- 5a478bee46e88-33b9e805130so672731eec.1
- for <qemu-arm@nongnu.org>; Wed, 23 Sep 2026 06:22:40 -0700 (PDT)
+ id 1x9MwP-0007ui-LZ
+ for qemu-arm@nongnu.org; Wed, 23 Sep 2026 09:23:20 -0400
+Received: by mail-dy2-x0f.google.com with SMTP id
+ 5a478bee46e88-33c11ef641aso1115406eec.1
+ for <qemu-arm@nongnu.org>; Wed, 23 Sep 2026 06:23:15 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20251104; t=1790169760; x=1790774560; darn=nongnu.org;
+ d=gmail.com; s=20251104; t=1790169795; x=1790774595; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to:content-type;
- bh=sbxGSR1jQ3mjsiUMVexNy6mEJBAK/pzPmYIAHajWfls=;
- b=WOLb50X38OEXFZS0zhxfaTQFCOMgnBi11AucXTQe+a7BcU4HcjzVyC2i/fim/WSnfy
- Zn5LcnEFh6oZiN5No2REcjYgaJYIGW9qtnl0+6+tJIdfnZod1jk3V0e5ERYEALxyACFG
- BbLQ7qTSfQFn4U1AqdgKo0g3da19L5Otlw09L5voieD3Dl3ovCTmUAardACNbdciBVx7
- wZexwBxkuUsie9Cx3pvFcseL5P7+qKsQuY73cF2GtAHluuKa+Femxom6STQs7cABqSmu
- OkuSHsa3mqmxa1cp8x+QILIwz1mzVncfCVf6GJRDllao/3yHFB0oy1ajwzBAz9un0/Vx
- nr4w==
+ bh=a+vM4VKx04YtiIcob+lp3bwuPAlEC1anahMCoo6i89k=;
+ b=hUVd2xzydDzZHMiF2wGcOHjZynU5VMul64i/lszEqQDBc6dOD/vXHpibCbHVpSzNvi
+ xe2cG2U3lbRATZvJbRgShNZinAwYK/Dunuf3fIrRbx7lC4qpxZi9XmwCRQyjmXa6Ze7s
+ 1na1bxjhmlpWiTXdIAVd+15SFJhbNjG11Ds6Xot93C+R4HeSj5NvCDIfZRgk9odV74qI
+ LfZ7DUTzySGgp+NAoGZ3rLeDojjNBYlNxRcRGgsPqVX/jZHAyuh2X6Rpu7aj9EMKZONd
+ m1dBWK/WNmAbXtt54Jp1BO2a6pc2puaxwh9w3MZ2S89KeQpYgIAQBNTZwtHcGlN/9MRr
+ 14gA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20260707; t=1790169760; x=1790774560;
+ d=1e100.net; s=20260707; t=1790169795; x=1790774595;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
  :to:cc:subject:date:message-id:reply-to:content-type;
- bh=sbxGSR1jQ3mjsiUMVexNy6mEJBAK/pzPmYIAHajWfls=;
- b=HzmVCIW4hiikpF89uiOwPxsl6B8Ug9ZGPRAii3ZWf1j3w0LzEGX3yjZPQ6Q/gSE7qE
- 0JRheTvbYYw7+M79q8AEiXlDY1N7+ii/8UB4Sz7kZOHMlltWaa+9W5Adr2rDlNwlRFAk
- sgVGhAD+l2ByWme/j7QfO18x28rxEJcNX49S53vreTmL/sY9eOBh1T83BKprgXi4VAAo
- pZZWAKb9ychrC2Wpsno6bk1getrRdKIgdW2WIWDxr31EPp6BhCqzsv2MFZZdklGn+BYj
- XVBW97QfpWFFlY2os9+aHT+lVB2kCC3nhP4XpKdSTVQn4LaUe0BjVXBQPTskDwrjq5Ke
- AtLQ==
+ bh=a+vM4VKx04YtiIcob+lp3bwuPAlEC1anahMCoo6i89k=;
+ b=Ehve0WbBpwvMR38dsJcLwTLlLdz+TUcZNWtFIH2GjOx800NB8+0eoDiK4qFb0Tw4tL
+ pOV9y7clvreGyCx32H9HzmoKu7epK58zo9Zv/NXJMJpV43LklIKLCHGjMZRfRwCkk80I
+ WE1eQGin1kiyKoXOOqyPe7QpA2p9XyCJte1zxtcGoCI3JkdgCR0+9FNKR0E5OsYMMOWH
+ 4moyxq7/NlDXOyf1XO41hwrxL74W3iooTFKWjsBgVXxkWGygufeKFVDZMzhEH4ZHp6Ii
+ yAmfanP+VmoK0IqJpk2dCzg3RZMizAYIMpb2V1DdYDmUo+e+0PPtvuv1f9XsRjsL2CMm
+ RGAA==
 X-Forwarded-Encrypted: i=1;
- AKwUvByw1NYfe+VYHq/SW/HQ9Tv0lOIjNKswcmpph6V5xLWSMgOQwSKvpVyKyEnvM13gG4mRXkzv6ZXakA==@nongnu.org
-X-Gm-Message-State: AFuF++k7s5y90Yh0TZlLcZIDpNFaGy/SsbalwAK1U6bzAlvMA+gOvLiS
- NKKHfmLCmA9cGdX68jwPFtgooatP1BXtrNbffNctluxZCIRclEf0i6r+
-X-Gm-Gg: AYBFou08dBj+7m4qHkAMVfw7Nk9zUpV125DinZg3Ct/1wAfBsN01Vg25ePNsKveOotP
- ohsB6DE8ag4XhbKMTfaeGczx8ZXanlH4mGN4rZ2OEOh9z4tdCagyVIbTSla8VLT3ZXZwueJ6Dhj
- oEgpZmnhI+tAyu4qlefTsH2+irztfWHFnHCxi5y/FdHibsDFSH2cMw68Os98o7ESdR+zt1+MMHJ
- +OY2zKIf4EvdwBln95KEgoxNfLhnBrlAyxLaGfZtaPJtnkeUmNZJ9tTssB9/YcWiXSX5QzEvAlU
- DLrTr6d1ZLkNX4ckirkLw0YfE5IC9yPzk68Vc4IgwtC1fIvWtWsYe6BqZdvbsZ39PzQS9cLgKs0
- iL1dUHd1X+u/r13qoCdrA87F6kJCrQQfrQkoDLqr/KaWl8lI27jQQFXL92Bkk+K6D7riDWDgA8n
- LU41v5NcLXvIiUPx2X+NcBqIin5XQOOvhH9s+Pnt4fK+lw6VGoy6We3i/0heY3sTjlRmsHpPTpA
- T2e82Kz87hW3TT+H66LpmNVzxsI1r4=
-X-Received: by 2002:a05:7300:fb0a:b0:339:66ff:51b3 with SMTP id
- 5a478bee46e88-33e8e2b67b8mr2443005eec.37.1790169759593; 
- Wed, 23 Sep 2026 06:22:39 -0700 (PDT)
+ AKwUvBzo9x2/JH0y5+hjui0v0hTcDSB2hW2NctKgjb5iMj+NGlPJ0xHx0lqxpMOXh55FCVj6tq3O9+9Nvw==@nongnu.org
+X-Gm-Message-State: AFuF++l5Y9i8S38yFbUoxdN1MYAdZV1bcjBdtpx8JHeHao7CUTnZSuRm
+ BKIXMXX5cqjX5mG0Gq0zFD47b8Ao+XO2nnOlSUGvaL9ZZ+y8ZhjWHIUe
+X-Gm-Gg: AYBFou3Wdt7nqUibH28vDmgODdBuGZ8QEpUn9tQyrbTOTmMSqa7/YK/wp5I8wNXxqq0
+ iyrVJvKVOak7kpwFlAwX5OfKrwSoNfHku6q9lcGUoCpscqMu4P+rb2zPH2vABzYF5WVylURNalF
+ eXxbUx0vUIZ6QcRj8mVWpTMtw8XR5u2DFnfjDYFMLKA+KFqyJJvYqH5z43b1eVldZx9xODiwvE6
+ 8jcfnHy1p+W/nYtDIQ2YwO5XO2eOBAndQlERiAnyHxVmv46NtzE/D9tQba6jWX6QP6NGIHTQw/l
+ VbYz4HOI1j5Yz3ilPKtHJE295XK3C+uian5eYJ3myhy4WKiLeQNu6JlEGP7rIVyEGvWwtMhDx0Z
+ uAfktIvNHUVkzq/Ojbdw5vamR3kAHFX9PR5M1atyh8wc5+9ER1TLM5ZkzpWU52AG2wW5OtvTtRu
+ +rEh0O9ZVUE+0mSYgCa+uax9bCORdoa1bNSELHkcR0Ls7zMxFtrXd+e4zC++rglvevLFw2uUUoS
+ +gAIJDdNhUlv0WC3cAbPLbKmaZby03EzPtLJuBOLw==
+X-Received: by 2002:a05:7300:3e91:b0:327:affc:b506 with SMTP id
+ 5a478bee46e88-33e8c72c478mr2326450eec.15.1790169794702; 
+ Wed, 23 Sep 2026 06:23:14 -0700 (PDT)
 Received: from WIN-BH9M8FJACR9 ([103.94.185.75])
  by smtp.googlemail.com with ESMTPSA id
- 5a478bee46e88-33e97236754sm5553695eec.29.2026.09.23.06.22.32
+ 5a478bee46e88-33e97236754sm5553695eec.29.2026.09.23.06.23.07
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 23 Sep 2026 06:22:38 -0700 (PDT)
+ Wed, 23 Sep 2026 06:23:13 -0700 (PDT)
 From: Yonggang Luo <luoyonggang@gmail.com>
 To: qemu-devel@nongnu.org
 Cc: Cornelia Huck <cohuck@redhat.com>, xen-devel@lists.xenproject.org,
@@ -97,16 +97,17 @@ Cc: Cornelia Huck <cohuck@redhat.com>, xen-devel@lists.xenproject.org,
  Markus Armbruster <armbru@redhat.com>, Weiwei Li <liwei1518@gmail.com>,
  Song Gao <17746591750@163.com>, qemu-arm@nongnu.org, qemu-s390x@nongnu.org,
  Brian Cain <brian.cain@oss.qualcomm.com>
-Subject: [PATCH v3 035/114] target/riscv: gate CPU types with TargetInfo
-Date: Wed, 23 Sep 2026 21:15:09 +0800
-Message-ID: <20260923131635.1894-36-luoyonggang@gmail.com>
+Subject: [PATCH v3 039/114] target/riscv: preserve signed XLEN semantics
+ without target_long
+Date: Wed, 23 Sep 2026 21:15:13 +0800
+Message-ID: <20260923131635.1894-40-luoyonggang@gmail.com>
 X-Mailer: git-send-email 2.52.0.windows.1
 In-Reply-To: <20260923131635.1894-1-luoyonggang@gmail.com>
 References: <20260923131635.1894-1-luoyonggang@gmail.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:36::10;
- envelope-from=luoyonggang@gmail.com; helo=mail-dy2-x10.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:36::f;
+ envelope-from=luoyonggang@gmail.com; helo=mail-dy2-x0f.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -128,371 +129,196 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-- Gate CPU types with TypeInfo.is_available instead of
-  TARGET_RISCV32/64: DEFINE_RISCV_CPU_AVAIL, DEFINE_RISCV64_CPU,
-  and DEFINE_RISCV_CPU_32_64SYS.
-- Add RISCVCPUDef.target_init. max and bare keep RV64/SV57 in
-  the TypeInfo; on riscv32 the callbacks set RV32/SV32 after
-  merge. Do not inherit the parent pointer.
-- Validate RV64/128 misa_mxl_max only when not target_riscv32().
+- Mask pointer-masked addresses with extract64/sextract64 at
+  runtime XLEN instead of a target_long arithmetic shift.
+- Pass vector vx scalars as int64_t after sextract64 from the
+  helper tl slot so RV32 keeps bit 31 as the sign bit.
+- Leave every target_ulong helper argument unchanged.
 
 Signed-off-by: Yonggang Luo <luoyonggang@gmail.com>
 ---
- target/riscv/cpu.c | 128 ++++++++++++++++++++++++++++++---------------
- target/riscv/cpu.h |   7 +++
- 2 files changed, 93 insertions(+), 42 deletions(-)
+ target/riscv/internals.h            | 12 ++++++++----
+ target/riscv/tcg/vector_helper.c    | 21 +++++++++++----------
+ target/riscv/tcg/vector_internals.c |  2 +-
+ target/riscv/tcg/vector_internals.h |  9 +++++----
+ 4 files changed, 25 insertions(+), 19 deletions(-)
 
-diff --git a/target/riscv/cpu.c b/target/riscv/cpu.c
-index c6f17390755..4343f431d62 100644
---- a/target/riscv/cpu.c
-+++ b/target/riscv/cpu.c
-@@ -1586,18 +1586,37 @@ static const MISAExtInfo misa_ext_info_arr[] = {
-     MISA_EXT_INFO(RVB, "b", "Bit manipulation (Zba_Zbb_Zbs)")
- };
- 
-+static void riscv_max_target_init(RISCVCPUClass *mcc)
-+{
-+    if (!target_riscv32()) {
-+        return;
-+    }
-+    mcc->def->misa_mxl_max = MXL_RV32;
-+    mcc->def->cfg.max_satp_mode = VM_1_10_SV32;
-+}
-+
-+static void riscv_bare_target_init(RISCVCPUClass *mcc)
-+{
-+    if (!target_riscv32()) {
-+        return;
-+    }
-+    /* BARE has no misa_mxl_max, so the class_base_init satp clamp skips it. */
-+    mcc->def->cfg.max_satp_mode = VM_1_10_SV32;
-+}
-+
- static void riscv_cpu_validate_misa_mxl(RISCVCPUClass *mcc)
+diff --git a/target/riscv/internals.h b/target/riscv/internals.h
+index 1ee7e99e988..0844867246d 100644
+--- a/target/riscv/internals.h
++++ b/target/riscv/internals.h
+@@ -214,6 +214,7 @@ static inline target_ulong adjust_addr_body(CPURISCVState *env,
  {
-     CPUClass *cc = CPU_CLASS(mcc);
+     RISCVPmPmm pmm = PMM_FIELD_DISABLED;
+     uint32_t pmlen = 0;
++    unsigned kept;
+     bool signext = false;
  
-     /* Validate that MISA_MXL is set properly. */
-     switch (mcc->def->misa_mxl_max) {
--#ifdef TARGET_RISCV64
-     case MXL_RV64:
-     case MXL_RV128:
-+        if (target_riscv32()) {
-+            g_assert_not_reached();
-+        }
-         cc->gdb_core_xml_file = "riscv-64bit-cpu.xml";
-         break;
--#endif
-     case MXL_RV32:
-         cc->gdb_core_xml_file = "riscv-32bit-cpu.xml";
-         break;
-@@ -3092,6 +3111,8 @@ static void riscv_cpu_class_base_init(ObjectClass *c, const void *data)
+     /* do nothing for rv32 mode */
+@@ -235,13 +236,16 @@ static inline target_ulong adjust_addr_body(CPURISCVState *env,
  
-     if (pcc->def) {
-         mcc->def = g_memdup2(pcc->def, sizeof(*pcc->def));
-+        /* TypeInfo supplies target_init; do not inherit the parent pointer. */
-+        mcc->def->target_init = NULL;
-     } else {
-         mcc->def = g_new0(RISCVCPUDef, 1);
-     }
-@@ -3152,6 +3173,9 @@ static void riscv_cpu_class_base_init(ObjectClass *c, const void *data)
-             mcc->def->custom_csrs = def->custom_csrs;
-         }
- #endif
-+        if (def->target_init) {
-+            def->target_init(mcc);
-+        }
-     }
+     signext = riscv_cpu_virt_mem_enabled(env, is_virt_addr);
+     pmlen = riscv_pm_get_pmlen(pmm);
+-    addr = addr << pmlen;
  
-     if (!object_class_is_abstract(c)) {
-@@ -3262,6 +3286,7 @@ void riscv_isa_write_fdt(RISCVCPU *cpu, void *fdt, char *nodename)
-         .name = (type_name),                                \
-         .parent = (parent_type_name),                       \
-         .abstract = true,                                   \
-+        .is_available = target_is_base_riscv,               \
-         .class_data = &(const RISCVCPUDef) {                \
-              .priv_spec = RISCV_PROFILE_ATTR_UNUSED,        \
-              .vext_spec = RISCV_PROFILE_ATTR_UNUSED,        \
-@@ -3270,10 +3295,11 @@ void riscv_isa_write_fdt(RISCVCPU *cpu, void *fdt, char *nodename)
-         },                                                  \
-     }
- 
--#define DEFINE_RISCV_CPU(type_name, parent_type_name, ...)  \
-+#define DEFINE_RISCV_CPU_AVAIL(type_name, parent_type_name, avail, ...) \
-     {                                                       \
-         .name = (type_name),                                \
-         .parent = (parent_type_name),                       \
-+        .is_available = (avail),                            \
-         .class_data = &(const RISCVCPUDef) {                \
-              .priv_spec = RISCV_PROFILE_ATTR_UNUSED,        \
-              .vext_spec = RISCV_PROFILE_ATTR_UNUSED,        \
-@@ -3282,8 +3308,37 @@ void riscv_isa_write_fdt(RISCVCPU *cpu, void *fdt, char *nodename)
-         },                                                  \
-     }
- 
-+#define DEFINE_RISCV_CPU(type_name, parent_type_name, ...)  \
-+    DEFINE_RISCV_CPU_AVAIL(type_name, parent_type_name,     \
-+                           target_is_base_riscv, __VA_ARGS__)
-+
-+#define DEFINE_RISCV64_CPU(type_name, parent_type_name, ...) \
-+    DEFINE_RISCV_CPU_AVAIL(type_name, parent_type_name,     \
-+                           target_is_riscv64, __VA_ARGS__)
-+
-+/*
-+ * Original:
-+ *   #if defined(TARGET_RISCV32) || \
-+ *       (defined(TARGET_RISCV64) && !defined(CONFIG_USER_ONLY))
-+ *
-+ * RV32 models on every riscv32 binary, and on system riscv64
-+ * (-cpu rv32 / e31 / ibex). Not linux-user riscv64.
-+ */
-+static bool riscv32_64sys_available(const TargetInfo *ti)
-+{
-+#ifdef CONFIG_USER_ONLY
-+    return target_is_riscv32(ti);
-+#else
-+    return target_is_base_riscv(ti);
-+#endif
-+}
-+
-+#define DEFINE_RISCV_CPU_32_64SYS(type_name, parent_type_name, ...) \
-+    DEFINE_RISCV_CPU_AVAIL(type_name, parent_type_name,     \
-+                           riscv32_64sys_available, __VA_ARGS__)
-+
- #define DEFINE_PROFILE_CPU(type_name, parent_type_name, profile_)    \
--    DEFINE_RISCV_CPU(type_name, parent_type_name,             \
-+    DEFINE_RISCV64_CPU(type_name, parent_type_name,             \
-         .profile = &(profile_))
- 
- static void riscv_cpu_instance_finalize(Object *obj)
-@@ -3311,6 +3366,7 @@ static const TypeInfo riscv_cpu_type_infos[] = {
-         .class_size = sizeof(RISCVCPUClass),
-         .class_init = riscv_cpu_common_class_init,
-         .class_base_init = riscv_cpu_class_base_init,
-+        .is_available = target_is_base_riscv,
-     },
- 
-     DEFINE_ABSTRACT_RISCV_CPU(TYPE_RISCV_DYNAMIC_CPU, TYPE_RISCV_CPU,
-@@ -3339,21 +3395,14 @@ static const TypeInfo riscv_cpu_type_infos[] = {
-          * only MBARE will be available if the user doesn't enable
-          * a mode manually (see riscv_cpu_satp_mode_finalize()).
-          */
--#ifdef TARGET_RISCV32
--        .cfg.max_satp_mode = VM_1_10_SV32,
--#else
-         .cfg.max_satp_mode = VM_1_10_SV57,
--#endif
-+        .target_init = riscv_bare_target_init,
-     ),
- 
-     DEFINE_RISCV_CPU(TYPE_RISCV_CPU_MAX, TYPE_RISCV_DYNAMIC_CPU,
--#if defined(TARGET_RISCV32)
--        .misa_mxl_max = MXL_RV32,
--        .cfg.max_satp_mode = VM_1_10_SV32,
--#elif defined(TARGET_RISCV64)
-         .misa_mxl_max = MXL_RV64,
-         .cfg.max_satp_mode = VM_1_10_SV57,
--#endif
-+        .target_init = riscv_max_target_init,
-     ),
- 
-     DEFINE_ABSTRACT_RISCV_CPU(TYPE_RISCV_CPU_SIFIVE_E, TYPE_RISCV_VENDOR_CPU,
-@@ -3378,9 +3427,7 @@ static const TypeInfo riscv_cpu_type_infos[] = {
-         .cfg.pmp_regions = 8
-     ),
- 
--#if defined(TARGET_RISCV32) || \
--    (defined(TARGET_RISCV64) && !defined(CONFIG_USER_ONLY))
--    DEFINE_RISCV_CPU(TYPE_RISCV_CPU_BASE32, TYPE_RISCV_DYNAMIC_CPU,
-+    DEFINE_RISCV_CPU_32_64SYS(TYPE_RISCV_CPU_BASE32, TYPE_RISCV_DYNAMIC_CPU,
-         .cfg.max_satp_mode = VM_1_10_SV32,
-         .misa_mxl_max = MXL_RV32,
- 
-@@ -3406,7 +3453,7 @@ static const TypeInfo riscv_cpu_type_infos[] = {
-         .cfg.ext_svvptc = true,
-     ),
- 
--    DEFINE_RISCV_CPU(TYPE_RISCV_CPU_IBEX, TYPE_RISCV_VENDOR_CPU,
-+    DEFINE_RISCV_CPU_32_64SYS(TYPE_RISCV_CPU_IBEX, TYPE_RISCV_VENDOR_CPU,
-         .misa_mxl_max = MXL_RV32,
-         .misa_ext = RVI | RVM | RVC | RVU,
-         .priv_spec = PRIV_VERSION_1_12_0,
-@@ -3423,37 +3470,35 @@ static const TypeInfo riscv_cpu_type_infos[] = {
-         .cfg.ext_xlrbr = true
-     ),
- 
--    DEFINE_RISCV_CPU(TYPE_RISCV_CPU_SIFIVE_E31, TYPE_RISCV_CPU_SIFIVE_E,
-+    DEFINE_RISCV_CPU_32_64SYS(TYPE_RISCV_CPU_SIFIVE_E31, TYPE_RISCV_CPU_SIFIVE_E,
-         .misa_mxl_max = MXL_RV32
-     ),
--    DEFINE_RISCV_CPU(TYPE_RISCV_CPU_SIFIVE_E34, TYPE_RISCV_CPU_SIFIVE_E,
-+    DEFINE_RISCV_CPU_32_64SYS(TYPE_RISCV_CPU_SIFIVE_E34, TYPE_RISCV_CPU_SIFIVE_E,
-         .misa_mxl_max = MXL_RV32,
-         .misa_ext = RVF,  /* IMAFCU */
-     ),
- 
--    DEFINE_RISCV_CPU(TYPE_RISCV_CPU_SIFIVE_U34, TYPE_RISCV_CPU_SIFIVE_U,
-+    DEFINE_RISCV_CPU_32_64SYS(TYPE_RISCV_CPU_SIFIVE_U34, TYPE_RISCV_CPU_SIFIVE_U,
-         .misa_mxl_max = MXL_RV32,
-     ),
- 
--    DEFINE_RISCV_CPU(TYPE_RISCV_CPU_RV32I, TYPE_RISCV_BARE_CPU,
-+    DEFINE_RISCV_CPU_32_64SYS(TYPE_RISCV_CPU_RV32I, TYPE_RISCV_BARE_CPU,
-         .misa_mxl_max = MXL_RV32,
-         .misa_ext = RVI
-     ),
--    DEFINE_RISCV_CPU(TYPE_RISCV_CPU_RV32E, TYPE_RISCV_BARE_CPU,
-+    DEFINE_RISCV_CPU_32_64SYS(TYPE_RISCV_CPU_RV32E, TYPE_RISCV_BARE_CPU,
-         .misa_mxl_max = MXL_RV32,
-         .misa_ext = RVE
-     ),
--#endif
- 
--#if (defined(TARGET_RISCV64) && !defined(CONFIG_USER_ONLY))
--    DEFINE_RISCV_CPU(TYPE_RISCV_CPU_MAX32, TYPE_RISCV_DYNAMIC_CPU,
-+#ifndef CONFIG_USER_ONLY
-+    DEFINE_RISCV64_CPU(TYPE_RISCV_CPU_MAX32, TYPE_RISCV_DYNAMIC_CPU,
-         .cfg.max_satp_mode = VM_1_10_SV32,
-         .misa_mxl_max = MXL_RV32,
-     ),
- #endif
- 
--#if defined(TARGET_RISCV64)
--    DEFINE_RISCV_CPU(TYPE_RISCV_CPU_BASE64, TYPE_RISCV_DYNAMIC_CPU,
-+    DEFINE_RISCV64_CPU(TYPE_RISCV_CPU_BASE64, TYPE_RISCV_DYNAMIC_CPU,
-         .cfg.max_satp_mode = VM_1_10_SV57,
-         .misa_mxl_max = MXL_RV64,
- 
-@@ -3479,19 +3524,19 @@ static const TypeInfo riscv_cpu_type_infos[] = {
-         .cfg.ext_svvptc = true,
-     ),
- 
--    DEFINE_RISCV_CPU(TYPE_RISCV_CPU_SIFIVE_E51, TYPE_RISCV_CPU_SIFIVE_E,
-+    DEFINE_RISCV64_CPU(TYPE_RISCV_CPU_SIFIVE_E51, TYPE_RISCV_CPU_SIFIVE_E,
-         .misa_mxl_max = MXL_RV64
-     ),
- 
--    DEFINE_RISCV_CPU(TYPE_RISCV_CPU_SIFIVE_U54, TYPE_RISCV_CPU_SIFIVE_U,
-+    DEFINE_RISCV64_CPU(TYPE_RISCV_CPU_SIFIVE_U54, TYPE_RISCV_CPU_SIFIVE_U,
-         .misa_mxl_max = MXL_RV64,
-     ),
- 
--    DEFINE_RISCV_CPU(TYPE_RISCV_CPU_SHAKTI_C, TYPE_RISCV_CPU_SIFIVE_U,
-+    DEFINE_RISCV64_CPU(TYPE_RISCV_CPU_SHAKTI_C, TYPE_RISCV_CPU_SIFIVE_U,
-         .misa_mxl_max = MXL_RV64,
-     ),
- 
--    DEFINE_RISCV_CPU(TYPE_RISCV_CPU_THEAD_C906, TYPE_RISCV_VENDOR_CPU,
-+    DEFINE_RISCV64_CPU(TYPE_RISCV_CPU_THEAD_C906, TYPE_RISCV_VENDOR_CPU,
-         .misa_mxl_max = MXL_RV64,
-         .misa_ext = RVG | RVC | RVS | RVU,
-         .priv_spec = PRIV_VERSION_1_11_0,
-@@ -3519,7 +3564,7 @@ static const TypeInfo riscv_cpu_type_infos[] = {
- #endif
-     ),
- 
--    DEFINE_RISCV_CPU(TYPE_RISCV_CPU_THEAD_C908, TYPE_RISCV_VENDOR_CPU,
-+    DEFINE_RISCV64_CPU(TYPE_RISCV_CPU_THEAD_C908, TYPE_RISCV_VENDOR_CPU,
-         .misa_mxl_max = MXL_RV64,
-         .misa_ext = RVI | RVM | RVA | RVF | RVD | RVC | RVS | RVU,
-         .priv_spec = PRIV_VERSION_1_12_0,
-@@ -3566,12 +3611,12 @@ static const TypeInfo riscv_cpu_type_infos[] = {
- #endif
-     ),
- 
--    DEFINE_RISCV_CPU(TYPE_RISCV_CPU_THEAD_C908V, TYPE_RISCV_CPU_THEAD_C908,
-+    DEFINE_RISCV64_CPU(TYPE_RISCV_CPU_THEAD_C908V, TYPE_RISCV_CPU_THEAD_C908,
-         .misa_ext = RVI | RVM | RVA | RVF | RVD | RVC | RVS | RVU | RVV,
-         .vext_spec = VEXT_VERSION_1_00_0,
-     ),
- 
--    DEFINE_RISCV_CPU(TYPE_RISCV_CPU_TT_ASCALON, TYPE_RISCV_VENDOR_CPU,
-+    DEFINE_RISCV64_CPU(TYPE_RISCV_CPU_TT_ASCALON, TYPE_RISCV_VENDOR_CPU,
-         .misa_mxl_max = MXL_RV64,
-         .misa_ext = RVG | RVC | RVS | RVU | RVH | RVV,
-         .priv_spec = PRIV_VERSION_1_13_0,
-@@ -3635,7 +3680,7 @@ static const TypeInfo riscv_cpu_type_infos[] = {
-         .cfg.max_satp_mode = VM_1_10_SV57,
-     ),
- 
--    DEFINE_RISCV_CPU(TYPE_RISCV_CPU_VEYRON_V1, TYPE_RISCV_VENDOR_CPU,
-+    DEFINE_RISCV64_CPU(TYPE_RISCV_CPU_VEYRON_V1, TYPE_RISCV_VENDOR_CPU,
-         .misa_mxl_max = MXL_RV64,
-         .misa_ext = RVG | RVC | RVS | RVU | RVH,
-         .priv_spec = PRIV_VERSION_1_12_0,
-@@ -3671,7 +3716,7 @@ static const TypeInfo riscv_cpu_type_infos[] = {
-         .cfg.max_satp_mode = VM_1_10_SV48,
-     ),
- 
--    DEFINE_RISCV_CPU(TYPE_RISCV_CPU_XIANGSHAN_NANHU, TYPE_RISCV_VENDOR_CPU,
-+    DEFINE_RISCV64_CPU(TYPE_RISCV_CPU_XIANGSHAN_NANHU, TYPE_RISCV_VENDOR_CPU,
-         .misa_mxl_max = MXL_RV64,
-         .misa_ext = RVG | RVC | RVB | RVS | RVU,
-         .priv_spec = PRIV_VERSION_1_12_0,
-@@ -3694,7 +3739,7 @@ static const TypeInfo riscv_cpu_type_infos[] = {
-         .cfg.max_satp_mode = VM_1_10_SV39,
-     ),
- 
--    DEFINE_RISCV_CPU(TYPE_RISCV_CPU_XIANGSHAN_KMH, TYPE_RISCV_VENDOR_CPU,
-+    DEFINE_RISCV64_CPU(TYPE_RISCV_CPU_XIANGSHAN_KMH, TYPE_RISCV_VENDOR_CPU,
-         .misa_mxl_max = MXL_RV64,
-         .misa_ext = RVG | RVC | RVB | RVS | RVU | RVH | RVV,
-         .priv_spec = PRIV_VERSION_1_13_0,
-@@ -3754,7 +3799,7 @@ static const TypeInfo riscv_cpu_type_infos[] = {
-     ),
- 
-     /* https://mips.com/products/hardware/p8700/ */
--    DEFINE_RISCV_CPU(TYPE_RISCV_CPU_MIPS_P8700, TYPE_RISCV_VENDOR_CPU,
-+    DEFINE_RISCV64_CPU(TYPE_RISCV_CPU_MIPS_P8700, TYPE_RISCV_VENDOR_CPU,
-         .misa_mxl_max = MXL_RV64,
-         .misa_ext = RVI | RVM | RVA | RVF | RVD | RVC | RVS | RVU,
-         .priv_spec = PRIV_VERSION_1_12_0,
-@@ -3777,16 +3822,16 @@ static const TypeInfo riscv_cpu_type_infos[] = {
-     ),
- 
- #if defined(CONFIG_TCG) && !defined(CONFIG_USER_ONLY)
--    DEFINE_RISCV_CPU(TYPE_RISCV_CPU_BASE128, TYPE_RISCV_DYNAMIC_CPU,
-+    DEFINE_RISCV64_CPU(TYPE_RISCV_CPU_BASE128, TYPE_RISCV_DYNAMIC_CPU,
-         .cfg.max_satp_mode = VM_1_10_SV57,
-         .misa_mxl_max = MXL_RV128,
-     ),
- #endif /* CONFIG_TCG */
--    DEFINE_RISCV_CPU(TYPE_RISCV_CPU_RV64I, TYPE_RISCV_BARE_CPU,
-+    DEFINE_RISCV64_CPU(TYPE_RISCV_CPU_RV64I, TYPE_RISCV_BARE_CPU,
-         .misa_mxl_max = MXL_RV64,
-         .misa_ext = RVI
-     ),
--    DEFINE_RISCV_CPU(TYPE_RISCV_CPU_RV64E, TYPE_RISCV_BARE_CPU,
-+    DEFINE_RISCV64_CPU(TYPE_RISCV_CPU_RV64E, TYPE_RISCV_BARE_CPU,
-         .misa_mxl_max = MXL_RV64,
-         .misa_ext = RVE
-     ),
-@@ -3795,7 +3840,6 @@ static const TypeInfo riscv_cpu_type_infos[] = {
-     DEFINE_PROFILE_CPU(TYPE_RISCV_CPU_RVA22S64,  TYPE_RISCV_CPU_RV64I,  RVA22S64),
-     DEFINE_PROFILE_CPU(TYPE_RISCV_CPU_RVA23U64,  TYPE_RISCV_CPU_RV64I,  RVA23U64),
-     DEFINE_PROFILE_CPU(TYPE_RISCV_CPU_RVA23S64,  TYPE_RISCV_CPU_RV64I,  RVA23S64),
--#endif /* TARGET_RISCV64 */
- };
- 
- DEFINE_TYPES(riscv_cpu_type_infos)
-diff --git a/target/riscv/cpu.h b/target/riscv/cpu.h
-index 034d7e96c49..265c6322067 100644
---- a/target/riscv/cpu.h
-+++ b/target/riscv/cpu.h
-@@ -597,6 +597,13 @@ typedef struct RISCVCPUDef {
- #endif
-     /* This is just a setter for env->num_triggers.  */
-     uint32_t num_triggers;
-+
+-    /* sign/zero extend masked address by N-1 bit */
 +    /*
-+     * Optional per-CPU callback run from riscv_cpu_class_base_init
-+     * after the static def is merged. Use it to adjust fields that
-+     * depend on the build target (e.g. clamp misa_mxl_max for RV32).
++     * Drop the top pmlen bits of XLEN. Do not rely on target_ulong
++     * shift wrap; common-system target_ulong is always 64 bits.
 +     */
-+    void (*target_init)(struct RISCVCPUClass *mcc);
- } RISCVCPUDef;
++    kept = target_long_bits() - pmlen;
+     if (signext) {
+-        addr = (target_long)addr >> pmlen;
++        addr = sextract64(addr, 0, kept);
+     } else {
+-        addr = addr >> pmlen;
++        addr = extract64(addr, 0, kept);
+     }
  
- /**
+     return addr;
+diff --git a/target/riscv/tcg/vector_helper.c b/target/riscv/tcg/vector_helper.c
+index 0d1e4e09646..0b78a733ce4 100644
+--- a/target/riscv/tcg/vector_helper.c
++++ b/target/riscv/tcg/vector_helper.c
+@@ -1248,7 +1248,7 @@ void HELPER(NAME)(void *vd, void *v0, target_ulong s1, void *vs2,        \
+         ETYPE s2 = *((ETYPE *)vs2 + H(i));                               \
+         ETYPE carry = vext_elem_mask(v0, i);                             \
+                                                                          \
+-        *((ETYPE *)vd + H(i)) = DO_OP(s2, (ETYPE)(target_long)s1, carry);\
++        *((ETYPE *)vd + H(i)) = DO_OP(s2, (ETYPE)sextract64(s1, 0, target_long_bits()), carry);\
+     }                                                                    \
+     env->vstart = 0;                                                     \
+     /* set tail elements to 1s */                                        \
+@@ -1325,7 +1325,7 @@ void HELPER(NAME)(void *vd, void *v0, target_ulong s1,          \
+         ETYPE s2 = *((ETYPE *)vs2 + H(i));                      \
+         ETYPE carry = !vm && vext_elem_mask(v0, i);             \
+         vext_set_elem_mask(vd, i,                               \
+-                DO_OP(s2, (ETYPE)(target_long)s1, carry));      \
++                DO_OP(s2, (ETYPE)sextract64(s1, 0, target_long_bits()), carry));      \
+     }                                                           \
+     env->vstart = 0;                                            \
+     /*
+@@ -1609,7 +1609,7 @@ void HELPER(NAME)(void *vd, void *v0, target_ulong s1, void *vs2,   \
+             continue;                                               \
+         }                                                           \
+         vext_set_elem_mask(vd, i,                                   \
+-                DO_OP(s2, (ETYPE)(target_long)s1));                 \
++                DO_OP(s2, (ETYPE)sextract64(s1, 0, target_long_bits())));                 \
+     }                                                               \
+     env->vstart = 0;                                                \
+     /*
+@@ -2050,7 +2050,7 @@ GEN_VEXT_VV(vnmsub_vv_w, 4)
+ GEN_VEXT_VV(vnmsub_vv_d, 8)
+ 
+ #define OPIVX3(NAME, TD, T1, T2, TX1, TX2, HD, HS2, OP)             \
+-static void do_##NAME(void *vd, target_long s1, void *vs2, int i)   \
++static void do_##NAME(void *vd, int64_t s1, void *vs2, int i)   \
+ {                                                                   \
+     TX2 s2 = *((T2 *)vs2 + HS2(i));                                 \
+     TD d = *((TD *)vd + HD(i));                                     \
+@@ -2246,7 +2246,7 @@ void HELPER(NAME)(void *vd, void *v0, target_ulong s1,               \
+     for (i = env->vstart; i < vl; i++) {                             \
+         ETYPE s2 = *((ETYPE *)vs2 + H(i));                           \
+         ETYPE d = (!vext_elem_mask(v0, i) ? s2 :                     \
+-                   (ETYPE)(target_long)s1);                          \
++                   (ETYPE)sextract64(s1, 0, target_long_bits()));                          \
+         *((ETYPE *)vd + H(i)) = d;                                   \
+     }                                                                \
+     env->vstart = 0;                                                 \
+@@ -2397,12 +2397,12 @@ GEN_VEXT_VV_RM(vsaddu_vv_h, 2)
+ GEN_VEXT_VV_RM(vsaddu_vv_w, 4)
+ GEN_VEXT_VV_RM(vsaddu_vv_d, 8)
+ 
+-typedef void opivx2_rm_fn(void *vd, target_long s1, void *vs2, int i,
++typedef void opivx2_rm_fn(void *vd, int64_t s1, void *vs2, int i,
+                           CPURISCVState *env, uint8_t vxrm);
+ 
+ #define OPIVX2_RM(NAME, TD, T1, T2, TX1, TX2, HD, HS2, OP)          \
+ static inline void                                                  \
+-do_##NAME(void *vd, target_long s1, void *vs2, int i,               \
++do_##NAME(void *vd, int64_t s1, void *vs2, int i,               \
+           CPURISCVState *env, uint8_t vxrm)                         \
+ {                                                                   \
+     TX2 s2 = *((T2 *)vs2 + HS2(i));                                 \
+@@ -2410,7 +2410,7 @@ do_##NAME(void *vd, target_long s1, void *vs2, int i,               \
+ }
+ 
+ static inline void
+-vext_vx_rm_1(void *vd, void *v0, target_long s1, void *vs2,
++vext_vx_rm_1(void *vd, void *v0, int64_t s1, void *vs2,
+              CPURISCVState *env,
+              uint32_t vl, uint32_t vm, uint8_t vxrm,
+              opivx2_rm_fn *fn, uint32_t vma, uint32_t esz)
+@@ -2427,7 +2427,7 @@ vext_vx_rm_1(void *vd, void *v0, target_long s1, void *vs2,
+ }
+ 
+ static inline void
+-vext_vx_rm_2(void *vd, void *v0, target_long s1, void *vs2,
++vext_vx_rm_2(void *vd, void *v0, int64_t s1, void *vs2,
+              CPURISCVState *env,
+              uint32_t desc,
+              opivx2_rm_fn *fn, uint32_t esz)
+@@ -2468,7 +2468,8 @@ void HELPER(NAME)(void *vd, void *v0, target_ulong s1,    \
+                   void *vs2, CPURISCVState *env,          \
+                   uint32_t desc)                          \
+ {                                                         \
+-    vext_vx_rm_2(vd, v0, s1, vs2, env, desc,              \
++    vext_vx_rm_2(vd, v0, sextract64(s1, 0, target_long_bits()), \
++                 vs2, env, desc,                          \
+                  do_##NAME, ESZ);                         \
+ }
+ 
+diff --git a/target/riscv/tcg/vector_internals.c b/target/riscv/tcg/vector_internals.c
+index b490b1d3989..95327052666 100644
+--- a/target/riscv/tcg/vector_internals.c
++++ b/target/riscv/tcg/vector_internals.c
+@@ -81,7 +81,7 @@ void do_vext_vv(void *vd, void *v0, void *vs1, void *vs2,
+     vext_set_elems_1s(vd, vta, vl * esz, total_elems * esz);
+ }
+ 
+-void do_vext_vx(void *vd, void *v0, target_long s1, void *vs2,
++void do_vext_vx(void *vd, void *v0, int64_t s1, void *vs2,
+                 CPURISCVState *env, uint32_t desc,
+                 opivx2_fn fn, uint32_t esz)
+ {
+diff --git a/target/riscv/tcg/vector_internals.h b/target/riscv/tcg/vector_internals.h
+index 5681b818153..da093d561eb 100644
+--- a/target/riscv/tcg/vector_internals.h
++++ b/target/riscv/tcg/vector_internals.h
+@@ -201,20 +201,20 @@ void HELPER(NAME)(void *vd, void *v0, void *vs1,          \
+                do_##NAME, ESZ);                           \
+ }
+ 
+-typedef void opivx2_fn(void *vd, target_long s1, void *vs2, int i);
++typedef void opivx2_fn(void *vd, int64_t s1, void *vs2, int i);
+ 
+ /*
+  * (T1)s1 gives the real operator type.
+  * (TX1)(T1)s1 expands the operator type of widen or narrow operations.
+  */
+ #define OPIVX2(NAME, TD, T1, T2, TX1, TX2, HD, HS2, OP)             \
+-static void do_##NAME(void *vd, target_long s1, void *vs2, int i)   \
++static void do_##NAME(void *vd, int64_t s1, void *vs2, int i)       \
+ {                                                                   \
+     TX2 s2 = *((T2 *)vs2 + HS2(i));                                 \
+     *((TD *)vd + HD(i)) = OP(s2, (TX1)(T1)s1);                      \
+ }
+ 
+-void do_vext_vx(void *vd, void *v0, target_long s1, void *vs2,
++void do_vext_vx(void *vd, void *v0, int64_t s1, void *vs2,
+                 CPURISCVState *env, uint32_t desc,
+                 opivx2_fn fn, uint32_t esz);
+ 
+@@ -224,7 +224,8 @@ void HELPER(NAME)(void *vd, void *v0, target_ulong s1,    \
+                   void *vs2, CPURISCVState *env,          \
+                   uint32_t desc)                          \
+ {                                                         \
+-    do_vext_vx(vd, v0, s1, vs2, env, desc,                \
++    do_vext_vx(vd, v0, sextract64(s1, 0, target_long_bits()), \
++               vs2, env, desc,                            \
+                do_##NAME, ESZ);                           \
+ }
+ 
 -- 
 2.52.0.windows.1
 

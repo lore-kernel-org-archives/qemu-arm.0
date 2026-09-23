@@ -4,90 +4,88 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7584DC98304
-	for <qemu-arm@archiver.kernel.org>; Wed, 23 Sep 2026 19:18:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BF2C1C9830B
+	for <qemu-arm@archiver.kernel.org>; Wed, 23 Sep 2026 20:43:12 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1x9SU1-00079E-D2; Wed, 23 Sep 2026 15:18:21 -0400
+	id 1x9Tno-0006Au-Cj; Wed, 23 Sep 2026 16:42:52 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1x9STw-000781-B7
- for qemu-arm@nongnu.org; Wed, 23 Sep 2026 15:18:16 -0400
-Received: from mail-pj2-x0e.google.com ([2607:f8b0:4864:39::e])
+ id 1x9Tnl-00069w-FJ
+ for qemu-arm@nongnu.org; Wed, 23 Sep 2026 16:42:49 -0400
+Received: from mail-pz2-x0d.google.com ([2607:f8b0:4864:3b::d])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1x9STs-0005ey-QK
- for qemu-arm@nongnu.org; Wed, 23 Sep 2026 15:18:16 -0400
-Received: by mail-pj2-x0e.google.com with SMTP id
- 98e67ed59e1d1-396ccd5cf02so773872a91.3
- for <qemu-arm@nongnu.org>; Wed, 23 Sep 2026 12:18:11 -0700 (PDT)
+ id 1x9Tnj-0005rM-UI
+ for qemu-arm@nongnu.org; Wed, 23 Sep 2026 16:42:49 -0400
+Received: by mail-pz2-x0d.google.com with SMTP id
+ d2e1a72fcca58-85469f20513so817674b3a.0
+ for <qemu-arm@nongnu.org>; Wed, 23 Sep 2026 13:42:47 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1790191091; x=1790795891; darn=nongnu.org;
+ d=linaro.org; s=google; t=1790196166; x=1790800966; darn=nongnu.org;
  h=content-transfer-encoding:content-type:in-reply-to:content-language
  :from:references:cc:to:subject:user-agent:mime-version:date
  :message-id:from:to:cc:subject:date:message-id:reply-to:content-type;
- bh=iTcmsIZxlHcLEj4Nb7hdWcReyZmF3W5VheB1cCrtj9Q=;
- b=i78wbcVcfKG6qTrpoO39XNrZ9+vb52jfHx9KjR5SSjfiz8gM6pc4WT4G7J18YZpXr7
- xc/nxelFsMuHbfAIBtT/9YeLaT+ayunGz6OI2NGpTsys5r4WJcFh3Wyn6yfUGiHOMemQ
- QjK7rheFB3vqaGDRo6cSF5R1Z0+SwZz7Sq86BS2xYy+1ROl7ylPQkjVw/stjo2W9VSBf
- vwaB8wlB91II51xU7zUhRvqyKOvu6d62DWyOD6YcHBPZT/FSeWKr2T5an3IHe0S0zlpR
- CMOnIN7D5DL+CZNGpemkK7SNi+7usgpfhSUT5AoplN0MSnX5gaQUK8DIJ4HNSmNqu51N
- Fy9Q==
+ bh=MmWh0yzSusuFW16awIVZo3NtJcNpQMdUzGOiAOugz5U=;
+ b=TvuoI0GRO5D4OEUt4d2eRkjq0kRDdZkRkspVFUVBPW0fH5BiN8UeiaM1P9opqHpDxl
+ JpvPP9pA40pXZJfkbr22avFnUIXcdbG5x914QMPLtXI01Q+BaHaGPtfseQBfpl64c+JW
+ AZ2zf0MnOaUueMJJhzFe4D6mDwvOvSOMm8x2yOC9vNugB+jE8j3NkQISShbQLoE3SLwB
+ cVy3vT/g8CBNIUs8CnN3ziPolMzkGhvnvaxjSiCMsGTjED0mVuJ92qj+GUU9GLcvLRnU
+ IedQPuE2k7EFDUVbm1yo8P4oK6mZyetGo5Eea5cwJMqIXpviFcUwteG7p0yZC++RjRVp
+ 3Hew==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20260707; t=1790191091; x=1790795891;
+ d=1e100.net; s=20260707; t=1790196166; x=1790800966;
  h=content-transfer-encoding:content-type:in-reply-to:content-language
  :from:references:cc:to:subject:user-agent:mime-version:date
  :message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
  :message-id:reply-to:content-type;
- bh=iTcmsIZxlHcLEj4Nb7hdWcReyZmF3W5VheB1cCrtj9Q=;
- b=WoprpcJKBRKjVtPwThyeLKULg8dEeoMcuM4I+6r+2Js38ixMQQ8dOqMRPv6oeRZoXH
- Sk6F16I1XabI4xehexj9Ja1dx9J1GbwK4n5RSRXOtExf5deiY2jYqqZxReTyEPcAMJFm
- 9YFbdPkBoIVOjL3f3i61L7zyHEFO10vt9tgnDqxLDaG3GkkrMqm/JPYBPon63bKnCjSk
- Up4VPJ8TSgG8LNLJbMb57qh2MujHVvRkRsuM75HQEOS8icLiH1A/MtT1k8vaTITyJOM/
- XFg9iV9e0WYhQiLqqlilfwU09cHPrxBDye9pqV+X/F0s9t+zQQg+VHybIu84BYZAf+69
- WJjw==
+ bh=MmWh0yzSusuFW16awIVZo3NtJcNpQMdUzGOiAOugz5U=;
+ b=1LJknNGgVS6+Y2D9RMRyIwgpPB1905ILE8CyzEptGQu2mGU0MjDpuFdAYul8Gme62r
+ XkepKVfUibMlzwML9afg6fed1Pj08LPT1rl74H6kBcyE4alThTPYXEiIQWHGdtFEuuEe
+ O8pVBrGpFu1KJ7E8oeCL+k7vY/zpJKe/xuWubBPccQrucDn1jYTiQOrkiSvO74P8Vxrh
+ 7meOqJK8qj9G1dN2r+lqjBDpHvARbJYvE+GSA2+wIDSe6CCRbsxbFXqLMlU+Zu40zMy+
+ /HQiGjnXKx44WGaNnEGBap1NbiMqJrkP5OCSlML6ocSt0Rw7cQaGHr+P4176jHuKq9ih
+ 96qQ==
 X-Forwarded-Encrypted: i=1;
- AKwUvBwCKPaimavM40W9+KJBEN4krUWDsANi9JVjJoPYWxot4oXc0zMoxNxVbuyfDeoHIBasrmT4epa46w==@nongnu.org
-X-Gm-Message-State: AFuF++mY++468DzPKw+3/nIAd3ej/p+LkRAbydzYiLofrGOD5SFvdrZO
- PLVB818CG44T2TdmutY5JYWM/x65G6ogwmGR+iKRtgVVhOpld9nfT7r/Q7bPjjC+zUk=
-X-Gm-Gg: AYBFou2aEKgJQDK21SOHcU7BdiSGLtrUlv5d9DySxVOyY+0vJ+dJs0lDAIeZ37FwAHG
- TJUryy4wCbIqVpseUAoULjV9mIXzF+4bNOWnJIR+LXYOqSnq3c8/xiFZUS06zl0QoiIQvmoI3Ek
- fjuFnf8UtYLMDyAHBzp0b6xfK646MPWG+cg7dz+1IUOUL0O5Lrs9O/oEk8AypuUcu1Qr5aX0m7t
- gT0383T3lStNZNiiAm/bbhLYcJML/vOwUMYnZKVL/nv/KKtNtAZp0UCD48atgJgXcBndubrSYfA
- /N6801izW5kuhHnt5SHBcOMTuaIwteKrBeKdToJ5oXyqhOotQpOLUCpOpb+gMoOekjiN+0o0n8W
- gXKVPyMXqcBdZ5fauvRy9ybhBtg4sUPugNAKN6nAgP9/bK0iZ8cdOftON++8hCtk/qlfv9VxMJR
- 4sKtadyEH2CPMO5LORvXl1Mo5NPAh7qSuCUtkWggMU94Cx5SnMvGnw36ZzpgatOp2fITjSyX7KH
- aDMsWMnp/lAe9ojS0j0OsY4ArcY3plJUhJV0aDt2PgDATwNJV4=
-X-Received: by 2002:a17:90b:3b48:b0:39e:6c69:f471 with SMTP id
- 98e67ed59e1d1-3a098cf4f03mr99491a91.48.1790191090462; 
- Wed, 23 Sep 2026 12:18:10 -0700 (PDT)
+ AKwUvBxLk3pUabqxaxUL3NUwUXIUD5i2lMa/YpWqNTZ6NmTXOr74l6hFHZrIcxVD8Zytw5/3IQhbyX8zuw==@nongnu.org
+X-Gm-Message-State: AFuF++mmiEbBknPrfVpq+dFzchHOapZ3CcwgLTdrfshFSDQSR/IMz5yr
+ XacoqdB9pFIbpQkClrpCEhXnPaGawqHHeMqBI0fDm1s3gK6m5h6ZWfD0y5P+5dYJfV4=
+X-Gm-Gg: AYBFou3UJJ6h0GGER0qJu6sfRnPnFqcbYAozb9ZdubRZp8ZTqpigI6IFaL0lpuLbtId
+ q2WPign1ZUyP6bMehilmG+wstFiDePztPusxLe9/bmb4r6neMzRNDdpo53piss9ixmHyxM/v+B0
+ zcIZ+RAg/m49XsYavZr1CLXBz0nFkHZC7ET4MCQFPNMpmzhVEuqtPQ+rMK+r3eKeVddqnOFSpxF
+ /ualegXpKUxOmHzP1ls0lZ1+8J2JqzNuAyqGK+PM/jQE8bB9+CarGaa+v4SbJzaLLBoLoA4ofIB
+ M0XMSnPgHAuQhhnPPfURxsARFZT4EZfned95W3f2uxjUadHmblN5QOxOSwyNct3HMydAsLfmhEa
+ 32zjk+bESBypNYmB6yGJiONiuXWy1zdGPvoOsdWCITpfyoyhgiAEkgH9WO7pUzxEmd1Rd0diHTT
+ xGJ3aVFVIKXD8LJ7r+gdI/L10+98LSBnFD+y+0sERvD+7m73UmfJCdlBq8ZXNDShEIckSMBepGk
+ LCUW2eeh3Gwllg32iY3USvKnT3Lx1PlCdqYqWhsoDRlQM/UsHtb
+X-Received: by 2002:a05:6a00:bb91:b0:872:6004:f117 with SMTP id
+ d2e1a72fcca58-87e9957399bmr290925b3a.24.1790196166050; 
+ Wed, 23 Sep 2026 13:42:46 -0700 (PDT)
 Received: from [192.168.0.4] (174-21-68-150.tukw.qwest.net. [174.21.68.150])
  by smtp.gmail.com with ESMTPSA id
- 98e67ed59e1d1-3a0812c87e9sm2184194a91.3.2026.09.23.12.18.09
+ d2e1a72fcca58-87d1cfbfd6esm1816578b3a.20.2026.09.23.13.42.44
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 23 Sep 2026 12:18:09 -0700 (PDT)
-Message-ID: <a1572edb-536e-47ff-9220-7146304b1a07@linaro.org>
-Date: Wed, 23 Sep 2026 12:18:07 -0700
+ Wed, 23 Sep 2026 13:42:45 -0700 (PDT)
+Message-ID: <4ca867a6-8ea5-4ae6-8428-c4f58b36d3c9@linaro.org>
+Date: Wed, 23 Sep 2026 13:42:42 -0700
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v3 17/21] target/i386: Use an acquire load for
- interrupt_request
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@oss.qualcomm.com>,
+Subject: Re: [PATCH 8/8] target/arm: Add a debug check that all sysregs are
+ migrated
+To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
  qemu-devel@nongnu.org
-Cc: qemu-s390x@nongnu.org, qemu-ppc@nongnu.org, qemu-arm@nongnu.org,
- Paolo Bonzini <pbonzini@redhat.com>, qemu-riscv@nongnu.org,
- Peter Maydell <peter.maydell@linaro.org>, Zhao Liu <zhao1.liu@intel.com>
-References: <20260923171116.31276-1-philmd@oss.qualcomm.com>
- <20260923171116.31276-18-philmd@oss.qualcomm.com>
+Cc: Tao Ding <dingtao0430@163.com>
+References: <20260907130223.3148989-1-peter.maydell@linaro.org>
+ <20260907130223.3148989-9-peter.maydell@linaro.org>
 From: Richard Henderson <richard.henderson@linaro.org>
 Content-Language: en-US
-In-Reply-To: <20260923171116.31276-18-philmd@oss.qualcomm.com>
+In-Reply-To: <20260907130223.3148989-9-peter.maydell@linaro.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:39::e;
- envelope-from=richard.henderson@linaro.org; helo=mail-pj2-x0e.google.com
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=2607:f8b0:4864:3b::d;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pz2-x0d.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -109,56 +107,33 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On 9/23/26 10:11, Philippe Mathieu-Daudé wrote:
-> x86_cpu_has_work() may run without the BQL, but currently reads
-> CPUState::interrupt_request directly. Other threads update this
-> field with qatomic_or() in cpu_set_interrupt(), so the direct
-> read races with an atomic access.
+On 9/7/26 06:02, Peter Maydell wrote:
+> We mark some sysregs with ARM_CP_ALIAS (either manually or
+> automatically) to indicate that they are accessing underlying guest
+> CPU state whose migration and reset is handled by some other
+> register.  (For example, typically we make the 32-bit view of a
+> register an alias and handle migration for the 64-bit view.)
 > 
-> Load the interrupt request with qatomic_load_acquire(), matching
-> cpu_test_interrupt(). This provides the acquire ordering required
-> before x86_cpu_pending_interrupt() inspects the CPU state.
+> Add a debug check that we actually do handle the migration elsewhere:
+> for every sysreg in the hashtable (i.e.  which might be visible to
+> the guest), check that some register in the migration list has a
+> field offset that matches.  This isn't perfect but it can catch some
+> bugs.  In particular it did fire for the various secure banked
+> registers that we were not migrating before the fixes in the previous
+> patches.
 > 
-> Suggested-by: Paolo Bonzini <pbonzini@redhat.com>
-> Signed-off-by: Philippe Mathieu-Daudé <philmd@oss.qualcomm.com>
+> Because the check is more of a debugging aid than something I'm
+> confident will never produce a false-positive report for some niche
+> combination of CPU and machine options, we only do it for debug
+> builds, and make it a warning printed to the user rather than an
+> assertion failure.
+> 
+> Signed-off-by: Peter Maydell<peter.maydell@linaro.org>
 > ---
->   target/i386/cpu.c | 5 ++++-
->   1 file changed, 4 insertions(+), 1 deletion(-)
-> 
-> diff --git a/target/i386/cpu.c b/target/i386/cpu.c
-> index b97f144aea5..ee1aa3a5a70 100644
-> --- a/target/i386/cpu.c
-> +++ b/target/i386/cpu.c
-> @@ -10640,7 +10640,10 @@ int x86_cpu_pending_interrupt(const CPUState *cs, int interrupt_request)
->   
->   static bool x86_cpu_has_work(CPUState *cs)
->   {
-> -    return x86_cpu_pending_interrupt(cs, cs->interrupt_request) != 0;
-> +    uint32_t pending_interrupts;
-> +
-> +    pending_interrupts = qatomic_load_acquire(&cs->interrupt_request);
-> +    return x86_cpu_pending_interrupt(cs, pending_interrupts) != 0;
->   }
->   #endif /* !CONFIG_USER_ONLY */
->   
+>   target/arm/helper.c | 121 ++++++++++++++++++++++++++++++++++++++++++++
+>   1 file changed, 121 insertions(+)
 
-For the change overall,
 Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
-
-Because of -ftrivial-auto-var-init=zero, I am now in general against 
-uninitialized local variables, if at all possible, everywhere.
-
-I know you've added the local variable due to wrapping, and split the 
-initialization for the same reason.  In this case, perhaps best to just 
-use a shorter variable name:
-
-     uint32_t ir = qatomic_load_acquire(&cs->interrupt_request);
-     return x86_cpu_pending_interrupt(cs, ir) != 0;
-
-but in others, just wrap the initialization:
-
-     uint32_t pending_interrupts
-         = qatomic_load_acquire(&cs->interrupt_request);
 
 
 r~

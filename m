@@ -4,69 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A2B36C98302
-	for <qemu-arm@archiver.kernel.org>; Wed, 23 Sep 2026 13:33:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EC736C98302
+	for <qemu-arm@archiver.kernel.org>; Wed, 23 Sep 2026 13:33:33 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1x9N1F-00071x-5n; Wed, 23 Sep 2026 09:28:17 -0400
+	id 1x9N05-0004Sj-4d; Wed, 23 Sep 2026 09:27:05 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <luoyonggang@gmail.com>)
- id 1x9MwJ-0005eA-9S
- for qemu-arm@nongnu.org; Wed, 23 Sep 2026 09:23:11 -0400
+ id 1x9Mvb-0004Dl-2X
+ for qemu-arm@nongnu.org; Wed, 23 Sep 2026 09:22:34 -0400
 Received: from mail-dy2-x10.google.com ([2607:f8b0:4864:36::10])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <luoyonggang@gmail.com>)
- id 1x9MwG-0007pI-P9
- for qemu-arm@nongnu.org; Wed, 23 Sep 2026 09:23:10 -0400
+ id 1x9MvZ-0007jV-FG
+ for qemu-arm@nongnu.org; Wed, 23 Sep 2026 09:22:26 -0400
 Received: by mail-dy2-x10.google.com with SMTP id
- 5a478bee46e88-3396cec93b6so976982eec.3
- for <qemu-arm@nongnu.org>; Wed, 23 Sep 2026 06:22:58 -0700 (PDT)
+ 5a478bee46e88-328664b752eso571013eec.1
+ for <qemu-arm@nongnu.org>; Wed, 23 Sep 2026 06:22:24 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20251104; t=1790169777; x=1790774577; darn=nongnu.org;
+ d=gmail.com; s=20251104; t=1790169743; x=1790774543; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to:content-type;
- bh=P+y3C9rGVvFAkdWFKio2TWsWiPkrJ96pOnUImryyekQ=;
- b=HN28NEllUrLRUWNkECo56HH/SWgxWa25ygdQBwJSK+GpU5z9YztmyQKc0BvfrattzR
- 3vsCB7toaFflkv26PDclwdSMy7luPzZTV5tuNj82dy6p+N4D0bKrOC2hvT9MkHv28RIq
- Aeh9CgWBhxKwxCC0Jkh77e+4vgUvchIE30JVJ7ZrnXDf8sR4pfXk33Ei2Uq8vGAmuZfA
- j+z0eFqX9Z+Pf/bkQmYse0CQFPJESLQy5MyYOwIZjxnQTcHknBQ5EjM5mzstAfJuXLP0
- bwOv6+1ZkAE+INy2T+hq23ft4t/c20O2TqtR69ti/dJQtjZwVG5tduvM+CQsfZuyb0LL
- qWlQ==
+ bh=gZLlHjgFKGd97ZAl0jDOPJ4J/L8M7/uJxBZfNAi1MwY=;
+ b=pYDVamWjKU9mFRVaoshoVZzxslMzVtSC/VY7u9aDjmjTALt8ZfhEQMoQOwlubIT+on
+ FhtF6UX7VuaHu3p0LkE37XipfXjSvDvNJ8PQqp3FPEwZKpai5h2TAn4Vv1zEhx6Su5g1
+ 46S1Inssnd/upUPE8U2Ij43YsiW1kxTLqIiap3kLlwGm++qO/7gGWHWU5R1yag/xuaqc
+ U336iZ+4Zdhvq9lFLKWGCmiLrLHj7evAAzlrIGpEqsl0fUHQqLp6OihkXsQhXPxIZjqp
+ ZDzqBtJyyotmgW+nEyRWgGSnxYE28qhxPAkd5+50AVgHwR96Vsf6rWvPlUSD79IwhHtq
+ FyKg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20260707; t=1790169777; x=1790774577;
+ d=1e100.net; s=20260707; t=1790169743; x=1790774543;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
  :to:cc:subject:date:message-id:reply-to:content-type;
- bh=P+y3C9rGVvFAkdWFKio2TWsWiPkrJ96pOnUImryyekQ=;
- b=NHOIbWO7Pg0Lfh0PtsByG6xhjBh9hakTXGwxWLlG2qk0RaCSoT3LXoNipMr6uhZDLk
- 7TJ+htqgGDK4ljr5Gsz+dGrirsJ+SSYHwVUqGxygHtEvjK0NfTBvN02E4LNBCg0ictSU
- fSq8Zlpg2YHgaBk82A1xTACWoNiHGDuzpmqcB4L3Zrt2w1VQD1c5vI1ASCcM8trhMwLM
- oLashndVZ73vti0+2oy2uHW7C+Ce+7zFd80SRC340fKzbqx5ytRpnqV8FWQDW9g1VvqN
- /Enkn12rD9AvD3To0g1dNV+fj3DAZnLK0LWpWCzYb/GBhyNxt7aoOKXhROky/bo55YPk
- YUDg==
+ bh=gZLlHjgFKGd97ZAl0jDOPJ4J/L8M7/uJxBZfNAi1MwY=;
+ b=UWxAMua7rgjTQMHLeRsYUyX9q+RPujFIQDVFQReXPS3rbZErB9HT5DJ7YXQlQY1DJl
+ xWrAdH3DxjBZ4+dqmhgiKrj92XsgpyW7ebcnFPGD8vaMnwx0CRs7MJX04REKe27U3g90
+ tTLXO2/tnO7I9tV9vUioNfQX1LW3Mh2Nh6ZYjFqoMT5vakWO8OHN6juDA6SU/Z95GL5d
+ pLr/BHIPxOr0A6IFAjroMni/jnlZ3diPbEnlwkOsnRMmDbbCFmJGF77+e/P1yrf6IqUy
+ bAoBDdujBcArAavr0NwG0zAFP7CeUPRYetzD4dDG8VKi1zwwPvAA5IZl1NJSz6/VUvzO
+ LCqA==
 X-Forwarded-Encrypted: i=1;
- AKwUvBwBufk+prtvBbDbwbdZ3HphAENQeKjfotakA0loA9FF5oswLRLE1IW4EV5Dxx/nxiqWFmYh8H9Qhw==@nongnu.org
-X-Gm-Message-State: AFuF++kZ/w9UeelszI1e1QQ+AXzDDg+ZGZgvA31Op/kymlf2DdgWrOX9
- UA917b8EECVvtUboad82Jb90mycVQfHMuTNlH/nmp4Ni/SH+bOTud9RI
-X-Gm-Gg: AYBFou3wVJXd5Ua1jGtoR8tDs15VvAcLW9+63tltH0+fffYwBBVIaiQCwtkhS+aIRGM
- 4DfT5HKYbx2y8hDDReGBwTeFDLbaH5NRe74alpB+SMlsTi0KubTDU2o9cCQh1XGj9WD57Ul3oIH
- O8UZ/CiANZOIBzRronMgFNTr/q++7pN3kcN9pNrUQhSgFJ/ltt58S1xVXjEHEi0S8Ly8Lk3pb5j
- E2OjWXWH6sZLPPyQuOApOApQ73TqhYIGpeIlWfqVtfqegNaAkk3UhvrpwWKN+IsgrIr7VvgjVLj
- XXuZ5HJky8D3+iCUNMD1a1KPfcgbQrxb+jpxOAh7nomT2eKltufYwPK+0yMuMm87DzwVBs+JZ2Q
- wIxPE1LzkuqRMcmWQRzImYl9k6pal3RAvyXOXGVtPKc7iT6xWC307pLcNE88wygw2xqMOlLBawT
- DfEbiwUAFhypR9ROj9TKTtYycIgoXbz3nAWZuUWIgUgJF7Z0m2d9yXVZi43jcajFIHR8lKWGCXA
- mDROiTUixTtXiYHqYOU3CSbyu1A+HI=
-X-Received: by 2002:a05:7300:311a:b0:339:7357:b225 with SMTP id
- 5a478bee46e88-33e905f47cbmr2532490eec.16.1790169776667; 
- Wed, 23 Sep 2026 06:22:56 -0700 (PDT)
+ AKwUvBw2Mfez7DIMZHSYUerwQSS5rnBxtWo8M8rmWCArkOT9wK2tqn62gO4PtU+GFFQAFj1mSOdcpFrr5w==@nongnu.org
+X-Gm-Message-State: AFuF++mUmg4QySMPNrYcBdLRo6gDcoOG7e77VP1tu2HwuYvzzRebBpt8
+ Fu90t7SXETqOj2jxMXLw0z0Z6dw45PD8ekpQBTrByJexhUhv9lbypTyf
+X-Gm-Gg: AYBFou1yP+2ACNN7Z0jq3ZN/IxxYP95XUEdFS4x9g6DWAZuqEEVJ2dOfolPMVdxaqEP
+ 5dmhJiJLrkcS+MZ3y1zucwhUp20PZFnziRFjvFIXgSAed0SUOy2xMZRvXvCOGtfiUDM8PzDCLLi
+ GrkDwNejODX9gD9zW5TCQuCpfXblgg8fvDG8YcBvtbZjZAs6arl2dBC2cSoW84FLtGMFiZ2O8yq
+ n491lBAXJIvnCzdeikErJGEcYAifO71LmVrZHWswKh7pUG7G1b2YQf/h0eIdrQ2X/p+nyRThhSU
+ q8x6crO1x7tFuFP7+MQ41lTD5N0lnLW7+giN9C9jnpy/3baEGvkRlOIfmldcFUr4NFWDVXy0NS6
+ 40XqbMqViEfMF0tvUFCcpGX6oJK3o4yQZXbqvsJGC3iHW8f2DboK8zSWLYb95Y74CbnL5SwGglY
+ UafZgUd86EkBxCZ9ZfTkeJheKd2ZsO3ipfzbB2b7jkG5ztwKRyYItVUTVvFxLVevgqLN7C5INv0
+ 8WvaiuDpjd696TkKUjw/uP0yiHc8NZLabPFMwSzqw==
+X-Received: by 2002:a05:7301:c016:b0:33b:d4c9:561f with SMTP id
+ 5a478bee46e88-33e8bb7c1ffmr2536095eec.5.1790169742689; 
+ Wed, 23 Sep 2026 06:22:22 -0700 (PDT)
 Received: from WIN-BH9M8FJACR9 ([103.94.185.75])
  by smtp.googlemail.com with ESMTPSA id
- 5a478bee46e88-33e97236754sm5553695eec.29.2026.09.23.06.22.49
+ 5a478bee46e88-33e97236754sm5553695eec.29.2026.09.23.06.22.15
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 23 Sep 2026 06:22:55 -0700 (PDT)
+ Wed, 23 Sep 2026 06:22:21 -0700 (PDT)
 From: Yonggang Luo <luoyonggang@gmail.com>
 To: qemu-devel@nongnu.org
 Cc: Cornelia Huck <cohuck@redhat.com>, xen-devel@lists.xenproject.org,
@@ -97,10 +97,10 @@ Cc: Cornelia Huck <cohuck@redhat.com>, xen-devel@lists.xenproject.org,
  Markus Armbruster <armbru@redhat.com>, Weiwei Li <liwei1518@gmail.com>,
  Song Gao <17746591750@163.com>, qemu-arm@nongnu.org, qemu-s390x@nongnu.org,
  Brian Cain <brian.cain@oss.qualcomm.com>
-Subject: [PATCH v3 037/114] target/riscv: replace TARGET_* macros in CSR
- helpers
-Date: Wed, 23 Sep 2026 21:15:11 +0800
-Message-ID: <20260923131635.1894-38-luoyonggang@gmail.com>
+Subject: [PATCH v3 033/114] hw/riscv: expand boston-aia and
+ microblaze-v-generic to TypeInfo
+Date: Wed, 23 Sep 2026 21:15:07 +0800
+Message-ID: <20260923131635.1894-34-luoyonggang@gmail.com>
 X-Mailer: git-send-email 2.52.0.windows.1
 In-Reply-To: <20260923131635.1894-1-luoyonggang@gmail.com>
 References: <20260923131635.1894-1-luoyonggang@gmail.com>
@@ -113,7 +113,7 @@ X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -129,77 +129,56 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-- Use target_long_bits() instead of TARGET_LONG_BITS for the CSR
-  write mask.
-- Use target_riscv64() instead of TARGET_RISCV64 for MISA RV64 and
-  the PMP address mask.
+Replace DEFINE_MACHINE with TypeInfo on boston-aia and
+amd-microblaze-v-generic. Set is_available to target_is_base_riscv.
 
 Signed-off-by: Yonggang Luo <luoyonggang@gmail.com>
 ---
- target/riscv/tcg/csr.c | 20 ++++++++++----------
- 1 file changed, 10 insertions(+), 10 deletions(-)
+ hw/riscv/microblaze-v-generic.c | 19 +++++++++++++++++--
+ 1 file changed, 17 insertions(+), 2 deletions(-)
 
-diff --git a/target/riscv/tcg/csr.c b/target/riscv/tcg/csr.c
-index 061bc9db77b..0b96fff6b96 100644
---- a/target/riscv/tcg/csr.c
-+++ b/target/riscv/tcg/csr.c
-@@ -18,6 +18,7 @@
+diff --git a/hw/riscv/microblaze-v-generic.c b/hw/riscv/microblaze-v-generic.c
+index 3f07ab21328..9b60a955152 100644
+--- a/hw/riscv/microblaze-v-generic.c
++++ b/hw/riscv/microblaze-v-generic.c
+@@ -14,6 +14,7 @@
   */
  
  #include "qemu/osdep.h"
 +#include "qemu/target-info.h"
- #include "qemu/log.h"
- #include "qemu/timer.h"
- #include "cpu.h"
-@@ -2143,17 +2144,18 @@ static RISCVException read_misa_i128(CPURISCVState *env, int csrno,
- static RISCVException read_misa(CPURISCVState *env, int csrno,
-                                 target_ulong *val)
- {
--    target_ulong misa;
-+    uint64_t misa;
- 
-     switch (env->misa_mxl) {
-     case MXL_RV32:
--        misa = (target_ulong)MXL_RV32 << 30;
-+        misa = (uint64_t)MXL_RV32 << 30;
-         break;
--#ifdef TARGET_RISCV64
-     case MXL_RV64:
--        misa = (target_ulong)MXL_RV64 << 62;
-+        if (!target_riscv64()) {
-+            g_assert_not_reached();
-+        }
-+        misa = (uint64_t)MXL_RV64 << 62;
-         break;
--#endif
-     default:
-         g_assert_not_reached();
-     }
-@@ -5430,13 +5432,11 @@ static RISCVException read_pmpaddr(CPURISCVState *env, int csrno,
-      * here to avoid complaints about masking bits 0-53
-      * of a potential 32 bit target_ulong '*var'.
-      */
--#ifdef TARGET_RISCV64
--    if (env->misa_mxl == MXL_RV64
-+    if (target_riscv64() && env->misa_mxl == MXL_RV64
-         && csrno >= CSR_PMPADDR0 && csrno <= CSR_PMPADDR63) {
--        target_ulong read_mask = MAKE_64BIT_MASK(0, 54);
-+        uint64_t read_mask = MAKE_64BIT_MASK(0, 54);
-         *val &= read_mask;
-     }
--#endif
-     return RISCV_EXCP_NONE;
+ #include "qemu/units.h"
+ #include "qemu/target-info.h"
+ #include "qapi/error.h"
+@@ -177,8 +178,10 @@ static void mb_v_generic_init(MachineState *machine)
+     create_unimplemented_device("qspi", QSPI_BASEADDR, 0x10000);
  }
  
-@@ -5755,7 +5755,7 @@ RISCVException riscv_csrrw(CPURISCVState *env, int csrno,
- RISCVException riscv_csr_write_i64(CPURISCVState *env, int csrno, uint64_t val)
+-static void mb_v_generic_machine_init(MachineClass *mc)
++static void mb_v_generic_machine_class_init(ObjectClass *oc, const void *data)
  {
-     return riscv_csrrw(env, csrno, NULL, val,
--                       MAKE_64BIT_MASK(0, TARGET_LONG_BITS), 0);
-+                       MAKE_64BIT_MASK(0, target_long_bits()), 0);
++    MachineClass *mc = MACHINE_CLASS(oc);
++
+     mc->desc = "AMD Microblaze-V generic platform";
+     mc->init = mb_v_generic_init;
+     mc->min_cpus = 1;
+@@ -188,4 +191,16 @@ static void mb_v_generic_machine_init(MachineClass *mc)
+     mc->default_cpus = 1;
  }
  
- RISCVException riscv_csr_read_i64(CPURISCVState *env, int csrno, uint64_t *res)
+-DEFINE_MACHINE("amd-microblaze-v-generic", mb_v_generic_machine_init)
++static const TypeInfo mb_v_generic_machine_class_init_typeinfo = {
++    .name = MACHINE_TYPE_NAME("amd-microblaze-v-generic"),
++    .parent = TYPE_MACHINE,
++    .class_init = mb_v_generic_machine_class_init,
++    .is_available = target_is_base_riscv,
++};
++
++static void mb_v_generic_machine_class_init_register_types(void)
++{
++    type_register_static(&mb_v_generic_machine_class_init_typeinfo);
++}
++
++type_init(mb_v_generic_machine_class_init_register_types)
 -- 
 2.52.0.windows.1
 

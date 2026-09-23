@@ -4,69 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B0F8EC9830C
-	for <qemu-arm@archiver.kernel.org>; Wed, 23 Sep 2026 13:30:11 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 14102C9830C
+	for <qemu-arm@archiver.kernel.org>; Wed, 23 Sep 2026 13:30:23 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1x9N0k-0005U1-Sd; Wed, 23 Sep 2026 09:27:46 -0400
+	id 1x9N0k-0005U8-Sn; Wed, 23 Sep 2026 09:27:46 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <luoyonggang@gmail.com>)
- id 1x9Mvt-0004K5-Tp
- for qemu-arm@nongnu.org; Wed, 23 Sep 2026 09:22:47 -0400
+ id 1x9MwU-0005ym-Hx
+ for qemu-arm@nongnu.org; Wed, 23 Sep 2026 09:23:23 -0400
 Received: from mail-dy2-x10.google.com ([2607:f8b0:4864:36::10])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <luoyonggang@gmail.com>)
- id 1x9Mvr-0007kq-BB
- for qemu-arm@nongnu.org; Wed, 23 Sep 2026 09:22:45 -0400
+ id 1x9MwQ-0007tP-3g
+ for qemu-arm@nongnu.org; Wed, 23 Sep 2026 09:23:22 -0400
 Received: by mail-dy2-x10.google.com with SMTP id
- 5a478bee46e88-328664dbe2dso384621eec.0
- for <qemu-arm@nongnu.org>; Wed, 23 Sep 2026 06:22:32 -0700 (PDT)
+ 5a478bee46e88-328664d3421so562456eec.3
+ for <qemu-arm@nongnu.org>; Wed, 23 Sep 2026 06:23:07 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20251104; t=1790169752; x=1790774552; darn=nongnu.org;
+ d=gmail.com; s=20251104; t=1790169786; x=1790774586; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to:content-type;
- bh=WqXX4SX3rjdHTToJvg98g4i7PWcyKUf7129uvkL7/uk=;
- b=A3ubRTPFXn+gaF+WSe23G+iYOx5xI/zlN5xfU4teR70rvQOHq/duPa3UbtUTW0IoHY
- Cy/1p0ON+FfPJFB/qgcq7JMvBH+kbIDivYLDMvM+5XYqttpmsLCbOE01aumu3DHlenB2
- ICwOlcNFBowwrymRCKZ0E5Nn8f431qOR+0dhnGwaLM9tWuANjDFC5rdTl8UM2G22Oyrv
- VurbRj11+9Q/VTJS1w3KYe3ayywUNpVmB7nepsj5xy3ll4is4RecC7J/NXMLKILOIdm8
- HLNmBNmuJBpDA5igCK2Gyhce8Xtsx70iiWP2CNoo3qmODGg0tnS4qiHuUclg17aHYyqM
- p77A==
+ bh=B9wmWDAGxCIEbiXb+JeTWZOg+WBaBPZDk+tkeJy0Fzg=;
+ b=V+DFLLe29Dnq1BdeA7tYCZpdQjaJHGLZlOQQjf74jx5bdlsFPS5f4MjrU+s+wQLOVB
+ 9qdCBfbVZVHhE1Jnsa71ScdM+dtEqudGUQwkCbugVC1c8fUaP9wU37uy/udAYAZ/ZCxt
+ zKo2rz8Hsx+CIioJaXns9RlpkPbl1pnaMRAv0/n+Q05Wb/JzmsuobfsgNaMZ+MgPjjV8
+ LuDRtjr5LAUAggchCc6xkOjW0B6p4lf+gk+8XW1kVNtKJ2yjHvet++XfyxyalYqFJ5Xw
+ UmuT9vNgDXlTmPJSuYwPKeBqNCK57x6mlxnKc1mUVqgkMj/XmcE+hRl95PaY+sJ73GSV
+ tMfw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20260707; t=1790169752; x=1790774552;
+ d=1e100.net; s=20260707; t=1790169786; x=1790774586;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
  :to:cc:subject:date:message-id:reply-to:content-type;
- bh=WqXX4SX3rjdHTToJvg98g4i7PWcyKUf7129uvkL7/uk=;
- b=sp5SZQytGZo77MU5XAT23aqgjXG5n9k/toAaFShcTpX6mNpLFU1gyc7niZIuVqA3G1
- NAVFuxr2P2HGvxgJAEnKQDg/2YkmIx3CZQjXo3e+Swc3aMu4IrL7coYPuZZpLmFCYy4+
- N8/VG7Ce3QCtWqvR/1ocWH9TbHXrb/qM7EpSPqE9MUh1rSfM9C+TmzxZT5mTTpmglXs3
- MzOhsg0uaW7Gs/lXP7oNrVBNydxmeP4Sco1c9aLsMLi+Kb7Xv/JTPqjgKzN7Fwv1OB0x
- q4i6BwtpcvguMF+Ny+wDu97WAHya0xfpDY4lzIXvWSaquYA7YnIJOYa/uL5xsCBGaNHT
- PCow==
+ bh=B9wmWDAGxCIEbiXb+JeTWZOg+WBaBPZDk+tkeJy0Fzg=;
+ b=zPM6PhF7VA9vVq1Bz38LrWuMxPp3FCC0x94TjldRiWqo0HGjglLWx0a85213AODaV9
+ oFqBnLGrMSBWa949CrtGyUxpwvnyde1rn5lHQi+TD09UAKOcq3OufWami242Cx7o4q7h
+ dnwX12PorhqKNOxr/PTVSRuMTa4EtrS8GduUy6ffusuPdG/0DYmYrjrdiuX5tOdYViWB
+ +vCgLSFV0nJnjDEvMIfPiHj0XbXT5zn4jASDvtFKamExo5jbY9JpNPrsRlipPUurm9bz
+ WCn2vzPEaXuXnLnq+FCSHZ/5Z5fsz/1ykITKwhX4P8eXjdQoAyxswqoIHLgBDeEAZkki
+ Zf8Q==
 X-Forwarded-Encrypted: i=1;
- AKwUvBwPve+ORxY2idhsz+Et1//V1ZYqAxcXjY4xBOyeaGhV9iuOU1zYR/+IYyP0CwVPQwJDhPKl0M30bQ==@nongnu.org
-X-Gm-Message-State: AFuF++m4tshstHdgu3nnMP2hYpEC8y6l3onNP8g8Rh5NL/TTDwZUZCTa
- 5CTLIzd1FdAb6K+pPzGvx5bQ2mFRKeeBWmkvUvr4A07SnSCnk2sA9CIX
-X-Gm-Gg: AYBFou1MAKgsHQLPyC/+2rVeF4zFUPOxN+AXiHtlhq7gomIVF1q2KotXKgBTp0FLj8Y
- TO3SK2aVWUc1I36HztLC5FTrQlZfzxxjJKLN8KJYliRpHTrL/SqrFXIXbnhSm45bgBAusO+f8Jo
- uAld+4dWSAZ1iWi9cgC7DFoieZKIYYPERE5++8de0KSxuHr+/7VDS/xeWl3ECAMPuFeJuPDqYYZ
- p87H/QELsMQYeWu1OjAE5m0xHKflNaKmVLT+MgkeDYmLHwiBEXUCsoG1LFi4CAmJSJo5v6YbJ0o
- vPht5BhDq+PixKO9DNhBb7rZYkfp0DFowOkGqbAB+bARFeIOr0Q39X7LfKRdK69e2yVSp9aAJcY
- oZJdilUFDqlCl7gTRbN74YUPbBbZA9xMEX7L2cSq5iQMd3Yvh5Vutf3UPifJGBDfHuCblsYc2lF
- PCGvNGuoB8RJwhFeIRqWeW9Rg/IuNo2SlVZNHAHskz0ghdmfBzwWOuSVPufKjPgaRHkHr9O4arV
- vCSJpVdSELklCgj
-X-Received: by 2002:a05:693c:8814:20b0:33e:5e42:e0f9 with SMTP id
- 5a478bee46e88-33e7a4d6cd5mr2603893eec.6.1790169751387; 
- Wed, 23 Sep 2026 06:22:31 -0700 (PDT)
+ AKwUvByjx9Kt/R0fo4DIkrsmQkU6kMzEzLDBKDKt+FgHl3Eg7g1J8rwCjC6Ml+phR4+qkqBnFHPSDo2REQ==@nongnu.org
+X-Gm-Message-State: AFuF++lQ8o3aGAAZkZepsnAEx/4prCdXesdkAwc0TBbY4pDnHrYA59dG
+ L220MxTpVD39DtdhoClzS1IUe3X5SNH7HbpAM6/NyCjLAOOJ6UZ4JwAw
+X-Gm-Gg: AYBFou2C6PH6vCFy9BRLBjI9mIPLYg6jAO77jJVYtmEmWLXlt2IpzbqJTElo+BR1rhW
+ IB6o219ohbFjrO1EcRKgbzE2KPMPAfOzz/015WNIQD2LbztzK164z7inVS/T157dmgQRUffVLQ5
+ 0EO7rTvaPscFg/Lh783uCt+Y1q0Dod1zkdTL3rsBCAWWcvow5I0HT9IiwS4oXKCY2kFiVuh/CiM
+ KEQi65JcGGUmIqszUhepf71RAbgCMuQatSVorR7Y98ubuLq0ovladFDEyjLTO+OvD4aeOlROe0g
+ sP4RG0SsDzst7+KrTlJK/R6yyERRO29rr4xmT//cPC8b3FyhiFZ5MzJGpWpG24KZX2VsYEO+Kab
+ DLrTZvkVLnRkxXLAldPAWG24xX6Uyc9nl6ETcBTTGsJj32Z1595i5tuhhTz/2hyw+SwqETFUVXo
+ /9tDYP/4uG1k41vDpSPa1fFnudZNlg1Ide5+WgBgZCIcqojGv+aIUjbsAXncF0ONMeiII3TIyDt
+ 5HW8nDnCWQfsEZXYHLjN5PhiizHupjaA0BtOuKHUg==
+X-Received: by 2002:a05:693c:88c6:10b0:33c:e93:764b with SMTP id
+ 5a478bee46e88-33e8e3add75mr2436826eec.37.1790169785754; 
+ Wed, 23 Sep 2026 06:23:05 -0700 (PDT)
 Received: from WIN-BH9M8FJACR9 ([103.94.185.75])
  by smtp.googlemail.com with ESMTPSA id
- 5a478bee46e88-33e97236754sm5553695eec.29.2026.09.23.06.22.24
+ 5a478bee46e88-33e97236754sm5553695eec.29.2026.09.23.06.22.57
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 23 Sep 2026 06:22:30 -0700 (PDT)
+ Wed, 23 Sep 2026 06:23:04 -0700 (PDT)
 From: Yonggang Luo <luoyonggang@gmail.com>
 To: qemu-devel@nongnu.org
 Cc: Cornelia Huck <cohuck@redhat.com>, xen-devel@lists.xenproject.org,
@@ -97,10 +97,10 @@ Cc: Cornelia Huck <cohuck@redhat.com>, xen-devel@lists.xenproject.org,
  Markus Armbruster <armbru@redhat.com>, Weiwei Li <liwei1518@gmail.com>,
  Song Gao <17746591750@163.com>, qemu-arm@nongnu.org, qemu-s390x@nongnu.org,
  Brian Cain <brian.cain@oss.qualcomm.com>
-Subject: [PATCH v3 034/114] target/riscv: Include migration/vmstate.h instead
- of migration/cpu.h in machine.c
-Date: Wed, 23 Sep 2026 21:15:08 +0800
-Message-ID: <20260923131635.1894-35-luoyonggang@gmail.com>
+Subject: [PATCH v3 038/114] target/riscv: use target_long_bits in pmpaddr
+ granule checks
+Date: Wed, 23 Sep 2026 21:15:12 +0800
+Message-ID: <20260923131635.1894-39-luoyonggang@gmail.com>
 X-Mailer: git-send-email 2.52.0.windows.1
 In-Reply-To: <20260923131635.1894-1-luoyonggang@gmail.com>
 References: <20260923131635.1894-1-luoyonggang@gmail.com>
@@ -129,26 +129,43 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-already uses fixed-width VMSTATE_* macros and does not need TARGET_LONG_BITS UINTTL helpers.
+- Replace TARGET_LONG_BITS with target_long_bits() for TOR/NAPOT
+  PMP address masking.
 
 Signed-off-by: Yonggang Luo <luoyonggang@gmail.com>
 ---
- target/riscv/machine.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ target/riscv/tcg/pmp.c | 5 +++--
+ 1 file changed, 3 insertions(+), 2 deletions(-)
 
-diff --git a/target/riscv/machine.c b/target/riscv/machine.c
-index bf203bffcef..00805745fbf 100644
---- a/target/riscv/machine.c
-+++ b/target/riscv/machine.c
-@@ -21,7 +21,7 @@
- #include "qemu/error-report.h"
- #include "system/kvm.h"
- #include "system/tcg.h"
--#include "migration/cpu.h"
-+#include "migration/vmstate.h"
- #include "exec/icount.h"
- #include "target/riscv/tcg/debug.h"
- #ifdef CONFIG_KVM
+diff --git a/target/riscv/tcg/pmp.c b/target/riscv/tcg/pmp.c
+index 41b55519a8e..03ee7c74300 100644
+--- a/target/riscv/tcg/pmp.c
++++ b/target/riscv/tcg/pmp.c
+@@ -23,6 +23,7 @@
+ #include "qemu/log.h"
+ #include "qapi/error.h"
+ #include "cpu.h"
++#include "qemu/target-info.h"
+ #include "target/riscv/tcg/csr.h"
+ #include "trace.h"
+ #include "exec/cputlb.h"
+@@ -643,14 +644,14 @@ target_ulong pmpaddr_csr_read(CPURISCVState *env, uint32_t addr_index)
+             /* fallthrough */
+         case PMP_AMATCH_TOR:
+             /* Bit [g-1:0] read all zero */
+-            if (g >= 1 && g < TARGET_LONG_BITS) {
++            if (g >= 1 && g < target_long_bits()) {
+                 uint64_t granule = 1ULL << g;
+                 val = ROUND_DOWN(val, granule);
+             }
+             break;
+         case PMP_AMATCH_NAPOT:
+             /* Bit [g-2:0] read all one */
+-            if (g >= 2 && g < TARGET_LONG_BITS) {
++            if (g >= 2 && g < target_long_bits()) {
+                 val = deposit64(val, 0, g - 1, -1ULL);
+             }
+             break;
 -- 
 2.52.0.windows.1
 

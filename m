@@ -4,88 +4,88 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 808BAC98304
-	for <qemu-arm@archiver.kernel.org>; Wed, 23 Sep 2026 20:54:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 66EA0C9830B
+	for <qemu-arm@archiver.kernel.org>; Wed, 23 Sep 2026 20:55:16 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1x9Tyv-0000hK-VI; Wed, 23 Sep 2026 16:54:22 -0400
+	id 1x9Tzb-00019V-D7; Wed, 23 Sep 2026 16:55:03 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1x9Tyu-0000co-Pf
- for qemu-arm@nongnu.org; Wed, 23 Sep 2026 16:54:20 -0400
-Received: from mail-pz2-x0c.google.com ([2607:f8b0:4864:3b::c])
+ id 1x9Tza-000198-Jm
+ for qemu-arm@nongnu.org; Wed, 23 Sep 2026 16:55:02 -0400
+Received: from mail-pz2-x15.google.com ([2607:f8b0:4864:3b::15])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1x9Tyt-0006xg-3D
- for qemu-arm@nongnu.org; Wed, 23 Sep 2026 16:54:20 -0400
-Received: by mail-pz2-x0c.google.com with SMTP id
- 41be03b00d2f7-cc5121bcf1aso1085768a12.1
- for <qemu-arm@nongnu.org>; Wed, 23 Sep 2026 13:54:18 -0700 (PDT)
+ id 1x9TzY-0006zN-13
+ for qemu-arm@nongnu.org; Wed, 23 Sep 2026 16:55:02 -0400
+Received: by mail-pz2-x15.google.com with SMTP id
+ 41be03b00d2f7-cc4c3304784so774178a12.3
+ for <qemu-arm@nongnu.org>; Wed, 23 Sep 2026 13:54:59 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1790196858; x=1790801658; darn=nongnu.org;
+ d=linaro.org; s=google; t=1790196898; x=1790801698; darn=nongnu.org;
  h=content-transfer-encoding:content-type:in-reply-to:content-language
  :from:references:cc:to:subject:user-agent:mime-version:date
  :message-id:from:to:cc:subject:date:message-id:reply-to:content-type;
- bh=LLOTR9CkKDnKrQ68tzbnMkZi6MTfjNklUMWY/EHKeZc=;
- b=sdcTpvluoM0QbVvp/hfuoENWVCZA7WFQm+6QzK1xUTryoQDRxr+N7U4+7jPFdH2lI3
- 54a1RvjTIGvfJjCJMJmgGkPRQto7K+s7VLN0VSHlrBwCpZrYjcac2nIxea74axyQkXfa
- hHkJpQH+wziLl+0IhHdnO9/YtChedIomVX9YRx1ZwNv+e8hFMuuF3lVAYiJE2kdClRcg
- x2TUobWIaRbAquvT3xsWU5bgi2fwrUDyAJxYYBJEqjnll9JbvwqwUZd/BfoLnUpa40Pc
- jezmXhYjIOXv82dBOtLCTsqqtYYm2FVPdwxcu9xsVI+hEkmvpQ9kyw583Z+nMCPcKKmN
- z7hQ==
+ bh=A2tONaDbtQL8PQbtIrLcxJSOEl2pUo5nWlMZcQy3bTs=;
+ b=x8IjF2xnqBt6i7Ux2P0T1U73/rihdpIXMuyTGXe7RZJyH4NKLhFKo365qsc/Gix97Z
+ V8zYELj/M7qxSCdLQJ+YQZgExUtxwDKFnN5n7muLOzn1Uo0I+jXu/4WClYN5jhnK63ag
+ aNTJSasQ0vVYFlZWx+k5JbLrApoeqdrrgi5wGG/yUWXIhzfgKuZA4510AkcJfExnEos5
+ dmSnk0a77ZmE22+rO0PE8r3GF0M74h5+CRS5iD6YeAfPtV3Nh4x9mjG3/BnsS3MUca3d
+ SzoHSQyZ1V5MWNBJuY0I7DFHO66YZRqj8V7DDSM0iFKk0wuQ3vcTCqs+SjILhP5yJUWq
+ ylhw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20260707; t=1790196858; x=1790801658;
+ d=1e100.net; s=20260707; t=1790196898; x=1790801698;
  h=content-transfer-encoding:content-type:in-reply-to:content-language
  :from:references:cc:to:subject:user-agent:mime-version:date
  :message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
  :message-id:reply-to:content-type;
- bh=LLOTR9CkKDnKrQ68tzbnMkZi6MTfjNklUMWY/EHKeZc=;
- b=IeX5wyr7j/FZulqyLC5MnAHEElGGDNMb6vrkeLoaPnuxQF0LnFfzIFKZNdU1Ir3u6P
- CR5/X4oYsK6zWB/cWB6X2pWdBYI/qSL44o70VeAnHms+QVVlPd1XEqiDHUzMhxiHtmHH
- aonxxg+KpPGinn1npmR8jbysN05YhrooammSluR2vPnthHjAhXo7b6xv5nawcZK+zi+Y
- k/LftySCEzJIoI8hwW5WhRi+qgz1JGc5zQDb1UFBLnRrXX29IYBGg2RJZuTslzzr4hUh
- ErTBPIUTB5ezMBUoVUQ6+vcCVjXoqWGeYnNiC+Ld4zOK5p+SAyyIYng4FiWgA5VllDaT
- h2jg==
+ bh=A2tONaDbtQL8PQbtIrLcxJSOEl2pUo5nWlMZcQy3bTs=;
+ b=wZn3zwwYpmc1HjH/HfzXS2IAHaEqS4M0xYyUHYq4+aUfgVuFbjsXIAOo1isrrtIt7h
+ tBYoQgfP+hJdLL5mzfXZMqCmDrZBmppwxs9L5B6ITbvTJdrafCSGHZG4hXZtwveO5mBU
+ tL4TwM8BRndbzRU23N75VV9SETZpE1T6xc1oXYY63dUpuUWDMHcCa6U5Km9R4KDMTRv6
+ 3Ze0sDeAFJiSPL2aHDlaaW0LSJmoLYvgY4bThIRbR+goFcXLRi2zI/4TqlgXWgRpUKzN
+ YS0AL9pVlNRv0Dm/5qgYD7yLzpoVtw/zThgJMjFaFhPB9U3YtcHr6p/C8amojN0eEwhI
+ jskQ==
 X-Forwarded-Encrypted: i=1;
- AKwUvBzLnu8L2YHbEC0JnfKqtnWiSTycxHfrr46iF0O8QNR1mUPpIRF94mn0mKBI+D3HTz/KUFIKeNb5xw==@nongnu.org
-X-Gm-Message-State: AFuF++kPlz49BFrRn0Tyw7WkL1slLnIL87XZ7sNowM8x+Zt+sEALBHJD
- o9tTPSZd1NrE0ZPTLqtIqaz5sKCcXoE4Irf4YCflPYLjF+Np0ptbO5xHfeQrVdDYdIg=
-X-Gm-Gg: AYBFou2ktk7lG8/0IUp4TFfzLgFI+V8ccpJtPcN+3AuxdKWhDycEkgOHXUFCA4knU5h
- otXjpZGMUoIQXGoZKYfU5mRRm/mnNM1Asfcheb38U4OzTiLCRz22lXZwzCXROWJLi3BWfKIoSX4
- YPYm/hX3y/7Bxwalp3+o8fbxAUuuUNFODLkqu7+2N3Spj0nFtJAoF6I7RMH7dNvvta2+JwaVIg/
- U7ZUay3VUIwM/bRjPaTJCWLvE3eAeMdWUhgZg2Yy7n80qBx2Fd8NN6YsR7FrstFO27HJ3Vb0LCO
- uNHLddb1O/n9HqEDq2gO01sL7GAwTiACft0nGQLPTkdxGOaZeih+1KZQQk7Eo7F6QXZeVTLXoKc
- PM/gWxXL6w0b81qlptydxPmJIIS3dDAnBFaV4JPqQ/8z9FPTokpCVqDELDAddpwh4MrrWGqNytF
- aSz2V7aBbjxW2lWjSsy4YHih+eRzIAooC40ptCgIyLE1Yhime/69bl5wLjzhwm9z/4mn4wBxvyn
- DB3GiID6evrCGaNKuc3LzwRIE+9aZ4X+EiQfPAR
-X-Received: by 2002:a17:90b:4d85:b0:39e:53a:c8d4 with SMTP id
- 98e67ed59e1d1-3a098ae21c7mr311078a91.12.1790196857414; 
- Wed, 23 Sep 2026 13:54:17 -0700 (PDT)
+ AKwUvBywzoyVai1cl4FFH99p+QuIBCYchHtie3eNGp+xcPAlrNtWdgfW5F+yqMvxl9gj2MNiNg2CLnjhhA==@nongnu.org
+X-Gm-Message-State: AFuF++lNd71yvNadAZwtPxV+cuVgkXxmrhjHmKlYnhDpuWOn9CD7Topi
+ j0139fSIBx7OaZLi5t6BgSyFTc+qVUkU+AupGYGQMRaHaTiqVWykul+KYY3xz/qBAyjeqCR4qF6
+ MWqX8
+X-Gm-Gg: AYBFou0WkMQJh4+He6mnxamNrnH0d4fXQJ0toFcLEMhbT84OzFyA56KG2Mb6cp4MMD3
+ saaD+A2qlxKTyIvDjbTN/ETHrFcPN2O7aPnVeND5oUsMq4j/7Ai9nQhLbT3qA7eeN3Q/W2J6V5b
+ OKDHJZySLY1hFYqIRr+fjuhNkLIgM9TrXsHhfU66b2TVK4+PoS7RDtfzKBf/XBnf21PPIRH4TrK
+ DWkMBhIYTQWL70bQdWI4RMmztcOSmXHQ6spQITLeXtIUIFp/pwVHcMlFrpm1kMavqGXM3HyeAZE
+ g8qZEllXC8F1e0DagTiFLcPeh5PKY/k/hVtwfXcC9PKHCBBsYpcVgKG26TYzN38n7ybiLf2izvv
+ Q21dSDpLBMSg+RZ8lNubZlBpiVsv2qe05UhEUvPUvJdgXEwgGx93WNOaVld4dGzpUfuc4QM8Fg0
+ 4Qlh+i/NaRi85YHlUBIQulZAG3t7cXeMrYiPVXupAAWVBQxfnpt0UzmHLjn9u0911jw3EwqWpx1
+ UFdTBv0j4WkaigGEL+IIJoyCWmJa5G0M17cDjTlszWX7pM442U=
+X-Received: by 2002:a05:6a20:394c:b0:3dd:85a8:4c57 with SMTP id
+ adf61e73a8af0-3de0e73a234mr308434637.30.1790196898443; 
+ Wed, 23 Sep 2026 13:54:58 -0700 (PDT)
 Received: from [192.168.0.4] (174-21-68-150.tukw.qwest.net. [174.21.68.150])
  by smtp.gmail.com with ESMTPSA id
- 98e67ed59e1d1-3a09733f48fsm831105a91.11.2026.09.23.13.54.16
+ 41be03b00d2f7-cc75f3ba829sm1630494a12.11.2026.09.23.13.54.57
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 23 Sep 2026 13:54:17 -0700 (PDT)
-Message-ID: <2033bb46-8266-46d7-adb7-330e284d8ae9@linaro.org>
-Date: Wed, 23 Sep 2026 13:54:15 -0700
+ Wed, 23 Sep 2026 13:54:58 -0700 (PDT)
+Message-ID: <5807b5b6-2860-4675-9f0b-5790f3bfd37b@linaro.org>
+Date: Wed, 23 Sep 2026 13:54:56 -0700
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 5/8] target/arm: Move ESR_EL1 definition to
- vmsa_pmsa_cp_reginfo
+Subject: Re: [PATCH 6/8] target/arm: Don't set ARM_FEATURE_VAPA for v7 PMSA
 To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
  qemu-devel@nongnu.org
 Cc: Tao Ding <dingtao0430@163.com>
 References: <20260907130223.3148989-1-peter.maydell@linaro.org>
- <20260907130223.3148989-6-peter.maydell@linaro.org>
+ <20260907130223.3148989-7-peter.maydell@linaro.org>
 From: Richard Henderson <richard.henderson@linaro.org>
 Content-Language: en-US
-In-Reply-To: <20260907130223.3148989-6-peter.maydell@linaro.org>
+In-Reply-To: <20260907130223.3148989-7-peter.maydell@linaro.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2607:f8b0:4864:3b::c;
- envelope-from=richard.henderson@linaro.org; helo=mail-pz2-x0c.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:3b::15;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pz2-x15.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -108,26 +108,31 @@ Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
 On 9/7/26 06:02, Peter Maydell wrote:
-> Currently we define ESR_EL1 in vmsa_cp_reginfo[], but ESR_EL1 isn't
-> VMSA specific.  This doesn't matter for "is the register visible when
-> it should be?", because currently all our AArch64 CPUs are VMSA.  But
-> it does matter for migration, because the DFSR definition in
-> vmsa_pmsa_cp_reginfo[] is marked ARM_CP_ALIAS on the assumption that
-> the migration of cp15.dfsr_ns will be handled by migrating esr_el[1],
-> which is the same underlying field in the CPU state.
+> The features VAPA (which gets you the ATS instructions and the PAR
+> register) and LPAE (which gets you a 64-bit PAR and the long-format
+> page table descriptors).  were originally defined in v7 as being
+> A-profile only.  For v8, the ATS insns and PAR are added to
+> R-profile; although there are no page table descriptors to be long or
+> short, the v8R PAR format is always long-descriptor style, so it
+> makes more sense to set ARM_FEATURE_LPAE than not (and matches how we
+> already return true from regime_using_lpae_format() for v8R PMSA).
 > 
-> Move ESR_EL1 to vmsa_pmsa_cp_reginfo[]; this will fix the lack of
-> migration of DFSR for R-profile CPUs.  This is a migration break for
-> those CPUs, but none of them are used in versioned machine types.
+> Our "feature X implies feature Y" code was only taking account of
+> A-profile; adjust it so that for PMSA:
+>   * V8 implies V7VE, LPAE, V7, and VAPA (no change from currently)
+>   * V7 does not imply VAPA (new)
 > 
-> (The S banked DFSR is already migrated, because we register ESR_EL3
-> in el3_cp_reginfo[] if EL3 exists, regardless of whether we have VMSA
-> or PMSA.)
+> (v8R wants V7VE because this implies things like the existence of
+> ERET and the PMOVSSET insns.)
+> 
+> This will stop us incorrectly exposing the PAR and ATS insns for v7R
+> CPUs (and it will be a migration break on those CPUs, which is fine
+> as none of them are usable with versioned machine types).
 > 
 > Signed-off-by: Peter Maydell<peter.maydell@linaro.org>
 > ---
->   target/arm/helper.c | 16 ++++++++--------
->   1 file changed, 8 insertions(+), 8 deletions(-)
+>   target/arm/cpu.c | 6 +++++-
+>   1 file changed, 5 insertions(+), 1 deletion(-)
 
 Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 

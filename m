@@ -4,24 +4,23 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1E941C9830D
-	for <qemu-arm@archiver.kernel.org>; Wed, 23 Sep 2026 21:56:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0BDCBC9830D
+	for <qemu-arm@archiver.kernel.org>; Wed, 23 Sep 2026 21:56:40 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1x9Uwb-0003sM-0Z; Wed, 23 Sep 2026 17:56:01 -0400
+	id 1x9Uwa-0003s6-Iy; Wed, 23 Sep 2026 17:56:00 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1)
  (envelope-from <manueleconti@Manueles-MacBook-Pro.local>)
- id 1x9Um3-0001cG-Ek; Wed, 23 Sep 2026 17:45:07 -0400
-Received: from [2a01:7d0:d20e:1100:ed13:e0b7:e950:9bd7]
- (helo=Manueles-MacBook-Pro.local)
+ id 1x9Ulz-0001ZK-HI; Wed, 23 Sep 2026 17:45:06 -0400
+Received: from [82.84.137.98] (helo=Manueles-MacBook-Pro.local)
  by eggs.gnu.org with esmtp (Exim 4.90_1)
  (envelope-from <manueleconti@Manueles-MacBook-Pro.local>)
- id 1x9Um0-0003cI-PG; Wed, 23 Sep 2026 17:45:07 -0400
+ id 1x9Ulx-0003bC-Hl; Wed, 23 Sep 2026 17:45:03 -0400
 Received: by Manueles-MacBook-Pro.local (Postfix, from userid 501)
- id BFF48998E85D; Wed, 23 Sep 2026 23:44:58 +0200 (CEST)
+ id A8BA79983791; Wed, 23 Sep 2026 22:27:38 +0200 (CEST)
 From: Manuele Conti <manuele.conti@archimede-energia.com>
 To: qemu-devel@nongnu.org
 Cc: Alistair Francis <alistair@alistair23.me>,
@@ -30,22 +29,22 @@ Cc: Alistair Francis <alistair@alistair23.me>,
  Paolo Bonzini <pbonzini@redhat.com>,
  Manuele Conti <manuele.conti@archimede-energia.com>
 Subject: [PATCH 0/2] stm32f405: timer periodic/CEN fixes + RCC ready mirroring
-Date: Wed, 23 Sep 2026 23:44:51 +0200
-Message-ID: <20260923214453.45335-1-manuele.conti@archimede-energia.com>
+Date: Wed, 23 Sep 2026 22:27:31 +0200
+Message-ID: <20260923202733.24933-1-manuele.conti@archimede-energia.com>
 X-Mailer: git-send-email 2.41.0
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-Host-Lookup-Failed: Reverse DNS lookup failed for
- 2a01:7d0:d20e:1100:ed13:e0b7:e950:9bd7 (failed)
-Received-SPF: none client-ip=2a01:7d0:d20e:1100:ed13:e0b7:e950:9bd7;
+X-Host-Lookup-Failed: Reverse DNS lookup failed for 82.84.137.98 (failed)
+Received-SPF: none client-ip=82.84.137.98;
  envelope-from=manueleconti@Manueles-MacBook-Pro.local;
  helo=Manueles-MacBook-Pro.local
-X-Spam_score_int: -8
-X-Spam_score: -0.9
-X-Spam_bar: /
-X-Spam_report: (-0.9 / 5.0 requ) BAYES_00=-1.9,
- HEADER_FROM_DIFFERENT_DOMAINS=0.25, NO_DNS_FOR_FROM=0.001, RDNS_NONE=0.793,
- SPF_HELO_NONE=0.001, SPF_NONE=0.001 autolearn=no autolearn_force=no
+X-Spam_score_int: 25
+X-Spam_score: 2.5
+X-Spam_bar: ++
+X-Spam_report: (2.5 / 5.0 requ) BAYES_00=-1.9,
+ HEADER_FROM_DIFFERENT_DOMAINS=0.25, NO_DNS_FOR_FROM=0.001, RCVD_IN_PBL=3.335,
+ RDNS_NONE=0.793, SPF_HELO_NONE=0.001,
+ SPF_NONE=0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-Mailman-Approved-At: Wed, 23 Sep 2026 17:55:56 -0400
 X-BeenThere: qemu-arm@nongnu.org

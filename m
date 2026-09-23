@@ -4,53 +4,52 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A2B87C98307
-	for <qemu-arm@archiver.kernel.org>; Wed, 23 Sep 2026 10:58:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C12BDC98307
+	for <qemu-arm@archiver.kernel.org>; Wed, 23 Sep 2026 10:58:59 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1x9Kfn-0004hb-1j; Wed, 23 Sep 2026 06:57:59 -0400
+	id 1x9Kff-0004b9-S2; Wed, 23 Sep 2026 06:57:51 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <marcandre.lureau@redhat.com>)
- id 1x9KfW-0004Xv-4w
- for qemu-arm@nongnu.org; Wed, 23 Sep 2026 06:57:43 -0400
+ id 1x9KfK-0004Vh-TQ
+ for qemu-arm@nongnu.org; Wed, 23 Sep 2026 06:57:32 -0400
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <marcandre.lureau@redhat.com>)
- id 1x9KfO-0002Sj-PT
- for qemu-arm@nongnu.org; Wed, 23 Sep 2026 06:57:41 -0400
+ id 1x9KfH-0002LN-E2
+ for qemu-arm@nongnu.org; Wed, 23 Sep 2026 06:57:29 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1790161054;
+ s=mimecast20190719; t=1790161029;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=hxicqioWmuQg+baYszlp6jsKoKgPYZCrMhZcR0Bx8+E=;
- b=JTI6CMRsyAZhjHzWuvNAfDB9YvEfAycWA7V42X/l7GQH2qSgjiK62IXAJf/0fY2hK4KEbG
- gajThk3gqkRZqsKMDGcieR4L9tuicBv8vRW1biHamVklYFqdWFXEKm3/MJeIOsBqQfmVXB
- 7JcUTXWKekHGHW2Y0kwrnPkipS7kDNg=
-Received: from mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com
+ bh=mXWWNgJoiQKnJXtk9rGHVTvr8C0mu0sjDTQuWi3HEao=;
+ b=Vj3jGmQvVjzu2vio4hzP3RJOuJu8mtV4P/MI276w0ueCME8sPojUvaXB3x0ZgXsqtSehMC
+ HVGPEmYbulYKxyq/SsmuOa32OpylJ8IEepBIzU8+1rceoR+MPgwrDPls6LBBwl7/JZxOrp
+ F04CDJjjgEvhvTVXOcB+62NT1nkfPGQ=
+Received: from mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com
  (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-316-AML_iXOlOo24fa8RcNvzMA-1; Wed,
- 23 Sep 2026 06:57:29 -0400
-X-MC-Unique: AML_iXOlOo24fa8RcNvzMA-1
-X-Mimecast-MFC-AGG-ID: AML_iXOlOo24fa8RcNvzMA_1790161046
-Received: from mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com
- (mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.12])
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-622-7aXeJQ8rMiyn5N91XLJcVQ-1; Wed,
+ 23 Sep 2026 06:57:06 -0400
+X-MC-Unique: 7aXeJQ8rMiyn5N91XLJcVQ-1
+X-Mimecast-MFC-AGG-ID: 7aXeJQ8rMiyn5N91XLJcVQ_1790161023
+Received: from mx-prod-int-10.mail-002.prod.us-west-2.aws.redhat.com
+ (mx-prod-int-10.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.95])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 8689B1944DDB; Wed, 23 Sep 2026 10:57:26 +0000 (UTC)
+ by mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 067BF1955EB5; Wed, 23 Sep 2026 10:57:03 +0000 (UTC)
 Received: from localhost (headnet03.pony-001.prod.iad2.dc.redhat.com
  [10.2.32.114])
- by mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id A3CFE1956042; Wed, 23 Sep 2026 10:57:25 +0000 (UTC)
+ by mx-prod-int-10.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
+ id 092A5754; Wed, 23 Sep 2026 10:57:01 +0000 (UTC)
 MIME-Version: 1.0
-Subject: Re: [PATCH v2 9/9] qapi: return MachineInfo typename from
- query-machines
+Subject: Re: [PATCH v2 3/9] hw/arm/virt: use unique QOM name
 From: marcandre.lureau@redhat.com
 To: Yonggang Luo <luoyonggang@gmail.com>
 Cc: qemu-devel@nongnu.org, 
@@ -72,30 +71,30 @@ Cc: qemu-devel@nongnu.org,
  Philippe Mathieu-Daude <philmd@mailo.com>, 
  =?utf-8?q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>, 
  Paolo Bonzini <pbonzini@redhat.com>, Eric Blake <eblake@redhat.com>
-In-Reply-To: <20260922215533.641-10-luoyonggang@gmail.com>
+In-Reply-To: <20260922215533.641-4-luoyonggang@gmail.com>
 References: <20260922215533.641-1-luoyonggang@gmail.com>
- <20260922215533.641-10-luoyonggang@gmail.com>
+ <20260922215533.641-4-luoyonggang@gmail.com>
 Date: Wed, 23 Sep 2026 14:56:45 +0400
-Message-Id: <179016100553.1396491.8874451102810485078.b4-review@b4>
-X-Developer-Signature: v=1; a=openpgp-sha256; l=596;
+Message-Id: <179016100541.1396491.8057721858812292119.b4-review@b4>
+X-Developer-Signature: v=1; a=openpgp-sha256; l=423;
  i=marcandre.lureau@redhat.com; h=from:subject:message-id;
- bh=QQpPdMVl0ZoxtZTqY6VPFLAsJs28xRpi3eIBdEeke70=;
- b=owEBbQKS/ZANAwAKAdro4Ql1lpzlAcsmYgBqs7Bx7dELfa1iV+ZEG2mGA9YHlK1g8Hx3M2Yod
- GiFrMqmCV2JAjMEAAEKAB0WIQSHqb2TP4fGBtJ29i3a6OEJdZac5QUCarOwcQAKCRDa6OEJdZac
- 5ZbVD/wLO4qMwJ/0x8f7ytLn+MndrUxZ/HeI6qLQ+dnzNPBCx9evr4WOSyqNAOLvLovzoRS8oGR
- 8v5RbbPCUBimLmcGXa1Llyb0uo/FLheDl+OhPn8XVLuBioq9tDRCeY1fRtWy/NZMcru6cLifJFK
- 9WwOGbdmbxYTnR7D1/irbMIf7bExet1sbQ8WdgkbWTUA0yOp1Qiz+1G3Qca7c7wXcEx0z9DCLet
- lUCVjqQ7y0FZrSM9Tbm71KhwKKvXag0KCyCcmL/nDH2Gh69LjC74/GFbLcfv85nqXrnJVGH+PRX
- EBjmamvjWPfNAoxpOsCH+wR5q92ZGrL6FsmoLOCYZk+YLqBYaR2z0ILowPMwF4e1W65IIJ8wzE0
- t4D0Of/BTJiUEYTRLWf3/FZF0Aa0eQjL9gTSHnv9B2oct94w+gxR1+NOaPr6gOL+QZHPsLP2HWy
- yAwa/8mY5ozKi315oBvwrLEEH20oLXj3fqVbTdPTegglDFWYJu57HyC6zD+oA+t1CidNk0DB7ds
- ivmku8CgGgMB+YIwkUy7EILhxpBmBmHwiD1S6q3ScN1Xq/frChBBmn6y/K/dTtpmjo2ZzHJws3G
- MuxNDvvnoirO3GUTbEy02dTBZMhoZoLjrtlwLT5zfy9xIYl06vMf4TK4pY6jjpDpPI03k2jgrU9
- tmLyntmFW7hlspg==
+ bh=9EmDKiO++7T16/gKxSLM9mnZwVhNs1RClqQ3j5lxGns=;
+ b=owEBbQKS/ZANAwAKAdro4Ql1lpzlAcsmYgBqs7Bx+rw8TbhnQo43DJlCLgGxvqOSpP+V7HumZ
+ emb4FF9ktOJAjMEAAEKAB0WIQSHqb2TP4fGBtJ29i3a6OEJdZac5QUCarOwcQAKCRDa6OEJdZac
+ 5TWyD/9Rg/DnJEdxjrKmZ5dTwQ731YFuZ76gXuI6ROVXHZa9o4dSfin+CqIz3E0S8TJI2bZk1Lk
+ gYttMmwVT89QWx/jjVgdrj0NW0V7/k01BQ6bvB3Ua57blzcErE3xpHkYWsNoo/IAGyg/tamRHIw
+ ixSn9tfYR/5G5mMyPa1FO5lK9+nETHbAXPrDuoX7W/qZLkF89Sf1CYiEQZYnxis5sSYk7WoLDRx
+ 3+3ifHQc0I1q77rfNEQ1HOrofZ8fYv+3Ic75eH0DKZhX9tmn/X96uACaW2DGpzifhfblL87PFOu
+ Z2JMrwl8WSwSBKVqwu+zchDzChGTnjRYWwfdGak688KpXzWIWKOsRWflHodgQEWB7RbHIL6aCYA
+ QjE2W6HEGPaWAOmekPiKCtM18IAC6MzMbd5iukTELFS66Qi1fgAItVd/2m6v+UOMXpc6uTEYo8G
+ FsHUeZ7MoH7rhE974uvXcdHQtvRYUi4CJnDt1B/XQnPbbL7arULV+2VouHBZfXxyk6lugRDOgct
+ qGPg9/tSxhBUK1rKoDdjyaTTsuXZLl8ZGLNNRmphVFUy+4ZhSfaM7AMD+crp22KGT0PYXqTSDXY
+ iFB+Wx/3pRNDazokWCM00rDMAMTYRRSEJhvcQTq7GbTS4jUkoMkaPb0I7pYDm1OdrAkeIoUyHdI
+ rfljM5emCBGuYQw==
 X-Developer-Key: i=marcandre.lureau@redhat.com; a=openpgp;
  fpr=87A9BD933F87C606D276F62DDAE8E10975969CE5
-X-Scanned-By: MIMEDefang 3.0 on 10.30.177.12
-X-Mimecast-MFC-PROC-ID: 0LrdcLd3u9dQGGjx7VnxjjZwl1jA_Lw8EvYTDhj5ghk_1790161046
+X-Scanned-By: MIMEDefang 3.6 on 10.30.177.95
+X-Mimecast-MFC-PROC-ID: VSF6auXVCqZSGT-NhFsrnumU35QXKejiz2CIlfWBl6k_1790161023
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
@@ -125,15 +124,11 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Wed, 23 Sep 2026 05:55:32 +0800, Yonggang Luo <luoyonggang@gmail.com> wrote:
-> query-machines returned only the -M name, so management apps inferred
-> the QOM type as that name plus "-machine". A prefixed type such as
-> arm-virt-11.1-machine no longer matches -M virt-11.1. Return the QOM
-> type in MachineInfo typename from object_class_get_name() in
-> qmp_query_machines(). test_query_machines_typename checks that
-> qom-list-properties accepts it.
-> 
-> [...]
+On Wed, 23 Sep 2026 05:55:26 +0800, Yonggang Luo <luoyonggang@gmail.com> wrote:
+> Set TYPE_VIRT_MACHINE to MACHINE_TYPE_NAME("arm-virt") so ARM virt
+> no longer collides with other virt-machine types in one process.
+> Keep the -M / help / migration name as virt-* via
+> machine_class_set_name().
 
 Reviewed-by: Marc-André Lureau <marcandre.lureau@redhat.com>
 

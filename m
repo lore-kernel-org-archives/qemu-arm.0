@@ -4,124 +4,170 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C2285C98304
-	for <qemu-arm@archiver.kernel.org>; Wed, 23 Sep 2026 14:32:01 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 58EE2C9830E
+	for <qemu-arm@archiver.kernel.org>; Wed, 23 Sep 2026 14:45:54 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1x9O0g-0000Hr-7j; Wed, 23 Sep 2026 10:31:46 -0400
+	id 1x9ODe-0004Cz-SU; Wed, 23 Sep 2026 10:45:11 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1x9O0e-0000H3-Cm
- for qemu-arm@nongnu.org; Wed, 23 Sep 2026 10:31:44 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ (Exim 4.90_1) (envelope-from <pierrick.bouvier@oss.qualcomm.com>)
+ id 1x9ODZ-00044Q-U3
+ for qemu-arm@nongnu.org; Wed, 23 Sep 2026 10:45:06 -0400
+Received: from mx0a-0031df01.pphosted.com ([205.220.168.131])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1x9O0c-0007lx-P6
- for qemu-arm@nongnu.org; Wed, 23 Sep 2026 10:31:44 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1790173900;
- h=from:from:reply-to:reply-to:subject:subject:date:date:
- message-id:message-id:to:to:cc:cc:mime-version:mime-version:
- content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=oxDyo6wS9tLNRj9z6xsNaM4tf77SpHmeasoP+i9z6qY=;
- b=Ui59tHZqa2z3EtwP28XTFKxprfdtpskVCi4hkD/ygnLkLKOI04+3i+e+g9Nt7ijlWL0P8N
- YgLFUGmVGWbE7YFl6yHmmc93eLvwteHz+pIY4iCzCzTLwb3odT0g/SZT5dXSVqasSo5+9E
- aZvcFu0uJ5nUZrQh4MdtCtbqEYtvtCE=
-Received: from mail-wr1-f71.google.com (mail-wr1-f71.google.com
- [209.85.221.71]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-190-UhCt2zfwNI6braYIiDnX1w-1; Wed, 23 Sep 2026 10:31:39 -0400
-X-MC-Unique: UhCt2zfwNI6braYIiDnX1w-1
-X-Mimecast-MFC-AGG-ID: UhCt2zfwNI6braYIiDnX1w_1790173898
-Received: by mail-wr1-f71.google.com with SMTP id
- ffacd0b85a97d-48704c0043aso48219f8f.1
- for <qemu-arm@nongnu.org>; Wed, 23 Sep 2026 07:31:39 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <pierrick.bouvier@oss.qualcomm.com>)
+ id 1x9ODW-0000gQ-4J
+ for qemu-arm@nongnu.org; Wed, 23 Sep 2026 10:45:05 -0400
+Received: from pps.filterd (m0279865.ppops.net [127.0.0.1])
+ by mx0a-0031df01.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id
+ 68NDL6jC177308
+ for <qemu-arm@nongnu.org>; Wed, 23 Sep 2026 14:45:00 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qualcomm.com; h=
+ cc:content-transfer-encoding:content-type:date:from:in-reply-to
+ :message-id:mime-version:references:subject:to; s=qcppdkim1; bh=
+ xgcOxoTBwTC0LF6Ccg2RoIG8nDW44o8mbEkBphCt1MQ=; b=lOcvg0LsZNHlJQcO
+ 83LWdgPgFbriVuwgIkvY1vjmlk3l0vvKq5h3c+UrBHs4eH8sUgVxSQO6/x7k7sWA
+ XP9VHPwASEyTQBgKxgTVA9Qzh/Vpa4KV1F4MZcTE87LSY2YKrDyZxAD8y5rRIfqa
+ 0kZU1HHHHdP/tG9icKbXa+XeoO4Jnpmc1tO0ArX+MMrLhxHJ3rUnkD1MyDAzuBv5
+ 9e5urHMujrRvNlDJiuAx6R8rvM2q5XTIGwwp1wVaN23cB7UDJHJsv1g71ZijmXKP
+ XizyejcqWjeG+hvuHg6+K8yMo852eB23u3BBgBaJ7+oAj83v3/xibK+Ja8JUaYxN
+ NXqUZg==
+Received: from mail-dy1-f200.google.com (mail-dy1-f200.google.com
+ [74.125.82.200])
+ by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 4gvfjxrcep-1
+ (version=TLSv1.3 cipher=TLS_AES_128_GCM_SHA256 bits=128 verify=NOT)
+ for <qemu-arm@nongnu.org>; Wed, 23 Sep 2026 14:44:59 +0000 (GMT)
+Received: by mail-dy1-f200.google.com with SMTP id
+ 5a478bee46e88-30bcb065bfdso1419680eec.0
+ for <qemu-arm@nongnu.org>; Wed, 23 Sep 2026 07:44:59 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=oss.qualcomm.com; s=google; t=1790174699; x=1790779499; darn=nongnu.org;
+ h=content-transfer-encoding:content-type:in-reply-to:content-language
+ :from:references:cc:to:subject:user-agent:mime-version:date
+ :message-id:from:to:cc:subject:date:message-id:reply-to:content-type;
+ bh=xgcOxoTBwTC0LF6Ccg2RoIG8nDW44o8mbEkBphCt1MQ=;
+ b=GZPqkApi6teEurShuwrgVEg3UgsAm+AUlotajbq5R/8hIsxqG0wpfZdrwUWNy1YrYh
+ 4I8/rDRpDenUmY/mu95mQTH7/bAvtn4YnQPl+LsQ5kNcZeQlyawp0sysJzCN88p4QLfP
+ jSGGvT5H4zCCpNTQzshh0V35MgfsPPjY1EwznNV9hOHll2VrX3ps1Oiik6HmTTFLc1Xg
+ PxQZcGxxr+mOlClCL1L9SP7uxT18t3L/DUxacbdjyVYrLu4UCLlfbaf/nhYSVL2Tihlc
+ 8jI/KSdx1nznfFaObbZMfzPxezp6vdAiXAasfJw1PdJCoD+0r2Wl8zdU6Ws3fR4nTzsL
+ lfLg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20260707; t=1790173898; x=1790778698;
- h=content-transfer-encoding:content-type:in-reply-to:from:references
- :cc:to:content-language:subject:reply-to:user-agent:mime-version
- :date:message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+ d=1e100.net; s=20260707; t=1790174699; x=1790779499;
+ h=content-transfer-encoding:content-type:in-reply-to:content-language
+ :from:references:cc:to:subject:user-agent:mime-version:date
+ :message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
  :message-id:reply-to:content-type;
- bh=oxDyo6wS9tLNRj9z6xsNaM4tf77SpHmeasoP+i9z6qY=;
- b=cDUPsnjaTX5ldcQGyKzyr2DNYuPkprillmCajFSjviiHqebESsDjWsUVMCCMqS8FmQ
- kPxYg8PD+AO2rQJkNUxbIsj3V6GH4g2QL4k09A8t8t9ZoXglfjsGZZgwbjlj6IRLAy14
- 7naL/DdjysBlPc9sMLvM4bfegb5Phkrgw4Zzh+qZGmrknuB1NzQMd/XVaQFzsgKnGjLp
- i14MKS8Z0gwDEzGfU33/56fpEWdWc378vJERQsuw3ljAjyQDR812dU5vgb7jFVrQsjxF
- He+Tm7H7wokMrMs3rncpmG/A8taEn+8xADGED8WRf3xUfkv8/i+JRCVfh8A2dcCWPQ8Y
- p/LA==
+ bh=xgcOxoTBwTC0LF6Ccg2RoIG8nDW44o8mbEkBphCt1MQ=;
+ b=hC3fVIeOgYTXc/WyOyPEzxu4AfNWPnsg53falWYUte65Et1NkhdlAjA64YAU+on/Mw
+ u89eMUKDGhRYYa/G2y39wtpuL68F6FTIn1pdGFFtBUO5pX/U5Hgh9+nF6b70u87CuTrj
+ a6OwTyte/G0/KCZHCiPp987R+uz/BvH7IjbNgPhDAg7a4YMZQ6P05Z8NL2fvyEipWmbW
+ i62CGH/k+nkNPNkit0IMrXcZ4wxp3sssDWA/dNQdmyLThs4S3+kDLyU6FTPkkpjBWZVG
+ GSHGcudEvsvQV5FI9CB9W7+HbzxJ1jllFBCqB+Q+gw2PRnDWcG1h9Dq4ZoVp5AwMu145
+ anLw==
 X-Forwarded-Encrypted: i=1;
- AKwUvBz0D7HeGFTZIEQkOEpaoM4Vf3V+OcQMrPYmuVsA6yeDfJjQIyUxfypv5pa0XXqPZ1bbr5cj5Mn9jA==@nongnu.org
-X-Gm-Message-State: AFuF++l+akWZ1s2DFtZyevCNjWtJupfVR6Sn3ts0QeUcmFwWjFcQMXHk
- SxKtuBot3wvDAmZ7saZV60mNuFCRdWgiqJ7IZe5leQw1/7Bov5jJbpPOD2jeEKQEyLjKX9et26D
- NrUVJkzqY035KlDByKzl+lr3SnjVKeLGUXSVv3D4Das9in0jOZ0/Kvg==
-X-Gm-Gg: AYBFou1EceM0Qo9mUZmzWbSDcIEP+cKJhrmp6IT+LJA4N9xjvbMxhBldgvtCHegLFXS
- JalGbd1YDhGdMfcz0y9E24mkCEm0BxeR/JY8AHqMYwlJJiYZvnGl6JMUKOKfXfOsnALU90rX4f+
- epuMAT+wt7nu0R66KuPiEwKCDzMYMCtXD4ZCNO3hf5mfY9oTPKH5jQ90Qhmf9x1Sd2FymcYcpi4
- 3Z1QISeXU/+/jHG4C8aWcnwXqlp8AEE6+uyyVqBnwC1MYaCO9b0Npa1jHur0temCndwHV+Yx1XR
- PJPjBIdgpSVIsIhI2vrZFnYLlUC7azmSeBf6CuhBubUmgIc1TYjkM/NhGWsIUzckr5v5I0Ma5Uh
- vdI4FIpi/RXjlJB0geWMJtfjP2YjtxD6dDC1+ZXVnr+4GNXMNw1S1WVlRrcY=
-X-Received: by 2002:a5d:5f88:0:b0:485:8a46:b3cc with SMTP id
- ffacd0b85a97d-488670c51fcmr4871164f8f.52.1790173898194; 
- Wed, 23 Sep 2026 07:31:38 -0700 (PDT)
-X-Received: by 2002:a5d:5f88:0:b0:485:8a46:b3cc with SMTP id
- ffacd0b85a97d-488670c51fcmr4871097f8f.52.1790173897738; 
- Wed, 23 Sep 2026 07:31:37 -0700 (PDT)
-Received: from ?IPV6:2a01:e0a:f0e:9070:527b:9dff:feef:3874?
- ([2a01:e0a:f0e:9070:527b:9dff:feef:3874])
- by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-488682673bdsm7322098f8f.2.2026.09.23.07.31.36
+ AKwUvBwgMgXpT7rBP/tj2KlaSeDqTHLM0hEOlJaoGX/zBhStiunNnkNoUDmRZbRKFPTlqnuUENYFveqFVg==@nongnu.org
+X-Gm-Message-State: AFuF++k2I5dccwGTV9xEGG6EsP/cdY5a68sluBzLZtlffLXzajCL7d0x
+ ptFQk7RH6q01Wwo6e2lSiXOIc0eUN2I8HmAC+o/QUCbMJvwbVs62NcDTCQ8m4f/cRGojZG+Ina/
+ axVQ2cPFDcMhH/p9mmi78wVooKGpf1glY15i2ATr/Me+zIcXPbr2VBac=
+X-Gm-Gg: AYBFou0WpTMkkeVDQkwdad7/ZqzpRa94/MjFlIaeZfJb21Sgcsv5rcyFEvk88cVyj9h
+ gFtiVlz+1jeH5MBPZRuOOD8oOTxBpX70ScWLXXTpTO+f1A/ckWiNSmIg4P7wSURXPypHgqP50YJ
+ banIfrKgtXRvD7aZaPSq3FsBhF8G3791UoVCCovSCIXGSKCJn3igxns5dL8+9MyOq/kX8OWhaB7
+ 26wApKHe5lYEoOc8eHNF1OlQwv0k/sWZCNQbEAGPHtdVyNxm2+PrzK9nNpv/mY7OyFIUu07bwY3
+ juSGRuP2CITGs7tcJJLwWEOyRevIy1w7TAsbPVEBC5Ym5MAypMiRefqI5+kmHuNAduhUOE0WDmW
+ giApiK7ZV8HUgDHFrxJmEEB/4xsszTVuP6zXjTF2DbphFlsYKOkQ4z2zZVKJfmtQ2RZm7UX5ZOR
+ o54g==
+X-Received: by 2002:a05:693c:42d9:b0:33b:e75b:cc42 with SMTP id
+ 5a478bee46e88-33e8d7d8b7bmr2233698eec.19.1790174698828; 
+ Wed, 23 Sep 2026 07:44:58 -0700 (PDT)
+X-Received: by 2002:a05:693c:42d9:b0:33b:e75b:cc42 with SMTP id
+ 5a478bee46e88-33e8d7d8b7bmr2233634eec.19.1790174698038; 
+ Wed, 23 Sep 2026 07:44:58 -0700 (PDT)
+Received: from [192.168.1.199] (216-71-219-44.dyn.novuscom.net.
+ [216.71.219.44]) by smtp.gmail.com with ESMTPSA id
+ 5a478bee46e88-33e95c7d003sm6415514eec.9.2026.09.23.07.44.55
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 23 Sep 2026 07:31:37 -0700 (PDT)
-Message-ID: <1ccea6d2-418c-481a-85ff-072d3dd837b3@redhat.com>
-Date: Wed, 23 Sep 2026 16:31:35 +0200
+ Wed, 23 Sep 2026 07:44:57 -0700 (PDT)
+Message-ID: <fb2fbd8a-f362-49a9-836f-7ad271454578@oss.qualcomm.com>
+Date: Wed, 23 Sep 2026 07:44:54 -0700
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v9 03/26] target/arm/cpu-sysregs.h.inc: Update with
- automatic generation
-To: Khushit Shah <khushit.shah@nutanix.com>
-Cc: "eric.auger.pro@gmail.com" <eric.auger.pro@gmail.com>,
- "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
- "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
- "kvmarm@lists.linux.dev" <kvmarm@lists.linux.dev>,
- "peter.maydell@linaro.org" <peter.maydell@linaro.org>,
- Shaju Abraham <shaju.abraham@nutanix.com>,
- "yangjinqian1@huawei.com" <yangjinqian1@huawei.com>,
- "cohuck@redhat.com" <cohuck@redhat.com>,
- "richard.henderson@linaro.org" <richard.henderson@linaro.org>,
- "sebott@redhat.com" <sebott@redhat.com>,
- "skolothumtho@nvidia.com" <skolothumtho@nvidia.com>,
- "philmd@oss.qualcomm.com" <philmd@oss.qualcomm.com>,
- "maz@kernel.org" <maz@kernel.org>,
- "oliver.upton@linux.dev" <oliver.upton@linux.dev>,
- "pbonzini@redhat.com" <pbonzini@redhat.com>,
- "armbru@redhat.com" <armbru@redhat.com>,
- "berrange@redhat.com" <berrange@redhat.com>,
- "abologna@redhat.com" <abologna@redhat.com>,
- "jdenemar@redhat.com" <jdenemar@redhat.com>
-References: <20260916144721.751810-1-eric.auger@redhat.com>
- <20260916144721.751810-4-eric.auger@redhat.com>
- <ECC98331-BFD5-4630-ADBC-FEDA0B32F889@nutanix.com>
-From: Eric Auger <eric.auger@redhat.com>
-In-Reply-To: <ECC98331-BFD5-4630-ADBC-FEDA0B32F889@nutanix.com>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: nYL6YuhHZp-TTyAKp_O-S6F4gYqjAxglAldmzSCvlUU_1790173898
-X-Mimecast-Originator: redhat.com
+Subject: Re: [PATCH v3 000/114] single-binary: link multi-targets into
+ qemu-system
+To: Yonggang Luo <luoyonggang@gmail.com>, qemu-devel@nongnu.org
+Cc: Cornelia Huck <cohuck@redhat.com>, xen-devel@lists.xenproject.org,
+ Chao Liu <chao.liu@processmission.com>,
+ Igor Mammedov <imammedo@redhat.com>,
+ Alistair Francis <alistair.francis@wdc.com>,
+ Daniel Henrique Barboza <daniel.barboza@oss.qualcomm.com>,
+ Peter Xu <peterx@redhat.com>, Eric Blake <eblake@redhat.com>,
+ =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@oss.qualcomm.com>,
+ Liu Zhiwei <zhiwei_liu@linux.alibaba.com>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ Sunil V L <sunilvl@ventanamicro.com>,
+ Stefan Hajnoczi <stefanha@redhat.com>,
+ Palmer Dabbelt <palmer@dabbelt.com>, Fabiano Rosas <farosas@suse.de>,
+ Xianglai Li <lixianglai@loongson.cn>,
+ Jiaxun Yang <jiaxun.yang@flygoat.com>,
+ Max Filippov <jcmvbkbc@gmail.com>, qemu-ppc@nongnu.org,
+ Zhao Liu <zhao1.liu@intel.com>, Paolo Bonzini <pbonzini@redhat.com>,
+ Bibo Mao <maobibo@loongson.cn>, "Michael S. Tsirkin" <mst@redhat.com>,
+ Laurent Vivier <laurent@vivier.eu>, David Hildenbrand <david@kernel.org>,
+ Richard Henderson <richard.henderson@linaro.org>,
+ =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>,
+ Nicholas Piggin <npiggin@gmail.com>, qemu-riscv@nongnu.org,
+ kvm@vger.kernel.org, "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
+ =?UTF-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>,
+ Stafford Horne <shorne@gmail.com>,
+ =?UTF-8?Q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>,
+ Markus Armbruster <armbru@redhat.com>, Weiwei Li <liwei1518@gmail.com>,
+ Song Gao <17746591750@163.com>, qemu-arm@nongnu.org,
+ qemu-s390x@nongnu.org, Brian Cain <brian.cain@oss.qualcomm.com>
+References: <20260923131635.1894-1-luoyonggang@gmail.com>
+From: Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>
 Content-Language: en-US
+In-Reply-To: <20260923131635.1894-1-luoyonggang@gmail.com>
 Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=170.10.133.124;
- envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+Content-Transfer-Encoding: 7bit
+X-Proofpoint-ORIG-GUID: -2LPLtZzHe0lN3OXNnD7tvtCDXZwO7h2
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwOTIzMDA1OCBTYWx0ZWRfX7Qelm0JJxH3J
+ /OttHZ9OvfatplLOzCanpVcRJn0/tPQo7n/A8cmLZ41MuH7UBWzwhlyxtAcvTngJK6lZ+WBmMxF
+ xe3xpPw4YdFS6CWYccfdZJnYfnfQZsTXo3alJEV1tWkjIJde4rsoRfrx5LVlJo25Ljn9mJJ8Bm4
+ UtmNb6QMzmtAlAIZu1f80ZysZl8V1ABJvwp353PznkHTFj3rMxOBcvx/xs+UuvYFSyoYRwTNI9W
+ KqB6HmdkB5BAt4kAYS1+oFJv6zRAVLbVsNe4kkqtzcul5fBa8WtsgKHyoXcxbDFFnDghioS6Pse
+ o1jrQe1SAzY7sSL36UkujHlL39xpehaxMHOFC4xICWCsoQVy44ouXPIWXRm+eMDh7A/9ovKwcsz
+ 8uR+vHkrxhmGMZ1UOLWEn2i96v0eyn3YqAt7EOUQDw/e+m3w0X8q4NelJCgkFms/ORX5EyBmvts
+ Brl7SDIUmAsLArmedeA==
+X-Proofpoint-GUID: -2LPLtZzHe0lN3OXNnD7tvtCDXZwO7h2
+X-Authority-Analysis: v=2.4 cv=NLpAaE6g c=1 sm=1 tr=0 ts=6ab3e5eb cx=c_pps
+ a=PfFC4Oe2JQzmKTvty2cRDw==:117 a=iLqgmErQAxjCjdq5jj1Aqg==:17
+ a=IkcTkHD0fZMA:10 a=VdqzKS8jKosA:10 a=s4-Qcg_JpJYA:10
+ a=VkNPw1HP01LnGYTKEx00:22 a=u7WPNUs3qKkmUXheDGA7:22 a=Um2Pa8k9VHT-vaBCBUpS:22
+ a=GaQpPoNlAAAA:8 a=pGLkceISAAAA:8 a=p0WdMEafAAAA:8 a=GSDOiBCUhkFbxXud944A:9
+ a=QEXdDO2ut3YA:10 a=6Ab_bkdmUrQuMsNx7PHu:22 a=xF5q_uoM5gZT5J3czcBi:22
+X-Proofpoint-Spam-Info: AW1haW4tMjYwOTIzMDA1OCBTYWx0ZWRfX2084EVxEz6Rp
+ Z2+DjAmsXothgGVfHhENMdR1x+zI3/91M2HfnDVQ8K5d2ujcmDKwhQ8eyBXG9P55JP7wIjlGu/m
+ 4tzEelHl9J6AYiSZElH/1p6neJjH5TI=
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.293,Aquarius:18.0.1176,Hydra:6.1.134,FMLib:17.12.100.49
+ definitions=2026-09-23_04,2026-09-21_02,2025-10-01_01
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
+ spamscore=0 bulkscore=0 adultscore=0 suspectscore=0 priorityscore=1501
+ impostorscore=0 clxscore=1015 lowpriorityscore=0 malwarescore=0 phishscore=0
+ classifier=typeunknown authscore=0 authtc= authcc= route=outbound adjust=0
+ reason=mlx scancount=1 engine=8.22.0-2609040000 definitions=main-2609230058
+Received-SPF: pass client-ip=205.220.168.131;
+ envelope-from=pierrick.bouvier@oss.qualcomm.com;
+ helo=mx0a-0031df01.pphosted.com
+X-Spam_score_int: -11
+X-Spam_score: -1.2
+X-Spam_bar: -
+X-Spam_report: (-1.2 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_LOW=-0.7, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ URIBL_SBL=1.623 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -134,79 +180,103 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-To: eric.auger@redhat.com
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
+Hi Yonggang,
 
-
-On 9/23/26 11:13 AM, Khushit Shah wrote:
+On 9/23/2026 6:14 AM, Yonggang Luo wrote:
+> This series produces one qemu-system binary that can run ARM (32 and
+> 64), RISC-V (32 and 64), and MicroBlaze.
+> Upstream filters machines with TypeInfo.is_available. This series
+> passes a TargetInfo into that callback, uniquifies QOM names that
+> collide in one process, and compiles those targets once so they can
+> share qemu-system.
+> 
+> A combined link cannot keep C symbols or QOM type names that were
+> unique only because each qemu-system-$arch was a separate binary.
+> These patches remove those collisions:
+> 
+> - TYPE_ACCEL_CPU is the fixed abstract type accel-cpu, registered
+>   once next to TYPE_ACCEL. Leaf names still encode the CPU type so
+>   accel_init_cpu_interfaces() can look up "<accel>-" plus
+>   target_cpu_type() (tcg-accel-arm-cpu).
+> - virt QOM names are prefixed: arm-virt, riscv-virt, and the same
+>   for or1k, hexagon, loongarch, m68k, and xtensa. Boards keep
+>   -machine virt via machine_class_set_name(). query-machines returns
+>   the QOM type in MachineInfo typename.
+> - virt ACPI helpers and RISC-V TCG crc32/crc32c/wfi helpers get an
+>   arch prefix so the combined link does not need meson -D name
+>   mangling. LoongArch virt_acpi_setup is renamed in the same pass.
+> 
+> Target selection has to work with more than one TargetInfo:
+> 
+> - The combined binary takes arch:name on -M/-machine and in a
+>   [machine] type (aarch64:virt). arch: binds the target. microblaze:
+>   runs that target's default machine. arm, aarch64, riscv32, and
+>   riscv64 have no default. No -M leaves target none and the empty
+>   none machine. qemu-system-$arch keeps the historic -M name.
+>   -M help lists every target; arch:help lists one. query-targets
+>   lists each linked target, including none.
+> - TargetInfo is a constructor list. target_info_select() picks the
+>   entry, including SYS_EMU_TARGET_NONE. is_available takes const
+>   TargetInfo *. While the target is still none, QOM skips the
+>   unavailable filter so grouped -M help can list every machine.
+> - query-cpu-definitions, dump notes, and Angel semihosting sit on
+>   TargetCpuOps indexed by target_arch(). Registration uses a
+>   QEMU_ARCH_* bitmask so one object can fill ARM and AARCH64. The
+>   table is target-ops.h / target-ops.c.
+> 
+> qemu-system-$TARGET is still built, including the Windows *w twin.
+> qemu-system is extra. It links each target whose arch sources are
+> only target-info-def.c: arm, aarch64, riscv32, riscv64, and
+> microblaze. Do not add qemu-systemw for that binary. A GUI
+> twin would keep QEMU exporting data from the .exe into DLLs, and
+> those data exports cannot be delay-loaded (qdev_prop_array and
+> other qdev_prop_*). That would block enabling modules globally on
+> Windows.
+> 
+> Examples:
+> 
+>   qemu-system -M aarch64:virt ...
+>   qemu-system -M microblaze:petalogix-s3adsp1800 ...
+>   qemu-system-riscv64 -M virt ...
+> 
+> A bare machine name on qemu-system needs an arch: prefix. An unknown
+> target fails with "target '...' is not available".
+> 
+> Prerequisites:
+>   [PATCH v2 0/9] machine: uniquify virt QOM names
+>   https://patchew.org/QEMU/20260922215533.641-1-luoyonggang@gmail.com/
+>   [PATCH 00/21] accel/tcg: share raise_excp across TCG targets
+>   https://patchew.org/QEMU/20260918004225.827-1-luoyonggang@gmail.com/
+>   [PATCH v5 00/11] single-binary: Compile hw/riscv once
+>   https://patchew.org/QEMU/20260918-hw-riscv-cpu-int-v5-0-f98c5a244636@rev.ng/
+> 
+> v1: https://patchew.org/QEMU/20260823150731.896-1-luoyonggang@gmail.com/
+> v2: https://patchew.org/QEMU/20260826184229.1145-1-luoyonggang@gmail.com/
+> branch: https://gitlab.com/lygstate-qemu/qemu/-/tree/single-binary-arm-riscv?ref_type=heads
+> x86_64 and i386: https://gitlab.com/lygstate-qemu/qemu/-/tree/combined-binary-multi-targets?ref_type=heads
 >
->> On 16 Sep 2026, at 8:15 PM, Eric Auger <eric.auger@redhat.com> wrote:
->>
->> !-------------------------------------------------------------------|
->>  CAUTION: External Email
->>
->> |-------------------------------------------------------------------!
->>
->> Generated definitions with scripts/update-aarch64-cpu-sysregs-header.py
->> based on "AARCHMRS containing the JSON files for Arm A-profile
->> architecture (2026-03)" Registers.json file.
->>
->> Signed-off-by: Eric Auger <eric.auger@redhat.com>
->> Signed-off-by: Cornelia Huck <cohuck@redhat.com>
->> Reviewed-by: Shameer Kolothum <skolothumtho@nvidia.com>
->> ---
->> target/arm/cpu-sysregs.h.inc | 11 +++++++++++
->> 1 file changed, 11 insertions(+)
->>
->> diff --git a/target/arm/cpu-sysregs.h.inc b/target/arm/cpu-sysregs.h.inc
->> index ec5a12b0f4..8b77c490d4 100644
->> --- a/target/arm/cpu-sysregs.h.inc
->> +++ b/target/arm/cpu-sysregs.h.inc
->> @@ -1,11 +1,18 @@
->> /* SPDX-License-Identifier: GPL-2.0-or-later */
->> +
->> +/* This file is autogenerated by scripts/update-aarch64-cpu-sysregs-header.py */
->> +/* DEF(<name>, <op0>, <op1>, <crn>, <crm>, <op2>) */
->> +
->> +DEF(AIDR_EL1, 3, 1, 0, 0, 7)
->> DEF(CLIDR_EL1, 3, 1, 0, 0, 1)
->> DEF(CTR_EL0, 3, 3, 0, 0, 1)
->> DEF(DCZID_EL0, 3, 3, 0, 0, 7)
->> +DEF(GMID_EL1, 3, 1, 0, 0, 4)
->> DEF(ID_AA64AFR0_EL1, 3, 0, 0, 5, 4)
->> DEF(ID_AA64AFR1_EL1, 3, 0, 0, 5, 5)
->> DEF(ID_AA64DFR0_EL1, 3, 0, 0, 5, 0)
->> DEF(ID_AA64DFR1_EL1, 3, 0, 0, 5, 1)
->> +DEF(ID_AA64DFR2_EL1, 3, 0, 0, 5, 2)
->> DEF(ID_AA64FPFR0_EL1, 3, 0, 0, 4, 7)
->> DEF(ID_AA64ISAR0_EL1, 3, 0, 0, 6, 0)
->> DEF(ID_AA64ISAR1_EL1, 3, 0, 0, 6, 1)
->> @@ -40,6 +47,10 @@ DEF(ID_MMFR5_EL1, 3, 0, 0, 3, 6)
->> DEF(ID_PFR0_EL1, 3, 0, 0, 1, 0)
->> DEF(ID_PFR1_EL1, 3, 0, 0, 1, 1)
->> DEF(ID_PFR2_EL1, 3, 0, 0, 3, 4)
->> +DEF(MIDR_EL1, 3, 0, 0, 0, 0)
->> +DEF(MPIDR_EL1, 3, 0, 0, 0, 5)
->> DEF(MVFR0_EL1, 3, 0, 0, 3, 0)
->> DEF(MVFR1_EL1, 3, 0, 0, 3, 1)
->> DEF(MVFR2_EL1, 3, 0, 0, 3, 2)
->> +DEF(REVIDR_EL1, 3, 0, 0, 0, 6)
->> +DEF(SMIDR_EL1, 3, 1, 0, 0, 6)
-> After this, we should probably refactor cpu->midr/revidr/mp_affinity into the idregs[]?
+thanks to pursue this effort.
+It seems like your mail provider blocked the send after 40 patches. It
+can either be:
+- usually I have to reenter my password (after a timeout around 3 to 4
+min) to keep on sending patches. A better way is to setup your password
+in git config.
+- Your reached your daily quota because there are two many cc on each
+patch. Reduce cc list.
 
-Hum yes. We can now rely on MIDR, REVIDR and MPIDR storage in
-isar.idregs[]. I will handle that in v10
+Also, I would recommend you start easy, with only two base arch as
+targets (like aarch64 + riscv64). This makes the series much nicer to
+review and iterate. Then you can do one series per extra target.
+It takes time, but that's the only sane way to move forward.
 
-Thanks
+Also, I would invite you to get the command line details reviewed first,
+as it was the biggest point of discussion last time I tried this. Once
+you reach a consensus, it will be trivial to add new targets in.
+I'll follow any choice the community will make for this.
 
-Eric
->
-> Warm Regards,
-> Khushit
->> -- 
->> 2.53.0
->>
-
+Regards,
+Pierrick
 

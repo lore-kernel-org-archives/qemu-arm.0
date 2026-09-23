@@ -4,69 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5E359C9830C
-	for <qemu-arm@archiver.kernel.org>; Wed, 23 Sep 2026 13:29:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DFE97C9830D
+	for <qemu-arm@archiver.kernel.org>; Wed, 23 Sep 2026 13:29:30 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1x9N00-00043Z-Nw; Wed, 23 Sep 2026 09:27:01 -0400
+	id 1x9N00-00042Q-I3; Wed, 23 Sep 2026 09:27:00 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <luoyonggang@gmail.com>)
- id 1x9MwT-0005uQ-4y
- for qemu-arm@nongnu.org; Wed, 23 Sep 2026 09:23:23 -0400
-Received: from mail-dy2-x0f.google.com ([2607:f8b0:4864:36::f])
+ id 1x9MvT-0003wJ-Nu
+ for qemu-arm@nongnu.org; Wed, 23 Sep 2026 09:22:20 -0400
+Received: from mail-dy2-x10.google.com ([2607:f8b0:4864:36::10])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <luoyonggang@gmail.com>)
- id 1x9MwP-0007ui-LZ
- for qemu-arm@nongnu.org; Wed, 23 Sep 2026 09:23:20 -0400
-Received: by mail-dy2-x0f.google.com with SMTP id
- 5a478bee46e88-33c11ef641aso1115406eec.1
- for <qemu-arm@nongnu.org>; Wed, 23 Sep 2026 06:23:15 -0700 (PDT)
+ id 1x9MvR-0007gi-SE
+ for qemu-arm@nongnu.org; Wed, 23 Sep 2026 09:22:19 -0400
+Received: by mail-dy2-x10.google.com with SMTP id
+ 5a478bee46e88-32ba4885063so579757eec.0
+ for <qemu-arm@nongnu.org>; Wed, 23 Sep 2026 06:22:07 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20251104; t=1790169795; x=1790774595; darn=nongnu.org;
+ d=gmail.com; s=20251104; t=1790169726; x=1790774526; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to:content-type;
- bh=a+vM4VKx04YtiIcob+lp3bwuPAlEC1anahMCoo6i89k=;
- b=hUVd2xzydDzZHMiF2wGcOHjZynU5VMul64i/lszEqQDBc6dOD/vXHpibCbHVpSzNvi
- xe2cG2U3lbRATZvJbRgShNZinAwYK/Dunuf3fIrRbx7lC4qpxZi9XmwCRQyjmXa6Ze7s
- 1na1bxjhmlpWiTXdIAVd+15SFJhbNjG11Ds6Xot93C+R4HeSj5NvCDIfZRgk9odV74qI
- LfZ7DUTzySGgp+NAoGZ3rLeDojjNBYlNxRcRGgsPqVX/jZHAyuh2X6Rpu7aj9EMKZONd
- m1dBWK/WNmAbXtt54Jp1BO2a6pc2puaxwh9w3MZ2S89KeQpYgIAQBNTZwtHcGlN/9MRr
- 14gA==
+ bh=4msTpp+vR3Q9A3d1BOVyjzK5nl0nVEODWOwLdHYYFFk=;
+ b=oRShycYaQIBjNVeL1tE336Am0PG1OYDrYg9UQIgxlr4/HwFELCpXppIeAEI3uMyuc5
+ 244H7SLPslaCLLvIE1KfLWvYeQ5NkdcK2P1Wx6KhkDUwsDPPjcJRGXWDYaIIgqccZJwy
+ TzzyqLj0Ia9Mnk2Y2MISK3qYNFTDfOygu65cjNC9SHNACoOoq8u3U1f2m8FSxJznFKqp
+ zB6lzRjEFWTpVJy3UU10S01tgBZOcIA7YKm/L5OrwCCUJ1/Jx2DgrE8aywRUvSkhfdw+
+ KXz1uFItxCIQCatdwfaKUWR52Cb4nE8vO2xrO8mNZl/vcmSvqDkahnF84ukn93oqTrWc
+ QeQA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20260707; t=1790169795; x=1790774595;
+ d=1e100.net; s=20260707; t=1790169726; x=1790774526;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
  :to:cc:subject:date:message-id:reply-to:content-type;
- bh=a+vM4VKx04YtiIcob+lp3bwuPAlEC1anahMCoo6i89k=;
- b=Ehve0WbBpwvMR38dsJcLwTLlLdz+TUcZNWtFIH2GjOx800NB8+0eoDiK4qFb0Tw4tL
- pOV9y7clvreGyCx32H9HzmoKu7epK58zo9Zv/NXJMJpV43LklIKLCHGjMZRfRwCkk80I
- WE1eQGin1kiyKoXOOqyPe7QpA2p9XyCJte1zxtcGoCI3JkdgCR0+9FNKR0E5OsYMMOWH
- 4moyxq7/NlDXOyf1XO41hwrxL74W3iooTFKWjsBgVXxkWGygufeKFVDZMzhEH4ZHp6Ii
- yAmfanP+VmoK0IqJpk2dCzg3RZMizAYIMpb2V1DdYDmUo+e+0PPtvuv1f9XsRjsL2CMm
- RGAA==
+ bh=4msTpp+vR3Q9A3d1BOVyjzK5nl0nVEODWOwLdHYYFFk=;
+ b=oV5Hwj6sWAeNg9R/2F+HBufh93YnXtm1gyPbFIo6AKgm8lee21qZ1AR79MgBwImnjS
+ 0dikz3sDotbc4RSoDY6juTglz0bBxNPR00IYh28EbCj/Qycg1cP7RkjsNSLXWiF5zwRE
+ Ayt9UQv/LJ+K+wZxAQ2n25Hq2IlEgDP8/CruhgVBnTeTNUPlh753Om9UXVXliSV9Gyk/
+ y91lWoQaaSy3XQUTlPOLS6KVYeGo6BrPlAjI2fqKC/kE9IBj+NXGhGlr7qRFjYpUmR5K
+ U1Ja3J2qByriC/P1r+ucsVfWUydeCk4mIXvnOEQUUUnz85ti1o3qJ+MMxLeg4uyUhL4N
+ jsSw==
 X-Forwarded-Encrypted: i=1;
- AKwUvBzo9x2/JH0y5+hjui0v0hTcDSB2hW2NctKgjb5iMj+NGlPJ0xHx0lqxpMOXh55FCVj6tq3O9+9Nvw==@nongnu.org
-X-Gm-Message-State: AFuF++l5Y9i8S38yFbUoxdN1MYAdZV1bcjBdtpx8JHeHao7CUTnZSuRm
- BKIXMXX5cqjX5mG0Gq0zFD47b8Ao+XO2nnOlSUGvaL9ZZ+y8ZhjWHIUe
-X-Gm-Gg: AYBFou3Wdt7nqUibH28vDmgODdBuGZ8QEpUn9tQyrbTOTmMSqa7/YK/wp5I8wNXxqq0
- iyrVJvKVOak7kpwFlAwX5OfKrwSoNfHku6q9lcGUoCpscqMu4P+rb2zPH2vABzYF5WVylURNalF
- eXxbUx0vUIZ6QcRj8mVWpTMtw8XR5u2DFnfjDYFMLKA+KFqyJJvYqH5z43b1eVldZx9xODiwvE6
- 8jcfnHy1p+W/nYtDIQ2YwO5XO2eOBAndQlERiAnyHxVmv46NtzE/D9tQba6jWX6QP6NGIHTQw/l
- VbYz4HOI1j5Yz3ilPKtHJE295XK3C+uian5eYJ3myhy4WKiLeQNu6JlEGP7rIVyEGvWwtMhDx0Z
- uAfktIvNHUVkzq/Ojbdw5vamR3kAHFX9PR5M1atyh8wc5+9ER1TLM5ZkzpWU52AG2wW5OtvTtRu
- +rEh0O9ZVUE+0mSYgCa+uax9bCORdoa1bNSELHkcR0Ls7zMxFtrXd+e4zC++rglvevLFw2uUUoS
- +gAIJDdNhUlv0WC3cAbPLbKmaZby03EzPtLJuBOLw==
-X-Received: by 2002:a05:7300:3e91:b0:327:affc:b506 with SMTP id
- 5a478bee46e88-33e8c72c478mr2326450eec.15.1790169794702; 
- Wed, 23 Sep 2026 06:23:14 -0700 (PDT)
+ AKwUvBzSFFyPNMUAo1XTxA3+lINA52GEFEjy5uscbmX1cNtq0FBAE9KoOSMlaJerKNXsv1RKLwAMKX/m+A==@nongnu.org
+X-Gm-Message-State: AFuF++nEDggDha25d66Cj1kqQAA3IDWECQjGNelZ+ViF+m7V9qRbPDop
+ VOUYXySbePMZkbEwEKch4f8FmC923yMFuGwyBg5OrKE8mGOWHfobUbrA
+X-Gm-Gg: AYBFou3NFYDcGWqvJLoZquiU7jK+Yel0mF2VWlCNNQQrrPEY7mcYZQR7IcXykUPUST0
+ 7vDfJ6RJIdjnHbXm3c885aXTwwCR8fuAPJUurDi4ulUPLlG0ngF0VwwsxrQy1HH1GG0o5LBc/Ia
+ 97YLM7aiQcEbPq1Smwcyfsg0LNWmIIRGuPjG5pbUDwM4cC9TQbIX8MhU7I+16EZqUwUn286bg0v
+ P/ILJ811vlE+IQqqfJdtwPa8qeOTTdBZT2lScvVbm820YDGLnF9G/6n43DVMqFjtdrMfhZvkR/q
+ 3a1RMYyj65cG+gulMaQgd3qoav5Wa/7aRPyptAl+wpexO5oR3tZT5fc7ls6VMJM8CdiuX6Ev1jb
+ 2fzJLGcX+UmtWFCQllOsGSdl6N0jf0ITl2kduKe7emcW5szdGx2S5nI0JW1kIF/RlEzpEeydmr7
+ W5qKfT0JgQUu2YSX/n2edFOFj4g57KruwkiLlDYhF2wezZnlkIRPGX7Vqhq2Cu7mYM7+HfLXEmt
+ rgwjD74wuqHFKUkz8bOsDq6RHNEbRY=
+X-Received: by 2002:a05:7301:d595:b0:33b:e55f:68c8 with SMTP id
+ 5a478bee46e88-33e8d8d21e3mr2659104eec.26.1790169725708; 
+ Wed, 23 Sep 2026 06:22:05 -0700 (PDT)
 Received: from WIN-BH9M8FJACR9 ([103.94.185.75])
  by smtp.googlemail.com with ESMTPSA id
- 5a478bee46e88-33e97236754sm5553695eec.29.2026.09.23.06.23.07
+ 5a478bee46e88-33e97236754sm5553695eec.29.2026.09.23.06.21.58
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 23 Sep 2026 06:23:13 -0700 (PDT)
+ Wed, 23 Sep 2026 06:22:04 -0700 (PDT)
 From: Yonggang Luo <luoyonggang@gmail.com>
 To: qemu-devel@nongnu.org
 Cc: Cornelia Huck <cohuck@redhat.com>, xen-devel@lists.xenproject.org,
@@ -97,17 +97,16 @@ Cc: Cornelia Huck <cohuck@redhat.com>, xen-devel@lists.xenproject.org,
  Markus Armbruster <armbru@redhat.com>, Weiwei Li <liwei1518@gmail.com>,
  Song Gao <17746591750@163.com>, qemu-arm@nongnu.org, qemu-s390x@nongnu.org,
  Brian Cain <brian.cain@oss.qualcomm.com>
-Subject: [PATCH v3 039/114] target/riscv: preserve signed XLEN semantics
- without target_long
-Date: Wed, 23 Sep 2026 21:15:13 +0800
-Message-ID: <20260923131635.1894-40-luoyonggang@gmail.com>
+Subject: [PATCH v3 031/114] tcg: fix off-by-one in helper extend-free assert
+Date: Wed, 23 Sep 2026 21:15:05 +0800
+Message-ID: <20260923131635.1894-32-luoyonggang@gmail.com>
 X-Mailer: git-send-email 2.52.0.windows.1
 In-Reply-To: <20260923131635.1894-1-luoyonggang@gmail.com>
 References: <20260923131635.1894-1-luoyonggang@gmail.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:36::f;
- envelope-from=luoyonggang@gmail.com; helo=mail-dy2-x0f.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:36::10;
+ envelope-from=luoyonggang@gmail.com; helo=mail-dy2-x10.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -129,196 +128,27 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-- Mask pointer-masked addresses with extract64/sextract64 at
-  runtime XLEN instead of a target_long arithmetic shift.
-- Pass vector vx scalars as int64_t after sextract64 from the
-  helper tl slot so RV32 keeps bit 31 as the sign bit.
-- Leave every target_ulong helper argument unchanged.
+- Allow n_extend == MAX_CALL_IARGS after filling extend_free.
+- The old < check fired on a valid seven-argument extend.
 
 Signed-off-by: Yonggang Luo <luoyonggang@gmail.com>
 ---
- target/riscv/internals.h            | 12 ++++++++----
- target/riscv/tcg/vector_helper.c    | 21 +++++++++++----------
- target/riscv/tcg/vector_internals.c |  2 +-
- target/riscv/tcg/vector_internals.h |  9 +++++----
- 4 files changed, 25 insertions(+), 19 deletions(-)
+ tcg/tcg.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/target/riscv/internals.h b/target/riscv/internals.h
-index 1ee7e99e988..0844867246d 100644
---- a/target/riscv/internals.h
-+++ b/target/riscv/internals.h
-@@ -214,6 +214,7 @@ static inline target_ulong adjust_addr_body(CPURISCVState *env,
- {
-     RISCVPmPmm pmm = PMM_FIELD_DISABLED;
-     uint32_t pmlen = 0;
-+    unsigned kept;
-     bool signext = false;
- 
-     /* do nothing for rv32 mode */
-@@ -235,13 +236,16 @@ static inline target_ulong adjust_addr_body(CPURISCVState *env,
- 
-     signext = riscv_cpu_virt_mem_enabled(env, is_virt_addr);
-     pmlen = riscv_pm_get_pmlen(pmm);
--    addr = addr << pmlen;
- 
--    /* sign/zero extend masked address by N-1 bit */
-+    /*
-+     * Drop the top pmlen bits of XLEN. Do not rely on target_ulong
-+     * shift wrap; common-system target_ulong is always 64 bits.
-+     */
-+    kept = target_long_bits() - pmlen;
-     if (signext) {
--        addr = (target_long)addr >> pmlen;
-+        addr = sextract64(addr, 0, kept);
-     } else {
--        addr = addr >> pmlen;
-+        addr = extract64(addr, 0, kept);
+diff --git a/tcg/tcg.c b/tcg/tcg.c
+index 489df0e7386..6d55cc284df 100644
+--- a/tcg/tcg.c
++++ b/tcg/tcg.c
+@@ -2599,7 +2599,7 @@ static void tcg_gen_callN(void *func, TCGHelperInfo *info,
+         QTAILQ_INSERT_TAIL(&tcg_ctx->ops, op, link);
      }
  
-     return addr;
-diff --git a/target/riscv/tcg/vector_helper.c b/target/riscv/tcg/vector_helper.c
-index 0d1e4e09646..0b78a733ce4 100644
---- a/target/riscv/tcg/vector_helper.c
-+++ b/target/riscv/tcg/vector_helper.c
-@@ -1248,7 +1248,7 @@ void HELPER(NAME)(void *vd, void *v0, target_ulong s1, void *vs2,        \
-         ETYPE s2 = *((ETYPE *)vs2 + H(i));                               \
-         ETYPE carry = vext_elem_mask(v0, i);                             \
-                                                                          \
--        *((ETYPE *)vd + H(i)) = DO_OP(s2, (ETYPE)(target_long)s1, carry);\
-+        *((ETYPE *)vd + H(i)) = DO_OP(s2, (ETYPE)sextract64(s1, 0, target_long_bits()), carry);\
-     }                                                                    \
-     env->vstart = 0;                                                     \
-     /* set tail elements to 1s */                                        \
-@@ -1325,7 +1325,7 @@ void HELPER(NAME)(void *vd, void *v0, target_ulong s1,          \
-         ETYPE s2 = *((ETYPE *)vs2 + H(i));                      \
-         ETYPE carry = !vm && vext_elem_mask(v0, i);             \
-         vext_set_elem_mask(vd, i,                               \
--                DO_OP(s2, (ETYPE)(target_long)s1, carry));      \
-+                DO_OP(s2, (ETYPE)sextract64(s1, 0, target_long_bits()), carry));      \
-     }                                                           \
-     env->vstart = 0;                                            \
-     /*
-@@ -1609,7 +1609,7 @@ void HELPER(NAME)(void *vd, void *v0, target_ulong s1, void *vs2,   \
-             continue;                                               \
-         }                                                           \
-         vext_set_elem_mask(vd, i,                                   \
--                DO_OP(s2, (ETYPE)(target_long)s1));                 \
-+                DO_OP(s2, (ETYPE)sextract64(s1, 0, target_long_bits())));                 \
-     }                                                               \
-     env->vstart = 0;                                                \
-     /*
-@@ -2050,7 +2050,7 @@ GEN_VEXT_VV(vnmsub_vv_w, 4)
- GEN_VEXT_VV(vnmsub_vv_d, 8)
- 
- #define OPIVX3(NAME, TD, T1, T2, TX1, TX2, HD, HS2, OP)             \
--static void do_##NAME(void *vd, target_long s1, void *vs2, int i)   \
-+static void do_##NAME(void *vd, int64_t s1, void *vs2, int i)   \
- {                                                                   \
-     TX2 s2 = *((T2 *)vs2 + HS2(i));                                 \
-     TD d = *((TD *)vd + HD(i));                                     \
-@@ -2246,7 +2246,7 @@ void HELPER(NAME)(void *vd, void *v0, target_ulong s1,               \
-     for (i = env->vstart; i < vl; i++) {                             \
-         ETYPE s2 = *((ETYPE *)vs2 + H(i));                           \
-         ETYPE d = (!vext_elem_mask(v0, i) ? s2 :                     \
--                   (ETYPE)(target_long)s1);                          \
-+                   (ETYPE)sextract64(s1, 0, target_long_bits()));                          \
-         *((ETYPE *)vd + H(i)) = d;                                   \
-     }                                                                \
-     env->vstart = 0;                                                 \
-@@ -2397,12 +2397,12 @@ GEN_VEXT_VV_RM(vsaddu_vv_h, 2)
- GEN_VEXT_VV_RM(vsaddu_vv_w, 4)
- GEN_VEXT_VV_RM(vsaddu_vv_d, 8)
- 
--typedef void opivx2_rm_fn(void *vd, target_long s1, void *vs2, int i,
-+typedef void opivx2_rm_fn(void *vd, int64_t s1, void *vs2, int i,
-                           CPURISCVState *env, uint8_t vxrm);
- 
- #define OPIVX2_RM(NAME, TD, T1, T2, TX1, TX2, HD, HS2, OP)          \
- static inline void                                                  \
--do_##NAME(void *vd, target_long s1, void *vs2, int i,               \
-+do_##NAME(void *vd, int64_t s1, void *vs2, int i,               \
-           CPURISCVState *env, uint8_t vxrm)                         \
- {                                                                   \
-     TX2 s2 = *((T2 *)vs2 + HS2(i));                                 \
-@@ -2410,7 +2410,7 @@ do_##NAME(void *vd, target_long s1, void *vs2, int i,               \
- }
- 
- static inline void
--vext_vx_rm_1(void *vd, void *v0, target_long s1, void *vs2,
-+vext_vx_rm_1(void *vd, void *v0, int64_t s1, void *vs2,
-              CPURISCVState *env,
-              uint32_t vl, uint32_t vm, uint8_t vxrm,
-              opivx2_rm_fn *fn, uint32_t vma, uint32_t esz)
-@@ -2427,7 +2427,7 @@ vext_vx_rm_1(void *vd, void *v0, target_long s1, void *vs2,
- }
- 
- static inline void
--vext_vx_rm_2(void *vd, void *v0, target_long s1, void *vs2,
-+vext_vx_rm_2(void *vd, void *v0, int64_t s1, void *vs2,
-              CPURISCVState *env,
-              uint32_t desc,
-              opivx2_rm_fn *fn, uint32_t esz)
-@@ -2468,7 +2468,8 @@ void HELPER(NAME)(void *vd, void *v0, target_ulong s1,    \
-                   void *vs2, CPURISCVState *env,          \
-                   uint32_t desc)                          \
- {                                                         \
--    vext_vx_rm_2(vd, v0, s1, vs2, env, desc,              \
-+    vext_vx_rm_2(vd, v0, sextract64(s1, 0, target_long_bits()), \
-+                 vs2, env, desc,                          \
-                  do_##NAME, ESZ);                         \
- }
- 
-diff --git a/target/riscv/tcg/vector_internals.c b/target/riscv/tcg/vector_internals.c
-index b490b1d3989..95327052666 100644
---- a/target/riscv/tcg/vector_internals.c
-+++ b/target/riscv/tcg/vector_internals.c
-@@ -81,7 +81,7 @@ void do_vext_vv(void *vd, void *v0, void *vs1, void *vs2,
-     vext_set_elems_1s(vd, vta, vl * esz, total_elems * esz);
- }
- 
--void do_vext_vx(void *vd, void *v0, target_long s1, void *vs2,
-+void do_vext_vx(void *vd, void *v0, int64_t s1, void *vs2,
-                 CPURISCVState *env, uint32_t desc,
-                 opivx2_fn fn, uint32_t esz)
- {
-diff --git a/target/riscv/tcg/vector_internals.h b/target/riscv/tcg/vector_internals.h
-index 5681b818153..da093d561eb 100644
---- a/target/riscv/tcg/vector_internals.h
-+++ b/target/riscv/tcg/vector_internals.h
-@@ -201,20 +201,20 @@ void HELPER(NAME)(void *vd, void *v0, void *vs1,          \
-                do_##NAME, ESZ);                           \
- }
- 
--typedef void opivx2_fn(void *vd, target_long s1, void *vs2, int i);
-+typedef void opivx2_fn(void *vd, int64_t s1, void *vs2, int i);
- 
- /*
-  * (T1)s1 gives the real operator type.
-  * (TX1)(T1)s1 expands the operator type of widen or narrow operations.
-  */
- #define OPIVX2(NAME, TD, T1, T2, TX1, TX2, HD, HS2, OP)             \
--static void do_##NAME(void *vd, target_long s1, void *vs2, int i)   \
-+static void do_##NAME(void *vd, int64_t s1, void *vs2, int i)       \
- {                                                                   \
-     TX2 s2 = *((T2 *)vs2 + HS2(i));                                 \
-     *((TD *)vd + HD(i)) = OP(s2, (TX1)(T1)s1);                      \
- }
- 
--void do_vext_vx(void *vd, void *v0, target_long s1, void *vs2,
-+void do_vext_vx(void *vd, void *v0, int64_t s1, void *vs2,
-                 CPURISCVState *env, uint32_t desc,
-                 opivx2_fn fn, uint32_t esz);
- 
-@@ -224,7 +224,8 @@ void HELPER(NAME)(void *vd, void *v0, target_ulong s1,    \
-                   void *vs2, CPURISCVState *env,          \
-                   uint32_t desc)                          \
- {                                                         \
--    do_vext_vx(vd, v0, s1, vs2, env, desc,                \
-+    do_vext_vx(vd, v0, sextract64(s1, 0, target_long_bits()), \
-+               vs2, env, desc,                            \
-                do_##NAME, ESZ);                           \
- }
- 
+-    tcg_debug_assert(n_extend < ARRAY_SIZE(extend_free));
++    tcg_debug_assert(n_extend <= ARRAY_SIZE(extend_free));
+     for (i = 0; i < n_extend; ++i) {
+         tcg_temp_free_i64(extend_free[i]);
+     }
 -- 
 2.52.0.windows.1
 

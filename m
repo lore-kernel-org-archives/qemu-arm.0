@@ -4,114 +4,99 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id F29A8C98317
-	for <qemu-arm@archiver.kernel.org>; Thu, 24 Sep 2026 11:48:13 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D14E2C9830E
+	for <qemu-arm@archiver.kernel.org>; Thu, 24 Sep 2026 13:35:56 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1x9hvb-0007uy-PY; Thu, 24 Sep 2026 07:47:51 -0400
+	id 1x9jc6-0005EL-UT; Thu, 24 Sep 2026 09:35:51 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1x9hvb-0007uo-2i
- for qemu-arm@nongnu.org; Thu, 24 Sep 2026 07:47:51 -0400
+ id 1x9jc4-0005Db-RM
+ for qemu-arm@nongnu.org; Thu, 24 Sep 2026 09:35:48 -0400
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1x9hvY-00026E-PF
- for qemu-arm@nongnu.org; Thu, 24 Sep 2026 07:47:50 -0400
+ id 1x9jc0-0005lT-Bm
+ for qemu-arm@nongnu.org; Thu, 24 Sep 2026 09:35:48 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1790250467;
+ s=mimecast20190719; t=1790256942;
  h=from:from:reply-to:reply-to:subject:subject:date:date:
  message-id:message-id:to:to:cc:cc:mime-version:mime-version:
  content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=zFEpJJW2Ygnswic7m+wgOQUXXnuzXBT68x93F9YM8Dk=;
- b=B6K8t+yQ7g2niudN5RrvhZli/DUy03kyS1hs4Jf4dXyRYpgpWchZ8+KOdICX2KiZzsyc/Z
- n9NYqEOxOhS9gY4HxlLK3zTAeVj4D/nYMIloOqu1DgRBjNK+/JJNHIExJD9UIw6oqLyqbc
- mHCazG/JuWW9KsBGTctAO0AIcYl62n0=
-Received: from mail-wr1-f71.google.com (mail-wr1-f71.google.com
- [209.85.221.71]) by relay.mimecast.com with ESMTP with STARTTLS
+ bh=vshkQVFITpqH2vOLyhtffskoGqItXSX3caa0iu331ug=;
+ b=UXksRXKQgza08HqZoe71EY8WYVAJEM/U2QMAMTCS06X9vh7VFgE89fHkfryXuEjpZWRExV
+ UCeOD5hNjeXWQ6ucdYigz9tIpX1HXIK/1Qs+0Y/WJOTh6dMF5BV0/uczDzB8WM1c0gxDJH
+ GgcqtiUWp6IWHhPDE8pjlXnmE2en95Q=
+Received: from mail-wr1-f69.google.com (mail-wr1-f69.google.com
+ [209.85.221.69]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-73-jsjG47oNN-6Fc_IkaFgM3g-1; Thu, 24 Sep 2026 07:47:45 -0400
-X-MC-Unique: jsjG47oNN-6Fc_IkaFgM3g-1
-X-Mimecast-MFC-AGG-ID: jsjG47oNN-6Fc_IkaFgM3g_1790250465
-Received: by mail-wr1-f71.google.com with SMTP id
- ffacd0b85a97d-487038bc9b8so1076795f8f.2
- for <qemu-arm@nongnu.org>; Thu, 24 Sep 2026 04:47:45 -0700 (PDT)
+ us-mta-153-65wgVGbNOtKdPoEqCQEVqA-1; Thu, 24 Sep 2026 09:35:41 -0400
+X-MC-Unique: 65wgVGbNOtKdPoEqCQEVqA-1
+X-Mimecast-MFC-AGG-ID: 65wgVGbNOtKdPoEqCQEVqA_1790256940
+Received: by mail-wr1-f69.google.com with SMTP id
+ ffacd0b85a97d-4843227cfcfso675351f8f.1
+ for <qemu-arm@nongnu.org>; Thu, 24 Sep 2026 06:35:40 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20260707; t=1790250464; x=1790855264;
+ d=1e100.net; s=20260707; t=1790256940; x=1790861740;
  h=content-transfer-encoding:content-type:in-reply-to:from:references
  :cc:to:content-language:subject:reply-to:user-agent:mime-version
  :date:message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
  :message-id:reply-to:content-type;
- bh=zFEpJJW2Ygnswic7m+wgOQUXXnuzXBT68x93F9YM8Dk=;
- b=OwSuGkoB6+JSF4CZPZlmDhLSLzYRmGhkkkm4AeAbLW7de8SfNt5yBE1DQ29tM7uSU8
- 8hSH+1hB8Og2jeSiGzYmkoaSKQlnT7Ti4N7nprFuvp3As0rQeJbdJ7z9tbA7Ae7jV06U
- kwnd0jDS34uC0YlZdXaTGzHo8+5r/xH3ScsRNlvJpVcmL700niaI/fxprE3ZJqakLsD0
- MkuIiQpRiAf1jDqlGTOCj/VzPZkoP6+EHmpNlKHf2Gcv3gbEpQ3c2qtG3TXCAGAFXBT0
- PFLzKC4PldSiaJ5IbxJt1GzPR1bmuYgfoX2z7C2wOgF3Wn60LzBubnVrdPf+C8VJbphd
- GqQQ==
+ bh=vshkQVFITpqH2vOLyhtffskoGqItXSX3caa0iu331ug=;
+ b=df0dgtacM8uQZJi+zna9imgtZwKnXEASM6zMlVTQ2Nq18HFe7sMeYVeSRWMelS42bw
+ 0UP9elrHHgnmTeiQr3wKiFusnLiPcKpVroXDHlEFAu3R8l3tkrRmTs0Pc2IO/Di4X24t
+ JUVlA2ikwUnqT0pzIoqbCYvD/pgcr5Ztat2umKkqKEJIwEklVRKvqBReth10G22uci3N
+ j/nq+s+HYzOpQxZmMIydE3PkwB/sn8gm5q/jURmUWaaBGbR0d9QSHMvjr+DkqSntfc2S
+ JrNZTeyhaGcmB9hdTbYzACfgbn8wUxnlHkFFkoqymxXjDn48SSoU36rHmSuqr3rNNcn1
+ lbOg==
 X-Forwarded-Encrypted: i=1;
- AKwUvBwEUnFvLHVzHnMzCMH9j6HczMFg/JUPJiTA7QqfvDzPX/izNXiLSeWAGctT4kVDz75zM1YdzTqMRg==@nongnu.org
-X-Gm-Message-State: AFuF++nIF6r249eH4AifyndRdiLjPuRe1UvoRs3l/YBHuCg1ezzIAS1j
- Qd4B0LDauOMZwCjjdiy6kmX1U56ec6K+PMQeBZTGOLbvgRoZjwFdOaUSEFLJT52yDMG3cEO3LYz
- SxOPWyRGlGKq5UoIpDzwfmjcNX0Cq+cI4L3qykqBiE5PAKmYfGfk6PQ==
-X-Gm-Gg: AYBFou1krNkS4bJjZzy0zo98Xs+r7fDdMSbGmlDr4yDXOvHhsxz57ECKReIXG7SaXg5
- nOqnLPd5GCIwjXmw/n7ONRlgUx0Ug2EGIrZBMTtvh5+9UTdfUq97FCXtVpJkJqyY9vmskFu8/2o
- XaqDfggDw0dzEAr+R3uqKUZx5QWJcLNfzI/2zkgd099Yd2nPlsFQhLrnZ0I3x2ypwOQpN90S58m
- ElGAPqvVoOvfZHhiLKOZUj46l8mb+H75KFiDa8rAPAYMRFNPsMKRSklbfqbJSEh3DyJSpWho5Zi
- HIyR4lFsu5p8i0TlkINmEG+PL4rwsqj1gdBJyb7Lu8gRwTVwnUrWT7/sh8NIS27b1xMDf3zXgUD
- QSn2Pe9LAtfqyZosqNuBCi2rj5YlDeTC1KdNFQKCIMNyJHEiX
-X-Received: by 2002:a05:6000:4012:b0:487:930:8acc with SMTP id
- ffacd0b85a97d-488717168c1mr3343497f8f.16.1790250464693; 
- Thu, 24 Sep 2026 04:47:44 -0700 (PDT)
-X-Received: by 2002:a05:6000:4012:b0:487:930:8acc with SMTP id
- ffacd0b85a97d-488717168c1mr3343461f8f.16.1790250464334; 
- Thu, 24 Sep 2026 04:47:44 -0700 (PDT)
+ AKwUvBzHk4Smo1XgoNprnMPU6oeNw/tymaeAylvWgUKgg/mZFmekGi/mRXsmPrhM2Yc1njHlV/LvLxwFZA==@nongnu.org
+X-Gm-Message-State: AFuF++kW3SaKTVqWWo6IpopYMtoz1oOwOu5Rv8aIenTvQ+0GPlc2hYFF
+ DCKNaNLmYhPR4utXPm3uAxsF/LfgD3BKPEkmJ9WzDWDXu/ggB4E2hO8TlUnTtYlNcbgL9Le/kIU
+ PIxjj7rZSZXvM2jDmUJH1gKjllQKBvElepKJTPWeRN8TM9juKahlMuw==
+X-Gm-Gg: AYBFou3tXl9Ic5FA9KAk6jJs4uaCx3rm2iJIgGvy9ZIn+3jnyRDkCyPi0IMJlh0bWvz
+ 62523c/9ke6lWGs+Ij49071DLnvmbDVDAlXjnHf50aBsCWTZBqIkt1QJRDh2Qzo1gCTLdP4nBCr
+ ktZIqC7M7BS7EKV2LJmWEwUY5GF9iOIf74Gzhw/InedV7ZIi+wKNmLWHOUVQHSoxgRj+jdV1JK8
+ liRvAefAV82j3d6vMXfV1NJ7XE+t0nT/yHT8ZLHHR2WwUmG5kmQHtcpk36zpY6PD0HBvR8dkEqB
+ hFSast6brX19joPd1hp90sMzqWDPpl4JHyV7sKo6Ef6UmN6gQXvL4+kC5hVx0Abzi6O6ET13STp
+ j00zPF/xFaHpK8TafiHvr5YWe9Ve/DcV5V1YwqAFOGJqqF0DJ
+X-Received: by 2002:a05:6000:184e:b0:488:5fa9:34aa with SMTP id
+ ffacd0b85a97d-488716d22bcmr5147036f8f.20.1790256939804; 
+ Thu, 24 Sep 2026 06:35:39 -0700 (PDT)
+X-Received: by 2002:a05:6000:184e:b0:488:5fa9:34aa with SMTP id
+ ffacd0b85a97d-488716d22bcmr5146982f8f.20.1790256939370; 
+ Thu, 24 Sep 2026 06:35:39 -0700 (PDT)
 Received: from ?IPV6:2a01:e0a:f0e:9070:527b:9dff:feef:3874?
  ([2a01:e0a:f0e:9070:527b:9dff:feef:3874])
  by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-4886877c379sm13964440f8f.29.2026.09.24.04.47.42
+ ffacd0b85a97d-488682673bdsm14729085f8f.2.2026.09.24.06.35.37
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 24 Sep 2026 04:47:43 -0700 (PDT)
-Message-ID: <b32547b3-c6ac-4887-8a10-59ee84b28938@redhat.com>
-Date: Thu, 24 Sep 2026 13:47:42 +0200
+ Thu, 24 Sep 2026 06:35:38 -0700 (PDT)
+Message-ID: <872fd689-3a28-4c0d-ab0f-86a7062bf974@redhat.com>
+Date: Thu, 24 Sep 2026 15:35:36 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [RFC PATCH v4 08/25] target/arm/kvm: handle writeback for special
- ID register fields
-To: Khushit Shah <khushit.shah@nutanix.com>
-Cc: "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
- "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
- "kvmarm@lists.linux.dev" <kvmarm@lists.linux.dev>,
- "cohuck@redhat.com" <cohuck@redhat.com>,
- "peter.maydell@linaro.org" <peter.maydell@linaro.org>,
- "richard.henderson@linaro.org" <richard.henderson@linaro.org>,
- "maz@kernel.org" <maz@kernel.org>,
- "oliver.upton@linux.dev" <oliver.upton@linux.dev>,
- "berrange@redhat.com" <berrange@redhat.com>,
- "abologna@redhat.com" <abologna@redhat.com>,
- "jdenemar@redhat.com" <jdenemar@redhat.com>,
- "gshan@redhat.com" <gshan@redhat.com>,
- "skolothumtho@nvidia.com" <skolothumtho@nvidia.com>,
- "sebott@redhat.com" <sebott@redhat.com>,
- "armbru@redhat.com" <armbru@redhat.com>,
- "philmd@linaro.org" <philmd@linaro.org>,
- "yangjinqian1@huawei.com" <yangjinqian1@huawei.com>,
- Shaju Abraham <shaju.abraham@nutanix.com>,
- Mark Cave-Ayland <mark.caveayland@nutanix.com>,
- "ping@khushitshah.com" <ping@khushitshah.com>,
- Sandesh Patel <sandesh.patel@nutanix.com>
+Subject: Re: [RFC PATCH v4 09/25] target/arm: introduce named CPU model
+ infrastructure
+To: Khushit Shah <khushit.shah@nutanix.com>, qemu-devel@nongnu.org,
+ qemu-arm@nongnu.org, kvmarm@lists.linux.dev
+Cc: cohuck@redhat.com, peter.maydell@linaro.org,
+ richard.henderson@linaro.org, maz@kernel.org, oliver.upton@linux.dev,
+ berrange@redhat.com, abologna@redhat.com, jdenemar@redhat.com,
+ gshan@redhat.com, skolothumtho@nvidia.com, sebott@redhat.com,
+ armbru@redhat.com, philmd@linaro.org, yangjinqian1@huawei.com,
+ shaju.abraham@nutanix.com, mark.caveayland@nutanix.com,
+ ping@khushitshah.com, sandesh.patel@nutanix.com
 References: <20260921123249.1708067-1-khushit.shah@nutanix.com>
- <20260921123249.1708067-9-khushit.shah@nutanix.com>
- <aabcb61b-8341-423f-b113-e7ab2b34c2ac@redhat.com>
- <C220B122-8B4A-43DF-A665-AF1B9DCE3734@nutanix.com>
+ <20260921123249.1708067-10-khushit.shah@nutanix.com>
 From: Eric Auger <eric.auger@redhat.com>
-In-Reply-To: <C220B122-8B4A-43DF-A665-AF1B9DCE3734@nutanix.com>
+In-Reply-To: <20260921123249.1708067-10-khushit.shah@nutanix.com>
 X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: 5hP-wm-uJvFCVOqueld8kHEsBx9rthylhXwblgF7jRA_1790250465
+X-Mimecast-MFC-PROC-ID: WY-QeHOkdTH_dAwqgWUeLutGGETNinW0jXlesDBm7jc_1790256940
 X-Mimecast-Originator: redhat.com
 Content-Language: en-US
 Content-Type: text/plain; charset=UTF-8
@@ -124,7 +109,7 @@ X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=0.001, SPF_HELO_PASS=-0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -141,24 +126,304 @@ Reply-To: eric.auger@redhat.com
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
+Hi Khushit,
 
-
-On 9/24/26 12:21 PM, Khushit Shah wrote:
+On 9/21/26 2:32 PM, Khushit Shah wrote:
+> Add scaffolding for named CPU models on Arm on top of the property
+> layer. A model is a list of (property, value) overrides plus an
+> optional parent; a child inherits its parent's property values and may
+> override them.
 >
->> On 24 Sep 2026, at 3:27 PM, Eric Auger <eric.auger@redhat.com> wrote:
->>
->> v9 has changed the way new field values are stored. writable field props
->> and non writable field props could have different setters. A non
->> writable field setter just needs to check the new value is the same as
->> the current host value. No need to record the new value in the hashtable
->> for further commitment.
-> How will that work? as based on certain vCPU init options, non-writable fields will change… right?
-I meant the new value does not need to be written into KVM because it
-must be equal to the current value. But maybe I missed your point
+> Instance init steps:
+>     - host feature discovery.
+>     - zero out isar.idregs[] and restore RES1 fields.
+>     - install SYSREG_ and sve* properties.
+>     - walk the parent chain root-first and apply each level's
+>       properties.
+you should explain about prop types. I see they are either bool or uint.
+Given the parent series bool usage is not obvious.
+>
+> This assumes that each property is idempotent. `pauth` is intentionally
+> not installed because the model's ID register view is authoritative
+> and can be configured through SYSREG_ properties.
+>
+> No models are defined yet.
+>
+> Signed-off-by: Khushit Shah <khushit.shah@nutanix.com>
+> ---
+>  target/arm/cpu-models.c | 191 ++++++++++++++++++++++++++++++++++++++++
+>  target/arm/cpu-models.h |  36 ++++++++
+>  target/arm/meson.build  |   1 +
+>  3 files changed, 228 insertions(+)
+>  create mode 100644 target/arm/cpu-models.c
+>  create mode 100644 target/arm/cpu-models.h
+>
+> diff --git a/target/arm/cpu-models.c b/target/arm/cpu-models.c
+> new file mode 100644
+> index 0000000000..fed3197186
+> --- /dev/null
+> +++ b/target/arm/cpu-models.c
+> @@ -0,0 +1,191 @@
+> +/*
+> + * ARM named CPU models.
+> + *
+> + * Each model is defined as an array of MODEL_PROP macros, listing only
+> + * the properties that DIFFER from the parent model.
+> + *
+> + * Initialization starts with a zeroed idregs[] array.
+> + *
+> + * During initialization, the parent chain is walked root-first and every
+> + * level's properties are applied via QOM, so the leaf's values naturally
+> + * override its ancestors.
+> + *
+> + * Assumptions:
+> + *     - All named CPU model properties are idempotent.
+> + *
+> + * SPDX-License-Identifier: GPL-2.0-or-later
+> + */
+> +
+> +#include "qemu/osdep.h"
+> +#include "qapi/error.h"
+> +#include "qemu/error-report.h"
+> +#include "system/kvm.h"
+> +#include "cpu.h"
+> +#include "internals.h"
+> +#include "kvm_arm.h"
+> +#include "cpu-idregs.h"
+> +#include "cpu-models.h"
+> +
+> +#define MODEL_PROP_FIELD_STR  str
+> +#define MODEL_PROP_FIELD_BOOL b
+> +#define MODEL_PROP_FIELD_NUM  num
+> +
+> +#define MODEL_PROP(_name, _type, _value) \
+> +    { .name = (_name), .type = ARM_MODEL_PROP_##_type, \
+> +      .u.MODEL_PROP_FIELD_##_type = (_value) }
+> +
+> +#define MODEL_PROP_END  { .name = NULL }
+> +
+> +/* Maximum parent-chain depth for named CPU models. */
+inheritence depth?
+> +#define ARM_NAMED_CPU_MODEL_MAX_DEPTH 16
+> +
+> +static const ArmNamedCpuModel arm_cpu_models[] = {
+> +    {NULL, NULL, NULL}
+> +};
+> +
+> +const ArmNamedCpuModel *arm_find_model(const char *name)
+> +{
+> +    for (size_t i = 0; i < ARRAY_SIZE(arm_cpu_models); i++) {
+> +        if (!arm_cpu_models[i].name) {
+> +            break;
+> +        }
+> +
+> +        if (g_str_equal(arm_cpu_models[i].name, name)) {
+> +            return &arm_cpu_models[i];
+> +        }
+> +    }
+> +    return NULL;
+> +}
+> +
+> +void arm_apply_model_props(Object *obj, const ArmModelPropValue *props,
+> +                           Error **errp)
+> +{
+> +    const ArmModelPropValue *pv;
+> +    ERRP_GUARD();
+> +
+> +    for (pv = props; pv->name; pv++) {
+> +        switch (pv->type) {
+> +        case ARM_MODEL_PROP_BOOL:
+> +            object_property_set_bool(obj, pv->name, pv->u.b, errp);
+> +            break;
+> +        case ARM_MODEL_PROP_NUM:
+> +            object_property_set_uint(obj, pv->name, pv->u.num, errp);
+> +            break;
+> +        default:
+> +            g_assert_not_reached();
+> +        }
+> +
+> +        if (*errp) {
+> +            error_prepend(errp, "property '%s': ", pv->name);
+> +            return;
+> +        }
+> +    }
+> +}
+> +
+> +void arm_realize_model_chain(Object *obj, const ArmNamedCpuModel *model,
+> +                             Error **errp)
+> +{
+> +    const ArmNamedCpuModel *cur, *parent;
+> +    const ArmNamedCpuModel *chain[ARM_NAMED_CPU_MODEL_MAX_DEPTH];
+> +    size_t depth = 0;
+> +
+> +    for (cur = model; cur; ) {
+> +        if (depth >= ARRAY_SIZE(chain)) {
+> +            error_setg(errp, "model '%s': parent chain too deep", model->name);
+> +            return;
+> +        }
+> +        chain[depth++] = cur;
+Please add a comment about the so-called chain and especially describing
+that chain[0] is the child and high-level eindex lements are the parents
+it derives from.
+> +
+> +        if (!cur->parent) {
+> +            break;
+> +        }
+> +        parent = arm_find_model(cur->parent);
+I guess you directly assert
+> +        if (!parent) {
+> +            error_setg(errp, "model '%s': unknown parent '%s'", cur->name,
+> +                cur->parent);
+> +            return;
+> +        }
+> +        cur = parent;
+> +    }
+> +
+> +    while (depth--) {
+> +        arm_apply_model_props(obj, chain[depth]->props, errp);
+> +        if (*errp) {
+> +            return;
+> +        }
+> +    }
+> +}
+> +
+> +static void reset_res1_fields(ARMCPU *cpu)
+> +{
+> +    for (size_t i = 0; i < NUM_ID_IDX; i++) {
+> +        for (size_t j = 0; j < arm64_id_regs[i].fields_count; j++) {
+> +            if (strcmp(arm64_id_regs[i].fields[j].name, "RES1") == 0) {
+> +                cpu->isar.idregs[i] = deposit64(cpu->isar.idregs[i],
+> +                    arm64_id_regs[i].fields[j].shift,
+> +                    arm64_id_regs[i].fields[j].length,
+> +                    MAKE_64BIT_MASK(0, arm64_id_regs[i].fields[j].length));
+> +            }
+> +        }
+> +    }
+> +}
+> +
+> +static void arm_named_cpu_initfn(Object *obj)
+> +{
+> +    ARMCPU *cpu = ARM_CPU(obj);
+> +    ARMCPUClass *acc = ARM_CPU_GET_CLASS(obj);
+> +    const ArmNamedCpuModel *model = arm_find_model(acc->info->name);
+> +
+> +    if (!model) {
+> +        error_report("'%s' CPU model entry not found",
+> +                     acc->info->name);
+> +        return;
+> +    }
+> +
+> +    if (!kvm_enabled()) {
+> +        error_report("'%s' CPU model requires KVM (-accel kvm)",
+> +                     acc->info->name);
+> +        return;
+> +    }
+> +
+> +    kvm_arm_set_cpu_features_from_host(cpu);
+> +    if (!arm_feature(&cpu->env, ARM_FEATURE_AARCH64)) {
+> +        return;
+> +    }
+> +
+> +    /* 1.a Reset ID regs to 0 */
+> +    memset(cpu->isar.idregs, 0, sizeof(cpu->isar.idregs));
+> +
+> +    /* 1.b Properly set RES1 fields. */
+> +    reset_res1_fields(cpu);
+> +
+> +    /* 2. Add sveNNNN and SYSREG_ properties */
+> +    aarch64_add_sve_properties(obj);
+> +    aarch64_add_idregs_properties(obj);
+Can you give more explanations about why we don't have
+aarch64_add_pauth_properties()
+kvm_arm_set_cpreg_mig_tolerances()
 
+at least.
+
+By the way it is not clear what will become legacy compositive options
+with named vcpu models. I see you keep sve but what about the others.
+> +
+> +    /* 3. Realize the model chain. */
+> +    arm_realize_model_chain(obj, model, &error_abort);
+> +}
+> +
+> +void arm_register_named_cpu_models(void)
+> +{
+> +    static ARMCPUInfo *arm_named_cpu_infos;
+> +    size_t i, n = ARRAY_SIZE(arm_cpu_models);
+> +
+> +    if (!n) {
+> +        return;
+> +    }
+> +
+> +    arm_named_cpu_infos = g_new0(ARMCPUInfo, n);
+> +    for (i = 0; i < n; i++) {
+> +        if (!arm_cpu_models[i].name) {
+> +            break;
+> +        }
+> +
+> +        arm_named_cpu_infos[i].name = arm_cpu_models[i].name;
+> +        arm_named_cpu_infos[i].initfn = arm_named_cpu_initfn;
+> +        arm_cpu_register(&arm_named_cpu_infos[i]);
+> +    }
+> +}
+> +
+> +type_init(arm_register_named_cpu_models)
+> diff --git a/target/arm/cpu-models.h b/target/arm/cpu-models.h
+> new file mode 100644
+> index 0000000000..144778744e
+> --- /dev/null
+> +++ b/target/arm/cpu-models.h
+> @@ -0,0 +1,36 @@
+> +/* SPDX-License-Identifier: GPL-2.0-or-later */
+> +#ifndef ARM_CPU_MODELS_H
+> +#define ARM_CPU_MODELS_H
+> +
+> +#include "qapi/error.h"
+> +#include "qom/object.h"
+> +
+> +typedef enum ArmModelPropType {
+> +    ARM_MODEL_PROP_BOOL,
+> +    ARM_MODEL_PROP_NUM,
+> +} ArmModelPropType;
+> +
+> +typedef struct ArmModelPropValue {
+> +    const char *name;
+> +    ArmModelPropType type;
+> +    union {
+> +        bool b;
+> +        uint64_t num;
+> +    } u;
+> +} ArmModelPropValue;
+> +
+> +typedef struct ArmNamedCpuModel {
+> +    const char *name;
+> +    const char *parent;
+any reason why you don't point to the patent ArmNamedCpuModel pointer
+instead?
+> +    const ArmModelPropValue *props;
+> +} ArmNamedCpuModel;
+> +
+> +void arm_register_named_cpu_models(void);
+> +
+> +const ArmNamedCpuModel *arm_find_model(const char *name);
+> +void arm_apply_model_props(Object *obj, const ArmModelPropValue *props,
+> +                           Error **errp);
+> +void arm_realize_model_chain(Object *obj, const ArmNamedCpuModel *model,
+> +                             Error **errp);
+> +
+> +#endif /* ARM_CPU_MODELS_H */
+> diff --git a/target/arm/meson.build b/target/arm/meson.build
+> index 384d90c530..dd28146c52 100644
+> --- a/target/arm/meson.build
+> +++ b/target/arm/meson.build
+> @@ -32,6 +32,7 @@ arm_common_system_ss.add(files(
+>    'arm-qmp-cmds.c',
+>    'cpu-idregs.c',
+>  ))
+> +arm_system_ss.add(when: 'TARGET_AARCH64', if_true: files('cpu-models.c'))
+>  arm_system_ss.add(when: 'CONFIG_KVM', if_true: files('hyp_gdbstub.c', 'kvm.c'))
+>  arm_system_ss.add(when: 'CONFIG_HVF', if_true: files('hyp_gdbstub.c'))
+>  
 Eric
->
-> Warm Regards,
-> Khushit
 
 

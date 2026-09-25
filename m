@@ -4,93 +4,84 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 00681C98328
-	for <qemu-arm@archiver.kernel.org>; Fri, 25 Sep 2026 16:34:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2A316C9830E
+	for <qemu-arm@archiver.kernel.org>; Fri, 25 Sep 2026 21:50:46 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xA8sE-0006iP-1F; Fri, 25 Sep 2026 12:34:10 -0400
+	id 1xADoD-0007lc-HK; Fri, 25 Sep 2026 17:50:26 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1xA8sC-0006i2-FV
- for qemu-arm@nongnu.org; Fri, 25 Sep 2026 12:34:08 -0400
-Received: from mail-pj2-x0d.google.com ([2607:f8b0:4864:39::d])
+ id 1xADo2-0007km-GY
+ for qemu-arm@nongnu.org; Fri, 25 Sep 2026 17:50:10 -0400
+Received: from mail-pz2-x2b.google.com ([2607:f8b0:4864:3b::2b])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1xA8sA-0001mz-TY
- for qemu-arm@nongnu.org; Fri, 25 Sep 2026 12:34:08 -0400
-Received: by mail-pj2-x0d.google.com with SMTP id
- 98e67ed59e1d1-3a0bcdf41a3so449945a91.2
- for <qemu-arm@nongnu.org>; Fri, 25 Sep 2026 09:34:06 -0700 (PDT)
+ id 1xADo0-0007Zo-AS
+ for qemu-arm@nongnu.org; Fri, 25 Sep 2026 17:50:10 -0400
+Received: by mail-pz2-x2b.google.com with SMTP id
+ d2e1a72fcca58-88098dbba5fso192921b3a.1
+ for <qemu-arm@nongnu.org>; Fri, 25 Sep 2026 14:50:07 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1790354045; x=1790958845; darn=nongnu.org;
- h=content-transfer-encoding:content-type:in-reply-to:content-language
- :from:references:cc:to:subject:user-agent:mime-version:date
- :message-id:from:to:cc:subject:date:message-id:reply-to:content-type;
- bh=8k0GeIq/elNnRc8rE4A+91KWCyinznyHOoVU4iBo2cE=;
- b=AyqvuJLl9j+LUwLhCP0GcRBVAC1GeGRgHhpEBiXbkrmZgKOYGuwnSGeW79ec6jrlna
- Lu5A9vjSLJncOnuTb2m6eO5Qd2CpRYNJvtKmPdC3FHfrMqLW8QuhphfBFke1dJYk+F95
- DPbU2k0kzhvXBWLCAYGd/yRbP/DFWP3RaNFFnATThX8mvpagDXCvI1Do5z0hb+LBGn3A
- auHP5s+HWLg0GUF1QYyHrTGkh10+JlpxI3vYNdRYRJtqLa3lPA7pxs+9w5zG5AtppG+r
- WcF3RUyT9Wvl7UfgKeqOc7n3wRTzEJbbVIGOkL8hMqOjjbqJFj4e/OpnUgAPf6xiVW/9
- BU3Q==
+ d=linaro.org; s=google; t=1790373006; x=1790977806; darn=nongnu.org;
+ h=content-transfer-encoding:content-type:mime-version:message-id:date
+ :subject:cc:to:from:from:to:cc:subject:date:message-id:reply-to
+ :content-type; bh=mj1xMXLxQDKvbJjq+/ALlSMV8PZ2RtF+T00fCMTxHUc=;
+ b=kqqrzd4Z308EMjSn//sx38TlckAPa79zx80dmmlYV9MFZ4z6azAhvtfVDIC/NwMJFj
+ 4DZiZG9KqdwOcghRyKFvAbNt1uC7PxT8s+GK+WDFR8Y0dgQf+T7MC2ZbhH9llamQWxWj
+ RIVodX0G6aBBt96vfk0EutdTGAYwYdgE6RKHijDWgneigAxMQHw1u4SWQRir4VIDM8Pv
+ 7Zt0sThw0dguMbskl9kS0Fs7+4pmbHgRxMwtTOcreMlgF+TGcIlxnVUE4f5oJMi3NJ/u
+ PzvR6LOqG4tn8locpP6v42nROlLQdRMfxXqSsRTG3mPgKhT+g2Y0kyc9cjCQzklPcgIF
+ SK7g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20260707; t=1790354045; x=1790958845;
- h=content-transfer-encoding:content-type:in-reply-to:content-language
- :from:references:cc:to:subject:user-agent:mime-version:date
- :message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
- :message-id:reply-to:content-type;
- bh=8k0GeIq/elNnRc8rE4A+91KWCyinznyHOoVU4iBo2cE=;
- b=XpdrJLlbGMMbli0xcfqHUAMVzlHVWFJZXNpzZt/5zyUdSXP+w/Tx/x4hqsHf7HvyXE
- WDz3UFVGrzrlRJKACAf9I1RsHh4VrFRd7USNJ6TFgLKuevphrrpaIN9ilq0cZE3SfaJ5
- ek4BoISajU+ebKpyPl9wnd1DXT0Ku1VZ/5BprSxxQqqpXaLW4+b6bHjk8tv8vgTSBSQu
- VBf8xid6p3PioSxXeq6w3DXpTy7giVNdNhbW9p3S1OCwfNPxnQ9vqSjlzrzImnqA3ASR
- ztBAl4V24a/5mkzlOmEoLKpSJZ8ZTl9Hyzy01C7CSNDQMxw1iv1EWq6PcH4Qnm3AKdVj
- v4+Q==
-X-Forwarded-Encrypted: i=1;
- AKwUvBxeAZm7Ohxr2xpAG+0gM6FCPAN4m7kgJooyYuCaWNU94zKCPVO0EpH5pZMu5HjM8YCmo1eUkcsTKg==@nongnu.org
-X-Gm-Message-State: AFuF++niSSqX719RXtPI0K5spTu6ahKLxOG4BR4xumlu6QuaH6xOJpev
- QcmQruNK3PUBX7R3pSLg0l8WfmcgRKIZffC3PkGllL7/5G2hQ9PYIgrYr9xFwW+2BQ4=
-X-Gm-Gg: AYBFou30gIRoUl8z6dmQmz14VRJEXW/hALpe3K9rYh5qbHP+qaNVtAPvNrIKiqihMUR
- G/987xsbF6mVOb/esN0KhUp6iQIA41SiQxwf8zIPnrG+KmO3dMv9Aoa+7pV2R9E7TqvtiBjygCX
- lBWkwFbzx8z5hCeVRDsO8G4PKTWZATS3rfL4NOah+59TSSPSe03+1rtdWMPKbZEHPVy0IVQWpiW
- /ZE4+WVo6q4uewDT7Lz0ymkymlBY9JJXfXD+YtG/6fZmWbrimY1vcAe6P/8dQp7gjHU7qZKsNbw
- KXJN/3VaI7Y/lJj6QhSIIm4vF60p0l0Wv9CX2Ui6+XLwmhC0q/0hvbRyhu7qjIY5TM1Oosjakmx
- JJ4T51VeNvhU/uhSfo/ZRblwVGxTfWrB1UkWKsZ9zZTco8GKJOBLpE+5SNEWUPsdULerwo1mCto
- kR1UB09icFHFyloKlUKAUSVtnIyZmmYdLKYz6nhlahMFjMbQiNjodLGuhaeF+3tIpjLGLOcacTa
- 2lDhP7juj1T9rfmEUGRRt2kLEKKP0kNzKICz0pGSBeE81b5QJs=
-X-Received: by 2002:a17:90b:3888:b0:3a0:cc33:2287 with SMTP id
- 98e67ed59e1d1-3a0cc3324ccmr1036590a91.6.1790354045069; 
- Fri, 25 Sep 2026 09:34:05 -0700 (PDT)
-Received: from [192.168.0.4] (174-21-68-150.tukw.qwest.net. [174.21.68.150])
+ d=1e100.net; s=20260707; t=1790373006; x=1790977806;
+ h=content-transfer-encoding:content-type:mime-version:message-id:date
+ :subject:cc:to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject
+ :date:message-id:reply-to:content-type;
+ bh=mj1xMXLxQDKvbJjq+/ALlSMV8PZ2RtF+T00fCMTxHUc=;
+ b=uZTNj2+Xd+lfqKh49bgu1Ry5kBXYT3E41XoqNvLOmTtmAGz8D94UtpnlaNv5WOzIpE
+ THBRf/rM0fiYqTtUkroCPj/0+8YSfzJlzRwSiinqxDNA1Ht/qvQUtCQljM/JDNm06MNx
+ HtqngDnjjbvOarGyEUztFfH3mRCOCb72bYcNhGW6Q+Dl6cq3rRbFSIjz5JUiuXTZe4au
+ 2WLEpPJNfGVXYYZoCAGXEnx+sJbp9NDzIWluXzEVoOPEZD3hPHISbT0pzRSJEQ7dG3cM
+ jN4xOVdJiXXCxA6ijmXDyq/7Xl3hVhVwglgVPMbiiE4oWgPzFEGrxHh5CBru/pqqrsdu
+ 3Sdw==
+X-Gm-Message-State: AFuF++lc1Jhjf2VN0w+EfogbecIxfGpiwFn+ChS997AIv3V/mJPSDwpi
+ FTQj++W0vSXqOEsi4PjNrdfu4AeoOB2acnBRy5C96fb73wZTuC7rELjzoNSPfnqKcZs=
+X-Gm-Gg: AYBFou0hkSq/gyW6WJLK24PbnXED/tOHndnIv0GRnK+k84GcagGcF3qPHlLnTBLscRU
+ rTgX9YioaVfvjLUYqe/BZhoUIRB4zXBZhwqZJrk18Ta3ehrjvnnm2om1Z4PKGuFhov8RYJV0L6S
+ /Zd564R5H6THYpeBh0qpmQUbG/M5ZQDl659cAfUld4y4SEsNe/jOtDlYfgsu9MbI6dyryilIS5H
+ 9VzO7fnFmPQRhGGCtOU9xI/0lKrg7+7J3FHuCMLGeGIMJ5zVxNsw8fk2PAaVQtq81ZvlTklTrhK
+ iW+ErVyTADUyEkZOexUoyO1OVe63kOzeD7v5k+3ube3UVKbLG0MvUY4HhvVLWvhv4p6YTHkhqhg
+ Kqd/G2Yd6HKewnItkfJW7JbAmyXJZjVWZFAc8ySW5Sa11LqgfzXnPi+Hei1kh/lvJfmdJ2Off72
+ BYLInadWN3unwdLLPaY0vW1lwroGuoLXZsSAhOOxdrGc3C2xGchTBQbQkYHN0BZ12RYxtBYjF31
+ WJl5OCtXf8HO+Co3FL8jdJY5GNZrw==
+X-Received: by 2002:a05:6a00:4b15:b0:85f:1941:a9eb with SMTP id
+ d2e1a72fcca58-87e9e0a7282mr4065384b3a.11.1790373006069; 
+ Fri, 25 Sep 2026 14:50:06 -0700 (PDT)
+Received: from stoup (174-21-68-150.tukw.qwest.net. [174.21.68.150])
  by smtp.gmail.com with ESMTPSA id
- 98e67ed59e1d1-3a0c719f86fsm3094138a91.7.2026.09.25.09.34.04
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Fri, 25 Sep 2026 09:34:04 -0700 (PDT)
-Message-ID: <ebd4f4af-b958-4d76-a671-6927fbea1d70@linaro.org>
-Date: Fri, 25 Sep 2026 09:34:03 -0700
-MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 11/13] target/arm: Add PSTATE.UINJ to tbflags
-To: Peter Maydell <peter.maydell@linaro.org>
-Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org
-References: <20260828222639.1432046-1-richard.henderson@linaro.org>
- <20260828222639.1432046-12-richard.henderson@linaro.org>
- <CAFEAcA-9BWhLf2AagEcnacxMYKPYGKC=iKKoGRvPg4BW0PtbaA@mail.gmail.com>
+ d2e1a72fcca58-87fea1940ecsm1725256b3a.13.2026.09.25.14.50.04
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Fri, 25 Sep 2026 14:50:05 -0700 (PDT)
 From: Richard Henderson <richard.henderson@linaro.org>
-Content-Language: en-US
-In-Reply-To: <CAFEAcA-9BWhLf2AagEcnacxMYKPYGKC=iKKoGRvPg4BW0PtbaA@mail.gmail.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2607:f8b0:4864:39::d;
- envelope-from=richard.henderson@linaro.org; helo=mail-pj2-x0d.google.com
+To: qemu-devel@nongnu.org
+Cc: qemu-arm@nongnu.org
+Subject: [PATCH v2 00/14] target/arm: Implement FEAT_UINJ
+Date: Fri, 25 Sep 2026 14:49:50 -0700
+Message-ID: <20260925215004.456336-1-richard.henderson@linaro.org>
+X-Mailer: git-send-email 2.53.0
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2607:f8b0:4864:3b::2b;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pz2-x2b.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -106,46 +97,51 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On 9/8/26 04:08, Peter Maydell wrote:
-> On Fri, 28 Aug 2026 at 23:27, Richard Henderson
-> <richard.henderson@linaro.org> wrote:
->>
->> Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
-> 
->> diff --git a/target/arm/tcg/hflags.c b/target/arm/tcg/hflags.c
->> index 296ec8101ab..174f4aa746f 100644
->> --- a/target/arm/tcg/hflags.c
->> +++ b/target/arm/tcg/hflags.c
->> @@ -292,6 +292,9 @@ static CPUARMTBFlags rebuild_hflags_a32(CPUARMState *env, int fp_el,
->>       if (env->uncached_cpsr & CPSR_IL) {
->>           DP_TBFLAG_ANY(flags, PSTATE__IL, 1);
->>       }
->> +    if (env->pstate & PSTATE_UINJ) {
->> +        DP_TBFLAG_ANY(flags, PSTATE__UINJ, 1);
->> +    }
->>
->>       /*
->>        * The SME exception we are testing for is raised via
->> @@ -513,6 +516,9 @@ static CPUARMTBFlags rebuild_hflags_a64(CPUARMState *env, int el, int fp_el,
->>       if (env->pstate & PSTATE_IL) {
->>           DP_TBFLAG_ANY(flags, PSTATE__IL, 1);
->>       }
->> +    if (env->pstate & PSTATE_UINJ) {
->> +        DP_TBFLAG_ANY(flags, PSTATE__UINJ, 1);
->> +    }
->>
->>       if (arm_fgt_active(env, el)) {
->>           DP_TBFLAG_ANY(flags, FGT_ACTIVE, 1);
-> 
-> Could we do this just once in rebuild_hflags_common() rather than
-> duplicating it in _a32 and _a64 ?
-_common is also used with _m32.
-
-We could probably reorg things so that we have a common _aprofile 
-routine, which could also avoid the duplication from FGT.
-
-I'll give it a shot.
+Changes for v2:
+  - Reorganize rebuild_hflags_common*.
+    Trying to force a tail call for these was perhaps just confusing.
+    Inverting the order means that we can handle initialization once
+    in a common way, and the lifetime of some of the parameters is
+    shortened.
+  - Introduce rebuild_hflags_common_aprofile.
+    This gives us a common place for the new UINJ test in hflags.
+  - Introduce check_il_uinj.
+    This gives us a common place for the new UINJ test in translation.
 
 
 r~
+
+
+Richard Henderson (14):
+  target/arm: Parenthesize tbflags arguments in TBFLAG macros
+  target/arm: Reorg rebuild_hflags_common*
+  target/arm: Split out rebuild_hflags_common_aprofile
+  target/arm: Sort BE_DATA toward the top of rebuild_hflags_a64
+  target/arm: Move ID_AA64PFR2 feature tests together
+  target/arm: Add isar_feature_aa64_uinj
+  target/arm: Drop U from most PSTATE bits
+  target/arm: Clear PSTATE.UINJ when taking exceptions
+  target/arm: Widen cpsr_{read,write}_for_spsr_elx to uint64_t
+  target/arm: Read and write PSTATE.UINJ
+  target/arm: Add PSTATE.UINJ to tbflags
+  target/arm: Split out check_il
+  target/arm: Honor PSTATE.UINJ during translation
+  target/arm: Enable FEAT_UINJ for -cpu max-v9
+
+ docs/system/arm/emulation.rst  |   1 +
+ target/arm/cpu-features.h      |  26 +++++---
+ target/arm/cpu.h               |  62 ++++++++---------
+ target/arm/internals.h         |   7 +-
+ target/arm/tcg/translate.h     |   3 +
+ target/arm/helper.c            |  28 ++++++--
+ target/arm/tcg/cpu64.c         |   1 +
+ target/arm/tcg/helper-a64.c    |   2 +
+ target/arm/tcg/hflags.c        | 118 ++++++++++++++++-----------------
+ target/arm/tcg/translate-a64.c |   8 +--
+ target/arm/tcg/translate.c     |  33 +++++----
+ 11 files changed, 165 insertions(+), 124 deletions(-)
+
+-- 
+2.53.0
+
 

@@ -4,78 +4,87 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7DDF9C9832A
-	for <qemu-arm@archiver.kernel.org>; Fri, 25 Sep 2026 16:28:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 00681C98328
+	for <qemu-arm@archiver.kernel.org>; Fri, 25 Sep 2026 16:34:45 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xA8kx-0002Su-K1; Fri, 25 Sep 2026 12:26:39 -0400
+	id 1xA8sE-0006iP-1F; Fri, 25 Sep 2026 12:34:10 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1xA8kv-0002Rc-1C
- for qemu-arm@nongnu.org; Fri, 25 Sep 2026 12:26:37 -0400
-Received: from mail-pj2-x11.google.com ([2607:f8b0:4864:39::11])
+ id 1xA8sC-0006i2-FV
+ for qemu-arm@nongnu.org; Fri, 25 Sep 2026 12:34:08 -0400
+Received: from mail-pj2-x0d.google.com ([2607:f8b0:4864:39::d])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1xA8kt-0001Ck-IR
- for qemu-arm@nongnu.org; Fri, 25 Sep 2026 12:26:36 -0400
-Received: by mail-pj2-x11.google.com with SMTP id
- 98e67ed59e1d1-396ccafb751so591734a91.2
- for <qemu-arm@nongnu.org>; Fri, 25 Sep 2026 09:26:35 -0700 (PDT)
+ id 1xA8sA-0001mz-TY
+ for qemu-arm@nongnu.org; Fri, 25 Sep 2026 12:34:08 -0400
+Received: by mail-pj2-x0d.google.com with SMTP id
+ 98e67ed59e1d1-3a0bcdf41a3so449945a91.2
+ for <qemu-arm@nongnu.org>; Fri, 25 Sep 2026 09:34:06 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1790353594; x=1790958394; darn=nongnu.org;
- h=content-transfer-encoding:content-type:mime-version:message-id:date
- :subject:cc:to:from:from:to:cc:subject:date:message-id:reply-to
- :content-type; bh=58y18f27u1vovrwsYgHk1lhCiaHKNQzWDqCNhPCLBUA=;
- b=C262Cdlg6Jv30Z+UB109s6ihPT18gXYjKMGlf+ZU3H5atc0ll0ezoPftPOhvQwPiiv
- pilAKOfegCXMvMFokU+AZj2Wo4p6uybCfUpY1K4TDRHGE65bFyD35FRYjubotnjAuKzr
- r+9NBO78ElQRmXQrHhL60BsAmKFFghJRIRj6ZzgetKsmLu0mp6eHG6M/u1AQvRcQb+Fh
- 9vtSmOlbxO3NqFhAghRYuPuKEqRDDd9JoKIhvy6YK6igkZokaEkG9kQFvNjOak0IZzTp
- uQF3FyiS+ToieX38WE7ezLuvRmMHcqbyFPiEzII8IgZni8KFg9T0NqHIjie11OmGgVXY
- Tp2Q==
+ d=linaro.org; s=google; t=1790354045; x=1790958845; darn=nongnu.org;
+ h=content-transfer-encoding:content-type:in-reply-to:content-language
+ :from:references:cc:to:subject:user-agent:mime-version:date
+ :message-id:from:to:cc:subject:date:message-id:reply-to:content-type;
+ bh=8k0GeIq/elNnRc8rE4A+91KWCyinznyHOoVU4iBo2cE=;
+ b=AyqvuJLl9j+LUwLhCP0GcRBVAC1GeGRgHhpEBiXbkrmZgKOYGuwnSGeW79ec6jrlna
+ Lu5A9vjSLJncOnuTb2m6eO5Qd2CpRYNJvtKmPdC3FHfrMqLW8QuhphfBFke1dJYk+F95
+ DPbU2k0kzhvXBWLCAYGd/yRbP/DFWP3RaNFFnATThX8mvpagDXCvI1Do5z0hb+LBGn3A
+ auHP5s+HWLg0GUF1QYyHrTGkh10+JlpxI3vYNdRYRJtqLa3lPA7pxs+9w5zG5AtppG+r
+ WcF3RUyT9Wvl7UfgKeqOc7n3wRTzEJbbVIGOkL8hMqOjjbqJFj4e/OpnUgAPf6xiVW/9
+ BU3Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20260707; t=1790353594; x=1790958394;
- h=content-transfer-encoding:content-type:mime-version:message-id:date
- :subject:cc:to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject
- :date:message-id:reply-to:content-type;
- bh=58y18f27u1vovrwsYgHk1lhCiaHKNQzWDqCNhPCLBUA=;
- b=Vq2N4ZfHKXRCzH3NEFLLihsFV/sCm4xrbET8v8wL7VrhEOnsdJ4ppx7jrdDegp1dDY
- HsLq4F5uonCkEQruNu5baYjklddsHJcmlFDpFJqbz6mPl9uP5ed2A625oJ//JbiTqpMi
- V7M/jHJqU+KCZUIFyYzqMhHeJoU7XPZzAP8dOk8MyWfH68ad/hhqQR64kxC7WcPPLGZc
- s4CANQv2OOtOt3phYro4zbBQfI8JYGEk0MmLNA10kDGm84rNx4vbqlWL9WHc35ms2XSt
- Ra/m4QeV6Q04dzyNX3SqMywd8zGDsVCS3m7nzA2LzRrrujgNb/muLz+9o3hiwodkqycq
- K5jQ==
-X-Gm-Message-State: AFuF++n5UlcZ+5dG4VXnIZiFc1nfCYtMxxlcGcgHZ1iNE8SnYsOcPoUg
- D1U+otdLD/hVAd4k3b1QqgNJ3H+pJtXNfQdPsiE2Ke6W2Iu14xAZHeDMy2n7plkOyMU=
-X-Gm-Gg: AYBFou3vNR5ufPHzr2+AYvkus5Fm1t4G6f6HU5/FZaM6UZjyVNysm2dyEv0oQ3poud0
- S1Dl6qgrNZKpZTJQO7i26vhBwYKh6yCISgCuXuD2FfGNgTsdxBWjEAgWNtmNkn+HrW+M07CffPS
- ylrKezvnqeWb3jFrdNGq6kBGgVYhuIPSOFY2bCaf+CInDor0/DPyRA42yA3Yn9P/30CuM1TGgqN
- q/BXg7jHSbC+BaDkLrZK9MreJq9R4qG9o0n/2kxOgrCx1o3b99GO2DmBpwO0ClUMKdRVrZOxiU5
- qYEfUjaaUkO6G2ORRlPE5xi+XaxFIZ6CgC9+aPxi2aqQBLYIPZK3Dk4s/Fbim6B4K2YpIfzJ9YH
- V9ssGdKV/UgIY9ZjvlcAo/p1VeLk12ySvpr4nbihELiK5W8YNwx/nGxTmJJWyb4uCJj+5rsD8b6
- El4sWslfAG4qsES9TeTnflZyaQlY7L8M+PxX0/5DeTwveZqCbrnnvIDGBAgFsbGwgDqrXOvocbA
- IRL1tqsf+DtuWAbNjjntZm4xNGCDg==
-X-Received: by 2002:a17:90b:5410:b0:3a0:ac34:f7be with SMTP id
- 98e67ed59e1d1-3a0ac34fc4dmr3332238a91.4.1790353593752; 
- Fri, 25 Sep 2026 09:26:33 -0700 (PDT)
-Received: from stoup (174-21-68-150.tukw.qwest.net. [174.21.68.150])
+ d=1e100.net; s=20260707; t=1790354045; x=1790958845;
+ h=content-transfer-encoding:content-type:in-reply-to:content-language
+ :from:references:cc:to:subject:user-agent:mime-version:date
+ :message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+ :message-id:reply-to:content-type;
+ bh=8k0GeIq/elNnRc8rE4A+91KWCyinznyHOoVU4iBo2cE=;
+ b=XpdrJLlbGMMbli0xcfqHUAMVzlHVWFJZXNpzZt/5zyUdSXP+w/Tx/x4hqsHf7HvyXE
+ WDz3UFVGrzrlRJKACAf9I1RsHh4VrFRd7USNJ6TFgLKuevphrrpaIN9ilq0cZE3SfaJ5
+ ek4BoISajU+ebKpyPl9wnd1DXT0Ku1VZ/5BprSxxQqqpXaLW4+b6bHjk8tv8vgTSBSQu
+ VBf8xid6p3PioSxXeq6w3DXpTy7giVNdNhbW9p3S1OCwfNPxnQ9vqSjlzrzImnqA3ASR
+ ztBAl4V24a/5mkzlOmEoLKpSJZ8ZTl9Hyzy01C7CSNDQMxw1iv1EWq6PcH4Qnm3AKdVj
+ v4+Q==
+X-Forwarded-Encrypted: i=1;
+ AKwUvBxeAZm7Ohxr2xpAG+0gM6FCPAN4m7kgJooyYuCaWNU94zKCPVO0EpH5pZMu5HjM8YCmo1eUkcsTKg==@nongnu.org
+X-Gm-Message-State: AFuF++niSSqX719RXtPI0K5spTu6ahKLxOG4BR4xumlu6QuaH6xOJpev
+ QcmQruNK3PUBX7R3pSLg0l8WfmcgRKIZffC3PkGllL7/5G2hQ9PYIgrYr9xFwW+2BQ4=
+X-Gm-Gg: AYBFou30gIRoUl8z6dmQmz14VRJEXW/hALpe3K9rYh5qbHP+qaNVtAPvNrIKiqihMUR
+ G/987xsbF6mVOb/esN0KhUp6iQIA41SiQxwf8zIPnrG+KmO3dMv9Aoa+7pV2R9E7TqvtiBjygCX
+ lBWkwFbzx8z5hCeVRDsO8G4PKTWZATS3rfL4NOah+59TSSPSe03+1rtdWMPKbZEHPVy0IVQWpiW
+ /ZE4+WVo6q4uewDT7Lz0ymkymlBY9JJXfXD+YtG/6fZmWbrimY1vcAe6P/8dQp7gjHU7qZKsNbw
+ KXJN/3VaI7Y/lJj6QhSIIm4vF60p0l0Wv9CX2Ui6+XLwmhC0q/0hvbRyhu7qjIY5TM1Oosjakmx
+ JJ4T51VeNvhU/uhSfo/ZRblwVGxTfWrB1UkWKsZ9zZTco8GKJOBLpE+5SNEWUPsdULerwo1mCto
+ kR1UB09icFHFyloKlUKAUSVtnIyZmmYdLKYz6nhlahMFjMbQiNjodLGuhaeF+3tIpjLGLOcacTa
+ 2lDhP7juj1T9rfmEUGRRt2kLEKKP0kNzKICz0pGSBeE81b5QJs=
+X-Received: by 2002:a17:90b:3888:b0:3a0:cc33:2287 with SMTP id
+ 98e67ed59e1d1-3a0cc3324ccmr1036590a91.6.1790354045069; 
+ Fri, 25 Sep 2026 09:34:05 -0700 (PDT)
+Received: from [192.168.0.4] (174-21-68-150.tukw.qwest.net. [174.21.68.150])
  by smtp.gmail.com with ESMTPSA id
- 98e67ed59e1d1-3a0976cacbesm11464809a91.13.2026.09.25.09.26.33
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 25 Sep 2026 09:26:33 -0700 (PDT)
-From: Richard Henderson <richard.henderson@linaro.org>
-To: qemu-devel@nongnu.org
-Cc: qemu-arm@nongnu.org
-Subject: [PATCH v3 0/5] target/arm: Implement FEAT_IDTE3
-Date: Fri, 25 Sep 2026 09:26:27 -0700
-Message-ID: <20260925162632.404001-1-richard.henderson@linaro.org>
-X-Mailer: git-send-email 2.53.0
+ 98e67ed59e1d1-3a0c719f86fsm3094138a91.7.2026.09.25.09.34.04
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Fri, 25 Sep 2026 09:34:04 -0700 (PDT)
+Message-ID: <ebd4f4af-b958-4d76-a671-6927fbea1d70@linaro.org>
+Date: Fri, 25 Sep 2026 09:34:03 -0700
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:39::11;
- envelope-from=richard.henderson@linaro.org; helo=mail-pj2-x11.google.com
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 11/13] target/arm: Add PSTATE.UINJ to tbflags
+To: Peter Maydell <peter.maydell@linaro.org>
+Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org
+References: <20260828222639.1432046-1-richard.henderson@linaro.org>
+ <20260828222639.1432046-12-richard.henderson@linaro.org>
+ <CAFEAcA-9BWhLf2AagEcnacxMYKPYGKC=iKKoGRvPg4BW0PtbaA@mail.gmail.com>
+From: Richard Henderson <richard.henderson@linaro.org>
+Content-Language: en-US
+In-Reply-To: <CAFEAcA-9BWhLf2AagEcnacxMYKPYGKC=iKKoGRvPg4BW0PtbaA@mail.gmail.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=2607:f8b0:4864:39::d;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pj2-x0d.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -97,28 +106,46 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Changes for v3:
-  - Drop helper_tid3_udef_el1, because the entire tid3 space has backing cpregs.
+On 9/8/26 04:08, Peter Maydell wrote:
+> On Fri, 28 Aug 2026 at 23:27, Richard Henderson
+> <richard.henderson@linaro.org> wrote:
+>>
+>> Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
+> 
+>> diff --git a/target/arm/tcg/hflags.c b/target/arm/tcg/hflags.c
+>> index 296ec8101ab..174f4aa746f 100644
+>> --- a/target/arm/tcg/hflags.c
+>> +++ b/target/arm/tcg/hflags.c
+>> @@ -292,6 +292,9 @@ static CPUARMTBFlags rebuild_hflags_a32(CPUARMState *env, int fp_el,
+>>       if (env->uncached_cpsr & CPSR_IL) {
+>>           DP_TBFLAG_ANY(flags, PSTATE__IL, 1);
+>>       }
+>> +    if (env->pstate & PSTATE_UINJ) {
+>> +        DP_TBFLAG_ANY(flags, PSTATE__UINJ, 1);
+>> +    }
+>>
+>>       /*
+>>        * The SME exception we are testing for is raised via
+>> @@ -513,6 +516,9 @@ static CPUARMTBFlags rebuild_hflags_a64(CPUARMState *env, int el, int fp_el,
+>>       if (env->pstate & PSTATE_IL) {
+>>           DP_TBFLAG_ANY(flags, PSTATE__IL, 1);
+>>       }
+>> +    if (env->pstate & PSTATE_UINJ) {
+>> +        DP_TBFLAG_ANY(flags, PSTATE__UINJ, 1);
+>> +    }
+>>
+>>       if (arm_fgt_active(env, el)) {
+>>           DP_TBFLAG_ANY(flags, FGT_ACTIVE, 1);
+> 
+> Could we do this just once in rebuild_hflags_common() rather than
+> duplicating it in _a32 and _a64 ?
+_common is also used with _m32.
+
+We could probably reorg things so that we have a common _aprofile 
+routine, which could also avoid the duplication from FGT.
+
+I'll give it a shot.
+
 
 r~
-
-Richard Henderson (5):
-  target/arm: Rename isar_feature_aa64_idst
-  target/arm: Enable writes to SCR_EL3.TID{3,5}
-  target/arm: Implement SCR_EL3.TID3
-  target/arm: Implement SCR_EL3.TID5
-  target/arm: Enable FEAT_IDTE3 for -cpu max
-
- docs/system/arm/emulation.rst  |  1 +
- target/arm/cpu-features.h      |  7 ++++++-
- target/arm/cpu.h               |  2 ++
- target/arm/helper.c            | 37 ++++++++++++++++++++++++++++++----
- target/arm/tcg/cpu64.c         |  4 ++++
- target/arm/tcg/op_helper.c     |  2 +-
- target/arm/tcg/translate-a64.c |  2 +-
- 7 files changed, 48 insertions(+), 7 deletions(-)
-
--- 
-2.53.0
-
 

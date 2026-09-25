@@ -4,88 +4,87 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 093AEC9832E
-	for <qemu-arm@archiver.kernel.org>; Fri, 25 Sep 2026 21:51:32 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7B9ABC9832A
+	for <qemu-arm@archiver.kernel.org>; Fri, 25 Sep 2026 21:51:54 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xADow-0008Lj-Oo; Fri, 25 Sep 2026 17:51:07 -0400
+	id 1xADp4-00005v-5V; Fri, 25 Sep 2026 17:51:15 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1xADoI-0007mw-6X
+ id 1xADoE-0007lf-CZ
  for qemu-arm@nongnu.org; Fri, 25 Sep 2026 17:50:27 -0400
-Received: from mail-pz2-x10.google.com ([2607:f8b0:4864:3b::10])
+Received: from mail-pz2-x0c.google.com ([2607:f8b0:4864:3b::c])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1xADoE-0007oH-CR
- for qemu-arm@nongnu.org; Fri, 25 Sep 2026 17:50:23 -0400
-Received: by mail-pz2-x10.google.com with SMTP id
- d2e1a72fcca58-85469a3490bso1077300b3a.3
- for <qemu-arm@nongnu.org>; Fri, 25 Sep 2026 14:50:20 -0700 (PDT)
+ id 1xADo9-0007lr-56
+ for qemu-arm@nongnu.org; Fri, 25 Sep 2026 17:50:19 -0400
+Received: by mail-pz2-x0c.google.com with SMTP id
+ d2e1a72fcca58-8805988a200so697413b3a.3
+ for <qemu-arm@nongnu.org>; Fri, 25 Sep 2026 14:50:12 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1790373020; x=1790977820; darn=nongnu.org;
+ d=linaro.org; s=google; t=1790373012; x=1790977812; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to:content-type;
- bh=cOzcQc8zTJgOy19nChNBP2tzW+uTl+R1lYrTRq/sk8I=;
- b=OsWWApk21a1rG6ukCqzzX599c5yZ+LkS8TjkBAZf88F78O6ecR3U72U3f9W+fE94Ua
- eorH5cZEHXMEEsuxNHPhJTfu9bo8sx9lC3QasZKAHDxaXLT2BWJBlbOEelPCzi6UGgIe
- GqMIe9pZhapf2lRZEOqohZ9xaFvuE6RR5Wj6SyXKM6oujo+Wm/OtlwMwVAyRPtflmOJc
- HtxZlvL7NMru75vPJgt5ehj5KHtOr+fEnVAEvK/xGrzWjHrZ3NGQN4WJ4sHjznmHFt7G
- 0AAIwbk2uGfjx5JEbuIBvpzJixG7tDQcAS8FHWipX/Y0gM2OMOj0LnkjR0Nk7ouP/og1
- bTqw==
+ bh=qf9HpDmhr2X/BPeZxdfFZ3PfLAE7JfKlZsgAf57xaSM=;
+ b=snfWqfk7Xu5HaipT/pz0RSxTc+uTKxKdICXFLYY4+ZU4leG+QNUZE63r3kOLNEuTOL
+ pHcu76vM5JmtswXOvAjgOD2wD+ec6LzcWxXtv+QYucUNX9CVWMD/xGTjBC2ZRyzRXBfj
+ 2MQGJjQzltcl6+nsrVBWlWHoFFp7iN8noVgH/xUtLYWmdP1kMTCmSUd5fulZfeeznvTg
+ tHCaCRD1njYLWQyCRSmMTiXbg4RUumGTy0dccL/xmjXorgKzRRBOyNAllZaK7wliscut
+ UQmZm/12dKjjeIke2JQYfLWJWTKiiWj5u9fgwKYxgRNpMTqClpChY3ECsxtkQFmcqM/v
+ MNyw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20260707; t=1790373020; x=1790977820;
+ d=1e100.net; s=20260707; t=1790373012; x=1790977812;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
  :to:cc:subject:date:message-id:reply-to:content-type;
- bh=cOzcQc8zTJgOy19nChNBP2tzW+uTl+R1lYrTRq/sk8I=;
- b=qfdlIZkTcumnj3QCH+oOcYpaT1RHfoO5NjUgjAYE/jZ6jHhnV++wwumo1HhkaHLZMT
- wqgKtY7AF/WBL/nVcRRpV/iiBQLuDF1B3b4X62zQfCNfMOObpmRe7QVmjONs0YBlwzr8
- mNShH8hQXNT4P44wjHsRm3ste2563shHe7KI810lPPF2JBjqMls/2q0lwrqvhiEAEuUz
- yzUrYiTPXv8x7/4WYdkAj8kYMdyBLQwZ8UZMgXc4CwsCJ+xf0owNA+PN5jx/QHV9qp2/
- YQT2F8sYcmA4DwvPLWtH208yvL+BXA0NihypVZaDdPzXJTfOBhIMoVyLANkb1XMefteY
- fhSg==
-X-Gm-Message-State: AFuF++nZLD6mWq8KM6wz0we0EhSxXxPAKUWEpEyUvU6WqXonu14hz+nf
- 1FY6zhbZ00FWZTyv3xumaeyIQCHqDOop3LQjoN3Q76UimPrA9sxbZBhMopm3G9LI3XJA8dxWH04
- zvC9P
-X-Gm-Gg: AYBFou0JnCfNrGDLoD4RH4DHyDm+9EuPUgCS+JToORxJjaeFQbql98OQ6WfiyN9SjIA
- tgHkppN7GAg2hWn5yn5LpwNr82lKkGkMgadLKT43s6oMzo7P5HBMGciExFq5y0nfL1yUxMTy72d
- 0f8H1iOMtWRKuVgufqSVf+ASEd3WZzGgQX6PRbbfB7qLEd83xiXbRD4BwNJklj5rtSFXRoX52px
- +WwZ8+qkVScCVHbjEUTdr618UVOV//2afhDPjNHPCcNSQat1pWghF2pJ2qXoZpvDP3nvui2hVYo
- qJxbMcxSax/uTKcs8tHf0z78mIy2cKbV0EGfSqnSqdU3Xp6crffRsgjcuCvVSZLWQaC7vIacFg5
- 4UzTcmeEngCxmi3IX9RnlvEGym1LCwm1gaZzKgxyum0rWcPfw49/dcM0DkfBf9HPcDiQT3s97fJ
- 9n+q0aGScBs+4OKcvMg92quWjUdks4BNBzffKJnqBKiIT27uXAf9ouHunrrOdZ+K8dItWIgXwOm
- K0Co6/LsNPV/bWwtzMuDb0JwL6wyQ==
-X-Received: by 2002:a05:6a00:28cd:b0:878:34d7:6985 with SMTP id
- d2e1a72fcca58-8802d814675mr2664436b3a.51.1790373019553; 
- Fri, 25 Sep 2026 14:50:19 -0700 (PDT)
+ bh=qf9HpDmhr2X/BPeZxdfFZ3PfLAE7JfKlZsgAf57xaSM=;
+ b=herGuFkPewO6cYXQvzwXlVrhZ88MmMTOCN/rQvb8zTE2ZboAEmCmRqcdTbBmyu+gSA
+ t/F2Em9Xq91DNSVbyihmPCn1WzRG2bAtHQgrIlBUNaOx+6nuXysnex2nXsbv9PXK8yWi
+ zxWf2GQVmxXhOh2LfpziM4r+iSwt51sso/zuushQoC7ubQTPfACoxo5sebujlxAu7Gp2
+ iQEny0IbgAhy+3sh3+8t1a6qAe0A0FeMxaBX22cmI51KpNk+S90Kb0JSGwxQ92bnSmi3
+ HHl4z7QVncNpjQMrbz6fR9105IfQq+EqPDZW0iZx6bqiD1b+Wu4Zhd42a3QwNP9F4WH7
+ aivw==
+X-Gm-Message-State: AFuF++nddTYioSbLKjzGemH9LJm54sEavVsi5u72KrvIsFJqYU/oquOp
+ OzPqWT0KBeA1Ewuh5Q1ToOvLYLrinGS4Ux97oyVtQua1zU5dyyqDgTdQyY3EEL1wC8s=
+X-Gm-Gg: AYBFou3qhgDOpiRLTml8b7gBI6FuPnjY97bA15hzD6/UA3azlY1USRZsEQV/q5UySd3
+ nEts0dTCtDxOPesB/IAob3scAN320VHCN9Iil2f9nz7IFDrnEg7zT3Pq8kfr9rr7Fe+taZjZ2lU
+ urTSB85NjA3esbD1mph8rT+VzDensysK1N8fMNj4agefIqSLyPJCIuy1Frw2lfjJ46MHgSY4PXe
+ cLz3TuC5/Kr9B03BOV+2KAn9HGs32UL8/gyWsIwx37oTjwl+jNRz1xtg7n+teOjKA3M9u42FkUr
+ gU8zMWzRe2QthyCyuhtY8wFwiQmqrwmDpFjPec9ynEe+AGTh2VpO8P/O05yoVLkIXSmAUgBp6Py
+ yX6YWCAsWlTveGyB2v4ZFiGR1Sr4+x0GC8RzJYdnKojZ0Abfj3nVuZbpNradB2PufZrJ5YR2iGl
+ 7t5+T3bzpSbK8jK+t8atmFQhi+9+Qyd6DV2BCaJes5JY7oOLbb9EhLajLsNKdw4RI0TqKWv3y2X
+ XAtxrc2z4c5exKVHCeazqMsDrEMbQ==
+X-Received: by 2002:a05:6a00:414b:b0:878:34d7:6a30 with SMTP id
+ d2e1a72fcca58-87e9ea6226bmr5185886b3a.36.1790373011756; 
+ Fri, 25 Sep 2026 14:50:11 -0700 (PDT)
 Received: from stoup (174-21-68-150.tukw.qwest.net. [174.21.68.150])
  by smtp.gmail.com with ESMTPSA id
- d2e1a72fcca58-87fea1940ecsm1725256b3a.13.2026.09.25.14.50.18
+ d2e1a72fcca58-87fea1940ecsm1725256b3a.13.2026.09.25.14.50.10
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 25 Sep 2026 14:50:19 -0700 (PDT)
+ Fri, 25 Sep 2026 14:50:11 -0700 (PDT)
 From: Richard Henderson <richard.henderson@linaro.org>
 To: qemu-devel@nongnu.org
-Cc: qemu-arm@nongnu.org
-Subject: [PATCH v2 13/14] target/arm: Honor PSTATE.UINJ during translation
-Date: Fri, 25 Sep 2026 14:50:03 -0700
-Message-ID: <20260925215004.456336-14-richard.henderson@linaro.org>
+Cc: qemu-arm@nongnu.org,
+	Peter Maydell <peter.maydell@linaro.org>
+Subject: [PATCH v2 06/14] target/arm: Add isar_feature_aa64_uinj
+Date: Fri, 25 Sep 2026 14:49:56 -0700
+Message-ID: <20260925215004.456336-7-richard.henderson@linaro.org>
 X-Mailer: git-send-email 2.53.0
 In-Reply-To: <20260925215004.456336-1-richard.henderson@linaro.org>
 References: <20260925215004.456336-1-richard.henderson@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:3b::10;
- envelope-from=richard.henderson@linaro.org; helo=mail-pz2-x10.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:3b::c;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pz2-x0c.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -101,79 +100,36 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
+Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- target/arm/tcg/translate.h     |  2 +-
- target/arm/tcg/translate-a64.c |  2 +-
- target/arm/tcg/translate.c     | 10 +++++++---
- 3 files changed, 9 insertions(+), 5 deletions(-)
+ target/arm/cpu-features.h | 6 ++++++
+ 1 file changed, 6 insertions(+)
 
-diff --git a/target/arm/tcg/translate.h b/target/arm/tcg/translate.h
-index 7eba9b764ce..57e45ea8724 100644
---- a/target/arm/tcg/translate.h
-+++ b/target/arm/tcg/translate.h
-@@ -382,7 +382,7 @@ void arm_jump_cc(DisasCompare *cmp, TCGLabel *label);
- void arm_gen_test_cc(int cc, TCGLabel *label);
- MemOp pow2_align(unsigned i);
- void unallocated_encoding(DisasContext *s);
--bool check_il(DisasContext *s);
-+bool check_il_uinj(DisasContext *s);
- void gen_exception_internal(int excp);
- void gen_exception_insn_el(DisasContext *s, int64_t pc_diff, int excp,
-                            uint32_t syn, uint32_t target_el);
-diff --git a/target/arm/tcg/translate-a64.c b/target/arm/tcg/translate-a64.c
-index 7f858654c43..5d5b11e2da9 100644
---- a/target/arm/tcg/translate-a64.c
-+++ b/target/arm/tcg/translate-a64.c
-@@ -11174,7 +11174,7 @@ static void aarch64_tr_translate_insn(DisasContextBase *dcbase, CPUState *cpu)
-     s->fp_access_checked = 0;
-     s->sve_access_checked = 0;
+diff --git a/target/arm/cpu-features.h b/target/arm/cpu-features.h
+index 06318d12f9f..a9eebb45564 100644
+--- a/target/arm/cpu-features.h
++++ b/target/arm/cpu-features.h
+@@ -290,6 +290,7 @@ FIELD(ID_AA64PFR2, MTEPERM, 0, 4)
+ FIELD(ID_AA64PFR2, MTESTOREONLY, 4, 4)
+ FIELD(ID_AA64PFR2, MTEFAR, 8, 4)
+ FIELD(ID_AA64PFR2, GCIE, 12, 4)
++FIELD(ID_AA64PFR2, UINJ, 16, 4)
+ FIELD(ID_AA64PFR2, FPMR, 32, 4)
  
--    if (check_il(s)) {
-+    if (check_il_uinj(s)) {
-         return;
-     }
- 
-diff --git a/target/arm/tcg/translate.c b/target/arm/tcg/translate.c
-index fbacc3b7574..6983153ffc6 100644
---- a/target/arm/tcg/translate.c
-+++ b/target/arm/tcg/translate.c
-@@ -1164,12 +1164,16 @@ void unallocated_encoding(DisasContext *s)
-  * must be checked after reading the instruction.  They have more priority
-  * than the AArch64 BTI exception.
-  */
--bool check_il(DisasContext *s)
-+bool check_il_uinj(DisasContext *s)
- {
-     if (s->pstate_il) {
-         gen_exception_insn(s, 0, EXCP_UDEF, syn_illegalstate());
-         return true;
-     }
-+    if (s->pstate_uinj) {
-+        unallocated_encoding(s);
-+        return true;
-+    }
-     return false;
+ FIELD(ID_AA64MMFR0, PARANGE, 0, 4)
+@@ -1242,6 +1243,11 @@ static inline bool isar_feature_aa64_gcie(const ARMISARegisters *id)
+     return FIELD_EX64_IDREG(id, ID_AA64PFR2, GCIE) != 0;
  }
  
-@@ -6167,7 +6171,7 @@ static void disas_arm_insn(DisasContext *s, unsigned int insn)
-         return;
-     }
- 
--    if (check_il(s)) {
-+    if (check_il_uinj(s)) {
-         return;
-     }
- 
-@@ -6737,7 +6741,7 @@ static void thumb_tr_translate_insn(DisasContextBase *dcbase, CPUState *cpu)
-     dc->base.pc_next = pc;
-     dc->insn = insn;
- 
--    if (check_il(dc)) {
-+    if (check_il_uinj(dc)) {
-         return;
-     }
- 
++static inline bool isar_feature_aa64_uinj(const ARMISARegisters *id)
++{
++    return FIELD_EX64_IDREG(id, ID_AA64PFR2, UINJ) != 0;
++}
++
+ static inline bool isar_feature_aa64_fpmr(const ARMISARegisters *id)
+ {
+     return FIELD_EX64_IDREG(id, ID_AA64PFR2, FPMR) != 0;
 -- 
 2.53.0
 

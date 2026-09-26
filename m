@@ -4,69 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5826BC98328
-	for <qemu-arm@archiver.kernel.org>; Sat, 26 Sep 2026 07:09:11 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2603BC9832A
+	for <qemu-arm@archiver.kernel.org>; Sat, 26 Sep 2026 07:09:17 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xAMPd-0002DC-T4; Sat, 26 Sep 2026 03:01:35 -0400
+	id 1xAMTM-0006dU-Es; Sat, 26 Sep 2026 03:05:27 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <luoyonggang@gmail.com>)
- id 1xAMPZ-0002Cn-Rr
- for qemu-arm@nongnu.org; Sat, 26 Sep 2026 03:01:31 -0400
-Received: from mail-dy2-x0e.google.com ([2607:f8b0:4864:36::e])
+ id 1xAMQx-0003bX-IK
+ for qemu-arm@nongnu.org; Sat, 26 Sep 2026 03:02:55 -0400
+Received: from mail-dy2-x1f.google.com ([2607:f8b0:4864:36::1f])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <luoyonggang@gmail.com>)
- id 1xAMPW-0000QI-Q8
- for qemu-arm@nongnu.org; Sat, 26 Sep 2026 03:01:28 -0400
-Received: by mail-dy2-x0e.google.com with SMTP id
- 5a478bee46e88-34182b58d00so863339eec.2
- for <qemu-arm@nongnu.org>; Sat, 26 Sep 2026 00:01:26 -0700 (PDT)
+ id 1xAMQv-0000ZN-G8
+ for qemu-arm@nongnu.org; Sat, 26 Sep 2026 03:02:55 -0400
+Received: by mail-dy2-x1f.google.com with SMTP id
+ 5a478bee46e88-33e62211987so1752335eec.2
+ for <qemu-arm@nongnu.org>; Sat, 26 Sep 2026 00:02:53 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20251104; t=1790406085; x=1791010885; darn=nongnu.org;
+ d=gmail.com; s=20251104; t=1790406172; x=1791010972; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to:content-type;
- bh=NOaZ4jAlSCyjxqIHA0N9ZQnaaf/7JpAiIPWzPNATCyQ=;
- b=OjDkGNDRfr4qRhQ/+OQ4tI0J9Ehp6K+V4ATjgrfnqEZQswPrEgdCE96KFFfF+/pZji
- KJCsga8sWuRkkZvlM/yDP8XjHvUZD2d2Tg3S2obJ2QUrBXd/Cv+47Nl/5pceDqXkai38
- Qnu4FUnFWJTfCxPMMO7MCi0VIASFD5dq1VLCj/2MPbin0l7gYzdbMBahLDRTSDIPsIMA
- bUr79HecSQtjeMEqHI41VJHHHRVjsMcbLPiv5orDezZZUJkwSR0p1axD1TjE50PebV05
- YOrx/RuaUQTWlBa1SuBPF6XzcMYSCWcQOwgN0ZHcEc4OtNit4rD43gej/YkcZ4agnoN6
- zLZQ==
+ bh=xi435pN97DW3z7AycQOykLlzIzDdtWj05eM4KODr8Q4=;
+ b=Q6gHOW9KDdlqFTVPNXtXGppOAVSSN4FbzteYq261k0XJ+/GsxWFXlsPj19rlNoLcqs
+ qD5t5phHn3HcfQ4KQNXnWpIiQrUDsBy/+Bdum0Bq7rLzruwEfKrp0aq8m6lAuX4pA1ng
+ pSDbY8QHcDXc+RxwgWpnlE7BCeJ/g4zIwP4+6n/gLstTXPpeSI4P9RfKuS6rUBD2pXiZ
+ nX3R+YOa/1IxjVxcE7TY3AJhcFpztZdGrQaA57hILz+0ZKOlGk6osiazZv5JPAo5GksW
+ zJgho4as3HjqeYHJjlyp39fSXTxRNfz+EFO3/1r6Dirjkxk8EWjCARyLz275JUrLZj93
+ B88w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20260707; t=1790406085; x=1791010885;
+ d=1e100.net; s=20260707; t=1790406172; x=1791010972;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
  :to:cc:subject:date:message-id:reply-to:content-type;
- bh=NOaZ4jAlSCyjxqIHA0N9ZQnaaf/7JpAiIPWzPNATCyQ=;
- b=X06RuMwRXkuNqGiaFPDi9AnCNuWwkdHuUdrGlV0aVr3edigw+GTvdwYVS4r8do5JwA
- t3vgsvqW93W8CFek+u/GgKeo78hhQuXa1dA52SVfWPzgni/s6FhqL6mtmj+KcRe4Ax3f
- joKHjMBprJm6abA2QlyheMyF3343RiVtQ8csAZKAFLLlgFjHbCMeFmu9+BgmLztS7JGg
- Rf0kT5vlKc7GeizyxjIO/iI5BO278Al44JaIzc7l2iLf7/jimBrueCAlBv+yeQSy1q6d
- mLMVzK7dASqvMygogEYzeJoS1c69mY74F4/QaYXTpGVUmEjRTGl4R/LBrv/6SiTQO98f
- NJqA==
+ bh=xi435pN97DW3z7AycQOykLlzIzDdtWj05eM4KODr8Q4=;
+ b=i0tcB/tuOcyPJEIIHMx1C9dQFAixKk49s4oH41rIICIFTTAPGnP+1DoQGBMg4+pNQQ
+ PPkyUqsFU9ZTihkxR+l8xlUeI/25AsK78EIl23FALIOXduSUt+oosjW9y0ocUaZbVegs
+ iajXbq+3sgNTxoyV9+E+Fow5LCicClzoQLgkw8d7o6jmX/MlICvYB9MfC7MwVfz/XIYe
+ z6JrJaxaXYp7J9smU7CIcPbbi6BkxmamTZyLfcGW0Qat2/fdTrJFV3/ZutHA7AoiKOzO
+ Vi/8lYjJ5d2rLzLFIaiI8fnmP/Wggx02qjsTHZKacTvIeRjkYQfpkdGT9wR6dmn3XTQU
+ uTkQ==
 X-Forwarded-Encrypted: i=1;
- AKwUvBxeHhvr5mO9PCipAlXtLNq2odJdyEAWk6p8fv34KExdut819OACGMtmzdK6ZVps9EHUp5O1k3Tz/A==@nongnu.org
-X-Gm-Message-State: AFuF++kjzKfNCzuCsaPsUFjKI7Gsj04ZhL51cemH64zeZSTOOs9uuPge
- wMpkzWClEk3d1oeMOdeRCuuRl/2duwGCORIOM/7j8oz4QlURzIb6L9KC0zWU8dP4
-X-Gm-Gg: AYBFou2eeUNRmKSTY35j0ZSEsmNOYrjKq1ZRMLA+Sza7bamAJT4WaXsgmH0+o2e4Hoi
- 8kAVq3JWNluo9xv53TjTkgxzJ5f5EsZYuHsg2VL4NaVUtddNtHVvjxS3uhwbmW6jDdekKBesGYH
- g6Cln89s6fWBIzAV1eWEP4wXZ9gZHy99PLV/rRzakHk3kBbYbyn/mzHnZjoSsRhpmVSdJ4wRfvJ
- p2ToHz9XFBabarUAE9WJIMGVDTYMac2JytPD853J95+SWj2h5SPraQGLeI/A5yi8RBZ1Pn+Brtg
- W2hk7nM2CYIFNXkOUFwwwHR5ttaloPp2bE1LNK5MYFptPSy3qC8N9JUdYQ+LYGv3lc6BeGJVI6c
- 6qImTLtPpdllsXt8ahDyTn2w4vVFit9d19+Pw8u6sVvgt3MCSRRf3yL5UXuQVWVI+ypYZLmrqLz
- rDYGbEB/xhpyHP+iPukyMxTSJfHmlceIy2Zr1biSVvBmeh9efI9e0q2Eiq+qltWqBeGsu3tx4rs
- RuMzhtacmIa7HwVVWtsL2MyFt0RqYTa
-X-Received: by 2002:a05:7300:a986:b0:328:7033:9b8c with SMTP id
- 5a478bee46e88-342711ac458mr3353958eec.6.1790406085251; 
- Sat, 26 Sep 2026 00:01:25 -0700 (PDT)
+ AKwUvBwEnrcO1tN+YbfZNgtRKpLTOEKC533BzniZzkqLun3uELw/zYHfFSGegxaeIe4bQvbalgUBGeK96g==@nongnu.org
+X-Gm-Message-State: AFuF++nVNsItWAVbYYBK/+vPOJ3ZjwpyFBTC9qsH8StsJ5J8bFQRfOVy
+ aNkT46EGxWXGhidBf3/ptzm9k8t2i+YmQZ+vuX6CmxO6Y0xWZs+ceYmi
+X-Gm-Gg: AYBFou3xW7Sfq+tiYghn3Qn+nlg7YjIDBdIGecSL+u1smJ7dhkzq8bOigAsYpejKfgT
+ KW20m5CsinfkSWy5s0RtkRh4NtBXP3Iq9J9Hbd+tMRuYNL4jIUmjdL9gzMEmhjQdDuidOlUwgKM
+ ASL5DtRRVfibcQDbUnjQgrMHS3ryIXhuLS5VzXh69vkFyBlJuE875+lNS87PU9DomHz/sonLAoD
+ wsXHxRHCfRi+UR9aeebbYnD4bpGDQUYSWNik5sBAlPy4+1ddFMDEgdARmCbi/OWat4POOpxZwa7
+ yOnAIK2/ZcDX1fTfmXAT/NYC/prp8tKavl9aVK/GehFEd8V26lYENvg/nqTE4OTXAwjapkjoqzp
+ 9RrzB6gxRtR6s6IPTB6FPbFYZtyFgmvOVuvT4JG0/+xhcocEAxLVwOM2ipmD8N0cwi2Fz7BPS8l
+ 2MS6/rsIYCmYIif8otX+PA+SDHTgZY4Ye8L4UvW8vYC+s3BN2p0QoxXgBYfcOWs9ePhKmx9xYZP
+ KJsv1UQYnv7nkwPJxyUn3MTJiXaOj0=
+X-Received: by 2002:a05:7301:1f06:b0:33b:fa13:61ca with SMTP id
+ 5a478bee46e88-3427246bffbmr2590874eec.33.1790406171918; 
+ Sat, 26 Sep 2026 00:02:51 -0700 (PDT)
 Received: from WIN-BH9M8FJACR9 ([103.94.185.75])
  by smtp.googlemail.com with ESMTPSA id
- 5a478bee46e88-34145c166cfsm10615141eec.28.2026.09.26.00.01.21
+ 5a478bee46e88-34145c166cfsm10615141eec.28.2026.09.26.00.02.48
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sat, 26 Sep 2026 00:01:24 -0700 (PDT)
+ Sat, 26 Sep 2026 00:02:51 -0700 (PDT)
 From: Yonggang Luo <luoyonggang@gmail.com>
 To: qemu-devel@nongnu.org
 Cc: Richard Henderson <richard.henderson@linaro.org>,
@@ -80,16 +80,16 @@ Cc: Richard Henderson <richard.henderson@linaro.org>,
  Peter Maydell <peter.maydell@linaro.org>,
  =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
  qemu-arm@nongnu.org, kvm@vger.kernel.org
-Subject: [PATCH v4 05/55] vl: parse early options before target-info init
-Date: Sat, 26 Sep 2026 15:00:04 +0800
-Message-ID: <20260926070057.1234-6-luoyonggang@gmail.com>
+Subject: [PATCH v4 27/55] tcg: move dup_const into tcg.c
+Date: Sat, 26 Sep 2026 15:00:26 +0800
+Message-ID: <20260926070057.1234-28-luoyonggang@gmail.com>
 X-Mailer: git-send-email 2.52.0.windows.1
 In-Reply-To: <20260926070057.1234-1-luoyonggang@gmail.com>
 References: <20260926070057.1234-1-luoyonggang@gmail.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:36::e;
- envelope-from=luoyonggang@gmail.com; helo=mail-dy2-x0e.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:36::1f;
+ envelope-from=luoyonggang@gmail.com; helo=mail-dy2-x1f.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -111,52 +111,71 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Move the first argv pass ahead of MODULE_INIT_TARGET_INFO so later
-target-info selection can use command-line options before QOM init.
+dup_const replicates a constant by element size. Define it next to
+tcg_constant_vec in tcg.c and drop the copy in tcg-op-gvec.c.
 
 Signed-off-by: Yonggang Luo <luoyonggang@gmail.com>
 ---
- system/vl.c | 20 ++++++++++----------
- 1 file changed, 10 insertions(+), 10 deletions(-)
+ tcg/tcg-op-gvec.c | 17 -----------------
+ tcg/tcg.c         | 17 +++++++++++++++++
+ 2 files changed, 17 insertions(+), 17 deletions(-)
 
-diff --git a/system/vl.c b/system/vl.c
-index 468a9fc247a..3efa4968a20 100644
---- a/system/vl.c
-+++ b/system/vl.c
-@@ -2912,16 +2912,6 @@ void qemu_init(int argc, char **argv)
-     error_init(argv[0]);
-     qemu_init_exec_dir(argv[0]);
+diff --git a/tcg/tcg-op-gvec.c b/tcg/tcg-op-gvec.c
+index 0d649cc13b2..c30b9d5d6fc 100644
+--- a/tcg/tcg-op-gvec.c
++++ b/tcg/tcg-op-gvec.c
+@@ -417,23 +417,6 @@ static inline bool check_size_impl(uint32_t oprsz, uint32_t lnsz)
  
--    os_setup_limits();
--
--    module_call_init(MODULE_INIT_TARGET_INFO);
--    target_info_qom_set_target();
--
--    module_init_info(qemu_modinfo);
--    module_allow_arch(target_name());
--
--    qemu_init_subsystems();
--
-     /* first pass of option parsing */
-     optind = 1;
-     while (optind < argc) {
-@@ -2940,6 +2930,16 @@ void qemu_init(int argc, char **argv)
-         }
-     }
+ static void expand_clr(TCGv_ptr dbase, uint32_t dofs, uint32_t maxsz);
  
-+    os_setup_limits();
+-/* Duplicate C as per VECE.  */
+-uint64_t (dup_const)(unsigned vece, uint64_t c)
+-{
+-    switch (vece) {
+-    case MO_8:
+-        return 0x0101010101010101ull * (uint8_t)c;
+-    case MO_16:
+-        return 0x0001000100010001ull * (uint16_t)c;
+-    case MO_32:
+-        return 0x0000000100000001ull * (uint32_t)c;
+-    case MO_64:
+-        return c;
+-    default:
+-        g_assert_not_reached();
+-    }
+-}
+-
+ /* Duplicate IN into OUT as per VECE.  */
+ void tcg_gen_dup_i32(unsigned vece, TCGv_i32 out, TCGv_i32 in)
+ {
+diff --git a/tcg/tcg.c b/tcg/tcg.c
+index ba2a1127f92..6362eef36bd 100644
+--- a/tcg/tcg.c
++++ b/tcg/tcg.c
+@@ -2287,6 +2287,23 @@ TCGv_ptr tcg_constant_ptr_int(intptr_t val)
+     return temp_tcgv_ptr(tcg_constant_internal(TCG_TYPE_PTR, val));
+ }
+ 
++/* Duplicate C as per VECE.  */
++uint64_t (dup_const)(unsigned vece, uint64_t c)
++{
++    switch (vece) {
++    case MO_8:
++        return 0x0101010101010101ull * (uint8_t)c;
++    case MO_16:
++        return 0x0001000100010001ull * (uint16_t)c;
++    case MO_32:
++        return 0x0000000100000001ull * (uint32_t)c;
++    case MO_64:
++        return c;
++    default:
++        g_assert_not_reached();
++    }
++}
 +
-+    module_call_init(MODULE_INIT_TARGET_INFO);
-+    target_info_qom_set_target();
-+
-+    module_init_info(qemu_modinfo);
-+    module_allow_arch(target_name());
-+
-+    qemu_init_subsystems();
-+
-     machine_opts_dict = qdict_new();
-     if (userconfig) {
-         qemu_read_default_config_file(&error_fatal);
+ TCGv_vec tcg_constant_vec(TCGType type, unsigned vece, int64_t val)
+ {
+     val = dup_const(vece, val);
 -- 
 2.52.0.windows.1
 

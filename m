@@ -4,70 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2DEEDC98332
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 87CF7C98338
 	for <qemu-arm@archiver.kernel.org>; Sat, 26 Sep 2026 11:11:17 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xAQHK-0008Ci-33; Sat, 26 Sep 2026 07:09:14 -0400
+	id 1xAQGn-00080m-Dq; Sat, 26 Sep 2026 07:08:41 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <luoyonggang@gmail.com>)
- id 1xAQHE-000881-L5
- for qemu-arm@nongnu.org; Sat, 26 Sep 2026 07:09:11 -0400
-Received: from mail-dl2-x10.google.com ([2607:f8b0:4864:38::10])
+ id 1xAQGk-00080H-By
+ for qemu-arm@nongnu.org; Sat, 26 Sep 2026 07:08:38 -0400
+Received: from mail-dl2-x0f.google.com ([2607:f8b0:4864:38::f])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <luoyonggang@gmail.com>)
- id 1xAQHB-0002me-N3
- for qemu-arm@nongnu.org; Sat, 26 Sep 2026 07:09:08 -0400
-Received: by mail-dl2-x10.google.com with SMTP id
- a92af1059eb24-142dd04be84so2042733c88.3
- for <qemu-arm@nongnu.org>; Sat, 26 Sep 2026 04:09:05 -0700 (PDT)
+ id 1xAQGh-0002jf-Fd
+ for qemu-arm@nongnu.org; Sat, 26 Sep 2026 07:08:38 -0400
+Received: by mail-dl2-x0f.google.com with SMTP id
+ a92af1059eb24-142dd025d07so1382233c88.2
+ for <qemu-arm@nongnu.org>; Sat, 26 Sep 2026 04:08:35 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20251104; t=1790420944; x=1791025744; darn=nongnu.org;
- h=content-transfer-encoding:content-type:mime-version:references
- :in-reply-to:message-id:date:subject:cc:to:from:from:to:cc:subject
- :date:message-id:reply-to:content-type;
- bh=d8GfpFm6vmw+Ti4b+sLfRBJnqeCjT91Kjc97U0dGguc=;
- b=q+GF/i5mSs2EESqu2A7jeaM4lP4JN6OGnpIHFwK9am4Zn7AM5gvB/ylPr6E264D0tu
- nzw/p1bCeO8BV2BOPaGtbED9rN90f+dhHdK8lt4npk+QAsfhMy1d4gg++FjbKbDu91qE
- 7uHHKgQ87GUaIL39TxHTeISDl1g8bHadEjkAY3gmzJ4vYrsk3MpLyJfHh9Tvy3Azrjpb
- HHHZ1CKS3mWAzwcWEoToYlXrLqOD1vqPzEI63EWzS8NfP9yneOTcDGAxfbrsW1KPvpRS
- p+aUlOdJFWNjMHWk3KjSCWFYq6ELJVNrPSGwtCBTNLMRCgV/fJNDF9iRQ0Bmks4rbqzj
- kRwQ==
+ d=gmail.com; s=20251104; t=1790420914; x=1791025714; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+ :message-id:reply-to:content-type;
+ bh=Ei+93PBPbdzLguBqNeI9eNNYO5EhUGD8hANYTlo5Qxw=;
+ b=LvgYMXp2r4QD8Mdz9+HWUpZFlwV0cDrJC64ydCs8kqfYP2FmzKvr7cQh8djJJ31UcK
+ 4V/uPXc/cCHgwOK9Ll5H+cjkK02UXsPZ9fMXJUo1AGDedmND/lJ/otuUFyOVK/1LGl+O
+ fvQfsHaTSVb/EfHh3WvVJZJMgGWX8+iL04n5ip4y5lKqnDjqJj8zr44oPP6D+83qWNeH
+ BvNllh1MpWqtNNLhO/Ly2mHXTs1+ToSGr0zCiM4woUFdtLPimKtO7Y2rt56ZYJyPhU4M
+ TDiyVB6Wi0Qi8BytBlhwFpNKm4oQjLV0OIKAfjIzv5PLp+9Tb6Re/phSN6qcvczwULih
+ pAZg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20260707; t=1790420944; x=1791025744;
- h=content-transfer-encoding:content-type:mime-version:references
- :in-reply-to:message-id:date:subject:cc:to:from:x-gm-gg
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
- :content-type;
- bh=d8GfpFm6vmw+Ti4b+sLfRBJnqeCjT91Kjc97U0dGguc=;
- b=kFOlz7WT9FZmRhv5wUqq/B6HrZlRkQTgLwaKTP6/THPfYuLmWh3q0yMZIvTuHb8K1U
- uDgkbbOilu8A/JLP4zgjO1uytCW9nXiJ7Gi+dSIGr76THqYnja2rrb+xLIWDqA65sRlG
- Biu/YIMiO2QgsbnNAZoTTAH/ERegj0kR59HUYmnrlKn5yrLOUSctVeTDVbF0hkb8XDvQ
- 0R2UKPMGm/vwtGVrG8PqCMh8I11OFd1dEphWc2IisPnWFVzNR4R2f60WUxQNqXczMBE/
- AmRuh5MV8pYdsaccq3fIT125SFuv+nTf29laYcNcNS3yqLHnVFAginlYUe6BgOkSV9vX
- UXwA==
+ d=1e100.net; s=20260707; t=1790420914; x=1791025714;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
+ :to:cc:subject:date:message-id:reply-to:content-type;
+ bh=Ei+93PBPbdzLguBqNeI9eNNYO5EhUGD8hANYTlo5Qxw=;
+ b=KX/X7xUIJVZR5OUei0Ln6AmbCEGkcXLtpBv+LBJPx/Ye3ZT8M0ZxpL3TqvselfdBXF
+ V8cMfi5Cdo96slONd0CgaiU8jepEu+q7BnVOZXg45UbzLRfgfjSPRo3N/WvAgV/lbvjo
+ wYqcMkA5f4mUx40kXcKIBvtaZabMbwOZMkuOa4iOk+K+nbfzTYyBHcOQ2M7GVw/3VIPO
+ 8hJ19ILw/lyrhY8b+ebLs/1ZbZwfqBMyiZoPGbChsdwmoR+SVHZNYJA6t4o01Bq8bxka
+ R/lEB9B34bHZhWvRapRLjGeoGUjTlxOqY8FgYOl+WDAPpmDQu9h/dZivYFHUjf/+lzJD
+ 946g==
 X-Forwarded-Encrypted: i=1;
- AKwUvBwCd0Yj321GMOTTiBw7keYGBxhykWGduj+wCYtaDhsompQfiagY9VcG1rjH0y+0nPQEOPdCwBhDew==@nongnu.org
-X-Gm-Message-State: AFuF++llq9v+lD7OFIA5TUXZz90t8eorQXrduPYcswGC0k4Ns09biS5v
- 8I7EqMwbJc/ZoXDpbiROFreZC4BSB7+onboe97v6wg5dRIBfzX2K+7tf
-X-Gm-Gg: AYBFou2lKLvVx6UX0mUXt0afROHOxnETMCl6/ENJBC01gNaWd4OYCKnEsXU71e5PsTv
- OI6wLzP4HdF5lylfbnRR17uKyv9gCeQifw7Jg8qbue0ig5epdRoNSutqx/q/u1n4KId/pYu3Cy8
- AmHPCilygHJfaPk7kx/0YtbI516o+hf4Yj3qSUV4nGjM1qe/NGs/rBWD8/78cw1O08ASb44/MOQ
- ijHtMzL4LRYLTgkhJukpReOQmIYTOuexmDeWqJK+9WpyfSDut2DA0YHEqph0G2Vk6nATyXDp4a5
- RzaK1arP5AP6zxoJ2SQVVOG7Y4NK4xdqlozOUOOxWPbFuehDxBYzRFZP0cJ/N6Y7grOH72S8VzO
- uU1lHZfrpRmL0F8ghik7LwzoCXoDkKZPSn1OT5H6y+huBA8tJoqBFv78OodgNCNDbrU+B8Rk6N5
- tTEKPS8AgF4iL3yFqIC0Ds2HwHaPs7L5aB/6elwKX8vdHI0J5FG0lfyPbTzENblfzsN3mcs3yk6
- IpEooHxt9UwGRxbQKJL0Toj5kKBf/M=
-X-Received: by 2002:a05:701b:2908:b0:141:52e3:8606 with SMTP id
- a92af1059eb24-146cddbd03emr2461766c88.6.1790420943973; 
- Sat, 26 Sep 2026 04:09:03 -0700 (PDT)
+ AKwUvBwEhKK4JyoUe9osAaudfevQFq8JzEaWvTeDhtDsR1iac2cT9J0FT/av8h4fgwQCtfZ9UxD8rj4P4Q==@nongnu.org
+X-Gm-Message-State: AFuF++kHdVDIoOxL9Db+K5NkX8vor9EDmCS0U/aa8FaOZz5N+19LGzmu
+ hKb1BxcPUHW65DVlYAOY1HtRjlCzh1NLJzKKGZWl3FGq9++1+Nu8jY7N
+X-Gm-Gg: AYBFou2Ba5al19We0FhenVvmoLEaPFpB2/q0ec4beJnXffO+XNCJTEUoOvKOe1JgazN
+ /F94bNtB8pRrXg2rHNpNbxX0Zr4ahA+pO3X4PugjoFdKibaDiUqqs0XVHiV6T866CI1uwbXcMY8
+ zCmVEA9FYJlDFuqsvi/ePyfa/xdYq7Xfhr4KOKWN15w2FFydryjNj7ABn6dRpf8LJA3NPzjQLTR
+ CWISU15PMK3PZiOSSPctPoH1m7E1B/SiYS9FuFFbSTMdU0YJxRzg4kB3l4gCmFCEoeUnEQXChFU
+ +aYd0Q05ykx4sjd38aHmZVq4VlOKT/YU7emyezGIOmtYhEUCmKLfH1G2v0GBrmOlUiHATQ38THx
+ Wy42ouVOWpUOO6N2o3c40gCnOo2ZSnIWN1N4q5Cx3mKzLZTm39L9Kg354ReJZAsyFx8qCfCdkUD
+ QkDxyxc25tKWMH2a0HRRF0zdTG9zKUO4eo2xnXyTI+ittHvaMLob6VVA0EJWwu2WHcQ1C1VkrVu
+ ny/LprMSt8fzbeBTJyw5jGjf0IiWoE=
+X-Received: by 2002:a05:701b:4344:b0:143:5d6f:555c with SMTP id
+ a92af1059eb24-146ce6810c4mr2771756c88.20.1790420913876; 
+ Sat, 26 Sep 2026 04:08:33 -0700 (PDT)
 Received: from WIN-BH9M8FJACR9 ([103.94.185.75])
  by smtp.googlemail.com with ESMTPSA id
- a92af1059eb24-145a7318afcsm11414045c88.0.2026.09.26.04.08.59
+ a92af1059eb24-145a7318afcsm11414045c88.0.2026.09.26.04.08.28
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sat, 26 Sep 2026 04:09:03 -0700 (PDT)
+ Sat, 26 Sep 2026 04:08:32 -0700 (PDT)
 From: Yonggang Luo <luoyonggang@gmail.com>
 To: qemu-devel@nongnu.org
 Cc: Brian Cain <brian.cain@oss.qualcomm.com>,
@@ -88,17 +87,17 @@ Cc: Brian Cain <brian.cain@oss.qualcomm.com>,
  Chao Liu <chao.liu@processmission.com>, Weiwei Li <liwei1518@gmail.com>,
  Zhao Liu <zhao1.liu@intel.com>,
  Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>
-Subject: [PATCH 6/9] hw/arm/virt: prefix ACPI helpers with arm_virt_
-Date: Sat, 26 Sep 2026 19:08:14 +0800
-Message-ID: <20260926110818.1912-7-luoyonggang@gmail.com>
+Subject: [PATCH 1/9] target/i386: convert raise_exception to
+ i386_raise_exception
+Date: Sat, 26 Sep 2026 19:08:09 +0800
+Message-ID: <20260926110818.1912-2-luoyonggang@gmail.com>
 X-Mailer: git-send-email 2.52.0.windows.1
 In-Reply-To: <20260926110818.1912-1-luoyonggang@gmail.com>
 References: <20260926110818.1912-1-luoyonggang@gmail.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:38::10;
- envelope-from=luoyonggang@gmail.com; helo=mail-dl2-x10.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:38::f;
+ envelope-from=luoyonggang@gmail.com; helo=mail-dl2-x0f.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -120,116 +119,147 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-- virt_acpi_setup and virt_is_acpi_enabled are generic names also used
-  by RISC-V and LoongArch virt. A combined binary cannot export two
-  functions with the same C symbol.
-- Rename the ARM helpers to arm_virt_acpi_setup and
-  arm_virt_is_acpi_enabled. Leave the trace event virt_acpi_setup
-  unchanged; it is a separate identifier.
+Prefix leftover TCG raise_exception to i386_raise_exception. Rename
+C raise_exception family globals to i386_raise_exception*, and keep
+the short names as static inline wrappers in helper-tcg.h. Wrappers
+still call raise_interrupt2.
 
 Signed-off-by: Yonggang Luo <luoyonggang@gmail.com>
-Reviewed-by: Philippe Mathieu-Daudé <philmd@oss.qualcomm.com>
 ---
- hw/arm/virt-acpi-build.c |  4 ++--
- hw/arm/virt.c            | 12 ++++++------
- include/hw/arm/virt.h    |  4 ++--
- 3 files changed, 10 insertions(+), 10 deletions(-)
+ target/i386/helper.h          |  2 +-
+ target/i386/tcg/excp_helper.c | 18 +++++++--------
+ target/i386/tcg/helper-tcg.h  | 42 +++++++++++++++++++++++++++++------
+ target/i386/tcg/translate.c   |  2 +-
+ 4 files changed, 46 insertions(+), 18 deletions(-)
 
-diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
-index d368913e766..5737c3a8fa4 100644
---- a/hw/arm/virt-acpi-build.c
-+++ b/hw/arm/virt-acpi-build.c
-@@ -1559,7 +1559,7 @@ static const VMStateDescription vmstate_virt_acpi_build = {
-     },
- };
- 
--void virt_acpi_setup(VirtMachineState *vms)
-+void arm_virt_acpi_setup(VirtMachineState *vms)
- {
-     AcpiBuildTables tables;
-     AcpiBuildState *build_state;
-@@ -1570,7 +1570,7 @@ void virt_acpi_setup(VirtMachineState *vms)
-         return;
-     }
- 
--    if (!virt_is_acpi_enabled(vms)) {
-+    if (!arm_virt_is_acpi_enabled(vms)) {
-         trace_virt_acpi_setup();
-         return;
-     }
-diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-index 3eecf094bcc..c3e256347f3 100644
---- a/hw/arm/virt.c
-+++ b/hw/arm/virt.c
-@@ -768,7 +768,7 @@ static void fdt_add_cpu_nodes(VirtMachineState *vms)
-                     &bottom_node,
-                     CPU_TOPOLOGY_LEVEL_SOCKET);
-             if (cache_at_topo_level) {
--                if (bottom_node == 1 && !virt_is_acpi_enabled(vms))
-+                if (bottom_node == 1 && !arm_virt_is_acpi_enabled(vms))
-                     error_setg(
-                         &error_fatal,
-                         "Cannot share L1 at socket_id %d."
-@@ -808,7 +808,7 @@ static void fdt_add_cpu_nodes(VirtMachineState *vms)
-                                                         top_cluster,
-                                                         bottom_cluster, cpu,
-                                                         &cluster_offset);
--                if (bottom_cluster == 1 && !virt_is_acpi_enabled(vms)) {
-+                if (bottom_cluster == 1 && !arm_virt_is_acpi_enabled(vms)) {
-                     error_setg(&error_fatal,
-                         "Cannot share L1 at socket_id %d, cluster_id %d. "
-                         "DT limitation on sharing at cache level = 1.",
-@@ -2035,7 +2035,7 @@ static void create_smmuv3_dev_dtb(VirtMachineState *vms, DeviceState *dev,
-     hwaddr base = platform_bus_get_mmio_addr(pbus, sbdev, 0);
-     MachineState *ms = MACHINE(vms);
- 
--    if (!(vms->bootinfo.firmware_loaded && virt_is_acpi_enabled(vms))) {
-+    if (!(vms->bootinfo.firmware_loaded && arm_virt_is_acpi_enabled(vms))) {
-         if (object_property_get_bool(OBJECT(dev), "accel", &error_abort)) {
-             error_setg(errp, "SMMUv3 with accel=on not supported for DT");
-             return;
-@@ -2445,7 +2445,7 @@ void virt_machine_done(Notifier *notifier, void *data)
-     pci_bus_add_fw_cfg_extra_pci_roots(vms->fw_cfg, vms->bus,
-                                        &error_abort);
- 
--    virt_acpi_setup(vms);
-+    arm_virt_acpi_setup(vms);
-     virt_build_smbios(vms);
+diff --git a/target/i386/helper.h b/target/i386/helper.h
+index 3f67098f11f..cf643e820a6 100644
+--- a/target/i386/helper.h
++++ b/target/i386/helper.h
+@@ -56,7 +56,7 @@ DEF_HELPER_2(syscall, void, env, int)
+ DEF_HELPER_2(sysret, void, env, int)
+ DEF_HELPER_FLAGS_1(pause, TCG_CALL_NO_WG, noreturn, env)
+ DEF_HELPER_FLAGS_3(raise_interrupt, TCG_CALL_NO_WG, noreturn, env, int, int)
+-DEF_HELPER_FLAGS_2(raise_exception, TCG_CALL_NO_WG, noreturn, env, int)
++DEF_HELPER_FLAGS_2(i386_raise_exception, TCG_CALL_NO_WG, noreturn, env, int)
+ DEF_HELPER_FLAGS_1(icebp, TCG_CALL_NO_WG, noreturn, env)
+ DEF_HELPER_3(boundw, void, env, tl, int)
+ DEF_HELPER_3(boundl, void, env, tl, int)
+diff --git a/target/i386/tcg/excp_helper.c b/target/i386/tcg/excp_helper.c
+index 1eaa602c91d..ab3aa17a870 100644
+--- a/target/i386/tcg/excp_helper.c
++++ b/target/i386/tcg/excp_helper.c
+@@ -32,9 +32,9 @@ G_NORETURN void helper_raise_interrupt(CPUX86State *env, int intno,
+     raise_interrupt(env, intno, next_eip_addend);
  }
  
-@@ -3209,7 +3209,7 @@ static void machvirt_init(MachineState *machine)
-     create_pcie(vms);
-     create_cxl_host_reg_region(vms);
- 
--    if (aarch64 && firmware_loaded && virt_is_acpi_enabled(vms)) {
-+    if (aarch64 && firmware_loaded && arm_virt_is_acpi_enabled(vms)) {
-         vms->acpi_dev = create_acpi_ged(vms);
-         vms->generic_error_notifier.notify = virt_generic_error_req;
-         notifier_list_add(&acpi_generic_error_notifiers,
-@@ -3559,7 +3559,7 @@ static void virt_set_oem_table_id(Object *obj, const char *value,
+-G_NORETURN void helper_raise_exception(CPUX86State *env, int exception_index)
++G_NORETURN void helper_i386_raise_exception(CPUX86State *env, int exception_index)
+ {
+-    raise_exception(env, exception_index);
++    i386_raise_exception(env, exception_index);
  }
  
+ /*
+@@ -120,25 +120,25 @@ G_NORETURN void raise_interrupt(CPUX86State *env, int intno, int next_eip_addend
+     raise_interrupt2(env, intno, 1, 0, next_eip_addend, 0);
+ }
  
--bool virt_is_acpi_enabled(const VirtMachineState *vms)
-+bool arm_virt_is_acpi_enabled(const VirtMachineState *vms)
+-G_NORETURN void raise_exception_err(CPUX86State *env, int exception_index,
+-                                    int error_code)
++G_NORETURN void i386_raise_exception_err(CPUX86State *env, int exception_index,
++                                         int error_code)
  {
-     if (vms->acpi == ON_OFF_AUTO_OFF) {
-         return false;
-diff --git a/include/hw/arm/virt.h b/include/hw/arm/virt.h
-index 22e66d1a113..695e5d5728a 100644
---- a/include/hw/arm/virt.h
-+++ b/include/hw/arm/virt.h
-@@ -218,8 +218,8 @@ struct VirtMachineState {
- #define TYPE_VIRT_MACHINE   MACHINE_TYPE_NAME("virt")
- OBJECT_DECLARE_TYPE(VirtMachineState, VirtMachineClass, VIRT_MACHINE)
+     raise_interrupt2(env, exception_index, 0, error_code, 0, 0);
+ }
  
--void virt_acpi_setup(VirtMachineState *vms);
--bool virt_is_acpi_enabled(const VirtMachineState *vms);
-+void arm_virt_acpi_setup(VirtMachineState *vms);
-+bool arm_virt_is_acpi_enabled(const VirtMachineState *vms);
+-G_NORETURN void raise_exception_err_ra(CPUX86State *env, int exception_index,
+-                                       int error_code, uintptr_t retaddr)
++G_NORETURN void i386_raise_exception_err_ra(CPUX86State *env, int exception_index,
++                                            int error_code, uintptr_t retaddr)
+ {
+     raise_interrupt2(env, exception_index, 0, error_code, 0, retaddr);
+ }
  
- #define CLIDR_CTYPE_NO_CACHE 0x00
- #define CLIDR_CTYPE_I_CACHE 0x01
+-G_NORETURN void raise_exception(CPUX86State *env, int exception_index)
++G_NORETURN void i386_raise_exception(CPUX86State *env, int exception_index)
+ {
+     raise_interrupt2(env, exception_index, 0, 0, 0, 0);
+ }
+ 
+-G_NORETURN void raise_exception_ra(CPUX86State *env, int exception_index,
+-                                   uintptr_t retaddr)
++G_NORETURN void i386_raise_exception_ra(CPUX86State *env, int exception_index,
++                                        uintptr_t retaddr)
+ {
+     raise_interrupt2(env, exception_index, 0, 0, 0, retaddr);
+ }
+diff --git a/target/i386/tcg/helper-tcg.h b/target/i386/tcg/helper-tcg.h
+index f4b2ff740d5..430e49efe0e 100644
+--- a/target/i386/tcg/helper-tcg.h
++++ b/target/i386/tcg/helper-tcg.h
+@@ -60,13 +60,41 @@ void x86_translate_code(CPUState *cs, TranslationBlock *tb,
+                         int *max_insns, vaddr pc, void *host_pc);
+ 
+ /* excp_helper.c */
+-G_NORETURN void raise_exception(CPUX86State *env, int exception_index);
+-G_NORETURN void raise_exception_ra(CPUX86State *env, int exception_index,
+-                                   uintptr_t retaddr);
+-G_NORETURN void raise_exception_err(CPUX86State *env, int exception_index,
+-                                    int error_code);
+-G_NORETURN void raise_exception_err_ra(CPUX86State *env, int exception_index,
+-                                       int error_code, uintptr_t retaddr);
++G_NORETURN void i386_raise_exception(CPUX86State *env, int exception_index);
++G_NORETURN void i386_raise_exception_ra(CPUX86State *env, int exception_index,
++                                        uintptr_t retaddr);
++G_NORETURN void i386_raise_exception_err(CPUX86State *env, int exception_index,
++                                         int error_code);
++G_NORETURN void i386_raise_exception_err_ra(CPUX86State *env,
++                                            int exception_index,
++                                            int error_code, uintptr_t retaddr);
++
++static inline G_NORETURN
++void raise_exception(CPUX86State *env, int exception_index)
++{
++    i386_raise_exception(env, exception_index);
++}
++
++static inline G_NORETURN
++void raise_exception_ra(CPUX86State *env, int exception_index,
++                        uintptr_t retaddr)
++{
++    i386_raise_exception_ra(env, exception_index, retaddr);
++}
++
++static inline G_NORETURN
++void raise_exception_err(CPUX86State *env, int exception_index,
++                         int error_code)
++{
++    i386_raise_exception_err(env, exception_index, error_code);
++}
++
++static inline G_NORETURN
++void raise_exception_err_ra(CPUX86State *env, int exception_index,
++                            int error_code, uintptr_t retaddr)
++{
++    i386_raise_exception_err_ra(env, exception_index, error_code, retaddr);
++}
+ G_NORETURN void raise_interrupt(CPUX86State *nenv, int intno, int next_eip_addend);
+ G_NORETURN void handle_unaligned_access(CPUX86State *env, vaddr vaddr,
+                                         MMUAccessType access_type,
+diff --git a/target/i386/tcg/translate.c b/target/i386/tcg/translate.c
+index 192cf43215e..1425a45ad39 100644
+--- a/target/i386/tcg/translate.c
++++ b/target/i386/tcg/translate.c
+@@ -1506,7 +1506,7 @@ static void gen_exception(DisasContext *s, int trapno)
+ {
+     gen_update_cc_op(s);
+     gen_update_eip_cur(s);
+-    gen_helper_raise_exception(tcg_env, tcg_constant_i32(trapno));
++    gen_helper_i386_raise_exception(tcg_env, tcg_constant_i32(trapno));
+     s->base.is_jmp = DISAS_NORETURN;
+ }
+ 
 -- 
 2.52.0.windows.1
 

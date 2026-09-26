@@ -4,69 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 72156C9831E
-	for <qemu-arm@archiver.kernel.org>; Sat, 26 Sep 2026 07:08:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E16AAC9831E
+	for <qemu-arm@archiver.kernel.org>; Sat, 26 Sep 2026 07:08:55 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xAMRU-0004rO-8U; Sat, 26 Sep 2026 03:03:28 -0400
+	id 1xAMVH-0000Rx-MR; Sat, 26 Sep 2026 03:07:25 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <luoyonggang@gmail.com>)
- id 1xAMR2-0003mL-76
- for qemu-arm@nongnu.org; Sat, 26 Sep 2026 03:03:03 -0400
-Received: from mail-dy2-x0f.google.com ([2607:f8b0:4864:36::f])
+ id 1xAMS3-0005Ww-RJ
+ for qemu-arm@nongnu.org; Sat, 26 Sep 2026 03:04:09 -0400
+Received: from mail-dy2-x10.google.com ([2607:f8b0:4864:36::10])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <luoyonggang@gmail.com>)
- id 1xAMR0-0000Zx-Ew
- for qemu-arm@nongnu.org; Sat, 26 Sep 2026 03:02:59 -0400
-Received: by mail-dy2-x0f.google.com with SMTP id
- 5a478bee46e88-340fbf9c1c6so928474eec.3
- for <qemu-arm@nongnu.org>; Sat, 26 Sep 2026 00:02:58 -0700 (PDT)
+ id 1xAMRz-0000h2-Bn
+ for qemu-arm@nongnu.org; Sat, 26 Sep 2026 03:04:02 -0400
+Received: by mail-dy2-x10.google.com with SMTP id
+ 5a478bee46e88-33be7dfcfc1so2110292eec.1
+ for <qemu-arm@nongnu.org>; Sat, 26 Sep 2026 00:03:58 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20251104; t=1790406177; x=1791010977; darn=nongnu.org;
+ d=gmail.com; s=20251104; t=1790406238; x=1791011038; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to:content-type;
- bh=awp3H7a2O80uyPRL2fhVcR6Bx9g9YW6vpgBv8R062bc=;
- b=FxwZOAbWXipUxV2X1xt6jXkNHuimGnt6IeuKRuqSoSRDsJf3IwbcQLgKgW6nwTqI+e
- YvuvYbbxmlPGjpK6qqq9hGhwL1Q1KA3apYv0zimwZE0gYz96DDsvRali+W5/8cwf5k1d
- fH60WPBmpa41Yaxz+eLBtRMiA1wdK/RBOpXJPFPuISxHsSfT6GA89YGpPNNMinm0ktl2
- s8YTVVroRaBO5W45oZdStLVEmjrytnw8CpOpiFeGXRH22Y0mWkY07D2soZuM6nibLyRm
- sAIw0q6w6dj3l4iJYdTthrrH39FII/qOOGyXRohhxfd1AP5zo+YH0HSAYlR7gQo1Y7Ij
- drlg==
+ bh=qCXIFUQwlVnS7FqE0wXM3scWpVNsZr5+GJNgga1dkVI=;
+ b=LzaZGrGuq955ASToIs59s71h7MI6S2QKxTySRo5dmv8RUmY08GEfLJG6UoGokdVoSJ
+ 1rp67tSRlOvAU1LUSLWDgricPWCcdJCuASMopFgrY1WdOLnNh4l9eHpIlPpLOc0K9TTk
+ JjfGTmfv6RcPFPyjZWZhQmLeZeTxh9YcUaOpkL48N5NUVbNZ4CVYjKUG65U5/i7BpFf9
+ S9APD2aoe2QOUDi9PeXBfVLx3eBYv6dSyaYRCYxKeA1MjoLbZK1etTpXNrysQxnO404k
+ l3VQmpKKVy4C6qAA+ujTMx0P16BxJZLqgMLpCZlwC5/H3ZV0qeimi6p9NdUQWX+bFZ9O
+ +2hQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20260707; t=1790406177; x=1791010977;
+ d=1e100.net; s=20260707; t=1790406238; x=1791011038;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
  :to:cc:subject:date:message-id:reply-to:content-type;
- bh=awp3H7a2O80uyPRL2fhVcR6Bx9g9YW6vpgBv8R062bc=;
- b=cH5IK21APcLCsaW9GbQlDaJBRVClYsl1+05NU23an0bLZgQBqAxaZkjfZEnHHAvQG7
- QkMcBwmbZG0G1oPjfyGZfdt1hXiwfS1gEAWvh5JjXrEydUX+LceM2YuB2PuHsMV1GEZp
- wAUMfUmWjLvXIensemtQJ4H8TnqsfSibyos99fTZh2F+PWJlgAzlkXARCI1iftDajPQv
- IGeg01Raoksy0DETx9SgM1gM/9FOTs5TASVDqi/rQN9tyt0sBqKcLb5LCgXmdAyz8DAg
- rtq0tjjZ6M7xtGGAO0sNsEAXq02OS8SLkvAeqeDtHtomOUIoDl18NazosJkNgsaPrTgD
- 8a9A==
+ bh=qCXIFUQwlVnS7FqE0wXM3scWpVNsZr5+GJNgga1dkVI=;
+ b=nWCYt/hkYJoI0+CDjXe2pJWKbw3Ok2n/nMabLSCEsHAMVSMdu6Wrlq5PYY2f3uqlfD
+ 40HsBfRffihLGgXMWsqh8Vy3LW65GMgLvhDioV/B3wNFWqIl5CQTNlFrADueudp4V6tg
+ OlYlBEgP4+4VyAZdkocu9fWV3Wh6tcZjZSrwLBh0Dl/U63sIuPAEBdfeVbQrCelh6Cf3
+ t7689+hjg7fYuzrs6XFwxoERKup4ir3yd3JBn1sUwGI+MN49V7jXaQktIAfvWUEjGkjn
+ XDvYQ4gBAkOb5aWQ92QrXyTp7O4T5bJij1C+ufw6tndwUHHf8g4lC+ByiZVR42Ly9kQ8
+ QC5A==
 X-Forwarded-Encrypted: i=1;
- AKwUvBxibFZOJ0J3U9knVkrxCgY4eyD7V+rrvIhBqIqatQzx9wLV1oJLREQV0mq3yM4H6PDBjZFxt8vnaw==@nongnu.org
-X-Gm-Message-State: AFuF++kGuxn8buPYlnOlHaYlQIeBcqOpssWdkSIVn9CCXrMpc9N/bZnt
- /lQsQqpuQy8lxk5AgtOVhTs5o7rP8CVQg5bDZduS9WRz+JHbVn6YuhAe
-X-Gm-Gg: AYBFou2Nmo6LjX6s/9UFHYhD/NtAnheMGvrnYpEvZSbHNlnsoJG8xMs9iL5KyVuFDhI
- uC7U7wQSnkgeeaCOcYs9OzG8AMP4lTv5QnABsotpiB9F/0jaIGsTI0kEy4BumzUvnNrBtxJTf4L
- RtUyw+PoObljhExJgOAeZNxhz0/46/1XtLOx881cvbVE6p/LUzgziW0Dd5geZz+V/7yBumN94Cu
- 0yYOU4RHCMyUWAMH6RP0Bwdtj1YRV3lzMQ9JoBNgIKwC4kR5GRbdHopfEShdIKWuERMaTWXAXrE
- v5tuTUQku+0i+pu0DUHjkh0fu/hQkrb8EAhYpU7fK+rExfaWVBoRe6P+/tgrOerBW+2lwpnbYCO
- fz9rkarE0pTZhN60nXLGkKunPLaxQfIiSzZCZd+jGaknpD5iojXQ6ejF108S5FjoIjVvK+6yv3p
- hw/5ZLmtRnTSRffRCpuN3mtic3ZVwanaW55ZUhL/SHyReKuNEDQtuMbXLVtbUumXcVUVkUQkuqF
- Cq2qwOaLOjUuENue8QqZCDyfW+Eytg=
-X-Received: by 2002:a05:7300:d10a:b0:33b:e1f2:fa10 with SMTP id
- 5a478bee46e88-34271d8d2fbmr1860726eec.24.1790406176444; 
- Sat, 26 Sep 2026 00:02:56 -0700 (PDT)
+ AKwUvByYXLgbfYo8XNsGqldu2k34En7yzfjr22uKDh++iXA8XuCZTLZMhixJMc6g4Ykhl8OlojnlcrxJCQ==@nongnu.org
+X-Gm-Message-State: AFuF++ma6af6Kdpocr8bQYFhcl7gBGO1IqHX6nfa8fLzA4X9vaqIrl/U
+ L6ALvWgEkMg9FMmSYTRVYDQV/PW7ufGTJNxUVH7gfN+TC0VAwSyYwXSq
+X-Gm-Gg: AYBFou09td/0Cda6x+GRs4/u1f8XM6r1Mr/dU0DmJkpn4Sr9W5VGAfYzvbxKu+zez0d
+ SPl3nPSKxmeeN7e5ruGOCfhkUVuufwbWG2K19yEJUPeNog/EmUXBeisK1Pw7/xW5A0aMNl0SqRL
+ vizGJnugVcFE9hEeK9Ztz1JHoTA4Lbj4qBjs8jtbSOxEFrkWuyLt4K4lV3r3eMnXC+942vkek9F
+ J3OaA9s6pDypYSvO+YBXHjWxPaojrYYTe32+aznLlNtv13NQ412/DX3dTZYci1diJLFSTvl5uXy
+ DbXy+1wgrTv10JF2MxIiAabMAnk0WLWP5NCqoH8awMUFuS8eAyN+59VkF5qHohzfWOTvvBraHMm
+ huaPlxkMk6bbcu9InTMNfH4y55OboqlaB6ZELoE2lrJS69UVAhJgrHyVUGdDmVNAPdtlzs1l+Vr
+ Sx1A4UhZ0Y+0APrAl5hZeEzocVGIH7+9YCLzJFmdkFmQWX/ZyZ4boAQfNlvP1EqUHsmrtsU+H1K
+ 7KHrfFyrNZ8TWPojDzVanOguagKCXU=
+X-Received: by 2002:a05:7300:d0a7:b0:33b:dab1:d6b5 with SMTP id
+ 5a478bee46e88-342705aee26mr2037757eec.11.1790406237841; 
+ Sat, 26 Sep 2026 00:03:57 -0700 (PDT)
 Received: from WIN-BH9M8FJACR9 ([103.94.185.75])
  by smtp.googlemail.com with ESMTPSA id
- 5a478bee46e88-34145c166cfsm10615141eec.28.2026.09.26.00.02.52
+ 5a478bee46e88-34145c166cfsm10615141eec.28.2026.09.26.00.03.54
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sat, 26 Sep 2026 00:02:54 -0700 (PDT)
+ Sat, 26 Sep 2026 00:03:57 -0700 (PDT)
 From: Yonggang Luo <luoyonggang@gmail.com>
 To: qemu-devel@nongnu.org
 Cc: Richard Henderson <richard.henderson@linaro.org>,
@@ -80,16 +80,17 @@ Cc: Richard Henderson <richard.henderson@linaro.org>,
  Peter Maydell <peter.maydell@linaro.org>,
  =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
  qemu-arm@nongnu.org, kvm@vger.kernel.org
-Subject: [PATCH v4 28/55] tcg: move goto_tb helpers into tcg-op-ldst.c
-Date: Sat, 26 Sep 2026 15:00:27 +0800
-Message-ID: <20260926070057.1234-29-luoyonggang@gmail.com>
+Subject: [PATCH v4 44/55] target-info: select combined qemu-system target by
+ name
+Date: Sat, 26 Sep 2026 15:00:43 +0800
+Message-ID: <20260926070057.1234-45-luoyonggang@gmail.com>
 X-Mailer: git-send-email 2.52.0.windows.1
 In-Reply-To: <20260926070057.1234-1-luoyonggang@gmail.com>
 References: <20260926070057.1234-1-luoyonggang@gmail.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:36::f;
- envelope-from=luoyonggang@gmail.com; helo=mail-dy2-x0f.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:36::10;
+ envelope-from=luoyonggang@gmail.com; helo=mail-dy2-x10.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -111,102 +112,254 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-tcg_gen_goto_tb and tcg_gen_lookup_and_goto_ptr call plugin and
-lookup_tb_ptr helpers. Define them in tcg-op-ldst.c. tcg_gen_op1i is
-static in tcg-op.c, so the moved calls use tcg_gen_op1.
+The combined qemu-system binary can select a registered target by
+name, or stay on SYS_EMU_TARGET_NONE. A single-target binary does
+not switch target.
+
+The none entry is the same target-info-def.c stub as other targets,
+compiled with TARGET_BASE_ARCH NONE. target/none/cpu.h supplies
+ArchCPU for that stub, and cpu-param.h sets
+TARGET_VIRT_ADDR_SPACE_BITS. TYPE_NONE_CPU is NULL because there is
+no none CPU QOM type.
+
+type_register_internal() keeps types on the combined binary and
+filters them with TypeInfo.is_available. A single-target binary
+still omits types that cannot run.
 
 Signed-off-by: Yonggang Luo <luoyonggang@gmail.com>
 ---
- tcg/tcg-op-ldst.c | 31 +++++++++++++++++++++++++++++++
- tcg/tcg-op.c      | 32 --------------------------------
- 2 files changed, 31 insertions(+), 32 deletions(-)
+ include/qemu/target-info-select.h | 24 +++++++++++++++++++++
+ meson.build                       | 35 +++++++++++++++++++++++++++++++
+ qom/object.c                      |  8 ++++++-
+ stubs/meson.build                 |  1 +
+ stubs/target-info-select.c        | 14 +++++++++++++
+ system/target-info-select.c       | 26 +++++++++++++++++++++++
+ target/none/cpu-param.h           |  7 +++++++
+ target/none/cpu-qom.h             |  6 ++++++
+ target/none/cpu.h                 | 18 ++++++++++++++++
+ 9 files changed, 138 insertions(+), 1 deletion(-)
+ create mode 100644 include/qemu/target-info-select.h
+ create mode 100644 stubs/target-info-select.c
+ create mode 100644 system/target-info-select.c
+ create mode 100644 target/none/cpu-param.h
+ create mode 100644 target/none/cpu-qom.h
+ create mode 100644 target/none/cpu.h
 
-diff --git a/tcg/tcg-op-ldst.c b/tcg/tcg-op-ldst.c
-index 22211ccb452..fb13c2f1523 100644
---- a/tcg/tcg-op-ldst.c
-+++ b/tcg/tcg-op-ldst.c
-@@ -1346,3 +1346,34 @@ GEN_ATOMIC_HELPER128(xchg, mov2, 0)
- 
- #undef GEN_ATOMIC_HELPER
- #undef GEN_ATOMIC_HELPER128
+diff --git a/include/qemu/target-info-select.h b/include/qemu/target-info-select.h
+new file mode 100644
+index 00000000000..0659bb47567
+--- /dev/null
++++ b/include/qemu/target-info-select.h
+@@ -0,0 +1,24 @@
++#ifndef QEMU_TARGET_INFO_SELECT_H
++#define QEMU_TARGET_INFO_SELECT_H
 +
-+void tcg_gen_goto_tb(unsigned idx)
-+{
-+    /* We tested CF_NO_GOTO_TB in translator_use_goto_tb. */
-+    tcg_debug_assert(!(tcg_ctx->gen_tb->cflags & CF_NO_GOTO_TB));
-+    /* We only support two chained exits.  */
-+    tcg_debug_assert(idx <= TB_EXIT_IDXMAX);
-+#ifdef CONFIG_DEBUG_TCG
-+    /* Verify that we haven't seen this numbered exit before.  */
-+    tcg_debug_assert((tcg_ctx->goto_tb_issue_mask & (1 << idx)) == 0);
-+    tcg_ctx->goto_tb_issue_mask |= 1 << idx;
++/**
++ * target_combined_binary:
++ *
++ * Returns: %true if this is the combined qemu-system binary.
++ */
++bool target_combined_binary(void);
++
++typedef struct Error Error;
++
++/**
++ * target_info_select_by_name:
++ * @name: target_name to select, or NULL
++ * @errp: error location
++ *
++ * Combined qemu-system only. NULL selects "none". Every name, including
++ * "none", is looked up in target_info_list(). The stub is a no-op on
++ * single-target binaries.
++ */
++void target_info_select_by_name(const char *name, Error **errp);
++
 +#endif
-+    plugin_gen_disable_mem_helpers();
-+    tcg_gen_op1(INDEX_op_goto_tb, 0, idx);
+diff --git a/meson.build b/meson.build
+index 7ab5c7971a8..96f493cb746 100644
+--- a/meson.build
++++ b/meson.build
+@@ -4618,6 +4618,41 @@ if single_binary_available
+   endforeach
+   single_binary_objects += single_binary_target_info_objects
+ 
++  none_config_target_data = configuration_data()
++  none_config_target_data.set_quoted('TARGET_NAME', 'none')
++  none_config_target_data.set('TARGET_ARCH', 'NONE')
++  none_config_target_data.set('TARGET_BASE_ARCH', 'NONE')
++  none_config_target_data.set('TARGET_LONG_BITS', 64)
++  none_config_target_data.set('TARGET_BIG_ENDIAN', 0)
++  none_config_target_h = configure_file(output: 'none-config-target.h',
++                                        configuration: none_config_target_data)
++  none_config_devices_data = configuration_data()
++  foreach k, v : single_binary_config
++    if v == 'y'
++      none_config_devices_data.set(k, 1)
++    endif
++  endforeach
++  none_config_devices_h = configure_file(output: 'none-config-devices.h',
++                                         configuration: none_config_devices_data)
++  qemu_none_ss = ss.source_set()
++  qemu_none_ss.add(files('system/target-info-select.c'))
++  qemu_none_ss.add(target_info_def)
++  qemu_none_src = qemu_none_ss.apply(single_binary_config, strict: false)
++  qemu_none = static_library('qemu-none',
++                             sources: qemu_none_src.sources() + genh +
++                                      [none_config_target_h,
++                                       none_config_devices_h],
++                             dependencies: qemu_none_src.dependencies(),
++                             include_directories: include_directories(
++                               'target' / 'none'),
++                             c_args: [
++                               '-DCOMPILING_PER_TARGET',
++                               '-DCONFIG_TARGET="none-config-target.h"',
++                               '-DCONFIG_DEVICES="none-config-devices.h"',
++                             ],
++                             build_by_default: false)
++  single_binary_objects += qemu_none.extract_objects(qemu_none_src.sources())
++
+   single_binary_link_args = emulator_link_args
+   single_binary_link_args += enable_modules ? ['@block.syms', '@qemu.syms'] : []
+   qemu_system_name = 'qemu-system'
+diff --git a/qom/object.c b/qom/object.c
+index 76b0b0806b3..2ce6c369df5 100644
+--- a/qom/object.c
++++ b/qom/object.c
+@@ -16,6 +16,7 @@
+ #include "qom/object.h"
+ #include "qom/object_interfaces.h"
+ #include "qemu/target-info-qapi.h"
++#include "qemu/target-info-select.h"
+ #include "qemu/cutils.h"
+ #include "qemu/memalign.h"
+ #include "qapi/visitor.h"
+@@ -171,7 +172,12 @@ static TypeImpl *type_register_internal(const TypeInfo *info)
+         abort();
+     }
+ 
+-    if (info->is_available && !info->is_available(target_info())) {
++    /*
++     * Single-target binaries omit types that cannot run. The combined
++     * binary keeps them and filters with is_available per target.
++     */
++    if (!target_combined_binary() && info->is_available &&
++        !info->is_available(target_info())) {
+         return NULL;
+     }
+ 
+diff --git a/stubs/meson.build b/stubs/meson.build
+index 29b6644b254..3765537778d 100644
+--- a/stubs/meson.build
++++ b/stubs/meson.build
+@@ -3,6 +3,7 @@
+ # below, so that it is clear who needs the stubbed functionality.
+ 
+ stub_ss.add(files('cpu-get-clock.c'))
++stub_ss.add(files('target-info-select.c'))
+ stub_ss.add(files('fdset.c'))
+ stub_ss.add(files('iothread-lock.c'))
+ stub_ss.add(files('is-daemonized.c'))
+diff --git a/stubs/target-info-select.c b/stubs/target-info-select.c
+new file mode 100644
+index 00000000000..5c9e8dc6e19
+--- /dev/null
++++ b/stubs/target-info-select.c
+@@ -0,0 +1,14 @@
++#include "qemu/osdep.h"
++#include "qemu/target-info-select.h"
++#include "qapi/error.h"
++
++bool target_combined_binary(void)
++{
++    return false;
 +}
 +
-+void tcg_gen_lookup_and_goto_ptr(void)
++void target_info_select_by_name(const char *name, Error **errp)
 +{
-+    TCGv_ptr ptr;
++    (void)name;
++    (void)errp;
++}
+diff --git a/system/target-info-select.c b/system/target-info-select.c
+new file mode 100644
+index 00000000000..4b4a9fdf256
+--- /dev/null
++++ b/system/target-info-select.c
+@@ -0,0 +1,26 @@
++#include "qemu/osdep.h"
++#include "qemu/target-info-def.h"
++#include "qemu/target-info-select.h"
++#include "qapi/error.h"
 +
-+    if (tcg_ctx->gen_tb->cflags & CF_NO_GOTO_PTR) {
-+        tcg_gen_exit_tb(NULL, 0);
-+        return;
++bool target_combined_binary(void)
++{
++    return true;
++}
++
++void target_info_select_by_name(const char *name, Error **errp)
++{
++    TargetInfoNode *node;
++
++    if (!name) {
++        name = "none";
 +    }
 +
-+    plugin_gen_disable_mem_helpers();
-+    ptr = tcg_temp_ebb_new_ptr();
-+    gen_helper_lookup_tb_ptr(ptr, tcg_env);
-+    tcg_gen_op1(INDEX_op_goto_ptr, TCG_TYPE_PTR, tcgv_ptr_arg(ptr));
-+    tcg_temp_free_ptr(ptr);
++    QLIST_FOREACH(node, target_info_list(), next) {
++        if (!strcmp(name, node->info->target_name)) {
++            target_info_select(node->info);
++            return;
++        }
++    }
++    error_setg(errp, "target '%s' is not available", name);
 +}
-diff --git a/tcg/tcg-op.c b/tcg/tcg-op.c
-index 2c88f4f7ca9..bd3bae37500 100644
---- a/tcg/tcg-op.c
-+++ b/tcg/tcg-op.c
-@@ -27,7 +27,6 @@
- #include "tcg/tcg-temp-internal.h"
- #include "tcg/tcg-op-common.h"
- #include "exec/translation-block.h"
--#include "exec/plugin-gen.h"
- #include "tcg-internal.h"
- #include "tcg-has.h"
- 
-@@ -2699,34 +2698,3 @@ void tcg_gen_exit_tb(const TranslationBlock *tb, unsigned idx)
- 
-     tcg_gen_op1i(INDEX_op_exit_tb, 0, val);
- }
--
--void tcg_gen_goto_tb(unsigned idx)
--{
--    /* We tested CF_NO_GOTO_TB in translator_use_goto_tb. */
--    tcg_debug_assert(!(tcg_ctx->gen_tb->cflags & CF_NO_GOTO_TB));
--    /* We only support two chained exits.  */
--    tcg_debug_assert(idx <= TB_EXIT_IDXMAX);
--#ifdef CONFIG_DEBUG_TCG
--    /* Verify that we haven't seen this numbered exit before.  */
--    tcg_debug_assert((tcg_ctx->goto_tb_issue_mask & (1 << idx)) == 0);
--    tcg_ctx->goto_tb_issue_mask |= 1 << idx;
--#endif
--    plugin_gen_disable_mem_helpers();
--    tcg_gen_op1i(INDEX_op_goto_tb, 0, idx);
--}
--
--void tcg_gen_lookup_and_goto_ptr(void)
--{
--    TCGv_ptr ptr;
--
--    if (tcg_ctx->gen_tb->cflags & CF_NO_GOTO_PTR) {
--        tcg_gen_exit_tb(NULL, 0);
--        return;
--    }
--
--    plugin_gen_disable_mem_helpers();
--    ptr = tcg_temp_ebb_new_ptr();
--    gen_helper_lookup_tb_ptr(ptr, tcg_env);
--    tcg_gen_op1i(INDEX_op_goto_ptr, TCG_TYPE_PTR, tcgv_ptr_arg(ptr));
--    tcg_temp_free_ptr(ptr);
--}
+diff --git a/target/none/cpu-param.h b/target/none/cpu-param.h
+new file mode 100644
+index 00000000000..3c0818a2f02
+--- /dev/null
++++ b/target/none/cpu-param.h
+@@ -0,0 +1,7 @@
++#ifndef NONE_CPU_PARAM_H
++#define NONE_CPU_PARAM_H
++
++#define TARGET_PAGE_BITS 9
++#define TARGET_VIRT_ADDR_SPACE_BITS 64
++
++#endif
+diff --git a/target/none/cpu-qom.h b/target/none/cpu-qom.h
+new file mode 100644
+index 00000000000..114faa8077a
+--- /dev/null
++++ b/target/none/cpu-qom.h
+@@ -0,0 +1,6 @@
++#ifndef QEMU_NONE_CPU_QOM_H
++#define QEMU_NONE_CPU_QOM_H
++
++#define TYPE_NONE_CPU NULL
++
++#endif
+diff --git a/target/none/cpu.h b/target/none/cpu.h
+new file mode 100644
+index 00000000000..ffb9a0d28dc
+--- /dev/null
++++ b/target/none/cpu.h
+@@ -0,0 +1,18 @@
++#ifndef QEMU_NONE_CPU_H
++#define QEMU_NONE_CPU_H
++
++#include "cpu-qom.h"
++#include "hw/core/cpu.h"
++
++#define CPU_RESOLVING_TYPE TYPE_NONE_CPU
++
++typedef struct CPUArchState {
++    uint64_t unused;
++} CPUArchState;
++
++struct ArchCPU {
++    CPUState parent_obj;
++    CPUArchState env;
++};
++
++#endif
 -- 
 2.52.0.windows.1
 

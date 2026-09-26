@@ -4,69 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 575EDC9831E
-	for <qemu-arm@archiver.kernel.org>; Sat, 26 Sep 2026 07:09:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9FF79C98328
+	for <qemu-arm@archiver.kernel.org>; Sat, 26 Sep 2026 07:09:36 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xAMUC-0007yw-5N; Sat, 26 Sep 2026 03:06:19 -0400
+	id 1xAMQI-0002qW-I2; Sat, 26 Sep 2026 03:02:18 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <luoyonggang@gmail.com>)
- id 1xAMRL-0004I2-44
- for qemu-arm@nongnu.org; Sat, 26 Sep 2026 03:03:19 -0400
+ id 1xAMQ7-0002iA-Li
+ for qemu-arm@nongnu.org; Sat, 26 Sep 2026 03:02:06 -0400
 Received: from mail-dy2-x0e.google.com ([2607:f8b0:4864:36::e])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <luoyonggang@gmail.com>)
- id 1xAMRJ-0000bl-3z
- for qemu-arm@nongnu.org; Sat, 26 Sep 2026 03:03:18 -0400
+ id 1xAMQ5-0000TZ-EP
+ for qemu-arm@nongnu.org; Sat, 26 Sep 2026 03:02:03 -0400
 Received: by mail-dy2-x0e.google.com with SMTP id
- 5a478bee46e88-341d0522b4dso1977920eec.1
- for <qemu-arm@nongnu.org>; Sat, 26 Sep 2026 00:03:16 -0700 (PDT)
+ 5a478bee46e88-3428f70d7e7so534055eec.3
+ for <qemu-arm@nongnu.org>; Sat, 26 Sep 2026 00:02:01 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20251104; t=1790406195; x=1791010995; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:from:to:cc:subject:date
- :message-id:reply-to:content-type;
- bh=jzZaAkkKnBmPcCjdhFCa0BO5hawVQDowSY7mBjvBRFI=;
- b=HC/Cfw9OHCYoHRTwyJ2xgIMEmcD34TUmhb31mdAm7Mv0LfuIvfrXc/koaSpemLngyO
- gJyycHZSJOQfxK8vUdUbXnA+igZhtDV4V7ZyuLn85/oxeny9AKWw+aR13pLb7hcjRUbn
- nm7pTsgNkx+M6y4ZZvt9a515UYDs1pBhvFkF6ElMrienaD4zsecE1HR2Kr6UFWiN8O/k
- Hf3eyQe835en6a5U6DPC+Yz3yi53hRekf9hdDds4SwdMnJZvYavdH9kxzXuBAQBv3GHu
- XzbPziGAGQePq1b/Ux8ddz11PomFM+2qXNuJlGLlaixoIc38dtL4XzBIcU8vetAgBYgc
- k43A==
+ d=gmail.com; s=20251104; t=1790406120; x=1791010920; darn=nongnu.org;
+ h=content-transfer-encoding:content-type:mime-version:references
+ :in-reply-to:message-id:date:subject:cc:to:from:from:to:cc:subject
+ :date:message-id:reply-to:content-type;
+ bh=NmcVVZs2AdigVyOz3zzkAE1Rb9Ccoa5Uym0KVLWzyjs=;
+ b=Sc+VFs0O+IHAcmF8sSe1YDeL03pE2xAZb1EpQjIhTML5YyD4EiAgkrLLSiiJjR9v4m
+ z5aIMnydvEwS2BuOFFnZZoEb8vRELVqkgrzfeCitIV5GMWsjbVZgl7tqPFnX7cplghYO
+ rwfCJ97c5v5tC8UAE991qt2IEDHh47mctKaPg0KatgAJelOlIv+aasiJvIyyvp157YEo
+ QDzceWFyc4EN6WP4vsePiB0Y69SMfLIuq5YGu6SHEKFgkQJLr7dbquIE5BWBdeq49Juc
+ Uu6BduLNZWs5mFBmTHYexW5JgwS1k8BbjXKhYMV3CrtGqFlc2RWFkC93WdYYcH1J/d/w
+ uqog==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20260707; t=1790406195; x=1791010995;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
- :to:cc:subject:date:message-id:reply-to:content-type;
- bh=jzZaAkkKnBmPcCjdhFCa0BO5hawVQDowSY7mBjvBRFI=;
- b=IAfilmyijVZObPaZyuoNeU0JjDQ9zI5dNiVSuVxdbrPmjlhM2JLjcFjrAb74EHHT5P
- I5Km7rnJMYY8ddtq9vk2IS8Ibynwq6FN3XDvftlt//JTVVPq9foic5UKtyeNOamUQjuQ
- /QQBSecJeyiWZ5wNw4643JA0fdYliYctE8kK+5RcEcznBeklfdEi+WbojCrle/SgvBx0
- 94aQiX8A6jRI0qLGFDEMkO9k75LLbY+DHEze/BwXRWcsbC/bHpqCM76wEJXt36vL7uCr
- tE6ETUB1VoR2h+lt6cox62Hkw8gumVC+eiVkB+EJUXIFgOmzRDC7ltZY5uxfAay8S7qY
- 58QQ==
+ d=1e100.net; s=20260707; t=1790406120; x=1791010920;
+ h=content-transfer-encoding:content-type:mime-version:references
+ :in-reply-to:message-id:date:subject:cc:to:from:x-gm-gg
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
+ :content-type;
+ bh=NmcVVZs2AdigVyOz3zzkAE1Rb9Ccoa5Uym0KVLWzyjs=;
+ b=sakQhD6F90cOGTBMZVltz8xtudZWV3aemXAMaIlvVksqoaHvqqATQKu9wdOhPxJC6+
+ 7G3QeEDK2IkYlzZEyKm2pADkRgX8OtFPAMXSTVjHiZ4+5x94Zm0ncdq2X+w167bG0EH2
+ UltgvIu4LAWNMrvnfHjTPVrlbZgF29xBezeNLfhS+j9zJ96mcRzl5GNKRegNQ+VwAQHx
+ Kfc3TV1B0XNler7kvWFAHQ7jDO/Fig3edf4zeKGckdEC/htxjpQO+VkaGP7VLQ4L9gJq
+ kZsyej0Fg5ahGqQs2xa5fthIcUvpZHOGYyP9IxWz+SxjgJyK0eCsgvIKn86GqgA7jid4
+ jnqw==
 X-Forwarded-Encrypted: i=1;
- AKwUvBxtfEkd1bGKN2nqpOcz1VXew6Y5PT8ugXZ/ueEZ3qFI1Lg0cEXNkvntQXtaEBzYc/JHk/nw89qHKA==@nongnu.org
-X-Gm-Message-State: AFuF++nOSDN7orrVAxng6ZCQaBsJ0/hyLrG/dvCNuSnKbr92Zb18ehH7
- CrmbVDH6kAG5n813VFAGihAE8fD63MF/Ba5mTUZm8ctHoOxRma8g9u1M
-X-Gm-Gg: AYBFou2PgYDfjwolJJRn79QIXrsLcR8F3mndjhebIHjB7aMxQDt1tkAZ9RkSo4Q5mEi
- gNnNVD9TOjDyo1CHTeOnJg6brpUhadWo6nERwI4MePPMTF/Hp255T+hZrV5cnFkr/B6pvsXjkbV
- d/uAjCdyLFxCJEKfnqJ06wWA6Gmk8AAZtuODK3fjJJ6mIs2Z1pFcRevuiQalBST6YfgYdu/cE+F
- 9OV77nY02PZ24uHLO/Sg395ph4SjZ9TTiMXkjoUP94MFqRjc+56U6ELwaGqJ1GHlqFt2XA4tVfR
- od/hbzJvH/akSS1bzc1PRJOK5sjJzEMKBFnDf5JQRSJ2iaFN4j8OyaFHeydkhCJ/WFH76n+BVza
- VwaEVklTPe5CBb5mx38O9ALkgFjB2TkDmz+KNs5yFnqlWtqP+vCxffhyyV+KCw1kTKLgUhpHWR2
- cbAPCvhzDsdqcjAXp2j2e2AK5zV5icFDsCbsFOE3tGDmboBFVDfQTFNZH9mwbxV4ekmCj1/eXq5
- ZNjkdRM6XLwWjPbJ2pp+4JgxW8t2eI=
-X-Received: by 2002:a05:7300:6810:b0:334:2bee:348e with SMTP id
- 5a478bee46e88-3427236f2bbmr2301957eec.22.1790406195371; 
- Sat, 26 Sep 2026 00:03:15 -0700 (PDT)
+ AKwUvBw7TRxxt2G4PNejGeFcNhevCIzX+2QrfFVj9l7UktwGHtgiXzCQsi1uhIrlbDYW5Vl31VXD6MwDAA==@nongnu.org
+X-Gm-Message-State: AFuF++mTAV/9hu9zb/G1lkWh8ZBUeyL56VFp/rhpzOV2FZBdirmFM8Dg
+ YDaxsWcOdmF8VAyWKBA8dRk10EBdDWI5mb2QVjfJwh2T3oyaUvyQvifY
+X-Gm-Gg: AYBFou3hOCiGQ7A13FXndn+TVVnYhVCI9o373xzRrpJnCsB0TzN55tdh4DWk03SX7VR
+ dUbU6liFMEH5k1Yuwn/Y9OlXvub9aQpzGDFHTOOiCClvMMYJU9k+7BwWq8yk7k7Y/tlP7evzhl/
+ wJqDGMiyVIfHDW6yrBxmA7bgAjvrvAgMQ/wrXkJmz9J1VJunhffe22KswvGaD/B092KIPBUL4aH
+ kE2lvcVTRvyfqXaOrU2tnu00EEMqkdv1KMzU6wcx/pINwSbkEdiJ+fFqXkMfckUxPpWAfFSBhBV
+ lGFM9yRQWYmh6nm8D+1obEw53D894suvu/gKDVCKjNwhL17xRChnZSBuan+wP1lxkjvYEcnkNU1
+ 7JRSOCZjNu9npgfEj9AqyX0/gnZ5vLw/MzCPPhSlmPaLQzRx0fwJbeAou5+6bZGIjZOE1bujPPk
+ cMUheqFveGn7SdFxjuksuQjD3Cv412u2ejdo52pNJFknTrlMyWydcihgozfi3FBwYn9kOY2TSAF
+ i5UOLrAB06hsEQJ46qvhgQVsn1P1QWWGz6kCYA63AU=
+X-Received: by 2002:a05:693c:2589:b0:341:9040:8ec6 with SMTP id
+ 5a478bee46e88-34273850d16mr1979752eec.41.1790406119966; 
+ Sat, 26 Sep 2026 00:01:59 -0700 (PDT)
 Received: from WIN-BH9M8FJACR9 ([103.94.185.75])
  by smtp.googlemail.com with ESMTPSA id
- 5a478bee46e88-34145c166cfsm10615141eec.28.2026.09.26.00.03.12
+ 5a478bee46e88-34145c166cfsm10615141eec.28.2026.09.26.00.01.56
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sat, 26 Sep 2026 00:03:14 -0700 (PDT)
+ Sat, 26 Sep 2026 00:01:59 -0700 (PDT)
 From: Yonggang Luo <luoyonggang@gmail.com>
 To: qemu-devel@nongnu.org
 Cc: Richard Henderson <richard.henderson@linaro.org>,
@@ -80,13 +81,15 @@ Cc: Richard Henderson <richard.henderson@linaro.org>,
  Peter Maydell <peter.maydell@linaro.org>,
  =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
  qemu-arm@nongnu.org, kvm@vger.kernel.org
-Subject: [PATCH v4 33/55] target/arm: fix A64 guest address width at 64
-Date: Sat, 26 Sep 2026 15:00:32 +0800
-Message-ID: <20260926070057.1234-34-luoyonggang@gmail.com>
+Subject: [PATCH v4 14/55] target/arm: move kvm_arm_set_cpreg_mig_tolerances to
+ kvm.c
+Date: Sat, 26 Sep 2026 15:00:13 +0800
+Message-ID: <20260926070057.1234-15-luoyonggang@gmail.com>
 X-Mailer: git-send-email 2.52.0.windows.1
 In-Reply-To: <20260926070057.1234-1-luoyonggang@gmail.com>
 References: <20260926070057.1234-1-luoyonggang@gmail.com>
 MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 Received-SPF: pass client-ip=2607:f8b0:4864:36::e;
  envelope-from=luoyonggang@gmail.com; helo=mail-dy2-x0e.google.com
@@ -111,29 +114,153 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Define TCG_ADDRESS_BITS 64 in translate-a64.h so A64 qemu_ld and
-qemu_st take a 64-bit address, matching TCG_ADDRESS_BITS 32 in
-translate.c.
+Keep KVM kernel register-list migration policy with the other KVM
+cpreg helpers.
+
+- Move kvm_arm_set_cpreg_mig_tolerances from cpu64.c to kvm.c
+- Declare it in kvm_arm.h
+- Add a kvm-stub.c assert stub
 
 Signed-off-by: Yonggang Luo <luoyonggang@gmail.com>
 ---
- target/arm/tcg/translate-a64.h | 3 +++
- 1 file changed, 3 insertions(+)
+ target/arm/cpu64.c    | 38 --------------------------------------
+ target/arm/kvm-stub.c |  5 +++++
+ target/arm/kvm.c      | 36 ++++++++++++++++++++++++++++++++++++
+ target/arm/kvm_arm.h  |  9 +++++++++
+ 4 files changed, 50 insertions(+), 38 deletions(-)
 
-diff --git a/target/arm/tcg/translate-a64.h b/target/arm/tcg/translate-a64.h
-index 35f8d4f82e3..d4265de9dcb 100644
---- a/target/arm/tcg/translate-a64.h
-+++ b/target/arm/tcg/translate-a64.h
-@@ -18,6 +18,9 @@
- #ifndef TARGET_ARM_TRANSLATE_A64_H
- #define TARGET_ARM_TRANSLATE_A64_H
+diff --git a/target/arm/cpu64.c b/target/arm/cpu64.c
+index 4e8c4725308..1e64eb54cdc 100644
+--- a/target/arm/cpu64.c
++++ b/target/arm/cpu64.c
+@@ -754,44 +754,6 @@ static void aarch64_a53_initfn(Object *obj)
+     define_cortex_a72_a57_a53_cp_reginfo(cpu);
+ }
  
-+/* A64 qemu_ld/st addresses are always 64-bit. Set before tcg-op.h. */
-+#define TCG_ADDRESS_BITS 64
+-#if defined(CONFIG_KVM)
+-static void kvm_arm_set_cpreg_mig_tolerances(ARMCPU *cpu)
+-{
+-    /*
+-     * Registers that may be in the incoming stream and not exposed
+-     * on the destination
+-     */
+-
+-    /*
+-     * TCR_EL1 was erroneously unconditionnally exposed before linux v6.13.
+-     * See commit 0fcb4eea5345 ("KVM: arm64: Hide TCR2_EL1 from userspace
+-     * when disabled for guests")
+-     */
+-    arm_register_cpreg_mig_tolerance(cpu, ARM64_SYS_REG(3, 0, 2, 0, 3),
+-                                     0, 0, ToleranceNotOnBothEnds);
+-    /*
+-     * PIRE0_EL1 and PIR_EL1 were erroneously unconditionnally exposed
+-     * before linux v6.13. See commit a68cddbe47ef ("KVM: arm64: Hide
+-     * S1PIE registers from userspace when disabled for guests")
+-     */
+-    arm_register_cpreg_mig_tolerance(cpu, ARM64_SYS_REG(3, 0, 10, 2, 2),
+-                                     0, 0, ToleranceNotOnBothEnds);
+-    arm_register_cpreg_mig_tolerance(cpu, ARM64_SYS_REG(3, 0, 10, 2, 3),
+-                                     0, 0, ToleranceNotOnBothEnds);
+-
+-    /*
+-     * KVM_REG_ARM_VENDOR_HYP_BMAP_2 pseudo FW register is exposed
+-     * from v6.15 onwards. Backward migration from a >= v6.15 to an older
+-     * kernel would fail without cpreg migration tolerance definition.
+-     * If the register is present on source but not on destination, make
+-     * sure it has its reset value, ie. 0, meaning no service is exposed
+-     * to the guest.
+-     */
+-    arm_register_cpreg_mig_tolerance(cpu, KVM_REG_ARM_FW_FEAT_BMAP_REG(3),
+-                                     UINT64_MAX, 0, ToleranceOnlySrcTestValue);
+-}
+-#endif
+-
+ void aarch64_host_initfn(Object *obj)
+ {
+     ARMCPU *cpu = ARM_CPU(obj);
+diff --git a/target/arm/kvm-stub.c b/target/arm/kvm-stub.c
+index 88cbe8d85c4..ecbd4f9aca1 100644
+--- a/target/arm/kvm-stub.c
++++ b/target/arm/kvm-stub.c
+@@ -50,6 +50,11 @@ void kvm_arm_set_cpu_features_from_host(ARMCPU *cpu)
+     g_assert_not_reached();
+ }
+ 
++void kvm_arm_set_cpreg_mig_tolerances(ARMCPU *cpu)
++{
++    g_assert_not_reached();
++}
 +
- TCGv_i64 cpu_reg(DisasContext *s, int reg);
- TCGv_i64 cpu_reg_sp(DisasContext *s, int reg);
- TCGv_i64 read_cpu_reg(DisasContext *s, int reg, int sf);
+ void kvm_arm_add_vcpu_properties(ARMCPU *cpu)
+ {
+     g_assert_not_reached();
+diff --git a/target/arm/kvm.c b/target/arm/kvm.c
+index ed99be7fd80..2525b9d429c 100644
+--- a/target/arm/kvm.c
++++ b/target/arm/kvm.c
+@@ -505,6 +505,42 @@ void kvm_arm_set_cpu_features_from_host(ARMCPU *cpu)
+     env->features = arm_host_cpu_features.features;
+ }
+ 
++void kvm_arm_set_cpreg_mig_tolerances(ARMCPU *cpu)
++{
++    /*
++     * Registers that may be in the incoming stream and not exposed
++     * on the destination
++     */
++
++    /*
++     * TCR_EL1 was erroneously unconditionnally exposed before linux v6.13.
++     * See commit 0fcb4eea5345 ("KVM: arm64: Hide TCR2_EL1 from userspace
++     * when disabled for guests")
++     */
++    arm_register_cpreg_mig_tolerance(cpu, ARM64_SYS_REG(3, 0, 2, 0, 3),
++                                     0, 0, ToleranceNotOnBothEnds);
++    /*
++     * PIRE0_EL1 and PIR_EL1 were erroneously unconditionnally exposed
++     * before linux v6.13. See commit a68cddbe47ef ("KVM: arm64: Hide
++     * S1PIE registers from userspace when disabled for guests")
++     */
++    arm_register_cpreg_mig_tolerance(cpu, ARM64_SYS_REG(3, 0, 10, 2, 2),
++                                     0, 0, ToleranceNotOnBothEnds);
++    arm_register_cpreg_mig_tolerance(cpu, ARM64_SYS_REG(3, 0, 10, 2, 3),
++                                     0, 0, ToleranceNotOnBothEnds);
++
++    /*
++     * KVM_REG_ARM_VENDOR_HYP_BMAP_2 pseudo FW register is exposed
++     * from v6.15 onwards. Backward migration from a >= v6.15 to an older
++     * kernel would fail without cpreg migration tolerance definition.
++     * If the register is present on source but not on destination, make
++     * sure it has its reset value, ie. 0, meaning no service is exposed
++     * to the guest.
++     */
++    arm_register_cpreg_mig_tolerance(cpu, KVM_REG_ARM_FW_FEAT_BMAP_REG(3),
++                                     UINT64_MAX, 0, ToleranceOnlySrcTestValue);
++}
++
+ static bool kvm_no_adjvtime_get(Object *obj, Error **errp)
+ {
+     return !ARM_CPU(obj)->kvm_adjvtime;
+diff --git a/target/arm/kvm_arm.h b/target/arm/kvm_arm.h
+index e7c40fb003e..014b7bad65b 100644
+--- a/target/arm/kvm_arm.h
++++ b/target/arm/kvm_arm.h
+@@ -133,6 +133,15 @@ void kvm_arm_destroy_scratch_host_vcpu(int *fdarray);
+  */
+ void kvm_arm_set_cpu_features_from_host(ARMCPU *cpu);
+ 
++/**
++ * kvm_arm_set_cpreg_mig_tolerances:
++ * @cpu: ARMCPU to register the tolerances on
++ *
++ * Register KVM cpreg migration tolerances for kernel register-list
++ * differences (hidden sysregs and newer FW feature bitmaps).
++ */
++void kvm_arm_set_cpreg_mig_tolerances(ARMCPU *cpu);
++
+ /**
+  * kvm_arm_add_vcpu_properties:
+  * @cpu: The CPU object to add the properties to
 -- 
 2.52.0.windows.1
 

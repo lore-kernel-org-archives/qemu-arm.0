@@ -4,69 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 69683C9831E
-	for <qemu-arm@archiver.kernel.org>; Sat, 26 Sep 2026 07:10:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7F8D0C9831E
+	for <qemu-arm@archiver.kernel.org>; Sat, 26 Sep 2026 07:10:13 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xAMRH-00049C-Of; Sat, 26 Sep 2026 03:03:17 -0400
+	id 1xAMVY-0000xK-Ul; Sat, 26 Sep 2026 03:07:46 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <luoyonggang@gmail.com>)
- id 1xAMR7-0003uP-1h
- for qemu-arm@nongnu.org; Sat, 26 Sep 2026 03:03:07 -0400
-Received: from mail-dy2-x2b.google.com ([2607:f8b0:4864:36::2b])
+ id 1xAMRD-00040Z-Cu
+ for qemu-arm@nongnu.org; Sat, 26 Sep 2026 03:03:13 -0400
+Received: from mail-dy2-x10.google.com ([2607:f8b0:4864:36::10])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <luoyonggang@gmail.com>)
- id 1xAMR4-0000aI-0L
- for qemu-arm@nongnu.org; Sat, 26 Sep 2026 03:03:04 -0400
-Received: by mail-dy2-x2b.google.com with SMTP id
- 5a478bee46e88-341027843a5so1048743eec.2
- for <qemu-arm@nongnu.org>; Sat, 26 Sep 2026 00:03:01 -0700 (PDT)
+ id 1xAMRB-0000au-91
+ for qemu-arm@nongnu.org; Sat, 26 Sep 2026 03:03:11 -0400
+Received: by mail-dy2-x10.google.com with SMTP id
+ 5a478bee46e88-328664b752eso1044585eec.1
+ for <qemu-arm@nongnu.org>; Sat, 26 Sep 2026 00:03:08 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20251104; t=1790406180; x=1791010980; darn=nongnu.org;
+ d=gmail.com; s=20251104; t=1790406188; x=1791010988; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to:content-type;
- bh=o68RHY+8I/fHBwtLuIUKNDGtiU+yJ8dKoStrzzdIylI=;
- b=VSPEJN7aID+4kVqAXRomN0QBQhQ6Ie2bIrZeUevVKdhxc6++pv67w6laRI9sBZ3k0p
- p5Q3FF8wuxy25UXZGZM3Dp5+iBe4b9bMncib0GbwMxkUFq1puHd2tYkGRN4GL8XW7i+/
- 0+XoxHm/HeLGLNgBnS1ce3ceDBQIBzFoNOADYtuG5y5tKwAncybznrfObQ+4Ql7AOE9F
- Pu9+gxFwCbBghSpxKXm+xCsvwjOPbucrMF0a0QSA8clCQEX7bFmi6eaRdWv9pk0YrPtF
- D4gHXU/P8YafHyYAZLZTeI+Mn27A+LnCmSOtHujMhg8cy90dFO+t2W2z9Zh4Sm96iC27
- 2G9g==
+ bh=RDJx03fDpoFhoiEvP/bHkwDQkhcB3SmHYPY0Nad5xBI=;
+ b=NYQAlbXxLLb/cYt/nym8bUB+srWKZ1OXtCF1BKs8aZPsotwqqWdWdLEE28HsHHTXf7
+ /sTB4NDEeO0lXN0MfQPuL0EoMjZeU334ejlwKAfwTP73Pj+/zHgVD3tnNScbm8x4YoTs
+ 3FgS6lRVsuwFi8Ei27qUeXZBFkJEECFbkpsmBZrXGxmkjdB7wAmNR24T80EMEVUvtDtS
+ Y4C1cadHERJvNHF/2TdZufqfs3+cH4JxxPyWP4sLjBoY6UYK/DpnghNOdFd4Sa+83qgt
+ /QxVqaBTg6qrJZQbLASlGsQMcETwPmMAaXxAne7JBTas/9tu7TNyCFvvrr8z9jrsm+/S
+ oG9A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20260707; t=1790406180; x=1791010980;
+ d=1e100.net; s=20260707; t=1790406188; x=1791010988;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
  :to:cc:subject:date:message-id:reply-to:content-type;
- bh=o68RHY+8I/fHBwtLuIUKNDGtiU+yJ8dKoStrzzdIylI=;
- b=yFi4QtOdfrwqcRM2zPKa1n8wOL1Ryzxg7qqW4JJYpMYeLsit92sztjrDYLtvCrxtSL
- W2H7j47BwKWwe3WnQsUVfHVbEeeqth/kCRNhLEwBhmJC5cqSXLrYQ5EC3pnLmMZXPfdy
- vUHkbRgOey9zZvkbtFH3XifHag6Eg9qc2uWJ681LKPw2VpCbdR2lt6Yx0uStUdfpSky2
- HXf5JPpcJ2lFaVR6wiNdXvhpXb+n6gFpYSBXbN7AMDvYH5ldSuCt6tqbjyd5GMBCa+80
- DcLA80dmMKulsXpTxAJJjcqFeEjU8KHLJeE+vqXPv+OKr20in3+uvrQdm4a8o/3L54Cl
- YAkw==
+ bh=RDJx03fDpoFhoiEvP/bHkwDQkhcB3SmHYPY0Nad5xBI=;
+ b=eT36MaP5+391B2UmMhATa+Rf5FS9YKkteGcFLGsJa0TPVN2gNy+mfs6e8TTQt3v5mF
+ Thq3Emdu6IEdYYfWKXzKO+z+nR7aTC3WpL1t3Z6FFqvFdIzvvzWSheaUsClcdrsyW7WW
+ Ezs77B6Zv/jdKx0xrCrxyD6zKFN36GyQB7ZDi7Ky8iS6WSjcF6OFv/eNFCMCUnQOgsyJ
+ LNbWy1C4/N8b6HVzJZtaNIWvAfh1NeK4aUz3K4CAXSRFnlR6DONSWe0BaJYeQ2mhsfpy
+ woMGNcSXIKymNVVozsflu93HO0ahkdwWToz3U6IZMmu3vOeO4nmJINhBF82LyqZbub74
+ cqdg==
 X-Forwarded-Encrypted: i=1;
- AKwUvBwkRWmhApDYge0wQED9w1ukmwe+Vo6inkLT/e1Hh1Ay3YNfWU2GTtTmJHT+HKS4xMNZqdLY93QjiQ==@nongnu.org
-X-Gm-Message-State: AFuF++n862tDz8QDH2fVjVxs/V883uBnlsVV5Z9dAS+ezoZhWb1roNrO
- SW/D82kDO1tZRKIv5dL0FP7m5zVINDRreTuNwg+XOhcSnUDg+jek6ySt
-X-Gm-Gg: AYBFou10yhDkahEfJENyueKMJd70+Z79S7KQdLM4/tlhFbLrZGCjLopO9kyDuM+QDi7
- bl8nwsoFmA0pkxUs90wXfG4S2C4Iv2E7D7gqLUFlnfhZzyLemRv3CLlZ3TPKv5bCZ7bvX1bwhCO
- AmnqsRzDu/dydEnw7gmrxC+Lr8WuK6+zO0/XoML8EjVPLrD+xb0mbwiawRwK7jUgh3CdP860UaC
- BtiV+dscJHmDlRpNJO8fWWn+0MBzX25z+UsbjmupOKLiS+a4Jo6xbAZVQwiluwE0KQuox+l/q1c
- Do057nCup4d86W8MIkvKRbE5TTIH2xD6GpyRZDve1Nv7yL+eyYkaGZHyRrp9brMrYy7R+znHk2m
- u0/xrfwDfBSQZAQi+63Ei4G2EyPskD+t2koD2paorktispkFghIDZF7dH3+rU3pV7spvyNrdTrC
- QRL8I3QrT/zssn/pVbXzuqmjVZq13xDQHXFRgEnM9cDH9/rPM/w7d4HMBfam3Fovu7ejJewsV28
- 1PJzZI2kV8SW89wx8Fe3RsCsMzFr20=
-X-Received: by 2002:a05:7301:53c5:b0:33b:c23b:f2b7 with SMTP id
- 5a478bee46e88-34272c5c606mr1989923eec.30.1790406180277; 
- Sat, 26 Sep 2026 00:03:00 -0700 (PDT)
+ AKwUvByY1/2MXimiYEVdkKWea71tVdVQoaLP1+33OIIN/hQp53+O3u7Lc0Whzdwbj7kRyw3Jbi7IvIya3Q==@nongnu.org
+X-Gm-Message-State: AFuF++lTOzuvXxD2R+FxDTUM7Iy7PlzqOYhUi0PpLb8clMtfEY3FrZ25
+ fD/4z+xgrC2g0s2f5B2nRvC+18K8mUc0ZCxL18tCdBV3hnfCWZTUxPYU
+X-Gm-Gg: AYBFou2RTZk9L05GZu5G7IWQTMjo2CRnrQ7wfwn3fYDrTdQ08NPq7YlOHIqydOYdPEX
+ p9Fclry2ZTDIXkf0AkWiMQnEuYY6YsLXLCnXnL4biowAYe3H2CRTvdSbqQtOpKmGjJn8TUUoUDr
+ 9Ry+rKle14L5sLXFugbIQRLBew+1de3uWoubm/+37Mis3GHaff7qshPS6LaQe/434tSsT6usdAC
+ 4nwKFI9/zV/xjYInIIRKm7ePZ5NUvQCwHCHm4T44Se6Qr/v1s0Qv/rkTxH9XAvErLe7MbFYKXsA
+ q0ufMfDYYwbGPMlFdpghBdZlFJ7bDZ//IwZKHuAYj2b7hPAKDSczqnvRe18IFhQ7q9vyZWvz96P
+ XusiPNO7Y5MLhv8E+4lm1E3FsCrvJE8BeMb0BRysSaksy1rGC8mxI08lDQMKVQ+o/kInOddn4qz
+ hPgMisquIvkt9VjMGCVk9H8S93cre/syZ4KdSpuUQ0CL0t3R/x9c8NJM5vc22/UxezEUov9Xgnd
+ 4ah4ICc1JK9uEPXU4N0lsOJUY74jTU=
+X-Received: by 2002:a05:7301:4d0b:b0:341:4f3:8f84 with SMTP id
+ 5a478bee46e88-342707b3fb2mr2095737eec.13.1790406187813; 
+ Sat, 26 Sep 2026 00:03:07 -0700 (PDT)
 Received: from WIN-BH9M8FJACR9 ([103.94.185.75])
  by smtp.googlemail.com with ESMTPSA id
- 5a478bee46e88-34145c166cfsm10615141eec.28.2026.09.26.00.02.56
+ 5a478bee46e88-34145c166cfsm10615141eec.28.2026.09.26.00.03.04
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sat, 26 Sep 2026 00:02:59 -0700 (PDT)
+ Sat, 26 Sep 2026 00:03:07 -0700 (PDT)
 From: Yonggang Luo <luoyonggang@gmail.com>
 To: qemu-devel@nongnu.org
 Cc: Richard Henderson <richard.henderson@linaro.org>,
@@ -80,22 +80,22 @@ Cc: Richard Henderson <richard.henderson@linaro.org>,
  Peter Maydell <peter.maydell@linaro.org>,
  =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
  qemu-arm@nongnu.org, kvm@vger.kernel.org
-Subject: [PATCH v4 29/55] accel/tcg: move gvec helpers into tcg-runtime-gvec.h
-Date: Sat, 26 Sep 2026 15:00:28 +0800
-Message-ID: <20260926070057.1234-30-luoyonggang@gmail.com>
+Subject: [PATCH v4 31/55] accel/tcg: move memory helpers out of tcg-runtime.h
+Date: Sat, 26 Sep 2026 15:00:30 +0800
+Message-ID: <20260926070057.1234-32-luoyonggang@gmail.com>
 X-Mailer: git-send-email 2.52.0.windows.1
 In-Reply-To: <20260926070057.1234-1-luoyonggang@gmail.com>
 References: <20260926070057.1234-1-luoyonggang@gmail.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:36::2b;
- envelope-from=luoyonggang@gmail.com; helo=mail-dy2-x2b.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:36::10;
+ envelope-from=luoyonggang@gmail.com; helo=mail-dy2-x10.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -111,42 +111,44 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-The gvec helpers are implemented in tcg-runtime-gvec.c. Move their
-DEF_HELPER lines to tcg-runtime-gvec.h and emit the helper_info
-records from that file.
+memset, ld_i128, and st_i128 are declared in ldst_common.h, and
+ldst_common.c.inc emits their helper info. Atomic helpers move to
+atomic_common.h, with info records emitted from atomic_common.c.inc.
+tcg-runtime.h keeps the integer helpers implemented in tcg-runtime.c.
 
 Signed-off-by: Yonggang Luo <luoyonggang@gmail.com>
 ---
- accel/tcg/tcg-runtime-gvec.c                  |   3 +
- .../tcg/{tcg-runtime.h => tcg-runtime-gvec.h} | 109 ----------
- accel/tcg/tcg-runtime.h                       | 204 ------------------
- include/exec/helper-gen-common.h              |   4 +
- include/exec/helper-proto-common.h            |   4 +
- 5 files changed, 11 insertions(+), 313 deletions(-)
- copy accel/tcg/{tcg-runtime.h => tcg-runtime-gvec.h} (71%)
+ accel/tcg/atomic_common.c.inc                |  4 +
+ accel/tcg/{tcg-runtime.h => atomic_common.h} | 36 ---------
+ accel/tcg/ldst_common.c.inc                  |  4 +
+ accel/tcg/ldst_common.h                      | 13 +++
+ accel/tcg/tcg-runtime.h                      | 85 --------------------
+ include/exec/helper-gen-common.h             |  8 ++
+ include/exec/helper-proto-common.h           |  8 ++
+ 7 files changed, 37 insertions(+), 121 deletions(-)
+ copy accel/tcg/{tcg-runtime.h => atomic_common.h} (65%)
+ create mode 100644 accel/tcg/ldst_common.h
 
-diff --git a/accel/tcg/tcg-runtime-gvec.c b/accel/tcg/tcg-runtime-gvec.c
-index 67a741e45e1..1bc8fbc31fa 100644
---- a/accel/tcg/tcg-runtime-gvec.c
-+++ b/accel/tcg/tcg-runtime-gvec.c
-@@ -22,6 +22,9 @@
- #include "exec/helper-proto-common.h"
- #include "tcg/tcg-gvec-desc.h"
+diff --git a/accel/tcg/atomic_common.c.inc b/accel/tcg/atomic_common.c.inc
+index 7d779dd51db..a24250be75e 100644
+--- a/accel/tcg/atomic_common.c.inc
++++ b/accel/tcg/atomic_common.c.inc
+@@ -101,3 +101,7 @@ ATOMIC_HELPER(fetch_oro_le, Int128)
  
-+#define HELPER_H  "accel/tcg/tcg-runtime-gvec.h"
+ #undef ATOMIC_HELPER
+ #undef GEN_ATOMIC_HELPERS
++
++#define HELPER_H "accel/tcg/atomic_common.h"
 +#include "exec/helper-info.c.inc"
 +#undef  HELPER_H
- 
- static inline void clear_high(void *d, intptr_t oprsz, uint32_t desc)
- {
-diff --git a/accel/tcg/tcg-runtime.h b/accel/tcg/tcg-runtime-gvec.h
-similarity index 71%
+diff --git a/accel/tcg/tcg-runtime.h b/accel/tcg/atomic_common.h
+similarity index 65%
 copy from accel/tcg/tcg-runtime.h
-copy to accel/tcg/tcg-runtime-gvec.h
-index 9b4c1c24916..603b0ba8590 100644
+copy to accel/tcg/atomic_common.h
+index 26e0baeca51..4fee73cf916 100644
 --- a/accel/tcg/tcg-runtime.h
-+++ b/accel/tcg/tcg-runtime-gvec.h
-@@ -1,112 +1,3 @@
++++ b/accel/tcg/atomic_common.h
+@@ -1,39 +1,3 @@
 -DEF_HELPER_FLAGS_2(div_i32, TCG_CALL_NO_RWG_SE, s32, s32, s32)
 -DEF_HELPER_FLAGS_2(rem_i32, TCG_CALL_NO_RWG_SE, s32, s32, s32)
 -DEF_HELPER_FLAGS_2(divu_i32, TCG_CALL_NO_RWG_SE, i32, i32, i32)
@@ -169,7 +171,65 @@ index 9b4c1c24916..603b0ba8590 100644
 -DEF_HELPER_FLAGS_1(ctpop_i32, TCG_CALL_NO_RWG_SE, i32, i32)
 -DEF_HELPER_FLAGS_1(ctpop_i64, TCG_CALL_NO_RWG_SE, i64, i64)
 -
--DEF_HELPER_FLAGS_1(lookup_tb_ptr, TCG_CALL_NO_WG_SE, cptr, env)
+-#ifndef IN_HELPER_PROTO
+-/*
+- * Pass calls to memset directly to libc, without a thunk in qemu.
+- * Do not re-declare memset, especially since we fudge the type here;
+- * we assume sizeof(void *) == sizeof(size_t), which is true for
+- * all supported hosts.
+- */
+-#define helper_memset memset
+-DEF_HELPER_FLAGS_3(memset, TCG_CALL_NO_RWG, ptr, ptr, int, ptr)
+-#endif /* IN_HELPER_PROTO */
+-
+-DEF_HELPER_FLAGS_3(ld_i128, TCG_CALL_NO_WG, i128, env, i64, i32)
+-DEF_HELPER_FLAGS_4(st_i128, TCG_CALL_NO_WG, void, env, i64, i128, i32)
+-
+ DEF_HELPER_FLAGS_5(atomic_cmpxchgb, TCG_CALL_NO_WG,
+                    i32, env, i64, i32, i32, i32)
+ DEF_HELPER_FLAGS_5(atomic_cmpxchgw_be, TCG_CALL_NO_WG,
+diff --git a/accel/tcg/ldst_common.c.inc b/accel/tcg/ldst_common.c.inc
+index 57f3e061924..bf74d65dd75 100644
+--- a/accel/tcg/ldst_common.c.inc
++++ b/accel/tcg/ldst_common.c.inc
+@@ -119,6 +119,10 @@ void helper_st_i128(CPUArchState *env, uint64_t addr, Int128 val, MemOpIdx oi)
+     helper_st16_mmu(env, addr, val, oi, GETPC());
+ }
+ 
++#define HELPER_H "accel/tcg/ldst_common.h"
++#include "exec/helper-info.c.inc"
++#undef  HELPER_H
++
+ /*
+  * Load helpers for cpu_ldst.h
+  */
+diff --git a/accel/tcg/ldst_common.h b/accel/tcg/ldst_common.h
+new file mode 100644
+index 00000000000..cec4751ff16
+--- /dev/null
++++ b/accel/tcg/ldst_common.h
+@@ -0,0 +1,13 @@
++#ifndef IN_HELPER_PROTO
++/*
++ * Pass calls to memset directly to libc, without a thunk in qemu.
++ * Do not re-declare memset, especially since we fudge the type here;
++ * we assume sizeof(void *) == sizeof(size_t), which is true for
++ * all supported hosts.
++ */
++#define helper_memset memset
++DEF_HELPER_FLAGS_3(memset, TCG_CALL_NO_RWG, ptr, ptr, int, ptr)
++#endif /* IN_HELPER_PROTO */
++
++DEF_HELPER_FLAGS_3(ld_i128, TCG_CALL_NO_WG, i128, env, i64, i32)
++DEF_HELPER_FLAGS_4(st_i128, TCG_CALL_NO_WG, void, env, i64, i128, i32)
+diff --git a/accel/tcg/tcg-runtime.h b/accel/tcg/tcg-runtime.h
+index 26e0baeca51..d635e6b708b 100644
+--- a/accel/tcg/tcg-runtime.h
++++ b/accel/tcg/tcg-runtime.h
+@@ -19,88 +19,3 @@ DEF_HELPER_FLAGS_1(clrsb_i32, TCG_CALL_NO_RWG_SE, i32, i32)
+ DEF_HELPER_FLAGS_1(clrsb_i64, TCG_CALL_NO_RWG_SE, i64, i64)
+ DEF_HELPER_FLAGS_1(ctpop_i32, TCG_CALL_NO_RWG_SE, i32, i32)
+ DEF_HELPER_FLAGS_1(ctpop_i64, TCG_CALL_NO_RWG_SE, i64, i64)
 -
 -#ifndef IN_HELPER_PROTO
 -/*
@@ -255,250 +315,44 @@ index 9b4c1c24916..603b0ba8590 100644
 -GEN_ATOMIC_HELPERS(xchg)
 -
 -#undef GEN_ATOMIC_HELPERS
--
- DEF_HELPER_FLAGS_3(gvec_mov, TCG_CALL_NO_RWG, void, ptr, ptr, i32)
- 
- DEF_HELPER_FLAGS_3(gvec_dup8, TCG_CALL_NO_RWG, void, ptr, i32, i32)
-diff --git a/accel/tcg/tcg-runtime.h b/accel/tcg/tcg-runtime.h
-index 9b4c1c24916..c0626fa0e02 100644
---- a/accel/tcg/tcg-runtime.h
-+++ b/accel/tcg/tcg-runtime.h
-@@ -106,207 +106,3 @@ GEN_ATOMIC_HELPERS(umax_fetch)
- GEN_ATOMIC_HELPERS(xchg)
- 
- #undef GEN_ATOMIC_HELPERS
--
--DEF_HELPER_FLAGS_3(gvec_mov, TCG_CALL_NO_RWG, void, ptr, ptr, i32)
--
--DEF_HELPER_FLAGS_3(gvec_dup8, TCG_CALL_NO_RWG, void, ptr, i32, i32)
--DEF_HELPER_FLAGS_3(gvec_dup16, TCG_CALL_NO_RWG, void, ptr, i32, i32)
--DEF_HELPER_FLAGS_3(gvec_dup32, TCG_CALL_NO_RWG, void, ptr, i32, i32)
--DEF_HELPER_FLAGS_3(gvec_dup64, TCG_CALL_NO_RWG, void, ptr, i32, i64)
--
--DEF_HELPER_FLAGS_4(gvec_add8, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
--DEF_HELPER_FLAGS_4(gvec_add16, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
--DEF_HELPER_FLAGS_4(gvec_add32, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
--DEF_HELPER_FLAGS_4(gvec_add64, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
--
--DEF_HELPER_FLAGS_4(gvec_adds8, TCG_CALL_NO_RWG, void, ptr, ptr, i64, i32)
--DEF_HELPER_FLAGS_4(gvec_adds16, TCG_CALL_NO_RWG, void, ptr, ptr, i64, i32)
--DEF_HELPER_FLAGS_4(gvec_adds32, TCG_CALL_NO_RWG, void, ptr, ptr, i64, i32)
--DEF_HELPER_FLAGS_4(gvec_adds64, TCG_CALL_NO_RWG, void, ptr, ptr, i64, i32)
--
--DEF_HELPER_FLAGS_4(gvec_sub8, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
--DEF_HELPER_FLAGS_4(gvec_sub16, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
--DEF_HELPER_FLAGS_4(gvec_sub32, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
--DEF_HELPER_FLAGS_4(gvec_sub64, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
--
--DEF_HELPER_FLAGS_4(gvec_subs8, TCG_CALL_NO_RWG, void, ptr, ptr, i64, i32)
--DEF_HELPER_FLAGS_4(gvec_subs16, TCG_CALL_NO_RWG, void, ptr, ptr, i64, i32)
--DEF_HELPER_FLAGS_4(gvec_subs32, TCG_CALL_NO_RWG, void, ptr, ptr, i64, i32)
--DEF_HELPER_FLAGS_4(gvec_subs64, TCG_CALL_NO_RWG, void, ptr, ptr, i64, i32)
--
--DEF_HELPER_FLAGS_4(gvec_mul8, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
--DEF_HELPER_FLAGS_4(gvec_mul16, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
--DEF_HELPER_FLAGS_4(gvec_mul32, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
--DEF_HELPER_FLAGS_4(gvec_mul64, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
--
--DEF_HELPER_FLAGS_4(gvec_muls8, TCG_CALL_NO_RWG, void, ptr, ptr, i64, i32)
--DEF_HELPER_FLAGS_4(gvec_muls16, TCG_CALL_NO_RWG, void, ptr, ptr, i64, i32)
--DEF_HELPER_FLAGS_4(gvec_muls32, TCG_CALL_NO_RWG, void, ptr, ptr, i64, i32)
--DEF_HELPER_FLAGS_4(gvec_muls64, TCG_CALL_NO_RWG, void, ptr, ptr, i64, i32)
--
--DEF_HELPER_FLAGS_4(gvec_ssadd8, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
--DEF_HELPER_FLAGS_4(gvec_ssadd16, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
--DEF_HELPER_FLAGS_4(gvec_ssadd32, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
--DEF_HELPER_FLAGS_4(gvec_ssadd64, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
--
--DEF_HELPER_FLAGS_4(gvec_sssub8, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
--DEF_HELPER_FLAGS_4(gvec_sssub16, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
--DEF_HELPER_FLAGS_4(gvec_sssub32, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
--DEF_HELPER_FLAGS_4(gvec_sssub64, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
--
--DEF_HELPER_FLAGS_4(gvec_usadd8, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
--DEF_HELPER_FLAGS_4(gvec_usadd16, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
--DEF_HELPER_FLAGS_4(gvec_usadd32, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
--DEF_HELPER_FLAGS_4(gvec_usadd64, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
--
--DEF_HELPER_FLAGS_4(gvec_ussub8, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
--DEF_HELPER_FLAGS_4(gvec_ussub16, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
--DEF_HELPER_FLAGS_4(gvec_ussub32, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
--DEF_HELPER_FLAGS_4(gvec_ussub64, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
--
--DEF_HELPER_FLAGS_4(gvec_smin8, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
--DEF_HELPER_FLAGS_4(gvec_smin16, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
--DEF_HELPER_FLAGS_4(gvec_smin32, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
--DEF_HELPER_FLAGS_4(gvec_smin64, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
--
--DEF_HELPER_FLAGS_4(gvec_smax8, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
--DEF_HELPER_FLAGS_4(gvec_smax16, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
--DEF_HELPER_FLAGS_4(gvec_smax32, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
--DEF_HELPER_FLAGS_4(gvec_smax64, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
--
--DEF_HELPER_FLAGS_4(gvec_umin8, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
--DEF_HELPER_FLAGS_4(gvec_umin16, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
--DEF_HELPER_FLAGS_4(gvec_umin32, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
--DEF_HELPER_FLAGS_4(gvec_umin64, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
--
--DEF_HELPER_FLAGS_4(gvec_umax8, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
--DEF_HELPER_FLAGS_4(gvec_umax16, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
--DEF_HELPER_FLAGS_4(gvec_umax32, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
--DEF_HELPER_FLAGS_4(gvec_umax64, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
--
--DEF_HELPER_FLAGS_3(gvec_neg8, TCG_CALL_NO_RWG, void, ptr, ptr, i32)
--DEF_HELPER_FLAGS_3(gvec_neg16, TCG_CALL_NO_RWG, void, ptr, ptr, i32)
--DEF_HELPER_FLAGS_3(gvec_neg32, TCG_CALL_NO_RWG, void, ptr, ptr, i32)
--DEF_HELPER_FLAGS_3(gvec_neg64, TCG_CALL_NO_RWG, void, ptr, ptr, i32)
--
--DEF_HELPER_FLAGS_3(gvec_abs8, TCG_CALL_NO_RWG, void, ptr, ptr, i32)
--DEF_HELPER_FLAGS_3(gvec_abs16, TCG_CALL_NO_RWG, void, ptr, ptr, i32)
--DEF_HELPER_FLAGS_3(gvec_abs32, TCG_CALL_NO_RWG, void, ptr, ptr, i32)
--DEF_HELPER_FLAGS_3(gvec_abs64, TCG_CALL_NO_RWG, void, ptr, ptr, i32)
--
--DEF_HELPER_FLAGS_3(gvec_not, TCG_CALL_NO_RWG, void, ptr, ptr, i32)
--DEF_HELPER_FLAGS_4(gvec_and, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
--DEF_HELPER_FLAGS_4(gvec_or, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
--DEF_HELPER_FLAGS_4(gvec_xor, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
--DEF_HELPER_FLAGS_4(gvec_andc, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
--DEF_HELPER_FLAGS_4(gvec_orc, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
--DEF_HELPER_FLAGS_4(gvec_nand, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
--DEF_HELPER_FLAGS_4(gvec_nor, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
--DEF_HELPER_FLAGS_4(gvec_eqv, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
--
--DEF_HELPER_FLAGS_4(gvec_ands, TCG_CALL_NO_RWG, void, ptr, ptr, i64, i32)
--DEF_HELPER_FLAGS_4(gvec_andcs, TCG_CALL_NO_RWG, void, ptr, ptr, i64, i32)
--DEF_HELPER_FLAGS_4(gvec_xors, TCG_CALL_NO_RWG, void, ptr, ptr, i64, i32)
--DEF_HELPER_FLAGS_4(gvec_ors, TCG_CALL_NO_RWG, void, ptr, ptr, i64, i32)
--
--DEF_HELPER_FLAGS_3(gvec_shl8i, TCG_CALL_NO_RWG, void, ptr, ptr, i32)
--DEF_HELPER_FLAGS_3(gvec_shl16i, TCG_CALL_NO_RWG, void, ptr, ptr, i32)
--DEF_HELPER_FLAGS_3(gvec_shl32i, TCG_CALL_NO_RWG, void, ptr, ptr, i32)
--DEF_HELPER_FLAGS_3(gvec_shl64i, TCG_CALL_NO_RWG, void, ptr, ptr, i32)
--
--DEF_HELPER_FLAGS_3(gvec_shr8i, TCG_CALL_NO_RWG, void, ptr, ptr, i32)
--DEF_HELPER_FLAGS_3(gvec_shr16i, TCG_CALL_NO_RWG, void, ptr, ptr, i32)
--DEF_HELPER_FLAGS_3(gvec_shr32i, TCG_CALL_NO_RWG, void, ptr, ptr, i32)
--DEF_HELPER_FLAGS_3(gvec_shr64i, TCG_CALL_NO_RWG, void, ptr, ptr, i32)
--
--DEF_HELPER_FLAGS_3(gvec_sar8i, TCG_CALL_NO_RWG, void, ptr, ptr, i32)
--DEF_HELPER_FLAGS_3(gvec_sar16i, TCG_CALL_NO_RWG, void, ptr, ptr, i32)
--DEF_HELPER_FLAGS_3(gvec_sar32i, TCG_CALL_NO_RWG, void, ptr, ptr, i32)
--DEF_HELPER_FLAGS_3(gvec_sar64i, TCG_CALL_NO_RWG, void, ptr, ptr, i32)
--
--DEF_HELPER_FLAGS_3(gvec_rotl8i, TCG_CALL_NO_RWG, void, ptr, ptr, i32)
--DEF_HELPER_FLAGS_3(gvec_rotl16i, TCG_CALL_NO_RWG, void, ptr, ptr, i32)
--DEF_HELPER_FLAGS_3(gvec_rotl32i, TCG_CALL_NO_RWG, void, ptr, ptr, i32)
--DEF_HELPER_FLAGS_3(gvec_rotl64i, TCG_CALL_NO_RWG, void, ptr, ptr, i32)
--
--DEF_HELPER_FLAGS_4(gvec_shl8v, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
--DEF_HELPER_FLAGS_4(gvec_shl16v, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
--DEF_HELPER_FLAGS_4(gvec_shl32v, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
--DEF_HELPER_FLAGS_4(gvec_shl64v, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
--
--DEF_HELPER_FLAGS_4(gvec_shr8v, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
--DEF_HELPER_FLAGS_4(gvec_shr16v, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
--DEF_HELPER_FLAGS_4(gvec_shr32v, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
--DEF_HELPER_FLAGS_4(gvec_shr64v, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
--
--DEF_HELPER_FLAGS_4(gvec_sar8v, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
--DEF_HELPER_FLAGS_4(gvec_sar16v, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
--DEF_HELPER_FLAGS_4(gvec_sar32v, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
--DEF_HELPER_FLAGS_4(gvec_sar64v, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
--
--DEF_HELPER_FLAGS_4(gvec_rotl8v, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
--DEF_HELPER_FLAGS_4(gvec_rotl16v, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
--DEF_HELPER_FLAGS_4(gvec_rotl32v, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
--DEF_HELPER_FLAGS_4(gvec_rotl64v, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
--
--DEF_HELPER_FLAGS_4(gvec_rotr8v, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
--DEF_HELPER_FLAGS_4(gvec_rotr16v, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
--DEF_HELPER_FLAGS_4(gvec_rotr32v, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
--DEF_HELPER_FLAGS_4(gvec_rotr64v, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
--
--DEF_HELPER_FLAGS_4(gvec_eq8, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
--DEF_HELPER_FLAGS_4(gvec_eq16, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
--DEF_HELPER_FLAGS_4(gvec_eq32, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
--DEF_HELPER_FLAGS_4(gvec_eq64, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
--
--DEF_HELPER_FLAGS_4(gvec_ne8, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
--DEF_HELPER_FLAGS_4(gvec_ne16, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
--DEF_HELPER_FLAGS_4(gvec_ne32, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
--DEF_HELPER_FLAGS_4(gvec_ne64, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
--
--DEF_HELPER_FLAGS_4(gvec_lt8, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
--DEF_HELPER_FLAGS_4(gvec_lt16, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
--DEF_HELPER_FLAGS_4(gvec_lt32, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
--DEF_HELPER_FLAGS_4(gvec_lt64, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
--
--DEF_HELPER_FLAGS_4(gvec_le8, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
--DEF_HELPER_FLAGS_4(gvec_le16, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
--DEF_HELPER_FLAGS_4(gvec_le32, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
--DEF_HELPER_FLAGS_4(gvec_le64, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
--
--DEF_HELPER_FLAGS_4(gvec_ltu8, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
--DEF_HELPER_FLAGS_4(gvec_ltu16, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
--DEF_HELPER_FLAGS_4(gvec_ltu32, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
--DEF_HELPER_FLAGS_4(gvec_ltu64, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
--
--DEF_HELPER_FLAGS_4(gvec_leu8, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
--DEF_HELPER_FLAGS_4(gvec_leu16, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
--DEF_HELPER_FLAGS_4(gvec_leu32, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
--DEF_HELPER_FLAGS_4(gvec_leu64, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, i32)
--
--DEF_HELPER_FLAGS_4(gvec_eqs8, TCG_CALL_NO_RWG, void, ptr, ptr, i64, i32)
--DEF_HELPER_FLAGS_4(gvec_eqs16, TCG_CALL_NO_RWG, void, ptr, ptr, i64, i32)
--DEF_HELPER_FLAGS_4(gvec_eqs32, TCG_CALL_NO_RWG, void, ptr, ptr, i64, i32)
--DEF_HELPER_FLAGS_4(gvec_eqs64, TCG_CALL_NO_RWG, void, ptr, ptr, i64, i32)
--
--DEF_HELPER_FLAGS_4(gvec_lts8, TCG_CALL_NO_RWG, void, ptr, ptr, i64, i32)
--DEF_HELPER_FLAGS_4(gvec_lts16, TCG_CALL_NO_RWG, void, ptr, ptr, i64, i32)
--DEF_HELPER_FLAGS_4(gvec_lts32, TCG_CALL_NO_RWG, void, ptr, ptr, i64, i32)
--DEF_HELPER_FLAGS_4(gvec_lts64, TCG_CALL_NO_RWG, void, ptr, ptr, i64, i32)
--
--DEF_HELPER_FLAGS_4(gvec_les8, TCG_CALL_NO_RWG, void, ptr, ptr, i64, i32)
--DEF_HELPER_FLAGS_4(gvec_les16, TCG_CALL_NO_RWG, void, ptr, ptr, i64, i32)
--DEF_HELPER_FLAGS_4(gvec_les32, TCG_CALL_NO_RWG, void, ptr, ptr, i64, i32)
--DEF_HELPER_FLAGS_4(gvec_les64, TCG_CALL_NO_RWG, void, ptr, ptr, i64, i32)
--
--DEF_HELPER_FLAGS_4(gvec_ltus8, TCG_CALL_NO_RWG, void, ptr, ptr, i64, i32)
--DEF_HELPER_FLAGS_4(gvec_ltus16, TCG_CALL_NO_RWG, void, ptr, ptr, i64, i32)
--DEF_HELPER_FLAGS_4(gvec_ltus32, TCG_CALL_NO_RWG, void, ptr, ptr, i64, i32)
--DEF_HELPER_FLAGS_4(gvec_ltus64, TCG_CALL_NO_RWG, void, ptr, ptr, i64, i32)
--
--DEF_HELPER_FLAGS_4(gvec_leus8, TCG_CALL_NO_RWG, void, ptr, ptr, i64, i32)
--DEF_HELPER_FLAGS_4(gvec_leus16, TCG_CALL_NO_RWG, void, ptr, ptr, i64, i32)
--DEF_HELPER_FLAGS_4(gvec_leus32, TCG_CALL_NO_RWG, void, ptr, ptr, i64, i32)
--DEF_HELPER_FLAGS_4(gvec_leus64, TCG_CALL_NO_RWG, void, ptr, ptr, i64, i32)
--
--DEF_HELPER_FLAGS_5(gvec_bitsel, TCG_CALL_NO_RWG, void, ptr, ptr, ptr, ptr, i32)
 diff --git a/include/exec/helper-gen-common.h b/include/exec/helper-gen-common.h
-index ed5521ad881..fa571d88147 100644
+index 73e979a35f3..5943a3aedf0 100644
 --- a/include/exec/helper-gen-common.h
 +++ b/include/exec/helper-gen-common.h
-@@ -15,4 +15,8 @@
+@@ -19,6 +19,14 @@
  #include "exec/helper-gen.h.inc"
  #undef  HELPER_H
  
-+#define HELPER_H "accel/tcg/tcg-runtime-gvec.h"
++#define HELPER_H "accel/tcg/ldst_common.h"
 +#include "exec/helper-gen.h.inc"
 +#undef  HELPER_H
 +
- #endif /* HELPER_GEN_COMMON_H */
++#define HELPER_H "accel/tcg/atomic_common.h"
++#include "exec/helper-gen.h.inc"
++#undef  HELPER_H
++
+ #define HELPER_H "accel/tcg/tcg-runtime-gvec.h"
+ #include "exec/helper-gen.h.inc"
+ #undef  HELPER_H
 diff --git a/include/exec/helper-proto-common.h b/include/exec/helper-proto-common.h
-index 28afa7782d0..1b098777e8d 100644
+index 3c32f95f4c1..eabe7828047 100644
 --- a/include/exec/helper-proto-common.h
 +++ b/include/exec/helper-proto-common.h
-@@ -17,6 +17,10 @@
+@@ -21,6 +21,14 @@
  #include "exec/helper-proto.h.inc"
  #undef  HELPER_H
  
-+#define HELPER_H "accel/tcg/tcg-runtime-gvec.h"
++#define HELPER_H "accel/tcg/ldst_common.h"
 +#include "exec/helper-proto.h.inc"
 +#undef  HELPER_H
 +
- #include "accel/tcg/getpc.h"
- 
- #endif /* HELPER_PROTO_COMMON_H */
++#define HELPER_H "accel/tcg/atomic_common.h"
++#include "exec/helper-proto.h.inc"
++#undef  HELPER_H
++
+ #define HELPER_H "accel/tcg/tcg-runtime-gvec.h"
+ #include "exec/helper-proto.h.inc"
+ #undef  HELPER_H
 -- 
 2.52.0.windows.1
 

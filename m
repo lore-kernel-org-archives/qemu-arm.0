@@ -4,69 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E16AAC9831E
-	for <qemu-arm@archiver.kernel.org>; Sat, 26 Sep 2026 07:08:55 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B3E7CC98328
+	for <qemu-arm@archiver.kernel.org>; Sat, 26 Sep 2026 07:08:59 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xAMVH-0000Rx-MR; Sat, 26 Sep 2026 03:07:25 -0400
+	id 1xAMW2-0002WK-Ry; Sat, 26 Sep 2026 03:08:11 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <luoyonggang@gmail.com>)
- id 1xAMS3-0005Ww-RJ
- for qemu-arm@nongnu.org; Sat, 26 Sep 2026 03:04:09 -0400
-Received: from mail-dy2-x10.google.com ([2607:f8b0:4864:36::10])
+ id 1xAMS9-0005Zy-Qd
+ for qemu-arm@nongnu.org; Sat, 26 Sep 2026 03:04:15 -0400
+Received: from mail-dy2-x0e.google.com ([2607:f8b0:4864:36::e])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <luoyonggang@gmail.com>)
- id 1xAMRz-0000h2-Bn
- for qemu-arm@nongnu.org; Sat, 26 Sep 2026 03:04:02 -0400
-Received: by mail-dy2-x10.google.com with SMTP id
- 5a478bee46e88-33be7dfcfc1so2110292eec.1
- for <qemu-arm@nongnu.org>; Sat, 26 Sep 2026 00:03:58 -0700 (PDT)
+ id 1xAMS6-0000i2-O9
+ for qemu-arm@nongnu.org; Sat, 26 Sep 2026 03:04:08 -0400
+Received: by mail-dy2-x0e.google.com with SMTP id
+ 5a478bee46e88-3429bca3880so926060eec.3
+ for <qemu-arm@nongnu.org>; Sat, 26 Sep 2026 00:04:06 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20251104; t=1790406238; x=1791011038; darn=nongnu.org;
+ d=gmail.com; s=20251104; t=1790406245; x=1791011045; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to:content-type;
- bh=qCXIFUQwlVnS7FqE0wXM3scWpVNsZr5+GJNgga1dkVI=;
- b=LzaZGrGuq955ASToIs59s71h7MI6S2QKxTySRo5dmv8RUmY08GEfLJG6UoGokdVoSJ
- 1rp67tSRlOvAU1LUSLWDgricPWCcdJCuASMopFgrY1WdOLnNh4l9eHpIlPpLOc0K9TTk
- JjfGTmfv6RcPFPyjZWZhQmLeZeTxh9YcUaOpkL48N5NUVbNZ4CVYjKUG65U5/i7BpFf9
- S9APD2aoe2QOUDi9PeXBfVLx3eBYv6dSyaYRCYxKeA1MjoLbZK1etTpXNrysQxnO404k
- l3VQmpKKVy4C6qAA+ujTMx0P16BxJZLqgMLpCZlwC5/H3ZV0qeimi6p9NdUQWX+bFZ9O
- +2hQ==
+ bh=HQgaQ3pRlQZWTe+kZSuEPjW/N+yjSW5+B1zpZJSKnLc=;
+ b=Knn3nu/wtMFOMIx/KjBn2hMaV1fwTFKy05NruLC5V9jSszCmPsBTU2xMTGtRcUlmJZ
+ SGOfbH/t8akw29iq+sVUM2KaFfahbiSVo+jlAhLs8/nRmhe7kg71gfIhwpHj4WS280xq
+ bXHs39HH5ItbPXae8JZdT/3lRqfEUfBnGl7uj/8+2gzF7TZEoxMfmJDoBZpOGtleuDw4
+ CTOBniown60WBjsaxWsqpyKoehGe20RaQNnGRLXINHiDGxVTc04NTyIdjZC79E0Qyb+0
+ 5Zrf73WGAtzHOQj+kD2DjQsgRVgP1wDx5N4YDudHd9INkMLZTJCuDAZPbKaEy0l5sv/B
+ K7/w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20260707; t=1790406238; x=1791011038;
+ d=1e100.net; s=20260707; t=1790406245; x=1791011045;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
  :to:cc:subject:date:message-id:reply-to:content-type;
- bh=qCXIFUQwlVnS7FqE0wXM3scWpVNsZr5+GJNgga1dkVI=;
- b=nWCYt/hkYJoI0+CDjXe2pJWKbw3Ok2n/nMabLSCEsHAMVSMdu6Wrlq5PYY2f3uqlfD
- 40HsBfRffihLGgXMWsqh8Vy3LW65GMgLvhDioV/B3wNFWqIl5CQTNlFrADueudp4V6tg
- OlYlBEgP4+4VyAZdkocu9fWV3Wh6tcZjZSrwLBh0Dl/U63sIuPAEBdfeVbQrCelh6Cf3
- t7689+hjg7fYuzrs6XFwxoERKup4ir3yd3JBn1sUwGI+MN49V7jXaQktIAfvWUEjGkjn
- XDvYQ4gBAkOb5aWQ92QrXyTp7O4T5bJij1C+ufw6tndwUHHf8g4lC+ByiZVR42Ly9kQ8
- QC5A==
+ bh=HQgaQ3pRlQZWTe+kZSuEPjW/N+yjSW5+B1zpZJSKnLc=;
+ b=LjRB51DGedSOEX6oKA25d6K3XWOxfOJGETD6eilup9BScTHNFK9WALioPcItVDxii1
+ klmT3tIzEJaY3EJTjuTK8XznGV7ki8G8hCdrWG46Lc+E7Gq/SelaWnRiIZ1anm/Cc0TE
+ iGZzjWSS1Tca7bVP//TxbQNMyuLcdQ14BhGSYFLPfLooG+LwhZbLETYW8AnlOK2rbend
+ 2bD6+8RbYT3Ujyfzv8uJegRbiGiZfxRHwITETPqSdBf/90NcWR5tlDFDe+kecVKThg/P
+ FjHXAQRTgPj8WG3WWwJbNlgOr+m8WJXMi6gC1XuoqMVVU/Fz7yIthmWRxQ7s+VaQskU2
+ UotQ==
 X-Forwarded-Encrypted: i=1;
- AKwUvByYXLgbfYo8XNsGqldu2k34En7yzfjr22uKDh++iXA8XuCZTLZMhixJMc6g4Ykhl8OlojnlcrxJCQ==@nongnu.org
-X-Gm-Message-State: AFuF++ma6af6Kdpocr8bQYFhcl7gBGO1IqHX6nfa8fLzA4X9vaqIrl/U
- L6ALvWgEkMg9FMmSYTRVYDQV/PW7ufGTJNxUVH7gfN+TC0VAwSyYwXSq
-X-Gm-Gg: AYBFou09td/0Cda6x+GRs4/u1f8XM6r1Mr/dU0DmJkpn4Sr9W5VGAfYzvbxKu+zez0d
- SPl3nPSKxmeeN7e5ruGOCfhkUVuufwbWG2K19yEJUPeNog/EmUXBeisK1Pw7/xW5A0aMNl0SqRL
- vizGJnugVcFE9hEeK9Ztz1JHoTA4Lbj4qBjs8jtbSOxEFrkWuyLt4K4lV3r3eMnXC+942vkek9F
- J3OaA9s6pDypYSvO+YBXHjWxPaojrYYTe32+aznLlNtv13NQ412/DX3dTZYci1diJLFSTvl5uXy
- DbXy+1wgrTv10JF2MxIiAabMAnk0WLWP5NCqoH8awMUFuS8eAyN+59VkF5qHohzfWOTvvBraHMm
- huaPlxkMk6bbcu9InTMNfH4y55OboqlaB6ZELoE2lrJS69UVAhJgrHyVUGdDmVNAPdtlzs1l+Vr
- Sx1A4UhZ0Y+0APrAl5hZeEzocVGIH7+9YCLzJFmdkFmQWX/ZyZ4boAQfNlvP1EqUHsmrtsU+H1K
- 7KHrfFyrNZ8TWPojDzVanOguagKCXU=
-X-Received: by 2002:a05:7300:d0a7:b0:33b:dab1:d6b5 with SMTP id
- 5a478bee46e88-342705aee26mr2037757eec.11.1790406237841; 
- Sat, 26 Sep 2026 00:03:57 -0700 (PDT)
+ AKwUvBy8wfWSgLy4JvTO9O7WrpH9zdQUhs5dyheIS3tZGw5urJV3oAd5U/RJXzVGHdEc9BI1Fp8rBQyqcQ==@nongnu.org
+X-Gm-Message-State: AFuF++nvpHvLrIsLJA6c1oFrGFbAJIVs87lgdvNmEJaTS90zyVvpzbPr
+ 9lSc3zGVCxIaAZamxav1m+CC7G20cv6lbx+WZYijES0uPRx1ev43YF7F
+X-Gm-Gg: AYBFou3QBCKF7wCo/fQDPsUdTOa//qO/hMM7qZY+j9RxwHZPhwHvs2Ph9xPAJWypX2o
+ XHtvWKQJ7j233q70PGxOuYlIX43cWZZMJb/e0cV9PLijzEWGexrXL3HuYIKoWBxZHtiO9TQRcnQ
+ hlwoNfD+ArA5Z26oZnLoWOKVNtpBqPzbHu/WTvoAoVptziet1wK4VX/cF1/NHhPbaKF1C4p9EGs
+ WyO81szLQaaT9MDpfrUjkH5g+9g8B22V52nv97sm3NHuPFZAlZUs2ubVLvXQdsSEk5aFKlG99Rd
+ S/ly8He1Uss9UWBmvzE7piDrfmf55VG2UdUAvBwWozNmdbz1s7Mz7DkBIZmd2Bypa/Ez5FzfmRD
+ YuekpbVvVSfDrINtf+rk1iDV40kqhQgenhhqZ2pfEhktfYegjJdzEqyuCwV+8O42eJ7DHrnO1g6
+ bNaJz3PR3/KJQRWAMt0oo4cCkLnVw5z+7+dzzFuwbgP1VftFjht0bJJwJs82CwQOCjJ9TkIf5Oy
+ 1iXYJD4gQ5ZBKyJdvgCMgCIdXdx5Og=
+X-Received: by 2002:a05:7301:7191:b0:33c:35ec:c2b4 with SMTP id
+ 5a478bee46e88-34271a9026dmr2161927eec.24.1790406245422; 
+ Sat, 26 Sep 2026 00:04:05 -0700 (PDT)
 Received: from WIN-BH9M8FJACR9 ([103.94.185.75])
  by smtp.googlemail.com with ESMTPSA id
- 5a478bee46e88-34145c166cfsm10615141eec.28.2026.09.26.00.03.54
+ 5a478bee46e88-34145c166cfsm10615141eec.28.2026.09.26.00.04.02
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sat, 26 Sep 2026 00:03:57 -0700 (PDT)
+ Sat, 26 Sep 2026 00:04:04 -0700 (PDT)
 From: Yonggang Luo <luoyonggang@gmail.com>
 To: qemu-devel@nongnu.org
 Cc: Richard Henderson <richard.henderson@linaro.org>,
@@ -80,17 +80,16 @@ Cc: Richard Henderson <richard.henderson@linaro.org>,
  Peter Maydell <peter.maydell@linaro.org>,
  =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
  qemu-arm@nongnu.org, kvm@vger.kernel.org
-Subject: [PATCH v4 44/55] target-info: select combined qemu-system target by
- name
-Date: Sat, 26 Sep 2026 15:00:43 +0800
-Message-ID: <20260926070057.1234-45-luoyonggang@gmail.com>
+Subject: [PATCH v4 46/55] qapi: add query-targets
+Date: Sat, 26 Sep 2026 15:00:45 +0800
+Message-ID: <20260926070057.1234-47-luoyonggang@gmail.com>
 X-Mailer: git-send-email 2.52.0.windows.1
 In-Reply-To: <20260926070057.1234-1-luoyonggang@gmail.com>
 References: <20260926070057.1234-1-luoyonggang@gmail.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:36::10;
- envelope-from=luoyonggang@gmail.com; helo=mail-dy2-x10.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:36::e;
+ envelope-from=luoyonggang@gmail.com; helo=mail-dy2-x0e.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -112,254 +111,109 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-The combined qemu-system binary can select a registered target by
-name, or stay on SYS_EMU_TARGET_NONE. A single-target binary does
-not switch target.
-
-The none entry is the same target-info-def.c stub as other targets,
-compiled with TARGET_BASE_ARCH NONE. target/none/cpu.h supplies
-ArchCPU for that stub, and cpu-param.h sets
-TARGET_VIRT_ADDR_SPACE_BITS. TYPE_NONE_CPU is NULL because there is
-no none CPU QOM type.
-
-type_register_internal() keeps types on the combined binary and
-filters them with TypeInfo.is_available. A single-target binary
-still omits types that cannot run.
+query-targets lists each linked target, including none, with its
+arch, endianness, and the machines that target accepts.
 
 Signed-off-by: Yonggang Luo <luoyonggang@gmail.com>
 ---
- include/qemu/target-info-select.h | 24 +++++++++++++++++++++
- meson.build                       | 35 +++++++++++++++++++++++++++++++
- qom/object.c                      |  8 ++++++-
- stubs/meson.build                 |  1 +
- stubs/target-info-select.c        | 14 +++++++++++++
- system/target-info-select.c       | 26 +++++++++++++++++++++++
- target/none/cpu-param.h           |  7 +++++++
- target/none/cpu-qom.h             |  6 ++++++
- target/none/cpu.h                 | 18 ++++++++++++++++
- 9 files changed, 138 insertions(+), 1 deletion(-)
- create mode 100644 include/qemu/target-info-select.h
- create mode 100644 stubs/target-info-select.c
- create mode 100644 system/target-info-select.c
- create mode 100644 target/none/cpu-param.h
- create mode 100644 target/none/cpu-qom.h
- create mode 100644 target/none/cpu.h
+ hw/core/machine-qmp-cmds.c | 30 ++++++++++++++++++++++++++++++
+ qapi/machine.json          | 35 +++++++++++++++++++++++++++++++++++
+ 2 files changed, 65 insertions(+)
 
-diff --git a/include/qemu/target-info-select.h b/include/qemu/target-info-select.h
-new file mode 100644
-index 00000000000..0659bb47567
---- /dev/null
-+++ b/include/qemu/target-info-select.h
-@@ -0,0 +1,24 @@
-+#ifndef QEMU_TARGET_INFO_SELECT_H
-+#define QEMU_TARGET_INFO_SELECT_H
-+
-+/**
-+ * target_combined_binary:
-+ *
-+ * Returns: %true if this is the combined qemu-system binary.
-+ */
-+bool target_combined_binary(void);
-+
-+typedef struct Error Error;
-+
-+/**
-+ * target_info_select_by_name:
-+ * @name: target_name to select, or NULL
-+ * @errp: error location
-+ *
-+ * Combined qemu-system only. NULL selects "none". Every name, including
-+ * "none", is looked up in target_info_list(). The stub is a no-op on
-+ * single-target binaries.
-+ */
-+void target_info_select_by_name(const char *name, Error **errp);
-+
-+#endif
-diff --git a/meson.build b/meson.build
-index 7ab5c7971a8..96f493cb746 100644
---- a/meson.build
-+++ b/meson.build
-@@ -4618,6 +4618,41 @@ if single_binary_available
-   endforeach
-   single_binary_objects += single_binary_target_info_objects
- 
-+  none_config_target_data = configuration_data()
-+  none_config_target_data.set_quoted('TARGET_NAME', 'none')
-+  none_config_target_data.set('TARGET_ARCH', 'NONE')
-+  none_config_target_data.set('TARGET_BASE_ARCH', 'NONE')
-+  none_config_target_data.set('TARGET_LONG_BITS', 64)
-+  none_config_target_data.set('TARGET_BIG_ENDIAN', 0)
-+  none_config_target_h = configure_file(output: 'none-config-target.h',
-+                                        configuration: none_config_target_data)
-+  none_config_devices_data = configuration_data()
-+  foreach k, v : single_binary_config
-+    if v == 'y'
-+      none_config_devices_data.set(k, 1)
-+    endif
-+  endforeach
-+  none_config_devices_h = configure_file(output: 'none-config-devices.h',
-+                                         configuration: none_config_devices_data)
-+  qemu_none_ss = ss.source_set()
-+  qemu_none_ss.add(files('system/target-info-select.c'))
-+  qemu_none_ss.add(target_info_def)
-+  qemu_none_src = qemu_none_ss.apply(single_binary_config, strict: false)
-+  qemu_none = static_library('qemu-none',
-+                             sources: qemu_none_src.sources() + genh +
-+                                      [none_config_target_h,
-+                                       none_config_devices_h],
-+                             dependencies: qemu_none_src.dependencies(),
-+                             include_directories: include_directories(
-+                               'target' / 'none'),
-+                             c_args: [
-+                               '-DCOMPILING_PER_TARGET',
-+                               '-DCONFIG_TARGET="none-config-target.h"',
-+                               '-DCONFIG_DEVICES="none-config-devices.h"',
-+                             ],
-+                             build_by_default: false)
-+  single_binary_objects += qemu_none.extract_objects(qemu_none_src.sources())
-+
-   single_binary_link_args = emulator_link_args
-   single_binary_link_args += enable_modules ? ['@block.syms', '@qemu.syms'] : []
-   qemu_system_name = 'qemu-system'
-diff --git a/qom/object.c b/qom/object.c
-index 76b0b0806b3..2ce6c369df5 100644
---- a/qom/object.c
-+++ b/qom/object.c
-@@ -16,6 +16,7 @@
- #include "qom/object.h"
- #include "qom/object_interfaces.h"
- #include "qemu/target-info-qapi.h"
-+#include "qemu/target-info-select.h"
- #include "qemu/cutils.h"
- #include "qemu/memalign.h"
- #include "qapi/visitor.h"
-@@ -171,7 +172,12 @@ static TypeImpl *type_register_internal(const TypeInfo *info)
-         abort();
-     }
- 
--    if (info->is_available && !info->is_available(target_info())) {
-+    /*
-+     * Single-target binaries omit types that cannot run. The combined
-+     * binary keeps them and filters with is_available per target.
-+     */
-+    if (!target_combined_binary() && info->is_available &&
-+        !info->is_available(target_info())) {
-         return NULL;
-     }
- 
-diff --git a/stubs/meson.build b/stubs/meson.build
-index 29b6644b254..3765537778d 100644
---- a/stubs/meson.build
-+++ b/stubs/meson.build
-@@ -3,6 +3,7 @@
- # below, so that it is clear who needs the stubbed functionality.
- 
- stub_ss.add(files('cpu-get-clock.c'))
-+stub_ss.add(files('target-info-select.c'))
- stub_ss.add(files('fdset.c'))
- stub_ss.add(files('iothread-lock.c'))
- stub_ss.add(files('is-daemonized.c'))
-diff --git a/stubs/target-info-select.c b/stubs/target-info-select.c
-new file mode 100644
-index 00000000000..5c9e8dc6e19
---- /dev/null
-+++ b/stubs/target-info-select.c
-@@ -0,0 +1,14 @@
-+#include "qemu/osdep.h"
-+#include "qemu/target-info-select.h"
-+#include "qapi/error.h"
-+
-+bool target_combined_binary(void)
-+{
-+    return false;
-+}
-+
-+void target_info_select_by_name(const char *name, Error **errp)
-+{
-+    (void)name;
-+    (void)errp;
-+}
-diff --git a/system/target-info-select.c b/system/target-info-select.c
-new file mode 100644
-index 00000000000..4b4a9fdf256
---- /dev/null
-+++ b/system/target-info-select.c
-@@ -0,0 +1,26 @@
-+#include "qemu/osdep.h"
+diff --git a/hw/core/machine-qmp-cmds.c b/hw/core/machine-qmp-cmds.c
+index 9c08b17510a..c7b73efa31d 100644
+--- a/hw/core/machine-qmp-cmds.c
++++ b/hw/core/machine-qmp-cmds.c
+@@ -21,6 +21,7 @@
+ #include "qapi/qobject-input-visitor.h"
+ #include "qapi/type-helpers.h"
+ #include "qemu/uuid.h"
 +#include "qemu/target-info-def.h"
-+#include "qemu/target-info-select.h"
-+#include "qapi/error.h"
-+
-+bool target_combined_binary(void)
+ #include "qemu/target-info.h"
+ #include "qemu/target-info-qapi.h"
+ #include "qom/qom-qobject.h"
+@@ -173,6 +174,35 @@ QemuTargetInfo *qmp_query_target(Error **errp)
+     return info;
+ }
+ 
++TargetMachinesList *qmp_query_targets(Error **errp)
 +{
-+    return true;
-+}
-+
-+void target_info_select_by_name(const char *name, Error **errp)
-+{
++    TargetMachinesList *head = NULL;
++    TargetMachinesList **tail = &head;
++    GSList *machines, *el;
 +    TargetInfoNode *node;
 +
-+    if (!name) {
-+        name = "none";
-+    }
-+
++    machines = object_class_get_list(TYPE_MACHINE, false);
 +    QLIST_FOREACH(node, target_info_list(), next) {
-+        if (!strcmp(name, node->info->target_name)) {
-+            target_info_select(node->info);
-+            return;
++        const TargetInfo *ti = node->info;
++        TargetMachines *row = g_new0(TargetMachines, 1);
++        strList **names = &row->machines;
++
++        row->arch = ti->target_arch;
++        row->endianness = ti->endianness;
++        for (el = machines; el; el = el->next) {
++            MachineClass *mc = el->data;
++
++            if (!object_class_get_is_available(OBJECT_CLASS(mc))(ti)) {
++                continue;
++            }
++            QAPI_LIST_APPEND(names, g_strdup(mc->name));
 +        }
++        QAPI_LIST_APPEND(tail, row);
 +    }
-+    error_setg(errp, "target '%s' is not available", name);
++    g_slist_free(machines);
++    return head;
 +}
-diff --git a/target/none/cpu-param.h b/target/none/cpu-param.h
-new file mode 100644
-index 00000000000..3c0818a2f02
---- /dev/null
-+++ b/target/none/cpu-param.h
-@@ -0,0 +1,7 @@
-+#ifndef NONE_CPU_PARAM_H
-+#define NONE_CPU_PARAM_H
 +
-+#define TARGET_PAGE_BITS 9
-+#define TARGET_VIRT_ADDR_SPACE_BITS 64
+ HotpluggableCPUList *qmp_query_hotpluggable_cpus(Error **errp)
+ {
+     MachineState *ms = MACHINE(qdev_get_machine());
+diff --git a/qapi/machine.json b/qapi/machine.json
+index 6aaa2af709a..d8cdea6203e 100644
+--- a/qapi/machine.json
++++ b/qapi/machine.json
+@@ -307,6 +307,41 @@
+ ##
+ { 'command': 'query-target', 'returns': 'QemuTargetInfo' }
+ 
++##
++# @TargetMachines:
++#
++# One registered system target and the machines that can run on it.
++#
++# @arch: the target architecture
++#
++# @endianness: the target endianness
++#
++# @machines: machine type names, not aliases
++#
++# Since: 11.2
++##
++{ 'struct': 'TargetMachines',
++  'data': { 'arch': 'SysEmuTarget',
++            'endianness': 'EndianMode',
++            'machines': ['str'] } }
 +
-+#endif
-diff --git a/target/none/cpu-qom.h b/target/none/cpu-qom.h
-new file mode 100644
-index 00000000000..114faa8077a
---- /dev/null
-+++ b/target/none/cpu-qom.h
-@@ -0,0 +1,6 @@
-+#ifndef QEMU_NONE_CPU_QOM_H
-+#define QEMU_NONE_CPU_QOM_H
++##
++# @query-targets:
++#
++# Return each target linked into this QEMU binary and the machines
++# whose availability check accepts that target.
++#
++# Since: 11.2
++#
++# .. qmp-example::
++#
++#     -> { "execute": "query-targets" }
++#     <- { "return": [ { "arch": "aarch64", "endianness": "little",
++#                        "machines": [ "virt" ] } ] }
++##
++{ 'command': 'query-targets',
++  'returns': ['TargetMachines'] }
 +
-+#define TYPE_NONE_CPU NULL
-+
-+#endif
-diff --git a/target/none/cpu.h b/target/none/cpu.h
-new file mode 100644
-index 00000000000..ffb9a0d28dc
---- /dev/null
-+++ b/target/none/cpu.h
-@@ -0,0 +1,18 @@
-+#ifndef QEMU_NONE_CPU_H
-+#define QEMU_NONE_CPU_H
-+
-+#include "cpu-qom.h"
-+#include "hw/core/cpu.h"
-+
-+#define CPU_RESOLVING_TYPE TYPE_NONE_CPU
-+
-+typedef struct CPUArchState {
-+    uint64_t unused;
-+} CPUArchState;
-+
-+struct ArchCPU {
-+    CPUState parent_obj;
-+    CPUArchState env;
-+};
-+
-+#endif
+ ##
+ # @UuidInfo:
+ #
 -- 
 2.52.0.windows.1
 

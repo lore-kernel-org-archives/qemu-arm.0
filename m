@@ -4,69 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AEF71C98338
-	for <qemu-arm@archiver.kernel.org>; Sat, 26 Sep 2026 11:09:13 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C8182C98318
+	for <qemu-arm@archiver.kernel.org>; Sat, 26 Sep 2026 11:09:35 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xAQH0-00084W-Me; Sat, 26 Sep 2026 07:08:55 -0400
+	id 1xAQGe-0007zF-JJ; Sat, 26 Sep 2026 07:08:32 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <luoyonggang@gmail.com>)
- id 1xAQGu-00082u-Lw
- for qemu-arm@nongnu.org; Sat, 26 Sep 2026 07:08:50 -0400
-Received: from mail-dl2-x0f.google.com ([2607:f8b0:4864:38::f])
+ id 1xAQGd-0007yq-3m
+ for qemu-arm@nongnu.org; Sat, 26 Sep 2026 07:08:31 -0400
+Received: from mail-dl2-x0e.google.com ([2607:f8b0:4864:38::e])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <luoyonggang@gmail.com>)
- id 1xAQGt-0002ke-2l
- for qemu-arm@nongnu.org; Sat, 26 Sep 2026 07:08:48 -0400
-Received: by mail-dl2-x0f.google.com with SMTP id
- a92af1059eb24-145047ad220so591249c88.3
- for <qemu-arm@nongnu.org>; Sat, 26 Sep 2026 04:08:46 -0700 (PDT)
+ id 1xAQGb-0002j6-At
+ for qemu-arm@nongnu.org; Sat, 26 Sep 2026 07:08:30 -0400
+Received: by mail-dl2-x0e.google.com with SMTP id
+ a92af1059eb24-144ee9debe9so1579599c88.0
+ for <qemu-arm@nongnu.org>; Sat, 26 Sep 2026 04:08:28 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20251104; t=1790420926; x=1791025726; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:from:to:cc:subject:date
- :message-id:reply-to:content-type;
- bh=guuk/GU2+6svkxqusCAEMJJEdeLkWutsxCBXdBcfQM0=;
- b=KbzpJANR2X4BdWMVG0sJeiF8+TfaXtbJZ2ETcfziNfVV8i2Bu99jTfJoLUtSefrrmt
- 0pRq3lONT4WI3g79kofEUZecc4fg1JUxRLNg+h3AeLSo5OhU60qIpc6oJPx0U4pT5AHz
- qcUiRqNgCr9wZWNa3aVAtlOUftEtDG9UA+TRjEhqPbQHsGsZ4+pk3xnN6qthlPO1RQ87
- j1n9C7ix+TLfwLqGzuE10CD6NqrzVjTBEvdwwwXxRH6uXQzXAPgz62it5baMVFepqVJD
- kzRbeLFBHBaWdhj6FdFXs9GxgSzA5/ytfUwIgHenlzsK0wCnMuD1gQnarzL1tPEuy3Az
- Actg==
+ d=gmail.com; s=20251104; t=1790420908; x=1791025708; darn=nongnu.org;
+ h=content-transfer-encoding:content-type:mime-version:message-id:date
+ :subject:cc:to:from:from:to:cc:subject:date:message-id:reply-to
+ :content-type; bh=iTUw37RZ2rQmplsSv2IkOJUv3J4TNp7i7p/qBLIspCY=;
+ b=p9sHDE4TVkklut+T64U6+tfvMRg7rvGsQ3Mu0ueFodeEs2mKfizRJubQ6LCg1VGqM/
+ aYcZGKcsJCKPNDi8Uqh+vhuhWekng0lf8a4ASqkdMJfJFIVEe7ZOBAg28VadHxmbjVvT
+ /cYGmozZboWC7GiD0SP+ikR6CRGgap5akElyGV4qSRn4cHy/lj6sZCaFtL0hMWGzjIia
+ hxOuVl4FBSSXU2o5ofEBtS0X0PydRP9RCaOp420Mkkah3SticdsCWsw/GBZYVuceNVlf
+ w86X7S7tsCDbPn0gWzsM6ji4eo4kNZfAIk+syfAWkJg2w9dKU4ZCoYq5eu0EtQ4uHLBZ
+ Gxag==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20260707; t=1790420926; x=1791025726;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
- :to:cc:subject:date:message-id:reply-to:content-type;
- bh=guuk/GU2+6svkxqusCAEMJJEdeLkWutsxCBXdBcfQM0=;
- b=UoTSIhs8jwRcHLTz8PtCqcPDGlPpuc9gR6auxhtHHGjJz+DXLyrjy1Z+wiU6DcpN2A
- bybIzCSweJvVWcEaM7aRzuQ/jgtrEpiNOqJikKftTCMZ6TzL8wC32eqPOuWHkmy2ih7K
- 9B6LbRMBQibZ3AGSHvYHfWP4SEv/0Q85Ucd7cDHnyXj+8oyQmJQC4ESXr6rq9vwS8AjO
- ZWMERn+O+oTDSh/S6qA3kfFDYEU5XiAxB4pwulczUfLf0nfwviWT93DeltTx2aFy0/Ks
- ePqrd9ANqxdqL9RkQdBvvv29q1n37MtIKvXtDew4orZoDjXdSE5IQ0VuX0Ij0pomW/Xz
- H6yw==
+ d=1e100.net; s=20260707; t=1790420908; x=1791025708;
+ h=content-transfer-encoding:content-type:mime-version:message-id:date
+ :subject:cc:to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject
+ :date:message-id:reply-to:content-type;
+ bh=iTUw37RZ2rQmplsSv2IkOJUv3J4TNp7i7p/qBLIspCY=;
+ b=SQMiQUU1oCqg5bqg6v1YV59lBb+XKK86APGJ43ayR2YNQqnUPFYbf5joyE6InnL4LH
+ nrjNm7CEOzIY7b5DTeYcWOADZKJT93kzkKPhIZQb/B6LqjEHWADirG9krPkd7ZOAhIWS
+ rDwu8AcM24mxs2CN0GIMAfsCCn5bwF9CI547ABfjpchvMIg0Cu/QwgZSvxxrAg/WljIk
+ imTmBTOl45V5SL+q73JkAykxvB1G3qX/wlMdfY03OGbSsumnsAmN6YO1xNZw3kuQ31a3
+ L2ZDmu/2JMXbCW97GNBEt3CPaHvvvuegSFgXLekX9iM0xeXUKutuCVKF1GelycSce/UA
+ tGoQ==
 X-Forwarded-Encrypted: i=1;
- AKwUvBySp/77kN+IojwPH/+tfl88d9KR3QmxCsWSQK4PZF/NeTwUl0iEdQqh9oPx1sJouPAPfTQh1AYn4g==@nongnu.org
-X-Gm-Message-State: AFuF++nr/h17p5B0jFBiPmlN9WPjoXJBOBf0PzMBuE7uOy4b6tJcbx4F
- ZPvUeDKsTFLlIF7Xo1kcviFpLy9p9KZ5SKJucmdQ9TMYNL7gcvv6k8UQ
-X-Gm-Gg: AYBFou1RJ4tP6nLM/N4GV7dKd/P/nEmLs/rRe/Me2/EO2uGE56dajSaJJH9Ciy2x17G
- DPLqhhHpdF4Uj1g+kCpG4P9PPPYXoKpFbAUjYNYrUAugQpEvA3qctANuLscNc6gsGc3uQIPn2rc
- xYUfKTTDDQW3ThyHWuXzWyz9hd8auQSi8d7ENEfi3kYoBaoUhAHtjoOpgisAnKyc5yq1JM6Yn5G
- KeXcCxuwuWePrR62iObaTGkzyLU/hia4bPD99Kg0lcqmNtNXhqt/UyusM1jAAOPXmLIcv+r6RGT
- XXmQdMUcsqu5NTPW/uHjydS6+aPKO8THiydND4grOiTmw8NpIf8drQXsQFvZ4Uyo8QJv+WxYlHQ
- 5GpKxy19eD7vD6/y7PC1DtF6KmjnDssJ3hdY9v1q41ybyVMRRTxMeyUIW3U3pRZXluNP2qgU0ui
- MZ+2sJRKoLqbCDu9RoGHvH9YX8wxgspurdcgvR4vggpjgowDH3yyXfzbClLxo7IsMzQUxJOL71B
- /csxcG5jSghRFhlBlKE2aZhHq27GOY=
-X-Received: by 2002:a05:701b:4343:b0:143:26ed:2dd4 with SMTP id
- a92af1059eb24-146cfcd91c7mr2281470c88.30.1790420925630; 
- Sat, 26 Sep 2026 04:08:45 -0700 (PDT)
+ AKwUvBz6YTiXUowKp4R4CFC+vrsTPhvE7GhOTkJLaZAHrua3PBDYIdxdauCLujW4LXOsrvOJuBl8BfN3hw==@nongnu.org
+X-Gm-Message-State: AFuF++mfZ7g4XtW0fBuaxkkFkdwspCOiiGSsNwDjx5Qzbtn7vHmKqTho
+ I+si+VluwUbmaTLnPCNGb4MRB4HBFgJVKNSZ/EKOmW3CH8nmp8PUgsDY
+X-Gm-Gg: AYBFou0bf1/j4wt0bIU1WtOY67seWn2l4i1KP84pid/M6DLA50pfy+OTOwE/+KLosVl
+ mca8HC4VRttXQY02ZZi128GiDHWdUvsVJehKLGJ7u6P/Pe+9Ci7oIARvrShpEKNrMul7QfvdBva
+ l4mPS2OqhAKOOQOnKW3ofIFj5JW6ZADiYufFuM4SZkU44VXrZH0IgIr6E7czuQzbRW9ESXxu7eb
+ 7N30NA75XF1VqPowaW4bHdsxgqKyvb0vvZ39a3/+SioRe2ufEVbsCWFFqEM0W0ZS1peUxDI7kUo
+ 1D8FJ7G7kHEcrZHv0KHYyoY1trTGDE6dJHd7b8iuArqcL39ONeCcztzT03NejfNDjnqldXOmfDL
+ oqcvvFfSvuBOFLNLtlVwfxxV6zfSY6mV/Kd2C1QI5xJzie0Zgq5HPOZ5s4mvqcC8+3UzbiLI8ao
+ 6oTT6xzaL3kpOGTpWBT28O+qBx8Pw3j042NuMJGhbVTLLTwnhOagUH3b49EoBaRkJXPZ1vfEPdT
+ r5gngGaZ+JGNtM+QQC9Fhuf9z1PTdUlEfEcmKhDZQ==
+X-Received: by 2002:a05:7022:2606:b0:12d:d972:b96e with SMTP id
+ a92af1059eb24-146ce67f6cfmr3491660c88.20.1790420907465; 
+ Sat, 26 Sep 2026 04:08:27 -0700 (PDT)
 Received: from WIN-BH9M8FJACR9 ([103.94.185.75])
  by smtp.googlemail.com with ESMTPSA id
- a92af1059eb24-145a7318afcsm11414045c88.0.2026.09.26.04.08.39
+ a92af1059eb24-145a7318afcsm11414045c88.0.2026.09.26.04.08.22
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sat, 26 Sep 2026 04:08:44 -0700 (PDT)
+ Sat, 26 Sep 2026 04:08:26 -0700 (PDT)
 From: Yonggang Luo <luoyonggang@gmail.com>
 To: qemu-devel@nongnu.org
 Cc: Brian Cain <brian.cain@oss.qualcomm.com>,
@@ -87,22 +86,21 @@ Cc: Brian Cain <brian.cain@oss.qualcomm.com>,
  Chao Liu <chao.liu@processmission.com>, Weiwei Li <liwei1518@gmail.com>,
  Zhao Liu <zhao1.liu@intel.com>,
  Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>
-Subject: [PATCH 3/9] target/hexagon: rename helper_wait to helper_hexagon_wait
-Date: Sat, 26 Sep 2026 19:08:11 +0800
-Message-ID: <20260926110818.1912-4-luoyonggang@gmail.com>
+Subject: [PATCH 0/9] treewide: uniquify colliding helper symbols
+Date: Sat, 26 Sep 2026 19:08:08 +0800
+Message-ID: <20260926110818.1912-1-luoyonggang@gmail.com>
 X-Mailer: git-send-email 2.52.0.windows.1
-In-Reply-To: <20260926110818.1912-1-luoyonggang@gmail.com>
-References: <20260926110818.1912-1-luoyonggang@gmail.com>
 MIME-Version: 1.0
+Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:38::f;
- envelope-from=luoyonggang@gmail.com; helo=mail-dl2-x0f.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:38::e;
+ envelope-from=luoyonggang@gmail.com; helo=mail-dl2-x0e.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -118,79 +116,67 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-helper_wait is a global C symbol. Prefix it and take the resume PC
-as vaddr.
+A combined qemu-system binary cannot export the same C symbol from two targets.
+This series prefixes TCG helpers and virt ACPI setup functions that still use a
+short name another target already exports.
 
-Signed-off-by: Yonggang Luo <luoyonggang@gmail.com>
----
- target/hexagon/gen_tcg_sys.h | 2 +-
- target/hexagon/helper.h      | 2 +-
- target/hexagon/op_helper.c   | 8 ++++----
- 3 files changed, 6 insertions(+), 6 deletions(-)
+- Prefix leftover i386 TCG raise_exception to i386_raise_exception. Rename the C
+  raise_exception family globals to i386_raise_exception*, and keep the short
+  names as static inline wrappers in helper-tcg.h. Wrappers still call
+  raise_interrupt2.
+- Prefix helper_wait on RX, Hexagon, and MIPS. Hexagon also takes the resume PC
+  as vaddr.
+- Prefix ARM raise_exception to arm_raise_exception and keep the short name as a
+  static inline wrapper.
+- Prefix virt_acpi_setup and virt_is_acpi_enabled on ARM, RISC-V, and LoongArch
+  virt. Leave the ARM trace event virt_acpi_setup unchanged. Leave RISC-V
+  file-local virt_acpi_build* names unchanged.
+- Rename RISC-V TCG crc32, crc32c, and wfi to riscv_crc32, riscv_crc32c, and
+  riscv_wfi. ARM already exports helper_crc32, helper_crc32c, and helper_wfi.
 
-diff --git a/target/hexagon/gen_tcg_sys.h b/target/hexagon/gen_tcg_sys.h
-index af5032214c4..489d2780470 100644
---- a/target/hexagon/gen_tcg_sys.h
-+++ b/target/hexagon/gen_tcg_sys.h
-@@ -80,7 +80,7 @@
- #define fGEN_TCG_Y2_wait(SHORTCODE) \
-     do { \
-         RsV = RsV; \
--        gen_helper_wait(tcg_env, tcg_constant_tl(ctx->pkt.pc)); \
-+        gen_helper_hexagon_wait(tcg_env, tcg_constant_vaddr(ctx->pkt.pc)); \
-     } while (0)
- 
- #define fGEN_TCG_Y2_resume(SHORTCODE) \
-diff --git a/target/hexagon/helper.h b/target/hexagon/helper.h
-index 71c8da4c46d..030ed6dcef5 100644
---- a/target/hexagon/helper.h
-+++ b/target/hexagon/helper.h
-@@ -136,7 +136,7 @@ DEF_HELPER_3(sreg_write_masked, void, env, i32, i32)
- DEF_HELPER_3(setprio, void, env, i32, i32)
- DEF_HELPER_2(start, void, env, i32)
- DEF_HELPER_1(stop, void, env)
--DEF_HELPER_2(wait, void, env, i32)
-+DEF_HELPER_2(hexagon_wait, void, env, vaddr)
- DEF_HELPER_2(resume, void, env, i32)
- DEF_HELPER_1(resched, void, env)
- DEF_HELPER_3(modify_ssr, void, env, i32, i32)
-diff --git a/target/hexagon/op_helper.c b/target/hexagon/op_helper.c
-index 4f00ca773f3..7f026292ce8 100644
---- a/target/hexagon/op_helper.c
-+++ b/target/hexagon/op_helper.c
-@@ -1741,7 +1741,7 @@ static void set_wait_mode(CPUHexagonState *env)
-     SET_SYSTEM_FIELD(env, HEX_SREG_MODECTL, MODECTL_W, thread_wait_mask);
- }
- 
--static void hexagon_wait_thread(CPUHexagonState *env, uint32_t PC)
-+static void hexagon_wait_thread(CPUHexagonState *env, vaddr pc)
- {
-     CPUState *cs;
- 
-@@ -1768,7 +1768,7 @@ static void hexagon_wait_thread(CPUHexagonState *env, uint32_t PC)
-         return;
-     }
-     set_wait_mode(env);
--    env->wait_next_pc = PC + 4;
-+    env->wait_next_pc = pc + 4;
- 
-     cpu_interrupt(cs, CPU_INTERRUPT_HALT);
- }
-@@ -1836,12 +1836,12 @@ void HELPER(resched)(CPUHexagonState *env)
-     resched(env);
- }
- 
--void HELPER(wait)(CPUHexagonState *env, uint32_t PC)
-+void HELPER(hexagon_wait)(CPUHexagonState *env, vaddr pc)
- {
-     BQL_LOCK_GUARD();
- 
-     if (!fIN_DEBUG_MODE(env->threadId)) {
--        hexagon_wait_thread(env, PC);
-+        hexagon_wait_thread(env, pc);
-     }
- }
- 
+Yonggang Luo (9):
+  target/i386: convert raise_exception to i386_raise_exception
+  target/rx: rename helper_wait to helper_rx_wait
+  target/hexagon: rename helper_wait to helper_hexagon_wait
+  target/arm: rename raise_exception to arm_raise_exception
+  target/mips: rename helper_wait to helper_mips_wait
+  hw/arm/virt: prefix ACPI helpers with arm_virt_
+  hw/riscv/virt: prefix ACPI helpers with riscv_virt_
+  hw/loongarch/virt: prefix ACPI helper with loongarch_virt_
+  target/riscv: uniquify TCG crc32, crc32c, and wfi helper names
+
+ hw/arm/virt-acpi-build.c                      |  4 +-
+ hw/arm/virt.c                                 | 12 +++---
+ hw/loongarch/virt-acpi-build.c                |  6 +--
+ hw/loongarch/virt.c                           |  2 +-
+ hw/riscv/virt-acpi-build.c                    |  2 +-
+ hw/riscv/virt.c                               |  6 +--
+ include/hw/arm/virt.h                         |  4 +-
+ include/hw/loongarch/virt.h                   |  2 +-
+ include/hw/riscv/virt.h                       |  4 +-
+ target/arm/internals.h                        | 27 ++++++++----
+ target/arm/tcg-stubs.c                        |  4 +-
+ target/arm/tcg/op_helper.c                    | 10 ++---
+ target/hexagon/gen_tcg_sys.h                  |  2 +-
+ target/hexagon/helper.h                       |  2 +-
+ target/hexagon/op_helper.c                    |  8 ++--
+ target/i386/helper.h                          |  2 +-
+ target/i386/tcg/excp_helper.c                 | 18 ++++----
+ target/i386/tcg/helper-tcg.h                  | 42 +++++++++++++++----
+ target/i386/tcg/translate.c                   |  2 +-
+ target/mips/helper.h                          |  2 +-
+ target/mips/tcg/exception.c                   |  2 +-
+ target/mips/tcg/translate.c                   |  2 +-
+ target/riscv/helper.h                         |  6 +--
+ target/riscv/tcg/bitmanip_helper.c            |  4 +-
+ .../tcg/insn_trans/trans_privileged.c.inc     |  2 +-
+ target/riscv/tcg/insn_trans/trans_xlrbr.c.inc |  4 +-
+ target/riscv/tcg/op_helper.c                  |  2 +-
+ target/rx/helper.h                            |  2 +-
+ target/rx/op_helper.c                         |  2 +-
+ target/rx/translate.c                         |  2 +-
+ 30 files changed, 115 insertions(+), 74 deletions(-)
+
 -- 
 2.52.0.windows.1
 

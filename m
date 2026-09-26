@@ -4,92 +4,96 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AEF8BC98328
-	for <qemu-arm@archiver.kernel.org>; Sat, 26 Sep 2026 07:14:07 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C2B5CC98318
+	for <qemu-arm@archiver.kernel.org>; Sat, 26 Sep 2026 08:16:21 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xAMU4-0007XC-H2; Sat, 26 Sep 2026 03:06:09 -0400
+	id 1xANZl-00082O-LS; Sat, 26 Sep 2026 04:16:05 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <luoyonggang@gmail.com>)
- id 1xAMRE-00043s-Le
- for qemu-arm@nongnu.org; Sat, 26 Sep 2026 03:03:15 -0400
-Received: from mail-dl2-x10.google.com ([2607:f8b0:4864:38::10])
+ id 1xANZk-00081v-4v
+ for qemu-arm@nongnu.org; Sat, 26 Sep 2026 04:16:04 -0400
+Received: from mail-dl2-x2b.google.com ([2607:f8b0:4864:38::2b])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <luoyonggang@gmail.com>)
- id 1xAMRD-0000bD-3G
- for qemu-arm@nongnu.org; Sat, 26 Sep 2026 03:03:12 -0400
-Received: by mail-dl2-x10.google.com with SMTP id
- a92af1059eb24-142dd046b87so1226466c88.2
- for <qemu-arm@nongnu.org>; Sat, 26 Sep 2026 00:03:09 -0700 (PDT)
+ id 1xANZi-0006mI-H3
+ for qemu-arm@nongnu.org; Sat, 26 Sep 2026 04:16:03 -0400
+Received: by mail-dl2-x2b.google.com with SMTP id
+ a92af1059eb24-1438cb9b3a3so1066514c88.2
+ for <qemu-arm@nongnu.org>; Sat, 26 Sep 2026 01:16:02 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20251104; t=1790406189; x=1791010989; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:from:to:cc:subject:date
- :message-id:reply-to:content-type;
- bh=ALxUX35YxAT0/hMJem0o96GiSG/xYkkLx16debZXGzM=;
- b=qvOHdJNGBmVG10EpjqO64jiVjb2y89tCUBFFiZfzQdnTPpBYid+Ad4fVBp3gWmftBd
- K6KnrTxkdO2PSEagYNUg17G9NnS3x/ys79UQy11m0uUZqOjaPojNr9PMZhJ+s7on6lxO
- Z3yeaEA8dc6twwriSg0+YYJ2GGdgn8u6tF9z5lLATnDQ3tEKZk/Bi0bO9sCNHlRdtVey
- LJqYJlAdDSVMqOcESwkGQff8bKvQGIth4NlarDBaG1DXuI6R7KOlELFdpN1qJKuw3Ol7
- 6V/VfZhCsBbSMsA9Qravq2Gjl0dva0cy5wkLfrGBt9g9hh+fwGhyb/rOErgJSXc6rcBI
- DzaQ==
+ d=gmail.com; s=20251104; t=1790410561; x=1791015361; darn=nongnu.org;
+ h=content-transfer-encoding:content-type:mime-version:message-id:date
+ :subject:cc:to:from:from:to:cc:subject:date:message-id:reply-to
+ :content-type; bh=e/A1ak6zerCgv8Ghn9vTShOZwcbaS07iq7JcXAHPfBU=;
+ b=Cft6CTNYROVd6i6mvJECvslUBfaHl5eP/mwvn26RcuCq1+3+MEqfIuAYoHMkS6aNid
+ nUoiilko5CYBRPUnurPOfXdSWjCSOXX45CXrSxuD6nyc8ZHclWnxBNE0BN5SAFQGJvnG
+ oNzgeHUPDwFCWJ3OrpJUi3ON3LLvnqKeoyNhdhWKSom6SE3cwuzxFo/4hx41gDb2wgIF
+ tBajPME5LmeWTKkVwqaMGj79rG3kerBkQahrk9rpuiRWPQQGAt4bwWpciqMGYnJ6aECf
+ 6HEpYV9qYB4d7183f/Im1wWhnDVIuT4qTNiThKTy/uRzqSuoaEpd/uzGnpMS3Zt6uAOk
+ V/ng==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20260707; t=1790406189; x=1791010989;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
- :to:cc:subject:date:message-id:reply-to:content-type;
- bh=ALxUX35YxAT0/hMJem0o96GiSG/xYkkLx16debZXGzM=;
- b=dW3q49yQTDUTvvncK9HG9HAo84HtvlimdHOZCxExA86jFeKE9sg16czOVNQc+iH3eq
- z6sx9OnOnSqN35ITZ95RnyltzOdTGF/2zI2o1+dBWBWbA2GXICzbjwZcvoniVvCucLQV
- XEOWTjQdU86cKCdvhP+W5bP92nsD+RNHwPCD+9s+NzdroFG4Qpxqj4OQMwVV0bhwLQEp
- 1IorVWry1lPQ2m6+F5K42nmaR7C7iut8b1dNDVgoZwcrrjXo2AlPzmnHpXcNWkZAPixD
- RrydhFx/JmZiTXIfmAin0JUWVJaFemWrZiMpnYrvfjk+i9On0jEH4v4iRAXe69pKWCrW
- YkXg==
+ d=1e100.net; s=20260707; t=1790410561; x=1791015361;
+ h=content-transfer-encoding:content-type:mime-version:message-id:date
+ :subject:cc:to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject
+ :date:message-id:reply-to:content-type;
+ bh=e/A1ak6zerCgv8Ghn9vTShOZwcbaS07iq7JcXAHPfBU=;
+ b=TbvqLMqUq0L1axa1n2jB1nYZppbhfsjKnzcFapenOD6h0xvcjzbFnKVrkXD9BQ0tDU
+ b+QWwZKYTKkKOp/LwUwgxM7H1BHZ35w5y5fRAx0I3MDdUw1WqGMIQwuRN3hQ9uf16uXS
+ 50o3uxF0tzJWEQH7/l6f3lt5ppvxiMiGBy2t8kMu70NcVF+knrvL4T+nEPqIf1yoRVdW
+ i+uvaixCeuzm2OWaOdrMrAhRNCdnVi0bIrHOCjk+oAyzHw0uLF5TGhZQf6BBBOf2ak6f
+ Pu2WpvC2Yy0itZ+Svrcg/31esJtro8xbgXgUmLjHYwaPi9vYfzCVZV44VHKY0lJs9h/z
+ 7WAA==
 X-Forwarded-Encrypted: i=1;
- AKwUvBzZEYcnOT7XR65C/xRtdE+MbkIhnyu/WTqik6UsKcjyUqe3YTgiupbv+OvXXV6xBcBbXtUjrrKEJg==@nongnu.org
-X-Gm-Message-State: AFuF++mbI8e/OC4JeaDznIWRysiLWqZEwQ4+uVucUAb/BWTQD1CpbwnF
- m+kh/6n7ECYVR5p3nfUQ7QGe5mAPl1pDNhY9I6MTg6P5cdT5APxWczdw
-X-Gm-Gg: AYBFou0C87xwbQl5TbG/7FwaGxUto6jnm4vC1rx7fzZJfTvFWxGGWAQchE2cksoMp6T
- qcm0JYUIYDHVPJfuvEKgi0khgieZk0cQzicYL6Gk8NFJdKom5bBVM+RaerihRJ1aqpFK9Lt8XCG
- ZaZ5DNcWonPgzDyViaKj9lXmU6G/ORECDDF3kQJJct1/3eZdpdyLgmSEI+RQIEkYmKPUJMbjfI9
- M8lWqHqeLoVx78qrDv8lp0KcxxxFlj5rhX6Atu8ZI41HlDCx9yKn9/TPh/PlhmT9Efwm5SU5AX5
- djlxAMGULXCts5rUim0aFq27/wPfd2cpSX6nU/JDFQ7YIPXkYplWnMXWXH5kpmVH0TYO7i6zu39
- v41H3Cn0YPNulj0mUT1iRzvhMX2MXwuxvUJvwxESnH99cl6etjz4cl74+eCZNVES/VcWPVvQT6S
- CU8nJbLhufLZQdSSFFtWlehOZ6bQb4Kql5chQt5XEMVuoS7CFTZkbmgn4c3MVECNUl+jaxwJU9v
- 5eLK4HnfVonduk0GkHOc+bcsuizHeo=
-X-Received: by 2002:a05:7022:f108:b0:144:fb42:52 with SMTP id
- a92af1059eb24-146cfdd1e08mr1944186c88.28.1790406184037; 
- Sat, 26 Sep 2026 00:03:04 -0700 (PDT)
+ AKwUvBwIpaX2wd30ReGl9+2Y2a4dGsEwRVXq5BGnwrnFGcBpHSjM/atbQXTxVXl0eGFE6ek4JFSu9QXxlA==@nongnu.org
+X-Gm-Message-State: AFuF++nylsU0Zgdv02SuEwDNY5oxg5I39zMCYbhr6ZDIu1MDAtpQdTLH
+ Z0IpdhXLxLUfV5yjsHfAFhosOYbze1RThJ9+S0a6D/e2TBfjylHdAGTj
+X-Gm-Gg: AYBFou0lANte+YRaHJ5qdC9Ij2Cd8v2sahAQKIJDoECHvXV0Sg/sfGREZuFLIbq/sEG
+ v3nOmEfbaT+pvfnQj4Zj3Zlzwvjzr5DcShCCiEaek2EN9Ll/n4EuggHPisgMfV1BU4Xlw+SSkjy
+ 9+y84Q31wo62uImP+sIyAPTM17W7/kQAz6RHYNwwlwUcvAJp9tz40nUgLXCv0ktghqTry0PpNlw
+ r9R7LXFEqGDvASW/VErltkG8ruq/OBytLyPBS0WUtjbLHg3QMXMGXDdAl+x136cAyqCqNaN1Y5O
+ yBMB/pH/kXa2TQsKeMNA2mQOLuGKea2y0jqC2sTh09xpNlPehlCi8ufRztZ/KOsT9MU3M9a+rnh
+ efmaTLcEL5pv/v0JnUTHFSXrWv6JsLsj5kRQBn8XIG7nvKAzNcDqyRDBA/YQb9IMgU+olRzB/v6
+ /KQH7NgR58Y89TRr3Aj4pNhMYc1XaonZHovSHlOvfLd/X51sbyy52zra6traa+dNFhjtZCv/zPu
+ Vp1W8k+d8JkkP+HiwwB1dCyfk23xWs=
+X-Received: by 2002:a05:7022:603:b0:144:f47b:d31a with SMTP id
+ a92af1059eb24-146ce29fdc4mr3248748c88.1.1790410560658; 
+ Sat, 26 Sep 2026 01:16:00 -0700 (PDT)
 Received: from WIN-BH9M8FJACR9 ([103.94.185.75])
  by smtp.googlemail.com with ESMTPSA id
- 5a478bee46e88-34145c166cfsm10615141eec.28.2026.09.26.00.03.00
+ 5a478bee46e88-34144f4eb9esm11970568eec.19.2026.09.26.01.15.55
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sat, 26 Sep 2026 00:03:03 -0700 (PDT)
+ Sat, 26 Sep 2026 01:15:59 -0700 (PDT)
 From: Yonggang Luo <luoyonggang@gmail.com>
 To: qemu-devel@nongnu.org
-Cc: Richard Henderson <richard.henderson@linaro.org>,
+Cc: Chao Liu <chao.liu@processmission.com>, Eric Blake <eblake@redhat.com>,
+ qemu-arm@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@oss.qualcomm.com>,
+ Markus Armbruster <armbru@redhat.com>,
+ Alistair Francis <alistair.francis@wdc.com>,
+ Brian Cain <brian.cain@oss.qualcomm.com>,
+ Stafford Horne <shorne@gmail.com>,
  =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
- "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
- Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>,
- Fabiano Rosas <farosas@suse.de>, Laurent Vivier <lvivier@redhat.com>,
- Paolo Bonzini <pbonzini@redhat.com>,
- Alistair Francis <alistair@alistair23.me>,
  Peter Maydell <peter.maydell@linaro.org>,
- =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
- qemu-arm@nongnu.org, kvm@vger.kernel.org
-Subject: [PATCH v4 30/55] accel/tcg: move helper_lookup_tb_ptr into cpu-exec.h
-Date: Sat, 26 Sep 2026 15:00:29 +0800
-Message-ID: <20260926070057.1234-31-luoyonggang@gmail.com>
+ Jiaxun Yang <jiaxun.yang@flygoat.com>, Fabiano Rosas <farosas@suse.de>,
+ Daniel Henrique Barboza <daniel.barboza@oss.qualcomm.com>,
+ Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>,
+ qemu-riscv@nongnu.org, Laurent Vivier <lvivier@redhat.com>,
+ Max Filippov <jcmvbkbc@gmail.com>, Song Gao <17746591750@163.com>,
+ Philippe Mathieu-Daude <philmd@mailo.com>,
+ Palmer Dabbelt <palmer@dabbelt.com>, Laurent Vivier <laurent@vivier.eu>,
+ Weiwei Li <liwei1518@gmail.com>, Zhao Liu <zhao1.liu@intel.com>
+Subject: [PATCH v3 00/10] machine: uniquify virt QOM names
+Date: Sat, 26 Sep 2026 16:15:40 +0800
+Message-ID: <20260926081551.29-1-luoyonggang@gmail.com>
 X-Mailer: git-send-email 2.52.0.windows.1
-In-Reply-To: <20260926070057.1234-1-luoyonggang@gmail.com>
-References: <20260926070057.1234-1-luoyonggang@gmail.com>
 MIME-Version: 1.0
+Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:38::10;
- envelope-from=luoyonggang@gmail.com; helo=mail-dl2-x10.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:38::2b;
+ envelope-from=luoyonggang@gmail.com; helo=mail-dl2-x2b.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -111,86 +115,69 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-helper_lookup_tb_ptr is implemented in cpu-exec.c. Move its
-DEF_HELPER line to cpu-exec.h and emit helper_info_lookup_tb_ptr
-from that file.
+Multiple targets register a virt board as MACHINE_TYPE_NAME("virt").
+Those QOM types collide if more than one board is linked into one
+qemu-system process. This series splits the QOM type from the -M name
+so each virt board can keep a unique type while -M virt, help, and
+migration stay the same.
 
-Signed-off-by: Yonggang Luo <luoyonggang@gmail.com>
----
- accel/tcg/cpu-exec.c               | 5 +++++
- accel/tcg/cpu-exec.h               | 1 +
- accel/tcg/tcg-runtime.h            | 2 --
- include/exec/helper-gen-common.h   | 4 ++++
- include/exec/helper-proto-common.h | 4 ++++
- 5 files changed, 14 insertions(+), 2 deletions(-)
- create mode 100644 accel/tcg/cpu-exec.h
+- Add machine_class_set_name() so boards can set MachineClass::name
+  when it must differ from the QOM type. machine_class_base_init still
+  defaults the name to the QOM type without -machine. Document that
+  MachineClass::name is the -M name, not the QOM type. Sort -M help
+  by that name so order matches the printed names after types are
+  prefixed (arm-virt-11.1-machine vs virt-11.1).
+- Give each colliding virt board a unique QOM type and keep the
+  existing -M name via machine_class_set_name(): riscv-virt, arm-virt,
+  or1k-virt, hexagon-virt, loongarch-virt, m68k-virt, and xtensa-virt.
+  Versioned ARM, LoongArch, and M68K boards keep virt-<ver>. Latest
+  ARM virt still sets mc->alias to virt.
+- query-machines returns MachineInfo typename, the QOM type from
+  object_class_get_name(), for qom-list-properties. The -M name alone
+  is not that type once virt boards are prefixed.
 
-diff --git a/accel/tcg/cpu-exec.c b/accel/tcg/cpu-exec.c
-index 5b4bca5084f..021912dc022 100644
---- a/accel/tcg/cpu-exec.c
-+++ b/accel/tcg/cpu-exec.c
-@@ -40,6 +40,11 @@
- #include "exec/replay-core.h"
- #include "system/tcg.h"
- #include "exec/helper-proto-common.h"
-+
-+#define HELPER_H "accel/tcg/cpu-exec.h"
-+#include "exec/helper-info.c.inc"
-+#undef  HELPER_H
-+
- #include "tcg-accel-ops.h"
- #include "tb-jmp-cache.h"
- #include "tb-hash.h"
-diff --git a/accel/tcg/cpu-exec.h b/accel/tcg/cpu-exec.h
-new file mode 100644
-index 00000000000..e4803ebc1a6
---- /dev/null
-+++ b/accel/tcg/cpu-exec.h
-@@ -0,0 +1 @@
-+DEF_HELPER_FLAGS_1(lookup_tb_ptr, TCG_CALL_NO_WG_SE, cptr, env)
-diff --git a/accel/tcg/tcg-runtime.h b/accel/tcg/tcg-runtime.h
-index c0626fa0e02..26e0baeca51 100644
---- a/accel/tcg/tcg-runtime.h
-+++ b/accel/tcg/tcg-runtime.h
-@@ -20,8 +20,6 @@ DEF_HELPER_FLAGS_1(clrsb_i64, TCG_CALL_NO_RWG_SE, i64, i64)
- DEF_HELPER_FLAGS_1(ctpop_i32, TCG_CALL_NO_RWG_SE, i32, i32)
- DEF_HELPER_FLAGS_1(ctpop_i64, TCG_CALL_NO_RWG_SE, i64, i64)
- 
--DEF_HELPER_FLAGS_1(lookup_tb_ptr, TCG_CALL_NO_WG_SE, cptr, env)
--
- #ifndef IN_HELPER_PROTO
- /*
-  * Pass calls to memset directly to libc, without a thunk in qemu.
-diff --git a/include/exec/helper-gen-common.h b/include/exec/helper-gen-common.h
-index fa571d88147..73e979a35f3 100644
---- a/include/exec/helper-gen-common.h
-+++ b/include/exec/helper-gen-common.h
-@@ -11,6 +11,10 @@
- #include "exec/helper-gen.h.inc"
- #undef  HELPER_H
- 
-+#define HELPER_H "accel/tcg/cpu-exec.h"
-+#include "exec/helper-gen.h.inc"
-+#undef  HELPER_H
-+
- #define HELPER_H "accel/tcg/tcg-runtime.h"
- #include "exec/helper-gen.h.inc"
- #undef  HELPER_H
-diff --git a/include/exec/helper-proto-common.h b/include/exec/helper-proto-common.h
-index 1b098777e8d..3c32f95f4c1 100644
---- a/include/exec/helper-proto-common.h
-+++ b/include/exec/helper-proto-common.h
-@@ -13,6 +13,10 @@
- #include "exec/helper-proto.h.inc"
- #undef  HELPER_H
- 
-+#define HELPER_H "accel/tcg/cpu-exec.h"
-+#include "exec/helper-proto.h.inc"
-+#undef  HELPER_H
-+
- #define HELPER_H "accel/tcg/tcg-runtime.h"
- #include "exec/helper-proto.h.inc"
- #undef  HELPER_H
+Changes v2 -> v3:
+The versioned-machine example in boards.h now follows hw/arm/virt.c.
+machine_class_set_name() keeps the -M name as virt-<version>, the QOM type in
+the example is arm-virt, and the latest helper is DEFINE_VIRT_MACHINE_AS_LATEST.
+
+Changes v1 -> v2:
+- query-machines returns MachineInfo typename. v1 returned only the
+  -M name, so a client that appended "-machine" looked up the wrong
+  type for a prefixed board such as arm-virt-11.1-machine versus
+  -M virt-11.1.
+
+Yonggang Luo (10):
+  machine: allow -M name to differ from QOM type
+  hw/riscv/virt: use unique QOM name
+  hw/arm/virt: use unique QOM name
+  hw/or1k/virt: use unique QOM name
+  hw/hexagon/virt: use unique QOM name
+  hw/loongarch/virt: use unique QOM name
+  hw/m68k/virt: use unique QOM name
+  hw/xtensa/virt: use unique QOM name
+  qapi: return MachineInfo typename from query-machines
+  machine: match the versioned virt example to arm virt
+
+ hw/arm/virt.c               |  3 +-
+ hw/core/machine-qmp-cmds.c  |  1 +
+ hw/core/machine.c           |  6 ++++
+ hw/hexagon/virt.c           |  1 +
+ hw/loongarch/virt.c         |  3 +-
+ hw/m68k/virt.c              |  7 ++--
+ hw/or1k/virt.c              |  3 +-
+ hw/riscv/virt.c             |  3 +-
+ hw/xtensa/virt.c            |  3 +-
+ include/hw/arm/virt.h       |  2 +-
+ include/hw/core/boards.h    | 26 +++++++++++----
+ include/hw/hexagon/virt.h   |  2 +-
+ include/hw/loongarch/virt.h |  2 +-
+ include/hw/riscv/virt.h     |  2 +-
+ qapi/machine.json           |  6 +++-
+ system/vl.c                 |  8 ++---
+ tests/qtest/qom-test.c      | 65 +++++++++++++++++++++++++++++++++----
+ 17 files changed, 113 insertions(+), 30 deletions(-)
+
 -- 
 2.52.0.windows.1
 

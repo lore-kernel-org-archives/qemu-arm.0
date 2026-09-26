@@ -4,69 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D8918C98338
-	for <qemu-arm@archiver.kernel.org>; Sat, 26 Sep 2026 11:10:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5F676C98318
+	for <qemu-arm@archiver.kernel.org>; Sat, 26 Sep 2026 11:10:52 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xAQHI-00089s-3W; Sat, 26 Sep 2026 07:09:12 -0400
+	id 1xAQGq-00082J-SC; Sat, 26 Sep 2026 07:08:44 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <luoyonggang@gmail.com>)
- id 1xAQH7-00086A-Qk
- for qemu-arm@nongnu.org; Sat, 26 Sep 2026 07:09:03 -0400
-Received: from mail-dl1-x1229.google.com ([2607:f8b0:4864:20::1229])
+ id 1xAQGp-00081Y-9J
+ for qemu-arm@nongnu.org; Sat, 26 Sep 2026 07:08:43 -0400
+Received: from mail-dl2-x0f.google.com ([2607:f8b0:4864:38::f])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <luoyonggang@gmail.com>)
- id 1xAQH6-0002lv-7O
- for qemu-arm@nongnu.org; Sat, 26 Sep 2026 07:09:01 -0400
-Received: by mail-dl1-x1229.google.com with SMTP id
- a92af1059eb24-13fc403e373so2581628c88.1
- for <qemu-arm@nongnu.org>; Sat, 26 Sep 2026 04:08:59 -0700 (PDT)
+ id 1xAQGn-0002k8-SH
+ for qemu-arm@nongnu.org; Sat, 26 Sep 2026 07:08:43 -0400
+Received: by mail-dl2-x0f.google.com with SMTP id
+ a92af1059eb24-145ab8fd39cso1532946c88.2
+ for <qemu-arm@nongnu.org>; Sat, 26 Sep 2026 04:08:41 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20251104; t=1790420939; x=1791025739; darn=nongnu.org;
+ d=gmail.com; s=20251104; t=1790420919; x=1791025719; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to:content-type;
- bh=1CUhNh304lcgPNFCLApzOZeyUtI9fc3e65ZqaUMABa0=;
- b=Sdnruxwl2nLRjM2Cwig/STDBWBw79NriPWhgi6vouFdxgebPJ7A08aLEHg+yLXnMrO
- /seKGUrNA6JY/XxQP6LnB6fdVuFB/cpleU/FRUiT151L2aw+xsfaulfoHMANYL4YnJkM
- 0YP6oEnuC2TApTFexxoKNSwhIwHNaXhmOo7kevrAewfpCikDMxaMHAT4QQtXljW5YID+
- TImDhs4kLiQaY+nE5EPGWc8mmtTvpTBZSXm9YvEwXfX+Tkl/9nGq6H9HagkZXgLAqh0e
- /R2I5EYohDVfD/zOfM23bDAedC1YsN2bEkDItnH8GzTRUE3oT9n2hJa0VktTEyohS4Yn
- BM7g==
+ bh=/jLASucLyba2qelSD7n1s06CsRjfE29IQw8Hf32tRFs=;
+ b=beibw3UIT/aLNf/tOpFUFTmnY9NnctmCZ4ETHhGqdDiGmg+JVdzYKTAkD56pmTY7+/
+ iNnJU8VuesIQPXyHWc3FGg20jc8YpdpZVVO83FfwCPWLAFUR98VumsP0ZjfdICvJwNbp
+ rZXoBcy4qnW1oOqB8hGyPs6sTi9oZ2esQD1gXj66Fzcr3hJa11kjdS4E8E+5WiRMCRdf
+ +7ObdWk37Q96kkqxuGP3TsBrI3XtjpVWGgiSwI+Ywh75YDzyUvRLfvBohILYaG/sb6br
+ OVr8RnANRjg97R3lgxEbvT7yd7nZgdtD6DRxl/3MJhcThghkuNKdPaQYrN8AZ2wxY/jk
+ SKVg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20260707; t=1790420939; x=1791025739;
+ d=1e100.net; s=20260707; t=1790420919; x=1791025719;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
  :to:cc:subject:date:message-id:reply-to:content-type;
- bh=1CUhNh304lcgPNFCLApzOZeyUtI9fc3e65ZqaUMABa0=;
- b=uAny0YGWM5E7Q8HLoxfKgimvkZnqhWl0stk2hfDZ5gOtz1ZDaQ2iVNv0MV2hT9K/9L
- 9RHQ6IHDzmXkUIXU4ffS2dlOECN3dd2xThrmroMfUHmFIF5X0oEYxb7BTVkd60lCkgdh
- Ig0cbS1Sw0fRECy2yz2B6B8tsnlK/Czbr2E3nElEuFFDfoRmQIREut4lvXh1+12ud3kq
- sSW1HCCAmZNs1523HgXaUGwCaA4hZo9uadD8GJIGu+x/dGBf2Ij2o0lVZ7EUOfbKkxXr
- 9rIm3C7HYlJ5Hq/vfxzEeRtOUhUz2BOzStDbV+nwXvMEODAxYUOxH9+bGV8EO+uzC+DD
- hGBg==
+ bh=/jLASucLyba2qelSD7n1s06CsRjfE29IQw8Hf32tRFs=;
+ b=Z0E7ko5ie287eB2RPSLPx/cnBWye3AepMz0giQcleN9IpFQDMfBgWKlvR6I/Upjd8W
+ thTC1RvVmZCQNhso0jVqpJt/fgYtTxa7jf7uEHQHfQCcfD0YBHrRJA5bVc3oMYgUsQKH
+ 1UOaSjhTA4fmIW/HeTY07hITWqyduP+A3thvhG6suUrp3uq0FXkuu7oerwslbm6r7pP9
+ JR00Gtz0oXWx5dFhJSqLTzvonjVNimkbv/ftPve4RpBgGMb3uN4tf285SXuGojm0iGuc
+ GMd/Hf80wBFFAmK2jvhkx3Kk8HUfQdyS6reaO1o6CykUeEwdBTcSYyBk44epGBEEuruu
+ j4MA==
 X-Forwarded-Encrypted: i=1;
- AKwUvBw9PDfj9ZW+R501YChqL3zCYG6Uu4gpAmt/Tnu/8Ast3myt3YO6Ost1sswrQhbXPZydrKn3Hg3gjg==@nongnu.org
-X-Gm-Message-State: AFuF++kNeaiDcT9DgLjFUhnJqF8n0Ug7LKwXziJ9c+kTURX5pH6mDBc1
- O6acB5ckJh4JdWf8fCjnc8WsXJ1gqqpXgaVajILXuD0qcOSlo6dhIvrZ
-X-Gm-Gg: AYBFou0AuXWu4ABD45Nn4WtcCTzx6fQh1OVsshGciWAhbmNeQZRd7ODN0hyVHWlLx/V
- zkvwF7SG2R6MidJqYkzccGu+HOVYgP6+sy9HYfIQXxapKLIiuR3MG0ZaviGw5QMjpfMmyudNw7U
- MbBvfV6hfima/W65pPT6xKUe+TNbmmtjwwSqQd8rw3ld3p3LtSvDdHwqpd0zr/fSoGQSjJwxWzt
- 5oUhGdB0ahxYwLRF6mfA3iBzMWz/3M5s7pXvG5a3TvBtKC5CIT3J4Jgpho5cgXfigDnQ80ETawA
- uAglj1KMGGC20uDNb1x88Cb4zgluQAxtOM6ZdHZTTMZ4KTQVXUNNpw3MdNrwXRKfowfgx5UlQLz
- 1GB9VdJHj2pt6eAiB4p8NGgkXYwc6WY1NGPHtovvRa95NeJI16RUk6NT5aJdUAuO7zwnqv78XLI
- 1mW4WfRj8ed/6NvmRF9DUxiAxE+U6EY8ZbECpinlAqvsttZqWS8HdwnA32pLXaGLAHuaF6kB0Ar
- +FNgqsQZHsu09oykWN/sYB5JTTZvzZG
-X-Received: by 2002:a05:7022:5f19:b0:143:7330:7fac with SMTP id
- a92af1059eb24-146d02a9d17mr2117168c88.14.1790420938499; 
- Sat, 26 Sep 2026 04:08:58 -0700 (PDT)
+ AKwUvByUdMyA2WBcbgFo9ASKSv3Qu9zyUGW5PVZESILRyVC9KEfzY197JD0KOFSu9qV/xv18rXui/by6pA==@nongnu.org
+X-Gm-Message-State: AFuF++kB6S8b4iMU5QM6tCrAzd7zI4XwTyKr8PCoNzDDv2jDgF/pspH9
+ IKX+OAw3z//UgDGztofoItNmCiWwaLd2RdXumP88ar2KplheFCVuZp+7
+X-Gm-Gg: AYBFou0PjLInxx2gwNWlb8fkRl9otYCrGbLCHTKyDaOe5SdZn2ZydH/UCRuc76rwsdr
+ dwGggFULBIS5fvke1zFtdHiMDFAMOsdCv+3x1nKUrIKFtDzrdIgXs8MbKAXIA7RXkuEVEgS/5PV
+ bJ0bILh/SqE4Z4Xd5A4BSKqk2V0RfQ+/7TBQMTwQ3gTN3Aa3bcvSVCvStxMRC9jsTXmWiW5Lshx
+ MkndxQuWl3G/h0UvanAelgGMxgQENSt9z8Z6xB9s9Eb3P7+bpAfZB/p9wiW8ypMPlNChgPM4x4U
+ ZTTQKArVEdur6RqM9JachZ6e3g6/jyMDQrqtJ3Dj8ryeJBYbb7+Yrsr6LZRSdr4nmTZrRgHCiWs
+ nBliO8/BGTQ7V7aa4mYqjLShapjpgjJntJukzUmjQXSGek1BeMAtysw5rYTPTQ5cTnT4qKE1z4Y
+ 9oKIwd+gzIvRoD3ibXpMIAZgegOqBRwSfNJUbEvLDWFGmi6UDgFdIYNgsfiBOyiygcBZDG7Tw9H
+ jx5hyQ6Uk08QL9v0DY4+NWsM9VNQ5IbEeTJhXagtw==
+X-Received: by 2002:a05:701b:20de:20b0:145:5c7:71bc with SMTP id
+ a92af1059eb24-146cddbcfddmr2949754c88.5.1790420919456; 
+ Sat, 26 Sep 2026 04:08:39 -0700 (PDT)
 Received: from WIN-BH9M8FJACR9 ([103.94.185.75])
  by smtp.googlemail.com with ESMTPSA id
- a92af1059eb24-145a7318afcsm11414045c88.0.2026.09.26.04.08.53
+ a92af1059eb24-145a7318afcsm11414045c88.0.2026.09.26.04.08.34
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sat, 26 Sep 2026 04:08:57 -0700 (PDT)
+ Sat, 26 Sep 2026 04:08:38 -0700 (PDT)
 From: Yonggang Luo <luoyonggang@gmail.com>
 To: qemu-devel@nongnu.org
 Cc: Brian Cain <brian.cain@oss.qualcomm.com>,
@@ -87,23 +87,22 @@ Cc: Brian Cain <brian.cain@oss.qualcomm.com>,
  Chao Liu <chao.liu@processmission.com>, Weiwei Li <liwei1518@gmail.com>,
  Zhao Liu <zhao1.liu@intel.com>,
  Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>
-Subject: [PATCH 5/9] target/mips: rename helper_wait to helper_mips_wait
-Date: Sat, 26 Sep 2026 19:08:13 +0800
-Message-ID: <20260926110818.1912-6-luoyonggang@gmail.com>
+Subject: [PATCH 2/9] target/rx: rename helper_wait to helper_rx_wait
+Date: Sat, 26 Sep 2026 19:08:10 +0800
+Message-ID: <20260926110818.1912-3-luoyonggang@gmail.com>
 X-Mailer: git-send-email 2.52.0.windows.1
 In-Reply-To: <20260926110818.1912-1-luoyonggang@gmail.com>
 References: <20260926110818.1912-1-luoyonggang@gmail.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::1229;
- envelope-from=luoyonggang@gmail.com; helo=mail-dl1-x1229.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:38::f;
+ envelope-from=luoyonggang@gmail.com; helo=mail-dl2-x0f.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -124,50 +123,50 @@ that short name free for another target.
 
 Signed-off-by: Yonggang Luo <luoyonggang@gmail.com>
 ---
- target/mips/helper.h        | 2 +-
- target/mips/tcg/exception.c | 2 +-
- target/mips/tcg/translate.c | 2 +-
+ target/rx/helper.h    | 2 +-
+ target/rx/op_helper.c | 2 +-
+ target/rx/translate.c | 2 +-
  3 files changed, 3 insertions(+), 3 deletions(-)
 
-diff --git a/target/mips/helper.h b/target/mips/helper.h
-index 779b87101db..f2091c78e26 100644
---- a/target/mips/helper.h
-+++ b/target/mips/helper.h
-@@ -250,7 +250,7 @@ DEF_HELPER_1(rdhwr_xnp, tl, env)
- DEF_HELPER_1(rdhwr_chord, tl, env)
- DEF_HELPER_1(rdhwr_cvmcount, tl, env)
- DEF_HELPER_2(pmon, void, env, int)
--DEF_HELPER_1(wait, void, env)
-+DEF_HELPER_1(mips_wait, void, env)
- 
- #ifdef TARGET_MIPS64
- DEF_HELPER_FLAGS_2(lcsr_cpucfg, TCG_CALL_NO_RWG_SE, tl, env, tl)
-diff --git a/target/mips/tcg/exception.c b/target/mips/tcg/exception.c
-index 630b8b809fa..95fc922aa68 100644
---- a/target/mips/tcg/exception.c
-+++ b/target/mips/tcg/exception.c
-@@ -65,7 +65,7 @@ static void raise_exception(CPUMIPSState *env, uint32_t exception)
-     do_raise_exception(env, exception, 0);
+diff --git a/target/rx/helper.h b/target/rx/helper.h
+index 8cc38b0cb71..e88782cf227 100644
+--- a/target/rx/helper.h
++++ b/target/rx/helper.h
+@@ -1,7 +1,7 @@
+ DEF_HELPER_1(raise_illegal_instruction, noreturn, env)
+ DEF_HELPER_1(raise_access_fault, noreturn, env)
+ DEF_HELPER_1(raise_privilege_violation, noreturn, env)
+-DEF_HELPER_1(wait, noreturn, env)
++DEF_HELPER_1(rx_wait, noreturn, env)
+ DEF_HELPER_2(rxint, noreturn, env, i32)
+ DEF_HELPER_1(rxbrk, noreturn, env)
+ DEF_HELPER_3(fadd, f32, env, f32, f32)
+diff --git a/target/rx/op_helper.c b/target/rx/op_helper.c
+index 36df7d377e5..4bd25bb7d00 100644
+--- a/target/rx/op_helper.c
++++ b/target/rx/op_helper.c
+@@ -445,7 +445,7 @@ G_NORETURN void helper_raise_illegal_instruction(CPURXState *env)
+     raise_exception(env, 23, GETPC());
  }
  
--void helper_wait(CPUMIPSState *env)
-+void helper_mips_wait(CPUMIPSState *env)
+-G_NORETURN void helper_wait(CPURXState *env)
++G_NORETURN void helper_rx_wait(CPURXState *env)
  {
      CPUState *cs = env_cpu(env);
  
-diff --git a/target/mips/tcg/translate.c b/target/mips/tcg/translate.c
-index e3467d15251..40ff71ffd00 100644
---- a/target/mips/tcg/translate.c
-+++ b/target/mips/tcg/translate.c
-@@ -8683,7 +8683,7 @@ static void gen_cp0(CPUMIPSState *env, DisasContext *ctx, uint32_t opc,
-         ctx->base.pc_next += 4;
-         save_cpu_state(ctx, 1);
-         ctx->base.pc_next -= 4;
+diff --git a/target/rx/translate.c b/target/rx/translate.c
+index 132d495710c..b2e3d346147 100644
+--- a/target/rx/translate.c
++++ b/target/rx/translate.c
+@@ -2197,7 +2197,7 @@ static bool trans_WAIT(DisasContext *ctx, arg_WAIT *a)
+ {
+     if (is_privileged(ctx, 1)) {
+         tcg_gen_movi_i32(cpu_pc, ctx->base.pc_next);
 -        gen_helper_wait(tcg_env);
-+        gen_helper_mips_wait(tcg_env);
-         ctx->base.is_jmp = DISAS_NORETURN;
-         break;
-     default:
++        gen_helper_rx_wait(tcg_env);
+     }
+     return true;
+ }
 -- 
 2.52.0.windows.1
 

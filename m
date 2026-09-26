@@ -4,161 +4,105 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id ED138C98318
-	for <qemu-arm@archiver.kernel.org>; Sat, 26 Sep 2026 09:48:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AEF71C98338
+	for <qemu-arm@archiver.kernel.org>; Sat, 26 Sep 2026 11:09:13 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xAP19-0007pw-Oi; Sat, 26 Sep 2026 05:48:27 -0400
+	id 1xAQH0-00084W-Me; Sat, 26 Sep 2026 07:08:55 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@oss.qualcomm.com>)
- id 1xAP10-0007of-Vv
- for qemu-arm@nongnu.org; Sat, 26 Sep 2026 05:48:19 -0400
-Received: from mx0b-0031df01.pphosted.com ([205.220.180.131])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@oss.qualcomm.com>)
- id 1xAP0z-00028r-48
- for qemu-arm@nongnu.org; Sat, 26 Sep 2026 05:48:18 -0400
-Received: from pps.filterd (m0279873.ppops.net [127.0.0.1])
- by mx0a-0031df01.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id
- 68Q6P3O43268392
- for <qemu-arm@nongnu.org>; Sat, 26 Sep 2026 09:48:15 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qualcomm.com; h=
- cc:content-transfer-encoding:content-type:date:from:in-reply-to
- :message-id:mime-version:references:subject:to; s=qcppdkim1; bh=
- nsyljrcJz+7hDpqgAdLfkjNEBVvfzVs+C1b1nrjCPX4=; b=PlFvb5mNnxKmJ3+G
- 9u/JSfpm2MaINsxp2RhUg8AtARGyGeu8eBfHmrp/pMqEUcQYcIc2dduON5E5m8mg
- O83HYZNDJ/SiV2rqL+rVN4/z3SrEZTCQZdG64oEoYIypoIVzEiwfRwTEqf+tKBdg
- nnON9FFJmDxRIUvRVB/Coe+b0HNGneMpd4wpX55X7bRsULda3XId8/CF96S/Wsfr
- vKe99mgXFn5nCCcBXRnCO0VM9xfaeTuebx2C+ooG+icCuLVxScWjeJLLNxye1og+
- by0IKtZ/rQ5KTy8+VKz03ZD97aETTCJZwUDBLhLS/JLsHCzClihT5tM4Cp+jUYiz
- pcvM3w==
-Received: from mail-qk1-f198.google.com (mail-qk1-f198.google.com
- [209.85.222.198])
- by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 4gx3dp0x83-1
- (version=TLSv1.3 cipher=TLS_AES_128_GCM_SHA256 bits=128 verify=NOT)
- for <qemu-arm@nongnu.org>; Sat, 26 Sep 2026 09:48:15 +0000 (GMT)
-Received: by mail-qk1-f198.google.com with SMTP id
- af79cd13be357-93a08ff8451so284283485a.2
- for <qemu-arm@nongnu.org>; Sat, 26 Sep 2026 02:48:15 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <luoyonggang@gmail.com>)
+ id 1xAQGu-00082u-Lw
+ for qemu-arm@nongnu.org; Sat, 26 Sep 2026 07:08:50 -0400
+Received: from mail-dl2-x0f.google.com ([2607:f8b0:4864:38::f])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <luoyonggang@gmail.com>)
+ id 1xAQGt-0002ke-2l
+ for qemu-arm@nongnu.org; Sat, 26 Sep 2026 07:08:48 -0400
+Received: by mail-dl2-x0f.google.com with SMTP id
+ a92af1059eb24-145047ad220so591249c88.3
+ for <qemu-arm@nongnu.org>; Sat, 26 Sep 2026 04:08:46 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=oss.qualcomm.com; s=google; t=1790416094; x=1791020894; darn=nongnu.org;
- h=content-transfer-encoding:content-type:in-reply-to:from:references
- :cc:to:content-language:subject:user-agent:mime-version:date
- :message-id:from:to:cc:subject:date:message-id:reply-to:content-type;
- bh=nsyljrcJz+7hDpqgAdLfkjNEBVvfzVs+C1b1nrjCPX4=;
- b=B8197ztlTE8gKYvZGnzRO7euugunRTIF0IrlkgxvpZ8m+lzURGW2c3xkVo7mN9QaEM
- BfQ6bwYCwh2WtR0MuUwuwac4dWMeaMhsHzZHAmX+2CsT3RsQ9LjFE8ANwpreL2atU6Oc
- TNmszwpVuU1uta/bLiaSmGi1M0Paqj48PeKki+V2ZpzQgBN8wwpixCOz+fmxMUJLX9S+
- UKb/NxvhZnygWQb1/17jvxIiQLNa+hYPA27cuMSi3RssvY212X4aSG47LgpFo0GRIb/I
- vKd385s+BEGuOxeE23z5Vrn1/XcrIBRvtKAJRFl+Z9A+LXx14aN3qOVnaLA6LCd41feM
- nTXg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20260707; t=1790416094; x=1791020894;
- h=content-transfer-encoding:content-type:in-reply-to:from:references
- :cc:to:content-language:subject:user-agent:mime-version:date
- :message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+ d=gmail.com; s=20251104; t=1790420926; x=1791025726; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to:content-type;
- bh=nsyljrcJz+7hDpqgAdLfkjNEBVvfzVs+C1b1nrjCPX4=;
- b=KU039OZVLnQOu/iPKJ3g4PVIHTGUd3Q/tQMtoGIY5c/fx/twewNrMls7dUMjzGY15O
- Kz6sAlyjBPwDbbx6ysfhtxyRbg26cJRNTR21wrl6OkJ83hl5IwafxR5FQwn28nwDWLeB
- QkglMwhiUOOKmkpWrxZgcNW+X9Z2cozIu/JppcTs94joPJrznI3XiMbM+hYs+6Tr/De1
- ++LMHuNcY3l4QibgjQ/gNF19X8by2WWYsBUCCduzmvpQXXZwQd+4rBA9roYsFTradkRq
- UZyDWHXEareZWV4O609m7PBGpv0JvHNG/ajXlFW+o/fRSLrAZV2LdZPJ4mFsbwE+O6nk
- Apjg==
+ bh=guuk/GU2+6svkxqusCAEMJJEdeLkWutsxCBXdBcfQM0=;
+ b=KbzpJANR2X4BdWMVG0sJeiF8+TfaXtbJZ2ETcfziNfVV8i2Bu99jTfJoLUtSefrrmt
+ 0pRq3lONT4WI3g79kofEUZecc4fg1JUxRLNg+h3AeLSo5OhU60qIpc6oJPx0U4pT5AHz
+ qcUiRqNgCr9wZWNa3aVAtlOUftEtDG9UA+TRjEhqPbQHsGsZ4+pk3xnN6qthlPO1RQ87
+ j1n9C7ix+TLfwLqGzuE10CD6NqrzVjTBEvdwwwXxRH6uXQzXAPgz62it5baMVFepqVJD
+ kzRbeLFBHBaWdhj6FdFXs9GxgSzA5/ytfUwIgHenlzsK0wCnMuD1gQnarzL1tPEuy3Az
+ Actg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20260707; t=1790420926; x=1791025726;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
+ :to:cc:subject:date:message-id:reply-to:content-type;
+ bh=guuk/GU2+6svkxqusCAEMJJEdeLkWutsxCBXdBcfQM0=;
+ b=UoTSIhs8jwRcHLTz8PtCqcPDGlPpuc9gR6auxhtHHGjJz+DXLyrjy1Z+wiU6DcpN2A
+ bybIzCSweJvVWcEaM7aRzuQ/jgtrEpiNOqJikKftTCMZ6TzL8wC32eqPOuWHkmy2ih7K
+ 9B6LbRMBQibZ3AGSHvYHfWP4SEv/0Q85Ucd7cDHnyXj+8oyQmJQC4ESXr6rq9vwS8AjO
+ ZWMERn+O+oTDSh/S6qA3kfFDYEU5XiAxB4pwulczUfLf0nfwviWT93DeltTx2aFy0/Ks
+ ePqrd9ANqxdqL9RkQdBvvv29q1n37MtIKvXtDew4orZoDjXdSE5IQ0VuX0Ij0pomW/Xz
+ H6yw==
 X-Forwarded-Encrypted: i=1;
- AKwUvBx6wsFkzzfMdBONTh6THJmiYIRW5aEKA+4ZRAaVqCf9VbUz4GkTnhX28r7xAlB5aYB1itRAfJJ05Q==@nongnu.org
-X-Gm-Message-State: AFuF++nrQHTlGEZiQHZw6eP4zBdDOpX1TbIxZ/xrpZK/8nt1fhcuEO+T
- IbMLqgsauUIQpmggeXCxjZr2xPznvJyfbL4qZQj9iVk3wJEH9Nz1oxePhTjw40CfIJjXA3ecNkS
- eSFcw2BLzzjI8eGhm2rVRAYQhEev1AGW7W6ROHgPpbQ4kqJXtoDFRYj8=
-X-Gm-Gg: AYBFou1mbIryoR+94EvlIRhpEJ3y6Srug4kax26P207p8E5w14I7fIMi/jwTiGty2IO
- pSYD0UzR81gTCZ3riZOMIrCVzAODBiuaWCmerMFMz29SCzuc0yMwHCHCdYpBjKmYYDr2RdRCUqI
- dI80BekDBNjqHvGCAedNekCfrX44wWfij/wRHE3c50e11yencmuoinkhJhTtmNif4Wp7drEOMrq
- BdS6NH9OthbfDspX7fp8+7KXGk/I88DalVBrUtDF4oBIc0nCb0sTsEeP0A9ptxAtB6aA3BNmBg9
- GNUYFCLW43LpnaU3wSDO5Pwz49NkNZg49s6XYgN6h8THHzCMBZc3R2DwBOxeW0a96Ke2tQUIqXl
- AB7BEa2MKnzackQrSmy5zCrs8go4Lb9BRFQ==
-X-Received: by 2002:a05:620a:440e:b0:939:c555:efb6 with SMTP id
- af79cd13be357-93c43b7e8b5mr929769885a.12.1790416094472; 
- Sat, 26 Sep 2026 02:48:14 -0700 (PDT)
-X-Received: by 2002:a05:620a:440e:b0:939:c555:efb6 with SMTP id
- af79cd13be357-93c43b7e8b5mr929765585a.12.1790416093984; 
- Sat, 26 Sep 2026 02:48:13 -0700 (PDT)
-Received: from [192.168.69.225] (pmd666.hd.free.fr. [88.187.86.199])
- by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-4887a746c57sm12165585f8f.35.2026.09.26.02.48.09
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Sat, 26 Sep 2026 02:48:11 -0700 (PDT)
-Message-ID: <99d1d189-fd2c-47fd-83ba-e232121096e4@oss.qualcomm.com>
-Date: Sat, 26 Sep 2026 11:48:09 +0200
-MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v4 2/4] hw/qdev: Introduce DevicePhase
-Content-Language: en-US
-To: Akihiko Odaki <odaki@rsg.ci.i.u-tokyo.ac.jp>, qemu-devel@nongnu.org
-Cc: BALATON Zoltan <balaton@eik.bme.hu>, Paolo Bonzini <pbonzini@redhat.com>, 
- =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>,
- Eduardo Habkost <eduardo@habkost.net>,
- "Maciej S. Szmigiero" <maciej.szmigiero@oracle.com>,
- "Michael S. Tsirkin" <mst@redhat.com>,
- David Hildenbrand <david@kernel.org>, Igor Mammedov <imammedo@redhat.com>,
- FangSheng Huang <FangSheng.Huang@amd.com>,
- Alistair Francis <alistair@alistair23.me>,
- "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
+ AKwUvBySp/77kN+IojwPH/+tfl88d9KR3QmxCsWSQK4PZF/NeTwUl0iEdQqh9oPx1sJouPAPfTQh1AYn4g==@nongnu.org
+X-Gm-Message-State: AFuF++nr/h17p5B0jFBiPmlN9WPjoXJBOBf0PzMBuE7uOy4b6tJcbx4F
+ ZPvUeDKsTFLlIF7Xo1kcviFpLy9p9KZ5SKJucmdQ9TMYNL7gcvv6k8UQ
+X-Gm-Gg: AYBFou1RJ4tP6nLM/N4GV7dKd/P/nEmLs/rRe/Me2/EO2uGE56dajSaJJH9Ciy2x17G
+ DPLqhhHpdF4Uj1g+kCpG4P9PPPYXoKpFbAUjYNYrUAugQpEvA3qctANuLscNc6gsGc3uQIPn2rc
+ xYUfKTTDDQW3ThyHWuXzWyz9hd8auQSi8d7ENEfi3kYoBaoUhAHtjoOpgisAnKyc5yq1JM6Yn5G
+ KeXcCxuwuWePrR62iObaTGkzyLU/hia4bPD99Kg0lcqmNtNXhqt/UyusM1jAAOPXmLIcv+r6RGT
+ XXmQdMUcsqu5NTPW/uHjydS6+aPKO8THiydND4grOiTmw8NpIf8drQXsQFvZ4Uyo8QJv+WxYlHQ
+ 5GpKxy19eD7vD6/y7PC1DtF6KmjnDssJ3hdY9v1q41ybyVMRRTxMeyUIW3U3pRZXluNP2qgU0ui
+ MZ+2sJRKoLqbCDu9RoGHvH9YX8wxgspurdcgvR4vggpjgowDH3yyXfzbClLxo7IsMzQUxJOL71B
+ /csxcG5jSghRFhlBlKE2aZhHq27GOY=
+X-Received: by 2002:a05:701b:4343:b0:143:26ed:2dd4 with SMTP id
+ a92af1059eb24-146cfcd91c7mr2281470c88.30.1790420925630; 
+ Sat, 26 Sep 2026 04:08:45 -0700 (PDT)
+Received: from WIN-BH9M8FJACR9 ([103.94.185.75])
+ by smtp.googlemail.com with ESMTPSA id
+ a92af1059eb24-145a7318afcsm11414045c88.0.2026.09.26.04.08.39
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Sat, 26 Sep 2026 04:08:44 -0700 (PDT)
+From: Yonggang Luo <luoyonggang@gmail.com>
+To: qemu-devel@nongnu.org
+Cc: Brian Cain <brian.cain@oss.qualcomm.com>,
+ Igor Mammedov <imammedo@redhat.com>, Aurelien Jarno <aurelien@aurel32.net>,
+ Palmer Dabbelt <palmer@dabbelt.com>,
+ Alistair Francis <alistair.francis@wdc.com>,
+ Sunil V L <sunilvl@ventanamicro.com>, Paolo Bonzini <pbonzini@redhat.com>,
+ Song Gao <17746591750@163.com>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@oss.qualcomm.com>,
+ Aleksandar Rikalo <arikalo@gmail.com>,
  Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
- Nicholas Piggin <npiggin@gmail.com>, Aditya Gupta <adityag@linux.ibm.com>,
- Glenn Miles <milesg@linux.ibm.com>,
- Harsh Prateek Bora <harshpb@linux.ibm.com>, qemu-ppc@nongnu.org,
- Alex Williamson <alex@shazbot.org>, =?UTF-8?Q?C=C3=A9dric_Le_Goater?=
- <clg@redhat.com>, Zhao Liu <zhao1.liu@intel.com>,
- Hendrik Brueckner <brueckner@linux.ibm.com>,
+ Yoshinori Sato <yoshinori.sato@nifty.com>,
+ Daniel Henrique Barboza <daniel.barboza@oss.qualcomm.com>,
+ "Michael S. Tsirkin" <mst@redhat.com>, qemu-riscv@nongnu.org,
+ Philippe Mathieu-Daude <philmd@mailo.com>, Ani Sinha <anisinha@redhat.com>,
+ Jiaxun Yang <jiaxun.yang@flygoat.com>,
  Richard Henderson <richard.henderson@linaro.org>,
- Ilya Leoshkevich <iii@linux.ibm.com>,
- Cornelia Huck <cohuck@redhat.com>, Eric Farman <farman@linux.ibm.com>,
- Matthew Rosato <mjrosato@linux.ibm.com>, qemu-s390x@nongnu.org,
- Luc Michel <luc@lmichel.fr>, Fam Zheng <fam@euphon.net>,
- Eric Blake <eblake@redhat.com>, Markus Armbruster <armbru@redhat.com>
-References: <20260914-qdev-v4-0-93f849b4865c@rsg.ci.i.u-tokyo.ac.jp>
- <20260914-qdev-v4-2-93f849b4865c@rsg.ci.i.u-tokyo.ac.jp>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@oss.qualcomm.com>
-In-Reply-To: <20260914-qdev-v4-2-93f849b4865c@rsg.ci.i.u-tokyo.ac.jp>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwOTI2MDAzOCBTYWx0ZWRfX7euS/aiHzeDK
- HBny+7c/iy67mUGFamr1ZIwNY8Zn/dwjSYvSyp5mhiOCePvd3vrmJHmUf11RF7VKKykk9SLiMon
- ZQIw1g4BAt+l8qSo3nEXxgCbTRYqT7s48FhSYvomNGydde85EBhzsvywb4SuXCflZh+iDwTY5E7
- XsN+nqOSX7MwQbX4Csgw/CNkv1cx0OowkYXk1+uok7SoBmHXekmicqgKzPuE2Xup5ru0GjLn+rZ
- tFNiB0Ek5/2DEr1eh+ocrRMYY2fH4KHAm+WOy8SAogZaCeCbNk12nWgD1ND6cs2++FGhuUo5BZz
- BG/w22gyV4Kk0Z0S1jSlTc/4HazUe/9tvcy6Tu4Y/8AeLvaAdIPifPOwpt7Rdl443TqJy3Q5fkU
- Hw5a/wnOX3YofawTtPFlg7jWwV7iXufXPZzB/ijEZ9qaOsrUl9qpkxDaQ5q6SMSG2I1kpSFcsL8
- xdzLxZygDHGIZ7IiUyA==
-X-Authority-Analysis: v=2.4 cv=QsXLTlyd c=1 sm=1 tr=0 ts=6ab794df cx=c_pps
- a=qKBjSQ1v91RyAK45QCPf5w==:117 a=4s3hRJSeHn4rkQlkrse1kQ==:17
- a=IkcTkHD0fZMA:10 a=VdqzKS8jKosA:10 a=M51BFTxLslgA:10 a=s4-Qcg_JpJYA:10
- a=VkNPw1HP01LnGYTKEx00:22 a=u7WPNUs3qKkmUXheDGA7:22 a=rJkE3RaqiGZ5pbrm-msn:22
- a=2_YoaiJFEchiNid7zjQA:9 a=QEXdDO2ut3YA:10 a=NFOGd7dJGGMPyQGDc5-O:22
-X-Proofpoint-GUID: kFnkjpVKOn51dgjaaEWHfENx10KlCivP
-X-Proofpoint-Spam-Info: AW1haW4tMjYwOTI2MDAzOCBTYWx0ZWRfX+v8xtLyA9Y5I
- nztAD3SHK5p3BlpmJcucHVunUAFrKD2rvWZqoLLFq1eAxc8qUDKbpBCmUv5Hiu+BF4D5VonU1hA
- femk8hXIQiVXa3NTYmT9Niy1k02DrHE=
-X-Proofpoint-ORIG-GUID: kFnkjpVKOn51dgjaaEWHfENx10KlCivP
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.293,Aquarius:18.0.1176,Hydra:6.1.134,FMLib:17.12.100.49
- definitions=2026-09-26_02,2026-09-21_02,2025-10-01_01
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
- impostorscore=0 suspectscore=0 clxscore=1015 malwarescore=0 phishscore=0
- adultscore=0 bulkscore=0 priorityscore=1501 spamscore=0 lowpriorityscore=0
- classifier=typeunknown authscore=0 authtc= authcc= route=outbound adjust=0
- reason=mlx scancount=1 engine=8.22.0-2609040000 definitions=main-2609260038
-Received-SPF: pass client-ip=205.220.180.131;
- envelope-from=philmd@oss.qualcomm.com; helo=mx0b-0031df01.pphosted.com
-X-Spam_score_int: -27
-X-Spam_score: -2.8
+ Chao Liu <chao.liu@processmission.com>, Weiwei Li <liwei1518@gmail.com>,
+ Zhao Liu <zhao1.liu@intel.com>,
+ Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>
+Subject: [PATCH 3/9] target/hexagon: rename helper_wait to helper_hexagon_wait
+Date: Sat, 26 Sep 2026 19:08:11 +0800
+Message-ID: <20260926110818.1912-4-luoyonggang@gmail.com>
+X-Mailer: git-send-email 2.52.0.windows.1
+In-Reply-To: <20260926110818.1912-1-luoyonggang@gmail.com>
+References: <20260926110818.1912-1-luoyonggang@gmail.com>
+MIME-Version: 1.0
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2607:f8b0:4864:38::f;
+ envelope-from=luoyonggang@gmail.com; helo=mail-dl2-x0f.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -174,118 +118,80 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On 14/9/26 11:31, Akihiko Odaki wrote:
-> Replace the bool DeviceState::realized field with the enum-valued
-> DeviceState::phase field to express finer phases in following changes.
-> 
-> The QOM realized property is an internal lifecycle property, not for
-> end users. Replace it with the enum-valued phase property.
-> 
-> Signed-off-by: Akihiko Odaki <odaki@rsg.ci.i.u-tokyo.ac.jp>
-> ---
->   qapi/common.json          | 14 ++++++++++++++
->   include/hw/core/qdev.h    |  7 ++++---
->   hw/core/qdev-clock.c      |  4 ++--
->   hw/core/qdev-properties.c |  4 ++--
->   hw/core/qdev.c            | 45 +++++++++++++++++++++++----------------------
->   hw/scsi/scsi-bus.c        |  4 ++--
->   qom/qom-qmp-cmds.c        |  2 +-
->   system/qdev-monitor.c     |  5 +++--
->   8 files changed, 51 insertions(+), 34 deletions(-)
-> 
-> diff --git a/qapi/common.json b/qapi/common.json
-> index af7e3d618a7c..415a2722fc1a 100644
-> --- a/qapi/common.json
-> +++ b/qapi/common.json
-> @@ -7,6 +7,20 @@
->   # *****************
->   ##
->   
-> +##
-> +# @DevicePhase:
-> +#
-> +# An enumeration of the device phases
-> +#
-> +# @unrealized: the initial phase
-> +#
-> +# @realized: the phase after realization
-> +#
-> +# Since: 11.2
-> +##
-> +{ 'enum': 'DevicePhase',
-> +  'data': [ 'unrealized', 'realized' ] }
-> +
->   ##
->   # @IoOperationType:
->   #
-> diff --git a/include/hw/core/qdev.h b/include/hw/core/qdev.h
-> index b1c5f4780a90..ff367b2a5f98 100644
-> --- a/include/hw/core/qdev.h
-> +++ b/include/hw/core/qdev.h
-> @@ -1,6 +1,7 @@
->   #ifndef QDEV_CORE_H
->   #define QDEV_CORE_H
->   
-> +#include "qapi/qapi-types-common.h"
->   #include "qemu/atomic.h"
->   #include "qemu/queue.h"
->   #include "qemu/bitmap.h"
-> @@ -232,9 +233,9 @@ struct DeviceState {
->        */
->       char *canonical_path;
->       /**
-> -     * @realized: has device been realized?
-> +     * @phase: the current phase
->        */
-> -    bool realized;
-> +    DevicePhase phase;
->       /**
->        * @pending_deleted_event: track pending deletion events during unplug
->        */
-> @@ -440,7 +441,7 @@ DeviceState *qdev_try_new(const char *name);
->    */
->   static inline bool qdev_is_realized(const DeviceState *dev)
->   {
-> -    return qatomic_load_acquire(&dev->realized);
-> +    return qatomic_load_acquire(&dev->phase) == DEVICE_PHASE_REALIZED;
->   }
->   
->   /**
-> diff --git a/hw/core/qdev-clock.c b/hw/core/qdev-clock.c
-> index 861f78f94c64..efb33a3a27e7 100644
-> --- a/hw/core/qdev-clock.c
-> +++ b/hw/core/qdev-clock.c
-> @@ -30,7 +30,7 @@ static NamedClockList *qdev_init_clocklist(DeviceState *dev, const char *name,
->        * Clock must be added before realize() so that we can compute the
->        * clock's canonical path during device_realize().
->        */
-> -    assert(!dev->realized);
-> +    assert(dev->phase != DEVICE_PHASE_REALIZED);
->   
->       /*
->        * The ncl structure is freed by qdev_finalize_clocklist() which will
-> @@ -186,6 +186,6 @@ Clock *qdev_alias_clock(DeviceState *dev, const char *name,
->   
->   void qdev_connect_clock_in(DeviceState *dev, const char *name, Clock *source)
->   {
-> -    assert(!dev->realized);
-> +    assert(dev->phase != DEVICE_PHASE_REALIZED);
->       clock_set_source(qdev_get_clock_in(dev, name), source);
->   }
-> diff --git a/hw/core/qdev-properties.c b/hw/core/qdev-properties.c
-> index 34d7b26a7303..66cff4b9338c 100644
-> --- a/hw/core/qdev-properties.c
-> +++ b/hw/core/qdev-properties.c
-> @@ -33,7 +33,7 @@ static bool qdev_prop_allow_set(Object *obj, const char *name,
->   {
->       DeviceState *dev = DEVICE(obj);
->   
-> -    if (dev->realized && !info->realized_set_allowed) {
-> +    if (dev->phase == DEVICE_PHASE_REALIZED && !info->realized_set_allowed) {
->           qdev_prop_set_after_realize(dev, name, errp);
->           return false;
->       }
+helper_wait is a global C symbol. Prefix it and take the resume PC
+as vaddr.
 
-IMO a preliminary patch should convert to use qdev_is_realized() where
-appropriate (due to the atomicity), then this patch which LGTM btw.
+Signed-off-by: Yonggang Luo <luoyonggang@gmail.com>
+---
+ target/hexagon/gen_tcg_sys.h | 2 +-
+ target/hexagon/helper.h      | 2 +-
+ target/hexagon/op_helper.c   | 8 ++++----
+ 3 files changed, 6 insertions(+), 6 deletions(-)
+
+diff --git a/target/hexagon/gen_tcg_sys.h b/target/hexagon/gen_tcg_sys.h
+index af5032214c4..489d2780470 100644
+--- a/target/hexagon/gen_tcg_sys.h
++++ b/target/hexagon/gen_tcg_sys.h
+@@ -80,7 +80,7 @@
+ #define fGEN_TCG_Y2_wait(SHORTCODE) \
+     do { \
+         RsV = RsV; \
+-        gen_helper_wait(tcg_env, tcg_constant_tl(ctx->pkt.pc)); \
++        gen_helper_hexagon_wait(tcg_env, tcg_constant_vaddr(ctx->pkt.pc)); \
+     } while (0)
+ 
+ #define fGEN_TCG_Y2_resume(SHORTCODE) \
+diff --git a/target/hexagon/helper.h b/target/hexagon/helper.h
+index 71c8da4c46d..030ed6dcef5 100644
+--- a/target/hexagon/helper.h
++++ b/target/hexagon/helper.h
+@@ -136,7 +136,7 @@ DEF_HELPER_3(sreg_write_masked, void, env, i32, i32)
+ DEF_HELPER_3(setprio, void, env, i32, i32)
+ DEF_HELPER_2(start, void, env, i32)
+ DEF_HELPER_1(stop, void, env)
+-DEF_HELPER_2(wait, void, env, i32)
++DEF_HELPER_2(hexagon_wait, void, env, vaddr)
+ DEF_HELPER_2(resume, void, env, i32)
+ DEF_HELPER_1(resched, void, env)
+ DEF_HELPER_3(modify_ssr, void, env, i32, i32)
+diff --git a/target/hexagon/op_helper.c b/target/hexagon/op_helper.c
+index 4f00ca773f3..7f026292ce8 100644
+--- a/target/hexagon/op_helper.c
++++ b/target/hexagon/op_helper.c
+@@ -1741,7 +1741,7 @@ static void set_wait_mode(CPUHexagonState *env)
+     SET_SYSTEM_FIELD(env, HEX_SREG_MODECTL, MODECTL_W, thread_wait_mask);
+ }
+ 
+-static void hexagon_wait_thread(CPUHexagonState *env, uint32_t PC)
++static void hexagon_wait_thread(CPUHexagonState *env, vaddr pc)
+ {
+     CPUState *cs;
+ 
+@@ -1768,7 +1768,7 @@ static void hexagon_wait_thread(CPUHexagonState *env, uint32_t PC)
+         return;
+     }
+     set_wait_mode(env);
+-    env->wait_next_pc = PC + 4;
++    env->wait_next_pc = pc + 4;
+ 
+     cpu_interrupt(cs, CPU_INTERRUPT_HALT);
+ }
+@@ -1836,12 +1836,12 @@ void HELPER(resched)(CPUHexagonState *env)
+     resched(env);
+ }
+ 
+-void HELPER(wait)(CPUHexagonState *env, uint32_t PC)
++void HELPER(hexagon_wait)(CPUHexagonState *env, vaddr pc)
+ {
+     BQL_LOCK_GUARD();
+ 
+     if (!fIN_DEBUG_MODE(env->threadId)) {
+-        hexagon_wait_thread(env, PC);
++        hexagon_wait_thread(env, pc);
+     }
+ }
+ 
+-- 
+2.52.0.windows.1
+
 

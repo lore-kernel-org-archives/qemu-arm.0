@@ -4,69 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7708CC98332
-	for <qemu-arm@archiver.kernel.org>; Sat, 26 Sep 2026 11:10:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D8918C98338
+	for <qemu-arm@archiver.kernel.org>; Sat, 26 Sep 2026 11:10:47 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xAQHH-00089c-GD; Sat, 26 Sep 2026 07:09:11 -0400
+	id 1xAQHI-00089s-3W; Sat, 26 Sep 2026 07:09:12 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <luoyonggang@gmail.com>)
- id 1xAQH2-00084x-I5
- for qemu-arm@nongnu.org; Sat, 26 Sep 2026 07:08:57 -0400
-Received: from mail-dl2-x0e.google.com ([2607:f8b0:4864:38::e])
+ id 1xAQH7-00086A-Qk
+ for qemu-arm@nongnu.org; Sat, 26 Sep 2026 07:09:03 -0400
+Received: from mail-dl1-x1229.google.com ([2607:f8b0:4864:20::1229])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <luoyonggang@gmail.com>)
- id 1xAQH0-0002lL-OD
- for qemu-arm@nongnu.org; Sat, 26 Sep 2026 07:08:56 -0400
-Received: by mail-dl2-x0e.google.com with SMTP id
- a92af1059eb24-143513309aeso148296c88.3
- for <qemu-arm@nongnu.org>; Sat, 26 Sep 2026 04:08:54 -0700 (PDT)
+ id 1xAQH6-0002lv-7O
+ for qemu-arm@nongnu.org; Sat, 26 Sep 2026 07:09:01 -0400
+Received: by mail-dl1-x1229.google.com with SMTP id
+ a92af1059eb24-13fc403e373so2581628c88.1
+ for <qemu-arm@nongnu.org>; Sat, 26 Sep 2026 04:08:59 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20251104; t=1790420933; x=1791025733; darn=nongnu.org;
+ d=gmail.com; s=20251104; t=1790420939; x=1791025739; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to:content-type;
- bh=yuLyQ2iME3Jh3tk8X2X7FeLRyZxy/E6ddgF3RJjs1U0=;
- b=hKYUqUAKuphPGN+ztjCGYskrpaRJEBMVTvyPn0kZ+3BFHcB1E4eN2QnDaPvb6jrMTe
- pEHd/BW7YEu8vMT1rWQAk2vnr+Py7/QjJjV3raAnNmcrtk2omESbJb8t5g4Su8CkxNIP
- H/M9DGnLK2o735Fp5fZ8G9DNmrpkw/VwYCXqwGRIsPzgUwGGMznrxuGwbrZSQMAg9o/e
- Z849c0zGBQd3em9arojwyL3KBRWxsGvD2Qnilez+nnBOH24chuPjItWu4IbA80o+n5Mk
- eJ5uauI/EU0ZzZhvbZvN261xhz5csF5/URjLSUzr6oAkcR0yDlA0o7DPOliVnQh4FdV0
- lM3Q==
+ bh=1CUhNh304lcgPNFCLApzOZeyUtI9fc3e65ZqaUMABa0=;
+ b=Sdnruxwl2nLRjM2Cwig/STDBWBw79NriPWhgi6vouFdxgebPJ7A08aLEHg+yLXnMrO
+ /seKGUrNA6JY/XxQP6LnB6fdVuFB/cpleU/FRUiT151L2aw+xsfaulfoHMANYL4YnJkM
+ 0YP6oEnuC2TApTFexxoKNSwhIwHNaXhmOo7kevrAewfpCikDMxaMHAT4QQtXljW5YID+
+ TImDhs4kLiQaY+nE5EPGWc8mmtTvpTBZSXm9YvEwXfX+Tkl/9nGq6H9HagkZXgLAqh0e
+ /R2I5EYohDVfD/zOfM23bDAedC1YsN2bEkDItnH8GzTRUE3oT9n2hJa0VktTEyohS4Yn
+ BM7g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20260707; t=1790420933; x=1791025733;
+ d=1e100.net; s=20260707; t=1790420939; x=1791025739;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
  :to:cc:subject:date:message-id:reply-to:content-type;
- bh=yuLyQ2iME3Jh3tk8X2X7FeLRyZxy/E6ddgF3RJjs1U0=;
- b=HKWohBfaBN/jjRA/fplHCx3P6mipPe2hiPoyhpQ6uCRr7nFwwStFln+QZ9l6CdDraY
- GDCCcrBaXU7sc6UP74mP8UCyAbwkQZ8++7hM1A4ThdgdDyKs6ZuCb+Woe2XGLJzGIPOh
- igIhXVR1L4zzUN9RzvIwSmo2GWAMKKHDm5tN2Li+GeNitpoF9bJRpuT7qQQO5Msb7/8n
- Xj93tG3IWrmZTPbp2FORvFMCGOKjFz5tgXDyo3EU16gZGUEnLIwF37pZJLhLwuxhAfg3
- sL9PodNLAdZpH7mpgLScygEuH/ALiIJ/+J2i0Q4hyRa8SKmMzi9sSoLNPjgBbC4S+K+Z
- xt8w==
+ bh=1CUhNh304lcgPNFCLApzOZeyUtI9fc3e65ZqaUMABa0=;
+ b=uAny0YGWM5E7Q8HLoxfKgimvkZnqhWl0stk2hfDZ5gOtz1ZDaQ2iVNv0MV2hT9K/9L
+ 9RHQ6IHDzmXkUIXU4ffS2dlOECN3dd2xThrmroMfUHmFIF5X0oEYxb7BTVkd60lCkgdh
+ Ig0cbS1Sw0fRECy2yz2B6B8tsnlK/Czbr2E3nElEuFFDfoRmQIREut4lvXh1+12ud3kq
+ sSW1HCCAmZNs1523HgXaUGwCaA4hZo9uadD8GJIGu+x/dGBf2Ij2o0lVZ7EUOfbKkxXr
+ 9rIm3C7HYlJ5Hq/vfxzEeRtOUhUz2BOzStDbV+nwXvMEODAxYUOxH9+bGV8EO+uzC+DD
+ hGBg==
 X-Forwarded-Encrypted: i=1;
- AKwUvBytAsrSMT+Cb29jQ/N4+fouTVVPTOdRlEZy+GKxFNIMiTzBaHrhu5qYQ7YWGU1Nyzlioj99A6NziA==@nongnu.org
-X-Gm-Message-State: AFuF++lNMNzCBk1SFWOVGSGa5z0v72v1ayBNs2MhsIIBnsAKUPFG9mFU
- 80Yri85/0x3oKDZGQKn8XGWzWT7jiG4rarNVE4KXSxX1dG0s9O5egFDR
-X-Gm-Gg: AYBFou3kJfoZ98BHn0hk6JuehzG4ieTGBW2ZCe7HMEmQ8gxZk+52gQDExNwrPOwbGyT
- bR0pXfm8ZDBRBJlY0FAkHr0Cfyuf7uFBaYSBKVSrJm6tznN7AfyJbga7M0Kf3B79UTSmRTSdONa
- cynXpdiSpSFW/z5iiimB3stVA+pTXNPdx+IkTF+yVFpbr0Qk8nVt7llD5dJWQ5IEoh3rXpPeRQr
- Ns3j3eXbrmRslFQF6HDnZrNqpXNpdppoyHmcGUMzHN4JIfpp0yw7zfRAquB+XkHyu3GaBWNkXdf
- tj7Twnz2sqInCEbYfO1uZlxvugmljSDbVJWCgDoBvgIQkzC84Mh2Y4BvHjpWF0Y+23xoOxU2v7+
- zpP8bUdZP1RUqVfrFMf9d/eDVvKNOheJGGDQXNl13eFJsqFDlYboJtC4GFOgNBZiFdWTRtLVaw/
- t0z22C8stMpcBD8EdVKaEPYQgiwwH+OQjwOzp9AP0R5H2AQ5yRwk3i2ui5gIV+nmbBBgCCeS0ks
- FfJgPtqLPvTNewvW7zkASBqWcxeoPc=
-X-Received: by 2002:a05:7022:b0c6:b0:143:26ee:4203 with SMTP id
- a92af1059eb24-146d00b7377mr2147547c88.30.1790420932940; 
- Sat, 26 Sep 2026 04:08:52 -0700 (PDT)
+ AKwUvBw9PDfj9ZW+R501YChqL3zCYG6Uu4gpAmt/Tnu/8Ast3myt3YO6Ost1sswrQhbXPZydrKn3Hg3gjg==@nongnu.org
+X-Gm-Message-State: AFuF++kNeaiDcT9DgLjFUhnJqF8n0Ug7LKwXziJ9c+kTURX5pH6mDBc1
+ O6acB5ckJh4JdWf8fCjnc8WsXJ1gqqpXgaVajILXuD0qcOSlo6dhIvrZ
+X-Gm-Gg: AYBFou0AuXWu4ABD45Nn4WtcCTzx6fQh1OVsshGciWAhbmNeQZRd7ODN0hyVHWlLx/V
+ zkvwF7SG2R6MidJqYkzccGu+HOVYgP6+sy9HYfIQXxapKLIiuR3MG0ZaviGw5QMjpfMmyudNw7U
+ MbBvfV6hfima/W65pPT6xKUe+TNbmmtjwwSqQd8rw3ld3p3LtSvDdHwqpd0zr/fSoGQSjJwxWzt
+ 5oUhGdB0ahxYwLRF6mfA3iBzMWz/3M5s7pXvG5a3TvBtKC5CIT3J4Jgpho5cgXfigDnQ80ETawA
+ uAglj1KMGGC20uDNb1x88Cb4zgluQAxtOM6ZdHZTTMZ4KTQVXUNNpw3MdNrwXRKfowfgx5UlQLz
+ 1GB9VdJHj2pt6eAiB4p8NGgkXYwc6WY1NGPHtovvRa95NeJI16RUk6NT5aJdUAuO7zwnqv78XLI
+ 1mW4WfRj8ed/6NvmRF9DUxiAxE+U6EY8ZbECpinlAqvsttZqWS8HdwnA32pLXaGLAHuaF6kB0Ar
+ +FNgqsQZHsu09oykWN/sYB5JTTZvzZG
+X-Received: by 2002:a05:7022:5f19:b0:143:7330:7fac with SMTP id
+ a92af1059eb24-146d02a9d17mr2117168c88.14.1790420938499; 
+ Sat, 26 Sep 2026 04:08:58 -0700 (PDT)
 Received: from WIN-BH9M8FJACR9 ([103.94.185.75])
  by smtp.googlemail.com with ESMTPSA id
- a92af1059eb24-145a7318afcsm11414045c88.0.2026.09.26.04.08.46
+ a92af1059eb24-145a7318afcsm11414045c88.0.2026.09.26.04.08.53
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sat, 26 Sep 2026 04:08:50 -0700 (PDT)
+ Sat, 26 Sep 2026 04:08:57 -0700 (PDT)
 From: Yonggang Luo <luoyonggang@gmail.com>
 To: qemu-devel@nongnu.org
 Cc: Brian Cain <brian.cain@oss.qualcomm.com>,
@@ -87,22 +87,23 @@ Cc: Brian Cain <brian.cain@oss.qualcomm.com>,
  Chao Liu <chao.liu@processmission.com>, Weiwei Li <liwei1518@gmail.com>,
  Zhao Liu <zhao1.liu@intel.com>,
  Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>
-Subject: [PATCH 4/9] target/arm: rename raise_exception to arm_raise_exception
-Date: Sat, 26 Sep 2026 19:08:12 +0800
-Message-ID: <20260926110818.1912-5-luoyonggang@gmail.com>
+Subject: [PATCH 5/9] target/mips: rename helper_wait to helper_mips_wait
+Date: Sat, 26 Sep 2026 19:08:13 +0800
+Message-ID: <20260926110818.1912-6-luoyonggang@gmail.com>
 X-Mailer: git-send-email 2.52.0.windows.1
 In-Reply-To: <20260926110818.1912-1-luoyonggang@gmail.com>
 References: <20260926110818.1912-1-luoyonggang@gmail.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:38::e;
- envelope-from=luoyonggang@gmail.com; helo=mail-dl2-x0e.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::1229;
+ envelope-from=luoyonggang@gmail.com; helo=mail-dl1-x1229.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -118,112 +119,55 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-raise_exception is a global C symbol. Prefix it so one binary can
-keep that short name free for another target, and keep the short
-name as a static inline wrapper.
+helper_wait is a global C symbol. Prefix it so one binary can keep
+that short name free for another target.
 
 Signed-off-by: Yonggang Luo <luoyonggang@gmail.com>
 ---
- target/arm/internals.h     | 27 ++++++++++++++++++++-------
- target/arm/tcg-stubs.c     |  4 ++--
- target/arm/tcg/op_helper.c | 10 +++++-----
- 3 files changed, 27 insertions(+), 14 deletions(-)
+ target/mips/helper.h        | 2 +-
+ target/mips/tcg/exception.c | 2 +-
+ target/mips/tcg/translate.c | 2 +-
+ 3 files changed, 3 insertions(+), 3 deletions(-)
 
-diff --git a/target/arm/internals.h b/target/arm/internals.h
-index 1efda543270..672fec7d52a 100644
---- a/target/arm/internals.h
-+++ b/target/arm/internals.h
-@@ -333,20 +333,33 @@ FIELD(FPMR, LSCALE2, 32, 6)
- #define M_FAKE_FSR_SFAULT 0xe /* SecureFault INVTRAN, INVEP or AUVIOL */
+diff --git a/target/mips/helper.h b/target/mips/helper.h
+index 779b87101db..f2091c78e26 100644
+--- a/target/mips/helper.h
++++ b/target/mips/helper.h
+@@ -250,7 +250,7 @@ DEF_HELPER_1(rdhwr_xnp, tl, env)
+ DEF_HELPER_1(rdhwr_chord, tl, env)
+ DEF_HELPER_1(rdhwr_cvmcount, tl, env)
+ DEF_HELPER_2(pmon, void, env, int)
+-DEF_HELPER_1(wait, void, env)
++DEF_HELPER_1(mips_wait, void, env)
  
- /**
-- * raise_exception: Raise the specified exception.
-+ * arm_raise_exception: Raise the specified exception.
-  * Raise a guest exception with the specified value, syndrome register
-  * and target exception level. This should be called from helper functions,
-  * and never returns because we will longjump back up to the CPU main loop.
-  */
--G_NORETURN void raise_exception(CPUARMState *env, uint32_t excp,
--                                uint64_t syndrome, uint32_t target_el);
--
-+G_NORETURN void arm_raise_exception(CPUARMState *env, uint32_t excp,
-+                                    uint64_t syndrome, uint32_t target_el);
- /*
-  * Similarly, but also use unwinding to restore cpu state.
-  */
--G_NORETURN void raise_exception_ra(CPUARMState *env, uint32_t excp,
--                                   uint64_t syndrome, uint32_t target_el,
--                                   uintptr_t ra);
-+G_NORETURN void arm_raise_exception_ra(CPUARMState *env, uint32_t excp,
-+                                       uint64_t syndrome, uint32_t target_el,
-+                                       uintptr_t ra);
-+
-+static inline G_NORETURN
-+void raise_exception(CPUARMState *env, uint32_t excp,
-+                     uint64_t syndrome, uint32_t target_el)
-+{
-+    arm_raise_exception(env, excp, syndrome, target_el);
-+}
-+
-+static inline G_NORETURN
-+void raise_exception_ra(CPUARMState *env, uint32_t excp, uint64_t syndrome,
-+                        uint32_t target_el, uintptr_t ra)
-+{
-+    arm_raise_exception_ra(env, excp, syndrome, target_el, ra);
-+}
- 
- /*
-  * For AArch64, map a given EL to an index in the banked_spsr array.
-diff --git a/target/arm/tcg-stubs.c b/target/arm/tcg-stubs.c
-index aeeede80661..7f9f684ed70 100644
---- a/target/arm/tcg-stubs.c
-+++ b/target/arm/tcg-stubs.c
-@@ -16,8 +16,8 @@ void write_v7m_exception(CPUARMState *env, uint32_t new_exc)
-     g_assert_not_reached();
+ #ifdef TARGET_MIPS64
+ DEF_HELPER_FLAGS_2(lcsr_cpucfg, TCG_CALL_NO_RWG_SE, tl, env, tl)
+diff --git a/target/mips/tcg/exception.c b/target/mips/tcg/exception.c
+index 630b8b809fa..95fc922aa68 100644
+--- a/target/mips/tcg/exception.c
++++ b/target/mips/tcg/exception.c
+@@ -65,7 +65,7 @@ static void raise_exception(CPUMIPSState *env, uint32_t exception)
+     do_raise_exception(env, exception, 0);
  }
  
--void raise_exception_ra(CPUARMState *env, uint32_t excp, uint64_t syndrome,
--                        uint32_t target_el, uintptr_t ra)
-+void arm_raise_exception_ra(CPUARMState *env, uint32_t excp, uint64_t syndrome,
-+                            uint32_t target_el, uintptr_t ra)
- {
-     g_assert_not_reached();
- }
-diff --git a/target/arm/tcg/op_helper.c b/target/arm/tcg/op_helper.c
-index 643b1482523..040aeabddd5 100644
---- a/target/arm/tcg/op_helper.c
-+++ b/target/arm/tcg/op_helper.c
-@@ -45,8 +45,8 @@ int exception_target_el(CPUARMState *env)
-     return target_el;
- }
- 
--void raise_exception(CPUARMState *env, uint32_t excp,
--                     uint64_t syndrome, uint32_t target_el)
-+void arm_raise_exception(CPUARMState *env, uint32_t excp,
-+                         uint64_t syndrome, uint32_t target_el)
+-void helper_wait(CPUMIPSState *env)
++void helper_mips_wait(CPUMIPSState *env)
  {
      CPUState *cs = env_cpu(env);
  
-@@ -70,8 +70,8 @@ void raise_exception(CPUARMState *env, uint32_t excp,
-     cpu_loop_exit(cs);
- }
- 
--void raise_exception_ra(CPUARMState *env, uint32_t excp, uint64_t syndrome,
--                        uint32_t target_el, uintptr_t ra)
-+void arm_raise_exception_ra(CPUARMState *env, uint32_t excp, uint64_t syndrome,
-+                            uint32_t target_el, uintptr_t ra)
- {
-     CPUState *cs = env_cpu(env);
- 
-@@ -81,7 +81,7 @@ void raise_exception_ra(CPUARMState *env, uint32_t excp, uint64_t syndrome,
-      * the caller passed us, and cannot use cpu_loop_exit_restore().
-      */
-     cpu_restore_state(cs, ra);
--    raise_exception(env, excp, syndrome, target_el);
-+    arm_raise_exception(env, excp, syndrome, target_el);
- }
- 
- uint64_t HELPER(neon_tbl)(CPUARMState *env, uint32_t desc,
+diff --git a/target/mips/tcg/translate.c b/target/mips/tcg/translate.c
+index e3467d15251..40ff71ffd00 100644
+--- a/target/mips/tcg/translate.c
++++ b/target/mips/tcg/translate.c
+@@ -8683,7 +8683,7 @@ static void gen_cp0(CPUMIPSState *env, DisasContext *ctx, uint32_t opc,
+         ctx->base.pc_next += 4;
+         save_cpu_state(ctx, 1);
+         ctx->base.pc_next -= 4;
+-        gen_helper_wait(tcg_env);
++        gen_helper_mips_wait(tcg_env);
+         ctx->base.is_jmp = DISAS_NORETURN;
+         break;
+     default:
 -- 
 2.52.0.windows.1
 

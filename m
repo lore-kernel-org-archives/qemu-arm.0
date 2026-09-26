@@ -4,69 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A0912C98328
-	for <qemu-arm@archiver.kernel.org>; Sat, 26 Sep 2026 07:10:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id F1945C98328
+	for <qemu-arm@archiver.kernel.org>; Sat, 26 Sep 2026 07:10:38 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xAMVz-0002ED-3d; Sat, 26 Sep 2026 03:08:07 -0400
+	id 1xAMVg-0000yH-Jr; Sat, 26 Sep 2026 03:07:50 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <luoyonggang@gmail.com>)
- id 1xAMSb-0005zi-Le
- for qemu-arm@nongnu.org; Sat, 26 Sep 2026 03:04:40 -0400
-Received: from mail-dy2-x0f.google.com ([2607:f8b0:4864:36::f])
+ id 1xAMRn-0005LZ-QE
+ for qemu-arm@nongnu.org; Sat, 26 Sep 2026 03:03:51 -0400
+Received: from mail-dy2-x0e.google.com ([2607:f8b0:4864:36::e])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <luoyonggang@gmail.com>)
- id 1xAMSY-0000lO-6q
- for qemu-arm@nongnu.org; Sat, 26 Sep 2026 03:04:37 -0400
-Received: by mail-dy2-x0f.google.com with SMTP id
- 5a478bee46e88-33e630052ebso1866229eec.0
- for <qemu-arm@nongnu.org>; Sat, 26 Sep 2026 00:04:33 -0700 (PDT)
+ id 1xAMRl-0000fU-Hl
+ for qemu-arm@nongnu.org; Sat, 26 Sep 2026 03:03:47 -0400
+Received: by mail-dy2-x0e.google.com with SMTP id
+ 5a478bee46e88-341fe27b718so1360277eec.0
+ for <qemu-arm@nongnu.org>; Sat, 26 Sep 2026 00:03:43 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20251104; t=1790406273; x=1791011073; darn=nongnu.org;
+ d=gmail.com; s=20251104; t=1790406223; x=1791011023; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to:content-type;
- bh=72h6q/XELQDZvfdIS5KzMm0xOjpWDOQFzwFtLUoCQz0=;
- b=B7k3obt96ZSW2cjc7+jaTFQYc+JEX3uDWpqwgQTpv5mj9LzdEgdtvPNqEyKIf/jZly
- t3n1lZcFid9wv7DOXMBcoWX/F0OJ+RRecwNY8BvfoMyk/zIS7d/S0X/YOACP1BjeAYzx
- HwZtjArogk2AmlTlGL7ZkqR0SKfyeq/AxbpnKw0pS8gNFoLW//YvC0qGKWz+lCvXa+5J
- km4LGknBaKzLe9LbYKxv/GykvjxUfgRpJ1wSES/fCbq5jBIwPNL43bFZN2vDfituNLpd
- 0eTVvgcjtRQBbhL/hEAgr4q0GFVys8aQYnEjZH06fgW/6GzxkQN1XQ5fDIHUSD1f2A1R
- dd4g==
+ bh=riWdPmPaF6yCA+QpUvXi1H8TQEU17/hMGN1s+wRfSqw=;
+ b=VllRqe6fi3Y7NyYAB2m7EgHLkeQJrshCMVrg2ipKvOSNP71EaCJ2v682MwU9Twtcho
+ QqAxN1a+T8s8u1hc0NeqqCkgh1fyqYUJcSjAlt3lILOHbqlYldclrC/AB1QDEE2LkGOY
+ TeEptIdz7CKCLF4gaW2ontOGH/lCDBjkedbz2S2ilsv6K9uAcoSdfPBZzTkDm2Za1hju
+ Zoc5ytKnHAEIAImzc6HXX/dOa0+PYkcCZXE+lRsdd5OR1TXEs3NBAG1x+4155CDN68BQ
+ SpwrSgcX53RFNC11bCq+N88doAAn8LNBZj13C6HF/JlQ449OAqKms+P1i/itu9TZ48XV
+ ufuw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20260707; t=1790406273; x=1791011073;
+ d=1e100.net; s=20260707; t=1790406223; x=1791011023;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
  :to:cc:subject:date:message-id:reply-to:content-type;
- bh=72h6q/XELQDZvfdIS5KzMm0xOjpWDOQFzwFtLUoCQz0=;
- b=diPJgrItYVE3j2E+y1ZCF4aOnTTDUKqvSnddiDh5mhLOqjYDS7z8DHHBFZQrUKmEcB
- qbBykOOkZG0D01/7IR8kFqX+erYnqh2KMLPcRuwNrZoAlx7B/COzDjfgYNe9WoGL/d1Y
- RxoZLJZSrvnDz2iQUmPs6kRmHcPVzIUIyCUzY4g3aJNXLTi1d9ce5Z3tOcGtkGdHqVtd
- R7E92gIukMxdE3mHAKkX+bXUCHjVjgYyWPUH2RJSq7MED7euCMypgSkFr/xXV/eOS89y
- fO4YKyTQQv/FjF54ESdGYbEqhkK27eOF1GwxkoVqDMZOQjFxXbOBWas10sRizwkS2n/C
- Dz2w==
+ bh=riWdPmPaF6yCA+QpUvXi1H8TQEU17/hMGN1s+wRfSqw=;
+ b=u2HPkJPrqI647TUV5ZgrXRlvrYfXuiFgXEaQVeQBURb5GaI6Enmta1KWl4scQ5XxOZ
+ l46EO9W/qDGOyJkAAQuHYDgPKPifEnS33UJngwQdgIQTDt0jZAvonysP9be7c7WAPT5O
+ phq8xaHWsNj2Fe4xV/DCBv7HsV+5366HcnpgsC4EkDPPtIem/yikBtodg5snbN0OJSaX
+ H78D5kZzy9BrxR/8xrOSe2bvF/beA9omJNpk7e74rFq9m6YGp6aq9+rWo+UMQ102rwW+
+ AGGHRA7rvuTG95IK9n1ZSrP6uDDpW2WAWxe/nMTVqIgLX+qt0c1iG3PKoHOZ2ykevy1s
+ BvoQ==
 X-Forwarded-Encrypted: i=1;
- AKwUvByB8RpKfUNZdDMwzd2n/1iGHiOlEKait+81Rb6U6x2RXc1iSLIl4U2bHaYajBGjp9+knVhk53k1Iw==@nongnu.org
-X-Gm-Message-State: AFuF++mYLgP9jHAd2+sjOwXflhaQ1urLI+/InWd3TFyIk8lG2U9dMZwd
- u+vDM9EqBEk1H7tdtQSairMNVE6FWsYFgpZ2f0Li/2IE6XU4aeoB2ZJj
-X-Gm-Gg: AYBFou2yLry6aM8nDe6bcW4gMTuBwTZLZ6rVr2fTP14TQ6W2f8iR6OKev/FGH14wBvm
- JBvtWgXMwmJifXu1wOnhEqxGTfiN/qzOT21SSAk1Zta+XZkg5wRDwcyyqFWD8UQLOmQ0j8nQiYp
- 46mNo4i68HEiWya0yHLs5Ohxmg6A/9/wzJzNJ277mUpfoGKTWZGhM6MWvyLtxVyk4vGMLNLLYgD
- 20qGVgBHzdb4jaRQ+EXWuJowmV0YysJDsywMtPn2/djAnV3498FnidRep9Iy4xI/k7iyXfGHQy3
- emck6/0WWmaBabRMYyga8czAEIl1DhX01gRwe65K4CZ+2RB7ECtGATQrifM762oO433QjUsPAue
- GtWJAcbFqNUjh0QuQPXsKJMwX2Lh5Uk1YlZ3A95UBdvfBegiE7sVkx3BrSkx+eyarDykd72SOQ9
- HdDLx4ziFm191+krwypehbAITTmstEhOwIMvD6Nddq2ruVOAyx9kp5g1R3kThfkfEvupeRiLRKb
- tiVSUujsRjywz5ObCkCqq/ol7B9iKU=
-X-Received: by 2002:a05:7300:ea11:b0:33b:f2f1:bc30 with SMTP id
- 5a478bee46e88-34272468f56mr2368131eec.31.1790406272566; 
- Sat, 26 Sep 2026 00:04:32 -0700 (PDT)
+ AKwUvBy/SDGXRBVc7iVNouIOgKH1+Gq0mu5OJD7kAPxbdoLGy3SVi/IU29ZpLhdMClnLsaQufsYijyf8Eg==@nongnu.org
+X-Gm-Message-State: AFuF++nF1R/aQIrd0mRnJ0f4sTnhzhJ9dzNnWen/khEY/Hd8U7MGYMf1
+ yxSbq+xI0ZG6J5yuMQBkom5I548KgIsmZkakG/HTkRr2EWIDUEE8rH3m
+X-Gm-Gg: AYBFou3MmbfuDD+zYYbrMrpW0tFMm4GIAn59rTpTIz5LreQq2aKFkLQK8tB3wGb/yz6
+ 4zPh6NqTdjzWoIsjGIVMejbPLIznpu8mLc3T5Lzl+Joa35ouft/qc7nyGuMoavdZYu4/4xZKtTV
+ 0rMd0XeSetf7cxHjHJJB1BHdKZKvejEeYpaPcE1hB1y0JtAWMAKZeUEDp0iEGLzXwg9CyQsqCgh
+ 477vW2AZ6Sits12uRW+/TFgx61yiTBKdtEkRtrwOmrZrS0hT1Zgdz7BvbqEIcJUyoTzCOdpTi+C
+ 6bnkWpDWTdgc4kEtwjJafX5TT/mA0Fasr83IxXVOHl3tUSfa/bM/fDlUg0PaTH3s2RhczykqKti
+ JCxLHL+CdSx5Mc0CbQxUzKeFIabyyS3ipjP9LDpzKp9Y992met71if+G73mb9r0mb2m8+H9Ij5u
+ ayKBtoY/YGIEfqq3UHVneVr0L3qb+XwvyJFYWZPA6xpc3lP+7SMJ+09QjlGk7EVgoSwgAQidgeQ
+ N4Fq+XfaZhegi5mabx7F2G5RfFCFLI=
+X-Received: by 2002:a05:7301:4d0b:b0:341:d191:b838 with SMTP id
+ 5a478bee46e88-34272562bc0mr2378558eec.31.1790406222673; 
+ Sat, 26 Sep 2026 00:03:42 -0700 (PDT)
 Received: from WIN-BH9M8FJACR9 ([103.94.185.75])
  by smtp.googlemail.com with ESMTPSA id
- 5a478bee46e88-34145c166cfsm10615141eec.28.2026.09.26.00.04.28
+ 5a478bee46e88-34145c166cfsm10615141eec.28.2026.09.26.00.03.39
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sat, 26 Sep 2026 00:04:31 -0700 (PDT)
+ Sat, 26 Sep 2026 00:03:41 -0700 (PDT)
 From: Yonggang Luo <luoyonggang@gmail.com>
 To: qemu-devel@nongnu.org
 Cc: Richard Henderson <richard.henderson@linaro.org>,
@@ -80,17 +80,16 @@ Cc: Richard Henderson <richard.henderson@linaro.org>,
  Peter Maydell <peter.maydell@linaro.org>,
  =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
  qemu-arm@nongnu.org, kvm@vger.kernel.org
-Subject: [PATCH v4 53/55] hw/arm: set remaining 32-bit machine
- TypeInfo.is_available
-Date: Sat, 26 Sep 2026 15:00:52 +0800
-Message-ID: <20260926070057.1234-54-luoyonggang@gmail.com>
+Subject: [PATCH v4 40/55] meson: link shared objects into qemu-system
+Date: Sat, 26 Sep 2026 15:00:39 +0800
+Message-ID: <20260926070057.1234-41-luoyonggang@gmail.com>
 X-Mailer: git-send-email 2.52.0.windows.1
 In-Reply-To: <20260926070057.1234-1-luoyonggang@gmail.com>
 References: <20260926070057.1234-1-luoyonggang@gmail.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:36::f;
- envelope-from=luoyonggang@gmail.com; helo=mail-dy2-x0f.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:36::e;
+ envelope-from=luoyonggang@gmail.com; helo=mail-dy2-x0e.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -112,664 +111,229 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Set TypeInfo.is_available to target_is_base_arm on remaining
-32-bit TypeInfo leaves, including aspeed, raspi0/1/2, mps, and
-npcm7xx. raspi3ap/3b use target_is_aarch64 in the same raspi
-TypeInfo array.
+Extract common_ss, system_ss, and family-common objects into one
+qemu-system binary. Only arm, aarch64, microblaze-softmmu are
+listed; a new target must have arch_srcs equal to target_info_def
+only (target-info-def.c). Config headers stay in arch_genh.
+
+- Union non-TARGET_* keys with y taking precedence
+- Reject leftover arch_srcs on participating targets
+- Reject TARGET_* conditions on common_ss and system_ss
+- Link SDL, install the binary, and apply Darwin entitlements
+
+Adding a target that still has per-target sources fails meson, for
+example:
+
+  combined qemu-system leftover for :
+  expected:
+  target-info-def.c
+  arch_srcs:
+  target/microblaze/mmu.c
+  target/microblaze/machine.c
+  target-info-def.c
 
 Signed-off-by: Yonggang Luo <luoyonggang@gmail.com>
 ---
- hw/arm/aspeed_ast1040_evb.c               | 1 +
- hw/arm/aspeed_ast10x0_evb.c               | 2 ++
- hw/arm/aspeed_ast2400_palmetto.c          | 1 +
- hw/arm/aspeed_ast2400_quanta-q71l.c       | 1 +
- hw/arm/aspeed_ast2400_supermicrox11.c     | 1 +
- hw/arm/aspeed_ast2500_evb.c               | 1 +
- hw/arm/aspeed_ast2500_g220a.c             | 1 +
- hw/arm/aspeed_ast2500_romulus.c           | 1 +
- hw/arm/aspeed_ast2500_supermicro-x11spi.c | 1 +
- hw/arm/aspeed_ast2500_tiogapass.c         | 1 +
- hw/arm/aspeed_ast2500_witherspoon.c       | 1 +
- hw/arm/aspeed_ast2500_yosemitev2.c        | 1 +
- hw/arm/aspeed_ast2600_anacapa.c           | 1 +
- hw/arm/aspeed_ast2600_bletchley.c         | 1 +
- hw/arm/aspeed_ast2600_catalina.c          | 1 +
- hw/arm/aspeed_ast2600_evb.c               | 1 +
- hw/arm/aspeed_ast2600_fby35.c             | 1 +
- hw/arm/aspeed_ast2600_fuji.c              | 1 +
- hw/arm/aspeed_ast2600_gb200nvl.c          | 1 +
- hw/arm/aspeed_ast2600_rainier.c           | 1 +
- hw/arm/aspeed_ast2600_sanmiguel.c         | 1 +
- hw/arm/b-l475e-iot01a.c                   | 1 +
- hw/arm/collie.c                           | 1 +
- hw/arm/exynos4_boards.c                   | 2 ++
- hw/arm/microbit.c                         | 1 +
- hw/arm/mps2-tz.c                          | 5 +++++
- hw/arm/mps2.c                             | 4 ++++
- hw/arm/mps3r.c                            | 1 +
- hw/arm/musca.c                            | 2 ++
- hw/arm/npcm7xx_boards.c                   | 5 +++++
- hw/arm/omap_sx1.c                         | 2 ++
- hw/arm/raspi.c                            | 3 +++
- hw/arm/realview.c                         | 4 ++++
- hw/arm/sabrelite.c                        | 1 +
- hw/arm/stellaris.c                        | 2 ++
- hw/arm/versatilepb.c                      | 2 ++
- hw/arm/vexpress.c                         | 2 ++
- hw/arm/xilinx_zynq.c                      | 1 +
- 38 files changed, 61 insertions(+)
+ meson.build | 151 ++++++++++++++++++++++++++++++++++++++++++++++++++--
+ 1 file changed, 147 insertions(+), 4 deletions(-)
 
-diff --git a/hw/arm/aspeed_ast1040_evb.c b/hw/arm/aspeed_ast1040_evb.c
-index 486f0f6a1ba..d66847c602c 100644
---- a/hw/arm/aspeed_ast1040_evb.c
-+++ b/hw/arm/aspeed_ast1040_evb.c
-@@ -79,6 +79,7 @@ static const TypeInfo aspeed_ast1040_evb_types[] = {
-     {
-         .name           = MACHINE_TYPE_NAME("ast1040-evb"),
-         .parent         = TYPE_ASPEED_MACHINE,
-+        .is_available   = target_is_base_arm,
-         .class_init     = aspeed_machine_ast1040_evb_class_init,
-     }
- };
-diff --git a/hw/arm/aspeed_ast10x0_evb.c b/hw/arm/aspeed_ast10x0_evb.c
-index c937bb74665..5b5adf7018e 100644
---- a/hw/arm/aspeed_ast10x0_evb.c
-+++ b/hw/arm/aspeed_ast10x0_evb.c
-@@ -117,10 +117,12 @@ static const TypeInfo aspeed_ast10x0_evb_types[] = {
-     {
-         .name           = MACHINE_TYPE_NAME("ast1030-evb"),
-         .parent         = TYPE_ASPEED_MACHINE,
-+        .is_available   = target_is_base_arm,
-         .class_init     = aspeed_minibmc_machine_ast1030_evb_class_init,
-     }, {
-         .name           = MACHINE_TYPE_NAME("ast1060-evb"),
-         .parent         = TYPE_ASPEED_MACHINE,
-+        .is_available   = target_is_base_arm,
-         .class_init     = aspeed_minibmc_machine_ast1060_evb_class_init,
-     }
- };
-diff --git a/hw/arm/aspeed_ast2400_palmetto.c b/hw/arm/aspeed_ast2400_palmetto.c
-index e2350e5b6ca..f8abd041c3a 100644
---- a/hw/arm/aspeed_ast2400_palmetto.c
-+++ b/hw/arm/aspeed_ast2400_palmetto.c
-@@ -71,6 +71,7 @@ static const TypeInfo aspeed_ast2400_palmetto_types[] = {
-     {
-         .name          = MACHINE_TYPE_NAME("palmetto-bmc"),
-         .parent        = TYPE_ASPEED_MACHINE,
-+        .is_available  = target_is_base_arm,
-         .class_init    = aspeed_machine_palmetto_class_init,
-     }
- };
-diff --git a/hw/arm/aspeed_ast2400_quanta-q71l.c b/hw/arm/aspeed_ast2400_quanta-q71l.c
-index e8cbbb8a052..6636d19d142 100644
---- a/hw/arm/aspeed_ast2400_quanta-q71l.c
-+++ b/hw/arm/aspeed_ast2400_quanta-q71l.c
-@@ -77,6 +77,7 @@ static const TypeInfo aspeed_ast2400_quanta_q71l_types[] = {
-     {
-         .name          = MACHINE_TYPE_NAME("quanta-q71l-bmc"),
-         .parent        = TYPE_ASPEED_MACHINE,
-+        .is_available  = target_is_base_arm,
-         .class_init    = aspeed_machine_quanta_q71l_class_init,
-     }
- };
-diff --git a/hw/arm/aspeed_ast2400_supermicrox11.c b/hw/arm/aspeed_ast2400_supermicrox11.c
-index c75898cc6d1..14a49c82c86 100644
---- a/hw/arm/aspeed_ast2400_supermicrox11.c
-+++ b/hw/arm/aspeed_ast2400_supermicrox11.c
-@@ -72,6 +72,7 @@ static const TypeInfo aspeed_ast2400_supermicrox11_types[] = {
-     {
-         .name          = MACHINE_TYPE_NAME("supermicrox11-bmc"),
-         .parent        = TYPE_ASPEED_MACHINE,
-+        .is_available  = target_is_base_arm,
-         .class_init    = aspeed_machine_supermicrox11_bmc_class_init,
-     }
- };
-diff --git a/hw/arm/aspeed_ast2500_evb.c b/hw/arm/aspeed_ast2500_evb.c
-index 6ca2a36322c..58c6ed316f0 100644
---- a/hw/arm/aspeed_ast2500_evb.c
-+++ b/hw/arm/aspeed_ast2500_evb.c
-@@ -58,6 +58,7 @@ static const TypeInfo aspeed_ast2500_evb_types[] = {
-     {
-         .name          = MACHINE_TYPE_NAME("ast2500-evb"),
-         .parent        = TYPE_ASPEED_MACHINE,
-+        .is_available  = target_is_base_arm,
-         .class_init    = aspeed_machine_ast2500_evb_class_init,
-     }
- };
-diff --git a/hw/arm/aspeed_ast2500_g220a.c b/hw/arm/aspeed_ast2500_g220a.c
-index 00bb1c61053..5deedad77cb 100644
---- a/hw/arm/aspeed_ast2500_g220a.c
-+++ b/hw/arm/aspeed_ast2500_g220a.c
-@@ -83,6 +83,7 @@ static const TypeInfo aspeed_ast2500_g220a_types[] = {
-     {
-         .name          = MACHINE_TYPE_NAME("g220a-bmc"),
-         .parent        = TYPE_ASPEED_MACHINE,
-+        .is_available  = target_is_base_arm,
-         .class_init    = aspeed_machine_g220a_class_init,
-     }
- };
-diff --git a/hw/arm/aspeed_ast2500_romulus.c b/hw/arm/aspeed_ast2500_romulus.c
-index 340a74408b6..5668915db55 100644
---- a/hw/arm/aspeed_ast2500_romulus.c
-+++ b/hw/arm/aspeed_ast2500_romulus.c
-@@ -53,6 +53,7 @@ static const TypeInfo aspeed_ast2500_romulus_types[] = {
-      {
-         .name          = MACHINE_TYPE_NAME("romulus-bmc"),
-         .parent        = TYPE_ASPEED_MACHINE,
-+        .is_available  = target_is_base_arm,
-         .class_init    = aspeed_machine_romulus_class_init,
-     }
- };
-diff --git a/hw/arm/aspeed_ast2500_supermicro-x11spi.c b/hw/arm/aspeed_ast2500_supermicro-x11spi.c
-index 5a7e49d6ccd..9e5e8c4246c 100644
---- a/hw/arm/aspeed_ast2500_supermicro-x11spi.c
-+++ b/hw/arm/aspeed_ast2500_supermicro-x11spi.c
-@@ -68,6 +68,7 @@ static const TypeInfo aspeed_ast2500_supermicro_x11spi_types[] = {
-     {
-         .name          = MACHINE_TYPE_NAME("supermicro-x11spi-bmc"),
-         .parent        = TYPE_ASPEED_MACHINE,
-+        .is_available  = target_is_base_arm,
-         .class_init    = aspeed_machine_supermicro_x11spi_bmc_class_init,
-     }
- };
-diff --git a/hw/arm/aspeed_ast2500_tiogapass.c b/hw/arm/aspeed_ast2500_tiogapass.c
-index 6cb567526c4..d9ecc98f96f 100644
---- a/hw/arm/aspeed_ast2500_tiogapass.c
-+++ b/hw/arm/aspeed_ast2500_tiogapass.c
-@@ -81,6 +81,7 @@ static const TypeInfo aspeed_ast2500_tiogapass_types[] = {
-     {
-         .name          = MACHINE_TYPE_NAME("tiogapass-bmc"),
-         .parent        = TYPE_ASPEED_MACHINE,
-+        .is_available  = target_is_base_arm,
-         .class_init    = aspeed_machine_tiogapass_class_init,
-     }
- };
-diff --git a/hw/arm/aspeed_ast2500_witherspoon.c b/hw/arm/aspeed_ast2500_witherspoon.c
-index 26ddb673470..e2bf25ee512 100644
---- a/hw/arm/aspeed_ast2500_witherspoon.c
-+++ b/hw/arm/aspeed_ast2500_witherspoon.c
-@@ -103,6 +103,7 @@ static const TypeInfo aspeed_ast2500_witherspoon_types[] = {
-     {
-         .name          = MACHINE_TYPE_NAME("witherspoon-bmc"),
-         .parent        = TYPE_ASPEED_MACHINE,
-+        .is_available  = target_is_base_arm,
-         .class_init    = aspeed_machine_witherspoon_class_init,
-     }
- };
-diff --git a/hw/arm/aspeed_ast2500_yosemitev2.c b/hw/arm/aspeed_ast2500_yosemitev2.c
-index 3ba1ed5f6fa..71375dbacd0 100644
---- a/hw/arm/aspeed_ast2500_yosemitev2.c
-+++ b/hw/arm/aspeed_ast2500_yosemitev2.c
-@@ -82,6 +82,7 @@ static const TypeInfo aspeed_ast2500_yosemitev2_types[] = {
-     {
-         .name          = MACHINE_TYPE_NAME("yosemitev2-bmc"),
-         .parent        = TYPE_ASPEED_MACHINE,
-+        .is_available  = target_is_base_arm,
-         .class_init    = aspeed_machine_yosemitev2_class_init,
-     }
- };
-diff --git a/hw/arm/aspeed_ast2600_anacapa.c b/hw/arm/aspeed_ast2600_anacapa.c
-index 25578db5894..0d81ba069d5 100644
---- a/hw/arm/aspeed_ast2600_anacapa.c
-+++ b/hw/arm/aspeed_ast2600_anacapa.c
-@@ -366,6 +366,7 @@ static const TypeInfo aspeed_ast2600_anacapa_types[] = {
-     {
-         .name          = MACHINE_TYPE_NAME("anacapa-bmc"),
-         .parent        = TYPE_ASPEED_MACHINE,
-+        .is_available  = target_is_base_arm,
-         .class_init    = aspeed_machine_anacapa_class_init,
-     }
- };
-diff --git a/hw/arm/aspeed_ast2600_bletchley.c b/hw/arm/aspeed_ast2600_bletchley.c
-index 6fa606c047e..abe59887d8f 100644
---- a/hw/arm/aspeed_ast2600_bletchley.c
-+++ b/hw/arm/aspeed_ast2600_bletchley.c
-@@ -88,6 +88,7 @@ static const TypeInfo aspeed_ast2600_bletchley_types[] = {
-     {
-         .name          = MACHINE_TYPE_NAME("bletchley-bmc"),
-         .parent        = TYPE_ASPEED_MACHINE,
-+        .is_available  = target_is_base_arm,
-         .class_init    = aspeed_machine_bletchley_class_init,
-     }
- };
-diff --git a/hw/arm/aspeed_ast2600_catalina.c b/hw/arm/aspeed_ast2600_catalina.c
-index 4f2b396f6f0..c98dd587f74 100644
---- a/hw/arm/aspeed_ast2600_catalina.c
-+++ b/hw/arm/aspeed_ast2600_catalina.c
-@@ -672,6 +672,7 @@ static const TypeInfo aspeed_ast2600_catalina_types[] = {
-     {
-         .name          = MACHINE_TYPE_NAME("catalina-bmc"),
-         .parent        = TYPE_ASPEED_MACHINE,
-+        .is_available  = target_is_base_arm,
-         .class_init    = aspeed_machine_catalina_class_init,
-     }
- };
-diff --git a/hw/arm/aspeed_ast2600_evb.c b/hw/arm/aspeed_ast2600_evb.c
-index 8a17c4453e9..b3930d13a7a 100644
---- a/hw/arm/aspeed_ast2600_evb.c
-+++ b/hw/arm/aspeed_ast2600_evb.c
-@@ -56,6 +56,7 @@ static const TypeInfo aspeed_ast2600_evb_types[] = {
-     {
-         .name          = MACHINE_TYPE_NAME("ast2600-evb"),
-         .parent        = TYPE_ASPEED_MACHINE,
-+        .is_available  = target_is_base_arm,
-         .class_init    = aspeed_machine_ast2600_evb_class_init,
-     }
- };
-diff --git a/hw/arm/aspeed_ast2600_fby35.c b/hw/arm/aspeed_ast2600_fby35.c
-index 28c9c143d88..9c180470883 100644
---- a/hw/arm/aspeed_ast2600_fby35.c
-+++ b/hw/arm/aspeed_ast2600_fby35.c
-@@ -169,6 +169,7 @@ static const TypeInfo aspeed_ast2600_fby35_types[] = {
-     {
-         .name          = MACHINE_TYPE_NAME("fby35-bmc"),
-         .parent        = MACHINE_TYPE_NAME("ast2600-evb"),
-+        .is_available  = target_is_base_arm,
-         .class_init    = aspeed_machine_fby35_class_init,
-     }
- };
-diff --git a/hw/arm/aspeed_ast2600_fuji.c b/hw/arm/aspeed_ast2600_fuji.c
-index 08d809b2fd9..6fc9dd7a2e6 100644
---- a/hw/arm/aspeed_ast2600_fuji.c
-+++ b/hw/arm/aspeed_ast2600_fuji.c
-@@ -129,6 +129,7 @@ static const TypeInfo aspeed_ast2600_fuji_types[] = {
-     {
-         .name          = MACHINE_TYPE_NAME("fuji-bmc"),
-         .parent        = TYPE_ASPEED_MACHINE,
-+        .is_available  = target_is_base_arm,
-         .class_init    = aspeed_machine_fuji_class_init,
-     }
- };
-diff --git a/hw/arm/aspeed_ast2600_gb200nvl.c b/hw/arm/aspeed_ast2600_gb200nvl.c
-index c9c0b6cb6e4..1b52cd42876 100644
---- a/hw/arm/aspeed_ast2600_gb200nvl.c
-+++ b/hw/arm/aspeed_ast2600_gb200nvl.c
-@@ -102,6 +102,7 @@ static const TypeInfo aspeed_ast2600_gb200nvl_types[] = {
-     {
-         .name          = MACHINE_TYPE_NAME("gb200nvl-bmc"),
-         .parent        = TYPE_ASPEED_MACHINE,
-+        .is_available  = target_is_base_arm,
-         .class_init    = aspeed_machine_gb200nvl_class_init,
-     }
- };
-diff --git a/hw/arm/aspeed_ast2600_rainier.c b/hw/arm/aspeed_ast2600_rainier.c
-index 43a8f01a9e7..812c801a095 100644
---- a/hw/arm/aspeed_ast2600_rainier.c
-+++ b/hw/arm/aspeed_ast2600_rainier.c
-@@ -189,6 +189,7 @@ static const TypeInfo aspeed_ast2600_rainier_types[] = {
-     {
-         .name          = MACHINE_TYPE_NAME("rainier-bmc"),
-         .parent        = TYPE_ASPEED_MACHINE,
-+        .is_available  = target_is_base_arm,
-         .class_init    = aspeed_machine_rainier_class_init,
-     }
- };
-diff --git a/hw/arm/aspeed_ast2600_sanmiguel.c b/hw/arm/aspeed_ast2600_sanmiguel.c
-index 345a9c94167..b0979f3815f 100644
---- a/hw/arm/aspeed_ast2600_sanmiguel.c
-+++ b/hw/arm/aspeed_ast2600_sanmiguel.c
-@@ -396,6 +396,7 @@ static const TypeInfo aspeed_ast2600_sanmiguel_types[] = {
-     {
-         .name          = MACHINE_TYPE_NAME("sanmiguel-bmc"),
-         .parent        = TYPE_ASPEED_MACHINE,
-+        .is_available  = target_is_base_arm,
-         .class_init    = aspeed_machine_sanmiguel_class_init,
-     }
- };
-diff --git a/hw/arm/b-l475e-iot01a.c b/hw/arm/b-l475e-iot01a.c
-index de19212ab85..f7322eb8de8 100644
---- a/hw/arm/b-l475e-iot01a.c
-+++ b/hw/arm/b-l475e-iot01a.c
-@@ -129,6 +129,7 @@ static const TypeInfo bl475e_machine_type[] = {
-     {
-         .name           = TYPE_B_L475E_IOT01A,
-         .parent         = TYPE_MACHINE,
-+        .is_available   = target_is_base_arm,
-         .instance_size  = sizeof(Bl475eMachineState),
-         .class_init     = bl475e_machine_init,
-     }
-diff --git a/hw/arm/collie.c b/hw/arm/collie.c
-index ca6b3addb7b..0c81feaea16 100644
---- a/hw/arm/collie.c
-+++ b/hw/arm/collie.c
-@@ -83,6 +83,7 @@ static const TypeInfo collie_machine_typeinfo = {
-     .name = TYPE_COLLIE_MACHINE,
-     .parent = TYPE_MACHINE,
-     .class_init = collie_machine_class_init,
-+    .is_available = target_is_base_arm,
-     .instance_size = sizeof(CollieMachineState),
- };
+diff --git a/meson.build b/meson.build
+index d5639a2d676..7ab5c7971a8 100644
+--- a/meson.build
++++ b/meson.build
+@@ -4288,15 +4288,30 @@ if host_os == 'darwin'
+ endif
  
-diff --git a/hw/arm/exynos4_boards.c b/hw/arm/exynos4_boards.c
-index 78632877df8..6927bee5a33 100644
---- a/hw/arm/exynos4_boards.c
-+++ b/hw/arm/exynos4_boards.c
-@@ -168,6 +168,7 @@ static const TypeInfo nuri_type = {
-     .name = MACHINE_TYPE_NAME("nuri"),
-     .parent = TYPE_MACHINE,
-     .class_init = nuri_class_init,
-+    .is_available = target_is_base_arm,
- };
+ traceable = []
++single_binary_target_info_objects = []
++single_binary_config = {}
++single_binary_bases = {}
++single_binary_deps = []
++single_binary_crates = []
++single_binary_available = false
++
++single_binary_supported_targets = [
++  'aarch64-softmmu',
++  'arm-softmmu',
++  'microblaze-softmmu',
++]
++
+ emulators = {}
+-target_info_def = files('target-info-def.c')
++target_info_def_src = 'target-info-def.c'
++target_info_def = files(target_info_def_src)
+ target_info_def_objects = {}
+ foreach target : target_dirs
+   config_target = config_target_mak[target]
+   target_name = config_target['TARGET_NAME']
+   target_base_arch = config_target['TARGET_BASE_ARCH']
+-  arch_srcs = [config_target_h[target]]
++  arch_srcs = []
+   arch_deps = []
++  arch_genh = [config_target_h[target]]
+   c_args = ['-DCOMPILING_PER_TARGET',
+             '-DCONFIG_TARGET="@0@-config-target.h"'.format(target),
+   ]
+@@ -4322,7 +4337,7 @@ foreach target : target_dirs
+     endif
  
- static void smdkc210_class_init(ObjectClass *oc, const void *data)
-@@ -188,6 +189,7 @@ static const TypeInfo smdkc210_type = {
-     .name = MACHINE_TYPE_NAME("smdkc210"),
-     .parent = TYPE_MACHINE,
-     .class_init = smdkc210_class_init,
-+    .is_available = target_is_base_arm,
- };
+     c_args += ['-DCONFIG_DEVICES="@0@-config-devices.h"'.format(target)]
+-    arch_srcs += config_devices_h[target]
++    arch_genh += config_devices_h[target]
+     link_args += enable_modules ? ['@block.syms', '@qemu.syms'] : []
+   else
+     abi = config_target['TARGET_ABI_DIR']
+@@ -4433,7 +4448,7 @@ foreach target : target_dirs
+   endforeach
  
- static void exynos4_machines_init(void)
-diff --git a/hw/arm/microbit.c b/hw/arm/microbit.c
-index c1a3f6903fe..d6e52c1865a 100644
---- a/hw/arm/microbit.c
-+++ b/hw/arm/microbit.c
-@@ -74,6 +74,7 @@ static const TypeInfo microbit_info = {
-     .parent = TYPE_MACHINE,
-     .instance_size = sizeof(MicrobitMachineState),
-     .class_init = microbit_machine_class_init,
-+    .is_available = target_is_base_arm,
- };
+   lib = static_library('qemu-' + target,
+-                 sources: arch_srcs + genh,
++                 sources: arch_srcs + arch_genh + genh,
+                  dependencies: lib_deps,
+                  objects: objects,
+                  include_directories: target_inc,
+@@ -4443,6 +4458,45 @@ foreach target : target_dirs
+   target_info_def_objects += {target: lib.extract_objects(target_info_def)}
  
- static void microbit_machine_init(void)
-diff --git a/hw/arm/mps2-tz.c b/hw/arm/mps2-tz.c
-index 7f41a74df1a..08d875dc373 100644
---- a/hw/arm/mps2-tz.c
-+++ b/hw/arm/mps2-tz.c
-@@ -1621,30 +1621,35 @@ static const TypeInfo mps2tz_an505_info = {
-     .name = TYPE_MPS2TZ_AN505_MACHINE,
-     .parent = TYPE_MPS2TZ_MACHINE,
-     .class_init = mps2tz_an505_class_init,
-+    .is_available = target_is_base_arm,
- };
+   if target.endswith('-softmmu')
++    if target in single_binary_supported_targets
++      arch_src_rels = []
++      foreach src : arch_srcs
++        arch_src_rels += fs.relative_to(src, meson.project_source_root())
++      endforeach
++      if arch_src_rels != [target_info_def_src]
++        error('combined qemu-system leftover for ' + target + ':\n'
++              + 'expected:\n' + target_info_def_src + '\n'
++              + 'arch_srcs:\n' + '\n'.join(arch_src_rels))
++      endif
++      single_target_config = {}
++      foreach k, v : config_target
++        if not k.startswith('TARGET_')
++          single_target_config += {k: v}
++          if k not in single_binary_config or v == 'y'
++            single_binary_config += {k: v}
++          endif
++        endif
++      endforeach
++      target_common_no_target = common_ss.apply(
++        single_target_config, strict: false)
++      if (target_common.sources() != target_common_no_target.sources() or
++          target_common.dependencies() != target_common_no_target.dependencies())
++        error('common_ss must not use TARGET_* conditions')
++      endif
++      target_system = system_ss.apply(config_target, strict: false)
++      target_system_no_target = system_ss.apply(
++        single_target_config, strict: false)
++      if (target_system.sources() != target_system_no_target.sources() or
++          target_system.dependencies() != target_system_no_target.dependencies())
++        error('system_ss must not use TARGET_* conditions')
++      endif
++      single_binary_target_info_objects += lib.extract_objects(target_info_def)
++      single_binary_bases += {target_base_arch: true}
++      single_binary_deps += arch_deps
++      single_binary_deps += target_stubs
++      single_binary_crates += main_rs
++      single_binary_available = true
++    endif
+     execs = [{
+       'name': 'qemu-system-' + target_name,
+       'win_subsystem': 'console',
+@@ -4524,6 +4578,95 @@ foreach target : target_dirs
+   endforeach
+ endforeach
  
- static const TypeInfo mps2tz_an521_info = {
-     .name = TYPE_MPS2TZ_AN521_MACHINE,
-     .parent = TYPE_MPS2TZ_MACHINE,
-     .class_init = mps2tz_an521_class_init,
-+    .is_available = target_is_base_arm,
- };
++# Combined qemu-system: one apply + extract, same sources as
++# qemu-system-$target.
++#
++# common_ss / system_ss use single_binary_config, the non-TARGET_* union where
++# 'y' takes precedence.
++# Do not use when: 'TARGET_*' on these sets; those keys are dropped and the file
++# would vanish from qemu-system.
++#
++# Family common/system libs use config_base_arch_mak[base] (every target of that
++# TARGET_BASE_ARCH, including user-mode if enabled).
++#
++# Each qemu-* lib contributes target-info-def.c. Participating targets must have
++# arch_srcs equal to target_info_def only.
++if single_binary_available
++  single_binary_objects = []
++  target_common = common_ss.apply(single_binary_config, strict: false)
++  single_binary_objects += common_all.extract_objects(target_common.sources())
++  single_binary_deps += target_common.dependencies()
++
++  target_system = system_ss.apply(single_binary_config, strict: false)
++  single_binary_objects += libsystem.extract_objects(target_system.sources())
++  single_binary_deps += target_system.dependencies()
++
++  foreach base, _ : single_binary_bases
++    config_base = config_base_arch_mak[base]
++    if base in target_common_arch_libs
++      src = target_common_arch[base].apply(config_base, strict: false)
++      single_binary_objects += target_common_arch_libs[base].extract_objects(
++        src.sources())
++      single_binary_deps += src.dependencies()
++    endif
++    if base in target_common_system_arch_libs
++      src = target_common_system_arch[base].apply(config_base, strict: false)
++      single_binary_objects += target_common_system_arch_libs[base].extract_objects(
++        src.sources())
++      single_binary_deps += src.dependencies()
++    endif
++  endforeach
++  single_binary_objects += single_binary_target_info_objects
++
++  single_binary_link_args = emulator_link_args
++  single_binary_link_args += enable_modules ? ['@block.syms', '@qemu.syms'] : []
++  qemu_system_name = 'qemu-system'
++  if host_os == 'darwin'
++    qemu_system_name += '-unsigned'
++  endif
++  qemu_system = executable(qemu_system_name,
++                           sources: [single_binary_crates, files('system/main.c')],
++                           dependencies: single_binary_deps + [sdl],
++                           objects: single_binary_objects,
++                           link_depends: [block_syms, qemu_syms],
++                           link_args: single_binary_link_args,
++                           build_by_default: true,
++                           install: true)
++  if host_os == 'darwin'
++    icon = 'pc-bios/qemu.rsrc'
++    build_input = [qemu_system, files(icon)]
++    install_input = [
++      get_option('bindir') / qemu_system_name,
++      meson.current_source_dir() / icon
++    ]
++    if 'CONFIG_HVF' in single_binary_config
++      entitlements = 'accel/hvf/entitlements.plist'
++      build_input += files(entitlements)
++      install_input += meson.current_source_dir() / entitlements
++    endif
++    emulators += {'qemu-system': custom_target('qemu-system',
++                 input: build_input,
++                 output: 'qemu-system',
++                 build_by_default: true,
++                 command: [entitlement, '@OUTPUT@', '@INPUT@'])
++    }
++    meson.add_install_script(entitlement, '--install',
++                             get_option('bindir') / 'qemu-system',
++                             install_input)
++  else
++    emulators += {'qemu-system': qemu_system}
++  endif
++else
++  error_str = f'''qemu-system only support targets:
++@single_binary_supported_targets@
++
++use ./configure --target-list= to choose at least one of them'''
++  t = custom_target(command: ['sh', '-c', 'echo "' + error_str + '" && exit 1'],
++                    output: 'none',
++                    build_by_default: false)
++  alias_target('qemu-system', t)
++endif
++
+ # Other build targets
  
- static const TypeInfo mps3tz_an524_info = {
-     .name = TYPE_MPS3TZ_AN524_MACHINE,
-     .parent = TYPE_MPS2TZ_MACHINE,
-     .class_init = mps3tz_an524_class_init,
-+    .is_available = target_is_base_arm,
- };
- 
- static const TypeInfo mps3tz_an547_info = {
-     .name = TYPE_MPS3TZ_AN547_MACHINE,
-     .parent = TYPE_MPS2TZ_MACHINE,
-     .class_init = mps3tz_an547_class_init,
-+    .is_available = target_is_base_arm,
- };
- 
- static const TypeInfo mps3tz_an555_info = {
-     .name = TYPE_MPS3TZ_AN555_MACHINE,
-     .parent = TYPE_MPS2TZ_MACHINE,
-     .class_init = mps3tz_an555_class_init,
-+    .is_available = target_is_base_arm,
- };
- 
- static void mps2tz_machine_init(void)
-diff --git a/hw/arm/mps2.c b/hw/arm/mps2.c
-index 35d867328a9..c38d3f5ae6a 100644
---- a/hw/arm/mps2.c
-+++ b/hw/arm/mps2.c
-@@ -567,24 +567,28 @@ static const TypeInfo mps2_an385_info = {
-     .name = TYPE_MPS2_AN385_MACHINE,
-     .parent = TYPE_MPS2_MACHINE,
-     .class_init = mps2_an385_class_init,
-+    .is_available = target_is_base_arm,
- };
- 
- static const TypeInfo mps2_an386_info = {
-     .name = TYPE_MPS2_AN386_MACHINE,
-     .parent = TYPE_MPS2_MACHINE,
-     .class_init = mps2_an386_class_init,
-+    .is_available = target_is_base_arm,
- };
- 
- static const TypeInfo mps2_an500_info = {
-     .name = TYPE_MPS2_AN500_MACHINE,
-     .parent = TYPE_MPS2_MACHINE,
-     .class_init = mps2_an500_class_init,
-+    .is_available = target_is_base_arm,
- };
- 
- static const TypeInfo mps2_an511_info = {
-     .name = TYPE_MPS2_AN511_MACHINE,
-     .parent = TYPE_MPS2_MACHINE,
-     .class_init = mps2_an511_class_init,
-+    .is_available = target_is_base_arm,
- };
- 
- static void mps2_machine_init(void)
-diff --git a/hw/arm/mps3r.c b/hw/arm/mps3r.c
-index 4bd5d83d567..320eb518b79 100644
---- a/hw/arm/mps3r.c
-+++ b/hw/arm/mps3r.c
-@@ -626,6 +626,7 @@ static const TypeInfo mps3r_machine_types[] = {
-         .name = TYPE_MPS3R_AN536_MACHINE,
-         .parent = TYPE_MPS3R_MACHINE,
-         .class_init = mps3r_an536_class_init,
-+        .is_available = target_is_base_arm,
-     },
- };
- 
-diff --git a/hw/arm/musca.c b/hw/arm/musca.c
-index 571bee1b72b..ebdebcd4495 100644
---- a/hw/arm/musca.c
-+++ b/hw/arm/musca.c
-@@ -657,12 +657,14 @@ static const TypeInfo musca_a_info = {
-     .name = TYPE_MUSCA_A_MACHINE,
-     .parent = TYPE_MUSCA_MACHINE,
-     .class_init = musca_a_class_init,
-+    .is_available = target_is_base_arm,
- };
- 
- static const TypeInfo musca_b1_info = {
-     .name = TYPE_MUSCA_B1_MACHINE,
-     .parent = TYPE_MUSCA_MACHINE,
-     .class_init = musca_b1_class_init,
-+    .is_available = target_is_base_arm,
- };
- 
- static void musca_machine_init(void)
-diff --git a/hw/arm/npcm7xx_boards.c b/hw/arm/npcm7xx_boards.c
-index 9c526a26839..6aa29b4d2a9 100644
---- a/hw/arm/npcm7xx_boards.c
-+++ b/hw/arm/npcm7xx_boards.c
-@@ -549,22 +549,27 @@ static const TypeInfo npcm7xx_machine_types[] = {
-         .name           = MACHINE_TYPE_NAME("npcm750-evb"),
-         .parent         = TYPE_NPCM7XX_MACHINE,
-         .class_init     = npcm750_evb_machine_class_init,
-+        .is_available   = target_is_base_arm,
-     }, {
-         .name           = MACHINE_TYPE_NAME("quanta-gsj"),
-         .parent         = TYPE_NPCM7XX_MACHINE,
-         .class_init     = gsj_machine_class_init,
-+        .is_available   = target_is_base_arm,
-     }, {
-         .name           = MACHINE_TYPE_NAME("quanta-gbs-bmc"),
-         .parent         = TYPE_NPCM7XX_MACHINE,
-         .class_init     = gbs_bmc_machine_class_init,
-+        .is_available   = target_is_base_arm,
-     }, {
-         .name           = MACHINE_TYPE_NAME("kudo-bmc"),
-         .parent         = TYPE_NPCM7XX_MACHINE,
-         .class_init     = kudo_bmc_machine_class_init,
-+        .is_available   = target_is_base_arm,
-     }, {
-         .name           = MACHINE_TYPE_NAME("mori-bmc"),
-         .parent         = TYPE_NPCM7XX_MACHINE,
-         .class_init     = mori_bmc_machine_class_init,
-+        .is_available   = target_is_base_arm,
-     },
- };
- 
-diff --git a/hw/arm/omap_sx1.c b/hw/arm/omap_sx1.c
-index a7e469ea6a3..5d2aaacbbe4 100644
---- a/hw/arm/omap_sx1.c
-+++ b/hw/arm/omap_sx1.c
-@@ -224,6 +224,7 @@ static const TypeInfo sx1_machine_v2_type = {
-     .name = MACHINE_TYPE_NAME("sx1"),
-     .parent = TYPE_MACHINE,
-     .class_init = sx1_machine_v2_class_init,
-+    .is_available = target_is_base_arm,
-     .instance_size = sizeof(Sx1MachineState),
- };
- 
-@@ -244,6 +245,7 @@ static const TypeInfo sx1_machine_v1_type = {
-     .name = MACHINE_TYPE_NAME("sx1-v1"),
-     .parent = TYPE_MACHINE,
-     .class_init = sx1_machine_v1_class_init,
-+    .is_available = target_is_base_arm,
-     .instance_size = sizeof(Sx1MachineState),
- };
- 
-diff --git a/hw/arm/raspi.c b/hw/arm/raspi.c
-index 22b06c6ca22..7ec650eada7 100644
---- a/hw/arm/raspi.c
-+++ b/hw/arm/raspi.c
-@@ -391,14 +391,17 @@ static const TypeInfo raspi_machine_types[] = {
-         .name           = MACHINE_TYPE_NAME("raspi0"),
-         .parent         = TYPE_RASPI_MACHINE,
-         .class_init     = raspi0_machine_class_init,
-+        .is_available   = target_is_base_arm,
-     }, {
-         .name           = MACHINE_TYPE_NAME("raspi1ap"),
-         .parent         = TYPE_RASPI_MACHINE,
-         .class_init     = raspi1ap_machine_class_init,
-+        .is_available   = target_is_base_arm,
-     }, {
-         .name           = MACHINE_TYPE_NAME("raspi2b"),
-         .parent         = TYPE_RASPI_MACHINE,
-         .class_init     = raspi2b_machine_class_init,
-+        .is_available   = target_is_base_arm,
-     }, {
-         .name           = MACHINE_TYPE_NAME("raspi3ap"),
-         .parent         = TYPE_RASPI_MACHINE,
-diff --git a/hw/arm/realview.c b/hw/arm/realview.c
-index ceba0331b08..4cffa725d60 100644
---- a/hw/arm/realview.c
-+++ b/hw/arm/realview.c
-@@ -435,6 +435,7 @@ static const TypeInfo realview_eb_type = {
-     .name = MACHINE_TYPE_NAME("realview-eb"),
-     .parent = TYPE_MACHINE,
-     .class_init = realview_eb_class_init,
-+    .is_available = target_is_base_arm,
-     .instance_size = sizeof(RealViewMachineState),
- };
- 
-@@ -457,6 +458,7 @@ static const TypeInfo realview_eb_mpcore_type = {
-     .name = MACHINE_TYPE_NAME("realview-eb-mpcore"),
-     .parent = TYPE_MACHINE,
-     .class_init = realview_eb_mpcore_class_init,
-+    .is_available = target_is_base_arm,
-     .instance_size = sizeof(RealViewMachineState),
- };
- 
-@@ -477,6 +479,7 @@ static const TypeInfo realview_pb_a8_type = {
-     .name = MACHINE_TYPE_NAME("realview-pb-a8"),
-     .parent = TYPE_MACHINE,
-     .class_init = realview_pb_a8_class_init,
-+    .is_available = target_is_base_arm,
-     .instance_size = sizeof(RealViewMachineState),
- };
- 
-@@ -498,6 +501,7 @@ static const TypeInfo realview_pbx_a9_type = {
-     .name = MACHINE_TYPE_NAME("realview-pbx-a9"),
-     .parent = TYPE_MACHINE,
-     .class_init = realview_pbx_a9_class_init,
-+    .is_available = target_is_base_arm,
-     .instance_size = sizeof(RealViewMachineState),
- };
- 
-diff --git a/hw/arm/sabrelite.c b/hw/arm/sabrelite.c
-index 05dfabd9376..e8aa9f41925 100644
---- a/hw/arm/sabrelite.c
-+++ b/hw/arm/sabrelite.c
-@@ -151,6 +151,7 @@ static const TypeInfo sabrelite_machine_init_typeinfo = {
-     .instance_init = sabrelite_machine_instance_init,
-     .instance_size = sizeof(SabreliteMachineState),
-     .abstract      = false,
-+    .is_available  = target_is_base_arm,
- };
- 
- static void sabrelite_machine_init_register_types(void)
-diff --git a/hw/arm/stellaris.c b/hw/arm/stellaris.c
-index f41315e1928..ec4faf26055 100644
---- a/hw/arm/stellaris.c
-+++ b/hw/arm/stellaris.c
-@@ -1427,6 +1427,7 @@ static const TypeInfo lm3s811evb_type = {
-     .name = MACHINE_TYPE_NAME("lm3s811evb"),
-     .parent = TYPE_MACHINE,
-     .class_init = lm3s811evb_class_init,
-+    .is_available = target_is_base_arm,
- };
- 
- /*
-@@ -1448,6 +1449,7 @@ static const TypeInfo lm3s6965evb_type = {
-     .name = MACHINE_TYPE_NAME("lm3s6965evb"),
-     .parent = TYPE_MACHINE,
-     .class_init = lm3s6965evb_class_init,
-+    .is_available = target_is_base_arm,
- };
- 
- static void stellaris_machine_init(void)
-diff --git a/hw/arm/versatilepb.c b/hw/arm/versatilepb.c
-index f94bf96599e..99ff59ca418 100644
---- a/hw/arm/versatilepb.c
-+++ b/hw/arm/versatilepb.c
-@@ -437,6 +437,7 @@ static const TypeInfo versatilepb_type = {
-     .parent = TYPE_MACHINE,
-     .class_init = versatilepb_class_init,
-     .instance_size = sizeof(VersatileMachineState),
-+    .is_available = target_is_base_arm,
- };
- 
- static void versatileab_class_init(ObjectClass *oc, const void *data)
-@@ -459,6 +460,7 @@ static const TypeInfo versatileab_type = {
-     .parent = TYPE_MACHINE,
-     .class_init = versatileab_class_init,
-     .instance_size = sizeof(VersatileMachineState),
-+    .is_available = target_is_base_arm,
- };
- 
- static void versatile_machine_init(void)
-diff --git a/hw/arm/vexpress.c b/hw/arm/vexpress.c
-index a4328ec74bd..a2ad870af85 100644
---- a/hw/arm/vexpress.c
-+++ b/hw/arm/vexpress.c
-@@ -842,6 +842,7 @@ static const TypeInfo vexpress_a9_info = {
-     .parent = TYPE_VEXPRESS_MACHINE,
-     .class_init = vexpress_a9_class_init,
-     .instance_init = vexpress_a9_instance_init,
-+    .is_available = target_is_base_arm,
- };
- 
- static const TypeInfo vexpress_a15_info = {
-@@ -849,6 +850,7 @@ static const TypeInfo vexpress_a15_info = {
-     .parent = TYPE_VEXPRESS_MACHINE,
-     .class_init = vexpress_a15_class_init,
-     .instance_init = vexpress_a15_instance_init,
-+    .is_available = target_is_base_arm,
- };
- 
- static void vexpress_machine_init(void)
-diff --git a/hw/arm/xilinx_zynq.c b/hw/arm/xilinx_zynq.c
-index c1897ab1cf3..bc34cadfd11 100644
---- a/hw/arm/xilinx_zynq.c
-+++ b/hw/arm/xilinx_zynq.c
-@@ -477,6 +477,7 @@ static const TypeInfo zynq_machine_type = {
-     .name = TYPE_ZYNQ_MACHINE,
-     .parent = TYPE_MACHINE,
-     .class_init = zynq_machine_class_init,
-+    .is_available = target_is_base_arm,
-     .instance_size = sizeof(ZynqMachineState),
- };
- 
+ if get_option('plugins')
 -- 
 2.52.0.windows.1
 

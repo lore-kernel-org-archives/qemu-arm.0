@@ -4,70 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 67827C98318
-	for <qemu-arm@archiver.kernel.org>; Sat, 26 Sep 2026 11:11:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2DEEDC98332
+	for <qemu-arm@archiver.kernel.org>; Sat, 26 Sep 2026 11:11:17 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xAQHK-0008DB-Qa; Sat, 26 Sep 2026 07:09:14 -0400
+	id 1xAQHK-0008Ci-33; Sat, 26 Sep 2026 07:09:14 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <luoyonggang@gmail.com>)
- id 1xAQHI-0008BR-US
- for qemu-arm@nongnu.org; Sat, 26 Sep 2026 07:09:13 -0400
-Received: from mail-dl2-x0c.google.com ([2607:f8b0:4864:38::c])
+ id 1xAQHE-000881-L5
+ for qemu-arm@nongnu.org; Sat, 26 Sep 2026 07:09:11 -0400
+Received: from mail-dl2-x10.google.com ([2607:f8b0:4864:38::10])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <luoyonggang@gmail.com>)
- id 1xAQHH-0002nL-2S
- for qemu-arm@nongnu.org; Sat, 26 Sep 2026 07:09:12 -0400
-Received: by mail-dl2-x0c.google.com with SMTP id
- a92af1059eb24-142dd04be84so2042773c88.3
- for <qemu-arm@nongnu.org>; Sat, 26 Sep 2026 04:09:10 -0700 (PDT)
+ id 1xAQHB-0002me-N3
+ for qemu-arm@nongnu.org; Sat, 26 Sep 2026 07:09:08 -0400
+Received: by mail-dl2-x10.google.com with SMTP id
+ a92af1059eb24-142dd04be84so2042733c88.3
+ for <qemu-arm@nongnu.org>; Sat, 26 Sep 2026 04:09:05 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20251104; t=1790420949; x=1791025749; darn=nongnu.org;
+ d=gmail.com; s=20251104; t=1790420944; x=1791025744; darn=nongnu.org;
  h=content-transfer-encoding:content-type:mime-version:references
  :in-reply-to:message-id:date:subject:cc:to:from:from:to:cc:subject
  :date:message-id:reply-to:content-type;
- bh=IQEBi51DUnYcVeY7mMvbrmuS5u5X0k5Ob2x7idCICCQ=;
- b=oEe++DoeaRB/sPjgBzl+6jhjxXtgDSE2CWkSLLB5tfVP/Wo0IYQrQEN2jzc/Zzel7w
- ssbRnWVcYSS4iajOpA2GXOvqdgMwb9OVSmMrolR90pItAeinazR80hOpsf2xQDdYPI91
- h8L0LwIQ39uDup+xH0y7ZnEPEs7JUSC6lJnrbVkFATG7GyStFfL4E2M5723G7qziLE56
- ebMvomb7u58OlEeUnoTWWq7+fXYZx9kzxddSsUv8tYw5LEbPAaiXtXlF7u7pUkq1O4v0
- /lEKWne9TmFFJuvZ2q+TBIaQ2Y4+8ccRo5oeC6qiIvmQQt4k6JlPIqP0Eoer7ZlkcYqR
- 2pXg==
+ bh=d8GfpFm6vmw+Ti4b+sLfRBJnqeCjT91Kjc97U0dGguc=;
+ b=q+GF/i5mSs2EESqu2A7jeaM4lP4JN6OGnpIHFwK9am4Zn7AM5gvB/ylPr6E264D0tu
+ nzw/p1bCeO8BV2BOPaGtbED9rN90f+dhHdK8lt4npk+QAsfhMy1d4gg++FjbKbDu91qE
+ 7uHHKgQ87GUaIL39TxHTeISDl1g8bHadEjkAY3gmzJ4vYrsk3MpLyJfHh9Tvy3Azrjpb
+ HHHZ1CKS3mWAzwcWEoToYlXrLqOD1vqPzEI63EWzS8NfP9yneOTcDGAxfbrsW1KPvpRS
+ p+aUlOdJFWNjMHWk3KjSCWFYq6ELJVNrPSGwtCBTNLMRCgV/fJNDF9iRQ0Bmks4rbqzj
+ kRwQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20260707; t=1790420949; x=1791025749;
+ d=1e100.net; s=20260707; t=1790420944; x=1791025744;
  h=content-transfer-encoding:content-type:mime-version:references
  :in-reply-to:message-id:date:subject:cc:to:from:x-gm-gg
  :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
  :content-type;
- bh=IQEBi51DUnYcVeY7mMvbrmuS5u5X0k5Ob2x7idCICCQ=;
- b=VZkmFiFXmtbR2TKfaWfEvCep3xd6QwPF0DkXmirERzkGc3W6ZiMwbzLZejvh/Nrk7E
- hgeMZIhIrmO1mwjIxpT17AnnUx1F+mdrSDS/aMJcZfCT3e1vGlpuwVX+D7rJd+ORTRKM
- 6J/J6KMWgwrQbzqUZaGG02OiJjxW9QqqjxTwysu+E/v7yqkLhd+ZLDXcyH+2ghSkH853
- jUO0lqUzO+o7yaLjpsxY2sQng7/2G9e7pDoOExBJNkmJpcQ0EScwEY/nI+9fZhsZ2w7V
- S/n9SZ41Jng7yIqKF6N1DvQXMp0XCZmoMwKfvMnyv4g0s53g9VSAJfixSy4/KRMIXTxZ
- fvyw==
+ bh=d8GfpFm6vmw+Ti4b+sLfRBJnqeCjT91Kjc97U0dGguc=;
+ b=kFOlz7WT9FZmRhv5wUqq/B6HrZlRkQTgLwaKTP6/THPfYuLmWh3q0yMZIvTuHb8K1U
+ uDgkbbOilu8A/JLP4zgjO1uytCW9nXiJ7Gi+dSIGr76THqYnja2rrb+xLIWDqA65sRlG
+ Biu/YIMiO2QgsbnNAZoTTAH/ERegj0kR59HUYmnrlKn5yrLOUSctVeTDVbF0hkb8XDvQ
+ 0R2UKPMGm/vwtGVrG8PqCMh8I11OFd1dEphWc2IisPnWFVzNR4R2f60WUxQNqXczMBE/
+ AmRuh5MV8pYdsaccq3fIT125SFuv+nTf29laYcNcNS3yqLHnVFAginlYUe6BgOkSV9vX
+ UXwA==
 X-Forwarded-Encrypted: i=1;
- AKwUvBwVrt4vTK963ONfTfE4UuDdIN+gpmcXwb88nQBKaBHlLrXjPNEHrIQMhMvK/w6l82XmHpqJFiUhuQ==@nongnu.org
-X-Gm-Message-State: AFuF++msooK0PbVuc6AG9L4L9Jwzq8xhEGOunXZKYqIteXcfMwHTveH6
- xA4Ar2isfMzmD1wfRaDNJw90Qut556V/2F9w7F7hEJRHVAJ4d5l824U8
-X-Gm-Gg: AYBFou0mMJ7HbT9i9X4MikYEuK2ocWmpmWfa5OtneoP/Lja1slhNcODkP5qCWXS6cgR
- AmE1kbjApW+PqiotlFCCVWhnRzWZmCb+uWWy9Y1NMh/Xce1IcJqers6VmrdyKHKqB0oQS5A6peA
- MevAUahKBdRWPqvEdMC3T8S/3jPuUnhrsoxClMzIKRmQps9/+cYYpAdqE2tiA5NZDZ7S1Ip7deX
- y5cBPGtD0gpU3eiql2WjYrf4pR069R4do3YsT7jkG417tkV+HpTn2VRWgc4GZgwoneOUhhdft+B
- OYDyghwEhVTvc0emcxmkMtj3YiuAhP7cbdaM8muyVkk2d4lNaSWmQPY4Blp60xZnJwQ+K8u4vn2
- 1DkllyiWdrKU6J3yq8PK8m3+nFP5h05b6b+fPNXagOGLRlMbmGmg38iMI7IPm5M81I+Gnd2hcR0
- sSbCzjg/17NmH/L44ttY57H4+PfyVrCTcAiMy0RypcedLPEKzPbQ+ObhJR1j+yv0PGE+acE9TlC
- lTph34ci2ejmzkifaxaDRmZjzAlMac=
-X-Received: by 2002:a05:701b:4287:20b0:144:c127:dd1b with SMTP id
- a92af1059eb24-146d04985a0mr2965028c88.39.1790420949446; 
- Sat, 26 Sep 2026 04:09:09 -0700 (PDT)
+ AKwUvBwCd0Yj321GMOTTiBw7keYGBxhykWGduj+wCYtaDhsompQfiagY9VcG1rjH0y+0nPQEOPdCwBhDew==@nongnu.org
+X-Gm-Message-State: AFuF++llq9v+lD7OFIA5TUXZz90t8eorQXrduPYcswGC0k4Ns09biS5v
+ 8I7EqMwbJc/ZoXDpbiROFreZC4BSB7+onboe97v6wg5dRIBfzX2K+7tf
+X-Gm-Gg: AYBFou2lKLvVx6UX0mUXt0afROHOxnETMCl6/ENJBC01gNaWd4OYCKnEsXU71e5PsTv
+ OI6wLzP4HdF5lylfbnRR17uKyv9gCeQifw7Jg8qbue0ig5epdRoNSutqx/q/u1n4KId/pYu3Cy8
+ AmHPCilygHJfaPk7kx/0YtbI516o+hf4Yj3qSUV4nGjM1qe/NGs/rBWD8/78cw1O08ASb44/MOQ
+ ijHtMzL4LRYLTgkhJukpReOQmIYTOuexmDeWqJK+9WpyfSDut2DA0YHEqph0G2Vk6nATyXDp4a5
+ RzaK1arP5AP6zxoJ2SQVVOG7Y4NK4xdqlozOUOOxWPbFuehDxBYzRFZP0cJ/N6Y7grOH72S8VzO
+ uU1lHZfrpRmL0F8ghik7LwzoCXoDkKZPSn1OT5H6y+huBA8tJoqBFv78OodgNCNDbrU+B8Rk6N5
+ tTEKPS8AgF4iL3yFqIC0Ds2HwHaPs7L5aB/6elwKX8vdHI0J5FG0lfyPbTzENblfzsN3mcs3yk6
+ IpEooHxt9UwGRxbQKJL0Toj5kKBf/M=
+X-Received: by 2002:a05:701b:2908:b0:141:52e3:8606 with SMTP id
+ a92af1059eb24-146cddbd03emr2461766c88.6.1790420943973; 
+ Sat, 26 Sep 2026 04:09:03 -0700 (PDT)
 Received: from WIN-BH9M8FJACR9 ([103.94.185.75])
  by smtp.googlemail.com with ESMTPSA id
- a92af1059eb24-145a7318afcsm11414045c88.0.2026.09.26.04.09.04
+ a92af1059eb24-145a7318afcsm11414045c88.0.2026.09.26.04.08.59
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sat, 26 Sep 2026 04:09:08 -0700 (PDT)
+ Sat, 26 Sep 2026 04:09:03 -0700 (PDT)
 From: Yonggang Luo <luoyonggang@gmail.com>
 To: qemu-devel@nongnu.org
 Cc: Brian Cain <brian.cain@oss.qualcomm.com>,
@@ -88,23 +88,23 @@ Cc: Brian Cain <brian.cain@oss.qualcomm.com>,
  Chao Liu <chao.liu@processmission.com>, Weiwei Li <liwei1518@gmail.com>,
  Zhao Liu <zhao1.liu@intel.com>,
  Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>
-Subject: [PATCH 7/9] hw/riscv/virt: prefix ACPI helpers with riscv_virt_
-Date: Sat, 26 Sep 2026 19:08:15 +0800
-Message-ID: <20260926110818.1912-8-luoyonggang@gmail.com>
+Subject: [PATCH 6/9] hw/arm/virt: prefix ACPI helpers with arm_virt_
+Date: Sat, 26 Sep 2026 19:08:14 +0800
+Message-ID: <20260926110818.1912-7-luoyonggang@gmail.com>
 X-Mailer: git-send-email 2.52.0.windows.1
 In-Reply-To: <20260926110818.1912-1-luoyonggang@gmail.com>
 References: <20260926110818.1912-1-luoyonggang@gmail.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:38::c;
- envelope-from=luoyonggang@gmail.com; helo=mail-dl2-x0c.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:38::10;
+ envelope-from=luoyonggang@gmail.com; helo=mail-dl2-x10.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -120,73 +120,116 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-- virt_acpi_setup and virt_is_acpi_enabled collide with ARM virt when
-  both architectures are linked into one qemu-system binary.
-- Rename the RISC-V helpers to riscv_virt_acpi_setup and
-  riscv_virt_is_acpi_enabled. Leave file-local virt_acpi_build* names
-  unchanged.
+- virt_acpi_setup and virt_is_acpi_enabled are generic names also used
+  by RISC-V and LoongArch virt. A combined binary cannot export two
+  functions with the same C symbol.
+- Rename the ARM helpers to arm_virt_acpi_setup and
+  arm_virt_is_acpi_enabled. Leave the trace event virt_acpi_setup
+  unchanged; it is a separate identifier.
 
 Signed-off-by: Yonggang Luo <luoyonggang@gmail.com>
 Reviewed-by: Philippe Mathieu-Daudé <philmd@oss.qualcomm.com>
 ---
- hw/riscv/virt-acpi-build.c | 2 +-
- hw/riscv/virt.c            | 6 +++---
- include/hw/riscv/virt.h    | 4 ++--
- 3 files changed, 6 insertions(+), 6 deletions(-)
+ hw/arm/virt-acpi-build.c |  4 ++--
+ hw/arm/virt.c            | 12 ++++++------
+ include/hw/arm/virt.h    |  4 ++--
+ 3 files changed, 10 insertions(+), 10 deletions(-)
 
-diff --git a/hw/riscv/virt-acpi-build.c b/hw/riscv/virt-acpi-build.c
-index 8e516ec1148..de47631852f 100644
---- a/hw/riscv/virt-acpi-build.c
-+++ b/hw/riscv/virt-acpi-build.c
-@@ -1021,7 +1021,7 @@ static const VMStateDescription vmstate_virt_acpi_build = {
+diff --git a/hw/arm/virt-acpi-build.c b/hw/arm/virt-acpi-build.c
+index d368913e766..5737c3a8fa4 100644
+--- a/hw/arm/virt-acpi-build.c
++++ b/hw/arm/virt-acpi-build.c
+@@ -1559,7 +1559,7 @@ static const VMStateDescription vmstate_virt_acpi_build = {
      },
  };
  
--void virt_acpi_setup(RISCVVirtState *s)
-+void riscv_virt_acpi_setup(RISCVVirtState *s)
+-void virt_acpi_setup(VirtMachineState *vms)
++void arm_virt_acpi_setup(VirtMachineState *vms)
  {
      AcpiBuildTables tables;
      AcpiBuildState *build_state;
-diff --git a/hw/riscv/virt.c b/hw/riscv/virt.c
-index d4b501802f6..9bd1274841e 100644
---- a/hw/riscv/virt.c
-+++ b/hw/riscv/virt.c
-@@ -705,8 +705,8 @@ static void virt_machine_done(Notifier *notifier, void *data)
- 
-     virt_build_smbios(s);
- 
--    if (virt_is_acpi_enabled(s)) {
--        virt_acpi_setup(s);
-+    if (riscv_virt_is_acpi_enabled(s)) {
-+        riscv_virt_acpi_setup(s);
+@@ -1570,7 +1570,7 @@ void virt_acpi_setup(VirtMachineState *vms)
+         return;
      }
+ 
+-    if (!virt_is_acpi_enabled(vms)) {
++    if (!arm_virt_is_acpi_enabled(vms)) {
+         trace_virt_acpi_setup();
+         return;
+     }
+diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+index 3eecf094bcc..c3e256347f3 100644
+--- a/hw/arm/virt.c
++++ b/hw/arm/virt.c
+@@ -768,7 +768,7 @@ static void fdt_add_cpu_nodes(VirtMachineState *vms)
+                     &bottom_node,
+                     CPU_TOPOLOGY_LEVEL_SOCKET);
+             if (cache_at_topo_level) {
+-                if (bottom_node == 1 && !virt_is_acpi_enabled(vms))
++                if (bottom_node == 1 && !arm_virt_is_acpi_enabled(vms))
+                     error_setg(
+                         &error_fatal,
+                         "Cannot share L1 at socket_id %d."
+@@ -808,7 +808,7 @@ static void fdt_add_cpu_nodes(VirtMachineState *vms)
+                                                         top_cluster,
+                                                         bottom_cluster, cpu,
+                                                         &cluster_offset);
+-                if (bottom_cluster == 1 && !virt_is_acpi_enabled(vms)) {
++                if (bottom_cluster == 1 && !arm_virt_is_acpi_enabled(vms)) {
+                     error_setg(&error_fatal,
+                         "Cannot share L1 at socket_id %d, cluster_id %d. "
+                         "DT limitation on sharing at cache level = 1.",
+@@ -2035,7 +2035,7 @@ static void create_smmuv3_dev_dtb(VirtMachineState *vms, DeviceState *dev,
+     hwaddr base = platform_bus_get_mmio_addr(pbus, sbdev, 0);
+     MachineState *ms = MACHINE(vms);
+ 
+-    if (!(vms->bootinfo.firmware_loaded && virt_is_acpi_enabled(vms))) {
++    if (!(vms->bootinfo.firmware_loaded && arm_virt_is_acpi_enabled(vms))) {
+         if (object_property_get_bool(OBJECT(dev), "accel", &error_abort)) {
+             error_setg(errp, "SMMUv3 with accel=on not supported for DT");
+             return;
+@@ -2445,7 +2445,7 @@ void virt_machine_done(Notifier *notifier, void *data)
+     pci_bus_add_fw_cfg_extra_pci_roots(vms->fw_cfg, vms->bus,
+                                        &error_abort);
+ 
+-    virt_acpi_setup(vms);
++    arm_virt_acpi_setup(vms);
+     virt_build_smbios(vms);
  }
  
-@@ -1066,7 +1066,7 @@ static void virt_set_iommu_sys(Object *obj, Visitor *v, const char *name,
-     visit_type_OnOffAuto(v, name, &s->iommu_sys, errp);
+@@ -3209,7 +3209,7 @@ static void machvirt_init(MachineState *machine)
+     create_pcie(vms);
+     create_cxl_host_reg_region(vms);
+ 
+-    if (aarch64 && firmware_loaded && virt_is_acpi_enabled(vms)) {
++    if (aarch64 && firmware_loaded && arm_virt_is_acpi_enabled(vms)) {
+         vms->acpi_dev = create_acpi_ged(vms);
+         vms->generic_error_notifier.notify = virt_generic_error_req;
+         notifier_list_add(&acpi_generic_error_notifiers,
+@@ -3559,7 +3559,7 @@ static void virt_set_oem_table_id(Object *obj, const char *value,
  }
  
--bool virt_is_acpi_enabled(RISCVVirtState *s)
-+bool riscv_virt_is_acpi_enabled(RISCVVirtState *s)
+ 
+-bool virt_is_acpi_enabled(const VirtMachineState *vms)
++bool arm_virt_is_acpi_enabled(const VirtMachineState *vms)
  {
-     return s->acpi != ON_OFF_AUTO_OFF;
- }
-diff --git a/include/hw/riscv/virt.h b/include/hw/riscv/virt.h
-index e516898f9ad..d8f1342e131 100644
---- a/include/hw/riscv/virt.h
-+++ b/include/hw/riscv/virt.h
-@@ -121,9 +121,9 @@ enum {
- #define VIRT_PLIC_SIZE(__num_context) \
-     (VIRT_PLIC_CONTEXT_BASE + (__num_context) * VIRT_PLIC_CONTEXT_STRIDE)
+     if (vms->acpi == ON_OFF_AUTO_OFF) {
+         return false;
+diff --git a/include/hw/arm/virt.h b/include/hw/arm/virt.h
+index 22e66d1a113..695e5d5728a 100644
+--- a/include/hw/arm/virt.h
++++ b/include/hw/arm/virt.h
+@@ -218,8 +218,8 @@ struct VirtMachineState {
+ #define TYPE_VIRT_MACHINE   MACHINE_TYPE_NAME("virt")
+ OBJECT_DECLARE_TYPE(VirtMachineState, VirtMachineClass, VIRT_MACHINE)
  
--bool virt_is_acpi_enabled(RISCVVirtState *s);
-+bool riscv_virt_is_acpi_enabled(RISCVVirtState *s);
- bool virt_is_iommu_sys_enabled(RISCVVirtState *s);
--void virt_acpi_setup(RISCVVirtState *vms);
-+void riscv_virt_acpi_setup(RISCVVirtState *vms);
+-void virt_acpi_setup(VirtMachineState *vms);
+-bool virt_is_acpi_enabled(const VirtMachineState *vms);
++void arm_virt_acpi_setup(VirtMachineState *vms);
++bool arm_virt_is_acpi_enabled(const VirtMachineState *vms);
  
- /*
-  * The virt machine physical address space used by some of the devices
+ #define CLIDR_CTYPE_NO_CACHE 0x00
+ #define CLIDR_CTYPE_I_CACHE 0x01
 -- 
 2.52.0.windows.1
 

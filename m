@@ -4,28 +4,28 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B4A23C9830E
-	for <qemu-arm@archiver.kernel.org>; Sun, 27 Sep 2026 07:52:01 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CEA9AC9830E
+	for <qemu-arm@archiver.kernel.org>; Sun, 27 Sep 2026 12:39:55 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xAjfr-0006T4-44; Sun, 27 Sep 2026 03:51:52 -0400
+	id 1xAoAX-0002Fw-1J; Sun, 27 Sep 2026 08:39:49 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <bin.meng@processmission.com>)
- id 1xAjfg-0006RR-8B; Sun, 27 Sep 2026 03:51:40 -0400
+ (Exim 4.90_1) (envelope-from <chao.liu@processmission.com>)
+ id 1xAno2-00043W-GY; Sun, 27 Sep 2026 08:16:34 -0400
 Received: from mail-japaneastazlp170130007.outbound.protection.outlook.com
  ([2a01:111:f403:c405::7] helo=TYDPR03CU002.outbound.protection.outlook.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <bin.meng@processmission.com>)
- id 1xAjfc-0001lS-Pz; Sun, 27 Sep 2026 03:51:40 -0400
+ (Exim 4.90_1) (envelope-from <chao.liu@processmission.com>)
+ id 1xAno0-00021M-Kn; Sun, 27 Sep 2026 08:16:34 -0400
 ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=rwSSPMrtXk4GSgRknjtpWUAANMow0Doald6YxGoWSwU+MCXE0nMsA3JUklnTY8leE2+wdDVhVcDce7RjU+t1oBa8+OVFEKm8Sm6lfV42KZJeKmledEM8SzvpmR15DtMJMudn8N1zJcpHVbR0bqtxRYZZDvn6Si4UtrV2qFty3TYSCaATxGB9bjYgYUt3SFKKwwM6P9R0E/jdn1YXWhp6hTuHohM/RpkSlPK2iQKjM5xZa4o/bvmrSWe2KFT5JMxgE5spVS63S3E6tPaOIFjJB+444LV/ekKmDEtMTmyoh5Ei7YMvAMwq69cSu0FqFk/pBkTdqsSv0A2MQHW3PayOHw==
+ b=ZlcbDLmt17PL1KHG1mLhtvJvDBgF8GuIRZw5s6AJbPpQ6rqBqmeQJ86OlvGF7LgcZk5MR7AkE3I6DwC17s2YUa/mynEqeLab7EcgLqo/qcgfKYxHaIgfRT8uEu6rbxMqgTX9YBMKt5P8N/6KNBnh08BhmL6z3Ka+aCDn9nvVny+J3hg5YoZUrQvCzoVJ71Y84bYNtVKycYFkBbQUt13BTpJcs66JMohjCZBgvBg/xVW5TS87zufXu6FyhloK93lwZ1J4ogC9uW+dDXAsq6ZnFZiy4keWwRkMtBay9u4BKD0rcQVsOA8ScHWPlHC5pYqzHpxZ1lGp8U/G9LiLopNi2Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
  s=arcselector10001;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=gpiF884gU8s2SQzy6F7YF8DaJoHvFTOXTMyJr3j0n+k=;
- b=gpoG6XzZZCRqveB9uakao3MIGZJPQ6SUioOgWk063QhwV8HJCfKvnFRFybB1eL1J3ejd+X6LCS8cYRcVMKPkH0x2F8re6ae+08aRFM9KLdBE6cRh7q+e/yywQSoUlvpngNri8hX80H2EFKIHw9uAHX+G69Nw0U/UnT81PO2czxz+vo9ELtOFOh5gJHPEHuOtdjesfSLxJSbUic0WZX06uCUORDyUfOauL7Lt60klW+cCB9saIXkAx3veqIONJ01N7UT7qIZuchaXcbzvlNsWWQWkVIQAl5F36+1mdxsA1wVtO/qvs6dUD759xZH79hvPmGPdwCoNT0SbDBeeWL0vLw==
+ bh=lCV1RTrFz8GKOyerhNCUZ1uRjqnC+Qtf8kNFF4KLkM8=;
+ b=Yxi+K0OQgz21QeNXU5/uiEtVnOY3A99zplYHy2KREeERTYoR8BOmQDsbWqUiB4kTKJmysYV3RohIt5vgBAHcRUCsPWWuvpGhtPUDngxv995E8WP7pMFhSaG2bMdTkFzPYwPu58FB/J899hH/oP2878CL4zEkiKSiByGSa887i0mxgJZClPtZGA2HtRuyNWQBzHAZTZwo8pAj1KHjhPG37w9XTtbHd/pc9arGAnHDX339xKqne86EPMjTrLwJ2s/ukrteWkoKL7QDmsbOJDjueXYnLMJbU7I4BrJKLItHKjaB+ChTL43oni6CTdZeWqJbiaaeJDLTQ8mjfJJavJ77ww==
 ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
  smtp.mailfrom=processmission.com; dmarc=pass action=none
  header.from=processmission.com; dkim=pass header.d=processmission.com;
@@ -33,90 +33,117 @@ ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=processmission.com;
  s=selector1;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=gpiF884gU8s2SQzy6F7YF8DaJoHvFTOXTMyJr3j0n+k=;
- b=PhhBUD7XjpfvLJGa1KidxoyXzPCtqJ9HoRKprSG3yxaAjzlJi6d7KyXNpV/0yL9kAYRTxXJ78felzqw0NAAwzyXIjTQHxT2nSBF7O2kWCbK/ea/nu5aipqsd4sPu4/49tJHT64wpyXxtZGEC+JYTh5kx7VjrRH27wlTrxnYjpQQz21SpIssfi34FbakSF6Sm/DelDhxOiGYC4YbHevqVhYZo5cYja0jXFlpOzFY9fzCJsZ+AQe2REtFo0qV+otRMbiaQYNwCUyOtl0R+4x/Fo1ofBN8EUo+9J/Htm55C8z218osKnvypuhZjeq2JsHRcwWaiPTNnqyEKnKbYVNCFRQ==
+ bh=lCV1RTrFz8GKOyerhNCUZ1uRjqnC+Qtf8kNFF4KLkM8=;
+ b=jsnTeSxOMHGNEnFZOsJset9CvkM0KKyP0hrfuEmSxmtpXwRH27QAKSLhE8ku2DA8hvzfRKF8yoFpwYefpCvekuuN+yyt8+B9yBD0WswOgg7AhwtxXhBmVHQBHVbM8vY/zEY9jzApQ9Ye/aRCZUd/XD6Bkt+xJkpRirlQi0BYEUsXXHw1muHB25PFTtdYxRNzSSga2VT274MOPeG7/v29yHuaxIsPegbzRt5F8QIBvNAbfhcV9H7fCfz0AZT8CBPJ8Us1yPzmI78Fk78XVRfg2aaB3NVPQx6QMByxJ2pBVOCknYsRYsQOfRs7/TD2yALMWKqku/hhfdVkfgsAXY3uWA==
 Authentication-Results: mx.microsoft.com 1; dkim=none (message not signed)
  header.d=none;dmarc=none action=none header.from=processmission.com;
-Received: from KL1PR02MB4977.apcprd02.prod.outlook.com (2603:1096:820:71::8)
- by KL1PR02MB6759.apcprd02.prod.outlook.com (2603:1096:820:10b::14) with
- Microsoft SMTP Server (version=TLS1_2,
+Received: from KUXPR02MB9336.apcprd02.prod.outlook.com (2603:1096:d10:a3::10)
+ by TY0PR02MB5621.apcprd02.prod.outlook.com (2603:1096:400:1ba::13)
+ with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.21.451.23; Sun, 27 Sep
- 2026 07:51:25 +0000
-Received: from KL1PR02MB4977.apcprd02.prod.outlook.com
- ([fe80::9fdf:2557:8351:6c03]) by KL1PR02MB4977.apcprd02.prod.outlook.com
- ([fe80::9fdf:2557:8351:6c03%4]) with mapi id 15.21.0451.022; Sun, 27 Sep 2026
- 07:51:24 +0000
-From: Bin Meng <bin.meng@processmission.com>
-To: QEMU <qemu-devel@nongnu.org>
-Cc: Alistair Francis <alistair@alistair23.me>,
- "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
- Jason Wang <jasowangio@gmail.com>,
- Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org
-Subject: [PATCH v2] hw/net: cadence: Honor subword lanes in the GEM registers
-Date: Sun, 27 Sep 2026 15:51:07 +0800
-Message-ID: <20260927075108.3621107-1-bin.meng@processmission.com>
-X-Mailer: git-send-email 2.53.0
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-ClientProxiedBy: TYCPR01CA0196.jpnprd01.prod.outlook.com
- (2603:1096:405:7a::20) To KL1PR02MB4977.apcprd02.prod.outlook.com
- (2603:1096:820:71::8)
+ 2026 12:16:24 +0000
+Received: from KUXPR02MB9336.apcprd02.prod.outlook.com
+ ([fe80::1451:cb49:7950:b10d]) by KUXPR02MB9336.apcprd02.prod.outlook.com
+ ([fe80::1451:cb49:7950:b10d%5]) with mapi id 15.21.0451.022; Sun, 27 Sep 2026
+ 12:16:24 +0000
+Date: Sun, 27 Sep 2026 20:16:15 +0800
+From: Chao Liu <chao.liu@processmission.com>
+To: Yonggang Luo <luoyonggang@gmail.com>
+Cc: qemu-devel@nongnu.org, Cornelia Huck <cohuck@redhat.com>, 
+ xen-devel@lists.xenproject.org, Igor Mammedov <imammedo@redhat.com>, 
+ Alistair Francis <alistair.francis@wdc.com>,
+ Daniel Henrique Barboza <daniel.barboza@oss.qualcomm.com>, 
+ Peter Xu <peterx@redhat.com>, Eric Blake <eblake@redhat.com>, 
+ Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@oss.qualcomm.com>,
+ Liu Zhiwei <zhiwei_liu@linux.alibaba.com>, 
+ Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>,
+ Peter Maydell <peter.maydell@linaro.org>, 
+ Sunil V L <sunilvl@ventanamicro.com>, Stefan Hajnoczi <stefanha@redhat.com>, 
+ Palmer Dabbelt <palmer@dabbelt.com>, Fabiano Rosas <farosas@suse.de>, 
+ Xianglai Li <lixianglai@loongson.cn>, Jiaxun Yang <jiaxun.yang@flygoat.com>, 
+ Max Filippov <jcmvbkbc@gmail.com>, qemu-ppc@nongnu.org,
+ Zhao Liu <zhao1.liu@intel.com>, 
+ Paolo Bonzini <pbonzini@redhat.com>, Bibo Mao <maobibo@loongson.cn>, 
+ "Michael S. Tsirkin" <mst@redhat.com>, Laurent Vivier <laurent@vivier.eu>, 
+ David Hildenbrand <david@kernel.org>,
+ Richard Henderson <richard.henderson@linaro.org>, 
+ Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>,
+ Nicholas Piggin <npiggin@gmail.com>, qemu-riscv@nongnu.org, 
+ kvm@vger.kernel.org, "Edgar E. Iglesias" <edgar.iglesias@gmail.com>, 
+ Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>,
+ Stafford Horne <shorne@gmail.com>, 
+ =?utf-8?Q?Marc-Andr=C3=A9?= Lureau <marcandre.lureau@redhat.com>,
+ Markus Armbruster <armbru@redhat.com>, 
+ Weiwei Li <liwei1518@gmail.com>, Song Gao <17746591750@163.com>,
+ qemu-arm@nongnu.org, 
+ qemu-s390x@nongnu.org, Brian Cain <brian.cain@oss.qualcomm.com>
+Subject: Re: [PATCH v3 034/114] target/riscv: Include migration/vmstate.h
+ instead of migration/cpu.h in machine.c
+Message-ID: <arkILubl2mARqX39@MacBook-Pro-4.local>
+References: <20260923131635.1894-1-luoyonggang@gmail.com>
+ <20260923131635.1894-35-luoyonggang@gmail.com>
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20260923131635.1894-35-luoyonggang@gmail.com>
+X-ClientProxiedBy: PH8PR02CA0037.namprd02.prod.outlook.com
+ (2603:10b6:510:2da::35) To TYNPR02MB9351.apcprd02.prod.outlook.com
+ (2603:1096:405:3d0::15)
 MIME-Version: 1.0
 X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: KL1PR02MB4977:EE_|KL1PR02MB6759:EE_
-X-MS-Office365-Filtering-Correlation-Id: c26894cf-779c-4766-7570-08df1c6c20e8
+X-MS-TrafficTypeDiagnostic: KUXPR02MB9336:EE_|TY0PR02MB5621:EE_
+X-MS-Office365-Filtering-Correlation-Id: 6ef0dbda-0881-4109-31c1-08df1c9124da
 X-MS-Exchange-SenderADCheck: 1
 X-MS-Exchange-AntiSpam-Relay: 0
 X-Microsoft-Antispam: BCL:0;
- ARA:13230040|376014|1800799024|366016|23010399003|10067099003|260925022911599003|260925021311599003|260925021911599003|56012099006|18002099003;
-X-Microsoft-Antispam-Message-Info: WATvBzPhY4lxlbWF7Tp0pBsUiu2DNbZGMK8XJ6p3rwQ8yKwXV1m8IcbuAg7sqQCPGV/t+s1ZawHS5D6KuWpm9zr79tz+xj+qJ5fAJzXbuGe7mYZaimO1QiF22zypq2zPhWVImBz4qSa1/VaULet58S7m8nvF+XlQXPawYoWW6a7Adpz9u2+XulyDyo9OQrWQeusLDYLiU/3VyV40VV33Py1NujXP3StVKNlip9J2zcx9Fp5O9qXFFlyMwzIwbEZT16W9bQEz3/SfbGU7ixUtihpEiHrMk7d6nahqDKJXnipk/ffAIU+ni9YCG/EOZLU196kP95ntERQyX+uIdkwAg0qijLf9XXDYR/j2uGncFwxe/4OiZ4XWmiIPIo/+pBs2uA1A4DGZ+JT5JAgtH2u0sHPgMZGDbxFaXAifObFYjsFnp8V99tDSAOYerJg5/L16sQqKvkQL6ut0SkPGRf0C5AnFUvTdjIe+xdCBKaovBFCBOeeAmcorO0nBdGKs3QCOaYor+buT+S+sBuI2N4JPfobYFs0xX2cvafPrC8xmIUIgasn341oqLqI913IC9qvO0F/tDWl8XBBxJvPTY0N8bjtVXsqdCkl1z8lhph3c+/Je+keDtpGfkqAQDNCJN2siPOG85bAZGOt9eQEVRjfLCg0yRHRMt9Q63hmQNfT9DpU=
+ ARA:13230040|1800799024|366016|7416014|376014|23010399003|56012099006|4143699003|10067099003|22082099003|18002099003;
+X-Microsoft-Antispam-Message-Info: dCG4AKz2TSOTXpPh6fozxrva9ygcWuOKW/crKVHDWSwr39AP5566wSSN58bmSi15BkV5kV9BM9KfczKvHDFPtHyTtxdsBXaRZTPr93Bj6Gowt88bWszXbjGol1ZbdzbGebh8wccTKx9xN99yZs7pNw2/UnCiH4+uvKoGxDFyzmffpihn9QvmfOA/4m3F1JbV/kuARXbjsn6e88qKSwPlf/YGyqPUCLjMyawxGs87JdwNac6Ee9nhZhyOwyzbgSK0BGun3rtENQrB8k6SAw8EQdUtboXczwCNboyPfjD4XgJRfneEEDFPM1Cx9S32WmkeStwcuSvUdpDfxcyYlbqdVunwFOARnQKYG0/gLRwCYTJoRhIePB9xRGyR2h6BI2+0/KEVkVpak5cSYYMQ1xAL2ljkOpRRWYcwIUOz9M+bgqvcfxzRFlSRMmQJCddN1kyjIhV52x4ZA5PllfLxt+cmm/LKKHPUFaOaqqKX6dRoM2BoSIte3/9vyLJ+ZgABNjNHCaPpF6brZzojZayjnqSIirCTC7hDHKhl/ii9z3NeDa7KHP1RUnr0pIaT9UeppeiMOsftT7u4mWaQyx5vpLxC8u2pPPUWXqaTfCnkuhoTPvaMaxsYrgmTFEJfzNtk90THWzl5ulxc7U+og9TEXqlZn5dCq1Ojd1gl5Vysnj4M5Bw=
 X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:KL1PR02MB4977.apcprd02.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(13230040)(376014)(1800799024)(366016)(23010399003)(10067099003)(260925022911599003)(260925021311599003)(260925021911599003)(56012099006)(18002099003);
+ IPV:NLI; SFV:NSPM; H:KUXPR02MB9336.apcprd02.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(13230040)(1800799024)(366016)(7416014)(376014)(23010399003)(56012099006)(4143699003)(10067099003)(22082099003)(18002099003);
  DIR:OUT; SFP:1102; 
 X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?9b2rSYKqvj+eMS97ODHYmybP4mH0zPfjTFqjAuJFfyQVK/mTmY2Ju+GiG8fe?=
- =?us-ascii?Q?0ymebQhsn6BmHqfPm+Ya/p+Bj02lAotVXDljaLRzSM0mrATpnfSxlsnj616z?=
- =?us-ascii?Q?D7rHsx84JY8lwH2aE8QnJDqfnKA320gF74c1z5AwYr0hYf83Q+QGYqhiRtgW?=
- =?us-ascii?Q?v8PlQUXOEDlbCnhhE/xoyrLeOTW2tTKxFjKH2oLsPIza8avE9qlSXusk4zGy?=
- =?us-ascii?Q?fVW8DfVixRVtkkDgV14f4MYJaD43cHz5kf/pDtOAeADQACbVDsVENZFYdX/S?=
- =?us-ascii?Q?zl1iaThnwmMnbKfIDc5csoQUSlyB0T7q2QCgzi9UIHeVr1AVVB4H3WwhaWG2?=
- =?us-ascii?Q?yeW5CBVlU8QcKFJ04r5LBVckluQw9hcamVNyHvfuB5u9Ucdnw0g3S+fVVzCi?=
- =?us-ascii?Q?9wtq0NDEcwfd1KgcdpRetzNI/QHvOeuPiiMIMjUbAINjSg33v90DZDjnn4iK?=
- =?us-ascii?Q?GF+Jirroul25Sgs2WwTLeli34poxRCrnEVS+Mwdg8L2MjQj95ZSYKHJQIb9K?=
- =?us-ascii?Q?RxrqALdexvxFQdeUFByJKmKn8KX2SFZdKYlU12MgwqPE4iohFRG33XSLku8X?=
- =?us-ascii?Q?Ry4+9VtgUum/Xq9Rq8JMPwwWcyy6apoKN9MP1xlMtKnHlYwnKjpgmrMPlA/L?=
- =?us-ascii?Q?RWmm9PtENNHStPVBN0GzI8vkSwHj+mmACZenE70bXWQN5WhkZ8oBF2ZXA/2W?=
- =?us-ascii?Q?WVzy0cKGvMjUvFwRBEJMh/XrLfDdVu2w7sLNWhtHBugaYPXXsJKTC5hm48+A?=
- =?us-ascii?Q?/lCx6x0rLlueAR4G3B+n44XdYMLZkt5wjxKic9zAoX7MeCpe1JCKAss5j63f?=
- =?us-ascii?Q?MGYq1za3ULSswhtdaR7lyjLLjZ4Ae3Z+9Q6qylK5cG9atIaObpgyEEqxftOi?=
- =?us-ascii?Q?BrNOi1JxA9XmxvvCUdjvO8lP+Ywi64HyFXMYjYO0mJ7CxfxsrqgmBgxZDeXW?=
- =?us-ascii?Q?a9pK4wY618mNMMvkLcZL/4p2TELXYJwBcThQlZN7oVJHgEFvdzJJ/LjaWKmV?=
- =?us-ascii?Q?0fOlLbj4gvymPDzKddQN+zd6KtoeMXqtK/zcMPx7YbTmRNlPJf+PHVurFhzA?=
- =?us-ascii?Q?weuAgIUk4ZvypJu9CLDnS3hbr0ozyazEXVNWfLVl9G6zJSHpaZnuzeFOhk8g?=
- =?us-ascii?Q?V+g3/eF2INzW7brfOpZxoVVQZ8ZycfuY3iTraW+OODaRx2huZJQGXIgX2soi?=
- =?us-ascii?Q?s79s2Z7F4i5zyxiHABwZybvI5WjEoH+Bfcxl0B0QH4WTHSD2rl53nAusfJlb?=
- =?us-ascii?Q?xdxdkH4naXcJkfy8Nl7kpQ0vYoC7JvS9G2yJOnguUEFyiekEwBSXoIMvBguD?=
- =?us-ascii?Q?AO/Prtm0ZWHFfO1N393wbrBR1qx2wrdCmtUx5Wk69Ia7mcfIvyELh8B2JABx?=
- =?us-ascii?Q?oyq//u+OSmwOmlKEway0jsa57FVDYu20DYQVu3i7lmZzCthGFZdcRc9nXkR9?=
- =?us-ascii?Q?POrDfQSC9tNfJSJjzw//JICVg1Uh8hnHib5iQiCz1FvIXhQMfZyYJA5G6SMh?=
- =?us-ascii?Q?Cp0qcu+sU69iwbBZJM9AakwvfZiytxvI7bcmgrYjThmV6GG0jvW8fEAcOAiI?=
- =?us-ascii?Q?4Xt8lmhX62c89zt69UPGcGPdeEP5DseF/jUZV04FEiBK/fuhapRdYGf7m/1B?=
- =?us-ascii?Q?DL63qY4plkATPmWTbsjXlPm7METbZ7p/sDRRJdcAJ+dbkTLhV2fySPhi55KV?=
- =?us-ascii?Q?xj2xWQl/JY9OZm1ZMlGBC8aETa+CtzJRzrZriJZW2sf0PRymeaMWW5HjVEH/?=
- =?us-ascii?Q?zP6a+e3iG8RbE+EC3WaPr9ZbYYk97Wo=3D?=
+X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?qejOmHBXqVGkbPtY5Y1Romh1xWU9/TwSZESQ7imsqDLCW8JYZdYkSeVzOPQP?=
+ =?us-ascii?Q?X6GJ8fmMMIqNdwb9l4VcMMh7lW1u4JUW90T/j25ZpYUKWb+uUhhm1nS6DBaO?=
+ =?us-ascii?Q?NAyjlXmluSGekULt6kx9z0/jvPb6C65gBoewRUBfWfp3v+y9yqWzN/+xhe28?=
+ =?us-ascii?Q?9RkhokK664uu+VQo3iMIu1HOg0JXhFjpJLpWDQjc2cP1ySocH1cRPOW8/NPi?=
+ =?us-ascii?Q?Olk8evkjjJm2pB00770x94dVo1A1tB6AunUV4PFiaV1pEaOrnN4/b9l49N90?=
+ =?us-ascii?Q?gEhQO6zC1SY8lJImpbd6GISQ79FtdH/mLaGHcRo/4CxbnLtqpxNO+wR7F6eZ?=
+ =?us-ascii?Q?lLHAY5zJcQKo+PGAxMw10tuFJm35e7uOiRKHGlYcyfzxMx/bx+XtKNGUCeyu?=
+ =?us-ascii?Q?y+IZB3Bn6L9+BdueSYusqR/tE2YfqzL0DjpGd7H/pDakib4NFEucmL77esWF?=
+ =?us-ascii?Q?wGO9y34E0qhd48/U1M4HtlIc0v/nkebe4oI9xOuIn/BiLGTTJayBzTusEr3V?=
+ =?us-ascii?Q?U8pNTz0klqu6tX2xX+51MqGTbBRSdt87h87y+M676Bz3bR3JLbja5cnAC4Ve?=
+ =?us-ascii?Q?d7klEoZyRNSwUIjcVDQa4jXZ4w0Yd3ySkaA5K22iIW1ha6AIvdexmuM83DeY?=
+ =?us-ascii?Q?4QrIny48T28Wk2qHVkbSV7n8AP+wLSQ2kjLGNGl9eNj1wMBEaeZkRw87O/70?=
+ =?us-ascii?Q?TxBBUVE8DEGJhFE8CYqdoj8Tn/ZXWbrm3IsH+Fc6vbcv217nuj9aceeZsYMH?=
+ =?us-ascii?Q?xAsnVnCmbrA4PdQ1iQi9f0Cu9GTPV+M9XdBX8eBIuGWtv2mUJE2NK+nCdnnA?=
+ =?us-ascii?Q?acSHCSIcxtC8z9h0MWCLOsh7RWtlKV4gKT12ApMsyUflPXBL+W3sv4C6elLH?=
+ =?us-ascii?Q?ZwO8tXM/MXoyHGUHvQf70mG2x1ZjkL0LuzF6ep2u9GfiYBa8oaGMzaug/VKA?=
+ =?us-ascii?Q?ZLWbj+mIbqaOYlx5BhXhw9cQ8+N+0tv+nYPxKDTuXEFnsq2zBgAWvIuE0Ne9?=
+ =?us-ascii?Q?cx6j0XmU947y1e1B5CVgSwQZAY8x5wfODdnWjSLWH85QR3vfTilcMGc+nvSh?=
+ =?us-ascii?Q?p03hFqw8QWDHVlXQw9uSYgXxn4CDHCLgqL8sJOvujyLn10zynunHEKf/pKVD?=
+ =?us-ascii?Q?O2YLr8H8g5cxTuZElhFsUREeLqgR7SrZsalf+tN3py/TJpXImemdSjKsB9kA?=
+ =?us-ascii?Q?1Pc5I0GBfSFSjbitjR36KJ53a1QiM8a0hvYAqaMOK0LpdLDM2Q76TzVAN7dG?=
+ =?us-ascii?Q?IkFVCuWzF3G/+Gf415s4MW0SEQe9hEnn8PnLpShm7myk4Yz0ZeyXVZsLt3s5?=
+ =?us-ascii?Q?pz8bZq44zNKEOlw7Oa1SRBcAbqPo4FWGM9nS0EBNgbcR6rf2v/fh+o1RzYrE?=
+ =?us-ascii?Q?DpGkYHhNf5265uZcJH42V4fUrsmwTI4PMbot5Xkr4a6XENVq9bKZbIE3CWyj?=
+ =?us-ascii?Q?8TQN5tJ6k9ITm0QcvLP+pW41NMvNjf+jQpQ7AgogSgrGI5r75VDQKVzILKgd?=
+ =?us-ascii?Q?aNM6DqHUYxx88WGLSD6gNxrK5N1AYNhoWtQy/R+rKa9fiSK6oRiY8XVFfhIq?=
+ =?us-ascii?Q?bWBgXHg8TewIjkMoacLMD/Ol9Ifxw4Me/Jx0b01Az69qbAvPXYy7oVL4M34o?=
+ =?us-ascii?Q?ApxtG9K9QJDrHCEs+EuFvPFrvnPxse6S7zYRmZ7zkPrKw46SC1hz3L1c7mkD?=
+ =?us-ascii?Q?55+pEX9o3ZuKxALx2oip0rfDXH6VO8U7q7kMwG1HizlHIA5mnS2EAUcOAkWA?=
+ =?us-ascii?Q?wZx/myneZImYiLd7Wc4Eke5IXTI64Ok=3D?=
 X-OriginatorOrg: processmission.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: c26894cf-779c-4766-7570-08df1c6c20e8
-X-MS-Exchange-CrossTenant-AuthSource: KL1PR02MB4977.apcprd02.prod.outlook.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 6ef0dbda-0881-4109-31c1-08df1c9124da
+X-MS-Exchange-CrossTenant-AuthSource: TYNPR02MB9351.apcprd02.prod.outlook.com
 X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 27 Sep 2026 07:51:24.7849 (UTC)
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 27 Sep 2026 12:16:24.7182 (UTC)
 X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
 X-MS-Exchange-CrossTenant-Id: e0544bf7-9765-4630-ab69-0b266dc2169c
 X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: 9cFlTg3mSYFpBKehN/DQGwwmxflEIGXjwt0eHl0cJOuh2pM0JGvEBfnPGiYv0JuWL4d9I97v/6eNHvnrp3YGn5O32R+JK74Oo2ri+2oP91w=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: KL1PR02MB6759
+X-MS-Exchange-CrossTenant-UserPrincipalName: vtvF4kxj6VDk5sgTClhfm5d8ogz+XPtmmmEur/dKG7JmlAf421JNUAfqGtMvuna4CP9d2A3OB1uCLy1sLNrafpLOcAYuUieXpYRn87toEaw=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: TY0PR02MB5621
 Received-SPF: pass client-ip=2a01:111:f403:c405::7;
- envelope-from=bin.meng@processmission.com;
+ envelope-from=chao.liu@processmission.com;
  helo=TYDPR03CU002.outbound.protection.outlook.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
@@ -126,6 +153,7 @@ X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
+X-Mailman-Approved-At: Sun, 27 Sep 2026 08:39:47 -0400
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -140,170 +168,30 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-The GEM MMIO callbacks ignored the low address bits and access size.
-Byte reads therefore always returned lane zero, causing guest driver
-that reads the station address byte by byte to turn four unique MAC
-addresses into the same value. Partial writes had the corresponding
-lane-selection problem.
+On Wed, Sep 23, 2026 at 09:15:08PM +0800, Yonggang Luo wrote:
+> already uses fixed-width VMSTATE_* macros and does not need TARGET_LONG_BITS UINTTL helpers.
+Please wrap the commit message at 76 columns.
 
-Extract the requested little-endian read lane and merge partial writes
-with the current register value. Preserve the existing read-clear,
-write-clear, and command side effects, including dynamic queue
-pointers.
-
-Fixes: e9f186e514a7 ("cadence_gem: initial version of device model")
-Signed-off-by: Bin Meng <bin.meng@processmission.com>
-
----
-
-Changes in v2:
-- drop the gem_get_register() helper
-
- hw/net/cadence_gem.c | 55 +++++++++++++++++++++++++++-----------------
- 1 file changed, 34 insertions(+), 21 deletions(-)
-
-diff --git a/hw/net/cadence_gem.c b/hw/net/cadence_gem.c
-index 39e3620ef5..522fdb91e9 100644
---- a/hw/net/cadence_gem.c
-+++ b/hw/net/cadence_gem.c
-@@ -1590,8 +1590,11 @@ static uint64_t gem_read(void *opaque, hwaddr offset, unsigned size)
- {
-     CadenceGEMState *s;
-     uint32_t retval;
-+    unsigned shift;
-+
-     s = opaque;
- 
-+    shift = (offset & 3) * 8;
-     offset >>= 2;
-     retval = s->regs[offset];
- 
-@@ -1625,7 +1628,7 @@ static uint64_t gem_read(void *opaque, hwaddr offset, unsigned size)
- 
-     DB_PRINT("0x%08x\n", retval);
-     gem_update_int_status(s);
--    return retval;
-+    return extract32(retval, shift, size * 8);
- }
- 
- /*
-@@ -1636,35 +1639,43 @@ static void gem_write(void *opaque, hwaddr offset, uint64_t val,
-         unsigned size)
- {
-     CadenceGEMState *s = (CadenceGEMState *)opaque;
--    uint32_t readonly;
-+    uint32_t access_mask;
-+    uint32_t writable_mask;
-+    uint32_t write_val;
-+    unsigned shift;
-     int i;
- 
-     DB_PRINT("offset: 0x%04x write: 0x%08x ", (unsigned)offset, (unsigned)val);
-+    shift = (offset & 3) * 8;
-+    access_mask = MAKE_64BIT_MASK(shift, size * 8);
-+    write_val = (uint32_t)val << shift;
-     offset >>= 2;
- 
-     /* Squash bits which are read only in write value */
--    val &= ~(s->regs_ro[offset]);
--    /* Preserve (only) bits which are read only and wtc in register */
--    readonly = s->regs[offset] & (s->regs_ro[offset] | s->regs_w1c[offset]);
-+    write_val &= ~(s->regs_ro[offset]);
- 
--    /* Copy register write to backing store */
--    s->regs[offset] = (val & ~s->regs_w1c[offset]) | readonly;
-+    /* Copy writable bits in the accessed lanes to the backing store */
-+    writable_mask = access_mask &
-+                    ~(s->regs_ro[offset] | s->regs_w1c[offset]);
-+    s->regs[offset] = (s->regs[offset] & ~writable_mask) |
-+                      (write_val & writable_mask);
- 
-     /* do w1c */
--    s->regs[offset] &= ~(s->regs_w1c[offset] & val);
-+    s->regs[offset] &= ~(s->regs_w1c[offset] & write_val);
- 
-     /* Handle register write side effects */
-     switch (offset) {
-     case R_NWCTRL:
--        if (FIELD_EX32(val, NWCTRL, ENABLE_RECEIVE)) {
-+        if (FIELD_EX32(write_val, NWCTRL, ENABLE_RECEIVE)) {
-             for (i = 0; i < s->num_priority_queues; ++i) {
-                 gem_get_rx_desc(s, i);
-             }
-         }
--        if (FIELD_EX32(val, NWCTRL, TRANSMIT_START)) {
-+        if (FIELD_EX32(write_val, NWCTRL, TRANSMIT_START)) {
-             gem_transmit(s);
-         }
--        if (!(FIELD_EX32(val, NWCTRL, ENABLE_TRANSMIT))) {
-+        if ((access_mask & R_NWCTRL_ENABLE_TRANSMIT_MASK) &&
-+            !(FIELD_EX32(s->regs[offset], NWCTRL, ENABLE_TRANSMIT))) {
-             /* Reset to start of Q when transmit disabled. */
-             for (i = 0; i < s->num_priority_queues; i++) {
-                 s->tx_desc_addr[i] = gem_get_tx_queue_base_addr(s, i);
-@@ -1679,37 +1690,37 @@ static void gem_write(void *opaque, hwaddr offset, uint64_t val,
-         gem_update_int_status(s);
-         break;
-     case R_RXQBASE:
--        s->rx_desc_addr[0] = val;
-+        s->rx_desc_addr[0] = s->regs[offset];
-         break;
-     case R_RECEIVE_Q1_PTR ... R_RECEIVE_Q7_PTR:
--        s->rx_desc_addr[offset - R_RECEIVE_Q1_PTR + 1] = val;
-+        s->rx_desc_addr[offset - R_RECEIVE_Q1_PTR + 1] = s->regs[offset];
-         break;
-     case R_TXQBASE:
--        s->tx_desc_addr[0] = val;
-+        s->tx_desc_addr[0] = s->regs[offset];
-         break;
-     case R_TRANSMIT_Q1_PTR ... R_TRANSMIT_Q7_PTR:
--        s->tx_desc_addr[offset - R_TRANSMIT_Q1_PTR + 1] = val;
-+        s->tx_desc_addr[offset - R_TRANSMIT_Q1_PTR + 1] = s->regs[offset];
-         break;
-     case R_RXSTATUS:
-         gem_update_int_status(s);
-         break;
-     case R_IER:
--        s->regs[R_IMR] &= ~val;
-+        s->regs[R_IMR] &= ~write_val;
-         gem_update_int_status(s);
-         break;
-     case R_JUMBO_MAX_LEN:
--        s->regs[R_JUMBO_MAX_LEN] = val & MAX_JUMBO_FRAME_SIZE_MASK;
-+        s->regs[R_JUMBO_MAX_LEN] &= MAX_JUMBO_FRAME_SIZE_MASK;
-         break;
-     case R_INT_Q1_ENABLE ... R_INT_Q7_ENABLE:
--        s->regs[R_INT_Q1_MASK + offset - R_INT_Q1_ENABLE] &= ~val;
-+        s->regs[R_INT_Q1_MASK + offset - R_INT_Q1_ENABLE] &= ~write_val;
-         gem_update_int_status(s);
-         break;
-     case R_IDR:
--        s->regs[R_IMR] |= val;
-+        s->regs[R_IMR] |= write_val;
-         gem_update_int_status(s);
-         break;
-     case R_INT_Q1_DISABLE ... R_INT_Q7_DISABLE:
--        s->regs[R_INT_Q1_MASK + offset - R_INT_Q1_DISABLE] |= val;
-+        s->regs[R_INT_Q1_MASK + offset - R_INT_Q1_DISABLE] |= write_val;
-         gem_update_int_status(s);
-         break;
-     case R_SPADDR1LO:
-@@ -1725,7 +1736,9 @@ static void gem_write(void *opaque, hwaddr offset, uint64_t val,
-         s->sar_active[(offset - R_SPADDR1HI) / 2] = true;
-         break;
-     case R_PHYMNTNC:
--        gem_handle_phy_access(s);
-+        if (access_mask & (R_PHYMNTNC_OP_MASK | R_PHYMNTNC_ST_MASK)) {
-+            gem_handle_phy_access(s);
-+        }
-         break;
-     }
- 
----
-base-commit: efa3b9d5ac8024078225e1ab434411fdfe53b457
-branch: cadence
-
--- 
-2.53.0
-
+> 
+> Signed-off-by: Yonggang Luo <luoyonggang@gmail.com>
+> ---
+>  target/riscv/machine.c | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+> 
+> diff --git a/target/riscv/machine.c b/target/riscv/machine.c
+> index bf203bffcef..00805745fbf 100644
+> --- a/target/riscv/machine.c
+> +++ b/target/riscv/machine.c
+> @@ -21,7 +21,7 @@
+>  #include "qemu/error-report.h"
+>  #include "system/kvm.h"
+>  #include "system/tcg.h"
+> -#include "migration/cpu.h"
+> +#include "migration/vmstate.h"
+>  #include "exec/icount.h"
+>  #include "target/riscv/tcg/debug.h"
+>  #ifdef CONFIG_KVM
+> -- 
+> 2.52.0.windows.1
+> 
 

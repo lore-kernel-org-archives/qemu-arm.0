@@ -4,69 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0FCECCA5FA1
-	for <qemu-arm@archiver.kernel.org>; Mon, 28 Sep 2026 05:28:22 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 329ACC9833E
+	for <qemu-arm@archiver.kernel.org>; Mon, 28 Sep 2026 05:28:30 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xB3qE-0006XG-1A; Mon, 28 Sep 2026 01:23:54 -0400
+	id 1xB3sI-0008UX-SD; Mon, 28 Sep 2026 01:26:04 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <luoyonggang@gmail.com>)
- id 1xB3pB-0004Py-6E
- for qemu-arm@nongnu.org; Mon, 28 Sep 2026 01:22:49 -0400
-Received: from mail-dl2-x0f.google.com ([2607:f8b0:4864:38::f])
+ id 1xB3pn-0005Ig-So
+ for qemu-arm@nongnu.org; Mon, 28 Sep 2026 01:23:29 -0400
+Received: from mail-dy2-x0e.google.com ([2607:f8b0:4864:36::e])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <luoyonggang@gmail.com>)
- id 1xB3p8-0007zc-6P
- for qemu-arm@nongnu.org; Mon, 28 Sep 2026 01:22:48 -0400
-Received: by mail-dl2-x0f.google.com with SMTP id
- a92af1059eb24-1450541ab50so1033610c88.3
- for <qemu-arm@nongnu.org>; Sun, 27 Sep 2026 22:22:45 -0700 (PDT)
+ id 1xB3pk-00086g-8K
+ for qemu-arm@nongnu.org; Mon, 28 Sep 2026 01:23:27 -0400
+Received: by mail-dy2-x0e.google.com with SMTP id
+ 5a478bee46e88-34182b58c7eso2279811eec.0
+ for <qemu-arm@nongnu.org>; Sun, 27 Sep 2026 22:23:23 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20251104; t=1790572964; x=1791177764; darn=nongnu.org;
+ d=gmail.com; s=20251104; t=1790573003; x=1791177803; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to:content-type;
- bh=ids5FxiCP1WVUY4p2e0+a3JG0y7cRkgnrvmrK4lA6nA=;
- b=dPBn48TPPmgbvA6/XmvyWooHWLaCTiRBU/RYiNLA6pmbI48GfPN84sDEyXizAcxr52
- aYrVqtv0yJTtUaI+s9ld4QckAlIGU/C9X2NfPK/OjnEQwhGmGOQ630vGas6udjQvEVeg
- EGUxf2DlUH9GxeAE1KWjc3yfdd+kIupB7avuzfN7W8CFJxbr9rMc2brOR8ZfgjM/fwYh
- Im03k282qx79CNBZsluVj07Re0GBvbdnQErh3nZhBuyN6Nthdnz+H/iS+7N2Tn2Y0nXt
- Byrrcza52Bk6R/ICSouCJq/afYdQglnT+/1XQ3Sx8aPWTXNijIduBY57xvGBpYhomWre
- aZcg==
+ bh=TNgf6mzQru6X+FsQqbFclqifhFUVJmTnFVxLl9vYDCg=;
+ b=gFukZtxy4CH/DikcjcJiyof1Eh4++SwyhHaoCfbQfdxgZK/Ab/k4qp7bmKPVGaUbdE
+ NZaS+9U2TVhmH7odhy0RmA56JwpTCcRrvsBsKTgEmYslshtXrImrNl8hd1UC0pOROs1z
+ r3nJedjvVQeY5PEQtcDaAgOx5m4KXr/dYKoOi7nAwY2kMpI677393hT/EocTT93xf5EP
+ 2jbitzGFkDijX66cZTY0eK/rZXPGc/x7C81Td0cupWETNuURcCo+5LhrVNYBxqb3prA8
+ QZgFrBqELzxzhghnuX7Nky4WVntzeq8q+3neaPrCVjwuaOFCoiTzrEOcFixDJOUIZ9pO
+ hJHQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20260707; t=1790572964; x=1791177764;
+ d=1e100.net; s=20260707; t=1790573003; x=1791177803;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
  :to:cc:subject:date:message-id:reply-to:content-type;
- bh=ids5FxiCP1WVUY4p2e0+a3JG0y7cRkgnrvmrK4lA6nA=;
- b=xdM3IE/BOc6E/KVsq2KNX7/KYtpm2G3dLGWcD40tb7qNwfSR+uXnzDF0LOa0hYT5xf
- /ZPUUp4rzr8wK2C48/iU7EtGbZojoE6SbDJitXsWaURheVXnbjynQMziNagEG5mwFETY
- 8xTgXMak9khF1Vw2ZGb2sQkbBRHw1FMG7JSCMQHROh8Ur1R2MZAjlqwjFU0sem+qIzTb
- gwuuW5puqXpQUcXcRHJuvxeWrK9KgGfVJKGkvhfuifzxVX4y3FGYkUFcYIhTgQtGxfFp
- fGzi04Se79Ibnjri0y12u8buC241kqqDn9ZaIwJBYv6S3fn3h5sk+uYpRlz0ZTDq8W1a
- Gd0w==
+ bh=TNgf6mzQru6X+FsQqbFclqifhFUVJmTnFVxLl9vYDCg=;
+ b=uaaHSyaQ0jY8OUBEpegpvVxz/0jPshUKf4xXeczvQc2HDbusOI0eqcuzMya2SK2w//
+ viHZ9yPYqmr/YOevpDp/lQVFR+yJmYvxrvdew8x98y0lqcKZGDyboUcujNZCj3YFHKBG
+ CXUA5K6WBW6fgjUxXuYSl6hM/6fM+JK9Ijf7cl6SvI19cW5Srxxt2XuokQEb5AXYzhbU
+ yG/czOXAmSyXIj7iZvKeMnzYnOYsjyn/lX/EFT1/8RmDldBHRDhY4mbaOY/irxx8QRrl
+ rYatkWeA5dLJteGyZ1Lf8TysUsvMqnBpgHim3l2DwBVpzfIK4uDAMIa7QLUbzfUZr7X2
+ GegQ==
 X-Forwarded-Encrypted: i=1;
- AKwUvBz3JaRmU7Vbn3yMRGSUbHHVAul3gFenqUqp6vW8Rt2PDy7dTzoBnDGoHK5wT4eQj8NYjWqR1fy5ng==@nongnu.org
-X-Gm-Message-State: AFuF++n/ZCgLqTB/3XPE7rp41p7ibHhWXO6QJdaoXGaL8b6PQsJ+GjyE
- oen2EAu726Za+bu6uxECaHVJKgzxLGZ6YX6o4aDtbdTROnAEO++14Sse
-X-Gm-Gg: AYBFou1kPNKCht0BnYpZ6NIWOI/15F1FRab+3TruOeuWpYuku7DF2BvNDsNvh9cQIy2
- 0+abYRWs30tYDsXUU0KnDlqqCkXGr8ntbiVQRVw5312EXCH7PGTKz59sp/9tMWLUk6uv/3hSpY8
- Tcp7kYCvEFg+QHNJ6bzZXigtkbbBb4uOYNzu88P4z87XhXEFYaGfFINdxL+b4j3UGRIMoaKbq0+
- 67QNSUlwMBaPCXHooh/mPUtmz67wgX03voLSeKpXmBH+lsRUMId2+gn9VzI5itSYGpP5m9bsl36
- r/S0HyOQnKbHxrcWDwtzrn+wA9dVkmYrZ5gMoMjuBuHAxtpyLXgeT4kPtbssAa9MjmsLof8Jhnc
- 7kkLDplvFwWzq6IHyL14VhJm1O2hWlarmvb5C3d2DanzlOhzTifO7U/nxv/NRENqaADOYYb8rEl
- O4dN3wDrDjvpG1wHpOpPoQ6wfnDcg09vHgKk2Q+b1GQuCiC/zsoS4vzCY4MWtEdcypuXH4kLtSD
- qWXKN+Z+XII8Rext06bch51filorI0=
-X-Received: by 2002:a05:7022:f902:10b0:144:eab0:9cbc with SMTP id
- a92af1059eb24-146d0495644mr8711535c88.37.1790572964367; 
- Sun, 27 Sep 2026 22:22:44 -0700 (PDT)
+ AKwUvBzcmFrix+MHJXj5mhkIbrAeO9QHAfKPxdPhCgs6lgDDi0uqiqaTRzJvUfWA6uEbaubw5zhdWRWWBA==@nongnu.org
+X-Gm-Message-State: AFuF++locPLUxilET8guVH5amh+8R3KHhX5skM1QdyNsjdlOqEQOi+2D
+ dWvITo79piB7CPlJi9Kqt35iWddxGRnmD+9iAY0CcqbWr7pZsvjWzfJ7
+X-Gm-Gg: AYBFou2fW7U9G5+lEX892rxu8/YVMcM3/Zs2qqO8tvZgIZlBgvJ11VnWCR9SEke9lT1
+ 1Hx3n3kBjSclTmhiI+z2Azp+2ImI8OvN670TwQSuoRAOklxOTSYiU76vghuFNE2ic9EB2yvJDEJ
+ e+hElBnntU6dvdiBrq0983sZPfK/2kigCcmbnOVLJ+681jTUHkMQbaTHKUeytoKfcvGwwc3IflO
+ x/W7UikCw+rqmeDZ96xPKgJdTK5oArHyFdcXsr+GHlxUq2GV+ceFoks6u76P3pgJdmG2XsVpeyi
+ MyiMUAaMkiB7qN1VW8270wTFGFTjvNTKeXvmN8/FodX8ytmcP5JXgbOyxqXhp5In//9xrBicxBm
+ WeXhFG8w2SOCcleC31znPuxRiGa4h06Pzap10O4FYIm6lyW+Ol0ho8UYnHRjZII8kZscpnn+i0T
+ svzlhh5oAb3ufnIo9DnbbpaadnOl3AArkrxJH7m0omYkYFgyWyCkJWJdE/xVwmgIMSHizQRD2NR
+ Kq4/4IxWjenCLJ4CqhTYxncJCfVKio=
+X-Received: by 2002:a05:7022:7e85:b0:143:3242:6301 with SMTP id
+ a92af1059eb24-146ce29fde5mr9588471c88.4.1790573002756; 
+ Sun, 27 Sep 2026 22:23:22 -0700 (PDT)
 Received: from WIN-BH9M8FJACR9 ([103.94.185.75])
  by smtp.googlemail.com with ESMTPSA id
- a92af1059eb24-146bb6551d9sm14726248c88.9.2026.09.27.22.22.37
+ a92af1059eb24-146bb6551d9sm14726248c88.9.2026.09.27.22.23.15
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sun, 27 Sep 2026 22:22:43 -0700 (PDT)
+ Sun, 27 Sep 2026 22:23:22 -0700 (PDT)
 From: Yonggang Luo <luoyonggang@gmail.com>
 To: qemu-devel@nongnu.org
 Cc: Helge Deller <deller@gmx.de>, Harsh Prateek Bora <harshpb@linux.ibm.com>,
@@ -96,24 +96,23 @@ Cc: Helge Deller <deller@gmx.de>, Harsh Prateek Bora <harshpb@linux.ibm.com>,
  Michael Rolnik <mrolnik@gmail.com>,
  Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>,
  Paolo Bonzini <pbonzini@redhat.com>, qemu-s390x@nongnu.org
-Subject: [PATCH v2 13/24] target/hexagon: convert raise_exception to
- hexagon_raise_exception
-Date: Mon, 28 Sep 2026 13:20:39 +0800
-Message-ID: <20260928052051.251-14-luoyonggang@gmail.com>
+Subject: [PATCH v2 18/24] target/xtensa: convert exception to raise_excp
+Date: Mon, 28 Sep 2026 13:20:44 +0800
+Message-ID: <20260928052051.251-19-luoyonggang@gmail.com>
 X-Mailer: git-send-email 2.52.0.windows.1
 In-Reply-To: <20260928052051.251-1-luoyonggang@gmail.com>
 References: <20260928052051.251-1-luoyonggang@gmail.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:38::f;
- envelope-from=luoyonggang@gmail.com; helo=mail-dl2-x0f.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:36::e;
+ envelope-from=luoyonggang@gmail.com; helo=mail-dy2-x0e.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -129,203 +128,138 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Fold C do_raise_exception into hexagon_raise_exception_err with
-vaddr pc and a retaddr parameter, and exit via cpu_loop_exit_excp.
-Prefix leftover TCG raise_exception to hexagon_raise_exception so
-translate keeps the CPU_LOG_INT log and ASSERT_DIRECT_TO_GUEST_UNSET.
+Call raise_excp from gen_yield. Drop TCG exception. Keep
+exception_cause helpers. C callers use xtensa_exception for the old
+helper_exception body.
 
-Reviewed-by: Brian Cain <brian.cain@oss.qualcomm.com>
 Signed-off-by: Yonggang Luo <luoyonggang@gmail.com>
 ---
- target/hexagon/cpu.c       | 13 +++++++------
- target/hexagon/cpu.h       |  2 +-
- target/hexagon/helper.h    |  3 ++-
- target/hexagon/internal.h  |  5 -----
- target/hexagon/macros.h    |  2 +-
- target/hexagon/op_helper.c | 29 +++++++++++------------------
- target/hexagon/translate.c | 11 ++++++-----
- 7 files changed, 28 insertions(+), 37 deletions(-)
+ target/xtensa/cpu.h        |  1 +
+ target/xtensa/exc_helper.c | 13 +++++--------
+ target/xtensa/helper.h     |  1 -
+ target/xtensa/translate.c  |  2 +-
+ target/xtensa/win_helper.c | 12 ++++++------
+ 5 files changed, 13 insertions(+), 16 deletions(-)
 
-diff --git a/target/hexagon/cpu.c b/target/hexagon/cpu.c
-index 1f7d8a8df70..3739f3f4561 100644
---- a/target/hexagon/cpu.c
-+++ b/target/hexagon/cpu.c
-@@ -342,7 +342,7 @@ static TCGTBCPUState hexagon_get_tb_cpu_state(CPUState *cs)
+diff --git a/target/xtensa/cpu.h b/target/xtensa/cpu.h
+index 49d6ad9083d..0b2cb5a250d 100644
+--- a/target/xtensa/cpu.h
++++ b/target/xtensa/cpu.h
+@@ -601,6 +601,7 @@ int xtensa_cpu_gdb_write_register(CPUState *cpu, uint8_t *buf, int reg);
+ G_NORETURN void xtensa_cpu_do_unaligned_access(CPUState *cpu, vaddr addr,
+                                                MMUAccessType access_type, int mmu_idx,
+                                                uintptr_t retaddr);
++G_NORETURN void xtensa_exception(CPUXtensaState *env, uint32_t excp);
+ 
+ #define CPU_RESOLVING_TYPE TYPE_XTENSA_CPU
+ 
+diff --git a/target/xtensa/exc_helper.c b/target/xtensa/exc_helper.c
+index 7cb67d179a8..3049432f4c4 100644
+--- a/target/xtensa/exc_helper.c
++++ b/target/xtensa/exc_helper.c
+@@ -35,15 +35,12 @@
+ #include "qemu/atomic.h"
+ #include "qemu/plugin.h"
+ 
+-void HELPER(exception)(CPUXtensaState *env, uint32_t excp)
++void xtensa_exception(CPUXtensaState *env, uint32_t excp)
+ {
+-    CPUState *cs = env_cpu(env);
+-
+-    cs->exception_index = excp;
+     if (excp == EXCP_YIELD) {
+         env->yield_needed = 0;
      }
-     if (pc & PCALIGN_MASK) {
-         env->cause_code = HEX_CAUSE_PC_NOT_ALIGNED;
--        hexagon_raise_exception_err(env, HEX_EVENT_PRECISE, pc);
-+        hexagon_raise_exception_err(env, HEX_EVENT_PRECISE, pc, 0);
-     }
+-    cpu_loop_exit(cs);
++    cpu_loop_exit_excp(env_cpu(env), excp, 0);
+ }
+ 
+ void HELPER(exception_cause)(CPUXtensaState *env, uint32_t pc, uint32_t cause)
+@@ -66,7 +63,7 @@ void HELPER(exception_cause)(CPUXtensaState *env, uint32_t pc, uint32_t cause)
+     env->sregs[EXCCAUSE] = cause;
+     env->sregs[PS] |= PS_EXCM;
+ 
+-    HELPER(exception)(env, vector);
++    xtensa_exception(env, vector);
+ }
+ 
+ void HELPER(exception_cause_vaddr)(CPUXtensaState *env,
+@@ -93,7 +90,7 @@ void HELPER(debug_exception)(CPUXtensaState *env, uint32_t pc, uint32_t cause)
+     env->sregs[EPS2 + level - 2] = env->sregs[PS];
+     env->sregs[PS] = (env->sregs[PS] & ~PS_INTLEVEL) | PS_EXCM |
+         (level << PS_INTLEVEL_SHIFT);
+-    HELPER(exception)(env, EXC_DEBUG);
++    xtensa_exception(env, EXC_DEBUG);
+ }
  
  #ifndef CONFIG_USER_ONLY
-@@ -734,14 +734,15 @@ static bool hexagon_tlb_fill(CPUState *cs, vaddr address, int size,
-             return false;
+@@ -116,7 +113,7 @@ void HELPER(waiti)(CPUXtensaState *env, uint32_t pc, uint32_t intlevel)
+     }
+ 
+     cpu->halted = 1;
+-    HELPER(exception)(env, EXCP_HLT);
++    xtensa_exception(env, EXCP_HLT);
+ }
+ 
+ void HELPER(check_interrupts)(CPUXtensaState *env)
+diff --git a/target/xtensa/helper.h b/target/xtensa/helper.h
+index ae938ceedb8..4640d0da59a 100644
+--- a/target/xtensa/helper.h
++++ b/target/xtensa/helper.h
+@@ -1,4 +1,3 @@
+-DEF_HELPER_2(exception, noreturn, env, i32)
+ DEF_HELPER_3(exception_cause, noreturn, env, i32, i32)
+ DEF_HELPER_4(exception_cause_vaddr, noreturn, env, i32, i32, i32)
+ DEF_HELPER_3(debug_exception, noreturn, env, i32, i32)
+diff --git a/target/xtensa/translate.c b/target/xtensa/translate.c
+index db48f0c562a..05c73bef99d 100644
+--- a/target/xtensa/translate.c
++++ b/target/xtensa/translate.c
+@@ -307,7 +307,7 @@ static void gen_yield(DisasContext *dc)
+ {
+     tcg_gen_st_i32(tcg_constant_i32(0), tcg_env,
+                    offsetof(CPUXtensaState, yield_needed));
+-    gen_helper_exception(tcg_env, tcg_constant_i32(EXCP_YIELD));
++    gen_helper_raise_excp(tcg_env, tcg_constant_i32(EXCP_YIELD));
+ }
+ 
+ static void gen_exception_cause(DisasContext *dc, uint32_t cause)
+diff --git a/target/xtensa/win_helper.c b/target/xtensa/win_helper.c
+index 4b25f8f4de7..3e4d7c0f768 100644
+--- a/target/xtensa/win_helper.c
++++ b/target/xtensa/win_helper.c
+@@ -125,13 +125,13 @@ void HELPER(window_check)(CPUXtensaState *env, uint32_t pc, uint32_t w)
+ 
+     switch (ctz32(windowstart >> n)) {
+     case 0:
+-        HELPER(exception)(env, EXC_WINDOW_OVERFLOW4);
++        xtensa_exception(env, EXC_WINDOW_OVERFLOW4);
+         break;
+     case 1:
+-        HELPER(exception)(env, EXC_WINDOW_OVERFLOW8);
++        xtensa_exception(env, EXC_WINDOW_OVERFLOW8);
+         break;
+     default:
+-        HELPER(exception)(env, EXC_WINDOW_OVERFLOW12);
++        xtensa_exception(env, EXC_WINDOW_OVERFLOW12);
+         break;
+     }
+ }
+@@ -174,11 +174,11 @@ void HELPER(test_underflow_retw)(CPUXtensaState *env, uint32_t pc)
+         env->sregs[EPC1] = env->pc = pc;
+ 
+         if (n == 1) {
+-            HELPER(exception)(env, EXC_WINDOW_UNDERFLOW4);
++            xtensa_exception(env, EXC_WINDOW_UNDERFLOW4);
+         } else if (n == 2) {
+-            HELPER(exception)(env, EXC_WINDOW_UNDERFLOW8);
++            xtensa_exception(env, EXC_WINDOW_UNDERFLOW8);
+         } else if (n == 3) {
+-            HELPER(exception)(env, EXC_WINDOW_UNDERFLOW12);
++            xtensa_exception(env, EXC_WINDOW_UNDERFLOW12);
          }
-         raise_perm_exception(cs, address, slot, access_type, excp);
--        do_raise_exception(env, cs->exception_index, env->gpr[HEX_REG_PC],
--                           retaddr);
-+        hexagon_raise_exception_err(env, cs->exception_index,
-+                                    env->gpr[HEX_REG_PC], retaddr);
      }
-     if (probe) {
-         return false;
-     }
-     raise_tlbmiss_exception(cs, address, slot, access_type);
--    do_raise_exception(env, cs->exception_index, env->gpr[HEX_REG_PC], retaddr);
-+    hexagon_raise_exception_err(env, cs->exception_index,
-+                                env->gpr[HEX_REG_PC], retaddr);
  }
- 
- #include "hw/core/sysemu-cpu-ops.h"
-@@ -784,8 +785,8 @@ void hexagon_cpu_do_unaligned_access(CPUState *cs, vaddr addr,
-     CPUHexagonState *env = cpu_env(cs);
- 
-     raise_misaligned_exception(cs, addr, 0, access_type);
--    do_raise_exception(env, cs->exception_index, env->gpr[HEX_REG_PC],
--                       retaddr);
-+    hexagon_raise_exception_err(env, cs->exception_index,
-+                                env->gpr[HEX_REG_PC], retaddr);
- }
- 
- #endif
-diff --git a/target/hexagon/cpu.h b/target/hexagon/cpu.h
-index df4c0182247..1edcc3ef6c3 100644
---- a/target/hexagon/cpu.h
-+++ b/target/hexagon/cpu.h
-@@ -232,7 +232,7 @@ FIELD(TB_FLAGS, HVX_COPROC_ENABLED, 5, 1)
- 
- G_NORETURN void hexagon_raise_exception_err(CPUHexagonState *env,
-                                             uint32_t exception,
--                                            uintptr_t pc);
-+                                            vaddr pc, uintptr_t retaddr);
- 
- #ifndef CONFIG_USER_ONLY
- /*
-diff --git a/target/hexagon/helper.h b/target/hexagon/helper.h
-index 71c8da4c46d..6cd63f631b7 100644
---- a/target/hexagon/helper.h
-+++ b/target/hexagon/helper.h
-@@ -18,7 +18,8 @@
- #include "internal.h"
- #include "helper_protos_generated.h.inc"
- 
--DEF_HELPER_FLAGS_3(raise_exception, TCG_CALL_NO_RETURN, noreturn, env, i32, i32)
-+DEF_HELPER_FLAGS_3(hexagon_raise_exception, TCG_CALL_NO_RETURN, noreturn,
-+                   env, i32, vaddr)
- DEF_HELPER_2(commit_store, void, env, int)
- DEF_HELPER_3(gather_store, void, env, i32, int)
- DEF_HELPER_1(commit_hvx_stores, void, env)
-diff --git a/target/hexagon/internal.h b/target/hexagon/internal.h
-index 05d1129916e..4b7a784fbc7 100644
---- a/target/hexagon/internal.h
-+++ b/target/hexagon/internal.h
-@@ -36,11 +36,6 @@ extern const char * const hexagon_sregnames[];
- extern const char * const hexagon_gregnames[];
- #endif
- 
--void G_NORETURN do_raise_exception(CPUHexagonState *env,
--        uint32_t exception,
--        uint32_t PC,
--        uintptr_t retaddr);
--
- #define hexagon_cpu_mmu_enabled(env) ({ \
-     HexagonCPU *cpu = env_archcpu(env); \
-     cpu->globalregs ? \
-diff --git a/target/hexagon/macros.h b/target/hexagon/macros.h
-index a5b9c24c6bb..4a87f6d72f1 100644
---- a/target/hexagon/macros.h
-+++ b/target/hexagon/macros.h
-@@ -637,7 +637,7 @@ static inline TCGv gen_read_ireg(TCGv result, TCGv val, int shift)
- #ifdef CONFIG_USER_ONLY
- #define fTRAP(TRAPTYPE, IMM) \
-     do { \
--        hexagon_raise_exception_err(env, HEX_EVENT_TRAP0, PC); \
-+        hexagon_raise_exception_err(env, HEX_EVENT_TRAP0, PC, 0); \
-     } while (0)
- #endif
- 
-diff --git a/target/hexagon/op_helper.c b/target/hexagon/op_helper.c
-index 4f00ca773f3..dfdb597f3fc 100644
---- a/target/hexagon/op_helper.c
-+++ b/target/hexagon/op_helper.c
-@@ -72,31 +72,24 @@ uint64_t HELPER(utimer)(void)
- #define SF_MANTBITS    23
- 
- /* Exceptions processing helpers */
--G_NORETURN
--void do_raise_exception(CPUHexagonState *env, uint32_t exception,
--                        uint32_t PC, uintptr_t retaddr)
-+G_NORETURN void hexagon_raise_exception_err(CPUHexagonState *env,
-+                                            uint32_t exception,
-+                                            vaddr pc, uintptr_t retaddr)
- {
-     CPUState *cs = env_cpu(env);
--    qemu_log_mask(CPU_LOG_INT, "%s: 0x%08" PRIx32 ", @ %08" PRIx32 "\n",
--                  __func__, exception, PC);
-+    qemu_log_mask(CPU_LOG_INT, "%s: 0x%08" PRIx32 ", @ %08" VADDR_PRIx "\n",
-+                  __func__, exception, pc);
-     ASSERT_DIRECT_TO_GUEST_UNSET(env, exception);
- 
--    env->gpr[HEX_REG_PC] = PC;
--    cs->exception_index = exception;
--    cpu_loop_exit_restore(cs, retaddr);
--}
--
--G_NORETURN void hexagon_raise_exception_err(CPUHexagonState *env,
--                                            uint32_t exception,
--                                            uintptr_t pc)
--{
--    do_raise_exception(env, exception, pc, 0);
-+    env->gpr[HEX_REG_PC] = pc;
-+    cpu_loop_exit_excp(cs, exception, retaddr);
- }
- 
--G_NORETURN void HELPER(raise_exception)(CPUHexagonState *env, uint32_t excp,
--                                        uint32_t PC)
-+G_NORETURN void HELPER(hexagon_raise_exception)(CPUHexagonState *env,
-+                                                uint32_t exception,
-+                                                vaddr pc)
- {
--    hexagon_raise_exception_err(env, excp, PC);
-+    hexagon_raise_exception_err(env, exception, pc, 0);
- }
- 
- void log_store32(CPUHexagonState *env, target_ulong addr,
-diff --git a/target/hexagon/translate.c b/target/hexagon/translate.c
-index 827859e052c..3bef721d7d8 100644
---- a/target/hexagon/translate.c
-+++ b/target/hexagon/translate.c
-@@ -138,11 +138,12 @@ intptr_t ctx_tmp_vreg_off(DisasContext *ctx, int regnum,
-     return offset;
- }
- 
--static void gen_precise_exception(int cause, uint32_t PC)
-+static void gen_precise_exception(int cause, vaddr pc)
- {
-     tcg_gen_movi_i32(hex_cause_code, cause);
--    gen_helper_raise_exception(tcg_env, tcg_constant_i32(HEX_EVENT_PRECISE),
--                               tcg_constant_i32(PC));
-+    gen_helper_hexagon_raise_exception(tcg_env,
-+                                       tcg_constant_i32(HEX_EVENT_PRECISE),
-+                                       tcg_constant_vaddr(pc));
- }
- 
- #ifndef CONFIG_USER_ONLY
-@@ -1139,11 +1140,11 @@ static void update_exec_counters(DisasContext *ctx)
-  */
- static void check_imprecise_exception(DisasContext *ctx)
- {
--    TCGv PC = tcg_constant_tl(ctx->pkt.pc);
-     TCGLabel *label = gen_new_label();
- 
-     tcg_gen_brcondi_tl(TCG_COND_EQ, hex_imprecise_exception, 0, label);
--    gen_helper_raise_exception(tcg_env, hex_imprecise_exception, PC);
-+    gen_helper_hexagon_raise_exception(tcg_env, hex_imprecise_exception,
-+                                       tcg_constant_vaddr(ctx->pkt.pc));
-     gen_set_label(label);
- }
- #endif
 -- 
 2.52.0.windows.1
 

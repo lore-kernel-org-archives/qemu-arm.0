@@ -4,80 +4,111 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8FEEFCA5FA2
-	for <qemu-arm@archiver.kernel.org>; Mon, 28 Sep 2026 17:59:36 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2B775CA5FA1
+	for <qemu-arm@archiver.kernel.org>; Mon, 28 Sep 2026 18:05:53 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xBFdH-0004AP-HF; Mon, 28 Sep 2026 13:59:19 -0400
+	id 1xBFjU-00064N-85; Mon, 28 Sep 2026 14:05:45 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <odaki@rsg.ci.i.u-tokyo.ac.jp>)
- id 1xBFdD-000498-Pz; Mon, 28 Sep 2026 13:59:16 -0400
-Received: from www3579.sakura.ne.jp ([49.212.243.89])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <odaki@rsg.ci.i.u-tokyo.ac.jp>)
- id 1xBFdA-0002lV-FO; Mon, 28 Sep 2026 13:59:15 -0400
-Received: from [192.168.10.153] (p865013-ipoe.ipoe.ocn.ne.jp [153.242.222.12])
- (authenticated bits=0)
- by www3579.sakura.ne.jp (8.16.1/8.16.1) with ESMTPSA id 68SHwBV3010935
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NO);
- Tue, 29 Sep 2026 02:58:11 +0900 (JST)
- (envelope-from odaki@rsg.ci.i.u-tokyo.ac.jp)
-DKIM-Signature: a=rsa-sha256; bh=bhNfS5XO2iaI5aLMAvwzQlHQQrEAoGc5fDrXaHyQC5g=; 
- c=relaxed/relaxed; d=rsg.ci.i.u-tokyo.ac.jp;
- h=From:Message-ID:To:Subject:Date;
- s=rs20250326; t=1790618292; v=1;
- b=vXHwzDghWy/WugSK0hd6WwfnZw+gAQb1cums1llrFO556mobUTc8a2GSP9jqOcp3
- LUMTdOWGwz1U+xsuSkmhGq6Pd5cBKWGxUZDstEbQAr0gUOw5LAUvTQWbyQ/tpwKb
- kVy8GBblBdyrtefIj+8s48fSiNRx2235N5E4qxcHzBC8PzVJ7tB6FeahhctxPDDP
- jBT0lsG4hsUa+IqRXK5chGQikh+d9yVo1WwyH+EsGJ+FUewAP5AMeM7N/OdxOvn1
- FcSkUQkikmSCRFvOJYz1YSEe7FGdiXjVk2XpWpMtIb4nuSiqdExXs74NjH4llMjG
- 4WJWA+CW7XZMzFwYCc/S8g==
-Message-ID: <71854074-d5f4-4818-ae4f-4d1b9d761b46@rsg.ci.i.u-tokyo.ac.jp>
-Date: Tue, 29 Sep 2026 02:58:11 +0900
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1xBFjC-00062E-B9
+ for qemu-arm@nongnu.org; Mon, 28 Sep 2026 14:05:32 -0400
+Received: from mail-yx2-x0e.google.com ([2607:f8b0:4864:41::e])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1xBFjA-0003Y5-IT
+ for qemu-arm@nongnu.org; Mon, 28 Sep 2026 14:05:26 -0400
+Received: by mail-yx2-x0e.google.com with SMTP id
+ 956f58d0204a3-672c2880f58so3192593d50.3
+ for <qemu-arm@nongnu.org>; Mon, 28 Sep 2026 11:05:24 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1790618723; cv=none;
+ d=google.com; s=arc-20260327;
+ b=P9CUin7usyJm2ykGxcfHKG6zdzYzKVuA1xt4yI4CuqE6o2OqZkyAiMwFvLvtTUftSW
+ BZ29ofAJNCjCePpX8C5kxXmzPd3K/bbODqkrlPg2283VdL9KrN44LE1VXu/t4QvyES5d
+ XqnNV3h/GIsxhHAtvBN7S2KNZCTEBymGRN6sFt6/6/pv1yb7IXL3GCEeL34J2dHi1rza
+ zchKNIrhVsdqskQu/RoJCkec86CDW9W8FgqTkbrbtrtRz9sF8LySvtzDLlRsB+ytI4Gv
+ 4UDQqSn0gC3Q0HfXcIaayy0NrnTmA/M1dIuIeiD3BqkSVt3bz4ddbAoLFQ2fK9jtxSdU
+ 6Ihg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
+ s=arc-20260327; 
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:dkim-signature;
+ bh=wAHj7yB6+hyjeccZw1OjSROT0wPZuQBNT+jUXfK3d40=;
+ fh=p6foASWR+NtxjVZUi614K084Hj3ByKwU1vYcspuQfAU=;
+ b=Ju46iBx8jg8DDBJQ2sT3EaXiWaVe419dZBJcPDbZ0VkACq4nqLn/BNqz2LCU36VKIF
+ WBzKx0QLIj+1XxbOrNmmKUt7XzKlY/q9hZUFXtRMO3VtNQE6hnvga9gzt9fQgZiCpRdR
+ gWyf4IsaovrgKeVxvhZyIBrHe552UiUtKT6c+Yr4MsvjZKTC4ILMdBw8vcyy+C2eOGcs
+ yoyvVjHk4xOhOJ4C2JjQZyPMmec7FJwe72VX/F28tsMcr6Cb9OFhlw965yYM+Q+xftPz
+ pAB0ammnoE2pBwN97Yo+g/qhDLoScs8GWQ4DZnOw43nIf/wQ0Adej29b6KKa1ltUr35y
+ 9euA==; darn=nongnu.org
+ARC-Authentication-Results: i=1; mx.google.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1790618723; x=1791223523; darn=nongnu.org;
+ h=content-type:cc:to:subject:message-id:date:from:in-reply-to
+ :references:mime-version:from:to:cc:subject:date:message-id:reply-to
+ :content-type; bh=wAHj7yB6+hyjeccZw1OjSROT0wPZuQBNT+jUXfK3d40=;
+ b=OgvOxJaagpUv6BYSeT3bXGw5xGbgBYm1ENMEOxyEXOcM+QwZzwlwRhkOd1RsMSoBLz
+ 2rY5wmmBopal6f4RmGSPE4Z0ntnnvNW+PqUct/bGhuM872O2/TVWBGr4T6DMDQdNoBCU
+ 2whlS8yNHOX/xEimseogOczGRnakBl0E9J5RsNutFG45rB/GBM6jvVxoNHUwrZGgfBjW
+ wgvvw0qxUuiMspUDc+WAbtnFQLtbEO2mJzxhSfUzs3IrudmguAKhWnZpDyvDk+BF+PwC
+ nrjfwDN8uPOGRUoLfN9vVlHGEXlgBfQ0bsJkm5IXvxzn3bhIv0nI1JJgE/iqN1O7nh2x
+ rmpw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20260707; t=1790618723; x=1791223523;
+ h=content-type:cc:to:subject:message-id:date:from:in-reply-to
+ :references:mime-version:x-gm-gg:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to:content-type;
+ bh=wAHj7yB6+hyjeccZw1OjSROT0wPZuQBNT+jUXfK3d40=;
+ b=R30glkHGiU0mzgESUqG5jLwU8BPENUOWdaYy3tLUFVrqkokbVjt4gOeCdO2EKAnSIf
+ F4dbyF+mEvPsB5xeVT2u6jJDcJ8f1jDcyM3tAsaYewh6M+vzT6/Bbcmts+IqsZw+3SWU
+ oIlikwWD+478txVFXm+noCfRrZe4S7T0F+5yicjPlWdFEKg6fEjlFIuTzekwrVZnqel+
+ UPBwM7PHPCkIEDObsi0VmYAZy9YLY0is1BbtKaepRc0nbK9KfbPeInQdDcZ8M7WsOq/C
+ 4E5wb64kvsEEVKe2RrypWqVdHjfNPGRxv9Sf6eXUwFiJ/pzWki95wR+Tfgra8AEX8g7j
+ /4Mw==
+X-Forwarded-Encrypted: i=1;
+ AKwUvBxeUdwJ6EkJeikg3/XjCRpRR81B3pbboR/wZOpK4k0KMWq/cL3XERzR70BcIi52mHXyzQGtJ3eEPQ==@nongnu.org
+X-Gm-Message-State: AFq9FYL8hfZPxjr219h8t6juXfCmxU8M/sxOtYh2l9oprHKbMrkiyehT
+ 2mBFKV4k9fTbckZQUrxOBl1nxIv2yDogbuqQFUV+WTZQsKJndUsHLjbnC1l0ox0OvgZSG6phktR
+ CbHGU/SLfqm3DHwmHqXslPnRZAV7tKXCfbAdINtd8yw==
+X-Gm-Gg: AYBFou2EPmRf3v8AgDHyhQec2PEX/f88vuYcqTPapX9fc+pbiKOLhRcLiJjHf30nDvK
+ FXOBcuDUOTNsbfGKHD/DVz44/G+u3cDBmXpGlE80HrYzfUqBTj8RzjbE658Pb0jUu39Fd87I153
+ Nf48Zje2iIHpeEQylYViHs1aRpUaKh9C6hkoFaMWtkiKHVDnZ6nqmpzqwm6GPseG1r6g1CFbWz4
+ I2HSddIeLMzL5+y6OY9CWX7zPNUzc2txNps7ccjcrno3Xx7ySI5Vhz05gYXz/5S8iJ3HK8wjUhy
+ N4YXHAU769bYRLOaT+wU0cW229Lcd12tLWLCOyhHmkjTKABLEAKY2BCEn+96i3XD3aFVBTSl1dw
+ X0GSJ4SdF/yx2eaoVy+glej5cC6i1PcM4/P7QKvsX
+X-Received: by 2002:a05:690e:810:20b0:671:541e:2bc7 with SMTP id
+ 956f58d0204a3-672ed42dc03mr4063259d50.58.1790618722901; Mon, 28 Sep 2026
+ 11:05:22 -0700 (PDT)
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v4 2/4] hw/qdev: Introduce DevicePhase
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@oss.qualcomm.com>,
- qemu-devel@nongnu.org
-Cc: BALATON Zoltan <balaton@eik.bme.hu>, Paolo Bonzini <pbonzini@redhat.com>, 
- =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>,
- Eduardo Habkost <eduardo@habkost.net>,
- "Maciej S. Szmigiero" <maciej.szmigiero@oracle.com>,
- "Michael S. Tsirkin" <mst@redhat.com>,
- David Hildenbrand <david@kernel.org>, Igor Mammedov <imammedo@redhat.com>,
- FangSheng Huang <FangSheng.Huang@amd.com>,
- Alistair Francis <alistair@alistair23.me>,
- "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
- Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
- Nicholas Piggin <npiggin@gmail.com>, Aditya Gupta <adityag@linux.ibm.com>,
- Glenn Miles <milesg@linux.ibm.com>,
- Harsh Prateek Bora <harshpb@linux.ibm.com>, qemu-ppc@nongnu.org,
- Alex Williamson <alex@shazbot.org>, =?UTF-8?Q?C=C3=A9dric_Le_Goater?=
- <clg@redhat.com>, Zhao Liu <zhao1.liu@intel.com>,
- Hendrik Brueckner <brueckner@linux.ibm.com>,
- Richard Henderson <richard.henderson@linaro.org>,
- Ilya Leoshkevich <iii@linux.ibm.com>,
- Cornelia Huck <cohuck@redhat.com>, Eric Farman <farman@linux.ibm.com>,
- Matthew Rosato <mjrosato@linux.ibm.com>, qemu-s390x@nongnu.org,
- Luc Michel <luc@lmichel.fr>, Fam Zheng <fam@euphon.net>,
- Eric Blake <eblake@redhat.com>, Markus Armbruster <armbru@redhat.com>
-References: <20260914-qdev-v4-0-93f849b4865c@rsg.ci.i.u-tokyo.ac.jp>
- <20260914-qdev-v4-2-93f849b4865c@rsg.ci.i.u-tokyo.ac.jp>
- <99d1d189-fd2c-47fd-83ba-e232121096e4@oss.qualcomm.com>
-Content-Language: en-US
-From: Akihiko Odaki <odaki@rsg.ci.i.u-tokyo.ac.jp>
-In-Reply-To: <99d1d189-fd2c-47fd-83ba-e232121096e4@oss.qualcomm.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=49.212.243.89;
- envelope-from=odaki@rsg.ci.i.u-tokyo.ac.jp; helo=www3579.sakura.ne.jp
-X-Spam_score_int: -19
-X-Spam_score: -2.0
+References: <20260921214710.29422-1-shentey@gmail.com>
+ <20260921214710.29422-5-shentey@gmail.com>
+In-Reply-To: <20260921214710.29422-5-shentey@gmail.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Mon, 28 Sep 2026 19:05:11 +0100
+X-Gm-Features: AclHuK-3d4xy9LTRK37sGYmfoU7UgCiFS38yARawsolNfdcvG6jtyI9B4aN-0RE
+Message-ID: <CAFEAcA_+nmV0WvoD0OCExmJ7sQdY2T3dvd7ZipbkNuj-RuZQug@mail.gmail.com>
+Subject: Re: [PATCH 04/42] hw/arm/mcimx7d-sabre: Ignore memory transaction
+ failures
+To: Bernhard Beschow <shentey@gmail.com>
+Cc: qemu-devel@nongnu.org, Phil Dennis-Jordan <phil@philjordan.eu>, 
+ Alistair Francis <alistair@alistair23.me>, Alexander Graf <agraf@csgraf.de>, 
+ Jason Wang <jasowangio@gmail.com>, qemu-arm@nongnu.org, 
+ Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>,
+ Paolo Bonzini <pbonzini@redhat.com>, 
+ =?UTF-8?B?TWFyYy1BbmRyw6kgTHVyZWF1?= <marcandre.lureau@redhat.com>, 
+ Jean-Christophe Dubois <jcd@tribudubois.net>,
+ Gaurav Sharma <gaurav.sharma_7@nxp.com>
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2607:f8b0:4864:41::e;
+ envelope-from=peter.maydell@linaro.org; helo=mail-yx2-x0e.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.0 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, SPF_HELO_NONE=0.001,
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -94,129 +125,45 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On 2026/09/26 18:48, Philippe Mathieu-Daudé wrote:
-> On 14/9/26 11:31, Akihiko Odaki wrote:
->> Replace the bool DeviceState::realized field with the enum-valued
->> DeviceState::phase field to express finer phases in following changes.
->>
->> The QOM realized property is an internal lifecycle property, not for
->> end users. Replace it with the enum-valued phase property.
->>
->> Signed-off-by: Akihiko Odaki <odaki@rsg.ci.i.u-tokyo.ac.jp>
->> ---
->>   qapi/common.json          | 14 ++++++++++++++
->>   include/hw/core/qdev.h    |  7 ++++---
->>   hw/core/qdev-clock.c      |  4 ++--
->>   hw/core/qdev-properties.c |  4 ++--
->>   hw/core/qdev.c            | 45 ++++++++++++++++++++++ 
->> +----------------------
->>   hw/scsi/scsi-bus.c        |  4 ++--
->>   qom/qom-qmp-cmds.c        |  2 +-
->>   system/qdev-monitor.c     |  5 +++--
->>   8 files changed, 51 insertions(+), 34 deletions(-)
->>
->> diff --git a/qapi/common.json b/qapi/common.json
->> index af7e3d618a7c..415a2722fc1a 100644
->> --- a/qapi/common.json
->> +++ b/qapi/common.json
->> @@ -7,6 +7,20 @@
->>   # *****************
->>   ##
->> +##
->> +# @DevicePhase:
->> +#
->> +# An enumeration of the device phases
->> +#
->> +# @unrealized: the initial phase
->> +#
->> +# @realized: the phase after realization
->> +#
->> +# Since: 11.2
->> +##
->> +{ 'enum': 'DevicePhase',
->> +  'data': [ 'unrealized', 'realized' ] }
->> +
->>   ##
->>   # @IoOperationType:
->>   #
->> diff --git a/include/hw/core/qdev.h b/include/hw/core/qdev.h
->> index b1c5f4780a90..ff367b2a5f98 100644
->> --- a/include/hw/core/qdev.h
->> +++ b/include/hw/core/qdev.h
->> @@ -1,6 +1,7 @@
->>   #ifndef QDEV_CORE_H
->>   #define QDEV_CORE_H
->> +#include "qapi/qapi-types-common.h"
->>   #include "qemu/atomic.h"
->>   #include "qemu/queue.h"
->>   #include "qemu/bitmap.h"
->> @@ -232,9 +233,9 @@ struct DeviceState {
->>        */
->>       char *canonical_path;
->>       /**
->> -     * @realized: has device been realized?
->> +     * @phase: the current phase
->>        */
->> -    bool realized;
->> +    DevicePhase phase;
->>       /**
->>        * @pending_deleted_event: track pending deletion events during 
->> unplug
->>        */
->> @@ -440,7 +441,7 @@ DeviceState *qdev_try_new(const char *name);
->>    */
->>   static inline bool qdev_is_realized(const DeviceState *dev)
->>   {
->> -    return qatomic_load_acquire(&dev->realized);
->> +    return qatomic_load_acquire(&dev->phase) == DEVICE_PHASE_REALIZED;
->>   }
->>   /**
->> diff --git a/hw/core/qdev-clock.c b/hw/core/qdev-clock.c
->> index 861f78f94c64..efb33a3a27e7 100644
->> --- a/hw/core/qdev-clock.c
->> +++ b/hw/core/qdev-clock.c
->> @@ -30,7 +30,7 @@ static NamedClockList 
->> *qdev_init_clocklist(DeviceState *dev, const char *name,
->>        * Clock must be added before realize() so that we can compute the
->>        * clock's canonical path during device_realize().
->>        */
->> -    assert(!dev->realized);
->> +    assert(dev->phase != DEVICE_PHASE_REALIZED);
->>       /*
->>        * The ncl structure is freed by qdev_finalize_clocklist() which 
->> will
->> @@ -186,6 +186,6 @@ Clock *qdev_alias_clock(DeviceState *dev, const 
->> char *name,
->>   void qdev_connect_clock_in(DeviceState *dev, const char *name, Clock 
->> *source)
->>   {
->> -    assert(!dev->realized);
->> +    assert(dev->phase != DEVICE_PHASE_REALIZED);
->>       clock_set_source(qdev_get_clock_in(dev, name), source);
->>   }
->> diff --git a/hw/core/qdev-properties.c b/hw/core/qdev-properties.c
->> index 34d7b26a7303..66cff4b9338c 100644
->> --- a/hw/core/qdev-properties.c
->> +++ b/hw/core/qdev-properties.c
->> @@ -33,7 +33,7 @@ static bool qdev_prop_allow_set(Object *obj, const 
->> char *name,
->>   {
->>       DeviceState *dev = DEVICE(obj);
->> -    if (dev->realized && !info->realized_set_allowed) {
->> +    if (dev->phase == DEVICE_PHASE_REALIZED && !info- 
->> >realized_set_allowed) {
->>           qdev_prop_set_after_realize(dev, name, errp);
->>           return false;
->>       }
-> 
-> IMO a preliminary patch should convert to use qdev_is_realized() where
-> appropriate (due to the atomicity), then this patch which LGTM btw.
+On Mon, 21 Sept 2026 at 22:47, Bernhard Beschow <shentey@gmail.com> wrote:
+>
+> When using mcimx7d-sabre with newer Linux versions such as 7.0, the
+> machine fails to boot. This happens due to memory transaction failures
+> since the address space is not fully covered with unimp devices. Fix
+> booting by ignoring memory transaction failures in the machine.
+>
+> cc: qemu-stable
+> Signed-off-by: Bernhard Beschow <shentey@gmail.com>
+> ---
+>  hw/arm/mcimx7d-sabre.c | 1 +
+>  1 file changed, 1 insertion(+)
+>
+> diff --git a/hw/arm/mcimx7d-sabre.c b/hw/arm/mcimx7d-sabre.c
+> index 65fdb19c06..8d223fca6c 100644
+> --- a/hw/arm/mcimx7d-sabre.c
+> +++ b/hw/arm/mcimx7d-sabre.c
+> @@ -83,6 +83,7 @@ static void mcimx7d_sabre_machine_init(MachineClass *mc)
+>      mc->max_cpus = FSL_IMX7_NUM_CPUS;
+>      mc->default_ram_id = "mcimx7d-sabre.ram";
+>      mc->auto_create_sdcard = true;
+> +    mc->ignore_memory_transaction_failures = true;
+>  }
 
-I haven't found any places that need additional atomicity guarantees,
-and I'm simply assuming the existing code is correct here. In the 
-previous version, I converted accesses outside qdev to use the qdev 
-accessor for encapsulation.
+This flag is in QEMU strictly to allow us to preserve
+backwards compatibility of behaviour with the older QEMU
+versions which pre-dated the suport of transaction failures
+(and where therefore we expected that if we just enabled it
+globally that we'd break previously-working user setups
+because we were missing some devices). It should not be
+newly set for any board model that isn't already setting it
+(and in an ideal world we would eliminate it from all those
+old board models, except that's a lot of work for mostly
+ancient hardly used machine types).
 
-Regards,
-Akihiko Odaki
+Instead the fix here is to identify which devices we need
+to provide as at least unimplemented-device stubs, and add
+them to the board/SoC.
+
+thanks
+-- PMM
 

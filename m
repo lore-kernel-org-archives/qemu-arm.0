@@ -4,104 +4,110 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C3176CA5FA2
-	for <qemu-arm@archiver.kernel.org>; Mon, 28 Sep 2026 12:12:15 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 815E3CA5FA2
+	for <qemu-arm@archiver.kernel.org>; Mon, 28 Sep 2026 12:16:47 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xBACm-0004Ef-D9; Mon, 28 Sep 2026 08:11:36 -0400
+	id 1xBAHZ-0007hb-7I; Mon, 28 Sep 2026 08:16:34 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1xBACj-0003zx-7M
- for qemu-arm@nongnu.org; Mon, 28 Sep 2026 08:11:33 -0400
-Received: from mail-yx2-x11.google.com ([2607:f8b0:4864:41::11])
+ id 1xBAHV-0007hH-Qc
+ for qemu-arm@nongnu.org; Mon, 28 Sep 2026 08:16:29 -0400
+Received: from mail-yx2-x0c.google.com ([2607:f8b0:4864:41::c])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1xBACh-0006Pm-FA
- for qemu-arm@nongnu.org; Mon, 28 Sep 2026 08:11:32 -0400
-Received: by mail-yx2-x11.google.com with SMTP id
- 956f58d0204a3-67109935888so2544875d50.3
- for <qemu-arm@nongnu.org>; Mon, 28 Sep 2026 05:11:31 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1790597490; cv=none;
+ id 1xBAHU-0007Bl-9I
+ for qemu-arm@nongnu.org; Mon, 28 Sep 2026 08:16:29 -0400
+Received: by mail-yx2-x0c.google.com with SMTP id
+ 956f58d0204a3-67453dc240fso1589487d50.1
+ for <qemu-arm@nongnu.org>; Mon, 28 Sep 2026 05:16:27 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1790597787; cv=none;
  d=google.com; s=arc-20260327;
- b=WzKOk1qiuEYwlSivlIHa26C7TnYgZyXHjUtU0fBzFsjvh3gqKfuKrLnmMdZfEk9B5J
- x0B9dQYBJ8sgg/UUthau3jDyqs3mwcRoSXw/+J3ETh0Qcw0EhxVcMSzKZ4EVRZcrwrIt
- oCl+wKFXpfb2JohPD2cKjYVY4iG0dpJo5RVIFFYVxSGrLVkbN+BdEbl1NjR1BVzoawoK
- J+h5a9/Ft4uDJ9jnSIV7W1YahPpdazYOgyvLRaF2gXcfewjQpGVk7CnfIB3Otc0nztHa
- xXr8RGxvjMpfOhHEdjprc4YHyZGayeOr8Uf8WkQW/hRneZkCET6QZJAdo9s5zizf6Jic
- fJHA==
+ b=JQuz48QnW0Ah+fzNd8IdlpnCh8VA/Zkk3Ep6+i24O8DqUMuEbX+O+TgQpyYrJOXmID
+ vSVBKzsZujzjxyl7wJMX2m8W5hRpopMupEZQIp1wuCIvQv0NtLDbMVOz/lCGLtrFKskv
+ /8wc+T87gPy5GH36TPeYAiL3mno2o2SMxJwCWVgleoL3jZ8cHZqXYHwr2pFTf7GAqXsU
+ /O+8E5oLVxwiwg2gQm/Yn8C0PGlbqsPQAcYap9VRgnTTIdt9PI4Pmm7M8cPtUQ7IOlve
+ z2WPy2C2b6Ddtuo+nwOUrR7QRS0HQWnXdrjbNwbqkU+FF6QacMrQPKxBOaq/BYAeOi0r
+ Yb+A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
  s=arc-20260327; 
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:dkim-signature;
- bh=BVZ285iW8xYSkl8diGIPTkpZwkwzLt8ODv7loB0mGcA=;
- fh=7KvDfNFOS/5kz1ESFcPtVxDHeJp4XujvgKdlabWSDPI=;
- b=mfulI8aL20gm7+eE4Cg3ng4Zm13KN8mzIikZlIr9rV28LOLbGJ8/9LMQs5pq2x9v+n
- rFX5Q+g/qnjSTHvzpzQjVdxA6O+VaT0PLCPHwjCHM5LitvG8ua10Eckj1k+SoymzXesn
- nrlYCOb1U4jDBW2wVabXsp6caSqy8+kTZ3Czlo2NxAJB6ZzmxXB5HKlH+0Dbyb9YEH4a
- pr/Tbn9Kl0WE5P5JhVaPIk9FbInR2Nkm0LbPa6tC8Q5MtlHwjs6jyb6UKxVqs10ak8nX
- llW+ltd7Yxkqa566NxDN4kwfrTMoLv41RB1F0wbmUN3LQ/cD1XyiOe4nbsNF+oXsxhZ5
- ZIqg==; darn=nongnu.org
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:dkim-signature;
+ bh=kNAr3nXN656vcUu+O2UeZX8j8adB5wy8ChCv+YwWyEY=;
+ fh=hELKeDKw4tp2+RUEfhA1Iy8S5mPo58Fg6csbVfZqFmw=;
+ b=dikY0yJ2OtRJlNJJIaqFHEkHqZwFb+BvkQ/Yy+e1XrKMKJLcrMWfRY1Z2NBmaOhhZ3
+ ktqg63qsN+wtRIoIojvoswzetNC4hcO3+U090CAH/Ml+KeRs/AZtJtSIIRef97IRk001
+ NIOhwPQhl5akCt95RjVEA3b7DazI9Od6uZwh/IrGJV3yB3CfX1nByDR6P95zy66dC7+z
+ f6AXQHARpM8ZSl7Pkr2zz1IxX5Yx5/pMWVILr6U05HR2bAC5Xv0WXAf7vGdOSsqZrX1n
+ KUXaTDbmXhv7cX2v9Z8Q+XjxalWm/rT0EjdhmfeFlS5fUGZj0QG6ZQMmNwCLs0xCGmhk
+ kbDA==; darn=nongnu.org
 ARC-Authentication-Results: i=1; mx.google.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1790597490; x=1791202290; darn=nongnu.org;
- h=content-type:cc:to:subject:message-id:date:from:in-reply-to
- :references:mime-version:from:to:cc:subject:date:message-id:reply-to
- :content-type; bh=BVZ285iW8xYSkl8diGIPTkpZwkwzLt8ODv7loB0mGcA=;
- b=eq/fG26MEH/upzw1sfoDUhUfs8NL4jStqY3MDrlGtc6+8aYfY1UfH4XzdcwFSmir/K
- 0TdVuQfiovyf7d4VZ6uFXmrDUZajvNqoSB6qSyZv0X6l8SIglGA07YZo2cTLpWKkJrV3
- RWSeeN8AkjZil9NUSyQRmEk+mYI7ftKddBoMjjeoiFLGIx6G4R5um7CqEJpP9gLeIs5x
- M/eJxfEP2PnvF29HSl8artdnRjECkjzAGSaWNlQK/LKoA8HPNDLNjIB5jjboHXM1hYBo
- 2mTUGpxXtWf1Sm6p82MQoNuBj01wtzfJhNCkwqIrlQbxve2qpDSfNZ3zKMrT9ZMmy8iN
- aekQ==
+ d=linaro.org; s=google; t=1790597787; x=1791202587; darn=nongnu.org;
+ h=content-transfer-encoding:content-type:cc:to:subject:message-id
+ :date:from:in-reply-to:references:mime-version:from:to:cc:subject
+ :date:message-id:reply-to:content-type;
+ bh=kNAr3nXN656vcUu+O2UeZX8j8adB5wy8ChCv+YwWyEY=;
+ b=l756n9tHXaDl6Akx4P3aMGsoeLZdLa/jqRtPyyuMuBsbtBzIz4GGxYzxGNPEOLAkZq
+ UEhb8lS0e3Zsg+TW5H5Pvo1TbLwqs+F6q+vDgt3KZlcwDpUllhalLTdNjTrAa1BtsM9R
+ XV4ALWZukca0I85GVCKftR+U3xE9wStgrHTmJfKJZyrL/x+wOjAUktkX5CBbOea6kG0J
+ 8giyWHY9I5rVElOjKZaW4wQgEJrPq88NB6eg0ds2VJl6lf8CZyMvSrpCNB6hVizRmXYi
+ ncSSJD5Uk8DAvLDE9QXOvQU7d2zgTgkAcyVgm10LTU9Hc7ZHn0SBsCuamzGRqmOiCAFO
+ mHQw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20260707; t=1790597490; x=1791202290;
- h=content-type:cc:to:subject:message-id:date:from:in-reply-to
- :references:mime-version:x-gm-gg:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to:content-type;
- bh=BVZ285iW8xYSkl8diGIPTkpZwkwzLt8ODv7loB0mGcA=;
- b=vKANRulLLnO8rQnCXyxsBoBRy8ywM5vKT1WU1XdDQzHXDl7U0Cu4L+n1btDA7n/GfH
- m1DZAk9eoM91/KfMrGP7r1GDcK65Uq9CjfDLGBtOsVz1IpC4R3dm2lkpMnDDq3HcWICs
- o9OFi+CHNnEzB6LtvFmU/qMRHsLe/gV8S+o7Ca5Ko7R2K4YS6o1a28IXL+LnkU2+bzoA
- OxX3wEe9P8MMldMG/9kgcUEQJnE5wC2LZ/NriH4Rkm/e2lHSlGKnyQJAGp2mL0z/EWMA
- we1BbYuYci4kim+T2HUHLK7vjUgBLXUTIprkJXnuwIoFpBnCM0JuPBowIuydtPL4dheC
- NyBQ==
+ d=1e100.net; s=20260707; t=1790597787; x=1791202587;
+ h=content-transfer-encoding:content-type:cc:to:subject:message-id
+ :date:from:in-reply-to:references:mime-version:x-gm-gg
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
+ :content-type;
+ bh=kNAr3nXN656vcUu+O2UeZX8j8adB5wy8ChCv+YwWyEY=;
+ b=pgXOXIh9Gm43HE1vEJmVFpSAnJit7vD6YBK961dCgej2sHBitnMKHrk2ThrTzfYWHc
+ DW+BDQHDWassurcZDDurqGZV+AYG8vY6CQ0E0mfohCMAzOE1iNTc4glmQX8SptCZWoKm
+ 2kKj2a3OnSB+YPl6SK6pyrC/p70B6PaCEzb5rbtCVejIf3YmWtT/E8BnyH8RrprmJWL/
+ QZeGiGuLthcYRH5WFaAUrovnZzGERFfiKkdP9M0gv/rIMi3DZUB47AMA/N96BzOeLuGF
+ hDIPRw/eF62JXabjthc8xOLa8/y3y5raITCULFJrKf9t330jCv/TThgSsr+j1MqJqs1h
+ T45A==
 X-Forwarded-Encrypted: i=1;
- AKwUvByJ+ASE3x8OoXT0VoNYGXj8Eg3bWzxmNaQ/FQ6cM9UMff9w6vyLBS7r7BQVKO4gKg+3VAmgVSFzTQ==@nongnu.org
-X-Gm-Message-State: AFq9FYKMRQMUE7bYym8+4fa4RuOUnS2Zr0mfERDxelaeeSOhc0wK5M6Q
- iy4AvdPQNPnHZ/bPn5TzxyarjRXmp9a3c2Sa2VIf8egokSaOyGl0/kC0Wr+iQ3qga/eAfs4d6rw
- Rj/sUP5oZGRckx7dwo3C+Ojv99g9tlP6MALZUzUMgCA==
-X-Gm-Gg: AYBFou3Qy/qkaNTOndpkJ1lCRt2eVEVpTy3pjIMBA6zXDtLf9dQT7pM5mG3MH3c3m4l
- pF/NxOHw5C9QhJ4rP9bslVDBFjcg1tNW3IqF/4xILIOswY2yj8lyvTdL6Jgf+WUFguT3M2pqPnL
- Z0LmfLMVbSOcQMtx5aIa/2IdSNCFQ2ewAZAyzKttnzUL6Q9iDmHR4qGRS9XpfOphBC3foRHMTg8
- phk7ikjNN/f3MVI+PFsi2Y5flj0MYtRSo/xMiFBGjcPg8iKxKkkJGoIqSDJ/29HJqO5KVZbej7y
- a9ZlOraYgFndqE5RP6CdWo0lnmhSp9wDW/zUgzdFduhSGnRVvdH+tQg+1FWv1b5Mrd5mNvBsvTY
- ixHC4sRvWVcMYPhBaxeTmtPKIQQyYbhbjx4Bjc2s=
-X-Received: by 2002:a05:690e:1384:b0:674:cc60:9ac2 with SMTP id
- 956f58d0204a3-674cc60b315mr2526251d50.46.1790597489993; Mon, 28 Sep 2026
- 05:11:29 -0700 (PDT)
+ AKwUvBy+1GLfTNfmrDUlwdp8kXqlgG5VpqVb1lHA50nlHsn+ZvmzLuj4a/iT9d6+v4M5wJG2XK1N7VY2bQ==@nongnu.org
+X-Gm-Message-State: AFq9FYIZc6iBZdXBx87S0CqqZ73cNI3jPHffrGGiXDkBc9UiG99g00lh
+ r89swql0E+/zWVLZEcW5bo3XYVyZxYFxsg+0jgf5dJ+gAg9tvQjGE0tNinUZWSiMCiCReD0RrUj
+ eBgj4VTDkgzt/omaXKT6EJGTPWaMqqCm80gHwsy7y4A==
+X-Gm-Gg: AYBFou3L4wW07BYKVxNq3lH2B9qtioZK5ohjX/WOCH4ucIuOHv1ankgaFsRfUI8FIio
+ 4g/6lU+lofnjm90l1NxWnwsO0nV/GGMtO4bBPZBVN6PzPLCkYZ+j+HovyOeTXypJutioy1/AptP
+ 0tHJToJRTCtUgT62S4Y0AKf9V1KFnoqKTubd6GYyTI8zVayqxj/keLclTLU8J6X5neMBRdMCraK
+ fb9rnyt7CxWuZts5ByZXnpQywk8PUpr6W7QroBstKEubTf8wHzXz+umBzSmgkhh36bKeiSc68HN
+ QpNA7pDw9D8bHTfldQPZnOeWIwyDElZ8tDvJAPmHVOTPsTPhTm4wA3DnAjM5/S8vOXLprI0GinO
+ PFLrkXwmag9HH1sheHcXg4fRQujDCa+M6as4/dYI=
+X-Received: by 2002:a05:690e:16a1:b0:675:2fda:6336 with SMTP id
+ 956f58d0204a3-6752fda69ecmr2458796d50.91.1790597786829; Mon, 28 Sep 2026
+ 05:16:26 -0700 (PDT)
 MIME-Version: 1.0
-References: <20260916224454.91924-1-mohamed@unpredictable.fr>
-In-Reply-To: <20260916224454.91924-1-mohamed@unpredictable.fr>
+References: <20260926175634.2034094-1-satur9nine@gmail.com>
+ <cdac79f2-13c3-4964-96a9-9def889c8eb6@oss.qualcomm.com>
+In-Reply-To: <cdac79f2-13c3-4964-96a9-9def889c8eb6@oss.qualcomm.com>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Mon, 28 Sep 2026 13:11:18 +0100
-X-Gm-Features: AclHuK9bMLoWbOKlt7SjK1LyL68r2xFbbzPleQP_W_Gsx0dMStOi9_A3hEsQfSA
-Message-ID: <CAFEAcA81GZMWo5e4zV2MsWvzSXTLGskx=geamdno++3kuUQo+w@mail.gmail.com>
-Subject: Re: [PATCH] whpx: arm64: check for physical address width after WHPX
- availability
-To: Mohamed Mediouni <mohamed@unpredictable.fr>
-Cc: qemu-devel@nongnu.org, Pedro Barbuda <pbarbuda@microsoft.com>,
- qemu-arm@nongnu.org
+Date: Mon, 28 Sep 2026 13:16:12 +0100
+X-Gm-Features: AclHuK86Icw2J8ca62bk7z-0PgqR8KUCqDPgSR5KoyQWy5idIMLkUFVjbo0l5Ns
+Message-ID: <CAFEAcA8rpvvEfGx43Nj+usXib_HNHt=u+_xTF-Migb2vQ+xPKw@mail.gmail.com>
+Subject: Re: [PATCH v3] hw/char/stm32l4x5_usart.c: Support 16-bit writes
+To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@oss.qualcomm.com>
+Cc: Jacob Whitaker Abrams <jwhitakera@gmail.com>, qemu-devel@nongnu.org, 
+ Jacob Whitaker Abrams <satur9nine@gmail.com>, Samuel Tardieu <sam@rfc1149.net>,
+ =?UTF-8?B?TWFyYy1BbmRyw6kgTHVyZWF1?= <marcandre.lureau@redhat.com>, 
+ Paolo Bonzini <pbonzini@redhat.com>, Fabiano Rosas <farosas@suse.de>, 
+ Laurent Vivier <lvivier@redhat.com>,
+ "open list:STM32L4x5 SoC Family" <qemu-arm@nongnu.org>
 Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:41::11;
- envelope-from=peter.maydell@linaro.org; helo=mail-yx2-x11.google.com
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2607:f8b0:4864:41::c;
+ envelope-from=peter.maydell@linaro.org; helo=mail-yx2-x0c.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -118,53 +124,35 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Wed, 16 Sept 2026 at 23:44, Mohamed Mediouni
-<mohamed@unpredictable.fr> wrote:
+On Mon, 28 Sept 2026 at 10:31, Philippe Mathieu-Daud=C3=A9
+<philmd@oss.qualcomm.com> wrote:
 >
-> In the case where WHPX isn't supported on the platform, makes the
-> intended error appear instead of failing at getting the IPA width.
+> On 26/9/26 19:56, Jacob Whitaker Abrams wrote:
+> > Official STM32CubeL4 drivers use and require support for 16-bit writes =
+to
+> > UART registers for proper function despite datasheet claims.
+> >
+> > Signed-off-by: Jacob Whitaker Abrams <satur9nine@gmail.com>
+> > ---
+> > v3:
+> >   - Add suggested comment and set only valid.min_access_size to 4
+> > v2:
+> >   - Remove all changes other than supporting 16-bit writes UART regs
+> >
+> >   hw/char/stm32l4x5_usart.c          |  7 ++++++-
+> >   tests/qtest/stm32l4x5_usart-test.c | 22 +++++++++++++++++++++-
+> >   2 files changed, 27 insertions(+), 2 deletions(-)
 >
-> Signed-off-by: Mohamed Mediouni <mohamed@unpredictable.fr>
-> ---
->  target/arm/whpx/whpx-all.c | 16 ++++++++--------
->  1 file changed, 8 insertions(+), 8 deletions(-)
->
-> diff --git a/target/arm/whpx/whpx-all.c b/target/arm/whpx/whpx-all.c
-> index d106400686..46f0b9524e 100644
-> --- a/target/arm/whpx/whpx-all.c
-> +++ b/target/arm/whpx/whpx-all.c
-> @@ -879,14 +879,6 @@ int whpx_accel_init(AccelState *as, MachineState *ms)
->          goto error;
->      }
->
-> -    if (mc->get_physical_address_range) {
-> -        pa_range = mc->get_physical_address_range(ms,
-> -            whpx_arm_get_ipa_bit_size(), whpx_arm_get_ipa_bit_size());
-> -        if (pa_range < 0) {
-> -            return -EINVAL;
-> -        }
-> -    }
-> -
->      whpx->mem_quota = ms->ram_size;
->
->      hr = whp_dispatch.WHvGetCapability(
-> @@ -914,6 +906,14 @@ int whpx_accel_init(AccelState *as, MachineState *ms)
->          goto error;
->      }
->
-> +    if (mc->get_physical_address_range) {
-> +        pa_range = mc->get_physical_address_range(ms,
-> +            whpx_arm_get_ipa_bit_size(), whpx_arm_get_ipa_bit_size());
-> +        if (pa_range < 0) {
-> +            return -EINVAL;
-> +        }
-> +    }
-> +
+> Reviewed-by: Philippe Mathieu-Daud=C3=A9 <philmd@oss.qualcomm.com>
 
+Applied to target-arm.next, thanks. I expanded the commit message
+slightly, to add:
 
-
-
-Applied to target-arm.next, thanks.
+"As the only 16 bit accesses we need to handle are ones to a
+register's base address for registers that have no defined fields in
+their top 16 bits, the emulation of 16-bit accesses provided by the
+memory system core is good enough, and we can implement this by
+updating .valid.min_access_size."
 
 -- PMM
 

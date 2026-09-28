@@ -4,93 +4,87 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DAF35CA5FA5
-	for <qemu-arm@archiver.kernel.org>; Mon, 28 Sep 2026 14:28:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9DCAECA5FA5
+	for <qemu-arm@archiver.kernel.org>; Mon, 28 Sep 2026 14:38:36 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xBCL5-0001xr-8e; Mon, 28 Sep 2026 10:28:19 -0400
+	id 1xBCUj-00067B-HE; Mon, 28 Sep 2026 10:38:18 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1xBCKk-0001wH-6m
- for qemu-arm@nongnu.org; Mon, 28 Sep 2026 10:27:59 -0400
-Received: from mail-wm2-x11.google.com ([2a00:1450:4864:31::11])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1xBCKi-0005m4-46
- for qemu-arm@nongnu.org; Mon, 28 Sep 2026 10:27:57 -0400
-Received: by mail-wm2-x11.google.com with SMTP id
- 5b1f17b1804b1-49fe8bf173aso16384185e9.3
- for <qemu-arm@nongnu.org>; Mon, 28 Sep 2026 07:27:55 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1790605674; x=1791210474; darn=nongnu.org;
- h=content-transfer-encoding:content-type:mime-version:message-id:date
- :user-agent:references:in-reply-to:subject:cc:to:from:from:to:cc
- :subject:date:message-id:reply-to:content-type;
- bh=QLnMYjWC1u10mfgCAHCtME2LwGdqsSld+xN5u2fCvr8=;
- b=dxTgajszdL3zHpxev+X6paVi/Gp3r6voM1tWoZQ/+zKMAkinV3LS4qrpFcjo7XbHs+
- 2NgG/VIuSWbSIamsgeqiHF1neoHs7x3JeenZbMyVhIQvUKxqgoDZYaymFwY7NB16NX45
- OJBDWSoFgIV5xrotdvk5/8VFKf4ykcAVlTmfEcGqA/57aNXItRmV48qUY+Lz1q9NT9Bn
- 2QVk/48FfhKAyho5L3Bw0lGLzbJiXwe8tXaBo44eAXL5vCjwROYjIp7zCQcXh/oQUjng
- YORfmSAda2kvn+K7vkkehu+fnBfaC7ppuOBNhRB9vg31vrHSvcBu6t3FKbTp64c5sUfr
- 0Y1A==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20260707; t=1790605674; x=1791210474;
- h=content-transfer-encoding:content-type:mime-version:message-id:date
- :user-agent:references:in-reply-to:subject:cc:to:from:x-gm-gg
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
- :content-type;
- bh=QLnMYjWC1u10mfgCAHCtME2LwGdqsSld+xN5u2fCvr8=;
- b=V2UMCoP2aXaPUciArYxjeH+6bHcalz2KUwaG+Lzuf3DMXasF8zh8GjBbeAHY5P2QGs
- to5+UGJiaAEFePCmtROTruH8SlZURlzEAW5e7CGBSSO+qJDvPFIbVG/5vy6fb1jK3CbN
- Hr8bJ3gfD9vNeCDXiR1vbiOrEjadaHp34y35CvqeYrt4hfLQjDjIyqOGN8le3IsYGeBr
- wgrWBJK0qjMjy2RfTLD0PFGaUsH6uZ02Zq5ITn2Rxv9M+LTgFG/YZKNs7hODly54YHdi
- bWpApQwaFyOWbB8uQ4NqPlHhXji61lHJUUPAQKAxNn/BHlaMqm+E5NukLHemGtyJj2/E
- Q9zQ==
-X-Forwarded-Encrypted: i=1;
- AKwUvBxaaQsmSZg+Z7ibHwmULOafXqDkVVfN8BPGX09NOuP/cC/DOgZFdzmyZEMQFiZ1J2DilkIUXmhAvw==@nongnu.org
-X-Gm-Message-State: AFuF++k0Eg1GztH3w37WzdQrWC3teO3ZbAEAQDunFoEd+pyS9YQIfrrV
- ese3WtLn4bd+p9w7URgKSWo+6w7f1FxL9Oy3bG+ZhIGI1RNpK49keAbf0CJgV16Qkcg=
-X-Gm-Gg: AYBFou2SNbngSFwc56lrRyJ1kE18uJaiHLHh+/zj8YUhyfC4OSUTO/dY0oMO6ZUU7tT
- R9/njMUsxKNwtktysPk3vi5+RFB1LDHcHYXaWlWBAaLEgdB9VZ9mwwTfzuKKabP7erYR/j3342W
- 8RXzXAw9/gdqW06O0e/azf8ybro0tGhdNDKCLiemZcDx58TxRSMl4umRm4gU7Zl7+8HPaEnZFvm
- IaPdyG0c5dm5yVOSt91ZkerXli5iD63RglWKWA85jsHUOMEfrEjYfwiaW9uoss0h7pOnR5b8305
- lOAy6kW+VPf+YlE4jzG5dSS4Q3qcFuw2z3nbwl+jwMBkypA7BgB6LLLnZK0BG2mwSz9bOsPNP6u
- 4+O9wMSjvY5iSk+o3efh8JlDLIJ6rtHjcc80FgpJm0GKt1q2nD3ZVpioZUTUT3lkrl9HibpVvPd
- wJTf/nxIV6Gd9Tcy/PjTc0kYZnzoLBYrxPZracH0NYWTzeGsFycfApdd09ts3WAqwZVgrl2w==
-X-Received: by 2002:a05:600c:138f:b0:49f:cbf3:551c with SMTP id
- 5b1f17b1804b1-49fe66cc5camr221553275e9.12.1790605673588; 
- Mon, 28 Sep 2026 07:27:53 -0700 (PDT)
-Received: from draig.lan ([185.124.0.156]) by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-4a0018e6dcbsm143688625e9.6.2026.09.28.07.27.52
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 28 Sep 2026 07:27:52 -0700 (PDT)
-Received: from draig (localhost [IPv6:::1])
- by draig.lan (Postfix) with ESMTP id 851055F8C1;
- Mon, 28 Sep 2026 15:27:51 +0100 (BST)
-From: =?utf-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>
-To: Peter Maydell <peter.maydell@linaro.org>
-Cc: qemu-devel@nongnu.org,  "open list:ARM TCG CPUs" <qemu-arm@nongnu.org>
-Subject: Re: [RFC PATCH] target/arm: fix user-mode emulation of
- ID_AA64MMFR0_EL1
-In-Reply-To: <CAFEAcA8DLweguCk7-9prMKraPcYRC_Sf5WD_07Ke9cLi4R9-Zw@mail.gmail.com>
- (Peter Maydell's message of "Mon, 28 Sep 2026 15:02:43 +0100")
-References: <20260921142910.1462880-1-alex.bennee@linaro.org>
- <CAFEAcA8DLweguCk7-9prMKraPcYRC_Sf5WD_07Ke9cLi4R9-Zw@mail.gmail.com>
-User-Agent: mu4e 1.14.4-pre4; emacs 30.1
-Date: Mon, 28 Sep 2026 15:27:51 +0100
-Message-ID: <87mrt1a1so.fsf@draig.linaro.org>
+ (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
+ id 1xBCUe-000668-SR
+ for qemu-arm@nongnu.org; Mon, 28 Sep 2026 10:38:14 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
+ id 1xBCUd-0006sh-4p
+ for qemu-arm@nongnu.org; Mon, 28 Sep 2026 10:38:12 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1790606289;
+ h=from:from:reply-to:reply-to:subject:subject:date:date:
+ message-id:message-id:to:to:cc:cc:mime-version:mime-version:
+ content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=HRoEARxt1LOAlBRMjh7dtiftjocLyio6mFCv66oqEZc=;
+ b=PuLRm67WKMwjFBuzQcl+L70u6qBHvNT/lvgm/gQ1BxXHjjPq0FLQV8mCsyQK7MmuAuDnQG
+ 6PTgOvqqk/kUvatlFvuF/ajoBMkz140RYHAALS4cmNDciCKyr9jvCDycWkXJUpf7n8jlWN
+ i8g/cfd96CRE040TUgjf5TPGNssJM1k=
+Received: from mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
+ relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-13-GGmtSyjpMXSE4Ss8IdUdpg-1; Mon,
+ 28 Sep 2026 10:38:06 -0400
+X-MC-Unique: GGmtSyjpMXSE4Ss8IdUdpg-1
+X-Mimecast-MFC-AGG-ID: GGmtSyjpMXSE4Ss8IdUdpg_1790606284
+Received: from mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com
+ (mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.4])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+ (No client certificate requested)
+ by mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id CEBEB180A217; Mon, 28 Sep 2026 14:38:03 +0000 (UTC)
+Received: from redhat.com (headnet03.pony-001.prod.iad2.dc.redhat.com
+ [10.2.32.114])
+ by mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 81ABA30000E6; Mon, 28 Sep 2026 14:38:00 +0000 (UTC)
+Date: Mon, 28 Sep 2026 15:37:57 +0100
+From: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
+To: Yonggang Luo <luoyonggang@gmail.com>
+Cc: qemu-devel@nongnu.org, Richard Henderson <richard.henderson@linaro.org>,
+ Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@oss.qualcomm.com>,
+ "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
+ Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>,
+ Fabiano Rosas <farosas@suse.de>, Laurent Vivier <lvivier@redhat.com>,
+ Paolo Bonzini <pbonzini@redhat.com>,
+ Alistair Francis <alistair@alistair23.me>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ =?utf-8?Q?Marc-Andr=C3=A9?= Lureau <marcandre.lureau@redhat.com>,
+ qemu-arm@nongnu.org, kvm@vger.kernel.org
+Subject: Re: [PATCH v4 46/55] qapi: add query-targets
+Message-ID: <arp7xUzPHmkgfxLC@redhat.com>
+References: <20260926070057.1234-1-luoyonggang@gmail.com>
+ <20260926070057.1234-47-luoyonggang@gmail.com>
+ <aro93NuZBXYGbD33@redhat.com>
+ <CAE2XoE9AAz8KfJrpErBaZvW5p5COxfE1yveA_AMPwa0j=ghyEA@mail.gmail.com>
 MIME-Version: 1.0
+In-Reply-To: <CAE2XoE9AAz8KfJrpErBaZvW5p5COxfE1yveA_AMPwa0j=ghyEA@mail.gmail.com>
+User-Agent: Mutt/2.4.0 (2026-06-19)
+X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.4
+X-Mimecast-MFC-PROC-ID: 3FccLRPIlSWkp_Dhx-k8OhP_2hAFZzXp5Z8EfQ4T1GY_1790606284
+X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2a00:1450:4864:31::11;
- envelope-from=alex.bennee@linaro.org; helo=mail-wm2-x11.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
+Content-Disposition: inline
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=berrange@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -22
+X-Spam_score: -2.3
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_NONE=0.001,
+X-Spam_report: (-2.3 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.238,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=0.001, SPF_HELO_PASS=-0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -104,39 +98,62 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Reply-To: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Peter Maydell <peter.maydell@linaro.org> writes:
+On Mon, Sep 28, 2026 at 10:24:39PM +0800, Yonggang Luo wrote:
+> On Mon, Sep 28, 2026 at 6:14 PM Daniel P. Berrangé <berrange@redhat.com> wrote:
+> >
+> > I don't think that we need to report machines though.
+> > We already have 'query-machines' which gives much broader
+> > information on the machines. "MachineInfo" needs to
+> > gain
+> >
+> >    "targets": ["SysEmuTarget"]
+> >
+> > to list which target(s) a machine can be used with.
+> >
+> 
+> This is my final design for the query-target / query-targets / query-machines,
+> for consistency and testability.
+> 
+> Per review: reuse `QemuTargetInfo` for both target commands, drop the
+> per-target machine list, and let
+> `MachineInfo` say which target(s) each machine runs on.
+> `QemuTargetInfo` stays small; `query-target` and `query-targets` return a
+> derived struct that adds the target's device and accel Kconfig state.
+> 
+> ## QemuTargetInfo
+> 
+> ```
+> { 'struct': 'QemuTargetInfo',
+>   'data': { 'arch': 'SysEmuTarget' } }  # since 1.2
+> ```
 
-> On Mon, 21 Sept 2026 at 15:29, Alex Benn=C3=A9e <alex.bennee@linaro.org> =
-wrote:
->>
->> Since kernel commit b130a8f70cbbf9 (KVM: arm64: Check advertised
->> Stage-2 page size capability) the relevant Stage 2 have been pegged at
->> 1 f(4KB granule not supported at stage 2) by the kernel. As a result
->> the behaviour of the test differs when run on real HW compared to
->> under emulation:
->>
->>   id_aa64mmfr0_el1    : 0x00000111ff000000
->>     !!extra bits!!    : 0x0000011100000000
->>
->> Update the test with a new helper to explicitly test for fixed bits
->> and update v8_user_idregs to match real systems.
->>
->> Resolves: https://gitlab.com/qemu-project/qemu/-/work_items/4566
->> Signed-off-by: Alex Benn=C3=A9e <alex.bennee@linaro.org>
->
-> Why is this only an RFC? What would you like comments on? :-)
+> ## QemuTargetDetails: QemuTargetInfo plus kconfig
+> 
+> ```
+> { 'struct': 'QemuTargetDetails',
+>   'base': 'QemuTargetInfo',
+>   'data': { 'kconfig': 'any' } }
+> ```
+> 
+> `kconfig` maps every device and accel `CONFIG_*` symbol to whether it
+> is enabled for that target.
 
-skill issue (or possibly my shell history). If your happy to take it
-please do ;-)
+KConfig is an internal implementation detail that should not be exposed
+to management apps as we don't want KConfig to become an ABI we must
+preserve.  QAPI introspection provides feature based information to
+the user. eg instead of querying for "CONFIG_SEV", qom-list-types can
+be queried to look for the 'sev-guest' class.
 
->
-> thanks
-> -- PMM
 
---=20
-Alex Benn=C3=A9e
-Virtualisation Tech Lead @ Linaro
+With regards,
+Daniel
+-- 
+|: https://berrange.com       ~~        https://hachyderm.io/@berrange :|
+|: https://libvirt.org          ~~          https://entangle-photo.org :|
+|: https://pixelfed.art/berrange   ~~    https://fstop138.berrange.com :|
+
 

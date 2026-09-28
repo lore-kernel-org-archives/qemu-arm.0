@@ -4,98 +4,100 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8364FC9833F
-	for <qemu-arm@archiver.kernel.org>; Mon, 28 Sep 2026 11:39:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5A071CA5FA2
+	for <qemu-arm@archiver.kernel.org>; Mon, 28 Sep 2026 11:40:28 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xB9gz-00083H-9s; Mon, 28 Sep 2026 07:38:45 -0400
+	id 1xB9iQ-0000qR-Tn; Mon, 28 Sep 2026 07:40:14 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <luoyonggang@gmail.com>)
- id 1xB9gx-00082w-1Y
- for qemu-arm@nongnu.org; Mon, 28 Sep 2026 07:38:43 -0400
+ id 1xB9iP-0000lK-0b
+ for qemu-arm@nongnu.org; Mon, 28 Sep 2026 07:40:13 -0400
 Received: from mail-ed2-x0d.google.com ([2a00:1450:4864:33::d])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <luoyonggang@gmail.com>)
- id 1xB9gv-0002Wf-0r
- for qemu-arm@nongnu.org; Mon, 28 Sep 2026 07:38:42 -0400
+ id 1xB9iM-0002ny-Mh
+ for qemu-arm@nongnu.org; Mon, 28 Sep 2026 07:40:12 -0400
 Received: by mail-ed2-x0d.google.com with SMTP id
- 4fb4d7f45d1cf-6ac6fa788e6so1548412a12.1
- for <qemu-arm@nongnu.org>; Mon, 28 Sep 2026 04:38:40 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1790595519; cv=none;
+ 4fb4d7f45d1cf-6ac6fa788e6so1550578a12.1
+ for <qemu-arm@nongnu.org>; Mon, 28 Sep 2026 04:40:10 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1790595609; cv=none;
  d=google.com; s=arc-20260327;
- b=Qk3KaSEzAJ4WJr3tzBjFpD1I50bf9mVQJZPcqs8kyUUHWD+7zKTn6cACmWcH+zmE6J
- rhtAVhlV9NiEe+TvpwQHYg+en7mAYgeRvGMj4ArKrUw4y2wToJ8CIGkAFVKTPNyK6MR7
- BnHawqeUraPsA0FT/h8Xhi3KjAWEERuv8xvXmIKUJ8RWWSsi8koA7Blx9XXOJNUEJWLD
- YQOLDp9KVcxAv3pBEKdrjITW2ExwQLZEG6UXGMPziVspxA+9cd/pYzxh0DnuCeFyQTz5
- jE/6bAxwBjn2DvrMpBEQoxOShZqINAKXf5dpMjZEliHYJLXAcN1spW4ugaP5zsqHyVMK
- 398g==
+ b=rwp63AxX6MszIvoRH/ijqqbMnpBwCxe4YdOml4bccrwxDl3T9eehWIHtq2rZkTCEIS
+ s2yO5iDDVfxUJ44ecY7Eg8tqzL19HIlpZGHhHiVeyQDnn5nin3eHRSYFk17QkmN5xksS
+ bPXR+ov8Nm9hoFW4spjOGcyAm/UFHPE6fI5tatYlEb76y2NQHFvf852gMQYqV4ZXKNXQ
+ LY2fZfreh5SnYvyJ0cerysprsQ3KGlfsByHUNTLrEsnKMEEObxSde02eHXlLoA9b1UIq
+ Lw8WKGeOAptGTofQxHbDvwfvB64+o6HsPRm8GNYqec4tP0eNsiY+h5wkytwNxt53+LeT
+ WsHA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
  s=arc-20260327; 
  h=cc:to:subject:message-id:date:from:reply-to:in-reply-to:references
  :mime-version:dkim-signature;
- bh=7qO7jEHwA4OUWrWsQdikFZSTfu7bq8bn+uja9uOUEk8=;
- fh=43/N4pNjzio5TRyb6Bu4TVRIOWKazyepqF35pZviLTU=;
- b=fQ0UjqIAAOojvSX8UKSzA7AsEbNRoKIY7YxH9C6HnpRF9ul10BnRXDAIV5cjps+BkP
- ag9Zqukt8r2bVib+I8FZMn2s8YyHEx0N44Me5pmDTrAT+onLeJBfjB31RL+cWgnxROII
- wGDyz/k+23pvxTq/XkoU4yTVmEnCoc/0RKLzD9VOls/UpsWTbJPtTNjeYUUrrXgAGYJi
- VAroyHr4a8zSyw6AMnZAdZWI5ssC7jC+OPfj8pPniQbBAw6qbu6/B93HHL/rQwtS/j+H
- hdyFaFk5IOyFjs0YtYxPeaSTumlmqsJyhiyXYLH07YwYg5YTBumXClxCQvM1LQ1zN2iG
- p6CQ==; darn=nongnu.org
+ bh=Yd/I30uUe5qAFtDpR8Z+AeNJbut6NgZQLv+o2x3iuR4=;
+ fh=g2BnGd2F6RDXb96x+8kkM/qRPp+nsw3SZcsWXMvxCZQ=;
+ b=LKEscNT/Vkdr71gxjxeN0VzCizi+lhBUqOw+iI2Y1pCmcTYhfxLPSgs26FDXWxwLQq
+ isCVUcs0jBDXC/Dotl6NX7zAgvLFjna7/4M1JEgddzoxszcKuF7IiKyzLCUyj7gBPCzv
+ 6JmyHsYNn+OkRZBOeNzVMPcNeP+OOMF5XQBipaY18Tvw3w7mdwRk2vkWJ3MUImOFTPRt
+ cBCR6sDdCFhIb095eZvRZrJUYTQAWyzpoPYqHz5JCY69fQ0K413F2+UytH/rTJwlc+EZ
+ Sm67KrUXsLEPaXzMqGsWXyRbV9WWJVM1FIt9m21e+Lp6d5+2mBMqN26KpUOBs3+hZO1i
+ V/DQ==; darn=nongnu.org
 ARC-Authentication-Results: i=1; mx.google.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20251104; t=1790595519; x=1791200319; darn=nongnu.org;
+ d=gmail.com; s=20251104; t=1790595609; x=1791200409; darn=nongnu.org;
  h=content-type:cc:to:subject:message-id:date:from:reply-to
  :in-reply-to:references:mime-version:from:to:cc:subject:date
  :message-id:reply-to:content-type;
- bh=7qO7jEHwA4OUWrWsQdikFZSTfu7bq8bn+uja9uOUEk8=;
- b=i3FWuAP/a0/2ItVygvRqd+LJFWkXSKpWqhDrIKGQFbEaPQC4NuYKh3J1HC46Zaepz/
- BtmL2hdnQQGLdvjBfONmJREE8NurLYSXmIiyjbMsvUOaWQ4z1heF9tyb/wXVPVVPP6lZ
- 3CkIbOnn243RzLO/Z1as+YsyjV6CQ7GoCTgUBborIIgqU7nsAXRvDPP3iQO3ep8j99vj
- EdG+cu99gvWSjDLM6KSI8dyrqCpyYoYnkGA9qg2SY0fIuo/8K4cx9mh0oX/tjlSqjhFI
- 9ge2kGH8kG1PoBarcxnd3xp4hf2QxNotZxzoQu+xRC+9ELlc82U9XrZudaIm6gzmMFU9
- zaQA==
+ bh=Yd/I30uUe5qAFtDpR8Z+AeNJbut6NgZQLv+o2x3iuR4=;
+ b=EjgaxtIvAZMRC1fVed1lzhnTVFg5f2cFQt1r6c/r8YU/yuwt9JYSn1x4SwlwzEwKsr
+ D6ILIifNOHnSNfvRw9PG0mxQtajaAVwEwDhOKXtKyRsVYp9XMUTN0l+OsqJ5evdl9Y62
+ CKR70C+WPEYFHLrdeF4kJPMp913GMUK66Nnbs3W1c0i1eUI8g5nhf91rLwhDjsTrNvok
+ eRWSNXZ/opEBryA4p/pgnh5Yvh8cZNiucC0pBG02ih2xVmWlliT47fSBuTU6uFD5li0r
+ eiWMp9dDCXT4NAWm2I9yjCVCzV+CEGlDod7D9nBQL8dtEdxl3w0TCx0MnoZ97t8FOPY9
+ XpHw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20260707; t=1790595519; x=1791200319;
+ d=1e100.net; s=20260707; t=1790595609; x=1791200409;
  h=content-type:cc:to:subject:message-id:date:from:reply-to
  :in-reply-to:references:mime-version:x-gm-gg:x-gm-message-state:from
  :to:cc:subject:date:message-id:reply-to:content-type;
- bh=7qO7jEHwA4OUWrWsQdikFZSTfu7bq8bn+uja9uOUEk8=;
- b=pswFHkF23X4dtRtUOhr0pLhKUQhtvSq4M/k70YbBwmUv3bUNXPwyRH5lbyjFza+08Y
- IctCxTF2wMiQGBcm4VNZxHy9tftbHApeFYykf/OouLXFD2vEIy4u+4kmQ37IWrjVYJhQ
- Pfg8Hot+WXZX6nXoWKlgXWODTYJWlZe2op6LB4ntE+4PVdGT/Yvn2OGaxecEyKVxINJg
- 118Iq8BfC4JuK0aR5UvRToo1hQxqXMV1WeLoCHif6j5/Rv2Ywey8NiA7vO0NIYXjEuND
- epGyiCL/LuBCeDmPVX7EbzLaIygLf4LbAikOwLXexMsdR6jEOGhF21TuLBRlPUmefJUH
- NCSQ==
+ bh=Yd/I30uUe5qAFtDpR8Z+AeNJbut6NgZQLv+o2x3iuR4=;
+ b=wHApqsNyBVmEhRJRX7t0v4h8ViZ0ilXNAIs6VssaVv2j3VSG4tK50NoYdgz6mzwjww
+ wTPDtD6no9Ok7ALw0dXkmQvsjJqG9s1/d1DN5RtSrMjI27v7F1mzUNqOBdqe3Wty726g
+ uQXNoLymligiXdRAwLm6qClOTlDsN9ysIKdOKDjS2hGXOVt+pbLbaDOxC8d2viD2i7AV
+ HKbgjWVMSLQ3vSlNcEHhECB77U8bzS42qP9HWVLA5gHtqMs7l2zp1RJfPcxR6gX49lEj
+ yrxc9418IaHrPAFNhAbjx269uODiX1u/5XVe3mMXKuvkT8RxwyVOmgem716fvVVrAkGm
+ uenQ==
 X-Forwarded-Encrypted: i=1;
- AKwUvBxtpelHJrVHQeGDWt1l4QeZZshZKMh+35bAdLXBB1OKjQ2I/oUd7SkAuDKhVqOFUhMs/xAiMhEkeg==@nongnu.org
-X-Gm-Message-State: AFq9FYLVrG0/pqOnKQKVH8DkAs2NSjXEsTknHMcMsXMT/quUpxMCcez0
- RQYXQAR7zuP5AbNNVHuXsQ2xTVNiYH+gkhZxjJKxc2dqImHy1UaGYy9fL/c6D/cjceu/ctflKKR
- QQ0nYaoVyuIVSsDZKNg5F5un4lyy6218=
-X-Gm-Gg: AYBFou1+1GT6hhTOPJKs4yWZNhgyEuiyeOGvZR0ZqV+cSUF09iSpoGWI1qEoBOIuKlw
- JH7EMCw9R0uLH5uuW6JZ6EipSOdWmVi6ofo4ZLUyHxhSg38MA8mNiy8BRh32Xn5Rs86XMeg67Da
- cdETGbnbmVMp4hYaVPnV2s/1upJMc4QoP0IRoYz0b9I88aQzuzu0UpExgPlcnHGH1LT+VtMkxhG
- UzFgcxht9hcboinmu6CFSDJ+0IL+YuJI3K905OBvPcftUi6M7j8OEsf20vldLHIfdZnrkD+9gfd
- UhVBWETq/qncr90/ZjFxDJKMfEC2o4PZaiWapeC40ZSOYOOv6Gl+tdI=
-X-Received: by 2002:a05:6402:2318:b0:6aa:e729:423 with SMTP id
- 4fb4d7f45d1cf-6aae7290ad1mr5016298a12.26.1790595518845; Mon, 28 Sep 2026
- 04:38:38 -0700 (PDT)
+ AKwUvByZ46rANbFxhf7x36cerB3SC/DZxyouP/YOZuWkdFAM/d4XDarpxssQF1QPIc+QYon4V1jY8+VWNw==@nongnu.org
+X-Gm-Message-State: AFq9FYIiazX72F9afD9JBj51t+mJaTx81oFUpJCp0e4KKkey0y8wk8aw
+ uruGRGJTDRocuSitY8XfgxjIpP/bTthbOI4vwuFMc7tR7Xu/u+gOJqHmTuRvIXBnrY/ZM2B2W4n
+ XTGG8SDnE4U+MU3/LiTOcasjmQTAUPL4=
+X-Gm-Gg: AYBFou2x8E9EtKeWN4MzRnP1cn7zYEVCXPCclbT8wswHHMn+BPZV4Iscp32Ih+mYwMS
+ M0zShLMd5OtH/iM6HKPQ6dwoBJg6NzTE9CTN93wRtt98oLOsFYz+ieaqwdTe5ONXgxISb2stxm+
+ yFEMWdKnEYEOy8X3x0ktMmdU3XFZPajihDrn70wTYDK25ogrTY7F+yjATaCJFKqQkKjqGupeKv+
+ RcVSXsKf8c2B7yKvcfIgPAXJyPhQbg8fouSUhnBn/mQR9T8+eQP2uGxT5V3v5B1IqNoI0BUgU3m
+ dMR4MDRJzXtC/c/kIp4swDPrvczfYv4wJjgRn6C5+Z2qEjjDkK04Z3A=
+X-Received: by 2002:a05:6402:4409:b0:6aa:f77e:594e with SMTP id
+ 4fb4d7f45d1cf-6aaf77e5effmr6280536a12.23.1790595608892; Mon, 28 Sep 2026
+ 04:40:08 -0700 (PDT)
 MIME-Version: 1.0
 References: <20260926070057.1234-1-luoyonggang@gmail.com>
  <20260926070057.1234-47-luoyonggang@gmail.com>
  <aro93NuZBXYGbD33@redhat.com>
  <87e7c5ae-c78c-4a47-b9ba-9851ce5757d9@oss.qualcomm.com>
  <CAE2XoE9qsZZ+AnfGQ797SQj5yXP8SDOZyxYoKP=oh57UPFqq0Q@mail.gmail.com>
- <a4b7056e-1651-4167-86e0-e7eaa3941d02@oss.qualcomm.com>
-In-Reply-To: <a4b7056e-1651-4167-86e0-e7eaa3941d02@oss.qualcomm.com>
+ <arpH_2anGV-JU12e@redhat.com>
+ <4da49cb4-6044-418e-b003-81c4ec6d6ed6@oss.qualcomm.com>
+ <arpRR7cH6nBN5FwD@redhat.com>
+In-Reply-To: <arpRR7cH6nBN5FwD@redhat.com>
 From: Yonggang Luo <luoyonggang@gmail.com>
-Date: Mon, 28 Sep 2026 19:38:26 +0800
-X-Gm-Features: AclHuK_XhGMu1KY8MUrPqLq8CsGd4GT9s4oLjix7cR9RGNVYEmbplzAsJP0a5Vs
-Message-ID: <CAE2XoE8BD6V0jeAVWeZ4e_ftgqeKBsW4P5P_UX0T0AjA4MWP0Q@mail.gmail.com>
+Date: Mon, 28 Sep 2026 19:39:55 +0800
+X-Gm-Features: AclHuK9vkqzvcduTgmC_8lFwawSzwQ4X2k_htIPV_FkKvX4khGcKbxI_oPkXE4I
+Message-ID: <CAE2XoE9GZ01dysW_pPhrkZ20qzoQiTcKuQEAVuss4HTN6pTsdA@mail.gmail.com>
 Subject: Re: [PATCH v4 46/55] qapi: add query-targets
-To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@oss.qualcomm.com>
-Cc: =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>, 
+To: =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>
+Cc: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@oss.qualcomm.com>, 
  qemu-devel@nongnu.org, Richard Henderson <richard.henderson@linaro.org>, 
  "Edgar E. Iglesias" <edgar.iglesias@gmail.com>, 
  Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>,
@@ -105,7 +107,7 @@ Cc: =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>,
  Peter Maydell <peter.maydell@linaro.org>, 
  =?UTF-8?B?TWFyYy1BbmRyw6kgTHVyZWF1?= <marcandre.lureau@redhat.com>, 
  qemu-arm@nongnu.org, kvm@vger.kernel.org, Thomas Huth <thuth@redhat.com>
-Content-Type: multipart/alternative; boundary="000000000000d657be065c898119"
+Content-Type: multipart/alternative; boundary="0000000000003458e3065c898710"
 Received-SPF: pass client-ip=2a00:1450:4864:33::d;
  envelope-from=luoyonggang@gmail.com; helo=mail-ed2-x0d.google.com
 X-Spam_score_int: -20
@@ -131,91 +133,112 @@ Reply-To: luoyonggang@gmail.com
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
---000000000000d657be065c898119
+--0000000000003458e3065c898710
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 
-On Mon, Sep 28, 2026 at 7:34=E2=80=AFPM Philippe Mathieu-Daud=C3=A9 <
-philmd@oss.qualcomm.com> wrote:
+On Mon, Sep 28, 2026 at 7:36=E2=80=AFPM Daniel P. Berrang=C3=A9 <berrange@r=
+edhat.com>
+wrote:
 >
-> On 28/9/26 12:51, Yonggang Luo wrote:
-> > On Mon, Sep 28, 2026 at 6:39=E2=80=AFPM Philippe Mathieu-Daud=C3=A9 <
-> > philmd@oss.qualcomm.com> wrote:
-> >>
-> >> On 28/9/26 12:13, Daniel P. Berrang=C3=83=C2=A9 wrote:
-> >>> On Sat, Sep 26, 2026 at 03:00:45PM +0800, Yonggang Luo wrote:
-> >>>> query-targets lists each linked target, including none, with its
-> >>>> arch, endianness, and the machines that target accepts.
-> >>>>
-> >>>> Signed-off-by: Yonggang Luo <luoyonggang@gmail.com>
-> >>>> ---
-> >>>>    hw/core/machine-qmp-cmds.c | 30 ++++++++++++++++++++++++++++++
-> >>>>    qapi/machine.json          | 35
+> On Mon, Sep 28, 2026 at 01:29:26PM +0200, Philippe Mathieu-Daud=C3=A9 wro=
+te:
+> > On 28/9/26 12:57, Daniel P. Berrang=C3=83=C2=A9 wrote:
+> > > On Mon, Sep 28, 2026 at 06:51:41PM +0800, Yonggang Luo wrote:
+> > > > On Mon, Sep 28, 2026 at 6:39=E2=80=AFPM Philippe Mathieu-Daud=C3=A9=
+ <
+> > > > philmd@oss.qualcomm.com> wrote:
+> > > > >
+> > > > > On 28/9/26 12:13, Daniel P. Berrang=C3=83=C2=A9 wrote:
+> > > > > > On Sat, Sep 26, 2026 at 03:00:45PM +0800, Yonggang Luo wrote:
+> > > > > > > query-targets lists each linked target, including none, with
+its
+> > > > > > > arch, endianness, and the machines that target accepts.
+> > > > > > >
+> > > > > > > Signed-off-by: Yonggang Luo <luoyonggang@gmail.com>
+> > > > > > > ---
+> > > > > > >    hw/core/machine-qmp-cmds.c | 30
+++++++++++++++++++++++++++++++
+> > > > > > >    qapi/machine.json          | 35
 +++++++++++++++++++++++++++++++++++
-> >>>>    2 files changed, 65 insertions(+)
-> >>>
-> >>>
-> >>>> diff --git a/qapi/machine.json b/qapi/machine.json
-> >>>> index 6aaa2af709a..d8cdea6203e 100644
-> >>>> --- a/qapi/machine.json
-> >>>> +++ b/qapi/machine.json
-> >>>> @@ -307,6 +307,41 @@
-> >>>>    ##
-> >>>>    { 'command': 'query-target', 'returns': 'QemuTargetInfo' }
-> >>>>
-> >>>> +##
-> >>>> +# @TargetMachines:
-> >>>> +#
-> >>>> +# One registered system target and the machines that can run on it.
-> >>>> +#
-> >>>> +# @arch: the target architecture
-> >>>> +#
-> >>>> +# @endianness: the target endianness
-> >>>> +#
-> >>>> +# @machines: machine type names, not aliases
-> >>>> +#
-> >>>> +# Since: 11.2
-> >>>> +##
-> >>>> +{ 'struct': 'TargetMachines',
-> >>>> +  'data': { 'arch': 'SysEmuTarget',
-> >>>> +            'endianness': 'EndianMode',
-> >>>> +            'machines': ['str'] } }
-> >>>
-> >>> We already have  'QemuTargetInfo' struct which is used
-> >>> with 'query-target', that should also be used with the
-> >>> new 'query-targets' command.
-> >>>
-> >>> We need to add the 'endianness' field to QemuTargetInfo.
-> >>
-> >> Why do we want to expose endianness, and what endianness to
-> >> expose? Endianness is a runtime bit state of CPUs. Sometime
-> >> this bit is hardwired but that is an implementation detail.
+> > > > > > >    2 files changed, 65 insertions(+)
+> > > > > >
+> > > > > >
+> > > > > > > diff --git a/qapi/machine.json b/qapi/machine.json
+> > > > > > > index 6aaa2af709a..d8cdea6203e 100644
+> > > > > > > --- a/qapi/machine.json
+> > > > > > > +++ b/qapi/machine.json
+> > > > > > > @@ -307,6 +307,41 @@
+> > > > > > >    ##
+> > > > > > >    { 'command': 'query-target', 'returns': 'QemuTargetInfo' }
+> > > > > > >
+> > > > > > > +##
+> > > > > > > +# @TargetMachines:
+> > > > > > > +#
+> > > > > > > +# One registered system target and the machines that can run
+on it.
+> > > > > > > +#
+> > > > > > > +# @arch: the target architecture
+> > > > > > > +#
+> > > > > > > +# @endianness: the target endianness
+> > > > > > > +#
+> > > > > > > +# @machines: machine type names, not aliases
+> > > > > > > +#
+> > > > > > > +# Since: 11.2
+> > > > > > > +##
+> > > > > > > +{ 'struct': 'TargetMachines',
+> > > > > > > +  'data': { 'arch': 'SysEmuTarget',
+> > > > > > > +            'endianness': 'EndianMode',
+> > > > > > > +            'machines': ['str'] } }
+> > > > > >
+> > > > > > We already have  'QemuTargetInfo' struct which is used
+> > > > > > with 'query-target', that should also be used with the
+> > > > > > new 'query-targets' command.
+> > > > > >
+> > > > > > We need to add the 'endianness' field to QemuTargetInfo.
+> > > > >
+> > > > > Why do we want to expose endianness, and what endianness to
+> > > > > expose? Endianness is a runtime bit state of CPUs. Sometime
+> > > > > this bit is hardwired but that is an implementation detail.
+> > > >
+> > > > For some targets it's, but for some targets it's not. for example
+> > > >
+> > > > mips-softmmu.mak
+> > > > mipsel-softmmu.mak
+> > > > mips64el-softmmu.mak
+> > > > mips64-softmmu.mak
+> > > >
+> > > >
+> > > > mips64el-softmmu.mak
+> > > > mips64-softmmu.mak
+> > > > only differ the endianless
+> > >
+> > > "EndianMode" is a tri-state including 'unspecified' as a value,
+> > > so we can cope with both scenarios - the targets where endianness
+> > > is runtime switchable in the CPU can use 'unspecified' as the
+> > > EndianMode. That behaviour should be documented in the QAPI
+> > > docs for QemuTargetInfo
 > >
-> > For some targets it's, but for some targets it's not. for example
-> >
-> > mips-softmmu.mak
-> > mipsel-softmmu.mak
-> > mips64el-softmmu.mak
-> > mips64-softmmu.mak
-> >
-> >
-> > mips64el-softmmu.mak
-> > mips64-softmmu.mak
-> > only differ the endianless
-> If you look at git / mailing list history you'll see I spent more
-> than a year unifying QEMU endianness. It was too much work for a
-> single person so we decided to reduce the scope to ARM + MicroBlaze
-> for single binary and we got MicroBlaze unified. We don't want
-> an endianness-specific single binary. I'm not sure what you are
-> trying to build, you didn't clearly explained what is your goal here.
+> > OK but still I don't understand the usefulness of exposing that
+> > at the machine level, since this is a CPU property.
 >
-> You can find series unifying endianness for MIPS, not merged because
-> more things need to be addressed and not the priority.
+> True, and exposing this does not look like a pre-requisite for
+> having a single binary. It will be better if we can focus on
+> just what is neccessary to get the basics working initially.
 
-It's only for testing. if we can not uniquely identify a target, then the
-testing program won't work properly.
-if  endianness  needs to be removed in future, let's defer that?
 
+Yeap, for these two targets, the endianness is not needed yet. I'll try to
+strip it.
+
+>
+>
+> With regards,
+> Daniel
+> --
+> |: https://berrange.com       ~~        https://hachyderm.io/@berrange :|
+> |: https://libvirt.org          ~~          https://entangle-photo.org :|
+> |: https://pixelfed.art/berrange   ~~    https://fstop138.berrange.com :|
+>
 
 
 --
@@ -226,73 +249,95 @@ Yours
     sincerely,
 Yonggang Luo
 
---000000000000d657be065c898119
+--0000000000003458e3065c898710
 Content-Type: text/html; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 
-<div dir=3D"ltr"><br><br>On Mon, Sep 28, 2026 at 7:34=E2=80=AFPM Philippe M=
-athieu-Daud=C3=A9 &lt;<a href=3D"mailto:philmd@oss.qualcomm.com">philmd@oss=
-.qualcomm.com</a>&gt; wrote:<br>&gt;<br>&gt; On 28/9/26 12:51, Yonggang Luo=
- wrote:<br>&gt; &gt; On Mon, Sep 28, 2026 at 6:39=E2=80=AFPM Philippe Mathi=
-eu-Daud=C3=A9 &lt;<br>&gt; &gt; <a href=3D"mailto:philmd@oss.qualcomm.com">=
-philmd@oss.qualcomm.com</a>&gt; wrote:<br>&gt; &gt;&gt;<br>&gt; &gt;&gt; On=
- 28/9/26 12:13, Daniel P. Berrang=C3=83=C2=A9 wrote:<br>&gt; &gt;&gt;&gt; O=
-n Sat, Sep 26, 2026 at 03:00:45PM +0800, Yonggang Luo wrote:<br>&gt; &gt;&g=
-t;&gt;&gt; query-targets lists each linked target, including none, with its=
-<br>&gt; &gt;&gt;&gt;&gt; arch, endianness, and the machines that target ac=
-cepts.<br>&gt; &gt;&gt;&gt;&gt;<br>&gt; &gt;&gt;&gt;&gt; Signed-off-by: Yon=
-ggang Luo &lt;<a href=3D"mailto:luoyonggang@gmail.com">luoyonggang@gmail.co=
-m</a>&gt;<br>&gt; &gt;&gt;&gt;&gt; ---<br>&gt; &gt;&gt;&gt;&gt; =C2=A0 =C2=
-=A0hw/core/machine-qmp-cmds.c | 30 ++++++++++++++++++++++++++++++<br>&gt; &=
-gt;&gt;&gt;&gt; =C2=A0 =C2=A0qapi/machine.json =C2=A0 =C2=A0 =C2=A0 =C2=A0 =
-=C2=A0| 35 +++++++++++++++++++++++++++++++++++<br>&gt; &gt;&gt;&gt;&gt; =C2=
-=A0 =C2=A02 files changed, 65 insertions(+)<br>&gt; &gt;&gt;&gt;<br>&gt; &g=
-t;&gt;&gt;<br>&gt; &gt;&gt;&gt;&gt; diff --git a/qapi/machine.json b/qapi/m=
-achine.json<br>&gt; &gt;&gt;&gt;&gt; index 6aaa2af709a..d8cdea6203e 100644<=
-br>&gt; &gt;&gt;&gt;&gt; --- a/qapi/machine.json<br>&gt; &gt;&gt;&gt;&gt; +=
-++ b/qapi/machine.json<br>&gt; &gt;&gt;&gt;&gt; @@ -307,6 +307,41 @@<br>&gt=
-; &gt;&gt;&gt;&gt; =C2=A0 =C2=A0##<br>&gt; &gt;&gt;&gt;&gt; =C2=A0 =C2=A0{ =
-&#39;command&#39;: &#39;query-target&#39;, &#39;returns&#39;: &#39;QemuTarg=
-etInfo&#39; }<br>&gt; &gt;&gt;&gt;&gt;<br>&gt; &gt;&gt;&gt;&gt; +##<br>&gt;=
- &gt;&gt;&gt;&gt; +# @TargetMachines:<br>&gt; &gt;&gt;&gt;&gt; +#<br>&gt; &=
-gt;&gt;&gt;&gt; +# One registered system target and the machines that can r=
-un on it.<br>&gt; &gt;&gt;&gt;&gt; +#<br>&gt; &gt;&gt;&gt;&gt; +# @arch: th=
-e target architecture<br>&gt; &gt;&gt;&gt;&gt; +#<br>&gt; &gt;&gt;&gt;&gt; =
-+# @endianness: the target endianness<br>&gt; &gt;&gt;&gt;&gt; +#<br>&gt; &=
-gt;&gt;&gt;&gt; +# @machines: machine type names, not aliases<br>&gt; &gt;&=
-gt;&gt;&gt; +#<br>&gt; &gt;&gt;&gt;&gt; +# Since: 11.2<br>&gt; &gt;&gt;&gt;=
-&gt; +##<br>&gt; &gt;&gt;&gt;&gt; +{ &#39;struct&#39;: &#39;TargetMachines&=
-#39;,<br>&gt; &gt;&gt;&gt;&gt; + =C2=A0&#39;data&#39;: { &#39;arch&#39;: &#=
-39;SysEmuTarget&#39;,<br>&gt; &gt;&gt;&gt;&gt; + =C2=A0 =C2=A0 =C2=A0 =C2=
-=A0 =C2=A0 =C2=A0&#39;endianness&#39;: &#39;EndianMode&#39;,<br>&gt; &gt;&g=
-t;&gt;&gt; + =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0&#39;machines&#39;: [=
-&#39;str&#39;] } }<br>&gt; &gt;&gt;&gt;<br>&gt; &gt;&gt;&gt; We already hav=
-e =C2=A0&#39;QemuTargetInfo&#39; struct which is used<br>&gt; &gt;&gt;&gt; =
-with &#39;query-target&#39;, that should also be used with the<br>&gt; &gt;=
-&gt;&gt; new &#39;query-targets&#39; command.<br>&gt; &gt;&gt;&gt;<br>&gt; =
-&gt;&gt;&gt; We need to add the &#39;endianness&#39; field to QemuTargetInf=
-o.<br>&gt; &gt;&gt;<br>&gt; &gt;&gt; Why do we want to expose endianness, a=
-nd what endianness to<br>&gt; &gt;&gt; expose? Endianness is a runtime bit =
-state of CPUs. Sometime<br>&gt; &gt;&gt; this bit is hardwired but that is =
-an implementation detail.<br>&gt; &gt;<br>&gt; &gt; For some targets it&#39=
-;s, but for some targets it&#39;s not. for example<br>&gt; &gt;<br>&gt; &gt=
-; mips-softmmu.mak<br>&gt; &gt; mipsel-softmmu.mak<br>&gt; &gt; mips64el-so=
-ftmmu.mak<br>&gt; &gt; mips64-softmmu.mak<br>&gt; &gt;<br>&gt; &gt;<br>&gt;=
- &gt; mips64el-softmmu.mak<br>&gt; &gt; mips64-softmmu.mak<br>&gt; &gt; onl=
-y differ the endianless<br>&gt; If you look at git / mailing list history y=
-ou&#39;ll see I spent more<br>&gt; than a year unifying QEMU endianness. It=
- was too much work for a<br>&gt; single person so we decided to reduce the =
-scope to ARM + MicroBlaze<br>&gt; for single binary and we got MicroBlaze u=
-nified. We don&#39;t want<br>&gt; an endianness-specific single binary. I&#=
-39;m not sure what you are<br>&gt; trying to build, you didn&#39;t clearly =
-explained what is your goal here.<br>&gt;<br>&gt; You can find series unify=
-ing endianness for MIPS, not merged because<br>&gt; more things need to be =
-addressed and not the priority.<br><br>It&#39;s only for testing. if we can=
- not uniquely identify a target, then the testing program won&#39;t work pr=
-operly.<br>if =C2=A0endianness =C2=A0needs to be removed in future, let&#39=
-;s defer that?<br><br><br><br>--<br>=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=E6=
-=AD=A4=E8=87=B4<br>=E7=A4=BC<br>=E7=BD=97=E5=8B=87=E5=88=9A<br>Yours<br>=C2=
-=A0 =C2=A0 sincerely,<br>Yonggang Luo</div>
+<div dir=3D"ltr"><br><br>On Mon, Sep 28, 2026 at 7:36=E2=80=AFPM Daniel P. =
+Berrang=C3=A9 &lt;<a href=3D"mailto:berrange@redhat.com">berrange@redhat.co=
+m</a>&gt; wrote:<br>&gt;<br>&gt; On Mon, Sep 28, 2026 at 01:29:26PM +0200, =
+Philippe Mathieu-Daud=C3=A9 wrote:<br>&gt; &gt; On 28/9/26 12:57, Daniel P.=
+ Berrang=C3=83=C2=A9 wrote:<br>&gt; &gt; &gt; On Mon, Sep 28, 2026 at 06:51=
+:41PM +0800, Yonggang Luo wrote:<br>&gt; &gt; &gt; &gt; On Mon, Sep 28, 202=
+6 at 6:39=E2=80=AFPM Philippe Mathieu-Daud=C3=A9 &lt;<br>&gt; &gt; &gt; &gt=
+; <a href=3D"mailto:philmd@oss.qualcomm.com">philmd@oss.qualcomm.com</a>&gt=
+; wrote:<br>&gt; &gt; &gt; &gt; &gt;<br>&gt; &gt; &gt; &gt; &gt; On 28/9/26=
+ 12:13, Daniel P. Berrang=C3=83=C2=A9 wrote:<br>&gt; &gt; &gt; &gt; &gt; &g=
+t; On Sat, Sep 26, 2026 at 03:00:45PM +0800, Yonggang Luo wrote:<br>&gt; &g=
+t; &gt; &gt; &gt; &gt; &gt; query-targets lists each linked target, includi=
+ng none, with its<br>&gt; &gt; &gt; &gt; &gt; &gt; &gt; arch, endianness, a=
+nd the machines that target accepts.<br>&gt; &gt; &gt; &gt; &gt; &gt; &gt;<=
+br>&gt; &gt; &gt; &gt; &gt; &gt; &gt; Signed-off-by: Yonggang Luo &lt;<a hr=
+ef=3D"mailto:luoyonggang@gmail.com">luoyonggang@gmail.com</a>&gt;<br>&gt; &=
+gt; &gt; &gt; &gt; &gt; &gt; ---<br>&gt; &gt; &gt; &gt; &gt; &gt; &gt; =C2=
+=A0 =C2=A0hw/core/machine-qmp-cmds.c | 30 ++++++++++++++++++++++++++++++<br=
+>&gt; &gt; &gt; &gt; &gt; &gt; &gt; =C2=A0 =C2=A0qapi/machine.json =C2=A0 =
+=C2=A0 =C2=A0 =C2=A0 =C2=A0| 35 +++++++++++++++++++++++++++++++++++<br>&gt;=
+ &gt; &gt; &gt; &gt; &gt; &gt; =C2=A0 =C2=A02 files changed, 65 insertions(=
++)<br>&gt; &gt; &gt; &gt; &gt; &gt;<br>&gt; &gt; &gt; &gt; &gt; &gt;<br>&gt=
+; &gt; &gt; &gt; &gt; &gt; &gt; diff --git a/qapi/machine.json b/qapi/machi=
+ne.json<br>&gt; &gt; &gt; &gt; &gt; &gt; &gt; index 6aaa2af709a..d8cdea6203=
+e 100644<br>&gt; &gt; &gt; &gt; &gt; &gt; &gt; --- a/qapi/machine.json<br>&=
+gt; &gt; &gt; &gt; &gt; &gt; &gt; +++ b/qapi/machine.json<br>&gt; &gt; &gt;=
+ &gt; &gt; &gt; &gt; @@ -307,6 +307,41 @@<br>&gt; &gt; &gt; &gt; &gt; &gt; =
+&gt; =C2=A0 =C2=A0##<br>&gt; &gt; &gt; &gt; &gt; &gt; &gt; =C2=A0 =C2=A0{ &=
+#39;command&#39;: &#39;query-target&#39;, &#39;returns&#39;: &#39;QemuTarge=
+tInfo&#39; }<br>&gt; &gt; &gt; &gt; &gt; &gt; &gt;<br>&gt; &gt; &gt; &gt; &=
+gt; &gt; &gt; +##<br>&gt; &gt; &gt; &gt; &gt; &gt; &gt; +# @TargetMachines:=
+<br>&gt; &gt; &gt; &gt; &gt; &gt; &gt; +#<br>&gt; &gt; &gt; &gt; &gt; &gt; =
+&gt; +# One registered system target and the machines that can run on it.<b=
+r>&gt; &gt; &gt; &gt; &gt; &gt; &gt; +#<br>&gt; &gt; &gt; &gt; &gt; &gt; &g=
+t; +# @arch: the target architecture<br>&gt; &gt; &gt; &gt; &gt; &gt; &gt; =
++#<br>&gt; &gt; &gt; &gt; &gt; &gt; &gt; +# @endianness: the target endiann=
+ess<br>&gt; &gt; &gt; &gt; &gt; &gt; &gt; +#<br>&gt; &gt; &gt; &gt; &gt; &g=
+t; &gt; +# @machines: machine type names, not aliases<br>&gt; &gt; &gt; &gt=
+; &gt; &gt; &gt; +#<br>&gt; &gt; &gt; &gt; &gt; &gt; &gt; +# Since: 11.2<br=
+>&gt; &gt; &gt; &gt; &gt; &gt; &gt; +##<br>&gt; &gt; &gt; &gt; &gt; &gt; &g=
+t; +{ &#39;struct&#39;: &#39;TargetMachines&#39;,<br>&gt; &gt; &gt; &gt; &g=
+t; &gt; &gt; + =C2=A0&#39;data&#39;: { &#39;arch&#39;: &#39;SysEmuTarget&#3=
+9;,<br>&gt; &gt; &gt; &gt; &gt; &gt; &gt; + =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0&#39;endianness&#39;: &#39;EndianMode&#39;,<br>&gt; &gt; &gt; &gt=
+; &gt; &gt; &gt; + =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0&#39;machines&#=
+39;: [&#39;str&#39;] } }<br>&gt; &gt; &gt; &gt; &gt; &gt;<br>&gt; &gt; &gt;=
+ &gt; &gt; &gt; We already have =C2=A0&#39;QemuTargetInfo&#39; struct which=
+ is used<br>&gt; &gt; &gt; &gt; &gt; &gt; with &#39;query-target&#39;, that=
+ should also be used with the<br>&gt; &gt; &gt; &gt; &gt; &gt; new &#39;que=
+ry-targets&#39; command.<br>&gt; &gt; &gt; &gt; &gt; &gt;<br>&gt; &gt; &gt;=
+ &gt; &gt; &gt; We need to add the &#39;endianness&#39; field to QemuTarget=
+Info.<br>&gt; &gt; &gt; &gt; &gt;<br>&gt; &gt; &gt; &gt; &gt; Why do we wan=
+t to expose endianness, and what endianness to<br>&gt; &gt; &gt; &gt; &gt; =
+expose? Endianness is a runtime bit state of CPUs. Sometime<br>&gt; &gt; &g=
+t; &gt; &gt; this bit is hardwired but that is an implementation detail.<br=
+>&gt; &gt; &gt; &gt;<br>&gt; &gt; &gt; &gt; For some targets it&#39;s, but =
+for some targets it&#39;s not. for example<br>&gt; &gt; &gt; &gt;<br>&gt; &=
+gt; &gt; &gt; mips-softmmu.mak<br>&gt; &gt; &gt; &gt; mipsel-softmmu.mak<br=
+>&gt; &gt; &gt; &gt; mips64el-softmmu.mak<br>&gt; &gt; &gt; &gt; mips64-sof=
+tmmu.mak<br>&gt; &gt; &gt; &gt;<br>&gt; &gt; &gt; &gt;<br>&gt; &gt; &gt; &g=
+t; mips64el-softmmu.mak<br>&gt; &gt; &gt; &gt; mips64-softmmu.mak<br>&gt; &=
+gt; &gt; &gt; only differ the endianless<br>&gt; &gt; &gt;<br>&gt; &gt; &gt=
+; &quot;EndianMode&quot; is a tri-state including &#39;unspecified&#39; as =
+a value,<br>&gt; &gt; &gt; so we can cope with both scenarios - the targets=
+ where endianness<br>&gt; &gt; &gt; is runtime switchable in the CPU can us=
+e &#39;unspecified&#39; as the<br>&gt; &gt; &gt; EndianMode. That behaviour=
+ should be documented in the QAPI<br>&gt; &gt; &gt; docs for QemuTargetInfo=
+<br>&gt; &gt;<br>&gt; &gt; OK but still I don&#39;t understand the usefulne=
+ss of exposing that<br>&gt; &gt; at the machine level, since this is a CPU =
+property.<br>&gt;<br>&gt; True, and exposing this does not look like a pre-=
+requisite for<br>&gt; having a single binary. It will be better if we can f=
+ocus on<br>&gt; just what is neccessary to get the basics working initially=
+.<br><br><br>Yeap, for these two targets, the endianness is not needed yet.=
+ I&#39;ll try to strip it.<br><br>&gt;<br>&gt;<br>&gt; With regards,<br>&gt=
+; Daniel<br>&gt; --<br>&gt; |: <a href=3D"https://berrange.com">https://ber=
+range.com</a> =C2=A0 =C2=A0 =C2=A0 ~~ =C2=A0 =C2=A0 =C2=A0 =C2=A0<a href=3D=
+"https://hachyderm.io/@berrange">https://hachyderm.io/@berrange</a> :|<br>&=
+gt; |: <a href=3D"https://libvirt.org">https://libvirt.org</a> =C2=A0 =C2=
+=A0 =C2=A0 =C2=A0 =C2=A0~~ =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0<a href=3D"htt=
+ps://entangle-photo.org">https://entangle-photo.org</a> :|<br>&gt; |: <a hr=
+ef=3D"https://pixelfed.art/berrange">https://pixelfed.art/berrange</a> =C2=
+=A0 ~~ =C2=A0 =C2=A0<a href=3D"https://fstop138.berrange.com">https://fstop=
+138.berrange.com</a> :|<br>&gt;<br><br><br>--<br>=C2=A0 =C2=A0 =C2=A0 =C2=
+=A0 =C2=A0=E6=AD=A4=E8=87=B4<br>=E7=A4=BC<br>=E7=BD=97=E5=8B=87=E5=88=9A<br=
+>Yours<br>=C2=A0 =C2=A0 sincerely,<br>Yonggang Luo</div>
 
---000000000000d657be065c898119--
+--0000000000003458e3065c898710--
 

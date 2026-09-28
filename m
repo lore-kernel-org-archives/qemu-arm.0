@@ -4,107 +4,84 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DA000C9832F
-	for <qemu-arm@archiver.kernel.org>; Mon, 28 Sep 2026 07:30:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E58B6C9832F
+	for <qemu-arm@archiver.kernel.org>; Mon, 28 Sep 2026 09:07:51 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xB5od-0002n8-ST; Mon, 28 Sep 2026 03:30:25 -0400
+	id 1xB7KR-0002Mg-GX; Mon, 28 Sep 2026 05:07:19 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <ruslichenko.r@gmail.com>)
- id 1xB5oW-0002me-Rz
- for qemu-arm@nongnu.org; Mon, 28 Sep 2026 03:30:17 -0400
-Received: from mail-oa2-x10.google.com ([2607:f8b0:4864:30::10])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <ruslichenko.r@gmail.com>)
- id 1xB5oU-0003tw-2f
- for qemu-arm@nongnu.org; Mon, 28 Sep 2026 03:30:16 -0400
-Received: by mail-oa2-x10.google.com with SMTP id
- 586e51a60fabf-466ccdd7695so1054205fac.1
- for <qemu-arm@nongnu.org>; Mon, 28 Sep 2026 00:30:13 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1790580612; cv=none;
- d=google.com; s=arc-20260327;
- b=o+F2FL+F7EvYi7H8FD0APZCEtOxUQ5xTrFS5gMnmycPquoJ5Vv8o2b0VnHfHXElGe6
- uwfMLT6LX8VskGe8Cqk36a9GPi4HMbxp6cOvaZQnEUps2LejQkZYysfx9Gx7nmr2gZb8
- n3V7JHC9rpTxK9n/g+YtpExWpvGFYLC4P/EwnIDIGKpGcGqYngmhP4PPuKf3HQOlOcLz
- tl1y5+fBo6twUsXx8aadP2WiEJus1cbnMTwsArcNkSO9r3STtxZtj4W0WMSXlpW1Owbp
- Xfy3r5u0qaaNtDcMVPVn+0brnlOTE54rMk0JGxuIinw8Pp7Vk1XFxUuoCxY2ILvwxCPS
- bhZQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
- s=arc-20260327; 
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:dkim-signature;
- bh=0799OkhyTz5fJIugeMO9oeQBN8ZDEYgpoQhEI2EiyC0=;
- fh=JesqujW+4n5wwxEr9j0icqM59IeDN0FNO0hEq7vDO08=;
- b=PiyAMyqI6fClzvAz8XZCLzKYPfaSflJ6d3OfYzUFFfUXwqXroLCUZ/xqla6UV+ZaI0
- C7ve6h4UmzTfxh6om7d13oiQ3DpNUNw5HAGUsvV3iqo97rEs8ftJm5q4lUHx1XmpDJCz
- IhmAJjKRR9pIlIvIUdU5i9zWDSLMcPi168ziuzfKAIQAlJuodBzl6ouyg7gfbj4prXSR
- a0yqXPS/maT3P873LGFlqGHq5LCJPrSuoyxI9GtPBzZYJFT4oo1mqCeu3Nhd0EZ5D5LF
- hKQVjN6iyRUF41H/AKxf5j+4CdLansAg5iRGAnrILlaWGDoixlKeyyE6FULal1Rlqwlf
- ZUuw==; darn=nongnu.org
-ARC-Authentication-Results: i=1; mx.google.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20251104; t=1790580612; x=1791185412; darn=nongnu.org;
- h=content-transfer-encoding:content-type:cc:to:subject:message-id
- :date:from:in-reply-to:references:mime-version:from:to:cc:subject
- :date:message-id:reply-to:content-type;
- bh=0799OkhyTz5fJIugeMO9oeQBN8ZDEYgpoQhEI2EiyC0=;
- b=ZT5y7JClL+Kx5lwlsqeS++vJ4s5ceiFouW/5oPd5ZbtsDhbI7ln+EHcmG5CoON1Z7z
- H2fHro5h8E/XgA2aAlLibPKO9TKyezmeb4LJGDb2iqHj00SurJjGL9G60s3U7kKmFhWM
- DZwpgi7Kwave5JHeRShJRuwCo/Bac9Qp5Dm8nXDuBlbBYBt4s9Lrzg8R4O3monzR/IFm
- ORLy0EG3QHOlGpahZFDCD4jdarEoBVvd80Wlo64XXd5HWnPBdsmUreaqRYyCdgOGsgGY
- MfrP3yoPT1z5Mjc5WGW6bC8bdqeMYP0gGuGJhOLUsHisOsC930l6RaURk99S5/2YHBxw
- gbpw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20260707; t=1790580612; x=1791185412;
- h=content-transfer-encoding:content-type:cc:to:subject:message-id
- :date:from:in-reply-to:references:mime-version:x-gm-gg
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
- :content-type;
- bh=0799OkhyTz5fJIugeMO9oeQBN8ZDEYgpoQhEI2EiyC0=;
- b=Bqrx4IF0xlcuLnm8jD3E6gclh2plYlCZ4MVXAe9tQSiALXh5We0/4S2R91LWCqmWGH
- XlC8MU1tmSIOSbp4bCu1dLAw8a9qVhkWS10Ka5fVaHBv5FFSiyOyAokbSe4P9UqWlITv
- OjbhIfQ183hwuZUdfdAzOU70Twr1BQUobmH6YqU+qB3tjWhKjTE78Czovn7klb9mgJcr
- gHwPV/cUHlDmJpDKdS0uKAFGfTzNXRoitOJ+Qb+Urxdzc0a0nuYctHR5mXWgAhUKA5Vu
- Y7PCBmpeFWvbfU+shlLLEjboEf8JZMdz/Looh4nFTr22pFekBan6vB1qJqxKb6PQGmUc
- qBnA==
-X-Gm-Message-State: AFq9FYK0ZLmH5VhvkYFv7nhQJnl8kO5XQnQLYr4HK/iHX12aRyOixrPI
- 7yc9lKyxqZ2ckAK0eYWGQVP5kOCmQIcf1NCW+NbQH94cSygXss06lPnpwfeZ13UL0vAha2BwTBS
- xsJAFFBWBzzqy88UPRkD4+iHhNWq8Y38=
-X-Gm-Gg: AYBFou2EcHxpF22voD8OR2wz1kX7bjwRyYl2AtCrym26j+2/jdVE9IjHM8wBeo0QfUL
- vvAzG48t6OCQuUyddCfB48e59acAVkYFTU/pmIon5tJanEiG3WmKAy0SJ244VmFvMK8JdUqbHGb
- hlHKSFx0hBwzd/k1Og9GOkh9PqDJUPb/rnM4CTElpqSFAH0fpUnEmtJ9/D2T0iiH5CVtKix28F9
- SJTSVv+iHLfDX596Fq7vo3rC3c+A3W0lPAisa7jb6zxAacQ2WoVxZF5Kp8IyFrcnI+U6yOfVZsK
- v/TRSK1n0EilaOH0s4r7qfho//VpWKROtK525v+Rp/GJ6ytYiN0r2ahU
-X-Received: by 2002:a05:6871:88c1:10b0:493:6d53:a17a with SMTP id
- 586e51a60fabf-4936d630b71mr5077247fac.23.1790580612088; Mon, 28 Sep 2026
- 00:30:12 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1xB7KP-0002MP-Ft
+ for qemu-arm@nongnu.org; Mon, 28 Sep 2026 05:07:18 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1xB7KN-00048q-Hi
+ for qemu-arm@nongnu.org; Mon, 28 Sep 2026 05:07:17 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1790586433;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=Q4kIHcUlBMtS1AuR/EVbxmsk9yZqA/j/g113fZSdW0k=;
+ b=L8LpjSVhJbgP9IZUINmSmdhLdOxNnX3185D38U0gMkVbPLe9HF8psiv/6i9jlr7bi07SJu
+ Qtp3eKJc/Ldcoe87AWF6uc3Wl+guiCFU3UZ/JIfttGgKl10J0xPl7EUSGrqJVerL8qDdHL
+ QzZjjJ+Fb0Zxim8tAYECraGtBetx52M=
+Received: from mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
+ relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-649-6J-X5N2LMh2uH7RIYrltSQ-1; Mon,
+ 28 Sep 2026 05:07:10 -0400
+X-MC-Unique: 6J-X5N2LMh2uH7RIYrltSQ-1
+X-Mimecast-MFC-AGG-ID: 6J-X5N2LMh2uH7RIYrltSQ_1790586428
+Received: from mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com
+ (mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.4])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+ (No client certificate requested)
+ by mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 1899118512EE; Mon, 28 Sep 2026 09:07:08 +0000 (UTC)
+Received: from blackfin.pond.sub.org (unknown [10.44.22.5])
+ by mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 25C4F30000E3; Mon, 28 Sep 2026 09:07:07 +0000 (UTC)
+Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
+ id C497121E6A04; Mon, 28 Sep 2026 11:07:04 +0200 (CEST)
+From: Markus Armbruster <armbru@redhat.com>
+To: Yonggang Luo <luoyonggang@gmail.com>
+Cc: qemu-devel@nongnu.org,  Richard Henderson
+ <richard.henderson@linaro.org>,  Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?=
+ <philmd@oss.qualcomm.com>,  Daniel P. =?utf-8?Q?Berrang=C3=A9?=
+ <berrange@redhat.com>,
+ "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,  Pierrick Bouvier
+ <pierrick.bouvier@oss.qualcomm.com>,  Fabiano Rosas <farosas@suse.de>,
+ Laurent Vivier <lvivier@redhat.com>,  Paolo Bonzini
+ <pbonzini@redhat.com>,  Alistair Francis <alistair@alistair23.me>,  Peter
+ Maydell <peter.maydell@linaro.org>,  =?utf-8?Q?Marc-Andr=C3=A9?= Lureau
+ <marcandre.lureau@redhat.com>,  qemu-arm@nongnu.org,  kvm@vger.kernel.org
+Subject: Re: [PATCH v4 07/55] tests/unit: add test-target-info
+In-Reply-To: <20260926070057.1234-8-luoyonggang@gmail.com> (Yonggang Luo's
+ message of "Sat, 26 Sep 2026 15:00:06 +0800")
+References: <20260926070057.1234-1-luoyonggang@gmail.com>
+ <20260926070057.1234-8-luoyonggang@gmail.com>
+Date: Mon, 28 Sep 2026 11:07:04 +0200
+Message-ID: <87zex1hhhj.fsf@pond.sub.org>
+User-Agent: Gnus/5.13 (Gnus v5.13)
 MIME-Version: 1.0
-References: <20260915160044.345788-1-ruslichenko.r@gmail.com>
-In-Reply-To: <20260915160044.345788-1-ruslichenko.r@gmail.com>
-From: Ruslan Ruslichenko <ruslichenko.r@gmail.com>
-Date: Mon, 28 Sep 2026 09:30:00 +0200
-X-Gm-Features: AclHuK_FMa8iT37nKkgObIO1gWskry6C-v3DvhPrseBvB8uQH7jMNvrxyphhiuk
-Message-ID: <CAN-aV1FkruRxDPiveZiUiT8KXDW1VyhJgqq1rwdTpdg0EsF=1w@mail.gmail.com>
-Subject: Re: [PATCH v2 00/20] hw/core: Introduce Remote Port Co-simulation
- Protocol
-To: qemu-devel@nongnu.org
-Cc: qemu-arm@nongnu.org, artem_mygaiev@epam.com, volodymyr_babchuk@epam.com, 
- peter.maydell@linaro.org, francisco.iglesias@amd.com, 
- edgar.iglesias@gmail.com, berrange@redhat.com, eugene@nuvacore.ai, 
- Ruslan_Ruslichenko@epam.com, takahiro.nakata.wr@renesas.com
-Content-Type: text/plain; charset="UTF-8"
+X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.4
+X-Mimecast-MFC-PROC-ID: 3C9fn0VhCLqKQp5jDX1aIDru942x57JYlI2rMX5ovYQ_1790586428
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain
 Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2607:f8b0:4864:30::10;
- envelope-from=ruslichenko.r@gmail.com; helo=mail-oa2-x10.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=armbru@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -24
+X-Spam_score: -2.5
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-Spam_report: (-2.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.34,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.01, SPF_HELO_PASS=-0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -120,210 +97,106 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-A gentle ping. Would appreciate some feedback on this series.
+Yonggang Luo <luoyonggang@gmail.com> writes:
 
-On Tue, Sep 15, 2026 at 6:01=E2=80=AFPM Ruslan Ruslichenko
-<ruslichenko.r@gmail.com> wrote:
+> Collect each target-info-def.c object in target_info_def_objects,
+> keyed by target dir. Link every value so constructors fill the
+> list. Assert target_info() is not NULL and target_info_list() has
+> one entry per linked object.
 >
-> From: Ruslan Ruslichenko <Ruslan_Ruslichenko@epam.com>
->
-> This patch series introduces the Remote Port (RP) subsystem, a framework =
-designed to connect QEMU with external simulation environments (such as Sys=
-temC models or RTL simulators).
->
-> Updates in v2:
->
-> - Removed global 'machine-path' and 'sync-quantum' cmdline options
-> - Added EventNotifier for communication between IO and CPU threads, inste=
-ad of pipes and sockets
-> - Made chrdev_id mandatory and simplified chardev configuration
-> - MemoryTransaction .access handler dropped and reworked RPMemoryTransact=
-ion to use existing .read/write_with_attrs
-> - Reduced coupling with HW Device Tree by making rp devices register them=
-selves within rp core using rp-chan property
-> - Dropped debug macros and added tracepoints instead
-> - Added reference to sample project using QEMU with SystemC
-> - Addressed review comments from v1 patch series:
->   https://lists.gnu.org/archive/html/qemu-devel/2026-02/msg01760.html
->
-> Origin:
-> The Remote Port protocol was originally developed by Edgar E. Iglesias.
-> The original source code is available in the QEMU repository at AMD: http=
-s://github.com/Xilinx/qemu.
->
-> Motivation
-> In modern SoC and FPGA development, specialized hardware blocks are often=
- verified using SystemC, Verilog, or VHDL long before silicon is available.=
- While QEMU is optimized for high-performance CPU emulation and software de=
-velopment, it requires hardware models to be rewritten in C, which is time-=
-consuming and duplicates effort.
->
-> The Remote Port (RP) subsystem addresses this limitation by enabling a Co=
--simulation environment. It allows QEMU to act as the high-performance Proc=
-essing Subsystem, booting complex operating systems (e.g. Linux), while del=
-egating specific peripheral modeling to external simulators (SystemC, RTL) =
-via a socket connection.
->
-> The Remote Port protocol provides a socket-based interface that supports:
->
-> Memory Transactions: Bidirectional memory accesses (Master and Slave) all=
-owing QEMU to access remote devices and vice versa.
-> Interrupts/GPIO: Propagation of interrupt signals between QEMU and the re=
-mote peer.
-> IOMMU/ATS Support: Support for Address Translation Services, allowing rem=
-ote devices to operate correctly behind IOMMU.
-> Time Synchronization: Keeps QEMU and the external simulator in sync by ad=
-vancing time in fixed steps (quantums).
->
-> Integration with SystemC Ecosystem
->
-> To connect the simulation side, the open-source libsystemctlm-soc library=
- [1] is used. It acts as a bridge, translating Remote Port protocol packets=
- into standard SystemC/TLM-2.0 transactions [2]. This allows users to attac=
-h existing TLM-2.0 compliant models to QEMU.
->
-> Architecture Overview
->
-> The series is structured into the following logical components:
->
-> 1. Core Protocol & Infrastructure
->
-> Establishes the socket connection and handshake (Hello protocol).
-> Implements the packet dispatch loop and thread management.
->
-> 2. Memory Transaction Support
->
-> RP Memory Slave: Allows the remote peer to initiate bus transactions with=
-in QEMU.
-> RP Memory Master: Represents a memory region in QEMU that forwards access=
-es to the remote peer.
->
-> 3. Address Translation Services (ATS)
->
-> Implements the logic to handle ATS requests from remote masters.
-> Integrates with QEMU's IOMMU notifiers to manage translation caches.
->
-> 4. Device Tree (FDT) & Configuration
->
-> Added FDT support for Remote Port Memory Master and GPIO
->
-> Dependencies
->
-> Patches 19-20 in series are based on the following previously submitted s=
-eries:
-> FDT based machine v3: https://lists.nongnu.org/archive/html/qemu-devel/20=
-26-04/msg00415.html
->
-> Instantiation of Remote Port via FDT also registers its reset handler,
-> needed to start protocol thread.
->
-> Validation:
->
-> The Sample Project demonstrating test setup with QEMU/Remote Port and Sys=
-temC emulated PL011 UART module available by following link:
-> https://github.com/renesas/SysC_Island_MIT
->
->
-> Patch Summary
-> The series is organized as follows:
->
-> System/Global:
->
-> system/physmem: Add ats_do_translate helper
->
-> Remote Port Core:
->
-> hw/core: Add Remote Port protocol packet definition
-> hw/core: Add Remote Port header helpers
-> hw/core: Add Remote Port session state and hello protocol
-> hw/core: Add Remote Port object skeleton
-> hw/core: Add Remote Port protocol thread and handshake
-> hw/core: Implement Remote Port response handling
-> hw/core: Implement Remote Port time synchronization
-> hw/core: Implement Remote Port irq, sync and ATS helpers
-> hw/core: Add Remote Port files to build
->
-> Memory & Bus Access:
->
-> hw/core: Implement Remote Port bus access helpers
-> hw/core: Add Remote Port Memory Master object skeleton
-> hw/core: Implement Remote Port Memory Master bus transactions
-> hw/core: Add Remote Port memory slave device
->
-> ATS & Streams:
->
-> hw/core: Add Remote Port Stream device
-> hw/core: Add Remote Port ATS device skeleton
-> hw/core: Implement Remote Port ATS logic and cache management
->
-> FDT & GPIO:
->
-> hw/core: Add Remote Port GPIO/Interrupt bridge
-> hw/core: Add FDT support to Remote Port GPIO
-> hw/core: Add FDT support to Remote Port memory master
->
-> Links:
-> [1] libsystemctlm library: https://github.com/Xilinx/libsystemctlm-soc
->
-> [2] SystemC TLM description: https://systemc.org/overview/systemc-tlm/
->
->
-> Ruslan Ruslichenko (20):
->   hw/core: Add Remote Port protocol packet definition
->   hw/core: Add Remote Port header helpers
->   hw/core: Add Remote Port session state and hello protocol
->   hw/core: Implement Remote Port bus access helpers
->   hw/core: Implement Remote Port irq, sync and ATS helpers
->   hw/core: Add Remote Port object skeleton
->   hw/core: Add Remote Port protocol thread and handshake
->   hw/core: Implement Remote Port response handling
->   hw/core: Implement Remote Port time synchronization
->   hw/core: Add Remote Port Memory Master object skeleton
->   hw/core: Implement Remote Port Memory Master bus transactions
->   system/physmem: Add ats_do_translate helper
->   hw/core: Add Remote Port ATS device skeleton
->   hw/core: Implement Remote Port ATS logic and cache management
->   hw/core: Add Remote Port memory slave device
->   hw/core: Add Remote Port GPIO/Interrupt bridge
->   hw/core: Add Remote Port Stream device
->   hw/core: Add Remote Port files to build
->   hw/core: Add FDT support to Remote Port GPIO
->   hw/core: Add FDT support to Remote Port memory master
->
->  hw/core/Kconfig                             |   4 +
->  hw/core/meson.build                         |  10 +
->  hw/core/remote-port-ats.c                   | 412 +++++++++++
->  hw/core/remote-port-gpio.c                  | 210 ++++++
->  hw/core/remote-port-memory-master.c         | 369 +++++++++
->  hw/core/remote-port-memory-slave.c          | 242 ++++++
->  hw/core/remote-port-proto.c                 | 467 ++++++++++++
->  hw/core/remote-port-stream.c                | 246 ++++++
->  hw/core/remote-port.c                       | 782 ++++++++++++++++++++
->  hw/core/trace-events                        |  22 +
->  include/hw/core/remote-port-ats.h           |  76 ++
->  include/hw/core/remote-port-gpio.h          |  34 +
->  include/hw/core/remote-port-memory-master.h |  81 ++
->  include/hw/core/remote-port-memory-slave.h  |  35 +
->  include/hw/core/remote-port-proto.h         | 541 ++++++++++++++
->  include/hw/core/remote-port.h               | 164 ++++
->  include/system/memory.h                     |   8 +
->  system/physmem.c                            |  53 ++
->  18 files changed, 3756 insertions(+)
->  create mode 100644 hw/core/remote-port-ats.c
->  create mode 100644 hw/core/remote-port-gpio.c
->  create mode 100644 hw/core/remote-port-memory-master.c
->  create mode 100644 hw/core/remote-port-memory-slave.c
->  create mode 100644 hw/core/remote-port-proto.c
->  create mode 100644 hw/core/remote-port-stream.c
->  create mode 100644 hw/core/remote-port.c
->  create mode 100644 include/hw/core/remote-port-ats.h
->  create mode 100644 include/hw/core/remote-port-gpio.h
->  create mode 100644 include/hw/core/remote-port-memory-master.h
->  create mode 100644 include/hw/core/remote-port-memory-slave.h
->  create mode 100644 include/hw/core/remote-port-proto.h
->  create mode 100644 include/hw/core/remote-port.h
->
-> --
-> 2.43.0
->
+> Signed-off-by: Yonggang Luo <luoyonggang@gmail.com>
+
+Doesn't compile for me:
+
+../tests/unit/meson.build:47:37: ERROR: Unknown method "values" in object <=
+[DictHolder] holds [dict]: {'aarch64-linux-user': <ExtractedObjects 'qemu-a=
+arch64-linux-user': [<File: target-info-def.c (not built)>]>, 'aarch64_be-l=
+inux-user': <ExtractedObjects 'qemu-aarch64_be-linux-user': [<File: target-=
+info-def.c (not built)>]>, 'alpha-linux-user': <ExtractedObjects 'qemu-alph=
+a-linux-user': [<File: target-info-def.c (not built)>]>, 'arm-linux-user': =
+<ExtractedObjects 'qemu-arm-linux-user': [<File: target-info-def.c (not bui=
+lt)>]>, 'armeb-linux-user': <ExtractedObjects 'qemu-armeb-linux-user': [<Fi=
+le: target-info-def.c (not built)>]>, 'hexagon-linux-user': <ExtractedObjec=
+ts 'qemu-hexagon-linux-user': [<File: target-info-def.c (not built)>]>, 'hp=
+pa-linux-user': <ExtractedObjects 'qemu-hppa-linux-user': [<File: target-in=
+fo-def.c (not built)>]>, 'i386-linux-user': <ExtractedObjects 'qemu-i386-li=
+nux-user': [<File: target-info-def.c (not built)>]>, 'loongarch64-linux-use=
+r': <ExtractedObjects 'qemu-loongarch64-linux-user': [<File: target-info-de=
+f.c (not built)>]>, 'm68k-linux-user': <ExtractedObjects 'qemu-m68k-linux-u=
+ser': [<File: target-info-def.c (not built)>]>, 'microblaze-linux-user': <E=
+xtractedObjects 'qemu-microblaze-linux-user': [<File: target-info-def.c (no=
+t built)>]>, 'microblazeel-linux-user': <ExtractedObjects 'qemu-microblazee=
+l-linux-user': [<File: target-info-def.c (not built)>]>, 'mips-linux-user':=
+ <ExtractedObjects 'qemu-mips-linux-user': [<File: target-info-def.c (not b=
+uilt)>]>, 'mips64-linux-user': <ExtractedObjects 'qemu-mips64-linux-user': =
+[<File: target-info-def.c (not built)>]>, 'mips64el-linux-user': <Extracted=
+Objects 'qemu-mips64el-linux-user': [<File: target-info-def.c (not built)>]=
+>, 'mipsel-linux-user': <ExtractedObjects 'qemu-mipsel-linux-user': [<File:=
+ target-info-def.c (not built)>]>, 'mipsn32-linux-user': <ExtractedObjects =
+'qemu-mipsn32-linux-user': [<File: target-info-def.c (not built)>]>, 'mipsn=
+32el-linux-user': <ExtractedObjects 'qemu-mipsn32el-linux-user': [<File: ta=
+rget-info-def.c (not built)>]>, 'or1k-linux-user': <ExtractedObjects 'qemu-=
+or1k-linux-user': [<File: target-info-def.c (not built)>]>, 'ppc-linux-user=
+': <ExtractedObjects 'qemu-ppc-linux-user': [<File: target-info-def.c (not =
+built)>]>, 'ppc64-linux-user': <ExtractedObjects 'qemu-ppc64-linux-user': [=
+<File: target-info-def.c (not built)>]>, 'ppc64le-linux-user': <ExtractedOb=
+jects 'qemu-ppc64le-linux-user': [<File: target-info-def.c (not built)>]>, =
+'riscv32-linux-user': <ExtractedObjects 'qemu-riscv32-linux-user': [<File: =
+target-info-def.c (not built)>]>, 'riscv64-linux-user': <ExtractedObjects '=
+qemu-riscv64-linux-user': [<File: target-info-def.c (not built)>]>, 's390x-=
+linux-user': <ExtractedObjects 'qemu-s390x-linux-user': [<File: target-info=
+-def.c (not built)>]>, 'sh4-linux-user': <ExtractedObjects 'qemu-sh4-linux-=
+user': [<File: target-info-def.c (not built)>]>, 'sh4eb-linux-user': <Extra=
+ctedObjects 'qemu-sh4eb-linux-user': [<File: target-info-def.c (not built)>=
+]>, 'sparc-linux-user': <ExtractedObjects 'qemu-sparc-linux-user': [<File: =
+target-info-def.c (not built)>]>, 'sparc32plus-linux-user': <ExtractedObjec=
+ts 'qemu-sparc32plus-linux-user': [<File: target-info-def.c (not built)>]>,=
+ 'sparc64-linux-user': <ExtractedObjects 'qemu-sparc64-linux-user': [<File:=
+ target-info-def.c (not built)>]>, 'x86_64-linux-user': <ExtractedObjects '=
+qemu-x86_64-linux-user': [<File: target-info-def.c (not built)>]>, 'xtensa-=
+linux-user': <ExtractedObjects 'qemu-xtensa-linux-user': [<File: target-inf=
+o-def.c (not built)>]>, 'xtensaeb-linux-user': <ExtractedObjects 'qemu-xten=
+saeb-linux-user': [<File: target-info-def.c (not built)>]>, 'aarch64-softmm=
+u': <ExtractedObjects 'qemu-aarch64-softmmu': [<File: target-info-def.c (no=
+t built)>]>, 'alpha-softmmu': <ExtractedObjects 'qemu-alpha-softmmu': [<Fil=
+e: target-info-def.c (not built)>]>, 'arm-softmmu': <ExtractedObjects 'qemu=
+-arm-softmmu': [<File: target-info-def.c (not built)>]>, 'avr-softmmu': <Ex=
+tractedObjects 'qemu-avr-softmmu': [<File: target-info-def.c (not built)>]>=
+, 'hexagon-softmmu': <ExtractedObjects 'qemu-hexagon-softmmu': [<File: targ=
+et-info-def.c (not built)>]>, 'hppa-softmmu': <ExtractedObjects 'qemu-hppa-=
+softmmu': [<File: target-info-def.c (not built)>]>, 'i386-softmmu': <Extrac=
+tedObjects 'qemu-i386-softmmu': [<File: target-info-def.c (not built)>]>, '=
+loongarch64-softmmu': <ExtractedObjects 'qemu-loongarch64-softmmu': [<File:=
+ target-info-def.c (not built)>]>, 'm68k-softmmu': <ExtractedObjects 'qemu-=
+m68k-softmmu': [<File: target-info-def.c (not built)>]>, 'microblaze-softmm=
+u': <ExtractedObjects 'qemu-microblaze-softmmu': [<File: target-info-def.c =
+(not built)>]>, 'mips-softmmu': <ExtractedObjects 'qemu-mips-softmmu': [<Fi=
+le: target-info-def.c (not built)>]>, 'mips64-softmmu': <ExtractedObjects '=
+qemu-mips64-softmmu': [<File: target-info-def.c (not built)>]>, 'mips64el-s=
+oftmmu': <ExtractedObjects 'qemu-mips64el-softmmu': [<File: target-info-def=
+.c (not built)>]>, 'mipsel-softmmu': <ExtractedObjects 'qemu-mipsel-softmmu=
+': [<File: target-info-def.c (not built)>]>, 'or1k-softmmu': <ExtractedObje=
+cts 'qemu-or1k-softmmu': [<File: target-info-def.c (not built)>]>, 'ppc-sof=
+tmmu': <ExtractedObjects 'qemu-ppc-softmmu': [<File: target-info-def.c (not=
+ built)>]>, 'ppc64-softmmu': <ExtractedObjects 'qemu-ppc64-softmmu': [<File=
+: target-info-def.c (not built)>]>, 'riscv32-softmmu': <ExtractedObjects 'q=
+emu-riscv32-softmmu': [<File: target-info-def.c (not built)>]>, 'riscv64-so=
+ftmmu': <ExtractedObjects 'qemu-riscv64-softmmu': [<File: target-info-def.c=
+ (not built)>]>, 'rx-softmmu': <ExtractedObjects 'qemu-rx-softmmu': [<File:=
+ target-info-def.c (not built)>]>, 's390x-softmmu': <ExtractedObjects 'qemu=
+-s390x-softmmu': [<File: target-info-def.c (not built)>]>, 'sh4-softmmu': <=
+ExtractedObjects 'qemu-sh4-softmmu': [<File: target-info-def.c (not built)>=
+]>, 'sh4eb-softmmu': <ExtractedObjects 'qemu-sh4eb-softmmu': [<File: target=
+-info-def.c (not built)>]>, 'sparc-softmmu': <ExtractedObjects 'qemu-sparc-=
+softmmu': [<File: target-info-def.c (not built)>]>, 'sparc64-softmmu': <Ext=
+ractedObjects 'qemu-sparc64-softmmu': [<File: target-info-def.c (not built)=
+>]>, 'tricore-softmmu': <ExtractedObjects 'qemu-tricore-softmmu': [<File: t=
+arget-info-def.c (not built)>]>, 'x86_64-softmmu': <ExtractedObjects 'qemu-=
+x86_64-softmmu': [<File: target-info-def.c (not built)>]>, 'xtensa-softmmu'=
+: <ExtractedObjects 'qemu-xtensa-softmmu': [<File: target-info-def.c (not b=
+uilt)>]>, 'xtensaeb-softmmu': <ExtractedObjects 'qemu-xtensaeb-softmmu': [<=
+File: target-info-def.c (not built)>]>}> of type DictHolder.
+
+I have meson 1.8.5.
+
 

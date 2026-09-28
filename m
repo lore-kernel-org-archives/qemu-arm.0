@@ -4,103 +4,117 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D487CC9833F
-	for <qemu-arm@archiver.kernel.org>; Mon, 28 Sep 2026 12:19:30 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 39E61C9833F
+	for <qemu-arm@archiver.kernel.org>; Mon, 28 Sep 2026 12:21:37 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xBAJs-00007v-VW; Mon, 28 Sep 2026 08:19:01 -0400
+	id 1xBALy-0001FP-VK; Mon, 28 Sep 2026 08:21:07 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1xBAJQ-0008Rn-Ma
- for qemu-arm@nongnu.org; Mon, 28 Sep 2026 08:18:30 -0400
-Received: from mail-yx2-x0e.google.com ([2607:f8b0:4864:41::e])
+ (Exim 4.90_1) (envelope-from <luoyonggang@gmail.com>)
+ id 1xBALv-0001EL-06
+ for qemu-arm@nongnu.org; Mon, 28 Sep 2026 08:21:03 -0400
+Received: from mail-ed2-x29.google.com ([2a00:1450:4864:33::29])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1xBAJM-0007PJ-9L
- for qemu-arm@nongnu.org; Mon, 28 Sep 2026 08:18:26 -0400
-Received: by mail-yx2-x0e.google.com with SMTP id
- 956f58d0204a3-672f90fc533so2681832d50.0
- for <qemu-arm@nongnu.org>; Mon, 28 Sep 2026 05:18:22 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1790597902; cv=none;
+ (Exim 4.90_1) (envelope-from <luoyonggang@gmail.com>)
+ id 1xBALt-0007bR-Bu
+ for qemu-arm@nongnu.org; Mon, 28 Sep 2026 08:21:02 -0400
+Received: by mail-ed2-x29.google.com with SMTP id
+ 4fb4d7f45d1cf-6aa0ee64afdso3385543a12.0
+ for <qemu-arm@nongnu.org>; Mon, 28 Sep 2026 05:21:00 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1790598060; cv=none;
  d=google.com; s=arc-20260327;
- b=Wiqpma0UZzLMx62dNqQg54VbNlVb19VjjhJdz4MFVFAs2RCtiJ1okTy3k4MTUKYQlu
- 2gj5ZS2GzaR9lJm4XWel5j81c1S4h9lVACa9MmMBZgYhV0I4VFG2sF5vkFjCbtWHkKzm
- xAru1jBPgj4cpNWNpRYxqS5B8WwlFH66CfgkP6/7BLEEe7EhO3BmFlA71U6raG6xn7GX
- inI9Ijrf2QVntr6WabWxEPAsgiFPipm+2D+XYMoilTI+QbaYE8crGnwyVKkcqIMSZvta
- MWnc/u5yn0S/nctgeAXxO1m9HCjBRoyAXW2mWyGA+LNjk/fb7jqI26by0eNAdTp+58rV
- n/Nw==
+ b=LvBMq4Ti1lgu7rkhjHyvUnugvIi5wtNcYVcTHqxJAdF+QE4lvwAbGEMFr9zwb9Sgwi
+ Z006Kx2iyL3mq3BP9yZc7MpdksH8pPMcyZb0pNVtHMWcOoyeh2wpqVMA46bMzYqM+S6w
+ acZl0ACb28O+tZuNGoJ4bJ9kNXq8bIgkshqv3aKeAsCPGQkClCuY28XB+PzgkgKPHinJ
+ dEc4BDUBOMec876dk8hlOUwkJEx+dOXYr/3b1JS8QbsKo58qwos8L6K4N4FlyCWPLhte
+ 0Sk3LypF8dvgMthRttzi8qOHkSeXJpCnvuQBBMzjySAAD/KA1WTWR2phOc+3lWBOTLuS
+ KWzA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
  s=arc-20260327; 
- h=cc:to:subject:message-id:date:from:in-reply-to:references
+ h=cc:to:subject:message-id:date:from:reply-to:in-reply-to:references
  :mime-version:dkim-signature;
- bh=tyhR6K8kv2DiaBgjFE5j6JP51JNzMA3q085iJsPNf8s=;
- fh=UKXd/hKAJ08rj29/DDF/b3G9KXvfsPpFHT9bpRNwACU=;
- b=Ri2Ofn0RCkskzLTXYGRTFHPUDeiR75ezfMfPG2zAeNqAKo5s+CL7ipXDLh09yuiZjR
- h0osUC1N+jm2ec+IYZ5uO57etupx7sWX04O+uK5Bt8h+Uqp9cxXoOUgIEcWBJvsU2qGi
- h9y8+p/kcE5vAwYVS6VF/Rtm9jmr0KY63x5N2JnTjnmZDi8sT2462zUl035kekN1Rt8v
- m5MfADmA1FOtgK8G9anxmOjV6yB++eDkg5KknbG8RX8syOYWkC/ufRL2f+Nk9l73AKyZ
- TqMu6bJR0amH94pAuTnTmK0Lcc/9DmvatSKtF+H/akLyxHep12dh7eMiLeZJr4rlnPdi
- AFog==; darn=nongnu.org
+ bh=pd/w+IYrhtO8nDIhhhTCrDHiriJrkkAbVUGpwUfls8o=;
+ fh=5NV2k4UnTP+llV3S6S8Nta3HjARDMl1CO3iXzv/aSso=;
+ b=g8x3jZ0Gp6RafX0JPeasvbw9YsRB/jIaIBQm+gsOuxGAmmGLzWXF8dN3sLKz5/bkuP
+ QcKzO/cwJm/VuuxC2Ggas55jjNCt8VL8SGxmmKKbmtPtdwYCbOAjpfOmXzBKkrOUSOsP
+ AnFtLUm0fm9N6C63z8MUyUUnjWBb/rQdOGEhKhOV/bAUxWif3YyV8O8WwICEGZGlRADI
+ Y8/G6b3RE6deApuEbn3b6/qo+2tbAJQ7vVCGFNnzZqvmyErwy0i/sgH1WfCH8zbNEHwr
+ L3wsnt2mpgAmG/Kca9+lmqGlcfmDlJ1QYIl7y73xZemi3rl8pF9cE8b+KhB0VFV2wnji
+ OaHw==; darn=nongnu.org
 ARC-Authentication-Results: i=1; mx.google.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1790597902; x=1791202702; darn=nongnu.org;
- h=content-type:cc:to:subject:message-id:date:from:in-reply-to
- :references:mime-version:from:to:cc:subject:date:message-id:reply-to
- :content-type; bh=tyhR6K8kv2DiaBgjFE5j6JP51JNzMA3q085iJsPNf8s=;
- b=pD98JnWO4cP29tAnDj5txLVFwmZHXI/QKQsNQUV4w0cRhZmfu2D22SLoySuWWzouf8
- 9c3bN+M3e75TvDVBO1zrYcVzeSWupnk/QudfiTBRpwUbMPP5VxoL4hkZdiruy5LHiB9Q
- SdkuxL+RtbogmV57aYsRA4++8b3NeSYPifXWjBFCSh9h6ndXRHO+054xkD3mekFBrUOy
- w3K7dHYbKZHgA84k9R7PH8nu3goRpOpH7cS3Zlam+220MM3yvoy8Bi++dZyYq8NH61hd
- iO1B9AAXKqCbjggjGeyk/hH33Gl5QVzqHLcKHtpkj5LPldCfNAmHmSTDZOGSvJy+GhDJ
- FtNw==
+ d=gmail.com; s=20251104; t=1790598060; x=1791202860; darn=nongnu.org;
+ h=content-type:cc:to:subject:message-id:date:from:reply-to
+ :in-reply-to:references:mime-version:from:to:cc:subject:date
+ :message-id:reply-to:content-type;
+ bh=pd/w+IYrhtO8nDIhhhTCrDHiriJrkkAbVUGpwUfls8o=;
+ b=ksEr9LR8qa3qyi3HXHZTY9JRii+NqL0qllZOPu8VWXsyruQVpj1Mqx8Xndgd01K4sH
+ UINr4p6G2JGUsltSb4Y7OeqI+44LMEwo2FqWcOwALopHbAaCmsJPbgPJx1v3KeOB8us7
+ MNdLsIgLCl9miP3nMNTzLvnk5r0rlSWZAKSnww0tS6+akiIGZ6EoZQcdegxz1lc1Q9u2
+ mvTmO3Ued6qDPGKlNXp72ki21IUG+g1RKrIB85ujSKFmHAKCQA0q9p9JPB6v50T7+wME
+ mixce3UgvQMTE+z4/DCn6D721QXnbfLQN6vJyc//ruNWUJkZE5QUni3nflZePFeEIb9B
+ SyVA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20260707; t=1790597902; x=1791202702;
- h=content-type:cc:to:subject:message-id:date:from:in-reply-to
- :references:mime-version:x-gm-gg:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to:content-type;
- bh=tyhR6K8kv2DiaBgjFE5j6JP51JNzMA3q085iJsPNf8s=;
- b=CdcNypouFsaJku5utFCAtfb3F2QBuuo3AAtMFUtpeNLsALOOA1asL9rDvMqNcMZEzZ
- WYiKldIh7qfNBXAOi14Cn/oyhhWJh46Ju/qB6CeBPJsef2JTv4Noy2//9KUm8vBD81/+
- P9bcRMSo4qjCo+CTF5pEUC4y3OpVN7roFmEa1dpsdfdyGt8SQcBmEiBqoLn1Nv2qd73Y
- T5TcIe12H7mO1a6KlsxEe48DrIWBQl9X82jnQZOxNYaeCwDZ4xkGcgK1WueGlT8T+ql8
- msZz7eSEyVgQW7rC8lw+wzwrXcqLFjSTW1rUIJhJZW24aQsKfsLKdawZ1GNk7K6FHZKT
- 1LgQ==
+ d=1e100.net; s=20260707; t=1790598060; x=1791202860;
+ h=content-type:cc:to:subject:message-id:date:from:reply-to
+ :in-reply-to:references:mime-version:x-gm-gg:x-gm-message-state:from
+ :to:cc:subject:date:message-id:reply-to:content-type;
+ bh=pd/w+IYrhtO8nDIhhhTCrDHiriJrkkAbVUGpwUfls8o=;
+ b=ZOzd40Mtth8r1v5GoDr+uLY1m0WQ1wuNMuXQqinZ9ZDdJGnDDBm2VGuLsBYlyO/d1Y
+ Pker+bW+jT1hrFDaTnt6bZ4RfZdSoaOpLM25F2paXml8foQAEXCh1a5JFZp2xcT0mG67
+ Tw/LDSXLNH+oHAmmdjIA4yZ/Fcj5cYHGpjY6z9QkengnBV6Ocm2Bz2e4NVB7IMamKx/I
+ YLlUvn17MphO18TqXenHpuOFno5DRCNcaOgTmadcoMehDVLK3qzdqnB4EamgByBOqq/I
+ jgBFeN16dzpqqC1C5e0j6wrvo3JbijRAj6fJjU/y4/URf5qk56q+Z00GImknQn8uaU2l
+ Z3MA==
 X-Forwarded-Encrypted: i=1;
- AKwUvBybC7HwVTYVaKSiFpMfuE6WUzhyCeRpjjhOsWh8QnrHQpo8P4qPILHQ3iMlHwM24k8L3IHv0owe4g==@nongnu.org
-X-Gm-Message-State: AFq9FYL/esVCNh+IWWCEqAYZNK8X0Nok+qyGgH4A6LBtmfQHzVzG58jg
- 0Hm4WvHKqVbh3sw405rNb9OAvG5h/awVYDEE7G4Ybl5p/6JSgJfSxZae2ElLVyibfxxDggI0K5z
- 9NwEOPGV2bHFYOXWKRGKVGvFVbGa91/7vknXzNyfk7g==
-X-Gm-Gg: AYBFou1rACAiRDgnPAag2g2brFl4zOUr0CE71CGgVZmFa57LZ6By+yNnk1NWYfKf2qP
- ar4qs8wBvmHMmItPu5FpO6hFzabFYSq8Dz2F5uQk/tK7FHo7u+kVN/Seb0EKK18T/tAUdMRDasu
- ht3U4AjDCaw5sctC1XEpt7tdyUWLQN6Jk9aptX8dUSFJcYY2T7fsuXjvm1WC1T31vAaneM962lo
- /f5mPTa6jvB21OmUUoVeQwpndIDUSR4g8XLVI5pxcaxxQk1lCL4brKcpZICikDfetk5KAMjNLxi
- fdyGYqLV/FtsiH6mAtwHF4vYxXidCmOi1RJwdj3GDytvPt594eR7KcfvOEgCvgHeUKEOwNffcdN
- UC3K5yS4WT5TTF5Y96FmIsjd4E5f0wra78ON1heo=
-X-Received: by 2002:a05:690e:dcb:b0:671:43a0:77c1 with SMTP id
- 956f58d0204a3-672ed3b5989mr4523407d50.66.1790597901959; Mon, 28 Sep 2026
- 05:18:21 -0700 (PDT)
+ AKwUvBy6DJ5svcWwdjBjI6W45gch+mlmb4N7myx8pxHRCk14uYEEOhi1Uu2iDRQ8y6ywuMuF2RHK0chesQ==@nongnu.org
+X-Gm-Message-State: AFq9FYJSQB6h+vkUKBklVEqBI2cB7EYXtjx9S1WNQcpAKFjGn/VhYJVi
+ 3dxm/CGK5+BvqgkAkicnPd6ltsFPxapHsTejy2q1FJ1yaJvMKw6A9BIjfeQMl1ObeQHZGkvd9Op
+ j+wAqsr19RtQr7lBcY1DuE8pMF8zn0/8=
+X-Gm-Gg: AYBFou00nrdmtBtQYD9bD2vtU5UDy20jKndBevGJtJzONlEFIKh+os7nYhtXgifzHjh
+ 414LsOfMQ2LOyWvoXMRiGfh/yiY+jzp8B8+rdKm6PatHSlIurQSlFCO/zhUPjZULeJrF02MPhrk
+ pyiEYG5R1n+gbMKhLpSj1TaMEgApBl6aU+2wDoX8OfFKJUTwM/bfL1c9aLWDuT0Idzmo1HDyNs2
+ AdW4Sd4NIWjpc/rhS71p0lvwfOa+Hnocr23ooTMaNXBHDt+3+0qey6RB89/R57BjrPnYp2k4joA
+ RHdQBTVtVcGEFDcy7F2y/ZwtvIXRCb2qU3lolM2jw8qgNXVZ8o1NFMU=
+X-Received: by 2002:a05:6402:518c:b0:6ab:e30:c9d3 with SMTP id
+ 4fb4d7f45d1cf-6ab0e30cd41mr3619551a12.16.1790598059459; Mon, 28 Sep 2026
+ 05:20:59 -0700 (PDT)
 MIME-Version: 1.0
-References: <20260925162632.404001-1-richard.henderson@linaro.org>
-In-Reply-To: <20260925162632.404001-1-richard.henderson@linaro.org>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Mon, 28 Sep 2026 13:18:10 +0100
-X-Gm-Features: AclHuK8kmZe_VtLT6MyoHjA3rojXfYTWWpiZFWu8iZkiem5QwyY5U50CBobbcPQ
-Message-ID: <CAFEAcA9GAqVM-G2EYrAcJ-xcAQUoHgGFVtkcMfaYYjG_78uetg@mail.gmail.com>
-Subject: Re: [PATCH v3 0/5] target/arm: Implement FEAT_IDTE3
-To: Richard Henderson <richard.henderson@linaro.org>
-Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:41::e;
- envelope-from=peter.maydell@linaro.org; helo=mail-yx2-x0e.google.com
+References: <20260926070057.1234-1-luoyonggang@gmail.com>
+ <20260926070057.1234-42-luoyonggang@gmail.com>
+ <87zex1fvh4.fsf@pond.sub.org>
+ <CAE2XoE_QozVhBix251nyUQkFMi6p_4idGXpVOT0LSP7VYK8ddw@mail.gmail.com>
+ <87ik3pfu2x.fsf@pond.sub.org>
+In-Reply-To: <87ik3pfu2x.fsf@pond.sub.org>
+From: Yonggang Luo <luoyonggang@gmail.com>
+Date: Mon, 28 Sep 2026 20:20:46 +0800
+X-Gm-Features: AclHuK9CBaivFUi-QTsLsXYGlMViwFl_oPAu9FsPjPtcurpCcEH-nNae4Mdp-OQ
+Message-ID: <CAE2XoE88wDu5dYzqVd4gvwNV=bf8qcztLos0xx3iMFnWB+=Nvw@mail.gmail.com>
+Subject: Re: [PATCH v4 41/55] target-info: add SysEmuTarget none
+To: Markus Armbruster <armbru@redhat.com>
+Cc: qemu-devel@nongnu.org, Richard Henderson <richard.henderson@linaro.org>, 
+ =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@oss.qualcomm.com>, 
+ =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>, 
+ "Edgar E. Iglesias" <edgar.iglesias@gmail.com>, 
+ Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>,
+ Fabiano Rosas <farosas@suse.de>, 
+ Laurent Vivier <lvivier@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>, 
+ Alistair Francis <alistair@alistair23.me>,
+ Peter Maydell <peter.maydell@linaro.org>, 
+ =?UTF-8?B?TWFyYy1BbmRyw6kgTHVyZWF1?= <marcandre.lureau@redhat.com>, 
+ qemu-arm@nongnu.org, kvm@vger.kernel.org
+Content-Type: multipart/alternative; boundary="000000000000450763065c8a192b"
+Received-SPF: pass client-ip=2a00:1450:4864:33::29;
+ envelope-from=luoyonggang@gmail.com; helo=mail-ed2-x29.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ HTML_MESSAGE=0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -113,28 +127,97 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Reply-To: luoyonggang@gmail.com
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Fri, 25 Sept 2026 at 17:27, Richard Henderson
-<richard.henderson@linaro.org> wrote:
+--000000000000450763065c8a192b
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+On Mon, Sep 28, 2026 at 8:18=E2=80=AFPM Markus Armbruster <armbru@redhat.co=
+m> wrote:
 >
-> Changes for v3:
->   - Drop helper_tid3_udef_el1, because the entire tid3 space has backing cpregs.
+> Yonggang Luo <luoyonggang@gmail.com> writes:
 >
-> r~
+> > On Mon, Sep 28, 2026 at 7:48=E2=80=AFPM Markus Armbruster <armbru@redha=
+t.com>
+wrote:
+> >>
+> >> Yonggang Luo <luoyonggang@gmail.com> writes:
+> >>
+> >> > Add a none target for when no TargetInfo is selected. It is last
+> >> > so existing SYS_EMU_TARGET_* values stay put, and it is not a
+> >> > qemu-system- executable name. target_is_none() and target_none()
+> >> > report that state.
+> >>
+> >> Why does it matter that existing SYS_EMU_TARGET_* stay put?
+> >
+> > We need a state that not a real CPU target is selected( I called it
+none),
+> > then we can use it to list all targets. for example, do query-targets.
+> > query-machines(all machines for all targets).
+> > Any better ways to handle it would be appreciated, I am not choosing to
+set
+> > it to NULL because
+> > that would cause too much NULL-check error, as the pre-existing code
+> > presume there is always a
+> > CPU target present.
 >
-> Richard Henderson (5):
->   target/arm: Rename isar_feature_aa64_idst
->   target/arm: Enable writes to SCR_EL3.TID{3,5}
->   target/arm: Implement SCR_EL3.TID3
->   target/arm: Implement SCR_EL3.TID5
->   target/arm: Enable FEAT_IDTE3 for -cpu max
+> Doesn't answer my question, so let me try again :)
+>
+> In your commit message, you explain "it is last so existing
+> SYS_EMU_TARGET_* values stay put".  They do, but why is that useful?
+
+Just to keep the pre-existing enum value not changed, yeap, not that useful=
+.
+I'll drop this misleading comment. Another choice is keep none
+as the first enum value, so it's always "0", maybe that's better?
+
 >
 
 
+--
+         =E6=AD=A4=E8=87=B4
+=E7=A4=BC
+=E7=BD=97=E5=8B=87=E5=88=9A
+Yours
+    sincerely,
+Yonggang Luo
 
-Applied to target-arm.next, thanks.
+--000000000000450763065c8a192b
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 
--- PMM
+<div dir=3D"ltr"><br><br>On Mon, Sep 28, 2026 at 8:18=E2=80=AFPM Markus Arm=
+bruster &lt;<a href=3D"mailto:armbru@redhat.com">armbru@redhat.com</a>&gt; =
+wrote:<br>&gt;<br>&gt; Yonggang Luo &lt;<a href=3D"mailto:luoyonggang@gmail=
+.com">luoyonggang@gmail.com</a>&gt; writes:<br>&gt;<br>&gt; &gt; On Mon, Se=
+p 28, 2026 at 7:48=E2=80=AFPM Markus Armbruster &lt;<a href=3D"mailto:armbr=
+u@redhat.com">armbru@redhat.com</a>&gt; wrote:<br>&gt; &gt;&gt;<br>&gt; &gt=
+;&gt; Yonggang Luo &lt;<a href=3D"mailto:luoyonggang@gmail.com">luoyonggang=
+@gmail.com</a>&gt; writes:<br>&gt; &gt;&gt;<br>&gt; &gt;&gt; &gt; Add a non=
+e target for when no TargetInfo is selected. It is last<br>&gt; &gt;&gt; &g=
+t; so existing SYS_EMU_TARGET_* values stay put, and it is not a<br>&gt; &g=
+t;&gt; &gt; qemu-system- executable name. target_is_none() and target_none(=
+)<br>&gt; &gt;&gt; &gt; report that state.<br>&gt; &gt;&gt;<br>&gt; &gt;&gt=
+; Why does it matter that existing SYS_EMU_TARGET_* stay put?<br>&gt; &gt;<=
+br>&gt; &gt; We need a state that not a real CPU target is selected( I call=
+ed it none),<br>&gt; &gt; then we can use it to list all targets. for examp=
+le, do query-targets.<br>&gt; &gt; query-machines(all machines for all targ=
+ets).<br>&gt; &gt; Any better ways to handle it would be appreciated, I am =
+not choosing to set<br>&gt; &gt; it to NULL because<br>&gt; &gt; that would=
+ cause too much NULL-check error, as the pre-existing code<br>&gt; &gt; pre=
+sume there is always a<br>&gt; &gt; CPU target present.<br>&gt;<br>&gt; Doe=
+sn&#39;t answer my question, so let me try again :)<br>&gt;<br>&gt; In your=
+ commit message, you explain &quot;it is last so existing<br>&gt; SYS_EMU_T=
+ARGET_* values stay put&quot;.=C2=A0 They do, but why is that useful?<br><b=
+r>Just to keep the pre-existing enum value not changed, yeap, not that usef=
+ul.<br>I&#39;ll drop this misleading comment. Another choice is keep none<b=
+r>as the first enum value, so it&#39;s always &quot;0&quot;, maybe that&#39=
+;s better?<br><br>&gt;<br><br><br>--<br>=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0=
+=E6=AD=A4=E8=87=B4<br>=E7=A4=BC<br>=E7=BD=97=E5=8B=87=E5=88=9A<br>Yours<br>=
+=C2=A0 =C2=A0 sincerely,<br>Yonggang Luo</div>
+
+--000000000000450763065c8a192b--
 

@@ -4,92 +4,92 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2AB41CA5FA2
-	for <qemu-arm@archiver.kernel.org>; Mon, 28 Sep 2026 13:31:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7E7FEC9833F
+	for <qemu-arm@archiver.kernel.org>; Mon, 28 Sep 2026 13:32:48 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xBBRT-0004Ut-0P; Mon, 28 Sep 2026 09:30:51 -0400
+	id 1xBBSv-0004yj-RH; Mon, 28 Sep 2026 09:32:22 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1xBBRO-0004U5-Re
- for qemu-arm@nongnu.org; Mon, 28 Sep 2026 09:30:46 -0400
+ id 1xBBSs-0004yN-MV
+ for qemu-arm@nongnu.org; Mon, 28 Sep 2026 09:32:18 -0400
 Received: from mail-yx2-x10.google.com ([2607:f8b0:4864:41::10])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1xBBRM-000847-EN
- for qemu-arm@nongnu.org; Mon, 28 Sep 2026 09:30:46 -0400
+ id 1xBBSq-00089h-PB
+ for qemu-arm@nongnu.org; Mon, 28 Sep 2026 09:32:18 -0400
 Received: by mail-yx2-x10.google.com with SMTP id
- 956f58d0204a3-66e56a1b327so2348046d50.0
- for <qemu-arm@nongnu.org>; Mon, 28 Sep 2026 06:30:43 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1790602242; cv=none;
+ 956f58d0204a3-66f7f72a284so2812472d50.2
+ for <qemu-arm@nongnu.org>; Mon, 28 Sep 2026 06:32:16 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1790602335; cv=none;
  d=google.com; s=arc-20260327;
- b=aksb7Xjns2K4bvnxyOUAfDHGlMZliokiq1siBDvi0UHCZv5K3JkGmqalw8iEyCtZhA
- eodkahKc3JRix2/REEKJrI9O88Qx2PRwe2mqF8r6BegQGUyO3h1ee8HOzBFSb/hdFG7r
- uosxqul4r2PKiQ7Vz9cYsMyUmAfa2BRZ7h+7faFu+zC6Uklkg3YwxAPm9aIl7WuRl0cS
- rtMK18AabMG52Ajr72RF1LkHxBtnU1IXdDUyngiQBiHS609Qll7i4ro9LG6xjTj1dmhu
- QFB2CNtT8tPk5fzzc04MISLoVFlF5BzkCVbIzkyCriq1pgZkHJIqcwtRSn5KlpQQBmS3
- Rhdg==
+ b=UlBe0LnC3dMVcQ0AAO/WEtxuswSejqOivxL4d4AKMEF13f7kJAbEYCzqU/qySIgmj7
+ lOrNNgh98P0ioXO5zqTPLaSmKpMlHjrF4xJHj5twC7CO3HoG0wKFSuPwNSKZaF86Fj/1
+ h3GzPrkteKQU01rAUD8dPk6hGs8B3bH7OalF+Y3mvvrya1r77+VuBTgryRiaD6RklSA3
+ qWtCpU405JTxZ57SLrqQpg+acymdjZzuZH5fa/Seb1JHzo6vRtXFyRwTxZ4HsKgJ4Srp
+ HrynhUry+fYu2O/sS8DtGy9Vjdza5NLz7hiEovyOGmYPJ6FKGjni1rnNPIGyRDIRgYvK
+ z0cQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
  s=arc-20260327; 
  h=cc:to:subject:message-id:date:from:in-reply-to:references
  :mime-version:dkim-signature;
- bh=F61TigGnQSYhF0wVQMn6Z/FYAGBBgBYsjxIbXVVaoU0=;
- fh=FhwNYgUi8z2vYhjjSCi3tL5T4IpvpiWcSDCHQk+icZY=;
- b=DlRZDpvLS6ejLLMAnafgXjd+YVPUjjhn522RE4jQ5tzrOrZJd3VCTdXIVr5so4W9NM
- RrSp+Wwl2Odk5GD+hir9/6XeXcAIOgMNgXwrwdUDEwKuqUhRxgILo5NN46qr4KpGJNk7
- bGYFET+r9qK+foAG/s25Q1Ur1Vq5srAwEOA/rH8KMGL+ZeVWBNTBTiiu4d/dc5RYY16b
- MEvyb03J93PEe8WCbJqnbjhoudUKaT+cR+Iil2UMNuahKccFp3XqsePggJO/pt5h4fJ8
- 8VRQyzpCBziGFJ5bw7zChPiX+IFfJShWeOARTiCIier6SCqGQQe72oKWOjlvBpmx1z4P
- 7ClQ==; darn=nongnu.org
+ bh=S2x4BjPysJO/R7Swhc9yotr0VmBgmUO5DB5in0JygH4=;
+ fh=oeKfNlVrJq79hD+yTQCycx4RS4j55JOdJIPMJbXEpzU=;
+ b=oYjzZ6mfkVaK8Paf/7ibMMZe59E8mcKCqFmG42Dm38vffL2r+UDLI/lxwlq2ViIj0R
+ by6ZgRkYsDb5uc5hWLR230AzYHXQOJXAlFxjHcX1Tio3989y/dZGIXY2hzd3V8qjZjh3
+ y5mzk6vT/CMRJwJ/1PBDpXeppIAqgmbnViDi3lxnDFG3h1IU9/6y2+r9tSDxsm29t9z0
+ 0cXFt8I+AFSQif6TeRiLxniaVt/A0QUVro2vFmh/eGVbTUqKTW3GGNBdpNOW5CRUvvV5
+ CWx1yN4Oad0MKFFAz+TBZK00IrQTP+Kac26QuBQQTwaknPnEjVm8cXbNhcUf9SwCd1Kp
+ 9Uew==; darn=nongnu.org
 ARC-Authentication-Results: i=1; mx.google.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1790602242; x=1791207042; darn=nongnu.org;
+ d=linaro.org; s=google; t=1790602335; x=1791207135; darn=nongnu.org;
  h=content-type:cc:to:subject:message-id:date:from:in-reply-to
  :references:mime-version:from:to:cc:subject:date:message-id:reply-to
- :content-type; bh=F61TigGnQSYhF0wVQMn6Z/FYAGBBgBYsjxIbXVVaoU0=;
- b=LDtmZNHtjw1ui2tsqwtpIbskx0x8klN/3LOj0CniGBc9xaIATpExDThdd86dm/i05i
- 2oYdraHSOz5GRXPP6bvbpfIU/xs42iED202fQMSgSb7n8eyl4aF0JfsHQadrW9BJIKZm
- PQU/rW/4Iq/+ZpeM0KVz+hhQQ2p/hz86J/pmxGCsEQ+ygDtxSQHfnTe433AoCnKRZGnT
- zhyzbJ8XdRrmNG4WKMD7HkC39cdjON1yIxz3a8gFtbOllPB/IoAdNCyAGhyx2DuRF3EW
- DX8f/8NUUHDJDNuBAva7AAMbwvPUOJfoq4GDMHspSE8A7NXgLEX8rGHSZwD+gILk0OCk
- CVIw==
+ :content-type; bh=S2x4BjPysJO/R7Swhc9yotr0VmBgmUO5DB5in0JygH4=;
+ b=y/4uh0lxRy0Vl4GqpHvzIVQAZUcMSNaJtfdVd9MBX8roKIiAR0C2vPV7gVQb9Lsqog
+ hqMUWUtDLzww0WOElN641jZgpf4w879r0YQuQTnvWyBHB29YVoFZtATl2PnUcg7/JPvS
+ oi/nVsnFaKxHzr9Rb0tWQ/1ZB+67T6C6+YOvgDVGYpt5wucKrf8QtADyr/T5koQHQji7
+ ri4+RcMnEXgBxjeWrM8TdDZkpogm8E0k5HSJ/pS4A9b1KUzZuwEtOdtKsTUFXqXjOBhs
+ 1Z0oKNQnVJS+NJEgNl+QUWkY/6AMFxI/kfqV45SFmjdiiTIMCLWuwy61RU1ypFG7n8q6
+ koRQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20260707; t=1790602242; x=1791207042;
+ d=1e100.net; s=20260707; t=1790602335; x=1791207135;
  h=content-type:cc:to:subject:message-id:date:from:in-reply-to
  :references:mime-version:x-gm-gg:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to:content-type;
- bh=F61TigGnQSYhF0wVQMn6Z/FYAGBBgBYsjxIbXVVaoU0=;
- b=j3BqhaQ0psykkgOyf9ec6oVQkHGEJ6ZcVXi0lkg+SN0pjtNeGNAPiJ3PUrMIjSoUtj
- LcMVwGxR9Y+oHsF8y4ssAAdusoxS06Av0S4HPvlhDgWHrThmCFjTvwGdiMdWm8pNDGXv
- AQED5B48oG5+bCqSTJu1M7xOflJ+IaEaZJuoRblYc3GfG8f6wat42NkF5ZuKdW0AVZPT
- gcyPSNAlvjatjbOaQICAg2yZ8yegEHd/CWhzXZ+qfc9fxCutm4Xq2iaAnRvHebDTTjPb
- CCRjvza6Hwm7YcKrrWKymxBOxAmIDLX31/6V0WsShBu2IhBmqWfTyuI/sH6nrY/vMeOx
- IHiw==
+ bh=S2x4BjPysJO/R7Swhc9yotr0VmBgmUO5DB5in0JygH4=;
+ b=oh+2YEbRcAsVLufrGPNpTRuZL9Jq6rmKKTv4s4dTx7CdT9APD39pXNfC/fw3I6EJGf
+ lHfa+BOIVw4GW8sddVQMtQA2lcKfLksuUcjIQXI6f7OQm4eF7rwsHPtIIm0blsWUVIxO
+ R1iKP80Tv/NWxpRLk6Xpzjr+foKts7OTgh6lCXBctUW5Yl0hF6swAvzdJmSMFutJK0hs
+ BYqKLeO325yQlaw329FX0Q95CT/0gjvn2ahlIbDnFMHU34xBM0OttpxfGSjtytXr5mUf
+ hnJmXRQ5kPoc4pNPZvQyvCBHVDxwTbIUA95IUZF7VEikKER4DLf7uSdMW6MZlTLx2t11
+ qFYw==
 X-Forwarded-Encrypted: i=1;
- AKwUvByitYPM5WzaCud7YhScfg0y+U3GG2kDGiGgBdXS7NOLs2xKtFMbyPijp5yw0HM38Bh7GOg40bo8qg==@nongnu.org
-X-Gm-Message-State: AFq9FYKgiPI+Iv0UL9W0HM3VTE+ip/XVk/K2ZP1w8QJMm3cTZPCHhw4y
- clVHMEMTJKQ3GKhzbvxZUW9pxSWqEERZWhMf8xgmYgeJlKD8A8JYAVKTjie8KA6jnmQBJm+Nj+S
- MLDBZ9BuNziDhCDKtetR/J8PUODgWt30YLcVFkD7KZA==
-X-Gm-Gg: AYBFou0T3dNmUXYEHzlVQ7LmLsO3ik0KF1/+3eV89B0MH8JMEc1BQ8INsI66GKytcph
- Ujpqhg8rq85zzU5iXpuVRK+ara3rKz5jLd7zk4xC0uzdtpKvza/4TFQfn+v3LlEwhY7UMuAZEnr
- fByUtLalfjwPeCBe2lfKHHTMtsCThK7JMHqoGo5NO0Sd2OE/Dj+N3V4yp8visWK/q5wAPO9QUfR
- C1qlChv2nPanqMWWEqUhz8CECaAjFG95uresvIDdX6H7edkbDed4e+zyL5GBx5n1F4EjGk8JwFz
- x6YJhX/W1mst+8kPK1xbftxvuTGNAcn8cdj5jH6teIUhpDaVCH22SsP9Wil0xrZXMRhfH5FYyJy
- 1zSjyknvtrO03nvgpSmuo2bHu+Ys+tK81tuTxu5M=
-X-Received: by 2002:a05:690e:148d:b0:675:4453:fb45 with SMTP id
- 956f58d0204a3-675445405f2mr1366862d50.16.1790602242046; Mon, 28 Sep 2026
- 06:30:42 -0700 (PDT)
+ AKwUvBzPTmshDzzBac+FQiBjFnHUJmPH+E/hljK0NMJb7D8ZzPu4DXhHzS0bHPhgNYGyqSRJPIvjoqq/Qw==@nongnu.org
+X-Gm-Message-State: AFq9FYIN9I97t516rIUFTGboE9xI6qO5jQAGnAfIYqL53zniy1zXiQ5o
+ hMM5dse+Ne+oHeFPFixJdkqWUv6FQdk9Wgt1wFRUvC702EDTiAQ9fmfUFla8qR1VnO6j3WiUmPT
+ d9UHomKPxUDz+/2xVpYZNQE5dbrUsuUMoxJy1m7RfTz+MEU1L3KiQ
+X-Gm-Gg: AYBFou017L9YupZh0At6g1LRFqYD8AWZQxKi6Rvr0QTFvcIeEewIpih/4e6oUkQZEJV
+ JTjm+MLsTSVA9d8DmhWX0n79vtIVtbbechPfs/cB7L14jkfg+PxCv43K+oeJF/tWFvyT4mxnF5s
+ ckX+g2vDm+mlOpuyfQ5HPeSlNmOSTjD9MIBRBuz7RRJReZEHcadfvzTRld5ys3b6AsVyxJ35MM3
+ 4DVtZnUwvtRz7rFuyUt+L9SWLH9uCjPbP/olxVRQBn+KEjwh5BLJoYu8cPZnzB2V9glNvgIikzT
+ jfDkjF/JPV3Fa3BZT9AXra/gDl8IAB8xIbZbIDKXYjDLsH7sFpM8VESjf1zcz4+ciwPdVuQiJM7
+ Qdsh5ty6SIRTayThlRTGBnKgenTxdYEwvoQByLQPo
+X-Received: by 2002:a05:690e:dcc:b0:674:167d:4c8c with SMTP id
+ 956f58d0204a3-674167e32ccmr3144554d50.103.1790602335414; Mon, 28 Sep 2026
+ 06:32:15 -0700 (PDT)
 MIME-Version: 1.0
 References: <178983644340.22135.11298603231632238119-0@git.sr.ht>
- <178983644340.22135.11298603231632238119-2@git.sr.ht>
-In-Reply-To: <178983644340.22135.11298603231632238119-2@git.sr.ht>
+In-Reply-To: <178983644340.22135.11298603231632238119-0@git.sr.ht>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Mon, 28 Sep 2026 14:30:29 +0100
-X-Gm-Features: AclHuK-Y2UKJo6WZXmQDaSE5O3SHJlovVSHlpIt-ecOAGy96VYCb9U_rMNbHqus
-Message-ID: <CAFEAcA8W+h+0G5fqTyzOvbLss7_shkQ-OuDGgw867O=WPB5THw@mail.gmail.com>
-Subject: Re: [PATCH qemu 2/2] hw/char/exynos4210_uart: fix fifo overflow
+Date: Mon, 28 Sep 2026 14:32:03 +0100
+X-Gm-Features: AclHuK8spmh6a98nThSv0xBzDsOthcC0wyCC-u-fF7cOvOXEZhmdXem798Yn2K0
+Message-ID: <CAFEAcA_+BKABAFeTLgacVd0Q0TMxyD=2qyZn_+ia_6u232icag@mail.gmail.com>
+Subject: Re: [PATCH qemu 0/2] hw/char/exynos4210_uart: fix overflow in fifo
+ implementation
 To: "~jprx" <jravi@mit.edu>
 Cc: qemu-devel@nongnu.org, Fabiano Rosas <farosas@suse.de>, 
  Laurent Vivier <lvivier@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>, 
@@ -122,92 +122,33 @@ Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
 On Sat, 19 Sept 2026 at 17:47, ~jprx <jprx@git.sr.ht> wrote:
 >
-> From: jprx <jravi@mit.edu>
+> The Exynos 4210 UART FIFO implementation suffers from an overflow that
+> can occur when large buffers are sent into it. Specifically, this
+> overflow is caused by the underlying circular buffer implementation
+> making use of a store and retrieve pointer. When implemented this way, a
+> circular buffer's capacity is 1 less than the size of the buffer, but
+> the code as written assumes the entire buffer is available for storing
+> data.
 >
-> The Exynos 4210 UART FIFO implementation uses a circular buffer with a
-> store and retrieve pointer. When implemented this way, a circular
-> buffer's capacity is 1 less than the size of the backing buffer, because
-> there is no way to disambiguate the empty and full states (when the
-> store pointer == retrieve pointer).
+> If a large amount of data is sent into the UART when FIFO mode is
+> enabled, the FIFO may overflow before the guest has time to receive the
+> data, resulting in the first part of the message being lost.
 >
-> When exynos4210_uart_can_receive is called, it may report that the
-> entire is buffer is available for receiving data, as
-> fifo_empty_elements_number may incorrectly report that the FIFO capacity
-> is equal to the entire buffer size (rather than 1 less than the size).
+> This patch series includes a qtest that demonstrates the current
+> implementation suffers from an overflow that results in data truncation,
+> and a fix that switches the Exynos UART FIFO implementation for fifo8,
+> which does not suffer from this problem. After applying the suggested
+> fix, the test passes.
 >
-> If this happens, a full FIFO buffer's worth of data will be read into
-> the circular buffer, the store pointer will wrap around back to its
-> starting value, and the FIFO will reset back to the empty state. The
-> next time exynos4210_uart_can_receive is called, it will report the
-> entire buffer is empty instead of full, and promptly allow the data to
-> be overwritten before the guest has received it.
->
-> The consequence is that if a message is sent into the UART (eg. via a
-> chardev) longer than the FIFO's buffer length, the first part of the
-> message will be lost due to this overflowing behavior, and only the last
-> part of the message will be received.
->
-> This patch fixes this bug by refactoring the Exynos 4210 UART to make
-> use of the fifo8 implementation, which is implemented via a head pointer
-> and length field, and therefore has capacity equal to the buffer length
-> and is immune to this behavior.
->
-> The Exynos 4210 UART FIFO test now passes instead of timing out.
->
-> Signed-off-by: Joseph Ravichandran <jravi@mit.edu>
+> jprx (2):
+>   tests/qtest: add test for exynos4210 uart fifo overflow bug
+>   hw/char/exynos4210_uart: fix fifo overflow
 
-Thanks for this patch; as well as fixing the bug, it's much
-nicer that the device is no longer rolling its own FIFO code,
-as demonstrated by the diffstat.
-
-> ---
->
-> One thing I wasn't sure about is whether we need to save rx_capacity and
-> tx_capacity in the vmstate description. Since these are linked to the
-> rx-size and tx-size properties respectively I wasn't sure if they need
-> to be saved explicitly or not, so I didn't include them.
->
-> The only place either field gets used after the UART is realized is when
-> rx_capacity is read for a call to trace_exynos_uart_rxsize, but
-> otherwise the capacity info gets baked into the fifo8s after they are
-> created and should be covered by the VMSTATE_FIFO8.
-
-Yes, that's correct -- data that is constant for the life of the
-device (which includes most QOM property information) doesn't need
-to be in the migration state. The receiving end QEMU must be
-configured identically to the sending one, and so its property
-values will be the same.
-
-We don't migrate the tx fifo here, but we didn't before, and
-the code doesn't even use it, so that's fine (we would only want
-a TX fifo if anybody updated this UART model to avoid using
-qemu_chr_fe_write_all()).
-
->  static const VMStateDescription vmstate_exynos4210_uart = {
->      .name = "exynos4210.uart",
->      .version_id = 1,
->      .minimum_version_id = 1,
->      .post_load = exynos4210_uart_post_load,
->      .fields = (const VMStateField[]) {
-> -        VMSTATE_STRUCT(rx, Exynos4210UartState, 1,
-> -                       vmstate_exynos4210_uart_fifo, Exynos4210UartFIFO),
-> +        VMSTATE_FIFO8(rx, Exynos4210UartState),
->          VMSTATE_UINT32_ARRAY(reg, Exynos4210UartState,
->                               EXYNOS4210_UART_REGS_MEM_SIZE / sizeof(uint32_t)),
->          VMSTATE_END_OF_LIST()
-
-This is a change in the format of the data that goes out on the
-wire, which makes it a migration compatibility break. That's fine
-for this device, because we don't use it in any boards where
-we care about cross-QEMU-version compatibility. But it does mean
-we need to bump the value in version_id and minimum_version_id here,
-so that if a user does try the cross-version migration they get
-a useful error message about the version mismatch rather than
-silent wrong interpretation of the migration stream data.
-
-Other than that, this patch is good. So I'll do that version
-bump tweak when I apply it to target-arm.next, to save you needing
-to do a respin.
+Applied to target-arm.next, thanks (with the tweak noted in my
+reply to the second patch). I have reversed the order of the two
+patches, so that we fix the bug before adding the test case.
+Otherwise in the git history there would be a point where "make check"
+fails, which is awkward for "git bisect" and similar operations.
 
 thanks
 -- PMM

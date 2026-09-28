@@ -4,88 +4,96 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D5427C9833F
-	for <qemu-arm@archiver.kernel.org>; Mon, 28 Sep 2026 12:10:24 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0C3E8C9833F
+	for <qemu-arm@archiver.kernel.org>; Mon, 28 Sep 2026 12:12:15 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xBABL-0001N9-9n; Mon, 28 Sep 2026 08:10:07 -0400
+	id 1xBACI-0002Wn-Dt; Mon, 28 Sep 2026 08:11:06 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
- id 1xBAAI-00016o-UV
- for qemu-arm@nongnu.org; Mon, 28 Sep 2026 08:09:11 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
- id 1xBAAB-00064Q-ME
- for qemu-arm@nongnu.org; Mon, 28 Sep 2026 08:09:01 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1790597334;
- h=from:from:reply-to:reply-to:subject:subject:date:date:
- message-id:message-id:to:to:cc:cc:mime-version:mime-version:
- content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=N44NDMt7gH7wG13kKZD9HCNCFqKm7fCYbpbuur6UAAU=;
- b=Dti3AbdeRGsWLrWCTP/sOZ7DderBxXMlZ0AM9nICw5Q/5OnWLVBFxKaKn7EZd3oYKZpMJK
- +9ozR5F2uwSorfOJhRjekuUQeQE10AyxZuSMR+zubZA+5lO/B4rs+Rpt0e+355I04FRd8k
- 6azmlFf5pOgx/5ZcAgkhYx0nDiNbLBk=
-Received: from mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
- relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-570-j6ntZwIoPMKF3X_682JZ8w-1; Mon,
- 28 Sep 2026 08:08:50 -0400
-X-MC-Unique: j6ntZwIoPMKF3X_682JZ8w-1
-X-Mimecast-MFC-AGG-ID: j6ntZwIoPMKF3X_682JZ8w_1790597329
-Received: from mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com
- (mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.111])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
- (No client certificate requested)
- by mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id CFDF318009D6; Mon, 28 Sep 2026 12:08:48 +0000 (UTC)
-Received: from redhat.com (headnet03.pony-001.prod.iad2.dc.redhat.com
- [10.2.32.114])
- by mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 5D0161800345; Mon, 28 Sep 2026 12:08:45 +0000 (UTC)
-Date: Mon, 28 Sep 2026 13:08:42 +0100
-From: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
-To: Markus Armbruster <armbru@redhat.com>
-Cc: Yonggang Luo <luoyonggang@gmail.com>, qemu-devel@nongnu.org,
- Richard Henderson <richard.henderson@linaro.org>,
- Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@oss.qualcomm.com>,
- "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
- Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>,
- Fabiano Rosas <farosas@suse.de>, Laurent Vivier <lvivier@redhat.com>,
- Paolo Bonzini <pbonzini@redhat.com>,
- Alistair Francis <alistair@alistair23.me>,
- Peter Maydell <peter.maydell@linaro.org>,
- =?utf-8?Q?Marc-Andr=C3=A9?= Lureau <marcandre.lureau@redhat.com>,
- qemu-arm@nongnu.org, kvm@vger.kernel.org
-Subject: Re: [PATCH v4 46/55] qapi: add query-targets
-Message-ID: <arpYyt5_K7fGfQYz@redhat.com>
-References: <20260926070057.1234-1-luoyonggang@gmail.com>
- <20260926070057.1234-47-luoyonggang@gmail.com>
- <aro93NuZBXYGbD33@redhat.com> <87se2tfurc.fsf@pond.sub.org>
+ (Exim 4.90_1) (envelope-from <shentey@gmail.com>) id 1xBAC0-00022m-NG
+ for qemu-arm@nongnu.org; Mon, 28 Sep 2026 08:10:54 -0400
+Received: from mail-wm2-x11.google.com ([2a00:1450:4864:31::11])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <shentey@gmail.com>) id 1xBABy-0006C1-H0
+ for qemu-arm@nongnu.org; Mon, 28 Sep 2026 08:10:48 -0400
+Received: by mail-wm2-x11.google.com with SMTP id
+ 5b1f17b1804b1-49d1fb0cf5eso27849925e9.3
+ for <qemu-arm@nongnu.org>; Mon, 28 Sep 2026 05:10:45 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=gmail.com; s=20251104; t=1790597444; x=1791202244; darn=nongnu.org;
+ h=content-transfer-encoding:content-type:mime-version:message-id
+ :references:in-reply-to:subject:cc:to:from:date:from:to:cc:subject
+ :date:message-id:reply-to:content-type;
+ bh=8uLsWFBAwoNnVuqk/hxCl5YS7RooPa8d8u1LGQIXtd8=;
+ b=MBHSDRXoS2G5qlFelTiWp4dNm5IiYmeIdcChasAVnqKbPZwlYcspIEsIYfXFh1I+Ij
+ T7gngDgBp+lVfBsnolHAlhuBZZ7o/ssIoJws5gBcnyLzp2psTgDMMn5TZNGeEs78HVFi
+ QnbesZ/fsiB322cYiR3QOgweIJDQa+jwjdOiJFlVDCN8Q/Bks4izrCm6VIZM8BZsJWix
+ q1PcNqxEOOj7fgDTV0Eme/Pg7+u3JVhFnan5ORFv08P2fx5YHpFTEdL16LR90v4Wvc3O
+ s17N2SSUM3lnQ+hTWtMhbSH5Ppk5XgSvyjwz9/RC4LQncdwgB9DDiGfMuHjS1Qr0+7TK
+ JZRA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20260707; t=1790597444; x=1791202244;
+ h=content-transfer-encoding:content-type:mime-version:message-id
+ :references:in-reply-to:subject:cc:to:from:date:x-gm-gg
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
+ :content-type;
+ bh=8uLsWFBAwoNnVuqk/hxCl5YS7RooPa8d8u1LGQIXtd8=;
+ b=q0gP83Fuzk+O4A3BsGaDh2pAtYB2mJbXJHdfwvHLmWUmrTjTxqF5dGXIf3xIXQIn6x
+ KcIhqgmjB47Nj5DnjURfEHAdc4oZt2ksmsVMvlyp9spIahvIM9NOGwQSHw3m9Jrzh8Ew
+ drWV7agYt7m6UoFejHg4a/hYVz0GcjA1G8Uzy7iZ22OqPcIsnIFumUbrsuw/E7JqJ+oZ
+ A0eMHUhJuumGOYhnLkrYSFVio16ktvGjUy5pua207cOvvUfdOY19wCriI6xjUtdIlJV/
+ F/rWykNLJYNsXYLw7uRZQ693HzYdy0VvD8RR1B495N+uXmpfgbXiTaVI5fuLOvFFcncz
+ R38A==
+X-Gm-Message-State: AFuF++nAMpbTEAu4lw6H/h7P+5FLe2QjKnDeBMjdyvi9Zdptz24jdls+
+ 3+B1Hwf3Pkbyx2U30mGkLmG8qmqicKgNrfwi7/UIOMO/LZOIx4WuDt5w
+X-Gm-Gg: AYBFou246Kq66iYvcdn5FWrx1w8qNLqgk5DEAeWjP+UcJS33r0vkLdSi5fUW3QLe8+C
+ 9JfKPR4XNmGTdjCYeNWN1d0k0p+BcfZENEXuH17b0SJO0fNxkNqzrZy4mKfZ33CFzrjyQVFh60Z
+ Gr9K0jPUpW0sJUSJ22Yr7xLL6pBhwvWxyXleCkAhoDlr3bBmjx4NR1F4k0QM3e6etZVteMpWGnY
+ bH5EeIsFiNXjp5ETrY9SaDGnQwzttR+YW4VFTYdC3dz6lfIl6yVvaYE05Gx5aniTtq6K7LCQ48T
+ DKCO6QapTSjCUTZNDVNPujSJ6UzPYyUXBZUDrjnhxnLpWUMtozmvOVKvl9p5c01WmqVdJgwJ1Re
+ W4jhkYE31s92z6l1pd68uzb7w7L7u0iICipgCH/HV4XBu+0PmuagsKA/R11Xug8WxaItN1qadu3
+ GypwpKOcP4jx0UDqGacHj12oGYMx3xJReW/udwYMNeUIdZUDdTK/uLq5UrwvJC1VfOWcdse7o8D
+ SHzcm6eE6Qnuc3KMAtyBW8QO+rfVwOUp6rrsduDkF3eP+iNjQQZzqNDwoMKSrELaw==
+X-Received: by 2002:a05:600c:4754:b0:49d:1e09:694a with SMTP id
+ 5b1f17b1804b1-49fe66d2ce2mr231107505e9.11.1790597444170; 
+ Mon, 28 Sep 2026 05:10:44 -0700 (PDT)
+Received: from ehlo.thunderbird.net
+ (business-090-187-110-129.90.187.pools.vodafone-ip.de. [90.187.110.129])
+ by smtp.gmail.com with ESMTPSA id
+ ffacd0b85a97d-489bd7b1df0sm6670310f8f.31.2026.09.28.05.10.43
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Mon, 28 Sep 2026 05:10:43 -0700 (PDT)
+Date: Mon, 28 Sep 2026 10:41:53 +0000
+From: Bernhard Beschow <shentey@gmail.com>
+To: Gaurav Sharma <gaurav.sharma_7@nxp.com>,
+ "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>
+CC: "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
+ "pbonzini@redhat.com" <pbonzini@redhat.com>,
+ "peter.maydell@linaro.org" <peter.maydell@linaro.org>,
+ "pierrick.bouvier@oss.qualcomm.com" <pierrick.bouvier@oss.qualcomm.com>
+Subject: =?US-ASCII?Q?RE=3A_=5BEXT=5D_Re=3A_=5BPATCHv3_00/?=
+ =?US-ASCII?Q?10=5D_hw/arm=3A_Adding_Cortex-M?=
+ =?US-ASCII?Q?7_Asymmetric_Multiprocessing_boot_support_for_i=2EMX8MP?=
+In-Reply-To: <DB8PR04MB71779F207064411F31E56DBC87822@DB8PR04MB7177.eurprd04.prod.outlook.com>
+References: <20260920115458.481605-1-gaurav.sharma_7@nxp.com>
+ <DC17DA54-3C43-4955-A38F-6FADFAA2EFF5@gmail.com>
+ <DB8PR04MB71779F207064411F31E56DBC87822@DB8PR04MB7177.eurprd04.prod.outlook.com>
+Message-ID: <473ADFC2-3FC7-4CB6-A9B1-D554A6EA2E05@gmail.com>
 MIME-Version: 1.0
-In-Reply-To: <87se2tfurc.fsf@pond.sub.org>
-User-Agent: Mutt/2.4.0 (2026-06-19)
-X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.111
-X-Mimecast-MFC-PROC-ID: yeSf4iKm_4P9vozJbYJJ_g70VTNjnh3AW5G-giPm_AE_1790597329
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=berrange@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -22
-X-Spam_score: -2.3
+Content-Type: text/plain;
+ charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2a00:1450:4864:31::11;
+ envelope-from=shentey@gmail.com; helo=mail-wm2-x11.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.3 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.238,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -98,78 +106,187 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-To: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Mon, Sep 28, 2026 at 02:03:19PM +0200, Markus Armbruster wrote:
-> Daniel P. Berrangé <berrange@redhat.com> writes:
-> 
-> > On Sat, Sep 26, 2026 at 03:00:45PM +0800, Yonggang Luo wrote:
-> >> query-targets lists each linked target, including none, with its
-> >> arch, endianness, and the machines that target accepts.
-> >> 
-> >> Signed-off-by: Yonggang Luo <luoyonggang@gmail.com>
-> >> ---
-> >>  hw/core/machine-qmp-cmds.c | 30 ++++++++++++++++++++++++++++++
-> >>  qapi/machine.json          | 35 +++++++++++++++++++++++++++++++++++
-> >>  2 files changed, 65 insertions(+)
-> >
-> >
-> >> diff --git a/qapi/machine.json b/qapi/machine.json
-> >> index 6aaa2af709a..d8cdea6203e 100644
-> >> --- a/qapi/machine.json
-> >> +++ b/qapi/machine.json
-> >> @@ -307,6 +307,41 @@
-> >>  ##
-> >>  { 'command': 'query-target', 'returns': 'QemuTargetInfo' }
-> >>  
-> >> +##
-> >> +# @TargetMachines:
-> >> +#
-> >> +# One registered system target and the machines that can run on it.
-> >> +#
-> >> +# @arch: the target architecture
-> >> +#
-> >> +# @endianness: the target endianness
-> >> +#
-> >> +# @machines: machine type names, not aliases
-> >> +#
-> >> +# Since: 11.2
-> >> +##
-> >> +{ 'struct': 'TargetMachines',
-> >> +  'data': { 'arch': 'SysEmuTarget',
-> >> +            'endianness': 'EndianMode',
-> >> +            'machines': ['str'] } }
-> >
-> > We already have  'QemuTargetInfo' struct which is used
-> > with 'query-target', that should also be used with the
-> > new 'query-targets' command.
-> >
-> > We need to add the 'endianness' field to QemuTargetInfo.
-> >
-> > I don't think that we need to report machines though.
-> > We already have 'query-machines' which gives much broader
-> > information on the machines. "MachineInfo" needs to
-> > gain
-> >
-> >    "targets": ["SysEmuTarget"]
-> >
-> > to list which target(s) a machine can be used with.
-> 
-> Do we need query-targets at all?  What information does it provide that
-> cannot easily be computed from query-machines once we add @target and
-> @endiannes to MachineInfo?
 
-Hmm, yes, I need to get out of the "target oriented" mindset,
-"machines" are the top level object of interest, and target
-just a property of each.
 
-With regards,
-Daniel
--- 
-|: https://berrange.com       ~~        https://hachyderm.io/@berrange :|
-|: https://libvirt.org          ~~          https://entangle-photo.org :|
-|: https://pixelfed.art/berrange   ~~    https://fstop138.berrange.com :|
+Am 23=2E September 2026 17:24:58 UTC schrieb Gaurav Sharma <gaurav=2Esharm=
+a_7@nxp=2Ecom>:
+>
+>
+>
+>NXP Confidential
+>> -----Original Message-----
+>> From: Bernhard Beschow <shentey@gmail=2Ecom>
+>> Sent: 22 September 2026 11:42
+>> To: Gaurav Sharma <gaurav=2Esharma_7@nxp=2Ecom>; qemu-devel@nongnu=2Eor=
+g
+>> Cc: qemu-arm@nongnu=2Eorg; pbonzini@redhat=2Ecom;
+>> peter=2Emaydell@linaro=2Eorg; pierrick=2Ebouvier@oss=2Equalcomm=2Ecom
+>> Subject: [EXT] Re: [PATCHv3 00/10] hw/arm: Adding Cortex-M7 Asymmetric
+>> Multiprocessing boot support for i=2EMX8MP
+>>
+>> Caution: This is an external email=2E Please take care when clicking li=
+nks or
+>> opening attachments=2E When in doubt, report the message using the 'Rep=
+ort
+>> this email' button
+>>
+>>
+>> Am 20=2E September 2026 11:54:48 UTC schrieb Gaurav Sharma
+>> <gaurav=2Esharma_7@nxp=2Ecom>:
+>>
+>> Hi Gaurav,
+>>
+>> >Changes in v1:
+>> >
+>> >This series adds Asymmetric Multiprocessing (AMP) boot support for the
+>> >Cortex-M7 core on the i=2EMX8MP SoC=2E The M7 firmware can be loaded a=
+nd
+>> >started from Linux running on the Cortex-A53 cores via the remoteproc
+>> >framework=2E
+>> >
+>> >The series introduces the following peripheral models needed for AMP:
+>> >  - GPC (General Power Controller)
+>> >  - GPR (General Purpose Registers)
+>> >  - SRC (System Reset Controller) authored by Bernhard Beschow
+>> ><shentey@gmail=2Ecom>
+>> >  - MU (Messaging Unit)
+>> >  - Extends the CCM with M7 clock outputs and wires into the i=2EMX8MP
+>> >SoC
+>> >  - Enable Cortex-M7 boot in i=2EMX8MP EVK functional test
+>> >
+>> >Changes in v2:
+>> >
+>> >- Removed the usage of device_class_set_legacy_reset in imx8mp
+>> >gpc,gpr,mu and
+>> >  src=2E
+>> >- Removed the usage of 'smp' , 'maxcpus' and 'enable-cm7' to make the
+>> >  invocation simpler=2E
+>> >- Cleaned up imx8mp_src by removing redundant/unused code=2E
+>> >- Updated Maintainers and improved the imx8mp documentation
+>> >
+>> >Changes in v3:
+>> >
+>> >- Added a new patch for smp removal from test_imx8mp_evk=2Epy=2E
+>> >- Added a new patch to introduce IRQ splitting for i=2EMX8MP AMP
+>> >interrupt
+>> >  routing=2E
+>> >- Added a new patch to rename FSL_IMX8MP_NUM_CPUS to
+>> >FSL_IMX8MP_NUM_A53,
+>> >  since M7 is being introduced now=2E
+>> >- In GPR, parent_phases moved from global variable to class struct
+>> >- M7 reset handling moved from the machine to SRC device model=2E
+>> >- Added ITCM and DTCM memory regions to support zephyr firmware
+>> loading=2E
+>> >
+>> >Signed-off-by: Gaurav Sharma <gaurav=2Esharma_7@nxp=2Ecom>
+>> >
+>> >Bernhard Beschow (1):
+>> >  hw/misc: Add SRC (System Reset Controller) to i=2EMX8MP
+>>
+>> I think you can claim ownership of the SRC since I think only non-
+>> copyrightable changes are left from the original commit=2E
+>>
+>
+>Sure=2E I will update the authorship accordingly in v4=2E Your sign-off c=
+an still be retained right?
 
+I think there is no need for retaining it=2E
+
+>
+>> >
+>> >Gaurav Sharma (9):
+>> >  hw/misc: Add i=2EMX8MP GPC (General Power Controller) IP
+>> >  hw/misc: Add GPR (General Purpose Register) IP to iMX8MP
+>> >  hw/misc: Add MU (Messaging Unit) IP to i=2EMX8MP device model
+>> >  hw/misc: Extend i=2EMX8MP CCM with Cortex-M7 clock outputs
+>>
+>> >  hw/arm: Enable Cortex-M7 AMP boot on i=2EMX8MP
+>>
+>> This should be the last patch of the series=2E The paches below are ref=
+actorings
+>> and should rather be the first patches in the series=2E Right now they =
+depend on
+>> changes in this series which prevents them from being cherry-picked for=
+ early
+>> merge=2E
+>>
+>> Generally, touching the same code twice in a series is discuraged and s=
+hould
+>> only be done with good reasons=2E In favor of a clean history QEMU is n=
+ot
+>> interested in the detours during development and instead we pretend as =
+if we
+>> knew the shortest path towards a goal in the first place=2E Makes sense=
+?
+>>
+>> Best regards,
+>> Bernhard
+>>
+>
+>Yes, it does make sense=2E Thank you for the guidance=2E In v4 I will reo=
+rder the
+>series so that all independent refactoring patches come first and the
+>CM7 boot patch comes last=2E Something like this:-
+>
+>0001-0005 hw/misc: GPC, GPR, SRC, MU, CCM (unchanged)
+>  0006         hw/arm: Add ITCM/DTCM memory regions (new, split from 0009=
+)
+>  0007         hw/arm: Rename FSL_IMX8MP_NUM_CPUS to FSL_IMX8MP_NUM_A53
+
+Make sure it only contains the renaming of the enum=2E CM7 stuff should be=
+ postponed to the patch integrating it=2E
+
+>  0008         hw/arm: Add IRQ splitter for AMP interrupt routing
+>  0009         MAINTAINERS: Merge MCIMX8MM-EVK and MCIMX8MP-EVK entries
+>  0010         tests/functional: Fix i=2EMX8MP EVK SMP configuration
+>  0011         hw/arm: Enable Cortex-M7 AMP boot on i=2EMX8MP
+
+I'd move patches 9, 7, and 10 to the front since they're independent refac=
+torings=2E This allows them to be pulled independently=2E Other than that t=
+he ordering looks fine to me=2E
+
+Best regards,
+Bernhard
+
+>
+>>
+>> >  hw/arm: Rename FSL_IMX8MP_NUM_CPUS to FSL_IMX8MP_NUM_A53
+>> >  MAINTAINERS: Merge MCIMX8MM-EVK and MCIMX8MP-EVK entries
+>> >  hw/arm: Add IRQ splitter for i=2EMX8MP AMP interrupt routing
+>> >  tests/functional: Fix i=2EMX8MP EVK SMP configuration
+>> >
+>> > MAINTAINERS                                 |  13 +-
+>> > docs/system/arm/imx8m=2Erst                   | 188 ++++++++-
+>> > hw/arm/Kconfig                              |   4 +
+>> > hw/arm/fsl-imx8mp=2Ec                         | 227 +++++++++--
+>> > hw/arm/imx8mp-evk=2Ec                         |   5 +-
+>> > hw/misc/Kconfig                             |  12 +
+>> > hw/misc/imx8mp_ccm=2Ec                        |   9 +
+>> > hw/misc/imx8mp_gpc=2Ec                        | 146 +++++++
+>> > hw/misc/imx8mp_gpr=2Ec                        | 155 ++++++++
+>> > hw/misc/imx8mp_mu=2Ec                         | 328 ++++++++++++++++
+>> > hw/misc/imx8mp_src=2Ec                        | 411 +++++++++++++++++=
++++
+>> > hw/misc/meson=2Ebuild                         |   4 +
+>> > hw/misc/trace-events                        |   5 +
+>> > include/hw/arm/fsl-imx8mp=2Eh                 |  33 +-
+>> > include/hw/misc/imx8mp_ccm=2Eh                |   3 +
+>> > include/hw/misc/imx8mp_gpc=2Eh                |  34 ++
+>> > include/hw/misc/imx8mp_gpr=2Eh                |  62 +++
+>> > include/hw/misc/imx8mp_mu=2Eh                 |  53 +++
+>> > include/hw/misc/imx8mp_src=2Eh                |  52 +++
+>> > tests/functional/aarch64/test_imx8mp_evk=2Epy |   1 -
+>> > 20 files changed, 1696 insertions(+), 49 deletions(-) create mode
+>> > 100644 hw/misc/imx8mp_gpc=2Ec create mode 100644 hw/misc/imx8mp_gpr=
+=2Ec
+>> > create mode 100644 hw/misc/imx8mp_mu=2Ec create mode 100644
+>> > hw/misc/imx8mp_src=2Ec create mode 100644
+>> include/hw/misc/imx8mp_gpc=2Eh
+>> > create mode 100644 include/hw/misc/imx8mp_gpr=2Eh create mode 100644
+>> > include/hw/misc/imx8mp_mu=2Eh create mode 100644
+>> > include/hw/misc/imx8mp_src=2Eh
+>> >
 

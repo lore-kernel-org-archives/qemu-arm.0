@@ -4,84 +4,106 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 368C2C9833F
-	for <qemu-arm@archiver.kernel.org>; Mon, 28 Sep 2026 10:14:19 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 608EBC9833E
+	for <qemu-arm@archiver.kernel.org>; Mon, 28 Sep 2026 10:32:01 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xB8N8-0007PF-Nb; Mon, 28 Sep 2026 06:14:14 -0400
+	id 1xB8e8-0003D1-Hh; Mon, 28 Sep 2026 06:31:49 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
- id 1xB8N2-0007N1-9l
- for qemu-arm@nongnu.org; Mon, 28 Sep 2026 06:14:05 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
- id 1xB8N0-0001ej-9o
- for qemu-arm@nongnu.org; Mon, 28 Sep 2026 06:14:03 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1790590440;
- h=from:from:reply-to:reply-to:subject:subject:date:date:
- message-id:message-id:to:to:cc:cc:mime-version:mime-version:
- content-type:content-type:in-reply-to:in-reply-to:  references:references;
- bh=WfspKtklugh/OYlKtKuxjrPv/b7W5PFR1FRmVmYBQRs=;
- b=EX9uSR/2mpihPkKFA8/uBHiE+aR//AMaWiI1F6WJoOt7hMZVCu3L1j5zj+8Pq1PpAZKBx0
- S8MnftbzMms8FACzrGhLrsQ9GMMWqp2eT7uflpsMT9xWqhy+sKdOIR1BhonoKtKmXio+v8
- fITKALVNw3/rTm4vZfyWGCLJEF9Ay6I=
-Received: from mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
- relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-322-3q5wHjZTPt24_x-CQkTmEA-1; Mon,
- 28 Sep 2026 06:13:57 -0400
-X-MC-Unique: 3q5wHjZTPt24_x-CQkTmEA-1
-X-Mimecast-MFC-AGG-ID: 3q5wHjZTPt24_x-CQkTmEA_1790590435
-Received: from mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com
- (mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.17])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
- (No client certificate requested)
- by mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 1D72B1954229; Mon, 28 Sep 2026 10:13:55 +0000 (UTC)
-Received: from redhat.com (headnet03.pony-001.prod.iad2.dc.redhat.com
- [10.2.32.114])
- by mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 848C01956095; Mon, 28 Sep 2026 10:13:51 +0000 (UTC)
-Date: Mon, 28 Sep 2026 11:13:48 +0100
-From: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
-To: Yonggang Luo <luoyonggang@gmail.com>
-Cc: qemu-devel@nongnu.org, Richard Henderson <richard.henderson@linaro.org>,
- Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@oss.qualcomm.com>,
- "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
- Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>,
- Fabiano Rosas <farosas@suse.de>, Laurent Vivier <lvivier@redhat.com>,
- Paolo Bonzini <pbonzini@redhat.com>,
- Alistair Francis <alistair@alistair23.me>,
- Peter Maydell <peter.maydell@linaro.org>,
- =?utf-8?Q?Marc-Andr=C3=A9?= Lureau <marcandre.lureau@redhat.com>,
- qemu-arm@nongnu.org, kvm@vger.kernel.org
-Subject: Re: [PATCH v4 46/55] qapi: add query-targets
-Message-ID: <aro93NuZBXYGbD33@redhat.com>
-References: <20260926070057.1234-1-luoyonggang@gmail.com>
- <20260926070057.1234-47-luoyonggang@gmail.com>
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1xB8e5-0003CR-9p
+ for qemu-arm@nongnu.org; Mon, 28 Sep 2026 06:31:41 -0400
+Received: from mail-yx2-x10.google.com ([2607:f8b0:4864:41::10])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1xB8e3-0003mI-Qo
+ for qemu-arm@nongnu.org; Mon, 28 Sep 2026 06:31:41 -0400
+Received: by mail-yx2-x10.google.com with SMTP id
+ 956f58d0204a3-66e4ab22370so2225023d50.3
+ for <qemu-arm@nongnu.org>; Mon, 28 Sep 2026 03:31:39 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1790591498; cv=none;
+ d=google.com; s=arc-20260327;
+ b=LisgljHX47ao6Fw7h0904lQvHiyTzGLCXTbpg/A88J6nBGmdNdM8HdqvPmjeceRCjl
+ g4Z8ENmkLzsZ20sdsBbCGI/A0tPDzheWoHrDJnk9OgbqvZ9zFZz6HbiUW6WMZVmDlggN
+ j1XL5u1DbOx/xAXcEy9Bl3qVCI1uXGKQHJdtuazwIrTMvBDJ8Gay+Nz5nV+PO7wg9Qsq
+ bGG52h2O4Hv8zcrvXNRHNqH4YBmvL4fC+eVNMyIaXlc8tgAqKeSS2s2vcTG/9uTvVIdf
+ YjG46KJVZLzvkFunJKV0kXCpAdY1fgQ7/TNuCnAh0gglQ9D5crG2y5JY7ovz94oFZWvE
+ rHiQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
+ s=arc-20260327; 
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:dkim-signature;
+ bh=gnuREIVueZm1km43ArMVBgd0Gydm3JAV+Uovq0UdlpE=;
+ fh=L3X3yWHG8gTdxcRrENKcTvD9mGtYkW/Lm1W6+Ckj7jQ=;
+ b=sqVyIWVec+S83FHBTzt6+YLZSERJK/Iyt6HjxLTPbcz0UjfLCI3aNRqwDRFMZHnS8m
+ nQn+fwfcnLrRus00ZhVrUbaDwIUi2hAbuHG4p48AurxRY7bwKkPWBJ7uRFn+uVWLEjhm
+ 1eR8ncAaqAqyfUF3X+98X4S29oj8JmpAwKoAYPAslbvOFhavTgbqLY4GcnSahrK3X1/X
+ AWLkj0YXzd9IiF/q+QwcqxN6dig9Ett6hotZpk61voKZ4kKcX2+sEOYQHtS2u6CNFetx
+ bkyvBUB6MtFFIQ7moGoWl8DXW5h6gHpUUeuvOOGlD1d7sErOtppt9RAsa7DzhM0Vm5sP
+ 6dxw==; darn=nongnu.org
+ARC-Authentication-Results: i=1; mx.google.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1790591498; x=1791196298; darn=nongnu.org;
+ h=content-type:cc:to:subject:message-id:date:from:in-reply-to
+ :references:mime-version:from:to:cc:subject:date:message-id:reply-to
+ :content-type; bh=gnuREIVueZm1km43ArMVBgd0Gydm3JAV+Uovq0UdlpE=;
+ b=VrKbBKipVOnOOkDoEfvuQjBOcVqXUM+NauI2IukEO4uXk8CHNH7V81KMYyysryUXEk
+ KBjW+yqjypuRYoe0Itdw71ubDzUMu+yRIKdhRlLgJht9lazC3XDf7UllybgzBIPdUEUa
+ oCbAqJpQGv1tHpMIJKlAZumFEqOINyBQkgNK5SzQpnHyKa+0y5DH1OPQ90Cm/ZSn4IH7
+ 9S8JmAoz8bpGaUBtm+WXlEirCko6TgcrASNpVQ3EWmhQUhQflKtKt6fzd6mc7XvriJFY
+ /2SWwLLhwhXk8SgXC2ZwNqnaookmuDlT2kBTRrWSqq2ejhMqbRqlJFtLZl1gKKge20PL
+ im9w==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20260707; t=1790591498; x=1791196298;
+ h=content-type:cc:to:subject:message-id:date:from:in-reply-to
+ :references:mime-version:x-gm-gg:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to:content-type;
+ bh=gnuREIVueZm1km43ArMVBgd0Gydm3JAV+Uovq0UdlpE=;
+ b=TLCW7YJAH/OkswZq0LyWsO0bD/7hKTf9yn2cInSmVokR+Yc4cqJF8bWrlopj+7bgF9
+ cssJFCoXLCr2StrmOjHbmaGCrVmPPmp7O89v+xVn6pDtfNzg1NsM1sHcZI0+ZePjPPtR
+ TRnJh7zwbOROfOkwGl3A6oA9zb1sa5dqFJqMO+g1oYA4jABxR+LepjAwPz0LCr0eE49P
+ 96HGEsgZ8odRUvylnVy8sZl1pXV0AhfPNKA2lbYzZO5rOrQiXfuzL//EjPe2psmuhaIG
+ 54TfqCq+V4aQoe9kSKHcOuFClk1dBmKmS39fVdLdNBhbK4pXkDqaHLju4+YQzqaL4TDQ
+ JiXg==
+X-Forwarded-Encrypted: i=1;
+ AKwUvBxrxkRESPjcKd8DdbkirV2K1ByodtMsY2YrhDr9B0qtNQpb4bgDm3EgT/luVok75qWeslMdEZx7jQ==@nongnu.org
+X-Gm-Message-State: AFq9FYJahDTLWHRAV2A2nN7DCVN78BXtQG6mRzwAa3l5qIJL8XjWMrhT
+ pWAO3SdZUs/ZEopWHesaDFwYbNSWJI7liW8MpX6irkR1qUsN1LcdoyU/RVlOGlKcaOGbu7/kyBu
+ U8g0UixErwD0IncVp06vQXhHF45SlB9Bi1GBvT2yAgjQdV7PfONQm
+X-Gm-Gg: AYBFou3i0Vw/lWGi2zHESct9hzpKoeOnWOi61rlbSPKF8jtArWBn7Z10j8BKMVm2XA4
+ FURydVXiQkvfxxpJ61/O/mAee92eynLL7bgKLQQz9D85eki/hh1WdoZ7CuOoHdf1/KCrHwXZmku
+ UWmLahv2sGUjP7J0xHcM2hrZPKTo6MwP156nAEyGC3+onmXURUfdwKJvKPWdfmcT0b4v+6Tq0lA
+ hxKmyj2ZpInOXUj68JOU+iMtb/knHP4PXOzKFjsRU5Vayw0cLBjYqfTeUsKWm3U3dzXmZlAG+oa
+ +3E2s5CACqAMGckJjOVM2Ngf/vJppo3bEAcCIH/Dj49sfB+ZPGBy0rDn3Bc3q6qp42NVBrwL5gs
+ z51R/exo6vZ3NbXTPw566L4BYwK1eWhTNCe43way9a9kpK/SUqw==
+X-Received: by 2002:a05:690e:1442:b0:674:13ed:9c3c with SMTP id
+ 956f58d0204a3-67413ed9fb9mr2656554d50.95.1790591498069; Mon, 28 Sep 2026
+ 03:31:38 -0700 (PDT)
 MIME-Version: 1.0
-In-Reply-To: <20260926070057.1234-47-luoyonggang@gmail.com>
-User-Agent: Mutt/2.4.0 (2026-06-19)
-X-Scanned-By: MIMEDefang 3.0 on 10.30.177.17
-X-Mimecast-MFC-PROC-ID: OKt-I9qAwymCgDphSeI9mIfCu5j0u-V8QubdOilNrHo_1790590435
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=berrange@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: 9
-X-Spam_score: 0.9
-X-Spam_bar: /
-X-Spam_report: (0.9 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.34,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=-0.01, RCVD_IN_MSPIKE_WL=-0.01,
- RCVD_IN_SBL_CSS=3.335, SPF_HELO_PASS=-0.001,
- SPF_PASS=-0.001 autolearn=no autolearn_force=no
+References: <20260828222639.1432046-1-richard.henderson@linaro.org>
+ <20260828222639.1432046-12-richard.henderson@linaro.org>
+ <CAFEAcA-9BWhLf2AagEcnacxMYKPYGKC=iKKoGRvPg4BW0PtbaA@mail.gmail.com>
+ <ebd4f4af-b958-4d76-a671-6927fbea1d70@linaro.org>
+In-Reply-To: <ebd4f4af-b958-4d76-a671-6927fbea1d70@linaro.org>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Mon, 28 Sep 2026 11:31:26 +0100
+X-Gm-Features: AclHuK_QAFRqtR_5gjUQlzL8gNAoGs758FWsgf7ccPyY_A733fSDi9UFXpy3w3g
+Message-ID: <CAFEAcA-D=7CzzF4RQgYgJwF04rrYTYHiLfcnORuMnUT6AQkVxg@mail.gmail.com>
+Subject: Re: [PATCH 11/13] target/arm: Add PSTATE.UINJ to tbflags
+To: Richard Henderson <richard.henderson@linaro.org>
+Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2607:f8b0:4864:41::10;
+ envelope-from=peter.maydell@linaro.org; helo=mail-yx2-x10.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -94,87 +116,49 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-To: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Sat, Sep 26, 2026 at 03:00:45PM +0800, Yonggang Luo wrote:
-> query-targets lists each linked target, including none, with its
-> arch, endianness, and the machines that target accepts.
-> 
-> Signed-off-by: Yonggang Luo <luoyonggang@gmail.com>
-> ---
->  hw/core/machine-qmp-cmds.c | 30 ++++++++++++++++++++++++++++++
->  qapi/machine.json          | 35 +++++++++++++++++++++++++++++++++++
->  2 files changed, 65 insertions(+)
+On Fri, 25 Sept 2026 at 17:34, Richard Henderson
+<richard.henderson@linaro.org> wrote:
+>
+> On 9/8/26 04:08, Peter Maydell wrote:
+> > On Fri, 28 Aug 2026 at 23:27, Richard Henderson
+> > <richard.henderson@linaro.org> wrote:
+> >>
+> >> Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
+> >
+> >> diff --git a/target/arm/tcg/hflags.c b/target/arm/tcg/hflags.c
+> >> index 296ec8101ab..174f4aa746f 100644
+> >> --- a/target/arm/tcg/hflags.c
+> >> +++ b/target/arm/tcg/hflags.c
+> >> @@ -292,6 +292,9 @@ static CPUARMTBFlags rebuild_hflags_a32(CPUARMState *env, int fp_el,
+> >>       if (env->uncached_cpsr & CPSR_IL) {
+> >>           DP_TBFLAG_ANY(flags, PSTATE__IL, 1);
+> >>       }
+> >> +    if (env->pstate & PSTATE_UINJ) {
+> >> +        DP_TBFLAG_ANY(flags, PSTATE__UINJ, 1);
+> >> +    }
+> >>
+> >>       /*
+> >>        * The SME exception we are testing for is raised via
+> >> @@ -513,6 +516,9 @@ static CPUARMTBFlags rebuild_hflags_a64(CPUARMState *env, int el, int fp_el,
+> >>       if (env->pstate & PSTATE_IL) {
+> >>           DP_TBFLAG_ANY(flags, PSTATE__IL, 1);
+> >>       }
+> >> +    if (env->pstate & PSTATE_UINJ) {
+> >> +        DP_TBFLAG_ANY(flags, PSTATE__UINJ, 1);
+> >> +    }
+> >>
+> >>       if (arm_fgt_active(env, el)) {
+> >>           DP_TBFLAG_ANY(flags, FGT_ACTIVE, 1);
+> >
+> > Could we do this just once in rebuild_hflags_common() rather than
+> > duplicating it in _a32 and _a64 ?
+> _common is also used with _m32.
 
+env->pstate & PSTATE_UINJ should never be set on an M-profile CPU,
+so it should also be OK to do the check in _common if we want, right?
 
-> diff --git a/qapi/machine.json b/qapi/machine.json
-> index 6aaa2af709a..d8cdea6203e 100644
-> --- a/qapi/machine.json
-> +++ b/qapi/machine.json
-> @@ -307,6 +307,41 @@
->  ##
->  { 'command': 'query-target', 'returns': 'QemuTargetInfo' }
->  
-> +##
-> +# @TargetMachines:
-> +#
-> +# One registered system target and the machines that can run on it.
-> +#
-> +# @arch: the target architecture
-> +#
-> +# @endianness: the target endianness
-> +#
-> +# @machines: machine type names, not aliases
-> +#
-> +# Since: 11.2
-> +##
-> +{ 'struct': 'TargetMachines',
-> +  'data': { 'arch': 'SysEmuTarget',
-> +            'endianness': 'EndianMode',
-> +            'machines': ['str'] } }
-
-We already have  'QemuTargetInfo' struct which is used
-with 'query-target', that should also be used with the
-new 'query-targets' command.
-
-We need to add the 'endianness' field to QemuTargetInfo.
-
-I don't think that we need to report machines though.
-We already have 'query-machines' which gives much broader
-information on the machines. "MachineInfo" needs to
-gain
-
-   "targets": ["SysEmuTarget"]
-
-to list which target(s) a machine can be used with.
-
-
-> +
-> +##
-> +# @query-targets:
-> +#
-> +# Return each target linked into this QEMU binary and the machines
-> +# whose availability check accepts that target.
-> +#
-> +# Since: 11.2
-> +#
-> +# .. qmp-example::
-> +#
-> +#     -> { "execute": "query-targets" }
-> +#     <- { "return": [ { "arch": "aarch64", "endianness": "little",
-> +#                        "machines": [ "virt" ] } ] }
-> +##
-> +{ 'command': 'query-targets',
-> +  'returns': ['TargetMachines'] }
-
-
-With regards,
-Daniel
--- 
-|: https://berrange.com       ~~        https://hachyderm.io/@berrange :|
-|: https://libvirt.org          ~~          https://entangle-photo.org :|
-|: https://pixelfed.art/berrange   ~~    https://fstop138.berrange.com :|
-
+-- PMM
 

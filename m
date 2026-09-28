@@ -4,101 +4,105 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9196BCA5FA2
-	for <qemu-arm@archiver.kernel.org>; Mon, 28 Sep 2026 15:44:53 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 25033CA5FA1
+	for <qemu-arm@archiver.kernel.org>; Mon, 28 Sep 2026 15:55:05 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xBDX4-0006r3-Sr; Mon, 28 Sep 2026 11:44:47 -0400
+	id 1xBDgf-0008WT-9V; Mon, 28 Sep 2026 11:54:41 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1xBDWy-0006pY-Qz
- for qemu-arm@nongnu.org; Mon, 28 Sep 2026 11:44:41 -0400
-Received: from mail-yx2-x11.google.com ([2607:f8b0:4864:41::11])
+ id 1xBDgd-0008Vo-Lh
+ for qemu-arm@nongnu.org; Mon, 28 Sep 2026 11:54:39 -0400
+Received: from mail-yx2-x0c.google.com ([2607:f8b0:4864:41::c])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1xBDWx-000508-Eu
- for qemu-arm@nongnu.org; Mon, 28 Sep 2026 11:44:40 -0400
-Received: by mail-yx2-x11.google.com with SMTP id
- 956f58d0204a3-67109935888so2880424d50.3
- for <qemu-arm@nongnu.org>; Mon, 28 Sep 2026 08:44:39 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1790610278; cv=none;
+ id 1xBDgc-0005wk-4a
+ for qemu-arm@nongnu.org; Mon, 28 Sep 2026 11:54:39 -0400
+Received: by mail-yx2-x0c.google.com with SMTP id
+ 00721157ae682-8a8f3b61da7so17288587b3.3
+ for <qemu-arm@nongnu.org>; Mon, 28 Sep 2026 08:54:37 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1790610877; cv=none;
  d=google.com; s=arc-20260327;
- b=We0BBngJvdA5qUTo2aaTnt1V6vcnFLswcD7NyJ1N0/VskoAwx2ZJYpY2tmsr6pTMYt
- qr7tAu53zGJhaTJxlOQtPKIQd4bGh3tD6phvZruEv4qTKZ5io/NvuOmag2Gs6V+hsRn9
- XlkCxNpXsGqkcu3SnDqafcG9r0+rgyPilF8dqS06NY30u+LfX7qIB9wOSRnRiPlkrVt2
- KjEyb0ZjBpLgbCe3P47rLb/8ORLS6qVfKswVa3D4f1ZDcSfw1bDWAQdtW3aZ86kFCrmO
- zwbrhaxBVu8qxSksfm9kgo8YSLar8e1ZiJXvjrJS7O8E56QZAATD4Eia9TsX0LZ+gre3
- arWQ==
+ b=mmyiy8A0GwRHPcGM3IseH9U/9OoUv0R1DLiEO6R+0tSXAbUduuRxQYAafrH2KM23Rt
+ 31QuXbAfeBYcjDd5WmVGz9KYUHwOMwpUKurbPhzkmPKcSn7iPu26H0jkfTovTu2fK17y
+ 0z0h/FMoFmH41Kv6Tjd4yV4irmLs2eEi/NYtZzmDEPG+/dtSJXfm/E1d81NTEyufF2yN
+ AoBCoE6O02RgL/gwpIwQBJjBN9TLFn4TztHBd6mm8nYZY0sLxhND0xdRku98SjRlgd6Q
+ 6vEtKOk3V6MoK6Gb8ta8GP4v8m+miz1Mm9hPhOJmxqgzzYF7tjNBeQM9VVtppls0y9Rk
+ vfyA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
  s=arc-20260327; 
  h=cc:to:subject:message-id:date:from:in-reply-to:references
  :mime-version:dkim-signature;
- bh=AiQtjNiunrcG/8J5YHHMQrio8j+Oayk+13IHAt1q+Uk=;
- fh=HSc+crLE73T5IFFSam4nzbjpfm5ZtS+R7PgjRkiVbuo=;
- b=IW/ozG+n3BUXh/UyQZ/QN/49IOLJoISfaEW6UiSJE5rvqE/VR1MWcwE+BR4IGxnLKy
- SaQR/QfV6Ku6zf9FMfprMDKxUPG6TF8NwRVB5zZAqq7rvhH0djVozf5VhDoE19G2dUdy
- jV1wbYi6zfJd/N0zPp+RkMcHCFWha7ik5RHncEcXD7FSaGMFQcmrTmlhfwXLagsHTf9l
- EKLkKA2tVmgaU+Nzuz+Tz0OL9M17M14mb3JqLrb5iGnvogTcf4sQvFlaA+kCpmSKByql
- VGojI2dkjYB8ttJjgq3kjOjeuntj8Uf0bZCWOGFb5CsR9pRA8mKRnBtfCZg+qHiIIGuX
- 7Bwg==; darn=nongnu.org
+ bh=ax2F1D2PX1uU1uXDqD9Xp0uVTUshi6eeZ/YVpCH+MSs=;
+ fh=0xOgKzHD+JqEQe9Q3lV5FFKh8UOlVCUexajOssHgRLs=;
+ b=IwQanSY+YUR/Bm6ckamP5WVXRv6n9vzotfQzx/oexaOKniSSGRWFFvxcbBkWhuXGgK
+ JOcBP8jeSZDIDSSty2uRWsPbamv7CG2Nns88sMWm5elkMF++5E6Fn9kBp2R+O1IWPhTK
+ 47k5LqCfDD2WkxUJFKgXWkwkYBU5i17gScMaRRQTN64rOVy/fMW/PlqUH2oOotr4TZOl
+ 1ozSdKK/ALJkSXcCprSDEzpdzUpEj4QycjtzBJIdGOrbi8X75F+ScsPTfyafQMhWy/tP
+ DkPfzi0hABi3si39I5ApwSn/vT3/ii/S4tKj/j2Vttoxx4jZbOFgNVK3ecig1+xvuu7p
+ P6Zg==; darn=nongnu.org
 ARC-Authentication-Results: i=1; mx.google.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1790610278; x=1791215078; darn=nongnu.org;
+ d=linaro.org; s=google; t=1790610877; x=1791215677; darn=nongnu.org;
  h=content-type:cc:to:subject:message-id:date:from:in-reply-to
  :references:mime-version:from:to:cc:subject:date:message-id:reply-to
- :content-type; bh=AiQtjNiunrcG/8J5YHHMQrio8j+Oayk+13IHAt1q+Uk=;
- b=qtXeJdDuYtaA3QJQ1X9bn21wUTVl75y5+iPHJm0z1O6m92YSP5DFK/qfk4ElGqLZRN
- cWJulo+7+IGaU/WeDaEW8/ZtdshpbnrwnmEXef93aOIgzMSPozUjQAvDvqzfDTSK4C+w
- p9c+GBUi44GesuQ87OjsjRp5e3f6bksu1qEO4ipXA+BF17VaZgkTZgcbrcGRB7GXoRi0
- 6XMqTZ8sxhm+fCevijoNbC7wy4usMfrYfJNEzUom4YSFtMSo/zw72uQMwMvNkSwGQYZo
- NwxkQx/fEydfRCbO9cXScJiycCXKtpG6eb0l0PBrqHvGxXa5bJ0gufhN7GmTO6/osqX8
- r6+Q==
+ :content-type; bh=ax2F1D2PX1uU1uXDqD9Xp0uVTUshi6eeZ/YVpCH+MSs=;
+ b=IeifQbP0oCXO3HsOFTCY8mrF9OgfxGfI8OW03qwml4bNSbiqXfMkeukIaYwXJf07Tv
+ npUG3HzcywJzwutYi3B4vMHjPbLsElFP1yOPABCUo6bLDgYu3jNqkJ2Y2WWrbiyxoAVP
+ 9Kz3WpVjvAEdiGgJnGeotINPyzRMDdJF/sULWziOhQM9uqPsPBMCNasKlnNOigyyA8sw
+ gWFIgyNMmnm0frS+/ASqZVAOk1f8l3itN2q9s4qGNn1kdJuVtiWnNaWTnsZ05HmvpRw2
+ 3iy+kKsoRUARQL4HEhPKP0H60TkrDKsA0SQ0SeNg5dSXikK++2IRkgaIDcUl32wHZCSX
+ OW0g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20260707; t=1790610278; x=1791215078;
+ d=1e100.net; s=20260707; t=1790610877; x=1791215677;
  h=content-type:cc:to:subject:message-id:date:from:in-reply-to
  :references:mime-version:x-gm-gg:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to:content-type;
- bh=AiQtjNiunrcG/8J5YHHMQrio8j+Oayk+13IHAt1q+Uk=;
- b=Ues1skXyPvaeKd9thdJ3r95Kb316jh4gQuKiPT9CqQ5ZoCKh3FSJJO2GfVwACiPdlC
- BTczhvqTo15rE9EZtR4k8CVPAfN1hvQuMDj7eWB0Z1/05sVlW+0QXPbygdDPerUsAA2B
- IfgCtv6Y5E34r2wm4GKSrGB5CMGhjGNASrWLX6v2KKd1dzDhgQl3nrCj9JSOmJ6bsfGu
- gzga5x4d1lI1tyoWvlLyInTspc1E/1CVAshS3/pLNYN77lMeardqq/t5w9SSUwUWRq76
- EnTmZHN77iMWTKzcuEGwtkJqbtKgK5OoTFBILYh3cYGjoD47+gq8YsmX99qhpbeA9gRk
- safA==
+ bh=ax2F1D2PX1uU1uXDqD9Xp0uVTUshi6eeZ/YVpCH+MSs=;
+ b=b7ZDjgIdfLvEB7wJCQTXZXT3bsB9hyzyetd4R2ArR+8lN60lPogzq+DcPLIEEPTni7
+ T0eAoHhHRf8qHNPrEMeKpVzxvP/RP36pFNmDzV3K8KU3PGYefnSL5UMyuth7tFz+8ls/
+ oQh45EgeJOZYND25MfuF8bIbuzsgInPEQ+Rpw408H7EIFu6LuSvFjxXiCWOsb45Qzy54
+ rYyHZoNtbJLXMRq8TmyTdemM0Iz5OcyCZNWzrBIGe+ULMV3aOsADIEoGTppJHzbMhd6Q
+ Hp30oms3LGG/050wVLvoM6mDtaTr6xF6pdBmDfbn1bDsCL4FIuXvhA59bCDhutOpe9xR
+ qfEg==
 X-Forwarded-Encrypted: i=1;
- AKwUvBw7hEJHXERxFtZRp78dSVPwSI9v/XKVXIUIrVNZ9oZqeFIEoqzz0kYFzG03Njw/kLmdfh1tD/Qgvg==@nongnu.org
-X-Gm-Message-State: AFq9FYIP+xd2TZNfXBVZ41ZVNQi4cTmKbiRkMK8irNu3Gvr3bZ5l0MpG
- +b7Audk3RNTWdBdjZHwbwXKpVqa+/NY7AYgR97ecqJjxmmIo2hcktgB8I8iS6xfroLkDoQIrNLl
- GYRSkKK9VOKbEueG/nFbS6Z+3pp2oGD51tcpY00ViPw==
-X-Gm-Gg: AYBFou2TEO/hQ1DVmgZ/QvPqxup/wjBjASA7tS/ZoCJj7iVZfTbp1u7B7raD5GKg+sm
- i2qHOgaWMKpTRdccwIW4k3qSDZElKXBERXDdT25mB6Dkdq4TG1qstmfNa+HeC1YuBy5JDOTz81j
- dUHlYfoPn4s+9xDKksB+3VraaW5EGhMiPH3gWPg+SsEhH3c0Q3HUgaL3FD6b/Qtj7LETWsAzvUR
- uFy+nPPIpJvHYzSWCcPkb7LiZQ8c7BFCfqVqoNyXNicIWzkfyWM8k/e5qnpFIAq2GwV8JaxrtfP
- djIQUO1CD18Kg+LT4TGOl7aqwmDn8FDEzYlL+gZCvujTEG3StNRKjU13z6iojzDuSeRxvxu1YE8
- 42MuKo3nsQ4jdeWhwvZwZ5tEnd4uRqujw4pFlJaA=
-X-Received: by 2002:a05:690e:120e:b0:675:4713:1f9b with SMTP id
- 956f58d0204a3-67547132576mr1622260d50.39.1790610277942; Mon, 28 Sep 2026
- 08:44:37 -0700 (PDT)
+ AKwUvBxN9SY9OyuGVEsU37HLFhXBfIC4zQgA6VLz5I35K4iQGLe8IeQILI6rdLyu5JD2d/822WvRqPWyAw==@nongnu.org
+X-Gm-Message-State: AFq9FYIKv0yqrpziW/xoV5V5cm7qWzMFWWweZPPuigrU9pXixefsMsrX
+ VtvxVPpROGzFSYMEnhvuWJ59VG2/U16vyeb//WxQpD2BNBJrkyEOoAOGUwXYrN1/kVj8h/TdxbA
+ V1KDHps1MLDHNrAd5s91dYzwlfLJNDRjDx5PTQ+xOJA==
+X-Gm-Gg: AYBFou16rSXm/fyji2rSbh1Fj8sAeAItubZnXZjn5OMLth2ygycNoIxUDHjBbVmAfBG
+ x2vBL+EleqKWYUpa/a4leN3bQ4e3sBlWisII9MR3NmSZrCObFqoFLVXmyfcSF2oHvMXfi8OZr57
+ v/POF3Ol6YO1o5Hiry6ThXnjk3cuAdPpG8HaT0UA/fk0U8GPC4MAKGd52Cpc+TMx3MKOpMAuaAA
+ QuOHiG6OUe25u+7qtI/bNKbGIxnY3FnHSzxgZVhq0eIy31q8SXFg3BMptN1MuTBMFtVMFjcvQ5R
+ H3hW2eWkeA6iJ8PAvl6y3m7SCesFoCBWxNOKuHI0a3sCF63XOu0Llh90jPjlzm3FfE7cWpck/3/
+ XxaBn9S7oq426oWhnVfME0tvoffakawd8csUQwts=
+X-Received: by 2002:a05:690e:4383:b0:671:2ab1:899c with SMTP id
+ 956f58d0204a3-672ed50c6c5mr4645316d50.89.1790610876515; Mon, 28 Sep 2026
+ 08:54:36 -0700 (PDT)
 MIME-Version: 1.0
-References: <20260925215004.456336-1-richard.henderson@linaro.org>
-In-Reply-To: <20260925215004.456336-1-richard.henderson@linaro.org>
+References: <20260904043742.96613-1-mohamed@unpredictable.fr>
+ <20260904043742.96613-2-mohamed@unpredictable.fr>
+In-Reply-To: <20260904043742.96613-2-mohamed@unpredictable.fr>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Mon, 28 Sep 2026 16:44:25 +0100
-X-Gm-Features: AclHuK_pJRuo3cwfBVjfj_yKldj4o8JhmMgdYFWUybLz2cfhYKZ6xj4igMKumGw
-Message-ID: <CAFEAcA-uu-v-xnNH+vihOvccwobHbLpo+frhjm1_ZNKv4hCiZQ@mail.gmail.com>
-Subject: Re: [PATCH v2 00/14] target/arm: Implement FEAT_UINJ
-To: Richard Henderson <richard.henderson@linaro.org>
-Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org
+Date: Mon, 28 Sep 2026 16:54:24 +0100
+X-Gm-Features: AclHuK8hiTp7wdex--eqxPA2GUbHVI9vSkxHVsbO9w2KsIOrj8Tqob0Z4uEB4Vw
+Message-ID: <CAFEAcA8XVZVehzwCAfy_a3V+KFfxOErhxo3dg1NObmco9kEj1Q@mail.gmail.com>
+Subject: Re: [PATCH v2 1/5] hvf: arm: advertise ID_AA64PFR0_EL1.GIC
+To: Mohamed Mediouni <mohamed@unpredictable.fr>
+Cc: qemu-devel@nongnu.org, Phil Dennis-Jordan <phil@philjordan.eu>, 
+ Roman Bolshakov <rbolshakov@ddn.com>, qemu-arm@nongnu.org,
+ Alexander Graf <agraf@csgraf.de>
 Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:41::11;
- envelope-from=peter.maydell@linaro.org; helo=mail-yx2-x11.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:41::c;
+ envelope-from=peter.maydell@linaro.org; helo=mail-yx2-x0c.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_NONE=0.001,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -115,23 +119,48 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Fri, 25 Sept 2026 at 22:50, Richard Henderson
-<richard.henderson@linaro.org> wrote:
+On Fri, 4 Sept 2026 at 05:37, Mohamed Mediouni <mohamed@unpredictable.fr> wrote:
 >
-> Changes for v2:
->   - Reorganize rebuild_hflags_common*.
->     Trying to force a tail call for these was perhaps just confusing.
->     Inverting the order means that we can handle initialization once
->     in a common way, and the lifetime of some of the parameters is
->     shortened.
->   - Introduce rebuild_hflags_common_aprofile.
->     This gives us a common place for the new UINJ test in hflags.
->   - Introduce check_il_uinj.
->     This gives us a common place for the new UINJ test in translation.
+> For the kernel-irqchip=on case, advertise ID_AA64PFR0_EL1.GIC.
 >
+> Signed-off-by: Mohamed Mediouni <mohamed@unpredictable.fr>
+> ---
+>  target/arm/hvf/hvf.c | 12 ++++++++++++
+>  1 file changed, 12 insertions(+)
+>
+> diff --git a/target/arm/hvf/hvf.c b/target/arm/hvf/hvf.c
+> index da3ec521fc..f881d6cc67 100644
+> --- a/target/arm/hvf/hvf.c
+> +++ b/target/arm/hvf/hvf.c
+> @@ -1229,6 +1229,18 @@ static bool hvf_arm_get_host_cpu_features(ARMHostCPUFeatures *ahcf)
+>          FIELD_DP64_IDREG(&host_isar, ID_AA64PFR1, SME, 0);
+>      }
+>
+> +    /*
+> +     * On HVF, kernel-irqchip implies GICv3.
+> +     * The kernel-irqchip=off,gic-version=3 legacy case also supports
+> +     * the host CPU interface but advertising it in ID_AA64PFR0_EL1
+> +     * is not implemented yet.
+> +     */
+> +
+> +    if (hvf_irqchip_in_kernel()) {
+> +        /* Advertise the GIC system register interface */
+> +        FIELD_DP64_IDREG(&host_isar, ID_AA64PFR0, GIC, 1);
+> +    }
 
+How does this interact with the existing code in
+hvf_arch_init_vcpu() that does:
 
-Applied to target-arm.next, thanks.
+    pfr = GET_IDREG(&arm_cpu->isar, ID_AA64PFR0);
+    pfr |= env->gicv3state ? (1 << 24) : 0;
+    ret = hv_vcpu_set_sys_reg(cpu->accel->fd, HV_SYS_REG_ID_AA64PFR0_EL1, pfr);
 
+?
+
+env->gicv3state should be non-NULL for both HVF and TCG
+GICv3, I think, so aren't we already advertising the GIC
+in ID_AA64PFR0 ?
+
+thanks
 -- PMM
 

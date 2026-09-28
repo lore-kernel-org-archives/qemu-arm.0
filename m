@@ -4,124 +4,137 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 206AFCA5FA1
-	for <qemu-arm@archiver.kernel.org>; Mon, 28 Sep 2026 17:35:07 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 66D5ACA5FAB
+	for <qemu-arm@archiver.kernel.org>; Mon, 28 Sep 2026 17:43:21 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xBFFL-00064a-41; Mon, 28 Sep 2026 13:34:35 -0400
+	id 1xBFNW-0000cw-KB; Mon, 28 Sep 2026 13:43:02 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1xBFFI-00063x-Q1
- for qemu-arm@nongnu.org; Mon, 28 Sep 2026 13:34:32 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ (Exim 4.90_1) (envelope-from <iii@linux.ibm.com>)
+ id 1xBFNH-0000aG-1G; Mon, 28 Sep 2026 13:42:47 -0400
+Received: from mx0b-001b2d01.pphosted.com ([148.163.158.5])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1xBFFG-0000IK-UF
- for qemu-arm@nongnu.org; Mon, 28 Sep 2026 13:34:32 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1790616869;
- h=from:from:reply-to:reply-to:subject:subject:date:date:
- message-id:message-id:to:to:cc:cc:mime-version:mime-version:
- content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=6QcRmKAZPk4+69MBsW2Ao6CpwFSl1GoQnOOgz4WoGyo=;
- b=cy1ocs6DxgB0NxA/S6PyphkDIw6Pe0AUn/kWiS3VkTVeDPWJRDEQq4tVbHHRL0nYV9DrmY
- JPKTrJzp+gs0PswyONfWtZ8dZbMs19ofNW08Sb+ZU7P8z70Wd0GxhxV1nPPl37lWVIBw6A
- p2Ntz8Tt3/0MYfRGiR/dWTw2f1YigtE=
-Received: from mail-wm1-f71.google.com (mail-wm1-f71.google.com
- [209.85.128.71]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-164-pTgmCGW5M-6MFvc0wqZmZg-1; Mon, 28 Sep 2026 13:34:28 -0400
-X-MC-Unique: pTgmCGW5M-6MFvc0wqZmZg-1
-X-Mimecast-MFC-AGG-ID: pTgmCGW5M-6MFvc0wqZmZg_1790616867
-Received: by mail-wm1-f71.google.com with SMTP id
- 5b1f17b1804b1-49e6422198fso21763895e9.1
- for <qemu-arm@nongnu.org>; Mon, 28 Sep 2026 10:34:27 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20260707; t=1790616867; x=1791221667;
- h=content-transfer-encoding:content-type:in-reply-to:from:references
- :cc:to:content-language:subject:reply-to:user-agent:mime-version
- :date:message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
- :message-id:reply-to:content-type;
- bh=6QcRmKAZPk4+69MBsW2Ao6CpwFSl1GoQnOOgz4WoGyo=;
- b=oIDwpxcJMuEhyq6JyytF9FVrZY8jDf2OzOfAggCTIpsaXDV/hHJa8DEpgMyOJoE9z/
- MyfaQB2CNoyguY2/lBFlXELlO3zNOpqA51cKx0bsOrZBJ3H5IjS4oKNwFRxpdYfR+o7l
- VbS7/K5vEYvyyx9/DdPxlbNB4cvYntdkN/dM/OkmvSAg+xoZk917iHQJED0/xPiIeTin
- WUZg75gnxWhBXd4ajNYgGsQH2BqmBBzrRLYyjRrS4odmPF0kRWJ50rFIiLz356JRggAL
- Q8OK+r1Kx57vU708D4iR9H2h1LsFZRhkJtR4ks9VwZkY4hM4FdlFCEJGfc/3SqrRQy/m
- 67Xw==
-X-Forwarded-Encrypted: i=1;
- AKwUvBxNU/MCjlTvnZyxl/FSWTMRQQSMy9VC+yqdWW+OPq+Ivff7TBA74Be9p+HjytXw1HEYB5TjnF5q0A==@nongnu.org
-X-Gm-Message-State: AFuF++n6LmwdhZ7faOUD9WyPYvAFjHPqLDtdW6k5rVaEBK8ANBAUzUZW
- vd5EfeflnHIFuzjMhha3m1y0haQvzmyoboodz0bHixAMmQx75e+VaBPTsdECgwou/cREz/38gwh
- Q5MuWurOGfWxPJd9LqWxEdI87dqHq1bgzUyPkrCSUs2CTef1p3l1EGw==
-X-Gm-Gg: AYBFou0SO0rD/16AB7TP0YFx0jIdciF7eYjp9tx+FlvNj1Jc9cu4KA655Iy3CCep0mU
- /Y/Tb8V5MDVSdrn1NMo7Ccm5GWNBZxRXPi9u5nzYlJjxygeurIRvl/dFXBhNrnsM6NCbB+dIQRW
- 4TQNa/2Ad/rZrb5++24dVDNYeasHkvFpMByTf+X8+KW96DmaB6XcTFz8VIffAXql1mapIqje84V
- Hqd+gRuI2MeTa0kQV3nMpHLlZc3WrIjDIgQmtFnw9YFfiEYuyDtXXPlohiDAa3a6qj24hq1D+kE
- ES56wH6OybvS7Km6vxRtWg9LVz3uXH58KP3IsXQEUlSxLU5p/+22i9KM5D64QEq0GMr57tVhOZP
- lbB7lwZ+zcYfZPqFcj7JvqjO4GGJYu/ysRu52nQXnFw01hSz/
-X-Received: by 2002:a05:600c:3b1b:b0:49f:e4d4:dd70 with SMTP id
- 5b1f17b1804b1-49fe6705bd7mr249667395e9.31.1790616866737; 
- Mon, 28 Sep 2026 10:34:26 -0700 (PDT)
-X-Received: by 2002:a05:600c:3b1b:b0:49f:e4d4:dd70 with SMTP id
- 5b1f17b1804b1-49fe6705bd7mr249666885e9.31.1790616866176; 
- Mon, 28 Sep 2026 10:34:26 -0700 (PDT)
-Received: from ?IPV6:2a01:e0a:f0e:9070:527b:9dff:feef:3874?
- ([2a01:e0a:f0e:9070:527b:9dff:feef:3874])
- by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-4a00cfa57d7sm7988175e9.10.2026.09.28.10.34.24
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 28 Sep 2026 10:34:25 -0700 (PDT)
-Message-ID: <3bcc8ccf-6daf-47a1-8620-a69915adf8ae@redhat.com>
-Date: Mon, 28 Sep 2026 19:34:24 +0200
+ (Exim 4.90_1) (envelope-from <iii@linux.ibm.com>)
+ id 1xBFNE-0001AB-Hl; Mon, 28 Sep 2026 13:42:46 -0400
+Received: from pps.filterd (m0356516.ppops.net [127.0.0.1])
+ by mx0a-001b2d01.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id
+ 68SF5fB91269079; Mon, 28 Sep 2026 17:42:20 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ibm.com; h=cc
+ :content-transfer-encoding:content-type:date:from:in-reply-to
+ :message-id:mime-version:references:subject:to; s=pp1; bh=vJJMH/
+ RQETQi+URNvJtki6J1M1EkxI5xEeNnar64uL0=; b=WcFIFb/OEj2d0wd7tC/E5+
+ tKoLQtCAp6E9ATILhW7RR2dihY6L2lxKhjlohP0dCIu3DZFZzH9j2FHCvQoj9LIF
+ 9MUbQAMO05/j++jq9/pbItflQQYbEjnii6CKvy09jfSCzVFygUwAo3wqe4AQZZkP
+ NegKfHPOZpVidgHINmdv2hMZJaQXta5RaACxXQXWt8CGhG1FSCh3q5qjpFKLUKNA
+ uuOo4hvYLonrP8Ys6cIQnb/v74+a6etA/WlTLHhLrnnTNYii2AKFqr09n3v2av1O
+ 8gEQETun+iRG460c1SetJZ7QR48ll2N9Up8H0zeg73v4BppH4rKIrZroODgb5dUg
+ ==
+Received: from ppma23.wdc07v.mail.ibm.com
+ (5d.69.3da9.ip4.static.sl-reverse.com [169.61.105.93])
+ by mx0a-001b2d01.pphosted.com (PPS) with ESMTPS id 4gx3fk2ucw-1
+ (version=TLSv1.3 cipher=TLS_AES_256_GCM_SHA384 bits=256 verify=NOT);
+ Mon, 28 Sep 2026 17:42:19 +0000 (GMT)
+Received: from pps.filterd (ppma23.wdc07v.mail.ibm.com [127.0.0.1])
+ by ppma23.wdc07v.mail.ibm.com (8.18.1.11/8.18.1.11) with ESMTP id
+ 68SElW0T310180; Mon, 28 Sep 2026 17:42:18 GMT
+Received: from smtprelay04.fra02v.mail.ibm.com ([9.218.2.228])
+ by ppma23.wdc07v.mail.ibm.com (PPS) with ESMTPS id 4gxsvhean0-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+ Mon, 28 Sep 2026 17:42:18 +0000 (GMT)
+Received: from smtpav04.fra02v.mail.ibm.com (smtpav04.fra02v.mail.ibm.com
+ [10.20.54.103])
+ by smtprelay04.fra02v.mail.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id
+ 68SHgEkk16777722
+ (version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Mon, 28 Sep 2026 17:42:14 GMT
+Received: from smtpav04.fra02v.mail.ibm.com (unknown [127.0.0.1])
+ by IMSVA (Postfix) with ESMTP id 9FFD62004B;
+ Mon, 28 Sep 2026 17:42:14 +0000 (GMT)
+Received: from smtpav04.fra02v.mail.ibm.com (unknown [127.0.0.1])
+ by IMSVA (Postfix) with ESMTP id 7493C20040;
+ Mon, 28 Sep 2026 17:42:13 +0000 (GMT)
+Received: from [0.0.0.0] (unknown [9.111.81.16])
+ by smtpav04.fra02v.mail.ibm.com (Postfix) with ESMTP;
+ Mon, 28 Sep 2026 17:42:13 +0000 (GMT)
+Message-ID: <ea808fa9-2692-4a65-afbb-df5d6a51e5ec@linux.ibm.com>
+Date: Mon, 28 Sep 2026 19:42:13 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v9 12/26] arm/kvm: Initialize isar.idregs[] with all
- writable host ID regs
-To: Khushit Shah <khushit.shah@nutanix.com>
-Cc: "eric.auger.pro@gmail.com" <eric.auger.pro@gmail.com>,
- "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
- "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
- "kvmarm@lists.linux.dev" <kvmarm@lists.linux.dev>,
- "peter.maydell@linaro.org" <peter.maydell@linaro.org>,
- Shaju Abraham <shaju.abraham@nutanix.com>,
- "yangjinqian1@huawei.com" <yangjinqian1@huawei.com>,
- "cohuck@redhat.com" <cohuck@redhat.com>,
- "richard.henderson@linaro.org" <richard.henderson@linaro.org>,
- "sebott@redhat.com" <sebott@redhat.com>,
- "skolothumtho@nvidia.com" <skolothumtho@nvidia.com>,
- "philmd@oss.qualcomm.com" <philmd@oss.qualcomm.com>,
- "maz@kernel.org" <maz@kernel.org>,
- "oliver.upton@linux.dev" <oliver.upton@linux.dev>,
- "pbonzini@redhat.com" <pbonzini@redhat.com>,
- "armbru@redhat.com" <armbru@redhat.com>,
- "berrange@redhat.com" <berrange@redhat.com>,
- "abologna@redhat.com" <abologna@redhat.com>,
- "jdenemar@redhat.com" <jdenemar@redhat.com>
-References: <20260916144721.751810-1-eric.auger@redhat.com>
- <20260916144721.751810-13-eric.auger@redhat.com>
- <8C1A034C-C3E7-4EC3-89CF-6E3AD99AE90C@nutanix.com>
-From: Eric Auger <eric.auger@redhat.com>
-In-Reply-To: <8C1A034C-C3E7-4EC3-89CF-6E3AD99AE90C@nutanix.com>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: 45JWibC_OTxImpk-UArsvsCoHlr5N4MONILIU2i9Sng_1790616867
-X-Mimecast-Originator: redhat.com
+Subject: Re: [PATCH v2 16/24] target/s390x: convert exception to raise_excp
+To: Yonggang Luo <luoyonggang@gmail.com>, qemu-devel@nongnu.org
+Cc: Helge Deller <deller@gmx.de>, Harsh Prateek Bora <harshpb@linux.ibm.com>, 
+ Weiwei Li <liwei1518@gmail.com>, Brian Cain <brian.cain@oss.qualcomm.com>,
+ Daniel Henrique Barboza <daniel.barboza@oss.qualcomm.com>,
+ Max Filippov <jcmvbkbc@gmail.com>, Chao Liu <chao.liu@processmission.com>,
+ Aleksandar Rikalo <arikalo@gmail.com>,
+ Philippe Mathieu-Daude <philmd@mailo.com>,
+ Matthew Rosato <mjrosato@linux.ibm.com>,
+ Alistair Francis <alistair.francis@wdc.com>,
+ Stafford Horne <shorne@gmail.com>, Chinmay Rath <rathc@linux.ibm.com>,
+ Nicholas Piggin <npiggin@gmail.com>,
+ Yoshinori Sato <yoshinori.sato@nifty.com>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ Artyom Tarasenko <atar4qemu@gmail.com>, Laurent Vivier <laurent@vivier.eu>,
+ Jiaxun Yang <jiaxun.yang@flygoat.com>, Palmer Dabbelt <palmer@dabbelt.com>,
+ "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
+ Aurelien Jarno <aurelien@aurel32.net>,
+ =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@oss.qualcomm.com>,
+ Eric Farman <farman@linux.ibm.com>, qemu-riscv@nongnu.org,
+ Richard Henderson <richard.henderson@linaro.org>,
+ David Hildenbrand <david@kernel.org>,
+ Glenn Miles <milesg@linux.ibm.com>, Cornelia Huck <cohuck@redhat.com>,
+ Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
+ Song Gao <17746591750@163.com>, qemu-ppc@nongnu.org,
+ qemu-arm@nongnu.org, Michael Rolnik <mrolnik@gmail.com>,
+ Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>,
+ Paolo Bonzini <pbonzini@redhat.com>, qemu-s390x@nongnu.org
+References: <20260928052051.251-1-luoyonggang@gmail.com>
+ <20260928052051.251-17-luoyonggang@gmail.com>
 Content-Language: en-US
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=170.10.133.124;
- envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -22
-X-Spam_score: -2.3
+From: Ilya Leoshkevich <iii@linux.ibm.com>
+In-Reply-To: <20260928052051.251-17-luoyonggang@gmail.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+X-TM-AS-GCONF: 00
+X-Proofpoint-Reinject: loops=2 maxloops=12
+X-Proofpoint-ORIG-GUID: wscaUkxNfxkcliZhXlVFW8tj4YOcmMPI
+X-Proofpoint-GUID: likcWDpQJ6Q27wi8mXqXSJMOXXxPdZuO
+X-Proofpoint-Spam-Info: AW1haW4tMjYwOTI4MDA3MCBTYWx0ZWRfXxpIY/Z+n7oLd
+ x2LrRT7ShvgJ3cyV5kCxp+z1npY8VMyLLszLcLDn7WBtM0hhp2byu0CIUIBvVCRP3LAsQPjloIa
+ MAjIi+CbB7Im+VaMAI31z6Ki7tyVajA=
+X-Authority-Analysis: v=2.4 cv=Vv62kO2n c=1 sm=1 tr=0 ts=6abaa6fb cx=c_pps
+ a=3Bg1Hr4SwmMryq2xdFQyZA==:117 a=3Bg1Hr4SwmMryq2xdFQyZA==:17
+ a=IkcTkHD0fZMA:10 a=VdqzKS8jKosA:10 a=VkNPw1HP01LnGYTKEx00:22
+ a=RnoormkPH1_aCDwRdu11:22 a=Y2IxJ9c9Rs8Kov3niI8_:22 a=pGLkceISAAAA:8
+ a=VnNF1IyMAAAA:8 a=HzV-HrvY6oUjtcFz-MoA:9 a=QEXdDO2ut3YA:10
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwOTI4MDA3MCBTYWx0ZWRfX3yB6admBk59f
+ ppEglO1c43Fu3mHsUG1ImojlvDaEA552cIbtaJFj9qprbkW7DNGrWOpb56tJl24pswDg/txqE/B
+ PQHVkSPF1J8g/+vjq4IGKsQwJk8bwnM2m9PFzqX2Y/Hhm4WB/d1QWxAyfA8vFVVUytsOK8X83XL
+ VnFcQeJ3rcFNzT2XvAUXLTPotOgY/I/5azfgQy6MaW/jp5hNXnbL0ymQWIfSW9aHltcIb0/dpnH
+ CK4MZUODtBTy1tlLw/l3yANj2/NEwmL6LXV30AosvAmYKfuXkIfMrzP9a/Fh2/a2XpdIJ0U6QUc
+ tlDh0XYkCJMRarJZrH0D7pTrzxAKWkoZmUFW/+CWOQQivirJt305xhXH2TKuZFopG7U+62nPcMS
+ VY+EurVSwjuc9YmB0gugCIqrSYV83dQCzBmBNIRC1pgtDmqkpfBOkP4xIyIf220IB713yVFLYJI
+ 7KZ5at+ZS3bjCeovXow==
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.293,Aquarius:18.0.1176,Hydra:6.1.134,FMLib:17.12.100.49
+ definitions=2026-09-28_04,2026-09-21_02,2025-10-01_01
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
+ suspectscore=0 spamscore=0 phishscore=0 bulkscore=0 adultscore=0
+ priorityscore=1501 malwarescore=0 clxscore=1011 lowpriorityscore=0
+ impostorscore=0 classifier=typeunknown authscore=0 authtc= authcc=
+ route=outbound adjust=0 reason=mlx scancount=1 engine=8.22.0-2609040000
+ definitions=main-2609280070
+Received-SPF: pass client-ip=148.163.158.5; envelope-from=iii@linux.ibm.com;
+ helo=mx0b-001b2d01.pphosted.com
+X-Spam_score_int: -26
+X-Spam_score: -2.7
 X-Spam_bar: --
-X-Spam_report: (-2.3 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.238,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.7 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, RCVD_IN_DNSWL_LOW=-0.7,
+ RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -134,163 +147,28 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-To: eric.auger@redhat.com
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
 
 
-On 9/25/26 3:27 PM, Khushit Shah wrote:
->
->> On 16 Sep 2026, at 8:15 PM, Eric Auger <eric.auger@redhat.com> wrote:
->>
->> !-------------------------------------------------------------------|
->>  CAUTION: External Email
->>
->> |-------------------------------------------------------------------!
->>
->> kvm_arm_get_host_cpu_features() already retrieves the values of some
->> host id registers to analyze the available vcpu features.
->>
->> Eventually we want to be able to allow the user to change the value
->> of writable ID reg fields. So we need to store the initial value of all
->> writable ID regs into isar.idregs[].
->>
->> Introduce a new get_host_cpu_idregs() helper that populates isar.idregs[]
->> and call it from kvm_arm_get_host_cpu_features.
->>
->> This patch has no impact on cpreg values. isar.idregs[] is only
->> used as a temporary storage for register values to be updated in place
->> later.  Also it does not handle the writeback of isar.idregs[] into cpreg
->> value list after user update. This will be handled separately.
->>
->> Note the host values are retrieved from the scratch vcpu initialized with
->> all the available capabilities exposed by KVM, independently on the
->> final choice made by the suer.
->>
->> Signed-off-by: Eric Auger <eric.auger@redhat.com>
->> Signed-off-by: Cornelia Huck <cohuck@redhat.com>
-> Hi Eric,
->
-> As we discussed, in v10, there will be an option to also read all the ID registers, not only writable.
-yes we can do that. reviewers may advocate the leave as is though as the
-only call site in
-this series will use writable mode.
->> ---
->> v8 -> v9:
->> - improve the commit msg. Only initialize in this patch and move the
->>  write back to cpreg value list in a different patch.
->> - Do not hack CLIDR here. The correct way to fix that temporarily is to
->>  do that in the machine instead.
->>
->> v7 -> v8
->> - fix indent and added Khushit's R-b
->>
->> v6 -> v7
->> - remove vcpu from prototypes (Khushit)
->>
->> v5 -> v6
->> - do not check writable_map anymore
->> ---
->> target/arm/kvm.c        | 43 ++++++++++++++++++++++++++++++++++++++++-
->> target/arm/trace-events |  2 ++
->> 2 files changed, 44 insertions(+), 1 deletion(-)
->>
->> diff --git a/target/arm/kvm.c b/target/arm/kvm.c
->> index c6eac41991..958b25e550 100644
->> --- a/target/arm/kvm.c
->> +++ b/target/arm/kvm.c
->> @@ -43,6 +43,7 @@
->> #include "hw/acpi/ghes.h"
->> #include "target/arm/gtimer.h"
->> #include "migration/blocker.h"
->> +#include "cpu-idregs.h"
->>
->> const KVMCapabilityInfo kvm_arch_required_capabilities[] = {
->>     KVM_CAP_INFO(DEVICE_CTRL),
->> @@ -290,7 +291,44 @@ static int kvm_feature_idx_to_idregs_idx(int kidx)
->>     return get_sysreg_idx(sysreg);
->> }
->>
->> -static void kvm_arm_get_host_cpu_features(ARMHostCPUFeatures *ahcf)
->> +/*
->> + * get_host_cpu_idregs: Read all the writable ID reg host values
->> + *
->> + * Need to be called once the writable mask has been populated
->> + * Note we may want to read all the known id regs but some of them are not
->> + * writable and return an error, hence the choice of reading only those which
->> + * are writable. Those are also readable!
->> + */
->> +static int get_host_cpu_idregs(int fd, ARMHostCPUFeatures *ahcf)
->> +{
->> +    int err = 0;
->> +    int i;
->> +
->> +    for (i = 0; i < NUM_ID_IDX; i++) {
->> +        ARM64SysReg *sysregdesc = &arm64_id_regs[i];
->> +        ARMSysRegs sysreg = id_register_sysreg[i];
->> +        uint64_t *reg;
->> +        int ret;
->> +
->> +        if (!sysregdesc->writable_mask) {
->> +            continue;
->> +        }
->> +
->> +        reg = &ahcf->isar.idregs[i];
->> +        ret = read_sys_reg64(fd, reg, idregs_sysreg_to_kvm_reg(sysreg));
->> +        trace_get_host_cpu_idregs(sysregdesc->name, *reg);
->> +        if (ret) {
->> +            error_report("%s error reading value of host %s register (%m)",
->> +                         __func__, sysregdesc->name);
->> +
->> +            err = ret;
->> +        }
->> +    }
->> +    return err;
->> +}
->> +
->> +static void
->> +kvm_arm_get_host_cpu_features(ARMHostCPUFeatures *ahcf)
->> {
->>     /* Identify the feature bits corresponding to the host CPU, and
->>      * fill out the ARMHostCPUClass fields accordingly. To do this
->> @@ -376,6 +414,9 @@ static void kvm_arm_get_host_cpu_features(ARMHostCPUFeatures *ahcf)
->>         SET_IDREG(&ahcf->isar, ID_AA64PFR0, 0x00000011); /* EL1&0, AArch64 only */
->>         err = 0;
->>     } else {
->> +        /* Make sure all writable ID reg values are initialized */
->> +        err |= get_host_cpu_idregs(fd, ahcf);
->> +
-> Perhaps if we read “all” the ID registers, we should be able to get rid of all the manual reads below.
-Yes if all are read, we can remove this. But for now this is depends on
-the host capabilities, better to
-leave as is I think.
->
->>         err |= get_host_cpu_reg(fd, ahcf, ID_AA64PFR1_EL1_IDX);
->>         err |= get_host_cpu_reg(fd, ahcf, ID_AA64PFR2_EL1_IDX);
->>         err |= get_host_cpu_reg(fd, ahcf, ID_AA64SMFR0_EL1_IDX);
->> diff --git a/target/arm/trace-events b/target/arm/trace-events
->> index 8502fb3265..c25d2a1191 100644
->> --- a/target/arm/trace-events
->> +++ b/target/arm/trace-events
->> @@ -13,6 +13,8 @@ arm_gt_update_irq(int timer, int irqstate) "gt_update_irq: timer %d irqstate %d"
->>
->> # kvm.c
->> kvm_arm_fixup_msi_route(uint64_t iova, uint64_t gpa) "MSI iova = 0x%"PRIx64" is translated into 0x%"PRIx64
->> +get_host_cpu_idregs(const char *name, uint64_t value) "scratch vcpu host value for %s is 0x%"PRIx64
->> +kvm_arm_writable_idregs_to_cpreg_list(const char *name, uint64_t previous, uint64_t new) "%s overwrite default 0x%"PRIx64" with 0x%”PRIx64
-> ^^ leaked into this commit.
-yup. Thanks!
+On 9/28/26 07:20, Yonggang Luo wrote:
+> Drop TCG exception and call raise_excp. Keep data_exception. Route
+> leftover C SVC execute through cpu_loop_exit_excp.
+> 
+> Signed-off-by: Yonggang Luo <luoyonggang@gmail.com>
+> ---
+>   target/s390x/helper.h          |  1 -
+>   target/s390x/tcg/mem_helper.c  |  2 +-
+>   target/s390x/tcg/misc_helper.c | 10 ----------
+>   target/s390x/tcg/translate.c   |  2 +-
+>   4 files changed, 2 insertions(+), 13 deletions(-)
 
-Eric
->
-> Warm Regards,
-> Khushit
->
->> # cpu.c
->> arm_cpu_reset(uint64_t mp_aff) "cpu %" PRIu64
->> -- 
->> 2.53.0
->>
+Seems to be a straightforward patch without functional changes
+(not counting HELPER_LOG removal, but `-d int` should still work).
+
+Thanks!
+
+Reviewed-by: Ilya Leoshkevich <iii@linux.ibm.com>
 
 

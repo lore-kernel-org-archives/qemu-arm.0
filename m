@@ -4,103 +4,108 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A392AC9833F
-	for <qemu-arm@archiver.kernel.org>; Mon, 28 Sep 2026 13:45:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 610D5CA5FA2
+	for <qemu-arm@archiver.kernel.org>; Mon, 28 Sep 2026 13:47:50 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xBBfs-0000LX-Pk; Mon, 28 Sep 2026 09:45:44 -0400
+	id 1xBBhW-0000rE-RU; Mon, 28 Sep 2026 09:47:27 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1xBBfc-0000BJ-Jw
- for qemu-arm@nongnu.org; Mon, 28 Sep 2026 09:45:28 -0400
-Received: from mail-yx2-x0f.google.com ([2607:f8b0:4864:41::f])
+ id 1xBBhT-0000pe-9J
+ for qemu-arm@nongnu.org; Mon, 28 Sep 2026 09:47:24 -0400
+Received: from mail-yx2-x0c.google.com ([2607:f8b0:4864:41::c])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1xBBfb-0001Q3-2F
- for qemu-arm@nongnu.org; Mon, 28 Sep 2026 09:45:28 -0400
-Received: by mail-yx2-x0f.google.com with SMTP id
- 956f58d0204a3-66f7f72a284so2838344d50.2
- for <qemu-arm@nongnu.org>; Mon, 28 Sep 2026 06:45:26 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1790603126; cv=none;
+ id 1xBBhO-0001hR-DH
+ for qemu-arm@nongnu.org; Mon, 28 Sep 2026 09:47:20 -0400
+Received: by mail-yx2-x0c.google.com with SMTP id
+ 956f58d0204a3-674138cbe59so2149943d50.2
+ for <qemu-arm@nongnu.org>; Mon, 28 Sep 2026 06:47:17 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1790603237; cv=none;
  d=google.com; s=arc-20260327;
- b=ASqZ3sdcL9AA8VlkLnP98WMoYf4ECq6PwP6zWxE1b0XYkZTE2qKm1T7KWyMqy7f5uZ
- GLMr2XsphmG4nGzZ5vK/gTdvh0WAh4kKK9ON5TrF3h1GjXiiSaM90oa8LamTUnzkw8mq
- zhTVlQ7ZJF5eUTAAi1mZyynDQcEhNYMEPyhJHm2RXbRWb2T5ZyR33Pu6crtSeNxIovWB
- w2pQn+91LWx+z0G4R1yoc6OyLk/G6sOBtctEY7xvxq1wYfEGXYENiWPj1/1+shMbBJBb
- 0H2qYH8dvfX1xdlw5Wz0yk417VwglIGUSpNBcNFVne0nxJT+sl0M2/iueTXJYsShNcHx
- URBg==
+ b=C3YXOpx/9RVoZjFk2qnR7x1Crl25ZpX04erFSxeFk4dG9G+Sgg0C+j9MChUUWlgAgs
+ LWbEVLISnTIH+vycu0qZ2VXXPNDfAJCVz3qWRfT4e+gdFXFK9bSnIf2aGaBLygBI57gM
+ zhCJ11gcNB5/v8XAR6JLyzylF43qxoOIFVJa5vHbA+N/QlCnkVmN6RkgV5rqLJj9ePMB
+ IPJBfVeghxUgfqpomUfApdaTKY9Uu42YCk7KMarmtMsYmhX8poqSfUtXcKc9/EmMUE/j
+ S3S+CltaOkUc5woKyWgqf1clpHdbDcHVR7KhRSnL+B4MTCp0O1L8YnDkJsoYCJMA6IDU
+ r51w==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
  s=arc-20260327; 
  h=cc:to:subject:message-id:date:from:in-reply-to:references
  :mime-version:dkim-signature;
- bh=KhV3UwfdpRcdUekG+mtvaodNjfW/8yJ5uU8Sh22D3Rc=;
- fh=oRtWNLoDpR6EfTI7+HFV/gXqlqqTqKGsg5+SwbtD+KA=;
- b=GiBW+yoTYLu6AjCidc2lfpnBpsentTSLjRAFHdg0/OaO34oyYlXt07vZTb6qFblk/M
- SD+xLev5sWpUyldXKFK84UiMyPcAl/tVYU0tIR1IAqZ1/C7RhWKGVeXZJZYA5ww2cYHW
- OzuzmLNM2M59EDx5cVQkW31Oo2GkUJvUWYfxOQoPTJ5+qPAk9LhBDbT1CUfO7INKwCrn
- CWl+suldgTxS+7Evb1iBEZtMh2NcmDQGvNtyTX90/bk97VyTEs9uFn5ucYdIbK6WpNJ7
- uQQFJrFxjteILLqJdPgAZ/B+NBAccw7BEmmsio4wHb9g7Udyb3jyMv8/ZczHIU1V59U+
- Nkeg==; darn=nongnu.org
+ bh=D3EhREK3ZFIioeDYjJjTdCtC/aZbDyqG8MQ9EpA7BPg=;
+ fh=DI+8W5/Zvwu62cT4fPOEj1oZjnMrWJ5bAjyzLp+HY54=;
+ b=eaVTHN83A1CzN6HlgBdc71grSoYUyFsRSMErqr+pyJ0z0Ke5GQ9JAgLjx5P85isbYT
+ 0VczkhK/DrthE3Xq8vw8w99kn8ZzMuLMn1qp5BsWyv59oz48c9jqBAA7PWcOYZwoLZ7/
+ 96JY6Qd1UecaP/ymXO4Ha35qG5LzajLaAaiMowFfDRNFWrC8vAPSafk9OIIvKk+mVN09
+ HSMTyIu4cAifgMUKmCnb7ewD2H3ZoUa/ediJwdfyc8dUEH2itrX/8kPWDcrkv8FLwfWR
+ LKcCDv/80Tr6ZIOUOSIli54Q4X1yOuKbhH2aklw8FDrzbQLYg6GXp+zqZQWUFtzgat0y
+ f5Mg==; darn=nongnu.org
 ARC-Authentication-Results: i=1; mx.google.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1790603126; x=1791207926; darn=nongnu.org;
+ d=linaro.org; s=google; t=1790603237; x=1791208037; darn=nongnu.org;
  h=content-type:cc:to:subject:message-id:date:from:in-reply-to
  :references:mime-version:from:to:cc:subject:date:message-id:reply-to
- :content-type; bh=KhV3UwfdpRcdUekG+mtvaodNjfW/8yJ5uU8Sh22D3Rc=;
- b=aXBQoI/qE9fIfFYlIZuWR+MzgkFZSgqt0YLAgXEcQmq69O2M/qejiJhK9SkY74WbUG
- 4kGiUcEy3tQhsFiisYJj2EkCZqpNJKTor2mkeIG19BQjjMiizqDPmv5kZnIaUTFWFZ1c
- lfTfHuHXGcENlXSAM67rG7KIxp8qIKVottIL9jZLMkQYmk9468nYZA6dEyqv5CnmZ5Ca
- BY5YhKNdfcLVz+9F9MxkMxfW7q0oAXjihKRH+8ehOyWjLpYhT2nTdHSd5kU2fB9IsNII
- k3ZG6phhBgylOy35jMRXdVs11Hl5L6CD3Lu+kA4pnRXqe2YSQcc5tSQkcZjFA4puNJTH
- NTug==
+ :content-type; bh=D3EhREK3ZFIioeDYjJjTdCtC/aZbDyqG8MQ9EpA7BPg=;
+ b=weUNMWHwgbvxFc4Me6PtZDUAzMAcQDNcYrMoOVXUqye3cLMN6gOzYOEu/iyRXNAJKh
+ J34Z7g7Zg1cs7ATQdXsatIBH+TIufT9m+KgUetljkSI8629U2p6GOBFpUwjpPJEJ11iU
+ dw4K3Nsx11PCeqzgmv3P+o91T098SHcDzYq5vIrYb8uKfwhKY3rTi9y6V5EcAMkXwdxC
+ h+MBBPQva6CYzTLd1e2flmagF9RF8SESEHp2Ml9+PagD9xgWZuqgRWU02t0DqUOZMYUI
+ riwkUy1iP+JOMf1760iPONi1RZ/4enHPdVVJc65/1tdkTeNj4Fy2bGs1pmj9OqUkkQI1
+ ahQg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20260707; t=1790603126; x=1791207926;
+ d=1e100.net; s=20260707; t=1790603237; x=1791208037;
  h=content-type:cc:to:subject:message-id:date:from:in-reply-to
  :references:mime-version:x-gm-gg:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to:content-type;
- bh=KhV3UwfdpRcdUekG+mtvaodNjfW/8yJ5uU8Sh22D3Rc=;
- b=Cbj9cOjaBVAYwj6HZp3mVG4oJ+p8OKmEjFrnNXvwzHrUMjWrr8wNWNNRF3Y6cDN0bV
- XuSjAFZPa+DobaO381fMZCHdA1sHAIGpvUfZkv/ROvPUf3kyIacXT+iVMHdLZWfgBCIS
- hBZ9lDrG02BnFiMmT88LWRaKe3Tvs1JK3RDkfdCWrGt3M6yGEfPwK0uX5nvb87iyLnGO
- AvHDCPhDn3cZAKsQS8VB/P5kl1oLECiZLGiaqj89HAO3CJ7f3QKZX5ZQvT9wZoYoDPRQ
- qS7izhBXDNreQAdaVlrG/XLm742q03TT4crRiRKUv1/uSLY+q6GmEMWAqECsP8Oy1bRe
- z0Aw==
-X-Gm-Message-State: AFq9FYKWyXzcyBPeA00dNpmhGH2rIwR+3n05qHxUM0k+VNhk4wIiC+hv
- 9jcVLqBAME/anX19tP51A0EnCFdC6P9d3uv7cBWaXlvZhS+g0wDG8/0em3nszSa336r3Lw42Dlj
- e7wNx7EfAcrbWaxJ8QbBFFo7Mg01yNYr7KAYUs8r3UA==
-X-Gm-Gg: AYBFou0uWGaMUku7K4rn6lhGXWCq+jwNKuCSZ0cd2Hcp17xw6YbosDT4TKEUy+NQLli
- Gw81Fx5BjMZ50sZZT1+pnVqnqHe3GrtLPRalFruXfKqhOZ+CjqzuNAob9C41LdUHYoqc9TfH1hN
- dNbLWOyiZG0CKF2bxTQNp39IDSQh3wUXwgEKw1KlTyQ1/E0fftei5i3v/AY8iDz0ZXD67/+2de5
- H9FTkeR0yTgCMiV8Sq/As0ykVO38OhOYqS0f6gcH/iB9DhGWMBm9g2ikhu48XM4JFKkRzgC7KQz
- iFpGmgHe3H8F/xTF3yjMMO3YxqRbrbRCSfYu+zoduXbF30OIrMs58uHB/NWySVIDUfvlBUF3ygX
- MYMr4sIUrf7p1WOwtBggvKOMvwTxR5/o4Kt94dtYL
-X-Received: by 2002:a05:690e:12c4:b0:675:3735:fdf7 with SMTP id
- 956f58d0204a3-67537360a90mr2238368d50.16.1790603125537; Mon, 28 Sep 2026
- 06:45:25 -0700 (PDT)
+ bh=D3EhREK3ZFIioeDYjJjTdCtC/aZbDyqG8MQ9EpA7BPg=;
+ b=xFKaqXhzxuDFw7qdlpjxZ1iEnPB+XHUtRKWiEV53Wrg/mfuNlZgCdqPr89jznEJEEJ
+ fd/7cDYFyI6GRmLnQS8gDSwYrUoesIyjZuzzoci5UcOrTlLtPOP900s9GWLVl+Fa1Wrf
+ IU/0Rxkn+M3e+bB65CDC609ZnyHS4MWcKtIf52eXLshh4HmJmCZIQq6J4PVK6TjoVV0t
+ a+0QWDwlYbP3x+v7IAb9nBUEtRbeRNKRhqCDKsC6bwV2Y1lDOeTHX0KnTbtFL1hKLZKQ
+ f2XTW/gXVW+TM89MxKw6L2XRMGcorWI66K3ZbilGkWOR4lEXpmEOYQbwo/HgdB3ZHBts
+ gIeg==
+X-Forwarded-Encrypted: i=1;
+ AKwUvByXePBr95hfm/CSJ3yPjvwIZQbzxOom8E5p1zC73F+3zerEAVqZLvu8zH+0Sj6gg3mS6TMcZRWrKQ==@nongnu.org
+X-Gm-Message-State: AFq9FYIyoP5gWZ+SczHjhZJU8upAPPfYvO2s+ESw8NavTzKao5TPl2YY
+ gjzzzOnw+O7ktYVqfXrIqE+edobLGqpSZ23f9v+H76IAG5M0Utji2sbCGY0nFhaNhxsU91t7CcC
+ T80vj9I7yzg6nf5dIH33K41wx+R9vT/0wP2zgFq7ItA==
+X-Gm-Gg: AYBFou0FWIWcjH0bXTG96yQzjISIpxjyrDxGC3Ap+jWk4RgH//0xiIwZfwDpbZ1434V
+ 9cDeOimr2/Zkp78tgbGt+Qb31m7l6xMT/wccXIua0Y1JFpmXJW/JsHWq/KGgAaqtSH1HZ5tVDwz
+ 6BOJMYgnX8DoZCv/OYeVx4H5uEI9pgrPpTTxbt1Pft1VTiglfSqI5pYpC/Q8aHIkJ1NRvjg2pQh
+ WZrYhp0gsvDHh0niR8yyFMAjRcZ+lqZ8GMBmY5tB6kCa1+xUHLEJl7fzj2cw8VW2i3YSHV/fF29
+ PZFBBobbeoDKYx7/lZTlRz/hpbeu+cyZzue/T9k6RDiTCbpTxTG3nVRYQmrC79jCfB6VSkc7QuY
+ XtdS6uDdHYd9FrT900odQSKcRvFogEq386vXaLTk=
+X-Received: by 2002:a05:690e:191a:b0:674:14bc:49ed with SMTP id
+ 956f58d0204a3-67414bc4ac9mr3058152d50.58.1790603237060; Mon, 28 Sep 2026
+ 06:47:17 -0700 (PDT)
 MIME-Version: 1.0
-References: <20260918092120.370805-1-wangyize7@huawei.com>
-In-Reply-To: <20260918092120.370805-1-wangyize7@huawei.com>
+References: <20260916165117.39764-1-sebott@redhat.com>
+In-Reply-To: <20260916165117.39764-1-sebott@redhat.com>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Mon, 28 Sep 2026 14:45:13 +0100
-X-Gm-Features: AclHuK8jh9wcEEcEWy7aMhBejScFDDnV4iFR2vRW8uZEOMq8YObDbqDJLsKPyCM
-Message-ID: <CAFEAcA-mW_3=qgy2w1cLcXmkEqx3WrzifktvZ7P-0Wez4A=JPw@mail.gmail.com>
-Subject: Re: [PATCH 0/4] Batch register access for live migration optimization
-To: Yize Wang <wangyize7@huawei.com>
-Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, mst@redhat.com, 
- cohuck@redhat.com, pbonzini@redhat.com, zhengchuan@huawei.com, 
- jiangjiacheng@huawei.com, yize_w1110@163.com
+Date: Mon, 28 Sep 2026 14:47:05 +0100
+X-Gm-Features: AclHuK_0cWJvuXI9w6ckERpSxL31YnHPnNaz6MLenPc9GBO34luEAup-VxU6JiE
+Message-ID: <CAFEAcA9p9X0A76O1Dt8bQEfy4ZsOwXtK-fC1HQ=K4kzEQQesGQ@mail.gmail.com>
+Subject: Re: [PATCH v6 0/3] arm: demuxed ID registers (CCSIDR_EL1)
+To: Sebastian Ott <sebott@redhat.com>
+Cc: Eric Auger <eauger@redhat.com>,
+ Jonathan Cameron <jonathan.cameron@huawei.com>, 
+ Alireza Sanaee <alireza.sanaee@huawei.com>, 
+ Richard Henderson <richard.henderson@linaro.org>,
+ Cornelia Huck <cohuck@redhat.com>, 
+ khushit.shah@nutanix.com, qemu-arm@nongnu.org, qemu-devel@nongnu.org
 Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:41::f;
- envelope-from=peter.maydell@linaro.org; helo=mail-yx2-x0f.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:41::c;
+ envelope-from=peter.maydell@linaro.org; helo=mail-yx2-x0c.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -116,54 +121,24 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Fri, 18 Sept 2026 at 10:25, Yize Wang <wangyize7@huawei.com> wrote:
+On Wed, 16 Sept 2026 at 17:51, Sebastian Ott <sebott@redhat.com> wrote:
 >
-> This series adds batch register access support to QEMU's KVM GICv3
-> register synchronization path, reducing syscall overhead during
-> ARM64 live migration.
+> To support efforts to generalize handling of writable System ID Registers
+> [1] this series addresses the demuxed registers that are kept outside of
+> ARMISARegisters namely CSSELR_EL1.
 >
-> Currently, QEMU issues one ioctl per register when saving/restoring VGIC
-> state. On large VM configurations this means tens of thousands of syscalls,
-> where lock acquisition and context switch overhead dominates migration
-> downtime. Thus, we provide a batch register method to allow userspace
-> read/write multiple distributor and redistributor registers in a single call.
-> In this way, we can significantly reduce syscalls and migration downtime.
+> CSSELR_EL1 is moved within ARMISARegisters and accessors to retrieve
+> and set the demuxed values are provided. Initial values are gathered via
+> the usual KVM_GET_ONE_REG ioctl.
 >
-> All batch paths probe kernel capability at runtime and fall back to the
-> original one-by-one path when the kernel does not support batch access,
-> ensuring backward compatibility.
+> V5 of this series was posted here:
+> https://lore.kernel.org/qemu-devel/20260909144151.26803-1-sebott@redhat.com/
 >
-> This series depends on the corresponding kernel patches that add
-> KVM_DEV_ARM_VGIC_GRP_BATCH_REGS support.
->
-> Test the VM migration time under pressure conditions.
-> The VM specifications for migration are as follows:
-> - VM use 4-K page;
-> - the number of VCPU is 160;
-> - the total memory is 320Gigabit;
-> - use 'Redis SET-benchmark' to pressurize VM;
->
-> Performance results (3-run average, ms):
->
->     | Metric              | Without patch | With patch | Improvement |
->     |---------------------|---------------|------------|-------------|
->     | Migration downtime  |        536    |     321    |     40%     |
->     | Source (total)      |        344    |     230    |     33%     |
->     |   - VGIC put        |        158    |      40    |     75%     |
->     |   - VGIC get        |        120    |      19    |     84%     |
->     | Destination (total) |        192    |      91    |     53%     |
->     |   - VGIC put        |        132    |      27    |     80%     |
->
-> Yize Wang (4):
->   Sync KVM ARM VGIC batch register UAPI to QEMU headers
->   hw/intc/arm_gicv3_kvm: Add batch helper structures and functions
->   hw/intc/arm_gicv3_kvm: Refactor kvm_arm_gicv3_put for batch register access
->   hw/intc/arm_gicv3_kvm: Refactor kvm_arm_gicv3_get for batch register access
+> [1] https://lore.kernel.org/qemu-arm/20260616132625.1732031-1-eric.auger@redhat.com/
 
-Just FYI for next time, patchsets like these that are the userspace half
-of a kernel KVM API change/enhancement that hasn't yet been accepted
-into the upstream kernel should be marked as "RFC" for the QEMU patchset.
 
-thanks
+
+Applied to target-arm.next, thanks.
+
 -- PMM
 

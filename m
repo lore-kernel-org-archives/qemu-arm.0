@@ -4,105 +4,105 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7C545C9833F
-	for <qemu-arm@archiver.kernel.org>; Mon, 28 Sep 2026 13:55:23 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8EF08CA5FA2
+	for <qemu-arm@archiver.kernel.org>; Mon, 28 Sep 2026 14:03:17 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xBBol-0003Cv-C7; Mon, 28 Sep 2026 09:54:55 -0400
+	id 1xBBwP-0005Kt-Fq; Mon, 28 Sep 2026 10:02:55 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1xBBoj-0003Bh-10
- for qemu-arm@nongnu.org; Mon, 28 Sep 2026 09:54:53 -0400
-Received: from mail-yx2-x2b.google.com ([2607:f8b0:4864:41::2b])
+ id 1xBBvT-000515-NB
+ for qemu-arm@nongnu.org; Mon, 28 Sep 2026 10:02:03 -0400
+Received: from mail-yx2-x11.google.com ([2607:f8b0:4864:41::11])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1xBBoh-0002P8-Ee
- for qemu-arm@nongnu.org; Mon, 28 Sep 2026 09:54:52 -0400
-Received: by mail-yx2-x2b.google.com with SMTP id
- 956f58d0204a3-6755a6109c1so276029d50.3
- for <qemu-arm@nongnu.org>; Mon, 28 Sep 2026 06:54:50 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1790603690; cv=none;
+ id 1xBBvR-0003ED-Oo
+ for qemu-arm@nongnu.org; Mon, 28 Sep 2026 10:01:51 -0400
+Received: by mail-yx2-x11.google.com with SMTP id
+ 956f58d0204a3-671563fb8beso2825277d50.3
+ for <qemu-arm@nongnu.org>; Mon, 28 Sep 2026 07:01:46 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1790604105; cv=none;
  d=google.com; s=arc-20260327;
- b=ZHYV0qFeaogIJz66YkEHtI1w5iqodwUp4+f6pH0GnLztkpw6fMFPF+7UpsiducBG3a
- sc1XjkVNyumeFrGkNEdVWrSSnu9ZzryBZDXiC+85mrQoJ8eIJ3M6J0i+Fr/wP3rPPzvd
- 07qUDjr8BxzYl7wZS+oth3mAOscJnr1S32/Q7aPmS9+Ol3WM/8g3U7zKkVjzO8qbbwEx
- 7E2WFW/taDafDFtvhQVi6sgMfCSiAt7VjadggVGeAgTxq0l4k/yuN3Bq1Y3MQSmH/Cd/
- QWot5otpUMUThsd+XnyhCqhKYY8dPkWRzXYlth6c4W7lqTZMk+XQ4Zu7jaF5dpwb8BFo
- ullg==
+ b=VfCBzWENkoTMh3+BOrZoroD4vAYPxg9TRT7v5YBYParb2nhIzfsZYS0ZquRIhKPFkk
+ 87aBwwJ9O0MiSNA+UZuSnm1Fmzgb4+8SKy1tj+Q78R5qvqyGkJBxwflPVEwET6ArH4oo
+ veaON84RX1hrg64XCQ6YLffTjL5hlEtAr9KrdFBNbU6wLqzlS612rpcKyMYkEvnsg/OJ
+ mlTyJ+GA8MgRj/FTcjDH4z170T88f6Zko1/sPSiwxJuPW1D/70k3RHg6WrTOHZ43NDec
+ gs783yiIvDErLjmQ2bHYX+/WvE2w7XO4frfBZZUnO//Nqy3KcNWXFSJx1dJlmIB0gYio
+ LG8A==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
  s=arc-20260327; 
  h=cc:to:subject:message-id:date:from:in-reply-to:references
  :mime-version:dkim-signature;
- bh=ij4uY4bkMYQGxRppabaKag+gIL2WEZJ23RiGoAkDOPo=;
- fh=hu3+MK6h8NLHKZuRnKnzWMz2aGar2PXWnfhTTZ7TrNk=;
- b=Gn3+N4CtAZc8cEjbmhCkMqXkkUsbyHm+xJEdchZH+BNGXzdNSXMVEffUt8AiUbQagE
- N+NfFArtFJccOPDDW3Me1utXZs1Ft3aQnACM01e4csZo209Ax/oynQCG/VWk4G4edWgW
- 0PKnhe8o5yEoRdaHt7JJSbRVJZLmZH5p/zC2klO0NNjzrjleQHlTasCNvadSUiRxtrKr
- unG4BXEKbeffMrxoYTIQ0u6DNX6tCBjmbRuAWwaF2FImFNazqcUT4LYbmyXen0WsyRsn
- L5dWxt2/UJIgKH8xK6dFeDDA14BXEHZ0+lEzOP0k/tJYVYzJcS1iCEXpBfEbTsKUoWTR
- n0qQ==; darn=nongnu.org
+ bh=gVo78a/wlP80EbN8BDeCX3xsqSYxql3c+VM4RzW0dd4=;
+ fh=PgK1hO6mmQM//0zRySi54MtqPs9+14fQ39WlbuopFkM=;
+ b=D4UDbgjspMu7lY2PQD0vxRg+0P25NU0tlwzq08bqDbAZyZEnZilGOzXk4/FNXyxMiK
+ b4FPKk9SLAjxi0LoyfRobctsEs3YHEPgIUuHQaz6IwZAkzQOMJZtJnW4SXfeipiJx2QG
+ UirM8M1qO/+qJ46l8gVnLzgRje4wIgi4bNIMgFmIg7/cMwyqu4p8CwLEgS99fZhzqJIN
+ rosXdpxtdqo89KgsFCknb9WZwSZUcdQFBLEgBTgr1YBLuKsANITSlDGMaN7folO2m3k3
+ jr6cCMfNKuQwlPpckrOTS8AyZ/xuSQsFkCk7ks1N50RykiX31H7VAZ7ThpgxiDc7rjge
+ fCJQ==; darn=nongnu.org
 ARC-Authentication-Results: i=1; mx.google.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1790603690; x=1791208490; darn=nongnu.org;
+ d=linaro.org; s=google; t=1790604105; x=1791208905; darn=nongnu.org;
  h=content-type:cc:to:subject:message-id:date:from:in-reply-to
  :references:mime-version:from:to:cc:subject:date:message-id:reply-to
- :content-type; bh=ij4uY4bkMYQGxRppabaKag+gIL2WEZJ23RiGoAkDOPo=;
- b=UoNhlp7ZpUmZr810zn1/gIGDYwA9rfVwyWvgE5Xk9HUpeS6OMMZ76dO4874tX4POC0
- KGRO/e2Nt6dUILsnMpQSoqF2OKSr/lTKWBr8ZdID4r9Q4NJiRi9yEelMCuRospwFAAAL
- GawHPZAJNBKEWqDeQlDcDmzIP5KN5f4Az3je6FnZF5bH/gYwAt1zbLHgJ6bbZEMUUQZi
- jfIMHSBLhCTloUMeNFlESjaYD+uutAOEn7YYWQSKc8JU5H92LEmc/V1eP+C63NfxAf4D
- 2bgvkl3OsFtqEiOaNDzktTrYG3TQucTUwedHXs35PozIFU2dpKgdCGtiN0Q6Zzx8nJiy
- 6l7A==
+ :content-type; bh=gVo78a/wlP80EbN8BDeCX3xsqSYxql3c+VM4RzW0dd4=;
+ b=qxvHfP6n4NRaLUphGYB0tfvkrPEGyBcZb37ohSDQ2prajO5a/V5kEug0L8q+jUABAa
+ 7tdJDJGi4vwPHYmKVGNs3C0qVuuQEjrJLZFzRTkKJb8gH/9sMR9RQOWBcvhYJtdyL1KG
+ Y/rQzPZXR6jBxIUrtHL3oA1muK9jXyABGB//rEW5lEu5e10bfO2DYORGMxeD+phaWTAl
+ onlTnEaz8jhsJhZR1AaweCUM+QjnTDGtN0qHhzgkmG8eBeLhPtsS1zkI3oTZEyfIUtvu
+ U+ylC/QXjawJXfZ/xFVPRy+tgyfQ0XUvfkdGcJSmxc4oWQRuZRwgO3pAhHrl5nsNnYaa
+ Comw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20260707; t=1790603690; x=1791208490;
+ d=1e100.net; s=20260707; t=1790604105; x=1791208905;
  h=content-type:cc:to:subject:message-id:date:from:in-reply-to
  :references:mime-version:x-gm-gg:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to:content-type;
- bh=ij4uY4bkMYQGxRppabaKag+gIL2WEZJ23RiGoAkDOPo=;
- b=SddR6FgCqi4pvqD4v+bTlutX9bYg1jG1OmkTUY8LWBCnyDbHYuO9abyuFglU/amsWv
- mfqYxKdKDa9NOj08c2ClY7HxKmPknQMGuu3H623N4T7XNGTDpPla8dSs/UMsGqpp/b4f
- Gc8LGLsQdsmW+5smQ4k0mXUsswi2Iyn/bLnfDRR+EDa7bfAWurF9lkARFd5ziEci+572
- L6QBjLsjEZtiAfcDI5rK3sXAV7mOMCM+jP2XLCX6Npt3a2TkN1OfcTrbmVoPabJO8Jdi
- ZD219BYBeF2GIcJ0Xj6mdGvw7uv0JAKIq4373uEVoCkkeArpXQMwKPonyqdHvg20Ecl4
- QYqA==
-X-Forwarded-Encrypted: i=1;
- AKwUvBwir2XhH621DSgiYjKT/KF4o/x8t307Ll2D/6xzCsNw4IIBw99WG3nZTuAXRLI6VPWBAvr5lgjmJw==@nongnu.org
-X-Gm-Message-State: AFuF++lpZKc3oGCt+GdfoYFzDj5ul1/2vA4ZhIMJImWP03Qv1Ned4rtK
- wZIz9P0letnNUpV71osq16xQOlUIkLoxW1jE5JupUEHsoHzxrxnmB++ULCNqwg242j+e4Yc0BR3
- YkWvmz3xDz8eXrYcbV8NreKggpO4IiN2xdQbVBnA7+Q==
-X-Gm-Gg: AYBFou0SpoanvDZ4dYZ8ZG4xRKtDxm7VfxS6yibsuR20n4zU48x0nqE/siYkC0/Mls2
- IvwCgMBNXjvb2u+zZQ1xZF5y3JxXFTYHryBOAov0f6CLCIFhFpqVqUSm0Fm2wMLZV+k0XRuyCLD
- OeXfDuJmjNiGheulLFTch2OfsHvHJwDs7C4k507J0d9al46de5/rBjdo0M3DDPE0qtsnRudUm11
- +T2eiE+eBVjxUIavOPz7uAW9TNu24mSkdbOCeCOGELZp0znEeXXA7uZt+uFP4EEwDQegm2JpbJm
- 1A49czaQ5eBR6b3sNZMs/3pDWVoUlBtGwyx2fQTgCarpHRV0Z5tLh9eCrsOuqUqNwlJUMpLiuFk
- kjEkzXt2l1J8G/w67lMJXJx1tM3+f5T8QcKOO3ao=
-X-Received: by 2002:a05:690e:14c6:b0:675:3d40:3c1f with SMTP id
- 956f58d0204a3-6753d403fcbmr1555494d50.71.1790603689729; Mon, 28 Sep 2026
- 06:54:49 -0700 (PDT)
+ bh=gVo78a/wlP80EbN8BDeCX3xsqSYxql3c+VM4RzW0dd4=;
+ b=rS4MNQrJAhHWScqsPYwmJZ91j02VpGNcElR1JKFO9rW7Dg/UO9vTwjpPY3KxdM94S/
+ FGHhCUQwoxnj33uQnEjFnAIF+vzhiKHciP3pGXJpcYVtKjjB7B6obD+q33kHcn5j5+tu
+ M/tTgKyvcBk1uc0+yhVbwHRAgGlRVBY31LIW+7+Oc2oMFrjuiGcUYIWBgUJGqY6yjLnG
+ j8zs8QtFb4tqSFjfTHryDm4Ja5S0l99oOQnL6X+yW4zroUAPvsLH19/baLXF/Ht/2q12
+ kFEAkouZ8o3yNII12vTUfvo+4s7X6SEzaxAYEABTo7e6g0svG2uJPl22sLrkM3fwTUqC
+ oLrQ==
+X-Gm-Message-State: AFq9FYIfsfwM0BHxZ9e9xwdgRdH2f7vfiA+S04bHnKJC2ON+VltVmJtB
+ dN+DQlHzEEL/llzSE05X/beU3tGv8q9thcYUPdB+FTQNA/8KHunv3amjA+KpPFi9K5U9DZMzyLk
+ 9UcoY6Mlr4cwJmVBVkHwJNeCqfzgNusQR45Cv6r6ULg==
+X-Gm-Gg: AYBFou3HkX8gf9jqkOhQz0xNesURy7uxQG6LpO1GNgqa25qieZyCdRxo3mzsTqM8OIE
+ /2KEM4HMsY7EDE2kp0moISiH6IOIRNfUKCjsIGmvAgNRhdt7EW3E9kGyDtMkl6FOcB7coz5pOQS
+ QI73+FJpp1MUvavWRDK3ZFQXKJcC3TgzbfYZl8z+xqHtvl1stOezPB6huvwI3+sGUrz8aIXORBg
+ 7PJg0z2rBodMaG54qLjI2P3KHRGF1Yl82LPU0DsquS9msbDwzdQJLcXdbSNylNwAEl3Uya51ukM
+ NRKUIUxmUW1xf7RiJEv2Gg6edH/XMLJnUKTbDXbTmwBrFG2wLBYY+YIuIgg/HmO/3DZyLnrr2fz
+ pdKZtUD0wjdloBO6oIZTMZnJ60zSOUZnGBPK+haQS
+X-Received: by 2002:a05:690e:169e:b0:667:b503:4d2e with SMTP id
+ 956f58d0204a3-672ed1d4e4bmr6799180d50.37.1790604105100; Mon, 28 Sep 2026
+ 07:01:45 -0700 (PDT)
 MIME-Version: 1.0
-References: <20260914192323.29250-1-gilles.grimaud@univ-lille.fr>
- <20260914192323.29250-3-gilles.grimaud@univ-lille.fr>
- <CAFEAcA_=sRZboB1GyGDxEa4vTZe5YS4GwJV9aK=6h-fONgLVkQ@mail.gmail.com>
- <20260920220722.73501-1-gilles.grimaud@univ-lille.fr>
-In-Reply-To: <20260920220722.73501-1-gilles.grimaud@univ-lille.fr>
+References: <20260924172928.2110956-1-coltonlewis@google.com>
+ <20260924173051.2117637-1-coltonlewis@google.com>
+In-Reply-To: <20260924173051.2117637-1-coltonlewis@google.com>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Mon, 28 Sep 2026 14:54:37 +0100
-X-Gm-Features: AclHuK_eNBIKBT6Poa7gPEOoGww3X56YJ7ArQXHNcJ9lHMik8ltiNnY_jjJbN8o
-Message-ID: <CAFEAcA9ScL5mmu1LKEhq3Qo0OSJL+-Ee4K6ura+2SgYYZi9O6g@mail.gmail.com>
-Subject: Re: [PATCH v2] target/arm: model Cortex-M0+ privilege extension
-To: Gilles Grimaud <gilles.grimaud@univ-lille.fr>
-Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, 
- Alex Bennee <alex.bennee@linaro.org>
+Date: Mon, 28 Sep 2026 15:01:32 +0100
+X-Gm-Features: AclHuK-1ibztR8QVF_T1w6zQp7WvVuCy3F9mqxT4-ubotzdPTVl79C5Fj0zkGKo
+Message-ID: <CAFEAcA9Rwrffx8bYiOxrtQGdg31QAz1oBm8okzpfqHZ6yK0Y7A@mail.gmail.com>
+Subject: Re: [PATCH] target/arm: Enable KVM PMU partitioning and counter limit
+To: Colton Lewis <coltonlewis@google.com>
+Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, kvmarm@lists.linux.dev, 
+ Paolo Bonzini <pbonzini@redhat.com>, Marc Zyngier <maz@kernel.org>,
+ Oliver Upton <oupton@kernel.org>, 
+ Will Deacon <will@kernel.org>, James Clark <james.clark@linaro.org>, 
+ Mingwei Zhang <mizhang@google.com>, kvm@vger.kernel.org
 Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:41::2b;
- envelope-from=peter.maydell@linaro.org; helo=mail-yx2-x2b.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:41::11;
+ envelope-from=peter.maydell@linaro.org; helo=mail-yx2-x11.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_NONE=0.001,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -119,37 +119,80 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Sun, 20 Sept 2026 at 23:07, Gilles Grimaud
-<gilles.grimaud@univ-lille.fr> wrote:
+On Thu, 24 Sept 2026 at 18:30, Colton Lewis <coltonlewis@google.com> wrote:
 >
-> The Armv6-M Unprivileged/Privileged Extension is optional. Cortex-M0 does
-> not implement it, while Cortex-M0+ may implement it. The RP2040 Cortex-M0+
-> configuration provides the extension.
+> Add CPU properties to configure KVM ARM64 PMU counter partitioning:
+> - 'pmu-partition' (bool): enables KVM_ARM_VCPU_PMU_V3_ENABLE_PARTITION
+> - 'pmu-num-counters' (uint32): sets KVM_ARM_VCPU_PMU_V3_SET_NR_COUNTERS
 >
-> Add an ARM feature bit that represents the optional privileged/unprivileged
-> extension. Make ARM_FEATURE_M_MAIN imply ARM_FEATURE_M_UNPRIV (handled in
-> arm_cpu_propagate_feature_implications) so that privileged writes to
-> CONTROL.nPRIV are allowed when the Main Extension is present (or when the
-> optional privilege extension is present without the Main Extension).
+> When 'pmu-partition=on' and 'pmu-num-counters=N' are passed via -cpu,
+> QEMU enables hardware PMU partitioning and reserves N general-purpose
+> event counters for the guest prior to calling KVM_ARM_VCPU_PMU_V3_INIT.
 >
-> Update the microbit Cortex-M0 test to verify that writes to nPRIV are
-> ignored.
+> Note that this patch is an example to demonstrate the KVM ARM64 PMU
+> Partitioning uAPI [1]. That is why it aborts immediately if setting the
+> device attributes does not succeed.
 >
-> Signed-off-by: Gilles Grimaud <gilles.grimaud@univ-lille.fr>
+> [1] https://lore.kernel.org/kvmarm/20260924172928.2110956-1-coltonlewis@google.com/
+>
+> Signed-off-by: Colton Lewis <coltonlewis@google.com>
+
+FYI for next time around, QEMU patches that depend on not-yet-accepted
+kernel ABI changes should be tagged RFC, please.
+
 > ---
-> Changes in v2:
-> - Removed the Cortex-M0+ CPU type definition from this generic patch; it will
->   be added separately in the upcoming RP2040/Pico series.
-> - Added the implication ARM_FEATURE_M_MAIN -> ARM_FEATURE_M_UNPRIV in
->   arm_cpu_propagate_feature_implications().
-> - Changed the CONTROL.nPRIV write condition in m_helper.c to test only
->   ARM_FEATURE_M_UNPRIV (Main Extension CPUs acquire it via the implication,
->   while an Armv6-M CPU without Main Extension can expose the feature
->   independently).
+>  target/arm/cpu.c | 20 ++++++++++++++++++++
+>  target/arm/cpu.h |  4 ++++
+>  target/arm/kvm.c | 32 ++++++++++++++++++++++++++++++++
 
+New CPU properties should be documented in docs/system/arm/cpu-features.rst .
 
+>  3 files changed, 56 insertions(+)
+>
+> diff --git a/target/arm/cpu.c b/target/arm/cpu.c
+> index f58a1db843..7538c6a24c 100644
+> --- a/target/arm/cpu.c
+> +++ b/target/arm/cpu.c
+> @@ -1359,6 +1359,20 @@ static bool arm_get_pmu(Object *obj, Error **errp)
+>      return cpu->has_pmu;
+>  }
+>
+> +static bool arm_get_pmu_partition(Object *obj, Error **errp)
+> +{
+> +    ARMCPU *cpu = ARM_CPU(obj);
+> +
+> +    return cpu->kvm_pmu_partition;
+> +}
+> +
+> +static void arm_set_pmu_partition(Object *obj, bool value, Error **errp)
+> +{
+> +    ARMCPU *cpu = ARM_CPU(obj);
+> +
+> +    cpu->kvm_pmu_partition = value;
+> +}
 
-Applied to target-arm.next, thanks.
+If your getter/setter are only updating the struct field,
+you can use a DEFINE_PROP_BOOL to avoid having to have them
+(compare arm_cpu_has_el2_property etc.)
 
+> +
+>  static void arm_set_pmu(Object *obj, bool value, Error **errp)
+>  {
+>      ARMCPU *cpu = ARM_CPU(obj);
+> @@ -1604,6 +1618,12 @@ static void arm_cpu_post_init(Object *obj)
+>      if (arm_feature(&cpu->env, ARM_FEATURE_PMU)) {
+>          cpu->has_pmu = true;
+>          object_property_add_bool(obj, "pmu", arm_get_pmu, arm_set_pmu);
+> +        object_property_add_bool(obj, "pmu-partition",
+> +                                 arm_get_pmu_partition,
+> +                                 arm_set_pmu_partition);
+> +        object_property_add_uint32_ptr(obj, "pmu-num-counters",
+> +                                       &cpu->kvm_pmu_nr_counters,
+> +                                       OBJ_PROP_FLAG_READWRITE);
+
+What should we do with these properties if we're not using KVM
+(i.e. for TCG, hvf, etc) ?
+
+thanks
 -- PMM
 

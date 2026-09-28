@@ -4,69 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 88D7FC98328
-	for <qemu-arm@archiver.kernel.org>; Mon, 28 Sep 2026 05:28:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A406CC98328
+	for <qemu-arm@archiver.kernel.org>; Mon, 28 Sep 2026 05:28:51 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xB3sR-0000Lb-Fj; Mon, 28 Sep 2026 01:26:12 -0400
+	id 1xB3tb-0001UA-G7; Mon, 28 Sep 2026 01:27:27 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <luoyonggang@gmail.com>)
- id 1xB3py-0005XX-3r
- for qemu-arm@nongnu.org; Mon, 28 Sep 2026 01:23:39 -0400
-Received: from mail-dl2-x10.google.com ([2607:f8b0:4864:38::10])
+ id 1xB3q2-0005dj-T3
+ for qemu-arm@nongnu.org; Mon, 28 Sep 2026 01:23:44 -0400
+Received: from mail-dy2-x0e.google.com ([2607:f8b0:4864:36::e])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <luoyonggang@gmail.com>)
- id 1xB3pt-000887-I4
- for qemu-arm@nongnu.org; Mon, 28 Sep 2026 01:23:37 -0400
-Received: by mail-dl2-x10.google.com with SMTP id
- a92af1059eb24-142dd025d06so1831749c88.1
- for <qemu-arm@nongnu.org>; Sun, 27 Sep 2026 22:23:31 -0700 (PDT)
+ id 1xB3q0-000897-Mc
+ for qemu-arm@nongnu.org; Mon, 28 Sep 2026 01:23:42 -0400
+Received: by mail-dy2-x0e.google.com with SMTP id
+ 5a478bee46e88-3411e0ace58so3719967eec.0
+ for <qemu-arm@nongnu.org>; Sun, 27 Sep 2026 22:23:40 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20251104; t=1790573011; x=1791177811; darn=nongnu.org;
+ d=gmail.com; s=20251104; t=1790573019; x=1791177819; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to:content-type;
- bh=wW97M9h5uz6Wpe5eAT7kR3We6DeGskL6XRa4AtfhML4=;
- b=p7QbhaA5KeRC/mzPg9AeZucPL8s5wx0aKswd4ysrfOImxUpmpWr0Ls12xB2UVKxjx0
- BPxZnId8ZMeGqMjRsbfEgyVySLhimnfQgciqeqvyspyhf3mOyohKs4s1cK9U/IBz863k
- 3Y1A3rcCsQ1gNnjf2hiWN32UCI+oqNcrlr2dRRLabzJC5Rj6XXThDHx4tIRuyzAAk23y
- XUMgBAn3jO1FiwZPj2pScPurbRQfBAK/9q/DHCFVAr/+oWYFRGytauzGTFB8eUY5NptL
- BCcjiXPklXouSB9nEm+yXTubl7UB8khLwU+aSqUZfvxJ+ONc7Cw4HJPF9k9p45fuU/jq
- Ru5Q==
+ bh=IS1UZYId12KIlinDehyorm2IQtlo8wg2V9f7wEwKC64=;
+ b=kAwYTXOEGInhQwXWIaiFawAZy3pwjFsYPHaJZv7fwWMMSZTyu6yEcbwynxPa4Wco+B
+ bZuRz8tFnByIEGFfg5LCOOUIfoKhszc0GnxQk/AX5DcnnvNhRBl/JHNeTkV1XBZWO5YE
+ 46CUAOh2MRCPnQ8reCaJMjxrKqNdXAl9iamFyjVYnT5ZOyl8maglPp2lLv3DAiMFrYWb
+ oW5Q8FHSblG7Cdat6c+MLTdHOQfqFu/bTVDJU7d1JTXmSpmxWDzgKf1RDyPpw6nGg1zf
+ r7KxZyYYhpnS5yU0ylIa+GvYkTesDJAKtDwfRmbYcwDMizY1bggs6mL/Twxx5YjqGZKN
+ l4/Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20260707; t=1790573011; x=1791177811;
+ d=1e100.net; s=20260707; t=1790573019; x=1791177819;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
  :to:cc:subject:date:message-id:reply-to:content-type;
- bh=wW97M9h5uz6Wpe5eAT7kR3We6DeGskL6XRa4AtfhML4=;
- b=j3a7/jnzX3iZ3zDHY401nIeuVi0Q7i0av0I3UtHOA2MqQY4liIFR+tBfDONJqRKL2o
- m6WDGwCtgHYIYskkhwPgkYqufnWv3oNZvK9yEDnWDSHdwJYEmFL1g5myyhkUfTqzSJij
- NnmXU+96jR7kMabu8upT0C5VWfxlravIW6u1eOKPeHLvHLyw2AW1agiDcRihqbrNPA/m
- a+nsmDkC3G7BmTBDQDKyE9QV11BUlFsZY5yeEpAEczBygUJknu6v97hPZUBrG6PwYTFy
- vNPUunQEdLejeelRAGmpzYFrinZnM9q7upckyweCRzuTUz/cwi3S4iZ98WIgLtnLIziL
- 0Ekw==
+ bh=IS1UZYId12KIlinDehyorm2IQtlo8wg2V9f7wEwKC64=;
+ b=iIDSBhveZjcgNqEJLOgOd6JOK1VIo8glqtdnDlpgiW5i7FKuiagtpb3iqCKQsMubCS
+ Mp3C0rHvZCHSOkfhEPhfQbKC3iH19ZRoxZbXVxvsBglP7htoUvxIpdiq9vCa97zZuJXT
+ 3PTrnkbdogiiPiO0URcV9BFJDjj1B6aVIfTkdMjnIYD1uEBzULeTcB0INdqHcT+gmAW4
+ Yqv8c+L6U+b4Y3yB8y6ZNcZka73mVHDh43soe2fROPGVXy3+ZDgvxIeq5voMk+2b49CY
+ mgkB53ZqR4FviCXWMhOBh9Prc3wBYwKXZq05IyfxNOS5RCNl+UbleIrpjcHKKForHWZp
+ L1pA==
 X-Forwarded-Encrypted: i=1;
- AKwUvByePzl9y1fPiNxPWDmZENGOaEciicEFp4sD3r8ZDAjP795aWabs/PfhuGNmH1F8uwQKyJhPcntMHg==@nongnu.org
-X-Gm-Message-State: AFuF++mJONpBjwN6cnQEHMss+/tdTwBAwb5SWLXQSPY0q+/ioSx6uWxy
- fJanqFFpqAYV2zM88FRHnugAOwLYm04ENp+cDApFxRczWW+cbGu/2Von
-X-Gm-Gg: AYBFou39JtotmmKLnSQ/DeZ3ZHA6gYbJBltSfwbA4qIdRSJETLQi8kVvp5QpsEyl64P
- m1BCWdi+RDBP6GDKWLt1QfiVUhcFS2h/JqBB61tkI5dz/JaYNrUFFxT/yNdaiMa/Uy11LFi/Pmi
- BDIDdYiq60WUuRhOylceij030eC0efitB5lrQEzerV1pT9CYEWNTYYQLx1nvdEyrv16hbd0o/CQ
- c79IIInp0OIh+5IiA6svwoLW3K0bRNBl4RvYfCtit19DoXCj9xaHDXAAehAmJgOlCayHycBFu7c
- iYpQ/WpFgyIzfo8CC37NMYfNCMUtUv3IgihefwFoVFrDscacVQeLimGWcEbc2GpiKNeN1yNgnAJ
- ulUX714YWDiUW4wDmNEh4v1XfUAgW28ghMCDzrAtlI22dqNDkq3u22otAQkwvopB/58it8M3eLE
- 0uqQ2dQMd3wVIImiw8GnCLd97bjGa4+33LowVLnsRHMbqFefMTtHzP7wMKjUKEIuCJXAyKht0U2
- /OYiS9s2gOJgBJgmgIKNXFr+gXENZU=
-X-Received: by 2002:a05:701a:c909:b0:144:fd7d:dbdd with SMTP id
- a92af1059eb24-146cdfbecf3mr9671810c88.10.1790573010787; 
- Sun, 27 Sep 2026 22:23:30 -0700 (PDT)
+ AKwUvBzr4mGlH54pKMLr/MUePexZQrwILO62JeXrLWiNQ82wQIB28eWNJ8pIOneLyJtWd9PNh24ZZQGUKQ==@nongnu.org
+X-Gm-Message-State: AFuF++lBKDywMX5sHwPKjQlbF862tMbykJKNQIYCps5lvi7kHb0Kr5T/
+ cp6MoCGTHXHA+to+jmlXa7p+aB4/gaOV2bVzbpEhWdRTtCsGggEZLdXi
+X-Gm-Gg: AYBFou07aY9/ONuX2TtssV0V2ym2Wbc9aNUNpg3uYtXHP8UAtVP01S/NmxnDPzDIkmH
+ HQNOGjcyWdL7gbB305DwW/M0HTOhTX9tAHmW3yasbmgKSPtvfV5YQZ54mOqXzB3yhYN2i8CrIgP
+ fADI8iKPTCNrAA2BCYWYFAOVasIGr6ktyONs7JXfFmeEOL+6zVHJeTzuzR0Lb1Keau9QQ5Wu/2B
+ jUfEBnwjVqR/hiKpoHDtqg0klJUTeTsYF9Vau9QFyJgN+muvWPmmlgY1FOUKEPc7C2A4Y1GY8lM
+ HBRUwxGzL1LUoXgdgY6HAOj7mHYCs/ESR7O+SlUUcEzZ3MTtIOWOpOhA4XktmNZVXcddBChNVpX
+ DC4W10/MxnSiIFKhQJyITYhi6RI5OgE2MF2yiPhr3So9SkIa+dBy73yBzixNPDA40ARfDQExQan
+ 5KOl4AXm5Q0SuyqimHyhB2r0+2epic47u/pbK+QyGvklwL4gU7Jzd4KUOYWQzIruYKbJXebhZPk
+ v6pmQc7t2b3qW3lufkP/FCDm3SLB14=
+X-Received: by 2002:a05:701b:451a:20b0:143:296a:3ed with SMTP id
+ a92af1059eb24-146d03a0516mr8276165c88.24.1790573018472; 
+ Sun, 27 Sep 2026 22:23:38 -0700 (PDT)
 Received: from WIN-BH9M8FJACR9 ([103.94.185.75])
  by smtp.googlemail.com with ESMTPSA id
- a92af1059eb24-146bb6551d9sm14726248c88.9.2026.09.27.22.23.23
+ a92af1059eb24-146bb6551d9sm14726248c88.9.2026.09.27.22.23.31
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sun, 27 Sep 2026 22:23:30 -0700 (PDT)
+ Sun, 27 Sep 2026 22:23:37 -0700 (PDT)
 From: Yonggang Luo <luoyonggang@gmail.com>
 To: qemu-devel@nongnu.org
 Cc: Helge Deller <deller@gmx.de>, Harsh Prateek Bora <harshpb@linux.ibm.com>,
@@ -96,22 +96,23 @@ Cc: Helge Deller <deller@gmx.de>, Harsh Prateek Bora <harshpb@linux.ibm.com>,
  Michael Rolnik <mrolnik@gmail.com>,
  Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>,
  Paolo Bonzini <pbonzini@redhat.com>, qemu-s390x@nongnu.org
-Subject: [PATCH v2 19/24] target/avr: convert debug/break/sleep to raise_excp
-Date: Mon, 28 Sep 2026 13:20:45 +0800
-Message-ID: <20260928052051.251-20-luoyonggang@gmail.com>
+Subject: [PATCH v2 20/24] target/arm: convert exception_internal to raise_excp
+Date: Mon, 28 Sep 2026 13:20:46 +0800
+Message-ID: <20260928052051.251-21-luoyonggang@gmail.com>
 X-Mailer: git-send-email 2.52.0.windows.1
 In-Reply-To: <20260928052051.251-1-luoyonggang@gmail.com>
 References: <20260928052051.251-1-luoyonggang@gmail.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:38::10;
- envelope-from=luoyonggang@gmail.com; helo=mail-dl2-x10.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:36::e;
+ envelope-from=luoyonggang@gmail.com; helo=mail-dy2-x0e.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -127,93 +128,150 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Replace debug, break, and sleep TCG helpers with raise_excp. Keep
-unsupported.
+Switch gen_exception_internal to raise_excp, and drop TCG
+exception_internal. Keep syndrome helpers. Fold leftover C exits
+into cpu_loop_exit_excp. Keep arm_raise_exception_ra via restore
+then arm_raise_exception.
 
 Signed-off-by: Yonggang Luo <luoyonggang@gmail.com>
 ---
- target/avr/helper.c    | 24 ------------------------
- target/avr/helper.h    |  3 ---
- target/avr/translate.c |  4 ++--
- 3 files changed, 2 insertions(+), 29 deletions(-)
+ target/arm/tcg/helper-defs.h |  1 -
+ target/arm/tcg/m_helper.c    |  3 ++-
+ target/arm/tcg/op_helper.c   | 33 ++++++---------------------------
+ target/arm/tcg/translate.c   |  2 +-
+ 4 files changed, 9 insertions(+), 30 deletions(-)
 
-diff --git a/target/avr/helper.c b/target/avr/helper.c
-index f452c9d9040..ca58a0191fd 100644
---- a/target/avr/helper.c
-+++ b/target/avr/helper.c
-@@ -152,14 +152,6 @@ bool avr_cpu_tlb_fill(CPUState *cs, vaddr address, int size,
-  *  helpers
-  */
+diff --git a/target/arm/tcg/helper-defs.h b/target/arm/tcg/helper-defs.h
+index 269ac515065..14ef3120373 100644
+--- a/target/arm/tcg/helper-defs.h
++++ b/target/arm/tcg/helper-defs.h
+@@ -45,7 +45,6 @@ DEF_HELPER_FLAGS_2(usad8, TCG_CALL_NO_RWG_SE, i32, i32, i32)
  
--void helper_sleep(CPUAVRState *env)
--{
--    CPUState *cs = env_cpu(env);
--
+ DEF_HELPER_FLAGS_3(sel_flags, TCG_CALL_NO_RWG_SE,
+                    i32, i32, i32, i32)
+-DEF_HELPER_2(exception_internal, noreturn, env, i32)
+ DEF_HELPER_3(exception_with_syndrome, noreturn, env, i32, i32)
+ DEF_HELPER_4(exception_with_syndrome_el, noreturn, env, i32, i32, i32)
+ DEF_HELPER_2(exception_bkpt_insn, noreturn, env, i32)
+diff --git a/target/arm/tcg/m_helper.c b/target/arm/tcg/m_helper.c
+index 33c9e7c55bc..161c5460217 100644
+--- a/target/arm/tcg/m_helper.c
++++ b/target/arm/tcg/m_helper.c
+@@ -18,6 +18,7 @@
+ #include "exec/page-protection.h"
+ #ifdef CONFIG_TCG
+ #include "accel/tcg/cpu-ldst-common.h"
++#include "accel/tcg/cpu-loop.h"
+ #include "semihosting/common-semi.h"
+ #endif
+ #if !defined(CONFIG_USER_ONLY)
+@@ -575,7 +576,7 @@ void HELPER(v7m_bxns)(CPUARMState *env, uint32_t dest)
+          */
+         env->regs[15] = dest & ~1;
+         env->thumb = dest & 1;
+-        HELPER(exception_internal)(env, EXCP_EXCEPTION_EXIT);
++        cpu_loop_exit_excp(env_cpu(env), EXCP_EXCEPTION_EXIT, 0);
+         /* notreached */
+     }
+ 
+diff --git a/target/arm/tcg/op_helper.c b/target/arm/tcg/op_helper.c
+index 643b1482523..2ad45b23725 100644
+--- a/target/arm/tcg/op_helper.c
++++ b/target/arm/tcg/op_helper.c
+@@ -64,10 +64,9 @@ void raise_exception(CPUARMState *env, uint32_t excp,
+     }
+ 
+     assert(!excp_is_internal(excp));
+-    cs->exception_index = excp;
+     env->exception.syndrome = syndrome;
+     env->exception.target_el = target_el;
+-    cpu_loop_exit(cs);
++    cpu_loop_exit_excp(cs, excp, 0);
+ }
+ 
+ void raise_exception_ra(CPUARMState *env, uint32_t excp, uint64_t syndrome,
+@@ -399,9 +398,8 @@ void HELPER(wfi)(CPUARMState *env, uint32_t insn_len)
+     }
+ 
+     qatomic_set(&env->halt_reason, HALT_WFI);
 -    cs->exception_index = EXCP_HLT;
+     cs->halted = 1;
+-    cpu_loop_exit(cs);
++    cpu_loop_exit_excp(cs, EXCP_HLT, 0);
+ #endif
+ }
+ 
+@@ -461,9 +459,8 @@ void HELPER(wfit)(CPUARMState *env, uint32_t rd)
+         timer_mod(cpu->wfxt_timer, nexttick);
+     }
+     qatomic_set(&env->halt_reason, HALT_WFI);
+-    cs->exception_index = EXCP_HLT;
+     cs->halted = 1;
+-    cpu_loop_exit(cs);
++    cpu_loop_exit_excp(cs, EXCP_HLT, 0);
+ #endif
+ }
+ 
+@@ -630,9 +627,8 @@ void HELPER(wfe)(CPUARMState *env, uint32_t insn_len)
+     }
+ 
+     qatomic_set(&env->halt_reason, HALT_WFE);
+-    cs->exception_index = EXCP_HLT;
+     cs->halted = 1;
+-    cpu_loop_exit(cs);
++    cpu_loop_exit_excp(cs, EXCP_HLT, 0);
+ #endif
+ }
+ 
+@@ -724,9 +720,8 @@ void HELPER(wfet)(CPUARMState *env, uint32_t rd)
+     }
+ 
+     qatomic_set(&env->halt_reason, HALT_WFE);
+-    cs->exception_index = EXCP_HLT;
+     cs->halted = 1;
+-    cpu_loop_exit(cs);
++    cpu_loop_exit_excp(cs, EXCP_HLT, 0);
+ #endif
+ }
+ 
+@@ -738,23 +733,7 @@ void HELPER(yield)(CPUARMState *env)
+      * that the guest is currently busy-looping. Yield control back to the
+      * top level loop so that a more deserving VCPU has a chance to run.
+      */
+-    cs->exception_index = EXCP_YIELD;
 -    cpu_loop_exit(cs);
 -}
 -
- void helper_unsupported(CPUAVRState *env)
- {
-     CPUState *cs = env_cpu(env);
-@@ -176,22 +168,6 @@ void helper_unsupported(CPUAVRState *env)
-     cpu_loop_exit(cs);
- }
- 
--void helper_debug(CPUAVRState *env)
+-/* Raise an internal-to-QEMU exception. This is limited to only
+- * those EXCP values which are special cases for QEMU to interrupt
+- * execution and not to be used for exceptions which are passed to
+- * the guest (those must all have syndrome information and thus should
+- * use exception_with_syndrome*).
+- */
+-void HELPER(exception_internal)(CPUARMState *env, uint32_t excp)
 -{
 -    CPUState *cs = env_cpu(env);
 -
--    cs->exception_index = EXCP_DEBUG;
+-    assert(excp_is_internal(excp));
+-    cs->exception_index = excp;
 -    cpu_loop_exit(cs);
--}
--
--void helper_break(CPUAVRState *env)
--{
--    CPUState *cs = env_cpu(env);
--
--    cs->exception_index = EXCP_DEBUG;
--    cpu_loop_exit(cs);
--}
--
- void helper_wdr(CPUAVRState *env)
- {
-     qemu_log_mask(LOG_UNIMP, "WDG reset (not implemented)\n");
-diff --git a/target/avr/helper.h b/target/avr/helper.h
-index e8d13e925f4..09ce0624915 100644
---- a/target/avr/helper.h
-+++ b/target/avr/helper.h
-@@ -19,8 +19,5 @@
-  */
- 
- DEF_HELPER_1(wdr, void, env)
--DEF_HELPER_1(debug, noreturn, env)
--DEF_HELPER_1(break, noreturn, env)
--DEF_HELPER_1(sleep, noreturn, env)
- DEF_HELPER_1(unsupported, noreturn, env)
- DEF_HELPER_3(fullwr, void, env, i32, i32)
-diff --git a/target/avr/translate.c b/target/avr/translate.c
-index 3c576060970..477610cd349 100644
---- a/target/avr/translate.c
-+++ b/target/avr/translate.c
-@@ -2554,7 +2554,7 @@ static bool trans_BREAK(DisasContext *ctx, arg_BREAK *a)
- 
- #ifdef BREAKPOINT_ON_BREAK
-     tcg_gen_movi_tl(cpu_pc, ctx->npc - 1);
--    gen_helper_debug(tcg_env);
-+    gen_helper_raise_excp(tcg_env, tcg_constant_i32(EXCP_DEBUG));
-     ctx->base.is_jmp = DISAS_EXIT;
- #else
-     /* NOP */
-@@ -2580,7 +2580,7 @@ static bool trans_NOP(DisasContext *ctx, arg_NOP *a)
-  */
- static bool trans_SLEEP(DisasContext *ctx, arg_SLEEP *a)
- {
--    gen_helper_sleep(tcg_env);
-+    gen_helper_raise_excp(tcg_env, tcg_constant_i32(EXCP_HLT));
-     ctx->base.is_jmp = DISAS_NORETURN;
-     return true;
++    cpu_loop_exit_excp(cs, EXCP_YIELD, 0);
  }
+ 
+ /* Raise an exception with the specified syndrome register value */
+diff --git a/target/arm/tcg/translate.c b/target/arm/tcg/translate.c
+index 8c56348a665..6452888ed41 100644
+--- a/target/arm/tcg/translate.c
++++ b/target/arm/tcg/translate.c
+@@ -379,7 +379,7 @@ static void gen_rebuild_hflags(DisasContext *s, bool new_el)
+ void gen_exception_internal(int excp)
+ {
+     assert(excp_is_internal(excp));
+-    gen_helper_exception_internal(tcg_env, tcg_constant_i32(excp));
++    gen_helper_raise_excp(tcg_env, tcg_constant_i32(excp));
+ }
+ 
+ static void gen_singlestep_exception(DisasContext *s)
 -- 
 2.52.0.windows.1
 

@@ -4,104 +4,118 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 78E98CA5FA2
-	for <qemu-arm@archiver.kernel.org>; Mon, 28 Sep 2026 15:55:34 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 11FAFCA5FA1
+	for <qemu-arm@archiver.kernel.org>; Mon, 28 Sep 2026 16:05:25 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xBDhU-0000WR-4L; Mon, 28 Sep 2026 11:55:32 -0400
+	id 1xBDr0-0005l0-Nt; Mon, 28 Sep 2026 12:05:22 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1xBDhS-0000SH-Us
- for qemu-arm@nongnu.org; Mon, 28 Sep 2026 11:55:30 -0400
-Received: from mail-yx2-x0f.google.com ([2607:f8b0:4864:41::f])
+ (Exim 4.90_1) (envelope-from <luoyonggang@gmail.com>)
+ id 1xBDqz-0005je-3K
+ for qemu-arm@nongnu.org; Mon, 28 Sep 2026 12:05:21 -0400
+Received: from mail-ed2-x10.google.com ([2a00:1450:4864:33::10])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1xBDhR-0006DQ-H7
- for qemu-arm@nongnu.org; Mon, 28 Sep 2026 11:55:30 -0400
-Received: by mail-yx2-x0f.google.com with SMTP id
- 956f58d0204a3-66f7f72a284so3080480d50.2
- for <qemu-arm@nongnu.org>; Mon, 28 Sep 2026 08:55:29 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1790610928; cv=none;
+ (Exim 4.90_1) (envelope-from <luoyonggang@gmail.com>)
+ id 1xBDqx-0007EX-6O
+ for qemu-arm@nongnu.org; Mon, 28 Sep 2026 12:05:20 -0400
+Received: by mail-ed2-x10.google.com with SMTP id
+ 4fb4d7f45d1cf-6a6056ac81fso4571722a12.2
+ for <qemu-arm@nongnu.org>; Mon, 28 Sep 2026 09:05:18 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1790611517; cv=none;
  d=google.com; s=arc-20260327;
- b=BjMf7QfhpxwwjbqUdBvu2FIP8lzquXUcijsqhvWXjfjbijNy+smacvh65UlcSQY/QM
- p6/E/NzfM1IrIPZPGuGXJ8/rkWbjsQkNK5YKMDDNOte9Io+/JjC3bbTaJTBmD9qJY3Ac
- u7Vv4puU0mB8/lJx90CExX6wmDnPyHO+PvR991ElnvVRlfNFi9AwhkuMxXcUnRAtpQGN
- 5uNJGipzD2F9L4tZLr1pdqJL26rJDtDHVudTpOK4JrIO3IZEmsl69O4G35qW3nqPJNrA
- 2itoUKKpkw92aotwLAy0F8Dsghtk1ba57BAZbGfFFscPvaT6XCbssMmW505iLUkAW2zQ
- d1dg==
+ b=NOkwzKsZbiX1vRKHG2LtfnLRcA8TsAABgZr//4kOvJnYGjleJG/mZjxR5UR2VYuYQN
+ Zmiwr18K+uuXW3eartHChXXtSjrvGbOfgBqeEbTmjNuE+e2walLCiVdG22Hg2fUb0E0g
+ vZ06D91dfP/CJLqeU4/CG608cAm5hXvCSnt854cdu9/c7ylL038yjnx6VOiN2YVyjc2Z
+ CjOsY2t8G0JaFD1/U7+BHI/2llovit0/1ZTCEg68qX7T2Usf067RhZsUtoRM1gpaa+vd
+ XrUQXqO4FfdBYwe34L2cgfX6EwfE5esGFnxoaTQtZs4gbiptKU+E7USSOm8gUZ0oM/+A
+ oRuw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
  s=arc-20260327; 
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:dkim-signature;
- bh=qEhnR9xm4iKIjH/9JsEUOpJsPRWZSCxoPNER30ttDt8=;
- fh=E+PmAUpa2XS6s8NboqzpeQaSxzHuEZwh8qvAPY1Uchg=;
- b=eBhq7b2+oLlfhi4boU9wVHnXxUgU3wRHKKAO3qbtOt5VA6l8v8bu7j+yG0kzdMt3LZ
- 6ZfSmcHQWWJQB9JqLId9PKdNBbcFDhdEeexOKTLUw4vV0y1w+ki7vH2d6jVJ+j/9llWy
- zgpbjMJ3yPKeeoQodTLj56LkWMAj4lCA5oRcvkypBabMF5RvvS2sg92iIkkcUMmxkJT6
- JuMRMgMY7j/8FG9xITohjcFBCyU08mA+V20UybTwT3+VrlJlesi96wbXd//KfMl59PV0
- lD4ygT7xHXXQI5AsPVNQZS+zT0VQSqLf4evjnDNvKXIYHs93mVsSpo+9jMeCalELoO3C
- eLnA==; darn=nongnu.org
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :reply-to:in-reply-to:references:mime-version:dkim-signature;
+ bh=w9EzIeFbERenqhymBK9XblJ6PBKI//1Ot9k5xJ9LNso=;
+ fh=39st28wUZd+aNsfAD9WLXnCV3MMg3jcLJQv8NFTRgGA=;
+ b=WSSiAVMpSb1hq6X7v3ZL1AM35fwgz2JcF0tMugxA7KmyNJl076BuOM6Vr3mTAAFYn8
+ hf3HkJH1zi+kn6xeV5bgKxqv14XT4r4UhjsYu6zXvANZnYxv7vOlqEiBRUIADuhFXfQk
+ zXZmFBgCkTafGcHu2lqixoyG1/8E1PoK9g/WsW6DrtyOIJwXGViVAokSfc25NffZkBG/
+ +xnSDzkIqaLkPu+gwRZPd//haFmR9M68fBZz3sgqVVQsIC8nA8Mr/qKvVrDPfEaEPS/1
+ PfaH5I7ymVdAH3ISx0GxOXb4ye7sYDDq0/P6Gdvyu0sNM0VihY3qy8MzLtlQydeYpnS9
+ iq9A==; darn=nongnu.org
 ARC-Authentication-Results: i=1; mx.google.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1790610928; x=1791215728; darn=nongnu.org;
- h=content-type:cc:to:subject:message-id:date:from:in-reply-to
- :references:mime-version:from:to:cc:subject:date:message-id:reply-to
- :content-type; bh=qEhnR9xm4iKIjH/9JsEUOpJsPRWZSCxoPNER30ttDt8=;
- b=ajaASGykLVyYwjwrM2YIgq4W3ZBiIR+Sfy11fdMQlYPCKXhPHgsESbUi4Tab10Ke6+
- +cb/4hmKnJsyTf8RODBfHy7n8z0bnmba8N3zTfpTGbDMQajcT8dmOYzUiouEIMCPtX3L
- 3DbKGzL5zkerN8fqMnwwKseXt5x7NUGeGPYwymdRKoEassv+Q/kxCwLkovB6t1Ln3oXV
- thpfAm3oVkAU+0CSAdeV/Xp1LKlwr5mqfGyHbVG1Wisrw5wJuY01FHdC35KcntScQXB+
- 49Ih3sbl6R7rheOI8EXT6qimlcXBIfSV8TO+yVnepbUBVuXg3J3RFwKb5XSmpMzY51Xf
- ysZw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20260707; t=1790610928; x=1791215728;
- h=content-type:cc:to:subject:message-id:date:from:in-reply-to
- :references:mime-version:x-gm-gg:x-gm-message-state:from:to:cc
+ d=gmail.com; s=20251104; t=1790611517; x=1791216317; darn=nongnu.org;
+ h=content-transfer-encoding:content-type:cc:to:subject:message-id
+ :date:from:reply-to:in-reply-to:references:mime-version:from:to:cc
  :subject:date:message-id:reply-to:content-type;
- bh=qEhnR9xm4iKIjH/9JsEUOpJsPRWZSCxoPNER30ttDt8=;
- b=2anKtEl0++u98+lDYNtmOmUu2i5Uwh8M3vIjopUUijmgh05ggQA1jI5S7Hy6amLDck
- bCx9V/NwTeQJe1MxHC62hQM0FJ5p5pRj7NWWx858fRWiF7OZpjFDavXbNu8BanMcHf8w
- MedKREmJOKRSDtZ6QQtgwq3nBcaFRpf1GIrcW8EcWdIUnTe05iJjIxRaQK5dr+pfU3TN
- Ow8nximHkLmaPIKI+4CS2u58L249AUahuBi9fhKL4vlIEtO36mx3NEwUHaNDM6KP3HfK
- 2qXQ+A68Fh2EykDNhhx4lh298R9ZorcKZNdKr+hhK2GK8D1S0iq6epYpx9kRVt6+RUA9
- 1KTQ==
+ bh=w9EzIeFbERenqhymBK9XblJ6PBKI//1Ot9k5xJ9LNso=;
+ b=gDv5TVeTTeUH+4gi4thS2Y5FO9S5VVWqIEEH82BkfiINyYu3x1CcxAtlOKeS6B5Cmc
+ jHAyF4xHO9aIoU69W69aB2BJQ4SGRsFacLpDrwwdQEZzcn6K6s/NS1hl9ilwlGBmFa1D
+ R+nHpmbVTYh3j7QtrVF7NjV+qQf8w1VcahGqmkVFcs12cy99CKnQTVkM+jPoODzRCtOJ
+ 6MRfIq2GEleC2ogNKqJGDMeIzWw2kBnL+u0kwv7xy7AWdQCikravjoaRxGjcaq2kX17p
+ Wi1jV+jFBhXyVt5sNvMT/hQqzBHXzPLSBEUyNYfDlvSmxx6c3kMT6wv6PCkNL2VDtSPZ
+ NJyA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20260707; t=1790611517; x=1791216317;
+ h=content-transfer-encoding:content-type:cc:to:subject:message-id
+ :date:from:reply-to:in-reply-to:references:mime-version:x-gm-gg
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
+ :content-type;
+ bh=w9EzIeFbERenqhymBK9XblJ6PBKI//1Ot9k5xJ9LNso=;
+ b=m2KAhEbPjEJMQy3tGCXuko5v7CxGqvBbbUafqSR76LNvTYHFrmfgcXkwKeraSZ58fA
+ ncUVQ3jUB7OLHFZBmEOmUSxmT/Mui9+I1M7XIzeVe6alinDmiTASmALc2rErrrEJ9dUe
+ uyQEHhF26okf47Jq/h58GtZb3YuNl8M2xCRXfjdCAKU71dGMZPON/wSeMTa/cZh6kvEP
+ yJomwm27MPgtapilb1yCDGkiej6V5QvwGqbkasLxdahLy+t8GlV5vNaEVoMR2OZABkl3
+ Om/fm6VFo3MDhlY/3QvrpgJRrj/OF5qPR67nQlEZPvLAPXjA4Kcj0laBntbQw2nPTT43
+ qbpA==
 X-Forwarded-Encrypted: i=1;
- AKwUvBzn0xqa25fR5wSDaeS5Xsd3aYv9ImTX7BoN1MBWHD4PBE8Kqv1vaw2UyRNLFueyff2d8viUE0qKMw==@nongnu.org
-X-Gm-Message-State: AFq9FYIMfBC+FhkKwnx2d/JB3g3ICUWe/fVcvikDp1syaaLtB6zYmjMx
- dowgThcAmzz3y1sT8LBZRQiTYUK/7EAo2iq+f9QxSX33uaRo2P/m0EXKGBeqVKIs61iKp2sz9v+
- YfMD5bBqkIraxhqij8NAJR9eJHt8AMS6lH56zXSWmww==
-X-Gm-Gg: AYBFou3AiAhhX/fGfDQyfXE5xqpHWFM6mrUIiOIZDu1dMTbtjghPHYlZyX2ziMMP/Wy
- 3YgY3ZDyiX5iCo7iMsp8aS0V24X8EKBclV+r0E6K00iQGxfkMbF57nGEuLq+CDIHvIiUzuuT+FX
- pOYPOXHvhoxT2e7x+9HJC6ODYkGIKX2+os+6OA3b5q68VXPdWfCiPWVxN4G9kqQe6MWz7duJjs7
- sU2HH32SzaGkVX3uueMr50u2Sw3Dy3flbxwUErlm0MDl5fZQg4QiPO5VCPpoJecH1KCgiwWDdM8
- QymGpM96w5rnfUXFPpC2r5rapimJYzcm3K/LOLWmXSvsMdr+jIEjMhbuQsqc+rqS8IvjXaES3o3
- Ln+sY5/N+SU67Jpqgd+ytR5MYwSJBWlyCQmFML+A=
-X-Received: by 2002:a05:690e:1246:b0:675:3b5b:3c4 with SMTP id
- 956f58d0204a3-6753b5b0461mr2399674d50.106.1790610928180; Mon, 28 Sep 2026
- 08:55:28 -0700 (PDT)
+ AKwUvBw6C2Rk1vKc2cGFE5yhEpCxDr1ZOutKQlMScdZusPIUhfORSp6aRSuOSD7wqfF1oujq81WK8OD73Q==@nongnu.org
+X-Gm-Message-State: AFq9FYJLHJqSyvJHjEiIGkLJSrVafN2W1Iwj/d1+SgJlgzHsUY2oqFBd
+ IYsGC6oCNQSwtIq7VtH6+yisCK9nHouhBsddVP2I14sKpAujV28nbQ4i5oalaBEBmeN5y1KtsqI
+ z3DOvpbyPxkUL1ovWXyAm/FeEL70qRb0=
+X-Gm-Gg: AYBFou3zQMLvwXWEprJt2GyA+ECgJTEn2m+G5LVNf70b3EgDLl1s6cE4hgWE8MeSXsJ
+ g66p5zLSEcM9kSb/AmkprHAqSKj/dK0h2MFCv+uOlFn081l39SSPIQhtTqzuPKCoJTlw0ebZgw5
+ 74fLfvKqT5JwOIxald/I8m+uxd2XfeGB7WgW0aDzCztwSWidEQz+vKiBHMnSv+U8OZbI53UGUpW
+ 90xIGGssKuB37EKltPHlkCHnfpZZqdsVPnZV2WRg6ZDyK+x+GyTE0hJhVWrgTkWwDcihca7Gwyd
+ y0naSV4zadoir/Q5lm/jGJQL/ZswNrGcERMD0l6beRGqEH83pUhSQz0=
+X-Received: by 2002:a05:6402:a290:10b0:6aa:e589:87df with SMTP id
+ 4fb4d7f45d1cf-6aae5898994mr5001332a12.30.1790611516982; Mon, 28 Sep 2026
+ 09:05:16 -0700 (PDT)
 MIME-Version: 1.0
-References: <20260904043742.96613-1-mohamed@unpredictable.fr>
-In-Reply-To: <20260904043742.96613-1-mohamed@unpredictable.fr>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Mon, 28 Sep 2026 16:55:16 +0100
-X-Gm-Features: AclHuK9kFQdVBSG5yzS1c6px1zSdv8gwtOzojkky-v-5N8O-sWFO7p8YK_Wlp8E
-Message-ID: <CAFEAcA_mfey4ue_6vgBFxihnBXryKWspujyp43YYXf_XuV-CPw@mail.gmail.com>
-Subject: Re: [PATCH v2 0/5] hvf: arm: add experimental VHE (x-vhe) toggle
-To: Mohamed Mediouni <mohamed@unpredictable.fr>
-Cc: qemu-devel@nongnu.org, Phil Dennis-Jordan <phil@philjordan.eu>, 
- Roman Bolshakov <rbolshakov@ddn.com>, qemu-arm@nongnu.org,
- Alexander Graf <agraf@csgraf.de>
+References: <20260926070057.1234-1-luoyonggang@gmail.com>
+ <20260926070057.1234-47-luoyonggang@gmail.com>
+ <aro93NuZBXYGbD33@redhat.com>
+ <CAE2XoE9AAz8KfJrpErBaZvW5p5COxfE1yveA_AMPwa0j=ghyEA@mail.gmail.com>
+ <arp7xUzPHmkgfxLC@redhat.com>
+In-Reply-To: <arp7xUzPHmkgfxLC@redhat.com>
+From: Yonggang Luo <luoyonggang@gmail.com>
+Date: Tue, 29 Sep 2026 00:05:04 +0800
+X-Gm-Features: AclHuK_ySAh2wUP_ZLkRO-cTQXhVC-RYZXjpf9omF8LYWvQDhoUtMF2fg4CBqtU
+Message-ID: <CAE2XoE_Zgs0_Co4ZLZiTRQZrx4DMRo_i-FEN79b+ZbHCedFd6w@mail.gmail.com>
+Subject: Re: [PATCH v4 46/55] qapi: add query-targets
+To: =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>
+Cc: qemu-devel@nongnu.org, Richard Henderson <richard.henderson@linaro.org>, 
+ =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@oss.qualcomm.com>, 
+ "Edgar E. Iglesias" <edgar.iglesias@gmail.com>, 
+ Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>,
+ Fabiano Rosas <farosas@suse.de>, 
+ Laurent Vivier <lvivier@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>, 
+ Alistair Francis <alistair@alistair23.me>,
+ Peter Maydell <peter.maydell@linaro.org>, 
+ =?UTF-8?B?TWFyYy1BbmRyw6kgTHVyZWF1?= <marcandre.lureau@redhat.com>, 
+ qemu-arm@nongnu.org, kvm@vger.kernel.org
 Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:41::f;
- envelope-from=peter.maydell@linaro.org; helo=mail-yx2-x0f.google.com
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2a00:1450:4864:33::10;
+ envelope-from=luoyonggang@gmail.com; helo=mail-ed2-x10.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -114,34 +128,160 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Reply-To: luoyonggang@gmail.com
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Fri, 4 Sept 2026 at 05:37, Mohamed Mediouni <mohamed@unpredictable.fr> wrote:
+On Mon, Sep 28, 2026 at 10:38=E2=80=AFPM Daniel P. Berrang=C3=A9 <berrange@=
+redhat.com> wrote:
 >
-> macOS 27.0 has a pre-release VHE implementation. Add support for it in QEMU.
+> On Mon, Sep 28, 2026 at 10:24:39PM +0800, Yonggang Luo wrote:
+> > On Mon, Sep 28, 2026 at 6:14=E2=80=AFPM Daniel P. Berrang=C3=A9 <berran=
+ge@redhat.com> wrote:
+> > >
+> > > I don't think that we need to report machines though.
+> > > We already have 'query-machines' which gives much broader
+> > > information on the machines. "MachineInfo" needs to
+> > > gain
+> > >
+> > >    "targets": ["SysEmuTarget"]
+> > >
+> > > to list which target(s) a machine can be used with.
+> > >
+> >
+> > This is my final design for the query-target / query-targets / query-ma=
+chines,
+> > for consistency and testability.
+> >
+> > Per review: reuse `QemuTargetInfo` for both target commands, drop the
+> > per-target machine list, and let
+> > `MachineInfo` say which target(s) each machine runs on.
+> > `QemuTargetInfo` stays small; `query-target` and `query-targets` return=
+ a
+> > derived struct that adds the target's device and accel Kconfig state.
+> >
+> > ## QemuTargetInfo
+> >
+> > ```
+> > { 'struct': 'QemuTargetInfo',
+> >   'data': { 'arch': 'SysEmuTarget' } }  # since 1.2
+> > ```
 >
-> The first patch in the series is an independent bugfix that should be backported to QEMU 11.1 too.
+> > ## QemuTargetDetails: QemuTargetInfo plus kconfig
+> >
+> > ```
+> > { 'struct': 'QemuTargetDetails',
+> >   'base': 'QemuTargetInfo',
+> >   'data': { 'kconfig': 'any' } }
+> > ```
+> >
+> > `kconfig` maps every device and accel `CONFIG_*` symbol to whether it
+> > is enabled for that target.
 >
-> v2:
->
-> Add:
-> hvf: arm: expose E2H0
-> hvf: arm: ignore accesses to CNTKCTL_EL12
->
-> This is to have working KVM under the VHE configuration.
->
-> Mohamed Mediouni (5):
->   hvf: arm: advertise ID_AA64PFR0_EL1.GIC
->   hvf: arm: add experimental VHE toggle
->   hvf: arm: advertise EL3 support when VHE is on
->   hvf: arm: expose E2H0
->   hvf: arm: ignore accesses to CNTKCTL_EL12
+> KConfig is an internal implementation detail that should not be exposed
+> to management apps as we don't want KConfig to become an ABI we must
+> preserve.  QAPI introspection provides feature based information to
+> the user. eg instead of querying for "CONFIG_SEV", qom-list-types can
+> be queried to look for the 'sev-guest' class.
 
-I would prefer to wait with this until the interface for
-VHE is not a "private API you have to get at by playing
-games with dlopen()" setup.
+For example, `TYPE_NITRO_ENCLAVE_MACHINE` is available only when
+`CONFIG_NITRO_ENCLAVE` is enabled for the target. When I construct the
+machine list literal,
+I need this information to help me to check if the machine is listed
+in qemu-system that matches
+qemu-sysetem-$arch. That needs a QAPI for it. What's the method you
+would suggest
+for? Otherwise, the test for the listing machine names can not be
+reliably running for it.
 
-thanks
--- PMM
+for example:
+
+
+/*
+ * Machines omitted from the normal lists. Merged in when @kconfig is
+ * true in the target's query-targets "kconfig" object, which already
+ * folds in host libraries and accelerators. xenfv is an alias of
+ * xenfv-4.2.
+ */
+static const char * const xen_pc_machines[] =3D {
+    "xenpv",
+    "xenpvh",
+    "xenfv-4.2",
+};
+
+static const char * const xen_aarch64_machines[] =3D {
+    "xenpvh",
+};
+
+static const char * const vmapple_machines[] =3D {
+    "vmapple",
+};
+
+static const char * const microvm_machines[] =3D {
+    "microvm",
+};
+
+static const char * const nitro_machines[] =3D {
+    "nitro",
+};
+
+static const char * const nitro_enclave_machines[] =3D {
+    "nitro-enclave",
+};
+
+static const char * const x_remote_machines[] =3D {
+    "x-remote",
+};
+
+#define SPECIAL(t, k, m) { t, k, m, G_N_ELEMENTS(m) }
+
+static const struct SpecialMachineMap {
+    const char *target;
+    const char *kconfig;
+    const char * const *machines;
+    size_t n_machines;
+} special_machine_map[] =3D {
+    SPECIAL("i386", "CONFIG_XEN", xen_pc_machines),
+    SPECIAL("x86_64", "CONFIG_XEN", xen_pc_machines),
+    SPECIAL("aarch64", "CONFIG_XEN", xen_aarch64_machines),
+    SPECIAL("aarch64", "CONFIG_VMAPPLE", vmapple_machines),
+    SPECIAL("i386", "CONFIG_MICROVM", microvm_machines),
+    SPECIAL("x86_64", "CONFIG_MICROVM", microvm_machines),
+    SPECIAL("x86_64", "CONFIG_NITRO_MACHINE", nitro_machines),
+    SPECIAL("aarch64", "CONFIG_NITRO_MACHINE", nitro_machines),
+    SPECIAL("i386", "CONFIG_NITRO_ENCLAVE", nitro_enclave_machines),
+    SPECIAL("x86_64", "CONFIG_NITRO_ENCLAVE", nitro_enclave_machines),
+    SPECIAL("i386", "CONFIG_MULTIPROCESS", x_remote_machines),
+    SPECIAL("x86_64", "CONFIG_MULTIPROCESS", x_remote_machines),
+    SPECIAL("aarch64", "CONFIG_MULTIPROCESS", x_remote_machines),
+    SPECIAL("ppc", "CONFIG_MULTIPROCESS", x_remote_machines),
+    SPECIAL("ppc64", "CONFIG_MULTIPROCESS", x_remote_machines),
+    SPECIAL("s390x", "CONFIG_MULTIPROCESS", x_remote_machines),
+    SPECIAL("riscv64", "CONFIG_MULTIPROCESS", x_remote_machines),
+    SPECIAL("loongarch64", "CONFIG_MULTIPROCESS", x_remote_machines),
+};
+
+#undef SPECIAL
+
+These machines all depend on the kconfig. When I try to write qtest
+for it, I need the CONFIG_* information to be returned for them.
+
+>
+>
+> With regards,
+> Daniel
+> --
+> |: https://berrange.com       ~~        https://hachyderm.io/@berrange :|
+> |: https://libvirt.org          ~~          https://entangle-photo.org :|
+> |: https://pixelfed.art/berrange   ~~    https://fstop138.berrange.com :|
+>
+
+
+--=20
+         =E6=AD=A4=E8=87=B4
+=E7=A4=BC
+=E7=BD=97=E5=8B=87=E5=88=9A
+Yours
+    sincerely,
+Yonggang Luo
 

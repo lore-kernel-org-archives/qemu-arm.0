@@ -4,102 +4,77 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 90D15CA5FA2
-	for <qemu-arm@archiver.kernel.org>; Mon, 28 Sep 2026 20:59:13 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 81C9FCA5FAA
+	for <qemu-arm@archiver.kernel.org>; Mon, 28 Sep 2026 21:41:00 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xBIRK-0004yg-M1; Mon, 28 Sep 2026 16:59:11 -0400
+	id 1xBJ5c-0002E0-Ig; Mon, 28 Sep 2026 17:40:49 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <shentey@gmail.com>) id 1xBIRG-0004yF-Ef
- for qemu-arm@nongnu.org; Mon, 28 Sep 2026 16:59:06 -0400
-Received: from mail-wr1-x430.google.com ([2a00:1450:4864:20::430])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <shentey@gmail.com>) id 1xBIRE-0004bn-5S
- for qemu-arm@nongnu.org; Mon, 28 Sep 2026 16:59:05 -0400
-Received: by mail-wr1-x430.google.com with SMTP id
- ffacd0b85a97d-488885c3844so177561f8f.0
- for <qemu-arm@nongnu.org>; Mon, 28 Sep 2026 13:59:03 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20251104; t=1790629142; x=1791233942; darn=nongnu.org;
- h=content-transfer-encoding:content-type:mime-version:message-id
- :references:in-reply-to:subject:cc:to:from:date:from:to:cc:subject
- :date:message-id:reply-to:content-type;
- bh=0iNexZlLTdailoVev8WPHfukVq5p0Bf8UlA559SmjVM=;
- b=hhCpOs17fEjDY34iktpXqi2fe7vLzLGMB4woscJiWk1Vl70Ge/5aAyX99d3LyzXijD
- aGYYLHV7ewcxs91a3U1Gky6rpVuYN7swwFsUtTmSicm+SDI/yLfyW5Ga93fGX0ZaT0Jt
- RiM0FSkNRF162VZTm6NPwP1EtiWtQAx4N9kUtzt7LVIROGpJmQKpktVCVaDa9PADrWMy
- Yx/4WyE6UXYBmfiS41PtiMxoTl92bpCntmjy0ts8UFYk3FBRwcFbt6OhmEA9k4NNEew2
- LeB2TX1FR23Uye0BWVOmmlDkdTjl5rxunDIGBlElPjUXpPwO+MgIf59+NH5z7hCPI3gP
- qvXA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20260707; t=1790629142; x=1791233942;
- h=content-transfer-encoding:content-type:mime-version:message-id
- :references:in-reply-to:subject:cc:to:from:date:x-gm-gg
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
- :content-type;
- bh=0iNexZlLTdailoVev8WPHfukVq5p0Bf8UlA559SmjVM=;
- b=bHA0Ljb1gY8ayOqurI+5b+bCPJSGhEAraiRUkZPgGLEpDWneI4V3MLyQoI7BvNF/39
- wObmnGtRSfFbwghclSqybxFrr+P399f0XMpDQIfsi+6bfhAiw21SXT6hHjsnp5hb5PrL
- E1kZUwTcn8WMjjNkxb+Z9X5oaAvNWLR8U+5TtRtvktK8J7KgSAsMC6CjLHfcocXqXsIF
- pB8F3iZzxSK/92sHrhd5G19P0ur1JaiGRAnJcz2bIp3bhvGsNFr7D1NGkg4TzIZy42nu
- 0IwFQgmSOYhgfu6Xy7tQi/xB0IQGMAx2SCmz0c/WZmKurq4v4/7cyy06UA1lCqFXbRNN
- Y3ZA==
-X-Forwarded-Encrypted: i=1;
- AKwUvByvEcscnAcJ5i8GlYrinfhwMSK2ESumwF3pOULnJnDp30ZCxKjTUy2B1udToyDKFFryY8wsM2+2Zg==@nongnu.org
-X-Gm-Message-State: AFq9FYIoNBgL+XCXjbWnOcWIva214aRNSiLylO+oe8tNysug999KAFm4
- VQkv2VmrzDMUhTyEvSmjhoYMtIAycHNhlz6iGn2ZeE4FXbK2yL4exdux
-X-Gm-Gg: AYBFou1l/NaVCSfPdCB05QcN4ONovsj7pgZlzk+T49H+2xqSqCl/dpJUXUrDuyPz25A
- MCm5LP35u7SqI5gcw8DsaexjqZH2mCOl9We/qqWywNVqvRa7QxlcKddO8Ius3lUf03XrNhTDUG0
- qhP1EoPMlANbAJKmKY36hJa2i2rRHPvVmoOWDxRGVk6o4rzEV+MtFWu8V89RSU4X427Gbv3TqGE
- GvVKR+4m22icmz2AdrU+nBj8YuUreSJfGHq76o1JJuw7hshEt8SWl+eIXgGEk7d84eZzrwFGgg8
- E9NwLHV5njpl7CdypgYvwYa9zWcaIVB5H7Fem4dxsq7kAsBjMrlyuH7XnbZLK/8EvrKvxBdGHlB
- XPbA3SxDI4Zefn4iGvo6YYL4zPDfOCDQv7FG2N1RZEYCuX7axyYLkKXzsTDGLxs6WVa8YJEeADF
- O1q16c2PuS7U+/k7gqQmqLqH2KlHc7TYOiSt6wrcYdtsUj4fReB0uZVpgIrkbTbd7V++8f4Pu9Q
- 8CxqempCBZBg07o70IKWu7oQfSejK7uwahEzvYJITGZ16HI5EMVl2uML7rXL8g7odWYOflIvC7l
- AMZw90gH1Qhobf/cQt8=
-X-Received: by 2002:a05:6000:4905:b0:487:1577:9e33 with SMTP id
- ffacd0b85a97d-48af1ba6b1emr711821f8f.25.1790629142279; 
- Mon, 28 Sep 2026 13:59:02 -0700 (PDT)
-Received: from ehlo.thunderbird.net
- (dynamic-2a02-3100-1844-bb00-d99b-d42d-2461-dbe0.310.pool.telefonica.de.
- [2a02:3100:1844:bb00:d99b:d42d:2461:dbe0])
- by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-4887a746c57sm28834114f8f.35.2026.09.28.13.59.01
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 28 Sep 2026 13:59:01 -0700 (PDT)
-Date: Mon, 28 Sep 2026 20:58:59 +0000
-From: Bernhard Beschow <shentey@gmail.com>
-To: Peter Maydell <peter.maydell@linaro.org>
-CC: qemu-devel@nongnu.org, Phil Dennis-Jordan <phil@philjordan.eu>,
- Alistair Francis <alistair@alistair23.me>, Alexander Graf <agraf@csgraf.de>,
- Jason Wang <jasowangio@gmail.com>, qemu-arm@nongnu.org,
- Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>,
- Paolo Bonzini <pbonzini@redhat.com>,
- =?ISO-8859-1?Q?Marc-Andr=E9_Lureau?= <marcandre.lureau@redhat.com>,
- Jean-Christophe Dubois <jcd@tribudubois.net>,
- Gaurav Sharma <gaurav.sharma_7@nxp.com>
-Subject: =?US-ASCII?Q?Re=3A_=5BPATCH_04/42=5D_hw/arm/mcimx7d-sabr?=
- =?US-ASCII?Q?e=3A_Ignore_memory_transaction_failures?=
-In-Reply-To: <CAFEAcA_+nmV0WvoD0OCExmJ7sQdY2T3dvd7ZipbkNuj-RuZQug@mail.gmail.com>
-References: <20260921214710.29422-1-shentey@gmail.com>
- <20260921214710.29422-5-shentey@gmail.com>
- <CAFEAcA_+nmV0WvoD0OCExmJ7sQdY2T3dvd7ZipbkNuj-RuZQug@mail.gmail.com>
-Message-ID: <5BD5FF6A-CD85-4A7F-989A-60399F5E4FEF@gmail.com>
-MIME-Version: 1.0
+ (Exim 4.90_1) (envelope-from <mohamed@unpredictable.fr>)
+ id 1xBJ5X-0002DP-TN
+ for qemu-arm@nongnu.org; Mon, 28 Sep 2026 17:40:45 -0400
+Received: from ci-2004j-snip6-1.eps.apple.com ([2a01:b747:3005:204::5e]
+ helo=outbound.ci.icloud.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <mohamed@unpredictable.fr>)
+ id 1xBJ5W-0000Te-7G
+ for qemu-arm@nongnu.org; Mon, 28 Sep 2026 17:40:43 -0400
+Received: from outbound.ci.icloud.com (unknown [127.0.0.2])
+ by p00-icloudmta-asmtp-us-central-1k-100-percent-7 (Postfix) with ESMTPS id
+ 3A8481800150; Mon, 28 Sep 2026 21:40:39 +0000 (UTC)
+X-ICL-RepId: 01a0e9f6-7880-70d7-b205-ec6748721e3d
+X-ICL-Out-Info: HUtFAUMHWwJACUgATUQeDx5WFlZNRAJCTQ1OHVwPUhxEDlYCVRcOVk1UF1sMWg5WMEwWQx9SD1sTTRlRAVJFVAIZHldQQgVCAlwcWg5DClAcXFZVHxcZUU0PWFsIWwQPH0wMUQJCBVZeWhEdBFQHXQVdVlACWktCBEtFaFwFXBxAF0gdX2pLVhQEDV0dRQ5WGVoMUg9bDhwWS1heBFNWDkN7SXJccSkLXQlOdlsaXwc2fVULWw4oH0cJT3dZAlp2QQs5By1CBUICXBxaDkMKUBxcVlUfCUtGCUkdDg5CGEYfVCdXAloKWx4=
+Dkim-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=unpredictable.fr;
+ s=sig1; t=1790631641; x=1793223641;
+ bh=nbKQ34KUlqO+pS/NBbedJtwYkyXSlaZdhYwIOr4GXHA=;
+ h=Content-Type:Mime-Version:Subject:From:Date:Message-Id:To:x-icloud-hme;
+ b=U+T5RS2EMHtj0f12N2v7XWOMFWXSWfU49iNNWmgpzlTd/yS1f6pOWRLNGtx75TSjyOCIxBjtWGpS8gOrRNMDjWEBxZ/VAL+0tTH+Cd/zVHmJK+e1f5+XL1JAG//vNw4+N4rMOH7VbNiPYziQLnWeVCaLcNDT+JxuWutQYhE0Co7U0Gp9sVRlKuNlE1j4dUhxmQ/LfukZJCTvi2lW6I+Xh5NhdNyyBmPKSXc6IlIk5TQWcahmb8fnL7LhouySwFckxiT79qLS2/WNonKRsu+z1XmtKr+VpG6S0h3DO6OxF/HjzHRx5rldcPSMXGbYSl3ArJc4RxZXEFIOh9qCUBoh0Q==
+mail-alias-created-date: 1752046281608
+Received: from smtpclient.apple (unknown [17.57.156.36])
+ by p00-icloudmta-asmtp-us-central-1k-100-percent-7 (Postfix) with ESMTPSA id
+ EF43E180016F; Mon, 28 Sep 2026 21:40:37 +0000 (UTC)
 Content-Type: text/plain;
- charset=utf-8
+	charset=utf-8
+Mime-Version: 1.0 (Mac OS X Mail 16.0 \(3901.100.1.1.11\))
+Subject: Re: [PATCH v2 1/5] hvf: arm: advertise ID_AA64PFR0_EL1.GIC
+From: Mohamed Mediouni <mohamed@unpredictable.fr>
+In-Reply-To: <CAFEAcA8XVZVehzwCAfy_a3V+KFfxOErhxo3dg1NObmco9kEj1Q@mail.gmail.com>
+Date: Mon, 28 Sep 2026 23:40:26 +0200
+Cc: qemu-devel@nongnu.org, Phil Dennis-Jordan <phil@philjordan.eu>,
+ Roman Bolshakov <rbolshakov@ddn.com>, qemu-arm@nongnu.org,
+ Alexander Graf <agraf@csgraf.de>
 Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2a00:1450:4864:20::430;
- envelope-from=shentey@gmail.com; helo=mail-wr1-x430.google.com
+Message-Id: <3B1A1FB9-06E6-45FD-869C-707D451D12A4@unpredictable.fr>
+References: <20260904043742.96613-1-mohamed@unpredictable.fr>
+ <20260904043742.96613-2-mohamed@unpredictable.fr>
+ <CAFEAcA8XVZVehzwCAfy_a3V+KFfxOErhxo3dg1NObmco9kEj1Q@mail.gmail.com>
+To: Peter Maydell <peter.maydell@linaro.org>
+X-Mailer: Apple Mail (2.3901.100.1.1.11)
+X-Authority-Info-Out: v=2.4 cv=T9KBjvKQ c=1 sm=1 tr=0 ts=6abaded7
+ cx=c_apl:c_pps:t_out a=2G65uMN5HjSv0sBfM2Yj2w==:117
+ a=2G65uMN5HjSv0sBfM2Yj2w==:17 a=IkcTkHD0fZMA:10 a=VdqzKS8jKosA:10
+ a=VkNPw1HP01LnGYTKEx00:22 a=KKAkSRfTAAAA:8 a=MdgNKwDIt_fzaIJBeHoA:9
+ a=QEXdDO2ut3YA:10 a=cvBusfyB2V15izCimMoJ:22
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwOTI4MDA4NiBTYWx0ZWRfX0R5ir1uaEKFh
+ fZP+qj+waqNLVJxKSZmLpkUY5RDx5f4V0iQ09SKy4MXY0hvOM4vJIgaG4jyTPHju5MPqPgRpyhO
+ qlWfgRM21derga+ut+ZXoC++8d8CfKIuCOSQppX4S6HABtgTp9f4sOhWcmp5YO3Kqx2ThBM3nuf
+ vmoIVQt3hK9YCkDjnIP76FNW0MPpsJUK13FA/nTXfoCdf54YM4OD4MJLKaJBSIzlO5oX4vxyXi4
+ 3iKiHKKvQtXwMCf0MBneHIyHzzjHKlVBv9pHK5MxztxKyE4Ilch9O1TpgXfWfJubGM3pGfDA8eu
+ 6bQOuYgaQp+yAhYdjRz+3JB4mawpXtqR4ZtmlGoxlyocE5Vqnk2NGK2nqU4cSU=
+X-Proofpoint-GUID: QG8zfuTgNc3kmk_q3hr6aCSFUl6KsPWE
+X-Proofpoint-ORIG-GUID: QG8zfuTgNc3kmk_q3hr6aCSFUl6KsPWE
+X-JNJ: AAAAAAABCNv/Ysnfy9FPrGS9T9GDTkKslQCCVc9wU6ZTuzhr2zvvoiDXRvaBnyfemQ/NI9gDXCiTHUunZxsojNBdHubM2ADtVlRsMyRf9GQcdpajNYoe8DdjAMd8GtwFNL6AoSrtZll4caSnSA894AvRmYa5wdBuNoNOywzovrFUKOiHCD8iDmFwAv3SHDYLf71i21QVzPWnE31X9UNw1fqiJBMENVM3DS4HLYKWaKrkye+cZtI4drzh2xv/O5hZsA/w12APbkQzq+JbzrnXwoeAL1mDNMIkleLmvFNO/GmNxjokeprogOjuJVXoQjCLzf2uYNM3VoEslGiw8laWn5tzdcNOoOSTz2ypDYRE8sQHLqMaWVp46SVIFzux6hz4eVgQbeh1Z/ANq6F+KWvGFlq1ToO3Xmc+6SVjF6GhEI4vZibBpRLpWm4u1bwbo0hSLkNW9qjVbZZv7vX12QZxtyYw1iSW5lEhVMGKrT7TZEhTGj3QOUHbnb11Sak6uM4gEEM3gHYbFWZk5LaiMfna4dkXHRJ3913QP+BjwCwUWjGIxDqm52ZyB1oeJ7Vnrtr0DcDmrPz9QKyxY4DS5Qr+qQhR/u3FVSjdUvbn1ZKaZxb7rbjp/muI4ynv/TSHPcIYG8bKkAVIX71jDfaMQU0Yol2ShqWRKGQOneWMmobaWqdlED9ZifNsYZVPKGBVVRudiFYdXnnUAt64OuZ2W6192TlNoevzzLy8n5tXthjitHdoS+dOz5MUleDymm/d/6UlAz9PlAB7tUCSNqAK62bUS96ZcrGPWl3v52S2go0FlyKK4Gwazs9y2k9tIhFhpuFE3fTVELX4GShVKjxxKwC443GiMRUcuz6pVtm2Sj3n7fAXbfcZVM+ENXnoM0gr6ankKtXa4dYTE4XF0dj8HWxm5C17OFjSBz/3J5xNwlDSZd3uE+PE984RR9KD1YJoID5SIJkcFIx+5s8RJRn//9u2snik+MeLrFF
+ 5nsxxtsrcjtu75YBrkaEOmsVt4FEaK03Az227OwMZ5+B6pExMAF00vV/foVwrafBJoZGtDWTW4NHvInndusO0z6jGXx2jSQfjCK8hRIWM7yTQWCtWz1jEyLI5Y0oRT9lUY5JwGpku6l+i2m7+oKvpjOVnyjPu7XKViA/ZVwiZx4RssOAAxnFEjAr+FdyZQAeikvMrIjGi82Ne6yo5AFyy+PxYmyZ6MWfVroskgs0GgF7LZ2uXiE1iJyt2eyxtB5d9YUVpMJ7FNTNbu21sKy0V63nYR7FhQKt/xXjX4Iwk9jZhejvbmFXPHjZZtrPYKvaudVPrGC4mPCEeyFJ+v8C/9oSEd+8Ltpt6M+A724K4pa6/L/TnMumjSKSG5Dzv+m30yGxrGewz71HDqowW0LrJGAdHU0QkJ59GFWTJoKlnc65rSlWr0zKS2hymt58O4P/LHyyRHjzegsEiJ7rKIMBVyzQfdgB5YXNA/6Yx
+Received-SPF: pass client-ip=2a01:b747:3005:204::5e;
+ envelope-from=mohamed@unpredictable.fr; helo=outbound.ci.icloud.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_PASS=-0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -117,57 +92,65 @@ Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
 
 
-Am 28=2E September 2026 18:05:11 UTC schrieb Peter Maydell <peter=2Emaydel=
-l@linaro=2Eorg>:
->On Mon, 21 Sept 2026 at 22:47, Bernhard Beschow <shentey@gmail=2Ecom> wro=
-te:
->>
->> When using mcimx7d-sabre with newer Linux versions such as 7=2E0, the
->> machine fails to boot=2E This happens due to memory transaction failure=
-s
->> since the address space is not fully covered with unimp devices=2E Fix
->> booting by ignoring memory transaction failures in the machine=2E
->>
->> cc: qemu-stable
->> Signed-off-by: Bernhard Beschow <shentey@gmail=2Ecom>
+> On 28. Sep 2026, at 17:54, Peter Maydell <peter.maydell@linaro.org> =
+wrote:
+>=20
+> On Fri, 4 Sept 2026 at 05:37, Mohamed Mediouni =
+<mohamed@unpredictable.fr> wrote:
+>>=20
+>> For the kernel-irqchip=3Don case, advertise ID_AA64PFR0_EL1.GIC.
+>>=20
+>> Signed-off-by: Mohamed Mediouni <mohamed@unpredictable.fr>
 >> ---
->>  hw/arm/mcimx7d-sabre=2Ec | 1 +
->>  1 file changed, 1 insertion(+)
->>
->> diff --git a/hw/arm/mcimx7d-sabre=2Ec b/hw/arm/mcimx7d-sabre=2Ec
->> index 65fdb19c06=2E=2E8d223fca6c 100644
->> --- a/hw/arm/mcimx7d-sabre=2Ec
->> +++ b/hw/arm/mcimx7d-sabre=2Ec
->> @@ -83,6 +83,7 @@ static void mcimx7d_sabre_machine_init(MachineClass *=
-mc)
->>      mc->max_cpus =3D FSL_IMX7_NUM_CPUS;
->>      mc->default_ram_id =3D "mcimx7d-sabre=2Eram";
->>      mc->auto_create_sdcard =3D true;
->> +    mc->ignore_memory_transaction_failures =3D true;
->>  }
->
->This flag is in QEMU strictly to allow us to preserve
->backwards compatibility of behaviour with the older QEMU
->versions which pre-dated the suport of transaction failures
->(and where therefore we expected that if we just enabled it
->globally that we'd break previously-working user setups
->because we were missing some devices)=2E It should not be
->newly set for any board model that isn't already setting it
->(and in an ideal world we would eliminate it from all those
->old board models, except that's a lot of work for mostly
->ancient hardly used machine types)=2E
->
->Instead the fix here is to identify which devices we need
->to provide as at least unimplemented-device stubs, and add
->them to the board/SoC=2E
+>> target/arm/hvf/hvf.c | 12 ++++++++++++
+>> 1 file changed, 12 insertions(+)
+>>=20
+>> diff --git a/target/arm/hvf/hvf.c b/target/arm/hvf/hvf.c
+>> index da3ec521fc..f881d6cc67 100644
+>> --- a/target/arm/hvf/hvf.c
+>> +++ b/target/arm/hvf/hvf.c
+>> @@ -1229,6 +1229,18 @@ static bool =
+hvf_arm_get_host_cpu_features(ARMHostCPUFeatures *ahcf)
+>>         FIELD_DP64_IDREG(&host_isar, ID_AA64PFR1, SME, 0);
+>>     }
+>>=20
+>> +    /*
+>> +     * On HVF, kernel-irqchip implies GICv3.
+>> +     * The kernel-irqchip=3Doff,gic-version=3D3 legacy case also =
+supports
+>> +     * the host CPU interface but advertising it in ID_AA64PFR0_EL1
+>> +     * is not implemented yet.
+>> +     */
+>> +
+>> +    if (hvf_irqchip_in_kernel()) {
+>> +        /* Advertise the GIC system register interface */
+>> +        FIELD_DP64_IDREG(&host_isar, ID_AA64PFR0, GIC, 1);
+>> +    }
+>=20
+> How does this interact with the existing code in
+> hvf_arch_init_vcpu() that does:
+>=20
+>    pfr =3D GET_IDREG(&arm_cpu->isar, ID_AA64PFR0);
+>    pfr |=3D env->gicv3state ? (1 << 24) : 0;
+>    ret =3D hv_vcpu_set_sys_reg(cpu->accel->fd, =
+HV_SYS_REG_ID_AA64PFR0_EL1, pfr);
+>=20
+> ?
+>=20
+> env->gicv3state should be non-NULL for both HVF and TCG
+> GICv3, I think, so aren't we already advertising the GIC
+> in ID_AA64PFR0 ?
 
-Okay, then let's drop this patch from the series=2E The functional test sh=
-ould still succeed=2E
+Hi,
 
-Best regards,
-Bernhard
+Without this patch HVF GICv3 doesn=E2=80=99t show up, will look deeper =
+at why that check
+you noted is not effective=E2=80=A6
 
->
->thanks
->-- PMM
+Maybe it=E2=80=99s a question of ordering?
+>=20
+> thanks
+> -- PMM
+>=20
+
 

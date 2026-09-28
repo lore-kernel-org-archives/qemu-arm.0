@@ -4,97 +4,98 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7E1F8CA5FA2
-	for <qemu-arm@archiver.kernel.org>; Mon, 28 Sep 2026 15:37:16 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7EA06CA5FA5
+	for <qemu-arm@archiver.kernel.org>; Mon, 28 Sep 2026 15:40:53 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xBDPY-00041D-Td; Mon, 28 Sep 2026 11:37:01 -0400
+	id 1xBDT1-0005Gg-Tt; Mon, 28 Sep 2026 11:40:37 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1xBDPV-0003zz-Rg
- for qemu-arm@nongnu.org; Mon, 28 Sep 2026 11:36:57 -0400
-Received: from mail-yx2-x11.google.com ([2607:f8b0:4864:41::11])
+ id 1xBDSy-0005Fv-4B
+ for qemu-arm@nongnu.org; Mon, 28 Sep 2026 11:40:32 -0400
+Received: from mail-yx1-xb129.google.com ([2607:f8b0:4864:20::b129])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1xBDPU-00046U-E0
- for qemu-arm@nongnu.org; Mon, 28 Sep 2026 11:36:57 -0400
-Received: by mail-yx2-x11.google.com with SMTP id
- 956f58d0204a3-66e4ab2029eso2761791d50.1
- for <qemu-arm@nongnu.org>; Mon, 28 Sep 2026 08:36:55 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1790609815; cv=none;
+ id 1xBDSv-0004Yb-Nc
+ for qemu-arm@nongnu.org; Mon, 28 Sep 2026 11:40:30 -0400
+Received: by mail-yx1-xb129.google.com with SMTP id
+ 956f58d0204a3-6714595153cso2533736d50.0
+ for <qemu-arm@nongnu.org>; Mon, 28 Sep 2026 08:40:29 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1790610028; cv=none;
  d=google.com; s=arc-20260327;
- b=PtHxU0gwKJJaR8g4Dkq24ubU5wJMQACnf+EeyjMsLuo6JCfACWbAjTGjRMw0+4NnBw
- xOvWqF8NlWOR6RDqMQ5CizbpL2lD5ugGjmWyrn8C3iHS7h/wLSitO3dSB3ea9eOk3cqS
- 4NPjsaPW0Z/KCGqrhTgi538PMAhSMpKNgza6LDQtf20sc7qswoKyyjahxgu0Zavkgmth
- JkFcRBWcdDOgUlB/c3Z5DlGLySDpzJ95XUvJMKyLCWZa6kgkF22hk/mtv82lIBf3+MAp
- f3FWN4ngA39BjWuMogumhR+37bINA2sXYcbkka9BQNY861+rT2Eww/O2QWYu1ddVTTJz
- zMJg==
+ b=T+KHsN1RYl5OumkT02f1ow5KlM2KucKRaMJ2a59nao0jHBxjFM9N/5JW8ZJchYlFsU
+ wcqKyBBFaVVnACORDh+/I0C+3wXfN7RJBx8nLRQezmGDJGWjCUC1z0cOrblBQN5Mt6Lc
+ Ibo550Kc1UYYDsKGUTT4Bz/oN7ME0sdirABz+YCjeRLws/efn2vcIsgMlv0yuMJe+1up
+ Gk+lIS6aj/3O2Z8YXPTgYpNCOiqmQ58GAUQkT0vpjOmlxm/Dg4PaBIkg1ZrAw3ix/AbE
+ Pe3G1DpFKmrbetVgpdLKBFG5p0b4b6fpNlq/FzBLzh5sbHDEXlOGTqoFt7JrszYuAlLn
+ RQFg==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
  s=arc-20260327; 
  h=cc:to:subject:message-id:date:from:in-reply-to:references
  :mime-version:dkim-signature;
- bh=5a5z5TBdzXzcWjaqRCZjk3mWtpgfot9Ir2y5mBBuiqk=;
- fh=ArMwU+qlDWpIhywfX/l0DrqC5UqK7rubmJLMCb7NcsM=;
- b=GL2qOhzmzW5UiI6w1lA8KP6l+Rvjq40JRcYVJf8fzNvFLznnwVHtN4qUfSEH9kRZv7
- yakfRP4wsf3j9uVFp00jrLd9KxWq9+kT3KutJHFJLrzTPiUuD6Xpd/oqPkfxsM5GtuEC
- +s5EUpRz6CQn/Sz0HjQqVcIuAN18eqE3dyZgQu9bYFfXm1EbyL0LTkZ4ur4rmUlZMQal
- hPilgD/yLRNV84wWNh7aDUI10Z/fCGSoU392YbXzMP14DE5qlof05FpLUpt9xBh593tI
- XpDx57UDvNAj1m2KuEPZiDgcqeo/Z2F6j8suREMouZ2HnRplvIvO5GZ3JFWVhDYjMZs4
- hPqg==; darn=nongnu.org
+ bh=qM/B9Ymm+HU7jsilmrZJu7DV8Ea3+MiIvk8w5TS6NXA=;
+ fh=jNQZE49dazF/kiKGQVxlKkUZP972tcSrGb5iD05g7Zo=;
+ b=rVzAwX34EZqyPfD4C/o6NtL2VWM6NJkBJfiTcjGc11F8QvCqnJNIIksOQ0gqPT8DdQ
+ dZ9HVhnj2Td/DsJ5mWfFyK7vi71dg/ya6i0xJPsxr0R8RmMkEbXMKkCc+6DLrKRW0pYO
+ TcMG3E2yhtn2ukSLr04pN5D+OttVLL4GEpLEJJPMjDYQvg9eZsNJzcZKC7pikYK1pc2L
+ 3wsIWY9hRc452XbG73RJkItdhD0G+QdFLzVk6OJFElW3lukj/5rLSYjeJ5elyG2BTWF2
+ gaR8gwzm9fHknK1e2f/n+1I55/Igc+y453KNg9cqqkkoZ1jecwjFIOUrjNN+6f8jvUBZ
+ IYAQ==; darn=nongnu.org
 ARC-Authentication-Results: i=1; mx.google.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1790609815; x=1791214615; darn=nongnu.org;
+ d=linaro.org; s=google; t=1790610028; x=1791214828; darn=nongnu.org;
  h=content-type:cc:to:subject:message-id:date:from:in-reply-to
  :references:mime-version:from:to:cc:subject:date:message-id:reply-to
- :content-type; bh=5a5z5TBdzXzcWjaqRCZjk3mWtpgfot9Ir2y5mBBuiqk=;
- b=Qz8wI8vE8sN2X44StpvvY/CCGXmFQ7sp+avg9FQV39usla8hmtQvQAPQjbQMAv4DYg
- rxDdcqitfl0c5CTwbtyr86tbR0gfYkBphnvwBXIdtlK/PC0emqnG+YH9ROgEs/tZeGW6
- ARtBCLu+F4afQ/VNe/uB80XStoHqo8EdaFYn984BL5XjPvTVR4ILKG54QosJNTuk6IqY
- dkr5Q7WhkYW0KEgWj2Ro6iCFTsoaxZ1EZ/BFbyrzHa6L1Rnbqsg4hb+P1+NmAzbOgpLK
- 0pek9F9h5IO1/AHT9Ebgjw5uYYYtVZrA9I0EdwBZPMGkIW4pPL9uNdBahvkQ6Qi8VAem
- sk9Q==
+ :content-type; bh=qM/B9Ymm+HU7jsilmrZJu7DV8Ea3+MiIvk8w5TS6NXA=;
+ b=CtAJSTmC9QjmmkeClvO4dsSMF9IpwfPBNHbTVer9AeBZ5gyqQU3oqsZkuaWmaACC16
+ 9q6BUcD5u6lmhZt5tNvaNxJVIrg+65DyGP6iwM5SKYSeIqKxBgBvBRvkzrR3T5+n75rq
+ 6CZcwCW5Xdno4qJhNZYPTUlBBQQrw0/Eghe99/FHcucdM8t6RNmDxuL/C1MoWt/NUyte
+ sqt/Le7WcvE+zUAlJCie/8KTFzJSSWNNUyGgqfrsg50X5b1y0gFB9xPn/MfUQv9r5zKQ
+ bgyhrv9AiloVvJLWozwxBcg47rETI2SH9iEokU5ZmubvDiezUhXhwSaTlYJn8jjKJB+J
+ 7Umg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20260707; t=1790609815; x=1791214615;
+ d=1e100.net; s=20260707; t=1790610028; x=1791214828;
  h=content-type:cc:to:subject:message-id:date:from:in-reply-to
  :references:mime-version:x-gm-gg:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to:content-type;
- bh=5a5z5TBdzXzcWjaqRCZjk3mWtpgfot9Ir2y5mBBuiqk=;
- b=K9nyp6jJWhl0XnJ7A4MiC+vJYy0G4Ml2T5/xGDFJ7fDT60hww/LkRazGelzt5lPWLr
- JsDSa9Dvn6OfMX5E5TSUbJ41YoO39TZOgro++dHCCGxlwvVg+bqqkmcPToEwxx54SbIz
- qrWss0//4gtwsoUqR5UrteornpxNKDY6PgqeQngj+BzGsFPTiseYh1HqrBaxQQibGVmJ
- E6O//u7dz0hbdogeP3hvbD65KEAyWz7D9nw9A7ugAL9SLrnc21FfscMKE4IdbsmlmQv4
- bSUOY4w2m0dgNKD4LbdIXrJxrtsaX9jYZKqjI4tOQ8iH9vt+pNnTGzS2Z+eS5OACpacV
- wbpQ==
+ bh=qM/B9Ymm+HU7jsilmrZJu7DV8Ea3+MiIvk8w5TS6NXA=;
+ b=J2QO/I/v+c+UaLlm+7St6qzLTKIMaKjRUzTNEWE/tVnda0UAAiim7STN8B8zHmv6YE
+ LAMc9XZRuJrufLeEZ/cfl+GuMqygCytakFS4CPv7/2HTbD4ZCu9tTUVf8qhkiu7ysGas
+ UgqlvVjT+r5dLkAkOaGZn/2fQiE0K4RE7FKWD9bifRx+c+3SEUwcqjOaBcOT9WNN2PZi
+ 5Ymi/+1WEbGkdWL6zzgAJW8vU/KBDlNouhf8BpURzMUD0KLOloNVqWVwazHkemmaw5gy
+ vgHmJTsNK1+zsn0dVhuVGJpW/nf2nFRT9knR2N1earPLEdwQr74q6+xZEnG3PJEgWsb5
+ 6eGw==
 X-Forwarded-Encrypted: i=1;
- AKwUvBwbM2czDD0ks24pW4b1A/cOyfiTZ4Zg0ZBvTCu4jYrQoLHCJlRgrkjDTpbDEycF4JMspM+TYevXBQ==@nongnu.org
-X-Gm-Message-State: AFuF++lPaVEQMj6JP54RbGJqj0oWB1WUzDVq2Bjvr0h1UkQIxSSwth6b
- y/6eXm67XChQTdOmfn2IYWKbevciwnP0RNRCEXrNrK9axvZFFH6PSmNTlNEtDPOaJ49I4yOPS/i
- b46FJIn5cf1Ca2xqe2NjmJHRX++1VGkeLWerB1dTXOg==
-X-Gm-Gg: AYBFou1YypjBUScWVeiEcSUIOlM863flhROW9prjx9JPZdIitQ/BRtEfTEeITmHWIbp
- kybDcriiYj27KDdzl1S133ECZs2g8Fme47vOtEyH5wdhkCANXAbvV0py+P0HUqTG6VCffH9JBzj
- 3Lp+yKgokgyUbKfexTc7Y8/C5IjMLTcZZzTV5QZJhBjSU91gHShVRqJPui11GqH8Jo/HYVnBIpy
- 9H46+61bU8fjcKoJJ7Oo3E9fKkN3S76qllMVrkFCTgCSM3YuqEE5LLSLcsWK3n1pErqvOZDf4cL
- 4WFY6SiVopNzJNrJteDLSOv6R+aDsF4rVfnk8zccPlcQMFeIxYpV/8YLk1DwjRISlYa4E9kiyjM
- lPnR18gvzEEzn4w7UyuLAm/wcqExH7VzgTGbjm9sr
-X-Received: by 2002:a05:690e:1343:b0:672:99e1:11f4 with SMTP id
- 956f58d0204a3-672ed523ab0mr4214756d50.145.1790609814986; Mon, 28 Sep 2026
- 08:36:54 -0700 (PDT)
+ AKwUvBxKdZ5eY1axLclELg3Gqd2F+aMPOROF7OjZp2e2CYNuE6moV1Qw+KsCRSvN+SwO+4l8/q4NyZutKA==@nongnu.org
+X-Gm-Message-State: AFq9FYLOZKckdtJjAIUD5rnHKhTfcxDcH6uEqH2FuSpRczGR/PuWMHX4
+ +LtyCs4mpH+EPl62H4b3WHMFW5hX7opNAcpaH129xqL9f3FAOgaqmeyLGRMwgJQsW5JH9Pwk4Yc
+ /EkIhpq55gz5GF+teglZ1uTPqDbQVzUEgHkqoDFk4uA==
+X-Gm-Gg: AYBFou0GPduhsoMm6W6/gjPbcnGuEzWzjtZ/uUrp1o7gM6spVn56to2Qps+o46SXE83
+ X2PqqOsMEdK6AuyGtRafjVmD4v2spBowBPUqITyDldvd+bavsKecZXFgzgQJuDMz9CsaMLooJhg
+ PFVXqZXEUbuJuM4W1EJzI3jQ+7vHwHH5ns/056iFyLIIkH0v8fylzRk0bVh0WvQCFS/Vp76cDzh
+ xUCOa/j44dyG8gADvUJfFHYXtTUu6x0SeXGuErDuk30BfzqGq64O0fYWZ1RDbpyuDsrhHz5cosz
+ S5+Sk+RXnHN5RDEdwLR357OFw2kuMBXq7xxlSruRFt8XuYy7bvVgw8zfAc0z2aaEc6MkomuRkSm
+ qu56Gv7knRGNTfow4Mv10woxzv67LQy8jRPzolDQ=
+X-Received: by 2002:a05:690e:150c:b0:673:ae96:361e with SMTP id
+ 956f58d0204a3-673ae96378fmr4465386d50.55.1790610028322; Mon, 28 Sep 2026
+ 08:40:28 -0700 (PDT)
 MIME-Version: 1.0
 References: <20260925215004.456336-1-richard.henderson@linaro.org>
- <20260925215004.456336-3-richard.henderson@linaro.org>
-In-Reply-To: <20260925215004.456336-3-richard.henderson@linaro.org>
+ <20260925215004.456336-4-richard.henderson@linaro.org>
+In-Reply-To: <20260925215004.456336-4-richard.henderson@linaro.org>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Mon, 28 Sep 2026 16:36:43 +0100
-X-Gm-Features: AclHuK-Sdmn0RY5k6jbxbp8w59rVdx46jmoMyGCQDJ0eIwwh3bSZl5tErGC-CxM
-Message-ID: <CAFEAcA-C=1FH9jf=qqjK76Eoy41aGgg=Cy=weVcqBa1C_RWtBA@mail.gmail.com>
-Subject: Re: [PATCH v2 02/14] target/arm: Reorg rebuild_hflags_common*
+Date: Mon, 28 Sep 2026 16:40:17 +0100
+X-Gm-Features: AclHuK8DTkPA4pO_5khNZ4Gh2tPJ16Yz5JxWstZ29xndF0dvODjAjfpjmxPlzJg
+Message-ID: <CAFEAcA_8MyATnQiAsT1d2Ay4b1C375vPJKY80aXvi+8A6EoJTg@mail.gmail.com>
+Subject: Re: [PATCH v2 03/14] target/arm: Split out
+ rebuild_hflags_common_aprofile
 To: Richard Henderson <richard.henderson@linaro.org>
 Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org
 Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:41::11;
- envelope-from=peter.maydell@linaro.org; helo=mail-yx2-x11.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::b129;
+ envelope-from=peter.maydell@linaro.org; helo=mail-yx1-xb129.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -120,17 +121,15 @@ Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 On Fri, 25 Sept 2026 at 22:51, Richard Henderson
 <richard.henderson@linaro.org> wrote:
 >
-> Invert the call ordering of rebuild_hflags_common_32 and
-> rebuild_hflags_common vs the rest of the flags setting.
+> Alignment, FGT, and IL are common to a32 and a64, though the
+> latter comes from different places.
 >
 > Signed-off-by: Richard Henderson <richard.henderson@linaro.org>
+> ---
 
-We do have "set a TB flag and then later in the hflags calculation
-functions read it back" dependencies in a couple of places:
-UNPRIV, ATA, FGT_ACTIVE, PSTATE_SM -- but in all four cases
-these flags are both set and read inside rebuild_hflags_a64(),
-so reordering whether we do the common flags first or last
-doesn't move the "read" before the "set", so it's OK.
+This doesn't break the set-read ordering for FGT_ACTIVE in
+rebuild_hflags_a64(), because it moves the set earlier than
+it was, so that's OK.
 
 Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 

@@ -4,48 +4,48 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 67442C9833F
-	for <qemu-arm@archiver.kernel.org>; Mon, 28 Sep 2026 11:42:22 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1E5CDCA5FA2
+	for <qemu-arm@archiver.kernel.org>; Mon, 28 Sep 2026 11:48:45 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xB9kM-0002IF-ET; Mon, 28 Sep 2026 07:42:15 -0400
+	id 1xB9qW-0004Qo-0x; Mon, 28 Sep 2026 07:48:39 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1xB9kH-0002G0-S6
- for qemu-arm@nongnu.org; Mon, 28 Sep 2026 07:42:10 -0400
+ (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1xB9py-0004Od-Rx
+ for qemu-arm@nongnu.org; Mon, 28 Sep 2026 07:48:12 -0400
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1xB9kF-0002wH-BF
- for qemu-arm@nongnu.org; Mon, 28 Sep 2026 07:42:09 -0400
+ (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1xB9px-0003RQ-Dm
+ for qemu-arm@nongnu.org; Mon, 28 Sep 2026 07:48:02 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1790595726;
+ s=mimecast20190719; t=1790596080;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  in-reply-to:in-reply-to:references:references;
- bh=lT/7dUd3Ns3Hv2bavTQFNjVEdK3MCpIQuBS+9fK13UY=;
- b=eldDLQQqH5JkJ3ymxm0z9jO6Xy1OtQePbJpU1tgg54GmKKg23h6a+zexTLNbw4XjKEMvOU
- v4yUjPwXDWqej70ZFBgjzuqfzsJKGajLc3HdBm60Bv/73X0z81UWMOjxojN8mxLT5uUVqP
- XBB0o+mz4coU6tTQARRsCvQPac0vUdY=
-Received: from mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com
+ bh=UklCMeok/lRwwENuhgX7Blw7lwK8sUDFmGXUvT9wcyc=;
+ b=b/2qFG3vLxsGjFe7kyJWH7MlyZrZYu8qDYFGZ5Ut+FO3AcrwX4YHuugqeThOande9AnbJp
+ lvoNBD2SETXYoZzNVL55w4AbphAHRK/O6B8TmuEfTtooU3V0s9sbG0TpX1tYr2bT/XwY9H
+ c6MHGtVpaKjTH4eGZI+ZuAOTeu7AKlY=
+Received: from mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com
  (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-272-lQ4Kth-gPn6aKFylciYdQQ-1; Mon,
- 28 Sep 2026 07:42:03 -0400
-X-MC-Unique: lQ4Kth-gPn6aKFylciYdQQ-1
-X-Mimecast-MFC-AGG-ID: lQ4Kth-gPn6aKFylciYdQQ_1790595721
-Received: from mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com
- (mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.111])
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-492-J4yRTP5DMKyOeSX3gMLLJQ-1; Mon,
+ 28 Sep 2026 07:47:56 -0400
+X-MC-Unique: J4yRTP5DMKyOeSX3gMLLJQ-1
+X-Mimecast-MFC-AGG-ID: J4yRTP5DMKyOeSX3gMLLJQ_1790596074
+Received: from mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com
+ (mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.4])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 548BC195607C; Mon, 28 Sep 2026 11:42:01 +0000 (UTC)
+ by mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 6CD4E19541AE; Mon, 28 Sep 2026 11:47:54 +0000 (UTC)
 Received: from blackfin.pond.sub.org (unknown [10.44.22.5])
- by mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 95EA81800345; Mon, 28 Sep 2026 11:42:00 +0000 (UTC)
+ by mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id E6F1730000E4; Mon, 28 Sep 2026 11:47:53 +0000 (UTC)
 Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
- id 362E721E6A04; Mon, 28 Sep 2026 13:41:58 +0200 (CEST)
+ id 9796221E6A04; Mon, 28 Sep 2026 13:47:51 +0200 (CEST)
 From: Markus Armbruster <armbru@redhat.com>
 To: Yonggang Luo <luoyonggang@gmail.com>
 Cc: qemu-devel@nongnu.org,  Richard Henderson
@@ -58,17 +58,17 @@ Cc: qemu-devel@nongnu.org,  Richard Henderson
  <pbonzini@redhat.com>,  Alistair Francis <alistair@alistair23.me>,  Peter
  Maydell <peter.maydell@linaro.org>,  =?utf-8?Q?Marc-Andr=C3=A9?= Lureau
  <marcandre.lureau@redhat.com>,  qemu-arm@nongnu.org,  kvm@vger.kernel.org
-Subject: Re: [PATCH v4 40/55] meson: link shared objects into qemu-system
-In-Reply-To: <20260926070057.1234-41-luoyonggang@gmail.com> (Yonggang Luo's
- message of "Sat, 26 Sep 2026 15:00:39 +0800")
+Subject: Re: [PATCH v4 41/55] target-info: add SysEmuTarget none
+In-Reply-To: <20260926070057.1234-42-luoyonggang@gmail.com> (Yonggang Luo's
+ message of "Sat, 26 Sep 2026 15:00:40 +0800")
 References: <20260926070057.1234-1-luoyonggang@gmail.com>
- <20260926070057.1234-41-luoyonggang@gmail.com>
-Date: Mon, 28 Sep 2026 13:41:58 +0200
-Message-ID: <8733uthabd.fsf@pond.sub.org>
+ <20260926070057.1234-42-luoyonggang@gmail.com>
+Date: Mon, 28 Sep 2026 13:47:51 +0200
+Message-ID: <87zex1fvh4.fsf@pond.sub.org>
 User-Agent: Gnus/5.13 (Gnus v5.13)
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.111
-X-Mimecast-MFC-PROC-ID: IqW_n8rVFoUHOBHnGEPP0alCbsWljCNZGrUMBKK2RkM_1790595721
+X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.4
+X-Mimecast-MFC-PROC-ID: loPoAEbDt7DGX5QWQwgn2E1_uCuJDTAGp37-mjBKvUM_1790596074
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain
 Received-SPF: pass client-ip=170.10.133.124; envelope-from=armbru@redhat.com;
@@ -98,41 +98,72 @@ Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
 Yonggang Luo <luoyonggang@gmail.com> writes:
 
-> Extract common_ss, system_ss, and family-common objects into one
-> qemu-system binary. Only arm, aarch64, microblaze-softmmu are
-> listed; a new target must have arch_srcs equal to target_info_def
-> only (target-info-def.c). Config headers stay in arch_genh.
->
-> - Union non-TARGET_* keys with y taking precedence
-> - Reject leftover arch_srcs on participating targets
-> - Reject TARGET_* conditions on common_ss and system_ss
-> - Link SDL, install the binary, and apply Darwin entitlements
->
-> Adding a target that still has per-target sources fails meson, for
-> example:
->
->   combined qemu-system leftover for :
->   expected:
->   target-info-def.c
->   arch_srcs:
->   target/microblaze/mmu.c
->   target/microblaze/machine.c
->   target-info-def.c
->
+> Add a none target for when no TargetInfo is selected. It is last
+> so existing SYS_EMU_TARGET_* values stay put, and it is not a
+> qemu-system- executable name. target_is_none() and target_none()
+> report that state.
+
+Why does it matter that existing SYS_EMU_TARGET_* stay put?
+
 > Signed-off-by: Yonggang Luo <luoyonggang@gmail.com>
 
-Watch query-target lie:
+[...]
 
-    $ qemu-system -S -nodefaults -display none -qmp stdio
-    {"QMP": {"version": {"qemu": {"micro": 50, "minor": 1, "major": 11}, "package": "v11.1.0-1902-g88f617913a"}, "capabilities": ["oob"]}}
-    qemu-system: warning: nic xlnx.xps-ethernetlite.0 has no peer
-    {"execute": "qmp_capabilities", "arguments": {"enable": ["oob"]}}
-    {"return": {}}
-    {'execute': 'query-target'}
---> {"return": {"arch": "aarch64"}}
+> diff --git a/qapi/machine.json b/qapi/machine.json
+> index b1be5608b61..6aaa2af709a 100644
+> --- a/qapi/machine.json
+> +++ b/qapi/machine.json
+> @@ -22,6 +22,10 @@
+>  # The individual target constants are not documented here, for the
+>  # time being.
+>  #
+> +# @none: no TargetInfo selected.
 
-Perhaps you can fix this by reordering patches.  If you can't,
-deficiencies like this one need a prominent mention in the commit
-message.
+Doc comments are reference documentation for users.  TargetInfo is an
+internal thing.  Please rephrase in terms that make sense to users.
+
+>                                    Not a qemu-system- executable name.
+
+This barely makes sense.  I recommend to leave documenting the
+qemu-system-T naming convention to the note below.
+
+> +#     Last enumerator so existing SYS_EMU_TARGET_* values stay put.
+
+Of no concern to users, therefore inappropriate for user documentation.
+
+> +#     (since 11.2)
+> +#
+>  # @rx: since 5.0
+>  #
+>  # @avr: since 5.1
+> @@ -30,9 +34,10 @@
+>  #
+>  # @hexagon: since 11.0
+>  #
+> -# .. note:: The resulting QMP strings can be appended to the
+> -#    "qemu-system-" prefix to produce the corresponding QEMU
+> -#    executable name.  This is true even for "qemu-system-x86_64".
+> +# .. note:: Except for ``none``, the resulting QMP strings can be
+> +#    appended to the "qemu-system-" prefix to produce the
+> +#    corresponding QEMU executable name.  This is true even for
+> +#    "qemu-system-x86_64".
+
+Not this patch's concern: I don't understand what's so special about
+x86_64.
+
+>  #
+>  # Since: 3.0
+>  ##
+> @@ -42,7 +47,7 @@
+>               'mips64el', 'mipsel', 'or1k', 'ppc',
+>               'ppc64', 'riscv32', 'riscv64', 'rx', 's390x', 'sh4',
+>               'sh4eb', 'sparc', 'sparc64', 'tricore',
+> -             'x86_64', 'xtensa', 'xtensaeb' ] }
+> +             'x86_64', 'xtensa', 'xtensaeb', 'none' ] }
+>  
+>  ##
+>  # @S390CpuState:
+
+[...]
 
 

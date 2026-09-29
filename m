@@ -4,119 +4,135 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3102CCA5FA1
-	for <qemu-arm@archiver.kernel.org>; Tue, 29 Sep 2026 01:36:52 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3A322CA5FA1
+	for <qemu-arm@archiver.kernel.org>; Tue, 29 Sep 2026 03:20:12 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xBMlZ-0003An-8I; Mon, 28 Sep 2026 21:36:21 -0400
+	id 1xBONw-0000jn-90; Mon, 28 Sep 2026 23:20:04 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <luoyonggang@gmail.com>)
- id 1xBMlX-0003AA-HW
- for qemu-arm@nongnu.org; Mon, 28 Sep 2026 21:36:19 -0400
-Received: from mail-ed1-x530.google.com ([2a00:1450:4864:20::530])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <luoyonggang@gmail.com>)
- id 1xBMlU-00070Q-VU
- for qemu-arm@nongnu.org; Mon, 28 Sep 2026 21:36:19 -0400
-Received: by mail-ed1-x530.google.com with SMTP id
- 4fb4d7f45d1cf-6aaf28a86b9so930226a12.1
- for <qemu-arm@nongnu.org>; Mon, 28 Sep 2026 18:36:16 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1790645775; cv=none;
- d=google.com; s=arc-20260327;
- b=rNKYSBtF7gKUPL9dyWwsVXwJ95WSkmo4sYWrowUlY4IbUqOKnTeNycx/XBNFxZQZvF
- Bv94qb0gjHZxkc49vAx1nuwc1Qzhc92JNRSnnO00ON3TY0vU+pz2UkQGkMnwysNU8a8/
- 4zhvmO6a8QB5JPlN6iy3oC9JhMZNWwZDtlKc1DmdXlpOhAp0S0GWLHORPSUtWsRjVbP9
- 9lEyg8SR/IcyJ/sUQpIbhYuU7KAseTuqG6AvgbORxIyIuZFLpiTBR1vfNmgwUi9Tg1hE
- TicOVmCD6YerYgoZAvqU2cnTj4UaT1BqTJllYnn1wGlQkHeUmpHThRlKSjDoMwOgLIbi
- Zoww==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
- s=arc-20260327; 
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :reply-to:in-reply-to:references:mime-version:dkim-signature;
- bh=rs9au1eGA9M7SYgh5SPNLTgJY2xqQlWh6Et+Arr6MM0=;
- fh=s/ubOcp6TJCj24o41lxFOYc4RlFXTlNZ8RDJbZKyCnY=;
- b=f5L27v0NndJXnz3DWZjq6Gh24tWEXEAvNMBJaDIfUWZAXn8+i0vLOIFoYI90n4mu9V
- puiXRR9PLoKeo8bd+amqPpgMJIJZTd9afyfU/9I6R5OUc3bV4q8oPvoCKfjgdossj1HB
- WjYdq+njEVkHolJvrL1p0IqA9jixVclM+UZktR1IyDIZkUrWoZQwYRAViZdx7eXlKpHy
- wWpJAcTNILSG/MAPgWiEzH+khtirNtPJQ8CPMpXjs3TAI7lEwzCnruwBDhzLRzSP0Cv4
- WkAXq/fxiuzuAntMmMCyAKBuK7AfgAQzytpzqd3uNFXqGU1/ODNjqy1hmIq5m1Whgl4p
- vLGw==; darn=nongnu.org
-ARC-Authentication-Results: i=1; mx.google.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20251104; t=1790645775; x=1791250575; darn=nongnu.org;
- h=content-transfer-encoding:content-type:cc:to:subject:message-id
- :date:from:reply-to:in-reply-to:references:mime-version:from:to:cc
- :subject:date:message-id:reply-to:content-type;
- bh=rs9au1eGA9M7SYgh5SPNLTgJY2xqQlWh6Et+Arr6MM0=;
- b=TxvsfGw9ZfLJ4LSdn/ER5Fs+mtsywNNUruBZLjQWN0g+ZYKV2+nIzfPxVcUplFKo5c
- iteDccaeompSd+s3fI/YSNcLcKdXBHCzFgaffr58yhKcj1CaHDlI2av6ThaM5bh4ON00
- 9omUD+l6aQzHraDvJBJ/z9jJkwtLHtp2OGBtS+Dd5NKluOnlHEM5UBscnXELrZGqk4wI
- JBcKsR0canbjRZcy20Lfge8AkLYKp9ytHCwWInuFUSqKWQVqzMiHpin3I0OO5+jio4zZ
- Ov1jJw8sVfBgaqwf46HdNuU3mEBSqyX9uD8ff0KOti31+4vQcAGY2WU9rNVPKiALzU5S
- MNEw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20260707; t=1790645775; x=1791250575;
- h=content-transfer-encoding:content-type:cc:to:subject:message-id
- :date:from:reply-to:in-reply-to:references:mime-version:x-gm-gg
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
- :content-type;
- bh=rs9au1eGA9M7SYgh5SPNLTgJY2xqQlWh6Et+Arr6MM0=;
- b=REkUgAC8vflEQbSCkHs2cKmt7aMepeOiUNCZkL5CxGbgg0tk+4kt+EJLQyHfchDpYY
- LSs51L9tE5pPOM0FP1WIMcIPJXjPeCNx4N0Q660OKrtPAGGH7fDIUMsdICMucvNv0P3I
- huiSEb1NQFrKEnyruoBYqfvSwqKNnOFgMWph08pJsQu+XQvz44247nxs9INW2P4I8pNU
- Jm2zOxVWIty8zjyQFZ4YNFcjUvZywiOse8c0uCWgeuFzzs9FdWir0YolFHWjIplfox4/
- 7gbwJlP+6A1u1e971wmA6Daog7xI8BSXie73Ho2kqJmsNXir2ENCjTBubnInlSr+rcWW
- YA+g==
-X-Forwarded-Encrypted: i=1;
- AKwUvBx10K/DI9P53crIc+8pr99njPxgdlCGILlYrozYJKZ3Oze8l//4s7RbJ92lsnTmj4xhvYRp2gsHsA==@nongnu.org
-X-Gm-Message-State: AFq9FYIhizFH6QJdHRNei49fOjHxCriohEk+dlRXaqyudQ57teyQwOGx
- ZSh3dzVpp2kPlq9mGAAlHtTu+Q9Q5pWXJUGj4Bw5rF1HMjlDaOLMRn2WRLteyNQX46U8B3nwrE6
- EnpUnjG8Ltj8Jq9STBEN7lIha48fa4cE=
-X-Gm-Gg: AYBFou0kqxeKbt2JCc6hO14BwOBSnBH8n5hBgYT+TjY/AMSvjEak/e7sDRRotMqsr/V
- zic4GMUB6bX2MWR5pI8yX732g7p7PIjweYFPIKM7s7POkAQzH9E13osOrSPgo2gIrHP4Qh9MCQ4
- tfmi4FmS22qj+syEcO4gGzUgcN3UxG2VZVodxWsYRY/V8i5ENMcLbcSI6e+iEwPwjf2fSJ/dx0G
- 6SIEyZ98JYWJmb8UdX/bt9Sg+qltGm7n5ZQASkMQBrYg7ioezXJpSTD8eyyWIKK18sm3FPLRn9s
- pAgbgxeS+0Vq3dEeMGYezj/RnYP4+t3WxUrSj50L4J2MGcZxrrg1kKs=
-X-Received: by 2002:aa7:d51a:0:b0:6ab:260:6378 with SMTP id
- 4fb4d7f45d1cf-6aca86236a8mr499160a12.11.1790645774380; Mon, 28 Sep 2026
- 18:36:14 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <kchiu@axiado.com>)
+ id 1xBONu-0000jM-AG; Mon, 28 Sep 2026 23:20:02 -0400
+Received: from mail-southcentralusazlp170130001.outbound.protection.outlook.com
+ ([2a01:111:f403:c10c::1] helo=SA9PR02CU001.outbound.protection.outlook.com)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <kchiu@axiado.com>)
+ id 1xBONs-00074n-3t; Mon, 28 Sep 2026 23:20:01 -0400
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=VgT9g78l6DBopdzKpw7Z1J7oh9wGPecKrSNiTKnsJ/Aon8Q11CaKE0ltNHJp12pkyzOwGUGCuBt5het6ZEjpZh85Wp67MfJbZSYV7cU3gzpBr0ErSFUmkx+P3wOoWQmWr1Lr/9mHGCREZ9HyE70WcF/+WGKqIRacxXAwdR3D4hUBZ2tyIrl3DpZUc5BTfVBe/J6n/zw+9FknTFud8HY0Go3tLgrwJNtr7EeP665q9mGR/TqOH+ztvHKnPScdAa4dbpEHfdwKWPihzftzSa04SjkXJK+4PEkdZX37lAVt7K/Th/gCxlVU0a7bLE4/RGBKEpkbfd8Za78IXOk8t4UfpQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=tLjaQpPiGtkGlj0RfBFuS6ZvGt0M7hTwXEijZRFPQJM=;
+ b=hOhPee2QKZpT/PpNwg4ryw0MrOgqkI1ME0fUebuuhI6QCn0kwvN6Q8li98B+wo3DH8vo9B83YoJprtghIP98RYy6IL8Dms5rV3SwxdD3oSI68dURWIHR7eIKEpao/UAgrn0SzeMljLSd7rReRc+HRaodeONE6rme4ouMN/tG49VyU8uK0CAN425NrOvUf5TO6uQoJ0uv+WJ1cHh5Hnl0tbWLr6M3jxqFJT8bvleQPmpmX4t3Ksl1N6Us8lprr6+QBNW82xku1QfPhMe7/sDfU0QxTqX5H1tdhjjLsDL8ZoYYxtEqe7h6mqC5jBkDJAiu03wumAodRijZ/oE0D3FbtQ==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=axiado.com; dmarc=pass action=none header.from=axiado.com;
+ dkim=pass header.d=axiado.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=axiado.com;
+ s=selector1;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=tLjaQpPiGtkGlj0RfBFuS6ZvGt0M7hTwXEijZRFPQJM=;
+ b=e0JNs108cWLqowQqMuzvr0mmzv2BzEM0cZTf1k0E4BjiR+u81GWUVFCcglxNqXPSxwdEhm4BltbthuChY+mhuSlWaIxx9INwavun/HktkQKcKK0mtYHBv7P+UyKe5CRbxbNMBeQDxUSCnZdNzUbhqIk6x05MjjNzJFKGAjCAbTVtdYSEb5QySxS4CKDldXMjDPGQTZt95tvDMc6jKOhB+QrKLoW4Aoe8Vmry6r9WiSGmFFPPwJYDw3MPADzYwp8hVC+CLTTyTqg2klYpgtQTokup0Z0BvfD8wNZjIvhfV5hnAq/mJYOU0CkIzZCLH14ChI/xWOMRQTTIDqNCOyYmZQ==
+Authentication-Results: mx.microsoft.com 1; dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=axiado.com;
+Received: from SJ0PR18MB4479.namprd18.prod.outlook.com (2603:10b6:a03:37f::19)
+ by IA3PR18MB365644.namprd18.prod.outlook.com (2603:10b6:208:70b::10)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.21.451.24; Tue, 29 Sep
+ 2026 03:19:54 +0000
+Received: from SJ0PR18MB4479.namprd18.prod.outlook.com
+ ([fe80::eaf4:3aec:73e:d5ba]) by SJ0PR18MB4479.namprd18.prod.outlook.com
+ ([fe80::eaf4:3aec:73e:d5ba%3]) with mapi id 15.21.0451.022; Tue, 29 Sep 2026
+ 03:19:54 +0000
+Message-ID: <348cfd20-66fd-42ed-b338-79dd39df6324@axiado.com>
+Date: Tue, 29 Sep 2026 11:19:52 +0800
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v7 00/13] Add Axiado SoC AX3005 and EVB
+To: mark.caveayland@nutanix.com, philmd@oss.qualcomm.com,
+ 163wangjack@gmail.com, peter.maydell@linaro.org, qemu-devel@nongnu.org,
+ qemu-arm@nongnu.org
+References: <20260911051532.2378501-1-kchiu@axiado.com>
+Content-Language: en-US
+From: Kuan-Jui Chiu <kchiu@axiado.com>
+In-Reply-To: <20260911051532.2378501-1-kchiu@axiado.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+X-ClientProxiedBy: TPYP295CA0018.TWNP295.PROD.OUTLOOK.COM
+ (2603:1096:7d0:a::19) To SJ0PR18MB4479.namprd18.prod.outlook.com
+ (2603:10b6:a03:37f::19)
 MIME-Version: 1.0
-References: <20260926070057.1234-1-luoyonggang@gmail.com>
- <20260926070057.1234-47-luoyonggang@gmail.com>
- <aro93NuZBXYGbD33@redhat.com>
- <87e7c5ae-c78c-4a47-b9ba-9851ce5757d9@oss.qualcomm.com>
- <CAE2XoE8Fp8w4m0WBjEXF3LceFXUqKDcXhdSmhCThgkAM3wRVaQ@mail.gmail.com>
- <1f46d3a3-1275-4ae0-be07-717c643cf0ae@oss.qualcomm.com>
-In-Reply-To: <1f46d3a3-1275-4ae0-be07-717c643cf0ae@oss.qualcomm.com>
-From: Yonggang Luo <luoyonggang@gmail.com>
-Date: Tue, 29 Sep 2026 09:36:00 +0800
-X-Gm-Features: AclHuK_udHvC7oTjEuhilwZdEHpiOvElmXHC3KV0wZOIgddeR19NpS3MIjJMWOE
-Message-ID: <CAE2XoE_fxTRQJPzsDZHS44z65KR0e54cWjVpyZQGtr1sdLOinw@mail.gmail.com>
-Subject: Re: [PATCH v4 46/55] qapi: add query-targets
-To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@oss.qualcomm.com>
-Cc: =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>, 
- qemu-devel@nongnu.org, Richard Henderson <richard.henderson@linaro.org>, 
- "Edgar E. Iglesias" <edgar.iglesias@gmail.com>, 
- Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>,
- Fabiano Rosas <farosas@suse.de>, 
- Laurent Vivier <lvivier@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>, 
- Alistair Francis <alistair@alistair23.me>,
- Peter Maydell <peter.maydell@linaro.org>, 
- =?UTF-8?B?TWFyYy1BbmRyw6kgTHVyZWF1?= <marcandre.lureau@redhat.com>, 
- qemu-arm@nongnu.org, kvm@vger.kernel.org, Thomas Huth <thuth@redhat.com>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2a00:1450:4864:20::530;
- envelope-from=luoyonggang@gmail.com; helo=mail-ed1-x530.google.com
-X-Spam_score_int: -10
-X-Spam_score: -1.1
-X-Spam_bar: -
-X-Spam_report: (-1.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FORGED_GMAIL_RCVD=1,
- FREEMAIL_FROM=0.001, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=no autolearn_force=no
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: SJ0PR18MB4479:EE_|IA3PR18MB365644:EE_
+X-MS-Office365-Filtering-Correlation-Id: 49e87aa7-48ab-4395-3f62-08df1dd88817
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;
+ ARA:13230040|376014|23010399003|1800799024|366016|10067099003|56012099006|18002099003|22082099003;
+X-Microsoft-Antispam-Message-Info: kpZbriSiEYi2tCAwYR5Y7ihpwVz+gDsw1B+mbPXfYJdkwBVmPMMT9LKv0gBL+fc2+cHo9KGCKrBe6mnwpBULDbck8LFA5Ic9xr1Js/HV8Ak0G4K0+tQKlQr2VIf0IhAhl7uo9VAeGPLNyHAubM7dnFAwmj4uEN/BbZa7rQbzzI6L5ybtvKpb1I1Y338KN6hz/JHZFOOFb1PshBrrc4BJbJGm0xqzECp+BW++sRrs+AFZ4wDSeoboTVdIaTLt+HbhYidoSfUDCf9WSPZG5yS8MsUWdoJDPvNdTFkOE7KCowcyF0d9fVeTvrSL2dmsqbX6+lV6Cvk2tvUaDPYyjp/7r566Zxaruf8AOmoFzwZA3/RDzzRFRYRyF122kUrT2RkP4cTw8FkZXMg0SjOuxe9an0AxtsxJm7iOc57sXXbekwQ8lE2XUnhBwKiXNQ+8iXb9ZEE+mzuavw3mxC22kTPOm0nRqCzaV6l/wXKiyliBIVOCMK+HmkzSC3dDwJSir7L+LnVGCJqym+Gz6qpgBhBJ2iKxWD9P07aolKigv1iGQguEQAb2fx3Ln3coxrU0LanJ6UR2wv6lXPlDDBlHzymYOcjcd8v1BpSWBxoYYLqMHkg=
+X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:SJ0PR18MB4479.namprd18.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(13230040)(376014)(23010399003)(1800799024)(366016)(10067099003)(56012099006)(18002099003)(22082099003);
+ DIR:OUT; SFP:1102; 
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?S0g3c0d4UWdVdWVOUDBYQVFpR1k5Tmx3eFZwY1dCSjZqQWJ5VDZtajJZa1lI?=
+ =?utf-8?B?cGNnSytqR0RPU0F2V25KRktRalZZak40bm5xMWIzcFpmQWJSV0tPdDhXcyta?=
+ =?utf-8?B?Ym9VaVVvenhBMzNvY0ZkSmpqWjFqU09wU09xR2ZWSFlNaFFiaVIxbEFwblk4?=
+ =?utf-8?B?YW5IQUYweFQ4TWRXY1QrNTlKZnA2Q2Z0Nnl3bTFOVHR6Umw0enFFbE44MnNv?=
+ =?utf-8?B?V1AzVVZxQ2NYWnlYVXU2ZGRmbGpEdnUxblZGcHZWVjhkL2dTZzd0bmlQamw4?=
+ =?utf-8?B?T0lMZTdsZEljTTFSdWg2RDg2bStkNWxWd1YwV0srNE01TWdGRE1Kb2gxVjBn?=
+ =?utf-8?B?SjNPUzA1a3RUK1pQazVTRHVnelR1MUdVNkp5YXFwaytYUFZsKzJFSXRPSW1K?=
+ =?utf-8?B?a1R5QVpFTkF1eHQ5a3M3K3VsUWd5RisrWm16TGNPclByS1h0a1VXa3Q4b0Fx?=
+ =?utf-8?B?TnlsQ3NmcG5hR1NaZExhUmlUZG1mUDFkdnZ4UWtkQzRDclM5L0lMREtqUSty?=
+ =?utf-8?B?Ni9zd09scWVhVyt4ZzIwMXhCaU4xcHplUHExL2g3Y2hpRnFheHA4cWY5RjhT?=
+ =?utf-8?B?OElIVHhQVDdTWVl0Q2lPNTNvQVpnN3ZMTHVKMlRPZWRicndHVkdBNGtHMEFq?=
+ =?utf-8?B?RWVnS0wwVWZ4TmpXdHZZamJkZ201bWlxUDZmakIvUWZQVjNzMEc3RWI3K0pu?=
+ =?utf-8?B?SFVqQ3dORWtNY2FyMTRTdmQyLys4NjVtMy9pUVdsZWtYK2hPVmNKU29YMnNw?=
+ =?utf-8?B?cUpKbU05cFNQV2Mwb1UwZ2dWSDBGQ1ZQT3VONlBtdkZoL3prTTBTQThvYmFE?=
+ =?utf-8?B?NlUyR2RCZnZaaTVGcXgxdjdDdzBFL1JUWU9CbW13T2QzUEtCU1Q4bm9ud0s4?=
+ =?utf-8?B?djlVTEM1Q2pObVBCTTlMcnEyZytKV1FRUGlMSkR1aEpyRkRkejNuTm5BblRJ?=
+ =?utf-8?B?ZDZyd25Wajl6UVZvV2dsMjhmb0NWR0dQbW5TTFA5R1crMTltUEZ2V29iZTRF?=
+ =?utf-8?B?YWZHeVZ1TWhpRzBCWGpEdmd2ZlNSd2pIR2V1cGFUdHF3MTlLelhCb3BEdUF2?=
+ =?utf-8?B?UWt6VEl6a05TQjJ0Vkl2ZFBXeVBMTVFVbUJPc084ZnIyaGg4WFltVmc3ZXFm?=
+ =?utf-8?B?QXFnTXZBNlh6WUlucHZETWkzNGJGRm1Ybzc3NGVkazBodjd4NE5Qa1I0NEx1?=
+ =?utf-8?B?WXlrZzhRUzNrSE1qVEtWRkU2amxVakQ4Um5YMkZwUGplVk96TExCdHBKYjdT?=
+ =?utf-8?B?MHJUV0RwOGtGSVBNc2ZnZ2tLMDlZaStFSTREWisvaVpMU0VUZXNKRVhxVS8v?=
+ =?utf-8?B?K01hRDRGODZwd2J1dmc3bjJxVGZ2clpzMHQrY2lFdXhYWXJqYjVFZ0J6cHY4?=
+ =?utf-8?B?N1NQd05raHphRUk0bEJjRGlkZWY0Q3JqcjJnQ2FHWVAvWFF4MzhkVnVCYk4y?=
+ =?utf-8?B?TWFvRFVVbzJhWjBSNlNnOEoyVUZKdytTTFZjWHJlRllVVVRRVDVzeFg1NjhJ?=
+ =?utf-8?B?QTlCTmQwT2h1a0FuWTFnYURtblhrelc5d2R4VWhhbnZGbFZlWFZwY3ltRlBE?=
+ =?utf-8?B?RE9PMEoxU2hsWE4zZG9WVnFySy9uS01GeTRaOElwTE1GVDd6TGcrYWZ2Mlhk?=
+ =?utf-8?B?MlhTTmIvaGVDQ21DU3B2TXhqTlh1NTJRQmMxRzRCeUVmbWI0cFNTeTBSd1Q0?=
+ =?utf-8?B?YUM4eENxNUx0UVVzczJjSzZhV3hHWnZxR3JMRkpyV1kxMEVoKzlDV051NVBU?=
+ =?utf-8?B?WW0wTG5DUytET1VoUVZKQnZhV21yTXMxcnp3aEwrMU56S3MzaURnT0YxaGlr?=
+ =?utf-8?B?YytUQ1VXb203aXl2THdnRjZPK0UyNEZQdHc0bkNCOSsrOHF5bjQ3d0kvQzQ2?=
+ =?utf-8?B?aWl3d2t3VVJpMU1XYmVwOGpZZVdsU2txcFJQRDlyZHJsejdUVlpzN245VGVr?=
+ =?utf-8?B?Z0pkNmxGTGRQQS94N3NUNS9ZR2dPRThXU3NRdERMdEZGbzdKNTlWRW12ZGJY?=
+ =?utf-8?B?azRydW9uSkJTYVRQaFUrY01kVW9ObHZxbyt4Y2s4MlV0dTNZaFNLTE5jZVQ4?=
+ =?utf-8?B?WllaeU9UbDlid25HZVBING9kM0toVUErZ1N1UzBOaFZvcGZZRU1YcGFzKzBj?=
+ =?utf-8?B?R2plS2lOVUZnSjU0KzA4UytsOXhiQjVDTXZIMldJVWhDL3hVSnhUUndacG04?=
+ =?utf-8?B?THVvdkRoZDE1L0Z6dmgvaGxBZmhldGZwWnBiaitJR2RHSTFBNmF4OFlENXc0?=
+ =?utf-8?B?czh4cGRGcHcyZG10T1h0K0lPcm9lVDNPRXUwZXVhd3E0Q2hjRkM1eHlFTER5?=
+ =?utf-8?Q?FJkjtbfIfWbhjRiSvF?=
+X-OriginatorOrg: axiado.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 49e87aa7-48ab-4395-3f62-08df1dd88817
+X-MS-Exchange-CrossTenant-AuthSource: SJ0PR18MB4479.namprd18.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 29 Sep 2026 03:19:54.4965 (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: ff2db17c-4338-408e-9036-2dee8e3e17d7
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: JiZ100nc05pNGOObdNYLV/hivQT80mcj6VLbEBQ3roUpS3oqZFAZpBwUe847Tmg1r0/ZpDUX3LmsWBsDZNCrwQ==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: IA3PR18MB365644
+Received-SPF: pass client-ip=2a01:111:f403:c10c::1;
+ envelope-from=kchiu@axiado.com;
+ helo=SA9PR02CU001.outbound.protection.outlook.com
+X-Spam_score_int: -4
+X-Spam_score: -0.5
+X-Spam_bar: /
+X-Spam_report: (-0.5 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_PASS=-0.001,
+ SPF_PASS=-0.001, URIBL_SBL=1.623 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -129,145 +145,149 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-To: luoyonggang@gmail.com
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Tue, Sep 29, 2026 at 3:11=E2=80=AFAM Philippe Mathieu-Daud=C3=A9
-<philmd@oss.qualcomm.com> wrote:
+Hi reviewers
+
+Please help to review this patch set
+[v7] Add Axiado SoC AX3005 and EVB | Patchew 
+<https://patchew.org/QEMU/20260911051532.2378501-1-kchiu@axiado.com/>
+
+Kuan-Jui Chiu 於 2026/9/11 下午 01:15 寫道:
+> This patchset introduces Axiado SoC AX3005 and evaluation board for emulation
+> The model for Axiado SoC AX3005 supports
+>    4 Cortex-A53 CPUs
+>    Arm Generic Interrupt Controller v3
+>    9 Cadence UARTs
+>    1 SDHCI controller with PHY
+>    8 Cadence GPIOs
 >
-> On 28/9/26 20:34, Yonggang Luo wrote:
-> > On Mon, Sep 28, 2026 at 6:39=E2=80=AFPM Philippe Mathieu-Daud=C3=A9 <
-> > philmd@oss.qualcomm.com> wrote:
-> >>
-> >> On 28/9/26 12:13, Daniel P. Berrang=C3=83=C2=A9 wrote:
-> >>> On Sat, Sep 26, 2026 at 03:00:45PM +0800, Yonggang Luo wrote:
-> >>>> query-targets lists each linked target, including none, with its
-> >>>> arch, endianness, and the machines that target accepts.
-> >>>>
-> >>>> Signed-off-by: Yonggang Luo <luoyonggang@gmail.com>
-> >>>> ---
-> >>>>    hw/core/machine-qmp-cmds.c | 30 ++++++++++++++++++++++++++++++
-> >>>>    qapi/machine.json          | 35 +++++++++++++++++++++++++++++++++=
-++
-> >>>>    2 files changed, 65 insertions(+)
-> >>>
-> >>>
-> >>>> diff --git a/qapi/machine.json b/qapi/machine.json
-> >>>> index 6aaa2af709a..d8cdea6203e 100644
-> >>>> --- a/qapi/machine.json
-> >>>> +++ b/qapi/machine.json
-> >>>> @@ -307,6 +307,41 @@
-> >>>>    ##
-> >>>>    { 'command': 'query-target', 'returns': 'QemuTargetInfo' }
-> >>>>
-> >>>> +##
-> >>>> +# @TargetMachines:
-> >>>> +#
-> >>>> +# One registered system target and the machines that can run on it.
-> >>>> +#
-> >>>> +# @arch: the target architecture
-> >>>> +#
-> >>>> +# @endianness: the target endianness
-> >>>> +#
-> >>>> +# @machines: machine type names, not aliases
-> >>>> +#
-> >>>> +# Since: 11.2
-> >>>> +##
-> >>>> +{ 'struct': 'TargetMachines',
-> >>>> +  'data': { 'arch': 'SysEmuTarget',
-> >>>> +            'endianness': 'EndianMode',
-> >>>> +            'machines': ['str'] } }
-> >>>
-> >>> We already have  'QemuTargetInfo' struct which is used
-> >>> with 'query-target', that should also be used with the
-> >>> new 'query-targets' command.
-> >>>
-> >>> We need to add the 'endianness' field to QemuTargetInfo.
-> >>
-> >> Why do we want to expose endianness, and what endianness to
-> >> expose? Endianness is a runtime bit state of CPUs. Sometime
-> >> this bit is hardwired but that is an implementation detail.
-> >>
-> >> See commit 0e2c5647d92 and surrounding for MicroBlaze for
-> >> example.
-> >
-> > Please take a look at
-> > https://gitlab.com/lygstate-qemu/qemu/-/pipelines/2890507627
-> >
-> > I do not have clue to fixes it properly
+> Refer Axiado website for more product information
+> https://axiado.com/products/
 >
-> What are you asking here? I'm seeing failures on targets supporting
-> dual endianness. I can not try to help you until I understand what
-> your goal is (I asked it multiple times but you don't reply explaining).
-
-Now I can answer the question more clear, it's because the pitfall of commi=
-t
-https://gitlab.com/qemu-project/qemu/-/commit/e934c624f32f6f44f427d73a2e6a6=
-7e983a02ae6
-cause the issue
-
- target-info-stub.c | 2 +-
- target-info.c      | 8 +-------
- 2 files changed, 2 insertions(+), 8 deletions(-)
-
-diff --git a/target-info-stub.c b/target-info-stub.c
-index 8392d81e8f..65220cc782 100644
---- a/target-info-stub.c
-+++ b/target-info-stub.c
-@@ -18,7 +18,7 @@ QEMU_BUILD_BUG_ON(offsetof(ArchCPU, env) !=3D sizeof(CPUS=
-tate));
-
- static const TargetInfo target_info_stub =3D {
-     .target_name =3D TARGET_NAME,
--    .target_arch =3D SYS_EMU_TARGET__MAX,
-+    .target_arch =3D glue(SYS_EMU_TARGET_, TARGET_ARCH),
-     .long_bits =3D TARGET_LONG_BITS,
-     .cpu_type =3D CPU_RESOLVING_TYPE,
-     .machine_typename =3D TYPE_MACHINE,
-diff --git a/target-info.c b/target-info.c
-index 5a6d728252..a26532f660 100644
---- a/target-info.c
-+++ b/target-info.c
-@@ -24,13 +24,7 @@ unsigned target_long_bits(void)
-
- SysEmuTarget target_arch(void)
- {
--    SysEmuTarget arch =3D target_info()->target_arch;
--
--    if (arch =3D=3D SYS_EMU_TARGET__MAX) {
--        arch =3D qapi_enum_parse(&SysEmuTarget_lookup, target_name(), -1,
--                               &error_abort);
--    }
--    return arch;
-+    return target_info()->target_arch;
- }
-
- const char *target_cpu_type(void)
-
-Look at the diff, the original one is directly parsed from
-target_name(). and the new one
-defines "glue(SYS_EMU_TARGET_, TARGET_ARCH)", but that indeed does not
-match target_name() at all.
-
-And TARGET_ARCH is introduced in commit
-https://gitlab.com/lygstate-qemu/qemu/-/commit/f87f7e145d63f93315e0f0e00fb9=
-ba0b6ee8570f
-for this.
-Hi Richard, is this done for intention or a mistake?
-maybe we should always generate target_arch from target_name()
-in meson.build?
-
-
-
+> and minor changes for the compatibility with existing AX3000 SoC model
 >
-
-
---
-         =E6=AD=A4=E8=87=B4
-=E7=A4=BC
-=E7=BD=97=E5=8B=87=E5=88=9A
-Yours
-    sincerely,
-Yonggang Luo
+> Test plan:
+> 1. Verified the machine "ax3005-evb" with following command
+>
+> qemu-system-aarch64 \
+>      -machine ax3005-evb \
+>      -device loader,file=bl31.bin,addr=0x88300000 \
+>      -device loader,file=tee-raw.bin,addr=0x88400000 \
+>      -device loader,file=u-boot.bin,addr=0x80000000 \
+>      -device loader,file=fitImage,addr=0x80100000 \
+>      -device loader,file=obmc-phosphor-image-evk-ax3005-qemu.squashfs-xz,addr=0x80B00000 \
+>      -device loader,cpu-num=0,addr=0x88300000 \
+>      -device loader,cpu-num=1,addr=0x88300000 \
+>      -device loader,cpu-num=2,addr=0x88300000 \
+>      -device loader,cpu-num=3,addr=0x88300000 \
+>      -nographic \
+>      -serial null \
+>      -serial null \
+>      -serial null \
+>      -serial mon:stdio \
+>      -drive if=sd,file=obmc-phosphor-image-evk-ax3005-qemu.wic.qcow2,format=qcow2
+>
+> 2. Run QEMU test suite
+> make check
+> Ok:                360
+> Fail:              0
+> Skipped:           21
+>
+> make check-functional
+> Ok:                31
+> Fail:              0
+> Skipped:           6
+>
+> Changes in v7:
+>    1. Add patch ("hw/arm/ax3000-soc: Revise variables accodring to QEMU idioms")
+>       to revise the name of the first member in struct and remove redundant
+>       typedef keyword
+>    2. Add Prasad Bolisetty into maintainer list
+>    3. Fix typo
+>
+> Changes in v6:
+>    1. Drop patch ("hw/sd/axiado_sdhci: Add header guard") since it had been
+>       merged
+>    2. Remove redundant machines-qom.h
+>
+> Changes in v5:
+>    1. Add patch ("hw/char/cadence_uart: Add BXRS register definition") to add
+>       BXRS register into CADENCE UART model and add new property to control this
+>       feature.
+>    2. Drop patch ("hw/char/cadence_uart: Reserve MMIO with dynamic size")
+>    3. Add patch ("hw/arm/ax3000-soc: Enable BXRS support of CADENCE UART") to
+>       enable BXRS support in Ax3000 SoC
+>    4. Add patch ("hw/char/cadence_uart: Reduce the size of MMIO to 0x80") to
+>       change the MMIO size to 0x80 from 0x1000.
+>    5. Add patch for Ax3000 SoC
+>       ("hw/arm/ax3000-boards: Add modify_dtb for discontiguous memory") to fix
+>       memory issue while -dtb option is applied
+>    6. Add patch for Ax3000 SoC
+>       ("hw/arm/ax3000-boards: Remove redundant pointer from struct") to create
+>       SoC instance during init() and remove redundant pointer from struct
+>    7. Add document for Axiado SoCs and EVKs
+>    8. Add functional test for Axiado SoCs and EVKs
+>
+> Changes in v4:
+>    1. Add patch ("hw/char/cadence_uart: Reserve MMIO with dynamic size") which
+>       allow other models to revise the MMIO size of Cadence UART
+>    2. Change the MMIO size of Cadence UART to 512 KiB in Ax3000/Ax3005 SoC to
+>       resolve the overlapping region issue
+>    3. Add memory guard in Ax3000/Ax3005 EVK to check the memory size specified by
+>       -m option and set the default_ram_size to the RAM size supported by Axiado
+>       SoC
+>
+> Changes in v3:
+>    1. Remove patch ("hw/arm/ax3000-soc: Add missing class_size to TypeInfo")
+>       because it was fixed by commit 4f50d637e2
+>       ("hw/arm/ax3000-soc: fix heap overflow from missing class_size")
+>
+> Changes in v2:
+>    1. Add patch "hw/arm/ax3000-soc: Add missing class_size to TypeInfo"
+>       to fix incorrect class size
+>    2. Add missing class_size "Ax3005SoCClass" to ax3005_soc_types
+>
+> Kuan-Jui Chiu (13):
+>    hw/char/cadence_uart: Reduce the size of MMIO to 0x80
+>    hw/char/cadence_uart: Add BXRS register definition
+>    hw/arm/ax3000-soc: Enable BXRS support of CADENCE UART
+>    hw/arm: Rename ax3000-boards as axiado-boards
+>    hw/arm/ax3000: Specify SoC name in header and variable
+>    hw/arm/ax3000-boards: Add memory guard
+>    hw/arm/ax3000-boards: Add modify_dtb for discontiguous memory
+>    hw/arm/ax3000-boards: Remove redundant pointer from struct
+>    hw/arm/ax3000-soc: Revise variables accodring to QEMU idioms
+>    hw/arm: Add Axiado SoC AX3005
+>    hw/arm: Add Axiado Ax3005 EVB
+>    docs/system/arm: Document Axiado boards
+>    tests/functional/aarch64: Add functional test for Axiado EVKs
+>
+>   MAINTAINERS                                   |   6 +
+>   docs/system/arm/axiado.rst                    | 128 ++++++++++
+>   docs/system/target-arm.rst                    |   1 +
+>   hw/arm/ax3000-boards.c                        |  71 +++++-
+>   hw/arm/ax3000-evk.c                           |   4 +-
+>   hw/arm/ax3000-soc.c                           |   5 +-
+>   hw/arm/ax3005-evk.c                           | 115 +++++++++
+>   hw/arm/ax3005-soc.c                           | 226 ++++++++++++++++++
+>   hw/arm/meson.build                            |   6 +-
+>   hw/char/cadence_uart.c                        |  17 +-
+>   include/hw/arm/ax3000-soc.h                   |  13 +-
+>   include/hw/arm/ax3005-soc.h                   | 102 ++++++++
+>   .../arm/{ax3000-boards.h => axiado-boards.h}  |  10 +-
+>   include/hw/char/cadence_uart.h                |   4 +-
+>   tests/functional/aarch64/meson.build          |   4 +
+>   tests/functional/aarch64/test_ax3005_evb.py   | 140 +++++++++++
+>   .../functional/aarch64/test_axiado_scm3003.py |  62 +++++
+>   17 files changed, 889 insertions(+), 25 deletions(-)
+>   create mode 100644 docs/system/arm/axiado.rst
+>   create mode 100644 hw/arm/ax3005-evk.c
+>   create mode 100644 hw/arm/ax3005-soc.c
+>   create mode 100644 include/hw/arm/ax3005-soc.h
+>   rename include/hw/arm/{ax3000-boards.h => axiado-boards.h} (71%)
+>   create mode 100755 tests/functional/aarch64/test_ax3005_evb.py
+>   create mode 100755 tests/functional/aarch64/test_axiado_scm3003.py
+>
 

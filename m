@@ -4,126 +4,135 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 934C9CA5FAB
-	for <qemu-arm@archiver.kernel.org>; Wed, 30 Sep 2026 06:34:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C43B8CA5FBB
+	for <qemu-arm@archiver.kernel.org>; Wed, 30 Sep 2026 07:25:59 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xBntb-0003v7-1z; Wed, 30 Sep 2026 02:34:34 -0400
+	id 1xBoh0-0001uT-TX; Wed, 30 Sep 2026 03:25:30 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1xBntU-0003sv-S6
- for qemu-arm@nongnu.org; Wed, 30 Sep 2026 02:34:22 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
+ id 1xBogz-0001u8-K0; Wed, 30 Sep 2026 03:25:29 -0400
+Received: from mail-koreacentralazlp170130006.outbound.protection.outlook.com
+ ([2a01:111:f403:c40f::6] helo=SEYPR02CU001.outbound.protection.outlook.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1xBntP-0002RQ-0f
- for qemu-arm@nongnu.org; Wed, 30 Sep 2026 02:34:20 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1790750052;
- h=from:from:reply-to:reply-to:subject:subject:date:date:
- message-id:message-id:to:to:cc:cc:mime-version:mime-version:
- content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=/+t48tzd8SxZpF4cNodwXoXUSCQI8Y6xlNeEVPjgDFs=;
- b=Vl/23GCo/GxHy8ZMDZfYbN76tCqMywVArGbPpo0854Rkxc7xoEJiNZMzb+BneY9c2jETqS
- kDsfFJlveDtVPsDULH+GlGsb6DN5lsrrzev0D0R917rOZUqsLEFewjlIi/uhKmXbqW9AvN
- QQMXi8HwYznAvrV079ogtjFGszx8Vug=
-Received: from mail-wm1-f70.google.com (mail-wm1-f70.google.com
- [209.85.128.70]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-118-tX_LbPfOPO-qRSNSc5QBYg-1; Wed, 30 Sep 2026 02:34:11 -0400
-X-MC-Unique: tX_LbPfOPO-qRSNSc5QBYg-1
-X-Mimecast-MFC-AGG-ID: tX_LbPfOPO-qRSNSc5QBYg_1790750050
-Received: by mail-wm1-f70.google.com with SMTP id
- 5b1f17b1804b1-49953abe51fso32394225e9.1
- for <qemu-arm@nongnu.org>; Tue, 29 Sep 2026 23:34:11 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20260707; t=1790750050; x=1791354850;
- h=content-transfer-encoding:content-type:in-reply-to:from:references
- :cc:to:content-language:subject:reply-to:user-agent:mime-version
- :date:message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
- :message-id:reply-to:content-type;
- bh=/+t48tzd8SxZpF4cNodwXoXUSCQI8Y6xlNeEVPjgDFs=;
- b=hH+TopRyGJels1wnqts7r7ON3fcIUs2WzEInf78JjyxmdFCThJgxAYzcbwaoxv4XzT
- sClInYtKlU+ecvJOX6qORLvWxmwlpNME9aGZ5VZqY1vQDmEowAtC2Seo3REVfQhjlc+O
- cKp3wYgxAdPNlBAj2a59sRRkMDKo9DaSWUveRgmPgaMnwpzFAZl1TcDAsXklFrYSwulF
- DoOwcBkayZAqn0feSDhECvixE+/ee9F5CvJqYYycYgfWW3HdUxqEH0/otN6Zvm2Pd5mV
- l6skgSH3avKVVQuaI+LJBomp82wov1Vn6M7T876xXFxY8fzNPx7LeGVW95Gj4TuZWbAn
- uoYw==
-X-Forwarded-Encrypted: i=1;
- AKwUvBwHN2klszhH5fr6IWs7yikcYXoZF7xIMnXZEieRTS6AcT2V+BrNf1lsHRlCAgCdemPEEt5qF8jUSA==@nongnu.org
-X-Gm-Message-State: AFuF++klslwUx8yZBVtQDjqwPv8aaLtWklQv3RhQzRqH9EuV9A1Lt9e3
- mzpGqVpN1OIfsAhixIBNgc0hvQmF7FaLnOpD1X1eNGWDuWy8XhTTIo1aiZ5s5pBbWomaGOkwkU8
- Fec1K9LvucvNRRxX4Q5gVEcrixNHLmoZibMFondRQXTNxC/6hZ3C6cg==
-X-Gm-Gg: AYBFou0D17+ML5oSCthQ0eBaDhhIVKFX1VHrEnxvCcGQ8wuZOhyNO/YvMqG3JmxotuP
- gsWv1nsFLUjvWXA/g8Pc0CsySih35xDPIHhE0Vz+UbmVYl4YxPT7GfltflHt9eIxk8JY8UB+dWd
- W4vxQg5epmNkQvkZElbTmDVz/lcvdkufKAzIO/DiLtEq/KqiDC56rsrxx1RGSGOS2ll0pqhs/Jl
- wW+1FvumijKje81ZFfNjuiiPjCPx+zKAmfR2+tfTNbMl2CNZIkmLE8TgXz7AarYjkE/3bjHyHPd
- Hk80/ylQ1h5FO7aTmTOLoZQ8lE8BafaA2n9q+jaMUd2wCHFibFlikDN47Equy+KrO0YviddHMTm
- NHmr3Hh1n27i3++Hisill3s5YoC3fMsylrkDAI63iIzQtJYix
-X-Received: by 2002:a05:600d:6414:10b0:4a0:1b14:ce81 with SMTP id
- 5b1f17b1804b1-4a01b14cf1dmr2819285e9.3.1790750049907; 
- Tue, 29 Sep 2026 23:34:09 -0700 (PDT)
-X-Received: by 2002:a05:600d:6414:10b0:4a0:1b14:ce81 with SMTP id
- 5b1f17b1804b1-4a01b14cf1dmr2818705e9.3.1790750049266; 
- Tue, 29 Sep 2026 23:34:09 -0700 (PDT)
-Received: from ?IPV6:2a01:e0a:f0e:9070:527b:9dff:feef:3874?
- ([2a01:e0a:f0e:9070:527b:9dff:feef:3874])
- by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-4a0174e161bsm49074755e9.5.2026.09.29.23.34.07
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 29 Sep 2026 23:34:08 -0700 (PDT)
-Message-ID: <3ac31a5c-9a14-448f-a58e-9ddf6567476b@redhat.com>
-Date: Wed, 30 Sep 2026 08:34:06 +0200
-MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v9 07/26] target/arm/cpu-idregs.h.inc: generate with script
-To: Khushit Shah <khushit.shah@nutanix.com>
-Cc: "eric.auger.pro@gmail.com" <eric.auger.pro@gmail.com>,
- "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
- "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
- "kvmarm@lists.linux.dev" <kvmarm@lists.linux.dev>,
- "peter.maydell@linaro.org" <peter.maydell@linaro.org>,
- Shaju Abraham <shaju.abraham@nutanix.com>,
- "yangjinqian1@huawei.com" <yangjinqian1@huawei.com>,
- "cohuck@redhat.com" <cohuck@redhat.com>,
- "richard.henderson@linaro.org" <richard.henderson@linaro.org>,
- "sebott@redhat.com" <sebott@redhat.com>,
- "skolothumtho@nvidia.com" <skolothumtho@nvidia.com>,
- "philmd@oss.qualcomm.com" <philmd@oss.qualcomm.com>,
- "maz@kernel.org" <maz@kernel.org>,
- "oliver.upton@linux.dev" <oliver.upton@linux.dev>,
- "pbonzini@redhat.com" <pbonzini@redhat.com>,
- "armbru@redhat.com" <armbru@redhat.com>,
- "berrange@redhat.com" <berrange@redhat.com>,
- "abologna@redhat.com" <abologna@redhat.com>,
- "jdenemar@redhat.com" <jdenemar@redhat.com>
-References: <20260916144721.751810-1-eric.auger@redhat.com>
- <20260916144721.751810-8-eric.auger@redhat.com>
- <55C86290-BA03-424E-B955-AC6414ED55D1@nutanix.com>
- <bc190f81-a946-454a-b1d1-8f6b79bc7807@redhat.com>
- <313F5707-425B-4CAB-8B5A-95480EB6A250@nutanix.com>
-From: Eric Auger <eric.auger@redhat.com>
-In-Reply-To: <313F5707-425B-4CAB-8B5A-95480EB6A250@nutanix.com>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: a2nWlgBWamG9eX6dCIqnFURC5USWuJkaKl8uFxKntT8_1790750050
-X-Mimecast-Originator: redhat.com
+ (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
+ id 1xBogx-00027I-A2; Wed, 30 Sep 2026 03:25:29 -0400
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=p8/sc+mQtIT8uTBPb9V+3KkEf8Xh+aiuJkgSe4hcK/k1IpJa6NK+T5qr1UITpYVk0N/CXdfqhduImnpG3U10PMGCW9eRrBbI/eK3iC1OBUbR2Yli4mKTRjcYWFYQm5XWT0uaZou/8Jg0Rkyck2+cTnU/F2ARcBD5kr9I1Lc+Q/7uqPRcPkt32d7oHuzdQfBGN7TacR8/BG8OCmO0S6UeXtcetE7rhpC+LgXSK+G6dsye1uPIAkvUHVr7TMZGS2wtEGse+v5SjPjHjo98PF1TILVxQH098Uax7s2CH8XePJ6a0Y5F/s3iisFirv/Ja7qsETUxBs6cernRT3RAbhHWIQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=tBw00OOwbOoaPXkCTxdHXcTyKSa+MFBgYxlcYASym1M=;
+ b=SagbM40Lo1I0BJv5b7qktb89/4S8WmqL1D7no2hhv03V36K9qpH6y1SalWcyjh8oW2Wics0IiNdVGIbjZ9OyYRnwnMZks7RwK191DzEZCsdcSNHRDe2C2dcJnHjOhfXWHEJrrsDsGD1lhyrDE/pL/2DMol5TEPEj2sixS9J+OI2eneS68pcGUcU+AAF1QEMfXd81RdJ4hKzc4SH+BlTgoTnuIyMAs5faramiwV8Y9vVwdMx1jbIO0t8d/Y00qbHK9eiMygJ0KrCay6WY4OpkpRDdEF2Ut2QCmssV9Pkd3r3iTSR9rLuh0PX8vBOaiYJJNR9aYbjX+UTTYrUsKYMmAA==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=aspeedtech.com; dmarc=pass action=none
+ header.from=aspeedtech.com; dkim=pass header.d=aspeedtech.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=aspeedtech.com;
+ s=selector1;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=tBw00OOwbOoaPXkCTxdHXcTyKSa+MFBgYxlcYASym1M=;
+ b=ECG/weM8FtRGGzQdLS9fJG4gf2SlGMcboRWYCHN+q1PPt7mNVZ+hmzcbxFFaUgosrK7H+xhjU03hR2H07q7UiEJ4t+rHVV4Qh8MP/aEoqShXFyf+XQ0603Fofltobpbeci2PkgVHAdNL6C/wO2phtPyon4X6+vnIJgCq2+6NTUCxHvmnxmOF2Jtc7m9DxbYIlCxeEr+UyqNZCftF2yupK7E93FCF3arxLiskXF1kfwOu+v93bdW7kLWv1/+Ffr7AeZSOsx3vUTVAzqCI9NFWRVa9r4UAsg/+8s/Gw1CfCOjoXMApXgM/tZd91DSWZJgY/mc3kDTmStfgDdqOhMVHTA==
+Received: from SEZPR06MB7362.apcprd06.prod.outlook.com (2603:1096:101:253::10)
+ by JH0PR06MB6451.apcprd06.prod.outlook.com (2603:1096:990:2d::13)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.21.451.26; Wed, 30 Sep
+ 2026 07:25:07 +0000
+Received: from SEZPR06MB7362.apcprd06.prod.outlook.com
+ ([fe80::cd2d:35d2:a702:1de6]) by SEZPR06MB7362.apcprd06.prod.outlook.com
+ ([fe80::cd2d:35d2:a702:1de6%4]) with mapi id 15.21.0472.015; Wed, 30 Sep 2026
+ 07:25:07 +0000
+From: Jamin Lin <jamin_lin@aspeedtech.com>
+To: =?iso-8859-1?Q?C=E9dric_Le_Goater?= <clg@kaod.org>, Peter Maydell
+ <peter.maydell@linaro.org>, Steven Lee <steven_lee@aspeedtech.com>, Troy Lee
+ <leetroy@gmail.com>, Kane Chen <kane_chen@aspeedtech.com>, Andrew Jeffery
+ <andrew@codeconstruct.com.au>, Joel Stanley <joel@jms.id.au>, "open
+ list:ASPEED BMCs" <qemu-arm@nongnu.org>, "open list:All patches CC here"
+ <qemu-devel@nongnu.org>
+CC: Jamin Lin <jamin_lin@aspeedtech.com>, Troy Lee <troy_lee@aspeedtech.com>
+Subject: [PATCH v1 04/11] hw/arm/aspeed_ast10x0: Use unimp array and table for
+ unimplemented devices
+Thread-Topic: [PATCH v1 04/11] hw/arm/aspeed_ast10x0: Use unimp array and
+ table for unimplemented devices
+Thread-Index: AQHdUKzRJ+J/yCrz9UCxEBMw+L4Fkg==
+Date: Wed, 30 Sep 2026 07:25:07 +0000
+Message-ID: <20260930072501.2612119-5-jamin_lin@aspeedtech.com>
+References: <20260930072501.2612119-1-jamin_lin@aspeedtech.com>
+In-Reply-To: <20260930072501.2612119-1-jamin_lin@aspeedtech.com>
+Accept-Language: zh-TW, en-US
 Content-Language: en-US
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=170.10.133.124;
- envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -23
-X-Spam_score: -2.4
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+authentication-results: mx.microsoft.com 1; dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=aspeedtech.com;
+x-ms-publictraffictype: Email
+x-ms-traffictypediagnostic: SEZPR06MB7362:EE_|JH0PR06MB6451:EE_
+x-ms-office365-filtering-correlation-id: 84a5a6e6-23ea-41aa-9e02-08df1ec3f407
+x-ms-exchange-senderadcheck: 1
+x-ms-exchange-antispam-relay: 0
+x-microsoft-antispam: BCL:0;
+ ARA:13230040|366016|376014|23010399003|1800799024|10067099003|56012099006|22082099003|18002099003|38070700021;
+x-microsoft-antispam-message-info: axxJnvyrAmiv6U7ATl0BHnrvdfFp5+7qup3cuDqiNaKbCWjPXUb7k+Kcqva277QEhy1mgMllG9dpQHqwB1k759dQl0WCCLgZBJqe732DMT5w7UNRaCo06PmUtDTb0o1GjLTyttbirT3KgrzhvVx7cksJrdhkMt2uMc4iK9Bs/w2Exhfi1uh8RRyb8vzO1rzR4RCXCQBdg0lYtof6pXWimjkWlPK7FPrbwTGV0AoZWYcR+8PBxEv3JxtOySapTOjYzDnGlO+C1Md2wIpkieHDa3kmo/ViXCjjiJlhErXzaLoXkWILjVNrit9a+QmQ6N/ABzKyO/2kymaTGa4niwWgkaEQ4W8ccA6/jEfCI4WNnlB1nl3R6Z8DX9pvEc+Pew7qeNIZIc+Ld6Hf7gErSOl0TQkIbZVCFgS3eZCsftmMnksGqTBYPWdOrhh//ZI/l3VBXyZM/RhvfXOG1HZkvZ+bqnWWmnz/aIiBppALK+3VbUlUaGSf25WD/5s2KNwQWRGGIhRdqs7J4XMG81bKxo1GsFuTc1tmtq2JCr9s3O/WkemthwCC4w+Toli40Pk95BKsZ0gyoYbnx3Hg3vH9L2/jHW710K/J2KES51X9nUonwpBFS3slukxfPvcBKEWSq2GhHP0e/gxKphsN92vV6qhngjQOZ5fpDqhmlGbQkuvHx8BgC48L1YxOQV6J+v9cOyv7Tq6TyfEtUwXVAlfeUhdqlrVMKUOrp82LfvT4m4tZ2VM=
+x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:SEZPR06MB7362.apcprd06.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(13230040)(366016)(376014)(23010399003)(1800799024)(10067099003)(56012099006)(22082099003)(18002099003)(38070700021);
+ DIR:OUT; SFP:1102; 
+x-ms-exchange-antispam-messagedata-chunkcount: 1
+x-ms-exchange-antispam-messagedata-0: =?iso-8859-1?Q?FfKznhehpd26rNogyGB8y5vltmuQkrzO3SKTDf01Hxri3WzNZP7ALZTITI?=
+ =?iso-8859-1?Q?qQE3zpF4bo58/uTp17IEuP7Z3Pds0EokXxR4pOD5MzEtxcxk/D+n0oDPM2?=
+ =?iso-8859-1?Q?US76xyp5BMwipTSLW6eFuwvUM2yKstzy5S7Jpdjtsmx5At35Pgjm2hoxt7?=
+ =?iso-8859-1?Q?zHGcxy+FkleRrVsgV12L4ekanHDvXAHs5LznsbkpZ+LKvjm3/2zl+TNYks?=
+ =?iso-8859-1?Q?DnrKTnOJEvBf0sMSrX1KQHGPG7GbSV/GrLX9vdeHEkJ+wpHhgcTQLtBNGP?=
+ =?iso-8859-1?Q?1+9AVPhTpJsI8EgR6WR0R8gy7TLrlZrunThmKj1xAR3J5kDcd5jNrGUQg6?=
+ =?iso-8859-1?Q?vaO/14S4YTnCIPmQYHZ5o6wpjclhAUnEeLBSqM/8+YL0VV4OeidTVNOWNV?=
+ =?iso-8859-1?Q?25iq3Bhezj0KmIfI0vbpmYgxjfT9F9qlEzSJqtklZSLrfgu/uzjsm1BnE3?=
+ =?iso-8859-1?Q?+RHK72zt6EAEdhhUv0IZOsvzCmZwLkg/m/zIWZZhnpUnNiTyGjHyMLUxPs?=
+ =?iso-8859-1?Q?4lnI4Cf4Z1BCJ8oBwNRlZTKwJRiZfG2WyoEBHPyhig23yLP8pETAZR2gGf?=
+ =?iso-8859-1?Q?HMZ//UBYNNILkrN+YN4SIuZKm0OeYxGpgLfwpevCpuPnWKyJ+0OjJpyf0/?=
+ =?iso-8859-1?Q?65ceklMV1wzol54gq0W5qozwA0V4ADT7ECC7hIZmEMYnpJyyMLe87qA0at?=
+ =?iso-8859-1?Q?AiahSQYrFAWqI9BHmvNcmPSo5nTww3ODsgRKoRe0N42TxldtEsHU7ZdjOL?=
+ =?iso-8859-1?Q?go/aiXdtqZSPeW3cBjQkD2Put7/KsurKPER5ro9Mf/ixSC+pKU/euwUI2p?=
+ =?iso-8859-1?Q?1wqkYHRk+W9Op4XHh/DDL5DYRfJSyvBYRM7N6RoBCzsMOoY5yCXXmW63jQ?=
+ =?iso-8859-1?Q?e8R6SXMr3G/H2dyb7pSB6GMfuZo93hbGhSAu+GxH818IEPSSI+knmClkXk?=
+ =?iso-8859-1?Q?EZq3pfvUCwE97vC7NxZJf7uyc+hoDYF19YShL0hV8blRir9Y5QAntRks+e?=
+ =?iso-8859-1?Q?NdhO3PM2AGWD9VOGzzYuia7VQtfmc9JTi/ibu4yEKS/Tr4Iy0FRPaFPy+j?=
+ =?iso-8859-1?Q?zflENgfEm2VbdVENvNOY/P8DCKULdMy9OeAp6Q0bHXK3ZhkIu0+8SER0pm?=
+ =?iso-8859-1?Q?v2G5rjl8Jom5C7cOLwYiZYpJqz9XxaTVWsFuAJN6NWvxgfS4DbqM2MOK9R?=
+ =?iso-8859-1?Q?pohUKNE0ocwPeHBI6Tg0tqpw83i//d7qK8qHESknnuESn35I+B2mdp+agJ?=
+ =?iso-8859-1?Q?99ztwadBikp6D9+vrx7mpx2nfbsZXTHGoEIr6Wzb34NnSHjMAAu+gxSfBi?=
+ =?iso-8859-1?Q?2MT1Mw8Ar8swoZEVGyNFwdzw9Rm+Cyn44kMi2ldhaTjH9mKIiU1jyCTJRT?=
+ =?iso-8859-1?Q?jqeJf27cLywpJsTsFQKafaN9IAN6OETdffzPnrCpAFtXS6lekU8TJUzzYo?=
+ =?iso-8859-1?Q?9GHSoHpXbMKxaaTj6iwVFSU2a+oabHibXzf0ZtZeS39+qNn3oPjoAWiifP?=
+ =?iso-8859-1?Q?xVe1K5b76orS4FIRZSOr6UTry0zLRMVeZNVuxC5xrgr+eLipD1sTTYPUH3?=
+ =?iso-8859-1?Q?RqLfwyb9aGoLBbF53KeR9HoC3Dgpn3JtRK1jKQh6NMxZ27BabQ4igByuw9?=
+ =?iso-8859-1?Q?j8OnAh9poyy05j1SgHXL0TjwhnO4pzULDVHUnK18kq00Btxe+8dp++7Knw?=
+ =?iso-8859-1?Q?dHwSJYZSYZM/S49HIOUFG+QMoXWS5xTBfZ8P/0X7MWLSJPcT7CF5M58KwM?=
+ =?iso-8859-1?Q?qCljG8ue/jA4u/M4daqxg3jJHlFLbzlMmbq1PldQ+L/Y5xwcZs1RdZal4F?=
+ =?iso-8859-1?Q?lLB8q53wOg=3D=3D?=
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
+MIME-Version: 1.0
+X-Exchange-RoutingPolicyChecked: z9tcQvoWdbUhhMKIGKFP+ZRUVs4lL1/+D+WPvu4bDB4Q9yxFR2Im/khyqGFN10Zw4haSZH1NxMefV4Qu5oFzmpdRABp0xQq7SWAZIjNjRdbx2pRa0B6PYWBcU0WgZ4smXDNF+ALF4RAXURrPCVsg64h4m86/uY+/1xsuffua9kb6NqoLEfT7JxvhCuike9WYOiiqW+BWCY1X2z3eBQehTv9qALxjw/UnhZcxqPWCPOMgdbemJ/r7M6CRfDDg/1FjtdqPYaA987mioYn9uTSLq93Sw90AJ+WD2/+gkdvASzLcJbBtK1XT3oUfmEk/EZQIppLUrp8ZbzNngIFU3/YeDw==
+X-OriginatorOrg: aspeedtech.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-AuthSource: SEZPR06MB7362.apcprd06.prod.outlook.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 84a5a6e6-23ea-41aa-9e02-08df1ec3f407
+X-MS-Exchange-CrossTenant-originalarrivaltime: 30 Sep 2026 07:25:07.0872 (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: 43d4aa98-e35b-4575-8939-080e90d5a249
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: 082ogkYmChKwhZDHu4EYZfwH4H+0WajW/Lo5vCD06/vL4xVBOEkhqdEaYLeHyibD3slMH1TYsDQrEwXAIzu6QVp/d58rPB5LPUjmMbDjcGM=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: JH0PR06MB6451
+Received-SPF: pass client-ip=2a01:111:f403:c40f::6;
+ envelope-from=jamin_lin@aspeedtech.com;
+ helo=SEYPR02CU001.outbound.protection.outlook.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.4 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.341,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001,
- UPPERCASE_50_75=0.008 autolearn=no autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_PASS=-0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -136,685 +145,154 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-To: eric.auger@redhat.com
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-
-
-On 9/30/26 7:40 AM, Khushit Shah wrote:
->
->> On 29 Sep 2026, at 10:25 PM, Eric Auger <eric.auger@redhat.com> wrote:
->>
->> !-------------------------------------------------------------------|
->>  CAUTION: External Email
->>
->> |-------------------------------------------------------------------!
->>
->>
->>
->> On 9/25/26 1:19 PM, Khushit Shah wrote:
->>>> On 16 Sep 2026, at 8:15 PM, Eric Auger <eric.auger@redhat.com> wrote:
->>>>
->>>> !-------------------------------------------------------------------|
->>>> CAUTION: External Email
->>>>
->>>> |-------------------------------------------------------------------!
->>>>
->>>> Generate ID reg definitions with the scripts/update-aarch64-cpu-sysreg-properties.py
->>>> based on AARCHMRS_OPENSOURCE_A_profile_FAT-2026-03 Registers.json
->>>>
->>>> Each register and fields are described with this pattern:
->>>>
->>>> IDREG_START(REG)
->>>> IDREG_FIELD(REG, FIELD, SHIFT, LENGTH)
->>>> ...
->>>> IDREG_END(REG)
->>>>
->>>> Signed-off-by: Eric Auger <eric.auger@redhat.com>
->>>> Suggested-by: Khushit Shah <khushit.shah@nutanix.com>
->>>> Suggested-by: Shaju Abraham <shaju.abraham@nutanix.com>
->>>> ---
->>>> target/arm/cpu-idregs.h.inc | 607 ++++++++++++++++++++++++++++++++++++
->>>> 1 file changed, 607 insertions(+)
->>>> create mode 100644 target/arm/cpu-idregs.h.inc
->>>>
->>>> diff --git a/target/arm/cpu-idregs.h.inc b/target/arm/cpu-idregs.h.inc
->>>> new file mode 100644
->>>> index 0000000000..c9745e2fb6
->>>> --- /dev/null
->>>> +++ b/target/arm/cpu-idregs.h.inc
->>>> @@ -0,0 +1,607 @@
->>>> +/* AUTOMATICALLY GENERATED, DO NOT MODIFY */
->>>> +
->>>> +/* SPDX-License-Identifier: GPL-2.0-or-later */
->>>> +
->>>> +/* IDREG_START(REG) */
->>>> +/*     IDREG_FIELD(REG, FIELD, SHIFT, LENGTH) */
->>>> +/* ... */
->>>> +/* IDREG_END(REG) */
->>>> +
->>>> +IDREG_START(AIDR_EL1)
->>>> +IDREG_END(AIDR_EL1)
->>>> +
->>>> +IDREG_START(CLIDR_EL1)
->>>> +    IDREG_FIELD(CLIDR_EL1, Ttype7, 45, 2)
->>>> +    IDREG_FIELD(CLIDR_EL1, Ttype6, 43, 2)
->>>> +    IDREG_FIELD(CLIDR_EL1, Ttype5, 41, 2)
->>>> +    IDREG_FIELD(CLIDR_EL1, Ttype4, 39, 2)
->>>> +    IDREG_FIELD(CLIDR_EL1, Ttype3, 37, 2)
->>>> +    IDREG_FIELD(CLIDR_EL1, Ttype2, 35, 2)
->>>> +    IDREG_FIELD(CLIDR_EL1, Ttype1, 33, 2)
->>>> +    IDREG_FIELD(CLIDR_EL1, ICB, 30, 3)
->>>> +    IDREG_FIELD(CLIDR_EL1, LoUU, 27, 3)
->>>> +    IDREG_FIELD(CLIDR_EL1, LoC, 24, 3)
->>>> +    IDREG_FIELD(CLIDR_EL1, LoUIS, 21, 3)
->>>> +    IDREG_FIELD(CLIDR_EL1, Ctype7, 18, 3)
->>>> +    IDREG_FIELD(CLIDR_EL1, Ctype6, 15, 3)
->>>> +    IDREG_FIELD(CLIDR_EL1, Ctype5, 12, 3)
->>>> +    IDREG_FIELD(CLIDR_EL1, Ctype4, 9, 3)
->>>> +    IDREG_FIELD(CLIDR_EL1, Ctype3, 6, 3)
->>>> +    IDREG_FIELD(CLIDR_EL1, Ctype2, 3, 3)
->>>> +    IDREG_FIELD(CLIDR_EL1, Ctype1, 0, 3)
->>>> +IDREG_END(CLIDR_EL1)
->>>> +
->>>> +IDREG_START(CTR_EL0)
->>>> +    IDREG_FIELD(CTR_EL0, TminLine, 32, 6)
->>>> +    IDREG_FIELD(CTR_EL0, DIC, 29, 1)
->>>> +    IDREG_FIELD(CTR_EL0, IDC, 28, 1)
->>>> +    IDREG_FIELD(CTR_EL0, CWG, 24, 4)
->>>> +    IDREG_FIELD(CTR_EL0, ERG, 20, 4)
->>>> +    IDREG_FIELD(CTR_EL0, DminLine, 16, 4)
->>>> +    IDREG_FIELD(CTR_EL0, L1Ip, 14, 2)
->>>> +    IDREG_FIELD(CTR_EL0, IminLine, 0, 4)
->>>> +IDREG_END(CTR_EL0)
->>>> +
->>>> +IDREG_START(DCZID_EL0)
->>>> +    IDREG_FIELD(DCZID_EL0, TBS, 5, 4)
->>>> +    IDREG_FIELD(DCZID_EL0, DZP, 4, 1)
->>>> +    IDREG_FIELD(DCZID_EL0, BS, 0, 4)
->>>> +IDREG_END(DCZID_EL0)
->>>> +
->>>> +IDREG_START(GMID_EL1)
->>>> +    IDREG_FIELD(GMID_EL1, BS, 0, 4)
->>>> +IDREG_END(GMID_EL1)
->>>> +
->>>> +IDREG_START(ID_AA64AFR0_EL1)
->>>> +IDREG_END(ID_AA64AFR0_EL1)
->>>> +
->>>> +IDREG_START(ID_AA64AFR1_EL1)
->>>> +IDREG_END(ID_AA64AFR1_EL1)
->>>> +
->>>> +IDREG_START(ID_AA64DFR0_EL1)
->>>> +    IDREG_FIELD(ID_AA64DFR0_EL1, HPMN0, 60, 4)
->>>> +    IDREG_FIELD(ID_AA64DFR0_EL1, ExtTrcBuff, 56, 4)
->>>> +    IDREG_FIELD(ID_AA64DFR0_EL1, BRBE, 52, 4)
->>>> +    IDREG_FIELD(ID_AA64DFR0_EL1, MTPMU, 48, 4)
->>>> +    IDREG_FIELD(ID_AA64DFR0_EL1, TraceBuffer, 44, 4)
->>>> +    IDREG_FIELD(ID_AA64DFR0_EL1, TraceFilt, 40, 4)
->>>> +    IDREG_FIELD(ID_AA64DFR0_EL1, DoubleLock, 36, 4)
->>>> +    IDREG_FIELD(ID_AA64DFR0_EL1, PMSVer, 32, 4)
->>>> +    IDREG_FIELD(ID_AA64DFR0_EL1, CTX_CMPs, 28, 4)
->>>> +    IDREG_FIELD(ID_AA64DFR0_EL1, WRPs, 20, 4)
->>>> +    IDREG_FIELD(ID_AA64DFR0_EL1, PMSS, 16, 4)
->>>> +    IDREG_FIELD(ID_AA64DFR0_EL1, BRPs, 12, 4)
->>>> +    IDREG_FIELD(ID_AA64DFR0_EL1, PMUVer, 8, 4)
->>>> +    IDREG_FIELD(ID_AA64DFR0_EL1, TraceVer, 4, 4)
->>>> +    IDREG_FIELD(ID_AA64DFR0_EL1, DebugVer, 0, 4)
->>>> +IDREG_END(ID_AA64DFR0_EL1)
->>>> +
->>>> +IDREG_START(ID_AA64DFR1_EL1)
->>>> +    IDREG_FIELD(ID_AA64DFR1_EL1, ABL_CMPs, 56, 8)
->>>> +    IDREG_FIELD(ID_AA64DFR1_EL1, DPFZS, 52, 4)
->>>> +    IDREG_FIELD(ID_AA64DFR1_EL1, EBEP, 48, 4)
->>>> +    IDREG_FIELD(ID_AA64DFR1_EL1, ITE, 44, 4)
->>>> +    IDREG_FIELD(ID_AA64DFR1_EL1, ABLE, 40, 4)
->>>> +    IDREG_FIELD(ID_AA64DFR1_EL1, PMICNTR, 36, 4)
->>>> +    IDREG_FIELD(ID_AA64DFR1_EL1, SPMU, 32, 4)
->>>> +    IDREG_FIELD(ID_AA64DFR1_EL1, CTX_CMPs, 24, 8)
->>>> +    IDREG_FIELD(ID_AA64DFR1_EL1, WRPs, 16, 8)
->>>> +    IDREG_FIELD(ID_AA64DFR1_EL1, BRPs, 8, 8)
->>>> +    IDREG_FIELD(ID_AA64DFR1_EL1, SYSPMUID, 0, 8)
->>>> +IDREG_END(ID_AA64DFR1_EL1)
->>>> +
->>>> +IDREG_START(ID_AA64DFR2_EL1)
->>>> +    IDREG_FIELD(ID_AA64DFR2_EL1, TRBE_EXC, 24, 4)
->>>> +    IDREG_FIELD(ID_AA64DFR2_EL1, SPE_nVM, 20, 4)
->>>> +    IDREG_FIELD(ID_AA64DFR2_EL1, SPE_EXC, 16, 4)
->>>> +    IDREG_FIELD(ID_AA64DFR2_EL1, BWE, 4, 4)
->>>> +    IDREG_FIELD(ID_AA64DFR2_EL1, STEP, 0, 4)
->>>> +IDREG_END(ID_AA64DFR2_EL1)
->>>> +
->>>> +IDREG_START(ID_AA64FPFR0_EL1)
->>>> +    IDREG_FIELD(ID_AA64FPFR0_EL1, F8CVT, 31, 1)
->>>> +    IDREG_FIELD(ID_AA64FPFR0_EL1, F8FMA, 30, 1)
->>>> +    IDREG_FIELD(ID_AA64FPFR0_EL1, F8DP4, 29, 1)
->>>> +    IDREG_FIELD(ID_AA64FPFR0_EL1, F8DP2, 28, 1)
->>>> +    IDREG_FIELD(ID_AA64FPFR0_EL1, F8MM8, 27, 1)
->>>> +    IDREG_FIELD(ID_AA64FPFR0_EL1, F8MM4, 26, 1)
->>>> +    IDREG_FIELD(ID_AA64FPFR0_EL1, F16MM2, 15, 1)
->>>> +    IDREG_FIELD(ID_AA64FPFR0_EL1, F8E4M3, 1, 1)
->>>> +    IDREG_FIELD(ID_AA64FPFR0_EL1, F8E5M2, 0, 1)
->>>> +IDREG_END(ID_AA64FPFR0_EL1)
->>>> +
->>>> +IDREG_START(ID_AA64ISAR0_EL1)
->>>> +    IDREG_FIELD(ID_AA64ISAR0_EL1, RNDR, 60, 4)
->>>> +    IDREG_FIELD(ID_AA64ISAR0_EL1, TLB, 56, 4)
->>>> +    IDREG_FIELD(ID_AA64ISAR0_EL1, TS, 52, 4)
->>>> +    IDREG_FIELD(ID_AA64ISAR0_EL1, FHM, 48, 4)
->>>> +    IDREG_FIELD(ID_AA64ISAR0_EL1, DP, 44, 4)
->>>> +    IDREG_FIELD(ID_AA64ISAR0_EL1, SM4, 40, 4)
->>>> +    IDREG_FIELD(ID_AA64ISAR0_EL1, SM3, 36, 4)
->>>> +    IDREG_FIELD(ID_AA64ISAR0_EL1, SHA3, 32, 4)
->>>> +    IDREG_FIELD(ID_AA64ISAR0_EL1, RDM, 28, 4)
->>>> +    IDREG_FIELD(ID_AA64ISAR0_EL1, Atomic, 20, 4)
->>>> +    IDREG_FIELD(ID_AA64ISAR0_EL1, CRC32, 16, 4)
->>>> +    IDREG_FIELD(ID_AA64ISAR0_EL1, SHA2, 12, 4)
->>>> +    IDREG_FIELD(ID_AA64ISAR0_EL1, SHA1, 8, 4)
->>>> +    IDREG_FIELD(ID_AA64ISAR0_EL1, AES, 4, 4)
->>>> +IDREG_END(ID_AA64ISAR0_EL1)
->>>> +
->>>> +IDREG_START(ID_AA64ISAR1_EL1)
->>>> +    IDREG_FIELD(ID_AA64ISAR1_EL1, LS64, 60, 4)
->>>> +    IDREG_FIELD(ID_AA64ISAR1_EL1, XS, 56, 4)
->>>> +    IDREG_FIELD(ID_AA64ISAR1_EL1, I8MM, 52, 4)
->>>> +    IDREG_FIELD(ID_AA64ISAR1_EL1, DGH, 48, 4)
->>>> +    IDREG_FIELD(ID_AA64ISAR1_EL1, BF16, 44, 4)
->>>> +    IDREG_FIELD(ID_AA64ISAR1_EL1, SPECRES, 40, 4)
->>>> +    IDREG_FIELD(ID_AA64ISAR1_EL1, SB, 36, 4)
->>>> +    IDREG_FIELD(ID_AA64ISAR1_EL1, FRINTTS, 32, 4)
->>>> +    IDREG_FIELD(ID_AA64ISAR1_EL1, GPI, 28, 4)
->>>> +    IDREG_FIELD(ID_AA64ISAR1_EL1, GPA, 24, 4)
->>>> +    IDREG_FIELD(ID_AA64ISAR1_EL1, LRCPC, 20, 4)
->>>> +    IDREG_FIELD(ID_AA64ISAR1_EL1, FCMA, 16, 4)
->>>> +    IDREG_FIELD(ID_AA64ISAR1_EL1, JSCVT, 12, 4)
->>>> +    IDREG_FIELD(ID_AA64ISAR1_EL1, API, 8, 4)
->>>> +    IDREG_FIELD(ID_AA64ISAR1_EL1, APA, 4, 4)
->>>> +    IDREG_FIELD(ID_AA64ISAR1_EL1, DPB, 0, 4)
->>>> +IDREG_END(ID_AA64ISAR1_EL1)
->>>> +
->>>> +IDREG_START(ID_AA64ISAR2_EL1)
->>>> +    IDREG_FIELD(ID_AA64ISAR2_EL1, ATS1A, 60, 4)
->>>> +    IDREG_FIELD(ID_AA64ISAR2_EL1, LUT, 56, 4)
->>>> +    IDREG_FIELD(ID_AA64ISAR2_EL1, CSSC, 52, 4)
->>>> +    IDREG_FIELD(ID_AA64ISAR2_EL1, RPRFM, 48, 4)
->>>> +    IDREG_FIELD(ID_AA64ISAR2_EL1, PCDPHINT, 44, 4)
->>>> +    IDREG_FIELD(ID_AA64ISAR2_EL1, PRFMSLC, 40, 4)
->>>> +    IDREG_FIELD(ID_AA64ISAR2_EL1, SYSINSTR_128, 36, 4)
->>>> +    IDREG_FIELD(ID_AA64ISAR2_EL1, SYSREG_128, 32, 4)
->>>> +    IDREG_FIELD(ID_AA64ISAR2_EL1, CLRBHB, 28, 4)
->>>> +    IDREG_FIELD(ID_AA64ISAR2_EL1, PAC_frac, 24, 4)
->>>> +    IDREG_FIELD(ID_AA64ISAR2_EL1, BC, 20, 4)
->>>> +    IDREG_FIELD(ID_AA64ISAR2_EL1, MOPS, 16, 4)
->>>> +    IDREG_FIELD(ID_AA64ISAR2_EL1, APA3, 12, 4)
->>>> +    IDREG_FIELD(ID_AA64ISAR2_EL1, GPA3, 8, 4)
->>>> +    IDREG_FIELD(ID_AA64ISAR2_EL1, RPRES, 4, 4)
->>>> +    IDREG_FIELD(ID_AA64ISAR2_EL1, WFxT, 0, 4)
->>>> +IDREG_END(ID_AA64ISAR2_EL1)
->>>> +
->>>> +IDREG_START(ID_AA64ISAR3_EL1)
->>>> +    IDREG_FIELD(ID_AA64ISAR3_EL1, LSCP, 44, 4)
->>>> +    IDREG_FIELD(ID_AA64ISAR3_EL1, LSCSHINT, 40, 4)
->>>> +    IDREG_FIELD(ID_AA64ISAR3_EL1, MTETC, 36, 4)
->>>> +    IDREG_FIELD(ID_AA64ISAR3_EL1, PAC_frac2, 32, 4)
->>>> +    IDREG_FIELD(ID_AA64ISAR3_EL1, FPRCVT, 28, 4)
->>>> +    IDREG_FIELD(ID_AA64ISAR3_EL1, LSUI, 24, 4)
->>>> +    IDREG_FIELD(ID_AA64ISAR3_EL1, OCCMO, 20, 4)
->>>> +    IDREG_FIELD(ID_AA64ISAR3_EL1, LSFE, 16, 4)
->>>> +    IDREG_FIELD(ID_AA64ISAR3_EL1, PACM, 12, 4)
->>>> +    IDREG_FIELD(ID_AA64ISAR3_EL1, TLBIW, 8, 4)
->>>> +    IDREG_FIELD(ID_AA64ISAR3_EL1, FAMINMAX, 4, 4)
->>>> +    IDREG_FIELD(ID_AA64ISAR3_EL1, CPA, 0, 4)
->>>> +IDREG_END(ID_AA64ISAR3_EL1)
->>>> +
->>>> +IDREG_START(ID_AA64MMFR0_EL1)
->>>> +    IDREG_FIELD(ID_AA64MMFR0_EL1, ECV, 60, 4)
->>>> +    IDREG_FIELD(ID_AA64MMFR0_EL1, FGT, 56, 4)
->>>> +    IDREG_FIELD(ID_AA64MMFR0_EL1, ExS, 44, 4)
->>>> +    IDREG_FIELD(ID_AA64MMFR0_EL1, TGran4_2, 40, 4)
->>>> +    IDREG_FIELD(ID_AA64MMFR0_EL1, TGran64_2, 36, 4)
->>>> +    IDREG_FIELD(ID_AA64MMFR0_EL1, TGran16_2, 32, 4)
->>>> +    IDREG_FIELD(ID_AA64MMFR0_EL1, TGran4, 28, 4)
->>>> +    IDREG_FIELD(ID_AA64MMFR0_EL1, TGran64, 24, 4)
->>>> +    IDREG_FIELD(ID_AA64MMFR0_EL1, TGran16, 20, 4)
->>>> +    IDREG_FIELD(ID_AA64MMFR0_EL1, BigEndEL0, 16, 4)
->>>> +    IDREG_FIELD(ID_AA64MMFR0_EL1, SNSMem, 12, 4)
->>>> +    IDREG_FIELD(ID_AA64MMFR0_EL1, BigEnd, 8, 4)
->>>> +    IDREG_FIELD(ID_AA64MMFR0_EL1, ASIDBits, 4, 4)
->>>> +    IDREG_FIELD(ID_AA64MMFR0_EL1, PARange, 0, 4)
->>>> +IDREG_END(ID_AA64MMFR0_EL1)
->>>> +
->>>> +IDREG_START(ID_AA64MMFR1_EL1)
->>>> +    IDREG_FIELD(ID_AA64MMFR1_EL1, ECBHB, 60, 4)
->>>> +    IDREG_FIELD(ID_AA64MMFR1_EL1, CMOW, 56, 4)
->>>> +    IDREG_FIELD(ID_AA64MMFR1_EL1, TIDCP1, 52, 4)
->>>> +    IDREG_FIELD(ID_AA64MMFR1_EL1, nTLBPA, 48, 4)
->>>> +    IDREG_FIELD(ID_AA64MMFR1_EL1, AFP, 44, 4)
->>>> +    IDREG_FIELD(ID_AA64MMFR1_EL1, HCX, 40, 4)
->>>> +    IDREG_FIELD(ID_AA64MMFR1_EL1, ETS, 36, 4)
->>>> +    IDREG_FIELD(ID_AA64MMFR1_EL1, TWED, 32, 4)
->>>> +    IDREG_FIELD(ID_AA64MMFR1_EL1, XNX, 28, 4)
->>>> +    IDREG_FIELD(ID_AA64MMFR1_EL1, SpecSEI, 24, 4)
->>>> +    IDREG_FIELD(ID_AA64MMFR1_EL1, PAN, 20, 4)
->>>> +    IDREG_FIELD(ID_AA64MMFR1_EL1, LO, 16, 4)
->>>> +    IDREG_FIELD(ID_AA64MMFR1_EL1, HPDS, 12, 4)
->>>> +    IDREG_FIELD(ID_AA64MMFR1_EL1, VH, 8, 4)
->>>> +    IDREG_FIELD(ID_AA64MMFR1_EL1, VMIDBits, 4, 4)
->>>> +    IDREG_FIELD(ID_AA64MMFR1_EL1, HAFDBS, 0, 4)
->>>> +IDREG_END(ID_AA64MMFR1_EL1)
->>>> +
->>>> +IDREG_START(ID_AA64MMFR2_EL1)
->>>> +    IDREG_FIELD(ID_AA64MMFR2_EL1, E0PD, 60, 4)
->>>> +    IDREG_FIELD(ID_AA64MMFR2_EL1, EVT, 56, 4)
->>>> +    IDREG_FIELD(ID_AA64MMFR2_EL1, BBM, 52, 4)
->>>> +    IDREG_FIELD(ID_AA64MMFR2_EL1, TTL, 48, 4)
->>>> +    IDREG_FIELD(ID_AA64MMFR2_EL1, FWB, 40, 4)
->>>> +    IDREG_FIELD(ID_AA64MMFR2_EL1, IDS, 36, 4)
->>>> +    IDREG_FIELD(ID_AA64MMFR2_EL1, AT, 32, 4)
->>>> +    IDREG_FIELD(ID_AA64MMFR2_EL1, ST, 28, 4)
->>>> +    IDREG_FIELD(ID_AA64MMFR2_EL1, NV, 24, 4)
->>>> +    IDREG_FIELD(ID_AA64MMFR2_EL1, CCIDX, 20, 4)
->>>> +    IDREG_FIELD(ID_AA64MMFR2_EL1, VARange, 16, 4)
->>>> +    IDREG_FIELD(ID_AA64MMFR2_EL1, IESB, 12, 4)
->>>> +    IDREG_FIELD(ID_AA64MMFR2_EL1, LSM, 8, 4)
->>>> +    IDREG_FIELD(ID_AA64MMFR2_EL1, UAO, 4, 4)
->>>> +    IDREG_FIELD(ID_AA64MMFR2_EL1, CnP, 0, 4)
->>>> +IDREG_END(ID_AA64MMFR2_EL1)
->>>> +
->>>> +IDREG_START(ID_AA64MMFR3_EL1)
->>>> +    IDREG_FIELD(ID_AA64MMFR3_EL1, Spec_FPACC, 60, 4)
->>>> +    IDREG_FIELD(ID_AA64MMFR3_EL1, ADERR, 56, 4)
->>>> +    IDREG_FIELD(ID_AA64MMFR3_EL1, SDERR, 52, 4)
->>>> +    IDREG_FIELD(ID_AA64MMFR3_EL1, ANERR, 44, 4)
->>>> +    IDREG_FIELD(ID_AA64MMFR3_EL1, SNERR, 40, 4)
->>>> +    IDREG_FIELD(ID_AA64MMFR3_EL1, D128_2, 36, 4)
->>>> +    IDREG_FIELD(ID_AA64MMFR3_EL1, D128, 32, 4)
->>>> +    IDREG_FIELD(ID_AA64MMFR3_EL1, MEC, 28, 4)
->>>> +    IDREG_FIELD(ID_AA64MMFR3_EL1, AIE, 24, 4)
->>>> +    IDREG_FIELD(ID_AA64MMFR3_EL1, S2POE, 20, 4)
->>>> +    IDREG_FIELD(ID_AA64MMFR3_EL1, S1POE, 16, 4)
->>>> +    IDREG_FIELD(ID_AA64MMFR3_EL1, S2PIE, 12, 4)
->>>> +    IDREG_FIELD(ID_AA64MMFR3_EL1, S1PIE, 8, 4)
->>>> +    IDREG_FIELD(ID_AA64MMFR3_EL1, SCTLRX, 4, 4)
->>>> +    IDREG_FIELD(ID_AA64MMFR3_EL1, TCRX, 0, 4)
->>>> +IDREG_END(ID_AA64MMFR3_EL1)
->>>> +
->>>> +IDREG_START(ID_AA64MMFR4_EL1)
->>>> +    IDREG_FIELD(ID_AA64MMFR4_EL1, MTEFGT, 60, 4)
->>>> +    IDREG_FIELD(ID_AA64MMFR4_EL1, SCRX, 56, 4)
->>>> +    IDREG_FIELD(ID_AA64MMFR4_EL1, TEV, 52, 4)
->>>> +    IDREG_FIELD(ID_AA64MMFR4_EL1, TPS, 48, 4)
->>>> +    IDREG_FIELD(ID_AA64MMFR4_EL1, SRMASK, 44, 4)
->>>> +    IDREG_FIELD(ID_AA64MMFR4_EL1, TLBID, 40, 4)
->>>> +    IDREG_FIELD(ID_AA64MMFR4_EL1, E3DSE, 36, 4)
->>>> +    IDREG_FIELD(ID_AA64MMFR4_EL1, EAESR, 32, 4)
->>>> +    IDREG_FIELD(ID_AA64MMFR4_EL1, RMEGDI, 28, 4)
->>>> +    IDREG_FIELD(ID_AA64MMFR4_EL1, E2H0, 24, 4)
->>>> +    IDREG_FIELD(ID_AA64MMFR4_EL1, NV_frac, 20, 4)
->>>> +    IDREG_FIELD(ID_AA64MMFR4_EL1, FGWTE3, 16, 4)
->>>> +    IDREG_FIELD(ID_AA64MMFR4_EL1, HACDBS, 12, 4)
->>>> +    IDREG_FIELD(ID_AA64MMFR4_EL1, ASID2, 8, 4)
->>>> +    IDREG_FIELD(ID_AA64MMFR4_EL1, EIESB, 4, 4)
->>>> +    IDREG_FIELD(ID_AA64MMFR4_EL1, PoPS, 0, 4)
->>>> +IDREG_END(ID_AA64MMFR4_EL1)
->>>> +
->>>> +IDREG_START(ID_AA64PFR0_EL1)
->>>> +    IDREG_FIELD(ID_AA64PFR0_EL1, CSV3, 60, 4)
->>>> +    IDREG_FIELD(ID_AA64PFR0_EL1, CSV2, 56, 4)
->>>> +    IDREG_FIELD(ID_AA64PFR0_EL1, RME, 52, 4)
->>>> +    IDREG_FIELD(ID_AA64PFR0_EL1, DIT, 48, 4)
->>>> +    IDREG_FIELD(ID_AA64PFR0_EL1, AMU, 44, 4)
->>>> +    IDREG_FIELD(ID_AA64PFR0_EL1, MPAM, 40, 4)
->>>> +    IDREG_FIELD(ID_AA64PFR0_EL1, SEL2, 36, 4)
->>>> +    IDREG_FIELD(ID_AA64PFR0_EL1, SVE, 32, 4)
->>>> +    IDREG_FIELD(ID_AA64PFR0_EL1, RAS, 28, 4)
->>>> +    IDREG_FIELD(ID_AA64PFR0_EL1, GIC, 24, 4)
->>>> +    IDREG_FIELD(ID_AA64PFR0_EL1, AdvSIMD, 20, 4)
->>>> +    IDREG_FIELD(ID_AA64PFR0_EL1, FP, 16, 4)
->>>> +    IDREG_FIELD(ID_AA64PFR0_EL1, EL3, 12, 4)
->>>> +    IDREG_FIELD(ID_AA64PFR0_EL1, EL2, 8, 4)
->>>> +    IDREG_FIELD(ID_AA64PFR0_EL1, EL1, 4, 4)
->>>> +    IDREG_FIELD(ID_AA64PFR0_EL1, EL0, 0, 4)
->>>> +IDREG_END(ID_AA64PFR0_EL1)
->>>> +
->>>> +IDREG_START(ID_AA64PFR1_EL1)
->>>> +    IDREG_FIELD(ID_AA64PFR1_EL1, PFAR, 60, 4)
->>>> +    IDREG_FIELD(ID_AA64PFR1_EL1, DF2, 56, 4)
->>>> +    IDREG_FIELD(ID_AA64PFR1_EL1, MTEX, 52, 4)
->>>> +    IDREG_FIELD(ID_AA64PFR1_EL1, THE, 48, 4)
->>>> +    IDREG_FIELD(ID_AA64PFR1_EL1, GCS, 44, 4)
->>>> +    IDREG_FIELD(ID_AA64PFR1_EL1, MTE_frac, 40, 4)
->>>> +    IDREG_FIELD(ID_AA64PFR1_EL1, NMI, 36, 4)
->>>> +    IDREG_FIELD(ID_AA64PFR1_EL1, CSV2_frac, 32, 4)
->>>> +    IDREG_FIELD(ID_AA64PFR1_EL1, RNDR_trap, 28, 4)
->>>> +    IDREG_FIELD(ID_AA64PFR1_EL1, SME, 24, 4)
->>>> +    IDREG_FIELD(ID_AA64PFR1_EL1, MPAM_frac, 16, 4)
->>>> +    IDREG_FIELD(ID_AA64PFR1_EL1, RAS_frac, 12, 4)
->>>> +    IDREG_FIELD(ID_AA64PFR1_EL1, MTE, 8, 4)
->>>> +    IDREG_FIELD(ID_AA64PFR1_EL1, SSBS, 4, 4)
->>>> +    IDREG_FIELD(ID_AA64PFR1_EL1, BT, 0, 4)
->>>> +IDREG_END(ID_AA64PFR1_EL1)
->>>> +
->>>> +IDREG_START(ID_AA64PFR2_EL1)
->>>> +    IDREG_FIELD(ID_AA64PFR2_EL1, VMTETCL, 44, 4)
->>>> +    IDREG_FIELD(ID_AA64PFR2_EL1, VMTETC, 40, 4)
->>>> +    IDREG_FIELD(ID_AA64PFR2_EL1, VMTE, 36, 4)
->>>> +    IDREG_FIELD(ID_AA64PFR2_EL1, FPMR, 32, 4)
->>>> +    IDREG_FIELD(ID_AA64PFR2_EL1, MPAM2, 28, 4)
->>>> +    IDREG_FIELD(ID_AA64PFR2_EL1, FGDT, 24, 4)
->>>> +    IDREG_FIELD(ID_AA64PFR2_EL1, MTEEIRG, 20, 4)
->>>> +    IDREG_FIELD(ID_AA64PFR2_EL1, UINJ, 16, 4)
->>>> +    IDREG_FIELD(ID_AA64PFR2_EL1, GCIE, 12, 4)
->>>> +    IDREG_FIELD(ID_AA64PFR2_EL1, MTEFAR, 8, 4)
->>>> +    IDREG_FIELD(ID_AA64PFR2_EL1, MTESTOREONLY, 4, 4)
->>>> +    IDREG_FIELD(ID_AA64PFR2_EL1, MTEPERM, 0, 4)
->>>> +IDREG_END(ID_AA64PFR2_EL1)
->>>> +
->>>> +IDREG_START(ID_AA64SMFR0_EL1)
->>>> +    IDREG_FIELD(ID_AA64SMFR0_EL1, FA64, 63, 1)
->>>> +    IDREG_FIELD(ID_AA64SMFR0_EL1, LUT6, 61, 1)
->>>> +    IDREG_FIELD(ID_AA64SMFR0_EL1, LUTv2, 60, 1)
->>>> +    IDREG_FIELD(ID_AA64SMFR0_EL1, SMEver, 56, 4)
->>>> +    IDREG_FIELD(ID_AA64SMFR0_EL1, I16I64, 52, 4)
->>>> +    IDREG_FIELD(ID_AA64SMFR0_EL1, F64F64, 48, 1)
->>>> +    IDREG_FIELD(ID_AA64SMFR0_EL1, I16I32, 44, 4)
->>>> +    IDREG_FIELD(ID_AA64SMFR0_EL1, B16B16, 43, 1)
->>>> +    IDREG_FIELD(ID_AA64SMFR0_EL1, F16F16, 42, 1)
->>>> +    IDREG_FIELD(ID_AA64SMFR0_EL1, F8F16, 41, 1)
->>>> +    IDREG_FIELD(ID_AA64SMFR0_EL1, F8F32, 40, 1)
->>>> +    IDREG_FIELD(ID_AA64SMFR0_EL1, I8I32, 36, 4)
->>>> +    IDREG_FIELD(ID_AA64SMFR0_EL1, F16F32, 35, 1)
->>>> +    IDREG_FIELD(ID_AA64SMFR0_EL1, B16F32, 34, 1)
->>>> +    IDREG_FIELD(ID_AA64SMFR0_EL1, BI32I32, 33, 1)
->>>> +    IDREG_FIELD(ID_AA64SMFR0_EL1, F32F32, 32, 1)
->>>> +    IDREG_FIELD(ID_AA64SMFR0_EL1, SF8FMA, 30, 1)
->>>> +    IDREG_FIELD(ID_AA64SMFR0_EL1, SF8DP4, 29, 1)
->>>> +    IDREG_FIELD(ID_AA64SMFR0_EL1, SF8DP2, 28, 1)
->>>> +    IDREG_FIELD(ID_AA64SMFR0_EL1, SBitPerm, 25, 1)
->>>> +    IDREG_FIELD(ID_AA64SMFR0_EL1, AES, 24, 1)
->>>> +    IDREG_FIELD(ID_AA64SMFR0_EL1, SFEXPA, 23, 1)
->>>> +    IDREG_FIELD(ID_AA64SMFR0_EL1, STMOP, 16, 1)
->>>> +    IDREG_FIELD(ID_AA64SMFR0_EL1, SMOP4, 0, 1)
->>>> +IDREG_END(ID_AA64SMFR0_EL1)
->>>> +
->>>> +IDREG_START(ID_AA64ZFR0_EL1)
->>>> +    IDREG_FIELD(ID_AA64ZFR0_EL1, F64MM, 56, 4)
->>>> +    IDREG_FIELD(ID_AA64ZFR0_EL1, F32MM, 52, 4)
->>>> +    IDREG_FIELD(ID_AA64ZFR0_EL1, F16MM, 48, 4)
->>>> +    IDREG_FIELD(ID_AA64ZFR0_EL1, I8MM, 44, 4)
->>>> +    IDREG_FIELD(ID_AA64ZFR0_EL1, SM4, 40, 4)
->>>> +    IDREG_FIELD(ID_AA64ZFR0_EL1, SHA3, 32, 4)
->>>> +    IDREG_FIELD(ID_AA64ZFR0_EL1, B16B16, 24, 4)
->>>> +    IDREG_FIELD(ID_AA64ZFR0_EL1, BF16, 20, 4)
->>>> +    IDREG_FIELD(ID_AA64ZFR0_EL1, BitPerm, 16, 4)
->>>> +    IDREG_FIELD(ID_AA64ZFR0_EL1, EltPerm, 12, 4)
->>>> +    IDREG_FIELD(ID_AA64ZFR0_EL1, AES, 4, 4)
->>>> +    IDREG_FIELD(ID_AA64ZFR0_EL1, SVEver, 0, 4)
->>>> +IDREG_END(ID_AA64ZFR0_EL1)
->>>> +
->>>> +IDREG_START(ID_AFR0_EL1)
->>>> +IDREG_END(ID_AFR0_EL1)
->>>> +
->>>> +IDREG_START(ID_DFR0_EL1)
->>>> +    IDREG_FIELD(ID_DFR0_EL1, TraceFilt, 28, 4)
->>>> +    IDREG_FIELD(ID_DFR0_EL1, PerfMon, 24, 4)
->>>> +    IDREG_FIELD(ID_DFR0_EL1, MProfDbg, 20, 4)
->>>> +    IDREG_FIELD(ID_DFR0_EL1, MMapTrc, 16, 4)
->>>> +    IDREG_FIELD(ID_DFR0_EL1, CopTrc, 12, 4)
->>>> +    IDREG_FIELD(ID_DFR0_EL1, MMapDbg, 8, 4)
->>>> +    IDREG_FIELD(ID_DFR0_EL1, CopSDbg, 4, 4)
->>>> +    IDREG_FIELD(ID_DFR0_EL1, CopDbg, 0, 4)
->>>> +IDREG_END(ID_DFR0_EL1)
->>>> +
->>>> +IDREG_START(ID_DFR1_EL1)
->>>> +    IDREG_FIELD(ID_DFR1_EL1, HPMN0, 4, 4)
->>>> +    IDREG_FIELD(ID_DFR1_EL1, MTPMU, 0, 4)
->>>> +IDREG_END(ID_DFR1_EL1)
->>>> +
->>>> +IDREG_START(ID_ISAR0_EL1)
->>>> +    IDREG_FIELD(ID_ISAR0_EL1, Divide, 24, 4)
->>>> +    IDREG_FIELD(ID_ISAR0_EL1, Debug, 20, 4)
->>>> +    IDREG_FIELD(ID_ISAR0_EL1, Coproc, 16, 4)
->>>> +    IDREG_FIELD(ID_ISAR0_EL1, CmpBranch, 12, 4)
->>>> +    IDREG_FIELD(ID_ISAR0_EL1, BitField, 8, 4)
->>>> +    IDREG_FIELD(ID_ISAR0_EL1, BitCount, 4, 4)
->>>> +    IDREG_FIELD(ID_ISAR0_EL1, Swap, 0, 4)
->>>> +IDREG_END(ID_ISAR0_EL1)
->>>> +
->>>> +IDREG_START(ID_ISAR1_EL1)
->>>> +    IDREG_FIELD(ID_ISAR1_EL1, Jazelle, 28, 4)
->>>> +    IDREG_FIELD(ID_ISAR1_EL1, Interwork, 24, 4)
->>>> +    IDREG_FIELD(ID_ISAR1_EL1, Immediate, 20, 4)
->>>> +    IDREG_FIELD(ID_ISAR1_EL1, IfThen, 16, 4)
->>>> +    IDREG_FIELD(ID_ISAR1_EL1, Extend, 12, 4)
->>>> +    IDREG_FIELD(ID_ISAR1_EL1, Except_AR, 8, 4)
->>>> +    IDREG_FIELD(ID_ISAR1_EL1, Except, 4, 4)
->>>> +    IDREG_FIELD(ID_ISAR1_EL1, Endian, 0, 4)
->>>> +IDREG_END(ID_ISAR1_EL1)
->>>> +
->>>> +IDREG_START(ID_ISAR2_EL1)
->>>> +    IDREG_FIELD(ID_ISAR2_EL1, Reversal, 28, 4)
->>>> +    IDREG_FIELD(ID_ISAR2_EL1, PSR_AR, 24, 4)
->>>> +    IDREG_FIELD(ID_ISAR2_EL1, MultU, 20, 4)
->>>> +    IDREG_FIELD(ID_ISAR2_EL1, MultS, 16, 4)
->>>> +    IDREG_FIELD(ID_ISAR2_EL1, Mult, 12, 4)
->>>> +    IDREG_FIELD(ID_ISAR2_EL1, MultiAccessInt, 8, 4)
->>>> +    IDREG_FIELD(ID_ISAR2_EL1, MemHint, 4, 4)
->>>> +    IDREG_FIELD(ID_ISAR2_EL1, LoadStore, 0, 4)
->>>> +IDREG_END(ID_ISAR2_EL1)
->>>> +
->>>> +IDREG_START(ID_ISAR3_EL1)
->>>> +    IDREG_FIELD(ID_ISAR3_EL1, T32EE, 28, 4)
->>>> +    IDREG_FIELD(ID_ISAR3_EL1, TrueNOP, 24, 4)
->>>> +    IDREG_FIELD(ID_ISAR3_EL1, T32Copy, 20, 4)
->>>> +    IDREG_FIELD(ID_ISAR3_EL1, TabBranch, 16, 4)
->>>> +    IDREG_FIELD(ID_ISAR3_EL1, SynchPrim, 12, 4)
->>>> +    IDREG_FIELD(ID_ISAR3_EL1, SVC, 8, 4)
->>>> +    IDREG_FIELD(ID_ISAR3_EL1, SIMD, 4, 4)
->>>> +    IDREG_FIELD(ID_ISAR3_EL1, Saturate, 0, 4)
->>>> +IDREG_END(ID_ISAR3_EL1)
->>>> +
->>>> +IDREG_START(ID_ISAR4_EL1)
->>>> +    IDREG_FIELD(ID_ISAR4_EL1, SWP_frac, 28, 4)
->>>> +    IDREG_FIELD(ID_ISAR4_EL1, PSR_M, 24, 4)
->>>> +    IDREG_FIELD(ID_ISAR4_EL1, SynchPrim_frac, 20, 4)
->>>> +    IDREG_FIELD(ID_ISAR4_EL1, Barrier, 16, 4)
->>>> +    IDREG_FIELD(ID_ISAR4_EL1, SMC, 12, 4)
->>>> +    IDREG_FIELD(ID_ISAR4_EL1, Writeback, 8, 4)
->>>> +    IDREG_FIELD(ID_ISAR4_EL1, WithShifts, 4, 4)
->>>> +    IDREG_FIELD(ID_ISAR4_EL1, Unpriv, 0, 4)
->>>> +IDREG_END(ID_ISAR4_EL1)
->>>> +
->>>> +IDREG_START(ID_ISAR5_EL1)
->>>> +    IDREG_FIELD(ID_ISAR5_EL1, VCMA, 28, 4)
->>>> +    IDREG_FIELD(ID_ISAR5_EL1, RDM, 24, 4)
->>>> +    IDREG_FIELD(ID_ISAR5_EL1, CRC32, 16, 4)
->>>> +    IDREG_FIELD(ID_ISAR5_EL1, SHA2, 12, 4)
->>>> +    IDREG_FIELD(ID_ISAR5_EL1, SHA1, 8, 4)
->>>> +    IDREG_FIELD(ID_ISAR5_EL1, AES, 4, 4)
->>>> +    IDREG_FIELD(ID_ISAR5_EL1, SEVL, 0, 4)
->>>> +IDREG_END(ID_ISAR5_EL1)
->>>> +
->>>> +IDREG_START(ID_ISAR6_EL1)
->>>> +    IDREG_FIELD(ID_ISAR6_EL1, CLRBHB, 28, 4)
->>>> +    IDREG_FIELD(ID_ISAR6_EL1, I8MM, 24, 4)
->>>> +    IDREG_FIELD(ID_ISAR6_EL1, BF16, 20, 4)
->>>> +    IDREG_FIELD(ID_ISAR6_EL1, SPECRES, 16, 4)
->>>> +    IDREG_FIELD(ID_ISAR6_EL1, SB, 12, 4)
->>>> +    IDREG_FIELD(ID_ISAR6_EL1, FHM, 8, 4)
->>>> +    IDREG_FIELD(ID_ISAR6_EL1, DP, 4, 4)
->>>> +    IDREG_FIELD(ID_ISAR6_EL1, JSCVT, 0, 4)
->>>> +IDREG_END(ID_ISAR6_EL1)
->>>> +
->>>> +IDREG_START(ID_MMFR0_EL1)
->>>> +    IDREG_FIELD(ID_MMFR0_EL1, InnerShr, 28, 4)
->>>> +    IDREG_FIELD(ID_MMFR0_EL1, FCSE, 24, 4)
->>>> +    IDREG_FIELD(ID_MMFR0_EL1, AuxReg, 20, 4)
->>>> +    IDREG_FIELD(ID_MMFR0_EL1, TCM, 16, 4)
->>>> +    IDREG_FIELD(ID_MMFR0_EL1, ShareLvl, 12, 4)
->>>> +    IDREG_FIELD(ID_MMFR0_EL1, OuterShr, 8, 4)
->>>> +    IDREG_FIELD(ID_MMFR0_EL1, PMSA, 4, 4)
->>>> +    IDREG_FIELD(ID_MMFR0_EL1, VMSA, 0, 4)
->>>> +IDREG_END(ID_MMFR0_EL1)
->>>> +
->>>> +IDREG_START(ID_MMFR1_EL1)
->>>> +    IDREG_FIELD(ID_MMFR1_EL1, BPred, 28, 4)
->>>> +    IDREG_FIELD(ID_MMFR1_EL1, L1TstCln, 24, 4)
->>>> +    IDREG_FIELD(ID_MMFR1_EL1, L1Uni, 20, 4)
->>>> +    IDREG_FIELD(ID_MMFR1_EL1, L1Hvd, 16, 4)
->>>> +    IDREG_FIELD(ID_MMFR1_EL1, L1UniSW, 12, 4)
->>>> +    IDREG_FIELD(ID_MMFR1_EL1, L1HvdSW, 8, 4)
->>>> +    IDREG_FIELD(ID_MMFR1_EL1, L1UniVA, 4, 4)
->>>> +    IDREG_FIELD(ID_MMFR1_EL1, L1HvdVA, 0, 4)
->>>> +IDREG_END(ID_MMFR1_EL1)
->>>> +
->>>> +IDREG_START(ID_MMFR2_EL1)
->>>> +    IDREG_FIELD(ID_MMFR2_EL1, HWAccFlg, 28, 4)
->>>> +    IDREG_FIELD(ID_MMFR2_EL1, WFIStall, 24, 4)
->>>> +    IDREG_FIELD(ID_MMFR2_EL1, MemBarr, 20, 4)
->>>> +    IDREG_FIELD(ID_MMFR2_EL1, UniTLB, 16, 4)
->>>> +    IDREG_FIELD(ID_MMFR2_EL1, HvdTLB, 12, 4)
->>>> +    IDREG_FIELD(ID_MMFR2_EL1, L1HvdRng, 8, 4)
->>>> +    IDREG_FIELD(ID_MMFR2_EL1, L1HvdBG, 4, 4)
->>>> +    IDREG_FIELD(ID_MMFR2_EL1, L1HvdFG, 0, 4)
->>>> +IDREG_END(ID_MMFR2_EL1)
->>>> +
->>>> +IDREG_START(ID_MMFR3_EL1)
->>>> +    IDREG_FIELD(ID_MMFR3_EL1, Supersec, 28, 4)
->>>> +    IDREG_FIELD(ID_MMFR3_EL1, CMemSz, 24, 4)
->>>> +    IDREG_FIELD(ID_MMFR3_EL1, CohWalk, 20, 4)
->>>> +    IDREG_FIELD(ID_MMFR3_EL1, PAN, 16, 4)
->>>> +    IDREG_FIELD(ID_MMFR3_EL1, MaintBcst, 12, 4)
->>>> +    IDREG_FIELD(ID_MMFR3_EL1, BPMaint, 8, 4)
->>>> +    IDREG_FIELD(ID_MMFR3_EL1, CMaintSW, 4, 4)
->>>> +    IDREG_FIELD(ID_MMFR3_EL1, CMaintVA, 0, 4)
->>>> +IDREG_END(ID_MMFR3_EL1)
->>>> +
->>>> +IDREG_START(ID_MMFR4_EL1)
->>>> +    IDREG_FIELD(ID_MMFR4_EL1, EVT, 28, 4)
->>>> +    IDREG_FIELD(ID_MMFR4_EL1, CCIDX, 24, 4)
->>>> +    IDREG_FIELD(ID_MMFR4_EL1, LSM, 20, 4)
->>>> +    IDREG_FIELD(ID_MMFR4_EL1, HPDS, 16, 4)
->>>> +    IDREG_FIELD(ID_MMFR4_EL1, CnP, 12, 4)
->>>> +    IDREG_FIELD(ID_MMFR4_EL1, XNX, 8, 4)
->>>> +    IDREG_FIELD(ID_MMFR4_EL1, AC2, 4, 4)
->>>> +    IDREG_FIELD(ID_MMFR4_EL1, SpecSEI, 0, 4)
->>>> +IDREG_END(ID_MMFR4_EL1)
->>>> +
->>>> +IDREG_START(ID_MMFR5_EL1)
->>>> +    IDREG_FIELD(ID_MMFR5_EL1, nTLBPA, 4, 4)
->>>> +    IDREG_FIELD(ID_MMFR5_EL1, ETS, 0, 4)
->>>> +IDREG_END(ID_MMFR5_EL1)
->>>> +
->>>> +IDREG_START(ID_PFR0_EL1)
->>>> +    IDREG_FIELD(ID_PFR0_EL1, RAS, 28, 4)
->>>> +    IDREG_FIELD(ID_PFR0_EL1, DIT, 24, 4)
->>>> +    IDREG_FIELD(ID_PFR0_EL1, AMU, 20, 4)
->>>> +    IDREG_FIELD(ID_PFR0_EL1, CSV2, 16, 4)
->>>> +    IDREG_FIELD(ID_PFR0_EL1, State3, 12, 4)
->>>> +    IDREG_FIELD(ID_PFR0_EL1, State2, 8, 4)
->>>> +    IDREG_FIELD(ID_PFR0_EL1, State1, 4, 4)
->>>> +    IDREG_FIELD(ID_PFR0_EL1, State0, 0, 4)
->>>> +IDREG_END(ID_PFR0_EL1)
->>>> +
->>>> +IDREG_START(ID_PFR1_EL1)
->>>> +    IDREG_FIELD(ID_PFR1_EL1, GIC, 28, 4)
->>>> +    IDREG_FIELD(ID_PFR1_EL1, Virt_frac, 24, 4)
->>>> +    IDREG_FIELD(ID_PFR1_EL1, Sec_frac, 20, 4)
->>>> +    IDREG_FIELD(ID_PFR1_EL1, GenTimer, 16, 4)
->>>> +    IDREG_FIELD(ID_PFR1_EL1, Virtualization, 12, 4)
->>>> +    IDREG_FIELD(ID_PFR1_EL1, MProgMod, 8, 4)
->>>> +    IDREG_FIELD(ID_PFR1_EL1, Security, 4, 4)
->>>> +    IDREG_FIELD(ID_PFR1_EL1, ProgMod, 0, 4)
->>>> +IDREG_END(ID_PFR1_EL1)
->>>> +
->>>> +IDREG_START(ID_PFR2_EL1)
->>>>   IDREG_FIELD(ID_PFR2_EL1, RAS_frac, 8, 4)
->>>> +    IDREG_FIELD(ID_PFR2_EL1, SSBS, 4, 4)
->>>> +    IDREG_FIELD(ID_PFR2_EL1, CSV3, 0, 4)
->>>> +IDREG_END(ID_PFR2_EL1)
->>>> +
->>>> +IDREG_START(MIDR_EL1)
->>>> +    IDREG_FIELD(MIDR_EL1, Implementer, 24, 8)
->>>> +    IDREG_FIELD(MIDR_EL1, Variant, 20, 4)
->>>> +    IDREG_FIELD(MIDR_EL1, Architecture, 16, 4)
->>>> +    IDREG_FIELD(MIDR_EL1, PartNum, 4, 12)
->>>> +    IDREG_FIELD(MIDR_EL1, Revision, 0, 4)
->>>> +IDREG_END(MIDR_EL1)
->>>> +
->>>> +IDREG_START(MPIDR_EL1)
->>>> +    IDREG_FIELD(MPIDR_EL1, Aff3, 32, 8)
->>>> +    IDREG_FIELD(MPIDR_EL1, U, 30, 1)
->>>> +    IDREG_FIELD(MPIDR_EL1, MT, 24, 1)
->>>> +    IDREG_FIELD(MPIDR_EL1, Aff2, 16, 8)
->>>> +    IDREG_FIELD(MPIDR_EL1, Aff1, 8, 8)
->>>> +    IDREG_FIELD(MPIDR_EL1, Aff0, 0, 8)
->>>> +IDREG_END(MPIDR_EL1)
->>>> +
->>>> +IDREG_START(MVFR0_EL1)
->>>> +    IDREG_FIELD(MVFR0_EL1, FPRound, 28, 4)
->>>> +    IDREG_FIELD(MVFR0_EL1, FPShVec, 24, 4)
->>>> +    IDREG_FIELD(MVFR0_EL1, FPSqrt, 20, 4)
->>>> +    IDREG_FIELD(MVFR0_EL1, FPDivide, 16, 4)
->>>> +    IDREG_FIELD(MVFR0_EL1, FPTrap, 12, 4)
->>>> +    IDREG_FIELD(MVFR0_EL1, FPDP, 8, 4)
->>>> +    IDREG_FIELD(MVFR0_EL1, FPSP, 4, 4)
->>>> +    IDREG_FIELD(MVFR0_EL1, SIMDReg, 0, 4)
->>>> +IDREG_END(MVFR0_EL1)
->>>> +
->>>> +IDREG_START(MVFR1_EL1)
->>>> +    IDREG_FIELD(MVFR1_EL1, SIMDFMAC, 28, 4)
->>>> +    IDREG_FIELD(MVFR1_EL1, FPHP, 24, 4)
->>>> +    IDREG_FIELD(MVFR1_EL1, SIMDHP, 20, 4)
->>>> +    IDREG_FIELD(MVFR1_EL1, SIMDSP, 16, 4)
->>>> +    IDREG_FIELD(MVFR1_EL1, SIMDInt, 12, 4)
->>>> +    IDREG_FIELD(MVFR1_EL1, SIMDLS, 8, 4)
->>>> +    IDREG_FIELD(MVFR1_EL1, FPDNaN, 4, 4)
->>>> +    IDREG_FIELD(MVFR1_EL1, FPFtZ, 0, 4)
->>>> +IDREG_END(MVFR1_EL1)
->>>> +
->>>> +IDREG_START(MVFR2_EL1)
->>>> +    IDREG_FIELD(MVFR2_EL1, FPMisc, 4, 4)
->>>> +    IDREG_FIELD(MVFR2_EL1, SIMDMisc, 0, 4)
->>>> +IDREG_END(MVFR2_EL1)
->>>> +
->>>> +IDREG_START(REVIDR_EL1)
->>>> +IDREG_END(REVIDR_EL1)
->>>> +
->>>> +IDREG_START(SMIDR_EL1)
->>>> +    IDREG_FIELD(SMIDR_EL1, NSMC, 56, 4)
->>>> +    IDREG_FIELD(SMIDR_EL1, HIP, 52, 4)
->>>> +    IDREG_FIELD(SMIDR_EL1, Affinity2, 32, 20)
->>>> +    IDREG_FIELD(SMIDR_EL1, Implementer, 24, 8)
->>>> +    IDREG_FIELD(SMIDR_EL1, Revision, 16, 8)
->>>> +    IDREG_FIELD(SMIDR_EL1, SMPS, 15, 1)
->>>> +    IDREG_FIELD(SMIDR_EL1, SH, 13, 2)
->>>> +    IDREG_FIELD(SMIDR_EL1, Affinity, 0, 12)
->>>> +IDREG_END(SMIDR_EL1)
->>>> +
->>>> -- 
->>>> 2.53.0
->>>>
->>> what is the point of a separate patch for reserved fields?
->>> [PATCH v9 19/26] target/arm/cpu-idregs.h.inc: Generate reserved fields
->>> Can we squash these together?
->> Well I think the support of RES fields introduce quite a significant
->> complexity in scripts/update-aarch64-cpu-sysreg-properties.py,
->> especially because several RESx fields can be in the same reg, inducing
->> ordering issues which I should have better commented ;-) Also having it
->> incremental allows to easily diff the generated file.
->>
->> So if you don't mind I prefer keeping it separate. I will endeavour to
->> add more comments too
->>
-> Okay sure, can we move it closer to this commit if possible?
-
-sure
-
-Eric
->
-> Thanks,
-> Khushit
->> Eric
-
+Before this change, each unimplemented device needed its own field in=0A=
+AspeedSoCState. This made the variable names confusing. For example,=0A=
+AspeedSoCState has "udc" as an unimplemented device, but=0A=
+Aspeed2600SoCState also has "udc" as the real UDC model.=0A=
+=0A=
+Use the "unimp" array in AspeedSoCState for all unimplemented devices,=0A=
+and use the AspeedUnimpDevice table to describe them. This makes the=0A=
+code easier to maintain and read. Convert AST1030/AST1060 to use them.=0A=
+=0A=
+This also fixes a type mismatch. AST10x0 used the "pwm" field=0A=
+(AspeedPWMState) and the "sgpiom" field (AspeedSGPIOState array) to=0A=
+create unimplemented devices. They now use the "unimp" array instead.=0A=
+=0A=
+No functional change.=0A=
+=0A=
+Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>=0A=
+---=0A=
+ hw/arm/aspeed_ast10x0.c | 64 ++++++++++++++++-------------------------=0A=
+ 1 file changed, 25 insertions(+), 39 deletions(-)=0A=
+=0A=
+diff --git a/hw/arm/aspeed_ast10x0.c b/hw/arm/aspeed_ast10x0.c=0A=
+index aeb5a4423d..cc587dcc1a 100644=0A=
+--- a/hw/arm/aspeed_ast10x0.c=0A=
++++ b/hw/arm/aspeed_ast10x0.c=0A=
+@@ -17,8 +17,6 @@=0A=
+ #include "hw/misc/unimp.h"=0A=
+ #include "hw/arm/aspeed_soc.h"=0A=
+ =0A=
+-#define ASPEED_SOC_IOMEM_SIZE 0x00200000=0A=
+-=0A=
+ static const hwaddr aspeed_soc_ast1030_memmap[] =3D {=0A=
+     [ASPEED_DEV_SRAM0]     =3D 0x00000000,=0A=
+     [ASPEED_DEV_SRAM1]     =3D 0x79000000, /* SEC SRAM */=0A=
+@@ -99,6 +97,17 @@ static const int aspeed_soc_ast1030_irqmap[] =3D {=0A=
+     [ASPEED_DEV_JTAG1]     =3D 53,=0A=
+ };=0A=
+ =0A=
++static const AspeedUnimpDevice aspeed_soc_ast10x0_unimp_devs[] =3D {=0A=
++    { "iomem",   "aspeed.io",     ASPEED_DEV_IOMEM,   0x00200000 },=0A=
++    { "pwm",     "aspeed.pwm",    ASPEED_DEV_PWM,     0x100 },=0A=
++    { "espi",    "aspeed.espi",   ASPEED_DEV_ESPI,    0x800 },=0A=
++    { "udc",     "aspeed.udc",    ASPEED_DEV_UDC,     0x1000 },=0A=
++    { "sgpiom",  "aspeed.sgpiom", ASPEED_DEV_SGPIOM0, 0x100 },=0A=
++    { "jtag[0]", "aspeed.jtag0",  ASPEED_DEV_JTAG0,   0x20 },=0A=
++    { "jtag[1]", "aspeed.jtag1",  ASPEED_DEV_JTAG1,   0x20 },=0A=
++};=0A=
++QEMU_BUILD_BUG_ON(ARRAY_SIZE(aspeed_soc_ast10x0_unimp_devs) > ASPEED_UNIMP=
+_NUM);=0A=
++=0A=
+ static qemu_irq aspeed_soc_ast1030_get_irq(AspeedSoCState *s, int dev)=0A=
+ {=0A=
+     Aspeed10x0SoCState *a =3D ASPEED10X0_SOC(s);=0A=
+@@ -162,16 +171,10 @@ static void aspeed_soc_ast10x0_init(Object *obj, cons=
+t char *socname)=0A=
+     snprintf(typename, sizeof(typename), "aspeed.hace-%s", socname);=0A=
+     object_initialize_child(obj, "hace", &s->hace, typename);=0A=
+ =0A=
+-    object_initialize_child(obj, "iomem", &s->iomem, TYPE_UNIMPLEMENTED_DE=
+VICE);=0A=
+-    object_initialize_child(obj, "pwm", &s->pwm, TYPE_UNIMPLEMENTED_DEVICE=
+);=0A=
+-    object_initialize_child(obj, "espi", &s->espi, TYPE_UNIMPLEMENTED_DEVI=
+CE);=0A=
+-    object_initialize_child(obj, "udc", &s->udc, TYPE_UNIMPLEMENTED_DEVICE=
+);=0A=
+-    object_initialize_child(obj, "sgpiom", &s->sgpiom,=0A=
+-                            TYPE_UNIMPLEMENTED_DEVICE);=0A=
+-    object_initialize_child(obj, "jtag[0]", &s->jtag[0],=0A=
+-                            TYPE_UNIMPLEMENTED_DEVICE);=0A=
+-    object_initialize_child(obj, "jtag[1]", &s->jtag[1],=0A=
+-                            TYPE_UNIMPLEMENTED_DEVICE);=0A=
++    for (i =3D 0; i < ARRAY_SIZE(aspeed_soc_ast10x0_unimp_devs); i++) {=0A=
++        object_initialize_child(obj, aspeed_soc_ast10x0_unimp_devs[i].qom_=
+name,=0A=
++                                &s->unimp[i], TYPE_UNIMPLEMENTED_DEVICE);=
+=0A=
++    }=0A=
+ }=0A=
+ =0A=
+ static void aspeed_soc_ast1030_init(Object *obj)=0A=
+@@ -209,17 +212,22 @@ static bool aspeed_soc_ast10x0_realize(Aspeed10x0SoCS=
+tate *a, Error **errp)=0A=
+     int uart;=0A=
+     int i;=0A=
+     g_autofree char *sram_name =3D NULL;=0A=
++    const AspeedUnimpDevice *unimp;=0A=
+ =0A=
+     if (!clock_has_source(s->sysclk)) {=0A=
+         error_setg(errp, "sysclk clock must be wired up by the board code"=
+);=0A=
+         return false;=0A=
+     }=0A=
+ =0A=
+-    /* General I/O memory space to catch all unimplemented device */=0A=
+-    aspeed_mmio_map_unimplemented(s->memory, SYS_BUS_DEVICE(&s->iomem),=0A=
+-                                  "aspeed.io",=0A=
+-                                  sc->memmap[ASPEED_DEV_IOMEM],=0A=
+-                                  ASPEED_SOC_IOMEM_SIZE);=0A=
++    /* Unimplemented devices */=0A=
++    for (i =3D 0; i < ARRAY_SIZE(aspeed_soc_ast10x0_unimp_devs); i++) {=0A=
++        unimp =3D &aspeed_soc_ast10x0_unimp_devs[i];=0A=
++        aspeed_mmio_map_unimplemented(s->memory, SYS_BUS_DEVICE(&s->unimp[=
+i]),=0A=
++                                      unimp->region_name,=0A=
++                                      sc->memmap[unimp->memmap_idx],=0A=
++                                      unimp->size);=0A=
++    }=0A=
++=0A=
+     /* AST10x0 CPU Core */=0A=
+     armv7m =3D DEVICE(&a->armv7m);=0A=
+     qdev_prop_set_uint32(armv7m, "num-irq", 256);=0A=
+@@ -394,28 +402,6 @@ static bool aspeed_soc_ast10x0_realize(Aspeed10x0SoCSt=
+ate *a, Error **errp)=0A=
+     sysbus_connect_irq(SYS_BUS_DEVICE(&s->gpio), 0,=0A=
+                        aspeed_soc_ast1030_get_irq(s, ASPEED_DEV_GPIO));=0A=
+ =0A=
+-    aspeed_mmio_map_unimplemented(s->memory, SYS_BUS_DEVICE(&s->pwm),=0A=
+-                                  "aspeed.pwm",=0A=
+-                                  sc->memmap[ASPEED_DEV_PWM], 0x100);=0A=
+-=0A=
+-    aspeed_mmio_map_unimplemented(s->memory, SYS_BUS_DEVICE(&s->espi),=0A=
+-                                  "aspeed.espi",=0A=
+-                                  sc->memmap[ASPEED_DEV_ESPI], 0x800);=0A=
+-=0A=
+-    aspeed_mmio_map_unimplemented(s->memory, SYS_BUS_DEVICE(&s->udc),=0A=
+-                                  "aspeed.udc",=0A=
+-                                  sc->memmap[ASPEED_DEV_UDC], 0x1000);=0A=
+-    aspeed_mmio_map_unimplemented(s->memory, SYS_BUS_DEVICE(&s->sgpiom),=
+=0A=
+-                                  "aspeed.sgpiom",=0A=
+-                                  sc->memmap[ASPEED_DEV_SGPIOM0], 0x100);=
+=0A=
+-=0A=
+-    aspeed_mmio_map_unimplemented(s->memory, SYS_BUS_DEVICE(&s->jtag[0]),=
+=0A=
+-                                  "aspeed.jtag",=0A=
+-                                  sc->memmap[ASPEED_DEV_JTAG0], 0x20);=0A=
+-    aspeed_mmio_map_unimplemented(s->memory, SYS_BUS_DEVICE(&s->jtag[1]),=
+=0A=
+-                                  "aspeed.jtag",=0A=
+-                                  sc->memmap[ASPEED_DEV_JTAG1], 0x20);=0A=
+-=0A=
+     return true;=0A=
+ }=0A=
+ =0A=
+-- =0A=
+2.53.0=0A=
 

@@ -4,79 +4,144 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8A12CCA5FC4
-	for <qemu-arm@archiver.kernel.org>; Wed, 30 Sep 2026 19:26:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2DC24CA5FC4
+	for <qemu-arm@archiver.kernel.org>; Wed, 30 Sep 2026 20:39:03 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xBzwP-0004OW-9t; Wed, 30 Sep 2026 15:26:09 -0400
+	id 1xC14h-0004gR-Ry; Wed, 30 Sep 2026 16:38:47 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <dominic.plunkett@gmail.com>)
- id 1xBzOy-0000pf-2t
- for qemu-arm@nongnu.org; Wed, 30 Sep 2026 14:51:36 -0400
-Received: from mail-wr2-f34.google.com ([74.125.225.98])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <dominic.plunkett@gmail.com>)
- id 1xBzOt-00080p-0A
- for qemu-arm@nongnu.org; Wed, 30 Sep 2026 14:51:35 -0400
-Received: by mail-wr2-f34.google.com with SMTP id
- ffacd0b85a97d-48b00a0ac65so664856f8f.0
- for <qemu-arm@nongnu.org>; Wed, 30 Sep 2026 11:51:29 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <philmd@oss.qualcomm.com>)
+ id 1xC14e-0004g2-NT
+ for qemu-arm@nongnu.org; Wed, 30 Sep 2026 16:38:44 -0400
+Received: from mx0a-0031df01.pphosted.com ([205.220.168.131])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <philmd@oss.qualcomm.com>)
+ id 1xC14d-0005Tq-1r
+ for qemu-arm@nongnu.org; Wed, 30 Sep 2026 16:38:44 -0400
+Received: from pps.filterd (m0279865.ppops.net [127.0.0.1])
+ by mx0a-0031df01.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id
+ 68UIQqS71210297
+ for <qemu-arm@nongnu.org>; Wed, 30 Sep 2026 20:38:40 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qualcomm.com; h=
+ cc:content-transfer-encoding:content-type:date:from:in-reply-to
+ :message-id:mime-version:references:subject:to; s=qcppdkim1; bh=
+ Skp8V3QNb0VTWdC9jHILIB80vtdjxYqtIyw0RhGaKJk=; b=Ki1Gqm43udDm9LMY
+ 55kgJ5DgRhvpqaIUiTGcD0Dv88udM+w4zS6LRqGQ0M1WT2LUbLqUx36+jqajsWlw
+ 9Edd3OtQoXrK/CFJIPtbTCveb0jTpP5nPTd5z8kaI4dmGqyrkDEieKp4iCCSdpRn
+ 1fx8HbvhoURdGFWysELqId5KtWbcXdARWIWeYhVyBMd329gNV5mXOr89jFh1qiIl
+ 5RZfcrE6HvXxeUDElRahvUad/lMD6O9M7+LNn1kaQ22Om7DJDcG/MDPLXAmcdacc
+ CybneR3Qn+I+u7P68oi+N6arapD5NBblJ5PhGpuY86gZKarpPhezc/rFuy4AfoHL
+ dOIl6w==
+Received: from mail-qv1-f70.google.com (mail-qv1-f70.google.com
+ [209.85.219.70])
+ by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 4h0yh82xqy-1
+ (version=TLSv1.3 cipher=TLS_AES_128_GCM_SHA256 bits=128 verify=NOT)
+ for <qemu-arm@nongnu.org>; Wed, 30 Sep 2026 20:38:40 +0000 (GMT)
+Received: by mail-qv1-f70.google.com with SMTP id
+ 6a1803df08f44-91789a9107fso40567746d6.1
+ for <qemu-arm@nongnu.org>; Wed, 30 Sep 2026 13:38:40 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=oss.qualcomm.com; s=google; t=1790800719; x=1791405519; darn=nongnu.org;
+ h=content-transfer-encoding:content-type:in-reply-to:from:references
+ :cc:to:content-language:subject:user-agent:mime-version:date
+ :message-id:from:to:cc:subject:date:message-id:reply-to:content-type;
+ bh=Skp8V3QNb0VTWdC9jHILIB80vtdjxYqtIyw0RhGaKJk=;
+ b=Ln0BI/WT4GNBB6TQQcmAQU35Qk93Zicq5nVchUVVXopDrURSSiSuHKPemMEJPXbyHo
+ /7u2UuMzRdv8miqhMKJFof9Yui2qTjQ5/2X282Em4o7vzyAfCLpzbKiFePMUyvR9DBWg
+ 5Ou83Lgg4C6Ew7mtTAnwZ3uIPM67up5SXnSMqlewKohaq1wGMoL6a8v7NeNVSL1ov7T7
+ 1xITBIZ8XjsFIYkgWFElMPOCiWhzGLZRUualArt8JabNH4zLu96NK0WOhhgYr4GWJrUb
+ 7wmaQe6jY3pAXtHoedo/GwLYT6+Nq3xZPkhLIP8PGlHyGEITa/sS5bbnO5EyvkxapJLy
+ X/Pg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20260707; t=1790794289; x=1791399089;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
- :to:cc:subject:date:message-id:reply-to:content-type;
- bh=vqQmC6CDMlPYibl5/L6XkExEQME5eKRF7tUaPmypv+M=;
- b=ms7X/Q76ommKVdJricQ21klJZpKU1E8wKuZgbXDYLiVP0N498d3qO3D10CePkOvTwK
- St17PEz5vGxDO9smSbsT4+nnp1wuBsEfFCcSkg3C5+9r/cT7KRlPg/Y1xR67wO4iIdet
- e1jgZqwNWofkkpnwo4vbiensQl/GZDP4Gi0Z1zX1aUJk07h4MOM65IrtdBt6FuLeEvD7
- RCBVe3mtXH5vlOSmz3jPtuVpWovds0z60zDEuDdlCF8DdPLbGBuIg5SCWNZvH2UIUf5e
- c00qCSS9OFpT6w3R50DM6hwhk71HQFUJDigV33jcR+cPIg0C9BvayoEsx191BdBMkrbv
- ACCA==
+ d=1e100.net; s=20260707; t=1790800719; x=1791405519;
+ h=content-transfer-encoding:content-type:in-reply-to:from:references
+ :cc:to:content-language:subject:user-agent:mime-version:date
+ :message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+ :message-id:reply-to:content-type;
+ bh=Skp8V3QNb0VTWdC9jHILIB80vtdjxYqtIyw0RhGaKJk=;
+ b=NzdY9vMPdnpQZNomi6YGTTiv9CYLRdXkEpyJ8f11yLTRCwfl1Bv9MTOPoBFr9ql1AV
+ xI1AHyb1RVeA5frs6chiJTwQXrAjoffH3+j6F74YazooC0UnvksR2Sh8f2VEXRIpur7P
+ xmF1jLoRMCmxcwNaLzPrAHqKgS26iuI0l4YGCBBZn91fWl3JRcWI+ZcCEy006IJU2Xao
+ oLyNzBzuZ1HtCt0tb+OcHe2L8VAqbRdXQVjvH/lRwcwmFbAZv9m0vHWXsNKlXSU2M068
+ 2giDI0zijySRjWvsWlcDX0f0VPWAWM9c5aV1wkMsyifeBMj2ILQZ7s9JM6hwzr+ilAtg
+ 7LFg==
 X-Forwarded-Encrypted: i=1;
- AKwUvBySVobuQ4tiCeyVs3I4yul/KgVVoo+Br51FldGP9CbFhzx1Af+TpJLfK/Jr7/u3XaI0/MT1n20d2Q==@nongnu.org
-X-Gm-Message-State: AFq9FYKq5g/v8RAUaLKZEb1W2aVm3lkK/l0AqV3AUagdBgBl9uFv5Lwr
- DVOkiBDdoB5qAJWpgayHKwYVLL8MJZP27rVe9Rn/PozLa59/NXwIJqui
-X-Gm-Gg: AYBFou2zBeDaeongde49gQ07fp4mGHSGoEjQBvfjAQDji7cyVxn3W+R78OHSSpuzk9l
- cHt1X0+BZ2NtXdPrHSadDWdbjr9NIxoS4G0E+3lDFXAU7+/TwGsGZVNpWstCWmMJCwe3iWxEUQl
- FnqFT9skeZ14ZtMI9LpgvQot3eYRN4Es7p9i2oBP2dDVgRiFnee1EpTY3owgXVQzvCWzBhTd7Ys
- a/bxr2HwNHYBeU+iV3X76l9wSzpEuiFv/Ae3msZKXUaBi2goJ0XHg0lEQ/ozLLl2ofcMNOUKZgI
- +4TTUS8IeHNmNBFl2FiVEJvJJy1Hx1apaNqEisihIDQEPoauIXpKqMK5vnFAMytAzHVCluo/cMT
- 9fB7nUkyPckzKbQtkTOL9klPuaeFkhOnjcKhpLIr+ZkRgNo3GNzHhIM19PFrTb+qm+3/01hezAr
- WEVO3ATfXk6Nmo3dWGBn/YTtdHhqyD0o0Atanall2W4178Dec9xTcRUp0=
-X-Received: by 2002:a5d:5846:0:b0:48a:f215:c67b with SMTP id
- ffacd0b85a97d-48b0251d247mr4972583f8f.37.1790794288662; 
- Wed, 30 Sep 2026 11:51:28 -0700 (PDT)
-Received: from tower ([185.182.52.52]) by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-48b068ff96dsm1162790f8f.8.2026.09.30.11.51.27
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 30 Sep 2026 11:51:28 -0700 (PDT)
-From: Dominic P <gcc@gcc.dp11.uk>
-To: qemu-devel@nongnu.org
-Cc: richard.henderson@linaro.org, peter.maydell@linaro.org,
- pbonzini@redhat.com, qemu-arm@nongnu.org, qemu-stable@nongnu.org
-Subject: [PATCH 1/3] tcg/optimize: Do not derive s_mask from rotated s_mask
-Date: Wed, 30 Sep 2026 19:51:22 +0100
-Message-ID: <20260930185124.3036980-2-gcc@gcc.dp11.uk>
-X-Mailer: git-send-email 2.55.0
-In-Reply-To: <20260930185124.3036980-1-gcc@gcc.dp11.uk>
-References: <20260930185124.3036980-1-gcc@gcc.dp11.uk>
+ AKwUvBwMibcKX2OSeXyFM/w4zxyMxvkzjP0F7xbxliIFEOkWsAekp7viHmhT80QdhyeTFQiUniW7cV6EwA==@nongnu.org
+X-Gm-Message-State: AFuF++k4ByNI3qwDxM8iwXFGrrOsbiXB0jOJL641ZU4eFbad1BkDEZlm
+ ESLtLHXmu/Ytn3l0mhxYQLeTkSBxUwBdew9ym2aCROzkZ61xGU/F3HpmZ5jfa97evgmf6yMnHTh
+ 435BsyjswaG0Z3jaHHWM90kb1p0/WV5DOn5X+5Cnrz3bItxSnRVmoR/g=
+X-Gm-Gg: AYBFou33/aSBs08kHt0Rp2TxX1KoK43rmXZc7gEZrSi7WEW9XLf9sUMYGpxXp+S8CxW
+ aNx3WAC0GF/dGHK784Cxl7CJaI6AxEuK70XrNLNGnkJnHCIELZkslQ+i4IG5beg8BfJuybfop0i
+ 0jurIgcUdWjvTGnJWG1ShjUoN2gPyOjy00vDc7F2ASDVC2s7sRcGLpwJFVYqwE9Cj4iQqEqiLmL
+ 11pWHewme0GzwahmyIeMRmen9jGVVKtzt2UFWoqMT6uTmBYDLErgQJ1Hwfr4ml9qM9sDHJRGEC2
+ Z8TJ2gbDOVRCQ0qSQso7xoIut9RL6kOok4mIq4B8XFpZxTGjePvFAH6LB78As/pHyVHS6hUBNMd
+ b35VfRwzzrfs09nhO1A3kF4EJ1aE6mGxSNQ==
+X-Received: by 2002:a05:620a:258f:b0:936:e18d:763d with SMTP id
+ af79cd13be357-93ca95e6ef8mr493018985a.8.1790800719204; 
+ Wed, 30 Sep 2026 13:38:39 -0700 (PDT)
+X-Received: by 2002:a05:620a:258f:b0:936:e18d:763d with SMTP id
+ af79cd13be357-93ca95e6ef8mr493013285a.8.1790800718619; 
+ Wed, 30 Sep 2026 13:38:38 -0700 (PDT)
+Received: from [192.168.69.225] (pmd666.hd.free.fr. [88.187.86.199])
+ by smtp.gmail.com with ESMTPSA id
+ ffacd0b85a97d-48b068bc9b1sm1668615f8f.4.2026.09.30.13.38.37
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Wed, 30 Sep 2026 13:38:38 -0700 (PDT)
+Message-ID: <3d020687-5d00-4aaa-8c77-4d73ae8c105e@oss.qualcomm.com>
+Date: Wed, 30 Sep 2026 22:38:36 +0200
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=74.125.225.98;
- envelope-from=dominic.plunkett@gmail.com; helo=mail-wr2-f34.google.com
-X-Spam_score_int: -15
-X-Spam_score: -1.6
-X-Spam_bar: -
-X-Spam_report: (-1.6 / 5.0 requ) BAYES_00=-1.9,
- FREEMAIL_FORGED_FROMDOMAIN=0.001, FREEMAIL_FROM=0.001,
- HEADER_FROM_DIFFERENT_DOMAINS=0.249, RCVD_IN_DNSWL_NONE=-0.0001,
- RCVD_IN_MSPIKE_H2=0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=no autolearn_force=no
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 3/3] tests/tcg/i386: Build test-i386-opt-shr
+Content-Language: en-US
+To: Dominic P <gcc@gcc.dp11.uk>, qemu-devel@nongnu.org,
+ Pierrick Bouvier <pierrick.bouvier@linaro.org>
+Cc: richard.henderson@linaro.org, peter.maydell@linaro.org,
+ pbonzini@redhat.com, qemu-arm@nongnu.org
+References: <20260930185124.3036980-1-gcc@gcc.dp11.uk>
+ <20260930185124.3036980-4-gcc@gcc.dp11.uk>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@oss.qualcomm.com>
+In-Reply-To: <20260930185124.3036980-4-gcc@gcc.dp11.uk>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwOTMwMDA4NCBTYWx0ZWRfX4fdQ5Ohmy3c+
+ Zuq3eyh78vWL3UDIRILAc4Y2ZDyJVjhuEU0CUE5TvdgBNjEFA4r7dZ8N8ijXRTQZCk1013Yacuc
+ M3xNVfEpqr+plsp/cgHWXf6kX8xxNs6Srn2n+sdp1MbDap/nq3f7JBxyH8h0d1TFcori2BdXZun
+ fjd6akAqjTxwbLXwaJOBAIK0TG5Lbva9tgBF8qwbdD2Vec4+2RJx+KLVe4npsyIl29/Rh7rwbXi
+ wIOatq1MPx6qotkrvlZTMp6jxbExRlZyYMt2WxnR4GUx0HPb+aR4490sr4mMBgsAXu9Ro/Pa8zN
+ 2N9gBGzO5EPUqumtbCl1qxp061qvxJGm0tc1fxTB94lYgoF9KKyjg7tjt+A3kwX1aPNxV1Wzdzy
+ TxyyV38yajnDl/8PymyC1xTYAHPSi1qH5UWE/Ba17TCXnraRzZP0+VxycljJVPe9NY0p2NGRLb0
+ V3RZqiC0a2WPWlSox3w==
+X-Proofpoint-ORIG-GUID: hn7alesb2AGUtuSrSl4vIV9n_fcV7ScQ
+X-Authority-Analysis: v=2.4 cv=NedzRGD4 c=1 sm=1 tr=0 ts=6abd7350 cx=c_pps
+ a=oc9J++0uMp73DTRD5QyR2A==:117 a=4s3hRJSeHn4rkQlkrse1kQ==:17
+ a=IkcTkHD0fZMA:10 a=VdqzKS8jKosA:10 a=M51BFTxLslgA:10 a=s4-Qcg_JpJYA:10
+ a=VkNPw1HP01LnGYTKEx00:22 a=u7WPNUs3qKkmUXheDGA7:22 a=Um2Pa8k9VHT-vaBCBUpS:22
+ a=yuWYNVxf1J2BtR792vMA:9 a=QEXdDO2ut3YA:10 a=iYH6xdkBrDN1Jqds4HTS:22
+X-Proofpoint-GUID: hn7alesb2AGUtuSrSl4vIV9n_fcV7ScQ
+X-Proofpoint-Spam-Info: AW1haW4tMjYwOTMwMDA4NCBTYWx0ZWRfX6yKlk74LWRrM
+ ztBWIw8XJqUNKjCShrPQZB0NiByEhiT+/pNir1hPBEawyuaJf7ig0UwVckBHWHIy68cxzJEMa8L
+ NZb95o+Y5r7BR+um0iJM+YPXeTkShng=
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.293,Aquarius:18.0.1176,Hydra:6.1.134,FMLib:17.12.100.49
+ definitions=2026-09-30_04,2026-09-21_02,2025-10-01_01
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
+ malwarescore=0 clxscore=1015 lowpriorityscore=0 priorityscore=1501
+ suspectscore=0 adultscore=0 bulkscore=0 spamscore=0 phishscore=0
+ impostorscore=0 classifier=typeunknown authscore=0 authtc= authcc=
+ route=outbound adjust=0 reason=mlx scancount=1 engine=8.22.0-2609040000
+ definitions=main-2609300084
+Received-SPF: pass client-ip=205.220.168.131;
+ envelope-from=philmd@oss.qualcomm.com; helo=mx0a-0031df01.pphosted.com
+X-Spam_score_int: -27
+X-Spam_score: -2.8
+X-Spam_bar: --
+X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_LOW=-0.7, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-Mailman-Approved-At: Wed, 30 Sep 2026 15:26:08 -0400
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -91,60 +156,31 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-fold_shift computes s_mask for a rotate by a constant by rotating the
-input s_mask.  The result is not a sign mask.  For TCG_TYPE_I32,
-fold_masks_zosa_int then ORs in INT32_MIN, which can make it look like
-one: after sextract_i32 x,0,8 (s_mask ...ffffff80), rotr_i32 by 1 gives
-0x7fffffc0, which becomes ...ffffffc0.  A following sextract_i32 0,8
-is then folded to a mov.  rotl_i32 by 31 fails the same way.
+Cc'ing Pierrick
 
-ARM, qemu-arm exits 255 instead of 7 (correct with -one-insn-per-tb):
-
-    ldr   r1, [r2]        @ *r2 == 3
-    sxtb  r1, r1
-    ror   r1, r1, #1
-    sxtb  r1, r1          @ dropped
-    cmp   r1, #0
-    movle r0, #255
-    movgt r0, #7
-
-i386, the same with rotl_i32:
-
-    movsbl %al, %eax
-    roll   $31, %eax
-    movsbl %al, %eax      # dropped
-
-Handle rotates like the logical right shift and let fold_masks_zo
-recompute s_mask from z_mask and o_mask.
-
-Cc: qemu-stable@nongnu.org
-Fixes: 93a967fbb57 ("tcg/optimize: Propagate sign info for shifting")
-Assisted-by: Claude Opus 5 (Anthropic)
-Signed-off-by: Dominic P <gcc@gcc.dp11.uk>
----
- tcg/optimize.c | 7 +++++--
- 1 file changed, 5 insertions(+), 2 deletions(-)
-
-diff --git a/tcg/optimize.c b/tcg/optimize.c
-index 1e4d2a0a42..27b7682bd5 100644
---- a/tcg/optimize.c
-+++ b/tcg/optimize.c
-@@ -2703,9 +2703,12 @@ static bool fold_shift(OptContext *ctx, TCGOp *op)
-         z_mask = do_constant_folding(op->opc, ctx->type, z_mask, sh);
-         o_mask = do_constant_folding(op->opc, ctx->type, o_mask, sh);
- 
--        if (op->opc == INDEX_op_shr) {
-+        if (op->opc == INDEX_op_shr ||
-+            op->opc == INDEX_op_rotl ||
-+            op->opc == INDEX_op_rotr) {
-             /*
--             * Logical right shift will force the sign bit zero.
-+             * Logical right shift will force the sign bit zero, and
-+             * a rotate may move bits unrelated to the sign into it.
-              * Don't bother computing s_mask and let fold_masks
-              * recompute from z_mask.
-              */
--- 
-2.55.0
+On 30/9/26 20:51, Dominic P wrote:
+> The old Makefile.target built every tests/tcg/i386/*.c.  The meson
+> conversion lists the tests explicitly and missed test-i386-opt-shr.c,
+> which 5fe51606146 had added in the meantime, so it is no longer built.
+> 
+> Fixes: b4e3e90d61 ("tests/tcg/i386: user tests")
+> Assisted-by: Claude Opus 5 (Anthropic)
+> Signed-off-by: Dominic P <gcc@gcc.dp11.uk>
+> ---
+>   tests/tcg/i386/meson.build | 1 +
+>   1 file changed, 1 insertion(+)
+> 
+> diff --git a/tests/tcg/i386/meson.build b/tests/tcg/i386/meson.build
+> index 4152371a3f..26bd85c05e 100644
+> --- a/tests/tcg/i386/meson.build
+> +++ b/tests/tcg/i386/meson.build
+> @@ -28,6 +28,7 @@ tests += {
+>     'test-i386-fxtract.c': {},
+>     'test-i386-fyl2x.c': {},
+>     'test-i386-fyl2xp1.c': {},
+> +  'test-i386-opt-shr.c': {},
+>     'test-i386-opt-rol.c': {},
+>     'test-i386-pcmpistri.c': {'cflags': ['-msse4.2']},
+>     'test-i386-pseudo-denormal.c': {},
 
 

@@ -4,96 +4,96 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 158E3CA5FB1
-	for <qemu-arm@archiver.kernel.org>; Wed, 30 Sep 2026 07:38:11 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id ACD18CA5FB1
+	for <qemu-arm@archiver.kernel.org>; Wed, 30 Sep 2026 07:38:55 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xBosy-0008KM-St; Wed, 30 Sep 2026 03:37:53 -0400
+	id 1xBotn-0000BB-1N; Wed, 30 Sep 2026 03:38:43 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <philmd@oss.qualcomm.com>)
- id 1xBosw-0008Jv-PJ
- for qemu-arm@nongnu.org; Wed, 30 Sep 2026 03:37:50 -0400
+ id 1xBotj-00008R-VV
+ for qemu-arm@nongnu.org; Wed, 30 Sep 2026 03:38:40 -0400
 Received: from mx0b-0031df01.pphosted.com ([205.220.180.131])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <philmd@oss.qualcomm.com>)
- id 1xBosv-0003d7-4A
- for qemu-arm@nongnu.org; Wed, 30 Sep 2026 03:37:50 -0400
-Received: from pps.filterd (m0279870.ppops.net [127.0.0.1])
+ id 1xBoti-0003mM-FC
+ for qemu-arm@nongnu.org; Wed, 30 Sep 2026 03:38:39 -0400
+Received: from pps.filterd (m0279872.ppops.net [127.0.0.1])
  by mx0a-0031df01.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id
- 68U6pSwq2981907
- for <qemu-arm@nongnu.org>; Wed, 30 Sep 2026 07:37:47 GMT
+ 68U6oVuY2009196
+ for <qemu-arm@nongnu.org>; Wed, 30 Sep 2026 07:38:37 GMT
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qualcomm.com; h=
  cc:content-transfer-encoding:content-type:date:from:in-reply-to
  :message-id:mime-version:references:subject:to; s=qcppdkim1; bh=
- b8Wp4F29UGE9kcK4r8ue/dE/6S78FxBqq6ked9e65tU=; b=SbXm2OppXq3G0nzV
- GXkJMlrfkmK0IC9qwqbT9jSuHQv4S1hGo6qXr8wjFoov1/tX7rBM+oWczHw3TZAU
- Q4j3VJRfQqNGshKQl1BhxvYDJfeL7CLSIXPeyPlRG0KSP9qntm7EFpoKWywJpxpj
- wg6UoKr94iW90VUKC3Ui3/oapsktQoGB9NtAVyvYcceho+qOIL8/gbuKZJbK5s7g
- 8ln+9vSqv4pOjY7X37xHy8TBF2ZHIwzKqkUobJ7u6hQO7ijk2DxRoDltyVISobUy
- phCHZYIs/OrZ/G3KW0MT+GC8qziUQwPiaBkzRI6wCmSdDDquyYnrToEmKT5iMLdB
- 90Q4dQ==
+ 2dphzk1O501AOx1PS4qF9z2AETyyEfwlqD5IqyPxuJ0=; b=mKX1icrEtptYyyDN
+ MqNlqV/Z2CyV4uHCMliq65fux+D9dOwKTvBAqAsKqFr30t0lzN1FFFYXm6+xpZ5z
+ yVWjH++Qb8+cg3BoNaUNoBoxiVCtIUKKatbJrmuuTtFH4VC7NhdKRfrYl64nTJcS
+ HZbRvFFP2Lr3g6SoCJATUbUB8TqdSTUC1chyK9tp+DD/WlpwB2av+YuYegPhlOuM
+ SSC6yueL0vVxRWqmXCCey7o8MRi2w1MmjOxTMiuPkiEcftV6e1qHA34QGV9R7Zrw
+ UwZeEjyvD+JjIDu32uJgO0jxYvERDf0GG56HW2XrOswZf5TYQIrQGK7a2MHvwNEC
+ kb5UVw==
 Received: from mail-qk1-f198.google.com (mail-qk1-f198.google.com
  [209.85.222.198])
- by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 4h0j0ek46a-1
+ by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 4h0rhehhan-1
  (version=TLSv1.3 cipher=TLS_AES_128_GCM_SHA256 bits=128 verify=NOT)
- for <qemu-arm@nongnu.org>; Wed, 30 Sep 2026 07:37:46 +0000 (GMT)
+ for <qemu-arm@nongnu.org>; Wed, 30 Sep 2026 07:38:36 +0000 (GMT)
 Received: by mail-qk1-f198.google.com with SMTP id
- af79cd13be357-934956beec8so1050950685a.0
- for <qemu-arm@nongnu.org>; Wed, 30 Sep 2026 00:37:46 -0700 (PDT)
+ af79cd13be357-934956beec8so1051079885a.0
+ for <qemu-arm@nongnu.org>; Wed, 30 Sep 2026 00:38:36 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=oss.qualcomm.com; s=google; t=1790753866; x=1791358666; darn=nongnu.org;
+ d=oss.qualcomm.com; s=google; t=1790753916; x=1791358716; darn=nongnu.org;
  h=content-transfer-encoding:content-type:in-reply-to:content-language
  :from:references:cc:to:subject:user-agent:mime-version:date
  :message-id:from:to:cc:subject:date:message-id:reply-to:content-type;
- bh=b8Wp4F29UGE9kcK4r8ue/dE/6S78FxBqq6ked9e65tU=;
- b=ACshB9mS0kEjsYT+V0CpJGPrlZ9eim6HGPtOYOx3Z47T9r+k18hKAT0dMaI/jAFCoZ
- qY1bfQYM3cDOdUT/9JUdL3GW1wtK99Y6G2FxrfUk8vdj/U+ed4glysbDCy1MdRj3ml+Q
- kwdzY8Q0WS+KU2HCIaZ7sYhLfFfbtQP/fjuQuAd280ZmaxSjLfkE6PR1KscbQ+aFETje
- kNihOVH9n/QAaZ9FmEF5kNhLc08DeYNFGJqaK1PRTHq/uTairkzE/jiYxc2SoppVrUbd
- sodW6xYfRyOBk6FyN3/aEghF8dGZHJEjJJ3oY0PYy7A/pyF+VJmxdBFbTDOjHPmYfIpe
- xAUw==
+ bh=2dphzk1O501AOx1PS4qF9z2AETyyEfwlqD5IqyPxuJ0=;
+ b=Sk9OHq3Rb6eN5wv2fEQddvYUMdzyElz5J8c0vJ/GDzo0KlzHFV65W4TjYMi9PLcv5v
+ OHkjutZvrMsbixjR0Iy28hBsp/YKVv3RVING/8deGvb8bG5YRDpSWDbJDDFQJMC5ti6x
+ dC0OQp3s7UetY9Ylo6+d0Zj++Ddt4g8UIso8EYTCQAKYgbKi248AkYpedDG6P8As+mjq
+ jKRoLVp5rvfZtQ1rndmt6Q2gQ/5toGQQATVCmtY5h7UUymrYBdbqGioZ4lyuplMlbTTZ
+ P20JzwiehSff9hmNUpGh/Ckwt0Dcq71/RxalD7XRMRRrokHAuKpfdEX9OOw9X01nQjae
+ HHiQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20260707; t=1790753866; x=1791358666;
+ d=1e100.net; s=20260707; t=1790753916; x=1791358716;
  h=content-transfer-encoding:content-type:in-reply-to:content-language
  :from:references:cc:to:subject:user-agent:mime-version:date
  :message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
  :message-id:reply-to:content-type;
- bh=b8Wp4F29UGE9kcK4r8ue/dE/6S78FxBqq6ked9e65tU=;
- b=BTLF36A04LXGNR0hvv5bFFR0iWLFOugIFGbEvFi7bQLZE4Laktcla2V7CPvF98DQbF
- Qi2rHNtBwgIQdFg98RbKZ/lIWVOvvKDMxDeB4hkJhM/tqcDHIWV8ZmIHk5IEX7eU/dfM
- Uggm2Vk40OiKvJsoTFpuFujw6ZAj/3h3DHOWy6Idx121MIfTdwf83ITgt4jyv2qTx/eo
- Aw/YCj+h1RyadkMY1uiBdr754qp/mfmvQNnrqaOJCNBI+C8ZlxA6Lxsn92RU/g/mmiyp
- rhbjLNZWRUxlMfM/lCGt6mySaYiQhxCbvePQIZL3W51kRJENwn05zsyJ9oHsKEAj0wK7
- eSbw==
+ bh=2dphzk1O501AOx1PS4qF9z2AETyyEfwlqD5IqyPxuJ0=;
+ b=cEmNpygEqA5NgmEM1O2l6ldn3EAfSdjEaZgaFDVS5I1cTJDl6Z3kwoguiji2UDNyhU
+ FPYWI2Uin4iaprt9M7i5khISeaU+WmgiUFJ3tePDW0FacuWpNFZ0pIgbzh8jhtJCorZy
+ jbgWMBx+qX5gYUHbS2TX3ocUe6Ei93GV9o83DFu1DnDVywAdZiMrqZF3vcELUIhOx9rK
+ DX1TxoCu6SZrgU4bl1uSbjliLmC1CtmtTQrBv23y4dktSigt6sSOg4rKiT+7kluC/kV4
+ ijdbAu97GEvM215kX90GjeBZn0pYIWyZLEBGI86XFk76INeigL4QjD5GvZaN86rXx5Yf
+ 8e/w==
 X-Forwarded-Encrypted: i=1;
- AKwUvBykMY6xHPFp7JgCMEA5NXw97BPPKIRV8W4pc+AG8o/NqFWq4PM8WOOQmNbQfQYN20Ser4U3M0CzuQ==@nongnu.org
-X-Gm-Message-State: AFuF++mzXrpxymm8/H2je6i/B3q9EXrw9AlXRRuL9wCOgwmbSCgfoRTS
- rBC1JOiCOtq9ZPGWX4cJFXgGjyWWdM2kz3mlD+e/4DnTp0sBc7AafQ8bJPsYiwWHmj/5ufZf0+L
- R7o1w2qtrKwXXLBCraFcgN5HmAd/IFWcpAISR1LN4AnsTk1nSPoynEL4=
-X-Gm-Gg: AYBFou1AwbH0TbAugq99rhybO5IEfZpdSEsAhgFNTIltQxpoM2o33KhaIyLanzPumj+
- FJdQ1uhP8ipMxvI5uXnfn9N0FcNBiXZCwStK58J0+1s7xZ7DBS0t0BiBQebX6v3uO8O5xJWh1sQ
- 4tqvnARZJ0xDWDPKZyBLfgR6+vZgowQ+n3PXNtA/z+0gffKy9VVSkOnlu6y8BwNp1N10LRl+qr+
- UNsDviavcWQA3lLjjmVGkUivuavz5aj8VFaw5VVYiTi2yzQ2M0f6KQEjQyp5ozI6pzOUSO6RJE4
- ScrjyL4cloeFIh4KverlJ7RqCYBbNTFO6fafcq7oll/zenACuPOqF2W6wBULg2ynkQc5RDkgbGO
- ezQe2umNKYlLO6B/WbF4=
-X-Received: by 2002:a05:620a:4727:b0:93c:2110:14e1 with SMTP id
- af79cd13be357-93ca97fec3amr87651085a.42.1790753865956; 
- Wed, 30 Sep 2026 00:37:45 -0700 (PDT)
-X-Received: by 2002:a05:620a:4727:b0:93c:2110:14e1 with SMTP id
- af79cd13be357-93ca97fec3amr87647485a.42.1790753865414; 
- Wed, 30 Sep 2026 00:37:45 -0700 (PDT)
+ AKwUvBzdtia8o6ypdAkD6iqdBoCiJiqcBMKapJ9CwF047Al339bXbhqwBM/f8IaR1NnbvA+y9jLxKWxlBQ==@nongnu.org
+X-Gm-Message-State: AFuF++l7WxKWAPTNU+JVBB5ZAn0pYTgONQstTNeRMMZoiZfZjKwhvZz9
+ l4ZSDa/vFxPkzh9uTEM8ODkMcJs4H7jRzyWLrP0CDcwAGJb0oKX++7MUXCncR+DXk0Z5goQVffG
+ Qy8kNGOIciW32qHdeosjV4HkQby2LHKnH6pYJ/XHeC88jzX+uvK5NGTE=
+X-Gm-Gg: AYBFou0huQ6pDa/haE4jpJDJgSJuJdkcUfrWoa/9acd+YHdHDFtPZwZWk1sikDPXQxQ
+ gA48AfOKQ1Q3iGnPTMH9wkMNIG8wL3y1CR41mZK4we88q5S2FTgevmG7mCF25rwDwLWpGmbFSq6
+ 0CqlOiP4mHs1XaaiiHEdwDm1xky94LFS6Xa4XMOYaIDClE0H8jCbTIdHXqiXkYujpg46tvMzPuc
+ Onf3XCcsExiKsRWv+8eAR57UI0DTw2WWjwoSporm0A9Ev6gpp1lo5s8E8f26xdmgyw15+ZKStZI
+ v0d8bJYi2tVImEsbMSoY+i9D5cUOzt1uOPKsSoiEUq2lqodqxgY8Qgo8Pm5dimZGjBJNi2Ij28A
+ rCnkDt0+/7loXIfc7yrE=
+X-Received: by 2002:a05:620a:450c:b0:932:ddff:123d with SMTP id
+ af79cd13be357-93ca97a83fcmr66052385a.29.1790753916272; 
+ Wed, 30 Sep 2026 00:38:36 -0700 (PDT)
+X-Received: by 2002:a05:620a:450c:b0:932:ddff:123d with SMTP id
+ af79cd13be357-93ca97a83fcmr66050185a.29.1790753915811; 
+ Wed, 30 Sep 2026 00:38:35 -0700 (PDT)
 Received: from [192.168.0.4] ([79.127.134.49])
  by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-4a0174f03c2sm29657845e9.7.2026.09.30.00.37.43
+ ffacd0b85a97d-48b02949f45sm1423603f8f.2.2026.09.30.00.38.33
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 30 Sep 2026 00:37:44 -0700 (PDT)
-Message-ID: <941d7bb6-3205-44cf-8d76-ffbb322a6f4e@oss.qualcomm.com>
-Date: Wed, 30 Sep 2026 09:37:42 +0200
+ Wed, 30 Sep 2026 00:38:35 -0700 (PDT)
+Message-ID: <892309f6-bf7b-44a6-897e-ae4c3a49da5a@oss.qualcomm.com>
+Date: Wed, 30 Sep 2026 09:38:32 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v1 01/11] hw/arm/aspeed_ast2400: Use unimp array and table
+Subject: Re: [PATCH v1 02/11] hw/arm/aspeed_ast2600: Use unimp array and table
  for unimplemented devices
 To: Jamin Lin <jamin_lin@aspeedtech.com>, =?UTF-8?Q?C=C3=A9dric_Le_Goater?=
  <clg@kaod.org>, Peter Maydell <peter.maydell@linaro.org>,
@@ -105,37 +105,37 @@ To: Jamin Lin <jamin_lin@aspeedtech.com>, =?UTF-8?Q?C=C3=A9dric_Le_Goater?=
  "open list:All patches CC here" <qemu-devel@nongnu.org>
 Cc: Troy Lee <troy_lee@aspeedtech.com>
 References: <20260930072501.2612119-1-jamin_lin@aspeedtech.com>
- <20260930072501.2612119-2-jamin_lin@aspeedtech.com>
+ <20260930072501.2612119-3-jamin_lin@aspeedtech.com>
 From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@oss.qualcomm.com>
 Content-Language: en-US
-In-Reply-To: <20260930072501.2612119-2-jamin_lin@aspeedtech.com>
+In-Reply-To: <20260930072501.2612119-3-jamin_lin@aspeedtech.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-X-Authority-Analysis: v=2.4 cv=cqgOAF4i c=1 sm=1 tr=0 ts=6abcbc4b cx=c_pps
+X-Proofpoint-GUID: URhSBoGRd5ovOAos5SlDmQjjBok0-1J2
+X-Proofpoint-ORIG-GUID: URhSBoGRd5ovOAos5SlDmQjjBok0-1J2
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwOTMwMDAzMCBTYWx0ZWRfX+P8ovju3pwfK
+ gCJCIShT8tvrauzU4pZNghCsI4lC1WCFRmJdZxppKop8TpPMca9WreZNHOSS/amSoh8O0LovbAi
+ qQJ4Ro9x+JIivWxbB6eq626usuV83/xW2y+cuYXQ2emIfnevJvtGOKqwwt3AIUuR5HxudwdWYge
+ Rh4tIolAuvpNz0fdXzgcxn6VD9418G0i/443Wvk5N+Db9lZZIigJAu+EW1BvRBgPQbOJCfEHz09
+ 9rmPuwPWZYoFxOGzHKzjCrdz9i30k3Z0DMG+IbAA7wAvKwyE5DwXgP+jf+AS6Q6a0G88tpUZcQZ
+ 8e70E8rIWxkfmApX1opE9KDjfz/bK3ids0J0ZXbGiIZtL+ahVmT8WkfZtiVuBNYjqKH2Yul8x1Z
+ TMMDUQsh2jUTuiTX1svwFlOOt+SaT0fuKNMLuu4KNKaCGlUTz4N8xr2BcEJD86mBLQimc+IAlpV
+ 1OCOgCcPQYlHwno1Fdw==
+X-Proofpoint-Spam-Info: AW1haW4tMjYwOTMwMDAzMCBTYWx0ZWRfX88J5xyEKxChN
+ NTUnM5NMA0AMw/Q4cnlejtgfKluOKsfFpWapMyaFP9HlroWfHeHCGmFU6EsAeNZkFjMDOBPO1Sk
+ WD+BnchzwOuAn0IWfnWcRDr/409CiAk=
+X-Authority-Analysis: v=2.4 cv=Tu1zFzXh c=1 sm=1 tr=0 ts=6abcbc7c cx=c_pps
  a=qKBjSQ1v91RyAK45QCPf5w==:117 a=7g8aA7A78AY7OC82r+w+4g==:17
  a=IkcTkHD0fZMA:10 a=VdqzKS8jKosA:10 a=M51BFTxLslgA:10 a=s4-Qcg_JpJYA:10
- a=VkNPw1HP01LnGYTKEx00:22 a=u7WPNUs3qKkmUXheDGA7:22 a=gowsoOTTUOVcmtlkKump:22
- a=V2NxCb60AAAA:8 a=EUspDBNiAAAA:8 a=KE-JQe2ySrNsirWxb6UA:9 a=3ZKOabzyN94A:10
+ a=VkNPw1HP01LnGYTKEx00:22 a=u7WPNUs3qKkmUXheDGA7:22 a=yx91gb_oNiZeI1HMLzn7:22
+ a=V2NxCb60AAAA:8 a=EUspDBNiAAAA:8 a=1tSEMpTH9XP_W59IOagA:9 a=3ZKOabzyN94A:10
  a=QEXdDO2ut3YA:10 a=NFOGd7dJGGMPyQGDc5-O:22 a=3L6qF29SlnrayQqPM2jZ:22
-X-Proofpoint-GUID: ZHGVyXZIysPinPDgiH7rafbEhfhD-OXG
-X-Proofpoint-ORIG-GUID: ZHGVyXZIysPinPDgiH7rafbEhfhD-OXG
-X-Proofpoint-Spam-Info: AW1haW4tMjYwOTMwMDAzMCBTYWx0ZWRfXwk34w6O5NbO4
- G6aHMDyUtuJMMQeQLgOkL/SewIBPoiCh1C+aBBtq5NC5ekpASfXPrFqx51fe+15PbHrhyT7KUk5
- O1p+grScxFmgJPhfTOy+EKakyCTjzsg=
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwOTMwMDAzMCBTYWx0ZWRfXyuN8U1NXqdwM
- jgZ3AbPSB0x6MzvDcEDaZuKf5ZPQOYDOCYEMUUTFbwfXh6AALcV8Y9GVRmR/xrIUCW7p+Q77yTD
- HrUqiJ3op8scC7oqTTcPn2Xzwp6DUV2U9qxxOV6fGhnH5ni0YGbKVqONGV10kqWWFGXUNpFzdF3
- d0YOq/TliLrQulGozpfccn5lWBoW95oNCeQsHeW38mA8J2rpeGT0oCaWVy6585WQTuSYpCpEndb
- +cKelWSHpBlXnEIwFwxB0sojLKquEEvPki+UPAKPS9csgdqqeRLg70TDpzVqNdboFGWFHJSnaZP
- wIqfqmhd3qfFO3AZavXTzdRhxiG5A6CQ4iXgFYLaBULzPRqUl1XQfNElFWfv7971sEgemFOIqXH
- mBb9wZRG40oG1mFWDdhWJk1PqMxoZPNp2hdksx9tYK1IBzE/aO2TWn03+Yc+3Rv0Mxy3ZQsMpW1
- ba199nvVe7XdBiRGCbQ==
 X-Proofpoint-Virus-Version: vendor=baseguard
  engine=ICAP:2.0.293,Aquarius:18.0.1176,Hydra:6.1.134,FMLib:17.12.100.49
  definitions=2026-09-29_05,2026-09-21_02,2025-10-01_01
 X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
- priorityscore=1501 malwarescore=0 clxscore=1015 adultscore=0 bulkscore=0
- impostorscore=0 spamscore=0 lowpriorityscore=0 phishscore=0 suspectscore=0
+ impostorscore=0 spamscore=0 malwarescore=0 suspectscore=0 phishscore=0
+ lowpriorityscore=0 adultscore=0 clxscore=1015 bulkscore=0 priorityscore=1501
  classifier=typeunknown authscore=0 authtc= authcc= route=outbound adjust=0
  reason=mlx scancount=1 engine=8.22.0-2609040000 definitions=main-2609300030
 Received-SPF: pass client-ip=205.220.180.131;
@@ -168,40 +168,16 @@ On 2026-09-30 9:25, Jamin Lin wrote:
 > AspeedSoCState has "udc" as an unimplemented device, but
 > Aspeed2600SoCState also has "udc" as the real UDC model.
 > 
-> Add an "unimp" array in AspeedSoCState for all unimplemented devices,
-> and add an AspeedUnimpDevice table to describe them. This makes the
-> code easier to maintain and read. Convert AST2400/AST2500 to use them.
+> Use the "unimp" array in AspeedSoCState for all unimplemented devices,
+> and use the AspeedUnimpDevice table to describe them. This makes the
+> code easier to maintain and read. Convert AST2600 to use them.
 > 
 > No functional change.
 > 
 > Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>
 > ---
->   include/hw/arm/aspeed_soc.h |  9 +++++++++
->   hw/arm/aspeed_ast2400.c     | 33 +++++++++++++++++++--------------
->   2 files changed, 28 insertions(+), 14 deletions(-)
-> 
-> diff --git a/include/hw/arm/aspeed_soc.h b/include/hw/arm/aspeed_soc.h
-> index 38226d9b80..a9ef4b3550 100644
-> --- a/include/hw/arm/aspeed_soc.h
-> +++ b/include/hw/arm/aspeed_soc.h
-> @@ -64,6 +64,14 @@
->   #define ASPEED_INTC_NUM  2
->   #define ASPEED_IOEXP_NUM 2
->   #define ASPEED_SRAM_NUM 2
-> +#define ASPEED_UNIMP_NUM 10
-> +
-> +typedef struct AspeedUnimpDevice {
-> +    const char *qom_name;
-> +    const char *region_name;
-> +    int memmap_idx;
-> +    uint64_t size;
-> +} AspeedUnimpDevice;
+>   hw/arm/aspeed_ast2600.c | 53 +++++++++++++++++------------------------
+>   1 file changed, 22 insertions(+), 31 deletions(-)
 
-Note to Peter: I really think keeping duplicating the
-UnimplementedDeviceConfig structure is a basic software
-development antipattern. Could you reconsider your objection?
-
-Otherwise,
 Reviewed-by: Philippe Mathieu-Daudé <philmd@oss.qualcomm.com>
-
 

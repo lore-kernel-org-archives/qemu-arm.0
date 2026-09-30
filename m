@@ -4,89 +4,119 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7D6ADCA5FA5
-	for <qemu-arm@archiver.kernel.org>; Tue, 29 Sep 2026 21:21:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6EA3ECA5FAD
+	for <qemu-arm@archiver.kernel.org>; Wed, 30 Sep 2026 02:51:37 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xBfGA-0007tB-9M; Tue, 29 Sep 2026 17:21:10 -0400
+	id 1xBkPV-00051Z-UV; Tue, 29 Sep 2026 22:51:10 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from
- <3viu8agsKCGMDPMUPOMFXJTHPPHMF.DPNRFNV-BSNOPOHOV.PSH@flex--coltonlewis.bounces.google.com>)
- id 1xBfG7-0007sN-Kd
- for qemu-arm@nongnu.org; Tue, 29 Sep 2026 17:21:07 -0400
-Received: from mail-oi1-x247.google.com ([2607:f8b0:4864:20::247])
+ (Exim 4.90_1) (envelope-from <luoyonggang@gmail.com>)
+ id 1xBkPT-000512-TH
+ for qemu-arm@nongnu.org; Tue, 29 Sep 2026 22:51:07 -0400
+Received: from mail-ed2-x0c.google.com ([2a00:1450:4864:33::c])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from
- <3viu8agsKCGMDPMUPOMFXJTHPPHMF.DPNRFNV-BSNOPOHOV.PSH@flex--coltonlewis.bounces.google.com>)
- id 1xBfG5-0003VY-ME
- for qemu-arm@nongnu.org; Tue, 29 Sep 2026 17:21:07 -0400
-Received: by mail-oi1-x247.google.com with SMTP id
- 5614622812f47-4ea2c058e67so3637218b6e.1
- for <qemu-arm@nongnu.org>; Tue, 29 Sep 2026 14:21:04 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <luoyonggang@gmail.com>)
+ id 1xBkPS-00084j-4t
+ for qemu-arm@nongnu.org; Tue, 29 Sep 2026 22:51:07 -0400
+Received: by mail-ed2-x0c.google.com with SMTP id
+ 4fb4d7f45d1cf-6acaec6a74aso2018331a12.2
+ for <qemu-arm@nongnu.org>; Tue, 29 Sep 2026 19:51:05 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1790736664; cv=none;
+ d=google.com; s=arc-20260327;
+ b=fv11SpJtXyHcX/Q/cQc7hPcUzUUkHioj0foW9LaB8F2VJ2g6T20ZLCfl+o/zsdggPP
+ 4KwI/uCEpUSzvOc5Zy5o5rolOYU6L2EY8wnD9DDDBncnRB0t462ri5CYbsR0ntm9ZrJn
+ z4oCC9NFuF3ex5B/CcAy1TsrQKOl7+0eYid46TdOo+Rst0HBtR4/+HozuUvfzYrUBj8M
+ Uh47kolDwLUhx4oXgnjJ2WbZAf64cwL9N/nVxb68gKcJddcfSKaIAd8jd2e1PQNdEL4t
+ sRnm2aKQYINEyCBfmsda4o5lG2/iSqrV5dsvvM+yhM/ezN3i8MxRatZIc5cmLcGyi+tW
+ 6Ecw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
+ s=arc-20260327; 
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :reply-to:in-reply-to:references:mime-version:dkim-signature;
+ bh=EV6mrJxfEd7WOTTvXqOmWWny2bOcZB0m95vhp6g828E=;
+ fh=rqZ7v1JrA62nm3PpfIYOWCOihWfI1D1uPcJTB0U+K4Y=;
+ b=ijdFyY62+bxSY5jRq2R1XiaK0mlzgPIRydoMqKAZyTOAOqAB5IgGK8BpLUenReD8fm
+ PRUY7v25kum3cANBmPpn2WeW5cglyON0UbWwcEeGOOIQkqATYzgTdiwTsHDn3f8DUwRk
+ qU6ipF1XaY8OeOkHfemfHqNypyIVT5QEDjf1fGE60LQhNDfOHLUaZMvMuFCAjYSmSPuT
+ X0xtl7Jgdk4T4fAW9uim2dF/EZiSrvr5BIBZIRRf6nj9PYjBynNML4djNTyPCcDNTmyQ
+ 14rxDg1dENqaJxQEG2G7XCXzjCjqTu+fnwu6E2oP6HxKRy1+3HKZ3+eyizLMwmrQnPTt
+ tRZQ==; darn=nongnu.org
+ARC-Authentication-Results: i=1; mx.google.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=google.com; s=20251104; t=1790716863; x=1791321663; darn=nongnu.org;
- h=content-type:cc:to:from:subject:message-id:references:mime-version
- :in-reply-to:date:from:to:cc:subject:date:message-id:reply-to
- :content-type; bh=lDp8WWU/0UlLYBNjAv5MLJXqSdTj0yxp/bLRhzLI/Qc=;
- b=jQEDAs3cxDpfwO9zRj9JugkkBJMVlfW0IYXyBKNLRPfinJMBiamFzEn2myAwuBe7Zx
- wX/iafscwhjxJYIaeFKIn//wQXa0qd32bZa6ydc17+wAIAloC2lVEGO86rlaQ/VzVhq5
- x6ALiL+xWYw2HFbJRNjWEi28S9pCd4ZYcaDxJ+zouZOVTfcw8D78A+AmVLLUpqHHsG1r
- i7/SoBGX2kHsFmBhmeu2HEdh3eQwm+kuuCi1XQJobd6WCPUvEmR5agTUYMh+xcsd2dPO
- 5falTG0XGAUSOZy7WgCsq8fW1hmlWvngroGg7INIXduefWmcENPohvaFDVTl6V6RXsxq
- SQxA==
+ d=gmail.com; s=20251104; t=1790736664; x=1791341464; darn=nongnu.org;
+ h=content-transfer-encoding:content-type:cc:to:subject:message-id
+ :date:from:reply-to:in-reply-to:references:mime-version:from:to:cc
+ :subject:date:message-id:reply-to:content-type;
+ bh=EV6mrJxfEd7WOTTvXqOmWWny2bOcZB0m95vhp6g828E=;
+ b=VMYByi8VCMZ1cYIgG275mu4P0V2YB/XAXXTkRCgQlfQGSCuo55jZOi266deaDFXd2j
+ GfLCpEi+nbtktdO0vg2epBd54mKweEflTOU6dPUoftajSUyoeiQcSOWmFHjif+y/2UNn
+ alop0CrT9MfGyTaRuTrZK54iyxvwrYAwgurR/50NmnyDXuxa0OCUQj/osw5Eg5b5Fi+o
+ 6VctPS3yg85GxozvOjz7xXQ+34UnjcpoKmNX21lXtHJFGJOH8aJfVxIHVcnDbKMEwG1J
+ HoC9+zViYZAEmUSM/WxlCoZ3iun1N5LLEEnlgXhqURY3f9n9fkrGHKm3YjeGR+6CJvLB
+ TxAg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20260707; t=1790716863; x=1791321663;
- h=content-type:cc:to:from:subject:message-id:references:mime-version
- :in-reply-to:date:x-gm-message-state:from:to:cc:subject:date
- :message-id:reply-to:content-type;
- bh=lDp8WWU/0UlLYBNjAv5MLJXqSdTj0yxp/bLRhzLI/Qc=;
- b=KW7H+jKg+jqrFPOx5je+K3v6O1X4K+5EJuQro7jed/XHKWNT3tng7krClaJpFExIf3
- E0VASLWOtepqFj2jFcbk650Hophr/O7+gNzVKohYOF63uitCJSXcStC9SNblu0oYAvY5
- VxwBmons1FI2YGNvBe/QJVBeV2BkZak3/hHTD0SVdQpix8que2NwMUm91a3VnQQtchpL
- SUDEkH72JaWaR8ee1r1JUyVUqElYH6ABpV09EeEn7Cpin/hiuZDHtCZAiL/OL43nquyQ
- JqcYEeJxNLzcFLUZjLmtguNe4y1nJ/FrGTeggfpIMNifT94psZ1F1+PGr9cU+nR6T/Ow
- BYZA==
+ d=1e100.net; s=20260707; t=1790736664; x=1791341464;
+ h=content-transfer-encoding:content-type:cc:to:subject:message-id
+ :date:from:reply-to:in-reply-to:references:mime-version:x-gm-gg
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
+ :content-type;
+ bh=EV6mrJxfEd7WOTTvXqOmWWny2bOcZB0m95vhp6g828E=;
+ b=cObXbHFsgGqAwtfdGj6hm2uCZHCZjBgRGiMG262ejPPxusspzmXuP+WBlG1FhKNkMv
+ nU4n+VdVm9mPhwgLG7G98eiKBV7W50BRk6gFWrNRBSb70ZhCgfTeXM0rdlMUlDYjqPuE
+ 3EsKVJapEkmaTFd+tQXKTLxX0kMMUv/PZZFLnGcjNNRtKfUcOaYxbGKUVAxZpgn4DP4M
+ RuUmXx37rH/BYIdOjPKfl5mwuikldF5hGc81gNeok5eG2Gtgq3Y4IqXAV6wFdyHzeVQt
+ jF7G1okfprCaStr10tD+xqDwGDk9yMB8W9/luMzm9o14+Z74bnA8ruuLibZgKBF77Qdf
+ QHOQ==
 X-Forwarded-Encrypted: i=1;
- AKwUvBx21fVPWzvJ59+h8paJL7hcqYBdVShtwFmzkTW6T+pAlNEcwsHbbOvoC8IwVRam5r/QqFCPNzLNug==@nongnu.org
-X-Gm-Message-State: AFuF++nd5nNVE6XClDS+ZDZMvQlHmbxhwn0xps57N29cdzGZinBVW1xS
- kzrYmrXdLtChtCoVHwBy/7CM6/T/P0f9AK/+K5Aj39EszeYjj+z1UKJJEPqiPf8vkEfkSdxnp3L
- C1waS0nrlEJmwH2uwBcEv3LEgmw==
-X-Received: from ioia10.prod.google.com ([2002:a05:6602:888a:b0:9c4:b6b4:bf53])
- (user=coltonlewis job=prod-delivery.src-stubby-dispatcher) by
- 2002:a05:6808:4f21:b0:4bc:336d:7494 with SMTP id
- 5614622812f47-4f0751c3a87mr763966b6e.30.1790716862759; 
- Tue, 29 Sep 2026 14:21:02 -0700 (PDT)
-Date: Tue, 29 Sep 2026 21:21:02 +0000
-In-Reply-To: <CAFEAcA9Rwrffx8bYiOxrtQGdg31QAz1oBm8okzpfqHZ6yK0Y7A@mail.gmail.com>
-Mime-Version: 1.0
-References: <20260924172928.2110956-1-coltonlewis@google.com>
- <20260924173051.2117637-1-coltonlewis@google.com>
- <CAFEAcA9Rwrffx8bYiOxrtQGdg31QAz1oBm8okzpfqHZ6yK0Y7A@mail.gmail.com>
-X-Mailer: git-send-email 2.56.0.rc1.315.gc6ed9934b7-goog
-Message-ID: <20260929212102.3659389-1-coltonlewis@google.com>
-Subject: Re: [PATCH] target/arm: Enable KVM PMU partitioning and counter limit
-From: Colton Lewis <coltonlewis@google.com>
-To: Peter Maydell <peter.maydell@linaro.org>
-Cc: Colton Lewis <coltonlewis@google.com>, qemu-arm@nongnu.org,
- qemu-devel@nongnu.org, 
- kvmarm@lists.linux.dev, Paolo Bonzini <pbonzini@redhat.com>,
- Marc Zyngier <maz@kernel.org>, 
- Oliver Upton <oupton@kernel.org>, Will Deacon <will@kernel.org>, 
- James Clark <james.clark@linaro.org>, Mingwei Zhang <mizhang@google.com>,
- kvm@vger.kernel.org
+ AKwUvBxCTQpfKoswLUR+UCyMzpLjJSkkS6I6p+S28C2bh+JSUNerxqFp32IEY3r773Var2HrWVWOSD2VEA==@nongnu.org
+X-Gm-Message-State: AFq9FYKKgFeWcuAR2t46JAqiT5nTOYhezmM8iAKW+0xcx3Uu9ZCRzif3
+ 4Y9GBYeBMCJYGbrnCiFrT5jbk1kJtVfs5mH5QWZTPVZSAxgv5DHFcnlGBCkY7n15+LV3g1+xvZ6
+ 2qaLP6+gISUHQZdP+ZhU+wifcagy3qJA=
+X-Gm-Gg: AYBFou3U1NsgQuaUQHyN2HwzEQPQSCbIrozlbIG9sbfk8FqzhdVBz+64cFh257Dqhdd
+ +NpWatULso+kQwGZ7XvlaLIgfRjoK52lw4PbVc6oEHUY4F/C5Xs1HKejDfJ1H+CjudRoi62yuNM
+ gz3eCQo+5bSXc0FTHNczb1Lz36MaJaXQOq+CbYs/QQYiOrbWG/13dUnvLIlLNfIzUktLfkTGvmc
+ EAldJHLWnbq7CtXRX5xZZydDEzdtwtepmFUVZURKf/MUXp8eTZZ5mKbNrE6gVprsaBNdu6wCQpV
+ kwusZiAo/iuIUwM6uCnIne6bS3uV6YWy2kPLnVma6rkXjxiour2MynA=
+X-Received: by 2002:a05:6402:3785:b0:6ac:9a44:d412 with SMTP id
+ 4fb4d7f45d1cf-6ad4fd0b503mr556197a12.7.1790736663388; Tue, 29 Sep 2026
+ 19:51:03 -0700 (PDT)
+MIME-Version: 1.0
+References: <20260926081551.29-1-luoyonggang@gmail.com>
+In-Reply-To: <20260926081551.29-1-luoyonggang@gmail.com>
+From: Yonggang Luo <luoyonggang@gmail.com>
+Date: Wed, 30 Sep 2026 10:50:49 +0800
+X-Gm-Features: AclHuK9fFP4b14helAoNXT3RwjpHnY1xuNl-fP9dsY21rLTwrOXFbzbzU_PGXH8
+Message-ID: <CAE2XoE9tVCwQE0Mv-KPin+evQM4qh0mzj=sw-S1au2=uupM9ww@mail.gmail.com>
+Subject: Re: [PATCH v3 00/10] machine: uniquify virt QOM names
+To: qemu-devel@nongnu.org
+Cc: Chao Liu <chao.liu@processmission.com>, Eric Blake <eblake@redhat.com>,
+ qemu-arm@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>,
+ =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@oss.qualcomm.com>, 
+ Markus Armbruster <armbru@redhat.com>,
+ Alistair Francis <alistair.francis@wdc.com>, 
+ Brian Cain <brian.cain@oss.qualcomm.com>, Stafford Horne <shorne@gmail.com>, 
+ =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>, 
+ Peter Maydell <peter.maydell@linaro.org>, Jiaxun Yang <jiaxun.yang@flygoat.com>,
+ Fabiano Rosas <farosas@suse.de>,
+ Daniel Henrique Barboza <daniel.barboza@oss.qualcomm.com>, 
+ Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>, qemu-riscv@nongnu.org, 
+ Laurent Vivier <lvivier@redhat.com>, Max Filippov <jcmvbkbc@gmail.com>,
+ Song Gao <17746591750@163.com>, 
+ Philippe Mathieu-Daude <philmd@mailo.com>, Palmer Dabbelt <palmer@dabbelt.com>,
+ Laurent Vivier <laurent@vivier.eu>, Weiwei Li <liwei1518@gmail.com>,
+ Zhao Liu <zhao1.liu@intel.com>
 Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::247;
- envelope-from=3viu8agsKCGMDPMUPOMFXJTHPPHMF.DPNRFNV-BSNOPOHOV.PSH@flex--coltonlewis.bounces.google.com;
- helo=mail-oi1-x247.google.com
-X-Spam_score_int: -95
-X-Spam_score: -9.6
-X-Spam_bar: ---------
-X-Spam_report: (-9.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_MED=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- USER_IN_DEF_DKIM_WL=-7.5 autolearn=ham autolearn_force=no
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2a00:1450:4864:33::c;
+ envelope-from=luoyonggang@gmail.com; helo=mail-ed2-x0c.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -99,72 +129,90 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Reply-To: luoyonggang@gmail.com
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Hi Peter,
+Can this be queued now?
 
-Thanks for reviewing!
-
-On Mon, Sep 28, 2026 at 03:01:32PM +0100, Peter Maydell wrote:
-> FYI for next time around, QEMU patches that depend on not-yet-accepted
-> kernel ABI changes should be tagged RFC, please.
-
-Ack, sorry about that. I will tag future versions with RFC until the
-kernel uAPI is accepted.
-
-> > ---
-> >  target/arm/cpu.c | 20 ++++++++++++++++++++
-> >  target/arm/cpu.h |  4 ++++
-> >  target/arm/kvm.c | 32 ++++++++++++++++++++++++++++++++
+On Sat, Sep 26, 2026 at 4:15=E2=80=AFPM Yonggang Luo <luoyonggang@gmail.com=
+> wrote:
 >
-> New CPU properties should be documented in docs/system/arm/cpu-features.rst .
-
-Will document them there in the next revision.
-
-> > +static bool arm_get_pmu_partition(Object *obj, Error **errp)
-> > +{
-> > +    ARMCPU *cpu = ARM_CPU(obj);
-> > +
-> > +    return cpu->kvm_pmu_partition;
-> > +}
-> > +
-> > +static void arm_set_pmu_partition(Object *obj, bool value, Error **errp)
-> > +{
-> > +    ARMCPU *cpu = ARM_CPU(obj);
-> > +
-> > +    cpu->kvm_pmu_partition = value;
-> > +}
+> Multiple targets register a virt board as MACHINE_TYPE_NAME("virt").
+> Those QOM types collide if more than one board is linked into one
+> qemu-system process. This series splits the QOM type from the -M name
+> so each virt board can keep a unique type while -M virt, help, and
+> migration stay the same.
 >
-> If your getter/setter are only updating the struct field,
-> you can use a DEFINE_PROP_BOOL to avoid having to have them
-> (compare arm_cpu_has_el2_property etc.)
-
-Thanks, I will switch to DEFINE_PROP_BOOL.
-
-> >      if (arm_feature(&cpu->env, ARM_FEATURE_PMU)) {
-> >          cpu->has_pmu = true;
-> >          object_property_add_bool(obj, "pmu", arm_get_pmu, arm_set_pmu);
-> > +        object_property_add_bool(obj, "pmu-partition",
-> > +                                 arm_get_pmu_partition,
-> > +                                 arm_set_pmu_partition);
-> > +        object_property_add_uint32_ptr(obj, "pmu-num-counters",
-> > +                                       &cpu->kvm_pmu_nr_counters,
-> > +                                       OBJ_PROP_FLAG_READWRITE);
+> - Add machine_class_set_name() so boards can set MachineClass::name
+>   when it must differ from the QOM type. machine_class_base_init still
+>   defaults the name to the QOM type without -machine. Document that
+>   MachineClass::name is the -M name, not the QOM type. Sort -M help
+>   by that name so order matches the printed names after types are
+>   prefixed (arm-virt-11.1-machine vs virt-11.1).
+> - Give each colliding virt board a unique QOM type and keep the
+>   existing -M name via machine_class_set_name(): riscv-virt, arm-virt,
+>   or1k-virt, hexagon-virt, loongarch-virt, m68k-virt, and xtensa-virt.
+>   Versioned ARM, LoongArch, and M68K boards keep virt-<ver>. Latest
+>   ARM virt still sets mc->alias to virt.
+> - query-machines returns MachineInfo typename, the QOM type from
+>   object_class_get_name(), for qom-list-properties. The -M name alone
+>   is not that type once virt boards are prefixed.
 >
-> What should we do with these properties if we're not using KVM
-> (i.e. for TCG, hvf, etc) ?
+> Changes v2 -> v3:
+> The versioned-machine example in boards.h now follows hw/arm/virt.c.
+> machine_class_set_name() keeps the -M name as virt-<version>, the QOM typ=
+e in
+> the example is arm-virt, and the latest helper is DEFINE_VIRT_MACHINE_AS_=
+LATEST.
+>
+> Changes v1 -> v2:
+> - query-machines returns MachineInfo typename. v1 returned only the
+>   -M name, so a client that appended "-machine" looked up the wrong
+>   type for a prefixed board such as arm-virt-11.1-machine versus
+>   -M virt-11.1.
+>
+> Yonggang Luo (10):
+>   machine: allow -M name to differ from QOM type
+>   hw/riscv/virt: use unique QOM name
+>   hw/arm/virt: use unique QOM name
+>   hw/or1k/virt: use unique QOM name
+>   hw/hexagon/virt: use unique QOM name
+>   hw/loongarch/virt: use unique QOM name
+>   hw/m68k/virt: use unique QOM name
+>   hw/xtensa/virt: use unique QOM name
+>   qapi: return MachineInfo typename from query-machines
+>   machine: match the versioned virt example to arm virt
+>
+>  hw/arm/virt.c               |  3 +-
+>  hw/core/machine-qmp-cmds.c  |  1 +
+>  hw/core/machine.c           |  6 ++++
+>  hw/hexagon/virt.c           |  1 +
+>  hw/loongarch/virt.c         |  3 +-
+>  hw/m68k/virt.c              |  7 ++--
+>  hw/or1k/virt.c              |  3 +-
+>  hw/riscv/virt.c             |  3 +-
+>  hw/xtensa/virt.c            |  3 +-
+>  include/hw/arm/virt.h       |  2 +-
+>  include/hw/core/boards.h    | 26 +++++++++++----
+>  include/hw/hexagon/virt.h   |  2 +-
+>  include/hw/loongarch/virt.h |  2 +-
+>  include/hw/riscv/virt.h     |  2 +-
+>  qapi/machine.json           |  6 +++-
+>  system/vl.c                 |  8 ++---
+>  tests/qtest/qom-test.c      | 65 +++++++++++++++++++++++++++++++++----
+>  17 files changed, 113 insertions(+), 30 deletions(-)
+>
+> --
+> 2.52.0.windows.1
+>
 
-PMU partitioning is specific to KVM, so moving it into
-kvm_arm_add_vcpu_properties() (which is only called when kvm_enabled())
-and naming it "kvm-pmu-partition" per the KVM VCPU Features convention
-in docs/system/arm/cpu-features.rst seems to make the most sense.
 
-For the counter limit property, would you prefer that it also live in
-kvm_arm_add_vcpu_properties() as "kvm-pmu-num-counters" (KVM-only), or
-keep "pmu-num-counters" general so TCG can also use it to override
-PMCR_EL0.N in reset_pmcr_el0?
-
-Thanks,
-Colton
+--=20
+         =E6=AD=A4=E8=87=B4
+=E7=A4=BC
+=E7=BD=97=E5=8B=87=E5=88=9A
+Yours
+    sincerely,
+Yonggang Luo
 

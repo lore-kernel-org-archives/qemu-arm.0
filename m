@@ -4,60 +4,55 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 72CB4CA5FC3
-	for <qemu-arm@archiver.kernel.org>; Wed, 30 Sep 2026 08:57:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 28900CA5FB1
+	for <qemu-arm@archiver.kernel.org>; Wed, 30 Sep 2026 09:46:29 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xBq7R-0003h5-Jb; Wed, 30 Sep 2026 04:56:54 -0400
+	id 1xBqt9-0006A1-VC; Wed, 30 Sep 2026 05:46:12 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1xBq7P-0003g6-OR; Wed, 30 Sep 2026 04:56:51 -0400
-Received: from isrv.corpit.ru ([212.248.84.144])
+ (Exim 4.90_1) (envelope-from <gilles.grimaud@univ-lille.fr>)
+ id 1xBqt9-00069l-6g; Wed, 30 Sep 2026 05:46:11 -0400
+Received: from smtp-out-1.univ-lille.fr ([194.254.129.82])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1xBq7M-00034k-FY; Wed, 30 Sep 2026 04:56:51 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=tls.msk.ru; s=202602;
- t=1790758605; bh=QMtZLDE4GhUYYT1r5pWy36FpqzdOf8yjefTPHveRf+U=;
- h=Date:Subject:To:Cc:References:From:In-Reply-To;
- b=Eu1cuqnH8cODJaIrY9Ng8+ITSP93w2KL8ujULMJWUJ0Lk8L+OL59eAlifNLloFh2k
- ypwPxWTklZKpp+wevrOcA07EJC+etyj14420rvNbN+f6HiASA582HwoK3P2ekrhXEF
- TXMDD2/kWkm3nk8PF7K/09BBzilJfHy3MvKC74PEkFLM07kcgZ7X6R1U7eo28Dmrrv
- KGiIOLcgkTbfa5hIYW5XohBrmnleWWaheMGFtdJhEAs2NH/iJiIJH6jlouiglr6UIV
- 22x61djxZoHzi5Zf0GyjPZC5oJyAB5FgtyALb+UYY2fyVq3Zr1lmfaTHSsPNb66fEe
- 0NgpsxRtCuwkQ==
-Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
- by isrv.corpit.ru (Postfix) with ESMTP id 4920F1D9C49;
- Wed, 30 Sep 2026 11:56:45 +0300 (MSK)
-Received: from [192.168.177.130] (mjt.wg.tls.msk.ru [192.168.177.130])
- by tsrv.corpit.ru (Postfix) with ESMTP id 2DB4E4360C3;
- Wed, 30 Sep 2026 11:56:45 +0300 (MSK)
-Message-ID: <5eb74929-f605-4acf-875b-e561385182f0@tls.msk.ru>
-Date: Wed, 30 Sep 2026 11:56:45 +0300
+ (Exim 4.90_1) (envelope-from <gilles.grimaud@univ-lille.fr>)
+ id 1xBqt7-0000R5-AQ; Wed, 30 Sep 2026 05:46:10 -0400
+Received: from smtp02.univ-lille.fr (smtp02.univ-lille.fr [194.254.129.96])
+ by smtp-out-1.univ-lille.fr (Postfix) with ESMTPS id 4hvqtN46gPzBqZ9;
+ Wed, 30 Sep 2026 11:46:04 +0200 (CEST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=univ-lille.fr;
+ s=dkim; t=1790761564;
+ bh=J0JC4Z4YoBOLybTqcPKjx2Vwsqnqk9HFBSo0Nm+WJTY=;
+ h=From:To:Cc:Subject:Date:From;
+ b=zH96aNk+cECczR9YcjmWJ7GmBUYyDSLNwSl4UsMYUxCNR7NEoj5hJaTWO0VGt9+YZ
+ HmE279Phgcu82sTBqkf2SsVj8XrzpeRuVzb79PdW0T33V4wPmuMTno/Ul4Iz19qvVE
+ xOnmgUZKRWkcs8/V2zD/xLscF5Qh5sz1bow86P0AKLnedArqfAyjedsB9yr3jUGaci
+ OLw7LOx336uk5ghU9JfCbL60oWcUThVjtV4FoFz1qZ5HR5PfSlVhP9dWcP0TRmjK/R
+ inJorkCGZf0Ywtog7SOk447xs9lKPkpbkSzo8ep1KY8p4LS0Yu2NA2IUTaZK2BGq5C
+ wEhVh7jP22Ksg==
+Received: from localhost.localdomain (unknown [134.206.233.118])
+ (Authenticated sender: gilles.grimaud)
+ by smtp02.univ-lille.fr (Postfix) with ESMTPSA id 4hvqtN33pbz6snq;
+ Wed, 30 Sep 2026 11:46:04 +0200 (CEST)
+From: Gilles Grimaud <gilles.grimaud@univ-lille.fr>
+To: Peter Maydell <peter.maydell@linaro.org>
+Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org,
+ Gilles Grimaud <gilles.grimaud@univ-lille.fr>
+Subject: [PATCH] target/arm: add Cortex-M0+ CPU type
+Date: Wed, 30 Sep 2026 11:46:03 +0200
+Message-ID: <20260930094603.35969-1-gilles.grimaud@univ-lille.fr>
+X-Mailer: git-send-email 2.55.0
 MIME-Version: 1.0
-User-Agent: Betterbird (Linux)
-Subject: Re: [PATCH 2/2] target/arm: Fix WFxT timeouts when the offset puts
- the count ahead
-To: Fuad Tabba <fuad.tabba@linux.dev>, Peter Maydell <peter.maydell@linaro.org>
-Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org, qemu-stable@nongnu.org,
- =?UTF-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>,
- Richard Henderson <richard.henderson@linaro.org>,
- Will Deacon <will@kernel.org>, Fuad Tabba <tabba@google.com>
-References: <20260921074451.3158645-1-fuad.tabba@linux.dev>
- <20260921074451.3158645-3-fuad.tabba@linux.dev>
-Content-Language: en-US, ru-RU
-From: Michael Tokarev <mjt@tls.msk.ru>
-In-Reply-To: <20260921074451.3158645-3-fuad.tabba@linux.dev>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=212.248.84.144; envelope-from=mjt@tls.msk.ru;
- helo=isrv.corpit.ru
-X-Spam_score_int: -19
-X-Spam_score: -2.0
-X-Spam_bar: --
-X-Spam_report: (-2.0 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, SPF_HELO_NONE=0.001,
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=194.254.129.82;
+ envelope-from=gilles.grimaud@univ-lille.fr; helo=smtp-out-1.univ-lille.fr
+X-Spam_score_int: -43
+X-Spam_score: -4.4
+X-Spam_bar: ----
+X-Spam_report: (-4.4 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_MED=-2.3, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -74,77 +69,56 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-[This has been applied to the master branch as 998b6db69e3ec58fd52ddc7a06ece6cf286f3c77]
+The Armv6-M Unprivileged/Privileged Extension is optional. While the
+Cortex-M0 does not implement it, the Cortex-M0+ may - and the RP2040
+Cortex-M0+ configuration in particular provides this extension.
 
-On 9/21/26 10:44, Fuad Tabba wrote:
-> The WFIT and WFET helpers arm the wakeup timer at count == timeout +
-> offset, treating an overflow of that sum as "beyond the counter's
-> wrap" and arming at INT64_MAX. As in gt_recalc_timer(), that reading
-> is valid only when offset <= count: with a CNTVOFF_EL2 that puts the
-> virtual count ahead of the physical count, the sum overflows for
-> every timeout still in the future and the wrapped value was the
-> correct wakeup. The CPU then waits until an interrupt or event
-> instead of waking at its timeout. A Linux guest uses WFIT and WFET in
-> __delay() when FEAT_WFxT is present, which -cpu max advertises.
-> 
-> Arm cntval + (timeout - cntvct) instead, so only a physical count past
-> 2^64 is "never", and add a tcg system test that issues WFIT and WFET
-> with such an offset, with a timer interrupt 1s out so a broken WFxT
-> still returns: before this change both wake at the interrupt, after
-> it at their timeout.
-> 
-> Fixes: a96edb687e76 ("target/arm: Implement FEAT WFxT and enable for '-cpu max'")
-> Fixes: da9b86c35fa8 ("target/arm: implement WFET")
+Add the cortex-m0plus CPU type, reusing the existing Cortex-M0
+initialization logic. Enable ARM_FEATURE_M_UNPRIV, introduced by commit
+285e929908 ("target/arm: model Cortex-M0+ privilege extension"), and set
+the Cortex-M0+ MIDR used by the RP2040.
 
-Hi.
+Signed-off-by: Gilles Grimaud <gilles.grimaud@univ-lille.fr>
+---
+The Cortex-M0+ CPU type was previously included in:
 
-For stable-10.0.x LTS series, which does not support WFET (commit
-da9b86c35fa8), I'm picking up just the first half of this patch,
-and half of the test.
+  [RFC PATCH v1 2/6] target/arm: model Cortex-M0+ privilege extension
+  https://lore.kernel.org/qemu-devel/20260914192323.29250-3-gilles.grimaud@univ-lille.fr/
 
-An alternative is to pick da9b86c35fa8 ("target/arm: implement WFET")
-for 10.0.x, which does not actually look bad.  It will probably require
-v11.0.0-332-g4575da5ecb7 "target/arm: report register in WFIT syndromes"
-too.
+It is now submitted separately following review feedback.
 
-What do you think?
+ target/arm/tcg/cpu-v7m.c | 11 +++++++++++
+ 1 file changed, 11 insertions(+)
 
-Thanks,
-
-/mjt
-
-> Cc: qemu-stable@nongnu.org
-> Signed-off-by: Fuad Tabba <fuad.tabba@linux.dev>
-> ---
->   target/arm/tcg/op_helper.c           |   6 +-
->   tests/tcg/aarch64/system/meson.build |   7 ++
->   tests/tcg/aarch64/system/wfxt.c      | 118 +++++++++++++++++++++++++++
->   3 files changed, 129 insertions(+), 2 deletions(-)
->   create mode 100644 tests/tcg/aarch64/system/wfxt.c
-> 
-> diff --git a/target/arm/tcg/op_helper.c b/target/arm/tcg/op_helper.c
-> index c2b09176cb..562f11f390 100644
-> --- a/target/arm/tcg/op_helper.c
-> +++ b/target/arm/tcg/op_helper.c
-> @@ -448,7 +448,8 @@ void HELPER(wfit)(CPUARMState *env, uint32_t rd)
->           raise_exception(env, excp, syn_wfx(1, 0xe, rd, true, WFIT, false), target_el);
->       }
->   
-> -    if (uadd64_overflow(timeout, offset, &nexttick)) {
-> +    /* Physical count at the timeout. Only an overflow of it is "never". */
-> +    if (uadd64_overflow(cntval, timeout - cntvct, &nexttick)) {
->           nexttick = UINT64_MAX;
->       }
->       if (nexttick > INT64_MAX / gt_cntfrq_period_ns(cpu)) {
-> @@ -705,7 +706,8 @@ void HELPER(wfet)(CPUARMState *env, uint32_t rd)
->        * The WFET should time out when CNTVCT_EL0 >= the specified value.
->        */
->       cpu = env_archcpu(env);
-> -    if (uadd64_overflow(timeout, offset, &nexttick)) {
-> +    /* Physical count at the timeout. Only an overflow of it is "never". */
-> +    if (uadd64_overflow(cntval, timeout - cntvct, &nexttick)) {
->           nexttick = UINT64_MAX;
->       }
->       if (nexttick > INT64_MAX / gt_cntfrq_period_ns(cpu)) {
-
+diff --git a/target/arm/tcg/cpu-v7m.c b/target/arm/tcg/cpu-v7m.c
+index 48b31d5eac..ac99c93ec3 100644
+--- a/target/arm/tcg/cpu-v7m.c
++++ b/target/arm/tcg/cpu-v7m.c
+@@ -76,6 +76,15 @@ static void cortex_m0_initfn(Object *obj)
+     SET_IDREG(isar, ID_ISAR6, 0x00000000);
+ }
+ 
++static void cortex_m0plus_initfn(Object *obj)
++{
++    ARMCPU *cpu = ARM_CPU(obj);
++
++    cortex_m0_initfn(obj);
++    set_feature(&cpu->env, ARM_FEATURE_M_UNPRIV);
++    cpu->midr = 0x410cc601;
++}
++
+ static void cortex_m3_initfn(Object *obj)
+ {
+     ARMCPU *cpu = ARM_CPU(obj);
+@@ -325,6 +334,8 @@ static void arm_v7m_class_init(ObjectClass *oc, const void *data)
+ static const ARMCPUInfo arm_v7m_cpus[] = {
+     { .name = "cortex-m0",   .initfn = cortex_m0_initfn,
+                              .class_init = arm_v7m_class_init },
++    { .name = "cortex-m0plus", .initfn = cortex_m0plus_initfn,
++                                .class_init = arm_v7m_class_init },
+     { .name = "cortex-m3",   .initfn = cortex_m3_initfn,
+                              .class_init = arm_v7m_class_init },
+     { .name = "cortex-m4",   .initfn = cortex_m4_initfn,
+-- 
+2.55.0
 

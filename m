@@ -4,161 +4,124 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 15FBECA5FC4
-	for <qemu-arm@archiver.kernel.org>; Wed, 30 Sep 2026 17:32:22 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 92F4FCA5FC4
+	for <qemu-arm@archiver.kernel.org>; Wed, 30 Sep 2026 17:43:55 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xBy9m-0003dF-Qp; Wed, 30 Sep 2026 13:31:51 -0400
+	id 1xByKy-000514-7I; Wed, 30 Sep 2026 13:43:24 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@oss.qualcomm.com>)
- id 1xBy9c-0003bV-A0
- for qemu-arm@nongnu.org; Wed, 30 Sep 2026 13:31:40 -0400
-Received: from mx0a-0031df01.pphosted.com ([205.220.168.131])
+ (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
+ id 1xByKw-00050Y-O3
+ for qemu-arm@nongnu.org; Wed, 30 Sep 2026 13:43:22 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@oss.qualcomm.com>)
- id 1xBy9Z-00083Q-LE
- for qemu-arm@nongnu.org; Wed, 30 Sep 2026 13:31:40 -0400
-Received: from pps.filterd (m0279864.ppops.net [127.0.0.1])
- by mx0a-0031df01.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id
- 68UE00UM2404897
- for <qemu-arm@nongnu.org>; Wed, 30 Sep 2026 17:31:36 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qualcomm.com; h=
- cc:content-transfer-encoding:content-type:date:from:in-reply-to
- :message-id:mime-version:references:subject:to; s=qcppdkim1; bh=
- D1/7ncQxClU/Jom27+oP/7hAF+rCqUbH+Aah75v8h+8=; b=eN9LZZsJq7/fQE9I
- 0u/SvASVO6aMnLmWZqdXETVR9RDnRlW51R5XZkkhfGnBVUDPKilQ5E2B0LXDT/3P
- 0ctzyiwOZMoWBc4TypPHMRuQ9jYD1nCVHtpuTV/HECi6B3FMszbblHyhL7fKwRE7
- AvS3w4bMhCO5vLsUBi7sKdUwmuvtjOxO51dD0pf9fkk9UZxCoV1PV5foE3BQcUn/
- rrwBMAJL9eEWyobq2Q5f0+7KdM2kqrekmjmNl+HihrqPSQsWOcvsWWLjSqmRSgU2
- ZC2Yqj+YRNJcEYjyGeSju8jTbUTaTh2neVY2VAa86+pEZuiA6ctydzwl92Gcu4WE
- 1fENQg==
-Received: from mail-vs1-f72.google.com (mail-vs1-f72.google.com
- [209.85.217.72])
- by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 4h0x1c2pqh-1
- (version=TLSv1.3 cipher=TLS_AES_128_GCM_SHA256 bits=128 verify=NOT)
- for <qemu-arm@nongnu.org>; Wed, 30 Sep 2026 17:31:35 +0000 (GMT)
-Received: by mail-vs1-f72.google.com with SMTP id
- ada2fe7eead31-7b335ce0f18so775743137.1
- for <qemu-arm@nongnu.org>; Wed, 30 Sep 2026 10:31:35 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=oss.qualcomm.com; s=google; t=1790789494; x=1791394294; darn=nongnu.org;
- h=content-transfer-encoding:content-type:in-reply-to:from:references
- :cc:to:content-language:subject:user-agent:mime-version:date
- :message-id:from:to:cc:subject:date:message-id:reply-to:content-type;
- bh=D1/7ncQxClU/Jom27+oP/7hAF+rCqUbH+Aah75v8h+8=;
- b=OSMQoQH9jjLLbBAsjID4RlXEh7beXEZZNU+D9jgx9D6pYvHw8pZ42GU0EeuIsyhN/H
- DzM3d3HO1pFBsg4ITtperkZvbu0w24Ku6zw6GuI1FKmPMgnFA/uP+ikXXjJ9PEEKUK2p
- pP2Z/NoSg0lKgBUz1BOqEp2K+yer6b6THniTBpz9NFrl0EsbiCDOZq9X3aqF9gCMkYMY
- 9BpqZP883lIl3P6As1TWZy5y4LDxLqBga6AIrngz5pFzccOMUiEm9gyC6vDotlcdhhJy
- lXxQk6cv6E6EkR2BxHxxCREhGRaJR3x5yYfsQV3n7gqoolzsmbA2DRORTRodjMRMw/ND
- laeQ==
+ (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
+ id 1xByKu-0000Oi-Q9
+ for qemu-arm@nongnu.org; Wed, 30 Sep 2026 13:43:22 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1790790199;
+ h=from:from:reply-to:reply-to:subject:subject:date:date:
+ message-id:message-id:to:to:cc:cc:mime-version:mime-version:
+ content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=SiFzGMFKKl+ozvaauMYdUK2l9xfAclZr0fBl6EjIlYQ=;
+ b=ZHfKEXyPeqq/qt+YHH/zRH9D3HrfrklcZXqWCqp1HdyHT1/lQBd5ATxVmdMmaEX5ImGL27
+ JSYB98RLd5NrJnmr4/7wERT+wLiYD+OKDrjO4HBthJlL4+Zvsz58K9bnpOgyrf+5n4+Ajf
+ SZye8ikjgZT3w2QCL7pQOyPmJ3o8hWY=
+Received: from mail-wr1-f72.google.com (mail-wr1-f72.google.com
+ [209.85.221.72]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-38-6WmX1QCsMLm4-wt-LupbKw-1; Wed, 30 Sep 2026 13:43:16 -0400
+X-MC-Unique: 6WmX1QCsMLm4-wt-LupbKw-1
+X-Mimecast-MFC-AGG-ID: 6WmX1QCsMLm4-wt-LupbKw_1790790195
+Received: by mail-wr1-f72.google.com with SMTP id
+ ffacd0b85a97d-47f2de3ba47so4297048f8f.1
+ for <qemu-arm@nongnu.org>; Wed, 30 Sep 2026 10:43:16 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20260707; t=1790789494; x=1791394294;
+ d=1e100.net; s=20260707; t=1790790195; x=1791394995;
  h=content-transfer-encoding:content-type:in-reply-to:from:references
- :cc:to:content-language:subject:user-agent:mime-version:date
- :message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+ :cc:to:content-language:subject:reply-to:user-agent:mime-version
+ :date:message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
  :message-id:reply-to:content-type;
- bh=D1/7ncQxClU/Jom27+oP/7hAF+rCqUbH+Aah75v8h+8=;
- b=EED9ieIvD01SWKCXXAgURP+JkGQuUkmQmKFuIppu6Or0hQkKvKpqyEqGdDB2MCo5Im
- PU/+7HBxZY43viJ8GtD4QhU0OOGaeP1MJoo3d5qpRHyMGWv5TJoq7CudtwZUN5iDKANn
- mlR0XlYZVJvxxUu+PvgP+c0KticYepqW557Qof/CB7M/gmwl93HBi4Eym/BIqF7fn3f7
- xz+bJYdCOtY22UUsuEAPnfWVreitkqeoS2k9Hmbn+g3x7TccIt5Wwi279fAhU8HDNDiz
- ctjCNBzGprQuralT0XvVmdpfI7RcfcM4JGYfbPIMFT0FccapIGBO8vGl9oVTxrPwZsU4
- IOqQ==
+ bh=SiFzGMFKKl+ozvaauMYdUK2l9xfAclZr0fBl6EjIlYQ=;
+ b=V3gem3cjMVgN2DhQH4uHwYo0bqJfzmKypVru+pqMDBJG0VkhcC/yVinw5xrrGqz36U
+ LXEMmvZnpMuYZ6yOwGn1w57yirFBkVunLMGX6PE5oBccNIKYIIC0L4Y6Buz0Tklf7tWJ
+ 05VkNsOyTYmA3mBHuqBBZoq7OMw+i3YrkDt9JBudsyp6G7nOwMPHMwYKkCPay5HwlOIz
+ GoF39N/EOGU85sGCgEO+7lX+wqoJstp0YDs2lkvf/4czXO5uXriiw4gPWanj4SJ85weW
+ XelwHrz8BTeVy3P3KjTdORPY1+09K1KkPIrGvZfvSLcVb5jmQMW0HJS++9Bxa0FhPrzE
+ wMXw==
 X-Forwarded-Encrypted: i=1;
- AKwUvBw4bC2jyh3f3x1IzqCSVGtUa5iIQZdykqjE8pOHJc+irDlCp8hIQbObs5VV10W9yIC3G4gBeJ7Acw==@nongnu.org
-X-Gm-Message-State: AFq9FYKYDls6KpfXJGNwnTgoOe7XkcUqaAhnullytHQC82pXqiaoWTMs
- 0f7JPFAx2p5DZXnWpPkZc6tRxS5WziUQeGROH7k/vqtCTq/bT4V7JGK8+ARt8Uz6rSlizF0kVAf
- QYRz1zmjCaJVzO928fkHWPg4n0a/ghxpDADKn12Vr+ykbnEeqx591a2s=
-X-Gm-Gg: AYBFou0/rcEcPgSp9Ra1KUB+tk+O9cGLn2zW7dwBjms9o8UyslRJVAYNZwUtpcCxfsZ
- pq2+5kHRRVwv74C/2fexGCoQppDkelB71tjeMh15PE6YaJXXKUs8nNRJpnsRSMuTF7WddgGCnYW
- yaAmoBwawa8Onom34zXWqsUIZPrAbn2ZI+P3+zs85JybuAf565pZsrJrlXPIa78Bd8/NU/25U9V
- k1l1sL94CZ2DNrDztMC++mdL0CPQElLD+vD9WEs+aeDZW4Ojt9gYpVkD+0Gs48zuUPAQV6wT/oq
- R+ty50+CmogZW1LnJDX6WHt/CU2py/+FbcF5LKCKgxJde3bmBa1KGFHzom8/hzsuFjqC8tsLtF5
- xHZlTxzQfVrY3nEQ5AU1O5FSSCMR7qCYdTQ==
-X-Received: by 2002:a05:6102:b11:b0:7b3:3b4e:e4 with SMTP id
- ada2fe7eead31-7be61e97b3dmr545221137.2.1790789494129; 
- Wed, 30 Sep 2026 10:31:34 -0700 (PDT)
-X-Received: by 2002:a05:6102:b11:b0:7b3:3b4e:e4 with SMTP id
- ada2fe7eead31-7be61e97b3dmr545204137.2.1790789493589; 
- Wed, 30 Sep 2026 10:31:33 -0700 (PDT)
-Received: from [192.168.69.225] (pmd666.hd.free.fr. [88.187.86.199])
+ AKwUvBwveRLRt4DcnB58sxNPWTESUjQynrT1JaA73O8X7xRk1jXidczTVBqFmlVDPTfL8/PK7XPMQl29yA==@nongnu.org
+X-Gm-Message-State: AFq9FYLNuNMCuXlT5HsBiR+8fr7GXq0qFY9vIp0f8D71DZmvxDo8v7W6
+ ffN2yP762qsI47sML7qUbjB5avlqhfnxGeiQDshQpDcHa6VzkxkHbHWJOkWpaAwpLFrbIU/3MVg
+ pZQwIIjgp4zvq72UuvRPpvq2TA2dlAiyWQ/LoObb4otbMsI0O5gzX5w==
+X-Gm-Gg: AYBFou1Qa/z21aGfmiM0i0e+dXiT0vP8mTBnHRQwx2lG7MSM7Z6X3WCSWZIp0DhNf1S
+ VyWvxNfDLKAdBZag5+Q1jCSBsEADE7GfD8T5EWxCOPxcI+AOUGZelxh3jRZygXzRzkZJrfXanWv
+ KZ1+NFoA+SRIutnl3zE3htOmxnP99dcKmZ04e9La40uQz5QvsWUG831m59jopW3LOEr226DHY+V
+ 6EdRS3VyuPIiAsvRIFDp5RUQoz/uyNajB5rjhUFLRXGysTgpDRCexfthXF6j5xquf2/fLW9vGi/
+ E9tPijw2SKNO5tJTr9eCVyxNlhxgOhj6lFvBRdheJB6GzSas+GfgZdoTI6+RWl5slc3J8lYFgaS
+ E7vF83aGOPApb7b/cgJ+v9LKhELjlP1GAfZAzLcVcRcDcOgXZ
+X-Received: by 2002:a05:6000:4029:b0:488:5d44:6680 with SMTP id
+ ffacd0b85a97d-48b025083c4mr4389598f8f.36.1790790195194; 
+ Wed, 30 Sep 2026 10:43:15 -0700 (PDT)
+X-Received: by 2002:a05:6000:4029:b0:488:5d44:6680 with SMTP id
+ ffacd0b85a97d-48b025083c4mr4389553f8f.36.1790790194789; 
+ Wed, 30 Sep 2026 10:43:14 -0700 (PDT)
+Received: from ?IPV6:2a01:e0a:f0e:9070:527b:9dff:feef:3874?
+ ([2a01:e0a:f0e:9070:527b:9dff:feef:3874])
  by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-4a01eb717acsm6774925e9.8.2026.09.30.10.31.31
+ ffacd0b85a97d-48b06a2d12fsm526748f8f.31.2026.09.30.10.43.13
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 30 Sep 2026 10:31:32 -0700 (PDT)
-Message-ID: <cdf83c82-5f26-4e06-920f-5596a9e3560f@oss.qualcomm.com>
-Date: Wed, 30 Sep 2026 19:31:31 +0200
+ Wed, 30 Sep 2026 10:43:14 -0700 (PDT)
+Message-ID: <aca67e8c-7599-45aa-a6c7-542c0461ad19@redhat.com>
+Date: Wed, 30 Sep 2026 19:43:12 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 05/10] monitor/hmp: add CPUClass::get_pc fallback for HMP
- $pc
+Subject: Re: [PATCH v9 21/26] target/arm/kvm: add helper to test SYSREG props
+ against a scratch vcpu
+To: Khushit Shah <khushit.shah@nutanix.com>
+Cc: "eric.auger.pro@gmail.com" <eric.auger.pro@gmail.com>,
+ "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
+ "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
+ "kvmarm@lists.linux.dev" <kvmarm@lists.linux.dev>,
+ "peter.maydell@linaro.org" <peter.maydell@linaro.org>,
+ Shaju Abraham <shaju.abraham@nutanix.com>,
+ "yangjinqian1@huawei.com" <yangjinqian1@huawei.com>,
+ "cohuck@redhat.com" <cohuck@redhat.com>,
+ "richard.henderson@linaro.org" <richard.henderson@linaro.org>,
+ "sebott@redhat.com" <sebott@redhat.com>,
+ "skolothumtho@nvidia.com" <skolothumtho@nvidia.com>,
+ "philmd@oss.qualcomm.com" <philmd@oss.qualcomm.com>,
+ "maz@kernel.org" <maz@kernel.org>,
+ "oliver.upton@linux.dev" <oliver.upton@linux.dev>,
+ "pbonzini@redhat.com" <pbonzini@redhat.com>,
+ "armbru@redhat.com" <armbru@redhat.com>,
+ "berrange@redhat.com" <berrange@redhat.com>,
+ "abologna@redhat.com" <abologna@redhat.com>,
+ "jdenemar@redhat.com" <jdenemar@redhat.com>
+References: <20260916144721.751810-1-eric.auger@redhat.com>
+ <20260916144721.751810-22-eric.auger@redhat.com>
+ <E471D5C1-D254-4DC9-BD22-E02660DE144F@nutanix.com>
+From: Eric Auger <eric.auger@redhat.com>
+In-Reply-To: <E471D5C1-D254-4DC9-BD22-E02660DE144F@nutanix.com>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-MFC-PROC-ID: q7kQKmlNwyaxqvfGJSaFGEgYfSc9DunGvSIqqWvI0R0_1790790195
+X-Mimecast-Originator: redhat.com
 Content-Language: en-US
-To: =?UTF-8?Q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>,
- qemu-devel@nongnu.org
-Cc: "Dr. David Alan Gilbert" <dave@treblig.org>,
- =?UTF-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>,
- Zhao Liu <zhao1.liu@intel.com>, Peter Maydell <peter.maydell@linaro.org>,
- Chinmay Rath <rathc@linux.ibm.com>, Nicholas Piggin <npiggin@gmail.com>,
- Glenn Miles <milesg@linux.ibm.com>,
- Harsh Prateek Bora <harshpb@linux.ibm.com>,
- Palmer Dabbelt <palmer@dabbelt.com>,
- Alistair Francis <alistair.francis@wdc.com>, Weiwei Li
- <liwei1518@gmail.com>,
- Daniel Henrique Barboza <daniel.barboza@oss.qualcomm.com>,
- Liu Zhiwei <zhiwei_liu@linux.alibaba.com>,
- Chao Liu <chao.liu@processmission.com>,
- Max Filippov <jcmvbkbc@gmail.com>, qemu-arm@nongnu.org,
- qemu-ppc@nongnu.org, qemu-riscv@nongnu.org,
- Paolo Bonzini <pbonzini@redhat.com>, Laurent Vivier <laurent@vivier.eu>,
- Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
- Artyom Tarasenko <atar4qemu@gmail.com>, Helge Deller <deller@gmx.de>,
- Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>,
- Warner Losh <imp@bsdimp.com>, Kyle Evans <kevans@freebsd.org>
-References: <20260911-query-reg-v1-0-0c04f0c02cf3@redhat.com>
- <20260911-query-reg-v1-5-0c04f0c02cf3@redhat.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@oss.qualcomm.com>
-In-Reply-To: <20260911-query-reg-v1-5-0c04f0c02cf3@redhat.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Proofpoint-Spam-Info: AW1haW4tMjYwOTMwMDA2OSBTYWx0ZWRfX5cWAUC9qkDVd
- l/ZcwBurFREpqWvipYiXQNdJ99oDLZ9wBilyigmrGMf8Q4AC8MHOt+Ri51LekPVZFnaM0tm1iOd
- NCxsL82Mk+QzuIXbOiVL0P1WT95z7ZE=
-X-Proofpoint-ORIG-GUID: SBUAYV8YW9brxgG3Z4s8ZXy69vdNHzod
-X-Authority-Analysis: v=2.4 cv=VrC2kO2n c=1 sm=1 tr=0 ts=6abd4777 cx=c_pps
- a=DUEm7b3gzWu7BqY5nP7+9g==:117 a=4s3hRJSeHn4rkQlkrse1kQ==:17
- a=IkcTkHD0fZMA:10 a=VdqzKS8jKosA:10 a=M51BFTxLslgA:10 a=s4-Qcg_JpJYA:10
- a=VkNPw1HP01LnGYTKEx00:22 a=u7WPNUs3qKkmUXheDGA7:22 a=DJpcGTmdVt4CTyJn9g5Z:22
- a=20KFwNOVAAAA:8 a=EjW4M9xKZJ0X6a1vx6gA:9 a=3ZKOabzyN94A:10 a=QEXdDO2ut3YA:10
- a=-aSRE8QhW-JAV6biHavz:22
-X-Proofpoint-GUID: SBUAYV8YW9brxgG3Z4s8ZXy69vdNHzod
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwOTMwMDA2OSBTYWx0ZWRfX9BUgSpCr47OJ
- giIHltg8DOqA9TIDtP+EGL4yMqApN0l5wwPUSQKoj7Ej73N+ihGneKc5wWr+NvLdWqQVLe/S33w
- xwlxyIfFO65gOlTv7zwSsDRfSXx9cxJi/UDbMfWAQo7mXbMMylTs+uSBT1O3y1shfmDdsWr9vhw
- RlmrKdLHTIIg9RYYNJhH3n37dowS066/TG5sHHiO73TF8RI574g34qcBi3jsLbj14cQxL9TG66s
- Rf2NSscTvO5h33g1j75ZbNjPYRsXiRHfuYqH2b6oBJ5Q5Hg5xu5EsiOqny2cNDFNLV1JJXTwk8l
- GPXFf+kQ3ze8nnLea7iLCXzflaopwFn0w2ULOEcF7HU4iyeW290bGVt8hm3/EHojcG97zd1PVAh
- 8AAY2G9LhHVYQnaq+glyR8B7kBAXsfRAmY3mUQlXJCkS4IPW7TgFrK6KmlJOP6i7Huc0FWCMRbU
- zPaNvuW29Iq6aLlgKhA==
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.293,Aquarius:18.0.1176,Hydra:6.1.134,FMLib:17.12.100.49
- definitions=2026-09-30_03,2026-09-21_02,2025-10-01_01
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
- spamscore=0 adultscore=0 impostorscore=0 clxscore=1015 malwarescore=0
- bulkscore=0 lowpriorityscore=0 suspectscore=0 priorityscore=1501 phishscore=0
- classifier=typeunknown authscore=0 authtc= authcc= route=outbound adjust=0
- reason=mlx scancount=1 engine=8.22.0-2609040000 definitions=main-2609300069
-Received-SPF: pass client-ip=205.220.168.131;
- envelope-from=philmd@oss.qualcomm.com; helo=mx0a-0031df01.pphosted.com
-X-Spam_score_int: -27
-X-Spam_score: -2.8
+Received-SPF: pass client-ip=170.10.133.124;
+ envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -23
+X-Spam_score: -2.4
 X-Spam_bar: --
-X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-Spam_report: (-2.4 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.341,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -171,48 +134,159 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Reply-To: eric.auger@redhat.com
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On 11/9/26 14:27, Marc-AndrÃ© Lureau wrote:
-> Some targets, including x86, have no GDB register named "pc" (x86
-> uses eip/rip). When the GDB register lookup fails for "$pc" in
-> HMP expressions, fall back to CPUClass::get_pc so that "p $pc",
-> "x $pc" etc. work without relying on the legacy MonitorDef table.
-> 
-> This prepares for the eventual removal of MonitorDef while making
-> $pc available immediately for all targets that implement get_pc.
-> 
-> Signed-off-by: Marc-André Lureau <marcandre.lureau@redhat.com>
-> ---
->   monitor/hmp.c | 8 ++++++--
->   1 file changed, 6 insertions(+), 2 deletions(-)
 
 
-> @@ -435,6 +435,10 @@ static bool gdb_get_register(MonitorHMP *hmp, int64_t *pval, const char *name)
+On 9/28/26 3:34 PM, Khushit Shah wrote:
+>
+>> On 16 Sep 2026, at 8:15 PM, Eric Auger <eric.auger@redhat.com> wrote:
+>>
+>> !-------------------------------------------------------------------|
+>>  CAUTION: External Email
+>>
+>> |-------------------------------------------------------------------!
+>>
+>> Add kvm_idreg_write_scratch_vcpu helper that will be used
+>> by qmp_query_cpu_model_expansion code to test SYSREG settings
+>> against a scratch vcpu. Indeed when the expansion code is called
+>> the actual vcpu has not been initialized so we use a scratch vcpu.
+>> This latter has been initialized with features taken from
+>> legacy compositive options (EL2, SVE, ...). So the trial is
+>> very close to the final setup.
+>>
+>> Signed-off-by: Eric Auger <eric.auger@redhat.com>
+>> ---
+>> target/arm/kvm_arm.h    |  4 ++++
+>> target/arm/kvm-stub.c   |  7 ++++++
+>> target/arm/kvm.c        | 51 +++++++++++++++++++++++++++++++++++++++++
+>> target/arm/trace-events |  1 +
+>> 4 files changed, 63 insertions(+)
+>>
+>> diff --git a/target/arm/kvm_arm.h b/target/arm/kvm_arm.h
+>> index 2b3474cc36..bace69efed 100644
+>> --- a/target/arm/kvm_arm.h
+>> +++ b/target/arm/kvm_arm.h
+>> @@ -14,6 +14,7 @@
+>> #include "qapi/qapi-types-misc-arm.h"
+>> #include "system/kvm.h"
+>> #include "target/arm/cpu-qom.h"
+>> +#include "cpu-idregs.h"
+>>
+>> #define KVM_ARM_VGIC_V2   (1 << 0)
+>> #define KVM_ARM_VGIC_V3   (1 << 1)
+>> @@ -250,4 +251,7 @@ void arm_gic_cap_kvm_probe(GICCapability *v2, GICCapability *v3);
+>>  */
+>> char *kvm_print_register_name(uint64_t regidx);
+>>
+>> +bool kvm_idreg_write_scratch_vcpu(ARMCPU *cpu, int cpufd,
+>> +                                  ARM64SysRegField *field, uint64_t newfv,
+>> +                                  Error **errp);
+>> #endif
+>> diff --git a/target/arm/kvm-stub.c b/target/arm/kvm-stub.c
+>> index 88cbe8d85c..8e6fae0a4d 100644
+>> --- a/target/arm/kvm-stub.c
+>> +++ b/target/arm/kvm-stub.c
+>> @@ -119,3 +119,10 @@ char *kvm_print_register_name(uint64_t regidx)
+>> {
+>>     g_assert_not_reached();
+>> }
+>> +
+>> +bool kvm_idreg_write_scratch_vcpu(ARMCPU *cpu, int cpufd,
+>> +                                  ARM64SysRegField *field, uint64_t newfv,
+>> +                                  Error **errp)
+>> +{
+>> +    g_assert_not_reached();
+>> +}
+>> diff --git a/target/arm/kvm.c b/target/arm/kvm.c
+>> index 537673177a..f7ca0e0250 100644
+>> --- a/target/arm/kvm.c
+>> +++ b/target/arm/kvm.c
+>> @@ -447,6 +447,57 @@ static bool kvm_arm_vcpu_validate_sysreg(ARMCPU *cpu, ARM64SysRegField *field,
+>> #define KEY_TO_REG_IDX(key)     ((uint32_t)(((uint64_t)(key)) >> 8))
+>> #define KEY_TO_SHIFT(key)       ((uint8_t)(((uint64_t)(key)) & 0xFF))
+>>
+>> +bool kvm_idreg_write_scratch_vcpu(ARMCPU *cpu, int cpufd,
+>> +                                  ARM64SysRegField *field, uint64_t newfv,
+>> +                                  Error **errp)
+>> +{
+>> +    uint64_t mask, old_reg_val, new_reg_val, oldfv;
+>> +    struct kvm_one_reg reg;
+>> +    int lower = field->shift;
+>> +    int length = field->length;
+>> +    int index = field->index;
+>> +    uint64_t kidx;
+>> +    int ret;
+>> +
+>> +    mask = MAKE_64BIT_MASK(lower, length);
+>> +
+>> +    if (!kvm_arm_vcpu_validate_sysreg(cpu, field, newfv, errp)) {
+>> +        return false;
+>> +    };
+>> +
+>> +    kidx = idregs_sysreg_to_kvm_reg(id_register_sysreg[index]);
+>> +    ret = read_sys_reg64(cpufd, &old_reg_val, kidx);
+>> +    if (ret) {
+>> +        error_setg(errp, "failed to read the scratch vcpu value for field %s %m",
+>> +                   field->name);
+>> +        return false;
+>> +    }
+>> +    oldfv = (old_reg_val & mask) >> lower;
+>> +
+>> +    new_reg_val = old_reg_val & ~mask;
+>> +    new_reg_val |= newfv << lower;
+>> +
+>> +    reg.id = kidx;
+>> +    reg.addr = (uintptr_t)&new_reg_val;
+>> +    ret = ioctl(cpufd, KVM_SET_ONE_REG, &reg);
+>> +    if (ret) {
+>> +        error_setg(errp, "failed to apply new value 0x%"PRIx64" for field %s "
+>> +                   "(previous is 0x%"PRIx64"): %m", newfv, field->name, oldfv);
+>> +        return false;
+>> +    } else {
+>> +        uint64_t check_val, actualfv;
+>> +
+>> +        ret = read_sys_reg64(cpufd, &check_val, kidx);
+>> +        if (ret) {
+>> +            error_setg(errp, "failed to read the new reg value: %m");
+>> +            return false;
+>> +        }
+>> +        actualfv = (check_val & mask) >> lower;
+>> +        trace_kvm_idreg_write_scratch_vcpu(field->name, oldfv, newfv, actualfv);
+>> +    }
+>> +    return true;
+>> +}
+>> +
+> Hi Eric,
+>
+> This looks similar to kvm_arm_apply_sysreg_props(), we maybe be able to abstract out kvm_arm_apply_sysreg_prop(),
+> which can then be used by both these functions.
 
-> +    if (!strcmp(name, "pc") && cs->cc->get_pc) {
-> +        *pval = cs->cc->get_pc(cs);
-> +        return true;
-> +    }
->       return false;
->   }
-Before commit 57206fd42a0 ("more register values in monitor") we had
-$eip (32-bit) aliased as $pc, but I suppose in order to add the 64-bit
-port (see next commit, 75dfaa1e64b "x86-64 port (Jocelyn Mayer)") it
-was unified as a single $pc instead of adding the corresponding $rip:
+done in v10
 
--    { "eip|pc", offsetof(CPUState, eip) },
-+    { "pc", 0, monitor_get_pc, },
+Thanks!
 
-This was 22 years ago :) With retrospective I'd say a generic $pc is
-misleading (note, this is only for the x86 architecture, the other
-ones don't suffer from this problem).
+Eric
+>
+>> static void set_sysreg_prop(Object *obj, Visitor *v,
+>>                             const char *name, void *opaque,
+>>                             Error **errp)
+>> diff --git a/target/arm/trace-events b/target/arm/trace-events
+>> index 2a9cc67035..7a3f499a0e 100644
+>> --- a/target/arm/trace-events
+>> +++ b/target/arm/trace-events
+>> @@ -21,6 +21,7 @@ set_sysreg_prop(const char *name, uint64_t old, uint64_t mask, uint64_t field_va
+>> apply_sysreg_prop(const char *reg_name, const char *field_name, uint64_t old, uint64_t current, uint64_t mask, uint64_t field_value, uint64_t new) "%s.%s old=0x%"PRIx64" current=0x%"PRIx64" mask=0x%"PRIx64" new field value=0x%"PRIx64" new=0x%"PRIx64
+>> nb_sysreg_props(const char *name, int count) "%s: %d SYSREG properties"
+>> unexpected_writable_reserved_field(const char *reg_name, const char *field_name, int lower, int upper) "Unexpected writable reserved field: %s.%s [%d,%d], skip it ..."
+>> +kvm_idreg_write_scratch_vcpu(const char *name, uint64_t oldfv, uint64_t newfv, uint64_t actualfv) "successful dry-run for %s old=0x%"PRIx64" new=0x%"PRIx64" actual=0x%"PRIx64
+>>
+>> # cpu.c
+>> arm_cpu_reset(uint64_t mp_aff) "cpu %" PRIu64
+>> -- 
+>> 2.53.0
+>>
 
-To be pedantic we could add a 'const char *CPUClass::get_pc_regname()'
-helper, but TBH I'd just drop this and let the monitor reports an error.
-gdbstub doesn't suffer from that because EIP/RIP register index are
-used.
-
-What is the community view on this?
 

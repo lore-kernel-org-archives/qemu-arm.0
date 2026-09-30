@@ -4,80 +4,80 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 75CB4CA5FC5
-	for <qemu-arm@archiver.kernel.org>; Wed, 30 Sep 2026 15:08:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3D322CA5FC7
+	for <qemu-arm@archiver.kernel.org>; Wed, 30 Sep 2026 15:11:44 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xBvvA-0000pq-OF; Wed, 30 Sep 2026 11:08:38 -0400
+	id 1xBvy7-0001po-2S; Wed, 30 Sep 2026 11:11:40 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1xBvuv-0000mG-HI
- for qemu-arm@nongnu.org; Wed, 30 Sep 2026 11:08:26 -0400
+ id 1xBvy2-0001p4-Oz
+ for qemu-arm@nongnu.org; Wed, 30 Sep 2026 11:11:35 -0400
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1xBvut-0000B6-JZ
- for qemu-arm@nongnu.org; Wed, 30 Sep 2026 11:08:21 -0400
+ id 1xBvxz-0000WN-J5
+ for qemu-arm@nongnu.org; Wed, 30 Sep 2026 11:11:34 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1790780896;
+ s=mimecast20190719; t=1790781090;
  h=from:from:reply-to:reply-to:subject:subject:date:date:
  message-id:message-id:to:to:cc:cc:mime-version:mime-version:
  content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=Ns+huMlBjpBINTzATYtJG6y2085LhnRydQuWQ6U4h1s=;
- b=NPXvbOheyZuwEOxnbmK9GXgDbpf0dI13D1fGzQJhDB4qAXG7W7R4JPCul2gmVkfyISAKBw
- YxMqMt865+k+iBx1XrsIVQ63T7AsN0VLeaTNiIRNkF8c0s6r1EexUrocqCGLgFLIdK7TDh
- nQgJS72pw62JZyzgQ/+vapf1li/9Vlc=
-Received: from mail-wr1-f72.google.com (mail-wr1-f72.google.com
- [209.85.221.72]) by relay.mimecast.com with ESMTP with STARTTLS
+ bh=7wSWouChO3YJdVcdwVjl9u7Qj6YLaKikGf1NY1itGlY=;
+ b=LegREHjGwZGvz/pBbt5W9oDrYzBSGyCks/u5W7nUPiABYoGkSdWRlaRoruppeDLUChDE43
+ qQ28qfSs7FAXpiT+qmMSJDs46ulmwSa3LYkHEoE9GDcb0sPXGjYOGt2mE2N+YAMwTWSe1m
+ Sr/138DfmAVi710tFHixUOroTel3MoM=
+Received: from mail-wm1-f70.google.com (mail-wm1-f70.google.com
+ [209.85.128.70]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-369-qmf1Ck9rNrSswSbzZRr7Rw-1; Wed, 30 Sep 2026 11:08:15 -0400
-X-MC-Unique: qmf1Ck9rNrSswSbzZRr7Rw-1
-X-Mimecast-MFC-AGG-ID: qmf1Ck9rNrSswSbzZRr7Rw_1790780894
-Received: by mail-wr1-f72.google.com with SMTP id
- ffacd0b85a97d-48afe67dfc2so685053f8f.1
- for <qemu-arm@nongnu.org>; Wed, 30 Sep 2026 08:08:14 -0700 (PDT)
+ us-mta-663-rPuIels_MNuQFvq9qvVWWQ-1; Wed, 30 Sep 2026 11:11:29 -0400
+X-MC-Unique: rPuIels_MNuQFvq9qvVWWQ-1
+X-Mimecast-MFC-AGG-ID: rPuIels_MNuQFvq9qvVWWQ_1790781088
+Received: by mail-wm1-f70.google.com with SMTP id
+ 5b1f17b1804b1-49fff093efcso51457995e9.1
+ for <qemu-arm@nongnu.org>; Wed, 30 Sep 2026 08:11:29 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20260707; t=1790780894; x=1791385694;
+ d=1e100.net; s=20260707; t=1790781088; x=1791385888;
  h=content-transfer-encoding:content-type:in-reply-to:from:references
  :cc:to:content-language:subject:reply-to:user-agent:mime-version
  :date:message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
  :message-id:reply-to:content-type;
- bh=Ns+huMlBjpBINTzATYtJG6y2085LhnRydQuWQ6U4h1s=;
- b=MmpBRsbmVfZsfr6SPk7KQyW8DKWASJ0MJCbQy3AUp44zWsitvOkHOI/mNiI4gEcBO6
- dJnxZ0FT6MhJr6p/gRookQmg8Tf+ovrd0tPWk+VqSFma+ZaEf9uoph2pxOL+msBW6g/i
- WVbBx6CcfeClpdG+fNYsCFKliCcQPT3QQn4Cp/NXXLvVU5XshA/6CftEa8jLTJwf6WHQ
- uWPA7chpo+57tYAct8LMUNze6WAPVW3rQ3xYGZ//4NTUxsNgwppkXgwyNtgMc+Lc4/fz
- SRdeCdL6KkMzCgiQnmb0u+BPLMey1ZPmH/LuB4Km8+Z32/rDXYIB6x3kM1RQ/gQ8OIed
- gk1A==
+ bh=7wSWouChO3YJdVcdwVjl9u7Qj6YLaKikGf1NY1itGlY=;
+ b=1Negk66LrghbH0qOTHmCH9pcO4O62h1dIugiE/GxYEPP2dzWi/oyeUwcQeVOfwXRKI
+ DaJ1upftNdkQ8yRJ4ceTK8ZxPjDrGRMN3dBHzpb/uSvLKtAxXpSZI5Nb+TQ2eYEyRM49
+ +28JJGAFrnXLErtimYGv5Ekf6p2QcX8PuVZK6gtMvkk8xHg3oHUGmT1zME9ifnHBNOty
+ ihNxFtk8qwInCn4cjY9N21nnZGOxbjWBrdYlQcMi/gjwSVXLpuNGcEqkGwwxSYNPnV95
+ l1iTxiG8KJwpp/TWmv+IOAWjHQeoKvGy8Ak6vBUOfrYWIk7zvocohrhoexml1tnar+V0
+ YlFw==
 X-Forwarded-Encrypted: i=1;
- AKwUvBx6IjWYzN7OIsCzJHOcdzccicQ4m2mBaEzLH7NT4eiMZ9yYVmw99t33Oopw4HT4H8xdpGxHUjp0yQ==@nongnu.org
-X-Gm-Message-State: AFuF++m9sHNrX/ZKnOEo7NbuytODWQtkWfgNXJfvpKJQB+nN/b21MUhZ
- JRStJGFBO+10IEdwepkF9VHeVOBF13P2HgfYEeVk+eP8puaJkeU53hh73q6AQApfMM/fy8CgY47
- DVeK6vmdbU6DlY6aadsBTvXMweFaRoJQVZs/t6QinuSRZOVZp9OEvSg==
-X-Gm-Gg: AYBFou0I5OAaz8yZPYldr1G0LuTVpcognJAOMolrTkimNYZOBNw4UTMxH0PPz0PnKiy
- TuqqUf62+5+lQCXuV1gNAxyO8iacOmyRaQETEXkJvW4XbFfDvh8odD9HfOvXBC+8VZAwpC0DeA0
- M9LqEF4CN4woM8Voltie1ePADBCHaVr9PiLfwNopDKs6arKk0c+V4NYdG8k3xejVgjwe64LQuty
- UVvODDHeiutSMa8er0R8VpxIXDO0N0iwj+k7jRqVBM+D80Ltw/PpPWjp0gNadIUl7d2ajkYxNqe
- dxD7pcgugSOVY9stSL3cz7ppgSRtWNP7/OwRlUgWTuij+7DRdKjgyP6djBMDs5ZvB3XsxYw2erv
- fH0hJozxikLAbzRGXH1H93J9+MFRtJfg/SnI/5HMKum6YQfjn
-X-Received: by 2002:a05:600d:82c4:b0:49c:e37e:4389 with SMTP id
- 5b1f17b1804b1-4a01b188e38mr32968655e9.4.1790780893420; 
- Wed, 30 Sep 2026 08:08:13 -0700 (PDT)
-X-Received: by 2002:a05:600d:82c4:b0:49c:e37e:4389 with SMTP id
- 5b1f17b1804b1-4a01b188e38mr32967005e9.4.1790780892124; 
- Wed, 30 Sep 2026 08:08:12 -0700 (PDT)
+ AKwUvBwTJ/ccEsMDxIhfqQrtBdpjJPemwbnU9UUSuiEkOdvY/V55grVMGO90zv3/pXCX9akeM9MAjrc+Lg==@nongnu.org
+X-Gm-Message-State: AFuF++knAKB7ITYQF1fNq7c1czxVB9iIvujoW0jePEQYvBqDJpFjglEA
+ f4voG59l0LQDpNFqueu8Sr8miWeu0mCbouFLQJjRCjQsA0B+sQ5iUEZ61nwNs+LnMQX9P3JA9Kz
+ iaZwxtrmikZTNCYJBzGy3xtBzEXJOCfTbWzLyooC/u9VnaSubYlA7zw==
+X-Gm-Gg: AYBFou0vww9QfEZOhFlMBJZBK4EUCwSfgrvbQ8aH92Az+EJegtTgi+qArV1EqoHxa+I
+ dlulaT2s2eQ9ncNPoxdmJtn49XPvUBAINluMWF3TwpIEFXWbrxHGkLFp59TB1pSY5r2zieFxHtp
+ Yw5aTMakkuqdxiZiNNQo6LBBlBDIQaenI2d1IG4zcG65rm+zoGe0jP8Ki4PSs10bCbaI7nMX7MY
+ 8Abi2fZCYiI2Lj+Jr6VO/D9UGhxGq1hNICCdUIki0FHr2ecAubQWvsFcoR5R3/K4rOqq7Jh0ihr
+ zcpkM2Bqno6D3ZohhG+SMLD0EnSEXkzwaPZnkCmaJsI+TBy3IEBQq62+lVKeIUC0jAO6W18pDKd
+ t/LTGBb3RgV2MDS+bXdJKJaiHu82pQWIiAnlF2Zbyh+Z22o7G
+X-Received: by 2002:a05:600c:3111:b0:49f:bc28:e8bc with SMTP id
+ 5b1f17b1804b1-4a01afe731dmr31701685e9.17.1790781088244; 
+ Wed, 30 Sep 2026 08:11:28 -0700 (PDT)
+X-Received: by 2002:a05:600c:3111:b0:49f:bc28:e8bc with SMTP id
+ 5b1f17b1804b1-4a01afe731dmr31701265e9.17.1790781087824; 
+ Wed, 30 Sep 2026 08:11:27 -0700 (PDT)
 Received: from ?IPV6:2a01:e0a:f0e:9070:527b:9dff:feef:3874?
  ([2a01:e0a:f0e:9070:527b:9dff:feef:3874])
  by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-4a01cd6cd2bsm10750735e9.4.2026.09.30.08.08.10
+ 5b1f17b1804b1-4a01e66b39csm4907525e9.15.2026.09.30.08.11.26
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 30 Sep 2026 08:08:11 -0700 (PDT)
-Message-ID: <bd747536-c8eb-4c21-a859-ac1f2a28794f@redhat.com>
-Date: Wed, 30 Sep 2026 17:08:09 +0200
+ Wed, 30 Sep 2026 08:11:27 -0700 (PDT)
+Message-ID: <f7e35493-02a4-4aa6-ac37-8d37369fa4e7@redhat.com>
+Date: Wed, 30 Sep 2026 17:11:25 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
 Subject: Re: [PATCH v9 16/26] target/arm/kvm: Apply SYSREG props to the final
@@ -108,7 +108,7 @@ References: <20260916144721.751810-1-eric.auger@redhat.com>
 From: Eric Auger <eric.auger@redhat.com>
 In-Reply-To: <8F110441-6D38-4134-9196-76AFA021250F@nutanix.com>
 X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: tin2NyBGuZR5z243oHFU2tmwlinTa2ir7CMu2TSwmI0_1790780894
+X-Mimecast-MFC-PROC-ID: nuD0BQJ53q0VvQ54uiqZ8ta2LA0YYQ05UAxKz-iFuU4_1790781088
 X-Mimecast-Originator: redhat.com
 Content-Language: en-US
 Content-Type: text/plain; charset=UTF-8
@@ -138,7 +138,7 @@ Reply-To: eric.auger@redhat.com
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Hi Khushit,
+
 
 On 9/28/26 12:44 PM, Khushit Shah wrote:
 >
@@ -157,16 +157,6 @@ On 9/28/26 12:44 PM, Khushit Shah wrote:
 >> Signed-off-by: Eric Auger <eric.auger@redhat.com>
 > With this, I suppose, what named models will do is directly write to
 > ID register state, As it also defines state which affects vCPU init flags also.
-That's not what I had in mind. I thought you would apply the SYSREG
-settings at the same time. As mentionned, I don't think those settings
-are meant to substitute to legacy composite options that affect vcpu
-init settings.
-Besides the principle of this preparatory series is that the props for
-writable ID reg fields are meant to be fully reusable for named vcpu
-models. Only props for non writable fields should be specific to named
-vcpu models as they do not make sense on host/max vcpu model
-
-
 >
 >> ---
 >> target/arm/kvm.c        | 65 +++++++++++++++++++++++++++++++++++++++++
@@ -234,7 +224,6 @@ vcpu models as they do not make sense on host/max vcpu model
 >> +        kvm_reg.addr = (uintptr_t)&idregs[reg_idx];
 >> +
 > We can ignore this if value == old value
-sure, modified
 >
 >> +        ret = ioctl(cs->kvm_fd, KVM_SET_ONE_REG, &kvm_reg);
 >> +        if (ret) {
@@ -263,14 +252,12 @@ sure, modified
 >> +    }
 >> +
 > This should also happen on vCPU reset.
-On which path is it needed? on qmp system_reset I can see that the
-former values applied with SYSREG settings are kept.
-
-Thanks
-
-Eric
 >
 > Overall, I like this approach as if the user does not provide any property overrides, it should behave the same as older builds.
+to me the risky part if the initialization of all cpu->isar.idregs[]
+from host which can have side effects like the CLDIR_EL1 story.
+
+Eric
 >
 > Warm Regards,
 > Khushit

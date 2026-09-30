@@ -4,89 +4,123 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E87AACA5FC7
-	for <qemu-arm@archiver.kernel.org>; Wed, 30 Sep 2026 15:04:16 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 75CB4CA5FC5
+	for <qemu-arm@archiver.kernel.org>; Wed, 30 Sep 2026 15:08:41 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xBvqm-0008It-Ax; Wed, 30 Sep 2026 11:04:09 -0400
+	id 1xBvvA-0000pq-OF; Wed, 30 Sep 2026 11:08:38 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1xBvpw-0008Gk-U7
- for qemu-arm@nongnu.org; Wed, 30 Sep 2026 11:03:16 -0400
-Received: from mail-wm2-x10.google.com ([2a00:1450:4864:31::10])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1xBvpt-000847-QD
- for qemu-arm@nongnu.org; Wed, 30 Sep 2026 11:03:12 -0400
-Received: by mail-wm2-x10.google.com with SMTP id
- 5b1f17b1804b1-49ffa15f67fso26683715e9.2
- for <qemu-arm@nongnu.org>; Wed, 30 Sep 2026 08:03:04 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1790780583; x=1791385383; darn=nongnu.org;
- h=content-transfer-encoding:content-type:mime-version:message-id:date
- :subject:cc:to:from:from:to:cc:subject:date:message-id:reply-to
- :content-type; bh=zhnMuDo26kDFIRhZbp8lAtImg5hoT6BkyYcqBDw/CGY=;
- b=UkWyCaV/Bah7rPQnd7+wxUzrR9jVu0sTsGRlXh/fioJl9RIi9Cg0RM2stYqCmK7G64
- 1qoGrOxm2UvrRaNyivsXMM4nYzAb2x+aGVCSC3F+oJyzcvvWgPzwGM9Evd9tD1YCKBC9
- B8j+5ww5kHIUUV/E9x6HrEuGMLTO5dulZtDZ8xDn+KbR7zGXKN7IIRxDcHvqOYIXp7ZC
- cZlPcODFVtPATplq8sjxlWLp2PGTu7lwntgtHF8nq1rVCTrZua/itpeRJuxY5JCKUfzt
- nHhXNTJDc+cQ40IfyGsPv2UIEouvjlxkHEOcnpV9G9xNgL7SpHZ3opN1CugP6EnH0GYQ
- tUvQ==
+ (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
+ id 1xBvuv-0000mG-HI
+ for qemu-arm@nongnu.org; Wed, 30 Sep 2026 11:08:26 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
+ id 1xBvut-0000B6-JZ
+ for qemu-arm@nongnu.org; Wed, 30 Sep 2026 11:08:21 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1790780896;
+ h=from:from:reply-to:reply-to:subject:subject:date:date:
+ message-id:message-id:to:to:cc:cc:mime-version:mime-version:
+ content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=Ns+huMlBjpBINTzATYtJG6y2085LhnRydQuWQ6U4h1s=;
+ b=NPXvbOheyZuwEOxnbmK9GXgDbpf0dI13D1fGzQJhDB4qAXG7W7R4JPCul2gmVkfyISAKBw
+ YxMqMt865+k+iBx1XrsIVQ63T7AsN0VLeaTNiIRNkF8c0s6r1EexUrocqCGLgFLIdK7TDh
+ nQgJS72pw62JZyzgQ/+vapf1li/9Vlc=
+Received: from mail-wr1-f72.google.com (mail-wr1-f72.google.com
+ [209.85.221.72]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-369-qmf1Ck9rNrSswSbzZRr7Rw-1; Wed, 30 Sep 2026 11:08:15 -0400
+X-MC-Unique: qmf1Ck9rNrSswSbzZRr7Rw-1
+X-Mimecast-MFC-AGG-ID: qmf1Ck9rNrSswSbzZRr7Rw_1790780894
+Received: by mail-wr1-f72.google.com with SMTP id
+ ffacd0b85a97d-48afe67dfc2so685053f8f.1
+ for <qemu-arm@nongnu.org>; Wed, 30 Sep 2026 08:08:14 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20260707; t=1790780583; x=1791385383;
- h=content-transfer-encoding:content-type:mime-version:message-id:date
- :subject:cc:to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject
- :date:message-id:reply-to:content-type;
- bh=zhnMuDo26kDFIRhZbp8lAtImg5hoT6BkyYcqBDw/CGY=;
- b=ApuEnXZF9WAFJ/SGeJ03IWsBYObn8B7htzwgIAM08U4SgVYLBhb21Z0CVEb8q9Mzz3
- pV7cX46Ed5YZNqPq76nMh2oOnfNaFeuupxZQx2l2oYwY9fQPjnSGafv7mDM2+8yKIG0Y
- ZNEUJ42+rq+jTOdD7eBa020iycspRbgBwTo/+GjiiN7xNIEQ9RkKNkxfhI/BBP+ZQixE
- fUBvfx10sIdjUhHEUlZhzJi0Ucw9mTozJv3QNvcsH3KOfC0G4ZBFQKuro92g7nWJ7iCY
- Ukgnt5KwrKD4uYcWACYcVBJMfdM8kV5dP8LQ+nSqQ82/iJzPfPdw382T73Q3Hf9ZhZSC
- xHpw==
+ d=1e100.net; s=20260707; t=1790780894; x=1791385694;
+ h=content-transfer-encoding:content-type:in-reply-to:from:references
+ :cc:to:content-language:subject:reply-to:user-agent:mime-version
+ :date:message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+ :message-id:reply-to:content-type;
+ bh=Ns+huMlBjpBINTzATYtJG6y2085LhnRydQuWQ6U4h1s=;
+ b=MmpBRsbmVfZsfr6SPk7KQyW8DKWASJ0MJCbQy3AUp44zWsitvOkHOI/mNiI4gEcBO6
+ dJnxZ0FT6MhJr6p/gRookQmg8Tf+ovrd0tPWk+VqSFma+ZaEf9uoph2pxOL+msBW6g/i
+ WVbBx6CcfeClpdG+fNYsCFKliCcQPT3QQn4Cp/NXXLvVU5XshA/6CftEa8jLTJwf6WHQ
+ uWPA7chpo+57tYAct8LMUNze6WAPVW3rQ3xYGZ//4NTUxsNgwppkXgwyNtgMc+Lc4/fz
+ SRdeCdL6KkMzCgiQnmb0u+BPLMey1ZPmH/LuB4Km8+Z32/rDXYIB6x3kM1RQ/gQ8OIed
+ gk1A==
 X-Forwarded-Encrypted: i=1;
- AKwUvBzANQnhJTrKkMwXq/8f0UUsnZmMRVKzA4QF/AFFtWB5qf4cO3p0wu6K8xFdy3uKaBYKM5ud0sUGmw==@nongnu.org
-X-Gm-Message-State: AFuF++mgFOUICKkOe028ymnv7rR1opclMXLgxLSbYbjFcxXjKnjcXqGt
- 4mVufl8qlQWkgDmyr1jAjYdxGBfWz3IiDt5cZMcBTKl/rXjtY+8QbnZhfpOD3YzdOSw=
-X-Gm-Gg: AYBFou2KZ9pzVH3+7xGAQfgHpUDOfZ7oWVMIj5qUULe59U+Nhj+giSfMz9TYkmRQfGn
- uDc4kI9ANzmd+zct342bznOMsSP6y7ac50sC0fyIhN7Jp2wBic8KGKwhz8TTm7+qTs09c6MB9aI
- Vgjc75korgpJUpH04ZsEXDNv8vKC5hUtu61C7mMxfcn7QbVcVQ2UTaF/GnVx98L5zvS7f1aWSrV
- H4Crkg8rhR5qfiXI1u8EAIEMqlDag3pO7WdKl6yv+sWFd+fgjqBShaFA3Tdolb+mA2KzF3O7OOx
- 4bjlYe4AlUvIdhYsVgetsOqX3aIXifH0Ik63U/3EEyLpFEWlmHYGHw0gMUb8WEGWhHL7ssfWkHW
- 904HCXPP7uajJItQONY1Ffgg000Mo2RqlORDYEPVK94wvJ2gQ2DwB0AF4mhE1C/yIMn7sMUeLkX
- 5PotoFNj3LsZX4LUDm+7FLo8sAYHJGX+kOReU3LkkKNeoKNonWzz85NIMiNBFqT3c9+Gx1yg==
-X-Received: by 2002:a05:600c:4512:b0:4a0:136d:f721 with SMTP id
- 5b1f17b1804b1-4a01b00c143mr30175965e9.17.1790780582112; 
- Wed, 30 Sep 2026 08:03:02 -0700 (PDT)
-Received: from draig.lan ([185.124.0.156]) by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-4a01e65a4c9sm5328305e9.9.2026.09.30.08.03.01
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 30 Sep 2026 08:03:01 -0700 (PDT)
-Received: from draig.lan (localhost [IPv6:::1])
- by draig.lan (Postfix) with ESMTP id 2E8FB5F8D0;
- Wed, 30 Sep 2026 16:03:00 +0100 (BST)
-From: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
-To: qemu-devel@nongnu.org
-Cc: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
- Peter Maydell <peter.maydell@linaro.org>,
- qemu-arm@nongnu.org (open list:ARM TCG CPUs)
-Subject: [PATCH v2] target/arm: fix user-mode emulation of ID_AA64MMFR0_EL1
-Date: Wed, 30 Sep 2026 16:02:57 +0100
-Message-ID: <20260930150257.408020-1-alex.bennee@linaro.org>
-X-Mailer: git-send-email 2.47.3
+ AKwUvBx6IjWYzN7OIsCzJHOcdzccicQ4m2mBaEzLH7NT4eiMZ9yYVmw99t33Oopw4HT4H8xdpGxHUjp0yQ==@nongnu.org
+X-Gm-Message-State: AFuF++m9sHNrX/ZKnOEo7NbuytODWQtkWfgNXJfvpKJQB+nN/b21MUhZ
+ JRStJGFBO+10IEdwepkF9VHeVOBF13P2HgfYEeVk+eP8puaJkeU53hh73q6AQApfMM/fy8CgY47
+ DVeK6vmdbU6DlY6aadsBTvXMweFaRoJQVZs/t6QinuSRZOVZp9OEvSg==
+X-Gm-Gg: AYBFou0I5OAaz8yZPYldr1G0LuTVpcognJAOMolrTkimNYZOBNw4UTMxH0PPz0PnKiy
+ TuqqUf62+5+lQCXuV1gNAxyO8iacOmyRaQETEXkJvW4XbFfDvh8odD9HfOvXBC+8VZAwpC0DeA0
+ M9LqEF4CN4woM8Voltie1ePADBCHaVr9PiLfwNopDKs6arKk0c+V4NYdG8k3xejVgjwe64LQuty
+ UVvODDHeiutSMa8er0R8VpxIXDO0N0iwj+k7jRqVBM+D80Ltw/PpPWjp0gNadIUl7d2ajkYxNqe
+ dxD7pcgugSOVY9stSL3cz7ppgSRtWNP7/OwRlUgWTuij+7DRdKjgyP6djBMDs5ZvB3XsxYw2erv
+ fH0hJozxikLAbzRGXH1H93J9+MFRtJfg/SnI/5HMKum6YQfjn
+X-Received: by 2002:a05:600d:82c4:b0:49c:e37e:4389 with SMTP id
+ 5b1f17b1804b1-4a01b188e38mr32968655e9.4.1790780893420; 
+ Wed, 30 Sep 2026 08:08:13 -0700 (PDT)
+X-Received: by 2002:a05:600d:82c4:b0:49c:e37e:4389 with SMTP id
+ 5b1f17b1804b1-4a01b188e38mr32967005e9.4.1790780892124; 
+ Wed, 30 Sep 2026 08:08:12 -0700 (PDT)
+Received: from ?IPV6:2a01:e0a:f0e:9070:527b:9dff:feef:3874?
+ ([2a01:e0a:f0e:9070:527b:9dff:feef:3874])
+ by smtp.gmail.com with ESMTPSA id
+ 5b1f17b1804b1-4a01cd6cd2bsm10750735e9.4.2026.09.30.08.08.10
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Wed, 30 Sep 2026 08:08:11 -0700 (PDT)
+Message-ID: <bd747536-c8eb-4c21-a859-ac1f2a28794f@redhat.com>
+Date: Wed, 30 Sep 2026 17:08:09 +0200
 MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v9 16/26] target/arm/kvm: Apply SYSREG props to the final
+ vcpu
+To: Khushit Shah <khushit.shah@nutanix.com>
+Cc: "eric.auger.pro@gmail.com" <eric.auger.pro@gmail.com>,
+ "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
+ "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
+ "kvmarm@lists.linux.dev" <kvmarm@lists.linux.dev>,
+ "peter.maydell@linaro.org" <peter.maydell@linaro.org>,
+ Shaju Abraham <shaju.abraham@nutanix.com>,
+ "yangjinqian1@huawei.com" <yangjinqian1@huawei.com>,
+ "cohuck@redhat.com" <cohuck@redhat.com>,
+ "richard.henderson@linaro.org" <richard.henderson@linaro.org>,
+ "sebott@redhat.com" <sebott@redhat.com>,
+ "skolothumtho@nvidia.com" <skolothumtho@nvidia.com>,
+ "philmd@oss.qualcomm.com" <philmd@oss.qualcomm.com>,
+ "maz@kernel.org" <maz@kernel.org>,
+ "oliver.upton@linux.dev" <oliver.upton@linux.dev>,
+ "pbonzini@redhat.com" <pbonzini@redhat.com>,
+ "armbru@redhat.com" <armbru@redhat.com>,
+ "berrange@redhat.com" <berrange@redhat.com>,
+ "abologna@redhat.com" <abologna@redhat.com>,
+ "jdenemar@redhat.com" <jdenemar@redhat.com>
+References: <20260916144721.751810-1-eric.auger@redhat.com>
+ <20260916144721.751810-17-eric.auger@redhat.com>
+ <8F110441-6D38-4134-9196-76AFA021250F@nutanix.com>
+From: Eric Auger <eric.auger@redhat.com>
+In-Reply-To: <8F110441-6D38-4134-9196-76AFA021250F@nutanix.com>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-MFC-PROC-ID: tin2NyBGuZR5z243oHFU2tmwlinTa2ir7CMu2TSwmI0_1790780894
+X-Mimecast-Originator: redhat.com
+Content-Language: en-US
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:31::10;
- envelope-from=alex.bennee@linaro.org; helo=mail-wm2-x10.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
+Received-SPF: pass client-ip=170.10.129.124;
+ envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -23
+X-Spam_score: -2.4
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+X-Spam_report: (-2.4 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.341,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=0.001, SPF_HELO_PASS=-0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -100,116 +134,163 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Reply-To: eric.auger@redhat.com
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Since kernel commit b130a8f70cbbf9 (KVM: arm64: Check advertised
-Stage-2 page size capability) the relevant Stage 2 have been pegged at
-1 f(4KB granule not supported at stage 2) by the kernel. As a result
-the behaviour of the test differs when run on real HW:
+Hi Khushit,
 
-  id_aa64mmfr0_el1    : 0x00000111ff000000
-    !!extra bits!!    : 0x0000011100000000
+On 9/28/26 12:44 PM, Khushit Shah wrote:
+>
+>> On 16 Sep 2026, at 8:15 PM, Eric Auger <eric.auger@redhat.com> wrote:
+>>
+>> !-------------------------------------------------------------------|
+>>  CAUTION: External Email
+>>
+>> |-------------------------------------------------------------------!
+>>
+>> SYSREG prop settings were recorded in a hashtable but they
+>> are not yet injected on guest. Iterate over all set fields and
+>> apply the new value through KVM_SET_ONE_REG. The new field
+>> value overrides the current observable vcpu register value.
+>>
+>> Signed-off-by: Eric Auger <eric.auger@redhat.com>
+> With this, I suppose, what named models will do is directly write to
+> ID register state, As it also defines state which affects vCPU init flags also.
+That's not what I had in mind. I thought you would apply the SYSREG
+settings at the same time. As mentionned, I don't think those settings
+are meant to substitute to legacy composite options that affect vcpu
+init settings.
+Besides the principle of this preparatory series is that the props for
+writable ID reg fields are meant to be fully reusable for named vcpu
+models. Only props for non writable fields should be specific to named
+vcpu models as they do not make sense on host/max vcpu model
 
-compared to under emulation (neoverse-n1):
 
-  id_aa64mmfr0_el1    : 0x00000000ff000000
+>
+>> ---
+>> target/arm/kvm.c        | 65 +++++++++++++++++++++++++++++++++++++++++
+>> target/arm/trace-events |  1 +
+>> 2 files changed, 66 insertions(+)
+>>
+>> diff --git a/target/arm/kvm.c b/target/arm/kvm.c
+>> index 3ec2618cc1..ddf320d0e6 100644
+>> --- a/target/arm/kvm.c
+>> +++ b/target/arm/kvm.c
+>> @@ -343,6 +343,9 @@ static ARM64SysRegField *get_field(int i, ARM64SysReg *reg)
+>> #define MAKE_IDREG_KEY(reg_idx, field_shift) \
+>>     (((uint64_t)(reg_idx) << 8) | ((uint64_t)(field_shift) & 0xFF))
+>>
+>> +#define KEY_TO_REG_IDX(key)     ((uint32_t)(((uint64_t)(key)) >> 8))
+>> +#define KEY_TO_SHIFT(key)       ((uint8_t)(((uint64_t)(key)) & 0xFF))
+>> +
+>> static void set_sysreg_prop(Object *obj, Visitor *v,
+>>                             const char *name, void *opaque,
+>>                             Error **errp)
+>> @@ -2215,6 +2218,63 @@ int kvm_arch_pre_create_vcpu(CPUState *cpu, Error **errp)
+>>     return 0;
+>> }
+>>
+>> +static int kvm_arm_apply_sysreg_props(ARMCPU *cpu, Error **errp)
+>> +{
+>> +    uint64_t *idregs = cpu->isar.idregs;
+>> +    gpointer key_ptr, value_ptr;
+>> +    CPUState *cs = CPU(cpu);
+>> +    GHashTableIter iter;
+>> +
+>> +    g_hash_table_iter_init(&iter, cpu->sysreg_props);
+>> +
+>> +    while (g_hash_table_iter_next(&iter, &key_ptr, &value_ptr)) {
+>> +        uint64_t key = (uint64_t)key_ptr;
+>> +        uint64_t value = (uint64_t)value_ptr;
+>> +        uint32_t reg_idx = KEY_TO_REG_IDX(key);
+>> +        uint8_t lower    = KEY_TO_SHIFT(key);
+>> +        ARM64SysReg *reg = &arm64_id_regs[reg_idx];
+>> +        struct kvm_one_reg kvm_reg;
+>> +        uint64_t current, old, mask;
+>> +        uint64_t kvm_idx;
+>> +        ARM64SysRegField *field = get_field(lower, reg);
+>> +        int length = field->length;
+>> +        uint64_t oldfv;
+>> +        int ret;
+>> +
+>> +        mask = MAKE_64BIT_MASK(lower, length);
+>> +        value = value << lower;
+>> +
+>> +        old = idregs[reg_idx];
+>> +
+>> +        kvm_idx = idregs_sysreg_to_kvm_reg(id_register_sysreg[reg_idx]);
+>> +        ret = read_sys_reg64(cs->kvm_fd, &current, kvm_idx);
+>> +        if (ret) {
+>> +            error_setg(errp, "failed to read the current value of %s",
+>> +                       reg->name);
+>> +            return ret;
+>> +        }
+>> +        oldfv = (current & mask) >> lower;
+>> +
+>> +        idregs[reg_idx] = current & ~mask;
+>> +        idregs[reg_idx] |= value;
+>> +        kvm_reg.id = kvm_idx;
+>> +        kvm_reg.addr = (uintptr_t)&idregs[reg_idx];
+>> +
+> We can ignore this if value == old value
+sure, modified
+>
+>> +        ret = ioctl(cs->kvm_fd, KVM_SET_ONE_REG, &kvm_reg);
+>> +        if (ret) {
+>> +            error_setg(errp, "failed to apply new value 0x%"PRIx64" for field %s.%s "
+>> +                       "(previous is 0x%"PRIx64"): %m", idregs[reg_idx],
+>> +                       reg->name, field->name, oldfv);
+>> +            return ret;
+>> +        }
+>> +
+>> +        trace_apply_sysreg_prop(reg->name, field->name, old, current,
+>> +                                mask, value, idregs[reg_idx]);
+>> +    }
+>> +    return 0;
+>> +}
+>> +
+>> int kvm_arch_init_vcpu(CPUState *cs, Error **errp)
+>> {
+>>     int ret;
+>> @@ -2315,6 +2375,11 @@ int kvm_arch_init_vcpu(CPUState *cs, Error **errp)
+>>     }
+>>     cpu->mp_affinity = mpidr & ARM64_AFFINITY_MASK;
+>>
+>> +    ret = kvm_arm_apply_sysreg_props(cpu, errp);
+>> +    if (ret) {
+>> +        return ret;
+>> +    }
+>> +
+> This should also happen on vCPU reset.
+On which path is it needed? on qmp system_reset I can see that the
+former values applied with SYSREG settings are kept.
 
-Update the test with a new helper to explicitly test for fixed bits
-and update v8_user_idregs to match real systems.
+Thanks
 
-Resolves: https://gitlab.com/qemu-project/qemu/-/work_items/4566
-Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
-
----
-v2
-  - add comment
-  - make it clear what real HW is currently reporting
----
- target/arm/helper.c         | 12 ++++++++++--
- tests/tcg/aarch64/sysregs.c | 31 ++++++++++++++++++++++++++++---
- 2 files changed, 38 insertions(+), 5 deletions(-)
-
-diff --git a/target/arm/helper.c b/target/arm/helper.c
-index c3f607e6d6b..d8b34c53fab 100644
---- a/target/arm/helper.c
-+++ b/target/arm/helper.c
-@@ -6902,8 +6902,16 @@ void register_cp_regs_for_features(ARMCPU *cpu)
-                                R_ID_AA64FPFR0_F8CVT_MASK },
-             { .name = "ID_AA64MMFR0_EL1",
-               .exported_bits = R_ID_AA64MMFR0_ECV_MASK,
--              .fixed_bits = (0xfu << R_ID_AA64MMFR0_TGRAN64_SHIFT) |
--                            (0xfu << R_ID_AA64MMFR0_TGRAN4_SHIFT) },
-+              /*
-+               * Linux does not expose the  TGRAN* fields to userspace and so they
-+               * must read as the "this is not implemented" value for those fields
-+               * (which is 0, 0b0001 or 0b1111 depending on the field)
-+               */
-+              .fixed_bits = (0xfULL << R_ID_AA64MMFR0_TGRAN64_SHIFT) |
-+                            (0xfULL << R_ID_AA64MMFR0_TGRAN4_SHIFT) |
-+                            (0x1ULL << R_ID_AA64MMFR0_TGRAN4_2_SHIFT) |
-+                            (0x1ULL << R_ID_AA64MMFR0_TGRAN64_2_SHIFT) |
-+                            (0x1ULL << R_ID_AA64MMFR0_TGRAN16_2_SHIFT) },
-             { .name = "ID_AA64MMFR1_EL1",
-               .exported_bits = R_ID_AA64MMFR1_AFP_MASK },
-             { .name = "ID_AA64MMFR2_EL1",
-diff --git a/tests/tcg/aarch64/sysregs.c b/tests/tcg/aarch64/sysregs.c
-index 301e61d0dd4..8f7c5303f77 100644
---- a/tests/tcg/aarch64/sysregs.c
-+++ b/tests/tcg/aarch64/sysregs.c
-@@ -54,6 +54,23 @@ int failed_bit_count;
-             }                                                   \
- })
- 
-+/* As above but also check that required fixed bits have expected values */
-+#define get_cpu_reg_check_fixed(id, allowed_mask, fixed_mask, expected_val) ({ \
-+            unsigned long __cval = get_cpu_reg(id);                     \
-+            unsigned long __extra = __cval & ~(allowed_mask);           \
-+            if (__extra) {                                              \
-+                printf("%-20s: 0x%016lx\n", "  !!extra bits!!", __extra);   \
-+                failed_bit_count++;                                     \
-+            }                                                           \
-+            if ((__cval & (fixed_mask)) != (expected_val)) {            \
-+                printf("%-20s: 0x%016llx (expected fixed 0x%016llx)\n",  \
-+                       "  !!fixed mismatch!!",                          \
-+                       (unsigned long long)(__cval & (fixed_mask)),     \
-+                       (unsigned long long)(expected_val));             \
-+                failed_bit_count++;                                     \
-+            }                                                           \
-+})
-+
- /* As above but check RAZ */
- #define get_cpu_reg_check_zero(id) ({                           \
-             unsigned long __val = 0xdeadbeef;                   \
-@@ -127,8 +144,16 @@ int main(void)
-     get_cpu_reg_check_mask(id_aa64isar0_el1, _m(f0ff,ffff,f0ff,fff0));
-     get_cpu_reg_check_mask(id_aa64isar1_el1, _m(00ff,f0ff,ffff,ffff));
-     get_cpu_reg_check_mask(SYS_ID_AA64ISAR2_EL1, _m(00ff,0000,00ff,ffff));
--    /* TGran4 & TGran64 as pegged to -1 */
--    get_cpu_reg_check_mask(id_aa64mmfr0_el1, _m(f000,0000,ff00,0000));
-+    /*
-+     * TGran4 & TGran64 are pegged to -1 (0xf).
-+     * Stage 2 translation granule support (TGran4_2, TGran64_2, TGran16_2)
-+     * are pegged to safe value 1 as exposed by Linux kernel since
-+     * b130a8f70cbbf9 (KVM: arm64: Check advertised Stage-2 page size capability).
-+     */
-+    get_cpu_reg_check_fixed(id_aa64mmfr0_el1,
-+                            _m(f000, 0111, ff00, 0000),
-+                            _m(0000, 0111, ff00, 0000),
-+                            _m(0000, 0111, ff00, 0000));
-     get_cpu_reg_check_mask(id_aa64mmfr1_el1, _m(0000,f000,0000,0000));
-     get_cpu_reg_check_mask(SYS_ID_AA64MMFR2_EL1, _m(0000,000f,0000,0000));
-     /* EL1/EL0 reported as AA64 only */
-@@ -179,7 +204,7 @@ int main(void)
-     }
- 
-     if (failed_bit_count > 0) {
--        printf("Extra information leaked to user-space!\n");
-+        printf("Bit check failure or extra info leaked to user-space!\n");
-         return 1;
-     }
- 
--- 
-2.47.3
+Eric
+>
+> Overall, I like this approach as if the user does not provide any property overrides, it should behave the same as older builds.
+>
+> Warm Regards,
+> Khushit
+>>     return kvm_arm_init_cpreg_list(cpu);
+>> }
+>>
+>> diff --git a/target/arm/trace-events b/target/arm/trace-events
+>> index d72ad6b671..b4d2b45a7d 100644
+>> --- a/target/arm/trace-events
+>> +++ b/target/arm/trace-events
+>> @@ -18,6 +18,7 @@ kvm_arm_writable_idregs_to_cpreg_list(const char *name, uint64_t previous, uint6
+>> decode_idreg_writemap(const char* name, int lower, int upper, char *prop_name) "%s [%d:%d] is writable (prop %s)"
+>> get_sysreg_prop(const char *name, uint64_t value) "%s 0x%"PRIx64
+>> set_sysreg_prop(const char *name, uint64_t old, uint64_t mask, uint64_t field_value, uint64_t new) "%s old reg value=0x%"PRIx64" mask=0x%"PRIx64" new field value=0x%"PRIx64" new reg value=0x%"PRIx64
+>> +apply_sysreg_prop(const char *reg_name, const char *field_name, uint64_t old, uint64_t current, uint64_t mask, uint64_t field_value, uint64_t new) "%s.%s old=0x%"PRIx64" current=0x%"PRIx64" mask=0x%"PRIx64" new field value=0x%"PRIx64" new=0x%"PRIx64
+>> nb_sysreg_props(const char *name, int count) "%s: %d SYSREG properties"
+>>
+>> # cpu.c
+>> -- 
+>> 2.53.0
+>>
 
 

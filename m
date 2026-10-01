@@ -4,142 +4,127 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 402A3CA5FB3
-	for <qemu-arm@archiver.kernel.org>; Thu,  1 Oct 2026 08:20:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 51A4ECA5FA5
+	for <qemu-arm@archiver.kernel.org>; Thu,  1 Oct 2026 08:30:01 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xCC1w-0002KN-BN; Thu, 01 Oct 2026 04:20:40 -0400
+	id 1xCC9j-0007IG-73; Thu, 01 Oct 2026 04:28:45 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@oss.qualcomm.com>)
- id 1xCC1v-0002K0-Cz
- for qemu-arm@nongnu.org; Thu, 01 Oct 2026 04:20:39 -0400
-Received: from mx0b-0031df01.pphosted.com ([205.220.180.131])
+ (Exim 4.90_1) (envelope-from <rdondi@axiado.com>)
+ id 1xCC98-0006kZ-9l; Thu, 01 Oct 2026 04:28:06 -0400
+Received: from mail-eastusazlp17011000f.outbound.protection.outlook.com
+ ([2a01:111:f403:c100::f] helo=BL2PR02CU003.outbound.protection.outlook.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@oss.qualcomm.com>)
- id 1xCC1t-0002Nk-FN
- for qemu-arm@nongnu.org; Thu, 01 Oct 2026 04:20:39 -0400
-Received: from pps.filterd (m0279871.ppops.net [127.0.0.1])
- by mx0a-0031df01.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id
- 6916xfLf2337471
- for <qemu-arm@nongnu.org>; Thu, 1 Oct 2026 08:20:35 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qualcomm.com; h=
- cc:content-transfer-encoding:content-type:date:from:in-reply-to
- :message-id:mime-version:references:subject:to; s=qcppdkim1; bh=
- OsIV1SnUVG2R7nXEGhsBE5icN3BgEtHG2JfvqnnUsKg=; b=bqqR3cDMiidj4D9j
- MniidkpkNNLXfhtuivqBLZ/RaXML8iNMWEa19R6gVbYrv6WzxhQambng35OCbPkX
- wThy55YlYa3Bav8DqDgzOgT398RhD5apVHbr7ExJ6qZRYkbln1cD/Vqxup12JDON
- TCd1ypqYhTR73yf3MMaESg2F+6xs/hIpArxYPPDGBU+GlmEBpYJdG0ZybVvqj66H
- rbdMRgXxp8ElF2WKk8XBwxI3j0Qvh0rcd0d4ogdEnPCvvS09eWjEDylsnufYBQON
- wwHdksdxBh0JcIaxHeQBBp3PEkiMueXWWR7OilkH0IRZE69VoCjyZqguLL7nTI+L
- rv9ang==
-Received: from mail-qk1-f200.google.com (mail-qk1-f200.google.com
- [209.85.222.200])
- by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 4h14n23qp0-1
- (version=TLSv1.3 cipher=TLS_AES_128_GCM_SHA256 bits=128 verify=NOT)
- for <qemu-arm@nongnu.org>; Thu, 01 Oct 2026 08:20:35 +0000 (GMT)
-Received: by mail-qk1-f200.google.com with SMTP id
- af79cd13be357-93bfb2da664so1686927385a.1
- for <qemu-arm@nongnu.org>; Thu, 01 Oct 2026 01:20:34 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=oss.qualcomm.com; s=google; t=1790842834; x=1791447634; darn=nongnu.org;
- h=content-transfer-encoding:content-type:in-reply-to:content-language
- :from:references:cc:to:subject:user-agent:mime-version:date
- :message-id:from:to:cc:subject:date:message-id:reply-to:content-type;
- bh=OsIV1SnUVG2R7nXEGhsBE5icN3BgEtHG2JfvqnnUsKg=;
- b=erFYY7VOGo74yN9fop567Hz8GNUAawdKbve9vK7uCviv1jSCuvLqA7hFzvW/0cre3b
- FxBS2vQlWeHm8d829FAfZyY/Z0YNVyDM25j9tuAoJEX0PF57aThihfTo/l1lXRD+8pnF
- inLDrvcJKKlEqQx2KYvCatu+1ax61pz8gWap/bn0aXu2RZfa1km1oeG9WIrT0cSO30HC
- iObNRQkx5s+7qqwTHs4ABytZDvPT9i/uTHJaDKP9eCyDauPcNXl/RYDVP1S1Qhdo0NKm
- R3CSWGi6shYA9JGP79oilEPnexEBRFEuIVz0n+k3e3iv0xaKGN558TVeNm5V1jOukEZF
- gTZQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20260707; t=1790842834; x=1791447634;
- h=content-transfer-encoding:content-type:in-reply-to:content-language
- :from:references:cc:to:subject:user-agent:mime-version:date
- :message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
- :message-id:reply-to:content-type;
- bh=OsIV1SnUVG2R7nXEGhsBE5icN3BgEtHG2JfvqnnUsKg=;
- b=yOvkWx+NP8TNJJzEb5+H0RAyk/L0t49dg9X8B0aQoLiOayflzZxKWs3xmT/2s1R/wo
- gXZRIhAW6MVnY1SQq9c94ZxiRikVOb6G+L63/ef/UAKRx0Tv14rCodbvVCrU1zvC8pf3
- QsgwZoxMIzzG7sWMI3apLkAPDdoXuMwSUMHw3+SigW+TJ+QwnNtQojpKTsP9ZgtWAt0E
- 1uhFtkj0nQev/8fq9XFhOuRoJ94H1sd7OrOHOaOQBUx8yU1NIxGRb8rsrfemRQqx1dDX
- 8HPvcZmyNACmwOJnSaQiLcmryGGIPZ922JT269tTXNgD6J8C67V0GDg7BIG7NKyjJH1u
- 8APg==
-X-Forwarded-Encrypted: i=1;
- AKwUvBwmnZl9j6T671mcXSyxYwHKpDyXIDXQ6GfwGce5rf2Fn2BsDvEpPGWvmvJmtNwi/6sOTfekeQjMBw==@nongnu.org
-X-Gm-Message-State: AFuF++m6QqM/ueESXBZhFVc5zNgm+b84j14Tfasnh69VFIV6vtjdhRhw
- glOgrWL/Luwspb4y/d80wRIxlPXbiMJib0ghSTypQ1Wlp9fPvA2cI/uGHOCVZMW+faJA0EQTjbR
- lB6nKP53XHBc4zsqmqTx93YXL0j6jGDv5pCkcksVz6ijrJAdLGNOGyZc=
-X-Gm-Gg: AYBFou3W1z8pOT43J8ncw4nipy/hDw+r8gxN3+A45kD3zJeDCnsJqAJujyrKubAiXFx
- UcQYiTEGhXJ6/hRxeKXbouAOxPlE4CaCiWTbxHbvT2ig5OyFKY1W+gAk94vwYXw36gryTWLGJiE
- O7WhIDGU+avGip2Gnc75fOoZst2KPk1n19VGzvRBDIKNmsW1ytFgQ+X/+2IFwbhO27FyI6y0uKV
- WR/+vGfgATX8uP/vQUFeawbeFOfZ+tMPaJ1j+4/N/vH++c2r41uZOqV1kzfsuCNCfyBavhsqgkV
- qt22CtG4+V0RUyiN+zlA6BaiVQbXxpna7JeBRGqakQ7kgJIZVS5Z4zSfS5zxW95LtF1IU/r3egm
- ZCkcJudCl9OOFs2k0ofFUpu9jLQv0my1Agg==
-X-Received: by 2002:a05:620a:1b99:b0:939:3a81:326 with SMTP id
- af79cd13be357-93ca9725df6mr753303385a.37.1790842834477; 
- Thu, 01 Oct 2026 01:20:34 -0700 (PDT)
-X-Received: by 2002:a05:620a:1b99:b0:939:3a81:326 with SMTP id
- af79cd13be357-93ca9725df6mr753300985a.37.1790842834010; 
- Thu, 01 Oct 2026 01:20:34 -0700 (PDT)
-Received: from [192.168.69.225] (pmd666.hd.free.fr. [88.187.86.199])
- by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-4a01f979c05sm82534465e9.3.2026.10.01.01.20.32
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 01 Oct 2026 01:20:33 -0700 (PDT)
-Message-ID: <619e0b71-d58b-44ac-adc9-7a5d8f62f716@oss.qualcomm.com>
-Date: Thu, 1 Oct 2026 10:20:31 +0200
-MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v4 0/9] accel/tcg: Make halt-to-exec transition explicit
- and remove cpu_exec_halt
-To: qemu-devel@nongnu.org
-Cc: Richard Henderson <richard.henderson@linaro.org>,
- Peter Maydell <peter.maydell@linaro.org>, Paolo Bonzini
- <pbonzini@redhat.com>, qemu-arm@nongnu.org
-References: <20260930174946.82195-1-philmd@oss.qualcomm.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@oss.qualcomm.com>
+ (Exim 4.90_1) (envelope-from <rdondi@axiado.com>)
+ id 1xCC96-0003Ww-CF; Thu, 01 Oct 2026 04:28:06 -0400
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=M0razekIxL5joRPVM8g58J0j2n0nUG9nnp1kVJWge62cG59WAzH80U34aFxVSg3KUk4ouLCPoZEDE6n/X6pdbagINZ9U2+1bwUTOjDPsPBo+ojdXdSaEAGtibAfLPIJ9ybKTSsV+pkUNK5hFsgZXXfPQsEUldL4pvUNt4SOuXOLKluATFPxY0m5RN1hPqeKkaaS+sxrQWBTZ+UN0VVwsRGrFzobvW/OFhKYx1jAAwHeXgJxS9X0Y6+eDEU3VT3gKblxGrtJJu7HwmXY6V/x5Pn3/+YhSboiIYxe6rbonvw3kF+nOkx56BmV61XQ6bMHYifZRebptnrVasKyFSMW24g==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=ujtIJvVS6zgBX2K/lp5tsKyyCINVWVN2iS/Nj4glrFI=;
+ b=oKdBYGkDweK48jXbvOUVZxaIR09gI+uGJ+/FE756osnLiopzOTKrDZPj4YLpVe0sIMeZxWG61FS9/ZGJz3dxr/dOhnC93cCFO7IyB0kiOoZm3wk0/ETrMr+fMD0+D6cy6kFzA4fRq7HdZ2IEbgHFU731NI/Fsx2CPWuoOut3SkxKybQfDhW8pq8J9vZxH0sFvEI8LEzTOw+t2T/9EnLvygOoA0gE6kEBuRg+SJxAXvjmRiop/cQafiDcpa77JB94RNTWRbRuVh6OK970tfr3pSXkH2Jgu45ONvrSoroLef2b7dU/DTtBKXbHHRQeMhK6IzEEuLMOUpqBlN8GXjc/MQ==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=axiado.com; dmarc=pass action=none header.from=axiado.com;
+ dkim=pass header.d=axiado.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=axiado.com;
+ s=selector1;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=ujtIJvVS6zgBX2K/lp5tsKyyCINVWVN2iS/Nj4glrFI=;
+ b=Iy3N8JiXLZTPFqDt0nfBo8Wn3a9Vv8TFRy6SBzF1/JKhQfLQiO6WXZYhFqfS3wOJF0c/QJvZwYL8MEB36UHJBjhsvLYj70SIBDH6/YzhSdWmchkla6HpF5Z3Y9FuSyHA5brXohHX6fom83lDEBe4+mxiprTyGSfVivTgSrAH8TJum3oIPqItQGK4GhwSgjENQk/kODVTCumCYT/4qUKXO6mjmNRj87zYj0jJstNwh0U438q7BtuXatnQEMVb8SGYZ3xig20/JEDj5xglL83FwXHjkU9doZ6kPY5n0cts4UXTRIHw+/VTyxEYHKOCgDwOukAiCvmLGMXmvCi0q2zYqQ==
+Received: from BY3PR18MB4610.namprd18.prod.outlook.com (2603:10b6:a03:3c1::12)
+ by SJ0PR18MB3898.namprd18.prod.outlook.com (2603:10b6:a03:2e8::11)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.21.472.15; Thu, 1 Oct
+ 2026 08:27:56 +0000
+Received: from BY3PR18MB4610.namprd18.prod.outlook.com
+ ([fe80::3a16:7cd7:36bf:fc1c]) by BY3PR18MB4610.namprd18.prod.outlook.com
+ ([fe80::3a16:7cd7:36bf:fc1c%6]) with mapi id 15.21.0472.016; Thu, 1 Oct 2026
+ 08:27:56 +0000
+From: Ratan Lal Dondi <rdondi@axiado.com>
+To: "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>, "qemu-arm@nongnu.org"
+ <qemu-arm@nongnu.org>
+CC: "pbonzini@redhat.com" <pbonzini@redhat.com>, "peter.maydell@linaro.org"
+ <peter.maydell@linaro.org>, "jasowangio@gmail.com" <jasowangio@gmail.com>,
+ Kuan-Jui Chiu <kchiu@axiado.com>, Ratan Lal Dondi <rdondi@axiado.com>
+Subject: RE: [PATCH 0/2] Add Axiado HCP network device model
+Thread-Topic: [PATCH 0/2] Add Axiado HCP network device model
+Thread-Index: AQHdRZcStTweyMtPQ0uC+aY9yzDbjLbocXlg
+Date: Thu, 1 Oct 2026 08:27:55 +0000
+Message-ID: <BY3PR18MB4610744EC36195678C0A4497B58A2@BY3PR18MB4610.namprd18.prod.outlook.com>
+References: <20260916045134.1687145-1-rdondi@axiado.com>
+In-Reply-To: <20260916045134.1687145-1-rdondi@axiado.com>
+Accept-Language: en-IN, en-GB, en-US
 Content-Language: en-US
-In-Reply-To: <20260930174946.82195-1-philmd@oss.qualcomm.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-X-Authority-Analysis: v=2.4 cv=Gr3XaU1C c=1 sm=1 tr=0 ts=6abe17d3 cx=c_pps
- a=hnmNkyzTK/kJ09Xio7VxxA==:117 a=4s3hRJSeHn4rkQlkrse1kQ==:17
- a=IkcTkHD0fZMA:10 a=660iZSQnnn4A:10 a=M51BFTxLslgA:10 a=s4-Qcg_JpJYA:10
- a=VkNPw1HP01LnGYTKEx00:22 a=u7WPNUs3qKkmUXheDGA7:22 a=3WHJM1ZQz_JShphwDgj5:22
- a=VwQbUJbxAAAA:8 a=EUspDBNiAAAA:8 a=JKmM5Wr0875lQbMBMLAA:9 a=3ZKOabzyN94A:10
- a=QEXdDO2ut3YA:10 a=O8hF6Hzn-FEA:10 a=PEH46H7Ffwr30OY-TuGO:22
-X-Proofpoint-Spam-Info: AW1haW4tMjYxMDAxMDAzMyBTYWx0ZWRfX2DEJrTG9VkZj
- udOf1jzk47FBoElmFq7snXILbWKOcNPAd8EduWvAXToUJ7td9BO1SBVsDdfcW4vn7gwBEjQNkvf
- BVJ132cZOs1n8IujXNiM0klb+jvBQcU=
-X-Proofpoint-GUID: vaA8WdgG0PY2M-Z1YulkN1pCTbSdiZQt
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYxMDAxMDAzMyBTYWx0ZWRfX0gc/or8KTyR9
- x2udv28Lleb6loHDbQf3W49CdHNL0zkZyQAFbsAg8NzhKAIZRUZVfow2beoE7Ifw8cJIFypXvOI
- zBort5E2a07IlPv7ifCiz9q0EG0X607Py9c3naYtTQT1o2gF0tLZ+4ZdxRAA5oMcioo3O8nV3wZ
- 3E1oFO6ekIQlyVV881LEknQ/7GlBz33XuNqq0NpP8jXPT1fbtU1U5IwGPye7TkGZtrKm9AKqTTh
- 47o6iiuxZvY7TxiNcZ6EEftOOI83vhonup7T7W/C/FCgN4TcEN9DzILgg08zWGYDUWSPX6BfXoL
- Rxsm3yEXLTZ8ozWex+JvFDuJW6605toZeYCl/3UZ4rPrWmvnDN83gKUrJhSkMKkLfT7WMwIKSgd
- OOQAeQX+M2sq5yt6PCSJJRMSU2L4m8/q8N+q3gFNpKH5TB9kqJd6+awEupJ+XwjgGqElRamgJKt
- BWcF6ATbcOFw0Yl7N3w==
-X-Proofpoint-ORIG-GUID: vaA8WdgG0PY2M-Z1YulkN1pCTbSdiZQt
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.293,Aquarius:18.0.1176,Hydra:6.1.134,FMLib:17.12.100.49
- definitions=2026-10-01_03,2026-09-21_02,2025-10-01_01
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
- clxscore=1015 bulkscore=0 malwarescore=0 adultscore=0 lowpriorityscore=0
- spamscore=0 suspectscore=0 impostorscore=0 priorityscore=1501 phishscore=0
- classifier=typeunknown authscore=0 authtc= authcc= route=outbound adjust=0
- reason=mlx scancount=1 engine=8.22.0-2609040000 definitions=main-2610010033
-Received-SPF: pass client-ip=205.220.180.131;
- envelope-from=philmd@oss.qualcomm.com; helo=mx0b-0031df01.pphosted.com
-X-Spam_score_int: -27
-X-Spam_score: -2.8
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+authentication-results: mx.microsoft.com 1; dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=axiado.com;
+x-ms-publictraffictype: Email
+x-ms-traffictypediagnostic: BY3PR18MB4610:EE_|SJ0PR18MB3898:EE_
+x-ms-office365-filtering-correlation-id: c0a13927-33b4-45c6-c0ed-08df1f95e4c9
+x-ms-exchange-senderadcheck: 1
+x-ms-exchange-antispam-relay: 0
+x-microsoft-antispam: BCL:0;
+ ARA:13230040|376014|23010399003|366016|1800799024|56012099006|10067099003|3023799007|18002099003|22082099003|38070700021;
+x-microsoft-antispam-message-info: WhDqqOXg8pYHUusz62mD9tJy+422H6kyke9r2UxIvJDKaXfCRX29Tb1ZuE98+0rKaKinVS7cfdFEIu72TwCPSFTv7CtwEyevCK/vfjK2prmNXCaaF9WnXGd5tDTg1iBGJ/ncIiHJtHYPKpgK193p9YkTbuiq0rN95GC4hJBzUu/LqeTNYhDW4Gq51WmYV6H+v1erEXlIRwBA8efZfAtlHIMjBydIICXNklvH5gHW1uyEZDLUB7iK5Jr85/OEYFOQxbP/A8B194NRRNyOFJr5UReNZ3eOb2zTyZuED3tQciYgPBJVPjh6ZDeX3LRLwbzGgwL8xNrtKOZkWT8ji2ni2Ciz+m96Xq2EupQT2Uo+da+7NCL6sIotrcmhuanU+zAXGuylth/xBMr4tybKuiVHSSdmtkT+xmJTH0Og//5fQIX2HIKNzRRWs3+k/ZqSB/2p2XiKH0XH0wpkUJK87XS3A5jqQjvaUNIRkqYn3c9fze19CbHB7BGHb9zsK1btVJKIqDHIsnJx1MGyDV5XZZdcV73XZhF+UAsa2L286mUggFkQ1vp4abJ+gaANVifgZ0ojCb3AM0T41c+djJgEmabXoa3CTeRk7W2f/CjrMR+TVR++uKnyEGFnq33krZDLf9OP/g2MHjmn5MeEsldrEbK/hrzQ0mkP53H0HEyXcsvg7rc=
+x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:BY3PR18MB4610.namprd18.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(13230040)(376014)(23010399003)(366016)(1800799024)(56012099006)(10067099003)(3023799007)(18002099003)(22082099003)(38070700021);
+ DIR:OUT; SFP:1102; 
+x-ms-exchange-antispam-messagedata-chunkcount: 1
+x-ms-exchange-antispam-messagedata-0: =?us-ascii?Q?CY/5hnf718Y8xHSajrlSx0QXVuQ5gP36k4vQaciu7vbI53Abb4Xap6jC3CdN?=
+ =?us-ascii?Q?+fNiEGJNyc/n3Pse0bGcKFe1X7Qqym/479NE7UI+sH3ETQkMM5or3Bysx7Le?=
+ =?us-ascii?Q?oxSaRR53Y1FyqHkuJYKCIfWIRCSqvHMLWi1yv7T5sEMJurbHN/8mT98UR7yd?=
+ =?us-ascii?Q?v/RKLx+EWwMb2gnGnzMGQov4p+gaIZXHpjrQtMXkRzQQz6xtzycjOWICeuhF?=
+ =?us-ascii?Q?+8UY1q7yehoaLE8fKnhGhS40rLb3tgi4y3FnjMZkmiPzxnT7qodmNzh7nsGK?=
+ =?us-ascii?Q?ND4ZKWb3iCwLISSu6BGZ29PX4CEbTOzP+AHr+U0GyGqgbNoM5Oth11FK1EDV?=
+ =?us-ascii?Q?7ljbhDCTMHtusXUyNXVkqzcoso4xr9lc0Ib1dZSgTdiVloS9yQ1IxrSTzdX1?=
+ =?us-ascii?Q?ejHkMLFxFBFUkgfjRJng0uIdsgbfpAVCZK41KK/yX+uPEFHF7sQmbjxuNeGL?=
+ =?us-ascii?Q?2WC03GCDXzaaR5Maf536ZmcT+XqFIC74vh9lP3FEyKNrIz7WBgH+bVZDE14G?=
+ =?us-ascii?Q?7IL3jvoNL/2SwJ3pwuJ5peQBDWrtgatiSAJn4KV+jFK7sjGLngu67W20OA8j?=
+ =?us-ascii?Q?d4c5U+G7y8n80wp3ocJdOmo0J+LrC+gunnNEvglh825DRVJs7dwk1aYukjUD?=
+ =?us-ascii?Q?eyTKxsiwgbunJkYt6LPL54uLu0hV/aFF0Ux1/BlwXr4sFK9fLh3EuYMzEEZC?=
+ =?us-ascii?Q?mTlYMlNKN9hQhtG4gQoME2hfaPDPtgFI8B2DFWn+9NZKT1qnAidl/hpMJVEw?=
+ =?us-ascii?Q?1pN8LuLynIrXjkqYkrDaVuj4Wl4yW5bvmfD7Pea3vVK6EqgHeUhalvuvh6ij?=
+ =?us-ascii?Q?jsTYd612fGT+Jl0wV5iIPQKzA5qjZ5na0YZfVO+Xcjmp+y4Ni1gceE9TrFiB?=
+ =?us-ascii?Q?GE4fI5uGT78HWR4SzUARDhygFTk9lcoAFhMRRy/L8AeQK5F4rrLFiE5/UH2c?=
+ =?us-ascii?Q?oh7Hi3WbkG/cV3zEhb/xnITyRxfy0y2eK3PwYdmJacaBmZG4aIMSRYZDWmff?=
+ =?us-ascii?Q?LW5DTPntuZ4VUJSkvNpPeQExE4FAvxOtXbXGtm8AAUawbNBJnFAclchcG2y6?=
+ =?us-ascii?Q?lXoW/al7XZu6l6DImoURJP0vjgLIB6DuTKUzXccWrGhMjVUvxf2zw/xguizN?=
+ =?us-ascii?Q?FloY40mOshFaqNtXuC9RC4pgan89zloZ9n4v9xfUJZekadi8+hWWTkzmsMnm?=
+ =?us-ascii?Q?+/o41uBIaAJl0BZzq7rqMdy4DWx97fuyJBQR85esWCg0qqB1Q70TWt2+AtH/?=
+ =?us-ascii?Q?oGJDGRX8XQB0bc8yEcwI//DQr9dIx44PCdBFsXkUdzFC1pNAX8DNHEYzRlos?=
+ =?us-ascii?Q?sjS9G7acQ1NlvvTAHi4s3kpzJC6XimwrGPjrLx13/CPUhn8GAyfTC6zVsaK3?=
+ =?us-ascii?Q?kaz+lyMvw1qU1nFtC/Sm2XhrT1jgaVcKUIzxJJ6VdbphmNwo5aMp+hAI9Gdt?=
+ =?us-ascii?Q?roAiHS6r8Z9DJJXRnz6JJrHLq4+8GRfItLOPnfKgjwxL9ZSm7Se6i5rQeSoH?=
+ =?us-ascii?Q?pnkzvKofnxQCbQFUalIokkEmjeuflPWMTSE9fiQbv96ln6D4Z+lrCqfihRgK?=
+ =?us-ascii?Q?v2/ot1WTwPOyfXBoKfhKMejRVIuH5yIUfJlujdiROMkWb5oIOLv5rJc43iNN?=
+ =?us-ascii?Q?xEbIp8AbLZmFHun/20aX9mWatNKt5IG4kTIE04RemcRVfIPu9ImXsyc3PDMK?=
+ =?us-ascii?Q?vdmgkR5C4/fqm+ktOZLqlMmweqDospRCzL2ZjXltI32xP+PD?=
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: quoted-printable
+MIME-Version: 1.0
+X-OriginatorOrg: axiado.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-AuthSource: BY3PR18MB4610.namprd18.prod.outlook.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: c0a13927-33b4-45c6-c0ed-08df1f95e4c9
+X-MS-Exchange-CrossTenant-originalarrivaltime: 01 Oct 2026 08:27:55.8299 (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: ff2db17c-4338-408e-9036-2dee8e3e17d7
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: 0j+uircfQR11RZTaadz4mKxw/VaTpubSxtDnqTHC4fHfgLAC9l12qvTsjGc4qdeo36gx/IM646zVyNqH/XLdVQ==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: SJ0PR18MB3898
+Received-SPF: pass client-ip=2a01:111:f403:c100::f;
+ envelope-from=rdondi@axiado.com;
+ helo=BL2PR02CU003.outbound.protection.outlook.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, SPF_HELO_NONE=0.001,
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_PASS=-0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -156,36 +141,97 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On 30/9/26 19:49, Philippe Mathieu-DaudÃ© wrote:
-> Missing review: 9
-> 
-> Since v3:
-> - Rebased (s390x, x86 and some ARM patches merged)
-> - RISC-V posted separately as [1]
-> - Better describe ARM PSCI power-state update issue
-
-
-> [1] https://lore.kernel.org/qemu-devel/20260930174508.81497-1-philmd@oss.qualcomm.com/
-
-> Philippe Mathieu-Daudé (9):
->    accel/tcg: Refactor poll-while-halted flow in cpu_exec()
->    accel/tcg: Introduce poll_during_halt() and leaving_halt()
->    target/arm: Split leaving-halt handling from arm_cpu_exec_halt()
->    target/arm: Convert cpu_exec_halt() to leaving_halt()
->    target/i386: Split APIC polling from x86_cpu_exec_halt()
->    target/i386: Split leaving-halt handling from x86_cpu_exec_halt()
->    target/i386: Use generic halt transition handlers
->    accel/tcg: Remove the redundant cpu_exec_halt() hook
-
-Since Alistair queued the prerequisite patches [1], I'm directly
-queuing the reviewed patches 1-8 via accel-next tree.
-
->    target/arm: Kick vCPU after updating PSCI power state
-
-I might repost this single one (arm specific) later when the
-rest landed in /master.
+Hi,
+Just a gentle reminder on this patch.=20
+Please let me know if you have any feedback or if you need any changes.
 
 Thanks,
+Ratan La Dondi
 
-Phil.
+-----Original Message-----
+From: Ratan Lal Dondi <rdondi@axiado.com>=20
+Sent: 16 September 2026 10:22
+To: qemu-devel@nongnu.org; qemu-arm@nongnu.org
+Cc: pbonzini@redhat.com; peter.maydell@linaro.org; jasowangio@gmail.com; Ku=
+an-Jui Chiu <kchiu@axiado.com>; Ratan Lal Dondi <rdondi@axiado.com>
+Subject: [PATCH 0/2] Add Axiado HCP network device model
+
+This patchset introduces Axiado HCP network model for SoC AX3000
+
+The HCP (Header and Crypto Processing) block is the substantial part of the=
+ series. It is the SoC's network complex, built around an Inside Secure Saf=
+eXcel EIP-197 packet engine that acts as bus master for all packet I/O over=
+ four command/result descriptor ring pairs. Five MACs are demultiplexed by =
+an "application ID" tag carried in the EIP-96 input and output tokens. Only=
+ the packet datapath is modelled; the
+EIP-197 cryptographic transforms are treated as pass-through, which is what=
+ the guest asks for when the block is used as a network interface.
+
+Refer Axiado website for more product information https://axiado.com/produc=
+ts/
+
+Testing
+-------
+ The user-mode network backend is required, so configure with libslirp  ena=
+bled (it is auto-detected, and silently absent otherwise):
+
+  ./configure --target-list=3Daarch64-softmmu -Dslirp=3Denabled
+
+  qemu-system-aarch64 \
+    -m 4G \
+    -machine axiado-scm3003 \
+    -device loader,file=3Du-boot.bin,addr=3D0x3C000000,cpu-num=3D0 \
+    -nographic \
+    -serial null \
+    -serial null \
+    -serial null \
+    -serial mon:stdio \
+    -drive if=3Dsd,file=3Dobmc-phosphor-image-evk-axiado-qemu.wic,format=3D=
+raw \
+    -netdev user,id=3Dnet4,hostfwd=3Dtcp::2222-:22 \
+    -global axiado-hcp.netdev4=3Dnet4 \
+
+
+In the guest, bring the interface up with DHCP:
+
+  udhcpc -i eth0
+
+Then from the host:
+
+  ssh -p 2222 root@127.0.0.1
+
+With the unmodified vendor Linux driver, the guest:
+
+  - probes the HCP and brings eth0 up
+  - obtains an address over DHCP from the SLIRP backend
+  - resolves ARP and answers ping
+  - sustains an SSH session and completes an SCP transfer
+
+Not modelled
+------------
+
+  - EIP-197 cryptographic transforms. Descriptors are pass-through.
+  - PCS/SerDes behaviour. The guest configures these registers and never
+    reads them back, so writes are accepted and discarded; the link is
+    always reported up.
+
+Ratan Lal Dondi (2):
+  hw/net: Add Axiado HCP network device model
+  hw/arm: Wire up the HCP network complex in the AX3000 SoC
+
+ hw/arm/Kconfig              |    1 +
+ hw/arm/ax3000-soc.c         |   23 +
+ hw/net/Kconfig              |    3 +
+ hw/net/axiado_hcp.c         | 1372 +++++++++++++++++++++++++++++++++++
+ hw/net/meson.build          |    2 +
+ hw/net/trace-events         |    6 +
+ include/hw/arm/ax3000-soc.h |   14 +
+ include/hw/net/axiado_hcp.h |  172 +++++
+ 8 files changed, 1593 insertions(+)
+ create mode 100644 hw/net/axiado_hcp.c
+ create mode 100644 include/hw/net/axiado_hcp.h
+
+--
+2.34.1
+
 

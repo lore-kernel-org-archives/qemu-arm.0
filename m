@@ -4,41 +4,44 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 54B65CA5FB3
-	for <qemu-arm@archiver.kernel.org>; Thu,  1 Oct 2026 10:53:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 39D01CA5FCB
+	for <qemu-arm@archiver.kernel.org>; Thu,  1 Oct 2026 10:53:38 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xCEPM-0005ej-06; Thu, 01 Oct 2026 06:53:02 -0400
+	id 1xCEPq-0005kU-6s; Thu, 01 Oct 2026 06:53:31 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <aastharawat@linux.microsoft.com>)
- id 1xCEPH-0005dX-Gm; Thu, 01 Oct 2026 06:52:55 -0400
+ id 1xCEPJ-0005dh-Fl; Thu, 01 Oct 2026 06:52:58 -0400
 Received: from linux.microsoft.com ([13.77.154.182])
  by eggs.gnu.org with esmtp (Exim 4.90_1)
  (envelope-from <aastharawat@linux.microsoft.com>)
- id 1xCEPF-0002P4-S8; Thu, 01 Oct 2026 06:52:55 -0400
+ id 1xCEPF-0002Oq-Pt; Thu, 01 Oct 2026 06:52:57 -0400
 Received: from localhost (unknown [131.107.1.165])
- by linux.microsoft.com (Postfix) with ESMTPSA id 6E80020B716A;
- Thu,  1 Oct 2026 03:51:58 -0700 (PDT)
-DKIM-Filter: OpenDKIM Filter v2.11.0 linux.microsoft.com 6E80020B716A
+ by linux.microsoft.com (Postfix) with ESMTPSA id E944C20B7166;
+ Thu,  1 Oct 2026 03:51:55 -0700 (PDT)
+DKIM-Filter: OpenDKIM Filter v2.11.0 linux.microsoft.com E944C20B7166
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linux.microsoft.com;
- s=default; t=1790851918;
- bh=37MszlWbJzj+NlQUVtLNagGvC4NXZtVf/7aP5kBq1SA=;
- h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
- b=MwnWGZGZi08SR9BGkm6ZFg9Atrq9TMT1EL/oOCWIzQEcV9zjiG96mExkX1acDhxdl
- awh/CYBP2WestHS7bSd30g319q7bRO7IXsi01tPMsbOr5Z1xJ5hM+I4DLDxt2Jo0sb
- ARsNzE8dTd9CA6OuYIeThsVMZA9RjqAYTecqemag=
+ s=default; t=1790851916;
+ bh=WXBI+mFLrpwb4SHUBeepop8QFOSXFk3Toa3MOc+cVKc=;
+ h=From:Subject:Date:To:Cc:From;
+ b=G+T3ZDIOH1lD9yfH8XWwyAW/NJtOpau8XWHKTRcVouJ2KfNpjN1nJdbR5pmu6yetN
+ QCq1a7jIXZruKawCvA6QQ33BVuuiIpbxv7HJ3gjJxmazzVvCebCf//SbrgWXiNB05r
+ FU8fg9kLAGLxA5b9Yga/WIi0F+4cy3WDLHwO/gzI=
 From: Aastha Rawat <aastharawat@linux.microsoft.com>
-Date: Thu, 01 Oct 2026 10:52:48 +0000
-Subject: [PATCH v6 03/14] accel/mshv: make MSHV migration initialization
- arch-specific
+Subject: [PATCH v6 00/14] Add ARM64 support for MSHV accelerator
+Date: Thu, 01 Oct 2026 10:52:45 +0000
+Message-Id: <20261001-mshv_accel_arm64_supp-v6-0-aefe5e76a0e3@linux.microsoft.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20261001-mshv_accel_arm64_supp-v6-3-aefe5e76a0e3@linux.microsoft.com>
-References: <20261001-mshv_accel_arm64_supp-v6-0-aefe5e76a0e3@linux.microsoft.com>
-In-Reply-To: <20261001-mshv_accel_arm64_supp-v6-0-aefe5e76a0e3@linux.microsoft.com>
+X-B4-Tracking: v=1; b=H4sIAH47vmoC/4XNwa7CIBCF4VcxrMVAodC68j2MaYAOdhJbGrBEY
+ /ruopturrnL/yTzzYskiAiJHHcvEiFjwjCVUPsdcYOZrkCxL00qVikmOKdjGnJnnINbZ+KoZJe
+ WeabQKMtYUxkAScrtHMHj4+ueL6UHTPcQn983mX/W/8TMKaNOcNW2VlvH/clMGJd+iPbgwkg+a
+ habJKufkiiSVK2vpdS6seZ0w2l5HEZ0MaTg75tXb57m+pdXFw880710ygqh//bWdX0DIGLZs14
+ BAAA=
+X-Change-ID: 20260311-mshv_accel_arm64_supp-e86b0082aee4
 To: qemu-devel@nongnu.org
 Cc: Magnus Kulke <magnuskulke@linux.microsoft.com>, 
  Wei Liu <wei.liu@kernel.org>, 
@@ -79,134 +82,141 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-x86 specific migration handlers currently live in common MSHV code. Move
-these handlers into x86 backend and add a generic architecture migration
-initialization hook. ARM MSHV live migration support is not added yet,
-this will allow ARM to add an empty initialization hook.
+This series adds ARM64 guest support to the MSHV (Microsoft Hypervisor)
+accelerator, enabling QEMU to run aarch64 VMs on Microsoft's hypervisor
+using the mshv Linux kernel module.
 
-Signed-off-by: Aastha Rawat <aastharawat@linux.microsoft.com>
+The first few patches refactor the existing x86 MSHV code to separate
+arch-specific pieces from common infrastructure: moving MSR handling to
+target/i386, extracting shared register hypercall helpers, provisioning
+host CPU features, and introducing arch-specific init hooks.
+
+The remaining patches add the ARM64 backend:
+ - vCPU state get/set using hypervisor register hypercalls
+ - -cpu host support by querying ID registers from the hypervisor
+ - vCPU run loop with MMIO emulation via ESR_EL2 syndrome decoding
+ - In-kernel vGICv3 backed by HVCALL_ASSERT_VIRTUAL_INTERRUPT
+ - Interrupt control structure adjustments for arm64
+
+With this series, a standard aarch64 virt machine can be launched with:
+  qemu-system-aarch64 -accel mshv -cpu host -M virt ...
+
+Caveats:
+- Live migration is not yet supported.
+
 ---
- accel/mshv/mshv-all.c       | 35 ++++-------------------------------
- include/system/mshv_int.h   |  1 +
- target/i386/mshv/mshv-all.c | 34 ++++++++++++++++++++++++++++++++++
- 3 files changed, 39 insertions(+), 31 deletions(-)
+Changes in v2:
+- Removed PATCH: "accel/mshv: provision guests with the same features as host".
+- Extracted common MMIO emulation logic for hvf, whpx and mshv to a
+  common place.
+- Fixed checkpatch errors/warnings.
+- Picked up reviewed-by tags.
+- Link to v1: https://lore.kernel.org/qemu-devel/20260311-mshv_accel_arm64_supp-v1-0-c31699b7bc1f@anirudhrb.com
 
-diff --git a/accel/mshv/mshv-all.c b/accel/mshv/mshv-all.c
-index 860f511fcba..efe19a39140 100644
---- a/accel/mshv/mshv-all.c
-+++ b/accel/mshv/mshv-all.c
-@@ -60,30 +60,6 @@ static int init_mshv(int *mshv_fd)
-     return 0;
- }
- 
--static int mshv_load_cleanup(void *opaque)
--{
--    CPUState *cpu;
--    int ret;
--
--    ret = mshv_arch_set_partition_msrs(first_cpu);
--    if (ret < 0) {
--        error_report("Failed to set partition MSRs: %s", strerror(-ret));
--        return -1;
--    }
--
--    CPU_FOREACH(cpu) {
--        ret = mshv_arch_set_mp_state(cpu);
--        if (ret < 0) {
--            error_report("Failed to set mp state for vCPU %d: %s",
--                         cpu->cpu_index, strerror(-ret));
--            return -1;
--        }
--    }
--
--    return 0;
--}
--
--
- static int get_host_partition_property(int mshv_fd, uint32_t property_code,
-                                        uint64_t *value)
- {
-@@ -519,10 +495,6 @@ static int mshv_init_vcpu(CPUState *cpu)
-     return 0;
- }
- 
--static SaveVMHandlers savevm_mshv = {
--    .load_cleanup = mshv_load_cleanup,
--};
--
- static int mshv_init(AccelState *as, MachineState *ms)
- {
-     MshvState *s;
-@@ -574,9 +546,10 @@ static int mshv_init(AccelState *as, MachineState *ms)
-                                   0, "mshv-memory");
-     memory_listener_register(&mshv_io_listener, &address_space_io);
- 
--    register_savevm_live("mshv", 0, 1, &savevm_mshv, s);
--
--    mshv_clock_init();
-+    ret = mshv_arch_migration_init(s);
-+    if (ret < 0) {
-+        return ret;
-+    }
- 
-     return 0;
- }
-diff --git a/include/system/mshv_int.h b/include/system/mshv_int.h
-index 0e68365c63f..31d2f4381c7 100644
---- a/include/system/mshv_int.h
-+++ b/include/system/mshv_int.h
-@@ -109,6 +109,7 @@ void mshv_arch_disable_partition_proc_features(
- int mshv_arch_accel_init(AccelState *as, MachineState *ms, int mshv_fd);
- int mshv_arch_post_init_vm(int vm_fd);
- void mshv_setup_hvcall_args(AccelCPUState *state);
-+int mshv_arch_migration_init(MshvState *s);
- int mshv_get_vp_state(int cpu_fd, struct mshv_get_set_vp_state *state);
- int mshv_set_vp_state(int cpu_fd, const struct mshv_get_set_vp_state *state);
- typedef struct mshv_root_hvcall mshv_root_hvcall;
-diff --git a/target/i386/mshv/mshv-all.c b/target/i386/mshv/mshv-all.c
-index f0b43aa86f1..968fe2a4494 100644
---- a/target/i386/mshv/mshv-all.c
-+++ b/target/i386/mshv/mshv-all.c
-@@ -78,3 +78,37 @@ int mshv_arch_post_init_vm(int vm_fd)
- 
-     return ret;
- }
-+
-+static int mshv_load_cleanup(void *opaque)
-+{
-+    CPUState *cpu;
-+    int ret;
-+
-+    ret = mshv_arch_set_partition_msrs(first_cpu);
-+    if (ret < 0) {
-+        error_report("Failed to set partition MSRs: %s", strerror(-ret));
-+        return -1;
-+    }
-+
-+    CPU_FOREACH(cpu) {
-+        ret = mshv_arch_set_mp_state(cpu);
-+        if (ret < 0) {
-+            error_report("Failed to set mp state for vCPU %d: %s",
-+                         cpu->cpu_index, strerror(-ret));
-+            return -1;
-+        }
-+    }
-+
-+    return 0;
-+}
-+
-+static SaveVMHandlers savevm_mshv = {
-+    .load_cleanup = mshv_load_cleanup,
-+};
-+
-+int mshv_arch_migration_init(MshvState *s)
-+{
-+    register_savevm_live("mshv", 0, 1, &savevm_mshv, s);
-+    mshv_clock_init();
-+    return 0;
-+}
+---
+Changes in v3:
+- Handled GPA Intercept in vCPU run loop to fix EDK2 firmware boot.
+- Updated the cover letter: removed caveat about EDK2 firmware boot as
+  it is now fixed.
+- Link to v2: https://lore.kernel.org/qemu-devel/20260402-mshv_accel_arm64_supp-v2-0-754895c15e9e@linux.microsoft.com/
 
--- 
-2.45.4
+---
+Changes in v4:
+- Split "target/arm: convert host CPU features ifdef ladder to runtime
+  checks" out of the -cpu host patch to separate the refactoring.
+- Refactored MMIO emulation helper (arm_emulate_mmio) to use callback
+  ops for per-register access avoiding full CPU state sync for single
+  register MMIO operations for HVF & WHPX.
+- Reordered patches: moved "arch-specific accelerator init hook" earlier
+  (patch 3), before the arm64 build enablement.
+- Updated cpu_thread_is_idle() comment to be arch-neutral.
+- Link to v3: https://lore.kernel.org/qemu-devel/20260421-mshv_accel_arm64_supp-v3-0-469f544778ba@linux.microsoft.com
+
+---
+Changes in v5:
+- Rebased onto v11.1.0 rc0.
+- Dropped "accel/mshv: implement cpu_thread_is_idle() hook" as it has been
+  merged upstream and is now part of the base.
+- Dropped "accel/mshv: move msr.c to target/i386" for the same reason (msr.c
+  now lives in target/i386/mshv/ upstream).
+- Adapted the arm64 code to MSHV API changes already present in the new base:
+   - * follow the mshv_arch_put_registers() -> mshv_arch_load_vcpu_state() /
+       mshv_arch_store_vcpu_state() rename;
+   - * add an arm64 stub for the new mshv_arch_disable_partition_proc_features()
+       hook and guard the x86-only xsave handling in create_partition() with
+       `#if defined(__x86_64__)`.
+- Made the arm64 register helpers file-local static (load_regs(), store_regs(),
+  get_standard_regs()).
+- Link to v4: https://lore.kernel.org/qemu-devel/20260527-mshv_accel_arm64_supp-v4-0-66d871dcdc53@linux.microsoft.com
+
+---
+Changes in v6:
+- Rebased to the latest master.
+- Fixed an MSHV header-order dependency exposed by the rebase.
+- Made MSHV migration initialization architecture-specific; kept MSR,
+  MP-state, and clock restore code in the x86 backend.
+- Added an empty ARM migration-init hook; migration remains unsupported.
+- Cleared the x86-only TLB-flush enlightenment on ARM.
+- Link to v5: https://lore.kernel.org/qemu-devel/20260717-mshv_accel_arm64_supp-v5-0-ef07d4c6b337@linux.microsoft.com
+
+---
+Aastha Rawat (9):
+      accel/mshv: extract common CPU register helpers
+      accel/mshv: make MSHV migration initialization arch-specific
+      meson, target/arm/mshv: Enable arm64 build & add initial MSHV support
+      target/arm/mshv: implement vcpu state operations for ARM64
+      target/arm: convert host CPU feature ifdef ladder to runtime checks
+      target/arm/mshv: implement -cpu host for MSHV
+      accel/mshv: Add access_vp_regs synthetic proc features
+      target/arm: cpu: Mark MSHV supporting PSCI 1.3
+      target/arm: extract MMIO emulation logic for HVF & WHPX
+
+Anirudh Rayabharam (Microsoft) (5):
+      accel/mshv: add arch-specific accelerator init hook
+      target/arm/mshv: add vCPU run loop
+      include/hw/hyperv: adjust hv_interrupt_control structure for arm64
+      hw/intc,target/arm/mshv: add MSHV vGICv3 implementation
+      MAINTAINERS: updates for MSHV arm64 code
+
+ MAINTAINERS                        |   8 +
+ accel/mshv/irq.c                   |   2 +
+ accel/mshv/meson.build             |   3 +-
+ accel/mshv/mshv-all.c              |  56 ++--
+ accel/mshv/mshv-cpu-common.c       | 151 ++++++++++
+ hw/arm/virt.c                      |  11 +-
+ hw/i386/mshv/clock.c               |   2 +-
+ hw/intc/arm_gicv3_common.c         |   3 +
+ hw/intc/arm_gicv3_mshv.c           | 181 ++++++++++++
+ hw/intc/meson.build                |   2 +
+ include/hw/hyperv/hvgdk_mini.h     | 129 ++++++++
+ include/hw/hyperv/hvhdk.h          |  91 +++++-
+ include/hw/hyperv/hvhdk_mini.h     |   6 +
+ include/hw/intc/arm_gicv3_common.h |   1 +
+ include/system/hw_accel.h          |   3 +-
+ include/system/mshv.h              |   4 +-
+ include/system/mshv_int.h          |   4 +
+ meson.build                        |   8 +-
+ target/arm/cpu.c                   |   8 +-
+ target/arm/cpu64.c                 |  27 +-
+ target/arm/helper.c                |  62 ++++
+ target/arm/helper.h                |  16 +
+ target/arm/hvf/hvf.c               |  57 ++--
+ target/arm/meson.build             |   1 +
+ target/arm/mshv/meson.build        |   7 +
+ target/arm/mshv/mshv-all.c         | 585 +++++++++++++++++++++++++++++++++++++
+ target/arm/mshv_arm.h              |  18 ++
+ target/arm/syndrome.h              |  47 +++
+ target/arm/whpx/whpx-all.c         |  45 ++-
+ target/i386/mshv/meson.build       |   1 +
+ target/i386/mshv/mshv-all.c        | 119 ++++++++
+ target/i386/mshv/mshv-cpu.c        | 165 +----------
+ 32 files changed, 1542 insertions(+), 281 deletions(-)
+---
+base-commit: afe27627a13dadab6a7a45a605b21c7c809f4f56
+change-id: 20260311-mshv_accel_arm64_supp-e86b0082aee4
+
+Best regards,
+--  
+Aastha Rawat <aastharawat@linux.microsoft.com>
 
 

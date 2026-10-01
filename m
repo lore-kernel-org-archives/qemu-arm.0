@@ -4,146 +4,102 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 49441CA5FCF
-	for <qemu-arm@archiver.kernel.org>; Thu,  1 Oct 2026 17:14:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D2696CA5FD4
+	for <qemu-arm@archiver.kernel.org>; Thu,  1 Oct 2026 17:41:26 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xCKMb-0006aR-Gl; Thu, 01 Oct 2026 13:14:33 -0400
+	id 1xCKlv-0006NI-1O; Thu, 01 Oct 2026 13:40:43 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <skolothumtho@nvidia.com>)
- id 1xCKMZ-0006aB-NV; Thu, 01 Oct 2026 13:14:31 -0400
-Received: from mail-eastusazlp17011000f.outbound.protection.outlook.com
- ([2a01:111:f403:c100::f] helo=BL2PR02CU003.outbound.protection.outlook.com)
+ (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
+ id 1xCKlp-0006M2-6L
+ for qemu-arm@nongnu.org; Thu, 01 Oct 2026 13:40:37 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <skolothumtho@nvidia.com>)
- id 1xCKMW-00064h-CF; Thu, 01 Oct 2026 13:14:30 -0400
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=MHoLkIvCDFBEcp6ULU2BQ73QuPYGJLoQDFAzpRTwtRXH9HP85GLgGI425kf/qAAzyB8b0+k+G0zwDx+TrfhhyVC8Odfa7RthLe5+14bQC9OeJT/MbElI7y0zaQVLwdNB+GfiSE5mpSXPi09okZ4WGTvY5pLgiJ4OSY17uC3Opi/cZIs//HPtIiuTG5kGjNESsQrYgAGu2DOoEzlw5XSFUp7dvv+GES3NpLTAg+hjeBrfqzxSbyLteQdpX0AwgLU/LU+KGXAED15v46qRy42WUnJSHJ5K5DERWRbr+Cuh60DbmEeOWcJcaZ0QavEVu5M8mDVrXqb3fVG8cgfP1sJrsQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector10001;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=pVfsJD1qfgj/ilR/zu9aqtjcfD9Vw+KdPgUHrbTqvWA=;
- b=A8lZ+0tcycV/eFMfE1Rr3xXelGAIRL5AqvhoWnAE7cDCYggwCNe4Y3ox+ZIRM3c/NQXPz2v8NmtEUBJ5jWhlUJfQHE0++nL9pggZnv+6ymuS7fuZE5GZcXd/w9cDueGjPDtZsJgk4vGc61vauWU03hAclJzH6Q3heUem4M75CuUvFQljbBa05RLOYe0Mty578LIayJqb1ONLQq3nWXzv5ScrM3gq3wB87dvgSZoDilHg5vOcpSeLXm97T2/uL2phVC+GiwZI6QuZ3eagJpZjBapRvQ5XIZYUd8F2WcNJLjKnLeAMFABMhYtSxA5oKE4FezMw0siEGVBmn7p5IBRa1Q==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=nvidia.com; dmarc=pass action=none header.from=nvidia.com;
- dkim=pass header.d=nvidia.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Nvidia.com;
- s=selector2;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=pVfsJD1qfgj/ilR/zu9aqtjcfD9Vw+KdPgUHrbTqvWA=;
- b=DZI9dpyDJwW/ZffYerfz6aKrAxtCMs8/m1v5j/KIvo+NbSy8KGK9OvLCqFrVEmyloZFPjAXttMAQB1rCHHz/v/9UXDZLlRouzdtQ1FjbtvPdEIzmDTe4gydt+d3N2AkXtisO6c2SNtmRYfeZr6X9Zx+SoMugZikJg2xlEnC8Av/mumFKrgqGDh46pzmWLDQG4qYAw4dEbecHPvCOFnzWpVN6dDEwlmgQUuzliAaX0kESOY44/qUGPBNUp4ioQO+2gLgmykjnLMCN10E16XTFSw9kH35jiRh7r+Ia2Txu4BtpqFHmdwLCPCYbLzuwZge/HbbHJU/GpXbIFL58F3Ed/w==
-Received: from SJ0PR12MB8614.namprd12.prod.outlook.com (2603:10b6:a03:47d::17)
- by PH8PR12MB7304.namprd12.prod.outlook.com (2603:10b6:510:217::20)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.21.451.23; Thu, 1 Oct
- 2026 17:14:16 +0000
-Received: from SJ0PR12MB8614.namprd12.prod.outlook.com
- ([fe80::fe0a:6e6a:fe60:a43b]) by SJ0PR12MB8614.namprd12.prod.outlook.com
- ([fe80::fe0a:6e6a:fe60:a43b%5]) with mapi id 15.21.0472.015; Thu, 1 Oct 2026
- 17:14:16 +0000
-From: Shameer Kolothum Thodi <skolothumtho@nvidia.com>
-To: "eric.auger@redhat.com" <eric.auger@redhat.com>, "qemu-arm@nongnu.org"
- <qemu-arm@nongnu.org>, "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>
-CC: "peter.maydell@linaro.org" <peter.maydell@linaro.org>, Nicolin Chen
- <nicolinc@nvidia.com>, Nathan Chen <nathanc@nvidia.com>, Matt Ochs
- <mochs@nvidia.com>, Jiandi An <jan@nvidia.com>, "jgg@ziepe.ca"
- <jgg@ziepe.ca>, Ankit Agrawal <ankita@nvidia.com>, Aniket Agashe
- <aniketa@nvidia.com>, "wangzhou1@hisilicon.com" <wangzhou1@hisilicon.com>,
- "jiangkunkun@huawei.com" <jiangkunkun@huawei.com>
-Subject: RE: [RFC PATCH 4/7] hw/arm/smmuv3-accel: Add a helper to replay all
- STEs
-Thread-Topic: [RFC PATCH 4/7] hw/arm/smmuv3-accel: Add a helper to replay all
- STEs
-Thread-Index: AQHdPJgyKY6/u6P9OEmczRngWut4HrbpB8sAgAAOiYA=
-Date: Thu, 1 Oct 2026 17:14:15 +0000
-Message-ID: <SJ0PR12MB86144A39CF7700D320626476AB8A2@SJ0PR12MB8614.namprd12.prod.outlook.com>
-References: <20260904180513.248396-1-skolothumtho@nvidia.com>
- <20260904180513.248396-5-skolothumtho@nvidia.com>
- <b434ecce-ef8d-495d-b650-305a3bf66f83@redhat.com>
-In-Reply-To: <b434ecce-ef8d-495d-b650-305a3bf66f83@redhat.com>
-Accept-Language: en-US, en-GB
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-authentication-results: mx.microsoft.com 1; dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=nvidia.com;
-x-ms-publictraffictype: Email
-x-ms-traffictypediagnostic: SJ0PR12MB8614:EE_|PH8PR12MB7304:EE_
-x-ms-office365-filtering-correlation-id: f3345724-6f6b-429f-4534-08df1fdf6bfb
-x-ms-exchange-senderadcheck: 1
-x-ms-exchange-antispam-relay: 0
-x-microsoft-antispam: BCL:0;
- ARA:13230040|1800799024|23010399003|376014|366016|11063799006|10067099003|4143699003|18002099003|22082099003|56012099006|38070700021;
-x-microsoft-antispam-message-info: i6ddFbepF82v1OEYy/wavNhx509Yp65fI19WAJ8fTobVjoz/xS5e4loAdwqMk3o39kCL+e1nL7W7zUNME8NcFb6nibr4XdZUQyRvULS4FRAu6b1awV4+o+JKoreQi2vBFq+igJDuTk6kMOhKIjl6i13zjsOsianNbiZApshvTN6emeQBzw2oNPJlwYNjr5Jy625yBkQ6Z0Qsj3nRkpKj3OKBxg+FOalMyhPr01XXDsguUjrp8rCuQaEimDYyYinjJgwIySF/o0nNCt3LmYqc25LfPA4lpEAhMMhvx6rkv+N3/h+1uY0PJxLNwRxMpDKLp1HEM+WumNGuNEeivL/cfYodPdik9Xi0TY5WAtCHT9NcY01vObQhT4+DN8yKWYUEfNTS8C1DNkq3nmU2ZsWJdIsQSNC9FRO5XN9k2BImIF2e9+YebgCI5G3uhcubYlnp23HjxwTljDHlBCTn2QvNzebxliadKydlzRfSBfCC/9TyzevBkgZ2qkBMNnIFQdW5unrsr/N0t7MBa13dDsWjto0r7TvNJOXTm+h1Ol+Gvc2/d3LiuTHmGfiswNs6jucrOLMCH8lhYXeQm2ugXd+RjBRmGn/FUOD55j1IaBZBsKWr7GJ+uXwt4Rg3FGMw/0PTo8khrMKtQFUUlEkx01GNx2MssZ2xr4Gx8jk3GIgSZHcg7zoLVR4+X2yam3/2ucaHdNI9DICxvaJdVJwn63cNSD0xCuAR/Hfm2aSCVJ71d/M=
-x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:SJ0PR12MB8614.namprd12.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(13230040)(1800799024)(23010399003)(376014)(366016)(11063799006)(10067099003)(4143699003)(18002099003)(22082099003)(56012099006)(38070700021);
- DIR:OUT; SFP:1101; 
-x-ms-exchange-antispam-messagedata-chunkcount: 1
-x-ms-exchange-antispam-messagedata-0: =?utf-8?B?azR5WnhaeitxdE9DVklsd2tBQW5nRGtwY1hrM2tNUHlvbis3MThCbms2dnI3?=
- =?utf-8?B?dUhxckM5RXgwU2FnM2dEMURGTFZ4NjFFQk9XL0xzV2c4cy9mRUoxUUZ0RGN1?=
- =?utf-8?B?N2gvNjNibDZUejk5OVhqbWNNVkhnTUE5VS83LzlTZ1g1aXY0QlpBcVo2cHdk?=
- =?utf-8?B?WUpxUVBsT0FDOVJ0c3dRTitKbkl6a2xFWUEyODRKNHNJaFFSazNjWVpzeUcy?=
- =?utf-8?B?V25zc3huOCtLdHBDNVlrblhKZ0dXQkI5dzBiOFA5cmpjSWZra2xTakFjSlJE?=
- =?utf-8?B?U0dqMlg0VU9CbzcrMzVZOXN6V2g2Q0hRQ3RBMzZMWUNvM1ZWR1hNdHVBVUEv?=
- =?utf-8?B?SnZmdVdlYWwrdmx1bVE0Zk9rcDM1UWpJTnJub0dQYzVYTjg4K3Z2T3orL3dr?=
- =?utf-8?B?ZkkyK2Nrb05yRklmNXpmWU1Xa1E3RlNHbTlPMGN2d0x2Zk9oeE5IbjIyWjFz?=
- =?utf-8?B?c1FvbVhHUmE2eEtiYWJnNDlyUUE4NHVLejZSeUZWdlZPcXRxYlJQM3M2NXFn?=
- =?utf-8?B?eVZ5UzkrOWMrZm5xQlRERWNNNVN6OHpVU1BTTGFxbnczS25mc3hzbVZ1c3Nw?=
- =?utf-8?B?L0FzNmE3amNXcXFzMERYZ0w3YWJLTmpnajNxTTcyVEJ4NDRzWXpwVkJzYWhw?=
- =?utf-8?B?WjJDTjJkUXFIdWlYZjM0MERZakNScDB3TkZtUHF2UkdpNW11SmFSa3p4RzJm?=
- =?utf-8?B?R2pmTmRVcDB2TUd6WTNoRjNSenp0RWhEMzVMV2sxcEwrKzhZeWgzYk84RWFX?=
- =?utf-8?B?bTlCQzl3dmwrT2pLOTZTa1crdXp1ZlhVWWlaU1ZjNzB6elBFb2lLZEp1THUx?=
- =?utf-8?B?elZ2c3hJNTRyaHh5NEV1Q2xFL0sxeXZ3NEx0M1FOKzg0aXdMWm1UZjBPbmR6?=
- =?utf-8?B?M2RsZUdMVGtZMzltZkZ6UEJGdWdyNkhCaTFBMVNWQ2ZtaVJqRmQ0bFFZUWF5?=
- =?utf-8?B?M3pSSXNtY0ovdUdQZFBiVER2QjFwcXVyMnpSK25FWXNZWndzamV6UmdEL1Ax?=
- =?utf-8?B?Qm9XRjg1blhnd01pMEJZdmJPSDV2TnZqM0trSUJmd2FtL3dGcSthZHU0TG1q?=
- =?utf-8?B?M2lMdGUwUHBNM0REeVVFL3FWWURLeEdlc0FDS1ZjSXgxUU9HUlREckgxZEd4?=
- =?utf-8?B?K0diOUV5NWJGVFFBall1c0lNVVduR0c3UHllaUFsV2N4aXhrM1JyYU16Y1V2?=
- =?utf-8?B?K0FjaUFCa29CMktsdzd6eWFBdkRWd3R2NVZvM2tPT2dlbFlIWTlJYkM4ZEEy?=
- =?utf-8?B?NVFJZm5CaG1OdWtlRjdYZTlkVGMvaG92cDA4d0JtRmVmSzVLZkxXaVpScmNT?=
- =?utf-8?B?SnVmYnV3N3pQdXVUWWd2RGJMcTBWNy9KWW1ma280OCt2dm1GTTVxemVIdmVh?=
- =?utf-8?B?M08rOXBuV0g3UHVvQVdPb0Vwck9sdEx6U3c1WWNvaFhhVStja0poMHo5RHNE?=
- =?utf-8?B?RmhWR2tPRUI0aVU5WEJZczNJMUFHUXdGY0pBcDNlR3RtSHNjbVpmcmVhUk5Y?=
- =?utf-8?B?VzRzQ05mamQ3MkhXRXRKZldFZjRNL2FqZDVkNkNBRGJ2ZVlldnE1TFhUQ25Y?=
- =?utf-8?B?M3luaHZXa0haam1IS0tldjZvdENZUUg2d2JNUkIyZkV5K2wyblJ6TmtFMldK?=
- =?utf-8?B?MEppMlM1U2R0QWRhOG5MNUhOaXV6SHpQNzdtc3htTnMwdDZORG5sYzBoeERp?=
- =?utf-8?B?U3BuRHVWVVJDS25OY3ZqeVI5WEdhaFBKUzlKbEVHQTg5Nlc1ZndvV3gwd3Na?=
- =?utf-8?B?dFZaRFN0K1pKUVBtQ1JpYyt4MTZrajZFN1huS1NUMnBaSTNyVCs3dzBaTmg5?=
- =?utf-8?B?WGt3WVJaRmJGdXZ1YThleXl4SHZCWll6L0RDN3RQQm96TDhyWTk2ZWpHYlpS?=
- =?utf-8?B?MUQxUDQrdUpXR2JISFl5YTFCRVRtR2RXQlhjM0ozcEdKak9LaEJHdmYwNjlY?=
- =?utf-8?B?Y0c2dlBOVUZheDJSZVhzYXVXTmZTenJqMVF6UE5FNlBaOTN0UVBTNGRDWTRE?=
- =?utf-8?B?S0w0dFBwVGJ0TVRhTzFhZStWaFJPUFJMNnVOaXhxU1drSXArTGRLckh0aVRK?=
- =?utf-8?B?czhkbG9ZNkxXd1hGeFI5V2JWNjc0by9HRk01bW10SzJHT0d6eFMrOC9jZVYx?=
- =?utf-8?B?bjlUajljTFZLb1JKRzQ5YTBZeFNHTmtGaHQvVHlWM01CbXRLT1RwdTVuREI4?=
- =?utf-8?B?ejhEYWNrWGdwWHMrMklQNlZKc09yQ3R2MlBtT01hbFFhamNOWWhsNjdYNGh3?=
- =?utf-8?B?RUNUUElSUStraFk2ZjBiOE93Sm52bDllVFdqdjhkSEpBajdzYnZJOGlYTGxX?=
- =?utf-8?B?Qm1TT1NFaXU2MXpkVTZSMWVqdzFoKytpVmZjM0VTUWJyUnUzcEFqUT09?=
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+ (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
+ id 1xCKlk-0000Wm-54
+ for qemu-arm@nongnu.org; Thu, 01 Oct 2026 13:40:36 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1790876430;
+ h=from:from:reply-to:reply-to:subject:subject:date:date:
+ message-id:message-id:to:to:cc:cc:mime-version:mime-version:
+ content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=hQteB3kBMoO7KsS+Tc28DxMqgveZesjJsm/gNAhL+xM=;
+ b=MJddEV/E+pm+u340ew7Pw55zQ9uY44+Z/lXCA3tnmOSrJuLHtc6E9L8sRk55A2S1vqLNYT
+ NswKq1QYKpuIpZEiR+NUufl4LVdnCHlqbC3hlrjXy4v/PytgW/ExVGlJVuXgLSjrQuyT6T
+ Mk3vKSStnkfeVVWclWAsUpdB05n7Xi0=
+Received: from mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
+ relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-128-5alCn65zPlab27ND3B_pLQ-1; Thu,
+ 01 Oct 2026 13:40:27 -0400
+X-MC-Unique: 5alCn65zPlab27ND3B_pLQ-1
+X-Mimecast-MFC-AGG-ID: 5alCn65zPlab27ND3B_pLQ_1790876424
+Received: from mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com
+ (mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.4])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+ (No client certificate requested)
+ by mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 7AB5E1955EAC; Thu,  1 Oct 2026 17:40:23 +0000 (UTC)
+Received: from redhat.com (headnet04.pony-001.prod.iad2.dc.redhat.com
+ [10.2.32.116])
+ by mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 5238030000E4; Thu,  1 Oct 2026 17:40:17 +0000 (UTC)
+Date: Thu, 1 Oct 2026 18:40:14 +0100
+From: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
+To: Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>
+Cc: luoyonggang@gmail.com,
+ Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@oss.qualcomm.com>,
+ qemu-devel@nongnu.org, Chao Liu <chao.liu@processmission.com>,
+ Eric Blake <eblake@redhat.com>, qemu-arm@nongnu.org,
+ Paolo Bonzini <pbonzini@redhat.com>, Markus Armbruster <armbru@redhat.com>,
+ Alistair Francis <alistair.francis@wdc.com>,
+ Brian Cain <brian.cain@oss.qualcomm.com>,
+ Stafford Horne <shorne@gmail.com>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ Jiaxun Yang <jiaxun.yang@flygoat.com>, Fabiano Rosas <farosas@suse.de>,
+ Daniel Henrique Barboza <daniel.barboza@oss.qualcomm.com>,
+ qemu-riscv@nongnu.org, Laurent Vivier <lvivier@redhat.com>,
+ Max Filippov <jcmvbkbc@gmail.com>, Song Gao <17746591750@163.com>,
+ Philippe Mathieu-Daude <philmd@mailo.com>,
+ Palmer Dabbelt <palmer@dabbelt.com>,
+ Laurent Vivier <laurent@vivier.eu>, Weiwei Li <liwei1518@gmail.com>,
+ Zhao Liu <zhao1.liu@intel.com>
+Subject: Re: [PATCH v3 01/10] machine: allow -M name to differ from QOM type
+Message-ID: <ar6a_uDw9OeLng6c@redhat.com>
+References: <20260926081551.29-1-luoyonggang@gmail.com>
+ <20260926081551.29-2-luoyonggang@gmail.com>
+ <82250296-78bc-4345-9e57-1fcac485d18a@oss.qualcomm.com>
+ <CAE2XoE_+nhj58M9_yx6wf532qCSVcERpTw7F4AU7PXN7prhpzg@mail.gmail.com>
+ <74853ef8-7315-466a-99ac-41c8182f9b13@oss.qualcomm.com>
+ <ar4TQtKqfXX5Ul9O@redhat.com>
+ <CAE2XoE8q3LYJ-JCTbRBk4iPdUQdRE8zzmOgiZ=HEXDL78iw8UQ@mail.gmail.com>
+ <26b0d44d-0322-4ceb-a47b-747fc52c61b7@oss.qualcomm.com>
+ <CAE2XoE8VyCpPCqRVFArBn_dDsyMw8vrSJxWMhKq17btZvO2n6A@mail.gmail.com>
+ <b02db9e2-b348-4011-a98d-122e9d9f17e5@oss.qualcomm.com>
 MIME-Version: 1.0
-X-OriginatorOrg: Nvidia.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-AuthSource: SJ0PR12MB8614.namprd12.prod.outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: f3345724-6f6b-429f-4534-08df1fdf6bfb
-X-MS-Exchange-CrossTenant-originalarrivaltime: 01 Oct 2026 17:14:15.9651 (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: 43083d15-7273-40c1-b7db-39efd9ccc17a
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: brAAi5SevCwPdI0ukvZz7WB3JNvKEGZTnK11fG6Bmmnx3WqcnXT8En0xggkJPTQVWS7vQcVobS4PL+KykbT4PQ==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: PH8PR12MB7304
-Received-SPF: permerror client-ip=2a01:111:f403:c100::f;
- envelope-from=skolothumtho@nvidia.com;
- helo=BL2PR02CU003.outbound.protection.outlook.com
-X-Spam_score_int: -13
-X-Spam_score: -1.4
-X-Spam_bar: -
-X-Spam_report: (-1.4 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.331,
+In-Reply-To: <b02db9e2-b348-4011-a98d-122e9d9f17e5@oss.qualcomm.com>
+User-Agent: Mutt/2.4.2 (2026-08-30)
+X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.4
+X-Mimecast-MFC-PROC-ID: LkzGcsW23mJ5MEEb5H7bf81J9yQof2nNk9SIpd1BFis_1790876424
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=berrange@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: 36
+X-Spam_score: 3.6
+X-Spam_bar: +++
+X-Spam_report: (3.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.331,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- FORGED_SPF_HELO=1, SPF_HELO_PASS=-0.001,
- SPF_NONE=0.001 autolearn=no autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ RCVD_IN_SBL_CSS=3.335, SPF_HELO_PASS=-0.001, SPF_PASS=-0.001,
+ THIS_AD=2.699 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -156,97 +112,192 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
+Reply-To: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-SGkgRXJpYywNCg0KPiAtLS0tLU9yaWdpbmFsIE1lc3NhZ2UtLS0tLQ0KPiBGcm9tOiBFcmljIEF1
-Z2VyIDxlcmljLmF1Z2VyQHJlZGhhdC5jb20+DQo+IFNlbnQ6IDAxIE9jdG9iZXIgMjAyNiAxNzox
-OA0KPiBUbzogU2hhbWVlciBLb2xvdGh1bSBUaG9kaSA8c2tvbG90aHVtdGhvQG52aWRpYS5jb20+
-OyBxZW11LQ0KPiBhcm1Abm9uZ251Lm9yZzsgcWVtdS1kZXZlbEBub25nbnUub3JnDQo+IENjOiBw
-ZXRlci5tYXlkZWxsQGxpbmFyby5vcmc7IE5pY29saW4gQ2hlbiA8bmljb2xpbmNAbnZpZGlhLmNv
-bT47IE5hdGhhbg0KPiBDaGVuIDxuYXRoYW5jQG52aWRpYS5jb20+OyBNYXR0IE9jaHMgPG1vY2hz
-QG52aWRpYS5jb20+OyBKaWFuZGkgQW4NCj4gPGphbkBudmlkaWEuY29tPjsgamdnQHppZXBlLmNh
-OyBBbmtpdCBBZ3Jhd2FsIDxhbmtpdGFAbnZpZGlhLmNvbT47IEFuaWtldA0KPiBBZ2FzaGUgPGFu
-aWtldGFAbnZpZGlhLmNvbT47IHdhbmd6aG91MUBoaXNpbGljb24uY29tOw0KPiBqaWFuZ2t1bmt1
-bkBodWF3ZWkuY29tDQo+IFN1YmplY3Q6IFJlOiBbUkZDIFBBVENIIDQvN10gaHcvYXJtL3NtbXV2
-My1hY2NlbDogQWRkIGEgaGVscGVyIHRvIHJlcGxheQ0KPiBhbGwgU1RFcw0KPiANCj4gRXh0ZXJu
-YWwgZW1haWw6IFVzZSBjYXV0aW9uIG9wZW5pbmcgbGlua3Mgb3IgYXR0YWNobWVudHMNCj4gDQo+
-IA0KPiBIaSBTaGFtZWVyLA0KPiANCj4gT24gOS80LzI2IDg6MDUgUE0sIFNoYW1lZXIgS29sb3Ro
-dW0gd3JvdGU6DQo+ID4gQWRkIHNtbXV2M19hY2NlbF9yZXBsYXlfc3RlcygpLiBJdCB3YWxrcyB0
-aGUgZ3Vlc3Qgc3RyZWFtIHRhYmxlIGFuZCBjYWxscw0KPiA+IHNtbXV2M19hY2NlbF9pbnN0YWxs
-X3N0ZSgpIGZvciBldmVyeSBkZXZpY2UgYmVoaW5kIGFuIGFjY2VsZXJhdGVkDQo+IFNNTVV2MywN
-Cj4gPiB3aGljaCByZWJ1aWxkcyB0aGUgdkRFVklDRSBhbmQgdGhlIG5lc3RlZCBIV1BULiBUaGUg
-aW5jb21pbmcgbWlncmF0aW9uDQo+IHBhdGgNCj4gPiB1c2VzIHRoaXMgaW5zdGVhZCBvZiB0cmFu
-c2ZlcnJpbmcgcGVyIGRldmljZSBob3N0IHN0YXRlLCBhbGwgb2Ygd2hpY2ggY2FuDQo+ID4gYmUg
-ZGVyaXZlZCBmcm9tIGd1ZXN0IFJBTSBvbmNlIHN0cnRhYl9iYXNlIGFuZCBDUjAgYXJlIHJlc3Rv
-cmVkLg0KPiA+DQo+ID4gTm8gY2FsbGVyIHlldC4NCj4gPg0KPiA+IFNpZ25lZC1vZmYtYnk6IFNo
-YW1lZXIgS29sb3RodW0gPHNrb2xvdGh1bXRob0BudmlkaWEuY29tPg0KPiA+IC0tLQ0KPiA+ICBo
-dy9hcm0vc21tdXYzLWFjY2VsLmggICAgICAgfCAgMSArDQo+ID4gIGh3L2FybS9zbW11djMtYWNj
-ZWwtc3R1YnMuYyB8ICA1ICsrKysrDQo+ID4gIGh3L2FybS9zbW11djMtYWNjZWwuYyAgICAgICB8
-IDM0ICsrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysNCj4gPiAgMyBmaWxlcyBjaGFu
-Z2VkLCA0MCBpbnNlcnRpb25zKCspDQo+ID4NCj4gPiBkaWZmIC0tZ2l0IGEvaHcvYXJtL3NtbXV2
-My1hY2NlbC5oIGIvaHcvYXJtL3NtbXV2My1hY2NlbC5oDQo+ID4gaW5kZXggYTkxZDE4OGQ2MS4u
-MjQ4MjhiYTlhYiAxMDA2NDQNCj4gPiAtLS0gYS9ody9hcm0vc21tdXYzLWFjY2VsLmgNCj4gPiAr
-KysgYi9ody9hcm0vc21tdXYzLWFjY2VsLmgNCj4gPiBAQCAtOTIsNiArOTIsNyBAQCBib29sIHNt
-bXV2M19hY2NlbF9pbnN0YWxsX3N0ZShTTU1VdjNTdGF0ZSAqcywNCj4gU01NVURldmljZSAqc2Rl
-diwgaW50IHNpZCwNCj4gPiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgRXJyb3IgKipl
-cnJwKTsNCj4gPiAgYm9vbCBzbW11djNfYWNjZWxfaW5zdGFsbF9zdGVfcmFuZ2UoU01NVXYzU3Rh
-dGUgKnMsIFNNTVVTSURSYW5nZQ0KPiAqcmFuZ2UsDQo+ID4gICAgICAgICAgICAgICAgICAgICAg
-ICAgICAgICAgICAgICAgIEVycm9yICoqZXJycCk7DQo+ID4gK2Jvb2wgc21tdXYzX2FjY2VsX3Jl
-cGxheV9zdGVzKFNNTVV2M1N0YXRlICpzLCBFcnJvciAqKmVycnApOw0KPiA+ICBib29sIHNtbXV2
-M19hY2NlbF9hdHRhY2hfZ2JwYV9od3B0KFNNTVV2M1N0YXRlICpzLCBFcnJvciAqKmVycnApOw0K
-PiA+ICBib29sIHNtbXV2M19hY2NlbF9pc3N1ZV9pbnZfY21kKFNNTVV2M1N0YXRlICpzLCB2b2lk
-ICpjbWQsDQo+IFNNTVVEZXZpY2UgKnNkZXYsDQo+ID4gICAgICAgICAgICAgICAgICAgICAgICAg
-ICAgICAgICAgRXJyb3IgKiplcnJwKTsNCj4gPiBkaWZmIC0tZ2l0IGEvaHcvYXJtL3NtbXV2My1h
-Y2NlbC1zdHVicy5jIGIvaHcvYXJtL3NtbXV2My1hY2NlbC1zdHVicy5jDQo+ID4gaW5kZXggYjU3
-YjVjMDFlNy4uMDUxNDkxNWU0NSAxMDA2NDQNCj4gPiAtLS0gYS9ody9hcm0vc21tdXYzLWFjY2Vs
-LXN0dWJzLmMNCj4gPiArKysgYi9ody9hcm0vc21tdXYzLWFjY2VsLXN0dWJzLmMNCj4gPiBAQCAt
-MjgsNiArMjgsMTEgQEAgYm9vbCBzbW11djNfYWNjZWxfaW5zdGFsbF9zdGVfcmFuZ2UoU01NVXYz
-U3RhdGUNCj4gKnMsIFNNTVVTSURSYW5nZSAqcmFuZ2UsDQo+ID4gICAgICByZXR1cm4gdHJ1ZTsN
-Cj4gPiAgfQ0KPiA+DQo+ID4gK2Jvb2wgc21tdXYzX2FjY2VsX3JlcGxheV9zdGVzKFNNTVV2M1N0
-YXRlICpzLCBFcnJvciAqKmVycnApDQo+ID4gK3sNCj4gPiArICAgIHJldHVybiB0cnVlOw0KPiA+
-ICt9DQo+ID4gKw0KPiA+ICBib29sIHNtbXV2M19hY2NlbF9hdHRhY2hfZ2JwYV9od3B0KFNNTVV2
-M1N0YXRlICpzLCBFcnJvciAqKmVycnApDQo+ID4gIHsNCj4gPiAgICAgIHJldHVybiB0cnVlOw0K
-PiA+IGRpZmYgLS1naXQgYS9ody9hcm0vc21tdXYzLWFjY2VsLmMgYi9ody9hcm0vc21tdXYzLWFj
-Y2VsLmMNCj4gPiBpbmRleCAyODdlYTkxZmJlLi42Njc4ZTQ5ZjZlIDEwMDY0NA0KPiA+IC0tLSBh
-L2h3L2FybS9zbW11djMtYWNjZWwuYw0KPiA+ICsrKyBiL2h3L2FybS9zbW11djMtYWNjZWwuYw0K
-PiA+IEBAIC00MDcsNiArNDA3LDQwIEBAIGJvb2wNCj4gc21tdXYzX2FjY2VsX2luc3RhbGxfc3Rl
-X3JhbmdlKFNNTVV2M1N0YXRlICpzLCBTTU1VU0lEUmFuZ2UgKnJhbmdlLA0KPiA+ICAgICAgcmV0
-dXJuIGFsbF9vazsNCj4gPiAgfQ0KPiA+DQo+ID4gKy8qDQo+ID4gKyAqIEluc3RhbGwgdGhlIFNU
-RSBhZ2FpbiBmb3IgZXZlcnkgZGV2aWNlIGJlaGluZCB0aGlzIGFjY2VsZXJhdGVkIFNNTVV2MywN
-Cj4gYnkNCj4gPiArICogcmVhZGluZyB0aGUgZ3Vlc3Qgc3RyZWFtIHRhYmxlIG9uY2UgbW9yZS4g
-U3RvcHMgYXQgdGhlIGZpcnN0IGZhaWx1cmUuDQo+ID4gKyAqLw0KPiA+ICtib29sIHNtbXV2M19h
-Y2NlbF9yZXBsYXlfc3RlcyhTTU1VdjNTdGF0ZSAqcywgRXJyb3IgKiplcnJwKQ0KPiA+ICt7DQo+
-ID4gKyAgICBFUlJQX0dVQVJEKCk7DQo+ID4gKyAgICBTTU1VdjNBY2NlbFN0YXRlICphY2NlbCA9
-IHMtPnNfYWNjZWw7DQo+ID4gKyAgICBTTU1VdjNBY2NlbERldmljZSAqYWNjZWxfZGV2Ow0KPiA+
-ICsNCj4gPiArICAgIGlmICghYWNjZWwgfHwgIWFjY2VsLT52aW9tbXUpIHsNCj4gPiArICAgICAg
-ICByZXR1cm4gdHJ1ZTsNCj4gPiArICAgIH0NCj4gPiArDQo+ID4gKyAgICBRTElTVF9GT1JFQUNI
-KGFjY2VsX2RldiwgJmFjY2VsLT5kZXZpY2VfbGlzdCwgbmV4dCkgew0KPiBXaGF0IGlmIHlvdSBo
-YXZlIGRpZmZlcmVudCBkZXZpY2UgdG9wb2xvZ3kgb24gc3JjIGFuZCBkZXN0LiBJcyBpdCBkZXRl
-Y3RlZD8NCg0KTm90IGJ5IHRoaXMgaGVscGVyLiBIb3dldmVyLCBJSVVDLCBWRklPIHJlZ2lzdGVy
-cyBpdHMgc2F2ZXZtIGhhbmRsZXIgdW5kZXINCnRoZSBxZGV2IHBhdGgsIHNvIGEgZGV2aWNlIHRo
-YXQgaXMgbm90IGF0IHRoZSBzYW1lIHBsYWNlIG9uIHRoZSBkZXN0aW5hdGlvbg0KZmFpbHMgdGhl
-IGxvYWQgYXQgdGhlIHN0YXJ0IG9mIHRoZSBzdHJlYW0sIGJlZm9yZSB3ZSBnZXQgaGVyZS4NCg0K
-VHJpZWQgaXQgd2l0aCB0aGUgZGV2aWNlIHVuZGVyIGEgZGlmZmVyZW50IHJvb3QgcG9ydCBvbiB0
-aGUgZGVzdGluYXRpb246DQoNCnFlbXUtc3lzdGVtLWFhcmNoNjQ6IFVua25vd24gc2VjdGlvbiBv
-ciBpbnN0YW5jZSAnMDAwMDowMTowMS4wOjAwLjA6MDAuMC92ZmlvJyAwLg0KTWFrZSBzdXJlIHRo
-YXQgeW91ciBjdXJyZW50IFZNIHNldHVwIG1hdGNoZXMgeW91ciBzYXZlZCBWTSBzZXR1cCwgaW5j
-bHVkaW5nIGFueSBob3RwbHVnZ2VkIGRldmljZXMNCg0KQW4gZXh0cmEgZGV2aWNlIG9uIHRoZSBk
-ZXN0aW5hdGlvbiBpcyBub3QgZGV0ZWN0ZWQuIFRoZSBndWVzdCBoYXMgbm8gU1RFDQpmb3IgaXQs
-IHNvIHRoZSByZXBsYXkgc2tpcHMgaXQgYW5kIGl0IHN0YXlzIG9uIHRoZSBHQlBBIEhXUFQsIHNh
-bWUgYXMNCmJlZm9yZSB0aGUgZ3Vlc3QgZHJpdmVyIHRvdWNoZXMgaXQuIFRoZSB1c3VhbCBydWxl
-IGFwcGxpZXMsIHRoZSBjb21tYW5kDQpsaW5lcyBoYXZlIHRvIG1hdGNoLiANCg0KPiA+ICsgICAg
-ICAgIHVpbnQzMl90IHNpZCA9IHNtbXVfZ2V0X3NpZCgmYWNjZWxfZGV2LT5zZGV2KTsNCj4gPiAr
-ICAgICAgICBTTU1VRXZlbnRJbmZvIGV2ZW50ID0gey50eXBlID0gU01NVV9FVlRfTk9ORSwgLnNp
-ZCA9IHNpZCwNCj4gPiArICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIC5pbnZhbF9zdGVf
-YWxsb3dlZCA9IHRydWV9Ow0KPiA+ICsgICAgICAgIFNURSBzdGU7DQo+ID4gKw0KPiA+ICsgICAg
-ICAgIC8qIFNraXAgYSBkZXZpY2UgdGhlIGd1ZXN0IGhhcyBub3QgcHJvZ3JhbW1lZCAqLw0KPiA+
-ICsgICAgICAgIGlmIChzbW11X2ZpbmRfc3RlKHMsIHNpZCwgJnN0ZSwgJmV2ZW50KSkgew0KPiA+
-ICsgICAgICAgICAgICBjb250aW51ZTsNCj4gPiArICAgICAgICB9DQo+ID4gKw0KPiA+ICsgICAg
-ICAgIGlmICghc21tdXYzX2FjY2VsX2luc3RhbGxfc3RlKHMsICZhY2NlbF9kZXYtPnNkZXYsIHNp
-ZCwgZXJycCkpIHsNCj4gPiArICAgICAgICAgICAgZXJyb3JfcHJlcGVuZChlcnJwLCAiRGV2aWNl
-IDB4JXg6IEZhaWxlZCB0byBpbnN0YWxsIFNURTogIiwgc2lkKTsNCj4gbWF5YmUsIGZyb20gYSB1
-c2VyIHBvaW50IG9mIHZpZXcgaXQgaXMgbm90IG9idmlvdXMgd2h5IHdlIGdldCB0aGlzIGVycm9y
-DQo+IGFzIG1pZ3JhdGlvbiBsb2FkIGlzIG5vdCBtZW50aW9ubmVkLg0KDQpPaywgd2lsbCByZXdv
-cmQuDQoNClRoYW5rcywNClNoYW1lZXINCg0K
+On Thu, Oct 01, 2026 at 09:19:48AM -0700, Pierrick Bouvier wrote:
+> On 10/1/2026 9:14 AM, Yonggang Luo wrote:
+> > On Thu, Oct 1, 2026 at 4:44 PM Philippe Mathieu-Daudé
+> > <philmd@oss.qualcomm.com> wrote:
+> >>
+> >> On 1/10/26 10:13, Yonggang Luo wrote:
+> >>> On Thu, Oct 1, 2026 at 4:01 PM Daniel P. Berrangé <berrange@redhat.com> wrote:
+> >>>>
+> >>>> On Wed, Sep 30, 2026 at 09:23:50PM -0700, Pierrick Bouvier wrote:
+> >>>>> On 9/30/26 6:55 PM, Yonggang Luo wrote:
+> >>>>>> On Thu, Oct 1, 2026 at 2:19 AM Pierrick Bouvier
+> >>>>>> <pierrick.bouvier@oss.qualcomm.com> wrote:
+> >>>>>>>
+> >>>>>>> On 9/26/26 1:15 AM, Yonggang Luo wrote:
+> >>>>>>>> - Add machine_class_set_name() so boards can keep a stable -M name
+> >>>>>>>>      when the QOM type is uniquified. machine_class_base_init still
+> >>>>>>>>      defaults the name to the QOM type without -machine.
+> >>>>>>>> - Document that MachineClass::name is the -M name, not the QOM type.
+> >>>>>>>> - Sort -M help by MachineClass::name so order matches the printed names
+> >>>>>>>>      when QOM types are prefixed (arm-virt-11.1-machine vs virt-11.1).
+> >>>>>>>>
+> >>>>>>>> Signed-off-by: Yonggang Luo <luoyonggang@gmail.com>
+> >>>>>>>> Reviewed-by: Daniel P. Berrangé <berrange@redhat.com>
+> >>>>>>>> ---
+> >>>>>>>>     hw/core/machine.c        |  6 ++++++
+> >>>>>>>>     include/hw/core/boards.h | 12 +++++++++++-
+> >>>>>>>>     system/vl.c              |  8 +++-----
+> >>>>>>>>     3 files changed, 20 insertions(+), 6 deletions(-)
+> >>>>>>>>
+> >>>>>>>
+> >>>>>>> First, I'm not opposed to this series, and if anyone wants to pull this,
+> >>>>>>> I'm ok with that decision. It's just unclear for me what will be
+> >>>>>>> direction after this step.
+> >>>>>>>
+> >>>>>>> If I understand correctly, the goal here is to allow to register
+> >>>>>>> multiple "virt" machines, while still having distinct QOM types behind
+> >>>>>>> the hood, which does no affect behavior of current binaries who have
+> >>>>>>> only a single "virt" type at most.
+> >>>>>>>
+> >>>>>>> That said, if we project in the future where we have a binary with
+> >>>>>>> multiple of those "virt" machines, how will the current series help? The
+> >>>>>>> situation we'll have is distinct QOM types, that all answer to the name
+> >>>>>>> "virt", so we have no way to select them individually.
+> >>>>>>>
+> >>>>>>> Slightly worse, find_machine() will just pick the first machine name
+> >>>>>>> virt, which is a non-deterministic order at the moment.
+> >>>>>>> https://gitlab.com/qemu-project/qemu/-/blob/master/system/vl.c?ref_type=heads#L846
+> >>>>>>
+> >>>>>> That will handle it properly. For single-target binary qemu-system-$arch.exe,
+> >>>>>> this won't be an issue, as there is no conflict as they won't be compiled in.
+> >>>>>> For multi-target binary qemu-system.exe, we will choose the target through
+> >>>>>> -M $arch:$machine, and when no $arch is specified, the default to arch
+> >>>>>> to be "none",
+> >>>>>> so still won't be non-deterministic.
+> >>>>>>
+> >>>>>
+> >>>>>> "when no $arch is specified, the default to arch to be "none",so still >
+> >>>>> won't be non-deterministic.
+> >>>>>
+> >>>>> That's my point, the current abstraction will create something ambiguous by
+> >>>>> design. When people will specify -M virt, without $arch:, a random machine
+> >>>>> will be selected. At least, maybe this series should ensure there is only
+> >>>>> one virt alias, or make it forbidden and uses unambiguous names only.
+> >>>>
+> >>>> Yes, if there are multiple choices, we should not pick an arbitrary one
+> >>>> non-deterministically, we must require the user to narrow the choice
+> >>>> explicitly in some manner.
+> >>>>
+> >>>>> "$arch:" is just a workaround to not add -target option, except that it
+> >>>>> comes with additional problems, creating inconsistent command lines.
+> >>>>> I already expressed my skepticism about the "machine prefix" based approach,
+> >>>>> being more in favor to strongly filter types per target with an unambiguous
+> >>>>> -target option. I'll accept the community's choice on this, but just wanted
+> >>>>> to see this explained before someone hits the pull button on this series, so
+> >>>>> they know what will come down the road.
+> >>>>
+> >>>> Historically, QEMU do alot of things like this where we invented magic
+> >>>> syntax that needed custom parsing of the command line. Over time we
+> >>>> came to the conclusion this ad-hoc parsing was a bad idea, and we
+> >>>> should always explicitly model things, even if it is more verbose.
+> >>>>
+> >>>> Thus I would not want to see "$target:$machine" as something that is
+> >>>> parsed into two pieces.
+> >>>>
+> >>>> IOW, "aarch64-virt" would be OK as a unique name which treated as an
+> >>>> opaque string, but "aarch64:virt" as something split into "aarch64"
+> >>>> (target) and "virt" (machine) would be a bad idea.
+> >>>>
+> >>>> An acceptable way of modelling the latter would be to use
+> >>>>
+> >>>>    '-machine name=virt,target=aarch64'
+> >>
+> >> Why mix target information parsing at machine level when the
+> >> machine already know it is target specific? People wanting to
+> >> use the ARM virt machine don't want to know (and don't care)
+> >> about the M68k virt machine.
+> >>
+> >>>
+> >>>>
+> >>>> or
+> >>>>
+> >>>>    -machine virt -target aarch64
+> >>>
+> >>>
+> >>> That's made me confused, as different people propose different ways to
+> >>> handle it.
+> >>> Can we just choose one first?
+> >>> '-machine name=virt,target=aarch64' is introducing new options, so is
+> >>> '-machine virt -target aarch64'
+> >>> I can not argue which is better, my suggestion may land one first. Both
+> >>> "-machine virt -target aarch64" and "-machine $arch:$name" I have
+> >>> already implemented. And currently I chose
+> >>> "-machine $arch:$name" according to
+> >>> https://patchwork.ozlabs.org/project/qemu-devel/cover/20260828225901.367438-1-pierrick.bouvier@oss.qualcomm.com/#3749257
+> >>
+> >> You still did not explained what you are trying to achieve
+> >> with all your contributions, so my view is surely biased by
+> >> what we envisioned 3 years ago when we started to pave our
+> >> way for heterogenous emulation.
+> >>
+> >> My options so far for a single binary:
+> >>
+> >> - infer from argv[]
+> > This can be easy to implement and can be defer till the qemu-system-$arch
+> > is symbolic link to qemu-system.
+> > 
+> >> - enforce with CLI -target
+> > 
+> > I want to post my personal options, I'll prefer the -target options as
+> > it's far easier to implement than "-machine $arch:$machine".
+> > -machine $arch:$machine is very complicated to implement correct.
+> > 
+> >> - not expose any machine
+> > 
+> > I think not exposing any machine in the command line is a good option,
+> > as it's easier to
+> > implement and clean for the user. But I think this series is still needed.
+> > As we want the means to inspect all machines and devices for all
+> > targets(that need all of them
+> > to be registered into the QOM type hash table).
+> 
+> It's not strictly needed to expose all types. -target can be parsed
+> first, and influence what is visible from help (including -M help) also.
+> 
+> Also, if we go down the -target option, we should decide if we expose
+> all types or not, which means if we implement filtering or not. If we
+> expose all the types, I'm not sure what -target is supposed to choose.
+> 
+> Daniel, what do you think about this one?
+
+*If* we take the starting assumption that the new multi-target
+binary does not need to be a perfect replica of the existing
+binaries, then filtering devices is creating extra work for
+ourselves, to solve a problem that isn't especially important.
+
+Even with the current per-target binaries there are countless
+devices linked in which are incompatible / not usable with
+certain machine types. A new multi-target binary with a union
+of all devices will just be a bigger example of a scenario that
+already has to be dealt with for today's binaries.
+
+So if we have that assumption that we don't need to do device
+filtering, at that point, a --target option doesn't have as
+big of a role to play. The machine type code knows what target(s)
+it wants (1 or 2 targets depending on if there are 32 + 64 bit
+varaints. The CPU model the user requests (if the CPU is not
+hardcoded by the machine), determines 32 bit vs 64 bit.
+
+A --target option (or similar -machine name,target=xxx) could
+be used to dis-ambiguate between 'virt' machines if keeping
+their user facing machine names as-is, or it could be used as
+a way to be more explicit about the 32-bit vs 64-bit choice
+and sanity checked against the CPU model choice.
+
+So overall "device filtering" or not is the key question to
+decide IMHO.
+
+With regards,
+Daniel
+-- 
+|: https://berrange.com       ~~        https://hachyderm.io/@berrange :|
+|: https://libvirt.org          ~~          https://entangle-photo.org :|
+|: https://pixelfed.art/berrange   ~~    https://fstop138.berrange.com :|
+
 

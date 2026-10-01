@@ -4,127 +4,163 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 51A4ECA5FA5
-	for <qemu-arm@archiver.kernel.org>; Thu,  1 Oct 2026 08:30:01 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A1449CA5FB3
+	for <qemu-arm@archiver.kernel.org>; Thu,  1 Oct 2026 08:45:19 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xCC9j-0007IG-73; Thu, 01 Oct 2026 04:28:45 -0400
+	id 1xCCPi-0006z7-HH; Thu, 01 Oct 2026 04:45:14 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <rdondi@axiado.com>)
- id 1xCC98-0006kZ-9l; Thu, 01 Oct 2026 04:28:06 -0400
-Received: from mail-eastusazlp17011000f.outbound.protection.outlook.com
- ([2a01:111:f403:c100::f] helo=BL2PR02CU003.outbound.protection.outlook.com)
+ (Exim 4.90_1) (envelope-from <philmd@oss.qualcomm.com>)
+ id 1xCCPR-0006lu-HX
+ for qemu-arm@nongnu.org; Thu, 01 Oct 2026 04:45:01 -0400
+Received: from mx0b-0031df01.pphosted.com ([205.220.180.131])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <rdondi@axiado.com>)
- id 1xCC96-0003Ww-CF; Thu, 01 Oct 2026 04:28:06 -0400
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=M0razekIxL5joRPVM8g58J0j2n0nUG9nnp1kVJWge62cG59WAzH80U34aFxVSg3KUk4ouLCPoZEDE6n/X6pdbagINZ9U2+1bwUTOjDPsPBo+ojdXdSaEAGtibAfLPIJ9ybKTSsV+pkUNK5hFsgZXXfPQsEUldL4pvUNt4SOuXOLKluATFPxY0m5RN1hPqeKkaaS+sxrQWBTZ+UN0VVwsRGrFzobvW/OFhKYx1jAAwHeXgJxS9X0Y6+eDEU3VT3gKblxGrtJJu7HwmXY6V/x5Pn3/+YhSboiIYxe6rbonvw3kF+nOkx56BmV61XQ6bMHYifZRebptnrVasKyFSMW24g==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector10001;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=ujtIJvVS6zgBX2K/lp5tsKyyCINVWVN2iS/Nj4glrFI=;
- b=oKdBYGkDweK48jXbvOUVZxaIR09gI+uGJ+/FE756osnLiopzOTKrDZPj4YLpVe0sIMeZxWG61FS9/ZGJz3dxr/dOhnC93cCFO7IyB0kiOoZm3wk0/ETrMr+fMD0+D6cy6kFzA4fRq7HdZ2IEbgHFU731NI/Fsx2CPWuoOut3SkxKybQfDhW8pq8J9vZxH0sFvEI8LEzTOw+t2T/9EnLvygOoA0gE6kEBuRg+SJxAXvjmRiop/cQafiDcpa77JB94RNTWRbRuVh6OK970tfr3pSXkH2Jgu45ONvrSoroLef2b7dU/DTtBKXbHHRQeMhK6IzEEuLMOUpqBlN8GXjc/MQ==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=axiado.com; dmarc=pass action=none header.from=axiado.com;
- dkim=pass header.d=axiado.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=axiado.com;
- s=selector1;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=ujtIJvVS6zgBX2K/lp5tsKyyCINVWVN2iS/Nj4glrFI=;
- b=Iy3N8JiXLZTPFqDt0nfBo8Wn3a9Vv8TFRy6SBzF1/JKhQfLQiO6WXZYhFqfS3wOJF0c/QJvZwYL8MEB36UHJBjhsvLYj70SIBDH6/YzhSdWmchkla6HpF5Z3Y9FuSyHA5brXohHX6fom83lDEBe4+mxiprTyGSfVivTgSrAH8TJum3oIPqItQGK4GhwSgjENQk/kODVTCumCYT/4qUKXO6mjmNRj87zYj0jJstNwh0U438q7BtuXatnQEMVb8SGYZ3xig20/JEDj5xglL83FwXHjkU9doZ6kPY5n0cts4UXTRIHw+/VTyxEYHKOCgDwOukAiCvmLGMXmvCi0q2zYqQ==
-Received: from BY3PR18MB4610.namprd18.prod.outlook.com (2603:10b6:a03:3c1::12)
- by SJ0PR18MB3898.namprd18.prod.outlook.com (2603:10b6:a03:2e8::11)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.21.472.15; Thu, 1 Oct
- 2026 08:27:56 +0000
-Received: from BY3PR18MB4610.namprd18.prod.outlook.com
- ([fe80::3a16:7cd7:36bf:fc1c]) by BY3PR18MB4610.namprd18.prod.outlook.com
- ([fe80::3a16:7cd7:36bf:fc1c%6]) with mapi id 15.21.0472.016; Thu, 1 Oct 2026
- 08:27:56 +0000
-From: Ratan Lal Dondi <rdondi@axiado.com>
-To: "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>, "qemu-arm@nongnu.org"
- <qemu-arm@nongnu.org>
-CC: "pbonzini@redhat.com" <pbonzini@redhat.com>, "peter.maydell@linaro.org"
- <peter.maydell@linaro.org>, "jasowangio@gmail.com" <jasowangio@gmail.com>,
- Kuan-Jui Chiu <kchiu@axiado.com>, Ratan Lal Dondi <rdondi@axiado.com>
-Subject: RE: [PATCH 0/2] Add Axiado HCP network device model
-Thread-Topic: [PATCH 0/2] Add Axiado HCP network device model
-Thread-Index: AQHdRZcStTweyMtPQ0uC+aY9yzDbjLbocXlg
-Date: Thu, 1 Oct 2026 08:27:55 +0000
-Message-ID: <BY3PR18MB4610744EC36195678C0A4497B58A2@BY3PR18MB4610.namprd18.prod.outlook.com>
-References: <20260916045134.1687145-1-rdondi@axiado.com>
-In-Reply-To: <20260916045134.1687145-1-rdondi@axiado.com>
-Accept-Language: en-IN, en-GB, en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-authentication-results: mx.microsoft.com 1; dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=axiado.com;
-x-ms-publictraffictype: Email
-x-ms-traffictypediagnostic: BY3PR18MB4610:EE_|SJ0PR18MB3898:EE_
-x-ms-office365-filtering-correlation-id: c0a13927-33b4-45c6-c0ed-08df1f95e4c9
-x-ms-exchange-senderadcheck: 1
-x-ms-exchange-antispam-relay: 0
-x-microsoft-antispam: BCL:0;
- ARA:13230040|376014|23010399003|366016|1800799024|56012099006|10067099003|3023799007|18002099003|22082099003|38070700021;
-x-microsoft-antispam-message-info: WhDqqOXg8pYHUusz62mD9tJy+422H6kyke9r2UxIvJDKaXfCRX29Tb1ZuE98+0rKaKinVS7cfdFEIu72TwCPSFTv7CtwEyevCK/vfjK2prmNXCaaF9WnXGd5tDTg1iBGJ/ncIiHJtHYPKpgK193p9YkTbuiq0rN95GC4hJBzUu/LqeTNYhDW4Gq51WmYV6H+v1erEXlIRwBA8efZfAtlHIMjBydIICXNklvH5gHW1uyEZDLUB7iK5Jr85/OEYFOQxbP/A8B194NRRNyOFJr5UReNZ3eOb2zTyZuED3tQciYgPBJVPjh6ZDeX3LRLwbzGgwL8xNrtKOZkWT8ji2ni2Ciz+m96Xq2EupQT2Uo+da+7NCL6sIotrcmhuanU+zAXGuylth/xBMr4tybKuiVHSSdmtkT+xmJTH0Og//5fQIX2HIKNzRRWs3+k/ZqSB/2p2XiKH0XH0wpkUJK87XS3A5jqQjvaUNIRkqYn3c9fze19CbHB7BGHb9zsK1btVJKIqDHIsnJx1MGyDV5XZZdcV73XZhF+UAsa2L286mUggFkQ1vp4abJ+gaANVifgZ0ojCb3AM0T41c+djJgEmabXoa3CTeRk7W2f/CjrMR+TVR++uKnyEGFnq33krZDLf9OP/g2MHjmn5MeEsldrEbK/hrzQ0mkP53H0HEyXcsvg7rc=
-x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:BY3PR18MB4610.namprd18.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(13230040)(376014)(23010399003)(366016)(1800799024)(56012099006)(10067099003)(3023799007)(18002099003)(22082099003)(38070700021);
- DIR:OUT; SFP:1102; 
-x-ms-exchange-antispam-messagedata-chunkcount: 1
-x-ms-exchange-antispam-messagedata-0: =?us-ascii?Q?CY/5hnf718Y8xHSajrlSx0QXVuQ5gP36k4vQaciu7vbI53Abb4Xap6jC3CdN?=
- =?us-ascii?Q?+fNiEGJNyc/n3Pse0bGcKFe1X7Qqym/479NE7UI+sH3ETQkMM5or3Bysx7Le?=
- =?us-ascii?Q?oxSaRR53Y1FyqHkuJYKCIfWIRCSqvHMLWi1yv7T5sEMJurbHN/8mT98UR7yd?=
- =?us-ascii?Q?v/RKLx+EWwMb2gnGnzMGQov4p+gaIZXHpjrQtMXkRzQQz6xtzycjOWICeuhF?=
- =?us-ascii?Q?+8UY1q7yehoaLE8fKnhGhS40rLb3tgi4y3FnjMZkmiPzxnT7qodmNzh7nsGK?=
- =?us-ascii?Q?ND4ZKWb3iCwLISSu6BGZ29PX4CEbTOzP+AHr+U0GyGqgbNoM5Oth11FK1EDV?=
- =?us-ascii?Q?7ljbhDCTMHtusXUyNXVkqzcoso4xr9lc0Ib1dZSgTdiVloS9yQ1IxrSTzdX1?=
- =?us-ascii?Q?ejHkMLFxFBFUkgfjRJng0uIdsgbfpAVCZK41KK/yX+uPEFHF7sQmbjxuNeGL?=
- =?us-ascii?Q?2WC03GCDXzaaR5Maf536ZmcT+XqFIC74vh9lP3FEyKNrIz7WBgH+bVZDE14G?=
- =?us-ascii?Q?7IL3jvoNL/2SwJ3pwuJ5peQBDWrtgatiSAJn4KV+jFK7sjGLngu67W20OA8j?=
- =?us-ascii?Q?d4c5U+G7y8n80wp3ocJdOmo0J+LrC+gunnNEvglh825DRVJs7dwk1aYukjUD?=
- =?us-ascii?Q?eyTKxsiwgbunJkYt6LPL54uLu0hV/aFF0Ux1/BlwXr4sFK9fLh3EuYMzEEZC?=
- =?us-ascii?Q?mTlYMlNKN9hQhtG4gQoME2hfaPDPtgFI8B2DFWn+9NZKT1qnAidl/hpMJVEw?=
- =?us-ascii?Q?1pN8LuLynIrXjkqYkrDaVuj4Wl4yW5bvmfD7Pea3vVK6EqgHeUhalvuvh6ij?=
- =?us-ascii?Q?jsTYd612fGT+Jl0wV5iIPQKzA5qjZ5na0YZfVO+Xcjmp+y4Ni1gceE9TrFiB?=
- =?us-ascii?Q?GE4fI5uGT78HWR4SzUARDhygFTk9lcoAFhMRRy/L8AeQK5F4rrLFiE5/UH2c?=
- =?us-ascii?Q?oh7Hi3WbkG/cV3zEhb/xnITyRxfy0y2eK3PwYdmJacaBmZG4aIMSRYZDWmff?=
- =?us-ascii?Q?LW5DTPntuZ4VUJSkvNpPeQExE4FAvxOtXbXGtm8AAUawbNBJnFAclchcG2y6?=
- =?us-ascii?Q?lXoW/al7XZu6l6DImoURJP0vjgLIB6DuTKUzXccWrGhMjVUvxf2zw/xguizN?=
- =?us-ascii?Q?FloY40mOshFaqNtXuC9RC4pgan89zloZ9n4v9xfUJZekadi8+hWWTkzmsMnm?=
- =?us-ascii?Q?+/o41uBIaAJl0BZzq7rqMdy4DWx97fuyJBQR85esWCg0qqB1Q70TWt2+AtH/?=
- =?us-ascii?Q?oGJDGRX8XQB0bc8yEcwI//DQr9dIx44PCdBFsXkUdzFC1pNAX8DNHEYzRlos?=
- =?us-ascii?Q?sjS9G7acQ1NlvvTAHi4s3kpzJC6XimwrGPjrLx13/CPUhn8GAyfTC6zVsaK3?=
- =?us-ascii?Q?kaz+lyMvw1qU1nFtC/Sm2XhrT1jgaVcKUIzxJJ6VdbphmNwo5aMp+hAI9Gdt?=
- =?us-ascii?Q?roAiHS6r8Z9DJJXRnz6JJrHLq4+8GRfItLOPnfKgjwxL9ZSm7Se6i5rQeSoH?=
- =?us-ascii?Q?pnkzvKofnxQCbQFUalIokkEmjeuflPWMTSE9fiQbv96ln6D4Z+lrCqfihRgK?=
- =?us-ascii?Q?v2/ot1WTwPOyfXBoKfhKMejRVIuH5yIUfJlujdiROMkWb5oIOLv5rJc43iNN?=
- =?us-ascii?Q?xEbIp8AbLZmFHun/20aX9mWatNKt5IG4kTIE04RemcRVfIPu9ImXsyc3PDMK?=
- =?us-ascii?Q?vdmgkR5C4/fqm+ktOZLqlMmweqDospRCzL2ZjXltI32xP+PD?=
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: quoted-printable
+ (Exim 4.90_1) (envelope-from <philmd@oss.qualcomm.com>)
+ id 1xCCPM-0005iX-M8
+ for qemu-arm@nongnu.org; Thu, 01 Oct 2026 04:44:55 -0400
+Received: from pps.filterd (m0279869.ppops.net [127.0.0.1])
+ by mx0a-0031df01.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id
+ 6916xfHo2176991
+ for <qemu-arm@nongnu.org>; Thu, 1 Oct 2026 08:44:50 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qualcomm.com; h=
+ cc:content-transfer-encoding:content-type:date:from:in-reply-to
+ :message-id:mime-version:references:subject:to; s=qcppdkim1; bh=
+ 46PonqXm2c3LXlS5HOmrTuSsf/tKo1kW2NgnJc9s/Uc=; b=bOo8oguaE92B9M3G
+ lbrietfHVbQXLo+9FkQAnx7p9k6M4E3OuFqvQyWn/HPw2cHlyWn51HKoWkKINiLl
+ vRlqR85Ouwl2XQs29CllOuYdi5sEmEGbUnBKJu+JsUw38o3WIZypZTFS+38zbbLI
+ ml7QPhfLDXYxBzHUayOQ1RZ3Kf3uZ4WxcAbX68xHg4NKK6giBPCsUIBG5dkUunzc
+ uEEwhN+kdKZL4hO50N0xlGMk6Qr7hnazS3T4CkfIYsp/KRxN39lS1RdMddq8IqKW
+ Q4CkCxQrfQS0po35nV9DShkyL+mSfSlZvUKBvSAz6+asO7BdFI0y33OgMLEFao5l
+ ImZuog==
+Received: from mail-qk1-f198.google.com (mail-qk1-f198.google.com
+ [209.85.222.198])
+ by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 4h1h7nrs4t-1
+ (version=TLSv1.3 cipher=TLS_AES_128_GCM_SHA256 bits=128 verify=NOT)
+ for <qemu-arm@nongnu.org>; Thu, 01 Oct 2026 08:44:50 +0000 (GMT)
+Received: by mail-qk1-f198.google.com with SMTP id
+ af79cd13be357-93bfb2da664so1691649085a.1
+ for <qemu-arm@nongnu.org>; Thu, 01 Oct 2026 01:44:50 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=oss.qualcomm.com; s=google; t=1790844290; x=1791449090; darn=nongnu.org;
+ h=content-transfer-encoding:content-type:in-reply-to:from:references
+ :cc:to:content-language:subject:user-agent:mime-version:date
+ :message-id:from:to:cc:subject:date:message-id:reply-to:content-type;
+ bh=46PonqXm2c3LXlS5HOmrTuSsf/tKo1kW2NgnJc9s/Uc=;
+ b=RcDX8reak09eYOcp5vS0XvWPZqGk3S2rjooCyPFGxBnxat1MeghEN+7MBZjvnQp67M
+ sBkjs77inKXZhkNMQHOOzZQv9RDoZiy9s6zJUlWTaKAZD9hfwPov1f8p8uT1vy0HpnWq
+ cCZMYudPZqZ8/9TMjNDCqiS2G4cmvQzvTPKgdbsY6GjjoFVTEcIRGSpjbkFBcOBlPjqr
+ 3NaUriayBgX7+A6he/utZMowOyeKwn6xKf7Lot7fhnip5S/y0wGq99bIrXBDOd+fhBWB
+ pSGyMfPbpuivJNiwLGO37KyY0XkmSSejqc7SRQAuZhY9dEoaqfo1DeyqnhQhrlvrlfoh
+ WrvA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20260707; t=1790844290; x=1791449090;
+ h=content-transfer-encoding:content-type:in-reply-to:from:references
+ :cc:to:content-language:subject:user-agent:mime-version:date
+ :message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+ :message-id:reply-to:content-type;
+ bh=46PonqXm2c3LXlS5HOmrTuSsf/tKo1kW2NgnJc9s/Uc=;
+ b=YDcM7eyyidkFHNUkzPfGGe8wer/a/4tK0AnXUAY9lsqebDucX6HDxXsxJHZDQ97wQe
+ XJ5OKtgGsghM5A8cCeyG3Dk13Nex0fcOsxXGpqN0TrkWVdx9jmbSGYqTUDUKy5EujLJo
+ iGh7s/NeqaW9rhBbpN58IGZRUqGJtEMEfZIqZFK56HiBLAFqMm/fN83O95k3OS7lXQTH
+ Bo/EQkNfKFdUNp1epLJ90tWjAzNmnvRKcPr4oGI+A6/87LVkFZB43vmENI7msZwywweA
+ k5KWB784rgx7ITTEtRiftmHr0R/CFrkWeL12Nfvd0tE4sIlv2HdML934aKc+HosLdtFU
+ 5SXg==
+X-Forwarded-Encrypted: i=1;
+ AKwUvBx07+f5jhFUTTARCRsoOSy8tyh022lLphAZcQGNQvYU3DsyiECqDdjKqyCcDRTTXAopoOCn1aWuZQ==@nongnu.org
+X-Gm-Message-State: AFuF++nCX5Jor4MxewjmV6diXwk1MiPgJF1wE7FbKHv09w3IjOmUZV6/
+ 57io4zUKNe//l9c5fDZkT6B4BWeFvqSX0I76/N1G9Qte9LYSKyazeoezmUseZSQJs8yr84mekdE
+ u87jdkKMwmUlqWFmjpfGPLSFWP69smPatdRq+2toz9IRBcKVQ8h0qW2U=
+X-Gm-Gg: AYBFou0idHtZLJ9fwCvxu0MQbuL9Y7No7rgKv/M7deOcxY38qi8wPOQrL8YX0v0a4JO
+ yZrN7CWOwIFKEpCcFcBvQKW7XHoypf1xR3gmMh+I3t0XmffLRsCqWzRAk80z0NafYx019x8WYy4
+ eZ8uXJHMMQ28AQk3NNuS8P8VTVQzAQuWNKKkQRXAW3TMZOb3Fp3a8GDi4gf54tmJCK0nyJpKjP1
+ 2fd0VW8h3gHHyVozR0BDT2sO4NAs/WJd2ZMHMC0j25n14pK0sAcp3L+DcQ0YmruGK+TJQMebM98
+ eSG7ogqgm21BEVInCxO28jRuxfCntYSbT5p6z0vvT/qetZIapJTIuBVUEa/y4Kxly83H0fbjqVB
+ rfukd5hggQBTcoifSWJFVcYsiU++AjPOVaA==
+X-Received: by 2002:a05:620a:4095:b0:93b:c209:b6c0 with SMTP id
+ af79cd13be357-93ca9513afemr721155385a.5.1790844289853; 
+ Thu, 01 Oct 2026 01:44:49 -0700 (PDT)
+X-Received: by 2002:a05:620a:4095:b0:93b:c209:b6c0 with SMTP id
+ af79cd13be357-93ca9513afemr721150985a.5.1790844289301; 
+ Thu, 01 Oct 2026 01:44:49 -0700 (PDT)
+Received: from [192.168.69.225] (pmd666.hd.free.fr. [88.187.86.199])
+ by smtp.gmail.com with ESMTPSA id
+ 5b1f17b1804b1-4a01f96d01csm37581595e9.2.2026.10.01.01.44.47
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Thu, 01 Oct 2026 01:44:48 -0700 (PDT)
+Message-ID: <26b0d44d-0322-4ceb-a47b-747fc52c61b7@oss.qualcomm.com>
+Date: Thu, 1 Oct 2026 10:44:46 +0200
 MIME-Version: 1.0
-X-OriginatorOrg: axiado.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-AuthSource: BY3PR18MB4610.namprd18.prod.outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: c0a13927-33b4-45c6-c0ed-08df1f95e4c9
-X-MS-Exchange-CrossTenant-originalarrivaltime: 01 Oct 2026 08:27:55.8299 (UTC)
-X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: ff2db17c-4338-408e-9036-2dee8e3e17d7
-X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: 0j+uircfQR11RZTaadz4mKxw/VaTpubSxtDnqTHC4fHfgLAC9l12qvTsjGc4qdeo36gx/IM646zVyNqH/XLdVQ==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: SJ0PR18MB3898
-Received-SPF: pass client-ip=2a01:111:f403:c100::f;
- envelope-from=rdondi@axiado.com;
- helo=BL2PR02CU003.outbound.protection.outlook.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v3 01/10] machine: allow -M name to differ from QOM type
+Content-Language: en-US
+To: luoyonggang@gmail.com, =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?=
+ <berrange@redhat.com>
+Cc: Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>,
+ qemu-devel@nongnu.org, Chao Liu <chao.liu@processmission.com>,
+ Eric Blake <eblake@redhat.com>, qemu-arm@nongnu.org,
+ Paolo Bonzini <pbonzini@redhat.com>, Markus Armbruster <armbru@redhat.com>,
+ Alistair Francis <alistair.francis@wdc.com>,
+ Brian Cain <brian.cain@oss.qualcomm.com>,
+ Stafford Horne <shorne@gmail.com>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ Jiaxun Yang <jiaxun.yang@flygoat.com>, Fabiano Rosas <farosas@suse.de>,
+ Daniel Henrique Barboza <daniel.barboza@oss.qualcomm.com>,
+ qemu-riscv@nongnu.org, Laurent Vivier <lvivier@redhat.com>,
+ Max Filippov <jcmvbkbc@gmail.com>, Song Gao <17746591750@163.com>,
+ Philippe Mathieu-Daude <philmd@mailo.com>,
+ Palmer Dabbelt <palmer@dabbelt.com>,
+ Laurent Vivier <laurent@vivier.eu>, Weiwei Li <liwei1518@gmail.com>,
+ Zhao Liu <zhao1.liu@intel.com>
+References: <20260926081551.29-1-luoyonggang@gmail.com>
+ <20260926081551.29-2-luoyonggang@gmail.com>
+ <82250296-78bc-4345-9e57-1fcac485d18a@oss.qualcomm.com>
+ <CAE2XoE_+nhj58M9_yx6wf532qCSVcERpTw7F4AU7PXN7prhpzg@mail.gmail.com>
+ <74853ef8-7315-466a-99ac-41c8182f9b13@oss.qualcomm.com>
+ <ar4TQtKqfXX5Ul9O@redhat.com>
+ <CAE2XoE8q3LYJ-JCTbRBk4iPdUQdRE8zzmOgiZ=HEXDL78iw8UQ@mail.gmail.com>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@oss.qualcomm.com>
+In-Reply-To: <CAE2XoE8q3LYJ-JCTbRBk4iPdUQdRE8zzmOgiZ=HEXDL78iw8UQ@mail.gmail.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+X-Authority-Analysis: v=2.4 cv=OI6yTiaB c=1 sm=1 tr=0 ts=6abe1d82 cx=c_pps
+ a=qKBjSQ1v91RyAK45QCPf5w==:117 a=4s3hRJSeHn4rkQlkrse1kQ==:17
+ a=IkcTkHD0fZMA:10 a=660iZSQnnn4A:10 a=M51BFTxLslgA:10 a=s4-Qcg_JpJYA:10
+ a=VkNPw1HP01LnGYTKEx00:22 a=u7WPNUs3qKkmUXheDGA7:22 a=_glEPmIy2e8OvE2BGh3C:22
+ a=p0WdMEafAAAA:8 a=voM4FWlXAAAA:8 a=EUspDBNiAAAA:8 a=iyRaGYhiAAAA:20
+ a=VwQbUJbxAAAA:8 a=20KFwNOVAAAA:8 a=pGLkceISAAAA:8 a=aXWF5__G5Zs2yFWEykkA:9
+ a=3ZKOabzyN94A:10 a=QEXdDO2ut3YA:10 a=NFOGd7dJGGMPyQGDc5-O:22
+ a=IC2XNlieTeVoXbcui8wp:22 a=bA3UWDv6hWIuX7UZL3qL:22
+X-Proofpoint-Spam-Info: AW1haW4tMjYxMDAxMDAzNCBTYWx0ZWRfX8gap9++wD7WV
+ M4ZxmITaTsSqacXubYvK6BEts+TJlZO7tRX4E1bhRPp1BgTC0wl/dZJCn5vn4gsaEFN+5EzkDMS
+ OsG9UbPL/WuhNBbTdKMtJU0zif8Fc3A=
+X-Proofpoint-ORIG-GUID: 1rg8XV5f3JBoNmZpBOXMT_tgez4Y1uEz
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYxMDAxMDAzNCBTYWx0ZWRfX8aGG8RUjPNuB
+ ZxWkjkUERdznIhy4J1DrQPU+P1bePuVopYwPN1ym5iwtfCMgfh7ztABoUBeQjol5RL0QDWRLwqN
+ So191REaLwz9hxZsmXgNEofr/1bT3tcC7v/fCJH2U435DMF5IPaVEwHUeOT/BDQYpnIHKC/HTfa
+ L/3FJgSF2PY8mwwlHvbhpiz7qAJow63qCaHU5EVGP5vGYEiljnIib6qzFI8/3umtCD9UZd4t3da
+ Q4pVZb5WGjTV4pgRjLhE0DjLW4n+eE14DBOn3UNNu4kwGDD9vvVmWnaKRInHggQ/3C52OlV+h6u
+ 2BLmke3CrQh2OVN6UNbMDIS1vMgSpsHcMmUGGTuQGlvN2qeivwgTKWjHhOPS2jGmnLiy5fV+LuH
+ jK2IHnr9ovWFCl+f1zRnYmcjjZngiBP/aUDYX9dG69SLVKQD5UZ3bH/dHBsGnUlulwHPDeIVsVw
+ r+suopP82ww/QtNK7Tw==
+X-Proofpoint-GUID: 1rg8XV5f3JBoNmZpBOXMT_tgez4Y1uEz
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.293,Aquarius:18.0.1176,Hydra:6.1.134,FMLib:17.12.100.49
+ definitions=2026-10-01_03,2026-09-21_02,2025-10-01_01
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
+ priorityscore=1501 lowpriorityscore=0 phishscore=0 adultscore=0 clxscore=1015
+ suspectscore=0 bulkscore=0 spamscore=0 malwarescore=0 impostorscore=0
+ classifier=typeunknown authscore=0 authtc= authcc= route=outbound adjust=0
+ reason=mlx scancount=1 engine=8.22.0-2609040000 definitions=main-2610010034
+Received-SPF: pass client-ip=205.220.180.131;
+ envelope-from=philmd@oss.qualcomm.com; helo=mx0b-0031df01.pphosted.com
+X-Spam_score_int: -27
+X-Spam_score: -2.8
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_PASS=-0.001,
+X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_LOW=-0.7, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -141,97 +177,155 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Hi,
-Just a gentle reminder on this patch.=20
-Please let me know if you have any feedback or if you need any changes.
+On 1/10/26 10:13, Yonggang Luo wrote:
+> On Thu, Oct 1, 2026 at 4:01 PM Daniel P. Berrangé <berrange@redhat.com> wrote:
+>>
+>> On Wed, Sep 30, 2026 at 09:23:50PM -0700, Pierrick Bouvier wrote:
+>>> On 9/30/26 6:55 PM, Yonggang Luo wrote:
+>>>> On Thu, Oct 1, 2026 at 2:19 AM Pierrick Bouvier
+>>>> <pierrick.bouvier@oss.qualcomm.com> wrote:
+>>>>>
+>>>>> On 9/26/26 1:15 AM, Yonggang Luo wrote:
+>>>>>> - Add machine_class_set_name() so boards can keep a stable -M name
+>>>>>>      when the QOM type is uniquified. machine_class_base_init still
+>>>>>>      defaults the name to the QOM type without -machine.
+>>>>>> - Document that MachineClass::name is the -M name, not the QOM type.
+>>>>>> - Sort -M help by MachineClass::name so order matches the printed names
+>>>>>>      when QOM types are prefixed (arm-virt-11.1-machine vs virt-11.1).
+>>>>>>
+>>>>>> Signed-off-by: Yonggang Luo <luoyonggang@gmail.com>
+>>>>>> Reviewed-by: Daniel P. Berrangé <berrange@redhat.com>
+>>>>>> ---
+>>>>>>     hw/core/machine.c        |  6 ++++++
+>>>>>>     include/hw/core/boards.h | 12 +++++++++++-
+>>>>>>     system/vl.c              |  8 +++-----
+>>>>>>     3 files changed, 20 insertions(+), 6 deletions(-)
+>>>>>>
+>>>>>
+>>>>> First, I'm not opposed to this series, and if anyone wants to pull this,
+>>>>> I'm ok with that decision. It's just unclear for me what will be
+>>>>> direction after this step.
+>>>>>
+>>>>> If I understand correctly, the goal here is to allow to register
+>>>>> multiple "virt" machines, while still having distinct QOM types behind
+>>>>> the hood, which does no affect behavior of current binaries who have
+>>>>> only a single "virt" type at most.
+>>>>>
+>>>>> That said, if we project in the future where we have a binary with
+>>>>> multiple of those "virt" machines, how will the current series help? The
+>>>>> situation we'll have is distinct QOM types, that all answer to the name
+>>>>> "virt", so we have no way to select them individually.
+>>>>>
+>>>>> Slightly worse, find_machine() will just pick the first machine name
+>>>>> virt, which is a non-deterministic order at the moment.
+>>>>> https://gitlab.com/qemu-project/qemu/-/blob/master/system/vl.c?ref_type=heads#L846
+>>>>
+>>>> That will handle it properly. For single-target binary qemu-system-$arch.exe,
+>>>> this won't be an issue, as there is no conflict as they won't be compiled in.
+>>>> For multi-target binary qemu-system.exe, we will choose the target through
+>>>> -M $arch:$machine, and when no $arch is specified, the default to arch
+>>>> to be "none",
+>>>> so still won't be non-deterministic.
+>>>>
+>>>
+>>>> "when no $arch is specified, the default to arch to be "none",so still >
+>>> won't be non-deterministic.
+>>>
+>>> That's my point, the current abstraction will create something ambiguous by
+>>> design. When people will specify -M virt, without $arch:, a random machine
+>>> will be selected. At least, maybe this series should ensure there is only
+>>> one virt alias, or make it forbidden and uses unambiguous names only.
+>>
+>> Yes, if there are multiple choices, we should not pick an arbitrary one
+>> non-deterministically, we must require the user to narrow the choice
+>> explicitly in some manner.
+>>
+>>> "$arch:" is just a workaround to not add -target option, except that it
+>>> comes with additional problems, creating inconsistent command lines.
+>>> I already expressed my skepticism about the "machine prefix" based approach,
+>>> being more in favor to strongly filter types per target with an unambiguous
+>>> -target option. I'll accept the community's choice on this, but just wanted
+>>> to see this explained before someone hits the pull button on this series, so
+>>> they know what will come down the road.
+>>
+>> Historically, QEMU do alot of things like this where we invented magic
+>> syntax that needed custom parsing of the command line. Over time we
+>> came to the conclusion this ad-hoc parsing was a bad idea, and we
+>> should always explicitly model things, even if it is more verbose.
+>>
+>> Thus I would not want to see "$target:$machine" as something that is
+>> parsed into two pieces.
+>>
+>> IOW, "aarch64-virt" would be OK as a unique name which treated as an
+>> opaque string, but "aarch64:virt" as something split into "aarch64"
+>> (target) and "virt" (machine) would be a bad idea.
+>>
+>> An acceptable way of modelling the latter would be to use
+>>
+>>    '-machine name=virt,target=aarch64'
 
-Thanks,
-Ratan La Dondi
+Why mix target information parsing at machine level when the
+machine already know it is target specific? People wanting to
+use the ARM virt machine don't want to know (and don't care)
+about the M68k virt machine.
 
------Original Message-----
-From: Ratan Lal Dondi <rdondi@axiado.com>=20
-Sent: 16 September 2026 10:22
-To: qemu-devel@nongnu.org; qemu-arm@nongnu.org
-Cc: pbonzini@redhat.com; peter.maydell@linaro.org; jasowangio@gmail.com; Ku=
-an-Jui Chiu <kchiu@axiado.com>; Ratan Lal Dondi <rdondi@axiado.com>
-Subject: [PATCH 0/2] Add Axiado HCP network device model
+> 
+>>
+>> or
+>>
+>>    -machine virt -target aarch64
+> 
+> 
+> That's made me confused, as different people propose different ways to
+> handle it.
+> Can we just choose one first?
+> '-machine name=virt,target=aarch64' is introducing new options, so is
+> '-machine virt -target aarch64'
+> I can not argue which is better, my suggestion may land one first. Both
+> "-machine virt -target aarch64" and "-machine $arch:$name" I have
+> already implemented. And currently I chose
+> "-machine $arch:$name" according to
+> https://patchwork.ozlabs.org/project/qemu-devel/cover/20260828225901.367438-1-pierrick.bouvier@oss.qualcomm.com/#3749257
 
-This patchset introduces Axiado HCP network model for SoC AX3000
+You still did not explained what you are trying to achieve
+with all your contributions, so my view is surely biased by
+what we envisioned 3 years ago when we started to pave our
+way for heterogenous emulation.
 
-The HCP (Header and Crypto Processing) block is the substantial part of the=
- series. It is the SoC's network complex, built around an Inside Secure Saf=
-eXcel EIP-197 packet engine that acts as bus master for all packet I/O over=
- four command/result descriptor ring pairs. Five MACs are demultiplexed by =
-an "application ID" tag carried in the EIP-96 input and output tokens. Only=
- the packet datapath is modelled; the
-EIP-197 cryptographic transforms are treated as pass-through, which is what=
- the guest asks for when the block is used as a network interface.
+My options so far for a single binary:
 
-Refer Axiado website for more product information https://axiado.com/produc=
-ts/
+- infer from argv[]
+- enforce with CLI -target
+- not expose any machine
 
-Testing
--------
- The user-mode network backend is required, so configure with libslirp  ena=
-bled (it is auto-detected, and silently absent otherwise):
+That said I asked you multiple times what you are trying to
+achieve to understand and get a consensus or pick the best
+approach (we do not want to compete here, the point of the
+community is to join efforts).
+You are ignoring my questions, so this post is my last try
+before I ignore you on your future contributions. Sorry if
+it sounds unfriendly but you are about to reach the end of
+my patience, exhausting my review time.
 
-  ./configure --target-list=3Daarch64-softmmu -Dslirp=3Denabled
+If you have AI power, please have a look at semcode + lore
+to dig in the mailing list archive and summarize the previous
+work and discussions we had before offering distinct single
+binary alternatives.
+https://github.com/facebookexperimental/semcode/blob/main/docs/lore.md
+Once installed and configured, you only need to run:
+$ semcode-index --lore qemu-devel/3
 
-  qemu-system-aarch64 \
-    -m 4G \
-    -machine axiado-scm3003 \
-    -device loader,file=3Du-boot.bin,addr=3D0x3C000000,cpu-num=3D0 \
-    -nographic \
-    -serial null \
-    -serial null \
-    -serial null \
-    -serial mon:stdio \
-    -drive if=3Dsd,file=3Dobmc-phosphor-image-evk-axiado-qemu.wic,format=3D=
-raw \
-    -netdev user,id=3Dnet4,hostfwd=3Dtcp::2222-:22 \
-    -global axiado-hcp.netdev4=3Dnet4 \
+> 
+>>
+>> Inferring from the binary name would be acceptable too, as that can
+>> be thought of a syntax sugar for "-target aarch64".
 
+Yes. Better for my mental health to defer the merge of this work
+to you Daniel, since you already had a look a reviewed it. But
+please compare with Pierrick approach before doing so:
+https://lore.kernel.org/qemu-devel/20260930020108.217892-1-pierrick.bouvier@oss.qualcomm.com/
 
-In the guest, bring the interface up with DHCP:
+Regards,
 
-  udhcpc -i eth0
-
-Then from the host:
-
-  ssh -p 2222 root@127.0.0.1
-
-With the unmodified vendor Linux driver, the guest:
-
-  - probes the HCP and brings eth0 up
-  - obtains an address over DHCP from the SLIRP backend
-  - resolves ARP and answers ping
-  - sustains an SSH session and completes an SCP transfer
-
-Not modelled
-------------
-
-  - EIP-197 cryptographic transforms. Descriptors are pass-through.
-  - PCS/SerDes behaviour. The guest configures these registers and never
-    reads them back, so writes are accepted and discarded; the link is
-    always reported up.
-
-Ratan Lal Dondi (2):
-  hw/net: Add Axiado HCP network device model
-  hw/arm: Wire up the HCP network complex in the AX3000 SoC
-
- hw/arm/Kconfig              |    1 +
- hw/arm/ax3000-soc.c         |   23 +
- hw/net/Kconfig              |    3 +
- hw/net/axiado_hcp.c         | 1372 +++++++++++++++++++++++++++++++++++
- hw/net/meson.build          |    2 +
- hw/net/trace-events         |    6 +
- include/hw/arm/ax3000-soc.h |   14 +
- include/hw/net/axiado_hcp.h |  172 +++++
- 8 files changed, 1593 insertions(+)
- create mode 100644 hw/net/axiado_hcp.c
- create mode 100644 include/hw/net/axiado_hcp.h
-
---
-2.34.1
-
+Phil.
 

@@ -4,127 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C27B5CA5FCF
-	for <qemu-arm@archiver.kernel.org>; Thu,  1 Oct 2026 10:34:36 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 54B65CA5FB3
+	for <qemu-arm@archiver.kernel.org>; Thu,  1 Oct 2026 10:53:09 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xCE7B-0001BI-Nj; Thu, 01 Oct 2026 06:34:13 -0400
+	id 1xCEPM-0005ej-06; Thu, 01 Oct 2026 06:53:02 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <luoyonggang@gmail.com>)
- id 1xCE7A-0001Aj-8X
- for qemu-arm@nongnu.org; Thu, 01 Oct 2026 06:34:12 -0400
-Received: from mail-ed2-x1c.google.com ([2a00:1450:4864:33::1c])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <luoyonggang@gmail.com>)
- id 1xCE77-0000qw-Ul
- for qemu-arm@nongnu.org; Thu, 01 Oct 2026 06:34:11 -0400
-Received: by mail-ed2-x1c.google.com with SMTP id
- 4fb4d7f45d1cf-6a9984f9adcso10824609a12.0
- for <qemu-arm@nongnu.org>; Thu, 01 Oct 2026 03:34:09 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1790850848; cv=none;
- d=google.com; s=arc-20260327;
- b=DlHH5iCfTQjGbXL5VA0jJmhQDVxbAmKLld1d7XBd55dvOJIZgRtMsQ1sGX7nFrTUX1
- JpQYDGLZFcH8gyKn6bbV6r481tH6IuHdbDfhvgtnjIa17wJJGIO7JCqsTHjQfyPtwJNW
- t04ydBQqgKxLZ7pHl4k2U1E/D368RMiFbTJrcdOJkL9ekAzUt66Y3KEAxrepoyllklXt
- ti/B4m3HDE1h5fYewDxtJ2UX6ZgTw/+LBRolxHOqjJH1RnfIwrBzytzMGmIVUR3PHZf3
- bNmHA3415VsX3aMPMV+CUcsQ9n1VWaQ2T5yWBFp6KzS18w3PAKBY/Frf5bx0JwmpS9q/
- TZrg==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
- s=arc-20260327; 
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :reply-to:in-reply-to:references:mime-version:dkim-signature;
- bh=BrUg2wuu2EwjYgIabj0UHM8634WA9ZKlGIgP4zayc6Y=;
- fh=IbDh+ki6+prlWV9Lt7W0cSNv4UJijtOTNSOIbsoEPAQ=;
- b=JyLXdnnx5eGeMD+lirPQy9ikVk021IOWgotzBwUe/xThmenW91cbuyyo+YiFnisnvE
- NmvKaG6NRPCS13WA2kvOg8eied/UwXKwmccGGMV9kZrhwt6oZbAqaL5DfnolJ1sVxkLk
- gTJwKLyW1XBsfrD5eGmp9BbxSUmAk4TfBPPxxUuhnSL8vaEoWGoDzcSIIbZgaUQCNx5q
- 35RuitUR8b2g24F0ib3TCxd7NEFUfEhegTh5pJzDswax22eCnTjl71h3xM7BkccSR0D7
- B3jCVDkD5flk9w6U1ZUvAv/hZ7Md8vnmKdpQmFKEdsuNE8MeLfBFH34Uyt5bZSncZADS
- bkcQ==; darn=nongnu.org
-ARC-Authentication-Results: i=1; mx.google.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20251104; t=1790850848; x=1791455648; darn=nongnu.org;
- h=content-transfer-encoding:content-type:cc:to:subject:message-id
- :date:from:reply-to:in-reply-to:references:mime-version:from:to:cc
- :subject:date:message-id:reply-to:content-type;
- bh=BrUg2wuu2EwjYgIabj0UHM8634WA9ZKlGIgP4zayc6Y=;
- b=a5sH9yxXOLk7vAqCmh/EVMEE0SbluVjFSUdgLVV9YQMJmxujn6/xwD2mt2ACKdVieV
- 7jnri661jDDTAultTra4EvkS7xkNWc1adbxnQKLY74j66S+ijqSeqb4m/NVnyW38xxvR
- ccevYwNtDa0mytfxJNtg2gDccfyjZ9cTH9ywaj3Tu/Rhq3x4CNVwcvctFprgt2J19bGK
- LxDQp/UYQPAZ0BE7bxnGBnKVwIJsVRwWKfj22nbl1cGHCEX5ZvrnfSGaCzxo6a+xzTm2
- 10vGzT/zfb/BzFnxWz5m/KbykWi4u6c8X/xziuZ1lWQW52gO+vbDK+hzF9kpTjAMtIGe
- wiPA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20260707; t=1790850848; x=1791455648;
- h=content-transfer-encoding:content-type:cc:to:subject:message-id
- :date:from:reply-to:in-reply-to:references:mime-version:x-gm-gg
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
- :content-type;
- bh=BrUg2wuu2EwjYgIabj0UHM8634WA9ZKlGIgP4zayc6Y=;
- b=SFr4NgwUyioep+Qz2Kih9roM7DN6+5kn0n5G4nSbdN92LV++zIwRMITHYMmBt29gzl
- CpJ48vWw6d42qQFJ0aJOjbgjpbh8zbkzA6OMjYlGBxN7oUkRjJzLByqWKOjO5k9KFjeI
- j1B9gLoDxOXTW2tPRUCtxfCPPfrFzt07Ni1/RlzDJUsFCNoPyVXXfoct149h1jrzvvwv
- e+2XI6P1I0x4isXKl6xP6PiPf6NH2wBLaIQePHDlcy0qxFKkLGN0wwaRRY33fqIZjxSX
- Uw3Ga7Mpnvee1HPMijhlGiK7Ur82f6soNUPr3QhWFqZmSTQNgzeH7ExHiAtjf0yVmpP9
- rp8Q==
-X-Forwarded-Encrypted: i=1;
- AKwUvBy0mpn55UHK5rdRZLN0A/cIzRAt7oOa27dpmGOMqah/0KHbkit41p5fGJqypO4fbXLlPUV3Dywe0Q==@nongnu.org
-X-Gm-Message-State: AFq9FYLkBWeRYMpOelZU3BXi8jOJ2U+oHLdmleSxrt65uAGFoI9Q6XFa
- TL91qU/vgcQPfyxDdJEU2x1dc1yl3hFCS43b8OZqXnhR1WWrcIhOqthSP8MrvwKypkcygOkYaM4
- 7Qol3R32UwEYbOPbDpvqrcj9gs3VN07E=
-X-Gm-Gg: AYBFou3sQ+8pGoeA8kc7Lo/1W4/TYK8pvT7FWsRotcMYpANukZLnCC+Pts9rODJWPRk
- DBXradrvDcgo2NMrWzswK/aiX4YBkB6IfVhO/aeLIlo2/r6TVQSvqYBAuzpMtyoUwuOamt/Udk+
- zYSHBkmUa+NPV6BMZTBaK6/xabxe4xfqtyrQNqazS0b+mkAWyplt7SmEXHn5gDFk1tvzl04qDuD
- 3qvNjHHa4hfScUmOJOVQyQaEL/FL0NWwGushmGinpMtifrw019TUy3pDIdKGLdzrloIeRLAyVnQ
- Ju2l2I+b6maKNe5ZOYYlCrd7wVKXQH6mPcbSTB4b3y9HiBZl4dL7TxI=
-X-Received: by 2002:a05:6402:23c3:b0:6aa:ff76:3076 with SMTP id
- 4fb4d7f45d1cf-6ae1994e02cmr3302015a12.32.1790850847583; Thu, 01 Oct 2026
- 03:34:07 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <aastharawat@linux.microsoft.com>)
+ id 1xCEPH-0005dX-Gm; Thu, 01 Oct 2026 06:52:55 -0400
+Received: from linux.microsoft.com ([13.77.154.182])
+ by eggs.gnu.org with esmtp (Exim 4.90_1)
+ (envelope-from <aastharawat@linux.microsoft.com>)
+ id 1xCEPF-0002P4-S8; Thu, 01 Oct 2026 06:52:55 -0400
+Received: from localhost (unknown [131.107.1.165])
+ by linux.microsoft.com (Postfix) with ESMTPSA id 6E80020B716A;
+ Thu,  1 Oct 2026 03:51:58 -0700 (PDT)
+DKIM-Filter: OpenDKIM Filter v2.11.0 linux.microsoft.com 6E80020B716A
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linux.microsoft.com;
+ s=default; t=1790851918;
+ bh=37MszlWbJzj+NlQUVtLNagGvC4NXZtVf/7aP5kBq1SA=;
+ h=From:Date:Subject:References:In-Reply-To:To:Cc:From;
+ b=MwnWGZGZi08SR9BGkm6ZFg9Atrq9TMT1EL/oOCWIzQEcV9zjiG96mExkX1acDhxdl
+ awh/CYBP2WestHS7bSd30g319q7bRO7IXsi01tPMsbOr5Z1xJ5hM+I4DLDxt2Jo0sb
+ ARsNzE8dTd9CA6OuYIeThsVMZA9RjqAYTecqemag=
+From: Aastha Rawat <aastharawat@linux.microsoft.com>
+Date: Thu, 01 Oct 2026 10:52:48 +0000
+Subject: [PATCH v6 03/14] accel/mshv: make MSHV migration initialization
+ arch-specific
 MIME-Version: 1.0
-References: <20260926081551.29-1-luoyonggang@gmail.com>
- <20260926081551.29-2-luoyonggang@gmail.com>
- <82250296-78bc-4345-9e57-1fcac485d18a@oss.qualcomm.com>
- <CAE2XoE_+nhj58M9_yx6wf532qCSVcERpTw7F4AU7PXN7prhpzg@mail.gmail.com>
- <74853ef8-7315-466a-99ac-41c8182f9b13@oss.qualcomm.com>
- <ar4TQtKqfXX5Ul9O@redhat.com>
- <CAE2XoE8q3LYJ-JCTbRBk4iPdUQdRE8zzmOgiZ=HEXDL78iw8UQ@mail.gmail.com>
- <26b0d44d-0322-4ceb-a47b-747fc52c61b7@oss.qualcomm.com>
-In-Reply-To: <26b0d44d-0322-4ceb-a47b-747fc52c61b7@oss.qualcomm.com>
-From: Yonggang Luo <luoyonggang@gmail.com>
-Date: Thu, 1 Oct 2026 18:33:54 +0800
-X-Gm-Features: AclHuK99GMx9xSoWV4k_I6ncYLqs2a6XDkmFpJ-LJsXcstUN6sJJ-_GTYOe9dI0
-Message-ID: <CAE2XoE-CKGP3y=LvkDwMPG_h5T6+Z3sWUP3TfJuu8YCFZdJTqA@mail.gmail.com>
-Subject: Re: [PATCH v3 01/10] machine: allow -M name to differ from QOM type
-To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@oss.qualcomm.com>
-Cc: =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>, 
- Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>, qemu-devel@nongnu.org, 
- Chao Liu <chao.liu@processmission.com>, Eric Blake <eblake@redhat.com>,
- qemu-arm@nongnu.org, 
- Paolo Bonzini <pbonzini@redhat.com>, Markus Armbruster <armbru@redhat.com>, 
- Alistair Francis <alistair.francis@wdc.com>,
- Brian Cain <brian.cain@oss.qualcomm.com>, 
- Stafford Horne <shorne@gmail.com>, Peter Maydell <peter.maydell@linaro.org>, 
- Jiaxun Yang <jiaxun.yang@flygoat.com>, Fabiano Rosas <farosas@suse.de>, 
- Daniel Henrique Barboza <daniel.barboza@oss.qualcomm.com>,
- qemu-riscv@nongnu.org, 
- Laurent Vivier <lvivier@redhat.com>, Max Filippov <jcmvbkbc@gmail.com>,
- Song Gao <17746591750@163.com>, 
- Philippe Mathieu-Daude <philmd@mailo.com>, Palmer Dabbelt <palmer@dabbelt.com>,
- Laurent Vivier <laurent@vivier.eu>, Weiwei Li <liwei1518@gmail.com>,
- Zhao Liu <zhao1.liu@intel.com>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2a00:1450:4864:33::1c;
- envelope-from=luoyonggang@gmail.com; helo=mail-ed2-x1c.google.com
-X-Spam_score_int: 5
-X-Spam_score: 0.5
-X-Spam_bar: /
-X-Spam_report: (0.5 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1, DKIM_VALID=-0.1,
- DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- THIS_AD=2.599 autolearn=no autolearn_force=no
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+Message-Id: <20261001-mshv_accel_arm64_supp-v6-3-aefe5e76a0e3@linux.microsoft.com>
+References: <20261001-mshv_accel_arm64_supp-v6-0-aefe5e76a0e3@linux.microsoft.com>
+In-Reply-To: <20261001-mshv_accel_arm64_supp-v6-0-aefe5e76a0e3@linux.microsoft.com>
+To: qemu-devel@nongnu.org
+Cc: Magnus Kulke <magnuskulke@linux.microsoft.com>, 
+ Wei Liu <wei.liu@kernel.org>, 
+ =?utf-8?q?Doru_Bl=C3=A2nzeanu?= <dblanzeanu@linux.microsoft.com>, 
+ Paolo Bonzini <pbonzini@redhat.com>, 
+ =?utf-8?q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>, 
+ =?utf-8?q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>, 
+ Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>, 
+ Peter Maydell <peter.maydell@linaro.org>, 
+ Anirudh Rayabharam <anirudh@anirudhrb.com>, 
+ Aastha Rawat <aastharawat@linux.microsoft.com>, qemu-arm@nongnu.org, 
+ Alexander Graf <agraf@csgraf.de>, Pedro Barbuda <pbarbuda@microsoft.com>, 
+ Mohamed Mediouni <mohamed@unpredictable.fr>, 
+ "Michael S. Tsirkin" <mst@redhat.com>, 
+ Richard Henderson <richard.henderson@linaro.org>, 
+ =?utf-8?q?Philippe_Mathieu-Daud=C3=A9?= <philmd@oss.qualcomm.com>
+X-Mailer: b4 0.15.1
+Received-SPF: pass client-ip=13.77.154.182;
+ envelope-from=aastharawat@linux.microsoft.com; helo=linux.microsoft.com
+X-Spam_score_int: -19
+X-Spam_score: -2.0
+X-Spam_bar: --
+X-Spam_report: (-2.0 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, SPF_HELO_PASS=-0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -137,241 +76,137 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-To: luoyonggang@gmail.com
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Thu, Oct 1, 2026 at 4:44=E2=80=AFPM Philippe Mathieu-Daud=C3=A9
-<philmd@oss.qualcomm.com> wrote:
->
-> On 1/10/26 10:13, Yonggang Luo wrote:
-> > On Thu, Oct 1, 2026 at 4:01=E2=80=AFPM Daniel P. Berrang=C3=A9 <berrang=
-e@redhat.com> wrote:
-> >>
-> >> On Wed, Sep 30, 2026 at 09:23:50PM -0700, Pierrick Bouvier wrote:
-> >>> On 9/30/26 6:55 PM, Yonggang Luo wrote:
-> >>>> On Thu, Oct 1, 2026 at 2:19=E2=80=AFAM Pierrick Bouvier
-> >>>> <pierrick.bouvier@oss.qualcomm.com> wrote:
-> >>>>>
-> >>>>> On 9/26/26 1:15 AM, Yonggang Luo wrote:
-> >>>>>> - Add machine_class_set_name() so boards can keep a stable -M name
-> >>>>>>      when the QOM type is uniquified. machine_class_base_init stil=
-l
-> >>>>>>      defaults the name to the QOM type without -machine.
-> >>>>>> - Document that MachineClass::name is the -M name, not the QOM typ=
-e.
-> >>>>>> - Sort -M help by MachineClass::name so order matches the printed =
-names
-> >>>>>>      when QOM types are prefixed (arm-virt-11.1-machine vs virt-11=
-.1).
-> >>>>>>
-> >>>>>> Signed-off-by: Yonggang Luo <luoyonggang@gmail.com>
-> >>>>>> Reviewed-by: Daniel P. Berrang=C3=A9 <berrange@redhat.com>
-> >>>>>> ---
-> >>>>>>     hw/core/machine.c        |  6 ++++++
-> >>>>>>     include/hw/core/boards.h | 12 +++++++++++-
-> >>>>>>     system/vl.c              |  8 +++-----
-> >>>>>>     3 files changed, 20 insertions(+), 6 deletions(-)
-> >>>>>>
-> >>>>>
-> >>>>> First, I'm not opposed to this series, and if anyone wants to pull =
-this,
-> >>>>> I'm ok with that decision. It's just unclear for me what will be
-> >>>>> direction after this step.
-> >>>>>
-> >>>>> If I understand correctly, the goal here is to allow to register
-> >>>>> multiple "virt" machines, while still having distinct QOM types beh=
-ind
-> >>>>> the hood, which does no affect behavior of current binaries who hav=
-e
-> >>>>> only a single "virt" type at most.
-> >>>>>
-> >>>>> That said, if we project in the future where we have a binary with
-> >>>>> multiple of those "virt" machines, how will the current series help=
-? The
-> >>>>> situation we'll have is distinct QOM types, that all answer to the =
-name
-> >>>>> "virt", so we have no way to select them individually.
-> >>>>>
-> >>>>> Slightly worse, find_machine() will just pick the first machine nam=
-e
-> >>>>> virt, which is a non-deterministic order at the moment.
-> >>>>> https://gitlab.com/qemu-project/qemu/-/blob/master/system/vl.c?ref_=
-type=3Dheads#L846
-> >>>>
-> >>>> That will handle it properly. For single-target binary qemu-system-$=
-arch.exe,
-> >>>> this won't be an issue, as there is no conflict as they won't be com=
-piled in.
-> >>>> For multi-target binary qemu-system.exe, we will choose the target t=
-hrough
-> >>>> -M $arch:$machine, and when no $arch is specified, the default to ar=
-ch
-> >>>> to be "none",
-> >>>> so still won't be non-deterministic.
-> >>>>
-> >>>
-> >>>> "when no $arch is specified, the default to arch to be "none",so sti=
-ll >
-> >>> won't be non-deterministic.
-> >>>
-> >>> That's my point, the current abstraction will create something ambigu=
-ous by
-> >>> design. When people will specify -M virt, without $arch:, a random ma=
-chine
-> >>> will be selected. At least, maybe this series should ensure there is =
-only
-> >>> one virt alias, or make it forbidden and uses unambiguous names only.
-> >>
-> >> Yes, if there are multiple choices, we should not pick an arbitrary on=
-e
-> >> non-deterministically, we must require the user to narrow the choice
-> >> explicitly in some manner.
-> >>
-> >>> "$arch:" is just a workaround to not add -target option, except that =
-it
-> >>> comes with additional problems, creating inconsistent command lines.
-> >>> I already expressed my skepticism about the "machine prefix" based ap=
-proach,
-> >>> being more in favor to strongly filter types per target with an unamb=
-iguous
-> >>> -target option. I'll accept the community's choice on this, but just =
-wanted
-> >>> to see this explained before someone hits the pull button on this ser=
-ies, so
-> >>> they know what will come down the road.
-> >>
-> >> Historically, QEMU do alot of things like this where we invented magic
-> >> syntax that needed custom parsing of the command line. Over time we
-> >> came to the conclusion this ad-hoc parsing was a bad idea, and we
-> >> should always explicitly model things, even if it is more verbose.
-> >>
-> >> Thus I would not want to see "$target:$machine" as something that is
-> >> parsed into two pieces.
-> >>
-> >> IOW, "aarch64-virt" would be OK as a unique name which treated as an
-> >> opaque string, but "aarch64:virt" as something split into "aarch64"
-> >> (target) and "virt" (machine) would be a bad idea.
-> >>
-> >> An acceptable way of modelling the latter would be to use
-> >>
-> >>    '-machine name=3Dvirt,target=3Daarch64'
->
-> Why mix target information parsing at machine level when the
-> machine already know it is target specific? People wanting to
-> use the ARM virt machine don't want to know (and don't care)
-> about the M68k virt machine.
+x86 specific migration handlers currently live in common MSHV code. Move
+these handlers into x86 backend and add a generic architecture migration
+initialization hook. ARM MSHV live migration support is not added yet,
+this will allow ARM to add an empty initialization hook.
 
-Hi Philippe,
-Fair point. Users shouldn=E2=80=99t need to know about other targets to use=
- ARM
-virt. Keep the machine name as virt; target selection in a combined
-binary should be separate from -machine. This series doesn=E2=80=99t choose=
- that
-interface. With no target selected, help can list machines across targets,
-but QEMU must not choose one arbitrarily.
+Signed-off-by: Aastha Rawat <aastharawat@linux.microsoft.com>
+---
+ accel/mshv/mshv-all.c       | 35 ++++-------------------------------
+ include/system/mshv_int.h   |  1 +
+ target/i386/mshv/mshv-all.c | 34 ++++++++++++++++++++++++++++++++++
+ 3 files changed, 39 insertions(+), 31 deletions(-)
 
->
-> >
-> >>
-> >> or
-> >>
-> >>    -machine virt -target aarch64
-> >
-> >
-> > That's made me confused, as different people propose different ways to
-> > handle it.
-> > Can we just choose one first?
-> > '-machine name=3Dvirt,target=3Daarch64' is introducing new options, so =
-is
-> > '-machine virt -target aarch64'
-> > I can not argue which is better, my suggestion may land one first. Both
-> > "-machine virt -target aarch64" and "-machine $arch:$name" I have
-> > already implemented. And currently I chose
-> > "-machine $arch:$name" according to
-> > https://patchwork.ozlabs.org/project/qemu-devel/cover/20260828225901.36=
-7438-1-pierrick.bouvier@oss.qualcomm.com/#3749257
->
-> You still did not explained what you are trying to achieve
-> with all your contributions, so my view is surely biased by
-> what we envisioned 3 years ago when we started to pave our
-> way for heterogenous emulation.
->
-> My options so far for a single binary:
->
-> - infer from argv[]
-> - enforce with CLI -target
-> - not expose any machine
->
-> That said I asked you multiple times what you are trying to
-> achieve to understand and get a consensus or pick the best
-> approach (we do not want to compete here, the point of the
-> community is to join efforts).
-> You are ignoring my questions, so this post is my last try
-> before I ignore you on your future contributions. Sorry if
-> it sounds unfriendly but you are about to reach the end of
-> my patience, exhausting my review time.
->
-> If you have AI power, please have a look at semcode + lore
-> to dig in the mailing list archive and summarize the previous
-> work and discussions we had before offering distinct single
-> binary alternatives.
-> https://github.com/facebookexperimental/semcode/blob/main/docs/lore.md
-> Once installed and configured, you only need to run:
-> $ semcode-index --lore qemu-devel/3
->
-> >
-> >>
-> >> Inferring from the binary name would be acceptable too, as that can
-> >> be thought of a syntax sugar for "-target aarch64".
->
-> Yes. Better for my mental health to defer the merge of this work
-> to you Daniel, since you already had a look a reviewed it. But
-> please compare with Pierrick approach before doing so:
-> https://lore.kernel.org/qemu-devel/20260930020108.217892-1-pierrick.bouvi=
-er@oss.qualcomm.com/
+diff --git a/accel/mshv/mshv-all.c b/accel/mshv/mshv-all.c
+index 860f511fcba..efe19a39140 100644
+--- a/accel/mshv/mshv-all.c
++++ b/accel/mshv/mshv-all.c
+@@ -60,30 +60,6 @@ static int init_mshv(int *mshv_fd)
+     return 0;
+ }
+ 
+-static int mshv_load_cleanup(void *opaque)
+-{
+-    CPUState *cpu;
+-    int ret;
+-
+-    ret = mshv_arch_set_partition_msrs(first_cpu);
+-    if (ret < 0) {
+-        error_report("Failed to set partition MSRs: %s", strerror(-ret));
+-        return -1;
+-    }
+-
+-    CPU_FOREACH(cpu) {
+-        ret = mshv_arch_set_mp_state(cpu);
+-        if (ret < 0) {
+-            error_report("Failed to set mp state for vCPU %d: %s",
+-                         cpu->cpu_index, strerror(-ret));
+-            return -1;
+-        }
+-    }
+-
+-    return 0;
+-}
+-
+-
+ static int get_host_partition_property(int mshv_fd, uint32_t property_code,
+                                        uint64_t *value)
+ {
+@@ -519,10 +495,6 @@ static int mshv_init_vcpu(CPUState *cpu)
+     return 0;
+ }
+ 
+-static SaveVMHandlers savevm_mshv = {
+-    .load_cleanup = mshv_load_cleanup,
+-};
+-
+ static int mshv_init(AccelState *as, MachineState *ms)
+ {
+     MshvState *s;
+@@ -574,9 +546,10 @@ static int mshv_init(AccelState *as, MachineState *ms)
+                                   0, "mshv-memory");
+     memory_listener_register(&mshv_io_listener, &address_space_io);
+ 
+-    register_savevm_live("mshv", 0, 1, &savevm_mshv, s);
+-
+-    mshv_clock_init();
++    ret = mshv_arch_migration_init(s);
++    if (ret < 0) {
++        return ret;
++    }
+ 
+     return 0;
+ }
+diff --git a/include/system/mshv_int.h b/include/system/mshv_int.h
+index 0e68365c63f..31d2f4381c7 100644
+--- a/include/system/mshv_int.h
++++ b/include/system/mshv_int.h
+@@ -109,6 +109,7 @@ void mshv_arch_disable_partition_proc_features(
+ int mshv_arch_accel_init(AccelState *as, MachineState *ms, int mshv_fd);
+ int mshv_arch_post_init_vm(int vm_fd);
+ void mshv_setup_hvcall_args(AccelCPUState *state);
++int mshv_arch_migration_init(MshvState *s);
+ int mshv_get_vp_state(int cpu_fd, struct mshv_get_set_vp_state *state);
+ int mshv_set_vp_state(int cpu_fd, const struct mshv_get_set_vp_state *state);
+ typedef struct mshv_root_hvcall mshv_root_hvcall;
+diff --git a/target/i386/mshv/mshv-all.c b/target/i386/mshv/mshv-all.c
+index f0b43aa86f1..968fe2a4494 100644
+--- a/target/i386/mshv/mshv-all.c
++++ b/target/i386/mshv/mshv-all.c
+@@ -78,3 +78,37 @@ int mshv_arch_post_init_vm(int vm_fd)
+ 
+     return ret;
+ }
++
++static int mshv_load_cleanup(void *opaque)
++{
++    CPUState *cpu;
++    int ret;
++
++    ret = mshv_arch_set_partition_msrs(first_cpu);
++    if (ret < 0) {
++        error_report("Failed to set partition MSRs: %s", strerror(-ret));
++        return -1;
++    }
++
++    CPU_FOREACH(cpu) {
++        ret = mshv_arch_set_mp_state(cpu);
++        if (ret < 0) {
++            error_report("Failed to set mp state for vCPU %d: %s",
++                         cpu->cpu_index, strerror(-ret));
++            return -1;
++        }
++    }
++
++    return 0;
++}
++
++static SaveVMHandlers savevm_mshv = {
++    .load_cleanup = mshv_load_cleanup,
++};
++
++int mshv_arch_migration_init(MshvState *s)
++{
++    register_savevm_live("mshv", 0, 1, &savevm_mshv, s);
++    mshv_clock_init();
++    return 0;
++}
 
-Hi Philippe,
+-- 
+2.45.4
 
-You=E2=80=99re right: I haven=E2=80=99t clearly explained what I=E2=80=99m =
-trying to achieve, and
-I=E2=80=99m sorry for not answering your questions sooner.
-
-My goal is specifically to let a combined binary list all target-specific
-machines when the target is none. This is for inspection, not for
-selecting an arbitrary machine to run. Today, linking machines from
-different targets hits QOM type-name conflicts. This series gives the
-machine classes unique QOM names while preserving their familiar machine
-names.
-
-Pierrick=E2=80=99s series adds targets to a single linked binary and filter=
-s
-machines according to the selected target. Its do not care about
-machine listing for target "none". These patches address that separate
-case and the QOM-name conflicts; they are not intended to conflict with
-Pierrick=E2=80=99s target-selection work.
-
-I=E2=80=99m not proposing argv-based target inference or a new -target inte=
-rface
-in this series. qemu-system-$arch is currently a separate executable,
-not a symlink to qemu-system, so argv-based selection is outside this
-work. This series do not conflict with either "-target $arch -machine $mach=
-ine"
-or "-machine $arch:$machine"
-
-
->
-> Regards,
->
-> Phil.
-
-
-
---=20
-         =E6=AD=A4=E8=87=B4
-=E7=A4=BC
-=E7=BD=97=E5=8B=87=E5=88=9A
-Yours
-    sincerely,
-Yonggang Luo
 

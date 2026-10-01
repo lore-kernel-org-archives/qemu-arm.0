@@ -4,93 +4,93 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0D4D3CA5FC4
-	for <qemu-arm@archiver.kernel.org>; Thu,  1 Oct 2026 01:56:02 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CA8DBCA5FC4
+	for <qemu-arm@archiver.kernel.org>; Thu,  1 Oct 2026 02:07:57 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xC61Q-0000PC-SA; Wed, 30 Sep 2026 21:55:44 -0400
+	id 1xC6D6-0003ki-TS; Wed, 30 Sep 2026 22:07:49 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <luoyonggang@gmail.com>)
- id 1xC61P-0000Ou-HE
- for qemu-arm@nongnu.org; Wed, 30 Sep 2026 21:55:43 -0400
-Received: from mail-ed2-x0e.google.com ([2a00:1450:4864:33::e])
+ id 1xC6D5-0003kL-MD
+ for qemu-arm@nongnu.org; Wed, 30 Sep 2026 22:07:47 -0400
+Received: from mail-ed2-x0f.google.com ([2a00:1450:4864:33::f])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <luoyonggang@gmail.com>)
- id 1xC61N-00087K-Od
- for qemu-arm@nongnu.org; Wed, 30 Sep 2026 21:55:43 -0400
-Received: by mail-ed2-x0e.google.com with SMTP id
- 4fb4d7f45d1cf-6ab01dda422so6414910a12.0
- for <qemu-arm@nongnu.org>; Wed, 30 Sep 2026 18:55:41 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1790819740; cv=none;
+ id 1xC6D3-0000v0-T8
+ for qemu-arm@nongnu.org; Wed, 30 Sep 2026 22:07:47 -0400
+Received: by mail-ed2-x0f.google.com with SMTP id
+ 4fb4d7f45d1cf-6aa1d00daaaso10608574a12.1
+ for <qemu-arm@nongnu.org>; Wed, 30 Sep 2026 19:07:45 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1790820464; cv=none;
  d=google.com; s=arc-20260327;
- b=r+CZ9V+ovRr1pilwN4DXnIyyNp4k3TMZWzsdxKOsqUrdYHre1NSf6dPgQNEgbm2AiG
- R404LLlJIIFQU2qoC71ih3/MSt39du94LMn1+5G0enccWQMKfcTf80TvwmD9iNLc/bEh
- R8AL+QQIgkd0pSfV4psWHCsrlAHX8JxQ8E1wkUMk5QxFbw0rAEau7i47lDvPZQ3H1MAy
- 7PhMRAUxmqJAjZxVOsmysWu9CnUgxko0oIIlhNaLynIHYJuE7cMeekOTQBAbjed1bsMj
- H0qtB4Knc3IDYXWXiIqQ8hx7rvWt1lVTMyrk+rxhnXdjIRNEhanxgrsDD2FE6NLi0+lU
- Ktsg==
+ b=ZC/arzSKJ2CTXnOQU/AwPz7gPaz0lG/mRYTqBcapePFtUO9GzPWI3o8D47GneTJAx4
+ h+BWxgBcxCItvk5kHBxYrYUHOSHbwZ8DRt/5iUOn0qhlXWP4fn7m/bF6PFxaNAp7DzEu
+ m4aOVncxhenU3eGkUorqAKAARZ2Tsdro9/hYvKmurEdM6SDXQDhq4bROYOdPlbVhrrey
+ kwQI+RPx0GLGwiZvL5CKsyBw9FPCxJuzM1107z5h9zQ4BrK7Qa/NsrbAK+gLKJbad5nW
+ mg+MCi5ysp8RtEJbQCu0XYaq9pS7NR/u0WqEJUhhyC/BtImvN+EykHNEjXkmE+n4YJoe
+ jbaw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
  s=arc-20260327; 
  h=content-transfer-encoding:cc:to:subject:message-id:date:from
  :reply-to:in-reply-to:references:mime-version:dkim-signature;
- bh=eslYiYXFQvDxr8kUaYGFBywuo88FVeT2naogZDh9VQg=;
- fh=AXWKMgoFKy7J9mb5YzDHneN1M+9hgvrv6KD5PFILzWU=;
- b=HRMs69RJhwymgIFvIU5GIaGV1b2xJ7fjPSmKPipunEkE1GLdD/7LZXynfkc+wfAEXW
- 5s5A5jGXK33MsqjsAvXP2qR4AQGwu9FxJ6j/rHfE+v6SUvCuWRKvKq7NjwuuAldaO4Nd
- gYP1zcOuU7kaF9zUQ4X0ZvNAvrxaNT7LaTYfmoatGOYkKcntcu6c70JAYrQSEpB396Q/
- IocLWyfiSUMIUYKyH2+kMIPoA66SobCzHFLL+y6MEQmL3r1IVWbCmEmupA8QPOoQX5wZ
- xuKCGwBfd2BVFXTg9/YfI2ZiBtUBag+FyXGRsPraVtg+3Qos5qvoI5nT9BF/Fb2I8Tj+
- CnVg==; darn=nongnu.org
+ bh=iq3esjhG4aVafagvf/oWSo/6s5umcwYrzfq6e+nN6YA=;
+ fh=4LAa3XJ6xPfrCoTZuN+72Np9E8B2MpFJ+X5Vh9qLu+8=;
+ b=K7vJRslacPvyGShFP/+ZaBweUwnfGl/KQdLQTLr+WuVjBo1OvPyuO3otnAfVyk1khU
+ BrdF+wJdOVCE211SCjzWIVhxwvkgArvjlR+R5Ve/jTIW2GIl1BKcCi2AKm3+9wVmXafn
+ uVEic7EFuAy8zIahfch8fkX7CoqCUN/vesUcWdn4XWkkA0xrvqDA2A+rE6/iMYXoNytg
+ i2Zma4tSXxEYgqjhPk0m4Htn0g8etfi2f4YZs+C3hFJl5NCsn/X3lzCmtwXou1Gx6xgr
+ PYTJ39pbnEAOVulOG2eiaYXrBhVPwS6XgWK7+3j1/kTtZZJmLQ5kTgi+f1ujeK2/KbjO
+ 1JKA==; darn=nongnu.org
 ARC-Authentication-Results: i=1; mx.google.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20251104; t=1790819740; x=1791424540; darn=nongnu.org;
+ d=gmail.com; s=20251104; t=1790820464; x=1791425264; darn=nongnu.org;
  h=content-transfer-encoding:content-type:cc:to:subject:message-id
  :date:from:reply-to:in-reply-to:references:mime-version:from:to:cc
  :subject:date:message-id:reply-to:content-type;
- bh=eslYiYXFQvDxr8kUaYGFBywuo88FVeT2naogZDh9VQg=;
- b=Dl6nfn73G7rZeb6hw+dgXs2YhoJvKtRj3RkDIvLAthbWcAINlsTDsqYfahtt+8WUz6
- FHQp1UhxK+VghcufHjpzy7Vftb1VKKyxXuZZIuFVbLdJMOl7tT+IsjHFg6KZaf+AnnOa
- vWNjn29jEAgB6Nhk6M+e82vUjYutZuLucsq5o4Z0zvvAuPzrovoMpzCQqEPmX4ajpkEl
- xe8ns7TFoFIPlxmTCWpCJLjWMHZOQ0VwlRWKcBthPHMYm4BFPMT0d/sX0hp4t0pEErtd
- dj/GmCWwI07QNJoY/6T1jh8wBAXmA3PTDGgEQxngQx2KWQuSYracWUFfONU006OhFLuN
- rJqw==
+ bh=iq3esjhG4aVafagvf/oWSo/6s5umcwYrzfq6e+nN6YA=;
+ b=sw8rGU/dctpdLbvA9r3I0SFbZ7DP6XrxOy9WvsMEgrkVynGVYGvBOgUU36nmpjYnz1
+ GVD82vpxDNYOr75gN/ovWsJ2pOKtW8EDSVdAD7g5aaj2OSM2sAWvLAeit6yHAFL29b3E
+ 2ld2B/kD4DeTDRfXAAycflndXJyn67mTxBVQ1i5bniOumRoVsi/HEAPpB7fYWKAK0Na1
+ 6RbM7ffYdbnkIoRPbN09UhB84Sd9YmNgSZzpGMSguiE0OmndOS98wZFAsK6x1UK/3SW2
+ eyEaqCUireWt8gj/y5Ve5P2gH8q7ZpdIimgdtWzay7X2ssZEQgmnCA0TAZAoUIAkTPod
+ 5OZA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20260707; t=1790819740; x=1791424540;
+ d=1e100.net; s=20260707; t=1790820464; x=1791425264;
  h=content-transfer-encoding:content-type:cc:to:subject:message-id
  :date:from:reply-to:in-reply-to:references:mime-version:x-gm-gg
  :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
  :content-type;
- bh=eslYiYXFQvDxr8kUaYGFBywuo88FVeT2naogZDh9VQg=;
- b=FFX6+wGRLGskLwiREdQDYMddxDREug4XijTB9TNzWdSxq5Pd5ur7Xp3PBdguo6e9EV
- H+vZrZmZcXsyTIp8UAkM6/Qe2mqGWYMH+VAzYMYa106DB12D7N7HhZRY7fAQyCvzIMvh
- EqDbthOXljjOdS5Fixo7uYeO9BbtxXQWZsR1bAE6j1e9M9x7sIrQcR/YOvyUbwywdXZm
- jzD4foSEw8ZbUFPLwyoS0ToOlKwL6TkBv1ssqJ13ZBTvNgz3qjMaxjkOC0yJj4+um1gc
- M/i1o1IK3N4cc9WfGre+h6yEp1gxzDzKb3jCUQBZ0u5E4xtEKd1q7r43kZMwB4zoXO72
- SU4g==
+ bh=iq3esjhG4aVafagvf/oWSo/6s5umcwYrzfq6e+nN6YA=;
+ b=tUri40PX0gKLW261lTTgpuONv1+Je7iDeUgfpfv2dSTyPXoaSmVWEyzQHMnl/Wiphi
+ qgnIC+fW++4Vy3M1sBWpVATMF54yBhwdhLz+QWBZK7QvBU3C04gO8yREcT1DKe2PUMTR
+ yjGvUVFB/rLlgrRe5iAJGXy64rQrHOoMzcgRSnr93sBJpx8D3QzxXnByP+VgKMsWu9ag
+ mKN20nuDLLVjmZSoQsM6McJBNEazUiQEacepkTiKZ9SYYfCfwU85qZFWpIshvj6oVIiE
+ 675hDzTIPTG7cQvG0TL0DAuK2MdmBEzn85z8gjsm9o0Ac7lJnqaxvIMldooP9+FsgAQW
+ lvuw==
 X-Forwarded-Encrypted: i=1;
- AKwUvBxtpKLPrLjKqQZ5iFF94s3wBNqOTYdzZdRL0b+7TkiFVYB/ozMJldvRVo1i7iIip21bjmtnUz09Hg==@nongnu.org
-X-Gm-Message-State: AFq9FYLmuzwh1nPY5JJZSlFEjIJ6QJ6wT2SlSRevwHPXoFWAclGT98xY
- ahUOoLPMP4XoJ25pMGKDk63b3kLpZPrmwOPdZZMLgDqJRpcL1E0jHiVISvNat2l1WpczGWEeBlD
- n4tKrgqEjuAQlZN2IV9RSenbNDLIackM=
-X-Gm-Gg: AYBFou3S/Y/LCkbVfVMdHVGNijJzBobcBEbXCW0E/nwxm1u4jSbXFtIp7VWs7dxRGn7
- xBL9IJI6RpUI1MUEntxwzwPzOimkgwJ/A1nHvTA7ePD0z0N2rdOnig7qoLcEGDjBogk/l12vLSK
- Xe+bWcYlFhKU2bX6BoXKCsNun4I1j0nlMq1io492MMw++JCApQpdXQ63aqtCKE/ugxgA5ISrG9o
- pQx5a7bFbIJZt21he83XlguUVRheEGyMtV4ErU56xss86HuQORbfuedWZ0cgI/sG1mPljxkiuyx
- /1NHe+hbepOT902TNlNLttf2JRv9YTdzBzz7wj+pjhEriJR7KIlooF0=
-X-Received: by 2002:a05:6402:324e:b0:6aa:e3f3:c9df with SMTP id
- 4fb4d7f45d1cf-6ae1990a414mr1888551a12.20.1790819739766; Wed, 30 Sep 2026
- 18:55:39 -0700 (PDT)
+ AKwUvBxEWg3oDeJ6bjb7x3Sz9tYZfr/jGafhmo7WpN0nunyaZ2AcIZS+w5h0wz9hTxgM6sUCZt4wdmV3Jg==@nongnu.org
+X-Gm-Message-State: AFq9FYKaZlJZUSYsYWmAsrx2nlRTUO5IgsqkxBGzuXITySZLcJ4J/UzD
+ BwGMRCNzNB+Pv66NT/4hWzr/4972+Xzghr7DO+Ty9ts/Z5PN/vC3UO0ziV9iTLcOKbSMdjMstJX
+ 4tk0+oar8jZlwShE6JRSz8PD7h6rKtk4=
+X-Gm-Gg: AYBFou35UQVrv4oy4kNDFSWe5A2L7Qpq/qBw84KLYh3Xts8vvl9SxOAv2dLJDOfG8kB
+ eJmGt2yMVieLinsz1lL/i7e9rL1X+0JTL3AHEX+2FrciBOuMkoVJYa2ATnDojxB+eJUJdKR2szr
+ ufo5/gLLEj/Qkh7I+aSDwVD3Z9epjRUFBKRwP20F7xcCQ9SsozCoYpSKKusHynT2E8+V0LcLLnB
+ m7VytUTjZhCjG+XAY7p4vQ6tKZVr47iyIpMD0HLFCFnJJ7LUeKCbMo0O7GL6O+1/FNi5QrrG5xl
+ bHBAB97e/9a4fRhc/KCvdg+IeEw23L+6Dw/I6AkHFSODyo54z0N2V3w=
+X-Received: by 2002:a05:6402:4442:b0:6ab:373:54f9 with SMTP id
+ 4fb4d7f45d1cf-6ae1996cf19mr2256379a12.40.1790820463967; Wed, 30 Sep 2026
+ 19:07:43 -0700 (PDT)
 MIME-Version: 1.0
 References: <20260926081551.29-1-luoyonggang@gmail.com>
  <20260926081551.29-2-luoyonggang@gmail.com>
  <82250296-78bc-4345-9e57-1fcac485d18a@oss.qualcomm.com>
 In-Reply-To: <82250296-78bc-4345-9e57-1fcac485d18a@oss.qualcomm.com>
 From: Yonggang Luo <luoyonggang@gmail.com>
-Date: Thu, 1 Oct 2026 09:55:27 +0800
-X-Gm-Features: AclHuK8iKySxkV-kuCqxi1orzJ0ulN1pyKyKoz4DyA3W8FBmB8_29BliGBNMTeM
-Message-ID: <CAE2XoE_+nhj58M9_yx6wf532qCSVcERpTw7F4AU7PXN7prhpzg@mail.gmail.com>
+Date: Thu, 1 Oct 2026 10:07:31 +0800
+X-Gm-Features: AclHuK_YhTQfAsWte1TerVMP62F1spamOd33K7zgFzLJQ-ObHmTnnRtITObfAsQ
+Message-ID: <CAE2XoE8FM0JG4YWkNo=vLfTAfCHe0U56vYjG8FSJb6XhhJGhhg@mail.gmail.com>
 Subject: Re: [PATCH v3 01/10] machine: allow -M name to differ from QOM type
 To: Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>
 Cc: qemu-devel@nongnu.org, Chao Liu <chao.liu@processmission.com>, 
@@ -112,15 +112,14 @@ Cc: qemu-devel@nongnu.org, Chao Liu <chao.liu@processmission.com>,
  Zhao Liu <zhao1.liu@intel.com>
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2a00:1450:4864:33::e;
- envelope-from=luoyonggang@gmail.com; helo=mail-ed2-x0e.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:33::f;
+ envelope-from=luoyonggang@gmail.com; helo=mail-ed2-x0f.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -165,39 +164,47 @@ On Thu, Oct 1, 2026 at 2:19=E2=80=AFAM Pierrick Bouvier
 > multiple "virt" machines, while still having distinct QOM types behind
 > the hood, which does no affect behavior of current binaries who have
 > only a single "virt" type at most.
+
+
+
 >
 > That said, if we project in the future where we have a binary with
 > multiple of those "virt" machines, how will the current series help? The
 > situation we'll have is distinct QOM types, that all answer to the name
 > "virt", so we have no way to select them individually.
+
+https://gitlab.com/lygstate-qemu/qemu/-/blob/combined-binary-multi-targets/=
+tests/qtest/machine-option-test.c?ref_type=3Dheads#L393
+
+This is the tests example to demo this, and all tests are already passed
+that in combine of a
+
+multi_target_supported_targets =3D [
+  'none-softmmu',
+
+  'aarch64-softmmu',
+  'arm-softmmu',
+  'i386-softmmu',
+  'microblaze-softmmu',
+  'riscv32-softmmu',
+  'riscv64-softmmu',
+  'x86_64-softmmu',
+]
+
+I tried hard to get 'i386-softmmu' 'x86_64-softmmu' to work. As they are th=
+e
+most complicated targets. And now it works. so this patch series is fine.
+
 >
 > Slightly worse, find_machine() will just pick the first machine name
 > virt, which is a non-deterministic order at the moment.
 > https://gitlab.com/qemu-project/qemu/-/blob/master/system/vl.c?ref_type=
 =3Dheads#L846
-
-That will handle it properly. For single-target binary qemu-system-$arch.ex=
-e,
-this won't be an issue, as there is no conflict as they won't be compiled i=
-n.
-For multi-target binary qemu-system.exe, we will choose the target through
--M $arch:$machine, and when no $arch is specified, the default to arch
-to be "none",
-so still won't be non-deterministic.
-
-
 >
-
 > A possible alternative could be to use ".is_available =3D target_X" on
 > those virt types, which will ensure only one is effectively registered
 > at runtime, thus, there is no ambiguity on name or who is the "virt"
 > machine.
-
-That's the issue I want to fix, ensure it is registered at runtime. So
-we can list them
-all when a "none" target is selected.
-
-
 >
 > Again, I'm ok if anyone wants to pull this.
 >

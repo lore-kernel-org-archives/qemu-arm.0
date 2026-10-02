@@ -4,69 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 79767CA5FDD
-	for <qemu-arm@archiver.kernel.org>; Fri,  2 Oct 2026 17:58:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3197FCA5FE0
+	for <qemu-arm@archiver.kernel.org>; Fri,  2 Oct 2026 17:58:45 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xChW6-0002IN-8i; Fri, 02 Oct 2026 13:57:56 -0400
+	id 1xChTR-0007Aa-WA; Fri, 02 Oct 2026 13:55:10 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <luoyonggang@gmail.com>)
- id 1xChSA-00062f-Gu
- for qemu-arm@nongnu.org; Fri, 02 Oct 2026 13:53:54 -0400
-Received: from mail-dy2-x0e.google.com ([2607:f8b0:4864:36::e])
+ id 1xChR0-0004lx-Bx
+ for qemu-arm@nongnu.org; Fri, 02 Oct 2026 13:52:40 -0400
+Received: from mail-dy2-x0f.google.com ([2607:f8b0:4864:36::f])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <luoyonggang@gmail.com>)
- id 1xChS8-0007p4-OE
- for qemu-arm@nongnu.org; Fri, 02 Oct 2026 13:53:50 -0400
-Received: by mail-dy2-x0e.google.com with SMTP id
- 5a478bee46e88-3428f70d7e7so4560921eec.3
- for <qemu-arm@nongnu.org>; Fri, 02 Oct 2026 10:53:48 -0700 (PDT)
+ id 1xChQw-0007WJ-M0
+ for qemu-arm@nongnu.org; Fri, 02 Oct 2026 13:52:37 -0400
+Received: by mail-dy2-x0f.google.com with SMTP id
+ 5a478bee46e88-33e62211987so7783121eec.2
+ for <qemu-arm@nongnu.org>; Fri, 02 Oct 2026 10:52:23 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20251104; t=1790963627; x=1791568427; darn=nongnu.org;
+ d=gmail.com; s=20251104; t=1790963543; x=1791568343; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to:content-type;
- bh=XbMvtK8JbNTxbjYch33wuTiWl3YypTSLvZWi4QO5mug=;
- b=Y2APGmN3DrPB3p5oayi2l9aY+JQnBARSYveYhOrzdAuadHFNKeqiwzsXLz/SdqlMc5
- 67iLFYP1WSkk95PsRS6g9Wee3/uhCz+o7TUBEMeRH1MZWyQws4CYs+G3nz73rrLaJsYJ
- EU1o0gjZaxwC0+gsAXmj4vjMN8VZ+H7B9zZ8StGMkDSW06GIlJ7Nk0lQcjCmgVy+3Ogf
- VxX6D/G/KQl30VHSYm/0Y1gEyKZt/TIhCuP8Q+A99oaa+M2JBjmlLWRRxZKPOZj48gXW
- DEAEszKWdmmPRCqH0yH6Jmz8MzDlxmyVyu8DTMNPRW6X6mEVXAqZGmWLkf7pu7qWJJ+F
- RwBw==
+ bh=ChpBbIoUUB3K4Vnyut46y+psaR7c+v1x9LwLs1SfZyw=;
+ b=jA1NNC+dctz3o1NBYUNNxYe21IuLDzwcZVBk67Hx1doVOc3pRytxKfeRJw8u5Ox/Rp
+ +HElLCOy7yIyxqVLSS4TJgKd/oMvn4ly/P13vjvymZF7oykvFFpSYvKtwZQWXLWmvjYT
+ +e1Wd02ZNieozXOVsoCXQmc8DacfWb0XY+LWAE+PZnHFXioSx45y09tFPodWV9JMRHEt
+ yRBu4NOkzgJ40URld/mVKXu7fM9Mz0zkmtklzQ+L1PKUWN+EqsR1mTn2LJIhFt0F/tWr
+ lJN43fwFOC9cTHlGbAW7xda112FRZU+XOJ8ELQJc8Vye/iV58VU+3m2dwy+7DaAbYhJu
+ 2+JA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20260707; t=1790963627; x=1791568427;
+ d=1e100.net; s=20260707; t=1790963543; x=1791568343;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
  :to:cc:subject:date:message-id:reply-to:content-type;
- bh=XbMvtK8JbNTxbjYch33wuTiWl3YypTSLvZWi4QO5mug=;
- b=K0aPnmMAOLfxoKyQM8UxrEiBlov6F7gAo1mXthKSEO6u4Lg0jZUdcchLfZL9GgSWN3
- ok8iBHGsGrzBUjsAsWgp8ps/VjZ12xOYaTiDYsTXUa0PETJeVxfX306YC7eKtITuliYa
- tXeKGkFmxg9pESgNC21llBZ+y5ldjuLUwfQSLJ9gizwXMkaK649JPvpiYaij0ql/WqZC
- hs1CsnbuV+veLfFt/3jdyIrvjjAmfGLkXUNa8b0HekSeiNnbQnZe7LJ6uCFMuDB0PTob
- N3nCLBaVSLJ667ewsjiq9EquC34yC1OSl2VJmxN6ZkjXVlVYPypm784TjV9Xp1+DLujb
- Vi9Q==
+ bh=ChpBbIoUUB3K4Vnyut46y+psaR7c+v1x9LwLs1SfZyw=;
+ b=LTcQ8CklKYWBFNVmZo4C6lkbokVjsyAayyyuKH0nPVAVet2hJ8w02JRVoPnCgzOC8+
+ zECQ1LOQ22tC4dUnKE3VDoDPAsFl//E7GCpsP6GKzEAF0fvvtxdsRDtTkSK7RU5wTPv+
+ pCpztIwRuie94IVfh2mVzchqAScF5+T06Qk6A61VIQUVczdnZgl5PKyfKLbRHwSID5X0
+ 3QwJ04qwfYRaxmfvjt4p7RVR+v6DeQNCFubhwBLsRIn97pxOhCiBdzn8Zr2vSErkANRL
+ st0xY/3BJ274dei2bkAQ65Mw+6HyHcgSfUwWADu7urxxwVqhiSWaZHh/IVnavxu1JbdH
+ NKvg==
 X-Forwarded-Encrypted: i=1;
- AKwUvByZ3PSfpF53ACAkyX8Xq6TSe9W4GdbN/pkcEp5yMyNP7LIt87zJTRXBKMEv0PKT1CneSmkxRjXw6A==@nongnu.org
-X-Gm-Message-State: AFq9FYI2X76zXm+wL4zC4Y90MnPNBBixuvrgK323UEI4TOy4AS1dYC2P
- upKa4WVn/OtZY3AkrbVpGG4t3Xtx0QTdhCyfuzrSkutgBlQFjT/Ef8XB
-X-Gm-Gg: AYBFou1xf4YmHCnzZCq90VnXKauSgLr8EZe2q7sbHqbcah8vHuTJKwr55jYoRRsqNMV
- En0jW+kR5RcqVADKtGPTyxvenF3W0Nwsxh9Csq+QxOjHxldjF8URTapah7i7lPd4Qqk65+QsDv6
- t2yn6LpTMTIBu7V6b7r1Si67Rq6eszkc5AdbEcnBle1I3mk13yQq6W8Dhqb+AdIAGpF9Qg2f53D
- Xs/KEzvRVOJRPfAiG6xILmqU4n9XFx43lpU7tROiKvWM1BEGclHQMbHOA/fsCznbYej2i0itQLq
- 8XWfcSMci3x6tjP7m1L9VO6mVpf2AKine2ZZncpP9/Egye6mxpaVtr8AWxvDr/JhgVszRn0uP+B
- auZuECI4VafI43HE+D5xdHYJXSqQUKN0M4gbIMGNVcd+WST7Qa0YSSHkbAcBaRWQuG451mZUdYA
- FLZhP/y8878uTRIIh2GhKnE0dt1qBzIznxiljCCx0am2b8rLuLyL6s/ZvICrcy/9UKMdcjOtweh
- cm5a76o9F2u7i8cK4uUlUymq1syXAA=
-X-Received: by 2002:a05:7301:4b07:b0:34f:d831:7f71 with SMTP id
- 5a478bee46e88-34fd8318127mr3095952eec.23.1790963626419; 
- Fri, 02 Oct 2026 10:53:46 -0700 (PDT)
+ AKwUvBweBGnjOl/B0fQkqRPK4BcWD/bvru1pBBu6EfNx5UYHSotDE93oozijk5bNg+USO8rrV4GMoJI9oQ==@nongnu.org
+X-Gm-Message-State: AFq9FYIX1dqd1+r9rQGa/tRJ8rXEZOR6oT2jPFuw9I9T0W06Bb2+NT16
+ mvF3lfpE/fhTeyySO7560BpcQWeBdocUJqrs9uv7y2C7/IlGRpZc/edq
+X-Gm-Gg: AYBFou1ebUGo/x3ltFzbTQtQ4l78Mr76ZsYs1RKRqKmvUO3GteRK3TOagpieyvtpATE
+ YbC/r/3QatSFCoDGpCg/Yr37b1Vb+5M9tMB6uahc+eC/8gLvZBob2wwDsDtI0Radw59jEyNDXIw
+ Fo1K+fVZLU6opIO4Jdnoq7pDq0+dM6hKJmL9DcwNo7DONMjC/19odpIXPSoe5NkEJmwcPXv66uH
+ UJtzEEiHLAKqnjWi/aEC7ONLS1gP4h9Vaj6XdERNyBlg+k1ZOoOtTj7Eb6P/i3Si6RYDGce12kj
+ c4av653nlcvXCJaUi34A5XOPC9s30EjYw8LwrtFJwTiZOJ21hjKscn2Dxf1aWDKhCRc3VV4RLnf
+ A5RTwUPeEobVREXU2/41rfXAQZlcaoZokuTzN0KbtxbDsjTO3IujyxdKY7MckqyB8o3P2kmnG+Z
+ viouK8at8s15cHrkaWHRdSN8xKxR/EahAoBkKbDTWMfkIL7h773ocdovv1decI5Xeg549pkRKhH
+ rluf/3csnJnX8EHwbfZq869x8fkIDk=
+X-Received: by 2002:a05:7300:d40c:b0:334:7f2a:1188 with SMTP id
+ 5a478bee46e88-34f1509e2a9mr3807155eec.14.1790963542651; 
+ Fri, 02 Oct 2026 10:52:22 -0700 (PDT)
 Received: from WIN-BH9M8FJACR9 ([103.94.185.75])
  by smtp.googlemail.com with ESMTPSA id
- 5a478bee46e88-34f14f9f2afsm18027361eec.18.2026.10.02.10.53.39
+ 5a478bee46e88-34f14f9f2afsm18027361eec.18.2026.10.02.10.52.15
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 02 Oct 2026 10:53:45 -0700 (PDT)
+ Fri, 02 Oct 2026 10:52:22 -0700 (PDT)
 From: Yonggang Luo <luoyonggang@gmail.com>
 To: qemu-devel@nongnu.org
 Cc: Max Filippov <jcmvbkbc@gmail.com>, Stafford Horne <shorne@gmail.com>,
@@ -98,24 +98,23 @@ Cc: Max Filippov <jcmvbkbc@gmail.com>, Stafford Horne <shorne@gmail.com>,
  Laurent Vivier <laurent@vivier.eu>, qemu-arm@nongnu.org,
  Paolo Bonzini <pbonzini@redhat.com>, Glenn Miles <milesg@linux.ibm.com>,
  Ilya Leoshkevich <iii@linux.ibm.com>
-Subject: [PATCH v3 23/27] target/riscv: use cpu_raise_excp_restore for
- exception exits
-Date: Sat,  3 Oct 2026 01:50:31 +0800
-Message-ID: <20261002175037.1747-24-luoyonggang@gmail.com>
+Subject: [PATCH v3 12/27] target/s390x: convert exception to raise_excp
+Date: Sat,  3 Oct 2026 01:50:20 +0800
+Message-ID: <20261002175037.1747-13-luoyonggang@gmail.com>
 X-Mailer: git-send-email 2.52.0.windows.1
 In-Reply-To: <20261002175037.1747-1-luoyonggang@gmail.com>
 References: <20261002175037.1747-1-luoyonggang@gmail.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:36::e;
- envelope-from=luoyonggang@gmail.com; helo=mail-dy2-x0e.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:36::f;
+ envelope-from=luoyonggang@gmail.com; helo=mail-dy2-x0f.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -131,29 +130,75 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Keep riscv_raise_exception() for PMU bookkeeping, but delegate exception
-handling to cpu_raise_excp_restore(). It restores guest state when pc is
-nonzero and falls back to a plain exception exit otherwise.
+Drop the redundant S390x exception helper and use the current
+cpu_raise_excp() API for SVC execution. Translate exceptions through the
+shared raise_excp helper.
 
 Signed-off-by: Yonggang Luo <luoyonggang@gmail.com>
+Reviewed-by: Ilya Leoshkevich <iii@linux.ibm.com>
 ---
- target/riscv/tcg/op_helper.c | 3 +--
- 1 file changed, 1 insertion(+), 2 deletions(-)
+ target/s390x/helper.h          |  1 -
+ target/s390x/tcg/mem_helper.c  |  2 +-
+ target/s390x/tcg/misc_helper.c | 10 ----------
+ target/s390x/tcg/translate.c   |  2 +-
+ 4 files changed, 2 insertions(+), 13 deletions(-)
 
-diff --git a/target/riscv/tcg/op_helper.c b/target/riscv/tcg/op_helper.c
-index b67c7718db4..ca4efadec50 100644
---- a/target/riscv/tcg/op_helper.c
-+++ b/target/riscv/tcg/op_helper.c
-@@ -47,8 +47,7 @@ G_NORETURN void riscv_raise_exception(CPURISCVState *env,
-                           riscv_cpu_get_trap_name(exception, false),
-                           env->pc);
+diff --git a/target/s390x/helper.h b/target/s390x/helper.h
+index 6a7426fdac7..ec27ef104f2 100644
+--- a/target/s390x/helper.h
++++ b/target/s390x/helper.h
+@@ -1,4 +1,3 @@
+-DEF_HELPER_2(exception, noreturn, env, i32)
+ DEF_HELPER_2(data_exception, noreturn, env, i32)
+ DEF_HELPER_FLAGS_4(nc, TCG_CALL_NO_WG, i32, env, i32, i64, i64)
+ DEF_HELPER_FLAGS_4(oc, TCG_CALL_NO_WG, i32, env, i32, i64, i64)
+diff --git a/target/s390x/tcg/mem_helper.c b/target/s390x/tcg/mem_helper.c
+index 414e6838c87..ca94960354a 100644
+--- a/target/s390x/tcg/mem_helper.c
++++ b/target/s390x/tcg/mem_helper.c
+@@ -2488,7 +2488,7 @@ void HELPER(ex)(CPUS390XState *env, uint32_t ilen, uint64_t r1, uint64_t addr)
+     } else if (opc == 0x0a) {
+         env->int_svc_code = extract64(insn, 48, 8);
+         env->int_svc_ilen = ilen;
+-        helper_exception(env, EXCP_SVC);
++        cpu_raise_excp(env_cpu(env), EXCP_SVC);
+         g_assert_not_reached();
+     }
  
--    cs->exception_index = exception;
--    cpu_loop_exit_restore(cs, pc);
-+    cpu_raise_excp_restore(cs, exception, pc);
+diff --git a/target/s390x/tcg/misc_helper.c b/target/s390x/tcg/misc_helper.c
+index f1c8563af00..f5e31419268 100644
+--- a/target/s390x/tcg/misc_helper.c
++++ b/target/s390x/tcg/misc_helper.c
+@@ -56,16 +56,6 @@
+ #define HELPER_LOG(x...)
+ #endif
+ 
+-/* Raise an exception statically from a TB.  */
+-void HELPER(exception)(CPUS390XState *env, uint32_t excp)
+-{
+-    CPUState *cs = env_cpu(env);
+-
+-    HELPER_LOG("%s: exception %d\n", __func__, excp);
+-    cs->exception_index = excp;
+-    cpu_loop_exit(cs);
+-}
+-
+ /* Store CPU Timer (also used for EXTRACT CPU TIME) */
+ uint64_t HELPER(stpt)(CPUS390XState *env)
+ {
+diff --git a/target/s390x/tcg/translate.c b/target/s390x/tcg/translate.c
+index 474d604ed17..d2bf1422b1f 100644
+--- a/target/s390x/tcg/translate.c
++++ b/target/s390x/tcg/translate.c
+@@ -400,7 +400,7 @@ static int get_mem_index(DisasContext *s)
+ 
+ static void gen_exception(int excp)
+ {
+-    gen_helper_exception(tcg_env, tcg_constant_i32(excp));
++    gen_helper_raise_excp(tcg_env, tcg_constant_i32(excp));
  }
  
- void helper_raise_exception(CPURISCVState *env, uint32_t exception)
+ static void gen_program_exception(DisasContext *s, int code)
 -- 
 2.52.0.windows.1
 

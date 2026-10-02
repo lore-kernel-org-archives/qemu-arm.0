@@ -4,82 +4,82 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E5138CA5FDD
-	for <qemu-arm@archiver.kernel.org>; Fri,  2 Oct 2026 17:24:21 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8E64ECA5FDD
+	for <qemu-arm@archiver.kernel.org>; Fri,  2 Oct 2026 17:24:26 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xCgzK-0002uu-9C; Fri, 02 Oct 2026 13:24:02 -0400
+	id 1xCgzY-0004Ve-Fa; Fri, 02 Oct 2026 13:24:17 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <marcandre.lureau@redhat.com>)
- id 1xCgxE-0008U0-Gp
- for qemu-arm@nongnu.org; Fri, 02 Oct 2026 13:21:57 -0400
+ id 1xCgxb-0000En-9a
+ for qemu-arm@nongnu.org; Fri, 02 Oct 2026 13:22:18 -0400
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <marcandre.lureau@redhat.com>)
- id 1xCgxC-0003Ws-Ub
- for qemu-arm@nongnu.org; Fri, 02 Oct 2026 13:21:52 -0400
+ id 1xCgxZ-0003fo-Iv
+ for qemu-arm@nongnu.org; Fri, 02 Oct 2026 13:22:15 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1790961709;
+ s=mimecast20190719; t=1790961732;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=UB4QvQO4Fa/SavRC9wKbY5DEWv7c5j74YZ2riQQtR4A=;
- b=Hp6dHZlX9rMGmH89smZ8ADmr6WQ9WUQwIUr4K/cH7OQ3RNY3yXfZufxkFG094C63rU8Eai
- TZC7+x+6+rcmSZaO2tFhAYWBK6Cl83R+rRnV7udx6ef3RFuWta8bK293kVdOVxZlE6XToW
- LQBhVl452W7RFidTumX+D7NBJtyeFtA=
-Received: from mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com
+ bh=SbqqAHFykwJDNLT95Vrv3Sql/bIC0QmQk8beXY8uxl4=;
+ b=J8vn1CTGnL8pGfGLalKgxo6ruA5Mg+gakPKU4N1TXQ14gnCMjdCQq+H/w/zzwBVYvCneez
+ 3tP5VlTCZEt/5XHxB1NyD6nGRH6XvCF1YhK9NG4AfKsRczRvZprzUCKQhpYbV/EWe7Y+e4
+ axBWUoBCNM0T4X0jYFtuHD1SAo1eAzU=
+Received: from mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com
  (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-629-q6IY5ZZoOkKxB3WaFwfOkQ-1; Fri,
- 02 Oct 2026 13:21:46 -0400
-X-MC-Unique: q6IY5ZZoOkKxB3WaFwfOkQ-1
-X-Mimecast-MFC-AGG-ID: q6IY5ZZoOkKxB3WaFwfOkQ_1790961705
-Received: from mx-prod-int-10.mail-002.prod.us-west-2.aws.redhat.com
- (mx-prod-int-10.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.95])
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-669-T9bDLC4vMrmbaFc3F_DJpQ-1; Fri,
+ 02 Oct 2026 13:22:09 -0400
+X-MC-Unique: T9bDLC4vMrmbaFc3F_DJpQ-1
+X-Mimecast-MFC-AGG-ID: T9bDLC4vMrmbaFc3F_DJpQ_1790961728
+Received: from mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com
+ (mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.17])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 0CD171955F08; Fri,  2 Oct 2026 17:21:45 +0000 (UTC)
+ by mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 368601955DDA; Fri,  2 Oct 2026 17:22:08 +0000 (UTC)
 Received: from localhost (headnet03.pony-001.prod.iad2.dc.redhat.com
  [10.2.32.114])
- by mx-prod-int-10.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id 416A6433; Fri,  2 Oct 2026 17:21:43 +0000 (UTC)
+ by mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
+ id 534DA1956042; Fri,  2 Oct 2026 17:22:06 +0000 (UTC)
 MIME-Version: 1.0
-Subject: Re: [PATCH 10/28] hw/usb: mark commonly used USB devices/hosts as
- secure
+Subject: Re: [PATCH 17/28] hw/display: mark bochs, cirrus, qxl, VGA, ramfb
+ as secure
 From: marcandre.lureau@redhat.com
 To: =?utf-8?q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>
 Cc: qemu-devel@nongnu.org, xen-devel@lists.xenproject.org, 
  qemu-riscv@nongnu.org, qemu-ppc@nongnu.org, qemu-block@nongnu.org, 
  qemu-s390x@nongnu.org, qemu-arm@nongnu.org
-In-Reply-To: <20260911143627.2743803-11-berrange@redhat.com>
+In-Reply-To: <20260911143627.2743803-18-berrange@redhat.com>
 References: <20260911143627.2743803-1-berrange@redhat.com>
- <20260911143627.2743803-11-berrange@redhat.com>
+ <20260911143627.2743803-18-berrange@redhat.com>
 Date: Fri, 02 Oct 2026 21:21:01 +0400
-Message-Id: <179096166117.3025252.2297105460212965387.b4-review@b4>
-X-Developer-Signature: v=1; a=openpgp-sha256; l=549;
+Message-Id: <179096166126.3025252.2006364005625327282.b4-review@b4>
+X-Developer-Signature: v=1; a=openpgp-sha256; l=649;
  i=marcandre.lureau@redhat.com; h=from:subject:message-id;
- bh=NumlpaDMemOKFITCo+2qMeic3H03s2RpTFl/9eImaGw=;
- b=owEBbQKS/ZANAwAKAdro4Ql1lpzlAcsmYgBqv+gBYFDletPJUFlFEMVyQfAv+JKnuN9ifwXme
- 8M4uuhy76aJAjMEAAEKAB0WIQSHqb2TP4fGBtJ29i3a6OEJdZac5QUCar/oAQAKCRDa6OEJdZac
- 5UapD/0QcDniEQk9YvFzuhhhLF7o4WA4mDmjNvWEkEvP65tXbCx2nKGLYLYo0sGBlM6ijnFXZzq
- 5ClvORJ50fSj/5pYrZ70jUS4LLdSm8qbtLPTXtFgKVwRni0wMUan0NPFoYeETk3hG1NgL0kEZ4H
- Ytx4SZ5aEYH7zMDCLebotk63cqvDdipqtFo+qjhNvvU6yXAa4DubFOxERVjA3WmMcCm0mUtVk1p
- Romcn3bHXBsH4fzvlEKRsl1trmASogHppILSaXTzZsB1Bo7UDHJTNpWopuwP+QNsr/168gPqS3p
- Q/JSPE0aFD18nkBGsrYp3/3L20ckc7feRz0r/qUeyD23wT1759WcGT2Ol1S7iV3pdDUGVTwWV3G
- 4HkVfHe5GGck+U1FDMg0KONlmmfiZBK/fpQPSN0yg5fWEtPpcr7VI9QRclU/D07SI8jzWfgyYUo
- KkXRhz5A8Jy3qFAB0XPzWx4EpMg0/3yaAjDzCroLTnkoz3zRcyPLIgCXDnvUxWOFCVPQdNdVC+G
- z7FEEWW9/KZpRLa6ICR+kEKTNI6EfhIk0pr8EhC8KT34W5PYCBku0qdh+mZSSNU+sWIdwbpPDlZ
- 2BMLjeozufvANd0M7tdDWIOVEjUuAtb2A5V0gDvh/5HAx1JOPB1mpp5hawjsv8SHJTHDVNdkf7K
- uw5oq/h3PnAaCTg==
+ bh=k9KrD0sN9JLFH9k9W9tr1Ywdw74on+tstjIdDpisM14=;
+ b=owEBbQKS/ZANAwAKAdro4Ql1lpzlAcsmYgBqv+gCaBu8sx78wBWfS4O6GESt5JDegukF9FyFw
+ xgJB0pJB3iJAjMEAAEKAB0WIQSHqb2TP4fGBtJ29i3a6OEJdZac5QUCar/oAgAKCRDa6OEJdZac
+ 5S6nD/9O1ZbDcqP53KzgX78tT16EGV8Wl3jc3tyrAR6T3SSz6snvMD9TrCYrKnJte0PUOKHpxLG
+ DCvqNo5Mb78Mu6Vnu0AKjWybPlUqS9qN9TVE6jAPRjVW88ckgMZmC2z9qzMUvKQ07vzuws9jbjY
+ 3SxwHmqoNcBMwuHs+YIfxrGJmHFWka7cHV3T5e+hzwKe7yQ3rIYSWO9cxUfvrsRQb20sZ8DDEPf
+ ZSwNHIhXJ5n+ke79kUgDPiHaA0bQCx7yKFw92uocfW91jEuPxRjOmvyLfJYG7eA6/bN/B5QLqUn
+ aI2skgQAmgHYUSccJL7eP8OUwluKHthDp8KqRpDFeSW/YkMtUNnetBL1cQgP9oV75ijenD+C4Bc
+ P+rqn7yIxda0AP28mzHKkTC1WUUoMpoWURSK4b5cqBTzLUsSQ80g4+G4lDTzjOwwG1lVaP6hXGf
+ Kz4itDPLD0MJXYt+Rvmx2Arh6Oywbmmv7Sscnrf9iupuem/ROkI56N5P959za8nYtXBnMaDHaOx
+ meYaXH5CMU7QF2BS5PMG1Q+wJHcjAYds8q9UaPb70tjJ1D25B8BFT1upPE3U9iTNAw2g0VLLrpR
+ fKz+hy5+tstw8jTN4sFA5+i/W6mJZC85XsYIIiGS6lIWKv/4Zbn9/HBaVYqJjKrlFGnVFpwtWxQ
+ vgWXYY94Dqa6dAA==
 X-Developer-Key: i=marcandre.lureau@redhat.com; a=openpgp;
  fpr=87A9BD933F87C606D276F62DDAE8E10975969CE5
-X-Scanned-By: MIMEDefang 3.6 on 10.30.177.95
-X-Mimecast-MFC-PROC-ID: hz1pE7AYIqUqZflCTQG7tDdezQYuMzPRt1L0qPn9CpI_1790961705
+X-Scanned-By: MIMEDefang 3.0 on 10.30.177.17
+X-Mimecast-MFC-PROC-ID: r5eXfCWNpWWKL4eUlkZhws-jfL2v8xoswai55xdcLu0_1790961728
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
@@ -108,17 +108,17 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-> Most of the standardized  USB1/2/3 host controllers are relevant
-> for virtualization use cases, so should be declared secure. The
-> "NEC" XHCI variant is slightly non-standard, but since it is a
-> trivial sub-class of the generic XHCI, there's no reason to
-> exclude it.
+> Most of the display adapters are emulating old hardware which is not
+> relevant to virtualization use cases.
 > 
-> The set of devices that are expected to be used is HID (mouse,
-> tablet, keyboard), host passthrough, CCID (smartcard), hub,
-> storage and the redirect tunnelling.
+> The exceptions that should be considered secure are Cirrus (PCI, not
+> ISA), Bochs, QXL, RAMFB, VGA (PCI, MMIO, not ISA) and VMWare VGA.
 
-Can't we exclude uhci/ehci nowadays?
+I don't think we should support all those display devices as security boundaries.
+
+I would shorten the list to: bochs, ramfb, vga, and virtio-gpu* (excluding virgl & rutabaga). Anything else has been known to have various risks and is much higher complexity..
+
+Gerd, based on your expertize, I think your opinion matters here.
 
 -- 
 Marc-André Lureau <marcandre.lureau@redhat.com>

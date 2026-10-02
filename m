@@ -4,85 +4,85 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4EC13CA5FDD
-	for <qemu-arm@archiver.kernel.org>; Fri,  2 Oct 2026 17:29:14 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id F079ACA5FDD
+	for <qemu-arm@archiver.kernel.org>; Fri,  2 Oct 2026 17:29:35 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xCgzO-0003T1-P4; Fri, 02 Oct 2026 13:24:07 -0400
+	id 1xCgzf-0004zW-TW; Fri, 02 Oct 2026 13:24:23 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <marcandre.lureau@redhat.com>)
- id 1xCgx0-0008NK-QY
- for qemu-arm@nongnu.org; Fri, 02 Oct 2026 13:21:40 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ id 1xCgxe-0000Fz-S6
+ for qemu-arm@nongnu.org; Fri, 02 Oct 2026 13:22:21 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <marcandre.lureau@redhat.com>)
- id 1xCgwy-0003TP-D4
- for qemu-arm@nongnu.org; Fri, 02 Oct 2026 13:21:38 -0400
+ id 1xCgxd-0003h8-FC
+ for qemu-arm@nongnu.org; Fri, 02 Oct 2026 13:22:18 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1790961695;
+ s=mimecast20190719; t=1790961736;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=DQzmbhzGyk0iOML82lQWr2IfcBKcOLgEId1IHR9dGqw=;
- b=KU/DD20dxXYKGoWZ/YS5G9bdThPGXW1KC2ID+nCzm7ga+L6wu2pxqNI05ro2cGA9MmM30e
- Tdb3jbmTlg8nuKzRppg7kT+HjSnX8MVjEm93CvzsQ6X3d8Dvy4pRblPZ/jjdOv7PX3ek2E
- 1UJoUNtIhdGqLE1viuZbLhBfGMHrk40=
-Received: from mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com
+ bh=odsg6seDL1A3x8nMCICjbWM1bqx8pH3GiORy5lEZxIs=;
+ b=KbCBoJuXtSL2OWdINgYUef0c8GsOKvh+IloSEpz3SZqizah7rfnzkAHQhVqnuxhPWS04c+
+ LqYZq4luw28Z+FCmN/8MqEG0kUVUxywPK64N5Kqv6MVYQBvy3Rf5eipfhJHMeYSy4KNrVP
+ 7b1tkcfYblCpL6qKzxEs27sONHdoceY=
+Received: from mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com
  (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-401-6sk8FPqCPEWpIN_3l9tEDQ-1; Fri,
- 02 Oct 2026 13:21:32 -0400
-X-MC-Unique: 6sk8FPqCPEWpIN_3l9tEDQ-1
-X-Mimecast-MFC-AGG-ID: 6sk8FPqCPEWpIN_3l9tEDQ_1790961691
-Received: from mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com
- (mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.12])
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-196-tB0D-qP7One0EVL5uzWu0Q-1; Fri,
+ 02 Oct 2026 13:22:13 -0400
+X-MC-Unique: tB0D-qP7One0EVL5uzWu0Q-1
+X-Mimecast-MFC-AGG-ID: tB0D-qP7One0EVL5uzWu0Q_1790961732
+Received: from mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com
+ (mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.4])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 70F1A197838F; Fri,  2 Oct 2026 17:21:31 +0000 (UTC)
+ by mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 033DD1955DDC; Fri,  2 Oct 2026 17:22:12 +0000 (UTC)
 Received: from localhost (headnet03.pony-001.prod.iad2.dc.redhat.com
  [10.2.32.114])
- by mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id A3AFA1956086; Fri,  2 Oct 2026 17:21:30 +0000 (UTC)
+ by mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
+ id 3792330000E4; Fri,  2 Oct 2026 17:22:10 +0000 (UTC)
 MIME-Version: 1.0
-Subject: Re: [PATCH 06/28] hw: mark all remaining virtio object types as secure
+Subject: Re: [PATCH 18/28] hw/tpm: mark all TPM implementations as secure
 From: marcandre.lureau@redhat.com
 To: =?utf-8?q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>
 Cc: qemu-devel@nongnu.org, xen-devel@lists.xenproject.org, 
  qemu-riscv@nongnu.org, qemu-ppc@nongnu.org, qemu-block@nongnu.org, 
  qemu-s390x@nongnu.org, qemu-arm@nongnu.org
-In-Reply-To: <20260911143627.2743803-7-berrange@redhat.com>
+In-Reply-To: <20260911143627.2743803-19-berrange@redhat.com>
 References: <20260911143627.2743803-1-berrange@redhat.com>
- <20260911143627.2743803-7-berrange@redhat.com>
+ <20260911143627.2743803-19-berrange@redhat.com>
 Date: Fri, 02 Oct 2026 21:21:01 +0400
-Message-Id: <179096166114.3025252.16977253754744941880.b4-review@b4>
-X-Developer-Signature: v=1; a=openpgp-sha256; l=309;
+Message-Id: <179096166127.3025252.52837397415486624.b4-review@b4>
+X-Developer-Signature: v=1; a=openpgp-sha256; l=311;
  i=marcandre.lureau@redhat.com; h=from:subject:message-id;
- bh=sxCkKp/ZMUyqes3eitE1tZzksOwuJ5PON2jVXe0dusE=;
- b=owEBbQKS/ZANAwAKAdro4Ql1lpzlAcsmYgBqv+gBjW/Atw0+zWBXIkienYKY3LmqFlBm9Dx8y
- dyfJ48xnZuJAjMEAAEKAB0WIQSHqb2TP4fGBtJ29i3a6OEJdZac5QUCar/oAQAKCRDa6OEJdZac
- 5S9tD/sEWlPdG00zqA/z/61RRB3Sn1bjGpyDXIwPxKPbcvpU/kaWDhYR81SloAp2WBOiV0PYMmS
- xavQ10ku81T00U7EmG3WIZO3T1tBMxOFrpvhUE2fhWQ0pRmMreNX8/ujG4SQfs22Sk+UHXNBt/Z
- hMQgXljQ+GeMJ9L1NDKnw2a4uRtB08Mt2Q6tPztTvQQYh2/dqDiF9jVnmgYSBTTBENtQ2sFFWSO
- 7MbQVI3zdMXPqy62Hg/h6X9U2Lt2zHSpO/TYy9EcEQB8bE8z8otFED4VljZkNHaNBeZ5sa8Xysd
- sTYPYvM5pLDlxVL8HmxUQqD6/eHm8AJ86K0iSZkc0y0BkGEHijkBNGkiRRT6bQFMRQTN1n7NEy8
- If7oWMNI3jfoTSFmsv8bfDWcLdZxKGp5Sd1RL8z6dSByd8/ljY36coZ/QdFEPvVK0nahj+Zglsk
- 4gvdRXS1WTDw+fGXrhxfmG1btfoyDaAGcPDR2A9eNy29AYTbzfCor+sc3/uE43peUhqdxWlfL51
- gPlZ/OjNoEU99NhbeF2L5nP6mQPjFj7H055zgFfb+xxeyNIafKLXweW60MlOR/Lqe/fZJFE17DY
- VhwqhppvR2yv64Cd91I2St6IQ18UEZDAOhzWS6lmHigsMOoDVsm5w7PkxtHvd+H7Ga9lYUIscFz
- ULpbpv9yzMo80GA==
+ bh=5ib7kbnvMQLEGT4quBiHZZ2xblFgOBBV7yGe0Fw3Eh8=;
+ b=owEBbQKS/ZANAwAKAdro4Ql1lpzlAcsmYgBqv+gCa0cJy16Wm8FxYIqcRoer4PF17CoBL3y11
+ 1AUOS+zCLCJAjMEAAEKAB0WIQSHqb2TP4fGBtJ29i3a6OEJdZac5QUCar/oAgAKCRDa6OEJdZac
+ 5SmxD/9UFyXaFIeiqXGMM2zVmi7AkR5hpeBWSCU9yDDbATqMKXA3Ey7hKwxCx8t+KRLdwudNtxI
+ o1ziuFYsn+WWmZwAU4gWuv12PiKjkGx401ZKI0DLyFTZU18MUCa+Y2xCEMcCcFLP9djc/KB2hSE
+ ZIbUiUqzF5lPVBnmXzlbw9ktpxstl9ycinv5Kw/XWdlWMFJRuZVFQY68XQo5PBxYkwZQt60DnQ1
+ XOsvz1xDFUBFu/DFqASYR6yq48vaSlatcqiUhowGgmY+/BO8enodwLO/wyXLz/p1f5lkEzcuSIW
+ DBqFweDnbPqE9yUcykSiyS1UCvCBEVhuggqZjumDA2fFpH8qoorePuvUPVrsUMBHzmQhvwCP7lg
+ 53YiP1Z25rgudsIFFGAJI8wyLUu69bKO0ht88tyzcp+61+XDOYP8ooQUBQZ8MDKp09FP1Yb1CZB
+ Bb1Yr74cG/YrRhBDRFhgP4vxjqig7E5o3zJIFGHRY+kZEfE3m3FUI1KodddfGrwPZGvjHR264PM
+ eWX0Vx1J+m2Nma7ID9ZyPzoJvu9quUz3c65NkYnz/m+2sN0ryJUj/QAev/pveFbdmVA8HtQ4BTE
+ eLM1VCaZkbZqNL0cLkjJOnyb8phNbf6Wjfa2nGu2mWEBgNMxTeDhHfsBK3OQxUZIlVqGMrwRcj9
+ G+W6tP5K0QlWstQ==
 X-Developer-Key: i=marcandre.lureau@redhat.com; a=openpgp;
  fpr=87A9BD933F87C606D276F62DDAE8E10975969CE5
-X-Scanned-By: MIMEDefang 3.0 on 10.30.177.12
-X-Mimecast-MFC-PROC-ID: iU4qtbriNWjEBB0o3RE3av1fWQ7HYtzziV7TOLtGaSg_1790961691
+X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.4
+X-Mimecast-MFC-PROC-ID: SFbWVvWiYDtFJvjOJI0yovMBspRcYF0PoU2phHy1Wb8_1790961732
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=170.10.129.124;
+Received-SPF: pass client-ip=170.10.133.124;
  envelope-from=marcandre.lureau@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: 9
@@ -90,8 +90,9 @@ X-Spam_score: 0.9
 X-Spam_bar: /
 X-Spam_report: (0.9 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.336,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=0.001, RCVD_IN_SBL_CSS=3.335,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=no autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ RCVD_IN_SBL_CSS=3.335, SPF_HELO_PASS=-0.001,
+ SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -107,11 +108,11 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Fri, 11 Sep 2026 15:36:05 +0100, Daniel P. Berrangé <berrange@redhat.com> wrote:
-> These are all intended for use in a virtualization scenario and must
-> provide a security boundary.
+On Fri, 11 Sep 2026 15:36:17 +0100, Daniel P. Berrangé <berrange@redhat.com> wrote:
+> All of the TPM implementations are in scope of virtualization
+> usage, so mark them all as secure.
 
-Acked-by: Marc-André Lureau <marcandre.lureau@redhat.com>
+Reviewed-by: Marc-André Lureau <marcandre.lureau@redhat.com>
 
 -- 
 Marc-André Lureau <marcandre.lureau@redhat.com>

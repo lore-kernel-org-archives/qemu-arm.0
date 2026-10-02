@@ -4,85 +4,86 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 64097CA5FDD
-	for <qemu-arm@archiver.kernel.org>; Fri,  2 Oct 2026 17:30:02 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4F02ACA5FD4
+	for <qemu-arm@archiver.kernel.org>; Fri,  2 Oct 2026 17:30:14 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xCgzT-0003zl-MF; Fri, 02 Oct 2026 13:24:11 -0400
+	id 1xCgzv-0006Lj-Bv; Fri, 02 Oct 2026 13:24:39 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <marcandre.lureau@redhat.com>)
- id 1xCgxV-00009y-Ee
- for qemu-arm@nongnu.org; Fri, 02 Oct 2026 13:22:10 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ id 1xCgyJ-0000dV-4j
+ for qemu-arm@nongnu.org; Fri, 02 Oct 2026 13:23:04 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <marcandre.lureau@redhat.com>)
- id 1xCgxT-0003dC-Sc
- for qemu-arm@nongnu.org; Fri, 02 Oct 2026 13:22:09 -0400
+ id 1xCgy8-0003qN-NU
+ for qemu-arm@nongnu.org; Fri, 02 Oct 2026 13:22:50 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1790961727;
+ s=mimecast20190719; t=1790961768;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=1nTk5h441BlUCx/NZYxRViDuR1MPXYhtJViIj4n3aPc=;
- b=NXnNg3igMk4alAHTLul3YQ/4h4WjMfOXg6H/gF0HCr4yzFFyjXBO8Z+x6Ps6V6mXxtbem1
- cj9cqWX/MiBHeHuXud9ktabxX7Qy2BQzWy4hinX/teWGCb9qdlRtvdR7bS7R8k6FqUxkl0
- gvDnVeEQtbS5u7LIYVpnjUtqwpnPGM8=
-Received: from mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com
+ bh=3Po2nSWSoSayh0ZmQrKbOsEezNV+hebfVDCbY0uFMRw=;
+ b=ZocF8ZMAipGgyNh2df9fWda0nsvBAxBLWbr9kbqPCDietjSR5b2+WjeSQ0nuy4QsGyURux
+ FvBqmBCScMIdz0rhJ0rgSvdNdy4PLzH9gNrGjQ0jVwbA6w6hg3FT+1Hg6i8Odr8p5daE4U
+ Shu5BOyW1zTbBwSI+Cd82L/OgPf/XrA=
+Received: from mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com
  (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-8-lVaX_vJSOX6-g8URbd2QEA-1; Fri,
- 02 Oct 2026 13:22:02 -0400
-X-MC-Unique: lVaX_vJSOX6-g8URbd2QEA-1
-X-Mimecast-MFC-AGG-ID: lVaX_vJSOX6-g8URbd2QEA_1790961721
-Received: from mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com
- (mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.111])
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-115-PkVk7RhaOhCkLiKssukuCw-1; Fri,
+ 02 Oct 2026 13:22:42 -0400
+X-MC-Unique: PkVk7RhaOhCkLiKssukuCw-1
+X-Mimecast-MFC-AGG-ID: PkVk7RhaOhCkLiKssukuCw_1790961761
+Received: from mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com
+ (mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.17])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 851721954B20; Fri,  2 Oct 2026 17:22:01 +0000 (UTC)
+ by mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 8969A1978387; Fri,  2 Oct 2026 17:22:41 +0000 (UTC)
 Received: from localhost (headnet03.pony-001.prod.iad2.dc.redhat.com
  [10.2.32.114])
- by mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id A41B01800351; Fri,  2 Oct 2026 17:22:00 +0000 (UTC)
+ by mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
+ id A4FAE1956042; Fri,  2 Oct 2026 17:22:40 +0000 (UTC)
 MIME-Version: 1.0
-Subject: Re: [PATCH 15/28] hw: define most common PCI types as secure
+Subject: Re: [PATCH 27/28] hw/input: mark PS/2 and PC Keyboard devices as
+ secure
 From: marcandre.lureau@redhat.com
 To: =?utf-8?q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>
 Cc: qemu-devel@nongnu.org, xen-devel@lists.xenproject.org, 
  qemu-riscv@nongnu.org, qemu-ppc@nongnu.org, qemu-block@nongnu.org, 
  qemu-s390x@nongnu.org, qemu-arm@nongnu.org
-In-Reply-To: <20260911143627.2743803-16-berrange@redhat.com>
+In-Reply-To: <20260911143627.2743803-28-berrange@redhat.com>
 References: <20260911143627.2743803-1-berrange@redhat.com>
- <20260911143627.2743803-16-berrange@redhat.com>
+ <20260911143627.2743803-28-berrange@redhat.com>
 Date: Fri, 02 Oct 2026 21:21:01 +0400
-Message-Id: <179096166122.3025252.2345560702508398440.b4-review@b4>
-X-Developer-Signature: v=1; a=openpgp-sha256; l=305;
+Message-Id: <179096166137.3025252.556263905170599031.b4-review@b4>
+X-Developer-Signature: v=1; a=openpgp-sha256; l=302;
  i=marcandre.lureau@redhat.com; h=from:subject:message-id;
- bh=S5LgpxEbmDgv4nz2+w3MAekw+e8ZUjn4pTaaJOhl7I4=;
- b=owEBbQKS/ZANAwAKAdro4Ql1lpzlAcsmYgBqv+gClYQc6x9HdvVuTz3orxL5k19B0JWDKbBeO
- 2UgDlZ3atSJAjMEAAEKAB0WIQSHqb2TP4fGBtJ29i3a6OEJdZac5QUCar/oAgAKCRDa6OEJdZac
- 5QCGD/4v3MxlW9xcT2gilvuqgxjpT1DxHwa00sDRs5T+gRudU6o1ntWoLU1qAc7JZwaJ/aqChOd
- IKsduJD+1Yalyd+onaPKwClZFmIj9njmtkFoJwrqiK0G5YZJDw5Lru0MvY97a1t2EuSQMVZfjim
- z2F+s4CJm7MsgLBZV4Uvcv7ON+jwC3kLFiMH1rl89BmM/FmVWCPE175WC2mdtLoj5xq6bt3+FY3
- ZLEMvjIn0YLigHAmkKeWitG8N8SZuCCP8GK4EVxHTj3+b1sTbexIng7XhmDleJlUtMeHJf6gck2
- BrknT+6fYa9FNDyuoI5kOPwGONw3mbBxpLSTcFWBsAKyAJZyaVjVVAzIk4B6Amki3NFeFde8ZFl
- 1bnaSYcMCZh7UAnNJDTvWTWWNJZkAJWG+uZVVoHI9YdB1hhkpI4qrz61UNvUy0vgvAz8BgIbSL2
- fUgE1s76avvtH6uGlnp+tK68m/7haS/kJsSrQNw/03rkPBLsTNEdBVBGX1oF4d2NOOX7eLRkRBT
- S4kLfXZ/jIK232Bg2hpMqUEWvIxPbemtrDq/ofdByqfw1RiUvhLLH5UKUHjJWgUU7UkbN7taxj3
- xYthEKHzY5c0A8E0thzpO8xoGF91S61FwW5b+VrOIDC9CycnIJWAuTzg8Ggx0/c70BXc7hzd34R
- 1AGq6NK7FV7PPiQ==
+ bh=tTtlzWMBLVL6WKPHRL13fizlkZpuTmnkOPP5LOIVXqw=;
+ b=owEBbQKS/ZANAwAKAdro4Ql1lpzlAcsmYgBqv+gCCkdjQH4kX6PW5FdNo32FTnqzwmd0E2m+2
+ jaQ7RkhhrqJAjMEAAEKAB0WIQSHqb2TP4fGBtJ29i3a6OEJdZac5QUCar/oAgAKCRDa6OEJdZac
+ 5VQgD/9rcFRVxD/6+8UOsDu9lz2b4VreQs5EVRH9m1SendqEq/V3fy0YFHVoQrPqiT3LSuH/xSz
+ QP5u9BcFdttl/KHkw1dKNY0kAVVLtpmtlAOTDibUKSyEHzvqxPQA7vnE29Eeq9N0Q84REnObo6u
+ V4fpp+b+D9/fY7gt1whCiWP1NBCrCmduex2TE/8FHZtQ8a5RY8ekxaQ1JillX/uyUdhNuUJwLTt
+ Omhmpo3ftIuplNexoYcnxBKL1+ehp9VxdR3PlHGtkahCYZr2R91fWg7Ua00Ny+8b55aQLdU5vtd
+ 9NSMyp4rVBsi82YdTGq2NZuiav9r4g/OHnePW8dtTf0RuLVxt52rhdWMV8gXQ/8MPkFdErXK3XM
+ mDgb8iQxRYx8UUXoOCwzEyuqJd0N+25HeOlEpW8VgVJy4RH+JV50sqobkqDZenwRu7nQhf4WvH6
+ JPTig+2MFEEQkcnLLtem53bsLO8+fc0LeqWa8jJH3VWQKA6/IsVoq6jbjXHPZnoh6+pZ1NT9CJK
+ MMneVAr+WiDHrYGv3BSGR4Vz/IMMYUxwVBlByHWKsn66ozOW0DQ6eiqpBnPx7BgMBopplIx70lV
+ MsG1dPgu80yrUb33BkYtw2RXCmxhe65oNOBaqFx6oWpAiOQGoJUlS1AHGOlM9TMqodJlrraVgPV
+ nFmtm6Z5xJhkkTg==
 X-Developer-Key: i=marcandre.lureau@redhat.com; a=openpgp;
  fpr=87A9BD933F87C606D276F62DDAE8E10975969CE5
-X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.111
-X-Mimecast-MFC-PROC-ID: kKqZtyKlbwysczwtBwYT1X8WzkIkwEf7q5A3an_DaSk_1790961721
+X-Scanned-By: MIMEDefang 3.0 on 10.30.177.17
+X-Mimecast-MFC-PROC-ID: Fdi-LOzMFTYJVsAhKYbvZOI0A4RjcBLALDpv5EhmJBw_1790961761
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=170.10.133.124;
+Received-SPF: pass client-ip=170.10.129.124;
  envelope-from=marcandre.lureau@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: 9
@@ -90,9 +91,8 @@ X-Spam_score: 0.9
 X-Spam_bar: /
 X-Spam_report: (0.9 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.336,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
- RCVD_IN_SBL_CSS=3.335, SPF_HELO_PASS=-0.001,
- SPF_PASS=-0.001 autolearn=no autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=0.001, RCVD_IN_SBL_CSS=3.335,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -108,13 +108,11 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-> Essentially all PCI infrastructure is in scope for the virtualization
-> use case, aside from the niche simba bridge.
-> 
+On Fri, 11 Sep 2026 15:36:26 +0100, Daniel P. Berrangé <berrange@redhat.com> wrote:
+> These are part of the baseline x86 featureset so required for
+> virtualization use cases.
 
-You should exclude the CXL bits though, as stated on cover letter.
-
-Also questionable perhaps: xio3130, pcie_pci, pxb
+Reviewed-by: Marc-André Lureau <marcandre.lureau@redhat.com>
 
 -- 
 Marc-André Lureau <marcandre.lureau@redhat.com>

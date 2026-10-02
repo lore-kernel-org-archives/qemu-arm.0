@@ -4,69 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EB3DECA5FE0
-	for <qemu-arm@archiver.kernel.org>; Fri,  2 Oct 2026 17:55:16 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BD013CA5FDD
+	for <qemu-arm@archiver.kernel.org>; Fri,  2 Oct 2026 17:56:55 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xChTI-0006gs-Sz; Fri, 02 Oct 2026 13:55:05 -0400
+	id 1xChV6-0001i7-Dv; Fri, 02 Oct 2026 13:56:53 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <luoyonggang@gmail.com>)
- id 1xChQY-0004Q1-Ph
- for qemu-arm@nongnu.org; Fri, 02 Oct 2026 13:52:14 -0400
-Received: from mail-dy2-x0e.google.com ([2607:f8b0:4864:36::e])
+ id 1xChRR-0005Ir-Ub
+ for qemu-arm@nongnu.org; Fri, 02 Oct 2026 13:53:07 -0400
+Received: from mail-dy1-x1336.google.com ([2607:f8b0:4864:20::1336])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <luoyonggang@gmail.com>)
- id 1xChQX-0007UT-3E
- for qemu-arm@nongnu.org; Fri, 02 Oct 2026 13:52:10 -0400
-Received: by mail-dy2-x0e.google.com with SMTP id
- 5a478bee46e88-3510f6f130bso274193eec.3
- for <qemu-arm@nongnu.org>; Fri, 02 Oct 2026 10:52:08 -0700 (PDT)
+ id 1xChRO-0007cl-JR
+ for qemu-arm@nongnu.org; Fri, 02 Oct 2026 13:53:05 -0400
+Received: by mail-dy1-x1336.google.com with SMTP id
+ 5a478bee46e88-32efd24b2aeso429631eec.1
+ for <qemu-arm@nongnu.org>; Fri, 02 Oct 2026 10:53:02 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20251104; t=1790963528; x=1791568328; darn=nongnu.org;
+ d=gmail.com; s=20251104; t=1790963581; x=1791568381; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to:content-type;
- bh=DnPGu3Cq8N2c5ApqFrNQY+BLbQI39d3Uoq0oUbreh6M=;
- b=jjOkApycNWb28C1gaxwSDGngiic/PmLmW6Nda/STH41NOcI2y7Lma/Y9MRHSHCBoFu
- KfYMf+kYvj7bFiHnoMac8R3yiGaivJTeiWYxWLju46ktWCWsMTF8Gi1Tjdoj3pMnmc5k
- qPxWn92RhRUKmON6yrNJi0L0BOpkjyWBB0MQVxJYOVt5WTtkXn9vj/txngMDo9GytkQu
- zIuD/z7WK3va5PO0zLZi+DBZT/E8F+cpujZxIgP24j0ou07c2KGVbXHchqGb03TfRJW3
- xzbbGphrIIOIDgLYr/cE7kev+Ah+AWRZfk9na3K9nAjYVeiA41jBgUxY4lD3IA8gAlQD
- q3iA==
+ bh=ZNU4PHC3hnUAQwnMHFav3xH/N5F8DnZib4Be85nEsJE=;
+ b=WO1z/3b58eD7oxWYuAGjtApyj0b8M4InXR4bYmTAWEJ/6KFHE5xEiWTbqryHP4zjcA
+ N/rEapXak+ybaqfRg0/AAYRIQtqRBzZJQYSAO4hltjdI+6K4xbA4Chej5oUomhd0thEO
+ 7fLjbCHUN5HQ8PcMu332SeLQhtuJy2J6CgX9ozyQ6h+saNhkTu0cZIp4W4za5Ms5j729
+ j0Kj6EvwYMmW6OYtdMPw5FB3WB78YYa6Vdawr4bYRhGVrqiwo+yery3+t8GVZRzE+lv8
+ 8RJc1cUK+MOW4qidBxPX6JfanU0eJDR0uW7+hQRpYYerMYyrb4/b5Q1JkI8kW6g7vHa0
+ 7FQA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20260707; t=1790963528; x=1791568328;
+ d=1e100.net; s=20260707; t=1790963581; x=1791568381;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
  :to:cc:subject:date:message-id:reply-to:content-type;
- bh=DnPGu3Cq8N2c5ApqFrNQY+BLbQI39d3Uoq0oUbreh6M=;
- b=vkdw2xhx3DL6n66iZ2fh6Zyb4RjoxoBL5f3YJN6YJEMSDWSHoYhuhrC7vPd6xoxixL
- LhVWPNRIFQ0RtjUPN8jiTTe5iBxM8uJ3YOUz4liGIx1MXVSt1pdngseN0QyHZkAkthKu
- 52TPSmE9XtgWXFIa6y9uIfgDQ72tuc08hnxhNd48naWfnaD9ED4lN6ZC9V+CglD70rii
- q7QlKz3QN1fX6Jrz8QiTX29PmmrXoQK1Hw5ggqNS+evSMWNAU1If4eTBjS0izA49o0z5
- yYGRQt7qfHYFWJz5S4NLRmi9GbyuKnFm+xbWUlCZRL/AS6sXBhsRPE/gcoZ7Hb5daTYj
- GMlw==
+ bh=ZNU4PHC3hnUAQwnMHFav3xH/N5F8DnZib4Be85nEsJE=;
+ b=DquSzIOwU3BY8xDegcYLQ4z1E7NJP6GC/+JzLA6lDsCxPlQ44TvC5w95NfiI58KXPG
+ bdymqgIPi03GOU8+5szuZPsCAkHDSG0RJCakgetgHKFQ4LQAJhVN1QcQACYUqSkGrzb+
+ WLpj68e8Rql2dDONS2W7gnu/7Xh56mmTDFZ9tPjWpV4o5eR0osB3ofBiXwvlu749x1yu
+ XdQxaTg7zvqmKywOVQ3djMlhWVD4ylVkDJEpGn3nHi2l45rT2nwUmGlRgVfB8cdcMbSc
+ 2hvGR6kNgBqrOjTvnqA5hD9OFa0clSvs2ehDEbcVR7h81sgEDZZV10iOXAL6Z2m82Cgc
+ wdiA==
 X-Forwarded-Encrypted: i=1;
- AKwUvBzBbgeUSiUwwgdrq6inVHFr5sh/x4JoaBdlAd8uTrpckynP/Pk8Msw41kYcZsM1l86LVy9MVBjAaw==@nongnu.org
-X-Gm-Message-State: AFuF++kGtFb1FXIHdIQZ8MwagwncyflwNCl6JyiJqUiGG6mWbn/FzgY2
- jqaMeJITjSa9clwZ13/XcjerjiVtX2pfE9Ai4FBF14R3wQBE4R5qz0i7
-X-Gm-Gg: AYBFou2sUvWiRfORE+q3zClwiBNzNwdKP6xkjrS0JhfU12fP3Ll7aOILsJ8xhVJyoOR
- CuaD1HvLS5Oo7+W/j83g+m/0Fzfj8fwZSDZeTKjQH18OQ1/FqOErr20oPkEWsC99U5kyYtM30/C
- f4Mnt9/59q5pnA/2rpBIKWOVwfDL0F07hx95eMqcnXKvsiz5c0yGDjHNm5AIS7SRsrDAKXKEpEO
- Umrvv+A9V7gudWUh3VNzTfQ2orfTP1kf5Cb/FulUGOnB3z5dV7Y/nEzUAGQxtVy8Unm3xPgNUp0
- 9KI56qxDVxA1xOTf9ihUyCoUyb23bx8tzinmadOtMkMi+40A/WMm07itU0skIwYaGVTT02H5+x/
- /X4Tx9VPiZH+J1kOk9PebetWxyiwYvczQs7zTcK+gXZZOeGr30k2hOhjS57anZxUtSczUaAnd3Z
- 7/jtrwE1XOWandhi8Jjgr4jEyXt31zLHlNal+qog/OaYX1Zdwyra7+eDPunAeHjZfS/XuMufkc4
- DOhzgM/GAxuTybDIZvuoOfDaOdwWA0=
-X-Received: by 2002:a05:7301:4709:b0:34e:e7f4:cc78 with SMTP id
- 5a478bee46e88-34f14f18c23mr3650855eec.5.1790963527600; 
- Fri, 02 Oct 2026 10:52:07 -0700 (PDT)
+ AKwUvByv5Lc4rl/Wyib9JOFTBLWCOEM9URPBcVkRmrYWWUqVx8woptMHTJiy5nPSkGzRKVeroPKUZcSzkw==@nongnu.org
+X-Gm-Message-State: AFuF++nT10o2JnIc5fgWDRcNKN3GfqoFZacFy0cW4KJaTeMivxHJKKQN
+ Wd9893kFTdCTsz3a1xyKC1P1DgTH725p1LmOOWglSyvg00ckndCvZ22i
+X-Gm-Gg: AYBFou33nDAzQvTkQ9Kzcr1qBZfwQZrxWeazubKuCyZClDgw5cnhtN4ZFRRgv47/kax
+ jjeINv5/IbwpEBLrMSSf6SSpXo2iTfmNhkmsV2uh40wCXHvxZXWDSyyObQhe1S9yikL2Lh1Ai9o
+ NxhKB/Ba1hTT1Pd82fs1F0+ZeeTmdOm7uoTUGInYB6F+vio0TE+H0EdnmJepdHK1Vbe7gSU0vjd
+ cmezqIR4VDKHKzswRIXeVVrx/d2O+O5V+3vfwldmBbUiFHDsTfzRFv1yyEbhRB2t3FtAepHa5KC
+ nwqEysa/AUIykHQ88C3zhoDJokDxt85fYUWSlw5JT7Zhfdskc365LpLCCSjwBcLbcibQXvAY3k0
+ LRRaueeMwt9PovLmvwjCON4E1/4MwpMYMkctmW+MTERk3vxx7WL7Dbk8pdAXLUa89i4JKRJqdTa
+ 1nOUPiyxRiyzix4D3SNpk1g0w5oK6x44myAIjraaggkfmu1e+yj9dQlo+LqS7dSj2p0F9fhHYBz
+ G7wJnzNu8lVeucoBpaL2guEV6RGMOv3Yb9huM6CzQ==
+X-Received: by 2002:a05:693c:638f:10b0:34b:dde6:29c7 with SMTP id
+ 5a478bee46e88-351114568a1mr356247eec.19.1790963580723; 
+ Fri, 02 Oct 2026 10:53:00 -0700 (PDT)
 Received: from WIN-BH9M8FJACR9 ([103.94.185.75])
  by smtp.googlemail.com with ESMTPSA id
- 5a478bee46e88-34f14f9f2afsm18027361eec.18.2026.10.02.10.52.00
+ 5a478bee46e88-34f14f9f2afsm18027361eec.18.2026.10.02.10.52.53
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 02 Oct 2026 10:52:06 -0700 (PDT)
+ Fri, 02 Oct 2026 10:53:00 -0700 (PDT)
 From: Yonggang Luo <luoyonggang@gmail.com>
 To: qemu-devel@nongnu.org
 Cc: Max Filippov <jcmvbkbc@gmail.com>, Stafford Horne <shorne@gmail.com>,
@@ -98,16 +98,17 @@ Cc: Max Filippov <jcmvbkbc@gmail.com>, Stafford Horne <shorne@gmail.com>,
  Laurent Vivier <laurent@vivier.eu>, qemu-arm@nongnu.org,
  Paolo Bonzini <pbonzini@redhat.com>, Glenn Miles <milesg@linux.ibm.com>,
  Ilya Leoshkevich <iii@linux.ibm.com>
-Subject: [PATCH v3 10/27] target/sh4: log all exception vector names
-Date: Sat,  3 Oct 2026 01:50:18 +0800
-Message-ID: <20261002175037.1747-11-luoyonggang@gmail.com>
+Subject: [PATCH v3 17/27] target/loongarch: convert raise_exception to
+ raise_excp
+Date: Sat,  3 Oct 2026 01:50:25 +0800
+Message-ID: <20261002175037.1747-18-luoyonggang@gmail.com>
 X-Mailer: git-send-email 2.52.0.windows.1
 In-Reply-To: <20261002175037.1747-1-luoyonggang@gmail.com>
 References: <20261002175037.1747-1-luoyonggang@gmail.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:36::e;
- envelope-from=luoyonggang@gmail.com; helo=mail-dy2-x0e.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::1336;
+ envelope-from=luoyonggang@gmail.com; helo=mail-dy1-x1336.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -130,50 +131,115 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Add names for reset, manual reset, TLB multiple, and user break
-exceptions in the SH4 interrupt log.
+Inline do_raise_exception as it's used by other arch.
+
+Use the shared raise_excp_restore helper for translated exceptions and
+adapt the logging C exception path to cpu_raise_excp() or
+cpu_raise_excp_restore() according to the return-address contract.
 
 Signed-off-by: Yonggang Luo <luoyonggang@gmail.com>
 ---
- target/sh4/helper.c | 12 ++++++++++++
- 1 file changed, 12 insertions(+)
+ target/loongarch/internals.h     | 12 +++++++++---
+ target/loongarch/tcg/helper.h    |  2 --
+ target/loongarch/tcg/op_helper.c |  6 ------
+ target/loongarch/tcg/tcg_cpu.c   | 10 ++++------
+ target/loongarch/tcg/translate.c |  2 +-
+ 5 files changed, 14 insertions(+), 18 deletions(-)
 
-diff --git a/target/sh4/helper.c b/target/sh4/helper.c
-index 0fbd613f333..68f495b5ede 100644
---- a/target/sh4/helper.c
-+++ b/target/sh4/helper.c
-@@ -97,12 +97,21 @@ void superh_cpu_do_interrupt(CPUState *cs)
-     if (qemu_loglevel_mask(CPU_LOG_INT)) {
-         const char *expname;
-         switch (cs->exception_index) {
-+        case SH4_EXCP_RESET:
-+            expname = "reset";
-+            break;
-+        case SH4_EXCP_MANUAL_RESET:
-+            expname = "manual_reset";
-+            break;
-         case SH4_EXCP_ADDR_ERROR:
-             expname = "addr_error";
-             break;
-         case SH4_EXCP_TLB_MISS:
-             expname = "tlb_miss";
-             break;
-+        case SH4_EXCP_TLB_MULTIPLE:
-+            expname = "tlb_multiple";
-+            break;
-         case SH4_EXCP_TLB_VIOLATION:
-             expname = "tlb_violation";
-             break;
-@@ -136,6 +145,9 @@ void superh_cpu_do_interrupt(CPUState *cs)
-         case SH4_EXCP_TRAPA:
-             expname = "trapa";
-             break;
-+        case SH4_EXCP_USER_BREAK:
-+            expname = "user_break";
-+            break;
-         default:
-             expname = do_irq ? "interrupt" : "???";
-             break;
+diff --git a/target/loongarch/internals.h b/target/loongarch/internals.h
+index ff956823fd7..885d516fe52 100644
+--- a/target/loongarch/internals.h
++++ b/target/loongarch/internals.h
+@@ -19,9 +19,15 @@ void loongarch_translate_init(void);
+ void loongarch_translate_code(CPUState *cs, TranslationBlock *tb,
+                               int *max_insns, vaddr pc, void *host_pc);
+ 
+-void G_NORETURN do_raise_exception(CPULoongArchState *env,
+-                                   uint32_t exception,
+-                                   uintptr_t pc);
++void G_NORETURN loongarch_do_raise_exception(CPULoongArchState *env,
++                                             uint32_t exception,
++                                             uintptr_t pc);
++static inline void G_NORETURN do_raise_exception(CPULoongArchState *env,
++                                                 uint32_t exception,
++                                                 uintptr_t pc)
++{
++    loongarch_do_raise_exception(env, exception, pc);
++}
+ 
+ #ifdef CONFIG_TCG
+ int ieee_ex_to_loongarch(int xcpt);
+diff --git a/target/loongarch/tcg/helper.h b/target/loongarch/tcg/helper.h
+index e76c73c7755..e3a7bc9e9da 100644
+--- a/target/loongarch/tcg/helper.h
++++ b/target/loongarch/tcg/helper.h
+@@ -3,8 +3,6 @@
+  * Copyright (c) 2021 Loongson Technology Corporation Limited
+  */
+ 
+-DEF_HELPER_2(raise_exception, noreturn, env, i32)
+-
+ DEF_HELPER_FLAGS_3(asrtle_d, TCG_CALL_NO_WG, void, env, tl, tl)
+ DEF_HELPER_FLAGS_3(asrtgt_d, TCG_CALL_NO_WG, void, env, tl, tl)
+ 
+diff --git a/target/loongarch/tcg/op_helper.c b/target/loongarch/tcg/op_helper.c
+index f98fe4d4a16..109417b7503 100644
+--- a/target/loongarch/tcg/op_helper.c
++++ b/target/loongarch/tcg/op_helper.c
+@@ -16,12 +16,6 @@
+ #include <zlib.h> /* for crc32 */
+ #include "cpu-csr.h"
+ 
+-/* Exceptions helpers */
+-void helper_raise_exception(CPULoongArchState *env, uint32_t exception)
+-{
+-    do_raise_exception(env, exception, GETPC());
+-}
+-
+ /* loongarch assert op */
+ void helper_asrtle_d(CPULoongArchState *env, target_ulong rj, target_ulong rk)
+ {
+diff --git a/target/loongarch/tcg/tcg_cpu.c b/target/loongarch/tcg/tcg_cpu.c
+index 4b1d44a1644..0a1115721c0 100644
+--- a/target/loongarch/tcg/tcg_cpu.c
++++ b/target/loongarch/tcg/tcg_cpu.c
+@@ -59,9 +59,9 @@ static const char *loongarch_exception_name(int32_t exception)
+     return "Unknown";
+ }
+ 
+-void G_NORETURN do_raise_exception(CPULoongArchState *env,
+-                                   uint32_t exception,
+-                                   uintptr_t pc)
++void G_NORETURN loongarch_do_raise_exception(CPULoongArchState *env,
++                                             uint32_t exception,
++                                             uintptr_t pc)
+ {
+     CPUState *cs = env_cpu(env);
+ 
+@@ -69,9 +69,7 @@ void G_NORETURN do_raise_exception(CPULoongArchState *env,
+                   __func__,
+                   exception,
+                   loongarch_exception_name(exception));
+-    cs->exception_index = exception;
+-
+-    cpu_loop_exit_restore(cs, pc);
++    cpu_raise_excp_restore(cs, exception, pc);
+ }
+ 
+ #ifndef CONFIG_USER_ONLY
+diff --git a/target/loongarch/tcg/translate.c b/target/loongarch/tcg/translate.c
+index 124dce62695..b7e8ce8a653 100644
+--- a/target/loongarch/tcg/translate.c
++++ b/target/loongarch/tcg/translate.c
+@@ -95,7 +95,7 @@ static void gen_nanbox_s(TCGv_i64 out, TCGv_i64 in)
+ void generate_exception(DisasContext *ctx, int excp)
+ {
+     tcg_gen_movi_tl(cpu_pc, ctx->base.pc_next);
+-    gen_helper_raise_exception(tcg_env, tcg_constant_i32(excp));
++    gen_helper_raise_excp_restore(tcg_env, tcg_constant_i32(excp));
+     ctx->base.is_jmp = DISAS_NORETURN;
+ }
+ 
 -- 
 2.52.0.windows.1
 

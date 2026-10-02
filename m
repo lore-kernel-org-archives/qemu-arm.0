@@ -4,70 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 809D7CA5FE5
-	for <qemu-arm@archiver.kernel.org>; Fri,  2 Oct 2026 20:21:02 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B1C5ECA5FE5
+	for <qemu-arm@archiver.kernel.org>; Fri,  2 Oct 2026 20:21:42 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xCjkN-0007I0-5h; Fri, 02 Oct 2026 16:20:50 -0400
+	id 1xCjkn-0007e4-Fs; Fri, 02 Oct 2026 16:21:14 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mathieu.poirier@linaro.org>)
- id 1xCjkC-000794-Mo
- for qemu-arm@nongnu.org; Fri, 02 Oct 2026 16:20:37 -0400
-Received: from mail-pl1-x62e.google.com ([2607:f8b0:4864:20::62e])
+ id 1xCjkl-0007c1-6p
+ for qemu-arm@nongnu.org; Fri, 02 Oct 2026 16:21:11 -0400
+Received: from mail-pz2-x2b.google.com ([2607:f8b0:4864:3b::2b])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <mathieu.poirier@linaro.org>)
- id 1xCjk9-0005jv-Ql
- for qemu-arm@nongnu.org; Fri, 02 Oct 2026 16:20:36 -0400
-Received: by mail-pl1-x62e.google.com with SMTP id
- d9443c01a7336-2d6e954afbdso11933385ad.2
- for <qemu-arm@nongnu.org>; Fri, 02 Oct 2026 13:20:33 -0700 (PDT)
+ id 1xCjkj-0005rK-7A
+ for qemu-arm@nongnu.org; Fri, 02 Oct 2026 16:21:10 -0400
+Received: by mail-pz2-x2b.google.com with SMTP id
+ 41be03b00d2f7-cc78dd54610so3016063a12.1
+ for <qemu-arm@nongnu.org>; Fri, 02 Oct 2026 13:21:08 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1790972432; x=1791577232; darn=nongnu.org;
+ d=linaro.org; s=google; t=1790972468; x=1791577268; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to:content-type;
- bh=bm2R9pn3B+qOLBch30fsk6rbf6WKwHzxx8w/KoQ0W+A=;
- b=wARbj3NHigENwBWzMrS4G6dZ+oZNQFRzjjG4vSZ6ZkKh3cTnDfyCXixjC+5am5HE1T
- Gs6Rv1aoSn4Rn5a7MmVl0HM+v+55xWWU8/a3gL0+u/sQgxtV9BB2MMqSPJnMerZUqET1
- ScLWhr88Y4qjyxRSveJfvdGpGi4fEawsczY9A9rzvR/CMCKnFoXFekhx9iNk0sl9Dgl0
- uXFA9D7g3Ui7CFb6hbrmVXvjalJlYgOTxhxN2Dbo0R4ksW3eZ0Rnk4InF6+stPc0DhPF
- 3Vd2K0MI/DodjJGPTq7k0cIMAaymDG1v0tiR1claexmzgnNZBJSgvZ2NNDO5XA7it21W
- iYEA==
+ bh=LpASq3jOBF00q1EZdBLVp0S8hhXgpRTHfBnK0kI8ssk=;
+ b=fMQ+wvZsDZehH2h9ejK45wu7VvCodeTrD92LiZWSwqCzhr9cMCRRAjFUBZLrLr+YCa
+ eqEzh0GzFrPOtHWrQ74BzqDpnJF7I3vghhfd0azggkExbWq8DSHpdzSLVbYTibEXZ0HE
+ 8ApcKrMT4FM8yog5xXZBvtTXb+mnyfJsfaUUSi1e4VT3kJcMDuEgYK7PdFI+fWMzw1kp
+ sY9FfCWRHyF3G4YueC2JvIN3OMhESsBZSiZQA3BD4fwhfo/k3Eils9o8ZIZEFeAAC5xS
+ 8BlPulicDISbyJNxtNqVYIwi18MJ13WrcWjfUUCIu8qFKSiz1mnQQBXAoi2WDoleSPgm
+ Y4Iw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20260707; t=1790972432; x=1791577232;
+ d=1e100.net; s=20260707; t=1790972468; x=1791577268;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
  :to:cc:subject:date:message-id:reply-to:content-type;
- bh=bm2R9pn3B+qOLBch30fsk6rbf6WKwHzxx8w/KoQ0W+A=;
- b=yoVI4nr6Zi5PzhjutsQl+L6+d7qL/1cxp19kQe0RnI8SJyyjxgHUTlXQ9fTqFepI/+
- 3xZt4QCzpo4ula4B3WEvVHLXxQtH7bKE+QZvxhgJ/HngPFyz33a5BEhDfmWGNx1x5CcN
- Ju0OXl50CMfPXQt7s82Nw0PSFAswdAs49d93UuYeIf935l8VDRyXcRAd848JluILvbFP
- EXAj8HiJOZoTnDbVL8Y1MOJtIzgJ88Py5R46qwO937Il4VfxKeLEYyDLLFrh4ImTU72e
- lILYPHI1kpOv2koZ9AXmqures+bLN1atAAybDOfPYm3ud363FQ7RhlW4Szq+lf/DZDIQ
- hoDg==
+ bh=LpASq3jOBF00q1EZdBLVp0S8hhXgpRTHfBnK0kI8ssk=;
+ b=WVjmA86/ictu1MsGjp/T0L1c+d70ZtyfH7cTM2wVk4qyUNb5E4g3TL0LlEfybctFoK
+ Yaoz+09jQZWhhqwShZX45UeuKZpzVeWiZuwt4hiPtLsgoy7Ajvul5Ixsa85xDKMiHLf5
+ IENWcqzkqkNvedvaSZiiBRDgE30NXh1a3WbmFu6NliT5fhBpMgzAAARiIUM/okYU32se
+ 6rZ/Al+kIZWOcThpTZUpQy+TRsdIVfG4Wq8uR+cy+isModdsnRRd4ThsfPUWD9PjbtUF
+ E66HN9nxz/VRfCL6UsyF5yCZ2ggRjhiKDhNmTwwa5fdyQQ6hMj52t/2alyodQdG1ppaZ
+ tbEQ==
 X-Forwarded-Encrypted: i=1;
- AKwUvBxi198JmQt1RrKNc5XMwEFcc81EoCyqlBJAat41etWgyg+gNaK5WykOiz0sxvmggVu7AoWaAS752Q==@nongnu.org
-X-Gm-Message-State: AFq9FYINe1E9q+5NumDtmdcyEWkT3eDkBpfiigypgLq6Wl/fewTsLj3+
- 0n9pfUSlfZT8J2FQYLYx01XRk4Dn/7J/lR6nRslkWkf+/jft/k1kKibcxmHNeRb262Q=
-X-Gm-Gg: AYBFou1fgL2GjAgm5l5l8HKYTVfiyOYa/7qSxVUQsyBXTh08ayQWb+3b5XEex19KFaP
- +FBAQ+Xdq6xSaBrCZGBXXblNE+7IzNalCTkNJI/QLqcBwH2F3/Fw/WnZSShg4q4k87618c7vgl7
- 33SV5tkjuSQXMXyLxWqPARFwCt7KIIEIb0oaUo6ZDodNVvdos5SuQl6g7wQgH4iQ5CFSgwApay/
- xYv/tfqItyigLA3SlIGPYK6mOOhUbRTzv2h8leS6PKgc4odB39zfX5ydumOX1N6j9hBgly/O0ML
- QCGzS6zTsa4CquW8WTlrZcQgYNRE7V5NxbX2yYyBCwbj1VhC7WygLOHlltRBuVjWZNbldkXzlYj
- CyxnrHzjsjsWeqoizhS7UmU/+c7cNpJX2i9gaNux66sQAQlhtz6pYVrO0kLb9RzfukCCOaNB8FC
- GNwK6AYYsE6h3axZrJ2HVu7p+DjWetNoMIvS5xo4plEsKBA3Tq+1enRUuAmXjfVK3AC4PAk7IMy
- B3pfpi3zghlucj6Ddplg2rN
-X-Received: by 2002:a17:902:f541:b0:2df:89d3:1b6c with SMTP id
- d9443c01a7336-2e4e9c28c59mr5729955ad.5.1790972432088; 
- Fri, 02 Oct 2026 13:20:32 -0700 (PDT)
+ AKwUvBw5In/2wSqmhhHHHFbGY8qbUYIJav0I4acoyZv5m2JjOBn6+u8t6X4NLhi+K0ENk05gHs5mjVV87g==@nongnu.org
+X-Gm-Message-State: AFq9FYIiIOlaCDk2QdTitIgxPGbzQCDNnAoUKBVue7KM+ANobm6Q5RYU
+ dBEo8z4IpcRM6UIxMK1qk7WXae95Q15RDd7DOcocMMWiy1Us7Q/Ib0Q5hS1QI1myx0s=
+X-Gm-Gg: AYBFou2uhY7iPNvbv/AXOwV60paTc0hQwiu+yif0CIhrpV0jf57zfq1Xhe5/qHQrU5b
+ jihLJWYZwQC4Nx8+TWCOW3gn6higXvi3XVu7JWWtU9zVjLw5Ivyf3IzTavOw6MiZbX32ROClAsA
+ fMks9srCQb5keBICCq/RRDU06OjOI13Tww/b23NfmC9m7QBuK+5klrfLft3IWLEl9BtbiM5Oj/q
+ WPgIzYGSZMiZ0fDC6rPsdBafbaDFYmj9hKe798xxhmgA0juh6C9d6G0XwJo3+cyyQ8exhSeb97Y
+ n2j1MHsBbZB0l3264gkwPMpkSroGt2RWGCOemQyHqnimlKgrZ7f+YUEIRu7g0K0LBU0A+E9SW8G
+ 7dMpzfFN+9prQiGtndRzjl2w/TZusTIfScANJLBTLcm2Es78LoDwZsWAQ21ygH/lDR0V0WI6auP
+ FFvsaa5MHyfN20wNen7b6U5t37W9l3t/wkSoZrIBbi5BAKL0MWFOtKW2sfdF3Tis3itdg0cxH7+
+ GdvSH1wtpwuZGrh957rF/5/Zg==
+X-Received: by 2002:a17:903:1a2c:b0:2e5:3451:56f with SMTP id
+ d9443c01a7336-2e5345107c4mr705995ad.47.1790972467740; 
+ Fri, 02 Oct 2026 13:21:07 -0700 (PDT)
 Received: from p14s.cg.shawcable.net
  ([2604:3d09:148c:c800:61ac:e744:6559:a357])
  by smtp.gmail.com with ESMTPSA id
- d9443c01a7336-2e49f6a99acsm12399415ad.34.2026.10.02.13.20.30
+ d9443c01a7336-2e49f6a99acsm12399415ad.34.2026.10.02.13.21.06
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 02 Oct 2026 13:20:31 -0700 (PDT)
+ Fri, 02 Oct 2026 13:21:07 -0700 (PDT)
 From: Mathieu Poirier <mathieu.poirier@linaro.org>
 To: berrange@redhat.com, kchamart@redhat.com,
  pierrick.bouvier@oss.qualcomm.com, peter.maydell@linaro.org,
@@ -77,23 +77,23 @@ To: berrange@redhat.com, kchamart@redhat.com,
 Cc: qemu-devel@nongnu.org,
 	qemu-arm@nongnu.org,
 	kvm@vger.kernel.org
-Subject: [RFC v5 02/22] target/arm: Add confidential guest support
-Date: Fri,  2 Oct 2026 14:20:06 -0600
-Message-ID: <20261002202026.1204110-3-mathieu.poirier@linaro.org>
+Subject: [RFC v5 21/22] hw/arm/boot: Load DTB as is for confidential VMs
+Date: Fri,  2 Oct 2026 14:20:25 -0600
+Message-ID: <20261002202026.1204110-22-mathieu.poirier@linaro.org>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20261002202026.1204110-1-mathieu.poirier@linaro.org>
 References: <20261002202026.1204110-1-mathieu.poirier@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::62e;
- envelope-from=mathieu.poirier@linaro.org; helo=mail-pl1-x62e.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:3b::2b;
+ envelope-from=mathieu.poirier@linaro.org; helo=mail-pz2-x2b.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -111,139 +111,35 @@ Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
 From: Jean-Philippe Brucker <jean-philippe@linaro.org>
 
-Add a new RmeGuest object, inheriting from ConfidentialGuestSupport, to
-support the Arm Realm Management Extension (RME). It is instantiated by
-passing on the command-line:
-
-  -M virt,confidential-guest-support=<id>
-  -object rme-guest,id=<id>
-
-This is only the skeleton. Support will be added in following patches.
+Load DTB without modifications when provided.  That way it is possible
+for a verification entity to reconstruct the Realm's initial measurement.
 
 Signed-off-by: Jean-Philippe Brucker <jean-philippe@linaro.org>
-Acked-by: Markus Armbruster <armbru@redhat.com>
 Signed-off-by: Mathieu Poirier <mathieu.poirier@linaro.org>
 ---
- docs/system/confidential-guest-support.rst |  1 +
- qapi/qom.json                              | 13 +++++++
- target/arm/kvm-rme.c                       | 42 ++++++++++++++++++++++
- target/arm/meson.build                     |  5 ++-
- 4 files changed, 60 insertions(+), 1 deletion(-)
- create mode 100644 target/arm/kvm-rme.c
+ hw/arm/boot.c | 9 ++++++++-
+ 1 file changed, 8 insertions(+), 1 deletion(-)
 
-diff --git a/docs/system/confidential-guest-support.rst b/docs/system/confidential-guest-support.rst
-index 562a7c3c2852..abb56923ad13 100644
---- a/docs/system/confidential-guest-support.rst
-+++ b/docs/system/confidential-guest-support.rst
-@@ -42,5 +42,6 @@ Currently supported confidential guest mechanisms are:
- * POWER Protected Execution Facility (PEF) (see :ref:`power-papr-protected-execution-facility-pef`)
- * s390x Protected Virtualization (PV) (see :doc:`s390x/protvirt`)
- * AWS Nitro Enclaves (see :doc:`nitro`)
-+* Arm Realm Management Extension (RME)
+diff --git a/hw/arm/boot.c b/hw/arm/boot.c
+index 1e8efada209f..9b3d3558bcbc 100644
+--- a/hw/arm/boot.c
++++ b/hw/arm/boot.c
+@@ -477,7 +477,14 @@ int arm_load_dtb(hwaddr addr, const struct arm_boot_info *binfo,
+     g_autoptr(MemoryDeviceInfoList) md_list = NULL;
+     Error *err = NULL;
  
- Other mechanisms may be supported in future.
-diff --git a/qapi/qom.json b/qapi/qom.json
-index 54495d4fb6f1..5f04264d02fc 100644
---- a/qapi/qom.json
-+++ b/qapi/qom.json
-@@ -1289,6 +1289,17 @@
-   'data': { '*pretty': 'bool',
-             '*close-action': 'MonitorQMPCloseAction' } }
- 
-+##
-+# @RmeGuestProperties:
-+#
-+# Properties for rme-guest objects.
-+#
-+# Since: 11.2
-+##
-+{ 'struct': 'RmeGuestProperties',
-+  'base': 'ConfidentialGuestSupportProperties',
-+  'data': {} }
-+
- ##
- # @ObjectType:
- #
-@@ -1345,6 +1356,7 @@
-     { 'name': 'pr-manager-helper',
-       'if': 'CONFIG_LINUX' },
-     'qtest',
-+    'rme-guest',
-     'rng-builtin',
-     'rng-egd',
-     { 'name': 'rng-random',
-@@ -1424,6 +1436,7 @@
-       'pr-manager-helper':          { 'type': 'PrManagerHelperProperties',
-                                       'if': 'CONFIG_LINUX' },
-       'qtest':                      'QtestProperties',
-+      'rme-guest':                  'RmeGuestProperties',
-       'rng-builtin':                'RngProperties',
-       'rng-egd':                    'RngEgdProperties',
-       'rng-random':                 { 'type': 'RngRandomProperties',
-diff --git a/target/arm/kvm-rme.c b/target/arm/kvm-rme.c
-new file mode 100644
-index 000000000000..42e1d1e7b859
---- /dev/null
-+++ b/target/arm/kvm-rme.c
-@@ -0,0 +1,42 @@
-+/*
-+ * QEMU Arm RME support
-+ *
-+ * SPDX-License-Identifier: GPL-2.0-or-later
-+ *
-+ * Copyright Linaro 2026
-+ */
-+
-+#include "qemu/osdep.h"
-+
-+#include "hw/core/boards.h"
-+#include "hw/core/cpu.h"
-+#include "kvm_arm.h"
-+#include "migration/blocker.h"
-+#include "qapi/error.h"
-+#include "qom/object_interfaces.h"
-+#include "system/confidential-guest-support.h"
-+#include "system/kvm.h"
-+#include "system/runstate.h"
-+
-+#define TYPE_RME_GUEST "rme-guest"
-+OBJECT_DECLARE_SIMPLE_TYPE(RmeGuest, RME_GUEST)
-+
-+struct RmeGuest {
-+    ConfidentialGuestSupport parent_obj;
-+};
-+
-+OBJECT_DEFINE_SIMPLE_TYPE_WITH_INTERFACES(RmeGuest, rme_guest, RME_GUEST,
-+                                          CONFIDENTIAL_GUEST_SUPPORT,
-+                                          { TYPE_USER_CREATABLE }, { })
-+
-+static void rme_guest_class_init(ObjectClass *oc, const void *data)
-+{
-+}
-+
-+static void rme_guest_init(Object *obj)
-+{
-+}
-+
-+static void rme_guest_finalize(Object *obj)
-+{
-+}
-diff --git a/target/arm/meson.build b/target/arm/meson.build
-index 0369f96b4cc6..9d322a7aad28 100644
---- a/target/arm/meson.build
-+++ b/target/arm/meson.build
-@@ -31,7 +31,10 @@ arm_common_user_system_ss.add(when: 'TARGET_AARCH64', if_true: files(
- arm_common_system_ss.add(files(
-   'arm-qmp-cmds.c',
- ))
--arm_system_ss.add(when: 'CONFIG_KVM', if_true: files('hyp_gdbstub.c', 'kvm.c'))
-+arm_system_ss.add(when: 'CONFIG_KVM', if_true: files(
-+  'hyp_gdbstub.c',
-+  'kvm.c',
-+  'kvm-rme.c'))
- arm_system_ss.add(when: 'CONFIG_HVF', if_true: files('hyp_gdbstub.c'))
- 
- arm_user_ss.add(files('cpu.c'))
+-    if (binfo->dtb_filename) {
++    if (binfo->dtb_filename && binfo->confidential) {
++        /*
++         * If the user is providing a DTB for a confidential VM, it is already
++         * tailored to this configuration and measured. Load it as is, without
++         * any modification.
++         */
++        return rom_add_file_fixed_as(binfo->dtb_filename, addr, -1, as);
++    } else if (binfo->dtb_filename) {
+         char *filename;
+         filename = qemu_find_file(QEMU_FILE_TYPE_DTB, binfo->dtb_filename);
+         if (!filename) {
 -- 
 2.43.0
 

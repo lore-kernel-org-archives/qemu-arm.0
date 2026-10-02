@@ -4,80 +4,79 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0FF78CA5FCE
-	for <qemu-arm@archiver.kernel.org>; Thu,  1 Oct 2026 23:43:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 88E21CA5FCE
+	for <qemu-arm@archiver.kernel.org>; Fri,  2 Oct 2026 00:54:43 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xCQQE-0006uh-9O; Thu, 01 Oct 2026 19:42:42 -0400
+	id 1xCRXT-000699-8m; Thu, 01 Oct 2026 20:54:15 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <gshan@redhat.com>) id 1xCQQA-0006tn-H2
- for qemu-arm@nongnu.org; Thu, 01 Oct 2026 19:42:38 -0400
+ (Exim 4.90_1) (envelope-from <gshan@redhat.com>) id 1xCRXP-00068q-UQ
+ for qemu-arm@nongnu.org; Thu, 01 Oct 2026 20:54:12 -0400
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <gshan@redhat.com>) id 1xCQQ8-000342-By
- for qemu-arm@nongnu.org; Thu, 01 Oct 2026 19:42:38 -0400
+ (Exim 4.90_1) (envelope-from <gshan@redhat.com>) id 1xCRXN-0001B6-LQ
+ for qemu-arm@nongnu.org; Thu, 01 Oct 2026 20:54:11 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1790898154;
+ s=mimecast20190719; t=1790902448;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=h1rty/hi1E13diYp3gmh8YwjoDszZTbFvppq31VQMDY=;
- b=JHsULws3a327/0dvdabsfgKW6zi32GbaIqzjvl++L51NJLCXxbtdEu9L2aFcOxnATAtvYz
- UmJvBGCNP0DJuFLtz7TLvLII8SuZ1TN75icc1jAsZ4qjnMgxleZYDvfriESwjdKrljjlT6
- v1h950aa1F7wtYIBh4kq9INatZ2MSqI=
-Received: from mail-pj1-f71.google.com (mail-pj1-f71.google.com
- [209.85.216.71]) by relay.mimecast.com with ESMTP with STARTTLS
+ bh=UIuUoxFqAzBRNm/KfmC9YauHU6KyCv+jklWR5oFxcwk=;
+ b=S4XU0dzH6y2l46YDVPgFMOv7t9YAAKd8sD+dcjriVdGPPYAvF7LDQa9KzvHgCc06BiVtuN
+ I1KLkSvNcBNERo4zD7fw9hvqMNG2PlBG9A+Vaf0x3JKo5p/GJq3wm+8dVknhldUzxuguaz
+ TNOvi/gcM14y1z3x7Rq22zMtVClUy8w=
+Received: from mail-pj1-f70.google.com (mail-pj1-f70.google.com
+ [209.85.216.70]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-128-blYK6HklPwCNcIh8ZEFJOA-1; Thu, 01 Oct 2026 19:42:33 -0400
-X-MC-Unique: blYK6HklPwCNcIh8ZEFJOA-1
-X-Mimecast-MFC-AGG-ID: blYK6HklPwCNcIh8ZEFJOA_1790898152
-Received: by mail-pj1-f71.google.com with SMTP id
- 98e67ed59e1d1-39b6416441eso11890899a91.1
- for <qemu-arm@nongnu.org>; Thu, 01 Oct 2026 16:42:33 -0700 (PDT)
+ us-mta-214-GlEFJq-zNaKvSbOdwWZQxg-1; Thu, 01 Oct 2026 20:54:07 -0400
+X-MC-Unique: GlEFJq-zNaKvSbOdwWZQxg-1
+X-Mimecast-MFC-AGG-ID: GlEFJq-zNaKvSbOdwWZQxg_1790902446
+Received: by mail-pj1-f70.google.com with SMTP id
+ 98e67ed59e1d1-385d2703b64so1159676a91.1
+ for <qemu-arm@nongnu.org>; Thu, 01 Oct 2026 17:54:06 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20260707; t=1790898152; x=1791502952;
+ d=1e100.net; s=20260707; t=1790902446; x=1791507246;
  h=content-transfer-encoding:content-type:in-reply-to:from
  :content-language:references:cc:to:subject:user-agent:mime-version
  :date:message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
  :message-id:reply-to:content-type;
- bh=h1rty/hi1E13diYp3gmh8YwjoDszZTbFvppq31VQMDY=;
- b=HcDl0+d/G/JQyWMU36hGsSfMxX6EK0Yya6S4GPggzAo3bF/mGcqZLiEvtmYhPvgGNo
- R0Rug7KZMm6dIPkiZlnjDeENDEkFypATAte+WEnEbV4cPRHhQr4OT5KBvWVvXYPR6/35
- yvORg1Wm2D7/vBYXBW1EZiSTpQ/lm7xUt5+JJCp8b7KLhlCufPcC7dT7QkaRVsYlMKER
- zZ7y4JjktqkCk+LZjdxyzXz5FL6SQYnEyvSzhHd6wVPCtqAROmPQZKSU2pFtKBgndKJA
- Fysejl6ZeHJzEZjVvFFz/FGYqri2Xst6cAbTdZBQwVi5u4p6GknC5SMvJN6hcsrKzziM
- oHoA==
+ bh=UIuUoxFqAzBRNm/KfmC9YauHU6KyCv+jklWR5oFxcwk=;
+ b=iUmWrBI6jEfW39BbFJC6mKxTgrhUZrzrRsvPBDoNMoMWx8Lk2KykGP3+UGl3oy1ZAv
+ sWCKTTxHGMZ7bO3scraws0NAKUq9x+mhmaaiNtMSiFcHVWFXTlCy4CqxRxcecxDsmhz4
+ Ep9sZLiuuZwbeULDb6XrriEq3ED9kwbbSUCWks8/zvsf8qPM31wxQjiyiWWMs63rbO2R
+ H7XthqYB6icongDevMMEnxhjSuXQ5JSd/y8slSZttMvGH/G9mkji8O/8M1k0CWk5fhZP
+ L3pUtJ9dvGU/ahgLIAQI9vCY6uXwsRSw568dFYedrWdziKwSkYeZHmpaxKz3w2B9VPdI
+ JEIg==
 X-Forwarded-Encrypted: i=1;
- AKwUvByyxB5MuJ3qeE93K//WkELO7ocdRebMX9uLAeU6rxsB9Trxho7C3jNS98x1pcIKlUE3XF0KOJQprg==@nongnu.org
-X-Gm-Message-State: AFq9FYIzk8hYn4AKUjqujifLoo4P4FYYPlLVDUblavJV3HuEvkv7Gt1C
- XrjvUvAeo7k92aL+60EBYv5DTd5Bn9G/0Idwzl+z0biEs+svMwDGx9k3f9wRcev7ezVpLR1EsjC
- vsIzwhBeq4WjVoUmVBTkE+o0WAg9aalw8866vJ1u65WRjrbQsWuatvg==
-X-Gm-Gg: AYBFou1qfdOKAXBlqQuN80FCARi9tAJZb1nnorQbmWPILNNXK0QUvjAHYLZzIaAhmUx
- l8soCfmVv64Q6aIgxmwUOuOdoWFqfMnJG4HadANFvDSCG0au2vIt0wm6B83nNiyfhipoZ5tAsQP
- nqn8cBqAqPeAVt5Le/rBNEgvVgr5W06qzQSufSBLu+YHd5XVel3azM2v5mS430GjtYFtKV74Nc7
- y4tKJ1vQTOTnhq2UNnQ3oIApx/rl5e5DBBUZAPhFmxHlKrOgKSGC2m9zHAtv/65v2+wYZml1VI0
- eU27b8Bth7HOTtsLm89UtvJnmZMRZoDpuRgDS98w/KBBrj6kzKEdLfDZgp9h5mPsien6/y0xExK
- yXt+qQRhVMcEcvoAJoXmIoe+ArAWzvJXfpf3sw98Frg==
-X-Received: by 2002:a17:90b:1c86:b0:3a4:d5c0:f826 with SMTP id
- 98e67ed59e1d1-3a6ce9b0fe4mr918281a91.65.1790898151995; 
- Thu, 01 Oct 2026 16:42:31 -0700 (PDT)
-X-Received: by 2002:a17:90b:1c86:b0:3a4:d5c0:f826 with SMTP id
- 98e67ed59e1d1-3a6ce9b0fe4mr918273a91.65.1790898151463; 
- Thu, 01 Oct 2026 16:42:31 -0700 (PDT)
+ AKwUvBzpxF6wpgzEsRrusvCGQylQ21+NvE97lvwg1IQ7u4rIzoubvX9hCFAuiMSc+rQzkk77cXSZaE8Sjw==@nongnu.org
+X-Gm-Message-State: AFq9FYKZr3+XsODzOXPuwDOIpFCFWVvx1fuOcYeGTVyArwj5AfeHMZ7k
+ II30S/ERsaRXLueqgXwajQpF7pZxrj03ZZGtmdzhBg8UuQi1mPReW1NKdre8+qPNLxu4Na+uXjV
+ 2UCN0Qxm6vDgutPehmcfc+kToglLocijjlsTx3YN6KqoERLrOeUD9oA==
+X-Gm-Gg: AYBFou1vUCO1UwytFTe2VJ9GIZfR5XecA5m/ZhAmJCdq+yg5TMpPIEjdAK8BPXGqt0u
+ tejHf7AUIhW58SYQWHYo5xYfGKBqx7KAWo4E2vdjxZdhr9RwTBkcK5uCcRRMKi2HzKbeibKoa7Q
+ vK9Sflligz+Ic3E97hWjDg+YGLjU+fNGY87qUuYhIdpXt6dy4QBL1PlWoDdsJSKkr3fCXwz2D3U
+ naAYKIXGkbAs5/n5UHHpbQD/KeRiGesu5Bm8H1NtpdIHMrns9sYrZ+1fUNkYDm5yJs1JBoTi7hv
+ 1kWAikEAnClak/d7ugiaQB+8awQYYE7kC/Nf2YkDyiTJdhVwhCiZWCLKb9Nj/CP1/WRUYI7debo
+ ZZuCRPsZBJ2LpWM+9pjVld5oRtngAls/YRB77bqrWng==
+X-Received: by 2002:a17:90b:1c82:b0:3a0:c85a:ee12 with SMTP id
+ 98e67ed59e1d1-3a6cec91c89mr805485a91.41.1790902445639; 
+ Thu, 01 Oct 2026 17:54:05 -0700 (PDT)
+X-Received: by 2002:a17:90b:1c82:b0:3a0:c85a:ee12 with SMTP id
+ 98e67ed59e1d1-3a6cec91c89mr805451a91.41.1790902444814; 
+ Thu, 01 Oct 2026 17:54:04 -0700 (PDT)
 Received: from [192.168.68.52] (n175-34-8-244.mrk21.qld.optusnet.com.au.
  [175.34.8.244]) by smtp.gmail.com with ESMTPSA id
- 98e67ed59e1d1-3a4f4709a7csm6244308a91.8.2026.10.01.16.42.25
+ 98e67ed59e1d1-3a4f4709a7csm6448906a91.8.2026.10.01.17.54.00
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 01 Oct 2026 16:42:30 -0700 (PDT)
-Message-ID: <5461472f-8ab2-4549-b04f-85f0030b4b79@redhat.com>
-Date: Fri, 2 Oct 2026 09:42:23 +1000
+ Thu, 01 Oct 2026 17:54:04 -0700 (PDT)
+Message-ID: <a3a01282-bf89-46b8-b15c-9dc5f93053ee@redhat.com>
+Date: Fri, 2 Oct 2026 10:53:58 +1000
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [RFC v4 04/24] target/arm/kvm-rme: Add mechanic to initialize
- realms
+Subject: Re: [RFC v4 06/24] target/arm/kvm-rme: Initialize vCPU
 To: Mathieu Poirier <mathieu.poirier@linaro.org>, berrange@redhat.com,
  kchamart@redhat.com, pierrick.bouvier@oss.qualcomm.com,
  peter.maydell@linaro.org, mst@redhat.com, cohuck@redhat.com,
@@ -85,11 +84,11 @@ To: Mathieu Poirier <mathieu.poirier@linaro.org>, berrange@redhat.com,
  lorenzo.pieralisi@linaro.org, enju.kohei@fujitsu.com
 Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, kvm@vger.kernel.org
 References: <20260903193611.1058589-1-mathieu.poirier@linaro.org>
- <20260903193611.1058589-5-mathieu.poirier@linaro.org>
+ <20260903193611.1058589-7-mathieu.poirier@linaro.org>
 From: Gavin Shan <gshan@redhat.com>
-In-Reply-To: <20260903193611.1058589-5-mathieu.poirier@linaro.org>
+In-Reply-To: <20260903193611.1058589-7-mathieu.poirier@linaro.org>
 X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: ZMQ3zNZiXgu7ikP4rxmfyyXXkEfAoJKg9-aziO8CU_I_1790898152
+X-Mimecast-MFC-PROC-ID: yLhqxdvr9c8-gUp30PTHXOJucT5CwgP_uLfo3i-fLgI_1790902446
 X-Mimecast-Originator: redhat.com
 Content-Language: en-US
 Content-Type: text/plain; charset=UTF-8; format=flowed
@@ -119,144 +118,205 @@ Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
 On 9/4/26 5:35 AM, Mathieu Poirier wrote:
-> Initialise an @rme_guest object and install a handler to get notified
-> when the Realm is ready to start.  That way we can finish reading the
-> Realm once we know everything is in place.
+> From: Jean-Philippe Brucker <jean-philippe@linaro.org>
+> 
+> The target code calls kvm_arm_vcpu_init() to mark the vCPU as part of a
+> Realm. For a Realm vCPU, only x0-x7 can be set at runtime. Before boot,
+> the PC can also be set, and is ignored at runtime. KVM also accepts a
+> few system register changes during initial configuration, as returned by
+> KVM_GET_REG_LIST.
 > 
 > Signed-off-by: Jean-Philippe Brucker <jean-philippe@linaro.org>
-> Signed-off-by: Lorenzo Pieralisi <lorenzo.pieralisi@linaro.org>
 > Signed-off-by: Mathieu Poirier <mathieu.poirier@linaro.org>
 > ---
->   target/arm/kvm-rme.c | 51 ++++++++++++++++++++++++++++++++++++++++++++
->   target/arm/kvm.c     | 15 +++++++++++--
->   2 files changed, 64 insertions(+), 2 deletions(-)
+>   target/arm/cpu.h      |  3 +++
+>   target/arm/kvm-rme.c  |  9 ++++++++
+>   target/arm/kvm-stub.c |  5 ++++
+>   target/arm/kvm.c      | 54 +++++++++++++++++++++++++++++++++++++++++--
+>   target/arm/kvm_arm.h  | 10 ++++++++
+>   5 files changed, 79 insertions(+), 2 deletions(-)
 > 
+> diff --git a/target/arm/cpu.h b/target/arm/cpu.h
+> index e3f931dba26b..6bbc942f9a59 100644
+> --- a/target/arm/cpu.h
+> +++ b/target/arm/cpu.h
+> @@ -1054,6 +1054,9 @@ struct ArchCPU {
+>       /* KVM steal time */
+>       OnOffAuto kvm_steal_time;
+>   
+> +    /* Realm Management Extension */
+> +    bool kvm_rme;
+> +
+
+This field seems redundant to MachineState::cgs since all vCPUs support RME
+(Realm Management Extension) when MachineState::cgs points a valid instance.
+So I'm wandering why we need to maintain the redundant information here?
+
+>       /* Uniprocessor system with MP extensions */
+>       bool mp_is_up;
+>   
 > diff --git a/target/arm/kvm-rme.c b/target/arm/kvm-rme.c
-> index 42e1d1e7b859..a4a5e195c196 100644
+> index a4a5e195c196..f7c2cc786e2c 100644
 > --- a/target/arm/kvm-rme.c
 > +++ b/target/arm/kvm-rme.c
-> @@ -13,6 +13,7 @@
->   #include "kvm_arm.h"
->   #include "migration/blocker.h"
->   #include "qapi/error.h"
-> +#include "qemu/error-report.h"
->   #include "qom/object_interfaces.h"
->   #include "system/confidential-guest-support.h"
->   #include "system/kvm.h"
-> @@ -29,12 +30,62 @@ OBJECT_DEFINE_SIMPLE_TYPE_WITH_INTERFACES(RmeGuest, rme_guest, RME_GUEST,
->                                             CONFIDENTIAL_GUEST_SUPPORT,
->                                             { TYPE_USER_CREATABLE }, { })
+> @@ -69,6 +69,15 @@ static int kvm_arm_rme_init(ConfidentialGuestSupport *cgs, Error **errp)
+>       return 0;
+>   }
 >   
-> +static RmeGuest *rme_guest;
-> +
-> +static void rme_vm_state_change(void *opaque, bool running, RunState state)
+> +void kvm_arm_rme_vcpu_init(ARMCPU *cpu)
 > +{
-> +    if (!running) {
+> +    if (!rme_guest) {
 > +        return;
 > +    }
 > +
-> +    kvm_mark_guest_state_protected();
+> +    cpu->kvm_rme = true;
 > +}
 > +
-> +static int kvm_arm_rme_init(ConfidentialGuestSupport *cgs, Error **errp)
-> +{
-> +    KVMState *s = KVM_STATE(current_accel());
-> +    static Error *rme_mig_blocker;
-> +
-> +    if (!rme_guest) {
-> +        return 0;
-> +    }
-> +
-> +    if (!kvm_vm_check_extension(s, KVM_CAP_ARM_RMI)) {
-> +        error_setg(errp, "VM doesn't support Realms");
-> +        return -ENODEV;
-> +    }
-> +
-> +    error_setg(&rme_mig_blocker, "RME: migration is not implemented");
-> +    migrate_add_blocker(&rme_mig_blocker, &error_fatal);
-> +
-> +    /*
-> +     * The realm activation is done last, when the VM starts, after all images
-> +     * have been loaded and all vcpus finalized.
-> +     */
-> +    qemu_add_vm_change_state_handler(rme_vm_state_change, NULL);
-> +
-> +    cgs->require_guest_memfd = true;
-> +    cgs->ready = true;
-> +    return 0;
-> +}
-> +
+
+This could be simplified to:
+
+       cpu->kvm_rme = !!rme_guest;
+
 >   static void rme_guest_class_init(ObjectClass *oc, const void *data)
 >   {
-> +    ConfidentialGuestSupportClass *klass = CONFIDENTIAL_GUEST_SUPPORT_CLASS(oc);
-> +
-> +    klass->kvm_init = kvm_arm_rme_init;
->   }
->   
->   static void rme_guest_init(Object *obj)
+>       ConfidentialGuestSupportClass *klass = CONFIDENTIAL_GUEST_SUPPORT_CLASS(oc);
+> diff --git a/target/arm/kvm-stub.c b/target/arm/kvm-stub.c
+> index 88cbe8d85c41..5fde96f9b281 100644
+> --- a/target/arm/kvm-stub.c
+> +++ b/target/arm/kvm-stub.c
+> @@ -119,3 +119,8 @@ char *kvm_print_register_name(uint64_t regidx)
 >   {
-> +    ConfidentialGuestSupport *cgs = CONFIDENTIAL_GUEST_SUPPORT(obj);
-> +
-> +    if (rme_guest) {
-> +        error_report("a single instance of RmeGuest is supported");
-> +        exit(1);
-> +    }
-> +    rme_guest = RME_GUEST(obj);
-> +    cgs->allow_convert_in_place = true;
+>       g_assert_not_reached();
 >   }
->   
->   static void rme_guest_finalize(Object *obj)
+> +
+> +void kvm_arm_rme_vcpu_init(ARMCPU *cpu)
+> +{
+> +    g_assert_not_reached();
+> +}
 > diff --git a/target/arm/kvm.c b/target/arm/kvm.c
-> index ed99be7fd80c..401a6f669cbb 100644
+> index 33c3763aebfa..b4c6da1fb9f3 100644
 > --- a/target/arm/kvm.c
 > +++ b/target/arm/kvm.c
-> @@ -33,6 +33,7 @@
->   #include "hw/pci/pci.h"
->   #include "exec/memattrs.h"
->   #include "system/address-spaces.h"
-> +#include "system/confidential-guest-support.h"
->   #include "gdbstub/enums.h"
->   #include "hw/core/boards.h"
->   #include "hw/core/irq.h"
-> @@ -596,7 +597,8 @@ int kvm_arch_get_default_type(MachineState *ms)
+> @@ -2015,6 +2015,8 @@ int kvm_arch_init_vcpu(CPUState *cs)
+>           cpu->kvm_init_features[0] |= 1 << KVM_ARM_VCPU_HAS_EL2;
+>       }
 >   
->   int kvm_arch_init(MachineState *ms, KVMState *s)
->   {
-> -    int ret;
-> +    Error *local_err = NULL;
-> +    int ret = 0;
->       /* For ARM interrupt delivery is always asynchronous,
->        * whether we are using an in-kernel VGIC or not.
->        */
-> @@ -610,6 +612,15 @@ int kvm_arch_init(MachineState *ms, KVMState *s)
+> +    kvm_arm_rme_vcpu_init(cpu);
+> +
+>       /* Do KVM_ARM_VCPU_INIT ioctl */
+>       ret = kvm_arm_vcpu_init(cpu);
+>       if (ret) {
+> @@ -2169,6 +2171,29 @@ static int kvm_arch_put_sve(CPUState *cs, uint32_t vq, bool have_ffr)
+>       return 0;
+>   }
 >   
->       cap_has_mp_state = kvm_check_extension(s, KVM_CAP_MP_STATE);
->   
-> +    /* Initialize confidential guest (Realm) if needed */
-> +    if (ms->cgs) {
-> +        ret = confidential_guest_kvm_init(ms->cgs, &local_err);
-> +            if (ret < 0) {
-            ^^^^^
-
-            Code alignment issue here.
-
-> +                error_report_err(local_err);
-> +                return ret;
+> +static int kvm_arm_rme_put_core_regs(CPUState *cs, Error **errp)
+> +{
+> +    int i, ret;
+> +    ARMCPU *cpu = ARM_CPU(cs);
+> +    CPUARMState *env = &cpu->env;
+> +
+> +    /* The RME ABI only allows us to set 8 GPRs and the PC */
+> +    for (i = 0; i < 8; i++) {
+> +        ret = kvm_set_one_reg(cs, AARCH64_CORE_REG(regs.regs[i]),
+> +                              &env->xregs[i]);
+> +        if (ret) {
+> +            return ret;
 > +        }
 > +    }
 > +
->       /* Check whether user space can specify guest syndrome value */
->       cap_has_inject_serror_esr =
->           kvm_check_extension(s, KVM_CAP_ARM_INJECT_SERROR_ESR);
-> @@ -660,7 +671,7 @@ int kvm_arch_init(MachineState *ms, KVMState *s)
->       hw_breakpoints = g_array_sized_new(true, true,
->                                          sizeof(HWBreakpoint), max_hw_bps);
+> +    ret = kvm_set_one_reg(cs, AARCH64_CORE_REG(regs.pc), &env->pc);
+> +    if (ret) {
+> +        return ret;
+> +    }
+> +
+> +    return 0;
+> +}
+> +
+>   static int kvm_arm_put_core_regs(CPUState *cs, Error **errp)
+>   {
+>       uint64_t val;
+> @@ -2280,7 +2305,11 @@ int kvm_arch_put_registers(CPUState *cs, KvmPutState level, Error **errp)
+>       int ret;
+>       ARMCPU *cpu = ARM_CPU(cs);
 >   
-> -    return 0;
-> +    return ret;
+> -    ret = kvm_arm_put_core_regs(cs, errp);
+> +    if (cpu->kvm_rme) {
+> +        ret = kvm_arm_rme_put_core_regs(cs, errp);
+> +    } else {
+> +        ret = kvm_arm_put_core_regs(cs, errp);
+> +    }
+>       if (ret) {
+>           return ret;
+>       }
+> @@ -2367,6 +2396,23 @@ static int kvm_arch_get_sve(CPUState *cs, uint32_t vq, bool have_ffr)
+>       return 0;
 >   }
 >   
->   unsigned long kvm_arch_vcpu_id(CPUState *cpu)
+> +static int kvm_arm_rme_get_core_regs(CPUState *cs, Error **errp)
+> +{
+> +    int i, ret;
+> +    ARMCPU *cpu = ARM_CPU(cs);
+> +    CPUARMState *env = &cpu->env;
+> +
+> +    for (i = 0; i < 8; i++) {
+> +        ret = kvm_get_one_reg(cs, AARCH64_CORE_REG(regs.regs[i]),
+> +                              &env->xregs[i]);
+> +        if (ret) {
+> +            return ret;
+> +        }
+> +    }
+> +
+> +    return 0;
+> +}
+> +
+>   static int kvm_arm_get_core_regs(CPUState *cs, Error **errp)
+>   {
+>       uint64_t val;
+> @@ -2478,7 +2524,11 @@ int kvm_arch_get_registers(CPUState *cs, Error **errp)
+>       int ret;
+>       ARMCPU *cpu = ARM_CPU(cs);
+>   
+> -    ret = kvm_arm_get_core_regs(cs, errp);
+> +    if (cpu->kvm_rme) {
+> +        ret = kvm_arm_rme_get_core_regs(cs, errp);
+> +    } else {
+> +        ret = kvm_arm_get_core_regs(cs, errp);
+> +    }
+>       if (ret) {
+>           return ret;
+>       }
+> diff --git a/target/arm/kvm_arm.h b/target/arm/kvm_arm.h
+> index e7c40fb003e4..d95381c13afa 100644
+> --- a/target/arm/kvm_arm.h
+> +++ b/target/arm/kvm_arm.h
+> @@ -240,4 +240,14 @@ void arm_gic_cap_kvm_probe(GICCapability *v2, GICCapability *v3);
+>    */
+>   char *kvm_print_register_name(uint64_t regidx);
+>   
+> +/**
+> + * kvm_arm_rme_vcpu_init
+> + * @cs: the CPU
+> + *
+> + * If the user requested a Realm, setup the given vCPU accordingly. Realm vCPUs
+> + * behave a little differently, for example most of their register state is
+> + * hidden from the host.
+> + */
+> +void kvm_arm_rme_vcpu_init(ARMCPU *cpu);
+> +
+
+The comments here look outdated. This function simply set ARMCPU::kvm_rme to indicate
+RME should be supported for this given vCPU. So the comments would be something as
+below.
+
+     /*
+      *
+      * Mark that RME (Realm Management Extension) should be supported for the given
+      * vCPU if user has requested it. Realm vCPUs behave a little differently, for
+      * example most of their register states are confidential and invisible to us.
+      */
+
+>   #endif
 
 Thanks,
 Gavin

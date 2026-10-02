@@ -4,70 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 79640CA5FE6
-	for <qemu-arm@archiver.kernel.org>; Fri,  2 Oct 2026 20:22:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2CBD8CA5FDD
+	for <qemu-arm@archiver.kernel.org>; Fri,  2 Oct 2026 20:23:03 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xCjkY-0007NP-Ok; Fri, 02 Oct 2026 16:20:58 -0400
+	id 1xCjkY-0007N6-0B; Fri, 02 Oct 2026 16:20:58 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mathieu.poirier@linaro.org>)
- id 1xCjkU-0007Kh-5j
- for qemu-arm@nongnu.org; Fri, 02 Oct 2026 16:20:54 -0400
-Received: from mail-pj2-x0c.google.com ([2607:f8b0:4864:39::c])
+ id 1xCjkH-0007AY-6m
+ for qemu-arm@nongnu.org; Fri, 02 Oct 2026 16:20:42 -0400
+Received: from mail-pj2-x2a.google.com ([2607:f8b0:4864:39::2a])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <mathieu.poirier@linaro.org>)
- id 1xCjkR-0005nC-F0
- for qemu-arm@nongnu.org; Fri, 02 Oct 2026 16:20:53 -0400
-Received: by mail-pj2-x0c.google.com with SMTP id
- d9443c01a7336-2dfaf76605dso4695ad.0
- for <qemu-arm@nongnu.org>; Fri, 02 Oct 2026 13:20:50 -0700 (PDT)
+ id 1xCjkE-0005lC-Um
+ for qemu-arm@nongnu.org; Fri, 02 Oct 2026 16:20:40 -0400
+Received: by mail-pj2-x2a.google.com with SMTP id
+ d9443c01a7336-2e2d9fdf798so1975ad.0
+ for <qemu-arm@nongnu.org>; Fri, 02 Oct 2026 13:20:38 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1790972449; x=1791577249; darn=nongnu.org;
+ d=linaro.org; s=google; t=1790972437; x=1791577237; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to:content-type;
- bh=6DwGY+dTgmWXHvT/Uc+wVJeKOjzNv5zK48BpM+cp2kU=;
- b=vPfheEzlQFm5a5PAZgy3PWzasfinnanLp0LA4ApLqHfaj/LV3i/8kDW3dplYToW8yr
- aX0isH/l8zDs6T1WR65GosPYVTF9p6kGdftwKrhxs1dwqVI25I2BQ8clerARxQLCI+Hr
- 82n3Iu1e61IwSS8v3EU3DRqndpWnNTLxnn1YjZj/yaig8e7Vw+MuYpN6SFePfHThR9IJ
- QpW+VGUc2CsdobGZHI4whCUomWgluSRKuPzYXUQA7zuShs+rMzea6AubJHlNoHywQgIb
- mgNBNjPQY0FiCOjcj/0gKbtWmv4uGhMsNFWArxZ9bQcwI7CvKqZxYdbqVCCYboQucnt8
- Qcyg==
+ bh=eIDsXT01e2wNzwGXeXMYz6ST0ydza9G7rt8/7Fhz/tI=;
+ b=MBELfzwiM8KA1DZYbFk+GypqZPfHJAcW2NV2QXSTHSY+GqXVmuQ/4s1rKtMRjKl2go
+ Csm/pRDT6QXN2q2EstvhrjBNwFRgT7ll/utF8JGbZS+w1zPduuBpW+6MZ0XutmvoVdFI
+ jO/Uz5M4wEiHvET4zaj2wZvEsIB9BZYihU7jGw6N0UVpqAkb9O4GNQUYmVdNgQ8qj+Ia
+ 7jOyFa3expTgpLosEiPwA2iNVS7Jw9kc3N5u8E1Xez2B4T57gu7gmPO7IJZjtjCSS6Sv
+ b8Z/xl062WcyOdRnJVOLIhFG5Hb0UB+8xxvKyRmBX1VYXxf2qMz/IM3SVIR9tf0qm4Wd
+ su4w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20260707; t=1790972449; x=1791577249;
+ d=1e100.net; s=20260707; t=1790972437; x=1791577237;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
  :to:cc:subject:date:message-id:reply-to:content-type;
- bh=6DwGY+dTgmWXHvT/Uc+wVJeKOjzNv5zK48BpM+cp2kU=;
- b=SLhyREFEHmcXlH+fwzF0p/F4//kdcCZBOsvMUjaPt0NSy3Jul2xtgCred29v1IINJ8
- Uzn582j6QBtI7Zg2rPjO+WPbCM6xpA2ue8LbRIwAVS5msnmFwj2ChP6dXLU4OcgCrjlc
- XDxcxvU8QJFlF92Md4wIx1nUh80uTfuQgQRXDxyMYG3Lq2/kFEA4sjmFeySv+8hlVZec
- QmW2oKJJfPC+y9EE/BMQdUX4EKW9yQV5ETAVT+l/U1pHiEzWqwnupqxMfimElwLIJHlz
- wIaTGNejPxa2Ji9CDtr44ElwTNLUIYZquA4UEytl7dFAWMlyqSDE6OqCOvACu+yr7Mac
- JbhQ==
+ bh=eIDsXT01e2wNzwGXeXMYz6ST0ydza9G7rt8/7Fhz/tI=;
+ b=WmGLnfgblTUIGjkYSyRl3B2L+i1U0/wbaMKVHqVO2DQi0ShLEoeB//H12vnTnX6ox9
+ pQn14TSAMlN5nJMEHpISWadU5N57IRq9cibDmGVfmj3Nd+iRsiRmxBCtRg0w5k4yzFpJ
+ 7UDqcbW1kaF1SNvCEdKR2nidN/ROskI+CLAYXv7T6hOdKfAoFVa+g+vOw9RJv0Ml0D6l
+ fKXOq3fwGCvP2aalmLNNbzfpmWIDU7VYOvrdPBThPjPb3Ko9vlysWaOCt9j/atAfByZT
+ wf30EVCuWTpwtqfwPdLe9CVwfr4FfLwMhtK6M336vEKHSKYbMBxmbdltIXbic4q2Nqg6
+ I0uQ==
 X-Forwarded-Encrypted: i=1;
- AKwUvBwRlA8soEkqkV1xmzERCOrbFVBxua/igFAW8SL7sjVluxKm9YrJOiIv+vNmBsUm2rrXwdukUpDfeg==@nongnu.org
-X-Gm-Message-State: AFq9FYIO6CnoHAi8IXgO3s3wLA9I/m+AseSz2TH8XH/dlywW7TbOsZfO
- +YHanNhoQun4o+w/HNCgIFggagNPbuAur9ZmMGAx6+WXniyYtJWdmJXe7Me1llt5J/c=
-X-Gm-Gg: AYBFou2lGPfgmeko4RMqbZ0yi8reFLnWXSAhKG5Juhsg2zS1Repg0SLSyPjj99ATon/
- /3m/l9foFGkuvzSa9vq4DErstMjvMgHDDcRnP4ezn/FtijNWqmVXf0DtNjHD3Kv4IIOQRdcSqTe
- rcETtoTHyRz/Qb+5n+iqQOlHOHKC2UwGRkZajlK+y+eozcRZIzzfh1AIhOJKi/B2HK9cf1fGxPc
- WxHHOkz9oOuqJeJ7Kd+7CJN84iQd8F9MXreqS4b3tZixuGi5ySow4rB3jgaJvWmdjTytw70MWqB
- mew0j/PIoZ7eu5ldnf8RPvN6K0aCyfxDtK3mLveFN5iORomWgR+pbL4M+ElsiunjJ7j1eGcdGKH
- 2r/CqrwEeYU5njDsapm3odemP0OwGwFoGsO6PsWYxd5Jsqk/jmlRIOxoJi7kdYYlb5Q/E3uuejS
- LpoBQ3gg24HALitFp8/DItWDksSCv3xIyvxxxzl60yU1eDyI4zkBBXHSZM7cVlgUGnEdgvVI3pc
- iCA96ShVmcEeHhQdoXRjigN
-X-Received: by 2002:a17:902:ec92:b0:2dd:8e7d:90f7 with SMTP id
- d9443c01a7336-2e49b6052bfmr37376585ad.9.1790972449156; 
- Fri, 02 Oct 2026 13:20:49 -0700 (PDT)
+ AKwUvBxb3J8SrnnYP5INLSbIrRnnaNiXp7rYQpxrYBylEsKLI9lb0gPo2DKxIeSrdM2kRAP/7lJP4UHycQ==@nongnu.org
+X-Gm-Message-State: AFq9FYIxUJsFIIqY4kF/BsNbT14Z8JVFY71/s1/jk3/zYI9NPtPaLUwJ
+ SWsf0vPFluTL11hH1f1SwcoKiRIwhpuSLInouGtdUDgDZR07I80WiW7kEsgWRD9kYd4=
+X-Gm-Gg: AYBFou1pUkph/FLeM3hyzfVQM19gy9olmy38Kb//KFR6TJJKWnUL6UP2IO88ge7S3mF
+ QyEpDVo6mNicr/nSldz6Le/7+ZnxKcPO0Ao90S227r7GnHGJPEJfL2DwDf7oFcK+KOxbYzpsYF/
+ 241c5N+tSmS7Ypn/L+wEWC0hFmbZsILAZ0Shpujbro9U8nLnbBoDcy7ktoa5Gr2NwXnY69i4Vws
+ qsLSxN311AwobCmCf57la8gFkWcewfI/0BWUxCONZpbuBY4dke9JEp8FP52yMicAL2TBaRJvaHx
+ bg8CTXebmnkWwaqorSsMGXP+tDtDpaoE7eFYTyaP6xHD3CnnjAgy819d3OCG/0rZbRlL2rs5jH7
+ 5Z1h7DD8Dv4QTUX2yLak3mG6M1ISeKLnwkCTr3RUB7aoBWwk2/9ohwC3KzLBzerJ06gW6yyU/Vl
+ /2yBLCtV4ExQH1q+coFxo/rfN4B0eme5Q4PS2VWdmwZ35ulMrwFNlnIFiXdOMPQP3wvWHvMlgey
+ xrnSP+jR2SwE0IlI8CkuJio
+X-Received: by 2002:a17:903:234b:b0:2e4:a2ee:a4a3 with SMTP id
+ d9443c01a7336-2e4a2eea54bmr27772115ad.5.1790972437467; 
+ Fri, 02 Oct 2026 13:20:37 -0700 (PDT)
 Received: from p14s.cg.shawcable.net
  ([2604:3d09:148c:c800:61ac:e744:6559:a357])
  by smtp.gmail.com with ESMTPSA id
- d9443c01a7336-2e49f6a99acsm12399415ad.34.2026.10.02.13.20.47
+ d9443c01a7336-2e49f6a99acsm12399415ad.34.2026.10.02.13.20.36
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 02 Oct 2026 13:20:48 -0700 (PDT)
+ Fri, 02 Oct 2026 13:20:37 -0700 (PDT)
 From: Mathieu Poirier <mathieu.poirier@linaro.org>
 To: berrange@redhat.com, kchamart@redhat.com,
  pierrick.bouvier@oss.qualcomm.com, peter.maydell@linaro.org,
@@ -77,16 +77,16 @@ To: berrange@redhat.com, kchamart@redhat.com,
 Cc: qemu-devel@nongnu.org,
 	qemu-arm@nongnu.org,
 	kvm@vger.kernel.org
-Subject: [RFC v5 11/22] target/arm/cpu: Set number of PMU counters in KVM
-Date: Fri,  2 Oct 2026 14:20:15 -0600
-Message-ID: <20261002202026.1204110-12-mathieu.poirier@linaro.org>
+Subject: [RFC v5 05/22] target/arm/kvm-rme: Initialize vCPU
+Date: Fri,  2 Oct 2026 14:20:09 -0600
+Message-ID: <20261002202026.1204110-6-mathieu.poirier@linaro.org>
 X-Mailer: git-send-email 2.43.0
 In-Reply-To: <20261002202026.1204110-1-mathieu.poirier@linaro.org>
 References: <20261002202026.1204110-1-mathieu.poirier@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:39::c;
- envelope-from=mathieu.poirier@linaro.org; helo=mail-pj2-x0c.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:39::2a;
+ envelope-from=mathieu.poirier@linaro.org; helo=mail-pj2-x2a.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -110,160 +110,181 @@ Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
 From: Jean-Philippe Brucker <jean-philippe@linaro.org>
 
-Add a "num-pmu-counters" CPU parameter to configure the number of
-counters that KVM presents to the guest. This is needed for Realm VMs,
-whose parameters include the number of PMU counters and influence the
-Realm Initial Measurement.
+The target code calls kvm_arm_vcpu_init() to mark the vCPU as part of a
+Realm. For a Realm vCPU, only x0-x7 can be set at runtime. Before boot,
+the PC can also be set, and is ignored at runtime. KVM also accepts a
+few system register changes during initial configuration, as returned by
+KVM_GET_REG_LIST.
 
 Signed-off-by: Jean-Philippe Brucker <jean-philippe@linaro.org>
 Signed-off-by: Mathieu Poirier <mathieu.poirier@linaro.org>
 ---
- target/arm/arm-qmp-cmds.c |  2 +-
- target/arm/cpu.h          |  3 +++
- target/arm/cpu64.c        | 41 +++++++++++++++++++++++++++++++++++++++
- target/arm/kvm.c          | 34 ++++++++++++++++++++++++++++++++
- 4 files changed, 79 insertions(+), 1 deletion(-)
+ target/arm/cpu.h      |  3 +++
+ target/arm/kvm-rme.c  |  9 ++++++++
+ target/arm/kvm-stub.c |  5 ++++
+ target/arm/kvm.c      | 54 +++++++++++++++++++++++++++++++++++++++++--
+ target/arm/kvm_arm.h  | 10 ++++++++
+ 5 files changed, 79 insertions(+), 2 deletions(-)
 
-diff --git a/target/arm/arm-qmp-cmds.c b/target/arm/arm-qmp-cmds.c
-index 9ed65eb090d7..9350dc30d12f 100644
---- a/target/arm/arm-qmp-cmds.c
-+++ b/target/arm/arm-qmp-cmds.c
-@@ -76,7 +76,7 @@ static const char *cpu_model_advertised_features[] = {
-     "sve1408", "sve1536", "sve1664", "sve1792", "sve1920", "sve2048",
-     "kvm-no-adjvtime", "kvm-steal-time",
-     "pauth", "pauth-impdef", "pauth-qarma3", "pauth-qarma5",
--    "num-breakpoints", "num-watchpoints",
-+    "num-breakpoints", "num-watchpoints", "num-pmu-counters",
-     NULL
- };
- 
 diff --git a/target/arm/cpu.h b/target/arm/cpu.h
-index 2e41c2be3b71..a5b8b7ccc70b 100644
+index 06ebed4a8fdf..11877642414d 100644
 --- a/target/arm/cpu.h
 +++ b/target/arm/cpu.h
-@@ -1201,6 +1201,7 @@ struct ArchCPU {
-     /* Allows to override the default configuration */
-     uint8_t num_bps;
-     uint8_t num_wps;
-+    int8_t num_pmu_ctrs;
- };
+@@ -1070,6 +1070,9 @@ struct ArchCPU {
+     /* KVM steal time */
+     OnOffAuto kvm_steal_time;
  
- typedef struct ARMCPUInfo {
-@@ -2158,6 +2159,8 @@ FIELD(MFAR, FPA, 12, 40)
- FIELD(MFAR, NSE, 62, 1)
- FIELD(MFAR, NS, 63, 1)
- 
-+FIELD(PMCR, N, 11, 5)
++    /* Realm Management Extension */
++    bool kvm_rme;
 +
- /* If adding a feature bit which corresponds to a Linux ELF
-  * HWCAP bit, remember to update the feature-bit-to-hwcap
-  * mapping in linux-user/elfload.c:get_elf_hwcap().
-diff --git a/target/arm/cpu64.c b/target/arm/cpu64.c
-index 483441dfabe3..22a8394a9f4e 100644
---- a/target/arm/cpu64.c
-+++ b/target/arm/cpu64.c
-@@ -745,12 +745,53 @@ static void arm_cpu_set_num_bps(Object *obj, Visitor *v, const char *name,
-     cpu->num_bps = val;
+     /* Uniprocessor system with MP extensions */
+     bool mp_is_up;
+ 
+diff --git a/target/arm/kvm-rme.c b/target/arm/kvm-rme.c
+index a4a5e195c196..f7c2cc786e2c 100644
+--- a/target/arm/kvm-rme.c
++++ b/target/arm/kvm-rme.c
+@@ -69,6 +69,15 @@ static int kvm_arm_rme_init(ConfidentialGuestSupport *cgs, Error **errp)
+     return 0;
  }
  
-+static void arm_cpu_get_num_pmu_ctrs(Object *obj, Visitor *v, const char *name,
-+                                     void *opaque, Error **errp)
++void kvm_arm_rme_vcpu_init(ARMCPU *cpu)
 +{
-+    uint8_t val;
-+    ARMCPU *cpu = ARM_CPU(obj);
-+
-+    if (cpu->num_pmu_ctrs == -1) {
-+        val = FIELD_EX64(cpu->isar.reset_pmcr_el0, PMCR, N);
-+    } else {
-+        val = cpu->num_pmu_ctrs;
-+    }
-+
-+    visit_type_uint8(v, name, &val, errp);
-+}
-+
-+static void arm_cpu_set_num_pmu_ctrs(Object *obj, Visitor *v, const char *name,
-+                                     void *opaque, Error **errp)
-+{
-+    uint8_t val;
-+    ARMCPU *cpu = ARM_CPU(obj);
-+    uint8_t max_ctrs = FIELD_EX64(cpu->isar.reset_pmcr_el0, PMCR, N);
-+
-+    if (!visit_type_uint8(v, name, &val, errp)) {
++    if (!rme_guest) {
 +        return;
 +    }
 +
-+    if (val > max_ctrs) {
-+        error_setg(errp, "invalid number of PMU counters");
-+        return;
-+    }
-+
-+    cpu->num_pmu_ctrs = val;
++    cpu->kvm_rme = true;
 +}
 +
- static void aarch64_add_kvm_writable_properties(Object *obj)
+ static void rme_guest_class_init(ObjectClass *oc, const void *data)
  {
-+    ARMCPU *cpu = ARM_CPU(obj);
-+
-     object_property_add(obj, "num-breakpoints", "uint8", arm_cpu_get_num_bps,
-                         arm_cpu_set_num_bps, NULL, NULL);
-     object_property_add(obj, "num-watchpoints", "uint8", arm_cpu_get_num_wps,
-                         arm_cpu_set_num_wps, NULL, NULL);
-+
-+    cpu->num_pmu_ctrs = -1;
-+    object_property_add(obj, "num-pmu-counters", "uint8",
-+                        arm_cpu_get_num_pmu_ctrs, arm_cpu_set_num_pmu_ctrs,
-+                        NULL, NULL);
+     ConfidentialGuestSupportClass *klass = CONFIDENTIAL_GUEST_SUPPORT_CLASS(oc);
+diff --git a/target/arm/kvm-stub.c b/target/arm/kvm-stub.c
+index 88cbe8d85c41..5fde96f9b281 100644
+--- a/target/arm/kvm-stub.c
++++ b/target/arm/kvm-stub.c
+@@ -119,3 +119,8 @@ char *kvm_print_register_name(uint64_t regidx)
+ {
+     g_assert_not_reached();
  }
- #endif /* CONFIG_KVM */
- 
++
++void kvm_arm_rme_vcpu_init(ARMCPU *cpu)
++{
++    g_assert_not_reached();
++}
 diff --git a/target/arm/kvm.c b/target/arm/kvm.c
-index 1acf62545e7a..28d00f520e9f 100644
+index 60272b8c040d..cfee9fe99f79 100644
 --- a/target/arm/kvm.c
 +++ b/target/arm/kvm.c
-@@ -1000,9 +1000,43 @@ static void kvm_arm_configure_aa64dfr0(ARMCPU *cpu)
+@@ -2058,6 +2058,8 @@ int kvm_arch_init_vcpu(CPUState *cs)
+         cpu->kvm_init_features[0] |= 1 << KVM_ARM_VCPU_HAS_EL2;
      }
+ 
++    kvm_arm_rme_vcpu_init(cpu);
++
+     /* Do KVM_ARM_VCPU_INIT ioctl */
+     ret = kvm_arm_vcpu_init(cpu);
+     if (ret) {
+@@ -2212,6 +2214,29 @@ static int kvm_arch_put_sve(CPUState *cs, uint32_t vq, bool have_ffr)
+     return 0;
  }
  
-+#define KVM_REG_ARM_PMCR_EL0            ARM64_SYS_REG(3, 3, 9, 12, 0)
-+
-+static void kvm_arm_configure_pmcr(ARMCPU *cpu)
++static int kvm_arm_rme_put_core_regs(CPUState *cs, Error **errp)
 +{
-+    int ret;
-+    uint64_t val, newval;
-+    CPUState *cs = CPU(cpu);
++    int i, ret;
++    ARMCPU *cpu = ARM_CPU(cs);
++    CPUARMState *env = &cpu->env;
 +
-+    if (cpu->num_pmu_ctrs == -1) {
-+        return;
++    /* The RME ABI only allows us to set 8 GPRs and the PC */
++    for (i = 0; i < 8; i++) {
++        ret = kvm_set_one_reg(cs, AARCH64_CORE_REG(regs.regs[i]),
++                              &env->xregs[i]);
++        if (ret) {
++            return ret;
++        }
 +    }
 +
-+    newval = FIELD_DP64(cpu->isar.reset_pmcr_el0, PMCR, N, cpu->num_pmu_ctrs);
-+    ret = kvm_set_one_reg(cs, KVM_REG_ARM_PMCR_EL0, &newval);
++    ret = kvm_set_one_reg(cs, AARCH64_CORE_REG(regs.pc), &env->pc);
 +    if (ret) {
-+        error_report("Failed to set KVM_REG_ARM_PMCR_EL0");
-+        return;
++        return ret;
 +    }
 +
-+    /*
-+     * Check if the write succeeded, since older versions of KVM ignore it.
-+     */
-+    ret = kvm_get_one_reg(cs, KVM_REG_ARM_PMCR_EL0, &val);
-+    if (ret) {
-+        error_report("Failed to get KVM_REG_ARM_PMCR_EL0");
-+        return;
-+    }
-+
-+    if (val != newval) {
-+        error_report("Failed to update KVM_REG_ARM_PMCR_EL0");
-+    }
++    return 0;
 +}
 +
- static void kvm_arm_configure_vcpu_regs(ARMCPU *cpu)
+ static int kvm_arm_put_core_regs(CPUState *cs, Error **errp)
  {
-     kvm_arm_configure_aa64dfr0(cpu);
-+    kvm_arm_configure_pmcr(cpu);
+     uint64_t val;
+@@ -2323,7 +2348,11 @@ int kvm_arch_put_registers(CPUState *cs, KvmPutState level, Error **errp)
+     int ret;
+     ARMCPU *cpu = ARM_CPU(cs);
+ 
+-    ret = kvm_arm_put_core_regs(cs, errp);
++    if (cpu->kvm_rme) {
++        ret = kvm_arm_rme_put_core_regs(cs, errp);
++    } else {
++        ret = kvm_arm_put_core_regs(cs, errp);
++    }
+     if (ret) {
+         return ret;
+     }
+@@ -2410,6 +2439,23 @@ static int kvm_arch_get_sve(CPUState *cs, uint32_t vq, bool have_ffr)
+     return 0;
  }
  
- /**
++static int kvm_arm_rme_get_core_regs(CPUState *cs, Error **errp)
++{
++    int i, ret;
++    ARMCPU *cpu = ARM_CPU(cs);
++    CPUARMState *env = &cpu->env;
++
++    for (i = 0; i < 8; i++) {
++        ret = kvm_get_one_reg(cs, AARCH64_CORE_REG(regs.regs[i]),
++                              &env->xregs[i]);
++        if (ret) {
++            return ret;
++        }
++    }
++
++    return 0;
++}
++
+ static int kvm_arm_get_core_regs(CPUState *cs, Error **errp)
+ {
+     uint64_t val;
+@@ -2521,7 +2567,11 @@ int kvm_arch_get_registers(CPUState *cs, Error **errp)
+     int ret;
+     ARMCPU *cpu = ARM_CPU(cs);
+ 
+-    ret = kvm_arm_get_core_regs(cs, errp);
++    if (cpu->kvm_rme) {
++        ret = kvm_arm_rme_get_core_regs(cs, errp);
++    } else {
++        ret = kvm_arm_get_core_regs(cs, errp);
++    }
+     if (ret) {
+         return ret;
+     }
+diff --git a/target/arm/kvm_arm.h b/target/arm/kvm_arm.h
+index e7c40fb003e4..d95381c13afa 100644
+--- a/target/arm/kvm_arm.h
++++ b/target/arm/kvm_arm.h
+@@ -240,4 +240,14 @@ void arm_gic_cap_kvm_probe(GICCapability *v2, GICCapability *v3);
+  */
+ char *kvm_print_register_name(uint64_t regidx);
+ 
++/**
++ * kvm_arm_rme_vcpu_init
++ * @cs: the CPU
++ *
++ * If the user requested a Realm, setup the given vCPU accordingly. Realm vCPUs
++ * behave a little differently, for example most of their register state is
++ * hidden from the host.
++ */
++void kvm_arm_rme_vcpu_init(ARMCPU *cpu);
++
+ #endif
 -- 
 2.43.0
 

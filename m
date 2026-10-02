@@ -4,124 +4,143 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 29CEACA5FD4
-	for <qemu-arm@archiver.kernel.org>; Fri,  2 Oct 2026 12:59:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 27164CA5FDD
+	for <qemu-arm@archiver.kernel.org>; Fri,  2 Oct 2026 13:51:25 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xCcrG-0008QL-4g; Fri, 02 Oct 2026 08:59:26 -0400
+	id 1xCdfR-0001Tr-3c; Fri, 02 Oct 2026 09:51:19 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1xCcrD-0008Pu-Q6
- for qemu-arm@nongnu.org; Fri, 02 Oct 2026 08:59:24 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ (Exim 4.90_1) (envelope-from <skolothumtho@nvidia.com>)
+ id 1xCdfK-0001RB-J0; Fri, 02 Oct 2026 09:51:11 -0400
+Received: from mail-northcentralusazlp170120005.outbound.protection.outlook.com
+ ([2a01:111:f403:c105::5] helo=CH5PR02CU005.outbound.protection.outlook.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1xCcrB-0006wz-Ly
- for qemu-arm@nongnu.org; Fri, 02 Oct 2026 08:59:23 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1790945960;
- h=from:from:reply-to:reply-to:subject:subject:date:date:
- message-id:message-id:to:to:cc:cc:mime-version:mime-version:
- content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=VFoEE0U1Hp5KQT1ZPGx/a8maOhy1unI7O+5gpZ1vOHI=;
- b=R/+yQT75R+zBLllCTOszHlDlnd9l5SjNaAJKa4ozw14825aqBgVm+HkqQqJoDS1780Ogj1
- RNvhccmbbrexiXUUzF5RbLIxTWxSQIxJRFsDyI24R9uEEtEClrqdUYvXFenfEJMJIQ5sCc
- Vzj15bqw9vp963f6am6DrKkVjpV+aGQ=
-Received: from mail-wr1-f71.google.com (mail-wr1-f71.google.com
- [209.85.221.71]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-679-_C1_7dSDNWS1hMn0A-cNkw-1; Fri, 02 Oct 2026 08:59:18 -0400
-X-MC-Unique: _C1_7dSDNWS1hMn0A-cNkw-1
-X-Mimecast-MFC-AGG-ID: _C1_7dSDNWS1hMn0A-cNkw_1790945957
-Received: by mail-wr1-f71.google.com with SMTP id
- ffacd0b85a97d-48b0a199b20so1616721f8f.1
- for <qemu-arm@nongnu.org>; Fri, 02 Oct 2026 05:59:18 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20260707; t=1790945957; x=1791550757;
- h=content-transfer-encoding:content-type:in-reply-to:content-language
- :references:cc:to:reply-to:subject:from:user-agent:mime-version:date
- :message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
- :message-id:reply-to:content-type;
- bh=VFoEE0U1Hp5KQT1ZPGx/a8maOhy1unI7O+5gpZ1vOHI=;
- b=GVRO8YnlrnccLzj0oIAcVzSMMEYj41UCxjsAVClt4oQfhYLb912SzDTz2BfUVGhR57
- jqYHZDDTWWSspWs288DZMc3+bRtzw9Gd2bE5DBZcOHiyhzfUydSH4uAq5ep+Diog8K4z
- U1MafZk9fwcivJGFSNaWDZbWGbwxdYNFU+cWbPU1fCSVWt3iCXm2u1UZVsUiqmHOzcem
- +qBa7qYC0QWdqB+7UA/5+z5p6j3Epw4K/mlujjX45cRARBulVTEkJ83VgX+Uyp1vlndG
- dE+dYFweOVTXTOVKNqivaQk6tU9fWoASjUnEuXnj1wxoD0UHK5MBwjbp9OwjBN05PMWr
- iM7w==
-X-Forwarded-Encrypted: i=1;
- AKwUvBybhriWgygIMEXhcCTx8WPlft+jzALfza84i8XlC2gAfYdJHGarkq75034sZ4dxYRbNTSzuQ85prA==@nongnu.org
-X-Gm-Message-State: AFq9FYKIH2G4ByvcQRA5Ll8m+CAHrsVClE0DDe51EnoX2jkVTRQKLHwT
- c+xETj1wzef70NykAOQ8/ditoT1TYN3au6xU4Mr6l2Rf/1T7j8Mg85IUFcOCzDfjM/IvBzBq0Il
- NkytXLLetwcP+v2SC9X772V+dLCEqV/ASsWsiPLxPSk+PdrcK30UWjw==
-X-Gm-Gg: AYBFou0PrmmwGacMObRDD6CZbTmpEw+tRqh3T94O2u8Cq9SpNFiq1RWlA+rKOfeo8SD
- B88tWp9TLXZrjStyCrx20LuWJQz4oMRuSpDjZZ8654NPiQzhfdageV5axaYJkf9uczOjFTAPeCr
- yeN5+vWZLs322CA54AuB35R2tsR8tElQGd1WMTqMuzwAjq85ro0ZeYM3Qj8G6gnuUrA3UwNhnbh
- PlibldWWQz2FKC/2HWNmU68Sw1jaIb5dIJx2jl2J/ksD23KxUwr/SmhvYQTvMe51p6yHf1XGEoP
- zD65V7iMvrryjn2n9wH/bYVyjRPXX5WCVVoEHQmt7cOCRFURAwUCE7chtg9Q39Kt9g4aafUtk5D
- MDcJJWYxJblOkcwOStYIhSfRiGny0Ko/ORFjfX1Um6Yclzkdh
-X-Received: by 2002:a05:6000:2c04:b0:487:27f9:841 with SMTP id
- ffacd0b85a97d-48b12727a3bmr4930954f8f.54.1790945957439; 
- Fri, 02 Oct 2026 05:59:17 -0700 (PDT)
-X-Received: by 2002:a05:6000:2c04:b0:487:27f9:841 with SMTP id
- ffacd0b85a97d-48b12727a3bmr4930906f8f.54.1790945957040; 
- Fri, 02 Oct 2026 05:59:17 -0700 (PDT)
-Received: from ?IPV6:2a01:e0a:f0e:9070:527b:9dff:feef:3874?
- ([2a01:e0a:f0e:9070:527b:9dff:feef:3874])
- by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-48b382f98ffsm5713867f8f.38.2026.10.02.05.59.15
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Fri, 02 Oct 2026 05:59:16 -0700 (PDT)
-Message-ID: <14d8af0e-eb1f-43ba-87ce-5f52ac280543@redhat.com>
-Date: Fri, 2 Oct 2026 14:59:14 +0200
-MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-From: Eric Auger <eric.auger@redhat.com>
-Subject: Re: [PATCH v9 06/26] scripts: Introduce
- scripts/update-aarch64-cpu-sysreg-properties.py
-To: Khushit Shah <khushit.shah@nutanix.com>
-Cc: "eric.auger.pro@gmail.com" <eric.auger.pro@gmail.com>,
- "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
- "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
- "kvmarm@lists.linux.dev" <kvmarm@lists.linux.dev>,
- "peter.maydell@linaro.org" <peter.maydell@linaro.org>,
- Shaju Abraham <shaju.abraham@nutanix.com>,
- "yangjinqian1@huawei.com" <yangjinqian1@huawei.com>,
- "cohuck@redhat.com" <cohuck@redhat.com>,
- "richard.henderson@linaro.org" <richard.henderson@linaro.org>,
- "sebott@redhat.com" <sebott@redhat.com>,
- "skolothumtho@nvidia.com" <skolothumtho@nvidia.com>,
- "philmd@oss.qualcomm.com" <philmd@oss.qualcomm.com>,
- "maz@kernel.org" <maz@kernel.org>,
- "oliver.upton@linux.dev" <oliver.upton@linux.dev>,
- "pbonzini@redhat.com" <pbonzini@redhat.com>,
- "armbru@redhat.com" <armbru@redhat.com>,
- "berrange@redhat.com" <berrange@redhat.com>,
- "abologna@redhat.com" <abologna@redhat.com>,
- "jdenemar@redhat.com" <jdenemar@redhat.com>
-References: <20260916144721.751810-1-eric.auger@redhat.com>
- <20260916144721.751810-7-eric.auger@redhat.com>
- <DFC38BF2-5E6F-4683-B030-C07656EC19BB@nutanix.com>
-In-Reply-To: <DFC38BF2-5E6F-4683-B030-C07656EC19BB@nutanix.com>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: tOqEsr4_9myMO38CCP_CvNAddUUtgqLfwkqiIFMHvWo_1790945957
-X-Mimecast-Originator: redhat.com
+ (Exim 4.90_1) (envelope-from <skolothumtho@nvidia.com>)
+ id 1xCdfH-0006Vc-R2; Fri, 02 Oct 2026 09:51:10 -0400
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=QfSrWZbWBdyktMJtBUeJhmTsk8OHu7I5DFgo9e62ZetgEAEh5e53gqcHZ6YIOMF5k6+BS2L9+2O4ERNh9h4BAT772ncFb5Cg3yM5e0JSkuXEDV8gkshKTDT15DTRH/P6HDxs3kRshSzZ1UuUtsj4zrPctCkXIeLWY83QVSGgPSJS6F123rMC0fd594qnbdsASAe94+bcuZngopB9XYpUyYMJ/aIvq+UEYWIqFoJtmrqOzwMEi/J77+KPNySdOk5Vx5j1NjqS7ZMfv6mz2qFPRa/Tq0bipwoXLenLp+r60J/AMog7NVoX8dxykDqmGqmW6x2yJsh+VaIH6tefBCGd0g==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=HuxAyZ4s3+fu823shSsBe4rV6BaOGHEGSUCAI2mk0vM=;
+ b=nGFsuySkFmZSNuTp3v6rrtZajgZ1m7kjouFzs1aZSGoIlLfGQWampd8KxyvZzeovGoNC7H75gexiOeDDfuDd8e3N01EkJwC/wAvrpZZqC46Oae9JUxrd7dIg+YtLo9i6XXXycSK/Jab7mZ+0Tlt1D9vC7/qOQDOfZrtD7WbbFZqMvv0i3tHuPrr+cE17f59IroSsz7r9kx5yljGOBZpEE+tKb1BIXKiGLfHHoFfbw+XczAXphQ/CX/nkjvDk2jkCGFlhZY1z/c5OI7Vy2ZR0mhQ7cbcxzSYIwSF2EwjIi5iapxvSz7ukjHqkRdSS2psX0Hf8KQG2qE5gQ9GvQnHLbA==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=nvidia.com; dmarc=pass action=none header.from=nvidia.com;
+ dkim=pass header.d=nvidia.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=Nvidia.com;
+ s=selector2;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=HuxAyZ4s3+fu823shSsBe4rV6BaOGHEGSUCAI2mk0vM=;
+ b=pUhrZ2pskVYx2ILqi3tTalsg/Gnr53CznqNso0u80HF5BBuSjUoHP+VGECiGqS2jxtCdsccYYMCtdgTLGKpdRHUe47jBKe3PtI7u24IhW1p5Ud0DkXZbbART3T9ZwFVx0P6DrJRm2Pu0r7x5J3FypPJuhWPh/AamCLv50yrnfAw2OCcAvm48yB5iFWTnSlL0dFaG9M1ZUc+ZLVs6Ezzhqv7aR8ytFK5Omraj4CVAjt7jVjSOP2v+GwyRw3KZcLUhgb3PTOMSizFNiLPHPBz9O7RTerqxuZE9f6xcP4MGyxRfoJEGjbYrBOj6YDjZxy/qdGVSjSbnuQ5DRWpYm18UiQ==
+Received: from SJ0PR12MB8614.namprd12.prod.outlook.com (2603:10b6:a03:47d::17)
+ by SA1PR12MB9546.namprd12.prod.outlook.com (2603:10b6:806:459::17)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.21.472.18; Fri, 2 Oct
+ 2026 13:50:59 +0000
+Received: from SJ0PR12MB8614.namprd12.prod.outlook.com
+ ([fe80::fe0a:6e6a:fe60:a43b]) by SJ0PR12MB8614.namprd12.prod.outlook.com
+ ([fe80::fe0a:6e6a:fe60:a43b%5]) with mapi id 15.21.0472.016; Fri, 2 Oct 2026
+ 13:50:59 +0000
+From: Shameer Kolothum Thodi <skolothumtho@nvidia.com>
+To: "eric.auger@redhat.com" <eric.auger@redhat.com>, "qemu-arm@nongnu.org"
+ <qemu-arm@nongnu.org>, "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>
+CC: "peter.maydell@linaro.org" <peter.maydell@linaro.org>, Nicolin Chen
+ <nicolinc@nvidia.com>, Nathan Chen <nathanc@nvidia.com>, Matt Ochs
+ <mochs@nvidia.com>, Jiandi An <jan@nvidia.com>, "jgg@ziepe.ca"
+ <jgg@ziepe.ca>, Ankit Agrawal <ankita@nvidia.com>, Aniket Agashe
+ <aniketa@nvidia.com>, "wangzhou1@hisilicon.com" <wangzhou1@hisilicon.com>,
+ "jiangkunkun@huawei.com" <jiangkunkun@huawei.com>
+Subject: RE: [RFC PATCH 0/7] hw/arm/smmuv3: Live migration for accel=on
+Thread-Topic: [RFC PATCH 0/7] hw/arm/smmuv3: Live migration for accel=on
+Thread-Index: AQHdPJgnxFHep9flGkG9ZpJw3a7LcbbpDgeAgAFhSEA=
+Date: Fri, 2 Oct 2026 13:50:58 +0000
+Message-ID: <SJ0PR12MB861462DCC5C7F9E93E6C2379AB892@SJ0PR12MB8614.namprd12.prod.outlook.com>
+References: <20260904180513.248396-1-skolothumtho@nvidia.com>
+ <cfca1664-2d41-4f02-b7cc-6e0e421426cc@redhat.com>
+In-Reply-To: <cfca1664-2d41-4f02-b7cc-6e0e421426cc@redhat.com>
+Accept-Language: en-US, en-GB
 Content-Language: en-US
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=170.10.129.124;
- envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -23
-X-Spam_score: -2.4
-X-Spam_bar: --
-X-Spam_report: (-2.4 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.336,
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+authentication-results: mx.microsoft.com 1; dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=nvidia.com;
+x-ms-publictraffictype: Email
+x-ms-traffictypediagnostic: SJ0PR12MB8614:EE_|SA1PR12MB9546:EE_
+x-ms-office365-filtering-correlation-id: 93424df9-470a-4d3b-f049-08df208c306d
+x-ms-exchange-senderadcheck: 1
+x-ms-exchange-antispam-relay: 0
+x-microsoft-antispam: BCL:0;
+ ARA:13230040|376014|366016|1800799024|23010399003|6133799003|5023799004|10067099003|11063799006|56012099006|4143699003|22082099003|18002099003|38070700021;
+x-microsoft-antispam-message-info: 5CCSkj21PdfuOjO31ZgNRN6zheVJclXceuUJIZBHStuiJpqDOuY1YXWuJGdfeMG5SJgE7BuP/I5FbCAn8Vnhsrvi7SUN50fJ88QTaK6x7t9BYFpLT/nL5ZFw5usYiKjHWQw2FlQleiZBDsudZhNA/844xcZ3iYLBH19hOzxCpuNJbKWcgjHhyEsQiX0Gu0qW43TacbBXY+1S6/Dt5sIH6/pCr0cfSQGtU+sTdxcIFK7lc8SEKCC7uzPZUUgf4CwzpG336/3W8NYi1l8WrH9UDnb78VHzckLxPYpw67gy+/hn8odAFc+dCU3F84MmK4F/QiBbx/6o4Nd/M8FVPIo1nRaidxbKFegfLyWOuwcayhgrdfu4DBfoy9iPaUQYbms7R9mFnog8kY9R4JjtwuYCtmWkJhTE7tdZYDg9ktSfSWCp1JMNshiV66tM9/GFlkc/ZnbdkeEGWL2r/wPniN+WxY73eBQNOxiduxZ8LhtGE1J+GaXuehzXhW4NyaMKqyLo7eOioetT22TOKO7eF7qvdAd79zAg+vnaPQv37pC0S0tepy/wt1K6SvG5qa2I9RTMXgDMuuCNEvh4oc2B/ZOGerBKOTVyC/LzLIsa2Zr6BEbRoKz0KjI9ioWlTthDMfI5JMpVw0uulVCoxOA+8k6r5DDPuZP62+wW/22gMCVS/RmiuS0PvzgeHqAimgXD1X3ZFd9VKO0829fm9kheIXVTAlD/plaV1e/bhG0u0nHL1Ro=
+x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:SJ0PR12MB8614.namprd12.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(13230040)(376014)(366016)(1800799024)(23010399003)(6133799003)(5023799004)(10067099003)(11063799006)(56012099006)(4143699003)(22082099003)(18002099003)(38070700021);
+ DIR:OUT; SFP:1101; 
+x-ms-exchange-antispam-messagedata-chunkcount: 1
+x-ms-exchange-antispam-messagedata-0: =?utf-8?B?OTZ1ZDh1cThMMEFEbXJqaXRKbkJQSVhaRHo1MUlsUGpiOGtxeER2WG9uS2Mv?=
+ =?utf-8?B?Q09OSG9DZnpaeE1BSndaZWRBWDVrTHJObFBERytSZ281bmVKNlp3QkhuSEtl?=
+ =?utf-8?B?bmdGTUVNMjREb0p2clpuMEthVUhMbVFtb2c3TmxJa0tEbS8wNFBjTS9CK0xv?=
+ =?utf-8?B?WUo1ckREbjljck1QaXpjaVR1MFZXVWRRbEZidUFvS05GMGZOWTVqbmpXYjVU?=
+ =?utf-8?B?UUNPUUhucE1NK0lOV1Fqc29hN0VvL2xoK0xBSzlOTU9Mb0VHOGVNZk9PV2RK?=
+ =?utf-8?B?eUtmM0RyN0hUZkRCWUVLTk5NeG9iQWowQWxTWkxaakNiZ2tBSElYbDVyK25R?=
+ =?utf-8?B?eDZxdlk3NmJVckZYc0x0N2hLQXlSbXdIbGhlTnJvdEE4QS9hdmo1YlM2Zjlk?=
+ =?utf-8?B?Vld5WllKTGFkUGZZRTIxckdybXBFN0pWaEVRWGxrMG1LNC8rMDh0N3dHSWdy?=
+ =?utf-8?B?Ym91TEFBSlloQWFOcnIxR2hFRllTNXNGcHRSZzJ2ZktsbzI3cUdKT1hvT1Q5?=
+ =?utf-8?B?OUtBNFVzb3h5L3crbGNhMUgzWk5WS0V1ZHp6d0toRG5KYmlzVTR4VTRHWHBt?=
+ =?utf-8?B?UHRmQVFsN3E0VFdUUHJ0bTR5UVpLZklvTW10V1RGVUxycWp3UVNxeVBwUk5I?=
+ =?utf-8?B?Yzk0M1IvNUlpaUc0ZVlpM2taSzh2M1U4UWltR1NpSDZSUkJ4SGx0M3Bqb3k5?=
+ =?utf-8?B?QjZRRzNZRFg5UVF0MXdDaUg5cjdHVmc5Z3dxWXRxeVdQSEoya3lON3YrbWxT?=
+ =?utf-8?B?cERoNUxLa1BrVllaeVhMODM4d2JYMmRmSjFqWFpBenQ0MllvaHZsVUZiY0Rn?=
+ =?utf-8?B?SjBuTGhNbk4xa2xobSt1YXphc1pqRzZtd1AxMVkySnBvZzFUcElZd1hqdFIv?=
+ =?utf-8?B?VnIwbEwyellyb09Ba0pwdFBzY0taalpSbjhLb3J3V3JnN0tNNW5sWlRTTW5n?=
+ =?utf-8?B?MXg3U09qSG5TMFJUMlNzbmdzb2NSNTJkS1A4b2RSMGdseTcwQWlZVEorb1FX?=
+ =?utf-8?B?NmVWeGM4UGcrdFY2U09US3VVZVQxR1ZTbDEyazZFSk45Rk12TjFhWUZYaTRz?=
+ =?utf-8?B?SlRJTEp2QzdKTTRycjNlR1dJUFhnU2xBTEhRWDVGTGlSZmUyQ0M5dGZxK0hH?=
+ =?utf-8?B?UGtDWHpHUUNTSUxnVTlXdzdTT3dIUkFCUGNVRkVwVHVncjVEMlBPYlpmTVlN?=
+ =?utf-8?B?cXpxOWh6MHAyNmR1ZUMvTDZJQ1JxZzhmMFAzVE5FL3pKa2JxOWVlSzNReUQ2?=
+ =?utf-8?B?K093cTAyTUdFdTVLcnBXdlU0dEUwdGt1OFd5eUlNdi9tL3hRN1J6d2YxOXY5?=
+ =?utf-8?B?TGZZS0ZpSmU0UzhXNGl0Q3dmd0VzdGhaSENjdHR0VUxrNTF0WFYzcFp6anF4?=
+ =?utf-8?B?enBaa3ZMd2pRU3lMNkVtSk52a2hyMXpldmJBMEFxeTZTcXEzalVqcHptcUlU?=
+ =?utf-8?B?b0hGci8vZit1Nm95RFFRTGRtZEhReVFpYUFrU2lsNnBhNUMyb2tTalZyZmxV?=
+ =?utf-8?B?WS83L1VUL3NaT0xzTjFNalBBeW51WnQ3QklnbXZnaXo1RHhTOGhPWkxuMFpX?=
+ =?utf-8?B?QktRVWx4YkV1UWtNZlYvbmpBL0NGaWpLYzJtV0hzWWN4TVIxeVB3Nm1HSktN?=
+ =?utf-8?B?SnNjV2JncU9WRU90MzNMTi9BbkFtclBmL1pmYkFBTEVaak5wK3crNE8vc2o1?=
+ =?utf-8?B?b0NxZTdUZVlFR04yNjRycUFuWWszb3hvOURWdElDd1BuN1cvSG5rWllzRVlX?=
+ =?utf-8?B?MUNiSlp5ZjhJOS90VGJKOGpZZlZhU3FHTWxzdHdqUWNlWjJpbVdvRHJHenRT?=
+ =?utf-8?B?T0s1YmtSRCtrY0lOYm9vL0tLVzNpZ245cTBiMWxrR3hyM0NCdTB5NjRBWmxQ?=
+ =?utf-8?B?NWhnVGlEVGo2K1N5dXdSeFU3L000SUU2MUFqWDFvRXI3a0tHcXAxcnJ4cWZk?=
+ =?utf-8?B?ZmtFcTloYmp4NEFlOGxiV2VFWHZwbTNXRkoybHFKRnlFQmRCUHJqbkZVcTRr?=
+ =?utf-8?B?ZEh6NC94K2gySGVHblFrZzFlbnhIVWNlM2lLVGI0akd0Mk5zWFR4VmIxMXlh?=
+ =?utf-8?B?R2N0eHo0WnJiaE83QjhaTmU5OFRSbWlvdU9qOUUrYVhxVnF1eUpBYVVKU1Bm?=
+ =?utf-8?B?ZXltUnpSa2laY0FCZ2hiVDFSNGw2VHplY2RNSG91RjJIbVBHeTc0QjZKUWJM?=
+ =?utf-8?B?MzY4dTA3ZExyem5wTHhGR21uVHlwbUFPU0dnYXhVS05xaGJ0Yjl5eG55WGlD?=
+ =?utf-8?B?R1VuM0lKRFpxR21ERDJPNGZ3aUY4RE1GbFJ3bldBTlZXcmpPQXlCb1JvTjZn?=
+ =?utf-8?B?NUlDOG00TGFRQzVHUCt4VklCWjR3cFJIeDRXK2FPR216QTcySytuUT09?=
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
+MIME-Version: 1.0
+X-OriginatorOrg: Nvidia.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-AuthSource: SJ0PR12MB8614.namprd12.prod.outlook.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 93424df9-470a-4d3b-f049-08df208c306d
+X-MS-Exchange-CrossTenant-originalarrivaltime: 02 Oct 2026 13:50:58.9624 (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: 43083d15-7273-40c1-b7db-39efd9ccc17a
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: A/z5b8OzFNXg8YtBv/e+9/X/jxQ2/uUyJriFLodJzcm0tUcLCaR85J6QxbDbEe/V8pfx5wvBc1MxR2eaGxo1Fw==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: SA1PR12MB9546
+Received-SPF: permerror client-ip=2a01:111:f403:c105::5;
+ envelope-from=skolothumtho@nvidia.com;
+ helo=CH5PR02CU005.outbound.protection.outlook.com
+X-Spam_score_int: -13
+X-Spam_score: -1.4
+X-Spam_bar: -
+X-Spam_report: (-1.4 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.336,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=0.001, SPF_HELO_PASS=-0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ FORGED_SPF_HELO=1, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_PASS=-0.001,
+ SPF_NONE=0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -134,244 +153,86 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-To: eric.auger@redhat.com
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Hi Khushit,
-
-On 9/25/26 11:29 AM, Khushit Shah wrote:
->> On 16 Sep 2026, at 8:15 PM, Eric Auger <eric.auger@redhat.com> wrote:
->>
->> !-------------------------------------------------------------------|
->>  CAUTION: External Email
->>
->> |-------------------------------------------------------------------!
->>
->> Introduce a script that takes as input the Registers.json file
->> delivered in the AARCHMRS Features Model downloadable from the
->> Arm Developer A-Profile Architecture Exploration Tools page:
->> https://urldefense.proofpoint.com/v2/url?u=https-3A__developer.arm.com_Architectures_A-2DProfile-2520Architecture-23Downloads&d=DwIDAg&c=s883GpUCOChKOHiocYtGcg&r=PGWMyignA0NiDmTlyP7vOTHozBws_VN86yrVmSMkBp0&m=2NOLVUk59YPHssYi5AgGX0z_LkZPQXfTkiD33Ti_D8RYfowBwp7XuMOfw-dMDkDE&s=Qs3ro5t6_dDfdQDLUGX7pJ43SvM2axfOShUzqbv90EQ&e= 
->> and automates the generation of system register properties definitions.
->>
->> generates target/arm/cpu-idregs.h.inc containing definitions for
->> feature ID registers.
->>
->> We only care about IDregs with opcodes satisfying:
->> op0 = 3, op1 = {0,1,3}, crn = 0, crm within [0, 7], op2 within [0, 7]
->>
->> Signed-off-by: Eric Auger <eric.auger@redhat.com>
->>
->> ---
->>
->> v5 -> v6
->> - add ident
->> ---
->> .../update-aarch64-cpu-sysreg-properties.py   | 166 ++++++++++++++++++
->> 1 file changed, 166 insertions(+)
->> create mode 100644 scripts/update-aarch64-cpu-sysreg-properties.py
->>
->> diff --git a/scripts/update-aarch64-cpu-sysreg-properties.py b/scripts/update-aarch64-cpu-sysreg-properties.py
->> new file mode 100644
->> index 0000000000..6f5edb88d2
->> --- /dev/null
->> +++ b/scripts/update-aarch64-cpu-sysreg-properties.py
->> @@ -0,0 +1,166 @@
->> +#!/usr/bin/env python3
->> +
->> +# This script takes as input the Registers.json file delivered in
->> +# the AARCHMRS Features Model downloadable from the Arm Developer
->> +# A-Profile Architecture Exploration Tools page:
->> +# https://urldefense.proofpoint.com/v2/url?u=https-3A__developer.arm.com_Architectures_A-2DProfile-2520Architecture-23Downloads&d=DwIDAg&c=s883GpUCOChKOHiocYtGcg&r=PGWMyignA0NiDmTlyP7vOTHozBws_VN86yrVmSMkBp0&m=2NOLVUk59YPHssYi5AgGX0z_LkZPQXfTkiD33Ti_D8RYfowBwp7XuMOfw-dMDkDE&s=Qs3ro5t6_dDfdQDLUGX7pJ43SvM2axfOShUzqbv90EQ&e= 
->> +# and outputs target/arm/cpu-idregs.h.inc content.
->> +# ID regs are defined using this pattern:
->> +#
->> +# IDREG_START(REG)
->> +#    IDREG_FIELD(REG, FIELD, SHIFT, LENGTH)
-> Nit: Add Enum Macro
-This is done later in "target/arm/cpu-idregs.h.inc: Generate enum values"
->> +# ...
->> +# IDREG_END(REG)
->> +#
->> +# Copyright (C) 2026 Red Hat, Inc.
->> +#
->> +# Authors: Eric Auger <eric.auger@redhat.com>
->> +#
->> +# SPDX-License-Identifier: GPL-2.0-or-later
->> +
->> +
->> +import json
->> +import os
->> +import sys
->> +from aarch64_sysreg_helpers import extract_idregs_from_registers_json
->> +
->> +def collect_fields(item, bit_offset=0):
->> +    """
->> +    Recursively finds all field-like objects, handling Fields.Array,
->> +    Fields.ArrayField, and ConditionalField structures.
->> +    Applies bit_offset from containers to child fields.
->> +    """
->> +    fields = []
->> +    if not isinstance(item, dict):
->> +        return fields
->> +
->> +    _type = item.get('_type', '')
->> +
->> +    # Array types (for example CLIDR_EL1 Ctype<n>, Ttype<n>)
->> +    if _type == 'Fields.Array':
->> +        name_template = item.get('name') or item.get('label', '')
->> +        index_info = item.get('indexes', [{}])[0]
->> +        start_idx = index_info.get('start', 0)
->> +        count = index_info.get('width', 0)
->> +
->> +        full_range = item.get('rangeset', [{}])[0]
->> +        bit_start = full_range.get('start', 0) + bit_offset
->> +        elem_width = full_range.get('width', 0) // count if count else 0
->> +
->> +        for i in range(count):
->> +            idx = start_idx + i
->> +            # Correctly handle indexed names like Ctype1, Ctype2
->> +            field_name = name_template.replace('<n>', str(idx))
->> +            fields.append({
->> +                'name': field_name,
->> +                'rangeset': [{
->> +                    'start': bit_start + (i * elem_width),
->> +                    'width': elem_width
->> +                }],
->> +                '_type': 'Fields.Field'
->> +            })
->> +        return fields
->> +
->> +    # ConditionalFields
-> Can you please explain what are conditional fields and should we always include them?
-If we don't you will miss plenty of named fields which depend on a
-specific FEAT implementation.
-Few examples: 
-<     IDREG_FIELD_START(ID_AA64MMFR4_EL1, E2H0, 24, 4)
-<     IDREG_FIELD_START(ID_AA64SMFR0_EL1, SMEver, 56, 4)
-<     IDREG_FIELD_START(ID_AA64ZFR0_EL1, SVEver, 0, 4)
-../..
-
-All of those are defined in linux sysreg too
->
->> +    elif _type == 'Fields.ConditionalField':
->> +        inner_offset = bit_offset
->> +        if item.get('rangeset'):
->> +            # Parent container defines the absolute start bit
->> +            inner_offset = item['rangeset'][0].get('start', bit_offset)
->> +
->> +        for entry in item.get('fields', []):
->> +            inner = entry.get('field')
->> +            if inner:
->> +                fields.extend(collect_fields(inner, inner_offset))
->> +        return fields
->> +
->> +    # Normal Field Types
->> +    leaf_types = ['Fields.Field', 'Fields.ConstantField',
->> +                  'Fields.EnumeratedField', 'Fields.Bitfield']
->> +    if _type in leaf_types:
->> +        field_copy = item.copy()
->> +        if field_copy.get('rangeset'):
->> +            new_ranges = []
->> +            for r in field_copy['rangeset']:
->> +                nr = r.copy()
->> +                # Apply the cumulative offset to the field's start bit
->> +                nr['start'] = r.get('start', 0) + bit_offset
->> +                new_ranges.append(nr)
->> +            field_copy['rangeset'] = new_ranges
->> +        fields.append(field_copy)
->> +        return fields
->> +
->> +    # Traverse the hierarchy for other cases
->> +    for key in ['fields', 'values', 'fieldsets']:
->> +        for nested in item.get(key, []):
->> +            fields.extend(collect_fields(nested, bit_offset))
->> +
->> +    return fields
->> +
->> +
->> +def generate_sysreg_properties_from_registers_json(id_reg_names, raw_json_path):
->> +    with open(raw_json_path, 'r') as f:
->> +        register_data = json.load(f)
->> +
->> +    regs = {r.get('name'): r for r in register_data if r.get('_type') == 'Register'}
->> +
->> +    final_output = ""
->> +
->> +    for reg_name in id_reg_names:
->> +        register = regs.get(reg_name)
->> +        if not register:
-> we should error out here.
-agreed
->> +            continue
->> +
->> +        final_output += f"IDREG_START({reg_name})\n"
->> +
->> +        unique_fields = {}
->> +        for fieldset in register.get('fieldsets', []):
->> +            candidates = collect_fields(fieldset)
->> +            for val in candidates:
->> +                name = (val.get('name') or val.get('label', '')).strip()
->> +                if not name or "RESERVED" in name.upper():
->> +                    continue
->> +                for r in val.get('rangeset', []):
->> +                    lsb = int(r.get('start'))
->> +                    width = r.get('width')
->> +                    msb = lsb + int(width) - 1
->> +
->> +                    # Only keep the fields with the highest MSB
->> +                    # needed fir CCSIDR_EL1
-> does not apply now, we ignore CCSIDR_EL1
-yeah but I feel it still makes sense to record the highest msb in case
-different fieldsets exist for the same name (32b versus 64b for instance)
->> +                    if name not in unique_fields or msb > unique_fields[name]['msb']:
->> +                        unique_fields[name] = {'lsb': lsb, 'msb': msb, 'width': width}
->> +
->> +        # Sort decreasing lsbs
->> +        sorted_fields = sorted(unique_fields.items(),
->> +                               key=lambda x: x[1]['lsb'], reverse=True)
->> +
->> +        for name, bits in sorted_fields:
->> +            line = (f"    IDREG_FIELD({reg_name}, "
->> +                    f"{name}, {bits['lsb']}, {bits['width']})\n")
->> +            final_output += line
->> +        final_output += f"IDREG_END({reg_name})\n"
->> +        final_output += "\n"
->> +
->> +    os.makedirs("target/arm", exist_ok=True)
->> +    with open("target/arm/cpu-idregs.h.inc", 'w') as f:
->> +        f.write("/* AUTOMATICALLY GENERATED, DO NOT MODIFY */\n\n")
->> +        f.write("/* SPDX-License-Identifier: GPL-2.0-or-later */\n\n")
->> +        f.write("/* IDREG_START(REG) */\n")
->> +        f.write("/*     IDREG_FIELD(REG, FIELD, SHIFT, LENGTH) */\n”)
-> Same enum macro …
-see above
-
-Thanks!
-
-Eric
->
-> Warm Regards,
-> Khushit
->> +        f.write("/* ... */\n")
->> +        f.write("/* IDREG_END(REG) */\n\n")
->> +        f.write(final_output)
->> +
->> +if __name__ == "__main__":
->> +    if len(sys.argv) < 2:
->> +        print("Usage: python scripts/update-aarch64-cpu-sysreg-properties.py "
->> +              "<path_to_registers_json>")
->> +    else:
->> +        json_path = sys.argv[1]
->> +
->> +        id_regs_dict = extract_idregs_from_registers_json(json_path)
->> +        sorted_names = sorted(id_regs_dict.keys())
->> +
->> +        if sorted_names:
->> +            generate_sysreg_properties_from_registers_json(sorted_names, json_path)
->> +            print("Generated target/arm/cpu-idregs.h.inc")
->> -- 
->> 2.53.0
->>
-
+DQo+IC0tLS0tT3JpZ2luYWwgTWVzc2FnZS0tLS0tDQo+IEZyb206IEVyaWMgQXVnZXIgPGVyaWMu
+YXVnZXJAcmVkaGF0LmNvbT4NCj4gU2VudDogMDEgT2N0b2JlciAyMDI2IDE3OjQxDQo+IFRvOiBT
+aGFtZWVyIEtvbG90aHVtIFRob2RpIDxza29sb3RodW10aG9AbnZpZGlhLmNvbT47IHFlbXUtDQo+
+IGFybUBub25nbnUub3JnOyBxZW11LWRldmVsQG5vbmdudS5vcmcNCj4gQ2M6IHBldGVyLm1heWRl
+bGxAbGluYXJvLm9yZzsgTmljb2xpbiBDaGVuIDxuaWNvbGluY0BudmlkaWEuY29tPjsgTmF0aGFu
+DQo+IENoZW4gPG5hdGhhbmNAbnZpZGlhLmNvbT47IE1hdHQgT2NocyA8bW9jaHNAbnZpZGlhLmNv
+bT47IEppYW5kaSBBbg0KPiA8amFuQG52aWRpYS5jb20+OyBqZ2dAemllcGUuY2E7IEFua2l0IEFn
+cmF3YWwgPGFua2l0YUBudmlkaWEuY29tPjsgQW5pa2V0DQo+IEFnYXNoZSA8YW5pa2V0YUBudmlk
+aWEuY29tPjsgd2FuZ3pob3UxQGhpc2lsaWNvbi5jb207DQo+IGppYW5na3Vua3VuQGh1YXdlaS5j
+b20NCj4gU3ViamVjdDogUmU6IFtSRkMgUEFUQ0ggMC83XSBody9hcm0vc21tdXYzOiBMaXZlIG1p
+Z3JhdGlvbiBmb3IgYWNjZWw9b24NCj4gDQo+IEV4dGVybmFsIGVtYWlsOiBVc2UgY2F1dGlvbiBv
+cGVuaW5nIGxpbmtzIG9yIGF0dGFjaG1lbnRzDQo+IA0KPiANCj4gSGkgU2hhbWVlciwNCj4gDQo+
+IE9uIDkvNC8yNiA4OjA1IFBNLCBTaGFtZWVyIEtvbG90aHVtIHdyb3RlOg0KPiA+IEhpLA0KPiA+
+DQo+ID4gVGhpcyBzZXJpZXMgYWRkcyBsaXZlIG1pZ3JhdGlvbiBzdXBwb3J0IGZvciBhbiBhY2Nl
+bGVyYXRlZCBTTU1VdjMNCj4gPiAoLWRldmljZSBhcm0tc21tdXYzLGFjY2VsPW9uKSB3aXRoIHZm
+aW8tcGNpIGVuZHBvaW50cyBvbiB0aGUgaW9tbXVmZA0KPiA+IGJhY2tlbmQuDQo+ID4NCj4gPiBU
+aGUgZGVzdGluYXRpb24gcmVwbGF5cyByYXRoZXIgdGhhbiByZWNlaXZlcy4gVGhlIHN0cmVhbSB0
+YWJsZSwgdGhlDQo+ID4gU1RFcywgdGhlIENEcyBhbmQgdGhlIFN0YWdlIDEgcGFnZSB0YWJsZXMg
+YWxsIGxpdmUgaW4gZ3Vlc3QgUkFNLCBzbw0KPiA+IG9uY2UgdGhhdCBhbmQgdGhlIHJlZ2lzdGVy
+cyBhcmUgcmVzdG9yZWQsIHRoZSBkZXN0aW5hdGlvbiB3YWxrcyB0aGUNCj4gPiBzdHJlYW0gdGFi
+bGUgYWdhaW4gYW5kIHJlYnVpbGRzIHRoZSB2REVWSUNFIGFuZCB0aGUgbmVzdGVkIEhXUFQgZm9y
+IGV2ZXJ5DQo+IGRldmljZS4NCj4gPg0KPiA+IFdoYXQgdGhlIHNlcmllcyBkb2VzOg0KPiA+DQo+
+ID4gIC0gZHJhaW5zIHRoZSBrZXJuZWwgdkVWRU5UUSBpbnRvIHRoZSBndWVzdCBldmVudCBxdWV1
+ZSB3aGVuIHRoZSBWTSBzdG9wcywNCj4gPiAgICBzbyB0aGF0IHBlbmRpbmcgZmF1bHQgZXZlbnRz
+IGFyZSBub3QgbG9zdCAoMSwgMikNCj4gPiAgLSBtaWdyYXRlcyB0aGUgcmVzb2x2ZWQgU01NVXYz
+IGZlYXR1cmUgc2V0IGluIGEgbmV3IHNtbXV2My9hY2NlbA0KPiA+ICAgIHN1YnNlY3Rpb24gYW5k
+IGZhaWxzIHRoZSBsb2FkIGlmIHRoZSB0d28gZW5kcyBkaWZmZXIgKDMpDQo+ID4gIC0gcmVwbGF5
+cyB0aGUgZ3Vlc3Qgc3RyZWFtIHRhYmxlIG9uIHRoZSBkZXN0aW5hdGlvbiBhbmQgcmVzdG9yZXMg
+dGhlDQo+ID4gICAgdkVWRU5UUSBhbmQgdGhlIEdCUEEgSFdQVCAoNCwgNSkNCj4gPiAgLSBhc2tz
+IFZGSU8gZm9yIGRpcnR5IHRyYWNraW5nIG9uIHRoZSBTdGFnZSAyIG5lc3RpbmcgcGFyZW50ICg2
+KQ0KPiA+ICAtIHJlcGxhY2VzIHRoZSBhY2NlbCBtaWdyYXRpb24gYmxvY2tlciB3aXRoIG9uZSBz
+Y29wZWQgdG8gQ01EUVYsIHdoaWNoDQo+ID4gICAgY2Fubm90IGJlIG1pZ3JhdGVkIGZvciBub3cg
+KDcpDQo+ID4NCj4gPiBUaGlzIGRlcGVuZHMgb24gdGhlIGhvc3Qga2VybmVsIHN1cHBvcnRpbmcg
+ZGlydHkgdHJhY2tpbmcgb24gdGhlIFN0YWdlDQo+ID4gMiBuZXN0aW5nIHBhcmVudCwgZm9yIGFz
+c2lnbmVkIGRldmljZXMgdGhhdCBjYW5ub3QgdHJhY2sgZGlydHkgcGFnZXMNCj4gPiB0aGVtc2Vs
+dmVzLiBBIGJyYW5jaCBiYXNlZCBvbiBKYXNvbidzIGlvbW11IHBhZ2UgdGFibGUgd29yayBpcyBo
+ZXJlIFswXS4NCj4gPg0KPiA+IEJpZyBjYXZlYXQ6DQo+ID4NCj4gPiBUaGlzIGlzIG5vdCB5ZXQg
+dGVzdGVkIHdpdGggYSByZWFsIGRldmljZSB0aGF0IHN1cHBvcnRzIG1pZ3JhdGlvbiBhcyBJDQo+
+ID4gZG8gbm90IGhhdmUgYSB0ZXN0IHNldHVwIGZvciB0aGF0LiBGb2xrcyB3aG8gZG8gaGF2ZSBz
+dWNoIGEgc2V0dXAgaGF2ZQ0KPiA+IHJlYWNoZWQgb3V0IGFuZCBhcmUgY29waWVkIGhlcmUsIHNv
+IGhvcGVmdWxseSB0aGlzIFJGQyBsZXRzIHRoZW0gZ2l2ZQ0KPiA+IGl0IGEgc3BpbiBhbmQgcHJv
+dmlkZSBzb21lIGVhcmx5IGZlZWRiYWNrLg0KPiANCj4gUGxlYXNlIGNvdWxkIHlvdSBjbGFyaWZ5
+IGFsbCB0aGUgcmVxdWlyZW1lbnRzIGZvciBzdXBwb3J0aW5nIHRoaXMgbWlncmF0aW9uDQo+IHNj
+ZW5hcmlvIChhdCBFUCwgU01NVSBhbmQga2VybmVsIGxldmVsKT8NCg0KRm9yIGEgbWluaW11bSB3
+ZSBuZWVkOg0KDQpFUDoNCg0KIC0gQSBkZXZpY2Ugd2l0aCBtaWdyYXRpb24gc3VwcG9ydCBhbmQg
+YSB2ZmlvIHZhcmlhbnQgZHJpdmVyIHRoYXQgaW1wbGVtZW50cw0KICAgVkZJTyBtaWdyYXRpb24s
+IHRoZSBzYW1lIGFzIGZvciBtaWdyYXRpb24gd2l0aG91dCBhIHZJT01NVS4NCg0KSG9zdCBTTU1V
+djM6DQoNCiAtIERpcnR5IHRyYWNraW5nIG9uIHRoZSBTdGFnZSAyIG5lc3RpbmcgcGFyZW50LiBT
+dGFnZSAyIG1hcHMgR1BBIHRvIFBBLA0KICAgc28gdGhlIGRpcnR5IGJpdHMgaXQgc2V0cyBhcmUg
+YWxyZWFkeSBpbiBndWVzdCBwaHlzaWNhbCB0ZXJtcy4gVGhhdA0KICAgbmVlZHMgSFRUVSAoSURS
+MC5IVFRVIHJlcG9ydGluZyBIRCkgYW5kIGNvaGVyZW50IHRhYmxlIHdhbGtzLCB3aGljaA0KICAg
+aXMgd2hhdCBhcm1fc21tdV9kYm1fY2FwYWJsZSgpIGNoZWNrcyBhbmQgaW9tbXVmZCByZXBvcnRz
+IGFzDQogICBJT01NVV9IV19DQVBfRElSVFlfVFJBQ0tJTkcuIFdpdGhvdXQgaXQgVkZJTyBhZGRz
+IGl0cyB1c3VhbCBibG9ja2VyLg0KDQpIb3N0IEtlcm5lbDoNCg0KIC0gSU9NTVVfSFdQVF9BTExP
+Q19ESVJUWV9UUkFDS0lORyBvbiBhIG5lc3RpbmcgcGFyZW50IGRvbWFpbi4gVXBzdHJlYW0NCiAg
+IGFybS1zbW11LXYzIHJldHVybnMgRU9QTk9UU1VQUCBmb3IgdGhhdCBjb21iaW5hdGlvbi4gVGhl
+IGJyYW5jaCBpbiBbMF0NCiAgIGVuYWJsZXMgaXQgb24gdG9wIG9mIEphc29uJ3MgaW9tbXUgcGFn
+ZSB0YWJsZSB3b3JrLCBieSBzZXR0aW5nIFMySEEgYW5kDQogICBTMkhEIGluIHRoZSBTVEUgYW5k
+IHVzaW5nIHRoZSBEQk0gc3VwcG9ydCBpbiB0aGUgZ2VuZXJpYyBwYWdlIHRhYmxlDQogICBjb2Rl
+Lg0KDQpUaGFua3MsDQpTaGFtZWVyDQoNCj4gPg0KPiA+IFFFTVUgYnJhbmNoIGlzIGhlcmU6DQo+
+ID4NCj4gPiBodHRwczovL2dpdGh1Yi5jb20vc2hhbWlhbGkyMDA4L3FlbXUtbWFzdGVyL3RyZWUv
+c21tdXYzLWFjY2VsLWxpdmUtDQo+IG1pZw0KPiA+IHJuLXJmY3YxDQo+ID4NCj4gPiBQbGVhc2Ug
+bGV0IG1lIGtub3cgeW91ciBmZWVkYmFjay4NCj4gPg0KPiA+IFRoYW5rcywNCj4gPiBTaGFtZWVy
+DQo+ID4gWzBdOg0KPiA+DQo+IGh0dHBzOi8vZ2l0aHViLmNvbS9zaGFtaWFsaTIwMDgvbGludXgv
+Y29tbWl0cy9pb21tdV9wdF9hcm02NF9zMl9kYm0NCj4gLw0KPiA+DQo+ID4gU2hhbWVlciBLb2xv
+dGh1bSAoNyk6DQo+ID4gICBody9hcm0vc21tdXYzLWFjY2VsOiBGYWN0b3Igb3V0IHRoZSBzaW5n
+bGUgdkVWRU5UIHJlYWQNCj4gPiAgIGh3L2FybS9zbW11djMtYWNjZWw6IERyYWluIHRoZSB2RVZF
+TlRRIHdoZW4gdGhlIFZNIHN0b3BzDQo+ID4gICBody9hcm0vc21tdXYzOiBNaWdyYXRlIHRoZSBh
+Y2NlbGVyYXRvciBmZWF0dXJlIHNldA0KPiA+ICAgaHcvYXJtL3NtbXV2My1hY2NlbDogQWRkIGEg
+aGVscGVyIHRvIHJlcGxheSBhbGwgU1RFcw0KPiA+ICAgaHcvYXJtL3NtbXV2My1hY2NlbDogUmVz
+dG9yZSBhY2NlbGVyYXRvciBzdGF0ZSBvbiBpbmNvbWluZyBtaWdyYXRpb24NCj4gPiAgIGh3L2Fy
+bS9zbW11djMtYWNjZWw6IFJlcXVlc3QgZGlydHkgdHJhY2tpbmcgb24gdGhlIG5lc3RpbmcgcGFy
+ZW50DQo+ID4gICBody9hcm0vc21tdXYzOiBTdXBwb3J0IG1pZ3JhdGlvbiB3aXRoIGFjY2VsPW9u
+DQo+ID4NCj4gPiAgaHcvYXJtL3NtbXV2My1hY2NlbC5oICAgICAgIHwgICAyICsNCj4gPiAgaW5j
+bHVkZS9ody9hcm0vc21tdXYzLmggICAgIHwgICA3ICstDQo+ID4gIGh3L2FybS9zbW11djMtYWNj
+ZWwtc3R1YnMuYyB8ICAxNyArKysrDQo+ID4gIGh3L2FybS9zbW11djMtYWNjZWwuYyAgICAgICB8
+IDE5Mg0KPiArKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrLS0NCj4gPiAgaHcvYXJt
+L3NtbXV2My5jICAgICAgICAgICAgIHwgICA2ICstDQo+ID4gIDUgZmlsZXMgY2hhbmdlZCwgMjEw
+IGluc2VydGlvbnMoKyksIDE0IGRlbGV0aW9ucygtKQ0KPiA+DQoNCg==
 

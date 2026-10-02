@@ -4,81 +4,82 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2DF12CA5FD4
-	for <qemu-arm@archiver.kernel.org>; Fri,  2 Oct 2026 17:21:26 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A309BCA5FE2
+	for <qemu-arm@archiver.kernel.org>; Fri,  2 Oct 2026 17:22:04 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xCgwh-0008GA-Im; Fri, 02 Oct 2026 13:21:19 -0400
+	id 1xCgwx-0008Lq-4e; Fri, 02 Oct 2026 13:21:38 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <marcandre.lureau@redhat.com>)
- id 1xCgwg-0008FR-1O
- for qemu-arm@nongnu.org; Fri, 02 Oct 2026 13:21:18 -0400
+ id 1xCgwk-0008Gv-9C
+ for qemu-arm@nongnu.org; Fri, 02 Oct 2026 13:21:24 -0400
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <marcandre.lureau@redhat.com>)
- id 1xCgwe-0003MV-9L
- for qemu-arm@nongnu.org; Fri, 02 Oct 2026 13:21:17 -0400
+ id 1xCgwh-0003Na-RI
+ for qemu-arm@nongnu.org; Fri, 02 Oct 2026 13:21:22 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1790961675;
+ s=mimecast20190719; t=1790961679;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=gGAIR2t0O5HHwmTRw018ra0wGrgXergyCbLtGIvnx7I=;
- b=OL3H64ZZxAB5jEbsTOMA4xmBn6lrRXOKWq98F/0UL3YwhAgUzj8mXqEsA04cM9YGeDErNd
- WYrrndSV9p1oH0J+gvObRiskVr9y6IW86YXMWRgek5Aw2K5MiJ5q6/1WCAaiQP6bd1nr9y
- EuMN6N0CY/TptcGoSX6LeBCf0+QDQoQ=
+ bh=jrylDJpuZsoIFUUXahyTqE70K91jDraMOMDJ9U5h74g=;
+ b=R5CFsTCS8ZmbkJUKZggGXdw6pH2wOgvv4BFSgUCCHBrfYHblB1LhoUtRXSfqv5acrLC+jV
+ s/x4NP97Oul+X3LyeJNlZTTCVd2sEYjHm6w4FLHZb6NGd5jXCMkyK2vu2SCU6//dJKfiGm
+ 52/NoJSh4/BFAVm5YYPHKhCl3ZdIzxc=
 Received: from mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com
  (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-653-FwYqFj8lNVWmLLoy_-Qt3Q-1; Fri,
- 02 Oct 2026 13:21:12 -0400
-X-MC-Unique: FwYqFj8lNVWmLLoy_-Qt3Q-1
-X-Mimecast-MFC-AGG-ID: FwYqFj8lNVWmLLoy_-Qt3Q_1790961671
-Received: from mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com
- (mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.4])
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-673-6G5WWYj4Pwavoq5nivgnag-1; Fri,
+ 02 Oct 2026 13:21:16 -0400
+X-MC-Unique: 6G5WWYj4Pwavoq5nivgnag-1
+X-Mimecast-MFC-AGG-ID: 6G5WWYj4Pwavoq5nivgnag_1790961674
+Received: from mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com
+ (mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.93])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
  by mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 0287518001DE; Fri,  2 Oct 2026 17:21:11 +0000 (UTC)
+ id A11E118005AA; Fri,  2 Oct 2026 17:21:14 +0000 (UTC)
 Received: from localhost (headnet03.pony-001.prod.iad2.dc.redhat.com
  [10.2.32.114])
- by mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id C3B0530000E4; Fri,  2 Oct 2026 17:21:09 +0000 (UTC)
+ by mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
+ id 6C8A31800581; Fri,  2 Oct 2026 17:21:13 +0000 (UTC)
 MIME-Version: 1.0
-Subject: Re: [PATCH 00/28] Mark user creatable devices for secure for virt
- use case
+Subject: Re: [PATCH 01/28] hw: mark secure machines for x86, s390, ppc,
+ arm, loonarch, riscv
 From: marcandre.lureau@redhat.com
 To: =?utf-8?q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>
 Cc: qemu-devel@nongnu.org, xen-devel@lists.xenproject.org, 
  qemu-riscv@nongnu.org, qemu-ppc@nongnu.org, qemu-block@nongnu.org, 
  qemu-s390x@nongnu.org, qemu-arm@nongnu.org
-In-Reply-To: <20260911143627.2743803-1-berrange@redhat.com>
+In-Reply-To: <20260911143627.2743803-2-berrange@redhat.com>
 References: <20260911143627.2743803-1-berrange@redhat.com>
+ <20260911143627.2743803-2-berrange@redhat.com>
 Date: Fri, 02 Oct 2026 21:21:01 +0400
-Message-Id: <179096166106.3025252.1502698274281787496.b4-review@b4>
-X-Developer-Signature: v=1; a=openpgp-sha256; l=2739;
+Message-Id: <179096166108.3025252.9718549338852340036.b4-review@b4>
+X-Developer-Signature: v=1; a=openpgp-sha256; l=597;
  i=marcandre.lureau@redhat.com; h=from:subject:message-id;
- bh=9UigYWA3AeEOar5r4FVoYgjPYIBd8nDgpAVGgELgbPo=;
- b=owEBbQKS/ZANAwAKAdro4Ql1lpzlAcsmYgBqv+gAiYbf1ighCveAS/XFN5qtMN3YrSCDqiC+s
- 6AbYArhMrCJAjMEAAEKAB0WIQSHqb2TP4fGBtJ29i3a6OEJdZac5QUCar/oAAAKCRDa6OEJdZac
- 5YvMEACh2sblDWOQAqlgggCd2b3Jn0kRgQmpdiAdyYVe9wvGIOTXjEpfjT9WAnzjyMIqjIPHtAZ
- 1N5DsMRpp3kvG43h6/6ubd+LmIS757Z0suP4X65JhrX68IdZbdwJbjDoxU8BomKVJfPIw3Ds9sh
- V7vP3RAoADrSYbCScHR6Xqti95WU39oMtODx4HjAAzAgtV52T/8roaBZBo1uPFi4jzo6xXqiFVS
- wKr2XNSlNalbFFm0Tu7/qPjxtaVZwMffG/M8xT56Y7t5iMCG/dM9R/1Jzvq1dUQggpt0GEmKqDW
- J8FXDRvaUp6J3Z2IVzgnfBChRHxB6f+Sk0IdIMtgmTaaIWh9UVg+UKVu/G41YeBSk2GUW3mL4U6
- 2TlxgH/ETONGU/7ycNgk9kjlsMxvrdGzY1WZTPVaBjxg9TgZX62n8Y1UG9kWxUY/+Wkkwci105/
- M+zm/+CB+RHLHf74lowv0zI6MNMFGZFD0FmJzVo391QT5Dnx9YjGCzXz6WK0H++EFBeGuU1JgfH
- C47WCAtv5SB1ikc3IJWXJqaGzVk6PhO/NU/JPFJIAKZhaQSSgLhO7b5G9f4wg47OC/IO0VjRZX4
- TWI3ktLAc8BTqQXl8TXUX+gCJYHScdKaN0wBK1vQOj0hF/p0bVW+xhF0mugPWdzxdCk6ALBTeNu
- w7J4SdoqilNouGQ==
+ bh=ca+dBKOXV8eblTF1UKIxDCLCnqb1+6+PKPCp8E4obQ4=;
+ b=owEBbQKS/ZANAwAKAdro4Ql1lpzlAcsmYgBqv+gBgNVED7Ge4a3FZfVyeJ38C0I9ULQ5WCY2b
+ YIjlAH9jsSJAjMEAAEKAB0WIQSHqb2TP4fGBtJ29i3a6OEJdZac5QUCar/oAQAKCRDa6OEJdZac
+ 5bd4EAC2ao/4YK3V1u4GjHkazn/6ZsYoSxnIEqPJWp1T7/d2J5MPCGyBHlyIaBQnTyWumHZzE4e
+ YuaketbXl3iETQW0apS2w87kTX1duwp1IVO8IwY+Swe4svc833Za0oQnKfYUO267Y8xZQp/9BpU
+ 8hF37E8FJ+kqiRSBtO2+b6hb5keM9sFGZjDiwBth4dA/95vEw6PsjVKH5bxRoh0/FXeIe66nfZv
+ lr2WChCZVhwaV2BgsIvIHvKrGrQMGgAseXPd1ps2X/OGBsIvAaFoXQ1Svi6mBVDCxWCb+tdFPGv
+ 13+65LJDDOy8/2ZrMOsKnb3YkGocX+wp7L06YuJMb6tU6Md2Ok48cOMeDyFBJTxSboYWoQfMtCZ
+ 1DSLqzx858E+YAtEZ7tSRPBOWOmijAhPrZBP0l11ayLXOH/LAVcSirS+xqVJEf9gUSTWRWl5ZR5
+ ZzexT/7u+r1yWJAfUPygKAbuTRuntENaYWEwbud23gQKW8LxpVXZcf0xgPhBpteXMkfJBj++VvW
+ KdbGkEumADdwxp/9/LWlUg+Ei1eEb1IAjO+nEpMhcodOBB7Q3dc8X/e6NnpCIKkR8RzG5tgsiEQ
+ AqL0XjQchX2rYKoGYCEF440qzS4CcM3DkY+PBBTDf0bbrV2YI77tpmeSrooACeiRuGCHPKqGH2m
+ L226vTermADFMvA==
 X-Developer-Key: i=marcandre.lureau@redhat.com; a=openpgp;
  fpr=87A9BD933F87C606D276F62DDAE8E10975969CE5
-X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.4
-X-Mimecast-MFC-PROC-ID: BBn9ZJ03Tx4q3nVqtc2UDLomxMh3PY5OBM1TaX-y-n8_1790961671
+X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.93
+X-Mimecast-MFC-PROC-ID: mnPD9j7A3hqkHND3bDXrYRj9kVSQmGV8tctKx83dR90_1790961674
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
@@ -107,68 +108,17 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Hi
+On Fri, 11 Sep 2026 15:36:00 +0100, Daniel P. Berrangé <berrange@redhat.com> wrote:
+> The versioned machine types are typically present for use in
+> virtualization use cases and can be expected to provide a security
+> barrier. The only exceptions are the m68k versioned machine types
+> which are only used with TCG. There are also a handful of other
+> machines declared secure in docs/system/security.rst, notably
+> the Xen machine variants and microvm.
+> 
+> [...]
 
-> This (largish) series undertakes the task of marking devices
-> secure, if they are intended to be used a virtualization
-> use case.
-> 
-> NB, the maintainer CC list was way too huge to include every
-> individual, so I've trimmed to just the mailing list CCs.
-> 
-> The approach taken was iterative as follows
-> 
->  * Machines listed in
-> 
->     https://www.qemu.org/docs/master/system/security.html#virtualization-use-case
-> 
->  * All virtio/vhost/vfio/xen related devices
-> 
->  * Most PCI related devices/controllers/bridges
-> 
-> I then used the RHEL builds of QEMU as an approximation for
-> what should be considered "virtualization use case", since
-> they cut out a huge pile of devices from the build. IOW,
-> more or less everything that RHEL builds for x86_64, ppc64,
-> aarch64, s390x gets included. Notably since RHEL does not
-> yet ship riscv or loongarch, I've possibly missed some
-> devices that ought to be in scope.
-
-I don't see many maintainers against your proposal. I guess we can assume they
-agree?  I think this will really help us deal with bug triaging and priorities,
-so I wish it would land already..
-
-> Devices are marked secure *regardless* of their maintainer
-> status, if they are relevant to virt. Notably all the USB
-> stuff is included despite USB being orphaned. An exception
-> is CXL which is arguably relevant to virt, but maintainers
-> agreed it is too immature to include so far.
-> 
-> IOW, the "secure" flag as set in this series mostly avoids
-> saying anything about the support status of the object types.
-> 
-> Over the long term, IMHO, the set of devices we declare as
-> providing a security boundary needs to be stable. We should
-> not declare a device out of scope for the virt use case simply
-> because a maintainer steps aside. The device doesn't become
-> instantly less secure. It does mean bug fixes may not be
-> timely enough, and rely on the goodwill of other contributors
-> or maintainers to step up and fix.
-> 
-> Or to put it another way. "secure = true" does not guarantee
-> that the device is secure, but it states our intent that we
-> *want* it to be secure, as opposed to "secure = false" which
-> indicates we just don't care either way.
-> 
-> The intersection of (secure, orphaned) highlights to QEMU
-> contributors or corporate sponsors, where they might step
-> up their effort / investment.
->
-> Finally this is just user creatable devices. Use of these
-> devices implies use of many more non-user creatable devices.
-
-Right, and I also figured out while reviewing this that CLI -vga/-nic/-drive
-creation paths are not being checked yet. I can look at it if it helps
+Reviewed-by: Marc-André Lureau <marcandre.lureau@redhat.com>
 
 -- 
 Marc-André Lureau <marcandre.lureau@redhat.com>

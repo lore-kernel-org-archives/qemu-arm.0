@@ -4,69 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3067DCA5FDD
-	for <qemu-arm@archiver.kernel.org>; Fri,  2 Oct 2026 17:53:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E04FBCA5FDD
+	for <qemu-arm@archiver.kernel.org>; Fri,  2 Oct 2026 17:53:54 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xChPe-0003kz-3r; Fri, 02 Oct 2026 13:51:14 -0400
+	id 1xChRj-0005Wg-L6; Fri, 02 Oct 2026 13:53:28 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <luoyonggang@gmail.com>)
- id 1xChPV-0003gT-Or
- for qemu-arm@nongnu.org; Fri, 02 Oct 2026 13:51:07 -0400
-Received: from mail-dy1-x1332.google.com ([2607:f8b0:4864:20::1332])
+ id 1xChQ0-0003wJ-3K
+ for qemu-arm@nongnu.org; Fri, 02 Oct 2026 13:51:37 -0400
+Received: from mail-dy2-x12.google.com ([2607:f8b0:4864:36::12])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <luoyonggang@gmail.com>)
- id 1xChPS-0007Hb-JQ
- for qemu-arm@nongnu.org; Fri, 02 Oct 2026 13:51:05 -0400
-Received: by mail-dy1-x1332.google.com with SMTP id
- 5a478bee46e88-34bb8b31647so242631eec.0
- for <qemu-arm@nongnu.org>; Fri, 02 Oct 2026 10:50:59 -0700 (PDT)
+ id 1xChPv-0007Lx-UZ
+ for qemu-arm@nongnu.org; Fri, 02 Oct 2026 13:51:34 -0400
+Received: by mail-dy2-x12.google.com with SMTP id
+ 5a478bee46e88-34daf1b9a1fso1686043eec.2
+ for <qemu-arm@nongnu.org>; Fri, 02 Oct 2026 10:51:30 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20251104; t=1790963458; x=1791568258; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:from:to:cc:subject:date
- :message-id:reply-to:content-type;
- bh=D+6+qn+yh1OD1CvirI1XQx+kYJP3uEKSWNOVrm/1f1s=;
- b=DIYuJAQOtA5cbT8MtlSYXuKjmHVmeW3gXJJLeFZNVwBPNaQOeZe9feYkivA3Icbd5/
- DmV+RDDKWo1fJ4ll41Mh5yx2uj0oVfWy7goy0TsbLZcQ+udutz/eMzS33DkOvEOcHhhx
- SDrU1ih9kDv3uw7KCwvybJth5ijzhHvR2rHMOjz07p+MnxKU/yt8jUIqUV2tNPzFT3Ba
- hVWd0rbgZ7j/VmJZtoQ0HcEMVMjp3kKzZdnqfC7f/O4kFw87NKgcsGTzC1Idk5qAnErb
- /ECmYjbJmrpGKRICi68PjTO6jRzSWFaJm7k7QQJE5TfcHRgraIq22J5wevL7CQefkR2y
- xXTg==
+ d=gmail.com; s=20251104; t=1790963489; x=1791568289; darn=nongnu.org;
+ h=content-transfer-encoding:content-type:mime-version:references
+ :in-reply-to:message-id:date:subject:cc:to:from:from:to:cc:subject
+ :date:message-id:reply-to:content-type;
+ bh=KOKjr5kL2cfyDpx78RWp9rg/JdrEjZ2P/SgqMSLCZd0=;
+ b=SHu+hQ+gnMhMAsqexM13e18PtrGNi1aepcus1+Q3ILwZjTi02NzA8Bqzh6OJJRxV5p
+ 8DCsY4gQhnGcmFRmDSWw62zYS6DNfcN26cEFw8P3nV8lmjr76LzGFEQxFVexyWkAzLuJ
+ RiPgBCmmHn4bYH5Gvp2Rr7dXMcLfyEDzlOQ9qF/jL4I1euJykJC0BXUT2gz2GJl3vs0g
+ QwRDPndVBC3L2d156UW/D/VoQHT1KFr8AAuIl1S3yhSE+sAPHfq6Q4DneX+QTzgNrK88
+ LP/iUZ1X47rSD2Zge+bl9nzCV22qtayoQ8MNOsnguXnjvDkFAtU3cuMRib5MHl1LYPXB
+ ZIMA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20260707; t=1790963458; x=1791568258;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
- :to:cc:subject:date:message-id:reply-to:content-type;
- bh=D+6+qn+yh1OD1CvirI1XQx+kYJP3uEKSWNOVrm/1f1s=;
- b=XOzK3bCs4pkt+g4q41/IEhOZHnBgsbiH173qSrY6hRSJaxYk4GA4oGcFCNofRECgI3
- ANCqG2lwWEZkCpAWzOxcSU2IxZkHmowV9BnrXTsBzZCbkllX+hs3j9MZNa0BLtOXrYLt
- kTZ5gbEwObqfDK1F0oDiV4Tr3E4FbKxKtl+tFiMLZITre4uixE7h9u5QcmJE2t+ADzsZ
- 89dIkG1tD4GH8HQObPTbOo+DzLsF/Y5GiSXeUk3NhrHNYH6KA6c43fLfrTjOvilMrK7s
- P7QANisZkvWEZzPR4OOAgMLJKp5znrsiLPZnnrl5BwQH65nd5zeTiyIqQ6theMOpmd9R
- Qyzw==
+ d=1e100.net; s=20260707; t=1790963489; x=1791568289;
+ h=content-transfer-encoding:content-type:mime-version:references
+ :in-reply-to:message-id:date:subject:cc:to:from:x-gm-gg
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
+ :content-type;
+ bh=KOKjr5kL2cfyDpx78RWp9rg/JdrEjZ2P/SgqMSLCZd0=;
+ b=dY9W9MW4n/180jdsDf/KRNE9AItHGYTrizuGnXlIrw46EwQam9wJ2Not6M93gDNVbP
+ AlKK6kSwFpA8R999F9OwzNhe5HFKt3ahdgvTG+1X4XxHzQkthJTwTmPsd+HqXlT9QgYZ
+ ZmYd5WO7k0C5V3Jfxpu7TWhmRDmxEgSNkAruSXLYVauKF0P8IIvW8qbmvK6QIL7Gmhco
+ ivFrMzMSkt6ws2/FzkmogxJjoQEoGL398ldRsT7nZN2+9C10Hiz1GG1hLx/PTGL4HY5p
+ zZqOrgnEIT0DjBeWzteTjBxnmb11l27GTBC34wvrSzT78m1XfHSJ/VxiTEGXsNfShWCr
+ SbCA==
 X-Forwarded-Encrypted: i=1;
- AKwUvBzH/nk679GiCck7pa+KdRjXILHi5KzeTXfDdO0WskSrsOib5WRnNHwHj30q6BYYBCDpCcTko5BJrQ==@nongnu.org
-X-Gm-Message-State: AFq9FYJBK/ViEF7S6mUiZCY5gUIxJxqx3YuUkSvgGg/7KreLUl5Fkb9O
- kzdFdJD3u0coDQ6rDNyVBEuy1CWJ5AjC8bUWZkru4MZR4e5+vXXqghNA
-X-Gm-Gg: AYBFou3/C29GFm7EGAcxwUn27wnAdqUjpONulbXFIZays9cgwS8sdV18NmIBqSxSUQt
- WHf4f0vIAGWltGUTCfpraT/WPgfBHCxLdQlqPAjfiXsGSWKOKKAlqdWTt4IQMA4ByYEHsRJeOCm
- f1Y/69EldJzwWnCFVMGX34zy1yh2OUa4IZYGhx/M9mpkarQAI7qJnMigUdnEn2Bb00lblwYQa0I
- 5onriDKKz6+zWT0t2whlyOZPx0LVwZdLbRPzKiBZ+Ryb7m+npwQWGVkHh1G3G04oyDIqxAgvph1
- teSa2WhkkOCQBZUcafgI9z8syny8wDKf/kKPse42TmtUwY2WT+tfEYWUzyDtYuOQMT+ABV7kVzO
- ot4V8g1X2I0jnv5BscqrHSakAbKy4CCaoIDjnlcv7GWE/cJf8v86noLHyIh0k0pxbu1Pmbad2iU
- jJb0si4oEDvh0EMiuu+neXQfYLXGYysR7DQUpWBmKYJg+Fo3qUwBYN3QAiVPF7qADoc1h9G4JjU
- L/js0NKALeGSqk6ySXk9PnD3cKt4EM=
-X-Received: by 2002:a05:7300:8248:b0:34b:f031:be93 with SMTP id
- 5a478bee46e88-35111502821mr391268eec.31.1790963457884; 
- Fri, 02 Oct 2026 10:50:57 -0700 (PDT)
+ AKwUvBzZOC90K/4rFWvzR+Ehm8Sj0hwoe2HmGjNxLjpJCJ2gatE0LwenHX6L6z3mCle3odowY8KKEVbonQ==@nongnu.org
+X-Gm-Message-State: AFq9FYIbKTTkqWwhCStwkfKQkucgdzUYjtSUPsDbVkZWfiEPV+bCtYK7
+ q7KYocBGVbMNSAdJ0ZalVQy0YDsFHnUyFuQyvGgxwcVNai5Z2ghIuz/7
+X-Gm-Gg: AYBFou1gdp/+amq++Vv+kG5hm9NcrpSG9tIWGVR3p6zbUR++6c9rXAqZknNHxSSlPqg
+ Dg43hj8zeG7I9jXuXWH83nKVXKATq/GSBOwmPRPxqnZi0hv5pMGpcSt0Q2qkKzx1Pn2W23UiWBi
+ wWEmHS1V7d0KM3c0bAhyeDjcwNow7lgDf1eW5r+fciWfo2lSYONiSPHfYzVOI46l1q/JGHMOZjX
+ YoHoiONda7FX/CnQf6JkV7UzpW+EcUiO9jpz30fj1Mhq6lcOAgaRXhf1C2YEBkpcTtexi8esn/t
+ OTe0iAn0Xg6g9jc5F6SYPnd94+iG4baw8gRrxG+EOPHXqSbpbM2/gToA86Tiq2TxIJszKMOeRpu
+ iHOKdZTePy1SaIEDaG1FTDuJ/H7Epm9FkksTfnmGnY+omhxuj0UbPIFllupasNONhzKTygxOUzS
+ 5zGmoW3yaMCqJyWp2hcdvTdFgdIEW1soo1O7Dbqb0gjyQSFkfiE00+tIMY+pt8L7fxIWWxccJN0
+ 6izvoQgemwjPwTx1OSoK8ftI6mRZ/Y=
+X-Received: by 2002:a05:7301:4547:b0:33b:e75b:cc42 with SMTP id
+ 5a478bee46e88-34f150c2f6amr3123645eec.19.1790963488833; 
+ Fri, 02 Oct 2026 10:51:28 -0700 (PDT)
 Received: from WIN-BH9M8FJACR9 ([103.94.185.75])
  by smtp.googlemail.com with ESMTPSA id
- 5a478bee46e88-34f14f9f2afsm18027361eec.18.2026.10.02.10.50.50
+ 5a478bee46e88-34f14f9f2afsm18027361eec.18.2026.10.02.10.51.21
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 02 Oct 2026 10:50:56 -0700 (PDT)
+ Fri, 02 Oct 2026 10:51:27 -0700 (PDT)
 From: Yonggang Luo <luoyonggang@gmail.com>
 To: qemu-devel@nongnu.org
 Cc: Max Filippov <jcmvbkbc@gmail.com>, Stafford Horne <shorne@gmail.com>,
@@ -98,17 +99,17 @@ Cc: Max Filippov <jcmvbkbc@gmail.com>, Stafford Horne <shorne@gmail.com>,
  Laurent Vivier <laurent@vivier.eu>, qemu-arm@nongnu.org,
  Paolo Bonzini <pbonzini@redhat.com>, Glenn Miles <milesg@linux.ibm.com>,
  Ilya Leoshkevich <iii@linux.ibm.com>
-Subject: [PATCH v3 01/27] accel/tcg: move helper_exit_atomic next to
- cpu_loop_exit_atomic
-Date: Sat,  3 Oct 2026 01:50:09 +0800
-Message-ID: <20261002175037.1747-2-luoyonggang@gmail.com>
+Subject: [PATCH v3 05/27] target/rx: Define exception vector constants
+Date: Sat,  3 Oct 2026 01:50:13 +0800
+Message-ID: <20261002175037.1747-6-luoyonggang@gmail.com>
 X-Mailer: git-send-email 2.52.0.windows.1
 In-Reply-To: <20261002175037.1747-1-luoyonggang@gmail.com>
 References: <20261002175037.1747-1-luoyonggang@gmail.com>
 MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::1332;
- envelope-from=luoyonggang@gmail.com; helo=mail-dy1-x1332.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:36::12;
+ envelope-from=luoyonggang@gmail.com; helo=mail-dy2-x12.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -131,124 +132,154 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-helper_exit_atomic only forwards to cpu_loop_exit_atomic. Define it
-in cpu-exec-common.c with that function, and move its DEF_HELPER line
-to cpu-exec-common.h. That file emits helper_info_exit_atomic.
-tcg-runtime.c keeps the integer helpers.
+Name RX exception vectors and trap ranges, and use the
+definitions throughout exception handling and exception
+raising.
+
+Assert that exception indexes remain within the defined
+range before accessing their vector tables.
 
 Signed-off-by: Yonggang Luo <luoyonggang@gmail.com>
+Co-developed-by: Philippe Mathieu-Daudé <philmd@oss.qualcomm.com>
+Signed-off-by: Philippe Mathieu-Daudé <philmd@oss.qualcomm.com>
+Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 ---
- accel/tcg/cpu-exec-common.c        | 10 ++++++++++
- accel/tcg/cpu-exec-common.h        |  2 ++
- accel/tcg/tcg-runtime.c            |  8 --------
- accel/tcg/tcg-runtime.h            |  2 --
- include/exec/helper-gen-common.h   |  4 ++++
- include/exec/helper-proto-common.h |  4 ++++
- 6 files changed, 20 insertions(+), 10 deletions(-)
- create mode 100644 accel/tcg/cpu-exec-common.h
+ target/rx/cpu.h       | 13 +++++++++++++
+ target/rx/helper.c    | 21 +++++++++++----------
+ target/rx/op_helper.c | 10 +++++-----
+ target/rx/translate.c |  2 +-
+ 4 files changed, 30 insertions(+), 16 deletions(-)
 
-diff --git a/accel/tcg/cpu-exec-common.c b/accel/tcg/cpu-exec-common.c
-index 68077c8fd9d..d20cece1c5f 100644
---- a/accel/tcg/cpu-exec-common.c
-+++ b/accel/tcg/cpu-exec-common.c
-@@ -23,8 +23,13 @@
- #include "qemu/plugin.h"
- #include "qemu/main-loop.h"
- #include "accel/tcg/cpu-loop.h"
-+#include "exec/helper-proto-common.h"
- #include "internal-common.h"
+diff --git a/target/rx/cpu.h b/target/rx/cpu.h
+index 64ba48a7329..0d9f4898a26 100644
+--- a/target/rx/cpu.h
++++ b/target/rx/cpu.h
+@@ -71,6 +71,19 @@ enum {
+     NUM_REGS = 16,
+ };
  
-+#define HELPER_H "accel/tcg/cpu-exec-common.h"
-+#include "exec/helper-info.c.inc"
-+#undef  HELPER_H
++#define RX_EXCP_TRAP_COUNT          0x100
 +
- bool tcg_allowed;
++enum {
++    RX_EXCP_PRIVILEGE_VIOLATION     = 20,
++    RX_EXCP_ACCESS                  = 21,
++    RX_EXCP_ILLEGAL_INSTRUCTION     = 23,
++    RX_EXCP_FPU                     = 25,
++    RX_EXCP_NMI                     = 30,
++    RX_EXCP_TRAP_BASE               = 0x100, /* Up to RX_EXCP_TRAP_COUNT */
++};
++
++#define RX_EXCP_COUNT   (RX_EXCP_TRAP_BASE + RX_EXCP_TRAP_COUNT)
++
+ typedef struct CPUArchState {
+     /* CPU registers */
+     uint32_t regs[NUM_REGS];    /* general registers */
+diff --git a/target/rx/helper.c b/target/rx/helper.c
+index 0f99279bbaa..bc76dd28ab3 100644
+--- a/target/rx/helper.c
++++ b/target/rx/helper.c
+@@ -86,13 +86,14 @@ void rx_cpu_do_interrupt(CPUState *cs)
+         env->isp -= 4;
+         cpu_stl_le_data(env, env->isp, env->pc);
  
- /*
-@@ -120,3 +125,8 @@ void cpu_loop_exit_atomic(CPUState *cpu, uintptr_t pc)
-     cpu->exception_index = EXCP_ATOMIC;
-     cpu_loop_exit_restore(cpu, pc);
+-        if (vec < 0x100) {
+-            env->pc = cpu_ldl_le_data(env, 0xffffff80 + vec * 4);
+-        } else {
++        assert(vec < RX_EXCP_COUNT);
++        if (vec >= RX_EXCP_TRAP_BASE) {
+             env->pc = cpu_ldl_le_data(env, env->intb + (vec & 0xff) * 4);
++        } else {
++            env->pc = cpu_ldl_le_data(env, 0xffffff80 + vec * 4);
+         }
+ 
+-        if (vec == 30) {
++        if (vec == RX_EXCP_NMI) {
+             /* Non-maskable interrupt */
+             qemu_plugin_vcpu_interrupt_cb(cs, last_pc);
+         } else {
+@@ -100,22 +101,22 @@ void rx_cpu_do_interrupt(CPUState *cs)
+         }
+ 
+         switch (vec) {
+-        case 20:
++        case RX_EXCP_PRIVILEGE_VIOLATION:
+             expname = "privilege violation";
+             break;
+-        case 21:
++        case RX_EXCP_ACCESS:
+             expname = "access exception";
+             break;
+-        case 23:
++        case RX_EXCP_ILLEGAL_INSTRUCTION:
+             expname = "illegal instruction";
+             break;
+-        case 25:
++        case RX_EXCP_FPU:
+             expname = "fpu exception";
+             break;
+-        case 30:
++        case RX_EXCP_NMI:
+             expname = "non-maskable interrupt";
+             break;
+-        case 0x100 ... 0x1ff:
++        case RX_EXCP_TRAP_BASE ... RX_EXCP_TRAP_BASE + RX_EXCP_TRAP_COUNT - 1:
+             expname = "unconditional trap";
+         }
+         qemu_log_mask(CPU_LOG_INT, "exception 0x%02x [%s] raised\n",
+diff --git a/target/rx/op_helper.c b/target/rx/op_helper.c
+index 6782912247e..d4e9ac2f192 100644
+--- a/target/rx/op_helper.c
++++ b/target/rx/op_helper.c
+@@ -115,7 +115,7 @@ static void update_fpsw(CPURXState *env, float32 ret, uintptr_t retaddr)
+         enable = FIELD_EX32(env->fpsw, FPSW, ENABLE);
+         enable |= 1 << 5; /* CE always enabled */
+         if (cause & enable) {
+-            raise_exception(env, 21, retaddr);
++            raise_exception(env, RX_EXCP_ACCESS, retaddr);
+         }
+     }
  }
-+
-+void HELPER(exit_atomic)(CPUArchState *env)
-+{
-+    cpu_loop_exit_atomic(env_cpu(env), GETPC());
-+}
-diff --git a/accel/tcg/cpu-exec-common.h b/accel/tcg/cpu-exec-common.h
-new file mode 100644
-index 00000000000..19359a97bae
---- /dev/null
-+++ b/accel/tcg/cpu-exec-common.h
-@@ -0,0 +1,2 @@
-+/* SPDX-License-Identifier: GPL-2.0-or-later */
-+DEF_HELPER_FLAGS_1(exit_atomic, TCG_CALL_NO_WG, noreturn, env)
-diff --git a/accel/tcg/tcg-runtime.c b/accel/tcg/tcg-runtime.c
-index 7c0aab98a80..764c62c684d 100644
---- a/accel/tcg/tcg-runtime.c
-+++ b/accel/tcg/tcg-runtime.c
-@@ -23,10 +23,7 @@
-  */
- #include "qemu/osdep.h"
- #include "qemu/host-utils.h"
--#include "exec/cpu-common.h"
- #include "exec/helper-proto-common.h"
--#include "accel/tcg/cpu-loop.h"
--#include "accel/tcg/getpc.h"
+@@ -432,17 +432,17 @@ void raise_exception(CPURXState *env, int index,
  
- #define HELPER_H  "accel/tcg/tcg-runtime.h"
- #include "exec/helper-info.c.inc"
-@@ -129,8 +126,3 @@ uint64_t HELPER(ctpop_i64)(uint64_t arg)
+ G_NORETURN void helper_raise_privilege_violation(CPURXState *env)
  {
-     return ctpop64(arg);
+-    raise_exception(env, 20, GETPC());
++    raise_exception(env, RX_EXCP_PRIVILEGE_VIOLATION, GETPC());
  }
--
--void HELPER(exit_atomic)(CPUArchState *env)
--{
--    cpu_loop_exit_atomic(env_cpu(env), GETPC());
--}
-diff --git a/accel/tcg/tcg-runtime.h b/accel/tcg/tcg-runtime.h
-index 0b832176b33..9b4c1c24916 100644
---- a/accel/tcg/tcg-runtime.h
-+++ b/accel/tcg/tcg-runtime.h
-@@ -22,8 +22,6 @@ DEF_HELPER_FLAGS_1(ctpop_i64, TCG_CALL_NO_RWG_SE, i64, i64)
  
- DEF_HELPER_FLAGS_1(lookup_tb_ptr, TCG_CALL_NO_WG_SE, cptr, env)
+ G_NORETURN void helper_raise_access_fault(CPURXState *env)
+ {
+-    raise_exception(env, 21, GETPC());
++    raise_exception(env, RX_EXCP_ACCESS, GETPC());
+ }
  
--DEF_HELPER_FLAGS_1(exit_atomic, TCG_CALL_NO_WG, noreturn, env)
--
- #ifndef IN_HELPER_PROTO
- /*
-  * Pass calls to memset directly to libc, without a thunk in qemu.
-diff --git a/include/exec/helper-gen-common.h b/include/exec/helper-gen-common.h
-index 834590dc4e5..ed5521ad881 100644
---- a/include/exec/helper-gen-common.h
-+++ b/include/exec/helper-gen-common.h
-@@ -7,6 +7,10 @@
- #ifndef HELPER_GEN_COMMON_H
- #define HELPER_GEN_COMMON_H
+ G_NORETURN void helper_raise_illegal_instruction(CPURXState *env)
+ {
+-    raise_exception(env, 23, GETPC());
++    raise_exception(env, RX_EXCP_ILLEGAL_INSTRUCTION, GETPC());
+ }
  
-+#define HELPER_H "accel/tcg/cpu-exec-common.h"
-+#include "exec/helper-gen.h.inc"
-+#undef  HELPER_H
-+
- #define HELPER_H "accel/tcg/tcg-runtime.h"
- #include "exec/helper-gen.h.inc"
- #undef  HELPER_H
-diff --git a/include/exec/helper-proto-common.h b/include/exec/helper-proto-common.h
-index 76e6c25becb..28afa7782d0 100644
---- a/include/exec/helper-proto-common.h
-+++ b/include/exec/helper-proto-common.h
-@@ -9,6 +9,10 @@
+ G_NORETURN void helper_wait(CPURXState *env)
+@@ -457,5 +457,5 @@ G_NORETURN void helper_wait(CPURXState *env)
  
- #include "qemu/atomic128.h"  /* for HAVE_CMPXCHG128 */
+ G_NORETURN void helper_trap(CPURXState *env, uint32_t vec)
+ {
+-    raise_exception(env, 0x100 + vec, 0);
++    raise_exception(env, RX_EXCP_TRAP_BASE + vec, 0);
+ }
+diff --git a/target/rx/translate.c b/target/rx/translate.c
+index d0910fbf8e7..1bacc7adf92 100644
+--- a/target/rx/translate.c
++++ b/target/rx/translate.c
+@@ -2187,7 +2187,7 @@ static bool trans_BRK(DisasContext *ctx, arg_BRK *a)
+ /* int #imm */
+ static bool trans_INT(DisasContext *ctx, arg_INT *a)
+ {
+-    tcg_debug_assert(a->imm < 0x100);
++    tcg_debug_assert(a->imm < RX_EXCP_TRAP_COUNT);
+     return do_trap(ctx, a->imm);
+ }
  
-+#define HELPER_H "accel/tcg/cpu-exec-common.h"
-+#include "exec/helper-proto.h.inc"
-+#undef  HELPER_H
-+
- #define HELPER_H "accel/tcg/tcg-runtime.h"
- #include "exec/helper-proto.h.inc"
- #undef  HELPER_H
 -- 
 2.52.0.windows.1
 

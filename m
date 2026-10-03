@@ -4,126 +4,119 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7E915CA5FDD
-	for <qemu-arm@archiver.kernel.org>; Sat,  3 Oct 2026 04:41:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3DE32CA5FDD
+	for <qemu-arm@archiver.kernel.org>; Sat,  3 Oct 2026 06:26:53 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xCrY6-0006uf-8i; Sat, 03 Oct 2026 00:40:38 -0400
+	id 1xCtCl-000753-36; Sat, 03 Oct 2026 02:26:43 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <bin.meng@processmission.com>)
- id 1xCrY3-0006tq-GV; Sat, 03 Oct 2026 00:40:35 -0400
-Received: from mail-koreacentralazlp170130006.outbound.protection.outlook.com
- ([2a01:111:f403:c40f::6] helo=SEYPR02CU001.outbound.protection.outlook.com)
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1xCtCi-00074h-6v
+ for qemu-arm@nongnu.org; Sat, 03 Oct 2026 02:26:40 -0400
+Received: from smtpout2.mo538.mail-out.ovh.net ([51.210.91.31])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <bin.meng@processmission.com>)
- id 1xCrY0-00021R-OR; Sat, 03 Oct 2026 00:40:35 -0400
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=ujJC57dR5QPIdaZeWEeMmMiCB7udtsmOM3bXOIPMP61usnTkpXIs42YjvmjfOK4cvd0IuVBht8TtsME4Z+441xJ2laCl7NDOXlw2Q9Xqz+UgqL5PtiVQqFCOuyuVQ5LcIUvpgWPUFbmLmhyT0AKyUd6qtKqR/26mbOkM+mimS3VpXCXtO932P3S1J9BVpKUSOtJg9RUeh5kXVxqbiulIac2eIUpGpfofqfI5Q+WUwh7u3F+33WI3T4DCYMMYQQpoqHU9Vg6Z10MIoGmulRfuGfBxZ8Vdq/DS5rh1B+B+uRKlEAbOClT+Qjr2Wepxx6dcFuUI/O5KeREfSllvjWdNNQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector10001;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=WAe9O6ICRjLqfoHtzomwRERWIzHoWcvbdyiTNX2zNkI=;
- b=PW4FeDoQYFAeVXjpU3wPo03XKOsdlL0t7CzZxjsjuD6nf/qCDO3zjOcFo/OESh6/0pyle9sousysAjrQPBwseiQC/2ALHgrviS7E/IiqxVxPi7cLKd1mUtLi8jbayEI2Xn+Xn2QiEeP8kkUXMP0RmEji3MOa9fzSpBqnuRD7lryoWHaJKWeTHiZ0CHqJzw2FoQ/zVrwwW/iDEGRNIwdIAbNBU9kXA6VLgjJPWgkG04DOTUjGgcRXp2RWWElUswYfmZMwGH1N3TgFhtJfddYcC3hPO86Q/Ib8Bh/2t3zlKGKeBerWcn6iSsUrY8IByrkzfV7A2InDIrX5Q6ds9uVymw==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=processmission.com; dmarc=pass action=none
- header.from=processmission.com; dkim=pass header.d=processmission.com;
- arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=processmission.com;
- s=selector1;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=WAe9O6ICRjLqfoHtzomwRERWIzHoWcvbdyiTNX2zNkI=;
- b=RNTnC2MT4ocxCCdDAU3E5l3ZU5Ex7VUyw9MdmAPzi2StAhODKOUykWW2oZbIHnPcFX4bfL9xvQY/UEIgjSph1egkMXKHLb/XMYZg6BnlnuMP+YGqb38BuDlQ9SyzqANnGwU6dKqcmyNSIu8Kxis2yxJo9vQEE7+9fviLiAIl2pZlpiv1+zqWjjmomXrurvCJqv1MGxBvPxbpMyzfmmhr7H9YJOS9bhtdfBfjkARkgUir1035VVQza3R/lgFK8M1ARUKfVSZEjapnnbMJVA3bcoQtGDX1M1S5Z/GRK2+g1/55EEdB7SaUjPoDzN6GldKWxVKqY6OHm32AC5NffOJP1w==
-Authentication-Results: mx.microsoft.com 1; dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=processmission.com;
-Received: from KL1PR02MB6257.apcprd02.prod.outlook.com (2603:1096:820:da::11)
- by KU2PPF9FCEC1095.apcprd02.prod.outlook.com (2603:1096:d18::461)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.21.451.27; Sat, 3 Oct
- 2026 04:40:22 +0000
-Received: from KL1PR02MB6257.apcprd02.prod.outlook.com
- ([fe80::ecf9:e832:8196:215]) by KL1PR02MB6257.apcprd02.prod.outlook.com
- ([fe80::ecf9:e832:8196:215%6]) with mapi id 15.21.0472.016; Sat, 3 Oct 2026
- 04:40:22 +0000
-From: Bin Meng <bin.meng@processmission.com>
-To: QEMU <qemu-devel@nongnu.org>
-Cc: Alistair Francis <alistair@alistair23.me>,
- "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
- Peter Maydell <peter.maydell@linaro.org>,
- Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>, qemu-arm@nongnu.org
-Subject: [PATCH v2] hw/arm: xlnx-zcu102: Fix up DTB for direct Linux boot
-Date: Sat,  3 Oct 2026 12:39:52 +0800
-Message-ID: <20261003043953.1277518-1-bin.meng@processmission.com>
-X-Mailer: git-send-email 2.53.0
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-ClientProxiedBy: TY4P301CA0112.JPNP301.PROD.OUTLOOK.COM
- (2603:1096:405:37b::7) To KL1PR02MB6257.apcprd02.prod.outlook.com
- (2603:1096:820:da::11)
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1xCtCe-0001z9-KE
+ for qemu-arm@nongnu.org; Sat, 03 Oct 2026 02:26:39 -0400
+Received: from director3.derp.mail-out.ovh.net
+ (director3.derp.mail-out.ovh.net [79.137.60.223])
+ by mo538.mail-out.ovh.net (Postfix) with ESMTPS id 4hxbJb4lXGz6FB0;
+ Sat,  3 Oct 2026 06:26:23 +0000 (UTC)
+Received: from director3.derp.mail-out.ovh.net
+ (director3.derp.mail-out.ovh.net. [127.0.0.1])
+ by director3.derp.mail-out.ovh.net (inspect_sender_mail_agent) with SMTP
+ for <jamin_lin@aspeedtech.com>; Sat,  3 Oct 2026 06:26:22 +0000 (UTC)
+Received: from mta6.priv.ovhmail-u2.ea.mail.ovh.net (unknown [10.110.178.252])
+ by director3.derp.mail-out.ovh.net (Postfix) with ESMTPS id
+ 4hxbJZ6Td6z1xqR; Sat,  3 Oct 2026 06:26:22 +0000 (UTC)
+Received: from kaod.org (unknown [10.1.6.5])
+ (Authenticated sender: clg@kaod.org)
+ by mta6.priv.ovhmail-u2.ea.mail.ovh.net (Postfix) with ESMTPSA id A4FB41B42C2F;
+ Sat,  3 Oct 2026 06:26:20 +0000 (UTC)
+Authentication-Results: garm.ovh; auth=pass
+ (GARM-114S00821e3ab6b-b8ed-4898-810d-ca7b2098087d,
+ EF3BAB35031320AEE1F3939107F7654D0985B97F) smtp.auth=clg@kaod.org
+X-OVh-ClientIp: 82.64.250.170
+Message-ID: <0fcdfcb5-6f56-4030-ba01-f350accb0412@kaod.org>
+Date: Sat, 3 Oct 2026 08:26:19 +0200
 MIME-Version: 1.0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: KL1PR02MB6257:EE_|KU2PPF9FCEC1095:EE_
-X-MS-Office365-Filtering-Correlation-Id: 1859899b-043e-4499-b95c-08df21086f34
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;
- ARA:13230040|1800799024|366016|23010399003|376014|18002099003|6133799003|3023799007|10067099003|5023799004|56012099006;
-X-Microsoft-Antispam-Message-Info: IuAkDZWKZqjsaj5XKAjEblCLVYye0gbHPU7BXqnQ53V+gkBsfkc7+7XRgTHFE2YSTq5ybtIDhU/m4Yeigql0lRwlcgfuwcccsM1MtGrmGjZ41sXwtsOvVLsHBoCXKIDCRJ/TWIJQenP0Dg4oHywgzZq66pA8Bs/Ga9vcCqq8EpKz8dYxNtWWlVZrXuskfuf2VtSsVmJ9qF5HjA2XSjKfF30WOwtY8WsVGHyA6jgTEg4jkKELhPCOmW6V5s3QS/F9Lcih4FMglzKOgEH20N9A6plm+H1tGT92X6Icn0LTdyBXTlQ0DpczYBAURtCMQ45ydQWt4sY1lI1pAaBAYbfHn8FrxcOkHcSkBxzuoMdWX2JxIQ+5eGloo4SPJ0gGGok7KoYhMKs1GuFslUyHdaDV6Bdl+BQOKZYvo/aTfMs/0FfqIaM5lqGaDJdJd7WmGLkEBCBfmbqIT08sxYCxlRCMJEhuMXJKvMMmjLws0CPflz4Lj829PSykvDmhTEAyv9lAOxrqN+MAMGceo3ZLzGxG68xrZR5CDlmw/pXL4TDiLqjwCvKx7loVJygiH8uD2rp9Qw+LKSq4JLHM6vOeqkn0eMNHUFoKwTc4EtK4qmI0YnQPlJc/BQghiprSCmz/lJ3Vs9kUKNOIcKR97ei3LvjKSKCj2aWpQmdaxfl/QcfMH+Q=
-X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:KL1PR02MB6257.apcprd02.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(13230040)(1800799024)(366016)(23010399003)(376014)(18002099003)(6133799003)(3023799007)(10067099003)(5023799004)(56012099006);
- DIR:OUT; SFP:1102; 
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?fFMU+EeqWiso7GST+P9XF0XCPi+8eDaBEF8DrdsMO6rY0UzPRrCReQEpiTGH?=
- =?us-ascii?Q?ciBAMAxhqzYHoen8SRDlROI8ws5dQ0PGgtrm3OMo0/bpUZMkvWoFWAFOOjYZ?=
- =?us-ascii?Q?x1H0Zud8aE/rpFh7Hu3L2jCsyR82A7Wd5dTsDsBW9MC5omQ5HcUjtWDEfZeN?=
- =?us-ascii?Q?/Vs7mDbk2KX2niUoH7levGryhTPDeA/mzlrKnftAgPSQpNXmW+EdSpz/jjU4?=
- =?us-ascii?Q?guZ82gpVWJh4iyVLb0KP1gBA0rdzRB7qOtG6c5Q8H8ikCHYtdty17h7jMz38?=
- =?us-ascii?Q?N2tAqd07ydhucb7LW5iwCNKmofBDG4Fmb3Z20LzXC8RHaMs1IuEALwawMywg?=
- =?us-ascii?Q?TdrWtVID/xuN3tVSKBFVImvIcD7F7bb8pPV51Pgai0qSTK43LEbLa/ww9NPG?=
- =?us-ascii?Q?aRySkuKkw/q2fkEU99JngMq5aJEz1rU/DpLNHzf4ZzUcwlcTXbE1zHHhv4L9?=
- =?us-ascii?Q?meahS4yH314Ax70jrgfCb3/aqwnLUvyBk8+uxJfudCMhcopudXTNZO0UUqYQ?=
- =?us-ascii?Q?K2ACW/xtB2awThSS8DFaMRXDqf0X6cWKlEZJks601Mz5A+o25LvLKrFMUFc4?=
- =?us-ascii?Q?LpIZPQMzc6YZyAGJUTkrpFexBbFXyaWjikJYr0Y20eLyy/G4/eBwk2r/veWf?=
- =?us-ascii?Q?G5968ISLEQ7vgt+kFzAWU+i3NoxcCpQeynws8B++7KTi1XKQ8zXq+6N8qLUo?=
- =?us-ascii?Q?X2NEG00TmYEE7DLTr+fS33cjeAvkCXICXCOK5KekdiHjqEtWgfaIE/tBNdt/?=
- =?us-ascii?Q?/xKpX9wPxzgQ0qpiGouCPiZ7fuO6rCrBJjOK8osdtJrmYMt0OJ8WE3X7dTEr?=
- =?us-ascii?Q?h1tuHDnHbPhz399HWxp2wNsMJF+ejdrxfGlerXuEVmk1PiRoZNgtTCgCjg50?=
- =?us-ascii?Q?5TJ3nrKfWCCFGvHwsdhWk0mwoXQ6cZAmepCIp16c4dQDQd85g87hjSJefNzr?=
- =?us-ascii?Q?Wt3Yd/26FLJwCy3J9Ox6NQybCZxjLFNLkC71JT/r4J9iseN6Nu/X+5GtmcCQ?=
- =?us-ascii?Q?KYzA+xPfKlJJBzxgZs/OuGG8GKfohLVOlawlN7O7FLvTayDzJX/tlQCSDanx?=
- =?us-ascii?Q?5Jv7iidFZBQvlgR9USwX4wLYWK/AdJHEsfwQ01QyKQCGyqvBOTVezDW6xamn?=
- =?us-ascii?Q?FcQtv1xvPPWDrG9OdtDArYAoROPpfjXulXM17odjcOoCzgP+vCQAwXkPvPFH?=
- =?us-ascii?Q?lah9/imJ1O2gdV6Ae2KWlOVRkemmlL8wmAF8wCkYd9+3NMrh42vWAMvpFqkO?=
- =?us-ascii?Q?itZs5j3uPKYWtSOp/aJPw0hmv3IB8BTKcr+akDlhDLRZKoDylImUljoREyTq?=
- =?us-ascii?Q?ext6FTFD1qS2ojog4jIl1J4bLJm84FC+ZS4zamlioeYGQObK22qOytUVw7+n?=
- =?us-ascii?Q?V9orBPfOwQTCVIfEIzSwjpZxZpmca7Bmuxc4Q/g3r9AyQybTnb7j6zHSzlYT?=
- =?us-ascii?Q?dhtgEwonLQXihamPfwo/1520OXs5xjbrLcyRD1QGGzqtnczNEXyDUMH569F9?=
- =?us-ascii?Q?y63og/jJW7ztvY8r6lW+wYkjTKyb5gpGMJYcuTQBSVeVMGcEinJkKje6Eiyj?=
- =?us-ascii?Q?floFmuKNU7RuXAhdRJhXSfzL7Jq05ilnV8IbpfVb75kyiXXuzYYmDuqYIlxM?=
- =?us-ascii?Q?2f/WI5vqxGDtkAro5+A8RWB2TSu3EYC/BrpVeUhPk4rWkydWqGrvqsz6l9qq?=
- =?us-ascii?Q?5DBSf6V+xSFcW+cRaOwbel0anzp8AbQSnnOafm+cNPWnCUCCKXC1i9Q1fI5d?=
- =?us-ascii?Q?Fv5AI+KOvpPC54wA6lEoQC8J+dKIWOI=3D?=
-X-OriginatorOrg: processmission.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 1859899b-043e-4499-b95c-08df21086f34
-X-MS-Exchange-CrossTenant-AuthSource: KL1PR02MB6257.apcprd02.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 03 Oct 2026 04:40:22.1693 (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: e0544bf7-9765-4630-ab69-0b266dc2169c
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: hkqy7hLi6aioUSgieHr24w/F/eikBNiBv3ldEv3O7wfJ4uTa2BrZp+QOud6Xv2aL4wIWjf82kPTGcNMoQzxs9DuATIPioDaQl+kg62+NGZ8=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: KU2PPF9FCEC1095
-Received-SPF: pass client-ip=2a01:111:f403:c40f::6;
- envelope-from=bin.meng@processmission.com;
- helo=SEYPR02CU001.outbound.protection.outlook.com
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v4 1/7] fsi/cfam: Add common CFAM base class
+To: Mikail Sadic <mikail.sadic@ibm.com>, peter.maydell@linaro.org
+Cc: pbonzini@redhat.com, ninad@linux.ibm.com, titusr@google.com,
+ jeuk20.kim@samsung.com, philmd@mailo.com, steven_lee@aspeedtech.com,
+ leetroy@gmail.com, jamin_lin@aspeedtech.com, kane_chen@aspeedtech.com,
+ andrew@codeconstruct.com.au, joel@jms.id.au, calebs@linux.ibm.com,
+ milesg@linux.ibm.com, qemu-arm@nongnu.org, qemu-devel@nongnu.org
+References: <20260813193040.669533-1-mikail.sadic@ibm.com>
+ <20260813193040.669533-2-mikail.sadic@ibm.com>
+From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
+Content-Language: en-US, fr
+Autocrypt: addr=clg@kaod.org; keydata=
+ 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
+In-Reply-To: <20260813193040.669533-2-mikail.sadic@ibm.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+x-ovh-tracer-id: 11533155696595152003
+X-VR-SPAMSTATE: OK
+X-VR-SPAMSCORE: -100
+X-VR-SPAMCAUSE: dmFkZTG0Muoh/QLqQm8C6YImcQ7NMtFUhBUWENyNEvE3N29mO/O1r+cRmOBi67l3MimT/z6yHXF0U/ekKhGN8YN345smeSOyAKdAmXuQXOLdls3bAS07LRrCpYQ7Nor4KA4WFIScTbf2K8FevzRm2/H7nYomQMCSv8tRuJ2qWRZpJ+MzwmEE0EfN36SWv+dmnNyXKcywCiEoZMGbe4zM104buPrPgyNprb+CkZlvRDkUN9s0SGngiteit7X7GZ9jCnvw4puz5iOydeb2TfRscsNYSRpwVjKsbKtEzT62it8z05KkhOgbzOXrdlw7QCTS/sR27vrk+3pTg0LifZcn1uaRzzbwVeUgHzgozAHLV6KbD9lPvDjKV8YK63Lv1J0UxgsAq31K0bPTxgGGim0imggP0G9ZMGtIr7ifefVmmoMPRXTtwRZDNlxVATy5VaLIhsfn44iRwxjr0g7BBZgGZVebDOvJv7cVVlg6sATGBZUOEw2vsdfRC+c7yd1v7P5zE9Fy+Hf8FW3AV/64VQz5pCSk0w5joryDrv8/566kRLBfDKGx17n2gAjYK2NxNkSi/WytndqmEsz1AkKyf5ibWDOkshTJVYfMt9SAuR6JAR8LuBp3TC0DPrcaEHusjBydqX4J5Bx2GD8WkRVdAC6fckePn/ylant4sunPJUB1MF7iHz0Ljw
+DKIM-Signature: a=rsa-sha256; bh=+ssclU/xiksrnetyi9Z5RJhc8IJF/m38wihSExD80wU=; 
+ c=relaxed/relaxed; d=kaod.org; h=From; s=ovhmo393970-selector1;
+ t=1791008785; v=1;
+ b=vq9Bw1Yq3XmDRLiRdybOXUVHATGIjNs1jginXt173aE1LiHZVHLbav7A2merZ0p/ovg6crxH
+ yLvoue2AC7G3qKmWIVfL33L4uo2Xmwdma4GPA2KHhO5Tb5DgMPfjjW7887B8xCoLqBau2HfdgkK
+ CbvFyV0f51p2AU2nU7HiGe5qxSqa5vS/0pD/JzZCYT2w5AuC9rHoDRlVNA4Zuyh7pOsJsjeoKqD
+ O17BGXcBM2wNf/HaTpP8jgu+ietXGd8MDsbWZlW43wuDOqK1yV2603bx+LzOcFhI52YywfH0RN8
+ MgvMfoh2o02Ovd7cWKbFDI+Rh1c4tMOIk7OGgaAM4aMSQ==
+Received-SPF: pass client-ip=51.210.91.31; envelope-from=clg@kaod.org;
+ helo=smtpout2.mo538.mail-out.ovh.net
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_PASS=-0.001,
- SPF_PASS=-0.001, WEIRD_QUOTING=0.001 autolearn=ham autolearn_force=no
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -139,330 +132,350 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Real-board ZCU102 DTBs describe the UART, SDHCI and GQSPI nodes
-in terms of ZynqMP PM firmware providers for clocks, resets, power
-domains and pin control. QEMU does not model those runtime firmware
-providers, so using such a DTB with -kernel currently requires users
-to edit the DTB before Linux can probe the boot-critical devices.
+On 8/13/26 21:30, Mikail Sadic wrote:
+> Prepare a common CFAM parent class for CFAM-S implementation.
+> 
+> Add an abstract TYPE_FSI_CFAM_COMMON with an FSICFAMCommonClass holding
+> what varies between types: the config table, the offsets of the FSI
+> responder and the local bus within the register slot, and a
+> realize_engines() hook for the engines on the local bus. Its realize is
+> driven by those fields, so one realize serves every type. TYPE_FSI_CFAM
+> keeps its name and becomes the first derived type, supplying the P9
+> config table, its slot offsets and the scratchpad engine. The config
+> table becomes data, still written with the same CFAM_CONFIG_REG()
+> expressions, which move to the header so a derived type can describe its
+> own table the same way.
+> 
+> Name the new instance struct without a State suffix and rename
+> FSICFAMState to FSICFAM to match.
+> 
+> No functional change: same memory map, same config words, same type and
+> child names. aspeed_fsi-test verified.
+> 
+> Signed-off-by: Mikail Sadic <mikail.sadic@ibm.com>
+> Reviewed-by: Glenn Miles <milesg@linux.ibm.com>
+> ---
+>   include/hw/fsi/cfam.h       |  58 ++++++++++++++++-
+>   include/hw/fsi/fsi-master.h |   2 +-
+>   hw/fsi/cfam.c               | 125 +++++++++++++++++++++---------------
+>   hw/fsi/fsi-master.c         |   2 +-
+>   4 files changed, 130 insertions(+), 57 deletions(-)
+> 
+> diff --git a/include/hw/fsi/cfam.h b/include/hw/fsi/cfam.h
+> index cceb4bd6f1..bdf579b4fe 100644
+> --- a/include/hw/fsi/cfam.h
+> +++ b/include/hw/fsi/cfam.h
+> @@ -7,18 +7,44 @@
+>   #ifndef FSI_CFAM_H
+>   #define FSI_CFAM_H
+>   
+> +#include "qemu/units.h"
+>   #include "system/memory.h"
+>   
+>   #include "hw/fsi/fsi.h"
+>   #include "hw/fsi/lbus.h"
+>   
+> +/*
+> + * All CFAM flavors present a register slot holding a config table, an FSI
+> + * responder and a local bus carrying the engines the config table describes.
+> + * That is the common model; each flavor supplies its own table, slot layout
+> + * and engines.
+> + */
+> +#define TYPE_FSI_CFAM_COMMON "cfam-common"
+> +OBJECT_DECLARE_TYPE(FSICFAMCommon, FSICFAMCommonClass, FSI_CFAM_COMMON)
+> +
+>   #define TYPE_FSI_CFAM "cfam"
+> -#define FSI_CFAM(obj) OBJECT_CHECK(FSICFAMState, (obj), TYPE_FSI_CFAM)
+> +OBJECT_DECLARE_SIMPLE_TYPE(FSICFAM, FSI_CFAM)
+>   
+>   /* P9-ism */
+>   #define CFAM_CONFIG_NR_REGS 0x28
+>   
+> -typedef struct FSICFAMState {
+> +#define FSI_CFAM_SLOT_SIZE   (2 * MiB)
+> +#define FSI_CFAM_CONFIG_SIZE 0x400
+> +
+> +#define ENGINE_CONFIG_NEXT            BIT(31)
+> +#define ENGINE_CONFIG_TYPE_PEEK       (0x02 << 4)
+> +#define ENGINE_CONFIG_TYPE_FSI        (0x03 << 4)
+> +#define ENGINE_CONFIG_TYPE_SCRATCHPAD (0x06 << 4)
+> +
+> +/* Valid, slots, version, type, crc */
+> +#define CFAM_CONFIG_REG(__VER, __TYPE, __CRC)   \
+> +    (ENGINE_CONFIG_NEXT       |   \
+> +     0x00010000               |   \
+> +     (__VER)                  |   \
+> +     (__TYPE)                 |   \
+> +     (__CRC))
+> +
+> +struct FSICFAMCommon {
+>       /* < private > */
+>       FSISlaveState parent;
+>   
+> @@ -28,7 +54,33 @@ typedef struct FSICFAMState {
+>       MemoryRegion mr;
+>   
+>       FSILBus lbus;
+> +};
+> +
+> +struct FSICFAMCommonClass {
+> +    /* < private > */
+> +    DeviceClass parent_class;
+> +
+> +    /* < public > */
+> +    /* Config table served by the common ops, one word per 4-byte offset */
+> +    const uint32_t *config;
+> +    unsigned config_nr;
+> +
+> +    /* Layout of the register slot */
+> +    hwaddr responder_offset;
+> +    hwaddr lbus_offset;
+> +
+> +    /* Realize and map this flavor's local bus engines */
+> +    bool (*realize_engines)(FSICFAMCommon *cfam, Error **errp);
 
-Add a board DTB fix-up for direct kernel boot that removes those
-provider-only properties from the boot-critical nodes and rewrites
-their clocks to fixed reference clocks already present in the DTB.
-This keeps the user command line using the Buildroot-generated DTB
-while limiting the compatibility adjustment to devices modeled by
-QEMU.
 
-Document the direct boot flow, the SD and QSPI image layout details,
-and the remaining firmware and real-board peripheral limitations.
+This seems redundant.
+Each subclass can just do the engine init/realize in its own
+instance_init and realize. Please do it that way instead.
 
-Signed-off-by: Bin Meng <bin.meng@processmission.com>
+> +};
+> +
+> +struct FSICFAM {
+> +    /* < private > */
+> +    FSICFAMCommon parent;
+> +
+>       FSIScratchPad scratchpad;
+> -} FSICFAMState;
+> +};
+> +
+> +bool fsi_cfam_add_engine(FSICFAMCommon *cfam, DeviceState *engine,
+> +                         hwaddr offset, Error **errp);
+>   
+>   #endif /* FSI_CFAM_H */
+> diff --git a/include/hw/fsi/fsi-master.h b/include/hw/fsi/fsi-master.h
+> index 60ddaa994f..87c11ec3dc 100644
+> --- a/include/hw/fsi/fsi-master.h
+> +++ b/include/hw/fsi/fsi-master.h
+> @@ -25,7 +25,7 @@ typedef struct FSIMasterState {
+>       FSIBus bus;
+>   
+>       uint32_t regs[FSI_MASTER_NR_REGS];
+> -    FSICFAMState cfam;
+> +    FSICFAM cfam;
+>   } FSIMasterState;
+>   
+>   
+> diff --git a/hw/fsi/cfam.c b/hw/fsi/cfam.c
+> index 54c0b05769..5d4d0622d0 100644
+> --- a/hw/fsi/cfam.c
+> +++ b/hw/fsi/cfam.c
+> @@ -16,19 +16,6 @@
+>   
+>   #include "hw/core/qdev-properties.h"
+>   
+> -#define ENGINE_CONFIG_NEXT            BIT(31)
+> -#define ENGINE_CONFIG_TYPE_PEEK       (0x02 << 4)
+> -#define ENGINE_CONFIG_TYPE_FSI        (0x03 << 4)
+> -#define ENGINE_CONFIG_TYPE_SCRATCHPAD (0x06 << 4)
+> -
+> -/* Valid, slots, version, type, crc */
+> -#define CFAM_CONFIG_REG(__VER, __TYPE, __CRC)   \
+> -    (ENGINE_CONFIG_NEXT       |   \
+> -     0x00010000               |   \
+> -     (__VER)                  |   \
+> -     (__TYPE)                 |   \
+> -     (__CRC))
+> -
+>   #define TO_REG(x)                          ((x) >> 2)
+>   
+>   #define CFAM_CONFIG_CHIP_ID                TO_REG(0x00)
+> @@ -36,34 +23,33 @@
+>   #define CFAM_CONFIG_CHIP_ID_P9             0xc0022d15
+>   #define CFAM_CONFIG_CHIP_ID_BREAK          0xc0de0000
+>   
+> +/*
+> + * Config table of the P9 CFAM: the chip ID followed by one entry per engine,
+> + * entry n describing the engine at address n * 4. We need to add future
+> + * engines from address 0x10 onwards.
+> + */
+> +static const uint32_t cfam_p9_config[] = {
+> +    CFAM_CONFIG_CHIP_ID_P9,
+> +    CFAM_CONFIG_REG(0x1000, ENGINE_CONFIG_TYPE_PEEK, 0xc),
+> +    CFAM_CONFIG_REG(0x5000, ENGINE_CONFIG_TYPE_FSI, 0xa),
+> +    CFAM_CONFIG_REG(0x1000, ENGINE_CONFIG_TYPE_SCRATCHPAD, 0x7),
+> +};
+> +
+>   static uint64_t fsi_cfam_config_read(void *opaque, hwaddr addr, unsigned size)
+>   {
+> +    FSICFAMCommonClass *cc = FSI_CFAM_COMMON_GET_CLASS(opaque);
+> +    unsigned int reg = TO_REG(addr);
+> +
+>       trace_fsi_cfam_config_read(addr, size);
+>   
+> -    switch (addr) {
+> -    case 0x00:
+> -        return CFAM_CONFIG_CHIP_ID_P9;
+> -    case 0x04:
+> -        return CFAM_CONFIG_REG(0x1000, ENGINE_CONFIG_TYPE_PEEK, 0xc);
+> -    case 0x08:
+> -        return CFAM_CONFIG_REG(0x5000, ENGINE_CONFIG_TYPE_FSI, 0xa);
+> -    case 0xc:
+> -        return CFAM_CONFIG_REG(0x1000, ENGINE_CONFIG_TYPE_SCRATCHPAD, 0x7);
+> -    default:
+> -        /*
+> -         * The config table contains different engines from 0xc onwards.
+> -         * The scratch pad is already added at address 0xc. We need to add
+> -         * future engines from address 0x10 onwards. Returning 0 as engine
+> -         * is not implemented.
+> -         */
+> -        return 0;
+> -    }
+> +    /* Engines past the end of the table are not implemented */
+> +    return reg < cc->config_nr ? cc->config[reg] : 0;
+>   }
+>   
+>   static void fsi_cfam_config_write(void *opaque, hwaddr addr, uint64_t data,
+>                                     unsigned size)
+>   {
+> -    FSICFAMState *cfam = FSI_CFAM(opaque);
+> +    FSICFAMCommon *cfam = FSI_CFAM_COMMON(opaque);
+>   
+>       trace_fsi_cfam_config_write(addr, size, data);
+>   
+> @@ -109,59 +95,94 @@ static const struct MemoryRegionOps fsi_cfam_unimplemented_ops = {
+>       .endianness = DEVICE_BIG_ENDIAN,
+>   };
+>   
+> -static void fsi_cfam_instance_init(Object *obj)
+> +bool fsi_cfam_add_engine(FSICFAMCommon *cfam, DeviceState *engine,
+> +                         hwaddr offset, Error **errp)
+>   {
+> -    FSICFAMState *s = FSI_CFAM(obj);
+> +    if (!qdev_realize(engine, BUS(&cfam->lbus), errp)) {
+> +        return false;
+> +    }
+>   
+> -    object_initialize_child(obj, "scratchpad", &s->scratchpad,
+> -                            TYPE_FSI_SCRATCHPAD);
+> +    memory_region_add_subregion(&cfam->lbus.mr, offset,
+> +                                &FSI_LBUS_DEVICE(engine)->iomem);
+> +    return true;
+>   }
+>   
+> -static void fsi_cfam_realize(DeviceState *dev, Error **errp)
+> +static void fsi_cfam_common_realize(DeviceState *dev, Error **errp)
+>   {
+> -    FSICFAMState *cfam = FSI_CFAM(dev);
+> +    FSICFAMCommon *cfam = FSI_CFAM_COMMON(dev);
+> +    FSICFAMCommonClass *cc = FSI_CFAM_COMMON_GET_CLASS(dev);
+>       FSISlaveState *slave = FSI_SLAVE(dev);
+> +    const char *type = object_get_typename(OBJECT(dev));
+> +    g_autofree char *config_name = g_strdup_printf("%s.config", type);
+>   
+>       /* Each slave has a 2MiB address space */
+>       memory_region_init_io(&cfam->mr, OBJECT(cfam), &fsi_cfam_unimplemented_ops,
+> -                          cfam, TYPE_FSI_CFAM, 2 * MiB);
+> +                          cfam, type, FSI_CFAM_SLOT_SIZE);
+>   
+>       qbus_init(&cfam->lbus, sizeof(cfam->lbus), TYPE_FSI_LBUS, DEVICE(cfam),
+>                 NULL);
+>   
+>       memory_region_init_io(&cfam->config_iomem, OBJECT(cfam), &cfam_config_ops,
+> -                          cfam, TYPE_FSI_CFAM ".config", 0x400);
+> +                          cfam, config_name, FSI_CFAM_CONFIG_SIZE);
+>   
+>       memory_region_add_subregion(&cfam->mr, 0, &cfam->config_iomem);
+> -    memory_region_add_subregion(&cfam->mr, 0x800, &slave->iomem);
+> -    memory_region_add_subregion(&cfam->mr, 0xc00, &cfam->lbus.mr);
+> +    memory_region_add_subregion(&cfam->mr, cc->responder_offset, &slave->iomem);
+> +    memory_region_add_subregion(&cfam->mr, cc->lbus_offset, &cfam->lbus.mr);
+>   
+> -    /* Add scratchpad engine */
+> -    if (!qdev_realize(DEVICE(&cfam->scratchpad), BUS(&cfam->lbus), errp)) {
+> +    if (!cc->realize_engines(cfam, errp)) {
+>           return;
+>       }
+> -
+> -    FSILBusDevice *fsi_dev = FSI_LBUS_DEVICE(&cfam->scratchpad);
+> -    memory_region_add_subregion(&cfam->lbus.mr, 0, &fsi_dev->iomem);
+>   }
+>   
+> -static void fsi_cfam_class_init(ObjectClass *klass, const void *data)
+> +static void fsi_cfam_common_class_init(ObjectClass *klass, const void *data)
+>   {
+>       DeviceClass *dc = DEVICE_CLASS(klass);
+> +
+>       dc->bus_type = TYPE_FSI_BUS;
+> -    dc->realize = fsi_cfam_realize;
+> +    dc->realize = fsi_cfam_common_realize;
+> +}
+> +
+> +static bool fsi_cfam_realize_engines(FSICFAMCommon *cfam, Error **errp)
+> +{
+> +    FSICFAM *s = FSI_CFAM(cfam);
+> +
+> +    /* Add scratchpad engine */
+> +    object_initialize_child(OBJECT(s), "scratchpad", &s->scratchpad,
+> +                            TYPE_FSI_SCRATCHPAD);
+> +
 
----
+This is a violation of the QOM cycle.
 
-Changes in v2:
-- Restrict DTB fixups only when direct Linux kernel boot
+C.
 
- docs/system/arm/xlnx-zcu102.rst | 139 +++++++++++++++++++++++++++++++-
- hw/arm/xlnx-zcu102.c            | 112 +++++++++++++++++++++++++
- 2 files changed, 250 insertions(+), 1 deletion(-)
 
-diff --git a/docs/system/arm/xlnx-zcu102.rst b/docs/system/arm/xlnx-zcu102.rst
-index 534cd1dc88..41ddd15592 100644
---- a/docs/system/arm/xlnx-zcu102.rst
-+++ b/docs/system/arm/xlnx-zcu102.rst
-@@ -4,8 +4,30 @@ Xilinx ZynqMP ZCU102 (``xlnx-zcu102``)
- The ``xlnx-zcu102`` board models the Xilinx ZynqMP ZCU102 board.
- This board has 4 Cortex-A53 CPUs and 2 Cortex-R5F CPUs.
- 
-+Supported devices
-+-----------------
-+
-+The machine is based on QEMU's Xilinx ZynqMP SoC model and includes
-+the following Processing System devices:
-+
-+ * Cortex-A53 APU and Cortex-R5F RPU CPU cores
-+ * Generic Interrupt Controller
-+ * DDR memory
-+ * On-chip memory
-+ * Cadence UARTs
-+ * Cadence GEM Ethernet controllers
-+ * SDHCI controllers
-+ * SPI controllers
-+ * GQSPI controller
-+ * RTC
-+ * CAN controllers
-+ * USB controllers
-+ * SATA controller
-+ * DMA controllers
-+ * BBRAM and eFUSE devices
-+
- Machine-specific options
--""""""""""""""""""""""""
-+------------------------
- 
- The following machine-specific options are supported:
- 
-@@ -17,3 +39,118 @@ virtualization
-   Set ``on``/``off`` to enable/disable emulating a guest CPU which implements the
-   Arm Virtualization Extensions. The default is ``off``.
- 
-+Boot options
-+------------
-+
-+The ``xlnx-zcu102`` machine can start a Linux kernel directly with
-+``-kernel``. It does not provide a ZynqMP BootROM flow for loading a
-+Xilinx boot image from SD or QSPI flash, so images such as ``boot.bin``
-+or ``qspi.bin`` cannot be passed alone and expected to boot like they
-+would on real hardware.
-+
-+QEMU does not generate a built-in device tree for this machine. Pass a DTB
-+with ``-dtb``. For direct Linux boot with a real-board ZCU102 DTB, QEMU
-+applies compatibility adjustments for the boot-critical UART, SDHCI and
-+GQSPI nodes so that Linux can use the devices modeled by QEMU without
-+requiring user-side DTB edits.
-+
-+This is not the same as emulating the complete ZynqMP firmware stack. The
-+DTB can still contain non-boot devices that depend on board peripherals,
-+external clock chips, power domains, pin control, or firmware services
-+that QEMU does not model.
-+
-+Direct Linux boot with Buildroot
-+--------------------------------
-+
-+Buildroot has a ZCU102 defconfig. Buildroot 2026.05 release is tested at the
-+time of writing. From the Buildroot source tree:
-+
-+.. code-block:: bash
-+
-+  $ make zynqmp_zcu102_defconfig
-+  $ make
-+
-+The generated files are in ``output/images/``. The examples below use:
-+
-+ * ``Image``
-+ * ``zynqmp-zcu102-rev1.0.dtb``
-+ * ``sdcard.img``
-+ * ``qspi.bin`` if QSPI flash probing is desired
-+
-+QEMU's SD card model requires a power-of-two image size. Work on a copy
-+of the Buildroot SD image and resize the copy, not the original output:
-+
-+.. code-block:: bash
-+
-+  $ cp output/images/sdcard.img sdcard-qemu.img
-+  $ qemu-img resize -f raw sdcard-qemu.img 128M
-+
-+The real-board DTB enables the SDHCI controller at ``mmc@ff170000``.
-+In QEMU this is SD index 1, so attach the SD card with
-+``if=sd,index=1``.
-+
-+Boot Linux with the Buildroot kernel and the native Buildroot DTB:
-+
-+.. code-block:: bash
-+
-+  $ qemu-system-aarch64 -M xlnx-zcu102 -m 2G -nographic \
-+      -kernel output/images/Image \
-+      -dtb output/images/zynqmp-zcu102-rev1.0.dtb \
-+      -append "earlycon=cdns,mmio,0xff000000,115200n8 \
-+               console=ttyPS0,115200 root=/dev/mmcblk0p2 rw rootwait" \
-+      -drive file=sdcard-qemu.img,if=sd,index=1,format=raw
-+
-+This should get the kernel booting all the way to the Buildroot login
-+prompt on ``ttyPS0``.
-+
-+QSPI flash
-+----------
-+
-+The board creates two PS SPI NOR flashes first and the ZynqMP GQSPI
-+flashes after them. Therefore the first GQSPI flash is
-+``if=mtd,index=2``. The remaining GQSPI flash backends use indices 3, 4
-+and 5.
-+
-+The Buildroot ``qspi.bin`` image is smaller than the 64 MiB
-+``n25q512a11`` flash model. To attach it as the first GQSPI flash,
-+place it in a 64 MiB raw backing file:
-+
-+.. code-block:: bash
-+
-+  $ qemu-img create -f raw qspi-cs0.img 64M
-+  $ dd if=output/images/qspi.bin of=qspi-cs0.img bs=1M conv=notrunc
-+
-+Add the following drive to the direct Linux boot command above:
-+
-+.. code-block:: bash
-+
-+      -drive file=qspi-cs0.img,if=mtd,index=2,format=raw
-+
-+With this drive attached, Linux should probe the ZynqMP GQSPI
-+controller and register the SPI NOR partitions from the DTB, for
-+example ``qspi-fsbl-uboot``, ``qspi-linux``, ``qspi-device-tree`` and
-+``qspi-rootfs``.
-+
-+The default Buildroot ``qspi.bin`` is a boot image, not a root
-+filesystem image. The default DTB's ``qspi-rootfs`` partition is also
-+too small for Buildroot's ``rootfs.ext2``. Booting with the root
-+filesystem in QSPI flash therefore requires a custom image layout and
-+matching DTB changes.
-+
-+Known limitations
-+-----------------
-+
-+The machine does not emulate the complete real-board firmware stack.
-+In particular:
-+
-+ * ZynqMP BootROM boot-mode selection is not modeled.
-+ * Passing the Buildroot ``boot.bin`` with ``-bios`` does not boot Linux.
-+ * Attaching ``qspi.bin`` as an MTD drive without ``-kernel`` does not
-+   boot from QSPI flash.
-+ * ZynqMP PM firmware services are not modeled. For direct Linux boot,
-+   QEMU adjusts the supplied DTB only for the boot-critical UART, SDHCI
-+   and GQSPI nodes.
-+ * Other real-board DTB nodes can still defer or fail probing when they
-+   depend on devices that are not present in the QEMU model, such as
-+   external I2C clock generators, board sensors, some GPIO consumers,
-+   PHYs, or non-boot DMA/display paths.
-diff --git a/hw/arm/xlnx-zcu102.c b/hw/arm/xlnx-zcu102.c
-index bb59621854..953281dca2 100644
---- a/hw/arm/xlnx-zcu102.c
-+++ b/hw/arm/xlnx-zcu102.c
-@@ -25,6 +25,7 @@
- #include "system/device_tree.h"
- #include "qom/object.h"
- #include "net/can_emu.h"
-+#include <libfdt.h>
- 
- struct XlnxZCU102 {
-     MachineState parent_obj;
-@@ -42,6 +43,112 @@ struct XlnxZCU102 {
- #define TYPE_ZCU102_MACHINE   MACHINE_TYPE_NAME("xlnx-zcu102")
- OBJECT_DECLARE_SIMPLE_TYPE(XlnxZCU102, ZCU102_MACHINE)
- 
-+static bool zcu102_fdt_get_phandle(void *fdt, const char *node_path,
-+                                   uint32_t *phandle)
-+{
-+    int offset;
-+
-+    offset = fdt_path_offset(fdt, node_path);
-+    if (offset < 0) {
-+        return false;
-+    }
-+
-+    *phandle = fdt_get_phandle(fdt, offset);
-+    return *phandle != 0;
-+}
-+
-+static void zcu102_fdt_nop_prop(void *fdt, const char *node_path,
-+                                const char *prop)
-+{
-+    int ret;
-+    int offset;
-+
-+    offset = fdt_path_offset(fdt, node_path);
-+    if (offset < 0) {
-+        return;
-+    }
-+
-+    ret = fdt_nop_property(fdt, offset, prop);
-+    if (ret < 0 && ret != -FDT_ERR_NOTFOUND) {
-+        error_report("%s: Couldn't nop %s/%s: %s", __func__, node_path,
-+                     prop, fdt_strerror(ret));
-+        exit(1);
-+    }
-+}
-+
-+static void zcu102_fdt_fixup_clocks(void *fdt, const char *node_path,
-+                                    uint32_t phandle)
-+{
-+    if (fdt_path_offset(fdt, node_path) < 0) {
-+        return;
-+    }
-+
-+    qemu_fdt_setprop_cells(fdt, node_path, "clocks", phandle, phandle);
-+}
-+
-+static void zcu102_fdt_fixup_qemu_direct_boot_nodes(void *fdt)
-+{
-+    uint32_t pss_ref_clk;
-+    int i, j;
-+
-+    static const char * const provider_props[] = {
-+        "power-domains",
-+        "resets",
-+        "assigned-clocks",
-+        "assigned-clock-rates",
-+        "assigned-clock-parents",
-+        "pinctrl-names",
-+        "pinctrl-0",
-+    };
-+    static const char * const direct_boot_nodes[] = {
-+        "/axi/serial@ff000000",
-+        "/axi/serial@ff010000",
-+        "/axi/mmc@ff170000",
-+        "/axi/spi@ff0f0000",
-+    };
-+
-+    /*
-+     * The Linux ZCU102 DTB inherits these boot-critical nodes from
-+     * arch/arm64/boot/dts/xilinx/zynqmp.dtsi:
-+     *
-+     *   uart0: serial@ff000000
-+     *   uart1: serial@ff010000
-+     *   sdhci1: mmc@ff170000
-+     *   qspi: spi@ff0f0000
-+     *
-+     * zynqmp.dtsi, zynqmp-clk-ccf.dtsi and zynqmp-zcu102-revA.dts
-+     * wire them to PM firmware-backed clock, reset and pinctrl providers.
-+     * Linux reaches that firmware through zynqmp_pm_invoke_fn() in
-+     * drivers/firmware/xilinx/zynqmp-core.c; examples include
-+     * zynqmp_pm_query_data() for drivers/clk/zynqmp/clkc.c,
-+     * zynqmp_pm_reset_assert() for drivers/reset/reset-zynqmp.c, and
-+     * zynqmp_pm_pinctrl_request() for drivers/pinctrl/pinctrl-zynqmp.c.
-+     *
-+     * Direct kernel boot has no PM firmware stage for those calls. Bypass the
-+     * firmware-backed providers for just these nodes and describe their clocks
-+     * as fixed inputs, avoiding a QEMU model of the runtime PM firmware.
-+     *
-+     * The Linux ZynqMP clock description defines pss-ref-clk as a 33.333333 MHz
-+     * fixed clock with #clock-cells = <0>. Use it as a conservative direct-boot
-+     * fallback for both clock inputs of these devices. That satisfies the
-+     * existing two clock-names entries while keeping the DTB independent from
-+     * the firmware-backed ZynqMP clock controller.
-+     */
-+    if (!zcu102_fdt_get_phandle(fdt, "/pss-ref-clk", &pss_ref_clk)) {
-+        return;
-+    }
-+
-+    for (i = 0; i < ARRAY_SIZE(direct_boot_nodes); i++) {
-+        for (j = 0; j < ARRAY_SIZE(provider_props); j++) {
-+            zcu102_fdt_nop_prop(fdt, direct_boot_nodes[i], provider_props[j]);
-+        }
-+    }
-+
-+    zcu102_fdt_fixup_clocks(fdt, "/axi/serial@ff000000", pss_ref_clk);
-+    zcu102_fdt_fixup_clocks(fdt, "/axi/serial@ff010000", pss_ref_clk);
-+    zcu102_fdt_fixup_clocks(fdt, "/axi/mmc@ff170000", pss_ref_clk);
-+    zcu102_fdt_fixup_clocks(fdt, "/axi/spi@ff0f0000", pss_ref_clk);
-+}
- 
- static bool zcu102_get_secure(Object *obj, Error **errp)
- {
-@@ -97,6 +204,11 @@ static void zcu102_modify_dtb(const struct arm_boot_info *binfo, void *fdt)
-         }
-         g_strfreev(node_path);
-     }
-+
-+    /* Run the DTB callback only for direct Linux kernel booting */
-+    if (binfo->is_linux) {
-+        zcu102_fdt_fixup_qemu_direct_boot_nodes(fdt);
-+    }
- }
- 
- static void bbram_attach_drive(XlnxBBRam *dev)
----
-base-commit: 9ded45a67ff5daa7f30264bc8a9868b420da2a54
-branch: zcu102
-
--- 
-2.53.0
+> +    return fsi_cfam_add_engine(cfam, DEVICE(&s->scratchpad), 0, errp);
+>   }
+>   
+> +static void fsi_cfam_class_init(ObjectClass *klass, const void *data)
+> +{
+> +    FSICFAMCommonClass *cc = FSI_CFAM_COMMON_CLASS(klass);
+> +
+> +    cc->config = cfam_p9_config;
+> +    cc->config_nr = ARRAY_SIZE(cfam_p9_config);
+> +    cc->responder_offset = 0x800;
+> +    cc->lbus_offset = 0xc00;
+> +    cc->realize_engines = fsi_cfam_realize_engines;
+> +}
+> +
+> +static const TypeInfo fsi_cfam_common_info = {
+> +    .name = TYPE_FSI_CFAM_COMMON,
+> +    .parent = TYPE_FSI_SLAVE,
+> +    .instance_size = sizeof(FSICFAMCommon),
+> +    .class_size = sizeof(FSICFAMCommonClass),
+> +    .class_init = fsi_cfam_common_class_init,
+> +    .abstract = true,
+> +};
+> +
+>   static const TypeInfo fsi_cfam_info = {
+>       .name = TYPE_FSI_CFAM,
+> -    .parent = TYPE_FSI_SLAVE,
+> -    .instance_init = fsi_cfam_instance_init,
+> -    .instance_size = sizeof(FSICFAMState),
+> +    .parent = TYPE_FSI_CFAM_COMMON,
+> +    .instance_size = sizeof(FSICFAM),
+>       .class_init = fsi_cfam_class_init,
+>   };
+>   
+>   static void fsi_cfam_register_types(void)
+>   {
+> +    type_register_static(&fsi_cfam_common_info);
+>       type_register_static(&fsi_cfam_info);
+>   }
+>   
+> diff --git a/hw/fsi/fsi-master.c b/hw/fsi/fsi-master.c
+> index 083a5507ab..d82df1c094 100644
+> --- a/hw/fsi/fsi-master.c
+> +++ b/hw/fsi/fsi-master.c
+> @@ -130,7 +130,7 @@ static void fsi_master_realize(DeviceState *dev, Error **errp)
+>       }
+>   
+>       /* address ? */
+> -    memory_region_add_subregion(&s->opb2fsi, 0, &s->cfam.mr);
+> +    memory_region_add_subregion(&s->opb2fsi, 0, &s->cfam.parent.mr);
+>   }
+>   
+>   static void fsi_master_reset(DeviceState *dev)
 
 

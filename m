@@ -4,118 +4,126 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3DE32CA5FDD
-	for <qemu-arm@archiver.kernel.org>; Sat,  3 Oct 2026 06:26:53 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 99029CA5FED
+	for <qemu-arm@archiver.kernel.org>; Sat,  3 Oct 2026 17:05:32 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xCtCl-000753-36; Sat, 03 Oct 2026 02:26:43 -0400
+	id 1xD3AK-00086b-Jf; Sat, 03 Oct 2026 13:04:54 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1xCtCi-00074h-6v
- for qemu-arm@nongnu.org; Sat, 03 Oct 2026 02:26:40 -0400
-Received: from smtpout2.mo538.mail-out.ovh.net ([51.210.91.31])
+ (Exim 4.90_1) (envelope-from <bin.meng@processmission.com>)
+ id 1xD395-0007Dx-UL; Sat, 03 Oct 2026 13:03:35 -0400
+Received: from mail-koreacentralazlp170130006.outbound.protection.outlook.com
+ ([2a01:111:f403:c40f::6] helo=SEYPR02CU001.outbound.protection.outlook.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1xCtCe-0001z9-KE
- for qemu-arm@nongnu.org; Sat, 03 Oct 2026 02:26:39 -0400
-Received: from director3.derp.mail-out.ovh.net
- (director3.derp.mail-out.ovh.net [79.137.60.223])
- by mo538.mail-out.ovh.net (Postfix) with ESMTPS id 4hxbJb4lXGz6FB0;
- Sat,  3 Oct 2026 06:26:23 +0000 (UTC)
-Received: from director3.derp.mail-out.ovh.net
- (director3.derp.mail-out.ovh.net. [127.0.0.1])
- by director3.derp.mail-out.ovh.net (inspect_sender_mail_agent) with SMTP
- for <jamin_lin@aspeedtech.com>; Sat,  3 Oct 2026 06:26:22 +0000 (UTC)
-Received: from mta6.priv.ovhmail-u2.ea.mail.ovh.net (unknown [10.110.178.252])
- by director3.derp.mail-out.ovh.net (Postfix) with ESMTPS id
- 4hxbJZ6Td6z1xqR; Sat,  3 Oct 2026 06:26:22 +0000 (UTC)
-Received: from kaod.org (unknown [10.1.6.5])
- (Authenticated sender: clg@kaod.org)
- by mta6.priv.ovhmail-u2.ea.mail.ovh.net (Postfix) with ESMTPSA id A4FB41B42C2F;
- Sat,  3 Oct 2026 06:26:20 +0000 (UTC)
-Authentication-Results: garm.ovh; auth=pass
- (GARM-114S00821e3ab6b-b8ed-4898-810d-ca7b2098087d,
- EF3BAB35031320AEE1F3939107F7654D0985B97F) smtp.auth=clg@kaod.org
-X-OVh-ClientIp: 82.64.250.170
-Message-ID: <0fcdfcb5-6f56-4030-ba01-f350accb0412@kaod.org>
-Date: Sat, 3 Oct 2026 08:26:19 +0200
+ (Exim 4.90_1) (envelope-from <bin.meng@processmission.com>)
+ id 1xD394-0007CD-Dm; Sat, 03 Oct 2026 13:03:35 -0400
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=bitjI61aVs12c01XSneul5rn3bP1hEezmBhp2Y1m5fe9dF5Z08ug5t5L36p6H+Qr5Sw0ebJA6DpYk89jGOIMVg71PF8hB82g4VSfK66T8Gvvcsw9BqIRYGKiS22A3hfBZISCxVlW0lOi/KU1FfIbU/xZiISG4pAXzC74ScMCzb2lH2XADE38NCyQLXlVT9p/gy7puQvb3z/dJwzTvWp+g+gzbwVUyjib8zYotRT5KsMUkgt45fZ9CntEO3mqKBRg9jK3HizWfzdn3PNOgtB8/GRMkUrVODTnj+GP9Hxd+JSCY5EGeA42LKYXN5cdN6Eq5bt1e3vEkblEoJcOpI41Vw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=4hhOHNF8s1j0wBEy9KtYWf3zljl5jCJgep7xo1JP62w=;
+ b=P+Fu42g3uqZGjB6D2k9Ednbvnuoqb74Vf5mrNCIbgamGLpXXhR91YRoCcXZCetZ5/2oQxAFF8AqxBWfJHBVJuNy1/02phJITjwIsjCHcLKPN7dKTB7nX7EPDC32sVhIImbWpkZOTL8iRv2Cb8fEAKPJjiGcre1DwRmcJLbGL/tq7aqqB+WZjSMRt36GsA0QvNH+r0UndRTSDbzllQiP5sXZ3lNp4t3lRJT4MmeWASLpuuJSrZX1GMf1kRZFtMKnJ11oekWJD2QvplQ/mkiJ07qBioiH2LwUgdoX3U2FmyiQiXUS5Li9TBuZ4fmb5/bStxcWH7nV7K0a0+bUQvgDRdw==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=processmission.com; dmarc=pass action=none
+ header.from=processmission.com; dkim=pass header.d=processmission.com;
+ arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=processmission.com;
+ s=selector1;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=4hhOHNF8s1j0wBEy9KtYWf3zljl5jCJgep7xo1JP62w=;
+ b=A9rQ7rE8eyC8vysrm0DYbO4JHU/1DmtMEVxquztC6mgjEl3R1FsQuYH6x8gJbbOB+RAud2mTn8mR1deDugyGuCcCbex9juYQo8YYMXSe747eMOaT/PSBdlQ+//Im8C++EY5frfAZg5XeXTd54fEAmBTj/IH0iCpOYDYaX3zZix5uDXKCM9uaQJmuK26e1b6RqvskcUArYoqs8SOHQZokiFKEtrbKJRcoa+ED+s2t87Z4hc/qXWYHxDRz2d875bVH6ALh3JffT1iNZPkKd6fDVdAbVPio5BosmvJZyxDV8O5cR1W+nMFN/ZMH5WZMZEdjisu4S8y9iE/UDd/r485stQ==
+Authentication-Results: mx.microsoft.com 1; dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=processmission.com;
+Received: from KL1PR02MB6257.apcprd02.prod.outlook.com (2603:1096:820:da::11)
+ by TYZPR02MB5788.apcprd02.prod.outlook.com (2603:1096:400:1d0::9)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.21.472.20; Sat, 3 Oct
+ 2026 17:03:26 +0000
+Received: from KL1PR02MB6257.apcprd02.prod.outlook.com
+ ([fe80::ecf9:e832:8196:215]) by KL1PR02MB6257.apcprd02.prod.outlook.com
+ ([fe80::ecf9:e832:8196:215%6]) with mapi id 15.21.0472.016; Sat, 3 Oct 2026
+ 17:03:26 +0000
+From: Bin Meng <bin.meng@processmission.com>
+To: QEMU <qemu-devel@nongnu.org>
+Cc: Alistair Francis <alistair@alistair23.me>,
+ "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
+ Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org
+Subject: [PATCH v3 12/27] hw/sd: cadence: Add 64-bit system bus property
+Date: Sun,  4 Oct 2026 01:02:02 +0800
+Message-ID: <20261003170232.2450916-13-bin.meng@processmission.com>
+X-Mailer: git-send-email 2.53.0
+In-Reply-To: <20261003170232.2450916-1-bin.meng@processmission.com>
+References: <20261003170232.2450916-1-bin.meng@processmission.com>
+Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
+X-ClientProxiedBy: TY4P301CA0100.JPNP301.PROD.OUTLOOK.COM
+ (2603:1096:405:37b::14) To KL1PR02MB6257.apcprd02.prod.outlook.com
+ (2603:1096:820:da::11)
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v4 1/7] fsi/cfam: Add common CFAM base class
-To: Mikail Sadic <mikail.sadic@ibm.com>, peter.maydell@linaro.org
-Cc: pbonzini@redhat.com, ninad@linux.ibm.com, titusr@google.com,
- jeuk20.kim@samsung.com, philmd@mailo.com, steven_lee@aspeedtech.com,
- leetroy@gmail.com, jamin_lin@aspeedtech.com, kane_chen@aspeedtech.com,
- andrew@codeconstruct.com.au, joel@jms.id.au, calebs@linux.ibm.com,
- milesg@linux.ibm.com, qemu-arm@nongnu.org, qemu-devel@nongnu.org
-References: <20260813193040.669533-1-mikail.sadic@ibm.com>
- <20260813193040.669533-2-mikail.sadic@ibm.com>
-From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
-Content-Language: en-US, fr
-Autocrypt: addr=clg@kaod.org; keydata=
- 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
-In-Reply-To: <20260813193040.669533-2-mikail.sadic@ibm.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-x-ovh-tracer-id: 11533155696595152003
-X-VR-SPAMSTATE: OK
-X-VR-SPAMSCORE: -100
-X-VR-SPAMCAUSE: dmFkZTG0Muoh/QLqQm8C6YImcQ7NMtFUhBUWENyNEvE3N29mO/O1r+cRmOBi67l3MimT/z6yHXF0U/ekKhGN8YN345smeSOyAKdAmXuQXOLdls3bAS07LRrCpYQ7Nor4KA4WFIScTbf2K8FevzRm2/H7nYomQMCSv8tRuJ2qWRZpJ+MzwmEE0EfN36SWv+dmnNyXKcywCiEoZMGbe4zM104buPrPgyNprb+CkZlvRDkUN9s0SGngiteit7X7GZ9jCnvw4puz5iOydeb2TfRscsNYSRpwVjKsbKtEzT62it8z05KkhOgbzOXrdlw7QCTS/sR27vrk+3pTg0LifZcn1uaRzzbwVeUgHzgozAHLV6KbD9lPvDjKV8YK63Lv1J0UxgsAq31K0bPTxgGGim0imggP0G9ZMGtIr7ifefVmmoMPRXTtwRZDNlxVATy5VaLIhsfn44iRwxjr0g7BBZgGZVebDOvJv7cVVlg6sATGBZUOEw2vsdfRC+c7yd1v7P5zE9Fy+Hf8FW3AV/64VQz5pCSk0w5joryDrv8/566kRLBfDKGx17n2gAjYK2NxNkSi/WytndqmEsz1AkKyf5ibWDOkshTJVYfMt9SAuR6JAR8LuBp3TC0DPrcaEHusjBydqX4J5Bx2GD8WkRVdAC6fckePn/ylant4sunPJUB1MF7iHz0Ljw
-DKIM-Signature: a=rsa-sha256; bh=+ssclU/xiksrnetyi9Z5RJhc8IJF/m38wihSExD80wU=; 
- c=relaxed/relaxed; d=kaod.org; h=From; s=ovhmo393970-selector1;
- t=1791008785; v=1;
- b=vq9Bw1Yq3XmDRLiRdybOXUVHATGIjNs1jginXt173aE1LiHZVHLbav7A2merZ0p/ovg6crxH
- yLvoue2AC7G3qKmWIVfL33L4uo2Xmwdma4GPA2KHhO5Tb5DgMPfjjW7887B8xCoLqBau2HfdgkK
- CbvFyV0f51p2AU2nU7HiGe5qxSqa5vS/0pD/JzZCYT2w5AuC9rHoDRlVNA4Zuyh7pOsJsjeoKqD
- O17BGXcBM2wNf/HaTpP8jgu+ietXGd8MDsbWZlW43wuDOqK1yV2603bx+LzOcFhI52YywfH0RN8
- MgvMfoh2o02Ovd7cWKbFDI+Rh1c4tMOIk7OGgaAM4aMSQ==
-Received-SPF: pass client-ip=51.210.91.31; envelope-from=clg@kaod.org;
- helo=smtpout2.mo538.mail-out.ovh.net
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: KL1PR02MB6257:EE_|TYZPR02MB5788:EE_
+X-MS-Office365-Filtering-Correlation-Id: 0d9578d0-a603-47ce-295e-08df21703d8d
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;
+ ARA:13230040|1800799024|366016|23010399003|376014|6133799003|10067099003|56012099006|18002099003|22082099003;
+X-Microsoft-Antispam-Message-Info: BieLYzOA9EQQmPT7A7YTe765sC0OoihXVlcGjO/NsQWH3rjbGo5eQvSmBdNA4cB4gpOLZXNHkN0k+4uSi2XUTNP2DgV/rOKUirBPFYKggbesY33YRopK2aDotRqlr7nx5RixU/FRM7rpOVKRR/frlqfUB46eQ44TFDHChz6m4QU894XY1bqCnzYzHXXKoyMv4cQOqlrnEyWMdAhvkmrdOjXpEgc5Uu/jO9LZw11y51nQ+LRiqIEttDtzu0UpKMQQRyLHu0O1PrLw7DV0xYBd8xe/OoW+L18vWe22DE/25nwnYaZHlYB+v3p/brXvV9lI4J9s0DodzohXv+o3yuePLcLPB9Wr8OImrp07tCGXvrsxoH5QFWzfB6St4T7Fy9kqw6KwUz6KAVLbtpFHHfAKcKg9LJEbpax5ORDzU51Ov1WZvhUBm00j8MOzrg6qSnJY4euKyCkOpyJbDBjqrVrQ5NeBdy6uL1DMwCnKlGXcTfsUe40SnRSaxR/uhtKLMbFKoWh0Jbxvu8pN0/TUjbGL4lDxKSRcT4CtMA1WbE5r0x5d17LR7Uw1ZLTIJeBdBDTZS1fPfN+Hn0ASeCTxVun/21r9hX90UlX6Y87JftIfNoFpTcjCrUtC5jQ79aymToGt7l8MkkmwHrefzgPNi03A94gUhsph0lDD7n4qsLH6uPM=
+X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:KL1PR02MB6257.apcprd02.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(13230040)(1800799024)(366016)(23010399003)(376014)(6133799003)(10067099003)(56012099006)(18002099003)(22082099003);
+ DIR:OUT; SFP:1102; 
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: =?us-ascii?Q?vdGxRg02aKgiID6CBf6Rs2F0ORLLwHIa8AzPO+l8Lg0hvQi9/FShJ2p30wxQ?=
+ =?us-ascii?Q?Ehkdq5OdEAR879X+k24HHErEjVd4uT7rP+8Z1vXD/FeA6nLW6RybcaTlWCPy?=
+ =?us-ascii?Q?zJwb4w1MLZAsmSk1YtFGCjbFgsUDaVa8H2p1bAGqOhLmvbm59sndalUj2BAk?=
+ =?us-ascii?Q?LoUz0tW+Hspl5jYndWf7ktF5MBCcrKtSpoTXdpqpDFmnwhVCzeufEK911nQP?=
+ =?us-ascii?Q?fD43Y4sfc1dFlahsajsDvUb4OODu+4qQaFX14qjHD24EOWYVtwsPNTxf4U3M?=
+ =?us-ascii?Q?I4kbvvYFrSp8LiRJukhrDIRcuDPgVycE3Dnn/qAjuWuK4VXUvbRdbWnRMrXh?=
+ =?us-ascii?Q?CglAiInoL2cfGTO9BAvSfBtGcTwyS//knvdCVA+3508a9cwJRW2MUmc2Iwy3?=
+ =?us-ascii?Q?z6LPJiZ+BAoDOPzo/vOZYVISrkWo0wkzYCznDxlQMoNKMtk6D7fJ27onO5pu?=
+ =?us-ascii?Q?M8qHrd/+Qtkykuvhf0hl0aqa3Qz0kobL9aSMACneB9VGHTER2OW43XvG6aCV?=
+ =?us-ascii?Q?1Z2SqUI08rEGCia7Pvs8WEn3PjzKyF5EJtkEOuVUvewBfzE697vJcHRczw3d?=
+ =?us-ascii?Q?5MMSltzhFr8I+3wDGcZldedeRGPaU3q1DhwagdeLu2ew3A6pGRSc1Fabffzh?=
+ =?us-ascii?Q?re+jvzi3PAL+5We71neEX+OgN7QoVF0XsZkCem9u32dAJ9m+d42mr5wadjfW?=
+ =?us-ascii?Q?BUjRlFxP//NrgWNDywYnKtGPGK7eni6tV+1eqOI7PcFLHt9sugZDCD9m6W15?=
+ =?us-ascii?Q?nvizhbn7W2bmoOLfxuz7zJ7vi5Gk1pPJQRBvBgA0dVF57QLd/tAumuvg76CK?=
+ =?us-ascii?Q?Y9Cq7KMjROHnBjAFg45R8DJF7HMrbBl9RvvRJ2lnN4JZOkkY6A7ui+0/ktr/?=
+ =?us-ascii?Q?Zw57Ud7buh1SSFo3JnQCZNQbE2+r9+zLBvbcoZ9TnBitxYYEd74N//sp+Ea2?=
+ =?us-ascii?Q?DqgejbPYoHsj6O21AGSm3GnZusbk0fhiDMun9OFTzh4Gv2U9j39+SjSUcihP?=
+ =?us-ascii?Q?i5heZBr0DMW2h0anWG3ZiZ9YSZkrmLYNup6OEMA78k9U/lvUju/i6Kwi+HqN?=
+ =?us-ascii?Q?C8ZwQoz4fXYfjGnxXXeZcCFO6S6GalCJdBHUp6VT3az2miLubrd9rWx7Dicm?=
+ =?us-ascii?Q?i19gbUwtd2OSggQRZT8RfqJNfy8vHLtsn5PdNfWEq5Uie3n3OH7FkEP81GKR?=
+ =?us-ascii?Q?q3bxu+lCn3GpdLKi9yVpy13fz7xBv9qbflvGD5yL1DUkFealj/CsLi0Qj1H9?=
+ =?us-ascii?Q?J8+MhwIssq4HFpee3og/JNC8a2ibbkk51v8QcK1Y9w/6oOwPOJWNOKsit3wQ?=
+ =?us-ascii?Q?dv9z4SiF6yYHCWcJtYOV0SAkJ4UKAaum5dbxB1Jkl0BlnF9kaEWn9x3KNRyq?=
+ =?us-ascii?Q?CokbRjWieWv2uj62mjDLchfpQfITQN8YXMfW3OkS6BA1HoPOTjKUwDIO5cPh?=
+ =?us-ascii?Q?+FGfn0WcEE6+GzQML5Y50m1B4D3SFSt6KNOGNbDIijCgs8J22CK8pAi05r7o?=
+ =?us-ascii?Q?1U5buIffQEsNteuKVjX3gHhSsh4AQw5rQtVI3Qdvv0ijiZgzT++FSqwZaICJ?=
+ =?us-ascii?Q?Zkwo21pROEBHBqbKG7LxCBQm6SxfuIlmtspYNndLNBFN1uqrygt0YnIPZ/+e?=
+ =?us-ascii?Q?st7AcLkrVmMqof+3ucYNr660CfXl6pDGUa5qZJhV/cEsPUqlHpI6KWLvUtL5?=
+ =?us-ascii?Q?lsq0gR/API49cYzdR7ZfljRa6fIj7cVD9qvfAZR/hm1FrJVKtBm3pb5/aCuJ?=
+ =?us-ascii?Q?OXWi+dYjP5DH7M8GkI8gY4/G3+7buww=3D?=
+X-OriginatorOrg: processmission.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 0d9578d0-a603-47ce-295e-08df21703d8d
+X-MS-Exchange-CrossTenant-AuthSource: KL1PR02MB6257.apcprd02.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 03 Oct 2026 17:03:26.4045 (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: e0544bf7-9765-4630-ab69-0b266dc2169c
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: jhkoHbHHO6fHEpX2keTqXadzAjm2hHu7g0QT6uZuzziOfnfqQT50SiAM/t6AOnKYzU1+RW9JiR7ArHTF+KP/013R8i0K1ZUBT0AerCnPm+I=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: TYZPR02MB5788
+Received-SPF: pass client-ip=2a01:111:f403:c40f::6;
+ envelope-from=bin.meng@processmission.com;
+ helo=SEYPR02CU001.outbound.protection.outlook.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_NONE=0.001,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_PASS=-0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -132,350 +140,83 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On 8/13/26 21:30, Mikail Sadic wrote:
-> Prepare a common CFAM parent class for CFAM-S implementation.
-> 
-> Add an abstract TYPE_FSI_CFAM_COMMON with an FSICFAMCommonClass holding
-> what varies between types: the config table, the offsets of the FSI
-> responder and the local bus within the register slot, and a
-> realize_engines() hook for the engines on the local bus. Its realize is
-> driven by those fields, so one realize serves every type. TYPE_FSI_CFAM
-> keeps its name and becomes the first derived type, supplying the P9
-> config table, its slot offsets and the scratchpad engine. The config
-> table becomes data, still written with the same CFAM_CONFIG_REG()
-> expressions, which move to the header so a derived type can describe its
-> own table the same way.
-> 
-> Name the new instance struct without a State suffix and rename
-> FSICFAMState to FSICFAM to match.
-> 
-> No functional change: same memory map, same config words, same type and
-> child names. aspeed_fsi-test verified.
-> 
-> Signed-off-by: Mikail Sadic <mikail.sadic@ibm.com>
-> Reviewed-by: Glenn Miles <milesg@linux.ibm.com>
-> ---
->   include/hw/fsi/cfam.h       |  58 ++++++++++++++++-
->   include/hw/fsi/fsi-master.h |   2 +-
->   hw/fsi/cfam.c               | 125 +++++++++++++++++++++---------------
->   hw/fsi/fsi-master.c         |   2 +-
->   4 files changed, 130 insertions(+), 57 deletions(-)
-> 
-> diff --git a/include/hw/fsi/cfam.h b/include/hw/fsi/cfam.h
-> index cceb4bd6f1..bdf579b4fe 100644
-> --- a/include/hw/fsi/cfam.h
-> +++ b/include/hw/fsi/cfam.h
-> @@ -7,18 +7,44 @@
->   #ifndef FSI_CFAM_H
->   #define FSI_CFAM_H
->   
-> +#include "qemu/units.h"
->   #include "system/memory.h"
->   
->   #include "hw/fsi/fsi.h"
->   #include "hw/fsi/lbus.h"
->   
-> +/*
-> + * All CFAM flavors present a register slot holding a config table, an FSI
-> + * responder and a local bus carrying the engines the config table describes.
-> + * That is the common model; each flavor supplies its own table, slot layout
-> + * and engines.
-> + */
-> +#define TYPE_FSI_CFAM_COMMON "cfam-common"
-> +OBJECT_DECLARE_TYPE(FSICFAMCommon, FSICFAMCommonClass, FSI_CFAM_COMMON)
-> +
->   #define TYPE_FSI_CFAM "cfam"
-> -#define FSI_CFAM(obj) OBJECT_CHECK(FSICFAMState, (obj), TYPE_FSI_CFAM)
-> +OBJECT_DECLARE_SIMPLE_TYPE(FSICFAM, FSI_CFAM)
->   
->   /* P9-ism */
->   #define CFAM_CONFIG_NR_REGS 0x28
->   
-> -typedef struct FSICFAMState {
-> +#define FSI_CFAM_SLOT_SIZE   (2 * MiB)
-> +#define FSI_CFAM_CONFIG_SIZE 0x400
-> +
-> +#define ENGINE_CONFIG_NEXT            BIT(31)
-> +#define ENGINE_CONFIG_TYPE_PEEK       (0x02 << 4)
-> +#define ENGINE_CONFIG_TYPE_FSI        (0x03 << 4)
-> +#define ENGINE_CONFIG_TYPE_SCRATCHPAD (0x06 << 4)
-> +
-> +/* Valid, slots, version, type, crc */
-> +#define CFAM_CONFIG_REG(__VER, __TYPE, __CRC)   \
-> +    (ENGINE_CONFIG_NEXT       |   \
-> +     0x00010000               |   \
-> +     (__VER)                  |   \
-> +     (__TYPE)                 |   \
-> +     (__CRC))
-> +
-> +struct FSICFAMCommon {
->       /* < private > */
->       FSISlaveState parent;
->   
-> @@ -28,7 +54,33 @@ typedef struct FSICFAMState {
->       MemoryRegion mr;
->   
->       FSILBus lbus;
-> +};
-> +
-> +struct FSICFAMCommonClass {
-> +    /* < private > */
-> +    DeviceClass parent_class;
-> +
-> +    /* < public > */
-> +    /* Config table served by the common ops, one word per 4-byte offset */
-> +    const uint32_t *config;
-> +    unsigned config_nr;
-> +
-> +    /* Layout of the register slot */
-> +    hwaddr responder_offset;
-> +    hwaddr lbus_offset;
-> +
-> +    /* Realize and map this flavor's local bus engines */
-> +    bool (*realize_engines)(FSICFAMCommon *cfam, Error **errp);
+Cadence SDHCI integrations can differ in whether they provide a 64-bit
+system bus. Advertising the capability unconditionally could make a
+guest select unsupported ADMA descriptors.
 
+Add a bus64bit property to the Cadence model and keep it disabled by
+default. When enabled, expose the corresponding capability through the
+generic SDHCI child.
 
-This seems redundant.
-Each subclass can just do the engine init/realize in its own
-instance_init and realize. Please do it that way instead.
+Signed-off-by: Bin Meng <bin.meng@processmission.com>
 
-> +};
-> +
-> +struct FSICFAM {
-> +    /* < private > */
-> +    FSICFAMCommon parent;
-> +
->       FSIScratchPad scratchpad;
-> -} FSICFAMState;
-> +};
-> +
-> +bool fsi_cfam_add_engine(FSICFAMCommon *cfam, DeviceState *engine,
-> +                         hwaddr offset, Error **errp);
->   
->   #endif /* FSI_CFAM_H */
-> diff --git a/include/hw/fsi/fsi-master.h b/include/hw/fsi/fsi-master.h
-> index 60ddaa994f..87c11ec3dc 100644
-> --- a/include/hw/fsi/fsi-master.h
-> +++ b/include/hw/fsi/fsi-master.h
-> @@ -25,7 +25,7 @@ typedef struct FSIMasterState {
->       FSIBus bus;
->   
->       uint32_t regs[FSI_MASTER_NR_REGS];
-> -    FSICFAMState cfam;
-> +    FSICFAM cfam;
->   } FSIMasterState;
->   
->   
-> diff --git a/hw/fsi/cfam.c b/hw/fsi/cfam.c
-> index 54c0b05769..5d4d0622d0 100644
-> --- a/hw/fsi/cfam.c
-> +++ b/hw/fsi/cfam.c
-> @@ -16,19 +16,6 @@
->   
->   #include "hw/core/qdev-properties.h"
->   
-> -#define ENGINE_CONFIG_NEXT            BIT(31)
-> -#define ENGINE_CONFIG_TYPE_PEEK       (0x02 << 4)
-> -#define ENGINE_CONFIG_TYPE_FSI        (0x03 << 4)
-> -#define ENGINE_CONFIG_TYPE_SCRATCHPAD (0x06 << 4)
-> -
-> -/* Valid, slots, version, type, crc */
-> -#define CFAM_CONFIG_REG(__VER, __TYPE, __CRC)   \
-> -    (ENGINE_CONFIG_NEXT       |   \
-> -     0x00010000               |   \
-> -     (__VER)                  |   \
-> -     (__TYPE)                 |   \
-> -     (__CRC))
-> -
->   #define TO_REG(x)                          ((x) >> 2)
->   
->   #define CFAM_CONFIG_CHIP_ID                TO_REG(0x00)
-> @@ -36,34 +23,33 @@
->   #define CFAM_CONFIG_CHIP_ID_P9             0xc0022d15
->   #define CFAM_CONFIG_CHIP_ID_BREAK          0xc0de0000
->   
-> +/*
-> + * Config table of the P9 CFAM: the chip ID followed by one entry per engine,
-> + * entry n describing the engine at address n * 4. We need to add future
-> + * engines from address 0x10 onwards.
-> + */
-> +static const uint32_t cfam_p9_config[] = {
-> +    CFAM_CONFIG_CHIP_ID_P9,
-> +    CFAM_CONFIG_REG(0x1000, ENGINE_CONFIG_TYPE_PEEK, 0xc),
-> +    CFAM_CONFIG_REG(0x5000, ENGINE_CONFIG_TYPE_FSI, 0xa),
-> +    CFAM_CONFIG_REG(0x1000, ENGINE_CONFIG_TYPE_SCRATCHPAD, 0x7),
-> +};
-> +
->   static uint64_t fsi_cfam_config_read(void *opaque, hwaddr addr, unsigned size)
->   {
-> +    FSICFAMCommonClass *cc = FSI_CFAM_COMMON_GET_CLASS(opaque);
-> +    unsigned int reg = TO_REG(addr);
-> +
->       trace_fsi_cfam_config_read(addr, size);
->   
-> -    switch (addr) {
-> -    case 0x00:
-> -        return CFAM_CONFIG_CHIP_ID_P9;
-> -    case 0x04:
-> -        return CFAM_CONFIG_REG(0x1000, ENGINE_CONFIG_TYPE_PEEK, 0xc);
-> -    case 0x08:
-> -        return CFAM_CONFIG_REG(0x5000, ENGINE_CONFIG_TYPE_FSI, 0xa);
-> -    case 0xc:
-> -        return CFAM_CONFIG_REG(0x1000, ENGINE_CONFIG_TYPE_SCRATCHPAD, 0x7);
-> -    default:
-> -        /*
-> -         * The config table contains different engines from 0xc onwards.
-> -         * The scratch pad is already added at address 0xc. We need to add
-> -         * future engines from address 0x10 onwards. Returning 0 as engine
-> -         * is not implemented.
-> -         */
-> -        return 0;
-> -    }
-> +    /* Engines past the end of the table are not implemented */
-> +    return reg < cc->config_nr ? cc->config[reg] : 0;
->   }
->   
->   static void fsi_cfam_config_write(void *opaque, hwaddr addr, uint64_t data,
->                                     unsigned size)
->   {
-> -    FSICFAMState *cfam = FSI_CFAM(opaque);
-> +    FSICFAMCommon *cfam = FSI_CFAM_COMMON(opaque);
->   
->       trace_fsi_cfam_config_write(addr, size, data);
->   
-> @@ -109,59 +95,94 @@ static const struct MemoryRegionOps fsi_cfam_unimplemented_ops = {
->       .endianness = DEVICE_BIG_ENDIAN,
->   };
->   
-> -static void fsi_cfam_instance_init(Object *obj)
-> +bool fsi_cfam_add_engine(FSICFAMCommon *cfam, DeviceState *engine,
-> +                         hwaddr offset, Error **errp)
->   {
-> -    FSICFAMState *s = FSI_CFAM(obj);
-> +    if (!qdev_realize(engine, BUS(&cfam->lbus), errp)) {
-> +        return false;
-> +    }
->   
-> -    object_initialize_child(obj, "scratchpad", &s->scratchpad,
-> -                            TYPE_FSI_SCRATCHPAD);
-> +    memory_region_add_subregion(&cfam->lbus.mr, offset,
-> +                                &FSI_LBUS_DEVICE(engine)->iomem);
-> +    return true;
->   }
->   
-> -static void fsi_cfam_realize(DeviceState *dev, Error **errp)
-> +static void fsi_cfam_common_realize(DeviceState *dev, Error **errp)
->   {
-> -    FSICFAMState *cfam = FSI_CFAM(dev);
-> +    FSICFAMCommon *cfam = FSI_CFAM_COMMON(dev);
-> +    FSICFAMCommonClass *cc = FSI_CFAM_COMMON_GET_CLASS(dev);
->       FSISlaveState *slave = FSI_SLAVE(dev);
-> +    const char *type = object_get_typename(OBJECT(dev));
-> +    g_autofree char *config_name = g_strdup_printf("%s.config", type);
->   
->       /* Each slave has a 2MiB address space */
->       memory_region_init_io(&cfam->mr, OBJECT(cfam), &fsi_cfam_unimplemented_ops,
-> -                          cfam, TYPE_FSI_CFAM, 2 * MiB);
-> +                          cfam, type, FSI_CFAM_SLOT_SIZE);
->   
->       qbus_init(&cfam->lbus, sizeof(cfam->lbus), TYPE_FSI_LBUS, DEVICE(cfam),
->                 NULL);
->   
->       memory_region_init_io(&cfam->config_iomem, OBJECT(cfam), &cfam_config_ops,
-> -                          cfam, TYPE_FSI_CFAM ".config", 0x400);
-> +                          cfam, config_name, FSI_CFAM_CONFIG_SIZE);
->   
->       memory_region_add_subregion(&cfam->mr, 0, &cfam->config_iomem);
-> -    memory_region_add_subregion(&cfam->mr, 0x800, &slave->iomem);
-> -    memory_region_add_subregion(&cfam->mr, 0xc00, &cfam->lbus.mr);
-> +    memory_region_add_subregion(&cfam->mr, cc->responder_offset, &slave->iomem);
-> +    memory_region_add_subregion(&cfam->mr, cc->lbus_offset, &cfam->lbus.mr);
->   
-> -    /* Add scratchpad engine */
-> -    if (!qdev_realize(DEVICE(&cfam->scratchpad), BUS(&cfam->lbus), errp)) {
-> +    if (!cc->realize_engines(cfam, errp)) {
->           return;
->       }
-> -
-> -    FSILBusDevice *fsi_dev = FSI_LBUS_DEVICE(&cfam->scratchpad);
-> -    memory_region_add_subregion(&cfam->lbus.mr, 0, &fsi_dev->iomem);
->   }
->   
-> -static void fsi_cfam_class_init(ObjectClass *klass, const void *data)
-> +static void fsi_cfam_common_class_init(ObjectClass *klass, const void *data)
->   {
->       DeviceClass *dc = DEVICE_CLASS(klass);
-> +
->       dc->bus_type = TYPE_FSI_BUS;
-> -    dc->realize = fsi_cfam_realize;
-> +    dc->realize = fsi_cfam_common_realize;
-> +}
-> +
-> +static bool fsi_cfam_realize_engines(FSICFAMCommon *cfam, Error **errp)
-> +{
-> +    FSICFAM *s = FSI_CFAM(cfam);
-> +
-> +    /* Add scratchpad engine */
-> +    object_initialize_child(OBJECT(s), "scratchpad", &s->scratchpad,
-> +                            TYPE_FSI_SCRATCHPAD);
-> +
+---
 
-This is a violation of the QOM cycle.
+(no changes since v2)
 
-C.
+Changes in v2:
+- Make 64-bit system bus support a device property
 
+ include/hw/sd/cadence_sdhci.h |  1 +
+ hw/sd/cadence_sdhci.c         | 11 +++++++++++
+ 2 files changed, 12 insertions(+)
 
-> +    return fsi_cfam_add_engine(cfam, DEVICE(&s->scratchpad), 0, errp);
->   }
->   
-> +static void fsi_cfam_class_init(ObjectClass *klass, const void *data)
-> +{
-> +    FSICFAMCommonClass *cc = FSI_CFAM_COMMON_CLASS(klass);
-> +
-> +    cc->config = cfam_p9_config;
-> +    cc->config_nr = ARRAY_SIZE(cfam_p9_config);
-> +    cc->responder_offset = 0x800;
-> +    cc->lbus_offset = 0xc00;
-> +    cc->realize_engines = fsi_cfam_realize_engines;
-> +}
-> +
-> +static const TypeInfo fsi_cfam_common_info = {
-> +    .name = TYPE_FSI_CFAM_COMMON,
-> +    .parent = TYPE_FSI_SLAVE,
-> +    .instance_size = sizeof(FSICFAMCommon),
-> +    .class_size = sizeof(FSICFAMCommonClass),
-> +    .class_init = fsi_cfam_common_class_init,
-> +    .abstract = true,
-> +};
-> +
->   static const TypeInfo fsi_cfam_info = {
->       .name = TYPE_FSI_CFAM,
-> -    .parent = TYPE_FSI_SLAVE,
-> -    .instance_init = fsi_cfam_instance_init,
-> -    .instance_size = sizeof(FSICFAMState),
-> +    .parent = TYPE_FSI_CFAM_COMMON,
-> +    .instance_size = sizeof(FSICFAM),
->       .class_init = fsi_cfam_class_init,
->   };
->   
->   static void fsi_cfam_register_types(void)
->   {
-> +    type_register_static(&fsi_cfam_common_info);
->       type_register_static(&fsi_cfam_info);
->   }
->   
-> diff --git a/hw/fsi/fsi-master.c b/hw/fsi/fsi-master.c
-> index 083a5507ab..d82df1c094 100644
-> --- a/hw/fsi/fsi-master.c
-> +++ b/hw/fsi/fsi-master.c
-> @@ -130,7 +130,7 @@ static void fsi_master_realize(DeviceState *dev, Error **errp)
->       }
->   
->       /* address ? */
-> -    memory_region_add_subregion(&s->opb2fsi, 0, &s->cfam.mr);
-> +    memory_region_add_subregion(&s->opb2fsi, 0, &s->cfam.parent.mr);
->   }
->   
->   static void fsi_master_reset(DeviceState *dev)
+diff --git a/include/hw/sd/cadence_sdhci.h b/include/hw/sd/cadence_sdhci.h
+index cd8288b7d8..553fa73842 100644
+--- a/include/hw/sd/cadence_sdhci.h
++++ b/include/hw/sd/cadence_sdhci.h
+@@ -34,6 +34,7 @@ typedef struct CadenceSDHCIState {
+     MemoryRegion container;
+     MemoryRegion iomem;
+     BusState *bus;
++    bool bus64bit;
+ 
+     uint32_t regs[CADENCE_SDHCI_NUM_REGS];
+ 
+diff --git a/hw/sd/cadence_sdhci.c b/hw/sd/cadence_sdhci.c
+index 8476baf67f..875823a50d 100644
+--- a/hw/sd/cadence_sdhci.c
++++ b/hw/sd/cadence_sdhci.c
+@@ -25,6 +25,7 @@
+ #include "qemu/error-report.h"
+ #include "qapi/error.h"
+ #include "migration/vmstate.h"
++#include "hw/core/qdev-properties.h"
+ #include "hw/sd/cadence_sdhci.h"
+ #include "sdhci-internal.h"
+ 
+@@ -147,6 +148,11 @@ static void cadence_sdhci_realize(DeviceState *dev, Error **errp)
+                           s, TYPE_CADENCE_SDHCI, CADENCE_SDHCI_REG_SIZE);
+     memory_region_add_subregion(&s->container, 0, &s->iomem);
+ 
++    if (s->bus64bit) {
++        object_property_set_uint(OBJECT(&s->sdhci), "capareg",
++                                 SDHC_CAPAB_REG_DEFAULT |
++                                 R_SDHC_CAPAB_BUS64BIT_MASK, &error_abort);
++    }
+     sysbus_realize(sbd_sdhci, errp);
+     memory_region_add_subregion(&s->container, CADENCE_SDHCI_SRS_BASE,
+                                 sysbus_mmio_get_region(sbd_sdhci, 0));
+@@ -165,6 +171,10 @@ static const VMStateDescription vmstate_cadence_sdhci = {
+     },
+ };
+ 
++static const Property cadence_sdhci_properties[] = {
++    DEFINE_PROP_BOOL("bus64bit", CadenceSDHCIState, bus64bit, false),
++};
++
+ static void cadence_sdhci_class_init(ObjectClass *classp, const void *data)
+ {
+     DeviceClass *dc = DEVICE_CLASS(classp);
+@@ -172,6 +182,7 @@ static void cadence_sdhci_class_init(ObjectClass *classp, const void *data)
+     dc->desc = "Cadence SD/SDIO/eMMC Host Controller (SD4HC)";
+     dc->realize = cadence_sdhci_realize;
+     device_class_set_legacy_reset(dc, cadence_sdhci_reset);
++    device_class_set_props(dc, cadence_sdhci_properties);
+     dc->vmsd = &vmstate_cadence_sdhci;
+ }
+ 
+-- 
+2.53.0
 
 

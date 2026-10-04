@@ -4,94 +4,94 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7DC1FCA5FCE
-	for <qemu-arm@archiver.kernel.org>; Sun,  4 Oct 2026 16:16:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 90082CA5FEF
+	for <qemu-arm@archiver.kernel.org>; Sun,  4 Oct 2026 16:17:14 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xDOtC-0001hO-2x; Sun, 04 Oct 2026 12:16:39 -0400
+	id 1xDOtL-0001jm-Ko; Sun, 04 Oct 2026 12:16:47 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <bmeng.cn@gmail.com>)
- id 1xDOt7-0001gn-Cg
- for qemu-arm@nongnu.org; Sun, 04 Oct 2026 12:16:34 -0400
-Received: from mail-yw1-x1134.google.com ([2607:f8b0:4864:20::1134])
+ id 1xDOtD-0001hR-N4
+ for qemu-arm@nongnu.org; Sun, 04 Oct 2026 12:16:41 -0400
+Received: from mail-yx2-x2b.google.com ([2607:f8b0:4864:41::2b])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <bmeng.cn@gmail.com>)
- id 1xDOt5-0001Fl-Bg
- for qemu-arm@nongnu.org; Sun, 04 Oct 2026 12:16:33 -0400
-Received: by mail-yw1-x1134.google.com with SMTP id
- 00721157ae682-836c4474028so7660257b3.0
- for <qemu-arm@nongnu.org>; Sun, 04 Oct 2026 09:16:30 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1791130590; cv=none;
+ id 1xDOtC-0001GK-4P
+ for qemu-arm@nongnu.org; Sun, 04 Oct 2026 12:16:39 -0400
+Received: by mail-yx2-x2b.google.com with SMTP id
+ 00721157ae682-8ac8e048735so4923027b3.3
+ for <qemu-arm@nongnu.org>; Sun, 04 Oct 2026 09:16:37 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1791130597; cv=none;
  d=google.com; s=arc-20260327;
- b=Bw6Kp8S0jZOmrSQ6K+PNSdKXH3LYYk+eEoURzNtDPu0kl/HrrJlozp+TcwCzjTqApq
- C+VwpuA/39lZBEJCiCC8boFjdYE6DV19V3Ngt+Wf9SRsx/7OuTNY8koBZbCmKTim/2Ke
- IuwkeWlKR5tsh/dNXSK/vnLywmEHAohgozH+UQ/i3eZwotCTNlO/t4QNVlGBMdAb33mm
- p25vD1gWS0BWgz51L6M956FPfrvPUvYv4EzmLFxQN6eCFAwynJI8g3s1cwkZIySc5w8U
- 7pSaz0NHPopjWTqfqTHMzC7Z3m0gYzvVNbOJ1n28K5QZw5n/EnO2hiejoGuNVSyEAE0L
- mhDg==
+ b=a9tfevrZICkK+tV49c5zDESBDEmzDCC/AX3NfFt8j/s+JgG7D1QxcOkUP08g44gtGv
+ 5QZa2W1ceDyS8myXvi3/K1zEoHgQoykdbbL1yYnnoNOOzTSjm27SuC9xTODC8Upqm3ac
+ OV9E42iQ/0VPHvoWORbcWDKB4G6pj0vJ0k8NN5J7oBBmIa/io4ECdxsotCBNp1r9xijR
+ 2wDRd94PiT3hQ8qIeXRG6VL3nuGGrRg8LnbVzVsTkSwRLfQsTWxgB8QUzTwXCy8KCISm
+ asutFeNxZCzA4pnNKDLnhfjlz3y5KyBEWlfaKuAA3T/y0i7iH8I0G+qD4U4EerB+dpdn
+ V9RA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
  s=arc-20260327; 
  h=content-transfer-encoding:cc:to:subject:message-id:date:from
  :in-reply-to:references:mime-version:dkim-signature;
- bh=LFkBz0kiFGpXIG60naKeN63E33Lv1fvvnIZO4dy6v04=;
- fh=Y2VhytRUxvtq/dul5XKN+uLstTQKEYJctz+apXReHGo=;
- b=ByC0PlJNiHa/7H6ogq67tj56XZMZBgM6XbdQ10mJ+s7Mz8xLX2ADo4/WQExV3Nn7J0
- nNxKMFUl7DeqrOyGXqXTEP+1ppIdCAYR33vbualWpJ4EPRj8AdsBUATb1GOjNw6z50E1
- 3H+ADhk+r73TfFRD/ieRFMvHbNpy1wbssum4TmIHmDLmoyNFi7YJl+cKUZADBtwhBg8Y
- TnzgdtG4GpNqQ8fNxSbYjah8WdvJ1oAHLMb9x+kbk2oDbCuUG1HPU9sfuA1mUDTQXrCy
- WGQJuKtS/kGZd3Gxx8HbSvDYPUzKZ6v3tlQl4rL2jSsxvpqLgzvT9zeoIHWBMB1NHaM5
- 2K2A==; darn=nongnu.org
+ bh=7pTRaYFCGoLLVjBYPjkax3oP+NOXk5DiyxUnr3yvE6Y=;
+ fh=uI1j6OqhZXgLrJ/R+TO2FCrxLZB15zIBO/4UT0hV22A=;
+ b=LXGEBLnpJiNHnCtse8HImDzTwZW/MT/f+Y6Xp3smcliDlc/m0IToffdxLcw5yR20p8
+ 0MmiBeVHKNQHQZHpX7F0G1NMM5uoXM/1Fzk4ncCKEnLbrF8BPFqf+IEzMug/rM5AOH3Z
+ vuZdsM2XJVUjhwvKIbzwM9EtmYfIaEpQMxjKLgEheQSi+P+7xECB60DwPZXsgFI8Zmbq
+ NpVNhnOKC0cZFdaJKnRqB7IRA2o4KDMzSEsIsmaaubvDizYHvzK2bhzX1L3O1LIv4qTm
+ G1sUXAgLfClyMecIwKDeatbPw4YyN2ciJwAk9TcRr4QBaN6NsR1Z9ARfnr6FaEEp7cyy
+ wsFQ==; darn=nongnu.org
 ARC-Authentication-Results: i=1; mx.google.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20251104; t=1791130590; x=1791735390; darn=nongnu.org;
+ d=gmail.com; s=20251104; t=1791130597; x=1791735397; darn=nongnu.org;
  h=content-transfer-encoding:content-type:cc:to:subject:message-id
  :date:from:in-reply-to:references:mime-version:from:to:cc:subject
  :date:message-id:reply-to:content-type;
- bh=LFkBz0kiFGpXIG60naKeN63E33Lv1fvvnIZO4dy6v04=;
- b=sTytDdJJ4jGP3HAFylYjaqwwswH6u8touzDRm8N03SMrW5wtq8FB/3yoMslp8s92UL
- MgUYZ6oGDnDG3u26YRXC3eKA+dozd72TMJElgnfukK0kxq99/cts0uSVhdxGBQEb8w+U
- IHOTBqC5u+szK36ssP/LXMkE7A/0OYK9d3RrlwgYiCLBHb0lMgDbzA+PDk2mdwQ78QMz
- 5GPAp/GVODMY6CVQbjgbPwvO2vmmWjc9S0BzWFH4SLokT8TfghYqIr9hFCbRbEcm8lcy
- GJsJDQCartTAdgV0L52b3auYJeXC6i3iELvFGgl87e3k+4z0Hyz6vGeUwBfzyCWcuE9/
- /6+Q==
+ bh=7pTRaYFCGoLLVjBYPjkax3oP+NOXk5DiyxUnr3yvE6Y=;
+ b=Tu3Yd5NNAmIf1bXk29y6AUBrFQA3qqhQYfjWzulmnhnroVo9/RzkHwAp9K/ASugQIc
+ TByqDlxe30svKlnjKQHd0U732wB0od+ntM6dhTu4Tl/svSs1u+p56BkeeAaPHjE4KJrf
+ Q7rGgaclTa61v2+5lwJ3+/B7e+sTHuhIIp6lus4Y45QSoJYTaYYVRqyBujPkTrL1UtzL
+ HtQVpko5+cFGMYEyJ0sk4cCCGesCMsmwOQzpMPHHWSahILn+qMtmq11hq+bzaosYibIw
+ pgq+6+cxQ4mDO3xDmZdPKRzLGtXpL7BbbJJ8/3wNQQSK1vZU1KKF7M2Ypn1h+t+wnJKp
+ R5bw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20260707; t=1791130590; x=1791735390;
+ d=1e100.net; s=20260707; t=1791130597; x=1791735397;
  h=content-transfer-encoding:content-type:cc:to:subject:message-id
  :date:from:in-reply-to:references:mime-version:x-gm-gg
  :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
  :content-type;
- bh=LFkBz0kiFGpXIG60naKeN63E33Lv1fvvnIZO4dy6v04=;
- b=ts5//IV0crl33K/oMhtbRnn91ynkilFqkWI2Lpt+68GsRbkl1IUHS02jZCjNZghOpH
- aaXMH3hJUvQc/ZCcIVKgo+3sSp9Cgn4otng8vK1FcMu5m8TPksF4jjGWedJrpAJdhjcG
- 9S5JvzIcdga4If3azoVNA+iqxYczkt7QghelkHEGDFjjS0p62NeNvciw+uWnKPNUkGFJ
- h6M8sMNc8D4WrLI/m2a2R2C4WvmA0XgrgKVSwcg1pUun+trJ24U9ZIPpuAuWIt7LUGyf
- RRSJb76zoLGd5FGHZeaITLVtL3Dsyw5/m//t6cS4AZZJP1YM8hSPl+qXDv5xrtAqk2EX
- H1CQ==
+ bh=7pTRaYFCGoLLVjBYPjkax3oP+NOXk5DiyxUnr3yvE6Y=;
+ b=iF8vx9haSVEghddebLL7M/CfUjerVllY/iGQoIL/3V03X7py8VG3t78Dv7aOqd7eVf
+ /9Aq+eWREV7muCFoxWZ0pH3DsqwDD5FodE1BwooMUwY7QjLMvttBN6tnFIsvUPZPIOuM
+ fe7GCu6RCJipz2qrUM1sHd4Xegp2RhBoye9dAWno9C4GOOjVkZNEFLgzdTKt4rxhAtOf
+ 40NuLjqIoFSQ+yCYJqw3+bOKCljK2JkHkmRP9dvRs77iG0x/KayuNtG97QIedr6+q0wr
+ RgToL8+DT3XVdCwCog9dDlP7GgiZ/5wvYZOhdoyLpgkh3G/Hl4Hd8fCL5jCvwmaLcGx+
+ P6SA==
 X-Forwarded-Encrypted: i=1;
- AKwUvByjrFdr9EkFGrhaA6clbdZdh38ckRKG0ud//hEq91s55MexLb2Aq9OolGafMHnnWwz6qupU58M/JA==@nongnu.org
-X-Gm-Message-State: AFq9FYISO9nPsuz3EK9Ph+/URFhE5dIvCUZ1xO9QxqhF+8RlVegRIk+j
- c41v9DQd+OgqVX666XLAZ+Q79Rv8z4h43jNF1epSo68JhD5pMZoIrd6GdV0V3OyTdqqDBqTugxe
- B5hpc55+AXaz0oZdpwcbRF5fYQk7qwt4=
-X-Gm-Gg: AYBFou0ACgJc34DEL8KgxdwmgsY6JB3vwbn8e6VgYncW7/QcX5C5bM+GIoY2djVtKUj
- VM+PXL3KuzD++d6gnJG7NCAdoXcpFSMhSbeez6iKDRaXID0VtwH/NuDJxtmBqq4EjlGPQBCZnA3
- avnPN77kmjUSDbb9QYKl08OufLfFQMufMCB0phKpj1RgrkWVlZ/h8G3UHZg8XIlbhLeZruSvtgr
- 6nm7vrceOAJ+sS5+TpvdElYM2vWmWXnSst2TzVtXVncKBehOZoMiJnYRAtuW/Q+M7NEX7aKIgu7
- DFO70X7lsrtVxaLFo0+TF9nOaaxPsnHvMP+8+ctSYAtolXymVDICwubhDDPv7JnXl+genhbgXdG
- qMu3wBcB50ZQb5NM=
-X-Received: by 2002:a05:690c:e682:20b0:847:d0cd:11eb with SMTP id
- 00721157ae682-8ae948c7516mr15054557b3.9.1791130589783; Sun, 04 Oct 2026
- 09:16:29 -0700 (PDT)
+ AKwUvBzREh/igKpgcVXsXFhyStwHegtDSkPyNO4Vt9k233UBFORK1iZkZOu3SkhWM0QNYioI44+UqVAUcA==@nongnu.org
+X-Gm-Message-State: AFq9FYIZJoIVWRjFRMh01axR1GNmSwYMfWX81yll6V7m9Mf4nJ1KNlzJ
+ i4x+RSjlmCyEv2CmwY31wMnxd/wQho7lr+nFmciU8DvQMMh+o+XECp+RwCqORPWyoes8K5NMbq+
+ 0zg8XpgwQeoDHqgTJUGpJ4hDY/Ggx8JF3IjmK
+X-Gm-Gg: AYBFou056RYOHQqVkisnDUmf5CLDhze7DQqr7aS6y8PvGyniLrq7kpDC2vS8mwXNgwy
+ sYF+kpQYLwrrZxb0vPdkkkyL2humYHI4v4GuF2QzEMMDlpG0LLlyIvyQ9CKCL48vlIDgHoJF1nO
+ 1YZvBLMm+OROP04ZfBrUZIeuIGkVNlWSAlL6TAoeO9rojWT3EV3LBQAr6/ndI3nduABNA9ctXPq
+ svw/o6sgaDWBBMMOGKMFuMv1bzCfnYrhWUav2h1Z/cq02W10yyMqO1LwBIF/kI7QneOmtoTwoT4
+ SkuvueqzJW28N0kkPmsUKssmeCaveYX203o1wMafU8bFu5uBcBc4Uu1AVnNsf+WTjeurEkLFSNE
+ SI1CoZ+VTiVcstzdfDNMoPU1ob94=
+X-Received: by 2002:a05:690c:c4f1:b0:8a1:eaa2:36d7 with SMTP id
+ 00721157ae682-8ae392af4aamr28246977b3.18.1791130597006; Sun, 04 Oct 2026
+ 09:16:37 -0700 (PDT)
 MIME-Version: 1.0
 References: <20261004122647.3913-1-shentey@gmail.com>
- <20261004122647.3913-12-shentey@gmail.com>
-In-Reply-To: <20261004122647.3913-12-shentey@gmail.com>
+ <20261004122647.3913-16-shentey@gmail.com>
+In-Reply-To: <20261004122647.3913-16-shentey@gmail.com>
 From: Bin Meng <bmeng.cn@gmail.com>
-Date: Mon, 5 Oct 2026 00:16:18 +0800
-X-Gm-Features: AclHuK_3UeOHEHMVBGCcGgTyQWZR-K20t_lkFpDiy-bQlsEyh42eCjrCI2KJf-0
-Message-ID: <CAEUhbmWY=JkH+H1vO7J_xMuxTpwHqpKjF79ZTzN2Rgs-iLdo-A@mail.gmail.com>
-Subject: Re: [PATCH v2 11/30] hw/arm/fsl-imx25: Derive from TYPE_SYS_BUS_DEVICE
+Date: Mon, 5 Oct 2026 00:16:23 +0800
+X-Gm-Features: AclHuK8G93NgDcIqaZBrUCs4Wbt_SNeLVwmkNqXxsLrT1l5Iv6GhyteW0kGpn1Y
+Message-ID: <CAEUhbmX7Fz2GQAAwK1buoiyw6dRyqwNqL1S7m5KWZpxROhTsXg@mail.gmail.com>
+Subject: Re: [PATCH v2 15/30] hw/arm/fsl-imx7: Derive from TYPE_SYS_BUS_DEVICE
 To: Bernhard Beschow <shentey@gmail.com>
 Cc: qemu-devel@nongnu.org,
  =?UTF-8?B?TWFyYy1BbmRyw6kgTHVyZWF1?= <marcandre.lureau@redhat.com>, 
@@ -105,15 +105,15 @@ Cc: qemu-devel@nongnu.org,
  Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2607:f8b0:4864:20::1134;
- envelope-from=bmeng.cn@gmail.com; helo=mail-yw1-x1134.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:41::2b;
+ envelope-from=bmeng.cn@gmail.com; helo=mail-yx2-x2b.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -129,9 +129,7 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Hi Bernhard,
-
-On Sun, Oct 4, 2026 at 8:35=E2=80=AFPM Bernhard Beschow <shentey@gmail.com>=
+On Sun, Oct 4, 2026 at 8:33=E2=80=AFPM Bernhard Beschow <shentey@gmail.com>=
  wrote:
 >
 > Deriving from TYPE_SYS_BUS_DEVICE fixes the SoC object to be reset upon
@@ -139,78 +137,11 @@ On Sun, Oct 4, 2026 at 8:35=E2=80=AFPM Bernhard Beschow <shentey@gmail.com>=
 >
 > Signed-off-by: Bernhard Beschow <shentey@gmail.com>
 > ---
->  include/hw/arm/fsl-imx25.h | 5 ++---
->  hw/arm/fsl-imx25.c         | 7 +------
->  hw/arm/imx25_pdk.c         | 2 +-
->  3 files changed, 4 insertions(+), 10 deletions(-)
+>  include/hw/arm/fsl-imx7.h | 5 ++---
+>  hw/arm/fsl-imx7.c         | 5 +----
+>  hw/arm/mcimx7d-sabre.c    | 2 +-
+>  3 files changed, 4 insertions(+), 8 deletions(-)
 >
-> diff --git a/include/hw/arm/fsl-imx25.h b/include/hw/arm/fsl-imx25.h
-> index b68d4334a0..4bb4d5b3e5 100644
-> --- a/include/hw/arm/fsl-imx25.h
-> +++ b/include/hw/arm/fsl-imx25.h
-> @@ -29,6 +29,7 @@
->  #include "hw/sd/sdhci.h"
->  #include "hw/usb/chipidea.h"
->  #include "hw/watchdog/wdt_imx2.h"
-> +#include "hw/core/sysbus.h"
->  #include "system/memory.h"
->  #include "target/arm/cpu.h"
->  #include "qom/object.h"
-> @@ -45,10 +46,8 @@ OBJECT_DECLARE_SIMPLE_TYPE(FslIMX25State, FSL_IMX25)
->  #define FSL_IMX25_NUM_USBS 2
->
->  struct FslIMX25State {
-> -    /*< private >*/
-> -    DeviceState parent_obj;
-> +    SysBusDevice parent_obj;
->
-> -    /*< public >*/
->      ARMCPU         cpu;
->      IMXAVICState   avic;
->      IMX25CCMState  ccm;
-> diff --git a/hw/arm/fsl-imx25.c b/hw/arm/fsl-imx25.c
-> index 7f65f4ca4b..efb22359c5 100644
-> --- a/hw/arm/fsl-imx25.c
-> +++ b/hw/arm/fsl-imx25.c
-> @@ -317,16 +317,11 @@ static void fsl_imx25_class_init(ObjectClass *oc, c=
-onst void *data)
->      device_class_set_props(dc, fsl_imx25_properties);
->      dc->realize =3D fsl_imx25_realize;
->      dc->desc =3D "i.MX25 SOC";
-> -    /*
-> -     * Reason: uses serial_hds in realize and the imx25 board does not
-> -     * support multiple CPUs
-> -     */
-> -    dc->user_creatable =3D false;
->  }
->
->  static const TypeInfo fsl_imx25_type_info =3D {
->      .name =3D TYPE_FSL_IMX25,
-> -    .parent =3D TYPE_DEVICE,
-> +    .parent =3D TYPE_SYS_BUS_DEVICE,
->      .instance_size =3D sizeof(FslIMX25State),
->      .instance_init =3D fsl_imx25_init,
->      .class_init =3D fsl_imx25_class_init,
-> diff --git a/hw/arm/imx25_pdk.c b/hw/arm/imx25_pdk.c
-> index 243c30a67e..6ce3e35ee3 100644
-> --- a/hw/arm/imx25_pdk.c
-> +++ b/hw/arm/imx25_pdk.c
-> @@ -72,7 +72,7 @@ static void imx25_pdk_init(MachineState *machine)
->
->      object_initialize_child(OBJECT(machine), "soc", &s->soc, TYPE_FSL_IM=
-X25);
->
-> -    qdev_realize(DEVICE(&s->soc), NULL, &error_fatal);
-> +    sysbus_realize_and_unref(SYS_BUS_DEVICE(&s->soc), &error_fatal);
 
-This should use sysbus_realize(), as object_initialize_child() already
-decreased the ref cnt on success. The same for patch 12 & 13.
-
->
->      /* We need to initialize our memory */
->      if (machine->ram_size > (FSL_IMX25_SDRAM0_SIZE + FSL_IMX25_SDRAM1_SI=
-ZE)) {
-
-Regards,
-Bin
+Reviewed-by: Bin Meng <bin.meng@processmission.com>
 

@@ -4,94 +4,94 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3F2B4CA5FEC
-	for <qemu-arm@archiver.kernel.org>; Sun,  4 Oct 2026 10:27:25 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BDDA1CA5FEC
+	for <qemu-arm@archiver.kernel.org>; Sun,  4 Oct 2026 10:27:35 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xDJQ7-0000ax-Of; Sun, 04 Oct 2026 06:26:16 -0400
+	id 1xDJQ7-0000aw-OP; Sun, 04 Oct 2026 06:26:16 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <marcandre.lureau@redhat.com>)
- id 1xDJPQ-0007J7-Qj
- for qemu-arm@nongnu.org; Sun, 04 Oct 2026 06:25:35 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ id 1xDJPc-0007Wb-Jx
+ for qemu-arm@nongnu.org; Sun, 04 Oct 2026 06:25:48 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <marcandre.lureau@redhat.com>)
- id 1xDJPO-0003Jn-Vp
- for qemu-arm@nongnu.org; Sun, 04 Oct 2026 06:25:32 -0400
+ id 1xDJPY-0003L9-K8
+ for qemu-arm@nongnu.org; Sun, 04 Oct 2026 06:25:42 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1791109530;
+ s=mimecast20190719; t=1791109537;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=28lTlXxwdAXV/sf4XAyLK5GtDQHlCgt2z/t3HmAGeCc=;
- b=Unait9OMCwt+It9/TAfAKd1s6Rh9bhpcMop9Gs7M0WIKwzhjWTXQ6A4zOFNKu3PUa4k3Ob
- tzM2DJkxwfNbAoe6j+QgZkZZSbvqF2xDKwKwuum0k0L9UTnkdYFBbA4RE5RFhI7FWdTtOe
- BFT4FVMU7crRBfMfrX7ZQFOCeWhMOPI=
-Received: from mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
+ bh=5eHiVSXP0JJKS4SE8GYfjwfY3jJhEVSnt+584IwtYzs=;
+ b=bLi1PzkmslAMscslXZCPyHuK2hmcyIawEPWxvtwlTtRCV56TDQVm4AXoVpAnRQo2wZOcI4
+ szYNJrXkxmd9ssK7lOyjdEpJBXG0feElfxBWFVJVmOK3q7Ey43fi9XoMOzlx3rLg7uv5D6
+ CrwI9/0ilQ+0qIORzO1MgMywsU7RIYw=
+Received: from mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-311-wQOevcsYORqdLyDm4JY8lg-1; Sun,
- 04 Oct 2026 06:25:29 -0400
-X-MC-Unique: wQOevcsYORqdLyDm4JY8lg-1
-X-Mimecast-MFC-AGG-ID: wQOevcsYORqdLyDm4JY8lg_1791109528
-Received: from mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com
- (mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.17])
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-106-lrYTvhNTPqit1jLKeAbYpw-1; Sun,
+ 04 Oct 2026 06:25:32 -0400
+X-MC-Unique: lrYTvhNTPqit1jLKeAbYpw-1
+X-Mimecast-MFC-AGG-ID: lrYTvhNTPqit1jLKeAbYpw_1791109531
+Received: from mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com
+ (mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.12])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 0D1B61800591; Sun,  4 Oct 2026 10:25:28 +0000 (UTC)
+ by mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id AC05B1954204; Sun,  4 Oct 2026 10:25:31 +0000 (UTC)
 Received: from localhost (headnet03.pony-001.prod.iad2.dc.redhat.com
  [10.2.32.114])
- by mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id E96411956042; Sun,  4 Oct 2026 10:25:26 +0000 (UTC)
+ by mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
+ id B3A191956089; Sun,  4 Oct 2026 10:25:30 +0000 (UTC)
 From: =?utf-8?q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>
-Date: Sun, 04 Oct 2026 14:23:45 +0400
-Subject: [PATCH 31/63] hw/char/exynos4210_uart: fix baud rate calculation
- operator precedence
+Date: Sun, 04 Oct 2026 14:23:46 +0400
+Subject: [PATCH 32/63] hw/char/exynos4210_uart: enforce 32-bit MMIO access size
 MIME-Version: 1.0
-Message-Id: <20261004-issue-4560-v1-31-ccbef537cbeb@redhat.com>
+Message-Id: <20261004-issue-4560-v1-32-ccbef537cbeb@redhat.com>
 References: <20261004-issue-4560-v1-0-ccbef537cbeb@redhat.com>
 In-Reply-To: <20261004-issue-4560-v1-0-ccbef537cbeb@redhat.com>
 To: qemu-devel@nongnu.org
 Cc: =?utf-8?q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>, 
  Pavee Hui <phui@google.com>, Peter Maydell <peter.maydell@linaro.org>, 
  Paolo Bonzini <pbonzini@redhat.com>, qemu-arm@nongnu.org
-X-Developer-Signature: v=1; a=openpgp-sha256; l=1028;
+X-Developer-Signature: v=1; a=openpgp-sha256; l=1014;
  i=marcandre.lureau@redhat.com; h=from:subject:message-id;
- bh=J9TsU9+Nyb0d7T7dqv8Gm8o1O7dkcS4vJdsHcHfkEF8=;
- b=owEBbQKS/ZANAwAKAdro4Ql1lpzlAcsmYgBqwikjRFqXxfz2HpwkpV9puAaxBMGAHkH4gT4BC
- knq5lMmywiJAjMEAAEKAB0WIQSHqb2TP4fGBtJ29i3a6OEJdZac5QUCasIpIwAKCRDa6OEJdZac
- 5Yf+EACecMtOdA++sLUfnBm/OZPm2g913p5qlHFq4Mum7v1/2IQ+DbhiM76PVU4W6MqwUtwLU6N
- tuAbBCeOo7PPlr2Qhci41DDU1uyJ8RjXLAdm4DpAorbXgMIXZVlfwYXsqkpf9AKiZ3/mCg4ObyG
- 1sdJn4kmp19OnPQzSjy+PwBgu+/ZkeNHP5M7hk0BwlQwlJyDW1hmvikquYwf7OpbeB5ecYVjhwA
- Dbu912UtYM4vusB6gNKUWtp1q0Ep/sIZIVUTv2zjjEDVV2YPQJsdBj0lsiQPqyR4GIe4YAWwfmZ
- V0Yf+jgxV/IRuByDHi7+s1mdlCIM4uXk24B/Z3z1kn27V9JCgvcqyB/uRWw37tttbzNVIbw8ft4
- EdTP1wmWRn9pOk3km9c3LYoextXYJdbyCRB4JR5sM+L/6IZ3fZOJr1d6tguIyvdEqMjXltj92uq
- eByiTUqvH0Qq10anPgvbSVF25TwUd2GdpUwn5jSGzKCExius78IztIdjRj5nYtAu8izafOIwToJ
- LzIqYzGNa1kyEjAOIpODKvmU8ujOQqI72vJALjiV3vKq5FW6ZUO/Q4suFAv+rJNwhlAvGzz6kdF
- +haVhLUm0yq1VcfEt17n3RT60e6k7Jm0zHTXu5qi/OZcrXb1fkx7IOM4KyX335MQRkVlZ7YOB/1
- CVATPlYCxZTIDBQ==
+ bh=RRC1VnHNo8Sflj+Tz71gXDStmH7EKMovY4BEulPSyH0=;
+ b=kA0DAAoB2ujhCXWWnOUByyZiAGrCKSOgZcJ04hmuSNhhcez+AtLP6Tcj9dFxBrFYSyL/jUEm0
+ IkCMwQAAQoAHRYhBIepvZM/h8YG0nb2Ldro4Ql1lpzlBQJqwikjAAoJENro4Ql1lpzl1T8QAJDR
+ fzc4iwyRhDn5UNpoFkmZaYB5GlmJDFRF3j1qkwbpv/TQLbJTlcyPYBwpGYCnlaxygckB0r8NUB1
+ LOSSZFZDmIPRVvpfP0YySOlc2cYNqBQWJBXTMjBqAYVxtULWiwKrQJqHZeteibGMFJOmQ1vLSfO
+ 4sPEdiZ0Ct/B5VxDdmJGLtPRP+C/7qAlLqRWggVc51QE5TC0R7RBgWeiyVUDv5HMaXlkJVsve28
+ TQLiAfGy61n1COjdlVCLtBZLyipTwKteMsy9agiHe5T6IbrrgCy81qLDiHJT1nr1tviQlg/2Ndd
+ THsf7iCoXtLMiN4Ld2buizQN6ijcjFlFT3FhcnEE3An+4TOPvVT05TO+QhxaBVGay1Ud1my82Wv
+ ueNBUypwqgZN8VglblKBdhViG0VYFEDXYGU2w759SgIffymjmj7kifXXlfECWZOMZaTmA/MJA6q
+ 6g4ROPChSvGkxYLpui361kGF+C1QYR/nA8DqxaIXW9G2OpOmvK69f5ejkDIBzLYxs7AlQiee04Z
+ JuKG+8oo/e6k9Km6zR7K5dFrzBCOIA9EtlsCVy9rOOpFoKgSC+iQPAVcEsSam9wEmj4dU9AyHt6
+ 6LkjU0pGZyVc2XeV5fJGCofACET+SFoXBCczaoRVTuDzr4sLueFxmu6EviPmkBwc8epNTTyGqZr
+ Ezn/d
 X-Developer-Key: i=marcandre.lureau@redhat.com; a=openpgp;
  fpr=87A9BD933F87C606D276F62DDAE8E10975969CE5
-X-Scanned-By: MIMEDefang 3.0 on 10.30.177.17
-X-Mimecast-MFC-PROC-ID: P-LQgON9mw4alqAubOxY0W1eCQE1K1hsw_SFXPNe1mI_1791109528
+X-Scanned-By: MIMEDefang 3.0 on 10.30.177.12
+X-Mimecast-MFC-PROC-ID: ZKqw2y1j8CV7Iu6j4oCZvG3mxLuFTPyRff_85uVTY3Y_1791109531
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=170.10.129.124;
+Received-SPF: pass client-ip=170.10.133.124;
  envelope-from=marcandre.lureau@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -23
-X-Spam_score: -2.4
-X-Spam_bar: --
-X-Spam_report: (-2.4 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.337,
+X-Spam_score_int: 9
+X-Spam_score: 0.9
+X-Spam_bar: /
+X-Spam_report: (0.9 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.337,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=0.001, SPF_HELO_PASS=-0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ RCVD_IN_SBL_CSS=3.335, SPF_HELO_PASS=-0.001,
+ SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -107,30 +107,33 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-The 0xffff mask was applied to the result of (16 * UBRDIV) instead of
-the register value itself, due to C operator precedence (* binds tighter
-than &). When UBRDIV >= 0x1000, the multiplication by 16 pushes bits
-past the 16-bit mask, producing a wrong baud rate calculation.
+Set .impl min/max_access_size to 4 bytes so the memory subsystem
+synthesizes sub-word guest accesses into 32-bit handler calls. The
+read/write handlers ignore the size parameter and always operate on full
+32-bit register values, so without this QEMU would not extract the
+correct byte or halfword from the result.
 
 Reported-by: Pavee Hui <phui@google.com>
 Signed-off-by: Marc-André Lureau <marcandre.lureau@redhat.com>
 ---
- hw/char/exynos4210_uart.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ hw/char/exynos4210_uart.c | 4 ++++
+ 1 file changed, 4 insertions(+)
 
 diff --git a/hw/char/exynos4210_uart.c b/hw/char/exynos4210_uart.c
-index 9d1825150d1c..7240ff7b5c24 100644
+index 7240ff7b5c24..8774d4bb43d7 100644
 --- a/hw/char/exynos4210_uart.c
 +++ b/hw/char/exynos4210_uart.c
-@@ -327,7 +327,7 @@ static void exynos4210_uart_update_parameters(Exynos4210UartState *s)
+@@ -506,6 +506,10 @@ static const MemoryRegionOps exynos4210_uart_ops = {
+         .max_access_size = 4,
+         .unaligned = false
+     },
++    .impl = {
++        .min_access_size = 4,
++        .max_access_size = 4,
++    },
+ };
  
-     uclk_rate = 24000000;
- 
--    speed = uclk_rate / ((16 * (s->reg[I_(UBRDIV)]) & 0xffff) +
-+    speed = uclk_rate / ((16 * (s->reg[I_(UBRDIV)] & 0xffff)) +
-             (s->reg[I_(UFRACVAL)] & 0x7) + 16);
- 
-     ssp.speed     = speed;
+ static int exynos4210_uart_can_receive(void *opaque)
 
 -- 
 2.56.0.rc0.29.g47ce80527c56

@@ -4,67 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 839FDCA5FE6
-	for <qemu-arm@archiver.kernel.org>; Sun,  4 Oct 2026 12:28:11 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1F241CA5FF0
+	for <qemu-arm@archiver.kernel.org>; Sun,  4 Oct 2026 12:28:39 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xDLJv-0006af-GU; Sun, 04 Oct 2026 08:27:59 -0400
+	id 1xDLJp-0006W2-Pp; Sun, 04 Oct 2026 08:27:54 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <shentey@gmail.com>) id 1xDLJq-0006XE-S6
- for qemu-arm@nongnu.org; Sun, 04 Oct 2026 08:27:54 -0400
-Received: from mail-wm1-x32f.google.com ([2a00:1450:4864:20::32f])
+ (Exim 4.90_1) (envelope-from <shentey@gmail.com>) id 1xDLJn-0006VD-La
+ for qemu-arm@nongnu.org; Sun, 04 Oct 2026 08:27:51 -0400
+Received: from mail-wm1-x329.google.com ([2a00:1450:4864:20::329])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <shentey@gmail.com>) id 1xDLJp-00079h-8E
- for qemu-arm@nongnu.org; Sun, 04 Oct 2026 08:27:54 -0400
-Received: by mail-wm1-x32f.google.com with SMTP id
- 5b1f17b1804b1-4a16629a040so12910315e9.1
- for <qemu-arm@nongnu.org>; Sun, 04 Oct 2026 05:27:52 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <shentey@gmail.com>) id 1xDLJl-00078m-Kq
+ for qemu-arm@nongnu.org; Sun, 04 Oct 2026 08:27:51 -0400
+Received: by mail-wm1-x329.google.com with SMTP id
+ 5b1f17b1804b1-4a140e7405dso10944515e9.3
+ for <qemu-arm@nongnu.org>; Sun, 04 Oct 2026 05:27:49 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20251104; t=1791116872; x=1791721672; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:from:to:cc:subject:date
- :message-id:reply-to:content-type;
- bh=ffa1V6tn2IfWueByDpRqxUf/UBayNFXRkCdogr6gDuE=;
- b=jZyXJ8J2V2Y/auLVwAPN/IjUNPxTa+qMDnR9OeQqGD30ZymgTtzY+Oe2gHn6Avn+ez
- CpSyJcch8nWq78Yt3s6EfW+Fg6j6qIBLGlquOORDZ7xBXmFubNhgcGICX8sOsmkbEZJm
- qbqMKNvz0rCBU8H6i2KHj0I36yJfPAXzUTocURAlc8LgmYSOd+yhgvU4QF45PE1WuRV+
- j7uNZhvS8FhkDZKxFTvTOJWiuDlSFGqDOc6YHofhiWOqC8IAd2R1xb1hpOvhIlrAWBKa
- OetElWneFKr3lRIXOXQdrBde1WSjpjMzRajXfV4U4FHO3mC4jPee6f7OdEHDjd5sz/h3
- WD+A==
+ d=gmail.com; s=20251104; t=1791116868; x=1791721668; darn=nongnu.org;
+ h=content-transfer-encoding:content-type:mime-version:references
+ :in-reply-to:message-id:date:subject:cc:to:from:from:to:cc:subject
+ :date:message-id:reply-to:content-type;
+ bh=amRrNh5PbVumHngmMVBuQf7YfEYZFRAkrjQn+eqfJ8s=;
+ b=Ka40VQyAnvQP756j5lGqsIwruTKObblHPLPH8tsR+WqSSg4dtzV9wtfymYtnOu//5d
+ BvPjjA1W4x5cQib73tCmUrOyh1U3edyO8YQNsqvyWCLZ0kFPfSq/wJNTTEvxBhbl7wmE
+ 3Ow8a0M8eZ7iBOIPrmm1+P2BYN7b4dkSG3M1zq7Ulbq7zZz1/QE5isHqEk2L3mEAfCPK
+ MayJWXy+Ch5azgvW9ApJtlwASomXOigY0OsM6qhUh53RFTQVn4LwH9hMFLnNwDRuJxJS
+ OD6Z+4XDjC2/bZwYLyCTWCkpXGDWu/6y6PI9S6khtgx30I0fTtK8MBtVfIzJfLp1fkXa
+ t9iw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20260707; t=1791116872; x=1791721672;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
- :to:cc:subject:date:message-id:reply-to:content-type;
- bh=ffa1V6tn2IfWueByDpRqxUf/UBayNFXRkCdogr6gDuE=;
- b=As5gNqMrerPHRNuy0IFq9/P2zMZpJkxfPVSmKyO9AG0iOF+UlMIC21C4oANkEbHwM+
- wgoNKOLSbbJ1nvzUT/SkKcQh7Oh6Hywh6NiaDIGPr2Gpzoq9PQIis7Pj737XXtSKy2A7
- 0ZgbgTjcpCGj8JVeptTmqX/DlkrqcTTvkDvXG2kV3nQZFU6juZZAMbZdTMPxKDvraVjF
- B4A9L4jsar1SFPbZ0vPcpRjNxU62b7mcZJuJWQE5DolIPr8ibraaJAra0a8mPjitDhMM
- nBInI7trFgIvCwtRKdkI5NQ8QKgauKbqU4c7hDfQmxqkVLtrBOqANV7fYn00Sr6LN/QJ
- +knQ==
+ d=1e100.net; s=20260707; t=1791116868; x=1791721668;
+ h=content-transfer-encoding:content-type:mime-version:references
+ :in-reply-to:message-id:date:subject:cc:to:from:x-gm-gg
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
+ :content-type;
+ bh=amRrNh5PbVumHngmMVBuQf7YfEYZFRAkrjQn+eqfJ8s=;
+ b=VO5SAaFGGopxLOzJfzYptdH5clV4WQR3mgLeFgFJH+lo4uonheCUNWe1YRJQVt2Ji/
+ 1b3Lg/yvDCOngbJxDbSKglMbnFZBouRcv2ZZarOUeiLe05PwVxrBhw9O2en7yBNq/uo9
+ 4yqR7/wBIAZGHXflx84z4wqCDUmlqCkTNEhzM0PsQg8SEp4g4/stjjOJtl5YTSJzIFWp
+ Vi2QMbQxsreJGlFH5mh2+cc2npF5TATNp56yH91SfmNOTE5jtuD+/5rr/+Ip6NCcBrhB
+ dR5mzcQZWSocAZnVy996nzBAbJ49ZiUkfkc5sJHK7NTMOmJhl/xHANrDc5n1QOUKMv4S
+ Ossg==
 X-Forwarded-Encrypted: i=1;
- AKwUvBwy1AR/NWKT8EKgtTwfyitnfDTNLAsyyeT4p0qmO47Q3JppSBa2QBqvc1+sTP25uR1SpkIDlVjlOQ==@nongnu.org
-X-Gm-Message-State: AFuF++n2piBCBVVKaLiWyeKES1KUDlBo+sOQqRdxb2e1B+FfFi8/QFvR
- blRO9U28QHPjG7htcGVqdQWi9wGWHWC0MD6eTy8gn5SAEPKrvrM+xdTn
-X-Gm-Gg: AYBFou2GEEl4ACkTDPvXHb4sbfLVWqdkBXtB6IMf46m/e3yVz3GbysIRdCYHdf7J5D8
- KpaS4Jg15zWUat9VTUNhbgiq/AUmWuxTdunNL6Xr3/4bXv41tu3Baral9+lREgvTCCW/DWDmaDR
- Ct5LZbHCta0Ml6KjAArcE+Rx8jVBvq5+O3IOybtkmoi/pm6k82o6O9uplEBzYQ6HmVHVZt+jh3W
- 3u7tQWbzVeMYMq5CYlxxxKdfqG2o7139I53J1oSMeBjjbJUF9I3Gn1+jmOPjP09+u9YkLnNFnI0
- kTbyI+UxAhvsU6hEvtRcjQ772PJ7aDd2MJx61jbKos255m85gZ9VTDDRnobsv2MyH3+Npx6Oe0P
- 4OAIaXaprrHHReVfOcQbZGARBM5ituBpQvzeYe8SZRM01LYDRAeANdx+o3hzFaTlt3u5gLclFNq
- 75cYTbxbjSMunbeoRogUJ9fypfCbHjw2WV/F+sRL+cnIkYB540cEvFVAbITG/J8y0mqhOauEZ5n
- H5SfRtv4qxde1d74oQ+zkWpgbbaDI7wP4tPOQ==
-X-Received: by 2002:a05:600c:3b01:b0:49c:ffab:551f with SMTP id
- 5b1f17b1804b1-4a1680ed179mr63973645e9.22.1791116871872; 
- Sun, 04 Oct 2026 05:27:51 -0700 (PDT)
+ AKwUvBw/1yx8jzRbLhxUBaK/08G8vfS/s41sPAYUGfnMLMio7ggSWz5y912D4CwY5Xsu8iN0pFd0T+q2QQ==@nongnu.org
+X-Gm-Message-State: AFuF++nMpWCFm+WNWgdDcQDMuFCEebVxQFYRcxS8vS8GcT0E/Cy+sD8/
+ h6zLQIUT0fSPIej0zkVEvXDjIhnOA1Y3KgWVgAM3SlTPkYEcqQP4mtKg
+X-Gm-Gg: AYBFou3hmEqdaEwSj6MUAleN1NU3jBgFASLIECvQGUOSfNSEIhMHZCrYNPoSXmC15XA
+ k2JbDALNL8l/B0UaOYc4HS0G6tL36nQTlaJ8PUDJJtlm1gnV5uxmN6bQODkC8YCSZZ9KyzMcz9N
+ 5VK4tqU7QqRkhrvBxNXwNUxD60ydldVL4A9vxsoTPqfi+kjGuxVJzcgZXSblprbjpJnv1ndtnTy
+ ZPzhn+lLNE+pjv0RJjfckY0gY6azQmnLfPSvmWHy62KaqVqnEIARj80xLKPeJ9zAfcmZ0UMI4do
+ qxrz8TwAFLgjWJf2vdpL8e+krA9C0dvk7APvi2hJnpITKy9rOMJ6l9VeiIjBjztwl7YpxGXEt1r
+ B0DYMVgfNcxdiipfmpjSWXNnp0mVm2vY8Fm3cW8l19iUvMZ5z56+M6FtN/mXMbrok5Xhbz1w1FR
+ AFQnVX2zgd48Ofd0QQaDOppOhpQb66OqnTuM5khvXsIMavQGUEU3/37XJ4TKR3MQQkkIJCRPM6a
+ iaH5yjqUbT3O7LDkrojZUWKFNCnJNN5fl92yw==
+X-Received: by 2002:a05:600c:474a:b0:49f:c1a1:5222 with SMTP id
+ 5b1f17b1804b1-4a171aed742mr3668075e9.33.1791116868015; 
+ Sun, 04 Oct 2026 05:27:48 -0700 (PDT)
 Received: from archlinux (pd95eda80.dip0.t-ipconnect.de. [217.94.218.128])
  by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-4a027698f13sm242319975e9.1.2026.10.04.05.27.50
+ 5b1f17b1804b1-4a027698f13sm242319975e9.1.2026.10.04.05.27.46
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sun, 04 Oct 2026 05:27:51 -0700 (PDT)
+ Sun, 04 Oct 2026 05:27:47 -0700 (PDT)
 From: Bernhard Beschow <shentey@gmail.com>
 To: qemu-devel@nongnu.org
 Cc: =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
@@ -77,23 +78,25 @@ Cc: =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
  Bin Meng <bin.meng@processmission.com>,
  Jean-Christophe Dubois <jcd@tribudubois.net>,
  Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>
-Subject: [PATCH v2 13/30] hw/arm/fsl-imx6: Derive from TYPE_SYS_BUS_DEVICE
-Date: Sun,  4 Oct 2026 14:26:29 +0200
-Message-ID: <20261004122647.3913-14-shentey@gmail.com>
+Subject: [PATCH v2 10/30] tests/functional/arm: Add console test for
+ `mcimx7d-sabre` machine
+Date: Sun,  4 Oct 2026 14:26:26 +0200
+Message-ID: <20261004122647.3913-11-shentey@gmail.com>
 X-Mailer: git-send-email 2.56.0
 In-Reply-To: <20261004122647.3913-1-shentey@gmail.com>
 References: <20261004122647.3913-1-shentey@gmail.com>
 MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::32f;
- envelope-from=shentey@gmail.com; helo=mail-wm1-x32f.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::329;
+ envelope-from=shentey@gmail.com; helo=mail-wm1-x329.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -109,72 +112,91 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Deriving from TYPE_SYS_BUS_DEVICE fixes the SoC object to be reset upon
-machine reset.
-
+Reviewed-by: Philippe Mathieu-Daudé <philmd@oss.qualcomm.com>
 Signed-off-by: Bernhard Beschow <shentey@gmail.com>
 ---
- include/hw/arm/fsl-imx6.h | 5 ++---
- hw/arm/fsl-imx6.c         | 4 +---
- hw/arm/sabrelite.c        | 2 +-
- 3 files changed, 4 insertions(+), 7 deletions(-)
+ MAINTAINERS                                |  1 +
+ tests/functional/arm/meson.build           |  1 +
+ tests/functional/arm/test_mcimx7d_sabre.py | 46 ++++++++++++++++++++++
+ 3 files changed, 48 insertions(+)
+ create mode 100755 tests/functional/arm/test_mcimx7d_sabre.py
 
-diff --git a/include/hw/arm/fsl-imx6.h b/include/hw/arm/fsl-imx6.h
-index 376deea3a4..4cf26f1fbc 100644
---- a/include/hw/arm/fsl-imx6.h
-+++ b/include/hw/arm/fsl-imx6.h
-@@ -35,6 +35,7 @@
- #include "hw/usb/imx-usb-phy.h"
- #include "hw/pci-host/designware.h"
- #include "hw/core/or-irq.h"
-+#include "hw/core/sysbus.h"
- #include "system/memory.h"
- #include "target/arm/cpu.h"
- #include "net/can_emu.h"
-@@ -56,10 +57,8 @@ OBJECT_DECLARE_SIMPLE_TYPE(FslIMX6State, FSL_IMX6)
- #define FSL_IMX6_NUM_CANS 2
+diff --git a/MAINTAINERS b/MAINTAINERS
+index f31245716a..a605d65d94 100644
+--- a/MAINTAINERS
++++ b/MAINTAINERS
+@@ -935,6 +935,7 @@ F: include/hw/misc/imx7_*.h
+ F: hw/pci-host/designware.c
+ F: include/hw/pci-host/designware.h
+ F: docs/system/arm/mcimx7d-sabre.rst
++F: tests/functional/arm/test_mcimx7d_sabre.py
  
- struct FslIMX6State {
--    /*< private >*/
--    DeviceState parent_obj;
-+    SysBusDevice parent_obj;
- 
--    /*< public >*/
-     ARMCPU             cpu[FSL_IMX6_NUM_CPUS];
-     A9MPPrivState      a9mpcore;
-     IMX6CCMState       ccm;
-diff --git a/hw/arm/fsl-imx6.c b/hw/arm/fsl-imx6.c
-index eec9673c6f..7ba9b85a2e 100644
---- a/hw/arm/fsl-imx6.c
-+++ b/hw/arm/fsl-imx6.c
-@@ -519,13 +519,11 @@ static void fsl_imx6_class_init(ObjectClass *oc, const void *data)
-     device_class_set_props(dc, fsl_imx6_properties);
-     dc->realize = fsl_imx6_realize;
-     dc->desc = "i.MX6 SOC";
--    /* Reason: Uses serial_hd() in the realize() function */
--    dc->user_creatable = false;
- }
- 
- static const TypeInfo fsl_imx6_type_info = {
-     .name = TYPE_FSL_IMX6,
--    .parent = TYPE_DEVICE,
-+    .parent = TYPE_SYS_BUS_DEVICE,
-     .instance_size = sizeof(FslIMX6State),
-     .instance_init = fsl_imx6_init,
-     .class_init = fsl_imx6_class_init,
-diff --git a/hw/arm/sabrelite.c b/hw/arm/sabrelite.c
-index 34f302f83c..f29443948e 100644
---- a/hw/arm/sabrelite.c
-+++ b/hw/arm/sabrelite.c
-@@ -66,7 +66,7 @@ static void sabrelite_init(MachineState *machine)
-                                  OBJECT(s->canbus[i]), &error_fatal);
-     }
- 
--    qdev_realize(DEVICE(&s->soc), NULL, &error_fatal);
-+    sysbus_realize_and_unref(SYS_BUS_DEVICE(&s->soc), &error_fatal);
- 
-     memory_region_add_subregion(get_system_memory(), FSL_IMX6_MMDC_ADDR,
-                                 machine->ram);
+ MCIMX8MM-EVK / iMX8MM
+ M: Gaurav Sharma <gaurav.sharma_7@nxp.com>
+diff --git a/tests/functional/arm/meson.build b/tests/functional/arm/meson.build
+index 761b371a8d..e49a04ea6a 100644
+--- a/tests/functional/arm/meson.build
++++ b/tests/functional/arm/meson.build
+@@ -20,6 +20,7 @@ test_arm_timeouts = {
+   'bpim2u' : 500,
+   'collie' : 180,
+   'cubieboard' : 360,
++  'mcimx7d-sabre' : 240,
+   'orangepi' : 540,
+   'quanta_gsj' : 240,
+   'raspi2' : 120,
+diff --git a/tests/functional/arm/test_mcimx7d_sabre.py b/tests/functional/arm/test_mcimx7d_sabre.py
+new file mode 100755
+index 0000000000..2894b5201f
+--- /dev/null
++++ b/tests/functional/arm/test_mcimx7d_sabre.py
+@@ -0,0 +1,46 @@
++#!/usr/bin/env python3
++#
++# Functional test that boots a Linux kernel and checks the console
++#
++# SPDX-License-Identifier: GPL-2.0-or-later
++
++from qemu_test import LinuxKernelTest, Asset
++
++
++class Mcimx7dSabreMachine(LinuxKernelTest):
++
++    ASSET_KERNEL = Asset(
++        ('https://ftp.debian.org/debian/dists/bookworm/main/installer-armhf/'
++         '20230607/images/netboot/vmlinuz'),
++        '5851e9c61465a26db810796db671c4729e66e81c365b3ebb1a4b7f772737605b')
++
++    ASSET_INITRD = Asset(
++        ('https://ftp.debian.org/debian/dists/bookworm/main/installer-armhf/'
++         '20230607/images/netboot/initrd.gz'),
++        'fe33f836232a9107716d34dc56d36dea81bab039243a2a42ea6583a50c9b92ca')
++
++    ASSET_DTB = Asset(
++        ('https://ftp.debian.org/debian/dists/bookworm/main/installer-armhf/'
++         '20230607/images/device-tree/imx7d-sdb.dtb'),
++        'eed45fe3ba682cc814217bc4558551d36c034ec7a7692c4eb6eaf86132baf80c')
++
++    def setUp(self):
++        super().setUp()
++
++        self.kernel_path = self.ASSET_KERNEL.fetch()
++        self.initrd_path = self.ASSET_INITRD.fetch()
++        self.dtb_path = self.ASSET_DTB.fetch()
++
++    def test_console(self):
++        self.require_accelerator("tcg")
++        self.set_machine('mcimx7d-sabre')
++        self.vm.set_console(console_index=0)
++        self.vm.add_args('-kernel', self.kernel_path,
++                         '-initrd', self.initrd_path,
++                         '-dtb', self.dtb_path)
++
++        self.vm.launch()
++        self.wait_for_console_pattern('Starting system log daemon:')
++
++if __name__ == '__main__':
++    LinuxKernelTest.main()
 -- 
 2.56.0
 

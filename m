@@ -4,116 +4,64 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0D9B5CA5FEF
-	for <qemu-arm@archiver.kernel.org>; Sun,  4 Oct 2026 16:26:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6C9B0CA5FF0
+	for <qemu-arm@archiver.kernel.org>; Sun,  4 Oct 2026 21:17:23 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xDP2c-0002HO-8c; Sun, 04 Oct 2026 12:26:22 -0400
+	id 1xDTa0-0001UQ-FZ; Sun, 04 Oct 2026 17:17:08 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <bmeng.cn@gmail.com>)
- id 1xDP2a-0002Fx-O4
- for qemu-arm@nongnu.org; Sun, 04 Oct 2026 12:26:20 -0400
-Received: from mail-yw1-x112f.google.com ([2607:f8b0:4864:20::112f])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <bmeng.cn@gmail.com>)
- id 1xDP2Y-0002Aa-Sl
- for qemu-arm@nongnu.org; Sun, 04 Oct 2026 12:26:20 -0400
-Received: by mail-yw1-x112f.google.com with SMTP id
- 00721157ae682-8ab43af5e97so6041447b3.1
- for <qemu-arm@nongnu.org>; Sun, 04 Oct 2026 09:26:18 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1791131177; cv=none;
- d=google.com; s=arc-20260327;
- b=f2CiAwSQqP8CJ4PBIVEhnlIgOSHPwPQczbMrJ7B9NIxN/GNMwZkCBztUHcmg77rmKj
- +CZ3Jff1xLs9EYafbiCTRKtk4SE0uK8HSUxJgNPaHv7+iw3Tss07cPY1dHZeRQtGE6oC
- 8U+50fWWaSLvizI3M+FLUZJrba7V0HjXdURgDYftEzPOIAVwwocYJKzKwubK2MzKe6+J
- vagA6hJPJB/dtO3JDiQIF2YLuOjATdvIlqp+Zj4lcQJ+jQmb6pRpePfLNLUn0ZJ+es44
- 6FLuSnYOa2oVyL2zX7wmiNawYlqd8z/WM/ryW3N+bZOaM4WnNSR2dkxP8WBvivTZNJxW
- bpZw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
- s=arc-20260327; 
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:dkim-signature;
- bh=gCMwWED71tLTeIT5hEmttxjS62VodQBS9PEI5/PVHSA=;
- fh=NXdD4FGiec/a15TbP/qfxDMx/buDYGDsYJfXmaVNW9w=;
- b=R1tUl1ehvotsrK9daeElhPgFCTwpNCgkJ3fXr6GwBzkY/tCfat6xaSkNIEvwV1JuSx
- NPxv1OHBwbrMujFUhUMtD4n5nwQv/nWljcVB5ouls8QCEl9LyhnzYYA80PrYZVWPJzG6
- RTZNbPsNvplwbxMXplTG/8IQdqf0uBDMZJRokasVYSbo5uE1q/vpWuCYDuY22Geb0DnP
- ExMmrx1GrmXDNg0ebS1vefzbGWz3SPe5Shcln4iDAbd1yU5aVFVxelpWodagfzI+2a3y
- Zs9HqCe0InWpmhy9bc/JlELsqrbEat6HxVg9WPvxdprEDD2HehymXp801p0tLSrZhUNQ
- Vb1A==; darn=nongnu.org
-ARC-Authentication-Results: i=1; mx.google.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20251104; t=1791131177; x=1791735977; darn=nongnu.org;
- h=content-transfer-encoding:content-type:cc:to:subject:message-id
- :date:from:in-reply-to:references:mime-version:from:to:cc:subject
- :date:message-id:reply-to:content-type;
- bh=gCMwWED71tLTeIT5hEmttxjS62VodQBS9PEI5/PVHSA=;
- b=kWsGcQEzM+mEU+pPaZ2TAaUQnb86rB3c1zEXxfA/BeEYlCEkcddBlIMVVWvywPhdRw
- g7CAADygjunASGtbOdaZ2DXZkIb+rqf7fS5oAxxRzC/clCVc4Kqe9kFyybWYtEPJ4zie
- ttAk5sTCT5Ot6mTueFhtvSOK8DR/LuvZ02XLaPNJagjXupAw/Xsl+QKokMI5yMD0fl9Q
- ayx721U+PH1RDxNbK7sIdXmc3LYkpcl7AGqwST5GtTAhNm53HbMeGphP0jPWkdd85dnr
- JUTXy2jUi9H397WLbapWGzV1vAVAhHWUtEellvCdaTMUN4lVIf7jAzJ6lRgCtyk6PLM7
- m/Mw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20260707; t=1791131177; x=1791735977;
- h=content-transfer-encoding:content-type:cc:to:subject:message-id
- :date:from:in-reply-to:references:mime-version:x-gm-gg
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
- :content-type;
- bh=gCMwWED71tLTeIT5hEmttxjS62VodQBS9PEI5/PVHSA=;
- b=iU5ubnOg61tDSaIVhPUlLjUcjQLP82+5sGW8fM0F6O8z2yWOorrd5IMXaqkn5j4MCX
- ExS6EUOC9MQ4F06j4COYN0VkOJrOeBkja8Znm0PVZTpOT5j4HmK/5bWgbrjsjYRngqxo
- wGcSVQ1LeZt4YtunBMPBO+IzPuTEI0LKLVoRzX8mCpfx+OQV40KWZg2NPmNre6SRrQBd
- LGODpOm/uus1nhCleM/nxLWkZIKfdBuY5XQhUACp5R4uSL9HUgUzHxTzKJphnTEKVqoC
- 2BrrBYA2oN2iceWKfVAqwT1ZdPhfOQNssj0raKhc3gas60UVYboLN7Dnr+upDf5xiKFU
- GzFg==
-X-Forwarded-Encrypted: i=1;
- AKwUvBwHk1iGhnZCnRZTFSYXno3L/obN9GVcR9f01pc0yhwZK2GAVcabW3xv4hSMmFFTYWXF/rvBg+gs1A==@nongnu.org
-X-Gm-Message-State: AFq9FYLnHATDwChzAx6MkEWJtxGiebVuiZvYP43/xaZIkdytDov9Yf/a
- rB9GgQ0pn9NO4+rQeLP0rDojSe6B7/Taw+xR3/vtpa6TffC0Tdzv8pIIVGcQHnMPyYZENsEZ4VT
- eE/b7rN4PlDJhqgCt/BZL2mi8Va+kcNI=
-X-Gm-Gg: AYBFou0WSXlY/n5T3fh/qvncIGck+0l0ErmTwZZBAYCK7RENXx5z8NBBMJN+al5Bphu
- sILr0qbwc8j4C2a8KyL7/yp1k7FZcTdhtBJkEDnv1BduGUbiFxBmDq3RlUgkLi5wLMEkpFNpGiw
- nkM6Sv+NIbdDDEnUGPLFtxHRFNohsS9I7nKKsja8uMy1k9V1R69CCglkgUssbE5uHYPTCjwS9Gn
- jgJTpoMdf8HNJJbd7kT8ngrg1Lg/fToe8aSfSzB2bOESD6KQViKlkV6raPl/xU06/AfXpa+HtSb
- rogwybpvoLFUreDLzCFQcFTX8GOdx0/mbxMA9w/rLncqm+17XCyEGa1aP9i9vLWv/iW+y/fVbqS
- 1z9o1a5kgoxDQUuA=
-X-Received: by 2002:a05:690c:d8f:b0:8a8:8945:c41a with SMTP id
- 00721157ae682-8acdab6c34amr49674117b3.3.1791131177644; Sun, 04 Oct 2026
- 09:26:17 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <contact@sayyadumar.com>)
+ id 1xDTZz-0001U7-4w; Sun, 04 Oct 2026 17:17:07 -0400
+Received: from www675.your-server.de ([85.10.213.182])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <contact@sayyadumar.com>)
+ id 1xDTZw-0005KG-Oj; Sun, 04 Oct 2026 17:17:06 -0400
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+ d=sayyadumar.com; s=default2511; h=Content-Transfer-Encoding:Content-Type:
+ In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:Message-ID:Sender
+ :Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+ Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID;
+ bh=QHzWOK7SzR8xhkMI4KGWw8+VnUVeO79TcWDA95utWf0=; b=awASUGysQ7rlRYPQtSQ3nxXkNO
+ 1FWvRRcrCKG9OFsGu7IfENR/PJvcs6B760IpMvaAl969sG/lNHAjIPCPLpBKkBkyMgzlc0pvPGtDk
+ XovqfkzBzSyZlImHPL49CJkCp65sv3mDBQtrZyzjzTcQeLKAKfsL+Sia/oP2/zL8xhiU1z23J3hSn
+ 9Lk1s8lAOnu5aOiHUStmJH7WGZ6AXt5nAGqMOKd1dqDSGoUhfA21JvoFaQXv2jLO/FdQ7YV6lY7f0
+ vk/czxqOMsvtPxUzF0MewX86POdevnObJreu5nz8b6v9vUO8R1n1GQS9Vn+YF1LsW0FAN+3INk1Jz
+ HatjfAWg==;
+Received: from sslproxy07.your-server.de ([78.47.199.104])
+ by www675.your-server.de with esmtpsa  (TLS1.3) tls TLS_AES_256_GCM_SHA384
+ (Exim 4.96.2) (envelope-from <contact@sayyadumar.com>)
+ id 1xDTZn-000DS6-2F; Sun, 04 Oct 2026 23:16:55 +0200
+Received: from localhost ([127.0.0.1])
+ by sslproxy07.your-server.de with esmtpsa (TLS1.3) tls TLS_AES_256_GCM_SHA384
+ (Exim 4.96) (envelope-from <contact@sayyadumar.com>)
+ id 1xDTZn-000G9y-0O; Sun, 04 Oct 2026 23:16:55 +0200
+Message-ID: <c31dd9df-b82b-4cbc-814c-35d299f19c5c@sayyadumar.com>
+Date: Sun, 4 Oct 2026 23:16:54 +0200
 MIME-Version: 1.0
-References: <20261004122647.3913-1-shentey@gmail.com>
- <20261004122647.3913-31-shentey@gmail.com>
-In-Reply-To: <20261004122647.3913-31-shentey@gmail.com>
-From: Bin Meng <bmeng.cn@gmail.com>
-Date: Mon, 5 Oct 2026 00:26:05 +0800
-X-Gm-Features: AclHuK_pU_rbdup5VKb9QVrW-iEijpIsgjS56VrcrlMfJmbyN81LENXo7UuueSI
-Message-ID: <CAEUhbmUYrVbTZ93h9mkAL1e=1UntZ1XXy5hp5xZvj9M8YK0E=w@mail.gmail.com>
-Subject: Re: [PATCH v2 30/30] hw/arm/fsl-imx8m: Fix typo
-To: Bernhard Beschow <shentey@gmail.com>
-Cc: qemu-devel@nongnu.org,
- =?UTF-8?B?TWFyYy1BbmRyw6kgTHVyZWF1?= <marcandre.lureau@redhat.com>, 
- Peter Maydell <peter.maydell@linaro.org>,
- Gaurav Sharma <gaurav.sharma_7@nxp.com>, 
- Alistair Francis <alistair@alistair23.me>, qemu-arm@nongnu.org, 
- =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@oss.qualcomm.com>, 
- Jason Wang <jasowangio@gmail.com>, Paolo Bonzini <pbonzini@redhat.com>, 
- Bin Meng <bin.meng@processmission.com>,
- Jean-Christophe Dubois <jcd@tribudubois.net>, 
- Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2607:f8b0:4864:20::112f;
- envelope-from=bmeng.cn@gmail.com; helo=mail-yw1-x112f.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 0/2] target/rx: add RXv2/RXv3 CPU support
+To: yoshinori.sato@nifty.com
+Cc: qemu-devel@nongnu.org, Alistair Francis <alistair@alistair23.me>,
+ Peter Maydell <peter.maydell@linaro.org>, Jason Wang <jasowangio@gmail.com>,
+ qemu-arm@nongnu.org
+References: <20260913-umar-rx-series-v1-0-5a5841a5d1e9@sayyadumar.com>
+ <87o6e06pqs.wl-yoshinori.sato@nifty.com>
+Content-Language: en-US
+From: "Umar, Sayyad Mahammad" <contact@sayyadumar.com>
+In-Reply-To: <87o6e06pqs.wl-yoshinori.sato@nifty.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+X-Virus-Scanned: Clear (ClamAV 1.4.3/28143/Sun Oct  4 08:25:22 2026)
+Received-SPF: pass client-ip=85.10.213.182;
+ envelope-from=contact@sayyadumar.com; helo=www675.your-server.de
+X-Spam_score_int: -16
+X-Spam_score: -1.7
+X-Spam_bar: -
+X-Spam_report: (-1.7 / 5.0 requ) BAYES_00=-1.9, DKIM_INVALID=0.1,
+ DKIM_SIGNED=0.1, SPF_HELO_PASS=-0.001,
+ SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -129,22 +77,92 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Sun, Oct 4, 2026 at 8:36=E2=80=AFPM Bernhard Beschow <shentey@gmail.com>=
- wrote:
->
-> This is IMX8MP and IMX8MM, not IMX6.
->
-> Fixes: 0c105b261551 ("hw/arm/fsl-imx8mp: Add Ethernet controller")
-> Fixes: 857670200c51 ("hw/arm/fsl-imx8mm: Adding support for ENET ethernet=
- controller")
-> Signed-off-by: Bernhard Beschow <shentey@gmail.com>
-> ---
->  include/hw/arm/fsl-imx8mm.h | 4 ++--
->  include/hw/arm/fsl-imx8mp.h | 4 ++--
->  hw/arm/fsl-imx8mm.c         | 2 +-
->  hw/arm/fsl-imx8mp.c         | 2 +-
->  4 files changed, 6 insertions(+), 6 deletions(-)
->
+On 9/14/26 13:23, yoshinori.sato@nifty.com wrote:
+> On Mon, 14 Sep 2026 03:21:04 +0900,
+> Sayyad Mahammad Umar wrote:
+>> This series extends the RX target with RXv2 and RXv3 CPU support,
+>> forming the foundation for the RX65N, RX651, and RX72M machine models.
+>>
+>> The first patch adds the CPU definitions, instruction support, and
+>> translator changes required by the newer RX cores.
+>>
+>> The second patch adds the initial RX machine and peripheral support.
+>>
+>> Signed-off-by: Sayyad Mahammad Umar <contact@sayyadumar.com>
+>> ---
+>> Sayyad Mahammad Umar (2):
+>>        target/rx: add RXv2 and RXv3 CPU support
+>>        hw/rx: add common RX peripherals
+>>
+>>   MAINTAINERS                           |   20 +
+>>   hw/adc/renesas_s12ad.c                |  324 +++++++++
+>>   hw/dma/renesas_rx_dmac.c              |  317 +++++++++
+>>   hw/dma/renesas_rx_dtc.c               |  169 +++++
+>>   hw/gpio/renesas_rx_gpio.c             |  256 +++++++
+>>   hw/misc/renesas_rx_crc.c              |  219 ++++++
+>>   hw/misc/renesas_rx_fcu.c              |  985 ++++++++++++++++++++++++++
+>>   hw/misc/renesas_rx_romcache.c         |  139 ++++
+>>   hw/misc/rx65n_sysclk.c                |  190 +++++
+>>   hw/net/renesas_etherc.c               |  955 +++++++++++++++++++++++++
+>>   hw/rtc/renesas_rx_rtc.c               |  330 +++++++++
+>>   hw/ssi/renesas_rspi.c                 |  319 +++++++++
+>>   hw/timer/renesas_mtu3.c               |  509 ++++++++++++++
+>>   hw/watchdog/renesas_rx_wdt.c          |  193 ++++++
+>>   include/hw/adc/renesas_s12ad.h        |   61 ++
+>>   include/hw/dma/renesas_rx_dmac.h      |   57 ++
+>>   include/hw/dma/renesas_rx_dtc.h       |   42 ++
+>>   include/hw/gpio/renesas_rx_gpio.h     |   64 ++
+>>   include/hw/misc/renesas_rx_crc.h      |   30 +
+>>   include/hw/misc/renesas_rx_fcu.h      |  191 +++++
+>>   include/hw/misc/renesas_rx_romcache.h |   30 +
+>>   include/hw/misc/rx65n_sysclk.h        |   37 +
+>>   include/hw/net/renesas_etherc.h       |  109 +++
+>>   include/hw/rtc/renesas_rx_rtc.h       |   52 ++
+>>   include/hw/ssi/renesas_rspi.h         |   61 ++
+>>   include/hw/timer/renesas_mtu3.h       |   73 ++
+>>   include/hw/watchdog/renesas_rx_wdt.h  |   48 ++
+>>   target/rx/cpu-param.h                 |    3 +
+>>   target/rx/cpu-qom.h                   |    2 +
+>>   target/rx/cpu.c                       |   57 +-
+>>   target/rx/cpu.h                       |  124 ++++
+>>   target/rx/disas.c                     |  383 ++++++++++-
+>>   target/rx/gdbstub.c                   |   44 +-
+>>   target/rx/helper.c                    |   56 +-
+>>   target/rx/helper.h                    |   22 +
+>>   target/rx/insns.decode                |  125 +++-
+>>   target/rx/meson.build                 |    6 +-
+>>   target/rx/op_helper.c                 |  357 ++++++++++
+>>   target/rx/translate.c                 | 1225 ++++++++++++++++++++++++++-------
+>>   39 files changed, 7873 insertions(+), 311 deletions(-)
+>> ---
+>> base-commit: ff1d2d19d7e24893e2012d879f8e73077e17b9bd
+>> change-id: 20260913-umar-rx-series-0bfbbfe6b074
+>>
+>> Best regards,
+>> --
+>> Sayyad Mahammad Umar <contact@sayyadumar.com>
+>>
+> Thanks.
+> I also implemented some peripheral functions to emulate the actual board.
+> I haven't verified every single change, but if there are any missing features,
+> it would be best to combine them with my changes.
 
-Reviewed-by: Bin Meng <bin.meng@processmission.com>
+Hi Mr Sato,
+
+Sorry for the late reply, i was sick for couple of weeks.
+
+I have now started to work on splitting my last patch series from 2 
+patches to about ~31 smaller patches.
+
+I will be submitting those in the coming days after i test the changes 
+with real firmware.
+
+The real hardware i want to support are rx65n-2mb, rx660-tb and rx72m-rsk.
+
+Which boards/peripherals are you working on ?
+
+Regards,
+
+Umar
+
 

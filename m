@@ -4,95 +4,94 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 16466CA5FEF
-	for <qemu-arm@archiver.kernel.org>; Sun,  4 Oct 2026 16:17:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EE660CA5FCE
+	for <qemu-arm@archiver.kernel.org>; Sun,  4 Oct 2026 16:19:39 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xDOtJ-0001iw-My; Sun, 04 Oct 2026 12:16:46 -0400
+	id 1xDOvq-0003UO-5v; Sun, 04 Oct 2026 12:19:22 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <bmeng.cn@gmail.com>)
- id 1xDOtB-0001hJ-OK
- for qemu-arm@nongnu.org; Sun, 04 Oct 2026 12:16:39 -0400
-Received: from mail-yx2-x0e.google.com ([2607:f8b0:4864:41::e])
+ id 1xDOvo-0003Ss-V9
+ for qemu-arm@nongnu.org; Sun, 04 Oct 2026 12:19:20 -0400
+Received: from mail-yw1-x112c.google.com ([2607:f8b0:4864:20::112c])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <bmeng.cn@gmail.com>)
- id 1xDOtA-0001G9-CH
- for qemu-arm@nongnu.org; Sun, 04 Oct 2026 12:16:37 -0400
-Received: by mail-yx2-x0e.google.com with SMTP id
- 956f58d0204a3-67375a844dfso559743d50.2
- for <qemu-arm@nongnu.org>; Sun, 04 Oct 2026 09:16:35 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1791130594; cv=none;
+ id 1xDOvn-0001Oy-Jo
+ for qemu-arm@nongnu.org; Sun, 04 Oct 2026 12:19:20 -0400
+Received: by mail-yw1-x112c.google.com with SMTP id
+ 00721157ae682-8925e417565so6903287b3.2
+ for <qemu-arm@nongnu.org>; Sun, 04 Oct 2026 09:19:19 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1791130758; cv=none;
  d=google.com; s=arc-20260327;
- b=sy2EudxH2FxN0zebYDmrFPbZHad4yj109ZRZUnDa/HnV9ElBPsxWllCKVq4zii61y6
- 9U/rQpqPXPfbCa4mfa8SZoLdJy7I0zr/VCHwFh0uBhh3xJ+M5QwDv/yXfkDKau7Dx45Q
- gWTjYj3HLvWA2kFfPXBb1fyuocTWIzcStSqFnfdxeX7sye0+EPKmn3hsRiNgu1uWVp/C
- K47TeLRCwyQWDdeEbIqZhVHPziuN/W2ES+2Df5i3NWlu3syEg3E1NDCKBWS8KW88ccF8
- uhXTSEZj+VpphP8DsLs6uwagQdw4pJx/06KVvcMsqEN+IrF8At7Tr5cxPw0Mn1N+WxgG
- tmlQ==
+ b=OKgVeo5u2TZfc5MQKPsoA2PbaBdQfAgc5amutXPIi328O+jQ3/lKuldGb0fxX164M9
+ 2uWpBj6hvWt6nOJDgFOTETLpNAFnJlX0IOAGqhdSBb1yePsrIHi7vl3z1J9EpZ2fu34b
+ lTHShn/Us8rR0kmAkMkK3k1LVkVzx0w4dTavOpolWxUOXcWqU1fChttTOKO2oybwyA5B
+ Pz8foqEfWw2CSjhXanlTwIb0jcFxsuXgeDBWI0dXd9jsP5g6dBy0eeu2PgZqsjX7czng
+ lHxCliJl41AmX3q+LosGydI2aECaQMC2e9XPOi9fbY24JuiffbCd0I7QderilZDLhJo8
+ LPmA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
  s=arc-20260327; 
  h=content-transfer-encoding:cc:to:subject:message-id:date:from
  :in-reply-to:references:mime-version:dkim-signature;
- bh=DmZaWdgSsjwsGhT+bcTwZ/ICj/jwgKoJL2XG9oXJ74s=;
- fh=SAVFYS9zQA/aJmGXSFzO/ZenUARSuhMStmLwY0JRrA4=;
- b=mmvay7BAiqvJETTN0N6DOAWUQ+QlJm23bc68uDest6QHzhXMdEcWQo7z7vQHoBHxh2
- X4bNTIKvtfw0lGkSGgKZM3XpsxWq91fPW8tUMv/5TaHB/+SQwtAfAmhMDqhAJRiowNty
- Vy7l5LvST2rIsaymtA/SZIKkRMOsKPXwCg5cMf2z041f8ZdNJFJh2Ls+pN9AjpsdmWEw
- KMRMjoKq8PQ3Z/x1mtV0f5Hj4OZBCDuBI7tlMI2FaOR4QpGaPEXZMTP2kK9RMWWgxqqY
- 3aEjQoLlPsoHyN0zrmAg6fsAvH+HT2+J/Z/XY+5SKpnCh8O3FPAYuZDqLCyD78NE2vrs
- QN6A==; darn=nongnu.org
+ bh=Z2HZ+S2vidBmnG20BYhRJcN1NWxOOInvW9Vq3G95Kvw=;
+ fh=6bCwtZ5ukl1f3jNBe+JA1TRehootcuhDopm9lxRbwKc=;
+ b=fWwI2RDeWlnU1zPgm7j4MPz9iJKinuzgbXpRQYlZpqHq9A/rjvvuJzQFbaBarC8mQ3
+ 9fZvD6gDO2Yxw0x6yLp7mrEan74FjJ+haJlijEQH/J2lcT1Up5JBOatw/idOhMOX8whz
+ 0thw9QizxxuxwzDAtpNdRRxKmK9cqjJI2suAlI/ZJi4l/lb2KWTzuVfftPuwpWb11foG
+ xI9u1f+DeA2+vkIdN97ulIwG0Yh69o4lq+M49LdiRruPII+ikTKqUBzD9dZ/15VuU9fq
+ wcPrmHlvs1blIISI9Wzl4m7PLXoGf/ho1C/TZHFq2Uht6BR9zmNTE9ik5GddfQivM8sM
+ WZhQ==; darn=nongnu.org
 ARC-Authentication-Results: i=1; mx.google.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20251104; t=1791130594; x=1791735394; darn=nongnu.org;
+ d=gmail.com; s=20251104; t=1791130758; x=1791735558; darn=nongnu.org;
  h=content-transfer-encoding:content-type:cc:to:subject:message-id
  :date:from:in-reply-to:references:mime-version:from:to:cc:subject
  :date:message-id:reply-to:content-type;
- bh=DmZaWdgSsjwsGhT+bcTwZ/ICj/jwgKoJL2XG9oXJ74s=;
- b=O2SajuRr2++26e+HAGxskZqUtsVPY/wp0/i7zVaKNgZbJQdFIhhnmX2Y5i6DKG7Fa/
- wLmuPd30gd0f35aWuRdErD/dN9qNgwLtrFjo3kMOIPu+CfI4KTRPzlq6OqFOTz8ih7qI
- 2Yc5Ksos3JKeFgPNFTtG1ai3rMhVULhSRU/Fkms60+KiulFLNvnxEMbErhljymNG5Y2y
- ZB9tR7hBiM60sQAR0rnolaYNMQFKlbH+1ST9MUeO/RnREaK+Ny7Gx5r71LL+KuHpIRws
- oEKfl2/GQomTMLd1S6vxczW41RCCsCf52QVXe6VYGvpqMtUHT21cjARGEdrAZrYLDrmm
- cazw==
+ bh=Z2HZ+S2vidBmnG20BYhRJcN1NWxOOInvW9Vq3G95Kvw=;
+ b=kqLH5xFgJSBDzKCrIEk3n9T3pe8/DxGAkj7FgtC+mrquvQGnu7+nLBUtjAQIFpZIka
+ jw4w46FiBB7lnUwvWGuwlbj2IjJK91QnRKpb0gbctGB4mxD6NL7ukm9OHIOFHf6paj5j
+ rFz/biF5iepyexls9TSP6lagBzxUBwo5nG+N5TR1RiSjZjA9gDaew20EcKjIuwWZWFNe
+ oMosLo4xqXNqe09tiuruUgHlBp2Bnh1p4gNlQQEIlDQb4Yh0BdVnnWn+xKcGH/jQQaF8
+ Wz9PLX/1bYKcaRwpbHrpuBG6I/jPWXCuf6YmXIP1/NUEfg6TGymqbKtKO++mC24sx9xO
+ ggjA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20260707; t=1791130594; x=1791735394;
+ d=1e100.net; s=20260707; t=1791130758; x=1791735558;
  h=content-transfer-encoding:content-type:cc:to:subject:message-id
  :date:from:in-reply-to:references:mime-version:x-gm-gg
  :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
  :content-type;
- bh=DmZaWdgSsjwsGhT+bcTwZ/ICj/jwgKoJL2XG9oXJ74s=;
- b=X0Rwqrnz1psB38IXSj2BJ6ku1XQGF5ZteudLZy1abFHD4v51/9h9/W+JdxJAdexTOi
- EbNC/1FiZ+L5J2ffStKHnQJyRGS0zs3K6uRBNwDQOVqcRV4AzaKEZ63osXNWOoCHQgFN
- 0T8W9ljHrjP6h1EtKuk0FgxxWywrTzO4+Mv+8Yzhgy0IphsC0kXrsNkVHRwLVTgEqphQ
- kfqZj3VNBSyq/78dWUBzBrOOnWmgChP4HYuNRflzcMbHhVs1zRs9gVIvleTAzodcHX2g
- 2lNJVC44HaUBRwVRtv1yNy8CWsK28yvsdGDVzU6CqNJwgP5YX8/M9YSmSfhLGS3zZ3LJ
- ieIw==
+ bh=Z2HZ+S2vidBmnG20BYhRJcN1NWxOOInvW9Vq3G95Kvw=;
+ b=rXEskCrJpxHNXQgCtqMuDPk4LIupTt7OBmUoUY2YjQ9EModqfkxCPnDPpg1U4zvqnM
+ Ujsuan/VG39+b8UqJttJcCsu5lIRgPqjsZEX8BDIyYP8wAHl3v/mk3Pe7zFolZ2DkrhQ
+ 5//mURta30OjkthjczFDmW26mKQOTU4gQPS8krIjaCZa8sTwDMl7MACBOZBSoTQQr+JQ
+ AhR+sfgjjoL5I9UFZ2rh+wz9Vvv18nIqTvyyMpfT17CP+d9Ap8BD8NgsLEUbyu3Df53E
+ CW0e1eKNJIHfL/zajw/TedugNsannyd+6F3aS0fL+B17gM6a7Q8Yysu0ypM6UmnKt/AQ
+ 50Pg==
 X-Forwarded-Encrypted: i=1;
- AKwUvBwRLigFRuVt459gUGQEUivGae72p5ODheDekrfSjEr6itDj9MCPjDx8dxshb6hTFLhzLppe2mBJ3A==@nongnu.org
-X-Gm-Message-State: AFq9FYKHyHMbDDohBmJecpr9C661eswEpmLHPMLewO0kjf9lC9pwziE2
- eFQAGlgUZ8XQrjPn4ZSl0s2NjCV7VUDAHz26z5kOgtq4O/OZFJPtxZOpwF4q6eTfaauTX9/Ax94
- HBDe4NyBs23xQIgKI7ap7240IehfaaBI=
-X-Gm-Gg: AYBFou1ejojBIn6UBfCAugKa6uL7LtTED+bqhGzZLsrupmKpL76/3y+BFJ8dAJzeypQ
- p2TT63LVcwZG7GVncQyXgmpUGyX/TfgoAl+dFlRdie8FUaBKzc6xwimrByS4McSg9iJiIGVTFBd
- aeiGZTTOMmrmoS0p1UBqHnGQwa1k3SB7RKTAL+AW7yhDFpY24twyg6n7UsVGw6P+XY1VtrZ3Imn
- UrY+AvIqtn6OY7nf/6ZHOEDZKlVOgtGZE8OdIx99u0BkiAxxf+k+BGCDlAS232XeQ0ideVJOPhW
- DL321PK46HoETfYgfPTd6KIMYEUT8hFvDQPKsl99Q3t8l5c7+wdjeJgQM1Q7sLtBVsws/h1i47H
- WqL5VSwKRav5ipugWMUEPSrU0ew==
-X-Received: by 2002:a05:690e:1913:b0:677:aedf:d296 with SMTP id
- 956f58d0204a3-677aedfd46emr3335305d50.7.1791130594292; Sun, 04 Oct 2026
- 09:16:34 -0700 (PDT)
+ AKwUvBwsgagiItkAIJflW66iWiZcZFsdiULZhdvVYS0yN9fhCuEBhP1Pd3tmx3wJMi2MsK3+lUPkEW5qBQ==@nongnu.org
+X-Gm-Message-State: AFq9FYIAeTZkek/Ti5S1xoWQHtqsigiRwxOP1Zs4P+lbZZpwsLp1lQYf
+ KbwzcCHjZfOKxsf0ZO6LnZbmG90IQKk4qJxM9IQy+2OmYLYPicyQKwQ7phtTF304Pn4Sm4J20r5
+ 1UzJt3cZB1mwhJgRPmhftYeLshxqMQ4E=
+X-Gm-Gg: AYBFou1hUJQoWJh7prGhdSwNhIX9Xsd0hbqDUqV1SzS+Rj45L4MhENxnCFcCpLwHJjO
+ TCGESlIluDBlgnYG9na50cCw2gxhVsHQDpFSnnnsUmN24SNFQqxE/L0YOcZhepZv59gqYDn3XBM
+ R8Gwvp8s4gf/0dc0EPE/vUsx5kkBqE1hGT7OAPaR1wWbut61Zp/u8n0H7lA6jIRaLP9woqYwFA0
+ +phaHnzIaS8JuYcExS7Qd1BrUUOEo3gsd1zNFLxdQeSsfDdBjNnDm50kLiUWaFKNgGoh835LgiF
+ pqlOOXH9YAm1Wl9ar2SwtJmoHiB/DsJsFELLBkg+eCVP4rH+qajIdVK8GFSnW8JxSqaRqYOn3fG
+ X4gp7hCHLz8qwoTU=
+X-Received: by 2002:a05:690c:f13:b0:896:5874:6d0a with SMTP id
+ 00721157ae682-8ae94cdc320mr17071447b3.40.1791130758418; Sun, 04 Oct 2026
+ 09:19:18 -0700 (PDT)
 MIME-Version: 1.0
 References: <20261004122647.3913-1-shentey@gmail.com>
- <20261004122647.3913-15-shentey@gmail.com>
-In-Reply-To: <20261004122647.3913-15-shentey@gmail.com>
+ <20261004122647.3913-18-shentey@gmail.com>
+In-Reply-To: <20261004122647.3913-18-shentey@gmail.com>
 From: Bin Meng <bmeng.cn@gmail.com>
-Date: Mon, 5 Oct 2026 00:16:20 +0800
-X-Gm-Features: AclHuK8OgWZYdIbiLNjf4s9o5UfzXsMuJywvadl8wfHNSBp1CV0h_Q3l-w_ANLI
-Message-ID: <CAEUhbmXc6vynEkCYweCdxsQ9_qhk_Rzy4Y2rb7KKOZSRQsYCLQ@mail.gmail.com>
-Subject: Re: [PATCH v2 14/30] hw/arm/fsl-imx6ul: Derive from
- TYPE_SYS_BUS_DEVICE
+Date: Mon, 5 Oct 2026 00:19:06 +0800
+X-Gm-Features: AclHuK9w3j5zSHmHvwUqjUZvrxzOSXZD8B2EwEDpu8qYbPL5_2y0VcrVvZXozv0
+Message-ID: <CAEUhbmXB2K7B=W5C-MyCCZQr-Cb3s1C0wM5NUBVtSCd5ZphaMw@mail.gmail.com>
+Subject: Re: [PATCH v2 17/30] Kconfig: Extract config IMX_AVIC from config IMX
 To: Bernhard Beschow <shentey@gmail.com>
 Cc: qemu-devel@nongnu.org,
  =?UTF-8?B?TWFyYy1BbmRyw6kgTHVyZWF1?= <marcandre.lureau@redhat.com>, 
@@ -106,15 +105,15 @@ Cc: qemu-devel@nongnu.org,
  Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2607:f8b0:4864:41::e;
- envelope-from=bmeng.cn@gmail.com; helo=mail-yx2-x0e.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::112c;
+ envelope-from=bmeng.cn@gmail.com; helo=mail-yw1-x112c.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -130,18 +129,20 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Sun, Oct 4, 2026 at 8:28=E2=80=AFPM Bernhard Beschow <shentey@gmail.com>=
+On Sun, Oct 4, 2026 at 8:37=E2=80=AFPM Bernhard Beschow <shentey@gmail.com>=
  wrote:
 >
-> Deriving from TYPE_SYS_BUS_DEVICE fixes the SoC object to be reset upon
-> machine reset.
+> Over time, QEMU has grown a number of i.MX boards and the monolithic
+> config IMX drags in unneeded dependencies into each SoC model. Extract
+> config IMX_AVIC to eventually eliminate config IMX.
 >
+> Reviewed-by: Philippe Mathieu-Daud=C3=A9 <philmd@oss.qualcomm.com>
 > Signed-off-by: Bernhard Beschow <shentey@gmail.com>
 > ---
->  include/hw/arm/fsl-imx6ul.h | 5 ++---
->  hw/arm/fsl-imx6ul.c         | 4 +---
->  hw/arm/mcimx6ul-evk.c       | 2 +-
->  3 files changed, 4 insertions(+), 7 deletions(-)
+>  hw/arm/Kconfig      | 2 ++
+>  hw/intc/Kconfig     | 3 +++
+>  hw/intc/meson.build | 3 ++-
+>  3 files changed, 7 insertions(+), 1 deletion(-)
 >
 
 Reviewed-by: Bin Meng <bin.meng@processmission.com>

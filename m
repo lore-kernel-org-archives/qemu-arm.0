@@ -4,67 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B95FCCA5FE6
-	for <qemu-arm@archiver.kernel.org>; Sun,  4 Oct 2026 12:32:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 27F37CA5FEC
+	for <qemu-arm@archiver.kernel.org>; Sun,  4 Oct 2026 12:33:15 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xDLJg-0006Qq-QB; Sun, 04 Oct 2026 08:27:45 -0400
+	id 1xDLJt-0006Yz-DV; Sun, 04 Oct 2026 08:27:57 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <shentey@gmail.com>) id 1xDLJd-0006Ow-0t
- for qemu-arm@nongnu.org; Sun, 04 Oct 2026 08:27:41 -0400
-Received: from mail-wm1-x336.google.com ([2a00:1450:4864:20::336])
+ (Exim 4.90_1) (envelope-from <shentey@gmail.com>) id 1xDLJp-0006W4-SJ
+ for qemu-arm@nongnu.org; Sun, 04 Oct 2026 08:27:54 -0400
+Received: from mail-wm2-x10.google.com ([2a00:1450:4864:31::10])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <shentey@gmail.com>) id 1xDLJb-00076D-55
- for qemu-arm@nongnu.org; Sun, 04 Oct 2026 08:27:40 -0400
-Received: by mail-wm1-x336.google.com with SMTP id
- 5b1f17b1804b1-4a16aaf2067so8634655e9.0
- for <qemu-arm@nongnu.org>; Sun, 04 Oct 2026 05:27:38 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <shentey@gmail.com>) id 1xDLJo-00079I-3M
+ for qemu-arm@nongnu.org; Sun, 04 Oct 2026 08:27:53 -0400
+Received: by mail-wm2-x10.google.com with SMTP id
+ 5b1f17b1804b1-49d1fb0cf5eso8811455e9.3
+ for <qemu-arm@nongnu.org>; Sun, 04 Oct 2026 05:27:51 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20251104; t=1791116858; x=1791721658; darn=nongnu.org;
+ d=gmail.com; s=20251104; t=1791116871; x=1791721671; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to:content-type;
- bh=jrujhK11LCtm9muJjC0W7Qf58NaA06JJ6MzYAoTq2fg=;
- b=eiS+/kEuxx0SRqN3T6mI64d4v5yCqCyQcJ3Wfp2nxt327O37EWQ68NOYR9trR0WaMP
- rC71X0C02b5RBV6tsw3s3LWaIB2hc23+o1sGMrragIX23Zb2XTK+k1PNjF4SHjfczu3Z
- ioU3N/tSw9ojlwLTnkIEBm25wp2uQRpZPzABa/Fd+bO/DuTtn9nTi9zK0g98anMVJYwL
- M4SKCaJsMxoBzW059XROBR9u1uZgokMUGIoQJ4B5ys2yX0HE3v3qH6qbc5QIf5pczFIe
- +IH6yTWwVCxuj4sTUqb1BjPl0T8zQY97mjLk3LAqnEXNJZaPye++aVxXTw26EqN8tQsG
- NKvQ==
+ bh=WO1QLb3HFgaFysjfEO4U4PmLTZSjBJoylG5DA2uYzNE=;
+ b=rn6peURtIUR0TaF9RO6dn65KW8n65C8o57ZiLNwXaXgAvVa/oEmTSXnDE/PpDFZODL
+ glWesbmwChX+r6bCsoYsBkDXl7qGZAoeHOFSxjO3AxvBbVQx9hyf70xjTPv9DmYI5qDx
+ 025ANexX9gDy+tR4yyBSle4ogKsRPqI7d6JiMGxwfYiH9v2az7Nt0vAZf1CW85iAge/K
+ 30TPc7jRn8wM7PbB+cV3duCn6tzVCX7QwFvCNPVzrEP56wh5Av3MFGQjjClVDCvtfpuh
+ zInQiFegiPFTnpK+ui0PyRiLkfDRcdzk2oXKeL1bBe4MrtVWUUTYFApRDmolj+mCvkCm
+ LBeg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20260707; t=1791116858; x=1791721658;
+ d=1e100.net; s=20260707; t=1791116871; x=1791721671;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
  :to:cc:subject:date:message-id:reply-to:content-type;
- bh=jrujhK11LCtm9muJjC0W7Qf58NaA06JJ6MzYAoTq2fg=;
- b=uf/kho76QJ8D+9DUoLUq3TrRFa44+Sexdn+gzOXoQkF5z2xcmr+kINX9iln9Y8s5aB
- nBC6L4WMnV3m5FebvoWAmmTF4GTDXjjwT7bs2X/7re81A/afM1FO6ij2l6sjq7P3ntP+
- rOcquXP/Pgv8dfkenSiDtRUMjeXOAMzsBsDV1u1iOTEjCb9VDlSC6MRNDpqunwWIHPl+
- EF1yMbzS1DXNDiLTSsKZiNtgSLwBQDz0A2Ek4cY93dBsKBgkgPFXuPCAiZwWoN7rndud
- y/Gc3AOAbh2m+185ZhmLt5KVgMx+blVffmBBXWAotvjjcJ5oxTQXWqaWGkzE7b3m52Am
- Jg2w==
+ bh=WO1QLb3HFgaFysjfEO4U4PmLTZSjBJoylG5DA2uYzNE=;
+ b=lhZuiha/rC0UCIwiZg05laYR07EslcaXx1gugZ1Nc7BF5t1UZEtMpHttm2UZsBGWnI
+ 3Xxn6BzT983OB+NxY8HET8HzWQgDf/Kl6bLI3aGbsazrdcn69rAOJRu47qyH86Gz/Dch
+ H/2swTBCroqNpEo+GKuDDBEeL7YZJXcv9rQdmzg+xliEOg2SeEH0yipR1W1D5AiZNINX
+ bcyaOgdwl8i+9bhGvPEF6QB2UAjdzQlr657HexQ31ZXC8BtL7aduD5PotjmEXvab5Ukf
+ FTl250MqZhU0aAi+bTMJqMQIkjfQwo5z2ofriNybSi3wVKIC6S49AyWwjHQ6+VK68geK
+ oxag==
 X-Forwarded-Encrypted: i=1;
- AKwUvBxibbTNeBVCj1UfjU7wYG9/BspMAmSo3Nee0o97+egISio/Glujv3LYk4wTaMSENsG7mWlbZ/Ga0w==@nongnu.org
-X-Gm-Message-State: AFuF++k4THq0rG4P6RSG4QK8XcSIN/y+EKrbmIhIBzW7f8DASbjjmMew
- s/P3RB4dE2Z8IFRMu5R3VZrZqyfH/Nd9+H9ta/SUZwFr0FG8a7F7eQuE
-X-Gm-Gg: AYBFou1earKVi4Q1WJpb2leG9JVZrmAKWaCZIb6uLY22qnqypPEKlgVrywylOD/6zpX
- dGKhJ5zYYAvcrKaOXL+butX+LqeSgayajXPw7HR66N3JAMrlsO8FAVPERYoyEVrRPWMz/j8qaga
- PFQH5Zd20FKDeXwWLlYqVr+BJ205vjf1jejoJJdgigyhE4gB69fzIwB3bh3pULX8TElQedFNJSt
- enGYzRibZhKQW4VRqK5y8d95VkdmoDBi3YwBmxFAUvh1iOE9LNAuJh2zcjhwBf55s1+TVH5WTU+
- Tqg+4MFI8UJ2AoOM+0DrUFnDKMNd8Umrbt8nHVIiKijS5JfcFuXQ856A6s3Gs9sc0QEMUpcA/li
- FEiWIf6gIwCOqC4nHW1exA7fkWRt6PJ6Xa5sOONNZydhmhA2xvQXkWhaWmA83QmOjBN+TsIvdq1
- H6keIqEOV+HimKmSN5H/wEc2MInxbXJgvPHi3VXLebufsxKshabL1FVsclyN4CzF/g6uwHJxa3Z
- FfoBZfkjQx7u7hg+RPYiWJYgqJOjW2tcfvpWA==
-X-Received: by 2002:a05:600c:6287:b0:4a0:f4:1c76 with SMTP id
- 5b1f17b1804b1-4a1680b53bbmr78164315e9.4.1791116857381; 
- Sun, 04 Oct 2026 05:27:37 -0700 (PDT)
+ AKwUvBxKe/YZto+ID0bHnUJAWs9WKhf30ediTXfeyXU7H0hWtghuDhRQpba8sQivVWeRHozjDfqDZre/Qg==@nongnu.org
+X-Gm-Message-State: AFuF++mJxDr4T6G5swVrx34My30F5JKD+extYOWk+k/3/0/qyV6jGmk1
+ yFsmixmZUNBM++ZON0FIHxeb8VfPwG3BH3q7FN6Bx/A/r0Qbsivej8Ws
+X-Gm-Gg: AYBFou1w9kfQKf9QqKYkD1bi5t6itwZliAcczM3k6oAhd3QcqgZvg+IZDe/ELBbDIOm
+ SRbcGXdevDqUQrnQeysfD9S6eDVLZl73oecApJ/me9PkmFtYkXvpSFjjWTbT0Iqb+w0+CwelfKx
+ b8jcMCrUDDXgVxY5hxqG476YcNWpuEaFoJDi0sKQMyJnhBHoZCUmV7gqsIhyIA0IWLobAfcOznV
+ i8UMx7Og578nGDwCJ2eVNnY1pqs4vLeYd0rtZtGRYZvu+N8Uk5myDTq/0nB/Q51qlHyZaLNiKQp
+ IpQF6+RNvKbUA/s1iR47N/m6b8IYavVnnpB1o2/zOKXYJHhvK/GYxrp5ppr/Ii5mLonjcj+6U7y
+ S6O/ihTtnbnUHypmc5X1HbUgHAsr62c8b6QK35lx2X+X/xePBTiGp6OUvazRzFXXPq+kDMvcEZW
+ 9QCL8WssBwgDlXSKfq34grmboO1E73YnGkacb5mrucQT8MSjAwXyAVhUS6KFpW8kMywlge1vTrW
+ HyP/V/Am4J5c/t8CyqcI0CaqDGHVvZJDjFeq+5DZH0eTtu+
+X-Received: by 2002:a05:600c:4e13:b0:49c:cee0:e7c1 with SMTP id
+ 5b1f17b1804b1-4a02757999cmr128618705e9.16.1791116870539; 
+ Sun, 04 Oct 2026 05:27:50 -0700 (PDT)
 Received: from archlinux (pd95eda80.dip0.t-ipconnect.de. [217.94.218.128])
  by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-4a027698f13sm242319975e9.1.2026.10.04.05.27.36
+ 5b1f17b1804b1-4a027698f13sm242319975e9.1.2026.10.04.05.27.49
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sun, 04 Oct 2026 05:27:36 -0700 (PDT)
+ Sun, 04 Oct 2026 05:27:49 -0700 (PDT)
 From: Bernhard Beschow <shentey@gmail.com>
 To: qemu-devel@nongnu.org
 Cc: =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
@@ -77,16 +77,16 @@ Cc: =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
  Bin Meng <bin.meng@processmission.com>,
  Jean-Christophe Dubois <jcd@tribudubois.net>,
  Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>
-Subject: [PATCH v2 04/30] hw/arm/imx8mm-evk: Fix reference count of SoC object
-Date: Sun,  4 Oct 2026 14:26:20 +0200
-Message-ID: <20261004122647.3913-5-shentey@gmail.com>
+Subject: [PATCH v2 12/30] hw/arm/fsl-imx31: Derive from TYPE_SYS_BUS_DEVICE
+Date: Sun,  4 Oct 2026 14:26:28 +0200
+Message-ID: <20261004122647.3913-13-shentey@gmail.com>
 X-Mailer: git-send-email 2.56.0
 In-Reply-To: <20261004122647.3913-1-shentey@gmail.com>
 References: <20261004122647.3913-1-shentey@gmail.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::336;
- envelope-from=shentey@gmail.com; helo=mail-wm1-x336.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:31::10;
+ envelope-from=shentey@gmail.com; helo=mail-wm2-x10.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -109,36 +109,75 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Using sysbus_realize_and_unref() requires object_new() rather than
-object_new_with_props(), otherwise the initial reference count is
-subtracted twice, i.e. ends up being one too low.
+Deriving from TYPE_SYS_BUS_DEVICE fixes the SoC object to be reset upon
+machine reset.
 
-board")
-
-Fixes: 7bcd1f30bc83 ("hw/arm: Add the i.MX 8MM EVK(Evaluation Kit)
-cc: qemu-stable
-Reported-by: Peter Maydell <peter.maydell@linaro.org>
-Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 Signed-off-by: Bernhard Beschow <shentey@gmail.com>
 ---
- hw/arm/imx8mm-evk.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+ include/hw/arm/fsl-imx31.h | 5 ++---
+ hw/arm/fsl-imx31.c         | 7 +------
+ hw/arm/kzm.c               | 2 +-
+ 3 files changed, 4 insertions(+), 10 deletions(-)
 
-diff --git a/hw/arm/imx8mm-evk.c b/hw/arm/imx8mm-evk.c
-index c3215b11cb..6de0d9c4a2 100644
---- a/hw/arm/imx8mm-evk.c
-+++ b/hw/arm/imx8mm-evk.c
-@@ -83,8 +83,8 @@ static void imx8mm_evk_init(MachineState *machine)
-     ims->bootinfo.psci_conduit = QEMU_PSCI_CONDUIT_SMC;
-     ims->bootinfo.modify_dtb = imx8mm_evk_modify_dtb;
+diff --git a/include/hw/arm/fsl-imx31.h b/include/hw/arm/fsl-imx31.h
+index 41232a2237..ea916de15a 100644
+--- a/include/hw/arm/fsl-imx31.h
++++ b/include/hw/arm/fsl-imx31.h
+@@ -25,6 +25,7 @@
+ #include "hw/i2c/imx_i2c.h"
+ #include "hw/gpio/imx_gpio.h"
+ #include "hw/watchdog/wdt_imx2.h"
++#include "hw/core/sysbus.h"
+ #include "system/memory.h"
+ #include "target/arm/cpu.h"
+ #include "qom/object.h"
+@@ -38,10 +39,8 @@ OBJECT_DECLARE_SIMPLE_TYPE(FslIMX31State, FSL_IMX31)
+ #define FSL_IMX31_NUM_GPIOS 3
  
--    s = FSL_IMX8MM(object_new_with_props(TYPE_FSL_IMX8MM, OBJECT(machine),
--                                         "soc", &error_fatal, NULL));
-+    s = FSL_IMX8MM(object_new(TYPE_FSL_IMX8MM));
-+    object_property_add_child(OBJECT(machine), "soc", OBJECT(s));
-     object_property_set_uint(OBJECT(s), "fec1-phy-num", 1, &error_fatal);
-     sysbus_realize_and_unref(SYS_BUS_DEVICE(s), &error_fatal);
+ struct FslIMX31State {
+-    /*< private >*/
+-    DeviceState parent_obj;
++    SysBusDevice parent_obj;
  
+-    /*< public >*/
+     ARMCPU         cpu;
+     IMXAVICState   avic;
+     IMX31CCMState  ccm;
+diff --git a/hw/arm/fsl-imx31.c b/hw/arm/fsl-imx31.c
+index 190f863355..dd929c1085 100644
+--- a/hw/arm/fsl-imx31.c
++++ b/hw/arm/fsl-imx31.c
+@@ -224,16 +224,11 @@ static void fsl_imx31_class_init(ObjectClass *oc, const void *data)
+ 
+     dc->realize = fsl_imx31_realize;
+     dc->desc = "i.MX31 SOC";
+-    /*
+-     * Reason: uses serial_hds in realize and the kzm board does not
+-     * support multiple CPUs
+-     */
+-    dc->user_creatable = false;
+ }
+ 
+ static const TypeInfo fsl_imx31_type_info = {
+     .name = TYPE_FSL_IMX31,
+-    .parent = TYPE_DEVICE,
++    .parent = TYPE_SYS_BUS_DEVICE,
+     .instance_size = sizeof(FslIMX31State),
+     .instance_init = fsl_imx31_init,
+     .class_init = fsl_imx31_class_init,
+diff --git a/hw/arm/kzm.c b/hw/arm/kzm.c
+index 387bf54ced..1e139c2c1f 100644
+--- a/hw/arm/kzm.c
++++ b/hw/arm/kzm.c
+@@ -69,7 +69,7 @@ static void kzm_init(MachineState *machine)
+ 
+     object_initialize_child(OBJECT(machine), "soc", &s->soc, TYPE_FSL_IMX31);
+ 
+-    qdev_realize(DEVICE(&s->soc), NULL, &error_fatal);
++    sysbus_realize_and_unref(SYS_BUS_DEVICE(&s->soc), &error_fatal);
+ 
+     /* Check the amount of memory is compatible with the SOC */
+     if (machine->ram_size > (FSL_IMX31_SDRAM0_SIZE + FSL_IMX31_SDRAM1_SIZE)) {
 -- 
 2.56.0
 

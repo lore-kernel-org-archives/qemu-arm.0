@@ -4,95 +4,99 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id F3D75CA5FCE
-	for <qemu-arm@archiver.kernel.org>; Sun,  4 Oct 2026 10:31:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 326D7CA5FEC
+	for <qemu-arm@archiver.kernel.org>; Sun,  4 Oct 2026 12:27:54 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xDJPI-00077f-27; Sun, 04 Oct 2026 06:25:24 -0400
+	id 1xDLJi-0006Rm-HS; Sun, 04 Oct 2026 08:27:46 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <marcandre.lureau@redhat.com>)
- id 1xDJPA-0006mO-NL
- for qemu-arm@nongnu.org; Sun, 04 Oct 2026 06:25:16 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <marcandre.lureau@redhat.com>)
- id 1xDJP8-00036f-Ko
- for qemu-arm@nongnu.org; Sun, 04 Oct 2026 06:25:16 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1791109513;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=a6RJgyUgneJxSAr6u/BntYVKldwQsIdnR5gZ46c6I8I=;
- b=gc9TXRq+2N54mNG/fsjz1ZZreUgLWp7WGTna8CRRqG8wohZTOmQZmsfUlNt+kV4rO3wmqL
- Uac9bCDyZL/wFzyvgHIZLlxSUD7rrrJL7e2tV7d4B7EG0ZdK6zatOfjvhgRO3JBn6V+NSb
- MLvmWq82aiD3BSYf5PxLD8445tEmRuQ=
-Received: from mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
- relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-561-Et4O8QuZPxmZ28Bp4xS1vg-1; Sun,
- 04 Oct 2026 06:25:12 -0400
-X-MC-Unique: Et4O8QuZPxmZ28Bp4xS1vg-1
-X-Mimecast-MFC-AGG-ID: Et4O8QuZPxmZ28Bp4xS1vg_1791109511
-Received: from mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com
- (mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.17])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
- (No client certificate requested)
- by mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id E1CF61944D33; Sun,  4 Oct 2026 10:25:10 +0000 (UTC)
-Received: from localhost (headnet03.pony-001.prod.iad2.dc.redhat.com
- [10.2.32.114])
- by mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id BB1B319560AB; Sun,  4 Oct 2026 10:25:09 +0000 (UTC)
-From: =?utf-8?q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>
-Date: Sun, 04 Oct 2026 14:23:40 +0400
-Subject: [PATCH 26/63] hw/char/cadence_uart: fix RX FIFO overflow handling
-MIME-Version: 1.0
-Message-Id: <20261004-issue-4560-v1-26-ccbef537cbeb@redhat.com>
-References: <20261004-issue-4560-v1-0-ccbef537cbeb@redhat.com>
-In-Reply-To: <20261004-issue-4560-v1-0-ccbef537cbeb@redhat.com>
+ (Exim 4.90_1) (envelope-from <shentey@gmail.com>) id 1xDLJg-0006QO-0p
+ for qemu-arm@nongnu.org; Sun, 04 Oct 2026 08:27:44 -0400
+Received: from mail-wm1-x32c.google.com ([2a00:1450:4864:20::32c])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <shentey@gmail.com>) id 1xDLJe-00077J-1S
+ for qemu-arm@nongnu.org; Sun, 04 Oct 2026 08:27:43 -0400
+Received: by mail-wm1-x32c.google.com with SMTP id
+ 5b1f17b1804b1-49d0da752ffso7965655e9.3
+ for <qemu-arm@nongnu.org>; Sun, 04 Oct 2026 05:27:41 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=gmail.com; s=20251104; t=1791116860; x=1791721660; darn=nongnu.org;
+ h=content-transfer-encoding:content-type:mime-version:references
+ :in-reply-to:message-id:date:subject:cc:to:from:from:to:cc:subject
+ :date:message-id:reply-to:content-type;
+ bh=BBF7OAN6WfbTmft3gohIU6YoFzMIf5lJrkPTZ7ZD/Gs=;
+ b=DXm+oNGSTfiXcMiNPmp5ZiLbf3HJCLC6TGNPRE3eJIjpf96I3nHOLM+lPFFjLiXYQj
+ pq6aTr8j6nytD6BhrmfcfPhou9tJ7mEL/YlQU6ITjWIitGB+YSB6l1+CuIYPFft2pScg
+ TG/nR+0eG868gn3bxsuPc6IaYz1DmYqFqNZMPuSd4HL4gmyHtDJlgt+tyuzn7eftL5FP
+ ekfgfwtxxclw2AOMBIS4AHapGrI3OOB18VKof68sh8RzEaUZxAwd0wr67KijZZf6tt1C
+ ihXSfW+ACRccRXai9dKjhVfX2ar1dEgEbQL1drIQEehuRQY7qOCbdPLmp/edRTOv+0x/
+ 33mg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20260707; t=1791116860; x=1791721660;
+ h=content-transfer-encoding:content-type:mime-version:references
+ :in-reply-to:message-id:date:subject:cc:to:from:x-gm-gg
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
+ :content-type;
+ bh=BBF7OAN6WfbTmft3gohIU6YoFzMIf5lJrkPTZ7ZD/Gs=;
+ b=zCPWhccfhM9JCizKfi7Zp/2QqB4WRsBZjXgFI5gkOCeUUrRkd6X85yDQSCkJmpfFLz
+ VOHgGtEYDDxkdgV7lz4EuVyx/PYk1U/GjbwFhskaWg/5EbzfRGW0Dt/8NahAAKBCjDXQ
+ 1DzNa9ecKp4G473roD3PCNKIAyLGFgH56bYPwPw3r9UxbznCU13Ulqg2VoSEgjB7aEhK
+ KkbWX8jZeXUTtzlZSflDf9Mx1KKLGSXnD+5jG27sx+Aljx+H/71LICB8LpuItdPwH0qY
+ YEbwWassfUfrh7DbjFgkxY7NUX66zqplDOSyfK9GSuuU7FA//84a1VpmeC4eoJOlZX5C
+ 34qg==
+X-Forwarded-Encrypted: i=1;
+ AKwUvBzj5I0DYAl36rVsIU19PJHc3c4vxaVG6juNZHHaOyy+FWa5vYWZFZnJ88Y0lAyWBw56BlHH815rcw==@nongnu.org
+X-Gm-Message-State: AFuF++mxPnlKaJYnrF54vZRQZ1MGX4W8gc1vujfEOoo2Yt6Vf3BcgAJS
+ 2REqGcRcpssOb680ARCpWQjYI+VzwKbbHoSVOlmPcpgUUAiPas12C/lC
+X-Gm-Gg: AYBFou2LXSKfdMXc3S+BMPhu29Z7iOV1jFXV8d1cCwIg+cVucmjOyBoYIPD5zTQKBLX
+ a3pqBtc17QL+Ae8NDvVOhykwedHv/U480OUY1db/SQyg/AkCxZDqQKbvcTONOChO4AHfyImQwDs
+ FjeewyV+vZG1g4DPU2ze6LipetraaMelhQeenfuxTxEhOHQoFDf5HIX7r+ghcV3FPEZJNAKNzLr
+ gA4BIAO5PCH/HiLsSeThp/V7iiIcPTrxGL7BcqpzNpQD4bm2gkTOT4pWdckfeIxRGiaJsamHCYR
+ l6DHv0lyJGncAFDZA0rHrMsUYac0ImWLg/r4WU9SzjGDMjN8ygBjkMoGpYgdj9Gd/G5crhdMVJK
+ Rg6ik67dLb0o3g8zvKYy7CnshrbUBBWP8DhQxvJ5fPDSpti6GKgZgy5f+xEQDtP6e1peOAOS5g1
+ iComY8K+gzVv4BVh8ohP4Wik1RDVeGVkE/bJHIuIpA6R+fdutLq04OFtFJBp0HP516GnW30wH6c
+ 5m5GVM02ApV9Un2iefX8kKf39UUh+GjNPU1Qw==
+X-Received: by 2002:a05:600c:354a:b0:4a0:37b:5c25 with SMTP id
+ 5b1f17b1804b1-4a1680dd0c5mr77028955e9.11.1791116860570; 
+ Sun, 04 Oct 2026 05:27:40 -0700 (PDT)
+Received: from archlinux (pd95eda80.dip0.t-ipconnect.de. [217.94.218.128])
+ by smtp.gmail.com with ESMTPSA id
+ 5b1f17b1804b1-4a027698f13sm242319975e9.1.2026.10.04.05.27.39
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Sun, 04 Oct 2026 05:27:39 -0700 (PDT)
+From: Bernhard Beschow <shentey@gmail.com>
 To: qemu-devel@nongnu.org
-Cc: =?utf-8?q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>, 
- Pavee Hui <phui@google.com>, "Edgar E. Iglesias" <edgar.iglesias@gmail.com>, 
- Alistair Francis <alistair@alistair23.me>, 
- Peter Maydell <peter.maydell@linaro.org>, 
- Paolo Bonzini <pbonzini@redhat.com>, qemu-arm@nongnu.org
-X-Developer-Signature: v=1; a=openpgp-sha256; l=1709;
- i=marcandre.lureau@redhat.com; h=from:subject:message-id;
- bh=wmlbgAkp5IMqyKQLFWWUMX/JP+57PU9lyUpiwEIUUDk=;
- b=owEBbQKS/ZANAwAKAdro4Ql1lpzlAcsmYgBqwikjSnA6c/fRe15ABZM+8qTNZSOsUBti8Zfr4
- 8Et5PlngQWJAjMEAAEKAB0WIQSHqb2TP4fGBtJ29i3a6OEJdZac5QUCasIpIwAKCRDa6OEJdZac
- 5diMEACLLT9LnFl5P1MRVb9OLs5ZLGBuejy4chfsMF7R7PjebmdBMGIwTI3XGv9AS5lBcaQLtXK
- NHiVcG13xyHED+79U0xskKZ0z3SQZYExGJSGb909YNKeBzpq9LKRcoAaJlBBGYNeQDAPs0ezf9z
- WYd3J/knlU+IJ1VBeAzeF2a/q9aO6PBFMoewNcLLRC1G2stutMMXNCBocdhtMBA8siBUJq+8JK3
- ug9OK8JHqzWbnI51nCn7cy4N+/Q2TpwWWfI2Dw7IOh4LU88+zqWbjpr6AgLdj6ByHyRT9NERJ27
- fLLKFZ4nCF4H0gdD9BuSPPHzEv/92iK8TVFQNOAPCDI5LlXEowjuAuOP7+RUGz0UJZKRHOYJFC6
- 3GZa1e1VvpWcffZ8fZhOXbSx64Htaa/ulVfTK/YfgZr7RF6PJqgArIoe38kGMRLzuFyK3RFHC37
- DV791cZQHr3mkmRJ0Rn5Qb3PL6k9gmGHVUfQonznO5ags5ScQyXWOiTWE9C9VBGEjD8cTcZaxB6
- 5K1GP/IgUd7EGEf+yQXQx8hLpZEZM6Olb/IYegBszM9LixzShqg/znaGMvdkZOuQ8LfvFX4J64T
- 7DEeNSOLLT4cBDwsQ6jCOCeLxAw+9kRISQE/B0tr5kwirr0Fad7PJ1iZLNHqmuf6Q8YbMqCuh/c
- gCIhYKQV8Ygbn3A==
-X-Developer-Key: i=marcandre.lureau@redhat.com; a=openpgp;
- fpr=87A9BD933F87C606D276F62DDAE8E10975969CE5
-X-Scanned-By: MIMEDefang 3.0 on 10.30.177.17
-X-Mimecast-MFC-PROC-ID: dxNjnmNeYN6Te9ZrMxzgPmBpQ5xf3NhAtsdSQVgVc5g_1791109511
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset="utf-8"
+Cc: =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ Gaurav Sharma <gaurav.sharma_7@nxp.com>,
+ Alistair Francis <alistair@alistair23.me>,
+ Bernhard Beschow <shentey@gmail.com>, qemu-arm@nongnu.org,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@oss.qualcomm.com>,
+ Jason Wang <jasowangio@gmail.com>, Paolo Bonzini <pbonzini@redhat.com>,
+ Bin Meng <bin.meng@processmission.com>,
+ Jean-Christophe Dubois <jcd@tribudubois.net>,
+ Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>
+Subject: [PATCH v2 06/30] hw/arm/sabrelite: Have 4 CPUs and 1 GiB of RAM by
+ default
+Date: Sun,  4 Oct 2026 14:26:22 +0200
+Message-ID: <20261004122647.3913-7-shentey@gmail.com>
+X-Mailer: git-send-email 2.56.0
+In-Reply-To: <20261004122647.3913-1-shentey@gmail.com>
+References: <20261004122647.3913-1-shentey@gmail.com>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=170.10.129.124;
- envelope-from=marcandre.lureau@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: 9
-X-Spam_score: 0.9
-X-Spam_bar: /
-X-Spam_report: (0.9 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.337,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=0.001, RCVD_IN_SBL_CSS=3.335,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=no autolearn_force=no
+Received-SPF: pass client-ip=2a00:1450:4864:20::32c;
+ envelope-from=shentey@gmail.com; helo=mail-wm1-x32c.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -108,49 +112,65 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-The old code checked for overflow only once before the loop, which
-meant a multi-byte write could silently overflow the FIFO when there
-was space for some but not all bytes. Check per-byte instead, storing
-as many bytes as possible before flagging ROVR. Only arm the FIFO
-trigger timer when bytes were actually stored.
+Having four CPUs and 1 GiB of RAM matches real hardware. Fix the machine
+defaults to make its use more ergonomic and less error-prone. Also
+reflect this in the board documentation.
 
-Fixes: 35548b06cf55 ("cadence_uart: initial version of device model")
-Reported-by: Pavee Hui <phui@google.com>
-Signed-off-by: Marc-André Lureau <marcandre.lureau@redhat.com>
+To reproduce the old default behavior for e.g. migration purposes,
+`-smp 1 -m 128M` needs to be passed on the command line.
+
+Reviewed-by: Philippe Mathieu-Daudé <philmd@oss.qualcomm.com>
+Signed-off-by: Bernhard Beschow <shentey@gmail.com>
 ---
- hw/char/cadence_uart.c | 16 +++++++++-------
- 1 file changed, 9 insertions(+), 7 deletions(-)
+ docs/system/arm/sabrelite.rst | 4 ++--
+ hw/arm/sabrelite.c            | 3 +++
+ 2 files changed, 5 insertions(+), 2 deletions(-)
 
-diff --git a/hw/char/cadence_uart.c b/hw/char/cadence_uart.c
-index eff6a3c4d17a..ae11caa11b82 100644
---- a/hw/char/cadence_uart.c
-+++ b/hw/char/cadence_uart.c
-@@ -284,14 +284,16 @@ static void uart_write_rx_fifo(void *opaque, const uint8_t *buf, int size)
-         return;
-     }
+diff --git a/docs/system/arm/sabrelite.rst b/docs/system/arm/sabrelite.rst
+index d3a3c01dd6..b8ac9548f5 100644
+--- a/docs/system/arm/sabrelite.rst
++++ b/docs/system/arm/sabrelite.rst
+@@ -55,7 +55,7 @@ To boot the newly built Linux kernel in QEMU with the SABRE Lite machine, use:
  
--    if (s->rx_count == CADENCE_UART_RX_FIFO_SIZE) {
--        s->r[R_CISR] |= UART_INTR_ROVR;
--    } else {
--        for (i = 0; i < size; i++) {
--            s->rx_fifo[s->rx_wpos] = buf[i];
--            s->rx_wpos = (s->rx_wpos + 1) % CADENCE_UART_RX_FIFO_SIZE;
--            s->rx_count++;
-+    for (i = 0; i < size; i++) {
-+        if (s->rx_count >= CADENCE_UART_RX_FIFO_SIZE) {
-+            s->r[R_CISR] |= UART_INTR_ROVR;
-+            break;
-         }
-+        s->rx_fifo[s->rx_wpos] = buf[i];
-+        s->rx_wpos = (s->rx_wpos + 1) % CADENCE_UART_RX_FIFO_SIZE;
-+        s->rx_count++;
-+    }
-+    if (i > 0) {
-         timer_mod(s->fifo_trigger_handle, new_rx_time +
-                                                 (s->char_tx_time * 4));
-     }
-
+ .. code-block:: bash
+ 
+-  $ qemu-system-arm -M sabrelite -smp 4 -m 1G \
++  $ qemu-system-arm -M sabrelite \
+       -display none -serial null -serial stdio \
+       -kernel arch/arm/boot/zImage \
+       -dtb arch/arm/boot/dts/imx6q-sabrelite.dtb \
+@@ -89,7 +89,7 @@ the -kernel argument, along with an SD card image with rootfs:
+ 
+ .. code-block:: bash
+ 
+-  $ qemu-system-arm -M sabrelite -smp 4 -m 1G \
++  $ qemu-system-arm -M sabrelite \
+       -display none -serial null -serial stdio \
+       -kernel u-boot
+ 
+diff --git a/hw/arm/sabrelite.c b/hw/arm/sabrelite.c
+index 05dfabd937..34f302f83c 100644
+--- a/hw/arm/sabrelite.c
++++ b/hw/arm/sabrelite.c
+@@ -17,6 +17,7 @@
+ #include "hw/core/boards.h"
+ #include "hw/core/qdev-properties.h"
+ #include "qemu/error-report.h"
++#include "qemu/units.h"
+ #include "system/qtest.h"
+ 
+ struct SabreliteMachineState {
+@@ -139,7 +140,9 @@ static void sabrelite_machine_class_init(ObjectClass *oc, const void *data)
+     mc->desc = "Freescale i.MX6 Quad SABRE Lite Board (Cortex-A9)";
+     mc->init = sabrelite_init;
+     mc->max_cpus = FSL_IMX6_NUM_CPUS;
++    mc->default_cpus = FSL_IMX6_NUM_CPUS;
+     mc->ignore_memory_transaction_failures = true;
++    mc->default_ram_size = 1 * GiB;
+     mc->default_ram_id = "sabrelite.ram";
+     mc->auto_create_sdcard = true;
+ }
 -- 
-2.56.0.rc0.29.g47ce80527c56
+2.56.0
 
 

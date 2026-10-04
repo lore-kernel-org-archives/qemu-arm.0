@@ -4,67 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CB1BACA5FEC
-	for <qemu-arm@archiver.kernel.org>; Sun,  4 Oct 2026 12:29:21 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id F3B12CA5FEC
+	for <qemu-arm@archiver.kernel.org>; Sun,  4 Oct 2026 12:29:30 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xDLJr-0006Xa-1G; Sun, 04 Oct 2026 08:27:55 -0400
+	id 1xDLJy-0006cU-3g; Sun, 04 Oct 2026 08:28:02 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <shentey@gmail.com>) id 1xDLJl-0006UM-SV
- for qemu-arm@nongnu.org; Sun, 04 Oct 2026 08:27:50 -0400
-Received: from mail-wr1-x42d.google.com ([2a00:1450:4864:20::42d])
+ (Exim 4.90_1) (envelope-from <shentey@gmail.com>) id 1xDLJw-0006b7-6W
+ for qemu-arm@nongnu.org; Sun, 04 Oct 2026 08:28:00 -0400
+Received: from mail-wm1-x330.google.com ([2a00:1450:4864:20::330])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <shentey@gmail.com>) id 1xDLJk-00078Q-Ab
- for qemu-arm@nongnu.org; Sun, 04 Oct 2026 08:27:49 -0400
-Received: by mail-wr1-x42d.google.com with SMTP id
- ffacd0b85a97d-48b0ef9c76eso727973f8f.0
- for <qemu-arm@nongnu.org>; Sun, 04 Oct 2026 05:27:47 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <shentey@gmail.com>) id 1xDLJu-0007Aw-Kv
+ for qemu-arm@nongnu.org; Sun, 04 Oct 2026 08:27:59 -0400
+Received: by mail-wm1-x330.google.com with SMTP id
+ 5b1f17b1804b1-4a16629a040so12910775e9.1
+ for <qemu-arm@nongnu.org>; Sun, 04 Oct 2026 05:27:58 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20251104; t=1791116867; x=1791721667; darn=nongnu.org;
+ d=gmail.com; s=20251104; t=1791116877; x=1791721677; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to:content-type;
- bh=2l+Auy4ScM7gXk2vevj8YZ1+8P1Y9lWsrpDBhQ01iOA=;
- b=dWEAD6eFo4A7VmJs4ancBuRGdUN/xYOfsY/Im7Vmgu1ngar3LY0tv+QkKskL6Hz2Lp
- 12fChtPj/lkA1QLIsm+P3ve8FRv0ycsnOZcaKHlQyn8fmWaIjIXveU0HBhrv01sZl0By
- GjO7v2ijM2aEbQhYLBaIKzndCr1gCAvyBSut3aEVlLzeQz0itIj8c4g40XwgKlEbtCaJ
- bY5F95WQHqXwBOyaMfMT3MakghALKABxLEKvPgk0eQqlqSxAuxzPEstwNyEdXLUw3Vva
- xErzi/wrRD4x2e9a3ag+wmE5avAz86fMl+IEhZK2BSHgnMlOj79foy5WsmCFreZij5kR
- SDMA==
+ bh=p1vfDzd/FHQXQGH1Fm3PawIonhWP06q0FukTEX89uy8=;
+ b=a5cu2pjV95QoFDo8M0nlD2vt6CT51FP3dWzGEBWeOUgXTbZF3N/hetT3duPHl+wzJR
+ 7YO2lH87TTYifeaTXGcoT/GEEoIY853IezWb0ToJFgWlhm6nZDEDSFVpqcGhfV+mvZH2
+ 3r3fcN/7F2UdKSb/JRVNxvq+IJT6Ahr7EQipiN+4W1p3RryPeTFzwmXcMd0mhD3rd6e8
+ 9bhMejHj/JSg8ajtAzS7XXkkB69VNfaZNhTaZX6C4ku/wfDF0WuUe4p6D2GCJj3uNxYf
+ Cko8o87LKGuzQL+IxbkOXBBdYV0Sb5YQdvJ9EF/mVMmEYo45/pNRYbiQ0irb7zBCQlQP
+ cHLw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20260707; t=1791116867; x=1791721667;
+ d=1e100.net; s=20260707; t=1791116877; x=1791721677;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
  :to:cc:subject:date:message-id:reply-to:content-type;
- bh=2l+Auy4ScM7gXk2vevj8YZ1+8P1Y9lWsrpDBhQ01iOA=;
- b=k535GxErCLrzqm1f2PoSP9JoROgXNnZgjKihL+io46MnUTrRarIw3T7QUZl+FJL59g
- lFpQqYQoscGwOR3cad4i/ptMiZqWLMCIcoiTE2PsjEluOnXW5HlQl/9eKOMxhhu5ZR58
- SqyfmNgt4jmrr4R+oeO8EvvgluFHfY03z0yYjATMBfbT9vO+jyrEcOCEbaqnhBaVikCW
- ZJLpHDMuTSqsZp8zrVqtBw0/X2UJWVEQJ8OTiTRaaiaWrLJT3/TzW0Rb0zomx+0G8Ix7
- HH1+LfEpS4S6Mquy5yTwJHPmi8/+0722oBJcaJ8R2x0IjWxDBrK/cuCIqbCAzKrXszjA
- Vyaw==
+ bh=p1vfDzd/FHQXQGH1Fm3PawIonhWP06q0FukTEX89uy8=;
+ b=LCwNcPsW2Z6WgEhijDt+CN0TOENMfBQIK8YzuZY8dqpUrVnG0xO601W04+3H0tsWNI
+ xpPsAor68iI7zckPGmDksBk+pRBACA72T98CVvBuSgCnYm19OBMeYZx55IPR9Jq1hJqe
+ LvgXbAWctx5Bu2j2tTo5d6VBwt5vY5GphZQCsg3K/IJzjJbmjKOiiIslj1N2T46GlFVH
+ EJA5qCUrTGTudpkGYBsDZifv1HGVv1mZSNa8fEE9XBRY1rHLqN/EJC31/qStedDqED7K
+ BQg4v+xwBzsTqDvEaPdwQ4/+j4czStj41dc5dCM0N+g0AEAXhu7Uvw0oPMua8KFCX1gq
+ DBdg==
 X-Forwarded-Encrypted: i=1;
- AKwUvBxVea29DxwYKlB+R+U7tJcWQ8d2e6TLtSZ7WBMGiUaL6DDxiUY64NN0j8j26x3GzTE0ncGjx71SQQ==@nongnu.org
-X-Gm-Message-State: AFuF++kNHW+Pk0hIqkk9rugRvDmq1pIi7oFhuFHcF45+y6ZQplDX+fIU
- dX3QpXLce/maWfEOHi7BgcYgdF2bYtTRVm+RVnyINy1v1cBtI32A7gir
-X-Gm-Gg: AYBFou1jwZ9HruQEVqLtLOufUskIcwZIL37EytIR635+ua/wI1xla/gBLnUbAdtz3QS
- N9cjUCcDwNJ5ECVAcM4p44Wlo4WN/UxaEWhEFG8Wqs+94j5YLKoHVJA7tjiUJvAeQqWcLnaZMMK
- L6SOa6F5t5ZNTpDkl6KkP5IlkfczoedEYScSsM7We5x3OsS17iItsOrVR7Zr2dQtZ7ZheE2vY3K
- s83j1vToxnCzOx7NDTEkxycfxP1lghwE+NQIATb65/XBCCBEyDtX0I8EFGsY/oLcJrzFUiRXCGS
- Tmbavvo9601pyiW/w7LYCP/9dhA7I5PX0FWwlO5XqAuKzkBeAfZ97rWdOUf6D2V9Y53oNfwbXrk
- YH0VJuUuJ9xZW4K8wcc5P0vsELgpvCsv/M9U+a5pqn3SSdoNqn9wvXTviROun4wcJWY3hlauI0Z
- 1IfRFYz7EbVXAEXV9Xy8rIXTs1UHEywoRPoQs6Btk0wB2IfKdd3MONHerZX3Fy9knBZoNi4uKsi
- GaAMmRQUXEfhO2XaEPJqnY+tjZ4atQ+16t/FA==
-X-Received: by 2002:a05:600c:c490:b0:49c:fc6e:a3dc with SMTP id
- 5b1f17b1804b1-4a1681018f7mr73472785e9.27.1791116866790; 
- Sun, 04 Oct 2026 05:27:46 -0700 (PDT)
+ AKwUvBwI+iunpyG+o8F6smnjNG6w0EvKQdifMkrDBJCPuefsWl4SjlvlIdWE1aglB3osWiaahuoCEQJosA==@nongnu.org
+X-Gm-Message-State: AFuF++n2TjwVIvjDtM72Q+VDTa02cK4CN3pK6ejmUAv7wCUfQsLXFnsX
+ HKH3zXd9/rnOJASySZ7Yi0Xfp38je5nOgwCX03BU8aqOEaADiv2y5LRw
+X-Gm-Gg: AYBFou01uPzqxHnJn8bNO8kfCduJPC7qiDbzVE+MoTBo022YQ7qlZThX2Y1nXs6Ec4r
+ AHuWkmXyXtq+uT14qJgaZrFFxr6sFxZq7TpNYvebwduxn9OSG8mWQdS/otD/nDExQOWmrGFVh73
+ 7US/6af47iDHskR4lhdjNSL/3FmGHsYuF0acLsrvZ2w0P2Kz4ph3pIbUxyZXjNJ4go8Toxsxwy+
+ nyfiGz/uFwBORTEIhgvbWUmq+iX7KPdD2nEOxKJB3A5e2t0ZIESe868tW/6r3VNmM6rFA6epwcu
+ Ln3hLoYtfCluudJiqcXMRhoC8nijRPXILC30PwUPgih+zx+j40Evw1u3ohpZI673PW5+Ecxv5JN
+ Syn1cJawDJpu2zxvZxYZYccC0aLg/rmFkTNkp6KCMGSd+/hyhbfHl/nJo4Ei9MO64vbMLTbUU+H
+ 10EFtRsvQS71mcfhj7j/b4woCPZmmlVjL6iEBv7CWcJQQ8BXqLXWz2nhWpYh1HP6JCnBfmeF4cm
+ AimW3QGOffMwJDjP/LYuP5yCX3tx/sC1Ylqgw==
+X-Received: by 2002:a05:600c:4f4b:b0:4a1:6dca:51e3 with SMTP id
+ 5b1f17b1804b1-4a16dca51eamr45142185e9.3.1791116877187; 
+ Sun, 04 Oct 2026 05:27:57 -0700 (PDT)
 Received: from archlinux (pd95eda80.dip0.t-ipconnect.de. [217.94.218.128])
  by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-4a027698f13sm242319975e9.1.2026.10.04.05.27.44
+ 5b1f17b1804b1-4a027698f13sm242319975e9.1.2026.10.04.05.27.55
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sun, 04 Oct 2026 05:27:45 -0700 (PDT)
+ Sun, 04 Oct 2026 05:27:56 -0700 (PDT)
 From: Bernhard Beschow <shentey@gmail.com>
 To: qemu-devel@nongnu.org
 Cc: =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
@@ -77,17 +77,17 @@ Cc: =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
  Bin Meng <bin.meng@processmission.com>,
  Jean-Christophe Dubois <jcd@tribudubois.net>,
  Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>
-Subject: [PATCH v2 09/30] hw/arm/mcimx7d-sabre: Have 2 CPUs and 2 GiB of RAM
- by default
-Date: Sun,  4 Oct 2026 14:26:25 +0200
-Message-ID: <20261004122647.3913-10-shentey@gmail.com>
+Subject: [PATCH v2 16/30] hw/misc/Kconfig: Remove redundant USB_EHCI_SYSBUS
+ from config IMX
+Date: Sun,  4 Oct 2026 14:26:32 +0200
+Message-ID: <20261004122647.3913-17-shentey@gmail.com>
 X-Mailer: git-send-email 2.56.0
 In-Reply-To: <20261004122647.3913-1-shentey@gmail.com>
 References: <20261004122647.3913-1-shentey@gmail.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::42d;
- envelope-from=shentey@gmail.com; helo=mail-wr1-x42d.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::330;
+ envelope-from=shentey@gmail.com; helo=mail-wm1-x330.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -110,30 +110,29 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Having two CPUs and 1 GiB of RAM matches real hardware. Fix the machine
-defaults to make its use more ergonomic and less error-prone.
+Since commit 464ce71a963b "Kconfig: Extract CONFIG_USB_CHIPIDEA from
+CONFIG_IMX" all relevant i.MX SoC models select USB_CHIPIDEA such
+that selecting USB_EHCI_SYSBUS became redundant in CONFIG_IMX. Remove
+it.
 
-To reproduce the old default behavior for e.g. migration purposes,
-`-smp 1 -m 128M` needs to be passed on the command line.
-
+Fixes: 464ce71a963b ("Kconfig: Extract CONFIG_USB_CHIPIDEA from CONFIG_IMX")
 Signed-off-by: Bernhard Beschow <shentey@gmail.com>
 ---
- hw/arm/mcimx7d-sabre.c | 2 ++
- 1 file changed, 2 insertions(+)
+ hw/misc/Kconfig | 1 -
+ 1 file changed, 1 deletion(-)
 
-diff --git a/hw/arm/mcimx7d-sabre.c b/hw/arm/mcimx7d-sabre.c
-index 65fdb19c06..47744e66a4 100644
---- a/hw/arm/mcimx7d-sabre.c
-+++ b/hw/arm/mcimx7d-sabre.c
-@@ -81,6 +81,8 @@ static void mcimx7d_sabre_machine_init(MachineClass *mc)
-     mc->desc = "Freescale i.MX7 DUAL SABRE (Cortex-A7)";
-     mc->init = mcimx7d_sabre_init;
-     mc->max_cpus = FSL_IMX7_NUM_CPUS;
-+    mc->default_cpus = FSL_IMX7_NUM_CPUS;
-+    mc->default_ram_size = 2 * GiB;
-     mc->default_ram_id = "mcimx7d-sabre.ram";
-     mc->auto_create_sdcard = true;
- }
+diff --git a/hw/misc/Kconfig b/hw/misc/Kconfig
+index 46e3c03cc8..d1711433ef 100644
+--- a/hw/misc/Kconfig
++++ b/hw/misc/Kconfig
+@@ -93,7 +93,6 @@ config IMX
+     bool
+     select PTIMER
+     select SSI
+-    select USB_EHCI_SYSBUS
+ 
+ config FSL_IMX8MP_ANALOG
+     bool
 -- 
 2.56.0
 

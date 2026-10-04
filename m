@@ -4,93 +4,95 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 808EACA5FCE
-	for <qemu-arm@archiver.kernel.org>; Sun,  4 Oct 2026 10:31:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id F3D75CA5FCE
+	for <qemu-arm@archiver.kernel.org>; Sun,  4 Oct 2026 10:31:12 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xDJRB-00051p-2P; Sun, 04 Oct 2026 06:27:22 -0400
+	id 1xDJPI-00077f-27; Sun, 04 Oct 2026 06:25:24 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <marcandre.lureau@redhat.com>)
- id 1xDJR5-0004vu-60
- for qemu-arm@nongnu.org; Sun, 04 Oct 2026 06:27:16 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ id 1xDJPA-0006mO-NL
+ for qemu-arm@nongnu.org; Sun, 04 Oct 2026 06:25:16 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <marcandre.lureau@redhat.com>)
- id 1xDJR3-0003VG-P8
- for qemu-arm@nongnu.org; Sun, 04 Oct 2026 06:27:14 -0400
+ id 1xDJP8-00036f-Ko
+ for qemu-arm@nongnu.org; Sun, 04 Oct 2026 06:25:16 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1791109633;
+ s=mimecast20190719; t=1791109513;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=Uzf007Am0iew3g/kMyYf6SBSCtuMdzO1BgnQqYIj7r0=;
- b=TmnrriX1nxkOc3VdDkPyP7ikuOfTX5+bj2dPymbIao0WNk/f/YxgRgTglXq8MR/SRKto3q
- Nnf95eUVrNqy9xqeDbWqOvN+y/beYygeP7cOboMTYws5ukLTaHlfKLnvOYMuQeh0HsbZMA
- S7O/MClDDxA2I0fM73SLwxCxOgpjdLo=
-Received: from mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
+ bh=a6RJgyUgneJxSAr6u/BntYVKldwQsIdnR5gZ46c6I8I=;
+ b=gc9TXRq+2N54mNG/fsjz1ZZreUgLWp7WGTna8CRRqG8wohZTOmQZmsfUlNt+kV4rO3wmqL
+ Uac9bCDyZL/wFzyvgHIZLlxSUD7rrrJL7e2tV7d4B7EG0ZdK6zatOfjvhgRO3JBn6V+NSb
+ MLvmWq82aiD3BSYf5PxLD8445tEmRuQ=
+Received: from mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-624-6-wRe1uNOpu847cKi8umJA-1; Sun,
- 04 Oct 2026 06:27:12 -0400
-X-MC-Unique: 6-wRe1uNOpu847cKi8umJA-1
-X-Mimecast-MFC-AGG-ID: 6-wRe1uNOpu847cKi8umJA_1791109631
-Received: from mx-prod-int-10.mail-002.prod.us-west-2.aws.redhat.com
- (mx-prod-int-10.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.95])
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-561-Et4O8QuZPxmZ28Bp4xS1vg-1; Sun,
+ 04 Oct 2026 06:25:12 -0400
+X-MC-Unique: Et4O8QuZPxmZ28Bp4xS1vg-1
+X-Mimecast-MFC-AGG-ID: Et4O8QuZPxmZ28Bp4xS1vg_1791109511
+Received: from mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com
+ (mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.17])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id D700A1800633; Sun,  4 Oct 2026 10:27:10 +0000 (UTC)
+ by mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id E1CF61944D33; Sun,  4 Oct 2026 10:25:10 +0000 (UTC)
 Received: from localhost (headnet03.pony-001.prod.iad2.dc.redhat.com
  [10.2.32.114])
- by mx-prod-int-10.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id 180FE40E; Sun,  4 Oct 2026 10:27:09 +0000 (UTC)
+ by mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
+ id BB1B319560AB; Sun,  4 Oct 2026 10:25:09 +0000 (UTC)
 From: =?utf-8?q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>
-Date: Sun, 04 Oct 2026 14:24:14 +0400
-Subject: [PATCH 60/63] hw/input/pl050: remove duplicate class_init assignment
+Date: Sun, 04 Oct 2026 14:23:40 +0400
+Subject: [PATCH 26/63] hw/char/cadence_uart: fix RX FIFO overflow handling
 MIME-Version: 1.0
-Message-Id: <20261004-issue-4560-v1-60-ccbef537cbeb@redhat.com>
+Message-Id: <20261004-issue-4560-v1-26-ccbef537cbeb@redhat.com>
 References: <20261004-issue-4560-v1-0-ccbef537cbeb@redhat.com>
 In-Reply-To: <20261004-issue-4560-v1-0-ccbef537cbeb@redhat.com>
 To: qemu-devel@nongnu.org
 Cc: =?utf-8?q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>, 
- Pavee Hui <phui@google.com>, Peter Maydell <peter.maydell@linaro.org>, 
- qemu-arm@nongnu.org
-X-Developer-Signature: v=1; a=openpgp-sha256; l=681;
+ Pavee Hui <phui@google.com>, "Edgar E. Iglesias" <edgar.iglesias@gmail.com>, 
+ Alistair Francis <alistair@alistair23.me>, 
+ Peter Maydell <peter.maydell@linaro.org>, 
+ Paolo Bonzini <pbonzini@redhat.com>, qemu-arm@nongnu.org
+X-Developer-Signature: v=1; a=openpgp-sha256; l=1709;
  i=marcandre.lureau@redhat.com; h=from:subject:message-id;
- bh=yriWcmCeTEzYbU/e0HiivHx1Y0LC0UDIsIS0lU8rTl8=;
- b=owEBbQKS/ZANAwAKAdro4Ql1lpzlAcsmYgBqwiklLRw43+HX6oZ6xNY0rnyyH+2i/H55DDAfE
- 83Qk2cG1iiJAjMEAAEKAB0WIQSHqb2TP4fGBtJ29i3a6OEJdZac5QUCasIpJQAKCRDa6OEJdZac
- 5W7DD/98Gf3zsV/pg3/kvGwoCX7i0Th/xRueZwS8He6sLyf4DRTdhuiQupThHAZvoVt7RJqtixR
- g581Moqjqitdg0xa0wP5SBCcGX5ljpdK61BC6X3i/s82mflY7EA4c7T5aExGsm8M+vR1J+PZPmV
- HOfeqQ1QQQyqFnxe1rLQwX4ohTEdLmYu6BWdVJxFlmpnZHfj5K6CLPjIuOLHgWD2wuMvWOIUvjy
- VQDK0HFHpdSjPHEnPw51DVSp9xaHqhJjdzKg+laB0M3pk8Mgx98BheDG0MNnU7L2kHyPfTCdwtS
- 14YI6CrFFaJ5pqj0oliP5acBdHZJfUsZCn9D9kSnRTkr+L5ag7KUl60YzI70F0mt4f/jy2H8IBD
- JRwvSdX0UD803imTigyS2VfyhKj/PXzgW0HPMA5qB9FO0LL4z3Dm8mjWTrQVZhTo2A7RJYryfUm
- jqRo+pFqy7Eis1voKVcqCS0jnrd3I8z6QS03oC+bgrMWTYW6BijHxqI+RkPoXHb+FC7eoAUFTUY
- QcVP0nnyt6MdaRxWLzPxhjX2rdlzK/EpsEbqGF0+YxyAWxd81gnu1pIwCoZDj+jr2OWFm8Gb5by
- dI2S+/ie6WKY++0mC2r48P1ubCCzFEZw9zS1ycrDvVZMj5uBtFoa9NPq/1KXZC/1lytanlIz4sL
- 7GbNDj9FpUlxLFQ==
+ bh=wmlbgAkp5IMqyKQLFWWUMX/JP+57PU9lyUpiwEIUUDk=;
+ b=owEBbQKS/ZANAwAKAdro4Ql1lpzlAcsmYgBqwikjSnA6c/fRe15ABZM+8qTNZSOsUBti8Zfr4
+ 8Et5PlngQWJAjMEAAEKAB0WIQSHqb2TP4fGBtJ29i3a6OEJdZac5QUCasIpIwAKCRDa6OEJdZac
+ 5diMEACLLT9LnFl5P1MRVb9OLs5ZLGBuejy4chfsMF7R7PjebmdBMGIwTI3XGv9AS5lBcaQLtXK
+ NHiVcG13xyHED+79U0xskKZ0z3SQZYExGJSGb909YNKeBzpq9LKRcoAaJlBBGYNeQDAPs0ezf9z
+ WYd3J/knlU+IJ1VBeAzeF2a/q9aO6PBFMoewNcLLRC1G2stutMMXNCBocdhtMBA8siBUJq+8JK3
+ ug9OK8JHqzWbnI51nCn7cy4N+/Q2TpwWWfI2Dw7IOh4LU88+zqWbjpr6AgLdj6ByHyRT9NERJ27
+ fLLKFZ4nCF4H0gdD9BuSPPHzEv/92iK8TVFQNOAPCDI5LlXEowjuAuOP7+RUGz0UJZKRHOYJFC6
+ 3GZa1e1VvpWcffZ8fZhOXbSx64Htaa/ulVfTK/YfgZr7RF6PJqgArIoe38kGMRLzuFyK3RFHC37
+ DV791cZQHr3mkmRJ0Rn5Qb3PL6k9gmGHVUfQonznO5ags5ScQyXWOiTWE9C9VBGEjD8cTcZaxB6
+ 5K1GP/IgUd7EGEf+yQXQx8hLpZEZM6Olb/IYegBszM9LixzShqg/znaGMvdkZOuQ8LfvFX4J64T
+ 7DEeNSOLLT4cBDwsQ6jCOCeLxAw+9kRISQE/B0tr5kwirr0Fad7PJ1iZLNHqmuf6Q8YbMqCuh/c
+ gCIhYKQV8Ygbn3A==
 X-Developer-Key: i=marcandre.lureau@redhat.com; a=openpgp;
  fpr=87A9BD933F87C606D276F62DDAE8E10975969CE5
-X-Scanned-By: MIMEDefang 3.6 on 10.30.177.95
-X-Mimecast-MFC-PROC-ID: 5gXaYuPHkL4XTL-Pkih7sP8APXUYZBtQ80-CgWviPEM_1791109631
+X-Scanned-By: MIMEDefang 3.0 on 10.30.177.17
+X-Mimecast-MFC-PROC-ID: dxNjnmNeYN6Te9ZrMxzgPmBpQ5xf3NhAtsdSQVgVc5g_1791109511
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=170.10.133.124;
+Received-SPF: pass client-ip=170.10.129.124;
  envelope-from=marcandre.lureau@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -23
-X-Spam_score: -2.4
-X-Spam_bar: --
-X-Spam_report: (-2.4 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.337,
+X-Spam_score_int: 9
+X-Spam_score: 0.9
+X-Spam_bar: /
+X-Spam_report: (0.9 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.337,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=0.001, RCVD_IN_SBL_CSS=3.335,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -106,26 +108,47 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-The .class_init field was set twice in the TypeInfo struct.
+The old code checked for overflow only once before the loop, which
+meant a multi-byte write could silently overflow the FIFO when there
+was space for some but not all bytes. Check per-byte instead, storing
+as many bytes as possible before flagging ROVR. Only arm the FIFO
+trigger timer when bytes were actually stored.
 
+Fixes: 35548b06cf55 ("cadence_uart: initial version of device model")
 Reported-by: Pavee Hui <phui@google.com>
 Signed-off-by: Marc-André Lureau <marcandre.lureau@redhat.com>
 ---
- hw/input/pl050.c | 1 -
- 1 file changed, 1 deletion(-)
+ hw/char/cadence_uart.c | 16 +++++++++-------
+ 1 file changed, 9 insertions(+), 7 deletions(-)
 
-diff --git a/hw/input/pl050.c b/hw/input/pl050.c
-index 48df2734e269..3731e6969850 100644
---- a/hw/input/pl050.c
-+++ b/hw/input/pl050.c
-@@ -265,7 +265,6 @@ static const TypeInfo pl050_type_info = {
-     .class_init    = pl050_class_init,
-     .class_size    = sizeof(PL050DeviceClass),
-     .abstract      = true,
--    .class_init    = pl050_class_init,
- };
+diff --git a/hw/char/cadence_uart.c b/hw/char/cadence_uart.c
+index eff6a3c4d17a..ae11caa11b82 100644
+--- a/hw/char/cadence_uart.c
++++ b/hw/char/cadence_uart.c
+@@ -284,14 +284,16 @@ static void uart_write_rx_fifo(void *opaque, const uint8_t *buf, int size)
+         return;
+     }
  
- static void pl050_register_types(void)
+-    if (s->rx_count == CADENCE_UART_RX_FIFO_SIZE) {
+-        s->r[R_CISR] |= UART_INTR_ROVR;
+-    } else {
+-        for (i = 0; i < size; i++) {
+-            s->rx_fifo[s->rx_wpos] = buf[i];
+-            s->rx_wpos = (s->rx_wpos + 1) % CADENCE_UART_RX_FIFO_SIZE;
+-            s->rx_count++;
++    for (i = 0; i < size; i++) {
++        if (s->rx_count >= CADENCE_UART_RX_FIFO_SIZE) {
++            s->r[R_CISR] |= UART_INTR_ROVR;
++            break;
+         }
++        s->rx_fifo[s->rx_wpos] = buf[i];
++        s->rx_wpos = (s->rx_wpos + 1) % CADENCE_UART_RX_FIFO_SIZE;
++        s->rx_count++;
++    }
++    if (i > 0) {
+         timer_mod(s->fifo_trigger_handle, new_rx_time +
+                                                 (s->char_tx_time * 4));
+     }
 
 -- 
 2.56.0.rc0.29.g47ce80527c56

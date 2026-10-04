@@ -4,95 +4,95 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 54FDFCA5FEF
-	for <qemu-arm@archiver.kernel.org>; Sun,  4 Oct 2026 15:27:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 942AFCA5FEF
+	for <qemu-arm@archiver.kernel.org>; Sun,  4 Oct 2026 15:48:17 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xDO7J-0006Hy-9x; Sun, 04 Oct 2026 11:27:09 -0400
+	id 1xDORV-0002rP-I0; Sun, 04 Oct 2026 11:48:09 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <bmeng.cn@gmail.com>)
- id 1xDO79-000665-Kz
- for qemu-arm@nongnu.org; Sun, 04 Oct 2026 11:27:04 -0400
-Received: from mail-yw1-x1129.google.com ([2607:f8b0:4864:20::1129])
+ id 1xDORI-0002mD-Qz
+ for qemu-arm@nongnu.org; Sun, 04 Oct 2026 11:47:49 -0400
+Received: from mail-yw1-x1130.google.com ([2607:f8b0:4864:20::1130])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <bmeng.cn@gmail.com>)
- id 1xDO77-000615-HH
- for qemu-arm@nongnu.org; Sun, 04 Oct 2026 11:26:58 -0400
-Received: by mail-yw1-x1129.google.com with SMTP id
- 00721157ae682-8ab37e44643so6180457b3.0
- for <qemu-arm@nongnu.org>; Sun, 04 Oct 2026 08:26:55 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1791127614; cv=none;
+ id 1xDORH-0007R4-4R
+ for qemu-arm@nongnu.org; Sun, 04 Oct 2026 11:47:48 -0400
+Received: by mail-yw1-x1130.google.com with SMTP id
+ 00721157ae682-8925e417565so6805547b3.2
+ for <qemu-arm@nongnu.org>; Sun, 04 Oct 2026 08:47:46 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1791128866; cv=none;
  d=google.com; s=arc-20260327;
- b=cCvdC0crScRJTIf7xrZUz+5jjoTEQ+yvzHo0oZZkvPvO3ldjea7IsPfyXxeikpYzwF
- veiiLVC94zw0P5nG0TFZxwjV8a01qhKpGOUsw6qHT1Id8WQgjdWYlCsRl0HsI1KWSsDb
- y0fSZF9nleoNq418rcijPbxNoVUvKEkX2Rmfd1cP9/tZCDDipdkaf6HcLOcwMZI55iAc
- 1KSwIhMl7KdjdWxIID8jCDNifkLMhyn9B4wMljOfy1GY+fvv2muDVU92D4R68LYC73yx
- 7Ez+3qSEYUgTi2Ru2pYDK9tunWxQC+lCQAaIkYI0GNYdtGmRKetczesRqBgSVpuevlX0
- BXVg==
+ b=O7qMh6bdWdsJuPYUZvElPDzretc9CBA2HprzMdM86kWGbFL80+M/h9uPoDYRd3KP+J
+ lHPjpsvc9Po7Cf6UqJqX7ygKaHopR3ObFgV1uLoz3XxiwRHtfMZRlWHZ9CNvqnACSzmk
+ CKkPvD/9IDZHDir8MvZ5N0/upOruanjczYqXXynpn4eMeAtmUICc45Ex53PG+oPFJBrG
+ ePIAQARySePh/4luZ3iSjpurKN3QSprWoS9gphT3+jH/AHukNSXUg0tfuMmyC5LA71Ev
+ oNP82slmC0f1D8Lo05wHAcEPNczSJWxZGVTk5oGf1EoKUPfI4QG2oXffspevG6hJiML8
+ 32Qw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
  s=arc-20260327; 
  h=content-transfer-encoding:cc:to:subject:message-id:date:from
  :in-reply-to:references:mime-version:dkim-signature;
- bh=OYCf/3IiB3r6J5jKmU00e9JY0kvGwGvWihTLOwfnIzI=;
- fh=Ze1NMT7Nq2gKBpLE1uZaUk6MDWZtxVFgy+Ufhx4ewkI=;
- b=ATKfCRJjKLSP3IMOtA/BzJYKaDup+CVKCPjyQQrSO960Ez959zfdYh9VCp2IGVOuPt
- rosa8ywRg3rydrHejDfHahaWGowMPjULhHukyZyxUmeYhISp8eVVK074FGGnMY+1fcKD
- 7XR2AckM+bs2jNJgCQ188YQncGV1qi3NTGd/o1S56pje0L37RE9F71SBvOHxVG58C2gB
- Ox+LkMt2baRoHNdsPzeoGyOKnE3BrOIa7ddwjCZYE3aEhpiRJ86v641lijhXI8Dt5RQi
- R3lY/QBuEHjeLrhSb18j44DO04puwsjPbFiIhkgkeu9oSMuRfH7IgH12BF54kmdzfaXr
- usoQ==; darn=nongnu.org
+ bh=QTO3DfG1oxftptPpiajQV/Fsp6AfJiZczYgK4cqsWWQ=;
+ fh=ofIyQNz+kmPI529FDU9K+PdTcUheANPLBC0gyb5OO1Y=;
+ b=Lhn4l/hfkdWyg9SLkwPl+Khh+p0NyJtN3UTTuv4WwmADdU1xdrGYmpghL3qiwDHjRX
+ Q2jPAlIYMdmgk7l1YJD7WoCNEdNRC4pG5XmR+LcaFGyZ6XO4jG3QbsqRo2a8W2YQQtA7
+ llYYxV/4WqMzfxHgCDGuNx6vrHkxFlHey8wEu1WkRNZiyHhlh4NYEVCF31EFR+QupCnD
+ zSaVbkbQ4d4uKJTPFQr//eX9EtNZak2v6SRvhaX8rfC6qGqmD1S18z4+j5Xxi1/lHaYd
+ lQGVKakBjQYyRMTlPU1pjp7POGeaNRCnqwhcX0T0sbBkXmCrWEc1hOt/uyZ9lRyo7h0m
+ HsPw==; darn=nongnu.org
 ARC-Authentication-Results: i=1; mx.google.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20251104; t=1791127614; x=1791732414; darn=nongnu.org;
+ d=gmail.com; s=20251104; t=1791128866; x=1791733666; darn=nongnu.org;
  h=content-transfer-encoding:content-type:cc:to:subject:message-id
  :date:from:in-reply-to:references:mime-version:from:to:cc:subject
  :date:message-id:reply-to:content-type;
- bh=OYCf/3IiB3r6J5jKmU00e9JY0kvGwGvWihTLOwfnIzI=;
- b=hHx4YbnS9UMsGMELhCRbe6IMDIMIUSkLW1yJJwW7YkifJLnMM/ln0OSoV+Q5R6g6WX
- WzosdsZzKTuqJt+CMvqBO6Ym9qsOuWzgepy0TlYgCowHG2e0E1psG301X+gc4oRlQN/8
- jrKIT4IbxA1H5rIyRzHvTyAaoG/dZTkXSwkb9FaceYZTQPhkJc0hF6WCFhvtLzfZwnf+
- hkD5DFcJ5nq9QKgS2w3vS3LX8L2LnBq/jhZigJp7loi12dcPyXYYioUWuhFkNbB/P8jS
- xb750RXdc4Ie1hkj7pN4MQ6jWdWnS/4cMAR8UhU/jbmWPQmNqDHD0huMCNsO7OQ95Qe/
- X3wA==
+ bh=QTO3DfG1oxftptPpiajQV/Fsp6AfJiZczYgK4cqsWWQ=;
+ b=QbSpw9qkip08KV2YqPYajlchcAEJMW9GiwxDHYtVXZ7mpR3cut3XlegTEgK/8X/Ih1
+ SiCFeUDD2US5uIdEgKoMBBo+YtKz+Bp68Swg3RVRfVwIqbgDRCjyYk/oIfRi7uOzp7+Y
+ WO3Gu6yfQx4xvqsdwOLlwygU3RbTY8vfTCdynVRkeG3EWorUrD1BAg13dUnUw4yCKKqs
+ pSka4Rw/qWVF34RRzcCNai8B9nMdyQkdQqt9alORlOJvOo9fZiifdrUKHEB3m8sbxXsT
+ L6RVUtdHFbLM+TSDPHuRLzlfCWNkdycxIPj0a4bvVamnmxXFeutD6jvZ5Y7e32krk4mV
+ FCaw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20260707; t=1791127614; x=1791732414;
+ d=1e100.net; s=20260707; t=1791128866; x=1791733666;
  h=content-transfer-encoding:content-type:cc:to:subject:message-id
  :date:from:in-reply-to:references:mime-version:x-gm-gg
  :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
  :content-type;
- bh=OYCf/3IiB3r6J5jKmU00e9JY0kvGwGvWihTLOwfnIzI=;
- b=Zj7h9saythHcM2IZpwieNvl5ngOahid8cgFB4xBQ2TnHtNO5KeRyi7cocZtBKBp3C/
- o5R06STzEuEGDzQWCqZKlaeTDtlrkbT+pEIfSOLbtKFNUO4SBOVW6N2/cxrtPe5BTQ/i
- OLWIs0gYteJ6V5miqcK+lLD0FvjTRgjhziu83p3ZKSYqTj5AIMZWyD4xsTziAM5gVXaX
- CGnHBl1YKzP/tRX5xd6tRULy1dvHmZNaVxO3bkUy+QLQyp7ZfF2Hp5LIhMS0Q4uI9IIb
- aRlEi4qj7X6gCsYeYoGdfraa8hfOqpXRbQ7XMMF7u4VVGDv/Wak2HiKfhkrRBmBr0kXh
- Msfg==
+ bh=QTO3DfG1oxftptPpiajQV/Fsp6AfJiZczYgK4cqsWWQ=;
+ b=w5PfsjCMxvqqbT/3F9vtEOTRWapHonae4sKVDIjkip/33y0sUpuqirOi0YpB7LSvhP
+ pEBdkm/freJyTAsG3Vvwf8E2RE9SiaXXkJwgKDf8UB8O9M2iHwx9lisg9jcF6zw/0IVY
+ tKWpAKEcM1LQSnPAdg+vFFGwDHR9dvE4gQBVdj/xtLeaibNvi9MvRWbOxaTIBNu4AoEN
+ yOnIwSH0sQ4A3tMitWxAJR8VevaONK3nwMMNbCSKeia+KAvP8IF2XQ+f4ak8m7Jh97xr
+ PGCdFrXFB3NKqMdIiEZ6jIeR75WAjhs0f/5ECs69We8PmMmNVddD27Dj0cCD5aIYkRAL
+ uiGw==
 X-Forwarded-Encrypted: i=1;
- AKwUvByM84GE0/zkXN2ZQaAlfkIOXGe7QPYaXZ+Ppx6Fq9ODAkH1KyzAuKu6fJ3AG/xXnzG5cvTh3uouNw==@nongnu.org
-X-Gm-Message-State: AFq9FYKz9gzKwhs2TbTLnFiStuouUvGQcpRKhoxQ33dSYqY8rfPztome
- ZUV+fATmBnsCSoZV+vnjltT+2JhmKxV16qubIX0Kqwnk6uV9l+kzqOMGcp2o9mUd8LKQKr9UZsm
- yrps4dSGP0EEJ2IfCgxUJ1l426GeBIvM=
-X-Gm-Gg: AYBFou14Bnnr7EL2hyf3bPZS46emhEU3yzjMafNCyIAYzrachTeSE9MqbRCxvzDcNcw
- IfP0GZKA8zi4gOLQwTgBet/b2cpJQxd27miOdyyBbnQftzkDFTFaZ6x9EzKAdllZdF1yLmU1EeW
- jdcgOPkT/Y6CSWeztNwPSwNitzrjP/hJXyO6C2VTjH0u2Z60l6QLvajQwwnVCNxIqRzQe7d9qhH
- WDDnSvQ09IeVlrehHcmUA+qfh3Oc/fpO1x0uzwYfQPcQWVmEGA6fQc3TSo1dhkGCwiqyDFPNjpZ
- qhzLecJVpFncv4ZhsNMntevb1kqZELsVC6L5kOk6flVXMSKI1P+l+hLb2mE7u8upEEc033Hh4IY
- +w+sanNzss1PQao9F
-X-Received: by 2002:a05:690c:f04:b0:8a9:8021:5cc0 with SMTP id
- 00721157ae682-8ae951f455emr16778057b3.21.1791127614473; Sun, 04 Oct 2026
- 08:26:54 -0700 (PDT)
+ AKwUvBwhleUrQHB5EZe6uSSIRH+7TdLAjShXWjNMCKfnTMJ7P7ZLCB2MkI+ncCjkGncizO9ZgHwR3JMeBg==@nongnu.org
+X-Gm-Message-State: AFq9FYLL9o0roEetJZwhLxgem+ZdXfVum2aYP/hENKITQbL3srPEDDhk
+ 2UBw6ucE1cU2yDT92XjCMeEJX0Vu/eP7ZuPbl0x85+0Mq3Pfd0JN+cnMxunk9ytuWuYeF/EavbO
+ ByPMPVrLtN0gKq8ZL7YjP/kxZ11QnrX0=
+X-Gm-Gg: AYBFou2wJ7API+bGID2yb9V9e0XCmtsa3BXMGnL92HX1siA4OvG+T3WXNB6RlbecfUh
+ nGqgSMeuIksby5zADUNyzR+pFPrGCJ+7/kTy7Aj+PzyiUZ4GW/KodBXdNUr2SlYjWB8CeUihDWl
+ F+1SMAqrcC2xIZl67fQUzwIf84BDW7qd5dQ3jNzKKmdx/YzmtZ7UlDcVxOKMnan2+H3XLv2rxJ6
+ HheWtHPz8cNAtcH0wuMLsmf1WGFOlntuRFfXf52F4pwsnkZ3Txne37D3RARQiktzMbg7Q43ngkW
+ ZGUcGgNX+C3oy7QPA2yTDF95Hd+p2dBDSUmPeJtRR/Jo2zqGiEtpU9WeiLvjIN7d1AXJ79N6xCz
+ RQV28ZDDn7rqhPA==
+X-Received: by 2002:a05:690c:3481:b0:8ae:9448:14cf with SMTP id
+ 00721157ae682-8ae956db0admr15501977b3.88.1791128865861; Sun, 04 Oct 2026
+ 08:47:45 -0700 (PDT)
 MIME-Version: 1.0
 References: <20261004122647.3913-1-shentey@gmail.com>
- <20261004122647.3913-7-shentey@gmail.com>
-In-Reply-To: <20261004122647.3913-7-shentey@gmail.com>
+ <20261004122647.3913-8-shentey@gmail.com>
+In-Reply-To: <20261004122647.3913-8-shentey@gmail.com>
 From: Bin Meng <bmeng.cn@gmail.com>
-Date: Sun, 4 Oct 2026 23:26:41 +0800
-X-Gm-Features: AclHuK9hyi-xQl_dfCb6JkYFBIL0ffw9g2vr7wWM1Qp5GNM04tZBkwxSkG1va3Q
-Message-ID: <CAEUhbmX0+nuoRxutdXQvfM02AAMRnazkPv=ZpqA6o9REaUX7wA@mail.gmail.com>
-Subject: Re: [PATCH v2 06/30] hw/arm/sabrelite: Have 4 CPUs and 1 GiB of RAM
- by default
+Date: Sun, 4 Oct 2026 23:47:34 +0800
+X-Gm-Features: AclHuK_rEvqBNv-BKynrvq7C3_TUg_Rcen7wtFQj8S0sIy9iKBQOZ3ccua6lA_0
+Message-ID: <CAEUhbmXNFb49nObiiqL4QF3xDLWE=r1BfEgS11zOZ1rWN=NhRw@mail.gmail.com>
+Subject: Re: [PATCH v2 07/30] tests/functional/arm: Add console test for
+ `sabrelite` machine
 To: Bernhard Beschow <shentey@gmail.com>
 Cc: qemu-devel@nongnu.org,
  =?UTF-8?B?TWFyYy1BbmRyw6kgTHVyZWF1?= <marcandre.lureau@redhat.com>, 
@@ -106,8 +106,8 @@ Cc: qemu-devel@nongnu.org,
  Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2607:f8b0:4864:20::1129;
- envelope-from=bmeng.cn@gmail.com; helo=mail-yw1-x1129.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::1130;
+ envelope-from=bmeng.cn@gmail.com; helo=mail-yw1-x1130.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -130,23 +130,113 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Sun, Oct 4, 2026 at 8:36=E2=80=AFPM Bernhard Beschow <shentey@gmail.com>=
+Hi Bernhard,
+
+On Sun, Oct 4, 2026 at 8:28=E2=80=AFPM Bernhard Beschow <shentey@gmail.com>=
  wrote:
->
-> Having four CPUs and 1 GiB of RAM matches real hardware. Fix the machine
-> defaults to make its use more ergonomic and less error-prone. Also
-> reflect this in the board documentation.
->
-> To reproduce the old default behavior for e.g. migration purposes,
-> `-smp 1 -m 128M` needs to be passed on the command line.
+
+nits: please add a simple commit body.
+
 >
 > Reviewed-by: Philippe Mathieu-Daud=C3=A9 <philmd@oss.qualcomm.com>
 > Signed-off-by: Bernhard Beschow <shentey@gmail.com>
 > ---
->  docs/system/arm/sabrelite.rst | 4 ++--
->  hw/arm/sabrelite.c            | 3 +++
->  2 files changed, 5 insertions(+), 2 deletions(-)
+>  MAINTAINERS                            |  1 +
+>  tests/functional/arm/meson.build       |  1 +
+>  tests/functional/arm/test_sabrelite.py | 46 ++++++++++++++++++++++++++
+>  3 files changed, 48 insertions(+)
+>  create mode 100755 tests/functional/arm/test_sabrelite.py
 >
+> diff --git a/MAINTAINERS b/MAINTAINERS
+> index 1312bbd1bd..f31245716a 100644
+> --- a/MAINTAINERS
+> +++ b/MAINTAINERS
+> @@ -1054,6 +1054,7 @@ F: include/hw/usb/imx-usb-phy.h
+>  F: include/hw/arm/fsl-imx6.h
+>  F: include/hw/misc/imx6_*.h
+>  F: include/hw/ssi/imx_spi.h
+> +F: tests/functional/arm/test_sabrelite.py
+>
+>  SBSA-REF
+>  M: Peter Maydell <peter.maydell@linaro.org>
+> diff --git a/tests/functional/arm/meson.build b/tests/functional/arm/meso=
+n.build
+> index 61b00932db..761b371a8d 100644
+> --- a/tests/functional/arm/meson.build
+> +++ b/tests/functional/arm/meson.build
+> @@ -24,6 +24,7 @@ test_arm_timeouts =3D {
+>    'quanta_gsj' : 240,
+>    'raspi2' : 120,
+>    'replay' : 240,
+> +  'sabrelite' : 240,
+>    'tuxrun' : 240,
+>    'sx1' : 360,
+>  }
 
-Reviewed-by: Bin Meng <bin.meng@processmission.com>
+Missing adding an entry to 'tests_arm_system_thorough' otherwise the
+test cannot be run automatically.
+
+> diff --git a/tests/functional/arm/test_sabrelite.py b/tests/functional/ar=
+m/test_sabrelite.py
+> new file mode 100755
+> index 0000000000..31a0a49eac
+> --- /dev/null
+> +++ b/tests/functional/arm/test_sabrelite.py
+> @@ -0,0 +1,46 @@
+> +#!/usr/bin/env python3
+> +#
+> +# Functional test that boots a Linux kernel and checks the console
+> +#
+> +# SPDX-License-Identifier: GPL-2.0-or-later
+> +
+> +from qemu_test import LinuxKernelTest, Asset
+> +
+> +
+> +class SabreliteMachine(LinuxKernelTest):
+> +
+> +    ASSET_KERNEL =3D Asset(
+> +        ('https://ftp.debian.org/debian/dists/bookworm/main/installer-ar=
+mhf/'
+> +         '20230607/images/netboot/vmlinuz'),
+> +        '5851e9c61465a26db810796db671c4729e66e81c365b3ebb1a4b7f772737605=
+b')
+> +
+> +    ASSET_INITRD =3D Asset(
+> +        ('https://ftp.debian.org/debian/dists/bookworm/main/installer-ar=
+mhf/'
+> +         '20230607/images/netboot/initrd.gz'),
+> +        'fe33f836232a9107716d34dc56d36dea81bab039243a2a42ea6583a50c9b92c=
+a')
+> +
+> +    ASSET_DTB =3D Asset(
+> +        ('https://ftp.debian.org/debian/dists/bookworm/main/installer-ar=
+mhf/'
+> +         '20230607/images/device-tree/imx6q-sabrelite.dtb'),
+> +        '3ad637c8ea55ebd058a67f686e050b82ccb0d1327bc283623c133c48ad87db4=
+4')
+> +
+> +    def setUp(self):
+> +        super().setUp()
+> +
+> +        self.kernel_path =3D self.ASSET_KERNEL.fetch()
+> +        self.initrd_path =3D self.ASSET_INITRD.fetch()
+> +        self.dtb_path =3D self.ASSET_DTB.fetch()
+> +
+> +    def test_console(self):
+> +        self.require_accelerator("tcg")
+> +        self.set_machine('sabrelite')
+> +        self.vm.set_console(console_index=3D1)
+> +        self.vm.add_args('-kernel', self.kernel_path,
+> +                         '-initrd', self.initrd_path,
+> +                         '-dtb', self.dtb_path)
+> +
+> +        self.vm.launch()
+> +        self.wait_for_console_pattern('Starting system log daemon:')
+> +
+> +if __name__ =3D=3D '__main__':
+> +    LinuxKernelTest.main()
+> --
+
+Regards,
+Bin
 

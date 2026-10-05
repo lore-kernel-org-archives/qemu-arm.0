@@ -4,48 +4,48 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5706CCA5FFC
-	for <qemu-arm@archiver.kernel.org>; Mon,  5 Oct 2026 16:44:07 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E3549CA5FF0
+	for <qemu-arm@archiver.kernel.org>; Mon,  5 Oct 2026 16:45:17 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xDlma-0005Xl-1e; Mon, 05 Oct 2026 12:43:20 -0400
+	id 1xDloR-000722-1n; Mon, 05 Oct 2026 12:45:16 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <cohuck@redhat.com>) id 1xDlmZ-0005WR-5i
- for qemu-arm@nongnu.org; Mon, 05 Oct 2026 12:43:19 -0400
+ (Exim 4.90_1) (envelope-from <cohuck@redhat.com>) id 1xDlnu-0006qm-J4
+ for qemu-arm@nongnu.org; Mon, 05 Oct 2026 12:44:43 -0400
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <cohuck@redhat.com>) id 1xDlmW-0001Hd-Ss
- for qemu-arm@nongnu.org; Mon, 05 Oct 2026 12:43:18 -0400
+ (Exim 4.90_1) (envelope-from <cohuck@redhat.com>) id 1xDlnr-0001Q1-PN
+ for qemu-arm@nongnu.org; Mon, 05 Oct 2026 12:44:42 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1791218595;
+ s=mimecast20190719; t=1791218678;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=qh49U003KLBLBhYbnCnOLFLAvwjn1I14DaZ3+ke48lY=;
- b=Q3NwsFTitXXR9hsQ85tm+Yn8sjdyFEvugsBy4J3piKHVuSc6u4Ig81JS7945ECO90a2kjo
- eJeCYTlT21TGRjAMnncq57ap+9meM+xnVWpAqjqx1b4I5y4gV/ShFi6flgvNCngx8GE5IB
- mGWs7TdpK4bHOG5YlUDRElscq7x0WTk=
+ bh=a9BoSnEDgCJTNGC3lt5JXO3kHI9tlec5yV/ZrOKotUM=;
+ b=DLhxZ3LUIEpeJ0LNnZ586ZCKXQtG1tSNaHd+eYrUN2gG33mBFNz08vVAKSKRFofVDnd63y
+ dbMkHTdsmmigOrYaJMlq4Ng0S688CIMYuCu3k0AeLGBhGitpO8xwFs3TREWtm0sNSo7RCA
+ eXTYn5rixnOntQOXMiCfZZ+VK9gZLak=
 Received: from mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com
  (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-511-mCLtMEfGN2O4RnS1sIZrZg-1; Mon,
- 05 Oct 2026 12:43:12 -0400
-X-MC-Unique: mCLtMEfGN2O4RnS1sIZrZg-1
-X-Mimecast-MFC-AGG-ID: mCLtMEfGN2O4RnS1sIZrZg_1791218591
-Received: from mx-prod-int-10.mail-002.prod.us-west-2.aws.redhat.com
- (mx-prod-int-10.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.95])
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-59-Y2AVDQIvMEyt9ypAIuHz1g-1; Mon,
+ 05 Oct 2026 12:44:35 -0400
+X-MC-Unique: Y2AVDQIvMEyt9ypAIuHz1g-1
+X-Mimecast-MFC-AGG-ID: Y2AVDQIvMEyt9ypAIuHz1g_1791218673
+Received: from mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com
+ (mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.93])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
  by mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id E6C6C1955F0D; Mon,  5 Oct 2026 16:43:10 +0000 (UTC)
+ id 366FD195608F; Mon,  5 Oct 2026 16:44:33 +0000 (UTC)
 Received: from localhost (headnet05.pony-001.prod.iad2.dc.redhat.com
  [10.2.32.117])
- by mx-prod-int-10.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 45FEB471; Mon,  5 Oct 2026 16:43:10 +0000 (UTC)
+ by mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 8916018004D4; Mon,  5 Oct 2026 16:44:32 +0000 (UTC)
 From: Cornelia Huck <cohuck@redhat.com>
 To: =?utf-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>,
  qemu-devel@nongnu.org
@@ -53,21 +53,21 @@ Cc: xen-devel@lists.xenproject.org, qemu-riscv@nongnu.org,
  qemu-ppc@nongnu.org, qemu-block@nongnu.org, qemu-s390x@nongnu.org,
  qemu-arm@nongnu.org, =?utf-8?Q?Daniel_P=2E_Berrang=C3=A9?=
  <berrange@redhat.com>
-Subject: Re: [PATCH 04/28] hw: mark all virtio CCW devices as secure
-In-Reply-To: <20260911143627.2743803-5-berrange@redhat.com>
+Subject: Re: [PATCH 07/28] hw/vfio: mark all VFIO object classes as secure
+In-Reply-To: <20260911143627.2743803-8-berrange@redhat.com>
 Organization: "Red Hat GmbH, Sitz: Werner-von-Siemens-Ring 12, D-85630
  Grasbrunn, Handelsregister: Amtsgericht =?utf-8?Q?M=C3=BCnchen=2C?= HRB
  153243,
  =?utf-8?Q?Gesch=C3=A4ftsf=C3=BChrer=3A?= Ryan Barnhart, Charles Cachera,
  Avril Crosse O'Flaherty"
 References: <20260911143627.2743803-1-berrange@redhat.com>
- <20260911143627.2743803-5-berrange@redhat.com>
+ <20260911143627.2743803-8-berrange@redhat.com>
 User-Agent: Notmuch/0.40 (https://notmuchmail.org)
-Date: Mon, 05 Oct 2026 18:43:07 +0200
-Message-ID: <87wlrwjdyc.fsf@redhat.com>
+Date: Mon, 05 Oct 2026 18:44:30 +0200
+Message-ID: <87tsn0jdw1.fsf@redhat.com>
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 3.6 on 10.30.177.95
-X-Mimecast-MFC-PROC-ID: Kw4gPotfnvhPKo8Tvcmx8hbBahwBqjhuSFhOsaOJwjE_1791218591
+X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.93
+X-Mimecast-MFC-PROC-ID: x3PVNzivvi_sLq20FHZGcgbSn4-L0knfDDXONytRyLE_1791218673
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: quoted-printable
@@ -97,29 +97,23 @@ Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
 On Fri, Sep 11 2026, Daniel P. Berrang=C3=A9 <berrange@redhat.com> wrote:
 
-> These are all intended for use in a virtualization scenario and must
-> provide a security boundary.
+> The VFIO subsystem is about securely passing host PCI devices
+> to a guest, so all the classes should be presumed to be offering
+> a security boundary.
 >
 > Signed-off-by: Daniel P. Berrang=C3=A9 <berrange@redhat.com>
 > ---
->  hw/s390x/vhost-scsi-ccw.c     | 1 +
->  hw/s390x/vhost-user-fs-ccw.c  | 1 +
->  hw/s390x/vhost-vsock-ccw.c    | 1 +
->  hw/s390x/virtio-ccw-9p.c      | 1 +
->  hw/s390x/virtio-ccw-balloon.c | 1 +
->  hw/s390x/virtio-ccw-blk.c     | 1 +
->  hw/s390x/virtio-ccw-crypto.c  | 1 +
->  hw/s390x/virtio-ccw-gpu.c     | 1 +
->  hw/s390x/virtio-ccw-input.c   | 5 +++++
->  hw/s390x/virtio-ccw-md.c      | 1 +
->  hw/s390x/virtio-ccw-mem.c     | 1 +
->  hw/s390x/virtio-ccw-net.c     | 1 +
->  hw/s390x/virtio-ccw-rng.c     | 1 +
->  hw/s390x/virtio-ccw-scsi.c    | 1 +
->  hw/s390x/virtio-ccw-serial.c  | 1 +
->  hw/s390x/virtio-ccw.c         | 1 +
->  16 files changed, 20 insertions(+)
+>  hw/vfio-user/pci.c  | 1 +
+>  hw/vfio/ap.c        | 1 +
+>  hw/vfio/ccw.c       | 1 +
+>  hw/vfio/container.c | 1 +
+>  hw/vfio/igd.c       | 1 +
+>  hw/vfio/iommufd.c   | 2 ++
+>  hw/vfio/pci.c       | 3 +++
+>  hw/vfio/spapr.c     | 1 +
+>  8 files changed, 11 insertions(+)
+>
 
-Acked-by: Cornelia Huck <cohuck@redhat.com>
+Acked-by: Cornelia Huck <cohuck@redhat.com> #s390 types
 
 

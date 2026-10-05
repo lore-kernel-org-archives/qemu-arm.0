@@ -4,67 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DF171CA5FCE
-	for <qemu-arm@archiver.kernel.org>; Mon,  5 Oct 2026 10:21:11 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 378F2CA5FF0
+	for <qemu-arm@archiver.kernel.org>; Mon,  5 Oct 2026 10:21:23 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xDfok-0003X3-4X; Mon, 05 Oct 2026 06:21:10 -0400
+	id 1xDfoj-0003W4-9K; Mon, 05 Oct 2026 06:21:09 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <shentey@gmail.com>) id 1xDfmL-0002HH-Ic
- for qemu-arm@nongnu.org; Mon, 05 Oct 2026 06:18:45 -0400
-Received: from mail-wm2-x10.google.com ([2a00:1450:4864:31::10])
+ (Exim 4.90_1) (envelope-from <shentey@gmail.com>) id 1xDfmA-0002Ez-OT
+ for qemu-arm@nongnu.org; Mon, 05 Oct 2026 06:18:32 -0400
+Received: from mail-wm1-x32a.google.com ([2a00:1450:4864:20::32a])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <shentey@gmail.com>) id 1xDfmI-0000wh-Hh
- for qemu-arm@nongnu.org; Mon, 05 Oct 2026 06:18:41 -0400
-Received: by mail-wm2-x10.google.com with SMTP id
- 5b1f17b1804b1-4a1722c37c9so5879395e9.3
- for <qemu-arm@nongnu.org>; Mon, 05 Oct 2026 03:18:36 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <shentey@gmail.com>) id 1xDfm8-0000uk-F2
+ for qemu-arm@nongnu.org; Mon, 05 Oct 2026 06:18:30 -0400
+Received: by mail-wm1-x32a.google.com with SMTP id
+ 5b1f17b1804b1-4a0286c981dso14793995e9.2
+ for <qemu-arm@nongnu.org>; Mon, 05 Oct 2026 03:18:26 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20251104; t=1791195515; x=1791800315; darn=nongnu.org;
+ d=gmail.com; s=20251104; t=1791195505; x=1791800305; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to:content-type;
- bh=e8TB0ZtYp24WPs3mqNNFoiQRZJQqozvFbAYX81zZos4=;
- b=d9sCIUV8FzfeZnapR+lQZbYGG3iwZte3VtbcxUoWBuWf2VUU/xeb5vMfZiF39W5mhD
- S6juZYl+cXYnxQwTn7t85gDyISqQ4g45Lbior1UnyxrAa0y1rHl4sjF7C1PHSm5CxFgq
- vK0B8xnI+T5sCtdK9rf1H/yAWjz5GbX7OMRnQx/rpXjKWa8gsIXyb5XGx17Ni76CAPKg
- 6/1w+yFrh1uHCT3fCNr5NERu7NyRDPvpzhsaKdD4Lgirrlukxzid4726G9Gr11qLquch
- g5kElZapyODzkGGJOkWzUjf4bJqK1gR+lL1DxzDWn29mAn74yVd63DFblKD00yc3coKj
- u5yw==
+ bh=j4820QCIrYVrPZCmpkAS3lL2mCezM1T4rfhN7ttYHh0=;
+ b=fm6PoKB+A8XMyS811EZRvU3l9dfqYCTHZLlmNAoUHrMDJKnJ3jascT0HeePv6H87X1
+ XxfELkE4JPLO6Y6rIGpgx61r43rqsUSDszs5zBDaLdjbmLYK28Lo5wJ8RLsEnGYZ5S5w
+ 4ZbrsUbjCZFCaDNYTNTG/xm/B4k9b2crEX8yCWYCYVpl2va55f2mNCsdEQrMccZkWxIC
+ t95PI49b58F8EEXtjEM2H1XPiv2dJ5+JGBipdtCjq+JCZcbqOTDizxVlBZnXfdC4ytmb
+ lLQPkZ2k4HPnmy6AUs2foR5DPQLe76QUNWpaVeckviXYBo0XVicc0BrNliZQQN5QHItw
+ kZFA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20260707; t=1791195515; x=1791800315;
+ d=1e100.net; s=20260707; t=1791195505; x=1791800305;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
  :to:cc:subject:date:message-id:reply-to:content-type;
- bh=e8TB0ZtYp24WPs3mqNNFoiQRZJQqozvFbAYX81zZos4=;
- b=OIbPK07d0nvZKpYyxRawMpKwa+yolOMeeH3+mbKzOzdIN7FYAR1SzajBFIgZr1U/zD
- CHOcQ4kjjGTbVWqpXBNvZHlO1/i7EugYowBdsKvstoL+NZDEgna6GAM0tDsRlIyyq0Zw
- H1yzLeiLf7+DWyQwEcGHdMHFibmrJCzv8Jl3C/YT8suB8X1Tgf1M5CoYUjVJ9NxxSVtx
- DuEzZbsSW+wq4CUqoRwDxH0ibZbS/JnxSQc3a9rIeQgCN67mJnKYdY0Dl/E2GXkBQ9h9
- zu3ong4/wY185bH+T5RcnDMfKJp2euYs4H/gJ21KYZoZVew9fZsnDpitUtRxffoo/2Wn
- AmEw==
+ bh=j4820QCIrYVrPZCmpkAS3lL2mCezM1T4rfhN7ttYHh0=;
+ b=nqp4kBzvTetbpLHxbBDJgSbmoNGzj0LAE+7AaZX0l4BKu71P5OAgKTjOPLfzZyauCF
+ zUJibrIv+gMorlXf0+imuVYtrpERsaEoNjI2EljRDICvj68v5tHMgT9Vf/+61ISPaO3n
+ xIzBFA2zJmYrPibD3kdyUVzRD6H13t+nvSH7hhoBhGdgVd133EJPUOzRFjM6v4ZuVGJ+
+ f6voNfENyVbiV30nw01OvnKkuT9tWm6ykEcpUZNjIfCF8pUWHExR0XL8CHzzAEFZtBIJ
+ wZaPsYVbT7F1kaqYFVY57hdfTVP7aB6lNI3a8vrlt/C1M7AIVlDWSckh2xtaNbOwJ8cL
+ aFIg==
 X-Forwarded-Encrypted: i=1;
- AKwUvBy59Pinp0GVYisDf5xjeEUr+BaiSaNXy24EvTAVqAdUzGI9T2BBdfDdL+4QaWoDdo7Og5G8OAq7lQ==@nongnu.org
-X-Gm-Message-State: AFuF++lsXJyPqvStFvohKETalG3Avbe/DdyEjSs8+UXqJ+u9lQSKL3Ey
- RfGuyt1Qk0OYYfNrmuhAsEDhXWSWMSNBhPCkHVyeGWUx6C1WcDuhD/fs
-X-Gm-Gg: AYBFou0hBGqDra0cVkOMUIS1a6qAY2+Deh3/XFeBmr0T+NLbt73LKdPplGlEj+aewIs
- 5mOHW34fBXpi/ABn4USLjhEDXZje8X1YCaH99htJ8WfjEZ09NjNlz73dzLKrUxRK/7111ghlpda
- 4ya/QY17Y2eCrJ1WzG3DPnxO5PANRW3ZHSVc8DG4TTWfQ4marRIiQ9Qsf/wfCLRSBw2CZqTdT8F
- Ytelz7OnIGWytnXJZXzmoUO8L00wGIEtJZ8FjBb0RvAEN6i7/hHrdYx1J6FAl9tu90ozWxus3t7
- 41ezGw47lwN+y7pq+rqyzBePLCQ9IePUHJi0wqNi5xR1IGU+SNog2dwgZX/BQryEo+Q/rjgvBfx
- SZYy3nq1V1jOy9zjNZd4Cwe/FzWMVPQNFBl82a9sJUx6sXq1ZjMNaH7JvhE48ZmMVggZGVx4Lim
- CuKW2FH1HRI/mZOr8V6X2ywesTGphmR2HTAKSC7b9/DMGZEzS4O3ICU10fIk5nZI2zR2Dw9XosJ
- 36d58dTgU80+VWxlAwo9jsc9kpzIC2VGsfQcw==
-X-Received: by 2002:a05:600c:1551:b0:49d:1fa8:b266 with SMTP id
- 5b1f17b1804b1-4a0275a229bmr192399055e9.26.1791195515277; 
- Mon, 05 Oct 2026 03:18:35 -0700 (PDT)
+ AKwUvBx/ZS91B7wpZpWDRo8Uu8h/s5rQYO+151O+lCJlslr5i5kVFyBfa2wQ+OCqSCFD7XJkBi6JRvCpIg==@nongnu.org
+X-Gm-Message-State: AFuF++lpjkuQRF6nQocYH6ALHJ0yFt1V5nhOlZR9d5m7LpZUMwXB5feC
+ 1ZGVoH9simX56tnjNmiYLcbTHCb1i+mFINvj3gQoxgB2aDf9jzXL/JNh
+X-Gm-Gg: AYBFou1C7VfSndSr827t6p0IKNCtulILH0BVTcXcxbUxZy3Dl3UuQMe3kB7keXldSZO
+ fWOrv8fMfqTD4M4+o2FuNPqLmlCJLNwPB9WSSqZ20I8IZRyqiO+mJ9pKdkOQeH6OmSm48vQ3EAB
+ 4+/bLLHfD8XwYnwnWrCcQLiJQDyZB5Gel1ZPnLANv8uNqcNaJKAK9ACGfBLc6hnlaE8I0VoweDP
+ riwF7qSni3c9UitHXKZrVr3FijOtizj7df3AkWWwizQuddJhYRcxzwJO918Ca2Vv3iBM+DSb4wG
+ AAp5q9cfZ4jxKhhLXUwhC867TzrLbRxUvQdHiSMeNGu9Jk9xnGswSl+rIJfQQGC43f63i/YF90B
+ qD0taQUcTDu2+iIuaUvhAP+KejYJDRu7yMZdGlhmi6RHf3DEUbt2ZB9WUThqu28lKcwh6ZZQfcS
+ KLaluBjC05tESGcBpc34vu5rw4xIZ56EYAb6XLo0JEnmd3T/5pmWbf9dLSerplzio4mD3DIqkGQ
+ ixTmmrp+lEz6hhtAGShPnaYfXbQMt2+XUq+6j67XGH262ST
+X-Received: by 2002:a05:600c:3485:b0:4a1:6916:798 with SMTP id
+ 5b1f17b1804b1-4a176ca18femr5639455e9.14.1791195504660; 
+ Mon, 05 Oct 2026 03:18:24 -0700 (PDT)
 Received: from archlinux (pd95eda80.dip0.t-ipconnect.de. [217.94.218.128])
  by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-48c622ab7b5sm2742111f8f.37.2026.10.05.03.18.34
+ ffacd0b85a97d-48c622ab7b5sm2742111f8f.37.2026.10.05.03.18.23
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 05 Oct 2026 03:18:34 -0700 (PDT)
+ Mon, 05 Oct 2026 03:18:23 -0700 (PDT)
 From: Bernhard Beschow <shentey@gmail.com>
 To: qemu-devel@nongnu.org
 Cc: Gaurav Sharma <gaurav.sharma_7@nxp.com>,
@@ -77,16 +77,16 @@ Cc: Gaurav Sharma <gaurav.sharma_7@nxp.com>,
  Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>,
  Jean-Christophe Dubois <jcd@tribudubois.net>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@oss.qualcomm.com>
-Subject: [PATCH v3 09/31] hw/arm/mcimx6ul-evk: Have 512 MiB of RAM by default
-Date: Mon,  5 Oct 2026 12:17:36 +0200
-Message-ID: <20261005101800.10821-10-shentey@gmail.com>
+Subject: [PATCH v3 04/31] hw/watchdog/wdt_imx2: Remove redundant attributes
+Date: Mon,  5 Oct 2026 12:17:31 +0200
+Message-ID: <20261005101800.10821-5-shentey@gmail.com>
 X-Mailer: git-send-email 2.56.0
 In-Reply-To: <20261005101800.10821-1-shentey@gmail.com>
 References: <20261005101800.10821-1-shentey@gmail.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:31::10;
- envelope-from=shentey@gmail.com; helo=mail-wm2-x10.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::32a;
+ envelope-from=shentey@gmail.com; helo=mail-wm1-x32a.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -109,30 +109,90 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Having 512 MiB of RAM matches real hardware. Fix the machine
-default to make its use more ergonomic and less error-prone.
+Since WDT and WDE are write one once bits, their values always
+correspond with their respective locked attributes. Thus, the attributes
+are redundant. Take advantage of this observation to simplify the code.
 
-To reproduce the old default behavior for e.g. migration purposes,
-`-m 128M` needs to be added to the command line.
+Note that removing the attributes changes the vmstate structure which
+constitutes a migration break. This is allowed since QEMU does not
+guarantee migration compatibility for i.MX devices between feature
+releases.
 
-Reviewed-by: Bin Meng <bin.meng@processmission.com>
 Signed-off-by: Bernhard Beschow <shentey@gmail.com>
 ---
- hw/arm/mcimx6ul-evk.c | 1 +
- 1 file changed, 1 insertion(+)
+ include/hw/watchdog/wdt_imx2.h |  2 --
+ hw/watchdog/wdt_imx2.c         | 21 ++++-----------------
+ 2 files changed, 4 insertions(+), 19 deletions(-)
 
-diff --git a/hw/arm/mcimx6ul-evk.c b/hw/arm/mcimx6ul-evk.c
-index 40071d2c7b..4964cb9345 100644
---- a/hw/arm/mcimx6ul-evk.c
-+++ b/hw/arm/mcimx6ul-evk.c
-@@ -73,6 +73,7 @@ static void mcimx6ul_evk_machine_init(MachineClass *mc)
-     mc->desc = "Freescale i.MX6UL Evaluation Kit (Cortex-A7)";
-     mc->init = mcimx6ul_evk_init;
-     mc->max_cpus = FSL_IMX6UL_NUM_CPUS;
-+    mc->default_ram_size = 512 * MiB;
-     mc->default_ram_id = "mcimx6ul-evk.ram";
-     mc->auto_create_sdcard = true;
- }
+diff --git a/include/hw/watchdog/wdt_imx2.h b/include/hw/watchdog/wdt_imx2.h
+index fc01fc46e7..0bf2903959 100644
+--- a/include/hw/watchdog/wdt_imx2.h
++++ b/include/hw/watchdog/wdt_imx2.h
+@@ -84,8 +84,6 @@ struct IMX2WdtState {
+     uint16_t wmcr;
+ 
+     bool wcr_locked;            /* affects WDZST, WDBG, and WDW */
+-    bool wcr_wde_locked;        /* affects WDE */
+-    bool wcr_wdt_locked;        /* affects WDT, cleared on POR */
+ };
+ 
+ #endif /* WDT_IMX2_H */
+diff --git a/hw/watchdog/wdt_imx2.c b/hw/watchdog/wdt_imx2.c
+index a15f452d48..e9cb5819e4 100644
+--- a/hw/watchdog/wdt_imx2.c
++++ b/hw/watchdog/wdt_imx2.c
+@@ -59,8 +59,6 @@ static void imx2_wdt_reset(DeviceState *dev)
+ 
+     s->wicr_locked = false;
+     s->wcr_locked = false;
+-    s->wcr_wde_locked = false;
+-    s->wcr_wdt_locked = false;
+ 
+     s->wcr = IMX2_WDT_WCR_WDA | IMX2_WDT_WCR_SRS;
+     s->wsr = 0;
+@@ -156,24 +154,14 @@ static void imx2_wdt_write(void *opaque, hwaddr addr,
+     switch (addr) {
+     case IMX2_WDT_WCR:
+         if (s->wcr_locked) {
++            /* WDZST, WDBG, and WDW are write-once bits */
+             value &= ~IMX2_WDT_WCR_LOCK_MASK;
+             value |= (s->wcr & IMX2_WDT_WCR_LOCK_MASK);
+         }
+         s->wcr_locked = true;
+-        if (s->wcr_wde_locked) {
+-            value &= ~IMX2_WDT_WCR_WDE;
+-            value |= (s->wcr & IMX2_WDT_WCR_WDE);
+-        } else if (value & IMX2_WDT_WCR_WDE) {
+-            s->wcr_wde_locked = true;
+-        }
+-        if (s->wcr_wdt_locked) {
+-            value &= ~IMX2_WDT_WCR_WDT;
+-            value |= (s->wcr & IMX2_WDT_WCR_WDT);
+-        } else if (value & IMX2_WDT_WCR_WDT) {
+-            s->wcr_wdt_locked = true;
+-        }
+ 
+-        s->wcr = value;
++        /* WDT and WDE are write one once bits */
++        s->wcr = value | (s->wcr & (IMX2_WDT_WCR_WDT | IMX2_WDT_WCR_WDE));
+         if (!(value & IMX2_WDT_WCR_SRS)) {
+             s->wrsr = IMX2_WDT_WRSR_SFTW;
+         }
+@@ -234,13 +222,12 @@ static const MemoryRegionOps imx2_wdt_ops = {
+ 
+ static const VMStateDescription vmstate_imx2_wdt = {
+     .name = "imx2.wdt",
++    .version_id = 1,
+     .fields = (const VMStateField[]) {
+         VMSTATE_PTIMER(timer, IMX2WdtState),
+         VMSTATE_PTIMER(itimer, IMX2WdtState),
+         VMSTATE_BOOL(wicr_locked, IMX2WdtState),
+         VMSTATE_BOOL(wcr_locked, IMX2WdtState),
+-        VMSTATE_BOOL(wcr_wde_locked, IMX2WdtState),
+-        VMSTATE_BOOL(wcr_wdt_locked, IMX2WdtState),
+         VMSTATE_UINT16(wcr, IMX2WdtState),
+         VMSTATE_UINT16(wsr, IMX2WdtState),
+         VMSTATE_UINT16(wrsr, IMX2WdtState),
 -- 
 2.56.0
 

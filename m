@@ -4,67 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8FFC1CA5FF0
-	for <qemu-arm@archiver.kernel.org>; Mon,  5 Oct 2026 10:23:07 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id F2F98CA6003
+	for <qemu-arm@archiver.kernel.org>; Mon,  5 Oct 2026 10:23:16 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xDfpf-00060s-MA; Mon, 05 Oct 2026 06:22:08 -0400
+	id 1xDfp3-0004nT-Sc; Mon, 05 Oct 2026 06:21:29 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <shentey@gmail.com>) id 1xDfmb-0002Jx-UH
- for qemu-arm@nongnu.org; Mon, 05 Oct 2026 06:18:59 -0400
-Received: from mail-wr2-x10.google.com ([2a00:1450:4864:30::10])
+ (Exim 4.90_1) (envelope-from <shentey@gmail.com>) id 1xDfmR-0002Hi-4n
+ for qemu-arm@nongnu.org; Mon, 05 Oct 2026 06:18:55 -0400
+Received: from mail-wm1-x32d.google.com ([2a00:1450:4864:20::32d])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <shentey@gmail.com>) id 1xDfmZ-00011b-Jx
- for qemu-arm@nongnu.org; Mon, 05 Oct 2026 06:18:57 -0400
-Received: by mail-wr2-x10.google.com with SMTP id
- ffacd0b85a97d-482f635552aso1126470f8f.2
- for <qemu-arm@nongnu.org>; Mon, 05 Oct 2026 03:18:55 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <shentey@gmail.com>) id 1xDfmL-0000xi-HM
+ for qemu-arm@nongnu.org; Mon, 05 Oct 2026 06:18:46 -0400
+Received: by mail-wm1-x32d.google.com with SMTP id
+ 5b1f17b1804b1-4a1682bff3cso8004805e9.1
+ for <qemu-arm@nongnu.org>; Mon, 05 Oct 2026 03:18:40 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20251104; t=1791195534; x=1791800334; darn=nongnu.org;
+ d=gmail.com; s=20251104; t=1791195520; x=1791800320; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to:content-type;
- bh=v1hlWCjEXq2Rpv8CcWewbOeohwMMSFMs5Fi76JDaHOM=;
- b=rL58JzC+A3wcMNlZDabksD+IcFFj08ElLCgk4JBW04G9afLIS7JPqXwPyrbAN3/BKo
- mc6BtsWKNk0PHyhOgWyudeKKSy72QzIWXnI8r5+RrXuL1MYcbkX/Ys4ic60SrEzxdwwi
- ZPbZksbdPvH3JG37Pu2VIA3RsSqyT4a8jgFjGJe2mMZQ/bOJ7vKJpuc+FnFJL6nPzpIp
- d+pQi87o+rDPdezCAtISD1DrHuB7xJOSiR3IKg9Is9Z6die7vs5b+jphwYpQhcalLEgQ
- vpJ9k9RLiuZRclYT72qC4W1elpYjb+JHTDDe4pWqFTCWUHPlunJFaKqEWuRB4xF+NGnX
- Jgcw==
+ bh=u7/qSki9UBwISWVPBPvnc5a+mrC7ZZrYMsJW9QgbcHk=;
+ b=hwvZ0xrWXd4jYdZYZQmNw6sJmclToqvbFA3vTjxIpusKNOEP2Uj/msipkIoInDTJ9B
+ 0bl7UtM/ZeQ7Ne0sv1U8jWVeIZNhZetCGteJvhtE3HkoZfj6vhQXUKriQU2sGuR1PoLa
+ 8xI0J3TnRQaSbQfUdscJ+OSQpXJOHVUAcd/S6Dy+aiHePC/GFLJKq38Ewv66Tp8Hpvbm
+ 8B7A6NnsbfC8S1JB4w+X96bId2Ew8V+NtxbZTpf1Icttm7IPH+97ctO9R3asIBiJmXRj
+ 81xCYHk35zb5vDcHA/fxMtDdPzyZKNMpk4SDYAj9C2285BvmwNVFM9mUmX91oTsPgSTs
+ Ss9A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20260707; t=1791195534; x=1791800334;
+ d=1e100.net; s=20260707; t=1791195520; x=1791800320;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
  :to:cc:subject:date:message-id:reply-to:content-type;
- bh=v1hlWCjEXq2Rpv8CcWewbOeohwMMSFMs5Fi76JDaHOM=;
- b=pAR8p0x7vL3oZDU4VbqjlhSqsdLEFy5sMj9SadpN/FdT5MeAbSASGfV8mow5RxszpH
- /rmdImm0+TnP5HKxki/R7sHuQfx4Iw40PBUY1SnHXLAGHXjpmV4J0V+IVnWpKksAcFZh
- t2NJ0z0MgnCh9qVxeCrJp3qQB1EqFSrW5qHH6QNaHBzv0iXNhZfyL0vwr9tVNTJZkTcV
- QQSKEO82hyVFWDlEuu934Iqc76rdT0zRks8WfGOhSt8K1AW8ARwlqTLBH12cRY+bJsGF
- OkWOiEJP/lIivozHYt4tu+lavIxCfBdQp6nraY64noF7ScRMbDpCMNReH4AIMfFqlwUe
- 2ZGQ==
+ bh=u7/qSki9UBwISWVPBPvnc5a+mrC7ZZrYMsJW9QgbcHk=;
+ b=zj5RFcxdSOd05ucbBUJUEJ3ysWF1rycLzthnFG+1+C50o/oJ6LLLSmkJByZbBlKYXr
+ 91RPtUmNFzpOmUSJsJpk479T6eiuSKfUGgj5038cpCo3FBnr2jEeIbh99bjSGhKYnvr4
+ Q6DnTsBwG2i4aDQbSFx2qwipk4vmVB/WJjRueFvKqZl/K14UH6a8NtyFKatvlBjcl61t
+ BviLrbmGGzENDs4hX8aIjXpAmTk89ars9ZJBwKAHwb0mdf08FBWibIzw9mWfpt0yGtMe
+ xpBXdXZ7kYza+XUjYHeZYdMZrWMRXKEByUeETMIFh2rD6GPkgs++PmF0F6sgN81M8DQF
+ tF2g==
 X-Forwarded-Encrypted: i=1;
- AKwUvBx8Mvnt12V8fQLgsvdW6uzknRfURjN8qrWCzZrvhPtxeXZ9xHFIxiwNmAD392dW5ot4HztMfOcvCg==@nongnu.org
-X-Gm-Message-State: AFq9FYJgoYQq2swdV+UPuwJfaph2WBQ+nUKyvY3RCPpI8MvTZJLvzpjX
- AAHwvIstcGR4+yeR6JZ/Dd0Go1WpvC6fFBorXGAb7sv3gTVmyWTGszXi
-X-Gm-Gg: AYBFou0EYBgrjNhrdqVt57Rk/LTGgllaJv+VPnqRaTILXIbr9HcIZL1pAtA5j5o/GSq
- N41MvlU+TIe/yx2RQ/jzkxw0zZ05KNo9Eh3ijbzHW3K/VYM6xPvN7CrXhQ9hefolwD9WHXMbJ8N
- Epp/JZqcThwTgLy+KjTHqSN9iQsXFotaYtZk4F1f+ZLQBcC7zHLccirMRO5JbAK+9kz8f/yVfal
- /AmsuORMkUJnJ8xs46bt4wew2KsGYmavuJh1DPTMt2kWSD142rlNZHh914liWqPQxD5pYDwWmd7
- dJeAK10ND/pbf3bFIKgrANCUlWNqpLPqKsOFI2+kYNqOysjw3WJVbDTv7qpy9RN5Sst07cgDv+l
- XcvZb3zldceJb/Iu/ipSz4MxEoO3yuCkHqKNC5Ify/JOm6vfV+njj7KXeKwFjX7ibBl/16zwqPQ
- oV3ZuRqEDYXZrIEDw0vfi0JBksq1MijtMMahnhLZQR6aMMDy5wizEeuOt99ILl+08PDOTMk4Dhu
- CYyO64s+lPj0y1kMByVt0e7JvkZrq8tbFlYAQ==
-X-Received: by 2002:a05:6000:2f89:b0:48b:3f2:2ecf with SMTP id
- ffacd0b85a97d-48b127473bdmr17300717f8f.55.1791195534198; 
- Mon, 05 Oct 2026 03:18:54 -0700 (PDT)
+ AKwUvBywz1GEzT2XYix2FrkxOYlsnIZ4pbBiTYQSXexuKoGH++Sc9hVAL69ke6Hdg3ZMDzzVwAxnF2XkrQ==@nongnu.org
+X-Gm-Message-State: AFuF++nyK2uRLhoG04VJXId6jn5+cAyhqUbeipijwGbidzLMhGaWN3+U
+ 52HxUl3aiX51SuxJooecitmMvkUfVWhxJRkAmMnXYNpVs+c2hXR9kOcP
+X-Gm-Gg: AYBFou0AJ/0MhMdxH16DmWw/S/G41XPhhddyvcCiOYjWgYrMNPXjSRLzAdFKFAe2SPJ
+ jjv3Z9fcBVAUGVXIDFih6/sVzUGAySTk902uksCqyPcGCv0lv84xJ4uacHbdFi7YaMzqNGTvFtg
+ uK2txMYVnH179cKV4JTnChhc+z61xbv9NsGI3Ptyy7a0AWu1a9jbJXK4yGEpj5JjfN7TNfJHyLC
+ cG9HcBd1HpgeaMkAbuMAIJXLAXRYYBQgvLPJlQznN2JqD27CG3FuYOumu1b11mRZ14UrZKZr7aX
+ znj+t7qz8VugMJnZ09bbtOCHlITtGYlkhoxFO7wg2R1j7xUmQiOEoo+OU58ntPtlnNkd7gSF+J3
+ K5KVfv00XFj9lxUWMYFZfKeuKz6DScYyGkOpyekQwzkF+Z7mHn3wOjgHeRh8yp+ykXJ/w8PxyVW
+ MTHgFd60sVxpakg7Ew3Df0iBt4qLmE1BLRjlQYp6YBrVSS/cq5MDf+92SxOVClcKW/x45YJ16cM
+ iBu9RjRhHA5Po4tm6BP1ErYCWM2lveg5yTYXw==
+X-Received: by 2002:a05:600c:6287:b0:49d:1df8:156d with SMTP id
+ 5b1f17b1804b1-4a1680f5050mr93311285e9.18.1791195519489; 
+ Mon, 05 Oct 2026 03:18:39 -0700 (PDT)
 Received: from archlinux (pd95eda80.dip0.t-ipconnect.de. [217.94.218.128])
  by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-48c622ab7b5sm2742111f8f.37.2026.10.05.03.18.52
+ ffacd0b85a97d-48c622ab7b5sm2742111f8f.37.2026.10.05.03.18.38
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 05 Oct 2026 03:18:53 -0700 (PDT)
+ Mon, 05 Oct 2026 03:18:38 -0700 (PDT)
 From: Bernhard Beschow <shentey@gmail.com>
 To: qemu-devel@nongnu.org
 Cc: Gaurav Sharma <gaurav.sharma_7@nxp.com>,
@@ -77,23 +77,23 @@ Cc: Gaurav Sharma <gaurav.sharma_7@nxp.com>,
  Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>,
  Jean-Christophe Dubois <jcd@tribudubois.net>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@oss.qualcomm.com>
-Subject: [PATCH v3 23/31] Kconfig: Extract config FSL_IMX7_SNVS from config IMX
-Date: Mon,  5 Oct 2026 12:17:50 +0200
-Message-ID: <20261005101800.10821-24-shentey@gmail.com>
+Subject: [PATCH v3 12/31] hw/arm/fsl-imx25: Derive from TYPE_SYS_BUS_DEVICE
+Date: Mon,  5 Oct 2026 12:17:39 +0200
+Message-ID: <20261005101800.10821-13-shentey@gmail.com>
 X-Mailer: git-send-email 2.56.0
 In-Reply-To: <20261005101800.10821-1-shentey@gmail.com>
 References: <20261005101800.10821-1-shentey@gmail.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:30::10;
- envelope-from=shentey@gmail.com; helo=mail-wr2-x10.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::32d;
+ envelope-from=shentey@gmail.com; helo=mail-wm1-x32d.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -109,96 +109,75 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Over time, QEMU has grown a number of i.MX boards and the monolithic
-config IMX drags in unneeded dependencies into each SoC model. Extract
-config FSL_IMX7_SNVS to eventually eliminate config IMX.
+Deriving from TYPE_SYS_BUS_DEVICE fixes the SoC object to be reset upon
+machine reset.
 
-Reviewed-by: Bin Meng <bin.meng@processmission.com>
 Signed-off-by: Bernhard Beschow <shentey@gmail.com>
 ---
- hw/arm/Kconfig      | 5 +++++
- hw/misc/Kconfig     | 3 +++
- hw/misc/meson.build | 2 +-
- 3 files changed, 9 insertions(+), 1 deletion(-)
+ include/hw/arm/fsl-imx25.h | 5 ++---
+ hw/arm/fsl-imx25.c         | 7 +------
+ hw/arm/imx25_pdk.c         | 2 +-
+ 3 files changed, 4 insertions(+), 10 deletions(-)
 
-diff --git a/hw/arm/Kconfig b/hw/arm/Kconfig
-index edd3bf0dc9..8d857d8bd1 100644
---- a/hw/arm/Kconfig
-+++ b/hw/arm/Kconfig
-@@ -506,6 +506,7 @@ config FSL_IMX6
-     imply I2C_DEVICES
-     select A9MPCORE
-     select FSL_IMX6_SRC
-+    select FSL_IMX7_SNVS
-     select IMX
-     select IMX_FEC
-     select IMX_I2C
-@@ -581,6 +582,7 @@ config FSL_IMX7
-     imply I2C_DEVICES
-     select A15MPCORE
-     select FSL_IMX7_GPR
-+    select FSL_IMX7_SNVS
-     select FSL_IMX7_SRC
-     select PCI
-     select IMX
-@@ -600,6 +602,7 @@ config FSL_IMX8MP
-     imply PCI_DEVICES
-     select ARM_GIC
-     select CAN_FLEXCAN
-+    select FSL_IMX7_SNVS
-     select FSL_IMX8MP_ANALOG
-     select FSL_IMX8MP_CCM
-     select IMX
-@@ -625,6 +628,7 @@ config FSL_IMX8MM
-     imply PCI_DEVICES
-     imply I2C_DEVICES
-     select ARM_GIC
-+    select FSL_IMX7_SNVS
-     select FSL_IMX8MP_ANALOG
-     select FSL_IMX8MP_CCM
-     select IMX
-@@ -664,6 +668,7 @@ config FSL_IMX6UL
-     imply I2C_DEVICES
-     select A15MPCORE
-     select FSL_IMX6_SRC
-+    select FSL_IMX7_SNVS
-     select IMX
-     select IMX6UL_LCDIF
-     select IMX_FEC
-diff --git a/hw/misc/Kconfig b/hw/misc/Kconfig
-index 193a6b5f56..4d47de6a02 100644
---- a/hw/misc/Kconfig
-+++ b/hw/misc/Kconfig
-@@ -103,6 +103,9 @@ config FSL_IMX6_SRC
- config FSL_IMX7_GPR
-     bool
+diff --git a/include/hw/arm/fsl-imx25.h b/include/hw/arm/fsl-imx25.h
+index b68d4334a0..4bb4d5b3e5 100644
+--- a/include/hw/arm/fsl-imx25.h
++++ b/include/hw/arm/fsl-imx25.h
+@@ -29,6 +29,7 @@
+ #include "hw/sd/sdhci.h"
+ #include "hw/usb/chipidea.h"
+ #include "hw/watchdog/wdt_imx2.h"
++#include "hw/core/sysbus.h"
+ #include "system/memory.h"
+ #include "target/arm/cpu.h"
+ #include "qom/object.h"
+@@ -45,10 +46,8 @@ OBJECT_DECLARE_SIMPLE_TYPE(FslIMX25State, FSL_IMX25)
+ #define FSL_IMX25_NUM_USBS 2
  
-+config FSL_IMX7_SNVS
-+    bool
-+
- config FSL_IMX7_SRC
-     bool
+ struct FslIMX25State {
+-    /*< private >*/
+-    DeviceState parent_obj;
++    SysBusDevice parent_obj;
  
-diff --git a/hw/misc/meson.build b/hw/misc/meson.build
-index 477fbd60fa..48c5c20455 100644
---- a/hw/misc/meson.build
-+++ b/hw/misc/meson.build
-@@ -62,6 +62,7 @@ system_ss.add(when: 'CONFIG_ECCMEMCTL', if_true: files('eccmemctl.c'))
- system_ss.add(when: 'CONFIG_EXYNOS4', if_true: files('exynos4210_pmu.c', 'exynos4210_clk.c', 'exynos4210_rng.c'))
- system_ss.add(when: 'CONFIG_FSL_IMX6_SRC', if_true: files('imx6_src.c'))
- system_ss.add(when: 'CONFIG_FSL_IMX7_GPR', if_true: files('imx7_gpr.c'))
-+system_ss.add(when: 'CONFIG_FSL_IMX7_SNVS', if_true: files('imx7_snvs.c'))
- system_ss.add(when: 'CONFIG_FSL_IMX7_SRC', if_true: files('imx7_src.c'))
- system_ss.add(when: 'CONFIG_FSL_IMX8MP_ANALOG', if_true: files('imx8mp_analog.c'))
- system_ss.add(when: 'CONFIG_FSL_IMX8MP_CCM', if_true: files('imx8mp_ccm.c'))
-@@ -72,7 +73,6 @@ system_ss.add(when: 'CONFIG_IMX', if_true: files(
-   'imx6_ccm.c',
-   'imx6ul_ccm.c',
-   'imx7_ccm.c',
--  'imx7_snvs.c',
-   'imx_ccm.c',
- ))
- system_ss.add(when: 'CONFIG_MAX78000_AES', if_true: files('max78000_aes.c'))
+-    /*< public >*/
+     ARMCPU         cpu;
+     IMXAVICState   avic;
+     IMX25CCMState  ccm;
+diff --git a/hw/arm/fsl-imx25.c b/hw/arm/fsl-imx25.c
+index 7f65f4ca4b..efb22359c5 100644
+--- a/hw/arm/fsl-imx25.c
++++ b/hw/arm/fsl-imx25.c
+@@ -317,16 +317,11 @@ static void fsl_imx25_class_init(ObjectClass *oc, const void *data)
+     device_class_set_props(dc, fsl_imx25_properties);
+     dc->realize = fsl_imx25_realize;
+     dc->desc = "i.MX25 SOC";
+-    /*
+-     * Reason: uses serial_hds in realize and the imx25 board does not
+-     * support multiple CPUs
+-     */
+-    dc->user_creatable = false;
+ }
+ 
+ static const TypeInfo fsl_imx25_type_info = {
+     .name = TYPE_FSL_IMX25,
+-    .parent = TYPE_DEVICE,
++    .parent = TYPE_SYS_BUS_DEVICE,
+     .instance_size = sizeof(FslIMX25State),
+     .instance_init = fsl_imx25_init,
+     .class_init = fsl_imx25_class_init,
+diff --git a/hw/arm/imx25_pdk.c b/hw/arm/imx25_pdk.c
+index 243c30a67e..a33050788c 100644
+--- a/hw/arm/imx25_pdk.c
++++ b/hw/arm/imx25_pdk.c
+@@ -72,7 +72,7 @@ static void imx25_pdk_init(MachineState *machine)
+ 
+     object_initialize_child(OBJECT(machine), "soc", &s->soc, TYPE_FSL_IMX25);
+ 
+-    qdev_realize(DEVICE(&s->soc), NULL, &error_fatal);
++    sysbus_realize(SYS_BUS_DEVICE(&s->soc), &error_fatal);
+ 
+     /* We need to initialize our memory */
+     if (machine->ram_size > (FSL_IMX25_SDRAM0_SIZE + FSL_IMX25_SDRAM1_SIZE)) {
 -- 
 2.56.0
 

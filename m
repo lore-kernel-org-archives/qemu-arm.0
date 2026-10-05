@@ -4,83 +4,116 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5107BCA5FCE
-	for <qemu-arm@archiver.kernel.org>; Mon,  5 Oct 2026 13:40:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 61486CA5FF0
+	for <qemu-arm@archiver.kernel.org>; Mon,  5 Oct 2026 14:35:50 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xDiuz-0003RC-Kv; Mon, 05 Oct 2026 09:39:49 -0400
+	id 1xDjmf-0003c6-TA; Mon, 05 Oct 2026 10:35:17 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
- id 1xDiuy-0003QV-G5
- for qemu-arm@nongnu.org; Mon, 05 Oct 2026 09:39:48 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
- id 1xDiuv-0006NW-J8
- for qemu-arm@nongnu.org; Mon, 05 Oct 2026 09:39:48 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1791207584;
- h=from:from:reply-to:reply-to:subject:subject:date:date:
- message-id:message-id:to:to:cc:cc:mime-version:mime-version:
- content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=n6vF1KMKYttXS817LHuQhd6SNLkTLI+56sGMUZLzBHc=;
- b=FnhdjHSgGDUIjQk2NjA5PdNwtzAQFlG7y+smZ6WbPnRq/eKs2CeUNdeFO8ukpj+dfWPzuh
- PlvLp5tgT3DA1p+TmNb5EGuEgGO6NuvwxbwCQkCdgqPG1292fCsBxI3RNXcmWYTmzhxxRn
- wTlZvzTztoy5J3flhPvAnyb0ElTc9/I=
-Received: from mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
- relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-319-r6z15yOkNo2bxv0SFns8Qg-1; Mon,
- 05 Oct 2026 09:39:39 -0400
-X-MC-Unique: r6z15yOkNo2bxv0SFns8Qg-1
-X-Mimecast-MFC-AGG-ID: r6z15yOkNo2bxv0SFns8Qg_1791207578
-Received: from mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com
- (mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.111])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
- (No client certificate requested)
- by mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 1562B196C428; Mon,  5 Oct 2026 13:39:38 +0000 (UTC)
-Received: from redhat.com (headnet03.pony-001.prod.iad2.dc.redhat.com
- [10.2.32.114])
- by mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 355761800446; Mon,  5 Oct 2026 13:39:36 +0000 (UTC)
-Date: Mon, 5 Oct 2026 14:39:33 +0100
-From: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
-To: Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@oss.qualcomm.com>
-Cc: qemu-devel@nongnu.org, xen-devel@lists.xenproject.org,
- qemu-riscv@nongnu.org, qemu-ppc@nongnu.org, qemu-block@nongnu.org,
- qemu-s390x@nongnu.org, qemu-arm@nongnu.org
-Subject: Re: [PATCH 01/28] hw: mark secure machines for x86, s390, ppc, arm,
- loonarch, riscv
-Message-ID: <asOolU1EMpc7jFNI@redhat.com>
-References: <20260911143627.2743803-1-berrange@redhat.com>
- <20260911143627.2743803-2-berrange@redhat.com>
- <f1481bad-4dbb-414c-801e-aa24a6977b18@oss.qualcomm.com>
- <asOk6i4CNT9P6Bs-@redhat.com>
- <5e64e1e0-d733-4f8e-98b4-8e6b554101b2@oss.qualcomm.com>
+ (Exim 4.90_1) (envelope-from <bmeng.cn@gmail.com>)
+ id 1xDjme-0003bO-1O
+ for qemu-arm@nongnu.org; Mon, 05 Oct 2026 10:35:16 -0400
+Received: from mail-yw1-x112e.google.com ([2607:f8b0:4864:20::112e])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <bmeng.cn@gmail.com>)
+ id 1xDjmc-0002wt-Fe
+ for qemu-arm@nongnu.org; Mon, 05 Oct 2026 10:35:15 -0400
+Received: by mail-yw1-x112e.google.com with SMTP id
+ 00721157ae682-8a83d2706fdso14385547b3.0
+ for <qemu-arm@nongnu.org>; Mon, 05 Oct 2026 07:35:13 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1791210912; cv=none;
+ d=google.com; s=arc-20260327;
+ b=VG4PON2pg4iQewlBsSkjpV1+Bgp70d/RkonnKBqZos6bbIv8nS5DU67ibpMB4Gqi9z
+ f8xtiFphek+NsfvtIOyeeWod7ci4r8bJwU7YA3RCtFbdil2JATKkAhHHR73Hw9v8DVlS
+ TwNv5dOlz1N8PtyGoWoy5YYu8BojwLoYAogBitrEILGZi+31Xjd1SCJxBeUjvrqTiY8H
+ TPuWtoJAkNVA7HPQoJUG2dLnppnxeJxiylAzDJ8jRlVnYB7UPC8lHp5gU1aJQjA3WqKu
+ M4Niuy/gQrEUHo3jGNALp1Znat5uhv9P5hkI7eAZamC4QJis1aWkd/w2EQit930qK2xF
+ WBGg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
+ s=arc-20260327; 
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:dkim-signature;
+ bh=jQpfOH1sU91g0An23pRVa4/U1ZxQ/WMkIzNgKV6yJy8=;
+ fh=anIme9p5m0kkPLDvDtU7AuqPRaN8J/nKZSmLa0eJJYM=;
+ b=cchYegZpvaopcgEk9NGTBHfVaxej/J3Uv6Qob0U571+MR1RMMUriRXY+JsWmUDg1MJ
+ 2n3CD3yZPGTeoae/+GBR1gcC0ySJhzeiFUZY4KCvNZilp0YYaF387NAVn2fMcYSBRYLr
+ C88kQA5MertlPXxIb5gfwyzs2Kh0O2Gz6EevPLcrXxMyJh3V5CAp5FybLQCY+18oZR44
+ AiBpq9KdgsC58Myx5HcbQqGxL5QqlZ8p98ZyPjVn680ea3sVkUNYUJ17nhOcxr6t7ZJE
+ kfliUZAJByqILxl91/6PuoO5Ki4rRTD+0IExbry0mPZAb4EoomPZhS7AvtPlzvDXg6Yn
+ lDSQ==; darn=nongnu.org
+ARC-Authentication-Results: i=1; mx.google.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=gmail.com; s=20251104; t=1791210912; x=1791815712; darn=nongnu.org;
+ h=content-transfer-encoding:content-type:cc:to:subject:message-id
+ :date:from:in-reply-to:references:mime-version:from:to:cc:subject
+ :date:message-id:reply-to:content-type;
+ bh=jQpfOH1sU91g0An23pRVa4/U1ZxQ/WMkIzNgKV6yJy8=;
+ b=cR+BMq2qotVMcAtJ7chvykq0zvw6y1T5Qj2yMOMFtRpcTNErnwR8Tm/+Ema/D5jHJx
+ UeAEkHYcg1AHn+r+EZ0aegEkTIZ9+6HcCwWO+6AntLFTga61fo/Gt9v8Z2DYcNfQvwTZ
+ VbH7Zrgb42rTsqFJzwkKrwoflUyjG0BsXFb1Fvr3P2OexTexeCMr5PaC+16IMviTe9Ng
+ bOFApFOZiAWkHA+6G3JtuwROA7efq1r9WWabKi21hUukqFt53eftUjSEZCGGy1Frl+kh
+ seTaFFv6WJYyzeba7XB1mWeficx0lS9AjzLpZTRXSopfreKdO0ez5ejqJj4ODseDNF60
+ JXJg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20260707; t=1791210912; x=1791815712;
+ h=content-transfer-encoding:content-type:cc:to:subject:message-id
+ :date:from:in-reply-to:references:mime-version:x-gm-gg
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
+ :content-type;
+ bh=jQpfOH1sU91g0An23pRVa4/U1ZxQ/WMkIzNgKV6yJy8=;
+ b=SOnB9BnpNe9gUJxZVFO2FKyykSnY9cwhX+eHOpR29diKwmdfbmIYw3JXU+G5qz3zfQ
+ KjzV9r1LlljK4FNAPicnepGTpYD8GfYIx9MZFdTXraQNHv7kw7yuWrbTH28c9EtZ8bAj
+ m2ufnCZOMmTWaZD6OXnLgjOQrxta0IndhCoHJtu7ZTi5sL7jfVH0APxg1vH13KxImqeP
+ opZGfYutqXkzpKOG8fAsOpvKH5djt6ly006f6k4tRioJG7AbRZRTbvXSoFKz/JQc/RRw
+ 4zZa7RDqkQSHvAqJjakhBzTj/P7TTbZs0GHfCLaCCl9s1qMOQwr/hWQRFQURKekOv7S5
+ sq5g==
+X-Forwarded-Encrypted: i=1;
+ AKwUvBwqXrJUWRsy90AHFpfUcxEDjiEjtIWhe6vSq5uvWfryVZalZclfZdXESv0o8/UEmREQhK12AVgrFw==@nongnu.org
+X-Gm-Message-State: AFq9FYJjz/qLr9OmNDV5B49gcUqaQdPEUdqIqZJvsY3yHP6f81XKeaUD
+ ot4VevpUyf60B/SHHNUlz4pNUZG231w1pB4dI9TAidaklq9gSmrtxT5OK+Obv4K1/gD8d+89OVp
+ wDaAnDNHcoZEUbEAvOK/fztKF0KzxiMA=
+X-Gm-Gg: AYBFou2vK0IGaRaPsfgRbdXHfqrhbSegFXimjvWbMI7PEqyX03TARP81VwglqE0H1Eb
+ 2bJkyVgDi1WD+zRBQYlzNV218YUQcMY8RilSAG8xyYtI5EGr0ClbhbKprtvnxR+uNHzInfsbETQ
+ EnykT8tQXfjZcF2CemuZCBgLGTL/VYpa+voeD+z4m7yqWbcJQZPaFLGRW4VHSFIdRgG5ZC3y8IL
+ fulfaIn3g+YrTGTS1iZqZGZSr6CvXdRXO5XhSyW6dDa16OcHMGcUJucRSUKZR9sgNyqDWLpmbfD
+ j1BH1CV7as1smPtES3FyJb+Nj7NOX6QMQfC0BLQrnfOuas9JuW0knhVDaeQiQ3q4IYiKw0TVD4L
+ /wPYuBavjE12rn+QH
+X-Received: by 2002:a05:690c:e3ef:b0:8a8:8456:a973 with SMTP id
+ 00721157ae682-8ae94ce79d6mr22117047b3.41.1791210912392; Mon, 05 Oct 2026
+ 07:35:12 -0700 (PDT)
 MIME-Version: 1.0
-In-Reply-To: <5e64e1e0-d733-4f8e-98b4-8e6b554101b2@oss.qualcomm.com>
-User-Agent: Mutt/2.4.2 (2026-08-30)
-X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.111
-X-Mimecast-MFC-PROC-ID: d1v70kvskF9bobNFookqrDgndJq0cjJYE2r_p2Zzdo8_1791207578
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=berrange@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: 10
-X-Spam_score: 1.0
-X-Spam_bar: +
-X-Spam_report: (1.0 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.24,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=0.001, RCVD_IN_SBL_CSS=3.335,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=no autolearn_force=no
+References: <20261005101800.10821-1-shentey@gmail.com>
+ <20261005101800.10821-2-shentey@gmail.com>
+In-Reply-To: <20261005101800.10821-2-shentey@gmail.com>
+From: Bin Meng <bmeng.cn@gmail.com>
+Date: Mon, 5 Oct 2026 22:35:00 +0800
+X-Gm-Features: AclHuK_3cBUj5Xdn82d_2FAhKy5DX38VsAkUgNGtXZjhCc6loHBK7N79CD7ApYY
+Message-ID: <CAEUhbmUg7PJiPzLSspj_ha8_KKRiyhEyWk4J93sXjge_Jk-d+Q@mail.gmail.com>
+Subject: Re: [PATCH v3 01/31] hw/watchdog/wdt_imx2: Preserve own locked bits
+ in WCR
+To: Bernhard Beschow <shentey@gmail.com>
+Cc: qemu-devel@nongnu.org, Gaurav Sharma <gaurav.sharma_7@nxp.com>, 
+ =?UTF-8?B?TWFyYy1BbmRyw6kgTHVyZWF1?= <marcandre.lureau@redhat.com>, 
+ Peter Maydell <peter.maydell@linaro.org>,
+ Alistair Francis <alistair@alistair23.me>, 
+ Paolo Bonzini <pbonzini@redhat.com>, Jason Wang <jasowangio@gmail.com>,
+ qemu-arm@nongnu.org, Bin Meng <bin.meng@processmission.com>, 
+ Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>, 
+ Jean-Christophe Dubois <jcd@tribudubois.net>,
+ =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@oss.qualcomm.com>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2607:f8b0:4864:20::112e;
+ envelope-from=bmeng.cn@gmail.com; helo=mail-yw1-x112e.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -93,75 +126,25 @@ List-Post: <mailto:qemu-arm@nongnu.org>
 List-Help: <mailto:qemu-arm-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
  <mailto:qemu-arm-request@nongnu.org?subject=subscribe>
-Reply-To: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Mon, Oct 05, 2026 at 03:34:52PM +0200, Philippe Mathieu-Daudé wrote:
-> On 5/10/26 15:23, Daniel P. BerrangÃ© wrote:
-> > On Mon, Oct 05, 2026 at 03:06:08PM +0200, Philippe Mathieu-Daudé wrote:
-> > > Hi,
-> > > 
-> > > On 11/9/26 16:36, Daniel P. BerrangÃ© wrote:
-> > > > The versioned machine types are typically present for use in
-> > > > virtualization use cases and can be expected to provide a security
-> > > > barrier. The only exceptions are the m68k versioned machine types
-> > > > which are only used with TCG. There are also a handful of other
-> > > > machines declared secure in docs/system/security.rst, notably
-> > > > the Xen machine variants and microvm.
-> > > > 
-> > > > Signed-off-by: Daniel P. Berrangé <berrange@redhat.com>
-> > > > ---
-> > > >    hw/arm/virt.c              | 1 +
-> > > >    hw/arm/xen-pvh.c           | 1 +
-> > > >    hw/i386/microvm.c          | 1 +
-> > > >    hw/i386/pc_piix.c          | 4 ++--
-> > > >    hw/i386/xen/xen-pvh.c      | 1 +
-> > > >    hw/loongarch/virt.c        | 2 ++
-> > > >    hw/ppc/spapr.c             | 1 +
-> > > >    hw/riscv/virt.c            | 1 +
-> > > >    hw/s390x/s390-virtio-ccw.c | 1 +
-> > > >    hw/xen/xen-pvh-common.c    | 1 +
-> > > >    hw/xenpv/xen_machine_pv.c  | 2 +-
-> > > >    include/hw/i386/pc.h       | 1 +
-> > > >    12 files changed, 14 insertions(+), 3 deletions(-)
-> > > 
-> > > This patch should be split per machine / area of maintenance,
-> > > so maintainers can officially Ack their commitment to security
-> > > boundary for their machine.
-> > > 
-> > > I'm not sure LoongArch / RISCV / PPC are. If this was previously
-> > > discussed, then pointer to the public discussions should be listed
-> > > in the patch description.
-> > 
-> > Those are explicitly documented here:
-> > 
-> >    https://www.qemu.org/docs/master/system/security.html#virtualization-use-case
-> > 
-> > so this patch is just encoding what has already been defined.
-> 
-> I probably missed when this was accepted, we are good then!
-> 
-> That said, 1/ Nitro Enclave are missing and 2/ this series organization
-> is not easy to follow to me: I'd rather a per-machine approach, with a
-> 'info qom-tree' output justifying the devices, then finish the series
-> with busses-based devices expected to be secure. I dont quite follow
-> this approach. I'm not asking to redo the series since it is already
-> reviewed.
+On Mon, Oct 5, 2026 at 6:21=E2=80=AFPM Bernhard Beschow <shentey@gmail.com>=
+ wrote:
+>
+> Apparently there is a typo in the WCR locked bits handling: The locked
+> values for s->wcr must come from itself rather than from s->wicr, so fix
+> that. Without it, guests such as u-boot may experience inadvertent
+> reboots when configuring the WCR register.
+>
+> Fixes: daca13d495a1 ("hw/watchdog: Implement full i.MX watchdog
+> support")
+> cc: qemu-stable
+> Signed-off-by: Bernhard Beschow <shentey@gmail.com>
+> ---
+>  hw/watchdog/wdt_imx2.c | 6 +++---
+>  1 file changed, 3 insertions(+), 3 deletions(-)
+>
 
-The structure is essentially, the machines listed in the docs, the
-hardware accelerators, the paravirtualized devices, and then per
-subsystem devices for the rest.
-
-A per-machine approach would end up with 90% of the series added
-in the first patch, as most devices are common to all machines
-or targets.
-
-With regards,
-Daniel
--- 
-|: https://berrange.com       ~~        https://hachyderm.io/@berrange :|
-|: https://libvirt.org          ~~          https://entangle-photo.org :|
-|: https://pixelfed.art/berrange   ~~    https://fstop138.berrange.com :|
-
+Reviewed-by: Bin Meng <bin.meng@processmission.com>
 

@@ -4,135 +4,149 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 78266CA5FE2
-	for <qemu-arm@archiver.kernel.org>; Mon,  5 Oct 2026 03:22:59 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C7A54CA5FF5
+	for <qemu-arm@archiver.kernel.org>; Mon,  5 Oct 2026 04:12:36 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xDZFy-0003jK-C1; Sun, 04 Oct 2026 23:20:50 -0400
+	id 1xDa3T-0008Eg-F3; Mon, 05 Oct 2026 00:12:03 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
- id 1xDZFx-0003j7-HH; Sun, 04 Oct 2026 23:20:49 -0400
-Received: from mail-japaneastazlp170130007.outbound.protection.outlook.com
- ([2a01:111:f403:c405::7] helo=TYDPR03CU002.outbound.protection.outlook.com)
+ (Exim 4.90_1) (envelope-from <gaurav.sharma_7@nxp.com>)
+ id 1xDa2r-00089Q-12; Mon, 05 Oct 2026 00:11:23 -0400
+Received: from mail-northeuropeazlp170120005.outbound.protection.outlook.com
+ ([2a01:111:f403:c200::5] helo=DUZPR83CU001.outbound.protection.outlook.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
- id 1xDZFv-0000RH-8V; Sun, 04 Oct 2026 23:20:49 -0400
+ (Exim 4.90_1) (envelope-from <gaurav.sharma_7@nxp.com>)
+ id 1xDa2o-0003s0-LC; Mon, 05 Oct 2026 00:11:20 -0400
 ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=gDQE15PXB4sWry0HtrzFxrvs+GO12Sw3AwFz6goamucfkEmk6JqPPG9lKO+N2GbEN5AViaXGzfWlRgaE+Bp3/b37p5chz+5iyJh5Rhmvjqk3uCGaVzT1VgcvJ4l3qS9WJcbs3cNK/F/zT3WZeyMaSHqIt2PfvwyelpQ4vGBoPylFRADrdvlcbvxXnEzbGanlmnk/vnnRotZiICzzC7I1gnao4PrkSqrgVcy28i1TbZMzLUZckBXDbwE+U6+AJc+HFm0iWg7/9omDhEtIVRbmgiQTwQ5uaVgBhmWTolFX0lv3bKhSQj4cxVBF64DWPSzeAKuxpFDFBZxS/l1nCxpftQ==
+ b=vFgTBXey0oM5n754HDXZQUy+1ZGKjsDCV+J0bc2LbEuxRRrd7YgfhNdkayvlQZGko8CKnjqtC+EnD1cRHEmZIz7CmmWqruS4iQRjePbKcIVZIX7+CS0++6tn2YBhuV3GgdaTttfgZVFl2y5cbnhDKHbPHTNo0mpF1vPkT93+M6oIsk8SxPEmK/CN7zRVunujM8kOhHEVSknPuFH8Fb5I1AefCvgMMwMiIOdLb82HAHcKgw65WX6YqWpY/tY3NxuY1MNCgSMSj8tsPi0VkpCBFqwe9zCUtREciZqrk8VXgclpa31LAQ6mT2qmp0hDZKFgslvdlBoCmBiJm4gp8Xyq/g==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
  s=arcselector10001;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=Fx50n5I/IrzY6FYkdUflCsvrG3tJDuCTjT5beRk48bE=;
- b=d6I/Z4EQbP+gBFmaGpIk6eLrR3MpHGFFlOSo68CttxjLQGYyvFNYcDxFSuUIthpRgyJ9Q1fi+n6+UTynSU2MuA7EA/pP/4PZmKrOQl3T5dpmvGaipUYR5RyIibEtlU2MLpXjs4Lepg0Ly4OkMmQgBRpoWrnPjTZRInSQ556Dz5efAZbPb19Cx2hdide6+qt0uPb4axUcZv3XZozr9HmSNpMQh3bPJ7SJ4KCni5wl+7xq5EjG6ZeGNKhQkcCb7fGBpHvxj4FAlYciXP3Iuz54Ou9/pJE3bJw9AeuHw69GVq0cyVc/Qiqvx6aUMjdQm/MayFqydniAHSya9rxfgUjdMw==
+ bh=fmexitn3o8nbtpL6EQrnzyeLFA4lTB+ble6kV7sJYPg=;
+ b=m9pyONSDIeYC2fz/tsjjXODeIRG82cq7CQQRS7wM3BDDeJJSysmSAsc7vzjCAajg7RcNyxxOFWUdULwWgiF37F1pusxEr1L1R/uRY9xihPUqQ4gF42dXF8zOWRlsziLPU+vJ9E4K68DXT7d7jdAdIZiFWVOqNIveC+EXuZU2e/kObM+jBLcUICMav6+g2/xTr6DAfM3myIWBu/1ElSUIDGRLNh3u7Zy0MMA9OTEivP3G1XGGFJ5Z1ohcuKTkHVJcy3rxi6k2Bb+x7jizkcWUTFLTWEpJojy0LAO0NpnuGMH1o2OMDxjsk7he9ghCvJApznn2Vx19PfSk3uL8LcodnQ==
 ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=aspeedtech.com; dmarc=pass action=none
- header.from=aspeedtech.com; dkim=pass header.d=aspeedtech.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=aspeedtech.com;
- s=selector1;
+ smtp.mailfrom=nxp.com; dmarc=pass action=none header.from=nxp.com; dkim=pass
+ header.d=nxp.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=nxp.com; s=selector1; 
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=Fx50n5I/IrzY6FYkdUflCsvrG3tJDuCTjT5beRk48bE=;
- b=GT/XF5Iw3yMPU5zL9a4c3LV17MyZvKn3iB2aej9Mto372jh2U2KC+6L14WGQM+kZu3d0pW19BSbhMGc4FjXOaorWvNZ6JIGdrAv5gwkhwpW0a4IdRtDK/Etmi+TTAV2PeVx74vqDPuxZ0Om08kvdHPnxuzDkAVDhvWfKdneuJkbE8m0XJJSl9HdaEj4gJRhJ4q+mj7GXGWQ2uNKWlp04ApMnhth0Oihmbmv4GmujhJzFJ8dJxOe1XGNXQB/X6BV5uLeKWvw/PI0u2i/vujNhNNIXUI1WzltH/Q390ex3vId3/+nTbDDTBSxbEKiNoQpddJVbWVHtaJiEU4BAwfPsmg==
-Received: from SEZPR06MB7362.apcprd06.prod.outlook.com (2603:1096:101:253::10)
- by TYUPR06MB5945.apcprd06.prod.outlook.com (2603:1096:400:35d::10)
+ bh=fmexitn3o8nbtpL6EQrnzyeLFA4lTB+ble6kV7sJYPg=;
+ b=d6QPGAu1QtBydl+80e6A3qpjCQWvE8GNr6LpnKSpfrxCjq1UMi4vM81OkkjJwJyS4iSajMzQq8tZwyGX9heMXen/i8lDy2ss+nicikUhQbPH5COTjrLHNAzP+EiQSvTLsnJjXgNtQttHNuknyO0b6XdG8b5iaA7NbkiQwwVUq4IJQo/ug7VF2WXrViM72INN9VbVdAnw27c/sVyELTcL8wZDaAmHhIjf7JkXPzzbcp1VFDhS+tearSJa+VJ4jxn7ltEl8a+eSX8GPISpp5xsunKbTmPtoNLWYGC3Sr7UBEGEDwaomoG0uFRPk66n5a9/vnzlxcR79E4J2z0LhAbYoQ==
+Received: from DB8PR04MB7177.eurprd04.prod.outlook.com (2603:10a6:10:127::23)
+ by AS8PR04MB8610.eurprd04.prod.outlook.com (2603:10a6:20b:425::22)
  with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.21.472.20; Mon, 5 Oct
- 2026 03:20:31 +0000
-Received: from SEZPR06MB7362.apcprd06.prod.outlook.com
- ([fe80::cd2d:35d2:a702:1de6]) by SEZPR06MB7362.apcprd06.prod.outlook.com
- ([fe80::cd2d:35d2:a702:1de6%4]) with mapi id 15.21.0472.016; Mon, 5 Oct 2026
- 03:20:31 +0000
-From: Jamin Lin <jamin_lin@aspeedtech.com>
-To: "clg@kaod.org" <clg@kaod.org>, Peter Maydell <peter.maydell@linaro.org>,
- Steven Lee <steven_lee@aspeedtech.com>, Troy Lee <leetroy@gmail.com>, Kane
- Chen <kane_chen@aspeedtech.com>, Andrew Jeffery
- <andrew@codeconstruct.com.au>, Joel Stanley <joel@jms.id.au>, "open
- list:ASPEED BMCs" <qemu-arm@nongnu.org>, "open list:All patches CC here"
+ 2026 04:11:11 +0000
+Received: from DB8PR04MB7177.eurprd04.prod.outlook.com
+ ([fe80::cf7b:6007:220b:97a2]) by DB8PR04MB7177.eurprd04.prod.outlook.com
+ ([fe80::cf7b:6007:220b:97a2%4]) with mapi id 15.21.0472.016; Mon, 5 Oct 2026
+ 04:11:11 +0000
+From: Gaurav Sharma <gaurav.sharma_7@nxp.com>
+To: Bernhard Beschow <shentey@gmail.com>, "qemu-devel@nongnu.org"
  <qemu-devel@nongnu.org>
-CC: Jamin Lin <jamin_lin@aspeedtech.com>, Troy Lee <troy_lee@aspeedtech.com>
-Subject: [PATCH v2 6/8] hw/usb/redirect-server: Implement bulk and interrupt
- transfers
-Thread-Topic: [PATCH v2 6/8] hw/usb/redirect-server: Implement bulk and
- interrupt transfers
-Thread-Index: AQHdVHh62Fspi3tkhU27HBXcmYEgWg==
-Date: Mon, 5 Oct 2026 03:20:31 +0000
-Message-ID: <20261005032022.3980903-7-jamin_lin@aspeedtech.com>
-References: <20261005032022.3980903-1-jamin_lin@aspeedtech.com>
-In-Reply-To: <20261005032022.3980903-1-jamin_lin@aspeedtech.com>
-Accept-Language: zh-TW, en-US
+CC: =?utf-8?B?TWFyYy1BbmRyw6kgTHVyZWF1?= <marcandre.lureau@redhat.com>, Peter
+ Maydell <peter.maydell@linaro.org>, Alistair Francis
+ <alistair@alistair23.me>, "qemu-arm@nongnu.org" <qemu-arm@nongnu.org>,
+ =?utf-8?B?UGhpbGlwcGUgTWF0aGlldS1EYXVkw6k=?= <philmd@oss.qualcomm.com>, Jason
+ Wang <jasowangio@gmail.com>, Paolo Bonzini <pbonzini@redhat.com>, Bin Meng
+ <bin.meng@processmission.com>, Jean-Christophe Dubois <jcd@tribudubois.net>,
+ Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>
+Subject: RE: [EXT] [PATCH v2 30/30] hw/arm/fsl-imx8m: Fix typo
+Thread-Topic: [EXT] [PATCH v2 30/30] hw/arm/fsl-imx8m: Fix typo
+Thread-Index: AQHdU/vaVpvMr/AoCkWZmvBr3H8OB7buVsEw
+Date: Mon, 5 Oct 2026 04:11:10 +0000
+Message-ID: <DB8PR04MB71772DFBE4AC1EBFCC54E48F87962@DB8PR04MB7177.eurprd04.prod.outlook.com>
+References: <20261004122647.3913-1-shentey@gmail.com>
+ <20261004122647.3913-31-shentey@gmail.com>
+In-Reply-To: <20261004122647.3913-31-shentey@gmail.com>
+Accept-Language: en-US
 Content-Language: en-US
 X-MS-Has-Attach: 
 X-MS-TNEF-Correlator: 
+msip_labels: MSIP_Label_0d9c909a-577b-4ba2-96de-69ada94b137a_Enabled=True;
+ MSIP_Label_0d9c909a-577b-4ba2-96de-69ada94b137a_SiteId=686ea1d3-bc2b-4c6f-a92c-d99c5c301635;
+ MSIP_Label_0d9c909a-577b-4ba2-96de-69ada94b137a_SetDate=2026-10-05T04:09:47.0000000Z;
+ MSIP_Label_0d9c909a-577b-4ba2-96de-69ada94b137a_Name=NXP
+ Confidential; MSIP_Label_0d9c909a-577b-4ba2-96de-69ada94b137a_ContentBits=3;
+ MSIP_Label_0d9c909a-577b-4ba2-96de-69ada94b137a_Method=Standard
 authentication-results: mx.microsoft.com 1; dkim=none (message not signed)
- header.d=none;dmarc=none action=none header.from=aspeedtech.com;
+ header.d=none;dmarc=none action=none header.from=nxp.com;
 x-ms-publictraffictype: Email
-x-ms-traffictypediagnostic: SEZPR06MB7362:EE_|TYUPR06MB5945:EE_
-x-ms-office365-filtering-correlation-id: fd3d6c40-02fe-42a7-05d7-08df228f9cc8
+x-ms-traffictypediagnostic: DB8PR04MB7177:EE_|AS8PR04MB8610:EE_
+x-ms-office365-filtering-correlation-id: 0e245821-4f38-4098-8290-08df2296b070
 x-ms-exchange-senderadcheck: 1
 x-ms-exchange-antispam-relay: 0
 x-microsoft-antispam: BCL:0;
- ARA:13230040|376014|23010399003|366016|1800799024|38070700021|5023799004|6133799003|10067099003|56012099006|22082099003|18002099003;
-x-microsoft-antispam-message-info: YeA8rydiih8UpBscHTFvilwe+7W/ZViHhVQIPo6xGfGmd9qA6NDO2IMhsiw3WDIkeWEfGOyxFZjg6BAau5MewTXK+Igolcf+KMyPNNLhr7PpzfGosw3O8OEZdlK2y9OLB8D93Qa9oRHy/K0FrBKFEhkQxx5s84hLbNEaQVnMP1aSTac0OTTDLTnRMFEXTSnvecf9SIyk5nBOuJ6IkxqU9jXDYKV3hdsaJ1Cb1OUm0c1ThKlqyZPduHY/8JmZKSy8FerWRD09LoxsPbU49hapsw5S7RX89CM0T5bZOumP6ew4DDdQJdy46Wr1rH5Jj19EgLKAV4/qecPJ49ZN3PpacnY1NomBgtEDKUUPJArCEb8Xcf1P/s0Zt20kst/FfEhV+7Ihz19bg5JcNXdtBQz2Z0LbLyDGlQAwL2pU6EZQZrH7IJbkNIN54sY8Kre8WfEUfjjS+CtmuSeaFEMzIUpVAAQEE1HxP/EM7D4OI8D0jEIX0gOlghIVBcIbGAnnOgkvR/Ekh8E2Lfq3UizlTyzwRYc7jncHftCXZo+NQeT4YP/PD9GqGmRiO/Dlc91OArwImiCLs0ZQjfgA0GirLO01Lv24EMmlEUk1dA8IX7iQWM77VQzh3XsJMYLRnD678AlMe0hIa28WUr6RAQgSwS7pfLLjowuXp0FxDt5o77t6/qvH1xLs03KTfukMmnXH7DQW3AzRUPB73Km6PQhGO2rpVgv7W9RoYAaL8/zJLBKKpLs=
+ ARA:13230040|7416014|376014|366016|23010399003|19092799006|1800799024|10067099003|56012099006|4143699003|11063799006|18002099003|22082099003|38070700021;
+x-microsoft-antispam-message-info: lTgpJW5EsWvfPH5XYMlYJlyoVFiFKFyoeqx1Geqo7Aq3XyW+lBIFDDFhogt6AGFD20NVobNgoPgI/lGnnyR1snEafM9wRFlqkOZiYHesWGYdlDox0k5newqSCV8MnrrpnBYE4moQ2o+igzrKGgTH9quMXCmvujd8iWcyhz9T1ounc8+sNdmIDC5LDKsLQXf6HedTATcxWjJOP3cYlLwFq8wNj7IWX3mp7zjZ/eyO2x12UcCHUB4MSjOmfolF10d2Zy6zyr4Sdn9gbhBdoZIDpZbASVaFmFCzX4EhV4VyXgyAt2BfCAilPGN1kagzuz9U3MvlFXS1IGCFbU827Yuk9fxFNE98/hzArRqsDLz4dka8n4elhBMBN+ObFJFE0hqBpDTtTxyRj++5J6eRKFmKaLX/yiy1h/7ZzCE2iQMuTeRXUySFVtgQSBIS0vYPICbiqoJgr2apPZlQhjcTyl2kbhJ6aeno7LkCs3gZmlv22AZa+u1oXHK0Vi/MGssJOEb3hPOo5fjh+3F3NXpPaXSwCwI3teLz/mHKAbk/cChGPD1KbfhBl4CSXlw0VByPIf5AP1GHI/5RYK9Enq8WkcRPoy16CJD+mdbMWBTtT23pBq7kMFEIUXJ5TYqZ5ZP2waORYp+GbSm8nZeFB+cM9PWk7m9wNcPDNmRIbNT3eNR/JE4bMx1i9g1hbgWgm4sYt2ZRCTJ6xJXkSlOXPr+P99TcbQ==
 x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:SEZPR06MB7362.apcprd06.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(13230040)(376014)(23010399003)(366016)(1800799024)(38070700021)(5023799004)(6133799003)(10067099003)(56012099006)(22082099003)(18002099003);
- DIR:OUT; SFP:1102; 
+ IPV:NLI; SFV:NSPM; H:DB8PR04MB7177.eurprd04.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(13230040)(7416014)(376014)(366016)(23010399003)(19092799006)(1800799024)(10067099003)(56012099006)(4143699003)(11063799006)(18002099003)(22082099003)(38070700021);
+ DIR:OUT; SFP:1101; 
 x-ms-exchange-antispam-messagedata-chunkcount: 1
-x-ms-exchange-antispam-messagedata-0: =?us-ascii?Q?Ci08Da3oDinqXMmlEuj9s33VmYRVfmW+H6IEg9iTPO4SjrEFPWk0Nom40QYM?=
- =?us-ascii?Q?TPoPmj1w/iXCjIezC7QgA5JhjLXMMZByzfxm+xMnefYfEIb6QgOZW++uWy2K?=
- =?us-ascii?Q?UY2h2UK1Ol49hGG3fgllY08j02xrUGskV9zytrX1khCGc+KDLr8rquB7oRRX?=
- =?us-ascii?Q?UuXLUdFkw5AGgiF3KnVLcO6bIT1cZPgvGj+wrSVqFT4YUISZ2f1rFOui1R4e?=
- =?us-ascii?Q?CZHA0m8trbYxf+1QUMFs3uPEQLzjTAaTCGR9qzwIcxu4oxWVBGU1IOolUa6M?=
- =?us-ascii?Q?ht3ndPanZlMdO30Ib0nOtziJfjk54cLmMoq2VwNKzLc+JrrydfVFjwVle77C?=
- =?us-ascii?Q?4ftg/3iJQvg1DJxYJgLbDGvSFXewbd1nzoaezXd3E4i8F28tarM6IWOGu9nV?=
- =?us-ascii?Q?znMniMg3JJ/WrwuW/m7clBb0jOIuml4ZXsqW6Z7QRL5Hf8H1UuSvGSladfoU?=
- =?us-ascii?Q?cJQX2dMVg8Op2mRHcDU4mmaqCkI1peZBXewpS5rKyUARi8+7vxjPshIU6ztv?=
- =?us-ascii?Q?SKjpkJTOvLAdh7WqsSTA4hDodGCA3kgKXt5pP07Kv0udors43NODbp3C2X+2?=
- =?us-ascii?Q?DipfVUxiWp+EEULpb+5OwpC4Jx11F8Mf96A1nIdEjVyvpVQE6YmNgcb+1rwr?=
- =?us-ascii?Q?GdPo0IYMqNcQ/B36w5HdgPfLuTZd4WUEd96lpz2oxCTETRbnBeChaBkfem9K?=
- =?us-ascii?Q?ex+5LAA9PwnISLXbPs8rF0T6qc2jpHpQTE4bGst0uSGIDf2cIL2A/wHROcW5?=
- =?us-ascii?Q?x3Vk8vVtwvrLAVg9lhLec9udueSi5gNDbfpnC59VZh+5r+IAxT4pn/cv/vYv?=
- =?us-ascii?Q?+1Br8z4SVH9j69dN+XBszek1WXzSGyS/V7eKXHL6g+EXTN9L6MIvT0rMUXcN?=
- =?us-ascii?Q?syH6JIkHnTtlmTFgQzlTfshk2YHAuGEzzALAh/hwJS3XN5B4vmDbout2iksf?=
- =?us-ascii?Q?2SkSOBZ+f/UTM9XNewM/N+d92Q5Z6L1xrj2qHCSjiNbgoTwZPj1Z6RvixPGx?=
- =?us-ascii?Q?lKjN1GTg8ra3DjPR8BqZ0wznOA1PjjsNbHJq/MO1VxQF6aXIcEmRKRM21Wp7?=
- =?us-ascii?Q?WG/XEys2l01h6ouh1VyGmKghKR1dnBn8o4nMgvhWDR3fznSDRHiAz8gIl5lP?=
- =?us-ascii?Q?n+ydB/ZaOjsq142i5fYd891oVvGYhxsj/Nz4QLogU5XIf5DQIZEO66CrqUt1?=
- =?us-ascii?Q?g2KYDY1Zk0yjqa2l+GyYlQBZIP7c3C7lpz3KrkSWhWguaHSmAsJQJ7XqeJT+?=
- =?us-ascii?Q?xA2OhmFXnd+gVJ/XU5jgFDQMdNGEYPhaSKb8IlFebNgIYcf6Y11SxPJ2Pweb?=
- =?us-ascii?Q?aFwDR1eoxyI3BmXtE9sp/Z4behosnw9OaoepMYpaXrpjQ5hv8tcYkjUyMeHK?=
- =?us-ascii?Q?Uhup/MnpCMNmh7+ubl2B90HEv1ifOw3CX/0Ks0tnLTXKR/1Y4ZVp50bVzxaI?=
- =?us-ascii?Q?BOEcMyJ7AYBLNvO8li9l5MUVLXuylRe6zOU2uRLIqpnkLbakxNbiqtVuE0r3?=
- =?us-ascii?Q?Hk8QfThG21OB75L02k2Q8w7Guy7JbKYfaXso0SbKB2jHAP7epvFHjT2tSsVW?=
- =?us-ascii?Q?vFzA73mBHri7NciXYFCTlA068P1bLu16lliNreDXfpmD3nGcOgoTcKyrlvUv?=
- =?us-ascii?Q?1Zqgr+pV5PZyfy1ooQRzXDXrGAdjqgeA9ylFIEvzU64+mCO3thtBjsXHlXP8?=
- =?us-ascii?Q?RuMEM++N4hNzJ3zxmKlcsnK3iDm/5Gaw7krfyWR/3wmnJcACKcRnHWAGIH1W?=
- =?us-ascii?Q?VY7TnRx3rg=3D=3D?=
-Content-Type: text/plain; charset="us-ascii"
-Content-Transfer-Encoding: quoted-printable
+x-ms-exchange-antispam-messagedata-0: =?utf-8?B?SllVMHNYcU5aSDFPaXlmVUR0aWx4cFZhTTY0U2pSbDRHUHZGaEY0ZGhReURa?=
+ =?utf-8?B?NjJGRTErNU1XMGkyeHlzK3BKMkExTUgxd3VTdldRMHEydUF1RGUzeTNBVStB?=
+ =?utf-8?B?QW9FRHNIOG1rUmhrdnp1Y3FaYm9BcHFsM2dEbU5CQm1MaGpwRytOTE5jZFAr?=
+ =?utf-8?B?aU43NWUwZmpRakRKbkNoQlFEZjNReHpmK25FU2FuVTdUc3d2N08xYU9DTGFU?=
+ =?utf-8?B?QjVKZlhUcmFtSDVhQmUzKzZIWTVEVlJBOW04V1BsdGpEWWtqT3lJdlRmOURq?=
+ =?utf-8?B?ZzRwaENyNVJ5VllwK01ZZno4MUpVcHg3RVhMcytOU2IyOFo4TTR0NXhEWlB2?=
+ =?utf-8?B?Nlo2Wm5melNpaU52RE1YQyt3RGF1MTB6YlZINVpqT0hYVTBaNzFnbzZ0Sk9W?=
+ =?utf-8?B?bnpnVzU0SS8vNHllZzhSbVVDUFhuMVdZNVJiemZ4empkUjNWQnIrSzFqNEtv?=
+ =?utf-8?B?UmlmakFXdmRmMW8rY3dSVHQ2ODh1dlY5bTM0QXI3Mnp6MVI5UzlJREVMcEhT?=
+ =?utf-8?B?UDVkSXV4cUtUTThNRHE4OEZpeE1kTHNTeE42dU9TV2c1R3JrZ3JCanNhb3FC?=
+ =?utf-8?B?RjhteVdlaExoVjM5Qzk2dm1vZW16SXFvSHV1bk1FZ1hQR2IrSjBNT3dqdUFC?=
+ =?utf-8?B?Y0x2dFhxODdWS1dlRGdNaVhOczZDb0twVWJXUmU3L0FBMERjMDFsYjdmZHFW?=
+ =?utf-8?B?cm9wNnFQQ0gyV0VMRjRXY3hBZ0FRVmhMTkY4TnhNZ0VMZDVGdjhOdXhRdzJn?=
+ =?utf-8?B?aUYrWFRET2Q3NnlMd1NodUsyb2N0R0xrZExmOGFJeVdCVWhnb2VVaEVDbUdk?=
+ =?utf-8?B?aHRwYU5lR3NjaXVPa08vWkJTQkVVZVZIckMzSW55MVI5dkFpNk00SEtxRlVz?=
+ =?utf-8?B?VzlrQXlDcFdrY1JzdGovaTkxRWlFU3pLTWdFNWlhd0ZCbUxKYnJOMDZrNDJX?=
+ =?utf-8?B?QnJJb1h4bGdYd3JVL2VVMVRDV0RiSFlYU0thNExRT2tFWGM4QUdvR1ZjUXF6?=
+ =?utf-8?B?V3RFWlNJbFZNUUs1UHE1Z2I0RlY2V0ppRmpwNXhCczloanoxNE4rTHJlMHBE?=
+ =?utf-8?B?U2hEZi9ROUxQaFZpS2FxU0tnc3A1S3JLb1RSSkpYTFo3bitZeHVYVU1pM200?=
+ =?utf-8?B?UHo2dkl3ZStMQlk3bFZJSkk0U3JMeUVXYzd0bHVIYWVPeVJ0OXVmU21qUlF3?=
+ =?utf-8?B?WnVUd0RMS29lUk50L3VucEJJbGZseEtySmU1azU2YVFhTytiSmNhSlhSZ3Av?=
+ =?utf-8?B?V2RDc1RBWUJsU3hLL25YaksvM29URC9DelAvWWN6Yld2SmwzNGJWMG52cnlk?=
+ =?utf-8?B?aXlPL0JnS05yR01PQWpXUG1pM2hvWElBS25NTWhCMEo2RGVqeDA4ZElaS3Bk?=
+ =?utf-8?B?b2YwZHUvR3oxWVRZUjE2ZWpwMUtBdnczTVk0N1dXdmRCUlBwOEpzcWFzamVD?=
+ =?utf-8?B?SmdPU1lHeFljbzBLUml2cnROY3lyWStiamVESkdTWW5YWVl0QjNyWDYxeFRZ?=
+ =?utf-8?B?L29MVGJEV2pOMTJ3bXJnYU9aMGpwTmVsQ0RRR016WkZYK2ZtV1haMzRMU1JR?=
+ =?utf-8?B?V3ovbkV3QTVmcFNkNGJnZW5Qam1rREZWYkZ1S0g2dE5GNXFhVmxlYWJFell4?=
+ =?utf-8?B?dGdHZW05cHZsRWZLZlA2cHlxbkRGNXdEU0ppM1g5NW1ZN091SnFVbWpqRGho?=
+ =?utf-8?B?RGtaMCtiOFY0QUlxcmhYaGY0cVdOeFB0dlJUYVFzSWZUUlFkREs0RE83V0o0?=
+ =?utf-8?B?QVBRbEF2NktwdnB4WWd1aCtmeE1sczJHYzltZTI0NzJESVhqZG1BSjBmeDRi?=
+ =?utf-8?B?K21FVGVMNjIwSFhsekUweFBuaUpLTjJkd0YrWWdwelRtTENYQ3VnaFJGV21Z?=
+ =?utf-8?B?NnFUaG5QSGtMZVA1azJZNUt6Yi9ib0dGaTBzeVY4SnpBUkRDY3BJR0d0a3lp?=
+ =?utf-8?B?L2lmWUo1K2ZMUmR5bUx3TnNlV1B6eDMyNUtkMExXTEwvL2VIQ1RTQjVLb0oz?=
+ =?utf-8?B?L0NiUjNEbzlmd3o3aG5lVmZSUlYxWkRRYytzNUpLRGlRdHFud3pOZ3VoQ1BV?=
+ =?utf-8?B?WExhVC9ZeFNCbTJsLzl6MlNDSVdCNDBTeEFEb1k2VVZKL0MyelNOZHJEclF0?=
+ =?utf-8?B?R3laN0s2RkpEdHRoK0hYekVBajhKN1dSUjg3MmJmSzFEVkEzQU9aRG02VWxj?=
+ =?utf-8?B?TVJiY0dvODdDM3ZibGwxTnhCUmRTRitLb2UrVll6R0JxK0NMUnBrbG5iNjNU?=
+ =?utf-8?B?TnJBUkNJQ1Jnc0JVNFlWdjZ5VDU0cXpaN3NFaVoydjBSWjhLY09RdGIwQnhj?=
+ =?utf-8?B?SlloUmREM0ovWnNFTjRBQ040LzVrY0ZRQm80YStuak9jYjQrSDRBUT09?=
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: base64
 MIME-Version: 1.0
-X-Exchange-RoutingPolicyChecked: 3GeBKBMY15nHaPo+ERwV3gB5BkmHmXzrV8OGk/8NDCu9yltLt9skLeg6lQkG97kyMrcjh6nXHi88iLSmA9ViQCuCYN9tMWkRUtBjBhomFDK1YxkTQPp5hZGP/i9xw6SNhWsNxSswpXp/PvTAzxxW8RyLzs2F1F1BvCfSI1aZxgeQ058UcvSYMFwn0M/lNosLW8S2c+WvbQAjPDJw84suz4q2C+G9d8elJzUZ/Cw4Kp9NxMC6VYTDH0G3/Iv0TXL9SBgVaIH0WLTES0d+DVazX9BHgNYB+7Xl+sVf4Zu9QFxK7iQ5geiQxdPBrYmmq3UH6x7l2nibvxwymqad2WXD+w==
-X-OriginatorOrg: aspeedtech.com
+X-OriginatorOrg: nxp.com
 X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-AuthSource: SEZPR06MB7362.apcprd06.prod.outlook.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: fd3d6c40-02fe-42a7-05d7-08df228f9cc8
-X-MS-Exchange-CrossTenant-originalarrivaltime: 05 Oct 2026 03:20:31.5877 (UTC)
+X-MS-Exchange-CrossTenant-AuthSource: DB8PR04MB7177.eurprd04.prod.outlook.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 0e245821-4f38-4098-8290-08df2296b070
+X-MS-Exchange-CrossTenant-originalarrivaltime: 05 Oct 2026 04:11:11.0096 (UTC)
 X-MS-Exchange-CrossTenant-fromentityheader: Hosted
-X-MS-Exchange-CrossTenant-id: 43d4aa98-e35b-4575-8939-080e90d5a249
+X-MS-Exchange-CrossTenant-id: 686ea1d3-bc2b-4c6f-a92c-d99c5c301635
 X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
-X-MS-Exchange-CrossTenant-userprincipalname: FkIZ+qqQcWAKcKK+H2DlFkVDwv92TkXmJNHliKtI/fqynN2MkaR7Coa6mLmwzvOOzoOYGXmoafJKb+fWgESFQDQu1IOJn5rQqmvoKShzP50=
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: TYUPR06MB5945
-Received-SPF: pass client-ip=2a01:111:f403:c405::7;
- envelope-from=jamin_lin@aspeedtech.com;
- helo=TYDPR03CU002.outbound.protection.outlook.com
+X-MS-Exchange-CrossTenant-userprincipalname: bJoZ69UJJHMlxG6Y/lRGs8OovaTICDwhzv3DhM65JvtUpvXgZdXWnVEC0GKx35NDz3OWFDCnoVcASnCFV2v8Pw==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: AS8PR04MB8610
+Received-SPF: permerror client-ip=2a01:111:f403:c200::5;
+ envelope-from=gaurav.sharma_7@nxp.com;
+ helo=DUZPR83CU001.outbound.protection.outlook.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FORGED_SPF_HELO=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_PASS=-0.001,
+ T_SPF_PERMERROR=0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -148,361 +162,75 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Send bulk and interrupt packets to the device and return the result to=0A=
-the host. Each one is a request and an answer, so they reuse the packet=0A=
-tracking added for control transfers.=0A=
-=0A=
-A bulk request carries a 32 bit length, so the host can ask us to=0A=
-allocate up to 4 GB. Refuse a request that big. Do not answer it with=0A=
-fewer bytes instead: the host counts the bytes it gets back, and it=0A=
-resets the device when some are missing.=0A=
-=0A=
-Signed-off-by: Jamin Lin <jamin_lin@aspeedtech.com>=0A=
----=0A=
- include/hw/usb/redirect-server.h |  11 ++=0A=
- hw/usb/redirect-server.c         | 193 +++++++++++++++++++++++++++++++=0A=
- hw/usb/trace-events              |   5 +=0A=
- 3 files changed, 209 insertions(+)=0A=
-=0A=
-diff --git a/include/hw/usb/redirect-server.h b/include/hw/usb/redirect-ser=
-ver.h=0A=
-index 83c4524040..f7b2261db4 100644=0A=
---- a/include/hw/usb/redirect-server.h=0A=
-+++ b/include/hw/usb/redirect-server.h=0A=
-@@ -9,6 +9,7 @@=0A=
- #ifndef HW_USB_REDIRECT_SERVER_H=0A=
- #define HW_USB_REDIRECT_SERVER_H=0A=
- =0A=
-+#include "qemu/units.h"=0A=
- #include "hw/core/sysbus.h"=0A=
- #include "hw/usb/usb.h"=0A=
- #include "chardev/char-fe.h"=0A=
-@@ -27,8 +28,16 @@ OBJECT_DECLARE_SIMPLE_TYPE(USBRedirServer, USB_REDIR_SER=
-VER)=0A=
- #define USBREDIR_SERVER_MAX_EP 32=0A=
- #define USBREDIR_SERVER_EP_IN_BASE 16=0A=
- =0A=
-+/*=0A=
-+ * The bulk length field is 32 bits, so the host can ask for up to 4 GB.=
-=0A=
-+ * This is the largest transfer accepted.=0A=
-+ */=0A=
-+#define USBREDIR_SERVER_MAX_BULK (1 * MiB)=0A=
-+=0A=
- #define USBREDIR_SERVER_CTRL_SETUP 0=0A=
- #define USBREDIR_SERVER_CTRL_STATUS 1=0A=
-+#define USBREDIR_SERVER_BULK 2=0A=
-+#define USBREDIR_SERVER_INTR 3=0A=
- =0A=
- /* Which message answers the host when a control transfer ends. */=0A=
- typedef enum {=0A=
-@@ -41,7 +50,9 @@ typedef struct USBRedirServerPkt {=0A=
-     USBPacket pkt;=0A=
- =0A=
-     /* Saved headers for the usbredir response */=0A=
-+    struct usb_redir_interrupt_packet_header intr_hdr;=0A=
-     struct usb_redir_control_packet_header ctrl_hdr;=0A=
-+    struct usb_redir_bulk_packet_header bulk_hdr;=0A=
- =0A=
-     /*=0A=
-      * The IOV points here. IN data lands in it, OUT data is copied in.=0A=
-diff --git a/hw/usb/redirect-server.c b/hw/usb/redirect-server.c=0A=
-index 5005ea5f8a..a733a007e3 100644=0A=
---- a/hw/usb/redirect-server.c=0A=
-+++ b/hw/usb/redirect-server.c=0A=
-@@ -356,6 +356,52 @@ static void usbredir_server_ctrl_status_complete(USBRe=
-dirServer *s,=0A=
-     }=0A=
- }=0A=
- =0A=
-+static void usbredir_server_bulk_complete(USBRedirServer *s,=0A=
-+                                          USBRedirServerPkt *rp)=0A=
-+{=0A=
-+    struct usb_redir_bulk_packet_header resp =3D rp->bulk_hdr;=0A=
-+    bool is_in =3D !!(rp->bulk_hdr.endpoint & USB_DIR_IN);=0A=
-+    int actual =3D rp->pkt.actual_length;=0A=
-+    int len;=0A=
-+=0A=
-+    resp.status =3D usbredir_server_status(rp->pkt.status);=0A=
-+=0A=
-+    /* Only an IN transfer carries data back. */=0A=
-+    len =3D is_in ? actual : 0;=0A=
-+    resp.length =3D len;=0A=
-+    resp.length_high =3D len >> 16;=0A=
-+=0A=
-+    trace_usbredir_server_bulk_complete(rp->redir_id, resp.endpoint,=0A=
-+                                        resp.status, actual);=0A=
-+=0A=
-+    usbredirparser_send_bulk_packet(s->parser, rp->redir_id, &resp,=0A=
-+                                    len > 0 ? rp->data : NULL, len);=0A=
-+    usbredirparser_do_write(s->parser);=0A=
-+}=0A=
-+=0A=
-+static void usbredir_server_intr_complete(USBRedirServer *s,=0A=
-+                                          USBRedirServerPkt *rp)=0A=
-+{=0A=
-+    struct usb_redir_interrupt_packet_header resp =3D rp->intr_hdr;=0A=
-+    bool is_in =3D !!(rp->intr_hdr.endpoint & USB_DIR_IN);=0A=
-+    int actual =3D rp->pkt.actual_length;=0A=
-+    int len;=0A=
-+=0A=
-+    resp.status =3D usbredir_server_status(rp->pkt.status);=0A=
-+=0A=
-+    /* Only an IN transfer carries data back. */=0A=
-+    len =3D is_in ? actual : 0;=0A=
-+    resp.length =3D len;=0A=
-+=0A=
-+    trace_usbredir_server_intr_complete(rp->redir_id, resp.endpoint,=0A=
-+                                        resp.status, actual);=0A=
-+=0A=
-+    usbredirparser_send_interrupt_packet(s->parser, rp->redir_id, &resp,=
-=0A=
-+                                         len > 0 ? rp->data : NULL,=0A=
-+                                         len);=0A=
-+    usbredirparser_do_write(s->parser);=0A=
-+}=0A=
-+=0A=
- /*=0A=
-  * USB port ops=0A=
-  */=0A=
-@@ -452,6 +498,12 @@ static void usbredir_server_packet_complete(USBPort *p=
-ort, USBPacket *p)=0A=
-     case USBREDIR_SERVER_CTRL_STATUS:=0A=
-         usbredir_server_ctrl_status_complete(s, rp);=0A=
-         break;=0A=
-+    case USBREDIR_SERVER_BULK:=0A=
-+        usbredir_server_bulk_complete(s, rp);=0A=
-+        break;=0A=
-+    case USBREDIR_SERVER_INTR:=0A=
-+        usbredir_server_intr_complete(s, rp);=0A=
-+        break;=0A=
-     }=0A=
- =0A=
-     usbredir_server_pkt_free(rp);=0A=
-@@ -828,6 +880,105 @@ static void usbredir_server_get_alt_setting(void *pri=
-v, uint64_t id,=0A=
-                                USBREDIR_SERVER_REPLY_ALT);=0A=
- }=0A=
- =0A=
-+static void usbredir_server_bulk_packet(void *priv, uint64_t id,=0A=
-+    struct usb_redir_bulk_packet_header *hdr,=0A=
-+    uint8_t *data, int data_len)=0A=
-+{=0A=
-+    USBRedirServer *s =3D priv;=0A=
-+    USBDevice *device =3D usbredir_server_device(s);=0A=
-+    bool is_in =3D !!(hdr->endpoint & USB_DIR_IN);=0A=
-+    int pid =3D is_in ? USB_TOKEN_IN : USB_TOKEN_OUT;=0A=
-+    struct usb_redir_bulk_packet_header resp;=0A=
-+    int ep_nr =3D hdr->endpoint & 0x0f;=0A=
-+    USBRedirServerPkt *rp;=0A=
-+    USBEndpoint *ep;=0A=
-+    uint32_t len;=0A=
-+=0A=
-+    if (!s->host_connected || !device || !device->attached) {=0A=
-+        return;=0A=
-+    }=0A=
-+=0A=
-+    /* IN: what the host asked for. OUT: what the host sent. */=0A=
-+    len =3D is_in ? (((uint32_t)hdr->length_high << 16) | hdr->length)=0A=
-+                : (uint32_t)data_len;=0A=
-+=0A=
-+    /*=0A=
-+     * Too big. Tell the host the transfer failed.=0A=
-+     * Do not send back less data instead. The host would see the=0A=
-+     * missing bytes as an error and reset the device.=0A=
-+     */=0A=
-+    if (len > USBREDIR_SERVER_MAX_BULK) {=0A=
-+        resp =3D *hdr;=0A=
-+        resp.status =3D usb_redir_inval;=0A=
-+        resp.length =3D 0;=0A=
-+        resp.length_high =3D 0;=0A=
-+=0A=
-+        trace_usbredir_server_bulk_too_big(id, hdr->endpoint, len);=0A=
-+        usbredirparser_send_bulk_packet(s->parser, id, &resp, NULL, 0);=0A=
-+        usbredirparser_do_write(s->parser);=0A=
-+        return;=0A=
-+    }=0A=
-+=0A=
-+    ep =3D usb_ep_get(device, pid, ep_nr);=0A=
-+    rp =3D usbredir_server_pkt_alloc(len);=0A=
-+    rp->redir_id =3D id;=0A=
-+    rp->type =3D USBREDIR_SERVER_BULK;=0A=
-+    rp->bulk_hdr =3D *hdr;=0A=
-+=0A=
-+    usb_packet_setup(&rp->pkt, pid, ep, 0, s->next_id++, false, false);=0A=
-+=0A=
-+    /* OUT data comes from the host. IN data is written by the device. */=
-=0A=
-+    if (!is_in && len > 0) {=0A=
-+        memcpy(rp->data, data, len);=0A=
-+    }=0A=
-+    usb_packet_addbuf(&rp->pkt, rp->data, len);=0A=
-+=0A=
-+    trace_usbredir_server_bulk(id, hdr->endpoint, len);=0A=
-+    usbredir_server_submit_to_device(s, rp);=0A=
-+}=0A=
-+=0A=
-+/*=0A=
-+ * The host sends an interrupt_packet. It is a request: interrupt OUT=0A=
-+ * data to write, or a single IN request to answer.=0A=
-+ */=0A=
-+static void usbredir_server_interrupt_packet(void *priv, uint64_t id,=0A=
-+    struct usb_redir_interrupt_packet_header *hdr,=0A=
-+    uint8_t *data, int data_len)=0A=
-+{=0A=
-+    USBRedirServer *s =3D priv;=0A=
-+    USBDevice *device =3D usbredir_server_device(s);=0A=
-+    bool is_in =3D !!(hdr->endpoint & USB_DIR_IN);=0A=
-+    int pid =3D is_in ? USB_TOKEN_IN : USB_TOKEN_OUT;=0A=
-+    int ep_nr =3D hdr->endpoint & 0x0f;=0A=
-+    USBRedirServerPkt *rp;=0A=
-+    USBEndpoint *ep;=0A=
-+    int len;=0A=
-+=0A=
-+    if (!s->host_connected || !device || !device->attached) {=0A=
-+        return;=0A=
-+    }=0A=
-+=0A=
-+    /* IN: what the host asked for. OUT: what the host sent. */=0A=
-+    len =3D is_in ? hdr->length : data_len;=0A=
-+=0A=
-+    ep =3D usb_ep_get(device, pid, ep_nr);=0A=
-+    rp =3D usbredir_server_pkt_alloc(len);=0A=
-+    rp->redir_id =3D id;=0A=
-+    rp->type =3D USBREDIR_SERVER_INTR;=0A=
-+    rp->intr_hdr =3D *hdr;=0A=
-+=0A=
-+    usb_packet_setup(&rp->pkt, pid, ep, 0, s->next_id++, false, false);=0A=
-+=0A=
-+    /* OUT data comes from the host. IN data is written by the device. */=
-=0A=
-+    if (!is_in && len > 0) {=0A=
-+        memcpy(rp->data, data, len);=0A=
-+    }=0A=
-+    usb_packet_addbuf(&rp->pkt, rp->data, len);=0A=
-+=0A=
-+    trace_usbredir_server_interrupt(id, hdr->endpoint, len);=0A=
-+    usbredir_server_submit_to_device(s, rp);=0A=
-+}=0A=
-+=0A=
- static void usbredir_server_filter_reject(void *priv)=0A=
- {=0A=
-     trace_usbredir_server_filter_reject();=0A=
-@@ -851,6 +1002,24 @@ static void usbredir_server_interface_info(void *priv=
-,=0A=
-     /* The host should not send this to a device. Nothing to do. */=0A=
- }=0A=
- =0A=
-+static void usbredir_server_alloc_bulk_streams(void *priv, uint64_t id,=0A=
-+    struct usb_redir_alloc_bulk_streams_header *hdr)=0A=
-+{=0A=
-+    /* We do not advertise bulk streams. Nothing to do. */=0A=
-+}=0A=
-+=0A=
-+static void usbredir_server_start_bulk_receiving(void *priv, uint64_t id,=
-=0A=
-+    struct usb_redir_start_bulk_receiving_header *hdr)=0A=
-+{=0A=
-+    /* We do not advertise this. Nothing to do. */=0A=
-+}=0A=
-+=0A=
-+static void usbredir_server_stop_bulk_receiving(void *priv, uint64_t id,=
-=0A=
-+    struct usb_redir_stop_bulk_receiving_header *hdr)=0A=
-+{=0A=
-+    /* We do not advertise this. Nothing to do. */=0A=
-+}=0A=
-+=0A=
- static void usbredir_server_cancel_data_packet(void *priv, uint64_t id)=0A=
- {=0A=
-     struct usb_redir_control_packet_header resp =3D {=0A=
-@@ -899,7 +1068,9 @@ static void usbredir_server_cancel_data_packet(void *p=
-riv, uint64_t id)=0A=
- static void usbredir_server_send_cancelled(USBRedirServer *s,=0A=
-                                            USBRedirServerPkt *rp)=0A=
- {=0A=
-+    struct usb_redir_interrupt_packet_header intr;=0A=
-     struct usb_redir_control_packet_header ctrl;=0A=
-+    struct usb_redir_bulk_packet_header bulk;=0A=
- =0A=
-     switch (rp->type) {=0A=
-     case USBREDIR_SERVER_CTRL_SETUP:=0A=
-@@ -910,6 +1081,21 @@ static void usbredir_server_send_cancelled(USBRedirSe=
-rver *s,=0A=
-         usbredirparser_send_control_packet(s->parser, rp->redir_id,=0A=
-                                            &ctrl, NULL, 0);=0A=
-         break;=0A=
-+    case USBREDIR_SERVER_BULK:=0A=
-+        bulk =3D rp->bulk_hdr;=0A=
-+        bulk.status =3D usb_redir_cancelled;=0A=
-+        bulk.length =3D 0;=0A=
-+        bulk.length_high =3D 0;=0A=
-+        usbredirparser_send_bulk_packet(s->parser, rp->redir_id,=0A=
-+                                        &bulk, NULL, 0);=0A=
-+        break;=0A=
-+    case USBREDIR_SERVER_INTR:=0A=
-+        intr =3D rp->intr_hdr;=0A=
-+        intr.status =3D usb_redir_cancelled;=0A=
-+        intr.length =3D 0;=0A=
-+        usbredirparser_send_interrupt_packet(s->parser, rp->redir_id,=0A=
-+                                             &intr, NULL, 0);=0A=
-+        break;=0A=
-     default:=0A=
-         return;=0A=
-     }=0A=
-@@ -952,6 +1138,8 @@ static void usbredir_server_create_parser(USBRedirServ=
-er *s)=0A=
-     s->parser->hello_func =3D usbredir_server_hello;=0A=
-     s->parser->reset_func =3D usbredir_server_reset;=0A=
-     s->parser->control_packet_func =3D usbredir_server_control_packet;=0A=
-+    s->parser->bulk_packet_func =3D usbredir_server_bulk_packet;=0A=
-+    s->parser->interrupt_packet_func =3D usbredir_server_interrupt_packet;=
-=0A=
-     s->parser->set_configuration_func =3D usbredir_server_set_configuratio=
-n;=0A=
- =0A=
-     /* The parser calls these directly, so they must not be NULL. */=0A=
-@@ -963,7 +1151,12 @@ static void usbredir_server_create_parser(USBRedirSer=
-ver *s)=0A=
-     s->parser->device_disconnect_ack_func =3D=0A=
-         usbredir_server_device_disconnect_ack;=0A=
-     s->parser->interface_info_func =3D usbredir_server_interface_info;=0A=
-+    s->parser->alloc_bulk_streams_func =3D usbredir_server_alloc_bulk_stre=
-ams;=0A=
-     s->parser->cancel_data_packet_func =3D usbredir_server_cancel_data_pac=
-ket;=0A=
-+    s->parser->start_bulk_receiving_func =3D=0A=
-+        usbredir_server_start_bulk_receiving;=0A=
-+    s->parser->stop_bulk_receiving_func =3D=0A=
-+        usbredir_server_stop_bulk_receiving;=0A=
- =0A=
-     /* Capabilities: 64-bit IDs, connect_device_version, ep_info sizes */=
-=0A=
-     usbredirparser_caps_set_cap(caps, usb_redir_cap_connect_device_version=
-);=0A=
-diff --git a/hw/usb/trace-events b/hw/usb/trace-events=0A=
-index 25219a018a..c9ab80c6ba 100644=0A=
---- a/hw/usb/trace-events=0A=
-+++ b/hw/usb/trace-events=0A=
-@@ -411,3 +411,8 @@ usbredir_server_ep_info(unsigned idx, uint8_t type, uin=
-t16_t mps, uint8_t interv=0A=
- usbredir_server_control(uint64_t id, uint8_t requesttype, uint8_t request,=
- uint16_t value, uint16_t index, uint16_t length) "id %" PRIu64 " type 0x%0=
-2x request 0x%02x value 0x%04x index 0x%04x length %u"=0A=
- usbredir_server_ctrl_setup_complete(uint64_t id, int status, int actual) "=
-id %" PRIu64 " status %d actual %d"=0A=
- usbredir_server_ctrl_status_complete(uint64_t id, int status) "id %" PRIu6=
-4 " status %d"=0A=
-+usbredir_server_bulk(uint64_t id, uint8_t ep, size_t len) "id %" PRIu64 " =
-ep 0x%02x len %zu"=0A=
-+usbredir_server_bulk_complete(uint64_t id, uint8_t ep, int status, int act=
-ual) "id %" PRIu64 " ep 0x%02x status %d actual %d"=0A=
-+usbredir_server_bulk_too_big(uint64_t id, uint8_t ep, uint32_t len) "id %"=
- PRIu64 " ep 0x%02x len %u"=0A=
-+usbredir_server_interrupt(uint64_t id, uint8_t ep, size_t len) "id %" PRIu=
-64 " ep 0x%02x len %zu"=0A=
-+usbredir_server_intr_complete(uint64_t id, uint8_t ep, int status, int act=
-ual) "id %" PRIu64 " ep 0x%02x status %d actual %d"=0A=
--- =0A=
-2.43.0=0A=
+DQoNCg0KTlhQIENvbmZpZGVudGlhbA0KPiAtLS0tLU9yaWdpbmFsIE1lc3NhZ2UtLS0tLQ0KPiBG
+cm9tOiBCZXJuaGFyZCBCZXNjaG93IDxzaGVudGV5QGdtYWlsLmNvbT4NCj4gU2VudDogMDQgT2N0
+b2JlciAyMDI2IDE3OjU3DQo+IFRvOiBxZW11LWRldmVsQG5vbmdudS5vcmcNCj4gQ2M6IE1hcmMt
+QW5kcsOpIEx1cmVhdSA8bWFyY2FuZHJlLmx1cmVhdUByZWRoYXQuY29tPjsgUGV0ZXIgTWF5ZGVs
+bA0KPiA8cGV0ZXIubWF5ZGVsbEBsaW5hcm8ub3JnPjsgR2F1cmF2IFNoYXJtYSA8Z2F1cmF2LnNo
+YXJtYV83QG54cC5jb20+Ow0KPiBBbGlzdGFpciBGcmFuY2lzIDxhbGlzdGFpckBhbGlzdGFpcjIz
+Lm1lPjsgQmVybmhhcmQgQmVzY2hvdw0KPiA8c2hlbnRleUBnbWFpbC5jb20+OyBxZW11LWFybUBu
+b25nbnUub3JnOyBQaGlsaXBwZSBNYXRoaWV1LURhdWTDqQ0KPiA8cGhpbG1kQG9zcy5xdWFsY29t
+bS5jb20+OyBKYXNvbiBXYW5nIDxqYXNvd2FuZ2lvQGdtYWlsLmNvbT47DQo+IFBhb2xvIEJvbnpp
+bmkgPHBib256aW5pQHJlZGhhdC5jb20+OyBCaW4gTWVuZw0KPiA8YmluLm1lbmdAcHJvY2Vzc21p
+c3Npb24uY29tPjsgSmVhbi1DaHJpc3RvcGhlIER1Ym9pcw0KPiA8amNkQHRyaWJ1ZHVib2lzLm5l
+dD47IFBpZXJyaWNrIEJvdXZpZXINCj4gPHBpZXJyaWNrLmJvdXZpZXJAb3NzLnF1YWxjb21tLmNv
+bT4NCj4gU3ViamVjdDogW0VYVF0gW1BBVENIIHYyIDMwLzMwXSBody9hcm0vZnNsLWlteDhtOiBG
+aXggdHlwbw0KPg0KPiBDYXV0aW9uOiBUaGlzIGlzIGFuIGV4dGVybmFsIGVtYWlsLiBQbGVhc2Ug
+dGFrZSBjYXJlIHdoZW4gY2xpY2tpbmcgbGlua3Mgb3INCj4gb3BlbmluZyBhdHRhY2htZW50cy4g
+V2hlbiBpbiBkb3VidCwgcmVwb3J0IHRoZSBtZXNzYWdlIHVzaW5nIHRoZSAnUmVwb3J0DQo+IHRo
+aXMgZW1haWwnIGJ1dHRvbg0KPg0KPg0KPiBUaGlzIGlzIElNWDhNUCBhbmQgSU1YOE1NLCBub3Qg
+SU1YNi4NCj4NCj4gRml4ZXM6IDBjMTA1YjI2MTU1MSAoImh3L2FybS9mc2wtaW14OG1wOiBBZGQg
+RXRoZXJuZXQgY29udHJvbGxlciIpDQo+IEZpeGVzOiA4NTc2NzAyMDBjNTEgKCJody9hcm0vZnNs
+LWlteDhtbTogQWRkaW5nIHN1cHBvcnQgZm9yIEVORVQNCj4gZXRoZXJuZXQgY29udHJvbGxlciIp
+DQo+IFNpZ25lZC1vZmYtYnk6IEJlcm5oYXJkIEJlc2Nob3cgPHNoZW50ZXlAZ21haWwuY29tPg0K
+PiAtLS0NCj4gIGluY2x1ZGUvaHcvYXJtL2ZzbC1pbXg4bW0uaCB8IDQgKystLQ0KPiAgaW5jbHVk
+ZS9ody9hcm0vZnNsLWlteDhtcC5oIHwgNCArKy0tDQo+ICBody9hcm0vZnNsLWlteDhtbS5jICAg
+ICAgICAgfCAyICstDQo+ICBody9hcm0vZnNsLWlteDhtcC5jICAgICAgICAgfCAyICstDQo+ICA0
+IGZpbGVzIGNoYW5nZWQsIDYgaW5zZXJ0aW9ucygrKSwgNiBkZWxldGlvbnMoLSkNCj4NCj4gZGlm
+ZiAtLWdpdCBhL2luY2x1ZGUvaHcvYXJtL2ZzbC1pbXg4bW0uaCBiL2luY2x1ZGUvaHcvYXJtL2Zz
+bC1pbXg4bW0uaA0KPiBpbmRleCA2MGQ3OWE2ZTNjLi4xOTY2ZmE1MDVmIDEwMDY0NA0KPiAtLS0g
+YS9pbmNsdWRlL2h3L2FybS9mc2wtaW14OG1tLmgNCj4gKysrIGIvaW5jbHVkZS9ody9hcm0vZnNs
+LWlteDhtbS5oDQo+IEBAIC0yMjksOCArMjI5LDggQEAgZW51bSBGc2xJbXg4bW1JcnFzIHsNCj4g
+ICAgICBGU0xfSU1YOE1NX1dET0cyX0lSUSAgICA9IDc5LA0KPiAgICAgIEZTTF9JTVg4TU1fV0RP
+RzNfSVJRICAgID0gMTAsDQo+DQo+IC0gICAgRlNMX0lNWDhNTV9FTkVUMV9NQUNfSVJRICAgID0g
+MTE4LA0KPiAtICAgIEZTTF9JTVg2X0VORVQxX01BQ18xNTg4X0lSUSA9IDEyMSwNCj4gKyAgICBG
+U0xfSU1YOE1NX0VORVQxX01BQ19JUlEgICAgICA9IDExOCwNCj4gKyAgICBGU0xfSU1YOE1NX0VO
+RVQxX01BQ18xNTg4X0lSUSA9IDEyMSwNCj4NCj4gICAgICBGU0xfSU1YOE1NX1BDSV9JTlRBX0lS
+USA9IDEyMiwNCj4gICAgICBGU0xfSU1YOE1NX1BDSV9JTlRCX0lSUSA9IDEyMywNCj4gZGlmZiAt
+LWdpdCBhL2luY2x1ZGUvaHcvYXJtL2ZzbC1pbXg4bXAuaCBiL2luY2x1ZGUvaHcvYXJtL2ZzbC1p
+bXg4bXAuaA0KPiBpbmRleCAyYmUzYzUxYWY1Li4zYWNmZmZkMzBmIDEwMDY0NA0KPiAtLS0gYS9p
+bmNsdWRlL2h3L2FybS9mc2wtaW14OG1wLmgNCj4gKysrIGIvaW5jbHVkZS9ody9hcm0vZnNsLWlt
+eDhtcC5oDQo+IEBAIC0yNzYsOCArMjc2LDggQEAgZW51bSBGc2xJbXg4bXBJcnFzIHsNCj4gICAg
+ICBGU0xfSU1YOE1QX1dET0cyX0lSUSAgICA9IDc5LA0KPiAgICAgIEZTTF9JTVg4TVBfV0RPRzNf
+SVJRICAgID0gMTAsDQo+DQo+IC0gICAgRlNMX0lNWDhNUF9FTkVUMV9NQUNfSVJRICAgID0gMTE4
+LA0KPiAtICAgIEZTTF9JTVg2X0VORVQxX01BQ18xNTg4X0lSUSA9IDEyMSwNCj4gKyAgICBGU0xf
+SU1YOE1QX0VORVQxX01BQ19JUlEgICAgICA9IDExOCwNCj4gKyAgICBGU0xfSU1YOE1QX0VORVQx
+X01BQ18xNTg4X0lSUSA9IDEyMSwNCj4NCj4gICAgICBGU0xfSU1YOE1QX1BDSV9JTlRBX0lSUSA9
+IDEyNiwNCj4gICAgICBGU0xfSU1YOE1QX1BDSV9JTlRCX0lSUSA9IDEyNSwNCj4gZGlmZiAtLWdp
+dCBhL2h3L2FybS9mc2wtaW14OG1tLmMgYi9ody9hcm0vZnNsLWlteDhtbS5jIGluZGV4DQo+IDg3
+NWU5MmJiMzQuLmRkNzkxODhlMGMgMTAwNjQ0DQo+IC0tLSBhL2h3L2FybS9mc2wtaW14OG1tLmMN
+Cj4gKysrIGIvaHcvYXJtL2ZzbC1pbXg4bW0uYw0KPiBAQCAtNTg5LDcgKzU4OSw3IEBAIHN0YXRp
+YyB2b2lkIGZzbF9pbXg4bW1fcmVhbGl6ZShEZXZpY2VTdGF0ZSAqZGV2LCBFcnJvcg0KPiAqKmVy
+cnApDQo+ICAgICAgc3lzYnVzX2Nvbm5lY3RfaXJxKFNZU19CVVNfREVWSUNFKCZzLT5lbmV0KSwg
+MCwNCj4gICAgICAgICAgICAgICAgICAgICAgICAgcWRldl9nZXRfZ3Bpb19pbihnaWNkZXYsIEZT
+TF9JTVg4TU1fRU5FVDFfTUFDX0lSUSkpOw0KPiAgICAgIHN5c2J1c19jb25uZWN0X2lycShTWVNf
+QlVTX0RFVklDRSgmcy0+ZW5ldCksIDEsDQo+IC0gICAgICAgICAgICAgICAgICAgICAgIHFkZXZf
+Z2V0X2dwaW9faW4oZ2ljZGV2LCBGU0xfSU1YNl9FTkVUMV9NQUNfMTU4OF9JUlEpKTsNCj4gKyAg
+ICAgICAgICAgICAgICAgICAgICAgcWRldl9nZXRfZ3Bpb19pbihnaWNkZXYsDQo+ICsgRlNMX0lN
+WDhNTV9FTkVUMV9NQUNfMTU4OF9JUlEpKTsNCj4NCj4gICAgICAvKiBTTlZTICovDQo+ICAgICAg
+aWYgKCFzeXNidXNfcmVhbGl6ZShTWVNfQlVTX0RFVklDRSgmcy0+c252cyksIGVycnApKSB7IGRp
+ZmYgLS1naXQNCj4gYS9ody9hcm0vZnNsLWlteDhtcC5jIGIvaHcvYXJtL2ZzbC1pbXg4bXAuYyBp
+bmRleA0KPiBiY2Q5MTczOWQ5Li4wYjQ2YTQ5NzFmIDEwMDY0NA0KPiAtLS0gYS9ody9hcm0vZnNs
+LWlteDhtcC5jDQo+ICsrKyBiL2h3L2FybS9mc2wtaW14OG1wLmMNCj4gQEAgLTYxOSw3ICs2MTks
+NyBAQCBzdGF0aWMgdm9pZCBmc2xfaW14OG1wX3JlYWxpemUoRGV2aWNlU3RhdGUgKmRldiwgRXJy
+b3INCj4gKiplcnJwKQ0KPiAgICAgIHN5c2J1c19jb25uZWN0X2lycShTWVNfQlVTX0RFVklDRSgm
+cy0+ZW5ldCksIDAsDQo+ICAgICAgICAgICAgICAgICAgICAgICAgIHFkZXZfZ2V0X2dwaW9faW4o
+Z2ljZGV2LCBGU0xfSU1YOE1QX0VORVQxX01BQ19JUlEpKTsNCj4gICAgICBzeXNidXNfY29ubmVj
+dF9pcnEoU1lTX0JVU19ERVZJQ0UoJnMtPmVuZXQpLCAxLA0KPiAtICAgICAgICAgICAgICAgICAg
+ICAgICBxZGV2X2dldF9ncGlvX2luKGdpY2RldiwgRlNMX0lNWDZfRU5FVDFfTUFDXzE1ODhfSVJR
+KSk7DQo+ICsgICAgICAgICAgICAgICAgICAgICAgIHFkZXZfZ2V0X2dwaW9faW4oZ2ljZGV2LA0K
+PiArIEZTTF9JTVg4TVBfRU5FVDFfTUFDXzE1ODhfSVJRKSk7DQo+DQo+ICAgICAgLyogU05WUyAq
+Lw0KPiAgICAgIGlmICghc3lzYnVzX3JlYWxpemUoU1lTX0JVU19ERVZJQ0UoJnMtPnNudnMpLCBl
+cnJwKSkgew0KPiAtLQ0KPiAyLjU2LjANCg0KUmV2aWV3ZWQtYnk6IEdhdXJhdiBTaGFybWEgPGdh
+dXJhdi5zaGFybWFfN0BueHAuY29tPg0K
 

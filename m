@@ -4,144 +4,59 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CE09BCA5FF0
-	for <qemu-arm@archiver.kernel.org>; Mon,  5 Oct 2026 11:20:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 21AFBCA5FF5
+	for <qemu-arm@archiver.kernel.org>; Mon,  5 Oct 2026 12:10:46 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xDgk1-00039Y-If; Mon, 05 Oct 2026 07:20:23 -0400
+	id 1xDhWb-0006fU-Sj; Mon, 05 Oct 2026 08:10:35 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@oss.qualcomm.com>)
- id 1xDgjv-000376-Rr
- for qemu-arm@nongnu.org; Mon, 05 Oct 2026 07:20:15 -0400
-Received: from mx0b-0031df01.pphosted.com ([205.220.180.131])
+ (Exim 4.90_1) (envelope-from <yoshinori.sato@nifty.com>)
+ id 1xDhWG-0006Rp-Ly; Mon, 05 Oct 2026 08:10:16 -0400
+Received: from mta-snd-e09.mail.nifty.com ([106.153.227.121])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@oss.qualcomm.com>)
- id 1xDgjt-0007ba-QS
- for qemu-arm@nongnu.org; Mon, 05 Oct 2026 07:20:15 -0400
-Received: from pps.filterd (m0279869.ppops.net [127.0.0.1])
- by mx0a-0031df01.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id
- 695Aoj1K2041843
- for <qemu-arm@nongnu.org>; Mon, 5 Oct 2026 11:20:10 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qualcomm.com; h=
- cc:content-transfer-encoding:content-type:date:from:in-reply-to
- :message-id:mime-version:references:subject:to; s=qcppdkim1; bh=
- ic3zZ3wQ0msvUEy4lYFbiaHqySHXg6iWBFYX9r00yFw=; b=YEB7nrm+KdH4fkzt
- XfnUpdy6qdRuB4E3+0OtCA/1/+riOe7UKVl2gk+j8NcaxoeSGxfOpCXufY+wczQf
- Ggm6N82ExYRcy9PN5bO5+B2Hua6wdpOUiFMJr8fHMxx2Q8ZcfBN/FYZL7Tox0xac
- rbh2/FSOG7p49uXRdiKmhUNVTyZowgFDDxnTL+kfF1Cmt53oEaqcf0WrGrJhYvKk
- ETYj1QNr91dI3yhiI9WVIvObjgvKLMFUkNtX/i55q4/vG2mdizIT3YroP0nIVvUB
- 8nAuCLT+Chc5GNUeQKcsLEjBZpFYBBtt2Qw/yltydT1lDxYpt84egaELQVFOU24D
- HGtQrg==
-Received: from mail-qk1-f199.google.com (mail-qk1-f199.google.com
- [209.85.222.199])
- by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 4h2spa5n9t-1
- (version=TLSv1.3 cipher=TLS_AES_128_GCM_SHA256 bits=128 verify=NOT)
- for <qemu-arm@nongnu.org>; Mon, 05 Oct 2026 11:20:10 +0000 (GMT)
-Received: by mail-qk1-f199.google.com with SMTP id
- af79cd13be357-93ca4a2b9c4so374535885a.0
- for <qemu-arm@nongnu.org>; Mon, 05 Oct 2026 04:20:10 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=oss.qualcomm.com; s=google; t=1791199210; x=1791804010; darn=nongnu.org;
- h=content-transfer-encoding:content-type:in-reply-to:content-language
- :from:references:cc:to:subject:user-agent:mime-version:date
- :message-id:from:to:cc:subject:date:message-id:reply-to:content-type;
- bh=ic3zZ3wQ0msvUEy4lYFbiaHqySHXg6iWBFYX9r00yFw=;
- b=GPKQ7sVdab7hbFBjgcxm/PDMR29ausGgRrdtqmSHNcN25qWpHmV660YvlSYLOwqnMC
- gNKY1j8e0RWZq7S+UiExW4FipASeR3w3DKOkJ/4fqNLvOZoG58XKyQlOZljbYhYbz/dI
- E0GZIQ266VkBT5wW3P3DZLuiuinWC/2gSn/gqoc36bTEU9G43rLlfEi2qtL+f1dw6NRu
- aeqW44sdWeCqmIbcC9RWV+Be8zUyNtk7CX4I0uESl5C4yK5gfEzKM9vGQ0r33Nb7mJvc
- 1uoZM9Pse2khW2gY0NRgBXe0bzWcsOFUecdHAVuNyaOkAsiFDhwT3Pex1Phb8NAW8gOP
- nySA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20260707; t=1791199210; x=1791804010;
- h=content-transfer-encoding:content-type:in-reply-to:content-language
- :from:references:cc:to:subject:user-agent:mime-version:date
- :message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
- :message-id:reply-to:content-type;
- bh=ic3zZ3wQ0msvUEy4lYFbiaHqySHXg6iWBFYX9r00yFw=;
- b=DzzWAgs76H/LoEgwHsxppuHphYSLO/PET4HTQMV7D4xZ2MSwY1uZDrZHExW5ZQ5gTV
- riOrn14OcVe3gIBTWNKmzDHgQKXIUZXy2YFYUXFjJluAINq2lrgJJ0YzgSEo3dMM1/EH
- W2RxaxyZQsXL8HFQHYomYgBsNMtHQ/gh8TyxhYnkR59oVcophk4V8Nct8Gxt9IoVTPuN
- aY9KbWTUP0/wYlAqpa+ri4yzuNDaIK756uf4wukD2FGTNFnXyCXuRV3yinLfUltjIynd
- wj+qBKStmvd5UsDaL3krC6wcOXC/vhPNgbBgP+wDMrL07dcl3m6dd3lmDvUc/oREmX0B
- H7/w==
-X-Forwarded-Encrypted: i=1;
- AKwUvBzrra3DPfa3TgvwRXBd9FW16yPJxtFNfbeS3DwLG79zNJAez+afNFhx464jLCK6YIaPQPSI2zmVAQ==@nongnu.org
-X-Gm-Message-State: AFuF++kCcvq3X4v5FkNlbrISZQsSMUhRQ6k2WB00vW2zbTEypt+cYXeq
- 67bVhetf45H++giW6JVI7mGOXlBCJ6wvV5LmDLswhDeQHKQIcKfuaS2EYBYcbB2lw9gYCFQ7ZFB
- Z0sH7GHkut0K9ql8c4hvFsF1z0U8x1MFzlSEApzRua3V3SEr4lbata0E=
-X-Gm-Gg: AYBFou1U9FPQKEUayY940zE7IfCGy4nWFxnVP5XUNjty8vSIpNSQy63Belr5wK+Asg+
- U9HFXeJKDY3wqo5ZxDSCeuAPT2QhTGd6G0J+1qLLqUG2/83dg8InnyljApUySGyggNe50ujigBh
- PAUQcLV5oBo+5WDhVn1QjtEx5jm10EJCYYg8M+wLxgwtfz7Y7zOTRO/OKdRSR/zeqU3nsGxsM/a
- BdLZOmL0V8jXE5n/KZ42Lgd/EwGnbXYtZsj4IZENIEnuv7Yg+vs+ifU4PF8RTD1HpxD9Wap47qd
- yKC0seL+JE35AAlxfaLBPhfP4N3KeW0a+aPKbYls8c792Zcl3ukwQGJHSpuBAXOcPuWnkBQGYc6
- x8y+VWYC62lK9KwU/JyCCgEth2QipzbRKGw==
-X-Received: by 2002:a05:620a:4690:b0:93c:6f66:bd07 with SMTP id
- af79cd13be357-93e50f811c8mr1252429585a.13.1791199209757; 
- Mon, 05 Oct 2026 04:20:09 -0700 (PDT)
-X-Received: by 2002:a05:620a:4690:b0:93c:6f66:bd07 with SMTP id
- af79cd13be357-93e50f811c8mr1252425285a.13.1791199209236; 
- Mon, 05 Oct 2026 04:20:09 -0700 (PDT)
-Received: from [192.168.69.225] (pmd666.hd.free.fr. [88.187.86.199])
- by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-4a027727cecsm344535785e9.9.2026.10.05.04.20.06
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 05 Oct 2026 04:20:07 -0700 (PDT)
-Message-ID: <0a3501c2-ffec-4cf6-8c19-4f166e30a4dc@oss.qualcomm.com>
-Date: Mon, 5 Oct 2026 13:20:05 +0200
-MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 60/63] hw/input/pl050: remove duplicate class_init
- assignment
-To: =?UTF-8?Q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>,
- qemu-devel@nongnu.org
-Cc: Pavee Hui <phui@google.com>, Peter Maydell <peter.maydell@linaro.org>,
- qemu-arm@nongnu.org, Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
-References: <20261004-issue-4560-v1-0-ccbef537cbeb@redhat.com>
- <20261004-issue-4560-v1-60-ccbef537cbeb@redhat.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@oss.qualcomm.com>
-Content-Language: en-US
-In-Reply-To: <20261004-issue-4560-v1-60-ccbef537cbeb@redhat.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYxMDA1MDA0NCBTYWx0ZWRfX6PO89iruul4m
- z+VXrhk+SrogSTkd8iwXSqmA118HIe89gdnM+C3IAJO7GPhTLTAQSRfcpYwVgUo3YvKgFfT/MVa
- 71l2DKxDiiMpHCXcPBf9zxw4h85hx7TMr116skNMOEUt913R++Ex05BT/EftLM7KCAHHiNRTHex
- stfZdjIVpTck924u27ke7ZwqnkA+1vAM4FQdTfW9K5NHIVxaTm5ZyFCjkMMbDms+h7QzZEiWN7O
- mNIVvTd/5DXZiTCHtmpFEvhzcvzUTnvsjWdmZGa9DCrXQPk8Iw3HnGvwahxYwVbfReEwTzj73ld
- XxhmrJ6yDecbo/lNUvUQUx5D240R6UXjzQiNsmhUa0jD8awFxjRJS57n8oHMIcekPaiKVwnb5ZA
- ZgTTLaMJHQqLUihuDFXKnR61x0ycnM2Xp7TZDJlDCk9BwgpghkoL8Nbs9zivq8gEHsohFXHzGYD
- nqR4b88uzG8kD/bhZtg==
-X-Authority-Analysis: v=2.4 cv=b7MncdGx c=1 sm=1 tr=0 ts=6ac387ea cx=c_pps
- a=HLyN3IcIa5EE8TELMZ618Q==:117 a=4s3hRJSeHn4rkQlkrse1kQ==:17
- a=IkcTkHD0fZMA:10 a=660iZSQnnn4A:10 a=M51BFTxLslgA:10 a=s4-Qcg_JpJYA:10
- a=VkNPw1HP01LnGYTKEx00:22 a=u7WPNUs3qKkmUXheDGA7:22 a=_glEPmIy2e8OvE2BGh3C:22
- a=1XWaLZrsAAAA:8 a=20KFwNOVAAAA:8 a=EUspDBNiAAAA:8 a=QIRNzdSv-Tx1t3xKm3cA:9
- a=3ZKOabzyN94A:10 a=QEXdDO2ut3YA:10 a=bTQJ7kPSJx9SKPbeHEYW:22
-X-Proofpoint-ORIG-GUID: GmbHVAtRTys5Bxby1k3G0QkPanYAeog6
-X-Proofpoint-Spam-Info: AW1haW4tMjYxMDA1MDA0NCBTYWx0ZWRfXwmx5Amqw1dp7
- 1M9jF2GU1AwvXFErh1aOXHk349zU36TvHRR2/LDZytlf+tWiBL9nbFHSqFUC9Bhz6r5CvJ/lnzh
- 2Xv7zl5UuUcLi5fBl96PMUn0FTyJmWI=
-X-Proofpoint-GUID: GmbHVAtRTys5Bxby1k3G0QkPanYAeog6
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.293,Aquarius:18.0.1176,Hydra:6.1.134,FMLib:17.12.100.49
- definitions=2026-10-05_02,2026-10-02_02,2025-10-01_01
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
- spamscore=0 impostorscore=0 adultscore=0 clxscore=1015 phishscore=0
- bulkscore=0 malwarescore=0 suspectscore=0 priorityscore=1501
- lowpriorityscore=0 classifier=typeunknown authscore=0 authtc= authcc=
- route=outbound adjust=0 reason=mlx scancount=1 engine=8.22.0-2609040000
- definitions=main-2610050044
-Received-SPF: pass client-ip=205.220.180.131;
- envelope-from=philmd@oss.qualcomm.com; helo=mx0b-0031df01.pphosted.com
-X-Spam_score_int: -27
-X-Spam_score: -2.8
+ (Exim 4.90_1) (envelope-from <yoshinori.sato@nifty.com>)
+ id 1xDhWC-0004s7-Eb; Mon, 05 Oct 2026 08:10:12 -0400
+Received: from sakura.ysato.name by mta-snd-e09.mail.nifty.com with ESMTP
+ id <20261005120959815.XTNB.60338.sakura.ysato.name@nifty.com>;
+ Mon, 5 Oct 2026 21:09:59 +0900
+Received: from SIOS1075.ysato.ml (ZM005235.ppp.dion.ne.jp [222.8.5.235])
+ by sakura.ysato.name (Postfix) with ESMTPSA id 5D0881C0019;
+ Mon,  5 Oct 2026 21:09:59 +0900 (JST)
+Date: Mon, 05 Oct 2026 21:09:58 +0900
+Message-ID: <87tsn0s609.wl-yoshinori.sato@nifty.com>
+From: yoshinori.sato@nifty.com
+To: "Umar, Sayyad Mahammad" <contact@sayyadumar.com>
+Cc: qemu-devel@nongnu.org, Alistair Francis <alistair@alistair23.me>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ Jason Wang <jasowangio@gmail.com>, qemu-arm@nongnu.org
+Subject: Re: [PATCH 0/2] target/rx: add RXv2/RXv3 CPU support
+In-Reply-To: <c31dd9df-b82b-4cbc-814c-35d299f19c5c@sayyadumar.com>
+References: <20260913-umar-rx-series-v1-0-5a5841a5d1e9@sayyadumar.com>
+ <87o6e06pqs.wl-yoshinori.sato@nifty.com>
+ <c31dd9df-b82b-4cbc-814c-35d299f19c5c@sayyadumar.com>
+User-Agent: Wanderlust/2.15.9 (Almost Unreal) SEMI-EPG/1.14.7 (Harue)
+ FLIM-LB/1.14.9 (=?ISO-8859-4?Q?Goj=F2?=) APEL-LB/10.8 EasyPG/1.0.0
+ Emacs/30.1 (x86_64-pc-linux-gnu) MULE/6.0 (HANACHIRUSATO)
+MIME-Version: 1.0 (generated by SEMI-EPG 1.14.7 - "Harue")
+Content-Type: text/plain; charset=US-ASCII
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=nifty.com;
+ s=default-1th84yt82rvi; t=1791202199; 
+ bh=kop057O+dPXqzD8/jhfjdCjGHjAZj/8g8xgB2Lu8M7U=;
+ h=Date:From:To:Cc:Subject:In-Reply-To;
+ b=BvMqKeGdL9XXkEivQliAr+rhKzNofM7p9+oaXHGzHp2wnQbYaMsAxZZqrZ2IHyKdbHNGBX+B
+ A/ZiOdTzBPdjFSqUJaFN+u7SMwbkWJRs4aT2TOxtAX+WPRDoi1I8E1oMSKOliSJjccWMPJNTSy
+ pmZCIKm3vPJ58zBQ3VCnWYkuZVaTW1gKcnZwsQKS5rgKTfwKkLrEA6qDVvgJjfufGGoQtBrnZb
+ WDKtvU1PsyxOX+x4p93sZ5s13D+FP7Lg14fPhHMg4eMPj+qh4CMxQI+TFNVvrMcGqLq2Q6uG62
+ YnMEpaQg4xqAaRl6Fxgg1mwpC3ZyZzL+zSAQPavLXnp9w0sg==
+Received-SPF: pass client-ip=106.153.227.121;
+ envelope-from=yoshinori.sato@nifty.com; helo=mta-snd-e09.mail.nifty.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, SPF_HELO_NONE=0.001,
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_PASS=-0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
@@ -158,31 +73,106 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On 4/10/26 12:24, Marc-AndrÃ© Lureau wrote:
-> The .class_init field was set twice in the TypeInfo struct.
+On Mon, 05 Oct 2026 06:16:54 +0900,
+Umar, Sayyad Mahammad wrote:
 > 
-> Reported-by: Pavee Hui <phui@google.com>
-> Signed-off-by: Marc-André Lureau <marcandre.lureau@redhat.com>
-
-Fixes: 475a4d463b2 ("pl050: introduce PL050DeviceClass")
-Reviewed-by: Philippe Mathieu-Daudé <philmd@oss.qualcomm.com>
-
-> ---
->   hw/input/pl050.c | 1 -
->   1 file changed, 1 deletion(-)
+> On 9/14/26 13:23, yoshinori.sato@nifty.com wrote:
+> > On Mon, 14 Sep 2026 03:21:04 +0900,
+> > Sayyad Mahammad Umar wrote:
+> >> This series extends the RX target with RXv2 and RXv3 CPU support,
+> >> forming the foundation for the RX65N, RX651, and RX72M machine models.
+> >> 
+> >> The first patch adds the CPU definitions, instruction support, and
+> >> translator changes required by the newer RX cores.
+> >> 
+> >> The second patch adds the initial RX machine and peripheral support.
+> >> 
+> >> Signed-off-by: Sayyad Mahammad Umar <contact@sayyadumar.com>
+> >> ---
+> >> Sayyad Mahammad Umar (2):
+> >>        target/rx: add RXv2 and RXv3 CPU support
+> >>        hw/rx: add common RX peripherals
+> >> 
+> >>   MAINTAINERS                           |   20 +
+> >>   hw/adc/renesas_s12ad.c                |  324 +++++++++
+> >>   hw/dma/renesas_rx_dmac.c              |  317 +++++++++
+> >>   hw/dma/renesas_rx_dtc.c               |  169 +++++
+> >>   hw/gpio/renesas_rx_gpio.c             |  256 +++++++
+> >>   hw/misc/renesas_rx_crc.c              |  219 ++++++
+> >>   hw/misc/renesas_rx_fcu.c              |  985 ++++++++++++++++++++++++++
+> >>   hw/misc/renesas_rx_romcache.c         |  139 ++++
+> >>   hw/misc/rx65n_sysclk.c                |  190 +++++
+> >>   hw/net/renesas_etherc.c               |  955 +++++++++++++++++++++++++
+> >>   hw/rtc/renesas_rx_rtc.c               |  330 +++++++++
+> >>   hw/ssi/renesas_rspi.c                 |  319 +++++++++
+> >>   hw/timer/renesas_mtu3.c               |  509 ++++++++++++++
+> >>   hw/watchdog/renesas_rx_wdt.c          |  193 ++++++
+> >>   include/hw/adc/renesas_s12ad.h        |   61 ++
+> >>   include/hw/dma/renesas_rx_dmac.h      |   57 ++
+> >>   include/hw/dma/renesas_rx_dtc.h       |   42 ++
+> >>   include/hw/gpio/renesas_rx_gpio.h     |   64 ++
+> >>   include/hw/misc/renesas_rx_crc.h      |   30 +
+> >>   include/hw/misc/renesas_rx_fcu.h      |  191 +++++
+> >>   include/hw/misc/renesas_rx_romcache.h |   30 +
+> >>   include/hw/misc/rx65n_sysclk.h        |   37 +
+> >>   include/hw/net/renesas_etherc.h       |  109 +++
+> >>   include/hw/rtc/renesas_rx_rtc.h       |   52 ++
+> >>   include/hw/ssi/renesas_rspi.h         |   61 ++
+> >>   include/hw/timer/renesas_mtu3.h       |   73 ++
+> >>   include/hw/watchdog/renesas_rx_wdt.h  |   48 ++
+> >>   target/rx/cpu-param.h                 |    3 +
+> >>   target/rx/cpu-qom.h                   |    2 +
+> >>   target/rx/cpu.c                       |   57 +-
+> >>   target/rx/cpu.h                       |  124 ++++
+> >>   target/rx/disas.c                     |  383 ++++++++++-
+> >>   target/rx/gdbstub.c                   |   44 +-
+> >>   target/rx/helper.c                    |   56 +-
+> >>   target/rx/helper.h                    |   22 +
+> >>   target/rx/insns.decode                |  125 +++-
+> >>   target/rx/meson.build                 |    6 +-
+> >>   target/rx/op_helper.c                 |  357 ++++++++++
+> >>   target/rx/translate.c                 | 1225 ++++++++++++++++++++++++++-------
+> >>   39 files changed, 7873 insertions(+), 311 deletions(-)
+> >> ---
+> >> base-commit: ff1d2d19d7e24893e2012d879f8e73077e17b9bd
+> >> change-id: 20260913-umar-rx-series-0bfbbfe6b074
+> >> 
+> >> Best regards,
+> >> --
+> >> Sayyad Mahammad Umar <contact@sayyadumar.com>
+> >> 
+> > Thanks.
+> > I also implemented some peripheral functions to emulate the actual board.
+> > I haven't verified every single change, but if there are any missing features,
+> > it would be best to combine them with my changes.
 > 
-> diff --git a/hw/input/pl050.c b/hw/input/pl050.c
-> index 48df2734e269..3731e6969850 100644
-> --- a/hw/input/pl050.c
-> +++ b/hw/input/pl050.c
-> @@ -265,7 +265,6 @@ static const TypeInfo pl050_type_info = {
->       .class_init    = pl050_class_init,
->       .class_size    = sizeof(PL050DeviceClass),
->       .abstract      = true,
-> -    .class_init    = pl050_class_init,
->   };
->   
->   static void pl050_register_types(void)
+> Hi Mr Sato,
+> 
+> Sorry for the late reply, i was sick for couple of weeks.
+> 
+> I have now started to work on splitting my last patch series from 2
+> patches to about ~31 smaller patches.
+> 
+> I will be submitting those in the coming days after i test the changes
+> with real firmware.
+> 
+> The real hardware i want to support are rx65n-2mb, rx660-tb and rx72m-rsk.
+> 
+> Which boards/peripherals are you working on ?
+> 
+> Regards,
+> 
+> Umar
 > 
 
+OK. I have high hopes.
+
+I am implementing this targeting an RX62N board.
+This board was released only in Japan, but it is no longer available.
+While this board allows for the use of almost all the RX62N's features,
+I wanted to use USB, Ethernet, and SPI, so I implemented those functions
+along with some GPIOs.
+
+-- 
+Yosinori Sato
 

@@ -4,64 +4,133 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6C9B0CA5FF0
-	for <qemu-arm@archiver.kernel.org>; Sun,  4 Oct 2026 21:17:23 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 50AF3CA5FCE
+	for <qemu-arm@archiver.kernel.org>; Mon,  5 Oct 2026 02:04:52 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xDTa0-0001UQ-FZ; Sun, 04 Oct 2026 17:17:08 -0400
+	id 1xDY4G-0001vS-Sn; Sun, 04 Oct 2026 22:04:40 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <contact@sayyadumar.com>)
- id 1xDTZz-0001U7-4w; Sun, 04 Oct 2026 17:17:07 -0400
-Received: from www675.your-server.de ([85.10.213.182])
+ (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
+ id 1xDY4F-0001vD-BK; Sun, 04 Oct 2026 22:04:40 -0400
+Received: from mail-japaneastazlp170120005.outbound.protection.outlook.com
+ ([2a01:111:f403:c405::5] helo=TYPPR03CU001.outbound.protection.outlook.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <contact@sayyadumar.com>)
- id 1xDTZw-0005KG-Oj; Sun, 04 Oct 2026 17:17:06 -0400
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=sayyadumar.com; s=default2511; h=Content-Transfer-Encoding:Content-Type:
- In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:Message-ID:Sender
- :Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
- Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID;
- bh=QHzWOK7SzR8xhkMI4KGWw8+VnUVeO79TcWDA95utWf0=; b=awASUGysQ7rlRYPQtSQ3nxXkNO
- 1FWvRRcrCKG9OFsGu7IfENR/PJvcs6B760IpMvaAl969sG/lNHAjIPCPLpBKkBkyMgzlc0pvPGtDk
- XovqfkzBzSyZlImHPL49CJkCp65sv3mDBQtrZyzjzTcQeLKAKfsL+Sia/oP2/zL8xhiU1z23J3hSn
- 9Lk1s8lAOnu5aOiHUStmJH7WGZ6AXt5nAGqMOKd1dqDSGoUhfA21JvoFaQXv2jLO/FdQ7YV6lY7f0
- vk/czxqOMsvtPxUzF0MewX86POdevnObJreu5nz8b6v9vUO8R1n1GQS9Vn+YF1LsW0FAN+3INk1Jz
- HatjfAWg==;
-Received: from sslproxy07.your-server.de ([78.47.199.104])
- by www675.your-server.de with esmtpsa  (TLS1.3) tls TLS_AES_256_GCM_SHA384
- (Exim 4.96.2) (envelope-from <contact@sayyadumar.com>)
- id 1xDTZn-000DS6-2F; Sun, 04 Oct 2026 23:16:55 +0200
-Received: from localhost ([127.0.0.1])
- by sslproxy07.your-server.de with esmtpsa (TLS1.3) tls TLS_AES_256_GCM_SHA384
- (Exim 4.96) (envelope-from <contact@sayyadumar.com>)
- id 1xDTZn-000G9y-0O; Sun, 04 Oct 2026 23:16:55 +0200
-Message-ID: <c31dd9df-b82b-4cbc-814c-35d299f19c5c@sayyadumar.com>
-Date: Sun, 4 Oct 2026 23:16:54 +0200
-MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 0/2] target/rx: add RXv2/RXv3 CPU support
-To: yoshinori.sato@nifty.com
-Cc: qemu-devel@nongnu.org, Alistair Francis <alistair@alistair23.me>,
- Peter Maydell <peter.maydell@linaro.org>, Jason Wang <jasowangio@gmail.com>,
- qemu-arm@nongnu.org
-References: <20260913-umar-rx-series-v1-0-5a5841a5d1e9@sayyadumar.com>
- <87o6e06pqs.wl-yoshinori.sato@nifty.com>
+ (Exim 4.90_1) (envelope-from <jamin_lin@aspeedtech.com>)
+ id 1xDY4D-00016h-MN; Sun, 04 Oct 2026 22:04:39 -0400
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=C/hNcPtiJqHb8DdfedWSaX0nzGHu9xhC5QqXz40u4OZLaNLNVQypAW0eEiyPqLS2VffSW3LIDxdZopFYWKWq2LuQWj/46BbvQPAkUG/on1VtRcX/fPsheZNAJCMBfi8aUfi5JputI6/w+gVMa8ZSCYjmjz4j+b6ore/0DCkDtTyvsf9owLCQHRjhpKQDikiR+2wsnXvm2m52GpEXaFj8gX5dysPelSmx7FFfeBxPMXaGYl6/Q+enRmzv25vPY45QeiIAvesSrnEX+VbEl3pqk/0oO26osKxp65PLsGEfBFV3b3CNL2jd2dOLz/TLpzsZKHws9tcmWE0PzEiT4zcRSw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=C8KGOJ+MzAOhBnIwOk71AywVflXDotEUqCxRt4EHmxA=;
+ b=duVTqDYM2OdX3MH4l/OX1QpPLI7UUjQgOJiQj/NkTiRXifGWAeMnzhgtgQpd0+uFOfTUPGOba1ZujXt9xzRzgwnis67EveB3x/BH+y/kM0R7uGrX2g+TBRS8pLMh/c67amKpkLpsFJydL/S49pBuRh0UblUobQedoUkBXZHEyg4YKjVxGVwbvr7IyNA16Czt3bwAn/gx+XUJXPY1uf8VORG8hteppmp6i1k0Fsk9BB9g4kj+pOy263SGjZ7mtnZ8uc1NqiTNAfL6ZjE06xNk3h3wJZRhZ1CXU1ieupVs6N8juHxf2K0ql/QiOWa54EgDWaa6+dOxWOMX76V9tlts6A==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=aspeedtech.com; dmarc=pass action=none
+ header.from=aspeedtech.com; dkim=pass header.d=aspeedtech.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=aspeedtech.com;
+ s=selector1;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=C8KGOJ+MzAOhBnIwOk71AywVflXDotEUqCxRt4EHmxA=;
+ b=dMifNpk7+Zqwi0VIuM7qAnUyDthgiJLvV9rGniDIMh6OAvtneQjpTVVzvu/74LrSRFdoua1Pedulw2rvLO74wqGTJffuyO62NIQxICcTKyhNyKok2XBg8V6w1wWtakbLLOoFLU1orYxucJn4m63XnaYkJhn2HLLRILHcyy3bgkz7jRe+bYldOM7d169h4nl79W+vSXxXOF6Ue4gAFxdFhR3utrZb69C3yv5AP3+teybDIizR4GEoo9cDGV5jL88PXxw8mE4uiQ6ZaBvVCfwluFXaoW2KycyAzQA5Tdt3amJtaBOOyf/Y7Nnqvmqhc/mKKMzw2gocsKV23luPpqhZtA==
+Received: from SEZPR06MB7362.apcprd06.prod.outlook.com (2603:1096:101:253::10)
+ by TY0PR06MB5833.apcprd06.prod.outlook.com (2603:1096:400:32d::8)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.21.472.15; Mon, 5 Oct
+ 2026 02:04:29 +0000
+Received: from SEZPR06MB7362.apcprd06.prod.outlook.com
+ ([fe80::cd2d:35d2:a702:1de6]) by SEZPR06MB7362.apcprd06.prod.outlook.com
+ ([fe80::cd2d:35d2:a702:1de6%4]) with mapi id 15.21.0472.016; Mon, 5 Oct 2026
+ 02:04:29 +0000
+From: Jamin Lin <jamin_lin@aspeedtech.com>
+To: =?iso-8859-1?Q?C=E9dric_Le_Goater?= <clg@kaod.org>, Peter Maydell
+ <peter.maydell@linaro.org>, Steven Lee <steven_lee@aspeedtech.com>, Troy Lee
+ <leetroy@gmail.com>, Kane Chen <kane_chen@aspeedtech.com>, Andrew Jeffery
+ <andrew@codeconstruct.com.au>, Joel Stanley <joel@jms.id.au>, "open
+ list:ASPEED BMCs" <qemu-arm@nongnu.org>, "open list:All patches CC here"
+ <qemu-devel@nongnu.org>
+CC: Jamin Lin <jamin_lin@aspeedtech.com>, Troy Lee <troy_lee@aspeedtech.com>
+Subject: [PATCH v2 0/2] hw/arm/aspeed: Sort device IDs and add IO expander test
+Thread-Topic: [PATCH v2 0/2] hw/arm/aspeed: Sort device IDs and add IO
+ expander test
+Thread-Index: AQHdVG3aam/kyjNjPU6o7ye/dCCf4Q==
+Date: Mon, 5 Oct 2026 02:04:28 +0000
+Message-ID: <20261005020428.3496039-1-jamin_lin@aspeedtech.com>
+Accept-Language: zh-TW, en-US
 Content-Language: en-US
-From: "Umar, Sayyad Mahammad" <contact@sayyadumar.com>
-In-Reply-To: <87o6e06pqs.wl-yoshinori.sato@nifty.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-X-Virus-Scanned: Clear (ClamAV 1.4.3/28143/Sun Oct  4 08:25:22 2026)
-Received-SPF: pass client-ip=85.10.213.182;
- envelope-from=contact@sayyadumar.com; helo=www675.your-server.de
-X-Spam_score_int: -16
-X-Spam_score: -1.7
-X-Spam_bar: -
-X-Spam_report: (-1.7 / 5.0 requ) BAYES_00=-1.9, DKIM_INVALID=0.1,
- DKIM_SIGNED=0.1, SPF_HELO_PASS=-0.001,
- SPF_PASS=-0.001 autolearn=no autolearn_force=no
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+authentication-results: mx.microsoft.com 1; dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=aspeedtech.com;
+x-ms-publictraffictype: Email
+x-ms-traffictypediagnostic: SEZPR06MB7362:EE_|TY0PR06MB5833:EE_
+x-ms-office365-filtering-correlation-id: 86da24e1-655c-4e78-759c-08df2284fd4a
+x-ms-exchange-senderadcheck: 1
+x-ms-exchange-antispam-relay: 0
+x-microsoft-antispam: BCL:0;
+ ARA:13230040|376014|366016|1800799024|23010399003|18002099003|38070700021|10067099003|56012099006;
+x-microsoft-antispam-message-info: bCPOn8jIf+FLyY82YsLmHFbBV8pUhnpvl970NhIuaKdRrOt0eNRV38UMSYbVF/5rs0iVXEYQ3uzKL33ZIQAJicOZhUMaJCG2c60rxYhvEgj2KCfj8DVLxht5J8t9w+bsSczh0YHb0IzS9U+OobDCKLXk7eoPkS/LGgGWVTqbYl/9b4PhtrByM2IXil+DpujsOh9gPuDb2F8zviuGx5rQpuerBrwACrGf/bmnX1e0vb0VY1KDbgFywcyGqADWHR/0vASO6nqtQbP6tCO18sMMTvOGF/U/BQpXosCjazj68Pk20d1KFV3l6RgY6SXEX1vcPvInPg6JJYkPSm8nYit5zqK0YOG+/2e4zrFM7wrkvPN5gw7hNMEt54Q5rZGy2bLnoi8qAkMzkHInFAFimavpk2oXzfqRNdgMUjloCM0/ac7yRJmDDoDZeBcRNIVJLMhfZ9HIpPO2zs/v5EbZiuPckaQzbD9ZxBpGsEvhjJ40MigQGm4OeL2PbpP/zSBs0GaAvzI6+RIJ/tfGV7MRSkwWfXMPl69hRx+LH9jfIvE50XMirFRVV00KhdpGoBujynSGtrzPLUjS8qATSNI/KqB28zdFX1yioltJWkF5TTV342PsAjbp0O6T9YJB2ToxPeKu6DXofGx3VYJE/vs8Ic+F3a67anBh2THwHN37yploYv3Tly7ReWmvAH6CLX8bxYTUDa6rKqENd/vVYI1kr3+mvQ==
+x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:SEZPR06MB7362.apcprd06.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(13230040)(376014)(366016)(1800799024)(23010399003)(18002099003)(38070700021)(10067099003)(56012099006);
+ DIR:OUT; SFP:1102; 
+x-ms-exchange-antispam-messagedata-chunkcount: 1
+x-ms-exchange-antispam-messagedata-0: =?iso-8859-1?Q?AYxoBatAbevrEj6XpxHdG1k5ZHiZx0+tp75l676iBrk5w/ODNRXaFXhkaJ?=
+ =?iso-8859-1?Q?+ld+lpzCp1Wdtj44tts4CZVjhjLKb5ihlY3nfQEYBAegbIehehTG3QFIcH?=
+ =?iso-8859-1?Q?k+z9ZKHA+vN+7aMiQU4UWBtRejqBLr9HsSVznom+49740FKKt5VGYn7raX?=
+ =?iso-8859-1?Q?S25BhH4o87jsBPqoHHK/PGM3AieHSaXL/nCbmWQpTA3WNNleJr+OQMGaMl?=
+ =?iso-8859-1?Q?FnIRN8AOSM9nftH/F46ahDRvL4AtuzlW+n5fQWAYNMq6g0DJAwHBkxvNGk?=
+ =?iso-8859-1?Q?YPuA1enhZ048kfW064LIVvKFLRg4EZHeGcuhmi8WqaNIII2TFvP5sjEkdo?=
+ =?iso-8859-1?Q?EtfU0dZuDv0QnU5+agpj1NpfGO0IAfx08FPXEWJNBGtSzw3P0X3opMgvGm?=
+ =?iso-8859-1?Q?9GgR15J0DrXIUOh4qcnFXKKncM2Ast/8P59owfh1ABBG7iEm/fRIRSIhU9?=
+ =?iso-8859-1?Q?l8RKoRJiuXEAVtYZnmk1VwSAXe4ssdWn+BixKODJBzh0mJv+YpeaNCEzwR?=
+ =?iso-8859-1?Q?mFI6E6u3JQVWqaoOq/0wmp7bFQzZx8Hkq0uai6Ah7wNC9jj+8YGQliPLKO?=
+ =?iso-8859-1?Q?8jXtYwrjEfPT8rXcaScZmDRwR+XKRGBylh9XwyJbq1holNu++AAfqVbEd2?=
+ =?iso-8859-1?Q?rf/iZbG9LO91O97rmf0B7rgfLxvfsBUg7b+icFU+ygjb8ZEjbi5ksFgGAY?=
+ =?iso-8859-1?Q?ujCn7A9VJEIIBZs0ozrp8aXE6WVui5/gqdFL/2YkjGTw+PtTUIP45Z87dD?=
+ =?iso-8859-1?Q?b3qTH4KOPVG6jlL4NAlAntq665hiL8oosRmeqaUAFqEee8IpV5uZvQk3lb?=
+ =?iso-8859-1?Q?dMGqAyp/6DkJB5dHWkf/ReFrDmQCLi3MYGpmv14WefaTXYau7+EmVPbkrr?=
+ =?iso-8859-1?Q?vmfaRlb4JGtv0Uv2afxmW1Q/Jg8t5qkLagcbZHtZuCHU82XQEj0lw+w0TG?=
+ =?iso-8859-1?Q?N2Q8e0QTS3EzPcnSAvQe/UCO9fBJqbGubR9jR8CPUWvdqB2GJssDLJWeEH?=
+ =?iso-8859-1?Q?b5DHNoT1U5DgQ/NEMJfJ7T+rXT0Zo1Gd1e31vTsI8CvApIEjvnAdzR/dZK?=
+ =?iso-8859-1?Q?F0bv3spxxTDlzt5H7GsscRzL3QbWdY+nxcrxPNcNFZRpgQagdNXzzENMT0?=
+ =?iso-8859-1?Q?QFdd65EwWJ48OrQdMhdpcdnXoWl9XbFh79pbUnuVjhdHNhLc4fogQUAE8k?=
+ =?iso-8859-1?Q?pbI0eIDAUpp38vYDHsbSYUl72O5uOohh1SMXDvREMq9KpiT74T2HRUdHAB?=
+ =?iso-8859-1?Q?LYDYlJarRZ+Gebmlkh1/4ouq5OcR2XHrnlkB1rzACn1KKf/vXXM4RSeaga?=
+ =?iso-8859-1?Q?9HVfhPpQf2zFyYTcMLtb5XmTNcbROROQryk8m1shTEruvd/y7AviCDbTA4?=
+ =?iso-8859-1?Q?zB6paLFhTN8TTWM2scDLnNFqplS1bgadW4vzOmodYMV6Y6H+DKLj0O2GOc?=
+ =?iso-8859-1?Q?0lXJeSKshhG5wVcLO/SaZuFs671zsxXVP6i2S5wLMp3X0owj89tckPnP3a?=
+ =?iso-8859-1?Q?p66dicOh4+LwMMSrHDoLbvpkGh3vlN3Bi8feeomRF4wR0b1mj7Iw46s7DZ?=
+ =?iso-8859-1?Q?FXEvJkOLqDqIrzSBMEz7aymq5NAcyEZ928M9fMgmBK2cNA/YFWT4y6LlsU?=
+ =?iso-8859-1?Q?ShGggg7rYuvnbNN+q1VeNg+1hx/EMtlSShJYssGYZZmRT9xr9Z/a7lLpzS?=
+ =?iso-8859-1?Q?jOg1PDAT3xqmsK/w2qeJVMr5uPEZ2zbzshJqKwq1ZIB1Lp/z3n4e1rQCoF?=
+ =?iso-8859-1?Q?yw9qXAqf+jaY/IfMzhxThIFrjokuqqG1LPTsg9LKiKIqfJ5nSoYMQRGtVp?=
+ =?iso-8859-1?Q?KdfjORkxIw=3D=3D?=
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
+MIME-Version: 1.0
+X-Exchange-RoutingPolicyChecked: QGrgqZ/mXhiqGMiKQX9/q+zPf/Dl3HQ/mAK1dl4VYs2eNnIYwbYygyToLVOGln/gAAXOtNBrMv/FvW5882UgwOkhiEe0H5a6905iSAU5yAACFSo4cHNfRHsKxJqBgeGYmgpjuG6zoLWWMxNzSglVXtjdMtTZU2g9ziSS0WFckIAlw6OLAFxBN1Y4CCrDUHhcNhmyiWfGdctL/9i01E4mpdpGGSNYiag3bfSfNNzfZS2cyQIcCLQF6nyhzPeWJOzbzbCIACdRxUfn5z9NqlcnDo9Adn1Jd0XtWh3FRUZrpg5rCLgToZ4njT7sVfoDy2mw+5cV0zffVbczu7a7aSd0Gw==
+X-OriginatorOrg: aspeedtech.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-AuthSource: SEZPR06MB7362.apcprd06.prod.outlook.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 86da24e1-655c-4e78-759c-08df2284fd4a
+X-MS-Exchange-CrossTenant-originalarrivaltime: 05 Oct 2026 02:04:29.0391 (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: 43d4aa98-e35b-4575-8939-080e90d5a249
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: nvtnnp7TFt4uYpRhkGLC5QFMou52wmd/Cnt81r3F+tTz1nR2kJojtM5UqTJMRuDitnvIs/RzRI8+IA4gqIKoGKfiP2yMwz8NlBbo09Ba/+g=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: TY0PR06MB5833
+Received-SPF: pass client-ip=2a01:111:f403:c405::5;
+ envelope-from=jamin_lin@aspeedtech.com;
+ helo=TYPPR03CU001.outbound.protection.outlook.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_PASS=-0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -77,92 +146,27 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On 9/14/26 13:23, yoshinori.sato@nifty.com wrote:
-> On Mon, 14 Sep 2026 03:21:04 +0900,
-> Sayyad Mahammad Umar wrote:
->> This series extends the RX target with RXv2 and RXv3 CPU support,
->> forming the foundation for the RX65N, RX651, and RX72M machine models.
->>
->> The first patch adds the CPU definitions, instruction support, and
->> translator changes required by the newer RX cores.
->>
->> The second patch adds the initial RX machine and peripheral support.
->>
->> Signed-off-by: Sayyad Mahammad Umar <contact@sayyadumar.com>
->> ---
->> Sayyad Mahammad Umar (2):
->>        target/rx: add RXv2 and RXv3 CPU support
->>        hw/rx: add common RX peripherals
->>
->>   MAINTAINERS                           |   20 +
->>   hw/adc/renesas_s12ad.c                |  324 +++++++++
->>   hw/dma/renesas_rx_dmac.c              |  317 +++++++++
->>   hw/dma/renesas_rx_dtc.c               |  169 +++++
->>   hw/gpio/renesas_rx_gpio.c             |  256 +++++++
->>   hw/misc/renesas_rx_crc.c              |  219 ++++++
->>   hw/misc/renesas_rx_fcu.c              |  985 ++++++++++++++++++++++++++
->>   hw/misc/renesas_rx_romcache.c         |  139 ++++
->>   hw/misc/rx65n_sysclk.c                |  190 +++++
->>   hw/net/renesas_etherc.c               |  955 +++++++++++++++++++++++++
->>   hw/rtc/renesas_rx_rtc.c               |  330 +++++++++
->>   hw/ssi/renesas_rspi.c                 |  319 +++++++++
->>   hw/timer/renesas_mtu3.c               |  509 ++++++++++++++
->>   hw/watchdog/renesas_rx_wdt.c          |  193 ++++++
->>   include/hw/adc/renesas_s12ad.h        |   61 ++
->>   include/hw/dma/renesas_rx_dmac.h      |   57 ++
->>   include/hw/dma/renesas_rx_dtc.h       |   42 ++
->>   include/hw/gpio/renesas_rx_gpio.h     |   64 ++
->>   include/hw/misc/renesas_rx_crc.h      |   30 +
->>   include/hw/misc/renesas_rx_fcu.h      |  191 +++++
->>   include/hw/misc/renesas_rx_romcache.h |   30 +
->>   include/hw/misc/rx65n_sysclk.h        |   37 +
->>   include/hw/net/renesas_etherc.h       |  109 +++
->>   include/hw/rtc/renesas_rx_rtc.h       |   52 ++
->>   include/hw/ssi/renesas_rspi.h         |   61 ++
->>   include/hw/timer/renesas_mtu3.h       |   73 ++
->>   include/hw/watchdog/renesas_rx_wdt.h  |   48 ++
->>   target/rx/cpu-param.h                 |    3 +
->>   target/rx/cpu-qom.h                   |    2 +
->>   target/rx/cpu.c                       |   57 +-
->>   target/rx/cpu.h                       |  124 ++++
->>   target/rx/disas.c                     |  383 ++++++++++-
->>   target/rx/gdbstub.c                   |   44 +-
->>   target/rx/helper.c                    |   56 +-
->>   target/rx/helper.h                    |   22 +
->>   target/rx/insns.decode                |  125 +++-
->>   target/rx/meson.build                 |    6 +-
->>   target/rx/op_helper.c                 |  357 ++++++++++
->>   target/rx/translate.c                 | 1225 ++++++++++++++++++++++++++-------
->>   39 files changed, 7873 insertions(+), 311 deletions(-)
->> ---
->> base-commit: ff1d2d19d7e24893e2012d879f8e73077e17b9bd
->> change-id: 20260913-umar-rx-series-0bfbbfe6b074
->>
->> Best regards,
->> --
->> Sayyad Mahammad Umar <contact@sayyadumar.com>
->>
-> Thanks.
-> I also implemented some peripheral functions to emulate the actual board.
-> I haven't verified every single change, but if there are any missing features,
-> it would be best to combine them with my changes.
-
-Hi Mr Sato,
-
-Sorry for the late reply, i was sick for couple of weeks.
-
-I have now started to work on splitting my last patch series from 2 
-patches to about ~31 smaller patches.
-
-I will be submitting those in the coming days after i test the changes 
-with real firmware.
-
-The real hardware i want to support are rx65n-2mb, rx660-tb and rx72m-rsk.
-
-Which boards/peripherals are you working on ?
-
-Regards,
-
-Umar
-
+This series is split out from "[PATCH v1 0/11] hw/arm/aspeed: Use=0A=
+unimp array and table for unimplemented devices" to make the changes=0A=
+easier to review.=0A=
+=0A=
+v1=0A=
+ 1. sorts the ASPEED device IDs alphabetically.=0A=
+=0A=
+v2=0A=
+ 1. Split the device ID sorting change out into a separate series.=0A=
+ 2. Fix the IO expander device IDs in the correct order.=0A=
+ 3. Add a functional test for IO Expander 1 I2C.=0A=
+=0A=
+Jamin Lin (2):=0A=
+  hw/arm/aspeed: Sort device IDs alphabetically=0A=
+  tests/functional/aarch64/test_aspeed_ast2700a2: Add I2C test for IO=0A=
+    expander 1=0A=
+=0A=
+ include/hw/arm/aspeed_soc.h                   | 176 +++++++++---------=0A=
+ .../aarch64/test_aspeed_ast2700a2.py          |   3 +=0A=
+ 2 files changed, 91 insertions(+), 88 deletions(-)=0A=
+=0A=
+-- =0A=
+2.43.0=0A=
 

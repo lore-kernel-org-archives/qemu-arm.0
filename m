@@ -4,67 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 378F2CA5FF0
-	for <qemu-arm@archiver.kernel.org>; Mon,  5 Oct 2026 10:21:23 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 06D6DCA5FF0
+	for <qemu-arm@archiver.kernel.org>; Mon,  5 Oct 2026 10:21:27 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xDfoj-0003W4-9K; Mon, 05 Oct 2026 06:21:09 -0400
+	id 1xDfox-0004S1-KE; Mon, 05 Oct 2026 06:21:24 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <shentey@gmail.com>) id 1xDfmA-0002Ez-OT
- for qemu-arm@nongnu.org; Mon, 05 Oct 2026 06:18:32 -0400
-Received: from mail-wm1-x32a.google.com ([2a00:1450:4864:20::32a])
+ (Exim 4.90_1) (envelope-from <shentey@gmail.com>) id 1xDfmK-0002HA-6H
+ for qemu-arm@nongnu.org; Mon, 05 Oct 2026 06:18:43 -0400
+Received: from mail-wr2-x0f.google.com ([2a00:1450:4864:30::f])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <shentey@gmail.com>) id 1xDfm8-0000uk-F2
- for qemu-arm@nongnu.org; Mon, 05 Oct 2026 06:18:30 -0400
-Received: by mail-wm1-x32a.google.com with SMTP id
- 5b1f17b1804b1-4a0286c981dso14793995e9.2
- for <qemu-arm@nongnu.org>; Mon, 05 Oct 2026 03:18:26 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <shentey@gmail.com>) id 1xDfmH-0000wX-5Z
+ for qemu-arm@nongnu.org; Mon, 05 Oct 2026 06:18:39 -0400
+Received: by mail-wr2-x0f.google.com with SMTP id
+ ffacd0b85a97d-48b059eae96so1359495f8f.0
+ for <qemu-arm@nongnu.org>; Mon, 05 Oct 2026 03:18:35 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20251104; t=1791195505; x=1791800305; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:from:to:cc:subject:date
- :message-id:reply-to:content-type;
- bh=j4820QCIrYVrPZCmpkAS3lL2mCezM1T4rfhN7ttYHh0=;
- b=fm6PoKB+A8XMyS811EZRvU3l9dfqYCTHZLlmNAoUHrMDJKnJ3jascT0HeePv6H87X1
- XxfELkE4JPLO6Y6rIGpgx61r43rqsUSDszs5zBDaLdjbmLYK28Lo5wJ8RLsEnGYZ5S5w
- 4ZbrsUbjCZFCaDNYTNTG/xm/B4k9b2crEX8yCWYCYVpl2va55f2mNCsdEQrMccZkWxIC
- t95PI49b58F8EEXtjEM2H1XPiv2dJ5+JGBipdtCjq+JCZcbqOTDizxVlBZnXfdC4ytmb
- lLQPkZ2k4HPnmy6AUs2foR5DPQLe76QUNWpaVeckviXYBo0XVicc0BrNliZQQN5QHItw
- kZFA==
+ d=gmail.com; s=20251104; t=1791195514; x=1791800314; darn=nongnu.org;
+ h=content-transfer-encoding:content-type:mime-version:references
+ :in-reply-to:message-id:date:subject:cc:to:from:from:to:cc:subject
+ :date:message-id:reply-to:content-type;
+ bh=bqD+aHtTbFAXv8DMY6Gl5FICoqplgP4XudJ8kGw3u/c=;
+ b=f/581tBnwyKQfi0xzYILC2osCNafVeJJTO8MDjslDKED3uT/SxhBleQ8BZVtH0P/Fr
+ oZMfAk9wJ4vh5DKNNTQNBIFrtf3BovpSElIjtUBJXIkOA0h2UJcJSLDAsf6dttOi8WQC
+ YjLPfpt+lJ5LwWFs5Nibs8evIcF1lRKxCLua9a4QCYufUiPgSmiCXJF2mDI6rX+220SO
+ j77nmEzZY4nwo09w8mjh9pCkDRbZCzDVPM3MGg7ehOv200+/4Ma07lCL20icKprjYK3f
+ XXIsW8JtayFhl/aggWuFQVs+TE94qDh9Hh671Ni9RAuE77PN8Ou/2NFNPh8E5iRLXJZ5
+ u0VA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20260707; t=1791195505; x=1791800305;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
- :to:cc:subject:date:message-id:reply-to:content-type;
- bh=j4820QCIrYVrPZCmpkAS3lL2mCezM1T4rfhN7ttYHh0=;
- b=nqp4kBzvTetbpLHxbBDJgSbmoNGzj0LAE+7AaZX0l4BKu71P5OAgKTjOPLfzZyauCF
- zUJibrIv+gMorlXf0+imuVYtrpERsaEoNjI2EljRDICvj68v5tHMgT9Vf/+61ISPaO3n
- xIzBFA2zJmYrPibD3kdyUVzRD6H13t+nvSH7hhoBhGdgVd133EJPUOzRFjM6v4ZuVGJ+
- f6voNfENyVbiV30nw01OvnKkuT9tWm6ykEcpUZNjIfCF8pUWHExR0XL8CHzzAEFZtBIJ
- wZaPsYVbT7F1kaqYFVY57hdfTVP7aB6lNI3a8vrlt/C1M7AIVlDWSckh2xtaNbOwJ8cL
- aFIg==
+ d=1e100.net; s=20260707; t=1791195514; x=1791800314;
+ h=content-transfer-encoding:content-type:mime-version:references
+ :in-reply-to:message-id:date:subject:cc:to:from:x-gm-gg
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
+ :content-type;
+ bh=bqD+aHtTbFAXv8DMY6Gl5FICoqplgP4XudJ8kGw3u/c=;
+ b=Xjul61MIIwg2DTX7Ow1aDpCrIXO8tt0YFkTW03xsnoVB+lJmsGaoITF2Q322ZpSFb9
+ kYxG0BPwPahscxeDEL+aK77A9ofcQ/IvYeZ5vi4FERY0BIC0H59qJ4a7oNXwNCQQpepo
+ rCeI4DfMTwUcG39GsywLoC/zuNybLQ4a/8N/vs4RbO00kaVpgMHBiDx7NHRDnfmJr+um
+ aQBtH/I1pbWeIB/9YXbXXvtpSv5Xpm7Et94ygiyOthID7i52xrLJw37exVd+bwsAqYvK
+ fVp2fKEn6/7JE28ewvgRVwddkLRgQfltblyoLE0PeFennRfMsXipTWKBkc8/h3vQcNxE
+ X32Q==
 X-Forwarded-Encrypted: i=1;
- AKwUvBx/ZS91B7wpZpWDRo8Uu8h/s5rQYO+151O+lCJlslr5i5kVFyBfa2wQ+OCqSCFD7XJkBi6JRvCpIg==@nongnu.org
-X-Gm-Message-State: AFuF++lpjkuQRF6nQocYH6ALHJ0yFt1V5nhOlZR9d5m7LpZUMwXB5feC
- 1ZGVoH9simX56tnjNmiYLcbTHCb1i+mFINvj3gQoxgB2aDf9jzXL/JNh
-X-Gm-Gg: AYBFou1C7VfSndSr827t6p0IKNCtulILH0BVTcXcxbUxZy3Dl3UuQMe3kB7keXldSZO
- fWOrv8fMfqTD4M4+o2FuNPqLmlCJLNwPB9WSSqZ20I8IZRyqiO+mJ9pKdkOQeH6OmSm48vQ3EAB
- 4+/bLLHfD8XwYnwnWrCcQLiJQDyZB5Gel1ZPnLANv8uNqcNaJKAK9ACGfBLc6hnlaE8I0VoweDP
- riwF7qSni3c9UitHXKZrVr3FijOtizj7df3AkWWwizQuddJhYRcxzwJO918Ca2Vv3iBM+DSb4wG
- AAp5q9cfZ4jxKhhLXUwhC867TzrLbRxUvQdHiSMeNGu9Jk9xnGswSl+rIJfQQGC43f63i/YF90B
- qD0taQUcTDu2+iIuaUvhAP+KejYJDRu7yMZdGlhmi6RHf3DEUbt2ZB9WUThqu28lKcwh6ZZQfcS
- KLaluBjC05tESGcBpc34vu5rw4xIZ56EYAb6XLo0JEnmd3T/5pmWbf9dLSerplzio4mD3DIqkGQ
- ixTmmrp+lEz6hhtAGShPnaYfXbQMt2+XUq+6j67XGH262ST
-X-Received: by 2002:a05:600c:3485:b0:4a1:6916:798 with SMTP id
- 5b1f17b1804b1-4a176ca18femr5639455e9.14.1791195504660; 
- Mon, 05 Oct 2026 03:18:24 -0700 (PDT)
+ AKwUvBxH3bydzHTzBdcRQSo3AWEiwWxPw7mSTLDMm1GdkHj8mvhstplS2j+XRpqYNnsguCj+AkAilWttZw==@nongnu.org
+X-Gm-Message-State: AFq9FYKYGJyZU1i/a+M4g224MUOI9kQ6QPy2ykTomzttgFG0CmB/9wEV
+ u2T6lEowuXAwQpV38bOvcmQKsE2FHM+5MVkuyiAiW+30fT1MpNOYA2ScCs1ewg==
+X-Gm-Gg: AYBFou0Fv7aDdRQUut2EKShiaGL9kP4/HhPIpAfucEMy7preiUKPOLGmWErSdxxJjz9
+ RBGRxRB5lFgrYq4d+U81KbIv1EkfVCeK5PpAK3b6Rc0O9V9TDOHsERPlvfagOIxhfJiHnLf7q5j
+ vNKoIKurtHJkiLeNky/vYK/t0KGQgRd4Bp8ZrmudLIfjSVmoscDuGB0FjdZiSVQ/AcFBYY/sAz7
+ 7XKhRr/nNMfGAG5zuLCOF7emdV0RvrCQukTfqKwqQ+sKlNwlerQhKyl+Gdi33v+btr5HZIRCD9V
+ 6Kb9FzC3k+xiZbNl9tPJc8i+MZpIjDtciUsRkB0ynd88dHpqxIBPkQBRlvWnwGGJNP/H3S7Ouop
+ b1ExtAb1G8xXiK2FJl8S2FUrSl+3B0GXi34HoGZCVt2HWO6WmUIj9gYk9i2CBKsp6xS/GQuC55w
+ izotS7grT1Q2jrMHKjLzwVTlswA4njT0YSgrX1wJ4uFC5lwW7LO1y98aF8xf2Cf3hgoETtijRHb
+ qLxH2Q5IgfGjcv9xp+b5O4nXFTBD5fQ1OlL2A==
+X-Received: by 2002:a5d:6d08:0:b0:48b:6d3:a6f with SMTP id
+ ffacd0b85a97d-48b1273e314mr13393379f8f.44.1791195514153; 
+ Mon, 05 Oct 2026 03:18:34 -0700 (PDT)
 Received: from archlinux (pd95eda80.dip0.t-ipconnect.de. [217.94.218.128])
  by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-48c622ab7b5sm2742111f8f.37.2026.10.05.03.18.23
+ ffacd0b85a97d-48c622ab7b5sm2742111f8f.37.2026.10.05.03.18.32
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 05 Oct 2026 03:18:23 -0700 (PDT)
+ Mon, 05 Oct 2026 03:18:33 -0700 (PDT)
 From: Bernhard Beschow <shentey@gmail.com>
 To: qemu-devel@nongnu.org
 Cc: Gaurav Sharma <gaurav.sharma_7@nxp.com>,
@@ -77,23 +78,25 @@ Cc: Gaurav Sharma <gaurav.sharma_7@nxp.com>,
  Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>,
  Jean-Christophe Dubois <jcd@tribudubois.net>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@oss.qualcomm.com>
-Subject: [PATCH v3 04/31] hw/watchdog/wdt_imx2: Remove redundant attributes
-Date: Mon,  5 Oct 2026 12:17:31 +0200
-Message-ID: <20261005101800.10821-5-shentey@gmail.com>
+Subject: [PATCH v3 08/31] tests/functional/arm: Add console test for
+ `sabrelite` machine
+Date: Mon,  5 Oct 2026 12:17:35 +0200
+Message-ID: <20261005101800.10821-9-shentey@gmail.com>
 X-Mailer: git-send-email 2.56.0
 In-Reply-To: <20261005101800.10821-1-shentey@gmail.com>
 References: <20261005101800.10821-1-shentey@gmail.com>
 MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::32a;
- envelope-from=shentey@gmail.com; helo=mail-wm1-x32a.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+Received-SPF: pass client-ip=2a00:1450:4864:30::f;
+ envelope-from=shentey@gmail.com; helo=mail-wr2-x0f.google.com
+X-Spam_score_int: -10
+X-Spam_score: -1.1
+X-Spam_bar: -
+X-Spam_report: (-1.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FORGED_GMAIL_RCVD=1,
+ FREEMAIL_FROM=0.001, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -109,90 +112,104 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Since WDT and WDE are write one once bits, their values always
-correspond with their respective locked attributes. Thus, the attributes
-are redundant. Take advantage of this observation to simplify the code.
+The test currently exercises the Linux kernel and waits for the first
+daemons to be started. At this point, basic hardware is initialized and
+if the log message is reached, no driver ended up in an endless loop,
+thus the system should be usable.
 
-Note that removing the attributes changes the vmstate structure which
-constitutes a migration break. This is allowed since QEMU does not
-guarantee migration compatibility for i.MX devices between feature
-releases.
-
+Reviewed-by: Philippe Mathieu-Daudé <philmd@oss.qualcomm.com>
 Signed-off-by: Bernhard Beschow <shentey@gmail.com>
 ---
- include/hw/watchdog/wdt_imx2.h |  2 --
- hw/watchdog/wdt_imx2.c         | 21 ++++-----------------
- 2 files changed, 4 insertions(+), 19 deletions(-)
+ MAINTAINERS                            |  1 +
+ tests/functional/arm/meson.build       |  2 ++
+ tests/functional/arm/test_sabrelite.py | 46 ++++++++++++++++++++++++++
+ 3 files changed, 49 insertions(+)
+ create mode 100755 tests/functional/arm/test_sabrelite.py
 
-diff --git a/include/hw/watchdog/wdt_imx2.h b/include/hw/watchdog/wdt_imx2.h
-index fc01fc46e7..0bf2903959 100644
---- a/include/hw/watchdog/wdt_imx2.h
-+++ b/include/hw/watchdog/wdt_imx2.h
-@@ -84,8 +84,6 @@ struct IMX2WdtState {
-     uint16_t wmcr;
+diff --git a/MAINTAINERS b/MAINTAINERS
+index 1312bbd1bd..f31245716a 100644
+--- a/MAINTAINERS
++++ b/MAINTAINERS
+@@ -1054,6 +1054,7 @@ F: include/hw/usb/imx-usb-phy.h
+ F: include/hw/arm/fsl-imx6.h
+ F: include/hw/misc/imx6_*.h
+ F: include/hw/ssi/imx_spi.h
++F: tests/functional/arm/test_sabrelite.py
  
-     bool wcr_locked;            /* affects WDZST, WDBG, and WDW */
--    bool wcr_wde_locked;        /* affects WDE */
--    bool wcr_wdt_locked;        /* affects WDT, cleared on POR */
- };
- 
- #endif /* WDT_IMX2_H */
-diff --git a/hw/watchdog/wdt_imx2.c b/hw/watchdog/wdt_imx2.c
-index a15f452d48..e9cb5819e4 100644
---- a/hw/watchdog/wdt_imx2.c
-+++ b/hw/watchdog/wdt_imx2.c
-@@ -59,8 +59,6 @@ static void imx2_wdt_reset(DeviceState *dev)
- 
-     s->wicr_locked = false;
-     s->wcr_locked = false;
--    s->wcr_wde_locked = false;
--    s->wcr_wdt_locked = false;
- 
-     s->wcr = IMX2_WDT_WCR_WDA | IMX2_WDT_WCR_SRS;
-     s->wsr = 0;
-@@ -156,24 +154,14 @@ static void imx2_wdt_write(void *opaque, hwaddr addr,
-     switch (addr) {
-     case IMX2_WDT_WCR:
-         if (s->wcr_locked) {
-+            /* WDZST, WDBG, and WDW are write-once bits */
-             value &= ~IMX2_WDT_WCR_LOCK_MASK;
-             value |= (s->wcr & IMX2_WDT_WCR_LOCK_MASK);
-         }
-         s->wcr_locked = true;
--        if (s->wcr_wde_locked) {
--            value &= ~IMX2_WDT_WCR_WDE;
--            value |= (s->wcr & IMX2_WDT_WCR_WDE);
--        } else if (value & IMX2_WDT_WCR_WDE) {
--            s->wcr_wde_locked = true;
--        }
--        if (s->wcr_wdt_locked) {
--            value &= ~IMX2_WDT_WCR_WDT;
--            value |= (s->wcr & IMX2_WDT_WCR_WDT);
--        } else if (value & IMX2_WDT_WCR_WDT) {
--            s->wcr_wdt_locked = true;
--        }
- 
--        s->wcr = value;
-+        /* WDT and WDE are write one once bits */
-+        s->wcr = value | (s->wcr & (IMX2_WDT_WCR_WDT | IMX2_WDT_WCR_WDE));
-         if (!(value & IMX2_WDT_WCR_SRS)) {
-             s->wrsr = IMX2_WDT_WRSR_SFTW;
-         }
-@@ -234,13 +222,12 @@ static const MemoryRegionOps imx2_wdt_ops = {
- 
- static const VMStateDescription vmstate_imx2_wdt = {
-     .name = "imx2.wdt",
-+    .version_id = 1,
-     .fields = (const VMStateField[]) {
-         VMSTATE_PTIMER(timer, IMX2WdtState),
-         VMSTATE_PTIMER(itimer, IMX2WdtState),
-         VMSTATE_BOOL(wicr_locked, IMX2WdtState),
-         VMSTATE_BOOL(wcr_locked, IMX2WdtState),
--        VMSTATE_BOOL(wcr_wde_locked, IMX2WdtState),
--        VMSTATE_BOOL(wcr_wdt_locked, IMX2WdtState),
-         VMSTATE_UINT16(wcr, IMX2WdtState),
-         VMSTATE_UINT16(wsr, IMX2WdtState),
-         VMSTATE_UINT16(wrsr, IMX2WdtState),
+ SBSA-REF
+ M: Peter Maydell <peter.maydell@linaro.org>
+diff --git a/tests/functional/arm/meson.build b/tests/functional/arm/meson.build
+index 61b00932db..989b841555 100644
+--- a/tests/functional/arm/meson.build
++++ b/tests/functional/arm/meson.build
+@@ -24,6 +24,7 @@ test_arm_timeouts = {
+   'quanta_gsj' : 240,
+   'raspi2' : 120,
+   'replay' : 240,
++  'sabrelite' : 240,
+   'tuxrun' : 240,
+   'sx1' : 360,
+ }
+@@ -65,6 +66,7 @@ tests_arm_system_thorough = [
+   'raspi2',
+   'realview',
+   'replay',
++  'sabrelite',
+   'smdkc210',
+   'stellaris',
+   'sx1',
+diff --git a/tests/functional/arm/test_sabrelite.py b/tests/functional/arm/test_sabrelite.py
+new file mode 100755
+index 0000000000..31a0a49eac
+--- /dev/null
++++ b/tests/functional/arm/test_sabrelite.py
+@@ -0,0 +1,46 @@
++#!/usr/bin/env python3
++#
++# Functional test that boots a Linux kernel and checks the console
++#
++# SPDX-License-Identifier: GPL-2.0-or-later
++
++from qemu_test import LinuxKernelTest, Asset
++
++
++class SabreliteMachine(LinuxKernelTest):
++
++    ASSET_KERNEL = Asset(
++        ('https://ftp.debian.org/debian/dists/bookworm/main/installer-armhf/'
++         '20230607/images/netboot/vmlinuz'),
++        '5851e9c61465a26db810796db671c4729e66e81c365b3ebb1a4b7f772737605b')
++
++    ASSET_INITRD = Asset(
++        ('https://ftp.debian.org/debian/dists/bookworm/main/installer-armhf/'
++         '20230607/images/netboot/initrd.gz'),
++        'fe33f836232a9107716d34dc56d36dea81bab039243a2a42ea6583a50c9b92ca')
++
++    ASSET_DTB = Asset(
++        ('https://ftp.debian.org/debian/dists/bookworm/main/installer-armhf/'
++         '20230607/images/device-tree/imx6q-sabrelite.dtb'),
++        '3ad637c8ea55ebd058a67f686e050b82ccb0d1327bc283623c133c48ad87db44')
++
++    def setUp(self):
++        super().setUp()
++
++        self.kernel_path = self.ASSET_KERNEL.fetch()
++        self.initrd_path = self.ASSET_INITRD.fetch()
++        self.dtb_path = self.ASSET_DTB.fetch()
++
++    def test_console(self):
++        self.require_accelerator("tcg")
++        self.set_machine('sabrelite')
++        self.vm.set_console(console_index=1)
++        self.vm.add_args('-kernel', self.kernel_path,
++                         '-initrd', self.initrd_path,
++                         '-dtb', self.dtb_path)
++
++        self.vm.launch()
++        self.wait_for_console_pattern('Starting system log daemon:')
++
++if __name__ == '__main__':
++    LinuxKernelTest.main()
 -- 
 2.56.0
 

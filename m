@@ -4,110 +4,95 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 25756CA5FF0
-	for <qemu-arm@archiver.kernel.org>; Mon,  5 Oct 2026 10:23:33 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 49E17CA5FCE
+	for <qemu-arm@archiver.kernel.org>; Mon,  5 Oct 2026 10:24:09 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xDfqh-0008TK-1X; Mon, 05 Oct 2026 06:23:11 -0400
+	id 1xDfpm-0006Q3-UJ; Mon, 05 Oct 2026 06:22:15 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1xDfob-0003PR-20
- for qemu-arm@nongnu.org; Mon, 05 Oct 2026 06:21:05 -0400
-Received: from mail-yw1-x1135.google.com ([2607:f8b0:4864:20::1135])
+ (Exim 4.90_1) (envelope-from <shentey@gmail.com>) id 1xDfmc-0002K4-V7
+ for qemu-arm@nongnu.org; Mon, 05 Oct 2026 06:18:59 -0400
+Received: from mail-wm1-x334.google.com ([2a00:1450:4864:20::334])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1xDfoZ-0001Mb-ET
- for qemu-arm@nongnu.org; Mon, 05 Oct 2026 06:21:00 -0400
-Received: by mail-yw1-x1135.google.com with SMTP id
- 00721157ae682-8ac9d666d4eso13187157b3.3
- for <qemu-arm@nongnu.org>; Mon, 05 Oct 2026 03:20:55 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1791195654; cv=none;
- d=google.com; s=arc-20260327;
- b=FJ/OBzH1ihRv25rCspsG3Ajri212oSzdlZc65/nOF1IbBb+izliEdBK5GvNR8pE5fg
- mOpAjwX90+75qq6KPcXmdgQQFxO4eaR5jBq8Ow6Xfy0fBHqE+LMzXhqUcAsf4W3FAQTy
- 46DHy+KQriuHFMoXnZs75z543QTQ4/eEHCU9T1WunzwUhHPl6FSUoxOo63rlU9SgYINE
- U8npuzA+Zli+ER5L+RRQx4tySGNM226oHUHAVzlu/+pflqTrtAXdStgNdv1EVRpJ8K3y
- kat+Uq4/0u4/iT6x1VbXkk5ss8vyOB3Gnrejg9vzmy3Xv2AHf8QE8UDh83eEccyZ9NbA
- q+pQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
- s=arc-20260327; 
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:dkim-signature;
- bh=rsICQAjWvmy+ljjVOj/7u/Nn9zIVoBVRDJL9QHoTuWU=;
- fh=/u4YkHlf5TNbFl3sSu2CQL+y1gOWWAKKJkfskBUaz+Y=;
- b=I0Z3XfahaGjAAysv93cOGLkaWPdRSeAGe9mAAAic7Jqx+UAxrLNhqFBC8VmyFBNnkD
- ULlcVf5YSHP+rerF4khPdpcGrqkznKvWFNoPcu2MXeRmUAZ1eOkU06e0zmsPT79IIFx/
- bkmAzzsfjRl546jvOi0PpYVXYDUU7XoMCoRZGr+p9S2x0gO9N+qGdjmuH+/ulxPRaWT/
- ZeEhtEgJglgUeKzoBJD/riIoIKW3r8WRGUaeoyd/MaqgppobQCJPIZxF1+xDBS9uNFC3
- GBu8r8QRLAqCQVmK4uNn2dJcuezIqN9dmqdfeEesKZ9gjKC97fNPcqLo/aQNGsZtUjyo
- wFvw==; darn=nongnu.org
-ARC-Authentication-Results: i=1; mx.google.com; arc=none
+ (Exim 4.90_1) (envelope-from <shentey@gmail.com>) id 1xDfma-000128-VH
+ for qemu-arm@nongnu.org; Mon, 05 Oct 2026 06:18:58 -0400
+Received: by mail-wm1-x334.google.com with SMTP id
+ 5b1f17b1804b1-4a1688d7769so10614945e9.0
+ for <qemu-arm@nongnu.org>; Mon, 05 Oct 2026 03:18:56 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1791195654; x=1791800454; darn=nongnu.org;
- h=content-type:cc:to:subject:message-id:date:from:in-reply-to
- :references:mime-version:from:to:cc:subject:date:message-id:reply-to
- :content-type; bh=rsICQAjWvmy+ljjVOj/7u/Nn9zIVoBVRDJL9QHoTuWU=;
- b=Hq21dVXv5so2WaEr3y+PDhJqcQo74tn2VjreaM/yjGphhI7cQ9HYIy/1UJzz003nw/
- j00c10hxjluT3gDkOR+Bjhf/0P0gTcB0m1W4C5GVxZoq18pkzPRZoCpbJFbSGuvVyWko
- DZKgj1e9dLqshYUn13+xX7dnmiU+w4Z5UJWpQMhIpQLdLMZvaSqPSdi9GmOnsVbqA5NB
- dhDzEE5ZPXukZmuSWfnT5vn5wRMH+EkVce09saPoGatJCO7YRtEQsT1zXd9k86HB3FGV
- 1/zYvMpn9pwmW+ArqzG0owQwvvXaTljQpjStgnMi+kSBgo5s0fViNuSIdUVSQTXWqMjU
- Mbdg==
+ d=gmail.com; s=20251104; t=1791195535; x=1791800335; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+ :message-id:reply-to:content-type;
+ bh=MtjyPqAx1DBfXhNfiNBwnE4QmFljId/OHSHkX1Y8u+4=;
+ b=L7Bykl+D6UmyfQqIJdr1qCJdzz4En3bySBeGc6+9JTJ+XXPyarZgF5oAFiTdCQcskK
+ AxwVPA6k6ZiEI0pronZKBWv+MOCCnn6xlEeESNTBsuv262zbmVEv246ZnjLjd0HaqXiX
+ 1hcDA+CsD/zcWxFcvdM77nWylPxd/dMOyE5Dr03o/6cpvy2Vxru/mcGHryoR5hrSeF/d
+ 4UF72mseke7gPj6/WXC0OyqAQJMZ4jQDnqujmOGkFE995gfD8IGuaujO0NDZl0fDuqya
+ IP/UrJalZTm1B62oXkpug9sydvV7bA05O8Zrc2NWGMcvh2AQW9TbK0UX447RWr+uk7D6
+ 6yxA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20260707; t=1791195654; x=1791800454;
- h=content-type:cc:to:subject:message-id:date:from:in-reply-to
- :references:mime-version:x-gm-gg:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to:content-type;
- bh=rsICQAjWvmy+ljjVOj/7u/Nn9zIVoBVRDJL9QHoTuWU=;
- b=ZSm0fqjZRWy2Zvmr/HteSltGxLpLAjZ8fYaK+snlU9DDa3z40fNk7HnInVw0beCRMx
- LunTsz9UL3Zx/PgffLpk7YT18bo34j8B0y4Tm5WwUq00wpKkTDaJk5GMAdV2P3HNfBQT
- u+LjF0QlPMUW9qf9VNQjGStyT7caEj/0/dEIVR4WU/xbxb5qD2gTJBvwps1Y9Dbjmsn0
- SNJerXcXz0nYjyCGOS4Fw5M8MiQlvlEK7KKxxSLnasQct0hu7+ycnhIglD22z/AjDhFw
- QNvtW/TL26lvMIbf9pOiRg7KQoCqhxxnIA5BKTbZzFj5R5nnFFrC99fzZdLgdtv9BOsM
- XE5w==
+ d=1e100.net; s=20260707; t=1791195535; x=1791800335;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
+ :to:cc:subject:date:message-id:reply-to:content-type;
+ bh=MtjyPqAx1DBfXhNfiNBwnE4QmFljId/OHSHkX1Y8u+4=;
+ b=HrpiqyqKMXzzR//BCYrG7f1ifwfO56sydAPQRQH+LRJcGMg88S7zp9oKDJvg4L7udA
+ 5K0GDBAsDm7nxXSKyAKTSdOnFuBtEWd6nXmMMMf7otKlrNN/0PyIfJd2DQEOuz7t/Non
+ mDaScjLo6EK1IE7gyzrbZS3jJjUiskogM6yx3Venhrtn2WFbu5e1ma3ixY4AG4JW6b2q
+ WpeHEPX7YF+pfJekKaRRmqOK+CmKziWaxERfgDpiZ0EKzPVxKKwNC75h+ZBc/JqjLVDO
+ CR+p0h0unC/dT0DPlIW/49cyo3Nl3lVQKhpkAY5jAUWVjScBLgcCLoOnMQ6fKlfsEvUj
+ ASug==
 X-Forwarded-Encrypted: i=1;
- AKwUvByxWq/hApO4KaCybKxZcGr8aWs0FzDGcbU8d9R5KaQ+hLp8pahC0f8WCV2V/np0phLohY2tCb9TGg==@nongnu.org
-X-Gm-Message-State: AFq9FYK9Uju8Pr5Nw8J5UMGn6Cb4++9n9/g+ZfUNojRo5JX30lHvkZn8
- jMLdGjVARVnqvfZhugdAj1Rj8qIdqZvc34/Zfg13IFj25ERQfjZlIYVn2aTX1OSm0ONNMIpAZYA
- FCzJ0WOzluVbOAoiQuSfBSkwR3kbkajUu6MuJcv4qXg==
-X-Gm-Gg: AYBFou1Awx21uFeKxedUlbXG3l9jGREZb3dltrgcOJnBuHratdRnMWLUaSl5lbNZCT7
- +ApxWV+uDax6xqneOt6Ecz0mR26nnVhMjBFp/gVYqpyrlZFFyvaRKAz8cjOhq2i7XhjZyCZwH0T
- jIqRcwfd/VJUkzcoZwhd5/q6tHwbJ9t06rPEnIqA37tSTHfBxksaLhHHTzZOgu7MS3f0iKygCP5
- MzExP72ATAqs+0JJw08p6QzLP6M6tCPwx+9vwcjOgyWdsfb2SjETO/5cGeXIW5IAOiqt3340efy
- e7Sf+9BG+EfcD4c2ii9/OgZCQlNVpyHlev7Ob65bOqIxke5zYSb0EZ/0MTSIFQLcW/X+VGMt3y9
- vkBRXaTxn+GUbusuQLJyuMWp8mfuKfdXlLoQPr0C6nQbhGtP9OA==
-X-Received: by 2002:a05:690c:c013:b0:8ae:8021:568b with SMTP id
- 00721157ae682-8ae94cecc2bmr15640597b3.55.1791195654441; Mon, 05 Oct 2026
- 03:20:54 -0700 (PDT)
-MIME-Version: 1.0
-References: <20261005101800.10821-1-shentey@gmail.com>
- <20261005101800.10821-2-shentey@gmail.com>
-In-Reply-To: <20261005101800.10821-2-shentey@gmail.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Mon, 5 Oct 2026 11:20:43 +0100
-X-Gm-Features: AclHuK9551smn9ZrHUsIL3a61fGpmqYiwQpUymJOV1A6pTNNN7ZfrEZP4Hoi7i8
-Message-ID: <CAFEAcA9w+7kWh4ikMkiRio1xw9iH1OASiK2-NMGPRqLgTOJy-Q@mail.gmail.com>
-Subject: Re: [PATCH v3 01/31] hw/watchdog/wdt_imx2: Preserve own locked bits
- in WCR
-To: Bernhard Beschow <shentey@gmail.com>
-Cc: qemu-devel@nongnu.org, Gaurav Sharma <gaurav.sharma_7@nxp.com>, 
- =?UTF-8?B?TWFyYy1BbmRyw6kgTHVyZWF1?= <marcandre.lureau@redhat.com>, 
- Alistair Francis <alistair@alistair23.me>, Paolo Bonzini <pbonzini@redhat.com>,
- Jason Wang <jasowangio@gmail.com>, qemu-arm@nongnu.org, 
- Bin Meng <bin.meng@processmission.com>, 
- Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>, 
+ AKwUvBw1oYYQkPC2TBKmm1af8YvAd/18f3XU90tzTWTrXMLUCZeSxASwS/xUZCiTeRA4X6+p6pVA70174Q==@nongnu.org
+X-Gm-Message-State: AFuF++ktLceeaqq+xTB9q5bNViGSTYjoJd3CjKLhbey/hJ9aATTkvhZH
+ SyxDoKQ9ATCltuoSfiLuXlt465zObAaEqjZqq0E2lvrUrwjdYK7czc4u6qGByg==
+X-Gm-Gg: AYBFou0um1q0rMjT5QMtosWTtGGuAyeFRt5t12EcPElxNKUjSwhbc+DjJqSaTmFQZJG
+ 4cTkMV7ifCLMO11L8r6aEtalvwlFRKLXrh004r/m5Lttme+rU7whmJ9rGC1CJcZyTOV5/sPmgGT
+ Mhob+iu9jvnwLhx5YS0xVAnv4EGPr20/KxqMkT6lT3fg3QZC8HQcAWNZyLeX+gj5e6Ivs/BFDXz
+ NcsNjNzyiR4W7ywgU3CBYerCiUx3n6URZ3t6YZt0gkSyk0RnLqukgW7OtDt1x9SqCA9Q/leCJav
+ GUky58+gOkXxDEHUw0WnSrSr+w2JRvC6JfqLaDVtcML/KxsHb0mzMrNpc6g2UhSM5WwWkchgtrR
+ 475iVRMhE8sjX21xJ7kgmJBozfPiu7FCsiR/ZsniVhgLu3qKX2uxoo88/qhGwMZVdhNpreAwiZU
+ gysBVE7iSACLUkeYYKtkNXLnzZdpg+U24WdVRvAQ5Edc0GpZbshO8cSMwNyOXIumCjm9Ui95UGq
+ DEXZqdxqJ+JujFcQy7AcuEvkmVq/AUi7SmoEg/kv9cCWdoc
+X-Received: by 2002:a05:600c:3e0a:b0:4a1:6843:eabb with SMTP id
+ 5b1f17b1804b1-4a16843efe6mr102135435e9.1.1791195535515; 
+ Mon, 05 Oct 2026 03:18:55 -0700 (PDT)
+Received: from archlinux (pd95eda80.dip0.t-ipconnect.de. [217.94.218.128])
+ by smtp.gmail.com with ESMTPSA id
+ ffacd0b85a97d-48c622ab7b5sm2742111f8f.37.2026.10.05.03.18.54
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Mon, 05 Oct 2026 03:18:54 -0700 (PDT)
+From: Bernhard Beschow <shentey@gmail.com>
+To: qemu-devel@nongnu.org
+Cc: Gaurav Sharma <gaurav.sharma_7@nxp.com>,
+ =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
+ Bernhard Beschow <shentey@gmail.com>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ Alistair Francis <alistair@alistair23.me>,
+ Paolo Bonzini <pbonzini@redhat.com>, Jason Wang <jasowangio@gmail.com>,
+ qemu-arm@nongnu.org, Bin Meng <bin.meng@processmission.com>,
+ Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>,
  Jean-Christophe Dubois <jcd@tribudubois.net>,
- =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@oss.qualcomm.com>
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::1135;
- envelope-from=peter.maydell@linaro.org; helo=mail-yw1-x1135.google.com
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@oss.qualcomm.com>
+Subject: [PATCH v3 24/31] Kconfig: Extract dedicated config FSL_IMXx_CCM from
+ config IMX
+Date: Mon,  5 Oct 2026 12:17:51 +0200
+Message-ID: <20261005101800.10821-25-shentey@gmail.com>
+X-Mailer: git-send-email 2.56.0
+In-Reply-To: <20261005101800.10821-1-shentey@gmail.com>
+References: <20261005101800.10821-1-shentey@gmail.com>
+MIME-Version: 1.0
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::334;
+ envelope-from=shentey@gmail.com; helo=mail-wm1-x334.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
@@ -125,21 +110,162 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On Mon, 5 Oct 2026 at 11:18, Bernhard Beschow <shentey@gmail.com> wrote:
->
-> Apparently there is a typo in the WCR locked bits handling: The locked
-> values for s->wcr must come from itself rather than from s->wicr, so fix
-> that. Without it, guests such as u-boot may experience inadvertent
-> reboots when configuring the WCR register.
->
-> Fixes: daca13d495a1 ("hw/watchdog: Implement full i.MX watchdog
-> support")
-> cc: qemu-stable
-> Signed-off-by: Bernhard Beschow <shentey@gmail.com>
-> ---
+Over time, QEMU has grown a number of i.MX boards and the monolithic
+config IMX drags in unneeded dependencies into each SoC model. Extract
+SoC-specific config FSL_IMXx_CCM to eventually eliminate config IMX.
 
-Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
+Note that config IMX_CCM represents a base class for i.MX clock
+control modules which is used in i.MX timers and FlexCAN.
 
-thanks
--- PMM
+Reviewed-by: Bin Meng <bin.meng@processmission.com>
+Signed-off-by: Bernhard Beschow <shentey@gmail.com>
+---
+ hw/arm/Kconfig      |  5 +++++
+ hw/misc/Kconfig     | 25 +++++++++++++++++++++++++
+ hw/misc/meson.build | 14 ++++++--------
+ hw/net/Kconfig      |  2 +-
+ 4 files changed, 37 insertions(+), 9 deletions(-)
+
+diff --git a/hw/arm/Kconfig b/hw/arm/Kconfig
+index 8d857d8bd1..dada9f57a7 100644
+--- a/hw/arm/Kconfig
++++ b/hw/arm/Kconfig
+@@ -479,6 +479,7 @@ config FSL_IMX25
+     default y
+     depends on TCG && ARM
+     imply I2C_DEVICES
++    select FSL_IMX25_CCM
+     select IMX
+     select IMX_AVIC
+     select IMX_FEC
+@@ -493,6 +494,7 @@ config FSL_IMX31
+     default y
+     depends on TCG && ARM
+     imply I2C_DEVICES
++    select FSL_IMX31_CCM
+     select SERIAL_MM
+     select IMX
+     select IMX_AVIC
+@@ -505,6 +507,7 @@ config FSL_IMX6
+     imply PCIE_DEVICES
+     imply I2C_DEVICES
+     select A9MPCORE
++    select FSL_IMX6_CCM
+     select FSL_IMX6_SRC
+     select FSL_IMX7_SNVS
+     select IMX
+@@ -581,6 +584,7 @@ config FSL_IMX7
+     imply TEST_DEVICES
+     imply I2C_DEVICES
+     select A15MPCORE
++    select FSL_IMX7_CCM
+     select FSL_IMX7_GPR
+     select FSL_IMX7_SNVS
+     select FSL_IMX7_SRC
+@@ -668,6 +672,7 @@ config FSL_IMX6UL
+     imply I2C_DEVICES
+     select A15MPCORE
+     select FSL_IMX6_SRC
++    select FSL_IMX6UL_CCM
+     select FSL_IMX7_SNVS
+     select IMX
+     select IMX6UL_LCDIF
+diff --git a/hw/misc/Kconfig b/hw/misc/Kconfig
+index 4d47de6a02..a2095d64ae 100644
+--- a/hw/misc/Kconfig
++++ b/hw/misc/Kconfig
+@@ -91,15 +91,39 @@ config ECCMEMCTL
+ 
+ config IMX
+     bool
++    depends on IMX_CCM
+     select PTIMER
+     select SSI
+ 
++config IMX_CCM
++    bool
++
+ config IMX_RNG
+     bool
+ 
++config FSL_IMX25_CCM
++    bool
++    select IMX_CCM
++
++config FSL_IMX31_CCM
++    bool
++    select IMX_CCM
++
++config FSL_IMX6_CCM
++    bool
++    select IMX_CCM
++
+ config FSL_IMX6_SRC
+     bool
+ 
++config FSL_IMX6UL_CCM
++    bool
++    select IMX_CCM
++
++config FSL_IMX7_CCM
++    bool
++    select IMX_CCM
++
+ config FSL_IMX7_GPR
+     bool
+ 
+@@ -114,6 +138,7 @@ config FSL_IMX8MP_ANALOG
+ 
+ config FSL_IMX8MP_CCM
+     bool
++    select IMX_CCM
+ 
+ config STM32_RCC
+     bool
+diff --git a/hw/misc/meson.build b/hw/misc/meson.build
+index 48c5c20455..6ff31183a6 100644
+--- a/hw/misc/meson.build
++++ b/hw/misc/meson.build
+@@ -60,21 +60,19 @@ system_ss.add(when: 'CONFIG_AXP2XX_PMU', if_true: files('axp2xx.c'))
+ system_ss.add(when: 'CONFIG_REALVIEW', if_true: files('arm_sysctl.c'))
+ system_ss.add(when: 'CONFIG_ECCMEMCTL', if_true: files('eccmemctl.c'))
+ system_ss.add(when: 'CONFIG_EXYNOS4', if_true: files('exynos4210_pmu.c', 'exynos4210_clk.c', 'exynos4210_rng.c'))
++system_ss.add(when: 'CONFIG_FSL_IMX25_CCM', if_true: files('imx25_ccm.c'))
++system_ss.add(when: 'CONFIG_FSL_IMX31_CCM', if_true: files('imx31_ccm.c'))
++system_ss.add(when: 'CONFIG_FSL_IMX6_CCM', if_true: files('imx6_ccm.c'))
+ system_ss.add(when: 'CONFIG_FSL_IMX6_SRC', if_true: files('imx6_src.c'))
++system_ss.add(when: 'CONFIG_FSL_IMX6UL_CCM', if_true: files('imx6ul_ccm.c'))
++system_ss.add(when: 'CONFIG_FSL_IMX7_CCM', if_true: files('imx7_ccm.c'))
+ system_ss.add(when: 'CONFIG_FSL_IMX7_GPR', if_true: files('imx7_gpr.c'))
+ system_ss.add(when: 'CONFIG_FSL_IMX7_SNVS', if_true: files('imx7_snvs.c'))
+ system_ss.add(when: 'CONFIG_FSL_IMX7_SRC', if_true: files('imx7_src.c'))
+ system_ss.add(when: 'CONFIG_FSL_IMX8MP_ANALOG', if_true: files('imx8mp_analog.c'))
+ system_ss.add(when: 'CONFIG_FSL_IMX8MP_CCM', if_true: files('imx8mp_ccm.c'))
++system_ss.add(when: 'CONFIG_IMX_CCM', if_true: files('imx_ccm.c'))
+ system_ss.add(when: 'CONFIG_IMX_RNG', if_true: files('imx_rngc.c'))
+-system_ss.add(when: 'CONFIG_IMX', if_true: files(
+-  'imx25_ccm.c',
+-  'imx31_ccm.c',
+-  'imx6_ccm.c',
+-  'imx6ul_ccm.c',
+-  'imx7_ccm.c',
+-  'imx_ccm.c',
+-))
+ system_ss.add(when: 'CONFIG_MAX78000_AES', if_true: files('max78000_aes.c'))
+ system_ss.add(when: 'CONFIG_MAX78000_GCR', if_true: files('max78000_gcr.c'))
+ system_ss.add(when: 'CONFIG_MAX78000_ICC', if_true: files('max78000_icc.c'))
+diff --git a/hw/net/Kconfig b/hw/net/Kconfig
+index b56a173eed..4a2cacbcd2 100644
+--- a/hw/net/Kconfig
++++ b/hw/net/Kconfig
+@@ -160,5 +160,5 @@ config CAN_CTUCANFD_PCI
+ 
+ config CAN_FLEXCAN
+     bool
+-    depends on IMX
++    depends on IMX_CCM
+     select CAN_BUS
+-- 
+2.56.0
+
 

@@ -4,67 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0BDB8CA5FFF
-	for <qemu-arm@archiver.kernel.org>; Wed,  7 Oct 2026 08:37:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E30E9CA5FF1
+	for <qemu-arm@archiver.kernel.org>; Wed,  7 Oct 2026 08:37:46 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xEMzd-0007ic-VC; Wed, 07 Oct 2026 04:27:18 -0400
+	id 1xEN0B-0007sk-Gm; Wed, 07 Oct 2026 04:27:53 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <shentey@gmail.com>) id 1xEHiI-00065y-I2
- for qemu-arm@nongnu.org; Tue, 06 Oct 2026 22:49:15 -0400
-Received: from mail-lj1-x234.google.com ([2a00:1450:4864:20::234])
+ (Exim 4.90_1) (envelope-from <shentey@gmail.com>) id 1xEHfj-0005sR-PF
+ for qemu-arm@nongnu.org; Tue, 06 Oct 2026 22:46:41 -0400
+Received: from mail-lf1-x135.google.com ([2a00:1450:4864:20::135])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <shentey@gmail.com>) id 1xEHiB-0003TJ-GZ
- for qemu-arm@nongnu.org; Tue, 06 Oct 2026 22:48:59 -0400
-Received: by mail-lj1-x234.google.com with SMTP id
- 38308e7fff4ca-3a1e9f55e03so41911011fa.1
- for <qemu-arm@nongnu.org>; Tue, 06 Oct 2026 19:44:43 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <shentey@gmail.com>) id 1xEHfU-00038E-4b
+ for qemu-arm@nongnu.org; Tue, 06 Oct 2026 22:46:12 -0400
+Received: by mail-lf1-x135.google.com with SMTP id
+ 2adb3069b0e04-5b8f5e2ce5eso1401700e87.0
+ for <qemu-arm@nongnu.org>; Tue, 06 Oct 2026 19:42:31 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20251104; t=1791341082; x=1791945882; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:from:to:cc:subject:date
- :message-id:reply-to:content-type;
- bh=A5T0Q4tG1KFl/zAm+FMtUPPeNHZC6qNa+VYuFXQeTT8=;
- b=B3NTvgcC5yjStGo0+hKh8sF0iHWT2HjssoI5pshTyEMdOTi8iDvMPSUIYSSjkFRjB7
- cyDYDw7mwBgF9DCavpE1UFneNFHAbJ8LWeUQ8zgLtOt8SGUR0mYNGt6teEcEm6fGzGHH
- 37REwGT9iSmjpPMBCdGyCVaeIl6SgxBhWiJfeJZXdgRerYNymXERS2C3YPo0UhHVH8ZZ
- wJ/ZmELR8L4QKc0r3D3vJFXRxj5CcoRPLBEXxGKiKISAAnydwOLBFiDTMipvOLBoQCcE
- zOtzR4DLfyFgt0u7AHkGyQGLBaGHezcvAvevLnTvN5XRqDWw49LIcMqE16TDHAC/B5rr
- b2qQ==
+ d=gmail.com; s=20251104; t=1791340950; x=1791945750; darn=nongnu.org;
+ h=content-transfer-encoding:content-type:mime-version:references
+ :in-reply-to:message-id:date:subject:cc:to:from:from:to:cc:subject
+ :date:message-id:reply-to:content-type;
+ bh=PgiXUJeOdSQHkFY/lmMpgI1RTVTNH0DvcOAFlKDbgKo=;
+ b=Xd+biE3qtqm1H1/9Nii2Y+Qfu2dF0lCY1JcKJQtFWy+p+T7OGCMIANxN4QC1mlv5LF
+ d3/Z5+sDCBVwdk/1iGKUxM3D5BwX4ELCkua91UohhlRR6RXJXBJOfCiZV5RGJdgHJi6R
+ GspxkHzNwOPxKekN2WOY07w1LvvZJDZjn4TGGcXRR+qCG4L8a8u1cPJTWCT7kvHc/M9l
+ eiox0cJKNcXLCYRyVV4sGRo26qbAcyuRMct8OCcZjj8LI4qkIge6JuxEvHVC/VwcGq68
+ WRnYNRtOl4IQ5IRemMH/N1a7uieBAYfmItBNbthtSBAbl9AUGFHzWrZ2+7HmWWwjgOxM
+ 9+Yg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20260707; t=1791341082; x=1791945882;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
- :to:cc:subject:date:message-id:reply-to:content-type;
- bh=A5T0Q4tG1KFl/zAm+FMtUPPeNHZC6qNa+VYuFXQeTT8=;
- b=q1qT2V1Ge1TjwdBnmdHe/CuJC6ml55U5rCpJAW6DX1ZAmH1xR1m80QNWucBlpZA3Ma
- eaiVPLjxi1pT6geleqh0QcWJQcSDiKhMh4UKFV9BcoB5A1ChBZcuUSbze8LEKYKJuHvc
- 0Tn4ZCvKelOzSJt8yoP2izlMsDD2X0EQvfyisp0CWcBBe9uo2JVIaNAqyaLVWavMOUwp
- UR3Tp/0IH1M7QOObRQMU/6eHlxJntFlrE6yxXL+z1Ibzs8bidWKc036GTKrtj1UPPp7C
- pKmJQ4/HtoAllKciqbPMAPgJM4SGi/PEAbLrUJfSm0JV9/a4YSrSBw8W14tKKc7swMmy
- aHvg==
+ d=1e100.net; s=20260707; t=1791340950; x=1791945750;
+ h=content-transfer-encoding:content-type:mime-version:references
+ :in-reply-to:message-id:date:subject:cc:to:from:x-gm-gg
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
+ :content-type;
+ bh=PgiXUJeOdSQHkFY/lmMpgI1RTVTNH0DvcOAFlKDbgKo=;
+ b=LpSZQu4MWcJQjpfkw6IvSXxohwT8LNO49m7gpmctUAEBcnAihiYnC4fbadZaXubbF6
+ yiRTlH7BGMPyFcdQtf+Bhpm5dL1h+CP5eFFegIcqafH7JoB3y/YG0JHOUJvDgudTWSIZ
+ 79SDoq/R1p8V4IVKeDHBWAEXAblxZBmbeNLvSbg1Rf1vz+1AqKJPqGJmXGC2xX8E578N
+ nVr0dnUuIrSFjrzQ6uQEUryeoJMfCrSEStGjIXUmwTQGSMQOhkdfTUAVph+KzHBMGlAd
+ U9p2jM5+ktrtH+qN6NCFdrCfWlDIt/c0ikakofCewr5vvhhtAGiAppMW2561ssrRMFRq
+ Soqw==
 X-Forwarded-Encrypted: i=1;
- AKwUvBxPy7FLgUgQCFrbq4km01s6ZXamclxq0h0GfCTB1oTb+o009ye+FrufAE8Z/dGnvHfptZtupcKg+A==@nongnu.org
-X-Gm-Message-State: AFq9FYK5MjrLjqMX1iCnNkSPVdqegt58OoUixAbg7P+w5xX5SzYmaM08
- okoy1tOVa4E+fUaObL1YmaiawzPCELJOCryV9XwqrRr0g9RBdeGlmWl/kzkdIQ==
-X-Gm-Gg: AYBFou0uCJtj1wk6Yd76cmziKDUolxfk8UnwYTDmB60O0za1M3vZ9InWNALkI0DNNbX
- jPs4hNCJ86ozV+qWRt4vsmiDZBTv8TpsqrcGbn9OvTt7zbWFazizf6cFvIvU9sK6lhms/SGs1/Y
- tLoq71tAm0ap6zKtwNTHsgEawc4mxm717EmCJ37FIY2uKx4Ocygj7d+GNQ48Dp3VhEAg8jhCCap
- 0DHlYDhscek8mo8dW2KhryCsvSpWg6t6BbUK46k5aS5jGfTKbFM4fotaIsHAuuKZruePC5iT2kk
- lJ744FCQ1MlbwMaUDTJt5zk1s1lwAdXGIwBAcflNQs/SmKXwUulhXhIcZ1wJ6gTmOroyukYd+ap
- hRjBjXMnR21lxlSZWMtIAn+Wjv6YDNVsVM7j/LkiE22oDWVcXvXNT9EqynVAR7DCq2Nten9lFdj
- nbQknFm78zzHSRWMS4eWDL1pTB/hDDW5FSRjpf+muPN3TbCzcoh/6UqoaP4o60fD/uiz9+JYmrr
- iBEi+7AbcyEwFxig+UEjLtv/fHwmBq03EMyaQ==
-X-Received: by 2002:a05:6000:288f:b0:48b:5e2:52c7 with SMTP id
- ffacd0b85a97d-48c47c66e8amr17784318f8f.8.1791275750847; 
- Tue, 06 Oct 2026 01:35:50 -0700 (PDT)
+ AKwUvBy6SP8vSpA+WbW48nHAMb0NWRjTfczTFVkVbeVW7dGczk/sxbPCVpriKyYCg6fcxGJEEYWz6/g2Ww==@nongnu.org
+X-Gm-Message-State: AFq9FYKJlsV7+zTi+zO1aI6l0URHFTrQN75Yj8+2ud+I44TCmkceXQHm
+ vy8GT6xtwc40DSFvk/HD5J7lC+6W4d4gzRIBeguwK1li7C95j6H7O8gJncsu2Q==
+X-Gm-Gg: AYBFou2ybybZyYkO5hsxonVvzOsoXQwQyvQpd/oMXvFmB0D8TOkIHc166ClHhb/XXUv
+ jK5PeL7UO6cGP3eZMWjuB/oI8AqbnjF5Uo1x1uZIYpg85uNZBY8ILMz+s/PDlXtGAbp+cYYIvbB
+ ktqzkDuh9ddjwSnNZ2iour69yBTITu12yaE3FluPrEu09RKcosTKG2GBj0m30inQiPaUgKGc/mk
+ rKHe3R1PmsgeGGI6kwzFuSLtMMl/T5EwKkfW/Ao94sQ7cDJ+6QJJNKBmXBzjY0USWDUrE4OfzRV
+ YsiNOnQS0CaA39dgKCuGabdC9SNsySExoZSLXEUteh8Alq34hQ+mWwLcZqN/pSW5Tl0zGoeqOw3
+ s/Gm6SBvARj2ANUk80HgS9aDPSgpPNnyWgyFxzT41xImh9xma1imA25EbQ5+vi6jOluvbPdlRwp
+ O9xj0fSZbUY4nEhkgvghrxpq4C5Ba+uypf0cV1mMNwhpc9Ru2nrrF1VBHkDRyLKxNiKOaTWVWxp
+ drqZsc8sEg/GHooKDf+s3TnoklVPLISXD0o+w==
+X-Received: by 2002:a05:6000:4b04:b0:486:f6dc:52c8 with SMTP id
+ ffacd0b85a97d-48c6d1981ffmr1217522f8f.37.1791275733120; 
+ Tue, 06 Oct 2026 01:35:33 -0700 (PDT)
 Received: from archlinux (pd95eda80.dip0.t-ipconnect.de. [217.94.218.128])
  by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-48c6cdb281csm1566764f8f.55.2026.10.06.01.35.49
+ ffacd0b85a97d-48c6cdb281csm1566764f8f.55.2026.10.06.01.35.32
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 06 Oct 2026 01:35:50 -0700 (PDT)
+ Tue, 06 Oct 2026 01:35:32 -0700 (PDT)
 From: Bernhard Beschow <shentey@gmail.com>
 To: qemu-devel@nongnu.org
 Cc: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@oss.qualcomm.com>,
@@ -78,16 +79,18 @@ Cc: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@oss.qualcomm.com>,
  Bernhard Beschow <shentey@gmail.com>, qemu-arm@nongnu.org,
  Jason Wang <jasowangio@gmail.com>,
  Alistair Francis <alistair@alistair23.me>
-Subject: [PATCH v4 25/31] Kconfig: Extract config IMX_GPT from config IMX
-Date: Tue,  6 Oct 2026 10:34:37 +0200
-Message-ID: <20261006083445.30362-26-shentey@gmail.com>
+Subject: [PATCH v4 11/31] tests/functional/arm: Add console test for
+ `mcimx7d-sabre` machine
+Date: Tue,  6 Oct 2026 10:34:23 +0200
+Message-ID: <20261006083445.30362-12-shentey@gmail.com>
 X-Mailer: git-send-email 2.56.0
 In-Reply-To: <20261006083445.30362-1-shentey@gmail.com>
 References: <20261006083445.30362-1-shentey@gmail.com>
 MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::234;
- envelope-from=shentey@gmail.com; helo=mail-lj1-x234.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::135;
+ envelope-from=shentey@gmail.com; helo=mail-lf1-x135.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -110,107 +113,105 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Over time, QEMU has grown a number of i.MX boards and the monolithic
-config IMX drags in unneeded dependencies into each SoC model. Extract
-config IMX_GPT to eventually eliminate config IMX.
+The test currently exercises the Linux kernel and waits for the first
+daemons to be started. At this point, basic hardware is initialized and
+if the log message is reached, no driver ended up in an endless loop,
+thus the system should be usable.
 
+Reviewed-by: Philippe Mathieu-Daudé <philmd@oss.qualcomm.com>
 Reviewed-by: Bin Meng <bin.meng@processmission.com>
 Signed-off-by: Bernhard Beschow <shentey@gmail.com>
 ---
- hw/arm/Kconfig       | 7 +++++++
- hw/timer/Kconfig     | 5 +++++
- hw/timer/meson.build | 2 +-
- 3 files changed, 13 insertions(+), 1 deletion(-)
+ MAINTAINERS                                |  1 +
+ tests/functional/arm/meson.build           |  2 +
+ tests/functional/arm/test_mcimx7d_sabre.py | 46 ++++++++++++++++++++++
+ 3 files changed, 49 insertions(+)
+ create mode 100755 tests/functional/arm/test_mcimx7d_sabre.py
 
-diff --git a/hw/arm/Kconfig b/hw/arm/Kconfig
-index dada9f57a7..cb6e7056a5 100644
---- a/hw/arm/Kconfig
-+++ b/hw/arm/Kconfig
-@@ -483,6 +483,7 @@ config FSL_IMX25
-     select IMX
-     select IMX_AVIC
-     select IMX_FEC
-+    select IMX_GPT
-     select IMX_I2C
-     select IMX_RNG
-     select USB_CHIPIDEA
-@@ -498,6 +499,7 @@ config FSL_IMX31
-     select SERIAL_MM
-     select IMX
-     select IMX_AVIC
-+    select IMX_GPT
-     select IMX_I2C
-     select WDT_IMX2
-     select LAN9118
-@@ -512,6 +514,7 @@ config FSL_IMX6
-     select FSL_IMX7_SNVS
-     select IMX
-     select IMX_FEC
-+    select IMX_GPT
-     select IMX_I2C
-     select IMX_USBPHY
-     select CAN_FLEXCAN
-@@ -592,6 +595,7 @@ config FSL_IMX7
-     select IMX
-     select IMX_FEC
-     select IMX_GPCV2
-+    select IMX_GPT
-     select IMX_I2C
-     select WDT_IMX2
-     select PCI_EXPRESS_DESIGNWARE
-@@ -611,6 +615,7 @@ config FSL_IMX8MP
-     select FSL_IMX8MP_CCM
-     select IMX
-     select IMX_FEC
-+    select IMX_GPT
-     select IMX_I2C
-     select OR_IRQ
-     select PCI_EXPRESS_DESIGNWARE
-@@ -637,6 +642,7 @@ config FSL_IMX8MM
-     select FSL_IMX8MP_CCM
-     select IMX
-     select IMX_FEC
-+    select IMX_GPT
-     select IMX_I2C
-     select OR_IRQ
-     select SDHCI
-@@ -678,6 +684,7 @@ config FSL_IMX6UL
-     select IMX6UL_LCDIF
-     select IMX_FEC
-     select IMX_GPCV2
-+    select IMX_GPT
-     select IMX_I2C
-     select IMX_USBPHY
-     select WDT_IMX2
-diff --git a/hw/timer/Kconfig b/hw/timer/Kconfig
-index e1b751a54a..49a4d20e55 100644
---- a/hw/timer/Kconfig
-+++ b/hw/timer/Kconfig
-@@ -23,6 +23,11 @@ config I8254
-     bool
-     depends on ISA_BUS
+diff --git a/MAINTAINERS b/MAINTAINERS
+index f31245716a..a605d65d94 100644
+--- a/MAINTAINERS
++++ b/MAINTAINERS
+@@ -935,6 +935,7 @@ F: include/hw/misc/imx7_*.h
+ F: hw/pci-host/designware.c
+ F: include/hw/pci-host/designware.h
+ F: docs/system/arm/mcimx7d-sabre.rst
++F: tests/functional/arm/test_mcimx7d_sabre.py
  
-+config IMX_GPT
-+    bool
-+    depends on IMX_CCM
-+    select PTIMER
+ MCIMX8MM-EVK / iMX8MM
+ M: Gaurav Sharma <gaurav.sharma_7@nxp.com>
+diff --git a/tests/functional/arm/meson.build b/tests/functional/arm/meson.build
+index 989b841555..e657ecd278 100644
+--- a/tests/functional/arm/meson.build
++++ b/tests/functional/arm/meson.build
+@@ -20,6 +20,7 @@ test_arm_timeouts = {
+   'bpim2u' : 500,
+   'collie' : 180,
+   'cubieboard' : 360,
++  'mcimx7d_sabre' : 240,
+   'orangepi' : 540,
+   'quanta_gsj' : 240,
+   'raspi2' : 120,
+@@ -60,6 +61,7 @@ tests_arm_system_thorough = [
+   'emcraft_sf2',
+   'integratorcp',
+   'max78000fthr',
++  'mcimx7d_sabre',
+   'microbit',
+   'orangepi',
+   'quanta_gsj',
+diff --git a/tests/functional/arm/test_mcimx7d_sabre.py b/tests/functional/arm/test_mcimx7d_sabre.py
+new file mode 100755
+index 0000000000..2894b5201f
+--- /dev/null
++++ b/tests/functional/arm/test_mcimx7d_sabre.py
+@@ -0,0 +1,46 @@
++#!/usr/bin/env python3
++#
++# Functional test that boots a Linux kernel and checks the console
++#
++# SPDX-License-Identifier: GPL-2.0-or-later
 +
- config ALLWINNER_A10_PIT
-     bool
-     select PTIMER
-diff --git a/hw/timer/meson.build b/hw/timer/meson.build
-index 8323efaf46..477dd47486 100644
---- a/hw/timer/meson.build
-+++ b/hw/timer/meson.build
-@@ -16,7 +16,7 @@ system_ss.add(when: 'CONFIG_GRLIB', if_true: files('grlib_gptimer.c'))
- system_ss.add(when: 'CONFIG_HPET_C', if_true: files('hpet.c'))
- system_ss.add(when: 'CONFIG_I8254', if_true: files('i8254_common.c', 'i8254.c'))
- system_ss.add(when: 'CONFIG_IMX', if_true: files('imx_epit.c'))
--system_ss.add(when: 'CONFIG_IMX', if_true: files('imx_gpt.c'))
-+system_ss.add(when: 'CONFIG_IMX_GPT', if_true: files('imx_gpt.c'))
- system_ss.add(when: 'CONFIG_MIPS_CPS', if_true: files('mips_gictimer.c'))
- system_ss.add(when: 'CONFIG_MSF2', if_true: files('mss-timer.c'))
- system_ss.add(when: 'CONFIG_NPCM7XX', if_true: files('npcm7xx_timer.c'))
++from qemu_test import LinuxKernelTest, Asset
++
++
++class Mcimx7dSabreMachine(LinuxKernelTest):
++
++    ASSET_KERNEL = Asset(
++        ('https://ftp.debian.org/debian/dists/bookworm/main/installer-armhf/'
++         '20230607/images/netboot/vmlinuz'),
++        '5851e9c61465a26db810796db671c4729e66e81c365b3ebb1a4b7f772737605b')
++
++    ASSET_INITRD = Asset(
++        ('https://ftp.debian.org/debian/dists/bookworm/main/installer-armhf/'
++         '20230607/images/netboot/initrd.gz'),
++        'fe33f836232a9107716d34dc56d36dea81bab039243a2a42ea6583a50c9b92ca')
++
++    ASSET_DTB = Asset(
++        ('https://ftp.debian.org/debian/dists/bookworm/main/installer-armhf/'
++         '20230607/images/device-tree/imx7d-sdb.dtb'),
++        'eed45fe3ba682cc814217bc4558551d36c034ec7a7692c4eb6eaf86132baf80c')
++
++    def setUp(self):
++        super().setUp()
++
++        self.kernel_path = self.ASSET_KERNEL.fetch()
++        self.initrd_path = self.ASSET_INITRD.fetch()
++        self.dtb_path = self.ASSET_DTB.fetch()
++
++    def test_console(self):
++        self.require_accelerator("tcg")
++        self.set_machine('mcimx7d-sabre')
++        self.vm.set_console(console_index=0)
++        self.vm.add_args('-kernel', self.kernel_path,
++                         '-initrd', self.initrd_path,
++                         '-dtb', self.dtb_path)
++
++        self.vm.launch()
++        self.wait_for_console_pattern('Starting system log daemon:')
++
++if __name__ == '__main__':
++    LinuxKernelTest.main()
 -- 
 2.56.0
 

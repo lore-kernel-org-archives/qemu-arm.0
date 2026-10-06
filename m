@@ -4,151 +4,102 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 395C6CA5FFF
-	for <qemu-arm@archiver.kernel.org>; Wed,  7 Oct 2026 07:29:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B4B13CA5FFF
+	for <qemu-arm@archiver.kernel.org>; Wed,  7 Oct 2026 07:51:24 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xEM5G-0002IY-5J; Wed, 07 Oct 2026 03:29:08 -0400
+	id 1xEMQR-00007O-7T; Wed, 07 Oct 2026 03:51:05 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@oss.qualcomm.com>)
- id 1xEGWr-0004P8-M5
- for qemu-arm@nongnu.org; Tue, 06 Oct 2026 21:33:27 -0400
-Received: from mx0a-0031df01.pphosted.com ([205.220.168.131])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@oss.qualcomm.com>)
- id 1xEGWW-0007yp-3p
- for qemu-arm@nongnu.org; Tue, 06 Oct 2026 21:32:58 -0400
-Received: from pps.filterd (m0279866.ppops.net [127.0.0.1])
- by mx0a-0031df01.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id
- 6967Siul3537852
- for <qemu-arm@nongnu.org>; Tue, 6 Oct 2026 09:25:31 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qualcomm.com; h=
- cc:content-transfer-encoding:content-type:date:from:in-reply-to
- :message-id:mime-version:references:subject:to; s=qcppdkim1; bh=
- 9Qzr4xM8E/Ol0WnTSww3Y31WWioP3XMsHKf6j+JTpC4=; b=ohPAKj1bPFn6akLO
- zlhLv+OxDhirruBHwtGLD+khWbUPyrmUAI8E2K1gbG7brvm3KXlbGID1sgBRD1YW
- zI+yVSh8hsN2y9FfXePIS0QbABqQXh3/I8nmVaXriDBQ49Y/sEBFhNuVvg2DrHFp
- 900dLoT1JbV8K6W+sIRAE7Vw566Ox9BMq4uBMR9hjq9fUUbZFJHG+u4+89hRDBzQ
- ZqYsgeII488z88UpBtC1/KzDo1F3aDo4ew5K7SpWQJyQs4Rf8NqlW5zYrUWiLGgl
- cwK8f1TH+EGP0fNALPL0C3ddI4BBDq+jdwDgRsOhgUXN4dwAsaDTQgByAE/fO1LJ
- gXsXBw==
-Received: from mail-qk1-f198.google.com (mail-qk1-f198.google.com
- [209.85.222.198])
- by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 4h4vmrrd2w-1
- (version=TLSv1.3 cipher=TLS_AES_128_GCM_SHA256 bits=128 verify=NOT)
- for <qemu-arm@nongnu.org>; Tue, 06 Oct 2026 09:25:31 +0000 (GMT)
-Received: by mail-qk1-f198.google.com with SMTP id
- af79cd13be357-93e49a1d3b1so607083585a.2
- for <qemu-arm@nongnu.org>; Tue, 06 Oct 2026 02:25:31 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <shentey@gmail.com>) id 1xEGCj-0001QK-J2
+ for qemu-arm@nongnu.org; Tue, 06 Oct 2026 21:12:48 -0400
+Received: from mail-lf1-f45.google.com ([209.85.167.45])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <shentey@gmail.com>) id 1xEGCZ-0003kl-0y
+ for qemu-arm@nongnu.org; Tue, 06 Oct 2026 21:12:15 -0400
+Received: by mail-lf1-f45.google.com with SMTP id
+ 2adb3069b0e04-5bc18f54abbso2838115e87.1
+ for <qemu-arm@nongnu.org>; Tue, 06 Oct 2026 18:08:45 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=oss.qualcomm.com; s=google; t=1791278730; x=1791883530; darn=nongnu.org;
- h=content-transfer-encoding:content-type:in-reply-to:from:references
- :cc:to:content-language:subject:user-agent:mime-version:date
- :message-id:from:to:cc:subject:date:message-id:reply-to:content-type;
- bh=9Qzr4xM8E/Ol0WnTSww3Y31WWioP3XMsHKf6j+JTpC4=;
- b=T+KSUmc+edvE0DlLD5yiRtTDBQ0+n53SdURoDGHq4t5tdjEn/bAwJeUbdmF0WdelUJ
- MlFSMCo/NDVKbwQldHawI33Hf0kBqli7B3yfYbBVl93RtnHyBnFDoC5Jy4TGDNSA8nHU
- n8nSyxWXZgyGmw6Sqsvjj41vWz9BS9/oZXqh5UQob+LUmz1SqTlLo37UkunwRcqahBwf
- lcbDHNxfSBFy6QAWvN/AGnxs6SLeUBK3CKpzXXyrXC1bbHQgOmH2fY8lvpQWeBPNu3p5
- pUKsH21ld2nXFCud+9HsngQKSQbKlxWSP2BjHoEmHxrSHywj/gLLmNB8z33OkzCafiEU
- WcLA==
+ d=gmail.com; s=20251104; t=1791335323; x=1791940123; darn=nongnu.org;
+ h=content-transfer-encoding:content-type:mime-version:message-id
+ :references:in-reply-to:subject:cc:to:from:date:from:to:cc:subject
+ :date:message-id:reply-to:content-type;
+ bh=8BXjIZy8oqNcUmbJ1VvNeAwbWNSakYWSUw60nLCGzDc=;
+ b=EP1tWEwzJ4x6wsyvqubT6DVoMHSVK7m8fOpiL1o0m6ZhKZ0w1T52vKSN5DGc39Fkbj
+ B/Rpy+DV7lStfe6Dd+Nq8dCK4OGwtnVR1N1qt7adtcalGfPARMupsDJ8PkxrL3nxlJ9R
+ IKID7JWW1DTbnOC4V7dSJDZIIYNsb2/eTIDzIDxB7WCIzruFScB0FCuWj/Xj7bDLKvmb
+ Gfs0mf8G/4l4UQsoi6HfN2V0rSJw1FAmAQkRpXSHwtXoL1V6BafJrlEDOuuVLzb6r21p
+ KOOeqJsUELL2Lg6FSfaErWxoG2LrXXPbSGxkDiJNNNUCZ0G2lM3NfSm6PAVZzUip+R2e
+ z5Lw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20260707; t=1791278730; x=1791883530;
- h=content-transfer-encoding:content-type:in-reply-to:from:references
- :cc:to:content-language:subject:user-agent:mime-version:date
- :message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
- :message-id:reply-to:content-type;
- bh=9Qzr4xM8E/Ol0WnTSww3Y31WWioP3XMsHKf6j+JTpC4=;
- b=DuGGrz59bLbO2vSfw1+dDkA9zmNAhPW0kBf+xvhEdtu5XRNN0SrQh38nf5ml9BbwW3
- WtsgQdPdHrDUtawmFzyn7UDoOJEN6diIgBzIQCBK99s+TUqh3wosznbm2xd+6+WIHYLm
- JmPjfFi06rRNuBo5slMwl0g62/p4XmiOwbacjGProkh3BE1sbblyFhUEMSGdqjuEk6v+
- NwUuYPq5eMeE9qLC45Q6cEwcrEla+kq9IfvpFlWn8bRKise3rHsxd7FBOZeMFCu3ovWN
- qyvM0KQHLijJCQ93MEjO2wP7IVpOQmPOkXS5Trh6Ju5ROfJc9FCxitUUfE3QT90tOQgj
- 2g0Q==
+ d=1e100.net; s=20260707; t=1791335323; x=1791940123;
+ h=content-transfer-encoding:content-type:mime-version:message-id
+ :references:in-reply-to:subject:cc:to:from:date:x-gm-gg
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
+ :content-type;
+ bh=8BXjIZy8oqNcUmbJ1VvNeAwbWNSakYWSUw60nLCGzDc=;
+ b=TnNBCPJoRDxgVPv9AlKjWsurbfaPHyAsqv6nXefLd9Goy/+xEPKGqS0Pi/aeZyFH6I
+ +cbNpKNo4tX7wEXFualOTHBjh/9nxEHrXPsEy4Ubip3fRAFYEAyoJGNrMeYVAFs6dX4h
+ w3BWIMvYqVk/cKywrmeW0dTeANysmcQarxIOIdJBbj/Ny7CcE5v+bIZpKzmVgcwCKpc5
+ d7RYQJDQ9LgSU5zR/hINomPNx9MZ3jJ1zKG2AU/G3DXWuZvFY7AaoK7CJ2R0vK9FClCW
+ m4qBdCruP2bgnvrS2Y7QljjXak094NOM1KXrJvTPlejKIT6kKo6DV6TQ9t0OvPKGLn5S
+ 1xbA==
 X-Forwarded-Encrypted: i=1;
- AKwUvBzk9iEszEbuLHd8Y+Z1wvbNLO3To6X6cTnDMLwpM4RZ//Gz56JcKtz6XkOBTrh6lAZaCsgTPMZ3Ag==@nongnu.org
-X-Gm-Message-State: AFuF++lALKSyGpSjseN+sf/USZn/VV5QkvnMImD+fWPuH/MIBJaRqG8G
- P8ZZBgN/XSs1rxWvQtOn6j74MCfFubed2IFW2C4LiYtqv8ahQF5+QB+2b77zZGM60xbv9CcGd0r
- vhuupExdZyPSoZFw8Snvw5q6wRFyTTZxP1B5HtBBAMx/Gq/+BgP9nHJ4=
-X-Gm-Gg: AYBFou0kDg4eMpoY6ZbYljNmUGS54Vmb5H0KmqOSKVxhuFEaGoqjihRIFvWU+9CxFs0
- 0ndaIAxNH1raYfTcbPvwFQnhSizqaf6UAmczWy9qxKY0zXWADkAqThIi4hXoHmUSE1eMFyakeDn
- 6zk12WIe1GGaK0fG1ArF9qvR9G2uQC+ZXiBksQko09iIU0dYA93UMqB/M1iTYLWCG9tg/olGfZG
- g38IP41CmHqiNmijcGfRb0oEC/4rSD96n6sNWQJG2/gSaqfMz5YYpYHzhfFkwpnnUYSq3l4xh3u
- e11T+CGE3Az3k33oKoScil/lrRv4ZefnajA7T3nfU7xmTR/DH20FWJW5QZKo8YYfyzS4IntLGUS
- 6mj9H3JtDcfGm0DRdXNjMa6bfmtH6vy8/gA==
-X-Received: by 2002:a05:620a:2a08:b0:93c:6092:ac66 with SMTP id
- af79cd13be357-93e8f351d75mr132877285a.24.1791278730274; 
- Tue, 06 Oct 2026 02:25:30 -0700 (PDT)
-X-Received: by 2002:a05:620a:2a08:b0:93c:6092:ac66 with SMTP id
- af79cd13be357-93e8f351d75mr132874885a.24.1791278729864; 
- Tue, 06 Oct 2026 02:25:29 -0700 (PDT)
-Received: from [192.168.69.210] (pmd666.hd.free.fr. [88.187.86.199])
+ AKwUvBwQz33mMXLF4VZuEx1QDrYa7+w4iphyqFzu++vMN6sH/G2VTBKm2thyab4X6VhPizkGFyELP1DUsQ==@nongnu.org
+X-Gm-Message-State: AFq9FYKaP/CeRD85S0sBy0uf0dHJZflRYjXPrARjnSXDug5+R/leds5a
+ T2M7O5rUVEqKNBIemJt5tdC1Y/PFkdUmh1UTHYV65+Y7q2qBd3QImFGvBE2R1w==
+X-Gm-Gg: AYBFou2NSssAzNHrMKXi3btrWPA2qxi80s6K3iXuHXB9ttAf1OVP2z/TJihGpxmGKW6
+ n2TF2gxUcZZaz/8GF/nJKitBoSMxJcr2+RVV+rFEU+l93mUphnJpZ4fMGdDUWVn0JIuVmhp1b1U
+ pam+fJubOocFlWDin6QapNyqN4aSTIH+Mnv/zF/n4qMCZVzkHZnHNRBbj3/yyNblfwju0gaGCHB
+ Z8Tq8PJldGULBd8RNS2LQYQc34yisX65TpWw3RdNyFQbqeISmdbB6SnsuZ3MwoqhfqFiU116Vcd
+ ftjk9+RoRyjjhoaWEW+jc7yh/KhsKKCWgwaqq6Qw8Rtd8nGDiRBYYnCZnnos9LYgUeSFOTJ7dIL
+ iji2EitrMtiKzTHfEwqMvad8Wa7wd5muPoh+rvRW8+7/vbdSn/J1oqJtKKrWrbkJnHly9Nr55yg
+ 0/wo2JM9GS/buMPi0Me759uisUQzVvXtpkkZTR9qt09/Yf9tgu5LZcPJvudUWXg6e6rs/T70RK4
+ zf3cf+lYvPn2jyhmpGGXhleFvPNP0SEOhmMpZEQItg0lSVvOj7CkyCN9QKYXYZu2914eQ==
+X-Received: by 2002:a05:6000:98f:b0:488:7097:3b45 with SMTP id
+ ffacd0b85a97d-48c47c8ece9mr15588590f8f.7.1791275850370; 
+ Tue, 06 Oct 2026 01:37:30 -0700 (PDT)
+Received: from ehlo.thunderbird.net
+ (p200300faaf09ae0068a1128771ce262f.dip0.t-ipconnect.de.
+ [2003:fa:af09:ae00:68a1:1287:71ce:262f])
  by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-4a166bfaf73sm216094065e9.4.2026.10.06.02.25.28
+ ffacd0b85a97d-48c63f6434esm8533619f8f.22.2026.10.06.01.37.29
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 06 Oct 2026 02:25:29 -0700 (PDT)
-Message-ID: <d62debe0-bc73-47be-8b0e-f7f3496b4f0e@oss.qualcomm.com>
-Date: Tue, 6 Oct 2026 11:25:28 +0200
-MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v4 10/31] hw/arm/mcimx7d-sabre: Have 2 CPUs and 2 GiB of
- RAM by default
-Content-Language: en-US
-To: Bernhard Beschow <shentey@gmail.com>, qemu-devel@nongnu.org
-Cc: Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>,
- Paolo Bonzini <pbonzini@redhat.com>,
- =?UTF-8?Q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>,
+ Tue, 06 Oct 2026 01:37:29 -0700 (PDT)
+Date: Tue, 06 Oct 2026 08:37:23 +0000
+From: Bernhard Beschow <shentey@gmail.com>
+To: Bin Meng <bmeng.cn@gmail.com>
+CC: qemu-devel@nongnu.org, Gaurav Sharma <gaurav.sharma_7@nxp.com>,
+ =?ISO-8859-1?Q?Marc-Andr=E9_Lureau?= <marcandre.lureau@redhat.com>,
  Peter Maydell <peter.maydell@linaro.org>,
- Bin Meng <bin.meng@processmission.com>,
+ Alistair Francis <alistair@alistair23.me>,
+ Paolo Bonzini <pbonzini@redhat.com>, Jason Wang <jasowangio@gmail.com>,
+ qemu-arm@nongnu.org, Bin Meng <bin.meng@processmission.com>,
+ Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>,
  Jean-Christophe Dubois <jcd@tribudubois.net>,
- Gaurav Sharma <gaurav.sharma_7@nxp.com>, qemu-arm@nongnu.org,
- Jason Wang <jasowangio@gmail.com>,
- Alistair Francis <alistair@alistair23.me>
-References: <20261006083445.30362-1-shentey@gmail.com>
- <20261006083445.30362-11-shentey@gmail.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@oss.qualcomm.com>
-In-Reply-To: <20261006083445.30362-11-shentey@gmail.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-X-Authority-Analysis: v=2.4 cv=XZ4cX455 c=1 sm=1 tr=0 ts=6ac4be8b cx=c_pps
- a=qKBjSQ1v91RyAK45QCPf5w==:117 a=4s3hRJSeHn4rkQlkrse1kQ==:17
- a=IkcTkHD0fZMA:10 a=660iZSQnnn4A:10 a=M51BFTxLslgA:10 a=s4-Qcg_JpJYA:10
- a=VkNPw1HP01LnGYTKEx00:22 a=u7WPNUs3qKkmUXheDGA7:22 a=YMgV9FUhrdKAYTUUvYB2:22
- a=FRSEYCzRAAAA:8 a=pGLkceISAAAA:8 a=EUspDBNiAAAA:8 a=1tSEMpTH9XP_W59IOagA:9
- a=3ZKOabzyN94A:10 a=QEXdDO2ut3YA:10 a=NFOGd7dJGGMPyQGDc5-O:22
- a=H4N_Y-AU75W7NKDNhZlT:22
-X-Proofpoint-GUID: AyjL0CsbR_fERmjtSK24ngnyVBY4ikuf
-X-Proofpoint-ORIG-GUID: AyjL0CsbR_fERmjtSK24ngnyVBY4ikuf
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYxMDA2MDAzNyBTYWx0ZWRfX+XAhqz6wTcSl
- 49OjLPDabIdxMWx7u0glAxHBcfyXIUJTiRtW2c2bm/YfTyz35gPJ/cZkUNqh9c6NIhMB7vPfErZ
- Ov5jcurRD+enWn54MjKaHzixRTquJwUQI3Yu5fFNJIFk0xo/jlM7v+Fs4Uo3j2Opc3V3Wutzkpo
- EPyrqLVHyjJS8spyxMOBPF72GRbdobxmzq5LurUyo317Jt56hCZRiNQaER4lbSwHfUp1eiu6hI8
- EGYy0b9K6lI4Newrb6nDnl8jbiZNFTkTUyKUQvfPd6DxausMcS6Z1G8DOm0JHWfO6ftHOd6w9d1
- U32aogdMmvA0Hjs7ct8GPKyJ9+JhD0Cf7df76JVHRiQ7XIp7oyxVjnaQkUpyyW3yOrePk/PlInZ
- oR37kKofpM7/qE9W6xxF8WT/0A4KXsOmfDtCp4daXbiUIxnK0eIyEzHx1GBrYh9zfoPWAoWyXtw
- CgLlcfqn2ICp0zH7gAQ==
-X-Proofpoint-Spam-Info: AW1haW4tMjYxMDA2MDAzNyBTYWx0ZWRfX62mv501AqHd3
- KzIVNiB6fAtfTUMvln0J9Mxe/uEsfe6g0CWqF6fp2YJpOYTHfM33LaRuqtLf1G29OZmcUSIcIQr
- e3O9t6GbupV3Jy1EceMXrwUbgl5VCD0=
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.293,Aquarius:18.0.1176,Hydra:6.1.134,FMLib:17.12.100.49
- definitions=2026-10-06_02,2026-10-05_01,2025-10-01_01
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
- malwarescore=0 lowpriorityscore=0 spamscore=0 priorityscore=1501 adultscore=0
- suspectscore=0 impostorscore=0 bulkscore=0 clxscore=1015 phishscore=0
- classifier=typeunknown authscore=0 authtc= authcc= route=outbound adjust=0
- reason=mlx scancount=1 engine=8.22.0-2609040000 definitions=main-2610060037
-Received-SPF: pass client-ip=205.220.168.131;
- envelope-from=philmd@oss.qualcomm.com; helo=mx0a-0031df01.pphosted.com
-X-Spam_score_int: -27
-X-Spam_score: -2.8
+ =?ISO-8859-1?Q?Philippe_Mathieu-Daud=E9?= <philmd@oss.qualcomm.com>
+Subject: =?US-ASCII?Q?Re=3A_=5BPATCH_v3_04/31=5D_hw/watchdog/wd?=
+ =?US-ASCII?Q?t=5Fimx2=3A_Remove_redundant_attributes?=
+In-Reply-To: <CAEUhbmXuyb_2=JT0GDDPYaU=z0LycFo7GphY8AYD=hzZmEf82g@mail.gmail.com>
+References: <20261005101800.10821-1-shentey@gmail.com>
+ <20261005101800.10821-5-shentey@gmail.com>
+ <CAEUhbmXuyb_2=JT0GDDPYaU=z0LycFo7GphY8AYD=hzZmEf82g@mail.gmail.com>
+Message-ID: <72FFE9B5-7E46-49D5-989D-39D0ED2425FB@gmail.com>
+MIME-Version: 1.0
+Content-Type: text/plain;
+ charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=209.85.167.45; envelope-from=shentey@gmail.com;
+ helo=mail-lf1-f45.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -164,18 +115,127 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-On 6/10/26 10:34, Bernhard Beschow wrote:
-> Having two CPUs and 1 GiB of RAM matches real hardware. Fix the machine
-> defaults to make its use more ergonomic and less error-prone.
-> 
-> To reproduce the old default behavior for e.g. migration purposes,
-> `-smp 1 -m 128M` needs to be passed on the command line.
-> 
-> Reviewed-by: Bin Meng <bin.meng@processmission.com>
-> Signed-off-by: Bernhard Beschow <shentey@gmail.com>
-> ---
->   hw/arm/mcimx7d-sabre.c | 2 ++
->   1 file changed, 2 insertions(+)
 
-Reviewed-by: Philippe Mathieu-Daudé <philmd@oss.qualcomm.com>
+
+Am 5=2E Oktober 2026 15:01:37 UTC schrieb Bin Meng <bmeng=2Ecn@gmail=2Ecom=
+>:
+>Hi Bernhard,
+>
+>On Mon, Oct 5, 2026 at 6:21=E2=80=AFPM Bernhard Beschow <shentey@gmail=2E=
+com> wrote:
+>>
+>> Since WDT and WDE are write one once bits, their values always
+>> correspond with their respective locked attributes=2E Thus, the attribu=
+tes
+>> are redundant=2E Take advantage of this observation to simplify the cod=
+e=2E
+>>
+>> Note that removing the attributes changes the vmstate structure which
+>> constitutes a migration break=2E This is allowed since QEMU does not
+>> guarantee migration compatibility for i=2EMX devices between feature
+>> releases=2E
+>>
+>> Signed-off-by: Bernhard Beschow <shentey@gmail=2Ecom>
+>> ---
+>>  include/hw/watchdog/wdt_imx2=2Eh |  2 --
+>>  hw/watchdog/wdt_imx2=2Ec         | 21 ++++-----------------
+>>  2 files changed, 4 insertions(+), 19 deletions(-)
+>>
+>> diff --git a/include/hw/watchdog/wdt_imx2=2Eh b/include/hw/watchdog/wdt=
+_imx2=2Eh
+>> index fc01fc46e7=2E=2E0bf2903959 100644
+>> --- a/include/hw/watchdog/wdt_imx2=2Eh
+>> +++ b/include/hw/watchdog/wdt_imx2=2Eh
+>> @@ -84,8 +84,6 @@ struct IMX2WdtState {
+>>      uint16_t wmcr;
+>>
+>>      bool wcr_locked;            /* affects WDZST, WDBG, and WDW */
+>> -    bool wcr_wde_locked;        /* affects WDE */
+>> -    bool wcr_wdt_locked;        /* affects WDT, cleared on POR */
+>>  };
+>>
+>>  #endif /* WDT_IMX2_H */
+>> diff --git a/hw/watchdog/wdt_imx2=2Ec b/hw/watchdog/wdt_imx2=2Ec
+>> index a15f452d48=2E=2Ee9cb5819e4 100644
+>> --- a/hw/watchdog/wdt_imx2=2Ec
+>> +++ b/hw/watchdog/wdt_imx2=2Ec
+>> @@ -59,8 +59,6 @@ static void imx2_wdt_reset(DeviceState *dev)
+>>
+>>      s->wicr_locked =3D false;
+>>      s->wcr_locked =3D false;
+>> -    s->wcr_wde_locked =3D false;
+>> -    s->wcr_wdt_locked =3D false;
+>>
+>>      s->wcr =3D IMX2_WDT_WCR_WDA | IMX2_WDT_WCR_SRS;
+>>      s->wsr =3D 0;
+>> @@ -156,24 +154,14 @@ static void imx2_wdt_write(void *opaque, hwaddr a=
+ddr,
+>>      switch (addr) {
+>>      case IMX2_WDT_WCR:
+>>          if (s->wcr_locked) {
+>> +            /* WDZST, WDBG, and WDW are write-once bits */
+>>              value &=3D ~IMX2_WDT_WCR_LOCK_MASK;
+>>              value |=3D (s->wcr & IMX2_WDT_WCR_LOCK_MASK);
+>>          }
+>>          s->wcr_locked =3D true;
+>> -        if (s->wcr_wde_locked) {
+>> -            value &=3D ~IMX2_WDT_WCR_WDE;
+>> -            value |=3D (s->wcr & IMX2_WDT_WCR_WDE);
+>> -        } else if (value & IMX2_WDT_WCR_WDE) {
+>> -            s->wcr_wde_locked =3D true;
+>> -        }
+>> -        if (s->wcr_wdt_locked) {
+>> -            value &=3D ~IMX2_WDT_WCR_WDT;
+>> -            value |=3D (s->wcr & IMX2_WDT_WCR_WDT);
+>> -        } else if (value & IMX2_WDT_WCR_WDT) {
+>> -            s->wcr_wdt_locked =3D true;
+>> -        }
+>>
+>> -        s->wcr =3D value;
+>> +        /* WDT and WDE are write one once bits */
+>> +        s->wcr =3D value | (s->wcr & (IMX2_WDT_WCR_WDT | IMX2_WDT_WCR_=
+WDE));
+>>          if (!(value & IMX2_WDT_WCR_SRS)) {
+>>              s->wrsr =3D IMX2_WDT_WRSR_SFTW;
+>>          }
+>
+>In the following codes:
+>
+>        if (!(value & (IMX2_WDT_WCR_WDA | IMX2_WDT_WCR_SRS)) ||
+>            (!(value & IMX2_WDT_WCR_WT) && (value & IMX2_WDT_WCR_WDE))) {
+>            watchdog_perform_action();
+>        }
+>
+>Since you removed the part:
+>
+>        value |=3D (s->wcr & IMX2_WDT_WCR_{WDE,WDT})
+>
+>now 'value' does not contain the preserved WDE/WDT bits (they are only
+>preserved in s->wcr in this patch), the watchdog_perform_action()
+>won't be called=2E
+
+Fixed in v4 by preserving the value part=2E Thanks for catching this=2E
+
+Best regards,
+Bernhard
+
+>
+>> @@ -234,13 +222,12 @@ static const MemoryRegionOps imx2_wdt_ops =3D {
+>>
+>>  static const VMStateDescription vmstate_imx2_wdt =3D {
+>>      =2Ename =3D "imx2=2Ewdt",
+>> +    =2Eversion_id =3D 1,
+>>      =2Efields =3D (const VMStateField[]) {
+>>          VMSTATE_PTIMER(timer, IMX2WdtState),
+>>          VMSTATE_PTIMER(itimer, IMX2WdtState),
+>>          VMSTATE_BOOL(wicr_locked, IMX2WdtState),
+>>          VMSTATE_BOOL(wcr_locked, IMX2WdtState),
+>> -        VMSTATE_BOOL(wcr_wde_locked, IMX2WdtState),
+>> -        VMSTATE_BOOL(wcr_wdt_locked, IMX2WdtState),
+>>          VMSTATE_UINT16(wcr, IMX2WdtState),
+>>          VMSTATE_UINT16(wsr, IMX2WdtState),
+>>          VMSTATE_UINT16(wrsr, IMX2WdtState),
+>
+>Regards,
+>Bin
 

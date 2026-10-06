@@ -4,75 +4,97 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 90FF7CA5FF1
-	for <qemu-arm@archiver.kernel.org>; Wed,  7 Oct 2026 09:06:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C9A7ECA5FFF
+	for <qemu-arm@archiver.kernel.org>; Wed,  7 Oct 2026 09:06:18 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xENUp-0007tW-4S; Wed, 07 Oct 2026 04:59:35 -0400
+	id 1xENAT-0004mX-Gc; Wed, 07 Oct 2026 04:38:29 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <fuad.tabba@linux.dev>)
- id 1xEKsJ-0003Dr-S6
- for qemu-arm@nongnu.org; Wed, 07 Oct 2026 02:12:16 -0400
-Received: from out-141.mta0.migadu.com ([2001:41d0:1004:224b::8d]
- helo=mta0.migadu.com)
+ (Exim 4.90_1) (envelope-from <shentey@gmail.com>) id 1xEITC-00048u-It
+ for qemu-arm@nongnu.org; Tue, 06 Oct 2026 23:37:37 -0400
+Received: from mail-ed1-x534.google.com ([2a00:1450:4864:20::534])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <fuad.tabba@linux.dev>)
- id 1xEKs5-00029a-5u
- for qemu-arm@nongnu.org; Wed, 07 Oct 2026 02:11:30 -0400
-X-Envelope-To: qemu-arm@nongnu.org
-DKIM-Signature: a=rsa-sha256; bh=23mYlrG2cdi53aM9FDjWK41Tu5taXomCLzhdx5ei8vo=; 
- c=simple/simple; d=linux.dev;
- h=from:to:subject:date:message-id:mime-version:content-type; s=key1;
- t=1791353458; v=1; x=1791958258;
- b=Gl5negLgPJVWXTdkncz5xsDrwllW6BB0uPlhAbasfXzgTdy+4lB+WtkSzdlMVn1ZAzx0/UoA
- NxHxzjdmj1nVkI3lfAljfW7m3vIy0lglrZuj9pl8KWK+N1hKdTmhh3+NIneHuFSLyytLru/Osgn
- JSktPhnvziImb014Asrs1Ff8=
-X-Envelope-To: qemu-arm@nongnu.org
-Received: by smtp.migadu.com with ESMTPS id bae64502f10e2f86;
- Tue, 06 Oct 2026 09:28:12 +0000
-X-Mizu-Trace-ID: bae64502f10e2f86
-X-Migadu-Flow: FLOW_OUT
-Received: by mail-lf1-f51.google.com with SMTP id
- 2adb3069b0e04-5bcbb378fc9so6575e87.0
- for <qemu-arm@nongnu.org>; Tue, 06 Oct 2026 02:28:12 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <shentey@gmail.com>) id 1xEIT4-0000K5-6k
+ for qemu-arm@nongnu.org; Tue, 06 Oct 2026 23:37:27 -0400
+Received: by mail-ed1-x534.google.com with SMTP id
+ 4fb4d7f45d1cf-6afa6bf3b45so2076805a12.3
+ for <qemu-arm@nongnu.org>; Tue, 06 Oct 2026 20:37:11 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=gmail.com; s=20251104; t=1791344230; x=1791949030; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+ :message-id:reply-to:content-type;
+ bh=j8gZfehfi1SGyoLFE26a+mlEe7gKv2x5zNTED0weiJs=;
+ b=PC8ECw0s96oHsJ5c36MPzRHLHLF1MamBpn/cLIiG7qkLvzMovuI+yGNpfLOTaqUM0r
+ od2quHtfGSQH2AyDQ6Jl0bMN2PY/4hUqhXEG+8dhQI4WOF9JCj4jlTVomi9beD0UDYjO
+ qXJ03TfDAJKpKRjSan0mHNYKQwpq0gEfQghX4cSfoHQfDEpVlAULF6JQZ7xDRbxVX4PA
+ /qS+VyBRz/xl1fCIp1V3ywZ/IJIwUNIsA2P6RbRokTbMYetAKzc/RrRwiwkXninOrDSd
+ 5dyjQszNBNb/bsDQaJ9MkQh7Vy4MD8+NOGLQ0OMeR7xWbuQlmT47YVVxggIG0sGaQFfK
+ CjiA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20260707; t=1791344230; x=1791949030;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
+ :to:cc:subject:date:message-id:reply-to:content-type;
+ bh=j8gZfehfi1SGyoLFE26a+mlEe7gKv2x5zNTED0weiJs=;
+ b=kDkcVazFMGVASVr8isfJ+G2L3rf4fLrH9ALLzGEN69o6Mf8ePgSBTChaxU/dqS2XYy
+ siDhyUSk4vbti+576GZQxt0aJZFgfPIMiX/6Wmdlng+tDVZXC5CxqmNG+syZUFi5hCLj
+ AqHr7L4q0tu2pIZ9iKP+Z09RLcwKB0l2Jzjzwa2Jpl0R8hciwMgUFTTZwM8XstPb9lbc
+ 9ElIMU4oAIAjJGf4/OCwS8F785a0yAx4UctUTbit1P5EviKwe+qZC4l+eD3zy4S2WSqT
+ LvSgMIlYBzFJhJgLdGL/ds2prAEhpubWkIgvuche6nzUOWasDdK1R5xPTJRoNS2aRMhW
+ 0tZA==
 X-Forwarded-Encrypted: i=1;
- AKwUvBz68nZetTPC2vs2s2JVYT1uH4JYYAgL2nSiEvJstq4k16JywvbbfnVh79XVqAqqlBx5y8VX2BzD3Q==@nongnu.org
-X-Gm-Message-State: AFq9FYKOXhRwKCKHgseEgQPxIa3R60lmqU20UM3rveL7oDuMKRWl+alL
- aPdcq5MsZNJkVOPxG6QqB/RsNf+hc4+ZbZnv3Lozcr1bJ10dWwEkniuFX6n9SBwWKNBiMWwezTn
- yI6n/iOpw3rXtruzw511sMckaPpKFAKLjZfyT2ucK
-X-Received: by 2002:a05:6512:33d4:b0:5b8:e882:5148 with SMTP id
- 2adb3069b0e04-5bcca86ee33mr79019e87.14.1791278891513; Tue, 06 Oct 2026
- 02:28:11 -0700 (PDT)
+ AKwUvBwhPI+9N1Ad3pkw8hDb8a3g9NoffeJZ7kGXkkQ1L1I1/Hclu/MQTcEyu28eyua1y5OPZ6nYyBRn7w==@nongnu.org
+X-Gm-Message-State: AFq9FYK6wOfO+bw4Q67Bjy9jzwLCvyjGO/RFcFGEmkFlKsJlMIbLyZm0
+ m4x55Bu+NvJnyZroXEoIPNPSq+NlX2qseNQ8NnLJR7JAyPmmhn4f+6yYkfD/aA==
+X-Gm-Gg: AYBFou0FD8P+mm10+POmryG7W33bgllCm2sMh94I4K7QabcCdbtJtJidr0TPfDeJBb/
+ 8ZHxPvviHufgVFYdWKI1UE7WCijEPLMLtib2EhhENH/GdZvvEZxYSnpHy76mTlQnxilgQT5BZWy
+ wOMr0Hpw9O8W2tEZ+svMX6ww9Nn84rO1XiNLojH3QgOiU985ejnSFJ9oG4LPM4lEcK/w2SgQ+nV
+ y9bvtfJ+AAyiZ0nmYHCxJAKBHKz5NCg+uLlU+zS7renfMTDItna19RXMEjFyS5KCvysqZg7Cbsd
+ QxTEbGJ9wt5auc+HwbVgCZtTTJuK7eVLUvYZzWIMjO6oV/ZVj4fcvnGlY/xGJOQzSZhG6aK4MVL
+ PZF+2tR0EZUbbSry8jK0UvgYlfRm62fBf+wAruIBCNRScGmt0C8PqyGZwY1K/LyVHvOr0PnJTJr
+ JelkqaR+T3G0xvTKwjEvQJ6UHTKfAN9gendyHxDFF3iukpRw347gFHmZYH7G4M9Scr8sEqHcfb8
+ xyGVW/yVGnVVC6wckbPsxxCFCulKpKoav29tQ==
+X-Received: by 2002:a05:6000:41c8:b0:48c:490a:3370 with SMTP id
+ ffacd0b85a97d-48c6d10c775mr1313824f8f.8.1791275753021; 
+ Tue, 06 Oct 2026 01:35:53 -0700 (PDT)
+Received: from archlinux (pd95eda80.dip0.t-ipconnect.de. [217.94.218.128])
+ by smtp.gmail.com with ESMTPSA id
+ ffacd0b85a97d-48c6cdb281csm1566764f8f.55.2026.10.06.01.35.52
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Tue, 06 Oct 2026 01:35:52 -0700 (PDT)
+From: Bernhard Beschow <shentey@gmail.com>
+To: qemu-devel@nongnu.org
+Cc: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@oss.qualcomm.com>,
+ Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>,
+ Paolo Bonzini <pbonzini@redhat.com>,
+ =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ Bin Meng <bin.meng@processmission.com>,
+ Jean-Christophe Dubois <jcd@tribudubois.net>,
+ Gaurav Sharma <gaurav.sharma_7@nxp.com>,
+ Bernhard Beschow <shentey@gmail.com>, qemu-arm@nongnu.org,
+ Jason Wang <jasowangio@gmail.com>,
+ Alistair Francis <alistair@alistair23.me>
+Subject: [PATCH v4 27/31] Kconfig: Extract config GPIO_IMX from config IMX
+Date: Tue,  6 Oct 2026 10:34:39 +0200
+Message-ID: <20261006083445.30362-28-shentey@gmail.com>
+X-Mailer: git-send-email 2.56.0
+In-Reply-To: <20261006083445.30362-1-shentey@gmail.com>
+References: <20261006083445.30362-1-shentey@gmail.com>
 MIME-Version: 1.0
-References: <20261001175003.ttbr-baddr-52bit-0-fuad.tabba@linux.dev>
- <20261002070925.2627344-1-fuad.tabba@linux.dev>
- <l5hcpwnktn2hvbt55ux42xzb2euc5zqohnxtaiftr7lxynfx2g@myyytd4e4owp>
- <20261005214451.1036668-1-fuad.tabba@linux.dev>
- <CAFEAcA81JuAjk-aOnBWcT1ZXWy0U9tVrWRoa5yYQ4WtvhZJKjg@mail.gmail.com>
-In-Reply-To: <CAFEAcA81JuAjk-aOnBWcT1ZXWy0U9tVrWRoa5yYQ4WtvhZJKjg@mail.gmail.com>
-From: Fuad Tabba <fuad.tabba@linux.dev>
-Date: Tue, 6 Oct 2026 11:27:35 +0200
-X-Gmail-Original-Message-ID: <CA+EHjTzvAKMf5LWVfvSLv6tqoi+MaVi91E++RvYpTDL6tzrZ5w@mail.gmail.com>
-X-Gm-Features: AclHuK-xl8GepuyPVLw1vn7yLRDxqOS795mMrZVyjK5xBzUL2FH1vTgtAK5mv54
-Message-ID: <CA+EHjTzvAKMf5LWVfvSLv6tqoi+MaVi91E++RvYpTDL6tzrZ5w@mail.gmail.com>
-Subject: Re: [PATCH 1/2] target/arm: Clear TTBR[5:0] from a 52-bit table base
- address
-To: Peter Maydell <peter.maydell@linaro.org>
-Cc: Gustavo Romero <gromero@redhat.com>, qemu-arm@nongnu.org,
- qemu-devel@nongnu.org, 
- Richard Henderson <richard.henderson@linaro.org>, Will Deacon <will@kernel.org>,
- Itaru Kitayama <itaru.kitayama@linux.dev>
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2001:41d0:1004:224b::8d;
- envelope-from=fuad.tabba@linux.dev; helo=mta0.migadu.com
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::534;
+ envelope-from=shentey@gmail.com; helo=mail-ed1-x534.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_PASS=-0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -88,20 +110,110 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Hi Peter,
+Over time, QEMU has grown a number of i.MX boards and the monolithic
+config IMX drags in unneeded dependencies into each SoC model. Extract
+config GPIO_IMX to eventually eliminate config IMX.
 
-On Tue, 6 Oct 2026 at 11:03, Peter Maydell <peter.maydell@linaro.org> wrote:
-[...]
-> Personally I prefer "fix commit first, test commit second", especially
-> for cases like this where the fix is a one-liner and the test case is
-> 150 lines; but I don't object to single-commit strongly enough to
-> require splitting it if it wouldn't otherwise require a respin.
+Reviewed-by: Bin Meng <bin.meng@processmission.com>
+Signed-off-by: Bernhard Beschow <shentey@gmail.com>
+---
+ hw/arm/Kconfig      | 7 +++++++
+ hw/gpio/Kconfig     | 3 +++
+ hw/gpio/meson.build | 2 +-
+ 3 files changed, 11 insertions(+), 1 deletion(-)
 
-Since Gistavo had other feedback, I'm happy to respin with this.
+diff --git a/hw/arm/Kconfig b/hw/arm/Kconfig
+index 1d3026dea9..c21ad260a1 100644
+--- a/hw/arm/Kconfig
++++ b/hw/arm/Kconfig
+@@ -480,6 +480,7 @@ config FSL_IMX25
+     depends on TCG && ARM
+     imply I2C_DEVICES
+     select FSL_IMX25_CCM
++    select GPIO_IMX
+     select IMX
+     select IMX_AVIC
+     select IMX_EPIT
+@@ -497,6 +498,7 @@ config FSL_IMX31
+     depends on TCG && ARM
+     imply I2C_DEVICES
+     select FSL_IMX31_CCM
++    select GPIO_IMX
+     select SERIAL_MM
+     select IMX
+     select IMX_AVIC
+@@ -514,6 +516,7 @@ config FSL_IMX6
+     select FSL_IMX6_CCM
+     select FSL_IMX6_SRC
+     select FSL_IMX7_SNVS
++    select GPIO_IMX
+     select IMX
+     select IMX_EPIT
+     select IMX_FEC
+@@ -594,6 +597,7 @@ config FSL_IMX7
+     select FSL_IMX7_GPR
+     select FSL_IMX7_SNVS
+     select FSL_IMX7_SRC
++    select GPIO_IMX
+     select PCI
+     select IMX
+     select IMX_FEC
+@@ -616,6 +620,7 @@ config FSL_IMX8MP
+     select FSL_IMX7_SNVS
+     select FSL_IMX8MP_ANALOG
+     select FSL_IMX8MP_CCM
++    select GPIO_IMX
+     select IMX
+     select IMX_FEC
+     select IMX_GPT
+@@ -643,6 +648,7 @@ config FSL_IMX8MM
+     select FSL_IMX7_SNVS
+     select FSL_IMX8MP_ANALOG
+     select FSL_IMX8MP_CCM
++    select GPIO_IMX
+     select IMX
+     select IMX_FEC
+     select IMX_GPT
+@@ -683,6 +689,7 @@ config FSL_IMX6UL
+     select FSL_IMX6_SRC
+     select FSL_IMX6UL_CCM
+     select FSL_IMX7_SNVS
++    select GPIO_IMX
+     select IMX
+     select IMX6UL_LCDIF
+     select IMX_EPIT
+diff --git a/hw/gpio/Kconfig b/hw/gpio/Kconfig
+index ea0fb72b40..5ea2c5f427 100644
+--- a/hw/gpio/Kconfig
++++ b/hw/gpio/Kconfig
+@@ -1,6 +1,9 @@
+ config PL061
+     bool
+ 
++config GPIO_IMX
++    bool
++
+ config GPIO_KEY
+     bool
+ 
+diff --git a/hw/gpio/meson.build b/hw/gpio/meson.build
+index 8ede5e88ae..d60dc42ab3 100644
+--- a/hw/gpio/meson.build
++++ b/hw/gpio/meson.build
+@@ -1,3 +1,4 @@
++system_ss.add(when: 'CONFIG_GPIO_IMX', if_true: files('imx_gpio.c'))
+ system_ss.add(when: 'CONFIG_GPIO_KEY', if_true: files('gpio_key.c'))
+ system_ss.add(when: 'CONFIG_GPIO_MPC8XXX', if_true: files('mpc8xxx.c'))
+ system_ss.add(when: 'CONFIG_GPIO_PWR', if_true: files('gpio_pwr.c'))
+@@ -6,7 +7,6 @@ system_ss.add(when: 'CONFIG_PCA9554', if_true: files('pca9554.c'))
+ system_ss.add(when: 'CONFIG_PL061', if_true: files('pl061.c'))
+ system_ss.add(when: 'CONFIG_ZAURUS_SCOOP', if_true: files('zaurus.c'))
+ 
+-system_ss.add(when: 'CONFIG_IMX', if_true: files('imx_gpio.c'))
+ system_ss.add(when: 'CONFIG_NPCM7XX', if_true: files('npcm7xx_gpio.c'))
+ system_ss.add(when: 'CONFIG_NRF51_SOC', if_true: files('nrf51_gpio.c'))
+ system_ss.add(when: 'CONFIG_OMAP', if_true: files('omap_gpio.c'))
+-- 
+2.56.0
 
-Cheers,
-/fuad
-
-> thanks
-> -- PMM
 

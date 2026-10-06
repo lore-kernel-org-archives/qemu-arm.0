@@ -4,59 +4,100 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4157BCA5FFF
-	for <qemu-arm@archiver.kernel.org>; Wed,  7 Oct 2026 09:15:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B67B2CA6007
+	for <qemu-arm@archiver.kernel.org>; Wed,  7 Oct 2026 09:15:57 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xENcB-00023H-GD; Wed, 07 Oct 2026 05:07:07 -0400
+	id 1xENUa-0007gr-1D; Wed, 07 Oct 2026 04:59:22 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <fuad.tabba@linux.dev>)
- id 1xEMaG-0004S9-SS
- for qemu-arm@nongnu.org; Wed, 07 Oct 2026 04:01:05 -0400
-Received: from out-53.mta0.migadu.com ([2001:41d0:1004:224b::35]
- helo=mta0.migadu.com)
+ (Exim 4.90_1) (envelope-from <shentey@gmail.com>) id 1xEKs5-0003CC-BS
+ for qemu-arm@nongnu.org; Wed, 07 Oct 2026 02:11:59 -0400
+Received: from mail-ed1-x535.google.com ([2a00:1450:4864:20::535])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <fuad.tabba@linux.dev>)
- id 1xEMaC-00030U-Ii
- for qemu-arm@nongnu.org; Wed, 07 Oct 2026 04:01:03 -0400
-X-Envelope-To: qemu-arm@nongnu.org
-DKIM-Signature: a=rsa-sha256; bh=fFxHzIV0eSnU5WJN8HLRv0Vr1WaPMW5vaKA+HJab+a0=; 
- c=simple/simple; d=linux.dev;
- h=from:to:subject:date:message-id:mime-version:content-type; s=key1;
- t=1791360059; v=1; x=1791964859;
- b=BizHeFjJMPtaKFCzGkyJC60i1LOA9olD/MHXmwFWNS2nx6K1mO1Vs7Oc1ynfPNri86M2kBFF
- HZHTO6PV8IfPDkyeSBkswSqbgYed0Cw0B5CChpTYh/HZqbO6j51S3O0I1ZpKzrE2xV7mhrrfIcQ
- Tp0hJJpV5el4OwQe5FoEraNU=
-X-Envelope-To: qemu-arm@nongnu.org
-Received: by smtp.migadu.com with ESMTPS id d7bdcd0e766fb0df;
- Wed, 07 Oct 2026 08:00:58 +0000
-X-Mizu-Trace-ID: d7bdcd0e766fb0df
-X-Migadu-Flow: FLOW_OUT
-From: Fuad Tabba <fuad.tabba@linux.dev>
-To: Peter Maydell <peter.maydell@linaro.org>
-Cc: qemu-arm@nongnu.org, qemu-devel@nongnu.org,
- Richard Henderson <richard.henderson@linaro.org>,
- Gustavo Romero <gromero@redhat.com>, Will Deacon <will@kernel.org>,
- Itaru Kitayama <itaru.kitayama@linux.dev>, Fuad Tabba <tabba@google.com>
-Subject: [PATCH v2 3/3] tests/tcg/aarch64: Add a test for the 52-bit TTBR base
- address layout
-Date: Wed,  7 Oct 2026 09:00:19 +0100
-Message-Id: <20261007080019.350315-4-fuad.tabba@linux.dev>
-X-Mailer: git-send-email 2.39.5
-In-Reply-To: <20261007080019.350315-1-fuad.tabba@linux.dev>
-References: <20261007080019.350315-1-fuad.tabba@linux.dev>
+ (Exim 4.90_1) (envelope-from <shentey@gmail.com>) id 1xEKrk-00029U-DN
+ for qemu-arm@nongnu.org; Wed, 07 Oct 2026 02:11:04 -0400
+Received: by mail-ed1-x535.google.com with SMTP id
+ 4fb4d7f45d1cf-6acb57c2b88so5111585a12.2
+ for <qemu-arm@nongnu.org>; Tue, 06 Oct 2026 23:10:58 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=gmail.com; s=20251104; t=1791353457; x=1791958257; darn=nongnu.org;
+ h=content-transfer-encoding:content-type:mime-version:references
+ :in-reply-to:message-id:date:subject:cc:to:from:from:to:cc:subject
+ :date:message-id:reply-to:content-type;
+ bh=nGNaHiuVZw/GFpL6l92yCqZ5RO3VTuRx3fxc/U2AHTU=;
+ b=Llf116o3bYHKT7ePdo/nLnBRw7EzzRAwkXh9j3PtqKfxDiSzGDFuzLi1AXsTG/1o2S
+ YWwlV/pr8lWdiPXdtWePWQ3mvNRZRL1OhDRyZRO66efe9l2sLBj0UleuckQNbVHqsA+y
+ VyhwC3mVwSDDRjejcFn1/2ijjfKL6BUE41NFIb1mIdwvmhpW93sauzoTEK8GZ4+833ps
+ sWIAw2N7Cob8Yc0+7tLxXIsHs10zLUVImpetUV1kWHjevFSHizBBo4BA17wdN7Xo+CFU
+ ve8DuxwQB71XUT9eQ8aeuElwx84bS88wj2tAgpv+51NbeA/9MfOEaZfXhUaFSCBm7icy
+ BGLg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20260707; t=1791353457; x=1791958257;
+ h=content-transfer-encoding:content-type:mime-version:references
+ :in-reply-to:message-id:date:subject:cc:to:from:x-gm-gg
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
+ :content-type;
+ bh=nGNaHiuVZw/GFpL6l92yCqZ5RO3VTuRx3fxc/U2AHTU=;
+ b=RTyyOlOowxf17Tl9mdoOSiEBfLcvDpzOg68BjrxWHGXMmb0+DhiMuio18PHxDxxTYY
+ Jxirnp8E3r0LVHqasIsF3iqleon/2SBUyouGfQNrOYE8NItkFH+GH0DCZEP6CcgUmLEJ
+ bADvYhC5jfMRSsEL6a3k1iCrLHDpvTS5vx8qDb2iDzNav23AOPD4bRDGKTfcOUNWzmYf
+ jfJmdDfPy2tq+tA5ByxuqHCSLxv0ghi6C4SpN+qq/6MvUPmt18p2pdvXWf8h5+sq1WTF
+ 4zdpgel5RN2jX4U/yHc+M8ChlCdqCjQhvc/YB5iaVdC2nZ91qjEoUkRcyeYesoaJZfqy
+ 9Ciw==
+X-Forwarded-Encrypted: i=1;
+ AKwUvBzzyRrVWOMiEIpMYuJvNZ1QOlGZ85TVdkxmbTLYXijJ3rP7kDjyYFqLedYVkj1uS4nikZcyrhZK0g==@nongnu.org
+X-Gm-Message-State: AFq9FYI566+GNZHhsn5UF+rmIkIX/9tbeOSvMBb71fZzvVz0G8BW+LNd
+ TYcJaQ0idqILVXh6nnuSzju6Ne+XSCmeaowZBXcD/bm5N+UB15hTu5OKR0mdKg==
+X-Gm-Gg: AYBFou38JERD9ZH2X6gbUQnayxyyh+ahSI5QG2ucPphAuimjJKcyBuwVTuFZu4KLoIn
+ 0afa9Sq/aiDOHWqdDHdj9JAfWV7UpVBRz1gkGR51VkLSSPDV1acbB5AW9WyrtLyAfulmg6Ex1+J
+ a1bKoXDarYat+7PXqu9ENdZYrnbC7W/3tBU6a/xY+8mM+pww1ecLvF9D1Iub9UG2LZEJq32HoNU
+ NrOkg2j1/JT+oBGXNbEL3x9ThMjhBLHf2ppkwu9cgWVTaqRGhN+cJmWHZq3otCFuIz+DrGMnGYN
+ Z2LCFLt0pRrgEwiKQhLfvcu0OhiTsJ63upvMNhP0/wfFDVQ7yFapYdKE/ZWtorSz2NMpi89d4++
+ G1DIlptxgJGXlZk1mTA6qfmRycOuJSHEUbV48Q/ui2DWnO/L/t9phZ0gTdq9dxmhVCdn2E5fKHM
+ O+x/OK2LnEq71v0wue07jQSa+lM/gX/SoITTkH0VpMkNzTSCd3ikkgi1mxzTCs/INzAtAlQq3gg
+ kstuptXfYhQGczwjOdyl1V3oCJx99QubkKSZg==
+X-Received: by 2002:a05:600c:4fcb:b0:4a1:7703:b0e with SMTP id
+ 5b1f17b1804b1-4a1788ec7c0mr32481015e9.34.1791275729496; 
+ Tue, 06 Oct 2026 01:35:29 -0700 (PDT)
+Received: from archlinux (pd95eda80.dip0.t-ipconnect.de. [217.94.218.128])
+ by smtp.gmail.com with ESMTPSA id
+ ffacd0b85a97d-48c6cdb281csm1566764f8f.55.2026.10.06.01.35.28
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Tue, 06 Oct 2026 01:35:28 -0700 (PDT)
+From: Bernhard Beschow <shentey@gmail.com>
+To: qemu-devel@nongnu.org
+Cc: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@oss.qualcomm.com>,
+ Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>,
+ Paolo Bonzini <pbonzini@redhat.com>,
+ =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ Bin Meng <bin.meng@processmission.com>,
+ Jean-Christophe Dubois <jcd@tribudubois.net>,
+ Gaurav Sharma <gaurav.sharma_7@nxp.com>,
+ Bernhard Beschow <shentey@gmail.com>, qemu-arm@nongnu.org,
+ Jason Wang <jasowangio@gmail.com>,
+ Alistair Francis <alistair@alistair23.me>
+Subject: [PATCH v4 08/31] tests/functional/arm: Add console test for
+ `sabrelite` machine
+Date: Tue,  6 Oct 2026 10:34:20 +0200
+Message-ID: <20261006083445.30362-9-shentey@gmail.com>
+X-Mailer: git-send-email 2.56.0
+In-Reply-To: <20261006083445.30362-1-shentey@gmail.com>
+References: <20261006083445.30362-1-shentey@gmail.com>
 MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2001:41d0:1004:224b::35;
- envelope-from=fuad.tabba@linux.dev; helo=mta0.migadu.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::535;
+ envelope-from=shentey@gmail.com; helo=mail-ed1-x535.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_PASS=-0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -72,240 +113,106 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-With a 52-bit OA, walk a two-entry level 0 table through an IPA with
-bit 50 set, which stage 2 maps back onto the table, so the walk
-succeeds only if TTBR[4] is cleared from bit 4 of the base address.
-With TCR.DS or VTCR.DS and a 48-bit OA, check that setting TTBR[5:2]
-is a level 0 Address size fault.
+The test currently exercises the Linux kernel and waits for the first
+daemons to be started. At this point, basic hardware is initialized and
+if the log message is reached, no driver ended up in an endless loop,
+thus the system should be usable.
 
-Signed-off-by: Fuad Tabba <fuad.tabba@linux.dev>
+Reviewed-by: Philippe Mathieu-Daudé <philmd@oss.qualcomm.com>
+Reviewed-by: Bin Meng <bin.meng@processmission.com>
+Signed-off-by: Bernhard Beschow <shentey@gmail.com>
 ---
- tests/tcg/aarch64/system/meson.build  |   6 +
- tests/tcg/aarch64/system/ttbr-baddr.c | 197 ++++++++++++++++++++++++++
- 2 files changed, 203 insertions(+)
- create mode 100644 tests/tcg/aarch64/system/ttbr-baddr.c
+ MAINTAINERS                            |  1 +
+ tests/functional/arm/meson.build       |  2 ++
+ tests/functional/arm/test_sabrelite.py | 46 ++++++++++++++++++++++++++
+ 3 files changed, 49 insertions(+)
+ create mode 100755 tests/functional/arm/test_sabrelite.py
 
-diff --git a/tests/tcg/aarch64/system/meson.build b/tests/tcg/aarch64/system/meson.build
-index f51feb253f..270d4d6c31 100644
---- a/tests/tcg/aarch64/system/meson.build
-+++ b/tests/tcg/aarch64/system/meson.build
-@@ -79,6 +79,12 @@ tests += {
-                   '-semihosting-config', 'enable=on,arg=2',
-                   qemu_base_args]
-   },
-+  'ttbr-baddr.c': {
-+    'cflags': cflags,
-+    'qemu_args': ['-M', 'virt,virtualization=on', '-cpu', 'max',
-+                  '-semihosting-config', 'enable=on,arg=2',
-+                  qemu_base_args]
-+  },
- }
+diff --git a/MAINTAINERS b/MAINTAINERS
+index 1312bbd1bd..f31245716a 100644
+--- a/MAINTAINERS
++++ b/MAINTAINERS
+@@ -1054,6 +1054,7 @@ F: include/hw/usb/imx-usb-phy.h
+ F: include/hw/arm/fsl-imx6.h
+ F: include/hw/misc/imx6_*.h
+ F: include/hw/ssi/imx_spi.h
++F: tests/functional/arm/test_sabrelite.py
  
- tests += {
-diff --git a/tests/tcg/aarch64/system/ttbr-baddr.c b/tests/tcg/aarch64/system/ttbr-baddr.c
-new file mode 100644
-index 0000000000..b36c14aa29
+ SBSA-REF
+ M: Peter Maydell <peter.maydell@linaro.org>
+diff --git a/tests/functional/arm/meson.build b/tests/functional/arm/meson.build
+index 61b00932db..989b841555 100644
+--- a/tests/functional/arm/meson.build
++++ b/tests/functional/arm/meson.build
+@@ -24,6 +24,7 @@ test_arm_timeouts = {
+   'quanta_gsj' : 240,
+   'raspi2' : 120,
+   'replay' : 240,
++  'sabrelite' : 240,
+   'tuxrun' : 240,
+   'sx1' : 360,
+ }
+@@ -65,6 +66,7 @@ tests_arm_system_thorough = [
+   'raspi2',
+   'realview',
+   'replay',
++  'sabrelite',
+   'smdkc210',
+   'stellaris',
+   'sx1',
+diff --git a/tests/functional/arm/test_sabrelite.py b/tests/functional/arm/test_sabrelite.py
+new file mode 100755
+index 0000000000..31a0a49eac
 --- /dev/null
-+++ b/tests/tcg/aarch64/system/ttbr-baddr.c
-@@ -0,0 +1,197 @@
-+/*
-+ * TTBR base address with a 52-bit layout and a small initial lookup table
-+ *
-+ * Copyright (c) 2026 Google LLC
-+ * Author: Fuad Tabba <fuad.tabba@linux.dev>
-+ *
-+ * SPDX-License-Identifier: GPL-2.0-or-later
-+ */
++++ b/tests/functional/arm/test_sabrelite.py
+@@ -0,0 +1,46 @@
++#!/usr/bin/env python3
++#
++# Functional test that boots a Linux kernel and checks the console
++#
++# SPDX-License-Identifier: GPL-2.0-or-later
 +
-+#include <stdint.h>
-+#include <minilib.h>
++from qemu_test import LinuxKernelTest, Asset
 +
-+/* from Linux's include/linux/stringify.h */
-+#define __stringify_1(x...) #x
-+#define __stringify(x...)   __stringify_1(x)
 +
-+#define read_sysreg(r) ({                                           \
-+            uint64_t __val;                                         \
-+            asm volatile("mrs %0, " __stringify(r) : "=r" (__val)); \
-+            __val;                                                  \
-+})
++class SabreliteMachine(LinuxKernelTest):
 +
-+#define write_sysreg(r, v) do {                     \
-+        uint64_t __val = (uint64_t)(v);             \
-+        asm volatile("msr " __stringify(r) ", %x0"  \
-+                 : : "rZ" (__val));                 \
-+} while (0)
++    ASSET_KERNEL = Asset(
++        ('https://ftp.debian.org/debian/dists/bookworm/main/installer-armhf/'
++         '20230607/images/netboot/vmlinuz'),
++        '5851e9c61465a26db810796db671c4729e66e81c365b3ebb1a4b7f772737605b')
 +
-+#define RAM_BASE    0x40000000UL
-+#define HIGH_IPA    (1UL << 50)
-+#define TEST_VA     (0xffff000000000000UL | RAM_BASE)
++    ASSET_INITRD = Asset(
++        ('https://ftp.debian.org/debian/dists/bookworm/main/installer-armhf/'
++         '20230607/images/netboot/initrd.gz'),
++        'fe33f836232a9107716d34dc56d36dea81bab039243a2a42ea6583a50c9b92ca')
 +
-+/*
-+ * Stage 1: 16KB granule, 48-bit VA, so level 0 has two entries.
-+ * Stage 2: 64KB granule, 52-bit IPA, mapping RAM at its own address and
-+ * again at HIGH_IPA.
-+ * Stage 2 with VTCR.DS: 16KB granule, 47-bit IPA, mapping RAM flat.
-+ */
-+static uint64_t s1_l0[2048] __attribute__((aligned(16384)));
-+static uint64_t s1_l1[2048] __attribute__((aligned(16384)));
-+static uint64_t s1_l2[2048] __attribute__((aligned(16384)));
-+static uint64_t s2ds_l1[2048] __attribute__((aligned(16384)));
-+static uint64_t s2ds_l2[2048] __attribute__((aligned(16384)));
-+static uint64_t s2_l1[1024] __attribute__((aligned(65536)));
-+static uint64_t s2_l2[8192] __attribute__((aligned(65536)));
-+static uint64_t s2_l2_high[8192] __attribute__((aligned(65536)));
++    ASSET_DTB = Asset(
++        ('https://ftp.debian.org/debian/dists/bookworm/main/installer-armhf/'
++         '20230607/images/device-tree/imx6q-sabrelite.dtb'),
++        '3ad637c8ea55ebd058a67f686e050b82ccb0d1327bc283623c133c48ad87db44')
 +
-+#define TCR_T0SZ(x)     ((uint64_t)(x) << 0)
-+#define TCR_T1SZ(x)     ((uint64_t)(x) << 16)
-+#define TCR_TG0_16K     (2UL << 14)
-+#define TCR_TG1_16K     (1UL << 30)
-+#define TCR_IPS_48      (5UL << 32)
-+#define TCR_IPS_52      (6UL << 32)
-+#define TCR_DS          (1UL << 59)
++    def setUp(self):
++        super().setUp()
 +
-+#define VTCR_T0SZ(x)    ((uint64_t)(x) << 0)
-+#define VTCR_SL0_L1     (2UL << 6)
-+#define VTCR_TG0_16K    (2UL << 14)
-+#define VTCR_TG0_64K    (1UL << 14)
-+#define VTCR_PS_48      (5UL << 16)
-+#define VTCR_PS_52      (6UL << 16)
-+#define VTCR_RES1       (1UL << 31)
-+#define VTCR_DS         (1UL << 32)
++        self.kernel_path = self.ASSET_KERNEL.fetch()
++        self.initrd_path = self.ASSET_INITRD.fetch()
++        self.dtb_path = self.ASSET_DTB.fetch()
 +
-+#define HCR_VM          (1UL << 0)
-+#define HCR_RW          (1UL << 31)
++    def test_console(self):
++        self.require_accelerator("tcg")
++        self.set_machine('sabrelite')
++        self.vm.set_console(console_index=1)
++        self.vm.add_args('-kernel', self.kernel_path,
++                         '-initrd', self.initrd_path,
++                         '-dtb', self.dtb_path)
 +
-+#define PAR_F           (1UL << 0)
-+#define PAR_FST(par)    (((par) >> 1) & 0x3f)
-+#define PAR_PA(par)     ((par) & 0xfffffffff000UL)
-+#define FST_ADDR_SIZE_L0    0x00
++        self.vm.launch()
++        self.wait_for_console_pattern('Starting system log daemon:')
 +
-+#define S2_BLOCK        ((1 << 10) | (3 << 6) | (0xf << 2) | 1)
-+
-+static void tlb_flush(void)
-+{
-+    asm volatile("dsb sy; tlbi alle1; dsb sy; isb" : : : "memory");
-+}
-+
-+static uint64_t at(uint64_t ttbr1)
-+{
-+    uint64_t par;
-+
-+    write_sysreg(ttbr1_el1, ttbr1);
-+    tlb_flush();
-+    asm volatile("at s12e1r, %1; isb; mrs %0, par_el1"
-+                 : "=r" (par) : "r" (TEST_VA));
-+    return par;
-+}
-+
-+static uint64_t at_s1(uint64_t ttbr1)
-+{
-+    uint64_t par;
-+
-+    write_sysreg(ttbr1_el1, ttbr1);
-+    tlb_flush();
-+    asm volatile("at s1e1r, %1; isb; mrs %0, par_el1"
-+                 : "=r" (par) : "r" (TEST_VA));
-+    return par;
-+}
-+
-+static void setup_tables(void)
-+{
-+    /* Stage 1: TEST_VA -> RAM_BASE, 32MB block, AF */
-+    s1_l0[0] = (uint64_t)s1_l1 | 3;
-+    s1_l1[0] = (uint64_t)s1_l2 | 3;
-+    s1_l2[(RAM_BASE >> 25) & 0x7ff] = RAM_BASE | (1 << 10) | 1;
-+
-+    /* Stage 2 with VTCR.DS: RAM_BASE -> RAM_BASE, 32MB block, AF, RW */
-+    s2ds_l1[0] = (uint64_t)s2ds_l2 | 3;
-+    s2ds_l2[(RAM_BASE >> 25) & 0x7ff] = RAM_BASE | S2_BLOCK;
-+
-+    /* Stage 2: 512MB blocks at RAM_BASE and HIGH_IPA | RAM_BASE, AF, RW */
-+    s2_l1[0] = (uint64_t)s2_l2 | 3;
-+    s2_l1[HIGH_IPA >> 42] = (uint64_t)s2_l2_high | 3;
-+    s2_l2[RAM_BASE >> 29] = RAM_BASE | S2_BLOCK;
-+    s2_l2_high[RAM_BASE >> 29] = RAM_BASE | S2_BLOCK;
-+}
-+
-+static int check(const char *name, uint64_t par)
-+{
-+    int ok = !(par & PAR_F) && PAR_PA(par) == RAM_BASE;
-+
-+    ml_printf("%s: PAR_EL1=%lx %s\n", name, par, ok ? "ok" : "FAIL");
-+    return !ok;
-+}
-+
-+/* A level 0 Address size fault */
-+static int check_fault(const char *name, uint64_t par)
-+{
-+    int ok = (par & PAR_F) && PAR_FST(par) == FST_ADDR_SIZE_L0;
-+
-+    ml_printf("%s: PAR_EL1=%lx %s\n", name, par, ok ? "ok" : "FAIL");
-+    return !ok;
-+}
-+
-+int main(void)
-+{
-+    uint64_t mmfr0 = read_sysreg(id_aa64mmfr0_el1);
-+    uint64_t tcr = TCR_T0SZ(16) | TCR_T1SZ(16) | TCR_TG0_16K | TCR_TG1_16K |
-+                   TCR_DS;
-+    uint64_t base = (uint64_t)s1_l0;
-+    int ret = 0;
-+
-+    ml_printf("TTBR base address test\n");
-+
-+    /*
-+     * PARange 52 bits (FEAT_LPA) and TGran16 with 52-bit addresses
-+     * (FEAT_LPA2)
-+     */
-+    if ((mmfr0 & 0xf) != 6 || ((mmfr0 >> 20) & 0xf) != 2) {
-+        ml_printf("SKIP: no 52-bit PA or no FEAT_LPA2 with 16KB\n");
-+        return ret;
-+    }
-+
-+    /*
-+     * The test runs at EL2 (arg=2) and walks the EL1&0 regime with AT, so
-+     * the EL1 MMU settings below only affect those walks.
-+     */
-+    setup_tables();
-+    write_sysreg(mair_el1, 0xff);
-+    write_sysreg(sctlr_el1, read_sysreg(sctlr_el1) | 1);
-+
-+    /*
-+     * TCR.DS with a 48-bit OA: TTBR[5:2] are base address bits [51:48],
-+     * so setting any of them is a level 0 Address size fault.
-+     */
-+    write_sysreg(hcr_el2, HCR_RW);
-+    write_sysreg(tcr_el1, tcr | TCR_IPS_48);
-+    ret |= check("ips48", at_s1(base));
-+    ret |= check_fault("ips48 ttbr[2]", at_s1(base | (1 << 2)));
-+    ret |= check_fault("ips48 ttbr[4]", at_s1(base | (1 << 4)));
-+
-+    /* The same for VTTBR, with VTCR.DS and a 48-bit PS */
-+    write_sysreg(vtcr_el2, VTCR_T0SZ(17) | VTCR_SL0_L1 | VTCR_TG0_16K |
-+                 VTCR_PS_48 | VTCR_RES1 | VTCR_DS);
-+    write_sysreg(hcr_el2, HCR_RW | HCR_VM);
-+    write_sysreg(vttbr_el2, (uint64_t)s2ds_l1);
-+    ret |= check("ps48", at(base));
-+    write_sysreg(vttbr_el2, (uint64_t)s2ds_l1 | (1 << 2));
-+    ret |= check_fault("ps48 vttbr[2]", at(base));
-+
-+    /*
-+     * 52-bit OA: TTBR[4] is base address bit 50. Through stage 2, the
-+     * table at HIGH_IPA | s1_l0 is s1_l0, so the walk succeeds only if
-+     * TTBR[4] does not also offset the two-entry table by 0x10.
-+     */
-+    write_sysreg(vtcr_el2, VTCR_T0SZ(12) | VTCR_SL0_L1 | VTCR_TG0_64K |
-+                 VTCR_PS_52 | VTCR_RES1);
-+    write_sysreg(vttbr_el2, (uint64_t)s2_l1);
-+    write_sysreg(hcr_el2, HCR_RW | HCR_VM);
-+    write_sysreg(tcr_el1, tcr | TCR_IPS_52);
-+    ret |= check("ips52", at(base));
-+    ret |= check("ips52 ttbr[4]", at(base | (1 << 4)));
-+
-+    return ret;
-+}
++if __name__ == '__main__':
++    LinuxKernelTest.main()
 -- 
-2.39.5
+2.56.0
 
 

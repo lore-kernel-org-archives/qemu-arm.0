@@ -4,67 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 82B8CCA5FFC
-	for <qemu-arm@archiver.kernel.org>; Wed,  7 Oct 2026 01:03:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E026BCA5FF1
+	for <qemu-arm@archiver.kernel.org>; Wed,  7 Oct 2026 03:37:46 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-arm-bounces@nongnu.org>)
-	id 1xEG2c-0008Mu-Ql; Tue, 06 Oct 2026 21:02:18 -0400
+	id 1xEIT1-00046U-NP; Tue, 06 Oct 2026 23:37:29 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <shentey@gmail.com>) id 1xEFGC-0001Du-21
- for qemu-arm@nongnu.org; Tue, 06 Oct 2026 20:12:31 -0400
-Received: from mail-ed1-x52a.google.com ([2a00:1450:4864:20::52a])
+ (Exim 4.90_1) (envelope-from <shentey@gmail.com>) id 1xEFaV-0003mg-JR
+ for qemu-arm@nongnu.org; Tue, 06 Oct 2026 20:33:35 -0400
+Received: from mail-lf1-x12c.google.com ([2a00:1450:4864:20::12c])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <shentey@gmail.com>) id 1xEFF7-0000Tu-8J
- for qemu-arm@nongnu.org; Tue, 06 Oct 2026 20:10:57 -0400
-Received: by mail-ed1-x52a.google.com with SMTP id
- 4fb4d7f45d1cf-6acbdbc1725so4833680a12.3
- for <qemu-arm@nongnu.org>; Tue, 06 Oct 2026 17:07:10 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <shentey@gmail.com>) id 1xEFaJ-0004Cj-W4
+ for qemu-arm@nongnu.org; Tue, 06 Oct 2026 20:32:47 -0400
+Received: by mail-lf1-x12c.google.com with SMTP id
+ 2adb3069b0e04-5bcbeafb07dso1014915e87.2
+ for <qemu-arm@nongnu.org>; Tue, 06 Oct 2026 17:28:35 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20251104; t=1791331629; x=1791936429; darn=nongnu.org;
+ d=gmail.com; s=20251104; t=1791332914; x=1791937714; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to:content-type;
- bh=8K7Yq/KgL/Zin4VcTKhCZ6b8VSA0wVYhUmnTHSEofyE=;
- b=mL+p+OsDgypPR/I8zJdq31oc04YDMI47RKxRlzWk+4On4LSC2mS3UvAQUOn4ghxM5P
- wQMl1Lq4hLvTeYrNw1Jk7Ql8GHiRcR0RqH3FStDP/Qk/Tp6MnnuXN12o3XVbPtNkeuoH
- udvacmhEed5zCndvZ/WXlIp7Ipm6e9M86x/QGnhOm916jxSekWf1QWimwJ5ED4WAByGc
- lsVlBGHK+KGPl1lg7ZzJSvV7rtNE3WtEZbCKrOuPwQvTonNQeCZ+1ueWAuQfGmddUHsc
- vcPoVpLr+QRd0BQJWOXXVaNO7qlyqP+hLRmE3P764V+FKWiNIjNrFfmEfasFK3KwzYLo
- opZQ==
+ bh=e8TB0ZtYp24WPs3mqNNFoiQRZJQqozvFbAYX81zZos4=;
+ b=EJUH5t8pEfYPx/ptcBnoLRIKF29WtQcMgYm1NdO4rTad+NZaxK3s65U2lxfslIa3+z
+ 61+l66FEUg8lzbtLxi+pK/fjRpBiYHxR2JGYQMm1S2KLkLbmHhpXp7P+H5Vluspm1ZMV
+ XoclycfZ3TeUOgsTGGmE8dH0aziNE6YOFSkmM59RZ6b/rjDSTmCzlMPRJ2++nOiA7iR2
+ p+h124NYR3Grn/49TaQ857tKGLxySNp04SP67LUxl4vqX8WuL709DeWaypPKTqjnlTHu
+ 1NwnvH8ra6ngKOMaPL1fJrcUioqvPI4KPU8yNka7PIdY00puw+ZsiGVG9PErnG56FB2l
+ XL8Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20260707; t=1791331629; x=1791936429;
+ d=1e100.net; s=20260707; t=1791332914; x=1791937714;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
  :to:cc:subject:date:message-id:reply-to:content-type;
- bh=8K7Yq/KgL/Zin4VcTKhCZ6b8VSA0wVYhUmnTHSEofyE=;
- b=oSGUEzHeVfvbQK8uAKsRtNJbQQdLwRAzmbLasNCrFAzLJpu6UMSAq6LFiMxpXB+Iv4
- qe9MTCbjjGn/D0T/N8u68t6bZ1am6a0YUbrJOyLm3f+BV3b9ziHBzZwXudS5EknWTwnS
- C2RqSyrvmEKv8goR8U4E8MWsudrCIdt5Ok1LmIZuMUOVF7YEzojBQukQ/y8VDsnPQdDL
- QyIXU8nZ0NPj5B4gQenpVPzEGy6x3KumaJhmKuCvmE111e/aWsQmuZwIC8i69Gd3VkL7
- HV2CSZoepReH3ipAuMeKZL8i/QsnLncg30Gu8w1N6Ea5vQK6W3fCqGK/APBAKBDhoe7X
- Df2g==
+ bh=e8TB0ZtYp24WPs3mqNNFoiQRZJQqozvFbAYX81zZos4=;
+ b=r1+VljBhKNAauSwOoFyT8UmL8cBH28ExaLoGnySKcr5ETFdxzsiNSu8QUUvbjbjYN7
+ LfB85i9eiArXd0TjCq+2sigrDxVMS6dCeQ2tnb3meJV5tDEHcG87ycvh134r+NTp2/3Z
+ 8bZ+p8ZNNlpAYO8S6MILgZ/w4vyZqUfRhsLozltZvkHv0XpdOwphrLPInIJ93MBfxLO2
+ TZhGfxWrmSaqVlPOh7ZDzCmzsFVjivN9z19KQInfzBMCGmJ9X+NDNensedt/j6UfpjSv
+ 4ehIkTSlZT8rELLEYj+Z8SzXr5jAdNtCJ0bXjqe9Brn08DAJJsI/wdP7f4hY393jlubI
+ uflw==
 X-Forwarded-Encrypted: i=1;
- AKwUvBwnogKaOt8kN19NnYJawOrjxn/2AtxTAY+XE6wB5U+i99rZxQ63A/TGvTQBA2BdHSr33VYhenF0XQ==@nongnu.org
-X-Gm-Message-State: AFq9FYKTmj6j1BB/U2GsrEEE7TX++HLqni66JFDPyhq7b5Y3ELb03kvT
- 5ynQvQU4ms0a6syVuH4K7Gx7oxVnN3pbQ6qI/Ciz7SsnABCMXsVL9l4j+cnkuw==
-X-Gm-Gg: AYBFou0k8z0HKLH+UzuHgnX+hObN8zKlaK3OEe9PkOowfLNk+jfh2LgWnM8LNeF2Ysq
- kVKlShgry/NteuEqctAqQKikRFogQG8SAM7XkSs4Dp+Yo+entwKMHqXoJ/7hyw2RoGpeu+ziyFB
- hIDr9MXOzNEOWOLWCS91rTeQpPcyzy+kO8OFjrH93C6rJhdfiGz2C7YXLGRq99jNivHVfo/ewWC
- 8Ru3zu3nb0rN7X53T6PhNj6GMPFWOs6TU5F/jcrbpb81ZMbG9wE3nGOqgP7Jfn43Uo7FxFsRN1P
- +7WiEHmIbKGtLSnDNM0cciFo5n8XgKcCBcfZ3zESWfEHpv4/QbC3aWNQvQV7Unipprsy8UjPtfj
- 1WBMYN/Vhiif4/s+kLRMIe9th8FjYC9gyqcs3cvfT+/UMRJSYTSS5WX3eFtkdBK6Vr9reLm3ORC
- MyjEd7RIRH2glYtXUzkae7Oocq4UBF1ysXi5rSQEvvY7AkM+7DfFQv9PvEfQNvLvDRzqywxWAk0
- R+wcHlR7YSHKJQgLrMcVJkpU4zFE68tWC4dVg==
-X-Received: by 2002:a5d:5f50:0:b0:488:8111:6f56 with SMTP id
- ffacd0b85a97d-48c6d0f4c77mr1187617f8f.8.1791275721430; 
- Tue, 06 Oct 2026 01:35:21 -0700 (PDT)
+ AKwUvBy+NQojrmhido763CkwBML3bTUwFsBrYotC6bLoFREqEqX1pFgf9rHcpTlHMzGfjt5S9BnPtiQxqA==@nongnu.org
+X-Gm-Message-State: AFq9FYKigKD481ePHFPOnXz6X6PgB7JtwsuBLErQq6Tmt+7S388qJVJG
+ sJvEibvTc+y3GuOcfaenZ31BbO6ixVwyy/hwOvGxyGz1efYwaxW0zC0f0r+XcQ==
+X-Gm-Gg: AYBFou0f7fgJhEH57FjgGrkxJvKzxS/X44Q29snPgtbDb7ytn+5zfwI6HrLm30NdFKh
+ 5QM1kgZ9dWstEzqWHqMAFzHqQ17seFoaRiwaZu3G8JBDlQpOnqI+PkciVS5Y/py+XOxRTz7/ucG
+ JaknoZCg2GmlNiKKJNbkIKnoAUCXQ2YRn9mr9p/LvXQpjECsjJbsoWScp7emOFBudyaw/C2MAmj
+ ow8/cQFMAePQZHcPFdgOMYgeUbN1iwd7L7YZjvrCCwtP1ys2RfcwC3JJPpvisUWZX4EGs5F5wq9
+ 6XthF3QUwZlkNT89yApAa/0ZCLHCB4nVBzhSzxRuJoGw8Zfi+AcG/gHRjkagfjzRWk9qaXl/rfB
+ SqDN++f3/u3PfPUqbgTysMSogZNWVx127PufDRVQRlxEiforN3R4fBCNeW2cmRktOOTedQdzBWr
+ tG2uIQTG92kTiLBLkQHRWu9u6o4XAGJO5eKjSM4d9bVTVyW+RbWZspNz357wufPupGSHDfxHuB/
+ 5vBbto/LSNC6DNhwEfxyOtUQe8bT7Poj85s2L2ZZJpLew52
+X-Received: by 2002:a05:6000:1844:b0:48c:4eea:4712 with SMTP id
+ ffacd0b85a97d-48c6d1b01a7mr1215793f8f.53.1791275730611; 
+ Tue, 06 Oct 2026 01:35:30 -0700 (PDT)
 Received: from archlinux (pd95eda80.dip0.t-ipconnect.de. [217.94.218.128])
  by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-48c6cdb281csm1566764f8f.55.2026.10.06.01.35.20
+ ffacd0b85a97d-48c6cdb281csm1566764f8f.55.2026.10.06.01.35.29
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 06 Oct 2026 01:35:21 -0700 (PDT)
+ Tue, 06 Oct 2026 01:35:30 -0700 (PDT)
 From: Bernhard Beschow <shentey@gmail.com>
 To: qemu-devel@nongnu.org
 Cc: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@oss.qualcomm.com>,
@@ -78,23 +78,23 @@ Cc: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@oss.qualcomm.com>,
  Bernhard Beschow <shentey@gmail.com>, qemu-arm@nongnu.org,
  Jason Wang <jasowangio@gmail.com>,
  Alistair Francis <alistair@alistair23.me>
-Subject: [PATCH v4 01/31] hw/watchdog/wdt_imx2: Preserve own locked bits in WCR
-Date: Tue,  6 Oct 2026 10:34:13 +0200
-Message-ID: <20261006083445.30362-2-shentey@gmail.com>
+Subject: [PATCH v4 09/31] hw/arm/mcimx6ul-evk: Have 512 MiB of RAM by default
+Date: Tue,  6 Oct 2026 10:34:21 +0200
+Message-ID: <20261006083445.30362-10-shentey@gmail.com>
 X-Mailer: git-send-email 2.56.0
 In-Reply-To: <20261006083445.30362-1-shentey@gmail.com>
 References: <20261006083445.30362-1-shentey@gmail.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::52a;
- envelope-from=shentey@gmail.com; helo=mail-ed1-x52a.google.com
-X-Spam_score_int: -10
-X-Spam_score: -1.1
-X-Spam_bar: -
-X-Spam_report: (-1.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FORGED_GMAIL_RCVD=1,
- FREEMAIL_FROM=0.001, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=no autolearn_force=no
+Received-SPF: pass client-ip=2a00:1450:4864:20::12c;
+ envelope-from=shentey@gmail.com; helo=mail-lf1-x12c.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-arm@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -110,46 +110,30 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-arm>,
 Errors-To: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 Sender: qemu-arm-bounces+qemu-arm=archiver.kernel.org@nongnu.org
 
-Apparently there is a typo in the WCR locked bits handling: The locked
-values for s->wcr must come from itself rather than from s->wicr, so fix
-that. Without it, guests such as u-boot may experience inadvertent
-reboots when configuring the WCR register.
+Having 512 MiB of RAM matches real hardware. Fix the machine
+default to make its use more ergonomic and less error-prone.
 
-Fixes: daca13d495a1 ("hw/watchdog: Implement full i.MX watchdog support")
-cc: qemu-stable
+To reproduce the old default behavior for e.g. migration purposes,
+`-m 128M` needs to be added to the command line.
+
 Reviewed-by: Bin Meng <bin.meng@processmission.com>
-Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 Signed-off-by: Bernhard Beschow <shentey@gmail.com>
 ---
- hw/watchdog/wdt_imx2.c | 6 +++---
- 1 file changed, 3 insertions(+), 3 deletions(-)
+ hw/arm/mcimx6ul-evk.c | 1 +
+ 1 file changed, 1 insertion(+)
 
-diff --git a/hw/watchdog/wdt_imx2.c b/hw/watchdog/wdt_imx2.c
-index c83d4107c1..3283990bbf 100644
---- a/hw/watchdog/wdt_imx2.c
-+++ b/hw/watchdog/wdt_imx2.c
-@@ -156,18 +156,18 @@ static void imx2_wdt_write(void *opaque, hwaddr addr,
-     case IMX2_WDT_WCR:
-         if (s->wcr_locked) {
-             value &= ~IMX2_WDT_WCR_LOCK_MASK;
--            value |= (s->wicr & IMX2_WDT_WCR_LOCK_MASK);
-+            value |= (s->wcr & IMX2_WDT_WCR_LOCK_MASK);
-         }
-         s->wcr_locked = true;
-         if (s->wcr_wde_locked) {
-             value &= ~IMX2_WDT_WCR_WDE;
--            value |= (s->wicr & ~IMX2_WDT_WCR_WDE);
-+            value |= (s->wcr & ~IMX2_WDT_WCR_WDE);
-         } else if (value & IMX2_WDT_WCR_WDE) {
-             s->wcr_wde_locked = true;
-         }
-         if (s->wcr_wdt_locked) {
-             value &= ~IMX2_WDT_WCR_WDT;
--            value |= (s->wicr & ~IMX2_WDT_WCR_WDT);
-+            value |= (s->wcr & ~IMX2_WDT_WCR_WDT);
-         } else if (value & IMX2_WDT_WCR_WDT) {
-             s->wcr_wdt_locked = true;
-         }
+diff --git a/hw/arm/mcimx6ul-evk.c b/hw/arm/mcimx6ul-evk.c
+index 40071d2c7b..4964cb9345 100644
+--- a/hw/arm/mcimx6ul-evk.c
++++ b/hw/arm/mcimx6ul-evk.c
+@@ -73,6 +73,7 @@ static void mcimx6ul_evk_machine_init(MachineClass *mc)
+     mc->desc = "Freescale i.MX6UL Evaluation Kit (Cortex-A7)";
+     mc->init = mcimx6ul_evk_init;
+     mc->max_cpus = FSL_IMX6UL_NUM_CPUS;
++    mc->default_ram_size = 512 * MiB;
+     mc->default_ram_id = "mcimx6ul-evk.ram";
+     mc->auto_create_sdcard = true;
+ }
 -- 
 2.56.0
 
